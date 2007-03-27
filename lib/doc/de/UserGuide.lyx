@@ -68,7 +68,7 @@
 \end_preamble
 \options bibtotoc, idxtotoc
 \language ngerman
-\inputencoding latin1
+\inputencoding default
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -81,7 +81,7 @@
 \paperfontsize default
 \spacing single
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 0
 \cite_engine basic
@@ -93,7 +93,7 @@
 \bottommargin 35mm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
+\paragraph_separation skip
 \defskip smallskip
 \quotes_language german
 \papercolumns 1
@@ -142,7 +142,7 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 15.
+letzte Änderung: 23.
  März 2007
 \end_layout
 
@@ -216,6 +216,23 @@ erkzeugleisten
 n Buchstaben merken, wenn Sie einen Menü-Befehl aufrufen.
 \end_layout
 
+\begin_layout Standard
+Außerdem hat 
+\noun on
+Uwe Stöhr
+\noun default
+ in den LaTeX-Vorspann (siehe 
+\family sans
+Hilfe\SpecialChar \menuseparator
+Handbuchergän\SpecialChar \-
+zun\SpecialChar \-
+gen
+\family default
+) Elemente eingefügt, die bewirken, dass in der druckbaren Version Einträge
+ in den Verzeichnissen und Querverweise blau unterstrichen werden und wie
+ eine URL angeklickt werden können.
+\end_layout
+
 \begin_layout Section
 Was ist Ly
 \begin_inset ERT
@@ -233,7 +250,7 @@ X?
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
@@ -377,6 +394,11 @@ Das Hauptfenster
 \end_layout
 
 \begin_layout Standard
+\begin_inset LatexCommand label
+name "Hauptfenster"
+
+\end_inset
+
 Wie die meisten Anwendungen hat auch LyX die bekannte Menüleiste am oberen
  Rand des Fensters.
  Darunter befinden sich die Werkzeugleisten mit einer Listenauswahl und
@@ -463,11 +485,7 @@ name "WYSIWYG"
 status open
 
 \begin_layout Standard
-
-\lang english
-what you see is what you get
-\lang ngerman
- 
+what you see is what you get 
 \begin_inset Formula $\approx$
 \end_inset
 
@@ -1178,11 +1196,7 @@ Entf
 \begin_inset Formula $\leftarrow$
 \end_inset
 
- (
-\lang english
-Backspace
-\lang ngerman
-) arbeiten ebenfalls wie der Befehl 
+ (Backspace) arbeiten ebenfalls wie der Befehl 
 \family sans
 Ausschneiden
 \family default
@@ -1825,11 +1839,8 @@ name "Entf"
 \begin_inset Formula $\longleftarrow$
 \end_inset
 
- (
-\lang english
-Backspace
+ (Backspace
 \family default
-\lang ngerman
 ) das Zeichen links und 
 \family sans
 Entf
@@ -1865,10 +1876,8 @@ name "Strg"
 \InsetSpace ~
 (
 \family default
-\lang english
 Control
 \family sans
-\lang ngerman
 )
 \family default
  Diese hat eine unterschiedliche Bedeutung, je nachdem mit welcher anderen
@@ -1879,10 +1888,8 @@ Control
 \begin_layout Itemize
 Zusammen mit 
 \family sans
-\lang english
 Backspace
 \family default
-\lang ngerman
  oder 
 \family sans
 Entf
@@ -1940,10 +1947,8 @@ name "Umschalt"
 \InsetSpace ~
 (
 \family default
-\lang english
 Shift
 \family sans
-\lang ngerman
 )
 \family default
  Zusammen mit den Cursortasten können Sie den Text zwischen der alten und
@@ -2004,11 +2009,8 @@ Anpassung
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Compose
 \family sans
-\lang ngerman
 
 \begin_inset LatexCommand index
 name "Compose"
@@ -2034,10 +2036,8 @@ AltGr
  andere zusammengesetzte Zeichen nur manchmal benutzt.
  Hier sind einige Beispiele dafür, was Sie mit der 
 \family sans
-\lang english
 Compose
 \family default
-\lang ngerman
 -Taste machen können:
 \end_layout
 
@@ -2045,10 +2045,7 @@ Compose
 \begin_layout Itemize
 
 \family sans
-\lang english
-Compose
-\lang ngerman
-\InsetSpace ~
+Compose\InsetSpace ~
 e\InsetSpace ~
 '
 \family default
@@ -2062,10 +2059,7 @@ e\InsetSpace ~
 \begin_layout Itemize
 
 \family sans
-\lang english
-Compose
-\lang ngerman
-\InsetSpace ~
+Compose\InsetSpace ~
 O\InsetSpace ~
 R
 \family default
@@ -2079,10 +2073,7 @@ R
 \begin_layout Itemize
 
 \family sans
-\lang english
-Compose
-\lang ngerman
-\InsetSpace ~
+Compose\InsetSpace ~
 <\InsetSpace ~
 <
 \family default
@@ -4695,11 +4686,7 @@ Wenn jemand LyX für Sie eingerichtet hat, können Sie dieses Kapitel ruhig
 \begin_layout Standard
 Wenn Sie LyX selber installiert haben, 
 \emph on
-sollten Sie alle 
-\lang english
-README
-\lang ngerman
--Dateien, die zusammen mit LyX kamen, lesen
+sollten Sie alle README-Dateien, die zusammen mit LyX kamen, lesen
 \emph default
 .
  Dieses Kapitel beschreibt 
@@ -4754,10 +4741,8 @@ Es gibt zwei Möglichkeiten, LyX zu benutzen.
  zu installieren.
  Dazu brauchen Sie natürlich 
 \emph on
-\lang english
 root
 \emph default
-\lang ngerman
 -Privilegien.
  Wenn das nicht geht.
  
@@ -4779,10 +4764,8 @@ Es gibt einige LyX-Funktionen, die innerhalb von LyX konfiguriert werden
 \begin_layout Standard
 LyX wird diese Informationen dazu verwenden, in der Datei 
 \family typewriter
-\lang english
 preferences
 \family default
-\lang ngerman
  vernünftige Werte für einige Variablen einzutragen.
  Obwohl diese Konfiguration bereits während der LyX-Installation durchgeführt
  wurde, gibt es vielleicht einige Dinge, die Sie lokal installiert haben
@@ -4859,10 +4842,7 @@ name "Dokument-Standard"
 .
  Dadurch wird eine Vorlage mit dem Namen 
 \family typewriter
-\lang english
-defaults
-\lang ngerman
-.lyx
+defaults.lyx
 \family default
  erzeugt, die automatisch von LyX geladen wird, wenn Sie ein neues Dokument
  ohne Vorlage erstellen wollen.
@@ -4887,20 +4867,14 @@ status collapsed
 
 \end_inset
 
-
-\lang english
 defaults
 \family default
-\lang ngerman
 .
  Danach wird versucht, in Ihrem Heimatverzeichnis die Datei 
 \family typewriter
-~/.lyx/
-\lang english
-pre\SpecialChar \-
+~/.lyx/pre\SpecialChar \-
 ferences
 \family default
-\lang ngerman
  zu lesen.
  Über das Dialogfenster 
 \family sans
@@ -5023,10 +4997,8 @@ lyx
  TeX liest Befehle aus einer ASCII-Datei und konvertiert sie in ein DVI-Format
  (
 \emph on
-\lang english
 device-independent
 \emph default
-\lang ngerman
 ).
  Die DVI-Datei kann dann an einen Drucker gesendet werden.
  TeX ist programmierbar, und LaTeX ist nichts als ein (sehr großer) Satz
@@ -5129,11 +5101,7 @@ Die Programme sind Betrachter für Dateien im DVI- und PostScript®
 status open
 
 \begin_layout Standard
-PostScript® ist ein eingetragenes Warenzeichen von Adobe Systems 
-\lang english
-Incorporated
-\lang ngerman
-.
+PostScript® ist ein eingetragenes Warenzeichen von Adobe Systems Incorporated.
 \end_layout
 
 \end_inset
@@ -5160,10 +5128,8 @@ dvips
 strahldrucker benutzen, müssen PostScript®
  durch 
 \family typewriter
-\lang english
 ghostscript
 \family default
-\lang ngerman
  filtern.
  Es kann für viele Druckerarten eine Ausgabe erzeugen.
  Der folgende Abschnitt über Druckerein\SpecialChar \-
@@ -5538,11 +5504,7 @@ In LyX gibt es fünf Standarddokumentklassen:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-article
-\lang ngerman
-[\InsetSpace \space{}
+article[\InsetSpace \space{}
 (koma-script)] für Standardartikel
 \end_layout
 
@@ -5597,7 +5559,7 @@ unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -5610,7 +5572,7 @@ begin{sloppypar}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -5643,7 +5605,7 @@ X) Artikel für Veröffentlichungen der American Physical Society (APS), des
  (OSA).
  Diese Klasse ist nicht mit allen LyX-Funktionen kompatibel.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -5658,11 +5620,7 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Description
-
-\lang english
-book
-\lang ngerman
-\InsetSpace ~
+book\InsetSpace ~
 (AMS) Bücher im Stil und Format der AMS.
  Es wird nur die Standardnummerierung benutzt, in der Annahme, dass man
  Sätze usw.\InsetSpace \space{}
@@ -5674,20 +5632,14 @@ letter für Briefe im US-amerikanischen Stil
 \end_layout
 
 \begin_layout Description
-
-\lang english
-paper
-\lang ngerman
- für die 
+paper für die 
 \begin_inset Quotes gld
 \end_inset
 
 
 \family typewriter
-\lang english
 paper
 \family default
-\lang ngerman
  LaTeX
 \begin_inset Quotes grd
 \end_inset
@@ -5847,11 +5799,7 @@ höchste Abschnittsstufe
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
-article
-\lang ngerman
-[ (koma-script)]
+article[ (koma-script)]
 \end_layout
 
 \end_inset
@@ -5906,11 +5854,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
-article
-\lang ngerman
- (AMS)
+article (AMS)
 \end_layout
 
 \end_inset
@@ -5965,11 +5909,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
-book
-\lang ngerman
-[ (koma-script)]
+book[ (koma-script)]
 \end_layout
 
 \end_inset
@@ -6024,15 +5964,7 @@ Kapitel
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
-letter
-\lang ngerman
-[ (
-\lang english
-german
-\lang ngerman
-/koma-script)]
+letter[ (german/koma-script)]
 \end_layout
 
 \end_inset
@@ -6085,11 +6017,7 @@ keine
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
-report
-\lang ngerman
-[ (koma-script)]
+report[ (koma-script)]
 \end_layout
 
 \end_inset
@@ -6199,11 +6127,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
-slides
-\lang ngerman
- (default)
+slides (default)
 \end_layout
 
 \end_inset
@@ -6256,8 +6180,6 @@ keine
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
 paper
 \end_layout
 
@@ -6269,7 +6191,6 @@ paper
 \begin_layout Standard
 
 \family sans
-\lang english
 headings
 \end_layout
 
@@ -6427,11 +6348,8 @@ Optionen: etwas für LaTeX-Freaks.
 \family typewriter
 
 \backslash
-
-\lang english
 documentclass
 \family default
-\lang ngerman
  hat mehrere Optionen.
  LyX setzt einige davon für Sie automatisch.
  In das Kästchen können Sie weitere eintragen.
@@ -6632,19 +6550,11 @@ LaTeX macht diesen Teil.
 
 \begin_deeper
 \begin_layout Description
-
-\lang english
-default
-\lang ngerman
- das Standardseitenformat der gewählten Klasse benutzen.
+default das Standardseitenformat der gewählten Klasse benutzen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-empty
-\lang ngerman
- weder Seitenzahlen noch Überschriften.
+empty weder Seitenzahlen noch Überschriften.
 \end_layout
 
 \begin_layout Description
@@ -6654,7 +6564,7 @@ plain
 \family default
  nur Seitenzahlen.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -6681,7 +6591,7 @@ headings
 \family default
  Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit Nummer.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -6707,27 +6617,19 @@ Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
 \end_layout
 
 \begin_layout Description
-
-\lang english
-fancy
-\lang ngerman
- gestattet individuell gestaltete Kopf- und Fußzeilen, wenn Sie das Paket
- 
+fancy gestattet individuell gestaltete Kopf- und Fußzeilen, wenn Sie das
+ Paket 
 \family typewriter
-\lang english
 fancyhdr
 \family default
-\lang ngerman
  installiert haben.
  Zur Zeit kann LyX dies nur beschränkt unterstützen.
  Um alle Möglichkeiten des Pakets ausschöpfen zu können, müssen Sie in Ihrem
  Vorspann einige Dinge eintragen.
  Lesen Sie die Dokumentation des 
 \family typewriter
-\lang english
 fancyhdr
 \family default
-\lang ngerman
 -Paketes
 \begin_inset Foot
 status open
@@ -6781,10 +6683,8 @@ reference "sub:Die-Datei-drucken"
 \begin_layout Description
 Seitenränder Für einige Einstellungen benötigen Sie das 
 \family typewriter
-\lang english
 geometry
 \family default
-\lang ngerman
 -Paket.
  Mit diesem Paket können Sie in diesem Menü dann auch die 
 \family sans
@@ -6797,10 +6697,8 @@ Standard-Ränder
 \family default
  ankreuzen, können Sie das 
 \family typewriter
-\lang english
 geometry
 \family default
-\lang ngerman
 -Paket nicht benutzen.
  Die Ränder sind dann festgelegt.
 \end_layout
@@ -7151,10 +7049,8 @@ Zeilenabstände ändern
 \begin_layout Standard
 Wenn Sie das 
 \family typewriter
-\lang english
 setspace
 \family default
-\lang ngerman
 -Paket installiert haben, können Sie Ihren Zeilenabstand im Dialogfenster
  
 \family sans
@@ -7188,18 +7084,17 @@ Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei
 \family typewriter
 
 \backslash
-
-\lang english
 begin
-\lang ngerman
+\family default
+ 
+\family typewriter
 {
 \family default
 \emph on
-\lang english
-environment
+en\SpecialChar \-
+vironment
 \family typewriter
 \emph default
-\lang ngerman
 } ...
 
 \family default
@@ -7207,17 +7102,12 @@ environment
 \family typewriter
 
 \backslash
-
-\lang english
 end
 \family default
-\lang ngerman
  {
 \emph on
-\lang english
 environment
 \emph default
-\lang ngerman
 }.
  Alles zwischen den beiden Befehlen ist ein Absatz.
 \end_layout
@@ -7283,10 +7173,8 @@ reference "sec:URLs"
 \begin_layout Quotation
 Manchmal hilft 
 \family typewriter
-\lang english
 sloppypar
 \family default
-\lang ngerman
  weiter (siehe 
 \emph on
 Handbuchergänzungen
@@ -7300,11 +7188,9 @@ key "latex-einführung"
  oder auch 
 \family sans
 \series bold
-\lang english
 headings
 \family default
 \series default
-\lang ngerman
  
 \begin_inset LatexCommand vpageref
 reference "sloppypar"
@@ -7353,11 +7239,7 @@ Eine Absatzumgebung wählt man mit dem
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang english
 pull-down
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -7466,11 +7348,7 @@ name "Zitat!(kurz)"
 
 \end_inset
 
- -- LaTeX-Bezeichnung: 
-\lang english
-Quote
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Quote
 \begin_inset LatexCommand index
 name "Quote"
 
@@ -7490,11 +7368,7 @@ name "Zitat!(lang)"
 
 \end_inset
 
- -- LaTeX-Bezeichnung: 
-\lang english
-Quotation
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Quotation
 \begin_inset LatexCommand index
 name "Quotation"
 
@@ -7514,11 +7388,7 @@ name "Gedicht"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Verse
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Verse
 \begin_inset LatexCommand index
 name "Verse"
 
@@ -7539,11 +7409,7 @@ name "Auf\\/listung"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Itemize
-\lang ngerman
- 
+ -- LaTeX-Bezeichnung: Itemize 
 \family sans
 
 \begin_inset LatexCommand index
@@ -7565,11 +7431,7 @@ name "Aufz\"ahlung"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Enumerate
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Enumerate
 \begin_inset LatexCommand index
 name "Enumerate"
 
@@ -7589,11 +7451,7 @@ name "Beschreibung"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Description
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Description
 \begin_inset LatexCommand index
 name "Description"
 
@@ -7613,11 +7471,7 @@ name "Liste"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-List
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: List
 \begin_inset LatexCommand index
 name "List"
 
@@ -7667,10 +7521,8 @@ status open
 \begin_layout Standard
 Damit wird die Funktion 
 \family typewriter
-\lang english
 break-paragraph-keep-layout
 \family default
-\lang ngerman
  ausgelöst.
 \end_layout
 
@@ -7775,11 +7627,7 @@ name "Titel!-Umgebung"
 
 \end_inset
 
- (LaTeX-Bezeichnung: 
-\lang english
-Title
-\lang ngerman
-
+ (LaTeX-Bezeichnung: Title
 \begin_inset LatexCommand index
 name "Title"
 
@@ -7799,11 +7647,7 @@ name "Autor!-Umgebung"
 
 \end_inset
 
- (LaTeX-Bezeichnung: 
-\lang english
-Author
-\lang ngerman
-
+ (LaTeX-Bezeichnung: Author
 \begin_inset LatexCommand index
 name "Author"
 
@@ -7825,11 +7669,7 @@ name "Datum-Umgebung"
 
 \end_inset
 
- (LaTeX-Bezeichnung: 
-\lang english
-Date
-\lang ngerman
-
+ (LaTeX-Bezeichnung: Date
 \begin_inset LatexCommand index
 name "Date"
 
@@ -7889,11 +7729,7 @@ name "Kapitel"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Chapter
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Chapter
 \begin_inset LatexCommand index
 name "Chapter"
 
@@ -7913,11 +7749,7 @@ name "Abschnitt"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Section
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Section
 \begin_inset LatexCommand index
 name "Section"
 
@@ -7937,11 +7769,7 @@ name "Unterabschnitt"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Subsection
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Subsection
 \begin_inset LatexCommand index
 name "Subsection"
 
@@ -7961,11 +7789,7 @@ name "Unterunterabschn."
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Subsubsection
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Subsubsection
 \begin_inset LatexCommand index
 name "Subsubsection"
 
@@ -7999,11 +7823,7 @@ name "Unterparagraph"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Subparagraph
-\lang ngerman
-
+ -- LaTeX-Bezeichnung: Subparagraph
 \begin_inset LatexCommand index
 name "Subparagraph"
 
@@ -8159,11 +7979,7 @@ name "Abschnitt*"
 
 \end_inset
 
--- LaTeX-Bezeichnung: 
-\lang english
-Section
-\lang ngerman
-*
+-- LaTeX-Bezeichnung: Section*
 \begin_inset LatexCommand index
 name "Section*"
 
@@ -8183,11 +7999,7 @@ name "Unterabschnitt*"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Subsection
-\lang ngerman
-*
+ -- LaTeX-Bezeichnung: Subsection*
 \begin_inset LatexCommand index
 name "Subsection*"
 
@@ -8207,11 +8019,7 @@ name "Unterunterabschn.*"
 
 
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-Subsubsection
-\lang ngerman
-*
+ -- LaTeX-Bezeichnung: Subsubsection*
 \begin_inset LatexCommand index
 name "Subsubsection*"
 
@@ -8506,11 +8314,8 @@ Nachdem wir die Gemeinsamkeiten dieser drei Umgebungen beschrieben haben,
 Zitat\InsetSpace ~
 (kurz)
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-quote
+ -- LaTeX-Bezeichnung: quote
 \family sans
-\lang ngerman
 
 \begin_inset LatexCommand index
 name "Quote"
@@ -8524,11 +8329,8 @@ name "Quote"
 Zitat\InsetSpace \space{}
 (lang)
 \family default
- -- LaTeX-Bezeichnung: 
-\lang english
-quotation
+ -- LaTeX-Bezeichnung: quotation
 \family sans
-\lang ngerman
 
 \begin_inset LatexCommand index
 name "Quotation"
@@ -8711,10 +8513,8 @@ Gedicht
  Jede Strophe ist ein eigener Absatz.
  Zum Trennen der Zeilen einer Strophe benutze man die 
 \family typewriter
-\lang english
 break-line
 \family default
-\lang ngerman
 -Funktion 
 \family sans
 Strg+Eingabe
@@ -9602,7 +9402,7 @@ Liste
 -Umgebung haben Sie eine weitere Möglichkeit, das zu tun, aber mit einem
  anderen Aussehen.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -9638,7 +9438,7 @@ reference "sec:nest"
 
 ff, um mehr darüber zu erfahren.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -9816,10 +9616,8 @@ Matthias
 
  Um die 
 \family sans
-\lang english
 letter
 \family default
-\lang ngerman
 -Klasse benutzen zu können, müssen Sie spezielle Absatzumgebungen in einer
  festgelegten Reihenfolge benutzen, sonst wird LaTeX sich an dem Dokument
  übergeben.
@@ -9944,11 +9742,7 @@ Wie Sie sehen, ist zwischen
 \family sans
 Adresse (
 \family default
-LaTeX-Bezeichnung: 
-\lang english
-Address
-\lang ngerman
-
+LaTeX-Bezeichnung: Address
 \begin_inset LatexCommand index
 name "Address"
 
@@ -10038,11 +9832,7 @@ Die
 \family sans
 Zusammenfassung
 \family default
--Umgebung (LaTeX-Bezeichnung: 
-\lang english
-Abstract
-\lang ngerman
-
+-Umgebung (LaTeX-Bezeichnung: Abstract
 \begin_inset LatexCommand index
 name "Abstract"
 
@@ -10050,26 +9840,20 @@ name "Abstract"
 
 ) kann man nur in den 
 \family sans
-\lang english
 article
 \family default
-\lang ngerman
 - und 
 \family sans
-\lang english
 report
 \family default
-\lang ngerman
 -Dokumentklassen benutzen (und 
 \family sans
 amsart
 \family default
 , was nur ein Spezialfall von 
 \family sans
-\lang english
 article
 \family default
-\lang ngerman
  ist).
 \end_layout
 
@@ -10118,10 +9902,8 @@ koma-script
  So jedenfalls wird es in LyX aussehen.
  Wenn Ihr Dokument die 
 \family sans
-\lang english
 report
 \family default
-\lang ngerman
 -Klasse benutzt, wird die Zusammenfassung im Ausdruck auf einer eigenen
  Seite erscheinen.
 \end_layout
@@ -10153,10 +9935,7 @@ Zusammenfassung
 Wir würden Ihnen gern ein Beispiel zeigen, aber das geht nicht, weil dieses
  Dokument die 
 \family sans
-\lang english
-book
-\lang ngerman
-\InsetSpace ~
+book\InsetSpace ~
 (koma-script
 \family default
 )-Klasse benutzt.
@@ -10190,11 +9969,7 @@ name "Literaturverzeichnis"
 
 \end_inset
 
- (LaTeX-Bezeichnung: 
-\lang english
-Bibliography
-\lang ngerman
-
+ (LaTeX-Bezeichnung: Bibliography
 \begin_inset LatexCommand index
 name "Bibliography"
 
@@ -10476,10 +10251,8 @@ Code
 -Umgebung wird die Leertaste als geschütztes Leerzeichen behandelt anstatt
  als 
 \family typewriter
-\lang english
 end-of-word
 \family default
-\lang ngerman
 -Markierung.
 \end_layout
 
@@ -10490,13 +10263,10 @@ end-of-word
 \family sans
 Strg+Eingabe
 \family default
- eingeben (die
-\lang english
- 
+ eingeben (die 
 \family typewriter
 break-line
 \family default
-\lang ngerman
 -Funktion).
  
 \family sans
@@ -10610,11 +10380,7 @@ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout LyX-Code
-#
-\lang english
-include
-\lang ngerman
-<stdio.h>
+#include<stdio.h>
 \end_layout
 
 \begin_layout LyX-Code
@@ -10894,14 +10660,11 @@ name "Teil"
 
 
 \family default
- (LaTeX-Bezeichnung: 
-\lang english
-Part
+ (LaTeX-Bezeichnung: Teil
 \family sans
-\lang ngerman
 
 \begin_inset LatexCommand index
-name "Part"
+name "Teil"
 
 \end_inset
 
@@ -11119,7 +10882,7 @@ name "Gleitobjekte"
 
  usw.
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Andere Dinge schachteln
@@ -11189,11 +10952,7 @@ Wenn Sie aber eine Gleichung, ein Bild oder eine Tabelle in einem eigenen
 \emph on
 Absatz
 \emph default
- haben, verhalten sie sich wie teilweise 
-\lang english
-schachtelbare
-\lang ngerman
- Absatzumgebungen.
+ haben, verhalten sie sich wie teilweise schachtelbare Absatzumgebungen.
  Man kann sie in jede Umgebung schachteln, aber man kann natürlich nichts
  in sie schachteln.
 \end_layout
@@ -12770,7 +12529,7 @@ wir bedauern, Ihnen mitteilen zu müssen, dass wir Ihre Bestellung über 50
  wie möglich liefern.
  In der Zwischenzeit danken wir Ihnen für Ihre Geduld.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12789,7 +12548,7 @@ Wir haben aber jetzt ein Sonderangebot für Rindfleisch.
  Wenn Sie interessiert sind, schicken Sie bitte das beigefügte Bestellformular
  zusammen mit einem Scheck an uns zurück.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12984,33 +12743,19 @@ Default
  und eine Liste von Fonts, die auf Ihrem System zur Verfügung stehen.
  Die Option 
 \family sans
-\lang english
 Default
 \family default
-\lang ngerman
  benutzt die Standard-TeX-Fonts, bekannt als 
 \emph on
-\lang english
-computer
-\lang ngerman
- 
-\lang english
-modern
+computer modern
 \emph default
-\lang ngerman
  (cm) oder 
 \emph on
-\lang english
 European modern
 \emph default
- (
-\lang ngerman
-ec).
- Die meisten Systeme haben normalerweise Versionen der Fonts 
-\lang english
-Times
-\lang ngerman
- und Helvetica und eine Vielzahl anderer Varianten.
+ (ec).
+ Die meisten Systeme haben normalerweise Versionen der Fonts Times und Helvetica
+ und eine Vielzahl anderer Varianten.
  Sie müssen es selber herausfinden.
 \end_layout
 
@@ -13021,10 +12766,8 @@ Schriftgröße
 \family default
  hat außer 
 \family sans
-\lang english
 Default
 \family default
-\lang ngerman
  die Werte 
 \family sans
 10
@@ -13675,7 +13418,7 @@ Die Optionen (und ihre Tastenkürzel) sind:
 \end_deeper
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13710,10 +13453,8 @@ winzige
 \size default
  LaTeX: 
 \color black
-\lang english
 tiny
 \color inherit
-\lang ngerman
 
 \begin_inset LatexCommand index
 name "tiny"
@@ -13754,11 +13495,7 @@ sehr kleine
  Fontgröße.
 
 \size default
- LaTeX: 
-\lang english
-scriptsize
-\lang ngerman
-
+ LaTeX: scriptsize
 \begin_inset LatexCommand index
 name "scriptsize"
 
@@ -13791,11 +13528,7 @@ Fußnoten
 -Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-footnotesize
-\lang ngerman
-
+LaTeX: footnotesize
 \begin_inset LatexCommand index
 name "footnotesize"
 
@@ -13832,11 +13565,7 @@ kleine
  Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-small
-\lang ngerman
-
+LaTeX: small
 \begin_inset LatexCommand index
 name "small"
 
@@ -13874,11 +13603,7 @@ normale
 \end_inset
 
  Fontgröße.
- LaTeX: 
-\lang english
-normalsize
-\lang ngerman
-
+ LaTeX: normalsize
 \begin_inset LatexCommand index
 name "normalsize"
 
@@ -13915,11 +13640,7 @@ große
  Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-large
-\lang ngerman
-
+LaTeX: large
 \begin_inset LatexCommand index
 name "large"
 
@@ -13957,11 +13678,7 @@ größere
  Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-Large
-\lang ngerman
-
+LaTeX: Large
 \begin_inset LatexCommand index
 name "Large"
 
@@ -14000,11 +13717,7 @@ noch größere
  Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-LARGE
-\lang ngerman
-
+LaTeX: LARGE
 \begin_inset LatexCommand index
 name "LARGE"
 
@@ -14037,11 +13750,7 @@ riesige
  Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-huge
-\lang ngerman
-
+LaTeX: huge
 \begin_inset LatexCommand index
 name "huge"
 
@@ -14079,11 +13788,7 @@ gigantische
  Fontgröße.
  
 \size default
-LaTeX: 
-\lang english
-Huge
-\lang ngerman
-
+LaTeX: Huge
 \begin_inset LatexCommand index
 name "Huge"
 
@@ -14124,7 +13829,7 @@ Verkleinern
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -14380,11 +14085,9 @@ geräteunabhängige
 \emph default
  Datei, kurz DVI (
 \emph on
-\lang english
 device-indepen\SpecialChar \-
 dent
 \emph default
-\lang ngerman
 ).
  Die Ausgabe kommt in eine Datei mit der Erweiterung 
 \family typewriter
@@ -14407,11 +14110,7 @@ dvi
 \family default
 -Datei enthält nur das, was in der LaTeX-Datei selber war.
  Wenn Sie in Ihr Dokument Bilder eingefügt haben, wird es nur einen Verweis
- (
-\lang english
-link
-\lang ngerman
-) auf diese Bilddateien geben.
+ (link) auf diese Bilddateien geben.
  Also vergessen Sie sie nicht, wenn Sie Ihre 
 \family typewriter
 dvi
@@ -14598,11 +14297,8 @@ xdvi
 \family default
  die Option 
 \family typewriter
--
-\lang english
-shrinkbutton
+-shrinkbutton
 \family default
-\lang ngerman
  benutzen.
  Auf einem 19-Zoll-Monitor mit einer Auflösung von 1280x1024 Punkten erreichen
  Sie mit folgendem Eintrag, dass 
@@ -14613,15 +14309,7 @@ xdvi
  beim Klicken auf den Knopf, auf dem jetzt 14% statt 17% steht, die Seite
  fast A4 wird: 
 \family typewriter
-xdvi -hl 
-\lang english
-red
-\lang ngerman
- -
-\lang english
-geometry
-\lang ngerman
- 820x1024-0+0 -shrinkbutton2 7
+xdvi -hl red -geometry 820x1024-0+0 -shrinkbutton2 7
 \end_layout
 
 \begin_layout Description
@@ -14675,11 +14363,8 @@ KDE: Wenn Sie gedrehten oder mit
 \family typewriter
 
 \backslash
-
-\lang english
 colorbox
 \family default
-\lang ngerman
  erstellten, grau hinterlegten Text sehen wollen, in der 
 \family typewriter
 dvi
@@ -14694,10 +14379,7 @@ name "des:Tipp-3:-Wenn"
 
 \end_inset
 
- Außerdem haben Sie links eine Vorschau aller Seiten wie beim Acrobat-
-\lang english
-Reader
-\lang ngerman
+ Außerdem haben Sie links eine Vorschau aller Seiten wie beim Acrobat-Reader
  und können direkt drucken, usw.
 \end_layout
 
@@ -14988,10 +14670,8 @@ dvips
  und, falls Sie keinen Post\SpecialChar \-
 Script®-Drucker haben, 
 \family typewriter
-\lang english
 ghostscript
 \family default
-\lang ngerman
  Ihr Dokument bearbeiten müssen.
 \end_layout
 
@@ -15340,9 +15020,7 @@ richtigen
 \end_layout
 
 \begin_layout Itemize
-M
-\lang english
-.
+M.
  Butterfly
 \end_layout
 
@@ -15923,10 +15601,8 @@ einklappbare
 \emph default
  Gleitobjekte, auch 
 \emph on
-\lang english
 Floats
 \emph default
-\lang ngerman
  genannt.
  Wenn Sie über den Menüpunkt 
 \family sans
@@ -15992,10 +15668,8 @@ den Text,
  in dem sich die Fußnote befindet) zurückwandeln, indem Sie den Cursor an
  den Anfang des Textes in der Fußnote setzen und Sie die 
 \family sans
-\lang english
 Backspace
 \family default
-\lang ngerman
 -Taste (
 \begin_inset Formula $\leftarrow$
 \end_inset
@@ -16208,7 +15882,7 @@ Außerdem können Sie in diesem Dialogfenster einige Einstellungen ändern.
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
 	lyxscale 30
-	scale 30
+	scale 20
 
 \end_inset
 
@@ -16389,8 +16063,6 @@ Zoll (Inch)
 \begin_inset Text
 
 \begin_layout Standard
-
-\lang english
 pt
 \end_layout
 
@@ -17049,6 +16721,16 @@ reference "fig:escher"
  Es empfiehlt sich, nur jeweils eine Abbildung je Gleitobjekt zu verwenden.
  Dadurch kann LyX (eigentlich LaTeX) den besten Platz für jede Abbildung
  zu finden.
+\end_layout
+
+\begin_layout Standard
+Sie können aber auch auf einen Bildtitel, wie in Abschnitt 
+\begin_inset LatexCommand vref
+reference "Ohne-Titel"
+
+\end_inset
+
+ für Tabellen beschrieben, verzichten.
 \end_layout
 
 \begin_layout Standard
@@ -18439,7 +18121,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18457,24 +18142,9 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
-\end_layout
-
+\begin_inset Formula $\times$
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Standard
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 
@@ -18484,7 +18154,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18502,7 +18175,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18511,7 +18187,31 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18520,7 +18220,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18559,7 +18262,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18568,7 +18274,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18577,7 +18286,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18586,7 +18298,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18595,7 +18310,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18604,7 +18322,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18613,7 +18334,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18622,7 +18346,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18631,7 +18358,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18661,33 +18391,9 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
-\end_layout
-
+\begin_inset Formula $\times$
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Standard
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 
@@ -18697,7 +18403,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18706,7 +18415,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18715,7 +18427,7 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+
 \end_layout
 
 \end_inset
@@ -18724,7 +18436,46 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18742,7 +18493,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18772,42 +18526,9 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
-\end_layout
-
+\begin_inset Formula $\times$
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 
@@ -18826,7 +18547,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18835,7 +18559,10 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18844,7 +18571,52 @@ Beschr.\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-*
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19713,11 +19485,8 @@ Sie können durch
 \family typewriter
 
 \backslash
-
-\lang english
 newline
 \family default
-\lang ngerman
  im LaTeX-Modus (
 \family sans
 
@@ -19918,7 +19687,7 @@ mehrzeiliger
 \emph default
  Tabelleneintrag.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -20604,6 +20373,11 @@ Noch eine gleitende Tabelle, mit beschreibendem Text darunter.
 \end_layout
 
 \begin_layout Standard
+\begin_inset LatexCommand label
+name "Ohne-Titel"
+
+\end_inset
+
 Sie können auch Gleitobjekt-Umgebungen ohne Titel erzeugen, dafür gibt es
  zwei Möglichkeiten.
  Entweder erstellen Sie zunächst eine einfache Tabelle (ohne Gleitob\SpecialChar \-
@@ -20796,6 +20570,122 @@ reference "sec:float-locn"
 \end_inset
 
  Gesagte.
+\newpage
+
+\end_layout
+
+\begin_layout Section
+Umflossene Gleitobjekte
+\end_layout
+
+\begin_layout Standard
+Dann gibt es noch die umflossenen Gleitobjekte.
+ Das kann wie hier aussehen.
+ Wenn Sie Text um ein Bild herum fließen lassen wollen, stellen Sie den
+ Cursor in den Text und wählen 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Gleitobjekt\SpecialChar \menuseparator
+Umflossenes
+\family default
+ 
+\family sans
+Gleitobjekt
+\family default
+.
+ 
+\begin_inset Wrap figure
+placement r
+width "38col%"
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../clipart/escher-lsd.eps
+	display color
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Dann fügen Sie mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Grafik 
+\family default
+oder
+\family sans
+ 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family sans
+ 
+\family default
+eine Abbildung oder mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Tabelle 
+\family default
+oder 
+\begin_inset Graphics
+	filename ../../images/tabular-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family sans
+ 
+\family default
+eine Tabelle ein.
+ Den Titel können Sie, wie in Abschnitt 
+\begin_inset LatexCommand vref
+reference "Ohne-Titel"
+
+\end_inset
+
+ beschrieben, entfernen.
+\end_layout
+
+\begin_layout Standard
+Das Umfließen beginnt an der Stelle, an der Sie das Objekt eingefügt haben.
+\end_layout
+
+\begin_layout Standard
+Wenn die Abbildung oder Tabelle zu groß ist, um auf den Rest der Seite zu
+ passen, wird sie überhaupt nicht gedruckt oder in den Druckvorschauen gezeigt.
+ Dann muss man sich mit einem manuellen Seitenumbruch behelfen oder die
+ Abbildung verkleinern oder alles weiter nach oben schieben oder \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+Zur Zeit können Sie diese Gleitobjekte aber nur rechts oder links, aber
+ nicht in der Mitte einer Zeile positionieren, weil LyX hierfür das LaTeX-Paket
+ 
+\family typewriter
+floatflt
+\family default
+ benutzt.
+ Für zentrierte Bilder gibt es das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -20852,10 +20742,8 @@ Um ein Inhaltsverzeichnis zu erstellen, sind vier Dinge notwendig:
 Sie müssen eine Dokumentklasse verwenden, die ein Inhaltsverzeichnis unterstützt
  (fast alle Standard-Typen außer 
 \family sans
-\lang english
 letter
 \family default
-\lang ngerman
 ).
 \end_layout
 
@@ -21181,7 +21069,40 @@ Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
 
 \family default
- starten.
+ 
+\family sans
+Mathe-Kon\SpecialChar \-
+troll\SpecialChar \-
+fläche
+\family default
+ starten, aber nur mit einigen Schaltflächen (
+\begin_inset Graphics
+	filename ../../images/math/equation.xpm
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+, 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/math/matrix.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ und 
+\begin_inset Graphics
+	filename ../../images/math/delim.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
  Das Menü 
 \family sans
 Mathe-Kon\SpecialChar \-
@@ -21463,7 +21384,7 @@ Wenn man zum Beispiel
 \backslash
 sqrt
 \family default
- tippen, dann 
+ eingeben, dann 
 \family sans
 Leertaste
 \family default
@@ -21525,14 +21446,14 @@ name "WYSIWYM"
 
 \end_inset
 
--Prinzip bedeutet, dass Sie nicht über den Schriftsatz nachdenken, sondern
- über den Inhalt.
+-Prinzip bedeutet, dass Sie nicht über den Schriftsatz nachdenken sollen,
+ sondern über den Inhalt.
  Es mag aber Situationen geben, in denen Sie wirklich Leerzeichen hinzufügen
  wollen.
 \end_layout
 
 \begin_layout Standard
-Das kann man natürlich mit 
+Das kann man mit 
 \family sans
 Strg+Leertaste
 \family default
@@ -21636,8 +21557,8 @@ Oder Sie machen es wie gewohnt mit der Maus, obwohl dabei manchmal alles
  im purpurnen Rechteck markiert wird.
  Den markierten Text können Sie dann kopieren oder ausschneiden und in eine
  andere Formel einsetzen.
- Text, der außerhalb von LyX ausgewählt wurde, kann (noch) nicht in eine
- Formel eingesetzt werden.
+ Auch Text, der außerhalb von LyX ausgewählt wurde, kann in eine Formel
+ eingesetzt werden.
 \end_layout
 
 \begin_layout Subsection
@@ -21755,12 +21676,12 @@ Einen Bruch kann man mit
 \family default
  (in Mathed) oder mit dem Bruchsymbol 
 \begin_inset Graphics
-	filename ../../images/math/frac.xpm
-	BoundingBox 0bp 6bp 12bp 22bp
+	filename ../../images/math/frac-square.xpm
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
- aus dem 
+aus dem 
 \family sans
 Mathe-Kontrollfläche
 \family default
@@ -21827,38 +21748,12 @@ Die Summen- und Integralzeichen
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Bei Integralen werden die Grenzen immer neben dem Integralzeichen platziert
  wie in 
 \begin_inset Formula $\int_{a}^{x}f(t)dt:=F(x)$
 \end_inset
 
 , bei abgesetzten Formeln sieht es so aus:
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula \[
 \int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi.\]
 
@@ -21866,7 +21761,7 @@ end{sloppypar}
 
 Beide Symbole werden automatisch angepasst.
  Man kann die Platzierung der Grenzen (direkt über und unter oder rechts
- neben dem Zeichen) ändern, indem man den Cursor direkt vor das Zeichen
+ neben dem Zeichen) umschalten, indem man den Cursor direkt vor das Zeichen
  stellt und 
 \family sans
 Alt+M\InsetSpace ~
@@ -21947,7 +21842,7 @@ Das Menü
 \family sans
 Mathe-Kontrollfläche
 \family default
- besitzt eine sehr umfangreiche Liste an Symbolen und Strukturen.
+ besitzt eine sehr umfangreiche Liste an Symbolen, Funktionen und Strukturen.
  Wie bereits erwähnt können Sie es geöffnet lassen, wenn Sie mathematische
  Formeln schreiben.
  Dadurch gelangen Sie leichter an die weniger trivialen Funktionen des 
@@ -21955,6 +21850,26 @@ Mathe-Kontrollfläche
 Mathe-Modus
 \family default
 .
+ Und denken Sie immer daran: bevor Sie etwas auswählen, müssen Sie entweder
+ auf den Werkzeugleistenknopf 
+\begin_inset Formula $\frac{a+b}{c}$
+\end_inset
+
+ klicken oder über 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Mathe
+\family default
+\SpecialChar \menuseparator
+ etwas auswählen.
+\end_layout
+
+\begin_layout Subsubsection
+Schaltknöpfe
+\end_layout
+
+\begin_layout Standard
+Die Symbole in der linken Spalte bedeuten:
 \end_layout
 
 \begin_layout Enumerate
@@ -21977,7 +21892,8 @@ Mathe-Modus
 \begin_inset Formula $\sqrt[7]{a+b}$
 \end_inset
 
-.
+, wobei Sie zwischen Quadrat-.
+ Kubik- und Andere Wurzel wählen können.
 \end_layout
 
 \begin_layout Enumerate
@@ -22057,60 +21973,19 @@ reference "sub:Fontgrößen"
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../../images/math/delim.xpm
+	filename ../../images/math/frac.xpm
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
 
- bringt eine Auswahl von Trennzeichen 
-\family sans
-und
-\family default
- Klammern, zum Beispiel 
-\begin_inset Formula $\left\{ 3\right\rangle $
+ erzeugt eine Schablone für Brüche wie 
+\begin_inset Formula $\frac{1}{2}$
 \end_inset
 
 .
- Diese werden in der Größe an ihren Inhalt angepasst.
-\end_layout
-
-\begin_layout Enumerate
-Mit 
-\begin_inset Graphics
-	filename ../../images/math/matrix.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- definiert man die Größe einer Matrix und ihre Ausrichtung:
-\newline
- 
-\begin_inset Formula $\left[\begin{array}{clr}
-1 & 2 & 3\\
-45 & 67 & 89\end{array}\right]$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/sub.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- erzeugt ein Kästchen für Indizes.
- Es ist dasselbe wie 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Formatierung\SpecialChar \menuseparator
-Tiefgestellt
-\family default
-.
+ Auch hier gibt es eine Auswahl an Bruch-Typen, die mehr oder weniger selbsterkl
+ärend ist.
 \end_layout
 
 \begin_layout Enumerate
@@ -22154,17 +22029,21 @@ abgesetzt
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../../images/math/frac.xpm
+	filename ../../images/math/sub.xpm
 	scale 70
-	BoundingBox 0bp 6bp 12bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
- erzeugt eine Schablone für Brüche wie 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
+ erzeugt ein Kästchen für Indizes.
+ Es ist dasselbe wie 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Tiefgestellt
+\family default
 .
+ Nur der Schrifttyp ist anders.
 \end_layout
 
 \begin_layout Enumerate
@@ -22179,21 +22058,138 @@ abgesetzt
  Es ist dasselbe wie 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Formatierung\SpecialChar \menuseparator
+Forma\SpecialChar \-
+tie\SpecialChar \-
+rung\SpecialChar \menuseparator
 Hochgestellt
 \family default
 .
+ Nur der Schrifttyp ist anders.
+\end_layout
+
+\begin_layout Enumerate
+Mit 
+\begin_inset Graphics
+	filename ../../images/math/matrix.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ definiert man die Größe einer Matrix und ihre Ausrichtung:
+\newline
+ 
+\begin_inset Formula $\left[\begin{array}{clr}
+1 & 2 & 3\\
+45 & 67 & 89\end{array}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/delim.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ bringt eine Auswahl von Trennzeichen 
+\family sans
+und
+\family default
+ Klammern, zum Beispiel 
+\begin_inset Formula $\left\{ 3\right\rangle $
+\end_inset
+
+.
+ Diese werden in der Größe an ihren Inhalt angepasst.
+\end_layout
+
+\begin_layout Subsubsection
+Mathematische Funktionen
+\begin_inset LatexCommand index
+name "mathematische!Funktionen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Außerdem hat das Menü 
+\begin_inset LatexCommand label
+name "sec:math-functions"
+
+\end_inset
+
+Das Menü 
 \family sans
 Mathe-Kontrollfläche
 \family default
- Untermenüs mit mathematischen Symbolen und Funktionen.
+ enthält in der mittleren Spalte Funktionen wie 
+\begin_inset Formula $\sin$
+\end_inset
+
+, 
+\begin_inset Formula $\lim$
+\end_inset
+
+, usw.\InsetSpace \space{}
+(man kann sie in Mathed auch mit Befehlen wie 
+\family typewriter
+
+\backslash
+sin
+\family default
+ usw.\InsetSpace \space{}
+eintippen.
+ Standardmäßig werden Funktionen, die Namen sind wie 
+\begin_inset Formula $\sin$
+\end_inset
+
+, nicht kursiv geschrieben.
+ Gibt man in Mathed aber nur die Buchstaben 
+\begin_inset Formula $sin$
+\end_inset
+
+ ein, sind sie natürlich kursiv.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+Deshalb gibt es diese besonderen Makros.
+ In der Druckausgabe bewirken sie aber mehr als nur die Schriftform zu ändern.
+ Zum Beispiel bekommt der Ausdruck 
+\emph on
+sint
+\emph default
+ zusätzlichen Leerraum zwischen sin und t: 
+\begin_inset Formula $\sin t$
+\end_inset
+
+.
+ Bei komplexeren mathematischen Objekten wie 
+\begin_inset Formula $\lim$
+\end_inset
+
+ bestimmt das Makro, wo die Bedingung platziert wird, ob neben das Wort
+ lim als Index wie hier: 
+\begin_inset Formula $\lim_{x\rightarrow0}f(x)=L$
+\end_inset
+
+ oder darunter wie hier:
+\begin_inset Formula \[
+\lim_{x\rightarrow0}f(x)=L.\]
+
+\end_inset
+
+ Beide Ausdrücke wurden exakt gleich eingetippt, nur die Art, wie das lim-Makro
+ benutzt wurde, entschied über die Darstellung (in diesem Fall wurde das
+ Makro für die Darstellung in der Zeile geändert, damit der Zeilenabstand
+ besser aussieht).
+\end_layout
+
+\begin_layout Subsubsection
 Andere mathematische Symbole
 \begin_inset LatexCommand index
 name "mathematische!Symbole"
@@ -22210,11 +22206,7 @@ Einige Symbole können, wie im vorigen Abschnitt beschrieben, direkt über
 Mathe-Kontrollfläche
 \family default
 -Menü ausgewählt werden.
- Die meisten anderen 
-\family sans
-Symbole
-\family default
- kann man in den verschiedenen Kategorien finden:
+ Die meisten anderen Symbole kann man in den verschiedenen Kategorien finden:
 \end_layout
 
 \begin_layout Standard
@@ -22223,7 +22215,7 @@ Operatoren, große Operatoren, Relationen, griechische Buchstaben, Pfeile
 ,
 \family default
  Punkte, Rah\SpecialChar \-
-men-Dekorationen, Verschiedenes, AMS Operatoren, AMS Relationen,
+men-Verzierungen, Verschiedenes, AMS Operatoren, AMS Relationen,
  AMS Negierte Relationen, AMS Pfeile und AMS Verschiedenes.
 \end_layout
 
@@ -22278,11 +22270,7 @@ name "WYSIWYM"
 Mathe-Kontrollfläche
 \family default
 \SpecialChar \menuseparator
-
-\family sans
-Symbole
-\family default
-.
+rechte Spalte.
  Die dort unter 
 \family sans
 Griechisch
@@ -22347,92 +22335,6 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Subsection
-Mathematische Funktionen
-\begin_inset LatexCommand index
-name "mathematische!Funktionen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:math-functions"
-
-\end_inset
-
-Das Menü 
-\family sans
-Mathe-Kontrollfläche
-\family default
- enthält 
-\emph on
-Funktionen
-\emph default
- wie 
-\begin_inset Formula $\sin$
-\end_inset
-
-, 
-\begin_inset Formula $\lim$
-\end_inset
-
-, usw.\InsetSpace \space{}
-(man kann sie in Mathed auch mit Befehlen wie 
-\family typewriter
-
-\backslash
-sin
-\family default
- usw.\InsetSpace \space{}
-eintippen.
- Standardmäßig werden Funktionen, die Namen sind wie 
-\begin_inset Formula $\sin$
-\end_inset
-
-, nicht kursiv geschrieben.
- Gibt man in Mathed aber nur die Buchstaben 
-\begin_inset Formula $sin$
-\end_inset
-
- ein, sind sie natürlich kursiv.
-\end_layout
-
-\begin_layout Standard
-Deshalb gibt es diese besonderen Makros.
- In der Druckausgabe bewirken sie aber mehr als nur die Schriftform zu ändern.
- Zum Beispiel bekommt der Ausdruck 
-\emph on
-sint
-\emph default
- zusätzlichen Leerraum zwischen sin und t: 
-\begin_inset Formula $\sin t$
-\end_inset
-
-.
- Bei komplexeren mathematischen Objekten wie 
-\begin_inset Formula $\lim$
-\end_inset
-
- bestimmt das Makro, wo die Bedingung platziert wird, ob neben das Wort
- lim als Index wie hier: 
-\begin_inset Formula $\lim_{x\rightarrow0}f(x)=L$
-\end_inset
-
- oder darunter wie hier:
-\begin_inset Formula \[
-\lim_{x\rightarrow0}f(x)=L.\]
-
-\end_inset
-
- Beide Ausdrücke wurden exakt gleich eingetippt, nur die Art, wie das lim-Makro
- benutzt wurde, entschied über die Darstellung (in diesem Fall wurde das
- Makro für die Darstellung in der Zeile geändert, damit der Zeilenabstand
- besser aussieht).
-\end_layout
-
-\begin_layout Subsection
 Weitere Symbole
 \begin_inset LatexCommand index
 name "Symbole"
@@ -22485,6 +22387,23 @@ athe-Paket\InsetSpace \space{}
 verwenden
 \family default
 , von denen keine oder eine angekreuzt werden kann.
+\end_layout
+
+\begin_layout Standard
+Das 
+\family typewriter
+esint
+\family default
+-Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
+ alternative Integral-Symbole, näheres finden Sie auf 
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://dante.ctan.org/tex-archive/help/Catalogue/entries/esint.html"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -22975,7 +22894,7 @@ Es gibt in LyX mehrere Klammerarten.
 Mathe-Kontrollfläche
 \family default
  benutzen, insbesondere, wenn Sie große Strukturen wie Matrizen oder Brüche
- in Klammern setzen wollen, oder wenn Sie mehrere Klammerschichten haben.
+ in Klammern setzen wollen, oder wenn Sie mehrere Klammernschichten haben.
  So zum Beispiel würden  Sie Klammern um eine Matrix setzen:
 \begin_inset Formula \[
 \left[\begin{array}{cc}
@@ -22996,8 +22915,8 @@ reference "sec:arrays-multi-line"
 \end_inset
 
  steht ausführlich beschrieben, wie man das im Einzelnen macht.
- Auch erkennt man mehrere Klammerschichten besser bei Scheußlichkeiten wie
- hier: 
+ Auch erkennt man mehrere Klammernschichten besser bei Scheußlichkeiten
+ wie hier: 
 \begin_inset Formula \begin{equation}
 \frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\label{eq:Bruch}\end{equation}
 
@@ -23042,9 +22961,9 @@ Mathe-Kontrollfläche
 Mathe-Trennzeichen
 \family default
 -Menü zu öffnen.
- Sie müssen in der linken Gruppe auf das Klammersymbol, das Sie links haben
- wollen, klicken, in der rechten auf das, das Sie rechts haben wollen, und
- schließlich zum Einsetzen auf den Knopf 
+ Sie müssen links das Klammersymbol, das Sie links haben wollen, auswählen,
+ rechts das, das Sie rechts haben wollen, und schließlich zum Einsetzen
+ auf den Knopf 
 \family sans
 Einfügen
 \family default
@@ -23059,14 +22978,18 @@ Wenn Sie auf einer Seite keine Klammer haben wollen, wählen Sie das leere
  Wenn Sie links und rechts die zugehörige Klammer haben wollen, können Sie
  
 \family sans
-Zusammengehörige
+Zusammenpassend
 \family default
-\InsetSpace ~
+ ankreuzen und müssen nur eine Klammer auswählen.
+\end_layout
 
+\begin_layout Standard
+Schließlich können Sie noch zwischen 5 Klammergrößen wählen.
+ 
 \family sans
-Trennzeichen
+Variabel
 \family default
- ankreuzen und müssen nur eine Klammer anklicken.
+ sollte meistens die richtige Wahl sein.
 \end_layout
 
 \begin_layout Standard
@@ -23200,6 +23123,10 @@ Mathe-Matrix
 \family default
  öffnet, in dem Sie verschiedene Optionen setzen können.
  Hier ist ein Beispiel:
+\begin_inset Formula $ $
+\end_inset
+
+
 \begin_inset Formula \[
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
@@ -23227,22 +23154,9 @@ reference "sec:klammern-dekos"
 \begin_layout Standard
 Sie können festlegen, ob die Spalten einer Matrix (oder Teile davon) links-
  oder rechtsbündig oder zentriert ausgerichtet werden sollen.
- Die Voreinstellung ist zentriert (durch 
-\family typewriter
-c
-\family default
-'s im Feld 
+ Die Voreinstellung ist zentriert
 \family sans
-Ausrichtung\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-orizontal:
-\family default
- gekennzeichnet
-\family sans
-).
+.
 
 \family default
  Bei anderen und verschiedenen Ausrichtungen müssen Sie die entsprechende
@@ -23258,6 +23172,11 @@ c
 \family typewriter
 r
 \family default
+ in das Feld 
+\family sans
+Ausrichtung\SpecialChar \menuseparator
+Horizontal
+\family default
  eingeben.
 \begin_inset Foot
 status open
@@ -23272,12 +23191,25 @@ rlc
 
 \end_inset
 
- Wenn der Cursor in der Matrix steht, können Sie über 
+ Außerdem können Sie den Inhalt der Zeilen 
+\family sans
+Vertikal
+\family default
+ ausrichten, voreingestellt ist 
+\family sans
+Mitte
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Wenn der Cursor in der Matrix steht, können Sie über 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Mathe
 \family default
- Zeilen und Spalten hinzufügen oder löschen.
+ oder die 4 rechten Knöpfe in der Mathe-Werkzeugleiste Zeilen und Spalten
+ hinzufügen oder löschen.
  Hier ist ein anderes Beispiel mit unterschiedlichen Ausrichtungen:
 \begin_inset Foot
 status open
@@ -23315,7 +23247,7 @@ nicht
 \begin{array}{lcr}
 diese & diese & diese\\
 Spalte & Spalte & Spalte\\
-ist\: linksb\ddot{u}bndig & ist\: zentriert & ist\: rechtsb\ddot{u}ndig\end{array}.\]
+ist\: linksb\ddot{u}ndig & ist\: zentriert & ist\: rechtsb\ddot{u}ndig\end{array}.\]
 
 \end_inset
 
@@ -23351,36 +23283,24 @@ f(x) & := & \begin{cases}
 Dies wurde folgendermaßen erreicht: zuerst wurde eine Gleichungs-Umgebung
  gewählt (
 \family sans
-\bar under
-E
-\bar default
-in\SpecialChar \-
+Ein\SpecialChar \-
 fü\SpecialChar \-
 gen\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe\SpecialChar \menuseparator
-E
-\bar under
-q
-\bar default
-narray-Umgebung
+Mathe\SpecialChar \menuseparator
+Eqnarray-Umgebung
 \family default
 ), in die linken beiden Kästchen f(x) und := geschrieben.
  Ins rechte Kästchen wurde eine Bedingungs-Umgebung (
 \family sans
-Einfügen\SpecialChar \menuseparator
+Ein\SpecialChar \-
+fü\SpecialChar \-
+gen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
 Cases-Umgebung
 \family default
 ) eingefügt und mit 
 \family sans
-\series medium
-Strg+
-\series default
-Eingabe
+Strg+Eingabe
 \family default
  zwei Zeilen erzeugt.
  In die beiden blauen Kästchen wurde dann alles rechts der geschweiften
@@ -23398,27 +23318,20 @@ Eqnarray-Umgebung
 ).
  Dadurch wird das LaTeX-Format 
 \family typewriter
-\series medium
 eqnarray
 \family default
-\series default
  für mehrzeilige Gleichungen eingeschaltet.
  Innerhalb des Kästchens tippt man 
 \family sans
-\series medium
-Strg+E
-\series default
-in\SpecialChar \-
+Strg+Ein\SpecialChar \-
 gabe
 \family default
  so oft, bis man die Zahl der gewünschten Zeilen hat, am besten als erstes.
  Jede Zeile hat drei Gebiete, links, Mitte, rechts, zwischen denen Sie sich
  mit den Pfeiltasten, der Maus oder der 
 \family sans
-\series medium
 Tab
 \family default
-\series default
 -Taste bewegen können.
  Hier ist ein Beispiel:
 \begin_inset Formula \begin{eqnarray*}
@@ -23457,8 +23370,9 @@ Strg+Tab
 \family sans
 Windows+Tab
 \family default
-: KDE-Kontrollzentrum\SpecialChar \menuseparator
-Regional-Einstellungen & Zugangshilfen\SpecialChar \menuseparator
+: KDE-Kontrollzentrum oder kubuntu-Systemeinstellungen\SpecialChar \menuseparator
+Regional-Einstellungen
+ & Zugangshilfen\SpecialChar \menuseparator
 Tastenkürzel).
 \end_layout
 
@@ -23555,7 +23469,7 @@ Marke
 Alt+M\InsetSpace ~
 N
 \family default
- eintippt: 
+ eingibt: 
 \end_layout
 
 \begin_layout Standard
@@ -23667,7 +23581,7 @@ reference "sub:Create-macro"
 \end_inset
 
  ein Makro erzeugt haben, erscheint an der Cursorposition ein Makro-Definitionsk
-ästchen, das in etwa so aussieht: 
+ästchen, das in etwa so aussieht:
 \end_layout
 
 \begin_layout Standard
@@ -23716,7 +23630,7 @@ Dabei ist die die Umrandung rot, und die beiden
 \begin_inset Formula $\Box$
 \end_inset
 
- sind blaue Rechtecke, die wie im Mathed editiert werden können.
+ sind doppelte blaue Rechtecke, die wie im Mathed editiert werden können.
  Wenn Sie dies in LyX lesen, probieren Sie es.
  Der Inhalt des ersten Rechtecks wird während des Exports nach LaTeX benutzt,
  der Inhalt des zweiten zur Makro-Expansion auf dem Bildschirm.
@@ -23863,25 +23777,10 @@ newcommand
 
 \begin_layout LyX-Code
 
-\family typewriter
-
 \backslash
 newcommand{
 \backslash
-macrowarg}
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-[1]{2+
+macrowarg}[1]{2+
 \backslash
 sqrt{#1}}.
 \end_layout
@@ -23905,6 +23804,12 @@ name "sub:Create-macro"
 Um ein Makro zu definieren, schreiben Sie in den Befehlspuffer (
 \family sans
 Alt+X
+\family default
+ oder 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Werkzeugleisten\SpecialChar \menuseparator
+Befehlspuffer
 \family default
 ) folgendes:
 \begin_inset Foot
@@ -23960,20 +23865,7 @@ macrowarg
 
 
 \family typewriter
-math-
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-macro macrowarg 1
+math-macro macrowarg 1
 \family default
 
 \begin_inset Quotes grd
@@ -23988,7 +23880,7 @@ Wenn Sie den Cursor in das Makrokästchen stellen, können Sie eine Argumentmark
 \family typewriter
 #<Zahl>
 \family default
- eingeben oder im Minipuffer folgendes schreiben:
+ eingeben oder im Befehlspuffer folgendes schreiben:
 \end_layout
 
 \begin_layout Standard
@@ -24094,8 +23986,20 @@ name "sub:Schriftstile"
 
 \end_inset
 
-Sie können verschiedene Schriftstile benutzen, aber zur Zeit müssen Sie
- dazu Tastaturbefehle verwenden.
+Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
+ 
+\begin_inset Graphics
+	filename ../../images/math/font.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ auf der 
+\family sans
+Mathe-Kontrollfläche
+\family default
+ oder Tastaturbefehle auswählen.
  Nicht alle erscheinen genau WYSIWYM
 \begin_inset LatexCommand index
 name "WYSIWYM"
@@ -24135,8 +24039,7 @@ Alt+Z\InsetSpace ~
 F
 \family default
 .
- Den kalligraphischen Font für Großbuchstaben, der auf dem Bildschirm wie
- Helvetica-kursiv aussieht, aber gedruckt ausgefallener, 
+ Den kalligraphischen Font für Großbuchstaben, 
 \begin_inset Formula $\mathcal{TEXT}$
 \end_inset
 
@@ -24193,7 +24096,7 @@ name "mathematische!Schriftstile"
 
 \family typewriter
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="4">
+<lyxtabular version="3" rows="11" columns="4">
 <features>
 <column alignment="left" valignment="top" leftline="true" width="0pt">
 <column alignment="left" valignment="top" leftline="true" rightline="true" width="0cm">
@@ -24253,7 +24156,7 @@ fett
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset Formula $\mathbf{fett}$
+\begin_inset Formula $\mathbf{Fett}$
 \end_inset
 
 
@@ -24303,7 +24206,7 @@ kursiv
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset Formula $\mathcal{KALLIGR}$
+\begin_inset Formula $\mathcal{KALLIGRAFISCH}$
 \end_inset
 
 
@@ -24668,6 +24571,51 @@ mathsf
 \end_inset
 </cell>
 </row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{Fett\, Symbol}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+
+\family typewriter
+boldsymbol
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -24708,13 +24656,6 @@ Bei all diesen Fonts müssen Sie den Text sorgfältig eingeben.
 \begin_layout Standard
 In AMS-LaTeX ist es möglich, Zahlen und Spezialsymbole fett (aber nicht
  kursiv) zu schreiben.
- LyX kann das zur Zeit noch nicht WYSIWYM
-\begin_inset LatexCommand index
-name "WYSIWYM"
-
-\end_inset
-
- darstellen, aber es wird richtig ausgedruckt.
  Um ein fettgedrucktes 
 \begin_inset Formula $\alpha$
 \end_inset
@@ -24723,46 +24664,19 @@ name "WYSIWYM"
 \family typewriter
 
 \backslash
-boldsymbol{
+boldsymbol\InsetSpace \space{}
+{
 \backslash
 alpha}
 \family default
  eingeben: 
-\begin_inset Formula $\boldsymbol{\alpha}$
+\begin_inset Formula $\boldsymbol{\mathbb{\alpha}}$
 \end_inset
 
 .
  Klammer-zu erscheint automatisch, nachdem Sie Klammer-auf getippt haben.
  Dies funktioniert für alle Symbole und Zahlen.
  
-\end_layout
-
-\begin_layout Standard
-Über 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Mathe
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Schriftänderung
-\family default
- gibt es noch weitere Möglichkeiten.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-HHa: gibt's nicht meghr!!!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -24917,8 +24831,14 @@ math-size displaystyle
 \begin_inset Quotes grd
 \end_inset
 
- ein oder wählt über den 3.
- Knopf der 
+ ein oder wählt über den Knopf 
+\begin_inset Graphics
+	filename ../../images/math/style.xpm
+	scale 70
+
+\end_inset
+
+ der 
 \family sans
 Mathe-Kontrollfläche
 \family default
@@ -25049,20 +24969,13 @@ Mathe-Optionen
 \family default
  
 \family sans
-\bar under
-A
-\bar default
-MS-Mathe-Paket\InsetSpace ~
+AMS-Mathe-Paket\InsetSpace ~
 automatisch\InsetSpace ~
 verwenden
 \family default
  oder 
 \family sans
-AMS-
-\bar under
-M
-\bar default
-athe-Paket\InsetSpace ~
+AMS-Mathe-Paket\InsetSpace ~
 verwenden
 \family default
  aktivieren, werden diese Pakete in Ihrem Dokument verwendet.
@@ -25080,7 +24993,8 @@ ungen benutzt werden, zum Beispiel der altdeutsche Frakturfont, der nach
 \family typewriter
 
 \backslash
-mathfrak{g}
+mathfrak\InsetSpace \space{}
+{g}
 \family default
  ein Fraktur-
 \begin_inset Formula $\mathfrak{{g}}$
@@ -25098,14 +25012,15 @@ Fettschrift
 \family typewriter
 
 \backslash
-mathbb{R}
+mathbb\InsetSpace \space{}
+{R}
 \family default
  
-\begin_inset Formula $\mathbb{{R}}$
+\begin_inset Formula $\mathbb{R}$
 \end_inset
 
  für reelle und komplexe Zahlen.
- Diese Symbole werden (noch) nicht WYSIWYM
+ Diese Symbole werden nicht alle WYSIWYM
 \begin_inset LatexCommand index
 name "WYSIWYM"
 
@@ -25155,6 +25070,27 @@ target "http://www.ams.org"
 \end_layout
 
 \begin_layout Section
+esint
+\end_layout
+
+\begin_layout Standard
+Das 
+\family typewriter
+esint
+\family default
+-Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
+ alternative Integral-Symbole, näheres finden Sie auf 
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://dante.ctan.org/tex-archive/help/Catalogue/entries/esint.html"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Weitergehende Literatur
 \end_layout
 
@@ -25183,17 +25119,19 @@ Wer aber viele Formeln zu schreiben hat, wird feststellen, dass man mit
 \end_layout
 
 \begin_layout Standard
-Die Dokumentation ist unter 
-\family typewriter
-http://wiki.lyx.org/pmwiki.php/LyX/LyXMathe\SpecialChar \-
-be\SpecialChar \-
-feh\SpecialChar \-
-le
-\family default
- zu finden.
+Die Dokumentation ist hier zu finden:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/pmwiki.php/LyX/LyXMathebefehle"
+
+\end_inset
+
+.
  Die Datei 
 \family typewriter
-Mathebefehle.lyx
+Mathebefeh\SpecialChar \-
+le.lyx
 \family default
  können Sie aber nur als DVI, PDF oder PostScript® ansehen oder drucken,
  wenn Sie die dort erwähnten LaTeX-Pakete 
@@ -25212,10 +25150,6 @@ aeguill
 , 
 \family typewriter
 bbm
-\family default
-, 
-\family typewriter
-eurosym
 \family default
 , 
 \family typewriter
@@ -25354,19 +25288,13 @@ OK
 .
  Im Feld 
 \family sans
-\bar under
-F
-\bar default
-ormat
+Format
 \family default
  können Sie einen der unten beschriebenen Verweistypen auswählen.
  Wenn Sie sich nicht sicher sind, ob es die richtige Marke ist, können Sie
  mit 
 \family sans
-\bar under
-G
-\bar default
-ehe\InsetSpace ~
+Gehe\InsetSpace ~
 zur\InsetSpace ~
 Marke
 \family default
@@ -25432,12 +25360,12 @@ reference "sub:Create-macro"
 \end_layout
 
 \begin_layout Enumerate
-Der Typ 
-\family sans
-Formatierter\InsetSpace ~
-Querverweis
-\family default
- (PrettyRef) für zu LaTeX-Fehlern.
+\begin_inset LatexCommand prettyref
+reference "sub:Create-macro"
+
+\end_inset
+
+ sieht aus wie 1.
 \end_layout
 
 \begin_layout Standard
@@ -25509,10 +25437,7 @@ kann,
 \emph default
  aber nur, wenn man als 
 \family sans
-\bar under
-F
-\bar default
-ormat
+Format
 \family default
  <Seite> oder auf Seite <Seite> benutzt.
  Der normale Verweis auf eine Abschnitts-, Tabellen- oder Abbildungsnummer
@@ -25581,12 +25506,12 @@ oder
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
- verwenden, um einen solche lange URL einzugeben, die dann bei Bedarf an
- (automatisch bestimmten) Trennstellen umgebrochen wird.
+ verwenden, um eine lange URL einzugeben, die dann bei Bedarf an (automatisch
+ bestimmten) Trennstellen umgebrochen wird.
 \end_layout
 
 \begin_layout Standard
@@ -25600,17 +25525,14 @@ URL
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
 .
  Es öffnet sich ein Dialogfenster, in dem Sie (im Feld 
 \family sans
-\bar under
-U
-\bar default
-RL
+URL
 \family default
 ) die volle Adresse eingeben können.
  Im einfachsten Fall ist das bereits alles.
@@ -25678,10 +25600,7 @@ Wichtiger Hinweis
 Wenn Sie die Adresse darüberhinaus mit einem aussagefähigen Begriff versehen
  wollen, könne Sie diesen im Feld 
 \family sans
-\bar under
-N
-\bar default
-ame
+Name
 \family default
  des Dialoges eingeben; er wird als normaler Text direkt vor dem URL gedruckt,
  zum Beispiel finden Sie alle mit LaTeX zusammenhängenden Dinge auf 
@@ -25717,7 +25636,7 @@ name "Titel!kurze"
 
  mit optionalen Argumenten definieren
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Kurztitel
@@ -25759,13 +25678,20 @@ name "sec:Notizen"
 
 \end_inset
 
-Notizen in LyX sind nur für den Verfasser eines Dokumentes da, um sich,
+Notizen sind in LyX nur für den Verfasser eines Dokumentes da, um sich,
  wie der Name sagt, Notizen zu machen, und werden nicht gedruckt.
  Es gibt drei Arten, die über 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Notiz
 \family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/note-insert.xpm
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
  ausgewählt werden können:
 \end_layout
 
@@ -25778,27 +25704,12 @@ status collapsed
 
 \begin_layout Standard
 
-{
+{}
 \end_layout
 
 \end_inset
 
-X
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
--
-\bar under
-N
-\bar default
-otiz:
+X-Notiz:
 \family default
  
 \begin_inset Note Note
@@ -25822,10 +25733,7 @@ name "Notiz!LyX"
 \begin_layout Itemize
 
 \family sans
-\bar under
-K
-\bar default
-ommentar:
+Kommentar:
 \family default
  
 \begin_inset Note Comment
@@ -25837,7 +25745,7 @@ Kommentar
 
 \end_inset
 
- wir auch beim Exportieren nach LaTeX und plain text mit exportiert.
+ wird auch beim Exportieren nach LaTeX und plain text mit exportiert.
 \begin_inset LatexCommand index
 name "Notiz!Kommentar"
 
@@ -25849,10 +25757,7 @@ name "Notiz!Kommentar"
 \begin_layout Itemize
 
 \family sans
-\bar under
-G
-\bar default
-rauschrift:
+Grauschrift:
 \family default
  wird, wie der Name sagt, als 
 \begin_inset Note Greyedout
@@ -25865,26 +25770,6 @@ grauer
 \end_inset
 
  Text gedruckt.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-
-\noun on
-HHa
-\noun default
-: Wenn Sie Grauschrift-Notizen nicht drucken können, kann es daran liegen,
- dass Ihr Dokument ein Inhaltsverzeichnis 
-\emph on
-und
-\emph default
- Sonderzeichen wie unterstreichen oder {} in Überschriften oder Fußnoten
- enthält.
-\end_layout
-
-\end_inset
-
-
 \begin_inset LatexCommand index
 name "Notiz!Grauschrift"
 
@@ -26039,7 +25924,8 @@ Liste
 -Umgebung:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 eins
 \hfill
 zwei :drei
@@ -26051,7 +25937,8 @@ fünf
 sechs
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 eins :zwei drei vier fünf sechs
 \end_layout
 
@@ -26327,18 +26214,19 @@ name "sub:Absatz-einrücken"
 \begin_layout Standard
 Je nachdem, was in 
 \family sans
-Dokument-Einstellungen\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Textformat
 \family default
  unter 
 \family sans
-Absätze\InsetSpace ~
-trennen\InsetSpace ~
+Absätze\InsetSpace \space{}
+trennen\InsetSpace \space{}
 durch
 \family default
  angekreuzt ist, ist auch 
 \family sans
-Absatz\InsetSpace ~
+Absatz\InsetSpace \space{}
 einrücken
 \family default
  angekreuzt oder nicht.
@@ -26407,7 +26295,7 @@ Natürlich können Sie das auch kapitelweise tun, da ein Kapitel immer auf
 
 \end_inset
 
- Dann können Sie einen manuellen Seitenumbruch an der Stelle, woder Cursor
+ Dann können Sie einen manuellen Seitenumbruch an der Stelle, wo der Cursor
  gerade steht, mit 
 \family sans
 Einfügen
@@ -26471,18 +26359,35 @@ nicht
 \emph default
  zwischen den beiden Worten umzubrechen.
  Das ist manchmal nötig, um unschöne Zeilenumbrüche zu vermeiden, wie hier:
- 
 \end_layout
 
 \begin_layout Quote
 Eine gute Dokumentation sollte nicht mehr wiegen als 1
 \newline
 kg.
- 
 \end_layout
 
 \begin_layout Standard
-Offensichtlich ist zwischen der 
+\noindent
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+Offensichtlich
+\family default
+\series default
+ ist zwischen der 
 \begin_inset Quotes pld
 \end_inset
 
@@ -26512,17 +26417,30 @@ Formatierung
 
 \family sans
 Ge\SpecialChar \-
-schütztes
-\bar under
-\InsetSpace \space{}
-
-\bar default
-Leerzei\SpecialChar \-
+schütz\SpecialChar \-
+tes Leer\SpecialChar \-
+zei\SpecialChar \-
 chen
 \family default
  oder einfach mit 
 \family sans
 Strg+Leertaste.
+ 
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -26627,6 +26545,7 @@ Horizontale Linie
 \end_layout
 
 \begin_layout Standard
+\noindent
 ist eine solche Linie.
 \end_layout
 
@@ -26680,7 +26599,9 @@ ispell.
 status open
 
 \begin_layout Standard
-Die neueste Version können Sie im Internet unter 
+Die neueste Version können Sie im Internet unter
+\newline
+
 \begin_inset LatexCommand url
 target "http://fmg-www.cs.ucla.edu/fmg-members/geoff/ispell.html"
 
@@ -26715,11 +26636,7 @@ ispell
 \begin_inset Quotes pld
 \end_inset
 
-
-\family typewriter
 PATH
-\family default
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -26755,12 +26672,13 @@ Rechtschreibprüfung
  wird das nächste falsch geschriebene (oder unbekannte) Wort, das das Rechtschre
 ibprogramm findet, ins Kästchen 
 \family sans
-Unbekanntes\InsetSpace ~
+Unbekanntes\InsetSpace \space{}
 Wort
 \family default
  geschrieben.
  Außerdem wird das Wort markiert und das Textfenster aktualisiert, damit
- das Wort zu sehen ist.
+ das Wort zu sehen ist (meistens\SpecialChar \ldots{}
+).
 \end_layout
 
 \begin_layout Standard
@@ -26771,10 +26689,7 @@ Ersetzung
  können Sie einen Ersatz eingeben und das falsche/unbe\SpecialChar \-
 kannte Wort mit 
 \family sans
-\bar under
-E
-\bar default
-rsetzen
+Ersetzen
 \family default
  ersetzen.
  Wenn das Rechtschreibprogramm ein 
@@ -26798,11 +26713,9 @@ s-Kästchen kopiert.
 
 \begin_layout Description
 
-\family sans
 \series medium
-\bar under
 E
-\bar default
+\family sans
 rsetzen
 \family default
 \series default
@@ -26815,11 +26728,9 @@ Ersetzung
 
 \begin_layout Description
 
-\family sans
 \series medium
-\bar under
 I
-\bar default
+\family sans
 gnorieren
 \family default
 \series default
@@ -26829,11 +26740,9 @@ gnorieren
 
 \begin_layout Description
 
-\family sans
 \series medium
-\bar under
 A
-\bar default
+\family sans
 lle
 \family default
 \InsetSpace ~
@@ -26848,11 +26757,9 @@ ignorieren
 
 \begin_layout Description
 
-\family sans
 \series medium
-\bar under
 H
-\bar default
+\family sans
 inzufügen
 \family default
 \series default
@@ -26893,16 +26800,9 @@ name "sub:spell_opt"
 Sie können folgende Optionen für die Rechtschreibprüfung festlegen (Menü
  
 \family sans
-\bar under
-W
-\bar default
-erkzeu\SpecialChar \-
+Werkzeu\SpecialChar \-
 ge\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellun\SpecialChar \-
+Einstellun\SpecialChar \-
 gen
 \family default
 \SpecialChar \ldots{}
@@ -26923,6 +26823,22 @@ Rechtschreibprüfung
 ):
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
 Rechtschreibprogramm
 \begin_inset LatexCommand label
@@ -26932,7 +26848,7 @@ name "des:-Rechtschreibprogramm"
 
  Die verwendete 
 \family typewriter
-ispell/aspell/hspell
+aspell/hspell/ispell
 \family default
 -Datei hängt von der Sprache ab, die im zu prüfenden Dokument verwendet
  wird.
@@ -26949,18 +26865,34 @@ fung erst gar nicht gestartet.
 
 \begin_deeper
 \begin_layout Standard
-Man kann auch einen 
+Für 
+\family typewriter
+ispell
+\family default
+ kann man auch einen 
 \emph on
 link
 \emph default
  von zum Beispiel 
 \family typewriter
-deutsch.(aff|hash)
+deutsch.(
+\family default
+aff
+\family typewriter
+|
+\family default
+hash
+\family typewriter
+)
 \family default
  nach 
 \family typewriter
-[n]ger\SpecialChar \-
-man.(aff|hash)
+[n]
+\family default
+ger\SpecialChar \-
+man
+\family typewriter
+.(aff|hash)
 \family default
 , oder was auch immer auf Ihre Sprache zutrifft, definieren.
  Das ist nötig, weil die 
@@ -26980,6 +26912,23 @@ ispell
 \end_layout
 
 \begin_layout Standard
+Wenn Sie 
+\family typewriter
+aspell
+\family default
+ benutzen wollen, sollten Sie 
+\family typewriter
+aspell (Bibliothek)
+\family default
+ wählen.
+ Der normale 
+\family typewriter
+aspell
+\family default
+-Modus funktioniert nicht richtig.
+\end_layout
+
+\begin_layout Standard
 Möglicherweise werden Sie auch Probleme bekommen, wenn die Fontkodierung
  für das Wörterbuch nicht richtig ist.
  Wenn Sie eine Sprache mit Latin1-Kodierung benutzen und die 
@@ -26994,11 +26943,8 @@ Dokumentformat
 \family sans
 Latin1
 \family default
- (also nicht 
-\family sans
-default
-\family default
-) ist, müssen Sie diese Option auch in Ihrem Wörterbuch benutzen.
+ (also nicht default) ist, müssen Sie diese Option auch in Ihrem Wörterbuch
+ benutzen.
  Wenn Ihr Wörterbuch Ihre gewählte Kodierung nicht unterstützt, werden Sie
  sich sicher darüber wundern, dass richtig geschriebene Worte bemängelt
  werden.
@@ -27010,14 +26956,10 @@ Es gibt vier Möglichkeiten, das zu vermeiden.
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Die einfachste ist, die 
 \family sans
-Standard
-\bar under
-k
-\bar default
-odierung\InsetSpace ~
+Standardkodierung\InsetSpace ~
 der\InsetSpace ~
 Sprache\InsetSpace ~
 verwenden
@@ -27025,7 +26967,7 @@ verwenden
 -Option anzukreuzen.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Wenn das nicht hilft, könnten Sie im Dialogfenster 
 \family sans
 Dokument\SpecialChar \menuseparator
@@ -27052,14 +26994,14 @@ status collapsed
 
 
 \family sans
-X-default
+X-Standard
 \family default
  setzen, bevor Sie die Rechtschreibprüfung starten (was sicher ärgerlich
  ist).
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Die dritte Möglichkeit ist, die 
 \family typewriter
 Latin1
@@ -27073,10 +27015,10 @@ Meine\InsetSpace ~
 Sprache
 \family typewriter
 \emph default
->.aff
+>.
 \family default
- hinzuzufügen und das Wörterbuch noch einmal zu übersetzen (was sicher nicht
- einfach ist, wenn Sie 
+aff hinzuzufügen und das Wörterbuch noch einmal zu übersetzen (was sicher
+ nicht einfach ist, wenn Sie 
 \family typewriter
 ispell
 \family default
@@ -27092,12 +27034,28 @@ ispell
 -Dokumentation! 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Die vierte Möglichkeit ist, dass der Pfleger des Wörterbuchs das Problem
  löst.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
 Alternative\InsetSpace ~
 Sprache
@@ -27105,14 +27063,11 @@ Sprache
 
 \begin_layout Description
 
-\family sans
-'
-\bar under
-E
-\bar default
-scape'-Zeichen:
+\family roman
+'Escape'
 \family default
- hier können Sie Sonderzeichen definieren, die in Worten auftreten dürfen.
+-Zeichen: hier können Sie Sonderzeichen definieren, die in Worten auftreten
+ dürfen.
 \end_layout
 
 \begin_layout Description
@@ -27131,7 +27086,9 @@ ispell
  die im Hauptwörterbuch nicht gefunden werden konnten.
  Sonst werden diese Worte immer bemängelt, wenn Sie das Dokument auf Rechtschrei
 bfehler prüfen lassen.
- Der Name ist normalerweise 
+ Der Name ist normalerweise
+\newline
+
 \begin_inset LatexCommand url
 target "$HOME/.ispell_Sprache"
 
@@ -27158,23 +27115,31 @@ target "$HOME/.ispell_words"
 \end_inset
 
 .
+ 
 \end_layout
 
-\begin_layout Description
+\begin_deeper
+\begin_layout Standard
 
-\family sans
-\bar under
-Z
-\bar default
-usammengesetzte\InsetSpace ~
-Wörter\InsetSpace ~
-erlauben
-\family default
- verhindert, dass 
 \family typewriter
-ispell
+aspell
 \family default
- zusammengeschriebene Worte als Fehler meldet.
+ ignoriert den Eintrag und legt ein eigenes Wörterbuch an, zum Beispiel
+ 
+\family typewriter
+$HOME/.aspell.de.pws.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Zusammengesetzte\InsetSpace ~
+Wörter\InsetSpace ~
+erlauben verhindert, dass zusammengeschriebene Worte
+ als Fehler gemeldet werden, außer bei 
+\family typewriter
+aspell
+\family default
+ und der neuen deutschen Rechtschreibung.
 \end_layout
 
 \begin_layout Description
@@ -27315,15 +27280,6 @@ Sprache
 Sprache
 \family default
 -Kästchen.
- Voreingestellt ist die Sprache, die Sie in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Sprach-Einstellun\SpecialChar \-
-gen\SpecialChar \menuseparator
-Sprache
-\family default
- gewählt haben.
  Suchen Sie Ihre Sprache in der Liste und klicken Sie darauf.
  Der Sprachname wird ins Kästchen kopiert.
 \begin_inset Foot
@@ -27344,10 +27300,7 @@ Für LaTeX bedeutet die Wahl einer anderen Sprache als der Standardeinstellung,
 \begin_layout Standard
 Mit der Option 
 \family sans
-\bar under
-K
-\bar default
-odierung
+Kodierung
 \family default
  können Sie die Zeichenkodierung auswählen.
  Die Voreinstellung ist 
@@ -27368,7 +27321,7 @@ Latin5
  schließlich ist für die kyrillische Schrift.
  Klickt man auf den Pfeil und dann auf die gewünschte Kodierung, so erscheint
  sie im Kästchen.
- (In 
+ (In Abschnitt 
 \begin_inset LatexCommand vref
 reference "sec:keytab"
 
@@ -27394,7 +27347,7 @@ röße,
  um die Wahlmöglichkeiten für die Papiergröße zu sehen.
  Die Voreinstellung ist 
 \family sans
-A4
+Standard
 \family default
 .
  Klicken Sie auf die Größe Ihrer Wahl, und sie erscheint im Kästchen.
@@ -27410,7 +27363,7 @@ OK
 Übernehmen
 \family default
 .
- Die Änderungen bleiben während der momentanen LyX-Sitzung erhalten.
+ Die Änderungen werden im Dokument gespeichert.
 \end_layout
 
 \begin_layout Subsection
@@ -27438,26 +27391,17 @@ Tastatur
 \family default
  können Sie den Knopf 
 \family sans
-\bar under
-T
-\bar default
-astatur\SpecialChar \-
+Tastatur\SpecialChar \-
 tabelle verwenden
 \family default
  aktivieren, mit dem Sie die Sprache für Ihre Tastatur auswählen können.
  Sie können 
 \family sans
-\bar under
-E
-\bar default
-rste
+Erste
 \family default
  und 
 \family sans
-\bar under
-Z
-\bar default
-weite
+Zweite
 \family default
  Tastatursprache festlegen.
 \end_layout
@@ -27515,11 +27459,6 @@ Ein paar Dinge müssen Sie über diese Tabelle wissen.
 latin1
 \family default
 -Zeichensatzes benutzen wollen:
-\end_layout
-
-\begin_layout Itemize
-Das Zeichen A4, das generische Währungssymbol, fehlt in der Standardkodierung.
- Wir wissen weder wo sie sind, noch warum das so ist.
 \end_layout
 
 \begin_layout Itemize
@@ -30565,10 +30504,8 @@ Umschalt+Alt+macron
 \family default
 , wenn 
 \family typewriter
-\shape up
 .Xmodmap
 \family default
-\shape default
  richtig ist.
 \end_layout
 
@@ -30662,7 +30599,7 @@ Die restlichen Befehle
 \end_layout
 
 \begin_layout Section
-Die Werkzeugleistne
+Die Werkzeugleisten
 \begin_inset LatexCommand index
 name "Werkzeugleiste"
 
@@ -30678,12 +30615,68 @@ name "sec:Werkzeugleiste"
 \end_layout
 
 \begin_layout Standard
-Die Werkzeugleiste enthält von links nach rechts folgende Menüs und Schaltknöpfe
-:
+Es gibt mehrere Werkzeugleisten, von denen die ersten drei (
+\family sans
+Standard
+\family default
+, 
+\family sans
+Extra
+\family default
+ und 
+\family sans
+Ansicht/Aktualisierung
+\family default
+) über 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Werkzeugleisten
+\family default
+\SpecialChar \menuseparator
+ wahlweise an- und abgeschaltet werden können, während die anderen drei
+ (
+\family sans
+Überarbeitung
+\family default
+, 
+\family sans
+Tabelle
+\family default
+ und 
+\family sans
+Mathe
+\family default
+)
+\family sans
+ 
+\family default
+automatisch erscheinen, wenn der Cursor entsprechend positioniert ist.
+
+\family sans
+ 
+\family default
+Alle Werkzeugleisten können mit dem Cursor verschoben werden, wenn er sich
+ über dem gepunkteten Griff befindet (siehe auch Abschnitt 
+\family sans
+
+\begin_inset LatexCommand vref
+reference "Hauptfenster"
+
+\end_inset
+
+
+\family default
+)
+\family sans
+.
 \end_layout
 
-\begin_layout Standard
-Reihe 1
+\begin_layout Subsection
+Standard-Werkzeugleiste
 \end_layout
 
 \begin_layout Enumerate
@@ -30951,8 +30944,23 @@ Tabelle\SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Standard
-Reihe 2:
+\begin_layout Subsection
+Extra-Werkzeugleiste
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/layout.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Standard
+\family default
+-Umgebung
 \end_layout
 
 \begin_layout Enumerate
@@ -31355,6 +31363,133 @@ reference "sub:Unterdokument..."
 : Rechtschreibprüfung
 \end_layout
 
+\begin_layout Subsection
+Ansicht/Aktualisierung-Werkzeugleiste
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/buffer-view_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+DVI
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/buffer-update_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Aktualisieren
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+DVI
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/buffer-view_pdf2.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+PDF (pdflatex)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/buffer-update_pdf2.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Aktualisieren
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+PDF (pdflatex)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Postscript
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/buffer-update_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Aktualisieren
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Postscript
+\end_layout
+
 \begin_layout Section
 
 \family sans
@@ -31446,7 +31581,15 @@ Das bearbeitete Dokument wird zunächst in eine PostScript®-Datei formatiert
  und zwischengespeichert.
  Dann wird ein Programm aufgerufen, mit dem diese zwischengespeicherte PostScrip
 t®-Datei gefaxt werden kann.
- Das Programm haben Sie unter 
+ Das Programm haben Sie
+\family sans
+ 
+\family default
+oder LyX
+\family sans
+ 
+\family default
+unter 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
@@ -31472,12 +31615,54 @@ Bearbeiten\SpecialChar \menuseparator
 \begin_layout Subsection
 
 \family sans
-Externe A
+Einfügen (vorige Auswahl)\SpecialChar \menuseparator
+
 \family default
-u
+\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+Hier finden Sie eine Liste der letzten zehn kopierten (
 \family sans
-swahl einfügen\SpecialChar \menuseparator
-Auswahl als Zeilen/Absätze
+Strg+C
+\family default
+) Objekte, von denen Sie eines auswählen können.
+ Das wird dann an der Cursor-Position eingefügt.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+Einfügen ( speziell)\SpecialChar \menuseparator
+
+\family default
+\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Einfacher Text (Strg+Umschalt+V)
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Einfacher Text, Zeilen verbinden
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Auswahl (Strg+Alt+V)
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Auswahl, Zeilen verbinden
 \end_layout
 
 \begin_layout Standard
@@ -31505,25 +31690,58 @@ reference "sub:ASCII-Dateien-importieren"
 \begin_layout Subsection
 
 \family sans
-Mathe\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
+Absatz nach oben/unten verschieben (Alt+Hoch/Runter)
 \end_layout
 
 \begin_layout Standard
-Hiermit kann man mathematische Ausdrücke bearbeiten, wenn man sich im Mathe\SpecialChar \-
-matik
--Editor befindet.
- die einzelnen Punkte sollten selbsterklärend sein.
- Ansonsten lesen Sie bitte in Kapitel 
-\begin_inset LatexCommand vref
-reference "cha:Mathe-Formeln"
+Damit können Sie Abschnitte, in denen der Cursor steht, nach oben und unten
+ verschieben.
+\end_layout
+
+\begin_layout Subsection
+Textstil\SpecialChar \menuseparator
+
+\end_layout
+
+\begin_layout Subsubsection
+Benutzerdefiniert
+\end_layout
+
+\begin_layout Standard
+Das ist das Gleiche, als wenn Sie auf 
+\begin_inset Graphics
+	filename ../../images/dialog-show_character.xpm
+	scale 70
+	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
- nach.
+ klicken.
+\end_layout
+
+\begin_layout Subsubsection
+Große Anfangsbuchstaben (Alt+Z Rechts)
+\end_layout
+
+\begin_layout Subsubsection
+Großbuchstaben (Alt+Z Hoch)
+\end_layout
+
+\begin_layout Subsubsection
+Kleinbuchstaben (Alt+Z Runter)
+\end_layout
+
+\begin_layout Standard
+Die letzten drei Befehle bewirken zur Zeit nichts.
+\end_layout
+
+\begin_layout Subsection
+Weitere Menüs
+\end_layout
+
+\begin_layout Standard
+Die Menüs unter dem letzten Trennstrich erscheinen kontextabhängig, das
+ heißt sie sind nur zu sehen, wenn der Cursor im entsprechenden Objekt steht.
 \end_layout
 
 \begin_layout Section
@@ -31541,116 +31759,90 @@ cht\SpecialChar \menuseparator
 \end_layout
 
 \begin_layout Subsection
-
-\family sans
-HTML
-\family default
- und 
-\family sans
-Aktualisieren\SpecialChar \menuseparator
-HTML
-\begin_inset LatexCommand index
-name "HTML"
-
-\end_inset
-
-
+Alle Einfügungen öffnen/schließen
 \end_layout
 
 \begin_layout Standard
-Die Datei wird in HTML umgewandelt und mit dem in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Datei\SpecialChar \-
-formate\SpecialChar \menuseparator
-HTML
-\family default
-\SpecialChar \menuseparator
+Das ist selbsterklärend, funktioniert aber zur Zeit noch nicht.
+\end_layout
 
+\begin_layout Subsection
+Quelle ansehen
+\end_layout
+
+\begin_layout Standard
+In einem Fenster
 \family sans
-Betrachter
+ 
 \family default
- definierten Programm dargestellt.
+wird der Paragraph, in dem der Cursor steht, so dargestellt, wie er in der
+ .
+\family typewriter
+lyx
+\family default
+-Datei gespeichert wird.
+ Sie müssen also keinen Editor dafür aufrufen.
+ Außerdem können Sie dort ankreuzen, dass Sie das gesamte Dokument sehen
+ wollen.
 \end_layout
 
 \begin_layout Subsection
 
 \family sans
-PDF (dvipdf
-\family default
-m
-\family sans
-)
-\family default
- und 
-\family sans
 Aktualisieren\SpecialChar \menuseparator
+
+\family default
+\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsubsection
+DVI (Strg+Umschalt
+\family sans
++
+\family default
+D)
+\end_layout
+
+\begin_layout Standard
+Aktualisieren der DVI-Vorschau (
+\begin_inset Graphics
+	filename ../../images/buffer-update_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
 PDF (dvipdf
 \family default
 m
 \family sans
-)
-\family default
- 
-\family sans
-
+),
 \begin_inset LatexCommand index
 name "PDF!dvipdfm"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Dieser Menüpunkt ist noch nirgends näher beschrieben.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-PDF (pdf
+ PDF (pdf
 \family default
 l
 \family sans
 atex)
 \family default
- und 
-\family sans
-Aktualisieren
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-PDF (pdf
-\family default
-l
-\family sans
-atex)
-\family default
-
+,
 \begin_inset LatexCommand index
 name "PDF!pdflatex"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Dieser Menüpunkt ist noch nirgends näher beschrieben.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-PDF (ps2pdf)
-\family default
  und 
 \family sans
-Aktualisieren\SpecialChar \menuseparator
 PDF (ps2pdf)
 \begin_inset LatexCommand index
 name "PDF!ps2pdf"
@@ -31661,9 +31853,96 @@ name "PDF!ps2pdf"
 \end_layout
 
 \begin_layout Standard
-Siehe 
+Aktualisieren der verschiedenen
+\family sans
+ 
+\family default
+PDF-Vorschauen.
+\end_layout
+
+\begin_layout Subsubsection
+Postscript (Strg+Umschalt
+\family sans
++
+\family default
+T)
+\end_layout
+
+\begin_layout Standard
+Aktualisieren der Postscript-Vorschau (
+\begin_inset Graphics
+	filename ../../images/buffer-update_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+DVI 
+\family sans
+(Strg+D)
+\end_layout
+
+\begin_layout Standard
+Die DVI-Vorschau starten (
+\begin_inset Graphics
+	filename ../../images/buffer-view_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+PDF (dvipdf
+\family default
+m
+\family sans
+), PDF (pdf
+\family default
+l
+\family sans
+atex) und PDF (pdf
+\family default
+l
+\family sans
+atex)
+\end_layout
+
+\begin_layout Standard
+Die verschiedenen PDF-Vorschauen starten.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+Postscript (Strg+T)
+\end_layout
+
+\begin_layout Standard
+Die Postscript-Vorschau starten (
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+)
 \emph on
-Handbuchergänzungen.
+.
+\end_layout
+
+\begin_layout Standard
+Außerdem werden unten alle geöffneten Dokumente aufgelistet, und das gerade
+ bearbeitete ist angekreuzt.
 \end_layout
 
 \begin_layout Section
@@ -31677,22 +31956,10 @@ Einfügen\SpecialChar \menuseparator
 \end_layout
 
 \begin_layout Subsection
-
-\family sans
 Mathe\SpecialChar \menuseparator
 Cases/AMS align, alignat, f\SpecialChar \textcompwordmark{}
-lalign
-\family default
-, 
-\family sans
-gather
-\family default
- und 
-\family sans
-multline-Um\SpecialChar \-
+lalign, gather und multline-Um\SpecialChar \-
 gebung
-\family default
-
 \begin_inset OptArg
 status open
 
@@ -31855,7 +32122,7 @@ Gleit
 \family default
 o
 \family sans
-bjekte\SpecialChar \menuseparator
+bjekt\SpecialChar \menuseparator
 Algorithmus
 \begin_inset LatexCommand index
 name "Algorithmus"
@@ -31926,7 +32193,7 @@ name "Text!-datei"
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -31989,7 +32256,11 @@ fen
 \end_layout
 
 \begin_layout Description
-Date fügt das Datum ein.
+Date fügt das heutige Datum ein.
+\end_layout
+
+\begin_layout Description
+LilyPond 
 \end_layout
 
 \begin_layout Description
@@ -32036,6 +32307,10 @@ xbm
 .
 \end_layout
 
+\begin_layout Description
+Xfig fügt ein Xfig-Bild ein
+\end_layout
+
 \begin_layout Standard
 Dieser Menüpunkt ist aber noch nirgends näher beschrieben.
  Externes Material wird nicht direkt eingefügt, sondern erscheint als graue
@@ -32063,7 +32338,7 @@ Damit können Sie mehrere
 \family default
 -Dateien in einem Dokument zusammenfassen, ohne diese in das Hauptdokument
  einzufügen.
- Dieses Handbuch wäre dafür geeignet, denn zum bearbeiten müßte man nur
+ Dieses Handbuch wäre dafür geeignet, denn zum Bearbeiten müsste man nur
  relativ kleine Dokumente öffnen.
  Unterdokumente werden nicht direkt eingefügt, sondern erscheinen als graue
  Schaltflächen.
@@ -32072,6 +32347,23 @@ Damit können Sie mehrere
 Handbuchergänzungen
 \emph default
 , Mehrteilige Dokumente.
+\end_layout
+
+\begin_layout Subsubsection
+Legende
+\end_layout
+
+\begin_layout Standard
+Wenn Sie ein Gleitobjekt ohne Über- oder Unterschrift erstellt haben und
+ es nachträglich doch noch beschriften wollen, können Sie es hiermit machen.
+\end_layout
+
+\begin_layout Subsubsection
+Glossareintrag
+\end_layout
+
+\begin_layout Standard
+Dieser Menüpunkt ist noch nirgends näher beschrieben.
 \end_layout
 
 \begin_layout Section
@@ -32101,7 +32393,11 @@ name "Lesezeichen"
 \end_layout
 
 \begin_layout Standard
-Damit können Sie bis zu fünf Lesezeichen setzen und dorthin gehen.
+Damit können Sie Lesezeichen setzen
+\family sans
+, 
+\family default
+löschen und dorthin gehen.
 \end_layout
 
 \begin_layout Subsection
@@ -32123,25 +32419,35 @@ Damit gelangen Sie von einer Notiz zur nächsten.
 \begin_layout Subsection
 
 \family sans
+Nächste Änderung
+\end_layout
+
+\begin_layout Standard
+Dieser Menüpunkt ist noch nirgends näher beschrieben.
+\end_layout
+
+\begin_layout Subsection
+Nächster Querverweis
+\end_layout
+
+\begin_layout Standard
+Damit gelangen Sie von einem Querverweis
+\family sans
+ 
+\family default
+oder einer Marke zum/zur nächsten.
+\end_layout
+
+\begin_layout Subsection
 Gehe zur Marke (Strg+>)
 \end_layout
 
 \begin_layout Standard
-Damit gelangen Sie von einem Querverweis zum nächsten.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-
-\noun on
-HHa
-\noun default
-: oder auch nicht!
-\end_layout
-
-\end_inset
-
-
+Wenn Sie mit 
+\family sans
+Nächster Querverweis
+\family default
+ bei einem gelandet sind, können Sie hiermit zur Marke gelangen.
 \end_layout
 
 \begin_layout Subsection
@@ -32149,8 +32455,11 @@ Verzeichnisse
 \end_layout
 
 \begin_layout Standard
-Damit können Sie durch anklicken zu einem in den Verzeichnissen genannten
- Punkt gehen.
+Damit können Sie durch 
+\family sans
+A
+\family default
+nklicken zu einem in den Verzeichnissen genannten Punkt gehen.
 \end_layout
 
 \begin_layout Section
@@ -32178,7 +32487,8 @@ name "Dokument!-menü@-Menü"
 \end_layout
 
 \begin_layout Standard
-Dieser Menüpunkt ist noch nirgends näher beschrieben.
+Dieser Menüpunkt ist noch nirgends näher beschrieben, sollte aber selbsterklären
+d sein.
 \end_layout
 
 \begin_layout Subsection
@@ -32207,24 +32517,26 @@ Dieses Protokoll enthält alle Ausgaben der LaTeX-Läufe, wenn Sie eine Druckvor
 hau erstellen usw.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 
 \family sans
 Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Standard
-Hiermit erhalten Sie ein eigenes Menüfenster für die Verzeichnisse, die
- Sie unter 
+Hiermit erhalten Sie links im Hauptfenster ein eigenes Menüfenster für die
+ Verzeichnisse, die Sie unter 
 \family sans
 Art
 \family default
  auswählen können.
+ Das Menüfenster können Sie an den gepunkteten Griffen (aus dem Hauptfenster
+ heraus) verschieben.
  Beim 
 \family sans
 Inhaltsverzeichnis
 \family default
- können Sie mit dem Schieberegler die Tiefe der Darstellung bestimmen.
+ können Sie die Tiefe der Darstellung bestimmen.
  Dieses Menüfenster können Sie auch für die Navigation benutzen.
 \end_layout
 
@@ -32233,8 +32545,11 @@ Komprimiert
 \end_layout
 
 \begin_layout Standard
-Wenn Sie diesen Menüpunkt aktivieren -- links davon erscheint dann ein Häkchen
- -- wird das Dokument in komprimierter Form gespeichert, bleibt aber trotzdem
+Wenn Sie diesen Menüpunkt ankreuzen
+\family sans
+,
+\family default
+ wird das Dokument in komprimierter Form gespeichert, bleibt aber trotzdem
  eine .
 \family typewriter
 lyx
@@ -32260,6 +32575,31 @@ Wörter zählen
 
 \begin_layout Standard
 Zählt die Wörter im Dokument oder der Auswahl, die Sie getroffen haben.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+Te
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+X prüfen
+\end_layout
+
+\begin_layout Standard
+Das ist etwas für LaTeX-Profis.
 \end_layout
 
 \begin_layout Subsection
@@ -32779,192 +33119,7 @@ X: Einstellungen
 \end_layout
 
 \begin_layout Description
-Aussehen
-\family sans
-\series bold
-\InsetSpace \space{}
-&\InsetSpace \space{}
-Handhabung
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Benutzerschnittstelle enthält folgende Einstellmöglichkeiten:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-GUI-Datei Der Standard ist 
-\family sans
-default
-\family default
-, aber wenn Sie auf 
-\family sans
-\bar under
-D
-\bar default
-urchsuchen\SpecialChar \ldots{}
-
-\family default
- klicken, werden Ihnen weitere Dateien angeboten.
-\end_layout
-
-\begin_layout Description
-Tastaturkürzel-Datei Der Standard ist 
-\family sans
-default
-\family default
-, aber wenn Sie auf 
-\family sans
-\bar under
-D
-\bar default
-urch\SpecialChar \-
-suchen...
-
-\family default
- klicken, werden Ihnen weitere Dateien angeboten.
-\end_layout
-
-\begin_layout Description
-Dokumente Hier können Sie die automatische Dateisicherung während einer
- Sitzung (de)aktivieren und das Zeitintervall, in dem das passieren soll.
- Außerdem können Sie angeben, wie viele Dateien LyX maximal anzeigen soll.
-\end_layout
-
-\begin_layout Description
-Sitzung Hier können Sie festlegen, ob LyX bei wieder geöffneten Dokumenten
- die letzte Cursorposition wieder herstellen soll, und ob die geöffneten
- Dokumente der letzten Sitzung wieder geöffnet werden sollen.
-\end_layout
-
-\begin_layout Description
-Cursor\InsetSpace ~
-folgt\InsetSpace ~
-Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht,
- wird er nachgeführt.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Bildschirmschriften Hier legen Sie die von LyX zur 
-\emph on
-Darstellung
-\emph default
- verwendeten Schriften und damit verbundene Daten fest.
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Roman Auswahl einer Schrift mit Serifen.
- Sie können natürlich auch eine serifenfreie oder Schreibmachinenschrift
- auswählen, aber das macht wenig Sinn.
- Sinn macht auf jeden Fall, Schriften aus derselben Gruppe zu wählen.
- Dann sind die Größenverhältnisse untereinander gewahrt.
-\end_layout
-
-\begin_layout Description
-Serifenfrei Auswahl einer serifenfreien Schrift.
-\end_layout
-
-\begin_layout Description
-Schreibmaschine Auswahl einer Schrift mit festen Abständen.
-\end_layout
-
-\begin_layout Description
-Vergrößerung Hiermit können Sie die Größe der dargestellten Schriften festlegen,
- je nachdem, ob sie Ihnen zu groß oder zu klein erscheinen.
-\end_layout
-
-\begin_layout Description
-Bildschirm\InsetSpace ~
-DPI Hiermit können Sie die Auflösung der Bildschirmschriften festlegen.
-\end_layout
-
-\begin_layout Description
-Schriftgrößen Hier können Sie die Größenverhältnisse der zehn verschiedenen,
- von LaTeX her bekannten, Schriftgrößen untereinander festlegen.
- Vielleicht macht es bei manchen Monitoren Sinn, die Größenverhältnisse
- zu ändern.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Farben Hier können Sie die Farben der verschiedenen LyX-Elemente ändern.
- Probieren Sie es, wenn Ihnen die eine oder andere Farbe nicht gefällt.
-\end_layout
-
-\begin_layout Description
-Grafik
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Grafik\InsetSpace ~
-anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden
- sollen.
- Ist Ihr PC langsam, können Sie auch auf eine Darstellung verzichten.
-\end_layout
-
-\begin_layout Description
-Sofortige\InsetSpace ~
-Vorschau Hier legen Sie fest, wie schnell Grafiken in LyX dargestellt
- werden sollen.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Tastatur siehe 
-\begin_inset LatexCommand vref
-reference "sec:keytab"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Sprach-Einstellungen
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Sprache Sie enthält folgende Einstellmöglichkeiten:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Standard-Sprache siehe 
-\begin_inset LatexCommand vref
-reference "sec:langlay"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Sprach-Paket\InsetSpace ~
-usw.
- Diese Einstellungen lassen Sie am besten, so wie sie sind, wenn Sie sich
- in LaTeX nicht gut auskennen.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Rechtschreibprüfung siehe 
-\begin_inset LatexCommand vref
-reference "sub:spell_opt"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Ausgabe
+Ausgaben
 \end_layout
 
 \begin_deeper
@@ -33057,7 +33212,8 @@ Druckername
 \end_layout
 
 \begin_layout Description
-Namen angeben
+Ausgabe\InsetSpace ~
+anpassen 
 \end_layout
 
 \begin_layout Description
@@ -33071,17 +33227,153 @@ Befehlsoptionen
 \end_deeper
 \end_deeper
 \begin_layout Description
-Identität Hier können Sie Ihren 
+Aussehen
 \family sans
-Name
-\family default
-n und Ihre 
-\family sans
-EMail
-\family default
--Adresse eintragen.
+\series bold
+\InsetSpace \space{}
+&\InsetSpace \space{}
+Handhabung
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+Tastatur siehe 
+\begin_inset LatexCommand vref
+reference "sec:keytab"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Bildschirmschriften Hier legen Sie die von LyX zur 
+\emph on
+Darstellung
+\emph default
+ verwendeten Schriften und damit verbundene Daten fest.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Roman Auswahl einer Schrift mit Serifen.
+ Sie können natürlich auch eine serifenfreie oder Schreibmachinenschrift
+ auswählen, aber das macht wenig Sinn.
+ Sinn macht auf jeden Fall, Schriften aus derselben Gruppe zu wählen.
+ Dann sind die Größenverhältnisse untereinander gewahrt.
+\end_layout
+
+\begin_layout Description
+Serifenfrei Auswahl einer serifenfreien Schrift.
+\end_layout
+
+\begin_layout Description
+Schreibmaschine Auswahl einer Schrift mit festen Abständen.
+\end_layout
+
+\begin_layout Description
+Vergrößerung\InsetSpace ~
+% Hiermit können Sie die Größe der dargestellten Schriften festlegen
+, je nachdem, ob sie Ihnen zu groß oder zu klein erscheinen.
+\end_layout
+
+\begin_layout Description
+Bildschirm\InsetSpace ~
+DPI Hiermit können Sie die Auflösung der Bildschirmschriften festlegen.
+\end_layout
+
+\begin_layout Description
+Schriftgrößen Hier können Sie die Größenverhältnisse der zehn verschiedenen,
+ von LaTeX her bekannten, Schriftgrößen untereinander festlegen.
+ Vielleicht macht es bei manchen Monitoren Sinn, die Größenverhältnisse
+ zu ändern.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Farben Hier können Sie die Farben der verschiedenen LyX-Elemente ändern.
+ Probieren Sie es, wenn Ihnen die eine oder andere Farbe nicht gefällt.
+ In der Dokumentation wird aber immer auf die Standardfarben Bezug genommen.
+\end_layout
+
+\begin_layout Description
+Grafik
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Grafik\InsetSpace ~
+anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden
+ sollen.
+ Ist Ihr PC langsam, können Sie auch auf eine Darstellung verzichten.
+\end_layout
+
+\begin_layout Description
+Sofortige\InsetSpace ~
+Vorschau Hier legen Sie fest, wie schnell Grafiken in LyX dargestellt
+ werden sollen.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Benutzerschnittstelle enthält folgende Einstellmöglichkeiten:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+GUI-Datei Der Standard ist 
+\family sans
+default
+\family default
+, aber wenn Sie auf 
+\family sans
+Durchsuchen\SpecialChar \ldots{}
+
+\family default
+ klicken, werden Ihnen weitere Dateien angeboten.
+\end_layout
+
+\begin_layout Description
+Tastaturkürzel-Datei Der Standard ist 
+\family sans
+default
+\family default
+, aber wenn Sie auf 
+\family sans
+Durch\SpecialChar \-
+suchen...
+
+\family default
+ klicken, werden Ihnen weitere Dateien angeboten.
+\end_layout
+
+\begin_layout Description
+Sitzung Hier können Sie festlegen, ob LyX bei wieder geöffneten Dokumenten
+ die letzte Cursorposition wieder herstellen soll, und ob die geöffneten
+ Dokumente der letzten Sitzung wieder geöffnet werden sollen.
+\end_layout
+
+\begin_layout Description
+Dokumente Hier können Sie die automatische Datensicherung während einer
+ Sitzung (de)aktivieren und das Zeitintervall, in dem das passieren soll.
+ Außerdem können Sie angeben, wie viele Dateien LyX maximal anzeigen soll.
+\end_layout
+
+\begin_layout Description
+Bilddurchlauf
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Cursor\InsetSpace ~
+folgt\InsetSpace ~
+Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht,
+ wird er nachgeführt.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
 \begin_layout Description
 Pfade
 \end_layout
@@ -33137,15 +33429,86 @@ Tempor
 ä
 \family default
 res\InsetSpace ~
-Verzeichnis Hier speichert LyX alle temporären Daten eine Sitzung
+Verzeichnis Hier speichert LyX alle temporären Daten eine Sitzung.
 \end_layout
 
 \begin_layout Description
-PATH-Pr
+PATH-Präfix ???
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Spracheinstellungen
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Rechtschreibprüfung siehe 
+\begin_inset LatexCommand vref
+reference "sub:spell_opt"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Konverter Im Unterfenster 
 \family sans
-ä
+Konverter
 \family default
-fix ???
+ finden Sie eine Liste der Konvertierungsmöglichkeiten, die LyX bietet.
+ Wenn Sie ein Element anklicken, können Sie rechts die folgenden Einträge
+ vornehmen:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Entfernen Hiermit entfernen Sie das Element aus der Liste
+\end_layout
+
+\begin_layout Description
+Von 
+\end_layout
+
+\begin_layout Description
+Nach 
+\end_layout
+
+\begin_layout Description
+Konverter Legt das Konvertierungsprogramm mitsamt Parametern fest.
+\end_layout
+
+\begin_layout Description
+Zusatz-Flag
+\end_layout
+
+\begin_layout Description
+Hinzufügen Wenn Sie in 
+\family sans
+Von
+\family default
+ ein Element auswählen, das bis jetzt in der Liste noch nicht vorkommt,
+ können Sie dieses hiermit zur Liste hinzufügen.
+\end_layout
+
+\begin_layout Description
+Ändern siehe 
+\begin_inset LatexCommand ref
+reference "des:Ändern-Wenn-Sie"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit eine Änderung wirksam wird, müssen Sie auf Ä
+\family sans
+ndern
+\family default
+ klicken, sonst wird die Änderung nicht gespeichert.
 \end_layout
 
 \end_deeper
@@ -33195,7 +33558,11 @@ Bearbeiter
 \end_layout
 
 \begin_layout Description
-Dokumentformat
+Dokumentenformat
+\end_layout
+
+\begin_layout Description
+Vektorgrafik-Format
 \end_layout
 
 \begin_layout Description
@@ -33233,76 +33600,6 @@ name "des:Ändern-Wenn-Sie"
 Damit eine Änderung wirksam wird, müssen Sie auf 
 \family sans
 Ändern
-\family default
- klicken, sonst wird die Änderung nicht gespeichert.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Konverter Im Unterfenster 
-\family sans
-Konverter
-\family default
- finden Sie eine Liste der Konvertierungsmöglichkeiten, die LyX bietet.
- Wenn Sie ein Element anklicken, können Sie rechts die folgenden Einträge
- vornehmen:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Entfernen Hiermit entfernen Sie das Element aus der Liste
-\end_layout
-
-\begin_layout Description
-Von LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)
-\end_layout
-
-\begin_layout Description
-Nach HTML
-\end_layout
-
-\begin_layout Description
-Konverter Legt das Konvertierungsprogramm mitsamt Parametern fest.
-\end_layout
-
-\begin_layout Description
-Zusatz-Flag
-\end_layout
-
-\begin_layout Description
-Hinzufügen Wenn Sie in 
-\family sans
-Von
-\family default
- ein Element auswählen, das bis jetzt in der Liste noch nicht vorkommt,
- können Sie dieses hiermit zur Liste hinzufügen.
-\end_layout
-
-\begin_layout Description
-Ändern siehe 
-\begin_inset LatexCommand ref
-reference "des:Ändern-Wenn-Sie"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Damit eine Änderung wirksam wird, müssen Sie auf Ä
-\family sans
-ndern
 \family default
  klicken, sonst wird die Änderung nicht gespeichert.
 \end_layout
@@ -33351,6 +33648,18 @@ reference "des:Ändern-Wenn-Sie"
 \end_layout
 
 \end_deeper
+\begin_layout Description
+Identität Hier können Sie Ihren 
+\family sans
+Name
+\family default
+n und Ihre 
+\family sans
+EMail
+\family default
+-Adresse eintragen.
+\end_layout
+
 \begin_layout Chapter
 Dokument-Einstellungen
 \end_layout
@@ -33416,6 +33725,75 @@ reference "sub:Eine-Klasse-auswählen"
 
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+Klassen-Einstellungen
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Optionen
+\end_layout
+
+\begin_layout Description
+Postscript-Treiber
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Description
+Schriften
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Standard-Familie
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Basisgröße
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Roman
+\end_layout
+
+\begin_layout Description
+Serifenfrei
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Skalierung\InsetSpace ~
+%
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Schreibmaschine
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Skalierung\InsetSpace ~
+%
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Echte\InsetSpace ~
+Kapitälchen\InsetSpace ~
+verwenden
+\end_layout
+
+\begin_layout Description
+Mediävalziffern\InsetSpace ~
+verwenden
+\end_layout
+
+\end_deeper
 \begin_layout Description
 Textformat siehe auch 
 \begin_inset LatexCommand vref
@@ -33636,11 +34014,6 @@ status collapsed
 \end_inset
 
 X-Vorspann Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
-\end_layout
-
-\begin_layout Chapter
-\start_of_appendix
-Literatur- und Stichwortverzeichnis
 \end_layout
 
 \begin_layout Bibliography
