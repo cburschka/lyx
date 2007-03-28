@@ -365,6 +365,11 @@ void GuiView::setGeometry(unsigned int width,
 			QRect desk = dw.availableGeometry(dw.primaryScreen());
 			(posx >= desk.width() ? posx = 50 : true);
 			(posy >= desk.height()? posy = 50 : true);
+			// don't allow negative coordinates on a non-virtual desktop
+			if (!dw.isVirtualDesktop()) {
+				(posx < 0 ? posx = 50 : true);
+				(posy < 0 ? posy = 50 : true);
+			}
 #ifdef Q_WS_WIN
 			// FIXME: use setGeometry only when Trolltech has fixed the qt4/X11 bug
 			QWidget::setGeometry(posx, posy, width, height);
