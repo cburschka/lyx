@@ -196,12 +196,13 @@ int InsetMathScript::dy01(int asc, int des, int what) const
 		if (hasDown()) {
 			int del = asc - udes - dasc;
 			if (del + des <= 2) {
-				des = 2 - del;
+				int newdes = 2 - del;
 				del = slevel - asc + udes;
 				if (del > 0) {
 					asc += del;
-					des -= del;
+					newdes -= del;
 				}
+				des = max(des, newdes);
 			}
 		}
 	}
