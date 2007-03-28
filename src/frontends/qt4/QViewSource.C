@@ -25,7 +25,7 @@ latexHighlighter::latexHighlighter(QTextDocument * parent) :
 {
 	keywordFormat.setForeground(Qt::darkBlue);
 	keywordFormat.setFontWeight(QFont::Bold);
-	commentFormat.setForeground(Qt::gray);
+	commentFormat.setForeground(Qt::darkGray);
 	mathFormat.setForeground(Qt::red);
 }
 

@@ -36,7 +36,7 @@ QLog::QLog(Dialog & parent)
 logHighlighter::logHighlighter(QTextDocument * parent) :
 	QSyntaxHighlighter(parent)
 {
-	infoFormat.setForeground(Qt::gray);
+	infoFormat.setForeground(Qt::darkGray);
 	warningFormat.setForeground(Qt::darkBlue);
 	errorFormat.setForeground(Qt::red);
 }
