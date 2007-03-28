@@ -36,6 +36,7 @@ public Q_SLOTS:
 	void changed_adaptor();
 	void gotoClicked();
 	void refHighlighted(QListWidgetItem *);
+	void selectionChanged();
 	void refSelected(QListWidgetItem *);
 	void sortToggled(bool);
 	void updateClicked();

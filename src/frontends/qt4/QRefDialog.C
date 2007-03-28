@@ -42,6 +42,8 @@ QRefDialog::QRefDialog(QRef * form)
 		this, SLOT( changed_adaptor() ) );
 	connect( refsLW, SIGNAL(  itemClicked(QListWidgetItem *) ), 
 		this, SLOT( refHighlighted(QListWidgetItem *) ) );
+	connect( refsLW, SIGNAL(  itemSelectionChanged() ),
+		this, SLOT( selectionChanged() ) );
 	connect( refsLW, SIGNAL(  itemActivated(QListWidgetItem *) ), 
 		this, SLOT( refSelected(QListWidgetItem *) ) );
 	connect( sortCB, SIGNAL( clicked(bool) ),
@@ -73,6 +75,18 @@ void QRefDialog::gotoClicked()
 	form_->gotoRef();
 }
 
+void QRefDialog::selectionChanged()
+{
+	if (form_->readOnly())
+		return;
+	
+	QList<QListWidgetItem *> selections = refsLW->selectedItems();
+	if (selections.isEmpty())
+		return;
+	QListWidgetItem * sel = selections.first();
+	refHighlighted(sel);
+	return;
+}
 
 void QRefDialog::refHighlighted(QListWidgetItem * sel)
 {
