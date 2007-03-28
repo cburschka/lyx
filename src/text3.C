@@ -652,6 +652,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BREAK_PARAGRAPH:
 		cap::replaceSelection(cur);
 		breakParagraph(cur, 0);
+		//Reset text style to default
+		setFont(cur, LyXFont(LyXFont::ALL_INHERIT), 0);
 		cur.resetAnchor();
 		bv->switchKeyMap();
 		break;
