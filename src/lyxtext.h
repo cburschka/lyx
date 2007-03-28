@@ -191,6 +191,8 @@ public:
 	\retval inset is non-null if the cursor is positionned inside
 	*/
 	/// FIXME: move to TextMetrics.
+	/// FIXME: cleanup to use BufferView::getCoveringInset() and
+	/// setCursorFromCoordinates() instead of checkInsetHit().
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	
 	/// Move cursor one line up.
@@ -283,6 +285,9 @@ public:
 	void insertStringAsParagraphs(LCursor & cur, docstring const & str);
 
 	/// Returns an inset if inset was hit, or 0 if not.
+	/// \warning This method is not recursive! It will return the
+	/// outermost inset within this LyXText.
+	/// \sa BufferView::getCoveringInset() to get the innermost inset.
 	InsetBase * checkInsetHit(BufferView &, int x, int y);
 
 	///
