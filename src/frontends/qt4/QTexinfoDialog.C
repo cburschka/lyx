@@ -34,12 +34,13 @@ QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
 		form, SLOT(slotClose()));
 
     connect( viewPB, SIGNAL( clicked() ), this, SLOT( viewClicked() ) );
-    connect( whatStyle, SIGNAL( activated(const QString&) ), this, SLOT( enableViewPB() ) );
-    connect( whatStyle, SIGNAL( activated(int) ), this, SLOT( update() ) );
-    connect( path, SIGNAL( stateChanged(int) ), this, SLOT( update() ) );
+    connect( whatStyleCO, SIGNAL( activated(const QString&) ), this, SLOT( enableViewPB() ) );
+    connect( whatStyleCO, SIGNAL( activated(int) ), this, SLOT( update() ) );
+    connect( pathCB, SIGNAL( stateChanged(int) ), this, SLOT( update() ) );
     connect( rescanPB, SIGNAL( clicked() ), this, SLOT( enableViewPB() ) );
     connect( rescanPB, SIGNAL( clicked() ), this, SLOT( rescanClicked() ) );
-    connect( fileList, SIGNAL( itemClicked(QListWidgetItem*) ), this, SLOT( enableViewPB() ) );
+    connect( fileListLW, SIGNAL( itemClicked(QListWidgetItem*) ), this, SLOT( enableViewPB() ) );
+    connect( fileListLW, SIGNAL( itemSelectionChanged() ), this, SLOT( enableViewPB() ) );
 }
 
 
@@ -67,10 +68,10 @@ void QTexinfoDialog::rescanClicked()
 
 void QTexinfoDialog::viewClicked()
 {
-	vector<string>::size_type const fitem = fileList->currentRow();
+	vector<string>::size_type const fitem = fileListLW->currentRow();
 	vector<string> const & data = form_->texdata_[form_->activeStyle];
 	string file = data[fitem];
-	if (!path->isChecked())
+	if (!pathCB->isChecked())
 		file = getTexFileFromList(data[fitem],
 			form_->controller().getFileType(form_->activeStyle));
 	form_->controller().viewFile(file);
@@ -79,7 +80,7 @@ void QTexinfoDialog::viewClicked()
 
 void QTexinfoDialog::update()
 {
-	switch (whatStyle->currentIndex()) {
+	switch (whatStyleCO->currentIndex()) {
 	case 0:
 		form_->updateStyles(ControlTexinfo::cls);
 		break;
@@ -99,7 +100,7 @@ void QTexinfoDialog::update()
 
 void QTexinfoDialog::enableViewPB()
 {
-	viewPB->setEnabled(fileList->currentRow() > -1);
+	viewPB->setEnabled(fileListLW->currentRow() > -1);
 }
 
 } // namespace frontend

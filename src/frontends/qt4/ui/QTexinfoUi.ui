@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QTexinfoUi</class>
  <widget class="QDialog" name="QTexinfoUi" >
   <property name="geometry" >
@@ -26,7 +23,7 @@
     <number>6</number>
    </property>
    <item row="1" column="0" >
-    <widget class="QListWidget" name="fileList" />
+    <widget class="QListWidget" name="fileListLW" />
    </item>
    <item row="3" column="0" >
     <layout class="QHBoxLayout" >
@@ -122,7 +119,7 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QComboBox" name="whatStyle" >
+      <widget class="QComboBox" name="whatStyleCO" >
        <property name="toolTip" >
         <string>Selected classes or styles</string>
        </property>
@@ -160,7 +157,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QCheckBox" name="path" >
+      <widget class="QCheckBox" name="pathCB" >
        <property name="toolTip" >
         <string>Toggles view of the file list</string>
        </property>
@@ -173,18 +170,17 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
-  <tabstop>whatStyle</tabstop>
-  <tabstop>path</tabstop>
-  <tabstop>fileList</tabstop>
+  <tabstop>whatStyleCO</tabstop>
+  <tabstop>pathCB</tabstop>
+  <tabstop>fileListLW</tabstop>
   <tabstop>rescanPB</tabstop>
   <tabstop>viewPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
