@@ -1078,6 +1078,54 @@ void BufferView::workAreaResize(int width, int height)
 }
 
 
+InsetBase const * BufferView::getCoveringInset(LyXText const & text, int x, int y)
+{
+	pit_type pit = text.getPitNearY(*this, y);
+	BOOST_ASSERT(pit != -1);
+	Paragraph const & par = text.getPar(pit);
+
+	lyxerr[Debug::DEBUG]
+		<< BOOST_CURRENT_FUNCTION
+		<< ": x: " << x
+		<< " y: " << y
+		<< "  pit: " << pit
+		<< endl;
+	InsetList::const_iterator iit = par.insetlist.begin();
+	InsetList::const_iterator iend = par.insetlist.end();
+	for (; iit != iend; ++iit) {
+		InsetBase * const inset = iit->inset;
+		if (inset->covers(*this, x, y)) {
+			if (!inset->descendable())
+				// No need to go further down if the inset is not 
+				// descendable.
+				return inset;
+
+			size_t cell_number = inset->nargs();
+			// Check all the inner cell.
+			for (size_t i = 0; i != cell_number; ++i) {
+				LyXText const * inner_text = inset->getText(i);
+				if (inner_text) {
+					// Try deeper.
+					InsetBase const * inset_deeper = 
+						getCoveringInset(*inner_text, x, y);
+					if (inset_deeper)
+						return inset_deeper;
+				}
+			}
+
+			lyxerr[Debug::DEBUG]
+				<< BOOST_CURRENT_FUNCTION
+				<< ": Hit inset: " << inset << endl;
+			return inset;
+		}
+	}
+	lyxerr[Debug::DEBUG]
+		<< BOOST_CURRENT_FUNCTION
+		<< ": No inset hit. " << endl;
+	return 0;
+}
+
+
 bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << BOOST_CURRENT_FUNCTION << "[ cmd0 " << cmd0 << "]" << endl;
@@ -1101,22 +1149,24 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	cmd.y = min(max(cmd.y, -1), height_);
 	
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
+		
+		// Get inset under mouse, if there is one.
+		InsetBase const * covering_inset = 
+			getCoveringInset(buffer_->text(), cmd.x, cmd.y);
+		if (covering_inset == last_inset_)
+			// Same inset, no need to do anything...
+			return false;
 
 		bool need_redraw = false;
-		
-		//Get inset under mouse, if there is one
-		// NOTE: checkInsetHit returns the top level inset of nested insets. 
-		// If you happen to move from a text (inset=0) to a text inside an inset 
-		// (e.g. an opened footnote inset, again inset=0), that inset will not 
-		// be redrawn.
-		InsetBase * inset = buffer_->text().checkInsetHit(cur.bv(), cmd.x, cmd.y);
-		if (inset != last_inset_) {
-			if (last_inset_)
-				need_redraw |= last_inset_->setMouseHover(false);
-			if (inset)
-				need_redraw |= inset->setMouseHover(true);
-			last_inset_ = inset;
-		}
+		// const_cast because of setMouseHover().
+		InsetBase * inset = const_cast<InsetBase *>(covering_inset);
+		if (last_inset_)
+			// Remove the hint on the last hovered inset (if any).
+			need_redraw |= last_inset_->setMouseHover(false);
+		if (inset)
+			// Highlighted the newly hovered inset (if any).
+			need_redraw |= inset->setMouseHover(true);
+		last_inset_ = inset;
 
 		// if last metrics update was in singlepar mode, WorkArea::redraw() will
 		// not expose the button for redraw. We adjust here the metrics dimension

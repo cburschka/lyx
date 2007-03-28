@@ -249,6 +249,15 @@ public:
 private:
 	///
 	bool multiParSel();
+
+	/// Search recursively for the the innermost inset that covers (x, y) position.
+	/// \retval 0 if no inset is found.
+	InsetBase const * getCoveringInset(
+		LyXText const & text, //< The LyXText where we start searching.
+		int x, //< x-coordinate on screen
+		int y  //< y-coordinate on screen
+		);
+
 	///
 	int width_;
 	///
