@@ -302,7 +302,7 @@ Menuset
 		Item "Label...|L" "label-insert"
 		Item "Caption" "caption-insert"
 		Item "Index Entry|d" "index-insert"
-		Item "Glossary Entry|y" "nomencl-insert"
+		Item "Glossary Entry...|y" "nomencl-insert"
 		Separator
 		Item "Table...|T" "tabular-insert"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"
