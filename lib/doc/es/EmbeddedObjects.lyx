@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+#LyX 1.5.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 262
 \begin_document
 \begin_header
 \textclass scrbook
@@ -124,7 +124,7 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Contenidos}{}
+ \pdfbookmark[1]{Índice General}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}
@@ -203,6 +203,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
+\author "IG" 
 \author "usti" 
 \author "IG,,," 
 \author "Uwe Stöhr" 
@@ -212,7 +213,8 @@
 \begin_body
 
 \begin_layout Title
-Manual detallado de Figuras, Tablas, Flotantes, Notas y Cuadros en LyX
+Manual detallado de Figuras, Tablas, Flotantes, Notas, Cuadros y Archivos
+ en LyX
 \end_layout
 
 \begin_layout Author
@@ -347,6 +349,12 @@ name "Gráficos|see{Figuras}"
 
 \begin_layout Section
 Diálogo Gráficos
+\begin_inset LatexCommand label
+name "sec:Diálogo-Gráficos"
+
+\end_inset
+
+
 \begin_inset LatexCommand index
 name "Figuras ! Diálogo Gráficos"
 
@@ -623,14 +631,14 @@ Figura #:
 \end_inset
 
  (# es el número actual).
- La imagen se puede insertar sobre el encabezado, como en la figura\InsetSpace ~
+ La imagen se puede insertar sobre el título, como en la figura\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "fig:kill-plat"
 
 \end_inset
 
-, o bajo el encabezado, como en la figura\InsetSpace ~
+, o bajo el título, como en la figura\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "fig:escher"
@@ -638,7 +646,7 @@ reference "fig:escher"
 \end_inset
 
 .
- Más información sobre ubicación de encabezados en la sección\InsetSpace ~
+ Más información sobre ubicación de títulos en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Colocación-de-Encabezados"
@@ -828,11 +836,10 @@ Subfigura
 Descripción
 \family default
 .
- Observa que sólo el título principal del encabezado del flotante se añade
- a la Lista de Figuras.
+ Observa que sólo el título principal  del flotante se añade a la Lista
+ de Figuras.
 \newline
-Las referencias a las subfiguras se explican en la
- sección\InsetSpace ~
+Las referencias a las subfiguras se explican en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Referencias-a-Subfiguras"
@@ -2097,7 +2104,7 @@ Tabla\InsetSpace ~
  (# es el número actual).
  El texto que sigue a dicha etiqueta es el encabezado de tabla.
  Para insertar una tabla en el flotante se sitúa el cursor al final del
- texto de encabezado y se pulsa Enter.
+ texto del encabezado y se pulsa Enter.
  El encabezado se imprime encima de la tabla.
 \end_layout
 
@@ -11696,11 +11703,7 @@ em.
 \end_layout
 
 \begin_layout Standard
-Estos valores predeterminados se pueden cambiar
-\lang english
- 
-\lang spanish
-con las líneas de preámbulo:
+Estos valores predeterminados se pueden cambiarcon las líneas de preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -11754,10 +11757,6 @@ reference "cha:Unidades-disponibles-en"
 
 \end_inset
 
-
-\lang english
- 
-\lang spanish
 para establecer el grosor.
 \end_layout
 
@@ -11832,7 +11831,6 @@ pt por su izquierda.
 em.
 
 \series bold
-\lang english
  
 \end_layout
 
@@ -15326,7 +15324,7 @@ name "LaTeX-paquetes ! dcolumn"
 
 \end_inset
 
-, que provee alineación de celdas.
+, que permite alinear el contenido de las celdas.
  Pero desgraciadamente trata las entradas de celda en modo matemático y
  no permite fórmulas en celdas: La primera columna de la tabla\InsetSpace ~
 
@@ -15347,7 +15345,7 @@ reference "tab:Alineaciones-con-el"
 \end_inset
 
  y solo con algunos trucos se consigue lo que se espera.
- La lineación de la segunda y tercera columnas de la tabla\InsetSpace ~
+ La alineación de la segunda y tercera columnas de la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:Varias-alineaciones"
@@ -15377,6 +15375,18 @@ name "tab:Alineaciones-con-el"
 
 \end_inset
 
+
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+Tabla alineada con 
+\series bold
+dcolumn
+\end_layout
+
+\end_inset
+
 Alineaciones con el paquete LaTeX 
 \series bold
 dcolumn
@@ -15395,8 +15405,8 @@ dcolumn
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
-<column alignment="center" valignment="top" rightline="true" width="0" special="D{×}{\times}{-1}|">
-<column alignment="center" valignment="top" width="0" special="D{×}{\times}{4.9}|">
+<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{-1}|">
+<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}|">
 <column alignment="center" valignment="top" rightline="true" width="0" special="D{~}{\,}{9.7}">
 <row bottomline="true">
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
@@ -15432,7 +15442,7 @@ unidades
 \begin_inset Text
 
 \begin_layout Standard
-12×24\InsetSpace \thinspace{}
+12x24\InsetSpace \thinspace{}
 bottles
 \end_layout
 
@@ -15442,7 +15452,7 @@ bottles
 \begin_inset Text
 
 \begin_layout Standard
-12×24\InsetSpace \thinspace{}
+12x24\InsetSpace \thinspace{}
 
 \begin_inset Formula $\mbox{bottles}$
 \end_inset
@@ -15456,7 +15466,11 @@ bottles
 \begin_inset Text
 
 \begin_layout Standard
-12×24~
+12
+\emph on
+×
+\emph default
+24~
 \begin_inset Formula $\mbox{bottles}$
 \end_inset
 
@@ -15471,7 +15485,7 @@ bottles
 \begin_inset Text
 
 \begin_layout Standard
-1024×768\InsetSpace \thinspace{}
+1024x768\InsetSpace \thinspace{}
 Pixels
 \end_layout
 
@@ -15481,7 +15495,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Standard
-1024×768\InsetSpace \thinspace{}
+1024x768\InsetSpace \thinspace{}
 
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
@@ -15495,7 +15509,11 @@ Pixels
 \begin_inset Text
 
 \begin_layout Standard
-1024×768~
+1024
+\emph on
+×
+\emph default
+768~
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
 
@@ -15510,7 +15528,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Standard
-32×6\InsetSpace \thinspace{}
+32x6\InsetSpace \thinspace{}
 cm
 \end_layout
 
@@ -15520,7 +15538,7 @@ cm
 \begin_inset Text
 
 \begin_layout Standard
-32×6\InsetSpace \thinspace{}
+32x6\InsetSpace \thinspace{}
 
 \begin_inset Formula $\mbox{cm}$
 \end_inset
@@ -15534,7 +15552,11 @@ cm
 \begin_inset Text
 
 \begin_layout Standard
-32×6~
+32
+\emph on
+×
+\emph default
+6~
 \begin_inset Formula $\mbox{cm}$
 \end_inset
 
@@ -19323,32 +19345,23 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota: 
 \series default
- The option 
+La opción 
 \series bold
 tableposition=top
 \series default
- has no effect when a 
+ no tiene efecto si se usa una clase de documento 
 \series bold
 koma-script
 \series default
-\lang spanish
-
-\begin_inset LatexCommand index
-name "LaTeX-paquetes ! koma-script"
-
-\end_inset
-
-
-\lang english
- document class is used.
- In this case the document class option 
+.
+ En este caso debe utilizarse la opción de clase de documento 
 \series bold
 tablecaptionabove
 \series default
- must be used.
+.
+ 
 \end_layout
 
 \end_inset
@@ -19371,63 +19384,64 @@ key "caption,caption-de"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To change the label name from e.g.
- 
+Para cambiar el nombre de la etiqueta de 
 \begin_inset Quotes eld
 \end_inset
 
-Figure
+Figura
 \begin_inset Quotes erd
 \end_inset
 
- to 
+ a 
 \begin_inset Quotes eld
 \end_inset
 
-Image
+Imagen
 \begin_inset Quotes erd
 \end_inset
 
- use this preamble command:
+, p.e., usa el siguiente comando de preámbulo:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 renewcommand{
 \backslash
-fnum@figure}{Image~
+fnum@figure}{Imagen~
 \backslash
 thefigure}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+donde 
 \series bold
 
 \backslash
 thefigure
 \series default
- inserts the figure number and
+ inserta el número de figura y 
 \series bold
- 
+
 \begin_inset Quotes eld
 \end_inset
 
-~
+
 \series default
+~
+\series bold
 
 \begin_inset Quotes erd
 \end_inset
 
- creates a protected space.
+
+\series default
+ genera un espacio protegido.
+
+\series bold
+ 
 \end_layout
 
 \begin_layout Standard
@@ -19565,9 +19579,19 @@ name "fig:Esto-es-una-fig"
 
 \end_inset
 
-Este es un ejemplo de encabezado de figura que es mayor de una línea para
+
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+Figura con título muy largo
+\end_layout
+
+\end_inset
+
+Este es un ejemplo de figura con un título que es mayor de una línea para
  mostrar el formato diferente.
- Aquí se usa un encabezado autodefinido.
+ Aquí se usa un título autodefinido.
 \end_layout
 
 \end_inset
@@ -19610,6 +19634,16 @@ status open
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Esto-es-una-tab"
+
+\end_inset
+
+
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Tabla con encabezado muy largo
+\end_layout
 
 \end_inset
 
@@ -19715,11 +19749,11 @@ name "sec:Colocación-de-Encabezados"
 \end_layout
 
 \begin_layout Standard
-La norma habitual para colocar encabezados es:
+La norma habitual para colocar títulos o encabezados es:
 \end_layout
 
 \begin_layout Description
-Figura: El encabezado bajo la figura
+Figura: El título bajo la figura
 \end_layout
 
 \begin_layout Description
@@ -20220,12 +20254,12 @@ reference "tab:encab-al-lado"
 
 \end_inset
 
- son ejemplos en los que el encabezado se sitúa al lado.
+ son ejemplos en los que el título se sitúa al lado.
 \end_layout
 
 \begin_layout Standard
-En los ejemplos puedes ver que el texto del encabezado aparece encima del
- flotante en tablas flotantes y debajo en las figuras flotantes.
+En los ejemplos puedes ver que el texto del título aparece encima del flotante
+ en tablas flotantes y debajo en las figuras flotantes.
  Para cambiarlo, puedes usar el comando
 \end_layout
 
@@ -20308,8 +20342,8 @@ bottom
 \end_inset
 
  (abajo).
- Para tener, por ejemplo, el encabezado de figuras flotantes verticalmente
- centrado, usa el comando
+ Para tener, por ejemplo, el título de figuras flotantes verticalmente centrado,
+ usa el comando
 \end_layout
 
 \begin_layout Standard
@@ -20424,7 +20458,7 @@ name "fig:encab-al-lado"
 
 \end_inset
 
-Encabezado al lado de una figura.
+Título al lado de una figura.
 \end_layout
 
 \end_inset
@@ -20468,7 +20502,7 @@ name "tab:encab-al-lado"
 
 \end_inset
 
-Esto es un encabezado al lado de una tabla.
+Título al lado de una tabla.
 \end_layout
 
 \end_inset
@@ -20739,7 +20773,7 @@ name "fig:encab-al-lado-de-fig"
 
 \end_inset
 
-Encabezado junto a una figura centrado verticalmente.
+Título junto a una figura centrado verticalmente.
 \end_layout
 
 \end_inset
@@ -20796,7 +20830,7 @@ Lista / IG
 \end_layout
 
 \begin_layout Standard
-Las entradas de la lista son los encabezados del flotante o su título corto,
+Las entradas de la lista son los títulos del flotante o su título corto,
  el número de flotante, y el número de la página del documento en la que
  aparecen.
 \end_layout
@@ -21391,11 +21425,8 @@ def\SpecialChar \textcompwordmark{}
 inecolor{shadebox}
 \series default
 .
- El esquema del comando
-\lang english
- 
+ El esquema del comando 
 \series bold
-\lang spanish
 
 \backslash
 def\SpecialChar \textcompwordmark{}
@@ -21460,11 +21491,7 @@ Sombreada
 
 \backslash
 fboxsep 0.5cm
-\lang english
-
 \newline
-
-\lang spanish
 
 \backslash
 def\SpecialChar \textcompwordmark{}
@@ -26741,15 +26768,12 @@ hyperref
 href
 \series default
 .
- 
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-External Stuff
+Archivos
 \begin_inset LatexCommand index
-name "External Stuff"
+name "Archivos, insertar"
 
 \end_inset
 
@@ -26757,64 +26781,52 @@ name "External Stuff"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the menu 
+Con el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-File
+Insertar\SpecialChar \menuseparator
+Archivo 
 \family default
- you can insert external material to your document.
- This can be:
+se pueden insertar archivos externos en un documento.
+ Estos pueden ser:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-LyX\InsetSpace ~
-Document Another LyX document; its content is directly inserted to your
- document.
+Documento\InsetSpace ~
+LyX Otro documento LyX; su contenido se inserta directamente en
+ tu documento.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Plain\InsetSpace ~
-Text A text document; every of its text lines is inserted to your document
- as own paragraph.
+Texto\InsetSpace ~
+simple\InsetSpace ~
+como\InsetSpace ~
+líneas Un documento de texto; cada línea del mismo se inserta
+ en tu documento como un nuevo párrafo.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Plain\InsetSpace ~
-Text,\InsetSpace ~
-Join\InsetSpace ~
-Lines A text document; its text lines are inserted as they
- are.
- Empty text lines creates a new paragraph in your document.
+Texto\InsetSpace ~
+simple\InsetSpace ~
+como\InsetSpace ~
+párrafos Un documento de texto; cada línea del texto se inserta
+ tal como está, formando un solo párrafo.
+ Las líneas vacías generan un nuevo párrafo en tu documento.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-External\InsetSpace ~
-Material Files in various formats.
+Material\InsetSpace ~
+externo Archivos en diversos formatos.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Child\InsetSpace ~
-Document LyX or LaTeX-documents.
+Documento\InsetSpace ~
+hijo Documentos LyX, LaTeX o texto simple.
 \end_layout
 
 \begin_layout Section
-
-\lang english
-External Material
+Material Externo
 \begin_inset LatexCommand index
-name "External Stuff ! External Material"
+name "Material Externo"
 
 \end_inset
 
@@ -26822,42 +26834,35 @@ name "External Stuff ! External Material"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The external material feature allows you to insert files to your document
- without converting them previously to a format that can be read by the
- document output format because LyX takes care of needed conversions.
- This is similar to images that can be inserted in various image formats
- to LyX documents.
+Esta característica te permite insertar archivos en tu documento sin convertirlo
+s previamente a un formato legible en la salida, ya que LyX se ocupa de
+ las necesarias conversiones.
+ Esto es parecido a la inserción de imágenes en diversos formatos en los
+ documentos LyX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-External material can be inserted via the 
+El material externo se puede insertar mediante el diálogo que surge a partir
+ del menú 
 \family sans
-External Material
-\family default
- dialog that is accessible with the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
-External\InsetSpace ~
-Material
+Insertar\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
+Material\InsetSpace ~
+externo
 \family default
 .
- Currently the following file types (
+ Actualmente se permiten los siguientes tipos de archivo (
 \family sans
-Templates
+Plantillas
 \family default
-) are allowed:
+):
 \end_layout
 
 \begin_layout Description
-
-\lang english
-ChessDiagram This template supports chess position diagrams made with the
- program 
+Diagrama\InsetSpace ~
+de\InsetSpace ~
+ajedrez Esta plantilla soporta diagramas posicionales de ajedrez
+ hechos con el programa 
 \begin_inset ERT
 status collapsed
 
@@ -26889,39 +26894,37 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Date This inserts the date in the form 
+Fecha Esta inserta la fecha en el formato 
 \emph on
-Date-Month-Year
+Día-Mes-Año.
+
 \emph default
-.
- This is a date inserted as external material: 
+ A continuación hay una fecha insertada como material externo: 
 \begin_inset External
 	template Date
-	filename ..
+	filename .
 
 \end_inset
 
 
 \newline
-The date is not shown within LyX, only in the output.
- There are two other methods of inserting a date, via menu 
+La fecha no se muestra en LyX, solo en la salida.
+ Hay otros dos métodos de insertar una fecha, con el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Date
+Insertar\SpecialChar \menuseparator
+Fecha
 \family default
- and with the LaTeX command 
+ y con el comando LaTeX 
 \series bold
 
 \backslash
 today
 \series default
- as ERT.
- The different methods are compared in Table\InsetSpace ~
+ en ERT.
+ Los distintos métodos se comparan en la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "tab:Comparison-of-the"
+reference "Comparación-de"
 
 \end_inset
 
@@ -26929,9 +26932,7 @@ reference "tab:Comparison-of-the"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-LilyPond This template is used for music notation typeset with the program
+LilyPond Esta plantilla sirve para tipografiar notación musical con el programa
 \begin_inset ERT
 status collapsed
 
@@ -26977,16 +26978,14 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
-\lang english
-The command 
+El comando 
 \series bold
 
 \backslash
 linebreak
 \series default
- breaks the line while the remaining text in the line is stretched to the
- page margin.
+ quiebra la línea de forma que el texto precedente se extiende hasta ajustarse
+ al margen de página.
 \end_layout
 
 \end_inset
@@ -26995,34 +26994,30 @@ linebreak
 \end_layout
 
 \begin_layout Description
-
-\lang english
-RasterImage This can be used for bitmap images.
- Nearly all popular image formats are supported.
- The image can be treated in the 
+RasterImage Sirve para insertar imágenes bitmap.
+ Casi todos los formatos populares de imágenes están soportados.
+ Las imágenes se pueden tratar en el diálogo 
 \family sans
-External material
+Material Externo
 \family default
- dialog like the images that are usually included via the 
+ como las que habitualmente se incluyen mediante el diálogo 
 \family sans
-Graphics
+Gráficos
 \family default
- dialog as described in section\InsetSpace ~
+, tal como se explica en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:Graphics-Dialog"
+reference "sec:Diálogo-Gráficos"
 
 \end_inset
 
 .
- The difference is that only raster images are allowed, that means that
- PDF and EPS-images are not supported.
+ La diferencia es que solo se permiten imágenes bitmap, por tanto las imágenes
+ PDF y EPS no están soportadas.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-XFig This template supports images created with the program 
+XFig Esta plantilla soporta imágenes creadas con el programa 
 \begin_inset ERT
 status collapsed
 
@@ -27058,20 +27053,18 @@ status collapsed
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "tab:Comparison-of-the"
+name "tab:Comparación-de"
 
 \end_inset
 
-
-\lang english
-Comparison of the date input methods.
+Comparación de los métodos de inserción de fecha.
 \end_layout
 
 \end_inset
@@ -27093,7 +27086,7 @@ Comparison of the date input methods.
 \begin_inset Text
 
 \begin_layout Standard
-Document format
+Formato del Documento
 \end_layout
 
 \end_inset
@@ -27104,8 +27097,8 @@ Document format
 \begin_layout Standard
 
 \family sans
-External Material\SpecialChar \menuseparator
-Date
+Material Externo\SpecialChar \menuseparator
+Fecha
 \end_layout
 
 \end_inset
@@ -27116,8 +27109,8 @@ Date
 \begin_layout Standard
 
 \family sans
-Insert\SpecialChar \menuseparator
-Date
+Insertar\SpecialChar \menuseparator
+Fecha
 \end_layout
 
 \end_inset
@@ -27126,7 +27119,7 @@ Date
 \begin_inset Text
 
 \begin_layout Standard
-command 
+comando 
 \series bold
 
 \backslash
@@ -27150,7 +27143,7 @@ LyX
 \begin_inset Text
 
 \begin_layout Standard
-as inset box
+como cuadro
 \end_layout
 
 \end_inset
@@ -27159,7 +27152,7 @@ as inset box
 \begin_inset Text
 
 \begin_layout Standard
-as date
+como fecha
 \end_layout
 
 \end_inset
@@ -27168,7 +27161,7 @@ as date
 \begin_inset Text
 
 \begin_layout Standard
-as ERT inset box
+como cuadro ERT
 \end_layout
 
 \end_inset
@@ -27188,7 +27181,7 @@ LaTeX
 \begin_inset Text
 
 \begin_layout Standard
-as date
+como fecha
 \end_layout
 
 \end_inset
@@ -27197,7 +27190,7 @@ as date
 \begin_inset Text
 
 \begin_layout Standard
-as date
+como fecha
 \end_layout
 
 \end_inset
@@ -27206,7 +27199,7 @@ as date
 \begin_inset Text
 
 \begin_layout Standard
-as command
+como comando
 \end_layout
 
 \end_inset
@@ -27226,7 +27219,7 @@ DVI, PDF, PS
 \begin_inset Text
 
 \begin_layout Standard
-as date
+como fecha
 \end_layout
 
 \end_inset
@@ -27235,7 +27228,7 @@ as date
 \begin_inset Text
 
 \begin_layout Standard
-as date
+como fecha
 \end_layout
 
 \end_inset
@@ -27244,7 +27237,7 @@ as date
 \begin_inset Text
 
 \begin_layout Standard
-as date
+como fecha
 \end_layout
 
 \end_inset
@@ -27263,66 +27256,57 @@ as date
 \end_layout
 
 \begin_layout Standard
+Si utilizas la opción 
+\family sans
+Borrador
+\family default
+ en la pestaña 
+\family sans
+Archivo
+\family default
+ del diálogo 
+\family sans
+Material Externo
+\family default
+, en el documento de salida solo se muestra la ruta al archivo insertado.
+\family sans
 
-\lang english
-When you use the option 
-\family sans
-Draft
-\family default
- in the 
-\family sans
-File
-\family default
- tab of the 
-\family sans
-External Material
-\family default
- dialog, only the path to the inserted file is shown in the output.
 \newline
-External
- material is displayed in LyX either as box like this: 
+
+\family default
+El material externo se muestra en LyX como un cuadro del tipo:
+\family sans
+ 
+\family default
+
 \begin_inset Graphics
-	filename ../clipart/ExternalMaterialQt4.png
-	scale 85
+	filename clipart/MaterialExternoQt4.png
+	scale 80
 
 \end_inset
 
- or as image, depending on the setting in the 
+ o como imagen, según la configuración elegida en la pestaña 
 \family sans
-LyX\InsetSpace ~
-View
+Vista\InsetSpace ~
+LyX 
 \family default
- tab of the 
+del diálogo 
 \family sans
-External Material
-\family default
- dialog.
+Material Externo.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
-\family sans
+En el manual 
 \emph on
-Customization
-\family default
+Personalización
 \emph default
- manual explains how you can define your own templates.
+ se explica cómo definir tus propias plantillas.
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Child Documents
+Documento Hijo
 \begin_inset LatexCommand index
-name "External Stuff ! Child Documents"
-
-\end_inset
-
-
-\begin_inset LatexCommand index
-name "Files ! Include"
+name "Documento Hijo"
 
 \end_inset
 
@@ -27330,64 +27314,65 @@ name "Files ! Include"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Child documents are used when you have a long document consisting of several
- larger parts or sections.
- For maintenance it is often useful and sometimes even required to split
- the document in several files that can be revised separately.
- The different documents are then the so called child documents and a master
- document connects them to print the full document or parts of it.
+Los documentos hijos se emplean en el caso de tener un documento extenso
+ compuesto por varias partes o secciones más grandes.
+ Para trabajar en este tipo de documentos es útil, y a veces obligado, dividirlo
+ en varios archivos que pueden ser revisados por separado.
+ Estos archivos se conocen como documentos hijos, y el llamado documento
+ maestro los conecta con el fin de imprimirlos como un todo o por partes.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Included documents are displayed in LyX as a box like this: 
+Los documentos incluidos como hijos se muestran en la pantalla de LyX como
+ cuadros del tipo: 
 \begin_inset Graphics
-	filename ../clipart/ChildDocumentQt4.png
-	scale 85
+	filename clipart/DocumentoHijoQt4.png
+	scale 80
 
 \end_inset
 
- To include child documents to a master document use the menu 
+.
+ Para incluir documentos hijos en un documento maestro utiliza el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
-Child\InsetSpace ~
-Documents
+Insertar
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Archivo
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Documento\InsetSpace ~
+hijo
 \family default
 .
- A dialog pops up where you can choose between three include methods:
+ Surge un diálogo en el que puedes elegir entre tres métodos de inclusión:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Include You can include LyX and LaTeX-documents.
- When you press the 
+Incluir Puedes incluir documentos LyX y documentos LaTeX.
+ Al pulsar el botón 
 \family sans
-Load
+Cargar
 \family default
- button in the 
+ en el diálogo 
 \family sans
-Child Document
+Documento hijo
 \family default
- dialog, the included documents will be opened in LyX in a new file tab
- so that you can modify it.
-\newline
-
+, los documentos incluidos se abrirán en una nueva pestaña de archivo de
+ LyX y así puedes modificarlos si quieres.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a child document inserted using 
+Aquí hay un archivo insertado con el método 
 \family sans
-Include
+Incluir
 \family default
-: 
-\begin_inset Include \include{DummyDocument1.lyx}
+:
+\begin_inset Include \include{DocumentoPostizo1.lyx}
 preview false
 
 \end_inset
@@ -27396,107 +27381,97 @@ preview false
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The section numbering includes the sections of the included files in the
- order they are inserted in the master document.
- The included example document has for example a subsection that is numbered
- as subsection of this section.
- Labels of included documents can be referenced: Subsection\InsetSpace ~
+La numeración de secciones tiene en cuenta las secciones de los archivos
+ incluidos en el orden en que están insertados en el documento maestro.
+ El documento incluido de ejemplo tiene una subsección que se numera como
+ subsección de la presente sección.
+ Las etiquetas de los documentos incluidos se pueden referenciar: Subsección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:External-Subsection-1"
+reference "sub:Subsección-Externa-1"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The preamble of the child document is ignored, only the preamble of the
- master document is used.
- Included documents are inserted starting on a new page and end with a pagebreak.
+El preámbulo del documento hijo se ignora, solo se utiliza el preámbulo
+ del documento maestro.
+ Los documentos incluidos se insertan comenzando una página nueva y acabando
+ con un salto de página.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the LaTeX-command 
-\series bold
-
-\backslash
-includeonly 
-\series default
-you can specify which included child documents are processed when the output
- is generated.
- This is useful when you are perhaps only working on a certain chapter of
- your large document as this saves compiling time.
- 
+Con el comando LaTeX 
 \series bold
 
 \backslash
 includeonly
 \series default
- is inserted to the master document preamble.
- It takes a comma-separated list of the filenames as argument, e.g.
-\end_layout
-
-\begin_layout Standard
-
+ puedes determinar qué documentos hijos serán procesados al generar la salida.
+ Esto es útil si, por ejemplo, estás trabajando solo cierto capítulo de
+ un extenso documento y quieres ahorrar tiempo de compilación.
+ 
 \series bold
-\lang english
 
 \backslash
-includeonly{chapter1,chapter5}
+includeonly 
+\series default
+se inserta en el preámbulo del documento maestro, poniendo como argumento
+ una lista de los nombres de archivo separados con comas, p.\InsetSpace \thinspace{}
+e.
+ la orden:
 \end_layout
-
-\begin_layout Standard
-
-\lang english
-will only process the included files named 
-\begin_inset Quotes eld
-\end_inset
-
-chapter1.lyx
-\begin_inset Quotes erd
-\end_inset
-
- (or 
-\begin_inset Quotes eld
-\end_inset
-
-chapter1.tex
-\begin_inset Quotes erd
-\end_inset
-
-) and 
-\begin_inset Quotes eld
-\end_inset
-
-chapter5.lyx
-\begin_inset Quotes erd
-\end_inset
-
- .
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+
+\backslash
+includeonly{capítulo1,capítulo5}
+\end_layout
+
+\begin_layout Standard
+hará que solo se procesen los archivos incluidos cuyos nombres son 
+\begin_inset Quotes eld
+\end_inset
+
+capítulo1.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ (o 
+\begin_inset Quotes eld
+\end_inset
+
+capítulo1.tex
+\begin_inset Quotes erd
+\end_inset
+
+) y 
+\begin_inset Quotes eld
+\end_inset
+
+capítulo5.lyx
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Nota:
 \series default
- When you have included a LyX- or LaTeX-file, you are warned when you export/vie
-w the document in case that the child document uses another document class
- than the master document as this will lead to unexpected outputs.
+ Si has incluido un archivo LyX o LaTeX cuya clase de documento es distinta
+ a la del documento maestro, recibirás una advertencia al exportar/ver el
+ documento, ya que esto podría dar resultados inesperados.
 \end_layout
 
 \end_inset
@@ -27505,59 +27480,61 @@ w the document in case that the child document uses another document class
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Input This method is very similar to the Include method.
- The differences are:
+Entrada Este método es muy parecido al método 
+\family sans
+Incluir
+\family default
+.
+ Las diferencias son:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-Input files don't start with a new page and don't end with a pagebreak.
+Los archivos del tipo Entrada no comienzan en página nueva ni acaban con
+ un salto de página.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Input files can be previewed in LyX when 
+Los archivos del tipo Entrada se pueden visualizar en LyX si la 
 \family sans
-Instant\InsetSpace ~
-Preview
+Vista\InsetSpace ~
+preliminar\InsetSpace ~
+inmediata 
 \family default
- is enabled in LyX's preferences under 
+está activada en el diálogo 
 \family sans
-Look\InsetSpace ~
-and\InsetSpace ~
-feel\SpecialChar \menuseparator
-Graphics
+Herramientas\SpecialChar \menuseparator
+Preferencias
+\family default
+, apartado 
+\family sans
+Apariencia\SpecialChar \menuseparator
+Gráficos
 \family default
 .
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The LaTeX-command 
+No se puede utilizar el comando LaTeX 
 \series bold
 
 \backslash
 includeonly
 \series default
- cannot be used.
+.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
-\lang english
-Here is a child document inserted using 
+Aquí hay un documento hijo insertado con el método 
 \family sans
-Input
+Entrada
 \family default
-: 
-\begin_inset Include \input{DummyDocument2.lyx}
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Include \input{DocumentoPostizo2.lyx}
 preview true
 
 \end_inset
@@ -27566,28 +27543,27 @@ preview true
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Verbatim With this method every text file can be included.
- The file is shown in the output with its source code, no command used in
- the text is invoked.
- You can use the option 
+Literal Con este método se puede incluir todo archivo de texto.
+ El archivo aparece en la salida con su código fuente, y si contiene comandos
+ no se ejecutan.
+ Con la opción 
 \family sans
-Mark spaces in output
+Marcar espacios en la salida
 \family default
- that displays the character 
+ cada espacio en el código fuente se muestra en la salida con el carácter
+ 
 \begin_inset Quotes eld
 \end_inset
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
 
 \backslash
-textvisiblespace 
+textvisiblespace
 \end_layout
 
 \end_inset
@@ -27596,22 +27572,36 @@ textvisiblespace
 \begin_inset Quotes erd
 \end_inset
 
- for every space character in the source code.
- The difference to the method via the menu 
+.
+ La diferencia con el método de inserción mediante el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
-Plain\InsetSpace ~
-Text
+Insertar
 \family default
- is that the document content is not shown in LyX.
+\SpecialChar \menuseparator
+
+\family sans
+Archivo
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Texto\InsetSpace ~
+simple
+\family default
+ es que en este caso el contenido del archivo se ve en LyX, mientras que
+ en modo 
+\family sans
+Literal 
+\family default
+no se muestra el contenido, sino un recuadro con el nombre.
+
+\family sans
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a child document inserted as Verbatim: 
-\begin_inset Include \verbatiminput{DummyTextDocument.txt}
+Aquí se inserta un documento hijo en modo Literal:
+\begin_inset Include \verbatiminput{DocumentoTextoPostizo.txt}
 preview false
 
 \end_inset
@@ -27620,22 +27610,21 @@ preview false
 \begin_inset VSpace bigskip
 \end_inset
 
-Here is a child document inserted as Verbatim using the 
+
+\end_layout
+
+\begin_layout Standard
+Aquí se inserta un documento hijo en modo Literal con la opción 
 \family sans
-Mark spaces in output
+Marcar espacios en la salida
 \family default
- option: 
-\begin_inset Include \verbatiminput*{DummyTextDocument.txt}
+:
+\begin_inset Include \verbatiminput*{DocumentoTextoPostizo.txt}
 preview false
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -27643,19 +27632,17 @@ preview false
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- As you can see in the examples above, the text of the documents included
- as verbatim is not broken at the end of the document lines.
+ Como puedes ver en los ejemplos anteriores, el texto de los documentos
+ incluidos en modo literal no contiene saltos de línea, a no ser que se
+ incluyan expresamente en el archivo de texto.
 \end_layout
 
 \end_inset
@@ -27664,19 +27651,16 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Including the same document twice in a document using different methods
- could cause LaTeX-problems.
+ Incluir el mismo documento dos veces  con métodos diferentes podría causar
+ problemas en LaTeX.
 \end_layout
 
 \end_inset

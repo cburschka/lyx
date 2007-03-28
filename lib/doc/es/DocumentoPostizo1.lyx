@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+#LyX 1.5.0beta1 created this file. For more info see http://www.lyx.org/
+\lyxformat 262
 \begin_document
 \begin_header
 \textclass scrbook
@@ -33,6 +33,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "IG" 
 \author "usti" 
 \end_header
 
@@ -40,20 +41,16 @@
 
 \begin_layout Subsection
 \begin_inset LatexCommand label
-name "sub:External-Subsection-2"
+name "sub:Subsección-Externa-1"
 
 \end_inset
 
-External Subsection 2
+Subsección Externa 1
 \end_layout
 
 \begin_layout Standard
-This is another small dummy child document to show how files can be inserted
- to a document.
-\end_layout
-
-\begin_layout Standard
-
+Esto es un breve documento LyX postizo que se va a insertar como documento
+ hijo en el documento maestro.
 \end_layout
 
 \end_body
