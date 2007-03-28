@@ -139,10 +139,9 @@ public:
 	/// This method uses the BufferView CoordCache to locate the
 	/// paragraph. The y-coodinate is allowed to be off-screen and
 	/// the CoordCache will be automatically updated if needed. This is
-	/// the reason why we need a non const BufferView and why this
-	/// method is non-const.
+	/// the reason why we need a non const BufferView.
 	/// FIXME: move to TextMetrics.
-	pit_type getPitNearY(BufferView & bv, int y);
+	pit_type getPitNearY(BufferView & bv, int y) const;
 
 	/** Find the word under \c from in the relative location
 	 *  defined by \c word_location.

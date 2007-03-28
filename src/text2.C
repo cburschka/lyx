@@ -751,7 +751,7 @@ void LyXText::setCurrentFont(LCursor & cur)
 }
 
 // y is screen coordinate
-pit_type LyXText::getPitNearY(BufferView & bv, int y)
+pit_type LyXText::getPitNearY(BufferView & bv, int y) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
 	BOOST_ASSERT(bv.coordCache().getParPos().find(this) != bv.coordCache().getParPos().end());
