@@ -42,13 +42,13 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
     connect( previewCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
 
 	filenameED->setValidator(new PathValidator(true, filenameED));
+	setFocusProxy(filenameED);
 }
 
 
 void QIncludeDialog::show()
 {
 	QDialog::show();
-	filenameED->setFocus();
 }
 
 

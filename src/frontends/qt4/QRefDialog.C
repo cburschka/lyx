@@ -55,12 +55,12 @@ QRefDialog::QRefDialog(QRef * form)
 	connect( bufferCO, SIGNAL( activated(int) ), 
 		this, SLOT( updateClicked() ) );
 
+	setFocusProxy(refsLW);
 }
 
 void QRefDialog::show()
 {
 	QDialog::show();
-	refsLW->setFocus();
 }
 
 

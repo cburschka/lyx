@@ -61,7 +61,6 @@ QSearchDialog::QSearchDialog(QSearch * form)
 void QSearchDialog::show()
 {
 	QDialog::show();
-	findCO->setFocus();
 	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 }
 

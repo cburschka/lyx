@@ -95,13 +95,13 @@ QExternalDialog::QExternalDialog(QExternal * form)
 	heightED->setValidator(unsignedLengthValidator(heightED));
 
 	fileED->setValidator(new PathValidator(true, fileED));
+	setFocusProxy(fileED);
 }
 
 
 void QExternalDialog::show()
 {
 	QDialog::show();
-	fileED->setFocus();
 }
 
 

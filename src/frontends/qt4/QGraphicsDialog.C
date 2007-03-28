@@ -124,14 +124,13 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	Width->setValidator(unsignedLengthValidator(Width));
 
 	filename->setValidator(new PathValidator(true, filename));
+	setFocusProxy(filename);
 }
 
 
 void QGraphicsDialog::show()
 {
 	QDialog::show();
-	if (form_->controller().params().filename.empty())
-		filename->setFocus();
 }
 
 
