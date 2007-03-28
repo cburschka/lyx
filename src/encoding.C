@@ -169,7 +169,8 @@ docstring const Encoding::latexChar(char_type c) const
 		CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 		if (it == unicodesymbols.end())
 			lyxerr << "Could not find LaTeX command for character 0x"
-			       << std::hex << c << ".\nLaTeX export will fail."
+			       << std::hex << c << std::dec
+			       << ".\nLaTeX export will fail."
 			       << endl;
 		else
 			return it->second.command;
@@ -322,8 +323,9 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				info.force = true;
 			else
 				lyxerr << "Ignoring unknown flag `" << flag
-				       << "' for symbol `0x" << std::hex
-				       << symbol << "'." << endl;
+				       << "' for symbol `0x" 
+				       << std::hex << symbol << std::dec 
+				       << "'." << endl;
 		}
 
 		if (!info.preamble.empty())

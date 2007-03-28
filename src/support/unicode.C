@@ -158,7 +158,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 					*reinterpret_cast<unsigned char const *>(buf + i);
 				lyxerr << " 0x" << b;
 			}
-			lyxerr << endl;
+			lyxerr << std::dec << endl;
 			break;
 		case EINVAL:
 			lyxerr << "EINVAL An incomplete multibyte sequence"
@@ -173,7 +173,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 					*reinterpret_cast<unsigned char const *>(buf + i);
 				lyxerr << " 0x" << b;
 			}
-			lyxerr << endl;
+			lyxerr << std::dec << endl;
 			break;
 		default:
 			lyxerr << "\tSome other error: " << errno << endl;
