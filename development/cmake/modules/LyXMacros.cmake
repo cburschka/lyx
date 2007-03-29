@@ -159,7 +159,6 @@ macro (LYX_CREATE_FINAL_FILES _filenameCPP _filesExcludedFromFinalFile )
          if (_isCFile)
             list(APPEND ${_filesExcludedFromFinalFile} ${_abs_FILE})
          else (_isCFile)
-            file(APPEND ${_filenameCPP} "#include \"${_abs_FILE}\"\n")
             
             GET_FILENAME_COMPONENT(_file_name ${_abs_FILE} NAME_WE)
             STRING(REGEX REPLACE "-" "_" _file_name "${_file_name}" )
