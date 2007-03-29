@@ -551,16 +551,16 @@ Change const BufferView::getCurrentChange() const
 }
 
 
-void BufferView::saveBookmark(bool persistent)
+void BufferView::saveBookmark(unsigned int idx)
 {
 	LyX::ref().session().bookmarks().save(
 		FileName(buffer_->fileName()),
 		cursor_.pit(),
 		cursor_.paragraph().id(),
 		cursor_.pos(),
-		persistent
+		idx
 	);
-	if (persistent)
+	if (idx)
 		// emit message signal.
 		message(_("Save bookmark"));
 }
@@ -786,7 +786,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			if (inset) {
 				label = inset->getParam("reference");
 				// persistent=false: use temp_bookmark
-				saveBookmark(false);
+				saveBookmark(0);
 			}
 		}
 

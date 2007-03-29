@@ -436,7 +436,11 @@ Menuset
 	End
 
 	Menu "navigate_bookmarks"
-		Item "Save Bookmark|S" "bookmark-save 1"
+		Item "Save Bookmark 1|S" "bookmark-save 1"
+		Item "Save Bookmark 2" "bookmark-save 2"
+		Item "Save Bookmark 3" "bookmark-save 3"
+		Item "Save Bookmark 4" "bookmark-save 4"
+		Item "Save Bookmark 5" "bookmark-save 5"
 		Item "Clear Bookmarks|C" "bookmark-clear"
 		Separator
 		Bookmarks

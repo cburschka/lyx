@@ -199,28 +199,27 @@ public:
 	};
 
 	///
-	typedef std::deque<Bookmark> BookmarkList;
+	typedef std::vector<Bookmark> BookmarkList;
 
 public:
 	/// constructor, set max_bookmarks
-	/// allow 20 regular bookmarks
-	BookmarksSection() : bookmarks(0), max_bookmarks(20) {}
+	/// allow 9 regular bookmarks, bookmark 0 is temporary
+	BookmarksSection() : bookmarks(10), max_bookmarks(9) {}
 
 	/// Save the current position as bookmark
-	/// if save==false, save to temp_bookmark
-	void save(support::FileName const & fname, pit_type pit, int par_id, pos_type par_pos, bool persistent);
+	void save(support::FileName const & fname, pit_type pit, int par_id, pos_type par_pos, unsigned int idx);
 
-	/// return bookmark, return temp_bookmark if i==0
+	/// return bookmark 0-9, bookmark 0 is the temporary bookmark
 	Bookmark const & bookmark(unsigned int i) const;
 
 	/// does the given bookmark have a saved position ?
 	bool isValid(unsigned int i) const;
 
 	///
-	unsigned int size() const { return bookmarks.size(); }
+	unsigned int size() const { return max_bookmarks; }
 
 	/// clear all bookmarks
-	void clear() { bookmarks.clear(); }
+	void clear();
 
 	///
 	void read(std::istream & is);
@@ -234,10 +233,6 @@ public:
 	BookmarkList & load() { return bookmarks; }
 
 private:
-	/// temp bookmark (previously saved_positions[0]), this is really ugly
-	/// c.f. ./frontends/controllers/ControlRef.C
-	/// FIXME: a separate LFUN may be a better solution
-	Bookmark temp_bookmark;
 
 	/// a list of bookmarks
 	BookmarkList bookmarks;

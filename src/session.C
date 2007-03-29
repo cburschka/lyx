@@ -231,6 +231,14 @@ LastFilePosSection::FilePos LastFilePosSection::load(FileName const & fname) con
 }
 
 
+void BookmarksSection::clear()
+{
+	// keep bookmark[0], the temporary one
+	bookmarks.resize(1);
+	bookmarks.resize(max_bookmarks + 1);
+}
+
+
 void BookmarksSection::read(istream & is)
 {
 	string tmp;
@@ -244,11 +252,14 @@ void BookmarksSection::read(istream & is)
 
 		try {
 			// read bookmarks
-			// pit, pos, file\n
+			// idx, pit, pos, file\n
+			unsigned int idx;
 			pit_type pit;
 			pos_type pos;
 			string fname;
 			istringstream itmp(tmp);
+			itmp >> idx;
+			itmp.ignore(2);  // ignore ", "
 			itmp >> pit;
 			itmp.ignore(2);  // ignore ", "
 			itmp >> pos;
@@ -260,8 +271,8 @@ void BookmarksSection::read(istream & is)
 			// only load valid bookmarks
 			if (fs::exists(file.toFilesystemEncoding()) &&
 			    !fs::is_directory(file.toFilesystemEncoding()) &&
-			    bookmarks.size() < max_bookmarks)
-				bookmarks.push_back(Bookmark(file, pit, 0, pos));
+			    idx <= max_bookmarks)
+				bookmarks[idx] = Bookmark(file, pit, 0, pos);
 			else
 				lyxerr[Debug::INIT] << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
 		} catch (...) {
@@ -274,41 +285,33 @@ void BookmarksSection::read(istream & is)
 void BookmarksSection::write(ostream & os) const
 {
 	os << '\n' << sec_bookmarks << '\n';
-	for (size_t i = 0; i < bookmarks.size(); ++i) {
-		os << bookmarks[i].par_pit << ", "
-		   << bookmarks[i].par_pos << ", "
-		   << bookmarks[i].filename << '\n';
+	for (size_t i = 1; i <= max_bookmarks; ++i) {
+		if (isValid(i))
+			os << i << ", "
+			   << bookmarks[i].par_pit << ", "
+			   << bookmarks[i].par_pos << ", "
+			   << bookmarks[i].filename << '\n';
 	}
 }
 
 
-void BookmarksSection::save(FileName const & fname, pit_type par_pit, int par_id, pos_type par_pos, bool persistent)
+void BookmarksSection::save(FileName const & fname, pit_type par_pit, int par_id, pos_type par_pos, unsigned int idx)
 {
-	if (persistent) {
-		bookmarks.push_back(Bookmark(fname, par_pit, par_id, par_pos));
-		if (bookmarks.size() > max_bookmarks)
-			bookmarks.pop_back();
-		}
-	else
-		temp_bookmark = Bookmark(fname, par_pit, par_id, par_pos);
+	// silently ignore bookmarks when idx is out of range
+	if (idx <= max_bookmarks)
+		bookmarks[idx] = Bookmark(fname, par_pit, par_id, par_pos);
 }
 
 
 bool BookmarksSection::isValid(unsigned int i) const
 {
-	if (i == 0)
-		return !temp_bookmark.filename.empty();
-	else
-		return i <= bookmarks.size() && !bookmarks[i-1].filename.empty();
+	return i <= max_bookmarks && !bookmarks[i].filename.empty();
 }
 
 
 BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) const
 {
-	if (i == 0)
-		return temp_bookmark;
-	else
-		return bookmarks[i-1];
+	return bookmarks[i];
 }
 
 
