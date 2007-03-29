@@ -15355,7 +15355,7 @@ name "tab:Alignments-when"
 \end_inset
 
 Alignments when LaTeX-package dcolumn is used.
- For the second and third alignment some tricks were used.
+ For all column alignments tricks have to be used to get the output.
 \end_layout
 
 \end_inset
@@ -15368,8 +15368,8 @@ Alignments when LaTeX-package dcolumn is used.
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
-<column alignment="center" valignment="top" rightline="true" width="0" special="D{×}{\times}{-1}|">
-<column alignment="center" valignment="top" width="0" special="D{×}{\times}{4.9}|">
+<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{-1}|">
+<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}|">
 <column alignment="center" valignment="top" rightline="true" width="0" special="D{~}{\,}{9.7}">
 <row bottomline="true">
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
@@ -15405,7 +15405,7 @@ units
 \begin_inset Text
 
 \begin_layout Standard
-12×24\InsetSpace \thinspace{}
+12x24\InsetSpace \thinspace{}
 bottles
 \end_layout
 
@@ -15415,7 +15415,7 @@ bottles
 \begin_inset Text
 
 \begin_layout Standard
-12×24\InsetSpace \thinspace{}
+12x24\InsetSpace \thinspace{}
 
 \begin_inset Formula $\mbox{bottles}$
 \end_inset
@@ -15429,7 +15429,20 @@ bottles
 \begin_inset Text
 
 \begin_layout Standard
-12×24~
+12
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+times 
+\end_layout
+
+\end_inset
+
+24~
 \begin_inset Formula $\mbox{bottles}$
 \end_inset
 
@@ -15444,7 +15457,7 @@ bottles
 \begin_inset Text
 
 \begin_layout Standard
-1024×768\InsetSpace \thinspace{}
+1024x768\InsetSpace \thinspace{}
 Pixels
 \end_layout
 
@@ -15454,7 +15467,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Standard
-1024×768\InsetSpace \thinspace{}
+1024x768\InsetSpace \thinspace{}
 
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
@@ -15468,7 +15481,20 @@ Pixels
 \begin_inset Text
 
 \begin_layout Standard
-1024×768~
+1024
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+times 
+\end_layout
+
+\end_inset
+
+768~
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
 
@@ -15483,7 +15509,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Standard
-32×6\InsetSpace \thinspace{}
+32x6\InsetSpace \thinspace{}
 cm
 \end_layout
 
@@ -15493,7 +15519,7 @@ cm
 \begin_inset Text
 
 \begin_layout Standard
-32×6\InsetSpace \thinspace{}
+32x6\InsetSpace \thinspace{}
 
 \begin_inset Formula $\mbox{cm}$
 \end_inset
@@ -15507,7 +15533,20 @@ cm
 \begin_inset Text
 
 \begin_layout Standard
-32×6~
+32
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+times 
+\end_layout
+
+\end_inset
+
+6~
 \begin_inset Formula $\mbox{cm}$
 \end_inset
 

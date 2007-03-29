@@ -1,5 +1,5 @@
-#LyX 1.5.0beta1 created this file. For more info see http://www.lyx.org/
-\lyxformat 262
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -203,11 +203,9 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "IG" 
 \author "usti" 
-\author "IG,,," 
+\author "IG" 
 \author "Uwe Stöhr" 
-\author "" 
 \end_header
 
 \begin_body
@@ -15392,7 +15390,9 @@ Alineaciones con el paquete LaTeX
 dcolumn
 \series default
 .
- Para la segunda y tercera alineaciones se han hecho algunos trucos.
+ 
+\lang english
+For all column alignments tricks have to be used to get the output.
 \end_layout
 
 \end_inset
@@ -15467,9 +15467,18 @@ bottles
 
 \begin_layout Standard
 12
-\emph on
-×
-\emph default
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+times 
+\end_layout
+
+\end_inset
+
 24~
 \begin_inset Formula $\mbox{bottles}$
 \end_inset
@@ -15510,9 +15519,18 @@ Pixels
 
 \begin_layout Standard
 1024
-\emph on
-×
-\emph default
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+times 
+\end_layout
+
+\end_inset
+
 768~
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
@@ -15553,9 +15571,18 @@ cm
 
 \begin_layout Standard
 32
-\emph on
-×
-\emph default
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+times 
+\end_layout
+
+\end_inset
+
 6~
 \begin_inset Formula $\mbox{cm}$
 \end_inset
