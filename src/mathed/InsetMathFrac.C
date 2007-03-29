@@ -57,7 +57,7 @@ bool InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	if (kind_ == NICEFRAC) {
-		dim.wid =  cell(0).width() + cell(1).width() + 5;
+		dim.wid = cell(0).width() + cell(1).width() + 5;
 		dim.asc = cell(0).height() + 5;
 		dim.des = cell(1).height() - 5;
 	} else {
