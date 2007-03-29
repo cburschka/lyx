@@ -6,7 +6,7 @@
 ; Licence details can be found in the file COPYING or copy at
 ; http://www.lyx.org/about/license.php3
 
-; Author Uwe St�hr based on the work of Angus Leeming and Joost Verburg
+; Author Uwe Stöhr based on the work of Angus Leeming and Joost Verburg
 ; Full author contact details are available in file CREDITS or copy at
 ; http://www.lyx.org/about/credits.php
 
