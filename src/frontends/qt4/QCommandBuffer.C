@@ -84,10 +84,12 @@ QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control)
 	QHBoxLayout * layout = new QHBoxLayout(0);
 
 	QPushButton * up = new QPushButton(qpup, "", this);
+	up->setMaximumSize(24, 24);
 	up->setToolTip(qt_("Previous command"));
 	connect(up, SIGNAL(clicked()), this, SLOT(up()));
 	QPushButton * down = new QPushButton(qpdown, "", this);
 	down->setToolTip(qt_("Next command"));
+	down->setMaximumSize(24, 24);
 	connect(down, SIGNAL(clicked()), this, SLOT(down()));
 
 	edit_ = new QCommandEdit(this);
