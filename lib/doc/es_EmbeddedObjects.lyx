@@ -1,4 +1,4 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -11249,52 +11249,46 @@ raggedright
 \end_layout
 
 \begin_layout Section
-Booktabs
-\begin_inset LatexCommand \index{Booktabs}
+Tablas Formales
+\begin_inset LatexCommand \index{Tablas Formales}
 
 \end_inset
 
 
-\begin_inset LatexCommand \index{Tablas ! Booktabs}
+\begin_inset LatexCommand \index{Tablas ! Formales}
 
 \end_inset
 
  
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\size footnotesize
-N.
- del t.
- A la espera de la traducción que se le asigne en LyX 1.5, he dejado el original
- en inglés
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 En los libros, las tablas se suelen presentar como en la Tabla \InsetSpace ~
 
-\begin_inset LatexCommand \ref{tab:Ejemplo-tabla-booktabs}
+\begin_inset LatexCommand \ref{tab:Ejemplo-tabla-formal}
 
 \end_inset
 
 .
- En inglés se denominan "
+ Se denominan 
 \emph on
-booktabs
+
+\begin_inset Quotes eld
+\end_inset
+
+
 \emph default
-".
+tablas formales
+\begin_inset Quotes erd
+\end_inset
+
+.
  La próxima versión de LyX, LyX\InsetSpace ~
-1.5, tendrá soporte para "booktabs", véase
+1.5, tendrá soporte para tablas
+\emph on
  
+\emph default
+formales, véase 
 \begin_inset ERT
 status collapsed
 
@@ -11330,11 +11324,11 @@ sideways false
 status open
 
 \begin_layout Caption
-\begin_inset LatexCommand \label{tab:Ejemplo-tabla-booktabs}
+\begin_inset LatexCommand \label{tab:Ejemplo-tabla-formal}
 
 \end_inset
 
-Ejemplo de tabla booktabs
+Ejemplo de tabla formal
 \end_layout
 
 \begin_layout Standard
@@ -11862,7 +11856,7 @@ bottomrule
 \end_layout
 
 \begin_layout Standard
-Este capítulo describe la creación de tablas "booktabs" en LyX\InsetSpace ~
+Este capítulo describe la creación de tablas formales en LyX\InsetSpace ~
 1.4.
 \end_layout
 
@@ -11876,7 +11870,7 @@ Comandos Fundamentales
 \end_layout
 
 \begin_layout Standard
-Para poder usar "booktabs" hay que cargar el paquete de LaTeX 
+Para poder usar tablas formales hay que cargar el paquete de LaTeX 
 \series bold
 booktabs
 \series default
@@ -11904,7 +11898,7 @@ usepackage{booktabs}
 \end_layout
 
 \begin_layout Standard
-La primera línea de una tabla booktabs se crea con el comando
+La primera línea de una tabla formal se crea con el comando
 \end_layout
 
 \begin_layout Standard
@@ -11933,15 +11927,7 @@ em.
 \end_layout
 
 \begin_layout Standard
-La última línea de una tabla 
-\begin_inset Quotes eld
-\end_inset
-
-booktabs
-\begin_inset Quotes erd
-\end_inset
-
- se crea con el comando ERT
+La última línea de una tabla formal se crea con el comando ERT
 \end_layout
 
 \begin_layout Standard
@@ -12044,7 +12030,7 @@ midrule
 
 La Tabla\InsetSpace ~
 
-\begin_inset LatexCommand \ref{tab:Ejemplo-tabla-booktabs}
+\begin_inset LatexCommand \ref{tab:Ejemplo-tabla-formal}
 
 \end_inset
 
@@ -12109,7 +12095,7 @@ El ancho predeterminado es 0.5\InsetSpace \thinspace{}
 em.
  En la Tabla\InsetSpace ~
 
-\begin_inset LatexCommand \ref{tab:Ejemplo-tabla-booktabs}
+\begin_inset LatexCommand \ref{tab:Ejemplo-tabla-formal}
 
 \end_inset
 
@@ -12139,7 +12125,7 @@ cmidrules
 \series default
  como en la Tabla\InsetSpace ~
 
-\begin_inset LatexCommand \ref{tab:Tabla-booktabs-especial}
+\begin_inset LatexCommand \ref{tab:Tabla-formal-especial}
 
 \end_inset
 
@@ -12158,7 +12144,7 @@ morecmidrules
 \begin_layout Standard
 El comando que se ha utilizado para la segunda fila de la Tabla\InsetSpace ~
 
-\begin_inset LatexCommand \ref{tab:Tabla-booktabs-especial}
+\begin_inset LatexCommand \ref{tab:Tabla-formal-especial}
 
 \end_inset
 
@@ -12203,9 +12189,10 @@ cmidrule{3-4}
 \end_layout
 
 \begin_layout Standard
-El espacio alrededor de cada línea en una tabla "booktabs" puede especificarse
+El espacio alrededor de cada línea en una tabla formal puede especificarse
  en el preámbulo del documento.
- Para más información al respecto, véase el manual del paquete 
+ Para más información al respecto, véase el manual del paquete\InsetSpace ~
+
 \begin_inset LatexCommand \cite{booktabs}
 
 \end_inset
@@ -12231,11 +12218,11 @@ sideways false
 status open
 
 \begin_layout Caption
-\begin_inset LatexCommand \label{tab:Tabla-booktabs-especial}
+\begin_inset LatexCommand \label{tab:Tabla-formal-especial}
 
 \end_inset
 
-Tabla booktabs especial
+Tabla formal especial
 \end_layout
 
 \begin_layout Standard
@@ -19196,39 +19183,33 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-Note: 
+Nota:
 \series default
-The option 
+ La opción 
 \series bold
 tableposition=top
 \series default
- has no effect when a 
+ no funciona en una clase de documento 
 \series bold
 koma-script
 \series default
-\lang spanish
 
 \begin_inset LatexCommand \index{LaTeX-paquetes ! koma-script}
 
 \end_inset
 
-
-\series bold
-\lang english
- 
-\series default
-document class is used.
- In this case the document class option 
+.
+ En ese caso debe utilizarse la opción de clase de documento 
 \series bold
 tablecaptionabove
 \series default
- must be used.
+.
+ 
 \end_layout
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -19245,37 +19226,31 @@ caption
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To change the label name from e.g.
- ``Figure'' to ``Image'' use this preamble command: 
+Para cambiar el nombre de la etiqueta de ``Figura'' a ``Imagen'', p.e., usa
+ el siguiente comando de preámbulo:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 renewcommand{
 \backslash
-fnum@figure}{Image~
+fnum@figure}{Imagen~
 \backslash
 thefigure}
-\series default
- 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+donde 
 \series bold
 
 \backslash
 thefigure
 \series default
- inserts the figure number and ``~'' creates a protected space.
+ inserta el número de figura y ``~'' genera un espacio protegido.
+ 
 \end_layout
 
 \begin_layout Standard
