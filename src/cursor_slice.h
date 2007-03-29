@@ -26,9 +26,7 @@
 
 namespace lyx {
 
-class BufferView;
 class InsetBase;
-class MathInset;
 class MathArray;
 class LyXText;
 class Paragraph;
