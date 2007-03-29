@@ -786,8 +786,10 @@ bool LCursor::backspace()
 			// [|], can not delete from inside
 			return false;
 		} else {
-			// move to left
-			popLeft();
+			if (inMathed())
+				pullArg();
+			else
+				popLeft();
 			return true;
 		}
 	}
