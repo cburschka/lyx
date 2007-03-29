@@ -1,32 +1,32 @@
-# Lyx for Windows, NSIS v2 series installer script
+; Lyx for Windows, NSIS v2 series installer script
 
-# File LyXWinInstaller.nsi
-# This file is part of LyX, the document processor.
-# http://www.lyx.org/
-# Licence details can be found in the file COPYING or copy at
-# http://www.lyx.org/about/license.php3
+; File LyXWinInstaller.nsi
+; This file is part of LyX, the document processor.
+; http://www.lyx.org/
+; Licence details can be found in the file COPYING or copy at
+; http://www.lyx.org/about/license.php3
 
-# Author Uwe Stöhr based on the work of Angus Leeming and Joost Verburg
-# Full author contact details are available in file CREDITS or copy at
-# http://www.lyx.org/about/credits.php
+; Author Uwe Stï¿½hr based on the work of Angus Leeming and Joost Verburg
+; Full author contact details are available in file CREDITS or copy at
+; http://www.lyx.org/about/credits.php
 
-# This script requires NSIS 2.22 and newer
-# http://nsis.sourceforge.net/
-#--------------------------------
+; This script requires NSIS 2.22 and newer
+; http://nsis.sourceforge.net/
+;--------------------------------
 
-# Do a Cyclic Redundancy Check to make sure the installer
-# was not corrupted by the download.
+; Do a Cyclic Redundancy Check to make sure the installer
+; was not corrupted by the download.
 CRCCheck force
 
-# Make the installer as small as possible.
-# SetCompressor lzma
+; Make the installer as small as possible.
+; SetCompressor lzma
 
-#--------------------------------
-# You should need to change only these macros...
+;--------------------------------
+; You should need to change only these macros...
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5beta1-19-02-2007"
+!define PRODUCT_VERSION "1.5svn-30-03-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -40,13 +40,13 @@ CRCCheck force
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 
-BrandingText "LyXWinInstaller v3.09 - Complete"
+BrandingText "LyXWinInstaller v3.10 - Complete"
 !define INSTALLER_VERSION "Complete"
-!define INSTALLER_EXE "LyXWin150beta1Complete-3-09.exe"
-!define INSTALLER2_EXE "LyXWin150beta1Small-3-09.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150beta1Complete-3-10.exe"
+!define INSTALLER2_EXE "LyXWin150beta1Small-3-10.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
-# Replaced by HKLM or HKCU depending on SetShellVarContext.
+; Replaced by HKLM or HKCU depending on SetShellVarContext.
 !define PRODUCT_ROOT_KEY "SHCTX"
 
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
@@ -54,7 +54,7 @@ BrandingText "LyXWinInstaller v3.09 - Complete"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.3.2"
+!define ImageMagickVersion "6.3.3"
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick" ; for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
 !define GhostscriptVersion "8.54"
@@ -72,22 +72,22 @@ BrandingText "LyXWinInstaller v3.09 - Complete"
 !define JabRefInstall "external\JabRef-2.2-Setup.exe"
 !define JabRefVersion "JabRef 2.2"
 !define DVIPostFileDir "${PRODUCT_SOURCEDIR}\external\dvipost"
-# the following variable is needed for a possible CD-version, see InstallActions.nsh, around line 213
-#!define LaTeXPackagesDir "${PRODUCT_SOURCEDIR}\latex"
+; the following variable is needed for a possible CD-version, see InstallActions.nsh, around line 213
+;!define LaTeXPackagesDir "${PRODUCT_SOURCEDIR}\latex"
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 !define MiKTeXConfigFolder "MiKTeX\2.5\miktex\config"
 !define MiKTeXDeliveredVersion "MiKTeX 2.5"
 !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.5.2580.exe"
 
-#--------------------------------
-# Make some of the information above available to NSIS.
+;--------------------------------
+; Make some of the information above available to NSIS.
 
 Name "${PRODUCT_NAME}"
 OutFile "${INSTALLER_EXE}"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME} ${PRODUCT_VERSION}"
 
-#--------------------------------
-# Variables
+;--------------------------------
+; Variables
 
 Var LatexPath
 Var PythonPath
@@ -136,36 +136,36 @@ Var Pointer
 Var UserList
 Var RunNumber
 
-#--------------------------------
-# load some NSIS libraries
+;--------------------------------
+; load some NSIS libraries
 !include "MUI.nsh"
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
-#!include "TextFunc.nsh"
-#!insertmacro LineFind
+;!include "TextFunc.nsh"
+;!insertmacro LineFind
 
-# Set of various macros and functions
+; Set of various macros and functions
 !include "LyXUtils.nsh"
 
-# Function to check if needed programs are missing or not
+; Function to check if needed programs are missing or not
 !include "MissingPrograms.nsh"
 
-# Functions for page to set installer language
-# and LyX's menu language
+; Functions for page to set installer language
+; and LyX's menu language
 !include "LanguageSettings.nsh"
 
-# Function for page to install Aspell dictionaries
+; Function for page to install Aspell dictionaries
 !include "Aspell.nsh"
 
-# Use the Abiword macros to help set up associations with the file extension in the Registry.
-# Grabbed from
-# http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
+; Use the Abiword macros to help set up associations with the file extension in the Registry.
+; Grabbed from
+; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
 !include "abi_util_fileassoc.nsh"
 
-#--------------------------------
+;--------------------------------
 
-# Remember the installer language
+; Remember the installer language
 !define MUI_LANGDLL_REGISTRY_ROOT "HKCU"
 !define MUI_LANGDLL_REGISTRY_KEY "${PRODUCT_UNINST_KEY}"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
@@ -177,48 +177,48 @@ Var RunNumber
 !define MUI_UNICON "${PRODUCT_DIR}\icons\lyx.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "${VERSION_BITMAP}"
 
-# Welcome page
+; Welcome page
 !define MUI_WELCOMEPAGE_TEXT "$(WelcomePageText)"
 !insertmacro MUI_PAGE_WELCOME
 
-# Show the license.
+; Show the license.
 !insertmacro MUI_PAGE_LICENSE "${PRODUCT_LICENSE_FILE}"
 
-# Specify the installation directory.
+; Specify the installation directory.
 !insertmacro MUI_PAGE_DIRECTORY
 
-# Specify LyX's menu language.
+; Specify LyX's menu language.
 Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 
-# Define which components to install.
+; Define which components to install.
 !insertmacro MUI_PAGE_COMPONENTS
 
-# Specify where to install program shortcuts.
+; Specify where to install program shortcuts.
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "${PRODUCT_ROOT_KEY}"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "${PRODUCT_UNINST_KEY}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "LyX ${PRODUCT_VERSION}"
 !insertmacro MUI_PAGE_STARTMENU ${PRODUCT_NAME} $StartmenuFolder
 
-# Check for needed programs
+; Check for needed programs
 Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 
-# Watch the components being installed.
+; Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES
 
-# Finish page
+; Finish page
 !define MUI_FINISHPAGE_RUN 
 !define MUI_FINISHPAGE_TEXT "$(FinishPageMessage)"
 !define MUI_FINISHPAGE_RUN_TEXT "$(FinishPageRun)"
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchProduct"
 !insertmacro MUI_PAGE_FINISH
 
-# The uninstaller.
+; The uninstaller.
 !insertmacro MUI_UNPAGE_COMPONENTS
 !insertmacro MUI_UNPAGE_INSTFILES
 
-#--------------------------------
-# Languages
+;--------------------------------
+; Languages
 
 !insertmacro MUI_LANGUAGE "English" # first language is the default language
 !insertmacro MUI_LANGUAGE "Danish"
@@ -254,16 +254,16 @@ Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 
 LicenseData "$(LyXLicenseData)"
 
-#--------------------------------
-# Reserve Files
+;--------------------------------
+; Reserve Files
 
-# These files are inserted before other files in the data block
+; These files are inserted before other files in the data block
 !insertmacro MUI_RESERVEFILE_LANGDLL
 ReserveFile "io_ui_language.ini"
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 
-#--------------------------------
-# Installer sections
+;--------------------------------
+; Installer sections
 
 Section "!${PRODUCT_NAME}" SecCore
   SectionIn RO
@@ -287,7 +287,7 @@ Section /o "$(SecInstJabRefTitle)" SecInstJabRef
  StrCpy $InstallJabRef "true"
 SectionEnd
 
-# Section descriptions
+; Section descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "$(SecCoreDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecAllUsers} "$(SecAllUsersDescription)"
@@ -299,14 +299,14 @@ SectionEnd
 
 !include "InstallActions-complete.nsh"
 
-#--------------------------------
-# This hook function is called internally by NSIS on installer startup
+;--------------------------------
+; This hook function is called internally by NSIS on installer startup
 Function .onInit
 
-  # set the installer language to the Windows locale language  
+  ; set the installer language to the Windows locale language  
   System::Call "kernel32::GetUserDefaultLangID()i.a"
 
-  # Check that the installer is not currently running
+  ; Check that the installer is not currently running
   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${INSTALLER_EXE}.Instance") i .r1 ?e'
   Pop $R0
   ${if} $R0 != "0"
@@ -319,23 +319,23 @@ Function .onInit
    Abort
   ${endif}
 
-  # Check if LyX is already installed
+  ; Check if LyX is already installed
   ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "Publisher"
   ${if} $0 != ""
    MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
    Abort
   ${endif}
 
-  # Default settings
-  # These can be reset to "all" in section SecAllUsers.
+  ; Default settings
+  ; These can be reset to "all" in section SecAllUsers.
   SetShellVarContext current
   StrCpy $ProductRootKey "HKCU"
 
-  # This can be reset to "true" in section SecDesktop.
+  ; This can be reset to "true" in section SecDesktop.
   StrCpy $CreateDesktopIcon "false"
   StrCpy $CreateFileAssociations "false"
 
-  # If the user does *not* have administrator privileges, abort
+  ; If the user does *not* have administrator privileges, abort
   StrCpy $Answer ""
   StrCpy $UserName ""
   !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
@@ -350,10 +350,10 @@ Function .onInit
     Abort
   ${endif}
 
-  # check which programs are installed or not
+  ; check which programs are installed or not
   Call MissingPrograms ; function from MissingPrograms.nsh
 
-  # don't let the installer sections appear when the programs are already installed
+  ; don't let the installer sections appear when the programs are already installed
   ${if} $PSVPath != ""
    SectionSetText 4 "" ; hides the corresponding uninstaller section, ${SecInstGSview}
   ${endif}
@@ -364,32 +364,32 @@ Function .onInit
   ClearErrors
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 Function LaunchProduct
   Exec ${PRODUCT_BAT}
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
-#Function DeleteLines
-#	StrCpy $0 SkipWrite
-#	Push $0
-#FunctionEnd
+;Function DeleteLines
+;	StrCpy $0 SkipWrite
+;	Push $0
+;FunctionEnd
 
-#--------------------------------
-# The Uninstaller
+;--------------------------------
+; The Uninstaller
 
 Function un.onInit
 
-  # Check that LyX is not currently running
+  ; Check that LyX is not currently running
   FindProcDLL::FindProc "lyx.exe"
   ${if} $R0 == "1"
    MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
    Abort
   ${endif}
 
-  # Ascertain whether the user has sufficient privileges to uninstall.
+  ; Ascertain whether the user has sufficient privileges to uninstall.
   SetShellVarContext current
 
   ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY}" "RootKey"
@@ -400,7 +400,7 @@ Function un.onInit
     ${endif}
   ${endif}
 
-  # If the user does *not* have administrator privileges, abort
+  ; If the user does *not* have administrator privileges, abort
   StrCpy $Answer ""
   !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
   ${if} $Answer == "yes"
@@ -410,10 +410,10 @@ Function un.onInit
     Abort
   ${endif}
 
-  # Macro to investigate name of LyX's preferences folders to be able remove them
+  ; Macro to investigate name of LyX's preferences folders to be able remove them
   !insertmacro UnAppPreSuff $AppPre $AppSuff ; macro from LyXUtils.nsh
 
-  # test if Aspell was installed together with LyX
+  ; test if Aspell was installed together with LyX
   ReadRegStr $0 HKLM "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
   ${if} $0 == "Yes"
    SectionSetText 2 "Aspell" ; names the corersponding uninstaller section (has the index "2" as it is the third section in Uninstall.nsh)
@@ -422,7 +422,7 @@ Function un.onInit
    SectionSetText 2 "" ; hides the corresponding uninstaller section
   ${endif}
 
-  # test if MiKTeX was installed together with LyX
+  ; test if MiKTeX was installed together with LyX
   ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   ${if} $0 == "Yes"
    SectionSetText 3 "MiKTeX" ; names the corersponding uninstaller section
@@ -431,7 +431,7 @@ Function un.onInit
    SectionSetText 3 "" ; hides the corresponding uninstaller section
   ${endif}
 
-  # test if JabRef was installed together with LyX
+  ; test if JabRef was installed together with LyX
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX"
   ${if} $0 == "Yes"
    SectionSetText 4 "JabRef" ; names the corersponding uninstaller section
@@ -452,8 +452,8 @@ Function un.onUninstSuccess
   
 FunctionEnd
 
-#----------------------
-#Installer sections
+;----------------------
+;Installer sections
 !include "Uninstall.nsh"
 
-# eof
+; eof
