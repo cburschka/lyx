@@ -653,9 +653,9 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
 	if (cur.pos() != 0 || isempty)
-		setCursor(cur.top(), cur.pit() + 1, 0);
+		setCursor(cur, cur.pit() + 1, 0);
 	else
-		setCursor(cur.top(), cur.pit(), 0);
+		setCursor(cur, cur.pit(), 0);
 }
 
 
