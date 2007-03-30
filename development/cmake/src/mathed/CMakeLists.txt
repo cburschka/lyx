@@ -20,10 +20,8 @@ include_directories(${TOP_SRC_DIR}/src/mathed)
 if(NOT MERGE_FILES)
 	add_library(mathed ${library_type} ${mathed_sources} ${mathed_headers})
 else(NOT MERGE_FILES)
-	lyx_merge_files(allinone mathed_sources)
-	add_library(mathed ${library_type}
-					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
-					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
+	lyx_const_touched_files(_allinone const_touched_files  mathed_sources)
+	add_library(mathed ${library_type} ${const_touched_files})
 endif(NOT MERGE_FILES)
 
 

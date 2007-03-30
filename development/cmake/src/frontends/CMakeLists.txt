@@ -21,10 +21,8 @@ lyx_add_msvc_pch(frontends)
 if(NOT MERGE_FILES)
 	add_library(frontends ${library_type} ${frontends_sources} ${frontends_headers})
 else(NOT MERGE_FILES)
-	lyx_merge_files(allinone frontends_sources)
-	add_library(frontends ${library_type} 					
-					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
-					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
+	lyx_const_touched_files(_allinone const_touched_files  frontends_sources)
+	add_library(frontends ${library_type} ${const_touched_files})
 endif(NOT MERGE_FILES)
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)

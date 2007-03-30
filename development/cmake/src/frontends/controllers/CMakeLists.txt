@@ -16,10 +16,8 @@ include_directories(${TOP_SRC_DIR}/src/frontends/controllers)
 if(NOT MERGE_FILES)
 	add_library(controllers ${library_type} ${controllers_sources} ${controllers_headers})
 else(NOT MERGE_FILES)
-	lyx_merge_files(allinone controllers_sources)
-	add_library(controllers ${library_type} 
-					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
-					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
+	lyx_const_touched_files(_allinone const_touched_files  controllers_sources)
+	add_library(controllers ${library_type} ${const_touched_files})
 endif(NOT MERGE_FILES)
 
 target_link_libraries(controllers boost_regex boost_filesystem)
