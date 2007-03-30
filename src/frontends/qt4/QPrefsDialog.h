@@ -165,7 +165,10 @@ private Q_SLOTS:
 
 private:
 	std::vector<LColor_color> lcolors_;
-	std::vector<QString> prefcolors_;
+	// FIXME the use of mutable here is required due to the
+	// fact that initialization is not done in the controller
+	// but in the constructor.
+	mutable std::vector<QString> curcolors_;
 	std::vector<QString> newcolors_;
 
 };

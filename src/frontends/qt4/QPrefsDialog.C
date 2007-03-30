@@ -485,7 +485,9 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 {
 	setupUi(this);
 
-	// FIXME: put in controller
+	// FIXME: all of this initialization should be put into the controller.
+	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg113301.html
+	// for some discussion of why that is not trivial.
 	for (int i = 0; i < LColor::ignore; ++i) {
 		LColor::color lc = static_cast<LColor::color>(i);
 		if (lc == LColor::none
@@ -502,14 +504,15 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 
 		lcolors_.push_back(lc);
 		QColor color = QColor(guiApp->colorCache().get(lc));
-		prefcolors_.push_back(color.name());
+		curcolors_.push_back(color.name());
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);
 		// This is not a memory leak:
 		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(coloritem),
 			toqstr(lcolor.getGUIName(lc)), lyxObjectsLW);
 	}
-	newcolors_ = prefcolors_;
+	newcolors_ = curcolors_;
+	// End initialization
 
 	connect(colorChangePB, SIGNAL(clicked()),
 		this, SLOT(change_color()));
@@ -521,12 +524,21 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 void PrefColors::apply(LyXRC & /*rc*/) const
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
-		if (prefcolors_[i]!=newcolors_[i])
+		if (curcolors_[i]!=newcolors_[i])
 			form_->controller().setColor(lcolors_[i], fromqstr(newcolors_[i]));
 	}
+	// HACK The following line is needed because the values are not 
+	// re-initialized in ControlPrefs::initialiseParams but are only 
+	// initialized in the constructor. But the constructor is only called 
+	// once, when the dialog if first created, and is not called again when 
+	// Tools > Preferences is selected a second time: It's just called up 
+	// from memory. [See QDialogView::show(): if (!form) { build(); }.]
+	curcolors_ = newcolors_;
 }
 
 
+// FIXME The fact that this method is empty is also a symptom of the
+// problem here.
 void PrefColors::update(LyXRC const & /*rc*/)
 {
 }
