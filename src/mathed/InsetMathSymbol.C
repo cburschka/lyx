@@ -215,6 +215,8 @@ void InsetMathSymbol::octave(OctaveStream & os) const
 void InsetMathSymbol::write(WriteStream & os) const
 {
 	os << '\\' << name();
+	if (name().size() == 1 && name()[0] < '0') // $,#, etc
+		return;
 	os.pendingSpace(true);
 }
 
