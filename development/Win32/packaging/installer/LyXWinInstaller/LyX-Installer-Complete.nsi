@@ -1,4 +1,4 @@
-; Lyx for Windows, NSIS v2 series installer script
+﻿; Lyx for Windows, NSIS v2 series installer script
 
 ; File LyXWinInstaller.nsi
 ; This file is part of LyX, the document processor.
@@ -57,7 +57,7 @@ BrandingText "LyXWinInstaller v3.10 - Complete"
 !define ImageMagickVersion "6.3.3"
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick" ; for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.54"
+!define GhostscriptVersion "8.56"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
 !define AiksaurusInstall "external\Aiksaurus"
 !define AspellDir "$APPDATA\Aspell"

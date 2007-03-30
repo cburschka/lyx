@@ -11,7 +11,9 @@
   - new window style for View -> View Source
   - many, many bug fixes 
 
-- updated to ImageMagick 6.3.3-4
+- updated to ImageMagick 6.3.3-4: fix bug that transparent image pixels appear
+     black in DVI or Postscript output
+- updated to Ghostscript 8.56
 
 - add missing DLL to run Python on all Win platforms
 - add missing image files for EmbeddedObjects manual
