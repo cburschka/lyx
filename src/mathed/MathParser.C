@@ -263,7 +263,7 @@ public:
 	///
 	Token(char_type c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
 	///
-	Token(docstring const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
+	explicit Token(docstring const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
 
 	///
 	docstring const & cs() const { return cs_; }
@@ -285,6 +285,7 @@ private:
 	CatCode cat_;
 };
 
+
 ostream & operator<<(ostream & os, Token const & t)
 {
 	if (t.cs().size()) {
@@ -297,7 +298,7 @@ ostream & operator<<(ostream & os, Token const & t)
 		// In order to avoid that we return early:
 		if (cs == "\\")
 			return os;
-		os << '\\' << cs;
+		os << '\\' << to_utf8(cs);
 	}
 	else if (t.cat() == catLetter)
 		os << t.character();
@@ -1127,6 +1128,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			docstring const l = tl.cs() == "|" ? from_ascii("Vert") : tl.asString();
 			MathArray ar;
 			parse(ar, FLAG_RIGHT, mode);
+			if (!good())
+				break;
 			skipSpaces();
 			Token const & tr = getToken();
 			docstring const r = tr.cs() == "|" ? from_ascii("Vert") : tr.asString();
@@ -1239,9 +1242,9 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					parse2(cell->back(), FLAG_END, mode, false);
 				} else {
 					dump();
-					lyxerr << "found math environment `" << name
+					lyxerr << "found math environment `" << to_utf8(name)
 					       << "' in symbols file with unsupported inset `"
-					       << l->inset << "'." << endl;
+					       << to_utf8(l->inset) << "'." << endl;
 					// create generic environment inset
 					cell->push_back(MathAtom(new InsetMathEnv(name)));
 					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
@@ -1250,7 +1253,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else {
 				dump();
-				lyxerr << "found unknown math environment '" << name << "'" << endl;
+				lyxerr << "found unknown math environment '" << to_utf8(name)
+					<< "'" << endl;
 				// create generic environment inset
 				cell->push_back(MathAtom(new InsetMathEnv(name)));
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
