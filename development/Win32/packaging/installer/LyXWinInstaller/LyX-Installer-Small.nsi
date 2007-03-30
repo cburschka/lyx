@@ -6,7 +6,7 @@
 ; Licence details can be found in the file COPYING or copy at
 ; http://www.lyx.org/about/license.php3
 
-; Author Uwe StÃ¶hr based on the work of Angus Leeming and Joost Verburg
+; Author Uwe Stöhr based on the work of Angus Leeming and Joost Verburg
 ; Full author contact details are available in file CREDITS or copy at
 ; http://www.lyx.org/about/credits.php
 
@@ -42,8 +42,8 @@ CRCCheck force
 
 BrandingText "LyXWinInstaller v3.10 - Small"
 !define INSTALLER_VERSION "Small"
-!define INSTALLER_EXE "LyXWin150beta1Small-3-10.exe"
-!define INSTALLER2_EXE "LyXWin150beta1Complete-3-10.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150svnSmall-3-10.exe"
+!define INSTALLER2_EXE "LyXWin150svnComplete-3-10.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
