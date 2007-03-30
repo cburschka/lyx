@@ -89,7 +89,9 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
+#if QT_VERSION != 0x040203
 	dlg.setFileMode(QFileDialog::AnyFile);
+#endif
 	dlg.setAcceptMode(QFileDialog::AcceptSave);
 	dlg.setConfirmOverwrite(false);
 
