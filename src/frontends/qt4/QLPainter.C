@@ -114,11 +114,11 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 	// Must use new as np is not known at compile time.
 	boost::scoped_array<QPoint> points(new QPoint[np]);
 
-  bool antialias = false;
+	bool antialias = false;
 	for (int i = 0; i < np; ++i) {
 		points[i].setX(xp[i]);
 		points[i].setY(yp[i]);
-		if(i != 0) 
+		if (i != 0) 
 			antialias |= xp[i-1] != xp[i] && yp[i-1] != yp[i];
 	}
 
@@ -285,5 +285,4 @@ int QLPainter::text(int x, int y, docstring const & s,
 
 } // namespace frontend
 } // namespace lyx
-
 
