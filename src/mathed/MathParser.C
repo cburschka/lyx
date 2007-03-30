@@ -592,12 +592,20 @@ void Parser::tokenize(docstring const & buffer)
 void Parser::dump() const
 {
 	lyxerr << "\nTokens: ";
+	static bool anti_recursive = true;
 	for (unsigned i = 0; i < tokens_.size(); ++i) {
+		anti_recursive = !anti_recursive;
 		if (i == pos_)
 			lyxerr << " <#> ";
 		lyxerr << tokens_[i];
+		if (anti_recursive) {
+			lyxerr << "\nRecursive Parser::dump() detected!" << endl;
+			BOOST_ASSERT(false);
+			exit(1);
+		}
 	}
 	lyxerr << " pos: " << pos_ << endl;
+	anti_recursive = true;
 }
 
 
