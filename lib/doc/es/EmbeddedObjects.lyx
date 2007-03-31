@@ -121,7 +121,7 @@
 
 % the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
-\pagenumbering{roman}
+\pagenumbering{Roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Índice General}{}
@@ -382,7 +382,7 @@ Imagen\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-El diálogo Gráficos puede lanzarse en cualquier momento haciendo click-derecha
+El diálogo Gráficos puede lanzarse en cualquier momento haciendo clic-derecha
  sobre una imagen.
  Este diálogo tiene tres pestañas:
 \end_layout
@@ -817,15 +817,15 @@ reference "sec:Referencias-a-Flotantes"
 \end_layout
 
 \begin_layout Standard
-Normalmente sólo se inserta una imagen en un flotante, pero a veces podríamos
- querer poner dos imágenes con subtítulos separados.
+Normalmente solo se inserta una imagen en un flotante, pero es posible que
+ en alguna ocasión queramos poner dos imágenes cada una con su subtítulo.
  Esto es posible mediante la pestaña 
 \family sans
 Opciones\InsetSpace ~
 extra
 \family default
  del diálogo gráficos.
- Elije la opción 
+ Elige la opción 
 \family sans
 Subfigura
 \family default
@@ -834,8 +834,8 @@ Subfigura
 Descripción
 \family default
 .
- Observa que sólo el título principal  del flotante se añade a la Lista
- de Figuras.
+ Ten en cuenta que solo el título principal  del flotante se añade a la
+ Lista de Figuras.
 \newline
 Las referencias a las subfiguras se explican en la sección\InsetSpace ~
 
@@ -1183,9 +1183,9 @@ Adobe Photoshop
 \end_layout
 
 \begin_layout Standard
-Normalmente no es posible convertir una imagen bitmap a escalable, sólo
+Normalmente no es posible convertir una imagen bitmap a escalable, solo
  viceversa.
- Sólo los formatos de imagen PDF y EPS pueden empotrarse directamente en
+ Solo los formatos de imagen PDF y EPS pueden empotrarse directamente en
  archivos de salida PDF y PostScript, respectivamente.
  Las imágenes SVG y WMF son recalculadas a bitmaps cuando se genera el archivo
  de salida porque actualmente no hay convertidores adecuados WMF/SVG 
@@ -1521,7 +1521,7 @@ status open
 \series bold
 Nota:
 \series default
- No todos los visores DVI pueden mostrar rotaciones.
+ no todos los visores DVI pueden mostrar rotaciones.
 \end_layout
 
 \end_inset
@@ -1690,8 +1690,8 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- añade líneas alrededor de la celda actual o seleccionadas - si la celda
- actual no es multicolumna esto afecta también a la fila y columna actuales
+ añade líneas alrededor de la celda actual o seleccionadas (si la celda
+ actual no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
@@ -1701,8 +1701,8 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- borra todas las líneas de la celda o celdas seleccionadas - si la celda
- actual no es multicolumna esto afecta también a la fila y columna actuales
+ borra todas las líneas de la celda o celdas seleccionadas (si la celda
+ actual no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
@@ -1712,7 +1712,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- alinea a la izquierda el contenido de la celda / columna
+ alinea a la izquierda el contenido de la celda/columna
 \end_layout
 
 \begin_layout Labeling
@@ -1722,7 +1722,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- centra el contenido de la celda / columna horizontalmente
+ centra el contenido de la celda/columna horizontalmente
 \end_layout
 
 \begin_layout Labeling
@@ -1732,7 +1732,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- alinea a la derecha el contenido de la celda / columna
+ alinea a la derecha el contenido de la celda/columna
 \end_layout
 
 \begin_layout Labeling
@@ -2120,7 +2120,7 @@ reference "tab:una tabla flotante"
 \begin_layout Standard
 Lo habitual es poner el encabezado sobre la tabla, lo que desafortunadamente
  no es soportado en las clases estándar de LaTeX.
- Esto significa que si estás usando las clases de documento
+ Esto significa que si estás usando las clases de documento 
 \family sans
 article
 \family default
@@ -2137,8 +2137,8 @@ letter
 report
 \family default
  no habrá espacio entre el encabezado y la tabla.
- Para añadir el espacio faltante hay que poner en el preámbulo LaTeX del
- documento la siguiente opción al comando del paquete de LaTeX 
+ Para añadir un espacio entre ellos hay que poner en el preámbulo LaTeX
+ del documento la siguiente opción al comando del paquete de LaTeX 
 \series bold
 caption
 \series default
@@ -2175,7 +2175,8 @@ tableposition=top
 \end_layout
 
 \begin_layout Standard
-El encabezado puede formatearse mediante el paquete de LaTeX 
+El formato del encabezado se puede controlar mediante el paquete de LaTeX
+ 
 \series bold
 caption
 \series default
@@ -2211,7 +2212,7 @@ Etiqueta
 \end_inset
 
 .
- Ahora puedes referirte a la etiqueta con el menú 
+ Ahora puedes referenciar la etiqueta con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Referencia\InsetSpace ~
@@ -2325,9 +2326,9 @@ a fila actual y siguientes, que no tienen ninguna opción especial definida,
 \end_layout
 
 \begin_layout Standard
-También se puede especificar una fila en la que se dividirá la tabla.
+También se puede especificar en qué fila se ha de cortar la tabla.
  Si se establece más de una opción en la misma fila, habría que tener en
- cuenta que sólo la primera de ellas se usa en la fila dada.
+ cuenta que solo la primera de ellas se usa en la fila dada.
  Las otras quedarán definidas como 
 \emph on
 vacías
@@ -4565,9 +4566,12 @@ name "Tablas Largas ! Encabezados"
 \end_layout
 
 \begin_layout Standard
-Una tabla larga no se puede poner flotante porque los flotantes sólo pueden
- estar en una página, aunque el entorno encabezado de flotantes sí puede
- usarse para tablas largas.
+Una tabla larga no se puede poner flotante porque los flotantes solo pueden
+ estar en una página, aunque el entorno 
+\family sans
+encabezado
+\family default
+ de flotantes sí puede usarse para tablas largas.
 \end_layout
 
 \begin_layout Standard
@@ -4591,7 +4595,11 @@ Encabezado
 \family default
  en la primera celda.
 \newline
-También puedes añadir un título breve para el encabezado.
+También puedes añadir un 
+\family sans
+título breve
+\family default
+ para el encabezado.
 \end_layout
 
 \begin_layout Enumerate
@@ -4634,7 +4642,7 @@ En la Lista de Tablas aparecerá el título breve en vez del título completo.
 
  detrás del encabezado elimina las líneas verticales entre las siguientes
  celdas de la fila.
- Ahora, la primera fila de la tabla es sólo una fila postiza para el encabezado,
+ Ahora, la primera fila de la tabla es solo una fila postiza para el encabezado,
  la tabla real comienza en la segunda fila.
 \end_layout
 
@@ -5008,6 +5016,9 @@ addtocounter{table}{-1}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -5026,8 +5037,8 @@ name "LaTeX-paquetes ! hyperref"
 
 \end_inset
 
- para enlazar referencias cruzadas, el enlace al encabezado de una tabla
- larga apuntará siempre al comienzo.
+ para enlazar referencias cruzadas en la salida, el enlace a una tabla larga
+ te llevará siempre al principio del documento.
 \end_layout
 
 \end_inset
@@ -5442,7 +5453,8 @@ LTcapwidth
 \series default
 .
  Por defecto es 4\InsetSpace \thinspace{}
-in.
+in (4\InsetSpace ~
+pulgadas).
  Para cambiarla añade el siguiente comando al preámbulo o como ERT en el
  documento antes de la tabla larga a la que afecta
 \end_layout
@@ -8222,7 +8234,7 @@ name "Tablas Largas ! Saltos de Página Forzados"
 \end_layout
 
 \begin_layout Standard
-Por defecto, las tablas sólo se cortan entre filas.
+Por defecto, las tablas solo se cortan entre filas.
  Si tienes una celda con líneas múltiples y necesitas un salto de página
  dentro de la celda, inserta el comando de nueva línea 
 \begin_inset Quotes eld
@@ -9720,7 +9732,7 @@ name "Tablas ! Saltos de Línea"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -9872,7 +9884,7 @@ reference "tab:Tabla-con-múltiples"
 
 \end_inset
 
-, crea una tabla 3×3, marca la primera celda y click-derecha sobre ella.
+, crea una tabla 3×3, marca la primera celda y clic-derecha sobre ella.
  En el diálogo que surge establece una anchura de 2.5\InsetSpace \thinspace{}
 cm y escoge centro en
  alineación vertical y horizontal.
@@ -9895,7 +9907,7 @@ Si el texto es más ancho que la celda será automáticamente dividido en línea
 
 \begin_layout Standard
 Para centrar verticalmente el texto en las otras dos celdas de la primera
- fila, haz click-derecha en la segunda celda, ajusta una anchura de 0.5\InsetSpace \thinspace{}
+ fila, haz clic-derecha en la segunda celda, ajusta una anchura de 0.5\InsetSpace \thinspace{}
 cm
  y marca alineaciones centrales.
  Haz lo mismo con la tercera celda de la fila.
@@ -9905,7 +9917,7 @@ cm
 Si hay una palabra larga en una celda con anchura fija, LaTeX no puede cortarla
  con guión si es la primera entrada.
  Por eso hay que insertar algo para que dicha palabra no sea la primera
- entrada: Añade el comando
+ entrada: añade el comando
 \end_layout
 
 \begin_layout Standard
@@ -9934,7 +9946,7 @@ reference "tab:Tabla-con-y"
 placement b
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -10217,13 +10229,13 @@ Para extender una celda sobre varias columnas, se marcan las celdas que
 
 \end_inset
 
-, o el menú 
+, el menú 
 \family sans
 Editar\SpecialChar \menuseparator
 Tabla\SpecialChar \menuseparator
 Multicolumna
 \family default
-, o click-derecha sobre las celdas marcadas y se selecciona en el diálogo,
+, o clic-derecha sobre las celdas marcadas y se selecciona en el diálogo,
  bajo la pestaña 
 \family sans
 Configuración
@@ -10549,7 +10561,7 @@ reference "tab:Tabla-con-centrado"
 \end_inset
 
 , marca las dos primeras celdas en la primera fila de una tabla 3×3 y haz
- click-derecha.
+ clic-derecha.
  En el diálogo marca 
 \emph on
 multicolumna
@@ -11237,18 +11249,10 @@ reference "tab:Ejemplo-tabla-formal"
 \end_inset
 
 .
- Son tablas denominadas 
+ Se denominan tablas 
 \emph on
-
-\begin_inset Quotes eld
-\end_inset
-
 formales
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
 .
  Para hacer tablas con este diseño, elige 
 \family sans
@@ -11701,7 +11705,11 @@ em.
 \end_layout
 
 \begin_layout Standard
-Estos valores predeterminados se pueden cambiarcon las líneas de preámbulo:
+Estos valores predeterminados se pueden cambiar
+\series bold
+ 
+\series default
+con las líneas de preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -11801,11 +11809,26 @@ cmidrule
 \begin_layout Standard
 El grosor predeterminado es 0.03\InsetSpace \thinspace{}
 em.
- Inicol es el número de la columna en la que comienza la línea y fincol
+ 
+\series bold
+inicol
+\series default
+ es el número de la columna en la que comienza la línea y 
+\series bold
+fincol
+\series default
  es el número de la columna en la que acaba la línea.
- El valor fincol debe especificarse siempre, aunque la línea se extienda
- sobre una sola columna.
- El parámetro opcional recorte debe ser 
+ El valor 
+\series bold
+fincol
+\series default
+ debe especificarse siempre, aunque la línea se extienda sobre una sola
+ columna.
+ El parámetro opcional 
+\series bold
+recorte
+\series default
+ debe ser 
 \emph on
 l{recorte}
 \emph default
@@ -11824,8 +11847,7 @@ l{2pt}
 \emph default
  significa que la línea se recorta 2\InsetSpace \thinspace{}
 pt por su izquierda.
- Si no se especifica el tamaño del recorte, las líneas se recortan por defecto
- en 0.5\InsetSpace \thinspace{}
+ Si no se especifica el tamaño  las líneas se recortan por defecto en 0.5\InsetSpace \thinspace{}
 em.
 
 \series bold
@@ -13566,7 +13588,7 @@ rgb: red, green, blue
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-gray gray
+gray: gray
 \end_layout
 
 \begin_layout Standard
@@ -13691,12 +13713,11 @@ reference "tab:Tabla-coloreada-con"
 
 \end_inset
 
- haz lo siguiente: El color de la primera columna debería ser 
+ haz lo siguiente: el color de la primera columna debe ser 
 \emph on
 verde oscuro
 \emph default
-.
- Así pues
+, entonces inserta
 \end_layout
 
 \begin_layout Standard
@@ -13711,7 +13732,7 @@ centering}c
 
 \begin_layout Standard
 como argumento LaTeX para esta columna.
- La primera fila debería ser azul, por tanto el comando ERT
+ La primera fila debe ser azul, por tanto inserta el comando ERT
 \end_layout
 
 \begin_layout Standard
@@ -13723,7 +13744,7 @@ rowcolow{cyan}
 \end_layout
 
 \begin_layout Standard
-se inserta en la primera celda de esta fila.
+en la primera celda de esta fila.
  Observa que esto sobreescribe el color de la columna para la primera celda.
  La última celda de la última fila se colorea magenta insertando el comando
  ERT
@@ -14705,7 +14726,7 @@ C
 
 
 \newline
-Así pues, insertar espacio superior en tablas normales sólo es útil en tablas
+Así pues, insertar espacio superior en tablas normales solo es útil en tablas
  sin líneas verticales.
 \end_layout
 
@@ -15324,7 +15345,7 @@ name "LaTeX-paquetes ! dcolumn"
 
 , que permite alinear el contenido de las celdas.
  Pero desgraciadamente trata las entradas de celda en modo matemático y
- no permite fórmulas en celdas: La primera columna de la tabla\InsetSpace ~
+ no permite fórmulas en celdas: la primera columna de la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:Varias-alineaciones"
@@ -15390,9 +15411,8 @@ Alineaciones con el paquete LaTeX
 dcolumn
 \series default
 .
- 
-\lang english
-For all column alignments tricks have to be used to get the output.
+ Se han tenido que usar unos trucos para la alineación de las columnas en
+ la salida.
 \end_layout
 
 \end_inset
@@ -15405,7 +15425,7 @@ For all column alignments tricks have to be used to get the output.
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
-<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{-1}|">
+<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{4.9}|">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}|">
 <column alignment="center" valignment="top" rightline="true" width="0" special="D{~}{\,}{9.7}">
 <row bottomline="true">
@@ -15535,7 +15555,7 @@ times
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -15622,7 +15642,7 @@ name "Personalización de Tablas ! Formato de Celda/Columna"
 \end_layout
 
 \begin_layout Standard
-El cálculo de la anchura nesesaria para columnas extendidas descrito en
+El cálculo de la anchura necesaria para columnas extendidas descrito en
  la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -15815,7 +15835,15 @@ hspace{0pt}}c}
 \end_layout
 
 \begin_layout Standard
-La "c" al final crea una columna con anchura flexible cuyo texto está centrado
+La 
+\begin_inset Quotes eld
+\end_inset
+
+c
+\begin_inset Quotes erd
+\end_inset
+
+ al final crea una columna con anchura flexible cuyo texto está centrado
  horizontalmente.
  Ahora puedes introducir
 \end_layout
@@ -17090,7 +17118,7 @@ Para hacer una línea vertical a trazos, introduce dos puntos
 \begin_inset Quotes erd
 \end_inset
 
- junto con el caracter para alineación horizontal como argumento LaTeX en
+ junto con el carácter para alineación horizontal como argumento LaTeX en
  el diálogo de celda de tabla.
 \end_layout
 
@@ -17157,11 +17185,19 @@ reference "tab:Tabla-con-trazos"
 
 \end_inset
 
- se ha hecho usando "
+ se ha hecho usando 
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
 :c
 \series default
-" como argumento LaTeX de la tercera columna.
+
+\begin_inset Quotes erd
+\end_inset
+
+ como argumento LaTeX de la tercera columna.
  El comando ERT 
 \series bold
 
@@ -17404,7 +17440,7 @@ reference "sec:Colocación-de-Encabezados"
 
 .
  Para mantener legible el documento LyX, puedes abrir y cerrar el cuadro
- del flotante haciendo click-izquierda sobre él.
+ del flotante haciendo cilc-izquierda sobre él.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
@@ -17757,7 +17793,7 @@ name "sub:floatflt-flotante-ajustado"
 \end_layout
 
 \begin_layout Standard
-Este tipo de flotante se usa cuando quieres envolver una figura en el texto,
+Este tipo de flotante se usa cuando quieres adosar una figura al texto,
  de manera que ocupe solo una parte del ancho de columna.
  Puede insertarse usando el menú 
 \begin_inset Wrap figure
@@ -17786,7 +17822,7 @@ name "fig:Esto-es-una"
 
 \end_inset
 
-Esto es una figura envuelta, y esto la genial cabecera que la describe.
+Esto es una figura adosada, y esto la genial cabecera que la describe.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -17827,14 +17863,14 @@ status collapsed
 \begin_layout Standard
 La instalación de paquetes LaTeX se explica en el manual 
 \emph on
-Configuration de LaTeX
+Configuración de LaTeX
 \emph default
 .
 \end_layout
 
 \end_inset
 
- La anchura y posición del flotante se ajusta con click-derecha sobre el
+ La anchura y posición del flotante se ajusta con cilc-derecha sobre el
  cuadro del flotante.
  La figura\InsetSpace ~
 
@@ -17843,7 +17879,7 @@ reference "fig:Esto-es-una"
 
 \end_inset
 
- es un ejemplo de flotante ajustado a texto con una anchura del 40\InsetSpace \thinspace{}
+ es un ejemplo de flotante ajustado al texto con una anchura del 40\InsetSpace \thinspace{}
 col%.
 \begin_inset Foot
 status collapsed
@@ -17861,8 +17897,8 @@ reference "cha:Unidades-disponibles-en"
 
 \end_inset
 
- Se ha añadido algún espacio bajo el encabezado para separarlo mejor del
- texto envolvente.
+ Se ha añadido un espacio vertical bajo el encabezado para separarlo mejor
+ del texto envolvente.
 \end_layout
 
 \begin_layout Standard
@@ -17870,8 +17906,8 @@ El paquete LaTeX
 \series bold
 floatflt
 \series default
- también soporta tablas ajustadas a texto pero aún no es soportado por LyX.
- Si lo necesitas, consulta la documentoación de 
+ también soporta tablas adosadas a texto pero aún no es soportado por LyX.
+ Si lo necesitas, consulta la documentación de 
 \series bold
 floatflt
 \series default
@@ -17893,10 +17929,10 @@ status open
 \series bold
 Nota:
 \series default
- ¡Los flotantes ajustados a texto son frágiles! P.\InsetSpace \thinspace{}
+ ¡Los flotantes adosados a texto son frágiles! P.\InsetSpace \thinspace{}
 e.\InsetSpace ~
 si una figura está demasiado
- cerca de la parte inferior de la página se pueden perder cosas en el camino
+ cerca de la parte inferior de la página se pueden perder cosas en el proceso
  de salida, el flotante puede no aparecer o situarse junto a otro texto.
 \begin_inset Foot
 status open
@@ -17936,24 +17972,24 @@ En general:
 \end_layout
 
 \begin_layout Itemize
-Los flotantes ajustados no deberían situarse en párrafos que van sobre un
+Los flotantes adosados no deberían situarse en párrafos que van sobre un
  salto de página.
  Esto implica que lo mejor es insertarlos en el sitio exacto cuando el documento
  esté casi listo y puedas prever los saltos de página.
 \end_layout
 
 \begin_layout Itemize
-Los flotantes ajustados deberían situarse, bien en un párrafo propio antes
- del párrafo donde deben ajustarse, o bien dentro de un párrafo.
+Los flotantes adosados deberían situarse, bien en un párrafo propio antes
+ del párrafo al que deben ajustarse, o bien dentro de un párrafo.
 \end_layout
 
 \begin_layout Itemize
-Los flotantes ajustados en párrafos consecutivos pueden dar problemas, así
+Los flotantes adosados a párrafos consecutivos pueden dar problemas, así
  que asegura que hay un párrafo de texto entre ellos.
 \end_layout
 
 \begin_layout Itemize
-Los flotantes ajustados no están permitidos en cabeceras de sección o tablas.
+Los flotantes adosados no están permitidos en cabeceras de sección o tablas.
 \end_layout
 
 \begin_layout Section
@@ -18023,7 +18059,7 @@ fig:
 
 \begin_layout Standard
 La etiqueta se usa como ancla y el nombre para la referencia.
- Puedes referir a la etiqueta usando el menú 
+ Puedes referenciar la etiqueta usando el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Referencia
@@ -18042,8 +18078,8 @@ cruzada
 
 .
  Aparece una ventana de referencia cruzada con todas las etiquetas del documento.
- Si tienes abiertos varios documentos LyX, escoge el que estás trabajando
- de la lista desplegable de la parte superior del diálogo.
+ Si tienes abiertos varios documentos LyX, escoge aquel con el  que estás
+ trabajando de la lista desplegable de la parte superior del diálogo.
  Puedes ordenar las etiquetas alfabéticamente y elegir una.
  Se inserta un cuadro gris como este: 
 \begin_inset Graphics
@@ -18064,7 +18100,7 @@ Se recomienda poner un espacio protegido entre el nombre de la referencia
 \end_layout
 
 \begin_layout Standard
-En cualquier momento puedes cambiar etiquetas haciendo click sobre el cuadro.
+En cualquier momento puedes cambiar etiquetas haciendo cilc sobre el cuadro.
  Las referencias a las etiquetas cambiadas cambian automáticamente su enlace
  al texto de la etiqueta nueva, no te ocupes por eso.
 \end_layout
@@ -18082,9 +18118,9 @@ etiqueta
 \family sans
 Volver
 \family default
- con el que se puede retornar a la referencia.
- Click-derecha sobre el cuadro de la referencia también lleva el cursor
- hasta la etiqueta pero sin opción de volver.
+, con el que se puede retornar a la referencia.
+ cilc-derecha sobre el cuadro de la referencia también lleva el cursor hasta
+ la etiqueta pero sin opción de volver.
 \end_layout
 
 \begin_layout Subsection
@@ -18193,7 +18229,7 @@ reference "fig:Dos-imágenes-distorsionadas"
 \begin_layout Description
 Referencia\InsetSpace ~
 con\InsetSpace ~
-formato: imprime un formato autodefinido.
+formato: imprime un formato personalizado.
  
 \begin_inset Note Greyedout
 status open
@@ -18395,7 +18431,7 @@ hyperref
 hyperref
 \series default
 .
- Para aprender más sobre ello acude a la documentoación del paquete 
+ Para aprender más sobre ello acude a la documentación del paquete 
 \begin_inset LatexCommand cite
 key "hyperref"
 
@@ -18579,7 +18615,7 @@ name "Flotantes ! Colocación"
 \end_layout
 
 \begin_layout Standard
-Click-derecha sobre un cuadro de flotante abre un diálogo en el que pueden
+cilc-derecha sobre un cuadro de flotante abre un diálogo en el que pueden
  cambiarse las opciones de LaTeX para situar los flotantes.
 \newline
 La opción 
@@ -18587,8 +18623,8 @@ La opción
 Extender\InsetSpace ~
 columnas
 \family default
- solo es aplicable a documentoos de dos columnas: Si lo seleccionas, el
- flotante abarcará ambas columnas en lugar de una sola.
+ solo es aplicable a documentos de dos columnas: Si lo seleccionas, el flotante
+ abarcará ambas columnas en lugar de una sola.
 \newline
 La opción 
 \family sans
@@ -18810,8 +18846,15 @@ definitivamente
 \family default
 .
  Usa esta opción esporádicamente y solo cuando el documento esté casi listo,
- porque el flotante ya no podrá "flotar" y si haces cambios al documento
- se podría estropear el diseño de la página.
+ porque el flotante ya no podrá 
+\begin_inset Quotes eld
+\end_inset
+
+flotar
+\begin_inset Quotes erd
+\end_inset
+
+ y si haces cambios al documento se podría estropear el diseño de la página.
 \end_layout
 
 \begin_layout Standard
@@ -18838,7 +18881,7 @@ loats
 , que suprime la ubicación de un flotante dado en la página donde se inserta
  y además puede servir para evitar que el flotante se coloque antes del
  inicio de sección.
- Para ello, añade estos comandos al préambulo:
+ Para ello, añade estos comandos al preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -18897,8 +18940,8 @@ name "LaTeX-paquetes ! endfloat"
 
 
 \family sans
-[Figura\InsetSpace ~
-3.2 por aquí.]
+[Figure\InsetSpace ~
+3.2 about here.]
 \family default
 
 \begin_inset Quotes erd
@@ -18971,7 +19014,7 @@ Nota:
 endf\SpecialChar \textcompwordmark{}
 loat
 \series default
- cuando el encabezado contiene el caracter alemán 
+ cuando el encabezado contiene el carácter alemán 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19056,12 +19099,12 @@ lado
 Los flotantes girados son puestos siempre en su propia página (o columna
  si el documento es de dos columnas).
  Normalmente se rotan de forma que puedes leerlos desde el margen externo
- -- a la izquierda en páginas pares, a la derecha en impares.
+ ---a la izquierda en páginas impares, a la derecha en pares---.
 \end_layout
 
 \begin_layout Standard
 Los flotantes girados se refieren igual que los normales, y el formato de
- encabezado también es el mismo: Un ejemplo es la tabla\InsetSpace ~
+ encabezado también es el mismo: un ejemplo es la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:Tabla-girada"
@@ -19103,7 +19146,7 @@ name "tab:Tabla-girada"
 
 \end_inset
 
- Tabla girada
+Tabla girada
 \end_layout
 
 \end_inset
@@ -19427,7 +19470,8 @@ Imagen
 \begin_inset Quotes erd
 \end_inset
 
-, p.e., usa el siguiente comando de preámbulo:
+, p.\InsetSpace \thinspace{}
+e., usa el siguiente comando de preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -19570,7 +19614,7 @@ captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm, labelsep=period
 status open
 
 \begin_layout Standard
-El formato de encabezado se ha cambiado sólo para este ejemplo.
+El formato del encabezado se ha cambiado solo para este ejemplo.
 \end_layout
 
 \end_inset
@@ -19618,7 +19662,7 @@ Figura con título muy largo
 
 Este es un ejemplo de figura con un título que es mayor de una línea para
  mostrar el formato diferente.
- Aquí se usa un título autodefinido.
+ Aquí se usa un título personalizado.
 \end_layout
 
 \end_inset
@@ -19676,7 +19720,7 @@ Tabla con encabezado muy largo
 
 Este es un ejemplo de encabezado de tabla mayor que una línea para mostrar
  el formato diferente.
- Aquí se usa el formato de encabezado standard para tablas de este documento.
+ Aquí se usa el formato de encabezado estándar para las tablas.
 \end_layout
 
 \end_inset
@@ -19788,7 +19832,7 @@ Tabla: El encabezado sobre la tabla
 \end_layout
 
 \begin_layout Standard
-Desafortunadamente, las clases standard de LaTeX no soportan encabezados
+Desafortunadamente, las clases estándar de LaTeX no soportan encabezados
  sobre la tabla.
  Esto implica que si usas las clases de documento 
 \family sans
@@ -20938,7 +20982,7 @@ Las notas se insertan con el botón
 
 \end_inset
 
- o el menú 
+ o con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Nota
@@ -20977,7 +21021,7 @@ Este es un texto en un recuadro que no se muestra en la salida.
 
 \begin_layout Description
 Comentario Esta nota tampoco se muestra en la salida pero aparece como un
- comentario de LaTeX, cuando exportas el documento a LaTeX via el menú 
+ comentario de LaTeX, cuando exportas el documento a LaTeX vía menú 
 \family sans
 Archivo\SpecialChar \menuseparator
 Exportar\SpecialChar \menuseparator
@@ -21242,17 +21286,18 @@ Nota\InsetSpace ~
 LyX
 \family default
 .
- Puedes cambiar entre los tres tipos de nota con click-derecha sobre el
- recuadro.
+ Puedes cambiar entre los tres tipos de nota con cilc-derecha sobre el recuadro.
  
 \family roman
 \series medium
 \bar no
 Si quieres convertir un texto presente a nota, márcalo y pincha sobre el
- botón de herramienta nota
-\family default
+ botón de herramienta 
+\family sans
 \series default
 \bar default
+nota
+\family default
 .
 \end_layout
 
@@ -21260,8 +21305,11 @@ Si quieres convertir un texto presente a nota, márcalo y pincha sobre el
 \begin_inset VSpace bigskip
 \end_inset
 
-Se puede cambiar el color del resaltado en gris poniendo en el preámbulo
- el comando:
+Se puede cambiar el color del 
+\family sans
+Resaltado en gris
+\family default
+ poniendo en el preámbulo el comando:
 \end_layout
 
 \begin_layout Standard
@@ -21306,8 +21354,11 @@ reference "sec:Tablas-Coloreadas"
 \end_layout
 
 \begin_layout Standard
-Las notas en azul en este documento se han hecho con notas resaltado en
- gris definiendo el color del texto en azul.
+Las notas en azul en este documento se han hecho con notas del tipo 
+\family sans
+Resaltado en gris
+\family default
+ pero definiendo el color del texto en azul.
 \end_layout
 
 \begin_layout Standard
@@ -21729,7 +21780,7 @@ En la salida, el pie se muestra como número exponente en el lugar del texto
 \end_layout
 
 \begin_layout Standard
-Las notas al pie pueden referenciarse como flotantes: Inserta una etiqueta
+Las notas al pie pueden referenciarse como flotantes: inserta una etiqueta
  en la nota y pon una referencia cruzada a esta etiqueta en el texto como
  se describe en la sección\InsetSpace ~
 
@@ -22017,7 +22068,7 @@ numberwithin{footnote}{part}
 \end_layout
 
 \begin_layout Standard
-Para reestablecer el número de pie a 1 en cada sección añade este 
+Para reiniciar el número de pie a 1 en cada sección añade este 
 \family roman
 comando en el preámbulo:
 \end_layout
@@ -22035,7 +22086,7 @@ comando en el preámbulo:
 \end_inset
 
 El siguiente comando en el preámbulo cambia el estilo de numeración del
- pie a números romanos pequeños:
+ pie a números romanos en minúsculas:
 \end_layout
 
 \begin_layout Standard
@@ -22112,15 +22163,7 @@ roman
 Roman
 \series default
 .
- Para 
-\begin_inset Quotes eld
-\end_inset
-
-numerar
-\begin_inset Quotes erd
-\end_inset
-
- las notas al pie con letras mayúsculas o minúsculas usa 
+ Para ordenar las notas al pie con letras mayúsculas o minúsculas usa 
 \series bold
 
 \backslash
@@ -22133,15 +22176,7 @@ Alph
 alph
 \series default
 , respectivamente.
- Para 
-\begin_inset Quotes eld
-\end_inset
-
-numerar
-\begin_inset Quotes erd
-\end_inset
-
- las notas al pie con símbolos usa 
+ Para ordenar las notas al pie con símbolos usa 
 \series bold
 
 \backslash
@@ -22159,8 +22194,8 @@ status open
 \series bold
 Nota:
 \series default
- Sólo puedes numerar hasta 26 pies con letras, porque esta numeración está
- limitada a letras simples.
+ Solo puedes ordenar hasta 26 pies con letras, porque está limitado a letras
+ simples.
 \end_layout
 
 \end_inset
@@ -22176,7 +22211,7 @@ status open
 \series bold
 Nota:
 \series default
- Sólo puedes numerar 9 pies con símbolos.
+ Solo puedes ordenar hasta 9 pies con símbolos.
 \end_layout
 
 \end_inset
@@ -22335,7 +22370,7 @@ name "fig:Colocación-standard-del-pie"
 
 \end_inset
 
-Colocación standard de notas al pie en documentos a dos columnas.
+Colocación estándar de notas al pie en documentos a dos columnas.
 \end_layout
 
 \end_inset
@@ -22420,7 +22455,7 @@ ftnright
 \begin_inset VSpace bigskip
 \end_inset
 
-En alguna literatura científica se acostumbra reunir las notas e imprimirlas
+En alguna literatura científica es habitual reunir las notas para imprimirlas
  en un párrafo separado al final de la sección, como en la figura\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -22524,8 +22559,8 @@ name "fig:Notas-al-final----notas-al-pie"
 
 \end_inset
 
-Notas al final ---notas al pie impresas en párrafo separado al final de
- la sección o del capítulo.
+Notas al final: notas impresas en párrafo separado al final de la sección
+ o del capítulo.
 \end_layout
 
 \end_inset
@@ -22740,10 +22775,10 @@ Esto es una nota al margen.
 
 \begin_layout Standard
 Estas notas salen en el margen derecho en documentos a una cara.
- En documentos a doble cara se muestran en el margen externo -- izquierdo
- en páginas pares, derecho en páginas impares.
- El texto de las notas se alinea en la parte opuesta al margen -- se alinea
- a la derecha si la nota aparece en el margen izquierdo.
+ En documentos a doble cara se muestran en el margen externo ---izquierdo
+ en páginas pares, derecho en páginas impares---.
+ El texto de las notas se ajusta a la parte opuesta al margen ---se ajusta
+ a la derecha si la nota aparece en el margen izquierdo---.
  La primera línea de la nota se sitúa en la posición de la línea del texto
  en la que se inserta en el documento.
 \end_layout
@@ -23597,7 +23632,7 @@ Cuadro (Minipágina)
 \end_inset
 
 .
- El tipo de cuadro se puede elegir al hacer click-derecho sobre él.
+ El tipo de cuadro se puede elegir al hacer clic-derecho sobre él.
  Sale un diálogo en el que 
 \family sans
 Cuadro
@@ -23689,7 +23724,7 @@ status open
 \series bold
 Nota:
 \series default
- Los cuadros no deben ser el item en un entorno 
+ Los cuadros no deben ser el ítem en un entorno 
 \family sans
 Enumeración
 \family default
@@ -23801,7 +23836,8 @@ alto
 \end_inset
 
 .
- Ignora la profundidad total cuando hay mútiples líneas de texto en el cuadro:
+ Ignora la profundidad total cuando hay múltiples líneas de texto en el
+ cuadro:
 \newline
 
 \newline
@@ -23973,7 +24009,7 @@ status open
 
 \begin_layout Standard
 \align center
-Cuadro alineado enmedio.
+Cuadro alineado en medio.
 \end_layout
 
 \end_inset
@@ -24068,7 +24104,7 @@ status open
 
 \begin_layout Standard
 \align center
-Cuadro con texto alineado enmedio.
+Cuadro con texto alineado en medio.
 \end_layout
 
 \end_inset
@@ -24192,7 +24228,7 @@ estirado
 \end_layout
 
 \begin_layout Standard
-Si no has estabecido un 
+Si no has establecido un 
 \family sans
 Cuadro\InsetSpace ~
 interior
@@ -24675,7 +24711,11 @@ fija el diámetro en
 \family sans
 num\InsetSpace \thinspace{}
 ×\InsetSpace \thinspace{}
-minimo(ancho y alto del cuadro)
+mínimo
+\family default
+ 
+\family sans
+(ancho y alto del cuadro)
 \family default
 .
  Por defecto es 
@@ -24869,7 +24909,7 @@ Las minipáginas son útiles para escribir documentos con distintos lenguajes.
 A continuación hay dos ejemplos de minipáginas adosadas.
  Su anchura está puesta en 45\InsetSpace \thinspace{}
 col% y separadas por un relleno horizontal,
- insertado via el menú 
+ insertado vía el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\InsetSpace ~
