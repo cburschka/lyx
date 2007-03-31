@@ -1984,7 +1984,7 @@ if update_po:
 
     # whether or not update po files
     if not env['XGETTEXT'] or not env['MSGMERGE'] or not env['MSGUNIQ']:
-        print 'xgettext or msgmerge does not exist. Can not merge po files'
+        print 'xgettext or msgmerge does not exist. Cannot merge po files'
         Exit(1)
     # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot
     # and combine them to lyx.po
@@ -2021,7 +2021,7 @@ if update_po:
     # possibly *only* handle these languages
     languages = None
     if env.has_key('languages'):
-        languages = env.make_list(env['lanauges'])
+        languages = env.make_list(env['languages'])
     # merge. if I use lan.po as $TARGET, it will be removed
     # before it is merged. In this builder,
     # $BUILDDIR/po/lang.po is merged from po/lang.po and $BUILDDIR/po/lyx.pot
