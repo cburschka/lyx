@@ -1,29 +1,29 @@
 #
 # Polish keyboard definition for LyX
 #
-# (C)by Tomasz £uczak, tlu@technodat.com.pl
+# (C)by Tomasz ≈Åuczak, tlu@technodat.com.pl
 #
 # The keymap assumes that you have a non-Polish keyboard, Polish
 # letters are produced by prepending / to the corresponding
 # Latin letters.
 #
 \kmod / acute  aAcCeElLnNoOsSzZxXu
-\kxmod acute a "±"
-\kxmod acute A "°"
-\kxmod acute c "Ê"
-\kxmod acute C "∆"
-\kxmod acute e "Í"
-\kxmod acute E " "
-\kxmod acute l "≥"
-\kxmod acute L "£"
-\kxmod acute n "Ò"
-\kxmod acute N "—"
-\kxmod acute o "Û"
-\kxmod acute O "”"
-\kxmod acute s "∂"
-\kxmod acute S "¶"
-\kxmod acute z "ø"
-\kxmod acute Z "Ø"
-\kxmod acute x "º"
-\kxmod acute X "¨"
+\kxmod acute a "ƒÖ"
+\kxmod acute A "ƒÑ"
+\kxmod acute c "ƒá"
+\kxmod acute C "ƒÜ"
+\kxmod acute e "ƒô"
+\kxmod acute E "ƒò"
+\kxmod acute l "≈Ç"
+\kxmod acute L "≈Å"
+\kxmod acute n "≈Ñ"
+\kxmod acute N "≈É"
+\kxmod acute o "√≥"
+\kxmod acute O "√ì"
+\kxmod acute s "≈õ"
+\kxmod acute S "≈ö"
+\kxmod acute z "≈º"
+\kxmod acute Z "≈ª"
+\kxmod acute x "≈∫"
+\kxmod acute X "≈π"
 \kxmod acute u "\\euro{}"	# wymaga pakietu eurosym

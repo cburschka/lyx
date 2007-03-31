@@ -55,14 +55,14 @@
 #
 # french characters
 #
-\kmap ¬ "\\oe{}"
+\kmap Â¬ "\\oe{}"
 #
 # special characters
 #
 \kxmod umlaut $ "\\pounds{}"	# pound
 \kxmod umlaut \# "\\S{}"	# paragraph
 \kxmod umlaut ~ "\\b{}"		# degree
-\kmap ¤ "\\euro{}"	# euro sign, to use with package eurofont
+\kmap Â¤ "\\euro{}"	# euro sign, to use with package eurofont
 #
 # \kxmod acute ' '
 # \kxmod grave ` `
@@ -74,4 +74,4 @@
 #
 # Example of substituting local chars to TeX-Strings
 #
-# \kmap ß "\\ss{}"
+# \kmap ÃŸ "\\ss{}"

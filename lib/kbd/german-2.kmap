@@ -4,14 +4,14 @@
 # (C)1995 by Ivan Schreter, schreter@ccsun.tuke.sk
 #
 \kmod ` circumflex aceijnorsuyzACEIJNORSUYZ	# dead circumflex
-\kmap ä ä
-\kmap ö ö
-\kmap ü ü
-\kmap ß ß
-\kmap Ä Ä
-\kmap Ö Ö
-\kmap Ü Ü
-\kmap ~ °		# degree
+\kmap Ã¤ Ã¤
+\kmap Ã¶ Ã¶
+\kmap Ã¼ Ã¼
+\kmap ÃŸ ÃŸ
+\kmap Ã„ Ã„
+\kmap Ã– Ã–
+\kmap Ãœ Ãœ
+\kmap ~ Â°		# degree
 \kmap @ \"		# shift-numbers is different on German kbd
 \kmap \# "\\S{}"
 \kmap ^ &
@@ -19,7 +19,7 @@
 \kmap * (
 \kmap ( )
 \kmap ) =
-\kmap - ß		# "\\ss{}"		# - maps to sharfes s
+\kmap - ÃŸ		# "\\ss{}"		# - maps to sharfes s
 \kmap _ ?		# _ maps to question mark
 \kmod = acute aceijlnorsuyzACEIJLNORSUYZ	# = is acute deadkey
 \kmod + grave aceijlnorsuyzACEIJLNORSUYZ	# Shift-= is grave dead key
@@ -27,14 +27,14 @@
 \kmap Z Y
 \kmap y z
 \kmap Y Z
-\kmap [ ü		#"\\\"{u}"		# [{ maps to u umlaut
-\kmap { Ü		#"\\\"{U}"
+\kmap [ Ã¼		#"\\\"{u}"		# [{ maps to u umlaut
+\kmap { Ãœ		#"\\\"{U}"
 \kmap ] +
 \kmap } *
-\kmap ; ö		#"\\\"{o}"		# ;: maps to o umlaut
-\kmap : Ö		#"\\\"{O}"
-\kmap ' ä		#"\\\"{a}"		# '" maps to a umlaut
-\kmap \" Ä		# "\\\"{A}"
+\kmap ; Ã¶		#"\\\"{o}"		# ;: maps to o umlaut
+\kmap : Ã–		#"\\\"{O}"
+\kmap ' Ã¤		#"\\\"{a}"		# '" maps to a umlaut
+\kmap \" Ã„		# "\\\"{A}"
 \kmap < ;		# yet some modifiers
 \kmap > :
 \kmap / -
