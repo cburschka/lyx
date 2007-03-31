@@ -825,7 +825,6 @@ dist_kbd_DATA = \
 	kbd/bg-bds-1251.kmap \
 	kbd/brazil.kmap \
 	kbd/brazil2.kmap \
-	kbd/cp1251.cdef \
 	kbd/czech-prg.kmap \
 	kbd/czech.kmap \
 	kbd/european.kmap \
@@ -836,19 +835,7 @@ dist_kbd_DATA = \
 	kbd/german.kmap \
 	kbd/greek.kmap \
 	kbd/hebrew.kmap \
-	kbd/ibm866.cdef \
-	kbd/iso8859-1.cdef \
-	kbd/iso8859-15.cdef \
-	kbd/iso8859-2.cdef \
-	kbd/iso8859-3.cdef \
-	kbd/iso8859-4.cdef \
-	kbd/iso8859-7.cdef \
-	kbd/iso8859-8.cdef \
-	kbd/iso8859-9.cdef \
-	kbd/koi8-r.cdef \
 	kbd/koi8-r.kmap \
-	kbd/koi8-t.cdef \
-	kbd/koi8-u.cdef \
 	kbd/koi8-u.kmap \
 	kbd/latvian.kmap \
 	kbd/magyar-2.kmap \
@@ -866,7 +853,6 @@ dist_kbd_DATA = \
 	kbd/slovak.kmap \
 	kbd/slovene.kmap \
 	kbd/thai-kedmanee.kmap \
-	kbd/tis620-0.cdef \
 	kbd/transilvanian.kmap \
 	kbd/turkish-f.kmap \
 	kbd/turkish.kmap \

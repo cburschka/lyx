@@ -2212,7 +2212,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PRINT_COMMAND:
 	case LyXRC::RC_RTL_SUPPORT:
 	case LyXRC::RC_SCREEN_DPI:
-	case LyXRC::RC_SCREEN_FONT_ENCODING:
 	case LyXRC::RC_SCREEN_FONT_ROMAN:
 	case LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY:
 	case LyXRC::RC_SCREEN_FONT_SANS:

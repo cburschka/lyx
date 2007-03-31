@@ -84,7 +84,6 @@ void Intl::initKeyMapper(bool on)
 		prim_lang.erase();
 	if (trans.setSecondary(sec_lang) == -1)
 		sec_lang.erase();
-	trans.setCharset(lyxrc.font_norm);
 
 	if (prim_lang.empty() && sec_lang.empty())
 		keymapon = false;

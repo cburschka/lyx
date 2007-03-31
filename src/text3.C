@@ -1136,12 +1136,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		docstring::const_iterator cit = cmd.argument().begin();
 		docstring::const_iterator end = cmd.argument().end();
 		for (; cit != end; ++cit)
-#if 0
 			bv->getIntl().getTransManager().
-				translateAndInsert(*cit, this);
-#else
-			insertChar(bv->cursor(), *cit);
-#endif
+				translateAndInsert(*cit, this, cur);
 
 		cur.resetAnchor();
 		moveCursor(cur, false);

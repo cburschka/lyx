@@ -1071,7 +1071,6 @@ src_header_files = Split('''
     bufferparams.h
     bufferview_funcs.h
     changes.h
-    chset.h
     converter.h
     coordcache.h
     counters.h
@@ -1185,7 +1184,6 @@ src_pre_files = Split('''
     bufferparams.C
     bufferview_funcs.C
     changes.C
-    chset.C
     converter.C
     coordcache.C
     counters.C
@@ -2097,7 +2095,6 @@ lib_kbd_files = Split('''
     bg-bds-1251.kmap
     brazil.kmap
     brazil2.kmap
-    cp1251.cdef
     czech-prg.kmap
     czech.kmap
     european.kmap
@@ -2108,19 +2105,7 @@ lib_kbd_files = Split('''
     german.kmap
     greek.kmap
     hebrew.kmap
-    ibm866.cdef
-    iso8859-1.cdef
-    iso8859-15.cdef
-    iso8859-2.cdef
-    iso8859-3.cdef
-    iso8859-4.cdef
-    iso8859-7.cdef
-    iso8859-8.cdef
-    iso8859-9.cdef
-    koi8-r.cdef
     koi8-r.kmap
-    koi8-t.cdef
-    koi8-u.cdef
     koi8-u.kmap
     latvian.kmap
     magyar-2.kmap
@@ -2138,7 +2123,6 @@ lib_kbd_files = Split('''
     slovak.kmap
     slovene.kmap
     thai-kedmanee.kmap
-    tis620-0.cdef
     transilvanian.kmap
     turkish-f.kmap
     turkish.kmap

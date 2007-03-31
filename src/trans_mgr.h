@@ -14,7 +14,6 @@
 #ifndef TRANS_MANAGER_H
 #define TRANS_MANAGER_H
 
-#include "chset.h"
 #include "trans_decl.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -149,11 +148,7 @@ private:
 	///
 	static Trans default_;
 	///
-	CharacterSet chset_;
-	///
 	void insert(docstring const &, LyXText *, LCursor & cur);
-	///
-	void insertVerbatim(docstring const &, LyXText *, LCursor & cur);
 public:
 	///
 	TransManager();
@@ -169,8 +164,6 @@ public:
 	void enableSecondary();
 	///
 	void disableKeymap();
-	///
-	bool setCharset(std::string const &);
 	///
 	bool backspace() {
 		return trans_fsm_.currentState->backspace();

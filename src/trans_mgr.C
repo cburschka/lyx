@@ -218,12 +218,6 @@ int TransManager::setSecondary(string const & language)
 }
 
 
-bool TransManager::setCharset(string const & str)
-{
-	return chset_.loadFile(str);
-}
-
-
 void TransManager::enablePrimary()
 {
 	if (t1_->isDefined())
@@ -262,29 +256,10 @@ void  TransManager::translateAndInsert(char_type c, LyXText * text, LCursor & cu
 }
 
 
-void TransManager::insertVerbatim(docstring const & str, LyXText * text, LCursor & cur)
+void TransManager::insert(docstring const & str, LyXText * text, LCursor & cur)
 {
 	for (string::size_type i = 0, n = str.size(); i < n; ++i)
 		text->insertChar(cur, str[i]);
-}
-
-
-void TransManager::insert(docstring const & str, LyXText * text, LCursor & cur)
-{
-	// Go through the character encoding only if the current
-	// encoding (chset_->name()) matches the current font_norm
-	// (lyrxc->font_norm)
-
-	// Is false to speak about "only if" the current encoding will
-	// almost always be equal to font_norm.
-	pair<bool, int> enc = chset_.encodeString(to_utf8(str));
-	if (chset_.getName() != lyxrc.font_norm ||
-	    !enc.first) {
-		// Could not find an encoding
-		insertVerbatim(str, text, cur);
-		return;
-	}
-	text->insertChar(cur, enc.second);
 }
 
 

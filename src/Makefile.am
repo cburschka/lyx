@@ -130,8 +130,6 @@ lyx_SOURCES = \
 	bufferview_funcs.h \
 	changes.C \
 	changes.h \
-	chset.C \
-	chset.h \
 	config.h.in \
 	converter.C \
 	converter.h \

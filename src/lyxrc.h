@@ -110,7 +110,6 @@ public:
 		RC_PRINT_COMMAND,
 		RC_RTL_SUPPORT,
 		RC_SCREEN_DPI,
-		RC_SCREEN_FONT_ENCODING,
 		RC_SCREEN_FONT_ROMAN,
 		RC_SCREEN_FONT_ROMAN_FOUNDRY,
 		RC_SCREEN_FONT_SANS,
@@ -272,8 +271,6 @@ public:
 	std::string sans_font_foundry;
 	///
 	std::string typewriter_font_foundry;
-	///
-	std::string font_norm;
 	///
 	unsigned int autosave;
 	///

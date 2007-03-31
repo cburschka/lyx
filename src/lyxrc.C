@@ -137,7 +137,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\printer", LyXRC::RC_PRINTER },
 	{ "\\rtl", LyXRC::RC_RTL_SUPPORT },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
-	{ "\\screen_font_encoding", LyXRC::RC_SCREEN_FONT_ENCODING },
 	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
 	{ "\\screen_font_roman_foundry", LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY },
 	{ "\\screen_font_sans", LyXRC::RC_SCREEN_FONT_SANS },
@@ -237,7 +236,6 @@ void LyXRC::setDefaults() {
 	roman_font_name = "";
 	sans_font_name = "";
 	typewriter_font_name = "";
-	font_norm = "iso8859-1";
 	autosave = 300;
 	auto_region_delete = true;
 	auto_reset_options = false;
@@ -793,12 +791,6 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
 			if (lexrc.next()) {
 				typewriter_font_foundry = lexrc.getString();
-			}
-			break;
-
-		case RC_SCREEN_FONT_ENCODING:
-			if (lexrc.next()) {
-				font_norm = lexrc.getString();
 			}
 			break;
 
@@ -1550,12 +1542,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			os << "\\screen_font_scalable "
 			   << convert<string>(use_scalable_fonts)
 			   << '\n';
-		}
-	case RC_SCREEN_FONT_ENCODING:
-		if (ignore_system_lyxrc ||
-		    font_norm != system_lyxrc.font_norm) {
-			os << "\\screen_font_encoding \"" << font_norm
-			   << "\"\n";
 		}
 	case RC_SCREEN_FONT_SIZES:
 		if (ignore_system_lyxrc ||
@@ -2370,10 +2356,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_SCREEN_DPI:
 		str = _("DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here.");
-		break;
-
-	case RC_SCREEN_FONT_ENCODING:
-		str = _("The encoding for the screen fonts.");
 		break;
 
 	case RC_SCREEN_FONT_ROMAN:
