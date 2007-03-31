@@ -16,7 +16,6 @@
 #include "tex-accent.h"
 
 #include <list>
-#include <string>
 
 
 namespace lyx {
@@ -25,9 +24,9 @@ namespace lyx {
 ///
 struct Keyexc {
 	/// character to make exception
-	char c;
+	char_type c;
 	/// exception data
-	std::string data;
+	docstring data;
 	/// Combination with another deadkey
 	bool combined;
 	/// The accent comined with
@@ -41,7 +40,7 @@ typedef std::list<Keyexc> KmodException;
 class KmodInfo {
 public:
 	///
-	std::string data;
+	docstring data;
 	///
 	tex_accent accent;
 	///

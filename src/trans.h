@@ -43,22 +43,22 @@ public:
 	///
 	std::string const & getName() const;
 	///
-	std::string const process(char, TransManager &);
+	docstring const process(char_type, TransManager &);
 	///
 	bool isAccentDefined(tex_accent, KmodInfo &) const;
 
 private:
 	///
-	void addDeadkey(tex_accent, std::string const &);
+	void addDeadkey(tex_accent, docstring const &);
 	///
 	void freeKeymap();
 	///
 	int load(LyXLex &);
 	///
-	std::string const & match(unsigned char c);
+	docstring const & match(char_type c);
 	///
-	void insertException(KmodException & exclist, char c,
-			     std::string const & data, bool = false,
+	void insertException(KmodException & exclist, char_type c,
+	                     docstring const & data, bool = false,
 			     tex_accent = TEX_NOACCENT);
 	///
 	void freeException(KmodException & exclist);
@@ -66,21 +66,21 @@ private:
 	///
 	std::string name_;
 	///
-	std::map<int, std::string> keymap_;
+	std::map<char_type, docstring> keymap_;
 	///
-	std::map<int, KmodInfo> kmod_list_;
+	std::map<tex_accent, KmodInfo> kmod_list_;
 };
 
 
 ///
 inline
-std::string const & Trans::match(unsigned char c)
+docstring const & Trans::match(char_type c)
 {
-	std::map<int, std::string>::iterator it = keymap_.find(c);
+	std::map<char_type, docstring>::iterator it = keymap_.find(c);
 	if (it != keymap_.end()) {
 		return it->second;
 	}
-	static std::string dummy;
+	static docstring dummy;
 	return dummy;
 }
 

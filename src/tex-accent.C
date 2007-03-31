@@ -14,12 +14,8 @@
 #include "tex-accent.h"
 #include "support/convert.h"
 
-#include <string>
-
 
 namespace lyx {
-
-using std::string;
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this
@@ -87,9 +83,9 @@ tex_accent_struct get_accent(kb_action action)
 }
 
 
-string const DoAccent(string const & s, tex_accent accent)
+docstring const DoAccent(docstring const & s, tex_accent accent)
 {
-	string res;
+	docstring res;
 
 	res += lyx_accent_table[accent].cmd;
 	res += '{';
@@ -102,9 +98,9 @@ string const DoAccent(string const & s, tex_accent accent)
 }
 
 
-string const DoAccent(char c, tex_accent accent)
+docstring const DoAccent(char_type c, tex_accent accent)
 {
-	return DoAccent(convert<string>(c), accent);
+	return DoAccent(docstring(1, c), accent);
 }
 
 

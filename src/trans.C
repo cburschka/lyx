@@ -48,8 +48,8 @@ Trans::~Trans()
 }
 
 
-void Trans::insertException(KmodException & exclist, char c,
-			    string const & data, bool flag, tex_accent accent)
+void Trans::insertException(KmodException & exclist, char_type c,
+                            docstring const & data, bool flag, tex_accent accent)
 {
 	Keyexc p;
 	p.c = c;
@@ -107,17 +107,20 @@ struct keyword_item kmapTags[K_LAST - 1] = {
 tex_accent getkeymod(string const &);
 
 
-void Trans::addDeadkey(tex_accent accent, string const & keys)
+void Trans::addDeadkey(tex_accent accent, docstring const & keys)
 {
 	KmodInfo tmp;
 	tmp.data = keys;
 	tmp.accent = accent;
 	kmod_list_[accent] = tmp;
 
-	for (string::size_type i = 0; i < keys.length(); ++i) {
-		string tmp;
-		tmp += char(0);
-		tmp += char(accent);
+	for (docstring::size_type i = 0; i < keys.length(); ++i) {
+		// FIXME This is a hack.
+		// tmp is no valid UCS4 string, but misused to store the
+		// accent.
+		docstring tmp;
+		tmp += char_type(0);
+		tmp += char_type(accent);
 		keymap_[keys[i]] = tmp;
 	}
 }
@@ -140,7 +143,7 @@ int Trans::load(LyXLex & lex)
 			} else
 				return -1;
 
-			string const keys = lex.getString();
+			docstring const keys = lex.getDocString();
 
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
@@ -194,9 +197,9 @@ int Trans::load(LyXLex & lex)
 			tex_accent accent_2= getkeymod(str);
 			if (accent_2 == TEX_NOACCENT) return -1;
 
-			map<int, KmodInfo>::iterator it1 =
+			map<tex_accent, KmodInfo>::iterator it1 =
 				kmod_list_.find(accent_1);
-			map<int, KmodInfo>::iterator it2 =
+			map<tex_accent, KmodInfo>::iterator it2 =
 				kmod_list_.find(accent_2);
 			if (it1 == kmod_list_.end()
 			    || it2 == kmod_list_.end()) {
@@ -205,25 +208,25 @@ int Trans::load(LyXLex & lex)
 
 			// Find what key accent_2 is on - should
 			// check about accent_1 also
-			map<int, string>::iterator it = keymap_.begin();
-			map<int, string>::iterator end = keymap_.end();
+			map<char_type, docstring>::iterator it = keymap_.begin();
+			map<char_type, docstring>::iterator end = keymap_.end();
 			for (; it != end; ++it) {
 				if (!it->second.empty()
 				    && it->second[0] == 0
 				    && it->second[1] == accent_2)
 					break;
 			}
-			string allowed;
+			docstring allowed;
 			if (lex.next()) {
-				allowed = lex.getString();
+				allowed = lex.getDocString();
 				lyxerr[Debug::KBMAP] << "allowed: "
-						     << allowed << endl;
+						     << to_utf8(allowed) << endl;
 			} else {
 				return -1;
 			}
 
 			insertException(kmod_list_[accent_1].exception_list,
-					static_cast<char>(it->first), allowed,
+					it->first, allowed,
 					true, accent_2);
 		}
 		break;
@@ -241,10 +244,10 @@ int Trans::load(LyXLex & lex)
 				return -1;
 
 			if (lex.next(true)) {
-				string const string_to = lex.getString();
+				docstring const string_to = lex.getDocString();
 				keymap_[key_from] = string_to;
 				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << string_to << '\''
+					lyxerr << "\t`" << to_utf8(string_to) << '\''
 					       << endl;
 			} else
 				return -1;
@@ -253,8 +256,8 @@ int Trans::load(LyXLex & lex)
 		}
 		case KXMOD: {
 			tex_accent accent;
-			char key;
-			string str;
+			char_type key;
+			docstring str;
 
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "KXMOD:\t" << lex.getString() << endl;
@@ -270,7 +273,7 @@ int Trans::load(LyXLex & lex)
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << lex.getString() << '\''
 					       << endl;
-				key = lex.getString()[0];
+				key = lex.getDocString()[0];
 			} else
 				return -1;
 
@@ -278,7 +281,7 @@ int Trans::load(LyXLex & lex)
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << lex.getString() << '\''
 					       << endl;
-				str = lex.getString();
+				str = lex.getDocString();
 			} else
 				return -1;
 
@@ -301,7 +304,7 @@ int Trans::load(LyXLex & lex)
 
 bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 {
-	map<int, KmodInfo>::const_iterator cit = kmod_list_.find(accent);
+	map<tex_accent, KmodInfo>::const_iterator cit = kmod_list_.find(accent);
 	if (cit != kmod_list_.end()) {
 		i = cit->second;
 		return true;
@@ -310,13 +313,13 @@ bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 }
 
 
-string const Trans::process(char c, TransManager & k)
+docstring const Trans::process(char_type c, TransManager & k)
 {
-	string const t = match(static_cast<unsigned char>(c));
+	docstring const t = match(c);
 
 	if (t.empty() && c != 0) {
 		return k.normalkey(c);
-	} else if (!t.empty() && t[0] != char(0)) {
+	} else if (!t.empty() && t[0] != 0) {
 		//return k.normalkey(c);
 		return t;
 	} else {

@@ -34,10 +34,6 @@ using std::string;
 using std::pair;
 
 
-extern string const DoAccent(string const &, tex_accent);
-extern string const DoAccent(char, tex_accent);
-
-
 // TransFSMData
 TransFSMData::TransFSMData()
 {
@@ -47,7 +43,7 @@ TransFSMData::TransFSMData()
 
 
 // TransState
-char const TransState::TOKEN_SEP = 4;
+char_type const TransState::TOKEN_SEP = 4;
 
 
 // TransInitState
@@ -57,20 +53,20 @@ TransInitState::TransInitState()
 }
 
 
-string const TransInitState::normalkey(char c)
+docstring const TransInitState::normalkey(char_type c)
 {
-	string res;
+	docstring res;
 	res = c;
 	return res;
 }
 
 
-string const TransInitState::deadkey(char c, KmodInfo d)
+docstring const TransInitState::deadkey(char_type c, KmodInfo d)
 {
 	deadkey_ = c;
 	deadkey_info_ = d;
 	currentState = deadkey_state_;
-	return string();
+	return docstring();
 }
 
 
@@ -81,9 +77,9 @@ TransDeadkeyState::TransDeadkeyState()
 }
 
 
-string const TransDeadkeyState::normalkey(char c)
+docstring const TransDeadkeyState::normalkey(char_type c)
 {
-	string res;
+	docstring res;
 
 	KmodException::iterator it = deadkey_info_.exception_list.begin();
 	KmodException::iterator end = deadkey_info_.exception_list.end();
@@ -102,9 +98,9 @@ string const TransDeadkeyState::normalkey(char c)
 }
 
 
-string const TransDeadkeyState::deadkey(char c, KmodInfo d)
+docstring const TransDeadkeyState::deadkey(char_type c, KmodInfo d)
 {
-	string res;
+	docstring res;
 
 	// Check if the same deadkey was typed twice
 	if (deadkey_ == c) {
@@ -124,7 +120,7 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 			deadkey2_info_ = d;
 			comb_info_ = (*cit);
 			currentState = combined_state_;
-			return string();
+			return docstring();
 		}
 		if (cit->c == c) {
 			res = cit->data;
@@ -153,20 +149,20 @@ TransCombinedState::TransCombinedState()
 }
 
 
-string const TransCombinedState::normalkey(char c)
+docstring const TransCombinedState::normalkey(char_type c)
 {
-	string const temp = DoAccent(c, deadkey2_info_.accent);
-	string const res = DoAccent(temp, deadkey_info_.accent);
+	docstring const temp = DoAccent(c, deadkey2_info_.accent);
+	docstring const res = DoAccent(temp, deadkey_info_.accent);
 	currentState = init_state_;
 	return res;
 }
 
 
-string const TransCombinedState::deadkey(char c, KmodInfo d)
+docstring const TransCombinedState::deadkey(char_type c, KmodInfo d)
 {
 	// Third key in a row. Output the first one and
 	// reenter with shifted deadkeys
-	string res;
+	docstring res;
 	if (deadkey_ != 0)
 		res = deadkey_;
 	res += TOKEN_SEP;
@@ -252,12 +248,12 @@ void TransManager::disableKeymap()
 }
 
 
-void  TransManager::translateAndInsert(char c, LyXText * text, LCursor & cur)
+void  TransManager::translateAndInsert(char_type c, LyXText * text, LCursor & cur)
 {
-	string res = active_->process(c, *this);
+	docstring res = active_->process(c, *this);
 
 	// Process with tokens
-	string temp;
+	docstring temp;
 
 	while (res.length() > 0) {
 		res = split(res, temp, TransState::TOKEN_SEP);
@@ -266,14 +262,14 @@ void  TransManager::translateAndInsert(char c, LyXText * text, LCursor & cur)
 }
 
 
-void TransManager::insertVerbatim(string const & str, LyXText * text, LCursor & cur)
+void TransManager::insertVerbatim(docstring const & str, LyXText * text, LCursor & cur)
 {
 	for (string::size_type i = 0, n = str.size(); i < n; ++i)
 		text->insertChar(cur, str[i]);
 }
 
 
-void TransManager::insert(string const & str, LyXText * text, LCursor & cur)
+void TransManager::insert(docstring const & str, LyXText * text, LCursor & cur)
 {
 	// Go through the character encoding only if the current
 	// encoding (chset_->name()) matches the current font_norm
@@ -281,26 +277,25 @@ void TransManager::insert(string const & str, LyXText * text, LCursor & cur)
 
 	// Is false to speak about "only if" the current encoding will
 	// almost always be equal to font_norm.
-	pair<bool, int> enc = chset_.encodeString(str);
+	pair<bool, int> enc = chset_.encodeString(to_utf8(str));
 	if (chset_.getName() != lyxrc.font_norm ||
 	    !enc.first) {
 		// Could not find an encoding
 		insertVerbatim(str, text, cur);
 		return;
 	}
-	string const tmp(1, static_cast<char>(enc.second));
-	insertVerbatim(tmp, text, cur);
+	text->insertChar(cur, enc.second);
 }
 
 
-void TransManager::deadkey(char c, tex_accent accent, LyXText * t, LCursor & cur)
+void TransManager::deadkey(char_type c, tex_accent accent, LyXText * t, LCursor & cur)
 {
 	if (c == 0 && active_ != &default_) {
 		// A deadkey was pressed that cannot be printed
 		// or a accent command was typed in the minibuffer
 		KmodInfo i;
 		if (active_->isAccentDefined(accent, i) == true) {
-			string const res = trans_fsm_
+			docstring const res = trans_fsm_
 				.currentState->deadkey(c, i);
 			insert(res, t, cur);
 			return;
@@ -311,7 +306,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t, LCursor & cur
 		KmodInfo i;
 		i.accent = accent;
 		i.data.erase();
-		string res = trans_fsm_.currentState->deadkey(c, i);
+		docstring res = trans_fsm_.currentState->deadkey(c, i);
 		insert(res, t, cur);
 	} else {
 		// Go through the translation

@@ -14,6 +14,7 @@
 #define TEX_ACCENT
 
 #include "lfuns.h"
+#include "support/docstring.h"
 
 
 namespace lyx {
@@ -110,6 +111,11 @@ struct tex_accent_struct {
 
 ///
 extern tex_accent_struct lyx_accent_table[];
+
+///
+extern docstring const DoAccent(docstring const &, tex_accent);
+///
+extern docstring const DoAccent(char_type, tex_accent);
 
 
 } // namespace lyx

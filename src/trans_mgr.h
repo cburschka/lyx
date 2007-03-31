@@ -32,13 +32,13 @@ public:
 	///
 	virtual ~TransState() {}
 	///
-	virtual std::string const normalkey(char) = 0;
+	virtual docstring const normalkey(char_type) = 0;
 	///
 	virtual bool backspace() = 0;
 	///
-	virtual std::string const deadkey(char, KmodInfo) = 0;
+	virtual docstring const deadkey(char_type, KmodInfo) = 0;
 	///
-	static char const TOKEN_SEP;
+	static char_type const TOKEN_SEP;
 };
 
 
@@ -48,11 +48,11 @@ protected:
 	///
 	virtual ~TransFSMData() {}
 	///
-	char deadkey_;
+	char_type deadkey_;
 	///
 	KmodInfo deadkey_info_;
 	///
-	char deadkey2_;
+	char_type deadkey2_;
 	///
 	KmodInfo deadkey2_info_;
 	///
@@ -78,11 +78,11 @@ public:
 	///
 	TransInitState();
 	///
-	virtual std::string const normalkey(char);
+	virtual docstring const normalkey(char_type);
 	///
 	virtual bool backspace() { return true; }
 	///
-	virtual std::string const deadkey(char, KmodInfo);
+	virtual docstring const deadkey(char_type, KmodInfo);
 };
 
 
@@ -92,14 +92,14 @@ public:
 	///
 	TransDeadkeyState();
 	///
-	virtual std::string const normalkey(char);
+	virtual docstring const normalkey(char_type);
 	///
 	virtual bool backspace() {
 		currentState = init_state_;
 		return false;
 	}
 	///
-	virtual std::string const deadkey(char, KmodInfo);
+	virtual docstring const deadkey(char_type, KmodInfo);
 };
 
 
@@ -109,7 +109,7 @@ public:
 	///
 	TransCombinedState();
 	///
-	virtual std::string const normalkey(char);
+	virtual docstring const normalkey(char_type);
 	///
 	virtual bool backspace() {
 		// cancel the second deadkey
@@ -120,7 +120,7 @@ public:
 		return false;
 	}
 	///
-	virtual std::string const deadkey(char, KmodInfo);
+	virtual docstring const deadkey(char_type, KmodInfo);
 };
 
 
@@ -151,9 +151,9 @@ private:
 	///
 	CharacterSet chset_;
 	///
-	void insert(std::string const &, LyXText *, LCursor & cur);
+	void insert(docstring const &, LyXText *, LCursor & cur);
 	///
-	void insertVerbatim(std::string const &, LyXText *, LCursor & cur);
+	void insertVerbatim(docstring const &, LyXText *, LCursor & cur);
 public:
 	///
 	TransManager();
@@ -176,25 +176,25 @@ public:
 		return trans_fsm_.currentState->backspace();
 	}
 	///
-	void translateAndInsert(char, LyXText *, LCursor &);
+	void translateAndInsert(char_type, LyXText *, LCursor &);
 	///
-	std::string const deadkey(char, KmodInfo);
+	docstring const deadkey(char_type, KmodInfo);
 	///
-	std::string const normalkey(char);
+	docstring const normalkey(char_type);
 	///
-	void deadkey(char, tex_accent, LyXText *, LCursor &);
+	void deadkey(char_type, tex_accent, LyXText *, LCursor &);
 };
 
 
 inline
-std::string const TransManager::normalkey(char c)
+docstring const TransManager::normalkey(char_type c)
 {
 	return trans_fsm_.currentState->normalkey(c);
 }
 
 
 inline
-std::string const TransManager::deadkey(char c, KmodInfo t)
+docstring const TransManager::deadkey(char_type c, KmodInfo t)
 {
 	return trans_fsm_.currentState->deadkey(c, t);
 }
