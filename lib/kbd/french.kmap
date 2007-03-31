@@ -11,7 +11,7 @@
 \kmod [ circumflex aceijnorsuyzACEIJNORSUYZ	# circumflex on [
 \kmap 1 &		# map numbers to some letters and
 \kmap ! 1		# Shift-numbers to numbers
-\kmap 2 "\\'{e}"
+\kmap 2 é
 \kmap @ 2
 \kmap 3 \"
 \kmap \# 3
@@ -21,17 +21,17 @@
 \kmap % 5
 \kmap 6 -
 \kmap ^ 6
-\kmap 7 "\\`{e}"
+\kmap 7 è
 \kmap & 7
 \kmap 8 _
 \kmap * 8
-\kmap 9 "\\c{c}"
+\kmap 9 ç
 \kmap ( 9
-\kmap 0 "\\`{a}"
+\kmap 0 à
 \kmap ) 0
 \kmap - )
 \kmap _ "\\b{}"	# degree sign?
-#\kmap `		# to the power of two?
+#\kmap `		\# to the power of two?
 \kmap a q
 \kmap A Q	# switched A<->Q
 \kmap q a
@@ -43,18 +43,18 @@
 \kmap m ","
 \kmap M	?
 \kmap ] $
-\kmap } "\\pounds{}"	# pound sign?
+\kmap } £	# pound sign?
 \kmap ; m
 \kmap : M
-\kmap ' "\\`{u}"
+\kmap ' ù
 \kmap \" %
 \kmap . :
 \kmap "," ;
 \kmap < .
 \kmap > /
-\kmap ? "\\S{}"
+\kmap ? §
 \kmap / !
 \kmap \\ *
-\kmap | "$\\mu$"
-\kxmod circumflex i "\\^{\\i}"	# some exceptions
-\kxmod umlaut i "\\\"{\\i}"
+\kmap | µ
+\kxmod circumflex i î	# some exceptions
+\kxmod umlaut i ï

@@ -2,11 +2,11 @@
 # Key definition file for French national keyboard for LyX
 #
 
-\kmap ¬ "\\oe{}"                # {\oe} before u and i
+\kmap ¬ œ                # {\oe} before u and i
 \kmod ¨ umlaut aeiouAEIOU       # umlaut on ¨
-\kxmod umlaut i "\\\"{\\i}"      # some exceptions
+\kxmod umlaut i ï      # some exceptions
 \kmod ^ circumflex aeiouAEIOU   # circumflex on ^
-\kxmod circumflex i "\\^{\\i}"   # some exceptions
+\kxmod circumflex i î   # some exceptions
 \kmod ² cedilla cC              # cedilla on cC
-\kmap ¤ "\\euro{}"			# euro sign, to use with package eurofont
+\kmap ¤ €			# euro sign, to use with package eurofont
 

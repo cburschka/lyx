@@ -9,31 +9,31 @@
 \kmap ~ ;
 \kmap 1 +		# map numbers to Czech letters and
 \kmap ! 1		# Shift-numbers to numbers
-\kmap 2 "\\v{e}"
+\kmap 2 ě
 \kmap @ 2
-\kmap 3 "\\v{s}"
+\kmap 3 š
 \kmap \# 3
-\kmap 4 "\\v{c}"
+\kmap 4 č
 \kmap $ 4
-\kmap 5 "\\v{r}"
+\kmap 5 ř
 \kmap % 5
-\kmap 6 "\\v{z}"
+\kmap 6 ž
 \kmap ^ 6
-\kmap 7 "\\'{y}"
+\kmap 7 ý
 \kmap & 7
-\kmap 8 "\\'{a}"
+\kmap 8 á
 \kmap * 8
-\kmap 9 "\\'{\\i}"
+\kmap 9 í
 \kmap ( 9
-\kmap 0 "\\'{e}"
+\kmap 0 é
 \kmap ) 0
 \kmap - =		# map other keys to reflect Slovak keyboard
 \kmap _ %
-\kmap ; "\\r{u}"
+\kmap ; ů
 \kmap : \"
-\kmap ' "\\S{}"
+\kmap ' §
 \kmap \" !
-\kmap [ "\\'{u}"
+\kmap [ ú
 \kmap { /
 \kmap ] )
 \kmap } (
@@ -41,17 +41,17 @@
 \kmap > :
 \kmap ? _
 \kmap / -
-\kxmod caron o "\\^{o}"		# mapping exception - generate ^ instead for o
-\kxmod caron O "\\^{O}"
-\kxmod caron u "\\r{u}"		# generate circle for u - it's a Czech letter
-\kxmod caron U "\\r{U}"
-\kxmod caron t "\\q{t}"	# use proper caron mark for t, l, d and L
-\kxmod caron l "\\q{l}"
-\kxmod caron L "\\q{L}"
-\kxmod caron d "\\q{d}"
-\kxmod acute i "\\'{\\i}"	# use only root of i for i acute
-\kxmod caron y "\\v{z}"		# switch from QWERTY to QWERTZ
-\kxmod caron Y "\\v{Z}"
+\kxmod caron o ô		# mapping exception - generate ^ instead for o
+\kxmod caron O Ô
+\kxmod caron u ů		# generate circle for u - it's a Czech letter
+\kxmod caron U Ů
+\kxmod caron t ť	# use proper caron mark for t, l, d and L
+\kxmod caron l ľ
+\kxmod caron L Ľ
+\kxmod caron d ď
+\kxmod acute i í	# use only root of i for i acute
+\kxmod caron y ž		# switch from QWERTY to QWERTZ
+\kxmod caron Y Ž
 \kmap z y
 \kmap Z Y
 \kmap y z

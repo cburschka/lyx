@@ -20,49 +20,49 @@
 #
 # some exceptions
 #
-\kxmod acute i "\\'{\\i}"
-\kxmod grave i "\\`{\\i}"
-\kxmod circumflex i "\\^{\\i}"
-\kxmod acute j "\\'{\\j}"
-\kxmod grave j "\\`{\\j}"
-\kxmod circumflex j "\\^{\\j}"
+\kxmod acute i í
+\kxmod grave i ì
+\kxmod circumflex i î
+\kxmod acute j ȷ́
+\kxmod grave j ȷ̀
+\kxmod circumflex j ĵ
 #
 # polish characters
 #
-\kxmod cedilla a "\\k{a}"
-\kxmod cedilla A "\\k{A}"
-# \kxmod acute c "\\'{c}"
-# \kxmod acute C "\\'{C}"
-\kxmod cedilla e "\\k{e}"
-\kxmod cedilla E "\\k{E}"
-\kxmod acute l "\\l{}"
-\kxmod acute L "\\L{}"
-# \kxmod acute n "\\'{n}"
-# \kxmod acute N "\\'{N}"
-# \kxmod acute o "\\'{o}"
-# \kxmod acute O "\\'{O}"
-# \kxmod acute s "\\'{s}"
-# \kxmod acute S "\\'{S}"
-# \kxmod dot z "\\.{z}"
-# \kxmod dot Z "\\.{Z}"
-# \kxmod acute z "\\'{z}"
-# \kxmod acute Z "\\'{Z}"
+\kxmod cedilla a ą
+\kxmod cedilla A Ą
+# \kxmod acute c ć
+# \kxmod acute C Ć
+\kxmod cedilla e ę
+\kxmod cedilla E Ę
+\kxmod acute l ł
+\kxmod acute L Ł
+# \kxmod acute n ń
+# \kxmod acute N Ń
+# \kxmod acute o ó
+# \kxmod acute O Ó
+# \kxmod acute s ś
+# \kxmod acute S Ś
+# \kxmod dot z ż
+# \kxmod dot Z Ż
+# \kxmod acute z ź
+# \kxmod acute Z Ź
 #
 # german characters
 #
-\kxmod umlaut s "\\ss{}"
-\kxmod umlaut S "\\ss{}"
+\kxmod umlaut s ß
+\kxmod umlaut S ß
 #
 # french characters
 #
-\kmap ¬ "\\oe{}"
+\kmap ¬ œ
 #
 # special characters
 #
-\kxmod umlaut $ "\\pounds{}"	# pound
-\kxmod umlaut \# "\\S{}"	# paragraph
+\kxmod umlaut $ £	# pound
+\kxmod umlaut \# §	# paragraph
 \kxmod umlaut ~ "\\b{}"		# degree
-\kmap ¤ "\\euro{}"	# euro sign, to use with package eurofont
+\kmap ¤ €	# euro sign, to use with package eurofont
 #
 # \kxmod acute ' '
 # \kxmod grave ` `
@@ -74,4 +74,4 @@
 #
 # Example of substituting local chars to TeX-Strings
 #
-# \kmap ß "\\ss{}"
+# \kmap ß ß

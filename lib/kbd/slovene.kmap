@@ -21,12 +21,12 @@
 \kmap < ;
 \kmap > :
 
-\kmap [ "\\v{s}"                    # Chars with carons
-\kmap { "\\v{S}"
-\kmap ; "\\v{c}"
-\kmap : "\\v{C}"
-\kmap / "\\v{z}"
-\kmap ? "\\v{Z}"
+\kmap [ š                    # Chars with carons
+\kmap { Š
+\kmap ; č
+\kmap : Č
+\kmap / ž
+\kmap ? Ž
 
-\kmap ' "\\'{c}"                     # Chars with accute
-\kmap \" "\\'{C}"
+\kmap ' ć                     # Chars with accute
+\kmap \" Ć

@@ -6,13 +6,13 @@
 \kmod ` circumflex aceijnorsuyzACEIJNORSUYZ	# dead circumflex
 \kmap ~ °		# degree
 \kmap @ \"		# shift-numbers is different on German kbd
-\kmap \# "\\S{}"
+\kmap \# §
 \kmap ^ &
 \kmap & /
 \kmap * (
 \kmap ( )
 \kmap ) =
-\kmap - "\\ss{}"		# - maps to sharfes s
+\kmap - ß		# - maps to sharfes s
 \kmap _ ?		# _ maps to question mark
 \kmod = acute aceijlnorsuyzACEIJLNORSUYZ	# = is acute deadkey
 \kmod + grave aceijlnorsuyzACEIJLNORSUYZ	# Shift-= is grave dead key
@@ -20,24 +20,24 @@
 \kmap Z Y
 \kmap y z
 \kmap Y Z
-\kmap [ "\\\"{u}"		# [{ maps to u umlaut
-\kmap { "\\\"{U}"
+\kmap [ ü		# [{ maps to u umlaut
+\kmap { Ü
 \kmap ] +
 \kmap } *
-\kmap ; "\\\"{o}"		# ;: maps to o umlaut
-\kmap : "\\\"{O}"
-\kmap ' "\\\"{a}"		# '" maps to a umlaut
-\kmap \" "\\\"{A}"
+\kmap ; ö		# ;: maps to o umlaut
+\kmap : Ö
+\kmap ' ä		# '" maps to a umlaut
+\kmap \" Ä
 \kmap < ;		# yet some modifiers
 \kmap > :
 \kmap / -
 \kmap ? _
 \kmap \\ \#
 \kmap | '
-\kxmod acute i "\\'{\\i}"		# correct some misspellings :-)
-\kxmod acute j "\\'{\\j}"
-\kxmod grave i "\\`{\\i}"
-\kxmod grave j "\\`{\\j}"
-\kxmod circumflex i "\\^{\\i}"
-\kxmod circumflex j "\\^{\\j}"
+\kxmod acute i í		# correct some misspellings :-)
+\kxmod acute j ȷ́
+\kxmod grave i ì
+\kxmod grave j ȷ̀
+\kxmod circumflex i î
+\kxmod circumflex j ĵ
 

@@ -8,16 +8,16 @@
 # (c)1996 by Boloni Laszlo, blaci@utcluj.ro
 #
 
-\kmap ; "\\c{s}"
-\kmap : "\\c{S}"
-\kmap ' "\\c{t}"
-\kmap \" "\\c{T}"
-\kmap [ "\\u{a}"
-\kmap { "\\u{A}"
-\kmap ] "\\^{\\i}"
-\kmap } "\\^{I}"
-\kmap \\ "\\^{a}"
-\kmap | "\\^{A}"
+\kmap ; ş
+\kmap : Ş
+\kmap ' ţ
+\kmap \" Ţ
+\kmap [ ă
+\kmap { Ă
+\kmap ] î
+\kmap } Î
+\kmap \\ â
+\kmap | Â
 \kmap = '
 \kmap + *
 \kmap - +

@@ -8,8 +8,8 @@
 \kmod ] umlaut aeijouyAEIJOUY                   # umlaut on ]
 \kmap ! +
 \kmap @ \"
-\kmap \# \*
-\kmap $ "\\c{c}"
+\kmap \# *
+\kmap $ ç
 \kmap ^ &
 \kmap & /
 \kmap * (
@@ -24,18 +24,18 @@
 \kmap z y       # switched Y<->Z
 \kmap Y Z
 \kmap Z Y
-\kmap [ "\\`{e}"
-\kmap { "\\\"{u}"
+\kmap [ è
+\kmap { ü
 \kmap } !
-\kmap ; "\\'{e}"
-\kmap : "\\\"{o}"
-\kmap ' "\\`{a}"
-\kmap \" "\\\"{a}"
+\kmap ; é
+\kmap : ö
+\kmap ' à
+\kmap \" ä
 \kmap < ;
 \kmap > :
 \kmap ? _
 \kmap / -
 \kmap \\ $
 \kmap | "\\it\\${}"
-\kxmod circumflex i "\\^{\\i}"  # some exceptions
-\kxmod umlaut i "\\\"{\\i}"
+\kxmod circumflex i î  # some exceptions
+\kxmod umlaut i ï

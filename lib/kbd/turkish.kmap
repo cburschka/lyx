@@ -22,16 +22,16 @@
 \kmap \\ ","
 \kmap | ;
 
-\kmap [ "\\u{g}"			# mappings for Turkish letters
-\kmap { "\\u{G}"
-\kmap ] "\\\"{u}"
-\kmap } "\\\"{U}"
-\kmap i "\\i{}"
-\kmap ; "\\c{s}"
-\kmap : "\\c{S}"
+\kmap [ ğ			# mappings for Turkish letters
+\kmap { Ğ
+\kmap ] ü
+\kmap } Ü
+\kmap i ı
+\kmap ; ş
+\kmap : Ş
 \kmap ' i
-\kmap \" "\\.{I}"
-\kmap "," "\\\"{o}"
-\kmap < "\\\"{O}"
-\kmap . "\\c{c}"
-\kmap > "\\c{C}"
+\kmap \" İ
+\kmap "," ö
+\kmap < Ö
+\kmap . ç
+\kmap > Ç

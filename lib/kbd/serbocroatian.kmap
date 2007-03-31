@@ -19,16 +19,16 @@
 \kmap ~ >
 \kmap y z         # y and z are switched
 \kmap Y Z
-\kmap [ "\\v{s}"  # s caron (pronunced sh)
-\kmap { "\\v{S}"
-\kmap ] "\\dj{}"  # d stroke (pronunced dj, with j as in German, not as
-\kmap } "\\DJ{}"  # in English)
-\kmap \\ "\\v{z}" # z caron (pronounced zh)
-\kmap | "\\v{Z}"
-\kmap ; "\\v{c}"  # c caron (pronunced tch)
-\kmap : "\\v{C}"
-\kmap ' "\\'{c}"  # c accute (pronunced as very soft ch)
-\kmap \" "\\'{C}"
+\kmap [ š  # s caron (pronunced sh)
+\kmap { Š
+\kmap ] đ  # d stroke (pronunced dj, with j as in German, not as
+\kmap } Đ  # in English)
+\kmap \\ ž # z caron (pronounced zh)
+\kmap | Ž
+\kmap ; č  # c caron (pronunced tch)
+\kmap : Č
+\kmap ' ć  # c accute (pronunced as very soft ch)
+\kmap \" Ć
 \kmap z y
 \kmap Z Y
 \kmap < ;
