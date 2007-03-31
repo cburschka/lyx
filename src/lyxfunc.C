@@ -144,10 +144,6 @@ namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
 
 
-// (alkis)
-extern tex_accent_struct get_accent(kb_action action);
-
-
 namespace {
 
 bool getLocalStatus(LCursor cursor,

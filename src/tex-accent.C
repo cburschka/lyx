@@ -12,10 +12,15 @@
 #include <config.h>
 
 #include "tex-accent.h"
+#include "debug.h"
+
 #include "support/convert.h"
+#include "support/docstream.h"
 
 
 namespace lyx {
+
+// FIXME This file has nothing to do with TeX anymore
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this
@@ -47,26 +52,27 @@ namespace lyx {
    */
 // I am not sure how some of the XWindows names coresponds to the TeX ones.
 
-tex_accent_struct lyx_accent_table[18] = {
-	{ static_cast<tex_accent>(0), "", /*"",*/ "", static_cast<kb_action>(0)},
-	{TEX_ACUTE,      "\\'",  /*" AEIOUYaeiouySZszRLCNrlcn",*/ "acute",   LFUN_ACCENT_ACUTE},
-	{TEX_GRAVE,      "\\`",  /*" aeiouAEIOU",*/           "grave",    LFUN_ACCENT_GRAVE},
-	{TEX_MACRON,     "\\=",  /*" EeAIOUaiou",*/           "macron",    LFUN_ACCENT_MACRON},
-	{TEX_TILDE,      "\\~",  /*" ANOanoIiUu",*/           "tilde",    LFUN_ACCENT_TILDE},
-	{TEX_UNDERBAR,   "\\b", /*" ",*/                     "underbar", LFUN_ACCENT_UNDERBAR},
-	{TEX_CEDILLA,    "\\c", /*" CcSsTtRLGrlgNKnk",*/     "cedilla",    LFUN_ACCENT_CEDILLA},
-	{TEX_UNDERDOT,   "\\d", /*" ",*/                     "underdot", LFUN_ACCENT_UNDERDOT},
-	{TEX_CIRCUMFLEX, "\\^",  /*" AEIOUaeiouHJhjCGScgs",*/ "circumflex",  LFUN_ACCENT_CIRCUMFLEX},
-	{TEX_CIRCLE,     "\\r", /*" AaUu",*/                 "circle",  LFUN_ACCENT_CIRCLE},
-	{TEX_TIE,        "\\t", /*" ",*/                     "tie",    LFUN_ACCENT_TIE},
-	{TEX_BREVE,      "\\u", /*" AaGgUu",*/               "breve",    LFUN_ACCENT_BREVE},
-	{TEX_CARON,      "\\v", /*" LSTZlstzCEDNRcednr",*/   "caron",    LFUN_ACCENT_CARON},
-//  {TEX_SPECIAL_CARON, "\\q", "", "ooo",  LFUN_ACCENT_SPECIAL_CARON},
-	{TEX_HUNGUML,    "\\H", /*" OUou",*/                 "hugarian_umlaut",    LFUN_ACCENT_HUNGARIAN_UMLAUT},
-	{TEX_UMLAUT,     "\\\"", /*" AEIOUaeiouy",*/          "umlaut",    LFUN_ACCENT_UMLAUT},
-	{TEX_DOT,        "\\.",  /*" ZzICGicgEe",*/           "dot",    LFUN_ACCENT_DOT},
-	{TEX_OGONEK,     "\\k",  /*" AaEe",*/                 "ogonek",    LFUN_ACCENT_OGONEK},
-	{ static_cast<tex_accent>(0), "", /*"",*/ "", static_cast<kb_action>(0)}};
+tex_accent_struct lyx_accent_table[] = {
+	{TEX_NOACCENT,   0,      "",                LFUN_NOACTION},
+	{TEX_ACUTE,      0x0301, "acute",           LFUN_ACCENT_ACUTE},
+	{TEX_GRAVE,      0x0300, "grave",           LFUN_ACCENT_GRAVE},
+	{TEX_MACRON,     0x0304, "macron",          LFUN_ACCENT_MACRON},
+	{TEX_TILDE,      0x0303, "tilde",           LFUN_ACCENT_TILDE},
+	{TEX_UNDERBAR,   0x0320, "underbar",        LFUN_ACCENT_UNDERBAR},
+	{TEX_CEDILLA,    0x0327, "cedilla",         LFUN_ACCENT_CEDILLA},
+	{TEX_UNDERDOT,   0x0323, "underdot",        LFUN_ACCENT_UNDERDOT},
+	{TEX_CIRCUMFLEX, 0x0302, "circumflex",      LFUN_ACCENT_CIRCUMFLEX},
+	{TEX_CIRCLE,     0x030a, "circle",          LFUN_ACCENT_CIRCLE},
+	{TEX_TIE,        0x0361, "tie",             LFUN_ACCENT_TIE},
+	{TEX_BREVE,      0x0306, "breve",           LFUN_ACCENT_BREVE},
+	{TEX_CARON,      0x030c, "caron",           LFUN_ACCENT_CARON},
+//	{TEX_SPECIAL_CARON, 0x030c, "ooo",          LFUN_ACCENT_SPECIAL_CARON},
+	// Don't fix this typo for compatibility reasons!
+	{TEX_HUNGUML,    0x030b, "hugarian_umlaut", LFUN_ACCENT_HUNGARIAN_UMLAUT},
+	{TEX_UMLAUT,     0x0308, "umlaut",          LFUN_ACCENT_UMLAUT},
+	{TEX_DOT,        0x0307, "dot",             LFUN_ACCENT_DOT},
+	{TEX_OGONEK,     0x0328, "ogonek",          LFUN_ACCENT_OGONEK}
+};
 
 
 tex_accent_struct get_accent(kb_action action)
@@ -85,16 +91,20 @@ tex_accent_struct get_accent(kb_action action)
 
 docstring const DoAccent(docstring const & s, tex_accent accent)
 {
-	docstring res;
+	if (s.empty())
+		return docstring(1, lyx_accent_table[accent].ucs4);
 
-	res += lyx_accent_table[accent].cmd;
-	res += '{';
-	if (s == "i" || s == "j") {
-		res += '\\';
+	odocstringstream os;
+	os.put(s[0]);
+	os.put(lyx_accent_table[accent].ucs4);
+	if (s.length() > 1) {
+		if (accent != TEX_TIE || s.length() > 2)
+			lyxerr << "Warning: Too many characters given for accent "
+			       << lyx_accent_table[accent].name << '.' << std::endl;
+		os << s.substr(1);
 	}
-	res += s;
-	res += '}';
-	return res;
+	// FIXME: We should normalize the result to precomposed form
+	return os.str();
 }
 
 

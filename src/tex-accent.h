@@ -19,6 +19,8 @@
 
 namespace lyx {
 
+// FIXME This file has nothing to do with TeX anymore
+
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this
    if I got it wrong
@@ -91,18 +93,11 @@ enum tex_accent {
 };
 
 
-/** the native is so we know what characters TeX can write in a decent way
- it should be up to the user if _all_ characters should be allowed to
- be accented. Lgb. */
 struct tex_accent_struct {
 	///
 	tex_accent accent;
-	///
-	char const * cmd;
-#if 0
-	///
-	char const * native;
-#endif
+	/// UCS4 code point of this accent
+	char_type ucs4;
 	///
 	char const * name;
 	///
@@ -116,7 +111,8 @@ extern tex_accent_struct lyx_accent_table[];
 extern docstring const DoAccent(docstring const &, tex_accent);
 ///
 extern docstring const DoAccent(char_type, tex_accent);
-
+///
+extern tex_accent_struct get_accent(kb_action action);
 
 } // namespace lyx
 
