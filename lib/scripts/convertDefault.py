@@ -18,7 +18,18 @@
 
 # converts an image from $1 to $2 format
 import os, sys
-if os.system(r'convert -depth 8 "%s" "%s"' % (sys.argv[1], sys.argv[2])) != 0:
+
+opts = "-depth 8"
+# for pdf source formats, check whether convert supports the -define option
+if sys.argv[1][:4] == 'pdf:':
+    defopt = "-define pdf:use-cropbox=true"
+    fout = os.popen('convert ' + defopt + ' 2>&1')
+    output = fout.read()
+    fout.close()
+    if not 'unrecognized' in output.lower():
+        opts = defopt + ' ' + opts
+
+if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
     print >> sys.stderr, sys.argv[0], 'ERROR'
     print >> sys.stderr, 'Execution of "convert" failed.'
     sys.exit(1)

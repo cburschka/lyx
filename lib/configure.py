@@ -409,13 +409,6 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
     #
-    path, convert = checkProg('a PDF -> PNG converter', ['convert'])
-    if convert != '':
-        # check whether convert supports the -define option
-        conv_opts = "-define pdf:use-cropbox=true -depth 8"
-        if not 'Unrecognized' in cmdOutput('convert ' + conv_opts + ' 2>&1'):
-            addToRC(r'\converter pdf        png        "convert %s pdf:$$i png:$$o"	""' % conv_opts)
-    #
     # no agr -> pdf converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
     # Fortunately, this is not a big problem, because we will use epstopdf to
