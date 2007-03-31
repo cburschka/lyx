@@ -18,8 +18,8 @@
 \kmap - '
 \kmap _ ?
 \kmap + `
-\kmap ~ "\\b{}" # degree sign?
-\kmap ` "\\it\\${}"             # paragraph mark? doesn't work
+\kmap ~ ° # degree sign?
+#\kmap ` "\\it\\${}"             # paragraph mark? doesn't work
 \kmap y z
 \kmap z y       # switched Y<->Z
 \kmap Y Z
@@ -36,6 +36,6 @@
 \kmap ? _
 \kmap / -
 \kmap \\ $
-\kmap | "\\it\\${}"
+#\kmap | "\\it\\${}"
 \kxmod circumflex i î  # some exceptions
 \kxmod umlaut i ï

@@ -61,7 +61,7 @@
 #
 \kxmod umlaut $ £	# pound
 \kxmod umlaut \# §	# paragraph
-\kxmod umlaut ~ "\\b{}"		# degree
+\kxmod umlaut ~ °	# degree
 \kmap ¤ €	# euro sign, to use with package eurofont
 #
 # \kxmod acute ' '
@@ -71,7 +71,3 @@
 # \kxmod circumflex ^ ^
 # \kxmod umlaut \" \"
 # \kxmod dot . .
-#
-# Example of substituting local chars to TeX-Strings
-#
-# \kmap ß ß
