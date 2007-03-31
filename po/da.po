@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-03-26 15:52+0200\n"
+"POT-Creation-Date: 2007-03-31 16:15+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -107,18 +107,18 @@ msgstr "Definér eller ret baggrundsfarve"
 msgid "Alter Co&lor..."
 msgstr "&Ændr farve..."
 
-#: src/frontends/qt4/ui/BulletsUi.ui:37
+#: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
 msgstr "&Skrift: "
 
-#: src/frontends/qt4/ui/BulletsUi.ui:47
+#: src/frontends/qt4/ui/BulletsUi.ui:44
 #: src/frontends/qt4/ui/QCharacterUi.ui:227
 msgid "Si&ze:"
 msgstr "S&tørrelse:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:69
+#: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/QExternalUi.ui:192
-#: src/frontends/qt4/ui/QGraphicsUi.ui:604
+#: src/frontends/qt4/ui/QGraphicsUi.ui:731
 #: src/frontends/qt4/ui/QParagraphUi.ui:32
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:707
@@ -132,62 +132,62 @@ msgstr "S&tørrelse:"
 msgid "Default"
 msgstr "Standard"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:74
+#: src/frontends/qt4/ui/BulletsUi.ui:71
 #: src/frontends/controllers/character.C:123 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "Lillebitte"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:79
+#: src/frontends/qt4/ui/BulletsUi.ui:76
 #: src/frontends/controllers/character.C:127 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "Mindst"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:84
+#: src/frontends/qt4/ui/BulletsUi.ui:81
 #: src/frontends/controllers/character.C:131 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "Mindre"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:89
+#: src/frontends/qt4/ui/BulletsUi.ui:86
 #: src/frontends/controllers/character.C:135 src/lyxfont.C:64
 msgid "Small"
 msgstr "Lille"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:94
+#: src/frontends/qt4/ui/BulletsUi.ui:91
 #: src/frontends/controllers/character.C:139 src/lyxfont.C:64
 msgid "Normal"
 msgstr "Normal"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:99
+#: src/frontends/qt4/ui/BulletsUi.ui:96
 #: src/frontends/controllers/character.C:143 src/lyxfont.C:64
 msgid "Large"
 msgstr "Stor"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:104
+#: src/frontends/qt4/ui/BulletsUi.ui:101
 #: src/frontends/controllers/character.C:147 src/lyxfont.C:65
 msgid "Larger"
 msgstr "Større"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:109
+#: src/frontends/qt4/ui/BulletsUi.ui:106
 #: src/frontends/controllers/character.C:151 src/lyxfont.C:65
 msgid "Largest"
 msgstr "Størst"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:114
+#: src/frontends/qt4/ui/BulletsUi.ui:111
 #: src/frontends/controllers/character.C:155 src/lyxfont.C:65
 msgid "Huge"
 msgstr "Enorm"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:119
+#: src/frontends/qt4/ui/BulletsUi.ui:116
 #: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
 msgstr "Kæmpestor"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:147
+#: src/frontends/qt4/ui/BulletsUi.ui:144
 #, fuzzy
 msgid "&Custom Bullet:"
 msgstr "Kunde"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:177
+#: src/frontends/qt4/ui/BulletsUi.ui:174
 #, fuzzy
 msgid "&Level:"
 msgstr "&Mærkat"
@@ -288,19 +288,15 @@ msgstr "&Standardsprog:"
 msgid "&Base Size:"
 msgstr "St&ørrelse:"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:44
+#: src/frontends/qt4/ui/LaTeXUi.ui:58
 msgid "Document &class:"
 msgstr "Dokument&klasse:"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:92
-msgid "Class Settings"
-msgstr "Klasseindstillinger"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:104
+#: src/frontends/qt4/ui/LaTeXUi.ui:68
 msgid "&Options:"
 msgstr "Inds&tillinger:"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:141
+#: src/frontends/qt4/ui/LaTeXUi.ui:78
 msgid "Postscript &driver:"
 msgstr "Postscript-&driver:"
 
@@ -391,13 +387,13 @@ msgstr "Side&størrelse"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/QBoxUi.ui:122
 #: src/frontends/qt4/ui/QExternalUi.ui:507
-#: src/frontends/qt4/ui/QGraphicsUi.ui:174
+#: src/frontends/qt4/ui/QGraphicsUi.ui:334
 msgid "&Height:"
 msgstr "&Højde:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:138
 #: src/frontends/qt4/ui/QExternalUi.ui:484
-#: src/frontends/qt4/ui/QGraphicsUi.ui:194
+#: src/frontends/qt4/ui/QGraphicsUi.ui:354
 #: src/frontends/qt4/ui/QTabularUi.ui:103 src/frontends/qt4/ui/QWrapUi.ui:39
 msgid "&Width:"
 msgstr "&Bredde:"
@@ -462,7 +458,7 @@ msgstr "Ophavsret"
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
-#: src/frontends/qt4/ui/QTexinfoUi.ui:61
+#: src/frontends/qt4/ui/QTexinfoUi.ui:58
 #: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QURLUi.ui:115
 #: src/frontends/qt4/ui/QVSpaceUi.ui:168 src/frontends/qt4/ui/QWrapUi.ui:216
 msgid "&Close"
@@ -484,7 +480,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/QCitationUi.ui:303
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
-#: src/frontends/qt4/ui/QGraphicsUi.ui:702
+#: src/frontends/qt4/ui/QGraphicsUi.ui:74
 #: src/frontends/qt4/ui/QIncludeUi.ui:189 src/frontends/qt4/ui/QIndexUi.ui:82
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
 #: src/frontends/qt4/ui/QNomenclUi.ui:95 src/frontends/qt4/ui/QNoteUi.ui:31
@@ -501,7 +497,7 @@ msgstr "&O.k."
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
-#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2032 src/lyxvc.C:175
+#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2031 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -545,7 +541,7 @@ msgstr "BibTeX-database der skal bruges"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:126
 #: src/frontends/qt4/ui/QBibtexUi.ui:106
 #: src/frontends/qt4/ui/QExternalUi.ui:99
-#: src/frontends/qt4/ui/QGraphicsUi.ui:78
+#: src/frontends/qt4/ui/QGraphicsUi.ui:389
 #: src/frontends/qt4/ui/QIncludeUi.ui:145 src/frontends/qt4/ui/QPrintUi.ui:316
 msgid "&Browse..."
 msgstr "&Gennemse..."
@@ -746,7 +742,7 @@ msgstr "&Lodret:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:283
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
-#: src/frontends/qt4/ui/QGraphicsUi.ui:673
+#: src/frontends/qt4/ui/QGraphicsUi.ui:45
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
 #: src/frontends/qt4/ui/QPrefsUi.ui:50 src/frontends/qt4/ui/QWrapUi.ui:164
 msgid "&Restore"
@@ -755,7 +751,7 @@ msgstr "&Gendan"
 #: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:380
 #: src/frontends/qt4/ui/QDocumentUi.ui:145
 #: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:723
+#: src/frontends/qt4/ui/QGraphicsUi.ui:95
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
 #: src/frontends/qt4/ui/QPrefsUi.ui:86 src/frontends/qt4/ui/QRefUi.ui:90
 #: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:158
@@ -826,7 +822,7 @@ msgstr "Skrifttype"
 #: src/frontends/qt4/ui/QCharacterUi.ui:114
 #: src/frontends/qt4/ui/QCharacterUi.ui:160
 #: src/frontends/qt4/QDocumentDialog.C:397
-#: src/frontends/qt4/QPrefsDialog.C:1456
+#: src/frontends/qt4/QPrefsDialog.C:1468
 msgid "Language"
 msgstr "Sprog"
 
@@ -882,7 +878,7 @@ msgid "Apply changes immediately"
 msgstr "Aktivér ændringer med det samme"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:390 src/frontends/qt4/ui/QERTUi.ui:110
-#: src/frontends/qt4/ui/QGraphicsUi.ui:744
+#: src/frontends/qt4/ui/QGraphicsUi.ui:116
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:177
 #: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:75
@@ -1091,7 +1087,7 @@ msgid "Filename"
 msgstr "Filnavn"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:109
-#: src/frontends/qt4/ui/QGraphicsUi.ui:65
+#: src/frontends/qt4/ui/QGraphicsUi.ui:157
 #: src/frontends/qt4/ui/QIncludeUi.ui:155 src/frontends/qt4/ui/QPrintUi.ui:296
 msgid "&File:"
 msgstr "&Fil:"
@@ -1110,25 +1106,25 @@ msgstr "LyX-visning"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:188
 #: src/frontends/qt4/ui/QExternalUi.ui:261
-#: src/frontends/qt4/ui/QGraphicsUi.ui:587
-#: src/frontends/qt4/ui/QGraphicsUi.ui:600
+#: src/frontends/qt4/ui/QGraphicsUi.ui:714
+#: src/frontends/qt4/ui/QGraphicsUi.ui:727
 msgid "Screen display"
 msgstr "Skærmvisning"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:197
-#: src/frontends/qt4/ui/QGraphicsUi.ui:609
+#: src/frontends/qt4/ui/QGraphicsUi.ui:736
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:66
 msgid "Monochrome"
 msgstr "Ensfarvet"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:202
-#: src/frontends/qt4/ui/QGraphicsUi.ui:614
+#: src/frontends/qt4/ui/QGraphicsUi.ui:741
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:71
 msgid "Grayscale"
 msgstr "Gråtoner"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:207
-#: src/frontends/qt4/ui/QGraphicsUi.ui:619
+#: src/frontends/qt4/ui/QGraphicsUi.ui:746
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
 msgid "Color"
 msgstr "Farver"
@@ -1139,8 +1135,8 @@ msgstr "Smugkig"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:239
 #: src/frontends/qt4/ui/QExternalUi.ui:274
-#: src/frontends/qt4/ui/QGraphicsUi.ui:627
-#: src/frontends/qt4/ui/QGraphicsUi.ui:651
+#: src/frontends/qt4/ui/QGraphicsUi.ui:754
+#: src/frontends/qt4/ui/QGraphicsUi.ui:778
 msgid "Percentage to scale by in LyX"
 msgstr "Procentvis skalering i LyX"
 
@@ -1149,7 +1145,7 @@ msgid "%"
 msgstr "%"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:264
-#: src/frontends/qt4/ui/QGraphicsUi.ui:590
+#: src/frontends/qt4/ui/QGraphicsUi.ui:717
 msgid "&Display:"
 msgstr "&Vis:"
 
@@ -1171,15 +1167,15 @@ msgstr "Rotér"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:381
 #: src/frontends/qt4/ui/QExternalUi.ui:411
-#: src/frontends/qt4/ui/QGraphicsUi.ui:235
-#: src/frontends/qt4/ui/QGraphicsUi.ui:256
+#: src/frontends/qt4/ui/QGraphicsUi.ui:188
+#: src/frontends/qt4/ui/QGraphicsUi.ui:209
 msgid "Angle to rotate image by"
 msgstr "Vinkel at rotere billedet med"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:391
 #: src/frontends/qt4/ui/QExternalUi.ui:404
-#: src/frontends/qt4/ui/QGraphicsUi.ui:263
-#: src/frontends/qt4/ui/QGraphicsUi.ui:276
+#: src/frontends/qt4/ui/QGraphicsUi.ui:216
+#: src/frontends/qt4/ui/QGraphicsUi.ui:229
 msgid "The origin of the rotation"
 msgstr "Omdrejningspunktet"
 
@@ -1196,22 +1192,22 @@ msgid "Scale"
 msgstr "Skalering"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:448
-#: src/frontends/qt4/ui/QGraphicsUi.ui:164
+#: src/frontends/qt4/ui/QGraphicsUi.ui:324
 msgid "Height of image in output"
 msgstr "Billedhøjde i uddata"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:458
-#: src/frontends/qt4/ui/QGraphicsUi.ui:207
+#: src/frontends/qt4/ui/QGraphicsUi.ui:367
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Behold størrelsesforhold med største dimension"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:461
-#: src/frontends/qt4/ui/QGraphicsUi.ui:210
+#: src/frontends/qt4/ui/QGraphicsUi.ui:370
 msgid "&Maintain aspect ratio"
 msgstr "Bevar &størrelsesforhold"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:497
-#: src/frontends/qt4/ui/QGraphicsUi.ui:130
+#: src/frontends/qt4/ui/QGraphicsUi.ui:290
 msgid "Width of image in output"
 msgstr "Billedbredde i uddata"
 
@@ -1220,32 +1216,32 @@ msgid "Crop"
 msgstr "Klip ud"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:530
-#: src/frontends/qt4/ui/QGraphicsUi.ui:440
+#: src/frontends/qt4/ui/QGraphicsUi.ui:567
 msgid "Get bounding box from the (EPS) file"
 msgstr "Hent ydergrænser fra EPS-filen"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:533
-#: src/frontends/qt4/ui/QGraphicsUi.ui:443
+#: src/frontends/qt4/ui/QGraphicsUi.ui:570
 msgid "&Get from File"
 msgstr "&Hent fra fil"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:553
-#: src/frontends/qt4/ui/QGraphicsUi.ui:312
+#: src/frontends/qt4/ui/QGraphicsUi.ui:439
 msgid "Clip to bounding box values"
 msgstr "Skær af ved yderkanterne"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:556
-#: src/frontends/qt4/ui/QGraphicsUi.ui:315
+#: src/frontends/qt4/ui/QGraphicsUi.ui:442
 msgid "Clip to &bounding box"
 msgstr "Skær &af ved yderkanterne"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:573
-#: src/frontends/qt4/ui/QGraphicsUi.ui:348
+#: src/frontends/qt4/ui/QGraphicsUi.ui:475
 msgid "&Left bottom:"
 msgstr "Venstre &bund:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:586
-#: src/frontends/qt4/ui/QGraphicsUi.ui:386
+#: src/frontends/qt4/ui/QGraphicsUi.ui:513
 msgid "Right &top:"
 msgstr "Højre &top:"
 
@@ -1269,113 +1265,113 @@ msgstr "&Valg:"
 msgid "Forma&t:"
 msgstr "Forma&t:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:43
+#: src/frontends/qt4/ui/QGraphicsUi.ui:142
 msgid "&Graphics"
 msgstr "&Grafik"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:55
-#: src/frontends/qt4/ui/QGraphicsUi.ui:62
+#: src/frontends/qt4/ui/QGraphicsUi.ui:154
+#: src/frontends/qt4/ui/QGraphicsUi.ui:245
 msgid "File name of image"
 msgstr "Billedets filnavn"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:75
-msgid "Select an image file"
-msgstr "Vælg en billedfil"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:85
-#, fuzzy
-msgid "&Edit"
-msgstr "R&edigér..."
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:98
-#, fuzzy
-msgid "Output Size"
-msgstr "Uddata"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:184
-#, fuzzy
-msgid "&Scale Graphics (%):"
-msgstr "&Grafik"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:220
+#: src/frontends/qt4/ui/QGraphicsUi.ui:173
 #, fuzzy
 msgid "Rotate Graphics"
 msgstr "Grafik"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:238
+#: src/frontends/qt4/ui/QGraphicsUi.ui:191
 msgid "A&ngle (Degrees):"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:266
+#: src/frontends/qt4/ui/QGraphicsUi.ui:219
 #, fuzzy
 msgid "Or&igin:"
 msgstr "&Centrum:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:287
+#: src/frontends/qt4/ui/QGraphicsUi.ui:258
+#, fuzzy
+msgid "Output Size"
+msgstr "Uddata"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:344
+#, fuzzy
+msgid "&Scale Graphics (%):"
+msgstr "&Grafik"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:386
+msgid "Select an image file"
+msgstr "Vælg en billedfil"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:402
+#, fuzzy
+msgid "&Edit"
+msgstr "R&edigér..."
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:414
 msgid "&Clipping"
 msgstr "&Afskæring"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:396
-#: src/frontends/qt4/ui/QGraphicsUi.ui:403
+#: src/frontends/qt4/ui/QGraphicsUi.ui:523
+#: src/frontends/qt4/ui/QGraphicsUi.ui:530
 #, fuzzy
 msgid "y:"
 msgstr "y"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:410
-#: src/frontends/qt4/ui/QGraphicsUi.ui:417
+#: src/frontends/qt4/ui/QGraphicsUi.ui:537
+#: src/frontends/qt4/ui/QGraphicsUi.ui:544
 #, fuzzy
 msgid "x:"
 msgstr "x"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:451
+#: src/frontends/qt4/ui/QGraphicsUi.ui:578
 msgid "E&xtra options"
 msgstr "&Ekstra indstillinger"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:463
-#: src/frontends/qt4/ui/QGraphicsUi.ui:484
+#: src/frontends/qt4/ui/QGraphicsUi.ui:590
+#: src/frontends/qt4/ui/QGraphicsUi.ui:611
 msgid "Additional LaTeX options"
 msgstr "Yderligere LaTeX-valg"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:466
+#: src/frontends/qt4/ui/QGraphicsUi.ui:593
 msgid "LaTeX &options:"
 msgstr "LaTeX-&indstillinger"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:491
+#: src/frontends/qt4/ui/QGraphicsUi.ui:618
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Udpak ikke billeder før LaTeX-eksport"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:494
+#: src/frontends/qt4/ui/QGraphicsUi.ui:621
 msgid "Don't un&zip on export"
 msgstr "Udpak ikke &zip ved eksport"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:501
+#: src/frontends/qt4/ui/QGraphicsUi.ui:628
 msgid "Draft mode"
 msgstr "Kladde"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:504
+#: src/frontends/qt4/ui/QGraphicsUi.ui:631
 msgid "&Draft mode"
 msgstr "&Kladde"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:514
+#: src/frontends/qt4/ui/QGraphicsUi.ui:641
 #, fuzzy
 msgid "S&ubfigure"
 msgstr "U&nderfigur"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:535
-#: src/frontends/qt4/ui/QGraphicsUi.ui:556
+#: src/frontends/qt4/ui/QGraphicsUi.ui:662
+#: src/frontends/qt4/ui/QGraphicsUi.ui:683
 msgid "The caption for the sub-figure"
 msgstr "Billedtekst for underfiguren"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:538
+#: src/frontends/qt4/ui/QGraphicsUi.ui:665
 msgid "Ca&ption:"
 msgstr "Billed&tekst:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:569
+#: src/frontends/qt4/ui/QGraphicsUi.ui:696
 #, fuzzy
 msgid "Sho&w in LyX"
 msgstr "&Vis i LyX"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:630
+#: src/frontends/qt4/ui/QGraphicsUi.ui:757
 #, fuzzy
 msgid "Sca&le on Screen (%):"
 msgstr "&Grotesk:"
@@ -1650,7 +1646,7 @@ msgid "&Shaded"
 msgstr "&Gem"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1743
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1741
 msgid "Single"
 msgstr "Enkelt"
 
@@ -1659,7 +1655,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:121 src/text.C:1749
+#: src/frontends/qt4/QDocumentDialog.C:121 src/text.C:1747
 msgid "Double"
 msgstr "Dobbelt"
 
@@ -2059,7 +2055,7 @@ msgstr "&Dokumentskabeloner:"
 msgid "&roff command:"
 msgstr "&roff-kommando:"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2181
+#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2111
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -2836,49 +2832,49 @@ msgstr "Aktuelle rækkeplacering"
 msgid "Current column position"
 msgstr "Aktuelle kolonneplacering"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:58
+#: src/frontends/qt4/ui/QTexinfoUi.ui:55
 msgid "Close this dialog"
 msgstr "Luk dette vindue"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:94
+#: src/frontends/qt4/ui/QTexinfoUi.ui:91
 #, fuzzy
 msgid "Rebuild the file lists"
 msgstr "Opbyggede ny filliste"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:97
+#: src/frontends/qt4/ui/QTexinfoUi.ui:94
 msgid "&Rescan"
 msgstr "&Genindlæs"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:107
+#: src/frontends/qt4/ui/QTexinfoUi.ui:104
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:110
+#: src/frontends/qt4/ui/QTexinfoUi.ui:107
 msgid "&View"
 msgstr "V&is"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:127
+#: src/frontends/qt4/ui/QTexinfoUi.ui:124
 msgid "Selected classes or styles"
 msgstr "Valgte klasser eller stile"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:131
+#: src/frontends/qt4/ui/QTexinfoUi.ui:128
 msgid "LaTeX classes"
 msgstr "LaTeX-klasser"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:136
+#: src/frontends/qt4/ui/QTexinfoUi.ui:133
 msgid "LaTeX styles"
 msgstr "LaTeX-stile"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:141
+#: src/frontends/qt4/ui/QTexinfoUi.ui:138
 msgid "BibTeX styles"
 msgstr "BibTeX-stile"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:165
+#: src/frontends/qt4/ui/QTexinfoUi.ui:162
 msgid "Toggles view of the file list"
 msgstr "Visning af filliste"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:168
+#: src/frontends/qt4/ui/QTexinfoUi.ui:165
 msgid "Show &path"
 msgstr "Vis &sti"
 
@@ -3102,8 +3098,8 @@ msgstr "TeoremSkabelon"
 
 #: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:925
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
-#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:230
-#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:374
+#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
+#: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
 #: lib/layouts/siamltex.layout:252 lib/layouts/amsdefs.inc:28
 #: lib/layouts/svjour.inc:436
 msgid "Proof"
@@ -3117,8 +3113,8 @@ msgstr "Korrektur"
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
 #: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:1003
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
-#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:208
-#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:415
+#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
+#: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
 #: lib/layouts/siamltex.layout:202 lib/layouts/amsmaths-plain.inc:33
 #: lib/layouts/amsmaths-seq.inc:32 lib/layouts/amsmaths.inc:62
 #: lib/layouts/svjour.inc:478
@@ -3133,7 +3129,7 @@ msgstr "Teorem"
 #: lib/layouts/IEEEtran.layout:81 lib/layouts/amsart-plain.layout:37
 #: lib/layouts/amsart-seq.layout:149 lib/layouts/elsart.layout:318
 #: lib/layouts/foils.layout:248 lib/layouts/heb-article.layout:45
-#: lib/layouts/ijmpc.layout:260 lib/layouts/ijmpd.layout:265
+#: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:262
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:217
 #: lib/layouts/amsmaths-plain.inc:53 lib/layouts/amsmaths-seq.inc:48
 #: lib/layouts/amsmaths.inc:125 lib/layouts/svjour.inc:415
@@ -3148,8 +3144,8 @@ msgstr "Lemma"
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
 #: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:489
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
-#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:250
-#: lib/layouts/ijmpd.layout:251 lib/layouts/llncs.layout:319
+#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
+#: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
 #: lib/layouts/siamltex.layout:224 lib/layouts/amsmaths-plain.inc:43
 #: lib/layouts/amsmaths-seq.inc:40 lib/layouts/amsmaths.inc:103
 #: lib/layouts/svjour.inc:376
@@ -3163,8 +3159,8 @@ msgstr "Korollar"
 
 #: lib/layouts/IEEEtran.layout:101 lib/layouts/amsart-plain.layout:43
 #: lib/layouts/amsart-seq.layout:155 lib/layouts/elsart.layout:332
-#: lib/layouts/foils.layout:262 lib/layouts/ijmpc.layout:270
-#: lib/layouts/ijmpd.layout:276 lib/layouts/llncs.layout:388
+#: lib/layouts/foils.layout:262 lib/layouts/ijmpc.layout:267
+#: lib/layouts/ijmpd.layout:273 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:231 lib/layouts/amsmaths-plain.inc:63
 #: lib/layouts/amsmaths-seq.inc:56 lib/layouts/amsmaths.inc:147
 #: lib/layouts/svjour.inc:450
@@ -3227,8 +3223,8 @@ msgstr "Aksiom"
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
 #: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:652
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
-#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:143
-#: lib/layouts/ijmpd.layout:140 lib/layouts/llncs.layout:333
+#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
+#: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
 #: lib/layouts/siamltex.layout:238 lib/layouts/amsmaths-plain.inc:123
 #: lib/layouts/amsmaths-seq.inc:104 lib/layouts/amsmaths.inc:246
 #: lib/layouts/svjour.inc:390
@@ -3242,8 +3238,8 @@ msgstr "Definition"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
 #: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:664
-#: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:178
-#: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
+#: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
+#: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
 #: src/frontends/qt4/QDocumentDialog.C:318
@@ -3293,7 +3289,7 @@ msgstr "Øvelse"
 
 #: lib/layouts/IEEEtran.layout:201 lib/layouts/amsart-plain.layout:109
 #: lib/layouts/amsart-seq.layout:221 lib/layouts/elsart.layout:388
-#: lib/layouts/ijmpc.layout:188 lib/layouts/ijmpd.layout:186
+#: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:183
 #: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:173
 #: lib/layouts/amsmaths-seq.inc:144 lib/layouts/amsmaths.inc:365
 #: lib/layouts/svjour.inc:464
@@ -3307,8 +3303,8 @@ msgstr "Bemærkning"
 
 #: lib/layouts/IEEEtran.layout:211 lib/layouts/amsart-plain.layout:115
 #: lib/layouts/amsart-seq.layout:227 lib/layouts/elsart.layout:402
-#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:300
-#: lib/layouts/ijmpd.layout:309 lib/layouts/llncs.layout:305
+#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:297
+#: lib/layouts/ijmpd.layout:306 lib/layouts/llncs.layout:305
 #: lib/layouts/amsmaths-plain.inc:183 lib/layouts/amsmaths-seq.inc:152
 #: lib/layouts/amsmaths.inc:396 lib/layouts/svjour.inc:348
 msgid "Claim"
@@ -3334,8 +3330,8 @@ msgid "Note #:"
 msgstr "Notat"
 
 #: lib/layouts/IEEEtran.layout:231 lib/layouts/amsart-plain.layout:127
-#: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:198
-#: lib/layouts/ijmpd.layout:197 lib/layouts/amsmaths-plain.inc:203
+#: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:195
+#: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:203
 #: lib/layouts/amsmaths-seq.inc:168 lib/layouts/amsmaths.inc:440
 msgid "Notation"
 msgstr "Notation"
@@ -3363,8 +3359,8 @@ msgstr "Sag"
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
 #: lib/layouts/beamer.layout:265 lib/layouts/cv.layout:29
-#: lib/layouts/egs.layout:30 lib/layouts/ijmpc.layout:102
-#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:157
+#: lib/layouts/egs.layout:30 lib/layouts/ijmpc.layout:99
+#: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:51
@@ -3384,7 +3380,7 @@ msgstr "Sektion"
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
 #: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
 #: lib/layouts/cv.layout:50 lib/layouts/egs.layout:51
-#: lib/layouts/ijmpc.layout:118 lib/layouts/ijmpd.layout:114
+#: lib/layouts/ijmpc.layout:115 lib/layouts/ijmpd.layout:111
 #: lib/layouts/isprs.layout:168 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:52
 #: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:56
@@ -3401,8 +3397,8 @@ msgstr "Undersektion"
 #: lib/layouts/aa.layout:238 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:70
 #: lib/layouts/aastex.layout:192 lib/layouts/amsart.layout:80
-#: lib/layouts/amsbook.layout:66 lib/layouts/ijmpc.layout:127
-#: lib/layouts/ijmpd.layout:123 lib/layouts/isprs.layout:177
+#: lib/layouts/amsbook.layout:66 lib/layouts/ijmpc.layout:124
+#: lib/layouts/ijmpd.layout:120 lib/layouts/isprs.layout:177
 #: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
 #: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:61
 #: lib/layouts/paper.layout:62 lib/layouts/revtex.layout:57
@@ -3415,8 +3411,8 @@ msgid "Subsubsection"
 msgstr "Underundersektion"
 
 #: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:297
-#: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:110
-#: lib/layouts/ijmpd.layout:106 lib/layouts/isprs.layout:186
+#: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
+#: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
 #: lib/layouts/aguplus.inc:34 lib/layouts/db_stdstarsections.inc:36
 #: lib/layouts/stdstarsections.inc:30
@@ -3444,7 +3440,7 @@ msgstr "Underundersektion*"
 #: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:492
 #: lib/layouts/elsart.layout:206 lib/layouts/elsart.layout:222
 #: lib/layouts/entcs.layout:83 lib/layouts/foils.layout:151
-#: lib/layouts/ijmpc.layout:69 lib/layouts/ijmpd.layout:72
+#: lib/layouts/ijmpc.layout:66 lib/layouts/ijmpd.layout:69
 #: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:258
 #: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:240
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:186
@@ -3466,7 +3462,7 @@ msgstr "Sammendrag"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
-#: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpd.layout:83
+#: lib/layouts/ijmpc.layout:77 lib/layouts/ijmpd.layout:80
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:241
 #: lib/layouts/siamltex.layout:169 lib/layouts/spie.layout:39
@@ -3486,7 +3482,7 @@ msgstr "Indekstermer"
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/cv.layout:143
 #: lib/layouts/egs.layout:563 lib/layouts/foils.layout:215
-#: lib/layouts/ijmpc.layout:361 lib/layouts/ijmpd.layout:372
+#: lib/layouts/ijmpc.layout:358 lib/layouts/ijmpd.layout:369
 #: lib/layouts/latex8.layout:118 lib/layouts/llncs.layout:261
 #: lib/layouts/memoir.layout:138 lib/layouts/memoir.layout:140
 #: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
@@ -3503,9 +3499,9 @@ msgstr "Litteraturliste"
 
 #: lib/layouts/IEEEtran.layout:380 lib/layouts/IEEEtran.layout:391
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
-#: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
+#: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:528
+#: src/rowpainter.C:526
 msgid "Appendix"
 msgstr "Appendiks"
 
@@ -3575,8 +3571,8 @@ msgstr "Liste"
 #: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
 #: lib/layouts/egs.layout:247 lib/layouts/elsart.layout:92
 #: lib/layouts/entcs.layout:37 lib/layouts/foils.layout:129
-#: lib/layouts/hollywood.layout:346 lib/layouts/ijmpc.layout:36
-#: lib/layouts/ijmpd.layout:39 lib/layouts/isprs.layout:94
+#: lib/layouts/hollywood.layout:346 lib/layouts/ijmpc.layout:33
+#: lib/layouts/ijmpd.layout:36 lib/layouts/isprs.layout:94
 #: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
 #: lib/layouts/llncs.layout:99 lib/layouts/ltugboat.layout:134
 #: lib/layouts/paper.layout:112 lib/layouts/revtex.layout:90
@@ -3604,8 +3600,8 @@ msgstr "Undertitel"
 #: lib/layouts/broadway.layout:203 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
-#: lib/layouts/hollywood.layout:333 lib/layouts/ijmpc.layout:44
-#: lib/layouts/ijmpd.layout:47 lib/layouts/isprs.layout:76
+#: lib/layouts/hollywood.layout:333 lib/layouts/ijmpc.layout:41
+#: lib/layouts/ijmpd.layout:44 lib/layouts/isprs.layout:76
 #: lib/layouts/kluwer.layout:160 lib/layouts/llncs.layout:176
 #: lib/layouts/ltugboat.layout:154 lib/layouts/paper.layout:123
 #: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
@@ -3619,8 +3615,8 @@ msgstr "Forfatter"
 #: lib/layouts/aa.layout:68 lib/layouts/aa.layout:127
 #: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:234
 #: lib/layouts/entcs.layout:57 lib/layouts/g-brief-en.layout:179
-#: lib/layouts/g-brief2.layout:799 lib/layouts/ijmpc.layout:53
-#: lib/layouts/ijmpd.layout:56 lib/layouts/isprs.layout:115
+#: lib/layouts/g-brief2.layout:799 lib/layouts/ijmpc.layout:50
+#: lib/layouts/ijmpd.layout:53 lib/layouts/isprs.layout:115
 #: lib/layouts/kluwer.layout:178 lib/layouts/revtex.layout:116
 #: lib/layouts/revtex4.layout:164 lib/layouts/scrlettr.layout:144
 #: lib/layouts/scrlttr2.layout:39 lib/layouts/aapaper.inc:30
@@ -3995,23 +3991,23 @@ msgstr "Konklusion"
 msgid "Conclusion."
 msgstr "Konklusion"
 
-#: lib/layouts/amsart-seq.layout:139 lib/layouts/ijmpc.layout:219
+#: lib/layouts/amsart-seq.layout:139 lib/layouts/ijmpc.layout:216
 msgid "Theorem \\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:145 lib/layouts/ijmpc.layout:254
+#: lib/layouts/amsart-seq.layout:145 lib/layouts/ijmpc.layout:251
 msgid "Corollary \\arabic{corollary}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:151 lib/layouts/ijmpc.layout:264
+#: lib/layouts/amsart-seq.layout:151 lib/layouts/ijmpc.layout:261
 msgid "Lemma \\arabic{lemma}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:157 lib/layouts/ijmpc.layout:274
+#: lib/layouts/amsart-seq.layout:157 lib/layouts/ijmpc.layout:271
 msgid "Proposition \\arabic{proposition}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:163 lib/layouts/ijmpc.layout:314
+#: lib/layouts/amsart-seq.layout:163 lib/layouts/ijmpc.layout:311
 msgid "Conjecture \\arabic{conjecture}."
 msgstr ""
 
@@ -4031,11 +4027,11 @@ msgstr ""
 msgid "Axiom \\arabic{axiom}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:193 lib/layouts/ijmpc.layout:153
+#: lib/layouts/amsart-seq.layout:193 lib/layouts/ijmpc.layout:150
 msgid "Definition \\arabic{definition}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:199 lib/layouts/ijmpc.layout:182
+#: lib/layouts/amsart-seq.layout:199 lib/layouts/ijmpc.layout:179
 msgid "Example \\arabic{example}."
 msgstr ""
 
@@ -4051,11 +4047,11 @@ msgstr ""
 msgid "Exercise \\arabic{exercise}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:223 lib/layouts/ijmpc.layout:192
+#: lib/layouts/amsart-seq.layout:223 lib/layouts/ijmpc.layout:189
 msgid "Remark \\arabic{remark}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:229 lib/layouts/ijmpc.layout:304
+#: lib/layouts/amsart-seq.layout:229 lib/layouts/ijmpc.layout:301
 msgid "Claim \\arabic{claim}."
 msgstr ""
 
@@ -4063,7 +4059,7 @@ msgstr ""
 msgid "Note \\arabic{note}."
 msgstr ""
 
-#: lib/layouts/amsart-seq.layout:241 lib/layouts/ijmpc.layout:202
+#: lib/layouts/amsart-seq.layout:241 lib/layouts/ijmpc.layout:199
 msgid "Notation \\arabic{notation}."
 msgstr ""
 
@@ -5130,8 +5126,8 @@ msgstr "Forslag"
 msgid "Definition #."
 msgstr "Definition"
 
-#: lib/layouts/foils.layout:286 lib/layouts/ijmpc.layout:239
-#: lib/layouts/ijmpd.layout:239 lib/layouts/llncs.layout:377
+#: lib/layouts/foils.layout:286 lib/layouts/ijmpc.layout:236
+#: lib/layouts/ijmpd.layout:236 lib/layouts/llncs.layout:377
 #: lib/layouts/siamltex.layout:255 lib/layouts/amsdefs.inc:43
 #: lib/layouts/svjour.inc:439
 #, fuzzy
@@ -5887,7 +5883,7 @@ msgstr "Generel"
 msgid "Scene"
 msgstr "Scene"
 
-#: lib/layouts/ijmpc.layout:86 lib/layouts/ijmpd.layout:89
+#: lib/layouts/ijmpc.layout:83 lib/layouts/ijmpd.layout:86
 #: lib/layouts/kluwer.layout:290 lib/layouts/paper.layout:177
 #: lib/layouts/revtex4.layout:246 lib/layouts/spie.layout:46
 #: lib/layouts/agu_stdtitle.inc:123
@@ -5895,110 +5891,110 @@ msgstr "Scene"
 msgid "Keywords:"
 msgstr "Nøgleord"
 
-#: lib/layouts/ijmpc.layout:95
+#: lib/layouts/ijmpc.layout:92
 msgid "Classification Codes"
 msgstr ""
 
-#: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
+#: lib/layouts/ijmpc.layout:161 lib/layouts/ijmpd.layout:158
 #, fuzzy
 msgid "Step"
 msgstr "State"
 
-#: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
+#: lib/layouts/ijmpc.layout:165 lib/layouts/ijmpd.layout:162
 #, fuzzy
 msgid "Step \\arabic{step}."
 msgstr "Undersektion"
 
-#: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:287
+#: lib/layouts/ijmpc.layout:277 lib/layouts/ijmpd.layout:284
 #, fuzzy
 msgid "Prop"
 msgstr "Klip ud"
 
-#: lib/layouts/ijmpc.layout:284
+#: lib/layouts/ijmpc.layout:281
 msgid "Prop \\arabic{prop}."
 msgstr ""
 
-#: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:298
+#: lib/layouts/ijmpc.layout:287 lib/layouts/ijmpd.layout:295
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
 msgid "Question"
 msgstr "Spørgsmål"
 
-#: lib/layouts/ijmpc.layout:294
+#: lib/layouts/ijmpc.layout:291
 #, fuzzy
 msgid "Question \\arabic{question}."
 msgstr "Underundersektion"
 
-#: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:320
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #, fuzzy
 msgid "Conjecture "
 msgstr "Formodning"
 
-#: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:327
+#: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 #, fuzzy
 msgid "Appendices Section"
 msgstr "Appendiks"
 
-#: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:337
+#: lib/layouts/ijmpc.layout:324 lib/layouts/ijmpd.layout:334
 #, fuzzy
 msgid "--- Appendices ---"
 msgstr "Appendiks"
 
-#: lib/layouts/ijmpc.layout:349 lib/layouts/ijmpd.layout:360
+#: lib/layouts/ijmpc.layout:346 lib/layouts/ijmpd.layout:357
 #, fuzzy
 msgid "Appendix \\Alph{appendix}."
 msgstr "markeret"
 
-#: lib/layouts/ijmpd.layout:150
+#: lib/layouts/ijmpd.layout:147
 msgid "Definition @Section@.\\arabic{definition}."
 msgstr ""
 
-#: lib/layouts/ijmpd.layout:179
+#: lib/layouts/ijmpd.layout:176
 #, fuzzy
 msgid "Example @Section@.\\arabic{example}."
 msgstr "Underunderafsnit"
 
-#: lib/layouts/ijmpd.layout:190
+#: lib/layouts/ijmpd.layout:187
 #, fuzzy
 msgid "Remark @Section@.\\arabic{remark}."
 msgstr "Underunderafsnit"
 
-#: lib/layouts/ijmpd.layout:201
+#: lib/layouts/ijmpd.layout:198
 msgid "Notation @Section@.\\arabic{notation}."
 msgstr ""
 
-#: lib/layouts/ijmpd.layout:222 lib/layouts/amsmaths.inc:79
+#: lib/layouts/ijmpd.layout:219 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/ijmpd.layout:255
+#: lib/layouts/ijmpd.layout:252
 #, fuzzy
 msgid "Corollary @Section@.\\arabic{corollary}."
 msgstr "Underunderafsnit"
 
-#: lib/layouts/ijmpd.layout:269
+#: lib/layouts/ijmpd.layout:266
 #, fuzzy
 msgid "Lemma @Section@.\\arabic{lemma}."
 msgstr "Underunderafsnit"
 
-#: lib/layouts/ijmpd.layout:280
+#: lib/layouts/ijmpd.layout:277
 msgid "Proposition @Section@.\\arabic{proposition}."
 msgstr ""
 
-#: lib/layouts/ijmpd.layout:291
+#: lib/layouts/ijmpd.layout:288
 #, fuzzy
 msgid "Prop @Section@.\\arabic{prop}."
 msgstr "Underunderafsnit"
 
-#: lib/layouts/ijmpd.layout:302
+#: lib/layouts/ijmpd.layout:299
 msgid "Question @Section@.\\arabic{question}."
 msgstr ""
 
-#: lib/layouts/ijmpd.layout:313
+#: lib/layouts/ijmpd.layout:310
 #, fuzzy
 msgid "Claim @Section@.\\arabic{claim}."
 msgstr "Underunderafsnit"
 
-#: lib/layouts/ijmpd.layout:324
+#: lib/layouts/ijmpd.layout:321
 msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr ""
 
@@ -7600,7 +7596,7 @@ msgstr "Tabel|a"
 msgid "Math|M"
 msgstr "Matematik|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:454
 msgid "Spellchecker...|S"
 msgstr "Stavekontrol...|v"
 
@@ -7608,12 +7604,12 @@ msgstr "Stavekontrol...|v"
 msgid "Thesaurus..."
 msgstr "Begrebsordbog..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:452
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:456
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Nuværende ord"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:453
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:457
 msgid "Check TeX|h"
 msgstr "Tjek TeX|X"
 
@@ -7621,11 +7617,11 @@ msgstr "Tjek TeX|X"
 msgid "Change Tracking|g"
 msgstr "Skift sporing|p"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:460
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:464
 msgid "Preferences...|P"
 msgstr "Indstillinger...|l"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:459
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:463
 msgid "Reconfigure|R"
 msgstr "Genkonfigurér|G"
 
@@ -8230,24 +8226,24 @@ msgstr "&Mærkat"
 msgid "Bookmarks|B"
 msgstr "Bogmærker|B"
 
-#: lib/ui/classic.ui:381
+#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:439
 msgid "Save Bookmark 1|S"
 msgstr "Gem bogmærke 1|G"
 
-#: lib/ui/classic.ui:382
+#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:440
 msgid "Save Bookmark 2"
 msgstr "Gem bogmærke 2"
 
-#: lib/ui/classic.ui:383
+#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:441
 msgid "Save Bookmark 3"
 msgstr "Gem bogmærke 3"
 
-#: lib/ui/classic.ui:384
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:442
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Gem bogmærke 2"
 
-#: lib/ui/classic.ui:385
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:443
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Gem bogmærke 2"
@@ -8274,43 +8270,43 @@ msgstr "Gå til bogmærke 3|3"
 msgid "Go to Bookmark 5|5"
 msgstr "Gå til bogmærke 3|3"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:471
 msgid "Introduction|I"
 msgstr "Introduktion|I"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:468
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:472
 msgid "Tutorial|T"
 msgstr "Selvstudium|S"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:469
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:473
 msgid "User's Guide|U"
 msgstr "Brugervejledning|B"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:470
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:474
 msgid "Extended Features|E"
 msgstr "Avancerede funktioner|A"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:471
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:475
 msgid "Embedded Objects|m"
 msgstr ""
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:476
 msgid "Customization|C"
 msgstr "Tilpasning|p"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:473
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:477
 msgid "FAQ|F"
 msgstr "Ofte stillede spørgsmål|O"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:478
 msgid "Table of Contents|a"
 msgstr "Indholdsfortegnelse|f"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:475
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:479
 msgid "LaTeX Configuration|L"
 msgstr "Konfigurering af LaTeX|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:477
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:481
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
@@ -8358,18 +8354,18 @@ msgid "Redo|R"
 msgstr "Gendan|G"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:51
-#: src/mathed/InsetMathNest.C:460 src/text3.C:824
+#: src/mathed/InsetMathNest.C:460 src/text3.C:833
 msgid "Cut"
 msgstr "Klip"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:52
-#: src/mathed/InsetMathNest.C:468 src/text3.C:829
+#: src/mathed/InsetMathNest.C:468 src/text3.C:838
 msgid "Copy"
 msgstr "Kopiér"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
 #: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:439
-#: src/text3.C:805
+#: src/text3.C:814
 msgid "Paste"
 msgstr "Indsæt"
 
@@ -8714,8 +8710,9 @@ msgid "Index Entry|d"
 msgstr "Indeksindgang|d"
 
 #: lib/ui/stdmenus.inc:305
-msgid "Glossary Entry|y"
-msgstr ""
+#, fuzzy
+msgid "Glossary Entry...|y"
+msgstr "Indsæt indexindgang"
 
 #: lib/ui/stdmenus.inc:307
 msgid "Table...|T"
@@ -8887,21 +8884,16 @@ msgstr "Næste ændring|#N"
 msgid "Next Cross-Reference|R"
 msgstr "Reference"
 
-#: lib/ui/stdmenus.inc:439
-#, fuzzy
-msgid "Save Bookmark|S"
-msgstr "Gem bogmærke 1|G"
-
-#: lib/ui/stdmenus.inc:440
+#: lib/ui/stdmenus.inc:444
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Bogmærker|B"
 
-#: lib/ui/stdmenus.inc:451
+#: lib/ui/stdmenus.inc:455
 msgid "Thesaurus...|T"
 msgstr "Begrebsordbog...|B"
 
-#: lib/ui/stdmenus.inc:454
+#: lib/ui/stdmenus.inc:458
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "TeX-oplysninger|X"
@@ -8922,11 +8914,11 @@ msgstr "Gem dokument"
 msgid "Print document"
 msgstr "Udskriv dokument"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:737
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:738
 msgid "Undo"
 msgstr "Fortryd"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:747
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:748
 msgid "Redo"
 msgstr "Gendan"
 
@@ -9311,98 +9303,98 @@ msgstr "Opret nyt dokument?"
 msgid "&Create"
 msgstr "&Opret"
 
-#: src/BufferView.C:564
+#: src/BufferView.C:565
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Gem bogmærke 2"
 
-#: src/BufferView.C:740
+#: src/BufferView.C:741
 msgid "No further undo information"
 msgstr "Ikke flere fortrydelsesoplysninger"
 
-#: src/BufferView.C:750
+#: src/BufferView.C:751
 msgid "No further redo information"
 msgstr "Kan ikke gendanne mere"
 
-#: src/BufferView.C:908
+#: src/BufferView.C:909
 msgid "Mark off"
 msgstr "Mærke slået fra"
 
-#: src/BufferView.C:915
+#: src/BufferView.C:916
 msgid "Mark on"
 msgstr "Mærke slået til"
 
-#: src/BufferView.C:922
+#: src/BufferView.C:923
 msgid "Mark removed"
 msgstr "Mærke fjernet"
 
-#: src/BufferView.C:925
+#: src/BufferView.C:926
 msgid "Mark set"
 msgstr "Mærke sat"
 
-#: src/BufferView.C:971
+#: src/BufferView.C:972
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$s ord tjekket."
 
-#: src/BufferView.C:974
+#: src/BufferView.C:975
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$s er ikke et LyX-document."
 
-#: src/BufferView.C:979
+#: src/BufferView.C:980
 #, fuzzy
 msgid "One word in selection."
 msgstr "Èt ord tjekket."
 
-#: src/BufferView.C:981
+#: src/BufferView.C:982
 #, fuzzy
 msgid "One word in document."
 msgstr "Åbn dokument"
 
-#: src/BufferView.C:984
+#: src/BufferView.C:985
 #, fuzzy
 msgid "Count words"
 msgstr "Nuværende ord"
 
-#: src/BufferView.C:1509
+#: src/BufferView.C:1561
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1563 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1910 src/lyxfunc.C:1983
+#: src/lyxfunc.C:1870 src/lyxfunc.C:1909 src/lyxfunc.C:1982
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
-#: src/BufferView.C:1512 src/lyxfunc.C:1911 src/lyxfunc.C:1984
+#: src/BufferView.C:1564 src/lyxfunc.C:1910 src/lyxfunc.C:1983
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.C:1516 src/lyx_cb.C:142 src/lyxfunc.C:1876
-#: src/lyxfunc.C:1915
+#: src/BufferView.C:1568 src/lyx_cb.C:142 src/lyxfunc.C:1875
+#: src/lyxfunc.C:1914
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/BufferView.C:1528 src/lyxfunc.C:1925 src/lyxfunc.C:2005
-#: src/lyxfunc.C:2019 src/lyxfunc.C:2035
+#: src/BufferView.C:1580 src/lyxfunc.C:1924 src/lyxfunc.C:2004
+#: src/lyxfunc.C:2018 src/lyxfunc.C:2034
 msgid "Canceled."
 msgstr "Annulleret."
 
-#: src/BufferView.C:1539
+#: src/BufferView.C:1591
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Indsætter dokumentet %1$s..."
 
-#: src/BufferView.C:1550
+#: src/BufferView.C:1602
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet %1$s blev indsat."
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1604
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke indsætte dokumentet %1$s"
@@ -10062,8 +10054,8 @@ msgstr "Alle fejlsporingsbeskeder"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Fejlfinder '%1$s' (%2$s)"
 
-#: src/converter.C:333 src/converter.C:471 src/converter.C:494
-#: src/converter.C:539
+#: src/converter.C:333 src/converter.C:474 src/converter.C:497
+#: src/converter.C:542
 msgid "Cannot convert file"
 msgstr "Kan ikke konvertere fil"
 
@@ -10076,43 +10068,43 @@ msgstr ""
 "Ingen oplysninger om konvertaring fra filer i %1$s-format ti %2$s.\n"
 "Prøv at definere en konverter i indstillingerne."
 
-#: src/converter.C:423 src/format.C:320 src/format.C:379
+#: src/converter.C:426 src/format.C:320 src/format.C:379
 msgid "Executing command: "
 msgstr "Udfører kommando: "
 
-#: src/converter.C:466
+#: src/converter.C:469
 msgid "Build errors"
 msgstr "Opygningsfejl"
 
-#: src/converter.C:467
+#: src/converter.C:470
 msgid "There were errors during the build process."
 msgstr "Der blev rapporteret fejl under opbygningsprocessen."
 
-#: src/converter.C:472 src/format.C:327 src/format.C:386
+#: src/converter.C:475 src/format.C:327 src/format.C:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Der skete en fejl under kørslen af %1$s"
 
-#: src/converter.C:495
+#: src/converter.C:498
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Kunne ikke flytte en midlertidig fil fra %1$s til %2$s."
 
-#: src/converter.C:541
+#: src/converter.C:544
 #, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Kunne ikke flytte en midlertidig fil fra %1$s til %2$s."
 
-#: src/converter.C:542
+#: src/converter.C:545
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Kunne ikke flytte en midlertidig fil fra %1$s til %2$s."
 
-#: src/converter.C:600
+#: src/converter.C:603
 msgid "Running LaTeX..."
 msgstr "Kører LaTeX..."
 
-#: src/converter.C:618
+#: src/converter.C:621
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -10121,15 +10113,15 @@ msgstr ""
 "LaTeX kørte ikke ordentligt. Derudover kunne LyX ikke finde LaTeX's logfil %1"
 "$s."
 
-#: src/converter.C:621
+#: src/converter.C:624
 msgid "LaTeX failed"
 msgstr "LaTeX fejlede"
 
-#: src/converter.C:623
+#: src/converter.C:626
 msgid "Output is empty"
 msgstr "Uddata er tomt"
 
-#: src/converter.C:624
+#: src/converter.C:627
 msgid "An empty output file was generated."
 msgstr "Der blev oprettet en tom uddatafil."
 
@@ -10245,7 +10237,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "&Overskriv"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2032
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2031
 msgid "&Over-write"
 msgstr "&Overskriv"
 
@@ -10385,6 +10377,13 @@ msgstr ""
 "1995-2001 LyX-holdet"
 
 #: src/frontends/controllers/ControlAboutlyx.C:73
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+
 #: src/frontends/controllers/ControlAboutlyx.C:79
 #, fuzzy
 msgid ""
@@ -10804,12 +10803,12 @@ msgstr "Magenta"
 msgid "Yellow"
 msgstr "Gul"
 
-#: src/frontends/controllers/helper_funcs.C:105
+#: src/frontends/controllers/helper_funcs.C:102
 #, fuzzy
 msgid "System files|#S#s"
 msgstr "System-bind|#S#s"
 
-#: src/frontends/controllers/helper_funcs.C:108
+#: src/frontends/controllers/helper_funcs.C:105
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Bruger-bind|#U#u"
@@ -10867,7 +10866,7 @@ msgstr "Etiket"
 
 #: src/frontends/qt4/Dialogs.C:245
 #, fuzzy
-msgid "LateX Source"
+msgid "LaTeX Source"
 msgstr "Synlige mellemrum|#S"
 
 #: src/frontends/qt4/Dialogs.C:311
@@ -10875,7 +10874,7 @@ msgstr "Synlige mellemrum|#S"
 msgid "Toc"
 msgstr "Emne"
 
-#: src/frontends/qt4/FileDialog.C:160
+#: src/frontends/qt4/FileDialog.C:162
 msgid "Directories"
 msgstr "Mapper"
 
@@ -10891,11 +10890,11 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:670
+#: src/frontends/qt4/GuiView.C:675
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.C:462
+#: src/frontends/qt4/GuiWorkArea.C:464
 #, fuzzy
 msgid "unknown version"
 msgstr "Ukendt funktion"
@@ -10957,11 +10956,11 @@ msgstr ""
 msgid "Text Style"
 msgstr "Tekststil"
 
-#: src/frontends/qt4/QCommandBuffer.C:87
+#: src/frontends/qt4/QCommandBuffer.C:88
 msgid "Previous command"
 msgstr "Forrige kommando"
 
-#: src/frontends/qt4/QCommandBuffer.C:90
+#: src/frontends/qt4/QCommandBuffer.C:91
 msgid "Next command"
 msgstr "Næste kommando"
 
@@ -11004,7 +11003,7 @@ msgstr "Dokumentindstillinger"
 msgid "Length"
 msgstr "Længde"
 
-#: src/frontends/qt4/QDocumentDialog.C:119 src/text.C:1746
+#: src/frontends/qt4/QDocumentDialog.C:119 src/text.C:1744
 msgid "OneHalf"
 msgstr "Halvanden"
 
@@ -11171,7 +11170,7 @@ msgstr "Skalering%"
 msgid "Float Settings"
 msgstr "Flyderindstillinger"
 
-#: src/frontends/qt4/QGraphics.C:62 src/frontends/qt4/QPrefsDialog.C:574
+#: src/frontends/qt4/QGraphics.C:62 src/frontends/qt4/QPrefsDialog.C:586
 msgid "Graphics"
 msgstr "Grafik"
 
@@ -11390,87 +11389,87 @@ msgstr "Skærmskrifter"
 msgid "Colors"
 msgstr "Farver"
 
-#: src/frontends/qt4/QPrefsDialog.C:553 src/frontends/qt4/QPrefsDialog.C:641
+#: src/frontends/qt4/QPrefsDialog.C:565 src/frontends/qt4/QPrefsDialog.C:653
 msgid "Paths"
 msgstr "Stier"
 
-#: src/frontends/qt4/QPrefsDialog.C:692
+#: src/frontends/qt4/QPrefsDialog.C:704
 msgid "Select a document templates directory"
 msgstr "Vælg mappe til skabeloner"
 
-#: src/frontends/qt4/QPrefsDialog.C:702
+#: src/frontends/qt4/QPrefsDialog.C:714
 msgid "Select a temporary directory"
 msgstr "Vælg midlertidig mappe"
 
-#: src/frontends/qt4/QPrefsDialog.C:712
+#: src/frontends/qt4/QPrefsDialog.C:724
 msgid "Select a backups directory"
 msgstr "Vælg mappe til sikkerhedskopier"
 
-#: src/frontends/qt4/QPrefsDialog.C:722
+#: src/frontends/qt4/QPrefsDialog.C:734
 msgid "Select a document directory"
 msgstr "Vælg dokumentmappe"
 
-#: src/frontends/qt4/QPrefsDialog.C:732
+#: src/frontends/qt4/QPrefsDialog.C:744
 msgid "Give a filename for the LyX server pipe"
 msgstr "Angiv filnavn for LyX-serverrør"
 
-#: src/frontends/qt4/QPrefsDialog.C:739 src/frontends/qt4/QSpellchecker.C:34
+#: src/frontends/qt4/QPrefsDialog.C:751 src/frontends/qt4/QSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Stavekontrol"
 
-#: src/frontends/qt4/QPrefsDialog.C:761
+#: src/frontends/qt4/QPrefsDialog.C:773
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefsDialog.C:762
+#: src/frontends/qt4/QPrefsDialog.C:774
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:763
+#: src/frontends/qt4/QPrefsDialog.C:775
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:765
+#: src/frontends/qt4/QPrefsDialog.C:777
 msgid "pspell (library)"
 msgstr "pspell (bibliotek)"
 
-#: src/frontends/qt4/QPrefsDialog.C:768
+#: src/frontends/qt4/QPrefsDialog.C:780
 msgid "aspell (library)"
 msgstr "aspell (bibliotek)"
 
-#: src/frontends/qt4/QPrefsDialog.C:841
+#: src/frontends/qt4/QPrefsDialog.C:853
 msgid "Converters"
 msgstr "Konvertering"
 
-#: src/frontends/qt4/QPrefsDialog.C:1003
+#: src/frontends/qt4/QPrefsDialog.C:1015
 #, fuzzy
 msgid "Copiers"
 msgstr "Kopier"
 
-#: src/frontends/qt4/QPrefsDialog.C:1247
+#: src/frontends/qt4/QPrefsDialog.C:1259
 msgid "File formats"
 msgstr "Filformater"
 
-#: src/frontends/qt4/QPrefsDialog.C:1439
+#: src/frontends/qt4/QPrefsDialog.C:1451
 #, fuzzy
 msgid "Format in use"
 msgstr "Formater"
 
-#: src/frontends/qt4/QPrefsDialog.C:1440
+#: src/frontends/qt4/QPrefsDialog.C:1452
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Kan ikke fjerne et format, der er tilknyttet et konverteringsprogram. Fjern "
 "konverteringsprogrammet fra listen først."
 
-#: src/frontends/qt4/QPrefsDialog.C:1531
+#: src/frontends/qt4/QPrefsDialog.C:1543
 msgid "Printer"
 msgstr "Printer"
 
-#: src/frontends/qt4/QPrefsDialog.C:1623 src/frontends/qt4/QPrefsDialog.C:1806
+#: src/frontends/qt4/QPrefsDialog.C:1635 src/frontends/qt4/QPrefsDialog.C:1818
 msgid "User interface"
 msgstr "Brugerflade"
 
-#: src/frontends/qt4/QPrefsDialog.C:1736
+#: src/frontends/qt4/QPrefsDialog.C:1748
 msgid "Identity"
 msgstr "Identitet"
 
@@ -11541,7 +11540,7 @@ msgstr "Ugyldigt filnavn!"
 
 #: src/frontends/qt4/validators.C:147
 msgid ""
-"LyX does not provide LateX support for file names containing any of these "
+"LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
 msgstr ""
 
@@ -11573,17 +11572,17 @@ msgstr "Indstik åbnet"
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-genereret litteraturliste"
 
-#: src/insets/insetbibtex.C:202 src/insets/insetbibtex.C:255
+#: src/insets/insetbibtex.C:204 src/insets/insetbibtex.C:257
 msgid "Export Warning!"
 msgstr ""
 
-#: src/insets/insetbibtex.C:203
+#: src/insets/insetbibtex.C:205
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/insetbibtex.C:256
+#: src/insets/insetbibtex.C:258
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -11714,7 +11713,7 @@ msgstr "Åbnede fodnote-indstik"
 msgid "footnote"
 msgstr "Bundnote"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:447
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:448
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -11748,7 +11747,7 @@ msgstr "Indlæs ren tekst"
 msgid "Verbatim Input*"
 msgstr "Indsæt ren tekst*"
 
-#: src/insets/insetinclude.C:410
+#: src/insets/insetinclude.C:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -11759,7 +11758,7 @@ msgstr ""
 "har tekstklassen `%2$s'\n"
 "mens forældrefilen har tekstklassen `%3$s'."
 
-#: src/insets/insetinclude.C:416
+#: src/insets/insetinclude.C:417
 msgid "Different textclasses"
 msgstr "Forskellige tekstklasser"
 
@@ -11873,15 +11872,15 @@ msgstr "PrettyRef"
 msgid "FormatRef: "
 msgstr "F&ormat:"
 
-#: src/insets/insettabular.C:450
+#: src/insets/insettabular.C:451
 msgid "Opened table"
 msgstr "Åbnede tabel"
 
-#: src/insets/insettabular.C:1605
+#: src/insets/insettabular.C:1607
 msgid "Error setting multicolumn"
 msgstr "Fejl ved aktivere af flerkollonner"
 
-#: src/insets/insettabular.C:1606
+#: src/insets/insettabular.C:1608
 msgid "You cannot set multicolumn vertically."
 msgstr "Du kan ikke bruge flerkollonner lodret."
 
@@ -12135,11 +12134,11 @@ msgstr "&Omdøb"
 msgid "Choose a filename to save document as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1871
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:167 src/lyxfunc.C:2028
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12150,7 +12149,7 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:2031
+#: src/lyx_cb.C:169 src/lyxfunc.C:2030
 msgid "Over-write document?"
 msgstr "Overskriv dokument?"
 
@@ -12558,7 +12557,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Afslut|A"
 
-#: src/lyxfunc.C:1119 src/text3.C:1303
+#: src/lyxfunc.C:1119 src/text3.C:1312
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
@@ -12572,76 +12571,76 @@ msgstr "Åbner hjælpefilen %1$s..."
 msgid "Opening child document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1489
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_navn> <x11_navn>"
 
-#: src/lyxfunc.C:1501
+#: src/lyxfunc.C:1500
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/lyxfunc.C:1616
+#: src/lyxfunc.C:1615
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument ikke gemt"
 
-#: src/lyxfunc.C:1619
+#: src/lyxfunc.C:1618
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Gem som dokumentstandarder"
 
-#: src/lyxfunc.C:1675
+#: src/lyxfunc.C:1674
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny dokumentklasse..."
 
-#: src/lyxfunc.C:1869
+#: src/lyxfunc.C:1868
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/lyxfunc.C:1908
+#: src/lyxfunc.C:1907
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/lyxfunc.C:1947
+#: src/lyxfunc.C:1946
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/lyxfunc.C:1951
+#: src/lyxfunc.C:1950
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/lyxfunc.C:1953
+#: src/lyxfunc.C:1952
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/lyxfunc.C:1978
+#: src/lyxfunc.C:1977
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/lyxfunc.C:2105
+#: src/lyxfunc.C:2104
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
-#: src/lyxrc.C:2168
+#: src/lyxrc.C:2098
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "Betragt sammensatte ord, såsom \"marionetteater\" som gyldige ord?"
 
-#: src/lyxrc.C:2173
+#: src/lyxrc.C:2103
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
-#: src/lyxrc.C:2177
+#: src/lyxrc.C:2107
 #, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
@@ -12652,7 +12651,7 @@ msgstr ""
 "\"groff -t -Tlatin1 $$FName\" hvor $$FName er ind-filen. Hvis du i stedet "
 "skriver teksten \"none\", benyttes en intern rutine."
 
-#: src/lyxrc.C:2185
+#: src/lyxrc.C:2115
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -12660,7 +12659,7 @@ msgstr ""
 "Fravælg, hvis du ikke ønsker at det markerede skal erstattes automatisk af "
 "hvad du måtte skrive."
 
-#: src/lyxrc.C:2189
+#: src/lyxrc.C:2119
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -12668,13 +12667,13 @@ msgstr ""
 "Fravælg, hvis du ikke ønsker at klasseindstillingerne bliver nulstillet "
 "efter skift af klasse."
 
-#: src/lyxrc.C:2193
+#: src/lyxrc.C:2123
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
-#: src/lyxrc.C:2200
+#: src/lyxrc.C:2130
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -12682,13 +12681,13 @@ msgstr ""
 "Stien, hvor sikkerhedskopier gemmes. Hvis den er tom, vil LyX gemme dem i "
 "samme mappe, som den originale fil."
 
-#: src/lyxrc.C:2204
+#: src/lyxrc.C:2134
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/lyxrc.C:2208
+#: src/lyxrc.C:2138
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -12696,11 +12695,11 @@ msgstr ""
 "Tastaturudlægningsfil. Kan angive en absolut sti. Ellers vil LyX lede i sine "
 "globale og lokale 'bind/'-mapper."
 
-#: src/lyxrc.C:2212
+#: src/lyxrc.C:2142
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrollér om de nylige filer stadig eksisterer."
 
-#: src/lyxrc.C:2216
+#: src/lyxrc.C:2146
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -12708,7 +12707,7 @@ msgstr ""
 "Angiv, hvordan chktex skal kaldes. F.eks. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\". Der henvises til ChkTeX's dokumentation."
 
-#: src/lyxrc.C:2226
+#: src/lyxrc.C:2156
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -12716,7 +12715,7 @@ msgstr ""
 "Det påvirker normalt ikke markørpositionen, når du flytter rullebjælken. "
 "Aktivér, hvis du foretrækker altid at have markøren inden for skærmen."
 
-#: src/lyxrc.C:2237
+#: src/lyxrc.C:2167
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -12725,15 +12724,15 @@ msgstr ""
 "Her accepteres normale strftime-formater. Se 'man strftime' for detaljerne.F."
 "eks.\"%A, %e. %B %Y\"."
 
-#: src/lyxrc.C:2241
+#: src/lyxrc.C:2171
 msgid "New documents will be assigned this language."
 msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
-#: src/lyxrc.C:2245
+#: src/lyxrc.C:2175
 msgid "Specify the default paper size."
 msgstr "Angiv standard-papirformat."
 
-#: src/lyxrc.C:2249
+#: src/lyxrc.C:2179
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -12741,11 +12740,11 @@ msgstr ""
 "Minimér dialogvinduerne med hovedvinduet (berører kun dialogbokse, der vises "
 "efter at ændringen er gennemført.)."
 
-#: src/lyxrc.C:2253
+#: src/lyxrc.C:2183
 msgid "Select how LyX will display any graphics."
 msgstr "Angiv, hvordan LyX vil vise grafik."
 
-#: src/lyxrc.C:2257
+#: src/lyxrc.C:2187
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -12753,11 +12752,11 @@ msgstr ""
 "Standardstien til dine dokumenter. En tom værdi vælger den mappe, LyX blev "
 "startet fra."
 
-#: src/lyxrc.C:2262
+#: src/lyxrc.C:2192
 msgid "Specify additional chars that can be part of a word."
 msgstr "Angiv yderligere tegn, der kan være en del af et ord."
 
-#: src/lyxrc.C:2266
+#: src/lyxrc.C:2196
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -12765,14 +12764,14 @@ msgstr ""
 "Tegnsættet, der bruges i LaTeX2e fontenc-pakken. T1 anbefales for ikke-"
 "engelske sprog."
 
-#: src/lyxrc.C:2273
+#: src/lyxrc.C:2203
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/lyxrc.C:2282
+#: src/lyxrc.C:2212
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -12781,23 +12780,23 @@ msgstr ""
 "Kan være nyttigt, hvis du f.eks. vil skrive græske tekster på et dansk "
 "tastatur."
 
-#: src/lyxrc.C:2286
+#: src/lyxrc.C:2216
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
-#: src/lyxrc.C:2290
+#: src/lyxrc.C:2220
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
-#: src/lyxrc.C:2294
+#: src/lyxrc.C:2224
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
-#: src/lyxrc.C:2298
+#: src/lyxrc.C:2228
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -12807,22 +12806,22 @@ msgstr ""
 "sprog. F.eks. \\selectlanguage{$$lang}, hvor $$lang erstattes med navnet på "
 "det andet sprog."
 
-#: src/lyxrc.C:2302
+#: src/lyxrc.C:2232
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Den LaTeX-kommando, der skifter tilbage til dokumentets sprog."
 
-#: src/lyxrc.C:2306
+#: src/lyxrc.C:2236
 msgid "The LaTeX command for local changing of the language."
 msgstr "Den LaTeX-kommando, der skifter sprog lokalt."
 
-#: src/lyxrc.C:2310
+#: src/lyxrc.C:2240
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
-#: src/lyxrc.C:2314
+#: src/lyxrc.C:2244
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -12830,7 +12829,7 @@ msgstr ""
 "Den LaTeX-kommando, der henter sprogpakken. F.eks. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2318
+#: src/lyxrc.C:2248
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -12838,85 +12837,73 @@ msgstr ""
 "Deaktivér, hvis du ikke ønsker, at babel benyttes, hvis dokumentets sprog er "
 "standardsproget."
 
-#: src/lyxrc.C:2322
+#: src/lyxrc.C:2252
 #, fuzzy
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Deaktivér, hvis du ikke vil have at LyX skal oprette sikkerhedskopier."
 
-#: src/lyxrc.C:2326
+#: src/lyxrc.C:2256
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
 
-#: src/lyxrc.C:2330
+#: src/lyxrc.C:2260
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Deaktivér, hvis du ikke vil have at LyX skal oprette sikkerhedskopier."
 
-#: src/lyxrc.C:2334
+#: src/lyxrc.C:2264
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr "Fremhæv ord med et andet sprog end dokumentets standardsprog."
 
-#: src/lyxrc.C:2338
+#: src/lyxrc.C:2268
 #, fuzzy, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "Maksimalt antal nylige filer. Op til 9 kan optræde i filmenuen."
 
-#: src/lyxrc.C:2343
+#: src/lyxrc.C:2273
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/lyxrc.C:2350
+#: src/lyxrc.C:2280
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
-#: src/lyxrc.C:2354
-msgid "The bold font in the dialogs."
-msgstr "Fed skrifttype i dialogbokse."
-
-#: src/lyxrc.C:2358
-msgid "The encoding for the menu/popups fonts."
-msgstr "Tegnsættet for menu/dialog-tekst."
-
-#: src/lyxrc.C:2362
-msgid "The normal font in the dialogs."
-msgstr "Almindelig skrifttype i dialogbokse."
-
-#: src/lyxrc.C:2366
+#: src/lyxrc.C:2284
 msgid "Shows a typeset preview of things such as math"
 msgstr "Viser opsat smugkig af ting som f.eks. formler"
 
-#: src/lyxrc.C:2370
+#: src/lyxrc.C:2288
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Formler i smugkig har \"(#)\"-mærker i stedet for nummererede"
 
-#: src/lyxrc.C:2374
+#: src/lyxrc.C:2292
 msgid "Scale the preview size to suit."
 msgstr "Skalér smugkigsstørrelsen til suit."
 
-#: src/lyxrc.C:2378
+#: src/lyxrc.C:2296
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Om flere kopier af hver side skal udskrives samlet"
 
-#: src/lyxrc.C:2382
+#: src/lyxrc.C:2300
 msgid "The option for specifying the number of copies to print."
 msgstr "Antallet af kopier, der skal udskrives."
 
-#: src/lyxrc.C:2386
+#: src/lyxrc.C:2304
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
-#: src/lyxrc.C:2390
+#: src/lyxrc.C:2308
 msgid "The option to print only even pages."
 msgstr "Om kun lige sider skal udskrives."
 
-#: src/lyxrc.C:2394
+#: src/lyxrc.C:2312
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -12924,36 +12911,36 @@ msgstr ""
 "Ekstra tilvalg, der gives til udskriftsprogrammet efter alt andet, dog før "
 "filnavnet på DVI-filen."
 
-#: src/lyxrc.C:2398
+#: src/lyxrc.C:2316
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Filendelse for udskriftsprogrammets udfil. Normalt \".ps\"."
 
-#: src/lyxrc.C:2402
+#: src/lyxrc.C:2320
 msgid "The option to print out in landscape."
 msgstr "Udskriv i bredformat."
 
-#: src/lyxrc.C:2406
+#: src/lyxrc.C:2324
 msgid "The option to print only odd pages."
 msgstr "Om kun ulige sider skal udskrives."
 
-#: src/lyxrc.C:2410
+#: src/lyxrc.C:2328
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
-#: src/lyxrc.C:2414
+#: src/lyxrc.C:2332
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Angiv papirets dimensioner."
 
-#: src/lyxrc.C:2418
+#: src/lyxrc.C:2336
 msgid "The option to specify paper type."
 msgstr "Angiv papirformat."
 
-#: src/lyxrc.C:2422
+#: src/lyxrc.C:2340
 msgid "The option to reverse the order of the pages printed."
 msgstr "Udskriver siderne i omvendt rækkefølge."
 
-#: src/lyxrc.C:2426
+#: src/lyxrc.C:2344
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -12962,7 +12949,7 @@ msgstr ""
 "Udskriv automatisk til en fil og udfør derefter et separat udskriftsprogram "
 "på denne fil med det givne navn og parametre."
 
-#: src/lyxrc.C:2430
+#: src/lyxrc.C:2348
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -12970,35 +12957,35 @@ msgstr ""
 "Hvis du angiver et printernavn i udskriftdialogen, vil det følgende "
 "parameter blive foranstillet printernavnet efter udskriftskommandoen."
 
-#: src/lyxrc.C:2434
+#: src/lyxrc.C:2352
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
-#: src/lyxrc.C:2438
+#: src/lyxrc.C:2356
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Tilvalg, der videregives til udskriftsprogrammet for at skrive til en "
 "bestemt printer."
 
-#: src/lyxrc.C:2442
+#: src/lyxrc.C:2360
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
-#: src/lyxrc.C:2446
+#: src/lyxrc.C:2364
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Dit favorit-udskrivningsprogram, f.eks.\"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:2450
+#: src/lyxrc.C:2368
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
 
-#: src/lyxrc.C:2454
+#: src/lyxrc.C:2372
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -13006,16 +12993,16 @@ msgstr ""
 "DPI (piksler per tomme) på din skærm bestemmes automatisk af LyX. "
 "Gennemtving en indstilling her, hvis det går galt."
 
-#: src/lyxrc.C:2458
+#: src/lyxrc.C:2376
 msgid "The encoding for the screen fonts."
 msgstr "Tegnsættet for skærmtekst."
 
-#: src/lyxrc.C:2464
+#: src/lyxrc.C:2382
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
-#: src/lyxrc.C:2473
+#: src/lyxrc.C:2391
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -13025,12 +13012,12 @@ msgstr ""
 "kan dette få nogle af skrifterne til at se kantede ud i LyX. Ellers vil LyX "
 "bruge den nærmeste bitmap-fontstørrelse fremfor at skalere."
 
-#: src/lyxrc.C:2477
+#: src/lyxrc.C:2395
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
-#: src/lyxrc.C:2482
+#: src/lyxrc.C:2400
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -13039,17 +13026,17 @@ msgstr ""
 "Forstørrelse for skærmskrifter. En indstilling på 100% vil give nogenlunde "
 "samme størrelser som på papir."
 
-#: src/lyxrc.C:2487
+#: src/lyxrc.C:2405
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
 
-#: src/lyxrc.C:2491
+#: src/lyxrc.C:2409
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 
-#: src/lyxrc.C:2495
+#: src/lyxrc.C:2413
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -13057,16 +13044,16 @@ msgstr ""
 "Dette starter lyxserveren. Datakanaler får påsat filendelsen \".in\" og \"."
 "out\". Kun for avancerede brugere."
 
-#: src/lyxrc.C:2502
+#: src/lyxrc.C:2420
 msgid "De-select if you don't want the startup banner."
 msgstr "Deaktivér, hvis du ikke ønsker opstartsbanneret."
 
-#: src/lyxrc.C:2506
+#: src/lyxrc.C:2424
 #, fuzzy
 msgid "What command runs the spellchecker?"
 msgstr "Kommando for stavekontrollen?"
 
-#: src/lyxrc.C:2510
+#: src/lyxrc.C:2428
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -13074,7 +13061,7 @@ msgstr ""
 "LyX vil lægge sine midlertidige filer i denne sti. De vil blive slettet, når "
 "du afslutter LyX."
 
-#: src/lyxrc.C:2514
+#: src/lyxrc.C:2432
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -13082,7 +13069,7 @@ msgstr ""
 "Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon. En tom værdi "
 "vælger den mappe, LyX blev startet fra."
 
-#: src/lyxrc.C:2524
+#: src/lyxrc.C:2442
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -13090,7 +13077,7 @@ msgstr ""
 "Brugergrænseflade-fil. Hvis der ikke angives en absolut sti vil LyX lede i "
 "sine globale og lokale 'ui/'-mapper."
 
-#: src/lyxrc.C:2537
+#: src/lyxrc.C:2455
 #, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
@@ -13101,7 +13088,7 @@ msgstr ""
 "ikke kan kontrollere ord med fremmede bogstaver i dem. Dette virker ikke med "
 "alle ordbøger."
 
-#: src/lyxrc.C:2544
+#: src/lyxrc.C:2462
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Angiv papirkommandoen til DVI-fremviseren (efterlad tom eller brug \"-paper"
@@ -13465,7 +13452,7 @@ msgstr ""
 msgid "Unknown token"
 msgstr "Ukendt symbol"
 
-#: src/text.C:728
+#: src/text.C:726
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -13473,64 +13460,64 @@ msgstr ""
 "Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
 "Selvstudium."
 
-#: src/text.C:739
+#: src/text.C:737
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
-#: src/text.C:1709
+#: src/text.C:1707
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Skift sporing|k"
 
-#: src/text.C:1715
+#: src/text.C:1713
 msgid "Change: "
 msgstr "Ændring: "
 
-#: src/text.C:1719
+#: src/text.C:1717
 msgid " at "
 msgstr " på "
 
-#: src/text.C:1729
+#: src/text.C:1727
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrift: %1$s"
 
-#: src/text.C:1734
+#: src/text.C:1732
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$s"
 
-#: src/text.C:1740
+#: src/text.C:1738
 msgid ", Spacing: "
 msgstr ", mellemrum: "
 
-#: src/text.C:1752
+#: src/text.C:1750
 msgid "Other ("
 msgstr "Andet ("
 
-#: src/text.C:1761
+#: src/text.C:1759
 msgid ", Inset: "
 msgstr ", Indstik: "
 
-#: src/text.C:1762
+#: src/text.C:1760
 msgid ", Paragraph: "
 msgstr ", Afsnit: "
 
-#: src/text.C:1763
+#: src/text.C:1761
 #, fuzzy
 msgid ", Id: "
 msgstr ", Indstik: "
 
-#: src/text.C:1764
+#: src/text.C:1762
 msgid ", Position: "
 msgstr ", Placering: "
 
-#: src/text.C:1770
+#: src/text.C:1768
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1772
+#: src/text.C:1770
 msgid ", Boundary: "
 msgstr ""
 
@@ -13550,23 +13537,23 @@ msgstr "Intet at indeksere!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
-#: src/text3.C:710
+#: src/text3.C:719
 msgid "Unknown spacing argument: "
 msgstr "Ukendt linjeafstandsparameter: "
 
-#: src/text3.C:883
+#: src/text3.C:892
 msgid "Layout "
 msgstr "Layout "
 
-#: src/text3.C:884
+#: src/text3.C:893
 msgid " not known"
 msgstr " ukendt"
 
-#: src/text3.C:1408 src/text3.C:1420
+#: src/text3.C:1417 src/text3.C:1429
 msgid "Character set"
 msgstr "Tegnsæt"
 
-#: src/text3.C:1551
+#: src/text3.C:1560
 msgid "Paragraph layout set"
 msgstr "Afsnitslayout ændret"
 
@@ -13599,6 +13586,22 @@ msgstr "&Lodret:"
 #, fuzzy
 msgid "protected"
 msgstr "&Beskyt:"
+
+#~ msgid "Class Settings"
+#~ msgstr "Klasseindstillinger"
+
+#, fuzzy
+#~ msgid "Save Bookmark|S"
+#~ msgstr "Gem bogmærke 1|G"
+
+#~ msgid "The bold font in the dialogs."
+#~ msgstr "Fed skrifttype i dialogbokse."
+
+#~ msgid "The encoding for the menu/popups fonts."
+#~ msgstr "Tegnsættet for menu/dialog-tekst."
+
+#~ msgid "The normal font in the dialogs."
+#~ msgstr "Almindelig skrifttype i dialogbokse."
 
 #, fuzzy
 #~ msgid "\tEnd."
