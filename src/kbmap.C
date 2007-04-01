@@ -57,11 +57,9 @@ string const kb_keymap::printKeySym(LyXKeySym const & key,
 
 string::size_type kb_keymap::bind(string const & seq, FuncRequest const & func)
 {
-	if (lyxerr.debugging(Debug::KBMAP)) {
-		lyxerr << "BIND: Sequence `"
-		       << seq << "' Action `"
-		       << func.action << '\'' << endl;
-	}
+	LYXERR(Debug::KBMAP) << "BIND: Sequence `"
+	       << seq << "' Action `"
+	       << func.action << '\'' << endl;
 
 	kb_sequence k(0, 0);
 

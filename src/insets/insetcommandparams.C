@@ -243,13 +243,12 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	if (!tsecoptions.empty())  setSecOptions(tsecoptions);
 	if (!tcontents.empty()) setContents(tcontents);
 
-	if (lyxerr.debugging(Debug::PARSER))
-		lyxerr << "Command <" <<  cmd
-		       << "> == <" << to_utf8(getCommand())
-		       << "> == <" << getCmdName()
-		       << '|' << getContents()
-		       << '|' << getOptions()
-		       << '|' << getSecOptions() << '>' << endl;
+	LYXERR(Debug::PARSER) << "Command <" <<  cmd
+		<< "> == <" << to_utf8(getCommand())
+		<< "> == <" << getCmdName()
+		<< '|' << getContents()
+		<< '|' << getOptions()
+		<< '|' << getSecOptions() << '>' << endl;
 }
 
 

@@ -1366,12 +1366,10 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	if (!ptr_cmp(cur.text(), this))
 		return;
 
-	if (lyxerr.debugging(Debug::DEBUG)) {
-		LYXERR(Debug::DEBUG)
-			<< BOOST_CURRENT_FUNCTION
-			<< "draw selection at " << x
-			<< endl;
-	}
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< "draw selection at " << x
+		<< endl;
 
 	DocIterator beg = cur.selectionBegin();
 	DocIterator end = cur.selectionEnd();

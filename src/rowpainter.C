@@ -191,9 +191,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	bool tmp = refreshInside;
 	if (!in || !in->wide()) {
 		refreshInside = true;
-		if (lyxerr.debugging(Debug::PAINTING)) { 
-			lyxerr << endl << "Paint inset fully" << endl;
-		}
+		LYXERR(Debug::PAINTING) << endl << "Paint inset fully" << endl;
 	}
 	if (refreshInside)
 		inset->drawSelection(pi, int(x_), yo_);
@@ -977,9 +975,7 @@ void paintPar
 	// Re-enable screen drawing for future use of the painter.
 	pi.pain.setDrawingEnabled(true);
 
-	if (lyxerr.debugging(Debug::PAINTING)) {
-		LYXERR(Debug::PAINTING) << "." << endl;
-	}
+	LYXERR(Debug::PAINTING) << "." << endl;
 }
 
 } // namespace anon

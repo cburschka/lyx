@@ -324,13 +324,11 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		func = FuncRequest(LFUN_COMMAND_PREFIX);
 	}
 
-	if (lyxerr.debugging(Debug::KEY)) {
-		lyxerr << BOOST_CURRENT_FUNCTION
-		       << " Key [action="
-		       << func.action << "]["
-		       << to_utf8(keyseq->print(false)) << ']'
-		       << endl;
-	}
+	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
+	       << " Key [action="
+	       << func.action << "]["
+	       << to_utf8(keyseq->print(false)) << ']'
+	       << endl;
 
 	// already here we know if it any point in going further
 	// why not return already here if action == -1 and

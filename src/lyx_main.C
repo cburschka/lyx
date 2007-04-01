@@ -923,9 +923,7 @@ bool LyX::init()
 		return false;
 	}
 
-	if (lyxerr.debugging(Debug::INIT)) {
-		lyxerr << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
-	}
+	LYXERR(Debug::INIT) << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
 
 	LYXERR(Debug::INIT) << "Reading session information '.lyx/session'..." << endl;
 	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
