@@ -465,7 +465,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 	LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
 	/// The text to be written on top of the pixmap
 	QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
-	FileName const file = support::libFileSearch("images", "banner", "ppm");
+	FileName const file = support::libFileSearch("images", "banner", "png");
 	if (file.empty())
 		return;
 

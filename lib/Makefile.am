@@ -215,7 +215,7 @@ dist_images_DATA = \
 	images/all-changes-accept.xpm \
 	images/all-changes-reject.xpm \
 	images/amssymb.xpm \
-	images/banner.ppm \
+	images/banner.png \
 	images/bookmark-goto.xpm \
 	images/bookmark-save.xpm \
 	images/break-line.xpm \

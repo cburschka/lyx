@@ -68,10 +68,10 @@ Image::FormatList QLImage::loadableFormats()
 
 
 //	LYXERR(Debug::GRAPHICS)
-//		<< "D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm is of format: "
-//		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm"))
+//		<< "D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
+//		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png"))
 //		<< endl;
-//	if (Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm"))
+//	if (Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png"))
 //		LYXERR(Debug::GRAPHICS)
 //			<< "pictureFormat not returned NULL\n" << endl;
 //			<< "Supported formats are: " << Pic.inputFormats() << endl;

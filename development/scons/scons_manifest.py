@@ -1483,7 +1483,7 @@ lib_images_files = Split('''
     all-changes-reject.xpm
     all-changes-accept.xpm
     amssymb.xpm
-    banner.ppm
+    banner.png
     bookmark-goto.xpm
     bookmark-save.xpm
     break-line.xpm
