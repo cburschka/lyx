@@ -12,7 +12,6 @@
 \kmap Ö Ö
 \kmap Ü Ü
 \kmap ~ °		# degree
-\kmap @ \"		# shift-numbers is different on German kbd
 \kmap \# §
 \kmap ^ &
 \kmap & /
@@ -27,21 +26,21 @@
 \kmap Z Y
 \kmap y z
 \kmap Y Z
-\kmap [ ü		#"\\\"{u}"		# [{ maps to u umlaut
-\kmap { Ü		#"\\\"{U}"
+\kmap [ ü		# "\\\"{u}"		# [{ maps to u umlaut
+\kmap { Ü		# "\\\"{U}"
 \kmap ] +
 \kmap } *
-\kmap ; ö		#"\\\"{o}"		# ;: maps to o umlaut
-\kmap : Ö		#"\\\"{O}"
-\kmap ' ä		#"\\\"{a}"		# '" maps to a umlaut
-\kmap \" Ä		# "\\\"{A}"
+\kmap ; ö		# "\\\"{o}"		# ;: maps to o umlaut
+\kmap : Ö		# "\\\"{O}"
+\kmap ' ä		# "\\\"{a}"		# '" maps to a umlaut
+\kmap @ Ä		# "\\\"{A}"		# " couldn't be mapped because it's reserved for quotation
 \kmap < ;		# yet some modifiers
 \kmap > :
 \kmap / -
 \kmap ? _
 \kmap \\ \#
 \kmap | '
-\kxmod acute i í		# correct some misspellings :-)
+\kxmod acute i í
 \kxmod acute j ȷ́
 \kxmod grave i ì
 \kxmod grave j ȷ̀
