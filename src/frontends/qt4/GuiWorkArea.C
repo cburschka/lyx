@@ -607,7 +607,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	else
 		stopBlinkingCursor();
 
-    // last_width : for checking if last preedit string was/wasn't empty.
+	// last_width : for checking if last preedit string was/wasn't empty.
 	static bool last_width = false;
 	if (!last_width && preedit_string.empty()) {
 		// if last_width is last length of preedit string. 
@@ -636,11 +636,11 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 	last_width = true;
 
-    // att : stores an IM attribute.
+	// att : stores an IM attribute.
 	QList<QInputMethodEvent::Attribute> const & att = e->attributes();
 
 	// get attributes of input method cursor.
-    // cursor_pos : cursor position in preedit string.
+	// cursor_pos : cursor position in preedit string.
 	size_t cursor_pos = 0;
 	bool cursor_is_visible = false;
 	for (int i = 0; i < att.size(); ++i) {
@@ -655,9 +655,9 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	// get position of selection in input method.
 	// FIXME: isn't there a way to do this simplier?
-    // rStart : cursor position in selected string in IM.
+	// rStart : cursor position in selected string in IM.
 	size_t rStart = 0;
-    // rLength : selected string length in IM.
+	// rLength : selected string length in IM.
 	size_t rLength = 0;
 	if (cursor_pos < preedit_length) {
 		for (int i = 0; i < att.size(); ++i) {
