@@ -71,6 +71,11 @@ public:
 	void unregisterSocketCallback(int fd);
 	//@}
 
+	/// Methods inherited from \c Application class
+	//@{
+	virtual bool notify(QObject * receiver, QEvent * event);
+	//@}
+
 	///
 	ColorCache & colorCache() { return color_cache_; }
 	///

@@ -30,6 +30,7 @@
 #include "Color.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "gettext.h"
 #include "lyx_main.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
@@ -211,6 +212,24 @@ bool GuiApplication::event(QEvent * e)
 	default:
 		return QApplication::event(e);
 	}
+}
+
+
+bool GuiApplication::notify(QObject * receiver, QEvent * event)
+{
+	bool return_value;
+	try {
+		return_value = QApplication::notify(receiver, event);
+	}
+	catch (...) {
+		lyxerr << to_utf8(_("ERROR: Exception caught in the Qt event loop, exiting..."))
+			<< endl;
+
+		LyX::cref().emergencyCleanup();
+		abort();
+	}
+
+	return return_value;
 }
 
 
