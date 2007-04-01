@@ -262,7 +262,11 @@ necessary parsing in modern formats than in ancient ones.
                 encoding_stack.append(encoding_stack[-1])
             elif find_token(document.body, "\\end_layout", i, i + 1) == i:
                 document.warning("Removing nested encoding %s." % encoding_stack[-1], 3)
-                del encoding_stack[-1]
+                if len(encoding_stack) == 1:
+                    # Don't remove the document encoding from the stack
+                    document.warning("Malformed LyX document: Unexpected `\\end_layout'.")
+                else:
+                    del encoding_stack[-1]
             if encoding_stack[-1] != document.encoding:
                 if forward:
                     # This line has been incorrectly interpreted as if it was
