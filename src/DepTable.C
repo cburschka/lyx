@@ -218,15 +218,14 @@ void DepTable::write(FileName const & f) const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (lyxerr.debugging(Debug::DEPEND)) {
-			// Store the second (most recently calculated)
-			// CRC value.
-			// The older one is effectively set to 0 upon re-load.
-			lyxerr << "Write dep: "
-			       << cit->second.crc_cur << ' '
-			       << cit->second.mtime_cur << ' '
-			       << cit->first << endl;
-		}
+		// Store the second (most recently calculated)
+		// CRC value.
+		// The older one is effectively set to 0 upon re-load.
+		LYXERR(Debug::DEPEND) << "Write dep: "
+		       << cit->second.crc_cur << ' '
+		       << cit->second.mtime_cur << ' '
+		       << cit->first << endl;
+
 		ofs << cit->second.crc_cur << ' '
 		    << cit->second.mtime_cur << ' '
 		    << cit->first << endl;
@@ -244,12 +243,10 @@ bool DepTable::read(FileName const & f)
 
 	while (ifs >> di.crc_cur >> di.mtime_cur && getline(ifs, nome)) {
 		nome = ltrim(nome);
-		if (lyxerr.debugging(Debug::DEPEND)) {
-			lyxerr << "Read dep: "
-			       << di.crc_cur << ' '
-			       << di.mtime_cur << ' '
-			       << nome << endl;
-		}
+
+		LYXERR(Debug::DEPEND) << "Read dep: "
+		       << di.crc_cur << ' ' << di.mtime_cur << ' ' << nome << endl;
+
 		deplist[FileName(nome)] = di;
 	}
 	return deplist.size();

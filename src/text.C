@@ -1444,11 +1444,9 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		return;
 	}
 
-	if (lyxerr.debugging(Debug::DEBUG)) {
-		LYXERR(Debug::DEBUG) << " y1: " << y1 << " y2: " << y2
-			   << "X1:" << X1 << " x2: " << X2 << " wid: " << tm.width()
-			<< endl;
-	}
+	LYXERR(Debug::DEBUG) << " y1: " << y1 << " y2: " << y2
+		<< "X1:" << X1 << " x2: " << X2 << " wid: " << tm.width()
+		<< endl;
 
 	// paint upper rectangle
 	pi.pain.fillRectangle(x + x1, y1, x2 - x1, y2 - y1,

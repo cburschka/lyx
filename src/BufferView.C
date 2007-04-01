@@ -338,22 +338,18 @@ bool BufferView::update(Update::flags flags)
 	// causes screen update(), I reset last_inset_ to avoid such a problem.
 	last_inset_ = 0;
 	// This is close to a hot-path.
-	if (lyxerr.debugging(Debug::DEBUG)) {
-		LYXERR(Debug::DEBUG)
-			<< BOOST_CURRENT_FUNCTION
-			<< "[fitcursor = " << (flags & Update::FitCursor)
-			<< ", forceupdate = " << (flags & Update::Force)
-			<< ", singlepar = " << (flags & Update::SinglePar)
-			<< "]  buffer: " << buffer_ << endl;
-	}
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< "[fitcursor = " << (flags & Update::FitCursor)
+		<< ", forceupdate = " << (flags & Update::Force)
+		<< ", singlepar = " << (flags & Update::SinglePar)
+		<< "]  buffer: " << buffer_ << endl;
 
 	// Check needed to survive LyX startup
 	if (!buffer_)
 		return false;
 
-	if (lyxerr.debugging(Debug::WORKAREA)) {
-		LYXERR(Debug::WORKAREA) << "BufferView::update" << std::endl;
-	}
+	LYXERR(Debug::WORKAREA) << "BufferView::update" << std::endl;
 
 	// Update macro store
 	buffer_->buildMacros();
@@ -424,13 +420,11 @@ void BufferView::updateScrollbar()
 		offset_ref_ = 0;
 	}
 
-	if (lyxerr.debugging(Debug::GUI)) {
-		LYXERR(Debug::GUI)
-			<< BOOST_CURRENT_FUNCTION
-			<< " Updating scrollbar: height: " << t.paragraphs().size()
-			<< " curr par: " << cursor_.bottom().pit()
-			<< " default height " << defaultRowHeight() << endl;
-	}
+	LYXERR(Debug::GUI)
+		<< BOOST_CURRENT_FUNCTION
+		<< " Updating scrollbar: height: " << t.paragraphs().size()
+		<< " curr par: " << cursor_.bottom().pit()
+		<< " default height " << defaultRowHeight() << endl;
 
 	// It would be better to fix the scrollbar to understand
 	// values in [0..1] and divide everything by wh
