@@ -261,7 +261,7 @@ void QTabular::update_contents()
 	dialog_->hAlignCB->addItem(qt_("Center"));
 	dialog_->hAlignCB->addItem(qt_("Right"));
 	if (!multicol && !pwidth.zero())
-		dialog_->hAlignCB->addItem(qt_("Block"));
+		dialog_->hAlignCB->addItem(qt_("Justified"));
 
 	int align = 0;
 	switch (tabular.getAlignment(cell)) {
