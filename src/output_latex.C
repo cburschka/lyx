@@ -203,8 +203,8 @@ TeXEnvironment(Buffer const & buf,
 		texrow.newline();
 	}
 
-	if (par != paragraphs.end() && lyxerr.debugging(Debug::LATEX))
-		lyxerr << "TeXEnvironment...done " << &*par << endl;
+	if (par != paragraphs.end())
+		LYXERR(Debug::LATEX) << "TeXEnvironment...done " << &*par << endl;
 	return par;
 }
 
@@ -457,9 +457,8 @@ TeXOnePar(Buffer const & buf,
 		texrow.newline();
 	}
 
-	if (boost::next(pit) != paragraphs.end() &&
-	    lyxerr.debugging(Debug::LATEX))
-		lyxerr << "TeXOnePar...done " << &*boost::next(pit) << endl;
+	if (boost::next(pit) != paragraphs.end())
+		LYXERR(Debug::LATEX) << "TeXOnePar...done " << &*boost::next(pit) << endl;
 
 	return ++pit;
 }

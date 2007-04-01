@@ -300,9 +300,7 @@ void LyXComm::send(string const & msg)
 		return;
 	}
 
-	if (lyxerr.debugging(Debug::LYXSERVER)) {
-		lyxerr << "LyXComm: Sending '" << msg << '\'' << endl;
-	}
+	LYXERR(Debug::LYXSERVER) << "LyXComm: Sending '" << msg << '\'' << endl;
 
 	if (pipename.empty()) return;
 

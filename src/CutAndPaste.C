@@ -664,10 +664,9 @@ void copySelection(LCursor & cur, docstring const & plaintext)
 
 void saveSelection(LCursor & cur)
 {
-	if (lyxerr.debugging(Debug::ACTION))
-		lyxerr << BOOST_CURRENT_FUNCTION << ": `"
-		       << to_utf8(cur.selectionAsString(true)) << "'."
-		       << endl;
+	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION << ": `"
+	       << to_utf8(cur.selectionAsString(true)) << "'."
+	       << endl;
 	
 	if (cur.selection())
 		copySelectionToStack(cur, selectionBuffer);

@@ -134,20 +134,18 @@ int Trans::load(LyXLex & lex)
 		switch (lex.lex()) {
 		case KMOD:
 		{
-			if (lyxerr.debugging(Debug::KBMAP))
-				lyxerr << "KMOD:\t" << lex.getString() << endl;
+			LYXERR(Debug::KBMAP) << "KMOD:\t" << lex.getString() << endl;
+
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "key\t`" << lex.getString()
-					       << '\'' << endl;
+				LYXERR(Debug::KBMAP) << "key\t`" << lex.getString()
+				       << '\'' << endl;
 			} else
 				return -1;
 
 			docstring const keys = lex.getDocString();
 
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "accent\t`" << lex.getString()
+				LYXERR(Debug::KBMAP) << "accent\t`" << lex.getString()
 					       << '\'' << endl;
 			} else
 				return -1;
@@ -162,8 +160,7 @@ int Trans::load(LyXLex & lex)
 			// But we need to fix up all the kmap files first
 			// so that this field is not present anymore.
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "allowed\t`" << lex.getString()
+				LYXERR(Debug::KBMAP) << "allowed\t`" << lex.getString()
 					       << '\'' << endl;
 			} else
 				return -1;
@@ -233,22 +230,20 @@ int Trans::load(LyXLex & lex)
 		case KMAP: {
 			unsigned char key_from;
 
-			if (lyxerr.debugging(Debug::KBMAP))
-				lyxerr << "KMAP:\t" << lex.getString() << endl;
+			LYXERR(Debug::KBMAP) << "KMAP:\t" << lex.getString() << endl;
+
 			if (lex.next(true)) {
 				key_from = lex.getString()[0];
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.getString() << '\''
-					       << endl;
+				LYXERR(Debug::KBMAP) << "\t`" << lex.getString() << '\''
+					<< endl;
 			} else
 				return -1;
 
 			if (lex.next(true)) {
 				docstring const string_to = lex.getDocString();
 				keymap_[key_from] = string_to;
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << to_utf8(string_to) << '\''
-					       << endl;
+				LYXERR(Debug::KBMAP) << "\t`" << to_utf8(string_to) << '\''
+					<< endl;
 			} else
 				return -1;
 
@@ -259,28 +254,25 @@ int Trans::load(LyXLex & lex)
 			char_type key;
 			docstring str;
 
-			if (lyxerr.debugging(Debug::KBMAP))
-				lyxerr << "KXMOD:\t" << lex.getString() << endl;
+			LYXERR(Debug::KBMAP) << "KXMOD:\t" << lex.getString() << endl;
+
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.getString() << '\''
-					       << endl;
+				LYXERR(Debug::KBMAP) << "\t`" << lex.getString() << '\''
+					<< endl;
 				accent = getkeymod(lex.getString());
 			} else
 				return -1;
 
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.getString() << '\''
-					       << endl;
+				LYXERR(Debug::KBMAP) << "\t`" << lex.getString() << '\''
+					<< endl;
 				key = lex.getDocString()[0];
 			} else
 				return -1;
 
 			if (lex.next(true)) {
-				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.getString() << '\''
-					       << endl;
+				LYXERR(Debug::KBMAP) << "\t`" << lex.getString() << '\''
+					<< endl;
 				str = lex.getDocString();
 			} else
 				return -1;
@@ -354,11 +346,10 @@ tex_accent getkeymod(string const & p)
 	/* return modifier - decoded from p and update p */
 {
 	for (int i = 1; i <= TEX_MAX_ACCENT; ++i) {
-		if (lyxerr.debugging(Debug::KBMAP))
-			lyxerr << "p = " << p
-			       << ", lyx_accent_table[" << i
-			       << "].name = `" << lyx_accent_table[i].name
-			       << '\'' << endl;
+		LYXERR(Debug::KBMAP) << "p = " << p
+		       << ", lyx_accent_table[" << i
+		       << "].name = `" << lyx_accent_table[i].name
+		       << '\'' << endl;
 
 		if (lyx_accent_table[i].name
 		     && contains(p, lyx_accent_table[i].name)) {
