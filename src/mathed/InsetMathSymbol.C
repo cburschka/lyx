@@ -20,6 +20,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
+#include <cctype>
 
 namespace lyx {
 
@@ -215,8 +216,13 @@ void InsetMathSymbol::octave(OctaveStream & os) const
 void InsetMathSymbol::write(WriteStream & os) const
 {
 	os << '\\' << name();
-	if (name().size() == 1 && name()[0] < '0') // $,#, etc
+
+	// $,#, etc. In theory the restriction based on catcodes, but then
+	// we do not handle catcodes very well, let alone cat code changes,
+	// so being outside the alpha range is good enough.
+	if (name().size() == 1 && !std::isalpha(name()[0]))
 		return;
+
 	os.pendingSpace(true);
 }
 
