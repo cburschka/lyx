@@ -18,7 +18,6 @@
 #include "QLyXKeySym.h"
 #include "qt_helpers.h"
 
-#include "gettext.h"
 #include "LyXView.h"
 
 #include "BufferView.h"
@@ -28,7 +27,6 @@
 #include "LColor.h"
 #include "version.h"
 #include "lyxrc.h"
-#include "lyxtext.h"
 
 #include "support/filetools.h" // LibFileSearch
 #include "support/os.h"
