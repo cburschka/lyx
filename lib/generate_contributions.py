@@ -1047,7 +1047,7 @@ contributers = [
                  "Re: [PATCH] immediatly display saved filename in tab",
                  "m=117009852211669",
                  "29 January 2007",
-                 u"Various small bug fixes"),
+                 u"Various bug fixes"),
 
      contributer(u"Ran Rutenberg",
                  "ran.rutenberg () gmail ! com",
@@ -1073,13 +1073,12 @@ contributers = [
                  "10 June 2005",
                  u"Danish translation of the Windows installer"),
 
-     contributer(u"Eulogio Serradilla Rodríguez",
-                 "eulogio.sr () terra ! es",
+     contributer(u"Stefan Schimanski",
+                 "sts () 1stein ! org",
                  "GPL",
-                 "Re: The LyX licence",
-                 "m=110915313018478",
-                 "23 February 2005",
-                 u"contribution to the spanish internationalization"),
+                 "m=117541472517274",
+                 "1 April 2007",
+                 u"font improvements, bug fixes"),
 
      contributer(u"Hubert Schreier",
                  "schreier () sc ! edu",
@@ -1096,6 +1095,14 @@ contributers = [
                  "",
                  "",
                  u"international support and kbmaps for slovak, czech, german, ... wysiwyg figure"),
+
+     contributer(u"Eulogio Serradilla Rodríguez",
+                 "eulogio.sr () terra ! es",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=110915313018478",
+                 "23 February 2005",
+                 u"contribution to the spanish internationalization"),
 
      contributer(u"Miyata Shigeru",
                  "miyata () kusm ! kyoto-u ! ac ! jp",
