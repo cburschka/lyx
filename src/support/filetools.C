@@ -164,7 +164,7 @@ bool isFileReadable(FileName const & filename)
 //	  false: not writeable
 bool isDirWriteable(FileName const & path)
 {
-	lyxerr[Debug::FILES] << "isDirWriteable: " << path << endl;
+	LYXERR(Debug::FILES) << "isDirWriteable: " << path << endl;
 
 	FileName const tmpfl(tempName(path, "lyxwritetest"));
 
@@ -222,7 +222,7 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 
 	string const encoded_dir = dir.toFilesystemEncoding();
 	if (!(fs::exists(encoded_dir) && fs::is_directory(encoded_dir))) {
-		lyxerr[Debug::FILES]
+		LYXERR(Debug::FILES)
 			<< "Directory \"" << dir
 			<< "\" does not exist to DirList." << endl;
 		return dirlist;
@@ -379,7 +379,7 @@ namespace {
 
 FileName const createTmpDir(FileName const & tempdir, string const & mask)
 {
-	lyxerr[Debug::FILES]
+	LYXERR(Debug::FILES)
 		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'' << endl;
 
@@ -837,7 +837,7 @@ string const getFormatFromContents(FileName const & filename)
 	bool firstLine = true;
 	while ((count++ < max_count) && format.empty()) {
 		if (ifs.eof()) {
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "filetools(getFormatFromContents)\n"
 				<< "\tFile type not recognised before EOF!"
 				<< endl;
@@ -948,12 +948,12 @@ string const getFormatFromContents(FileName const & filename)
 	}
 
 	if (!format.empty()) {
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "Recognised Fileformat: " << format << endl;
 		return format;
 	}
 
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "filetools(getFormatFromContents)\n"
 		<< "\tCouldn't find a known format!\n";
 	return string();
@@ -1146,7 +1146,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 
 	cmd_ret const c = runCommand(kpsecmd);
 
-	lyxerr[Debug::LATEX] << "kpse status = " << c.first << '\n'
+	LYXERR(Debug::LATEX) << "kpse status = " << c.first << '\n'
 		 << "kpse result = `" << rtrim(c.second, "\n\r")
 		 << '\'' << endl;
 	if (c.first != -1)
@@ -1172,7 +1172,7 @@ void removeAutosaveFile(string const & filename)
 void readBB_lyxerrMessage(FileName const & file, bool & zipped,
 	string const & message)
 {
-	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] "
+	LYXERR(Debug::GRAPHICS) << "[readBB_from_PSFile] "
 		<< message << std::endl;
 #ifdef WITH_WARNINGS
 #warning Why is this func deleting a file? (Lgb)

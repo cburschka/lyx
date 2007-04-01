@@ -69,7 +69,7 @@ void Cache::add(FileName const & file) const
 {
 	// Is the file in the cache already?
 	if (inCache(file)) {
-		lyxerr[Debug::GRAPHICS] << "Cache::add(" << file << "):\n"
+		LYXERR(Debug::GRAPHICS) << "Cache::add(" << file << "):\n"
 					<< "The file is already in the cache."
 					<< std::endl;
 		return;

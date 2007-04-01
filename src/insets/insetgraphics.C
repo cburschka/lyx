@@ -123,7 +123,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 {
 	// Are we using latex or pdflatex?
 	if (runparams.flavor == OutputParams::PDFLATEX) {
-		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode" << endl;
+		LYXERR(Debug::GRAPHICS) << "findTargetFormat: PDF mode" << endl;
 		Format const * const f = formats.getFormat(format);
 		// Convert vector graphics to pdf
 		if (f && f->vectorFormat())
@@ -135,7 +135,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 		return "png";
 	}
 	// If it's postscript, we always do eps.
-	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode" << endl;
+	LYXERR(Debug::GRAPHICS) << "findTargetFormat: PostScript mode" << endl;
 	if (format != "ps")
 		// any other than ps is changed to eps
 		return "eps";
@@ -269,7 +269,7 @@ void InsetGraphics::read(Buffer const & buf, LyXLex & lex)
 	if (token == "Graphics")
 		readInsetGraphics(lex, buf.filePath());
 	else
-		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!" << endl;
+		LYXERR(Debug::GRAPHICS) << "Not a Graphics inset!" << endl;
 
 	graphic_->update(params().as_grfxParams());
 }
@@ -283,7 +283,7 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex, string const & bufpath)
 		lex.next();
 
 		string const token = lex.getString();
-		lyxerr[Debug::GRAPHICS] << "Token: '" << token << '\''
+		LYXERR(Debug::GRAPHICS) << "Token: '" << token << '\''
 				    << endl;
 
 		if (token.empty()) {
@@ -468,7 +468,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		// FIXME UNICODE
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
 							   "into the temporary directory."),
 						from_utf8(file_in.absFilename())))
@@ -609,7 +609,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// this file, but we can't check, because that would
 			// mean to unzip the file and thereby making the
 			// noUnzip parameter meaningless.
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "\tpass zipped file to LaTeX.\n";
 
 			FileName const bb_orig_file = FileName(changeExtension(orig_file, "bb"));
@@ -646,32 +646,32 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// temp_file has been unzipped already and
 			// orig_file has not changed in the meantime.
 			temp_file = unzipped_temp_file;
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "\twas already unzipped to " << temp_file
 				<< endl;
 		} else {
 			// unzipped_temp_file does not exist or is too old
 			temp_file = unzipFile(temp_file);
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "\tunzipped to " << temp_file << endl;
 		}
 	}
 
 	string const from = formats.getFormatFromFile(temp_file);
 	if (from.empty()) {
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "\tCould not get file format." << endl;
 	}
 	string const to   = findTargetFormat(from, runparams);
 	string const ext  = formats.extension(to);
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\t we have: from " << from << " to " << to << '\n';
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
 	// file format.
 
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (from == to) {
@@ -685,7 +685,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				output_file = changeExtension(output_file, ext);
 				source_file = FileName(changeExtension(source_file.absFilename(), ext));
 			} else
-				lyxerr[Debug::GRAPHICS]
+				LYXERR(Debug::GRAPHICS)
 					<< "Could not rename file `"
 					<< temp_file << "' to `" << new_file
 					<< "'." << endl;
@@ -705,7 +705,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// Yes if to_file does not exist or if temp_file is newer than to_file
 	if (compare_timestamps(temp_file, to_file) < 0) {
 		// FIXME UNICODE
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< to_utf8(bformat(_("No conversion of %1$s is needed after all"),
 				   from_utf8(rel_file)))
 			<< std::endl;
@@ -716,7 +716,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		return stripExtensionIfPossible(output_to_file, runparams.nice);
 	}
 
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\tThe original file is " << orig_file << "\n"
 		<< "\tA copy has been made and convert is to be called with:\n"
 		<< "\tfile to convert = " << temp_file << '\n'
@@ -742,7 +742,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "insetgraphics::latex: Filename = "
 		<< params().filename.absFilename() << endl;
 
@@ -757,7 +757,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	// "filename" found. In this case LaTeX
 	// draws only a rectangle with the above bb and the
 	// not found filename in it.
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\tMessage = \"" << message << '\"' << endl;
 
 	// These variables collect all the latex code that should be before and
@@ -780,14 +780,14 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
-	lyxerr[Debug::GRAPHICS] << "\tOpts = " << opts << endl;
+	LYXERR(Debug::GRAPHICS) << "\tOpts = " << opts << endl;
 
 	if (!opts.empty() && !message.empty())
 		before += ('[' + opts + ',' + message + ']');
 	else if (!opts.empty() || !message.empty())
 		before += ('[' + opts + message + ']');
 
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\tBefore = " << before
 		<< "\n\tafter = " << after << endl;
 
@@ -800,7 +800,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	// FIXME UNICODE
 	os << from_utf8(latex_str);
 
-	lyxerr[Debug::GRAPHICS] << "InsetGraphics::latex outputting:\n"
+	LYXERR(Debug::GRAPHICS) << "InsetGraphics::latex outputting:\n"
 				<< latex_str << endl;
 	// Return how many newlines we issued.
 	return int(lyx::count(latex_str.begin(), latex_str.end(),'\n'));

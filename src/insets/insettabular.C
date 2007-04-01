@@ -481,7 +481,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 
 void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr[Debug::DEBUG] << "# InsetTabular::doDispatch: cmd: " << cmd
+	LYXERR(Debug::DEBUG) << "# InsetTabular::doDispatch: cmd: " << cmd
 			     << "\n  cur:" << cur << endl;
 	CursorSlice sl = cur.top();
 	LCursor & bvcur = cur.bv().cursor();

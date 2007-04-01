@@ -90,7 +90,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 			changed = true;
 			lyxerr << "Couldn't find or read bibtex file "
 			       << f << endl;
-			lyxerr[Debug::DEBUG] << "Fs error: "
+			LYXERR(Debug::DEBUG) << "Fs error: "
 					     << fserr.what() << endl;
 		}
 	}

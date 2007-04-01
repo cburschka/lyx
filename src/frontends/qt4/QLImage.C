@@ -67,27 +67,27 @@ Image::FormatList QLImage::loadableFormats()
 	Formats::const_iterator end   = formats.end();
 
 
-//	lyxerr[Debug::GRAPHICS]
+//	LYXERR(Debug::GRAPHICS)
 //		<< "D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm is of format: "
 //		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm"))
 //		<< endl;
 //	if (Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm"))
-//		lyxerr[Debug::GRAPHICS]
+//		LYXERR(Debug::GRAPHICS)
 //			<< "pictureFormat not returned NULL\n" << endl;
 //			<< "Supported formats are: " << Pic.inputFormats() << endl;
 
 	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats ();
 
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\nThe image loader can load the following directly:\n";
 
 	if (qt_formats.empty())
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "\nQt4 Problem: No Format available!" << endl;
 
 	for (QList<QByteArray>::const_iterator it =qt_formats.begin(); it != qt_formats.end(); ++it) {
 
-		lyxerr[Debug::GRAPHICS] << (const char *) *it << ", ";
+		LYXERR(Debug::GRAPHICS) << (const char *) *it << ", ";
 
 		string ext = ascii_lowercase((const char *) *it);
 
@@ -105,17 +105,17 @@ Image::FormatList QLImage::loadableFormats()
 	}
 
 	if (lyxerr.debugging()) {
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "\nOf these, LyX recognises the following formats:\n";
 
 		FormatList::const_iterator fbegin = fmts.begin();
 		FormatList::const_iterator fend   = fmts.end();
 		for (FormatList::const_iterator fit = fbegin; fit != fend; ++fit) {
 			if (fit != fbegin)
-				lyxerr[Debug::GRAPHICS] << ", ";
-			lyxerr[Debug::GRAPHICS] << *fit;
+				LYXERR(Debug::GRAPHICS) << ", ";
+			LYXERR(Debug::GRAPHICS) << *fit;
 		}
-		lyxerr[Debug::GRAPHICS] << '\n' << endl;
+		LYXERR(Debug::GRAPHICS) << '\n' << endl;
 	}
 
 	return fmts;
@@ -156,14 +156,14 @@ unsigned int QLImage::getHeight_impl() const
 void QLImage::load_impl(support::FileName const & filename)
 {
 	if (!original_.isNull()) {
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "Image is loaded already!" << endl;
 		finishedLoading(false);
 		return;
 	}
 
 	if (!original_.load(toqstr(filename.absFilename()))) {
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "Unable to open image" << endl;
 		finishedLoading(false);
 		return;

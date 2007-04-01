@@ -215,7 +215,7 @@ int LaTeX::run(TeXErrors & terr)
 	FileName const aux_file(changeExtension(file.absFilename(), "aux"));
 
 	if (had_depfile) {
-		lyxerr[Debug::DEPEND] << "Dependency file exists" << endl;
+		LYXERR(Debug::DEPEND) << "Dependency file exists" << endl;
 		// Read the dep file:
 		had_depfile = head.read(depfile);
 	}
@@ -228,21 +228,21 @@ int LaTeX::run(TeXErrors & terr)
 		// to re-run latex and collect the error messages 
 		// (even if they are the same).
 		if (!fs::exists(output_file.toFilesystemEncoding())) {
-			lyxerr[Debug::DEPEND]
+			LYXERR(Debug::DEPEND)
 				<< "re-running LaTeX because output file doesn't exist."
 				<< endl;
 		} else if (!head.sumchange()) {
-			lyxerr[Debug::DEPEND] << "return no_change" << endl;
+			LYXERR(Debug::DEPEND) << "return no_change" << endl;
 			return NO_CHANGE;
 		} else {
-			lyxerr[Debug::DEPEND]
+			LYXERR(Debug::DEPEND)
 				<< "Dependency file has changed" << endl;
 		}
 
 		if (head.extchanged(".bib") || head.extchanged(".bst"))
 			run_bibtex = true;
 	} else
-		lyxerr[Debug::DEPEND]
+		LYXERR(Debug::DEPEND)
 			<< "Dependency file does not exist, or has wrong format"
 			<< endl;
 
@@ -254,13 +254,13 @@ int LaTeX::run(TeXErrors & terr)
 		bibtex_info_old = scanAuxFiles(aux_file);
 
 	++count;
-	lyxerr[Debug::LATEX] << "Run #" << count << endl;
+	LYXERR(Debug::LATEX) << "Run #" << count << endl;
 	message(runMessage(count));
 
 	startscript();
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
-		lyxerr[Debug::LATEX] << "Rerunning LaTeX" << endl;
+		LYXERR(Debug::LATEX) << "Rerunning LaTeX" << endl;
 		startscript();
 		scanres = scanLogFile(terr);
 	}
@@ -294,14 +294,14 @@ int LaTeX::run(TeXErrors & terr)
 	// run makeindex
 	if (head.haschanged(idxfile)) {
 		// no checks for now
-		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
+		LYXERR(Debug::LATEX) << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
 		// onlyFilename() is needed for cygwin
 		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()),
 				runparams);
 	}
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
-		lyxerr[Debug::LATEX] 
+		LYXERR(Debug::LATEX) 
 			<< "Running MakeIndex for nomencl."
 			<< endl;
 		message(_("Running MakeIndex for nomencl."));
@@ -322,7 +322,7 @@ int LaTeX::run(TeXErrors & terr)
 		// "\bibdata" and/or "\bibstyle". If one of those
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
-		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
+		LYXERR(Debug::LATEX) << "Running BibTeX." << endl;
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info);
@@ -348,10 +348,10 @@ int LaTeX::run(TeXErrors & terr)
 	if (rerun || head.sumchange()) {
 		rerun = false;
 		++count;
-		lyxerr[Debug::DEPEND]
+		LYXERR(Debug::DEPEND)
 			<< "Dep. file has changed or rerun requested"
 			<< endl;
-		lyxerr[Debug::LATEX]
+		LYXERR(Debug::LATEX)
 			<< "Run #" << count << endl;
 		message(runMessage(count));
 		startscript();
@@ -365,7 +365,7 @@ int LaTeX::run(TeXErrors & terr)
 		deplog(head); // reads the latex log
 		head.update();
 	} else {
-		lyxerr[Debug::DEPEND]
+		LYXERR(Debug::DEPEND)
 			<< "Dep. file has NOT changed"
 			<< endl;
 	}
@@ -381,7 +381,7 @@ int LaTeX::run(TeXErrors & terr)
 	// run makeindex if the <file>.idx has changed or was generated.
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".idx")))) {
 		// no checks for now
-		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
+		LYXERR(Debug::LATEX) << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
 		// onlyFilename() is needed for cygwin
 		rerun = runMakeIndex(onlyFilename(changeExtension(
@@ -390,7 +390,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	// I am not pretty sure if need this twice.
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
-		lyxerr[Debug::LATEX] 
+		LYXERR(Debug::LATEX) 
 			<< "Running MakeIndex for nomencl."
 			<< endl;
 		message(_("Running MakeIndex for nomencl."));
@@ -420,7 +420,7 @@ int LaTeX::run(TeXErrors & terr)
 		// MAX_RUNS are reached.
 		rerun = false;
 		++count;
-		lyxerr[Debug::LATEX] << "Run #" << count << endl;
+		LYXERR(Debug::LATEX) << "Run #" << count << endl;
 		message(runMessage(count));
 		startscript();
 		scanres = scanLogFile(terr);
@@ -435,7 +435,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	// Write the dependencies to file.
 	head.write(depfile);
-	lyxerr[Debug::LATEX] << "Done." << endl;
+	LYXERR(Debug::LATEX) << "Done." << endl;
 	return scanres;
 }
 
@@ -454,7 +454,7 @@ int LaTeX::startscript()
 bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
                          string const & params)
 {
-	lyxerr[Debug::LATEX]
+	LYXERR(Debug::LATEX)
 		<< "idx file has been made, running makeindex on file "
 		<< f << endl;
 	string tmp = lyxrc.index_command + ' ';
@@ -499,7 +499,7 @@ Aux_Info const LaTeX::scanAuxFile(FileName const & file)
 
 void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 {
-	lyxerr[Debug::LATEX] << "Scanning aux file: " << file << endl;
+	LYXERR(Debug::LATEX) << "Scanning aux file: " << file << endl;
 
 	ifstream ifs(file.toFilesystemEncoding().c_str());
 	string token;
@@ -519,7 +519,7 @@ void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 			while (!data.empty()) {
 				string citation;
 				data = split(data, citation, ',');
-				lyxerr[Debug::LATEX] << "Citation: "
+				LYXERR(Debug::LATEX) << "Citation: "
 						     << citation << endl;
 				aux_info.citations.insert(citation);
 			}
@@ -531,7 +531,7 @@ void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 				string database;
 				data = split(data, database, ',');
 				database = changeExtension(database, "bib");
-				lyxerr[Debug::LATEX] << "BibTeX database: `"
+				LYXERR(Debug::LATEX) << "BibTeX database: `"
 						     << database << '\'' << endl;
 				aux_info.databases.insert(database);
 			}
@@ -540,7 +540,7 @@ void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 			// token is now the style file
 			// pass it to the helper
 			style = changeExtension(style, "bst");
-			lyxerr[Debug::LATEX] << "BibTeX style: `"
+			LYXERR(Debug::LATEX) << "BibTeX style: `"
 					     << style << '\'' << endl;
 			aux_info.styles.insert(style);
 		} else if (regex_match(token, sub, reg4)) {
@@ -607,7 +607,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int retval = NO_ERRORS;
 	string tmp =
 		onlyFilename(changeExtension(file.absFilename(), ".log"));
-	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
+	LYXERR(Debug::LATEX) << "Log file: " << tmp << endl;
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 
@@ -620,7 +620,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		token = subst(token, '\0', '\r');
 		token = subst(token, "\r", "");
 
-		lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+		LYXERR(Debug::LATEX) << "Log line: " << token << endl;
 
 		if (token.empty())
 			continue;
@@ -630,10 +630,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			// Here shall we handle different
 			// types of warnings
 			retval |= LATEX_WARNING;
-			lyxerr[Debug::LATEX] << "LaTeX Warning." << endl;
+			LYXERR(Debug::LATEX) << "LaTeX Warning." << endl;
 			if (contains(token, "Rerun to get cross-references")) {
 				retval |= RERUN;
-				lyxerr[Debug::LATEX]
+				LYXERR(Debug::LATEX)
 					<< "We should rerun." << endl;
 			} else if (contains(token, "Citation")
 				   && contains(token, "on page")
@@ -656,7 +656,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				   contains(token, "Rerun to get")) {
 				// at least longtable.sty and bibtopic.sty
 				// might use this.
-				lyxerr[Debug::LATEX]
+				LYXERR(Debug::LATEX)
 					<< "We should rerun." << endl;
 				retval |= RERUN;
 			}
@@ -664,7 +664,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			if (contains(token, "Rerun LaTeX") ||
 			    contains(token, "Rerun to get")) {
 				// Used by natbib
-				lyxerr[Debug::LATEX]
+				LYXERR(Debug::LATEX)
 					<< "We should rerun." << endl;
 				retval |= RERUN;
 			}
@@ -706,7 +706,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					errstr += "\n";
 					getline(ifs, tmp);
 				}
-				lyxerr[Debug::LATEX]
+				LYXERR(Debug::LATEX)
 					<< "line: " << line << '\n'
 					<< "Desc: " << desc << '\n'
 					<< "Text: " << errstr << endl;
@@ -750,7 +750,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			}
 		}
 	}
-	lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+	LYXERR(Debug::LATEX) << "Log line: " << token << endl;
 	return retval;
 }
 
@@ -770,7 +770,7 @@ bool exists(FileName const & possible_name) {
 		return fs::exists(possible_name.toFilesystemEncoding());
 	}
 	catch (fs::filesystem_error const & fe) {
-		lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
+		LYXERR(Debug::DEPEND) << "Got error `" << fe.what()
 			<< "' while checking whether file `" << possible_name
 			<< "' exists." << endl;
 		return false;
@@ -794,7 +794,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 	// convert from native os path to unix path
 	string foundfile = os::internal_path(trim(ff));
 
-	lyxerr[Debug::DEPEND] << "Found file: " << foundfile << endl;
+	LYXERR(Debug::DEPEND) << "Found file: " << foundfile << endl;
 
 	// Ok now we found a file.
 	// Now we should make sure that this is a file that we can
@@ -806,7 +806,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 	//     absolute path and should
 	//     be inserted.
 	if (absolutePath(foundfile)) {
-		lyxerr[Debug::DEPEND] << "AbsolutePath file: "
+		LYXERR(Debug::DEPEND) << "AbsolutePath file: "
 				      << foundfile << endl;
 		// On initial insert we want to do the update at once
 		// since this file cannot be a file generated by
@@ -864,7 +864,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 	    !fs::is_directory(absname.toFilesystemEncoding())) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 		if (regex_match(onlyfile, unwanted)) {
-			lyxerr[Debug::DEPEND]
+			LYXERR(Debug::DEPEND)
 				<< "We don't want "
 				<< onlyfile
 				<< " in the dep file"
@@ -873,13 +873,13 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			// This is a tex file generated by LyX
 			// and latex is not likely to change this
 			// during its runs.
-			lyxerr[Debug::DEPEND]
+			LYXERR(Debug::DEPEND)
 				<< "Tmpdir TeX file: "
 				<< onlyfile
 				<< endl;
 			head.insert(absname, true);
 		} else {
-			lyxerr[Debug::DEPEND]
+			LYXERR(Debug::DEPEND)
 				<< "In tmpdir file:"
 				<< onlyfile
 				<< endl;
@@ -887,7 +887,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 		}
 		return true;
 	} else {
-		lyxerr[Debug::DEPEND]
+		LYXERR(Debug::DEPEND)
 			<< "Not a file or we are unable to find it."
 			<< endl;
 		return false;

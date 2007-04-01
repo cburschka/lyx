@@ -114,7 +114,7 @@ void nextState(ButtonPolicy::State & state,
 
 	ButtonPolicy::State tmp = s_m[state][in];
 
-	lyxerr[Debug::GUI] << "Transition from state "
+	LYXERR(Debug::GUI) << "Transition from state "
 			   << printState(state) << " to state "
 			   << printState(tmp) << " after input "
 			   << printInput(in) << std::endl;

@@ -83,7 +83,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
 	string const command_str = command.str();
 
-	lyxerr[Debug::TCLASS] << "Running `" << command_str << '\'' << endl;
+	LYXERR(Debug::TCLASS) << "Running `" << command_str << '\'' << endl;
 
 	support::cmd_ret const ret =
 		support::runCommand(command_str);
@@ -128,7 +128,7 @@ bool LyXTextClass::isTeXClassAvailable() const
 
 bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 {
-	lyxerr[Debug::TCLASS] << "Reading style " << lay.name() << endl;
+	LYXERR(Debug::TCLASS) << "Reading style " << lay.name() << endl;
 	if (!lay.read(lexrc, *this)) {
 		// Resolve fonts
 		lay.resfont = lay.font;
@@ -213,11 +213,11 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 	};
 
 	if (!merge)
-		lyxerr[Debug::TCLASS] << "Reading textclass "
+		LYXERR(Debug::TCLASS) << "Reading textclass "
 					<< to_utf8(makeDisplayPath(filename.absFilename()))
 					<< endl;
 	else
-		lyxerr[Debug::TCLASS] << "Reading input file "
+		LYXERR(Debug::TCLASS) << "Reading input file "
 				     << to_utf8(makeDisplayPath(filename.absFilename()))
 				     << endl;
 
@@ -443,7 +443,7 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 	}
 
 	if (format != FORMAT) {
-		lyxerr[Debug::TCLASS] << "Converting layout file from format "
+		LYXERR(Debug::TCLASS) << "Converting layout file from format "
 				      << format << " to " << FORMAT << endl;
 		FileName const tempfile(support::tempName());
 		error = !layout2layout(filename, tempfile);
@@ -454,7 +454,7 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 	}
 
 	if (!merge) { // we are at top level here.
-		lyxerr[Debug::TCLASS] << "Finished reading textclass "
+		LYXERR(Debug::TCLASS) << "Finished reading textclass "
 				      << to_utf8(makeDisplayPath(filename.absFilename()))
 				      << endl;
 		if (defaultlayout_.empty()) {
@@ -479,12 +479,12 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 							 toclevel);
 			}
 		}
-		lyxerr[Debug::TCLASS]
+		LYXERR(Debug::TCLASS)
 			<< "Minimum TocLevel is " << min_toclevel_
 			<< ", maximum is " << max_toclevel_ <<endl;
 
 	} else
-		lyxerr[Debug::TCLASS] << "Finished reading input file "
+		LYXERR(Debug::TCLASS) << "Finished reading input file "
 				      << to_utf8(makeDisplayPath(filename.absFilename()))
 				      << endl;
 

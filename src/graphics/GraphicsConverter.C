@@ -137,7 +137,7 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 		      string const & from_format, string const & to_format)
 	: valid_process_(false), finished_(false)
 {
-	lyxerr[Debug::GRAPHICS] << "Converter c-tor:\n"
+	LYXERR(Debug::GRAPHICS) << "Converter c-tor:\n"
 		<< "\tfrom_file:      " << from_file
 		<< "\n\tto_file_base: " << to_file_base
 		<< "\n\tfrom_format:  " << from_format
@@ -151,7 +151,7 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
 	build_script(from_file, to_file_base, from_format, to_format, script);
-	lyxerr[Debug::GRAPHICS] << "\tConversion script:"
+	LYXERR(Debug::GRAPHICS) << "\tConversion script:"
 		<< "\n--------------------------------------\n"
 		<< script.str()
 		<< "\n--------------------------------------\n";
@@ -277,7 +277,7 @@ static void build_script(FileName const & from_file,
 		  ostream & script)
 {
 	BOOST_ASSERT(from_format != to_format);
-	lyxerr[Debug::GRAPHICS] << "build_script ... ";
+	LYXERR(Debug::GRAPHICS) << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
 
 	script << "#!/usr/bin/env python\n"
@@ -354,7 +354,7 @@ static void build_script(FileName const & from_file,
 		   << to_format << ":' + '\"' + outfile + '\"' + '";
 		string const command = os.str();
 
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "\tNo converter defined! I use convertDefault.py\n\t"
 			<< command << endl;
 
@@ -396,7 +396,7 @@ static void build_script(FileName const & from_file,
 
 	// Move the final outfile to to_file
 	script << move_file("outfile", quoteName(to_file, quote_python));
-	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
+	LYXERR(Debug::GRAPHICS) << "ready!" << endl;
 }
 
 } // namespace graphics

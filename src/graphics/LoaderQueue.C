@@ -36,7 +36,7 @@ LoaderQueue & LoaderQueue::get()
 
 void LoaderQueue::loadNext()
 {
-	lyxerr[Debug::GRAPHICS] << "LoaderQueue: "
+	LYXERR(Debug::GRAPHICS) << "LoaderQueue: "
 				<< cache_queue_.size()
 				<< " items in the queue" << endl;
 	int counter = s_numimages_;
@@ -59,7 +59,7 @@ void LoaderQueue::setPriority(int numimages , int millisecs)
 {
 	s_numimages_ = numimages;
 	s_millisecs_ = millisecs;
-	lyxerr[Debug::GRAPHICS] << "LoaderQueue:  priority set to "
+	LYXERR(Debug::GRAPHICS) << "LoaderQueue:  priority set to "
 				<< s_numimages_ << " images at a time, "
 				<< s_millisecs_ << " milliseconds between calls"
 				<< endl;
@@ -75,7 +75,7 @@ LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME),
 
 void LoaderQueue::startLoader()
 {
-	lyxerr[Debug::GRAPHICS] << "LoaderQueue: waking up" << endl;
+	LYXERR(Debug::GRAPHICS) << "LoaderQueue: waking up" << endl;
 	running_ = true ;
 	timer.setTimeout(s_millisecs_);
 	timer.start();
@@ -86,7 +86,7 @@ void LoaderQueue::stopLoader()
 {
 	timer.stop();
 	running_ = false ;
-	lyxerr[Debug::GRAPHICS] << "LoaderQueue: I'm going to sleep" << endl;
+	LYXERR(Debug::GRAPHICS) << "LoaderQueue: I'm going to sleep" << endl;
 }
 
 

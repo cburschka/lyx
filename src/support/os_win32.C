@@ -205,7 +205,7 @@ string external_path(string const & p)
 {
 	string const dos_path = subst(p, "/", "\\");
 
-	lyxerr[Debug::LATEX]
+	LYXERR(Debug::LATEX)
 		<< "<Win32 path correction> ["
 		<< p << "]->>["
 		<< dos_path << ']' << endl;
@@ -265,7 +265,7 @@ string latex_path(string const & p)
 		string const drive = p.substr(0, 2);
 		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
 		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);
-		lyxerr[Debug::LATEX]
+		LYXERR(Debug::LATEX)
 			<< "<Path correction for LaTeX> ["
 			<< p << "]->>["
 			<< cygpath << ']' << endl;

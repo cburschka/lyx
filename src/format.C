@@ -155,7 +155,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 			find_if(formatlist.begin(), formatlist.end(),
 				FormatExtensionsEqual(ext));
 		if (cit != formats.end()) {
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "\twill guess format from file extension: "
 				<< ext << " -> " << cit->name() << std::endl;
 			return cit->name();
@@ -315,7 +315,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
 	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
 	command = subst(command, token_socket_format, quoteName(theLyXServerSocket().address()));
-	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
+	LYXERR(Debug::FILES) << "Executing command: " << command << std::endl;
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
@@ -374,7 +374,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
 	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
 	command = subst(command, token_socket_format, quoteName(theLyXServerSocket().address()));
-	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
+	LYXERR(Debug::FILES) << "Executing command: " << command << std::endl;
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
 

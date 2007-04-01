@@ -150,13 +150,13 @@ bool LyXLex::Pimpl::setFile(FileName const & filename)
 	string const format = getFormatFromContents(filename);
 
 	if (format == "gzip" || format == "zip" || format == "compress") {
-		lyxerr[Debug::LYXLEX] << "lyxlex: compressed" << endl;
+		LYXERR(Debug::LYXLEX) << "lyxlex: compressed" << endl;
 
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
 		if (!gz_.empty() || istream::off_type(is.tellg()) > -1)
-			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
+			LYXERR(Debug::LYXLEX) << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
 		gz_.push(io::gzip_decompressor());
 		gz_.push(io::file_source(filename.toFilesystemEncoding()));
@@ -165,13 +165,13 @@ bool LyXLex::Pimpl::setFile(FileName const & filename)
 		lineno = 0;
 		return gz_.component<io::file_source>(1)->is_open() && is.good();
 	} else {
-		lyxerr[Debug::LYXLEX] << "lyxlex: UNcompressed" << endl;
+		LYXERR(Debug::LYXLEX) << "lyxlex: UNcompressed" << endl;
 
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
 		if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
-			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
+			LYXERR(Debug::LYXLEX) << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
 		fb_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
@@ -185,7 +185,7 @@ bool LyXLex::Pimpl::setFile(FileName const & filename)
 void LyXLex::Pimpl::setStream(istream & i)
 {
 	if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
-		lyxerr[Debug::LYXLEX]  << "Error in LyXLex::setStream: "
+		LYXERR(Debug::LYXLEX)  << "Error in LyXLex::setStream: "
 			"file or stream already set." << endl;
 	is.rdbuf(i.rdbuf());
 	lineno = 0;
@@ -228,7 +228,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				string dummy;
 				getline(is, dummy);
 
-				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
+				LYXERR(Debug::LYXLEX) << "Comment read: `" << c
 						      << dummy << '\'' << endl;
 #else
 				// unfortunately ignore is buggy (Lgb)
@@ -316,7 +316,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				string dummy;
 				getline(is, dummy);
 
-				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
+				LYXERR(Debug::LYXLEX) << "Comment read: `" << c
 						      << dummy << '\'' << endl;
 #else
 				// but ignore is also still buggy (Lgb)
@@ -428,7 +428,7 @@ bool LyXLex::Pimpl::eatLine()
 	while (is && c != '\n') {
 		is.get(cc);
 		c = cc;
-		//lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"
+		//LYXERR(Debug::LYXLEX) << "LyXLex::EatLine read char: `"
 		//		      << c << '\'' << endl;
 		if (c != '\r')
 			buff.push_back(c);

@@ -955,9 +955,9 @@ void paintPar
 			// 12 lines lower):
 			if (lyxerr.debugging(Debug::PAINTING)) {
 				if (text.isMainText(*pi.base.bv->buffer()))
-					lyxerr[Debug::PAINTING] << "#";
+					LYXERR(Debug::PAINTING) << "#";
 				else
-					lyxerr[Debug::PAINTING] << "[" <<
+					LYXERR(Debug::PAINTING) << "[" <<
 						repaintAll << row_has_changed <<
 						cursor_on_row << "]";
 			}
@@ -978,7 +978,7 @@ void paintPar
 	pi.pain.setDrawingEnabled(true);
 
 	if (lyxerr.debugging(Debug::PAINTING)) {
-		lyxerr[Debug::PAINTING] << "." << endl;
+		LYXERR(Debug::PAINTING) << "." << endl;
 	}
 }
 

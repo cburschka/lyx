@@ -48,15 +48,15 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 {
 	macxMenuBarInit();
 
-	lyxerr[Debug::GUI] << "populating menu bar" << lyx::to_utf8(menubackend_.getMenubar().name()) << endl;
+	LYXERR(Debug::GUI) << "populating menu bar" << lyx::to_utf8(menubackend_.getMenubar().name()) << endl;
 
 	if (menubackend_.getMenubar().size() == 0) {
-		lyxerr[Debug::GUI] << "\tERROR: empty menu bar" << lyx::to_utf8(menubackend_.getMenubar().name()) << endl;
+		LYXERR(Debug::GUI) << "\tERROR: empty menu bar" << lyx::to_utf8(menubackend_.getMenubar().name()) << endl;
 		return;
 		//			continue;
 	}
 	else {
-		lyxerr[Debug::GUI] << "menu bar entries " << menubackend_.getMenubar().size();
+		LYXERR(Debug::GUI) << "menu bar entries " << menubackend_.getMenubar().size();
 	}
 	//	for (; m != end; ++m) {
 
@@ -69,15 +69,15 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 	for (; m != end; ++m) {
 
 		if (m->kind() != MenuItem::Submenu) {
-			lyxerr[Debug::GUI] << "\tERROR: not a submenu " << lyx::to_utf8(m->label()) << endl;
+			LYXERR(Debug::GUI) << "\tERROR: not a submenu " << lyx::to_utf8(m->label()) << endl;
 			continue;
 		}
 
-		lyxerr[Debug::GUI] << "menu bar item " << lyx::to_utf8(m->label()) << " is a submenu named " << lyx::to_utf8(m->submenuname()) << endl;
+		LYXERR(Debug::GUI) << "menu bar item " << lyx::to_utf8(m->label()) << " is a submenu named " << lyx::to_utf8(m->submenuname()) << endl;
 
 		docstring name = m->submenuname();
 		if (!menubackend_.hasMenu(name)) {
-			lyxerr[Debug::GUI] << "\tERROR: " << lyx::to_utf8(name) << " submenu has no menu!" << endl;
+			LYXERR(Debug::GUI) << "\tERROR: " << lyx::to_utf8(name) << " submenu has no menu!" << endl;
 			continue;
 		}
 
@@ -89,7 +89,7 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 
 		pair<NameMap::iterator, bool> I = name_map_.insert(make_pair(name, qMenu));
 		if (!I.second) {
-			lyxerr[Debug::GUI] << "\tERROR: " << lyx::to_utf8(name) << " submenu is already there!" << endl;
+			LYXERR(Debug::GUI) << "\tERROR: " << lyx::to_utf8(name) << " submenu is already there!" << endl;
 		}
 /*
 		QObject::connect(qMenu, SIGNAL(aboutToShow()), this, SLOT(update()));

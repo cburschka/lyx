@@ -310,7 +310,7 @@ void newFile(BufferView * bv, string const & filename)
 	// Split argument by :
 	string name;
 	string tmpname = split(filename, name, ':');
-	lyxerr[Debug::INFO] << "Arg is " << filename
+	LYXERR(Debug::INFO) << "Arg is " << filename
 			    << "\nName is " << name
 			    << "\nTemplate is " << tmpname << endl;
 

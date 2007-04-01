@@ -331,7 +331,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		if (!info.preamble.empty())
 			info.feature = info.preamble[0] != '\\';
 
-		lyxerr[Debug::INFO]
+		LYXERR(Debug::INFO)
 			<< "Read unicode symbol " << symbol << " '"
 			<< to_utf8(info.command) << "' '" << info.preamble
 			<< "' " << info.combining << ' ' << info.feature
@@ -363,7 +363,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			string const latexname = lex.getString();
 			lex.next();
 			string const iconvname = lex.getString();
-			lyxerr[Debug::INFO] << "Reading encoding " << name << endl;
+			LYXERR(Debug::INFO) << "Reading encoding " << name << endl;
 			encodinglist[name] = Encoding(name, latexname, iconvname);
 			if (lex.lex() != et_end)
 				lex.printError("Encodings::read: "

@@ -61,7 +61,7 @@ TocWidget::TocWidget(QToc * form, QWidget * parent)
 void TocWidget::selectionChanged(const QModelIndex & current,
 				  const QModelIndex & /*previous*/)
 {
-	lyxerr[Debug::GUI]
+	LYXERR(Debug::GUI)
 		<< "selectionChanged index " << current.row()
 		<< ", " << current.column()
 		<< endl;
@@ -181,7 +181,7 @@ void TocWidget::on_moveOutPB_clicked()
 void TocWidget::select(QModelIndex const & index)
 {
 	if (!index.isValid()) {
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 			<< "TocWidget::select(): QModelIndex is invalid!" << endl;
 		return;
 	}
@@ -210,7 +210,7 @@ void TocWidget::enableButtons(bool enable)
 
 void TocWidget::update()
 {
-	lyxerr[Debug::GUI] << "In TocWidget::update()" << endl;
+	LYXERR(Debug::GUI) << "In TocWidget::update()" << endl;
 	select(form_->getCurrentIndex(typeCO->currentIndex()));
 	QWidget::update();
 }
@@ -257,12 +257,12 @@ void TocWidget::setTocModel(size_t type)
 	depthSL->setMaximum(form_->getTocDepth(type));
 	depthSL->setValue(depth_);
 
-	lyxerr[Debug::GUI] << "In TocWidget::updateGui()" << endl;
+	LYXERR(Debug::GUI) << "In TocWidget::updateGui()" << endl;
 
 	select(form_->getCurrentIndex(typeCO->currentIndex()));
 
 	if (toc_model) {
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 		<< "form_->tocModel()->rowCount " 
 			<< toc_model->rowCount()
 			<< "\nform_->tocModel()->columnCount "

@@ -411,7 +411,7 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	font_scaling_factor_ = 0.01 * lyxrc.dpi * lyxrc.zoom *
 		convert<double>(lyxrc.preview_scale_factor);
 
-	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
+	LYXERR(Debug::GRAPHICS) << "The font scaling factor is "
 				<< font_scaling_factor_ << endl;
 
 	if (!pconverter_)
@@ -491,7 +491,7 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 	if (snippet.empty())
 		return;
 
-	lyxerr[Debug::GRAPHICS] << "adding snippet:\n" << snippet << endl;
+	LYXERR(Debug::GRAPHICS) << "adding snippet:\n" << snippet << endl;
 
 	pending_.push_back(snippet);
 }
@@ -553,7 +553,7 @@ void PreviewLoader::Impl::startLoading()
 	if (!buffer_.fully_loaded())
 		return;
 
-	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
+	LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()" << endl;
 
 	// As used by the LaTeX file and by the resulting image files
 	string const directory = buffer_.temppath();
@@ -575,7 +575,7 @@ void PreviewLoader::Impl::startLoading()
 	// command is missing.
 	odocfstream of(latexfile.toFilesystemEncoding().c_str());
 	if (!of) {
-		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
+		LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()\n"
 					<< "Unable to create LaTeX file\n"
 					<< latexfile << endl;
 		return;
@@ -606,7 +606,7 @@ void PreviewLoader::Impl::startLoading()
 	int ret = call.startscript(command, convert_ptr);
 
 	if (ret != 0) {
-		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
+		LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()\n"
 					<< "Unable to start process\n"
 					<< command << endl;
 		return;
@@ -631,7 +631,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 
 	string const command = git->second.command;
 	string const status = retval > 0 ? "failed" : "succeeded";
-	lyxerr[Debug::GRAPHICS] << "PreviewLoader::finishedInProgress("
+	LYXERR(Debug::GRAPHICS) << "PreviewLoader::finishedInProgress("
 				<< retval << "): processing " << status
 				<< " for " << command << endl;
 	if (retval > 0)

@@ -786,11 +786,11 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	FontList::const_iterator fend = fontlist.end();
 	for (; fcit != fend; ++fcit) {
 		if (fcit->font().noun() == LyXFont::ON) {
-			lyxerr[Debug::LATEX] << "font.noun: "
+			LYXERR(Debug::LATEX) << "font.noun: "
 					     << fcit->font().noun()
 					     << endl;
 			features.require("noun");
-			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
+			LYXERR(Debug::LATEX) << "Noun enabled. Font: "
 					     << to_utf8(fcit->font().stateText(0))
 					     << endl;
 		}
@@ -805,7 +805,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 			break;
 		default:
 			features.require("color");
-			lyxerr[Debug::LATEX] << "Color enabled. Font: "
+			LYXERR(Debug::LATEX) << "Color enabled. Font: "
 					     << to_utf8(fcit->font().stateText(0))
 					     << endl;
 		}
@@ -816,7 +816,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		    language != latex_language)
 		{
 			features.useLanguage(language);
-			lyxerr[Debug::LATEX] << "Found language "
+			LYXERR(Debug::LATEX) << "Found language "
 					     << language->babel() << endl;
 		}
 	}

@@ -145,7 +145,7 @@ Buffer * BufferView::buffer() const
 
 void BufferView::setBuffer(Buffer * b)
 {
-	lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
 			    << "[ b = " << b << "]" << endl;
 
 	if (buffer_) {
@@ -181,7 +181,7 @@ void BufferView::setBuffer(Buffer * b)
 	// If we are closing current buffer, switch to the first in
 	// buffer list.
 	if (!b) {
-		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
 				    << " No Buffer!" << endl;
 		// We are closing the buffer, use the first buffer as current
 		buffer_ = theBufferList().first();
@@ -196,7 +196,7 @@ void BufferView::setBuffer(Buffer * b)
 	offset_ref_ = 0;
 
 	if (buffer_) {
-		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
 				    << "Buffer addr: " << buffer_ << endl;
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
@@ -297,7 +297,7 @@ void BufferView::resize()
 	if (!buffer_)
 		return;
 
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
+	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION << endl;
 
 	updateMetrics(false);
 	switchKeyMap();
@@ -339,7 +339,7 @@ bool BufferView::update(Update::flags flags)
 	last_inset_ = 0;
 	// This is close to a hot-path.
 	if (lyxerr.debugging(Debug::DEBUG)) {
-		lyxerr[Debug::DEBUG]
+		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
 			<< "[fitcursor = " << (flags & Update::FitCursor)
 			<< ", forceupdate = " << (flags & Update::Force)
@@ -352,7 +352,7 @@ bool BufferView::update(Update::flags flags)
 		return false;
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
-		lyxerr[Debug::WORKAREA] << "BufferView::update" << std::endl;
+		LYXERR(Debug::WORKAREA) << "BufferView::update" << std::endl;
 	}
 
 	// Update macro store
@@ -409,7 +409,7 @@ bool BufferView::update(Update::flags flags)
 void BufferView::updateScrollbar()
 {
 	if (!buffer_) {
-		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
 				     << " no text in updateScrollbar" << endl;
 		scrollbarParameters_.reset();
 		return;
@@ -425,7 +425,7 @@ void BufferView::updateScrollbar()
 	}
 
 	if (lyxerr.debugging(Debug::GUI)) {
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 			<< BOOST_CURRENT_FUNCTION
 			<< " Updating scrollbar: height: " << t.paragraphs().size()
 			<< " curr par: " << cursor_.bottom().pit()
@@ -479,7 +479,7 @@ ScrollbarParameters const & BufferView::scrollbarParameters() const
 
 void BufferView::scrollDocView(int value)
 {
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
 			   << "[ value = " << value << "]" << endl;
 
 	if (!buffer_)
@@ -716,7 +716,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	//       << [ cmd = " << cmd << "]" << endl;
 
 	// Make sure that the cached BufferView is correct.
-	lyxerr[Debug::ACTION] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION
 		<< " action[" << cmd.action << ']'
 		<< " arg[" << to_utf8(cmd.argument()) << ']'
 		<< " x[" << cmd.x << ']'
@@ -801,11 +801,11 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		for (Buffer * b = buffer_; i == 0 || b != buffer_; b = theBufferList().next(b)) {
 			ParIterator par = b->getParFromID(id);
 			if (par == b->par_iterator_end()) {
-				lyxerr[Debug::INFO]
+				LYXERR(Debug::INFO)
 					<< "No matching paragraph found! ["
 					<< id << "]." << endl;
 			} else {
-				lyxerr[Debug::INFO]
+				LYXERR(Debug::INFO)
 					<< "Paragraph " << par->id()
 					<< " found in buffer `"
 					<< b->fileName() << "'." << endl;
@@ -1084,7 +1084,7 @@ InsetBase const * BufferView::getCoveringInset(LyXText const & text, int x, int 
 	BOOST_ASSERT(pit != -1);
 	Paragraph const & par = text.getPar(pit);
 
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": x: " << x
 		<< " y: " << y
@@ -1113,13 +1113,13 @@ InsetBase const * BufferView::getCoveringInset(LyXText const & text, int x, int 
 				}
 			}
 
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": Hit inset: " << inset << endl;
 			return inset;
 		}
 	}
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": No inset hit. " << endl;
 	return 0;
@@ -1519,7 +1519,7 @@ void BufferView::updateMetrics(bool singlepar)
 		pit2 = cursor_.bottom().pit();
 	}
 
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< " y1: " << y1
 		<< " y2: " << y2
@@ -1534,7 +1534,7 @@ void BufferView::updateMetrics(bool singlepar)
 		singlepar? SingleParUpdate: FullScreenUpdate, size);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
-		lyxerr[Debug::WORKAREA] << "BufferView::updateMetrics" << endl;
+		LYXERR(Debug::WORKAREA) << "BufferView::updateMetrics" << endl;
 		coord_cache_.dump();
 	}
 }

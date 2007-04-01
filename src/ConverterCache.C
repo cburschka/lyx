@@ -66,7 +66,7 @@ public:
 		os << std::setw(10) << std::setfill('0') << do_crc(orig_from.absFilename())
 		   << '-' << to_format;
 		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
-		lyxerr[Debug::FILES] << "Add file cache item " << orig_from
+		LYXERR(Debug::FILES) << "Add file cache item " << orig_from
 		                     << ' ' << to_format << ' ' << cache_name
 		                     << ' ' << timestamp << ' ' << checksum
 		                     << '.' << std::endl;
@@ -116,7 +116,7 @@ void ConverterCache::Impl::readIndex()
 
 		// Don't cache files that do not exist anymore
 		if (!fs::exists(orig_from_name.toFilesystemEncoding())) {
-			lyxerr[Debug::FILES] << "Not caching file `"
+			LYXERR(Debug::FILES) << "Not caching file `"
 				<< orig_from << "' (does not exist anymore)."
 				<< std::endl;
 			support::unlink(item.cache_name);
@@ -126,7 +126,7 @@ void ConverterCache::Impl::readIndex()
 		// Delete the cached file if it is too old
 		if (difftime(now, fs::last_write_time(item.cache_name.toFilesystemEncoding())) >
 		    lyxrc.converter_cache_maxage) {
-			lyxerr[Debug::FILES] << "Not caching file `"
+			LYXERR(Debug::FILES) << "Not caching file `"
 				<< orig_from << "' (too old)." << std::endl;
 			support::unlink(item.cache_name);
 			continue;
@@ -219,7 +219,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	if (!lyxrc.use_converter_cache || orig_from.empty() ||
 	    converted_file.empty())
 		return;
-	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
+	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << ' ' << converted_file
 	                     << std::endl;
 
@@ -229,12 +229,12 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	time_t const timestamp = fs::last_write_time(orig_from.toFilesystemEncoding());
 	Mover const & mover = getMover(to_format);
 	if (item) {
-		lyxerr[Debug::FILES] << "ConverterCache::add(" << orig_from << "):\n"
+		LYXERR(Debug::FILES) << "ConverterCache::add(" << orig_from << "):\n"
 		                        "The file is already in the cache."
 		                     << std::endl;
 		// First test for timestamp
 		if (timestamp == item->timestamp) {
-			lyxerr[Debug::FILES] << "Same timestamp."
+			LYXERR(Debug::FILES) << "Same timestamp."
 			                     << std::endl;
 			return;
 		} else {
@@ -242,14 +242,14 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			item->timestamp = timestamp;
 			unsigned long const checksum = support::sum(orig_from);
 			if (checksum == item->checksum) {
-				lyxerr[Debug::FILES] << "Same checksum."
+				LYXERR(Debug::FILES) << "Same checksum."
 				                     << std::endl;
 				return;
 			}
 			item->checksum = checksum;
 		}
 		if (!mover.copy(converted_file, item->cache_name, 0600))
-			lyxerr[Debug::FILES] << "ConverterCache::add("
+			LYXERR(Debug::FILES) << "ConverterCache::add("
 			                     << orig_from << "):\n"
 		        	                "Could not copy file."
 		        	             << std::endl;
@@ -259,7 +259,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		if (mover.copy(converted_file, new_item.cache_name, 0600))
 			pimpl_->cache[orig_from][to_format] = new_item;
 		else
-			lyxerr[Debug::FILES] << "ConverterCache::add("
+			LYXERR(Debug::FILES) << "ConverterCache::add("
 			                     << orig_from << "):\n"
 		        	                "Could not copy file."
 		                	     << std::endl;
@@ -272,7 +272,7 @@ void ConverterCache::remove(FileName const & orig_from,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return;
-	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
+	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
 
 	CacheType::iterator const it1 = pimpl_->cache.find(orig_from);
@@ -293,25 +293,25 @@ bool ConverterCache::inCache(FileName const & orig_from,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return false;
-	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
+	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	if (!item) {
-		lyxerr[Debug::FILES] << "not in cache." << std::endl;
+		LYXERR(Debug::FILES) << "not in cache." << std::endl;
 		return false;
 	}
 	time_t const timestamp = fs::last_write_time(orig_from.toFilesystemEncoding());
 	if (item->timestamp == timestamp) {
-		lyxerr[Debug::FILES] << "identical timestamp." << std::endl;
+		LYXERR(Debug::FILES) << "identical timestamp." << std::endl;
 		return true;
 	}
 	if (item->checksum == support::sum(orig_from)) {
 		item->timestamp = timestamp;
-		lyxerr[Debug::FILES] << "identical checksum." << std::endl;
+		LYXERR(Debug::FILES) << "identical checksum." << std::endl;
 		return true;
 	}
-	lyxerr[Debug::FILES] << "in cache, but too old." << std::endl;
+	LYXERR(Debug::FILES) << "in cache, but too old." << std::endl;
 	return false;
 }
 
@@ -319,7 +319,7 @@ bool ConverterCache::inCache(FileName const & orig_from,
 FileName const & ConverterCache::cacheName(FileName const & orig_from,
 		string const & to_format) const
 {
-	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
+	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
@@ -333,7 +333,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty() || dest.empty())
 		return false;
-	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
+	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << ' ' << dest << std::endl;
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);

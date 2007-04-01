@@ -62,11 +62,11 @@ QStandardItemModel * QToc::tocModel(int type)
 		return 0;
 
 	if (toc_models_.empty()) {
-		lyxerr[Debug::GUI] << "QToc::tocModel(): no types available " << endl;
+		LYXERR(Debug::GUI) << "QToc::tocModel(): no types available " << endl;
 		return 0;
 	}
 
-	lyxerr[Debug::GUI]
+	LYXERR(Debug::GUI)
 		<< "QToc: type_ " << type
 		<< "  toc_models_.size() " << toc_models_.size()
 		<< endl;
@@ -89,7 +89,7 @@ void QToc::goTo(int type, QModelIndex const & index)
 {
 	if (type < 0 || !index.isValid() 
 		|| index.model() != toc_models_[type]) {
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 			<< "QToc::goTo(): QModelIndex is invalid!"
 			<< endl;
 		return;
@@ -99,7 +99,7 @@ void QToc::goTo(int type, QModelIndex const & index)
 
 	TocIterator const it = toc_models_[type]->tocIterator(index);
 	
-	lyxerr[Debug::GUI]
+	LYXERR(Debug::GUI)
 		<< "QToc::goTo " << lyx::to_utf8(it->str())
 		<< endl;
 

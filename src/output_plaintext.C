@@ -222,7 +222,7 @@ void writePlaintextParagraph(Buffer const & buf,
 			break;
 
 		case '\0':
-			lyxerr[Debug::INFO] <<
+			LYXERR(Debug::INFO) <<
 				"writePlaintextFile: NULL char in structure." << endl;
 			break;
 

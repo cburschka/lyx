@@ -310,7 +310,7 @@ int LyXRC::read(FileName const & filename)
 	lexrc.setFile(filename);
 	if (!lexrc.isOK()) return -2;
 
-	lyxerr[Debug::LYXRC] << "Reading '" << filename << "'..." << endl;
+	LYXERR(Debug::LYXRC) << "Reading '" << filename << "'..." << endl;
 
 	return read(lexrc);
 }
@@ -325,7 +325,7 @@ int LyXRC::read(std::istream & is)
 	lexrc.setStream(is);
 	if (!lexrc.isOK()) return -2;
 
-	lyxerr[Debug::LYXRC] << "Reading istream..." << endl;
+	LYXERR(Debug::LYXRC) << "Reading istream..." << endl;
 
 	return read(lexrc);
 }

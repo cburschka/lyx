@@ -300,7 +300,7 @@ bool LyXText::isRTL(Buffer const & buffer, Paragraph const & par) const
 
 void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
+	LYXERR(Debug::ACTION) << "LyXText::dispatch: cmd: " << cmd << endl;
 
 	// FIXME: We use the update flag to indicates wether a singlePar or a
 	// full screen update is needed. We reset it here but shall we restore it
@@ -872,7 +872,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_LAYOUT: {
 		string layout = to_ascii(cmd.argument());
-		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) " << layout << endl;
+		LYXERR(Debug::INFO) << "LFUN_LAYOUT: (arg) " << layout << endl;
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
@@ -1428,21 +1428,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FINISHED_LEFT:
-		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
+		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
 		break;
 
 	case LFUN_FINISHED_RIGHT:
-		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
+		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
 		++cur.pos();
 		break;
 
 	case LFUN_FINISHED_UP:
-		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_UP:\n" << cur << endl;
+		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_UP:\n" << cur << endl;
 		cursorUp(cur);
 		break;
 
 	case LFUN_FINISHED_DOWN:
-		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_DOWN:\n" << cur << endl;
+		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_DOWN:\n" << cur << endl;
 		cursorDown(cur);
 		break;
 
@@ -1568,7 +1568,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		lyxerr[Debug::ACTION]
+		LYXERR(Debug::ACTION)
 			<< BOOST_CURRENT_FUNCTION
 			<< ": Command " << cmd
 			<< " not DISPATCHED by LyXText" << endl;

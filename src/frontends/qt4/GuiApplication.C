@@ -113,11 +113,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		qApp->installTranslator(&qt_trans_);
 		// even if the language calls for RtL, don't do that
 		qApp->setLayoutDirection(Qt::LeftToRight);
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 			<< "Successfully installed Qt translations for locale "
 			<< fromqstr(language_name) << std::endl;
 	} else
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 			<< "Could not find  Qt translations for locale "
 			<< fromqstr(language_name) << std::endl;
 
@@ -278,7 +278,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	case SelectionRequest: {
 		if (xev->xselectionrequest.selection != XA_PRIMARY)
 			break;
-		lyxerr[Debug::GUI] << "X requested selection." << endl;
+		LYXERR(Debug::GUI) << "X requested selection." << endl;
 		BufferView * bv = currentView()->view();
 		if (bv) {
 			docstring const sel = bv->requestSelection();
@@ -290,7 +290,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	case SelectionClear: {
 		if (xev->xselectionclear.selection != XA_PRIMARY)
 			break;
-		lyxerr[Debug::GUI] << "Lost selection." << endl;
+		LYXERR(Debug::GUI) << "Lost selection." << endl;
 		BufferView * bv = currentView()->view();
 		if (bv)
 			bv->clearSelection();

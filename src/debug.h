@@ -118,14 +118,14 @@ void operator|=(lyx_debug_trait::type & d1, lyx_debug_trait::type d2)
 }
 
 
-// std::ostream & operator<<(std::ostream & o, Debug::type t);
-
 typedef basic_debugstream<lyx_debug_trait> LyXErr;
 typedef LyXErr::debug Debug;
 
 extern LyXErr lyxerr;
 
-
 } // namespace lyx
+
+#define LYXERR(type) if (!lyx::lyxerr.debugging(type)) ; else lyx::lyxerr
+
 
 #endif

@@ -108,7 +108,7 @@ void LyXComm::send(string const & msg)
 
 void LyXComm::openConnection()
 {
-	lyxerr[Debug::LYXSERVER] << "LyXComm: Opening connection" << endl;
+	LYXERR(Debug::LYXSERVER) << "LyXComm: Opening connection" << endl;
 
 	// If we are up, that's an error
 	if (ready) {
@@ -119,7 +119,7 @@ void LyXComm::openConnection()
 	ready = false;
 
 	if (pipename.empty()) {
-		lyxerr[Debug::LYXSERVER]
+		LYXERR(Debug::LYXSERVER)
 			<< "LyXComm: server is disabled, nothing to do"
 			<< endl;
 		return;
@@ -141,17 +141,17 @@ void LyXComm::openConnection()
 
 	// We made it!
 	ready = true;
-	lyxerr[Debug::LYXSERVER] << "LyXComm: Connection established" << endl;
+	LYXERR(Debug::LYXSERVER) << "LyXComm: Connection established" << endl;
 }
 
 
 /// Close pipes
 void LyXComm::closeConnection()
 {
-	lyxerr[Debug::LYXSERVER] << "LyXComm: Closing connection" << endl;
+	LYXERR(Debug::LYXSERVER) << "LyXComm: Closing connection" << endl;
 
 	if (pipename.empty()) {
-		lyxerr[Debug::LYXSERVER]
+		LYXERR(Debug::LYXSERVER)
 			<< "LyXComm: server is disabled, nothing to do"
 			<< endl;
 		return;
@@ -260,7 +260,7 @@ void LyXComm::read_ready()
 				// the delim /wasn't/ found. ?:-P
 				string cmd;
 				read_buffer_= split(read_buffer_, cmd,'\n');
-				lyxerr[Debug::LYXSERVER]
+				LYXERR(Debug::LYXSERVER)
 					<< "LyXComm: status:" << status
 					<< ", read_buffer_:" << read_buffer_
 					<< ", cmd:" << cmd << endl;
@@ -356,7 +356,7 @@ LyXServer::~LyXServer()
 
 void LyXServer::callback(LyXServer * serv, string const & msg)
 {
-	lyxerr[Debug::LYXSERVER] << "LyXServer: Received: '"
+	LYXERR(Debug::LYXSERVER) << "LyXServer: Received: '"
 				 << msg << '\'' << endl;
 
 	char const * p = msg.c_str();
@@ -398,7 +398,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			if (*p) ++p;
 		}
 
-		lyxerr[Debug::LYXSERVER]
+		LYXERR(Debug::LYXSERVER)
 			<< "LyXServer: Client: '" << client
 			<< "' Command: '" << cmd
 			<< "' Argument: '" << arg << '\'' << endl;
@@ -412,7 +412,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			if (cmd == "hello") {
 				// One more client
 				if (serv->numclients == MAX_CLIENTS) { //paranoid check
-					lyxerr[Debug::LYXSERVER]
+					LYXERR(Debug::LYXSERVER)
 						<< "LyXServer: too many clients..."
 						<< endl;
 					return;
@@ -424,7 +424,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				serv->clients[i] = client;
 				serv->numclients++;
 				buf = "LYXSRV:" + client + ":hello\n";
-				lyxerr[Debug::LYXSERVER]
+				LYXERR(Debug::LYXSERVER)
 					<< "LyXServer: Greeting "
 					<< client << endl;
 				serv->pipes.send(buf);
@@ -438,12 +438,12 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				if (i < serv->numclients) {
 					serv->numclients--;
 					serv->clients[i].erase();
-					lyxerr[Debug::LYXSERVER]
+					LYXERR(Debug::LYXSERVER)
 						<< "LyXServer: Client "
 						<< client << " said goodbye"
 						<< endl;
 				} else {
-					lyxerr[Debug::LYXSERVER]
+					LYXERR(Debug::LYXSERVER)
 						<< "LyXServer: ignoring bye messge from unregistered client"
 						<< client << endl;
 				}

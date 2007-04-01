@@ -316,7 +316,7 @@ vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
 	bibfiles = split(bibfiles, tmp, ',');
 	while (!tmp.empty()) {
 		FileName const file = findtexfile(changeExtension(tmp, "bib"), "bib");
-		lyxerr[Debug::LATEX] << "Bibfile: " << file << endl;
+		LYXERR(Debug::LATEX) << "Bibfile: " << file << endl;
 
 		// If we didn't find a matching file name just fail silently
 		if (!file.empty())

@@ -94,7 +94,7 @@ InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 
 	Paragraph const & par = pars_[pit];
 
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": x: " << x
 		<< " y: " << y
@@ -105,12 +105,12 @@ InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 	for (; iit != iend; ++iit) {
 		InsetBase * inset = iit->inset;
 #if 1
-		lyxerr[Debug::DEBUG]
+		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
 			<< ": examining inset " << inset << endl;
 
 		if (bv.coordCache().getInsets().has(inset))
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": xo: " << inset->xo(bv) << "..."
 				<< inset->xo(bv) + inset->width()
@@ -119,18 +119,18 @@ InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 				<< inset->yo(bv) + inset->descent()
 				<< endl;
 		else
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": inset has no cached position" << endl;
 #endif
 		if (inset->covers(bv, x, y)) {
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": Hit inset: " << inset << endl;
 			return inset;
 		}
 	}
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": No inset hit. " << endl;
 	return 0;
@@ -354,7 +354,7 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 	LyXLayout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
-		lyxerr[Debug::DEBUG] << "setting layout " << layout << endl;
+		LYXERR(Debug::DEBUG) << "setting layout " << layout << endl;
 		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
 		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
 		lyx::dispatch(FuncRequest(LFUN_CUT));
@@ -756,7 +756,7 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y) const
 	BOOST_ASSERT(!paragraphs().empty());
 	BOOST_ASSERT(bv.coordCache().getParPos().find(this) != bv.coordCache().getParPos().end());
 	CoordCache::InnerParPosCache const & cc = bv.coordCache().getParPos().find(this)->second;
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": y: " << y << " cache size: " << cc.size()
 		<< endl;
@@ -806,7 +806,7 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y) const
 	}
 
 	for (; it != et; ++it) {
-		lyxerr[Debug::DEBUG]
+		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
 			<< "  examining: pit: " << it->first
 			<< " y: " << it->second.y_
@@ -820,7 +820,7 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y) const
 		}
 	}
 
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": found best y: " << yy << " for pit: " << pit
 		<< endl;
@@ -1143,7 +1143,7 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
 		LCursor & old, bool & need_anchor_change)
 {
-	//lyxerr[Debug::DEBUG] << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
+	//LYXERR(Debug::DEBUG) << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
 
 	Paragraph & oldpar = old.paragraph();
 

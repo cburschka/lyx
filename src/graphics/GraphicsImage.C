@@ -42,7 +42,7 @@ Image::getScaledDimensions(Params const & params) const
 		height = getHeight();
 	}
 
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "graphics::Image::getScaledDimensions()"
 		<< "\n\tparams.scale       : " << params.scale
 		<< "\n\twidth              : " << width

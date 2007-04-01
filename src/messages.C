@@ -66,7 +66,7 @@ Messages::Messages(string const & l)
 	// strip off any encoding suffix, i.e., assume 8-bit po files
 	string::size_type i = lang_.find(".");
 	lang_ = lang_.substr(0, i);
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
 		<< ": language(" << lang_ << ")" << endl;
 }
 
@@ -115,7 +115,7 @@ docstring const Messages::get(string const & m) const
 	char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
 	int e = errno;
 	if (e) {
-		lyxerr[Debug::DEBUG]
+		LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION << '\n'
 			<< "Error code: " << errno << '\n'
 			<< "Lang, mess: " << lang_ << " " << m << '\n'
@@ -124,7 +124,7 @@ docstring const Messages::get(string const & m) const
 	}
 
 	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-		lyxerr[Debug::DEBUG]
+		LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION << '\n'
 			<< "Error code: " << errno << '\n'
 			<< "Codeset   : " << ucs4_codeset << '\n'
@@ -156,7 +156,7 @@ docstring const Messages::get(string const & m) const
 		else
 			translated = from_ascii(tmp);
 	} else {
-		lyxerr[Debug::DEBUG] << "We got a translation" << endl;
+		LYXERR(Debug::DEBUG) << "We got a translation" << endl;
 		char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
 		translated = ucs4;
 	}

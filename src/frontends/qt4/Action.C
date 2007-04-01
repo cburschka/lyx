@@ -88,7 +88,7 @@ void Action::update()
 
 void Action::action()
 {
-//	lyxerr[Debug::ACTION] << "calling LyXFunc::dispatch: func_: " << func_ << endl;
+//	LYXERR(Debug::ACTION) << "calling LyXFunc::dispatch: func_: " << func_ << endl;
 
 	lyxView_.dispatch(func_);
 }

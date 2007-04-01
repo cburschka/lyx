@@ -62,7 +62,7 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 
 	QString const name(toqstr(n));
 
-	lyxerr[Debug::GUI] << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
+	LYXERR(Debug::GUI) << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
 
 	int depth = 1;
 

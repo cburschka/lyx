@@ -319,7 +319,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			break;
 		}
 
-		lyxerr[Debug::PARSER] << "Handling paragraph token: `"
+		LYXERR(Debug::PARSER) << "Handling paragraph token: `"
 				      << token << '\'' << endl;
 		if (token == "\\begin_layout" || token == "\\end_document"
 		    || token == "\\end_inset" || token == "\\begin_deeper"
@@ -1367,7 +1367,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		return;
 
 	if (lyxerr.debugging(Debug::DEBUG)) {
-		lyxerr[Debug::DEBUG]
+		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
 			<< "draw selection at " << x
 			<< endl;
@@ -1447,7 +1447,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	}
 
 	if (lyxerr.debugging(Debug::DEBUG)) {
-		lyxerr[Debug::DEBUG] << " y1: " << y1 << " y2: " << y2
+		LYXERR(Debug::DEBUG) << " y1: " << y1 << " y2: " << y2
 			   << "X1:" << X1 << " x2: " << X2 << " wid: " << tm.width()
 			<< endl;
 	}
@@ -1847,7 +1847,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	ParagraphMetrics const & pm = tm.parMetrics(pit);
 
 	int yy = cur.bv().coordCache().get(this, pit).y_ - pm.ascent();
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": x: " << x
 		<< " y: " << y
@@ -1865,7 +1865,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 
 	Row const & row = pm.rows()[r];
 
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": row " << r
 		<< " from pos: " << row.pos()
@@ -1876,7 +1876,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	pos_type const pos = row.pos() 
 		+ tm.getColumnNearX(pit, row, xx, bound);
 
-	lyxerr[Debug::DEBUG]
+	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": setting cursor pit: " << pit
 		<< " pos: " << pos

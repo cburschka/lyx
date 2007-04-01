@@ -260,7 +260,7 @@ void updateExternal(InsetExternalParams const & params,
 		if (from_checksum != temp_checksum) {
 			Mover const & mover = getMover(from_format);
 			if (!mover.copy(params.filename, temp_file)) {
-				lyxerr[Debug::EXTERNAL]
+				LYXERR(Debug::EXTERNAL)
 					<< "external::updateExternal. "
 					<< "Unable to copy "
 					<< params.filename << " to " << temp_file << endl;
@@ -321,7 +321,7 @@ void updateExternal(InsetExternalParams const & params,
 		                   Converters::try_default | Converters::try_cache);
 
 	if (!success)
-		lyxerr[Debug::EXTERNAL]
+		LYXERR(Debug::EXTERNAL)
 			<< "external::updateExternal. "
 			<< "Unable to convert from "
 			<< from_format << " to " << to_format << endl;
@@ -353,7 +353,7 @@ int writeExternal(InsetExternalParams const & params,
 
 	Template::Formats::const_iterator cit = et.formats.find(format);
 	if (cit == et.formats.end()) {
-		lyxerr[Debug::EXTERNAL]
+		LYXERR(Debug::EXTERNAL)
 			<< "External template format '" << format
 			<< "' not specified in template "
 			<< params.templatename() << endl;

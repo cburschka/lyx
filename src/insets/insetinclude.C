@@ -396,9 +396,9 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 	if (!runparams.nice)
 		incfile = mangled;
-	lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
-	lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
-	lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
+	LYXERR(Debug::LATEX) << "incfile:" << incfile << endl;
+	LYXERR(Debug::LATEX) << "exportfile:" << exportfile << endl;
+	LYXERR(Debug::LATEX) << "writefile:" << writefile << endl;
 
 	if (runparams.inComment || runparams.dryrun)
 		// Don't try to load or copy the file
@@ -444,7 +444,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		if (checksum_in != checksum_out) {
 			if (!copy(included_file, writefile)) {
 				// FIXME UNICODE
-				lyxerr[Debug::LATEX]
+				LYXERR(Debug::LATEX)
 					<< to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 								  "into the temporary directory."),
 						   from_utf8(included_file.absFilename())))
@@ -538,9 +538,9 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 		if (!runparams.nice)
 			incfile = mangled;
 
-		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
-		lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
-		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
+		LYXERR(Debug::LATEX) << "incfile:" << incfile << endl;
+		LYXERR(Debug::LATEX) << "exportfile:" << exportfile << endl;
+		LYXERR(Debug::LATEX) << "writefile:" << writefile << endl;
 
 		tmp->makeDocBookFile(writefile, runparams, true);
 	}

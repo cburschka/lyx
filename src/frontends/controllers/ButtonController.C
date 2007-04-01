@@ -103,7 +103,7 @@ void ButtonController::valid(bool v) const
 
 bool ButtonController::readOnly(bool ro) const
 {
-	lyxerr[Debug::GUI] << "Setting controller ro: " << ro << std::endl;
+	LYXERR(Debug::GUI) << "Setting controller ro: " << ro << std::endl;
 
 	if (ro) {
 		bp().input(ButtonPolicy::SMI_READ_ONLY);

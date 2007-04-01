@@ -75,7 +75,7 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 					  FileFilterList const & filters,
 					  docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "Select with path \"" << to_utf8(path)
+	LYXERR(Debug::GUI) << "Select with path \"" << to_utf8(path)
 			   << "\", mask \"" << to_utf8(filters.as_string())
 			   << "\", suggested \"" << to_utf8(suggested) << '"' << endl;
 	FileDialog::Result result;
@@ -98,9 +98,9 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 	if (!suggested.empty())
 		dlg.selectFile(toqstr(suggested));
 
-	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
+	LYXERR(Debug::GUI) << "Synchronous FileDialog: " << endl;
 	int res = dlg.exec();
-	lyxerr[Debug::GUI] << "result " << res << endl;
+	LYXERR(Debug::GUI) << "result " << res << endl;
 	if (res == QDialog::Accepted)
 		result.second = from_utf8(internal_path(
 					fromqstr(dlg.selectedFiles()[0])));
@@ -114,7 +114,7 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 					  FileFilterList const & filters,
 					  docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "Select with path \"" << to_utf8(path)
+	LYXERR(Debug::GUI) << "Select with path \"" << to_utf8(path)
 			   << "\", mask \"" << to_utf8(filters.as_string())
 			   << "\", suggested \"" << to_utf8(suggested) << '"' << endl;
 	FileDialog::Result result;
@@ -132,9 +132,9 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 	if (!suggested.empty())
 		dlg.selectFile(toqstr(suggested));
 
-	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
+	LYXERR(Debug::GUI) << "Synchronous FileDialog: " << endl;
 	int res = dlg.exec();
-	lyxerr[Debug::GUI] << "result " << res << endl;
+	LYXERR(Debug::GUI) << "result " << res << endl;
 	if (res == QDialog::Accepted)
 		result.second = from_utf8(internal_path(
 					fromqstr(dlg.selectedFiles()[0])));
@@ -147,7 +147,7 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 FileDialog::Result const FileDialog::opendir(docstring const & path,
 					    docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "Select with path \"" << to_utf8(path)
+	LYXERR(Debug::GUI) << "Select with path \"" << to_utf8(path)
 			   << "\", suggested \"" << to_utf8(suggested) << '"' << endl;
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
@@ -168,9 +168,9 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 	if (!suggested.empty())
 		dlg.selectFile(toqstr(suggested));
 
-	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
+	LYXERR(Debug::GUI) << "Synchronous FileDialog: " << endl;
 	int res = dlg.exec();
-	lyxerr[Debug::GUI] << "result " << res << endl;
+	LYXERR(Debug::GUI) << "result " << res << endl;
 	if (res == QDialog::Accepted)
 		result.second = from_utf8(internal_path(
 					fromqstr(dlg.selectedFiles()[0])));

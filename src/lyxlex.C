@@ -197,7 +197,7 @@ string const LyXLex::getLongString(string const & endtoken)
 
 		string const token = trim(getString(), " \t");
 
-		lyxerr[Debug::PARSER] << "LongString: `"
+		LYXERR(Debug::PARSER) << "LongString: `"
 				      << getString() << '\'' << endl;
 
 		// We do a case independent comparison, like search_kw does.
@@ -210,7 +210,7 @@ string const LyXLex::getLongString(string const & endtoken)
 			if (i != string::npos)
 				prefix = tmpstr.substr(0, i);
 			firstline = false;
-			lyxerr[Debug::PARSER]
+			LYXERR(Debug::PARSER)
 				<< "Prefix = `" << prefix << "\'" << endl;
 		}
 

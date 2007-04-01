@@ -118,7 +118,7 @@ namespace {
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
 			// this is important for clicking behind \sum in e.g. '\sum_i a'
-			lyxerr[Debug::DEBUG] << "i: " << i << " d: " << d
+			LYXERR(Debug::DEBUG) << "i: " << i << " d: " << d
 				<< " best: " << best_dist << endl;
 			if (d <= best_dist) {
 				best_dist = d;
@@ -279,7 +279,7 @@ void LCursor::setCursor(DocIterator const & cur)
 
 void LCursor::dispatch(FuncRequest const & cmd0)
 {
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
 			     << " cmd: " << cmd0 << '\n'
 			     << *this << endl;
 	if (empty())
@@ -290,7 +290,7 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 	LCursor safe = *this;
 
 	for (; depth(); pop()) {
-		lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: "
+		LYXERR(Debug::DEBUG) << "LCursor::dispatch: cmd: "
 			<< cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
@@ -308,7 +308,7 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
 	if (!disp_.dispatched()) {
-		lyxerr[Debug::DEBUG] << "RESTORING OLD CURSOR!" << endl;
+		LYXERR(Debug::DEBUG) << "RESTORING OLD CURSOR!" << endl;
 		operator=(safe);
 		disp_.update(Update::None);
 		disp_.dispatched(false);
@@ -1119,7 +1119,7 @@ bool LCursor::goUpDown(bool up)
 
 void LCursor::handleFont(string const & font)
 {
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << ": " << font << endl;
+	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION << ": " << font << endl;
 	docstring safe;
 	if (selection()) {
 		macroModeClose();

@@ -521,7 +521,7 @@ void InsetMathScript::write(WriteStream & os) const
 		//}
 	} else {
 		if (os.firstitem())
-			lyxerr[Debug::MATHED] << "suppressing {} when writing"
+			LYXERR(Debug::MATHED) << "suppressing {} when writing"
 					      << endl;
 		else
 			os << "{}";

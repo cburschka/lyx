@@ -59,7 +59,7 @@ void Languages::read(support::FileName const & filename)
 			lang = lex.getString();
 		else
 			break;
-		lyxerr[Debug::INFO] << "Reading language " << lang << endl;
+		LYXERR(Debug::INFO) << "Reading language " << lang << endl;
 
 		if (lex.next())
 			babel = lex.getString();

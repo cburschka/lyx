@@ -198,7 +198,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	// PageStep only depends on the viewport height.
 	verticalScrollBar()->setPageStep(viewport()->height());
 
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
 		<< "\n Area width\t" << width()
 		<< "\n Area height\t" << height()
 		<< "\n viewport width\t" << viewport()->width()
@@ -253,7 +253,7 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 	if (files.isEmpty())
 		return;
 
-	lyxerr[Debug::GUI] << "GuiWorkArea::dropEvent: got URIs!" << endl;
+	LYXERR(Debug::GUI) << "GuiWorkArea::dropEvent: got URIs!" << endl;
 	for (int i = 0; i!=files.size(); ++i) {
 		string const file = os::internal_path(fromqstr(files.at(i).toLocalFile()));
 		if (!file.empty())
@@ -414,7 +414,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 {
-	lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 		<< " count=" << e->count()
 		<< " text=" << fromqstr(e->text())
 		<< " isAutoRepeat=" << e->isAutoRepeat()
@@ -462,7 +462,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 	//if (!lyxrc.show_banner)
 	//	return;
-	lyxerr[Debug::GUI] << "show banner: " << lyxrc.show_banner << endl;
+	LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
 	/// The text to be written on top of the pixmap
 	QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
 	FileName const file = support::libFileSearch("images", "banner", "ppm");
@@ -502,7 +502,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
 	QRect const rc = ev->rect(); 
 	/*
-	lyxerr[Debug::PAINTING] << "paintEvent begin: x: " << rc.x()
+	LYXERR(Debug::PAINTING) << "paintEvent begin: x: " << rc.x()
 		<< " y: " << rc.y()
 		<< " w: " << rc.width()
 		<< " h: " << rc.height() << endl;
@@ -534,7 +534,7 @@ void GuiWorkArea::updateScreen()
 	QLPainter pain(&screen_);
 
 	if (greyed_out_) {
-		lyxerr[Debug::GUI] << "splash screen requested" << endl;
+		LYXERR(Debug::GUI) << "splash screen requested" << endl;
 		verticalScrollBar()->hide();
 		doGreyOut(pain);
 		return;
@@ -587,7 +587,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	if (!commit_string.isEmpty()) {
 
-		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 			<< " preeditString =" << fromqstr(e->preeditString())
 			<< " commitString  =" << fromqstr(e->commitString())
 			<< endl;

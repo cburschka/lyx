@@ -248,7 +248,7 @@ int QLPainter::text(int x, int y, docstring const & s,
 		setLayoutDirection(Qt::LeftToRight);
 		if (isDrawingEnabled()) {
 			if (lyxerr.debugging(Debug::PAINTING)) {
-				lyxerr[Debug::PAINTING] << "draw " << std::string(str.toUtf8())
+				LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
 					<< " at " << x << "," << y << std::endl;
 			}
 			// Qt4 does not display a glyph whose codepoint is the

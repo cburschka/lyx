@@ -517,7 +517,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 				static_cast<MathMacroTemplate*>(inset.get());
 			MacroTable::globalMacros().insert
 				(tmpl->name(), tmpl->asMacroData());
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": creating local macro " << to_utf8(tmpl->name())
 				<< endl;

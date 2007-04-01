@@ -262,7 +262,7 @@ void CacheItem::Impl::setStatus(ImageStatus new_status)
 void CacheItem::Impl::imageConverted(bool success)
 {
 	string const text = success ? "succeeded" : "failed";
-	lyxerr[Debug::GRAPHICS] << "Image conversion " << text << '.' << endl;
+	LYXERR(Debug::GRAPHICS) << "Image conversion " << text << '.' << endl;
 
 	file_to_load_ = converter_.get() ?
 		FileName(converter_->convertedFile()) : FileName();
@@ -272,7 +272,7 @@ void CacheItem::Impl::imageConverted(bool success)
 	success = !file_to_load_.empty() && isFileReadable(file_to_load_);
 
 	if (!success) {
-		lyxerr[Debug::GRAPHICS] << "Unable to find converted file!"
+		LYXERR(Debug::GRAPHICS) << "Unable to find converted file!"
 					<< endl;
 		setStatus(ErrorConverting);
 
@@ -294,7 +294,7 @@ void CacheItem::Impl::imageConverted(bool success)
 void CacheItem::Impl::loadImage()
 {
 	setStatus(Loading);
-	lyxerr[Debug::GRAPHICS] << "Loading image." << endl;
+	LYXERR(Debug::GRAPHICS) << "Loading image." << endl;
 
 	image_ = Image::newImage();
 
@@ -308,7 +308,7 @@ void CacheItem::Impl::loadImage()
 void CacheItem::Impl::imageLoaded(bool success)
 {
 	string const text = success ? "succeeded" : "failed";
-	lyxerr[Debug::GRAPHICS] << "Image loading " << text << '.' << endl;
+	LYXERR(Debug::GRAPHICS) << "Image loading " << text << '.' << endl;
 
 	// Clean up after loading.
 	if (zipped_)
@@ -356,7 +356,7 @@ static string const findTargetFormat(string const & from)
 		if (lyx::graphics::Converter::isReachable(from, *it))
 			return *it;
 		else
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "Unable to convert from " << from
 				<< " to " << *it << std::endl;
 	}
@@ -375,7 +375,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	if (!isFileReadable(filename_)) {
 		if (status_ != ErrorNoFile) {
 			setStatus(ErrorNoFile);
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "\tThe file is not readable" << endl;
 		}
 		return;
@@ -388,7 +388,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 		unzipped_filename_ = tempName(FileName(), filename_.toFilesystemEncoding());
 		if (unzipped_filename_.empty()) {
 			setStatus(ErrorConverting);
-			lyxerr[Debug::GRAPHICS]
+			LYXERR(Debug::GRAPHICS)
 				<< "\tCould not create temporary file." << endl;
 			return;
 		}
@@ -397,7 +397,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 		filename = filename_;
 
 	docstring const displayed_filename = makeDisplayPath(filename_.absFilename());
-	lyxerr[Debug::GRAPHICS] << "[graphics::CacheItem::Impl::convertToDisplayFormat]\n"
+	LYXERR(Debug::GRAPHICS) << "[graphics::CacheItem::Impl::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
 		<< "\n\twith displayed filename: " << lyx::to_utf8(displayed_filename)
 		<< endl;
@@ -405,30 +405,30 @@ void CacheItem::Impl::convertToDisplayFormat()
 	string const from = formats.getFormatFromFile(filename);
 	if (from.empty()) {
 		setStatus(ErrorConverting);
-		lyxerr[Debug::GRAPHICS]
+		LYXERR(Debug::GRAPHICS)
 			<< "\tCould not determine file format." << endl;
 	}
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "\n\tThe file contains " << from << " format data." << endl;
 	to_ = findTargetFormat(from);
 
 	if (from == to_) {
 		// No conversion needed!
-		lyxerr[Debug::GRAPHICS] << "\tNo conversion needed (from == to)!" << endl;
+		LYXERR(Debug::GRAPHICS) << "\tNo conversion needed (from == to)!" << endl;
 		file_to_load_ = filename;
 		loadImage();
 		return;
 	}
 
 	if (ConverterCache::get().inCache(filename, to_)) {
-		lyxerr[Debug::GRAPHICS] << "\tNo conversion needed (file in file cache)!"
+		LYXERR(Debug::GRAPHICS) << "\tNo conversion needed (file in file cache)!"
 		                        << endl;
 		file_to_load_ = ConverterCache::get().cacheName(filename, to_);
 		loadImage();
 		return;
 	}
 
-	lyxerr[Debug::GRAPHICS] << "\tConverting it to " << to_ << " format." << endl;
+	LYXERR(Debug::GRAPHICS) << "\tConverting it to " << to_ << " format." << endl;
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.

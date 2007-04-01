@@ -100,7 +100,7 @@ void Changes::set(Change const & change, pos_type const pos)
 void Changes::set(Change const & change, pos_type const start, pos_type const end)
 {
 	if (change.type != Change::UNCHANGED && lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "setting change (type: " << change.type
+		LYXERR(Debug::CHANGES) << "setting change (type: " << change.type
 			<< ", author: " << change.author << ", time: " << change.changetime
 			<< ") in range (" << start << ", " << end << ")" << endl;
 	}
@@ -120,14 +120,14 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 			pos_type oldEnd = it->range.end;
 			it->range.end = start;
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "  cutting tail of type " << it->change.type
+				LYXERR(Debug::CHANGES) << "  cutting tail of type " << it->change.type
 					<< " resulting in range (" << it->range.start << ", "
 					<< it->range.end << ")" << endl;
 			}
 			++it;
 			if (oldEnd >= end) {
 				if (lyxerr.debugging(Debug::CHANGES)) {
-					lyxerr[Debug::CHANGES] << "  inserting tail in range ("
+					LYXERR(Debug::CHANGES) << "  inserting tail in range ("
 						<< end << ", " << oldEnd << ")" << endl;
 				}
 				it = table_.insert(it, ChangeRange((it-1)->change, Range(end, oldEnd)));
@@ -140,7 +140,7 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 
 	if (change.type != Change::UNCHANGED) {
 		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "  inserting change" << endl;
+			LYXERR(Debug::CHANGES) << "  inserting change" << endl;
 		}
 		it = table_.insert(it, ChangeRange(change, Range(start, end)));
 		++it;
@@ -150,7 +150,7 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 		// new change 'contains' existing change
 		if (newRange.contains(it->range)) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "  removing subrange ("
+				LYXERR(Debug::CHANGES) << "  removing subrange ("
 					<< it->range.start << ", " << it->range.end << ")" << endl;
 			}
 			it = table_.erase(it);
@@ -165,7 +165,7 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 		// new change intersects with existing change
 		it->range.start = end;
 		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "  cutting head of type "
+			LYXERR(Debug::CHANGES) << "  cutting head of type "
 				<< it->change.type << " resulting in range ("
 				<< end << ", " << it->range.end << ")" << endl;
 		}
@@ -179,7 +179,7 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 void Changes::erase(pos_type const pos)
 {
 	if (lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "Erasing change at position " << pos << endl;
+		LYXERR(Debug::CHANGES) << "Erasing change at position " << pos << endl;
 	}
 
 	ChangeTable::iterator it = table_.begin();
@@ -203,7 +203,7 @@ void Changes::erase(pos_type const pos)
 void Changes::insert(Change const & change, lyx::pos_type pos)
 {
 	if (change.type != Change::UNCHANGED && lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "Inserting change of type " << change.type
+		LYXERR(Debug::CHANGES) << "Inserting change of type " << change.type
 			<< " at position " << pos << endl;
 	}
 
@@ -250,7 +250,7 @@ bool Changes::isChanged(pos_type const start, pos_type const end) const
 	for (; it != itend; ++it) {
 		if (it->range.intersects(Range(start, end))) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "found intersection of range ("
+				LYXERR(Debug::CHANGES) << "found intersection of range ("
 					<< start << ", " << end << ") with ("
 					<< it->range.start << ", " << it->range.end
 					<< ") of type " << it->change.type << endl;
@@ -268,14 +268,14 @@ void Changes::merge()
 
 	while (it != table_.end()) {
 		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "found change of type " << it->change.type
+			LYXERR(Debug::CHANGES) << "found change of type " << it->change.type
 				<< " and range (" << it->range.start << ", " << it->range.end
 				<< ")" << endl;
 		}
 
 		if (it->range.start == it->range.end) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "removing empty range for pos "
+				LYXERR(Debug::CHANGES) << "removing empty range for pos "
 					<< it->range.start << endl;
 			}
 
@@ -290,7 +290,7 @@ void Changes::merge()
 
 		if (it->change.isSimilarTo((it + 1)->change) && it->range.end == (it + 1)->range.start) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "merging ranges (" << it->range.start << ", "
+				LYXERR(Debug::CHANGES) << "merging ranges (" << it->range.start << ", "
 					<< it->range.end << ") and (" << (it + 1)->range.start << ", "
 					<< (it + 1)->range.end << ")" << endl;
 			}

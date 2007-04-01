@@ -58,7 +58,7 @@ namespace fs = boost::filesystem;
 
 int VCS::doVCCommand(string const & cmd, string const & path)
 {
-	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
+	LYXERR(Debug::LYXVC) << "doVCCommand: " << cmd << endl;
 	Systemcall one;
 	support::Path p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
@@ -77,19 +77,19 @@ FileName const RCS::find_file(FileName const & file)
 {
 	// Check if *,v exists.
 	FileName tmp(file.absFilename() + ",v");
-	lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
+	LYXERR(Debug::LYXVC) << "Checking if file is under rcs: "
 			     << tmp << endl;
 	if (fs::is_readable(tmp.toFilesystemEncoding())) {
-		lyxerr[Debug::LYXVC] << "Yes " << file
+		LYXERR(Debug::LYXVC) << "Yes " << file
 				     << " is under rcs." << endl;
 		return tmp;
 	} else {
 		// Check if RCS/*,v exists.
 		tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
-		lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
+		LYXERR(Debug::LYXVC) << "Checking if file is under rcs: "
 				     << tmp << endl;
 		if (fs::is_readable(tmp.toFilesystemEncoding())) {
-			lyxerr[Debug::LYXVC] << "Yes " << file
+			LYXERR(Debug::LYXVC) << "Yes " << file
 					     << " it is under rcs."<< endl;
 			return tmp;
 		}
@@ -100,7 +100,7 @@ FileName const RCS::find_file(FileName const & file)
 
 void RCS::retrieve(FileName const & file)
 {
-	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrieve.\n\t" << file << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC::RCS: retrieve.\n\t" << file << endl;
 	VCS::doVCCommand("co -q -r " + quoteName(file.toFilesystemEncoding()),
 			 string());
 }
@@ -108,7 +108,7 @@ void RCS::retrieve(FileName const & file)
 
 void RCS::scanMaster()
 {
-	lyxerr[Debug::LYXVC] << "LyXVC::RCS: scanMaster." << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC::RCS: scanMaster." << endl;
 
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
 
@@ -116,7 +116,7 @@ void RCS::scanMaster()
 	bool read_enough = false;
 
 	while (!read_enough && ifs >> token) {
-		lyxerr[Debug::LYXVC]
+		LYXERR(Debug::LYXVC)
 			<< "LyXVC::scanMaster: current lex text: `"
 			<< token << '\'' << endl;
 
@@ -128,7 +128,7 @@ void RCS::scanMaster()
 			ifs >> tmv;
 			tmv = rtrim(tmv, ";");
 			version_ = tmv;
-			lyxerr[Debug::LYXVC] << "LyXVC: version found to be "
+			LYXERR(Debug::LYXVC) << "LyXVC: version found to be "
 					     << tmv << endl;
 		} else if (contains(token, "access")
 			   || contains(token, "symbols")
@@ -162,7 +162,7 @@ void RCS::scanMaster()
 			read_enough = true;
 		} else {
 			// unexpected
-			lyxerr[Debug::LYXVC]
+			LYXERR(Debug::LYXVC)
 				<< "LyXVC::scanMaster(): unexpected token"
 				<< endl;
 		}
@@ -208,7 +208,7 @@ void RCS::revert()
 
 void RCS::undoLast()
 {
-	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " "
 		    + quoteName(onlyFilename(owner_->fileName())),
 		    owner_->filePath());
@@ -237,7 +237,7 @@ FileName const CVS::find_file(FileName const & file)
 	// where we have file.
 	FileName const dir(onlyPath(file.absFilename()) + "/CVS/Entries");
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
-	lyxerr[Debug::LYXVC] << "LyXVC: checking in `" << dir
+	LYXERR(Debug::LYXVC) << "LyXVC: checking in `" << dir
 			     << "' for `" << tmpf << '\'' << endl;
 	if (fs::is_readable(dir.toFilesystemEncoding())) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
@@ -246,7 +246,7 @@ FileName const CVS::find_file(FileName const & file)
 		ifstream ifs(dir.toFilesystemEncoding().c_str());
 		string line;
 		while (getline(ifs, line)) {
-			lyxerr[Debug::LYXVC] << "\tEntries: " << line << endl;
+			LYXERR(Debug::LYXVC) << "\tEntries: " << line << endl;
 			if (contains(line, tmpf))
 				return dir;
 		}
@@ -257,16 +257,16 @@ FileName const CVS::find_file(FileName const & file)
 
 void CVS::scanMaster()
 {
-	lyxerr[Debug::LYXVC] << "LyXVC::CVS: scanMaster. \n     Checking: "
+	LYXERR(Debug::LYXVC) << "LyXVC::CVS: scanMaster. \n     Checking: "
 			     << master_ << endl;
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
 	string tmpf = '/' + onlyFilename(file_.absFilename()) + '/';
-	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << '\'' << endl;
+	LYXERR(Debug::LYXVC) << "\tlooking for `" << tmpf << '\'' << endl;
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
 	while (getline(ifs, line)) {
-		lyxerr[Debug::LYXVC] << "\t  line: " << line << endl;
+		LYXERR(Debug::LYXVC) << "\t  line: " << line << endl;
 		if (contains(line, tmpf)) {
 			// Ok extract the fields.
 			smatch sm;
@@ -283,7 +283,7 @@ void CVS::scanMaster()
 			// FIXME: must double check file is stattable/existing
 			time_t mod = fs::last_write_time(file_.toFilesystemEncoding());
 			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
-			lyxerr[Debug::LYXVC]
+			LYXERR(Debug::LYXVC)
 				<<  "Date in Entries: `" << file_date
 				<< "'\nModification date of file: `"
 				<< mod_date << '\'' << endl;

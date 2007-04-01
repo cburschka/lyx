@@ -221,7 +221,7 @@ docstring const from_iconv_encoding(string const & s, string const & encoding)
 ISpell::ISpell(BufferParams const & params, string const & lang)
 	: in(0), out(0), inerr(0), str(0)
 {
-	lyxerr[Debug::GUI] << "Created ispell" << endl;
+	LYXERR(Debug::GUI) << "Created ispell" << endl;
 
 	encoding = params.encoding().iconvName();
 
@@ -315,7 +315,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 
 ISpell::~ISpell()
 {
-	lyxerr[Debug::GUI] << "Killing ispell" << endl;
+	LYXERR(Debug::GUI) << "Killing ispell" << endl;
 
 	if (in)
 		fclose(in);

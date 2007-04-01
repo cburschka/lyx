@@ -370,7 +370,7 @@ void LyXView::updateMenubar()
 
 void LyXView::autoSave()
 {
-	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
+	LYXERR(Debug::INFO) << "Running autoSave()" << endl;
 
 	if (view()->buffer())
 		lyx::autoSave(view());

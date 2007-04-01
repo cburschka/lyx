@@ -107,11 +107,11 @@ FileName const tempName(FileName const & dir, string const & mask)
 #else
 # error No x() function.
 #endif
-		lyxerr[Debug::FILES] << "Temporary file `" << t
+		LYXERR(Debug::FILES) << "Temporary file `" << t
 				     << "' created." << endl;
 		return FileName(t);
 	} else {
-		lyxerr[Debug::FILES]
+		LYXERR(Debug::FILES)
 			<< "LyX Error: Unable to create temporary file."
 			<< endl;
 		return FileName();

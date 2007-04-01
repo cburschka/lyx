@@ -276,17 +276,17 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 
 void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 {
-	lyxerr[Debug::KEY] << "KeySym is " << keysym->getSymbolName() << endl;
+	LYXERR(Debug::KEY) << "KeySym is " << keysym->getSymbolName() << endl;
 
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym->isOK()) {
-		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
+		LYXERR(Debug::KEY) << "Empty kbd action (probably composing)"
 				   << endl;
 		return;
 	}
 
 	if (keysym->isModifier()) {
-		lyxerr[Debug::KEY] << "isModifier true" << endl;
+		LYXERR(Debug::KEY) << "isModifier true" << endl;
 		return;
 	}
 
@@ -301,7 +301,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	cancel_meta_seq->reset();
 
 	FuncRequest func = cancel_meta_seq->addkey(keysym, state);
-	lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 			   << " action first set to [" << func.action << ']'
 			   << endl;
 
@@ -311,7 +311,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = keyseq->addkey(keysym, (state | meta_fake_bit));
-		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 				   << "action now set to ["
 				   << func.action << ']' << endl;
 	}
@@ -345,9 +345,9 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// Let's see. But only if shift is the only modifier
 	if (func.action == LFUN_UNKNOWN_ACTION &&
 	    state == key_modifier::shift) {
-		lyxerr[Debug::KEY] << "Trying without shift" << endl;
+		LYXERR(Debug::KEY) << "Trying without shift" << endl;
 		func = keyseq->addkey(keysym, key_modifier::none);
-		lyxerr[Debug::KEY] << "Action now " << func.action << endl;
+		LYXERR(Debug::KEY) << "Action now " << func.action << endl;
 	}
 
 	if (func.action == LFUN_UNKNOWN_ACTION) {
@@ -355,11 +355,11 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		// if it's normal insertable text not already covered
 		// by a binding
 		if (keysym->isText() && keyseq->length() == 1) {
-			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
+			LYXERR(Debug::KEY) << "isText() is true, inserting." << endl;
 			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
 		} else {
-			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
+			LYXERR(Debug::KEY) << "Unknown, !isText() - giving up" << endl;
 			lyx_view_->message(_("Unknown function."));
 			return;
 		}
@@ -370,7 +370,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 			docstring const arg(1, encoded_last_key);
 			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
-			lyxerr[Debug::KEY]
+			LYXERR(Debug::KEY)
 				<< "SelfInsert arg[`" << to_utf8(arg) << "']" << endl;
 		}
 	} else {
@@ -779,7 +779,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	string const argument = to_utf8(cmd.argument());
 	kb_action const action = cmd.action;
 
-	lyxerr[Debug::ACTION] << endl << "LyXFunc::dispatch: cmd: " << cmd << endl;
+	LYXERR(Debug::ACTION) << endl << "LyXFunc::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
 
 	// we have not done anything wrong yet.
@@ -793,7 +793,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	FuncStatus const flag = getStatus(cmd);
 	if (!flag.enabled()) {
 		// We cannot use this function here
-		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
+		LYXERR(Debug::ACTION) << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
 		       << endl;
@@ -1213,7 +1213,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_SERVER_GET_NAME:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			setMessage(from_utf8(lyx_view_->buffer()->fileName()));
-			lyxerr[Debug::INFO] << "FNAME["
+			LYXERR(Debug::INFO) << "FNAME["
 							 << lyx_view_->buffer()->fileName()
 							 << "] " << endl;
 			break;
@@ -1791,7 +1791,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 			      || cmd.origin == FuncRequest::COMMANDBUFFER);
 
 	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
-		lyxerr[Debug::ACTION] << "dispatch msg is " << to_utf8(msg) << endl;
+		LYXERR(Debug::ACTION) << "dispatch msg is " << to_utf8(msg) << endl;
 		if (!msg.empty())
 			lyx_view_->message(msg);
 		return;
@@ -1824,7 +1824,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		dispatch_msg += '(' + rtrim(comname) + ')';
 	}
 
-	lyxerr[Debug::ACTION] << "verbose dispatch msg "
+	LYXERR(Debug::ACTION) << "verbose dispatch msg "
 		<< to_utf8(dispatch_msg) << endl;
 	if (!dispatch_msg.empty())
 		lyx_view_->message(dispatch_msg);
@@ -1956,7 +1956,7 @@ void LyXFunc::doImport(string const & argument)
 	string format;
 	string filename = split(argument, format, ' ');
 
-	lyxerr[Debug::INFO] << "LyXFunc::doImport: " << format
+	LYXERR(Debug::INFO) << "LyXFunc::doImport: " << format
 			    << " file: " << filename << endl;
 
 	// need user interaction

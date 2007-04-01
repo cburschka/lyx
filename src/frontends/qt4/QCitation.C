@@ -148,7 +148,7 @@ void QCitation::findKey(QString const & str, bool only_keys,
 	// Reset last_searched_string in case of changed option.
 	if (last_case_sensitive != case_sensitive
 		|| last_reg_exp != reg_exp) {
-			lyxerr[Debug::GUI] << "QCitation::findKey: optimisation disabled!" << std::endl;
+			LYXERR(Debug::GUI) << "QCitation::findKey: optimisation disabled!" << std::endl;
 		last_searched_string.clear();
 	}
 	// save option for next search.

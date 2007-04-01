@@ -64,7 +64,7 @@ TeXDeeper(Buffer const & buf,
 	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams)
 {
-	lyxerr[Debug::LATEX] << "TeXDeeper...     " << &*pit << endl;
+	LYXERR(Debug::LATEX) << "TeXDeeper...     " << &*pit << endl;
 	ParagraphList::const_iterator par = pit;
 
 	while (par != paragraphs.end() &&
@@ -77,7 +77,7 @@ TeXDeeper(Buffer const & buf,
 					     os, texrow, runparams);
 		}
 	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << endl;
+	LYXERR(Debug::LATEX) << "TeXDeeper...done " << endl;
 
 	return par;
 }
@@ -90,7 +90,7 @@ TeXEnvironment(Buffer const & buf,
 	       odocstream & os, TexRow & texrow,
 	       OutputParams const & runparams)
 {
-	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
+	LYXERR(Debug::LATEX) << "TeXEnvironment...     " << &*pit << endl;
 
 	BufferParams const & bparams = buf.params();
 
@@ -240,7 +240,7 @@ TeXOnePar(Buffer const & buf,
 	  OutputParams const & runparams_in,
 	  string const & everypar)
 {
-	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '"
+	LYXERR(Debug::LATEX) << "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'" << endl;
 	BufferParams const & bparams = buf.params();
 	LyXLayout_ptr style;
@@ -575,7 +575,7 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 	    oldEnc.name() != newEnc.name() &&
 	    oldEnc.name() != "ascii" && newEnc.name() != "ascii" &&
 	    oldEnc.name() != "tis620-0" && newEnc.name() != "tis620-0") {
-		lyxerr[Debug::LATEX] << "Changing LaTeX encoding from "
+		LYXERR(Debug::LATEX) << "Changing LaTeX encoding from "
 		                     << oldEnc.name() << " to "
 		                     << newEnc.name() << endl;
 		os << setEncoding(newEnc.iconvName());

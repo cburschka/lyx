@@ -317,7 +317,7 @@ bool Converters::convert(Buffer const * buffer,
 				quoteName(from_ext + ':' + from_file.toFilesystemEncoding()) +
 				' ' +
 				quoteName(to_ext + ':' + to_file.toFilesystemEncoding());
-			lyxerr[Debug::FILES]
+			LYXERR(Debug::FILES)
 				<< "No converter defined! "
 				   "I use convertDefault.py:\n\t"
 				<< command << endl;
@@ -364,7 +364,7 @@ bool Converters::convert(Buffer const * buffer,
 		Converter const & conv = converterlist_[*cit];
 		bool dummy = conv.To->dummy() && conv.to != "program";
 		if (!dummy)
-			lyxerr[Debug::FILES] << "Converting from  "
+			LYXERR(Debug::FILES) << "Converting from  "
 			       << conv.from << " to " << conv.to << endl;
 		infile = outfile;
 		outfile = FileName(conv.result_dir.empty()
@@ -385,13 +385,13 @@ bool Converters::convert(Buffer const * buffer,
 		if (conv.latex) {
 			run_latex = true;
 			string const command = subst(conv.command, token_from, "");
-			lyxerr[Debug::FILES] << "Running " << command << endl;
+			LYXERR(Debug::FILES) << "Running " << command << endl;
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
 			    && !latex_command_.empty()) {
-				lyxerr[Debug::FILES]
+				LYXERR(Debug::FILES)
 					<< "Running " << latex_command_
 					<< " to update aux file"<<  endl;
 				runLaTeX(*buffer, latex_command_, runparams, errorList);
@@ -421,7 +421,7 @@ bool Converters::convert(Buffer const * buffer,
 				command = add_options(command,
 						      dvipdfm_options(buffer->params()));
 
-			lyxerr[Debug::FILES] << "Calling " << command << endl;
+			LYXERR(Debug::FILES) << "Calling " << command << endl;
 			if (buffer)
 				buffer->message(_("Executing command: ")
 				+ from_utf8(command));
@@ -443,7 +443,7 @@ bool Converters::convert(Buffer const * buffer,
 				if (!mover.rename(outfile, real_outfile))
 					res = -1;
 				else
-					lyxerr[Debug::FILES]
+					LYXERR(Debug::FILES)
 						<< "renaming file " << outfile
 						<< " to " << real_outfile
 						<< endl;
@@ -531,7 +531,7 @@ bool Converters::move(string const & fmt,
 			string const to2 = changeExtension(
 				to_base + file2.substr(base.length()),
 				to_extension);
-			lyxerr[Debug::FILES] << "moving " << from2
+			LYXERR(Debug::FILES) << "moving " << from2
 					     << " to " << to2 << endl;
 
 			Mover const & mover = getMover(fmt);

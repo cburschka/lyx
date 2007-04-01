@@ -100,7 +100,7 @@ SpellBase * getSpeller(BufferParams const & bp)
 
 bool ControlSpellchecker::initialiseParams(std::string const &)
 {
-	lyxerr[Debug::GUI] << "Spellchecker::initialiseParams" << endl;
+	LYXERR(Debug::GUI) << "Spellchecker::initialiseParams" << endl;
 
 	speller_.reset(getSpeller(kernel().buffer().params()));
 	if (!speller_.get())
@@ -126,7 +126,7 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 
 void ControlSpellchecker::clearParams()
 {
-	lyxerr[Debug::GUI] << "Spellchecker::clearParams" << endl;
+	LYXERR(Debug::GUI) << "Spellchecker::clearParams" << endl;
 	speller_.reset(0);
 }
 
@@ -195,7 +195,7 @@ WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
 
 void ControlSpellchecker::check()
 {
-	lyxerr[Debug::GUI] << "Check the spelling of a word" << endl;
+	LYXERR(Debug::GUI) << "Check the spelling of a word" << endl;
 
 	SpellBase::Result res = SpellBase::OK;
 
@@ -230,7 +230,7 @@ void ControlSpellchecker::check()
 		float progress = total ? float(start)/total : 1;
 		newvalue_ = int(100.0 * progress);
 		if (newvalue_!= oldval_) {
-			lyxerr[Debug::GUI] << "Updating spell progress." << endl;
+			LYXERR(Debug::GUI) << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
 			// set progress bar
 			dialog().view().partialUpdate(SPELL_PROGRESSED);
@@ -247,7 +247,7 @@ void ControlSpellchecker::check()
 			return;
 	}
 
-	lyxerr[Debug::GUI] << "Found word \"" << to_utf8(getWord()) << "\"" << endl;
+	LYXERR(Debug::GUI) << "Found word \"" << to_utf8(getWord()) << "\"" << endl;
 
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
@@ -260,7 +260,7 @@ void ControlSpellchecker::check()
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
-		lyxerr[Debug::GUI] << "Found a word needing checking." << endl;
+		LYXERR(Debug::GUI) << "Found a word needing checking." << endl;
 		dialog().view().partialUpdate(SPELL_FOUND_WORD);
 	}
 }
@@ -305,7 +305,7 @@ void ControlSpellchecker::showSummary()
 
 void ControlSpellchecker::replace(docstring const & replacement)
 {
-	lyxerr[Debug::GUI] << "ControlSpellchecker::replace("
+	LYXERR(Debug::GUI) << "ControlSpellchecker::replace("
 			   << to_utf8(replacement) << ")" << std::endl;
 	BufferView & bufferview = *kernel().bufferview();
 	cap::replaceSelectionWithString(bufferview.cursor(), replacement, true);

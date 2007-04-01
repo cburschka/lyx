@@ -115,7 +115,7 @@ public:
 		char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
 		int e = errno;
 		if (e) {
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Lang, mess: " << lang_ << " " << m << '\n'
@@ -124,7 +124,7 @@ public:
 		}
 
 		if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-			lyxerr[Debug::DEBUG]
+			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Codeset   : " << ucs4_codeset << '\n'
@@ -143,7 +143,7 @@ public:
 			//lyxerr << "Same as entered returned" << endl;
 			translated = from_ascii(tmp);
 		} else {
-			lyxerr[Debug::DEBUG] << "We got a translation" << endl;
+			LYXERR(Debug::DEBUG) << "We got a translation" << endl;
 			char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
 			translated = ucs4;
 		}

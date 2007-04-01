@@ -150,14 +150,14 @@ void WorkArea::redraw()
 	greyed_out_ = false;
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
-		lyxerr[Debug::WORKAREA] << "WorkArea::redraw screen" << endl;
+		LYXERR(Debug::WORKAREA) << "WorkArea::redraw screen" << endl;
 	}
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : height();
 
 	expose(0, ymin, width(), ymax - ymin);
 
-	//lyxerr[Debug::WORKAREA]
+	//LYXERR(Debug::WORKAREA)
 	//<< "  ymin = " << ymin << "  width() = " << width()
 //		<< "  ymax-ymin = " << ymax-ymin << std::endl;
 

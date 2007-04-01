@@ -60,7 +60,7 @@ namespace support {
 
 unsigned long sum(FileName const & file)
 {
-	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"
+	LYXERR(Debug::FILES) << "lyx::sum() using mmap (lightning fast)"
 			     << endl;
 
 	int fd = open(file.toFilesystemEncoding().c_str(), O_RDONLY);
@@ -123,7 +123,7 @@ using std::istreambuf_iterator;
 
 unsigned long sum(FileName const & file)
 {
-	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"
+	LYXERR(Debug::FILES) << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
 
 	ifstream ifs(file.toFilesystemEncoding().c_str());
@@ -141,7 +141,7 @@ using std::ios;
 
 unsigned long sum(FileName const & file)
 {
-	lyxerr[Debug::FILES]
+	LYXERR(Debug::FILES)
 		<< "lyx::sum() using istream_iterator (slow as a snail)"
 		<< endl;
 

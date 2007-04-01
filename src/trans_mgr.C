@@ -223,7 +223,7 @@ void TransManager::enablePrimary()
 	if (t1_->isDefined())
 		active_ = t1_.get();
 
-	lyxerr[Debug::KBMAP] << "Enabling primary keymap" << endl;
+	LYXERR(Debug::KBMAP) << "Enabling primary keymap" << endl;
 }
 
 
@@ -231,14 +231,14 @@ void TransManager::enableSecondary()
 {
 	if (t2_->isDefined())
 		active_ = t2_.get();
-	lyxerr[Debug::KBMAP] << "Enabling secondary keymap" << endl;
+	LYXERR(Debug::KBMAP) << "Enabling secondary keymap" << endl;
 }
 
 
 void TransManager::disableKeymap()
 {
 	active_ = &default_;
-	lyxerr[Debug::KBMAP] << "Disabling keymap" << endl;
+	LYXERR(Debug::KBMAP) << "Disabling keymap" << endl;
 }
 
 

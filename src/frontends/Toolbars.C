@@ -121,7 +121,7 @@ void Toolbars::init()
 	int last_posx = 0;
 	int last_posy = 0;
 	for (; tb != te; ++tb) {
-		lyxerr[Debug::INIT] << "Adding " << tb->get<0>() << " at position " << tb->get<1>().posx << " " << tb->get<1>().posy << endl;
+		LYXERR(Debug::INIT) << "Adding " << tb->get<0>() << " at position " << tb->get<1>().posx << " " << tb->get<1>().posy << endl;
 		// add toolbar break if posx or posy changes
 		bool newline = tb->get<1>().location == last_loc && (
 			// if two toolbars at the same location, assume uninitialized and add toolbar break
@@ -165,7 +165,7 @@ void Toolbars::display(string const & name, bool show)
 		}
 	}
 
-	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
+	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
 		<< name << endl;
 }
 
@@ -180,7 +180,7 @@ ToolbarBackend::Flags Toolbars::getToolbarState(string const & name)
 			return cit->flags;
 	}
 
-	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
+	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
 		<< name << endl;
 
 	// return dummy for msvc
@@ -218,7 +218,7 @@ void Toolbars::toggleToolbarState(string const & name)
 			return;
 		}
 	}
-	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
+	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
 		<< name << endl;
 }
 #undef TurnOnFlag

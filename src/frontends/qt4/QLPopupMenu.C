@@ -57,8 +57,8 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 
 void QLPopupMenu::update()
 {
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION << endl;
-	lyxerr[Debug::GUI] << "\tTriggered menu: " << lyx::to_utf8(name_) << endl;
+	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION << endl;
+	LYXERR(Debug::GUI) << "\tTriggered menu: " << lyx::to_utf8(name_) << endl;
 
 	clear();
 
@@ -72,20 +72,20 @@ void QLPopupMenu::update()
 	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view()->buffer());
 
 	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
-		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << lyx::to_utf8(topLevelMenu_.name()) << endl;
+		LYXERR(Debug::GUI) << "\tWARNING: menu seems empty" << lyx::to_utf8(topLevelMenu_.name()) << endl;
 	}
 	populate(this, &topLevelMenu_);
 }
 
 void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 {
-	lyxerr[Debug::GUI] << "populating menu " << lyx::to_utf8(menu->name()) ;
+	LYXERR(Debug::GUI) << "populating menu " << lyx::to_utf8(menu->name()) ;
 	if (menu->size() == 0) {
-		lyxerr[Debug::GUI] << "\tERROR: empty menu " << lyx::to_utf8(menu->name()) << endl;
+		LYXERR(Debug::GUI) << "\tERROR: empty menu " << lyx::to_utf8(menu->name()) << endl;
 		return;
 	}
 	else {
-		lyxerr[Debug::GUI] << " *****  menu entries " << menu->size() << endl;
+		LYXERR(Debug::GUI) << " *****  menu entries " << menu->size() << endl;
 	}
 
 	Menu::const_iterator m = menu->begin();
@@ -96,17 +96,17 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 		if (m->kind() == MenuItem::Separator) {
 
 			qMenu->addSeparator();
-			lyxerr[Debug::GUI] << "adding Menubar Separator" << endl;
+			LYXERR(Debug::GUI) << "adding Menubar Separator" << endl;
 
 		} else if (m->kind() == MenuItem::Submenu) {
 
-			lyxerr[Debug::GUI] << "** creating New Sub-Menu " << lyx::to_utf8(getLabel(*m)) << endl;
+			LYXERR(Debug::GUI) << "** creating New Sub-Menu " << lyx::to_utf8(getLabel(*m)) << endl;
 			QMenu * subMenu = qMenu->addMenu(toqstr(getLabel(*m)));
 			populate(subMenu, m->submenu());
 
 		} else { // we have a MenuItem::Command
 
-			lyxerr[Debug::GUI] << "creating Menu Item " << lyx::to_utf8(m->label()) << endl;
+			LYXERR(Debug::GUI) << "creating Menu Item " << lyx::to_utf8(m->label()) << endl;
 
 			docstring label = getLabel(*m);
 			addBinding(label, *m);

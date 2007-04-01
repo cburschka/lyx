@@ -58,9 +58,9 @@ void DepTable::insert(FileName const & f, bool upd)
 		dep_info di;
 		di.crc_prev = 0;
 		if (upd) {
-			lyxerr[Debug::DEPEND] << " CRC..." << flush;
+			LYXERR(Debug::DEPEND) << " CRC..." << flush;
 			di.crc_cur = sum(f);
-			lyxerr[Debug::DEPEND] << "done." << endl;
+			LYXERR(Debug::DEPEND) << "done." << endl;
 			struct stat f_info;
 			stat(f.toFilesystemEncoding().c_str(), &f_info);
 			di.mtime_cur = f_info.st_mtime;
@@ -70,14 +70,14 @@ void DepTable::insert(FileName const & f, bool upd)
 		}
 		deplist[f] = di;
 	} else {
-		lyxerr[Debug::DEPEND] << " Already in DepTable" << endl;
+		LYXERR(Debug::DEPEND) << " Already in DepTable" << endl;
 	}
 }
 
 
 void DepTable::update()
 {
-	lyxerr[Debug::DEPEND] << "Updating DepTable..." << endl;
+	LYXERR(Debug::DEPEND) << "Updating DepTable..." << endl;
 	time_type const start_time = current_time();
 
 	DepList::iterator itr = deplist.begin();
@@ -88,18 +88,18 @@ void DepTable::update()
 		if (stat(itr->first.toFilesystemEncoding().c_str(), &f_info) == 0) {
 			if (di.mtime_cur == f_info.st_mtime) {
 				di.crc_prev = di.crc_cur;
-				lyxerr[Debug::DEPEND] << itr->first << " same mtime" << endl;
+				LYXERR(Debug::DEPEND) << itr->first << " same mtime" << endl;
 			} else {
 				di.crc_prev = di.crc_cur;
-				lyxerr[Debug::DEPEND] << itr->first << " CRC... " << flush;
+				LYXERR(Debug::DEPEND) << itr->first << " CRC... " << flush;
 				di.crc_cur = sum(itr->first);
-				lyxerr[Debug::DEPEND] << "done" << endl;
+				LYXERR(Debug::DEPEND) << "done" << endl;
 			}
 		} else {
 			// file doesn't exist
 			// remove stale files - if it's re-created, it
 			// will be re-inserted by deplog.
-			lyxerr[Debug::DEPEND] << itr->first
+			LYXERR(Debug::DEPEND) << itr->first
 				<< " doesn't exist. removing from DepTable." << endl;
 			DepList::iterator doomed = itr++;
 			deplist.erase(doomed);
@@ -114,7 +114,7 @@ void DepTable::update()
 		++itr;
 	}
 	time_type const time_sec = current_time() - start_time;
-	lyxerr[Debug::DEPEND] << "Finished updating DepTable ("
+	LYXERR(Debug::DEPEND) << "Finished updating DepTable ("
 		<< time_sec << " sec)." << endl;
 }
 

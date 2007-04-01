@@ -432,7 +432,7 @@ string const find_xpm(string const & name)
 		xpm_name = subst(xpm_name, "|", "bars");
 	}
 
-	lyxerr[Debug::GUI] << "find_xpm(" << name << ")\n"
+	LYXERR(Debug::GUI) << "find_xpm(" << name << ")\n"
 			   << "Looking for math XPM called \""
 			   << xpm_name << '"' << std::endl;
 

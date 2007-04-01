@@ -2694,7 +2694,7 @@ LyXTabular::getCellFromInset(InsetBase const * inset) const
 
 	for (idx_type cell = 0, n = getNumberOfCells(); cell < n; ++cell)
 		if (getCellInset(cell).get() == inset) {
-			lyxerr[Debug::INSETTEXT] << "LyXTabular::getCellFromInset: "
+			LYXERR(Debug::INSETTEXT) << "LyXTabular::getCellFromInset: "
 				<< "cell=" << cell << endl;
 			return cell;
 		}

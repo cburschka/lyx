@@ -100,7 +100,7 @@ void ToolbarBackend::read(LyXLex & lex)
 				docstring const tooltip = translateIfPossible(lex.getDocString());
 				lex.next(true);
 				string const func_arg = lex.getString();
-				lyxerr[Debug::PARSER]
+				LYXERR(Debug::PARSER)
 					<< "ToolbarBackend::read TO_ADD func: `"
 					<< func_arg << '\'' << endl;
 
@@ -247,12 +247,12 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 	}
 
 	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Full icon name is `"
+		LYXERR(Debug::GUI) << "Full icon name is `"
 				   << fullname << '\'' << endl;
 		return fullname;
 	}
 
-	lyxerr[Debug::GUI] << "Cannot find icon for command \""
+	LYXERR(Debug::GUI) << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
 	return libFileSearch("images", "unknown", "xpm").absFilename();

@@ -143,7 +143,7 @@ void QGraphicsDialog::change_adaptor()
 void QGraphicsDialog::change_bb()
 {
 	form_->controller().bbChanged = true;
-	lyxerr[Debug::GRAPHICS]
+	LYXERR(Debug::GRAPHICS)
 		<< "[controller().bb_Changed set to true]\n";
 	form_->changed();
 }

@@ -174,14 +174,14 @@ bool InsetBase::getStatus(LCursor &, FuncRequest const & cmd,
 
 void InsetBase::edit(LCursor &, bool)
 {
-	lyxerr[Debug::INSETS] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
 			      << ": edit left/right" << std::endl;
 }
 
 
 InsetBase * InsetBase::editXY(LCursor &, int x, int y)
 {
-	lyxerr[Debug::INSETS] << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
 			      << ": x=" << x << " y= " << y
 			      << std::endl;
 	return this;

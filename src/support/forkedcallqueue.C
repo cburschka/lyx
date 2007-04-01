@@ -76,7 +76,7 @@ ForkedCallQueue::ForkedCallQueue() : running_(false)
 
 void ForkedCallQueue::startCaller()
 {
-	lyxerr[Debug::GRAPHICS] << "ForkedCallQueue: waking up" << endl;
+	LYXERR(Debug::GRAPHICS) << "ForkedCallQueue: waking up" << endl;
 	running_ = true ;
 	callNext();
 }
@@ -85,7 +85,7 @@ void ForkedCallQueue::startCaller()
 void ForkedCallQueue::stopCaller()
 {
 	running_ = false ;
-	lyxerr[Debug::GRAPHICS] << "ForkedCallQueue: I'm going to sleep"
+	LYXERR(Debug::GRAPHICS) << "ForkedCallQueue: I'm going to sleep"
 				<< endl;
 }
 

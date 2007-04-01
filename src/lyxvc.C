@@ -108,14 +108,14 @@ void LyXVC::registrer()
 		FileName const cvs_entries(makeAbsPath("CVS/Entries"));
 
 		if (isFileReadable(cvs_entries)) {
-			lyxerr[Debug::LYXVC]
+			LYXERR(Debug::LYXVC)
 				<< "LyXVC: registering "
 				<< to_utf8(makeDisplayPath(filename.absFilename()))
 				<< " with CVS" << endl;
 			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
-			lyxerr[Debug::LYXVC]
+			LYXERR(Debug::LYXVC)
 				<< "LyXVC: registering "
 				<< to_utf8(makeDisplayPath(filename.absFilename()))
 				<< " with RCS" << endl;
@@ -125,13 +125,13 @@ void LyXVC::registrer()
 		vcs->owner(owner_);
 	}
 
-	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC: registrer" << endl;
 	pair<bool, docstring> tmp =
 		Alert::askForText(_("LyX VC: Initial description"),
 			   _("(no initial description)"));
 	if (!tmp.first || tmp.second.empty()) {
 		// should we insist on checking tmp.second.empty()?
-		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
+		LYXERR(Debug::LYXVC) << "LyXVC: user cancelled" << endl;
 		return;
 	}
 
@@ -142,7 +142,7 @@ void LyXVC::registrer()
 void LyXVC::checkIn()
 {
 
-	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC: checkIn" << endl;
 	pair<bool, docstring> tmp = Alert::askForText(_("LyX VC: Log Message"));
 	if (tmp.first) {
 		if (tmp.second.empty()) {
@@ -150,14 +150,14 @@ void LyXVC::checkIn()
 		}
 		vcs->checkIn(to_utf8(tmp.second));
 	} else {
-		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
+		LYXERR(Debug::LYXVC) << "LyXVC: user cancelled" << endl;
 	}
 }
 
 
 void LyXVC::checkOut()
 {
-	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC: checkOut" << endl;
 
 	vcs->checkOut();
 }
@@ -165,7 +165,7 @@ void LyXVC::checkOut()
 
 void LyXVC::revert()
 {
-	lyxerr[Debug::LYXVC] << "LyXVC: revert" << endl;
+	LYXERR(Debug::LYXVC) << "LyXVC: revert" << endl;
 
 	docstring const file = makeDisplayPath(owner_->fileName(), 20);
 	docstring text = bformat(_("Reverting to the stored version of the "
@@ -189,11 +189,11 @@ void LyXVC::toggleReadOnly()
 {
 	switch (vcs->status()) {
 	case VCS::UNLOCKED:
-		lyxerr[Debug::LYXVC] << "LyXVC: toggle to locked" << endl;
+		LYXERR(Debug::LYXVC) << "LyXVC: toggle to locked" << endl;
 		checkOut();
 		break;
 	case VCS::LOCKED:
-		lyxerr[Debug::LYXVC] << "LyXVC: toggle to unlocked" << endl;
+		LYXERR(Debug::LYXVC) << "LyXVC: toggle to unlocked" << endl;
 		checkIn();
 		break;
 	}
@@ -231,11 +231,11 @@ string const LyXVC::getLogFile() const
 
 	FileName const tmpf(tempName(FileName(), "lyxvclog"));
 	if (tmpf.empty()) {
-		lyxerr[Debug::LYXVC] << "Could not generate logfile "
+		LYXERR(Debug::LYXVC) << "Could not generate logfile "
 				     << tmpf << endl;
 		return string();
 	}
-	lyxerr[Debug::LYXVC] << "Generating logfile " << tmpf << endl;
+	LYXERR(Debug::LYXVC) << "Generating logfile " << tmpf << endl;
 	vcs->getLog(tmpf);
 	return tmpf.absFilename();
 }

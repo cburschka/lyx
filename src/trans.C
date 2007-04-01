@@ -178,10 +178,10 @@ int Trans::load(LyXLex & lex)
 		case KCOMB: {
 			string str;
 
-			lyxerr[Debug::KBMAP] << "KCOMB:" << endl;
+			LYXERR(Debug::KBMAP) << "KCOMB:" << endl;
 			if (lex.next(true)) {
 				str = lex.getString();
-				lyxerr[Debug::KBMAP] << str << endl;
+				LYXERR(Debug::KBMAP) << str << endl;
 			} else
 				return -1;
 
@@ -190,7 +190,7 @@ int Trans::load(LyXLex & lex)
 
 			if (lex.next(true)) {
 				str = lex.getString();
-				lyxerr[Debug::KBMAP] << str << endl;
+				LYXERR(Debug::KBMAP) << str << endl;
 			} else
 				return -1;
 
@@ -219,7 +219,7 @@ int Trans::load(LyXLex & lex)
 			docstring allowed;
 			if (lex.next()) {
 				allowed = lex.getDocString();
-				lyxerr[Debug::KBMAP] << "allowed: "
+				LYXERR(Debug::KBMAP) << "allowed: "
 						     << to_utf8(allowed) << endl;
 			} else {
 				return -1;
@@ -290,7 +290,7 @@ int Trans::load(LyXLex & lex)
 			break;
 		}
 		case LyXLex::LEX_FEOF:
-			lyxerr[Debug::PARSER] << "End of parsing" << endl;
+			LYXERR(Debug::PARSER) << "End of parsing" << endl;
 			break;
 		default:
 			lex.printError("ParseKeymapFile: "
@@ -362,7 +362,7 @@ tex_accent getkeymod(string const & p)
 
 		if (lyx_accent_table[i].name
 		     && contains(p, lyx_accent_table[i].name)) {
-			lyxerr[Debug::KBMAP] << "Found it!" << endl;
+			LYXERR(Debug::KBMAP) << "Found it!" << endl;
 			return static_cast<tex_accent>(i);
 		}
 	}

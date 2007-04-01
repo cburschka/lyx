@@ -79,7 +79,7 @@ void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 
 	if (lex.eatLine()) {
 		setParam("type", lex.getDocString());
-		lyxerr[Debug::INSETS] << "FloatList::float_type: "
+		LYXERR(Debug::INSETS) << "FloatList::float_type: "
 		                      << to_ascii(getParam("type")) << endl;
 		if (!floats.typeExist(to_ascii(getParam("type"))))
 			lex.printError("InsetFloatList: Unknown float type: `$$Token'");

@@ -59,7 +59,7 @@ void GuiSelection::haveSelection(bool own)
 docstring const GuiSelection::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Selection);
-	lyxerr[Debug::ACTION] << "GuiSelection::get: " << fromqstr(str)
+	LYXERR(Debug::ACTION) << "GuiSelection::get: " << fromqstr(str)
 	                      << endl;
 	if (str.isNull())
 		return docstring();
@@ -70,7 +70,7 @@ docstring const GuiSelection::get() const
 
 void GuiSelection::put(docstring const & str)
 {
-	lyxerr[Debug::ACTION] << "GuiSelection::put: " << lyx::to_utf8(str) << endl;
+	LYXERR(Debug::ACTION) << "GuiSelection::put: " << lyx::to_utf8(str) << endl;
 
 	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
 	                           QClipboard::Selection);

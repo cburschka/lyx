@@ -107,7 +107,7 @@ string getRawName(string const & family)
 		if (family == symbol_fonts[i].family)
 			return symbol_fonts[i].xlfd;
 
-	lyxerr[Debug::FONT] << "BUG: family not found !" << endl;
+	LYXERR(Debug::FONT) << "BUG: family not found !" << endl;
 	return string();
 }
 
@@ -137,10 +137,10 @@ bool isChosenFont(QFont & font, string const & family)
 	// positions.
 	QFontInfo fi(font);
 
-	lyxerr[Debug::FONT] << "got: " << fromqstr(fi.family()) << endl;
+	LYXERR(Debug::FONT) << "got: " << fromqstr(fi.family()) << endl;
 
 	if (contains(fromqstr(fi.family()), family)) {
-		lyxerr[Debug::FONT] << " got it ";
+		LYXERR(Debug::FONT) << " got it ";
 		return true;
 	}
 
@@ -150,7 +150,7 @@ bool isChosenFont(QFont & font, string const & family)
 
 pair<QFont, bool> const getSymbolFont(string const & family)
 {
-	lyxerr[Debug::FONT] << "Looking for font family "
+	LYXERR(Debug::FONT) << "Looking for font family "
 		<< family << " ... ";
 	string upper = family;
 	upper[0] = toupper(family[0]);
@@ -160,30 +160,30 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 	font.setFamily(toqstr(family));
 
 	if (isChosenFont(font, family)) {
-		lyxerr[Debug::FONT] << "normal!" << endl;
+		LYXERR(Debug::FONT) << "normal!" << endl;
 		return make_pair<QFont, bool>(font, true);
 	}
 
-	lyxerr[Debug::FONT] << "Trying " << upper << " ... ";
+	LYXERR(Debug::FONT) << "Trying " << upper << " ... ";
 	font.setFamily(toqstr(upper));
 
 	if (isChosenFont(font, upper)) {
-		lyxerr[Debug::FONT] << "upper!" << endl;
+		LYXERR(Debug::FONT) << "upper!" << endl;
 		return make_pair<QFont, bool>(font, true);
 	}
 
 	// A simple setFamily() fails on Qt 2
 
 	string const rawName = getRawName(family);
-	lyxerr[Debug::FONT] << "Trying " << rawName << " ... ";
+	LYXERR(Debug::FONT) << "Trying " << rawName << " ... ";
 	font.setRawName(toqstr(rawName));
 
 	if (isChosenFont(font, family)) {
-		lyxerr[Debug::FONT] << "raw version!" << endl;
+		LYXERR(Debug::FONT) << "raw version!" << endl;
 		return make_pair<QFont, bool>(font, true);
 	}
 
-	lyxerr[Debug::FONT] << " FAILED :-(" << endl;
+	LYXERR(Debug::FONT) << " FAILED :-(" << endl;
 	return make_pair<QFont, bool>(font, false);
 }
 
@@ -262,23 +262,23 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 	}
 
 	if (lyxerr.debugging(Debug::FONT)) {
-		lyxerr[Debug::FONT] << "Font '" << to_utf8(f.stateText(0))
+		LYXERR(Debug::FONT) << "Font '" << to_utf8(f.stateText(0))
 			<< "' matched by\n" << fromqstr(font.family()) << endl;
 	}
 
 	// Is this an exact match?
 	if (font.exactMatch())
-		lyxerr[Debug::FONT] << "This font is an exact match" << endl;
+		LYXERR(Debug::FONT) << "This font is an exact match" << endl;
 	else
-		lyxerr[Debug::FONT] << "This font is NOT an exact match"
+		LYXERR(Debug::FONT) << "This font is NOT an exact match"
 				    << endl;
 
-	lyxerr[Debug::FONT] << "XFLD: " << fromqstr(font.rawName()) << endl;
+	LYXERR(Debug::FONT) << "XFLD: " << fromqstr(font.rawName()) << endl;
 
 	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
 			       * lyxrc.zoom / 100.0);
 
-	lyxerr[Debug::FONT] << "The font has size: "
+	LYXERR(Debug::FONT) << "The font has size: "
 			    << font.pointSizeF() << endl;
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {

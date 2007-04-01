@@ -240,7 +240,7 @@ bool LColor::setColor(string const & lyxname, string const &x11name)
 {
 	string const lcname = ascii_lowercase(lyxname);
 	if (pimpl_->lyxcolors.find(lcname) == pimpl_->lyxcolors.end()) {
-		lyxerr[Debug::GUI]
+		LYXERR(Debug::GUI)
 			<< "LColor::setColor: Unknown color \""
 		       << lyxname << '"' << endl;
 		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);

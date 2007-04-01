@@ -78,7 +78,7 @@ void Intl::keyMapSec()
 
 void Intl::initKeyMapper(bool on)
 {
-	lyxerr[Debug::INIT] << "Initializing key mappings..." << endl;
+	LYXERR(Debug::INIT) << "Initializing key mappings..." << endl;
 
 	if (trans.setPrimary(prim_lang) == -1)
 		prim_lang.erase();

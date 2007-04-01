@@ -215,13 +215,13 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 Buffer::Buffer(string const & file, bool readonly)
 	: pimpl_(new Impl(*this, FileName(file), readonly))
 {
-	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
+	LYXERR(Debug::INFO) << "Buffer::Buffer()" << endl;
 }
 
 
 Buffer::~Buffer()
 {
-	lyxerr[Debug::INFO] << "Buffer::~Buffer()" << endl;
+	LYXERR(Debug::INFO) << "Buffer::~Buffer()" << endl;
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
@@ -369,10 +369,10 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 	if (fs::exists(bname.toFilesystemEncoding()) &&
 	    (!fs::exists(fname.toFilesystemEncoding()) ||
 	     fs::last_write_time(fname.toFilesystemEncoding()) < fs::last_write_time(bname.toFilesystemEncoding()))) {
-		lyxerr[Debug::FILES] << "Log name calculated as: " << bname << endl;
+		LYXERR(Debug::FILES) << "Log name calculated as: " << bname << endl;
 		return make_pair(Buffer::buildlog, bname.absFilename());
 	}
-	lyxerr[Debug::FILES] << "Log name calculated as: " << fname << endl;
+	LYXERR(Debug::FILES) << "Log name calculated as: " << fname << endl;
 	return make_pair(Buffer::latexlog, fname.absFilename());
 }
 
@@ -451,7 +451,7 @@ int Buffer::readHeader(LyXLex & lex)
 			continue;
 		}
 
-		lyxerr[Debug::PARSER] << "Handling document header token: `"
+		LYXERR(Debug::PARSER) << "Handling document header token: `"
 				      << token << '\'' << endl;
 
 		string unknown = params().readToken(lex, token);
@@ -714,7 +714,7 @@ Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
 		        << ' ' << quoteName(filename.toFilesystemEncoding());
 		string const command_str = command.str();
 
-		lyxerr[Debug::INFO] << "Running '"
+		LYXERR(Debug::INFO) << "Running '"
 				    << command_str << '\''
 				    << endl;
 
@@ -776,7 +776,7 @@ bool Buffer::save() const
 			             bformat(_("Cannot create backup file %1$s.\n"
 			                       "Please check whether the directory exists and is writeable."),
 			                     from_utf8(backupName.absFilename())));
-			lyxerr[Debug::DEBUG] << "Fs error: " << fe.what() << endl;
+			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 		}
 	}
 
@@ -873,7 +873,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 			   bool output_preamble, bool output_body)
 {
 	string const encoding = runparams.encoding->iconvName();
-	lyxerr[Debug::LATEX] << "makeLaTeXFile encoding: "
+	LYXERR(Debug::LATEX) << "makeLaTeXFile encoding: "
 		<< encoding << "..." << endl;
 
 	odocfstream ofs(encoding);
@@ -914,10 +914,10 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	OutputParams runparams = runparams_in;
 
 	// validate the buffer.
-	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
+	LYXERR(Debug::LATEX) << "  Validating buffer..." << endl;
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
+	LYXERR(Debug::LATEX) << "  Buffer validation done." << endl;
 
 	texrow().reset();
 
@@ -933,7 +933,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		texrow().newline();
 		texrow().newline();
 	}
-	lyxerr[Debug::INFO] << "lyx document header finished" << endl;
+	LYXERR(Debug::INFO) << "lyx document header finished" << endl;
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a
 	// special input@path to allow the including of figures
@@ -974,7 +974,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		os << "\\begin{document}\n";
 		texrow().newline();
 	} // output_preamble
-	lyxerr[Debug::INFO] << "preamble finished, now the body." << endl;
+	LYXERR(Debug::INFO) << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin) {
 		// FIXME UNICODE
@@ -1017,9 +1017,9 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		os << "\\end{document}\n";
 		texrow().newline();
 
-		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
+		LYXERR(Debug::LATEX) << "makeLaTeXFile...done" << endl;
 	} else {
-		lyxerr[Debug::LATEX] << "LaTeXFile for inclusion made."
+		LYXERR(Debug::LATEX) << "LaTeXFile for inclusion made."
 				     << endl;
 	}
 	runparams_in.encoding = runparams.encoding;
@@ -1027,8 +1027,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	// Just to be sure. (Asger)
 	texrow().newline();
 
-	lyxerr[Debug::INFO] << "Finished making LaTeX file." << endl;
-	lyxerr[Debug::INFO] << "Row count was " << texrow().rows() - 1
+	LYXERR(Debug::INFO) << "Finished making LaTeX file." << endl;
+	LYXERR(Debug::INFO) << "Row count was " << texrow().rows() - 1
 			    << '.' << endl;
 }
 
@@ -1055,7 +1055,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 			      OutputParams const & runparams,
 			      bool const body_only)
 {
-	lyxerr[Debug::LATEX] << "makeDocBookFile..." << endl;
+	LYXERR(Debug::LATEX) << "makeDocBookFile..." << endl;
 
 	//ofstream ofs;
         odocfstream ofs;

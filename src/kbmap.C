@@ -69,7 +69,7 @@ string::size_type kb_keymap::bind(string const & seq, FuncRequest const & func)
 	if (res == string::npos) {
 		defkey(&k, func);
 	} else {
-		lyxerr[Debug::KBMAP] << "Parse error at position " << res
+		LYXERR(Debug::KBMAP) << "Parse error at position " << res
 				     << " in key sequence '" << seq << "'."
 				     << endl;
 	}
@@ -109,7 +109,7 @@ bool kb_keymap::read(string const & bind_file)
 		return false;
 	}
 
-	lyxerr[Debug::KBMAP] << "Reading bind file:" << tmp << endl;
+	LYXERR(Debug::KBMAP) << "Reading bind file:" << tmp << endl;
 
 	bool error = false;
 	while (lexrc.isOK()) {
@@ -244,7 +244,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 		    && mod2 == it->mod.second) {
 			// overwrite binding
 			if (r + 1 == seq->length()) {
-				lyxerr[Debug::KBMAP]
+				LYXERR(Debug::KBMAP)
 					<< "Warning: New binding for '"
 					<< to_utf8(seq->print(false))
 					<< "' is overriding old binding..."
