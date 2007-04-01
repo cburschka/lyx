@@ -649,6 +649,13 @@ contributers = [
                  "5 April 2005",
                  u"Some minor bug-fixes, FAQ, linuxdoc sgml support"),
 
+     contributer(u"Masanori Iwami",
+                 "masa.iwm () gmail ! com",
+                 "Re: [patch] Addition of input method support",
+                 "m=117541512517453",
+                 "1 April 2007"
+                 u"Development of CJK language support"),
+
      contributer(u"Michal Jaegermann",
                  "michal () ellpspace ! math ! ualberta ! ca",
                  "GPL",
