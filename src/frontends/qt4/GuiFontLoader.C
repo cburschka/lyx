@@ -261,10 +261,8 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 			break;
 	}
 
-	if (lyxerr.debugging(Debug::FONT)) {
-		LYXERR(Debug::FONT) << "Font '" << to_utf8(f.stateText(0))
-			<< "' matched by\n" << fromqstr(font.family()) << endl;
-	}
+	LYXERR(Debug::FONT) << "Font '" << to_utf8(f.stateText(0))
+		<< "' matched by\n" << fromqstr(font.family()) << endl;
 
 	// Is this an exact match?
 	if (font.exactMatch())

@@ -247,10 +247,8 @@ int QLPainter::text(int x, int y, docstring const & s,
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		if (isDrawingEnabled()) {
-			if (lyxerr.debugging(Debug::PAINTING)) {
-				LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
-					<< " at " << x << "," << y << std::endl;
-			}
+			LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
+				<< " at " << x << "," << y << std::endl;
 			// Qt4 does not display a glyph whose codepoint is the
 			// same as that of a soft-hyphen (0x00ad), unless it
 			// occurs at a line-break. As a kludge, we force Qt to

@@ -88,14 +88,12 @@ void QLyXKeySym::set(QKeyEvent * ev)
 {
 	key_ = ev->key();
 	if (ev->text().isNull()) {
-		if (lyxerr.debugging())
-			LYXERR(Debug::KEY) << "keyevent has isNull() text !" << endl;
+		LYXERR(Debug::KEY) << "keyevent has isNull() text !" << endl;
 		text_ = "";
 		return;
 	}
 	text_ = ev->text();
-	if (lyxerr.debugging())
-		LYXERR(Debug::KEY) << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
+	LYXERR(Debug::KEY) << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
 }
 
 
@@ -103,16 +101,14 @@ void QLyXKeySym::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
 	text_ = toqstr(symbolname);
-	if (lyxerr.debugging())
-		LYXERR(Debug::KEY) << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
+	LYXERR(Debug::KEY) << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
 }
 
 
 bool QLyXKeySym::isOK() const
 {
 	bool const ok(!(text_.isEmpty() && key_ == Qt::Key_unknown));
-	if (lyxerr.debugging())
-		LYXERR(Debug::KEY) << "isOK is " << ok << endl;
+	LYXERR(Debug::KEY) << "isOK is " << ok << endl;
 	return ok;
 }
 
@@ -120,8 +116,7 @@ bool QLyXKeySym::isOK() const
 bool QLyXKeySym::isModifier() const
 {
 	bool const mod(q_is_modifier(key_));
-	if (lyxerr.debugging())
-		LYXERR(Debug::KEY) << "isMod is " << mod << endl;
+	LYXERR(Debug::KEY) << "isMod is " << mod << endl;
 	return mod;
 }
 
@@ -182,8 +177,7 @@ docstring const QLyXKeySym::print(key_modifier::state mod, bool forgui) const
 bool QLyXKeySym::isText() const
 {
 	if (text_.isEmpty()) {
-		if (lyxerr.debugging())
-			LYXERR(Debug::KEY) << "text_ empty, isText() == false" << endl;
+		LYXERR(Debug::KEY) << "text_ empty, isText() == false" << endl;
 		return false;
 	}
 
