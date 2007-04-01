@@ -653,7 +653,7 @@ contributers = [
                  "masa.iwm () gmail ! com",
                  "Re: [patch] Addition of input method support",
                  "m=117541512517453",
-                 "1 April 2007"
+                 "1 April 2007",
                  u"Development of CJK language support"),
 
      contributer(u"Michal Jaegermann",
