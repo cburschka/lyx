@@ -952,7 +952,6 @@ msgid "&Selected Citations:"
 msgstr "Ausge&wählte Zitate:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
-#, fuzzy
 msgid "A&vailable Citations:"
 msgstr "&Verfügbare Zitate:"
 
@@ -965,7 +964,6 @@ msgid "Natbib citation style to use"
 msgstr "Zu verwendender Natbib-Zitat-Stil"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:192
-#, fuzzy
 msgid "Citation st&yle:"
 msgstr "Z&itat-Stil:"
 
@@ -974,7 +972,6 @@ msgid "List all authors"
 msgstr "Alle Autoren im Zitat nennen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:205
-#, fuzzy
 msgid "Full aut&hor list"
 msgstr "Alle Autore&n"
 
@@ -983,9 +980,8 @@ msgid "Force upper case in citation"
 msgstr "Großschreibung im Zitat erzwingen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:215
-#, fuzzy
 msgid "&Force upper case"
-msgstr "&Großschreibung erzwingen"
+msgstr "Großschreibung &erzwingen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:222
 msgid "&Text after:"
@@ -1008,12 +1004,10 @@ msgid "A&pply"
 msgstr "&Übernehmen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:335
-#, fuzzy
 msgid "Search Citation"
-msgstr "Zitat"
+msgstr "Zitat suchen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:358
-#, fuzzy
 msgid "Case Se&nsitive"
 msgstr ""
 "&Groß-/Kleinschreibung\n"
@@ -1021,15 +1015,13 @@ msgstr ""
 
 #: src/frontends/qt4/ui/QCitationUi.ui:365
 msgid "Regular E&xpression"
-msgstr ""
+msgstr "&Regulärer Ausdruck"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:377
-#, fuzzy
 msgid "<- C&lear"
 msgstr "<- &Entfernen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:391
-#, fuzzy
 msgid "F&ind:"
 msgstr "&Suchen:"
 
@@ -4422,7 +4414,7 @@ msgstr "("
 
 #: lib/layouts/broadway.layout:151 lib/layouts/hollywood.layout:180
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: lib/layouts/broadway.layout:162 lib/layouts/broadway.layout:173
 msgid "CURTAIN"
@@ -6177,7 +6169,7 @@ msgstr "Fortschritt Inhalte"
 
 #: lib/layouts/siamltex.layout:52
 msgid "."
-msgstr ""
+msgstr "."
 
 #: lib/layouts/siamltex.layout:102 lib/layouts/aguplus.inc:66
 #: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:57
@@ -8256,9 +8248,8 @@ msgid "Index Entry|d"
 msgstr "Stichwort|w"
 
 #: lib/ui/stdmenus.inc:305
-#, fuzzy
 msgid "Glossary Entry...|y"
-msgstr "Glossareintrag|l"
+msgstr "Glossareintrag...|l"
 
 #: lib/ui/stdmenus.inc:307
 msgid "Table...|T"
@@ -9854,6 +9845,10 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
+"Bei diesem Programm handelt es sich um freie Software; Sie dürfen sie "
+"entsprechend der Bestimmungen der GNU General Public License der Free "
+"Software Foundation weitergeben und/oder verändern. Verwenden Sie Version 2 "
+"oder (nach Ihrer Entscheidung) eine spätere Version der Lizenz."
 
 #: src/frontends/controllers/ControlAboutlyx.C:79
 msgid ""
@@ -10708,11 +10703,11 @@ msgstr "Mit Schrägstrich\t\\nicefrac"
 
 #: src/frontends/qt4/QMathDialog.C:141
 msgid "Text frac (amsmath)\t\\tfrac"
-msgstr ""
+msgstr "Text-Stil (amsmath)\t\\tfrac"
 
 #: src/frontends/qt4/QMathDialog.C:142
 msgid "Display frac (amsmath)\t\\dfrac"
-msgstr ""
+msgstr "Display-Stil (amsmath)\t\\dfrac"
 
 #: src/frontends/qt4/QMathDialog.C:143
 msgid "Binomial\t\\choose"
