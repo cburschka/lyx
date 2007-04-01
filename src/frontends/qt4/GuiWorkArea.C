@@ -28,6 +28,7 @@
 #include "LColor.h"
 #include "version.h"
 #include "lyxrc.h"
+#include "lyxtext.h"
 
 #include "support/filetools.h" // LibFileSearch
 #include "support/os.h"
@@ -44,6 +45,7 @@
 #include <QPainter>
 #include <QScrollBar>
 #include <QTimer>
+#include <QInputContext>
 
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
@@ -160,7 +162,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
-	: WorkArea(id, lyx_view), need_resize_(false), schedule_redraw_(false)
+	: WorkArea(id, lyx_view), need_resize_(false), schedule_redraw_(false),
+	  preedit_lines_(1)
 {
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
@@ -298,6 +301,8 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		dispatch(cmd);
 		return;
 	}
+
+	inputContext()->reset();
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 		q_button_state(e->button()));
@@ -573,8 +578,16 @@ void GuiWorkArea::removeCursor()
 
 void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 {
-	QString const & text = e->commitString();
-	if (!text.isEmpty()) {
+	QString const & commit_string = e->commitString();
+	docstring const & preedit_string
+		= qstring_to_ucs4(e->preeditString());
+
+	if(greyed_out_) {
+		e->ignore();
+		return;
+	}
+
+	if (!commit_string.isEmpty()) {
 
 		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
 			<< " preeditString =" << fromqstr(e->preeditString())
@@ -583,24 +596,143 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 		int key = 0;
 
-		// FIXME Abdel 10/02/07: Remove?
-		// needed to make math superscript work on some systems
-		// ideally, such special coding should not be necessary
-		if (text == "^")
-			key = Qt::Key_AsciiCircum;
-
-		// FIXME Abdel 10/02/07: Minimal support for CJK, aka systems
-		// with input methods. What should we do with e->preeditString()?
-		// Do we need an inputMethodQuery() method?
-		// FIXME 2: we should take care also of UTF16 surrogates here.
-		for (int i = 0; i < text.size(); ++i) {
-			// FIXME: Needs for investigation, this key is not really used,
-			// the ctor below just check if key is different from 0.
-			QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, text[i]);
+		// FIXME Iwami 04/01/07: we should take care also of UTF16 surrogates here.
+		for (int i = 0; i < commit_string.size(); ++i) {
+			QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, commit_string[i]);
 			keyPressEvent(&ev);
 		}
 	}
+
+	// Hide the cursor during the kana-kanji transformation. 
+	if (preedit_string.empty())
+		startBlinkingCursor();
+	else
+		stopBlinkingCursor();
+
+	// if last_width is last length of preedit string. 
+	static int last_width = 0;
+	if (!last_width && preedit_string.empty()) {
+		e->accept();
+		return;
+	}
+
+	QLPainter pain(&screen_);
+	buffer_view_->updateMetrics(false);
+	paintText(*buffer_view_, pain);
+	LyXFont font = buffer_view_->cursor().getFont();
+	FontMetrics const & fm = theFontMetrics(font);
+	int height = fm.maxHeight();
+	int cur_x = cursor_->rect().left();
+	int cur_y = cursor_->rect().bottom();
+
+	// redraw area of preedit string.
+	update(0, cur_y - height, GuiWorkArea::width(),
+		(height + 1) * preedit_lines_);
+
+	if (preedit_string.empty()) {
+		last_width = 0;
+		preedit_lines_ = 1;
+		e->accept();
+		return;
+	}
+
+	// FIXME: Describe these variables.
+	last_width = 1;
+	size_t cur_pos = 0;
+	size_t rStart = 0;
+	size_t rLength = 0;
+	int cur_visible = 0;
+	QList<QInputMethodEvent::Attribute> const & att(e->attributes());
+
+	// get attributes of input method cursor.
+	for (int i = 0; i < att.size(); ++i) {
+		if (att.at(i).type == QInputMethodEvent::Cursor) {
+			cur_pos = att.at(i).start;
+			cur_visible = att.at(i).length;
+			break;
+		}
+	}
+
+	size_t preedit_length = preedit_string.length();
+
+	// get position of selection in input method.
+	// FIXME: isn't there a way to do this simplier?
+	if (cur_pos < preedit_length) {
+		for (int i = 0; i < att.size(); ++i) {
+			if (att.at(i).type == QInputMethodEvent::TextFormat) {
+				if (att.at(i).start <= int(cur_pos)
+					&& int(cur_pos) < att.at(i).start + att.at(i).length) {
+						rStart = att.at(i).start;
+						rLength = att.at(i).length;
+						if (cur_visible == 0)
+							cur_pos += rLength;
+						break;
+				}
+			}
+		}
+	}
+	else {
+		rStart = cur_pos;
+		rLength = 0;
+	}
+
+	int const right_margin = lyx::rightMargin();
+	Painter::preedit_style ps;
+	// Most often there would be only one line:
+	preedit_lines_ = 1;
+	for (size_t pos = 0; pos != preedit_length; ++pos) {
+		char_type const typed_char = preedit_string[pos];
+		// reset preedit string style
+		ps = Painter::preedit_default;
+
+		// if we reached the right extremity of the screen, go to next line.
+		if (cur_x + fm.width(typed_char) > GuiWorkArea::width() - right_margin) {
+			cur_x = right_margin;
+			cur_y += height + 1;
+			++preedit_lines_;
+		}
+		// preedit strings are displayed with dashed underline
+		// and partial strings are displayed white on black indicating
+		// that we are in selecting mode in the input method.
+		// FIXME: rLength == preedit_length is not a changing condition
+		// FIXME: should be put out of the loop.
+		if (pos >= rStart 
+			&& pos < rStart + rLength
+			&& !(cur_pos < rLength && rLength == preedit_length))
+			ps = Painter::preedit_selecting;
+
+		if (pos == cur_pos
+			&& (cur_pos < rLength && rLength == preedit_length))
+			ps = Painter::preedit_cursor;
+
+		// draw one character and update cur_x.
+		cur_x += pain.preeditText(cur_x, cur_y, typed_char, font, ps);
+	}
+
+	// update the preedit string screen area.
+	update(0, cur_y - preedit_lines_*height, GuiWorkArea::width(),
+		(height + 1) * preedit_lines_);
+
+	// Don't forget to accept the event!
 	e->accept();
+}
+
+
+QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
+{
+	QRect cur_r(0,0,0,0);
+	switch (query) {
+		// this is the CJK-specific composition window position.
+		case Qt::ImMicroFocus:
+			cur_r = cursor_->rect();
+			if (preedit_lines_ != 1)
+				cur_r.moveLeft(10);
+			cur_r.moveBottom(cur_r.bottom() + cur_r.height() * preedit_lines_);
+			// return lower right of cursor in LyX.
+			return cur_r;
+		default:
+			return QWidget::inputMethodQuery(query);
+	}
 }
 
 } // namespace frontend

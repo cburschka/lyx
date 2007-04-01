@@ -84,6 +84,39 @@ void Painter::buttonText(int x, int y, docstring const & str,
 }
 
 
+int Painter::preeditText(int x, int y, char_type c,
+	LyXFont const & font, preedit_style style)
+{
+	LyXFont temp_font = font;
+	FontMetrics const & fm = theFontMetrics(font);
+	int ascent = fm.maxAscent();
+	int descent = fm.maxDescent();
+	int height = ascent + descent;
+	int width = fm.width(c);
+
+	switch (style) {
+		case preedit_default:
+			// default unselecting mode.
+			fillRectangle(x, y - height + 1, width, height, LColor::background);
+			dashedUnderline(font, x, y - descent + 1, width);
+			break;
+		case preedit_selecting:
+			// We are in selecting mode: white text on black background.
+			fillRectangle(x, y - height + 1, width, height, LColor::black);
+			temp_font.setColor(LColor::white);
+			break;
+		case preedit_cursor:
+			// The character comes with a cursor.
+			fillRectangle(x, y - height + 1, width, height, LColor::background);
+			underline(font, x, y - descent + 1, width);
+			break;
+	}
+	text(x, y - descent + 1, c, temp_font);
+
+	return width;
+}
+
+
 void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
 	FontMetrics const & fm = theFontMetrics(f);
@@ -95,6 +128,21 @@ void Painter::underline(LyXFont const & f, int x, int y, int width)
 		line(x, y + below, x + width, y + below, f.color());
 	else
 		fillRectangle(x, y + below, width, below + height, f.color());
+}
+
+
+void Painter::dashedUnderline(LyXFont const & f, int x, int y, int width)
+{
+	FontMetrics const & fm = theFontMetrics(f);
+
+	int const below = max(fm.maxDescent() / 2, 2);
+	int height = max((fm.maxDescent() / 4) - 1, 1);
+
+	if (height >= 2)
+		height += below;
+
+	for (int n = 0; n < height; ++n)
+		line(x, y + below + n, x + width, y + below + n, f.color(), line_onoffdash);
 }
 
 } // namespace frontend

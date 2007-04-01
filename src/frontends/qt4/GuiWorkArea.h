@@ -142,6 +142,8 @@ private:
 	void keyPressEvent(QKeyEvent * ev);
 	/// IM events
 	void inputMethodEvent(QInputMethodEvent * ev);
+	/// IM query
+	QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
 
 public Q_SLOTS:
 	/// Adjust the LyX buffer view with the position of the scrollbar.
@@ -173,6 +175,8 @@ private:
 	bool need_resize_;
 	///
 	bool schedule_redraw_;
+	///
+	int preedit_lines_;
 };
 
 } // namespace frontend

@@ -66,6 +66,14 @@ public:
 		line_onoffdash //< dashes with spaces
 	};
 
+	/// possible character styles of preedit string.
+	/// This is used for CJK input method support.
+	enum preedit_style {
+		preedit_default, //< when unselecting, no cursor and dashed underline.
+		preedit_selecting, //< when selecting.
+		preedit_cursor //< with cursor.
+	};
+
 	virtual ~Painter() {}
 
 	/// draw a line from point to point
@@ -157,9 +165,17 @@ public:
 	void buttonText(int x, int baseline, docstring const & s,
 		LyXFont const & font, bool mouseHover);
 
+	/// draw a character of a preedit string for cjk support.
+	int preeditText(int x, int y,
+		char_type c, LyXFont const & f, preedit_style style);
+
 protected:
 	/// check the font, and if set, draw an underline
 	void underline(LyXFont const & f,
+		int x, int y, int width);
+
+	/// check the font, and if set, draw an dashed underline
+	void dashedUnderline(LyXFont const & f,
 		int x, int y, int width);
 
 	/// draw a bevelled button border
