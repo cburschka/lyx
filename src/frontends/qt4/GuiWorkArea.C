@@ -607,9 +607,10 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	else
 		stopBlinkingCursor();
 
-	// if last_width is last length of preedit string. 
-	static int last_width = 0;
+    // last_width : for checking if last preedit string was/wasn't empty.
+	static bool last_width = false;
 	if (!last_width && preedit_string.empty()) {
+		// if last_width is last length of preedit string. 
 		e->accept();
 		return;
 	}
@@ -628,25 +629,24 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		(height + 1) * preedit_lines_);
 
 	if (preedit_string.empty()) {
-		last_width = 0;
+		last_width = false;
 		preedit_lines_ = 1;
 		e->accept();
 		return;
 	}
+	last_width = true;
 
-	// FIXME: Describe these variables.
-	last_width = 1;
-	size_t cur_pos = 0;
-	size_t rStart = 0;
-	size_t rLength = 0;
-	int cur_visible = 0;
-	QList<QInputMethodEvent::Attribute> const & att(e->attributes());
+    // att : stores an IM attribute.
+	QList<QInputMethodEvent::Attribute> const & att = e->attributes();
 
 	// get attributes of input method cursor.
+    // cursor_pos : cursor position in preedit string.
+	size_t cursor_pos = 0;
+	bool cursor_is_visible = false;
 	for (int i = 0; i < att.size(); ++i) {
 		if (att.at(i).type == QInputMethodEvent::Cursor) {
-			cur_pos = att.at(i).start;
-			cur_visible = att.at(i).length;
+			cursor_pos = att.at(i).start;
+			cursor_is_visible = att.at(i).length != 0;
 			break;
 		}
 	}
@@ -655,22 +655,26 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	// get position of selection in input method.
 	// FIXME: isn't there a way to do this simplier?
-	if (cur_pos < preedit_length) {
+    // rStart : cursor position in selected string in IM.
+	size_t rStart = 0;
+    // rLength : selected string length in IM.
+	size_t rLength = 0;
+	if (cursor_pos < preedit_length) {
 		for (int i = 0; i < att.size(); ++i) {
 			if (att.at(i).type == QInputMethodEvent::TextFormat) {
-				if (att.at(i).start <= int(cur_pos)
-					&& int(cur_pos) < att.at(i).start + att.at(i).length) {
+				if (att.at(i).start <= int(cursor_pos)
+					&& int(cursor_pos) < att.at(i).start + att.at(i).length) {
 						rStart = att.at(i).start;
 						rLength = att.at(i).length;
-						if (cur_visible == 0)
-							cur_pos += rLength;
+						if (!cursor_is_visible)
+							cursor_pos += rLength;
 						break;
 				}
 			}
 		}
 	}
 	else {
-		rStart = cur_pos;
+		rStart = cursor_pos;
 		rLength = 0;
 	}
 
@@ -696,11 +700,11 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		// FIXME: should be put out of the loop.
 		if (pos >= rStart 
 			&& pos < rStart + rLength
-			&& !(cur_pos < rLength && rLength == preedit_length))
+			&& !(cursor_pos < rLength && rLength == preedit_length))
 			ps = Painter::preedit_selecting;
 
-		if (pos == cur_pos
-			&& (cur_pos < rLength && rLength == preedit_length))
+		if (pos == cursor_pos
+			&& (cursor_pos < rLength && rLength == preedit_length))
 			ps = Painter::preedit_cursor;
 
 		// draw one character and update cur_x.
