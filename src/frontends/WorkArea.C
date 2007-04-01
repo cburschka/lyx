@@ -244,7 +244,7 @@ void WorkArea::resizeBufferView()
 	buffer_view_->workAreaResize(width(), height());
 	lyx_view_.updateLayoutChoice();
 	lyx_view_.clearMessage();
-    lyx_view_.busy(false);
+	lyx_view_.busy(false);
 }
 
 
