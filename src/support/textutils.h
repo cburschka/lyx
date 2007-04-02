@@ -30,6 +30,9 @@ bool isLineSeparatorChar(char_type c)
 /// return true if a char is alphabetical (including accented chars)
 bool isLetterChar(char_type c);
 
+/// return whether \p c is an alphabetic character in the ASCII range
+bool isAlphaASCII(char_type c);
+
 /// return true if the char is printable
 bool isPrintable(char_type c);
 
@@ -38,6 +41,9 @@ bool isPrintableNonspace(char_type c);
 
 /// return true if a unicode char is a digit.
 bool isDigit(char_type c);
+
+/// return whether \p c is a digit in the ASCII range
+bool isDigitASCII(char_type c);
 
 } // namespace lyx
 

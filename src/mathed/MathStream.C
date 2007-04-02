@@ -16,22 +16,7 @@
 #include "MathStream.h"
 
 #include "support/lyxalgo.h"
-
-
-namespace {
-
-bool isAlpha(char c)
-{
-	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
-}
-
-
-bool isAlpha(lyx::char_type c)
-{
-	return c < 0x80 && isAlpha(static_cast<char>(c));
-}
-
-}
+#include "support/textutils.h"
 
 
 namespace lyx {
@@ -100,7 +85,7 @@ NormalStream & operator<<(NormalStream & ns, int i)
 WriteStream & operator<<(WriteStream & ws, docstring const & s)
 {
 	if (ws.pendingSpace() && s.length() > 0) {
-		if (isAlpha(s[0]))
+		if (isAlphaASCII(s[0]))
 			ws.os() << ' ';
 		ws.pendingSpace(false);
 	}
@@ -164,7 +149,7 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
 	if (ws.pendingSpace() && strlen(s) > 0) {
-		if (isAlpha(s[0]))
+		if (isAlphaASCII(s[0]))
 			ws.os() << ' ';
 		ws.pendingSpace(false);
 	}
@@ -177,7 +162,7 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 WriteStream & operator<<(WriteStream & ws, char c)
 {
 	if (ws.pendingSpace()) {
-		if (isAlpha(c))
+		if (isAlphaASCII(c))
 			ws.os() << ' ';
 		ws.pendingSpace(false);
 	}

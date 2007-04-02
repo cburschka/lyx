@@ -49,6 +49,7 @@
 #include "undo.h"
 
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
@@ -1228,7 +1229,7 @@ bool InsetMathNest::interpretChar(LCursor & cur, char_type c)
 			return true;
 		}
 
-		if (isalpha(c)) {
+		if (isAlphaASCII(c)) {
 			cur.activeMacro()->setName(name + docstring(1, c));
 			return true;
 		}

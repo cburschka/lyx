@@ -18,6 +18,7 @@
 #include "debug.h"
 
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <boost/current_function.hpp>
 
@@ -77,7 +78,7 @@ void InsetMath::write(WriteStream & os) const
 	os << "\\" << s;
 	// We need an extra ' ' unless this is a single-char-non-ASCII name
 	// or anything non-ASCII follows
-	if (s.size() != 1 || isalpha(s[0]))
+	if (s.size() != 1 || isAlphaASCII(s[0]))
 		os.pendingSpace(true);
 }
 

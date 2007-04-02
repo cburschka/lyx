@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 #include "support/convert.h"
+#include "support/textutils.h"
 
 #include <map>
 #include <sstream>
@@ -144,13 +145,13 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 		return (*known).second;
 
 	// make sure it starts with a letter
-	if (!isalpha(*it) && allowed.find(*it) >= allowed.size())
+	if (!isAlphaASCII(*it) && allowed.find(*it) >= allowed.size())
 		content += "x";
 
 	bool mangle = false;
 	for (; it != end; ++it) {
 		char c = *it;
-		if (isalpha(c) || isdigit(c) || c == '-' || c == '.'
+		if (isAlphaASCII(c) || isDigitASCII(c) || c == '-' || c == '.'
 		      || allowed.find(c) < allowed.size())
 			content += c;
 		else if (c == '_' || c == ' ') {
@@ -168,7 +169,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	if (mangle) {
 		content += "-" + convert<docstring>(mangleID++);
 	}
-	else if (isdigit(content[content.size() - 1])) {
+	else if (isDigitASCII(content[content.size() - 1])) {
 		content += ".";
 	}
 

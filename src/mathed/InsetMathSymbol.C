@@ -20,7 +20,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
-#include <cctype>
+#include "support/textutils.h"
 
 namespace lyx {
 
@@ -220,7 +220,7 @@ void InsetMathSymbol::write(WriteStream & os) const
 	// $,#, etc. In theory the restriction based on catcodes, but then
 	// we do not handle catcodes very well, let alone cat code changes,
 	// so being outside the alpha range is good enough.
-	if (name().size() == 1 && !std::isalpha(name()[0]))
+	if (name().size() == 1 && !isAlphaASCII(name()[0]))
 		return;
 
 	os.pendingSpace(true);

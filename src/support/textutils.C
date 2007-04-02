@@ -37,6 +37,12 @@ bool isLetterChar(char_type c)
 }
 
 
+bool isAlphaASCII(char_type c)
+{
+	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+}
+
+
 bool isPrintable(char_type c)
 {
 	if (!is_utf16(c)) {
@@ -72,6 +78,12 @@ bool isDigit(char_type c)
 		// c outside the UCS4 range is catched as well
 		return false;
 	return ucs4_to_qchar(c).isDigit();
+}
+
+
+bool isDigitASCII(char_type c)
+{
+	return '0' <= c && c <= '9';
 }
 
 } // namespace lyx
