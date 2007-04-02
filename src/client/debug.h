@@ -14,14 +14,15 @@
 #define LYXDEBUG_H
 
 #include "support/debugstream.h"
+#include "support/docstring.h"
 
 
 namespace lyx {
 
 /** Ideally this should have been a namespace, but since we try to be
-    compilable on older C++ compilators too, we use a class instead.
-    This is all the different debug levels that we have.
-*/
+ *  compilable on older C++ compilators too, we use a struct instead.
+ *  This is all the different debug levels that we have.
+ */
 class lyx_debug_trait {
 public:
 	///
@@ -64,14 +65,14 @@ void operator|=(lyx_debug_trait::type & d1, lyx_debug_trait::type d2)
 }
 
 
-// std::ostream & operator<<(std::ostream & o, Debug::type t);
-
 typedef basic_debugstream<lyx_debug_trait> LyXErr;
 typedef LyXErr::debug Debug;
 
 extern LyXErr lyxerr;
 
-
 } // namespace lyx
+
+#define LYXERR(type) if (!lyx::lyxerr.debugging(type)) ; else lyx::lyxerr
+
 
 #endif
