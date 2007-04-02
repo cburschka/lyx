@@ -32,7 +32,6 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 
-#include <cctype>
 #include <fstream>
 #include <iostream>
 #include <string>

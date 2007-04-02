@@ -19,7 +19,6 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
-#include <cctype>
 #include <iostream>
 #include <sstream>
 #include <vector>

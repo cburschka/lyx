@@ -6,7 +6,6 @@
 #include <boost/tuple/tuple.hpp>
 
 #include <algorithm>
-#include <cctype>
 #include <cstdlib>
 #include <exception>
 #include <fstream>

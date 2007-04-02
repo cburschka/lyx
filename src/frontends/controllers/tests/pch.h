@@ -41,7 +41,6 @@
 #endif
 
 #include <algorithm>
-#include <cctype>
 #include <cerrno>
 #include <csignal>
 #include <cstddef>

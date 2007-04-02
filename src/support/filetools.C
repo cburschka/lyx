@@ -42,7 +42,6 @@
 
 #include <fcntl.h>
 
-#include <cctype>
 #include <cerrno>
 #include <cstdlib>
 #include <cstdio>
@@ -53,8 +52,6 @@
 
 #ifndef CXX_GLOBAL_CSTD
 using std::fgetc;
-using std::isalnum;
-using std::isalpha;
 #endif
 
 using std::endl;

@@ -56,9 +56,6 @@ namespace lyx {
 using std::string;
 using std::vector;
 using std::endl;
-#ifndef CXX_GLOBAL_CSTD
-using std::isalpha;
-#endif
 using std::min;
 using std::for_each;
 
