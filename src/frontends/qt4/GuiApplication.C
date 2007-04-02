@@ -52,6 +52,8 @@
 
 #include <boost/bind.hpp>
 
+#include <exception>
+
 using std::string;
 using std::endl;
 
@@ -220,10 +222,13 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	try {
 		return_value = QApplication::notify(receiver, event);
 	}
+	catch (std::exception  const & e) {
+		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
+		LyX::cref().emergencyCleanup();
+		abort();
+	}
 	catch (...) {
-		lyxerr << "ERROR: Exception caught in the Qt event loop, exiting..."
-			<< endl;
-
+		lyxerr << "Caught some really weird exception..." << endl;
 		LyX::cref().emergencyCleanup();
 		abort();
 	}
