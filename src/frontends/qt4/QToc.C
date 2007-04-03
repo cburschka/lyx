@@ -107,6 +107,15 @@ void QToc::goTo(int type, QModelIndex const & index)
 }
 
 
+bool QToc::initialiseParams(std::string const & data)
+{
+	if (!ControlToc::initialiseParams(data))
+		return false;
+	update();
+	return true;
+}
+
+
 void QToc::update()
 {
 	updateType();

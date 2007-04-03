@@ -77,7 +77,6 @@ bool ControlToc::initialiseParams(string const & data)
 		}
 	}
 
-	update();
 	return true;
 }
 

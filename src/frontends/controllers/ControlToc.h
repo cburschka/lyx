@@ -32,7 +32,7 @@ public:
 	virtual ~ControlToc() {}
 
 	/// \c ControlCommand inherited method.
-	bool initialiseParams(std::string const & data);
+	virtual bool initialiseParams(std::string const & data);
 
 	///
 	TocList const & tocs() const;
@@ -62,10 +62,6 @@ public:
 	bool canOutline(size_t type) const;
 	///
 	void updateBackend();
-
-public:
-	/// Update the model data if needed.
-	virtual void update() = 0;
 
 private:
 	/// Return the guiname from a given cmdName of the TOC param

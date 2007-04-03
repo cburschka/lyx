@@ -32,7 +32,11 @@ class QToc : public QObject, public ControlToc
 public:
 
 	QToc(Dialog &);
+	virtual ~QToc() {}
 
+	/// \c ControlToc inherited method.
+	virtual bool initialiseParams(std::string const & data);
+	///
 	void update();
 	///
 	void updateToc();
