@@ -108,6 +108,8 @@ bool GuiClipboard::isInternal() const
 {
 	// ownsClipboard() is also true for stuff coming from dialogs, e.g.
 	// the preamble dialog
+	// FIXME: This does only work on X11, since ownsClipboard() is
+	// hardwired to return false on Windows and OS X.
 	return qApp->clipboard()->ownsClipboard() && hasLyXContents();
 }
 
