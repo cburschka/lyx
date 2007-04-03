@@ -50,7 +50,9 @@ void QDialogView::show()
 		build();
 	}
 
-	form()->setMinimumSize(form()->sizeHint());
+	QSize sizeHint = form()->sizeHint();
+	if (sizeHint.height() >= 0 && sizeHint.width() >= 0)
+		form()->setMinimumSize(sizeHint);
 
 	update();  // make sure its up-to-date
 	if (dialog().controller().exitEarly())
