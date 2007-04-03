@@ -1,0 +1,277 @@
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
+\begin_document
+\begin_header
+\textclass g-brief2
+\begin_preamble
+\fenstermarken % prints address window marks
+\faltmarken % prints folding marks
+%\lochermarke % prints puncher marks 
+\trennlinien % prints striplines
+%\unserzeichen % prints "our ref" instead of "my ref"
+\end_preamble
+\language english
+\inputencoding auto
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 4
+\tocdepth 4
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "usti" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Note also the document preamble settings.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Name
+Place for corporate-name or logo
+\end_layout
+
+\begin_layout NameRowA
+Bob Testman
+\end_layout
+
+\begin_layout NameRowB
+
+\end_layout
+
+\begin_layout NameRowC
+Exampletester
+\end_layout
+
+\begin_layout NameRowD
+
+\end_layout
+
+\begin_layout NameRowE
+
+\end_layout
+
+\begin_layout NameRowF
+
+\end_layout
+
+\begin_layout NameRowG
+
+\end_layout
+
+\begin_layout AdressRowA
+Example Corporation
+\end_layout
+
+\begin_layout AdressRowB
+
+\end_layout
+
+\begin_layout AdressRowC
+Institut for example design
+\end_layout
+
+\begin_layout AdressRowD
+Examplestreet 103
+\end_layout
+
+\begin_layout AdressRowE
+10001 Testburg
+\end_layout
+
+\begin_layout AdressRowF
+
+\end_layout
+
+\begin_layout TelephoneRowA
+Mobile: 0001/ 123 4569
+\end_layout
+
+\begin_layout TelephoneRowB
+Fax: 0001/ 123 4567
+\end_layout
+
+\begin_layout TelephoneRowC
+
+\end_layout
+
+\begin_layout TelephoneRowD
+
+\end_layout
+
+\begin_layout TelephoneRowE
+
+\end_layout
+
+\begin_layout InternetRowA
+http:/
+\begin_inset Formula $\!$
+\end_inset
+
+/www.exampletest.xz
+\end_layout
+
+\begin_layout InternetRowB
+testman@exampletest.xz
+\end_layout
+
+\begin_layout InternetRowC
+
+\end_layout
+
+\begin_layout InternetRowD
+
+\end_layout
+
+\begin_layout InternetRowE
+
+\end_layout
+
+\begin_layout InternetRowF
+
+\end_layout
+
+\begin_layout BankRowA
+
+\end_layout
+
+\begin_layout BankRowB
+
+\end_layout
+
+\begin_layout BankRowC
+
+\end_layout
+
+\begin_layout BankRowD
+
+\end_layout
+
+\begin_layout BankRowE
+
+\end_layout
+
+\begin_layout BankRowF
+
+\end_layout
+
+\begin_layout ReturnAddress
+Example Corp.
+ 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ Examplestreet 103 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ 10001 Testburg
+\end_layout
+
+\begin_layout PostalComment
+Airmail
+\end_layout
+
+\begin_layout Address
+
+\size large
+Cynthia Mustermann
+\newline
+Musterstraße
+\newline
+
+\newline
+01234 Musterstadt
+\newline
+Germany
+\end_layout
+
+\begin_layout MyRef
+my ref
+\end_layout
+
+\begin_layout YourRef
+your ref
+\end_layout
+
+\begin_layout YourMail
+01/ 01 2004
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Reference
+Reference
+\end_layout
+
+\begin_layout Opening
+Ladies and gentlemen,
+\end_layout
+
+\begin_layout Closing
+regards
+\end_layout
+
+\begin_layout Signature
+Bob Testman
+\end_layout
+
+\begin_layout Encl.
+Encl.
+\end_layout
+
+\begin_layout cc
+cc
+\end_layout
+
+\begin_layout Letter
+this is the letter text.
+\end_layout
+
+\end_body
+\end_document

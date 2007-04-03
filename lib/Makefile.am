@@ -1000,6 +1000,7 @@ dist_templates_DATA = \
 	templates/docbook_article.lyx \
 	templates/elsart.lyx \
 	templates/fr_beamer-conference-ornate-20min.lyx \
+	templates/g-brief2.lyx \
 	templates/g-brief-de.lyx \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \

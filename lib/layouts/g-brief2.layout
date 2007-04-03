@@ -9,14 +9,12 @@
 # Input stdletter.inc
 
 
-
-
 # General textclass parameters
 Format 3
 Columns			1
 Sides			1
 PageStyle		Empty
-DefaultStyle	Letter
+DefaultStyle		Standard
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
@@ -28,29 +26,32 @@ DefaultFont
   Color			None
 EndFont
 
-
+# Standard style definition
+Style Standard
+  LatexName             dummy
+  ParIndent             MM
+  ParSkip               0.4
+  AlignPossible         Block, Left, Right, Center
+END
 
 # Brieftext style definition
 Style Letter
   Margin  		Static
   LatexType 		Environment
   LatexName 		g-brief
+  TopSep		1
   ParSkip 		0.4
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left, Right, Center
   LabelType 		Top_Environment
-  LabelString		"Letter:"
+  LabelString		Letter:
   LabelFont
     Series		Bold
     Shape		Italic
     Color               Blue
   EndFont
 End
-
-
-
-
 
 # Name und Titel des Absenders
 Style Name
@@ -63,7 +64,7 @@ Style Name
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"Name:"
+  LabelString		Name:
   # label font definition
   LabelFont
     Series		Bold
@@ -74,17 +75,16 @@ End
 
 # Name und Spruch in der Fusszeile
 Style NameRowA
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileA
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
-  TopSep        1.5
+  TopSep  		1.5
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowA:"
+  LabelString		NameRowA:
   # label font definition
   LabelFont
     Series		Bold
@@ -94,16 +94,15 @@ Style NameRowA
 End
 
 Style NameRowB
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileB
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowB:"
+  LabelString		NameRowB:
   # label font definition
   LabelFont
     Series		Bold
@@ -113,16 +112,15 @@ Style NameRowB
 End
 
 Style NameRowC
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileC
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowC:"
+  LabelString		NameRowC:
   # label font definition
   LabelFont
     Series		Bold
@@ -132,16 +130,15 @@ Style NameRowC
 End
 
 Style NameRowD
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileD
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowD:"
+  LabelString		NameRowD:
   # label font definition
   LabelFont
     Series		Bold
@@ -151,16 +148,15 @@ Style NameRowD
 End
 
 Style NameRowE
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileE
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowE:"
+  LabelString		NameRowE:
   # label font definition
   LabelFont
     Series		Bold
@@ -170,16 +166,15 @@ Style NameRowE
 End
 
 Style NameRowF
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileF
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowF:"
+  LabelString		NameRowF:
   # label font definition
   LabelFont
     Series		Bold
@@ -189,16 +184,15 @@ Style NameRowF
 End
 
 Style NameRowG
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		NameZeileG
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"NameRowG:"
+  LabelString		NameRowG:
   # label font definition
   LabelFont
     Series		Bold
@@ -208,38 +202,17 @@ Style NameRowG
 End
 
 
-# Unterschrift des Absenders
-Style Signature
-  Margin		Static
-  LatexType		Command
-  LatexName		Unterschrift
-  LeftMargin		TelephoneRowA:xx
-  LabelSep		xx
-  KeepEmpty		1
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		"Signature:"
-  # label font definition
-  LabelFont
-    Series		Bold
-    Shape		Italic
-    Color               Blue
-  EndFont
-End
-
-Style AddressRowA
-  Margin		Static
+Style AdressRowA
+  Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileA
-  LeftMargin		TelephoneRowA:xx
-  TopSep        1.5
+  TopSep        	1
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AddressRowA:"
+  LabelString		AdressRowA:
   # label font definition
   LabelFont
     Series		Bold
@@ -248,17 +221,16 @@ Style AddressRowA
   EndFont
 End
 
-Style AddressRowB
-  Margin		Static
+Style AdressRowB
+  Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileB
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AddressRowB:"
+  LabelString		AdressRowB:
   # label font definition
   LabelFont
     Series		Bold
@@ -267,17 +239,16 @@ Style AddressRowB
   EndFont
 End
 
-Style AddressRowC
-  Margin		Static
+Style AdressRowC
+  Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileC
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AddressRowC:"
+  LabelString		AdressRowC:
   # label font definition
   LabelFont
     Series		Bold
@@ -286,17 +257,16 @@ Style AddressRowC
   EndFont
 End
 
-Style AddressRowD
-  Margin		Static
+Style AdressRowD
+  Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileD
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AddressRowD:"
+  LabelString		AdressRowD:
   # label font definition
   LabelFont
     Series		Bold
@@ -305,17 +275,16 @@ Style AddressRowD
   EndFont
 End
 
-Style AddressRowE
-  Margin		Static
+Style AdressRowE
+  Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileE
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AddressRowE:"
+  LabelString		AdressRowE:
   # label font definition
   LabelFont
     Series		Bold
@@ -324,17 +293,16 @@ Style AddressRowE
   EndFont
 End
 
-Style AddressRowF
-  Margin		Static
+Style AdressRowF
+  Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileF
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AddressRowF:"
+  LabelString		AdressRowF:
   # label font definition
   LabelFont
     Series		Bold
@@ -344,17 +312,16 @@ Style AddressRowF
 End
 
 Style TelephoneRowA
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		TelefonZeileA
-  LeftMargin		TelephoneRowA:xx
-  TopSep        1.5
+  TopSep        	1
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"TelephoneRowA:"
+  LabelString		TelephoneRowA:
   # label font definition
   LabelFont
     Series		Bold
@@ -364,16 +331,15 @@ Style TelephoneRowA
 End
 
 Style TelephoneRowB
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		TelefonZeileB
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"TelephoneRowB:"
+  LabelString		TelephoneRowB:
   # label font definition
   LabelFont
     Series		Bold
@@ -383,16 +349,15 @@ Style TelephoneRowB
 End
 
 Style TelephoneRowC
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		TelefonZeileC
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"TelephoneRowC:"
+  LabelString		TelephoneRowC:
   # label font definition
   LabelFont
     Series		Bold
@@ -402,16 +367,15 @@ Style TelephoneRowC
 End
 
 Style TelephoneRowD
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		TelefonZeileD
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"TelephoneRowD:"
+  LabelString		TelephoneRowD:
   # label font definition
   LabelFont
     Series		Bold
@@ -421,16 +385,15 @@ Style TelephoneRowD
 End
 
 Style TelephoneRowE
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		TelefonZeileE
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"TelephoneRowE:"
+  LabelString		TelephoneRowE:
   # label font definition
   LabelFont
     Series		Bold
@@ -440,16 +403,15 @@ Style TelephoneRowE
 End
 
 Style TelephoneRowF
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		TelefonZeileF
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"TelephoneRowF:"
+  LabelString		TelephoneRowF:
   # label font definition
   LabelFont
     Series		Bold
@@ -459,17 +421,16 @@ Style TelephoneRowF
 End
 
 Style InternetRowA
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		InternetZeileA
-  LeftMargin		TelephoneRowA:xx
-  TopSep        1.5
+  TopSep        	1
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"InternetRowA:"
+  LabelString		InternetRowA:
   # label font definition
   LabelFont
     Series		Bold
@@ -479,16 +440,15 @@ Style InternetRowA
 End
 
 Style InternetRowB
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		InternetZeileB
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"InternetRowB:"
+  LabelString		InternetRowB:
   # label font definition
   LabelFont
     Series		Bold
@@ -496,18 +456,16 @@ Style InternetRowB
     Color       Green
   EndFont
 End
-
 Style InternetRowC
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		InternetZeileC
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"InternetRowC:"
+  LabelString		InternetRowC:
   # label font definition
   LabelFont
     Series		Bold
@@ -515,18 +473,16 @@ Style InternetRowC
     Color       Green
   EndFont
 End
-
 Style InternetRowD
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		InternetZeileD
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"InternetRowD:"
+  LabelString		InternetRowD:
   # label font definition
   LabelFont
     Series		Bold
@@ -534,18 +490,16 @@ Style InternetRowD
     Color       Green
   EndFont
 End
-
 Style InternetRowE
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		InternetZeileE
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"InternetRowE:"
+  LabelString		InternetRowE:
   # label font definition
   LabelFont
     Series		Bold
@@ -553,18 +507,16 @@ Style InternetRowE
     Color       Green
   EndFont
 End
-
 Style InternetRowF
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		InternetZeileF
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"InternetRowF:"
+  LabelString		InternetRowF:
   # label font definition
   LabelFont
     Series		Bold
@@ -574,17 +526,16 @@ Style InternetRowF
 End
 
 Style BankRowA
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		BankZeileA
-  LeftMargin		TelephoneRowA:xx
-  TopSep        1.5
+  TopSep        	1
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"BankRowA:"
+  LabelString		BankRowA:
   # label font definition
   LabelFont
     Series		Bold
@@ -594,16 +545,15 @@ Style BankRowA
 End
 
 Style BankRowB
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		BankZeileB
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"BankRowB:"
+  LabelString		BankRowB:
   # label font definition
   LabelFont
     Series		Bold
@@ -613,16 +563,15 @@ Style BankRowB
 End
 
 Style BankRowC
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		BankZeileC
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"BankRowC:"
+  LabelString		BankRowC:
   # label font definition
   LabelFont
     Series		Bold
@@ -632,16 +581,15 @@ Style BankRowC
 End
 
 Style BankRowD
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		BankZeileD
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"BankRowD:"
+  LabelString		BankRowD:
   # label font definition
   LabelFont
     Series		Bold
@@ -651,16 +599,15 @@ Style BankRowD
 End
 
 Style BankRowE
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		BankZeileE
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"BankRowE:"
+  LabelString		BankRowE:
   # label font definition
   LabelFont
     Series		Bold
@@ -670,16 +617,15 @@ Style BankRowE
 End
 
 Style BankRowF
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		BankZeileF
-  LeftMargin		TelephoneRowA:xx
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"BankRowF:"
+  LabelString		BankRowF:
   # label font definition
   LabelFont
     Series		Bold
@@ -689,19 +635,18 @@ Style BankRowF
 End
 
 
-
 # RetourAdresse
 Style ReturnAddress
-  Margin		Static
+  Margin		Dynamic
   LatexType		Command
   LatexName		RetourAdresse
-  LeftMargin		TelephoneRowA:xx
+  TopSep        	1.5
   LabelSep		xx
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"ReturnAddress:"
+  LabelString		ReturnAddress:
   # label font definition
   LabelFont
     Series		Bold
@@ -710,6 +655,45 @@ Style ReturnAddress
   EndFont
 End
 
+# Postvermerk
+Style PostalComment
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		Postvermerk
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		PostalComment:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+   
+# Adresse
+Style Address
+  Margin		Static
+  LatexType		Command
+  LatexName		Adresse
+  LeftMargin		TelephoneRowA:xx
+  LabelSep		xx
+  TopSep		1
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Address:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
 
 # MeinZeichen
 Style MyRef
@@ -718,11 +702,12 @@ Style MyRef
   LatexName		MeinZeichen
   LeftMargin		TelephoneRowA:xx
   LabelSep		xx
+  TopSep		1
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"MyRef:"
+  LabelString		MyRef:
   # label font definition
   LabelFont
     Series		Bold
@@ -743,7 +728,7 @@ Style YourRef
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"YourRef:"
+  LabelString		YourRef:
   # label font definition
   LabelFont
     Series		Bold
@@ -764,50 +749,7 @@ Style YourMail
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"YourMail:"
-  # label font definition
-  LabelFont
-    Series		Bold
-    Shape		Italic
-    Color               Blue
-  EndFont
-End
-
-
-# Postvermerk
-Style PostalComment
-  Margin		Static
-  LatexType		Command
-  LatexName		Postvermerk
-  LeftMargin		TelephoneRowA:xx
-  LabelSep		xx
-  KeepEmpty		1
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		"PostalComment:"
-  # label font definition
-  LabelFont
-    Series		Bold
-    Shape		Italic
-    Color               Blue
-  EndFont
-End
-
-
-# Adresse
-Style Address
-  Margin		Static
-  LatexType		Command
-  LatexName		Adresse
-  LeftMargin		TelephoneRowA:xx
-  LabelSep		xx
-  TopSep		1.5
-  KeepEmpty		1
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		"Address:"
+  LabelString		YourMail:
   # label font definition
   LabelFont
     Series		Bold
@@ -828,7 +770,7 @@ Style Date
   Align 		Left
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"Date:"
+  LabelString		Date:
   # label font definition
   LabelFont
     Series		Bold
@@ -844,13 +786,13 @@ Style Reference
   LatexName 		Betreff
   LeftMargin		TelephoneRowA:xx
   LabelSep		xx
-  TopSep		1.5
+  TopSep		1
   ParSep		0.4
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"Reference:"
+  LabelString		Reference:
   # label font definition
   LabelFont
     Series		Bold
@@ -868,13 +810,58 @@ Style Opening
   KeepEmpty		1
   LeftMargin		TelephoneRowA:xx
   LabelSep		xx
-  TopSep		1.5
+  TopSep		1
   ParSep		0.4
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"Opening:"
+  LabelString		Opening:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
 
+# Gruss style definition
+Style Closing
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		LyxGruss
+  LeftMargin		xxxxxxxxxxxx::xx
+  LabelSep		xx
+  ParSep		0.4
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Closing:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+  #define the environment lyxGruss
+  Preamble
+  \newcommand{\LyxGruss}[1]
+    { \Gruss{#1}{0.5cm} }
+  EndPreamble
+End
+
+# Unterschrift des Absenders
+Style Signature
+  Margin		Static
+  LatexType		Command
+  LatexName		Unterschrift
+  LeftMargin		xxxxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Signature:
   # label font definition
   LabelFont
     Series		Bold
@@ -884,21 +871,19 @@ Style Opening
 End
 
 
-
 # Anlagen style definition
 Style Encl.
   Margin  		Static
   LatexType 		Command
   LatexName 		Anlagen
   KeepEmpty		1
-  LeftMargin		TelephoneRowA:xx
+  LeftMargin		xxxxxxxxxxxx::xx
   LabelSep		xx
   ParSep		0.4
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"Encl.:"
-
+  LabelString		Encl.:
   # label font definition
   LabelFont
     Series		Bold
@@ -914,59 +899,25 @@ Style cc
   LatexType 		Command
   LatexName 		Verteiler
   KeepEmpty		1
-  LeftMargin		TelephoneRowA:xx
+  LeftMargin		xxxxxxxxxxxx::xx
   LabelSep		xx
   ParSep		0.4
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"cc:"
-
+  LabelString		cc:
   # label font definition
   LabelFont
     Series		Bold
     Shape		Italic
     Color               Blue
   EndFont
-End
-
-# Gruss style definition
-Style Closing
-  Margin  		Static
-  LatexType 		Command
-  LatexName 		LyxGruss
-  LeftMargin		TelephoneRowA:xx
-  LabelSep		xx
-  BottomSep		1.5
-  ParSep		0.4
-  KeepEmpty		1
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		"Closing:"
-
-  # label font definition
-  LabelFont
-    Series		Bold
-    Shape		Italic
-    Color               Blue
-  EndFont
-
-  #define the environment lyxGruss
-  Preamble
-  \newcommand{\LyxGruss}[1]
-    { \Gruss{#1}{0.5cm} }
-  EndPreamble
-
-
 End
 
 
 
 Input stdfloats.inc
 Input stdcounters.inc
-
-
 
 
 
