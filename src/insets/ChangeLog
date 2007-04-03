@@ -1,3 +1,11 @@
+2007-04-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalSupport.C (doSubstitution): redo the substitution with
+	use_latex_path == false for the filename argument of $$Contents,
+	since the original substitution might have been done with
+	use_latex_path == true, and that can lead to escaped filenames
+	that are only valid for TeX. (bug 3241)
+
 2007-03-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcite.C: really call getEngine()

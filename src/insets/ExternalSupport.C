@@ -168,12 +168,17 @@ string const doSubstitution(InsetExternalParams const & params,
 
 	// Handle the $$Contents(filename) syntax
 	if (support::contains(result, "$$Contents(\"")) {
-
-		string::size_type const pos = result.find("$$Contents(\"");
-		string::size_type const end = result.find("\")", pos);
-		string const file = result.substr(pos + 12, end - (pos + 12));
+		// Since use_latex_path may be true we must extract the file
+		// name from s instead of result and do the substitutions
+		// again, this time with use_latex_path false.
+		string::size_type const spos = s.find("$$Contents(\"");
+		string::size_type const send = s.find("\")", spos);
+		string const file_template = s.substr(spos + 12, send - (spos + 12));
+		string const file = doSubstitution(params, buffer,
+						   file_template, false,
+						   external_in_tmpdir, what);
 		string contents;
-
+		
 		string const filepath = support::IsFileReadable(file) ?
 			buffer.filePath() : m_buffer->temppath();
 		support::Path p(filepath);
@@ -181,9 +186,9 @@ string const doSubstitution(InsetExternalParams const & params,
 		if (support::IsFileReadable(file))
 			contents = support::GetFileContents(file);
 
-		result = support::subst(result,
-					("$$Contents(\"" + file + "\")").c_str(),
-					contents);
+		string::size_type const pos = result.find("$$Contents(\"");
+		string::size_type const end = result.find("\")", pos);
+		result.replace(pos, end + 2, contents);
 	}
 
 	return result;
