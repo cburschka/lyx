@@ -178,8 +178,6 @@ public:
 	/// name of the file the buffer is associated with.
 	FileName filename;
 
-	Messages * messages;
-
 	/** Set to true only when the file is fully loaded.
 	 *  Used to prevent the premature generation of previews
 	 *  and by the citation inset.
@@ -199,7 +197,7 @@ public:
 
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), messages(0), file_fully_loaded(false), inset(params),
+	  filename(file), file_fully_loaded(false), inset(params),
 	  toc_backend(&parent)
 {
 	inset.setAutoBreakRows(true);
