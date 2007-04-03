@@ -140,6 +140,12 @@ std::string const to_filesystem8bit(docstring const & s)
 }
 
 
+docstring const normalize_kc(docstring const & s)
+{
+	return qstring_to_ucs4(toqstr(s).normalized(QString::NormalizationForm_KC));
+}
+
+
 bool operator==(lyx::docstring const & l, char const * r)
 {
 	int const len = l.length();

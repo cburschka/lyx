@@ -12,7 +12,7 @@
 #ifndef LYX_CB_H
 #define LYX_CB_H
 
-#include <string>
+#include "support/docstring.h"
 
 namespace lyx {
 
@@ -33,8 +33,9 @@ void autoSave(BufferView * bv);
 void newFile(BufferView * bv, std::string const & filename);
 ///
 void insertPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
-///
-std::string getContentsOfPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
+/// read plain text file (if \p f is empty, prompt for a filename)
+docstring const getContentsOfPlaintextFile(BufferView * bv,
+		std::string const & f, bool asParagraph);
 ///
 void reconfigure(LyXView & lv);
 

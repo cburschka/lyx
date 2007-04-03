@@ -62,6 +62,9 @@ docstring const from_filesystem8bit(std::string const & s);
 /// convert \p s from ucs4 to the encoding of the file system.
 std::string const to_filesystem8bit(docstring const & s);
 
+/// normalize \p s to precomposed form kc
+docstring const normalize_kc(docstring const & s);
+
 /// Compare a docstring with a C string of ASCII characters
 bool operator==(lyx::docstring const &, char const *);
 

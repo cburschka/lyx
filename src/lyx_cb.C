@@ -326,8 +326,7 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 	if (!bv->buffer())
 		return;
 
-	// FIXME: We don't know the encoding of the file
-	docstring const tmpstr = from_utf8(getContentsOfPlaintextFile(bv, f, asParagraph));
+	docstring const tmpstr = getContentsOfPlaintextFile(bv, f, asParagraph);
 	if (tmpstr.empty())
 		return;
 
@@ -341,8 +340,8 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 }
 
 
-// Read plain text file (if filename is empty, prompt for one)
-string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
+docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
+		bool asParagraph)
 {
 	FileName fname(f);
 
@@ -355,12 +354,12 @@ string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asPara
 				     FileFilterList(), docstring());
 
 		if (result.first == FileDialog::Later)
-			return string();
+			return docstring();
 
 		fname = makeAbsPath(to_utf8(result.second));
 
 		if (fname.empty())
-			return string();
+			return docstring();
 	}
 
 	if (!fs::is_readable(fname.toFilesystemEncoding())) {
@@ -369,7 +368,7 @@ string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asPara
 		docstring const text = bformat(_("Could not read the specified document\n"
 							   "%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not read file"), text);
-		return string();
+		return docstring();
 	}
 
 	ifstream ifs(fname.toFilesystemEncoding().c_str());
@@ -379,7 +378,7 @@ string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asPara
 		docstring const text = bformat(_("Could not open the specified document\n"
 							   "%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not open file"), text);
-		return string();
+		return docstring();
 	}
 
 	ifs.unsetf(ios::skipws);
@@ -399,7 +398,8 @@ string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asPara
 	copy(ii, end, back_inserter(tmpstr));
 #endif
 
-	return tmpstr;
+	// FIXME UNICODE: We don't know the encoding of the file
+	return normalize_kc(from_utf8(tmpstr));
 }
 
 

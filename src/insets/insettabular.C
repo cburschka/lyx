@@ -701,9 +701,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT: {
 		// FIXME UNICODE
-		string const tmpstr = getContentsOfPlaintextFile(&cur.bv(), to_utf8(cmd.argument()), false);
-		// FIXME: We don't know the encoding of the file
-		if (!tmpstr.empty() && !insertPlaintextString(cur.bv(), from_utf8(tmpstr), false))
+		docstring const tmpstr = getContentsOfPlaintextFile(&cur.bv(), to_utf8(cmd.argument()), false);
+		if (!tmpstr.empty() && !insertPlaintextString(cur.bv(), tmpstr, false))
 			cur.undispatched();
 		break;
 	}
