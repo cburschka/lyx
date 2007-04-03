@@ -2184,6 +2184,7 @@ lib_layouts_files = Split('''
     ltugboat.layout
     manpage.layout
     memoir.layout
+    moderncv.layout
     mwart.layout
     mwbk.layout
     mwrep.layout
@@ -2267,6 +2268,7 @@ lib_templates_files = Split('''
     README.new_templates
     aa.lyx
     aastex.lyx
+    agu_article.lyx
     beamer-conference-ornate-20min.lyx
     de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
@@ -2276,17 +2278,19 @@ lib_templates_files = Split('''
     g-brief2.lyx
     g-brief-de.lyx
     g-brief-en.lyx
+    ijmpc.lyx
+    ijmpd.lyx
     hollywood.lyx
     kluwer.lyx
     koma-letter2.lyx
     latex8.lyx
     letter.lyx
+    modernCV.lyx
+    modernCV.png
     revtex.lyx
     revtex4.lyx
     slides.lyx
-    ijmpc.lyx
-    ijmpd.lyx
-    agu_article.lyx
+    test.bib
 ''')
 
 

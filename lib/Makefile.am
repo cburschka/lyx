@@ -926,6 +926,7 @@ dist_layouts_DATA =\
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
 	layouts/manpage.layout \
+	layouts/moderncv.layout \
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
@@ -994,6 +995,7 @@ dist_templates_DATA = \
 	templates/README.new_templates \
 	templates/aa.lyx \
 	templates/aastex.lyx \
+	templates/agu_article.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
@@ -1004,16 +1006,18 @@ dist_templates_DATA = \
 	templates/g-brief-de.lyx \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
+	templates/ijmpc.lyx \
+	templates/ijmpd.lyx \
 	templates/kluwer.lyx \
 	templates/koma-letter2.lyx \
 	templates/latex8.lyx \
 	templates/letter.lyx \
+	templates/modernCV.lyx \
+	templates/modernCV.png \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx \
-	templates/ijmpc.lyx \
-	templates/ijmpd.lyx \
-	templates/agu_article.lyx
+	templates/test.bib
 
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \
