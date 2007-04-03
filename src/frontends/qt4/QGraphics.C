@@ -79,7 +79,6 @@ void QGraphics::build_dialog()
 	bcview().addReadOnly(dialog_->filename);
 	bcview().addReadOnly(dialog_->browsePB);
 	bcview().addReadOnly(dialog_->unzipCB);
-	bcview().addReadOnly(dialog_->filename);
 	bcview().addReadOnly(dialog_->bbFrame);
 	bcview().addReadOnly(dialog_->draftCB);
 	bcview().addReadOnly(dialog_->clip);

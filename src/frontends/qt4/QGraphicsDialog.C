@@ -185,6 +185,12 @@ void QGraphicsDialog::on_filename_textChanged(const QString & filename)
 
 void QGraphicsDialog::on_scaleCB_toggled(bool setscale)
 {
+	//FIXME: There is no scale text when the scale was "100" before keepaspectratio
+	//was checked and then scaleCB is checked again
+	//When somebody implements a void on toggling keepaspectration, this
+	//case should be handled there.
+	if (scaleCB->isChecked() && Scale->text() == "")
+		Scale->setText("100");
 	Scale->setEnabled(setscale);
 	widthL->setDisabled(setscale);
 	Width->setDisabled(setscale);
