@@ -299,9 +299,6 @@ public:
 	void changeLanguage(Language const * from, Language const * to);
 
 	///
-	void updateDocLang(Language const * nlang);
-
-	///
 	bool isMultiLingual() const;
 
 	/// Does this mean that this is buffer local?

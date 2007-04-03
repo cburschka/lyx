@@ -594,11 +594,6 @@ bool Buffer::readString(std::string const & s)
 		break;
 	}
 
-	// After we have read a file, we must ensure that the buffer
-	// language is set and used in the gui.
-	// If you know of a better place to put this, please tell me. (Lgb)
-	updateDocLang(params().language);
-
 	return true;
 }
 
@@ -617,11 +612,6 @@ bool Buffer::readFile(FileName const & filename)
 	lex.setFile(filename);
 	if (readFile(lex, filename) != success)
 		return false;
-
-	// After we have read a file, we must ensure that the buffer
-	// language is set and used in the gui.
-	// If you know of a better place to put this, please tell me. (Lgb)
-	updateDocLang(params().language);
 
 	return true;
 }
@@ -1385,23 +1375,12 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 	BOOST_ASSERT(from);
 	BOOST_ASSERT(to);
 
-	// Take care of l10n/i18n
-	updateDocLang(to);
-
 	for_each(par_iterator_begin(),
 		 par_iterator_end(),
 		 bind(&Paragraph::changeLanguage, _1, params(), from, to));
 
 	text().current_font.setLanguage(to);
 	text().real_current_font.setLanguage(to);
-}
-
-
-void Buffer::updateDocLang(Language const * nlang)
-{
-	BOOST_ASSERT(nlang);
-
-	pimpl_->messages = &getMessages(nlang->code());
 }
 
 
@@ -1474,8 +1453,9 @@ Language const * Buffer::getLanguage() const
 
 docstring const Buffer::B_(string const & l10n) const
 {
-	if (pimpl_->messages) 
-		return pimpl_->messages->get(l10n);
+	Language const * lang = pimpl_->params.language;
+	if (lang)
+		return getMessages(lang->code()).get(l10n);
 
 	return _(l10n);
 }

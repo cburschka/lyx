@@ -214,7 +214,6 @@ Buffer * newFile(string const & filename, string const & templatename,
 
 	b->setReadonly(false);
 	b->fully_loaded(true);
-	b->updateDocLang(b->params().language);
 
 	return b;
 }

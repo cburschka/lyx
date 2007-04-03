@@ -1582,8 +1582,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (oldL->rightToLeft() == newL->rightToLeft()
 			    && !buffer.isMultiLingual())
 				buffer.changeLanguage(oldL, newL);
-			else
-				buffer.updateDocLang(newL);
 			break;
 		}
 
