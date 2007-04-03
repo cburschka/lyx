@@ -48,7 +48,7 @@ Switzerland}
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
+\paragraph_separation skip
 \defskip medskip
 \quotes_language english
 \papercolumns 1
@@ -1198,6 +1198,73 @@ status collapsed
 
 
 \backslash
+closesection 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can use bibitems:
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexcompanion"
+
+\end_inset
+
+Frank Mittelbach and Michel Goossens: 
+\emph on
+The LaTeX Companion Second Edition.
+
+\emph default
+ Addison-Wesley, 2004
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexguide"
+
+\end_inset
+
+Helmut Kopka and Patrick W.
+ Daly: 
+\emph on
+A Guide to LaTeX Fourth Edition.
+
+\emph default
+ Addison-Wesley, 2003
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexbook"
+
+\end_inset
+
+Leslie Lamport: 
+\emph on
+LaTeX: A Document Preparation System.
+
+\emph default
+ Addison-Wesley, second edition, 1994
+\end_layout
+
+\begin_layout Standard
+or BibTeX references:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
 nocite{*}
 \end_layout
 
@@ -1205,10 +1272,16 @@ nocite{*}
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
-Prints all entries of BibTeX-file
+
+\series bold
+
+\backslash
+nocite{*}
+\series default
+ Prints all entries of the BibTeX-file
 \end_layout
 
 \end_inset
