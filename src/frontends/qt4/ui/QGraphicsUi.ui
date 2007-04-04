@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
+    <width>466</width>
     <height>347</height>
    </rect>
   </property>
@@ -141,25 +141,6 @@
     <attribute name="title" >
      <string>&amp;Graphics</string>
     </attribute>
-    <widget class="QLabel" name="filenameL" >
-     <property name="geometry" >
-      <rect>
-       <x>9</x>
-       <y>9</y>
-       <width>20</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="toolTip" >
-      <string>File name of image</string>
-     </property>
-     <property name="text" >
-      <string>&amp;File:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>filename</cstring>
-     </property>
-    </widget>
     <widget class="QGroupBox" name="rotationGB" >
      <property name="geometry" >
       <rect>
@@ -231,19 +212,6 @@
        </widget>
       </item>
      </layout>
-    </widget>
-    <widget class="QLineEdit" name="filename" >
-     <property name="geometry" >
-      <rect>
-       <x>35</x>
-       <y>12</y>
-       <width>235</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="toolTip" >
-      <string>File name of image</string>
-     </property>
     </widget>
     <widget class="QGroupBox" name="sizeGB" >
      <property name="geometry" >
@@ -373,40 +341,66 @@
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="browsePB" >
+    <widget class="QWidget" name="" >
      <property name="geometry" >
       <rect>
-       <x>277</x>
-       <y>10</y>
-       <width>75</width>
-       <height>23</height>
+       <x>9</x>
+       <y>9</y>
+       <width>421</width>
+       <height>28</height>
       </rect>
      </property>
-     <property name="toolTip" >
-      <string>Select an image file</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Browse...</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="editPB" >
-     <property name="geometry" >
-      <rect>
-       <x>358</x>
-       <y>10</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text" >
-      <string>&amp;Edit</string>
-     </property>
-     <property name="autoDefault" >
-      <bool>false</bool>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="filenameL" >
+        <property name="toolTip" >
+         <string>File name of image</string>
+        </property>
+        <property name="text" >
+         <string>&amp;File:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>filename</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="filename" >
+        <property name="toolTip" >
+         <string>File name of image</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="browsePB" >
+        <property name="toolTip" >
+         <string>Select an image file</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Browse...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editPB" >
+        <property name="text" >
+         <string>&amp;Edit</string>
+        </property>
+        <property name="autoDefault" >
+         <bool>false</bool>
+        </property>
+        <property name="default" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
    <widget class="QWidget" name="Clipping" >
