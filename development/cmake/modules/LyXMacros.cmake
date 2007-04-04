@@ -148,27 +148,18 @@ macro(lyx_const_touched_files _allinone_name _new_list _list)
       if (_isGenerated)
          list(APPEND ${_new_list} ${_abs_FILE})
       else (_isGenerated)
-         # don't include c-files in the final-file, because they usually come
-         # from a 3rd party and as such are not intended to be compiled all-in-one
-         string(REGEX MATCH ".+\\.c$" _isCFile ${_abs_FILE})
-         if (_isCFile)
-            list(APPEND ${_new_list} ${_abs_FILE})
-         else (_isCFile)
-            
-            GET_FILENAME_COMPONENT(_file_name ${_abs_FILE} NAME_WE)
-            STRING(REGEX REPLACE "-" "_" _file_name "${_file_name}" )
-            set(__macro_name ${_file_name}___ASSUME_CONST)
-            
-            file(APPEND ${_file_const}  "#define ${__macro_name}\n")
-            file(APPEND ${_file_const}  "#if defined(${__macro_name}) && !defined(DONT_INCLUDE_CONST_FILES)\n")
-            file(APPEND ${_file_const}  "#include \"${_abs_FILE}\"\n")
-            file(APPEND ${_file_const}  "#endif\n\n")
-            
-            file(APPEND ${_file_touched}  "#ifndef ${__macro_name}\n")
-            file(APPEND ${_file_touched}  "#include \"${_abs_FILE}\"\n")
-            file(APPEND ${_file_touched}  "#endif\n\n")
-            
-         endif (_isCFile)
+        GET_FILENAME_COMPONENT(_file_name ${_abs_FILE} NAME_WE)
+        STRING(REGEX REPLACE "-" "_" _file_name "${_file_name}" )
+        set(__macro_name ${_file_name}___ASSUME_CONST)
+        
+        file(APPEND ${_file_const}  "#define ${__macro_name}\n")
+        file(APPEND ${_file_const}  "#if defined(${__macro_name}) && !defined(DONT_INCLUDE_CONST_FILES)\n")
+        file(APPEND ${_file_const}  "#include \"${_abs_FILE}\"\n")
+        file(APPEND ${_file_const}  "#endif\n\n")
+        
+        file(APPEND ${_file_touched}  "#ifndef ${__macro_name}\n")
+        file(APPEND ${_file_touched}  "#include \"${_abs_FILE}\"\n")
+        file(APPEND ${_file_touched}  "#endif\n\n")
       endif (_isGenerated)
    endforeach (_current_FILE)
 endmacro(lyx_const_touched_files)
