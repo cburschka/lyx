@@ -126,7 +126,8 @@ MACRO (LYX_AUTOMOC)
 endmacro (LYX_AUTOMOC)
 
 
-macro(lyx_const_touched_files _allinone_name _new_list _list)
+macro(lyx_const_touched_files _allinone_name _list)
+   set(_file_list ${_allinone_name}_files)
    set(_file_const ${CMAKE_CURRENT_BINARY_DIR}/${_allinone_name}_const.C)
    set(_file_touched ${CMAKE_CURRENT_BINARY_DIR}/${_allinone_name}_touched.C)
    
@@ -138,7 +139,7 @@ macro(lyx_const_touched_files _allinone_name _new_list _list)
    file(APPEND ${_file_touched} "#define DONT_INCLUDE_CONST_FILES\n")
    file(APPEND ${_file_touched} "#include \"${_file_const}\"\n\n\n")
    
-   set(${_new_list} ${_file_const} ${_file_touched})
+   set(${_file_list} ${_file_const} ${_file_touched})
    
    foreach (_current_FILE ${${_list}})
       get_filename_component(_abs_FILE ${_current_FILE} ABSOLUTE)
@@ -146,7 +147,7 @@ macro(lyx_const_touched_files _allinone_name _new_list _list)
       # because then cmake will not know the dependencies
       get_source_file_property(_isGenerated ${_abs_FILE} GENERATED)
       if (_isGenerated)
-         list(APPEND ${_new_list} ${_abs_FILE})
+         list(APPEND ${_file_list} ${_abs_FILE})
       else (_isGenerated)
         GET_FILENAME_COMPONENT(_file_name ${_abs_FILE} NAME_WE)
         STRING(REGEX REPLACE "-" "_" _file_name "${_file_name}" )

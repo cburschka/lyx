@@ -37,12 +37,12 @@ if(MERGE_FILES)
 	list(REVERSE frontends_qt4_sources)
 	list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/GuiApplication.C)
 	list(APPEND frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/GuiApplication.C)
-	lyx_const_touched_files(_allinone const_touched_files frontends_qt4_sources)
+	lyx_const_touched_files(_allinone frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
 	SET_SOURCE_FILES_PROPERTIES(_allinone_const.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	SET_SOURCE_FILES_PROPERTIES(_allinone_touched.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	add_library(frontend_qt4 ${library_type} 
-					${const_touched_files}
+					${_allinone_files}
 					${frontends_qt4_headers} 
 					${ui_files}
 	)

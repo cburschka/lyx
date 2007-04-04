@@ -19,8 +19,8 @@ include_directories(${ZLIB_INCLUDE_DIR})
 if(NOT MERGE_FILES)
 	add_library(boost_iostreams STATIC ${boost_iostreams_sources})
 else(NOT MERGE_FILES)
-	lyx_const_touched_files(_allinone const_touched_files  boost_iostreams_sources)
-	add_library(boost_iostreams STATIC ${const_touched_files})
+	lyx_const_touched_files(_allinone  boost_iostreams_sources)
+	add_library(boost_iostreams STATIC ${_allinone_files})
 	
 endif(NOT MERGE_FILES)
 

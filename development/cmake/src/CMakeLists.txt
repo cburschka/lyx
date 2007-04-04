@@ -43,8 +43,8 @@ lyx_add_msvc_pch(lyx)
 if(NOT MERGE_FILES)
 	set(lyx_sources ${lyx_sources} ${CMAKE_CURRENT_BINARY_DIR}/version.C)
 else(NOT MERGE_FILES)
-	lyx_const_touched_files(_allinone const_touched_files  lyx_sources)
-	set(lyx_sources ${const_touched_files} ${CMAKE_CURRENT_BINARY_DIR}/version.C
+	lyx_const_touched_files(_allinone  lyx_sources)
+	set(lyx_sources ${_allinone_files} ${CMAKE_CURRENT_BINARY_DIR}/version.C
 	)
 endif(NOT MERGE_FILES)
 

@@ -35,8 +35,8 @@ else(NOT MERGE_FILES)
 	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
 	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
 	list(REVERSE support_sources)
-	lyx_const_touched_files(_allinone const_touched_files  support_sources)
-	add_library(support ${library_type} ${const_touched_files})
+	lyx_const_touched_files(_allinone  support_sources)
+	add_library(support ${library_type} ${_allinone_files})
 					
 endif(NOT MERGE_FILES)
 
