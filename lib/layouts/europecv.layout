@@ -1,0 +1,229 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{curriculum vitae (europe)}
+# europe CV textclass definition file.
+# Author : Uwe Stöhr (uwestoehr@web.de)
+
+
+# General textclass parameters
+	Format 3
+	Columns			1
+	Sides			1
+	SecNumDepth		-1
+	TocDepth		-1
+
+
+# Standard style definition
+Style Standard
+	Margin			Static
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	ParSkip			0.4
+	Align			Block
+	LabelType		No_Label
+End
+
+Input stdcounters.inc
+
+Style Section
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvsection
+	NeedProtect		1
+	NextNoIndent		1
+	OptionalArgs		1
+	ParSkip			0.4
+	TopSep			1.3
+	BottomSep		0.7
+	ParSep			0.7
+	Align			Block
+	LabelSep		xxx
+	LabelType		No_Label
+	Font
+	  Family		Sans
+	  Series		Bold
+	EndFont
+End
+
+Style Item
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvitem
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Item:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style BulletedItem
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvitem*
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Bulleted Item:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Begin
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		begin{europecv}
+	KeepEmpty		1
+	BottomSep			1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Begin of CV"
+	LabelFont
+	  Series		Bold
+	  Color			Green
+	EndFont
+End
+
+Style PersonalInfo
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvpersonalinfo{}
+	KeepEmpty		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Personal Info"
+	LabelFont
+	  Series		Bold
+	  Color			Green
+	EndFont
+End
+
+Style MotherTongue
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvmothertongue
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Mother Tongue:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style LangHeader
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvlanguageheader
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Language Header:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Language
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvlanguage
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Language:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style LastLanguage
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvlastlanguage
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Last Language:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style LangFooter
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		ecvlanguagefooter
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Language Footer:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Bibliography
+	Margin			First_Dynamic
+	LatexType		Bib_Environment
+	LatexName		thebibliography
+	NextNoIndent		1
+	LeftMargin		MM
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.5
+	Align			Block
+	LabelType		Bibliography
+	LabelString		"References"
+	LabelBottomSep		1.2
+	LabelFont
+	  Series		Bold
+	  Size			Larger
+	  Family		Sans
+	EndFont
+End
+
+Style End
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		end{europecv}
+	KeepEmpty		1
+	TopSep			1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"End of CV"
+	LabelFont
+	  Series		Bold
+	  Color			Green
+	EndFont
+End
+

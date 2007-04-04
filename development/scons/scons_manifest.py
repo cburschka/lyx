@@ -2159,6 +2159,7 @@ lib_layouts_files = Split('''
     egs.layout
     elsart.layout
     entcs.layout
+    europecv.layout
     extarticle.layout
     extbook.layout
     extletter.layout
@@ -2277,6 +2278,7 @@ lib_templates_files = Split('''
     dinbrief.lyx
     docbook_article.lyx
     elsart.lyx
+    europeCV.lyx
     fr_beamer-conference-ornate-20min.lyx
     g-brief2.lyx
     g-brief-de.lyx
