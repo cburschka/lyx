@@ -20,7 +20,7 @@ Switzerland}
 \email{testman@testman.xx}
 \extrainfo{www.lyx.org}
 
-\photo[64pt]{modernCV}
+\photo[64pt]{CV-image}
 
 \quote{You only live twice.}
 
@@ -79,23 +79,25 @@ Note:
 
 \end_layout
 
-\begin_layout Section
-Education
-\end_layout
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cventry{
+The moderncv-class offers lots of customization possibilities; to find out
+ more, look at its documentatation.
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
+Education
+\end_layout
+
+\begin_layout Entry
 2003--2006
 \begin_inset ERT
 status collapsed
@@ -152,31 +154,9 @@ status collapsed
 \end_inset
 
 Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cventry{
-\end_layout
-
-\end_inset
-
+\begin_layout Entry
 2001--2003
 \begin_inset ERT
 status collapsed
@@ -233,36 +213,13 @@ status collapsed
 \end_inset
 
 Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Master Thesis
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvitem{
-\end_layout
-
-\end_inset
-
+\begin_layout Item
 Title
 \begin_inset ERT
 status collapsed
@@ -277,33 +234,13 @@ status collapsed
 
 \emph on
 Title of the thesis
-\emph default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvitem{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout Item
 Supervisors
 \begin_inset ERT
 status collapsed
@@ -316,31 +253,13 @@ status collapsed
 \end_inset
 
 Names of supervisors
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvitem{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout Item
 Description
 \begin_inset ERT
 status collapsed
@@ -355,38 +274,13 @@ status collapsed
 
 \size small
 Description text
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Experience
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cventry{
-\end_layout
-
-\end_inset
-
+\begin_layout Entry
 February 2006--
 \newline
 current
@@ -400,7 +294,7 @@ status collapsed
 
 \end_inset
 
-Maintainer of OpenSource projekts
+Maintainer of OpenSource projects
 \begin_inset ERT
 status collapsed
 
@@ -445,31 +339,9 @@ status collapsed
 \end_inset
 
 Maintainer of the xxx documentation
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cventry{
-\end_layout
-
-\end_inset
-
+\begin_layout Entry
 2005--2006
 \begin_inset ERT
 status collapsed
@@ -527,36 +399,13 @@ status collapsed
 \end_inset
 
 Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Languages
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvlanguage{
-\end_layout
-
-\end_inset
-
+\begin_layout Language
 French
 \begin_inset ERT
 status collapsed
@@ -580,31 +429,23 @@ status collapsed
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\begin_layout Space
+-1cm
+\begin_inset Note Note
+status open
 
 \begin_layout Standard
-
-}%
+Inserts vertical space; negative values are allowed.
 \end_layout
 
 \end_inset
 
 
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvlanguage{
 \end_layout
 
-\end_inset
-
+\begin_layout Language
 Dutch
 \begin_inset ERT
 status collapsed
@@ -628,36 +469,13 @@ status collapsed
 \end_inset
 
 Primary education degree obtained in a Dutch college
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Computer skills
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvcomputer{
-\end_layout
-
-\end_inset
-
+\begin_layout Computer
 OS
 \begin_inset ERT
 status collapsed
@@ -692,31 +510,13 @@ status collapsed
 \end_inset
 
 Apache, Mailman
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvcomputer{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout Computer
 Programming
 \begin_inset ERT
 status collapsed
@@ -755,31 +555,13 @@ status collapsed
 \end_inset
 
 PHP, Shell, Ruby
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvcomputer{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout Computer
 Scientific
 \begin_inset ERT
 status collapsed
@@ -814,31 +596,13 @@ status collapsed
 \end_inset
 
 LaTeX, ConTeXt, Scribus, QuarkXPress
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvcomputer{
+\begin_layout Space
+-1mm
 \end_layout
 
-\end_inset
-
+\begin_layout Computer
 Web\InsetSpace ~
 design
 \begin_inset ERT
@@ -874,36 +638,13 @@ status collapsed
 \end_inset
 
 MySQL, PostgreSQL
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Interests
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvitem{
-\end_layout
-
-\end_inset
-
+\begin_layout Item
 Adventure\InsetSpace ~
 sports
 \begin_inset ERT
@@ -920,33 +661,9 @@ status collapsed
 \size small
 I like practicing adventure sports like skiing, rock climbing and scuba
  diving, and have been a boy scout for five years.
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvitem{
-\end_layout
-
-\end_inset
-
+\begin_layout Item
 Travelling
 \begin_inset ERT
 status collapsed
@@ -961,90 +678,29 @@ status collapsed
 
 \size small
 I love travelling around the world.
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Section with a list
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvlistitem{
-\end_layout
-
-\end_inset
-
+\begin_layout ListItem
 Single item.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvlistitem{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout ListItem
 Another single item.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvlistdoubleitem{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout DoubleItem
 Double\SpecialChar \ldots{}
 
 \begin_inset ERT
@@ -1059,31 +715,13 @@ status collapsed
 
 \SpecialChar \ldots{}
  item.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}%
 \end_layout
 
-\end_inset
-
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-cvlistdoubleitem{
+\begin_layout Space
+-1cm
 \end_layout
 
-\end_inset
-
+\begin_layout DoubleItem
 Another double\SpecialChar \ldots{}
 
 \begin_inset ERT
@@ -1098,36 +736,36 @@ status collapsed
 
 \SpecialChar \ldots{}
  item.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
 Section with your own content
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout CloseSection
+\begin_inset Note Note
+status open
 
 \begin_layout Standard
-
-
-\backslash
-closesection 
+This ends the section formatting.
 \end_layout
 
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Keep entries with green labels empty!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Your content here, inside an unformatted environment.
  You can use here e.g.
  mathematics 
@@ -1139,32 +777,20 @@ E=mc^{2}\]
 put some table or figure, etc.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout EmptySection
+\begin_inset Note Note
+status open
 
 \begin_layout Standard
-
-
-\backslash
-emptysection
+Creates a section without a section heading.
 \end_layout
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Standard
-
-
-\backslash
-cvitem{
 \end_layout
 
-\end_inset
-
+\begin_layout Item
 Now
 \begin_inset ERT
 status collapsed
@@ -1177,32 +803,9 @@ status collapsed
 \end_inset
 
 Back to moderncv layout, without making a new section
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-closesection 
-\end_layout
-
-\end_inset
-
+\begin_layout CloseSection
 
 \end_layout
 
@@ -1289,7 +892,7 @@ nocite{*}
 
 \begin_inset LatexCommand bibtex
 options "plain"
-bibfiles "test"
+bibfiles "biblioExample"
 
 \end_inset
 

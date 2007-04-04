@@ -2270,6 +2270,9 @@ lib_templates_files = Split('''
     aastex.lyx
     agu_article.lyx
     beamer-conference-ornate-20min.lyx
+    biblioExample.bib
+    CV-image.eps
+    CV-image.png
     de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
     docbook_article.lyx
@@ -2286,11 +2289,9 @@ lib_templates_files = Split('''
     latex8.lyx
     letter.lyx
     modernCV.lyx
-    modernCV.png
     revtex.lyx
     revtex4.lyx
     slides.lyx
-    test.bib
 ''')
 
 

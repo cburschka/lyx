@@ -997,6 +997,9 @@ dist_templates_DATA = \
 	templates/aastex.lyx \
 	templates/agu_article.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
+	templates/biblioExample.bib \
+	templates/CV-image.eps \
+	templates/CV-image.png \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
@@ -1013,11 +1016,9 @@ dist_templates_DATA = \
 	templates/latex8.lyx \
 	templates/letter.lyx \
 	templates/modernCV.lyx \
-	templates/modernCV.png \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
-	templates/slides.lyx \
-	templates/test.bib
+	templates/slides.lyx
 
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \

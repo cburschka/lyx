@@ -5,67 +5,211 @@
 
 
 # General textclass parameters
-Format 3
-Columns			1
-Sides			1
-SecNumDepth		-1
-TocDepth		-1
+	Format 3
+	Columns			1
+	Sides			1
+	SecNumDepth		-1
+	TocDepth		-1
 
 
 # Standard style definition
 Style Standard
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
+	Margin			Static
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	ParSkip			0.4
+	Align			Block
+	AlignPossible		Block, Left, Right, Center
+	LabelType		No_Label
 End
 
 Input stdcounters.inc
 
 Style Section
-	Margin                Dynamic
-	LatexType             Command
-	LatexName             section
-	NeedProtect           1
-	NextNoIndent          1
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                1.3
-	BottomSep             0.7
-	ParSep                0.7
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             No_Label
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		section
+	NeedProtect		1
+	NextNoIndent		1
+	ParSkip			0.4
+	TopSep			1.3
+	BottomSep		0.7
+	ParSep			0.7
+	Align			Block
+	AlignPossible         	Block, Left
+	LabelSep		xxx
+	LabelType		No_Label
 	Font
-	  Family              Sans
-	  Series              Bold
+	  Family		Sans
+	  Series		Bold
+	EndFont
+End
+
+Style Entry
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		cventry
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Entry:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Item
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		cvitem
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Item:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style ListItem
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		cvlistitem
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"List Item:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style DoubleItem
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		cvlistdoubleitem
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Double Item:"
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Space
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		vspace*
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Space:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Language
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		cvlanguage
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Language:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style Computer
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		cvcomputer
+	OptionalArgs		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		Computer:
+	LabelFont
+	  Series		Bold
+	  Color			Blue
+	EndFont
+End
+
+Style EmptySection
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		emptysection{}
+	KeepEmpty		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Empty Section"
+	LabelFont
+	  Series		Bold
+	  Color			Green
+	EndFont
+End
+
+Style CloseSection
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		closesection{}
+	KeepEmpty		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Close Section"
+	LabelFont
+	  Series		Bold
+	  Color			Green
 	EndFont
 End
 
 Style Bibliography
-	Margin                First_Dynamic
-	LatexType             Bib_Environment
-	LatexName             thebibliography
-	NextNoIndent          1
-	LeftMargin            MM
-	ParSkip               0.4
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Bibliography
-	LabelString           "References"
-	LabelBottomSep        1.2
+	Margin			First_Dynamic
+	LatexType		Bib_Environment
+	LatexName		thebibliography
+	NextNoIndent		1
+	LeftMargin		MM
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.5
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Bibliography
+	LabelString		"References"
+	LabelBottomSep		1.2
 	LabelFont
-	  Series              Bold
-	  Size                Larger
-	  Family              Sans
+	  Series		Bold
+	  Size			Larger
+	  Family		Sans
 	EndFont
 End
 
