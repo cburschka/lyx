@@ -36,7 +36,7 @@ QNomenclDialog::QNomenclDialog(QNomencl * form)
 	connect(descrED, SIGNAL(textChanged(const QString&)),
 	        this, SLOT(change_adaptor()));
 
-	setFocusProxy(symbolED);
+	setFocusProxy(descrED);
 }
 
 
