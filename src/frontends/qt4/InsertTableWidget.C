@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-#include "BufferView.h"	// needed for lyxfunc
 #include "lyxfunc.h"
 #include "FuncStatus.h"
 #include "funcrequest.h"
