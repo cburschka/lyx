@@ -28,10 +28,10 @@ EndFont
 
 # Standard style definition
 Style Standard
-  LatexName             dummy
-  ParIndent             MM
-  ParSkip               0.4
-  AlignPossible         Block, Left, Right, Center
+  LatexName		dummy
+  ParIndent		MM
+  ParSkip		0.4
+  AlignPossible		Block, Left, Right, Center
 END
 
 # Brieftext style definition
@@ -69,7 +69,7 @@ Style Name
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Blue
+    Color		Blue
   EndFont
 End
 
