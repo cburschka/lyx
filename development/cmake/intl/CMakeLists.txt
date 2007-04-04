@@ -23,15 +23,22 @@ add_definitions(
     -DDEPENDS_ON_LIBICONV=1
     )
     
-    
+if (NOT APPLE)    
 add_definitions(
 		-DLOCALEDIR=\\"${LOACLE_DIR}\\" 
 		-DLOCALE_ALIAS_PATH=\\"${LOACLE_DIR}\\"
 		-DLIBDIR=\\"${TOP_SRC_DIR}\\"
 		-DINSTALLDIR=\\"${PREFIX}\\" 
 		)
+else (NOT APPLE) 
+add_definitions(
+		-DLOCALEDIR='\"${LOCALE_DIR}\"' 
+		-DLOCALE_ALIAS_PATH='\"${LOCALE_DIR}\"'
+		-DLIBDIR='\"${TOP_SRC_DIR}\"'
+		-DINSTALLDIR='\"${PREFIX}\"' 
+		)
+endif (NOT APPLE)
 
-    
 file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)
 
 set(intl_sources 
