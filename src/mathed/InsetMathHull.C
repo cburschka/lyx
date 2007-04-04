@@ -416,6 +416,7 @@ bool InsetMathHull::notifyCursorLeaves(LCursor & cur)
 		docstring const snippet = latex_string(*this);
 		preview_->addPreview(snippet, buffer);
 		preview_->startLoading(buffer);
+		cur.updateFlags(Update::Force);
 	}
 	return false;
 }
