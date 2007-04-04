@@ -71,6 +71,18 @@ bool isPrintableNonspace(char_type c)
 }
 
 
+bool isSpace(char_type c)
+{
+	if (!is_utf16(c)) {
+		// assume that no non-utf16 character is a space
+		// c outside the UCS4 range is catched as well
+		return false;
+	}
+	QChar const qc = ucs4_to_qchar(c);
+	return qc.isSpace();
+}
+
+
 bool isDigit(char_type c)
 {
 	if (!is_utf16(c))

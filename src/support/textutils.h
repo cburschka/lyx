@@ -39,6 +39,9 @@ bool isPrintable(char_type c);
 /// return true if the char is printable and not a space
 bool isPrintableNonspace(char_type c);
 
+/// return true if a unicode char is a space.
+bool isSpace(char_type c);
+
 /// return true if a unicode char is a digit.
 bool isDigit(char_type c);
 

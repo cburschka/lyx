@@ -30,6 +30,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
+#include "support/textutils.h"
 
 #include <boost/tokenizer.hpp>
 
@@ -57,6 +58,7 @@ using support::split;
 using support::subst;
 using support::tokenPos;
 using support::trim;
+using support::lowercase;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -67,6 +69,7 @@ using std::string;
 using std::ostream;
 using std::pair;
 using std::vector;
+using std::map;
 
 
 InsetBibtex::InsetBibtex(InsetCommandParams const & p)
@@ -329,6 +332,199 @@ vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
 	return vec;
 }
 
+namespace {
+
+	// methods for parsing bibtex files
+
+	typedef map<docstring, docstring> VarMap;
+
+	/// remove whitespace characters, optionally a single comma, 
+	/// and further whitespace characters from the stream.
+	/// @return true if a comma was found, false otherwise
+	///
+	bool removeWSAndComma(idocfstream & ifs) {
+		char_type ch;
+
+		if (!ifs) 
+			return false;
+
+		// skip whitespace
+		do {
+			ifs.get(ch);
+		} while (ifs && isSpace(ch));
+
+		if (!ifs) 
+			return false;
+
+		if (ch != ',') {
+			ifs.putback(ch);
+			return false;
+		}
+
+		// skip whitespace
+		do {
+			ifs.get(ch);
+		} while (ifs && isSpace(ch));
+
+		if (ifs) {
+			ifs.putback(ch);
+		}
+
+		return true;
+	}
+
+	/// remove whitespace characters, read characer sequence
+	/// not containing whitespace characters or characters in
+	/// delimChars, and remove further whitespace characters.
+	///
+	/// @return true if a string of length > 0 could be read.
+	/// 
+	bool readTypeOrKey(docstring & val, idocfstream & ifs, docstring const & delimChars) {
+
+		char_type ch;
+
+		val.clear();
+
+		if (!ifs) 
+			return false;
+
+		// skip whitespace
+		do {
+			ifs.get(ch);
+		} while (ifs && isSpace(ch));
+
+		if (!ifs) 
+			return false;
+
+		// read value 
+		while (ifs && !isSpace(ch) && delimChars.find(ch) == docstring::npos) {
+			val += lowercase(ch);
+			ifs.get(ch);
+		}
+
+		// skip whitespace
+		while (ifs && isSpace(ch)) {
+			ifs.get(ch);
+		}
+
+		if (ifs) {
+			ifs.putback(ch);
+		}
+
+		return val.length() > 0;
+	}
+
+	/// read subsequent bibtex values that are delimited with a #-character.
+	/// Concatenate all parts and replace names with the associated string in 
+	/// the variable strings.
+	/// @return true if reading was successfull (all single parts were delimited
+	/// correctly)
+	bool readValue(docstring & val, idocfstream & ifs, const VarMap & strings) {
+
+		char_type ch;
+
+		val.clear();
+
+		if (!ifs) 
+			return false;
+
+		do {
+			// skip whitespace
+			do {
+				ifs.get(ch);
+			} while (ifs && isSpace(ch));
+
+			if (!ifs)
+				return false;
+
+			// check for field type
+			if (isDigit(ch)) {
+
+				// read integer value
+				do {
+					val += ch;
+					ifs.get(ch);
+				} while (ifs && isDigit(ch));
+
+				if (!ifs)
+					return false;
+
+			} else if (ch == '"' || ch == '{') {
+
+				// read delimited text - set end delimiter
+				char_type delim = ch == '"'? '"': '}';
+
+				// inside this delimited text braces must match.
+				// Thus we can have a closing delimiter only
+				// when nestLevel == 0
+				int nestLevel = 0;
+
+				ifs.get(ch);
+				while (ifs && (nestLevel > 0 || ch != delim)) {
+					val += ch;
+					
+					// update nesting level
+					switch (ch) {
+						case '{':
+							++nestLevel;
+							break;
+						case '}':
+							--nestLevel;
+							if (nestLevel < 0) return false;
+							break;
+					}
+
+					ifs.get(ch);
+				}
+
+				if (!ifs)
+					return false;
+
+				ifs.get(ch);
+
+				if (!ifs)
+					return false;
+
+			} else {
+
+				// reading a string name
+				docstring strName;
+
+				while (ifs && !isSpace(ch) && ch != '#' && ch != ',' && ch != '}' && ch != ')') {
+					strName += lowercase(ch);
+					ifs.get(ch);
+				}
+
+				if (!ifs)
+					return false;
+
+				// replace the string with its assigned value or
+				// discard it if it's not assigned
+				if (strName.length()) {
+					VarMap::const_iterator pos = strings.find(strName);
+					if (pos != strings.end()) {
+						val += pos->second;
+					}
+				}
+			}
+
+			// skip WS
+			while (ifs && isSpace(ch)) {
+				ifs.get(ch);
+			}
+
+			if (!ifs)
+				return false;
+
+			// continue reading next value on concatenate with '#'
+		} while (ch == '#');  
+
+		ifs.putback(ch);
+
+		return true;
+	}
+}
+
 
 // This method returns a comma separated list of Bibtex entries
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
@@ -337,10 +533,25 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 	vector<FileName> const files = getFiles(buffer);
 	for (vector<FileName>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {
-		// This is a _very_ simple parser for Bibtex database
-		// files. All it does is to look for lines starting
-		// in @ and not being @preamble and @string entries.
-		// It does NOT do any syntax checking!
+	    // This bibtex parser is a first step to parse bibtex files
+		// more precisely. 
+		// 
+		// - it reads the whole bibtex entry and does a syntax check
+		//   (matching delimiters, missing commas,...
+		// - it recovers from errors starting with the next @-character
+		// - it reads @string definitions and replaces them in the 
+		//   field values.
+		// - it accepts more characters in keys or value names than 
+		//   bibtex does.
+		//
+		// TODOS:
+		// - the entries are split into name = value pairs by the 
+		//   parser. These have to be merged again because of the 
+		//   way lyx treats the entries ( pair<...>(...) ). The citation
+		//   mechanism in lyx should be changed such that it can use
+		//   the split entries.
+		// - messages on parsing errors can be generated.
+		//
 
 		// Officially bibtex does only support ASCII, but in practice
 		// you can use the encoding of the main document as long as
@@ -352,31 +563,137 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		idocfstream ifs(it->toFilesystemEncoding().c_str(),
 		                std::ios_base::in,
 		                buffer.params().encoding().iconvName());
-		docstring linebuf0;
-		while (getline(ifs, linebuf0)) {
-			docstring linebuf = trim(linebuf0);
-			if (linebuf.empty())
+		
+		char_type ch;
+		VarMap strings;
+
+		while (ifs) {
+
+			ifs.get(ch);
+			if (!ifs) 
+				break;
+
+			if (ch != '@') 
 				continue;
-			if (prefixIs(linebuf, '@')) {
-				linebuf = subst(linebuf, '{', '(');
-				docstring tmp;
-				linebuf = split(linebuf, tmp, '(');
-				tmp = ascii_lowercase(tmp);
-				if (!prefixIs(tmp, from_ascii("@string")) &&
-				    !prefixIs(tmp, from_ascii("@preamble"))) {
-					linebuf = split(linebuf, tmp, ',');
-					tmp = ltrim(tmp, " \t");
-					if (!tmp.empty()) {
-						// FIXME UNICODE
-						keys.push_back(pair<string, docstring>(
-							to_utf8(tmp), docstring()));
+
+			docstring entryType;
+
+			if (!readTypeOrKey(entryType, ifs, from_ascii("{(")) || !ifs)
+				continue;
+
+			if (entryType == from_ascii("comment")) {
+
+				ifs.ignore(std::numeric_limits<int>::max(), '\n');
+				continue;
+			} 
+
+			// check entry delimiter
+			char_type entryDelim;
+
+			ifs.get(ch);
+			if (!ifs) 
+				break;
+
+			if (ch == '(') entryDelim = ')';
+			else if (ch == '{') entryDelim = ')';
+			else {
+				// invalid entry delimiter
+				ifs.putback(ch);
+				continue;
+			}
+
+			// process the entry
+			if (entryType == from_ascii("string")) {
+
+				// read string and add it to the strings map 
+				// (or replace it's old value)
+				docstring name;
+				docstring value;
+
+				if (!readTypeOrKey(name, ifs, from_ascii("#=}),")) || !ifs)
+					continue;
+
+				ifs.get(ch);
+				if (!ifs || ch != '=')
+					continue;
+
+				if (!readValue(value, ifs, strings))
+					continue;
+
+				strings[name] = value;
+
+			} else if (entryType == from_ascii("preamble")) {
+
+				// preamble definitions are discarded. 
+				// can they be of any use in lyx?
+				docstring value;
+
+				if (!readValue(value, ifs, strings))
+					continue;
+
+			} else {
+
+				// Citation entry. Read the key and all name = value pairs
+				docstring key;
+				docstring fields;
+				docstring name;
+				docstring value;
+				docstring commaNewline;
+
+				if (!readTypeOrKey(key, ifs, from_ascii(",})")) || !ifs)
+					continue;
+
+				// now we have a key, so we will add an entry 
+				// (even if it's empty, as bibtex does)
+				// 
+				// all items must be separated by a comma. If
+				// it is missing the scanning of this entry is
+				// stopped and the next is searched.
+				bool readNext = removeWSAndComma(ifs);
+
+				while (ifs && readNext) {
+
+					// read field name
+					if (!readTypeOrKey(name, ifs, from_ascii("=}),")) || !ifs)
+						break;
+
+					// next char must be an equal sign
+					ifs.get(ch);
+					if (!ifs)
+						break;
+					if (ch != '=') {
+						ifs.putback(ch);
+						break;
 					}
+
+					// read field value
+					if (!readValue(value, ifs, strings)) 
+						break;
+
+					// append field to the total entry string.
+					//
+					// TODO: Here is where the fields can be put in 
+					//       a more intelligent structure that preserves
+					//	     the already known parts.
+					fields += commaNewline;
+					fields += name + from_ascii(" = {") + value + '}';
+
+					if (!commaNewline.length()) 
+						commaNewline = from_ascii(",\n"); 
+
+					readNext = removeWSAndComma(ifs);
 				}
-			} else if (!keys.empty())
-				keys.back().second += linebuf + '\n';
-		}
-	}
+
+				// add the new entry
+				keys.push_back(pair<string, docstring>(
+				to_utf8(key), fields));
+			}
+
+		} //< searching '@'
+
+	} //< for loop over files
 }
+
 
 
 bool InsetBibtex::addDatabase(string const & db)
