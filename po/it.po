@@ -1,8 +1,6 @@
 # translation of lyx-1.4xx_devel_it.po to italiano
-# translation of it.po to italiano
 # This file is distributed under the same license as the PACKAGE package.
-# Grazie a Lele Gaifax e Meris Da Silva per tutti i loro suggerimenti e consigli
-# Kostantino <ciclope10ATalice.it>, 2006.
+# Grazie a Lele Gaifax e Miconi Meris per tutti i loro suggerimenti e consigli
 # Kostantino <ciclope10ATalice.it>, 2007.
 # Kostantino <ciclope10ATalice.it>, 2007.
 msgid ""
@@ -10,7 +8,7 @@ msgstr ""
 "Project-Id-Version: lyx-1.4xx_devel_it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-31 17:00+0100\n"
-"PO-Revision-Date: 2007-02-09 14:48+0100\n"
+"PO-Revision-Date: 2007-04-03 11:59+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -522,7 +520,7 @@ msgstr "Salto piè pagina:|#S"
 
 #: src/frontends/xforms/forms/form_document.fd:722
 msgid "Sides"
-msgstr "Lati"
+msgstr "Facciate"
 
 #: src/frontends/xforms/forms/form_document.fd:740
 msgid "Separation"
@@ -579,7 +577,7 @@ msgstr "Due|#u"
 
 #: src/frontends/xforms/forms/form_document.fd:1082
 msgid "Indent|#I"
-msgstr "Indenta|#I"
+msgstr "Rientro|#R"
 
 #: src/frontends/xforms/forms/form_document.fd:1100
 msgid "Skip|#K"
@@ -1116,11 +1114,11 @@ msgstr "Interlinea:|#l"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:116
 msgid "Maximum label width:|#M"
-msgstr "Larghezza massima dell'etichetta:|#m"
+msgstr "Larghezza massima etichetta:|#m"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:134
 msgid "No Indent|#d"
-msgstr "Nessuna indentazione|#d"
+msgstr "Nessun rientro|#r"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:242
 msgid "Right|#R"
@@ -1993,7 +1991,7 @@ msgstr "Ultima coda"
 #: src/frontends/xforms/forms/form_tabular.fd:1674
 #: src/frontends/xforms/forms/form_tabular.fd:1692
 msgid "Is Empty"
-msgstr "E' vuoto"
+msgstr "É vuoto"
 
 #: src/frontends/xforms/forms/form_tabular.fd:1710
 msgid "Border Above"
@@ -2445,11 +2443,11 @@ msgstr "&Stile pagina:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:264
 msgid "Style used for the page header and footer"
-msgstr "E' lo stile usato per l'intestazione e le note a piè di pagina"
+msgstr "É lo stile usato per l'intestazione e le note a piè di pagina"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:277
 msgid "&Two-sided document"
-msgstr "Documento su &due facce"
+msgstr "Documento su &due facciate"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:281
 msgid "Lay out the page for double-sided printing"
@@ -2549,7 +2547,7 @@ msgstr "&Chiave:"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:86
 msgid "The bibliography key"
-msgstr "E' la chiave bibliografica"
+msgstr "É la chiave bibliografica"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: src/frontends/qt2/ui/QRefDialogBase.ui:182 src/frontends/qt2/Dialogs.C:239
@@ -2559,7 +2557,7 @@ msgstr "&Etichetta:"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:140
 msgid "The label as it appears in the document"
-msgstr "E' l'etichetta come appare nel documento"
+msgstr "É l'etichetta come appare nel documento"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:29
 msgid "LyX: Add BibTeX Database"
@@ -2612,7 +2610,7 @@ msgstr "Sti&le"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:60
 msgid "The BibTeX style"
-msgstr "E' lo stile BibTeX"
+msgstr "É lo stile BibTeX"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:150
 msgid "Databa&ses"
@@ -3282,7 +3280,7 @@ msgstr "&Origine:"
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:290
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:301
 msgid "The origin of the rotation"
-msgstr "E' l'origine della rotazione"
+msgstr "É l'origine della rotazione"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:588
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:245
@@ -3409,7 +3407,7 @@ msgstr "Sotto&figura"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1066
 msgid "Is this just one part of a figure float ?"
-msgstr "E' proprio questa l'unica parte di una figura mobile ?"
+msgstr "É proprio questa l'unica parte di una figura mobile ?"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1077
 msgid "Don't un&zip on export"
@@ -3443,7 +3441,7 @@ msgstr "Di&dascalia:"
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1208
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1223
 msgid "The caption for the sub-figure"
-msgstr "E' la didascalia per la sottofigura"
+msgstr "É la didascalia per la sottofigura"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:79
 msgid "File name to include"
@@ -3718,7 +3716,7 @@ msgstr "Alli&neamento:"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:207
 msgid "In&dent paragraph"
-msgstr "In&denta paragrafo"
+msgstr "Ri&entra paragrafo"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:245
 msgid "Label Width"
@@ -4395,7 +4393,7 @@ msgstr "Riferimento formattato"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:171
 msgid "Cross-reference as it appears in output"
-msgstr "E' il riferimento incrociato come appare nel risultato prodotto"
+msgstr "É il riferimento incrociato come appare nel risultato prodotto"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:353
 msgid "Available labels"
@@ -4750,7 +4748,7 @@ msgstr "&Vista"
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
 msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
+"Mostra i contenuti del file segnato. É possibile solo quando i file sono "
 "mostrati con il loro percorso."
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4781,7 +4779,7 @@ msgstr "&Selezione:"
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
 msgid "The selected entry"
-msgstr "E' la voce selezionata"
+msgstr "É la voce selezionata"
 
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
 msgid "Replace the entry with the selection"
@@ -4920,11 +4918,11 @@ msgstr "Separa paragrafi con"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:156
 msgid "&Indentation"
-msgstr "&Indentazione"
+msgstr "&Rietro"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:160
 msgid "Indent consecutive paragraphs"
-msgstr "Indenta paragrafi consecutivi"
+msgstr "Rientra paragrafi consecutivi"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:171
 msgid "&Vertical space"
@@ -8237,11 +8235,11 @@ msgstr "Revisionato:"
 
 #: lib/layouts/agu_stdtitle.inc:222
 msgid "Ident-line"
-msgstr "Indenta (linea)"
+msgstr "Rientro (linea)"
 
 #: lib/layouts/agu_stdtitle.inc:225
 msgid "Ident-line:"
-msgstr "Indenta (linea):"
+msgstr "Rientro (linea):"
 
 #: lib/layouts/agu_stdtitle.inc:230
 msgid "Runhead"
@@ -8710,7 +8708,7 @@ msgstr "Elenco degli algoritmi"
 
 #: lib/layouts/stdlayouts.inc:75
 msgid "Senseless!"
-msgstr "E' privo di senso!"
+msgstr "É privo di senso!"
 
 #: lib/layouts/stdlists.inc:103
 msgid "#*"
@@ -10439,12 +10437,12 @@ msgstr "Formattazione del documento..."
 #: src/BufferView_pimpl.C:763
 #, c-format
 msgid "Saved bookmark %1$d"
-msgstr "E' stato salvato il segnalibro %1$d"
+msgstr "É stato salvato il segnalibro %1$d"
 
 #: src/BufferView_pimpl.C:796
 #, c-format
 msgid "Moved to bookmark %1$d"
-msgstr "E' stato spostato al segnalibro %1$d"
+msgstr "É stato spostato al segnalibro %1$d"
 
 #: src/BufferView_pimpl.C:856
 msgid "Select LyX document to insert"
@@ -10481,7 +10479,7 @@ msgstr "Sto inserendo il documento %1$s..."
 #: src/BufferView_pimpl.C:894
 #, c-format
 msgid "Document %1$s inserted."
-msgstr "E' stato inserito il documento %1$s"
+msgstr "É stato inserito il documento %1$s"
 
 #: src/BufferView_pimpl.C:896
 #, c-format
@@ -10853,7 +10851,7 @@ msgstr "Classe di documento sconosciuta"
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
-"Uso la classe prestabilita del documento, perchè la classe %1$s è "
+"Uso la classe prestabilita del documento, perché la classe %1$s è "
 "sconosciuta."
 
 #: src/buffer.C:443 src/text.C:355
@@ -11210,7 +11208,7 @@ msgstr "Output vuoto"
 
 #: src/converter.C:604
 msgid "An empty output file was generated."
-msgstr "E' stato generato un output vuoto."
+msgstr "É stato generato un output vuoto."
 
 #: src/debug.C:43
 msgid "Program initialisation"
@@ -11270,7 +11268,7 @@ msgstr "Comandi utente"
 
 #: src/debug.C:57
 msgid "The LyX Lexxer"
-msgstr "E' il Lexxer di LyX"
+msgstr "É il Lexxer di LyX"
 
 #: src/debug.C:58
 msgid "Dependency information"
@@ -11342,7 +11340,7 @@ msgstr "Non ho potuto copiare il file"
 #: src/exporter.C:133
 #, c-format
 msgid "Copying %1$s to %2$s failed."
-msgstr "E' fallita la copia di %1$s su %2$s."
+msgstr "É fallita la copia di %1$s su %2$s."
 
 #: src/exporter.C:171
 msgid "Couldn't export file"
@@ -11700,7 +11698,7 @@ msgstr "sono state controllate %1$d parole."
 
 #: src/frontends/controllers/ControlSpellchecker.C:291
 msgid "One word checked."
-msgstr "E' stata controllata una sola parola."
+msgstr "É stata controllata una sola parola."
 
 #: src/frontends/controllers/ControlSpellchecker.C:294
 msgid "Spelling check completed"
@@ -12233,19 +12231,19 @@ msgstr "Comando successivo"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
 msgid "big size"
-msgstr "big size"
+msgstr "grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
 msgid "Big size"
-msgstr "Big size"
+msgstr "Grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
 msgid "bigg size"
-msgstr "bigg size"
+msgstr "grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
 msgid "Bigg size"
-msgstr "Bigg size"
+msgstr "Grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:94
 msgid "LyX: Delimiters"
@@ -12733,7 +12731,7 @@ msgid ""
 "Pixel [%2$s] is used."
 msgstr ""
 "     Verrà usato, invece, il colore allocato più prossimo con (r,g,b)=%1$s.\n"
-"E' stato usato il pixel [%2$s]."
+"É stato usato il pixel [%2$s]."
 
 #: src/frontends/xforms/ColorHandler.C:191
 #, c-format
@@ -13070,7 +13068,7 @@ msgid ""
 "The `bullet' tab of the document dialog has been disabled"
 msgstr ""
 "La tua versione di libXpm è precedente alla 4.7.\n"
-"E' stata disabilitata la funzionalità `tab' del documento."
+"É stata disabilitata la funzionalità `tab' del documento."
 
 #: src/frontends/xforms/FormDocument.C:1333
 msgid "Document is read-only. No changes to layout permitted."
@@ -13189,7 +13187,7 @@ msgid ""
 "holds the values for the bounding box."
 msgstr ""
 "Passa un nome di file tipo \"file.eps.gz\" all'output LaTeX. Utile qual'ora "
-"LaTeX dovesse decomprimere il file. E' necessario un file addizionale come "
+"LaTeX dovesse decomprimere il file. É necessario un file addizionale come "
 "\"file.eps.bb\" che contenga i valori per la casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:178
@@ -13198,7 +13196,7 @@ msgstr "Mostra l'immagine solo come un rettangolo della dimensione originale."
 
 #: src/frontends/xforms/FormGraphics.C:211
 msgid "The lower left x-value of the bounding box."
-msgstr "E' il valore inferiore sinistro dell'ascissa della casella delimitante."
+msgstr "É il valore inferiore sinistro dell'ascissa della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:213
 msgid "The lower left y-value of the bounding box."
@@ -13209,14 +13207,14 @@ msgid ""
 "The upper right x-value of the bounding box; only this input field allows "
 "length + unit, e.g. 5cm and sets the unit for the other input fields."
 msgstr ""
-"E' il valore superiore destro dell'ascissa della casella delimitante; solo "
+"É il valore superiore destro dell'ascissa della casella delimitante; solo "
 "questo campo d'immissione permette di definire sia la lunghezza che la sua "
 "unità di misura. Cioè: 5cm e così imposta l'unità di misura per gli altri "
 "campi di immissione."
 
 #: src/frontends/xforms/FormGraphics.C:219
 msgid "The upper right y-value of the bounding box."
-msgstr "E' il valore superiore destro dell'ordinata della casella delimitante."
+msgstr "É il valore superiore destro dell'ordinata della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:221
 msgid "Select unit for the bounding box values."
@@ -13302,19 +13300,19 @@ msgstr "Carica file."
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "big"
-msgstr "big"
+msgstr "grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "Big"
-msgstr "Big"
+msgstr "Grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "bigg"
-msgstr "bigg"
+msgstr "grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "Bigg"
-msgstr "Bigg"
+msgstr "Grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:85
 msgid "Variable"
@@ -13411,7 +13409,7 @@ msgid ""
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as the path to the user/library directory."
 msgstr ""
-"E' il comando di conversione. $$i è il nome del file in ingresso, $$b è il "
+"É il comando di conversione. $$i è il nome del file in ingresso, $$b è il "
 "nome del file senza la sua estensione e $$o è il nome del file prodotto. $$s "
 "può essere usato come percorso alla cartella user/library."
 
@@ -13468,7 +13466,7 @@ msgid ""
 "the \"to\" file name.\n"
 "$$s can be used as the path to the user/library directory."
 msgstr ""
-"E' il comando usato per copiare il file. $$i è il nome del file in ingresso "
+"É il comando usato per copiare il file. $$i è il nome del file in ingresso "
 "e $$b è il nome del file da ottenere.\n"
 " $$s può essere usato come percorso alla cartella user/library."
 
@@ -13503,16 +13501,16 @@ msgstr "Tutti i formati noti a LyX attualmente definiti."
 
 #: src/frontends/xforms/FormPreferences.C:1324
 msgid "The format identifier."
-msgstr "E' l'identificatore di formato."
+msgstr "É l'identificatore di formato."
 
 #: src/frontends/xforms/FormPreferences.C:1327
 msgid "The format name as it will appear in the menus."
-msgstr "E' il nome del formato come apparirà nei menù."
+msgstr "É il nome del formato come apparirà nei menù."
 
 #: src/frontends/xforms/FormPreferences.C:1330
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
-"E' l'acceleratore di tastiera. Usa una lettera nel nome della GUI. "
+"É l'acceleratore di tastiera. Usa una lettera nel nome della GUI. "
 "Attenzione alle maiuscole!"
 
 #: src/frontends/xforms/FormPreferences.C:1334
@@ -13521,11 +13519,11 @@ msgstr "Usato per riconoscere il file. Cioè: ps, pdf, tex."
 
 #: src/frontends/xforms/FormPreferences.C:1337
 msgid "The command used to launch the viewer application."
-msgstr "E' il comando usato per lanciare il visualizzatore."
+msgstr "É il comando usato per lanciare il visualizzatore."
 
 #: src/frontends/xforms/FormPreferences.C:1340
 msgid "The command used to launch the editor application."
-msgstr "E' il comando usato per lanciare l'applicazione."
+msgstr "É il comando usato per lanciare l'applicazione."
 
 #: src/frontends/xforms/FormPreferences.C:1346
 msgid ""
@@ -13827,7 +13825,7 @@ msgid ""
 "install a new TeX class or style. You need write permissions for the TeX-"
 "dirs, often /var/lib/texmf and others."
 msgstr ""
-"Esegue lo script \"texhash\" che costruisce un nuovo albero LaTeX. E' "
+"Esegue lo script \"texhash\" che costruisce un nuovo albero LaTeX. É "
 "necessario se si installa una classe o un nuovo stile di TeX. Sono richiesti "
 "permessi di scrittura per le cartelle TeX,  spesso  /var/lib/texmf ma anche "
 "altre."
@@ -13896,7 +13894,7 @@ msgstr "Non riesco ad aprire il file."
 #: src/frontends/xforms/xforms_helpers.C:478
 #: src/frontends/xforms/xforms_helpers.C:523
 msgid "The absolute path is required."
-msgstr "E' richiesto il percorso assoluto."
+msgstr "É richiesto il percorso assoluto."
 
 #: src/frontends/xforms/xforms_helpers.C:426
 #: src/frontends/xforms/xforms_helpers.C:449
@@ -13925,7 +13923,7 @@ msgstr "La cartella non esiste."
 #: src/frontends/xforms/xforms_helpers.C:499
 #: src/frontends/xforms/xforms_helpers.C:544
 msgid "A file is required, not a directory."
-msgstr "E' richiesto un file, non una cartella."
+msgstr "É richiesto un file, non una cartella."
 
 #: src/frontends/xforms/xforms_helpers.C:504
 msgid "Cannot write to this file."
@@ -13963,7 +13961,7 @@ msgstr "importato."
 
 #: src/insets/insetbase.C:264
 msgid "Opened inset"
-msgstr "E' stato aperto l'inserto"
+msgstr "É stato aperto l'inserto"
 
 #: src/insets/insetbibtex.C:106
 msgid "BibTeX Generated Bibliography"
@@ -14015,11 +14013,11 @@ msgstr "Doublebox"
 
 #: src/insets/insetbox.C:116
 msgid "Opened Box Inset"
-msgstr "E' stato aperto l'inserto Casella"
+msgstr "É stato aperto l'inserto Casella"
 
 #: src/insets/insetbranch.C:72
 msgid "Opened Branch Inset"
-msgstr "E' stato aperto l'inserto Ramo"
+msgstr "É stato aperto l'inserto Ramo"
 
 #: src/insets/insetbranch.C:97
 msgid "Branch: "
@@ -14032,7 +14030,7 @@ msgstr "Non definito: "
 
 #: src/insets/insetcaption.C:77
 msgid "Opened Caption Inset"
-msgstr "E' stato aperto l'inserto Didascalia"
+msgstr "É stato aperto l'inserto Didascalia"
 
 #: src/insets/insetcaption.C:107 src/insets/insetcaption.C:110
 msgid "Float"
@@ -14040,15 +14038,15 @@ msgstr "Oggetto mobile"
 
 #: src/insets/insetcharstyle.C:118
 msgid "Opened CharStyle Inset"
-msgstr "E' stato aperto l'inserto StileCarattere"
+msgstr "É stato aperto l'inserto StileCarattere"
 
 #: src/insets/insetenv.C:65
 msgid "Opened Environment Inset: "
-msgstr "E' stato aperto l'inserto Ambiente:"
+msgstr "É stato aperto l'inserto Ambiente:"
 
 #: src/insets/insetert.C:142
 msgid "Opened ERT Inset"
-msgstr "E' stato aperto l'inserto ERT"
+msgstr "É stato aperto l'inserto ERT"
 
 #: src/insets/insetert.C:404
 msgid "ERT"
@@ -14066,7 +14064,7 @@ msgstr "mobile: "
 
 #: src/insets/insetfloat.C:291
 msgid "Opened Float Inset"
-msgstr "E' stato aperto l'inserto Oggetto mobile"
+msgstr "É stato aperto l'inserto Oggetto mobile"
 
 #: src/insets/insetfloat.C:424
 msgid " (sideways)"
@@ -14087,7 +14085,7 @@ msgstr "piede"
 
 #: src/insets/insetfoot.C:56
 msgid "Opened Footnote Inset"
-msgstr "E' stato aperto l'inserto Nota a piè di pagina"
+msgstr "É stato aperto l'inserto Nota a piè di pagina"
 
 #: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, c-format
@@ -14147,7 +14145,7 @@ msgstr "margine"
 
 #: src/insets/insetmarginal.C:51
 msgid "Opened Marginal Note Inset"
-msgstr "E' stato aperto l'inserto Nota a margine"
+msgstr "É stato aperto l'inserto Nota a margine"
 
 #: src/insets/insetnote.C:58
 msgid "Comment"
@@ -14159,7 +14157,7 @@ msgstr "In grigio"
 
 #: src/insets/insetnote.C:137
 msgid "Opened Note Inset"
-msgstr "E' stato aperto l'inserto Nota"
+msgstr "É stato aperto l'inserto Nota"
 
 #: src/insets/insetoptarg.C:34 src/insets/insetoptarg.C:44
 msgid "opt"
@@ -14167,7 +14165,7 @@ msgstr "opz"
 
 #: src/insets/insetoptarg.C:56
 msgid "Opened Optional Argument Inset"
-msgstr "E' stato aperto l'inserto Argomento opzionale"
+msgstr "É stato aperto l'inserto Argomento opzionale"
 
 #: src/insets/insetref.C:151 src/mathed/ref_inset.C:188
 msgid "Ref: "
@@ -14227,7 +14225,7 @@ msgstr "Non puoi impostare le multicolonne verticalmente."
 
 #: src/insets/insettext.C:240
 msgid "Opened Text Inset"
-msgstr "E' stato aperto l'inserto Testo"
+msgstr "É stato aperto l'inserto Testo"
 
 #: src/insets/insettheorem.C:39
 msgid "theorem"
@@ -14235,7 +14233,7 @@ msgstr "teorema"
 
 #: src/insets/insettheorem.C:87
 msgid "Opened Theorem Inset"
-msgstr "E' stato aperto l'inserto Teorema"
+msgstr "É stato aperto l'inserto Teorema"
 
 #: src/insets/insettoc.C:43
 msgid "Unknown toc list"
@@ -14259,7 +14257,7 @@ msgstr "rientro: "
 
 #: src/insets/insetwrap.C:189
 msgid "Opened Wrap Inset"
-msgstr "E' stato aperto l'inserto Rientro"
+msgstr "É stato aperto l'inserto Rientro"
 
 #: src/insets/render_graphic.C:89 src/insets/render_graphic.C:93
 msgid "Not shown."
@@ -14586,7 +14584,7 @@ msgstr ""
 
 #: src/lyx_main.C:673
 msgid "Missing user LyX directory"
-msgstr "E' andata persa la cartella utente di LyX"
+msgstr "É andata persa la cartella utente di LyX"
 
 #: src/lyx_main.C:674
 #, c-format
@@ -14595,7 +14593,7 @@ msgid ""
 "It is needed to keep your own configuration."
 msgstr ""
 "Hai specificato la cartella LyX di un utente che non esiste, %1$s.\n"
-"E' necessario mantenere la tua configurazione personale."
+"É necessario mantenere la tua configurazione personale."
 
 #: src/lyx_main.C:679
 msgid "&Create directory"
@@ -14976,7 +14974,7 @@ msgstr ""
 #: src/lyxrc.C:2119
 msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
-"E' l'intervallo di tempo tra due autosalvataggi (in secondi): 0 significa "
+"É l'intervallo di tempo tra due autosalvataggi (in secondi): 0 significa "
 "nessun autosalvataggio."
 
 #: src/lyxrc.C:2126
@@ -14984,7 +14982,7 @@ msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
-"E' il percorso in cui conservare i file di backup. LyX conserverà i file di "
+"É il percorso in cui conservare i file di backup. LyX conserverà i file di "
 "backup nella stessa cartella del file originale se la stringa è vuota."
 
 #: src/lyxrc.C:2130
@@ -15000,7 +14998,7 @@ msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
-"E' il file dei tasti speciali. E' possibile specificare un percorso assoluto "
+"É il file dei tasti speciali. É possibile specificare un percorso assoluto "
 "oppure LyX cercherà nelle sue cartelle bind/ sia locali che globali."
 
 #: src/lyxrc.C:2138
@@ -15058,7 +15056,7 @@ msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"E' il percorso prestabilito ai tuoi documenti. Un valore vuoto seleziona la "
+"É il percorso prestabilito ai tuoi documenti. Un valore vuoto seleziona la "
 "cartella da cui LyX è stato avviato."
 
 #: src/lyxrc.C:2188
@@ -15070,7 +15068,7 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"E' la codifica dei caratteri usata per il pacchetto LaTeX2e. La codifica T1 "
+"É la codifica dei caratteri usata per il pacchetto LaTeX2e. La codifica T1 "
 "è altamente raccomandata per lingue diverse dall'Inglese."
 
 #: src/lyxrc.C:2199
@@ -15117,17 +15115,17 @@ msgid ""
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
-"E' il comando LaTeX per passare dalla lingua del documento ad un'altra. Cioè:"
+"É il comando LaTeX per passare dalla lingua del documento ad un'altra. Cioè:"
 "\\selectlanguage{$$lang} dove $$lang deve essere sostituito con il nome "
 "della seconda lingua."
 
 #: src/lyxrc.C:2228
 msgid "The LaTeX command for changing back to the language of the document."
-msgstr "E' il comando LaTeX per tornare alla lingua del documento."
+msgstr "É il comando LaTeX per tornare alla lingua del documento."
 
 #: src/lyxrc.C:2232
 msgid "The LaTeX command for local changing of the language."
-msgstr "E' il comando LaTeX per il cambiamento locale della lingua."
+msgstr "É il comando LaTeX per il cambiamento locale della lingua."
 
 #: src/lyxrc.C:2236
 msgid ""
@@ -15142,7 +15140,7 @@ msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"E' il comando LaTeX per caricare il pacchetto linguistico. Cioè: "
+"É il comando LaTeX per caricare il pacchetto linguistico. Cioè: "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:2244
@@ -15156,7 +15154,7 @@ msgstr ""
 #: src/lyxrc.C:2248
 msgid "The file where the last-files information should be stored."
 msgstr ""
-"E' il file dove dovrebbero essere conservate le informazioni sugli ultimi "
+"É il file dove dovrebbero essere conservate le informazioni sugli ultimi "
 "file."
 
 #: src/lyxrc.C:2252
@@ -15175,7 +15173,7 @@ msgstr ""
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
-"E' il massimo numero degli ultimi file aperti. Ne possono apparire nel menù "
+"É il massimo numero degli ultimi file aperti. Ne possono apparire nel menù "
 "al massimo %1$d."
 
 #: src/lyxrc.C:2264
@@ -15194,15 +15192,15 @@ msgstr ""
 
 #: src/lyxrc.C:2275
 msgid "The bold font in the dialogs."
-msgstr "E' il carattere grassetto nei dialoghi."
+msgstr "É il carattere grassetto nei dialoghi."
 
 #: src/lyxrc.C:2279
 msgid "The encoding for the menu/popups fonts."
-msgstr "E' la codifica per i caratteri dei menù e dei popup."
+msgstr "É la codifica per i caratteri dei menù e dei popup."
 
 #: src/lyxrc.C:2283
 msgid "The normal font in the dialogs."
-msgstr "E' il carattere normale nei dialoghi."
+msgstr "É il carattere normale nei dialoghi."
 
 #: src/lyxrc.C:2287
 msgid "Shows a typeset preview of things such as math"
@@ -15220,23 +15218,23 @@ msgstr "Adatta la dimensione prevista."
 
 #: src/lyxrc.C:2299
 msgid "The option for specifying whether the copies should be collated."
-msgstr "E' l'opzione per specificare come le copie dovranno essere ordinate."
+msgstr "É l'opzione per specificare come le copie dovranno essere ordinate."
 
 #: src/lyxrc.C:2303
 msgid "The option for specifying the number of copies to print."
-msgstr "E' l'opzione per specificare il numero di copie da stampare."
+msgstr "É l'opzione per specificare il numero di copie da stampare."
 
 #: src/lyxrc.C:2307
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
-"E' la stampante predefinita. LyX userà la variabile d'ambiente PRINTER se "
+"É la stampante predefinita. LyX userà la variabile d'ambiente PRINTER se "
 "non è specificata alcuna stampante."
 
 #: src/lyxrc.C:2311
 msgid "The option to print only even pages."
-msgstr "E' l'opzione per stampare solo pagine pari."
+msgstr "É l'opzione per stampare solo pagine pari."
 
 #: src/lyxrc.C:2315
 msgid ""
@@ -15252,29 +15250,29 @@ msgstr "Estensione per il file di stampa prodotto. Generalmente \".ps\"."
 
 #: src/lyxrc.C:2323
 msgid "The option to print out in landscape."
-msgstr "E' l'opzione per stampare in orizzontale."
+msgstr "É l'opzione per stampare in orizzontale."
 
 #: src/lyxrc.C:2327
 msgid "The option to print only odd pages."
-msgstr "E' l'opzione per stampare solo pagine dispari."
+msgstr "É l'opzione per stampare solo pagine dispari."
 
 #: src/lyxrc.C:2331
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
-"E' l'opzione per specificare un elenco di pagine da stampare, separate da "
+"É l'opzione per specificare un elenco di pagine da stampare, separate da "
 "virgole"
 
 #: src/lyxrc.C:2335
 msgid "Option to specify the dimensions of the print paper."
-msgstr "E' l'opzione per specificare le dimensioni della carta."
+msgstr "É l'opzione per specificare le dimensioni della carta."
 
 #: src/lyxrc.C:2339
 msgid "The option to specify paper type."
-msgstr "E' l'opzione per specificare il tipo di carta."
+msgstr "É l'opzione per specificare il tipo di carta."
 
 #: src/lyxrc.C:2343
 msgid "The option to reverse the order of the pages printed."
-msgstr "E' l'opzione per invertire l'ordine delle pagine stampate."
+msgstr "É l'opzione per invertire l'ordine delle pagine stampate."
 
 #: src/lyxrc.C:2347
 msgid ""
@@ -15296,11 +15294,11 @@ msgstr ""
 
 #: src/lyxrc.C:2355
 msgid "Option to pass to the print program to print to a file."
-msgstr "E' l'opzione per stampare su file."
+msgstr "É l'opzione per stampare su file."
 
 #: src/lyxrc.C:2359
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr "E' l'opzione per stampare con una specifica stampante."
+msgstr "É l'opzione per stampare con una specifica stampante."
 
 #: src/lyxrc.C:2363
 msgid ""
@@ -15312,7 +15310,7 @@ msgstr ""
 
 #: src/lyxrc.C:2367
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr "E' il tuo programma di stampa preferito, cioè \"dvips\", \"dvilj4\"."
+msgstr "É il tuo programma di stampa preferito, cioè \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2371
 msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
@@ -15331,7 +15329,7 @@ msgstr ""
 
 #: src/lyxrc.C:2379
 msgid "The encoding for the screen fonts."
-msgstr "E' la codifica per i caratteri dello schermo."
+msgstr "É la codifica per i caratteri dello schermo."
 
 #: src/lyxrc.C:2385
 msgid "The screen fonts used to display the text while editing."
@@ -15363,7 +15361,7 @@ msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
-"E' la percentuale di zoom per i caratteri dello schermo. Una scelta del 100% "
+"É la percentuale di zoom per i caratteri dello schermo. Una scelta del 100% "
 "renderà i caratteri esattamente della stessa dimensione di quelli sulla "
 "carta."
 
@@ -15396,7 +15394,7 @@ msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"E' il percorso che LyX imposterà quando offrirà di scegliere un modello. Un "
+"É il percorso che LyX imposterà quando offrirà di scegliere un modello. Un "
 "valore vuoto seleziona la cartella da cui LyX fu avviato."
 
 #: src/lyxrc.C:2436
@@ -15404,7 +15402,7 @@ msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
-"E' il file UI (Interfaccia Utente). E' possibile specificare un percorso "
+"É il file UI (Interfaccia Utente). É possibile specificare un percorso "
 "assoluto oppure LyX cercherà nelle sue cartelle ui/ sia locali che globali."
 
 #: src/lyxrc.C:2449
@@ -15428,7 +15426,7 @@ msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
 msgstr ""
-"E' il numero di linee che sono scorse da un mouse con rotellina o da un "
+"É il numero di linee che sono scorse da un mouse con rotellina o da un "
 "mouse con cinque tasti."
 
 #: src/lyxvc.C:93
