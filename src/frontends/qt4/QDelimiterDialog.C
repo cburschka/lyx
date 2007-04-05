@@ -76,7 +76,7 @@ string fix_name(const string & str, bool big)
 		return "/";
 	if (str == "backslash")
 		return "\\";
-	if (str == "empty")
+	if (str.empty())
 		return ".";
 	if (!big || str == "(" || str == ")" || str == "[" || str == "]")
 		return str;
