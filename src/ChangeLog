@@ -1,3 +1,9 @@
+2007-04-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxlayout.C (Read): set labelstringappendix_ every time
+	labelstring is set (instead of using this value only as a
+	fallback) (bug 3351)
+
 2007-03-20  Martin Vermeer <martin.vermeer@tkk.fi>
 
 	* bufferparams.[Ch]: move getEngine() here, and let it sense the

@@ -447,8 +447,10 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_LABELSTRING:	// label string definition
-			if (lexrc.next())
+			if (lexrc.next()) {
 				labelstring_ = trim(lexrc.getString());
+				labelstring_appendix_ = labelstring_;
+			}
 			break;
 
 		case LT_ENDLABELSTRING:	// endlabel string definition
@@ -483,8 +485,6 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 	}
 	lexrc.popTable();
 
-	if (labelstring_appendix_.empty())
-		labelstring_appendix_ = labelstring_;
 	return error;
 }
 
