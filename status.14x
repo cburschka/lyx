@@ -37,6 +37,9 @@ What's new
 
 - Don't skip lines after noweb chunks in tex2lyx (bug 3052)
 
+- fix bug when entering relative length (like page%) as margin
+  settings (bug 3416).
+
 - Fix Date external template in windows (bug 3241)
 
 * USER INTERFACE:

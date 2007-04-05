@@ -1,3 +1,8 @@
+2007-04-05  Richard Heck  <rgheck@brown.edu>
+
+	* bufferparams.C (writeLaTeX): output lengths as LaTeX strings
+	(useful for foo%) (bug 3416)
+
 2007-04-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlayout.C (Read): set labelstringappendix_ every time

@@ -888,19 +888,19 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 			}
 		}
 		if (!topmargin.empty())
-			os << ",tmargin=" << topmargin;
+			os << ",tmargin=" << LyXLength(topmargin).asLatexString();
 		if (!bottommargin.empty())
-			os << ",bmargin=" << bottommargin;
+			os << ",bmargin=" << LyXLength(bottommargin).asLatexString();
 		if (!leftmargin.empty())
-			os << ",lmargin=" << leftmargin;
+			os << ",lmargin=" << LyXLength(leftmargin).asLatexString();
 		if (!rightmargin.empty())
-			os << ",rmargin=" << rightmargin;
+			os << ",rmargin=" << LyXLength(rightmargin).asLatexString();
 		if (!headheight.empty())
-			os << ",headheight=" << headheight;
+			os << ",headheight=" << LyXLength(headheight).asLatexString();
 		if (!headsep.empty())
-			os << ",headsep=" << headsep;
+			os << ",headsep=" << LyXLength(headsep).asLatexString();
 		if (!footskip.empty())
-			os << ",footskip=" << footskip;
+			os << ",footskip=" << LyXLength(footskip).asLatexString();
 		os << "}\n";
 		texrow.newline();
 	}
