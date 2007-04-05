@@ -1376,13 +1376,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				string opt1;
 				if (contains(argument, "|")) {
 					arg = token(argument, '|', 0);
-					opt1 = '[' + token(argument, '|', 1) + ']';
+					opt1 = token(argument, '|', 1);
 				}
-				std::ostringstream os;
-				os << "citation LatexCommand\n"
-				   << "\\cite" << opt1 << "{" << arg << "}\n"
-				   << "\\end_inset";
-				FuncRequest fr(LFUN_INSET_INSERT, os.str());
+				InsetCommandParams icp("cite");
+				icp["key"] = from_utf8(arg);
+				if (!opt1.empty())
+					icp["before"] = from_utf8(opt1);
+				string icstr = InsetCommandMailer::params2string("citation", icp);
+				FuncRequest fr(LFUN_INSET_INSERT, icstr);
 				dispatch(fr);
 			} else
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "citation"));
