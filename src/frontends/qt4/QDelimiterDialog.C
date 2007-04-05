@@ -49,7 +49,7 @@ char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter
 	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
 
 
-string do_match(const string & str)
+QString do_match(QString const & str)
 {
 	if (str == "(") return ")";
 	if (str == ")") return "(";
@@ -70,18 +70,18 @@ string do_match(const string & str)
 }
 
 
-string fix_name(const string & str, bool big)
+string fix_name(QString const & str, bool big)
 {
 	if (str == "slash")
 		return "/";
 	if (str == "backslash")
 		return "\\";
-	if (str.empty())
+	if (str.isEmpty())
 		return ".";
 	if (!big || str == "(" || str == ")" || str == "[" || str == "]")
-		return str;
+		return fromqstr(str);
 
-	return "\\" + str;
+	return "\\" + fromqstr(str);
 }
 
 } // namespace anon
@@ -97,15 +97,24 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 	setWindowTitle(qt_("LyX: Delimiters"));
 
-	for (int i = 0; *delim[i]; ++i) {
-		QPixmap pm = QPixmap(toqstr(find_xpm(delim[i])));
-		leftCO->addItem(QIcon(pm), "");
-		rightCO->addItem(QIcon(pm), "");
+	for (size_t i = 0; i != 21; ++i)
+		delimiters_.append(toqstr(delim[i]));
+
+	// The last element is the empty one.
+	size_t end = delimiters_.size() - 1;
+	for (size_t i = 0; i != end; ++i) {
+		if (delimiters_[i].size() == 1) {
+			leftCO->addItem(delimiters_[i]);
+			rightCO->addItem(delimiters_[i]);
+		} else {
+			QPixmap pm = QPixmap(toqstr(find_xpm(fromqstr(delimiters_[i]))));
+			leftCO->addItem(QIcon(pm), delimiters_[i]);
+			rightCO->addItem(QIcon(pm), delimiters_[i]);
+		}
 	}
 
-	string empty_xpm(find_xpm("empty"));
-	leftCO->addItem(QIcon(QPixmap(toqstr(empty_xpm))), qt_("(None)"));
-	rightCO->addItem(QIcon(QPixmap(toqstr(empty_xpm))), qt_("(None)"));
+	leftCO->addItem(qt_("(None)"));
+	rightCO->addItem(qt_("(None)"));
 
 	sizeCO->addItem(qt_("Variable"));
 
@@ -118,8 +127,8 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 void QDelimiterDialog::insertClicked()
 {
-	string const left_ = delim[leftCO->currentIndex()];
-	string const right_ = delim[rightCO->currentIndex()];
+	QString const left_ = delimiters_[leftCO->currentIndex()];
+	QString const right_ = delimiters_[rightCO->currentIndex()];
 	int const size_ = sizeCO->currentIndex();
 
 	if (size_ == 0) {
@@ -141,11 +150,8 @@ void QDelimiterDialog::insertClicked()
 void QDelimiterDialog::on_leftCO_activated(int item)
 {
 	if (matchCB->isChecked()) {
-		string const match = do_match(delim[item]);
-		int k = 0;
-		while (delim[k] && delim[k] != match)
-			++k;
-		rightCO->setCurrentIndex(k);
+		QString const match = do_match(delimiters_[item]);
+		rightCO->setCurrentIndex(delimiters_.indexOf(match));
 	}
 }
 
@@ -153,11 +159,8 @@ void QDelimiterDialog::on_leftCO_activated(int item)
 void QDelimiterDialog::on_rightCO_activated(int item)
 {
 	if (matchCB->isChecked()) {
-		string const match = do_match(delim[item]);
-		int k = 0;
-		while (delim[k] && delim[k] != match)
-			++k;
-		leftCO->setCurrentIndex(k);
+		QString const match = do_match(delimiters_[item]);
+		leftCO->setCurrentIndex(delimiters_.indexOf(match));
 	}
 }
 

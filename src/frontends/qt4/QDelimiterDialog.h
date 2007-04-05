@@ -13,6 +13,9 @@
 #define QDELIMITERDIALOG_H
 
 #include "ui/QDelimiterUi.h"
+
+#include <QStringList>
+
 #include <string>
 
 namespace lyx {
@@ -32,6 +35,8 @@ public Q_SLOTS:
 private:
 	/// owning form
 	QMathDelimiter * form_;
+	///
+	QStringList delimiters_;
 };
 
 } // namespace frontend

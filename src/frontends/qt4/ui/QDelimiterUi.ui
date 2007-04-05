@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QDelimiterUi</class>
  <widget class="QDialog" name="QDelimiterUi" >
   <property name="geometry" >
@@ -66,11 +63,25 @@
      </property>
      <item>
       <widget class="QComboBox" name="leftCO" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>4</hsizetype>
+         <vsizetype>4</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize" >
         <size>
          <width>42</width>
          <height>42</height>
         </size>
+       </property>
+       <property name="maxVisibleItems" >
+        <number>100</number>
+       </property>
+       <property name="sizeAdjustPolicy" >
+        <enum>QComboBox::AdjustToContents</enum>
        </property>
        <property name="iconSize" >
         <size>
@@ -82,11 +93,22 @@
      </item>
      <item>
       <widget class="QComboBox" name="rightCO" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>4</hsizetype>
+         <vsizetype>4</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize" >
         <size>
          <width>42</width>
          <height>42</height>
         </size>
+       </property>
+       <property name="maxVisibleItems" >
+        <number>100</number>
        </property>
        <property name="iconSize" >
         <size>
@@ -153,10 +175,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>leftCO</tabstop>
   <tabstop>rightCO</tabstop>
@@ -165,6 +183,9 @@
   <tabstop>insertPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
