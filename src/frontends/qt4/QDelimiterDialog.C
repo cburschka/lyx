@@ -150,9 +150,13 @@ void QDelimiterDialog::insertClicked()
 
 void QDelimiterDialog::on_leftLW_itemActivated(QListWidgetItem *)
 {
-	if (!matchCB->isChecked())
-		return;
+	insertClicked();
+	accept();
+}
 
+
+void QDelimiterDialog::on_rightLW_itemActivated(QListWidgetItem *)
+{
 	insertClicked();
 	accept();
 }

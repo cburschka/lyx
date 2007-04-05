@@ -29,6 +29,7 @@ public:
 	QDelimiterDialog(QMathDelimiter * form);
 public Q_SLOTS:
 	void on_leftLW_itemActivated(QListWidgetItem *);
+	void on_rightLW_itemActivated(QListWidgetItem *);
 	void on_leftLW_currentRowChanged(int);
 	void on_rightLW_currentRowChanged(int);
 	void on_matchCB_stateChanged(int);
