@@ -14,9 +14,9 @@
 
 #include "ui/QDelimiterUi.h"
 
-#include <QStringList>
-
 #include <string>
+
+class QListWidgetItem;
 
 namespace lyx {
 namespace frontend {
@@ -28,15 +28,14 @@ class QDelimiterDialog : public QDialog, public Ui::QDelimiterUi {
 public:
 	QDelimiterDialog(QMathDelimiter * form);
 public Q_SLOTS:
-	void on_leftCO_activated(int);
-	void on_rightCO_activated(int);
+	void on_leftLW_itemActivated(QListWidgetItem *);
+	void on_leftLW_currentRowChanged(int);
+	void on_rightLW_currentRowChanged(int);
 	void on_matchCB_stateChanged(int);
 	void insertClicked();
 private:
 	/// owning form
 	QMathDelimiter * form_;
-	///
-	QStringList delimiters_;
 };
 
 } // namespace frontend

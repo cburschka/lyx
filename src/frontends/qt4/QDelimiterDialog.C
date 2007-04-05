@@ -20,7 +20,7 @@
 
 #include <QPixmap>
 #include <QCheckBox>
-
+#include <QListWidgetItem>
 
 #include <sstream>
 
@@ -31,7 +31,7 @@ namespace frontend {
 
 namespace {
 
-char const * delim[] = {
+string const delim[] = {
 	"(", ")", "{", "}", "[", "]",
 	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
 	"uparrow", "Uparrow", "downarrow", "Downarrow",
@@ -96,39 +96,41 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	connect(insertPB, SIGNAL(clicked()), this, SLOT(insertClicked()));
 
 	setWindowTitle(qt_("LyX: Delimiters"));
-
-	for (size_t i = 0; i != 21; ++i)
-		delimiters_.append(toqstr(delim[i]));
+	setFocusProxy(leftLW);
 
 	// The last element is the empty one.
-	size_t end = delimiters_.size() - 1;
-	for (size_t i = 0; i != end; ++i) {
-		if (delimiters_[i].size() == 1) {
-			leftCO->addItem(delimiters_[i]);
-			rightCO->addItem(delimiters_[i]);
+	for (size_t i = 0; !delim[i].empty(); ++i) {
+		QString const left_d = toqstr(delim[i]);
+		QString const right_d = do_match(left_d);
+		if (left_d.size() == 1) {
+			leftLW->addItem(left_d);
+			rightLW->addItem(right_d);
 		} else {
-			QPixmap pm = QPixmap(toqstr(find_xpm(fromqstr(delimiters_[i]))));
-			leftCO->addItem(QIcon(pm), delimiters_[i]);
-			rightCO->addItem(QIcon(pm), delimiters_[i]);
+			QPixmap left_pm = QPixmap(toqstr(find_xpm(fromqstr(left_d))));
+			leftLW->addItem(new QListWidgetItem(QIcon(left_pm), left_d));
+			QPixmap right_pm = QPixmap(toqstr(find_xpm(fromqstr(right_d))));
+			rightLW->addItem(new QListWidgetItem(QIcon(right_pm), right_d));
 		}
 	}
 
-	leftCO->addItem(qt_("(None)"));
-	rightCO->addItem(qt_("(None)"));
+	leftLW->addItem(qt_("(None)"));
+	rightLW->addItem(qt_("(None)"));
 
 	sizeCO->addItem(qt_("Variable"));
 
 	for (int i = 0; *biggui[i]; ++i)
 		sizeCO->addItem(qt_(biggui[i]));
 
-	on_leftCO_activated(0);
+	on_leftLW_currentRowChanged(0);
 }
 
 
 void QDelimiterDialog::insertClicked()
 {
-	QString const left_ = delimiters_[leftCO->currentIndex()];
-	QString const right_ = delimiters_[rightCO->currentIndex()];
+	QString const left_ = (leftLW->currentRow() < leftLW->count() - 1)?
+		leftLW->currentItem()->text(): QString();
+	QString const right_ = (rightLW->currentRow() < rightLW->count() - 1)?
+		rightLW->currentItem()->text(): QString();
 	int const size_ = sizeCO->currentIndex();
 
 	if (size_ == 0) {
@@ -143,32 +145,37 @@ void QDelimiterDialog::insertClicked()
 		   << fix_name(right_, true) << '"';
 		form_->controller().dispatchBigDelim(os.str());
 	}
-
 }
 
 
-void QDelimiterDialog::on_leftCO_activated(int item)
+void QDelimiterDialog::on_leftLW_itemActivated(QListWidgetItem *)
 {
-	if (matchCB->isChecked()) {
-		QString const match = do_match(delimiters_[item]);
-		rightCO->setCurrentIndex(delimiters_.indexOf(match));
-	}
+	if (!matchCB->isChecked())
+		return;
+
+	insertClicked();
+	accept();
 }
 
 
-void QDelimiterDialog::on_rightCO_activated(int item)
+void QDelimiterDialog::on_leftLW_currentRowChanged(int item)
 {
-	if (matchCB->isChecked()) {
-		QString const match = do_match(delimiters_[item]);
-		leftCO->setCurrentIndex(delimiters_.indexOf(match));
-	}
+	if (matchCB->isChecked())
+		rightLW->setCurrentRow(item);
+}
+
+
+void QDelimiterDialog::on_rightLW_currentRowChanged(int item)
+{
+	if (matchCB->isChecked())
+		leftLW->setCurrentRow(item);
 }
 
 
 void QDelimiterDialog::on_matchCB_stateChanged(int state)
 {
 	if (state == Qt::Checked)
-		on_leftCO_activated(leftCO->currentIndex());
+		on_leftLW_currentRowChanged(leftLW->currentRow());
 }
 
 
