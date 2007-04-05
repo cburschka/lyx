@@ -188,28 +188,6 @@ Style LangFooter
 	EndFont
 End
 
-Style Bibliography
-	Margin			First_Dynamic
-	LatexType		Bib_Environment
-	LatexName		thebibliography
-	NextNoIndent		1
-	LeftMargin		MM
-	ParSkip			0.4
-	ItemSep			0
-	TopSep			0.7
-	BottomSep		0.7
-	ParSep			0.5
-	Align			Block
-	LabelType		Bibliography
-	LabelString		"References"
-	LabelBottomSep		1.2
-	LabelFont
-	  Series		Bold
-	  Size			Larger
-	  Family		Sans
-	EndFont
-End
-
 Style End
 	Margin			Dynamic
 	LatexType		Command
