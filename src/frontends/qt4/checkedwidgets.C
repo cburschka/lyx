@@ -20,7 +20,7 @@ namespace lyx {
 namespace frontend {
 
 void addCheckedLineEdit(BCView & bcview,
-			QLineEdit * input, QLabel * label)
+			QLineEdit * input, QWidget * label)
 {
 	bcview.addCheckedWidget(new CheckedLineEdit(input, label));
 }
@@ -41,7 +41,7 @@ void setWarningColor(QWidget * widget)
 }
 
 
-void setWidget(bool valid, QLineEdit * input, QLabel * label)
+void setWidget(bool valid, QLineEdit * input, QWidget * label)
 {
 	if (valid)
 		input->setPalette(QPalette());
@@ -60,7 +60,7 @@ void setWidget(bool valid, QLineEdit * input, QLabel * label)
 } // namespace anon
 
 
-CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QLabel * label)
+CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
 	: input_(input), label_(label)
 {}
 

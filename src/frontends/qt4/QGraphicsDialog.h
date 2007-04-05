@@ -6,6 +6,7 @@
  *
  * \author John Levon
  * \author Herbert Voﬂ
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -28,7 +29,7 @@ class QGraphicsDialog : public QDialog, public Ui::QGraphicsUi {
 	Q_OBJECT
 public:
 	QGraphicsDialog(QGraphics * form);
-
+	virtual void setAutoText();
 	virtual void show();
 protected Q_SLOTS:
 	virtual void change_adaptor();
@@ -38,6 +39,8 @@ protected Q_SLOTS:
 	virtual void on_editPB_clicked();
 	virtual void on_filename_textChanged(const QString &);
 	virtual void on_scaleCB_toggled(bool);
+	virtual void on_WidthCB_toggled(bool);
+	virtual void on_HeightCB_toggled(bool);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

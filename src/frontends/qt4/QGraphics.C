@@ -6,6 +6,7 @@
  * \author John Levon
  * \author Edwin Leuven
  * \author Herbert Voß
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -90,8 +91,9 @@ void QGraphics::build_dialog()
 	bcview().addReadOnly(dialog_->getPB);
 
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->Width, dialog_->widthL);
-	addCheckedLineEdit(bcview(), dialog_->Height, dialog_->heightL);
+	addCheckedLineEdit(bcview(), dialog_->Scale, dialog_->scaleCB);
+	addCheckedLineEdit(bcview(), dialog_->Width, dialog_->WidthCB);
+	addCheckedLineEdit(bcview(), dialog_->Height, dialog_->HeightCB);
 	addCheckedLineEdit(bcview(), dialog_->displayscale, dialog_->scaleLA);
 	addCheckedLineEdit(bcview(), dialog_->angle, dialog_->angleL);
 	addCheckedLineEdit(bcview(), dialog_->lbX, dialog_->xL);
@@ -225,19 +227,41 @@ void QGraphics::update_contents()
 	dialog_->displayGB->setChecked(igp.display != graphics::NoDisplay);
 
 	// the output section (width/height)
+	
 	dialog_->Scale->setText(toqstr(igp.scale));
-
-	lengthToWidgets(dialog_->Width, dialog_->widthUnit,
-		igp.width.asString(), unitDefault);
-
-	lengthToWidgets(dialog_->Height, dialog_->heightUnit,
-		igp.height.asString(), unitDefault);
-
-	dialog_->aspectratio->setChecked(igp.keepAspectRatio);
-
-	dialog_->scaleCB->setChecked(!igp.scale.empty() || igp.width.empty());
-
-	dialog_->Scale->setEnabled(!igp.scale.empty() || igp.width.empty());
+	//igp.scale defaults to 100, so we treat it as empty
+	bool const scaleChecked = !igp.scale.empty() && igp.scale != "100";
+	dialog_->scaleCB->blockSignals(true);
+	dialog_->scaleCB->setChecked(scaleChecked);
+	dialog_->scaleCB->blockSignals(false);
+	dialog_->Scale->setEnabled(scaleChecked);
+	
+	lengthAutoToWidgets(dialog_->Width, dialog_->widthUnit, igp.width, 
+		unitDefault);
+	bool const widthChecked = !dialog_->Width->text().isEmpty() && 
+		dialog_->Width->text() != "auto";
+	dialog_->WidthCB->blockSignals(true);
+	dialog_->WidthCB->setChecked(widthChecked);
+	dialog_->WidthCB->blockSignals(false);
+	dialog_->Width->setEnabled(widthChecked);
+	dialog_->widthUnit->setEnabled(widthChecked);
+	
+	lengthAutoToWidgets(dialog_->Height, dialog_->heightUnit, igp.height, 
+		unitDefault);
+	bool const heightChecked = !dialog_->Height->text().isEmpty() 
+		&& dialog_->Height->text() != "auto";
+	dialog_->HeightCB->blockSignals(true);
+	dialog_->HeightCB->setChecked(heightChecked);
+	dialog_->HeightCB->blockSignals(false);
+	dialog_->Height->setEnabled(heightChecked);
+	dialog_->heightUnit->setEnabled(heightChecked);
+	
+	dialog_->scaleCB->setEnabled(!widthChecked && !heightChecked);
+	dialog_->WidthCB->setEnabled(!scaleChecked);
+	dialog_->HeightCB->setEnabled(!scaleChecked);
+	dialog_->aspectratio->setEnabled(widthChecked && heightChecked);
+	
+	dialog_->setAutoText();
 
 	dialog_->angle->setText(toqstr(igp.rotateAngle));
 
@@ -319,19 +343,27 @@ void QGraphics::apply()
 
 	if (!dialog_->displayGB->isChecked())
 		igp.display = graphics::NoDisplay;
-
-	if (dialog_->scaleCB->isChecked()
-		&& !dialog_->Scale->text().isEmpty()) {
+	
+	//the graphics section
+	if (dialog_->scaleCB->isChecked()	&& !dialog_->Scale->text().isEmpty()) {
 		igp.scale = fromqstr(dialog_->Scale->text());
+		igp.width = LyXLength("0pt");
+		igp.height = LyXLength("0pt");
+		igp.keepAspectRatio = false;
 	} else {
 		igp.scale = string();
+		igp.width = dialog_->WidthCB->isChecked() ? 
+			//Note that this works even if dialog_->Width is "auto", since in
+			//that case we get "0pt".
+			LyXLength(widgetsToLength(dialog_->Width, dialog_->widthUnit)): 
+			LyXLength("0pt");
+		igp.height = dialog_->HeightCB->isChecked() ? 
+			LyXLength(widgetsToLength(dialog_->Height, dialog_->heightUnit)) :
+			LyXLength("0pt");
+		igp.keepAspectRatio = dialog_->aspectratio->isEnabled() &&
+			dialog_->aspectratio->isChecked() &&
+			igp.width.value() > 0 && igp.height.value() > 0;
 	}
-
-	igp.width = LyXLength(widgetsToLength(dialog_->Width, dialog_->widthUnit));
-
-	igp.height = LyXLength(widgetsToLength(dialog_->Height, dialog_->heightUnit));
-
-	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 
 	igp.noUnzip = dialog_->unzipCB->isChecked();
 

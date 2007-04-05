@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -75,6 +76,43 @@ private:
 /// @returns a new @c LengthValidator that does not accept negative lengths.
 LengthValidator * unsignedLengthValidator(QLineEdit *);
 
+//FIXME This should be generalized to take "text" as part of the
+//constructor and so to set what text we check for, rather than
+//hard-coding it as "auto". But see qt_helpers.h for reasons this
+//is not so trivial and an idea about how to do it. (RGH)
+/** A class to ascertain whether the data passed to the @c validate()
+ *  member function can be interpretted as a LyXGlueLength or is "auto".
+ */
+class LengthAutoValidator : public LengthValidator
+{
+	Q_OBJECT
+	public:
+	/// Define a validator for widget @c parent.
+		LengthAutoValidator(QWidget * parent);
+
+	/** @returns QValidator::Acceptable if @c data is a LyXGlueLength
+		* or is "auto". If not, returns QValidator::Intermediate.
+	 */
+		QValidator::State validate(QString & data, int &) const;
+};
+
+/// @returns a new @c LengthAutoValidator that does not accept negative lengths.
+LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit *);
+
+//FIXME As above, this should really take a text argument.
+/**
+ * A class to determine whether the passed is a double
+ * or is "auto".
+ *
+ */
+class DoubleAutoValidator : public QDoubleValidator {
+	Q_OBJECT
+	public:
+		DoubleAutoValidator(QWidget * parent);
+		DoubleAutoValidator(double bottom, double top, int decimals, 
+			QObject * parent);
+		QValidator::State validate(QString & input, int & pos) const;
+};
 
 // Forward declarations
 class LyXRC;

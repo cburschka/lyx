@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -89,6 +90,45 @@ LengthValidator * unsignedLengthValidator(QLineEdit * ed)
 	LengthValidator * v = new LengthValidator(ed);
 	v->setBottom(LyXLength());
 	return v;
+}
+
+
+LengthAutoValidator::LengthAutoValidator(QWidget * parent)
+	: LengthValidator(parent)
+{}
+
+
+QValidator::State LengthAutoValidator::validate(QString & qtext, int & dummy) const
+{
+	string const text = fromqstr(qtext);
+	if (text == "auto")
+		return QValidator::Acceptable;
+	return LengthValidator::validate(qtext, dummy);
+}
+
+
+LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed)
+{
+	LengthAutoValidator * v = new LengthAutoValidator(ed);
+	v->setBottom(LyXLength());
+	return v;
+}
+
+
+DoubleAutoValidator::DoubleAutoValidator(QWidget * parent) : 
+	QDoubleValidator(parent) {}
+
+
+DoubleAutoValidator::DoubleAutoValidator(double bottom,
+	double top, int decimals, QObject * parent) : 
+	QDoubleValidator(bottom, top, decimals, parent) {}
+
+
+QValidator::State DoubleAutoValidator::validate(QString & input, int & pos) const {
+	string const text = fromqstr(input);
+	if (text == "auto")
+		return QValidator::Acceptable;
+	return QDoubleValidator::validate(input, pos);
 }
 
 

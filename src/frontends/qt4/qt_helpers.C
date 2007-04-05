@@ -5,6 +5,7 @@
  *
  * \author Dekel Tsur
  * \author Jürgen Spitzmüller
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -24,6 +25,7 @@
 #include "debug.h"
 
 #include <QComboBox>
+#include <QCheckBox>
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
@@ -92,6 +94,14 @@ LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
+	LyXLength const & len, LyXLength::UNIT defaultUnit) 
+{
+	combo->setCurrentItem(LyXLength(len).unit());
+	input->setText(toqstr(convert<string>(LyXLength(len).value())));
+}
+
+
+void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	string const & len, LyXLength::UNIT defaultUnit)
 {
 	if (len.empty()) {
@@ -103,9 +113,30 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		combo->setCurrentItem(defaultUnit);
 		input->setText(toqstr(len));
 	} else {
-		combo->setCurrentItem(LyXLength(len).unit());
-		input->setText(toqstr(convert<string>(LyXLength(len).value())));
+		lengthToWidgets(input, combo, LyXLength(len), defaultUnit);
 	}
+}
+
+
+void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo, 
+	LyXLength const & len, LyXLength::UNIT defaultUnit)
+{
+	if (len.value() == 0) 
+		lengthToWidgets(input, combo, "auto", defaultUnit);
+	else
+		lengthToWidgets(input, combo, len, defaultUnit);
+}
+
+
+//NOTE "CB" here because we probably will want one of these
+//for labeled sets, as well.
+void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit, 
+	LengthCombo * lengthCombo) 
+{
+	if (!checkBox->isChecked()) 
+		lengthToWidgets(lineEdit, lengthCombo, "auto", lengthCombo->currentLengthItem());
+	else if (lineEdit->text() == "auto")
+		lengthToWidgets(lineEdit, lengthCombo, string(""), lengthCombo->currentLengthItem());
 }
 
 

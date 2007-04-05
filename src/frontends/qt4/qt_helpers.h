@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Dekel Tsur
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,11 +18,11 @@
 #include "support/qstring_helpers.h"
 
 #include <QString>
-
 #include <utility>
 
 class QComboBox;
 class QLineEdit;
+class QCheckBox;
 
 class LengthCombo;
 
@@ -36,9 +37,35 @@ std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
 /// method to get a LyXLength from widgets (QComboBox)
 LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo);
 
+//FIXME It would be nice if defaultUnit were a default argument
 /// method to set widgets from a LyXLength
+void lengthToWidgets(QLineEdit * input, LengthCombo * combo, 
+	LyXLength const & len, LyXLength::UNIT default_unit);
+/// method to set widgets from a string
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	std::string const & len, LyXLength::UNIT default_unit);
+/// method to set widgets from a LyXLength with optional "auto" if zero
+void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo, 
+	LyXLength const & len, LyXLength::UNIT defaultUnit);
+
+//FIXME setAutoTextCB should really take an argument, as indicated, that
+//determines what text is to be written for "auto". But making
+//that work involves more extensive revisions than we now want
+//to make, since "auto" also appears in update_contents() (see
+//QGraphics.C). 
+//The right way to do this, I think, would be to define a class
+//checkedLengthSet (and a partnering labeledLengthSete) that encapsulated 
+//the checkbox, line edit, and length combo together, and then made e.g.
+//lengthToWidgets, widgetsToLength, etc, all public methods of that class.
+//Perhaps even the validator could be exposed through it.
+/**
+ * sets a checkbox-line edit-length combo group, using "text" if the
+ * checkbox is unchecked and clearing the line edit if it previously
+ * said "text".
+*/
+void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit, 
+	LengthCombo * lengthCombo/*, string text = "auto"*/);
+
 
 /// format a string to the given width
 docstring const formatted(docstring const & text, int w = 80);

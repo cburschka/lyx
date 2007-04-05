@@ -14,18 +14,18 @@
 
 #include "BCView.h"
 
-class QLabel;
+class QWidget;
 class QLineEdit;
 
 namespace lyx {
 namespace frontend {
 
 void addCheckedLineEdit(BCView & bcview,
-			QLineEdit * input, QLabel * label = 0);
+	QLineEdit * input, QWidget * label = 0);
 
 class CheckedLineEdit : public CheckedWidget {
 public:
-	CheckedLineEdit(QLineEdit * input, QLabel * label = 0);
+	CheckedLineEdit(QLineEdit * input, QWidget * label = 0);
 
 private:
 	///
@@ -33,7 +33,7 @@ private:
 
 	///
 	QLineEdit * input_;
-	QLabel * label_;
+	QWidget * label_;
 };
 
 } // namespace frontend

@@ -232,15 +232,15 @@
            </widget>
           </item>
           <item row="2" column="0" >
-           <widget class="QLabel" name="heightL" >
+           <widget class="QCheckBox" name="HeightCB" >
             <property name="enabled" >
              <bool>true</bool>
             </property>
-            <property name="text" >
-             <string>&amp;Height:</string>
+            <property name="toolTip" >
+             <string>Sets height of graphic. Leave unchecked to set automatically.</string>
             </property>
-            <property name="buddy" >
-             <cstring>Height</cstring>
+            <property name="text" >
+             <string>Set &amp;height:</string>
             </property>
            </widget>
           </item>
@@ -252,15 +252,15 @@
            </widget>
           </item>
           <item row="1" column="0" >
-           <widget class="QLabel" name="widthL" >
+           <widget class="QCheckBox" name="WidthCB" >
             <property name="enabled" >
              <bool>true</bool>
             </property>
-            <property name="text" >
-             <string>&amp;Width:</string>
+            <property name="toolTip" >
+             <string>Sets width of graphic. Leave unchecked to set automatically.</string>
             </property>
-            <property name="buddy" >
-             <cstring>Width</cstring>
+            <property name="text" >
+             <string>Set &amp;width:</string>
             </property>
            </widget>
           </item>
@@ -270,7 +270,7 @@
              <bool>true</bool>
             </property>
             <property name="toolTip" >
-             <string>Maintain aspect ratio with largest dimension</string>
+             <string>Scale image to maximum size not exceeding width and height</string>
             </property>
             <property name="text" >
              <string>&amp;Maintain aspect ratio</string>
@@ -448,7 +448,7 @@
      </widget>
      <widget class="QWidget" name="ExtraOptions" >
       <attribute name="title" >
-       <string>E&amp;xtra options</string>
+       <string>LaTe&amp;X and LyX options</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
@@ -766,8 +766,10 @@
   <tabstop>editPB</tabstop>
   <tabstop>scaleCB</tabstop>
   <tabstop>Scale</tabstop>
+  <tabstop>WidthCB</tabstop>
   <tabstop>Width</tabstop>
   <tabstop>widthUnit</tabstop>
+  <tabstop>HeightCB</tabstop>
   <tabstop>Height</tabstop>
   <tabstop>heightUnit</tabstop>
   <tabstop>aspectratio</tabstop>
@@ -801,53 +803,5 @@
  </includes>
  <resources/>
  <connections>
-  <connection>
-   <sender>aspectratio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>heightL</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>201</x>
-     <y>193</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>81</x>
-     <y>158</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>aspectratio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Height</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>315</x>
-     <y>193</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>275</x>
-     <y>169</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>aspectratio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>heightUnit</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>337</x>
-     <y>193</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>337</x>
-     <y>167</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
 </ui>
