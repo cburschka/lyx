@@ -1,8 +1,8 @@
 # Standard textclass definition file. Taken from initial LyX source code
 # Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
-# Transposed by Pascal André <andre@via.ecp.fr>
+# Transposed by Pascal AndrÃ© <andre@via.ecp.fr>
 # Heavily modifed and enhanced by several developers.
-# Title definitions moved to stdtitle.inc by HArtmut Goebel <harmut@noris.net>
+# Title definitions moved to stdtitle.inc by Hartmut Goebel <harmut@noris.net>
 
 # This include files contains all layouts that handle the structure of
 # a document, like abstract, bibliography and such.

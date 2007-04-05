@@ -70,7 +70,7 @@ status open
 \series bold
 Note:
 \series default
- The personal settings like your name, address, etc.
+ The personal data like your name, address, etc.
  are set in the document preamble.
 \end_layout
 
@@ -85,7 +85,7 @@ status open
 
 \begin_layout Standard
 The moderncv-class offers lots of customization possibilities; to find out
- more, look at its documentatation.
+ more, look at its documentation.
 \end_layout
 
 \end_inset
@@ -238,6 +238,16 @@ Title of the thesis
 
 \begin_layout Space
 -1cm
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Inserts vertical space; negative values are allowed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Item
@@ -433,16 +443,6 @@ status collapsed
 
 \begin_layout Space
 -1cm
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Inserts vertical space; negative values are allowed.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Language
@@ -744,7 +744,7 @@ Section with your own content
 
 \begin_layout CloseSection
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 This ends the section formatting.
@@ -779,7 +779,7 @@ put some table or figure, etc.
 
 \begin_layout EmptySection
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Creates a section without a section heading.
@@ -811,20 +811,6 @@ Back to moderncv layout, without making a new section
 
 \begin_layout Standard
 You can use bibitems:
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
-key "latexcompanion"
-
-\end_inset
-
-Frank Mittelbach and Michel Goossens: 
-\emph on
-The LaTeX Companion Second Edition.
-
-\emph default
- Addison-Wesley, 2004
 \end_layout
 
 \begin_layout Bibliography
@@ -875,7 +861,7 @@ nocite{*}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 
