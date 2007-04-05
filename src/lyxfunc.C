@@ -1386,7 +1386,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				FuncRequest fr(LFUN_INSET_INSERT, icstr);
 				dispatch(fr);
 			} else
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "citation"));
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW_NEW_INSET, "citation"));
 			break;
 		}
 
