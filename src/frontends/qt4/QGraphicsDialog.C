@@ -213,7 +213,7 @@ void QGraphicsDialog::on_scaleCB_toggled(bool setScale)
 {
 	Scale->setEnabled(setScale);
 	if (setScale) {
-		Scale->setText("");
+		Scale->setText("100");
 		Scale->setFocus(Qt::OtherFocusReason);
 	}
 	
