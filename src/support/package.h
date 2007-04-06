@@ -73,7 +73,7 @@ public:
 
 	/** The top of the LyX source code tree.
 	 */
-	std::string const & top_srcdir() const;
+	static std::string const & top_srcdir();
 
 	/** The path to the system-level support files
 	 *  we're actually going to use.

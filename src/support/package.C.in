@@ -169,15 +169,8 @@ Package::Package(string const & command_line_arg0,
 
 namespace {
 
-// These next three functions contain the stuff that is substituted at
+// These next functions contain the stuff that is substituted at
 // configuration-time.
-string const top_srcdir()
-{
-	static string const dir("@TOP_SRCDIR@");
-	return dir;
-}
-
-
 string const hardcoded_localedir()
 {
 	return string("@LOCALEDIR@");
@@ -201,7 +194,7 @@ string const & with_version_suffix()
 } // namespace anon
 
 
-string const & Package::top_srcdir() const
+string const & Package::top_srcdir()
 {
 	static string const dir("@TOP_SRCDIR@");
 	return dir;
@@ -270,7 +263,7 @@ get_build_dirs(string const & abs_binary,
 		if (!fileSearch(build_support_dir, "Makefile").empty()) {
 			// Try and find "chkconfig.ltx".
 			string const system_support_dir =
-				addPath(top_srcdir(), "lib");
+				addPath(Package::top_srcdir(), "lib");
 
 			if (!fileSearch(system_support_dir, "chkconfig.ltx").empty()) {
 				lyxerr[Debug::INIT] << check_text << " yes"
