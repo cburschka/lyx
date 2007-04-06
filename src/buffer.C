@@ -1138,11 +1138,11 @@ int Buffer::runChktex()
 	busy(true);
 
 	// get LaTeX-Filename
-	string const path = temppath();
-        string const name = addName(path, getLatexName());
+	FileName const path(temppath());
+	string const name = addName(path.absFilename(), getLatexName());
 	string const org_path = filePath();
 
-	support::Path p(FileName(path)); // path to LaTeX file
+	support::Path p(path); // path to LaTeX file
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary

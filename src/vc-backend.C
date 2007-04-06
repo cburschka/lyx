@@ -56,11 +56,11 @@ using std::ifstream;
 namespace fs = boost::filesystem;
 
 
-int VCS::doVCCommand(string const & cmd, string const & path)
+int VCS::doVCCommand(string const & cmd, FileName const & path)
 {
 	LYXERR(Debug::LYXVC) << "doVCCommand: " << cmd << endl;
 	Systemcall one;
-	support::Path p(FileName(path));
+	support::Path p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
 }
@@ -102,7 +102,7 @@ void RCS::retrieve(FileName const & file)
 {
 	LYXERR(Debug::LYXVC) << "LyXVC::RCS: retrieve.\n\t" << file << endl;
 	VCS::doVCCommand("co -q -r " + quoteName(file.toFilesystemEncoding()),
-			 string());
+			 FileName());
 }
 
 
@@ -176,7 +176,7 @@ void RCS::registrer(string const & msg)
 	cmd += msg;
 	cmd += "\" ";
 	cmd += quoteName(onlyFilename(owner_->fileName()));
-	doVCCommand(cmd, owner_->filePath());
+	doVCCommand(cmd, FileName(owner_->filePath()));
 }
 
 
@@ -184,7 +184,7 @@ void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->fileName())),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 
@@ -192,7 +192,7 @@ void RCS::checkOut()
 {
 	owner_->markClean();
 	doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->fileName())),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 
@@ -200,7 +200,7 @@ void RCS::revert()
 {
 	doVCCommand("co -f -u" + version() + " "
 		    + quoteName(onlyFilename(owner_->fileName())),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 	// We ignore changes and just reload!
 	owner_->markClean();
 }
@@ -211,7 +211,7 @@ void RCS::undoLast()
 	LYXERR(Debug::LYXVC) << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " "
 		    + quoteName(onlyFilename(owner_->fileName())),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 
@@ -219,7 +219,7 @@ void RCS::getLog(FileName const & tmpf)
 {
 	doVCCommand("rlog " + quoteName(onlyFilename(owner_->fileName()))
 		    + " > " + tmpf.toFilesystemEncoding(),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 
@@ -306,7 +306,7 @@ void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->fileName())),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 
@@ -314,7 +314,7 @@ void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->fileName())),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 
@@ -332,7 +332,7 @@ void CVS::revert()
 	string const fil = quoteName(onlyFilename(owner_->fileName()));
 
 	doVCCommand("rm -f " + fil + "; cvs update " + fil,
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 	owner_->markClean();
 }
 
@@ -350,7 +350,7 @@ void CVS::getLog(FileName const & tmpf)
 {
 	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->fileName()))
 		    + " > " + tmpf.toFilesystemEncoding(),
-		    owner_->filePath());
+		    FileName(owner_->filePath()));
 }
 
 

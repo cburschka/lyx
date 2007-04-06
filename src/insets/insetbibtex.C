@@ -50,7 +50,6 @@ using support::latex_path;
 using support::ltrim;
 using support::makeAbsPath;
 using support::makeRelPath;
-using support::Path;
 using support::prefixIs;
 using support::removeExtension;
 using support::rtrim;
@@ -309,7 +308,8 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 
 vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
 {
-	Path p(FileName(buffer.filePath()));
+	FileName path(buffer.filePath());
+	support::Path p(path);
 
 	vector<FileName> vec;
 

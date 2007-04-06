@@ -1004,8 +1004,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			// Push directory path.
-			string const path = buffer->temppath();
-			support::Path p(FileName(path));
+			string const path(buffer->temppath());
+			// Prevent the compiler from optimizing away p
+			FileName pp(path);
+			support::Path p(pp);
 
 			// there are three cases here:
 			// 1. we print to a file

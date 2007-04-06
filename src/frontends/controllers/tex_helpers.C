@@ -42,7 +42,6 @@ using support::getVectorFromString;
 using support::libFileSearch;
 using support::onlyFilename;
 using support::package;
-using support::Path;
 using support::quoteName;
 using support::split;
 using support::Systemcall;
@@ -53,7 +52,7 @@ namespace frontend {
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
-	Path p(package().user_support());
+	support::Path p(package().user_support());
 	FileName const command = libFileSearch("scripts", "TeXFiles.py");
 	Systemcall one;
 	int const status = one.startscript(Systemcall::Wait,
@@ -70,7 +69,7 @@ void rescanTexStyles()
 void texhash()
 {
 	// Run texhash in user lyx directory
-	Path p(package().user_support());
+	support::Path p(package().user_support());
 
 	//path to texhash through system
 	Systemcall one;

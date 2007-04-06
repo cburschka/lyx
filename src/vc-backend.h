@@ -71,7 +71,7 @@ protected:
 	 * @param path the path from which to execute
 	 * @return exit status
 	 */
-	static int doVCCommand(std::string const & cmd, std::string const & path);
+	static int doVCCommand(std::string const & cmd, support::FileName const & path);
 
 	/**
 	 * The master VC file. For RCS this is *,v or RCS/ *,v. master should
