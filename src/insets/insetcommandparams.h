@@ -38,20 +38,24 @@ public:
 	docstring const getCommand() const;
 	/// Return the command name
 	std::string const & getCmdName() const { return name_; }
+private:
 	/// FIXME remove
 	std::string const getOptions() const;
 	/// FIXME remove
 	std::string const getSecOptions() const;
+public:
 	/// FIXME remove
 	std::string const getContents() const;
 	/// Set the name to \p n. This must be a known name. All parameters
 	/// are cleared except those that exist also in the new command.
 	/// What matters here is the parameter name, not position.
 	void setCmdName(std::string const & n);
+private:
 	/// FIXME remove
 	void setOptions(std::string const &);
 	/// FIXME remove
 	void setSecOptions(std::string const &);
+public:
 	/// FIXME remove
 	void setContents(std::string const &);
 	/// get parameter \p name

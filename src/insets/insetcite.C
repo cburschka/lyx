@@ -340,9 +340,6 @@ docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 		return cache.screen_label;
 
 	// The label has changed, so we have to re-create it.
-	string const before = getSecOptions();
-	string const after  = getOptions();
-
 	docstring const glabel = generateLabel(buffer);
 
 	unsigned int const maxLabelChars = 45;

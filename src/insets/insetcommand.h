@@ -60,12 +60,14 @@ public:
 	InsetCommandParams const & params() const { return p_; }
 	/// FIXME remove
 	std::string const getContents() const { return p_.getContents(); }
+protected:
 	/// FIXME remove
 	void setContents(std::string const & c)
 	{
 		updateButtonLabel_ = true;
 		p_.setContents(c);
 	}
+public:
 	///
 	void setParam(std::string const & name, docstring const & value)
 	{
@@ -79,10 +81,6 @@ public:
 	}
 	/// FIXME remove
 	virtual void replaceContents(std::string const & from, std::string const & to);
-	/// FIXME remove
-	std::string const getOptions() const { return p_.getOptions(); }
-	/// FIXME remove
-	std::string const getSecOptions() const { return p_.getSecOptions(); }
 	///
 	RenderButton & button() const { return button_; }
 	///
@@ -102,18 +100,6 @@ protected:
 	{
 		updateButtonLabel_ = true;
 		p_.setCmdName(n);
-	}
-	///
-	void setOptions(std::string const & o)
-	{
-		updateButtonLabel_ = true;
-		p_.setOptions(o);
-	}
-	///
-	void setSecOptions(std::string const & s)
-	{
-		updateButtonLabel_ = true;
-		p_.setSecOptions(s);
 	}
 	///
 	void setParams(InsetCommandParams const &);
