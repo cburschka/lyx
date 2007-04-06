@@ -39,8 +39,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "usti" 
 \author "Jean-Marc Lasgouttes" 
+\author "usti" 
 \end_header
 
 \begin_body
@@ -5987,86 +5987,30 @@ reference "sec:classoptions"
 
 \family typewriter
 \series medium
-ProvidesAmsmath
+Provides 
 \family default
 \series default
- [
+[
+\family typewriter
+string
+\family default
+] [
 \family typewriter
 \emph on
 0
 \emph default
 , 1
 \family default
-] Whether the class already loads the 
+] Whether the class already provides the feature
 \family typewriter
-amsmath
+ string
 \family default
- package.
- This is the case of the 
-\family typewriter
-amsart
-\family default
- and 
-\family typewriter
-amsbook
-\family default
- document classes.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ProvidesMakeidx
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-, 1
-\family default
-] Whether the class already provides the functionality of the 
-\family typewriter
-makeidx
-\family default
- package.
- This is the case of the 
-\family typewriter
-amsart
-\family default
- and 
-\family typewriter
-amsbook
-\family default
- document classes.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ProvidesUrl
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-, 1
-\family default
-] Whether the class already provides the functionality of the 
-\family typewriter
-url
-\family default
- package.
- This is the case of the 
-\family typewriter
-AASTeX
-\family default
- document class.
+.
+ A feature is in general the name of a package (amsmath, makeidx, \SpecialChar \ldots{}
+) or a
+ macro (url, boldsymbol,\SpecialChar \ldots{}
+); the complete list of supported features is unfortunat
+ely not documented.
 \end_layout
 
 \begin_layout Description
@@ -7278,12 +7222,25 @@ LabelStringAppendix
 \family typewriter
 string=""
 \family default
-] If non-empty, this is used inside the appendix instead of 
+] This is used inside the appendix instead of 
 \family typewriter
 LabelString
 \family default
 .
- 
+ Note that every 
+\family typewriter
+LabelString
+\family default
+ statement resets 
+\family typewriter
+\series medium
+LabelStringAppendix
+\family default
+\series default
+ too
+\family typewriter
+\series medium
+.
 \end_layout
 
 \begin_layout Description
