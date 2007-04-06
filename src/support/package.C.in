@@ -428,7 +428,7 @@ string const abs_path_from_binary_name(string const & exe)
 		throw ExceptionMessage(ErrorException,
 			_("LyX binary not found"),
 			bformat(_("Unable to determine the path to the LyX binary from the command line %1$s"),
-				lyx::from_utf8(exe)));
+				from_utf8(exe)));
 	}
 	return abs_binary;
 }
@@ -554,7 +554,7 @@ get_system_support_dir(string const & abs_binary,
 					 "set the environment variable LYX_DIR_15x to "
 					 "the LyX system directory containing the file "
 					 "`chkconfig.ltx'."),
-			  lyx::from_utf8(searched_dirs_str)));
+			  from_utf8(searched_dirs_str)));
 
 	// Keep the compiler happy.
 	return string();
@@ -633,8 +633,8 @@ bool check_command_line_dir(string const & dir,
 		// FIXME UNICODE
 		throw ExceptionMessage(WarningException, _("File not found"), bformat(
 			_("Invalid %1$s switch.\nDirectory %2$s does not contain %3$s."),
-			lyx::from_utf8(command_line_switch), lyx::from_utf8(dir),
-			lyx::from_utf8(file)));
+			from_utf8(command_line_switch), from_utf8(dir),
+			from_utf8(file)));
 	}
 
 	return !abs_path.empty();
@@ -661,8 +661,8 @@ bool check_env_var_dir(string const & dir,
 		throw ExceptionMessage(WarningException, _("File not found"), bformat(
 			_("Invalid %1$s environment variable.\n"
 				"Directory %2$s does not contain %3$s."),
-			lyx::from_utf8(env_var), lyx::from_utf8(dir),
-			lyx::from_utf8(file)));
+			from_utf8(env_var), from_utf8(dir),
+			from_utf8(file)));
 	}
 
 	return !abs_path.empty();
@@ -687,7 +687,7 @@ bool check_env_var_dir(string const & dir,
 			_("Invalid %1$s environment variable.\n%2$s is not a directory.");
 
 		throw ExceptionMessage(WarningException, _("Directory not found"), bformat(
-			fmt, lyx::from_utf8(env_var), lyx::from_utf8(dir)));
+			fmt, from_utf8(env_var), from_utf8(dir)));
 	}
 
 	return success;
