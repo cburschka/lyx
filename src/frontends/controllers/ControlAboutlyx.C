@@ -55,28 +55,28 @@ void ControlAboutlyx::getCredits(ostream & ss) const
 	}
 
 	if (!found) {
-		ss << lyx::to_utf8(_("ERROR: LyX wasn't able to read CREDITS file\n"))
-		   << lyx::to_utf8(_("Please install correctly to estimate the great\n"))
-		   << lyx::to_utf8(_("amount of work other people have done for the LyX project."));
+		ss << to_utf8(_("ERROR: LyX wasn't able to read CREDITS file\n"))
+		   << to_utf8(_("Please install correctly to estimate the great\n"))
+		   << to_utf8(_("amount of work other people have done for the LyX project."));
 	}
 }
 
 
 string const ControlAboutlyx::getCopyright() const
 {
-	return lyx::to_utf8(_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team"));
+	return to_utf8(_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team"));
 }
 
 
 string const ControlAboutlyx::getLicense() const
 {
-	return lyx::to_utf8(_("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."));
+	return to_utf8(_("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."));
 }
 
 
 string const ControlAboutlyx::getDisclaimer() const
 {
-	return lyx::to_utf8(_("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."));
+	return to_utf8(_("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."));
 }
 
 
@@ -84,16 +84,16 @@ string const ControlAboutlyx::getVersion() const
 {
 	ostringstream ss;
 
-	ss << lyx::to_utf8(_("LyX Version "))
+	ss << to_utf8(_("LyX Version "))
 	   << lyx_version
 	   << " ("
 	   << lyx_release_date
 	   << ")\n"
-	   << lyx::to_utf8(_("Library directory: "))
-	   << lyx::to_utf8(makeDisplayPath(package().system_support()))
+	   << to_utf8(_("Library directory: "))
+	   << to_utf8(makeDisplayPath(package().system_support()))
 	   << "\n"
-	   << lyx::to_utf8(_("User directory: "))
-	   << lyx::to_utf8(makeDisplayPath(package().user_support()));
+	   << to_utf8(_("User directory: "))
+	   << to_utf8(makeDisplayPath(package().user_support()));
 
 	return ss.str();
 }
