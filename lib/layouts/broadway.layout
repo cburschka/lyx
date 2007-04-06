@@ -13,6 +13,11 @@ ClassOptions
 FontSize                12
 End
 
+#Input stdtitle.inc
+Input stdstruct.inc
+Input stdfloats.inc
+Input stdcounters.inc
+# Input lyxmacros.inc
 
 Counter
 	Name                  act
@@ -226,11 +231,6 @@ Style Right_Address
 End
 
 
-Input stdtitle.inc
-Input stdstruct.inc
-Input stdfloats.inc
-Input stdcounters.inc
-# Input lyxmacros.inc
 
 NoStyle Abstract
 NoStyle Bibliography
