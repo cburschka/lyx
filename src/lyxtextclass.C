@@ -65,7 +65,7 @@ private:
 };
 
 
-int const FORMAT = 3;
+int const FORMAT = 4;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -113,7 +113,6 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	defaultfont_ = LyXFont(LyXFont::ALL_SANE);
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
-	provides_ = nothing;
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded_ = false;
@@ -158,10 +157,7 @@ enum TextClassTags {
 	TC_TOCDEPTH,
 	TC_CLASSOPTIONS,
 	TC_PREAMBLE,
-	TC_PROVIDESAMSMATH,
-	TC_PROVIDESNATBIB,
-	TC_PROVIDESMAKEIDX,
-	TC_PROVIDESURL,
+	TC_PROVIDES,
 	TC_LEFTMARGIN,
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
@@ -199,10 +195,7 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 		{ "outputtype",      TC_OUTPUTTYPE },
 		{ "pagestyle",       TC_PAGESTYLE },
 		{ "preamble",        TC_PREAMBLE },
-		{ "providesamsmath", TC_PROVIDESAMSMATH },
-		{ "providesmakeidx", TC_PROVIDESMAKEIDX },
-		{ "providesnatbib",  TC_PROVIDESNATBIB },
-		{ "providesurl",     TC_PROVIDESURL },
+		{ "provides",        TC_PROVIDES },
 		{ "rightmargin",     TC_RIGHTMARGIN },
 		{ "secnumdepth",     TC_SECNUMDEPTH },
 		{ "sides",           TC_SIDES },
@@ -383,25 +376,16 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 			preamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
-		case TC_PROVIDESAMSMATH:
-			if (lexrc.next() && lexrc.getInteger())
-				provides_ |= amsmath;
+		case TC_PROVIDES: {
+			lexrc.next();
+			string const feature = lexrc.getString();
+			lexrc.next();
+			if (lexrc.getInteger())
+				provides_.insert(feature);
+			else
+				provides_.erase(feature);
 			break;
-
-		case TC_PROVIDESNATBIB:
-			if (lexrc.next() && lexrc.getInteger())
-				provides_ |= natbib;
-			break;
-
-		case TC_PROVIDESMAKEIDX:
-			if (lexrc.next() && lexrc.getInteger())
-				provides_ |= makeidx;
-			break;
-
-		case TC_PROVIDESURL:
-			if (lexrc.next() && lexrc.getInteger())
-				provides_ |= url;
-			break;
+		}
 
 		case TC_LEFTMARGIN:	// left margin type
 			if (lexrc.next())
@@ -1067,9 +1051,9 @@ OutputType LyXTextClass::outputType() const
 }
 
 
-bool LyXTextClass::provides(LyXTextClass::Provides p) const
+bool LyXTextClass::provides(string const & p) const
 {
-	return provides_ & p;
+	return provides_.find(p) != provides_.end();
 }
 
 

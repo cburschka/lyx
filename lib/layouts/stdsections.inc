@@ -7,7 +7,7 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 3
+Format 4
 Style Part
 	Margin                Dynamic
 	LatexType             Command

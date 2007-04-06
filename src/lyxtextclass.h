@@ -16,7 +16,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
-
+#include <set>
 
 namespace lyx {
 
@@ -126,21 +126,8 @@ public:
 	///
 	docstring const & preamble() const;
 
-	/// Packages that are already loaded by the class
-	enum Provides {
-		///
-		nothing = 0,
-		///
-		amsmath = 1,
-		///
-		makeidx = 2,
-		///
-		url = 4,
-		///
-		natbib = 8
-	};
-	///
-	bool provides(Provides p) const;
+	/// is this feature already provided by the class?
+	bool provides(std::string const & p) const;
 
 	///
 	unsigned int columns() const;
@@ -209,7 +196,7 @@ private:
 	/// preamble text to support layout styles
 	docstring preamble_;
 	/// latex packages loaded by document class.
-	Provides provides_;
+	std::set<std::string> provides_;
 	///
 	unsigned int columns_;
 	///
@@ -259,14 +246,6 @@ private:
 	/// The maximal TocLevel of sectioning layouts
 	int max_toclevel_;
 };
-
-
-/// Merge two different provides flags into one bit field record
-inline
-void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
-{
-	p1 = static_cast<LyXTextClass::Provides>(p1 | p2);
-}
 
 
 /// convert page sides option to text 1 or 2

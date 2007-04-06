@@ -3,13 +3,13 @@
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 
 # Including the maths stuff
-Format 3
+Format 4
 Input amsmaths.inc
 
 # The AMS documentclasses use the package amsmath and provide the
 # functionality of makeidx.sty.
-ProvidesAmsmath         1
-ProvidesMakeidx         1
+Provides amsmath         1
+Provides makeidx         1
 
 
 # the environments copied from the old amsart.layout are:

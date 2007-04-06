@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 3
+Format 4
 Counter
 	Name                 part
 End

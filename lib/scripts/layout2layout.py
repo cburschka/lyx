@@ -79,6 +79,7 @@ def convert(lines):
     re_CopyStyle = re.compile(r'^(\s*)(CopyStyle)(\s+)(\S+)', re.IGNORECASE)
     re_NoStyle = re.compile(r'^(\s*)(NoStyle)(\s+)(\S+)', re.IGNORECASE)
     re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
+    re_Provides = re.compile(r'^(\s*)Provides(\S+)(\s+)(\S+)', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -133,10 +134,10 @@ def convert(lines):
                 match = re_Format.match(lines[i])
                 if match:
                         format = int(match.group(4))
-                        if format == 2:
-                            lines[i] = "Format 3"
+                        if format > 1 and format < 4:
+                            lines[i] = "Format %d" % (format + 1)
                             only_comment = 0
-                        elif format == 3:
+                        elif format == 4:
                                 # nothing to do
                                 return format
                         else:
@@ -151,6 +152,17 @@ def convert(lines):
             i = i + 1
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i = i + 1
+            continue
+
+        if format == 3:
+            # convert 'providesamsmath x',  'providesmakeidx x',  'providesnatbib x',  'providesurl x' to
+            #         'provides amsmath x', 'provides makeidx x', 'provides natbib x', 'provides url x'
+            # x is either 0 or 1
+            match = re_Provides.match(lines[i])
+            if match:
+                lines[i] = "%sProvides %s%s%s" % (match.group(1), match.group(2).lower(),
+                                                  match.group(3), match.group(4))
+            i = i + 1
             continue
 
         if format == 2:
@@ -370,7 +382,7 @@ def main(argv):
     # Do the real work
     lines = read(input)
     format = 1
-    while (format < 3):
+    while (format < 4):
         format = convert(lines)
     write(output, lines)
 

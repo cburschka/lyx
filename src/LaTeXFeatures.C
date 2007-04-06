@@ -153,6 +153,12 @@ bool LaTeXFeatures::isRequired(string const & name) const
 }
 
 
+bool LaTeXFeatures::mustProvide(string const & name) const
+{
+	return isRequired(name) && !params_.getLyXTextClass().provides(name);
+}
+
+
 bool LaTeXFeatures::isAvailable(string const & name)
 {
 	if (packages_.empty())
@@ -268,7 +274,7 @@ string const LaTeXFeatures::getPackages() const
 	//  packages which we just \usepackage{package}
 	//
 	for (int i = 0; i < nb_simplefeatures; ++i) {
-		if (isRequired(simplefeatures[i]))
+		if (mustProvide(simplefeatures[i]))
 			packages << "\\usepackage{"
 				 << simplefeatures[i] << "}\n";
 	}
@@ -278,8 +284,7 @@ string const LaTeXFeatures::getPackages() const
 	// than those above.
 	//
 
-	if (isRequired("amsmath")
-	    && !tclass.provides(LyXTextClass::amsmath)
+	if (mustProvide("amsmath")
 	    && params_.use_amsmath != BufferParams::package_off) {
 		packages << "\\usepackage{amsmath}\n";
 	}
@@ -291,12 +296,12 @@ string const LaTeXFeatures::getPackages() const
 	// esint is used, since esint redefines all relevant integral
 	// symbols from wasysym and amsmath.
 	// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
-	if (isRequired("wasysym") && isRequired("esint") &&
+	if (mustProvide("wasysym") && isRequired("esint") &&
 	    params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{wasysym}\n";
 
 	// color.sty
-	if (isRequired("color")) {
+	if (mustProvide("color")) {
 		if (params_.graphicsDriver == "default")
 			packages << "\\usepackage{color}\n";
 		else
@@ -307,13 +312,13 @@ string const LaTeXFeatures::getPackages() const
 
 	// makeidx.sty
 	if (isRequired("makeidx")) {
-		if (!tclass.provides(LyXTextClass::makeidx))
+		if (!tclass.provides("makeidx"))
 			packages << "\\usepackage{makeidx}\n";
 		packages << "\\makeindex\n";
 	}
 
 	// graphicx.sty
-	if (isRequired("graphicx") && params_.graphicsDriver != "none") {
+	if (mustProvide("graphicx") && params_.graphicsDriver != "none") {
 		if (params_.graphicsDriver == "default")
 			packages << "\\usepackage{graphicx}\n";
 		else
@@ -322,18 +327,14 @@ string const LaTeXFeatures::getPackages() const
 				 << "]{graphicx}\n";
 	}
 	// shadecolor for shaded
-	if (isRequired("framed")) {
+	if (mustProvide("framed")) {
 		RGBColor c = RGBColor(lcolor.getX11Name(LColor::shadedbg));
 		packages << "\\definecolor{shadecolor}{rgb}{" 
 			<< c.r/255 << ',' << c.g/255 << ',' << c.b/255 << "}\n";
 	}
 
-	//if (algorithm) {
-	//	packages << "\\usepackage{algorithm}\n";
-	//}
-
 	// lyxskak.sty --- newer chess support based on skak.sty
-	if (isRequired("chess")) {
+	if (mustProvide("chess")) {
 		packages << "\\usepackage[ps,mover]{lyxskak}\n";
 	}
 
@@ -362,22 +363,23 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// amssymb.sty
-	if (isRequired("amssymb") || params_.use_amsmath == BufferParams::package_on)
+	if (mustProvide("amssymb") 
+	    || params_.use_amsmath == BufferParams::package_on)
 		packages << "\\usepackage{amssymb}\n";
 
 	// esint must be after amsmath and wasysym, since it will redeclare
 	// inconsistent integral symbols
-	if (isRequired("esint") && params_.use_esint != BufferParams::package_off)
+	if (mustProvide("esint") 
+	    && params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
 
 	// url.sty
-	if (isRequired("url") && ! tclass.provides(LyXTextClass::url))
+	if (mustProvide("url"))
 		packages << "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
 			    "                      {\\newcommand{\\url}{\\texttt}}\n";
 
-	// float.sty
 	// natbib.sty
-	if (isRequired("natbib") && ! tclass.provides(LyXTextClass::natbib)) {
+	if (mustProvide("natbib")) {
 		packages << "\\usepackage[";
 		if (params_.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL) {
 			packages << "numbers";
@@ -388,20 +390,20 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// jurabib -- we need version 0.6 at least.
-	if (isRequired("jurabib")) {
+	if (mustProvide("jurabib")) {
 		packages << "\\usepackage{jurabib}[2004/01/25]\n";
 	}
 
 	// bibtopic -- the dot provides the aux file naming which
 	// LyX can detect.
-	if (isRequired("bibtopic")) {
+	if (mustProvide("bibtopic")) {
 		packages << "\\usepackage[dot]{bibtopic}\n";
 	}
 
-	if (isRequired("xy"))
+	if (mustProvide("xy"))
 		packages << "\\usepackage[all]{xy}\n";
 
-	if (isRequired("nomencl")) {
+	if (mustProvide("nomencl")) {
 		packages << "\\usepackage{nomencl}[2005/09/22]\n"
 			 << "\\makenomenclature\n";
 	}
@@ -422,55 +424,55 @@ string const LaTeXFeatures::getMacros() const
 		macros << *pit << '\n';
 	}
 
-	if (isRequired("LyX"))
+	if (mustProvide("LyX"))
 		macros << lyx_def << '\n';
 
-	if (isRequired("lyxline"))
+	if (mustProvide("lyxline"))
 		macros << lyxline_def << '\n';
 
-	if (isRequired("noun"))
+	if (mustProvide("noun"))
 		macros << noun_def << '\n';
 
-	if (isRequired("lyxarrow"))
+	if (mustProvide("lyxarrow"))
 		macros << lyxarrow_def << '\n';
 
 	// quotes.
-	if (isRequired("quotesinglbase"))
+	if (mustProvide("quotesinglbase"))
 		macros << quotesinglbase_def << '\n';
-	if (isRequired("quotedblbase"))
+	if (mustProvide("quotedblbase"))
 		macros << quotedblbase_def << '\n';
-	if (isRequired("guilsinglleft"))
+	if (mustProvide("guilsinglleft"))
 		macros << guilsinglleft_def << '\n';
-	if (isRequired("guilsinglright"))
+	if (mustProvide("guilsinglright"))
 		macros << guilsinglright_def << '\n';
-	if (isRequired("guillemotleft"))
+	if (mustProvide("guillemotleft"))
 		macros << guillemotleft_def << '\n';
-	if (isRequired("guillemotright"))
+	if (mustProvide("guillemotright"))
 		macros << guillemotright_def << '\n';
 
 	// Math mode
-	if (isRequired("boldsymbol") && !isRequired("amsmath"))
+	if (mustProvide("boldsymbol") && !isRequired("amsmath"))
 		macros << boldsymbol_def << '\n';
-	if (isRequired("binom") && !isRequired("amsmath"))
+	if (mustProvide("binom") && !isRequired("amsmath"))
 		macros << binom_def << '\n';
-	if (isRequired("mathcircumflex"))
+	if (mustProvide("mathcircumflex"))
 		macros << mathcircumflex_def << '\n';
 
 	// other
-	if (isRequired("ParagraphLeftIndent"))
+	if (mustProvide("ParagraphLeftIndent"))
 		macros << paragraphleftindent_def;
-	if (isRequired("NeedLyXFootnoteCode"))
+	if (mustProvide("NeedLyXFootnoteCode"))
 		macros << floatingfootnote_def;
 
 	// some problems with tex->html converters
-	if (isRequired("NeedTabularnewline"))
+	if (mustProvide("NeedTabularnewline"))
 		macros << tabularnewline_def;
 
 	// greyedout environment (note inset)
-	if (isRequired("lyxgreyedout"))
+	if (mustProvide("lyxgreyedout"))
 		macros << lyxgreyedout_def;
 
-	if (isRequired("lyxdot"))
+	if (mustProvide("lyxdot"))
 		macros << lyxdot_def << '\n';
 
 	// floats
@@ -526,7 +528,7 @@ docstring const LaTeXFeatures::getLyXSGMLEntities() const
 	// Definition of entities used in the document that are LyX related.
 	odocstringstream entities;
 
-	if (isRequired("lyxarrow")) {
+	if (mustProvide("lyxarrow")) {
 		entities << "<!ENTITY lyxarrow \"-&gt;\">" << '\n';
 	}
 

@@ -1183,7 +1183,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 
 	// AMS Style is at document level
 	if (params().use_amsmath == BufferParams::package_on
-	    || tclass.provides(LyXTextClass::amsmath))
+	    || tclass.provides("amsmath"))
 		features.require("amsmath");
 	if (params().use_esint == BufferParams::package_on)
 		features.require("esint");

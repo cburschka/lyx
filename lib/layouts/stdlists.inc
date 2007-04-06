@@ -7,7 +7,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 3
+Format 4
 Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
