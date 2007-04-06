@@ -192,9 +192,9 @@ FileName const fileOpenSearch(string const & path, string const & name,
 		if (!suffixIs(path_element, '/'))
 			path_element += '/';
 		path_element = subst(path_element, "$$LyX",
-				     package().system_support());
+				     package().system_support().absFilename());
 		path_element = subst(path_element, "$$User",
-				     package().user_support());
+				     package().user_support().absFilename());
 
 		real_file = fileSearch(path_element, name, ext);
 
@@ -274,18 +274,18 @@ FileName const fileSearch(string const & path, string const & name,
 FileName const libFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	FileName fullname = fileSearch(addPath(package().user_support(), dir),
+	FileName fullname = fileSearch(addPath(package().user_support().absFilename(), dir),
 				     name, ext);
 	if (!fullname.empty())
 		return fullname;
 
 	if (!package().build_support().empty())
-		fullname = fileSearch(addPath(package().build_support(), dir),
+		fullname = fileSearch(addPath(package().build_support().absFilename(), dir),
 				      name, ext);
 	if (!fullname.empty())
 		return fullname;
 
-	return fileSearch(addPath(package().system_support(), dir), name, ext);
+	return fileSearch(addPath(package().system_support().absFilename(), dir), name, ext);
 }
 
 
@@ -417,7 +417,7 @@ string const createBufferTmpDir()
 	// In fact I wrote this code to circumvent a problematic behaviour
 	// (bug?) of EMX mkstemp().
 	string const tmpfl =
-		package().temp_dir() + "/lyx_tmpbuf" +
+		package().temp_dir().absFilename() + "/lyx_tmpbuf" +
 		convert<string>(count++);
 
 	if (mkdir(FileName(tmpfl), 0777)) {
@@ -450,11 +450,10 @@ FileName const createLyXTmpDir(FileName const & deflt)
 }
 
 
-bool createDirectory(string const & path, int permission)
+bool createDirectory(FileName const & path, int permission)
 {
-	string temp = rtrim(os::internal_path(path), "/");
-	BOOST_ASSERT(!temp.empty());
-	return mkdir(FileName(temp), permission) == 0;
+	BOOST_ASSERT(!path.empty());
+	return mkdir(path, permission) == 0;
 }
 
 
@@ -591,7 +590,7 @@ string const expandPath(string const & path)
 		return getcwd().absFilename() + '/' + rTemp;
 
 	if (temp == "~")
-		return package().home_dir() + '/' + rTemp;
+		return package().home_dir().absFilename() + '/' + rTemp;
 
 	if (temp == "..")
 		return makeAbsPath(copy).absFilename();
@@ -998,12 +997,12 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 	string str = path;
 
 	// If file is from LyXDir, display it as if it were relative.
-	string const system = package().system_support();
+	string const system = package().system_support().absFilename();
 	if (prefixIs(str, system) && str != system)
 		return from_utf8("[" + str.erase(0, system.length()) + "]");	
 
 	// replace /home/blah with ~/
-	string const home = package().home_dir();
+	string const home = package().home_dir().absFilename();
 	if (!home.empty() && prefixIs(str, home))
 		str = subst(str, home, "~");
 
@@ -1033,20 +1032,18 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 }
 
 
-bool readLink(string const & file, string & link, bool resolve)
+bool readLink(FileName const & file, FileName & link)
 {
 #ifdef HAVE_READLINK
 	char linkbuffer[512];
 	// Should be PATH_MAX but that needs autconf support
-	int const nRead = ::readlink(file.c_str(),
+	string const encoded = file.toFilesystemEncoding();
+	int const nRead = ::readlink(encoded.c_str(),
 				     linkbuffer, sizeof(linkbuffer) - 1);
 	if (nRead <= 0)
 		return false;
 	linkbuffer[nRead] = '\0'; // terminator
-	if (resolve)
-		link = makeAbsPath(linkbuffer, onlyPath(file)).absFilename();
-	else
-		link = linkbuffer;
+	link = makeAbsPath(linkbuffer, onlyPath(file.absFilename()));
 	return true;
 #else
 	return false;

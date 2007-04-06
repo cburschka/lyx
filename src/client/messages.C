@@ -48,8 +48,8 @@ public:
 		//lyxerr << "Messages: language(" << l
 		//       << ") in dir(" << dir << ")" << std::endl;
 
-		cat_gl = mssg_gl.open(PACKAGE, loc_gl,
-				      package().locale_dir().c_str());
+		string const locale_dir = package().locale_dir().toFilesystemEncoding();
+		cat_gl = mssg_gl.open(PACKAGE, loc_gl, locale_dir.c_str());
 
 	}
 
@@ -112,14 +112,15 @@ public:
 			// return what we got in.
 			return from_ascii(m);
 		errno = 0;
-		char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
+		string const locale_dir = package().locale_dir().toFilesystemEncoding();
+		char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
 		int e = errno;
 		if (e) {
 			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Lang, mess: " << lang_ << " " << m << '\n'
-				<< "Directory : " << package().locale_dir() << '\n'
+				<< "Directory : " << package().locale_dir().absFilename() << '\n'
 				<< "Rtn value : " << c << endl;
 		}
 

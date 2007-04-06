@@ -406,7 +406,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 void addFontResources()
 {
 	// Windows only: Add BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support(), "fonts");
+	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
 	
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current =
@@ -419,7 +419,7 @@ void addFontResources()
 void restoreFontResources()
 {
 	// Windows only: Remove BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support(), "fonts");
+	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
 	
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current =

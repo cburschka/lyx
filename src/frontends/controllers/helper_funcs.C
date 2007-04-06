@@ -100,10 +100,10 @@ docstring const browseLibFile(docstring const & dir,
 {
 	// FIXME UNICODE
 	pair<docstring, docstring> const dir1(_("System files|#S#s"),
-				       from_utf8(addName(package().system_support(), to_utf8(dir))));
+				       from_utf8(addName(package().system_support().absFilename(), to_utf8(dir))));
 
 	pair<docstring, docstring> const dir2(_("User files|#U#u"),
-				       from_utf8(addName(package().user_support(), to_utf8(dir))));
+				       from_utf8(addName(package().user_support().absFilename(), to_utf8(dir))));
 
 	docstring const result = browseFile(from_utf8(
 		libFileSearch(to_utf8(dir), to_utf8(name), to_utf8(ext)).absFilename()),

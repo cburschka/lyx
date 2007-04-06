@@ -1005,7 +1005,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// Push directory path.
 			string const path = buffer->temppath();
-			support::Path p(path);
+			support::Path p(FileName(path));
 
 			// there are three cases here:
 			// 1. we print to a file
@@ -1227,7 +1227,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			int row;
 			istringstream is(argument);
 			is >> file_name >> row;
-			if (prefixIs(file_name, package().temp_dir())) {
+			if (prefixIs(file_name, package().temp_dir().absFilename())) {
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
 				lyx_view_->setBuffer(theBufferList().getBufferFromTmp(file_name));
@@ -1462,7 +1462,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_PREFERENCES_SAVE: {
 			lyxrc.write(makeAbsPath("preferences",
-			                        package().user_support()),
+			                        package().user_support().absFilename()),
 			            false);
 			break;
 		}
@@ -1588,7 +1588,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_SAVE_AS_DEFAULT: {
 			string const fname =
-				addName(addPath(package().user_support(), "templates/"),
+				addName(addPath(package().user_support().absFilename(), "templates/"),
 					"defaults.lyx");
 			Buffer defaults(fname);
 
@@ -1900,7 +1900,7 @@ void LyXFunc::open(string const & fname)
 		FileDialog fileDlg(_("Select document to open"),
 			LFUN_FILE_OPEN,
 			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support(), "examples"))));
+			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support().absFilename(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(from_utf8(initpath),
@@ -1974,7 +1974,7 @@ void LyXFunc::doImport(string const & argument)
 			LFUN_BUFFER_IMPORT,
 			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
 			make_pair(_("Examples|#E#e"),
-				  from_utf8(addPath(package().system_support(), "examples"))));
+				  from_utf8(addPath(package().system_support().absFilename(), "examples"))));
 
 		docstring filter = formats.prettyName(format);
 		filter += " (*.";
@@ -2155,7 +2155,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			string const encoded = FileName(
 				lyxrc_new.document_path).toFilesystemEncoding();
 			if (fs::exists(encoded) && fs::is_directory(encoded))
-				support::package().document_dir() = lyxrc.document_path;
+				support::package().document_dir() = FileName(lyxrc.document_path);
 		}
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_FONT_ENCODING:

@@ -116,7 +116,7 @@ CopyStatus copyFile(string const & format,
 	// overwrite themselves. This check could be changed to
 	// boost::filesystem::equivalent(sourceFile, destFile) if export to
 	// other directories than the document directory is desired.
-	if (!prefixIs(onlyPath(sourceFile.absFilename()), package().temp_dir()))
+	if (!prefixIs(onlyPath(sourceFile.absFilename()), package().temp_dir().absFilename()))
 		return ret;
 
 	if (!force) {

@@ -464,7 +464,7 @@ Session::Session(unsigned int num) :
 {
 	// locate the session file
 	// note that the session file name 'session' is hard-coded
-	session_file = FileName(addName(package().user_support(), "session"));
+	session_file = FileName(addName(package().user_support().absFilename(), "session"));
 	//
 	readFile();
 }

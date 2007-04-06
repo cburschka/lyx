@@ -233,7 +233,7 @@ TemplateManager::getPreambleDefByName(string const & name) const
 }
 
 
-void TemplateManager::readTemplates(string const & path)
+void TemplateManager::readTemplates(support::FileName const & path)
 {
 	support::Path p(path);
 

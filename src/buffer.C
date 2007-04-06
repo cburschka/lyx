@@ -1142,7 +1142,7 @@ int Buffer::runChktex()
         string const name = addName(path, getLatexName());
 	string const org_path = filePath();
 
-	support::Path p(path); // path to LaTeX file
+	support::Path p(FileName(path)); // path to LaTeX file
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary

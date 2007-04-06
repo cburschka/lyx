@@ -43,7 +43,7 @@ ControlAboutlyx::ControlAboutlyx(Dialog & parent)
 
 void ControlAboutlyx::getCredits(ostream & ss) const
 {
-	FileName const name = fileSearch(package().system_support(), "CREDITS");
+	FileName const name = fileSearch(package().system_support().absFilename(), "CREDITS");
 
 	bool found(!name.empty());
 
@@ -90,10 +90,10 @@ string const ControlAboutlyx::getVersion() const
 	   << lyx_release_date
 	   << ")\n"
 	   << to_utf8(_("Library directory: "))
-	   << to_utf8(makeDisplayPath(package().system_support()))
+	   << to_utf8(makeDisplayPath(package().system_support().absFilename()))
 	   << "\n"
 	   << to_utf8(_("User directory: "))
-	   << to_utf8(makeDisplayPath(package().user_support()));
+	   << to_utf8(makeDisplayPath(package().user_support().absFilename()));
 
 	return ss.str();
 }

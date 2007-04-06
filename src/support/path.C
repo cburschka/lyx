@@ -14,7 +14,6 @@
 #define PATH_C
 
 #include "support/path.h"
-#include "support/filename.h"
 #include "support/lyxlib.h"
 
 
@@ -24,13 +23,13 @@ using std::string;
 namespace lyx {
 namespace support {
 
-Path::Path(string const & path)
+Path::Path(FileName const & path)
 	: popped_(false)
 {
 	if (!path.empty()) {
 		pushedDir_ = getcwd();
 
-		if (pushedDir_.empty() || chdir(FileName(path))) {
+		if (pushedDir_.empty() || chdir(path)) {
 			/* FIXME: throw */
 		}
 	} else {

@@ -37,7 +37,7 @@ namespace support {
 class Path : boost::noncopyable {
 public:
 	/// change to the given directory
-	explicit Path(std::string const & path);
+	explicit Path(FileName const & path);
 
 	/// set cwd to the previous value if needed
 	~Path();

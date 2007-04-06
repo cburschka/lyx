@@ -19,6 +19,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class LyXLex;
 
 namespace external {
@@ -117,7 +119,7 @@ public:
 	std::string const getPreambleDefByName(std::string const & name) const;
 private:
 	TemplateManager();
-	void readTemplates(std::string const & path);
+	void readTemplates(support::FileName const & path);
 	void dumpTemplates(std::ostream &) const;
 	void dumpPreambleDefs(std::ostream &) const;
 

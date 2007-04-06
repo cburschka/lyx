@@ -1555,7 +1555,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		FileDialog fileDlg(_("Select LyX document to insert"),
 			LFUN_FILE_INSERT,
 			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support(), "examples"))));
+			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support().absFilename(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(from_utf8(initpath),

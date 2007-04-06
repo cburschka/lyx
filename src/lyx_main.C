@@ -456,7 +456,7 @@ int LyX::exec(int & argc, char * argv[])
 	// such that package().temp_dir() is properly initialized.
 	pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
 	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
-		os::internal_path(package().temp_dir() + "/lyxsocket")));
+			package().temp_dir().absFilename() + "/lyxsocket"));
 
 	// Start the real execution loop.
 	exit_status = pimpl_->application_->exec();
@@ -482,12 +482,12 @@ void LyX::prepareExit()
 	// do any other cleanup procedures now
 	if (package().temp_dir() != package().system_temp_dir()) {
 		LYXERR(Debug::INFO) << "Deleting tmp dir "
-				    << package().temp_dir() << endl;
+				    << package().temp_dir().absFilename() << endl;
 
-		if (!destroyDir(FileName(package().temp_dir()))) {
+		if (!destroyDir(package().temp_dir())) {
 			docstring const msg =
 				bformat(_("Unable to remove the temporary directory %1$s"),
-				from_utf8(package().temp_dir()));
+				from_utf8(package().temp_dir().absFilename()));
 			Alert::warning(_("Unable to remove temporary directory"), msg);
 		}
 	}
@@ -812,11 +812,11 @@ bool LyX::init()
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
 
-	lyxrc.tempdir_path = package().temp_dir();
-	lyxrc.document_path = package().document_dir();
+	lyxrc.tempdir_path = package().temp_dir().absFilename();
+	lyxrc.document_path = package().document_dir().absFilename();
 
 	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = addPath(package().system_support(),
+		lyxrc.template_path = addPath(package().system_support().absFilename(),
 					      "templates");
 	}
 
@@ -836,7 +836,7 @@ bool LyX::init()
 	// Add the directory containing the LyX executable to the path
 	// so that LyX can find things like tex2lyx.
 	if (package().build_support().empty())
-		prependEnvPath("PATH", package().binary_dir());
+		prependEnvPath("PATH", package().binary_dir().absFilename());
 #endif
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
@@ -906,9 +906,9 @@ bool LyX::init()
 	FileName const document_path(lyxrc.document_path);
 	if (fs::exists(document_path.toFilesystemEncoding()) &&
 	    fs::is_directory(document_path.toFilesystemEncoding()))
-		package().document_dir() = lyxrc.document_path;
+		package().document_dir() = document_path;
 
-	package().temp_dir() = createLyXTmpDir(FileName(lyxrc.tempdir_path)).absFilename();
+	package().temp_dir() = createLyXTmpDir(FileName(lyxrc.tempdir_path));
 	if (package().temp_dir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
 			     bformat(_("Could not create a temporary directory in\n"
@@ -923,7 +923,9 @@ bool LyX::init()
 		return false;
 	}
 
-	LYXERR(Debug::INIT) << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
+	LYXERR(Debug::INIT) << "LyX tmp dir: `"
+	                    << package().temp_dir().absFilename()
+	                    << '\'' << endl;
 
 	LYXERR(Debug::INIT) << "Reading session information '.lyx/session'..." << endl;
 	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
@@ -1042,13 +1044,13 @@ bool needsUpdate(string const & file)
 	static bool firstrun = true;
 	if (firstrun) {
 		configure_script = FileName(addName(
-				package().system_support(),
+				package().system_support().absFilename(),
 				"configure.py")).toFilesystemEncoding();
 		firstrun = false;
 	}
 
 	string const absfile = FileName(addName(
-		package().user_support(), file)).toFilesystemEncoding();
+		package().user_support().absFilename(), file)).toFilesystemEncoding();
 	return (! fs::exists(absfile))
 		|| (fs::last_write_time(configure_script)
 		    > fs::last_write_time(absfile));
@@ -1061,7 +1063,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 {
 	// Does user directory exist?
 	string const user_support =
-		FileName(package().user_support()).toFilesystemEncoding();
+		package().user_support().toFilesystemEncoding();
 	if (fs::exists(user_support) && fs::is_directory(user_support)) {
 		first_start = false;
 
@@ -1080,7 +1082,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		    bformat(_("You have specified a non-existent user "
 					   "LyX directory, %1$s.\n"
 					   "It is needed to keep your own configuration."),
-			    from_utf8(package().user_support())),
+			    from_utf8(package().user_support().absFilename())),
 		    1, 0,
 		    _("&Create directory"),
 		    _("&Exit LyX"))) {
@@ -1089,7 +1091,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	}
 
 	lyxerr << to_utf8(bformat(_("LyX: Creating directory %1$s"),
-			  from_utf8(package().user_support())))
+			  from_utf8(package().user_support().absFilename())))
 	       << endl;
 
 	if (!createDirectory(package().user_support(), 0755)) {

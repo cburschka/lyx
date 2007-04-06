@@ -328,7 +328,7 @@ void addFontResources()
 {
 #ifdef X_DISPLAY_MISSING
 	// Windows only: Add BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support(), "fonts");
+	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
 	
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current = to_local8bit(from_utf8(convert_path(
@@ -344,7 +344,7 @@ void restoreFontResources()
 {
 #ifdef X_DISPLAY_MISSING
 	// Windows only: Remove BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support(), "fonts");
+	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
 	
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current = to_local8bit(from_utf8(convert_path(

@@ -189,7 +189,7 @@ void ConverterCache::init()
 		return;
 	// We do this here and not in the constructor because package() gets
 	// initialized after all static variables.
-	cache_dir = FileName(addName(support::package().user_support(), "cache"));
+	cache_dir = FileName(addName(support::package().user_support().absFilename(), "cache"));
 	if (!fs::exists(cache_dir.toFilesystemEncoding()))
 		if (support::mkdir(cache_dir, 0700) != 0) {
 			lyxerr << "Could not create cache directory `"

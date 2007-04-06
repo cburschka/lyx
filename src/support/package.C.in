@@ -89,27 +89,27 @@ Package const & package()
 
 namespace {
 
-string const abs_path_from_binary_name(string const & exe);
+FileName const abs_path_from_binary_name(string const & exe);
 
-std::pair<string, string> const
-get_build_dirs(string const & abs_binary,
+std::pair<FileName, FileName> const
+get_build_dirs(FileName const & abs_binary,
 	       exe_build_dir_to_top_build_dir top_build_dir_location);
 
-string const get_document_dir(string const & home_dir);
+FileName const get_document_dir(FileName const & home_dir);
 
-string const get_home_dir();
+FileName const get_home_dir();
 
-string const get_locale_dir(string const & system_support_dir);
+FileName const get_locale_dir(FileName const & system_support_dir);
 
-string const get_system_support_dir(string const & abs_binary,
+FileName const get_system_support_dir(FileName const & abs_binary,
 				    string const & command_line_system_support_dir);
 
-string const get_temp_dir();
+FileName const get_temp_dir();
 
-string const get_default_user_support_dir(string const & home_dir);
+FileName const get_default_user_support_dir(FileName const & home_dir);
 
-std::pair<string, bool> const
-get_user_support_dir(string const & default_user_support_dir,
+std::pair<FileName, bool> const
+get_user_support_dir(FileName const & default_user_support_dir,
 		     string const & command_line_user_support_dir);
 
 
@@ -129,8 +129,8 @@ Package::Package(string const & command_line_arg0,
 	temp_dir_ = system_temp_dir_;
 	document_dir_ = get_document_dir(home_dir_);
 
-	string const abs_binary = abs_path_from_binary_name(command_line_arg0);
-	binary_dir_ = onlyPath(abs_binary);
+	FileName const abs_binary = abs_path_from_binary_name(command_line_arg0);
+	binary_dir_ = FileName(onlyPath(abs_binary.absFilename()));
 
 	// Is LyX being run in-place from the build tree?
 	boost::tie(build_support_dir_, system_support_dir_) =
@@ -143,26 +143,27 @@ Package::Package(string const & command_line_arg0,
 
 	locale_dir_ = get_locale_dir(system_support_dir_);
 
-	string const default_user_support_dir =
+	FileName const default_user_support_dir =
 		get_default_user_support_dir(home_dir_);
 	boost::tie(user_support_dir_, explicit_user_support_dir_) =
 		get_user_support_dir(default_user_support_dir,
 				     command_line_user_support_dir);
 
-	string const configure_script = addName(system_support(), "configure.py");
-	configure_command_ = os::python() + ' ' + quoteName(configure_script)
-				       + with_version_suffix();
+	FileName const configure_script(addName(system_support().absFilename(), "configure.py"));
+	configure_command_ = os::python() + ' ' +
+			quoteName(configure_script.toFilesystemEncoding()) +
+			with_version_suffix();
 
 	lyxerr[Debug::INIT]
 		<< "<package>\n"
-		<< "\tbinary_dir " << binary_dir() << '\n'
-		<< "\tsystem_support " << system_support() << '\n'
-		<< "\tbuild_support " << build_support() << '\n'
-		<< "\tuser_support " << user_support() << '\n'
-		<< "\tlocale_dir " << locale_dir() << '\n'
-		<< "\tdocument_dir " << document_dir() << '\n'
-		<< "\ttemp_dir " << temp_dir() << '\n'
-		<< "\thome_dir " << home_dir() << '\n'
+		<< "\tbinary_dir " << binary_dir().absFilename() << '\n'
+		<< "\tsystem_support " << system_support().absFilename() << '\n'
+		<< "\tbuild_support " << build_support().absFilename() << '\n'
+		<< "\tuser_support " << user_support().absFilename() << '\n'
+		<< "\tlocale_dir " << locale_dir().absFilename() << '\n'
+		<< "\tdocument_dir " << document_dir().absFilename() << '\n'
+		<< "\ttemp_dir " << temp_dir().absFilename() << '\n'
+		<< "\thome_dir " << home_dir().absFilename() << '\n'
 		<< "</package>\n" << std::endl;
 }
 
@@ -171,15 +172,19 @@ namespace {
 
 // These next functions contain the stuff that is substituted at
 // configuration-time.
-string const hardcoded_localedir()
+FileName const hardcoded_localedir()
 {
-	return string("@LOCALEDIR@");
+	// FIXME UNICODE
+	// The build system needs to make sure that this is in utf8 encoding.
+	return FileName("@LOCALEDIR@");
 }
 
 
-string const hardcoded_system_support_dir()
+FileName const hardcoded_system_support_dir()
 {
-	return string("@LYX_DIR@");
+	// FIXME UNICODE
+	// The build system needs to make sure that this is in utf8 encoding.
+	return FileName("@LYX_DIR@");
 }
 
 
@@ -194,9 +199,11 @@ string const & with_version_suffix()
 } // namespace anon
 
 
-string const & Package::top_srcdir()
+FileName const & Package::top_srcdir()
 {
-	static string const dir("@TOP_SRCDIR@");
+	// FIXME UNICODE
+	// The build system needs to make sure that this is in utf8 encoding.
+	static FileName const dir("@TOP_SRCDIR@");
 	return dir;
 }
 
@@ -207,12 +214,12 @@ bool check_command_line_dir(string const & dir,
 			    string const & file,
 			    string const & command_line_switch);
 
-string const extract_env_var_dir(string const & env_var);
+FileName const extract_env_var_dir(string const & env_var);
 
-bool check_env_var_dir(string const & dir,
+bool check_env_var_dir(FileName const & dir,
 		       string const & env_var);
 
-bool check_env_var_dir(string const & dir,
+bool check_env_var_dir(FileName const & dir,
 		       string const & file,
 		       string const & env_var);
 
@@ -221,8 +228,19 @@ string const relative_locale_dir();
 string const relative_system_support_dir();
 
 
-std::string const
-get_build_support_dir(std::string const & binary_dir,
+/**
+ * Convert \p name to internal path and strip a trailing slash, since it
+ * comes from user input (commandline or environment).
+ * \p name is encoded in utf8.
+ */
+string const fix_dir_name(string const & name)
+{
+	return rtrim(os::internal_path(name), "/");
+}
+
+
+FileName const
+get_build_support_dir(string const & binary_dir,
 		      exe_build_dir_to_top_build_dir top_build_dir_location)
 {
 	string indirection;
@@ -235,12 +253,12 @@ get_build_support_dir(std::string const & binary_dir,
 		break;
 	}
 
-	return normalizePath(addPath(binary_dir, indirection));
+	return FileName(normalizePath(addPath(binary_dir, indirection)));
 }
 
 
-std::pair<string, string> const
-get_build_dirs(string const & abs_binary,
+std::pair<FileName, FileName> const
+get_build_dirs(FileName const & abs_binary,
 	       exe_build_dir_to_top_build_dir top_build_dir_location)
 {
 	string const check_text = "Checking whether LyX is run in place...";
@@ -253,17 +271,17 @@ get_build_dirs(string const & abs_binary,
 
 	// Note that the name of the lyx binary may be a symbolic link.
 	// If that is the case, then we follow the links too.
-	string binary = abs_binary;
+	FileName binary = abs_binary;
 	while (true) {
 		// Try and find "lyxrc.defaults".
-		string const binary_dir = onlyPath(binary);
-		string const build_support_dir =
+		string const binary_dir = onlyPath(binary.absFilename());
+		FileName const build_support_dir =
 			get_build_support_dir(binary_dir, top_build_dir_location);
 
-		if (!fileSearch(build_support_dir, "Makefile").empty()) {
+		if (!fileSearch(build_support_dir.absFilename(), "Makefile").empty()) {
 			// Try and find "chkconfig.ltx".
 			string const system_support_dir =
-				addPath(Package::top_srcdir(), "lib");
+				addPath(Package::top_srcdir().absFilename(), "lib");
 
 			if (!fileSearch(system_support_dir, "chkconfig.ltx").empty()) {
 				lyxerr[Debug::INIT] << check_text << " yes"
@@ -274,11 +292,11 @@ get_build_dirs(string const & abs_binary,
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		if (!fs::symbolic_link_exists(FileName(binary).toFilesystemEncoding()))
+		if (!fs::symbolic_link_exists(binary.toFilesystemEncoding()))
 			break;
 
-		string link;
-		if (readLink(binary, link, true)) {
+		FileName link;
+		if (readLink(binary, link)) {
 			binary = link;
 		} else {
 			// Unable to resolve the link.
@@ -287,18 +305,18 @@ get_build_dirs(string const & abs_binary,
 	}
 
 	lyxerr[Debug::INIT] << check_text << " no" << std::endl;
-	return std::make_pair(string(), string());
+	return std::make_pair(FileName(), FileName());
 }
 
 
 // Specification of document_dir_ may be reset by LyXRC,
 // but the default is fixed for a given OS.
-string const get_document_dir(string const & home_dir)
+FileName const get_document_dir(FileName const & home_dir)
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
 	os::GetFolderPath win32_folder_path;
-	return win32_folder_path(os::GetFolderPath::PERSONAL);
+	return FileName(win32_folder_path(os::GetFolderPath::PERSONAL));
 #else // Posix-like.
 	return home_dir;
 #endif
@@ -308,7 +326,7 @@ string const get_document_dir(string const & home_dir)
 // The specification of home_dir_ is fixed for a given OS.
 // A typical example on Windows: "C:/Documents and Settings/USERNAME"
 // and on a Posix-like machine: "/home/USERNAME".
-string const get_home_dir()
+FileName const get_home_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	string const home_dir = getEnv("USERPROFILE");
@@ -316,66 +334,67 @@ string const get_home_dir()
 	string const home_dir = getEnv("HOME");
 #endif
 
-	return os::internal_path(home_dir);
+	return FileName(fix_dir_name(home_dir));
 }
 
 
 // Several sources are probed to ascertain the locale directory.
 // The only requirement is that the result is indeed a directory.
-string const get_locale_dir(string const & system_support_dir)
+FileName const get_locale_dir(FileName const & system_support_dir)
 {
 	// 1. Use the "LYX_LOCALEDIR" environment variable.
-	string const path_env = extract_env_var_dir("LYX_LOCALEDIR");
+	FileName const path_env = extract_env_var_dir("LYX_LOCALEDIR");
 	if (!path_env.empty() && check_env_var_dir(path_env, "LYX_LOCALEDIR"))
 		return path_env;
 
 	// 2. Search for system_support_dir / <relative locale dir>
 	// The <relative locale dir> is OS-dependent. (On Unix, it will
 	// be "../locale/".)
-	FileName path(normalizePath(addPath(system_support_dir, relative_locale_dir())));
+	FileName path(normalizePath(addPath(system_support_dir.absFilename(),
+	                                    relative_locale_dir())));
 
 	if (fs::exists(path.toFilesystemEncoding()) &&
 	    fs::is_directory(path.toFilesystemEncoding()))
-		return path.absFilename();
+		return path;
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
-	path = FileName(hardcoded_localedir());
+	path = hardcoded_localedir();
 	if (fs::exists(path.toFilesystemEncoding()) &&
 	    fs::is_directory(path.toFilesystemEncoding()))
-		return path.absFilename();
+		return path;
 
-	return string();
+	return FileName();
 }
 
 
 // Specification of temp_dir_ may be reset by LyXRC,
 // but the default is fixed for a given OS.
-string const get_temp_dir()
+FileName const get_temp_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	// Typical example: C:/TEMP/.
 	char path[MAX_PATH];
 	GetTempPath(MAX_PATH, path);
-	return os::internal_path(path);
+	return FileName(os::internal_path(to_utf8(from_local8bit(path))));
 #else // Posix-like.
-	return "/tmp";
+	return FileName("/tmp");
 #endif
 }
 
 
 // Extracts the absolute path from the foo of "-sysdir foo" or "-userdir foo"
-string const abs_path_from_command_line(string const & command_line)
+FileName const abs_path_from_command_line(string const & command_line)
 {
 	if (command_line.empty())
-		return string();
+		return FileName();
 
-	string const path = os::internal_path(command_line);
-	return os::is_absolute_path(path) ? path : makeAbsPath(path).absFilename();
+	string const path = fix_dir_name(command_line);
+	return os::is_absolute_path(path) ? FileName(path) : makeAbsPath(path);
 }
 
 
 // Does the grunt work for abs_path_from_binary_name()
-string const get_binary_path(string const & exe)
+FileName const get_binary_path(string const & exe)
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	// The executable may have been invoked either with or
@@ -388,19 +407,19 @@ string const get_binary_path(string const & exe)
 	string const exe_path = os::internal_path(exe);
 #endif
 	if (os::is_absolute_path(exe_path))
-		return exe_path;
+		return FileName(exe_path);
 
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
-	string const abs_exe_path = makeAbsPath(exe_path).absFilename();
-	if (fs::exists(FileName(abs_exe_path).toFilesystemEncoding()))
+	FileName const abs_exe_path = makeAbsPath(exe_path);
+	if (fs::exists(abs_exe_path.toFilesystemEncoding()))
 		return abs_exe_path;
 
 	// 2. exe must be the name of the binary only and it
 	// can be found on the PATH.
 	string const exe_name = onlyFilename(exe_path);
 	if (exe_name != exe_path)
-		return string();
+		return FileName();
 
 	std::vector<string> const path = getEnvPath("PATH");
 	std::vector<string>::const_iterator it = path.begin();
@@ -409,20 +428,20 @@ string const get_binary_path(string const & exe)
 		// This will do nothing if *it is already absolute.
 		string const exe_dir = makeAbsPath(*it).absFilename();
 
-		string const exe_path = addName(exe_dir, exe_name);
-		if (fs::exists(FileName(exe_path).toFilesystemEncoding()))
+		FileName const exe_path(addName(exe_dir, exe_name));
+		if (fs::exists(exe_path.toFilesystemEncoding()))
 			return exe_path;
 	}
 
 	// Didn't find anything.
-	return string();
+	return FileName();
 }
 
 
 // Extracts the absolute path to the binary name received as argv[0].
-string const abs_path_from_binary_name(string const & exe)
+FileName const abs_path_from_binary_name(string const & exe)
 {
-	string const abs_binary = get_binary_path(exe);
+	FileName const abs_binary = get_binary_path(exe);
 	if (abs_binary.empty()) {
 		// FIXME UNICODE
 		throw ExceptionMessage(ErrorException,
@@ -437,21 +456,21 @@ string const abs_path_from_binary_name(string const & exe)
 // A plethora of directories is searched to ascertain the system
 // lyxdir which is defined as the first directory to contain
 // "chkconfig.ltx".
-string const
-get_system_support_dir(string const & abs_binary,
+FileName const
+get_system_support_dir(FileName const & abs_binary,
 		  string const & command_line_system_support_dir)
 {
 	string const chkconfig_ltx = "chkconfig.ltx";
 
 	// searched_dirs is used for diagnostic purposes only in the case
 	// that "chkconfig.ltx" is not found.
-	std::list<string> searched_dirs;
+	std::list<FileName> searched_dirs;
 
 	// 1. Use the -sysdir command line parameter.
-	string path = abs_path_from_command_line(command_line_system_support_dir);
+	FileName path = abs_path_from_command_line(command_line_system_support_dir);
 	if (!path.empty()) {
 		searched_dirs.push_back(path);
-		if (check_command_line_dir(path, chkconfig_ltx, "-sysdir"))
+		if (check_command_line_dir(path.absFilename(), chkconfig_ltx, "-sysdir"))
 			return path;
 	}
 
@@ -472,27 +491,27 @@ get_system_support_dir(string const & abs_binary,
 
 	// One subtlety to be aware of. The name of the lyx binary may be
 	// a symbolic link. If that is the case, then we follow the links too.
-	string binary = abs_binary;
+	FileName binary = abs_binary;
 	while (true) {
 		// Try and find "chkconfig.ltx".
-		string const binary_dir = onlyPath(binary);
+		string const binary_dir = onlyPath(binary.absFilename());
 
-		string const lyxdir =
-			normalizePath(addPath(binary_dir, relative_lyxdir));
+		FileName const lyxdir(
+			normalizePath(addPath(binary_dir, relative_lyxdir)));
 		searched_dirs.push_back(lyxdir);
 
-		if (!fileSearch(lyxdir, chkconfig_ltx).empty()) {
+		if (!fileSearch(lyxdir.absFilename(), chkconfig_ltx).empty()) {
 			// Success! "chkconfig.ltx" has been found.
 			return lyxdir;
 		}
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		if (!fs::symbolic_link_exists(FileName(binary).toFilesystemEncoding()))
+		if (!fs::symbolic_link_exists(binary.toFilesystemEncoding()))
 			break;
 
-		string link;
-		if (readLink(binary, link, true)) {
+		FileName link;
+		if (readLink(binary, link)) {
 			binary = link;
 		} else {
 			// Unable to resolve the link.
@@ -501,16 +520,16 @@ get_system_support_dir(string const & abs_binary,
 	}
 
 	// 4. Repeat the exercise on the directory itself.
-	string binary_dir = onlyPath(abs_binary);
+	FileName binary_dir(onlyPath(abs_binary.absFilename()));
 	while (true) {
 		// This time test whether the directory is a symbolic link
 		// *before* looking for "chkconfig.ltx".
 		// (We've looked relative to the original already.)
-		if (!fs::symbolic_link_exists(FileName(binary).toFilesystemEncoding()))
+		if (!fs::symbolic_link_exists(binary.toFilesystemEncoding()))
 			break;
 
-		string link;
-		if (readLink(binary_dir, link, true)) {
+		FileName link;
+		if (readLink(binary_dir, link)) {
 			binary_dir = link;
 		} else {
 			// Unable to resolve the link.
@@ -518,11 +537,11 @@ get_system_support_dir(string const & abs_binary,
 		}
 
 		// Try and find "chkconfig.ltx".
-		string const lyxdir =
-			normalizePath(addPath(binary_dir, relative_lyxdir));
+		FileName const lyxdir(
+			normalizePath(addPath(binary_dir.absFilename(), relative_lyxdir)));
 		searched_dirs.push_back(lyxdir);
 
-		if (!fileSearch(lyxdir, chkconfig_ltx).empty()) {
+		if (!fileSearch(lyxdir.absFilename(), chkconfig_ltx).empty()) {
 			// Success! "chkconfig.ltx" has been found.
 			return lyxdir;
 		}
@@ -530,19 +549,19 @@ get_system_support_dir(string const & abs_binary,
 
 	// 5. In desparation, try the hard-coded system support dir.
 	path = hardcoded_system_support_dir();
-	if (!fileSearch(path, chkconfig_ltx).empty())
+	if (!fileSearch(path.absFilename(), chkconfig_ltx).empty())
 		return path;
 
 	// Everything has failed :-(
 	// So inform the user and exit.
 	string searched_dirs_str;
-	typedef std::list<string>::const_iterator iterator;
+	typedef std::list<FileName>::const_iterator iterator;
 	iterator const begin = searched_dirs.begin();
 	iterator const end = searched_dirs.end();
 	for (iterator it = begin; it != end; ++it) {
 		if (it != begin)
 			searched_dirs_str += "\n\t";
-		searched_dirs_str += *it;
+		searched_dirs_str += it->absFilename();
 	}
 
 	// FIXME UNICODE
@@ -557,21 +576,21 @@ get_system_support_dir(string const & abs_binary,
 			  from_utf8(searched_dirs_str)));
 
 	// Keep the compiler happy.
-	return string();
+	return FileName();
 }
 
 
 // Returns the absolute path to the user lyxdir, together with a flag
 // indicating whether this directory was specified explicitly (as -userdir
 // or through an environment variable) or whether it was deduced.
-std::pair<string, bool> const
-get_user_support_dir(string const & default_user_support_dir,
+std::pair<FileName, bool> const
+get_user_support_dir(FileName const & default_user_support_dir,
 		     string const & command_line_user_support_dir)
 {
 	bool explicit_userdir = true;
 
 	// 1. Use the -userdir command line parameter.
-	string path =
+	FileName path =
 		abs_path_from_command_line(command_line_user_support_dir);
 	if (!path.empty())
 		return std::make_pair(path, explicit_userdir);
@@ -589,13 +608,13 @@ get_user_support_dir(string const & default_user_support_dir,
 
 // $HOME/.lyx on POSIX but on Win32 it will be something like
 // "C:/Documents and Settings/USERNAME/Application Data/LyX"
-string const get_default_user_support_dir(string const & home_dir)
+FileName const get_default_user_support_dir(FileName const & home_dir)
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
 
 	os::GetFolderPath win32_folder_path;
-	return addPath(win32_folder_path(os::GetFolderPath::APPDATA), PACKAGE);
+	return FileName(addPath(win32_folder_path(os::GetFolderPath::APPDATA), PACKAGE));
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
@@ -605,19 +624,20 @@ string const get_default_user_support_dir(string const & home_dir)
 		FSFindFolder(kUserDomain, kApplicationSupportFolderType,
 			     kDontCreateFolder, &fsref);
 	if (error_code != 0)
-		return string();
+		return FileName();
 
+	// FSRefMakePath returns the result in utf8
 	char store[PATH_MAX + 1];
 	OSStatus const status_code =
 		FSRefMakePath(&fsref,
 			      reinterpret_cast<UInt8*>(store), PATH_MAX);
 	if (status_code != 0)
-		return string();
+		return FileName();
 
-	return addPath(reinterpret_cast<char const *>(store), PACKAGE);
+	return FileName(addPath(reinterpret_cast<char const *>(store), PACKAGE));
 
 #else // USE_POSIX_PACKAGING
-	return addPath(home_dir, string(".") + PACKAGE);
+	return FileName(addPath(home_dir.absFilename(), string(".") + PACKAGE));
 #endif
 }
 
@@ -642,26 +662,26 @@ bool check_command_line_dir(string const & dir,
 
 
 // The environment variable @c env_var expands to a (single) file path.
-string const extract_env_var_dir(string const & env_var)
+FileName const extract_env_var_dir(string const & env_var)
 {
-	string const dir = os::internal_path(getEnv(env_var));
-	return dir.empty() ? dir : makeAbsPath(dir).absFilename();
+	string const dir = fix_dir_name(getEnv(env_var));
+	return dir.empty() ? FileName() : makeAbsPath(dir);
 }
 
 
 // Check that directory @c dir contains @c file.
 // Else emit a warning about an invalid @c env_var.
-bool check_env_var_dir(string const & dir,
+bool check_env_var_dir(FileName const & dir,
 		       string const & file,
 		       string const & env_var)
 {
-	FileName const abs_path = fileSearch(dir, file);
+	FileName const abs_path = fileSearch(dir.absFilename(), file);
 	if (abs_path.empty()) {
 		// FIXME UNICODE
 		throw ExceptionMessage(WarningException, _("File not found"), bformat(
 			_("Invalid %1$s environment variable.\n"
 				"Directory %2$s does not contain %3$s."),
-			from_utf8(env_var), from_utf8(dir),
+			from_utf8(env_var), from_utf8(dir.absFilename()),
 			from_utf8(file)));
 	}
 
@@ -671,10 +691,10 @@ bool check_env_var_dir(string const & dir,
 
 // Check that directory @c dir is indeed a directory.
 // Else emit a warning about an invalid @c env_var.
-bool check_env_var_dir(string const & dir,
+bool check_env_var_dir(FileName const & dir,
 		       string const & env_var)
 {
-	string const encoded(FileName(dir).toFilesystemEncoding());
+	string const encoded(dir.toFilesystemEncoding());
 	bool const success = (fs::exists(encoded) && fs::is_directory(encoded));
 
 	if (!success) {
@@ -687,7 +707,7 @@ bool check_env_var_dir(string const & dir,
 			_("Invalid %1$s environment variable.\n%2$s is not a directory.");
 
 		throw ExceptionMessage(WarningException, _("Directory not found"), bformat(
-			fmt, from_utf8(env_var), from_utf8(dir)));
+			fmt, from_utf8(env_var), from_utf8(dir.absFilename())));
 	}
 
 	return success;

@@ -364,7 +364,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	// 2) In HOME directory.
-	string s = addName(package().home_dir(), buf->fileName());
+	string s = addName(package().home_dir().absFilename(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(FileName(s))) {
@@ -378,7 +378,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
 	// drive letter on OS/2
-	s = addName(package().temp_dir(), buf->fileName());
+	s = addName(package().temp_dir().absFilename(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(FileName(s))) {

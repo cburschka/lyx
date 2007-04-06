@@ -60,7 +60,7 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 {
 	LYXERR(Debug::LYXVC) << "doVCCommand: " << cmd << endl;
 	Systemcall one;
-	support::Path p(path);
+	support::Path p(FileName(path));
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
 }

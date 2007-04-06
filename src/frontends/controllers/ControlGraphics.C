@@ -87,11 +87,11 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 	docstring const title = _("Select graphics file");
 
 	// Does user clipart directory exist?
-	string clipdir = addName(package().user_support(), "clipart");
+	string clipdir = addName(package().user_support().absFilename(), "clipart");
 	string const encoded_clipdir = FileName(clipdir).toFilesystemEncoding();
 	if (!(fs::exists(encoded_clipdir) && fs::is_directory(encoded_clipdir)))
 		// No - bail out to system clipart directory
-		clipdir = addName(package().system_support(), "clipart");
+		clipdir = addName(package().system_support().absFilename(), "clipart");
 	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));
 	pair<docstring, docstring> dir2(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 	// Show the file browser dialog

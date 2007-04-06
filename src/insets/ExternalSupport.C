@@ -167,7 +167,7 @@ string const doSubstitution(InsetExternalParams const & params,
 			'.' + support::getExtension(filename), use_latex_path);
 	result = subst_path(result, "$$Tempname", params.tempname().absFilename(), use_latex_path);
 	result = subst_path(result, "$$Sysdir",
-				support::package().system_support(), use_latex_path);
+				support::package().system_support().absFilename(), use_latex_path);
 
 	// Handle the $$Contents(filename) syntax
 	if (support::contains(result, "$$Contents(\"")) {

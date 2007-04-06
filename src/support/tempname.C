@@ -80,8 +80,9 @@ int make_tempfile(char * templ)
 
 FileName const tempName(FileName const & dir, string const & mask)
 {
-	// FIXME UNICODE encoding of package().temp_dir() is probably wrong
-	string const tmpdir(dir.empty() ? package().temp_dir() : dir.toFilesystemEncoding());
+	string const tmpdir(dir.empty() ?
+			package().temp_dir().toFilesystemEncoding() :
+			dir.toFilesystemEncoding());
 	string tmpfl(addName(tmpdir, mask));
 #if defined (HAVE_GETPID)
 	tmpfl += convert<string>(getpid());

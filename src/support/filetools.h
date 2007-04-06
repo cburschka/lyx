@@ -29,7 +29,7 @@ bool destroyDir(FileName const & tmpdir);
 std::string const createBufferTmpDir();
 
 /// Creates directory. Returns true on success
-bool createDirectory(std::string const & name, int permissions);
+bool createDirectory(FileName const & name, int permissions);
 
 /** Creates the global LyX temp dir.
   \p deflt can be an existing directory name. In this case a new directory
@@ -276,12 +276,10 @@ std::string const getFileContents(FileName const & fname);
 */
 std::string const replaceEnvironmentPath(std::string const & path);
 
-/* Set \c link to the path \c file points to as a symbolic link.
-   If \c resolve is true, then \c link is an absolute path
-   Returns true if successful */
-bool readLink(std::string const & file,
-	      std::string & link,
-	      bool resolve = false);
+/** Set \c link to the path \c file points to as a symbolic link.
+    \return true if successful.
+ */
+bool readLink(FileName const & file, FileName & link);
 
 /**
  * Search a TeX file in all locations the latex compiler would search it,
