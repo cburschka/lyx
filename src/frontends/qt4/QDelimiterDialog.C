@@ -31,14 +31,6 @@ namespace frontend {
 
 namespace {
 
-string const delim[] = {
-	"(", ")", "{", "}", "[", "]",
-	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
-	"uparrow", "Uparrow", "downarrow", "Downarrow",
-	"|", "Vert", "slash", "backslash", ""
-};
-
-
 char const * const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
 
 
@@ -49,7 +41,7 @@ char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter
 	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
 
 
-QString do_match(QString const & str)
+string do_match(string const & str)
 {
 	if (str == "(") return ")";
 	if (str == ")") return "(";
@@ -64,24 +56,20 @@ QString do_match(QString const & str)
 	if (str == "lfloor") return "rfloor";
 	if (str == "rangle") return "langle";
 	if (str == "langle") return "rangle";
-	if (str == "backslash") return "slash";
-	if (str == "slash") return "backslash";
+	if (str == "\\") return "/";
+	if (str == "/") return "\\";
 	return str;
 }
 
 
-string fix_name(QString const & str, bool big)
+string fix_name(string const & str, bool big)
 {
-	if (str == "slash")
-		return "/";
-	if (str == "backslash")
-		return "\\";
-	if (str.isEmpty())
+	if (str.empty())
 		return ".";
 	if (!big || str == "(" || str == ")" || str == "[" || str == "]")
-		return fromqstr(str);
+		return str;
 
-	return "\\" + fromqstr(str);
+	return "\\" + str;
 }
 
 } // namespace anon
@@ -97,20 +85,15 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 	setWindowTitle(qt_("LyX: Delimiters"));
 	setFocusProxy(leftLW);
-
+	
 	// The last element is the empty one.
-	for (size_t i = 0; !delim[i].empty(); ++i) {
-		QString const left_d = toqstr(delim[i]);
-		QString const right_d = do_match(left_d);
-		if (left_d.size() == 1) {
-			leftLW->addItem(left_d);
-			rightLW->addItem(right_d);
-		} else {
-			QPixmap left_pm = QPixmap(toqstr(find_xpm(fromqstr(left_d))));
-			leftLW->addItem(new QListWidgetItem(QIcon(left_pm), left_d));
-			QPixmap right_pm = QPixmap(toqstr(find_xpm(fromqstr(right_d))));
-			rightLW->addItem(new QListWidgetItem(QIcon(right_pm), right_d));
-		}
+	for (int i = 0; i < nr_latex_delimiters - 1; ++i) {
+		docstring const left_d(1,
+			form_->controller().mathSymbol(latex_delimiters[i]));
+		docstring const right_d(1,
+			form_->controller().mathSymbol(do_match(latex_delimiters[i])));
+		leftLW->addItem(toqstr(left_d));
+		rightLW->addItem(toqstr(right_d));
 	}
 
 	leftLW->addItem(qt_("(None)"));
@@ -127,22 +110,24 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 void QDelimiterDialog::insertClicked()
 {
-	QString const left_ = (leftLW->currentRow() < leftLW->count() - 1)?
-		leftLW->currentItem()->text(): QString();
-	QString const right_ = (rightLW->currentRow() < rightLW->count() - 1)?
-		rightLW->currentItem()->text(): QString();
-	int const size_ = sizeCO->currentIndex();
+	string left_str;
+	string right_str;
+	if (leftLW->currentRow() < leftLW->count() - 1)
+		left_str = form_->controller().texName(qstring_to_ucs4(leftLW->currentItem()->text())[0]);
+	if (rightLW->currentRow() < rightLW->count() - 1)
+		right_str = form_->controller().texName(qstring_to_ucs4(rightLW->currentItem()->text())[0]);
 
+	int const size_ = sizeCO->currentIndex();
 	if (size_ == 0) {
 		form_->controller().dispatchDelim(
-			fix_name(left_, false) + ' ' +
-			fix_name(right_, false));
+			fix_name(left_str, false) + ' ' +
+			fix_name(right_str, false));
 	} else {
 		std::ostringstream os;
 		os << '"' << bigleft[size_ - 1] << "\" \""
-		   << fix_name(left_, true) << "\" \""
+		   << fix_name(left_str, true) << "\" \""
 		   << bigright[size_ - 1] << "\" \""
-		   << fix_name(right_, true) << '"';
+		   << fix_name(right_str, true) << '"';
 		form_->controller().dispatchBigDelim(os.str());
 	}
 }
@@ -166,6 +151,15 @@ void QDelimiterDialog::on_leftLW_currentRowChanged(int item)
 {
 	if (matchCB->isChecked())
 		rightLW->setCurrentRow(item);
+
+	// Display the associated TeX name.
+	if (leftLW->currentRow() == leftLW->count() - 1)
+		texCodeL->clear();
+	else {
+		QString const str = toqstr(form_->controller().texName(
+			qstring_to_ucs4(leftLW->currentItem()->text())[0]));
+		texCodeL->setText("TeX code: \\" + str);
+	}
 }
 
 
@@ -173,6 +167,15 @@ void QDelimiterDialog::on_rightLW_currentRowChanged(int item)
 {
 	if (matchCB->isChecked())
 		leftLW->setCurrentRow(item);
+
+	// Display the associated TeX name.
+	if (rightLW->currentRow() == leftLW->count() - 1)
+		texCodeL->clear();
+	else {
+		QString const str = toqstr(form_->controller().texName(
+			qstring_to_ucs4(rightLW->currentItem()->text())[0]));
+		texCodeL->setText("TeX code: \\" + str);
+	}
 }
 
 

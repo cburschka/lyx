@@ -18,6 +18,8 @@
 #include "Dialog.h"
 #include "lfuns.h" // for kb_action
 
+#include <map>
+
 namespace lyx {
 namespace frontend {
 
@@ -53,6 +55,19 @@ public:
 	 *  \param name the dialog identifier.
 	 */
 	void showDialog(std::string const & name) const;
+
+	/// \return the math unicode symbol associated to a TeX name.
+	char_type mathSymbol(std::string tex_name) const;
+	/// \return the TeX name associated to a math unicode symbol.
+	std::string const & texName(char_type math_symbol) const;
+
+private:
+	/// TeX-name / Math-symbol map.
+	std::map<std::string, char_type> math_symbols_;
+	/// Math-symbol / TeX-name map.
+	/// This one is for fast search, it contains the same data as
+	/// \c math_symbols_.
+	std::map<char_type, std::string> tex_names_;
 };
 
 
@@ -84,6 +99,8 @@ extern char const * latex_ams_nrel[];
 extern int const nr_latex_ams_nrel;
 extern char const * latex_ams_ops[];
 extern int const nr_latex_ams_ops;
+extern char const * latex_delimiters[];
+extern int const nr_latex_delimiters;
 
 /**
  * Return the mangled XPM filename of the given

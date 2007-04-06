@@ -21,6 +21,7 @@
 #include <functional>
 
 using std::string;
+using std::map;
 
 namespace lyx {
 
@@ -32,7 +33,50 @@ namespace frontend {
 
 ControlMath::ControlMath(Dialog & dialog)
 	: Dialog::Controller(dialog)
-{}
+{
+	// FIXME: Ideally, those unicode codepoints would be defined
+	// in "lib/symbols". Unfortunately, some of those are already 
+	// defined with non-unicode ids for use within mathed.
+	math_symbols_["("] = '(';
+	math_symbols_[")"] = ')';
+	math_symbols_["{"] = '{';
+	math_symbols_["}"] = '}';
+	math_symbols_["["] = '[';
+	math_symbols_["]"] = ']';
+	math_symbols_["|"] = '|';
+	math_symbols_["/"] = '/';
+	math_symbols_["\\"] = '\\';
+	math_symbols_["lceil"] = 0x2308;
+	math_symbols_["rceil"] = 0x2309;
+	math_symbols_["lfloor"] = 0x230A;
+	math_symbols_["rfloor"] = 0x230B;
+	math_symbols_["langle"] = 0x2329;
+	math_symbols_["rangle"] = 0x232A;
+	math_symbols_["uparrow"] = 0x2191;
+	math_symbols_["Uparrow"] = 0x21D1;
+	math_symbols_["UpArrow"] = 0x2191;
+	math_symbols_["UpArrowBar"] = 0x2912;
+	math_symbols_["UpArrowDownArrow"] = 0x21C5;
+	math_symbols_["updownarrow"] = 0x2195;
+	math_symbols_["Updownarrow"] = 0x21D5;
+	math_symbols_["UpDownArrow"] = 0x2195;
+	math_symbols_["downarrow"] = 0x2193;
+	math_symbols_["Downarrow"] = 0x21D3;
+	math_symbols_["DownArrow"] = 0x2193;
+	math_symbols_["DownArrowBar"] = 0x2913;
+	math_symbols_["DownArrowUpArrow"] = 0x21F5;
+	math_symbols_["downdownarrows"] = 0x21CA;
+	math_symbols_["downharpoonleft"] = 0x21C3;
+	math_symbols_["downharpoonright"] = 0x21C2;
+	math_symbols_["vert"] = 0x007C;
+	math_symbols_["Vert"] = 0x2016;
+	math_symbols_["Backslash"] = 0x2216;
+
+	std::map<string, char_type>::const_iterator it = math_symbols_.begin();
+	std::map<string, char_type>::const_iterator end = math_symbols_.end();
+	for (; it != end; ++it)
+		tex_names_[it->second] = it->first;
+}
 
 
 void ControlMath::dispatchFunc(kb_action action, string const & arg) const
@@ -94,6 +138,31 @@ void ControlMath::dispatchToggleDisplay() const
 void ControlMath::showDialog(string const & name) const
 {
 	dispatchFunc(LFUN_DIALOG_SHOW, name);
+}
+
+
+char_type ControlMath::mathSymbol(string tex_name) const
+{
+	map<string, char_type>::const_iterator it =
+		math_symbols_.find(tex_name);
+	
+	if (it == math_symbols_.end())
+		return '?';
+	
+	return it->second;
+}
+
+
+std::string const & ControlMath::texName(char_type math_symbol) const
+{
+	map<char_type, string>::const_iterator it =
+		tex_names_.find(math_symbol);
+	
+	static string empty_string;
+	if (it == tex_names_.end())
+		return empty_string;
+	
+	return it->second;
 }
 
 
@@ -338,6 +407,16 @@ char const * latex_ams_ops[] = {
 
 int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 
+
+char const *  latex_delimiters[] = {
+	"(", ")", "{", "}", "[", "]",
+	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
+	"uparrow", "Uparrow", "downarrow", "Downarrow",
+	"|", "Vert", "/", "\\", ""
+};
+
+
+int const nr_latex_delimiters = sizeof(latex_delimiters) / sizeof(char const *);
 
 namespace {
 
