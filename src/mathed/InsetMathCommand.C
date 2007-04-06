@@ -79,15 +79,4 @@ docstring const CommandInset::screenLabel() const
 	return name_;
 }
 
-
-string const CommandInset::createDialogStr(string const & name) const
-{
-	odocstringstream os;
-	os << from_ascii(name + " LatexCommand ");
-	WriteStream ws(os);
-	write(ws);
-	return to_utf8(os.str()) + "\n\\end_inset\n\n";
-}
-
-
 } // namespace lyx

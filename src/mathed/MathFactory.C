@@ -56,6 +56,8 @@
 
 #include "debug.h"
 
+#include "insets/insetcommand.h"
+
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
 
@@ -405,20 +407,17 @@ MathAtom createInsetMath(docstring const & s)
 bool createInsetMath_fromDialogStr(docstring const & str, MathArray & ar)
 {
 	// An example str:
-	// "ref LatexCommand \\ref{sec:Title}\n\\end_inset\n\n";
+	// "ref LatexCommand ref\nreference \"sec:Title\"\n\\end_inset\n\n";
 	docstring name;
 	docstring body = split(str, name, ' ');
 
 	if (name != "ref" )
 		return false;
 
-	// body comes with a head "LatexCommand " and a
-	// tail "\nend_inset\n\n". Strip them off.
-	docstring trimmed;
-	body = split(body, trimmed, ' ');
-	split(body, trimmed, '\n');
-
-	mathed_parse_cell(ar, trimmed);
+	InsetCommandParams icp("ref");
+	// FIXME UNICODE
+	InsetCommandMailer::string2params("ref", to_utf8(str), icp);
+	mathed_parse_cell(ar, icp.getCommand());
 	if (ar.size() != 1)
 		return false;
 

@@ -38,8 +38,6 @@ public:
 	// void infoize(odocstream & os) const;
 	///
 	virtual docstring const screenLabel() const;
-	/// generate something that will be understood by the Dialogs.
-	std::string const createDialogStr(std::string const & name) const;
 	///
 	docstring const & commandname() const { return name_; }
 private:

@@ -39,6 +39,8 @@ public:
 
 	/// docbook output
 	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
+	/// generate something that will be understood by the Dialogs.
+	std::string const createDialogStr(std::string const & name) const;
 
 	struct ref_type_info {
 		///

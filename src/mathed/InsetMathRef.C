@@ -26,6 +26,8 @@
 #include "outputparams.h"
 #include "sgml.h"
 
+#include "insets/insetcommand.h"
+
 
 namespace lyx {
 
@@ -168,6 +170,16 @@ int RefInset::docbook(Buffer const & buf, odocstream & os,
 	}
 
 	return 0;
+}
+
+
+string const RefInset::createDialogStr(string const & name) const
+{
+	InsetCommandParams icp(to_ascii(commandname()));
+	icp["reference"] = asString(cell(0));
+	if (!cell(1).empty())
+		icp["name"] = asString(cell(1));
+	return InsetCommandMailer::params2string(name, icp);
 }
 
 
