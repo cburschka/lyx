@@ -20,7 +20,7 @@ namespace lyx {
 namespace support {
 namespace socktools {
 
-int listen(std::string const &, int)
+int listen(FileName const &, int)
 {
 	return -1;
 }
@@ -72,22 +72,23 @@ namespace socktools {
 // of error). The first argument is the socket address, the second
 // is the length of the queue for connections. If successful, a socket
 // special file 'name' will be created in the filesystem.
-int listen(string const & name, int queue)
+int listen(FileName const & name, int queue)
 {
 	int fd; // File descriptor for the socket
 	sockaddr_un addr; // Structure that hold the socket address
 
-	// We use 'name' to fill 'addr'
-	string::size_type len = name.size();
+	// We use 'localname' to fill 'addr'
+	string const localname = name.toFilesystemEncoding();
+	string::size_type len = localname.size();
 	// the field sun_path in sockaddr_un is a char[108]
 	if (len > 107) {
-		lyxerr << "lyx: Socket address '" << name << "' too long."
+		lyxerr << "lyx: Socket address '" << name.absFilename() << "' too long."
 		       << endl;
 		return -1;
 	}
 	// Synonims for AF_UNIX are AF_LOCAL and AF_FILE
 	addr.sun_family = AF_UNIX;
-	name.copy(addr.sun_path, 107);
+	localname.copy(addr.sun_path, 107);
 	addr.sun_path[len] = '\0';
 
 	// This creates a file descriptor for the socket
@@ -112,10 +113,10 @@ int listen(string const & name, int queue)
 	// the socket special file in the filesystem. bind() returns -1
 	// in case of error
 	if ((::bind (fd, reinterpret_cast<sockaddr *>(&addr), SUN_LEN(&addr))) == -1) {
-		lyxerr << "lyx: Could not bind address '" << name
+		lyxerr << "lyx: Could not bind address '" << name.absFilename()
 		       << "' to socket descriptor: " << strerror(errno) << endl;
 		::close(fd);
-		unlink(FileName(name));
+		unlink(name);
 		return -1;
 	}
 
@@ -128,7 +129,7 @@ int listen(string const & name, int queue)
 		lyxerr << "lyx: Could not put socket in 'listen' state: "
 		       << strerror(errno) << endl;
 		::close(fd);
-		unlink(FileName(name));
+		unlink(name);
 		return -1;
 	}
 

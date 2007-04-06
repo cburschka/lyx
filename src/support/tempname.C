@@ -100,7 +100,7 @@ FileName const tempName(FileName const & dir, string const & mask)
 
 	int const tmpf = make_tempfile(tmpl.get());
 	if (tmpf != -1) {
-		string const t(tmpl.get());
+		string const t(to_utf8(from_filesystem8bit(tmpl.get())));
 #if defined (HAVE_CLOSE)
 		::close(tmpf);
 #elif defined (HAVE__CLOSE)

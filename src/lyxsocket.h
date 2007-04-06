@@ -14,6 +14,7 @@
 #ifndef LYXSOCKET_H
 #define LYXSOCKET_H
 
+#include "support/filename.h"
 #include "support/socktools.h"
 #include "lyxfunc.h"
 
@@ -41,11 +42,11 @@ class LyXDataSocket;
 class LyXServerSocket {
 public:
 	///
-	LyXServerSocket(LyXFunc *, std::string const &);
+	LyXServerSocket(LyXFunc *, support::FileName const &);
 	///
 	~LyXServerSocket();
 	/// Address of the local socket
-	std::string const & address() const;
+	std::string const address() const;
 	/// To be called when there is activity in the server socket
 	void serverCallback();
 	/// To be called when there is activity in the data socket
@@ -58,7 +59,7 @@ private:
 	/// File descriptor for the server socket
 	int fd_;
 	/// Stores the socket filename
-	std::string address_;
+	support::FileName address_;
 	/// Maximum number of simultaneous clients
 	enum {
 		MAX_CLIENTS = 10

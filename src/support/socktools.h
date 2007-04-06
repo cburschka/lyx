@@ -12,13 +12,14 @@
 #ifndef SOCKTOOLS_H
 #define SOCKTOOLS_H
 
-#include <string>
-
 namespace lyx {
 namespace support {
+
+class FileName;
+
 namespace socktools {
 
-int listen(std::string const &, int);
+int listen(FileName const &, int);
 int accept(int);
 
 } // namespace socktools

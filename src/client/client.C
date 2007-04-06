@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "debug.h"
+#include "support/filename.h"
 #include "support/unicode.h"
 #include "support/lstrings.h"
 
@@ -57,7 +58,8 @@
 
 namespace lyx {
 
-using lyx::support::prefixIs;
+using support::FileName;
+using support::prefixIs;
 
 using boost::scoped_ptr;
 namespace fs = boost::filesystem;
@@ -113,14 +115,14 @@ namespace socktools {
 
 
 /// Connect to the socket \p name.
-/// Caution: \p name is in filesystem encoding
-int connect(string const & name)
+int connect(FileName const & name)
 {
 	int fd; // File descriptor for the socket
 	sockaddr_un addr; // Structure that hold the socket address
 
+	string const encoded = name.toFilesystemEncoding();
 	// char sun_path[108]
-	string::size_type len = name.size();
+	string::size_type len = encoded.size();
 	if (len > 107) {
 		cerr << "lyxclient: Socket address '" << name
 		     << "' too long." << endl;
@@ -128,7 +130,7 @@ int connect(string const & name)
 	}
 	// Synonims for AF_UNIX are AF_LOCAL and AF_FILE
 	addr.sun_family = AF_UNIX;
-	name.copy(addr.sun_path, 107);
+	encoded.copy(addr.sun_path, 107);
 	addr.sun_path[len] = '\0';
 
 	if ((fd = ::socket(PF_UNIX, SOCK_STREAM, 0))== -1) {
@@ -139,7 +141,7 @@ int connect(string const & name)
 	if (::connect(fd,
 		      reinterpret_cast<struct sockaddr *>(&addr),
 		      sizeof(addr)) == -1) {
-		cerr << "lyxclient: Could not connect to socket " << name
+		cerr << "lyxclient: Could not connect to socket " << name.absFilename()
 		     << ": " << strerror(errno) << endl;
 		::close(fd);
 		return -1;
@@ -221,7 +223,7 @@ bool IOWatch::isset(int fd) {
 // Modified LyXDataSocket class for use with the client
 class LyXDataSocket {
 public:
-	LyXDataSocket(string const &);
+	LyXDataSocket(FileName const &);
 	~LyXDataSocket();
 	// File descriptor of the connection
 	int fd() const;
@@ -241,7 +243,7 @@ private:
 };
 
 
-LyXDataSocket::LyXDataSocket(string const & address)
+LyXDataSocket::LyXDataSocket(FileName const & address)
 {
 	if ((fd_ = support::socktools::connect(address)) == -1) {
 		connected_ = false;
@@ -534,7 +536,7 @@ int main(int argc, char * argv[])
 	scoped_ptr<LyXDataSocket> server;
 
 	if (!cmdline::serverAddress.empty()) {
-		server.reset(new LyXDataSocket(to_utf8(cmdline::serverAddress)));
+		server.reset(new LyXDataSocket(FileName(to_utf8(cmdline::serverAddress))));
 		if (!server->connected()) {
 			cerr << "lyxclient: " << "Could not connect to "
 			     << to_utf8(cmdline::serverAddress) << endl;
@@ -543,12 +545,12 @@ int main(int argc, char * argv[])
 	} else {
 		// We have to look for an address.
 		// serverPid can be empty.
-		vector<fs::path> addrs = support::lyxSockets(to_utf8(cmdline::mainTmp), cmdline::serverPid);
+		vector<fs::path> addrs = support::lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
 		vector<fs::path>::const_iterator addr = addrs.begin();
 		vector<fs::path>::const_iterator end = addrs.end();
 		for (; addr != end; ++addr) {
 			// Caution: addr->string() is in filesystem encoding
-			server.reset(new LyXDataSocket(addr->string()));
+			server.reset(new LyXDataSocket(FileName(to_utf8(from_filesystem8bit(addr->string())))));
 			if (server->connected())
 				break;
 			lyxerr << "lyxclient: " << "Could not connect to "

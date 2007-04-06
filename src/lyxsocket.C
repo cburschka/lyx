@@ -48,7 +48,7 @@ namespace lyx {
 // Address is the unix address for the socket.
 // MAX_CLIENTS is the maximum number of clients
 // that can connect at the same time.
-LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
+LyXServerSocket::LyXServerSocket(LyXFunc * f, support::FileName const & addr)
 	: func(f),
 	  fd_(support::socktools::listen(addr, 3)),
 	  address_(addr)
@@ -62,7 +62,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 	// Needed by xdvi
 	support::setEnv("XEDITOR", "lyxclient -g %f %l");
 	// Needed by lyxclient
-	support::setEnv("LYXSOCKET", address_);
+	support::setEnv("LYXSOCKET", address_.toFilesystemEncoding());
 
 	theApp()->registerSocketCallback(
 		fd_,
@@ -70,7 +70,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 		);
 
 	LYXERR(Debug::LYXSERVER) << "lyx: New server socket "
-				 << fd_ << ' ' << address_ << endl;
+				 << fd_ << ' ' << address_.absFilename() << endl;
 }
 
 
@@ -84,14 +84,14 @@ LyXServerSocket::~LyXServerSocket()
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
 	}
-	support::unlink(support::FileName(address_));
+	support::unlink(address_);
 	LYXERR(Debug::LYXSERVER) << "lyx: Server socket quitting" << endl;
 }
 
 
-string const & LyXServerSocket::address() const
+string const LyXServerSocket::address() const
 {
-	return address_;
+	return address_.absFilename();
 }
 
 
@@ -191,7 +191,7 @@ void LyXServerSocket::writeln(string const & line)
 // void LyXServerSocket::dump() const
 // {
 //	lyxerr << "LyXServerSocket debug dump.\n"
-//	     << "fd = " << fd_ << ", address = " << address_ << ".\n"
+//	     << "fd = " << fd_ << ", address = " << address_.absFilename() << ".\n"
 //	     << "Clients: " << clients.size() << ".\n";
 //	std::map<int, shared_ptr<LyXDataSocket> >::const_iterator client = clients.begin();
 //	std::map<int, shared_ptr<LyXDataSocket> >::const_iterator end = clients.end();
