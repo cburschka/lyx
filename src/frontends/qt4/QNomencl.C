@@ -19,9 +19,10 @@
 #include "QNomencl.h"
 #include "Qt2BC.h"
 #include "ButtonController.h"
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTextEdit>
 
 using std::string;
 
@@ -44,7 +45,7 @@ void QNomencl::build_dialog()
 	bcview().setOK(dialog_->okPB);
 	bcview().setCancel(dialog_->closePB);
 	bcview().addReadOnly(dialog_->symbolED);
-	bcview().addReadOnly(dialog_->descrED);
+	bcview().addReadOnly(dialog_->descriptionTE);
 	bcview().addReadOnly(dialog_->prefixED);
 }
 
@@ -53,7 +54,9 @@ void QNomencl::update_contents()
 {
 	dialog_->prefixED->setText(toqstr(controller().params()["prefix"]));
 	dialog_->symbolED->setText(toqstr(controller().params()["symbol"]));
-	dialog_->descrED->setText(toqstr(controller().params()["description"]));
+	QString description = toqstr(controller().params()["description"]);
+	description.replace("\\\\","\n");
+	dialog_->descriptionTE->setPlainText(description);
 
 	bc().valid(isValid());
 }
@@ -63,13 +66,16 @@ void QNomencl::apply()
 {
 	controller().params()["prefix"] = qstring_to_ucs4(dialog_->prefixED->text());
 	controller().params()["symbol"] = qstring_to_ucs4(dialog_->symbolED->text());
-	controller().params()["description"] = qstring_to_ucs4(dialog_->descrED->text());
+	QString description = dialog_->descriptionTE->toPlainText();
+	description.replace('\n',"\\\\");
+	controller().params()["description"] = qstring_to_ucs4(description);
 }
 
 
 bool QNomencl::isValid()
 {
-	return (!dialog_->symbolED->text().isEmpty() && !dialog_->descrED->text().isEmpty());
+	QString const description = dialog_->descriptionTE->toPlainText();
+	return !dialog_->symbolED->text().isEmpty() && !description.isEmpty();
 }
 
 } // namespace frontend

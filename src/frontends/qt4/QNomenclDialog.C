@@ -20,6 +20,7 @@
 #include <QLineEdit>
 #include <QWhatsThis>
 #include <QCloseEvent>
+#include <QTextEdit>
 
 namespace lyx {
 namespace frontend {
@@ -33,10 +34,10 @@ QNomenclDialog::QNomenclDialog(QNomencl * form)
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
 	connect(symbolED, SIGNAL(textChanged(const QString&)),
 	        this, SLOT(change_adaptor()));
-	connect(descrED, SIGNAL(textChanged(const QString&)),
+	connect(descriptionTE, SIGNAL(textChanged()),
 	        this, SLOT(change_adaptor()));
 
-	setFocusProxy(descrED);
+	setFocusProxy(descriptionTE);
 }
 
 

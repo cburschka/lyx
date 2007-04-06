@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>248</width>
-    <height>136</height>
+    <width>254</width>
+    <height>165</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -25,9 +25,6 @@
    <item row="2" column="1" >
     <widget class="QLineEdit" name="prefixED" />
    </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="descrED" />
-   </item>
    <item row="2" column="0" >
     <widget class="QLabel" name="prefixLA" >
      <property name="text" >
@@ -44,7 +41,7 @@
       <string>&amp;Description:</string>
      </property>
      <property name="buddy" >
-      <cstring>descrED</cstring>
+      <cstring>descriptionTE</cstring>
      </property>
     </widget>
    </item>
@@ -111,12 +108,14 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="1" >
+    <widget class="QTextEdit" name="descriptionTE" />
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <tabstops>
   <tabstop>symbolED</tabstop>
-  <tabstop>descrED</tabstop>
   <tabstop>prefixED</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>closePB</tabstop>
