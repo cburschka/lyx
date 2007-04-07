@@ -489,8 +489,8 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 	pain.drawPixmap(x, y, pm);
 
-	x += 300;
-	y += 265;
+	x += 260;
+	y += 270;
 
 	pain.setPen(QColor(255, 255, 0));
 	pain.setFont(font);
