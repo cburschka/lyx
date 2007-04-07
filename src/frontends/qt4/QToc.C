@@ -33,8 +33,8 @@ namespace lyx {
 namespace frontend {
 
 
-QToc::QToc(Dialog & parent)
-	: ControlToc(parent)
+QToc::QToc(Dialog & dialog, QObject * parent)
+	: QObject(parent), ControlToc(dialog)
 {
 }
 

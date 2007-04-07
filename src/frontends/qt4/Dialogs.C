@@ -304,9 +304,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 #endif
 	} else if (name == "toc") {
-		QToc * qtoc = new QToc(*dialog);
-		dialog->setController(qtoc);
 		GuiView & gui_view = static_cast<GuiView &>(lyxview_);
+		QToc * qtoc = new QToc(*dialog, &gui_view);
+		dialog->setController(qtoc);
 		dialog->setView(new DockView<QToc, TocWidget>(
 			*dialog, qtoc, &gui_view, _("Toc")));
 		dialog->bc().bp(new OkCancelPolicy);

@@ -31,7 +31,7 @@ class QToc : public QObject, public ControlToc
 	Q_OBJECT
 public:
 
-	QToc(Dialog &);
+	QToc(Dialog &, QObject * parent = 0);
 	virtual ~QToc() {}
 
 	/// \c ControlToc inherited method.
