@@ -66,10 +66,11 @@ string fix_name(string const & str, bool big)
 {
 	if (str.empty())
 		return ".";
-	if (!big || str == "(" || str == ")" || str == "[" || str == "]" || str == "|")
+	if (!big || str == "(" || str == ")" || str == "[" || str == "]"
+	    || str == "|" || str == "/")
 		return str;
 
-	return "\\" + str;
+	return "\\" + (str == "\\" ? "backslash" : str);
 }
 
 } // namespace anon

@@ -296,6 +296,7 @@ named_deco_struct deco_table[] = {
 	{"vert",           vert,       0 },
 	{"Vert",           Vert,       0 },
 	{"'",              slash,      1 },
+	{"\\",             slash,      1 },
 	{"backslash",      slash,      1 },
 	{"langle",         angle,      0 },
 	{"lceil",          corner,     0 },
