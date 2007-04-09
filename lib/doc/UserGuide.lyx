@@ -91,7 +91,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "usti"
+\author "Uwe Stöhr"
 \end_header
 
 \begin_body
@@ -13621,31 +13622,56 @@ This dialog has numerous parameters, though most should be self-explanatory.
 \family sans
 File
 \family default
- tab allows you to choose your image file (note that a wide variety of image
- formats are supported automatically).
- The figure can be transformed by setting a rotation angle, using a bounding
- box, and scaling.
- Table\InsetSpace ~
+ field allows you to choose your image file.
+ (See Section 
+\begin_inset LatexCommand ref
+reference "sub:How-it-works"
 
+\end_inset
+
+ for information on supported formats.) The figure can be transformed by
+ setting a rotation angle, setting the output size, and clipping the image.
+ It is possible to set the clipping parameters automatically for some image
+ formats by clicking the 
+\begin_inset Quotes eld
+\end_inset
+
+Clip to bounding box
+\begin_inset Quotes erd
+\end_inset
+
+ check box under the 
+\family sans
+Clipping
+\family default
+ tab.
+ For scaling, you can set the scale directly by using a percentage value,
+ or you can set the width and height explicitly.
+ (See Table 
 \begin_inset LatexCommand ref
 reference "cap:Units-for-image"
 
 \end_inset
 
- describes all available units.
- It is possible to set a bounding box automatically for some image formats
- (see the 
+ for the available units.) If you set only one of these, the other will be
+ determined automatically.
+ If you set both, then the image will be transformed to the given size,
+ possibly distorting it.
+ If you do not want the image distorted, check the 
 \family sans
-Bounding\InsetSpace ~
-Box
+Maintain aspect ratio
 \family default
- tab).
- Note that it is possible to control the display of the figure in LyX and
- the display in the final document separately, which can be very useful
- for large figures.
+ box.
+ The image will then be scaled so that its width and height do not exceed
+ the specified dimensions.
+\end_layout
+
+\begin_layout Standard
+It is possible to control the display of the figure in LyX and the display
+ in the final document separately, which can be very useful for large figures.
  LaTeX wizards can specify additional LaTeX options in the 
 \family sans
-Extras
+LaTeX and LyX Options
 \family default
  tab.
  You can also set the 
@@ -13660,10 +13686,21 @@ reference "sec:figurefloats"
 \end_inset
 
 ).
+ See the documentation for the LaTeX-package 
+\family typewriter
+subfigure
+\family default
+ for more information.
 \end_layout
 
 \begin_layout Subsection
 How it works
+\begin_inset LatexCommand label
+name "sub:How-it-works"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -205,7 +205,6 @@
 \output_changes false
 \author "usti" 
 \author "Uwe Stöhr" 
-\author "" 
 \end_header
 
 \begin_body
@@ -397,8 +396,22 @@ You can rotate images counter-clockwise by setting a rotation angle and
  a rotation origin.
  The image will also be rotated inside LyX.
 \newline
-Images can be opened in a program
- of your choice when pressing the 
+Images can be scaled by using
+ a percentage value or by setting the width and height explicitly.
+ If you set only the width or only the height, the other size will be determined
+ automatically.
+ If you set both, then the image will be transformed to the given size,
+ possibly distorting it.
+ To prevent the image from distortion, use the option 
+\family sans
+Maintain aspect ratio
+\family default
+.
+ The image will then be scaled so that its width and height don't exceed
+ the specified dimensions.
+\newline
+Images can be opened in a program of your choice
+ when pressing the 
 \family sans
 Edit
 \family default

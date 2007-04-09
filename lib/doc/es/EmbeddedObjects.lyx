@@ -404,8 +404,26 @@ Puedes girar
  y un origen de rotación.
  La imagen también gira en LyX.
 \newline
-Las imágenes se pueden abrir con un programa
- de tu elección pulsando el botón 
+
+\lang english
+Images can be scaled by using a percentage value or by setting the width
+ and height explicitly.
+ If you set only the width or only the height, the other size will be determined
+ automatically.
+ If you set both, then the image will be transformed to the given size,
+ possibly distorting it.
+ To prevent the image from distortion, use the option 
+\family sans
+Maintain aspect ratio
+\family default
+.
+ The image will then be scaled so that its width and height don't exceed
+ the specified dimensions.
+\lang spanish
+
+\newline
+Las imágenes se pueden abrir con un programa de tu elección pulsando el
+ botón 
 \family sans
 Editar
 \family default
