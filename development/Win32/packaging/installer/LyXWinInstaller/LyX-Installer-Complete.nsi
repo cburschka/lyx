@@ -6,11 +6,11 @@
 ; Licence details can be found in the file COPYING or copy at
 ; http://www.lyx.org/about/license.php3
 
-; Author Uwe Stöhr based on the work of Angus Leeming and Joost Verburg
+; Author Uwe StÃ¶hr based on the work of Angus Leeming and Joost Verburg
 ; Full author contact details are available in file CREDITS or copy at
 ; http://www.lyx.org/about/credits.php
 
-; This script requires NSIS 2.22 and newer
+; This script requires NSIS 2.25 and newer
 ; http://nsis.sourceforge.net/
 ;--------------------------------
 
@@ -26,7 +26,7 @@ CRCCheck force
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5svn-30-03-2007"
+!define PRODUCT_VERSION "1.5svn-09-04-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -40,10 +40,10 @@ CRCCheck force
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 
-BrandingText "LyXWinInstaller v3.10 - Complete"
+BrandingText "LyXWinInstaller v3.11 - Complete"
 !define INSTALLER_VERSION "Complete"
-!define INSTALLER_EXE "LyXWin150svnComplete-3-10.exe"
-!define INSTALLER2_EXE "LyXWin150svnSmall-3-10.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150svnComplete-3-11.exe"
+!define INSTALLER2_EXE "LyXWin150svnSmall-3-11.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
