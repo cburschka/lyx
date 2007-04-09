@@ -48,6 +48,7 @@ dist_esdoc_DATA = \
         es/DocumentoPostizo2.lyx \
 	es/DocumentoTextoPostizo.txt \
 	es/EmbeddedObjects.lyx \
+	es/Extended.lyx \
 	es/Intro.lyx \
 	es/Tutorial.lyx
 

@@ -2357,6 +2357,7 @@ lib_doc_es_files = Split('''
     DocumentoPostizo2.lyx
     DocumentoTextoPostizo.txt
     EmbeddedObjects.lyx
+    Extended.lyx
     Intro.lyx
     Tutorial.lyx
 ''')
