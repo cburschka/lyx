@@ -367,7 +367,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899912526043",
                  "21 February 2005",
-                 u"tex2lyx improvements"),
+                 u"tex2lyx improvements, bug fixes, unicode work"),
 
      contributer(u"Hans Bausewein",
                  "hans () comerwell ! xs4all ! nl",
@@ -651,6 +651,7 @@ contributers = [
 
      contributer(u"Masanori Iwami",
                  "masa.iwm () gmail ! com",
+                 "GPL",
                  "Re: [patch] Addition of input method support",
                  "m=117541512517453",
                  "1 April 2007",
@@ -1083,6 +1084,7 @@ contributers = [
      contributer(u"Stefan Schimanski",
                  "sts () 1stein ! org",
                  "GPL",
+                 "GPL statement",
                  "m=117541472517274",
                  "1 April 2007",
                  u"font improvements, bug fixes"),
