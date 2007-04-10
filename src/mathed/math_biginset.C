@@ -72,12 +72,12 @@ void MathBigInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathBigInset::draw(PainterInfo & pi, int x, int y) const
 {
-	// mathed_draw_deco does not use the leading backslash, so remove it.
+	// mathed_draw_deco does not use the leading backslash, so remove it
+	// (but don't use ltrim if this is the backslash delimiter).
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
 	// would treat it as |.
-	string const delim = (delim_ == "\\|") ?
-		"Vert" :
-		lyx::support::ltrim(delim_, "\\");
+	string const delim = (delim_ == "\\|") ? "Vert" :
+		(delim_ == "\\\\") ? "\\" : lyx::support::ltrim(delim_, "\\");
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
 	                 delim);
 	setPosCache(pi, x, y);
@@ -109,7 +109,8 @@ bool MathBigInset::isBigInsetDelim(string const & delim)
 	// mathed_draw_deco must handle these
 	static char const * const delimiters[] = {
 		"(", ")", "\\{", "\\}", "\\lbrace", "\\rbrace", "[", "]",
-		"|", "/", "\\|", "\\vert", "\\Vert", "'", "\\backslash",
+		"|", "/", "\\slash", "\\|", "\\vert", "\\Vert", "'",
+		"\\\\", "\\backslash",
 		"\\langle", "\\lceil", "\\lfloor",
 		"\\rangle", "\\rceil", "\\rfloor",
 		"\\downarrow", "\\Downarrow",

@@ -1,3 +1,10 @@
+2007-04-10  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* math_biginset.C (draw): don't remove backslash delimiter.
+	(isBigInsetDelim): add "\\" and "\slash" to the delimiters table.
+
+	* math_support.C: add "\" and "slash" to the decoration table.
+
 2007-03-13  André Pönitz  <poenitz@lyx.org>
 
 	* math_rootinset.C (metrics): fix computation of descent (bug 3295).
@@ -9,7 +16,7 @@
 
 2007-01-16  Enrico Forestieri  <forenr@tlc.unipr.it>
 
-	* src/mathed/math_extern.C (captureOutput): redirect stdin from a file.
+	* math_extern.C (captureOutput): redirect stdin from a file.
 	(pipeThroughMaxima, pipeThroughOctave, pipeThroughMathematica): use
 	"output:" instead of "out:" in the informational messages in order to
 	better match the "input:" message from captureOutput.
@@ -17,13 +24,13 @@
 
 2007-01-08  Enrico Forestieri  <forenr@tlc.unipr.it>
 
-	* src/mathed/math_extern.C (pipeThroughOctave): take into account
+	* math_extern.C (pipeThroughOctave): take into account
 	that the output from octave may contain ansi control sequences.
 
-	* src/mathed/math_rootinset.[Ch] (mathematica): new virtual method
+	* math_rootinset.[Ch] (mathematica): new virtual method
 	to output n-th roots in mathematica syntax.
 
-	* src/mathed/math_rootinset.C (octave): octave has not a root command.
+	* math_rootinset.C (octave): octave has not a root command.
 
 2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
