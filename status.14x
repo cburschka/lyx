@@ -45,7 +45,7 @@ What's new
 * USER INTERFACE:
 
 - fix bug where moving the last section up in the toc dialog eats the
-  last paragraph (bug 3303).
+  last paragraph (bug 3303)
 
 - Handle undo correctly when inserting a plain text file (bug 3204).
 
@@ -60,6 +60,8 @@ What's new
 - Set a default image size value (bug 2458).
 
 - Get ProvidesNatbib working correctly, esp. for egs.layout.
+
+- Fix undo for quotation marks (bug 3439).
 
 * BUILD/INSTALLATION:
 

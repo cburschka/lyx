@@ -1,3 +1,7 @@
+2007-04-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text3.C  (dispatch): fix undo in LFUN_QUOTE (bug 3439).
+
 2007-04-05  Richard Heck  <rgheck@brown.edu>
 
 	* bufferparams.C (writeLaTeX): output lengths as LaTeX strings

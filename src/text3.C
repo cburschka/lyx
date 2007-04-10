@@ -850,22 +850,25 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_QUOTE: {
-		lyx::cap::replaceSelection(cur);
 		Paragraph & par = cur.paragraph();
 		lyx::pos_type pos = cur.pos();
-		char c;
-		if (pos == 0)
-			c = ' ';
-		else if (cur.prevInset() && cur.prevInset()->isSpace())
-			c = ' ';
-		else
-			c = par.getChar(pos - 1);
-
-		LyXLayout_ptr const & style = par.layout();
-
 		BufferParams const & bufparams = bv->buffer()->params();
+		LyXLayout_ptr const & style = par.layout();
 		if (!style->pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
+			// this avoids a double undo
+			// FIXME: should not be needed, ideally
+			if (!cur.selection())
+				recordUndo(cur);
+			lyx::cap::replaceSelection(cur);
+			pos = cur.pos();
+			char c;
+			if (pos == 0)
+				c = ' ';
+			else if (cur.prevInset() && cur.prevInset()->isSpace())
+				c = ' ';
+			else
+				c = par.getChar(pos - 1);
 			string arg = cmd.argument;
 			if (arg == "single")
 				cur.insert(new InsetQuotes(c,
