@@ -362,6 +362,8 @@ Menuset
 		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; tabular-feature append-column"
 		Separator
 		Item "Math Panel|P" "dialog-show mathpanel"
+		Item "Math Delimiters|r" "dialog-show mathdelimiter"
+		Item "Math Matrix|x" "dialog-show mathmatrix"
 	End
 
 	Menu "insert_float"
