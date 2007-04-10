@@ -876,6 +876,24 @@ bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
 }
 
 
+// FIXME: once wide() is obsolete, remove this as well!
+bool inNarrowInset(PainterInfo & pi)
+{
+	// check whether the current inset is nested in a non-wide inset
+	LCursor & cur = pi.base.bv->cursor();
+	for (int i = cur.depth() - 1; --i >= 0; ) {
+		InsetBase * const in = &cur[i].inset();
+		if (in) {
+			InsetText * t = 
+				const_cast<InsetText *>(in->asTextInset());
+			if (t)
+				return !t->wide();
+		}
+	}
+	return false;
+}
+
+
 void paintPar
 	(PainterInfo & pi, LyXText const & text, pit_type pit, int x, int y,
 	 bool repaintAll)
@@ -905,11 +923,12 @@ void paintPar
 		bool row_has_changed = pm.rowChangeStatus()[rowno];
 
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
-		bool in_inset_alone_on_row = innerCursorOnRow(pi, pit, rit,
-			text);
+		bool in_inset_alone_on_row =
+			innerCursorOnRow(pi, pit, rit, text);
 		bool leftEdgeFixed = 
 			(par.getAlign() == LYX_ALIGN_LEFT ||
 			 par.getAlign() == LYX_ALIGN_BLOCK);
+		bool inNarrowIns = inNarrowInset(pi);
 
 		// If this is the only object on the row, we can make it wide
 		//
@@ -917,12 +936,16 @@ void paintPar
 		// to touch the paragraph contents. So either we move this "wide"
 		// property out of InsetText or we localize the feature to the painting
 		// done here.
+		// JSpitzm: We should aim at removing wide() altogether while retaining
+		// typing speed within insets.
 		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
 			InsetBase const * const in = par.getInset(i);
 			if (in) {
 				InsetText * t = const_cast<InsetText *>(in->asTextInset());
 				if (t)
-					t->setWide(in_inset_alone_on_row && leftEdgeFixed);
+					t->setWide(in_inset_alone_on_row
+						   && leftEdgeFixed
+						   && !inNarrowIns);
 			}
 		}
 
