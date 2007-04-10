@@ -9,8 +9,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include <sstream>
-
 #include <config.h>
 
 #include "ControlToc.h"
@@ -27,7 +25,6 @@
 
 #include "support/convert.h"
 
-using std::vector;
 using std::string;
 
 
