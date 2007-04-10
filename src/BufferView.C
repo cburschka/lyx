@@ -1341,14 +1341,17 @@ bool BufferView::mouseSetCursor(LCursor & cur)
 
 	// Has the cursor just left the inset?
 	bool badcursor = false;
-	if (&cursor_.inset() != &cur.inset())
+	bool leftinset = (&cursor_.inset() != &cur.inset());
+	if (leftinset)
 		badcursor = cursor_.inset().notifyCursorLeaves(cursor_);
 
 	// do the dEPM magic if needed
-	// FIXME: move this to InsetText::notifyCursorLeaves?
-	bool update = false;
+	// FIXME: (1) move this to InsetText::notifyCursorLeaves?
+	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
+	// the leftinset bool would not be necessary (badcursor instead).
+	bool update = leftinset;
 	if (!badcursor && cursor_.inTexted())
-		checkDepm(cur, cursor_);
+		update |= checkDepm(cur, cursor_);
 
 	// if the cursor was in an empty script inset and the new
 	// position is in the nucleus of the inset, notifyCursorLeaves
