@@ -16,7 +16,7 @@
 #
 # Toolbar "name" "GUI Name"
 #
-# Only four commands are allowed inside the begin_toolbar and end_toolbar
+# Only four commands are allowed inside the Toolbar and End
 # directives:
 #   Item "The tooltip" "<action> [<parameter>]" adds an icon to the toolbar performing
 #          "<action> <parameter>"
@@ -30,7 +30,7 @@
 #
 #   Minibuffer adds the command buffer (Qt only, only one may exist)
 #
-# The icons are found in the lib/image direcory under the name
+# The icons are found in the lib/images/ direcory under the name
 # action.xpm or action_parameter.xpm, except for math-insert, which
 # is e.g. lib/image/math/sum.xpm. Note that some characters are
 # replaced (e.g. ')' -> rbracket).
@@ -122,10 +122,11 @@ End
 Toolbar "math" "Math"
 	Item "Show math panel" "dialog-show mathpanel"
 	Item "Set display mode" "math-display"
+	Separator
 	Item "Subscript" "math-subscript"
 	Item "Superscript" "math-superscript"
-	Item "Insert root" "math-insert \root"
 	Item "Insert square root" "math-insert \sqrt"
+	Item "Insert root" "math-insert \root"
 	Item "Insert sum" "math-insert \sum"
 	Item "Insert integral" "math-insert \int"
 	Item "Insert product" "math-insert \prod"
@@ -134,6 +135,7 @@ Toolbar "math" "Math"
 	Item "Insert ( )" "math-delim ( )"
 	Item "Insert [ ]" "math-delim [ ]"
 	Item "Insert { }" "math-delim { }"
+	Item "Insert math delimiters" "dialog-show mathdelimiter"
 	Separator
 	Item "Insert matrix" "math-matrix 2 2"
 	Item "Insert cases environment" "math-insert \cases"
