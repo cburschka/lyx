@@ -293,6 +293,7 @@ named_deco_struct deco_table[] = {
 	{"]",              brack,      2 },
 	{"|",              vert,       0 },
 	{"/",              slash,      0 },
+	{"slash",          slash,      0 },
 	{"vert",           vert,       0 },
 	{"Vert",           Vert,       0 },
 	{"'",              slash,      1 },

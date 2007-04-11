@@ -78,11 +78,12 @@ bool InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 {
-	// mathed_draw_deco does not use the leading backslash, so remove it.
+	// mathed_draw_deco does not use the leading backslash, so remove it
+	// (but don't use ltrim if this is the backslash delimiter).
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
 	// would treat it as |.
-	docstring const delim = 
-		(delim_ == "\\|") ?  from_ascii("Vert") : support::ltrim(delim_, "\\");
+	docstring const delim = (delim_ == "\\|") ?  from_ascii("Vert") :
+		(delim_ == "\\\\") ? from_ascii("\\") : support::ltrim(delim_, "\\");
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
 	                 delim);
 	setPosCache(pi, x, y);
@@ -114,7 +115,8 @@ bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 	// mathed_draw_deco must handle these
 	static char const * const delimiters[] = {
 		"(", ")", "\\{", "\\}", "\\lbrace", "\\rbrace", "[", "]",
-		"|", "/", "\\|", "\\vert", "\\Vert", "'", "\\backslash",
+		"|", "/", "\\slash", "\\|", "\\vert", "\\Vert", "'",
+		"\\\\", "\\backslash",
 		"\\langle", "\\lceil", "\\lfloor",
 		"\\rangle", "\\rceil", "\\rfloor",
 		"\\downarrow", "\\Downarrow",

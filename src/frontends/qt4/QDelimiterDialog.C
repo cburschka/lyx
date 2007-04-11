@@ -70,7 +70,7 @@ string fix_name(string const & str, bool big)
 	    || str == "|" || str == "/")
 		return str;
 
-	return "\\" + (str == "\\" ? "backslash" : str);
+	return "\\" + str;
 }
 
 } // namespace anon
