@@ -137,7 +137,7 @@ Toolbar "math" "Math"
 	Item "Insert { }" "math-delim { }"
 	Item "Insert math delimiters" "dialog-show mathdelimiter"
 	Separator
-	Item "Insert matrix" "math-matrix 2 2"
+	Item "Insert matrix" "dialog-show mathmatrix"
 	Item "Insert cases environment" "math-insert \cases"
 	Item "Add row" "tabular-feature append-row"
 	Item "Add column" "tabular-feature append-column"
