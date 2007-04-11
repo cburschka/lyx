@@ -1,175 +1,25 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QPrefFileformatsUi</class>
  <widget class="QWidget" name="QPrefFileformatsUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>317</width>
-    <height>357</height>
+    <width>459</width>
+    <height>410</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>0</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item rowspan="5" row="1" column="0" >
-    <widget class="QListWidget" name="formatsLW" />
-   </item>
-   <item row="6" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="formatRemovePB" >
-       <property name="text" >
-        <string>&amp;Remove</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="1" >
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item row="4" column="1" >
-      <widget class="QLineEdit" name="viewerED" />
-     </item>
-     <item row="5" column="0" >
-      <widget class="QLabel" name="editorLA" >
-       <property name="text" >
-        <string>Ed&amp;itor:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>editorED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" >
-      <widget class="QLabel" name="guiNameLA" >
-       <property name="text" >
-        <string>&amp;GUI name:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>guiNameED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" >
-      <widget class="QLineEdit" name="formatED" />
-     </item>
-     <item row="2" column="1" >
-      <widget class="QLineEdit" name="shortcutED" />
-     </item>
-     <item row="3" column="0" >
-      <widget class="QLabel" name="extensionLA" >
-       <property name="text" >
-        <string>E&amp;xtension:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>extensionED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0" >
-      <widget class="QLabel" name="shortcutLA" >
-       <property name="text" >
-        <string>S&amp;hortcut:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>shortcutED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" >
-      <widget class="QLabel" name="formatLA" >
-       <property name="text" >
-        <string>F&amp;ormat:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>formatED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1" >
-      <widget class="QLineEdit" name="extensionED" />
-     </item>
-     <item row="1" column="1" >
-      <widget class="QLineEdit" name="guiNameED" />
-     </item>
-     <item row="4" column="0" >
-      <widget class="QLabel" name="viewerLA" >
-       <property name="text" >
-        <string>&amp;Viewer:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>viewerED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1" >
-      <widget class="QLineEdit" name="editorED" />
-     </item>
-    </layout>
-   </item>
-   <item row="3" column="1" >
-    <widget class="QCheckBox" name="vectorCB" >
-     <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <property name="toolTip" >
-      <string>Tell whether this format can contain vector graphics.</string>
-     </property>
-     <property name="text" >
-      <string>Vector graphi&amp;cs format</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" >
-    <widget class="QCheckBox" name="documentCB" >
-     <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <property name="toolTip" >
-      <string>Tell whether this format is a document format. A document cannot be exported to or viewed in a non-document format.</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Document format</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
+   <item>
     <widget class="QLabel" name="formatsLA" >
      <property name="text" >
       <string>&amp;File formats</string>
@@ -179,23 +29,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>129</width>
-       <height>16</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="1" >
+   <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -204,70 +38,224 @@
       <number>6</number>
      </property>
      <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::MinimumExpanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>31</height>
-        </size>
-       </property>
-      </spacer>
+      <widget class="QListWidget" name="formatsLW" />
      </item>
      <item>
-      <widget class="QPushButton" name="formatNewPB" >
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="formatNewPB" >
+         <property name="text" >
+          <string>&amp;Add</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="formatModifyPB" >
+         <property name="text" >
+          <string>&amp;Modify</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="formatRemovePB" >
+         <property name="text" >
+          <string>&amp;Remove</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="documentCB" >
        <property name="text" >
-        <string>&amp;Add</string>
+        <string>&amp;Document format</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="formatModifyPB" >
+      <widget class="QCheckBox" name="vectorCB" >
        <property name="text" >
-        <string>&amp;Modify</string>
+        <string>Vector graphi&amp;cs format</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="1" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
+     <property name="spacing" >
+      <number>6</number>
      </property>
-    </spacer>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="formatLA" >
+         <property name="text" >
+          <string>F&amp;ormat:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>formatED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="shortcutLA" >
+         <property name="text" >
+          <string>S&amp;hortcut:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>shortcutED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="viewerLA" >
+         <property name="text" >
+          <string>&amp;Viewer:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>viewerED</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="formatED" />
+       </item>
+       <item>
+        <widget class="QLineEdit" name="shortcutED" />
+       </item>
+       <item>
+        <widget class="QLineEdit" name="viewerED" />
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="guiNameLA" >
+         <property name="text" >
+          <string>&amp;GUI name:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>guiNameED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="extensionLA" >
+         <property name="text" >
+          <string>E&amp;xtension:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>extensionED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="editorLA" >
+         <property name="text" >
+          <string>Ed&amp;itor:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>editorED</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="guiNameED" />
+       </item>
+       <item>
+        <widget class="QLineEdit" name="extensionED" />
+       </item>
+       <item>
+        <widget class="QLineEdit" name="editorED" />
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>formatsLW</tabstop>
+  <tabstop>documentCB</tabstop>
+  <tabstop>vectorCB</tabstop>
   <tabstop>formatED</tabstop>
   <tabstop>guiNameED</tabstop>
   <tabstop>shortcutED</tabstop>
   <tabstop>extensionED</tabstop>
   <tabstop>viewerED</tabstop>
   <tabstop>editorED</tabstop>
-  <tabstop>documentCB</tabstop>
-  <tabstop>vectorCB</tabstop>
   <tabstop>formatNewPB</tabstop>
   <tabstop>formatModifyPB</tabstop>
-  <tabstop>formatRemovePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
