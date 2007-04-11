@@ -236,11 +236,14 @@ status collapsed
 \end_inset
 
  y LaTeX
+\series medium
+\size normal
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -250,8 +253,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -259,7 +262,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -572,6 +575,9 @@ status collapsed
 \end_inset
 
 
+\series medium
+\size normal
+
 \begin_inset Note Note
 status collapsed
 
@@ -596,7 +602,10 @@ texorpdfstring
 
 \end_inset
 
-¡Socorro! 
+
+\series default
+\size default
+¡Socorro! ¡
 \begin_inset ERT
 status collapsed
 
@@ -5221,7 +5230,7 @@ email{address}
 \end_layout
 
 \begin_layout Standard
-En todos los casos, el comando apropiado ha de introducirse en LyX y marcado
+En todos los casos, el comando apropiado ha de introducirse en LyX marcado
  como código LaTeX.
  Véanse los ejemplos.
  
@@ -5353,11 +5362,14 @@ status collapsed
 \end_inset
 
 
+\series medium
+\size normal
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -5367,8 +5379,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -5376,7 +5388,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -5501,8 +5513,8 @@ párrafo.
 \end_layout
 
 \begin_layout Standard
-Por otra parte, hay un aspecto particular que es preciso explicar: las figuras
- que deben llevar el título del encabezado a un lado.
+Hay un apunte particular: las figuras que deben llevar el título del encabezado
+ a un lado.
  Para insertar estas figuras has de hacer lo siguiente:
 \end_layout
 
@@ -5626,7 +5638,7 @@ referee
 \family sans
 Opciones 
 \family default
-de la 
+de la solapa 
 \family sans
 Configuración
 \family default
@@ -5640,14 +5652,14 @@ de
 \family sans
 clase
 \family default
-, en el diálogo 
+, submenú 
 \family sans
 \bar under
 D
 \bar default
 ocumento
 \family default
-\InsetSpace ~
+\SpecialChar \menuseparator
 
 \family sans
 Configuración
@@ -6632,11 +6644,13 @@ status collapsed
 \end_inset
 
  y AASTeX cooperen
+\series medium
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -6646,8 +6660,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -6655,7 +6669,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -7750,11 +7764,14 @@ status collapsed
 \end_inset
 
 
+\series medium
+\size normal
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -7764,16 +7781,20 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here for the PDF bookmark text because the ''
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener el carácter ''
 \begin_inset Quotes fld
 \end_inset
 
-'' character causes troubles there when the document language is Spanish
- (for an unknown reason).
+'' sin ocasionar problemas en documentos en español (por alguna razón desconocid
+a).
 \end_layout
 
 \end_inset
 
+
+\series default
+\size default
 Peculiaridades
 \begin_inset Quotes frd
 \end_inset
@@ -16087,7 +16108,7 @@ custom_export_command "mi_comando $$FName"
 \begin_layout Chapter
 Características de LyX que requieren Software Adicional
 \begin_inset OptArg
-status collapsed
+status open
 
 \begin_layout Standard
 Software Adicional
@@ -16129,11 +16150,17 @@ status collapsed
 \end_inset
 
  con SGML-Tools
+\series medium
+\size normal
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+
+\series medium
+\size normal
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -16143,8 +16170,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -16152,7 +16179,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -16593,13 +16620,7 @@ Guía del usuario
 .
 
 \family default
- En los menús encontrarás otras posibilidades, p.\InsetSpace \thinspace{}
-ej.
-\change_inserted 1 1174755762
-\InsetSpace ~
-
-\change_unchanged
-notas al pie.
+ En los menús encontrarás otras posibilidades, por ejemplo, notas al pie.
  Hay dudas sobre si esto funcionará bien.
 \begin_inset Foot
 status open
@@ -16754,7 +16775,7 @@ name "sec:sgmloperate"
 \end_inset
 
 LinuxDoc se puede usar como clase de texto sin ningún script ni programa
- adicional, pero no es de gran interés hacer esto.
+ adicional, pero hacer esto no tiene mucho interés.
  Todo lo que conseguirás es un documento con el aspecto de un 
 \emph on
 Linux Documentation Project Howto
@@ -16763,8 +16784,8 @@ Linux Documentation Project Howto
 .
 
 \family default
- Para hacer la traducción del documento necesitas conseguir e instalar el
- paquete 
+ Para hacer la conversión del documento a otros formatos necesitas conseguir
+ e instalar el paquete 
 \family typewriter
 sgml-tools-1.0.x.tar.gz
 \family default
@@ -16772,7 +16793,11 @@ sgml-tools-1.0.x.tar.gz
 \begin_inset Formula $x\geq3$
 \end_inset
 
-), de la página web de
+), 
+\family roman
+que se puede descargar 
+\family default
+de la página web de
 \family roman
  SGML-Tools
 \end_layout
@@ -16843,7 +16868,8 @@ linuxdoc-sgml-1.5.tar.gz
 \end_layout
 
 \begin_layout Standard
-Sigue las instrucciones del paquete para instalarlo y usarlo.
+Sigue las instrucciones contenidas en el paquete para instalarlo y para
+ usarlo.
  Esto debe hacerse fuera de LyX, antes de poder usar la opción 
 \family sans
 \bar under
@@ -16867,8 +16893,8 @@ Investigación de conflictos en LinuxDoc
 \begin_layout Standard
 Cuando imprimes o ves un documento LinuxDoc, se hacen algunas comprobaciones
  antes de ejecutar LaTeX.
- Aquí se atrapan algunos errores, especialmente aquellos que conciernen
- a la estructura del documento.
+ Durante estas comprobaciones se atrapan algunos errores, especialmente
+ aquellos que conciernen a la estructura del documento.
  LyX puede generar mensajes de error, pero no los coloca en recuadros en
  pantalla para poder abrirlos.
  Tienes que mirar directamente en los archivos para descubrir si algo ha
@@ -17269,7 +17295,7 @@ LaTeX
 \family sans
 ChkTeX
 \family default
- (normalmente 
+ (normalmente se ubica en 
 \family typewriter
 /usr/local/share/chktexrc
 \family default
@@ -18312,7 +18338,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18322,8 +18348,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18331,7 +18357,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18637,7 +18663,7 @@ man rlog
 \begin_layout Section
 Programación Literaria
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Quotes fld
@@ -18919,11 +18945,14 @@ status collapsed
 \end_inset
 
  y la Programación Literaria
+\series medium
+\size normal
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18933,8 +18962,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18942,7 +18971,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -19004,11 +19033,13 @@ status collapsed
 \end_inset
 
 
+\series medium
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -19018,16 +19049,19 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here for the PDF bookmark text because the ''
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener el carácter ''
 \begin_inset Quotes fld
 \end_inset
 
-'' character causes troubles there when the document language is Spanish
- (for an unknown reason).
+'' sin ocasionar problemas en documentos en español (por alguna razón desconocid
+a).
 \end_layout
 
 \end_inset
 
+
+\series default
 weaving and tangling
 \begin_inset Quotes frd
 \end_inset
@@ -19402,7 +19436,7 @@ literate
 , un convertidor interno se encarga de convertir el archivo LyX a Noweb
  y luego otro convertidor
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 Definido en 
@@ -19750,11 +19784,13 @@ status collapsed
 \end_inset
 
 
+\series medium
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-The command 
+El comando 
 \begin_inset Quotes fld
 \end_inset
 
@@ -19764,8 +19800,8 @@ texorpdfstring
 \begin_inset Quotes frd
 \end_inset
 
- is needed here because the PDF-bookmark text couldn't have characters below
- the baseline like the 
+ es necesario para que el texto de los marcadores del índice en la salida
+ PDF pueda contener caracteres descentrados como la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -19773,7 +19809,7 @@ y
 \begin_inset Quotes frd
 \end_inset
 
- in the output of the name 
+ en la palabra 
 \begin_inset Quotes fld
 \end_inset
 
