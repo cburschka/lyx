@@ -404,26 +404,26 @@ Puedes girar
  y un origen de rotación.
  La imagen también gira en LyX.
 \newline
-
-\lang english
-Images can be scaled by using a percentage value or by setting the width
- and height explicitly.
- If you set only the width or only the height, the other size will be determined
- automatically.
- If you set both, then the image will be transformed to the given size,
- possibly distorting it.
- To prevent the image from distortion, use the option 
+Las imágenes se pueden escalar mediante un
+ porcentaje o fijando explícitamente la altura y la anchura.
+ Si fijas solo la anchura o solo la altura, la otra dimensión se establece
+ automáticamente.
+ Si fijas ambas dimensiones
 \family sans
-Maintain aspect ratio
+,
+\family default
+ la imagen se adaptará a ellas, posiblemente distorsionada.
+ Para evitar distorsión en la imagen marca la opción 
+\family sans
+Mantener\InsetSpace ~
+proporción
 \family default
 .
- The image will then be scaled so that its width and height don't exceed
- the specified dimensions.
-\lang spanish
-
+ En ese caso la imagen será escalada de forma que su anchura y su altura
+ no excedan de las dimensiones especificadas.
 \newline
-Las imágenes se pueden abrir con un programa de tu elección pulsando el
- botón 
+Las imágenes se pueden abrir
+ con un programa de tu elección pulsando el botón 
 \family sans
 Editar
 \family default
@@ -452,12 +452,12 @@ delimitador
 \family default
  imprimirá sólo la región de la imagen comprendida en las coordenadas introducid
 as.
- Normalmente no necesitarás preocuparte por esto y puedes ignorar esta pestaña.
+ Normalmente no necesitarás preocuparte por esto y puedes ignorar esta solapa.
 \end_layout
 
 \begin_layout Description
 Opciones\InsetSpace ~
-extra En esta pestaña puedes modificar la apariencia de la imagen
+extra En esta solapa puedes modificar la apariencia de la imagen
  en LyX, y poner la imagen como subfigura de una figura flotante con su
  propio título.Las subfiguras se explican en la sección\InsetSpace ~
 
@@ -676,7 +676,7 @@ reference "sec:Colocación-de-Encabezados"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -717,7 +717,7 @@ Un platypus muy distorsionado en un flotante.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -837,7 +837,7 @@ reference "sec:Referencias-a-Flotantes"
 \begin_layout Standard
 Normalmente solo se inserta una imagen en un flotante, pero es posible que
  en alguna ocasión queramos poner dos imágenes cada una con su subtítulo.
- Esto es posible mediante la pestaña 
+ Esto es posible mediante la solapa 
 \family sans
 Opciones\InsetSpace ~
 extra
@@ -881,7 +881,7 @@ reference "fig:Dos-imágenes-distorsionadas"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -992,7 +992,8 @@ Como en el caso de las fuentes, hay dos tipos de formatos de imagen:
 Imágenes\InsetSpace ~
 Mapa\InsetSpace ~
 de\InsetSpace ~
-bits (Bitmap) consisten en valores de píxel, generalmente
+bits\InsetSpace ~
+(Bitmap) formadas por mapas de puntos (píxeles), generalmente
  comprimidos.
  Por tanto no son totalmente escalables y se ven pixeladas a valores altos
  de zoom.
@@ -1075,8 +1076,8 @@ name "JPG|see{Formatos de Imagen}"
 
 \begin_layout Description
 Imágenes\InsetSpace ~
-vectoriales consisten en vectores y por tanto pueden escalarse a
- cualquier tamaño sin pérdidas.
+vectoriales se generan mediante una descripción de una serie de
+ trazos (vectores) y por tanto pueden escalarse a cualquier tamaño sin pérdidas.
  La posibilidad de escalado hace falta para crear presentaciones, porque
  éstas siempre son escaladas por el proyector.
  El escalado también es útil en los documentoos en línea para permitir el
@@ -1184,7 +1185,7 @@ pueden ser
  En estos casos sólo se añade una cabecera con las propiedades de la imagen
  a la imagen original
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 En el caso de PDF, además se comprime la imagen original.
@@ -1491,7 +1492,7 @@ Una tabla se puede cambiar mediante el cuadro de diálogo que aparece al
 contenido
 \emph default
 .
- En el cuadro de diálogo aparecen las siguientes pestañas:
+ En el cuadro de diálogo aparecen las siguientes solapas:
 \end_layout
 
 \begin_layout Description
@@ -1568,7 +1569,7 @@ reference "sec:Tablas-Coloreadas"
 \family sans
 Bordes
 \family default
- En esta pestaña puedes añadir y quitar bordes para la fila/columna actual.
+ En esta solapa puedes añadir y quitar bordes para la fila/columna actual.
 \end_layout
 
 \begin_layout Description
@@ -2284,7 +2285,7 @@ Usar\InsetSpace ~
 tabla\InsetSpace ~
 larga
 \family default
- en la pestaña 
+ en la solapa 
 \family sans
 Tabla\InsetSpace ~
 larga
@@ -10208,8 +10209,6 @@ i
 
 \begin_layout Standard
 
-\newpage
-
 \end_layout
 
 \begin_layout Subsection
@@ -10254,7 +10253,7 @@ Tabla\SpecialChar \menuseparator
 Multicolumna
 \family default
 , o clic-derecha sobre las celdas marcadas y se selecciona en el diálogo,
- bajo la pestaña 
+ bajo la solapa 
 \family sans
 Configuración
 \family default
@@ -11281,7 +11280,7 @@ Estilo
 \family sans
 Formal
 \family default
- en la pestaña 
+ en la solapa 
 \family sans
 Bordes
 \family default
@@ -11688,7 +11687,7 @@ in % of pixel size
 
 \begin_layout Standard
 Se puede añadir espacio adicional a las filas de la tabla mediante los botones
- correspondientes que se encuentran en la pestaña 
+ correspondientes que se encuentran en la solapa 
 \family sans
 Bordes 
 \family default
@@ -14660,7 +14659,7 @@ name "Personalización de Tablas ! Espacio Adicional en Filas"
 \end_layout
 
 \begin_layout Standard
-Es posible añadir espacio vertical a las filas de una tabla en la pestaña
+Es posible añadir espacio vertical a las filas de una tabla en la solapa
  
 \family sans
 Bordes,
@@ -15512,7 +15511,7 @@ status collapsed
 
 
 \backslash
-times 
+times
 \end_layout
 
 \end_inset
@@ -15558,13 +15557,13 @@ Pixels
 \begin_layout Standard
 1024
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
 
 \backslash
-times 
+times
 \end_layout
 
 \end_inset
@@ -15610,13 +15609,13 @@ cm
 \begin_layout Standard
 32
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
 
 \backslash
-times 
+times
 \end_layout
 
 \end_inset
@@ -22020,7 +22019,7 @@ paquete
 \family sans
 AMS
 \family default
- en la pestaña 
+ en la solapa 
 \family sans
 Ecuaciones
 \family default
@@ -25731,7 +25730,7 @@ Este es el resultado:
 \begin_layout Standard
 Esto es una línea de texto con la palabra 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -25776,7 +25775,7 @@ Al subir o bajar caracteres en una línea, se modifica el espacio entre líneas:
 \begin_layout Standard
 Esto es una línea de texto con la palabra 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -27009,7 +27008,7 @@ today
  Los distintos métodos se comparan en la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "Comparación-de"
+reference "tab:Comparación-de"
 
 \end_inset
 
@@ -27138,7 +27137,7 @@ status collapsed
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -27171,7 +27170,7 @@ Comparación de los métodos de inserción de fecha.
 \begin_inset Text
 
 \begin_layout Standard
-Formato del Documento
+Tipo del Documento
 \end_layout
 
 \end_inset
@@ -27345,7 +27344,7 @@ Si utilizas la opción
 \family sans
 Borrador
 \family default
- en la pestaña 
+ en la solapa 
 \family sans
 Archivo
 \family default
@@ -27370,7 +27369,7 @@ El material externo se muestra en LyX como un cuadro del tipo:
 
 \end_inset
 
- o como imagen, según la configuración elegida en la pestaña 
+ o como imagen, según la configuración elegida en la solapa 
 \family sans
 Vista\InsetSpace ~
 LyX 
@@ -27447,8 +27446,8 @@ Cargar
 \family sans
 Documento hijo
 \family default
-, los documentos incluidos se abrirán en una nueva pestaña de archivo de
- LyX y así puedes modificarlos si quieres.
+, los documentos incluidos se abrirán en una nueva solapa de archivo en
+ la ventana de LyX y así puedes modificarlos si quieres.
 \end_layout
 
 \begin_layout Standard
