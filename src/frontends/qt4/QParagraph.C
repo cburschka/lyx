@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -15,8 +16,10 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
+#include "debug.h"
 #include "ParagraphParameters.h"
 #include "Spacing.h"
+#include "layout.h"
 
 #include "controllers/ControlParagraph.h"
 #include "controllers/helper_funcs.h"
@@ -27,6 +30,7 @@
 
 
 using std::string;
+using std::endl;
 
 namespace lyx {
 namespace frontend {
@@ -56,25 +60,7 @@ void QParagraph::apply()
 {
 	ParagraphParameters & params = controller().params();
 
-	// alignment
-	LyXAlignment align;
-	switch (dialog_->align->currentIndex()) {
-	case 0:
-		align = LYX_ALIGN_BLOCK;
-		break;
-	case 1:
-		align = LYX_ALIGN_LEFT;
-		break;
-	case 2:
-		align = LYX_ALIGN_RIGHT;
-		break;
-	case 3:
-		align = LYX_ALIGN_CENTER;
-		break;
-	default:
-		align = LYX_ALIGN_BLOCK;
-	}
-	params.align(align);
+	params.align(dialog_->getAlignmentFromDialog());
 
 	// get spacing
 	Spacing::Space linespacing = Spacing::Default;
@@ -124,26 +110,15 @@ void QParagraph::update_contents()
 	}
 
 	// alignment
-	int i;
-	switch (params.align()) {
-	case LYX_ALIGN_LEFT:
-		i = 1;
-		break;
-	case LYX_ALIGN_RIGHT:
-		i = 2;
-		break;
-	case LYX_ALIGN_CENTER:
-		i = 3;
-		break;
-	default:
-		i = 0;
-		break;
-	}
-	dialog_->align->setCurrentIndex(i);
+	LyXAlignment newAlignment = params.align();
+	LyXAlignment defaultAlignment = controller().alignDefault();
+	bool alignmentIsDefault = 
+		newAlignment == LYX_ALIGN_LAYOUT || newAlignment == defaultAlignment;
+	dialog_->alignDefaultCB->setChecked(alignmentIsDefault);
+	dialog_->checkAlignmentRadioButtons();
+	dialog_->alignmentToRadioButtons(newAlignment);
 
-
-	//LyXAlignment alignpos = controller().alignPossible();
-
+	//indentation
 	dialog_->indentCB->setChecked(!params.noindent());
 
 	// linespacing
