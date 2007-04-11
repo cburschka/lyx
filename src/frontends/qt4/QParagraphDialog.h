@@ -16,6 +16,7 @@
 
 #include "ui/QParagraphUi.h"
 
+#include <map>
 #include <QDialog>
 #include <QCloseEvent>
 #include "layout.h"
