@@ -253,7 +253,7 @@ dist_images_DATA = \
 	images/dialog-show-new-inset_ref.xpm \
 	images/dialog-show_character.xpm \
 	images/dialog-show_findreplace.xpm \
-	images/dialog-show_mathdelimiters.xpm \
+	images/dialog-show_mathdelimiter.xpm \
 	images/dialog-show_mathpanel.xpm \
 	images/dialog-show_print.xpm \
 	images/dialog-show_spellchecker.xpm \
