@@ -1522,7 +1522,6 @@ lib_images_files = Split('''
     dialog-show_character.xpm
     dialog-show_findreplace.xpm
     dialog-show_mathdelimiter.xpm
-    dialog-show_mathmatrix.xpm
     dialog-show_mathpanel.xpm
     dialog-show_print.xpm
     dialog-show_spellchecker.xpm
@@ -1553,6 +1552,7 @@ lib_images_files = Split('''
     lyx.xpm
     marginalnote-insert.xpm
     math-display.xpm
+    math-matrix.xpm
     math-mode.xpm
     math-subscript.xpm
     math-superscript.xpm

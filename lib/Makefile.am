@@ -254,7 +254,6 @@ dist_images_DATA = \
 	images/dialog-show_character.xpm \
 	images/dialog-show_findreplace.xpm \
 	images/dialog-show_mathdelimiter.xpm \
-	images/dialog-show_mathmatrix.xpm \
 	images/dialog-show_mathpanel.xpm \
 	images/dialog-show_print.xpm \
 	images/dialog-show_spellchecker.xpm \
@@ -285,6 +284,7 @@ dist_images_DATA = \
 	images/lyx.xpm \
 	images/marginalnote-insert.xpm \
 	images/math-display.xpm \
+	images/math-matrix.xpm \
 	images/math-mode.xpm \
 	images/math-subscript.xpm \
 	images/math-superscript.xpm \
