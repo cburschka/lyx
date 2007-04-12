@@ -26,7 +26,7 @@ CRCCheck force
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5svn-09-04-2007"
+!define PRODUCT_VERSION "1.5svn-xx-04-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -40,10 +40,10 @@ CRCCheck force
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 
-BrandingText "LyXWinInstaller v3.11 - Complete"
+BrandingText "LyXWinInstaller v3.12 - Complete"
 !define INSTALLER_VERSION "Complete"
-!define INSTALLER_EXE "LyXWin150svnComplete-3-11.exe"
-!define INSTALLER2_EXE "LyXWin150svnSmall-3-11.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150svnComplete-3-12.exe"
+!define INSTALLER2_EXE "LyXWin150svnSmall-3-12.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -415,7 +415,7 @@ Function un.onInit
 
   ; test if Aspell was installed together with LyX
   ReadRegStr $0 HKLM "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
-  ${if} $0 == "Yes"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    SectionSetText 2 "Aspell" ; names the corersponding uninstaller section (has the index "2" as it is the third section in Uninstall.nsh)
    StrCpy $AspellInstallYes "Aspell"
   ${else}
@@ -424,7 +424,7 @@ Function un.onInit
 
   ; test if MiKTeX was installed together with LyX
   ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
-  ${if} $0 == "Yes"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    SectionSetText 3 "MiKTeX" ; names the corersponding uninstaller section
    StrCpy $MiKTeXInstalled "MiKTeX"
   ${else}
@@ -433,7 +433,7 @@ Function un.onInit
 
   ; test if JabRef was installed together with LyX
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX"
-  ${if} $0 == "Yes"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    SectionSetText 4 "JabRef" ; names the corersponding uninstaller section
    StrCpy $JabRefInstalled "JabRef"
   ${else}

@@ -3,7 +3,7 @@ Description
 This is the readme of the variant "complete" of the LyXWinInstaller. Please read
 this file carefully to prevent troubles with the installer.
 The LyXWinInstaller installs a complete LaTeX-environment together with the
-wordprocessor "LyX" (www.lyx.org) and needed programs on Windows 2000/XP/XPx64.
+wordprocessor "LyX" (www.lyx.org) and needed programs on Windows 2000/XP/XPx64/Vista.
 ! Win95, Win98, and WinME are NOT supported. !
 
 ---
