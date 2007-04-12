@@ -17,11 +17,22 @@
 
 #include "Dialog.h"
 #include "lfuns.h" // for kb_action
+#include "lyxfont.h"
 
 #include <map>
 
 namespace lyx {
 namespace frontend {
+
+struct MathSymbol {
+	MathSymbol(char_type uc = '?', unsigned char fc = 0,
+		LyXFont::FONT_FAMILY ff = LyXFont::SYMBOL_FAMILY)
+		: unicode(uc), fontcode(fc), fontfamily(ff)
+	{}
+	char_type unicode;
+	unsigned char fontcode;
+	LyXFont::FONT_FAMILY fontfamily;
+};
 
 class ControlMath : public Dialog::Controller {
 public:
@@ -57,13 +68,13 @@ public:
 	void showDialog(std::string const & name) const;
 
 	/// \return the math unicode symbol associated to a TeX name.
-	char_type mathSymbol(std::string tex_name) const;
+	MathSymbol const & mathSymbol(std::string tex_name) const;
 	/// \return the TeX name associated to a math unicode symbol.
 	std::string const & texName(char_type math_symbol) const;
 
 private:
 	/// TeX-name / Math-symbol map.
-	std::map<std::string, char_type> math_symbols_;
+	std::map<std::string, MathSymbol> math_symbols_;
 	/// Math-symbol / TeX-name map.
 	/// This one is for fast search, it contains the same data as
 	/// \c math_symbols_.

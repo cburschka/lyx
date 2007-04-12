@@ -35,6 +35,8 @@ public Q_SLOTS:
 	void on_matchCB_stateChanged(int);
 	void insertClicked();
 private:
+	///
+	char_type doMatch(char_type const symbol) const;
 	/// owning form
 	QMathDelimiter * form_;
 };

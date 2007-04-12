@@ -37,45 +37,39 @@ ControlMath::ControlMath(Dialog & dialog)
 	// FIXME: Ideally, those unicode codepoints would be defined
 	// in "lib/symbols". Unfortunately, some of those are already 
 	// defined with non-unicode ids for use within mathed.
-	math_symbols_["("] = '(';
-	math_symbols_[")"] = ')';
-	math_symbols_["{"] = '{';
-	math_symbols_["}"] = '}';
-	math_symbols_["["] = '[';
-	math_symbols_["]"] = ']';
-	math_symbols_["|"] = '|';
-	math_symbols_["/"] = '/';
-	math_symbols_["\\"] = '\\';
-	math_symbols_["lceil"] = 0x2308;
-	math_symbols_["rceil"] = 0x2309;
-	math_symbols_["lfloor"] = 0x230A;
-	math_symbols_["rfloor"] = 0x230B;
-	math_symbols_["langle"] = 0x2329;
-	math_symbols_["rangle"] = 0x232A;
-	math_symbols_["uparrow"] = 0x2191;
-	math_symbols_["Uparrow"] = 0x21D1;
-	math_symbols_["UpArrow"] = 0x2191;
-	math_symbols_["UpArrowBar"] = 0x2912;
-	math_symbols_["UpArrowDownArrow"] = 0x21C5;
-	math_symbols_["updownarrow"] = 0x2195;
-	math_symbols_["Updownarrow"] = 0x21D5;
-	math_symbols_["UpDownArrow"] = 0x2195;
-	math_symbols_["downarrow"] = 0x2193;
-	math_symbols_["Downarrow"] = 0x21D3;
-	math_symbols_["DownArrow"] = 0x2193;
-	math_symbols_["DownArrowBar"] = 0x2913;
-	math_symbols_["DownArrowUpArrow"] = 0x21F5;
-	math_symbols_["downdownarrows"] = 0x21CA;
-	math_symbols_["downharpoonleft"] = 0x21C3;
-	math_symbols_["downharpoonright"] = 0x21C2;
-	math_symbols_["vert"] = 0x007C;
-	math_symbols_["Vert"] = 0x2016;
-	math_symbols_["Backslash"] = 0x2216;
+	// FIXME 2: We should fill-in this map with the parsed "symbols"
+	// file done in MathFactory.C.
+	math_symbols_["("] = MathSymbol('(');
+	math_symbols_[")"] = MathSymbol(')');
+	math_symbols_["{"] = MathSymbol('{');
+	math_symbols_["}"] = MathSymbol('}');
+	math_symbols_["["] = MathSymbol('[');
+	math_symbols_["]"] = MathSymbol(']');
+	math_symbols_["|"] = MathSymbol('|');
+	math_symbols_["/"] = MathSymbol('/');
+	math_symbols_["\\"] = MathSymbol('\\', 110, LyXFont::CMSY_FAMILY);
+	math_symbols_["lceil"] = MathSymbol(0x2308, 100, LyXFont::CMSY_FAMILY);
+	math_symbols_["rceil"] = MathSymbol(0x2309, 101, LyXFont::CMSY_FAMILY);
+	math_symbols_["lfloor"] = MathSymbol(0x230A, 98, LyXFont::CMSY_FAMILY);
+	math_symbols_["rfloor"] = MathSymbol(0x230B, 99, LyXFont::CMSY_FAMILY);
+	math_symbols_["langle"] = MathSymbol(0x2329, 104, LyXFont::CMSY_FAMILY);
+	math_symbols_["rangle"] = MathSymbol(0x232A, 105, LyXFont::CMSY_FAMILY);
+	math_symbols_["uparrow"] = MathSymbol(0x2191, 34, LyXFont::CMSY_FAMILY);
+	math_symbols_["Uparrow"] = MathSymbol(0x21D1, 42, LyXFont::CMSY_FAMILY);
+	math_symbols_["updownarrow"] = MathSymbol(0x2195, 108, LyXFont::CMSY_FAMILY);
+	math_symbols_["Updownarrow"] = MathSymbol(0x21D5, 109, LyXFont::CMSY_FAMILY);
+	math_symbols_["downarrow"] = MathSymbol(0x2193, 35, LyXFont::CMSY_FAMILY);
+	math_symbols_["Downarrow"] = MathSymbol(0x21D3, 43, LyXFont::CMSY_FAMILY);
+	math_symbols_["downdownarrows"] = MathSymbol(0x21CA, 184, LyXFont::MSA_FAMILY);
+	math_symbols_["downharpoonleft"] = MathSymbol(0x21C3, 188, LyXFont::MSA_FAMILY);
+	math_symbols_["downharpoonright"] = MathSymbol(0x21C2, 186, LyXFont::MSA_FAMILY);
+	math_symbols_["vert"] = MathSymbol(0x007C, 106, LyXFont::CMSY_FAMILY);
+	math_symbols_["Vert"] = MathSymbol(0x2016, 107, LyXFont::CMSY_FAMILY);
 
-	std::map<string, char_type>::const_iterator it = math_symbols_.begin();
-	std::map<string, char_type>::const_iterator end = math_symbols_.end();
+	std::map<string, MathSymbol>::const_iterator it = math_symbols_.begin();
+	std::map<string, MathSymbol>::const_iterator end = math_symbols_.end();
 	for (; it != end; ++it)
-		tex_names_[it->second] = it->first;
+		tex_names_[it->second.unicode] = it->first;
 }
 
 
@@ -141,13 +135,14 @@ void ControlMath::showDialog(string const & name) const
 }
 
 
-char_type ControlMath::mathSymbol(string tex_name) const
+MathSymbol const & ControlMath::mathSymbol(string tex_name) const
 {
-	map<string, char_type>::const_iterator it =
+	map<string, MathSymbol>::const_iterator it =
 		math_symbols_.find(tex_name);
 	
+	static MathSymbol unknown_symbol;
 	if (it == math_symbols_.end())
-		return '?';
+		return unknown_symbol;
 	
 	return it->second;
 }

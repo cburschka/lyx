@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "QDelimiterDialog.h"
+
+#include "GuiApplication.h"
 #include "QMath.h"
 
 #include "qt_helpers.h"
@@ -23,6 +25,9 @@
 #include <QListWidgetItem>
 
 #include <sstream>
+
+// Set to zero if unicode symbols are preferred.
+#define USE_PIXMAP 1
 
 using std::string;
 
@@ -41,27 +46,6 @@ char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter
 	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
 
 
-string do_match(string const & str)
-{
-	if (str == "(") return ")";
-	if (str == ")") return "(";
-	if (str == "[") return "]";
-	if (str == "]") return "[";
-	if (str == "{") return "}";
-	if (str == "}") return "{";
-	if (str == "l") return "r";
-	if (str == "rceil") return "lceil";
-	if (str == "lceil") return "rceil";
-	if (str == "rfloor") return "lfloor";
-	if (str == "lfloor") return "rfloor";
-	if (str == "rangle") return "langle";
-	if (str == "langle") return "rangle";
-	if (str == "\\") return "/";
-	if (str == "/") return "\\";
-	return str;
-}
-
-
 string fix_name(string const & str, bool big)
 {
 	if (str.empty())
@@ -76,6 +60,31 @@ string fix_name(string const & str, bool big)
 } // namespace anon
 
 
+char_type QDelimiterDialog::doMatch(char_type const symbol) const
+{
+	string const & str = form_->controller().texName(symbol);
+	string match;
+	if (str == "(") match = ")";
+	else if (str == ")") match = "(";
+	else if (str == "[") match = "]";
+	else if (str == "]") match = "[";
+	else if (str == "{") match = "}";
+	else if (str == "}") match = "{";
+	else if (str == "l") match = "r";
+	else if (str == "rceil") match = "lceil";
+	else if (str == "lceil") match = "rceil";
+	else if (str == "rfloor") match = "lfloor";
+	else if (str == "lfloor") match = "rfloor";
+	else if (str == "rangle") match = "langle";
+	else if (str == "langle") match = "rangle";
+	else if (str == "\\") match = "/";
+	else if (str == "/") match = "\\";
+	else return symbol;
+
+	return form_->controller().mathSymbol(match).unicode;
+}
+
+
 QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	: form_(form)
 {
@@ -87,16 +96,31 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	setWindowTitle(qt_("LyX: Delimiters"));
 	setFocusProxy(leftLW);
 	
+	typedef std::map<char_type, QListWidgetItem *> ListItems;
+	ListItems list_items;
 	// The last element is the empty one.
-	for (int i = 0; i < nr_latex_delimiters - 1; ++i) {
-		docstring const left_d(1,
-			form_->controller().mathSymbol(latex_delimiters[i]));
-		docstring const right_d(1,
-			form_->controller().mathSymbol(do_match(latex_delimiters[i])));
-		leftLW->addItem(toqstr(left_d));
-		rightLW->addItem(toqstr(right_d));
+	int const end = nr_latex_delimiters - 1;
+	for (int i = 0; i < end; ++i) {
+		string const delim = latex_delimiters[i];
+		MathSymbol const & ms =	form_->controller().mathSymbol(delim);
+		QString symbol(ms.fontcode?
+			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
+		QListWidgetItem * lwi = new QListWidgetItem(symbol);
+		lwi->setToolTip(toqstr(delim));
+		LyXFont lyxfont;
+		lyxfont.setFamily(ms.fontfamily);
+		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
+		lwi->setFont(symbol_font);
+		list_items[ms.unicode] = lwi;
 	}
 
+	ListItems::const_iterator it = list_items.begin();
+	ListItems::const_iterator it_end = list_items.end();
+	for (; it != it_end; ++it) {
+		leftLW->addItem(it->second);
+		rightLW->addItem(list_items[doMatch(it->first)]->clone());
+	}
+	// The last element is the empty one.
 	leftLW->addItem(qt_("(None)"));
 	rightLW->addItem(qt_("(None)"));
 
@@ -114,9 +138,9 @@ void QDelimiterDialog::insertClicked()
 	string left_str;
 	string right_str;
 	if (leftLW->currentRow() < leftLW->count() - 1)
-		left_str = form_->controller().texName(qstring_to_ucs4(leftLW->currentItem()->text())[0]);
+		left_str = fromqstr(leftLW->currentItem()->toolTip());
 	if (rightLW->currentRow() < rightLW->count() - 1)
-		right_str = form_->controller().texName(qstring_to_ucs4(rightLW->currentItem()->text())[0]);
+		right_str = fromqstr(rightLW->currentItem()->toolTip());
 
 	int const size_ = sizeCO->currentIndex();
 	if (size_ == 0) {
@@ -156,11 +180,8 @@ void QDelimiterDialog::on_leftLW_currentRowChanged(int item)
 	// Display the associated TeX name.
 	if (leftLW->currentRow() == leftLW->count() - 1)
 		texCodeL->clear();
-	else {
-		QString const str = toqstr(form_->controller().texName(
-			qstring_to_ucs4(leftLW->currentItem()->text())[0]));
-		texCodeL->setText("TeX code: \\" + str);
-	}
+	else
+		texCodeL->setText("TeX code: \\" + leftLW->currentItem()->toolTip());
 }
 
 
@@ -172,11 +193,8 @@ void QDelimiterDialog::on_rightLW_currentRowChanged(int item)
 	// Display the associated TeX name.
 	if (rightLW->currentRow() == leftLW->count() - 1)
 		texCodeL->clear();
-	else {
-		QString const str = toqstr(form_->controller().texName(
-			qstring_to_ucs4(rightLW->currentItem()->text())[0]));
-		texCodeL->setText("TeX code: \\" + str);
-	}
+	else
+		texCodeL->setText("TeX code: \\" + rightLW->currentItem()->toolTip());
 }
 
 
