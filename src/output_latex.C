@@ -349,7 +349,6 @@ TeXOnePar(Buffer const & buf,
 	// FIXME UNICODE
 	os << from_utf8(everypar);
 	bool need_par = pit->simpleTeXOnePar(buf, bparams, outerfont,
-	//                                     *encoding,
 					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
