@@ -114,7 +114,9 @@ void QParagraph::update_contents()
 	LyXAlignment defaultAlignment = controller().alignDefault();
 	bool alignmentIsDefault = 
 		newAlignment == LYX_ALIGN_LAYOUT || newAlignment == defaultAlignment;
+	dialog_->alignDefaultCB->blockSignals(true);
 	dialog_->alignDefaultCB->setChecked(alignmentIsDefault);
+	dialog_->alignDefaultCB->blockSignals(false);
 	dialog_->checkAlignmentRadioButtons();
 	dialog_->alignmentToRadioButtons(newAlignment);
 
