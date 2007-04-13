@@ -251,6 +251,7 @@ private Q_SLOTS:
 	void switch_converter();
 	void converter_changed();
 	void remove_converter();
+	void on_cacheCB_stateChanged(int state);
 
 private:
 	void updateButtons();

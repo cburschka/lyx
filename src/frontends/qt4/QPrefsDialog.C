@@ -876,16 +876,26 @@ PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(converterModifyPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(maxAgeLE, SIGNAL(textChanged(const QString&)),
+		this, SIGNAL(changed()));
+
+	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
 }
 
 
-void PrefConverters::apply(LyXRC & /*rc*/) const
+void PrefConverters::apply(LyXRC & rc) const
 {
+	rc.use_converter_cache = cacheCB->isChecked();
+	rc.converter_cache_maxage = int(maxAgeLE->text().toDouble() * 86400.0);
 }
 
 
-void PrefConverters::update(LyXRC const & /*rc*/)
+void PrefConverters::update(LyXRC const & rc)
 {
+	cacheCB->setChecked(rc.use_converter_cache);
+	QString max_age;
+	max_age.setNum(double(rc.converter_cache_maxage) / 86400.0, 'g', 6);
+	maxAgeLE->setText(max_age);
 	updateGui();
 }
 
@@ -978,6 +988,9 @@ void PrefConverters::updateButtons()
 	converterModifyPB->setEnabled(valid && known && modified);
 	converterNewPB->setEnabled(valid && !known);
 	converterRemovePB->setEnabled(known);
+
+	maxAgeLE->setEnabled(cacheCB->isChecked());
+	maxAgeLA->setEnabled(cacheCB->isChecked());
 }
 
 
@@ -1008,6 +1021,14 @@ void PrefConverters::remove_converter()
 	form_->converters().erase(from.name(), to.name());
 
 	updateGui();
+}
+
+
+void PrefConverters::on_cacheCB_stateChanged(int state)
+{
+	maxAgeLE->setEnabled(state == Qt::Checked);
+	maxAgeLA->setEnabled(state == Qt::Checked);
+	changed();
 }
 
 
