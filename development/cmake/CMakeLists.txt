@@ -68,7 +68,9 @@ endif(shared)
 
 if(UNIX)
 	if(NOT quiet)
-		set(CMAKE_VERBOSE_MAKEFILE ON)
+		set(CMAKE_VERBOSE_MAKEFILE ON CACHE TYPE STRING FORCE)
+		message(STATUS "verbose Makefile, disable with -Dquiet=1")
+		message(STATUS "")
 	endif(NOT quiet)
 	set(LYX_CXX_FLAGS -Wall)
 	if(stdlib-debug)
@@ -180,6 +182,7 @@ if(MSVC)
 	
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
+		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DDISABLEWALL=1)")
 		
 		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 			STRING(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
