@@ -8,9 +8,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>493</width>
-    <height>334</height>
+    <width>482</width>
+    <height>322</height>
    </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>1</hsizetype>
+    <vsizetype>1</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="focusPolicy" >
    <enum>Qt::NoFocus</enum>
@@ -21,15 +29,6 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="layoutWidget" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>468</width>
-     <height>301</height>
-    </rect>
-   </property>
    <layout class="QVBoxLayout" >
     <property name="margin" >
      <number>0</number>
@@ -361,7 +360,6 @@
      </layout>
     </item>
    </layout>
-  </widget>
  </widget>
  <tabstops>
   <tabstop>linespacing</tabstop>
