@@ -1486,7 +1486,7 @@ void PrefFileformats::remove_format()
 
 
 PrefLanguage::PrefLanguage(QWidget * parent)
-: PrefModule(docstring(), _("Language"), 0, parent)
+: PrefModule(_(LanguageSettings), _("Language"), 0, parent)
 {
 	setupUi(this);
 
@@ -1807,20 +1807,28 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
 
-	add(new PrefPlaintext);
-	add(new PrefDate);
-	add(new PrefKeyboard(form_));
-	add(new PrefLatex(form_));
+	add(new PrefUserInterface(form_));
 	add(new PrefScreenFonts(form_));
 	add(new PrefColors(form_));
+	add(new PrefDisplay);
+	add(new PrefKeyboard(form_));
+
+	add(new PrefPaths(form_));
+
+	add(new PrefIdentity);
+
+	add(new PrefLanguage);
+	add(new PrefSpellchecker(form_));
+
+	add(new PrefPrinter);
+	add(new PrefDate);
+	add(new PrefPlaintext);
+	add(new PrefLatex(form_));
 
 #if defined(__CYGWIN__) || defined(_WIN32)
 	add(new PrefCygwinPath);
 #endif
 
-	add(new PrefDisplay);
-	add(new PrefPaths(form_));
-	add(new PrefSpellchecker(form_));
 
 	PrefConverters * converters = new PrefConverters(form_);
 	PrefFileformats * formats = new PrefFileformats(form_);
@@ -1831,10 +1839,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	add(new PrefCopiers(form_));
 
-	add(new PrefLanguage);
-	add(new PrefPrinter);
-	add(new PrefUserInterface(form_));
-	add(new PrefIdentity);
 
 	prefsPS->setCurrentPanel(_("User interface"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
