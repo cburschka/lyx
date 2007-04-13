@@ -1318,6 +1318,10 @@ void InsetMathHull::edit(LCursor & cur, bool left)
 {
 	cur.push(*this);
 	left ? idxFirst(cur) : idxLast(cur);
+	// The inset formula dimension is not necessarily the same as the
+	// so we have to indicate to the BufferView that a metrics update
+	// is needed. 
+	cur.updateFlags(Update::Force);
 }
 
 

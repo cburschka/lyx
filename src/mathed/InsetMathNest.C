@@ -1147,9 +1147,14 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
 		bv.mouseSetCursor(cur);
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset.
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
+		// Update the cursor update flags as needed:
+		//
+		// Update::Decoration: tells to update the decoration (visual box
+		//                     corners that define the inset)/
+		// Update::FitCursor: adjust the screen to the cursor position if
+		//                    needed
+		// cur.result().update(): don't overwrite previously set flags.
+		cur.updateFlags(Update::Decoration | Update::FitCursor | cur.result().update());
 	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
 		if (cap::selection()) {
