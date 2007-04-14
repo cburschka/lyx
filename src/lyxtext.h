@@ -62,9 +62,6 @@ public:
 	///
 	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
 		LyXFont const & font);
-	///
-	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
-		LyXFont const & font, bool toggleall);
 
 	/// what you expect when pressing \<enter\> at cursor position
 	void breakParagraph(LCursor & cur, bool keep_layout = false);
