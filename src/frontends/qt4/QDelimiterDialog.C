@@ -77,8 +77,8 @@ char_type QDelimiterDialog::doMatch(char_type const symbol) const
 	else if (str == "lfloor") match = "rfloor";
 	else if (str == "rangle") match = "langle";
 	else if (str == "langle") match = "rangle";
-	else if (str == "\\") match = "/";
-	else if (str == "/") match = "\\";
+	else if (str == "backslash") match = "/";
+	else if (str == "/") match = "backslash";
 	else return symbol;
 
 	return form_->controller().mathSymbol(match).unicode;

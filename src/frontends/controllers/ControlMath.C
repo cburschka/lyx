@@ -46,8 +46,8 @@ ControlMath::ControlMath(Dialog & dialog)
 	math_symbols_["["] = MathSymbol('[');
 	math_symbols_["]"] = MathSymbol(']');
 	math_symbols_["|"] = MathSymbol('|');
-	math_symbols_["/"] = MathSymbol('/');
-	math_symbols_["\\"] = MathSymbol('\\', 110, LyXFont::CMSY_FAMILY);
+	math_symbols_["/"] = MathSymbol('/', 54, LyXFont::CMSY_FAMILY);
+	math_symbols_["backslash"] = MathSymbol('\\', 110, LyXFont::CMSY_FAMILY);
 	math_symbols_["lceil"] = MathSymbol(0x2308, 100, LyXFont::CMSY_FAMILY);
 	math_symbols_["rceil"] = MathSymbol(0x2309, 101, LyXFont::CMSY_FAMILY);
 	math_symbols_["lfloor"] = MathSymbol(0x230A, 98, LyXFont::CMSY_FAMILY);
@@ -407,7 +407,7 @@ char const *  latex_delimiters[] = {
 	"(", ")", "{", "}", "[", "]",
 	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
 	"uparrow", "Uparrow", "downarrow", "Downarrow",
-	"|", "Vert", "/", "\\", ""
+	"|", "Vert", "/", "backslash", ""
 };
 
 
