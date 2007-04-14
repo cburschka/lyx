@@ -37,7 +37,6 @@ class FuncStatus;
 class InsetBase;
 class LColor_color;
 class LCursor;
-class LyXTextClass;
 class PainterInfo;
 class Row;
 class RowMetrics;
@@ -67,7 +66,7 @@ public:
 	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
 		LyXFont const & font, bool toggleall);
 
-	/// what you expect when pressing <enter> at cursor position
+	/// what you expect when pressing \<enter\> at cursor position
 	void breakParagraph(LCursor & cur, bool keep_layout = false);
 
 	/// set layout over selection
