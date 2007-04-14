@@ -406,7 +406,7 @@ int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 char const *  latex_delimiters[] = {
 	"(", ")", "{", "}", "[", "]",
 	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
-	"uparrow", "Uparrow", "downarrow", "Downarrow",
+	"uparrow", "updownarrow", "Uparrow", "Updownarrow", "downarrow", "Downarrow",
 	"|", "Vert", "/", "backslash", ""
 };
 
