@@ -52,7 +52,7 @@ Style Itemize
   Align			Left
   AlignPossible		Left
   LabelType		Itemize
-  LabelString		*
+  LabelString		"*"
 End
 
 # Enumerate style definition
@@ -89,7 +89,7 @@ Style Description
   Align			Left
   AlignPossible		Left
   LabelType		Manual
-  LabelString		MM
+  LabelString		"MM"
 
   # label font definition
   LabelFont 
@@ -451,7 +451,7 @@ Style Bibliography
   Align			Left
   AlignPossible		Left
   LabelType		Bibliography
-  LabelString		References
+  LabelString		"References"
   LabelBottomSep    0.7
 
   # label font definition
