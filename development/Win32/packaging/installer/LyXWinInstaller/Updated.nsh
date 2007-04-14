@@ -1,0 +1,32 @@
+Function UpdateModifiedFiles
+
+ ; list with modified files
+ SetOutPath "$INSTDIR\bin"
+ File "${PRODUCT_SOURCEDIR}\bin\lyx.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\pdfclose.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\pdfopen.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\PDFView.cmd"
+ SetOutPath "$INSTDIR\Resources"
+ File "${PRODUCT_SOURCEDIR}\Resources\preferences7"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ SetOutPath "$INSTDIR\Resources\images"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\dialog-show_mathdelimiter.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\dialog-show_mathmatrix.xpm"
+ SetOutPath "$INSTDIR\Resources\images\math"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\frac.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\sqrt.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\cases.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\root.xpm"
+ SetOutPath "$INSTDIR\Resources\doc\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Extended.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
+
+FunctionEnd
+
