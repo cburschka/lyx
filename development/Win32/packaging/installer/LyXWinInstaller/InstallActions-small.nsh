@@ -223,12 +223,14 @@ Section "-Installation actions" SecInstallation
   WriteRegDWORD ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "NoModify" 0x00000001
   WriteRegDWORD ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
 
+  ; create start menu entry
   SetOutPath "$INSTDIR\bin"
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   SetOutPath "$INSTDIR"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "${PRODUCT_UNINSTALL_EXE}"
 
+  ; create desktop icon
   ${if} $CreateDesktopIcon == "true"
    SetOutPath "$INSTDIR\bin"
    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
@@ -263,13 +265,16 @@ Section "-Installation actions" SecInstallation
   ; of the configuration and to have a signal when the configuration is ready to start LyX
   ; this is important when LyX is installed together with MiKTeX or when LyX is installed for the first
   ; time on a computer, because the installation of missing LaTeX-files required by LyX could last minutes
-  ; a batch file is needed because simply calling ExecWait '"$INSTDIR\bin\python.exe" "$INSTDIR\Resources\configure.py"'
-  ; creates the config files in $INSTDIR\bin
+  ; a batch file is needed because simply calling ExecWait '"$PythonPath\python.exe" "$INSTDIR\Resources\configure.py"'
+  ; creates the config files in $PythonPath
+  ${if} $PythonPath == ""
+   StrCpy $PythonPath "$INSTDIR\bin"
+  ${endif}
   StrCpy $1 $INSTDIR 2 ; get drive letter
   FileOpen $R1 "$INSTDIR\Resources\configLyX.bat" w
-  FileWrite $R1 'cd $INSTDIR\Resources\$\r$\n\
-  		 $1$\r$\n\
-		 "$INSTDIR\bin\python.exe" configure.py'
+  FileWrite $R1 '$1$\r$\n\
+  		 cd $INSTDIR\Resources\$\r$\n\
+  		 "$PythonPath\python.exe" configure.py'
   FileClose $R1
   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexConfigInfo)"
   ExecWait '"$INSTDIR\Resources\configLyX.bat"'
