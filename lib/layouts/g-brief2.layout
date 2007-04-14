@@ -202,7 +202,7 @@ Style NameRowG
 End
 
 
-Style AdressRowA
+Style AddressRowA
   Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileA
@@ -212,7 +212,7 @@ Style AdressRowA
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AdressRowA:"
+  LabelString		"AddressRowA:"
   # label font definition
   LabelFont
     Series		Bold
@@ -221,7 +221,7 @@ Style AdressRowA
   EndFont
 End
 
-Style AdressRowB
+Style AddressRowB
   Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileB
@@ -230,7 +230,7 @@ Style AdressRowB
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AdressRowB:"
+  LabelString		"AddressRowB:"
   # label font definition
   LabelFont
     Series		Bold
@@ -239,7 +239,7 @@ Style AdressRowB
   EndFont
 End
 
-Style AdressRowC
+Style AddressRowC
   Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileC
@@ -248,7 +248,7 @@ Style AdressRowC
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AdressRowC:"
+  LabelString		"AddressRowC:"
   # label font definition
   LabelFont
     Series		Bold
@@ -257,7 +257,7 @@ Style AdressRowC
   EndFont
 End
 
-Style AdressRowD
+Style AddressRowD
   Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileD
@@ -266,7 +266,7 @@ Style AdressRowD
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AdressRowD:"
+  LabelString		"AddressRowD:"
   # label font definition
   LabelFont
     Series		Bold
@@ -275,7 +275,7 @@ Style AdressRowD
   EndFont
 End
 
-Style AdressRowE
+Style AddressRowE
   Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileE
@@ -284,7 +284,7 @@ Style AdressRowE
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AdressRowE:"
+  LabelString		"AddressRowE:"
   # label font definition
   LabelFont
     Series		Bold
@@ -293,7 +293,7 @@ Style AdressRowE
   EndFont
 End
 
-Style AdressRowF
+Style AddressRowF
   Margin		Dynamic
   LatexType		Command
   LatexName		AdressZeileF
@@ -302,7 +302,7 @@ Style AdressRowF
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		"AdressRowF:"
+  LabelString		"AddressRowF:"
   # label font definition
   LabelFont
     Series		Bold
@@ -635,7 +635,7 @@ Style BankRowF
 End
 
 
-# RetourAdresse
+# RetourAddress
 Style ReturnAddress
   Margin		Dynamic
   LatexType		Command
@@ -674,7 +674,7 @@ Style PostalComment
   EndFont
 End
    
-# Adresse
+# Address
 Style Address
   Margin		Static
   LatexType		Command
