@@ -25,7 +25,6 @@ Section -Core SecCore
   
   # The macros are defined in filelists.nsh
   # the parameters are COMMAND DIRECTORY that form command '${COMMAND} "${DIRECTORY}files"
-'
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   
