@@ -142,8 +142,10 @@ Var RunNumber
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
-;!include "TextFunc.nsh"
-;!insertmacro LineFind
+!include "TextFunc.nsh"
+!insertmacro LineFind
+!include "WordFunc.nsh"
+!insertmacro WordReplace
 
 ; Set of various macros and functions
 !include "LyXUtils.nsh"
@@ -369,13 +371,6 @@ FunctionEnd
 Function LaunchProduct
   Exec ${PRODUCT_BAT}
 FunctionEnd
-
-;--------------------------------
-
-;Function DeleteLines
-;	StrCpy $0 SkipWrite
-;	Push $0
-;FunctionEnd
 
 ;--------------------------------
 ; The Uninstaller

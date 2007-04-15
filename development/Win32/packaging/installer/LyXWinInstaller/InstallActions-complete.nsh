@@ -253,9 +253,8 @@ Section "-Installation actions" SecInstallation
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
 
   ; set the preferences file
-  ; having one preferences file that is modified to fit the needs isn't possible because the command
-  ; ${LineFind} "$INSTDIR\Resources\preferences" "" "-16:-11" "DeleteLines" ; macro from TextFunc.nsh
-  ; removes the file permissions for Users, so that it can later not be read (bug in ${LineFind} of TextFunc.nsh) 
+  ; (having one preferences file that is modified to fit the needs is possible but not easy to maintain
+  ; therefore simply delete the files that shouldn't be used)
   ; if not Acrobat or Adobe Reader is used
   ${if} $Acrobat == "None" ; clear the entries in the preferences file that define PDFViewWin7 or 8 as viewer
    Rename "$INSTDIR\Resources\preferencesGSview" "$INSTDIR\Resources\preferences"
@@ -263,12 +262,12 @@ Section "-Installation actions" SecInstallation
    Delete "$INSTDIR\Resources\preferences8"
   ${endif}
   ; if Acrobat or Adobe Reader is used
-  ${if} $Acrobat == "7" ; clear the entries in the preferences file that define PDFViewWin8 as viewer
+  ${if} $Acrobat == "7" ; used for all Acrobat (Adobe Reader) versions <= 7
    Rename "$INSTDIR\Resources\preferences7" "$INSTDIR\Resources\preferences"
    Delete "$INSTDIR\Resources\preferences8"
    Delete "$INSTDIR\Resources\preferencesGSview"
   ${endif}
-  ${if} $Acrobat == "8" ; clear the entries in the preferences filethat define PDFViewWin7 as viewer
+  ${if} $Acrobat == "8"
    Rename "$INSTDIR\Resources\preferences8" "$INSTDIR\Resources\preferences"
    Delete "$INSTDIR\Resources\preferences7"
    Delete "$INSTDIR\Resources\preferencesGSview"

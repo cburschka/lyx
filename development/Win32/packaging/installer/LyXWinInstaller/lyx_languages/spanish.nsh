@@ -113,6 +113,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'Junto con LyX se va usar la distribución de
 				     de MiKTeX con el instalador "MiKTeX Update Wizard"$\r$\n\
 				     ¿Desea comprobar ahora si hay actualizaciones de MiKTeX?'
 
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Error al intentar añadir 'path_prefix' durante la ejecución del programa de configuración"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "No se pudo crear lyx.bat"
 LangString RunConfigureFailed "${LYX_LANG}" "Error al intentar ejecutar el programa de configuración"

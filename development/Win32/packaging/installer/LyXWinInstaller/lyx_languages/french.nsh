@@ -112,7 +112,8 @@ LangString MiKTeXInfo "${LYX_LANG}" 'La distribution LaTeX "MiKTeX" sera utilisé
 				     Il est recommandé d$\'installer les mises à jour en utilisant l$\'application "MiKTeX Update Wizard"$\r$\n\
 				     avant d$\'utiliser LyX pour la première fois.$\r$\n\
 				     Voulez-vous vérifier maintenant les mises à jour de MiKTeX ?'
-				     
+
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Échec de l'allocation 'path_prefix' lors de la configuration."
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Création de lyx.bat impossible."
 LangString RunConfigureFailed "${LYX_LANG}" "Échec de la tentative de configuration initiale de LyX."

@@ -112,6 +112,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'A "MiKTeX" LaTeX-disztibúció lesz használva
 				     a LyX elsõ indítása elõtt.$\r$\n\
 				     Szeretné egy ilyen frissítést most?'
 
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Nem tudom beállítani a 'path_prefix'-et a configure parancsfájlban!"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Nem tudom letrehozni a lyx.bat fájlt."
 LangString RunConfigureFailed "${LYX_LANG}" "Nem tudom végrehajtani a configure parancsfájlt!"

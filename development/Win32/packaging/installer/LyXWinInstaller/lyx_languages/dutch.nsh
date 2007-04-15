@@ -112,7 +112,8 @@ LangString MiKTeXInfo "${LYX_LANG}" 'LyX gebruikt de LaTeX softare "MiKTeX".$\r$
 				     Het is aanbevolen MiKTeX-updates te installeren via de "MiKTeX Update Wizard"$\r$\n\
 				     voordat u LyX voor de eerste keer gebruikt.$\r$\n\
 				     Wilt u controleren of er updates voor MiKTeX beschikbaar zijn?'
-				     
+
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Mislukte poging om 'path_prefix' te registreren tijdens de configuratie"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "lyx.bat kon niet worden aangemaakt"
 LangString RunConfigureFailed "${LYX_LANG}" "Mislukte configuratie poging"

@@ -68,10 +68,12 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME} ${PRODUCT_VERSION}"
 Var LatexPath
 Var EditorPath
 Var PythonPath
+Var ImageMagickPath
 Var PathPrefix
 Var Answer
 Var UserName
 Var CreateDesktopIcon
+Var FileAssociation
 Var StartmenuFolder
 Var ProductRootKey
 Var AppPre
@@ -89,12 +91,18 @@ Var INSTDIR_NEW
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
-
+!include "TextFunc.nsh"
+!insertmacro LineFind
 !include "WordFunc.nsh"
 !insertmacro WordReplace
 
 ; Set of various macros and functions
 !include "LyXUtils.nsh"
+
+; Use the Abiword macros to help set up associations with the file extension in the Registry.
+; Grabbed from
+; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
+!include "abi_util_fileassoc.nsh"
 
 ; list with modified files
 !include "Updated.nsh"
@@ -304,8 +312,11 @@ Section "-Installation actions" SecInstallation
   
   ; delete old registry entries
   DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY_OLD}"
-  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY_OLD}"
+  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
   DeleteRegKey HKCR "Applications\lyx.bat"
+  ; remove extension .lyx
+  ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
+  DeleteRegKey HKCR "${PRODUCT_NAME}"
   
   ; determine the new name of the install location,
   ; only when the user has used the default path settings of the previous LyX-version
@@ -314,6 +325,7 @@ Section "-Installation actions" SecInstallation
   StrLen $3 $String
   Call StrPoint ; search the LaTeXPath for the phrase "${PRODUCT_VERSION_OLD}" (function from LyXUtils.nsh)
   ${if} $Pointer != "-1" ; if something was found
+  
    IntOp $Pointer $Pointer - 1 ; jump before the first "\" of "\${PRODUCT_VERSION_OLD}"
    StrCpy $String $String "$Pointer" ; $String is now the part before "\${PRODUCT_VERSION_OLD}"
    ; rename the installation folder by copying LyX files
@@ -323,17 +335,26 @@ Section "-Installation actions" SecInstallation
    ; delete the old folder
    RMDir /r $INSTDIR
    StrCpy $INSTDIR $INSTDIR_NEW
-   ; read the PATH_PREFIX
-   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" r
+   
+   ; set new PATH_PREFIX in the file lyxrc.dist
+   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" a
    FileRead $R1 $PathPrefix
    ${WordReplace} $PathPrefix "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $PathPrefix
-   FileClose $R1
-   ; set the PATH_PREFIX according to the new folder
-   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
    FileSeek $R1 0 ; set file pointer to the beginning
-   FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n' ; overwrite the existing path with the actual one
+   FileWrite $R1 '$PathPrefix' ; overwrite the existing path with the actual one
    FileClose $R1
-  ${endif}
+   
+   ; set the new path to the preferences files for all users
+   Call CheckAppPathPreferences ; Function from LyXUtils.nsh
+   
+   ; set new path to ImageMagick
+   ReadRegStr $ImageMagickPath SHCTX "SOFTWARE\Classes\Applications" "AutoRun"
+   ${if} $ImageMagickPath != ""
+    ${WordReplace} $ImageMagickPath "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $ImageMagickPath ; macro from WordFunc.nsh
+    WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" "$ImageMagickPath"
+   ${endif}
+      
+  ${endif} ; end ${if} $Pointer != "-1" (if the folder is renamed)
   
   ; register LyX
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
@@ -350,7 +371,8 @@ Section "-Installation actions" SecInstallation
   WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoModify" 0x00000001
   WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
  
-  ; create start menu entry  
+  ; create start menu entry
+  MessageBox MB_OK "$SMPROGRAMS\$StartmenuFolder"
   SetOutPath "$INSTDIR\bin"
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
@@ -361,6 +383,13 @@ Section "-Installation actions" SecInstallation
   ${if} $CreateDesktopIcon == "true"
    SetOutPath "$INSTDIR\bin"
    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
+  ${endif}
+  
+  ; register the extension .lyx
+  ReadRegStr $FileAssociation HKCR "LyX\shell\open\command" ""
+  ${if} $CreateFileAssociations != ""
+   ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
+   ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
   ${endif}
 
   ; test if Python is installed
@@ -388,7 +417,7 @@ Section "-Installation actions" SecInstallation
   FileClose $R1
   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexConfigInfo)"
   ExecWait '"$INSTDIR\Resources\configLyX.bat"'
-  ;Delete "$INSTDIR\Resources\configLyX.bat"
+  Delete "$INSTDIR\Resources\configLyX.bat"
 
 SectionEnd
 

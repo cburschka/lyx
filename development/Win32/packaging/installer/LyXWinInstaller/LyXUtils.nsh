@@ -1,38 +1,42 @@
-# This script contains the following functions:
-#
-# - LaTeXCheck (check installed LaTeX-system), uses:
-#    StrPointer
-#    StrPoint
-#    RevStrPointer
-#    RevStrPoint
-#
-# - un.DelAppPathSub and UnAppPreSuff, (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
-#    un.GetParent
-#    un.GetUsers
-#    un.StrPoint
-#    StrPointer
-#    StrPoint
-#    UnAppPreSuff
-#
-# - CreateAppPathSub and AppPreSuff, (creates the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
-#    GetParent
-#    GetUsers
-#    StrPointer
-#    StrPoint
-#    UnAppPreSuff
-#
-# - IsUserAdmin (checks if user is admin)
-#
-# - FileCheck (checks if a given file exists)
-#
-# - EditorCheck (check for installed editors)
-#
-#--------------------------
+; This script contains the following functions:
+;
+; - LaTeXCheck (check installed LaTeX-system), uses:
+;    StrPointer
+;    StrPoint
+;    RevStrPointer
+;    RevStrPoint
+;
+; - un.DelAppPathSub and UnAppPreSuff, (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
+;    un.GetParentA
+;    un.GetUsers
+;    un.StrPoint
+;    StrPointer
+;    StrPoint
+;    UnAppPreSuff
+;
+; - CreateAppPathSub and AppPreSuff, (creates the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
+;    GetParentA
+;    GetUsers
+;    StrPointer
+;    StrPoint
+;    UnAppPreSuff
+;
+; - CheckAppPathPreferences (replaces the old install folder name with the new one in the preferences files)
+;                           (used by Update installer), uses:
+;    ReplaceLineContent
+;
+; - IsUserAdmin (checks if user is admin)
+;
+; - FileCheck (checks if a given file exists)
+;
+; - EditorCheck (check for installed editors)
+;
+;--------------------------
 
 !macro StrPointer FindStr SearchStr Pointer
- # searches for a string/character (SearchStr) in another string (FindStr)
- # and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
- # if nothing was found or the search is impossible the Pointer is set to -1
+ ; searches for a string/character (SearchStr) in another string (FindStr)
+ ; and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
+ ; if nothing was found or the search is impossible the Pointer is set to -1
  
  StrLen $R2 ${SearchStr}
  StrLen $R4 ${FindStr}
@@ -57,18 +61,18 @@
 
 !macroend
  
-#--------------------------------
+;--------------------------------
 
 Function StrPoint
  !insertmacro StrPointer $String $Search $Pointer
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 !macro RevStrPointer FindStr SearchStr Pointer
- # searches for a string/character (SearchStr) in another string (FindStr) in reverse order
- # and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
- # if nothing was found or the search is impossible the Pointer is set to +1
+ ; searches for a string/character (SearchStr) in another string (FindStr) in reverse order
+ ; and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
+ ; if nothing was found or the search is impossible the Pointer is set to +1
  
  StrLen $R2 ${SearchStr}
  StrLen $R4 ${FindStr}
@@ -93,19 +97,19 @@ FunctionEnd
 
 !macroend
  
-#--------------------------------
+;--------------------------------
 
 Function RevStrPoint
  !insertmacro RevStrPointer $String $Search $Pointer
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 !macro AppPreSuff AppPre AppSuff
- # the APPDATA path has always the following structure:
- # C:\Documents and Settings\username\Application Data
- # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
- # and the "Application Data" substring into the variable "AppSuff"
+ ; the APPDATA path has always the following structure:
+ ; C:\Documents and Settings\username\Application Data
+ ; this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
+ ; and the "Application Data" substring into the variable "AppSuff"
   
   StrCpy $String "$APPDATA"
   StrCpy $Search "\"
@@ -124,11 +128,11 @@ FunctionEnd
 
 !macroend
 
-#--------------------------------
+;--------------------------------
 
-Function GetParent
- # deletes a subfolder of the APPDATA path for all users
- # used by the function "un.getUsers"
+Function GetParentA
+ ; deletes a subfolder of the APPDATA path for all users
+ ; used by the function "un.getUsers"
 
   Exch $R0
   Push $R1
@@ -151,14 +155,14 @@ Function GetParent
    
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 Function GetUsers
- # reads the subfolders of the "Documents and Settings" folder to get a list of the users
+ ; reads the subfolders of the "Documents and Settings" folder to get a list of the users
 
   StrCpy $R3 ""
   Push "$PROFILE"
-  Call GetParent  
+  Call GetParentA  
   Pop $R2
   StrCpy $R2 "$R2"
   FindFirst $R0 $R1 "$R2\*"
@@ -181,11 +185,11 @@ Function GetUsers
   
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
-Function un.GetParent
- # deletes a subfolder of the APPDATA path for all users
- # used by the function "un.getUsers"
+Function un.GetParentA
+ ; deletes a subfolder of the APPDATA path for all users
+ ; used by the function "un.getUsers"
 
   Exch $R0
   Push $R1
@@ -208,14 +212,14 @@ Function un.GetParent
    
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 Function un.GetUsers
- # reads the subfolders of the "Documents and Settings" folder to get a list of the users
+ ; reads the subfolders of the "Documents and Settings" folder to get a list of the users
 
   StrCpy $R3 ""
   Push "$PROFILE"
-  Call un.GetParent  
+  Call un.GetParentA  
   Pop $R2
   StrCpy $R2 "$R2"
   FindFirst $R0 $R1 "$R2\*"
@@ -238,19 +242,19 @@ Function un.GetUsers
   
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 Function un.StrPoint
  !insertmacro StrPointer $String $Search $Pointer
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 !macro UnAppPreSuff AppPre AppSuff
- # the APPDATA path has always the following structure:
- # C:\Documents and Settings\username\Application Data
- # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
- # and the "Application Data" substring into the variable "AppSuff"
+ ; the APPDATA path has always the following structure:
+ ; C:\Documents and Settings\username\Application Data
+ ; this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
+ ; and the "Application Data" substring into the variable "AppSuff"
   
   StrCpy $String "$APPDATA"
   StrCpy $Search "\"
@@ -269,12 +273,12 @@ FunctionEnd
 
 !macroend
 
-#--------------------------------
+;--------------------------------
 
 Function un.DelAppPathSub
- # deletes a subfolder of the APPDATA path for all users
+ ; deletes a subfolder of the APPDATA path for all users
 
-  # get list of all users
+  ; get list of all users
   Push $R0
   Push $R1
   Push $R2
@@ -286,7 +290,7 @@ Function un.DelAppPathSub
   Pop $R1
   Pop $R0
   
-  # the usernames in the list of all users is separated by "|"
+  ; the usernames in the list of all users is separated by "|"
   loop:
    StrCpy $String "$UserList"
    StrCpy $Search "|"
@@ -295,8 +299,8 @@ Function un.DelAppPathSub
    StrCpy $0 $UserList $Pointer ; $0 contains now the username
    IntOp $Pointer $Pointer + 1 ; jump after the "|"
    StrCpy $UserList $UserList "" $Pointer ; cut off the first username in the list
-   # generate the string for the current user
-   # AppPre and AppSuff are generated in the macro "AppPreSuff"
+   ; generate the string for the current user
+   ; AppPre and AppSuff are generated in the macro "AppPreSuff"
    StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
    RMDir /r $AppPath ; delete the folder
   Goto loop
@@ -307,15 +311,15 @@ Function un.DelAppPathSub
   
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
 
 Function CreateAppPathSub
- # creates a subfolder of the APPDATA path for all users
+ ; creates a subfolder of the APPDATA path for all users
 
-  # get folder names
+  ; get folder names
   !insertmacro AppPreSuff $AppPre $AppSuff
 
-  # get list of all users
+  ; get list of all users
   Push $R0
   Push $R1
   Push $R2
@@ -327,22 +331,23 @@ Function CreateAppPathSub
   Pop $R1
   Pop $R0
   
-  # the usernames in the list of all users is separated by "|"
+  ; the usernames in the list of all users is separated by "|"
   loop:
    StrCpy $String "$UserList"
    StrCpy $Search "|"
    Call StrPoint ; search for the "|"
-   StrCmp $Pointer "-1" ready
+   StrCmp $Pointer "-1" ready ; the loop is finished when no "|" could be found
    StrCpy $0 $UserList $Pointer ; $0 contains now the username
    IntOp $Pointer $Pointer + 1 ; jump after the "|"
    StrCpy $UserList $UserList "" $Pointer ; cut off the first username in the list
-   # generate the string for the current user
-   # AppPre and AppSuff are generated in the macro "AppPreSuff"
+   ; generate the string for the current user
+   ; AppPre and AppSuff are generated in the macro "AppPreSuff"
    StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
    CreateDirectory $AppPath ; create the folder
    CopyFiles "$INSTDIR\Resources\session" "$AppPath"
   Goto loop
   ready:
+  ; now do the same for the last user name
   StrCpy $0 $UserList
   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
   CreateDirectory $AppPath ; create the folder
@@ -351,7 +356,69 @@ Function CreateAppPathSub
   
 FunctionEnd
 
-#--------------------------------
+;--------------------------------
+
+Function ReplaceLineContent
+ ; replaces "${PRODUCT_VERSION_OLD}" with "LyX ${PRODUCT_VERSION}"
+
+ ${WordReplace} '$R9' "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" '$R9' ; macro from WordFunc.nsh
+ Push $0
+ 
+FunctionEnd
+
+;--------------------------------
+
+Function CheckAppPathPreferences
+ ; modify the preferences file for all users
+
+  ; get folder names
+  !insertmacro AppPreSuff $AppPre $AppSuff
+
+  ; get list of all users
+  Push $R0
+  Push $R1
+  Push $R2
+  Push $R3
+  Call GetUsers
+  StrCpy $UserList $R3 "" 1 ; cut off the "|" at the end of the list
+  Pop $R3
+  Pop $R2
+  Pop $R1
+  Pop $R0
+  
+  ; the usernames in the list of all users is separated by "|"
+  loop:
+   StrCpy $String "$UserList"
+   StrCpy $Search "|"
+   Call StrPoint ; search for the "|"
+   StrCmp $Pointer "-1" ready ; the loop is finished when no "|" could be found
+   StrCpy $0 $UserList $Pointer ; $0 contains now the username
+   IntOp $Pointer $Pointer + 1 ; jump after the "|"
+   StrCpy $UserList $UserList "" $Pointer ; cut off the first username in the list
+   ; generate the string for the current user
+   ; AppPre and AppSuff are generated in the macro "AppPreSuff"
+   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
+   ; read the preferences file to test if it exists
+   FileOpen $R1 "$AppPath\preferences" r
+   IfErrors doneA
+   FileClose $R1
+   ; search for "${PRODUCT_VERSION_OLD}" and replace it with "LyX ${PRODUCT_VERSION}"
+   ${LineFind} "$AppPath\preferences" "" "1:-1" "ReplaceLineContent" ; macro from TextFunc.nsh
+   doneA:
+  Goto loop
+  ready:
+  ; now do the same for the last user name
+  StrCpy $0 $UserList
+  StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
+  FileOpen $R1 "$AppPath\preferences" r
+  IfErrors doneB
+  FileClose $R1
+  ${LineFind} "$AppPath\preferences" "" "1:-1" "ReplaceLineContent"
+  doneB:
+  
+FunctionEnd
+
+;--------------------------------
 
 !macro IsUserAdmin Result Name
 
@@ -375,10 +442,10 @@ FunctionEnd
 
 !macroend
 
-#--------------------------------
+;--------------------------------
 
 !macro FileCheck Result FileName FilePath
- # checks if a file exists, returns "True" or "False"
+ ; checks if a file exists, returns "True" or "False"
 
  Push $0
  Push $1
@@ -397,11 +464,11 @@ FunctionEnd
 
 !macroend
 
-#------------------------------------------
+;------------------------------------------
 
 Function LaTeXCheck
- # searches the string "$Search" in the string "$String" and extracts the path around it
- # the extracted path is checked if the file "latex.exe" is in it
+ ; searches the string "$Search" in the string "$String" and extracts the path around it
+ ; the extracted path is checked if the file "latex.exe" is in it
 
    StartCheck:
    StrLen $3 $String
@@ -425,7 +492,7 @@ Function LaTeXCheck
     StrCpy $String $String $Pointer
    ${endif}
    StrCpy $LatexPath "$LatexPath$String"
-   # check if the latex.exe exists in the $LatexPath folder
+   ; check if the latex.exe exists in the $LatexPath folder
    !insertmacro FileCheck $5 "latex.exe" "$LatexPath"
    ${if} $5 == "False" ; delete the entry with the wrong path to the latex.exe and try again
     StrCpy $LatexPath ""
@@ -441,88 +508,88 @@ Function LaTeXCheck
 
 FunctionEnd
 
-#------------------------------------------
+;------------------------------------------
 
 Function EditorCheck
 
-  # test if an editor with syntax-highlighting for LaTeX-files is installed
-  # (check for jEdit, PSPad, WinShell, ConTEXT, Crimson Editor, Vim, TeXnicCenter, LaTeXEditor, WinEdt, LEd, WinTeX)
+  ; test if an editor with syntax-highlighting for LaTeX-files is installed
+  ; (check for jEdit, PSPad, WinShell, ConTEXT, Crimson Editor, Vim, TeXnicCenter, LaTeXEditor, WinEdt, LEd, WinTeX)
   StrCpy $EditorPath ""
   StrCpy $0 ""
-  # check for jEdit
+  ; check for jEdit
   ReadRegStr $EditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\jEdit_is1" "InstallLocation"
   ${if} $EditorPath != ""
    StrCpy $EditorPath $EditorPath -1 ; remove "\" from the end of the string
   ${endif}
-  # check for PSPad
+  ; check for PSPad
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PSPad editor_is1" "InstallLocation"
   ${if} $0 != ""
    StrCpy $0 $0 -1
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for WinShell
+  ; check for WinShell
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinShell_is1" "InstallLocation"
   ${if} $0 != ""
    StrCpy $0 $0 -1
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for ConTEXT
+  ; check for ConTEXT
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ConTEXTEditor_is1" "InstallLocation"
   ${if} $0 != ""
    StrCpy $0 $0 -1
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for Crimson Editor
+  ; check for Crimson Editor
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Crimson Editor" "UninstallString"
   ${if} $0 != ""
    StrCpy $0 $0 -14 ; remove "\uninstall.exe"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for Vim 6.x
+  ; check for Vim 6.x
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Classes\Applications\gvim.exe\shell\edit\command" ""
   ${if} $0 != ""
    StrCpy $0 $0 -13 ; remove "gvim.exe "%1""
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for Vim 7.0
+  ; check for Vim 7.0
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Vim 7.0" "UninstallString"
   ${if} $0 != ""
    StrCpy $0 $0 -18 ; remove "\uninstall-gui.exe"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for TeXnicCenter
+  ; check for TeXnicCenter
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXnicCenter_is1" "Inno Setup: App Path"
   ${if} $0 != ""
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for LaTeXEditor
+  ; check for LaTeXEditor
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\LaTeX Editor" "InstallLocation"
   ${if} $0 != ""
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for WinEdt
+  ; check for WinEdt
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinEdt_is1" "InstallLocation"
   ${if} $0 != ""
    StrCpy $0 $0 -1
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for LEd
+  ; check for LEd
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\LEd_is1" "InstallLocation"
   ${if} $0 != ""
    StrCpy $0 $0 -1
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for WinTeX
+  ; check for WinTeX
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinTeX XP" "DisplayIcon"
   ${if} $0 != ""
