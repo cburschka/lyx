@@ -1,10 +1,10 @@
-# Language settings for the installer
-# create language code for the Windows system language
+; Language settings for the installer
+; create language code for the Windows system language
 
-# LangNme is the language name when there exists a LyX translation for this language; used for the menu language dialog and for the Aspell installation
-# LangNmeSys is the Windows system language; used for the Aspell installation
-# LangCdeSys is the ISO 630 language code of the language; used for the Aspell installation
-# LangSysEnc is the Windows codepage for the character encoding of the language; used in lyx.bat to assure that scripts are correctly executed
+; LangNme is the language name when there exists a LyX translation for this language; used for the menu language dialog and for the Aspell installation
+; LangNmeSys is the Windows system language; used for the Aspell installation
+; LangCdeSys is the ISO 630 language code of the language; used for the Aspell installation
+; LangSysEnc is the Windows codepage for the character encoding of the language; used in lyx.bat to assure that scripts are correctly executed
 !macro TranslateLangCode LangNme LangNmeSys LangCdeSys LangISOCode LangSysEnc
 
  StrCpy ${LangCdeSys} ""
@@ -27,11 +27,11 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1028
-#   StrCpy ${LangCdeSys} "zh"
-#   StrCpy ${LangNmeSys} "Chinese"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 1028
+;   StrCpy ${LangCdeSys} "zh"
+;   StrCpy ${LangNmeSys} "Chinese"
+;  ${endif}
 
   ${if} ${LangISOCode} = 1029
    StrCpy ${LangNme} "Ceština"
@@ -114,17 +114,17 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1041
-#   StrCpy ${LangCdeSys} "ja"
-#   StrCpy ${LangNmeSys} "Japanese"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 1041
+;   StrCpy ${LangCdeSys} "ja"
+;   StrCpy ${LangNmeSys} "Japanese"
+;  ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1042
-#   StrCpy ${LangCdeSys} "ko"
-#   StrCpy ${LangNmeSys} "Korean"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 1042
+;   StrCpy ${LangCdeSys} "ko"
+;   StrCpy ${LangNmeSys} "Korean"
+;  ${endif}
 
   ${if} ${LangISOCode} = 1043
    StrCpy ${LangNme} "Nederlands"
@@ -181,12 +181,12 @@
    StrCpy ${LangSysEnc} "1250"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1052
-#   StrCpy ${LangCdeSys} "sq"
-#   StrCpy ${LangNmeSys} "Shqip"
-#   StrCpy ${LangSysEnc} "1252"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 1052
+;   StrCpy ${LangCdeSys} "sq"
+;   StrCpy ${LangNmeSys} "Shqip"
+;   StrCpy ${LangSysEnc} "1252"
+;  ${endif}
 
   ${if} ${LangISOCode} = 1053
    StrCpy ${LangNme} "Svenska"
@@ -195,12 +195,12 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1054
-#   StrCpy ${LangCdeSys} "th"
-#   StrCpy ${LangNmeSys} "Thai"
-#   StrCpy ${LangSysEnc} "874"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 1054
+;   StrCpy ${LangCdeSys} "th"
+;   StrCpy ${LangNmeSys} "Thai"
+;   StrCpy ${LangSysEnc} "874"
+;  ${endif}
 
   ${if} ${LangISOCode} = 1055
    StrCpy ${LangNme} "Türkçe"
@@ -240,7 +240,7 @@
    StrCpy ${LangSysEnc} "1257"
   ${endif}
 
-  # currently no dictionary available
+  ; currently no dictionary available
   ${if} ${LangISOCode} = 1069
    StrCpy ${LangNme} "Euskara"
    StrCpy ${LangCdeSys} "eu"
@@ -254,11 +254,11 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1081
-#   StrCpy ${LangCdeSys} "hi"
-#   StrCpy ${LangNmeSys} "Hindi"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 1081
+;   StrCpy ${LangCdeSys} "hi"
+;   StrCpy ${LangNmeSys} "Hindi"
+;  ${endif}
 
   ${if} ${LangISOCode} = 1110
    StrCpy ${LangNme} "Galego"
@@ -267,11 +267,11 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 2052
-#   StrCpy ${LangCdeSys} "zh"
-#   StrCpy ${LangNmeSys} "Chinese"
-#  ${endif}
+; currently no dictionary available
+;  ${if} ${LangISOCode} = 2052
+;   StrCpy ${LangCdeSys} "zh"
+;   StrCpy ${LangNmeSys} "Chinese"
+;  ${endif}
 
   ${if} ${LangISOCode} = 2055
    StrCpy ${LangCdeSys} "de"
@@ -421,9 +421,9 @@
 
 !macroend
 
-#------------------------------------------
+;------------------------------------------
 
-# Setting LyX's menu language
+; Setting LyX's menu language
 
 !macro GetLangCode LangCde Name LangEnc
 
@@ -529,13 +529,13 @@
 
 !macroend
 
-#--------------------
+;--------------------
 Function SelectMenuLanguage
 
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_ui_language.ini"
 
   ${if} $LangName == ""
-   # translate NSIS's language code to the language name; macro from lyx_utils.nsh
+   ; translate NSIS's language code to the language name ; macro from lyx_utils.nsh
    !insertmacro TranslateLangCode $LangName $LangNameSys $LangCodeSys $Language $LangSysEncoding
   ${endif}
 
@@ -555,9 +555,9 @@ FunctionEnd
 Function SelectMenuLanguage_LeaveFunction
 
   !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
-  # Get the language code; macro from lyx_utils.nsh
+  ; Get the language code
   StrCpy $LangCode ""
-  !insertmacro GetLangCode $LangCode $LangName $LangEncoding
+  !insertmacro GetLangCode $LangCode $LangName $LangEncoding ; macro from lyx_utils.nsh
 
 FunctionEnd
 

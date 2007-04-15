@@ -1,7 +1,7 @@
 Function LatexFolder
 
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_latex.ini"
-  # generate the installer page
+  ; generate the installer page
   !insertmacro MUI_HEADER_TEXT "$(EnterLaTeXHeader1)" "$(EnterLaTeXHeader2)"
   ${if} $LatexName != ""
    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_latex.ini" "Field 1" "Text" "$(EnterLaTeXFolder)"
@@ -24,7 +24,7 @@ Function LatexFolder
    Goto ReadyFolder
   ${endif}
   !insertmacro MUI_INSTALLOPTIONS_READ "$LatexPath" "io_latex.ini" "Field 3" "State"
-  # check if the latex.exe exists in the $LatexPath folder
+  ; check if the latex.exe exists in the $LatexPath folder
   !insertmacro FileCheck $5 "latex.exe" "$LatexPath"
   ${if} $5 == "False"
    MessageBox MB_RETRYCANCEL "$(InvalidLaTeXFolder)" IDRETRY AgainFolder
