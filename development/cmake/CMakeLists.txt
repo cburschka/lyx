@@ -34,15 +34,18 @@ include(LyXPaths)
 include(LyXMacros)
 include(ProjectSourceGroup)
 
-if(merge OR MERGE_FILES)
-	if(NOT MERGE_FILES)
-		set(MERGE_FILES TRUE CACHE TYPE STRING FORCE)
-	endif(NOT MERGE_FILES)
+if(merge)
+	set(merge 1 CACHE TYPE STRING FORCE)
+	set(MERGE_FILES 1 CACHE TYPE STRING FORCE)
 	message(STATUS "")
-	message(STATUS "will merge all *.C files of a project into two files")
+	message(STATUS "will merge all *.C files of a project into two files, disable with -Dmerge=0")
 	message(STATUS "")
 	set(disable-pch  1)
-endif(merge OR MERGE_FILES)	
+else(merge)
+	set(merge 0 CACHE TYPE STRING FORCE)
+	set(MERGE_FILES 0 CACHE TYPE STRING FORCE)
+	message(STATUS "enable merging files with -Dmerge=1")
+endif(merge)	
 
 
 set(CMAKE_BUILD_TYPE)
@@ -170,19 +173,13 @@ else(MSVC AND NOT disable-pch)
 	endmacro(lyx_add_msvc_pch)
 endif(MSVC AND NOT disable-pch)
 
-if(MSVC)
+if(MSVC)	
 	if(WALL)
 		set(WALL 1 CACHE TYPE STRING FORCE)
-		set(DISABLEWALL 0 CACHE TYPE STRING FORCE)
-	else(WALL)
-		set(DISABLEWALL 1 CACHE TYPE STRING FORCE)
-	endif(WALL)
-	
-	if(NOT DISABLEWALL)
-	
+		
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
-		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DDISABLEWALL=1)")
+		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DWALL=0)")
 		
 		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 			STRING(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
@@ -205,9 +202,9 @@ if(MSVC)
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		
-	else(NOT DISABLEWALL)	
-	
-		set(DISABLEWALL 1 CACHE TYPE STRING FORCE)
+	else(WALL)	
+		set(WALL 0 CACHE TYPE STRING FORCE)
+		
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
 		set(WARNING_LEVEL_MESSAGE "(switch to warning level 4 with -DWALL=1)")
 	
@@ -220,7 +217,7 @@ if(MSVC)
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		
-	endif(NOT DISABLEWALL)
+	endif(WALL)
 	
 	message("----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
 	message("----- Warnings as errors : ${MSVC_W_ERROR}")
