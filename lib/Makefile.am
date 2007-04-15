@@ -210,7 +210,7 @@ dist_examples_DATA = \
 	examples/splash.lyx \
 	examples/g-brief2.lyx
 
-binddir = $(pkgdatadir)/fonts
+fontsdir = $(pkgdatadir)/fonts
 dist_fonts_DATA = \
 	fonts/BaKoMaFontLicense.txt \
 	fonts/cmex10.ttf \
