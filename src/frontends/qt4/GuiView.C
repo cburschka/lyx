@@ -260,10 +260,11 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	if (view()->buffer()) {
 		// save cursor position for opened files to .lyx/session
+		// only bottom (whole doc) level pit and pos is saved.
 		LyX::ref().session().lastFilePos().save(
 			FileName(buffer()->fileName()),
-			boost::tie(view()->cursor().pit(),
-			view()->cursor().pos()));
+			boost::tie(view()->cursor().bottom().pit(),
+			view()->cursor().bottom().pos()));
 	}
 
 	// this is the place where we leave the frontend.

@@ -2040,9 +2040,6 @@ void LyXFunc::doImport(string const & argument)
 
 void LyXFunc::closeBuffer()
 {
-	// save current cursor position
-	LyX::ref().session().lastFilePos().save(FileName(lyx_view_->buffer()->fileName()),
-		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 	// goto bookmark to update bookmark pit.
 	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
 		gotoBookmark(i+1, false, false);

@@ -168,8 +168,12 @@ void BufferView::setBuffer(Buffer * b)
 				const_cast<BookmarksSection::Bookmark &>(bm).setPos(new_pit, new_id);
 		}
 		// current buffer is going to be switched-off, save cursor pos
+		// Ideally, the whole cursor stack should be saved, but session
+		// currently can only handle bottom (whole document) level pit and pos.
+		// That is to say, if a cursor is in a nested inset, it will be
+		// restore to the left of the top level inset.
 		LyX::ref().session().lastFilePos().save(FileName(buffer_->fileName()),
-			boost::tie(cursor_.pit(), cursor_.pos()) );
+			boost::tie(cursor_.bottom().pit(), cursor_.bottom().pos()) );
 	}
 
 	// If we're quitting lyx, don't bother updating stuff
