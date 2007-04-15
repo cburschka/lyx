@@ -1,0 +1,43 @@
+
+
+      BaKoMa Fonts for LyX-Win
+
+      ==============================
+
+
+      ANY DISTRIBUTION OF ONE OF THESE FONTS MUST INCLUDE
+      THIS README FILE.
+
+
+      The fonts included in this package are intended for the
+      Windows Version of LyX.
+
+      The purpose is to solve some problems with the display of
+      math symbols that appear with the latex-XFT fonts.
+
+      The fonts included in this package are taken from
+
+      http://www.ctan.org/tex-archive/fonts/cm/ps-type1/bakoma/ttf/
+
+      and have been modified for use with LyX. 
+      The changes made are simple remappings of glyphs. These mappings
+      are:
+
+      cmsy10.ttf   char 8728 mapped to char 183 (\leq)
+      cmsy10.ttf   char  196 mapped to char 127 (\spadesuit)
+      msbm10.ttf   char 8728 mapped to char 183 (\nleqq)
+      msbm10.ttf   char  196 mapped to char 127 (\backepsilon)
+      cmmi10.ttf   char 8728 mapped to char 183 (\kapp)
+      msam10.ttf   char  196 mapped to char 127 (\circleddash)
+      msam10.ttf   char 8728 mapped to char 183 (\uparrows)
+      
+       
+      The mappings do not change any glyph but make the glyphs mentioned 
+      available under new codes, too. So the functionality of the fonts 
+      will not be affected in any other application.
+
+      In all respects, the terms of the license
+      
+      ftp://tug.ctan.org/pub/tex-archive/fonts/cm/ps-type1/bakoma/LICENCE
+
+      apply.

@@ -2152,14 +2152,6 @@ if build_install:
     dirs = []
     for (dir,files) in [
             ('.', lib_files),  
-            ('images', lib_images_files),
-            ('images/math', lib_images_math_files),
-            ('kbd', lib_kbd_files),
-            ('layouts', lib_layouts_files),
-            ('scripts', lib_scripts_files),
-            ('templates', lib_templates_files),
-            ('tex', lib_tex_files),
-            ('ui', lib_ui_files),
             ('bind', lib_bind_files),
             ('bind/de', lib_bind_de_files),
             ('bind/fi', lib_bind_fi_files),
@@ -2203,7 +2195,16 @@ if build_install:
             ('examples/ru', lib_examples_ru_files),
             ('examples/sl', lib_examples_sl_files),
             ('examples/ro', lib_examples_ro_files),
-            ('lyx2lyx', lib_lyx2lyx_files)]:
+            ('fonts', lib_fonts_files),
+            ('images', lib_images_files),
+            ('images/math', lib_images_math_files),
+            ('kbd', lib_kbd_files),
+            ('layouts', lib_layouts_files),
+            ('lyx2lyx', lib_lyx2lyx_files),
+            ('scripts', lib_scripts_files),
+            ('templates', lib_templates_files),
+            ('tex', lib_tex_files),
+            ('ui', lib_ui_files)]:
         dirs.append(env.Install(os.path.join(share_dest_dir, dir),
             [env.subst('$TOP_SRCDIR/lib/%s/%s' % (dir, file)) for file in files]))
     Alias('install', dirs)

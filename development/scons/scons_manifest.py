@@ -1478,6 +1478,18 @@ lib_examples_files = Split('''
     g-brief2.lyx
 ''')
 
+lib_fonts_files = Split('''
+    BaKoMaFontLicense.txt
+    cmex10.ttf
+    cmmi10.ttf
+    cmr10.ttf
+    cmsy10.ttf
+    eufm10.ttf
+    msam10.ttf
+    msbm10.ttf
+    ReadmeBaKoMa4LyX.txt
+    wasy10.ttf
+''')
 
 lib_images_files = Split('''
     all-changes-reject.xpm

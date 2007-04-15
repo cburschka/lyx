@@ -210,6 +210,19 @@ dist_examples_DATA = \
 	examples/splash.lyx \
 	examples/g-brief2.lyx
 
+binddir = $(pkgdatadir)/fonts
+dist_fonts_DATA = \
+	fonts/BaKoMaFontLicense.txt \
+	fonts/cmex10.ttf \
+	fonts/cmmi10.ttf \
+	fonts/cmr10.ttf \
+	fonts/cmsy10.ttf \
+	fonts/eufm10.ttf \
+	fonts/msam10.ttf \
+	fonts/msbm10.ttf \
+	fonts/ReadmeBaKoMa4LyX.txt \
+	fonts/wasy10.ttf
+
 imagesdir = $(pkgdatadir)/images
 dist_images_DATA = \
 	images/all-changes-accept.xpm \
