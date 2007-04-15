@@ -113,7 +113,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'Die LaTeX-Distribution "MiKTeX" wird zusamm
 				     installieren, bevor sie LyX das erste Mal benutzen.$\r$\n\
 				     Möchten Sie jetzt nach Updates für MiKTeX suchen?'
 
-LangString UpdateNotAllowed "${LYX_LANG}" "Dieses Update-Paket kann nur LyX ${PRODUCT_UPDATE_ALLOWED} updaten!"
+LangString UpdateNotAllowed "${LYX_LANG}" "Dieses Update-Paket kann nur ${PRODUCT_VERSION_OLD} updaten!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" 'Der "PATH_präfix" (Liste mit Programmpfaden) konnte nicht im Konfigurationsskript gesetzt werden.'
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Konnte die Datei lyx.bat nicht erzeugen."
 LangString RunConfigureFailed "${LYX_LANG}" "Konnte das Konfigurationsskript nicht ausführen."

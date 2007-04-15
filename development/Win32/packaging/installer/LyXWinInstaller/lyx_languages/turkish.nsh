@@ -113,7 +113,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'The LaTeX-distribution "MiKTeX" will be use
 				     before you use LyX for the first time.$\r$\n\
 				     Would you now check for MiKTeX updates?'
 
-LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update ${PRODUCT_VERSION_OLD}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Yapýlandýrma programýnda 'path_prefix' ayarlanamadý"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "lyx.bat oluþturulamadý"
 LangString RunConfigureFailed "${LYX_LANG}" "Yapýlandýrma programý çalýþtýrýlamadý"

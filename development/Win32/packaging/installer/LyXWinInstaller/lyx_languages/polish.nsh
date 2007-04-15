@@ -113,7 +113,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'The LaTeX-distribution "MiKTeX" will be use
 				     before you use LyX for the first time.$\r$\n\
 				     Would you now check for MiKTeX updates?'
 
-LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update ${PRODUCT_VERSION_OLD}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Nieudana próba ustawienia zmiennej 'path_prefix' w pliku skryptu konfigracyjnego"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Niedana próba utworzenia plików lyx.bat"
 LangString RunConfigureFailed "${LYX_LANG}" "Niedana próba wykonania skryptu konfiguracyjnego"

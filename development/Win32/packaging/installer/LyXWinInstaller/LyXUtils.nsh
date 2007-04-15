@@ -359,9 +359,9 @@ FunctionEnd
 ;--------------------------------
 
 Function ReplaceLineContent
- ; replaces "${PRODUCT_VERSION_OLD}" with "LyX ${PRODUCT_VERSION}"
+ ; replaces "$OldString" with "LyX $NewString"
 
- ${WordReplace} '$R9' "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" '$R9' ; macro from WordFunc.nsh
+ ${WordReplace} '$R9' "$OldString" "$NewString" "+" '$R9' ; macro from WordFunc.nsh
  Push $0
  
 FunctionEnd
@@ -387,7 +387,7 @@ Function CheckAppPathPreferences
   Pop $R0
   
   ; the usernames in the list of all users is separated by "|"
-  loop:
+  loopPrefs:
    StrCpy $String "$UserList"
    StrCpy $Search "|"
    Call StrPoint ; search for the "|"
@@ -402,10 +402,10 @@ Function CheckAppPathPreferences
    FileOpen $R1 "$AppPath\preferences" r
    IfErrors doneA
    FileClose $R1
-   ; search for "${PRODUCT_VERSION_OLD}" and replace it with "LyX ${PRODUCT_VERSION}"
+   ; search for "$OldString" and replace it with "$NewString"
    ${LineFind} "$AppPath\preferences" "" "1:-1" "ReplaceLineContent" ; macro from TextFunc.nsh
    doneA:
-  Goto loop
+  Goto loopPrefs
   ready:
   ; now do the same for the last user name
   StrCpy $0 $UserList

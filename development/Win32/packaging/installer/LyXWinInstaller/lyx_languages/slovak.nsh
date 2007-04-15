@@ -114,7 +114,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'LaTeX distrib˙cia "MiKTeX" sa pouûÌva spolu
 				     pred prv˝m pouûÌvanÌm LyXu.$\r$\n\
 				     Chcete teraz testovaù MiKTeX aktualiz·cie?'
 
-LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update ${PRODUCT_VERSION_OLD}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Nemohol uviesù v platnost 'path_prefix' (zoznam s cestami programu) v konfiguraËnom skripte"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Nemohol prÌpraviù lyx.bat"
 LangString RunConfigureFailed "${LYX_LANG}" "Nemohol vykonaù konfiguraËn˝ skript"

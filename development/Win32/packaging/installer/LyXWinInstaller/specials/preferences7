@@ -72,9 +72,9 @@
 # FORMATS SECTION ##########################
 #
 
-\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "PDFView" "" "document,vector"
-\format "pdf2" "pdf" "PDF (pdflatex)" "F" "PDFView" "" "document,vector"
-\format "pdf" "pdf" "PDF (ps2pdf)" "P" "PDFView" "" "document,vector"
+\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "PDFViewWin" "" "document,vector"
+\format "pdf2" "pdf" "PDF (pdflatex)" "F" "PDFViewWin" "" "document,vector"
+\format "pdf" "pdf" "PDF (ps2pdf)" "P" "PDFViewWin" "" "document,vector"
 
 #
 # CONVERTERS SECTION ##########################

@@ -29,7 +29,7 @@ Section "un.LyX" un.SecUnProgramFiles
   ReadRegStr $0 ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu"
   RMDir /r "$0"
   ; delete desktop icon
-  Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
+  Delete "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk"
   ; delete registry entries
   DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
   DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"

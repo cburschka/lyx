@@ -113,7 +113,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'LaTeX-distributionen "MiKTeX" vil blive bru
                                     før LyX startes for første gang.$\r$\n\
                                     Vil du tjekke om der findes MiKTeX opdateringer?'
 
-LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update LyX ${PRODUCT_UPDATE_ALLOWED}!"
+LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update ${PRODUCT_VERSION_OLD}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Forsoget på at indstille 'path_prefix' i konfigurationen mislykkedes"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Kunne ikke oprette lyx.bat"
 LangString RunConfigureFailed "${LYX_LANG}" "Mislykket forsog på at afvikle konfigurations-scriptet"

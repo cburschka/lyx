@@ -26,7 +26,7 @@ CRCCheck force
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5svn-xx-04-2007"
+!define PRODUCT_VERSION "1.5svn-15-04-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -51,7 +51,6 @@ BrandingText "LyXWinInstaller v3.12 - Update"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
 !define PRODUCT_VERSION_OLD "LyX 1.5svn-09-04-2007"
-!define PRODUCT_UPDATE_ALLOWED "LyX 1.5.0svn"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
@@ -73,7 +72,6 @@ Var PathPrefix
 Var Answer
 Var UserName
 Var CreateDesktopIcon
-Var FileAssociation
 Var StartmenuFolder
 Var ProductRootKey
 Var AppPre
@@ -84,6 +82,8 @@ Var Search
 Var Pointer
 Var UserList
 Var INSTDIR_NEW
+Var OldString
+Var NewString
 
 ;--------------------------------
 ; load some NSIS libraries
@@ -242,45 +242,38 @@ Function .onInit
   
   ; Check where LyX is installed
   ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY_OLD}" "DisplayIcon"
+  ${if} $0 != ""
+    SetShellVarContext all
+    StrCpy $ProductRootKey "HKLM"
+  ${endif}
   ${if} $0 == ""
    ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY_OLD}" "DisplayIcon"
+   ${if} $0 != ""
+    SetShellVarContext current
+    StrCpy $ProductRootKey "HKCU"
+   ${endif}
    ${if} $0 == ""
     MessageBox MB_OK|MB_ICONSTOP "$(UpdateNotAllowed)"
     Abort
    ${endif}
-  ${else}
+  ${endif} ; end if $0 == 0
+  ${if} $0 != "" ; if it is found
    StrCpy $INSTDIR $0
    StrCpy $INSTDIR $INSTDIR -12 ; delete the string "\bin\lyx.exe" or "\bin\lyx.bat"
   ${endif}
   
-  ; ascertain the registry root key of the LyX installation
-  ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY_OLD}" "RootKey"
-  ${if} $0 != ""
-   SetShellVarContext all
-   StrCpy $ProductRootKey "HKLM"
-  ${else}
-   ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY_OLD}" "RootKey"
-   ${if} $0 == ""
-     MessageBox MB_OK|MB_ICONSTOP "$(UnNotInRegistryLabel)"
-     Abort
-   ${else}
-    SetShellVarContext current
-    StrCpy $ProductRootKey "HKCU"
-   ${endif}
-  ${endif}
-  
-  ; This can be reset to "true" in section SecDesktop.
-  StrCpy $CreateDesktopIcon "false"
-
   ; If the user does *not* have administrator privileges, abort
   StrCpy $Answer ""
   StrCpy $UserName ""
   !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
   ${if} $Answer != "yes"
-
+  ${andif} $ProductRootKey == "HKLM"
     MessageBox MB_OK|MB_ICONSTOP "$(NotAdmin)"
     Abort
   ${endif}
+  
+  ; This can be reset to "true" in section SecDesktop.
+  StrCpy $CreateDesktopIcon "false"
   
   ClearErrors
 FunctionEnd
@@ -296,19 +289,30 @@ FunctionEnd
 ; The '-' makes the section invisible.
 ; Sections are entered in order, so the settings above are all
 ; available to SecInstallation
+; this section is only needed because a macro cannot be called twice within one section
+Section "-PreInstallation actions" SecPreInstallation
+
+SectionEnd
+
+;--------------------------------
+
+; The '-' makes the section invisible.
+; Sections are entered in order, so the settings above are all
+; available to SecInstallation
 Section "-Installation actions" SecInstallation
 
   ; extract modified files
-  Call UpdateModifiedFiles
+  Call UpdateModifiedFiles ; macro from Updated.nsh
   
   ; delete files
-  Call DeleteFiles
+  Call DeleteFiles ; macro from Deleted.nsh
 
   ; delete old start menu folder
   ReadRegStr $0 SHCTX "${PRODUCT_UNINST_KEY_OLD}" "StartMenu"
   RMDir /r $0
   ; delete desktop icon
-  Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
+  Delete "$DESKTOP\${PRODUCT_NAME}.lnk" ; remove this for the next version!
+  ; Delete "$DESKTOP\${PRODUCT_VERSION_OLD}.lnk" ; for the next version
   
   ; delete old registry entries
   DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY_OLD}"
@@ -323,7 +327,7 @@ Section "-Installation actions" SecInstallation
   StrCpy $String $INSTDIR
   StrCpy $Search "${PRODUCT_VERSION_OLD}"
   StrLen $3 $String
-  Call StrPoint ; search the LaTeXPath for the phrase "${PRODUCT_VERSION_OLD}" (function from LyXUtils.nsh)
+  Call StrPoint ; search the $INSTDIR for the phrase in ${PRODUCT_VERSION_OLD} ; function from LyXUtils.nsh
   ${if} $Pointer != "-1" ; if something was found
   
    IntOp $Pointer $Pointer - 1 ; jump before the first "\" of "\${PRODUCT_VERSION_OLD}"
@@ -345,7 +349,19 @@ Section "-Installation actions" SecInstallation
    FileClose $R1
    
    ; set the new path to the preferences files for all users
-   Call CheckAppPathPreferences ; Function from LyXUtils.nsh
+   StrCpy $OldString "${PRODUCT_VERSION_OLD}"
+   StrCpy $NewString "LyX ${PRODUCT_VERSION}"
+   Call CheckAppPathPreferences ; function from LyXUtils.nsh
+   
+   ; Copy the given strings to variables that the Function "ReplaceLineContent" can later access them
+   ; set new PDF-viewer settings also to the preferences file for all users
+   StrCpy $OldString "PDFViewWin7"
+   StrCpy $NewString "PDFViewWin"
+   Call CheckAppPathPreferences ; function from LyXUtils.nsh
+   ; set new PDF-viewer settings also to the preferences file in the $INSTDIR
+   ; search for "$OldString" and replace it with "$NewString"
+   ; calls function "ReplaceLineContent" from LyXUtils.nsh
+   ${LineFind} "$INSTDIR\Resources\preferences" "" "1:-1" "ReplaceLineContent" ; macro from TextFunc.nsh
    
    ; set new path to ImageMagick
    ReadRegStr $ImageMagickPath SHCTX "SOFTWARE\Classes\Applications" "AutoRun"
@@ -372,7 +388,6 @@ Section "-Installation actions" SecInstallation
   WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
  
   ; create start menu entry
-  MessageBox MB_OK "$SMPROGRAMS\$StartmenuFolder"
   SetOutPath "$INSTDIR\bin"
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
@@ -382,15 +397,12 @@ Section "-Installation actions" SecInstallation
   ; create desktop icon
   ${if} $CreateDesktopIcon == "true"
    SetOutPath "$INSTDIR\bin"
-   CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
+   CreateShortCut "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   ${endif}
   
   ; register the extension .lyx
-  ReadRegStr $FileAssociation HKCR "LyX\shell\open\command" ""
-  ${if} $CreateFileAssociations != ""
-   ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
-   ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
-  ${endif}
+  ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
+  ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
 
   ; test if Python is installed
   ; only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered

@@ -1,4 +1,23 @@
-﻿Version LyX 1.5svn-09-04-2007
+﻿Version LyX 1.5svn-15-04-2007
+
+- LyX 1.5svn from 15-04-2007
+  - reworked paragraph dialog
+  - more cleanups of the math delimiter and the document settings dialogs
+
+- fix bug that configure-script was not run after the installer told
+  you that the configuration will now start
+- fix bug in uninstalling Arabic Aspell dictionary
+- fix bug that PDFViewWin7.exe failed to start
+- add missing math fonts
+- name desktop icon according to the version to avoid interferences
+  with other installed LyX-versions
+
+- New installer Version "Update" available. With this you don't need to
+  reinstall LyX when you have the previous version "LyX 1.5svn-09-04-2007"
+  installed.
+
+
+Version LyX 1.5svn-09-04-2007
 
 - LyX 1.5svn from 09-04-2007
   - CJK fixes

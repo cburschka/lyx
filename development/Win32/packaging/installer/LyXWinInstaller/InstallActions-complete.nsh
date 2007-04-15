@@ -298,7 +298,7 @@ Section "-Installation actions" SecInstallation
   ; create desktop icon
   ${if} $CreateDesktopIcon == "true"
    SetOutPath "$INSTDIR\bin"
-   CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
+   CreateShortCut "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   ${endif}
 
   ; register the extension .lyx

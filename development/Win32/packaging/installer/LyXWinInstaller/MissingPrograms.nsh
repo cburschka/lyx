@@ -141,7 +141,7 @@ Function MissingPrograms
   ; with outdated Python interpreters
   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
   ${if} $PythonPath != ""
-   StrCpy $PythonPath $PythonPath "" -1 ; remove the "\" at the end
+   StrCpy $PythonPath $PythonPath -1 ; remove the "\" at the end
    StrCpy $DelPythonFiles "True"
   ${endif}
 
