@@ -25,7 +25,10 @@ def relativePath(path, base):
     path2 = os.path.normpath(os.path.realpath(base)).split(os.sep)
     if path1[:len(path2)] != path2:
         print "Path %s is not under top source directory" % path
-    return os.path.join(*path1[len(path2):])
+    path3 = os.path.join(*path1[len(path2):]);
+    # replace all \ by / such that we get the same comments on Windows and *nix
+    path3 = path3.replace('\\', '/')
+    return path3
 
 
 def ui_l10n(input_files, output, base):
