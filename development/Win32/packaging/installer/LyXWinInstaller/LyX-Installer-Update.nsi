@@ -289,16 +289,6 @@ FunctionEnd
 ; The '-' makes the section invisible.
 ; Sections are entered in order, so the settings above are all
 ; available to SecInstallation
-; this section is only needed because a macro cannot be called twice within one section
-Section "-PreInstallation actions" SecPreInstallation
-
-SectionEnd
-
-;--------------------------------
-
-; The '-' makes the section invisible.
-; Sections are entered in order, so the settings above are all
-; available to SecInstallation
 Section "-Installation actions" SecInstallation
 
   ; extract modified files
