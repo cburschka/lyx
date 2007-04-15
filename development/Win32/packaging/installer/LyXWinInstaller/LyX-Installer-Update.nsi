@@ -19,7 +19,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-; SetCompressor lzma
+SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
@@ -51,8 +51,6 @@ BrandingText "LyXWinInstaller v3.12 - Update"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
 !define PRODUCT_VERSION_OLD "LyX 1.5svn-09-04-2007"
-
-!define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
 ;--------------------------------
 ; Make some of the information above available to NSIS.
@@ -363,7 +361,7 @@ Section "-Installation actions" SecInstallation
   ${endif} ; end ${if} $Pointer != "-1" (if the folder is renamed)
   
   ; register LyX
-  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
+  WriteRegStr SHCTX "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
   WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "RootKey" "$ProductRootKey"
   WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayName" "LyX ${PRODUCT_VERSION}"
   WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "UninstallString" "${PRODUCT_UNINSTALL_EXE}"
