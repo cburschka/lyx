@@ -11,6 +11,7 @@
  */
 
 #include <config.h>
+#include <boost/current_function.hpp>
 
 #include "QParagraphDialog.h"
 #include "QParagraph.h"
