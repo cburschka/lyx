@@ -58,18 +58,6 @@ special_phrase const special_phrases[] = {
 
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
-
-/// Get the real encoding of a character with font \p font.
-/// doc_encoding == bparams.encoding(), but we use a precomputed variable
-/// since bparams.encoding() is expensive
-inline Encoding const & getEncoding(BufferParams const & bparams,
-		Encoding const & doc_encoding, LyXFont const & font)
-{
-	if (bparams.inputenc == "auto" || bparams.inputenc == "default")
-		return *(font.language()->encoding());
-	return doc_encoding;
-}
-
 } // namespace anon
 
 
@@ -398,7 +386,7 @@ int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
 
 
 bool Paragraph::Pimpl::simpleTeXBlanks(BufferParams const & bparams,
-                                       Encoding const & doc_encoding,
+                                       Encoding const & encoding,
                                        odocstream & os, TexRow & texrow,
                                        pos_type & i,
 				       unsigned int & column,
@@ -412,7 +400,6 @@ bool Paragraph::Pimpl::simpleTeXBlanks(BufferParams const & bparams,
 		char_type next = getChar(i + 1);
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
-			Encoding const & encoding = getEncoding(bparams, doc_encoding, font);
 			column += latexSurrogatePair(os, ' ', next, encoding) - 1;
 			++i;
 			return true;
@@ -478,7 +465,6 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
-					     Encoding const & doc_encoding,
 					     odocstream & os,
 					     TexRow & texrow,
 					     OutputParams const & runparams,
@@ -738,8 +724,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			}
 
 			if (pnr == phrases_nr && c != '\0') {
-				Encoding const & encoding =
-					getEncoding(bparams, doc_encoding, running_font);
+				Encoding const & encoding = *(runparams.encoding);
 				if (i < size() - 1) {
 					char_type next = getChar(i + 1);
 					if (Encodings::isCombiningChar(next)) {
@@ -837,7 +822,6 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	}
 
 	// then the contents
-	Encoding const & doc_encoding = bparams.encoding();
 	for (pos_type i = 0; i < size() ; ++i) {
 		for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
 			if (!special_phrases[pnr].builtin
@@ -846,12 +830,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 				break;
 			}
 		}
-		// We do not need the completely realized font, since we are
-		// only interested in the language, and that is never inherited.
-		// Therefore we can use getFontSettings instead of getFont.
-		LyXFont const & font = owner_->getFontSettings(bparams, i);
-		Encoding const & encoding = getEncoding(bparams, doc_encoding, font);
-		encoding.validate(getChar(i), features);
+		Encodings::validate(getChar(i), features);
 	}
 }
 

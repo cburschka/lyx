@@ -45,7 +45,8 @@ void latexParagraphs(Buffer const & buf,
 /// Switch the encoding of \p os from \p oldEnc to \p newEnc if needed.
 /// \return the number of characters written to \p os.
 int switchEncoding(odocstream & os, BufferParams const & bparams,
-                   Encoding const & oldEnc, Encoding const & newEnc);
+                   bool moving_arg, Encoding const & oldEnc,
+                   Encoding const & newEnc);
 
 } // namespace lyx
 

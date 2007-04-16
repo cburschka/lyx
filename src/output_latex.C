@@ -292,6 +292,33 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	// Switch file encoding if necessary
+	if (bparams.inputenc == "auto") {
+		// Look ahead for future encoding changes.
+		// We try to output them at the beginning of the paragraph,
+		// since the \inputencoding command is not allowed e.g. in
+		// sections.
+		for (pos_type i = 0; i < pit->size(); ++i) {
+			char_type const c = pit->getChar(i);
+			if (c < 0x80)
+				continue;
+			if (pit->isInset(i))
+				break;
+			// All characters before c are in the ASCII range, and
+			// c is non-ASCII (but no inset), so change the
+			// encoding to that required by the language of c.
+			Encoding const * const encoding =
+				pit->getFontSettings(bparams, i).language()->encoding();
+			if (switchEncoding(os, bparams, false,
+			                   *(runparams.encoding), *encoding) > 0) {
+				runparams.encoding = encoding;
+				os << '\n';
+				texrow.newline();
+			}
+			break;
+		}
+	}
+
 	// In an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
 	if (!pit->forceDefaultParagraphs()) {
@@ -563,13 +590,17 @@ void latexParagraphs(Buffer const & buf,
 
 
 int switchEncoding(odocstream & os, BufferParams const & bparams,
-                   Encoding const & oldEnc, Encoding const & newEnc)
+                   bool moving_arg, Encoding const & oldEnc,
+                   Encoding const & newEnc)
 {
 	// FIXME thailatex does not support the inputenc package, so we
 	// ignore switches from/to tis620-0 encoding here. This does of
 	// course only work as long as the non-thai text contains ASCII
 	// only, but it is the best we can do.
-	if ((bparams.inputenc == "auto" || bparams.inputenc == "default") &&
+	// Since the \inputencoding command does not work inside sections
+	// we ignore the encoding switch also in moving arguments.
+	if (((bparams.inputenc == "auto" && !moving_arg) ||
+	     bparams.inputenc == "default") &&
 	    oldEnc.name() != newEnc.name() &&
 	    oldEnc.name() != "ascii" && newEnc.name() != "ascii" &&
 	    oldEnc.name() != "tis620-0" && newEnc.name() != "tis620-0") {

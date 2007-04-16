@@ -179,11 +179,8 @@ docstring const Encoding::latexChar(char_type c) const
 }
 
 
-void Encoding::validate(char_type c, LaTeXFeatures & features) const
+void Encodings::validate(char_type c, LaTeXFeatures & features)
 {
-	// Add the preamble stuff even if c can be encoded in this encoding,
-	// since the inputenc package only maps the code point c to a command,
-	// it does not make this command available.
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it != unicodesymbols.end() && !it->second.preamble.empty()) {
 		if (it->second.feature)

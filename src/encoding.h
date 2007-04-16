@@ -48,9 +48,6 @@ public:
 	 * character is returned.
 	 */
 	docstring const latexChar(char_type c) const;
-	/// Add the preamble snippet needed for the output of latexChar(c)
-	/// to \p features.
-	void validate(char_type c, LaTeXFeatures & features) const;
 private:
 	///
 	std::string Name_;
@@ -123,6 +120,14 @@ public:
 	static char_type transformChar(char_type c, Letter_Form form);
 	/// Is this a combining char?
 	static bool isCombiningChar(char_type c);
+	/**
+	 * Add the preamble snippet needed for the output of \p c to
+	 * \p features.
+	 * This does not depend on the used encoding, since the inputenc
+	 * package only maps the code point \p c to a command, it does not
+	 * make this command available.
+	 */
+	static void validate(char_type c, LaTeXFeatures & features);
 
 private:
 	///

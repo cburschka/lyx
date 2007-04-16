@@ -139,7 +139,7 @@ public:
 			     LyXLayout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
-	                           Encoding const &, odocstream &,
+	                           odocstream &,
 	                           TexRow & texrow, OutputParams const &,
 	                           LyXFont & running_font,
 				   LyXFont & basefont,

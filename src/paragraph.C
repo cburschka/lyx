@@ -1007,9 +1007,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 						    runparams.moving_arg);
 	}
 
-	// Computed only once per paragraph since bparams.encoding() is expensive
-	Encoding const & doc_encoding = bparams.encoding();
-
 	for (pos_type i = 0; i < size(); ++i) {
 		// First char in paragraph or after label?
 		if (i == body_pos) {
@@ -1076,7 +1073,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		// Switch file encoding if necessary
 		int const count = switchEncoding(os, bparams,
-				*(runparams.encoding),
+				runparams.moving_arg, *(runparams.encoding),
 				*(font.language()->encoding()));
 		if (count > 0) {
 			column += count;
@@ -1101,7 +1098,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			// style->pass_thru is false.
 			if (i != body_pos - 1) {
 				if (pimpl_->simpleTeXBlanks(bparams,
-						doc_encoding, os, texrow,
+						*(runparams.encoding), os, texrow,
 						i, column, font, *style))
 					// A surrogate pair was output. We
 					// must not call simpleTeXSpecialChars
@@ -1117,7 +1114,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		rp.free_spacing = style->free_spacing;
 		rp.local_font = &font;
 		rp.intitle = style->intitle;
-		pimpl_->simpleTeXSpecialChars(buf, bparams, doc_encoding, os,
+		pimpl_->simpleTeXSpecialChars(buf, bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChangeType, *style, i, column, c);
