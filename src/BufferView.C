@@ -581,7 +581,17 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 	if (top_id > 0) {
 		ParIterator par = buffer_->getParFromID(top_id);
 		if (par != buffer_->par_iterator_end()) {
-			setCursor(makeDocIterator(par, min(par->size(), top_pos)));
+			DocIterator dit = makeDocIterator(par, min(par->size(), top_pos));
+			// Some slices of the iterator may not be reachable (e.g. closed collapsable inset)
+			// so the dociterator may need to be shortened. Otherwise, setCursor may
+			// crash lyx when the cursor can not be set to these insets.
+			size_t const n = dit.depth();
+			for (size_t i = 0; i < n; ++i)
+				if (dit[i].inset().editable() != InsetBase::HIGHLY_EDITABLE) {
+					dit.resize(i);
+					break;
+				}
+			setCursor(dit);
 			// Note: return bottom (document) level pit.
 			return boost::make_tuple(cursor_.bottom().pit(), cursor_.bottom().pos(), top_id);
 		}
