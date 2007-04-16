@@ -43,6 +43,12 @@ public:
 		bool boundary, int & x, int & y) const;
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y);
+	/// target pos when we enter the inset from the left by pressing "Right"
+	bool idxFirst(LCursor &) const;
+	/// target pos when we enter the inset from the right by pressing "Left"
+	bool idxLast(LCursor &) const;
+	///
+	virtual bool notifyCursorLeaves(LCursor &);
 	///
 	docstring name() const;
 	///

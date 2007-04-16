@@ -105,8 +105,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
 		Dimension ldim;
-		string t = "#1: ";
-		mathed_string_dim(font, name(), ldim);
+		docstring t = from_ascii("#1: ");
+		mathed_string_dim(font, t, ldim);
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.asc) + 5;
@@ -153,6 +153,27 @@ InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
 		return InsetMathNest::editXY(cur, x, y);
 	}
 	return this;
+}
+
+
+bool MathMacro::idxFirst(LCursor & cur) const 
+{
+	cur.updateFlags(Update::Force);
+	return InsetMathNest::idxFirst(cur);
+}
+
+
+bool MathMacro::idxLast(LCursor & cur) const 
+{
+	cur.updateFlags(Update::Force);
+	return InsetMathNest::idxLast(cur);
+}
+
+
+bool MathMacro::notifyCursorLeaves(LCursor & cur)
+{
+	cur.updateFlags(Update::Force);
+	return InsetMathNest::notifyCursorLeaves(cur);
 }
 
 
