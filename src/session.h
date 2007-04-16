@@ -174,27 +174,39 @@ private:
 class BookmarksSection : SessionSection
 {
 public:
-	/// bookmarks
+	/// A bookmark is composed of three parts
+	/// 1. filename
+	/// 2. bottom (whole document) level pit and pos, used to (inaccurately) save/restore a bookmark
+	/// 3. top level id and pos, used to accurately locate bookmark when lyx is running
+	/// top and bottom level information sometimes needs to be sync'ed. In particular,
+	/// top_id is determined when a bookmark is restored from session; and
+	/// bottom_pit and bottom_pos are determined from top_id when a bookmark
+	/// is save to session. (What a mess! :-)
+	/// 
+	/// TODO: bottom level pit and pos will be replaced by StableDocIterator
 	class Bookmark {
 	public:
 		/// Filename
 		support::FileName filename;
-		/// Cursor pit, will be saved/restored by .lyx/session
-		pit_type par_pit;
-		/// Cursor paragraph Id, used to lcoate bookmarks for opened files
-		int par_id;
-		/// Cursor position within a paragraph
-		pos_type par_pos;
+		/// Bottom level cursor pit, will be saved/restored by .lyx/session
+		pit_type bottom_pit;
+		/// Bottom level cursor position, will be saved/restore by .lyx/session
+		pos_type bottom_pos;
+		/// Top level cursor id, used to lcoate bookmarks for opened files
+		int top_id;
+		/// Top level cursor position within a paragraph
+		pos_type top_pos;
 		///
-		Bookmark() : par_id(0), par_pos(0) {}
+		Bookmark() : bottom_pit(0), bottom_pos(0), top_id(0), top_pos(0) {}
 		///
-		Bookmark(support::FileName const & f, pit_type pit, int id, pos_type pos)
-			: filename(f), par_pit(pit), par_id(id), par_pos(pos) {}
-		/// set bookmark par_id, this is because newly loaded bookmark
+		Bookmark(support::FileName const & f, pit_type pit, pos_type pos, int id, pos_type tpos)
+			: filename(f), bottom_pit(pit), bottom_pos(pos), top_id(id), top_pos(tpos) {}
+		/// set bookmark top_id, this is because newly loaded bookmark
 		/// may have zero par_id and par_pit can change during editing, see bug 3092
-		void setPos(pit_type pit, int id) { 
-			par_pit = pit;
-			par_id = id;
+		void updatePos(pit_type pit, pos_type pos, int id) { 
+			bottom_pit = pit;
+			bottom_pos = pos;
+			top_id = id;
 		}
 	};
 
@@ -207,7 +219,8 @@ public:
 	BookmarksSection() : bookmarks(10), max_bookmarks(9) {}
 
 	/// Save the current position as bookmark
-	void save(support::FileName const & fname, pit_type pit, int par_id, pos_type par_pos, unsigned int idx);
+	void save(support::FileName const & fname, pit_type bottom_pit, pos_type bottom_pos,
+		int top_id, pos_type top_pos, unsigned int idx);
 
 	/// return bookmark 0-9, bookmark 0 is the temporary bookmark
 	Bookmark const & bookmark(unsigned int i) const;

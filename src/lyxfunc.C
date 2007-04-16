@@ -264,12 +264,13 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		}
 		// moveToPosition use par_id, and par_pit and return new par_id.
 		pit_type new_pit;
+		pos_type new_pos;
 		int new_id;
-		boost::tie(new_pit, new_id) = view()->moveToPosition(bm.par_pit, bm.par_id, bm.par_pos);
-		// if par_id or pit has been changed, reset par_pit and par_id
+		boost::tie(new_pit, new_pos, new_id) = view()->moveToPosition(bm.bottom_pit, bm.bottom_pos, bm.top_id, bm.top_pos);
+		// if bottom_pit, bottom_pos or top_id has been changed, update bookmark
 		// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
-		if (bm.par_pit != new_pit || bm.par_id != new_id)
-			const_cast<BookmarksSection::Bookmark &>(bm).setPos(new_pit, new_id);
+		if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos || bm.top_id != new_id )
+			const_cast<BookmarksSection::Bookmark &>(bm).updatePos(new_pit, new_pos, new_id);
 	} 
 }
 

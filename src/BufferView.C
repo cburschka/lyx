@@ -159,13 +159,14 @@ void BufferView::setBuffer(Buffer * b)
 			BookmarksSection::Bookmark const & bm = LyX::ref().session().bookmarks().bookmark(i);
 			if (buffer()->fileName() != bm.filename.absFilename())
 				continue;
-			// if par_id or pit has been changed, reset par_pit and par_id
+			// if top_id or bottom_pit, bottom_pos has been changed, update bookmark
 			// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
 			pit_type new_pit;
+			pos_type new_pos;
 			int new_id;
-			boost::tie(new_pit, new_id) = moveToPosition(bm.par_pit, bm.par_id, bm.par_pos);
-			if (bm.par_pit != new_pit || bm.par_id != new_id)
-				const_cast<BookmarksSection::Bookmark &>(bm).setPos(new_pit, new_id);
+			boost::tie(new_pit, new_pos, new_id) = moveToPosition(bm.bottom_pit, bm.bottom_pos, bm.top_id, bm.top_pos);
+			if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos || bm.top_id != new_id )
+				const_cast<BookmarksSection::Bookmark &>(bm).updatePos(new_pit, new_pos, new_id);
 		}
 		// current buffer is going to be switched-off, save cursor pos
 		// Ideally, the whole cursor stack should be saved, but session
@@ -282,7 +283,7 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		pos_type pos;
 		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
 		// if successfully move to pit (returned par_id is not zero), update metrics and reset font
-		if (moveToPosition(pit, 0, pos).get<1>()) {
+		if (moveToPosition(pit, pos, 0, 0).get<1>()) {
 			if (fitCursor())
 				updateMetrics(false);
 			buffer_->text().setCurrentFont(cursor_);
@@ -551,9 +552,14 @@ Change const BufferView::getCurrentChange() const
 
 void BufferView::saveBookmark(unsigned int idx)
 {
+	// tenatively save bookmark, id and pos will be used to
+	// acturately locate a bookmark in a 'live' lyx session.
+	// pit and pos will be updated with bottom level pit/pos 
+	// when lyx exits.
 	LyX::ref().session().bookmarks().save(
 		FileName(buffer_->fileName()),
-		cursor_.pit(),
+		cursor_.bottom().pit(),
+		cursor_.bottom().pos(),
 		cursor_.paragraph().id(),
 		cursor_.pos(),
 		idx
@@ -564,31 +570,40 @@ void BufferView::saveBookmark(unsigned int idx)
 }
 
 
-boost::tuple<pit_type, int> BufferView::moveToPosition(pit_type par_pit, int par_id, pos_type par_pos)
+boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
+	int top_id, pos_type top_pos)
 {
 	cursor_.clearSelection();
 
 	// if a valid par_id is given, try it first
-	if (par_id > 0) {
-		ParIterator par = buffer_->getParFromID(par_id);
+	// This is the case for a 'live' bookmark when unique paragraph ID
+	// is used to track bookmarks.
+	if (top_id > 0) {
+		ParIterator par = buffer_->getParFromID(top_id);
 		if (par != buffer_->par_iterator_end()) {
-			setCursor(makeDocIterator(par, min(par->size(), par_pos)));
-			return boost::make_tuple(cursor_.pit(), par_id);
+			setCursor(makeDocIterator(par, min(par->size(), top_pos)));
+			// Note: return bottom (document) level pit.
+			return boost::make_tuple(cursor_.bottom().pit(), cursor_.bottom().pos(), top_id);
 		}
 	}
-	// if par_id == 0, or searching through par_id failed
-	if (static_cast<size_t>(par_pit) < buffer_->paragraphs().size()) {
+	// if top_id == 0, or searching through top_id failed
+	// This is the case for a 'restored' bookmark when only bottom 
+	// (document level) pit was saved. Because of this, bookmark
+	// restoration is inaccurate. If a bookmark was within an inset,
+	// it will be restored to the left of the outmost inset that contains
+	// the bookmark.
+	if (static_cast<size_t>(bottom_pit) < buffer_->paragraphs().size()) {
 		ParIterator it = buffer_->par_iterator_begin();
 		ParIterator const end = buffer_->par_iterator_end();
 		for (; it != end; ++it)
-			if (it.pit() == par_pit) {
+			if (it.pit() == bottom_pit) {
 				// restored pos may be bigger than it->size
-				setCursor(makeDocIterator(it, min(par_pos, it->size())));
-				return boost::make_tuple(par_pit, it->id());
+				setCursor(makeDocIterator(it, min(bottom_pos, it->size())));
+				return boost::make_tuple(bottom_pit, bottom_pos, it->id());
 			}
 	}
 	// both methods fail
-	return boost::make_tuple(pit_type(0), 0);
+	return boost::make_tuple(pit_type(0), pos_type(0), 0);
 }
 
 

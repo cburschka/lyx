@@ -272,7 +272,7 @@ void BookmarksSection::read(istream & is)
 			if (fs::exists(file.toFilesystemEncoding()) &&
 			    !fs::is_directory(file.toFilesystemEncoding()) &&
 			    idx <= max_bookmarks)
-				bookmarks[idx] = Bookmark(file, pit, 0, pos);
+				bookmarks[idx] = Bookmark(file, pit, pos, 0, 0);
 			else
 				LYXERR(Debug::INIT) << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
 		} catch (...) {
@@ -288,18 +288,19 @@ void BookmarksSection::write(ostream & os) const
 	for (size_t i = 1; i <= max_bookmarks; ++i) {
 		if (isValid(i))
 			os << i << ", "
-			   << bookmarks[i].par_pit << ", "
-			   << bookmarks[i].par_pos << ", "
+			   << bookmarks[i].bottom_pit << ", "
+			   << bookmarks[i].bottom_pos << ", "
 			   << bookmarks[i].filename << '\n';
 	}
 }
 
 
-void BookmarksSection::save(FileName const & fname, pit_type par_pit, int par_id, pos_type par_pos, unsigned int idx)
+void BookmarksSection::save(FileName const & fname, pit_type bottom_pit, pos_type bottom_pos,
+	int top_id, pos_type top_pos, unsigned int idx)
 {
 	// silently ignore bookmarks when idx is out of range
 	if (idx <= max_bookmarks)
-		bookmarks[idx] = Bookmark(fname, par_pit, par_id, par_pos);
+		bookmarks[idx] = Bookmark(fname, bottom_pit, bottom_pos, top_id, top_pos);
 }
 
 
