@@ -2,6 +2,7 @@
 ; Sections are entered in order, so the settings above are all
 ; available to SecInstallation
 Section "-Installation actions" SecInstallation
+
   ; extract all files
   SetOutPath "$INSTDIR"
   File /r "${PRODUCT_SOURCEDIR}\bin"
@@ -73,178 +74,18 @@ Section "-Installation actions" SecInstallation
 ;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
   ${endif}
 
-  ; create the PathPrefix
-  StrCpy $PathPrefix "$INSTDIR\bin"
-  ${if} $PythonPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$PythonPath"
-  ${endif}
-  ${if} $LatexPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$LatexPath"
-  ${endif}
-  ${if} $GhostscriptPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
-  ${endif}
-  ${if} $ImageMagickPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$ImageMagickPath"
-  ${endif}
-  ${if} $PSVPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$PSVPath"
-  ${endif}
-  ${if} $EditorPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$EditorPath"
-  ${endif}
-  ${if} $ImageEditorPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$ImageEditorPath"
-  ${endif}
-
   ; install the LaTeX class files that are delivered with LyX
   ; and enable MiKTeX's automatic package installation
-  StrCpy $String $LatexPath
-  StrCpy $Search "miktex\bin"
-  StrLen $3 $String
-  Call StrPoint ; search the LaTeXPath for the phrase "miktex\bin" (function from LyXUtils.nsh)
-  ${if} $Pointer != "-1" ; if something was found
-   IntOp $Pointer $Pointer - 1 ; jump before the first "\" of "\miktex\bin"
-   StrCpy $String $String "$Pointer" ; $String is now the part before "\miktex\bin"
-   ; install LaTeX class files
-   SetOutPath "$String\tex\latex"
-   File "${ClassFileDir}\cv.cls"
-   CreateDirectory "$String\tex\latex\lyx"
-   SetOutPath "$String\tex\latex\lyx"
-   File "${ClassFileDir}\lyxchess.sty"
-   File "${ClassFileDir}\lyxskak.sty"
-   CreateDirectory "$String\tex\latex\revtex"
-   SetOutPath "$String\tex\latex\revtex"
-   File "${ClassFileDir}\revtex.cls"
-   CreateDirectory "$String\tex\latex\hollywood"
-   SetOutPath "$String\tex\latex\hollywood"
-   File "${ClassFileDir}\hollywood.cls"
-   CreateDirectory "$String\tex\latex\broadway"
-   SetOutPath "$String\tex\latex\broadway"
-   File "${ClassFileDir}\broadway.cls"
-   ; install LaTeX-package dvipost (dvipost is not available for MiKTeX)
-   SetOutPath "$String\tex\latex\"
-   File /r "${DVIPostFileDir}"
-
-   ${if} $MiKTeXVersion == "2.4"
-    ; refresh MiKTeX's file name database
-    ExecWait "$String\miktex\bin\initexmf --update-fndb"
-    ; delete MiKTeX 2.4's dvipng executable as it is an old broken version. Then install a working one.
-    Delete "$String\miktex\bin\dvipng.exe"
-    ; Install a new one
-    SetOutPath "$String\miktex\bin"
-    File "${PRODUCT_DIR}\LyX\external\dvipng.exe"
-    ; enable package installation without asking (1=Yes, 0=No, 2=Always Ask Before Installing)						    
-    WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly" "1"
-    WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MPM\Settings" "" ""
-    ; Setting package repository (MiKTeX's primary package repository)
-    WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MPM" "RemotePackageRepository" "${MiKTeXRepo}"
-   
-   ${else} ; if MiKTeX 2.5
-    ; refresh MiKTeX's file name database
-    ExecWait "$LaTeXPath\initexmf --update-fndb"
-    ; enable package installation without asking (t = Yes, f = No)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall" "1" ; if only for curent user
-    WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL" "t"
-    ; set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "RemoteRepository" "${MiKTeXRepo}" ; if only for curent user
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "RepositoryType" "remote" ; if only for curent user
-    WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY" "${MiKTeXRepo}"
-   ${endif}
-   
-   ; enable MiKTeX's automatic package installation
-   ExecWait '$LaTeXPath\mpm.com --update-fndb'
-  ${endif} ; end ${if} $Pointer
+  Call ConfigureMiKTeX ; Function from LaTeX.nsh
 
   ; install Aspell dictionaries
   ${if} $LangCode == "nb_NO"
    StrCpy $LangCode "no_NO" ; we only have a norwegian dictionary available
   ${endif}
-  Call InstallAspellDictionary ; function from aspell.nsh
+  Call InstallAspellDictionary ; function from Aspell.nsh
 
   ; configure LyX
-  ; Set a path prefix in lyxrc.dist
-  ClearErrors
-  ${if} "$PathPrefix" != ""
-   Delete "$INSTDIR\Resources\lyxrc.dist"
-   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
-   FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
-   FileClose $R1
-   IfErrors 0 +2
-    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
-  ${endif}
-
-  ; Create a batch file to start LyX with the environment variables set
-  ClearErrors
-  Delete "${PRODUCT_BAT}"
-  FileOpen $R1 "${PRODUCT_BAT}" w
-  FileWrite $R1 '@echo off$\r$\n\
-		 SET LANG=$LangCode$\r$\n\
-		 SET AIK_DATA_DIR=${AiksaurusDir}$\r$\n\
-		 start "LyX" "lyx.exe" %*$\r$\n'
-  FileClose $R1
-  IfErrors 0 +2
-   MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
-
-  ; set the preferences file
-  ; (having one preferences file that is modified to fit the needs is possible but not easy to maintain
-  ; therefore simply delete the files that shouldn't be used)
-  ; if not Acrobat or Adobe Reader is used
-  ${if} $Acrobat == "None" ; clear the entries in the preferences file that define PDFViewWin7 or 8 as viewer
-   Rename "$INSTDIR\Resources\preferencesGSview" "$INSTDIR\Resources\preferences"
-   Delete "$INSTDIR\Resources\preferences7"
-   Delete "$INSTDIR\Resources\preferences8"
-  ${endif}
-  ; if Acrobat or Adobe Reader is used
-  ${if} $Acrobat == "7" ; used for all Acrobat (Adobe Reader) versions <= 7
-   Rename "$INSTDIR\Resources\preferences7" "$INSTDIR\Resources\preferences"
-   Delete "$INSTDIR\Resources\preferences8"
-   Delete "$INSTDIR\Resources\preferencesGSview"
-  ${endif}
-  ${if} $Acrobat == "8"
-   Rename "$INSTDIR\Resources\preferences8" "$INSTDIR\Resources\preferences"
-   Delete "$INSTDIR\Resources\preferences7"
-   Delete "$INSTDIR\Resources\preferencesGSview"
-  ${endif}
-
-  ; register LyX
-  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "RootKey" "$ProductRootKey"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "${PRODUCT_UNINSTALL_EXE}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "${PRODUCT_EXE}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLUpdateInfo" "${PRODUCT_INFO_URL}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_ABOUT_URL}"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "LyX Team"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "HelpLink" "${PRODUCT_HELP_LINK}"
-  WriteRegDWORD ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "NoModify" 0x00000001
-  WriteRegDWORD ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
-
-  ; create start menu entry
-  SetOutPath "$INSTDIR\bin"
-  CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
-  SetOutPath "$INSTDIR"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "${PRODUCT_UNINSTALL_EXE}"
-
-  ; create desktop icon
-  ${if} $CreateDesktopIcon == "true"
-   SetOutPath "$INSTDIR\bin"
-   CreateShortCut "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
-  ${endif}
-
-  ; register the extension .lyx
-  ${if} $CreateFileAssociations == "true"
-   ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
-   ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
-  ${endif}
-
-  ; create the LyX Application Data folder for all users
-  ; this folder is automatically created by LyX when it is first started but we want to start LyX with a specific session file,
-  ; so we create this folder before LyX starts and copy there the session file
-  Call CreateAppPathSub ; function from LyXUtils.nsh
+  Call ConfigureLyX ; Function from ConfigLyX.nsh
 
   ; delete unnecessary files
   ${if} $DelPythonFiles == "True"

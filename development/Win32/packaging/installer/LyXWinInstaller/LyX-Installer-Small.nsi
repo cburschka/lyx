@@ -19,14 +19,14 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-; SetCompressor lzma
+SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5svn-15-04-2007"
+!define PRODUCT_VERSION "1.5svn-xx-04-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -40,10 +40,10 @@ CRCCheck force
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 
-BrandingText "LyXWinInstaller v3.12 - Small"
+BrandingText "LyXWinInstaller v3.13 - Small"
 !define INSTALLER_VERSION "Small"
-!define INSTALLER_EXE "LyXWin150svnSmall-3-12.exe"
-!define INSTALLER2_EXE "LyXWin150svnComplete-3-12.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150svnSmall-3-13.exe"
+!define INSTALLER2_EXE "LyXWin150svnComplete-3-13.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -72,8 +72,8 @@ BrandingText "LyXWinInstaller v3.12 - Small"
 !define DVIPostFileDir "${PRODUCT_SOURCEDIR}\external\dvipost"
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 !define MiKTeXConfigFolder "MiKTeX\2.5\miktex\config"
-!define MiKTeXDeliveredVersion "MiKTeX not included"
-!define PRODUCT_VERSION_OLD "none" ; to avoid warning message because this variable is only used for the Update installer version
+!define MiKTeXDeliveredVersion "MiKTeX not included" ; only here to avoid warning message - variable only used in Complete installer version
+!define PRODUCT_VERSION_OLD "none" ; only here to avoid warning message - variable only used in Update installer version
 
 ;--------------------------------
 ; Make some of the information above available to NSIS.
@@ -144,6 +144,12 @@ Var RunNumber
 ; Set of various macros and functions
 !include "LyXUtils.nsh"
 
+; Functions to check and configure the LaTeX-system
+!include "LaTeX.nsh"
+
+; Function to check installed LaTeX-editors
+!include "Editors.nsh"
+
 ; Function to check if needed programs are missing or not
 !include "MissingPrograms.nsh"
 
@@ -154,16 +160,18 @@ Var RunNumber
 ; and LyX's menu language
 !include "LanguageSettings.nsh"
 
-; Function for page to install Aspell dictionaries
-!include "Aspell.nsh"
-
 ; Use the Abiword macros to help set up associations with the file extension in the Registry.
 ; Grabbed from
 ; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
 !include "abi_util_fileassoc.nsh"
 
-;--------------------------------
+; Function to configure LyX
+!include "ConfigLyX.nsh"
 
+; Function for page to install Aspell dictionaries
+!include "Aspell.nsh"
+
+;--------------------------------
 ; Remember the installer language
 !define MUI_LANGDLL_REGISTRY_ROOT "HKCU"
 !define MUI_LANGDLL_REGISTRY_KEY "${PRODUCT_UNINST_KEY}"
@@ -289,6 +297,7 @@ SectionEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDesktop} "$(SecDesktopDescription)"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
+; the installation section
 !include "InstallActions-small.nsh"
 
 ;--------------------------------
@@ -342,6 +351,9 @@ Function .onInit
     Abort
   ${endif}
 
+  ; check the LaTeX-system
+  Call LaTeXActions ; Function from LaTeX.nsh
+
   ; check which programs are installed or not
   Call MissingPrograms ; function from MissingPrograms.nsh
 
@@ -360,75 +372,6 @@ FunctionEnd
 ;--------------------------------
 ; The Uninstaller
 
-Function un.onInit
-
-  ; Check that LyX is not currently running
-  FindProcDLL::FindProc "lyx.exe"
-  ${if} $R0 == "1"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
-   Abort
-  ${endif}
-
-  ; Ascertain whether the user has sufficient privileges to uninstall.
-  SetShellVarContext current
-
-  ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY}" "RootKey"
-  ${if} $0 == ""
-    ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "RootKey"
-    ${if} $0 == ""
-      MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
-    ${endif}
-  ${endif}
-
-  ; If the user does *not* have administrator privileges, abort
-  StrCpy $Answer ""
-  !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
-  ${if} $Answer == "yes"
-    SetShellVarContext all
-  ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
-    Abort
-  ${endif}
-
-  ; Macro to investigate name of LyX's preferences folders to be able remove them
-  !insertmacro UnAppPreSuff $AppPre $AppSuff ; macro from LyXUtils.nsh
-
-  ; test if Aspell was installed together with LyX
-  ReadRegStr $0 HKLM "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
-   SectionSetText 2 "Aspell" ; names the corersponding uninstaller section (has the index "2" as it is the third section in Uninstall.nsh)
-   StrCpy $AspellInstallYes "Aspell"
-  ${else}
-   SectionSetText 2 "" ; hides the corresponding uninstaller section
-  ${endif}
-
-  ; test if MiKTeX was installed together with LyX
-  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
-   SectionSetText 3 "MiKTeX" ; names the corersponding uninstaller section
-   StrCpy $MiKTeXInstalled "MiKTeX"
-  ${else}
-   SectionSetText 3 "" ; hides the corresponding uninstaller section
-  ${endif}
-
-  ; ignore JabRef because this could only be installed with the complete installer version
-   SectionSetText 4 "" ; hides the corresponding uninstaller section
-   StrCpy $JabRefInstalled ""
-
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2
-  Abort
-
-FunctionEnd
-
-
-Function un.onUninstSuccess
-  HideWindow
-  MessageBox MB_ICONINFORMATION|MB_OK "$(UnRemoveSuccessLabel)"
-  
-FunctionEnd
-
-;----------------------
-;Installer sections
 !include "Uninstall.nsh"
 
 ; eof

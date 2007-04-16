@@ -1,3 +1,73 @@
+; Uninstaller
+
+; this function is called at first after starting the uninstaller
+Function un.onInit
+
+  ; Check that LyX is not currently running
+  FindProcDLL::FindProc "lyx.exe"
+  ${if} $R0 == "1"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
+   Abort
+  ${endif}
+
+  ; Ascertain whether the user has sufficient privileges to uninstall.
+  SetShellVarContext current
+
+  ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY}" "RootKey"
+  ${if} $0 == ""
+    ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "RootKey"
+    ${if} $0 == ""
+      MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
+    ${endif}
+  ${endif}
+
+  ; If the user does *not* have administrator privileges, abort
+  StrCpy $Answer ""
+  !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
+  ${if} $Answer == "yes"
+    SetShellVarContext all
+  ${else}
+    MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
+    Abort
+  ${endif}
+
+  ; Macro to investigate name of LyX's preferences folders to be able remove them
+  !insertmacro UnAppPreSuff $AppPre $AppSuff ; macro from LyXUtils.nsh
+
+  ; test if Aspell was installed together with LyX
+  ReadRegStr $0 HKLM "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   SectionSetText 2 "Aspell" ; names the corersponding uninstaller section (has the index "2" as it is the third section in Uninstall.nsh)
+   StrCpy $AspellInstallYes "Aspell"
+  ${else}
+   SectionSetText 2 "" ; hides the corresponding uninstaller section
+  ${endif}
+
+  ; test if MiKTeX was installed together with LyX
+  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   SectionSetText 3 "MiKTeX" ; names the corersponding uninstaller section
+   StrCpy $MiKTeXInstalled "MiKTeX"
+  ${else}
+   SectionSetText 3 "" ; hides the corresponding uninstaller section
+  ${endif}
+
+  ; ignore JabRef because this could only be installed with the complete installer version
+   SectionSetText 4 "" ; hides the corresponding uninstaller section
+   StrCpy $JabRefInstalled ""
+
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2
+  Abort
+
+FunctionEnd
+
+
+Function un.onUninstSuccess
+  HideWindow
+  MessageBox MB_ICONINFORMATION|MB_OK "$(UnRemoveSuccessLabel)"
+  
+FunctionEnd
+
 ; Uninstall sections
 
 Section "un.LyX" un.SecUnProgramFiles

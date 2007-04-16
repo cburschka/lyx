@@ -1,76 +1,7 @@
 Function MissingPrograms
 
+  ; initialize variable, is later set to True when a program was not found
   StrCpy $MissedProg "False"
-
-  ; test if MiKTeX is installed
-  ; read the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
-  ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
-  StrCpy $Search "miktex"
-  Call LaTeXCheck ; sets the path to the latex.exe to $LatexPath ; function from LyXUtils.nsh
-  ; check if MiKTeX 2.4 or 2.5 is installed
-  StrCpy $String ""
-  ReadRegStr $String HKLM "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
-  ${if} $String != ""
-   StrCpy $MiKTeXVersion "2.4" ; needed later for the configuration of MiKTeX
-   StrCpy $LaTeXName "MiKTeX 2.4"
-  ${endif}
-  
-  ${if} $LatexPath == "" ; check if MiKTeX is installed only for the current user
-   ; check for MiKTeX 2.5
-   ReadRegStr $String HKCU "Environment" "Path"
-   StrCpy $Search "miktex"
-   Call LaTeXCheck ; function from LyXUtils.nsh
-   ${if} $LatexPath != ""
-    StrCpy $MiKTeXUser "HKCU" ; needed later to for a message about MiKTeX's install folder write permissions, see InstallActions-*.nsh
-   ${endif}
-   ; check for MiKTeX 2.4
-   StrCpy $String ""
-   ReadRegStr $String HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
-   ${if} $String != ""
-    StrCpy $MiKTeXVersion "2.4"
-    StrCpy $LaTeXName "MiKTeX 2.4"
-   ${endif}
-  ${endif}
-  
-  ${if} $LatexPath != ""
-   StrCpy $MiKTeXInstalled "yes"
-   ${if} $LaTeXName != "MiKTeX 2.4"
-    StrCpy $LaTeXName "MiKTeX 2.5"
-   ${endif} 
-  ${endif}
-
-  ; test if TeXLive is installed
-  ; as described at TeXLives' homepage there should be an entry in the PATH
-  ${if} $LatexPath == ""
-   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
-   StrCpy $Search "TeXLive"
-   Call LaTeXCheck ; function from LyXUtils.nsh
-  ${endif}
-  ; check for the current user Path variable (the case when it is a live CD/DVD)
-  ${if} $LatexPath == ""
-   ReadRegStr $String HKCU "Environment" "Path"
-   StrCpy $Search "texlive"
-   StrCpy $2 "TeXLive"
-   Call LaTeXCheck ; function from LyXUtils.nsh
-  ${endif}
-  ; check if the variable TLroot exists (the case when it is installed using the program "tlpmgui")
-  ${if} $LatexPath == ""
-   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "TLroot"
-   ${if} $String == ""
-    ReadRegStr $String HKCU "Environment" "TLroot" ; the case when installed without admin permissions
-   ${endif}
-   StrCpy $LatexPath "$String\bin\win32"
-   ; check if the latex.exe exists in the $LatexPath folder
-   !insertmacro FileCheck $5 "latex.exe" "$LatexPath" ; macro from LyXUtils.nsh
-   ${if} $5 == "False"
-    StrCpy $LatexPath ""
-   ${endif}
-  ${endif}
-  ${if} $LatexPath != ""
-  ${andif} $LaTeXName != "MiKTeX 2.4"
-  ${andif} $LaTeXName != "MiKTeX 2.5"
-   StrCpy $LaTeXName "TeXLive"
-  ${endif} 
 
   ; test if Ghostscript is installed
   GSloop:
@@ -166,7 +97,7 @@ Function MissingPrograms
   ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
 
   ; test if an editor with syntax-highlighting for LaTeX-files is installed (function in LyXUtils.nsh)
-  Call EditorCheck ; function from LyXUtils.nsh
+  Call EditorCheck ; function from Editors.nsh
 
   ; test if an image editor is installed (due to LyX's bug 2654 first check for GIMP)
   StrCpy $ImageEditorPath ""
