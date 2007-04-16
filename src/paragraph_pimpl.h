@@ -131,7 +131,7 @@ public:
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
 	/// \return whether a surrogate pair was output.
-	bool simpleTeXBlanks(BufferParams const &, Encoding const &,
+	bool simpleTeXBlanks(Encoding const &,
 	                     odocstream &, TexRow & texrow,
 			     pos_type & i,
 			     unsigned int & column,

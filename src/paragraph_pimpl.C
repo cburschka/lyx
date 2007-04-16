@@ -385,8 +385,7 @@ int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
 }
 
 
-bool Paragraph::Pimpl::simpleTeXBlanks(BufferParams const & bparams,
-                                       Encoding const & encoding,
+bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
                                        odocstream & os, TexRow & texrow,
                                        pos_type & i,
 				       unsigned int & column,

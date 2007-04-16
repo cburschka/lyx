@@ -1097,7 +1097,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			// simpleTeXSpecialChars ignores spaces if
 			// style->pass_thru is false.
 			if (i != body_pos - 1) {
-				if (pimpl_->simpleTeXBlanks(bparams,
+				if (pimpl_->simpleTeXBlanks(
 						*(runparams.encoding), os, texrow,
 						i, column, font, *style))
 					// A surrogate pair was output. We
