@@ -1021,9 +1021,8 @@ msgid "F&ind:"
 msgstr "&Suchen:"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:147
-#, fuzzy
 msgid "TeX Code"
-msgstr "TeX-Code|X"
+msgstr "TeX-Code"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:162
 msgid "Match delimiter types"
@@ -1690,16 +1689,15 @@ msgstr "Dieser Text definiert die Breite der Absatzmarke"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:136
 msgid "&Longest label"
-msgstr "&Längste Marke"
+msgstr "Längste &Marke"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:157
-#, fuzzy
 msgid "Indent &Paragraph"
 msgstr "Absatz &einrücken"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:203
 msgid "L&ine spacing:"
-msgstr "&Zeilenabstand:"
+msgstr "Zeilen&abstand:"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:219
 #: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1737
@@ -1726,29 +1724,24 @@ msgid "Custom"
 msgstr "Benutzerdefiniert"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
-#, fuzzy
 msgid "&Default"
-msgstr "Standard"
+msgstr "&Standard"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:278
-#, fuzzy
 msgid "&Justified"
-msgstr "Blocksatz"
+msgstr "&Blocksatz"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:285
-#, fuzzy
 msgid "&Left"
-msgstr "Links"
+msgstr "&Links"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:292
-#, fuzzy
 msgid "&Right"
-msgstr "Rechts"
+msgstr "&Rechts"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:299
-#, fuzzy
 msgid "&Center"
-msgstr "Zentriert"
+msgstr "Zen&triert"
 
 #: src/frontends/qt4/ui/QPrefColorsUi.ui:25
 msgid "&Colors"
@@ -4962,19 +4955,16 @@ msgid "Language Header:"
 msgstr "Kopfzeile links:"
 
 #: lib/layouts/europecv.layout:153 lib/layouts/moderncv.layout:138
-#, fuzzy
 msgid "Language:"
-msgstr "S&prache:"
+msgstr "Sprache:"
 
 #: lib/layouts/europecv.layout:160
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Sprache"
+msgstr "Letzte Sprache"
 
 #: lib/layouts/europecv.layout:169
-#, fuzzy
 msgid "Last Language:"
-msgstr "S&prache:"
+msgstr "Letzte Sprache:"
 
 #: lib/layouts/europecv.layout:176
 #, fuzzy
@@ -5509,62 +5499,50 @@ msgid "NameRowG:"
 msgstr "Name Zeile G:"
 
 #: lib/layouts/g-brief2.layout:212
-#, fuzzy
 msgid "AddressRowA"
 msgstr "Adresse Zeile A"
 
 #: lib/layouts/g-brief2.layout:223
-#, fuzzy
 msgid "AddressRowA:"
 msgstr "Adresse Zeile A:"
 
 #: lib/layouts/g-brief2.layout:232
-#, fuzzy
 msgid "AddressRowB"
 msgstr "Adresse Zeile B"
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowB:"
 msgstr "Adresse Zeile B:"
 
 #: lib/layouts/g-brief2.layout:251
-#, fuzzy
 msgid "AddressRowC"
 msgstr "Adresse Zeile C"
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowC:"
 msgstr "Adresse Zeile C:"
 
 #: lib/layouts/g-brief2.layout:270
-#, fuzzy
 msgid "AddressRowD"
 msgstr "Adresse Zeile D"
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowD:"
 msgstr "Adresse Zeile D:"
 
 #: lib/layouts/g-brief2.layout:289
-#, fuzzy
 msgid "AddressRowE"
 msgstr "Adresse Zeile E"
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowE:"
 msgstr "Adresse Zeile E:"
 
 #: lib/layouts/g-brief2.layout:308
-#, fuzzy
 msgid "AddressRowF"
 msgstr "Adresse Zeile F"
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowF:"
 msgstr "Adresse Zeile F:"
 
@@ -6037,9 +6015,8 @@ msgid "Legend"
 msgstr "Legende"
 
 #: lib/layouts/moderncv.layout:58
-#, fuzzy
 msgid "Entry:"
-msgstr "Eintrag"
+msgstr "Eintrag:"
 
 #: lib/layouts/moderncv.layout:81
 #, fuzzy
@@ -8544,14 +8521,12 @@ msgid "Gathered Environment|h"
 msgstr "Gathered-Umgebung|h"
 
 #: lib/ui/stdmenus.inc:364
-#, fuzzy
 msgid "Delimiters|r"
-msgstr "Mathe-Trennzeichen"
+msgstr "Trennzeichen|z"
 
 #: lib/ui/stdmenus.inc:365
-#, fuzzy
 msgid "Matrix|x"
-msgstr "Mathe-Matrix"
+msgstr "Matrix|x"
 
 #: lib/ui/stdmenus.inc:367
 msgid "Math Panel|P"
@@ -13290,26 +13265,5 @@ msgstr "geschützt"
 #~ "kann nicht in ein Nicht-Dokumentenformat exportiert bzw. in letzterem "
 #~ "betrachtet werden."
 
-#~ msgid "The encoding for the screen fonts."
-#~ msgstr "Die Kodierung der Bildschirmschriften."
-
 #~ msgid "Class Settings"
 #~ msgstr "Klassen-Einstellungen"
-
-#~ msgid "Save Bookmark|S"
-#~ msgstr "Lesezeichen speichern|L"
-
-#~ msgid "The bold font in the dialogs."
-#~ msgstr "Die Fettschrift in den Dialogfeldern."
-
-#~ msgid "The encoding for the menu/popups fonts."
-#~ msgstr "Die Kodierung der Schriften in den Menüs und Dialogen."
-
-#~ msgid "The normal font in the dialogs."
-#~ msgstr "Die Normalschrift in den Dialogfeldern."
-
-#~ msgid "\tEnd."
-#~ msgstr "\tEnde."
-
-#~ msgid "#*"
-#~ msgstr "#*"
