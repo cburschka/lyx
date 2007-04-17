@@ -14717,9 +14717,7 @@ pt.
 
 \begin_layout Description
 Between\InsetSpace ~
-rows only has an effect when you have selected the whole table row
- before.
- The space is added between the current and the following row.
+rows adds space between the current and the following row.
  If the table is a formal table LyX will insert as default 0.5\InsetSpace \thinspace{}
 em space.
  For normal tables the inserted space will unfortunately destroy the vertical
