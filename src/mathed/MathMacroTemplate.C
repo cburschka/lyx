@@ -105,7 +105,7 @@ docstring MathMacroTemplate::name() const
 
 docstring MathMacroTemplate::prefix() const
 {
-	return bformat(_(" Macro \\%1$s: "), name_);
+	return bformat(_(" Macro: %1$s: "), name_);
 }
 
 

@@ -41,7 +41,7 @@ MacroData::MacroData()
 
 
 MacroData::MacroData(docstring const & def, int numargs, docstring const & disp, string const & requires)
-	: def_(def), numargs_(numargs), disp_(disp), requires_(requires), lockCount_(0)
+	: def_(def), numargs_(numargs), disp_(disp), requires_(requires)
 {}
 
 

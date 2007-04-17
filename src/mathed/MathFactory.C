@@ -392,7 +392,15 @@ MathAtom createInsetMath(docstring const & s)
 	if (s == "vphantom")
 		return MathAtom(new InsetMathPhantom(InsetMathPhantom::vphantom));
 
-	return MathAtom(new MathMacro(s));
+	if (MacroTable::globalMacros().has(s))
+		return MathAtom(new MathMacro(s,
+			MacroTable::globalMacros().get(s).numargs()));
+	//if (MacroTable::localMacros().has(s))
+	//	return MathAtom(new MathMacro(s,
+	//		MacroTable::localMacros().get(s).numargs()));
+
+	//lyxerr << "creating unknown inset '" << s << "'" << endl;
+	return MathAtom(new InsetMathUnknown(s));
 }
 
 

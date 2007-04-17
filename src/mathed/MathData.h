@@ -161,7 +161,7 @@ public:
 	int kerning() const { return kerning_; }
 	/// 
 	void swap(MathArray & ar) { base_type::swap(ar); }
-	
+
 protected:
 	/// cached dimensions of cell
 	mutable Dimension dim_;
@@ -172,9 +172,6 @@ protected:
 	mutable int sshift_;
 	mutable int kerning_;
 
-	/// attach/detach brace inset to macros
-	void updateMacros(MetricsInfo & mi);
-	
 private:
 	/// is this an exact match at this position?
 	bool find1(MathArray const & ar, size_type pos) const;

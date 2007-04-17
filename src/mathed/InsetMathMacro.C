@@ -33,49 +33,8 @@ using std::endl;
 using std::vector;
 
 
-/// This class is the value of a macro argument, technically 
-/// a wrapper of the cells of MathMacro.
-class MathMacroArgumentValue : public InsetMathDim {
-public:
-	///
-	MathMacroArgumentValue(MathArray const * value) : value_(value) {}
-	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo &, int x, int y) const;
-	
-private:
-	std::auto_ptr<InsetBase> doClone() const;
-	MathArray const * value_;
-};
-
-
-auto_ptr<InsetBase> MathMacroArgumentValue::doClone() const 
-{
-	return auto_ptr<InsetBase>(new MathMacroArgumentValue(*this));
-}
-
-
-bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const 
-{
-	value_->metrics(mi, dim);
-	metricsMarkers2(dim);
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
-}
-
-
-void MathMacroArgumentValue::draw(PainterInfo & pi, int x, int y) const 
-{
-	value_->draw(pi, x, y);
-}
-
-
-
-MathMacro::MathMacro(docstring const & name)
-	: InsetMathNest(0), name_(name)
+MathMacro::MathMacro(docstring const & name, int numargs)
+	: InsetMathNest(numargs), name_(name)
 {}
 
 
@@ -121,12 +80,7 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des += c.height() + 10;
 		}
 	} else {
-		// create MathMacroArgumentValue object pointing to the cells of the macro
-		MacroData const & macro = MacroTable::globalMacros().get(name());
-		vector<MathArray> values(nargs());
-		for (size_t i = 0; i != nargs(); ++i) 
-			values[i].insert(0, MathAtom(new MathMacroArgumentValue(&cells_[i])));
-		macro.expand(values, expanded_);
+		MacroTable::globalMacros().get(name()).expand(cells_, expanded_);
 		expanded_.metrics(mi, dim);
 	}
 	metricsMarkers2(dim);
@@ -187,23 +141,18 @@ void MathMacro::validate(LaTeXFeatures & features) const
 InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
-	if (nargs() > 0) 
+	if (nargs() > 0) {
+		// Prevent crash due to cold coordcache
+		// FIXME: This is only a workaround, the call of
+		// InsetMathNest::editXY is correct. The correct fix would
+		// ensure that the coordcache of the arguments is valid.
+		if (!editing(&cur.bv())) {
+			edit(cur, true);
+			return this;
+		}
 		return InsetMathNest::editXY(cur, x, y);
-	else 
-		return this;
-}
-
-
-void MathMacro::detachArguments(std::vector<MathArray> &args)
-{
-	args = cells_;
-	cells_ = std::vector<MathArray>();
-}
-
-
-void MathMacro::attachArguments(std::vector<MathArray> const &args)
-{
-	cells_ = args;
+	}
+	return this;
 }
 
 
@@ -230,19 +179,28 @@ bool MathMacro::notifyCursorLeaves(LCursor & cur)
 
 void MathMacro::maple(MapleStream & os) const
 {
+	updateExpansion();
 	lyx::maple(expanded_, os);
 }
 
 
 void MathMacro::mathmlize(MathStream & os) const
 {
+	updateExpansion();
 	lyx::mathmlize(expanded_, os);
 }
 
 
 void MathMacro::octave(OctaveStream & os) const
 {
+	updateExpansion();
 	lyx::octave(expanded_, os);
+}
+
+
+void MathMacro::updateExpansion() const
+{
+	//expanded_.substitute(*this);
 }
 
 
@@ -255,6 +213,7 @@ void MathMacro::infoize(odocstream & os) const
 void MathMacro::infoize2(odocstream & os) const
 {
 	os << "Macro: " << name();
+
 }
 
 

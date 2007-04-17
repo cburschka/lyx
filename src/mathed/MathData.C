@@ -14,7 +14,6 @@
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "InsetMathMacro.h"
-#include "InsetMathBrace.h"
 #include "MathMacroTable.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -240,6 +239,7 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 }
 
 
+
 void MathArray::metrics(MetricsInfo & mi) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
@@ -256,16 +256,37 @@ void MathArray::metrics(MetricsInfo & mi) const
 	if (empty())
 		return;
 
-	const_cast<MathArray*>(this)->updateMacros( mi );
-	
 	dim_.asc = 0;
 	dim_.wid = 0;
-	Dimension d;	
-	for (size_t i = 0; i != size(); ++i) {
+	Dimension d;
+	//BufferView & bv  = *mi.base.bv;
+	//Buffer const & buf = *bv.buffer();
+	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
+#if 0
+		MathMacro const * mac = at->asMacro();
+		if (mac && buf.hasMacro(mac->name())) {
+			MacroData const & tmpl = buf.getMacro(mac->name());
+			int numargs = tmpl.numargs();
+			if (i + numargs > n)
+				numargs = n - i - 1;
+			lyxerr << "metrics:found macro: " << mac->name()
+				<< " numargs: " << numargs << endl;
+			if (!isInside(bv.cursor(), *this, i + 1, i + numargs + 1)) {
+				MathArray args(begin() + i + 1, begin() + i + numargs + 1);
+				MathArray exp;
+				tmpl.expand(args, exp);
+				mac->setExpansion(exp, args);
+				mac->metricsExpanded(mi, d);
+				dim_.wid += mac->widthExpanded();
+				i += numargs;
+				continue;
+			}
+		}
+#endif
 		at->metrics(mi, d);
 		dim_ += d;
-		if (i == size() - 1)
+		if (i == n - 1)
 			kerning_ = at->kerning();
 	}
 }
@@ -291,6 +312,23 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
+#if 0
+	Buffer const & buf = bv.buffer();
+		// special macro handling
+		MathMacro const * mac = at->asMacro();
+		if (mac && buf.hasMacro(mac->name())) {
+			MacroData const & tmpl = buf.getMacro(mac->name());
+			int numargs = tmpl.numargs();
+			if (i + numargs > n)
+				numargs = n - i - 1;
+			if (!isInside(bv.cursor(), *this, i + 1, i + numargs + 1)) {
+				mac->drawExpanded(pi, x, y);
+				x += mac->widthExpanded();
+				i += numargs;
+				continue;
+			}
+		}
+#endif
 		bv.coordCache().insets().add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
@@ -321,74 +359,6 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 		(*it)->drawT(pain, x, y);
 		//x += (*it)->width_;
 		x += 2;
-	}
-}
-
-
-void MathArray::updateMacros(MetricsInfo & mi) {
-	Buffer *buf = mi.base.bv->buffer(); 
-	
-	// go over the array and look for macros
-	for (size_t i = 0; i != size(); ++i) {
-		InsetMath * at = operator[](i).nucleus();
-		MathMacro * macroInset = at->asMacro();
-		if (macroInset) {
-			// get arity of macro or 0 if unknown
-			size_t numargs = 0;
-			if (buf->hasMacro(macroInset->name())) {
-				MacroData const & macro = buf->getMacro(macroInset->name());
-				numargs = macro.numargs();
-			}
-			
-			// arity of macro changed?
-			if (macroInset->nargs() != numargs) {
-				// detach all arguments
-				std::vector<MathArray> detachedArgs;
-				macroInset->detachArguments( detachedArgs );
-				
-				// too many arguments in the macro inset?
-				if (detachedArgs.size() > numargs) {
-					// insert overlap back as braces
-					std::vector<MathArray> overlap(detachedArgs.begin()+numargs, detachedArgs.end());
-					detachedArgs.erase(detachedArgs.begin()+numargs, detachedArgs.end());
-					for (size_t j = 0; j < overlap.size(); ++j) {
-						MathArray const & arg = overlap[j];
-						if (arg.size() == 1)
-							insert(i+j+1, MathAtom(new InsetMathBrace(arg)));
-						else
-							insert(i+j+1, arg[0]);
-					}
-					i += overlap.size();
-				} else {
-					// insert some cells from the array into the macro inset
-					size_t missingArgs = numargs-detachedArgs.size();
-					size_t j;
-					for (j = 0; j < missingArgs && i+1+j < size(); ++j) {
-						MathAtom & cell = operator[](i+1+j);
-						InsetMathBrace const * brace = cell->asBraceInset();
-						if (brace) {
-							// found brace, convert into argument
-							detachedArgs.push_back(brace->cell(0));
-						} else {
-							MathArray array;
-							array.insert(0, cell);
-							detachedArgs.push_back(array);
-						}
-					}
-					
-					// remove them from the array
-					erase(begin()+i+1, begin()+i+1+j);
-					
-					// enough for the macro inset now?
-					// Add some empty ones of necessary
-					for (; j < missingArgs; ++j)
-						detachedArgs.insert(detachedArgs.end(), MathArray());
-				}
-				
-				// attach arguments back to macro inset
-				macroInset->attachArguments(detachedArgs);
-			}
-		}
 	}
 }
 

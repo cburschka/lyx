@@ -25,6 +25,8 @@ public:
 	InsetMathBrace();
 	///
 	InsetMathBrace(MathArray const & ar);
+	///
+	InsetMathBrace const * asBraceInset() const { return this; }
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
@@ -45,11 +47,6 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void infoize(odocstream & os) const;
-	
-	/// identifies brace insets
-	InsetMathBrace * asBraceInset() { return this; }
-	/// identifies brace insets
-	InsetMathBrace const * asBraceInset() const { return this; }
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
