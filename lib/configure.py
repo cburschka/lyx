@@ -238,8 +238,8 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
     #
-    path, iv = checkViewer('a raster image viewer', ['xv', 'kview', 'gimp'])
-    path, ie = checkViewer('a raster image editor', ['gimp'])
+    path, iv = checkViewer('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'])
+    path, ie = checkViewer('a raster image editor', ['gimp-remote', 'gimp'])
     addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
 \Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
