@@ -51,7 +51,7 @@ protected Q_SLOTS:
 
 protected:
 	///
-	void enableButtons(bool enable = true);
+	void enableControls(bool enable = true);
 	///
 	int getIndexDepth(QModelIndex const & index, int depth = -1);
 	///

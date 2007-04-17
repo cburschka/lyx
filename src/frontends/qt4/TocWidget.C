@@ -129,39 +129,39 @@ void TocWidget::on_typeCO_activated(int value)
 
 void TocWidget::on_moveUpPB_clicked()
 {
-	enableButtons(false);
+	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
-		enableButtons(false);
+		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineUp();
-		enableButtons(true);
+		enableControls(true);
 	}
 }
 
 
 void TocWidget::on_moveDownPB_clicked()
 {
-	enableButtons(false);
+	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
-		enableButtons(false);
+		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineDown();
-		enableButtons(true);
+		enableControls(true);
 	}
 }
 
 
 void TocWidget::on_moveInPB_clicked()
 {
-	enableButtons(false);
+	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
-		enableButtons(false);
+		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineIn();
-		enableButtons(true);
+		enableControls(true);
 	}
 }
 
@@ -170,10 +170,10 @@ void TocWidget::on_moveOutPB_clicked()
 {
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
-		enableButtons(false);
+		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineOut();
-		enableButtons(true);
+		enableControls(true);
 	}
 }
 
@@ -194,7 +194,7 @@ void TocWidget::select(QModelIndex const & index)
 }
 
 
-void TocWidget::enableButtons(bool enable)
+void TocWidget::enableControls(bool enable)
 {
 	updatePB->setEnabled(enable);
 
@@ -205,6 +205,8 @@ void TocWidget::enableButtons(bool enable)
 	moveDownPB->setEnabled(enable);
 	moveInPB->setEnabled(enable);
 	moveOutPB->setEnabled(enable);
+
+	depthSL->setEnabled(enable);
 }
 
 
@@ -220,11 +222,10 @@ void TocWidget::updateGui()
 {
 	QStringListModel * type_model = form_->typeModel();
 	if (type_model->stringList().isEmpty()) {
-		enableButtons(false);
+		enableControls(false);
 		typeCO->setModel(type_model);
 		tocTV->setModel(new QStandardItemModel);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
-		depthSL->setEnabled(false);
 		return;
 	}
 
@@ -242,20 +243,22 @@ void TocWidget::updateGui()
 
 void TocWidget::setTocModel(size_t type)
 {
-	bool buttons_enabled = false;
+	bool controls_enabled = false;
 	QStandardItemModel * toc_model = form_->tocModel(type);
 	if (toc_model) {
-		buttons_enabled = toc_model->rowCount() > 0;
+		controls_enabled = toc_model->rowCount() > 0;
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
 
-	enableButtons(buttons_enabled);
+	enableControls(controls_enabled);
 
 	reconnectSelectionModel();
-	depthSL->setEnabled(true);
-	depthSL->setMaximum(form_->getTocDepth(type));
-	depthSL->setValue(depth_);
+
+	if (controls_enabled) {
+		depthSL->setMaximum(form_->getTocDepth(type));
+		depthSL->setValue(depth_);
+	}
 
 	LYXERR(Debug::GUI) << "In TocWidget::updateGui()" << endl;
 
