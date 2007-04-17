@@ -435,8 +435,12 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		// the layout file will be correctly loaded later.
 		if (!getLyXTextClass().isTeXClassAvailable()) {
 			docstring const msg =
-				bformat(_("The document uses a missing "
-						       "TeX class \"%1$s\".\n"), from_utf8(classname));
+				bformat(_("The layout file requested by this document,\n"
+					         "%1$s.layout,\n"
+					         "is not usable. This is probably because a LaTeX\n"
+					         "class or style file required by it is not\n"
+					         "available. See the Customization documentation\n"
+					         "for more information.\n"), from_utf8(classname));
 			Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
 		}
