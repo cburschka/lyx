@@ -12,12 +12,12 @@
 #ifndef MATH_MACROTABLE_H
 #define MATH_MACROTABLE_H
 
-#include <map>
-#include <vector>
-
 #include "support/docstring.h"
 
 #include <boost/assert.hpp>
+
+#include <map>
+#include <vector>
 
 namespace lyx {
 
@@ -46,9 +46,9 @@ public:
 	///
 	int lock() { return ++lockCount_; }
 	///
-	bool locked() const { return lockCount_!=0; }
+	bool locked() const { return lockCount_ != 0; }
 	///
-	void unlock() { --lockCount_; BOOST_ASSERT(lockCount_>=0); }
+	void unlock() { --lockCount_; BOOST_ASSERT(lockCount_ >= 0); }
 	
 private:
 	///
