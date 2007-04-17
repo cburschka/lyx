@@ -17,6 +17,8 @@
 
 #include "support/docstring.h"
 
+#include <boost/assert.hpp>
+
 namespace lyx {
 
 class MathArray;
@@ -46,7 +48,7 @@ public:
 	///
 	bool locked() const { return lockCount_!=0; }
 	///
-	void unlock() { --lockCount_; assert(lockCount_>=0); }
+	void unlock() { --lockCount_; BOOST_ASSERT(lockCount_>=0); }
 	
 private:
 	///
