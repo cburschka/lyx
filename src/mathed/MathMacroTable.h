@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author Andr Pï¿½nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,10 +12,12 @@
 #ifndef MATH_MACROTABLE_H
 #define MATH_MACROTABLE_H
 
+#include "support/docstring.h"
+
+#include <boost/assert.hpp>
+
 #include <map>
 #include <vector>
-
-#include "support/docstring.h"
 
 namespace lyx {
 
@@ -40,6 +42,12 @@ public:
 	std::string requires() const { return requires_; }
 	///
 	std::string & requires() { return requires_; }
+	/// lock while being drawn
+	int lock() const { return ++lockCount_; }
+	/// is it being drawn?
+	bool locked() const { return lockCount_ != 0; }
+	///
+	void unlock() const { --lockCount_; BOOST_ASSERT(lockCount_ >= 0); } 	
 
 private:
 	///
@@ -50,6 +58,8 @@ private:
 	docstring disp_;
 	///
 	std::string requires_;
+	///
+	mutable int lockCount_;
 };
 
 

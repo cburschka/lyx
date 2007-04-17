@@ -36,12 +36,12 @@ using std::size_t;
 
 
 MacroData::MacroData()
-	: numargs_(0)
+	: numargs_(0), lockCount_(0)
 {}
 
 
 MacroData::MacroData(docstring const & def, int numargs, docstring const & disp, string const & requires)
-	: def_(def), numargs_(numargs), disp_(disp), requires_(requires)
+	: def_(def), numargs_(numargs), disp_(disp), requires_(requires), lockCount_(0)
 {}
 
 
