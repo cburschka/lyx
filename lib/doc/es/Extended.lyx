@@ -552,65 +552,7 @@ ghostview
 \end_layout
 
 \begin_layout Section
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes fld
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{}
-\end_layout
-
-\end_inset
-
-
-\series medium
-\size normal
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-The command 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- is needed here for the PDF bookmark text because the ''
-\begin_inset Quotes fld
-\end_inset
-
-'' character causes troubles there when the document language is Spanish
- (for an unknown reason).
-\end_layout
-
-\end_inset
-
-
-\series default
-\size default
-¡Socorro! ¡
+«¡Socorro! ¡
 \begin_inset ERT
 status collapsed
 
@@ -638,11 +580,7 @@ status collapsed
 \family typewriter
 .tex
 \family default
- ilegible!
-\begin_inset Quotes frd
-\end_inset
-
-
+ ilegible!»
 \end_layout
 
 \begin_layout Standard
@@ -7741,70 +7679,7 @@ xdvi
 \end_layout
 
 \begin_layout Subsection
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes fld
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{}
-\end_layout
-
-\end_inset
-
-
-\series medium
-\size normal
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener el carácter ''
-\begin_inset Quotes fld
-\end_inset
-
-'' sin ocasionar problemas en documentos en español (por alguna razón desconocid
-a).
-\end_layout
-
-\end_inset
-
-
-\series default
-\size default
-Peculiaridades
-\begin_inset Quotes frd
-\end_inset
-
- del paquete Kluwer
+«Peculiaridades» del paquete Kluwer
 \begin_inset LatexCommand label
 name "subsec:kluwer_peculiaridades"
 
@@ -19009,69 +18884,7 @@ independiente de Noweb
 \end_layout
 
 \begin_layout Subsubsection
-Generación de documentación y de código (
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes fld
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{}
-\end_layout
-
-\end_inset
-
-
-\series medium
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener el carácter ''
-\begin_inset Quotes fld
-\end_inset
-
-'' sin ocasionar problemas en documentos en español (por alguna razón desconocid
-a).
-\end_layout
-
-\end_inset
-
-
-\series default
-weaving and tangling
-\begin_inset Quotes frd
-\end_inset
-
-)
+Generación de documentación y de código («weaving and tangling»)
 \end_layout
 
 \begin_layout Paragraph
