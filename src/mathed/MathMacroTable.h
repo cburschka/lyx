@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃˆ PË†nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -40,7 +40,14 @@ public:
 	std::string requires() const { return requires_; }
 	///
 	std::string & requires() { return requires_; }
-
+	
+	///
+	int lock() { return ++lockCount_; }
+	///
+	bool locked() const { return lockCount_!=0; }
+	///
+	void unlock() { --lockCount_; assert(lockCount_>=0); }
+	
 private:
 	///
 	docstring def_;
@@ -50,6 +57,8 @@ private:
 	docstring disp_;
 	///
 	std::string requires_;
+	///
+	int lockCount_;
 };
 
 
