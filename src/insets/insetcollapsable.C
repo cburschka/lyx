@@ -441,6 +441,9 @@ void InsetCollapsable::setStatus(LCursor & cur, CollapseStatus status)
 	setButtonLabel();
 	if (status_ == Collapsed)
 		cur.leaveInset(*this);
+	// Because we save CollapseStatus in lyx file, change of status
+	// should lead to a dirty buffer. (This fixes bug 2993).
+	cur.bv().buffer()->markDirty();
 }
 
 
