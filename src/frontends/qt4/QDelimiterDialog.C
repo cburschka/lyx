@@ -36,19 +36,19 @@ namespace frontend {
 
 namespace {
 
-char const * const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
+QString const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
 
 
-char const * const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
+QString const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
 
 
 char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter size]]"),
 	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
 
 
-string fix_name(string const & str, bool big)
+QString fix_name(QString const & str, bool big)
 {
-	if (str.empty())
+	if (str.isEmpty())
 		return ".";
 	if (!big || str == "(" || str == ")" || str == "[" || str == "]"
 	    || str == "|" || str == "/")
@@ -91,7 +91,6 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	setupUi(this);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(insertPB, SIGNAL(clicked()), this, SLOT(insertClicked()));
 
 	setWindowTitle(qt_("LyX: Delimiters"));
 	setFocusProxy(leftLW);
@@ -133,41 +132,83 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 }
 
 
-void QDelimiterDialog::insertClicked()
+void QDelimiterDialog::updateTeXCode(int size)
 {
-	string left_str;
-	string right_str;
-	if (leftLW->currentRow() < leftLW->count() - 1)
-		left_str = fromqstr(leftLW->currentItem()->toolTip());
-	if (rightLW->currentRow() < rightLW->count() - 1)
-		right_str = fromqstr(rightLW->currentItem()->toolTip());
+	QString left_str;
+	QString right_str;
+	QString bigl;
+	QString bigr;
+	QString code_str;
+	bool bigsize = size != 0;
 
-	int const size_ = sizeCO->currentIndex();
-	if (size_ == 0) {
-		form_->controller().dispatchDelim(
-			fix_name(left_str, false) + ' ' +
-			fix_name(right_str, false));
-	} else {
-		std::ostringstream os;
-		os << '"' << bigleft[size_ - 1] << "\" \""
-		   << fix_name(left_str, true) << "\" \""
-		   << bigright[size_ - 1] << "\" \""
-		   << fix_name(right_str, true) << '"';
-		form_->controller().dispatchBigDelim(os.str());
+	left_str = fix_name(leftLW->currentItem()->toolTip(), bigsize);
+	right_str = fix_name(rightLW->currentItem()->toolTip(), bigsize);
+
+	if (!bigsize)
+		tex_code_ = left_str + ' ' + right_str;
+	else {
+		tex_code_ = bigleft[size - 1] + '  '
+			+ left_str + ' ' 
+			+ bigright[size - 1] + ' '
+			+ right_str;
+		}
+
+	// generate TeX-code
+	left_str = fix_name(leftLW->currentItem()->toolTip(), true);
+	right_str = fix_name(rightLW->currentItem()->toolTip(), true);
+	if (bigsize == true) {
+		bigl = "\\" + bigleft[size];
+		bigr = "\\" + bigright[size];
 	}
+	if (!bigsize)
+		code_str = "TeX-Code: \\left" + left_str + ' ' + "\\right" + right_str;
+	else {
+		// There is nothing in the TeX-code when the delimiter is "None"
+		if (left_str == ".") {
+			left_str = "";
+			bigl = "";
+		}
+		if (right_str == ".") {
+			right_str = "";
+			bigr = "";
+		}
+		code_str = "TeX-Code: " + bigl
+			+ left_str + '  ' 
+			+ bigr
+			+ right_str;
+	}
+
+	texCodeL->setText(code_str);
+}
+
+void QDelimiterDialog::on_insertPB_clicked()
+{
+	if (sizeCO->currentIndex() == 0)
+		form_->controller().dispatchDelim(fromqstr(tex_code_));
+	else {
+		QString command = '"' + tex_code_ + '"';
+		command.replace(' ', "\" \"");
+		form_->controller().dispatchBigDelim(fromqstr(command));
+ 	}
+ }
+
+ 
+void QDelimiterDialog::on_sizeCO_activated(int index)
+{
+	updateTeXCode(index);
 }
 
 
 void QDelimiterDialog::on_leftLW_itemActivated(QListWidgetItem *)
 {
-	insertClicked();
+	on_insertPB_clicked();
 	accept();
 }
 
 
 void QDelimiterDialog::on_rightLW_itemActivated(QListWidgetItem *)
 {
-	insertClicked();
+	on_insertPB_clicked();
 	accept();
 }
 
@@ -177,11 +218,7 @@ void QDelimiterDialog::on_leftLW_currentRowChanged(int item)
 	if (matchCB->isChecked())
 		rightLW->setCurrentRow(item);
 
-	// Display the associated TeX name.
-	if (leftLW->currentRow() == leftLW->count() - 1)
-		texCodeL->clear();
-	else
-		texCodeL->setText("TeX code: \\" + leftLW->currentItem()->toolTip());
+	updateTeXCode(sizeCO->currentIndex());
 }
 
 
@@ -190,11 +227,7 @@ void QDelimiterDialog::on_rightLW_currentRowChanged(int item)
 	if (matchCB->isChecked())
 		leftLW->setCurrentRow(item);
 
-	// Display the associated TeX name.
-	if (rightLW->currentRow() == leftLW->count() - 1)
-		texCodeL->clear();
-	else
-		texCodeL->setText("TeX code: \\" + rightLW->currentItem()->toolTip());
+	updateTeXCode(sizeCO->currentIndex());
 }
 
 

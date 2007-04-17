@@ -33,12 +33,17 @@ public Q_SLOTS:
 	void on_leftLW_currentRowChanged(int);
 	void on_rightLW_currentRowChanged(int);
 	void on_matchCB_stateChanged(int);
-	void insertClicked();
+	void on_insertPB_clicked();
+	void on_sizeCO_activated(int);
 private:
 	///
 	char_type doMatch(char_type const symbol) const;
+	///
+	void updateTeXCode(int size);
 	/// owning form
 	QMathDelimiter * form_;
+	/// TeX code that will be inserted.
+	QString tex_code_;
 };
 
 } // namespace frontend

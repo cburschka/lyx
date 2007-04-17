@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>447</height>
+    <width>286</width>
+    <height>537</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -35,13 +35,13 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="" >
+  <widget class="QWidget" name="verticalLayout" >
    <property name="geometry" >
     <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>176</width>
-     <height>431</height>
+     <x>10</x>
+     <y>10</y>
+     <width>261</width>
+     <height>511</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" >
@@ -144,7 +144,16 @@
        </sizepolicy>
       </property>
       <property name="text" >
-       <string>TeX Code</string>
+       <string>TeX Code: \Biggl\Updownarrow \Biggr\Updownarrow</string>
+      </property>
+      <property name="textFormat" >
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment" >
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="wordWrap" >
+       <bool>false</bool>
       </property>
      </widget>
     </item>
@@ -189,6 +198,9 @@
         </property>
         <property name="text" >
          <string>&amp;Size:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
          <cstring>sizeCO</cstring>
