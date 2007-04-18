@@ -1,17 +1,25 @@
-#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass book
 \language english
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics none
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,8 @@
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "usti" 
 \end_header
 
 \begin_body
@@ -58,7 +67,7 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -157,7 +166,7 @@ This tutorial consists of examples and exercises.
  To get the most out of this document, you should read through the document,
  typing all the silly little things we're telling you to type and trying
  out all of the exercises to see if you get them right.
- For convenience, you might want to print out the PostScript® version of
+ For convenience, you might want to print out the PostScriptÂ® version of
  this document.
 \end_layout
 
@@ -192,7 +201,8 @@ Tutorial
 \emph default
 , you should definitely check out Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:latexusers}
+\begin_inset LatexCommand ref
+reference "sec:latexusers"
 
 \end_inset
 
@@ -275,11 +285,12 @@ Getting Started with LyX
 \end_layout
 
 \begin_layout Section
-Your First LyX Document 
+Your First LyX Document
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:first-doc-ex}
+\begin_inset LatexCommand label
+name "sec:first-doc-ex"
 
 \end_inset
 
@@ -288,9 +299,9 @@ Your First LyX Document
  Before you do, though, there are a few things we need to mention, which
  will hopefully make the 
 \emph on
-Tutorial 
+Tutorial
 \emph default
-more instructive, useful, and fun.
+ more instructive, useful, and fun.
  
 \end_layout
 
@@ -298,11 +309,12 @@ more instructive, useful, and fun.
 Because there's lots of information that we won't be giving you, the 
 \emph on
 first
-\series medium
 \emph default
- thing that you need to do is find the 
+ 
+\series medium
+thing that you need to do is find the
 \series default
-other 
+ other 
 \series medium
 help files.
  Luckily, this is very simple.
@@ -342,14 +354,14 @@ They can also serve as good examples of how to use the many features of
  
 \family sans
 \bar under
-D
+V
 \bar default
-ocuments
+iew
 \family default
- menu to switch between them.
- The
+ menu or the document tabs to switch between them.
+ The 
 \emph on
- Tutorial
+Tutorial
 \emph default
  will not cover in detail subjects which are described in the other LyX
  manuals.
@@ -381,7 +393,7 @@ dvips
 \family typewriter
 dvi
 \family default
- documents to PostScript® documents, and a working printer.
+ documents to PostScriptÂ® documents, and a working printer.
  This is a lot to assume.
  If any of this is not true, you (or a friendly system administrator) will
  need to set up your system.
@@ -714,10 +726,10 @@ E
 dit\SpecialChar \menuseparator
 Cut
 \family default
-,
+, 
 \family sans
 \bar under
- E
+E
 \bar default
 dit\SpecialChar \menuseparator
 Copy
@@ -752,9 +764,9 @@ F
 \bar default
 ind\InsetSpace ~
 &\InsetSpace ~
-Replace 
+Replace
 \family default
-for a search.
+ for a search.
  In the dialog, search with the 
 \family sans
 \bar under
@@ -874,7 +886,8 @@ WYSIWYM: Whitespace in LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:whitespace}
+\begin_inset LatexCommand label
+name "sec:whitespace"
 
 \end_inset
 
@@ -930,9 +943,9 @@ Mean
 \family sans
 Return
 \family default
- grammatically separates paragraphs, and a
+ grammatically separates paragraphs, and a 
 \family sans
- Space
+Space
 \family default
  grammatically separates words, so there is no reason to have several of
  them in a row; a 
@@ -965,9 +978,9 @@ exactly
  what you mean.
  The 
 \emph on
-User's Guide 
+User's Guide
 \emph default
-has information about all that.
+ has information about all that.
  It includes 
 \family sans
 HFill
@@ -1171,9 +1184,9 @@ Return
 \family sans
 Section
 \family default
- from the
+ from the 
 \family sans
- Environment
+Environment
 \family default
  menu again.
  LyX writes a 
@@ -1211,9 +1224,9 @@ Return
 \family sans
 Section
 \family default
- from the
+ from the 
 \family sans
- Environment
+Environment
 \family default
  menu again.
  Again, LyX writes 
@@ -1284,9 +1297,9 @@ Click on the second line and select
 \family sans
 Subsection
 \family default
- from the
+ from the 
 \family sans
- Environment
+Environment
 \family default
  menu.
  LyX numbers the subsection 
@@ -1368,7 +1381,8 @@ Section
 s, but you're only allowed to use them in certain types (text classes) of
  LyX documents (see Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:textclasses}
+\begin_inset LatexCommand ref
+reference "sec:textclasses"
 
 \end_inset
 
@@ -1379,9 +1393,9 @@ s, but you're only allowed to use them in certain types (text classes) of
 \begin_layout Standard
 Finally, you may want to have sections or subsections that are not numbered.
  There are environments for this as well.
- If you change one of your section headings to the
+ If you change one of your section headings to the 
 \family sans
- Section*
+Section*
 \family default
  environment (you may have to scroll down in the 
 \family sans
@@ -1467,9 +1481,9 @@ Itemize
 \end_layout
 
 \begin_layout Itemize
-An outline would use the
+An outline would use the 
 \family sans
- Enumerate
+Enumerate
 \family default
  environment's numbered lists (and lettered sublists).
  
@@ -1478,9 +1492,9 @@ An outline would use the
 \begin_layout Itemize
 A document describing several software packages could use the 
 \family sans
-Description 
+Description
 \family default
-environment, where each item in the list begins with a bold-faced word.
+ environment, where each item in the list begins with a bold-faced word.
  
 \end_layout
 
@@ -1594,9 +1608,9 @@ status collapsed
 LyX won't let you select the first bullet unless you also select the paragraph
  
 \emph on
-before 
+before
 \emph default
-the list, which you probably don't want to do.
+ the list, which you probably don't want to do.
  Similarly, you can't select the actual number in a numbered section title.
  Don't worry about it.
 \end_layout
@@ -1805,7 +1819,8 @@ Text classes
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:textclasses}
+\begin_inset LatexCommand label
+name "sec:textclasses"
 
 \end_inset
 
@@ -1827,9 +1842,10 @@ LaTeX users: this is equivalent to the LaTeX document class
 
 \end_inset
 
- 
+
 \emph default
-takes care of these large scale differences between different sorts of documents.
+ takes care of these large scale differences between different sorts of
+ documents.
  This 
 \emph on
 Tutorial
@@ -1912,9 +1928,9 @@ style files
  American Mathematics Society journals using the 
 \family sans
 Article\InsetSpace ~
-(AMS) 
+(AMS)
 \family default
-text class.
+ text class.
 \end_layout
 
 \begin_layout Standard
@@ -2095,11 +2111,7 @@ One of the most popular text classes is
 Letter
 \family default
 \SpecialChar \@.
- One way to write a letter would be to open a new
-\family sans
- 
-\family default
-file, and choose 
+ One way to write a letter would be to open a new file, and choose 
 \family sans
 Letter
 \family default
@@ -2161,14 +2173,14 @@ Environment
  menu, you'll see several environments, like the 
 \family sans
 My\InsetSpace ~
-Address 
+Address
 \family default
-environment, which don't even exist in most other text classes.
+ environment, which don't even exist in most other text classes.
  Others, like 
 \family sans
-Quote 
+Quote
 \family default
-and 
+ and 
 \family sans
 Description
 \family default
@@ -2269,13 +2281,13 @@ LyX (like LaTeX) considers the title --- which may contain the actual title,
 \begin_layout Standard
 Go back to your 
 \family typewriter
-newfile.lyx 
+newfile.lyx
 \family default
-document and make sure it's using the 
+ document and make sure it's using the 
 \family sans
-Article 
+Article
 \family default
-text class.
+ text class.
 \begin_inset Foot
 status collapsed
 
@@ -2296,9 +2308,9 @@ Title
  environment.
  On the next line, type your name and change it to the 
 \family sans
-Author 
+Author
 \family default
-environment.
+ environment.
  On the next line, write the date in the 
 \family sans
 Date
@@ -2329,7 +2341,8 @@ Labels and Cross-References
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:labels}
+\begin_inset LatexCommand label
+name "sec:labels"
 
 \end_inset
 
@@ -2359,10 +2372,10 @@ About This Document
 \end_inset
 
 .
- Click at the end of the section title line, and select
+ Click at the end of the section title line, and select 
 \family sans
 \bar under
- I
+I
 \bar default
 nsert\SpecialChar \menuseparator
 
@@ -2427,11 +2440,7 @@ section
 \begin_inset Quotes erd
 \end_inset
 
-
-\family typewriter
- 
-\family default
---- choose 
+ --- choose 
 \family sans
 \bar under
 I
@@ -2566,7 +2575,7 @@ We told you that LyX worries about numbering cross-references; now you can
  test that.
  Add a new section before Section\InsetSpace ~
 2.
- Now rerun LaTeX, and --- voilà! --- the section cross reference changed
+ Now rerun LaTeX, and --- voilÃ ! --- the section cross reference changed
  to 
 \begin_inset Quotes eld
 \end_inset
@@ -2628,7 +2637,8 @@ By the way, copying a chapter title may cause an error, because chapters
  If this happens, just delete the chapter title.
  If you want to know why this happens, see Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:textclasses}
+\begin_inset LatexCommand ref
+reference "sec:textclasses"
 
 \end_inset
 
@@ -2868,7 +2878,8 @@ Bibliographies
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:bibliographies}
+\begin_inset LatexCommand label
+name "sec:bibliographies"
 
 \end_inset
 
@@ -2887,9 +2898,9 @@ Bibliography
 \family default
  environment.
  Now, each paragraph you type will be a reference.
- Type
+ Type 
 \family typewriter
- The Lyx Tutorial, by the LyX Documentation Team
+The Lyx Tutorial, by the LyX Documentation Team
 \family default
  as your first reference.
  Note that LyX automatically puts a number in a box before each reference.
@@ -2987,9 +2998,9 @@ Citation
 \bar under
 L
 \bar default
-abel 
+abel
 \family default
-field in the 
+ field in the 
 \family sans
 Bibliography\InsetSpace ~
 Entry\InsetSpace ~
@@ -3006,9 +3017,9 @@ User's Guide
 \begin_layout Standard
 
 \series bold
-Exercise: 
+Exercise:
 \series default
-Fix the bibliography and citation in 
+ Fix the bibliography and citation in 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3981,7 +3992,8 @@ Matrices
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:matrices}
+\begin_inset LatexCommand label
+name "sec:matrices"
 
 \end_inset
 
@@ -4112,7 +4124,8 @@ User's Guide
 \emph default
 ), and multi-line equations (see Sec.
  
-\begin_inset LatexCommand \ref{sec:multiline}
+\begin_inset LatexCommand ref
+reference "sec:multiline"
 
 \end_inset
 
@@ -4344,7 +4357,7 @@ Settings
 
 \begin_layout Itemize
 LyX also supports including pictures in a number of formats (including JPEG
- and other bitmap formats, PostScript® and raw LaTeX) within documents.
+ and other bitmap formats, PostScriptÂ® and raw LaTeX) within documents.
  (You guessed it: 
 \family sans
 \bar under
@@ -4455,7 +4468,8 @@ ustomization\SpecialChar \@.
 LyX can read in LaTeX documents.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:tex2lyx}
+\begin_inset LatexCommand ref
+reference "sec:tex2lyx"
 
 \end_inset
 
@@ -4484,7 +4498,8 @@ LyX for LaTeX Users
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:latexusers}
+\begin_inset LatexCommand label
+name "sec:latexusers"
 
 \end_inset
 
@@ -4633,7 +4648,8 @@ usepackage{foo}
 \family default
  in the preamble (see Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:preamble}
+\begin_inset LatexCommand ref
+reference "sec:preamble"
 
 \end_inset
 
@@ -4648,7 +4664,8 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:tex2lyx}
+\begin_inset LatexCommand label
+name "sec:tex2lyx"
 
 \end_inset
 
@@ -4807,7 +4824,8 @@ Other Preamble Matter
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:preamble}
+\begin_inset LatexCommand label
+name "sec:preamble"
 
 \end_inset
 
@@ -4860,9 +4878,9 @@ C\SpecialChar \menuseparator
 B
 \bar default
 ibTeX\InsetSpace ~
-Reference 
+Reference
 \family default
-to include a 
+ to include a 
 \family typewriter
 bib
 \family default
@@ -4879,9 +4897,9 @@ References
 
  button, and you will get a 
 \family sans
-BibTeX 
+BibTeX
 \family default
-dialog.
+ dialog.
  In the 
 \family sans
 Database
@@ -4906,9 +4924,9 @@ Like in regular LaTeX, multiple bibliographies should be separated by commas,
 .
  Similarly, in the 
 \family sans
-Style 
+Style
 \family default
-field, type what you would type inside the braces of a 
+ field, type what you would type inside the braces of a 
 \family typewriter
 
 \backslash
@@ -4933,7 +4951,8 @@ itation
 \family default
  (see Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:bibliographies}
+\begin_inset LatexCommand ref
+reference "sec:bibliographies"
 
 \end_inset
 
