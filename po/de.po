@@ -1270,7 +1270,7 @@ msgstr "&Links unten:"
 #: src/frontends/qt4/ui/QExternalUi.ui:586
 #: src/frontends/qt4/ui/QGraphicsUi.ui:386
 msgid "Right &top:"
-msgstr "Rechts &oben:"
+msgstr "&Rechts oben:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:612
 msgid "x"
@@ -1327,12 +1327,11 @@ msgstr "Ausgabegröße"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:240
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr ""
+msgstr "Legt die Höhe der Grafik fest. Falls nicht ausgewählt, wird die Höhe automatisch bestimmt."
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:243
-#, fuzzy
 msgid "Set &height:"
-msgstr "&Kopfzeilenhöhe:"
+msgstr "&Höhe festlegen:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:250
 msgid "&Scale Graphics (%):"
@@ -1340,16 +1339,15 @@ msgstr "Grafik &skalieren (%):"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:260
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
+msgstr "Legt die Breite der Grafik fest. Falls nicht ausgewählt, wird die Breite automatisch bestimmt."
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:263
-#, fuzzy
 msgid "Set &width:"
-msgstr "&Breite:"
+msgstr "&Breite festlegen:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:273
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr ""
+msgstr "Skalieren Sie das Bild auf die maximale Größe, die sowohl Höhe und Breite nicht überschreitet"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:287
 msgid "&Clipping"
@@ -1366,9 +1364,8 @@ msgid "x:"
 msgstr "x:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:451
-#, fuzzy
 msgid "LaTe&X and LyX options"
-msgstr "LaTeX-&Optionen:"
+msgstr "LaTeX- und LyX-&Optionen"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:463
 #: src/frontends/qt4/ui/QGraphicsUi.ui:484
@@ -1752,23 +1749,20 @@ msgid "&Alter..."
 msgstr "&Ändern..."
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:25
-#, fuzzy
 msgid "Converter File Cache"
-msgstr "Datei einfügen|D"
+msgstr "Konverter-Datei-Cache"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:45
-#, fuzzy
 msgid "&Enabled"
-msgstr "&Lange Tabelle"
+msgstr "&Aktiv"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:65
 msgid "&Maximum Age (in days)"
-msgstr ""
+msgstr "&Maximales Alter (in Tagen)"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:89
-#, fuzzy
 msgid "Converter &Definitions"
-msgstr "Definitionen"
+msgstr "Konverter-&Definitionen"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:121
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:61
@@ -1782,14 +1776,12 @@ msgid "&Modify"
 msgstr "&Ändern"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:181
-#, fuzzy
 msgid "&From format:"
-msgstr "&Format:"
+msgstr "&Von Format:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:213
-#, fuzzy
 msgid "&To format:"
-msgstr "&Datumsformat:"
+msgstr "&Nach Format:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:247
 msgid "E&xtra flag:"
@@ -4901,24 +4893,20 @@ msgid "Key words:"
 msgstr "Schlagwörter:"
 
 #: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:65
-#, fuzzy
 msgid "Item"
-msgstr "Auflistung"
+msgstr ""
 
 #: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:74
-#, fuzzy
 msgid "Item:"
-msgstr "Auflistung"
+msgstr ""
 
 #: lib/layouts/europecv.layout:64
-#, fuzzy
 msgid "BulletedItem"
-msgstr "Auflistungszeichen"
+msgstr ""
 
 #: lib/layouts/europecv.layout:73
-#, fuzzy
 msgid "Bulleted Item:"
-msgstr "Gelöschter Text"
+msgstr ""
 
 #: lib/layouts/europecv.layout:80
 msgid "Begin"
@@ -4945,14 +4933,12 @@ msgid "Mother Tongue:"
 msgstr ""
 
 #: lib/layouts/europecv.layout:129
-#, fuzzy
 msgid "LangHeader"
-msgstr "Kopfzeile"
+msgstr ""
 
 #: lib/layouts/europecv.layout:137
-#, fuzzy
 msgid "Language Header:"
-msgstr "Kopfzeile links:"
+msgstr ""
 
 #: lib/layouts/europecv.layout:153 lib/layouts/moderncv.layout:138
 msgid "Language:"
@@ -4967,19 +4953,16 @@ msgid "Last Language:"
 msgstr "Letzte Sprache:"
 
 #: lib/layouts/europecv.layout:176
-#, fuzzy
 msgid "LangFooter"
-msgstr "Fußzeile:"
+msgstr ""
 
 #: lib/layouts/europecv.layout:184
-#, fuzzy
 msgid "Language Footer:"
-msgstr "S&prache:"
+msgstr ""
 
 #: lib/layouts/europecv.layout:191
-#, fuzzy
 msgid "End"
-msgstr "\tEnde)"
+msgstr ""
 
 #: lib/layouts/europecv.layout:201
 msgid "End of CV"
@@ -6019,64 +6002,52 @@ msgid "Entry:"
 msgstr "Eintrag:"
 
 #: lib/layouts/moderncv.layout:81
-#, fuzzy
 msgid "ListItem"
-msgstr "Liste"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:90
-#, fuzzy
 msgid "List Item:"
-msgstr "Letzte Fußzeile:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:97
-#, fuzzy
 msgid "DoubleItem"
-msgstr "Doppelt"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:106
-#, fuzzy
 msgid "Double Item:"
-msgstr "Doppelt"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:113
-#, fuzzy
 msgid "Space"
-msgstr "Leerzeichen"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:122
-#, fuzzy
 msgid "Space:"
-msgstr "Leerzeichen"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:145
-#, fuzzy
 msgid "Computer"
-msgstr "Courier"
+msgstr "Computer"
 
 #: lib/layouts/moderncv.layout:154
-#, fuzzy
 msgid "Computer:"
-msgstr "&Kopierer:"
+msgstr "Computer:"
 
 #: lib/layouts/moderncv.layout:161
-#, fuzzy
 msgid "EmptySection"
-msgstr "Abschnitt"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:170
-#, fuzzy
 msgid "Empty Section"
-msgstr "Abschnitt"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:177
-#, fuzzy
 msgid "CloseSection"
-msgstr "Auswahl"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:186
-#, fuzzy
 msgid "Close Section"
-msgstr "Auswahl"
+msgstr ""
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -8873,7 +8844,6 @@ msgid "Insert { }"
 msgstr "{ } einfügen"
 
 #: lib/ui/stdtoolbars.inc:138
-#, fuzzy
 msgid "Insert delimiters"
 msgstr "Füge die Trennzeichen ein"
 
@@ -13234,36 +13204,3 @@ msgstr "Variabel"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "geschützt"
-
-#, fuzzy
-#~ msgid "Insert math delimiters"
-#~ msgstr "Füge die Trennzeichen ein"
-
-#~ msgid "E&xtra options"
-#~ msgstr "&Zusatz-Optionen"
-
-#~ msgid "Alig&nment:"
-#~ msgstr "&Ausrichtung:"
-
-#~ msgid "&From:"
-#~ msgstr "&Von:"
-
-#~ msgid "&To:[[as in 'From format x to format y']]"
-#~ msgstr "&Nach:"
-
-#~ msgid "&Converters"
-#~ msgstr "&Konverter"
-
-#~ msgid "Tell whether this format can contain vector graphics."
-#~ msgstr "Legt fest, ob das Format Vektorgrafiken enthalten kann."
-
-#~ msgid ""
-#~ "Tell whether this format is a document format. A document cannot be "
-#~ "exported to or viewed in a non-document format."
-#~ msgstr ""
-#~ "Geben Sie an, ob dieses Format ein Dokumentenformat ist. Ein Dokument "
-#~ "kann nicht in ein Nicht-Dokumentenformat exportiert bzw. in letzterem "
-#~ "betrachtet werden."
-
-#~ msgid "Class Settings"
-#~ msgstr "Klassen-Einstellungen"
