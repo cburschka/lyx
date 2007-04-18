@@ -168,7 +168,7 @@ void QDelimiterDialog::updateTeXCode(int size)
 			code_str += "\\" + bigright[size] + right_str;
 	}
 
-	texCodeL->setText("TeX-Code: " + code_str);
+	texCodeL->setText(qt_("TeX Code: ") + code_str);
 }
 
 
