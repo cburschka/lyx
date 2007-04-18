@@ -172,8 +172,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			tmpl_.draw(pi, x + w + 12, h);
 			h += tmpl_.descent();
 			Dimension ldim;
-			string t = "#1: ";
-			mathed_string_dim(font, name(), ldim);
+			docstring t = from_ascii("#1: ");
+			mathed_string_dim(font, t, ldim);
 			for (idx_type i = 0; i < nargs(); ++i) {
 				MathArray const & c = cell(i);
 				h += max(c.ascent(), ldim.asc) + 5;
