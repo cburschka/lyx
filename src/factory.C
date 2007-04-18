@@ -20,6 +20,7 @@
 #include "funcrequest.h"
 #include "LColor.h"
 #include "lyxlex.h"
+#include "lyx_main.h"
 #include "paragraph.h"
 
 #include "insets/insetbibitem.h"
@@ -57,7 +58,10 @@
 #include "mathed/MathMacroTemplate.h"
 #include "mathed/InsetMathHull.h"
 
+#include "frontends/Alert.h"
+
 #include "support/lstrings.h"
+#include "support/ExceptionMessage.h"
 
 #include <boost/assert.hpp>
 #include <boost/current_function.hpp>
@@ -66,6 +70,8 @@
 
 
 namespace lyx {
+
+namespace Alert = frontend::Alert;
 
 using support::compare_ascii_no_case;
 
@@ -78,276 +84,289 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 {
 	BufferParams const & params = bv->buffer()->params();
 
-	switch (cmd.action) {
-	case LFUN_HFILL_INSERT:
-		return new InsetHFill;
+	try {
 
-	case LFUN_LINE_INSERT:
-		return new InsetLine;
+		switch (cmd.action) {
+		case LFUN_HFILL_INSERT:
+			return new InsetHFill;
 
-	case LFUN_PAGEBREAK_INSERT:
-		return new InsetPagebreak;
+		case LFUN_LINE_INSERT:
+			return new InsetLine;
 
-	case LFUN_CLEARPAGE_INSERT:
-		return new InsetClearPage;
+		case LFUN_PAGEBREAK_INSERT:
+			return new InsetPagebreak;
 
-	case LFUN_CLEARDOUBLEPAGE_INSERT:
-		return new InsetClearDoublePage;
+		case LFUN_CLEARPAGE_INSERT:
+			return new InsetClearPage;
 
-	case LFUN_CHARSTYLE_INSERT: {
-		string s = cmd.getArg(0);
-		LyXTextClass tclass = params.getLyXTextClass();
-		CharStyles::iterator found_cs = tclass.charstyle(s);
-		if (found_cs != tclass.charstyles().end())
-			return new InsetCharStyle(params, found_cs);
-		else
-			return new InsetCharStyle(params, s);
-	}
+		case LFUN_CLEARDOUBLEPAGE_INSERT:
+			return new InsetClearDoublePage;
 
-	case LFUN_NOTE_INSERT: {
-		string arg = cmd.getArg(0);
-		if (arg.empty())
-			arg = "Note";
-		return new InsetNote(params, arg);
-	}
-
-	case LFUN_BOX_INSERT: {
-		string arg = cmd.getArg(0);
-		if (arg.empty())
-			arg = "Boxed";
-		return new InsetBox(params, arg);
-	}
-
-	case LFUN_BRANCH_INSERT: {
-		docstring arg = cmd.argument();
-		if (arg.empty())
-			arg = from_ascii("none");
-		return new InsetBranch(params, InsetBranchParams(arg));
-	}
-
-	case LFUN_ERT_INSERT:
-		return new InsetERT(params);
-
-	case LFUN_FOOTNOTE_INSERT:
-		return new InsetFoot(params);
-
-	case LFUN_MARGINALNOTE_INSERT:
-		return new InsetMarginal(params);
-
-	case LFUN_OPTIONAL_INSERT:
-		return new InsetOptArg(params);
-
-	case LFUN_BIBITEM_INSERT:
-		return new InsetBibitem(InsetCommandParams("bibitem"));
-
-	case LFUN_FLOAT_INSERT: {
-		// check if the float type exists
-		string const argument = to_utf8(cmd.argument());
-		if (params.getLyXTextClass().floats().typeExist(argument))
-			return new InsetFloat(params, argument);
-		lyxerr << "Non-existent float type: " << argument << endl;
-		return 0;
-	}
-
-	case LFUN_FLOAT_WIDE_INSERT: {
-		// check if the float type exists
-		string const argument = to_utf8(cmd.argument());
-		if (params.getLyXTextClass().floats().typeExist(argument)) {
-			auto_ptr<InsetFloat> p(new InsetFloat(params, argument));
-			p->wide(true, params);
-			return p.release();
+		case LFUN_CHARSTYLE_INSERT: {
+			string s = cmd.getArg(0);
+			LyXTextClass tclass = params.getLyXTextClass();
+			CharStyles::iterator found_cs = tclass.charstyle(s);
+			if (found_cs != tclass.charstyles().end())
+				return new InsetCharStyle(params, found_cs);
+			else
+				return new InsetCharStyle(params, s);
 		}
-		lyxerr << "Non-existent float type: " << argument << endl;
-		return 0;
-	}
 
-	case LFUN_WRAP_INSERT: {
-		string const argument = to_utf8(cmd.argument());
-		if (argument == "figure")
-			return new InsetWrap(params, argument);
-		lyxerr << "Non-existent floatflt type: " << argument << endl;
-		return 0;
-	}
+		case LFUN_NOTE_INSERT: {
+			string arg = cmd.getArg(0);
+			if (arg.empty())
+				arg = "Note";
+			return new InsetNote(params, arg);
+		}
 
-	case LFUN_INDEX_INSERT: {
-		// Try and generate a valid index entry.
-		InsetCommandParams icp("index");
-		icp["name"] = cmd.argument().empty() ?
-			bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
-			cmd.argument();
-		return new InsetIndex(icp);
-	}
+		case LFUN_BOX_INSERT: {
+			string arg = cmd.getArg(0);
+			if (arg.empty())
+				arg = "Boxed";
+			return new InsetBox(params, arg);
+		}
 
-	case LFUN_NOMENCL_INSERT: {
-		InsetCommandParams icp("nomenclature");
-		icp["symbol"] = cmd.argument().empty() ?
-			bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
-			cmd.argument();
-		return new InsetNomencl(icp);
-	}
+		case LFUN_BRANCH_INSERT: {
+			docstring arg = cmd.argument();
+			if (arg.empty())
+				arg = from_ascii("none");
+			return new InsetBranch(params, InsetBranchParams(arg));
+		}
 
-	case LFUN_TABULAR_INSERT: {
-		if (cmd.argument().empty())
+		case LFUN_ERT_INSERT:
+			return new InsetERT(params);
+
+		case LFUN_FOOTNOTE_INSERT:
+			return new InsetFoot(params);
+
+		case LFUN_MARGINALNOTE_INSERT:
+			return new InsetMarginal(params);
+
+		case LFUN_OPTIONAL_INSERT:
+			return new InsetOptArg(params);
+
+		case LFUN_BIBITEM_INSERT:
+			return new InsetBibitem(InsetCommandParams("bibitem"));
+
+		case LFUN_FLOAT_INSERT: {
+			// check if the float type exists
+			string const argument = to_utf8(cmd.argument());
+			if (params.getLyXTextClass().floats().typeExist(argument))
+				return new InsetFloat(params, argument);
+			lyxerr << "Non-existent float type: " << argument << endl;
 			return 0;
-		std::istringstream ss(to_utf8(cmd.argument()));
-		int r = 0, c = 0;
-		ss >> r >> c;
-		if (r <= 0)
-			r = 2;
-		if (c <= 0)
-			c = 2;
-		return new InsetTabular(*bv->buffer(), r, c);
-	}
+		}
 
-	case LFUN_CAPTION_INSERT: {
-		auto_ptr<InsetCaption> inset(new InsetCaption(params));
-		inset->setAutoBreakRows(true);
-		inset->setDrawFrame(true);
-		inset->setFrameColor(LColor::captionframe);
-		return inset.release();
-	}
+		case LFUN_FLOAT_WIDE_INSERT: {
+			// check if the float type exists
+			string const argument = to_utf8(cmd.argument());
+			if (params.getLyXTextClass().floats().typeExist(argument)) {
+				auto_ptr<InsetFloat> p(new InsetFloat(params, argument));
+				p->wide(true, params);
+				return p.release();
+			}
+			lyxerr << "Non-existent float type: " << argument << endl;
+			return 0;
+		}
 
-	case LFUN_INDEX_PRINT:
-		return new InsetPrintIndex(InsetCommandParams("printindex"));
+		case LFUN_WRAP_INSERT: {
+			string const argument = to_utf8(cmd.argument());
+			if (argument == "figure")
+				return new InsetWrap(params, argument);
+			lyxerr << "Non-existent floatflt type: " << argument << endl;
+			return 0;
+		}
 
-	case LFUN_NOMENCL_PRINT:
-		return new InsetPrintNomencl(InsetCommandParams("printnomenclature"));
+		case LFUN_INDEX_INSERT: {
+			// Try and generate a valid index entry.
+			InsetCommandParams icp("index");
+			icp["name"] = cmd.argument().empty() ?
+				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
+				cmd.argument();
+			return new InsetIndex(icp);
+		}
 
-	case LFUN_TOC_INSERT:
-		return new InsetTOC(InsetCommandParams("tableofcontents"));
+		case LFUN_NOMENCL_INSERT: {
+			InsetCommandParams icp("nomenclature");
+			icp["symbol"] = cmd.argument().empty() ?
+				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
+				cmd.argument();
+			return new InsetNomencl(icp);
+		}
 
-	case LFUN_ENVIRONMENT_INSERT:
-		return new InsetEnvironment(params, to_utf8(cmd.argument()));
+		case LFUN_TABULAR_INSERT: {
+			if (cmd.argument().empty())
+				return 0;
+			std::istringstream ss(to_utf8(cmd.argument()));
+			int r = 0, c = 0;
+			ss >> r >> c;
+			if (r <= 0)
+				r = 2;
+			if (c <= 0)
+				c = 2;
+			return new InsetTabular(*bv->buffer(), r, c);
+		}
+
+		case LFUN_CAPTION_INSERT: {
+			auto_ptr<InsetCaption> inset(new InsetCaption(params));
+			inset->setAutoBreakRows(true);
+			inset->setDrawFrame(true);
+			inset->setFrameColor(LColor::captionframe);
+			return inset.release();
+		}
+
+		case LFUN_INDEX_PRINT:
+			return new InsetPrintIndex(InsetCommandParams("printindex"));
+
+		case LFUN_NOMENCL_PRINT:
+			return new InsetPrintNomencl(InsetCommandParams("printnomenclature"));
+
+		case LFUN_TOC_INSERT:
+			return new InsetTOC(InsetCommandParams("tableofcontents"));
+
+		case LFUN_ENVIRONMENT_INSERT:
+			return new InsetEnvironment(params, to_utf8(cmd.argument()));
 
 #if 0
-	case LFUN_LIST_INSERT:
-		return new InsetList;
+		case LFUN_LIST_INSERT:
+			return new InsetList;
 
-	case LFUN_THEOREM_INSERT:
-		return new InsetTheorem;
+		case LFUN_THEOREM_INSERT:
+			return new InsetTheorem;
 #endif
 
-	case LFUN_INSET_INSERT: {
-		string const name = cmd.getArg(0);
+		case LFUN_INSET_INSERT: {
+			string const name = cmd.getArg(0);
 
-		if (name == "bibitem") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetBibitem(icp);
+			if (name == "bibitem") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetBibitem(icp);
 
-		} else if (name == "bibtex") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetBibtex(icp);
+			} else if (name == "bibtex") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetBibtex(icp);
 
-		} else if (name == "citation") {
-			InsetCommandParams icp("cite");
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetCitation(icp);
+			} else if (name == "citation") {
+				InsetCommandParams icp("cite");
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetCitation(icp);
 
-		} else if (name == "ert") {
-			InsetCollapsable::CollapseStatus st;
-			InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
-			return new InsetERT(params, st);
+			} else if (name == "ert") {
+				InsetCollapsable::CollapseStatus st;
+				InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
+				return new InsetERT(params, st);
 
-		} else if (name == "external") {
-			Buffer const & buffer = *bv->buffer();
-			InsetExternalParams iep;
-			InsetExternalMailer::string2params(to_utf8(cmd.argument()),
-							   buffer, iep);
-			auto_ptr<InsetExternal> inset(new InsetExternal);
-			inset->setParams(iep, buffer);
-			return inset.release();
+			} else if (name == "external") {
+				Buffer const & buffer = *bv->buffer();
+				InsetExternalParams iep;
+				InsetExternalMailer::string2params(to_utf8(cmd.argument()),
+					buffer, iep);
+				auto_ptr<InsetExternal> inset(new InsetExternal);
+				inset->setParams(iep, buffer);
+				return inset.release();
 
-		} else if (name == "graphics") {
-			Buffer const & buffer = *bv->buffer();
-			InsetGraphicsParams igp;
-			InsetGraphicsMailer::string2params(to_utf8(cmd.argument()),
-							   buffer, igp);
-			auto_ptr<InsetGraphics> inset(new InsetGraphics);
-			inset->setParams(igp);
-			return inset.release();
+			} else if (name == "graphics") {
+				Buffer const & buffer = *bv->buffer();
+				InsetGraphicsParams igp;
+				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()),
+					buffer, igp);
+				auto_ptr<InsetGraphics> inset(new InsetGraphics);
+				inset->setParams(igp);
+				return inset.release();
 
-		} else if (name == "include") {
-			InsetCommandParams iip(name);
-			InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
-			return new InsetInclude(iip);
+			} else if (name == "include") {
+				InsetCommandParams iip(name);
+				InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
+				return new InsetInclude(iip);
 
-		} else if (name == "index") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetIndex(icp);
+			} else if (name == "index") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetIndex(icp);
 
-		} else if (name == "nomenclature") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
-							  icp);
-			return new InsetNomencl(icp);
+			} else if (name == "nomenclature") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+					icp);
+				return new InsetNomencl(icp);
 
-		} else if (name == "label") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetLabel(icp);
+			} else if (name == "label") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetLabel(icp);
 
-		} else if (name == "ref") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetRef(icp, *bv->buffer());
+			} else if (name == "ref") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetRef(icp, *bv->buffer());
 
-		} else if (name == "toc") {
-			InsetCommandParams icp("tableofcontents");
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetTOC(icp);
+			} else if (name == "toc") {
+				InsetCommandParams icp("tableofcontents");
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetTOC(icp);
 
-		} else if (name == "url") {
-			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-							  icp);
-			return new InsetUrl(icp);
+			} else if (name == "url") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetUrl(icp);
 
-		} else if (name == "vspace") {
-			VSpace vspace;
-			InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
-			return new InsetVSpace(vspace);
+			} else if (name == "vspace") {
+				VSpace vspace;
+				InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
+				return new InsetVSpace(vspace);
+			}
+		}
+
+		case LFUN_SPACE_INSERT: {
+			string const name = to_utf8(cmd.argument());
+			if (name == "normal")
+				return new InsetSpace(InsetSpace::NORMAL);
+			else if (name == "protected")
+				return new InsetSpace(InsetSpace::PROTECTED);
+			else if (name == "thin")
+				return new InsetSpace(InsetSpace::THIN);
+			else if (name == "quad")
+				return new InsetSpace(InsetSpace::QUAD);
+			else if (name == "qquad")
+				return new InsetSpace(InsetSpace::QQUAD);
+			else if (name == "enspace")
+				return new InsetSpace(InsetSpace::ENSPACE);
+			else if (name == "enskip")
+				return new InsetSpace(InsetSpace::ENSKIP);
+			else if (name == "negthinspace")
+				return new InsetSpace(InsetSpace::NEGTHIN);
+			else if (name.empty())
+				lyxerr << "LyX function 'space' needs an argument." << endl;
+			else
+				lyxerr << "Wrong argument for LyX function 'space'." << endl;
+		}
+		break;
+
+		default:
+			break;
+		}
+
+	} catch (support::ExceptionMessage const & message) {
+		if (message.type_ == support::ErrorException) {
+			Alert::error(message.title_, message.details_);
+			LyX::cref().emergencyCleanup();
+			abort();
+		} else if (message.type_ == support::WarningException) {
+			Alert::warning(message.title_, message.details_);
+			return 0;
 		}
 	}
 
-	case LFUN_SPACE_INSERT: {
-		string const name = to_utf8(cmd.argument());
-		if (name == "normal")
-			return new InsetSpace(InsetSpace::NORMAL);
-		else if (name == "protected")
-			return new InsetSpace(InsetSpace::PROTECTED);
-		else if (name == "thin")
-			return new InsetSpace(InsetSpace::THIN);
-		else if (name == "quad")
-			return new InsetSpace(InsetSpace::QUAD);
-		else if (name == "qquad")
-			return new InsetSpace(InsetSpace::QQUAD);
-		else if (name == "enspace")
-			return new InsetSpace(InsetSpace::ENSPACE);
-		else if (name == "enskip")
-			return new InsetSpace(InsetSpace::ENSKIP);
-		else if (name == "negthinspace")
-			return new InsetSpace(InsetSpace::NEGTHIN);
-		else if (name.empty())
-			lyxerr << "LyX function 'space' needs an argument." << endl;
-		else
-			lyxerr << "Wrong argument for LyX function 'space'." << endl;
-	}
-
-	break;
-
-	default:
-		break;
-	}
 
 	return 0;
 }

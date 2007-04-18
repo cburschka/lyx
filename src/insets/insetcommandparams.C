@@ -14,8 +14,10 @@
 #include "insetcommandparams.h"
 
 #include "debug.h"
+#include "gettext.h"
 #include "lyxlex.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/lstrings.h"
 
 #include <boost/assert.hpp>
@@ -29,6 +31,8 @@ using std::string;
 using std::endl;
 using std::ostream;
 
+using support::ExceptionMessage;
+using support::WarningException;
 
 InsetCommandParams::InsetCommandParams(string const & name)
 	: name_(name), preview_(false)
@@ -258,8 +262,12 @@ void InsetCommandParams::read(LyXLex & lex)
 		lex.next();
 		name_ = lex.getString();
 		info_ = findInfo(name_);
-		if (!info_)
+		if (!info_) {
 			lex.printError("InsetCommand: Unknown inset name `$$Token'");
+			throw ExceptionMessage(WarningException,
+				_("Unknown inset name: "),
+				from_utf8(name_));
+		}
 	}
 
 	string token;
@@ -278,12 +286,19 @@ void InsetCommandParams::read(LyXLex & lex)
 		if (i >= 0) {
 			lex.next(true);
 			params_[i] = lex.getDocString();
-		} else
+		} else {
 			lex.printError("Unknown parameter name `$$Token' for command " + name_);
+			throw ExceptionMessage(WarningException,
+				_("Inset Command :") + from_ascii(name_),
+				_("Unknown parameter name: ") + from_utf8(token));
+		}
 	}
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
+		throw ExceptionMessage(WarningException,
+			_("Missing \\end_inset at this point."),
+			from_utf8(token));
 	}
 }
 
