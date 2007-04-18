@@ -36,16 +36,18 @@ namespace frontend {
 
 namespace {
 
-QString const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
+QString const bigleft[]  = {"", "bigl", "Bigl", "biggl", "Biggl"};
 
 
-QString const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
+QString const bigright[] = {"", "bigr", "Bigr", "biggr", "Biggr"};
 
 
 char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter size]]"),
 	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
 
 
+// FIXME: It might be better to fix the big delim LFUN to not require
+// additional '\' prefix.
 QString fix_name(QString const & str, bool big)
 {
 	if (str.isEmpty())
@@ -134,52 +136,41 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 void QDelimiterDialog::updateTeXCode(int size)
 {
-	QString left_str;
-	QString right_str;
-	QString bigl;
-	QString bigr;
-	QString code_str;
-	bool bigsize = size != 0;
+	bool const bigsize = size != 0;
 
-	left_str = fix_name(leftLW->currentItem()->toolTip(), bigsize);
-	right_str = fix_name(rightLW->currentItem()->toolTip(), bigsize);
+	QString left_str = fix_name(leftLW->currentItem()->toolTip(), bigsize);
+	QString right_str = fix_name(rightLW->currentItem()->toolTip(), bigsize);
 
 	if (!bigsize)
 		tex_code_ = left_str + ' ' + right_str;
 	else {
-		tex_code_ = bigleft[size - 1] + '  '
+		tex_code_ = bigleft[size] + ' '
 			+ left_str + ' ' 
-			+ bigright[size - 1] + ' '
+			+ bigright[size] + ' '
 			+ right_str;
-		}
+	}
 
-	// generate TeX-code
+	// Generate TeX-code for GUI display.
+	// FIXME: Instead of reconstructing the TeX code it would be nice to
+	// FIXME: retrieve the LateX code directly from mathed.
+	// In all cases, we want the '\' prefix if needed, so we pass 'true'
+	// to fix_name.
 	left_str = fix_name(leftLW->currentItem()->toolTip(), true);
 	right_str = fix_name(rightLW->currentItem()->toolTip(), true);
-	if (bigsize == true) {
-		bigl = "\\" + bigleft[size];
-		bigr = "\\" + bigright[size];
-	}
+	QString code_str;
 	if (!bigsize)
-		code_str = "TeX-Code: \\left" + left_str + ' ' + "\\right" + right_str;
+		code_str = "\\left" + left_str + " \\right" + right_str;
 	else {
-		// There is nothing in the TeX-code when the delimiter is "None"
-		if (left_str == ".") {
-			left_str = "";
-			bigl = "";
-		}
-		if (right_str == ".") {
-			right_str = "";
-			bigr = "";
-		}
-		code_str = "TeX-Code: " + bigl
-			+ left_str + '  ' 
-			+ bigr
-			+ right_str;
+		// There should be nothing in the TeX-code when the delimiter is "None".
+		if (left_str != ".")
+			code_str = "\\" + bigleft[size] + left_str + ' ';
+		if (right_str != ".")
+			code_str += "\\" + bigright[size] + right_str;
 	}
 
-	texCodeL->setText(code_str);
+	texCodeL->setText("TeX-Code: " + code_str);
 }
+
 
 void QDelimiterDialog::on_insertPB_clicked()
 {
@@ -235,6 +226,8 @@ void QDelimiterDialog::on_matchCB_stateChanged(int state)
 {
 	if (state == Qt::Checked)
 		on_leftLW_currentRowChanged(leftLW->currentRow());
+
+	updateTeXCode(sizeCO->currentIndex());
 }
 
 
