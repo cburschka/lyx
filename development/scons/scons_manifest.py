@@ -628,7 +628,6 @@ src_frontends_qt4_ui_files = Split('''
     QIndexUi.ui
     QLogUi.ui
     QMathMatrixUi.ui
-    QMathUi.ui
     QNomenclUi.ui
     QNoteUi.ui
     QParagraphUi.ui
@@ -803,8 +802,6 @@ src_frontends_qt4_header_files = Split('''
     QLog.h
     QLogDialog.h
     QLyXKeySym.h
-    QMath.h
-    QMathDialog.h
     QMathMatrixDialog.h
     QNomencl.h
     QNomenclDialog.h
@@ -925,8 +922,6 @@ src_frontends_qt4_files = Split('''
     QLog.C
     QLogDialog.C
     QLyXKeySym.C
-    QMath.C
-    QMathDialog.C
     QMathMatrixDialog.C
     QNomencl.C
     QNomenclDialog.C

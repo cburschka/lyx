@@ -14,6 +14,8 @@
 #ifndef QMATHMATRIXDIALOG_H
 #define QMATHMATRIXDIALOG_H
 
+#include "QDialogView.h"
+
 #include "ui/QMathMatrixUi.h"
 
 #include <QDialog>
@@ -22,6 +24,8 @@ namespace lyx {
 namespace frontend {
 
 class QMathMatrix;
+class ControlMath;
+
 
 class QMathMatrixDialog : public QDialog, public Ui::QMathMatrixUi {
 	Q_OBJECT
@@ -37,6 +41,21 @@ protected Q_SLOTS:
 private:
 	QMathMatrix * form_;
 };
+
+
+class QMathMatrix : public QController<ControlMath, QView<QMathMatrixDialog> > {
+public:
+	friend class QMathMatrixDialog;
+
+	QMathMatrix(Dialog &);
+
+private:
+	virtual void apply() {}
+	virtual void update_contents() {}
+	/// Build the dialog.
+	virtual void build_dialog();
+};
+
 
 } // namespace frontend
 } // namespace lyx

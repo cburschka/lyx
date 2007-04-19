@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QMathMatrixDialog.h"
-#include "QMath.h"
 
 #include "emptytable.h"
 #include "qt_helpers.h"
@@ -23,6 +22,8 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qspinbox.h>
+
+#include "gettext.h"
 
 using std::ostringstream;
 using std::string;
@@ -36,6 +37,20 @@ char h_align_str[80] = "c";
 char v_align_c[] = "tcb";
 
 } // namespace anon
+
+
+typedef QController<ControlMath, QView<QMathMatrixDialog> > matrix_base;
+
+
+QMathMatrix::QMathMatrix(Dialog & parent)
+	: matrix_base(parent, _("Math Matrix"))
+{}
+
+
+void QMathMatrix::build_dialog()
+{
+	dialog_.reset(new QMathMatrixDialog(this));
+}
 
 
 QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)

@@ -135,7 +135,6 @@ ToolbarSet
 	End
 	
 	Toolbar "math" "Math"
-		Item "Show math panel" "dialog-show mathpanel"
 		Item "Set display mode" "math-display"
 		Separator
 		Item "Subscript" "math-subscript"

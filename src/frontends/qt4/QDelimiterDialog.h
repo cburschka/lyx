@@ -12,6 +12,8 @@
 #ifndef QDELIMITERDIALOG_H
 #define QDELIMITERDIALOG_H
 
+#include "QDialogView.h"
+
 #include "ui/QDelimiterUi.h"
 
 #include <string>
@@ -21,6 +23,7 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
+class ControlMath;
 class QMathDelimiter;
 
 class QDelimiterDialog : public QDialog, public Ui::QDelimiterUi {
@@ -45,6 +48,21 @@ private:
 	/// TeX code that will be inserted.
 	QString tex_code_;
 };
+
+
+class QMathDelimiter : public QController<ControlMath, QView<QDelimiterDialog> > {
+public:
+	friend class QDelimiterDialog;
+
+	QMathDelimiter(Dialog &);
+
+private:
+	virtual void apply() {}
+	virtual void update_contents() {}
+	/// Build the dialog.
+	virtual void build_dialog();
+};
+
 
 } // namespace frontend
 } // namespace lyx

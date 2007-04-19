@@ -555,7 +555,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		else if (name == "print")
 			enable = Exporter::isExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
-		else if (name == "character" || name == "mathpanel")
+		else if (name == "character")
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
 		else if (name == "latexlog")
 			enable = isFileReadable(FileName(buf->getLogName().second));

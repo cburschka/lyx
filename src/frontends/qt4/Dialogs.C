@@ -55,6 +55,7 @@
 #include "QCharacter.h"
 #include "QCitation.h"
 #include "QCitationDialog.h"
+#include "QDelimiterDialog.h"
 #include "QDocument.h"
 #include "QErrorList.h"
 #include "QERT.h"
@@ -63,11 +64,11 @@
 #include "QGraphics.h"
 #include "QInclude.h"
 #include "QIndex.h"
+#include "QMathMatrixDialog.h"
 #include "QNomencl.h"
 #include "QLog.h"
 #include "QViewSource.h"
 #include "QViewSourceDialog.h"
-#include "QMath.h"
 #include "QNote.h"
 #include "QParagraph.h"
 #include "QPrefs.h"
@@ -105,7 +106,7 @@ char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
-"mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph",
+"mathdelimiter", "mathmatrix", "note", "paragraph",
 "prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -244,10 +245,6 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new DockView<QViewSource, QViewSourceDialog>(
 			*dialog, qvs, &gui_view, _("LaTeX Source"), Qt::BottomDockWidgetArea));
 		dialog->bc().bp(new OkCancelPolicy);
-	} else if (name == "mathpanel") {
-		dialog->setController(new ControlMath(*dialog));
-		dialog->setView(new QMath(*dialog));
-		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "mathdelimiter") {
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new QMathDelimiter(*dialog));

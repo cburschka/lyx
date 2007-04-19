@@ -274,7 +274,6 @@ Menuset
 		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
 	Separator
 		Submenu "Font Change|o" "insert_math_font"
-		Item "Math Panel|l" "dialog-show mathpanel"
 	End
 
 	Menu "insert_math_font"

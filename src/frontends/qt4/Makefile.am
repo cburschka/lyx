@@ -64,7 +64,6 @@ libqt4_la_SOURCES = \
 	QViewSource.C QViewSource.h \
 	QLPainter.C QLPainter.h \
 	QLyXKeySym.C QLyXKeySym.h \
-	QMath.C QMath.h \
 	QNomencl.C QNomencl.h \
 	QNote.C QNote.h \
 	QParagraph.C QParagraph.h \

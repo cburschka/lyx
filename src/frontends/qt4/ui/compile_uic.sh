@@ -31,7 +31,6 @@ uic QDelimiterUi.ui -o QDelimiterUi.h
 uic QDocumentUi.ui -o QDocumentUi.h
 uic QExternalUi.ui -o QExternalUi.h
 uic QIncludeUi.ui -o QIncludeUi.h
-uic QMathUi.ui -o QMathUi.h
 uic QParagraphUi.ui -o QParagraphUi.h
 uic QPrefConvertersUi.ui -o QPrefConvertersUi.h
 uic QPrefDateUi.ui -o QPrefDateUi.h

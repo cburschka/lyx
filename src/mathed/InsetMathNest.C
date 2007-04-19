@@ -1202,12 +1202,6 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 		return;
 	}
 
-	if (cmd.button() == mouse_button::button3) {
-		// try to dispatch to enclosed insets first
-		cur.bv().showDialog("mathpanel");
-		return;
-	}
-
 	cur.undispatched();
 }
 

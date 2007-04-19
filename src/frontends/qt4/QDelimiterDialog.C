@@ -13,7 +13,6 @@
 #include "QDelimiterDialog.h"
 
 #include "GuiApplication.h"
-#include "QMath.h"
 
 #include "qt_helpers.h"
 #include "controllers/ControlMath.h"
@@ -60,6 +59,19 @@ QString fix_name(QString const & str, bool big)
 }
 
 } // namespace anon
+
+
+typedef QController<ControlMath, QView<QDelimiterDialog> > delimiter_base;
+
+QMathDelimiter::QMathDelimiter(Dialog & parent)
+	: delimiter_base(parent, _("Math Delimiter"))
+{}
+
+
+void QMathDelimiter::build_dialog()
+{
+	dialog_.reset(new QDelimiterDialog(this));
+}
 
 
 char_type QDelimiterDialog::doMatch(char_type const symbol) const
