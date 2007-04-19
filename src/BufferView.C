@@ -357,7 +357,8 @@ bool BufferView::update(Update::flags flags)
 	LYXERR(Debug::WORKAREA) << "BufferView::update" << std::endl;
 
 	// Update macro store
-	buffer_->buildMacros();
+	if (!(cursor().inMathed() && cursor().inMacroMode()))
+		buffer_->buildMacros();
 
 	// Now do the first drawing step if needed. This consists on updating
 	// the CoordCache in updateMetrics().

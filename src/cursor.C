@@ -899,14 +899,11 @@ bool LCursor::macroModeClose()
 	if (s == "\\")
 		return false;
 
-	// prevent entering of recursive macros
-	// FIXME: this is only a weak attempt... only prevents immediate
-	// recursion
-	docstring const name = s.substr(1);
-	InsetBase const * macro = innerInsetOfType(InsetBase::MATHMACRO_CODE);
-	if (macro && macro->getInsetName() == name)
-		lyxerr << "can't enter recursive macro" << endl;
+	// trigger updates of macros, at least, if no full
+	// updates take place anyway
+	updateFlags(Update::Force);
 
+	docstring const name = s.substr(1);
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
 	if (in && in->interpretString(*this, s))
 		return true;
