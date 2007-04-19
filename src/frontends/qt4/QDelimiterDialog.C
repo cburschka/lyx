@@ -113,14 +113,15 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
 		lwi->setFont(symbol_font);
 		list_items[ms.unicode] = lwi;
+		leftLW->addItem(lwi);
 	}
 
-	ListItems::const_iterator it = list_items.begin();
-	ListItems::const_iterator it_end = list_items.end();
-	for (; it != it_end; ++it) {
-		leftLW->addItem(it->second);
-		rightLW->addItem(list_items[doMatch(it->first)]->clone());
+	for (int i = 0; i != leftLW->count(); ++i) {
+		MathSymbol const & ms =	form_->controller().mathSymbol(
+			fromqstr(leftLW->item(i)->toolTip()));
+		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
 	}
+
 	// The last element is the empty one.
 	leftLW->addItem(qt_("(None)"));
 	rightLW->addItem(qt_("(None)"));
