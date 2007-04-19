@@ -96,6 +96,9 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 	setWindowTitle(qt_("LyX: Delimiters"));
 	setFocusProxy(leftLW);
+
+	leftLW->setViewMode(QListView::IconMode);
+	rightLW->setViewMode(QListView::IconMode);
 	
 	typedef std::map<char_type, QListWidgetItem *> ListItems;
 	ListItems list_items;

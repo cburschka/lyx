@@ -5,13 +5,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>286</width>
-    <height>537</height>
+    <width>300</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="sizePolicy" >
    <sizepolicy>
-    <hsizetype>13</hsizetype>
+    <hsizetype>5</hsizetype>
     <vsizetype>5</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
@@ -19,8 +19,8 @@
   </property>
   <property name="minimumSize" >
    <size>
-    <width>200</width>
-    <height>447</height>
+    <width>300</width>
+    <height>330</height>
    </size>
   </property>
   <property name="maximumSize" >
@@ -35,150 +35,23 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="verticalLayout" >
+  <widget class="QWidget" name="" >
    <property name="geometry" >
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>261</width>
-     <height>511</height>
+     <x>0</x>
+     <y>0</y>
+     <width>291</width>
+     <height>321</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" >
+   <layout class="QGridLayout" >
     <property name="margin" >
      <number>0</number>
     </property>
     <property name="spacing" >
      <number>6</number>
     </property>
-    <item>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <widget class="QListWidget" name="leftLW" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>3</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-        <property name="resizeMode" >
-         <enum>QListView::Adjust</enum>
-        </property>
-        <property name="spacing" >
-         <number>0</number>
-        </property>
-        <property name="currentRow" >
-         <number>-1</number>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QListWidget" name="rightLW" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>3</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-        <property name="spacing" >
-         <number>0</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLabel" name="texCodeL" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>3</hsizetype>
-        <vsizetype>0</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text" >
-       <string>TeX Code:</string>
-      </property>
-      <property name="textFormat" >
-       <enum>Qt::AutoText</enum>
-      </property>
-      <property name="alignment" >
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-      <property name="wordWrap" >
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="matchCB" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>3</hsizetype>
-        <vsizetype>0</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="toolTip" >
-       <string>Match delimiter types</string>
-      </property>
-      <property name="text" >
-       <string>&amp;Keep matched</string>
-      </property>
-      <property name="checked" >
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
+    <item row="3" column="0" >
      <layout class="QHBoxLayout" >
       <property name="margin" >
        <number>0</number>
@@ -221,7 +94,92 @@
       </item>
      </layout>
     </item>
-    <item>
+    <item row="0" column="0" >
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QListWidget" name="leftLW" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="resizeMode" >
+         <enum>QListView::Adjust</enum>
+        </property>
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <property name="currentRow" >
+         <number>-1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="rightLW" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="resizeMode" >
+         <enum>QListView::Adjust</enum>
+        </property>
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0" >
      <layout class="QHBoxLayout" >
       <property name="margin" >
        <number>0</number>
@@ -279,6 +237,51 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="1" column="0" >
+     <widget class="QLabel" name="texCodeL" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>3</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>TeX Code:</string>
+      </property>
+      <property name="textFormat" >
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment" >
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="wordWrap" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QCheckBox" name="matchCB" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>3</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="toolTip" >
+       <string>Match delimiter types</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Keep matched</string>
+      </property>
+      <property name="checked" >
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
