@@ -2291,6 +2291,9 @@ if build_installer:
     if platform_name != 'win32':
         print 'installer target is only available for windows platform'
         Exit(1)
+    if mode != 'release':
+        print 'installer has to be built in release mode (use option mode=release)'
+        Exit(1)
     if env.has_key('NSIS') and env['NSIS'] is not None:
         # create a builder to strip and install
         env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)
