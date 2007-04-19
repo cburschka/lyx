@@ -231,7 +231,7 @@ Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 ;--------------------------------
 ; Languages
 
-!insertmacro MUI_LANGUAGE "English" # first language is the default language
+!insertmacro MUI_LANGUAGE "English" ; first language is the default language
 !insertmacro MUI_LANGUAGE "Danish"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "French"
@@ -315,10 +315,10 @@ SectionEnd
 ; This hook function is called internally by NSIS on installer startup
 Function .onInit
 
-  ; set the installer language to the Windows locale language  
+  ; set the installer language to the Windows locale language
   System::Call "kernel32::GetUserDefaultLangID()i.a"
 
-  ; Check that the installer is not currently running
+  ; check that the installer is not currently running
   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${INSTALLER_EXE}.Instance") i .r1 ?e'
   Pop $R0
   ${if} $R0 != "0"
@@ -331,23 +331,23 @@ Function .onInit
    Abort
   ${endif}
 
-  ; Check if LyX is already installed
+  ; check if LyX is already installed
   ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "Publisher"
   ${if} $0 != ""
    MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
    Abort
   ${endif}
 
-  ; Default settings
-  ; These can be reset to "all" in section SecAllUsers.
+  ; default settings
+  ; these can be reset to "all" in section SecAllUsers
   SetShellVarContext current
   StrCpy $ProductRootKey "HKCU"
 
-  ; This can be reset to "true" in section SecDesktop.
+  ; this can be reset to "true" in section SecDesktop
   StrCpy $CreateDesktopIcon "false"
   StrCpy $CreateFileAssociations "false"
 
-  ; If the user does *not* have administrator privileges, abort
+  ; if the user does *not* have administrator privileges, abort
   StrCpy $Answer ""
   StrCpy $UserName ""
   !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh

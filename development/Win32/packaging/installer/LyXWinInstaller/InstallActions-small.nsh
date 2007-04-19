@@ -9,6 +9,7 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\etc"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
 
+  ; if GhostScript is not installed
   ${if} $GhostscriptPath == ""
    ; register Ghostscript
    WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
@@ -21,6 +22,7 @@ Section "-Installation actions" SecInstallation
    RMDir /r ${GhostscriptDir}   
   ${endif}
 
+  ; if ImageMagick is not installed
   ${if} $ImageMagickPath == ""
    ; register ImageMagick
    WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
@@ -45,6 +47,7 @@ Section "-Installation actions" SecInstallation
    RMDir /r ${ImageMagickDir}
   ${endif}
 
+  ; if Aspell is not installed
   ${if} $AspellPath == ""
    ; extract Aspell's program files
    SetOutPath "$INSTDIR\external"
@@ -64,6 +67,7 @@ Section "-Installation actions" SecInstallation
    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
   ${endif}
 
+  ; if Aiksaurus is not installed
   ${if} $AiksaurusPath == ""
    ; extract Aiksaurus' program files
    SetOutPath "$INSTDIR\external"

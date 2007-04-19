@@ -367,7 +367,7 @@ FunctionEnd
 ;--------------------------------
 
 Function CheckAppPathPreferences
- ; modify the preferences file for all users
+ ; replaces a string "$OldString" with "$NewString" in a file "$FileName"
 
   ; get folder names
   !insertmacro AppPreSuff $AppPre $AppSuff
@@ -397,21 +397,21 @@ Function CheckAppPathPreferences
    ; AppPre and AppSuff are generated in the macro "AppPreSuff"
    StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
    ; read the preferences file to test if it exists
-   FileOpen $R1 "$AppPath\preferences" r
+   FileOpen $R1 "$AppPath\$FileName" r
    IfErrors doneA
    FileClose $R1
    ; search for "$OldString" and replace it with "$NewString"
-   ${LineFind} "$AppPath\preferences" "" "1:-1" "ReplaceLineContent" ; macro from TextFunc.nsh
+   ${LineFind} "$AppPath\$FileName" "" "1:-1" "ReplaceLineContent" ; macro from TextFunc.nsh ; calls Function ReplaceLineContent
    doneA:
   Goto loopPrefs
   ready:
   ; now do the same for the last user name
   StrCpy $0 $UserList
   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
-  FileOpen $R1 "$AppPath\preferences" r
+  FileOpen $R1 "$AppPath\$FileName" r
   IfErrors doneB
   FileClose $R1
-  ${LineFind} "$AppPath\preferences" "" "1:-1" "ReplaceLineContent"
+  ${LineFind} "$AppPath\$FileName" "" "1:-1" "ReplaceLineContent"
   doneB:
   
 FunctionEnd

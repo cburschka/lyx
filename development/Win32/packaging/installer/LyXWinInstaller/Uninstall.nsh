@@ -10,32 +10,36 @@ Function un.onInit
    Abort
   ${endif}
 
-  ; Ascertain whether the user has sufficient privileges to uninstall.
-  SetShellVarContext current
-
-  ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY}" "RootKey"
-  ${if} $0 == ""
-    ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "RootKey"
-    ${if} $0 == ""
-      MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
-    ${endif}
-  ${endif}
-
-  ; If the user does *not* have administrator privileges, abort
+  ; set registry root key
   StrCpy $Answer ""
   !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
   ${if} $Answer == "yes"
     SetShellVarContext all
   ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
-    Abort
+   SetShellVarContext current
+  ${endif}
+
+  ; Ascertain whether the user has sufficient privileges to uninstall.
+  ; abort when LyX was installed with admin permissions but the user doesn't have administrator privileges
+  ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "RootKey"
+  ${if} $0 != ""
+  ${andif} $Answer != "yes"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
+   Abort
+  ${endif}
+  ; abort when LyX couldn't be found in the registry
+  ${if} $0 == "" ; check in HKCU
+   ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY}" "RootKey"
+   ${if} $0 == ""
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
+   ${endif}
   ${endif}
 
   ; Macro to investigate name of LyX's preferences folders to be able remove them
   !insertmacro UnAppPreSuff $AppPre $AppSuff ; macro from LyXUtils.nsh
 
   ; test if Aspell was installed together with LyX
-  ReadRegStr $0 HKLM "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+  ReadRegStr $0 SHCTX "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    SectionSetText 2 "Aspell" ; names the corersponding uninstaller section (has the index "2" as it is the third section in Uninstall.nsh)
    StrCpy $AspellInstallYes "Aspell"
@@ -52,15 +56,22 @@ Function un.onInit
    SectionSetText 3 "" ; hides the corresponding uninstaller section
   ${endif}
 
-  ; ignore JabRef because this could only be installed with the complete installer version
+  ; test if JabRef was installed together with LyX
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   SectionSetText 4 "JabRef" ; names the corersponding uninstaller section
+   StrCpy $JabRefInstalled "JabRef"
+  ${else}
    SectionSetText 4 "" ; hides the corresponding uninstaller section
-   StrCpy $JabRefInstalled ""
+  ${endif}
 
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2
+  ; question message if the user really wants to uninstall LyX
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2 ; continue if yes
   Abort
 
 FunctionEnd
 
+; ----------------------------------
 
 Function un.onUninstSuccess
   HideWindow
@@ -68,6 +79,7 @@ Function un.onUninstSuccess
   
 FunctionEnd
 
+; ----------------------------------
 ; Uninstall sections
 
 Section "un.LyX" un.SecUnProgramFiles
@@ -96,14 +108,14 @@ Section "un.LyX" un.SecUnProgramFiles
   ; delete LyX's installation folder
   RMDir /r $INSTDIR
   ; delete start menu folder
-  ReadRegStr $0 ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu"
+  ReadRegStr $0 SHCTX "${PRODUCT_UNINST_KEY}" "StartMenu"
   RMDir /r "$0"
   ; delete desktop icon
   Delete "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk"
   ; delete registry entries
   DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
   DeleteRegKey HKCR "Applications\lyx.exe"
   DeleteRegKey HKCR "Applications\lyx.bat"
 
@@ -112,49 +124,51 @@ Section "un.LyX" un.SecUnProgramFiles
   ${if} $5 == "True"
    RMDir /r "${AiksaurusDir}"
   ${endif}
-;  StrCpy $0 ""
-;  ReadRegStr $0 HKLM "Software\Aiksaurus" "OnlyWithLyX" ; special entry to test if it was installed with LyX
-;  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}" 
-;   ; unregister Aiksaurus
-;   ReadRegStr $1 HKLM "Software\Aiksaurus" "Data Path"
-;   RMDir /r "$1"
-;   DeleteRegKey HKLM "SOFTWARE\Aiksaurus"
-;  ${endif}
-
-  ; ImageMagick
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\ImageMagick" "OnlyWithLyX" ; special entry to test if it was installed with LyX
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}" 
-   ; unregister ImageMagick
-   DeleteRegValue HKLM "SOFTWARE\Classes\Applications" "AutoRun"
-   DeleteRegKey HKLM "SOFTWARE\ImageMagick"
-  ${endif}
-  
-  ; Ghostscript and GSview
-  StrCpy $0 ""
-  StrCpy $5 ""
-  ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+  ReadRegStr $0 SHCTX "Software\Aiksaurus" "OnlyWithLyX" ; special entry to test if it was installed with LyX
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
-   ; unregister Ghostscript
-   DeleteRegKey HKLM "SOFTWARE\GPL Ghostscript"
-   ; test if GSview is installed
-   EnumRegValue $5 HKLM "Software\Ghostgum\GSview" 0
-   ${if} $5 != ""
-    ; unregister GSview
-    MessageBox MB_ICONINFORMATION|MB_OK "$(UnGSview)"
-    ReadRegStr $3 HKLM "Software\Ghostgum\GSview" "$5"
-    ReadRegStr $4 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GSview $5" "UninstallString"
-    ExecWait "$4"
-   ${endif}
+   ; unregister Aiksaurus
+   ReadRegStr $1 SHCTX "Software\Aiksaurus" "Data Path"
+   RMDir /r "$1"
+   DeleteRegKey SHCTX "SOFTWARE\Aiksaurus"
   ${endif}
+
+  ; the following can only be done with admin permissions
+  ${if} $Answer == "yes" ; if admin
   
-  ; MiKTeX specific LyX setting 
-  DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL"
-  DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY"
+   ; ImageMagick
+   ReadRegStr $0 SHCTX "Software\ImageMagick" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+    ; unregister ImageMagick
+    DeleteRegValue SHCTX "SOFTWARE\Classes\Applications" "AutoRun"
+    DeleteRegKey SHCTX "SOFTWARE\ImageMagick"
+   ${endif}
   
-  ; remove extension .lyx
-  ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
-  DeleteRegKey HKCR "${PRODUCT_NAME}"
+   ; Ghostscript and GSview
+   ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+    ; unregister Ghostscript
+    DeleteRegKey HKLM "SOFTWARE\GPL Ghostscript"
+    ; test if GSview is installed
+    StrCpy $5 ""
+    EnumRegValue $5 HKLM "Software\Ghostgum\GSview" 0
+    ${if} $5 != ""
+     ; unregister GSview
+     MessageBox MB_ICONINFORMATION|MB_OK "$(UnGSview)"
+     ReadRegStr $3 HKLM "Software\Ghostgum\GSview" "$5"
+     ReadRegStr $4 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GSview $5" "UninstallString"
+     ExecWait "$4"
+    ${endif}
+   ${endif}
+   
+   ; MiKTeX specific LyX setting 
+   DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL"
+   DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY"
+   
+   ; remove extension .lyx
+   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
+   DeleteRegKey HKCR "${PRODUCT_NAME}"
+   
+  ${endif} ; end if Answer (if admin)
   
   SetAutoClose true
 

@@ -530,6 +530,7 @@
 !macroend
 
 ;--------------------
+; function that creates the installer page for the language setting
 Function SelectMenuLanguage
 
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_ui_language.ini"

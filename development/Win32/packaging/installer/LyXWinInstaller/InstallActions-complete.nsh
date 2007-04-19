@@ -40,7 +40,8 @@ Section "-Installation actions" SecInstallation
     Abort
    ${endif} ; endif $LatexPath != ""
   ${endif}
-  
+
+  ; if GhostScript is not installed
   ${if} $GhostscriptPath == ""
    ; register Ghostscript
    WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
@@ -53,6 +54,7 @@ Section "-Installation actions" SecInstallation
    RMDir /r ${GhostscriptDir}   
   ${endif}
 
+  ; if ImageMagick is not installed
   ${if} $ImageMagickPath == ""
    ; register ImageMagick
    WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
@@ -77,6 +79,7 @@ Section "-Installation actions" SecInstallation
    RMDir /r ${ImageMagickDir}
   ${endif}
 
+  ; if Aspell is not installed
   ${if} $AspellPath == ""
    ; extract Aspell's program files
    SetOutPath "$INSTDIR\external"
@@ -96,6 +99,7 @@ Section "-Installation actions" SecInstallation
    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
   ${endif}
 
+  ; if Aiksaurus is not installed
   ${if} $AiksaurusPath == ""
    ; extract Aiksaurus' program files
    SetOutPath "$INSTDIR\external"
@@ -106,6 +110,7 @@ Section "-Installation actions" SecInstallation
 ;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
   ${endif}
 
+  ; if no PostScript viewer is installed
   ${if} $PSVPath == ""
    ${if} $InstallGSview == "true"
     ; launch installer
@@ -119,7 +124,8 @@ Section "-Installation actions" SecInstallation
     ${endif}
    ${endif}
   ${endif}
-  
+
+  ; if no BibTeX editor is installed
   ${if} $BibTeXEditorPath == ""
    ${if} $InstallJabRef == "true"
     ; launch installer
