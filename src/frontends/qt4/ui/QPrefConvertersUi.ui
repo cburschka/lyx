@@ -78,9 +78,9 @@
     </widget>
    </item>
    <item row="0" column="0" >
-    <widget class="QGroupBox" name="groupBox" >
+    <widget class="QGroupBox" name="converterDefGB" >
      <property name="title" >
-      <string>Converter &amp;Definitions</string>
+      <string>Converter Defi&amp;nitions</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
@@ -134,7 +134,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>&amp;Remove</string>
+           <string>Remo&amp;ve</string>
           </property>
          </widget>
         </item>
@@ -202,12 +202,12 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="converterFromLA_2" >
+           <widget class="QLabel" name="converterToLA" >
             <property name="text" >
              <string>&amp;To format:</string>
             </property>
             <property name="buddy" >
-             <cstring>converterFromCO</cstring>
+             <cstring>converterToCO</cstring>
             </property>
            </widget>
           </item>

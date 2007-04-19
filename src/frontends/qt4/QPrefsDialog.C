@@ -880,6 +880,7 @@ PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 
 	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
+	converterDefGB->setFocusProxy(convertersLW);
 }
 
 
