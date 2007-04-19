@@ -20,6 +20,7 @@
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>
+#include <algorithm>
 
 #include "frontends/controllers/ControlMath.h"
 
