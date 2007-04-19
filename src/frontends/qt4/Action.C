@@ -91,6 +91,7 @@ void Action::action()
 //	LYXERR(Debug::ACTION) << "calling LyXFunc::dispatch: func_: " << func_ << endl;
 
 	lyxView_.dispatch(func_);
+	triggered(this);
 }
 
 } // namespace frontend

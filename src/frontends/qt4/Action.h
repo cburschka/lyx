@@ -47,6 +47,10 @@ public:
 
 //	void setAction(FuncRequest const & func);
 
+Q_SIGNALS:
+	/// the current action is triggered
+	void triggered(QAction *);
+
 private Q_SLOTS:
 	void action();
 

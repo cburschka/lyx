@@ -87,14 +87,18 @@ ToolbarInfo & ToolbarInfo::read(LyXLex & lex)
 		TO_LAYOUTS,
 		TO_MINIBUFFER,
 		TO_TABLEINSERT,
+		TO_POPUPMENU,
+		TO_ICONPALETTE,
 		TO_LAST
 	};
 	
 	struct keyword_item toolTags[TO_LAST - 1] = {
 		{ "end", TO_ENDTOOLBAR },
+		{ "iconpalette", TO_ICONPALETTE },
 		{ "item", TO_COMMAND },
 		{ "layouts", TO_LAYOUTS },
 		{ "minibuffer", TO_MINIBUFFER },
+		{ "popupmenu", TO_POPUPMENU },
 		{ "separator", TO_SEPARATOR },
 		{ "tableinsert", TO_TABLEINSERT }
 	};
@@ -152,6 +156,24 @@ ToolbarInfo & ToolbarInfo::read(LyXLex & lex)
 				FuncRequest(kb_action(ToolbarItem::SEPARATOR))));
 			break;
 
+		case TO_POPUPMENU:
+			if (lex.next(true)) {
+				string const name = lex.getString();
+				lex.next(true);
+				docstring const label = lex.getDocString();
+				add(ToolbarItem(ToolbarItem::POPUPMENU, name, label));
+			}
+			break;
+			
+		case TO_ICONPALETTE:
+			if (lex.next(true)) {
+				string const name = lex.getString();
+				lex.next(true);
+				docstring const label = lex.getDocString();
+				add(ToolbarItem(ToolbarItem::ICONPALETTE, name, label));
+			}
+			break;
+			
 		case TO_LAYOUTS:
 			add(ToolbarItem(ToolbarItem::LAYOUTS,
 				FuncRequest(kb_action(ToolbarItem::LAYOUTS))));

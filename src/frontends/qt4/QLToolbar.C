@@ -21,6 +21,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "lyxfunc.h"
+#include "iconpalette.h"
 
 #include "GuiView.h"
 #include "QLToolbar.h"
@@ -31,6 +32,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "controllers/ControlMath.h"
+#include "ToolbarBackend.h"
 
 #include <QComboBox>
 #include <QToolBar>
@@ -38,10 +40,15 @@
 #include <QAction>
 #include <QPixmap>
 
-using std::endl;
-using std::string;
 
 namespace lyx {
+
+using std::string;
+using std::endl;
+using support::FileName;
+using support::libFileSearch;
+using support::subst;
+
 
 using support::libFileSearch;
 using support::subst;
@@ -189,7 +196,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		tb->setCheckable(true);
 		tb->setIcon(QPixmap(toqstr(getIcon(FuncRequest(LFUN_TABULAR_INSERT)))));
 		tb->setToolTip(toqstr(item.label_));
-		tb->setFocusPolicy(Qt::NoFocus);
+		tb->setStatusTip(toqstr(item.label_));
 		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
 		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
@@ -197,7 +204,69 @@ void QLToolbar::add(ToolbarItem const & item)
 		addWidget(tb);
 		break;
 		}
-	default: {
+	case ToolbarItem::ICONPALETTE: {
+		QToolButton * tb = new QToolButton(this);
+		tb->setCheckable(true);
+		tb->setToolTip(toqstr(item.label_));
+		tb->setStatusTip(toqstr(item.label_));
+		tb->setText(toqstr(item.label_));
+		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
+			tb, SLOT(setIconSize(const QSize &)));
+
+		IconPanel * panel = new IconPanel(tb);
+		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
+		ToolbarInfo const & tbb = toolbarbackend.getToolbar(item.name_);
+		ToolbarInfo::item_iterator it = tbb.items.begin();
+		ToolbarInfo::item_iterator const end = tbb.items.end();
+		for (; it != end; ++it) 
+			if (!lyx::getStatus(it->func_).unknown()) {
+				Action * action = new Action(owner_,
+					getIcon(it->func_),
+					it->label_,
+					it->func_,
+					it->label_);
+				panel->addButton(action);
+				ActionVector.push_back(action);
+				// use the icon of first action for the toolbar button
+				if (it == tbb.items.begin())
+					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
+			}
+		connect(tb, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
+		connect(panel, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
+		addWidget(tb);
+		break;
+		}
+	case ToolbarItem::POPUPMENU: {
+		QToolButton * tb = new QToolButton;
+		tb->setPopupMode(QToolButton::InstantPopup);
+		tb->setToolTip(toqstr(item.label_));
+		tb->setStatusTip(toqstr(item.label_));
+		tb->setText(toqstr(item.label_));
+		FileName icon_path = libFileSearch("images/math", item.name_, "xpm");
+		tb->setIcon(QIcon(toqstr(icon_path.absFilename())));
+		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
+			tb, SLOT(setIconSize(const QSize &)));
+
+		ButtonMenu * m = new ButtonMenu(toqstr(item.label_), tb);
+		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
+		ToolbarInfo const & tbb = toolbarbackend.getToolbar(item.name_);
+		ToolbarInfo::item_iterator it = tbb.items.begin();
+		ToolbarInfo::item_iterator const end = tbb.items.end();
+		for (; it != end; ++it)
+			if (!lyx::getStatus(it->func_).unknown()) {
+				Action * action = new Action(owner_,
+					getIcon(it->func_, false),
+					it->label_,
+					it->func_,
+					it->label_);
+				m->add(action);
+				ActionVector.push_back(action);
+			}
+		tb->setMenu(m);
+		addWidget(tb);
+		break;
+		}
+	case ToolbarItem::COMMAND: {
 		if (lyx::getStatus(item.func_).unknown())
 			break;
 
@@ -210,6 +279,8 @@ void QLToolbar::add(ToolbarItem const & item)
 		ActionVector.push_back(action);
 		break;
 		}
+	default:
+		break;
 	}
 }
 
@@ -269,7 +340,7 @@ void QLToolbar::update()
 }
 
 
-string const getIcon(FuncRequest const & f)
+string const getIcon(FuncRequest const & f, bool unknown)
 {
 	using frontend::find_xpm;
 
@@ -308,7 +379,10 @@ string const getIcon(FuncRequest const & f)
 	LYXERR(Debug::GUI) << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
-	return libFileSearch("images", "unknown", "xpm").absFilename();
+	if (unknown)
+		return libFileSearch("images", "unknown", "xpm").absFilename();
+	else
+		return string();
 }
 
 

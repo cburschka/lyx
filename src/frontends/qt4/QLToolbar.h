@@ -87,7 +87,7 @@ private:
 };
 
 /// return a full path of an XPM for the given action
-std::string const getIcon(FuncRequest const & f);
+std::string const getIcon(FuncRequest const & f, bool unknown = true);
 
 } // namespace frontend
 } // namespace lyx

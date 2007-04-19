@@ -15,11 +15,13 @@
 #include <QWidget>
 #include <QLayout>
 #include <QRect>
+#include <QMenu>
 #include <QWidgetItem>
 
 #include <string>
 #include <utility>
 #include <vector>
+#include "Action.h"
 
 class QPushButton;
 
@@ -66,6 +68,56 @@ protected Q_SLOTS:
 private:
 	typedef std::pair<QPushButton *, std::string> Button;
 	std::vector<Button> buttons_;
+};
+
+
+/**
+ * For holding an arbitrary set of icons.
+ * is susceptible to replace IconPalette
+ */
+class IconPanel : public QWidget {
+	Q_OBJECT
+public:
+	IconPanel(QWidget * parent);
+	void addButton(QAction *);
+
+public Q_SLOTS:
+	void updateParent();
+
+Q_SIGNALS:
+	void triggered(QAction *);
+	void visible(bool);
+
+protected:
+	void showEvent(QShowEvent * event);
+	void hideEvent(QHideEvent * event);
+	void paintEvent(QPaintEvent * event);
+
+private Q_SLOTS:
+	virtual void clicked(QAction *);
+
+private:
+	QGridLayout * layout_;
+	QList<QAction *> actions_;
+};
+
+/**
+ * Popup menu for a toolbutton.
+ * We need this to keep track whether
+ * it is necessary to enable/disable
+ * the toolbutton
+ */
+class ButtonMenu : public QMenu {
+	Q_OBJECT
+public:
+	ButtonMenu(const QString & title, QWidget * parent = 0 );
+	void add(QAction *);
+
+public Q_SLOTS:
+	void updateParent();
+
+private:
+	QList<QAction *> actions_;
 };
 
 

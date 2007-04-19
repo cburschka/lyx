@@ -35,7 +35,11 @@ public:
 		/// a special combox insead of a button
 		LAYOUTS,
 		/// a special widget to insert tabulars
-		TABLEINSERT
+		TABLEINSERT,
+		/// 
+		POPUPMENU,
+		///
+		ICONPALETTE
 	};
 
 	ToolbarItem(Type type,
