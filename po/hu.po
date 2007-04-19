@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-15 18:08+0200\n"
+"POT-Creation-Date: 2007-04-19 19:40+0100\n"
 "PO-Revision-Date: 2007-03-14 16:08+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -82,7 +82,6 @@ msgid "Remove the selected branch"
 msgstr "Kiválasztott változat eltávolítása"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:143
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:68
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:68
 msgid "&Remove"
@@ -427,7 +426,7 @@ msgstr "Copyright"
 
 #: src/frontends/qt4/ui/QAboutUi.ui:131 src/frontends/qt4/ui/QBibitemUi.ui:121
 #: src/frontends/qt4/ui/QBoxUi.ui:351 src/frontends/qt4/ui/QBranchUi.ui:41
-#: src/frontends/qt4/ui/QDelimiterUi.ui:265
+#: src/frontends/qt4/ui/QDelimiterUi.ui:235
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:199 src/frontends/qt4/ui/QLogUi.ui:71
@@ -474,8 +473,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:323
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:727
-#: src/lyxfunc.C:900 src/lyxfunc.C:1066 src/lyxfunc.C:2027 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:728
+#: src/lyxfunc.C:901 src/lyxfunc.C:1067 src/lyxfunc.C:2028 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Mégsem"
 
@@ -503,8 +502,8 @@ msgstr "LyX: BibTeX fájl hozzáadása"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:92 src/frontends/qt4/ui/QNomenclUi.ui:105
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:263
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:843
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:264
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -781,7 +780,7 @@ msgstr "Betûtestesség"
 #: src/frontends/qt4/ui/QCharacterUi.ui:114
 #: src/frontends/qt4/ui/QCharacterUi.ui:160 lib/layouts/europecv.layout:144
 #: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocumentDialog.C:397
-#: src/frontends/qt4/QPrefsDialog.C:1489
+#: src/frontends/qt4/QPrefsDialog.C:1490
 msgid "Language"
 msgstr "Nyelv"
 
@@ -949,30 +948,30 @@ msgstr "<- Törlés"
 msgid "F&ind:"
 msgstr "&Mit keres:"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:147
-#, fuzzy
-msgid "TeX Code"
-msgstr "TeX kód|X"
-
-#: src/frontends/qt4/ui/QDelimiterUi.ui:162
-msgid "Match delimiter types"
-msgstr "Figyeljen a határolójel párjára"
-
-#: src/frontends/qt4/ui/QDelimiterUi.ui:165
-msgid "&Keep matched"
-msgstr "&Párjával együtt"
-
-#: src/frontends/qt4/ui/QDelimiterUi.ui:191
+#: src/frontends/qt4/ui/QDelimiterUi.ui:73
 msgid "&Size:"
 msgstr "Mé&ret:"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:247
+#: src/frontends/qt4/ui/QDelimiterUi.ui:217
 msgid "Insert the delimiters"
 msgstr "Határoló beszúrása"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:250
+#: src/frontends/qt4/ui/QDelimiterUi.ui:220
 msgid "&Insert"
 msgstr "&Beszúrás"
+
+#: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#, fuzzy
+msgid "TeX Code:"
+msgstr "TeX kód|X"
+
+#: src/frontends/qt4/ui/QDelimiterUi.ui:276
+msgid "Match delimiter types"
+msgstr "Figyeljen a határolójel párjára"
+
+#: src/frontends/qt4/ui/QDelimiterUi.ui:279
+msgid "&Keep matched"
+msgstr "&Párjával együtt"
 
 #: src/frontends/qt4/ui/QDocumentUi.ui:58
 msgid "Reset to the default settings for the document class"
@@ -1700,40 +1699,46 @@ msgid "&Enabled"
 msgstr "N&agy táblázat"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:65
-msgid "&Maximum Age (in days)"
-msgstr ""
-
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:89
 #, fuzzy
-msgid "Converter &Definitions"
+msgid "&Maximum Age (in days):"
+msgstr "&Utoljára használt fájlok száma:"
+
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:83
+#, fuzzy
+msgid "Converter Defi&nitions"
 msgstr "Definíciók"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:121
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:115
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:61
 msgid "A&dd"
 msgstr "&Hozzáadás"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:128
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:122
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:61
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:61
 msgid "&Modify"
 msgstr "&Módosít"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:181
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:137
+#, fuzzy
+msgid "Remo&ve"
+msgstr "E&ltávolít"
+
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:175
 #, fuzzy
 msgid "&From format:"
 msgstr "Formá&tum:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:213
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:207
 #, fuzzy
 msgid "&To format:"
 msgstr "&Dátumforma:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:247
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:241
 msgid "E&xtra flag:"
 msgstr "E&xtra paraméter:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:270
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:264
 msgid "C&onverter:"
 msgstr "Átala&kító:"
 
@@ -2314,7 +2319,7 @@ msgid "&Maximum last files:"
 msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:726
+#: src/bufferlist.C:222 src/lyxfunc.C:727
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -8572,11 +8577,11 @@ msgstr "Dokumentum mentése"
 msgid "Print document"
 msgstr "Dokumentum nyomtatása"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:736
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:762
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:746
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:772
 msgid "Redo"
 msgstr "Mégis"
 
@@ -8898,7 +8903,7 @@ msgstr "PostScript nézete"
 msgid "Update PostScript"
 msgstr "PostScript frissítése"
 
-#: src/BufferView.C:233
+#: src/BufferView.C:234
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -8909,19 +8914,19 @@ msgstr ""
 "\n"
 "Vissza akar térni egy mentett változathoz?"
 
-#: src/BufferView.C:236 src/lyxfunc.C:899
+#: src/BufferView.C:237 src/lyxfunc.C:900
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/BufferView.C:237 src/lyxfunc.C:900 src/lyxvc.C:175
+#: src/BufferView.C:238 src/lyxfunc.C:901 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Visszatér"
 
-#: src/BufferView.C:237
+#: src/BufferView.C:238
 msgid "&Switch to document"
 msgstr "&Átváltás dokumentumra"
 
-#: src/BufferView.C:259
+#: src/BufferView.C:260
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -8932,102 +8937,102 @@ msgstr ""
 "\n"
 "Létre akarja hozni az új dokumentumot?"
 
-#: src/BufferView.C:262
+#: src/BufferView.C:263
 msgid "Create new document?"
 msgstr "Létrehozzam az új dokumentumot?"
 
-#: src/BufferView.C:263
+#: src/BufferView.C:264
 msgid "&Create"
 msgstr "&Létrehozás"
 
-#: src/BufferView.C:563
+#: src/BufferView.C:570
 msgid "Save bookmark"
 msgstr "Könyvjelzõ mentése"
 
-#: src/BufferView.C:739
+#: src/BufferView.C:765
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.C:749
+#: src/BufferView.C:775
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.C:907
+#: src/BufferView.C:933
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.C:914
+#: src/BufferView.C:940
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.C:921
+#: src/BufferView.C:947
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.C:924
+#: src/BufferView.C:950
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.C:970
+#: src/BufferView.C:996
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d szó van a kijelölésben."
 
-#: src/BufferView.C:973
+#: src/BufferView.C:999
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d szó van a dokumentumban."
 
-#: src/BufferView.C:978
+#: src/BufferView.C:1004
 msgid "One word in selection."
 msgstr "Egy szó van a kijelölésben."
 
-#: src/BufferView.C:980
+#: src/BufferView.C:1006
 msgid "One word in document."
 msgstr "Egy szó van a dokumentumban."
 
-#: src/BufferView.C:983
+#: src/BufferView.C:1009
 msgid "Count words"
 msgstr "Szavak megszámolása"
 
-#: src/BufferView.C:1562
+#: src/BufferView.C:1588
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.C:1564 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1590 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1866 src/lyxfunc.C:1905 src/lyxfunc.C:1978
+#: src/lyxfunc.C:1867 src/lyxfunc.C:1906 src/lyxfunc.C:1979
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.C:1565 src/lyxfunc.C:1906 src/lyxfunc.C:1979
+#: src/BufferView.C:1591 src/lyxfunc.C:1907 src/lyxfunc.C:1980
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.C:1569 src/lyx_cb.C:142 src/lyxfunc.C:1871
-#: src/lyxfunc.C:1910
+#: src/BufferView.C:1595 src/lyx_cb.C:142 src/lyxfunc.C:1872
+#: src/lyxfunc.C:1911
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.C:1581 src/lyxfunc.C:1920 src/lyxfunc.C:2000
-#: src/lyxfunc.C:2014 src/lyxfunc.C:2030
+#: src/BufferView.C:1607 src/lyxfunc.C:1921 src/lyxfunc.C:2001
+#: src/lyxfunc.C:2015 src/lyxfunc.C:2031
 msgid "Canceled."
 msgstr "Törölve."
 
-#: src/BufferView.C:1592
+#: src/BufferView.C:1618
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.C:1603
+#: src/BufferView.C:1629
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.C:1605
+#: src/BufferView.C:1631
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
@@ -9618,7 +9623,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy elveti a módosításokat?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:725
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
@@ -9645,14 +9650,20 @@ msgstr "  Sikertelen mentés! A csudába, a dokumentum elvesztett."
 
 #: src/bufferparams.C:438
 #, c-format
-msgid "The document uses a missing TeX class \"%1$s\".\n"
-msgstr "A dokumentum egy hiányzó TeX osztályt használ: \"%1$s\".\n"
+msgid ""
+"The layout file requested by this document,\n"
+"%1$s.layout,\n"
+"is not usable. This is probably because a LaTeX\n"
+"class or style file required by it is not\n"
+"available. See the Customization documentation\n"
+"for more information.\n"
+msgstr ""
 
-#: src/bufferparams.C:440
+#: src/bufferparams.C:444
 msgid "Document class not available"
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/bufferparams.C:441
+#: src/bufferparams.C:445
 msgid "LyX will not be able to produce output."
 msgstr "LyX nem tudja  elkészíteni a kimenetet."
 
@@ -9848,7 +9859,7 @@ msgstr "Külsõ sablon/betét üzenetek"
 msgid "RowPainter profiling"
 msgstr "RowPainter profiling"
 
-#: src/exporter.C:82 src/lyxfunc.C:1062
+#: src/exporter.C:82 src/lyxfunc.C:1063
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -9859,11 +9870,11 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/exporter.C:85 src/lyxfunc.C:1065
+#: src/exporter.C:85 src/lyxfunc.C:1066
 msgid "Over-write file?"
 msgstr "Felülírjam a fájlt?"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1066 src/lyxfunc.C:2027
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1067 src/lyxfunc.C:2028
 msgid "&Over-write"
 msgstr "&Kicserél"
 
@@ -10554,18 +10565,23 @@ msgstr "nagy[[határoló méret]]"
 msgid "Bigg[[delimiter size]]"
 msgstr "óriás[[határoló méret]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:96
+#: src/frontends/qt4/QDelimiterDialog.C:97
 msgid "LyX: Delimiters"
 msgstr "LyX: Határolójelek"
 
-#: src/frontends/qt4/QDelimiterDialog.C:124
-#: src/frontends/qt4/QDelimiterDialog.C:125
+#: src/frontends/qt4/QDelimiterDialog.C:129
+#: src/frontends/qt4/QDelimiterDialog.C:130
 msgid "(None)"
 msgstr "(Nincs)"
 
-#: src/frontends/qt4/QDelimiterDialog.C:127
+#: src/frontends/qt4/QDelimiterDialog.C:132
 msgid "Variable"
 msgstr "Változó méret"
+
+#: src/frontends/qt4/QDelimiterDialog.C:175
+#, fuzzy
+msgid "TeX Code: "
+msgstr "TeX kód|X"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -10998,33 +11014,33 @@ msgstr "aspell (library)"
 msgid "Converters"
 msgstr "Átalakítók"
 
-#: src/frontends/qt4/QPrefsDialog.C:1036
+#: src/frontends/qt4/QPrefsDialog.C:1037
 msgid "Copiers"
 msgstr "Másolók"
 
-#: src/frontends/qt4/QPrefsDialog.C:1280
+#: src/frontends/qt4/QPrefsDialog.C:1281
 msgid "File formats"
 msgstr "Fájlformátumok"
 
-#: src/frontends/qt4/QPrefsDialog.C:1472
+#: src/frontends/qt4/QPrefsDialog.C:1473
 msgid "Format in use"
 msgstr "Használt formátumok"
 
-#: src/frontends/qt4/QPrefsDialog.C:1473
+#: src/frontends/qt4/QPrefsDialog.C:1474
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "A formátumot nem lehet eltávolítani, mert használja egy átalakító. Törölje "
 "elõször az átalakítót."
 
-#: src/frontends/qt4/QPrefsDialog.C:1564
+#: src/frontends/qt4/QPrefsDialog.C:1565
 msgid "Printer"
 msgstr "Nyomtató"
 
-#: src/frontends/qt4/QPrefsDialog.C:1656 src/frontends/qt4/QPrefsDialog.C:1843
+#: src/frontends/qt4/QPrefsDialog.C:1657 src/frontends/qt4/QPrefsDialog.C:1844
 msgid "User interface"
 msgstr "Felhasználói felület"
 
-#: src/frontends/qt4/QPrefsDialog.C:1769
+#: src/frontends/qt4/QPrefsDialog.C:1770
 msgid "Identity"
 msgstr "Felhasználó"
 
@@ -11667,11 +11683,11 @@ msgstr "&Átnevezés"
 msgid "Choose a filename to save document as"
 msgstr "Mentés másként..."
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1867
+#: src/lyx_cb.C:137 src/lyxfunc.C:1868
 msgid "Templates|#T#t"
 msgstr "Sablonok|#a#A"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2024
+#: src/lyx_cb.C:167 src/lyxfunc.C:2025
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11682,7 +11698,7 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:2026
+#: src/lyx_cb.C:169 src/lyxfunc.C:2027
 msgid "Over-write document?"
 msgstr "Felülírjam a dokumentumot?"
 
@@ -11997,35 +12013,35 @@ msgstr "Nyelv: %1$s, "
 msgid "  Number %1$s"
 msgstr "  Szám %1$s"
 
-#: src/lyxfunc.C:361
+#: src/lyxfunc.C:362
 msgid "Unknown function."
 msgstr "Ismeretlen funkció."
 
-#: src/lyxfunc.C:400
+#: src/lyxfunc.C:401
 msgid "Nothing to do"
 msgstr "Nincs mit tenni"
 
-#: src/lyxfunc.C:419
+#: src/lyxfunc.C:420
 msgid "Unknown action"
 msgstr "Ismeretlen mûvelet"
 
-#: src/lyxfunc.C:425 src/lyxfunc.C:709
+#: src/lyxfunc.C:426 src/lyxfunc.C:710
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
-#: src/lyxfunc.C:432
+#: src/lyxfunc.C:433
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/lyxfunc.C:695
+#: src/lyxfunc.C:696
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:704
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/lyxfunc.C:722
+#: src/lyxfunc.C:723
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12036,7 +12052,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/lyxfunc.C:740
+#: src/lyxfunc.C:741
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12045,11 +12061,11 @@ msgstr ""
 "A %1$s dokumentum nem nyomtatható.\n"
 "Kérem ellenõrizze a nyomtató beállításait."
 
-#: src/lyxfunc.C:743
+#: src/lyxfunc.C:744
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
-#: src/lyxfunc.C:762
+#: src/lyxfunc.C:763
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12058,20 +12074,20 @@ msgstr ""
 "A dokumentumot nem lehet\n"
 " %1$s osztály formátumba átalakítani."
 
-#: src/lyxfunc.C:765
+#: src/lyxfunc.C:766
 msgid "Could not change class"
 msgstr "Osztály nem változtatható meg"
 
-#: src/lyxfunc.C:877
+#: src/lyxfunc.C:878
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése: %1$s..."
 
-#: src/lyxfunc.C:881
+#: src/lyxfunc.C:882
 msgid " done."
 msgstr " kész."
 
-#: src/lyxfunc.C:897
+#: src/lyxfunc.C:898
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -12080,77 +12096,77 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/lyxfunc.C:1089
+#: src/lyxfunc.C:1090
 msgid "Exiting."
 msgstr "Kilépés."
 
-#: src/lyxfunc.C:1115 src/text3.C:1312
+#: src/lyxfunc.C:1116 src/text3.C:1312
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/lyxfunc.C:1124
+#: src/lyxfunc.C:1125
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s..."
 
-#: src/lyxfunc.C:1399
+#: src/lyxfunc.C:1400
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Aldokumentum megnyitása %1$s..."
 
-#: src/lyxfunc.C:1486
+#: src/lyxfunc.C:1487
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Szintaxis: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1497
+#: src/lyxfunc.C:1498
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/lyxfunc.C:1611
+#: src/lyxfunc.C:1612
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentum alapértékek mentése %1$s-ban."
 
-#: src/lyxfunc.C:1614
+#: src/lyxfunc.C:1615
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/lyxfunc.C:1670
+#: src/lyxfunc.C:1671
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
-#: src/lyxfunc.C:1864
+#: src/lyxfunc.C:1865
 msgid "Select template file"
 msgstr "Sablon kiválasztása"
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1904
 msgid "Select document to open"
 msgstr "Megnyitandó dokumentum kiválasztása"
 
-#: src/lyxfunc.C:1942
+#: src/lyxfunc.C:1943
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása %1$s..."
 
-#: src/lyxfunc.C:1946
+#: src/lyxfunc.C:1947
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentum megnyitva."
 
-#: src/lyxfunc.C:1948
+#: src/lyxfunc.C:1949
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentum nem nyitható meg %1$s"
 
-#: src/lyxfunc.C:1973
+#: src/lyxfunc.C:1974
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
-#: src/lyxfunc.C:2097
+#: src/lyxfunc.C:2098
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
@@ -12745,7 +12761,7 @@ msgstr "Új képlet környezet létrehozása ($...$)"
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
-#: src/mathed/MathMacroTemplate.C:225
+#: src/mathed/MathMacroTemplate.C:240
 msgid "math macro"
 msgstr "képlet makró"
 
@@ -13113,6 +13129,9 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "védett"
+
+#~ msgid "The document uses a missing TeX class \"%1$s\".\n"
+#~ msgstr "A dokumentum egy hiányzó TeX osztályt használ: \"%1$s\".\n"
 
 #, fuzzy
 #~ msgid "Insert math delimiters"
