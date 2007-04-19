@@ -12,162 +12,96 @@
   <property name="windowTitle" >
    <string/>
   </property>
-  <widget class="QGroupBox" name="cacheGB" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>330</y>
-     <width>421</width>
-     <height>61</height>
-    </rect>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
    </property>
-   <property name="title" >
-    <string>Converter File Cache</string>
+   <property name="spacing" >
+    <number>6</number>
    </property>
-   <layout class="QGridLayout" >
-    <property name="margin" >
-     <number>9</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item row="0" column="0" >
-     <layout class="QHBoxLayout" >
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="cacheGB" >
+     <property name="title" >
+      <string>Converter File Cache</string>
+     </property>
+     <layout class="QGridLayout" >
       <property name="margin" >
-       <number>0</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item>
-       <widget class="QCheckBox" name="cacheCB" >
-        <property name="text" >
-         <string>&amp;Enabled</string>
+      <item row="0" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-       </widget>
-      </item>
-      <item>
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
+        <property name="spacing" >
+         <number>6</number>
         </property>
-        <property name="sizeHint" >
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="maxAgeLA" >
-        <property name="text" >
-         <string>&amp;Maximum Age (in days):</string>
-        </property>
-        <property name="buddy" >
-         <cstring>maxAgeLE</cstring>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="maxAgeLE" />
+        <item>
+         <widget class="QCheckBox" name="cacheCB" >
+          <property name="text" >
+           <string>&amp;Enabled</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="maxAgeLA" >
+          <property name="text" >
+           <string>&amp;Maximum Age (in days):</string>
+          </property>
+          <property name="buddy" >
+           <cstring>maxAgeLE</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="maxAgeLE" />
+        </item>
+       </layout>
       </item>
      </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupBox" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>421</width>
-     <height>331</height>
-    </rect>
-   </property>
-   <property name="title" >
-    <string>Converter &amp;Definitions</string>
-   </property>
-   <layout class="QGridLayout" >
-    <property name="margin" >
-     <number>9</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item row="0" column="0" >
-     <widget class="QListWidget" name="convertersLW" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>7</hsizetype>
-        <vsizetype>7</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" >
-     <layout class="QVBoxLayout" >
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Converter &amp;Definitions</string>
+     </property>
+     <layout class="QGridLayout" >
       <property name="margin" >
-       <number>0</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item>
-       <widget class="QPushButton" name="converterNewPB" >
-        <property name="text" >
-         <string>A&amp;dd</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="converterModifyPB" >
-        <property name="text" >
-         <string>&amp;Modify</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="converterRemovePB" >
+      <item row="0" column="0" >
+       <widget class="QListWidget" name="convertersLW" >
         <property name="sizePolicy" >
          <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
+          <hsizetype>7</hsizetype>
+          <vsizetype>7</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text" >
-         <string>&amp;Remove</string>
-        </property>
        </widget>
       </item>
-      <item>
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>75</width>
-          <height>16</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0" colspan="2" >
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
+      <item row="0" column="1" >
        <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -176,31 +110,51 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="converterFromLA" >
+         <widget class="QPushButton" name="converterNewPB" >
           <property name="text" >
-           <string>&amp;From format:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>converterFromCO</cstring>
+           <string>A&amp;dd</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="converterFromCO" >
+         <widget class="QPushButton" name="converterModifyPB" >
+          <property name="text" >
+           <string>&amp;Modify</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="converterRemovePB" >
           <property name="sizePolicy" >
            <sizepolicy>
-            <hsizetype>3</hsizetype>
+            <hsizetype>1</hsizetype>
             <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="text" >
+           <string>&amp;Remove</string>
+          </property>
          </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>75</width>
+            <height>16</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QVBoxLayout" >
+      <item row="1" column="0" colspan="2" >
+       <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>0</number>
         </property>
@@ -208,79 +162,121 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="converterFromLA_2" >
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="converterFromLA" >
+            <property name="text" >
+             <string>&amp;From format:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>converterFromCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="converterFromCO" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="converterFromLA_2" >
+            <property name="text" >
+             <string>&amp;To format:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>converterFromCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="converterToCO" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0" colspan="2" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="converterFlagLA" >
           <property name="text" >
-           <string>&amp;To format:</string>
+           <string>E&amp;xtra flag:</string>
           </property>
           <property name="buddy" >
-           <cstring>converterFromCO</cstring>
+           <cstring>converterFlagED</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="converterToCO" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>3</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="QLineEdit" name="converterFlagED" />
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" colspan="2" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="converterLA" >
+          <property name="text" >
+           <string>C&amp;onverter:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>converterED</cstring>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="converterED" />
         </item>
        </layout>
       </item>
      </layout>
-    </item>
-    <item row="3" column="0" colspan="2" >
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="converterFlagLA" >
-        <property name="text" >
-         <string>E&amp;xtra flag:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>converterFlagED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="converterFlagED" />
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="0" colspan="2" >
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="converterLA" >
-        <property name="text" >
-         <string>C&amp;onverter:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>converterED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="converterED" />
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <tabstops>
   <tabstop>convertersLW</tabstop>
