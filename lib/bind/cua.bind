@@ -5,13 +5,13 @@
 # Licence details can be found in the file COPYING.
 
 # author Asger Alstrup
-# author Lars Gullik Bjønnes
+# author Lars Gullik Bjnnes
 # author Jean-Marc Lasgouttes
 # author Angus Leeming
 # author John Levon
-# author Jürgen Spitzmüller
+# author Jrgen Spitzmller
 # author Dekel Tsur
-# author Jürgen Vigna
+# author Jrgen Vigna
 # author Andrew Zabolotny
 
 # Full author contact details are available in file CREDITS.
@@ -48,7 +48,9 @@
 \bind "C-S-T"			"buffer-update ps"
 \bind "C-q"			"lyx-quit"
 \bind "C-Next"			"buffer-next"
+\bind "C-Tab"			"buffer-next"
 \bind "C-Prior"			"buffer-previous"
+\bind "C-S-Tab"   "buffer-previous"
 
 \bind "C-b"			"font-bold"
 \bind "C-e"			"font-emph"
