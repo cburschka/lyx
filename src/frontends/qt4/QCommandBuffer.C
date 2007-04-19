@@ -171,6 +171,8 @@ void QCommandBuffer::complete()
 
 	connect(list, SIGNAL(itemPressed(QListWidgetItem *)),
 		this, SLOT(complete_selected(QListWidgetItem *)));
+	connect(list, SIGNAL(itemActivated(QListWidgetItem *)),
+		this, SLOT(complete_selected(QListWidgetItem *)));
 
 	list->show();
 	list->setFocus();
