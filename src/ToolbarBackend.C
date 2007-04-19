@@ -13,77 +13,109 @@
 
 #include "ToolbarBackend.h"
 #include "funcrequest.h"
-#include "LyXAction.h"
 #include "lyxlex.h"
 #include "debug.h"
 #include "gettext.h"
-
+#include "LyXAction.h"
 #include "support/lstrings.h"
-#include "support/filetools.h"
+
+#include <boost/bind.hpp>
 
 #include "frontends/controllers/ControlMath.h"
-
 
 namespace lyx {
 
 using support::compare_ascii_no_case;
 using support::getVectorFromString;
-using support::libFileSearch;
-using support::subst;
 
 using std::endl;
 using std::make_pair;
 using std::string;
 using std::vector;
+using std::find_if;
 
-
-ToolbarBackend toolbarbackend;
 
 namespace {
 
-enum tooltags {
-	TO_ADD = 1,
-	TO_ENDTOOLBAR,
-	TO_SEPARATOR,
-	TO_LAYOUTS,
-	TO_MINIBUFFER,
-	TO_LAST
-};
-
-struct keyword_item toolTags[TO_LAST - 1] = {
-	{ "end", TO_ENDTOOLBAR },
-	{ "item", TO_ADD },
-	{ "layouts", TO_LAYOUTS },
-	{ "minibuffer", TO_MINIBUFFER },
-	{ "separator", TO_SEPARATOR }
+class ToolbarNamesEqual : public std::unary_function<ToolbarInfo, bool> {
+public:
+	ToolbarNamesEqual(string const & name)
+		: name_(name) {}
+	bool operator()(ToolbarInfo const & tb) const
+	{
+		return tb.name == name_;
+	}
+private:
+	string name_;
 };
 
 } // namespace anon
 
 
-ToolbarBackend::ToolbarBackend()
+ToolbarBackend toolbarbackend;
+
+
+ToolbarItem::ToolbarItem(Type type, FuncRequest const & func, docstring const & label)
+	: type_(type), func_(func), label_(label)
 {
 }
 
 
-void ToolbarBackend::read(LyXLex & lex)
+ToolbarItem::ToolbarItem(Type type, string const & name, docstring const & label)
+	: type_(type), name_(name), label_(label)
 {
+}
+
+
+ToolbarItem::~ToolbarItem()
+{}
+
+
+void ToolbarInfo::add(ToolbarItem const & item)
+{
+	items.push_back(item);
+	items.back().func_.origin = FuncRequest::TOOLBAR;
+}
+
+
+ToolbarInfo & ToolbarInfo::read(LyXLex & lex)
+{
+	enum tooltags {
+		TO_COMMAND = 1,
+		TO_ENDTOOLBAR,
+		TO_SEPARATOR,
+		TO_LAYOUTS,
+		TO_MINIBUFFER,
+		TO_TABLEINSERT,
+		TO_LAST
+	};
+	
+	struct keyword_item toolTags[TO_LAST - 1] = {
+		{ "end", TO_ENDTOOLBAR },
+		{ "item", TO_COMMAND },
+		{ "layouts", TO_LAYOUTS },
+		{ "minibuffer", TO_MINIBUFFER },
+		{ "separator", TO_SEPARATOR },
+		{ "tableinsert", TO_TABLEINSERT }
+	};
+
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbar")) {
-		lyxerr << "ToolbarBackend::read: ERROR wrong token:`"
+		lyxerr << "ToolbarInfo::read: ERROR wrong token:`"
 		       << lex.getString() << '\'' << endl;
 	}
 
 	lex.next(true);
+	name = lex.getString();
 
-	Toolbar tb;
-	tb.name = lex.getString();
 	lex.next(true);
-	tb.gui_name = lex.getString();
+	gui_name = lex.getString();
+
+	// FIXME what to do here?
 	if (!lex) {
-		lyxerr << "ToolbarBackend::read: Malformed toolbar "
+		lyxerr << "ToolbarInfo::read: Malformed toolbar "
 			"description " <<  lex.getString() << endl;
-		return;
+		return *this;
 	}
 
 	bool quit = false;
@@ -95,54 +127,116 @@ void ToolbarBackend::read(LyXLex & lex)
 
 	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
-		case TO_ADD:
+		case TO_COMMAND:
 			if (lex.next(true)) {
 				docstring const tooltip = translateIfPossible(lex.getDocString());
 				lex.next(true);
 				string const func_arg = lex.getString();
 				LYXERR(Debug::PARSER)
-					<< "ToolbarBackend::read TO_ADD func: `"
+					<< "ToolbarInfo::read TO_COMMAND func: `"
 					<< func_arg << '\'' << endl;
 
 				FuncRequest func =
 					lyxaction.lookupFunc(func_arg);
-				add(tb, func, tooltip);
+				add(ToolbarItem(ToolbarItem::COMMAND, func, tooltip));
 			}
 			break;
 
 		case TO_MINIBUFFER:
-			add(tb, FuncRequest(kb_action(MINIBUFFER)));
+			add(ToolbarItem(ToolbarItem::MINIBUFFER,
+				FuncRequest(kb_action(ToolbarItem::MINIBUFFER))));
 			break;
 
 		case TO_SEPARATOR:
-			add(tb, FuncRequest(kb_action(SEPARATOR)));
+			add(ToolbarItem(ToolbarItem::SEPARATOR,
+				FuncRequest(kb_action(ToolbarItem::SEPARATOR))));
 			break;
 
 		case TO_LAYOUTS:
-			add(tb, FuncRequest(kb_action(LAYOUTS)));
+			add(ToolbarItem(ToolbarItem::LAYOUTS,
+				FuncRequest(kb_action(ToolbarItem::LAYOUTS))));
 			break;
-
+			
+		case TO_TABLEINSERT:
+			add(ToolbarItem(ToolbarItem::TABLEINSERT,
+				FuncRequest(kb_action(ToolbarItem::TABLEINSERT))));
+			break;
+			
 		case TO_ENDTOOLBAR:
 			quit = true;
 			break;
+
 		default:
-			lex.printError("ToolbarBackend::read: "
+			lex.printError("ToolbarInfo::read: "
 				       "Unknown toolbar tag: `$$Token'");
 			break;
 		}
 	}
 
-	toolbars.push_back(tb);
-
 	lex.popTable();
+	return *this;
+}
+
+
+
+
+ToolbarBackend::ToolbarBackend()
+{
 }
 
 
 void ToolbarBackend::readToolbars(LyXLex & lex)
 {
+	enum tooltags {
+		TO_TOOLBAR = 1,
+		TO_ENDTOOLBARSET,
+		TO_LAST
+	};
+	
+	struct keyword_item toolTags[TO_LAST - 1] = {
+		{ "end", TO_ENDTOOLBARSET },
+		{ "toolbar", TO_TOOLBAR }
+	};
+
+	//consistency check
+	if (compare_ascii_no_case(lex.getString(), "toolbarset")) {
+		lyxerr << "ToolbarBackend::readToolbars: ERROR wrong token:`"
+		       << lex.getString() << '\'' << endl;
+	}
+
+	lex.pushTable(toolTags, TO_LAST - 1);
+
+	if (lyxerr.debugging(Debug::PARSER))
+		lex.printTable(lyxerr);
+
+	bool quit = false;
+	while (lex.isOK() && !quit) {
+		switch (lex.lex()) {
+		case TO_TOOLBAR: {
+			ToolbarInfo tb;
+			tb.read(lex);
+			toolbars.push_back(tb);
+			break;
+			}
+		case TO_ENDTOOLBARSET:
+			quit = true;
+			break;
+		default:
+			lex.printError("ToolbarBackend::readToolbars: "
+				       "Unknown toolbar tag: `$$Token'");
+			break;
+		}
+	}
+
+	lex.popTable();
+}
+
+
+void ToolbarBackend::readToolbarSettings(LyXLex & lex)
+{
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbars")) {
-		lyxerr << "ToolbarBackend::read: ERROR wrong token:`"
+		lyxerr << "ToolbarBackend::readToolbarSettings: ERROR wrong token:`"
 		       << lex.getString() << '\'' << endl;
 	}
 
@@ -168,7 +262,7 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 			return;
 		}
 
-		tcit->flags = static_cast<Flags>(0);
+		tcit->flags = static_cast<ToolbarInfo::Flags>(0);
 		string flagstr = lex.getString();
 		lex.next(true);
 		vector<string> flags = getVectorFromString(flagstr);
@@ -179,28 +273,28 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 		for (; cit != end; ++cit) {
 			int flag = 0;
 			if (!compare_ascii_no_case(*cit, "off"))
-				flag = OFF;
+				flag = ToolbarInfo::OFF;
 			else if (!compare_ascii_no_case(*cit, "on"))
-				flag = ON;
+				flag = ToolbarInfo::ON;
 			else if (!compare_ascii_no_case(*cit, "math"))
-				flag = MATH;
+				flag = ToolbarInfo::MATH;
 			else if (!compare_ascii_no_case(*cit, "table"))
-				flag = TABLE;
+				flag = ToolbarInfo::TABLE;
 			else if (!compare_ascii_no_case(*cit, "review"))
-				flag = REVIEW;
+				flag = ToolbarInfo::REVIEW;
 			else if (!compare_ascii_no_case(*cit, "top"))
-				flag = TOP;
+				flag = ToolbarInfo::TOP;
 			else if (!compare_ascii_no_case(*cit, "bottom"))
-				flag = BOTTOM;
+				flag = ToolbarInfo::BOTTOM;
 			else if (!compare_ascii_no_case(*cit, "left"))
-				flag = LEFT;
+				flag = ToolbarInfo::LEFT;
 			else if (!compare_ascii_no_case(*cit, "right"))
-				flag = RIGHT;
+				flag = ToolbarInfo::RIGHT;
 			else {
-				lyxerr << "ToolbarBackend::read: unrecognised token:`"
+				lyxerr << "ToolbarBackend::readToolbarSettings: unrecognised token:`"
 				       << *cit << '\'' << endl;
 			}
-			tcit->flags = static_cast<Flags>(tcit->flags | flag);
+			tcit->flags = static_cast<ToolbarInfo::Flags>(tcit->flags | flag);
 		}
 
 		usedtoolbars.push_back(*tcit);
@@ -208,54 +302,23 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 }
 
 
-void ToolbarBackend::add(Toolbar & tb,
-			 FuncRequest const & func, docstring const & tooltip)
+ToolbarInfo const & ToolbarBackend::getToolbar(string const & name) const
 {
-	tb.items.push_back(make_pair(func, tooltip));
-	tb.items.back().first.origin = FuncRequest::TOOLBAR;
+	Toolbars::const_iterator cit = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
+	if (cit == toolbars.end())
+		lyxerr << "No toolbar named " << name << endl;
+	BOOST_ASSERT(cit != toolbars.end());
+	return (*cit);
 }
 
 
-string const ToolbarBackend::getIcon(FuncRequest const & f)
+ToolbarInfo & ToolbarBackend::getToolbar(string const & name)
 {
-	using frontend::find_xpm;
-
-	string fullname;
-
-	switch (f.action) {
-	case LFUN_MATH_INSERT:
-		if (!f.argument().empty())
-			fullname = find_xpm(to_utf8(f.argument()).substr(1));
-		break;
-	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM:
-		fullname = find_xpm(to_utf8(f.argument()));
-		break;
-	default:
-		string const name = lyxaction.getActionName(f.action);
-		string xpm_name(name);
-
-		if (!f.argument().empty())
-			xpm_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
-
-		fullname = libFileSearch("images", xpm_name, "xpm").absFilename();
-
-		if (fullname.empty()) {
-			// try without the argument
-			fullname = libFileSearch("images", name, "xpm").absFilename();
-		}
-	}
-
-	if (!fullname.empty()) {
-		LYXERR(Debug::GUI) << "Full icon name is `"
-				   << fullname << '\'' << endl;
-		return fullname;
-	}
-
-	LYXERR(Debug::GUI) << "Cannot find icon for command \""
-			   << lyxaction.getActionName(f.action)
-			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
-	return libFileSearch("images", "unknown", "xpm").absFilename();
+	Toolbars::iterator it = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
+	if (it == toolbars.end())
+		lyxerr << "No toolbar named " << name << endl;
+	BOOST_ASSERT(it != toolbars.end());
+	return (*it);
 }
 
 

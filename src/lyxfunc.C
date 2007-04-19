@@ -609,9 +609,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE_STATE: {
-		ToolbarBackend::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
-		if (!(flags & ToolbarBackend::AUTO))
-			flag.setOnOff(flags & ToolbarBackend::ON);
+		ToolbarInfo::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
+		if (!(flags & ToolbarInfo::AUTO))
+			flag.setOnOff(flags & ToolbarInfo::ON);
 		break;
 	}
 

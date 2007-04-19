@@ -24,9 +24,13 @@
 
 #include "GuiView.h"
 #include "QLToolbar.h"
+#include "LyXAction.h"
 #include "Action.h"
 #include "qt_helpers.h"
 #include "InsertTableWidget.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "controllers/ControlMath.h"
 
 #include <QComboBox>
 #include <QToolBar>
@@ -38,6 +42,10 @@ using std::endl;
 using std::string;
 
 namespace lyx {
+
+using support::libFileSearch;
+using support::subst;
+
 namespace frontend {
 
 namespace {
@@ -146,7 +154,7 @@ void QLayoutBox::selected(const QString & str)
 }
 
 
-QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
+QLToolbar::QLToolbar(ToolbarInfo const & tbb, GuiView & owner)
 	: QToolBar(qt_(tbb.gui_name), &owner), owner_(owner)
 {
 	// give visual separation between adjacent toolbars
@@ -155,32 +163,32 @@ QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
 	// TODO: save toolbar position
 	setMovable(true);
 
-	ToolbarBackend::item_iterator it = tbb.items.begin();
-	ToolbarBackend::item_iterator end = tbb.items.end();
+	ToolbarInfo::item_iterator it = tbb.items.begin();
+	ToolbarInfo::item_iterator end = tbb.items.end();
 	for (; it != end; ++it)
-		add(it->first, it->second);
+		add(*it);
 }
 
 
-void QLToolbar::add(FuncRequest const & func, docstring const & tooltip)
+void QLToolbar::add(ToolbarItem const & item)
 {
-	switch (func.action) {
-	case ToolbarBackend::SEPARATOR:
+	switch (item.type_) {
+	case ToolbarItem::SEPARATOR:
 		addSeparator();
 		break;
-	case ToolbarBackend::LAYOUTS:
+	case ToolbarItem::LAYOUTS:
 		layout_.reset(new QLayoutBox(this, owner_));
 		break;
-	case ToolbarBackend::MINIBUFFER:
+	case ToolbarItem::MINIBUFFER:
 		owner_.addCommandBuffer(this);
 		/// \todo find a Qt4 equivalent to setHorizontalStretchable(true);
 		//setHorizontalStretchable(true);
 		break;
-	case LFUN_TABULAR_INSERT: {
+	case ToolbarItem::TABLEINSERT: {
 		QToolButton * tb = new QToolButton;
 		tb->setCheckable(true);
-		tb->setIcon(QPixmap(toqstr(toolbarbackend.getIcon(func))));
-		tb->setToolTip(toqstr(tooltip));
+		tb->setIcon(QPixmap(toqstr(getIcon(FuncRequest(LFUN_TABULAR_INSERT)))));
+		tb->setToolTip(toqstr(item.label_));
 		tb->setFocusPolicy(Qt::NoFocus);
 		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
 		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
@@ -190,14 +198,14 @@ void QLToolbar::add(FuncRequest const & func, docstring const & tooltip)
 		break;
 		}
 	default: {
-		if (lyx::getStatus(func).unknown())
+		if (lyx::getStatus(item.func_).unknown())
 			break;
 
 		Action * action = new Action(owner_,
-			toolbarbackend.getIcon(func),
-			tooltip,
-			func,
-			tooltip);
+			getIcon(item.func_),
+			item.label_,
+			item.func_,
+			item.label_);
 		addAction(action);
 		ActionVector.push_back(action);
 		break;
@@ -258,6 +266,49 @@ void QLToolbar::update()
 
 	// emit signal
 	updated();
+}
+
+
+string const getIcon(FuncRequest const & f)
+{
+	using frontend::find_xpm;
+
+	string fullname;
+
+	switch (f.action) {
+	case LFUN_MATH_INSERT:
+		if (!f.argument().empty())
+			fullname = find_xpm(to_utf8(f.argument()).substr(1));
+		break;
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
+		fullname = find_xpm(to_utf8(f.argument()));
+		break;
+	default:
+		string const name = lyxaction.getActionName(f.action);
+		string xpm_name(name);
+
+		if (!f.argument().empty())
+			xpm_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
+
+		fullname = libFileSearch("images", xpm_name, "xpm").absFilename();
+
+		if (fullname.empty()) {
+			// try without the argument
+			fullname = libFileSearch("images", name, "xpm").absFilename();
+		}
+	}
+
+	if (!fullname.empty()) {
+		LYXERR(Debug::GUI) << "Full icon name is `"
+				   << fullname << '\'' << endl;
+		return fullname;
+	}
+
+	LYXERR(Debug::GUI) << "Cannot find icon for command \""
+			   << lyxaction.getActionName(f.action)
+			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
+	return libFileSearch("images", "unknown", "xpm").absFilename();
 }
 
 

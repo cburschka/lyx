@@ -112,7 +112,7 @@ public:
 	/// show busy cursor
 	virtual void busy(bool) = 0;
 
-	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb, bool newline) = 0;
+	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbb, bool newline) = 0;
 
 	//@{ generic accessor functions
 
@@ -154,7 +154,7 @@ public:
 	/// update the toolbar
 	void updateToolbars();
 	/// get toolbar state
-	ToolbarBackend::Flags getToolbarState(std::string const & name);
+	ToolbarInfo::Flags getToolbarState(std::string const & name);
 	/// toggle toolbar state
 	void toggleToolbarState(std::string const & name);
 	/// update the menubar

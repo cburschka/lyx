@@ -342,7 +342,7 @@ void LyXView::updateToolbars()
 }
 
 
-ToolbarBackend::Flags LyXView::getToolbarState(string const & name)
+ToolbarInfo::Flags LyXView::getToolbarState(string const & name)
 {
 	return toolbars_->getToolbarState(name);
 }

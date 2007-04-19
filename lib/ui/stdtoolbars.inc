@@ -39,137 +39,141 @@
 #
 # This is the default toolbar:
 
-Toolbar "standard" "Standard"
-	Layouts
-	Item "New document" "buffer-new"
-	Item "Open document" "file-open"
-	Item "Save document" "buffer-write"
-	Item "Print document" "dialog-show print"
-	Separator
-	Item "Undo" "undo"
-	Item "Redo" "redo"
-	Item "Cut" "cut"
-	Item "Copy" "copy"
-	Item "Paste" "paste"
-	Item "Find and replace" "dialog-show findreplace"
-	Separator
-	Item "Toggle emphasis" "font-emph"
-	Item "Toggle noun" "font-noun"
-	Item "Apply last" "font-free-apply"
-	Separator
-	Item "Insert math" "math-mode"
-	Item "Insert graphics" "dialog-show-new-inset graphics"
-	Item "Insert table" "tabular-insert"
-End
+ToolbarSet
 
-Toolbar "extra" "Extra"
-	Item "Default" "layout"
-	Item "Numbered list" "layout Enumerate"
-	Item "Itemized list" "layout Itemize"
-	Item "List" "layout List"
-	Item "Description" "layout Description"
-	Item "Increase depth" "depth-increment"
-	Item "Decrease depth" "depth-decrement"
-	Separator
-	Item "Insert figure float" "float-insert figure"
-	Item "Insert table float" "float-insert table"
-	Item "Insert label" "label-insert"
-	Item "Insert cross-reference" "dialog-show-new-inset ref"
-	Item "Insert citation" "dialog-show-new-inset citation"
-	Item "Insert index entry" "index-insert"
-	Item "Insert glossary entry" "nomencl-insert"
-	Separator
-	Item "Insert footnote" "footnote-insert"
-	Item "Insert margin note" "marginalnote-insert"
-	Item "Insert note" "note-insert"
-	Item "Insert URL" "url-insert"
-	Item "Insert TeX code" "ert-insert"
-	Item "Include file" "dialog-show-new-inset include"
-	Separator
-	Item "Text style" "dialog-show character"
-	Item "Paragraph settings" "layout-paragraph"
-	Item "Table of contents" "toc-view"
-	Item "Check spelling" "dialog-show spellchecker"
-	Item "Thesaurus" "thesaurus-entry"
-End
+	Toolbar "standard" "Standard"
+		Layouts
+		Item "New document" "buffer-new"
+		Item "Open document" "file-open"
+		Item "Save document" "buffer-write"
+		Item "Print document" "dialog-show print"
+		Separator
+		Item "Undo" "undo"
+		Item "Redo" "redo"
+		Item "Cut" "cut"
+		Item "Copy" "copy"
+		Item "Paste" "paste"
+		Item "Find and replace" "dialog-show findreplace"
+		Separator
+		Item "Toggle emphasis" "font-emph"
+		Item "Toggle noun" "font-noun"
+		Item "Apply last" "font-free-apply"
+		Separator
+		Item "Insert math" "math-mode"
+		Item "Insert graphics" "dialog-show-new-inset graphics"
+		TableInsert
+	End
+	
+	Toolbar "extra" "Extra"
+		Item "Default" "layout"
+		Item "Numbered list" "layout Enumerate"
+		Item "Itemized list" "layout Itemize"
+		Item "List" "layout List"
+		Item "Description" "layout Description"
+		Item "Increase depth" "depth-increment"
+		Item "Decrease depth" "depth-decrement"
+		Separator
+		Item "Insert figure float" "float-insert figure"
+		Item "Insert table float" "float-insert table"
+		Item "Insert label" "label-insert"
+		Item "Insert cross-reference" "dialog-show-new-inset ref"
+		Item "Insert citation" "dialog-show-new-inset citation"
+		Item "Insert index entry" "index-insert"
+		Item "Insert glossary entry" "nomencl-insert"
+		Separator
+		Item "Insert footnote" "footnote-insert"
+		Item "Insert margin note" "marginalnote-insert"
+		Item "Insert note" "note-insert"
+		Item "Insert URL" "url-insert"
+		Item "Insert TeX code" "ert-insert"
+		Item "Include file" "dialog-show-new-inset include"
+		Separator
+		Item "Text style" "dialog-show character"
+		Item "Paragraph settings" "layout-paragraph"
+		Item "Table of contents" "toc-view"
+		Item "Check spelling" "dialog-show spellchecker"
+		Item "Thesaurus" "thesaurus-entry"
+	End
+	
+	Toolbar "table" "Table"
+		Item "Add row" "tabular-feature append-row"
+		Item "Add column" "tabular-feature append-column"
+		Item "Delete row" "tabular-feature delete-row"
+		Item "Delete column" "tabular-feature delete-column"
+		Separator
+		Item "Set top line" "tabular-feature toggle-line-top"
+		Item "Set bottom line" "tabular-feature toggle-line-bottom"
+		Item "Set left line" "tabular-feature toggle-line-left"
+		Item "Set right line" "tabular-feature toggle-line-right"
+		Item "Set all lines" "tabular-feature set-all-lines"
+		Item "Unset all lines" "tabular-feature unset-all-lines"
+		Separator
+		Item "Align left" "tabular-feature align-left"
+		Item "Align center" "tabular-feature align-center"
+		Item "Align right" "tabular-feature align-right"
+		Separator
+		Item "Align top" "tabular-feature valign-top"
+		Item "Align middle" "tabular-feature valign-middle"
+		Item "Align bottom" "tabular-feature valign-bottom"
+		Separator
+		Item "Rotate cell" "tabular-feature set-rotate-cell"
+		Item "Rotate table" "tabular-feature set-rotate-tabular"
+		Item "Set multi-column" "tabular-feature multicolumn"
+	End
+	
+	Toolbar "math" "Math"
+		Item "Show math panel" "dialog-show mathpanel"
+		Item "Set display mode" "math-display"
+		Separator
+		Item "Subscript" "math-subscript"
+		Item "Superscript" "math-superscript"
+		Item "Insert square root" "math-insert \sqrt"
+		Item "Insert root" "math-insert \root"
+		Item "Insert standard fraction" "math-insert \frac"
+		Item "Insert sum" "math-insert \sum"
+		Item "Insert integral" "math-insert \int"
+		Item "Insert product" "math-insert \prod"
+		Separator
+		Item "Insert ( )" "math-delim ( )"
+		Item "Insert [ ]" "math-delim [ ]"
+		Item "Insert { }" "math-delim { }"
+		Item "Insert delimiters" "dialog-show mathdelimiter"
+		Separator
+		Item "Insert matrix" "dialog-show mathmatrix"
+		Item "Insert cases environment" "math-insert \cases"
+		Item "Add row" "tabular-feature append-row"
+		Item "Add column" "tabular-feature append-column"
+		Item "Delete row" "tabular-feature delete-row"
+		Item "Delete column" "tabular-feature delete-column"
+	End
+	
+	Toolbar "minibuffer" "Command Buffer"
+		Minibuffer
+	End
+	
+	Toolbar "review" "Review"
+		Item "Track changes" "changes-track"
+		Item "Show changes in output" "changes-output"
+		Separator
+		Item "Next change" "change-next"
+		Item "Accept change" "change-accept"
+		Item "Reject change" "change-reject"
+		Separator
+		Item "Merge changes" "changes-merge"
+		Item "Accept all changes" "all-changes-accept"
+		Item "Reject all changes" "all-changes-reject"
+		Separator
+		Item "Insert note" "note-insert"
+		Item "Next note" "note-next"
+	End
+	
+	Toolbar "view/update" "View/Update"
+		Item "View DVI" "buffer-view dvi"
+		Item "Update DVI" "buffer-update dvi"
+		Item "View PDF (pdflatex)" "buffer-view pdf2"
+		Item "Update PDF (pdflatex)" "buffer-update pdf2"
+		Item "View PostScript" "buffer-view ps"
+		Item "Update PostScript" "buffer-update ps"
+	End
 
-Toolbar "table" "Table"
-	Item "Add row" "tabular-feature append-row"
-	Item "Add column" "tabular-feature append-column"
-	Item "Delete row" "tabular-feature delete-row"
-	Item "Delete column" "tabular-feature delete-column"
-	Separator
-	Item "Set top line" "tabular-feature toggle-line-top"
-	Item "Set bottom line" "tabular-feature toggle-line-bottom"
-	Item "Set left line" "tabular-feature toggle-line-left"
-	Item "Set right line" "tabular-feature toggle-line-right"
-	Item "Set all lines" "tabular-feature set-all-lines"
-	Item "Unset all lines" "tabular-feature unset-all-lines"
-	Separator
-	Item "Align left" "tabular-feature align-left"
-	Item "Align center" "tabular-feature align-center"
-	Item "Align right" "tabular-feature align-right"
-	Separator
-	Item "Align top" "tabular-feature valign-top"
-	Item "Align middle" "tabular-feature valign-middle"
-	Item "Align bottom" "tabular-feature valign-bottom"
-	Separator
-	Item "Rotate cell" "tabular-feature set-rotate-cell"
-	Item "Rotate table" "tabular-feature set-rotate-tabular"
-	Item "Set multi-column" "tabular-feature multicolumn"
-End
-
-Toolbar "math" "Math"
-	Item "Show math panel" "dialog-show mathpanel"
-	Item "Set display mode" "math-display"
-	Separator
-	Item "Subscript" "math-subscript"
-	Item "Superscript" "math-superscript"
-	Item "Insert square root" "math-insert \sqrt"
-	Item "Insert root" "math-insert \root"
-	Item "Insert standard fraction" "math-insert \frac"
-	Item "Insert sum" "math-insert \sum"
-	Item "Insert integral" "math-insert \int"
-	Item "Insert product" "math-insert \prod"
-	Separator
-	Item "Insert ( )" "math-delim ( )"
-	Item "Insert [ ]" "math-delim [ ]"
-	Item "Insert { }" "math-delim { }"
-	Item "Insert delimiters" "dialog-show mathdelimiter"
-	Separator
-	Item "Insert matrix" "dialog-show mathmatrix"
-	Item "Insert cases environment" "math-insert \cases"
-	Item "Add row" "tabular-feature append-row"
-	Item "Add column" "tabular-feature append-column"
-	Item "Delete row" "tabular-feature delete-row"
-	Item "Delete column" "tabular-feature delete-column"
-End
-
-Toolbar "minibuffer" "Command Buffer"
-	Minibuffer
-End
-
-Toolbar "review" "Review"
-	Item "Track changes" "changes-track"
-	Item "Show changes in output" "changes-output"
-	Separator
-	Item "Next change" "change-next"
-	Item "Accept change" "change-accept"
-	Item "Reject change" "change-reject"
-	Separator
-	Item "Merge changes" "changes-merge"
-	Item "Accept all changes" "all-changes-accept"
-	Item "Reject all changes" "all-changes-reject"
-	Separator
-	Item "Insert note" "note-insert"
-	Item "Next note" "note-next"
-End
-
-Toolbar "view/update" "View/Update"
-	Item "View DVI" "buffer-view dvi"
-	Item "Update DVI" "buffer-update dvi"
-	Item "View PDF (pdflatex)" "buffer-view pdf2"
-	Item "Update PDF (pdflatex)" "buffer-update pdf2"
-	Item "View PostScript" "buffer-view ps"
-	Item "Update PostScript" "buffer-update ps"
 End

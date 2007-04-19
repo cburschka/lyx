@@ -53,7 +53,7 @@ class Toolbar {
 public:
 	virtual ~Toolbar() {}
 	/// Add a button to the bar.
-	virtual void add(FuncRequest const & func, docstring const & tooltip) = 0;
+	virtual void add(ToolbarItem const & item) = 0;
 
 	/** Hide the bar.
 	 *  \param update_metrics is a hint to the layout engine that the
@@ -89,7 +89,7 @@ public:
 	void display(std::string const & name, bool show);
 
 	/// get toolbar state (on/off/auto)
-	ToolbarBackend::Flags getToolbarState(std::string const & name);
+	ToolbarInfo::Flags getToolbarState(std::string const & name);
 	
 	/// toggle the state of toolbars (on/off/auto)
 	void toggleToolbarState(std::string const & name);
@@ -118,9 +118,9 @@ public:
 
 private:
 	/// Add a new toolbar. if newline==true, start from a new line
-	void add(ToolbarBackend::Toolbar const & tb, bool newline);
+	void add(ToolbarInfo const & tb, bool newline);
 	/// Show or hide a toolbar.
-	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
+	void displayToolbar(ToolbarInfo const & tb, bool show);
 	/// Update the state of the icons
 	void update();
 
@@ -144,7 +144,7 @@ private:
 	int last_textclass_;
 
 	// load flags with saved values
-	void initFlags(ToolbarBackend::Toolbar & tbb);
+	void initFlags(ToolbarInfo & tbb);
 };
 
 /// Set the layout in the kernel when an entry has been selected

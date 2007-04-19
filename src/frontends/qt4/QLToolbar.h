@@ -26,6 +26,7 @@
 class QComboBox;
 
 namespace lyx {
+class FuncRequest;
 namespace frontend {
 
 class QLayoutBox;
@@ -61,11 +62,11 @@ private:
 class QLToolbar : public QToolBar, public Toolbar {
 	Q_OBJECT
 public:
-	QLToolbar(ToolbarBackend::Toolbar const &, GuiView &);
+	QLToolbar(ToolbarInfo const &, GuiView &);
 
 	//~QLToolbar();
 
-	void add(FuncRequest const & func, lyx::docstring const & tooltip);
+	void add(ToolbarItem const & item);
 	void hide(bool);
 	void show(bool);
 	void saveInfo(ToolbarSection::ToolbarInfo & info);
@@ -84,6 +85,9 @@ private:
 
 	boost::scoped_ptr<QLayoutBox> layout_;
 };
+
+/// return a full path of an XPM for the given action
+std::string const getIcon(FuncRequest const & f);
 
 } // namespace frontend
 } // namespace lyx

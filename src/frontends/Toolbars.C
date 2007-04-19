@@ -37,10 +37,10 @@ Toolbars::Toolbars(LyXView & owner)
 	  last_textclass_(-1)
 {}
 
-#define TurnOnFlag(x)   flags |= ToolbarBackend::x
-#define TurnOffFlag(x)  flags &= ~ToolbarBackend::x
+#define TurnOnFlag(x)   flags |= ToolbarInfo::x
+#define TurnOffFlag(x)  flags &= ~ToolbarInfo::x
 
-void Toolbars::initFlags(ToolbarBackend::Toolbar & tbb)
+void Toolbars::initFlags(ToolbarInfo & tbb)
 {
 	ToolbarSection::ToolbarInfo & info = LyX::ref().session().toolbars().load(tbb.name);
 
@@ -99,7 +99,7 @@ void Toolbars::initFlags(ToolbarBackend::Toolbar & tbb)
 		<< std::endl;
 	*/
 	// now set the flags
-	tbb.flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
+	tbb.flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
 }
 
 
@@ -159,7 +159,7 @@ void Toolbars::display(string const & name, bool show)
 				TurnOnFlag(OFF);
 				TurnOnFlag(ON);
 			}
-			cit->flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
+			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
 			displayToolbar(*cit, show);
 			return;
 		}
@@ -170,7 +170,7 @@ void Toolbars::display(string const & name, bool show)
 }
 
 
-ToolbarBackend::Flags Toolbars::getToolbarState(string const & name)
+ToolbarInfo::Flags Toolbars::getToolbarState(string const & name)
 {	
 	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
@@ -184,7 +184,7 @@ ToolbarBackend::Flags Toolbars::getToolbarState(string const & name)
 		<< name << endl;
 
 	// return dummy for msvc
-	return ToolbarBackend::OFF;
+	return ToolbarInfo::OFF;
 }
 
 
@@ -197,15 +197,15 @@ void Toolbars::toggleToolbarState(string const & name)
 		if (cit->name == name) {
 			int flags = cit->flags;
 			// off -> on
-			if (flags & ToolbarBackend::OFF) {
+			if (flags & ToolbarInfo::OFF) {
 				TurnOffFlag(OFF);
 				TurnOnFlag(ON);
 			// auto -> off
-			} else if (flags & ToolbarBackend::AUTO) {
+			} else if (flags & ToolbarInfo::AUTO) {
 				TurnOffFlag(AUTO);
 				TurnOnFlag(OFF);
-			} else if ((flags & ToolbarBackend::MATH) || (flags & ToolbarBackend::TABLE)
-				|| (flags & ToolbarBackend::REVIEW)) {
+			} else if ((flags & ToolbarInfo::MATH) || (flags & ToolbarInfo::TABLE)
+				|| (flags & ToolbarInfo::REVIEW)) {
 				// for math etc, toggle from on -> auto
 				TurnOffFlag(ON);
 				TurnOnFlag(AUTO);
@@ -214,7 +214,7 @@ void Toolbars::toggleToolbarState(string const & name)
 				TurnOffFlag(ON);
 				TurnOnFlag(OFF);
 			}
-			cit->flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
+			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
 			return;
 		}
 	}
@@ -234,15 +234,15 @@ void Toolbars::update(bool in_math, bool in_table, bool review)
 	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
 
 	for (; cit != end; ++cit) {
-		if (cit->flags & ToolbarBackend::ON)
+		if (cit->flags & ToolbarInfo::ON)
 			displayToolbar(*cit, true);
-		else if (cit->flags & ToolbarBackend::OFF)
+		else if (cit->flags & ToolbarInfo::OFF)
 			displayToolbar(*cit, false);
-		else if ((cit->flags & ToolbarBackend::AUTO) && (cit->flags & ToolbarBackend::MATH))
+		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::MATH))
 			displayToolbar(*cit, in_math);
-		else if ((cit->flags & ToolbarBackend::AUTO) && (cit->flags & ToolbarBackend::TABLE))
+		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::TABLE))
 			displayToolbar(*cit, in_table);
-		else if ((cit->flags & ToolbarBackend::AUTO) && (cit->flags & ToolbarBackend::REVIEW))
+		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::REVIEW))
 			displayToolbar(*cit, review);
 	}
 }
@@ -258,23 +258,23 @@ void Toolbars::saveToolbarInfo()
 		BOOST_ASSERT(it != toolbars_.end());
 		// get toolbar info from session.
 		ToolbarSection::ToolbarInfo & info = tb.load(cit->name);
-		if (cit->flags & ToolbarBackend::ON)
+		if (cit->flags & ToolbarInfo::ON)
 			info.state = ToolbarSection::ToolbarInfo::ON;
-		else if (cit->flags & ToolbarBackend::OFF)
+		else if (cit->flags & ToolbarInfo::OFF)
 			info.state = ToolbarSection::ToolbarInfo::OFF;
-		else if (cit->flags & ToolbarBackend::AUTO)
+		else if (cit->flags & ToolbarInfo::AUTO)
 			info.state = ToolbarSection::ToolbarInfo::AUTO;
 		// save other information
 		// if auto, frontend should *not* set on/off
 		it->second->saveInfo(info);
 		// maybe it is useful to update flags with real status. I do not know
 		/*
-		if (!(cit->flags & ToolbarBackend::AUTO)) {
+		if (!(cit->flags & ToolbarInfo::AUTO)) {
 			unsigned int flags = static_cast<unsigned int>(cit->flags);
-			flags &= ~(info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarBackend::OFF : ToolbarBackend::ON);
-			flags |= (info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarBackend::ON : ToolbarBackend::OFF);
+			flags &= ~(info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarInfo::OFF : ToolbarInfo::ON);
+			flags |= (info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarInfo::ON : ToolbarInfo::OFF);
 			if (info.state == ToolbarSection::ToolbarInfo::ON)
-			cit->flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
+			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
 		}
 		*/
 	}
@@ -316,12 +316,12 @@ void Toolbars::clearLayoutList()
 }
 
 
-void Toolbars::add(ToolbarBackend::Toolbar const & tbb, bool newline)
+void Toolbars::add(ToolbarInfo const & tbb, bool newline)
 {
 	ToolbarPtr tb_ptr = owner_.makeToolbar(tbb, newline);
 	toolbars_[tbb.name] = tb_ptr;
 
-	if (tbb.flags & ToolbarBackend::ON)
+	if (tbb.flags & ToolbarInfo::ON)
 		tb_ptr->show(false);
 	else
 		tb_ptr->hide(false);
@@ -331,7 +331,7 @@ void Toolbars::add(ToolbarBackend::Toolbar const & tbb, bool newline)
 }
 
 
-void Toolbars::displayToolbar(ToolbarBackend::Toolbar const & tbb,
+void Toolbars::displayToolbar(ToolbarInfo const & tbb,
 			      bool show_it)
 {
 	ToolbarsMap::iterator it = toolbars_.find(tbb.name);

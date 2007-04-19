@@ -695,17 +695,17 @@ void GuiView::busy(bool yes)
 }
 
 
-Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb, bool newline)
+Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarInfo const & tbb, bool newline)
 {
 	QLToolbar * Tb = new QLToolbar(tbb, *this);
 
-	if (tbb.flags & ToolbarBackend::TOP) {
+	if (tbb.flags & ToolbarInfo::TOP) {
 		if (newline)
 			addToolBarBreak(Qt::TopToolBarArea);
 		addToolBar(Qt::TopToolBarArea, Tb);
 	}
 
-	if (tbb.flags & ToolbarBackend::BOTTOM) {
+	if (tbb.flags & ToolbarInfo::BOTTOM) {
 // Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
 		if (newline)
@@ -714,7 +714,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb, b
 		addToolBar(Qt::BottomToolBarArea, Tb);
 	}
 
-	if (tbb.flags & ToolbarBackend::LEFT) {
+	if (tbb.flags & ToolbarInfo::LEFT) {
 // Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
 		if (newline)
@@ -723,7 +723,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb, b
 		addToolBar(Qt::LeftToolBarArea, Tb);
 	}
 
-	if (tbb.flags & ToolbarBackend::RIGHT) {
+	if (tbb.flags & ToolbarInfo::RIGHT) {
 // Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
 		if (newline)

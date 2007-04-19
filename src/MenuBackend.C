@@ -787,7 +787,7 @@ void expandToolbars(Menu & tomenu)
 		// and 
 		//              review (auto)
 		// in the case of auto.
-		if (cit->flags & ToolbarBackend::AUTO)
+		if (cit->flags & ToolbarInfo::AUTO)
 			label += _(" (auto)");
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_TOOLBAR_TOGGLE_STATE, cit->name)));

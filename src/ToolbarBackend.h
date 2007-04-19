@@ -23,55 +23,88 @@ namespace lyx {
 
 class LyXLex;
 
-
-///
-class ToolbarBackend {
+class ToolbarItem {
 public:
-	/// The special toolbar actions
-	enum ItemType {
+	enum Type {
+		/// command/action
+		COMMAND,
 		/// the command buffer
-		MINIBUFFER = -3,
+		MINIBUFFER,
 		/// adds space between buttons in the toolbar
-		SEPARATOR = -2,
+		SEPARATOR,
 		/// a special combox insead of a button
-		LAYOUTS = -1,
+		LAYOUTS,
+		/// a special widget to insert tabulars
+		TABLEINSERT
 	};
 
-	/// action, tooltip
-	typedef std::pair<FuncRequest, docstring> Item;
+	ToolbarItem(Type type,
+		 FuncRequest const & func,
+		 docstring const & label = docstring());
 
-	/// the toolbar items
-	typedef std::vector<Item> Items;
+	ToolbarItem(Type type,
+		 std::string const & name = std::string(),
+		 docstring const & label = docstring());
 
+	~ToolbarItem();
+
+	/// item type
+	Type type_;
+	/// action
+	FuncRequest func_;
+	/// label/tooltip
+	docstring label_;
+	/// name
+	std::string name_;
+};
+
+
+///
+class ToolbarInfo {
+public:
 	/// toolbar flags
 	enum Flags {
-		ON = 1, //< always shown
-		OFF = 2, //< never shown
-		MATH = 4, //< shown when in math
-		TABLE = 8, //< shown when in table
+		ON = 1, //< show
+		OFF = 2, //< do not show
+		MATH = 4, //< show when in math
+		TABLE = 8, //< show when in table
 		TOP = 16, //< show at top
 		BOTTOM = 32, //< show at bottom
 		LEFT = 64, //< show at left
 		RIGHT = 128, //< show at right
-		REVIEW = 256, //< shown when change tracking is enabled
-		AUTO = 512  //< only if AUTO is set, will MATH, TABLE and REIVEW is used
+		REVIEW = 256, //< show when change tracking is enabled
+		AUTO = 512  //< only if AUTO is set, when MATH, TABLE and REVIEW is used
 	};
-
-	/// a toolbar
-	struct Toolbar {
-		/// toolbar name
-		std::string name;
-		/// toolbar GUI name
-		std::string gui_name;
-		/// toolbar contents
-		Items items;
-		/// flags
-		Flags flags;
-	};
-
-	typedef std::vector<Toolbar> Toolbars;
+	/// the toolbar items
+	typedef std::vector<ToolbarItem> Items;
 
 	typedef Items::const_iterator item_iterator;
+
+	explicit ToolbarInfo(std::string const & name = std::string())
+		: name(name) {}
+
+	/// toolbar name
+	std::string name;
+	/// toolbar GUI name
+	std::string gui_name;
+	/// toolbar contents
+	Items items;
+	/// flags
+	Flags flags;
+
+	/// read a toolbar from the file
+	ToolbarInfo & read(LyXLex &);
+
+private:
+	/// add toolbar item
+	void add(ToolbarItem const &);
+};
+
+
+///
+class ToolbarBackend {
+public:
+	typedef std::vector<ToolbarInfo> Toolbars;
 
 	ToolbarBackend();
 
@@ -84,20 +117,17 @@ public:
 
 	Toolbars::iterator end() { return usedtoolbars.end(); }
 
-	/// read a toolbar from the file
-	void read(LyXLex &);
-
-	/// read the used toolbars
+	/// read toolbars from the file
 	void readToolbars(LyXLex &);
 
-	/// return a full path of an XPM for the given action
-	static std::string const getIcon(FuncRequest const &);
+	/// read ui toolbar settings
+	void readToolbarSettings(LyXLex &);
+	///
+	ToolbarInfo const & getToolbar(std::string const & name) const;
+	///
+	ToolbarInfo & getToolbar(std::string const & name);
 
 private:
-	/// add the given lfun with tooltip if relevant
-	void add(Toolbar & tb, FuncRequest const &,
-		 docstring const & tooltip = docstring());
-
 	/// all the toolbars
 	Toolbars toolbars;
 
