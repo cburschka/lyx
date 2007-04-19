@@ -213,7 +213,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
 			tb, SLOT(setIconSize(const QSize &)));
 
-		IconPanel * panel = new IconPanel(tb);
+		IconPalette * panel = new IconPalette(tb);
 		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
 		ToolbarInfo const & tbb = toolbarbackend.getToolbar(item.name_);
 		ToolbarInfo::item_iterator it = tbb.items.begin();
