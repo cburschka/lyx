@@ -1,6 +1,6 @@
+; this file contains the main installer section
+
 ; The '-' makes the section invisible.
-; Sections are entered in order, so the settings above are all
-; available to SecInstallation
 Section "-Installation actions" SecInstallation
 
   ; extract modified files
