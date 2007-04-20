@@ -104,7 +104,6 @@ ToolbarSet
 		Item "Text style" "dialog-show character"
 		Item "Paragraph settings" "layout-paragraph"
 		Item "Table of contents" "toc-view"
-		Item "Check spelling" "dialog-show spellchecker"
 		Item "Thesaurus" "thesaurus-entry"
 	End
 	
