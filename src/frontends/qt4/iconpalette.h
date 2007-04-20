@@ -14,6 +14,7 @@
 
 #include <QWidget>
 #include <QMenu>
+#include <QLayout>
 #include "Action.h"
 
 namespace lyx {
