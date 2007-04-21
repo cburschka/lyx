@@ -363,8 +363,6 @@ Menuset
 		Separator
 		Item "Delimiters|r" "dialog-show mathdelimiter"
 		Item "Matrix|x" "dialog-show mathmatrix"
-		Separator
-		Item "Math Panel|P" "dialog-show mathpanel"
 	End
 
 	Menu "insert_float"
