@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 10:58+0100\n"
+"POT-Creation-Date: 2007-04-21 16:47+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -977,7 +977,7 @@ msgstr "Cloyu"
 msgid "Move the selected citation up"
 msgstr "Sititchî on s' apinse"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:64
+#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:79
 #, fuzzy
 msgid "&Up"
 msgstr "Metaedje a djoû|#û#U"
@@ -3167,25 +3167,55 @@ msgid "Replace the entry with the selection"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:36
+msgid "Decrease nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:39
 #, fuzzy
 msgid "<- P&romote"
 msgstr "Dji rgrete."
 
-#: src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QTocUi.ui:46
+#, fuzzy
+msgid "Move selected item down by one"
+msgstr "Sititchî on s' apinse"
+
+#: src/frontends/qt4/ui/QTocUi.ui:49
 #, fuzzy
 msgid "D&own"
 msgstr "Deus|#D#w"
 
-#: src/frontends/qt4/ui/QTocUi.ui:50
+#: src/frontends/qt4/ui/QTocUi.ui:56
+msgid "Increase nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:59
 msgid "De&mote ->"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:57
+#: src/frontends/qt4/ui/QTocUi.ui:66
+msgid "Update navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:69
 #, fuzzy
 msgid "Upd&ate"
 msgstr "Metaedje a djoû|#û#U"
 
-#: src/frontends/qt4/ui/QTocUi.ui:116
+#: src/frontends/qt4/ui/QTocUi.ui:76
+#, fuzzy
+msgid "Move selected item up by one"
+msgstr "Sititchî on s' apinse"
+
+#: src/frontends/qt4/ui/QTocUi.ui:96
+msgid "Switch between TOC, list of figures or list of tables, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:115
+msgid "Adjust the depth of the navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:137
 #, fuzzy
 msgid "&Type:"
 msgstr "Sôrt"

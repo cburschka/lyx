@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 10:58+0100\n"
+"POT-Creation-Date: 2007-04-21 16:47+0200\n"
 "PO-Revision-Date: 2006-09-18 16:03+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -870,7 +870,7 @@ msgstr "Chiudi"
 msgid "Move the selected citation up"
 msgstr "Sposta la citazione selezionata in alto"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:64
+#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:79
 #, fuzzy
 msgid "&Up"
 msgstr "&Aggiorna"
@@ -2811,25 +2811,55 @@ msgid "Replace the entry with the selection"
 msgstr "Sostituisci la voce scelta con quella selezionata"
 
 #: src/frontends/qt4/ui/QTocUi.ui:36
+msgid "Decrease nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:39
 #, fuzzy
 msgid "<- P&romote"
 msgstr "&Proteggi:"
 
-#: src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QTocUi.ui:46
+#, fuzzy
+msgid "Move selected item down by one"
+msgstr "Sposta la citazione selezionata in basso"
+
+#: src/frontends/qt4/ui/QTocUi.ui:49
 #, fuzzy
 msgid "D&own"
 msgstr "Città"
 
-#: src/frontends/qt4/ui/QTocUi.ui:50
+#: src/frontends/qt4/ui/QTocUi.ui:56
+msgid "Increase nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:59
 msgid "De&mote ->"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:57
+#: src/frontends/qt4/ui/QTocUi.ui:66
+msgid "Update navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:69
 #, fuzzy
 msgid "Upd&ate"
 msgstr "&Aggiorna"
 
-#: src/frontends/qt4/ui/QTocUi.ui:116
+#: src/frontends/qt4/ui/QTocUi.ui:76
+#, fuzzy
+msgid "Move selected item up by one"
+msgstr "Sposta la citazione selezionata in alto"
+
+#: src/frontends/qt4/ui/QTocUi.ui:96
+msgid "Switch between TOC, list of figures or list of tables, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:115
+msgid "Adjust the depth of the navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:137
 msgid "&Type:"
 msgstr "&Tipo:"
 

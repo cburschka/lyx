@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 10:58+0100\n"
+"POT-Creation-Date: 2007-04-21 16:47+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -876,7 +876,7 @@ msgstr "Zamknij"
 msgid "Move the selected citation up"
 msgstr "Przesuñ wybrany cytat w górê"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:64
+#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:79
 #, fuzzy
 msgid "&Up"
 msgstr "&Aktualizuj"
@@ -2817,25 +2817,55 @@ msgid "Replace the entry with the selection"
 msgstr "Zamieñ wpis wybranym"
 
 #: src/frontends/qt4/ui/QTocUi.ui:36
+msgid "Decrease nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:39
 #, fuzzy
 msgid "<- P&romote"
 msgstr "&Ochrona:"
 
-#: src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QTocUi.ui:46
+#, fuzzy
+msgid "Move selected item down by one"
+msgstr "Przesuñ wybrany cytat w dó³"
+
+#: src/frontends/qt4/ui/QTocUi.ui:49
 #, fuzzy
 msgid "D&own"
 msgstr "Miejscowo¶æ"
 
-#: src/frontends/qt4/ui/QTocUi.ui:50
+#: src/frontends/qt4/ui/QTocUi.ui:56
+msgid "Increase nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:59
 msgid "De&mote ->"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:57
+#: src/frontends/qt4/ui/QTocUi.ui:66
+msgid "Update navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:69
 #, fuzzy
 msgid "Upd&ate"
 msgstr "&Aktualizuj"
 
-#: src/frontends/qt4/ui/QTocUi.ui:116
+#: src/frontends/qt4/ui/QTocUi.ui:76
+#, fuzzy
+msgid "Move selected item up by one"
+msgstr "Przesuñ wybrany cytat w górê"
+
+#: src/frontends/qt4/ui/QTocUi.ui:96
+msgid "Switch between TOC, list of figures or list of tables, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:115
+msgid "Adjust the depth of the navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:137
 msgid "&Type:"
 msgstr "&Typ:"
 

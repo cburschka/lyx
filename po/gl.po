@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-novo\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 10:58+0100\n"
+"POT-Creation-Date: 2007-04-21 16:47+0200\n"
 "PO-Revision-Date: 2007-03-19 13:36+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -851,7 +851,7 @@ msgstr "Fechar"
 msgid "Move the selected citation up"
 msgstr "Sobe a cita seleccionada"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:64
+#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:79
 msgid "&Up"
 msgstr "&Sube"
 
@@ -2762,26 +2762,56 @@ msgid "Replace the entry with the selection"
 msgstr "Substituir a entrada coa selección"
 
 #: src/frontends/qt4/ui/QTocUi.ui:36
+msgid "Decrease nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:39
 #, fuzzy
 msgid "<- P&romote"
 msgstr "<-&Promove"
 
-#: src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QTocUi.ui:46
+#, fuzzy
+msgid "Move selected item down by one"
+msgstr "Baixa a cita seleccionada"
+
+#: src/frontends/qt4/ui/QTocUi.ui:49
 #, fuzzy
 msgid "D&own"
 msgstr "&Baixa"
 
-#: src/frontends/qt4/ui/QTocUi.ui:50
+#: src/frontends/qt4/ui/QTocUi.ui:56
+msgid "Increase nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:59
 #, fuzzy
 msgid "De&mote ->"
 msgstr "&Degrada ->"
 
-#: src/frontends/qt4/ui/QTocUi.ui:57
+#: src/frontends/qt4/ui/QTocUi.ui:66
+msgid "Update navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:69
 #, fuzzy
 msgid "Upd&ate"
 msgstr "&Actualizar"
 
-#: src/frontends/qt4/ui/QTocUi.ui:116
+#: src/frontends/qt4/ui/QTocUi.ui:76
+#, fuzzy
+msgid "Move selected item up by one"
+msgstr "Sobe a cita seleccionada"
+
+#: src/frontends/qt4/ui/QTocUi.ui:96
+msgid "Switch between TOC, list of figures or list of tables, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:115
+msgid "Adjust the depth of the navigation tree"
+msgstr ""
+
+#: src/frontends/qt4/ui/QTocUi.ui:137
 msgid "&Type:"
 msgstr "&Tipo:"
 
