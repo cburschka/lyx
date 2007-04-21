@@ -67,7 +67,7 @@ public:
 	virtual void saveGeometry();
 	virtual void busy(bool);
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
-	Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbb, bool newline);
+	Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();
 	virtual void message(lyx::docstring const & str);
 	virtual void clearMessage();

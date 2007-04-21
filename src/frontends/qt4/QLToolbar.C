@@ -161,8 +161,8 @@ void QLayoutBox::selected(const QString & str)
 }
 
 
-QLToolbar::QLToolbar(ToolbarInfo const & tbb, GuiView & owner)
-	: QToolBar(qt_(tbb.gui_name), &owner), owner_(owner)
+QLToolbar::QLToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
+	: QToolBar(qt_(tbinfo.gui_name), &owner), owner_(owner)
 {
 	// give visual separation between adjacent toolbars
 	addSeparator();
@@ -170,8 +170,8 @@ QLToolbar::QLToolbar(ToolbarInfo const & tbb, GuiView & owner)
 	// TODO: save toolbar position
 	setMovable(true);
 
-	ToolbarInfo::item_iterator it = tbb.items.begin();
-	ToolbarInfo::item_iterator end = tbb.items.end();
+	ToolbarInfo::item_iterator it = tbinfo.items.begin();
+	ToolbarInfo::item_iterator end = tbinfo.items.end();
 	for (; it != end; ++it)
 		add(*it);
 }
@@ -215,9 +215,9 @@ void QLToolbar::add(ToolbarItem const & item)
 
 		IconPalette * panel = new IconPalette(tb);
 		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
-		ToolbarInfo const & tbb = toolbarbackend.getToolbar(item.name_);
-		ToolbarInfo::item_iterator it = tbb.items.begin();
-		ToolbarInfo::item_iterator const end = tbb.items.end();
+		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
+		ToolbarInfo::item_iterator it = tbinfo.items.begin();
+		ToolbarInfo::item_iterator const end = tbinfo.items.end();
 		for (; it != end; ++it) 
 			if (!lyx::getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,
@@ -228,7 +228,7 @@ void QLToolbar::add(ToolbarItem const & item)
 				panel->addButton(action);
 				ActionVector.push_back(action);
 				// use the icon of first action for the toolbar button
-				if (it == tbb.items.begin())
+				if (it == tbinfo.items.begin())
 					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
 			}
 		connect(tb, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
@@ -249,9 +249,9 @@ void QLToolbar::add(ToolbarItem const & item)
 
 		ButtonMenu * m = new ButtonMenu(toqstr(item.label_), tb);
 		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
-		ToolbarInfo const & tbb = toolbarbackend.getToolbar(item.name_);
-		ToolbarInfo::item_iterator it = tbb.items.begin();
-		ToolbarInfo::item_iterator const end = tbb.items.end();
+		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
+		ToolbarInfo::item_iterator it = tbinfo.items.begin();
+		ToolbarInfo::item_iterator const end = tbinfo.items.end();
 		for (; it != end; ++it)
 			if (!lyx::getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,
@@ -297,34 +297,34 @@ void QLToolbar::show(bool)
 }
 
 
-void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & info)
+void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 {
-	// if info.state == auto *do not* set on/off
-	if (info.state != ToolbarSection::ToolbarInfo::AUTO) {
+	// if tbinfo.state == auto *do not* set on/off
+	if (tbinfo.state != ToolbarSection::ToolbarInfo::AUTO) {
 		if (QLToolbar::isVisible())
-			info.state = ToolbarSection::ToolbarInfo::ON;
+			tbinfo.state = ToolbarSection::ToolbarInfo::ON;
 		else
-			info.state = ToolbarSection::ToolbarInfo::OFF;
+			tbinfo.state = ToolbarSection::ToolbarInfo::OFF;
 	}
 	//	
 	// no need to save it here.
 	Qt::ToolBarArea loc = owner_.toolBarArea(this);
 
 	if (loc == Qt::TopToolBarArea)
-		info.location = ToolbarSection::ToolbarInfo::TOP;
+		tbinfo.location = ToolbarSection::ToolbarInfo::TOP;
 	else if (loc == Qt::BottomToolBarArea)
-		info.location = ToolbarSection::ToolbarInfo::BOTTOM;
+		tbinfo.location = ToolbarSection::ToolbarInfo::BOTTOM;
 	else if (loc == Qt::RightToolBarArea)
-		info.location = ToolbarSection::ToolbarInfo::RIGHT;
+		tbinfo.location = ToolbarSection::ToolbarInfo::RIGHT;
 	else if (loc == Qt::LeftToolBarArea)
-		info.location = ToolbarSection::ToolbarInfo::LEFT;
+		tbinfo.location = ToolbarSection::ToolbarInfo::LEFT;
 	else
-		info.location = ToolbarSection::ToolbarInfo::NOTSET;
+		tbinfo.location = ToolbarSection::ToolbarInfo::NOTSET;
 	
 	// save toolbar position. They are not used to restore toolbar position 
 	// now because move(x,y) does not work for toolbar.
-	info.posx = pos().x();
-	info.posy = pos().y();
+	tbinfo.posx = pos().x();
+	tbinfo.posy = pos().y();
 }
 
 

@@ -112,7 +112,7 @@ public:
 	/// show busy cursor
 	virtual void busy(bool) = 0;
 
-	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbb, bool newline) = 0;
+	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbinfo, bool newline) = 0;
 
 	//@{ generic accessor functions
 

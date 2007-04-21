@@ -68,7 +68,7 @@ public:
 	/** update toolbar information
 	* ToolbarInfo will then be saved by session
 	*/
-	virtual void saveInfo(ToolbarSection::ToolbarInfo & info) = 0;
+	virtual void saveInfo(ToolbarSection::ToolbarInfo & tbinfo) = 0;
 
 	/// Refresh the contents of the bar.
 	virtual void update() = 0;
@@ -118,9 +118,9 @@ public:
 
 private:
 	/// Add a new toolbar. if newline==true, start from a new line
-	void add(ToolbarInfo const & tb, bool newline);
+	void add(ToolbarInfo const & tbinfo, bool newline);
 	/// Show or hide a toolbar.
-	void displayToolbar(ToolbarInfo const & tb, bool show);
+	void displayToolbar(ToolbarInfo const & tbinfo, bool show);
 	/// Update the state of the icons
 	void update();
 
@@ -144,7 +144,7 @@ private:
 	int last_textclass_;
 
 	// load flags with saved values
-	void initFlags(ToolbarInfo & tbb);
+	void initFlags(ToolbarInfo & tbinfo);
 };
 
 /// Set the layout in the kernel when an entry has been selected

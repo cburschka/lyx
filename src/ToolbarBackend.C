@@ -42,9 +42,9 @@ class ToolbarNamesEqual : public std::unary_function<ToolbarInfo, bool> {
 public:
 	ToolbarNamesEqual(string const & name)
 		: name_(name) {}
-	bool operator()(ToolbarInfo const & tb) const
+	bool operator()(ToolbarInfo const & tbinfo) const
 	{
-		return tb.name == name_;
+		return tbinfo.name == name_;
 	}
 private:
 	string name_;
@@ -236,9 +236,9 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
 		case TO_TOOLBAR: {
-			ToolbarInfo tb;
-			tb.read(lex);
-			toolbars.push_back(tb);
+			ToolbarInfo tbinfo;
+			tbinfo.read(lex);
+			toolbars.push_back(tbinfo);
 			break;
 			}
 		case TO_ENDTOOLBARSET:

@@ -40,11 +40,11 @@ Toolbars::Toolbars(LyXView & owner)
 #define TurnOnFlag(x)   flags |= ToolbarInfo::x
 #define TurnOffFlag(x)  flags &= ~ToolbarInfo::x
 
-void Toolbars::initFlags(ToolbarInfo & tbb)
+void Toolbars::initFlags(ToolbarInfo & tbinfo)
 {
-	ToolbarSection::ToolbarInfo & info = LyX::ref().session().toolbars().load(tbb.name);
+	ToolbarSection::ToolbarInfo & info = LyX::ref().session().toolbars().load(tbinfo.name);
 
-	unsigned int flags = static_cast<unsigned int>(tbb.flags);
+	unsigned int flags = static_cast<unsigned int>(tbinfo.flags);
 
 	// Remove default.ui positions. Only when a valid postion is stored 
 	// in the session file the default.ui value will be overwritten
@@ -55,7 +55,7 @@ void Toolbars::initFlags(ToolbarInfo & tbb)
 	TurnOffFlag(LEFT);
 
 	bool valid_location = true;
-	// init tbb.flags with saved location
+	// init tbinfo.flags with saved location
 	if (info.location == ToolbarSection::ToolbarInfo::TOP)
 		TurnOnFlag(TOP);
 	else if (info.location == ToolbarSection::ToolbarInfo::BOTTOM)
@@ -73,7 +73,7 @@ void Toolbars::initFlags(ToolbarInfo & tbb)
 	// invalid location is for a new toolbar that has no saved information,
 	// so info.visible is not used for this case.
 	if (valid_location) {
-		// init tbb.flags with saved visibility,
+		// init tbinfo.flags with saved visibility,
 		TurnOffFlag(ON);
 		TurnOffFlag(OFF);
 		TurnOffFlag(AUTO);
@@ -99,7 +99,7 @@ void Toolbars::initFlags(ToolbarInfo & tbb)
 		<< std::endl;
 	*/
 	// now set the flags
-	tbb.flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
+	tbinfo.flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
 }
 
 
@@ -316,12 +316,12 @@ void Toolbars::clearLayoutList()
 }
 
 
-void Toolbars::add(ToolbarInfo const & tbb, bool newline)
+void Toolbars::add(ToolbarInfo const & tbinfo, bool newline)
 {
-	ToolbarPtr tb_ptr = owner_.makeToolbar(tbb, newline);
-	toolbars_[tbb.name] = tb_ptr;
+	ToolbarPtr tb_ptr = owner_.makeToolbar(tbinfo, newline);
+	toolbars_[tbinfo.name] = tb_ptr;
 
-	if (tbb.flags & ToolbarInfo::ON)
+	if (tbinfo.flags & ToolbarInfo::ON)
 		tb_ptr->show(false);
 	else
 		tb_ptr->hide(false);
@@ -331,10 +331,10 @@ void Toolbars::add(ToolbarInfo const & tbb, bool newline)
 }
 
 
-void Toolbars::displayToolbar(ToolbarInfo const & tbb,
+void Toolbars::displayToolbar(ToolbarInfo const & tbinfo,
 			      bool show_it)
 {
-	ToolbarsMap::iterator it = toolbars_.find(tbb.name);
+	ToolbarsMap::iterator it = toolbars_.find(tbinfo.name);
 	BOOST_ASSERT(it != toolbars_.end());
 
 	if (show_it)
