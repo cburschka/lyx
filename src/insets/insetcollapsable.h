@@ -98,8 +98,6 @@ protected:
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
 	void setInlined() { status_ = Inlined; }
-	/// Is the width forced to some value?
-	virtual bool hasFixedWidth() const { return false; }
 	///
 	docstring floatName(std::string const & type, BufferParams const &) const;
 

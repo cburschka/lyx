@@ -357,6 +357,8 @@ public:
 	/// if this inset has paragraphs should they be output all as default
 	/// paragraphs with the default layout of the text class?
 	virtual bool forceDefaultParagraphs(idx_type) const { return false; }
+	/// Is the width forced to some value?
+	virtual bool hasFixedWidth() const { return false; }
 
 	///
 	virtual docstring const & getInsetName() const;

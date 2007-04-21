@@ -159,14 +159,14 @@ private:
 	///
 	mutable pit_type old_pit;
 	///
-	static int border_;
-	///
 	bool wide_inset_;
 public:
 	///
 	mutable LyXText text_;
 	///
 	mutable LyXFont font_;
+	///
+	static int border_;
 };
 
 } // namespace lyx
