@@ -1,13 +1,26 @@
-Public release of LyX version 1.5.0 (beta 1)
+Public release of LyX version 1.5.0 (beta 2)
 ===================================
 
-We are glad to announce the release of LyX 1.5.0 (beta 1).
+We are glad to announce the release of LyX 1.5.0 (beta 2).
 
-It is the culmination of 1 year of hard work, and we sincerely hope
-this you will enjoy the results. The changes are too numerous to
-summarize in a few words, with initial unicode support as the flagship
-of new features, jump directly to the end of this message if you want
-to know more.
+Compared with the previous beta release we have fixed several bugs and
+added some graphical improvements:
+ * A new math toolbar replaces the old (faithful) math panel.
+ * The converter file cache can be now configured in the graphical interface.
+ * The TOC dialog is now a dock widget, embedded in the main window.
+
+Apart from the described major changes, several minor improvements of
+the user interface have been made, such as:
+
+ - Syntax highlighting for the user preamble and the LaTeX log file 
+ - Better parsing of BibTeX databases (in the citation dialog) 
+ - Support optional argument for environments 
+
+Compare with the latest stable release this is the culmination of 1
+year of hard work, and we sincerely hope this you will enjoy the
+results. The changes are too numerous to summarize in a few words,
+with initial unicode support as the flagship of new features, jump
+directly to the end of this message if you want to know more.
 
 As usual with major releases, a lot of work that is not directly
 visible has taken place. The core of LyX has seen more cleanups and
@@ -39,33 +52,33 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux and the
    Macintosh and modern Windows platforms. 
 
-You can download LyX 1.5.0beta1 here (the .bz2 are compressed with
+You can download LyX 1.5.0beta2 here (the .bz2 are compressed with
 bzip2, which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0beta1.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0beta1.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.0beta1.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.0beta1.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0beta2.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0beta2.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.0beta2.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.0beta2.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will also host
 the .bz2 versions):
 
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.0beta1.tar.gz
-	http://lyx.cybermirror.org/stable/lyx-1.5.0beta1.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.0beta1.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.0beta1.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.0beta1.tar.gz
-        http://lyx.mirror.fr/stable/lyx-1.5.0beta1.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.0beta2.tar.gz
+	http://lyx.cybermirror.org/stable/lyx-1.5.0beta2.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.0beta2.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.0beta2.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.0beta2.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.5.0beta2.tar.gz
 
 Note that due to the ammount of changes no patch is provided to upgrade
 from version 1.4.4.
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.5.0beta1/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.5.0beta2/
 
 
-If you find what you think is a bug in LyX 1.5.0beta1, you may either
+If you find what you think is a bug in LyX 1.5.0beta2, you may either
 e-mail the LyX developers' mailing list (lyx-devel @ lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -78,7 +91,7 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.5.0 (beta 1)?
+What's new in version 1.5.0 (beta 2)?
 ----------------------------
 
 * Unicode
@@ -106,12 +119,12 @@ LyX can now display multiple views of the same buffer. I.e., you can
 now open a single document in multiple windows and work on different
 parts of it synchronously.
 
-* Outliner
+* Outliner and embedded TOC
 
 LyX has another long-awaited feature: a basic outliner mode, in which
 you can move chapters and sections around in the Table of Contents
 dialog. (The outliner has been backported and was released with LyX
-1.4.4.)
+1.4.4.) The TOC dialog is now a dock widget, embedded in the main window.
 
 * Session managment
 
@@ -151,6 +164,14 @@ glossaries and fancy notations.
 
 LyX now uses tabbed widgets to display multiple documents.
 
+* Enhanced Math Toolbars
+
+The math toolbar was enhanced significantly. Drop down menus were
+added, that allowed to integrate all of the math panel' content to the
+math toolbars.
+Since this input method is much easier than the clumsy panel, the math
+panel itself has been removed and superseeded by the toolbars.
+
 * Frontend News
 
 LyX 1.5 will use the Qt4 toolkit. This is especially good news for
@@ -174,12 +195,17 @@ A cache for converted files, such as included figures, was
 implemented. This can speed up LyX's performance considerably when
 displaying documents with many included figures that need conversion
 to a format that can be rendered on screen.  The converter file cache
-is disabled by default, and there is no GUI for configuring it yet. If
-you want to use it, add the line
+is disabled by default, and it can be enabled in the Preference
+Settings dialog, in the Converters section or, if you want to use it,
+add the line
+
  \use_converter_cache true
 
-to your preferences file. The default maximum age of a cached file is
-6 months. You can change that with the line
+to your preferences file.
+
+The default maximum age of a cached file is 6 months. You can change
+that with the line
+
  \converter_cache_maxage xxx
 
 where xxx is the maximum age in seconds. 
@@ -188,6 +214,15 @@ where xxx is the maximum age in seconds.
 
 The two windows installers are being merged and bug reports regarding
 both installers are welcome.
+
+* Minor user interface improvements
+
+Apart from the described major changes, several minor improvements of
+the user interface have been made, such as:
+
+ - Syntax highlighting for the user preamble and the LaTeX log file 
+ - Better parsing of BibTeX databases (in the citation dialog) 
+ - Support optional argument for environments 
 
 * Under the hood
 
