@@ -42,6 +42,7 @@
 #   index                -> Stichwortverzeichnis   (H. Haase)
 #   index entry          -> Stichwort   (H. Haase)
 #   inline               -> eingebettet
+#   item                 -> Element		
 #   key                  -> Schlüssel
 #   keyword              -> Schlagwort
 #   label                -> Marke
@@ -1031,9 +1032,8 @@ msgid "&Insert"
 msgstr "&Einfügen"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
-#, fuzzy
 msgid "TeX Code:"
-msgstr "TeX-Code"
+msgstr "TeX-Code:"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
 msgid "Match delimiter types"
@@ -1658,7 +1658,6 @@ msgid "&Maximum Age (in days):"
 msgstr "&Maximales Alter (in Tagen):"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:83
-#, fuzzy
 msgid "Converter Defi&nitions"
 msgstr "Konverter-&Definitionen"
 
@@ -1674,7 +1673,6 @@ msgid "&Modify"
 msgstr "&Ändern"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:137
-#, fuzzy
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
@@ -2839,16 +2837,15 @@ msgstr "Eintrag durch die Auswahl ersetzen"
 
 #: src/frontends/qt4/ui/QTocUi.ui:36
 msgid "Decrease nesting depth of selected item"
-msgstr ""
+msgstr "Verringern Sie die Verschachtelungstiefe des ausgewählten Elements"
 
 #: src/frontends/qt4/ui/QTocUi.ui:39
 msgid "<- P&romote"
 msgstr "<- Ebene h&öher"
 
 #: src/frontends/qt4/ui/QTocUi.ui:46
-#, fuzzy
 msgid "Move selected item down by one"
-msgstr "Ausgewähltes Zitat nach hinten verschieben"
+msgstr "Verschieben Sie das ausgewählte Element nach unten"
 
 #: src/frontends/qt4/ui/QTocUi.ui:49
 msgid "D&own"
@@ -2856,7 +2853,7 @@ msgstr "&Ab"
 
 #: src/frontends/qt4/ui/QTocUi.ui:56
 msgid "Increase nesting depth of selected item"
-msgstr ""
+msgstr "Erhöhen Sie die Verschachtelungstiefe des ausgewählten Elements"
 
 #: src/frontends/qt4/ui/QTocUi.ui:59
 msgid "De&mote ->"
@@ -2864,24 +2861,23 @@ msgstr "Ebene &tiefer ->"
 
 #: src/frontends/qt4/ui/QTocUi.ui:66
 msgid "Update navigation tree"
-msgstr ""
+msgstr "Aktualisieren Sie den Navigationsbaum"
 
 #: src/frontends/qt4/ui/QTocUi.ui:69
 msgid "Upd&ate"
 msgstr "A&ktualisieren"
 
 #: src/frontends/qt4/ui/QTocUi.ui:76
-#, fuzzy
 msgid "Move selected item up by one"
-msgstr "Ausgewähltes Zitat nach vorne verschieben"
+msgstr "Verschieben Sie das ausgewählte Element nach oben"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
 msgid "Switch between TOC, list of figures or list of tables, if available"
-msgstr ""
+msgstr "Wechseln Sie zwischen Inhaltsverzeichnis, Abbildungsverzeichnis und Tabellenverzeichnis (falls vorhanden)"
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
 msgid "Adjust the depth of the navigation tree"
-msgstr ""
+msgstr "Passen Sie die Tiefe des Navigationsbaums an"
 
 #: src/frontends/qt4/ui/QTocUi.ui:137
 msgid "&Type:"
@@ -8863,170 +8859,144 @@ msgid "Update PostScript"
 msgstr "PostScript aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:190
-#, fuzzy
 msgid "Math Panels"
-msgstr "Mathe-Kontrollfläche"
+msgstr "Mathe-Kontrollflächen"
 
 #: lib/ui/stdtoolbars.inc:212
-#, fuzzy
 msgid "Functions"
-msgstr "&Funktionen"
+msgstr "Funktionen"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "arccos"
-msgstr ""
+msgstr "arccos"
 
 #: lib/ui/stdtoolbars.inc:214
-#, fuzzy
 msgid "arcsin"
-msgstr "Rand"
+msgstr "arcsin"
 
 #: lib/ui/stdtoolbars.inc:215
-#, fuzzy
 msgid "arctan"
-msgstr "Katalanisch"
+msgstr "arctan"
 
 #: lib/ui/stdtoolbars.inc:216
-#, fuzzy
 msgid "arg"
-msgstr "Groß"
+msgstr "arg"
 
 #: lib/ui/stdtoolbars.inc:217
 msgid "bmod"
-msgstr ""
+msgstr "bmod"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "cos"
-msgstr ""
+msgstr "cos"
 
 #: lib/ui/stdtoolbars.inc:219
-#, fuzzy
 msgid "cosh"
-msgstr "Schottisch"
+msgstr "cosh"
 
 #: lib/ui/stdtoolbars.inc:220
-#, fuzzy
 msgid "cot"
-msgstr "Opt"
+msgstr "cot"
 
 #: lib/ui/stdtoolbars.inc:221
-#, fuzzy
 msgid "coth"
-msgstr "Schottisch"
+msgstr "coth"
 
 #: lib/ui/stdtoolbars.inc:222
-#, fuzzy
 msgid "csc"
-msgstr "cc"
+msgstr "csc"
 
 #: lib/ui/stdtoolbars.inc:223
 msgid "deg"
-msgstr ""
+msgstr "deg"
 
 #: lib/ui/stdtoolbars.inc:224
-#, fuzzy
 msgid "det"
-msgstr "Standard"
+msgstr "det"
 
 #: lib/ui/stdtoolbars.inc:225
-#, fuzzy
 msgid "dim"
-msgstr "Mittel"
+msgstr "dim"
 
 #: lib/ui/stdtoolbars.inc:226
-#, fuzzy
 msgid "exp"
-msgstr "ex"
+msgstr "exp"
 
 #: lib/ui/stdtoolbars.inc:227
 msgid "gcd"
-msgstr ""
+msgstr "gcd"
 
 #: lib/ui/stdtoolbars.inc:228
-#, fuzzy
 msgid "hom"
-msgstr "Theorem"
+msgstr "hom"
 
 #: lib/ui/stdtoolbars.inc:229
-#, fuzzy
 msgid "inf"
-msgstr "in"
+msgstr "inf"
 
 #: lib/ui/stdtoolbars.inc:230
-#, fuzzy
 msgid "ker"
-msgstr "Sprecher"
+msgstr "ker"
 
 #: lib/ui/stdtoolbars.inc:231
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: lib/ui/stdtoolbars.inc:232
-#, fuzzy
 msgid "lim"
-msgstr "Behauptung"
+msgstr "lim"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "liminf"
-msgstr ""
+msgstr "liminf"
 
 #: lib/ui/stdtoolbars.inc:234
 msgid "limsup"
-msgstr ""
+msgstr "limsup"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "ln"
-msgstr ""
+msgstr "ln"
 
 #: lib/ui/stdtoolbars.inc:236
-#, fuzzy
 msgid "log"
-msgstr "Glo"
+msgstr "log"
 
 #: lib/ui/stdtoolbars.inc:237
-#, fuzzy
 msgid "max"
-msgstr "Fax"
+msgstr "max"
 
 #: lib/ui/stdtoolbars.inc:238
-#, fuzzy
 msgid "min"
-msgstr "in"
+msgstr "min"
 
 #: lib/ui/stdtoolbars.inc:239
-#, fuzzy
 msgid "sec"
-msgstr "Abschnitt (Inhaltsverz.)"
+msgstr "sec"
 
 #: lib/ui/stdtoolbars.inc:240
-#, fuzzy
 msgid "sin"
-msgstr "in"
+msgstr "sin"
 
 #: lib/ui/stdtoolbars.inc:241
-#, fuzzy
 msgid "sinh"
-msgstr "in"
+msgstr "sinh"
 
 #: lib/ui/stdtoolbars.inc:242
-#, fuzzy
 msgid "sup"
-msgstr "sp"
+msgstr "sup"
 
 #: lib/ui/stdtoolbars.inc:243
-#, fuzzy
 msgid "tan"
-msgstr "und"
+msgstr "tan"
 
 #: lib/ui/stdtoolbars.inc:244
-#, fuzzy
 msgid "tanh"
-msgstr "Zweig"
+msgstr "tanh"
 
 #: lib/ui/stdtoolbars.inc:245
-#, fuzzy
 msgid "Pr"
-msgstr "Eigenschaft"
+msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:248
 #, fuzzy
@@ -12930,9 +12900,8 @@ msgid "Variable"
 msgstr "Variabel"
 
 #: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
 msgid "TeX Code: "
-msgstr "TeX-Code"
+msgstr "TeX-Code: "
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
