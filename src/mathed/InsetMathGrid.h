@@ -94,8 +94,6 @@ public:
 	InsetMathGrid(col_type m, row_type n);
 	///
 	InsetMathGrid(col_type m, row_type n, char valign, docstring const & halign);
-	/// Ensures that the dialog is closed.
-	~InsetMathGrid();
 	///
 	void metrics(MetricsInfo & mi) const;
 	///

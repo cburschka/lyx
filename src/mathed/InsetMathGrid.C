@@ -184,13 +184,6 @@ InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, docstring const & h
 }
 
 
-InsetMathGrid::~InsetMathGrid()
-{
-	GridInsetMailer mailer(*this);
-	mailer.hideDialog();
-}
-
-
 auto_ptr<InsetBase> InsetMathGrid::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetMathGrid(*this));
