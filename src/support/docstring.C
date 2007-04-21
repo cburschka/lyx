@@ -148,15 +148,16 @@ docstring const normalize_kc(docstring const & s)
 
 bool operator==(lyx::docstring const & l, char const * r)
 {
-	int const len = l.length();
-	for (int i = 0; i < len; ++i) {
-		BOOST_ASSERT(static_cast<unsigned char>(r[i]) < 0x80);
-		if (!r[i])
+	lyx::docstring::const_iterator it = l.begin();
+	lyx::docstring::const_iterator end = l.end();
+	for (; it != end; ++it, ++r) {
+		BOOST_ASSERT(static_cast<unsigned char>(*r) < 0x80);
+		if (!*r)
 			return false;
-		if (l[i] != lyx::docstring::value_type(r[i]))
+		if (*it != static_cast<lyx::docstring::value_type>(*r))
 			return false;
 	}
-	return r[len] == '\0';
+	return *r == '\0';
 }
 
 
