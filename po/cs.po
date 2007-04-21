@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-04-19 19:40+0100\n"
-"PO-Revision-Date: 2007-02-22 00:42+0200\n"
+"PO-Revision-Date: 2007-04-20 14:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -400,7 +400,7 @@ msgstr "Na ¹íøk&u"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:168
 msgid "Page &style:"
-msgstr "Styl stránky:"
+msgstr "Styl &stránky:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:186
 msgid "Style used for the page header and footer"
@@ -624,7 +624,7 @@ msgstr "Vn&itøní rámeèek:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:79
 msgid "&Decoration:"
-msgstr "Dekorace:"
+msgstr "&Dekorace:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
 msgid "Height value"
@@ -639,7 +639,7 @@ msgstr "Hodnota ¹íøky"
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:202
 #: src/frontends/qt4/ui/QParagraphUi.ui:251
 msgid "Alignment"
-msgstr "Z&arovnání"
+msgstr "Zarovnání"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:160 src/frontends/qt4/ui/QBoxUi.ui:187
 msgid "Horizontal alignment of the content inside the box"
@@ -728,7 +728,7 @@ msgstr "&Pou¾ít"
 
 #: src/frontends/qt4/ui/QBranchUi.ui:59
 msgid "&Available branches:"
-msgstr "Dostupné vìtve:"
+msgstr "&Dostupné vìtve:"
 
 #: src/frontends/qt4/ui/QBranchUi.ui:69
 msgid "Select your branch"
@@ -744,7 +744,7 @@ msgstr "Pøechod na dal¹í zmìnu"
 
 #: src/frontends/qt4/ui/QChangesUi.ui:52
 msgid "&Next change"
-msgstr "Dal¹í zmìna"
+msgstr "&Dal¹í zmìna"
 
 #: src/frontends/qt4/ui/QChangesUi.ui:95
 msgid "Accept this change"
@@ -877,7 +877,6 @@ msgid "&Selected Citations:"
 msgstr "&Vybrané citace:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
-#, fuzzy
 msgid "A&vailable Citations:"
 msgstr "&Dostupné citace:"
 
@@ -890,7 +889,6 @@ msgid "Natbib citation style to use"
 msgstr "Natbib citaèní styl pro pou¾ití"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:192
-#, fuzzy
 msgid "Citation st&yle:"
 msgstr "St&yl Citace:"
 
@@ -899,18 +897,16 @@ msgid "List all authors"
 msgstr "Seznam v¹ech autorù"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:205
-#, fuzzy
 msgid "Full aut&hor list"
 msgstr "Úplný &autorský list"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:212
 msgid "Force upper case in citation"
-msgstr "&Vynu» velké písmo v citaci"
+msgstr "Vynutit velké písmo v citaci"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:215
-#, fuzzy
 msgid "&Force upper case"
-msgstr "Vynu» velké písmo"
+msgstr "&Vynutit velké písmo"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:222
 msgid "&Text after:"
@@ -933,26 +929,22 @@ msgid "A&pply"
 msgstr "&Pou¾ít"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:335
-#, fuzzy
 msgid "Search Citation"
-msgstr "Citation"
+msgstr "Hledat citaci"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:358
-#, fuzzy
 msgid "Case Se&nsitive"
 msgstr "Velikost &písmen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:365
 msgid "Regular E&xpression"
-msgstr ""
+msgstr "&Regulární výraz"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:377
-#, fuzzy
 msgid "<- C&lear"
-msgstr "<- Zru¹it"
+msgstr "<- &Zru¹it"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:391
-#, fuzzy
 msgid "F&ind:"
 msgstr "&Najít:"
 
@@ -969,9 +961,8 @@ msgid "&Insert"
 msgstr "&Vlo¾it"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
-#, fuzzy
 msgid "TeX Code:"
-msgstr "TeX-ový kód|X"
+msgstr "Kód TeX-u:"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
 msgid "Match delimiter types"
@@ -1223,7 +1214,7 @@ msgstr "Mo¾nosti"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:655
 msgid "O&ption:"
-msgstr "Volba:"
+msgstr "&Volba:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:668
 msgid "Forma&t:"
@@ -1267,9 +1258,8 @@ msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:243
-#, fuzzy
 msgid "Set &height:"
-msgstr "Vý¹ka h&lavièky:"
+msgstr "&Vý¹ka:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:250
 msgid "&Scale Graphics (%):"
@@ -1280,7 +1270,6 @@ msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:263
-#, fuzzy
 msgid "Set &width:"
 msgstr "©íø&ka:"
 
@@ -1303,9 +1292,8 @@ msgid "x:"
 msgstr "x:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:451
-#, fuzzy
 msgid "LaTe&X and LyX options"
-msgstr "Parametry pro LaTe&X:"
+msgstr "Parametry pro LaTe&X a LyX"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:463
 #: src/frontends/qt4/ui/QGraphicsUi.ui:484
@@ -1326,7 +1314,7 @@ msgstr "Nerozbaluj pøi exportu (&unzip)"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:501
 msgid "Draft mode"
-msgstr "&Mód konceptu"
+msgstr "Mód konceptu"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:504
 msgid "&Draft mode"
@@ -1631,7 +1619,6 @@ msgid "&Longest label"
 msgstr "&Nejdel¹í znaèka"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:157
-#, fuzzy
 msgid "Indent &Paragraph"
 msgstr "&Odsadit odstavec"
 
@@ -1664,29 +1651,24 @@ msgid "Custom"
 msgstr "Vlastní"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
-#, fuzzy
 msgid "&Default"
-msgstr "Standardní"
+msgstr "&Standardní"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:278
-#, fuzzy
 msgid "&Justified"
-msgstr "Do bloku"
+msgstr "Do &bloku"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:285
-#, fuzzy
 msgid "&Left"
-msgstr "Nalevo"
+msgstr "Na&levo"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:292
-#, fuzzy
 msgid "&Right"
-msgstr "Napravo"
+msgstr "Na&pravo"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:299
-#, fuzzy
 msgid "&Center"
-msgstr "Na støed"
+msgstr "Na &støed"
 
 #: src/frontends/qt4/ui/QPrefColorsUi.ui:25
 msgid "&Colors"
@@ -1697,24 +1679,20 @@ msgid "&Alter..."
 msgstr "Z&mìnit..."
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:25
-#, fuzzy
 msgid "Converter File Cache"
-msgstr "Vlo¾it soubor|o"
+msgstr "Vyrovnávací pamì» pro konvertor souborù"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:45
-#, fuzzy
 msgid "&Enabled"
-msgstr "D&louhá tabulka"
+msgstr "&Zapnuto"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:65
-#, fuzzy
 msgid "&Maximum Age (in days):"
-msgstr "&Maximum posledních souborù:"
+msgstr "®ivo&tnost (ve dnech):"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:83
-#, fuzzy
 msgid "Converter Defi&nitions"
-msgstr "Definitions"
+msgstr "Definice &konvertoru"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:115
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:61
@@ -1728,19 +1706,16 @@ msgid "&Modify"
 msgstr "Z&mìnit"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:137
-#, fuzzy
 msgid "Remo&ve"
 msgstr "&Smazat"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:175
-#, fuzzy
 msgid "&From format:"
-msgstr "&Formát:"
+msgstr "&Z formátu:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:207
-#, fuzzy
 msgid "&To format:"
-msgstr "Formát &datumu:"
+msgstr "D&o formátu:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:241
 msgid "E&xtra flag:"
@@ -1878,7 +1853,7 @@ msgstr "Prv&ní:"
 #: src/frontends/qt4/ui/QPrefKeyboardUi.ui:97
 #: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:82
 msgid "Br&owse..."
-msgstr "Procházet..."
+msgstr "&Procházet..."
 
 #: src/frontends/qt4/ui/QPrefKeyboardUi.ui:107
 msgid "Use &keyboard map"
@@ -2872,22 +2847,18 @@ msgid "Replace the entry with the selection"
 msgstr "Zamìò heslo s vybraným"
 
 #: src/frontends/qt4/ui/QTocUi.ui:36
-#, fuzzy
 msgid "<- P&romote"
 msgstr "<- &Zvý¹it"
 
 #: src/frontends/qt4/ui/QTocUi.ui:43
-#, fuzzy
 msgid "D&own"
 msgstr "&Dolù"
 
 #: src/frontends/qt4/ui/QTocUi.ui:50
-#, fuzzy
 msgid "De&mote ->"
 msgstr "&Sní¾it ->"
 
 #: src/frontends/qt4/ui/QTocUi.ui:57
-#, fuzzy
 msgid "Upd&ate"
 msgstr "&Aktualizace"
 
@@ -2965,7 +2936,6 @@ msgid "VFill"
 msgstr "Výplò (VFill)"
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:36
-#, fuzzy
 msgid "Complete source"
 msgstr "Zobraz celý zdrojový kód"
 
@@ -4834,93 +4804,80 @@ msgid "Key words:"
 msgstr "Key words:"
 
 #: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:65
-#, fuzzy
 msgid "Item"
-msgstr "Polo¾ka"
+msgstr "Item"
 
 #: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:74
-#, fuzzy
 msgid "Item:"
-msgstr "Polo¾ka"
+msgstr "Item:"
 
 #: lib/layouts/europecv.layout:64
-#, fuzzy
 msgid "BulletedItem"
-msgstr "Odrá¾ky"
+msgstr "BulletedItem"
 
 #: lib/layouts/europecv.layout:73
-#, fuzzy
 msgid "Bulleted Item:"
-msgstr "Smazaný text"
+msgstr "Bulleted Item:"
 
 #: lib/layouts/europecv.layout:80
-#, fuzzy
 msgid "Begin"
-msgstr "BeginFrame"
+msgstr "Begin"
 
 #: lib/layouts/europecv.layout:90
 msgid "Begin of CV"
-msgstr ""
+msgstr "Begin of CV"
 
 #: lib/layouts/europecv.layout:97
 msgid "PersonalInfo"
-msgstr ""
+msgstr "PersonalInfo"
 
 #: lib/layouts/europecv.layout:106
 msgid "Personal Info"
-msgstr ""
+msgstr "Personal Info"
 
 #: lib/layouts/europecv.layout:113
 msgid "MotherTongue"
-msgstr ""
+msgstr "MotherTongue"
 
 #: lib/layouts/europecv.layout:122
 msgid "Mother Tongue:"
-msgstr ""
+msgstr "Mother Tongue:"
 
 #: lib/layouts/europecv.layout:129
-#, fuzzy
 msgid "LangHeader"
-msgstr "Header"
+msgstr "LangHeader"
 
 #: lib/layouts/europecv.layout:137
-#, fuzzy
 msgid "Language Header:"
-msgstr "Left Header:"
+msgstr "Language Header:"
 
 #: lib/layouts/europecv.layout:153 lib/layouts/moderncv.layout:138
-#, fuzzy
 msgid "Language:"
-msgstr "&Jazyk:"
+msgstr "Language:"
 
 #: lib/layouts/europecv.layout:160
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Jazyk"
+msgstr "LastLanguage"
 
 #: lib/layouts/europecv.layout:169
-#, fuzzy
 msgid "Last Language:"
-msgstr "&Jazyk:"
+msgstr "Last Language:"
 
 #: lib/layouts/europecv.layout:176
-#, fuzzy
 msgid "LangFooter"
-msgstr "Patièka:"
+msgstr "LangFooter"
 
 #: lib/layouts/europecv.layout:184
-#, fuzzy
 msgid "Language Footer:"
-msgstr "&Jazyk:"
+msgstr "Language Footer:"
 
 #: lib/layouts/europecv.layout:191
-#, fuzzy
 msgid "End"
-msgstr "\tEnd)"
+msgstr "End"
 
 #: lib/layouts/europecv.layout:201
 msgid "End of CV"
-msgstr ""
+msgstr "End of CV"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -5436,62 +5393,50 @@ msgid "NameRowG:"
 msgstr "NameRowG:"
 
 #: lib/layouts/g-brief2.layout:212
-#, fuzzy
 msgid "AddressRowA"
 msgstr "AddressRowA"
 
 #: lib/layouts/g-brief2.layout:223
-#, fuzzy
 msgid "AddressRowA:"
 msgstr "AddressRowA:"
 
 #: lib/layouts/g-brief2.layout:232
-#, fuzzy
 msgid "AddressRowB"
 msgstr "AddressRowB"
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowB:"
 msgstr "AddressRowB:"
 
 #: lib/layouts/g-brief2.layout:251
-#, fuzzy
 msgid "AddressRowC"
 msgstr "AddressRowC"
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowC:"
 msgstr "AddressRowC:"
 
 #: lib/layouts/g-brief2.layout:270
-#, fuzzy
 msgid "AddressRowD"
 msgstr "AddressRowD"
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowD:"
 msgstr "AddressRowD:"
 
 #: lib/layouts/g-brief2.layout:289
-#, fuzzy
 msgid "AddressRowE"
 msgstr "AddressRowE"
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowE:"
 msgstr "AddressRowE:"
 
 #: lib/layouts/g-brief2.layout:308
-#, fuzzy
 msgid "AddressRowF"
 msgstr "AddressRowF"
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowF:"
 msgstr "AddressRowF:"
 
@@ -5964,69 +5909,56 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: lib/layouts/moderncv.layout:58
-#, fuzzy
 msgid "Entry:"
-msgstr "Heslo"
+msgstr "Entry:"
 
 #: lib/layouts/moderncv.layout:81
-#, fuzzy
 msgid "ListItem"
-msgstr "Seznam"
+msgstr "ListItem"
 
 #: lib/layouts/moderncv.layout:90
-#, fuzzy
 msgid "List Item:"
-msgstr "Poslední patièka:"
+msgstr "List Item:"
 
 #: lib/layouts/moderncv.layout:97
-#, fuzzy
 msgid "DoubleItem"
-msgstr "Dva"
+msgstr "DoubleItem"
 
 #: lib/layouts/moderncv.layout:106
-#, fuzzy
 msgid "Double Item:"
-msgstr "Dva"
+msgstr "Double Item:"
 
 #: lib/layouts/moderncv.layout:113
-#, fuzzy
 msgid "Space"
-msgstr "mezera"
+msgstr "Space"
 
 #: lib/layouts/moderncv.layout:122
-#, fuzzy
 msgid "Space:"
-msgstr "mezera"
+msgstr "Space:"
 
 #: lib/layouts/moderncv.layout:145
-#, fuzzy
 msgid "Computer"
-msgstr "Courier"
+msgstr "Computer"
 
 #: lib/layouts/moderncv.layout:154
-#, fuzzy
 msgid "Computer:"
-msgstr "S&kript:"
+msgstr "Computer:"
 
 #: lib/layouts/moderncv.layout:161
-#, fuzzy
 msgid "EmptySection"
-msgstr "Sekce"
+msgstr "EmptySection"
 
 #: lib/layouts/moderncv.layout:170
-#, fuzzy
 msgid "Empty Section"
-msgstr "Sekce"
+msgstr "Empty Section"
 
 #: lib/layouts/moderncv.layout:177
-#, fuzzy
 msgid "CloseSection"
-msgstr "výbìr"
+msgstr "CloseSection"
 
 #: lib/layouts/moderncv.layout:186
-#, fuzzy
 msgid "Close Section"
-msgstr "výbìr"
+msgstr "Close Section"
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -7144,7 +7076,6 @@ msgid "Polish"
 msgstr "Pol¹tina"
 
 #: lib/languages:48
-#, fuzzy
 msgid "Portuguese"
 msgstr "Portugal¹tina"
 
@@ -8039,7 +7970,7 @@ msgstr "Konfiguarce LaTeX-u|L"
 
 #: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:484
 msgid "About LyX|X"
-msgstr "O programu LyX...|X"
+msgstr "O programu LyX|X"
 
 #: lib/ui/classic.ui:425 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
@@ -8244,39 +8175,39 @@ msgstr "Styl textu|S"
 
 #: lib/ui/stdmenus.inc:193
 msgid "Split Cell|C"
-msgstr "Rozdìl buòku|R"
+msgstr "Rozdìlit buòku|R"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Add Line Above|A"
-msgstr "Pøidej linku nad|e"
+msgstr "Pøidat linku nad|e"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Add Line Below|B"
-msgstr "Pøidej linku pod|o"
+msgstr "Pøidat linku pod|o"
 
 #: lib/ui/stdmenus.inc:197
 msgid "Delete Line Above|D"
-msgstr "Sma¾ linku nad|d"
+msgstr "Smazat linku nad|d"
 
 #: lib/ui/stdmenus.inc:198
 msgid "Delete Line Below|e"
-msgstr "Sma¾ linku pod|p"
+msgstr "Smazat linku pod|p"
 
 #: lib/ui/stdmenus.inc:200
 msgid "Add Line to Left"
-msgstr "Pøidej linku nalevo"
+msgstr "Pøidat linku nalevo"
 
 #: lib/ui/stdmenus.inc:201
 msgid "Add Line to Right"
-msgstr "Pøidej linku napravo"
+msgstr "Pøidat linku napravo"
 
 #: lib/ui/stdmenus.inc:202
 msgid "Delete Line to Left"
-msgstr "Sma¾ linku nalevo"
+msgstr "Smazat linku nalevo"
 
 #: lib/ui/stdmenus.inc:203
 msgid "Delete Line to Right"
-msgstr "Sma¾ linku napravo"
+msgstr "Smazat linku napravo"
 
 #: lib/ui/stdmenus.inc:213
 msgid "Math Normal Font|N"
@@ -8391,9 +8322,8 @@ msgid "Index Entry|d"
 msgstr "Heslo rejstøíku|H"
 
 #: lib/ui/stdmenus.inc:305
-#, fuzzy
 msgid "Glossary Entry...|y"
-msgstr "Heslo slovníèku|s"
+msgstr "Heslo slovníèku...|s"
 
 #: lib/ui/stdmenus.inc:307
 msgid "Table...|T"
@@ -8472,12 +8402,10 @@ msgid "Gathered Environment|h"
 msgstr "Prostøedí Gathered"
 
 #: lib/ui/stdmenus.inc:364
-#, fuzzy
 msgid "Delimiters|r"
-msgstr "Mat. oddìlovaè"
+msgstr "Mat. oddìlovaèe"
 
 #: lib/ui/stdmenus.inc:365
-#, fuzzy
 msgid "Matrix|x"
 msgstr "Matice"
 
@@ -8507,7 +8435,7 @@ msgstr "Komentáø|K"
 
 #: lib/ui/stdmenus.inc:396
 msgid "Greyed Out|G"
-msgstr "Ze¹edivìlý|e"
+msgstr "Za¹edlé|e"
 
 #: lib/ui/stdmenus.inc:408
 msgid "Change Tracking|C"
@@ -8707,43 +8635,43 @@ msgstr "Kontrola pravopisu"
 
 #: lib/ui/stdtoolbars.inc:97 lib/ui/stdtoolbars.inc:142
 msgid "Add row"
-msgstr "Pøidej øádek"
+msgstr "Pøidat øádek"
 
 #: lib/ui/stdtoolbars.inc:98 lib/ui/stdtoolbars.inc:143
 msgid "Add column"
-msgstr "Pøidej sloupec"
+msgstr "Pøidat sloupec"
 
 #: lib/ui/stdtoolbars.inc:99 lib/ui/stdtoolbars.inc:144
 msgid "Delete row"
-msgstr "Sma¾ øádek"
+msgstr "Smazat øádek"
 
 #: lib/ui/stdtoolbars.inc:100 lib/ui/stdtoolbars.inc:145
 msgid "Delete column"
-msgstr "Sma¾ sloupec"
+msgstr "Smazat sloupec"
 
 #: lib/ui/stdtoolbars.inc:102
 msgid "Set top line"
-msgstr "Nastav linku nahoøe"
+msgstr "Nastavit linku nahoøe"
 
 #: lib/ui/stdtoolbars.inc:103
 msgid "Set bottom line"
-msgstr "Nastav linku dole"
+msgstr "Nastavit linku dole"
 
 #: lib/ui/stdtoolbars.inc:104
 msgid "Set left line"
-msgstr "Nastav linku nalevo"
+msgstr "Nastavit linku nalevo"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Set right line"
-msgstr "Nastav linku napravo"
+msgstr "Nastavit linku napravo"
 
 #: lib/ui/stdtoolbars.inc:106
 msgid "Set all lines"
-msgstr "Nastav v¹echny linky"
+msgstr "Nastavit v¹echny linky"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "Unset all lines"
-msgstr "Sma¾ v¹echny linky"
+msgstr "Smazat v¹echny linky"
 
 #: lib/ui/stdtoolbars.inc:109
 msgid "Align left"
@@ -8798,9 +8726,8 @@ msgid "Insert square root"
 msgstr "Vlo¾it odmocninu"
 
 #: lib/ui/stdtoolbars.inc:130
-#, fuzzy
 msgid "Insert standard fraction"
-msgstr "Vlo¾it zlomek"
+msgstr "Vlo¾it standardní zlomek"
 
 #: lib/ui/stdtoolbars.inc:131
 msgid "Insert sum"
@@ -8827,7 +8754,6 @@ msgid "Insert { }"
 msgstr "Vlo¾it { }"
 
 #: lib/ui/stdtoolbars.inc:138
-#, fuzzy
 msgid "Insert delimiters"
 msgstr "Vlo¾it oddìlovaèe"
 
@@ -9158,11 +9084,11 @@ msgstr "pozadí komentáøe"
 
 #: src/LColor.C:114
 msgid "greyedout inset"
-msgstr "vlo¾ka ze¹edivìní"
+msgstr "vlo¾ka za¹ednutí"
 
 #: src/LColor.C:115
 msgid "greyedout inset background"
-msgstr "pozadí vlo¾ky ze¹edivìní"
+msgstr "pozadí vlo¾ky za¹ednutí"
 
 #: src/LColor.C:116
 msgid "shaded box"
@@ -9448,8 +9374,7 @@ msgstr "Konverzní skript selhal"
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
-msgstr ""
-"%1$s je z odli¹né verze LyX-u, ale skript lyx2lyx selhal pøi konverzi. "
+msgstr "%1$s je z odli¹né verze LyX-u, ale skript lyx2lyx selhal pøi konverzi."
 
 #: src/buffer.C:727
 #, c-format
@@ -10452,9 +10377,8 @@ msgid "Label"
 msgstr "Znaèka"
 
 #: src/frontends/qt4/Dialogs.C:245
-#, fuzzy
 msgid "LaTeX Source"
-msgstr "Zdrojový text pro LaTeX|x"
+msgstr "Zdrojový text pro LaTeX"
 
 #: src/frontends/qt4/Dialogs.C:311
 msgid "Toc"
@@ -10578,9 +10502,8 @@ msgid "Variable"
 msgstr "Promìnlivá"
 
 #: src/frontends/qt4/QDelimiterDialog.C:175
-#, fuzzy
 msgid "TeX Code: "
-msgstr "TeX-ový kód|X"
+msgstr "Kód TeX-u: "
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -11102,7 +11025,6 @@ msgid "Invalid filename"
 msgstr "Neplatný název souboru"
 
 #: src/frontends/qt4/validators.C:187
-#, fuzzy
 msgid ""
 "LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
@@ -11214,9 +11136,8 @@ msgid "Opened CharStyle Inset"
 msgstr "Styl znaku - otevøená vlo¾ka"
 
 #: src/insets/insetcommand.C:98
-#, fuzzy
 msgid "LaTeX Command: "
-msgstr "Pøíkaz &BibTeX-u:"
+msgstr "Pøíkaz LaTeX-u: "
 
 #: src/insets/insetenv.C:66
 msgid "Opened Environment Inset: "
@@ -11352,7 +11273,7 @@ msgstr "Komentáø"
 
 #: src/insets/insetnote.C:67
 msgid "Greyed out"
-msgstr "Ze¹edivìlé"
+msgstr "Za¹edlé"
 
 #: src/insets/insetnote.C:68
 msgid "Framed"
@@ -11360,7 +11281,7 @@ msgstr "Rámovanì"
 
 #: src/insets/insetnote.C:69
 msgid "Shaded"
-msgstr "©rafovanì"
+msgstr "Stínovanì"
 
 #: src/insets/insetnote.C:149
 msgid "Opened Note Inset"
@@ -12750,9 +12671,8 @@ msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostøedí uvnitø matem. (textrm)"
 
 #: src/mathed/MathMacroTemplate.C:240
-#, fuzzy
 msgid "math macro"
-msgstr "pozadí matematiky"
+msgstr "mat. makro"
 
 #: src/output.C:39
 #, c-format

@@ -60,8 +60,6 @@ src/frontends/qt4/QExternal.C
 src/frontends/qt4/QFloat.C
 src/frontends/qt4/QGraphics.C
 src/frontends/qt4/QInclude.C
-src/frontends/qt4/QMath.C
-src/frontends/qt4/QMathDialog.C
 src/frontends/qt4/QMathMatrixDialog.C
 src/frontends/qt4/QNote.C
 src/frontends/qt4/QParagraph.C
@@ -91,6 +89,7 @@ src/insets/insetbranch.C
 src/insets/insetcaption.C
 src/insets/insetcharstyle.C
 src/insets/insetcommand.C
+src/insets/insetcommandparams.C
 src/insets/insetenv.C
 src/insets/insetert.C
 src/insets/insetexternal.C
