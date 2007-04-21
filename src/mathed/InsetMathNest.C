@@ -86,18 +86,6 @@ InsetMath::idx_type InsetMathNest::nargs() const
 }
 
 
-MathArray & InsetMathNest::cell(idx_type i)
-{
-	return cells_[i];
-}
-
-
-MathArray const & InsetMathNest::cell(idx_type i) const
-{
-	return cells_[i];
-}
-
-
 void InsetMathNest::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool /*boundary*/,
 		int & x, int & y) const

@@ -74,10 +74,12 @@ public:
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(LCursor & cur);
 
-	/// direct access to the cell
-	MathArray & cell(idx_type);
-	/// direct access to the cell
-	MathArray const & cell(idx_type) const;
+	/// direct access to the cell.
+	/// inlined because shows in profile.
+	//@{
+	MathArray & cell(idx_type i) { return cells_[i]; }
+	MathArray const & cell(idx_type i) const { return cells_[i]; }
+	//@}
 
 	/// can we move into this cell (see macroarg.h)
 	bool isActive() const;
