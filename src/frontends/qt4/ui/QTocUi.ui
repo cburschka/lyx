@@ -32,6 +32,9 @@
      </property>
      <item row="0" column="0" >
       <widget class="QPushButton" name="moveOutPB" >
+       <property name="toolTip" >
+        <string>Decrease nesting depth of selected item</string>
+       </property>
        <property name="text" >
         <string>&lt;- P&amp;romote</string>
        </property>
@@ -39,6 +42,9 @@
      </item>
      <item row="1" column="2" >
       <widget class="QPushButton" name="moveDownPB" >
+       <property name="toolTip" >
+        <string>Move selected item down by one</string>
+       </property>
        <property name="text" >
         <string>D&amp;own</string>
        </property>
@@ -46,6 +52,9 @@
      </item>
      <item row="0" column="1" >
       <widget class="QPushButton" name="moveInPB" >
+       <property name="toolTip" >
+        <string>Increase nesting depth of selected item</string>
+       </property>
        <property name="text" >
         <string>De&amp;mote -></string>
        </property>
@@ -53,6 +62,9 @@
      </item>
      <item row="1" column="0" colspan="2" >
       <widget class="QPushButton" name="updatePB" >
+       <property name="toolTip" >
+        <string>Update navigation tree</string>
+       </property>
        <property name="text" >
         <string>Upd&amp;ate</string>
        </property>
@@ -60,6 +72,9 @@
      </item>
      <item row="0" column="2" >
       <widget class="QPushButton" name="moveUpPB" >
+       <property name="toolTip" >
+        <string>Move selected item up by one</string>
+       </property>
        <property name="text" >
         <string>&amp;Up</string>
        </property>
@@ -77,6 +92,9 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="toolTip" >
+      <string>Switch between TOC, list of figures or list of tables, if available</string>
+     </property>
     </widget>
    </item>
    <item row="1" column="0" colspan="2" >
@@ -93,6 +111,9 @@
    </item>
    <item row="2" column="0" colspan="2" >
     <widget class="QSlider" name="depthSL" >
+     <property name="toolTip" >
+      <string>Adjust the depth of the navigation tree</string>
+     </property>
      <property name="maximum" >
       <number>5</number>
      </property>
