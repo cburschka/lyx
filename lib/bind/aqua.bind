@@ -42,7 +42,6 @@
 \bind "M-~S-i h f"		"command-sequence math-mode; math-mutate flalign;"
 \bind "M-~S-i h y"		"math-matrix 2 2"
 \bind "M-~S-i h c"		"math-insert \cases"
-\bind "M-~S-i h l"		"math-panel"
 
 \bind "M-~S-i o c"		"toc-insert"
 \bind "M-~S-i o i"		"index-print"

@@ -268,7 +268,6 @@ dist_images_DATA = \
 	images/dialog-show_findreplace.xpm \
 	images/dialog-show_mathdelimiter.xpm \
 	images/dialog-show_mathmatrix.xpm \
-	images/dialog-show_mathpanel.xpm \
 	images/dialog-show_print.xpm \
 	images/dialog-show_spellchecker.xpm \
 	images/down.xpm \

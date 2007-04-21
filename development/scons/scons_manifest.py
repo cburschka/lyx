@@ -707,7 +707,6 @@ src_frontends_qt4_moc_files = Split('''
     QLMenubar.C
     QLPopupMenu.C
     QLPrintDialog.C
-    QMathDialog.C
     QMathMatrixDialog.C
     QNomencl.C
     QNomenclDialog.C
@@ -1530,7 +1529,6 @@ lib_images_files = Split('''
     dialog-show_findreplace.xpm
     dialog-show_mathdelimiter.xpm
     dialog-show_mathmatrix.xpm
-    dialog-show_mathpanel.xpm
     dialog-show_print.xpm
     dialog-show_spellchecker.xpm
     down.xpm
