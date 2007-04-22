@@ -13,6 +13,8 @@
 #include "QDelimiterDialog.h"
 
 #include "GuiApplication.h"
+#include "GuiView.h"
+
 
 #include "qt_helpers.h"
 #include "controllers/ControlMath.h"
@@ -70,7 +72,8 @@ QMathDelimiter::QMathDelimiter(Dialog & parent)
 
 void QMathDelimiter::build_dialog()
 {
-	dialog_.reset(new QDelimiterDialog(this));
+	dialog_.reset(new QDelimiterDialog(this,
+		static_cast<GuiView *>(controller().view())));
 }
 
 
@@ -99,8 +102,8 @@ char_type QDelimiterDialog::doMatch(char_type const symbol) const
 }
 
 
-QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
-	: form_(form)
+QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form, QWidget * parent)
+	: QDialog(parent), form_(form)
 {
 	setupUi(this);
 

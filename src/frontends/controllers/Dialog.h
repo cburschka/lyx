@@ -197,6 +197,12 @@ public:
 	virtual bool exitEarly() const { return false; }
 	//@}
 
+	/// Main Window access.
+	/// This is unfortunately needed for the qt4 frontend and the \c
+	/// QDialogView framework. This permits to give a parent to the
+	/// constructed \c QDialog via a cast to \c GuiView.
+	LyXView * view() { return &parent_.kernel().lyxview(); }
+
 protected:
 	/** \name Controller Access
 	 *  Enable the derived classes to access the other parts of the whole.

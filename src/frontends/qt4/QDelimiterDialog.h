@@ -29,7 +29,7 @@ class QMathDelimiter;
 class QDelimiterDialog : public QDialog, public Ui::QDelimiterUi {
 	Q_OBJECT
 public:
-	QDelimiterDialog(QMathDelimiter * form);
+	QDelimiterDialog(QMathDelimiter * form, QWidget * parent);
 public Q_SLOTS:
 	void on_leftLW_itemActivated(QListWidgetItem *);
 	void on_rightLW_itemActivated(QListWidgetItem *);
