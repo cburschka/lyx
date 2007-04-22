@@ -1,77 +1,16 @@
-Items marked with
-
-  //   - are probably fixed, the reporter is asked to verify this
-         and report success or failure
-
-  ??   - are not reproducable, the reporter is asked to verify this
-         and report success or failure
-
-  ::   - are questions or comments to the reporter, containing question
-         on how to reproduce the bug exactly or things like that
-
-  !!   - mark "not a bug, a feature" replies, usually with a request for
-         further discussion
-
-	pp   - partially fixed
-
-Unmarked items are known unfixed but probably unverified bugs.
-
-----------------------------------------------------------------------
-
-General hints for bug reports:
-
-  - keep the items small
-
-  - do not provide excessive information on how to reproduce the bug
-    if this is obvious
-
-  - if a bug is partly fixed, report it as "fixed" and a new bug item
-    that contains the unfixed part only
-
-  - check this list regularly, comment on the marked items.
-
-  - plain ASCII text please, not much more than 70 chars per column
-
-Dekel:
-
-- InsetFormula::validate is broken
-
-
 Eran Tromer:
-
 
 - When selecting, maybe give a visual indication of the "original"
   anchor, when it differs from the "actual" one.
 
-Rainer Dorsch:
 
-- I know the latex code of a lot of math symbols displayed by lyx,
-  but not all of them. Thus I have to use the math panel for only a single
-  symbol in a formula. I think it would be very useful, if the latex code
-  of the symbol would be displayed as a hint, if the mouse positioned over
-  it.
-
-
-Marcus (Suran@gmx.net)
-
-- In math-mode I can switch back to text-mode in a formula but then I am
-  not able to type Umlauts.
-
-- If the math-panel has the focus I can type text but not switch into
-  math-mode or use some of the other keyboard-shortcuts.
-
-
-From: Álvaro Tejero Cantero <alvaro@antalia.com>
+Álvaro Tejero Cantero <alvaro@antalia.com>
 
 - I suggest creating a different "kewybinding namespace" for the formulas,
  since you could put to good use all those keybindings from the menu (M-?,
  C-?) thath currently do their job PLUS getting you out of the formula.
  Seriously, it'd be great to have more keys free, so M-d t would be time
  derivative and M-d ? derivative with respect to the variable ?. And so on.
-
-- I'm no experienced C++ programmer, but if you consider it appropriate, I
- could write a scritp in python for this one (I'm also very optimistic). Tell
- me what you think:
 
    Flattening macros. Sometimes it's annoying the fact that once you have
  written a macro, you can't touch at it's "constant parts". I call flattening
@@ -91,30 +30,10 @@ From: Álvaro Tejero Cantero <alvaro@antalia.com>
 - cut&paste inside math-mode doesn't work the X fashion (middle button doesn't
  paste anything).
 
-- I remember having heard that a search-replace function was planned, so I
- won't repeat that. Only that the flattening option would be then easier to
- implement on top of that.
-
-- Some math symbols aren't very well supported (to my knowledge). I'm
-  thinking of [] options.
 
 Jules Bean:
 
-a) If something's easy & quick in LaTeX then it should be easy & quick in
-LyX (unless it really isn't very common).  b) Actions which are used
-frequently should be a single key-press, even if that's not very easy to
-remember. You learn it.  c) Actions which are used rarely should be
-mnemonic -- easy to remember -- even if they are multiple keypresses.
-Things you do rarely you care less about the time it takes to perform.
-
-As an aside, you may think that I'm whining over nothing. However, when
-you enter math mode as often as I do (often more than once a sentence) it
-gets very annoying, especially as compared to simply typing '$' in plain
-emacs. Also, you may say 'why don't you just change your bindings file?'. I
-will ;) but I wanted to start some discussion on this since it can benefit
-everyone!
-
-More serious, though, than the number of characters which need to be typed
+The number of characters which need to be typed
 is the confusing nature of the command. 'M-c m', typed once, puts you into
 math-mode. However, typing 'M-c m' again doesn't put you out of math-mode
 --- it puts you into math-text mode. Then hitting it again puts you back
