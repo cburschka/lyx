@@ -436,12 +436,12 @@ public:
 	/// reject the changes within the inset
 	virtual void rejectChanges(BufferParams const &) {};
 
-	/// pretty arbitrary
-	virtual int width() const { return 10; }
-	/// pretty arbitrary
-	virtual int ascent() const { return 10; }
-	/// pretty arbitrary
-	virtual int descent() const { return 10; }
+	/// inset width.
+	int width() const { return dim_.wid; }
+	/// inset ascent.
+	int ascent() const { return dim_.asc; }
+	/// inset descent.
+	int descent() const { return dim_.des; }
 	///
 	int scroll() const { return 0; }
 	///
@@ -453,8 +453,9 @@ public:
 	///
 	virtual void setStatus(LCursor &, CollapseStatus) {}
 protected:
-	InsetBase() {}
-	InsetBase(InsetBase const &) {}
+	/// pretty arbitrary dimensions
+	InsetBase(): dim_(10, 10, 10) {}
+	InsetBase(InsetBase const & i): dim_(i.dim_) {}
 	/** The real dispatcher.
 	 *  Gets normally called from LCursor::dispatch(). LCursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.

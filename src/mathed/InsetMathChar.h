@@ -14,6 +14,7 @@
 
 #include "InsetMath.h"
 
+#include "lyxfont.h"
 
 namespace lyx {
 
@@ -30,8 +31,6 @@ public:
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
-	///
-	int width() const { return width_; }
 	///
 	int kerning() const { return kerning_; }
 
@@ -54,10 +53,10 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the character
 	char_type char_;
-	/// cached width
-	mutable int width_;
 	/// cached kerning for superscript
 	mutable int kerning_;
+	///
+	mutable LyXFont font_cache_;
 };
 
 } // namespace lyx

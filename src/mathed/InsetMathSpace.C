@@ -34,30 +34,11 @@ char const * latex_mathspace[] = {
 
 int const nSpace = sizeof(latex_mathspace)/sizeof(char *);
 
+namespace {
 
-InsetMathSpace::InsetMathSpace(int sp)
-	: space_(sp)
-{}
-
-
-InsetMathSpace::InsetMathSpace(docstring const & name)
-	: space_(1)
+int spaceToWidth(int space)
 {
-	for (int i = 0; i < nSpace; ++i)
-		if (latex_mathspace[i] == name)
-			space_ = i;
-}
-
-
-auto_ptr<InsetBase> InsetMathSpace::doClone() const
-{
-	return auto_ptr<InsetBase>(new InsetMathSpace(*this));
-}
-
-
-int InsetMathSpace::width() const
-{
-	switch (space_) {
+	switch (space) {
 		case 0: return 6;
 		case 1: return 8;
 		case 2: return 10;
@@ -72,16 +53,32 @@ int InsetMathSpace::width() const
 	}
 }
 
+} // anon namespace
 
-int InsetMathSpace::ascent() const
+InsetMathSpace::InsetMathSpace(int sp)
+	: space_(sp)
 {
-	return 4;
+	dim_.asc = 4;
+	dim_.des = 0;
+	dim_.wid = spaceToWidth(space_);
 }
 
 
-int InsetMathSpace::descent() const
+InsetMathSpace::InsetMathSpace(docstring const & name)
+	: space_(1)
 {
-	return 0;
+	dim_.asc = 4;
+	dim_.des = 0;
+	for (int i = 0; i < nSpace; ++i)
+		if (latex_mathspace[i] == name)
+			space_ = i;
+	dim_.wid = spaceToWidth(space_);
+}
+
+
+auto_ptr<InsetBase> InsetMathSpace::doClone() const
+{
+	return auto_ptr<InsetBase>(new InsetMathSpace(*this));
 }
 
 
@@ -120,6 +117,7 @@ void InsetMathSpace::draw(PainterInfo & pi, int x, int y) const
 void InsetMathSpace::incSpace()
 {
 	space_ = (space_ + 1) % (nSpace - 2);
+	dim_.wid = spaceToWidth(space_);
 }
 
 

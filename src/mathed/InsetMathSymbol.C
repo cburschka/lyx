@@ -29,17 +29,18 @@ using std::auto_ptr;
 
 
 InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
-	: sym_(l), h_(0), width_(0), scriptable_(false)
+	: sym_(l), h_(0), scriptable_(false), font_cache_(LyXFont::ALL_IGNORE)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(char const * name)
-	: sym_(in_word_set(from_ascii(name))), h_(0), width_(0), scriptable_(false)
+	: sym_(in_word_set(from_ascii(name))), h_(0), scriptable_(false),
+	font_cache_(LyXFont::ALL_IGNORE)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(docstring const & name)
-	: sym_(in_word_set(name)), h_(0), width_(0), scriptable_(false)
+	: sym_(in_word_set(name)), h_(0), scriptable_(false), font_cache_(LyXFont::ALL_IGNORE)
 {}
 
 
@@ -62,23 +63,30 @@ bool InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'" << std::endl;
 
-	int const em = mathed_char_width(mi.base.font, 'M');
-	FontSetChanger dummy(mi.base, sym_->inset);
-	mathed_string_dim(mi.base.font, sym_->draw, dim);
-	docstring::const_reverse_iterator rit = sym_->draw.rbegin();
-	kerning_ = mathed_char_kerning(mi.base.font, *rit);
-	// correct height for broken cmex and wasy font
-	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
-		h_ = 4 * dim.des / 5;
-		dim.asc += h_;
-		dim.des -= h_;
-	}
+	bool dim_unchanged = (mi.base.font == font_cache_);
+	if (dim_unchanged)
+		dim = dim_;
+	else {
+		font_cache_ = mi.base.font;
+		int const em = mathed_char_width(mi.base.font, 'M');
+		FontSetChanger dummy(mi.base, sym_->inset);
+		mathed_string_dim(mi.base.font, sym_->draw, dim);
+		docstring::const_reverse_iterator rit = sym_->draw.rbegin();
+		kerning_ = mathed_char_kerning(mi.base.font, *rit);
+		// correct height for broken cmex and wasy font
+		if (sym_->inset == "cmex" || sym_->inset == "wasy") {
+			h_ = 4 * dim.des / 5;
+			dim.asc += h_;
+			dim.des -= h_;
+		}
+		// seperate things a bit
+		if (isRelOp())
+			dim.wid += static_cast<int>(0.5 * em + 0.5);
+		else
+			dim.wid += static_cast<int>(0.1667 * em + 0.5);
 
-	// seperate things a bit
-	if (isRelOp())
-		dim.wid += static_cast<int>(0.5 * em + 0.5);
-	else
-		dim.wid += static_cast<int>(0.1667 * em + 0.5);
+		dim_ = dim;
+	}
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
@@ -86,11 +94,7 @@ bool InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 		    sym_->extra == "funclim")
 			scriptable_ = true;
 
-	width_ = dim.wid;
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
+	return dim_unchanged;
 }
 
 

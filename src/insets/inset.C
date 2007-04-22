@@ -53,24 +53,6 @@ LColor_color InsetOld::backgroundColor() const
 }
 
 
-int InsetOld::ascent() const
-{
-	return dim_.asc;
-}
-
-
-int InsetOld::descent() const
-{
-	return dim_.des;
-}
-
-
-int InsetOld::width() const
-{
-	return dim_.wid;
-}
-
-
 void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;

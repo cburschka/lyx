@@ -24,17 +24,26 @@ using std::auto_ptr;
 
 
 InsetMathKern::InsetMathKern()
-{}
+{
+	dim_.asc = 0;
+	dim_.des = 0;
+}
 
 
 InsetMathKern::InsetMathKern(LyXLength const & w)
 	: wid_(w)
-{}
+{
+	dim_.asc = 0;
+	dim_.des = 0;
+}
 
 
 InsetMathKern::InsetMathKern(docstring const & s)
 	: wid_(to_utf8(s))
-{}
+{
+	dim_.asc = 0;
+	dim_.des = 0;
+}
 
 
 auto_ptr<InsetBase> InsetMathKern::doClone() const
@@ -45,20 +54,12 @@ auto_ptr<InsetBase> InsetMathKern::doClone() const
 
 bool InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	wid_pix_ = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
-	dim.wid = wid_pix_;
-	dim.asc = 0;
-	dim.des = 0;
-	if (dim_ == dim)
+	int wid_pixel = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
+	if (wid_pixel == dim_.wid)
 		return false;
-	dim_ = dim;
+	dim_.wid = wid_pixel;
+	dim = dim_;
 	return true;
-}
-
-
-int InsetMathKern::width() const
-{
-	return wid_pix_;
 }
 
 

@@ -27,15 +27,6 @@ public:
 	InsetMathDim();
 
 	///
-	Dimension dimensions() const { return dim_; }
-	///
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
-
-	///
 	void setPosCache(PainterInfo const & pi, int x, int y) const;
 };
 

@@ -35,12 +35,6 @@ public:
 
 	///
 	InsetOld();
-	///
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
 
 	///
 	void setInsetName(docstring const & s) { name_ = s; }

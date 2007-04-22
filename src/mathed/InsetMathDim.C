@@ -25,24 +25,6 @@ InsetMathDim::InsetMathDim()
 {}
 
 
-int InsetMathDim::ascent() const
-{
-	return dim_.asc;
-}
-
-
-int InsetMathDim::descent() const
-{
-	return dim_.des;
-}
-
-
-int InsetMathDim::width() const
-{
-	return dim_.wid;
-}
-
-
 void InsetMathDim::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetMathDim: cache to " << x << " " << y << std::endl;
