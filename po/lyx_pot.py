@@ -35,6 +35,7 @@ def ui_l10n(input_files, output, base):
     '''Generate pot file from lib/ui/*'''
     output = open(output, 'w')
     Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"')
+    Popupmenu = re.compile(r'^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"')
     Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"')
     Item = re.compile(r'[^#]*Item\s+"([^"]*)"')
     for src in input_files:
@@ -43,6 +44,8 @@ def ui_l10n(input_files, output, base):
             if Submenu.match(line):
                 (string,) = Submenu.match(line).groups()
                 string = string.replace('_', ' ')
+            elif Popupmenu.match(line):
+                (string,) = Popupmenu.match(line).groups()
             elif Toolbar.match(line):
                 (string,) = Toolbar.match(line).groups()
             elif Item.match(line):
