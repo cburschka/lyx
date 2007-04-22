@@ -108,6 +108,16 @@ static TranslatorMap const build_translator()
 }
 
 
+/// pretty arbitrary dimensions
+InsetBase::InsetBase(): dim_(10, 10, 10), background_color_(LColor::background)
+{}
+
+
+InsetBase::InsetBase(InsetBase const & i)
+: dim_(i.dim_), background_color_(i.background_color_)
+{}
+
+
 std::auto_ptr<InsetBase> InsetBase::clone() const
 {
 	std::auto_ptr<InsetBase> b = doClone();
@@ -342,6 +352,18 @@ void InsetBase::dump() const
 {
 	Buffer buf("foo", 1);
 	write(buf, lyxerr);
+}
+
+
+void InsetBase::setBackgroundColor(LColor_color color)
+{
+	background_color_ = color;
+}
+
+
+LColor_color InsetBase::backgroundColor() const
+{
+	return LColor::color(background_color_);
 }
 
 

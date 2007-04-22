@@ -19,7 +19,6 @@
 #include "debug.h"
 #include "gettext.h"
 #include "lyxtext.h"
-#include "LColor.h"
 #include "metricsinfo.h"
 #include "coordcache.h"
 
@@ -30,27 +29,12 @@ using std::string;
 
 
 InsetOld::InsetOld()
-	: //background_color_(LColor::inherit)
-	  background_color_(LColor::background)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
-	: InsetBase(in), name_(in.name_),
-	  background_color_(in.background_color_)
+	: InsetBase(in), name_(in.name_)
 {}
-
-
-void InsetOld::setBackgroundColor(LColor_color color)
-{
-	background_color_ = color;
-}
-
-
-LColor_color InsetOld::backgroundColor() const
-{
-	return LColor::color(background_color_);
-}
 
 
 void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const

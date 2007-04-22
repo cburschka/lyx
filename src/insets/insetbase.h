@@ -31,6 +31,7 @@ class FuncStatus;
 class InsetMath;
 class InsetText;
 class LaTeXFeatures;
+class LColor_color;
 class LCursor;
 class LyXLex;
 class LyXText;
@@ -445,6 +446,10 @@ public:
 	///
 	int scroll() const { return 0; }
 	///
+	void setBackgroundColor(LColor_color);
+	///
+	LColor_color backgroundColor() const;
+	///
 	enum CollapseStatus {
 		Collapsed,
 		Inlined,
@@ -453,9 +458,8 @@ public:
 	///
 	virtual void setStatus(LCursor &, CollapseStatus) {}
 protected:
-	/// pretty arbitrary dimensions
-	InsetBase(): dim_(10, 10, 10) {}
-	InsetBase(InsetBase const & i): dim_(i.dim_) {}
+	InsetBase();
+	InsetBase(InsetBase const & i);
 	/** The real dispatcher.
 	 *  Gets normally called from LCursor::dispatch(). LCursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
@@ -473,6 +477,10 @@ protected:
 	mutable Dimension dim_;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const = 0;
+	/** We store the LColor::color value as an int to get LColor.h out
+	 *  of the header file.
+	 */
+	int background_color_;
 };
 
 

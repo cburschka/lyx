@@ -16,13 +16,9 @@
 #define INSETOLD_H
 
 #include "insetbase.h"
-#include "dimension.h"
 
 
 namespace lyx {
-
-class LColor_color;
-
 
 /// Insets
 class InsetOld : public InsetBase {
@@ -40,10 +36,6 @@ public:
 	void setInsetName(docstring const & s) { name_ = s; }
 	///
 	virtual docstring const & getInsetName() const { return name_; }
-	///
-	virtual void setBackgroundColor(LColor_color);
-	///
-	LColor_color backgroundColor() const;
 	/// set x/y drawing position cache
 	void setPosCache(PainterInfo const &, int, int) const;
 
@@ -56,10 +48,6 @@ private:
 
 	///
 	docstring name_;
-	/** We store the LColor::color value as an int to get LColor.h out
-	 *  of the header file.
-	 */
-	int background_color_;
 };
 
 
