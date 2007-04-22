@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-22 11:13+0200\n"
+"POT-Creation-Date: 2007-04-22 11:29+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -9791,29 +9791,32 @@ msgid "Spacing"
 msgstr "&Razmiki"
 
 #: lib/ui/stdtoolbars.inc:249
-msgid "Thin space\t\\\\,"
-msgstr ""
+#, fuzzy
+msgid "Thin space\t\\,"
+msgstr "navadna"
 
 #: lib/ui/stdtoolbars.inc:250
 #, fuzzy
-msgid "Medium space\t\\\\:"
+msgid "Medium space\t\\:"
 msgstr "navadna"
 
 #: lib/ui/stdtoolbars.inc:251
-msgid "Thick space\t\\\\;"
-msgstr ""
+#, fuzzy
+msgid "Thick space\t\\;"
+msgstr "navadna"
 
 #: lib/ui/stdtoolbars.inc:252
-msgid "Quadratin space\t\\\\quad"
+msgid "Quadratin space\t\\quad"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:253
-msgid "Double quadratin space\t\\\\qquad"
+msgid "Double quadratin space\t\\qquad"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:254
-msgid "Negative space\t\\\\!"
-msgstr ""
+#, fuzzy
+msgid "Negative space\t\\!"
+msgstr "navadna"
 
 #: lib/ui/stdtoolbars.inc:257
 #, fuzzy
@@ -9822,12 +9825,12 @@ msgstr "Noga"
 
 #: lib/ui/stdtoolbars.inc:258
 #, fuzzy
-msgid "Square root\t\\\\sqrt"
+msgid "Square root\t\\sqrt"
 msgstr "Kvadratni koren\t\\sqrt"
 
 #: lib/ui/stdtoolbars.inc:259
 #, fuzzy
-msgid "Other root\t\\\\root"
+msgid "Other root\t\\root"
 msgstr "Drugi koren\t\\root"
 
 #: lib/ui/stdtoolbars.inc:262
@@ -9836,19 +9839,19 @@ msgid "Styles"
 msgstr "Slog"
 
 #: lib/ui/stdtoolbars.inc:263
-msgid "Display style\t\\\\displaystyle"
+msgid "Display style\t\\displaystyle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:264
-msgid "Normal text style\t\\\\textstyle"
+msgid "Normal text style\t\\textstyle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:265
-msgid "Script (small) style\t\\\\scriptstyle"
+msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:266
-msgid "Scriptscript (smaller) style\t\\\\scriptscriptstyle"
+msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:269
@@ -9858,28 +9861,28 @@ msgstr "LyX: Matematièna plo¹èa"
 
 #: lib/ui/stdtoolbars.inc:270
 #, fuzzy
-msgid "Standard\t\\\\frac"
+msgid "Standard\t\\frac"
 msgstr "Standardno"
 
 #: lib/ui/stdtoolbars.inc:271
 #, fuzzy
-msgid "No hor. line\t\\\\atop"
+msgid "No hor. line\t\\atop"
 msgstr "Ni veè opomb"
 
 #: lib/ui/stdtoolbars.inc:272
-msgid "Nice\t\\\\nicefrac"
+msgid "Nice\t\\nicefrac"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:273
-msgid "Text frac (amsmath)\t\\\\tfrac"
+msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:274
-msgid "Display frac (amsmath)\t\\\\dfrac"
+msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:275
-msgid "Binomial\t\\\\choose"
+msgid "Binomial\t\\choose"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:278 src/frontends/qt4/QDocumentDialog.C:393
@@ -9888,46 +9891,47 @@ msgid "Fonts"
 msgstr "Pisava: "
 
 #: lib/ui/stdtoolbars.inc:279
-msgid "Roman\t\\\\mathrm"
+msgid "Roman\t\\mathrm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:280
-msgid "Bold\t\\\\mathbf"
+msgid "Bold\t\\mathbf"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:281
-msgid "Bold symbol\t\\\\boldsymbol"
+msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:282
 #, fuzzy
-msgid "Sans serif\t\\\\mathsf"
+msgid "Sans serif\t\\mathsf"
 msgstr "brez serifov"
 
 #: lib/ui/stdtoolbars.inc:283
-msgid "Italic\t\\\\mathit"
-msgstr ""
+#, fuzzy
+msgid "Italic\t\\mathit"
+msgstr "le¾eèa"
 
 #: lib/ui/stdtoolbars.inc:284
 #, fuzzy
-msgid "Typewriter\t\\\\mathtt"
+msgid "Typewriter\t\\mathtt"
 msgstr "pisalni stroj"
 
 #: lib/ui/stdtoolbars.inc:285
-msgid "Blackboard\t\\\\mathbb"
+msgid "Blackboard\t\\mathbb"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:286
-msgid "Fraktur\t\\\\mathfrak"
+msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:287
 #, fuzzy
-msgid "Calligraphic\t\\\\mathcal"
+msgid "Calligraphic\t\\mathcal"
 msgstr "Matematièna kaligrafska dru¾ina"
 
 #: lib/ui/stdtoolbars.inc:288
-msgid "Normal text mode\t\\\\textrm"
+msgid "Normal text mode\t\\textrm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:291
@@ -10828,12 +10832,13 @@ msgid "spadesuit"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:503
-msgid "textrm \\\\AA"
+msgid "textrm \\AA"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:504
-msgid "textrm \\\\O"
-msgstr ""
+#, fuzzy
+msgid "textrm \\O"
+msgstr "besedilo"
 
 #: lib/ui/stdtoolbars.inc:505
 msgid "mathcircumflex"

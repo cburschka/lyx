@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-22 11:13+0200\n"
+"POT-Creation-Date: 2007-04-22 11:29+0200\n"
 "PO-Revision-Date: 2007-02-25 12:26+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -9593,32 +9593,32 @@ msgstr "Spacing"
 
 #: lib/ui/stdtoolbars.inc:249
 #, fuzzy
-msgid "Thin space\t\\\\,"
+msgid "Thin space\t\\,"
 msgstr "Space style"
 
 #: lib/ui/stdtoolbars.inc:250
 #, fuzzy
-msgid "Medium space\t\\\\:"
+msgid "Medium space\t\\:"
 msgstr "Space style"
 
 #: lib/ui/stdtoolbars.inc:251
 #, fuzzy
-msgid "Thick space\t\\\\;"
+msgid "Thick space\t\\;"
 msgstr "Space style"
 
 #: lib/ui/stdtoolbars.inc:252
 #, fuzzy
-msgid "Quadratin space\t\\\\quad"
+msgid "Quadratin space\t\\quad"
 msgstr "The amount of space between children"
 
 #: lib/ui/stdtoolbars.inc:253
 #, fuzzy
-msgid "Double quadratin space\t\\\\qquad"
+msgid "Double quadratin space\t\\qquad"
 msgstr "The amount of space between children"
 
 #: lib/ui/stdtoolbars.inc:254
 #, fuzzy
-msgid "Negative space\t\\\\!"
+msgid "Negative space\t\\!"
 msgstr "Space style"
 
 #: lib/ui/stdtoolbars.inc:257
@@ -9628,12 +9628,12 @@ msgstr "נקודות"
 
 #: lib/ui/stdtoolbars.inc:258
 #, fuzzy
-msgid "Square root\t\\\\sqrt"
+msgid "Square root\t\\sqrt"
 msgstr "%g ילילש טנמוגרא םע ארקנ :sqrt"
 
 #: lib/ui/stdtoolbars.inc:259
 #, fuzzy
-msgid "Other root\t\\\\root"
+msgid "Other root\t\\root"
 msgstr "הכנס שורש"
 
 #: lib/ui/stdtoolbars.inc:262
@@ -9643,20 +9643,20 @@ msgstr "סגנון"
 
 #: lib/ui/stdtoolbars.inc:263
 #, fuzzy
-msgid "Display style\t\\\\displaystyle"
+msgid "Display style\t\\displaystyle"
 msgstr "בחר קובץ סגנון"
 
 #: lib/ui/stdtoolbars.inc:264
 #, fuzzy
-msgid "Normal text style\t\\\\textstyle"
+msgid "Normal text style\t\\textstyle"
 msgstr "סגנון הקו התחתי של מלל זה"
 
 #: lib/ui/stdtoolbars.inc:265
-msgid "Script (small) style\t\\\\scriptstyle"
+msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:266
-msgid "Scriptscript (smaller) style\t\\\\scriptscriptstyle"
+msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:269
@@ -9666,29 +9666,29 @@ msgstr "קוד LyX:"
 
 #: lib/ui/stdtoolbars.inc:270
 #, fuzzy
-msgid "Standard\t\\\\frac"
+msgid "Standard\t\\frac"
 msgstr "תיטרדנטס טלפ תדיחי"
 
 #: lib/ui/stdtoolbars.inc:271
 #, fuzzy
-msgid "No hor. line\t\\\\atop"
+msgid "No hor. line\t\\atop"
 msgstr "החיפוש זקוק ליותר מגדירים."
 
 #: lib/ui/stdtoolbars.inc:272
-msgid "Nice\t\\\\nicefrac"
+msgid "Nice\t\\nicefrac"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:273
-msgid "Text frac (amsmath)\t\\\\tfrac"
+msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:274
-msgid "Display frac (amsmath)\t\\\\dfrac"
+msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:275
 #, fuzzy
-msgid "Binomial\t\\\\choose"
+msgid "Binomial\t\\choose"
 msgstr "בחר פעולה"
 
 #: lib/ui/stdtoolbars.inc:278 src/frontends/qt4/QDocumentDialog.C:393
@@ -9697,49 +9697,50 @@ msgid "Fonts"
 msgstr "גופן:"
 
 #: lib/ui/stdtoolbars.inc:279
-msgid "Roman\t\\\\mathrm"
+msgid "Roman\t\\mathrm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:280
 #, fuzzy
-msgid "Bold\t\\\\mathbf"
+msgid "Bold\t\\mathbf"
 msgstr "סגנון הבלטה"
 
 #: lib/ui/stdtoolbars.inc:281
-msgid "Bold symbol\t\\\\boldsymbol"
+msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:282
 #, fuzzy
-msgid "Sans serif\t\\\\mathsf"
+msgid "Sans serif\t\\mathsf"
 msgstr "Sans 12"
 
 #: lib/ui/stdtoolbars.inc:283
-msgid "Italic\t\\\\mathit"
-msgstr ""
+#, fuzzy
+msgid "Italic\t\\mathit"
+msgstr "נטוי"
 
 #: lib/ui/stdtoolbars.inc:284
 #, fuzzy
-msgid "Typewriter\t\\\\mathtt"
+msgid "Typewriter\t\\mathtt"
 msgstr "עבור אל"
 
 #: lib/ui/stdtoolbars.inc:285
 #, fuzzy
-msgid "Blackboard\t\\\\mathbb"
+msgid "Blackboard\t\\mathbb"
 msgstr "סגנון הבלטה"
 
 #: lib/ui/stdtoolbars.inc:286
-msgid "Fraktur\t\\\\mathfrak"
+msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:287
 #, fuzzy
-msgid "Calligraphic\t\\\\mathcal"
+msgid "Calligraphic\t\\mathcal"
 msgstr "ערכת משפחת הגופן"
 
 #: lib/ui/stdtoolbars.inc:288
 #, fuzzy
-msgid "Normal text mode\t\\\\textrm"
+msgid "Normal text mode\t\\textrm"
 msgstr "מצב גלישה למלל מרובה"
 
 #: lib/ui/stdtoolbars.inc:291
@@ -10631,12 +10632,12 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:503
 #, fuzzy
-msgid "textrm \\\\AA"
+msgid "textrm \\AA"
 msgstr "טקסט"
 
 #: lib/ui/stdtoolbars.inc:504
 #, fuzzy
-msgid "textrm \\\\O"
+msgid "textrm \\O"
 msgstr "טקסט"
 
 #: lib/ui/stdtoolbars.inc:505
