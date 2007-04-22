@@ -19,12 +19,11 @@
 
 #include "frontends/Painter.h"
 
-
-namespace lyx {
-
 using std::string;
 using std::auto_ptr;
 
+
+namespace lyx {
 
 char const * latex_mathspace[] = {
 	"!", "negmedspace", "negthickspace",  // negative space
