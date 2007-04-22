@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2007-02-25 12:26+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -1041,8 +1041,9 @@ msgid "&Insert"
 msgstr "הוספה"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "קוד TeX"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
@@ -2987,7 +2988,9 @@ msgid "Move selected item up by one"
 msgstr "הזז את המובאה הנוכחית למעלה"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -8502,17 +8505,17 @@ msgid "Redo|R"
 msgstr "בצע שוב"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "גזור"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "העתק"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "הדבק"
@@ -13531,51 +13534,46 @@ msgstr "פקודה קודמת"
 msgid "Next command"
 msgstr "פקודה הבאה"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 #, fuzzy
 msgid "big[[delimiter size]]"
 msgstr "ערכת גודל הגופן"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 #, fuzzy
 msgid "Big[[delimiter size]]"
 msgstr "ערכת גודל הגופן"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 #, fuzzy
 msgid "bigg[[delimiter size]]"
 msgstr "ערכת גודל הגופן"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 #, fuzzy
 msgid "Bigg[[delimiter size]]"
 msgstr "ערכת גודל הגופן"
 
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "השתמש בחבילת המתמטיקה של AMS"
 
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 #, fuzzy
 msgid "LyX: Delimiters"
 msgstr "קוד LyX:"
 
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 #, fuzzy
 msgid "(None)"
 msgstr "(ללא)"
 
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 #, fuzzy
 msgid "Variable"
 msgstr "משתנה"
-
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "קוד TeX"
 
 #: src/frontends/qt4/QDocument.C:48
 #, fuzzy
@@ -15565,27 +15563,27 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Width, in pixels, of the tree view grid lines"
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 #, fuzzy
 msgid "Only one row"
 msgstr ".דחא ןולח קר םייק"
 
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 #, fuzzy
 msgid "Only one column"
 msgstr ".דחא ןולח קר םייק"
 
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 #, fuzzy
 msgid "No hline to delete"
 msgstr "אין כתובת לשיגור"
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 #, fuzzy
 msgid "No vline to delete"
 msgstr "אין כתובת לשיגור"
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "פורמט תמונה לא ידוע"
@@ -15619,11 +15617,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "מצב החלקת הקצוות."
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16016,6 +16014,10 @@ msgstr "מילוי אנכי"
 #: src/vspace.C:509
 msgid "protected"
 msgstr ""
+
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "קוד TeX"
 
 #~ msgid "Open this panel as a separate window"
 #~ msgstr "פתח לוח זה בחלון חדש"

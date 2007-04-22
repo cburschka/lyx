@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-novo\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2007-03-19 13:36+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -964,8 +964,9 @@ msgid "&Insert"
 msgstr "&Inserir"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "Código TeX|g"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
@@ -2804,7 +2805,9 @@ msgid "Move selected item up by one"
 msgstr "Sobe a cita seleccionada"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -8002,17 +8005,17 @@ msgid "Redo|R"
 msgstr "Refacer|R"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "Cortar"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Colar"
@@ -12855,43 +12858,38 @@ msgstr "Comando anterior"
 msgid "Next command"
 msgstr "Comando seguinte"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "big[[delimiter size]]"
 msgstr "grande[[tamaño delimitador]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "Big[[delimiter size]]"
 msgstr "Grande[[tamaño delimitador]] "
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "bigg[[delimiter size]]"
 msgstr "ggrande[[tamaño delimitador]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "Bigg[[delimiter size]]"
 msgstr "Ggrande[[tamaño delimitador]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 msgid "Math Delimiter"
 msgstr "Delimitador matemático"
 
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 msgid "LyX: Delimiters"
 msgstr "LyX: Delimitadores"
 
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 msgid "(None)"
 msgstr "(Nengun)"
 
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 msgid "Variable"
 msgstr "Variábel"
-
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "Código TeX|g"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -14895,23 +14893,23 @@ msgstr "Non é posíbel engadir liñas de cuadrícula vertical en '%1$s'"
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Sen liñas de cuadrícula vertical en '%1$s'"
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 msgid "Only one row"
 msgstr "Só unha fila"
 
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 msgid "Only one column"
 msgstr "Só unha coluna"
 
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 msgid "No hline to delete"
 msgstr "Nengunha hline a eliminar"
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 msgid "No vline to delete"
 msgstr "Nengunha vline a eliminar"
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica de táboa descoñecida '%1$s'"
@@ -14943,11 +14941,11 @@ msgstr "Non é posíbel engadir liñas de cuadrícula horizontal en '%1$s'"
 msgid "Math editor mode"
 msgstr "Modo do editor matemático"
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr "cria un novo entorno de texto matemático ($...$)"
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr "introducido modo de texto matemático (textrm)"
 
@@ -15323,6 +15321,10 @@ msgstr "Recheo vertical"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "protexido"
+
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "Código TeX|g"
 
 #~ msgid "Open this panel as a separate window"
 #~ msgstr "Abre este painel como unha xanela separada"

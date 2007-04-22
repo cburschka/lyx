@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -1119,8 +1119,9 @@ msgid "&Insert"
 msgstr "Inserir"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "LaTeX|#L"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
@@ -3241,7 +3242,9 @@ msgid "Move selected item up by one"
 msgstr "Inserir uma citação"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -9110,17 +9113,17 @@ msgid "Redo|R"
 msgstr "Refazer"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "Cortar"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Colar"
@@ -14267,49 +14270,44 @@ msgstr "Romano"
 msgid "Next command"
 msgstr "Executar um comando"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 #, fuzzy
 msgid "big[[delimiter size]]"
 msgstr "Limite"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 #, fuzzy
 msgid "Big[[delimiter size]]"
 msgstr "Limite"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "Limite"
 
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 #, fuzzy
 msgid "LyX: Delimiters"
 msgstr "Limite"
 
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 #, fuzzy
 msgid "(None)"
 msgstr "Feito"
 
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 #, fuzzy
 msgid "Variable"
 msgstr "Tabela inserida"
-
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "LaTeX|#L"
 
 #: src/frontends/qt4/QDocument.C:48
 #, fuzzy
@@ -16332,25 +16330,25 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 #, fuzzy
 msgid "Only one column"
 msgstr "Apagar Coluna|#A"
 
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Nada para fazer"
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -16384,11 +16382,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Modo editor matemático"
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16782,6 +16780,10 @@ msgstr "Espaços Verticais"
 #, fuzzy
 msgid "protected"
 msgstr "Sinto muito."
+
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "LaTeX|#L"
 
 #, fuzzy
 #~ msgid "Select a page of symbols"

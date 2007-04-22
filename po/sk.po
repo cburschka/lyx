@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -985,8 +985,9 @@ msgid "&Insert"
 msgstr "Vlo¾&i»"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "TeX ¹týl|X"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
@@ -2845,7 +2846,9 @@ msgid "Move selected item up by one"
 msgstr "Presunú» oznaèenú citáciu hore"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -8380,17 +8383,17 @@ msgid "Redo|R"
 msgstr "Znova|Z"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "Vystrihnú»"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "Kopírova»"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Vlo¾i»"
@@ -13369,46 +13372,41 @@ msgstr "Predchádzajúci príkaz"
 msgid "Next command"
 msgstr "Nasledujúci príkaz"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "Big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "Matematický oddeµovaè"
 
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 msgid "LyX: Delimiters"
 msgstr "LyX: Oddelovaèe"
 
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 #, fuzzy
 msgid "(None)"
 msgstr "®iadne"
 
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 #, fuzzy
 msgid "Variable"
 msgstr "Variabilná veµkos»"
-
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "TeX ¹týl|X"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -15406,24 +15404,24 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 msgid "Only one column"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Nie je èo robi»."
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Vlastnosti tabuµky"
@@ -15457,11 +15455,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -15844,6 +15842,10 @@ msgstr " (vertikálne vyplnenie)"
 #, fuzzy
 msgid "protected"
 msgstr "Chránená medzera|m"
+
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "TeX ¹týl|X"
 
 #~ msgid "Open this panel as a separate window"
 #~ msgstr "Otvori» tento panel ako samostatné okno"

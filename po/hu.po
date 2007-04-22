@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2007-03-14 16:08+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -960,8 +960,9 @@ msgid "&Insert"
 msgstr "&Beszúrás"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "TeX kód|X"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
@@ -2803,7 +2804,9 @@ msgid "Move selected item up by one"
 msgstr "A kiválasztott idézet felfelé mozgatása"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -8000,17 +8003,17 @@ msgid "Redo|R"
 msgstr "Mégis alkalmaz|M"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Beillesztés"
@@ -12851,43 +12854,38 @@ msgstr "Elõzõ parancs"
 msgid "Next command"
 msgstr "Következõ parancs"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "big[[delimiter size]]"
 msgstr "normál[[határoló méret]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "Big[[delimiter size]]"
 msgstr "közepes[[határoló méret]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "bigg[[delimiter size]]"
 msgstr "nagy[[határoló méret]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "Bigg[[delimiter size]]"
 msgstr "óriás[[határoló méret]]"
 
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 msgid "Math Delimiter"
 msgstr "Képlet határolók"
 
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 msgid "LyX: Delimiters"
 msgstr "LyX: Határolójelek"
 
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 msgid "(None)"
 msgstr "(Nincs)"
 
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 msgid "Variable"
 msgstr "Változó méret"
-
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "TeX kód|X"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -14874,23 +14872,23 @@ msgstr "Nem tudok függõleges rácsvonalat adni '%1$s'-hoz"
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Nincs függõleges rácsvonal '%1$s'-ban"
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 msgid "Only one row"
 msgstr "Csak egy sor"
 
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 msgid "Only one column"
 msgstr "Csak egy oszlop"
 
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 msgid "No hline to delete"
 msgstr "Nincs törlendõ vízszintes vonal"
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 msgid "No vline to delete"
 msgstr "Nincs törlendõ függõleges vonal"
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ismeretlen táblázat jellemzõ '%1$s'"
@@ -14922,11 +14920,11 @@ msgstr "Nem tudok vízszintes rácsvonalat adni '%1$s'-hoz"
 msgid "Math editor mode"
 msgstr "Képletszerkesztõ mód"
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr "Új képlet környezet létrehozása ($...$)"
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
@@ -15298,6 +15296,10 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "védett"
+
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "TeX kód|X"
 
 #~ msgid "Open this panel as a separate window"
 #~ msgstr "Megnyitja a panelt egy másik ablakban"

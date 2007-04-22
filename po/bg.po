@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -1286,8 +1286,9 @@ msgstr "Вмъкни(I)|I"
 
 # src/frontends/xforms/form_toc.C:40
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "Тип(T):|#T"
 
 # src/mathed/math_panel.C:116
@@ -3775,7 +3776,9 @@ msgid "Move selected item up by one"
 msgstr "Вмъкване на цитат: Изберете цитат "
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -10647,19 +10650,19 @@ msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Залепи"
@@ -16537,55 +16540,49 @@ msgid "Next command"
 msgstr "Изпълни команда"
 
 # src/mathed/math_panel.C:116
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 #, fuzzy
 msgid "big[[delimiter size]]"
 msgstr "Разделител"
 
 # src/mathed/math_panel.C:116
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 #, fuzzy
 msgid "Big[[delimiter size]]"
 msgstr "Разделител"
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
 # src/mathed/math_panel.C:116
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "Разделител"
 
 # src/mathed/math_panel.C:116
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 #, fuzzy
 msgid "LyX: Delimiters"
 msgstr "Разделител"
 
 # src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:44
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 #, fuzzy
 msgid "(None)"
 msgstr "Няма"
 
 # src/LColor.C:97
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 #, fuzzy
 msgid "Variable"
 msgstr "ред на таблица"
-
-# src/frontends/xforms/form_toc.C:40
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "Тип(T):|#T"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
@@ -19021,27 +19018,27 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 msgid "Only one row"
 msgstr ""
 
 # src/ext_l10n.h:75
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 #, fuzzy
 msgid "Only one column"
 msgstr "Изтрий колона(D)|D"
 
 # src/text2.C:456
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Няма нищо за правене"
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -19078,11 +19075,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Матем. редактор"
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -19525,6 +19522,11 @@ msgstr "Вертикално разстояние"
 #, fuzzy
 msgid "protected"
 msgstr "Защитен интервал(B)|B"
+
+# src/frontends/xforms/form_toc.C:40
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "Тип(T):|#T"
 
 # src/frontends/kde/citationdlg.C:28
 #, fuzzy

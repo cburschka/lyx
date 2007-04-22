@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-21 16:47+0200\n"
+"POT-Creation-Date: 2007-04-22 11:13+0200\n"
 "PO-Revision-Date: 2006-11-13 23:37+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -968,8 +968,9 @@ msgid "&Insert"
 msgstr "&Set inn"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
-msgid "TeX Code:"
+msgid "TeX Code: "
 msgstr "TeX|X"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:276
@@ -2807,7 +2808,9 @@ msgid "Move selected item up by one"
 msgstr "Flytt den valde litteraturen oppover"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-msgid "Switch between TOC, list of figures or list of tables, if available"
+msgid ""
+"Switch between table of contents, list of figures or list of tables, if "
+"available"
 msgstr ""
 
 #: src/frontends/qt4/ui/QTocUi.ui:115
@@ -8009,17 +8012,17 @@ msgid "Redo|R"
 msgstr "Gjer om|G"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:461 src/text3.C:835
+#: src/mathed/InsetMathNest.C:449 src/text3.C:835
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:469 src/text3.C:840
+#: src/mathed/InsetMathNest.C:457 src/text3.C:840
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:440
+#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Lim inn"
@@ -12921,44 +12924,39 @@ msgstr "Kommandoen før"
 msgid "Next command"
 msgstr "Neste kommando"
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:44
+#: src/frontends/qt4/QDelimiterDialog.C:46
 msgid "Big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:45
+#: src/frontends/qt4/QDelimiterDialog.C:47
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/QDelimiterDialog.C:67
+#: src/frontends/qt4/QDelimiterDialog.C:69
 msgid "Math Delimiter"
 msgstr "Skiljeteikn i matte"
 
-#: src/frontends/qt4/QDelimiterDialog.C:109
+#: src/frontends/qt4/QDelimiterDialog.C:112
 msgid "LyX: Delimiters"
 msgstr "LyX: skiljeteikn"
 
-#: src/frontends/qt4/QDelimiterDialog.C:141
-#: src/frontends/qt4/QDelimiterDialog.C:142
+#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:145
 msgid "(None)"
 msgstr "(Ingen)"
 
-#: src/frontends/qt4/QDelimiterDialog.C:144
+#: src/frontends/qt4/QDelimiterDialog.C:147
 #, fuzzy
 msgid "Variable"
 msgstr "Variabel storleik"
-
-#: src/frontends/qt4/QDelimiterDialog.C:187
-#, fuzzy
-msgid "TeX Code: "
-msgstr "TeX|X"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -14933,23 +14931,23 @@ msgstr "Kan ikkje leggje til fleire loddrette linjer i rutenettet '%1$s'"
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Ingen loddrette linjer i rutenettet '%1$s'"
 
-#: src/mathed/InsetMathGrid.C:1319
+#: src/mathed/InsetMathGrid.C:1312
 msgid "Only one row"
 msgstr "Berre ei rad"
 
-#: src/mathed/InsetMathGrid.C:1325
+#: src/mathed/InsetMathGrid.C:1318
 msgid "Only one column"
 msgstr "Berre ei kolonne"
 
-#: src/mathed/InsetMathGrid.C:1333
+#: src/mathed/InsetMathGrid.C:1326
 msgid "No hline to delete"
 msgstr "Har inga vassrettlinje å slette"
 
-#: src/mathed/InsetMathGrid.C:1342
+#: src/mathed/InsetMathGrid.C:1335
 msgid "No vline to delete"
 msgstr "Har inga loddrettlinje å slette"
 
-#: src/mathed/InsetMathGrid.C:1360
+#: src/mathed/InsetMathGrid.C:1353
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
@@ -14981,11 +14979,11 @@ msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
 msgid "Math editor mode"
 msgstr "Mattemodus"
 
-#: src/mathed/InsetMathNest.C:859
+#: src/mathed/InsetMathNest.C:847
 msgid "create new math text environment ($...$)"
 msgstr "Lag nytt mattemiljø ($...$)"
 
-#: src/mathed/InsetMathNest.C:862
+#: src/mathed/InsetMathNest.C:850
 msgid "entered math text mode (textrm)"
 msgstr "Nyttar mattemiljø (textrm)"
 
@@ -15361,6 +15359,10 @@ msgstr "Fyll loddrett"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "vern"
+
+#, fuzzy
+#~ msgid "TeX Code:"
+#~ msgstr "TeX|X"
 
 #~ msgid "Open this panel as a separate window"
 #~ msgstr "Opna dette feltet som eit eige vindauge"
