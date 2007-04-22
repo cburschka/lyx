@@ -195,8 +195,8 @@ void QLToolbar::add(ToolbarItem const & item)
 		QToolButton * tb = new QToolButton;
 		tb->setCheckable(true);
 		tb->setIcon(QPixmap(toqstr(getIcon(FuncRequest(LFUN_TABULAR_INSERT)))));
-		tb->setToolTip(toqstr(item.label_));
-		tb->setStatusTip(toqstr(item.label_));
+		tb->setToolTip(qt_(to_ascii(item.label_)));
+		tb->setStatusTip(qt_(to_ascii(item.label_)));
 		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
 		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
@@ -207,9 +207,9 @@ void QLToolbar::add(ToolbarItem const & item)
 	case ToolbarItem::ICONPALETTE: {
 		QToolButton * tb = new QToolButton(this);
 		tb->setCheckable(true);
-		tb->setToolTip(toqstr(item.label_));
-		tb->setStatusTip(toqstr(item.label_));
-		tb->setText(toqstr(item.label_));
+		tb->setToolTip(qt_(to_ascii(item.label_)));
+		tb->setStatusTip(qt_(to_ascii(item.label_)));
+		tb->setText(qt_(to_ascii(item.label_)));
 		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
 			tb, SLOT(setIconSize(const QSize &)));
 
@@ -239,15 +239,15 @@ void QLToolbar::add(ToolbarItem const & item)
 	case ToolbarItem::POPUPMENU: {
 		QToolButton * tb = new QToolButton;
 		tb->setPopupMode(QToolButton::InstantPopup);
-		tb->setToolTip(toqstr(item.label_));
-		tb->setStatusTip(toqstr(item.label_));
-		tb->setText(toqstr(item.label_));
+		tb->setToolTip(qt_(to_ascii(item.label_)));
+		tb->setStatusTip(qt_(to_ascii(item.label_)));
+		tb->setText(qt_(to_ascii(item.label_)));
 		FileName icon_path = libFileSearch("images/math", item.name_, "xpm");
 		tb->setIcon(QIcon(toqstr(icon_path.absFilename())));
 		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
 			tb, SLOT(setIconSize(const QSize &)));
 
-		ButtonMenu * m = new ButtonMenu(toqstr(item.label_), tb);
+		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(item.label_)), tb);
 		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
 		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();
