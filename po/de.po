@@ -2873,7 +2873,6 @@ msgid "Move selected item up by one"
 msgstr "Verschieben Sie das ausgewählte Element nach oben"
 
 #: src/frontends/qt4/ui/QTocUi.ui:96
-#, fuzzy
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
@@ -9005,112 +9004,90 @@ msgid "Pr"
 msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:248
-#, fuzzy
 msgid "Spacing"
-msgstr "&Abstand:"
+msgstr "Abstand"
 
 #: lib/ui/stdtoolbars.inc:249
-#, fuzzy
 msgid "Thin space\t\\,"
 msgstr "Kleiner Abstand\t\\,"
 
 #: lib/ui/stdtoolbars.inc:250
-#, fuzzy
 msgid "Medium space\t\\:"
 msgstr "Mittlerer Abstand\t\\:"
 
 #: lib/ui/stdtoolbars.inc:251
-#, fuzzy
 msgid "Thick space\t\\;"
 msgstr "Großer Abstand\t\\;"
 
 #: lib/ui/stdtoolbars.inc:252
-#, fuzzy
 msgid "Quadratin space\t\\quad"
 msgstr "'Quadratin'-Abstand\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "Double quadratin space\t\\qquad"
 msgstr "Doppelter 'quadratin'-Abstand\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:254
-#, fuzzy
 msgid "Negative space\t\\!"
 msgstr "Negativer Abstand\t\\!"
 
 #: lib/ui/stdtoolbars.inc:257
-#, fuzzy
 msgid "Roots"
-msgstr "Fußnote"
+msgstr "Wurzeln"
 
 #: lib/ui/stdtoolbars.inc:258
-#, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "Quadratwurzel\t\\sqrt"
 
 #: lib/ui/stdtoolbars.inc:259
-#, fuzzy
 msgid "Other root\t\\root"
 msgstr "Andere Wurzel\t\\root"
 
 #: lib/ui/stdtoolbars.inc:262
-#, fuzzy
 msgid "Styles"
-msgstr "Stil"
+msgstr "Stile"
 
 #: lib/ui/stdtoolbars.inc:263
-#, fuzzy
 msgid "Display style\t\\displaystyle"
 msgstr "Display-Stil\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:264
-#, fuzzy
 msgid "Normal text style\t\\textstyle"
 msgstr "Normaler Text-Stil\t\\textstyle"
 
 #: lib/ui/stdtoolbars.inc:265
-#, fuzzy
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Script-Stil (klein)\t\\scriptstyle"
 
 #: lib/ui/stdtoolbars.inc:266
-#, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Scriptscript-Stil (kleiner)\t\\scriptscriptstyle"
 
 #: lib/ui/stdtoolbars.inc:269
-#, fuzzy
 msgid "Fractions"
-msgstr "LyX: Brüche"
+msgstr "Brüche"
 
 #: lib/ui/stdtoolbars.inc:270
-#, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Standard\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:271
-#, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "Keine horiz. Linie\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:272
-#, fuzzy
 msgid "Nice\t\\nicefrac"
 msgstr "Mit Schrägstrich\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:273
-#, fuzzy
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr "Text-Stil (amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:274
-#, fuzzy
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr "Display-Stil (amsmath)\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:275
-#, fuzzy
 msgid "Binomial\t\\choose"
 msgstr "Binomialkoeffizient\t\\choose"
 
@@ -9119,52 +9096,42 @@ msgid "Fonts"
 msgstr "Schriften"
 
 #: lib/ui/stdtoolbars.inc:279
-#, fuzzy
 msgid "Roman\t\\mathrm"
 msgstr "Roman\t\\mathrm"
 
 #: lib/ui/stdtoolbars.inc:280
-#, fuzzy
 msgid "Bold\t\\mathbf"
 msgstr "Fett\t\\mathbf"
 
 #: lib/ui/stdtoolbars.inc:281
-#, fuzzy
 msgid "Bold symbol\t\\boldsymbol"
 msgstr "Fett Symbol\t\\boldsymbol"
 
 #: lib/ui/stdtoolbars.inc:282
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Serifenfrei\t\\mathsf"
 
 #: lib/ui/stdtoolbars.inc:283
-#, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Kursiv\t\\mathit"
 
 #: lib/ui/stdtoolbars.inc:284
-#, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Schreibmaschine\t\\mathtt"
 
 #: lib/ui/stdtoolbars.inc:285
-#, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "Wandtafel\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:286
-#, fuzzy
 msgid "Fraktur\t\\mathfrak"
 msgstr "Fraktur\t\\mathfrak"
 
 #: lib/ui/stdtoolbars.inc:287
-#, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kalligrafisch\t\\mathcal"
 
 #: lib/ui/stdtoolbars.inc:288
-#, fuzzy
 msgid "Normal text mode\t\\textrm"
 msgstr "Normaler Textmodus\t\\textrm"
 
@@ -9173,276 +9140,248 @@ msgid "Dots"
 msgstr "Punkte"
 
 #: lib/ui/stdtoolbars.inc:292
-#, fuzzy
 msgid "ldots"
-msgstr "Punkte"
+msgstr "ldots"
 
 #: lib/ui/stdtoolbars.inc:293
-#, fuzzy
 msgid "cdots"
-msgstr "Punkte"
+msgstr "cdots"
 
 #: lib/ui/stdtoolbars.inc:294
-#, fuzzy
 msgid "vdots"
-msgstr "Punkte"
+msgstr "vdots"
 
 #: lib/ui/stdtoolbars.inc:295
-#, fuzzy
 msgid "ddots"
-msgstr "Punkte"
+msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:298
-#, fuzzy
 msgid "Frame Decorations"
 msgstr "Rahmen-Verzierungen"
 
 #: lib/ui/stdtoolbars.inc:299
 msgid "widehat"
-msgstr ""
+msgstr "widehat"
 
 #: lib/ui/stdtoolbars.inc:300
 msgid "widetilde"
-msgstr ""
+msgstr "widetilde"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "overbrace"
-msgstr ""
+msgstr "overbrace"
 
 #: lib/ui/stdtoolbars.inc:302
-#, fuzzy
 msgid "overleftarrow"
-msgstr "Zeile löschen"
+msgstr "overleftarrow"
 
 #: lib/ui/stdtoolbars.inc:303
 msgid "overrightarrow"
-msgstr ""
+msgstr "overrightarrow"
 
 #: lib/ui/stdtoolbars.inc:304
-#, fuzzy
 msgid "overline"
-msgstr "Slowenisch"
+msgstr "overline"
 
 #: lib/ui/stdtoolbars.inc:305
-#, fuzzy
 msgid "underbrace"
-msgstr "Unterstrichen"
+msgstr "underbrace"
 
 #: lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "underline"
-msgstr "Unterstrichen %1$s, "
+msgstr "underline"
 
 #: lib/ui/stdtoolbars.inc:307
 msgid "underleftarrow"
-msgstr ""
+msgstr "underleftarrow"
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "underrightarrow"
-msgstr ""
+msgstr "underrightarrow"
 
 #: lib/ui/stdtoolbars.inc:309
 msgid "underleftrightarrow"
-msgstr ""
+msgstr "underleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:310
 msgid "overleftrightarrow"
-msgstr ""
+msgstr "overleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:311
-#, fuzzy
 msgid "hat"
-msgstr "Kapitel"
+msgstr "hat"
 
 #: lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "acute"
-msgstr "Datum"
+msgstr "acute"
 
 #: lib/ui/stdtoolbars.inc:313
 msgid "bar"
-msgstr ""
+msgstr "bar"
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "dot"
-msgstr "Opt"
+msgstr "dot"
 
 #: lib/ui/stdtoolbars.inc:315
 msgid "check"
-msgstr ""
+msgstr "check"
 
 #: lib/ui/stdtoolbars.inc:316
-#, fuzzy
 msgid "grave"
-msgstr "Grün"
+msgstr "grave"
 
 #: lib/ui/stdtoolbars.inc:317
 msgid "vec"
-msgstr ""
+msgstr "vec"
 
 #: lib/ui/stdtoolbars.inc:318
-#, fuzzy
 msgid "ddot"
-msgstr "dd"
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:319
-#, fuzzy
 msgid "breve"
-msgstr "Vorschau"
+msgstr "breve"
 
 #: lib/ui/stdtoolbars.inc:320
-#, fuzzy
 msgid "tilde"
-msgstr "Datei"
+msgstr "tilde"
 
 #: lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "overset"
-msgstr "Zurücksetzen"
+msgstr "overset"
 
 #: lib/ui/stdtoolbars.inc:322
-#, fuzzy
 msgid "underset"
-msgstr "Gedicht"
+msgstr "underset"
 
 #: lib/ui/stdtoolbars.inc:325
 msgid "Arrows"
 msgstr "Pfeile"
 
 #: lib/ui/stdtoolbars.inc:326
-#, fuzzy
 msgid "leftarrow"
-msgstr "Zeile löschen"
+msgstr "leftarrow"
 
 #: lib/ui/stdtoolbars.inc:327
 msgid "rightarrow"
-msgstr ""
+msgstr "rightarrow"
 
 #: lib/ui/stdtoolbars.inc:328
 msgid "downarrow"
-msgstr ""
+msgstr "downarrow"
 
 #: lib/ui/stdtoolbars.inc:329
-#, fuzzy
 msgid "uparrow"
-msgstr "Pfeil"
+msgstr "uparrow"
 
 #: lib/ui/stdtoolbars.inc:330
 msgid "updownarrow"
-msgstr ""
+msgstr "updownarrow"
 
 #: lib/ui/stdtoolbars.inc:331
 msgid "leftrightarrow"
-msgstr ""
+msgstr "leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:332
-#, fuzzy
 msgid "Leftarrow"
-msgstr "Links"
+msgstr "Leftarrow"
 
 #: lib/ui/stdtoolbars.inc:333
-#, fuzzy
 msgid "Rightarrow"
-msgstr "Kopfzeile rechts"
+msgstr "Rightarrow"
 
 #: lib/ui/stdtoolbars.inc:334
 msgid "Downarrow"
-msgstr ""
+msgstr "Downarrow"
 
 #: lib/ui/stdtoolbars.inc:335
-#, fuzzy
 msgid "Uparrow"
-msgstr "Pfeil"
+msgstr "Uparrow"
 
 #: lib/ui/stdtoolbars.inc:336
 msgid "Updownarrow"
-msgstr ""
+msgstr "Updownarrow"
 
 #: lib/ui/stdtoolbars.inc:337
 msgid "Leftrightarrow"
-msgstr ""
+msgstr "Leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "Longleftrightarrow"
-msgstr ""
+msgstr "Longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:339
 msgid "Longleftarrow"
-msgstr ""
+msgstr "Longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:340
 msgid "Longrightarrow"
-msgstr ""
+msgstr "Longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:341
 msgid "longleftrightarrow"
-msgstr ""
+msgstr "longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:342
 msgid "longleftarrow"
-msgstr ""
+msgstr "longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:343
 msgid "longrightarrow"
-msgstr ""
+msgstr "longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:344
 msgid "leftharpoondown"
-msgstr ""
+msgstr "leftharpoondown"
 
 #: lib/ui/stdtoolbars.inc:345
 msgid "rightharpoondown"
-msgstr ""
+msgstr "rightharpoondown"
 
 #: lib/ui/stdtoolbars.inc:346
-#, fuzzy
 msgid "mapsto"
-msgstr "Legende"
+msgstr "mapsto"
 
 #: lib/ui/stdtoolbars.inc:347
 msgid "longmapsto"
-msgstr ""
+msgstr "longmapsto"
 
 #: lib/ui/stdtoolbars.inc:348
-#, fuzzy
 msgid "nwarrow"
-msgstr "Pfeil"
+msgstr "nwarrow"
 
 #: lib/ui/stdtoolbars.inc:349
-#, fuzzy
 msgid "nearrow"
-msgstr "Pfeil"
+msgstr "nearrow"
 
 #: lib/ui/stdtoolbars.inc:350
 msgid "leftharpoonup"
-msgstr ""
+msgstr "leftharpoonup"
 
 #: lib/ui/stdtoolbars.inc:351
 msgid "rightharpoonup"
-msgstr ""
+msgstr "rightharpoonup"
 
 #: lib/ui/stdtoolbars.inc:352
 msgid "hookleftarrow"
-msgstr ""
+msgstr "hookleftarrow"
 
 #: lib/ui/stdtoolbars.inc:353
 msgid "hookrightarrow"
-msgstr ""
+msgstr "hookrightarrow"
 
 #: lib/ui/stdtoolbars.inc:354
-#, fuzzy
 msgid "swarrow"
-msgstr "Pfeil"
+msgstr "swarrow"
 
 #: lib/ui/stdtoolbars.inc:355
-#, fuzzy
 msgid "searrow"
-msgstr "Pfeil"
+msgstr "searrow"
 
 #: lib/ui/stdtoolbars.inc:356 lib/ui/stdtoolbars.inc:626
 msgid "rightleftharpoons"
-msgstr ""
+msgstr "rightleftharpoons"
 
 #: lib/ui/stdtoolbars.inc:359
 msgid "Operators"
@@ -15407,23 +15346,5 @@ msgstr "geschützt"
 #~ msgid "Insert table"
 #~ msgstr "Tabelle einfügen"
 
-#~ msgid "Show math panel"
-#~ msgstr "Mathe-Kontrollfläche anzeigen"
-
-#~ msgid "LyX: Math Spacing"
-#~ msgstr "LyX: Mathe-Abstände"
-
-#~ msgid "LyX: Math Roots"
-#~ msgstr "LyX: Mathe-Wurzeln"
-
 #~ msgid "Cube root\t\\root"
 #~ msgstr "Kubikwurzel\t\\root"
-
-#~ msgid "LyX: Math Styles"
-#~ msgstr "LyX: Mathe-Stile"
-
-#~ msgid "LyX: Math Fonts"
-#~ msgstr "LyX: Mathe-Schriften"
-
-#~ msgid "The document uses a missing TeX class \"%1$s\".\n"
-#~ msgstr "Das Dokument verwendet die fehlende TeX-Klasse \"%1$s\".\n"
