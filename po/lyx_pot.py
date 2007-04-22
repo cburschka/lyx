@@ -49,7 +49,7 @@ def ui_l10n(input_files, output, base):
                 (string,) = Item.match(line).groups()
             else:
                 continue
-            string = string.replace('\\', '\\\\').replace('"', '')
+            string = string.replace('"', '')
             if string != "":
                 print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
                     (relativePath(src, base), lineno+1, string)
