@@ -30,6 +30,10 @@ if(NOT GROUP_CODE)
 	set(GROUP_CODE flat)
 endif(NOT GROUP_CODE)
 
+# lyx's source files
+set(LYX_CPP_FILES *.C)
+set(LYX_HPP_FILES *.h)
+
 include(LyXPaths)
 include(LyXMacros)
 include(ProjectSourceGroup)

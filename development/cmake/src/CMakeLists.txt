@@ -20,8 +20,8 @@ endif(NOT MERGE_FILES)
 
 configure_file(${TOP_SRC_DIR}/src/version.C.in ${CMAKE_CURRENT_BINARY_DIR}/version.C)
 
-file(GLOB lyx_sources ${TOP_SRC_DIR}/src/*.C)
-file(GLOB lyx_headers ${TOP_SRC_DIR}/src/*.h)
+file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
+file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/aspell.C

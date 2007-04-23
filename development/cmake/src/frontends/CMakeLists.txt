@@ -12,8 +12,8 @@ add_subdirectory(controllers)
 add_subdirectory(${qt_postfix}) 
 
 
-file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/*.C)
-file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/*.h)
+file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/${LYX_CPP_FILES})
+file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/${LYX_HPP_FILES})
 
 lyx_add_msvc_pch(frontends)
 

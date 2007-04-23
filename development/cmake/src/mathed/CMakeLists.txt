@@ -6,8 +6,8 @@
 
 project(mathed)
 
-file(GLOB mathed_sources ${TOP_SRC_DIR}/src/mathed/*.C)
-file(GLOB mathed_headers ${TOP_SRC_DIR}/src/mathed/*.h)
+file(GLOB mathed_sources ${TOP_SRC_DIR}/src/mathed/${LYX_CPP_FILES})
+file(GLOB mathed_headers ${TOP_SRC_DIR}/src/mathed/${LYX_CPP_FILES})
 
 list(REMOVE_ITEM mathed_sources
 	${TOP_SRC_DIR}/src/mathed/InsetMathXYArrow.C

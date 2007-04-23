@@ -6,8 +6,8 @@
 
 project(controllers)
 
-file(GLOB controllers_sources ${TOP_SRC_DIR}/src/frontends/controllers/*.C)
-file(GLOB controllers_headers ${TOP_SRC_DIR}/src/frontends/controllers/*.h)
+file(GLOB controllers_sources ${TOP_SRC_DIR}/src/frontends/controllers/${LYX_CPP_FILES})
+file(GLOB controllers_headers ${TOP_SRC_DIR}/src/frontends/controllers/${LYX_HPP_FILES})
 
 lyx_add_msvc_pch(controllers)
 

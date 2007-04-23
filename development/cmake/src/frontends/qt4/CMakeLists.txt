@@ -7,8 +7,8 @@
 project(frontend_qt4)
 
 
-file(GLOB frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/*.C)
-file(GLOB frontends_qt4_headers ${TOP_SRC_DIR}/src/frontends/qt4/*.h)
+file(GLOB frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
+file(GLOB frontends_qt4_headers ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_HPP_FILES})
 file(GLOB frontend_qt4_UI       ${TOP_SRC_DIR}/src/frontends/qt4/ui/*.ui)
 
 lyx_add_msvc_pch(frontends_qt4)

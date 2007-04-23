@@ -6,8 +6,8 @@
 
 project(graphics)
 
-file(GLOB graphics_sources ${TOP_SRC_DIR}/src/graphics/*.C)
-file(GLOB graphics_headers ${TOP_SRC_DIR}/src/graphics/*.h)
+file(GLOB graphics_sources ${TOP_SRC_DIR}/src/graphics/${LYX_CPP_FILES})
+file(GLOB graphics_headers ${TOP_SRC_DIR}/src/graphics/${LYX_HPP_FILES})
 
 lyx_add_msvc_pch(graphics)
 

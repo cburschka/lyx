@@ -6,8 +6,8 @@
 
 project(insets)
 
-file(GLOB insets_sources ${TOP_SRC_DIR}/src/insets/*.C)
-file(GLOB insets_headers ${TOP_SRC_DIR}/src/insets/*.h)
+file(GLOB insets_sources ${TOP_SRC_DIR}/src/insets/${LYX_CPP_FILES})
+file(GLOB insets_headers ${TOP_SRC_DIR}/src/insets/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM insets_sources ${TOP_SRC_DIR}/src/insets/insettheorem.C)
 
