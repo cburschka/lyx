@@ -548,8 +548,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		string const name = cmd.getArg(0);
 		if (!buf)
 			enable = name == "aboutlyx"
-				|| name == "file"
-				|| name == "forks"
+				|| name == "file" //FIXME: should be removed.
 				|| name == "prefs"
 				|| name == "texinfo";
 		else if (name == "print")
@@ -559,14 +558,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
 		else if (name == "latexlog")
 			enable = isFileReadable(FileName(buf->getLogName().second));
-#if !defined (USE_ASPELL) && !defined (USE_ISPELL) && !defined (USE_PSPELL)
 		else if (name == "spellchecker")
+#if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
+			enable = !buf->isReadonly();
+#else
 			enable = false;
 #endif
 		else if (name == "vclog")
 			enable = buf->lyxvc().inUse();
-		else if (name == "view-source")
-			enable = buf;
 		break;
 	}
 
