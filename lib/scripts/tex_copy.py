@@ -11,7 +11,7 @@
 # Full author contact details are available in file CREDITS
 
 # Usage:
-# tex_copy.py from file> <to file> <latex name>
+# tex_copy.py <from file> <to file> <latex name>
 
 # This script will copy a file <from file> to <to file>.
 # <to file> is no exact copy of <from file>, but any occurence of <basename>
