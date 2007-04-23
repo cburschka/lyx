@@ -33,6 +33,8 @@ QRefDialog::QRefDialog(QRef * form)
 		form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
+	connect(closePB, SIGNAL(clicked()),
+		this, SLOT( reset_dialog() ) );
 
 	connect( typeCO, SIGNAL( activated(int) ), 
 		this, SLOT( changed_adaptor() ) );
@@ -141,9 +143,16 @@ void QRefDialog::updateClicked()
 }
 
 
+void QRefDialog::reset_dialog() {
+	form_->at_ref_ = false;
+	form_->setGotoRef();
+}
+
+
 void QRefDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
+	reset_dialog();
 	e->accept();
 }
 

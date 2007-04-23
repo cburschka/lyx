@@ -41,6 +41,8 @@ public Q_SLOTS:
 	void sortToggled(bool);
 	void updateClicked();
 
+protected Q_SLOTS:
+	void reset_dialog();
 protected:
 	void closeEvent(QCloseEvent * e);
 private:
