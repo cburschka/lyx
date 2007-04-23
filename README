@@ -36,21 +36,22 @@ What do I need to run LyX?
 
 How does the LyX version scheme work?
 
-    LyX uses a continuous numbering scheme in which odd or
-    even numbering is not significant. Instead a number '1.x.y'
-    indicates stable release '1.x', fix level 'y'. Prereleases
-    are labeled with a "pre" suffix. Thus there are three possible
-    file names:
+    LyX uses a contiguous numbering scheme for versions, where a
+    number "1.x.y" indicates a stable release '1.x', fix level 'y'.
+    Prereleases are denoted with the suffix "pre" and there are
+    therefore three possible types of file names:
 
-       lyx-1.5.0.tar.gz       -- stable release
-       lyx-1.5.5.tar.gz       -- fifth maintenance release of the
-                                 1.5 stable release
+       lyx-1.5.0.tar.gz       -- stable release 
+       lyx-1.5.5.tar.gz       -- fifth maintenance release of LyX 1.5
        lyx-1.5.0pre1.tar.gz   -- potentially unstable test release
 
-    The maintenance releases are designed primarily to fix bugs. The
-    goal here is not to have parallel development as for the linux
-    kernel (the team is too small to afford that), but rather to
-    include all the simple (so that the maintenance burden on us
+    The maintenance releases are designed primarily to fix bugs,
+    and the file format will _never_ change due to a maintenance
+    release! 
+
+    The goal here is not to have parallel development as for the
+    linux kernel (the team is too small to afford that), but rather
+    to include all the simple (so that the maintenance burden on us
     is not too high) and safe (so that system administrators can
     install them without fear) bug fixes.  Experience shows that
     these releases will contain a few new features, and that the
