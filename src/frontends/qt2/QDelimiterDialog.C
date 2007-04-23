@@ -74,8 +74,6 @@ string fix_name(const string & str, bool big)
 {
 	if (str == "slash")
 		return "/";
-	if (str == "backslash")
-		return big ? "\\\\" : "\\";
 	if (str == "empty")
 		return ".";
 	if (!big || str == "(" || str == ")" || str == "[" || str == "]"
