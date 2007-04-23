@@ -168,6 +168,10 @@ void LaTeX::deleteFilesOnError() const
 	FileName const nls(changeExtension(file.absFilename(), ".nls"));
 	unlink(nls);
 
+	// nomencl file (old version of the package)
+	FileName const gls(changeExtension(file.absFilename(), ".gls"));
+	unlink(gls);
+
 	// Also remove the aux file
 	FileName const aux(changeExtension(file.absFilename(), ".aux"));
 	unlink(aux);
@@ -300,20 +304,12 @@ int LaTeX::run(TeXErrors & terr)
 		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()),
 				runparams);
 	}
-	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
-		LYXERR(Debug::LATEX) 
-			<< "Running MakeIndex for nomencl."
-			<< endl;
-		message(_("Running MakeIndex for nomencl."));
-		// onlyFilename() is needed for cygwin
-		string const nomenclstr = " -s nomencl.ist -o " 
-			+ onlyFilename(changeExtension(
-				file.toFilesystemEncoding(), ".nls"));
-		rerun |= runMakeIndex(onlyFilename(changeExtension(
-				file.absFilename(), ".nlo")),
-				runparams,
-				nomenclstr);
-	}
+	FileName const nlofile(changeExtension(file.absFilename(), ".nlo"));
+	if (head.haschanged(nlofile))
+		rerun |= runMakeIndexNomencl(file, runparams, ".nlo", ".nls");
+	FileName const glofile(changeExtension(file.absFilename(), ".glo"));
+	if (head.haschanged(glofile))
+		rerun |= runMakeIndexNomencl(file, runparams, ".glo", ".gls");
 
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
@@ -379,7 +375,7 @@ int LaTeX::run(TeXErrors & terr)
 	// more after this.
 
 	// run makeindex if the <file>.idx has changed or was generated.
-	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".idx")))) {
+	if (head.haschanged(idxfile)) {
 		// no checks for now
 		LYXERR(Debug::LATEX) << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
@@ -389,20 +385,10 @@ int LaTeX::run(TeXErrors & terr)
 	}
 
 	// I am not pretty sure if need this twice.
-	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
-		LYXERR(Debug::LATEX) 
-			<< "Running MakeIndex for nomencl."
-			<< endl;
-		message(_("Running MakeIndex for nomencl."));
-		// onlyFilename() is needed for cygwin
-		string nomenclstr = " -s nomencl.ist -o " 
-			+ onlyFilename(changeExtension(
-				file.toFilesystemEncoding(), ".nls"));
-		rerun |= runMakeIndex(onlyFilename(changeExtension(
-				file.absFilename(), ".nlo")),
-				runparams,
-				nomenclstr);
-	}
+	if (head.haschanged(nlofile))
+		rerun |= runMakeIndexNomencl(file, runparams, ".nlo", ".nls");
+	if (head.haschanged(glofile))
+		rerun |= runMakeIndexNomencl(file, runparams, ".glo", ".gls");
 
 	// 2
 	// we will only run latex more if the log file asks for it.
@@ -465,6 +451,21 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);
 	return true;
+}
+
+
+bool LaTeX::runMakeIndexNomencl(FileName const & file,
+		OutputParams const & runparams,
+		string const & nlo, string const & nls)
+{
+	LYXERR(Debug::LATEX) << "Running MakeIndex for nomencl." << endl;
+	message(_("Running MakeIndex for nomencl."));
+	// onlyFilename() is needed for cygwin
+	string const nomenclstr = " -s nomencl.ist -o "
+		+ onlyFilename(changeExtension(file.toFilesystemEncoding(), nls));
+	return runMakeIndex(
+			onlyFilename(changeExtension(file.absFilename(), nlo)),
+			runparams, nomenclstr);
 }
 
 
@@ -862,7 +863,9 @@ bool handleFoundFile(string const & ff, DepTable & head)
 	//     insert it into head
 	if (exists(absname) &&
 	    !fs::is_directory(absname.toFilesystemEncoding())) {
-		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
+		// FIXME: This regex contained glo, but glo is used by the old
+		// version of nomencl.sty. Do we need to put it back?
+		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind)$");
 		if (regex_match(onlyfile, unwanted)) {
 			LYXERR(Debug::DEPEND)
 				<< "We don't want "
@@ -927,6 +930,7 @@ void LaTeX::deplog(DepTable & head)
 	static regex reg4("Writing index file (.+).*");
 	// files also can be enclosed in <...>
 	static regex reg5("<([^>]+)(.).*");
+	static regex regoldnomencl("Writing glossary file (.+).*");
 	static regex regnomencl("Writing nomenclature file (.+).*");
 	// If a toc should be created, MikTex does not write a line like
 	//    \openout# = `sample.toc'.
@@ -1030,7 +1034,8 @@ void LaTeX::deplog(DepTable & head)
 				// probable line break
 				found_file = false;
 		// (6) "Writing nomenclature file file.ext"
-		} else if (regex_match(token, sub, regnomencl))
+		} else if (regex_match(token, sub, regnomencl) ||
+		           regex_match(token, sub, regoldnomencl))
 			// check for dot
 			found_file = checkLineBreak(sub.str(1), head);
 		// (7) "\tf@toc=\write<nr>" (for MikTeX)

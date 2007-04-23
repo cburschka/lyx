@@ -404,8 +404,14 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage[all]{xy}\n";
 
 	if (mustProvide("nomencl")) {
-		packages << "\\usepackage{nomencl}[2005/09/22]\n"
-			 << "\\makenomenclature\n";
+		// Make it work with the new and old version of the package,
+		// but don't use the compatibility option since it is
+		// incompatible to other packages.
+		packages << "\\usepackage{nomencl}\n"
+	                    "% the following is useful when we have the old nomencl.sty package\n"
+	                    "\\providecommand{\\printnomenclature}{\\printglossary}\n"
+	                    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
+		            "\\makenomenclature\n";
 	}
  
 	return packages.str();
