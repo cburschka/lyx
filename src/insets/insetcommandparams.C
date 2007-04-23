@@ -289,7 +289,7 @@ void InsetCommandParams::read(LyXLex & lex)
 		} else {
 			lex.printError("Unknown parameter name `$$Token' for command " + name_);
 			throw ExceptionMessage(WarningException,
-				_("Inset Command :") + from_ascii(name_),
+				_("Inset Command: ") + from_ascii(name_),
 				_("Unknown parameter name: ") + from_utf8(token));
 		}
 	}
