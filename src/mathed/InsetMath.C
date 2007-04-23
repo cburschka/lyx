@@ -22,10 +22,10 @@
 
 #include <boost/current_function.hpp>
 
+using std::endl;
 
 namespace lyx {
 
-using std::endl;
 
 
 MathArray & InsetMath::cell(idx_type)
