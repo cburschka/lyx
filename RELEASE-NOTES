@@ -1,7 +1,7 @@
 Known issues with version 1.4.4
 --------------------------------
 
-This file describes some known problems in LyX 1.4.4 that did not
+This section describes some known problems in LyX 1.4.4 that did not
 occur in 1.3.7. Note that fixes are available for many of these, but
 they have not yet been applied because of incomplete testing. 
 
@@ -10,4 +10,32 @@ they have not yet been applied because of incomplete testing.
 - Font changes do not apply to tables inside the selection when
   making latex.
   http://bugzilla.lyx.org/show_bug.cgi?id=1973
+
+Interface changes since 1.3.x
+-----------------------------
+
+Some of the LyX functions have changed names :
+
+tab-insert -> cell-split
+tab-backward -> cell-backward
+tab-forward -> cell-forward
+
+Additionally, tab-forward (bound to the "Tab" key normally) no
+longer has any effect in normal text.
+
+bibkey-insert -> bibitem-insert
+
+bibtex-insert -> dialog-show-new-inset bibtex
+citation-insert -> dialog-show-new-inset citation
+external-insert -> dialog-show-new-inset external
+graphics-insert -> dialog-show-new-inset graphics
+buffer-child-insert -> dialog-show-new-inset include
+reference-insert -> dialog-show-new-inset ref
+
+These LyX functions have been removed entirely :
+
+apropos
+server-get-tip
+math-greek
+math-greek-toggle
 
