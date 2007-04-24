@@ -12,7 +12,7 @@
 #ifndef QSENDTODIALOG_H
 #define QSENDTODIALOG_H
 
-#include "ui/QSendtoUi.h"
+#include "ui/SendtoUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

@@ -12,7 +12,7 @@
 #ifndef QERRORLISTDIALOG_H
 #define QERRORLISTDIALOG_H
 
-#include "ui/QErrorListUi.h"
+#include "ui/ErrorListUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

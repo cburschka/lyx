@@ -13,7 +13,7 @@
 #ifndef TOC_WIDGET_H
 #define TOC_WIDGET_H
 
-#include "ui/QTocUi.h"
+#include "ui/TocUi.h"
 
 #include <QWidget>
 

@@ -12,7 +12,7 @@
 #ifndef QERTDIALOG_H
 #define QERTDIALOG_H
 
-#include "ui/QERTUi.h"
+#include "ui/ERTUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

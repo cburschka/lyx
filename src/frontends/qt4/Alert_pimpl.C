@@ -14,7 +14,7 @@
 #include "Alert_pimpl.h"
 #include "Alert.h"
 
-#include "ui/QAskForTextUi.h"
+#include "ui/AskForTextUi.h"
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"

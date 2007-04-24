@@ -13,7 +13,7 @@
 #ifndef QTABULARCREATEDIALOG_H
 #define QTABULARCREATEDIALOG_H
 
-#include "ui/QTabularCreateUi.h"
+#include "ui/TabularCreateUi.h"
 
 #include <QDialog>
 

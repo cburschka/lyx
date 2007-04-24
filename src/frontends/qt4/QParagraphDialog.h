@@ -14,7 +14,7 @@
 #ifndef QPARAGRAPHDIALOG_H
 #define QPARAGRAPHDIALOG_H
 
-#include "ui/QParagraphUi.h"
+#include "ui/ParagraphUi.h"
 
 #include <map>
 #include <QDialog>

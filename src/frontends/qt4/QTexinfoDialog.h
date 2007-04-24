@@ -12,7 +12,7 @@
 #ifndef QTEXINFODIALOG_H
 #define QTEXINFODIALOG_H
 
-#include "ui/QTexinfoUi.h"
+#include "ui/TexinfoUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

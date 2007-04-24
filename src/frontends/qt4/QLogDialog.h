@@ -12,7 +12,7 @@
 #ifndef QLOGDIALOG_H
 #define QLOGDIALOG_H
 
-#include "ui/QLogUi.h"
+#include "ui/LogUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

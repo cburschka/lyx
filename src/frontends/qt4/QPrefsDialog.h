@@ -16,30 +16,30 @@
 #include "LColor.h"
 #include "lyxrc.h"
 
-#include "ui/QPrefsUi.h"
+#include "ui/PrefsUi.h"
 
 #include <vector>
 
 #include <QDialog>
 #include <QCloseEvent>
 
-#include "ui/QPrefPlaintextUi.h"
-#include "ui/QPrefDateUi.h"
-#include "ui/QPrefKeyboardUi.h"
-#include "ui/QPrefLatexUi.h"
-#include "ui/QPrefScreenFontsUi.h"
-#include "ui/QPrefColorsUi.h"
-#include "ui/QPrefCygwinPathUi.h"
-#include "ui/QPrefDisplayUi.h"
-#include "ui/QPrefPathsUi.h"
-#include "ui/QPrefSpellcheckerUi.h"
-#include "ui/QPrefConvertersUi.h"
-#include "ui/QPrefCopiersUi.h"
-#include "ui/QPrefFileformatsUi.h"
-#include "ui/QPrefLanguageUi.h"
-#include "ui/QPrefPrinterUi.h"
-#include "ui/QPrefUi.h"
-#include "ui/QPrefIdentityUi.h"
+#include "ui/PrefPlaintextUi.h"
+#include "ui/PrefDateUi.h"
+#include "ui/PrefKeyboardUi.h"
+#include "ui/PrefLatexUi.h"
+#include "ui/PrefScreenFontsUi.h"
+#include "ui/PrefColorsUi.h"
+#include "ui/PrefCygwinPathUi.h"
+#include "ui/PrefDisplayUi.h"
+#include "ui/PrefPathsUi.h"
+#include "ui/PrefSpellcheckerUi.h"
+#include "ui/PrefConvertersUi.h"
+#include "ui/PrefCopiersUi.h"
+#include "ui/PrefFileformatsUi.h"
+#include "ui/PrefLanguageUi.h"
+#include "ui/PrefPrinterUi.h"
+#include "ui/PrefUi.h"
+#include "ui/PrefIdentityUi.h"
 
 namespace lyx {
 namespace frontend {

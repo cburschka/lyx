@@ -14,7 +14,7 @@
 #ifndef QVIEWSOURCEDIALOG_H
 #define QVIEWSOURCEDIALOG_H
 
-#include "ui/QViewSourceUi.h"
+#include "ui/ViewSourceUi.h"
 
 #include "frontends/Application.h"
 

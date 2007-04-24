@@ -14,7 +14,7 @@
 #define QCITATIONDIALOG_H
 
 #include "Dialog.h"
-#include "ui/QCitationUi.h"
+#include "ui/CitationUi.h"
 
 #include <QCloseEvent>
 #include <QKeyEvent>

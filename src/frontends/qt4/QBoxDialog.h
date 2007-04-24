@@ -12,7 +12,7 @@
 #ifndef QBOXDIALOG_H
 #define QBOXDIALOG_H
 
-#include "ui/QBoxUi.h"
+#include "ui/BoxUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

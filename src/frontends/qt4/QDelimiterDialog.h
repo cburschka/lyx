@@ -14,7 +14,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/QDelimiterUi.h"
+#include "ui/DelimiterUi.h"
 
 #include <string>
 

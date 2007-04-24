@@ -14,7 +14,7 @@
 #ifndef QTABULARDIALOG_H
 #define QTABULARDIALOG_H
 
-#include "ui/QTabularUi.h"
+#include "ui/TabularUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

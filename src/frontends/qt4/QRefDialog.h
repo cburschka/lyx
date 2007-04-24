@@ -13,7 +13,7 @@
 #ifndef QREFDIALOG_H
 #define QREFDIALOG_H
 
-#include "ui/QRefUi.h"
+#include "ui/RefUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

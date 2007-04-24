@@ -13,7 +13,7 @@
 #ifndef QNOMENCLDIALOG_H
 #define QNOMENCLDIALOG_H
 
-#include "ui/QNomenclUi.h"
+#include "ui/NomenclUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

@@ -13,7 +13,7 @@
 #ifndef QDOCUMENTDIALOG_H
 #define QDOCUMENTDIALOG_H
 
-#include "ui/QDocumentUi.h"
+#include "ui/DocumentUi.h"
 #include "ui/FontUi.h"
 #include "ui/TextLayoutUi.h"
 #include "ui/MathsUi.h"

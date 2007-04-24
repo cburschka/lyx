@@ -12,7 +12,7 @@
 #ifndef QABOUTDIALOG_H
 #define QABOUTDIALOG_H
 
-#include "ui/QAboutUi.h"
+#include "ui/AboutUi.h"
 #include <QDialog>
 
 namespace lyx {

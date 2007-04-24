@@ -12,7 +12,7 @@
 #ifndef QFLOATDIALOG_H
 #define QFLOATDIALOG_H
 
-#include "ui/QFloatUi.h"
+#include "ui/FloatUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

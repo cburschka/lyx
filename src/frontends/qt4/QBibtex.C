@@ -15,7 +15,7 @@
 #include "QBibtex.h"
 
 #include "QBibtexDialog.h"
-#include "ui/QBibtexAddUi.h"
+#include "ui/BibtexAddUi.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "validators.h"

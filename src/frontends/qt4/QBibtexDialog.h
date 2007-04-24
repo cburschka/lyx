@@ -12,8 +12,8 @@
 #ifndef QBIBTEXDIALOG_H
 #define QBIBTEXDIALOG_H
 
-#include "ui/QBibtexUi.h"
-#include "ui/QBibtexAddUi.h"
+#include "ui/BibtexUi.h"
+#include "ui/BibtexAddUi.h"
 
 #include "ButtonController.h"
 

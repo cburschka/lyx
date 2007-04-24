@@ -12,7 +12,7 @@
 #ifndef QBIBITEMDIALOG_H
 #define QBIBITEMDIALOG_H
 
-#include "ui/QBibitemUi.h"
+#include "ui/BibitemUi.h"
 
 #include <QDialog>
 

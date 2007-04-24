@@ -12,7 +12,7 @@
 #ifndef QEXTERNALDIALOG_H
 #define QEXTERNALDIALOG_H
 
-#include "ui/QExternalUi.h"
+#include "ui/ExternalUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

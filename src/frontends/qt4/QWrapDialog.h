@@ -12,7 +12,7 @@
 #ifndef QWRAPDIALOG_H
 #define QWRAPDIALOG_H
 
-#include "ui/QWrapUi.h"
+#include "ui/WrapUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

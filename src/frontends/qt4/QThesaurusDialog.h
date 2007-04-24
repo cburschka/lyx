@@ -12,7 +12,7 @@
 #ifndef QTHESAURUSDIALOG_H
 #define QTHESAURUSDIALOG_H
 
-#include "ui/QThesaurusUi.h"
+#include "ui/ThesaurusUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

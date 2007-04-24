@@ -12,7 +12,7 @@
 #ifndef QSEARCHDIALOG_H
 #define QSEARCHDIALOG_H
 
-#include "ui/QSearchUi.h"
+#include "ui/SearchUi.h"
 #include <string>
 
 #include <QDialog>

@@ -13,7 +13,7 @@
 #ifndef QVSPACEDIALOG_H
 #define QVSPACEDIALOG_H
 
-#include "ui/QVSpaceUi.h"
+#include "ui/VSpaceUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

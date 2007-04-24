@@ -13,7 +13,7 @@
 #ifndef QCHARACTERDIALOG_H
 #define QCHARACTERDIALOG_H
 
-#include "ui/QCharacterUi.h"
+#include "ui/CharacterUi.h"
 #include <QCloseEvent>
 #include <QDialog>
 

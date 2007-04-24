@@ -43,8 +43,8 @@ Naming conventions
 
 QFoo.[Ch]              The file that interacts with the controller
 QFooDialog.[Ch]        The implementation of the dialog, derived from the generated files
-ui/QFooDialog.ui       The designer file
-ui/QFooDialogBase.[Ch] Generated files from QFooDialog.ui
+ui/FooDialog.ui       The designer file
+ui/FooDialogBase.[Ch] Generated files from FooDialog.ui
 
 slots should be named e.g. slotFooClicked(), slotFooSelected(), where foo is the name
 of the widget.

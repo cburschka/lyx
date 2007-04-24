@@ -12,7 +12,7 @@
 #ifndef QSPELLCHECKERDIALOG_H
 #define QSPELLCHECKERDIALOG_H
 
-#include "ui/QSpellcheckerUi.h"
+#include "ui/SpellcheckerUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

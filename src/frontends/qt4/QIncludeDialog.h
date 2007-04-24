@@ -12,7 +12,7 @@
 #ifndef QINCLUDEDIALOG_H
 #define QINCLUDEDIALOG_H
 
-#include "ui/QIncludeUi.h"
+#include "ui/IncludeUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

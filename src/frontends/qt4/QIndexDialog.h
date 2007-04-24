@@ -12,7 +12,7 @@
 #ifndef QINDEXDIALOG_H
 #define QINDEXDIALOG_H
 
-#include "ui/QIndexUi.h"
+#include "ui/IndexUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

@@ -12,7 +12,7 @@
 #ifndef QSHOWFILEDIALOG_H
 #define QSHOWFILEDIALOG_H
 
-#include "ui/QShowFileUi.h"
+#include "ui/ShowFileUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>
