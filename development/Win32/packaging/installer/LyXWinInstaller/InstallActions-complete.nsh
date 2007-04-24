@@ -11,136 +11,19 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\external"
 
   ; install MiKTeX if not already installed
-  ${if} $LatexPath == ""
-   ; launch MiKTeX's installer
-   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
-   ExecWait ${MiKTeXInstall}
-   ; test if MiKTeX is installed
-   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
-   StrCpy $Search "miktex"
-   Call LaTeXCheck
-   ${if} $LatexPath == ""
-    StrCpy $MiKTeXUser "HKCU"
-    ReadRegStr $String HKCU "Environment" "Path"
-    StrCpy $Search "miktex"
-    Call LaTeXCheck
-   ${endif}
-   ${if} $LatexPath != ""
-    ; set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-    StrCpy $MiKTeXInstalled "yes"
-    ${if} $MiKTeXUser != "HKCU"
-     StrCpy $MiKTeXPath "$LatexPath" -11
-     ;MessageBox MB_OK|MB_ICONINFORMATION "$(MiKTeXPathInfo)" ; info that MiKTeX's installation folder must have write permissions for all users to work properly
-    ${endif}
-   ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)"
-    SetOutPath $TEMP ; to be able to delete the $INSTDIR
-    RMDir /r $INSTDIR
-    Abort
-   ${endif} ; endif $LatexPath != ""
-  ${endif}
+  Call MiKTeX
 
-  ; if GhostScript is not installed
-  ${if} $GhostscriptPath == ""
-   ; register Ghostscript
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_LIB" "${GhostscriptDir}\lib;${GhostscriptDir}\fonts;${GhostscriptDir}\Resource"
-   
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-   StrCpy $GhostscriptPath "${GhostscriptDir}\bin"
-  ${else}
-   ; delete unnecessary files
-   RMDir /r ${GhostscriptDir}   
-  ${endif}
+  Call Ghostscript
 
-  ; if ImageMagick is not installed
-  ${if} $ImageMagickPath == ""
-   ; register ImageMagick
-   WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "${ImageMagickDir}"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "${ImageMagickDir}\config"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "${ImageMagickDir}"
-   
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "BinPath" "${ImageMagickDir}"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath" "${ImageMagickDir}\config"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "LibPath" "${ImageMagickDir}"
-   WriteRegDWORD HKLM "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010   
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
-   
-   WriteRegStr HKLM "Software\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-   StrCpy $ImageMagickPath ${ImageMagickDir}
-  ${else}
-   ; delete unnecessary files
-   RMDir /r ${ImageMagickDir}
-  ${endif}
+  Call ImageMagick
 
-  ; if Aspell is not installed
-  ${if} $AspellPath == ""
-   ; extract Aspell's program files
-   SetOutPath "$INSTDIR\external"
-   File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
-   ; copy the files and register Aspell
-   CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
-   
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Personal Path" "${AspellPersonalPath}"
-   
-   WriteRegStr HKLM "Software\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-   
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "DisplayName" "${AspellDisplay}"
-   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoModify" 0x00000001
-   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoRepair" 0x00000001
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
-  ${endif}
+  Call Aspell
 
-  ; if Aiksaurus is not installed
-  ${if} $AiksaurusPath == ""
-   ; extract Aiksaurus' program files
-   SetOutPath "$INSTDIR\external"
-   File /r "${PRODUCT_SOURCEDIR}\${AiksaurusInstall}"
-   ; copy the files and register Aiksaurus
-   CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
-;   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
-  ${endif}
+  Call Aiksaurus
 
-  ; if no PostScript viewer is installed
-  ${if} $PSVPath == ""
-   ${if} $InstallGSview == "true"
-    ; launch installer
-    MessageBox MB_OK|MB_ICONINFORMATION "$(GSviewInfo)"
-    ExecWait "$INSTDIR\${GSviewInstall}"
-    ; test if GSview is installed
-    StrCpy $PSVPath ""
-    ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"    
-    ${if} $PSVPath == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(GSviewError)"
-    ${endif}
-   ${endif}
-  ${endif}
+  Call PostScript
 
-  ; if no BibTeX editor is installed
-  ${if} $BibTeXEditorPath == ""
-   ${if} $InstallJabRef == "true"
-    ; launch installer
-    MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
-    ExecWait "$INSTDIR\${JabRefInstall}"
-    ; test if JabRef is installed
-    StrCpy $BibTeXEditorPath ""
-    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "UninstallString"    
-    ${if} $BibTeXEditorPath == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
-    ${else}
-     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-    ${endif}
-   ${endif}
-  ${endif}
+  Call BibTeX
 
   ; install the LaTeX class files that are delivered with LyX
   ; and enable MiKTeX's automatic package installation
@@ -203,3 +86,178 @@ Section "-Installation actions" SecInstallation
   FileClose $R1
 
 SectionEnd
+
+; -------------------------------------------
+
+Function MiKTeX
+	
+; install MiKTeX if not already installed
+  ${if} $LatexPath == ""
+   ; launch MiKTeX's installer
+   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
+   ExecWait ${MiKTeXInstall}
+   ; test if MiKTeX is installed
+   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
+   StrCpy $Search "miktex"
+   Call LaTeXCheck
+   ${if} $LatexPath == ""
+    StrCpy $MiKTeXUser "HKCU"
+    ReadRegStr $String HKCU "Environment" "Path"
+    StrCpy $Search "miktex"
+    Call LaTeXCheck
+   ${endif}
+   ${if} $LatexPath != ""
+    ; set package repository (MiKTeX's primary package repository)
+    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+    StrCpy $MiKTeXInstalled "yes"
+    ${if} $MiKTeXUser != "HKCU"
+     StrCpy $MiKTeXPath "$LatexPath" -11
+     ;MessageBox MB_OK|MB_ICONINFORMATION "$(MiKTeXPathInfo)" ; info that MiKTeX's installation folder must have write permissions for all users to work properly
+    ${endif}
+   ${else}
+    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)"
+    SetOutPath $TEMP ; to be able to delete the $INSTDIR
+    RMDir /r $INSTDIR
+    Abort
+   ${endif} ; endif $LatexPath != ""
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function Ghostscript
+
+  ; if GhostScript is not installed
+  ${if} $GhostscriptPath == ""
+   ; register Ghostscript
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_LIB" "${GhostscriptDir}\lib;${GhostscriptDir}\fonts;${GhostscriptDir}\Resource"
+   
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+   StrCpy $GhostscriptPath "${GhostscriptDir}\bin"
+  ${else}
+   ; delete unnecessary files
+   RMDir /r ${GhostscriptDir}   
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function ImageMagick
+
+  ; if ImageMagick is not installed
+  ${if} $ImageMagickPath == ""
+   ; register ImageMagick
+   WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "${ImageMagickDir}"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "${ImageMagickDir}\config"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "${ImageMagickDir}"
+   
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "BinPath" "${ImageMagickDir}"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath" "${ImageMagickDir}\config"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "LibPath" "${ImageMagickDir}"
+   WriteRegDWORD HKLM "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010   
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
+   
+   WriteRegStr HKLM "Software\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+   StrCpy $ImageMagickPath ${ImageMagickDir}
+  ${else}
+   ; delete unnecessary files
+   RMDir /r ${ImageMagickDir}
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function Aspell
+
+  ; if Aspell is not installed
+  ${if} $AspellPath == ""
+   ; extract Aspell's program files
+   SetOutPath "$INSTDIR\external"
+   File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
+   ; copy the files and register Aspell
+   CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
+   
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Personal Path" "${AspellPersonalPath}"
+   
+   WriteRegStr HKLM "Software\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+   
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "DisplayName" "${AspellDisplay}"
+   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoModify" 0x00000001
+   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoRepair" 0x00000001
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function Aiksaurus
+
+  ; if Aiksaurus is not installed
+  ${if} $AiksaurusPath == ""
+   ; extract Aiksaurus' program files
+   SetOutPath "$INSTDIR\external"
+   File /r "${PRODUCT_SOURCEDIR}\${AiksaurusInstall}"
+   ; copy the files and register Aiksaurus
+   CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
+;   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function PostScript
+
+; if no PostScript viewer is installed
+  ${if} $PSVPath == ""
+   ${if} $InstallGSview == "true"
+    ; launch installer
+    MessageBox MB_OK|MB_ICONINFORMATION "$(GSviewInfo)"
+    ExecWait "$INSTDIR\${GSviewInstall}"
+    ; test if GSview is installed
+    StrCpy $PSVPath ""
+    ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"    
+    ${if} $PSVPath == ""
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(GSviewError)"
+    ${endif}
+   ${endif}
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function BibTeX
+
+; if no BibTeX editor is installed
+  ${if} $BibTeXEditorPath == ""
+   ${if} $InstallJabRef == "true"
+    ; launch installer
+    MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
+    ExecWait "$INSTDIR\${JabRefInstall}"
+    ; test if JabRef is installed
+    StrCpy $BibTeXEditorPath ""
+    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "UninstallString"    
+    ${if} $BibTeXEditorPath == ""
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
+    ${else}
+     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+    ${endif}
+   ${endif}
+  ${endif}
+
+FunctionEnd
+

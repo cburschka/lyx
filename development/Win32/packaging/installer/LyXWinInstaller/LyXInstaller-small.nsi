@@ -1,6 +1,6 @@
 ; Lyx for Windows, NSIS v2 series installer script
 
-; File LyXWinInstaller.nsi
+; File LyXInstaller-small.nsi
 ; This file is part of LyX, the document processor.
 ; http://www.lyx.org/
 ; Licence details can be found in the file COPYING or copy at
@@ -19,82 +19,27 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-SetCompressor lzma
+;SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
 
-!define PRODUCT_DIR "D:\LyXPackage1.5"
-!define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5beta2-21-04-2007"
-!define PRODUCT_VERSION_SHORT "150svn"
-!define PRODUCT_SUBFOLDER "lyx15"
-!define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
-!define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
-!define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
-!define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
-!define PRODUCT_EXT ".lyx"
-!define PRODUCT_MIME_TYPE "application/lyx"
-!define PRODUCT_UNINSTALL_EXE "$INSTDIR\LyXWinUninstall.exe"
-!define PRODUCT_HELP_LINK "http://www.lyx.org/internet/mailing.php"
-!define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
-!define PRODUCT_INFO_URL "http://www.lyx.org/"
+!define INSTALLER_VERSION "Small"
+!define INSTALLER2_VERSION "Complete"
+!define INSTALLER3_VERSION "Update"
 
-BrandingText "LyXWinInstaller v3.13 - Complete"
-!define INSTALLER_VERSION "Complete"
-!define INSTALLER_EXE "LyXWin150svnComplete-3-13.exe"
-!define INSTALLER2_EXE "LyXWin150svnSmall-3-13.exe" ; to check later if this installer version is running at the same time
-!define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
+; load the settings
+!include "Settings.nsh"
 
-; Replaced by HKLM or HKCU depending on SetShellVarContext.
-!define PRODUCT_ROOT_KEY "SHCTX"
-
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
-
-!define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
-
-!define ImageMagickVersion "6.3.3"
-!define ImageMagickDir "$INSTDIR\etc\ImageMagick" ; for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
-!define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.56"
-!define AiksaurusDir "$APPDATA\Aiksaurus"
-!define AiksaurusInstall "external\Aiksaurus"
-!define AspellDir "$APPDATA\Aspell"
-!define AspellDisplay "Aspell 0.60.4 Data"
-!define AspellInstall "external\Aspell"
-!define AspellUninstall "Uninstall-AspellData.exe"
-!define AspellDictPath "${AspellDir}\Dictionaries"
-!define AspellPersonalPath "${AspellDir}\Personal"
-!define AspellLocationExact "http://developer.berlios.de/project/showfiles.php?group_id=5117&release_id=9651"
-!define AspellLocation "http://developer.berlios.de/projects/lyxwininstall/"
-!define GSviewInstall "external\gsv48w32.exe"
-!define JabRefInstall "external\JabRef-2.2-Setup.exe"
-!define JabRefVersion "JabRef 2.2"
-!define DVIPostFileDir "${PRODUCT_SOURCEDIR}\external\dvipost"
-; the following variable is needed for a possible CD-version, see InstallActions.nsh, around line 213
-;!define LaTeXPackagesDir "${PRODUCT_SOURCEDIR}\latex"
-!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
-!define MiKTeXConfigFolder "MiKTeX\2.5\miktex\config"
-!define MiKTeXDeliveredVersion "MiKTeX 2.5"
-!define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.5.2580.exe"
+!define JabRefVersion "JabRef not included" ; only here to avoid warning message - variable only used in Complete installer version
+!define MiKTeXDeliveredVersion "MiKTeX not included" ; only here to avoid warning message - variable only used in Complete installer version
 !define PRODUCT_VERSION_OLD "none" ; only here to avoid warning message - variable only used in Update installer version
 
 ;--------------------------------
-; Make some of the information above available to NSIS.
+; variables only used in this installer version
 
-Name "${PRODUCT_NAME}"
-OutFile "${INSTALLER_EXE}"
-InstallDir "$PROGRAMFILES\${PRODUCT_NAME} ${PRODUCT_VERSION}"
-
-;--------------------------------
-; Variables
-
-Var LatexPath
-Var PythonPath
 Var DelPythonFiles
 Var GhostscriptPath
-Var ImageMagickPath
 Var AiksaurusPath
 Var AspellPath
 Var AspellInstallYes
@@ -106,9 +51,6 @@ Var EditorPath
 Var ImageEditorPath
 Var BibTeXEditorPath
 Var JabRefInstalled
-Var PathPrefix
-Var Answer
-Var UserName
 Var LangName
 Var LangNameSys
 Var LangCode
@@ -121,20 +63,8 @@ Var LaTeXName
 Var MiKTeXVersion
 Var MiKTeXInstalled
 Var MiKTeXUser
-Var MiKTeXPath
-Var InstallGSview
-Var InstallJabRef
 Var CreateFileAssociations
-Var CreateDesktopIcon
-Var StartmenuFolder
-Var ProductRootKey
-Var AppPre
-Var AppSuff
-Var AppPath
-Var String
-Var Search
-Var Pointer
-Var UserList
+Var State
 Var RunNumber
 
 ;--------------------------------
@@ -154,11 +84,11 @@ Var RunNumber
 ; Functions to check and configure the LaTeX-system
 !include "LaTeX.nsh"
 
-; Function to check installed LaTeX-editors
-!include "Editors.nsh"
-
 ; Function to check if needed programs are missing or not
 !include "MissingPrograms.nsh"
+
+; Function for page to manually select LaTeX's installation folder
+!include "LaTeXFolder.nsh"
 
 ; Functions for page to set installer language
 ; and LyX's menu language
@@ -210,6 +140,9 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "LyX ${PRODUCT_VERSION}"
 !insertmacro MUI_PAGE_STARTMENU ${PRODUCT_NAME} $StartmenuFolder
+
+; Select latex.exe manually
+Page custom LatexFolder LatexFolder_LeaveFunction
 
 ; Check for needed programs
 Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
@@ -289,14 +222,6 @@ SectionEnd
 Section "$(SecDesktopTitle)" SecDesktop
   StrCpy $CreateDesktopIcon "true"
 SectionEnd
-Section /o "$(SecInstGSviewTitle)" SecInstGSview
- AddSize 4000
- StrCpy $InstallGSview "true"
-SectionEnd
-Section /o "$(SecInstJabRefTitle)" SecInstJabRef
- AddSize 5000
- StrCpy $InstallJabRef "true"
-SectionEnd
 
 ; Section descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -304,12 +229,10 @@ SectionEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SecAllUsers} "$(SecAllUsersDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecFileAssoc} "$(SecFileAssocDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDesktop} "$(SecDesktopDescription)"
-!insertmacro MUI_DESCRIPTION_TEXT ${SecInstGSview} "$(SecInstGSviewDescription)"
-!insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ; the installation section
-!include "InstallActions-complete.nsh"
+!include "InstallActions-small.nsh"
 
 ;--------------------------------
 ; This hook function is called internally by NSIS on installer startup
@@ -368,13 +291,8 @@ Function .onInit
   ; check which programs are installed or not
   Call MissingPrograms ; function from MissingPrograms.nsh
 
-  ; don't let the installer sections appear when the programs are already installed
-  ${if} $PSVPath != ""
-   SectionSetText 4 "" ; hides the corresponding uninstaller section, ${SecInstGSview}
-  ${endif}
-  ${if} $BibTeXEditorPath != ""
-   SectionSetText 5 "" ; hides the corresponding uninstaller section, ${SecInstJabRef}
-  ${endif}
+  ; used later in the function LatexFolder
+  StrCpy $State "0"
 
   ClearErrors
 FunctionEnd

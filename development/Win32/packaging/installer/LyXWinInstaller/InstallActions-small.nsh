@@ -9,74 +9,13 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\etc"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
 
-  ; if GhostScript is not installed
-  ${if} $GhostscriptPath == ""
-   ; register Ghostscript
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_LIB" "${GhostscriptDir}\lib;${GhostscriptDir}\fonts;${GhostscriptDir}\Resource"
-   
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-   StrCpy $GhostscriptPath "${GhostscriptDir}\bin"
-  ${else}
-   ; delete unnecessary files
-   RMDir /r ${GhostscriptDir}   
-  ${endif}
+  Call Ghostscript
 
-  ; if ImageMagick is not installed
-  ${if} $ImageMagickPath == ""
-   ; register ImageMagick
-   WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "${ImageMagickDir}"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "${ImageMagickDir}\config"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "${ImageMagickDir}"
-   
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "BinPath" "${ImageMagickDir}"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath" "${ImageMagickDir}\config"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "LibPath" "${ImageMagickDir}"
-   WriteRegDWORD HKLM "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010   
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
-   
-   WriteRegStr HKLM "Software\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-   StrCpy $ImageMagickPath ${ImageMagickDir}
-  ${else}
-   ; delete unnecessary files
-   RMDir /r ${ImageMagickDir}
-  ${endif}
+  Call ImageMagick
 
-  ; if Aspell is not installed
-  ${if} $AspellPath == ""
-   ; extract Aspell's program files
-   SetOutPath "$INSTDIR\external"
-   File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
-   ; copy the files and register Aspell
-   CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
-   
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Personal Path" "${AspellPersonalPath}"
-   
-   WriteRegStr HKLM "Software\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-   
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "DisplayName" "${AspellDisplay}"
-   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoModify" 0x00000001
-   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoRepair" 0x00000001
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
-  ${endif}
+  Call Aspell
 
-  ; if Aiksaurus is not installed
-  ${if} $AiksaurusPath == ""
-   ; extract Aiksaurus' program files
-   SetOutPath "$INSTDIR\external"
-   File /r "${PRODUCT_SOURCEDIR}\${AiksaurusInstall}"
-   ; copy the files and register Aiksaurus
-   CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
-;   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
-;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
-  ${endif}
+  Call Aiksaurus
 
   ; install the LaTeX class files that are delivered with LyX
   ; and enable MiKTeX's automatic package installation
@@ -139,3 +78,97 @@ Section "-Installation actions" SecInstallation
   FileClose $R1
 
 SectionEnd
+
+; -------------------------------------------
+
+Function Ghostscript
+
+  ; if GhostScript is not installed
+  ${if} $GhostscriptPath == ""
+   ; register Ghostscript
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_LIB" "${GhostscriptDir}\lib;${GhostscriptDir}\fonts;${GhostscriptDir}\Resource"
+   
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+   StrCpy $GhostscriptPath "${GhostscriptDir}\bin"
+  ${else}
+   ; delete unnecessary files
+   RMDir /r ${GhostscriptDir}   
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function ImageMagick
+
+  ; if ImageMagick is not installed
+  ${if} $ImageMagickPath == ""
+   ; register ImageMagick
+   WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "${ImageMagickDir}"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "${ImageMagickDir}\config"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "${ImageMagickDir}"
+   
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "BinPath" "${ImageMagickDir}"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath" "${ImageMagickDir}\config"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "${ImageMagickDir}\modules\filters"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "LibPath" "${ImageMagickDir}"
+   WriteRegDWORD HKLM "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010   
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
+   
+   WriteRegStr HKLM "Software\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+   StrCpy $ImageMagickPath ${ImageMagickDir}
+  ${else}
+   ; delete unnecessary files
+   RMDir /r ${ImageMagickDir}
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function Aspell
+
+  ; if Aspell is not installed
+  ${if} $AspellPath == ""
+   ; extract Aspell's program files
+   SetOutPath "$INSTDIR\external"
+   File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
+   ; copy the files and register Aspell
+   CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
+   
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Personal Path" "${AspellPersonalPath}"
+   
+   WriteRegStr HKLM "Software\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+   
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "DisplayName" "${AspellDisplay}"
+   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoModify" 0x00000001
+   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoRepair" 0x00000001
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
+  ${endif}
+
+FunctionEnd
+
+; -------------------------------------------
+
+Function Aiksaurus
+
+  ; if Aiksaurus is not installed
+  ${if} $AiksaurusPath == ""
+   ; extract Aiksaurus' program files
+   SetOutPath "$INSTDIR\external"
+   File /r "${PRODUCT_SOURCEDIR}\${AiksaurusInstall}"
+   ; copy the files and register Aiksaurus
+   CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
+;   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" ; special entry to tell the uninstaller that it was installed with LyX
+;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
+  ${endif}
+
+FunctionEnd
+

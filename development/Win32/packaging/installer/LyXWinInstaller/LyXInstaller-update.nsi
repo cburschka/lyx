@@ -1,6 +1,6 @@
 ; Lyx for Windows, NSIS v2 series installer script
 
-; File LyX-Installer-Update.nsi
+; File LyXInstaller-update.nsi
 ; This file is part of LyX, the document processor.
 ; http://www.lyx.org/
 ; Licence details can be found in the file COPYING or copy at
@@ -24,65 +24,21 @@ SetCompressor lzma
 ;--------------------------------
 ; You should need to change only these macros...
 
-!define PRODUCT_DIR "D:\LyXPackage1.5"
-!define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5beta2-21-04-2007"
-!define PRODUCT_VERSION_SHORT "150svn"
-!define PRODUCT_SUBFOLDER "lyx15"
-!define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
-!define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
-!define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
-!define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
-!define PRODUCT_EXT ".lyx"
-!define PRODUCT_MIME_TYPE "application/lyx"
-!define PRODUCT_UNINSTALL_EXE "$INSTDIR\LyXWinUninstall${PRODUCT_VERSION}.exe"
-!define PRODUCT_HELP_LINK "http://www.lyx.org/internet/mailing.php"
-!define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
-!define PRODUCT_INFO_URL "http://www.lyx.org/"
+!define INSTALLER_VERSION "Update"
+!define INSTALLER2_VERSION "Small"
+!define INSTALLER3_VERSION "Complete"
 
-BrandingText "LyXWinInstaller v3.13 - Update"
-!define INSTALLER_VERSION "Small"
-!define INSTALLER_EXE "LyXWin150svnUpdate-3-13.exe"
-!define INSTALLER2_EXE "LyXWin150svnSmall-3-13.exe" ; to check later if this installer version is running at the same time
-!define INSTALLER3_EXE "LyXWin150svnComplete-3-13.exe" ; to check later if this installer version is running at the same time
-!define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
+; load the settings
+!include "Settings.nsh"
 
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
 !define PRODUCT_VERSION_OLD "LyX 1.5svn-15-04-2007"
 !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
 
 ;--------------------------------
-; Make some of the information above available to NSIS.
+; variables only used in this installer version
 
-Name "${PRODUCT_NAME}"
-OutFile "${INSTALLER_EXE}"
-InstallDir "$PROGRAMFILES\${PRODUCT_NAME} ${PRODUCT_VERSION}"
-
-;--------------------------------
-; Variables
-
-Var LatexPath
-Var PythonPath
-Var ImageMagickPath
-Var PathPrefix
-Var Answer
-Var UserName
-Var CreateDesktopIcon
-Var StartmenuFolder
-Var ProductRootKey
-Var AppPre
-Var AppSuff
-Var AppPath
-Var String
-Var Search
-Var Pointer
-Var UserList
 Var INSTDIR_NEW
-Var FileName
-Var OldString
-Var NewString
 
 ;--------------------------------
 ; load some NSIS libraries
