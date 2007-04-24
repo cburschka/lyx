@@ -14,10 +14,40 @@
 #define QSPELLCHECKER_H
 
 #include "QDialogView.h"
-#include "QSpellcheckerDialog.h"
+#include "ui/SpellcheckerUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
+
+class QListWidgetItem;
 
 namespace lyx {
 namespace frontend {
+
+class QSpellchecker;
+
+class QSpellcheckerDialog: public QDialog, public Ui::QSpellcheckerUi {
+	Q_OBJECT
+public:
+	QSpellcheckerDialog(QSpellchecker * form);
+public Q_SLOTS:
+	virtual void suggestionChanged(QListWidgetItem *);
+
+protected Q_SLOTS:
+	virtual void acceptClicked();
+	virtual void addClicked();
+	virtual void replaceClicked();
+	virtual void ignoreClicked();
+	virtual void replaceChanged(const QString &);
+	virtual void reject();
+
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+
+private:
+	QSpellchecker * form_;
+};
+
 
 class ControlSpellchecker;
 
