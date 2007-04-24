@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QWrap.h"
-#include "QWrapDialog.h"
 #include "Qt2BC.h"
 
 #include "lengthcombo.h"
@@ -25,6 +24,7 @@
 #include "support/lstrings.h"
 
 #include <QLineEdit>
+#include <QCloseEvent>
 #include <QPushButton>
 
 
@@ -32,6 +32,50 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
+
+/////////////////////////////////////////////////////////////////////
+//
+// QWrapDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+
+QWrapDialog::QWrapDialog(QWrap * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(restorePB, SIGNAL(clicked()), form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+
+	connect(widthED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(unitsLC, SIGNAL(selectionChanged(LyXLength::UNIT)),
+		this, SLOT(change_adaptor()));
+	connect(valignCO, SIGNAL(highlighted(const QString &)),
+		this, SLOT(change_adaptor()));
+}
+
+
+void QWrapDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QWrapDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+/////////////////////////////////////////////////////////////////////
+//
+// QWrap
+//
+/////////////////////////////////////////////////////////////////////
 
 typedef QController<ControlWrap, QView<QWrapDialog> > wrap_base_class;
 
@@ -84,10 +128,9 @@ void QWrap::apply()
 }
 
 
-namespace {
-
-string const numtostr(double val) {
-	string a(convert<string>(val));
+static string const numtostr(double val)
+{
+	string a = convert<string>(val);
 #ifdef WITH_WARNINGS
 #warning Will this test ever trigger? (Lgb)
 #endif
@@ -95,8 +138,6 @@ string const numtostr(double val) {
 		a.erase();
 	return a;
 }
-
-} // namespace anon
 
 
 void QWrap::update_contents()
@@ -120,3 +161,6 @@ void QWrap::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+
+#include "QWrap_moc.cpp"

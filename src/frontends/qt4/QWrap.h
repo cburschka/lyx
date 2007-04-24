@@ -13,10 +13,28 @@
 #define QWRAP_H
 
 #include "QDialogView.h"
-#include "QWrapDialog.h"
+#include "ui/WrapUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
+
+class QWrap;
+
+class QWrapDialog : public QDialog, public Ui::QWrapUi {
+	Q_OBJECT
+public:
+	QWrapDialog(QWrap * form);
+protected Q_SLOTS:
+	virtual void change_adaptor();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QWrap * form_;
+};
+
 
 class ControlWrap;
 

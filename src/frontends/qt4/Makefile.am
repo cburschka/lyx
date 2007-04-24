@@ -41,7 +41,6 @@ libqt4_la_SOURCES = \
 	GuiSelection.h GuiSelection.C \
 	LyXKeySymFactory.C \
 	QLMenubar.C QLMenubar.h \
-	QAbout.C QAbout.h \
 	QBibitem.C QBibitem.h \
 	QBibtex.C QBibtex.h \
 	QBox.C QBox.h \
@@ -53,7 +52,6 @@ libqt4_la_SOURCES = \
 	QDocument.C QDocument.h \
 	QDialogView.C QDialogView.h \
 	QErrorList.C QErrorList.h \
-	QERT.C QERT.h \
 	QExternal.C QExternal.h \
 	QFloat.C QFloat.h \
 	QGraphics.C QGraphics.h \
@@ -70,16 +68,12 @@ libqt4_la_SOURCES = \
 	QPrefs.C QPrefs.h \
 	QPrint.C QPrint.h \
 	QRef.C QRef.h \
-	QSearch.C QSearch.h \
 	QSendto.C QSendto.h \
 	QShowFile.C QShowFile.h \
 	QSpellchecker.C QSpellchecker.h \
 	QTabular.C QTabular.h \
 	QTabularCreate.C QTabularCreate.h \
 	QTexinfo.C QTexinfo.h \
-	QThesaurus.C QThesaurus.h \
-	QVSpace.C QVSpace.h \
-	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\
 	checkedwidgets.C checkedwidgets.h \
 	panelstack.h panelstack.C \
