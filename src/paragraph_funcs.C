@@ -13,9 +13,10 @@
 #include "paragraph_funcs.h"
 
 #include "bufferparams.h"
-#include "lyxtext.h"
-#include "paragraph_pimpl.h"
 #include "debug.h"
+#include "lyxtext.h"
+#include "paragraph.h"
+#include "ParagraphParameters.h"
 
 
 namespace lyx {
