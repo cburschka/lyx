@@ -5,9 +5,11 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" ; always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" ; always here
  SetOutPath "$INSTDIR\Resources"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" ; always here
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  SetOutPath "$INSTDIR\Resources\bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\aqua.bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
@@ -22,10 +24,13 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief2.layout"
+ SetOutPath "$INSTDIR\Resources\scripts"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\tex_copy.py"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\default.ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\classic.ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
 FunctionEnd
 
