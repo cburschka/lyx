@@ -98,7 +98,7 @@ MOCFILES = \
 	QCommandBuffer.C QCommandBuffer.h \
 	QCommandEdit.C QCommandEdit.h \
 	QDelimiterDialog.C QDelimiterDialog.h \
-	QDocumentDialog.C QDocumentDialog.h \
+	QDocument.C QDocument.h \
 	QErrorListDialog.C QErrorListDialog.h \
 	QERT.C QERT.h \
 	QExternalDialog.C QExternalDialog.h \
@@ -107,7 +107,6 @@ MOCFILES = \
 	QIncludeDialog.C QIncludeDialog.h \
 	QIndexDialog.C QIndexDialog.h \
 	QLog.C QLog.h \
-	QLogDialog.C QLogDialog.h \
 	QViewSource.C QViewSource.h \
 	QLMenubar.C QLMenubar.h \
 	QLPopupMenu.C QLPopupMenu.h \
@@ -115,13 +114,13 @@ MOCFILES = \
 	QMathMatrixDialog.C QMathMatrixDialog.h \
 	QNomenclDialog.C QNomenclDialog.h \
 	QNoteDialog.C QNoteDialog.h \
-	QParagraphDialog.C QParagraphDialog.h \
+	QParagraph.C QParagraph.h \
 	QPrefsDialog.C QPrefsDialog.h \
 	QRefDialog.C QRefDialog.h \
 	QSearch.C QSearch.h \
 	QSendtoDialog.C QSendtoDialog.h \
 	qsetborder.C qsetborder.h \
-	QShowFileDialog.C QShowFileDialog.h \
+	QShowFile.C QShowFile.h \
 	QSpellchecker.C QSpellchecker.h \
 	QDialogView.C QDialogView.h \
 	QTabularCreate.C QTabularCreate.h \

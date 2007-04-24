@@ -13,10 +13,27 @@
 #define QSHOWFILE_H
 
 #include "QDialogView.h"
-#include "QShowFileDialog.h"
+
+#include "ui/ShowFileUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
+
+class QShowFile;
+
+class QShowFileDialog : public QDialog, public Ui::QShowFileUi {
+	Q_OBJECT
+public:
+	QShowFileDialog(QShowFile * form);
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QShowFile * form_;
+};
+
 
 class ControlShowFile;
 

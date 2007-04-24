@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QLog.h"
-#include "QLogDialog.h"
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
@@ -26,15 +25,46 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlLog, QView<QLogDialog> > log_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QLogDialog
+//
+/////////////////////////////////////////////////////////////////////
 
-QLog::QLog(Dialog & parent)
-	: log_base_class(parent, lyx::docstring())
-{}
+
+QLogDialog::QLogDialog(QLog * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+	connect( updatePB, SIGNAL( clicked() ), 
+		this, SLOT( updateClicked() ) );
+}
 
 
-logHighlighter::logHighlighter(QTextDocument * parent) :
-	QSyntaxHighlighter(parent)
+void QLogDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QLogDialog::updateClicked()
+{
+	form_->update_contents();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// LogHighlighter
+//
+/////////////////////////////////////////////////////////////////////
+
+LogHighlighter::LogHighlighter(QTextDocument * parent)
+	: QSyntaxHighlighter(parent)
 {
 	infoFormat.setForeground(Qt::darkGray);
 	warningFormat.setForeground(Qt::darkBlue);
@@ -42,7 +72,7 @@ logHighlighter::logHighlighter(QTextDocument * parent) :
 }
 
 
-void logHighlighter::highlightBlock(QString const & text)
+void LogHighlighter::highlightBlock(QString const & text)
 {
 	// Info
 	QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
@@ -71,11 +101,24 @@ void logHighlighter::highlightBlock(QString const & text)
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// QLog
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlLog, QView<QLogDialog> > LogBase;
+
+QLog::QLog(Dialog & parent)
+	: LogBase(parent, lyx::docstring())
+{}
+
+
 void QLog::build_dialog()
 {
 	dialog_.reset(new QLogDialog(this));
 	// set syntax highlighting
-	highlighter = new logHighlighter(dialog_->logTB->document());
+	highlighter = new LogHighlighter(dialog_->logTB->document());
 	//
 	dialog_->logTB->setReadOnly(true);
 	QFont font(toqstr(theApp()->typewriterFontName()));

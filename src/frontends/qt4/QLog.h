@@ -13,15 +13,34 @@
 #define QLOG_H
 
 #include "QDialogView.h"
-#include "QLogDialog.h"
 
+
+#include "ui/LogUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
 #include <QSyntaxHighlighter>
 
 namespace lyx {
 namespace frontend {
 
+class QLog;
+
+class QLogDialog : public QDialog, public Ui::QLogUi {
+	Q_OBJECT
+public:
+	QLogDialog(QLog * form);
+protected Q_SLOTS:
+	virtual void updateClicked();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QLog * form_;
+};
+
+
 class ControlLog;
-class logHighlighter;
+class LogHighlighter;
 
 ///
 class QLog
@@ -40,18 +59,15 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 	/// log syntax highlighter
-	logHighlighter * highlighter;
-
+	LogHighlighter * highlighter;
 };
 
 
 ///
-class logHighlighter : public QSyntaxHighlighter
+class LogHighlighter : public QSyntaxHighlighter
 {
-	Q_OBJECT
-	
 public:
-	logHighlighter(QTextDocument * parent);
+	LogHighlighter(QTextDocument * parent);
 
 protected:
 	void highlightBlock(QString const & text);

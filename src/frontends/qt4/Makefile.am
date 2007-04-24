@@ -49,7 +49,6 @@ libqt4_la_SOURCES = \
 	QChanges.C QChanges.h \
 	QCharacter.C QCharacter.h \
 	QCitation.C QCitation.h \
-	QDocument.C QDocument.h \
 	QDialogView.C QDialogView.h \
 	QErrorList.C QErrorList.h \
 	QExternal.C QExternal.h \
@@ -58,18 +57,15 @@ libqt4_la_SOURCES = \
 	QInclude.C QInclude.h \
 	QIndex.C QIndex.h \
 	QLImage.C QLImage.h \
-	QLog.C QLog.h \
 	QViewSource.C QViewSource.h \
 	QLPainter.C QLPainter.h \
 	QLyXKeySym.C QLyXKeySym.h \
 	QNomencl.C QNomencl.h \
 	QNote.C QNote.h \
-	QParagraph.C QParagraph.h \
 	QPrefs.C QPrefs.h \
 	QPrint.C QPrint.h \
 	QRef.C QRef.h \
 	QSendto.C QSendto.h \
-	QShowFile.C QShowFile.h \
 	Qt2BC.C	Qt2BC.h	\
 	checkedwidgets.C checkedwidgets.h \
 	panelstack.h panelstack.C \

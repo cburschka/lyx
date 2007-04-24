@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QShowFile.h"
-#include "QShowFileDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -20,16 +19,42 @@
 #include <QTextBrowser>
 #include <QPushButton>
 
-using std::string;
-
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlShowFile, QView<QShowFileDialog> > showfile_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QShowFileDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QShowFileDialog::QShowFileDialog(QShowFile * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+}
+
+
+void QShowFileDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QShowFile 
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlShowFile, QView<QShowFileDialog> >
+	ShowFileBase;
 
 
 QShowFile::QShowFile(Dialog & parent)
-	: showfile_base_class(parent, _("Show File"))
+	: ShowFileBase(parent, _("Show File"))
 {
 }
 
@@ -46,7 +71,7 @@ void QShowFile::update_contents()
 {
 	dialog_->setWindowTitle(toqstr(controller().getFileName()));
 
-	string contents = controller().getFileContents();
+	std::string contents = controller().getFileContents();
 	if (contents.empty()) {
 		contents = "Error -> Cannot load file!";
 	}
@@ -56,3 +81,5 @@ void QShowFile::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QShowFile_moc.cpp"

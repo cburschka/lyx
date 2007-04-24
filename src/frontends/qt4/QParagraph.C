@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "QParagraph.h"
-#include "QParagraphDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -28,18 +27,154 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-
 using std::string;
 using std::endl;
+
+/////////////////////////////////////////////////////////////////////
+//
+// QParagraphDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+
+#include <boost/current_function.hpp>
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlParagraph, QView<QParagraphDialog> > paragraph_base_class;
+QParagraphDialog::QParagraphDialog(QParagraph * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), form_, SLOT(slotRestore()));
+	connect(alignDefaultCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(alignLeftRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(alignRightRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(alignCenterRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(linespacing, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(linespacing, SIGNAL(activated(int)), 
+		this, SLOT(enableLinespacingValue(int)));
+	connect(linespacingValue, SIGNAL(textChanged(const QString &)), 
+		this, SLOT(change_adaptor()));
+	connect(indentCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(labelWidth, SIGNAL(textChanged(const QString &)), 
+		this, SLOT(change_adaptor()));
+
+	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
+
+	labelWidth->setWhatsThis( qt_(
+		"As described in the User Guide, the length of"
+		" this text will determine how wide the label part"
+		" of each item is in environments like List and"
+		" Description.\n"
+		"\n"
+		" Normally you won't need to set this,"
+		" since the largest label width of all the"
+		" items is used. But if you need to, you can"
+		" change it here."
+	));
+
+	radioMap[LYX_ALIGN_BLOCK] = alignJustRB;
+	radioMap[LYX_ALIGN_LEFT] = alignLeftRB;
+	radioMap[LYX_ALIGN_RIGHT] = alignRightRB;
+	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
+}
+
+
+void QParagraphDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QParagraphDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QParagraphDialog::enableLinespacingValue(int)
+{
+	bool const enable = linespacing->currentIndex() == 4;
+	linespacingValue->setEnabled(enable);
+}
+
+
+void QParagraphDialog::checkAlignmentRadioButtons() {
+	if (alignDefaultCB->isChecked()) {
+		QPRadioMap::const_iterator it = radioMap.begin();
+		for (; it != radioMap.end(); ++it)
+			it->second->setDisabled(true);
+	} else {
+		LyXAlignment alignPossible = form_->controller().alignPossible();
+		QPRadioMap::const_iterator it = radioMap.begin();
+		for (; it != radioMap.end(); ++it)
+			it->second->setEnabled(it->first & alignPossible);
+	}
+}
+
+
+void QParagraphDialog::on_alignDefaultCB_toggled(bool)
+{
+	checkAlignmentRadioButtons();
+	alignmentToRadioButtons();
+}
+
+
+void QParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
+{
+	if (align == LYX_ALIGN_LAYOUT)
+		align = form_->controller().alignDefault();
+
+	QPRadioMap::const_iterator it = radioMap.begin();
+	for (;it != radioMap.end(); ++it) {
+		if (align == it->first) {
+			it->second->setChecked(true);
+			return;
+		}
+	}
+
+	lyxerr << BOOST_CURRENT_FUNCTION << "Unknown alignment " 
+		<< align << std::endl;
+}
+
+
+LyXAlignment QParagraphDialog::getAlignmentFromDialog()
+{
+	if (alignDefaultCB->isChecked()) 
+		return LYX_ALIGN_LAYOUT;
+	LyXAlignment alignment = LYX_ALIGN_NONE;
+	QPRadioMap::const_iterator it = radioMap.begin();
+	for (; it != radioMap.end(); ++it) {
+		if (it->second->isChecked()) {
+			alignment = it->first;
+			break;
+		}
+	}
+	if (alignment == form_->controller().alignDefault())
+		return LYX_ALIGN_LAYOUT;
+	return alignment;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QParagraph
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlParagraph, QView<QParagraphDialog> >
+	ParagraphBase;
 
 
 QParagraph::QParagraph(Dialog & parent)
-	: paragraph_base_class(parent, _("Paragraph Settings"))
+	: ParagraphBase(parent, _("Paragraph Settings"))
 {}
 
 
@@ -155,3 +290,5 @@ void QParagraph::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QParagraph_moc.cpp"

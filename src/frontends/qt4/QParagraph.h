@@ -14,10 +14,43 @@
 #define QPARAGRAPH_H
 
 #include "QDialogView.h"
-#include "QParagraphDialog.h"
+
+#include <map>
+#include <QDialog>
+#include <QCloseEvent>
+#include "layout.h"
+#include "ui/ParagraphUi.h"
 
 namespace lyx {
 namespace frontend {
+	
+class QParagraph;
+
+class QParagraphDialog : public QDialog, public Ui::QParagraphUi {
+	Q_OBJECT
+public:
+	QParagraphDialog(QParagraph * form);
+	///
+	void checkAlignmentRadioButtons();
+	///
+	void alignmentToRadioButtons(LyXAlignment align = LYX_ALIGN_LAYOUT);
+	///
+	LyXAlignment getAlignmentFromDialog();
+protected:
+	void closeEvent (QCloseEvent * e);
+private:
+	QParagraph * form_;
+	typedef std::map<LyXAlignment, QRadioButton *> QPRadioMap;
+	QPRadioMap radioMap;
+protected Q_SLOTS:
+	///
+	void change_adaptor();
+	///
+	void enableLinespacingValue(int);
+	///
+	void on_alignDefaultCB_toggled(bool);
+};
+
 
 class ControlParagraph;
 
