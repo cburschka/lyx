@@ -68,7 +68,6 @@
 #include "QNomencl.h"
 #include "QLog.h"
 #include "QViewSource.h"
-#include "QViewSourceDialog.h"
 #include "QNote.h"
 #include "QParagraph.h"
 #include "QPrefs.h"

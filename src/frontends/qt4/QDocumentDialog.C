@@ -374,10 +374,11 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// preamble
 	preambleModule = new UiWidget<Ui::PreambleUi>;
-	connect(preambleModule->preambleTE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
+	connect(preambleModule->preambleTE, SIGNAL(textChanged()),
+		this, SLOT(change_adaptor()));
 	// This is not a memory leak. The object will be destroyed
 	// with preambleModule.
-	new latexHighlighter(preambleModule->preambleTE->document());
+	(void) new LaTeXHighlighter(preambleModule->preambleTE->document());
 
 
 	// bullets

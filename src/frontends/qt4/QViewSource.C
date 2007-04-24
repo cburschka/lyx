@@ -13,15 +13,67 @@
 #include <config.h>
 
 #include "QViewSource.h"
-#include "QViewSourceDialog.h"
 #include "qt_helpers.h"
+
+#include <QTextDocument>
 
 namespace lyx {
 namespace frontend {
 
+/////////////////////////////////////////////////////////////////////
+//
+// QViewSourceDialog
+//
+/////////////////////////////////////////////////////////////////////
 
-latexHighlighter::latexHighlighter(QTextDocument * parent) :
-	QSyntaxHighlighter(parent)
+QViewSourceDialog::QViewSourceDialog(QViewSource * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(viewFullSourceCB, SIGNAL(clicked()),
+		this, SLOT(update()));
+	connect(autoUpdateCB, SIGNAL(toggled(bool)),
+		updatePB, SLOT(setDisabled(bool)));
+	connect(updatePB, SIGNAL(clicked()),
+		this, SLOT(update()));
+
+	// setting a document at this point trigger an assertion in Qt
+	// so we disable the signals here:
+	form_->document()->blockSignals(true);
+	viewSourceTV->setDocument(form_->document());
+	form_->document()->blockSignals(false);
+	viewSourceTV->setReadOnly(true);
+	///dialog_->viewSourceTV->setAcceptRichText(false);
+	// this is personal. I think source code should be in fixed-size font
+	QFont font(toqstr(theApp()->typewriterFontName()));
+	font.setKerning(false);
+	font.setFixedPitch(true);
+	font.setStyleHint(QFont::TypeWriter);
+	viewSourceTV->setFont(font);
+	// again, personal taste
+	viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
+}
+
+
+void QViewSourceDialog::update()
+{
+	if (autoUpdateCB->isChecked())
+		form_->update(viewFullSourceCB->isChecked());
+
+	QWidget::update();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// LaTeXHighlighter
+//
+/////////////////////////////////////////////////////////////////////
+
+
+LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent)
+	: QSyntaxHighlighter(parent)
 {
 	keywordFormat.setForeground(Qt::darkBlue);
 	keywordFormat.setFontWeight(QFont::Bold);
@@ -30,7 +82,7 @@ latexHighlighter::latexHighlighter(QTextDocument * parent) :
 }
 
 
-void latexHighlighter::highlightBlock(QString const & text)
+void LaTeXHighlighter::highlightBlock(QString const & text)
 {
 	// $ $ 
 	QRegExp exprMath("\\$[^\\$]*\\$");
@@ -91,7 +143,7 @@ void latexHighlighter::highlightBlock(QString const & text)
 	QRegExp exprComment("(^|[^\\\\])%.*$");
 	index = text.indexOf(exprComment);
 	while (index >= 0) {
-		int length = exprComment.matchedLength();
+		int const length = exprComment.matchedLength();
 		setFormat(index, length, commentFormat);
 		index = text.indexOf(exprComment, index + length);
 	}
@@ -102,10 +154,15 @@ QViewSource::QViewSource(Dialog & parent)
 	: ControlViewSource(parent)
 {
 	document_ = new QTextDocument(this);
-	// set syntex highlighting
-	highlighter_ = new latexHighlighter(document_);
+	highlighter_ = new LaTeXHighlighter(document_);
 }
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// QViewSource
+//
+/////////////////////////////////////////////////////////////////////
 
 void QViewSource::update(bool full_source)
 {

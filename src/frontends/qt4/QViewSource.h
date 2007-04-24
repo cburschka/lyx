@@ -15,23 +15,23 @@
 #define QVIEWSOURCE_H
 
 #include "frontends/controllers/ControlViewSource.h"
+#include "frontends/Application.h"
+#include "ui/ViewSourceUi.h"
 
-#include <QObject>
+#include <QWidget>
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
-#include <QTextDocument>
+
+class QTextDocument;
 
 namespace lyx {
 namespace frontend {
 
-/// LaTeX syntax highlighting.
-/// \todo FIXME: extract the latexHighlighter class into its 
-/// own .[Ch] files.
-class latexHighlighter : public QSyntaxHighlighter
+// used already twice...
+class LaTeXHighlighter : public QSyntaxHighlighter
 {
-	Q_OBJECT	
 public:
-	latexHighlighter(QTextDocument * parent);
+	LaTeXHighlighter(QTextDocument * parent);
 
 protected:
 	void highlightBlock(QString const & text);
@@ -42,24 +42,39 @@ private:
 	QTextCharFormat mathFormat;
 };
 
-///
-class QViewSource: public QObject, public ControlViewSource
-{
+
+
+class QViewSource;
+
+class QViewSourceDialog : public QWidget, public Ui::QViewSourceUi {
 	Q_OBJECT
 public:
+	QViewSourceDialog(QViewSource * form);
+
+public Q_SLOTS:
+	// update content
+	void update();
+
+private:
+	QViewSource * form_;
+};
+
+
+///
+class QViewSource : public QObject, public ControlViewSource {
+public:
+	///
 	QViewSource(Dialog &);
-	virtual ~QViewSource() {}
-
+	///
 	QTextDocument * document() { return document_; }
-
+	///
 	void update(bool full_source);
 
 private:
 	///
 	QTextDocument * document_;
-
-	/// latex syntax highlighter
-	latexHighlighter * highlighter_;
+	/// LaTeX syntax highlighter
+	LaTeXHighlighter * highlighter_;
 };
 
 
