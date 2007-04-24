@@ -110,9 +110,11 @@ void QRef::update_contents()
 void QRef::apply()
 {
 	InsetCommandParams & params = controller().params();
+	
+	last_reference_ = dialog_->referenceED->text();
 
 	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentIndex()));
-	params["reference"] = qstring_to_ucs4(dialog_->referenceED->text());
+	params["reference"] = qstring_to_ucs4(last_reference_);
 	params["name"] = qstring_to_ucs4(dialog_->nameED->text());
 
 	restored_buffer_ = dialog_->bufferCO->currentIndex();
@@ -173,15 +175,13 @@ void QRef::redoRefs()
 	// we modify their state.
 	dialog_->refsLW->blockSignals(true);
 	dialog_->referenceED->blockSignals(true);
-
-	int lastref = dialog_->refsLW->currentRow();
-
 	dialog_->refsLW->setUpdatesEnabled(false);
+	
 	dialog_->refsLW->clear();
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
-	QString const tmp(dialog_->referenceED->text());
+	QString const oldSelection(dialog_->referenceED->text());
 
 	for (std::vector<docstring>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
@@ -191,21 +191,28 @@ void QRef::redoRefs()
 	if (sort_)
 		dialog_->refsLW->sortItems();
 
-	dialog_->referenceED->setText(tmp);
+	dialog_->referenceED->setText(oldSelection);
 
-	// restore the last selection for new insets
-	if (tmp.isEmpty() && lastref != -1
-		&& lastref < int(dialog_->refsLW->count())) {
-		dialog_->refsLW->setCurrentRow(lastref);
-		dialog_->refsLW->clearSelection();
-	} else
-		for (int i = 0; i < dialog_->refsLW->count(); ++i) {
+	// restore the last selection or, for new insets, highlight
+	// the previous selection
+	if (!oldSelection.isEmpty() || !last_reference_.isEmpty()) {
+		bool const newInset = oldSelection.isEmpty();
+		QString textToFind = newInset ? last_reference_ : oldSelection;
+		bool foundItem = false;
+		for (int i = 0; !foundItem && i < dialog_->refsLW->count(); ++i) {
 			QListWidgetItem * item = dialog_->refsLW->item(i);
-			if (tmp == item->text()) {
-				dialog_->refsLW->setItemSelected(item, true);
+			if (textToFind == item->text()) {
+				dialog_->refsLW->setCurrentItem(item);
+				dialog_->refsLW->setItemSelected(item, !newInset);
+				//Make sure selected item is visible
+				dialog_->refsLW->scrollToItem(item);
+				foundItem = true;
 			}
 		}
-
+		if (foundItem)
+			last_reference_ = textToFind;
+		else last_reference_ = "";
+	}
 	dialog_->refsLW->setUpdatesEnabled(true);
 	dialog_->refsLW->update();
 

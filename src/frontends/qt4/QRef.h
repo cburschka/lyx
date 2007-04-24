@@ -66,8 +66,11 @@ private:
 	/// sort or not persistent state
 	bool sort_;
 
-	/// at a reference ?
+	/// went to a reference ?
 	bool at_ref_;
+	
+	/// the last reference entered or examined
+	QString last_reference_;
 
 	/// store the buffer settings
 	int restored_buffer_;
