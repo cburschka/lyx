@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QTexinfo.h"
-#include "QTexinfoDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -22,9 +21,105 @@
 #include <QPushButton>
 
 using std::string;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
+
+/////////////////////////////////////////////////////////////////////
+//
+// QTexinfoDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+
+QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+
+	connect(viewPB, SIGNAL(clicked()), this, SLOT(viewClicked()));
+	connect(whatStyleCO, SIGNAL(activated(const QString &)),
+		this, SLOT(enableViewPB()));
+	connect(whatStyleCO, SIGNAL(activated(int)), this, SLOT(update()));
+	connect(pathCB, SIGNAL(stateChanged(int)), this, SLOT(update()));
+	connect(rescanPB, SIGNAL(clicked()), this, SLOT(enableViewPB()));
+	connect(rescanPB, SIGNAL(clicked()), this, SLOT(rescanClicked()));
+	connect(fileListLW, SIGNAL(itemClicked(QListWidgetItem *)),
+		this, SLOT( enableViewPB() ) );
+	connect(fileListLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(enableViewPB()));
+}
+
+
+void QTexinfoDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QTexinfoDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QTexinfoDialog::rescanClicked()
+{
+	// build new *Files.lst
+	rescanTexStyles();
+	form_->updateStyles();
+	enableViewPB();
+}
+
+
+void QTexinfoDialog::viewClicked()
+{
+	vector<string>::size_type const fitem = fileListLW->currentRow();
+	vector<string> const & data = form_->texdata_[form_->activeStyle];
+	string file = data[fitem];
+	if (!pathCB->isChecked())
+		file = getTexFileFromList(data[fitem],
+			form_->controller().getFileType(form_->activeStyle));
+	form_->controller().viewFile(file);
+}
+
+
+void QTexinfoDialog::update()
+{
+	switch (whatStyleCO->currentIndex()) {
+	case 0:
+		form_->updateStyles(ControlTexinfo::cls);
+		break;
+	case 1:
+		form_->updateStyles(ControlTexinfo::sty);
+		break;
+	case 2:
+		form_->updateStyles(ControlTexinfo::bst);
+		break;
+	default:
+		break;
+	}
+
+	enableViewPB();
+}
+
+
+void QTexinfoDialog::enableViewPB()
+{
+	viewPB->setEnabled(fileListLW->currentRow() > -1);
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QTexinfo
+//
+/////////////////////////////////////////////////////////////////////
 
 typedef QController<ControlTexinfo, QView<QTexinfoDialog> > texinfo_base_class;
 
@@ -69,3 +164,6 @@ void QTexinfo::updateStyles()
 
 } // namespace frontend
 } // namespace lyx
+
+
+#include "QTexinfo_moc.cpp"

@@ -73,7 +73,6 @@ libqt4_la_SOURCES = \
 	QSpellchecker.C QSpellchecker.h \
 	QTabular.C QTabular.h \
 	QTabularCreate.C QTabularCreate.h \
-	QTexinfo.C QTexinfo.h \
 	Qt2BC.C	Qt2BC.h	\
 	checkedwidgets.C checkedwidgets.h \
 	panelstack.h panelstack.C \
