@@ -70,8 +70,6 @@ libqt4_la_SOURCES = \
 	QRef.C QRef.h \
 	QSendto.C QSendto.h \
 	QShowFile.C QShowFile.h \
-	QTabular.C QTabular.h \
-	QTabularCreate.C QTabularCreate.h \
 	Qt2BC.C	Qt2BC.h	\
 	checkedwidgets.C checkedwidgets.h \
 	panelstack.h panelstack.C \

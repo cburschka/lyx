@@ -13,14 +13,29 @@
 #define QTABULARCREATE_H
 
 #include "QDialogView.h"
-#include "QTabularCreateDialog.h"
+#include "ui/TabularCreateUi.h"
+
+#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
+class QTabularCreate;
+
+class QTabularCreateDialog : public QDialog, public Ui::QTabularCreateUi {
+	Q_OBJECT
+public:
+	QTabularCreateDialog(QTabularCreate * form);
+protected Q_SLOTS:
+	virtual void columnsChanged(int);
+	virtual void rowsChanged(int);
+private:
+	QTabularCreate * form_;
+};
+
+
 class ControlTabularCreate;
 
-///
 class QTabularCreate
 	: public QController<ControlTabularCreate, QView<QTabularCreateDialog> >
 {

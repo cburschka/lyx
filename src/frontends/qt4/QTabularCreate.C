@@ -10,23 +10,67 @@
 
 #include <config.h>
 
-#include "QTabularCreateDialog.h"
 #include "QTabularCreate.h"
 #include "Qt2BC.h"
+#include "emptytable.h"
 
 #include "controllers/ControlTabularCreate.h"
 
-#include <qspinbox.h>
-#include <qpushbutton.h>
+#include <QSpinBox>
+#include <QPushButton>
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> > tabularcreate_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QTabularCreateDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	rowsSB->setValue(5);
+	columnsSB->setValue(5);
+
+	connect(okPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
+    connect(rowsSB, SIGNAL(valueChanged(int)),
+		this, SLOT( rowsChanged(int)));
+    connect(columnsSB, SIGNAL(valueChanged(int)),
+		this, SLOT(columnsChanged(int)));
+}
+
+
+void QTabularCreateDialog::columnsChanged(int)
+{
+	form_->changed();
+}
+
+
+void QTabularCreateDialog::rowsChanged(int)
+{
+	form_->changed();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QTabularCreate
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> >
+	TabularCreateBase;
 
 
 QTabularCreate::QTabularCreate(Dialog & parent)
-	: tabularcreate_base_class(parent, _("Insert Table"))
+	: TabularCreateBase(parent, _("Insert Table"))
 {
 }
 
@@ -48,3 +92,5 @@ void QTabularCreate::apply()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QTabularCreate_moc.cpp"
