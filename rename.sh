@@ -324,8 +324,8 @@ src/frontends/qt4/QLPrintDialog.C                  src/frontends/qt4/PrintDialog
 src/frontends/qt4/QLPrintDialog.h                  src/frontends/qt4/PrintDialog.h
 src/frontends/qt4/QLToolbar.C                      src/frontends/qt4/Toolbar.cpp
 src/frontends/qt4/QLToolbar.h                      src/frontends/qt4/Toolbar.h
-src/frontends/qt4/QLyXKeySym.C                     src/frontends/qt4/LyXKeySym.cpp
-src/frontends/qt4/QLyXKeySym.h                     src/frontends/qt4/LyXKeySym.h
+src/frontends/qt4/QLyXKeySym.C                     src/frontends/qt4/QLyXKeySym.cpp
+src/frontends/qt4/QLyXKeySym.h                     src/frontends/qt4/QLyXKeySym.h
 src/frontends/qt4/QMathMatrixDialog.C              src/frontends/qt4/MathMatrixDialog.cpp
 src/frontends/qt4/QMathMatrixDialog.h              src/frontends/qt4/MathMatrixDialog.h
 src/frontends/qt4/QNomencl.C                       src/frontends/qt4/Nomencl.cpp
