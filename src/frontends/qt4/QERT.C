@@ -11,23 +11,61 @@
 #include <config.h>
 
 #include "QERT.h"
-#include "QERTDialog.h"
 #include "Qt2BC.h"
 
 #include "controllers/ControlERT.h"
 
-#include <qradiobutton.h>
-#include <qpushbutton.h>
+#include <QRadioButton>
+#include <QPushButton>
+#include <QCloseEvent>
 
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlERT, QView<QERTDialog> > ert_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QERTDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+
+QERTDialog::QERTDialog(QERT * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(inlineRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(collapsedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(openRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+}
+
+
+void QERTDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QERTDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QERT
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlERT, QView<QERTDialog> > ERTBase;
 
 
 QERT::QERT(Dialog & parent)
-	: ert_base_class(parent, _("TeX Code Settings"))
+	: ERTBase(parent, _("TeX Code Settings"))
 {
 }
 
@@ -67,3 +105,5 @@ void QERT::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QERT_moc.cpp"

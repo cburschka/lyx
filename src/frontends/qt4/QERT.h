@@ -13,10 +13,29 @@
 #define QERT_H
 
 #include "QDialogView.h"
-#include "QERTDialog.h"
+#include "ui/ERTUi.h"
+
+#include <QCloseEvent>
+#include <QDialog>
 
 namespace lyx {
 namespace frontend {
+
+class QERT;
+
+class QERTDialog : public QDialog, public Ui::QERTUi {
+	Q_OBJECT
+public:
+	QERTDialog(QERT * form);
+protected Q_SLOTS:
+	virtual void change_adaptor();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QERT * form_;
+};
+
+
 
 class ControlERT;
 
