@@ -13,14 +13,40 @@
 #define QSEARCH_H
 
 #include "QDialogView.h"
-#include "QSearchDialog.h"
+#include "ui/SearchUi.h"
+#include <string>
+
+#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
 class ControlSearch;
 
-///
+class QSearch;
+
+class QSearchDialog : public QDialog, public Ui::QSearchUi {
+	Q_OBJECT
+public:
+	QSearchDialog(QSearch * form);
+
+	virtual void show();
+protected Q_SLOTS:
+	void findChanged();
+	void findClicked();
+	void replaceClicked();
+	void replaceallClicked();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+
+private:
+	// add a string to the combo if needed
+	void remember(std::string const & find, QComboBox & combo);
+
+	QSearch * form_;
+};
+
+
 class QSearch
 	: public QController<ControlSearch, QView<QSearchDialog> >
 {
