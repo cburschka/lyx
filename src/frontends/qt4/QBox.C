@@ -16,12 +16,11 @@
 
 #include "checkedwidgets.h"
 #include "lengthcombo.h"
-#include "QBoxDialog.h"
 #include "qt_helpers.h"
 #include "Qt2BC.h"
-
 #include "lengthcommon.h"
 #include "lyxrc.h" // to set the default length values
+#include "validators.h"
 
 #include "controllers/ControlBox.h"
 #include "controllers/helper_funcs.h"
@@ -32,16 +31,116 @@
 
 #include <QPushButton>
 #include <QLineEdit>
+#include <QCloseEvent>
 
-#include <vector>
 
 using lyx::support::getStringFromVector;
 using lyx::support::isStrDbl;
 using lyx::support::subst;
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
+
+//////////////////////////////////////////////////////////////////
+//
+// QBoxDialog
+//
+//////////////////////////////////////////////////////////////////
+
+QBoxDialog::QBoxDialog(QBox * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(restorePB, SIGNAL(clicked()), form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+
+	connect(widthED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+		this, SLOT(change_adaptor()));
+	connect(valignCO, SIGNAL(highlighted(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(heightED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::LyXLength::UNIT) ),
+		this, SLOT(change_adaptor()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(restoreClicked()));
+	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
+	connect(halignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(ialignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(innerBoxCO, SIGNAL(activated(const QString&)),
+		this, SLOT(innerBoxChanged(const QString &)));
+	connect(innerBoxCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+
+	heightED->setValidator(unsignedLengthValidator(heightED));
+	widthED->setValidator(unsignedLengthValidator(widthED));
+}
+
+
+void QBoxDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QBoxDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QBoxDialog::innerBoxChanged(const QString & str)
+{
+	bool const ibox = (str != qt_("None"));
+	valignCO->setEnabled(ibox);
+	ialignCO->setEnabled(ibox);
+	halignCO->setEnabled(!ibox);
+	heightED->setEnabled(ibox);
+	heightUnitsLC->setEnabled(ibox);
+	form_->setSpecial(ibox);
+}
+
+
+void QBoxDialog::typeChanged(int index)
+{
+	bool const frameless = (index == 0);
+	if (frameless) {
+		valignCO->setEnabled(true);
+		ialignCO->setEnabled(true);
+		halignCO->setEnabled(false);
+		heightED->setEnabled(true);
+		heightUnitsLC->setEnabled(true);
+		form_->setSpecial(true);
+	}
+	int itype = innerBoxCO->currentIndex();
+	form_->setInnerType(frameless, itype);
+}
+
+
+void QBoxDialog::restoreClicked()
+{
+	form_->setInnerType(true, 2);
+	widthED->setText("100");
+	widthUnitsLC->setCurrentItem(LyXLength::PCW);
+	heightED->setText("1");
+	for (int j = 0; j < heightUnitsLC->count(); j++) {
+		if (heightUnitsLC->itemText(j) == qt_("Total Height"))
+			heightUnitsLC->setCurrentItem(j);
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////
+//
+// QBox
+//
+//////////////////////////////////////////////////////////////////
 
 typedef QController<ControlBox, QView<QBoxDialog> > box_base_class;
 
@@ -62,9 +161,8 @@ void QBox::build_dialog()
 	// add the special units to the height choice
 	// width needs different handling
 	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
-	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i) {
+	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i) 
 		dialog_->heightUnitsLC->addItem(toqstr(gui_names_spec_[i]));
-	}
 
 	bcview().addReadOnly(dialog_->typeCO);
 	bcview().addReadOnly(dialog_->innerBoxCO);
@@ -292,3 +390,7 @@ void QBox::setInnerType(bool frameless, int i)
 
 } // namespace frontend
 } // namespace lyx
+
+
+#include "QBox_moc.cpp"
+

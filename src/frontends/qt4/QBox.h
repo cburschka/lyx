@@ -13,15 +13,37 @@
 #ifndef QBOX_H
 #define QBOX_H
 
-#include "QBoxDialog.h"
 #include "QDialogView.h"
 
+#include "ui/BoxUi.h"
+
+#include <QCloseEvent>
+#include <QDialog>
+
 #include <vector>
+
 
 namespace lyx {
 namespace frontend {
 
 class ControlBox;
+class QBox;
+
+class QBoxDialog : public QDialog, public Ui::QBoxUi {
+	Q_OBJECT
+public:
+	QBoxDialog(QBox * form);
+protected Q_SLOTS:
+	virtual void change_adaptor();
+	virtual void innerBoxChanged(const QString &);
+	virtual void typeChanged(int);
+	virtual void restoreClicked();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QBox * form_;
+};
+
 
 ///
 class QBox
