@@ -656,6 +656,7 @@ src_frontends_qt4_ui_files = Split('''
     ShowFileUi.ui
     SpellcheckerUi.ui
     TabularUi.ui
+    TabularCreateUi.ui
     TexinfoUi.ui
     ThesaurusUi.ui
     TocUi.ui
