@@ -243,8 +243,6 @@ lyx_SOURCES = \
 	ParagraphMetrics.h \
 	paragraph_funcs.C \
 	paragraph_funcs.h \
-	paragraph_pimpl.C \
-	paragraph_pimpl.h \
 	pariterator.C \
 	pariterator.h \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.C \
