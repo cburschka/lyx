@@ -607,69 +607,78 @@ src_frontends_qt4_ui_files = Split('''
     NumberingUi.ui
     PageLayoutUi.ui
     PreambleUi.ui
-    QAboutUi.ui
-    QAskForTextUi.ui
-    QBibitemUi.ui
-    QBibtexAddUi.ui
-    QBibtexUi.ui
-    QBoxUi.ui
-    QBranchUi.ui
-    QChangesUi.ui
-    QCharacterUi.ui
-    QCitationUi.ui
-    QDelimiterUi.ui
-    QDocumentUi.ui
-    QERTUi.ui
-    QErrorListUi.ui
-    QExternalUi.ui
-    QFloatUi.ui
-    QGraphicsUi.ui
-    QIncludeUi.ui
-    QIndexUi.ui
-    QLogUi.ui
-    QMathMatrixUi.ui
-    QNomenclUi.ui
-    QNoteUi.ui
-    QParagraphUi.ui
-    QPrefColorsUi.ui
-    QPrefConvertersUi.ui
-    QPrefCopiersUi.ui
-    QPrefCygwinPathUi.ui
-    QPrefDateUi.ui
-    QPrefDisplayUi.ui
-    QPrefFileformatsUi.ui
-    QPrefIdentityUi.ui
-    QPrefKeyboardUi.ui
-    QPrefLanguageUi.ui
-    QPrefLatexUi.ui
-    QPrefPathsUi.ui
-    QPrefPlaintextUi.ui
-    QPrefPrinterUi.ui
-    QPrefScreenFontsUi.ui
-    QPrefSpellcheckerUi.ui
-    QPrefUi.ui
-    QPrefsUi.ui
-    QPrintUi.ui
-    QRefUi.ui
-    QSearchUi.ui
-    QSendtoUi.ui
-    QShowFileUi.ui
-    QSpellcheckerUi.ui
-    QTabularCreateUi.ui
-    QTabularUi.ui
-    QTexinfoUi.ui
-    QThesaurusUi.ui
-    QTocUi.ui
-    QURLUi.ui
-    QVSpaceUi.ui
-    QViewSourceUi.ui
-    QWrapUi.ui
+    AboutUi.ui
+    AskForTextUi.ui
+    BibitemUi.ui
+    BibtexAddUi.ui
+    BibtexUi.ui
+    BoxUi.ui
+    BranchUi.ui
+    ChangesUi.ui
+    CharacterUi.ui
+    CitationUi.ui
+    DelimiterUi.ui
+    DocumentUi.ui
+    ERTUi.ui
+    ErrorListUi.ui
+    ExternalUi.ui
+    FloatUi.ui
+    GraphicsUi.ui
+    IncludeUi.ui
+    IndexUi.ui
+    LogUi.ui
+    MathMatrixUi.ui
+    NomenclUi.ui
+    NoteUi.ui
+    ParagraphUi.ui
+    PrefColorsUi.ui
+    PrefConvertersUi.ui
+    PrefCopiersUi.ui
+    PrefCygwinPathUi.ui
+    PrefDateUi.ui
+    PrefDisplayUi.ui
+    PrefFileformatsUi.ui
+    PrefIdentityUi.ui
+    PrefKeyboardUi.ui
+    PrefLanguageUi.ui
+    PrefLatexUi.ui
+    PrefPathsUi.ui
+    PrefPlaintextUi.ui
+    PrefPrinterUi.ui
+    PrefScreenFontsUi.ui
+    PrefSpellcheckerUi.ui
+    PrefUi.ui
+    PrefsUi.ui
+    PrintUi.ui
+    RefUi.ui
+    SearchUi.ui
+    SendtoUi.ui
+    ShowFileUi.ui
+    SpellcheckerUi.ui
+    TabularUi.ui
+    TexinfoUi.ui
+    ThesaurusUi.ui
+    TocUi.ui
+    URLUi.ui
+    VSpaceUi.ui
+    ViewSourceUi.ui
+    WrapUi.ui
     TextLayoutUi.ui
 ''')
 
 
 src_frontends_qt4_moc_files = Split('''
     BulletsModule.C
+    QBox.C
+    QERT.C
+    QSearch.C
+    QSpellchecker.C
+    QTabularCreate.C
+    QTexinfo.C
+    QThesaurus.C
+    QTabular.C
+    QVSpace.C
+    QWrap.C
     emptytable.C
     FileDialog_private.C
     FloatPlacement.C
@@ -679,10 +688,8 @@ src_frontends_qt4_moc_files = Split('''
     lengthcombo.C
     InsertTableWidget.C
     panelstack.C
-    QAboutDialog.C
     QBibitemDialog.C
     QBibtexDialog.C
-    QBoxDialog.C
     QBranchDialog.C
     QBranches.C
     QChangesDialog.C
@@ -693,7 +700,6 @@ src_frontends_qt4_moc_files = Split('''
     QDelimiterDialog.C
     QDocumentDialog.C
     QErrorListDialog.C
-    QERTDialog.C
     QExternalDialog.C
     QFloatDialog.C
     QGraphicsDialog.C
@@ -702,7 +708,6 @@ src_frontends_qt4_moc_files = Split('''
     Action.C
     QLog.C
     QLogDialog.C
-    QViewSourceDialog.C
     QViewSource.C
     QLMenubar.C
     QLPopupMenu.C
@@ -714,27 +719,20 @@ src_frontends_qt4_moc_files = Split('''
     QParagraphDialog.C
     QPrefsDialog.C
     QRefDialog.C
-    QSearchDialog.C
     QSendtoDialog.C
     qsetborder.C
     QShowFileDialog.C
-    QSpellcheckerDialog.C
     QDialogView.C
-    QTabularCreateDialog.C
-    QTabularDialog.C
-    QTexinfoDialog.C
-    QThesaurusDialog.C
     TocModel.C
     TocWidget.C
     QToc.C
     GuiView.C
     QURLDialog.C
-    QVSpaceDialog.C
     GuiWorkArea.C
-    QWrapDialog.C
     QLToolbar.C
     socket_callback.C
     validators.C
+    QAbout.C
 ''')
 
 
@@ -753,14 +751,12 @@ src_frontends_qt4_header_files = Split('''
     GuiView.h
     GuiWorkArea.h
     InsertTableWidget.h
-    QAbout.h
-    QAboutDialog.h
+    About.h
     QBibitem.h
     QBibitemDialog.h
     QBibtex.h
     QBibtexDialog.h
     QBox.h
-    QBoxDialog.h
     QBranch.h
     QBranchDialog.h
     QBranches.h
@@ -778,7 +774,6 @@ src_frontends_qt4_header_files = Split('''
     QDocument.h
     QDocumentDialog.h
     QERT.h
-    QERTDialog.h
     QErrorList.h
     QErrorListDialog.h
     QExternal.h
@@ -814,29 +809,20 @@ src_frontends_qt4_header_files = Split('''
     QRef.h
     QRefDialog.h
     QSearch.h
-    QSearchDialog.h
     QSendto.h
     QSendtoDialog.h
     QShowFile.h
     QShowFileDialog.h
     QSpellchecker.h
-    QSpellcheckerDialog.h
     QTabular.h
     QTabularCreate.h
-    QTabularCreateDialog.h
-    QTabularDialog.h
     QTexinfo.h
-    QTexinfoDialog.h
     QThesaurus.h
-    QThesaurusDialog.h
     QToc.h
     QURLDialog.h
     QVSpace.h
-    QVSpaceDialog.h
     QViewSource.h
-    QViewSourceDialog.h
     QWrap.h
-    QWrapDialog.h
     Qt2BC.h
     TocModel.h
     TocWidget.h
@@ -876,13 +862,11 @@ src_frontends_qt4_files = Split('''
     InsertTableWidget.C
     LyXKeySymFactory.C
     QAbout.C
-    QAboutDialog.C
     QBibitem.C
     QBibitemDialog.C
     QBibtex.C
     QBibtexDialog.C
     QBox.C
-    QBoxDialog.C
     QBranch.C
     QBranchDialog.C
     QBranches.C
@@ -899,7 +883,6 @@ src_frontends_qt4_files = Split('''
     QDocument.C
     QDocumentDialog.C
     QERT.C
-    QERTDialog.C
     QErrorList.C
     QErrorListDialog.C
     QExternal.C
@@ -934,29 +917,20 @@ src_frontends_qt4_files = Split('''
     QRef.C
     QRefDialog.C
     QSearch.C
-    QSearchDialog.C
     QSendto.C
     QSendtoDialog.C
     QShowFile.C
     QShowFileDialog.C
     QSpellchecker.C
-    QSpellcheckerDialog.C
     QTabular.C
     QTabularCreate.C
-    QTabularCreateDialog.C
-    QTabularDialog.C
     QTexinfo.C
-    QTexinfoDialog.C
     QThesaurus.C
-    QThesaurusDialog.C
     QToc.C
     QURLDialog.C
     QVSpace.C
-    QVSpaceDialog.C
     QViewSource.C
-    QViewSourceDialog.C
     QWrap.C
-    QWrapDialog.C
     Qt2BC.C
     TocModel.C
     TocWidget.C
@@ -1011,7 +985,6 @@ src_tex2lyx_files = Split('''
     lyxfont.C
     lyxlayout.C
     lyxlex.C
-    lyxlex_pimpl.C
     lyxtextclass.C
     math.C
     preamble.C
@@ -1103,7 +1076,6 @@ src_header_files = Split('''
     lyxlayout_ptr_fwd.h
     lyxlength.h
     lyxlex.h
-    lyxlex_pimpl.h
     lyxrc.h
     lyxrow.h
     lyxserver.h
@@ -1210,7 +1182,6 @@ src_pre_files = Split('''
     lyxlayout.C
     lyxlength.C
     lyxlex.C
-    lyxlex_pimpl.C
     lyxrc.C
     lyxrow.C
     lyxserver.C
