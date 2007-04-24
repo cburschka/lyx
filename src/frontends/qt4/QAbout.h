@@ -13,12 +13,25 @@
 #define FORMABOUT_H
 
 #include "QDialogView.h"
-#include "QAboutDialog.h"
+#include "ui/AboutUi.h"
+#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
 class ControlAboutlyx;
+
+class QAboutDialog : public QDialog, public Ui::QAboutUi {
+	Q_OBJECT
+public:
+	QAboutDialog(QWidget * parent = 0)
+		: QDialog(parent)
+	{
+		setupUi(this);
+		connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
+	}
+};
+
 
 class QAbout
 	: public QController<ControlAboutlyx, QView<QAboutDialog> >

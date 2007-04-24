@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QAbout.h"
-#include "QAboutDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -38,10 +37,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlAboutlyx, QView<QAboutDialog> > about_base_class;
+
+typedef QController<ControlAboutlyx, QView<QAboutDialog> > AboutBase;
 
 QAbout::QAbout(Dialog & parent)
-	: about_base_class(parent, _("About LyX"))
+	: AboutBase(parent, _("About LyX"))
 {
 }
 
@@ -120,3 +120,5 @@ void QAbout::build_dialog()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QAbout_moc.cpp"
