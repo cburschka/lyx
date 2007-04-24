@@ -3,7 +3,8 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# author Georg Baum; Uwe Stöhr
+# author Georg Baum
+# author Uwe Stöhr
 #
 # Full author contact details are available in file CREDITS.
 
@@ -11,9 +12,16 @@
 # These commands will be used by LyX for LaTeX export for all characters
 # that are not representable in the chosen encoding.
 
+# If you change this file please keep the order and indentation!
+# You can use development/tools/unicodesymbols.py to add stubs for more
+# symbols.
+# Do only add commands that give correct output, no hacks that look "similar".
+# Commands that modify other parts of the text should not be added either.
+
 # syntax:
 # ucs4 command                    preamble flags
-# preamble can either be a known feature, or a LaTeX command.
+# preamble can either be a feature known by the LaTeXFeatures class (e.g.
+# tipa), or a LaTeX command (e.g. \\usepackage{bla}).
 # Known flags:
 # - combining This is a combining char that will get combined with a base char
 # - force     Always output replacement command
