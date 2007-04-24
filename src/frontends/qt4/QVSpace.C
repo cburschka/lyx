@@ -16,12 +16,12 @@
 #include <config.h>
 
 #include "QVSpace.h"
-#include "QVSpaceDialog.h"
 #include "Qt2BC.h"
 
 #include "checkedwidgets.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"
+#include "validators.h"
 
 #include "lyxrc.h" // to set the default length values
 #include "Spacing.h"
@@ -32,9 +32,11 @@
 
 #include "support/lstrings.h"
 
-#include <QLineEdit>
 #include <QCheckBox>
+#include <QCloseEvent>
+#include <QLineEdit>
 #include <QPushButton>
+#include <QValidator>
 
 
 using std::string;
@@ -42,9 +44,66 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-namespace {
 
-void setWidgetsFromVSpace(VSpace const & space,
+/////////////////////////////////////////////////////////////////////
+//
+// QVSpaceDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+
+QVSpaceDialog::QVSpaceDialog(QVSpace * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+
+	connect(spacingCO, SIGNAL(highlighted(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(valueLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(spacingCO, SIGNAL(activated(int)),
+		this, SLOT(enableCustom(int)));
+	connect(keepCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(unitCO, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+		this, SLOT(change_adaptor()));
+
+	valueLE->setValidator(unsignedLengthValidator(valueLE));
+}
+
+
+void QVSpaceDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QVSpaceDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QVSpaceDialog::enableCustom(int selection)
+{
+	bool const enable = selection == 5;
+	valueLE->setEnabled(enable);
+	unitCO->setEnabled(enable);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QVSpace
+//
+/////////////////////////////////////////////////////////////////////
+
+static void setWidgetsFromVSpace(VSpace const & space,
 			  QComboBox * spacing,
 			  QLineEdit * value,
 			  LengthCombo * unit,
@@ -90,7 +149,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 }
 
 
-VSpace setVSpaceFromWidgets(int spacing,
+static VSpace setVSpaceFromWidgets(int spacing,
 			    QLineEdit * value,
 			    LengthCombo * unit,
 			    bool keep)
@@ -114,8 +173,7 @@ VSpace setVSpaceFromWidgets(int spacing,
 		space = VSpace(VSpace::VFILL);
 		break;
 	case 5:
-		space = VSpace(LyXGlueLength(
-				      widgetsToLength(value, unit)));
+		space = VSpace(LyXGlueLength(widgetsToLength(value, unit)));
 		break;
 	}
 
@@ -123,13 +181,11 @@ VSpace setVSpaceFromWidgets(int spacing,
 	return space;
 }
 
-} // namespace anon
 
-
-typedef QController<ControlVSpace, QView<QVSpaceDialog> > vspace_base_class;
+typedef QController<ControlVSpace, QView<QVSpaceDialog> > VSpaceBase;
 
 QVSpace::QVSpace(Dialog & parent)
-	: vspace_base_class(parent, _("Vertical Space Settings"))
+	: VSpaceBase(parent, _("Vertical Space Settings"))
 {}
 
 
@@ -187,3 +243,6 @@ void QVSpace::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+
+#include "QVSpace_moc.cpp"

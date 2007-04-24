@@ -15,17 +15,40 @@
 #define QVSPACE_H
 
 #include "QDialogView.h"
-#include "QVSpaceDialog.h"
 
-#include <vector>
+#include "ui/VSpaceUi.h"
+
+#include <QDialog>
+
+class QCloseEvent;
 
 namespace lyx {
 namespace frontend {
 
 class ControlVSpace;
 
-/** This class provides an Qt implementation of the VSpace dialog.
- */
+class QVSpace;
+
+
+class QVSpaceDialog : public QDialog, public Ui::QVSpaceUi {
+	Q_OBJECT
+
+public:
+	QVSpaceDialog(QVSpace * form);
+
+public Q_SLOTS:
+	void change_adaptor();
+
+protected Q_SLOTS:
+	void closeEvent(QCloseEvent *);
+	void enableCustom(int);
+
+private:
+	QVSpace * form_;
+};
+
+
+
 class QVSpace
 	: public QController<ControlVSpace, QView<QVSpaceDialog> >
 {
