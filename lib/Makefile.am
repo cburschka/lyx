@@ -929,6 +929,7 @@ dist_layouts_DATA =\
 	layouts/hollywood.layout \
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
+	layouts/isprs.layout \
 	layouts/jgrga.layout \
 	layouts/kluwer.layout \
 	layouts/latex8.layout \
