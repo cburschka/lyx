@@ -203,8 +203,6 @@ lyx_SOURCES = \
 	lyxlength.h \
 	lyxlex.C \
 	lyxlex.h \
-	lyxlex_pimpl.C \
-	lyxlex_pimpl.h \
 	lyxrc.C \
 	lyxrc.h \
 	lyxrow.C \

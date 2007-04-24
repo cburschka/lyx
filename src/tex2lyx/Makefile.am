@@ -30,8 +30,7 @@ LINKED_FILES = \
 	lyxlayout.C \
 	lyxtextclass.C \
 	lyxtextclass.h \
-	lyxlex.C \
-	lyxlex_pimpl.C
+	lyxlex.C 
 
 BUILT_SOURCES = $(PCH_FILE) $(LINKED_FILES)
 
