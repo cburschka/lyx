@@ -11,21 +11,41 @@
 
 #include <config.h>
 
-#include "biblio.h"
+#include "frontend_helpers.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "debug.h"
 #include "gettext.h"
-
-#include "support/lstrings.h"
+#include "language.h"
+#include "lyxlength.h"
 
 #include <boost/regex.hpp>
 
 #include <algorithm>
+#include <config.h>
 
+#include "LColor.h"
+
+#include "frontends/FileDialog.h"
+#include "frontends/Alert.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/package.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/lyxalgo.h"
+#include "support/os.h"
+#include "support/package.h"
+#include "support/path.h"
+#include "support/systemcall.h"
+
+#include <boost/cregex.hpp>
+#include <fstream>
 using std::string;
 using std::vector;
-
+using std::pair;
+using std::endl;
 
 namespace lyx {
 
@@ -834,27 +854,7 @@ getAuthorYearStrings(string const & key,
 }
 
 } // namespace biblio
-} // namespace lyx
-/**
- * \file frontend_helpers.cpp
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Angus Leeming
- *
- * Full author contact details are available in file CREDITS.
- */
 
-#include <config.h>
-
-
-#include "gettext.h"
-#include "character.h"
-#include "LColor.h"
-
-using std::vector;
-
-namespace lyx {
 namespace frontend {
 
 vector<FamilyPair> const getFamilyData()
@@ -1096,34 +1096,7 @@ vector<ColorPair> const getColorData()
 	return color;
 }
 
-} // namespace frontend
-} // namespace lyx
-/**
- * \file frontend_helpers.cpp
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Angus Leeming
- *
- * Full author contact details are available in file CREDITS.
- */
 
-#include <config.h>
-
-
-#include "frnt_lang.h"
-#include "gettext.h"
-#include "language.h"
-
-#include <algorithm>
-
-
-using std::string;
-using std::vector;
-
-
-namespace lyx {
-namespace frontend {
 
 namespace {
 
@@ -1173,37 +1146,6 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 }
 
 } // namespace frontend
-} // namespace lyx
-/**
- * \file frontend_helpers.cpp
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Jean-Marc Lasgouttes
- * \author Angus Leeming
- *
- * Full author contact details are available in file CREDITS.
- */
-
-
-#include <config.h>
-
-#include "helper_funcs.h"
-
-#include "gettext.h"
-#include "lyxlength.h"
-
-#include "frontends/FileDialog.h"
-
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/package.h"
-
-using std::pair;
-using std::string;
-using std::vector;
-
-namespace lyx {
 
 using support::addName;
 using support::FileFilterList;
@@ -1331,41 +1273,7 @@ vector<docstring> const getLatexUnits()
 }
 
 } // namespace frontend
-} // namespace lyx
-/**
- * \file frontend_helpers.cpp
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Herbert Voﬂ
- *
- * Full author contact details are available in file CREDITS.
- */
 
-#include <config.h>
-
-#include "tex_helpers.h"
-
-#include "debug.h"
-#include "gettext.h"
-
-#include "frontends/Alert.h"
-
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/lyxalgo.h"
-#include "support/os.h"
-#include "support/package.h"
-#include "support/path.h"
-#include "support/systemcall.h"
-
-#include <boost/cregex.hpp>
-#include <fstream>
-
-using std::string;
-using std::endl;
-
-namespace lyx {
 
 using support::bformat;
 using support::contains;

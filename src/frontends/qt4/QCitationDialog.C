@@ -17,7 +17,7 @@
 
 #include "QCitation.h"
 
-#include "frontends/controllers/biblio.h"
+#include "frontends/controllers/frontend_helpers.h"
 #include "frontends/controllers/ControlCitation.h"
 
 #include "debug.h"

@@ -26,7 +26,7 @@
 #include "lyxrc.h"
 
 #include "controllers/ControlGraphics.h"
-#include "controllers/helper_funcs.h"
+#include "controllers/frontend_helpers.h"
 
 #include "insets/InsetGraphicsParams.h"
 

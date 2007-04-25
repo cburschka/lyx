@@ -15,7 +15,7 @@
 
 
 #include "ControlCommand.h"
-#include "biblio.h"
+#include "frontend_helpers.h"
 
 namespace lyx {
 namespace frontend {

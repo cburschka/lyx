@@ -1,21 +1,28 @@
 // -*- C++ -*-
 /**
- * \file biblio.h
+ * \file frontend_helpers.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Herbert Voﬂ
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef BIBLIOHELPERS_H
-#define BIBLIOHELPERS_H
+#ifndef FRONTEND_HELPERS_H
+#define FRONTEND_HELPERS_H
 
+#include "lyxfont.h"
 #include "support/docstring.h"
 
-#include <map>
+#include <utility>
 #include <vector>
+#include <string>
+#include <boost/bind.hpp>
+#include <algorithm>
+#include <utility>
+#include <map>
 
 class Buffer;
 
@@ -166,27 +173,6 @@ getAuthorYearStrings(std::string const & key,
 } // namespace biblio
 } // namespace lyx
 
-#endif // BIBLIOHELPERS_H
-// -*- C++ -*-
-/**
- * \file character.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Angus Leeming
- *
- * Full author contact details are available in file CREDITS.
- */
-
-#ifndef CHARACTERHELPERS_H
-#define CHARACTERHELPERS_H
-
-
-#include "lyxfont.h"
-
-#include <utility>
-#include <vector>
-
 
 class LColor_color;
 
@@ -235,33 +221,6 @@ std::vector<BarPair>      const getBarData();
 ///
 std::vector<ColorPair>    const getColorData();
 
-} // namespace frontend
-} // namespace lyx
-
-#endif // CHARACTERHELPERS
-// -*- C++ -*-
-/**
- * \file frnt_lang.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Angus Leeming
- *
- * Full author contact details are available in file CREDITS.
- *
- * Ease the use of internationalised language strings in the dialogs.
- */
-
-#ifndef FRNT_LANG_H
-#define FRNT_LANG_H
-
-#include "support/docstring.h"
-
-#include <utility>
-#include <vector>
-
-namespace lyx {
-namespace frontend {
 
 ///
 typedef std::pair<docstring, std::string> LanguagePair;
@@ -272,33 +231,7 @@ typedef std::pair<docstring, std::string> LanguagePair;
 std::vector<LanguagePair> const getLanguageData(bool character_dlg);
 
 } // namespace frontend
-} // namespace lyx
 
-#endif // FRNT_LANG_H
-// -*- C++ -*-
-/**
- * \file helper_funcs.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Angus Leeming
- *
- * Full author contact details are available in file CREDITS.
- */
-
-#ifndef HELPERFUNCS_H
-#define HELPERFUNCS_H
-
-#include "support/docstring.h"
-
-#include <boost/bind.hpp>
-#include <utility>
-#include <vector>
-#include <string>
-#include <algorithm>
-
-
-namespace lyx {
 
 namespace support { class FileFilterList; }
 
@@ -394,30 +327,6 @@ getSecond(std::vector<Pair> const & pr)
 	return tmp;
 }
 
-} // namespace frontend
-} // namespace lyx
-
-#endif // NOT HELPERFUNCS_H
-// -*- C++ -*-
-/**
- * \file tex_helpers.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * \author Herbert Voﬂ
- *
- * Full author contact details are available in file CREDITS.
- */
-
-#ifndef TEX_HELPERS_H
-#define TEX_HELPERS_H
-
-#include <string>
-#include <vector>
-
-namespace lyx {
-namespace frontend {
-
 /** Build filelists of all availabe bst/cls/sty-files. Done through
  *  kpsewhich and an external script, saved in *Files.lst.
  */
@@ -440,4 +349,4 @@ std::string const getTexFileFromList(std::string const & classname, std::string 
 } // namespace frontend
 } // namespace lyx
 
-#endif // TEX_HELPERS_H
+#endif // FRONTEND_HELPERS_H

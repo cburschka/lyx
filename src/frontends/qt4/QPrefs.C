@@ -28,8 +28,7 @@
 #include "support/os.h"
 
 #include "controllers/ControlPrefs.h"
-#include "controllers/frnt_lang.h"
-#include "controllers/helper_funcs.h"
+#include "controllers/frontend_helpers.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
@@ -76,7 +75,7 @@ string const LanguageSettings = N_("Language settings");
 string const Outputs = N_("Outputs");
 
 
-// FIXME: move to helper_funcs.h
+// FIXME: move to frontend_helpers.h
 
 template<class A>
 static size_t findPos_helper(std::vector<A> const & vec, A const & val)

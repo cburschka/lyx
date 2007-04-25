@@ -23,7 +23,7 @@
 #include "support/copied_ptr.h"
 #include "support/types.h"
 
-#include "frontends/controllers/biblio.h"
+#include "frontends/controllers/frontend_helpers.h"
 
 #include <vector>
 

@@ -20,7 +20,7 @@
 #include "funcrequest.h"
 #include "LaTeXFeatures.h"
 
-#include "frontends/controllers/biblio.h"
+#include "frontends/controllers/frontend_helpers.h"
 
 #include "support/fs_extras.h"
 #include "support/lstrings.h"

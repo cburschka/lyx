@@ -13,7 +13,7 @@
 #include "ControlPrint.h"
 
 #include "ButtonController.h"
-#include "helper_funcs.h"
+#include "frontend_helpers.h"
 
 #include "buffer.h"
 #include "bufferparams.h"

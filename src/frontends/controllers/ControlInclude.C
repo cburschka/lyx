@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "ControlInclude.h"
-#include "helper_funcs.h"
+#include "frontend_helpers.h"
 #include "Kernel.h"
 
 #include "buffer.h"

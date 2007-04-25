@@ -23,7 +23,7 @@
 #include "validators.h"
 
 #include "controllers/ControlBox.h"
-#include "controllers/helper_funcs.h"
+#include "controllers/frontend_helpers.h"
 
 #include "insets/InsetBox.h"
 

@@ -15,10 +15,6 @@ libcontrollers_la_SOURCES= \
 	Dialog.h \
 	Kernel.C \
 	Kernel.h \
-	biblio.h \
-	character.h \
-	frnt_lang.h \
-	tex_helpers.h \
 	BCView.h \
 	BCView.C \
 	ButtonController.C \
@@ -96,4 +92,4 @@ libcontrollers_la_SOURCES= \
 	ControlWrap.C \
 	ControlWrap.h \
 	frontend_helpers.cpp \
-	helper_funcs.h
+	frontend_helpers.h

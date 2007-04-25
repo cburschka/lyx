@@ -536,11 +536,7 @@ src_frontends_controllers_header_files = Split('''
     ControlWrap.h
     Dialog.h
     Kernel.h
-    biblio.h
-    character.h
-    frnt_lang.h
-    helper_funcs.h
-    tex_helpers.h
+    frontend_helpers.h
 ''')
 
 

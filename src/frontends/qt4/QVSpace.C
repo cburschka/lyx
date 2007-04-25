@@ -28,7 +28,7 @@
 #include "vspace.h"
 
 #include "controllers/ControlVSpace.h"
-#include "controllers/helper_funcs.h"
+#include "controllers/frontend_helpers.h"
 
 #include "support/lstrings.h"
 

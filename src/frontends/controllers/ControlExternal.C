@@ -16,7 +16,7 @@
 
 #include "funcrequest.h"
 #include "gettext.h"
-#include "helper_funcs.h"
+#include "frontend_helpers.h"
 #include "lyxrc.h"
 
 #include "graphics/GraphicsCache.h"

@@ -23,7 +23,6 @@
 #include "panelstack.h"
 #include "Qt2BC.h"
 #include "checkedwidgets.h"
-#include "qt_helpers.h"
 
 // For latexHighlighter use in the preamble.
 #include "QViewSource.h"
@@ -31,21 +30,18 @@
 #include "bufferparams.h"
 #include "encoding.h"
 #include "gettext.h"
-#include "helper_funcs.h" // getSecond()
+#include "frontend_helpers.h" // getSecond()
 #include "language.h"
 #include "lyxrc.h" // defaultUnit
 #include "lyxtextclasslist.h"
 #include "tex-strings.h" // tex_graphics
 #include "Spacing.h"
 
-#include "frontends/controllers/biblio.h"
 #include "controllers/ControlDocument.h"
-#include "controllers/frnt_lang.h"
 
 #include "support/lstrings.h"
 
 #include "controllers/ControlDocument.h"
-#include "controllers/frnt_lang.h"
 
 
 using lyx::support::token;

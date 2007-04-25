@@ -13,14 +13,12 @@
 #include <config.h>
 
 #include "ControlBibtex.h"
-#include "biblio.h"
+#include "frontend_helpers.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
 
 #include "lyxrc.h"
-#include "helper_funcs.h"
-#include "tex_helpers.h"
 #include "gettext.h"
 
 #include "support/filefilterlist.h"

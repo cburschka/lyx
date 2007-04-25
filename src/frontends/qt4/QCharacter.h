@@ -17,8 +17,7 @@
 #include "ui/CharacterUi.h"
 #include <QDialog>
 
-#include "controllers/character.h"
-#include "controllers/frnt_lang.h"
+#include "controllers/frontend_helpers.h"
 
 #include <vector>
 

@@ -31,7 +31,7 @@
 #include "support/docstream.h"
 #include "support/filetools.h"
 
-#include "frontends/controllers/biblio.h"
+#include "frontends/controllers/frontend_helpers.h"
 
 namespace lyx {
 

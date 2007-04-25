@@ -12,7 +12,7 @@
 
 #include "ControlPrefs.h"
 
-#include "helper_funcs.h"
+#include "frontend_helpers.h"
 #include "Kernel.h"
 
 #include "bufferlist.h"

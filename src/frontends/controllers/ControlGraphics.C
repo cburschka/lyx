@@ -13,7 +13,7 @@
 
 #include "ControlGraphics.h"
 
-#include "helper_funcs.h"
+#include "frontend_helpers.h"
 
 #include "funcrequest.h"
 #include "gettext.h"

@@ -21,7 +21,7 @@
 #include "layout.h"
 
 #include "controllers/ControlParagraph.h"
-#include "controllers/helper_funcs.h"
+#include "controllers/frontend_helpers.h"
 
 #include <QCheckBox>
 #include <QLineEdit>

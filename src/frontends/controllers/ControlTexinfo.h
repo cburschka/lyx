@@ -14,7 +14,7 @@
 
 
 #include "Dialog.h"
-#include "tex_helpers.h"
+#include "frontend_helpers.h"
 
 namespace lyx {
 namespace frontend {
