@@ -15,7 +15,6 @@ set(LINKED_FILES
 	${TOP_SRC_DIR}/src/lyxlayout.C
 	${TOP_SRC_DIR}/src/lyxtextclass.C
 	${TOP_SRC_DIR}/src/lyxlex.C
-	${TOP_SRC_DIR}/src/lyxlex_pimpl.C
 )
 
 set(tex2lyx_sources
