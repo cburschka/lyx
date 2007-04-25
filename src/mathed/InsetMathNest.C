@@ -1,5 +1,5 @@
 /**
- * \file InsetMathNest.C
+ * \file InsetMathNest.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -1452,7 +1452,7 @@ bool InsetMathNest::script(LCursor & cur, bool up,
 		}
 		--cur.pos();
 		InsetMathScript * inset = cur.nextAtom().nucleus()->asScriptInset();
-		// See comment in MathParser.C for special handling of {}-bases
+		// See comment in MathParser.cpp for special handling of {}-bases
 
 		cur.push(*inset);
 		cur.idx() = 1;

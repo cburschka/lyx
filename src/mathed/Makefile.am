@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = pch.h InsetFormulaMacro.C
+EXTRA_DIST = pch.h InsetFormulaMacro.cpp
 
 BUILT_SOURCES = $(PCH_FILE)
 
@@ -9,150 +9,150 @@ noinst_LTLIBRARIES = libmathed.la
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
-	InsetMathAMSArray.C \
+	InsetMathAMSArray.cpp \
 	InsetMathAMSArray.h \
-	InsetMathArray.C \
+	InsetMathArray.cpp \
 	InsetMathArray.h \
-	InsetMathBig.C \
+	InsetMathBig.cpp \
 	InsetMathBig.h \
-	InsetMathBinom.C \
+	InsetMathBinom.cpp \
 	InsetMathBinom.h \
-	InsetMathBoldSymbol.C \
+	InsetMathBoldSymbol.cpp \
 	InsetMathBoldSymbol.h \
-	InsetMathBox.C \
-	InsetMathBoxed.C \
+	InsetMathBox.cpp \
+	InsetMathBoxed.cpp \
 	InsetMathBoxed.h \
 	InsetMathBox.h \
-	InsetMathBrace.C \
+	InsetMathBrace.cpp \
 	InsetMathBrace.h \
-	InsetMath.C \
-	InsetMathCases.C \
+	InsetMath.cpp \
+	InsetMathCases.cpp \
 	InsetMathCases.h \
-	InsetMathChar.C \
+	InsetMathChar.cpp \
 	InsetMathChar.h \
-	InsetMathColor.C \
+	InsetMathColor.cpp \
 	InsetMathColor.h \
-	InsetMathCommand.C \
+	InsetMathCommand.cpp \
 	InsetMathCommand.h \
-	InsetMathComment.C \
+	InsetMathComment.cpp \
 	InsetMathComment.h \
-	InsetMathDecoration.C \
+	InsetMathDecoration.cpp \
 	InsetMathDecoration.h \
-	InsetMathDelim.C \
+	InsetMathDelim.cpp \
 	InsetMathDelim.h \
-	InsetMathDFrac.C \
+	InsetMathDFrac.cpp \
 	InsetMathDFrac.h \
-	InsetMathDiff.C \
+	InsetMathDiff.cpp \
 	InsetMathDiff.h \
-	InsetMathDim.C \
+	InsetMathDim.cpp \
 	InsetMathDim.h \
-	InsetMathDots.C \
+	InsetMathDots.cpp \
 	InsetMathDots.h \
-	InsetMathEnv.C \
+	InsetMathEnv.cpp \
 	InsetMathEnv.h \
-	InsetMathExFunc.C \
+	InsetMathExFunc.cpp \
 	InsetMathExFunc.h \
-	InsetMathExInt.C \
+	InsetMathExInt.cpp \
 	InsetMathExInt.h \
-	InsetMathFBox.C \
+	InsetMathFBox.cpp \
 	InsetMathFBox.h \
-	InsetMathFont.C \
+	InsetMathFont.cpp \
 	InsetMathFont.h \
-	InsetMathFontOld.C \
+	InsetMathFontOld.cpp \
 	InsetMathFontOld.h \
-	InsetMathFracBase.C \
+	InsetMathFracBase.cpp \
 	InsetMathFracBase.h \
-	InsetMathFrac.C \
+	InsetMathFrac.cpp \
 	InsetMathFrac.h \
-	InsetMathFrameBox.C \
+	InsetMathFrameBox.cpp \
 	InsetMathFrameBox.h \
-	InsetMathGrid.C \
+	InsetMathGrid.cpp \
 	InsetMathGrid.h \
 	InsetMath.h \
-	InsetMathHull.C \
+	InsetMathHull.cpp \
 	InsetMathHull.h \
-	InsetMathKern.C \
+	InsetMathKern.cpp \
 	InsetMathKern.h \
-	InsetMathLefteqn.C \
+	InsetMathLefteqn.cpp \
 	InsetMathLefteqn.h \
-	InsetMathLim.C \
+	InsetMathLim.cpp \
 	InsetMathLim.h \
-	InsetMathMacro.C \
+	InsetMathMacro.cpp \
 	InsetMathMacro.h \
-	InsetMathMakebox.C \
+	InsetMathMakebox.cpp \
 	InsetMathMakebox.h \
-	InsetMathMatrix.C \
+	InsetMathMatrix.cpp \
 	InsetMathMatrix.h \
-	InsetMathNest.C \
+	InsetMathNest.cpp \
 	InsetMathNest.h \
-	InsetMathNumber.C \
+	InsetMathNumber.cpp \
 	InsetMathNumber.h \
-	InsetMathOverset.C \
+	InsetMathOverset.cpp \
 	InsetMathOverset.h \
-	InsetMathPar.C \
+	InsetMathPar.cpp \
 	InsetMathPar.h \
-	InsetMathPhantom.C \
+	InsetMathPhantom.cpp \
 	InsetMathPhantom.h \
-	InsetMathRef.C \
+	InsetMathRef.cpp \
 	InsetMathRef.h \
-	InsetMathRoot.C \
+	InsetMathRoot.cpp \
 	InsetMathRoot.h \
-	InsetMathScript.C \
+	InsetMathScript.cpp \
 	InsetMathScript.h \
-	InsetMathSize.C \
+	InsetMathSize.cpp \
 	InsetMathSize.h \
-	InsetMathSpace.C \
+	InsetMathSpace.cpp \
 	InsetMathSpace.h \
-	InsetMathSplit.C \
+	InsetMathSplit.cpp \
 	InsetMathSplit.h \
-	InsetMathSqrt.C \
+	InsetMathSqrt.cpp \
 	InsetMathSqrt.h \
-	InsetMathStackrel.C \
+	InsetMathStackrel.cpp \
 	InsetMathStackrel.h \
-	InsetMathString.C \
+	InsetMathString.cpp \
 	InsetMathString.h \
-	InsetMathSubstack.C \
+	InsetMathSubstack.cpp \
 	InsetMathSubstack.h \
-	InsetMathSymbol.C \
+	InsetMathSymbol.cpp \
 	InsetMathSymbol.h \
-	InsetMathTabular.C \
+	InsetMathTabular.cpp \
 	InsetMathTabular.h \
-	InsetMathTFrac.C \
+	InsetMathTFrac.cpp \
 	InsetMathTFrac.h \
-	InsetMathUnderset.C \
+	InsetMathUnderset.cpp \
 	InsetMathUnderset.h \
-	InsetMathUnknown.C \
+	InsetMathUnknown.cpp \
 	InsetMathUnknown.h \
-	InsetMathXArrow.C \
+	InsetMathXArrow.cpp \
 	InsetMathXArrow.h \
-	InsetMathXYMatrix.C \
+	InsetMathXYMatrix.cpp \
 	InsetMathXYMatrix.h \
-	MathAtom.C \
+	MathAtom.cpp \
 	MathAtom.h \
-	MathAutoCorrect.C \
+	MathAutoCorrect.cpp \
 	MathAutoCorrect.h \
-	MathData.C \
+	MathData.cpp \
 	MathData.h \
-	MathExtern.C \
+	MathExtern.cpp \
 	MathExtern.h \
-	MathFactory.C \
+	MathFactory.cpp \
 	MathFactory.h \
 	MathGridInfo.h \
-	MathMacroArgument.C \
+	MathMacroArgument.cpp \
 	MathMacroArgument.h \
-	MathMacroTable.C \
+	MathMacroTable.cpp \
 	MathMacroTable.h \
-	MathMacroTemplate.C \
+	MathMacroTemplate.cpp \
 	MathMacroTemplate.h \
-	MathParser.C \
+	MathParser.cpp \
 	MathParser.h \
 	MathReplace.h \
-	MathStream.C \
+	MathStream.cpp \
 	MathStream.h \
-	MathSupport.C \
+	MathSupport.cpp \
 	MathSupport.h \
-	TextPainter.C \
+	TextPainter.cpp \
 	TextPainter.h 
-#	InsetMathMBox.C
+#	InsetMathMBox.cpp
 #	InsetMathMBox.h
 

@@ -38,7 +38,7 @@ ControlMath::ControlMath(Dialog & dialog)
 	// in "lib/symbols". Unfortunately, some of those are already 
 	// defined with non-unicode ids for use within mathed.
 	// FIXME 2: We should fill-in this map with the parsed "symbols"
-	// file done in MathFactory.C.
+	// file done in MathFactory.cpp.
 	math_symbols_["("] = MathSymbol('(');
 	math_symbols_[")"] = MathSymbol(')');
 	math_symbols_["{"] = MathSymbol('{');

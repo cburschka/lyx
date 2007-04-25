@@ -10,8 +10,8 @@ file(GLOB mathed_sources ${TOP_SRC_DIR}/src/mathed/${LYX_CPP_FILES})
 file(GLOB mathed_headers ${TOP_SRC_DIR}/src/mathed/${LYX_CPP_FILES})
 
 list(REMOVE_ITEM mathed_sources
-	${TOP_SRC_DIR}/src/mathed/InsetMathXYArrow.C
-	${TOP_SRC_DIR}/src/mathed/InsetFormulaMacro.C)
+	${TOP_SRC_DIR}/src/mathed/InsetMathXYArrow.cpp
+	${TOP_SRC_DIR}/src/mathed/InsetFormulaMacro.cpp)
 
 lyx_add_msvc_pch(mathed)
 

@@ -10,24 +10,24 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libgraphics_la_SOURCES = \
 	GraphicsCache.h \
-	GraphicsCache.C \
+	GraphicsCache.cpp \
 	GraphicsCacheItem.h \
-	GraphicsCacheItem.C \
+	GraphicsCacheItem.cpp \
 	GraphicsConverter.h \
-	GraphicsConverter.C \
+	GraphicsConverter.cpp \
 	GraphicsImage.h \
-	GraphicsImage.C \
+	GraphicsImage.cpp \
 	GraphicsLoader.h \
-	GraphicsLoader.C \
-	GraphicsParams.C \
+	GraphicsLoader.cpp \
+	GraphicsParams.cpp \
 	GraphicsParams.h \
 	LoaderQueue.h \
-	LoaderQueue.C \
+	LoaderQueue.cpp \
 	GraphicsTypes.h \
-	GraphicsTypes.C \
+	GraphicsTypes.cpp \
 	PreviewImage.h \
-	PreviewImage.C \
+	PreviewImage.cpp \
 	PreviewLoader.h \
-	PreviewLoader.C \
+	PreviewLoader.cpp \
 	Previews.h \
-	Previews.C
+	Previews.cpp
