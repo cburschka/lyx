@@ -73,8 +73,8 @@ format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
                    ("1_1_6_3", [218], ["1.1.6.3","1.1.6.4","1.1"]),
                    ("1_2",     [220], generate_minor_versions("1.2" , 4)),
                    ("1_3",     [221], generate_minor_versions("1.3" , 7)),
-                   ("1_4", range(222,246), generate_minor_versions("1.4" , 3)),
-                   ("1_5", range(246,264), generate_minor_versions("1.5" , 0))]
+                   ("1_4", range(222,246), generate_minor_versions("1.4" , 4)),
+                   ("1_5", range(246,265), generate_minor_versions("1.5" , 0))]
 
 
 def formats_list():
@@ -257,6 +257,7 @@ class LyX_Base:
         " Writes the LyX file to self.output."
         self.set_version()
         self.set_format()
+        self.set_textclass()
         if self.encoding == "auto":
             self.encoding = get_encoding(self.language, self.encoding, self.format, self.cjk_encoding)
 
@@ -362,6 +363,11 @@ class LyX_Base:
             format = str(self.format)
         i = find_token(self.header, "\\lyxformat", 0)
         self.header[i] = "\\lyxformat %s" % format
+
+
+    def set_textclass(self):
+        i = find_token(self.header, "\\textclass", 0)
+        self.header[i] = "\\textclass %s" % self.textclass
 
 
     def set_parameter(self, param, value):

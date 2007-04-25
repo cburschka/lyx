@@ -1245,6 +1245,17 @@ def revert_language_name(document):
         i = find_token(document.header, "\\language", 0)
         document.header[i] = "\\language %s" % document.language
 
+#
+#  \textclass cv -> \textclass simplecv
+def convert_cv_textclass(document):
+    if document.textclass == "cv":
+        document.textclass = "simplecv"
+
+
+def revert_cv_textclass(document):
+    if document.textclass == "simplecv":
+        document.textclass = "cv"
+
 
 ##
 # Conversion hub
@@ -1268,9 +1279,11 @@ convert = [[246, []],
            [260, []],
            [261, [convert_changes]],
            [262, []],
-           [263, [normalize_language_name]]]
+           [263, [normalize_language_name]],
+           [264, [convert_cv_textclass]]]
 
-revert =  [[262, [revert_language_name]],
+revert =  [[263, [revert_cv_textclass]],
+           [262, [revert_language_name]],
            [261, [revert_ascii]],
            [260, []],
            [259, [revert_utf8x]],
