@@ -204,7 +204,7 @@ void addFontResources()
 	FSRef  fontDirRef;
 	FSSpec  fontDirSpec;
 	CFStringRef  filePath = CFStringCreateWithBytes(kCFAllocatorDefault,
-					(UInt8 *) "Fonts", strlen("Fonts"),
+					(UInt8 *) "fonts", strlen("fonts"),
 					kCFStringEncodingISOLatin1, false);
 
 	myAppResourcesURL = CFBundleCopyResourcesDirectoryURL(myAppBundle);
