@@ -207,6 +207,7 @@ dist_examples_DATA = \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
 	examples/script_form.lyx \
+	examples/simplecv.lyx \
 	examples/splash.lyx \
 	examples/g-brief2.lyx
 
@@ -958,6 +959,7 @@ dist_layouts_DATA =\
 	layouts/scrreprt.layout \
 	layouts/seminar.layout \
 	layouts/siamltex.layout \
+	layouts/simplecv.layout \
 	layouts/slides.layout \
 	layouts/spie.layout \
 	layouts/stdclass.inc \

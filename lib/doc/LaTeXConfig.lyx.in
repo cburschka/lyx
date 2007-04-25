@@ -1,4 +1,4 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -2049,6 +2049,42 @@ macros/latex/contrib/siam/siamltex.tar
 Notes: The Society for Industrial and Applied Mathematics, Philadelphia,
  Pennsylvania, wants to ensure quality typesetting according to SIAM style
  standards by providing this LaTeX style.
+\end_layout
+
+\begin_layout Subsection
+simplecv
+\end_layout
+
+\begin_layout Description
+Found: @chk_simplecv@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/simplecv
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+simplecv
+\family default
+ document class is intended to provide a simple yet elegant way to write
+ your curriculum vitae (resume).
+ It is rather minimalist, but has nice features like bibliography support
+ (useful for academics).
+ This is a repackaging of the 
+\family sans
+cv
+\family default
+ class that has been available with LyX for a long time.
+ The change of name has been made necessary by the existence of another
+ 
+\family sans
+cv
+\family default
+ class on CTAN.
 \end_layout
 
 \begin_layout Subsection
