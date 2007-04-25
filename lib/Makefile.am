@@ -85,7 +85,7 @@ dist_deexamples_DATA = \
 	examples/de/Waehrungen.lyx \
 	examples/de/beispiel_gelyxt.lyx \
 	examples/de/beispiel_roh.lyx \
-	examples/de/decimal.lyx \
+	examples/de/Dezimal.lyx \
 	examples/de/splash.lyx \
 	examples/de/mathed.lyx \
 	examples/de/multicol.lyx
