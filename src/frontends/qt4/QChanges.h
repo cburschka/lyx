@@ -12,11 +12,34 @@
 #ifndef QCHANGES_H
 #define QCHANGES_H
 
-#include "QChangesDialog.h"
 #include "QDialogView.h"
+#include "ui/ChangesUi.h"
+#include <QCloseEvent>
+#include <QDialog>
 
 namespace lyx {
 namespace frontend {
+
+class QChanges;
+
+class QChangesDialog : public QDialog, public Ui::QChangesUi {
+	Q_OBJECT
+public:
+
+	QChangesDialog(QChanges * form);
+
+protected Q_SLOTS:
+
+	virtual void nextPressed();
+	virtual void acceptPressed();
+	virtual void rejectPressed();
+
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+
+private:
+	QChanges * form_;
+};
 
 class ControlChanges;
 

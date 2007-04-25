@@ -43,11 +43,9 @@ libqt4_la_SOURCES = \
 	QLMenubar.C QLMenubar.h \
 	QBox.C QBox.h \
 	QBranches.C QBranches.h \
-	QChanges.C QChanges.h \
 	QCharacter.C QCharacter.h \
 	QCitation.C QCitation.h \
 	QDialogView.C QDialogView.h \
-	QErrorList.C QErrorList.h \
 	QFloat.C QFloat.h \
 	QGraphics.C QGraphics.h \
 	QInclude.C QInclude.h \

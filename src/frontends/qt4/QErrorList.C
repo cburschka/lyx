@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QErrorList.h"
-#include "QErrorListDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -20,14 +19,63 @@
 #include <QListWidget>
 #include <QTextBrowser>
 #include <QPushButton>
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlErrorList, QView<QErrorListDialog> > errorlist_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QErrorListDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QErrorListDialog::QErrorListDialog(QErrorList * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+	connect(errorsLW, SIGNAL( itemActivated(QListWidgetItem *)),
+		form, SLOT(slotClose()));
+	connect( errorsLW, SIGNAL( itemClicked(QListWidgetItem *)), 
+		this, SLOT(select_adaptor(QListWidgetItem *)));
+}
+
+
+void QErrorListDialog::select_adaptor(QListWidgetItem * item)
+{
+	form_->select(item);
+}
+
+
+void QErrorListDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QErrorListDialog::showEvent(QShowEvent *e)
+{
+	errorsLW->setCurrentRow(0);
+	form_->select(errorsLW->item(0));
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QErrorList
+//
+/////////////////////////////////////////////////////////////////////
+
+
+typedef QController<ControlErrorList, QView<QErrorListDialog> >
+	ErrorListBase;
 
 QErrorList::QErrorList(Dialog & parent)
-	: errorlist_base_class(parent, lyx::docstring())
+	: ErrorListBase(parent, lyx::docstring())
 {}
 
 
@@ -61,3 +109,6 @@ void QErrorList::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+
+#include "QErrorList_moc.cpp"

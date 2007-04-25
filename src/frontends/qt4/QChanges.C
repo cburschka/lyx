@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "QChanges.h"
-#include "QChangesDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -21,18 +20,69 @@
 #include "controllers/ControlChanges.h"
 
 #include <QPushButton>
+#include <QCloseEvent>
 #include <QTextBrowser>
 
 using lyx::support::bformat;
 
+
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlChanges, QView<QChangesDialog> > changes_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QChangesDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QChangesDialog::QChangesDialog(QChanges * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextPressed()));
+	connect(rejectPB, SIGNAL(clicked()), this, SLOT(rejectPressed()));
+	connect(acceptPB, SIGNAL(clicked()), this, SLOT(acceptPressed()));
+}
+
+
+void QChangesDialog::nextPressed()
+{
+	form_->next();
+}
+
+
+void QChangesDialog::acceptPressed()
+{
+	form_->accept();
+}
+
+
+void QChangesDialog::rejectPressed()
+{
+	form_->reject();
+}
+
+
+void QChangesDialog::closeEvent(QCloseEvent *e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QChanges
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlChanges, QView<QChangesDialog> > ChangesBase;
 
 
 QChanges::QChanges(Dialog & parent)
-	: changes_base_class(parent, _("Merge Changes"))
+	: ChangesBase(parent, _("Merge Changes"))
 {
 }
 
@@ -81,3 +131,5 @@ void QChanges::reject()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QChanges_moc.cpp"

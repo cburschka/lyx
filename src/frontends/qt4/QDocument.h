@@ -56,7 +56,6 @@ public:
 	friend class QDocument;
 
 	QDocumentDialog(QDocument *);
-	~QDocumentDialog();
 
 	void updateParams(BufferParams const & params);
 	void apply(BufferParams & params);

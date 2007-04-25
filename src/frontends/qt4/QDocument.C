@@ -58,15 +58,14 @@ using std::vector;
 using std::string;
 
 
+namespace lyx {
+namespace frontend {
+
 /////////////////////////////////////////////////////////////////////
 //
 // DocumentDialog
 //
 /////////////////////////////////////////////////////////////////////
-
-namespace lyx {
-namespace frontend {
-
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: form_(form),
@@ -74,20 +73,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()),
-		form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), form, SLOT(slotRestore()));
 
-
-	connect(savePB, SIGNAL( clicked() ), 
-		this, SLOT( saveDefaultClicked() ) );
-	connect(defaultPB, SIGNAL( clicked() ), 
-		this, SLOT( useDefaultsClicked() ) );
+	connect(savePB, SIGNAL(clicked()), this, SLOT(saveDefaultClicked()));
+	connect(defaultPB, SIGNAL(clicked()), this, SLOT(useDefaultsClicked()));
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	form_->bcview().setOK(okPB);
@@ -98,17 +90,28 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
 	// text layout
-	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
-	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->indentRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipLengthCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(setSkip(int)));
-	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(enableSkip(bool)));
-	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
+		this, SLOT(setLSpacing(int)));
+	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->indentRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipLengthCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipCO, SIGNAL(activated(int)),
+		this, SLOT(setSkip(int)));
+	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)),
+		this, SLOT(enableSkip(bool)));
+	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
@@ -132,23 +135,32 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// initialize the length validator
 	addCheckedLineEdit(form_->bcview(), textLayoutModule->skipLE);
 
-
-
-
 	fontModule = new UiWidget<Ui::FontUi>;
 	// fonts
-	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)), this, SLOT(romanChanged(int)));
-	connect(fontModule->fontsSansCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontsSansCO, SIGNAL(activated(int)), this, SLOT(sansChanged(int)));
-	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)), this, SLOT(ttChanged(int)));
-	connect(fontModule->fontsDefaultCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontScCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(fontModule->fontOsfCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)),
+		this, SLOT(romanChanged(int)));
+	connect(fontModule->fontsSansCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontsSansCO, SIGNAL(activated(int)),
+		this, SLOT(sansChanged(int)));
+	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)),
+		this, SLOT(ttChanged(int)));
+	connect(fontModule->fontsDefaultCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontsizeCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontScCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
 		QString font = toqstr(tex_fonts_roman_gui[n]);
@@ -179,22 +191,33 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 			qt_(ControlDocument::fontfamilies_gui[n]));
 
 
-
-
 	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
 	// page layout
-	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
-	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
-	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()), this, SLOT(portraitChanged()));
-	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->paperheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->paperwidthLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->paperwidthUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->paperheightUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->landscapeRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->facingPagesCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
+		this, SLOT(setCustomPapersize(int)));
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
+		this, SLOT(setCustomPapersize(int)));
+	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()),
+		this, SLOT(portraitChanged()));
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperheightLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperwidthLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperwidthUnitCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperheightUnitCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->landscapeRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->facingPagesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+
 	pageLayoutModule->pagestyleCO->addItem(qt_("default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
@@ -231,22 +254,38 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	marginsModule = new UiWidget<Ui::MarginsUi>;
 	// margins
-	connect(marginsModule->marginCB, SIGNAL(toggled(bool)), this, SLOT(setCustomMargins(bool)));
-	connect(marginsModule->marginCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(marginsModule->topLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->topUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->bottomUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(marginsModule->innerLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->innerUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(marginsModule->outerLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->outerUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(marginsModule->headheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->headheightUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->headsepUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->footskipUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->marginCB, SIGNAL(toggled(bool)),
+		this, SLOT(setCustomMargins(bool)));
+	connect(marginsModule->marginCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->topLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->topUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->bottomUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->innerLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->innerUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->outerLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->outerUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->headheightLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->headheightUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->headsepUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->footskipUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	marginsModule->topLE->setValidator(unsignedLengthValidator(
 		marginsModule->topLE));
 	marginsModule->bottomLE->setValidator(unsignedLengthValidator(
@@ -278,17 +317,20 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		marginsModule->footskipL);
 
 
-
-
-
 	langModule = new UiWidget<Ui::LanguageUi>;
-	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), langModule->encodingL, SLOT(setDisabled(bool)));
-	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), langModule->encodingCO, SLOT(setDisabled(bool)));
+	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)),
+		langModule->encodingL, SLOT(setDisabled(bool)));
+	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)),
+		langModule->encodingCO, SLOT(setDisabled(bool)));
 	// language & quote
-	connect(langModule->languageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(langModule->defaultencodingCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(langModule->encodingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(langModule->quoteStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(langModule->languageCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->defaultencodingCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(langModule->encodingCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	// language & quotes
 	vector<LanguagePair> const langs = getLanguageData(false);
 	vector<LanguagePair>::const_iterator lit  = langs.begin();
@@ -317,10 +359,14 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	numberingModule = new UiWidget<Ui::NumberingUi>;
 	// numbering
-	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)), this, SLOT(updateNumbering()));
-	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)), this, SLOT(updateNumbering()));
+	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)),
+		this, SLOT(updateNumbering()));
+	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)),
+		this, SLOT(updateNumbering()));
 	numberingModule->tocTW->setColumnCount(3);
 	numberingModule->tocTW->headerItem()->setText(0, qt_("Example"));
 	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
@@ -328,14 +374,21 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 
 	biblioModule = new UiWidget<Ui::BiblioUi>;
-	connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citationStyleL, SLOT( setEnabled(bool) ) );
-	connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citeStyleCO, SLOT( setEnabled(bool) ) );
+	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
+		biblioModule->citationStyleL, SLOT(setEnabled(bool)));
+	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
+		biblioModule->citeStyleCO, SLOT(setEnabled(bool)));
 	// biblio
-	connect(biblioModule->citeDefaultRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(biblioModule->citeNatbibRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(biblioModule->citeJurabibRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(biblioModule->bibtopicCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeDefaultRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(biblioModule->citeNatbibRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(biblioModule->citeJurabibRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(biblioModule->bibtopicCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	// biblio
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
@@ -344,20 +397,30 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 
 	mathsModule = new UiWidget<Ui::MathsUi>;
-	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), mathsModule->amsCB, SLOT(setDisabled(bool)));
-	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)), mathsModule->esintCB, SLOT(setDisabled(bool)));
+	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)),
+		mathsModule->amsCB, SLOT(setDisabled(bool)));
+	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)),
+		mathsModule->esintCB, SLOT(setDisabled(bool)));
 	// maths
-	connect(mathsModule->amsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(mathsModule->amsautoCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(mathsModule->esintCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(mathsModule->esintautoCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(mathsModule->amsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->amsautoCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->esintCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->esintautoCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class
-	connect(latexModule->classCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(latexModule->optionsLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(latexModule->psdriverCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(latexModule->classCO, SIGNAL(activated(int)), this, SLOT(classChanged()));
+	connect(latexModule->classCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(latexModule->optionsLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(latexModule->psdriverCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(latexModule->classCO, SIGNAL(activated(int)),
+		this, SLOT(classChanged()));
 	// packages
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = tex_graphics[n];
@@ -377,7 +440,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// branches
 	branchesModule = new QBranches;
-	connect(branchesModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
+	connect(branchesModule, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
 
 	// preamble
 	preambleModule = new UiWidget<Ui::PreambleUi>;
@@ -390,12 +454,14 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// bullets
 	bulletsModule = new BulletsModule;
-	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
+	connect(bulletsModule, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
 
 
 	// float
 	floatModule = new FloatPlacement;
-	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
+	connect(floatModule, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
 
 	docPS->addPanel(latexModule, _("Document Class"));
 	docPS->addPanel(fontModule, _("Fonts"));
@@ -416,11 +482,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 #if QT_VERSION >= 0x040200
 	docPS->updateGeometry();
 #endif
-}
-
-
-QDocumentDialog::~QDocumentDialog()
-{
 }
 
 

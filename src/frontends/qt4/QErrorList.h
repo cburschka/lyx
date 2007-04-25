@@ -13,12 +13,33 @@
 #define QERRORLIST_H
 
 #include "QDialogView.h"
-#include "QErrorListDialog.h"
+#include "ui/ErrorListUi.h"
+
+#include <QDialog>
 
 class QListWidgetItem;
+class QCloseEvent;
+class QShowEvent;
 
 namespace lyx {
 namespace frontend {
+
+class QErrorList;
+
+class QErrorListDialog : public QDialog, public Ui::QErrorListUi {
+	Q_OBJECT
+public:
+	QErrorListDialog(QErrorList * form);
+
+public Q_SLOTS:
+	void select_adaptor(QListWidgetItem *);
+protected:
+	void closeEvent(QCloseEvent *);
+	void showEvent(QShowEvent *);
+private:
+	QErrorList * form_;
+};
+
 
 class ControlErrorList;
 
