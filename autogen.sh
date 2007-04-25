@@ -4,7 +4,7 @@ ACLOCAL="aclocal -I ${PWD}/m4"
 AUTOHEADER="autoheader"
 AUTOMAKE="automake --add-missing --copy --foreign"
 AUTOCONF="autoconf"
-ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 pkg.m4 qt.m4 qt4.m4 spell.m4"
+ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 pkg.m4 qt4.m4 spell.m4"
 
 # Discover what version of automake we are using.
 automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`
@@ -39,7 +39,6 @@ test "$autoversion" != "" && {
 
 case $autoversion in
     *' '2.5[2-9]|*' '2.60[ab]|*' '2.6[0-1])
-	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
