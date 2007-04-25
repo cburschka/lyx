@@ -1,6 +1,8 @@
 include $(top_srcdir)/config/common.am
 
+if INSTALL_MACOSX
 SUBDIRS = MacOSX
+endif
 
 EXTRA_DIST = boostworkaround.txt ChangeLog Code_rules FORMAT \
 	gettext.patch lazy_lyxtext.txt lyx3 lyx.rpm.README \

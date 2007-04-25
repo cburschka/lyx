@@ -581,6 +581,7 @@ AC_ARG_WITH(packaging,
                   *) lyx_use_packaging=posix;;
   esac])
 AC_MSG_RESULT($lyx_use_packaging)
+lyx_install_macosx=false
 case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
 	   PACKAGE=LyX${version_suffix}
@@ -589,7 +590,8 @@ case $lyx_use_packaging in
 	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
 	   pkgdatadir='${datadir}'
-	   mandir='${datadir}/man' ;;
+	   mandir='${datadir}/man' 
+	   lyx_install_macosx=false ;;
   windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
 	   PACKAGE=LyX${version_suffix}
 	   default_prefix="C:/Program Files/${PACKAGE}"
@@ -605,6 +607,7 @@ case $lyx_use_packaging in
 	   default_prefix=$ac_default_prefix ;;
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
 esac
+AM_CONDITIONAL(INSTALL_MACOSX, $lyx_install_macosx)
 AC_SUBST(pkgdatadir)
 AC_SUBST(program_suffix)
 ])
