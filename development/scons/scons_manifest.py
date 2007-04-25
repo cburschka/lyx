@@ -680,6 +680,10 @@ src_frontends_qt4_moc_files = Split('''
     QTabular.C
     QVSpace.C
     QWrap.C
+    QDocument.C
+    QLog.C
+    QParagraph.C
+    QShowFile.C
     emptytable.C
     FileDialog_private.C
     FloatPlacement.C
@@ -699,7 +703,6 @@ src_frontends_qt4_moc_files = Split('''
     QCommandBuffer.C
     QCommandEdit.C
     QDelimiterDialog.C
-    QDocumentDialog.C
     QErrorListDialog.C
     QExternalDialog.C
     QFloatDialog.C
@@ -708,7 +711,6 @@ src_frontends_qt4_moc_files = Split('''
     QIndexDialog.C
     Action.C
     QLog.C
-    QLogDialog.C
     QViewSource.C
     QLMenubar.C
     QLPopupMenu.C
@@ -717,12 +719,10 @@ src_frontends_qt4_moc_files = Split('''
     QNomencl.C
     QNomenclDialog.C
     QNoteDialog.C
-    QParagraphDialog.C
     QPrefsDialog.C
     QRefDialog.C
     QSendtoDialog.C
     qsetborder.C
-    QShowFileDialog.C
     QDialogView.C
     TocModel.C
     TocWidget.C
@@ -773,7 +773,6 @@ src_frontends_qt4_header_files = Split('''
     QDelimiterDialog.h
     QDialogView.h
     QDocument.h
-    QDocumentDialog.h
     QERT.h
     QErrorList.h
     QErrorListDialog.h
@@ -795,7 +794,6 @@ src_frontends_qt4_header_files = Split('''
     QLPrintDialog.h
     QLToolbar.h
     QLog.h
-    QLogDialog.h
     QLyXKeySym.h
     QMathMatrixDialog.h
     QNomencl.h
@@ -803,7 +801,6 @@ src_frontends_qt4_header_files = Split('''
     QNote.h
     QNoteDialog.h
     QParagraph.h
-    QParagraphDialog.h
     QPrefs.h
     QPrefsDialog.h
     QPrint.h
@@ -813,7 +810,6 @@ src_frontends_qt4_header_files = Split('''
     QSendto.h
     QSendtoDialog.h
     QShowFile.h
-    QShowFileDialog.h
     QSpellchecker.h
     QTabular.h
     QTabularCreate.h
@@ -882,7 +878,6 @@ src_frontends_qt4_files = Split('''
     QDelimiterDialog.C
     QDialogView.C
     QDocument.C
-    QDocumentDialog.C
     QERT.C
     QErrorList.C
     QErrorListDialog.C
@@ -903,7 +898,6 @@ src_frontends_qt4_files = Split('''
     QLPrintDialog.C
     QLToolbar.C
     QLog.C
-    QLogDialog.C
     QLyXKeySym.C
     QMathMatrixDialog.C
     QNomencl.C
@@ -911,7 +905,6 @@ src_frontends_qt4_files = Split('''
     QNote.C
     QNoteDialog.C
     QParagraph.C
-    QParagraphDialog.C
     QPrefs.C
     QPrefsDialog.C
     QPrint.C
@@ -921,7 +914,6 @@ src_frontends_qt4_files = Split('''
     QSendto.C
     QSendtoDialog.C
     QShowFile.C
-    QShowFileDialog.C
     QSpellchecker.C
     QTabular.C
     QTabularCreate.C
