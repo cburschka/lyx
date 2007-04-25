@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "MathAutoCorrect.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "InsetMath.h"
 #include "MathSupport.h"
 #include "MathParser.h"

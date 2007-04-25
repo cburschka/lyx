@@ -18,7 +18,7 @@
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathDelim.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "InsetMathDiff.h"
 #include "InsetMathExFunc.h"
 #include "InsetMathExInt.h"

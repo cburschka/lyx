@@ -180,7 +180,7 @@ src_mathed_header_files = Split('''
     InsetMathCases.h
     InsetMathChar.h
     InsetMathColor.h
-    InsetMathCommand.h
+    CommandInset.h
     InsetMathComment.h
     InsetMathDFrac.h
     InsetMathDecoration.h
@@ -202,7 +202,7 @@ src_mathed_header_files = Split('''
     InsetMathKern.h
     InsetMathLefteqn.h
     InsetMathLim.h
-    InsetMathMacro.h
+    MathMacro.h
     InsetMathMakebox.h
     InsetMathMatrix.h
     InsetMathNest.h
@@ -229,7 +229,7 @@ src_mathed_header_files = Split('''
     InsetMathXYMatrix.h
     MathAtom.h
     MathAutoCorrect.h
-    MathData.h
+    MathArray.h
     MathExtern.h
     MathFactory.h
     MathGridInfo.h
@@ -306,7 +306,7 @@ src_mathed_files = Split('''
     InsetMathXYMatrix.cpp
     MathAtom.cpp
     MathAutoCorrect.cpp
-    MathData.cpp
+    MathArray.cpp
     MathExtern.cpp
     MathFactory.cpp
     MathMacroArgument.cpp
@@ -331,7 +331,7 @@ src_insets_header_files = Split('''
     InsetBranch.h
     InsetCaption.h
     InsetCharStyle.h
-    InsetCite.h
+    InsetCitation.h
     InsetCollapsable.h
     InsetCommand.h
     InsetCommandParams.h
@@ -354,7 +354,7 @@ src_insets_header_files = Split('''
     InsetNomencl.h
     InsetNote.h
     InsetOptArg.h
-    InsetPageBreak.h
+    InsetPagebreak.h
     InsetQuotes.h
     InsetRef.h
     InsetSpace.h
@@ -386,7 +386,7 @@ src_insets_files = Split('''
     InsetBranch.cpp
     InsetCaption.cpp
     InsetCharStyle.cpp
-    InsetCite.cpp
+    InsetCitation.cpp
     InsetCollapsable.cpp
     InsetCommand.cpp
     InsetCommandParams.cpp
@@ -409,7 +409,7 @@ src_insets_files = Split('''
     InsetNomencl.cpp
     InsetNote.cpp
     InsetOptArg.cpp
-    InsetPageBreak.cpp
+    InsetPagebreak.cpp
     InsetQuotes.cpp
     InsetRef.cpp
     InsetSpace.cpp

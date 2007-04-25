@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetMathMacro.h
+ * \file MathMacro.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #define MATH_MACRO_H
 
 #include "InsetMathNest.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "InsetMathNest.h"
 #include "MathMacroTable.h"
 

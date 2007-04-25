@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathGrid.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathParser.h"
 #include "MathStream.h"
 

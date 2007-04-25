@@ -1,5 +1,5 @@
 /**
- * \file InsetMathMacro.cpp
+ * \file MathMacro.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "InsetMathMacro.h"
+#include "MathMacro.h"
 #include "MathSupport.h"
 #include "MathExtern.h"
 #include "MathStream.h"

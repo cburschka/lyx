@@ -12,7 +12,7 @@
 
 #include "InsetMathBoldSymbol.h"
 #include "MathStream.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
 

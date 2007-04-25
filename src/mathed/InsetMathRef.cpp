@@ -20,7 +20,7 @@
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathFactory.h"
 #include "MathSupport.h"
 #include "outputparams.h"

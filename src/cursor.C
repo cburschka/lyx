@@ -36,7 +36,7 @@
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
 
-#include "mathed/MathData.h"
+#include "mathed/MathArray.h"
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathScript.h"
 #include "mathed/MathMacroTable.h"

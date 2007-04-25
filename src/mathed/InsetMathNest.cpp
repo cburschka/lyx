@@ -18,7 +18,7 @@
 #include "InsetMathBrace.h"
 #include "InsetMathColor.h"
 #include "InsetMathComment.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "InsetMathDelim.h"
 #include "MathFactory.h"
 #include "InsetMathHull.h"

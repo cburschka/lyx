@@ -60,7 +60,7 @@
 #include "insets/InsetHFill.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetNewline.h"
-#include "insets/InsetPageBreak.h"
+#include "insets/InsetPagebreak.h"
 #include "insets/InsetOptArg.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetSpecialChar.h"

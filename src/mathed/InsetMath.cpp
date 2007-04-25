@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetMath.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathStream.h"
 #include "gettext.h"
 #include "debug.h"

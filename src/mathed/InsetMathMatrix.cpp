@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathMatrix.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathStream.h"
 
 

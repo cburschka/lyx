@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathTabular.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathStream.h"
 #include "MathStream.h"
 

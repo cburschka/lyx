@@ -19,7 +19,7 @@
 #include "paragraph.h"
 
 #include "mathed/InsetMath.h"
-#include "mathed/MathData.h"
+#include "mathed/MathArray.h"
 
 #include <boost/assert.hpp>
 

@@ -13,7 +13,7 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "MathData.h"
+#include "MathArray.h"
 
 #include "insets/InsetBase.h"
 

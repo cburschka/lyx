@@ -32,8 +32,8 @@ libmathed_la_SOURCES = \
 	InsetMathChar.h \
 	InsetMathColor.cpp \
 	InsetMathColor.h \
-	InsetMathCommand.cpp \
-	InsetMathCommand.h \
+	CommandInset.cpp \
+	CommandInset.h \
 	InsetMathComment.cpp \
 	InsetMathComment.h \
 	InsetMathDecoration.cpp \
@@ -77,8 +77,8 @@ libmathed_la_SOURCES = \
 	InsetMathLefteqn.h \
 	InsetMathLim.cpp \
 	InsetMathLim.h \
-	InsetMathMacro.cpp \
-	InsetMathMacro.h \
+	MathMacro.cpp \
+	MathMacro.h \
 	InsetMathMakebox.cpp \
 	InsetMathMakebox.h \
 	InsetMathMatrix.cpp \
@@ -131,8 +131,8 @@ libmathed_la_SOURCES = \
 	MathAtom.h \
 	MathAutoCorrect.cpp \
 	MathAutoCorrect.h \
-	MathData.cpp \
-	MathData.h \
+	MathArray.cpp \
+	MathArray.h \
 	MathExtern.cpp \
 	MathExtern.h \
 	MathFactory.cpp \
@@ -146,7 +146,7 @@ libmathed_la_SOURCES = \
 	MathMacroTemplate.h \
 	MathParser.cpp \
 	MathParser.h \
-	MathReplace.h \
+	ReplaceData.h \
 	MathStream.cpp \
 	MathStream.h \
 	MathSupport.cpp \

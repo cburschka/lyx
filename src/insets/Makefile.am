@@ -43,8 +43,8 @@ libinsets_la_SOURCES = \
 	InsetCaption.h \
 	InsetCharStyle.cpp \
 	InsetCharStyle.h \
-	InsetCite.cpp \
-	InsetCite.h \
+	InsetCitation.cpp \
+	InsetCitation.h \
 	InsetCollapsable.cpp \
 	InsetCollapsable.h \
 	InsetCommand.cpp \
@@ -89,8 +89,8 @@ libinsets_la_SOURCES = \
 	InsetNote.h \
 	InsetOptArg.cpp \
 	InsetOptArg.h \
-	InsetPageBreak.cpp \
-	InsetPageBreak.h \
+	InsetPagebreak.cpp \
+	InsetPagebreak.h \
 	InsetQuotes.cpp \
 	InsetQuotes.h \
 	InsetRef.cpp \

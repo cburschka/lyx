@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file MathReplace.h
+ * \file ReplaceData.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define MATH_REPLACE_H
 
 
-#include "MathData.h"
+#include "MathArray.h"
 
 
 namespace lyx {

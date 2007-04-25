@@ -1,5 +1,5 @@
 /**
- * \file InsetMathCommand.cpp
+ * \file CommandInset.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "InsetMathCommand.h"
-#include "MathData.h"
+#include "CommandInset.h"
+#include "MathArray.h"
 #include "MathStream.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"

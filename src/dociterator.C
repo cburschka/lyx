@@ -17,7 +17,7 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 
-#include "mathed/MathData.h"
+#include "mathed/MathArray.h"
 #include "mathed/InsetMath.h"
 
 #include "insets/InsetTabular.h"

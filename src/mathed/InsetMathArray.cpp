@@ -12,7 +12,7 @@
 
 #include "LaTeXFeatures.h"
 #include "InsetMathArray.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathParser.h"
 #include "MathStream.h"
 

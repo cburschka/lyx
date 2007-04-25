@@ -1,5 +1,5 @@
 /**
- * \file MathData.cpp
+ * \file MathArray.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,14 +10,14 @@
 
 #include <config.h>
 
-#include "MathData.h"
+#include "MathArray.h"
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
-#include "InsetMathMacro.h"
+#include "MathMacro.h"
 #include "MathMacroTable.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "MathReplace.h"
+#include "ReplaceData.h"
 
 #include "BufferView.h"
 #include "buffer.h"

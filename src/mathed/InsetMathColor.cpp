@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathColor.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "LaTeXFeatures.h"

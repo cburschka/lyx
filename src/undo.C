@@ -26,7 +26,7 @@
 #include "ParagraphList.h"
 
 #include "mathed/MathSupport.h"
-#include "mathed/MathData.h"
+#include "mathed/MathArray.h"
 
 #include "insets/Inset.h"
 

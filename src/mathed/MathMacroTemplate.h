@@ -13,7 +13,7 @@
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
-#include "MathData.h"
+#include "MathArray.h"
 #include "MathMacroTable.h"
 #include "InsetMathNest.h"
 

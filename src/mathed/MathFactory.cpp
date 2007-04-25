@@ -30,7 +30,7 @@
 #include "InsetMathFrameBox.h"
 #include "InsetMathKern.h"
 #include "InsetMathLefteqn.h"
-#include "InsetMathMacro.h"
+#include "MathMacro.h"
 #include "InsetMathMakebox.h"
 #include "InsetMathOverset.h"
 #include "InsetMathPhantom.h"

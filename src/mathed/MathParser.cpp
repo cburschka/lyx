@@ -49,7 +49,7 @@ following hack as starting point to write some macros:
 #include "InsetMathDelim.h"
 #include "InsetMathEnv.h"
 #include "InsetMathKern.h"
-#include "InsetMathMacro.h"
+#include "MathMacro.h"
 #include "InsetMathPar.h"
 #include "InsetMathRef.h"
 #include "InsetMathRoot.h"

@@ -13,7 +13,7 @@
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "InsetMathDelim.h"
 #include "MathExtern.h"
 #include "MathFactory.h"

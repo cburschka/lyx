@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathFracBase.h"
-#include "MathData.h"
+#include "MathArray.h"
 #include "cursor.h"
 
 

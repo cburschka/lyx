@@ -39,7 +39,7 @@
 #include "insets/InsetCharStyle.h"
 #include "insets/InsetTabular.h"
 
-#include "mathed/MathData.h"
+#include "mathed/MathArray.h"
 #include "mathed/InsetMath.h"
 #include "mathed/MathSupport.h"
 
