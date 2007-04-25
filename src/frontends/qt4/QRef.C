@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "QRef.h"
-#include "QRefDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -27,22 +26,166 @@
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QToolTip>
+#include <QCloseEvent>
 
-
-using lyx::docstring;
 
 using std::vector;
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
 
+/////////////////////////////////////////////////////////////////////
+//
+// QRefDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QRefDialog::QRefDialog(QRef * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(reset_dialog()));
+
+	connect(typeCO, SIGNAL(activated(int)), 
+		this, SLOT(changed_adaptor()));
+	connect(referenceED, SIGNAL(textChanged(const QString &)), 
+		this, SLOT(changed_adaptor()));
+	connect(nameED, SIGNAL(textChanged(const QString &)), 
+		this, SLOT(changed_adaptor()));
+	connect(refsLW, SIGNAL(itemClicked(QListWidgetItem *)), 
+		this, SLOT(refHighlighted(QListWidgetItem *)));
+	connect(refsLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(selectionChanged()));
+	connect(refsLW, SIGNAL(itemActivated(QListWidgetItem *)), 
+		this, SLOT(refSelected(QListWidgetItem *)));
+	connect(sortCB, SIGNAL(clicked(bool)),
+		this, SLOT(sortToggled(bool)));
+	connect(gotoPB, SIGNAL(clicked()), 
+		this, SLOT(gotoClicked()));
+	connect(updatePB, SIGNAL(clicked()), 
+		this, SLOT(updateClicked()));
+	connect(bufferCO, SIGNAL(activated(int)), 
+		this, SLOT(updateClicked()));
+
+	setFocusProxy(refsLW);
+}
+
+void QRefDialog::show()
+{
+	QDialog::show();
+}
+
+
+void QRefDialog::changed_adaptor()
+{
+	form_->changed();
+}
+
+
+void QRefDialog::gotoClicked()
+{
+	form_->gotoRef();
+}
+
+void QRefDialog::selectionChanged()
+{
+	if (form_->readOnly())
+		return;
+	
+	QList<QListWidgetItem *> selections = refsLW->selectedItems();
+	if (selections.isEmpty())
+		return;
+	QListWidgetItem * sel = selections.first();
+	refHighlighted(sel);
+	return;
+}
+
+
+void QRefDialog::refHighlighted(QListWidgetItem * sel)
+{
+	if (form_->readOnly())
+		return;
+
+/*	int const cur_item = refsLW->currentRow();
+	bool const cur_item_selected = cur_item >= 0 ?
+		refsLB->isSelected(cur_item) : false;*/
+	bool const cur_item_selected = refsLW->isItemSelected(sel);
+
+	if (cur_item_selected)
+		referenceED->setText(sel->text());
+
+	if (form_->at_ref_)
+		form_->gotoRef();
+	gotoPB->setEnabled(true);
+	if (form_->typeAllowed())
+		typeCO->setEnabled(true);
+	if (form_->nameAllowed())
+		nameED->setEnabled(true);
+}
+
+
+void QRefDialog::refSelected(QListWidgetItem * sel)
+{
+	if (form_->readOnly())
+		return;
+
+/*	int const cur_item = refsLW->currentRow();
+	bool const cur_item_selected = cur_item >= 0 ?
+		refsLB->isSelected(cur_item) : false;*/
+	bool const cur_item_selected = refsLW->isItemSelected(sel);
+
+	if (cur_item_selected)
+		referenceED->setText(sel->text());
+	// <enter> or double click, inserts ref and closes dialog
+	form_->slotOK();
+}
+
+
+void QRefDialog::sortToggled(bool on)
+{
+	form_->sort_ = on;
+	form_->redoRefs();
+}
+
+
+void QRefDialog::updateClicked()
+{
+	form_->updateRefs();
+}
+
+
+void QRefDialog::reset_dialog() {
+	form_->at_ref_ = false;
+	form_->setGotoRef();
+}
+
+
+void QRefDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	reset_dialog();
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QRef
+//
+/////////////////////////////////////////////////////////////////////
+
 // full qualification because qt4 has also a ControlRef type
-typedef QController<lyx::frontend::ControlRef, QView<QRefDialog> > ref_base_class;
+typedef QController<lyx::frontend::ControlRef, QView<QRefDialog> > RefBase;
 
 
 QRef::QRef(Dialog & parent)
-	: ref_base_class(parent, _("Cross-reference")),
+	: RefBase(parent, _("Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }
@@ -240,3 +383,5 @@ bool QRef::isValid()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QRef_moc.cpp"

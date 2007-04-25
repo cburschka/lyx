@@ -11,27 +11,63 @@
 #include <config.h>
 
 #include "QNote.h"
-#include "QNoteDialog.h"
 #include "Qt2BC.h"
 
 #include "controllers/ControlNote.h"
 
 #include "insets/InsetNote.h"
 
-#include <qradiobutton.h>
-#include <qpushbutton.h>
-
-
-using std::string;
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlNote, QView<QNoteDialog> > note_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QNoteDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QNoteDialog::QNoteDialog(QNote * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+
+	connect(noteRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(greyedoutRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(commentRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(framedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(shadedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+}
+
+
+void QNoteDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QNoteDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QNote
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlNote, QView<QNoteDialog> > NoteBase;
 
 
 QNote::QNote(Dialog & parent)
-	: note_base_class(parent, _("Note Settings"))
+	: NoteBase(parent, _("Note Settings"))
 {}
 
 
@@ -90,3 +126,5 @@ void QNote::apply()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QNote_moc.cpp"

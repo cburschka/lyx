@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QSendto.h"
-#include "QSendtoDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -21,18 +20,68 @@
 
 #include <QListWidget>
 #include <QPushButton>
+#include <QCloseEvent>
 
 using std::vector;
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlSendto, QView<QSendtoDialog> > sendto_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QSendtoDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QSendtoDialog::QSendtoDialog(QSendto * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()),
+		form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+
+	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+		this, SLOT( slotFormatHighlighted(QListWidgetItem *) ) );
+	connect( formatLW, SIGNAL( itemActivated(QListWidgetItem *) ), 
+		this, SLOT( slotFormatSelected(QListWidgetItem *) ) );
+	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+		this, SLOT( changed_adaptor() ) );
+	connect( commandCO, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( changed_adaptor() ) );
+}
+
+
+void QSendtoDialog::changed_adaptor()
+{
+	form_->changed();
+}
+
+
+void QSendtoDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QSendto
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlSendto, QView<QSendtoDialog> > SendtoBase;
 
 
 QSendto::QSendto(Dialog & parent)
-	: sendto_base_class(parent, _("Send Document to Command"))
+	: SendtoBase(parent, _("Send Document to Command"))
 {
 }
 
@@ -103,3 +152,5 @@ bool QSendto::isValid()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QSendto_moc.cpp"

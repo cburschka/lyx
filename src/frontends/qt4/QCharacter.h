@@ -13,8 +13,9 @@
 #ifndef QCHARACTER_H_CONTROLLER
 #define QCHARACTER_H_CONTROLLER
 
-#include "QCharacterDialog.h"
 #include "QDialogView.h"
+#include "ui/CharacterUi.h"
+#include <QDialog>
 
 #include "controllers/character.h"
 #include "controllers/frnt_lang.h"
@@ -22,7 +23,25 @@
 #include <vector>
 
 namespace lyx {
+
+class LyXFont;
+
 namespace frontend {
+
+class QCharacter;
+
+class QCharacterDialog : public QDialog, public Ui::QCharacterUi {
+	Q_OBJECT
+public:
+	QCharacterDialog(QCharacter * form);
+protected:
+	void closeEvent(QCloseEvent * e);
+private:
+	QCharacter * form_;
+protected Q_SLOTS:
+	void change_adaptor();
+};
+
 
 class ControlCharacter;
 

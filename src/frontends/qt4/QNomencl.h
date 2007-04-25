@@ -15,10 +15,32 @@
 #define QNOMENCL_H
 
 #include "QDialogView.h"
-#include "QNomenclDialog.h"
+#include "ui/NomenclUi.h"
+
+#include <QDialog>
+
+class QCloseEvent;
+
 
 namespace lyx {
 namespace frontend {
+
+class QNomencl;
+
+class QNomenclDialog : public QDialog, public Ui::QNomenclUi {
+	Q_OBJECT
+public:
+	QNomenclDialog(QNomencl * form);
+	virtual void show();
+protected Q_SLOTS:
+	virtual void change_adaptor();
+	virtual void reject();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QNomencl * form_;
+};
+
 
 class ControlCommand;
 

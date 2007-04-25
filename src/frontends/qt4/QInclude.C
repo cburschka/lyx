@@ -12,7 +12,6 @@
 
 #include "support/os.h"
 
-#include "QIncludeDialog.h"
 #include "QInclude.h"
 
 #include "checkedwidgets.h"
@@ -24,22 +23,115 @@
 
 #include "controllers/ControlInclude.h"
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qcheckbox.h>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QCloseEvent>
+#include <QLineEdit>
 
 using std::string;
 
 using lyx::support::os::internal_path;
 
+
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlInclude, QView<QIncludeDialog> > include_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QIncludeDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QIncludeDialog::QIncludeDialog(QInclude * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+
+	connect(visiblespaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(filenameED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(loadPB, SIGNAL(clicked()), this, SLOT(loadClicked()));
+	connect(browsePB, SIGNAL(clicked()), this, SLOT(browseClicked()));
+	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
+	connect(previewCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
+	filenameED->setValidator(new PathValidator(true, filenameED));
+	setFocusProxy(filenameED);
+}
+
+
+void QIncludeDialog::show()
+{
+	QDialog::show();
+}
+
+
+void QIncludeDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QIncludeDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QIncludeDialog::typeChanged(int v)
+{
+	switch (v) {
+		//case Include
+		case 0:
+			visiblespaceCB->setEnabled(false);
+			visiblespaceCB->setChecked(false);
+			previewCB->setEnabled(false);
+			previewCB->setChecked(false);
+			break;
+		//case Input
+		case 1:
+			visiblespaceCB->setEnabled(false);
+			visiblespaceCB->setChecked(false);
+			previewCB->setEnabled(true);
+			break;
+		//case Verbatim
+		default:
+			visiblespaceCB->setEnabled(true);
+			previewCB->setEnabled(false);
+			previewCB->setChecked(false);
+			break;
+	}
+}
+
+
+void QIncludeDialog::loadClicked()
+{
+	form_->load();
+}
+
+
+void QIncludeDialog::browseClicked()
+{
+	form_->browse();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QInclude
+//
+/////////////////////////////////////////////////////////////////////
+
+
+typedef QController<ControlInclude, QView<QIncludeDialog> > IncludeBase;
 
 
 QInclude::QInclude(Dialog & parent)
-	: include_base_class(parent, _("Child Document"))
+	: IncludeBase(parent, _("Child Document"))
 {}
 
 
@@ -143,7 +235,7 @@ void QInclude::browse()
 void QInclude::load()
 {
 	if (isValid()) {
-		string const file(fromqstr(dialog_->filenameED->text()));
+		string const file = fromqstr(dialog_->filenameED->text());
 		slotOK();
 		controller().load(file);
 	}
@@ -157,3 +249,5 @@ bool QInclude::isValid()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QInclude_moc.cpp"

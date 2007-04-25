@@ -13,12 +13,45 @@
 #define QREF_H
 
 #include "QDialogView.h"
-#include "QRefDialog.h"
+
+#include "ui/RefUi.h"
+
+#include <QDialog>
 
 #include <vector>
 
+class QListWidgetItem;
+class QCloseEvent;
+
 namespace lyx {
 namespace frontend {
+
+class QRef;
+
+class QRefDialog : public QDialog, public Ui::QRefUi {
+	Q_OBJECT
+public:
+	QRefDialog(QRef * form);
+
+	virtual void show();
+
+public Q_SLOTS:
+	void changed_adaptor();
+	void gotoClicked();
+	void refHighlighted(QListWidgetItem *);
+	void selectionChanged();
+	void refSelected(QListWidgetItem *);
+	void sortToggled(bool);
+	void updateClicked();
+
+protected Q_SLOTS:
+	void reset_dialog();
+protected:
+	void closeEvent(QCloseEvent * e);
+private:
+	QRef * form_;
+};
+
 
 class ControlRef;
 

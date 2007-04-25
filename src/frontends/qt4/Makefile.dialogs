@@ -93,7 +93,7 @@ MOCFILES = \
 	QBranch.C QBranch.h \
 	QBranches.C QBranches.h \
 	QChanges.C QChanges.h \
-	QCharacterDialog.C QCharacterDialog.h \
+	QCharacter.C QCharacter.h \
 	QCitationDialog.C QCitationDialog.h \
 	QCommandBuffer.C QCommandBuffer.h \
 	QCommandEdit.C QCommandEdit.h \
@@ -104,7 +104,7 @@ MOCFILES = \
 	QExternal.C QExternal.h \
 	QFloatDialog.C QFloatDialog.h \
 	QGraphicsDialog.C QGraphicsDialog.h \
-	QIncludeDialog.C QIncludeDialog.h \
+	QInclude.C QInclude.h \
 	QIndex.C QIndex.h \
 	QLog.C QLog.h \
 	QViewSource.C QViewSource.h \
@@ -112,13 +112,13 @@ MOCFILES = \
 	QLPopupMenu.C QLPopupMenu.h \
 	QLPrintDialog.C QLPrintDialog.h \
 	QMathMatrixDialog.C QMathMatrixDialog.h \
-	QNomenclDialog.C QNomenclDialog.h \
-	QNoteDialog.C QNoteDialog.h \
+	QNomencl.C QNomencl.h \
+	QNote.C QNote.h \
 	QParagraph.C QParagraph.h \
 	QPrefs.C QPrefs.h \
-	QRefDialog.C QRefDialog.h \
+	QRef.C QRef.h \
 	QSearch.C QSearch.h \
-	QSendtoDialog.C QSendtoDialog.h \
+	QSendto.C QSendto.h \
 	qsetborder.C qsetborder.h \
 	QShowFile.C QShowFile.h \
 	QSpellchecker.C QSpellchecker.h \

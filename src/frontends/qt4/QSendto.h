@@ -13,15 +13,37 @@
 #define QSENDTO_H
 
 #include "QDialogView.h"
-#include "QSendtoDialog.h"
+#include "ui/SendtoUi.h"
+
+#include <QDialog>
 
 #include <vector>
+
+class QCloseEvent;
+class QListWidgetItem;
 
 namespace lyx {
 
 class Format;
 
 namespace frontend {
+
+class QSendto;
+
+class QSendtoDialog : public QDialog, public Ui::QSendtoUi {
+	Q_OBJECT
+public:
+	QSendtoDialog(QSendto * form);
+protected Q_SLOTS:
+	virtual void changed_adaptor();
+	virtual void slotFormatHighlighted(QListWidgetItem *) {}
+	virtual void slotFormatSelected(QListWidgetItem *) {}
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QSendto * form_;
+};
+
 
 class ControlSendto;
 

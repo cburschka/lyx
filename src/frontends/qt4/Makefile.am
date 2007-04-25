@@ -43,21 +43,15 @@ libqt4_la_SOURCES = \
 	QLMenubar.C QLMenubar.h \
 	QBox.C QBox.h \
 	QBranches.C QBranches.h \
-	QCharacter.C QCharacter.h \
 	QCitation.C QCitation.h \
 	QDialogView.C QDialogView.h \
 	QFloat.C QFloat.h \
 	QGraphics.C QGraphics.h \
-	QInclude.C QInclude.h \
 	QLImage.C QLImage.h \
 	QViewSource.C QViewSource.h \
 	QLPainter.C QLPainter.h \
 	QLyXKeySym.C QLyXKeySym.h \
-	QNomencl.C QNomencl.h \
-	QNote.C QNote.h \
 	QPrint.C QPrint.h \
-	QRef.C QRef.h \
-	QSendto.C QSendto.h \
 	Qt2BC.C	Qt2BC.h	\
 	checkedwidgets.C checkedwidgets.h \
 	panelstack.h panelstack.C \
