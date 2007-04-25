@@ -654,6 +654,14 @@ contributers = [
                  "22 February 2005",
                  u"Fix to a very hard-to-find egcs bug that crashed LyX on alpha architecture"),
 
+     contributer(u"Harshula Jayasuriya",
+                 "harshula () gmail ! com",
+                 "GPL",
+                 "Re: Bug in export to DocBook",
+                 "m=116884249725701",
+                 "15 January 2007",
+                 u"Fix docbook generation of nested lists"),
+
      contributer(u"David L. Johnson",
                  "david.johnson () lehigh ! edu",
                  "GPL",
