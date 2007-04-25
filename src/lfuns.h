@@ -380,7 +380,6 @@ enum kb_action {
 	LFUN_CLEARPAGE_INSERT,           // Ugras 20061125
 	//290
 	LFUN_CLEARDOUBLEPAGE_INSERT,     // Ugras 20061125
-	LFUN_GREEK_INSERT,               // André 20070402
 
 	LFUN_LASTACTION                  // end of the table
 };
