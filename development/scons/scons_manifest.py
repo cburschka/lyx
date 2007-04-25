@@ -466,11 +466,11 @@ src_frontends_files = Split('''
 
 
 src_graphics_header_files = Split('''
-    Cache.h
-    CacheItem.h
+    GraphicsCache.h
+    GraphicsCacheItem.h
     GraphicsConverter.h
-    Image.h
-    Loader.h
+    GraphicsImage.h
+    GraphicsLoader.h
     GraphicsParams.h
     GraphicsTypes.h
     LoaderQueue.h
@@ -481,11 +481,11 @@ src_graphics_header_files = Split('''
 
 
 src_graphics_files = Split('''
-    Cache.cpp
-    CacheItem.cpp
+    GraphicsCache.cpp
+    GraphicsCacheItem.cpp
     GraphicsConverter.cpp
-    Image.cpp
-    Loader.cpp
+    GraphicsImage.cpp
+    GraphicsLoader.cpp
     GraphicsParams.cpp
     GraphicsTypes.cpp
     LoaderQueue.cpp
