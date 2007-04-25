@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-22 11:29+0200\n"
+"POT-Creation-Date: 2007-04-25 23:02+0200\n"
 "PO-Revision-Date: 2007-02-25 12:26+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -69,10 +69,10 @@ msgid "Add a new branch to the list"
 msgstr "להוסיף את איש הקשר לרשימה שלך?"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:116
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:54
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:54
+#: src/frontends/qt4/ui/BibtexAddUi.ui:70
+#: src/frontends/qt4/ui/CitationUi.ui:116
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 msgid "&Add"
 msgstr "הוסף"
 
@@ -90,8 +90,8 @@ msgid "Remove the selected branch"
 msgstr "הסר ת הסימנייה הנבחרת"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:68
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 #, fuzzy
 msgid "&Remove"
 msgstr "הסר"
@@ -119,73 +119,71 @@ msgid "&Font:"
 msgstr "גופן:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
-#: src/frontends/qt4/ui/QCharacterUi.ui:227
+#: src/frontends/qt4/ui/CharacterUi.ui:227
 msgid "Si&ze:"
 msgstr "גודל:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:66
-#: src/frontends/qt4/ui/QExternalUi.ui:192
-#: src/frontends/qt4/ui/QGraphicsUi.ui:604
-#: src/frontends/qt4/ui/QParagraphUi.ui:214
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:78
-#: src/frontends/qt4/ui/QTabularUi.ui:707
-#: src/frontends/qt4/ui/QTabularUi.ui:726
-#: src/frontends/qt4/ui/QTabularUi.ui:774 lib/ui/stdtoolbars.inc:81
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:203 src/lyxfont.C:518
-#: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
+#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
+#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/ParagraphUi.ui:214
+#: src/frontends/qt4/ui/PrefLatexUi.ui:78
+#: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
+#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/ControlExternal.cpp:234
+#: src/frontends/controllers/ControlGraphics.cpp:170
+#: src/frontends/qt4/QDocument.C:229 src/lyxfont.C:518 src/tex-strings.C:68
+#: src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "ברירת מחדל"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:960 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "זעיר"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:964 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "קטן אף יותר"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:968 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "קטן יותר"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:972 src/lyxfont.C:64
 msgid "Small"
 msgstr "קטן"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:976 src/lyxfont.C:64
 msgid "Normal"
 msgstr "רגיל"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:980 src/lyxfont.C:64
 msgid "Large"
 msgstr "גדול"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:984 src/lyxfont.C:65
 msgid "Larger"
 msgstr "גדול יותר"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:106
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:988 src/lyxfont.C:65
 msgid "Largest"
 msgstr "גדול אף יותר"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:992 src/lyxfont.C:65
 msgid "Huge"
 msgstr "ענק"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:996 src/lyxfont.C:65
 msgid "Huger"
 msgstr "ענק יותר"
 
@@ -270,7 +268,7 @@ msgid "&Typewriter:"
 msgstr "עבור אל"
 
 #: src/frontends/qt4/ui/FontUi.ui:90
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:114
 msgid "&Roman:"
 msgstr ""
 
@@ -317,7 +315,7 @@ msgid "Postscript &driver:"
 msgstr "עדכן PostScript"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:36
-#: src/frontends/qt4/ui/QCharacterUi.ui:163
+#: src/frontends/qt4/ui/CharacterUi.ui:163
 msgid "&Language:"
 msgstr "שפה:"
 
@@ -406,14 +404,14 @@ msgstr "הצג מספרי שורות"
 msgid "Paper Size"
 msgstr "גודל דף"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/QBoxUi.ui:122
-#: src/frontends/qt4/ui/QExternalUi.ui:507
+#: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/BoxUi.ui:122
+#: src/frontends/qt4/ui/ExternalUi.ui:507
 msgid "&Height:"
 msgstr "גובה"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:138
-#: src/frontends/qt4/ui/QExternalUi.ui:484
-#: src/frontends/qt4/ui/QTabularUi.ui:103 src/frontends/qt4/ui/QWrapUi.ui:39
+#: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/BoxUi.ui:138
+#: src/frontends/qt4/ui/ExternalUi.ui:484
+#: src/frontends/qt4/ui/TabularUi.ui:103 src/frontends/qt4/ui/WrapUi.ui:39
 msgid "&Width:"
 msgstr "רוחב"
 
@@ -450,2663 +448,2635 @@ msgstr ""
 msgid "&Two-sided document"
 msgstr "מסמך דו-צדדי"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:32
+#: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
 msgstr "גירסה"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:50
+#: src/frontends/qt4/ui/AboutUi.ui:50
 #, fuzzy
 msgid "Version goes here"
 msgstr "_שמור צבע כאן"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:64
+#: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
 msgstr "תודות"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:80 lib/layouts/apa.layout:199
+#: src/frontends/qt4/ui/AboutUi.ui:80 lib/layouts/apa.layout:199
 #: lib/layouts/agu_stdtitle.inc:81
 msgid "Copyright"
 msgstr "זכויות יוצרים"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:131 src/frontends/qt4/ui/QBibitemUi.ui:121
-#: src/frontends/qt4/ui/QBoxUi.ui:351 src/frontends/qt4/ui/QBranchUi.ui:41
-#: src/frontends/qt4/ui/QDelimiterUi.ui:235
-#: src/frontends/qt4/ui/QErrorListUi.ui:62
-#: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
-#: src/frontends/qt4/ui/QIncludeUi.ui:199 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QParagraphUi.ui:99 src/frontends/qt4/ui/QPrefsUi.ui:96
-#: src/frontends/qt4/ui/QRefUi.ui:100 src/frontends/qt4/ui/QSearchUi.ui:210
-#: src/frontends/qt4/ui/QShowFileUi.ui:58
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
-#: src/frontends/qt4/ui/QTexinfoUi.ui:58
-#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QURLUi.ui:115
-#: src/frontends/qt4/ui/QVSpaceUi.ui:168 src/frontends/qt4/ui/QWrapUi.ui:216
+#: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
+#: src/frontends/qt4/ui/BoxUi.ui:351 src/frontends/qt4/ui/BranchUi.ui:41
+#: src/frontends/qt4/ui/DelimiterUi.ui:107
+#: src/frontends/qt4/ui/ErrorListUi.ui:62
+#: src/frontends/qt4/ui/ExternalUi.ui:705 src/frontends/qt4/ui/FloatUi.ui:85
+#: src/frontends/qt4/ui/IncludeUi.ui:199 src/frontends/qt4/ui/LogUi.ui:71
+#: src/frontends/qt4/ui/ParagraphUi.ui:99 src/frontends/qt4/ui/PrefsUi.ui:96
+#: src/frontends/qt4/ui/RefUi.ui:100 src/frontends/qt4/ui/SearchUi.ui:210
+#: src/frontends/qt4/ui/ShowFileUi.ui:58
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:31
+#: src/frontends/qt4/ui/TexinfoUi.ui:58
+#: src/frontends/qt4/ui/ThesaurusUi.ui:144 src/frontends/qt4/ui/URLUi.ui:115
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:216
 msgid "&Close"
 msgstr "&סגור"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:16
+#: src/frontends/qt4/ui/AskForTextUi.ui:16
 msgid "LyX: Enter text"
 msgstr "LyX: הכנס טקסט"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:47
+#: src/frontends/qt4/ui/AskForTextUi.ui:47
 msgid "&Dummy"
 msgstr ""
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:84
-#: src/frontends/qt4/ui/QBibitemUi.ui:111
-#: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
-#: src/frontends/qt4/ui/QBranchUi.ui:31
-#: src/frontends/qt4/ui/QCharacterUi.ui:370
-#: src/frontends/qt4/ui/QCitationUi.ui:303
-#: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
-#: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
-#: src/frontends/qt4/ui/QGraphicsUi.ui:702
-#: src/frontends/qt4/ui/QIncludeUi.ui:189 src/frontends/qt4/ui/QIndexUi.ui:82
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:170
-#: src/frontends/qt4/ui/QNomenclUi.ui:92 src/frontends/qt4/ui/QNoteUi.ui:31
-#: src/frontends/qt4/ui/QParagraphUi.ui:76 src/frontends/qt4/ui/QRefUi.ui:80
-#: src/frontends/qt4/ui/QSendtoUi.ui:75
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:68
-#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:145
-#: src/frontends/qt4/ui/QWrapUi.ui:193
+#: src/frontends/qt4/ui/AskForTextUi.ui:84
+#: src/frontends/qt4/ui/BibitemUi.ui:111 src/frontends/qt4/ui/BibtexUi.ui:216
+#: src/frontends/qt4/ui/BoxUi.ui:325 src/frontends/qt4/ui/BranchUi.ui:31
+#: src/frontends/qt4/ui/CharacterUi.ui:370
+#: src/frontends/qt4/ui/CitationUi.ui:303
+#: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:100
+#: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
+#: src/frontends/qt4/ui/GraphicsUi.ui:702
+#: src/frontends/qt4/ui/IncludeUi.ui:189 src/frontends/qt4/ui/IndexUi.ui:82
+#: src/frontends/qt4/ui/MathMatrixUi.ui:170
+#: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
+#: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
+#: src/frontends/qt4/ui/SendtoUi.ui:75
+#: src/frontends/qt4/ui/TabularCreateUi.ui:68
+#: src/frontends/qt4/ui/URLUi.ui:105 src/frontends/qt4/ui/VSpaceUi.ui:145
+#: src/frontends/qt4/ui/WrapUi.ui:193
 msgid "&OK"
 msgstr "אישור"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:323
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
+#: src/frontends/qt4/ui/AskForTextUi.ui:94
+#: src/frontends/qt4/ui/CitationUi.ui:323
+#: src/frontends/qt4/ui/DocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:728
-#: src/lyxfunc.C:901 src/lyxfunc.C:1067 src/lyxfunc.C:2028 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:727
+#: src/lyxfunc.C:900 src/lyxfunc.C:1066 src/lyxfunc.C:2027 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "ביטול"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:39 src/frontends/qt4/ui/QBibitemUi.ui:74
+#: src/frontends/qt4/ui/BibitemUi.ui:39 src/frontends/qt4/ui/BibitemUi.ui:74
 #, fuzzy
 msgid "The bibliography key"
 msgstr "Accelerator key"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:54 src/frontends/qt4/ui/QBibitemUi.ui:61
+#: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/BibitemUi.ui:61
 msgid "The label as it appears in the document"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
-#: src/frontends/qt4/Dialogs.C:235
+#: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/RefUi.ui:145
+#: src/frontends/qt4/Dialogs.C:234
 msgid "&Label:"
 msgstr "תווית:"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:77
+#: src/frontends/qt4/ui/BibitemUi.ui:77
 #, fuzzy
 msgid "&Key:"
 msgstr "Accelerator key"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:24
+#: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:83
-#: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
-#: src/frontends/qt4/ui/QIndexUi.ui:92 src/frontends/qt4/ui/QNomenclUi.ui:105
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:264
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
+#: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
+#: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
+#: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
+#: src/BufferView.C:264 src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:843
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:119
+#: src/frontends/qt4/ui/BibtexAddUi.ui:119
 #, fuzzy
 msgid "Enter BibTeX database name"
 msgstr "הכנס שם לערכת הנושא:"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:126
-#: src/frontends/qt4/ui/QBibtexUi.ui:106
-#: src/frontends/qt4/ui/QExternalUi.ui:99
-#: src/frontends/qt4/ui/QGraphicsUi.ui:71
-#: src/frontends/qt4/ui/QIncludeUi.ui:145 src/frontends/qt4/ui/QPrintUi.ui:316
+#: src/frontends/qt4/ui/BibtexAddUi.ui:126
+#: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:99
+#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/IncludeUi.ui:145
+#: src/frontends/qt4/ui/PrintUi.ui:316
 msgid "&Browse..."
 msgstr "עיין..."
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:34
+#: src/frontends/qt4/ui/BibtexUi.ui:34
 msgid "Add bibliography to the table of contents"
 msgstr "הוסף את הבבליוגרפיה לתוכן העניינים"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:37
+#: src/frontends/qt4/ui/BibtexUi.ui:37
 #, fuzzy
 msgid "Add bibliography to &TOC"
 msgstr "Add tearoffs to menus"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:52 src/frontends/qt4/ui/QBibtexUi.ui:65
+#: src/frontends/qt4/ui/BibtexUi.ui:52 src/frontends/qt4/ui/BibtexUi.ui:65
 msgid "This bibliography section contains..."
 msgstr ""
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:55
+#: src/frontends/qt4/ui/BibtexUi.ui:55
 msgid "&Content:"
 msgstr "&תוכן:"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:69
+#: src/frontends/qt4/ui/BibtexUi.ui:69
 #, fuzzy
 msgid "all cited references"
 msgstr "אשר את כל השינויים"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:74
+#: src/frontends/qt4/ui/BibtexUi.ui:74
 #, fuzzy
 msgid "all uncited references"
 msgstr "אשר את כל השינויים"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:79
+#: src/frontends/qt4/ui/BibtexUi.ui:79
 #, fuzzy
 msgid "all references"
 msgstr "&הצג הפניות"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:103 src/frontends/qt4/ui/QBibtexUi.ui:116
+#: src/frontends/qt4/ui/BibtexUi.ui:103 src/frontends/qt4/ui/BibtexUi.ui:116
 msgid "Choose a style file"
 msgstr "בחר קובץ סגנון"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:148
+#: src/frontends/qt4/ui/BibtexUi.ui:148
 #, fuzzy
 msgid "Remove the selected database"
 msgstr "הסר ת הסימנייה הנבחרת"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:151
+#: src/frontends/qt4/ui/BibtexUi.ui:151
 #, fuzzy
 msgid "&Delete"
 msgstr "מחק"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:158
+#: src/frontends/qt4/ui/BibtexUi.ui:158
 #, fuzzy
 msgid "Add a BibTeX database file"
 msgstr "Directory to add to configuration file"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:161
+#: src/frontends/qt4/ui/BibtexUi.ui:161
 #, fuzzy
 msgid "&Add..."
 msgstr "_הוסף"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:176
+#: src/frontends/qt4/ui/BibtexUi.ui:176
 #, fuzzy
 msgid "BibTeX database to use"
 msgstr "The RecentManager object to use"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:179
+#: src/frontends/qt4/ui/BibtexUi.ui:179
 msgid "Databa&ses"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:249
+#: src/frontends/qt4/ui/BibtexUi.ui:249
 #, fuzzy
 msgid "The BibTeX style"
 msgstr "סגנון הדגשה"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:252
+#: src/frontends/qt4/ui/BibtexUi.ui:252
 msgid "St&yle"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBoxUi.ui:34 src/frontends/qt4/ui/QBoxUi.ui:63
+#: src/frontends/qt4/ui/BoxUi.ui:34 src/frontends/qt4/ui/BoxUi.ui:63
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBoxUi.ui:38 src/frontends/qt4/ui/QTabularUi.ui:702
-#: src/frontends/qt4/ui/QTabularUi.ui:721
-#: src/frontends/qt4/ui/QTabularUi.ui:769
-#: src/frontends/controllers/ControlBox.C:79 src/frontends/qt4/QBox.C:170
-#: src/frontends/qt4/QBox.C:286 src/frontends/qt4/QBoxDialog.C:74
+#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/TabularUi.ui:702
+#: src/frontends/qt4/ui/TabularUi.ui:721 src/frontends/qt4/ui/TabularUi.ui:769
+#: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.C:100
+#: src/frontends/qt4/QBox.C:268 src/frontends/qt4/QBox.C:384
 msgid "None"
 msgstr "ללא"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:43 src/frontends/qt4/QBox.C:172
-#: src/frontends/qt4/QBox.C:279 src/frontends/qt4/QBox.C:287
-#: src/insets/insetbox.C:158
+#: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.C:270
+#: src/frontends/qt4/QBox.C:377 src/frontends/qt4/QBox.C:385
+#: src/insets/InsetBox.cpp:158
 msgid "Parbox"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/qt4/QBox.C:280
-#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:160
+#: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.C:378
+#: src/frontends/qt4/QBox.C:386 src/insets/InsetBox.cpp:160
 msgid "Minipage"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBoxUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:76
+#: src/frontends/qt4/ui/BoxUi.ui:56 src/frontends/qt4/ui/BoxUi.ui:76
 msgid "Supported box types"
 msgstr "סוגי תיבות נתמכים"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:66
+#: src/frontends/qt4/ui/BoxUi.ui:66
 #, fuzzy
 msgid "Inner Bo&x:"
 msgstr "Inner Border"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:79
+#: src/frontends/qt4/ui/BoxUi.ui:79
 #, fuzzy
 msgid "&Decoration:"
 msgstr "תיאור"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
+#: src/frontends/qt4/ui/BoxUi.ui:97 src/frontends/qt4/ui/BoxUi.ui:119
 #, fuzzy
 msgid "Height value"
 msgstr "Draw Value"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:112 src/frontends/qt4/ui/QBoxUi.ui:135
-#: src/frontends/qt4/ui/QWrapUi.ui:118
+#: src/frontends/qt4/ui/BoxUi.ui:112 src/frontends/qt4/ui/BoxUi.ui:135
+#: src/frontends/qt4/ui/WrapUi.ui:118
 #, fuzzy
 msgid "Width value"
 msgstr "Draw Value"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:148
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:202
-#: src/frontends/qt4/ui/QParagraphUi.ui:251
+#: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
+#: src/frontends/qt4/ui/ParagraphUi.ui:251
 msgid "Alignment"
 msgstr "יישור"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:160 src/frontends/qt4/ui/QBoxUi.ui:187
+#: src/frontends/qt4/ui/BoxUi.ui:160 src/frontends/qt4/ui/BoxUi.ui:187
 msgid "Horizontal alignment of the content inside the box"
 msgstr "יישור אופקי של תוכן התיבה"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:164 src/frontends/qt4/ui/QTabularUi.ui:145
-#: src/frontends/qt4/ui/QWrapUi.ui:58 src/frontends/qt4/QTabular.C:260
+#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/TabularUi.ui:145
+#: src/frontends/qt4/ui/WrapUi.ui:58 src/frontends/qt4/QTabular.C:741
 msgid "Left"
 msgstr "שמאל"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QTabularUi.ui:150
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
-#: src/frontends/qt4/QTabular.C:261
+#: src/frontends/qt4/ui/BoxUi.ui:169 src/frontends/qt4/ui/TabularUi.ui:150
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+#: src/frontends/qt4/QTabular.C:742
 msgid "Center"
 msgstr "מרכז"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:174 src/frontends/qt4/ui/QTabularUi.ui:155
-#: src/frontends/qt4/ui/QWrapUi.ui:63 src/frontends/qt4/QTabular.C:262
+#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/TabularUi.ui:155
+#: src/frontends/qt4/ui/WrapUi.ui:63 src/frontends/qt4/QTabular.C:743
 msgid "Right"
 msgstr "ימין"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:179 src/frontends/qt4/ui/QBoxUi.ui:261
+#: src/frontends/qt4/ui/BoxUi.ui:179 src/frontends/qt4/ui/BoxUi.ui:261
 msgid "Stretch"
 msgstr "מתח"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:190
+#: src/frontends/qt4/ui/BoxUi.ui:190
 msgid "Horizontal"
 msgstr "אופקי"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:197 src/frontends/qt4/ui/BoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QBoxUi.ui:201 src/frontends/qt4/ui/QBoxUi.ui:246
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:218
-#: src/frontends/qt4/ui/QTabularUi.ui:85
+#: src/frontends/qt4/ui/BoxUi.ui:201 src/frontends/qt4/ui/BoxUi.ui:246
+#: src/frontends/qt4/ui/MathMatrixUi.ui:218
+#: src/frontends/qt4/ui/TabularUi.ui:85
 #, fuzzy
 msgid "Top"
 msgstr "למעלה"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:206 src/frontends/qt4/ui/QBoxUi.ui:251
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:223
-#: src/frontends/qt4/ui/QTabularUi.ui:90
+#: src/frontends/qt4/ui/BoxUi.ui:206 src/frontends/qt4/ui/BoxUi.ui:251
+#: src/frontends/qt4/ui/MathMatrixUi.ui:223
+#: src/frontends/qt4/ui/TabularUi.ui:90
 #, fuzzy
 msgid "Middle"
 msgstr "שם אמצעי"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:211 src/frontends/qt4/ui/QBoxUi.ui:256
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:228
-#: src/frontends/qt4/ui/QTabularUi.ui:95
+#: src/frontends/qt4/ui/BoxUi.ui:211 src/frontends/qt4/ui/BoxUi.ui:256
+#: src/frontends/qt4/ui/MathMatrixUi.ui:228
+#: src/frontends/qt4/ui/TabularUi.ui:95
 #, fuzzy
 msgid "Bottom"
 msgstr "למטה"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:222
+#: src/frontends/qt4/ui/BoxUi.ui:222
 #, fuzzy
 msgid "&Box:"
 msgstr "תיבת דואר"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:232
+#: src/frontends/qt4/ui/BoxUi.ui:232
 #, fuzzy
 msgid "Co&ntent:"
 msgstr "צ_בע:"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
+#: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Vertical alignment of the content inside the box"
 msgstr "יישור אנכי של תוכן התיבה"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:272
+#: src/frontends/qt4/ui/BoxUi.ui:272
 #, fuzzy
 msgid "Vertical"
 msgstr "אנכי"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:283
-#: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
-#: src/frontends/qt4/ui/QGraphicsUi.ui:673
-#: src/frontends/qt4/ui/QParagraphUi.ui:50 src/frontends/qt4/ui/QPrefsUi.ui:50
-#: src/frontends/qt4/ui/QWrapUi.ui:164
+#: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
+#: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
+#: src/frontends/qt4/ui/GraphicsUi.ui:673
+#: src/frontends/qt4/ui/ParagraphUi.ui:50 src/frontends/qt4/ui/PrefsUi.ui:50
+#: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
 msgstr "שחזר"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:380
-#: src/frontends/qt4/ui/QDocumentUi.ui:145
-#: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:723
-#: src/frontends/qt4/ui/QParagraphUi.ui:89 src/frontends/qt4/ui/QPrefsUi.ui:86
-#: src/frontends/qt4/ui/QRefUi.ui:90 src/frontends/qt4/ui/QSendtoUi.ui:88
-#: src/frontends/qt4/ui/QVSpaceUi.ui:158 src/frontends/qt4/ui/QWrapUi.ui:206
+#: src/frontends/qt4/ui/BoxUi.ui:338 src/frontends/qt4/ui/CharacterUi.ui:380
+#: src/frontends/qt4/ui/DocumentUi.ui:145
+#: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
+#: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
+#: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
+#: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
 msgid "&Apply"
 msgstr "החל"
 
-#: src/frontends/qt4/ui/QBranchUi.ui:59
+#: src/frontends/qt4/ui/BranchUi.ui:59
 #, fuzzy
 msgid "&Available branches:"
 msgstr "לא זמין"
 
-#: src/frontends/qt4/ui/QBranchUi.ui:69
+#: src/frontends/qt4/ui/BranchUi.ui:69
 #, fuzzy
 msgid "Select your branch"
 msgstr "בחר את השפה המועדפת עליך"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:31
+#: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
 msgstr "שינוי:"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:49
+#: src/frontends/qt4/ui/ChangesUi.ui:49
 msgid "Go to next change"
 msgstr "לך לשינוי הבא"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:52
+#: src/frontends/qt4/ui/ChangesUi.ui:52
 msgid "&Next change"
 msgstr "לך לשינוי הבא"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:95
+#: src/frontends/qt4/ui/ChangesUi.ui:95
 msgid "Accept this change"
 msgstr "אשר את השינוי"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:98
+#: src/frontends/qt4/ui/ChangesUi.ui:98
 msgid "&Accept"
 msgstr "אשר"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:108
+#: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Reject this change"
 msgstr "דחה את השינוי"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:111
+#: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Reject"
 msgstr "דחה"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:44
-#: src/frontends/qt4/ui/QCharacterUi.ui:132
+#: src/frontends/qt4/ui/CharacterUi.ui:44
+#: src/frontends/qt4/ui/CharacterUi.ui:132
 msgid "Font family"
 msgstr "משפחת הגופן"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:47
+#: src/frontends/qt4/ui/CharacterUi.ui:47
 msgid "&Family:"
 msgstr "משפחה:"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:65
-#: src/frontends/qt4/ui/QCharacterUi.ui:75
+#: src/frontends/qt4/ui/CharacterUi.ui:65
+#: src/frontends/qt4/ui/CharacterUi.ui:75
 #, fuzzy
 msgid "Font shape"
 msgstr "צבע גופן"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:78
+#: src/frontends/qt4/ui/CharacterUi.ui:78
 msgid "S&hape:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:96
-#: src/frontends/qt4/ui/QCharacterUi.ui:173
+#: src/frontends/qt4/ui/CharacterUi.ui:96
+#: src/frontends/qt4/ui/CharacterUi.ui:173
 #, fuzzy
 msgid "Font series"
 msgstr "צבע גופן"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:114
-#: src/frontends/qt4/ui/QCharacterUi.ui:160 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocumentDialog.C:397
-#: src/frontends/qt4/QPrefsDialog.C:1490
+#: src/frontends/qt4/ui/CharacterUi.ui:114
+#: src/frontends/qt4/ui/CharacterUi.ui:160 lib/layouts/europecv.layout:144
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.C:467
+#: src/frontends/qt4/QPrefs.C:1569
 msgid "Language"
 msgstr "שפה"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:150
-#: src/frontends/qt4/ui/QCharacterUi.ui:189
+#: src/frontends/qt4/ui/CharacterUi.ui:150
+#: src/frontends/qt4/ui/CharacterUi.ui:189
 msgid "Font color"
 msgstr "צבע גופן"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:176
+#: src/frontends/qt4/ui/CharacterUi.ui:176
 msgid "&Series:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:192
+#: src/frontends/qt4/ui/CharacterUi.ui:192
 #, fuzzy
 msgid "&Color:"
 msgstr "צבע"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:212
+#: src/frontends/qt4/ui/CharacterUi.ui:212
 #, fuzzy
 msgid "Never Toggled"
 msgstr "#  Modification time never checked."
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:224
-#: src/frontends/qt4/ui/QCharacterUi.ui:245
+#: src/frontends/qt4/ui/CharacterUi.ui:224
+#: src/frontends/qt4/ui/CharacterUi.ui:245
 msgid "Font size"
 msgstr "גודל גופן"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:258
-#: src/frontends/qt4/ui/QCharacterUi.ui:283
+#: src/frontends/qt4/ui/CharacterUi.ui:258
+#: src/frontends/qt4/ui/CharacterUi.ui:283
 msgid "Other font settings"
 msgstr "אפשרויות גופן אחרות"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:261
+#: src/frontends/qt4/ui/CharacterUi.ui:261
 #, fuzzy
 msgid "Always Toggled"
 msgstr "תמיד _קבץ משימות"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:273
+#: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "&Misc:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:308
+#: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "toggle font on all of the above"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:311
+#: src/frontends/qt4/ui/CharacterUi.ui:311
 #, fuzzy
 msgid "&Toggle all"
 msgstr "החלף הכל"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:318
+#: src/frontends/qt4/ui/CharacterUi.ui:318
 msgid "Apply each change automatically"
 msgstr "החל כל שינוי אוטומטית"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:321
+#: src/frontends/qt4/ui/CharacterUi.ui:321
 msgid "Apply changes immediately"
 msgstr "החל שינויים לאלתר"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:390 src/frontends/qt4/ui/QERTUi.ui:110
-#: src/frontends/qt4/ui/QGraphicsUi.ui:744
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:177
-#: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:75
-#: src/frontends/qt4/ui/QTabularUi.ui:1131 src/frontends/qt4/Qt2BC.h:37
+#: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
+#: src/frontends/qt4/ui/GraphicsUi.ui:744
+#: src/frontends/qt4/ui/MathMatrixUi.ui:177 src/frontends/qt4/ui/NoteUi.ui:41
+#: src/frontends/qt4/ui/PrintUi.ui:246 src/frontends/qt4/ui/TabularUi.ui:1131
+#: src/frontends/qt4/ui/TabularCreateUi.ui:75 src/frontends/qt4/Qt2BC.h:37
 msgid "Close"
 msgstr "סגור"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:52
+#: src/frontends/qt4/ui/CitationUi.ui:52
 msgid "Move the selected citation up"
 msgstr "הזז את המובאה הנוכחית למעלה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:55 src/frontends/qt4/ui/TocUi.ui:79
 #, fuzzy
 msgid "&Up"
 msgstr "מעלה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:73
+#: src/frontends/qt4/ui/CitationUi.ui:73
 msgid "Move the selected citation down"
 msgstr "הזז את המובאה הנוכחית למטה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:76
+#: src/frontends/qt4/ui/CitationUi.ui:76
 #, fuzzy
 msgid "&Down"
 msgstr "למטה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:99
+#: src/frontends/qt4/ui/CitationUi.ui:99
 msgid "D&elete"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:126
+#: src/frontends/qt4/ui/CitationUi.ui:126
 msgid "&Selected Citations:"
 msgstr "מובאות נבחרות"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:136
+#: src/frontends/qt4/ui/CitationUi.ui:136
 #, fuzzy
 msgid "A&vailable Citations:"
 msgstr "מובאות זמינות"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:162
+#: src/frontends/qt4/ui/CitationUi.ui:162
 msgid "Formatting"
 msgstr "עיצוב"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:185
+#: src/frontends/qt4/ui/CitationUi.ui:185
 msgid "Natbib citation style to use"
 msgstr "סגנון מובאת Natbib לשימוש"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:192
+#: src/frontends/qt4/ui/CitationUi.ui:192
 #, fuzzy
 msgid "Citation st&yle:"
 msgstr "סגנון מובאה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:202
+#: src/frontends/qt4/ui/CitationUi.ui:202
 #, fuzzy
 msgid "List all authors"
 msgstr "List of authors of the program"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:205
+#: src/frontends/qt4/ui/CitationUi.ui:205
 #, fuzzy
 msgid "Full aut&hor list"
 msgstr "Appears as list"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:212
+#: src/frontends/qt4/ui/CitationUi.ui:212
 msgid "Force upper case in citation"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:215
+#: src/frontends/qt4/ui/CitationUi.ui:215
 #, fuzzy
 msgid "&Force upper case"
 msgstr "חיפוש תלוי ראשיות"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:222
+#: src/frontends/qt4/ui/CitationUi.ui:222
 #, fuzzy
 msgid "&Text after:"
 msgstr "`%s' תארוה ירחא רתוימ טסקט"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:240
+#: src/frontends/qt4/ui/CitationUi.ui:240
 msgid "Text to place after citation"
 msgstr "טקסט שימוקם לאחר המובאה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:247
+#: src/frontends/qt4/ui/CitationUi.ui:247
 #, fuzzy
 msgid "Text &before:"
 msgstr "סגנון טקסט"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:265
+#: src/frontends/qt4/ui/CitationUi.ui:265
 msgid "Text to place before citation"
 msgstr "טקסט שימוקם לפני המובאה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:316
+#: src/frontends/qt4/ui/CitationUi.ui:316
 msgid "A&pply"
 msgstr "החל"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:335
+#: src/frontends/qt4/ui/CitationUi.ui:335
 #, fuzzy
 msgid "Search Citation"
 msgstr "מובאה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:358
+#: src/frontends/qt4/ui/CitationUi.ui:358
 #, fuzzy
 msgid "Case Se&nsitive"
 msgstr "הבדל בין אותיות גדולות לקטנות"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:365
+#: src/frontends/qt4/ui/CitationUi.ui:365
 msgid "Regular E&xpression"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:377
+#: src/frontends/qt4/ui/CitationUi.ui:377
 #, fuzzy
 msgid "<- C&lear"
 msgstr "נקה"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:391
+#: src/frontends/qt4/ui/CitationUi.ui:391
 #, fuzzy
 msgid "F&ind:"
 msgstr "מצא"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:73
-msgid "&Size:"
-msgstr "גודל"
-
-#: src/frontends/qt4/ui/QDelimiterUi.ui:217
+#: src/frontends/qt4/ui/DelimiterUi.ui:89
 #, fuzzy
 msgid "Insert the delimiters"
 msgstr "הכנס שורש"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:220
+#: src/frontends/qt4/ui/DelimiterUi.ui:92
 msgid "&Insert"
 msgstr "הוספה"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/ui/DelimiterUi.ui:132
+msgid "&Size:"
+msgstr "גודל"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:180
 #: src/frontends/qt4/QDelimiterDialog.C:190
 #, fuzzy
 msgid "TeX Code: "
 msgstr "קוד TeX"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:276
+#: src/frontends/qt4/ui/DelimiterUi.ui:289
 #, fuzzy
 msgid "Match delimiter types"
 msgstr "Popup single match"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:279
+#: src/frontends/qt4/ui/DelimiterUi.ui:292
 msgid "&Keep matched"
 msgstr ""
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:58
+#: src/frontends/qt4/ui/DocumentUi.ui:58
 msgid "Reset to the default settings for the document class"
 msgstr ""
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:61
+#: src/frontends/qt4/ui/DocumentUi.ui:61
 msgid "Use Class Defaults"
 msgstr "השתמש בברירות מחדל של המחלקה"
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:76
+#: src/frontends/qt4/ui/DocumentUi.ui:76
 msgid "Save settings as LyX's default document settings"
 msgstr ""
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:79
+#: src/frontends/qt4/ui/DocumentUi.ui:79
 msgid "Save as Document Defaults"
 msgstr "שמור הגדרות כברירת מחדל"
 
-#: src/frontends/qt4/ui/QERTUi.ui:31
+#: src/frontends/qt4/ui/ERTUi.ui:31
 msgid "Display"
 msgstr "תצוגה"
 
-#: src/frontends/qt4/ui/QERTUi.ui:43
+#: src/frontends/qt4/ui/ERTUi.ui:43
 #, fuzzy
 msgid "Show ERT inline"
 msgstr "הצג את שני המשטחים"
 
-#: src/frontends/qt4/ui/QERTUi.ui:46
+#: src/frontends/qt4/ui/ERTUi.ui:46
 #, fuzzy
 msgid "&Inline"
 msgstr "Inline completion"
 
-#: src/frontends/qt4/ui/QERTUi.ui:53
+#: src/frontends/qt4/ui/ERTUi.ui:53
 #, fuzzy
 msgid "Show ERT button only"
 msgstr "הצג כפתור 'סיום' במקום כפתור 'הבא'"
 
-#: src/frontends/qt4/ui/QERTUi.ui:56
+#: src/frontends/qt4/ui/ERTUi.ui:56
 msgid "&Collapsed"
 msgstr ""
 
-#: src/frontends/qt4/ui/QERTUi.ui:63
+#: src/frontends/qt4/ui/ERTUi.ui:63
 msgid "Show ERT contents"
 msgstr "הצג תוכן ERT"
 
-#: src/frontends/qt4/ui/QERTUi.ui:66
+#: src/frontends/qt4/ui/ERTUi.ui:66
 msgid "O&pen"
 msgstr "פתח"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:51
+#: src/frontends/qt4/ui/ExternalUi.ui:51
 msgid "File"
 msgstr "קובץ"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:63
+#: src/frontends/qt4/ui/ExternalUi.ui:63
 msgid "&Draft"
 msgstr "טיוטה"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:86
+#: src/frontends/qt4/ui/ExternalUi.ui:86
 #, fuzzy
 msgid "Edit the file externally"
 msgstr "ערוך את הקובץ בעורך טקסט"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:89
+#: src/frontends/qt4/ui/ExternalUi.ui:89
 msgid "&Edit File..."
 msgstr "ערוך קובץ..."
 
-#: src/frontends/qt4/ui/QExternalUi.ui:96
-#: src/frontends/qt4/ui/QIncludeUi.ui:142
+#: src/frontends/qt4/ui/ExternalUi.ui:96 src/frontends/qt4/ui/IncludeUi.ui:142
 msgid "Select a file"
 msgstr "בחר קובץ"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:106
-#: src/frontends/qt4/ui/QExternalUi.ui:119
+#: src/frontends/qt4/ui/ExternalUi.ui:106
+#: src/frontends/qt4/ui/ExternalUi.ui:119
 msgid "Filename"
 msgstr "שם קובץ"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:109
-#: src/frontends/qt4/ui/QGraphicsUi.ui:88
-#: src/frontends/qt4/ui/QIncludeUi.ui:155 src/frontends/qt4/ui/QPrintUi.ui:296
+#: src/frontends/qt4/ui/ExternalUi.ui:109
+#: src/frontends/qt4/ui/GraphicsUi.ui:88 src/frontends/qt4/ui/IncludeUi.ui:155
+#: src/frontends/qt4/ui/PrintUi.ui:296
 msgid "&File:"
 msgstr "קובץ"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:126
+#: src/frontends/qt4/ui/ExternalUi.ui:126
 #, fuzzy
 msgid "Template"
 msgstr "תבנית פתיחת קטלוג"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:165
+#: src/frontends/qt4/ui/ExternalUi.ui:165
 msgid "Available templates"
 msgstr "תבניות זמינות"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:176
+#: src/frontends/qt4/ui/ExternalUi.ui:176
 #, fuzzy
 msgid "LyX View"
 msgstr "תצוגת ברירת מחדל"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:188
-#: src/frontends/qt4/ui/QExternalUi.ui:261
-#: src/frontends/qt4/ui/QGraphicsUi.ui:587
-#: src/frontends/qt4/ui/QGraphicsUi.ui:600
+#: src/frontends/qt4/ui/ExternalUi.ui:188
+#: src/frontends/qt4/ui/ExternalUi.ui:261
+#: src/frontends/qt4/ui/GraphicsUi.ui:587
+#: src/frontends/qt4/ui/GraphicsUi.ui:600
 #, fuzzy
 msgid "Screen display"
 msgstr "Default Display"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:197
-#: src/frontends/qt4/ui/QGraphicsUi.ui:609
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:66
+#: src/frontends/qt4/ui/ExternalUi.ui:197
+#: src/frontends/qt4/ui/GraphicsUi.ui:609
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:66
 msgid "Monochrome"
 msgstr "שחור-לבן"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:202
-#: src/frontends/qt4/ui/QGraphicsUi.ui:614
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:71
+#: src/frontends/qt4/ui/ExternalUi.ui:202
+#: src/frontends/qt4/ui/GraphicsUi.ui:614
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:71
 msgid "Grayscale"
 msgstr "גווני אפור"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:207
-#: src/frontends/qt4/ui/QGraphicsUi.ui:619
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
+#: src/frontends/qt4/ui/ExternalUi.ui:207
+#: src/frontends/qt4/ui/GraphicsUi.ui:619
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
 msgid "Color"
 msgstr "צבע"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:212
+#: src/frontends/qt4/ui/ExternalUi.ui:212
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:239
-#: src/frontends/qt4/ui/QExternalUi.ui:274
-#: src/frontends/qt4/ui/QGraphicsUi.ui:627
-#: src/frontends/qt4/ui/QGraphicsUi.ui:651
+#: src/frontends/qt4/ui/ExternalUi.ui:239
+#: src/frontends/qt4/ui/ExternalUi.ui:274
+#: src/frontends/qt4/ui/GraphicsUi.ui:627
+#: src/frontends/qt4/ui/GraphicsUi.ui:651
 msgid "Percentage to scale by in LyX"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:252
+#: src/frontends/qt4/ui/ExternalUi.ui:252
 msgid "%"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:264
-#: src/frontends/qt4/ui/QGraphicsUi.ui:590
+#: src/frontends/qt4/ui/ExternalUi.ui:264
+#: src/frontends/qt4/ui/GraphicsUi.ui:590
 #, fuzzy
 msgid "&Display:"
 msgstr "DISPLAY"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:277
+#: src/frontends/qt4/ui/ExternalUi.ui:277
 msgid "Sca&le:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:300
+#: src/frontends/qt4/ui/ExternalUi.ui:300
 #, fuzzy
 msgid "Display image in LyX"
 msgstr "Display directories in configuration file"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:303
+#: src/frontends/qt4/ui/ExternalUi.ui:303
 #, fuzzy
 msgid "&Show in LyX"
 msgstr "הצג _מחליף סביבות עבודה בשורת המשימות"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:324
+#: src/frontends/qt4/ui/ExternalUi.ui:324
 msgid "Rotate"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:381
-#: src/frontends/qt4/ui/QExternalUi.ui:411
-#: src/frontends/qt4/ui/QGraphicsUi.ui:113
-#: src/frontends/qt4/ui/QGraphicsUi.ui:134
+#: src/frontends/qt4/ui/ExternalUi.ui:381
+#: src/frontends/qt4/ui/ExternalUi.ui:411
+#: src/frontends/qt4/ui/GraphicsUi.ui:113
+#: src/frontends/qt4/ui/GraphicsUi.ui:134
 msgid "Angle to rotate image by"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:391
-#: src/frontends/qt4/ui/QExternalUi.ui:404
-#: src/frontends/qt4/ui/QGraphicsUi.ui:141
-#: src/frontends/qt4/ui/QGraphicsUi.ui:154
+#: src/frontends/qt4/ui/ExternalUi.ui:391
+#: src/frontends/qt4/ui/ExternalUi.ui:404
+#: src/frontends/qt4/ui/GraphicsUi.ui:141
+#: src/frontends/qt4/ui/GraphicsUi.ui:154
 msgid "The origin of the rotation"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:394
+#: src/frontends/qt4/ui/ExternalUi.ui:394
 msgid "&Origin:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:414
+#: src/frontends/qt4/ui/ExternalUi.ui:414
 msgid "A&ngle:"
 msgstr "זווית:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:427
+#: src/frontends/qt4/ui/ExternalUi.ui:427
 msgid "Scale"
 msgstr "סולם"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:448
-#: src/frontends/qt4/ui/QGraphicsUi.ui:230
+#: src/frontends/qt4/ui/ExternalUi.ui:448
+#: src/frontends/qt4/ui/GraphicsUi.ui:230
 msgid "Height of image in output"
 msgstr "גובה התמונה בפלט"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:458
+#: src/frontends/qt4/ui/ExternalUi.ui:458
 msgid "Maintain aspect ratio with largest dimension"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:461
-#: src/frontends/qt4/ui/QGraphicsUi.ui:276
+#: src/frontends/qt4/ui/ExternalUi.ui:461
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 #, fuzzy
 msgid "&Maintain aspect ratio"
 msgstr "Cursor line aspect ratio"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:497
-#: src/frontends/qt4/ui/QGraphicsUi.ui:196
+#: src/frontends/qt4/ui/ExternalUi.ui:497
+#: src/frontends/qt4/ui/GraphicsUi.ui:196
 msgid "Width of image in output"
 msgstr "רוחב התמונה בפלט"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:518
+#: src/frontends/qt4/ui/ExternalUi.ui:518
 msgid "Crop"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:530
-#: src/frontends/qt4/ui/QGraphicsUi.ui:440
+#: src/frontends/qt4/ui/ExternalUi.ui:530
+#: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "Get bounding box from the (EPS) file"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:533
-#: src/frontends/qt4/ui/QGraphicsUi.ui:443
+#: src/frontends/qt4/ui/ExternalUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:443
 #, fuzzy
 msgid "&Get from File"
 msgstr ".%s טמרופב `%s'-ל `%s' ץבוק דבעמ\n"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:553
-#: src/frontends/qt4/ui/QGraphicsUi.ui:312
+#: src/frontends/qt4/ui/ExternalUi.ui:553
+#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to bounding box values"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:556
-#: src/frontends/qt4/ui/QGraphicsUi.ui:315
+#: src/frontends/qt4/ui/ExternalUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:315
 msgid "Clip to &bounding box"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:573
-#: src/frontends/qt4/ui/QGraphicsUi.ui:348
+#: src/frontends/qt4/ui/ExternalUi.ui:573
+#: src/frontends/qt4/ui/GraphicsUi.ui:348
 #, fuzzy
 msgid "&Left bottom:"
 msgstr "Bottom Attach"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:586
-#: src/frontends/qt4/ui/QGraphicsUi.ui:386
+#: src/frontends/qt4/ui/ExternalUi.ui:586
+#: src/frontends/qt4/ui/GraphicsUi.ui:386
 #, fuzzy
 msgid "Right &top:"
 msgstr "Top Attach"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:612
+#: src/frontends/qt4/ui/ExternalUi.ui:612
 msgid "x"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:619
+#: src/frontends/qt4/ui/ExternalUi.ui:619
 #, fuzzy
 msgid "y"
 msgstr "כ"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:627
+#: src/frontends/qt4/ui/ExternalUi.ui:627
 msgid "Options"
 msgstr "אפשרויות"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:655
+#: src/frontends/qt4/ui/ExternalUi.ui:655
 msgid "O&ption:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QExternalUi.ui:668
+#: src/frontends/qt4/ui/ExternalUi.ui:668
 msgid "Forma&t:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:43
+#: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
 msgstr "תמונות"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:55
+#: src/frontends/qt4/ui/GraphicsUi.ui:55
 #, fuzzy
 msgid "&Edit"
 msgstr "&עריכה"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:68
+#: src/frontends/qt4/ui/GraphicsUi.ui:68
 #, fuzzy
 msgid "Select an image file"
 msgstr "בחר בקובץ של תמונת הטפט"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:85
+#: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
 #, fuzzy
 msgid "File name of image"
 msgstr "@image רובע `%s' ץבוק תאירקב (%s) הלקת"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:98
+#: src/frontends/qt4/ui/GraphicsUi.ui:98
 msgid "Rotate Graphics"
 msgstr "סובב תמונות"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:116
+#: src/frontends/qt4/ui/GraphicsUi.ui:116
 msgid "A&ngle (Degrees):"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:144
+#: src/frontends/qt4/ui/GraphicsUi.ui:144
 #, fuzzy
 msgid "Or&igin:"
 msgstr " %s או %s?זכור"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:164
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 #, fuzzy
 msgid "Output Size"
 msgstr "גודל דף"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:240
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:243
 #, fuzzy
 msgid "Set &height:"
 msgstr "גובה גדילה"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:250
 #, fuzzy
 msgid "&Scale Graphics (%):"
 msgstr "ערכת מידה"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:260
+#: src/frontends/qt4/ui/GraphicsUi.ui:260
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:263
 #, fuzzy
 msgid "Set &width:"
 msgstr "רוחב"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:273
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:287
+#: src/frontends/qt4/ui/GraphicsUi.ui:287
 msgid "&Clipping"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:396
-#: src/frontends/qt4/ui/QGraphicsUi.ui:403
+#: src/frontends/qt4/ui/GraphicsUi.ui:396
+#: src/frontends/qt4/ui/GraphicsUi.ui:403
 #, fuzzy
 msgid "y:"
 msgstr "כ"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:410
-#: src/frontends/qt4/ui/QGraphicsUi.ui:417
+#: src/frontends/qt4/ui/GraphicsUi.ui:410
+#: src/frontends/qt4/ui/GraphicsUi.ui:417
 msgid "x:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:451
+#: src/frontends/qt4/ui/GraphicsUi.ui:451
 #, fuzzy
 msgid "LaTe&X and LyX options"
 msgstr "אפשרויות LaTeX"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:463
-#: src/frontends/qt4/ui/QGraphicsUi.ui:484
+#: src/frontends/qt4/ui/GraphicsUi.ui:463
+#: src/frontends/qt4/ui/GraphicsUi.ui:484
 msgid "Additional LaTeX options"
 msgstr "אפשרויות LaTeX נוספות"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:466
+#: src/frontends/qt4/ui/GraphicsUi.ui:466
 msgid "LaTeX &options:"
 msgstr "אפשרויות LaTeX"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:491
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "אל תבטל דחיסה לפני ייצוא ל- LaTeX"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:494
+#: src/frontends/qt4/ui/GraphicsUi.ui:494
 msgid "Don't un&zip on export"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:501
+#: src/frontends/qt4/ui/GraphicsUi.ui:501
 msgid "Draft mode"
 msgstr "מצב טיוטה"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:504
+#: src/frontends/qt4/ui/GraphicsUi.ui:504
 msgid "&Draft mode"
 msgstr "מצב טיוטה"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:514
 #, fuzzy
 msgid "S&ubfigure"
 msgstr "חתימת PGP"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:535
-#: src/frontends/qt4/ui/QGraphicsUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:535
+#: src/frontends/qt4/ui/GraphicsUi.ui:556
 msgid "The caption for the sub-figure"
 msgstr "הכותרת לתת-האיור"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:538
+#: src/frontends/qt4/ui/GraphicsUi.ui:538
 msgid "Ca&ption:"
 msgstr "כותרת:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:569
+#: src/frontends/qt4/ui/GraphicsUi.ui:569
 #, fuzzy
 msgid "Sho&w in LyX"
 msgstr "הצג _מחליף סביבות עבודה בשורת המשימות"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:630
+#: src/frontends/qt4/ui/GraphicsUi.ui:630
 #, fuzzy
 msgid "Sca&le on Screen (%):"
 msgstr "The resolution for fonts on the screen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:36
+#: src/frontends/qt4/ui/IncludeUi.ui:36
 #, fuzzy
 msgid "Show LaTeX preview"
 msgstr "תצוגה מקדימה של תמונה זו"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:39
+#: src/frontends/qt4/ui/IncludeUi.ui:39
 #, fuzzy
 msgid "&Show preview"
 msgstr "תצוגה מקדימה של תמונות"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:54
+#: src/frontends/qt4/ui/IncludeUi.ui:54
 #, fuzzy
 msgid "Underline spaces in generated output"
 msgstr "                .טלפב םיחוורל TAB יוות ךופה  -t  --expand-tabs"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:57
+#: src/frontends/qt4/ui/IncludeUi.ui:57
 #, fuzzy
 msgid "&Mark spaces in output"
 msgstr "                .טלפב םיחוורל TAB יוות ךופה  -t  --expand-tabs"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:80
+#: src/frontends/qt4/ui/IncludeUi.ui:80
 #, fuzzy
 msgid "File name to include"
 msgstr "לא ניתן למצוא את קובץ ה include: \"%s\""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:87
+#: src/frontends/qt4/ui/IncludeUi.ui:87
 #, fuzzy
 msgid "Load the file"
 msgstr "%d קובץ %lld %s"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:90
+#: src/frontends/qt4/ui/IncludeUi.ui:90
 msgid "&Load"
 msgstr "טען"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:114 src/insets/insetinclude.C:312
+#: src/frontends/qt4/ui/IncludeUi.ui:114 src/insets/InsetInclude.cpp:312
 #, fuzzy
 msgid "Include"
 msgstr "- כלול -"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:119 src/insets/insetinclude.C:303
+#: src/frontends/qt4/ui/IncludeUi.ui:119 src/insets/InsetInclude.cpp:303
 msgid "Input"
 msgstr "קלט"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:124 lib/layouts/manpage.layout:122
+#: src/frontends/qt4/ui/IncludeUi.ui:124 lib/layouts/manpage.layout:122
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:132
+#: src/frontends/qt4/ui/IncludeUi.ui:132
 #, fuzzy
 msgid "&Include Type:"
 msgstr "סוג קובץ: "
 
-#: src/frontends/qt4/ui/QLogUi.ui:58
+#: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
 msgstr "עדכן את התצוגה"
 
-#: src/frontends/qt4/ui/QLogUi.ui:61 src/frontends/qt4/ui/QRefUi.ui:235
-#: src/frontends/qt4/ui/QViewSourceUi.ui:56
+#: src/frontends/qt4/ui/LogUi.ui:61 src/frontends/qt4/ui/RefUi.ui:235
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "עדכן"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:39
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:52
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:84
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:126
+#: src/frontends/qt4/ui/MathMatrixUi.ui:39
+#: src/frontends/qt4/ui/MathMatrixUi.ui:52
+#: src/frontends/qt4/ui/TabularCreateUi.ui:84
+#: src/frontends/qt4/ui/TabularCreateUi.ui:126
 msgid "Number of rows"
 msgstr "מספר טורים"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:42
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:87
+#: src/frontends/qt4/ui/MathMatrixUi.ui:42
+#: src/frontends/qt4/ui/TabularCreateUi.ui:87
 #, fuzzy
 msgid "&Rows:"
 msgstr "Rows"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:68
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:81
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:113
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:142
+#: src/frontends/qt4/ui/MathMatrixUi.ui:68
+#: src/frontends/qt4/ui/MathMatrixUi.ui:81
+#: src/frontends/qt4/ui/TabularCreateUi.ui:113
+#: src/frontends/qt4/ui/TabularCreateUi.ui:142
 msgid "Number of columns"
 msgstr "מספר העמודות"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:71
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:116
+#: src/frontends/qt4/ui/MathMatrixUi.ui:71
+#: src/frontends/qt4/ui/TabularCreateUi.ui:116
 #, fuzzy
 msgid "&Columns:"
 msgstr "עמודות"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:139
+#: src/frontends/qt4/ui/MathMatrixUi.ui:139
 msgid "Resize this to the correct table dimensions"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:214
-#: src/frontends/qt4/ui/QWrapUi.ui:49
+#: src/frontends/qt4/ui/MathMatrixUi.ui:214 src/frontends/qt4/ui/WrapUi.ui:49
 msgid "Vertical alignment"
 msgstr "יישור אנכי"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:236
+#: src/frontends/qt4/ui/MathMatrixUi.ui:236
 #, fuzzy
 msgid "&Vertical:"
 msgstr "אנכי"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:257
+#: src/frontends/qt4/ui/MathMatrixUi.ui:257
 #, fuzzy
 msgid "Horizontal alignment per column (l,c,r)"
 msgstr "Horizontal alignment for child"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:264
+#: src/frontends/qt4/ui/MathMatrixUi.ui:264
 msgid "&Horizontal:"
 msgstr "אופקי"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:31
+#: src/frontends/qt4/ui/NomenclUi.ui:31
 #, fuzzy
 msgid "Sort &as:"
 msgstr "שמור בשם|ב"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:41
+#: src/frontends/qt4/ui/NomenclUi.ui:41
 msgid "&Description:"
 msgstr "תיאור"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:51
+#: src/frontends/qt4/ui/NomenclUi.ui:51
 msgid "&Symbol:"
 msgstr "סמל"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:51
+#: src/frontends/qt4/ui/NoteUi.ui:51
 msgid "Type"
 msgstr "סוג"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:63
+#: src/frontends/qt4/ui/NoteUi.ui:63
 #, fuzzy
 msgid "LyX internal only"
 msgstr ".דחא ןולח קר םייק"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:66
+#: src/frontends/qt4/ui/NoteUi.ui:66
 msgid "LyX &Note"
 msgstr "הערת LyX"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:73
+#: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "Export to LaTeX/Docbook but don't print"
 msgstr ""
 
-#: src/frontends/qt4/ui/QNoteUi.ui:76
+#: src/frontends/qt4/ui/NoteUi.ui:76
 msgid "&Comment"
 msgstr "&הערה"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:83
+#: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "Print as grey text"
 msgstr "הדפס בגווני אפור"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:86
+#: src/frontends/qt4/ui/NoteUi.ui:86
 #, fuzzy
 msgid "&Greyed out"
 msgstr "הת_רחק"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:93
+#: src/frontends/qt4/ui/NoteUi.ui:93
 #, fuzzy
 msgid "Framed in box"
 msgstr "Color of the selection box"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:96
+#: src/frontends/qt4/ui/NoteUi.ui:96
 #, fuzzy
 msgid "&Framed"
 msgstr "frame"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:103
+#: src/frontends/qt4/ui/NoteUi.ui:103
 #, fuzzy
 msgid "Box with shaded background"
 msgstr "רקע הערה"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:106
+#: src/frontends/qt4/ui/NoteUi.ui:106
 #, fuzzy
 msgid "&Shaded"
 msgstr "שמור"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:114
+#: src/frontends/qt4/ui/ParagraphUi.ui:114
 msgid "Label Width"
 msgstr "רוחב תווית"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:126
-#: src/frontends/qt4/ui/QParagraphUi.ui:133
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
 msgid "This text defines the width of the paragraph label"
 msgstr "טקסטזה מגדיר את רוחב תווית הפסקה"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:136
+#: src/frontends/qt4/ui/ParagraphUi.ui:136
 msgid "&Longest label"
 msgstr "התווית הארוכה ביותר"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:157
+#: src/frontends/qt4/ui/ParagraphUi.ui:157
 #, fuzzy
 msgid "Indent &Paragraph"
 msgstr "הזח פסקה"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:203
+#: src/frontends/qt4/ui/ParagraphUi.ui:203
 msgid "L&ine spacing:"
 msgstr "מרווח בין שורות"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:219
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1737
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/frontends/qt4/QDocument.C:123
+#: src/text.C:1737
 msgid "Single"
 msgstr "יחיד"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:224
+#: src/frontends/qt4/ui/ParagraphUi.ui:224
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:229
-#: src/frontends/qt4/QDocumentDialog.C:121 src/text.C:1743
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/frontends/qt4/QDocument.C:127
+#: src/text.C:1743
 msgid "Double"
 msgstr "כפול"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:234
-#: src/frontends/qt4/ui/QTabularUi.ui:712
-#: src/frontends/qt4/ui/QTabularUi.ui:731
-#: src/frontends/qt4/ui/QTabularUi.ui:779
-#: src/frontends/qt4/ui/QVSpaceUi.ui:110
-#: src/frontends/qt4/QDocumentDialog.C:123
-#: src/frontends/qt4/QDocumentDialog.C:204
+#: src/frontends/qt4/ui/ParagraphUi.ui:234
+#: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
+#: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
+#: src/frontends/qt4/QDocument.C:129 src/frontends/qt4/QDocument.C:230
 msgid "Custom"
 msgstr "מותאם אישית"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:271
+#: src/frontends/qt4/ui/ParagraphUi.ui:271
 #, fuzzy
 msgid "&Default"
 msgstr "ברירת מחדל"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:278
+#: src/frontends/qt4/ui/ParagraphUi.ui:278
 #, fuzzy
 msgid "&Justified"
 msgstr "מיושר לשני הכיוונים"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:285
+#: src/frontends/qt4/ui/ParagraphUi.ui:285
 #, fuzzy
 msgid "&Left"
 msgstr "שמאל"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:292
+#: src/frontends/qt4/ui/ParagraphUi.ui:292
 #, fuzzy
 msgid "&Right"
 msgstr "ימין"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:299
+#: src/frontends/qt4/ui/ParagraphUi.ui:299
 #, fuzzy
 msgid "&Center"
 msgstr "מרכז"
 
-#: src/frontends/qt4/ui/QPrefColorsUi.ui:25
+#: src/frontends/qt4/ui/PrefColorsUi.ui:25
 msgid "&Colors"
 msgstr "&צבעים"
 
-#: src/frontends/qt4/ui/QPrefColorsUi.ui:54
+#: src/frontends/qt4/ui/PrefColorsUi.ui:54
 msgid "&Alter..."
 msgstr "שנה..."
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:25
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 #, fuzzy
 msgid "Converter File Cache"
 msgstr "הוסף קובץ"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:45
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
 #, fuzzy
 msgid "&Enabled"
 msgstr "טבלה"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:65
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
 #, fuzzy
 msgid "&Maximum Age (in days):"
 msgstr "מוריד קבצים מ-"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:83
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
 #, fuzzy
 msgid "Converter Defi&nitions"
 msgstr "הגדרה"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:115
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 #, fuzzy
 msgid "A&dd"
 msgstr "הו_סף..."
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:61
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 #, fuzzy
 msgid "&Modify"
 msgstr "_ערוך"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:137
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
 #, fuzzy
 msgid "Remo&ve"
 msgstr "הסר"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
 #, fuzzy
 msgid "&From format:"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:207
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
 #, fuzzy
 msgid "&To format:"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:241
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
 msgid "E&xtra flag:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:264
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
 msgid "C&onverter:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:25
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
 msgid "C&opiers"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:100
-#: src/frontends/qt4/ui/QRefUi.ui:132
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
 #, fuzzy
 msgid "&Format:"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
 msgid "&Copier:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:44
+#: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:47
+#: src/frontends/qt4/ui/PrefCygwinPathUi.ui:47
 msgid "&Use Windows-style paths in LaTeX files"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefDateUi.ui:36
+#: src/frontends/qt4/ui/PrefDateUi.ui:36
 #, fuzzy
 msgid "&Date format:"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/ui/QPrefDateUi.ui:46
+#: src/frontends/qt4/ui/PrefDateUi.ui:46
 msgid "Date format for strftime output"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:36
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:36
 msgid "Display &Graphics:"
 msgstr "הצג תמונות:"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "כבוי"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:52
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:52
 msgid "No math"
 msgstr "ללא מתמטיקה"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "פועל"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:81
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:81
 msgid "Do not display"
 msgstr "אל תציג תמונות"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:89
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:89
 msgid "Instant &Preview:"
 msgstr "תצוגה מקדימה של תמונות"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:25
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:25
 #, fuzzy
 msgid "&File formats"
 msgstr "%d קובץ %lld %s"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:100
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:100
 #, fuzzy
 msgid "&Document format"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:107
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:107
 #, fuzzy
 msgid "Vector graphi&cs format"
 msgstr "בחר קובץ תמונה"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:132
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "F&ormat:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
 msgid "S&hortcut:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:152
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 #, fuzzy
 msgid "&Viewer:"
 msgstr "Default help viewer"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:191
 #, fuzzy
 msgid "&GUI name:"
 msgstr "שם המוען"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:201
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:201
 msgid "E&xtension:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:211
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:211
 #, fuzzy
 msgid "Ed&itor:"
 msgstr "             .ed ךרוע רובע תוארוה תמישר קפה  -e  --ed"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:36
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:36
 msgid "&E-mail:"
 msgstr "דוא\"ל"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:46
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:46
 #, fuzzy
 msgid "Your name"
 msgstr "שם:"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:53
-#: src/frontends/qt4/ui/QRefUi.ui:119 src/frontends/qt4/ui/QURLUi.ui:47
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:53 src/frontends/qt4/ui/RefUi.ui:119
+#: src/frontends/qt4/ui/URLUi.ui:47
 #, fuzzy
 msgid "&Name:"
 msgstr "שם"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:63
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:63
 msgid "Your E-mail address"
 msgstr "כתובת הדוא\"ל שלך:"
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:58
-#: src/frontends/qt4/ui/QPrefUi.ui:114
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:58
+#: src/frontends/qt4/ui/PrefUi.ui:114
 msgid "Bro&wse..."
 msgstr "עיון..."
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:71
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:71
 msgid "S&econd:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:84
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:84
 msgid "&First:"
 msgstr "ראשון"
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:97
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:82
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:97
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:82
 msgid "Br&owse..."
 msgstr "עיין..."
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:107
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:107
 msgid "Use &keyboard map"
 msgstr "השתמש בפריסת מקלדת"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:28
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:28
 msgid "Command s&tart:"
 msgstr "פקודת התחלה"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:50
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:50
 msgid "&Default language:"
 msgstr "שפת ברירת המחדל:"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:60
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:60
 msgid "Command e&nd:"
 msgstr "פקודת סיום"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:70
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:70
 msgid "Language pac&kage:"
 msgstr "חבילת שפה:"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:80
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:80
 msgid "Auto &begin"
 msgstr "התחל אוטומטית"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:87
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 #, fuzzy
 msgid "Use b&abel"
 msgstr "Use Markup"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:110
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:110
 #, fuzzy
 msgid "&Global"
 msgstr "הגדרות גלובליות"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:117
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:117
 msgid "&Right-to-left language support"
 msgstr "תמיכה בשפות הנכתבות מימין לשמאל"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:124
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:124
 msgid "Auto &end"
 msgstr "סיים אוטומטית"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:131
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:131
 msgid "Mark &foreign languages"
 msgstr "סמן שפות זרות"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:28
+#: src/frontends/qt4/ui/PrefLatexUi.ui:28
 msgid "Set class options to default on class change"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:31
+#: src/frontends/qt4/ui/PrefLatexUi.ui:31
 msgid "&Reset class options when document class changes"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:54
+#: src/frontends/qt4/ui/PrefLatexUi.ui:54
 msgid "Default paper si&ze:"
 msgstr "ברירת המחדל של גודל הדף"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:64
+#: src/frontends/qt4/ui/PrefLatexUi.ui:64
 msgid "Te&X encoding:"
 msgstr "קידוד TeX:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:205
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.C:231
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:206
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.C:232
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:207
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.C:233
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:208
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.C:234
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:209
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.C:235
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:210
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.C:236
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.C:239
 msgid "B5"
 msgstr "B5"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:137
+#: src/frontends/qt4/ui/PrefLatexUi.ui:137
 #, fuzzy
 msgid "External Applications"
 msgstr "עורך טקסט חיצוני"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:149
+#: src/frontends/qt4/ui/PrefLatexUi.ui:149
 msgid "CheckTeX start options and flags"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:156
+#: src/frontends/qt4/ui/PrefLatexUi.ui:156
 #, fuzzy
 msgid "Chec&kTeX command:"
 msgstr "Command is insensitive"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:166
+#: src/frontends/qt4/ui/PrefLatexUi.ui:166
 #, fuzzy
 msgid "BibTeX command and options"
 msgstr "הז תא הז םירתוס -s-ו -l םינייפאמה"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:173
+#: src/frontends/qt4/ui/PrefLatexUi.ui:173
 #, fuzzy
 msgid "&BibTeX command:"
 msgstr "פקודה קודמת"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:183
+#: src/frontends/qt4/ui/PrefLatexUi.ui:183
 msgid "Index command and options (makeindex, xindy)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:190
+#: src/frontends/qt4/ui/PrefLatexUi.ui:190
 #, fuzzy
 msgid "Index command:"
 msgstr "פקודה קודמת"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:200
+#: src/frontends/qt4/ui/PrefLatexUi.ui:200
 msgid "DVI viewer paper size options:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:210
+#: src/frontends/qt4/ui/PrefLatexUi.ui:210
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:28
+#: src/frontends/qt4/ui/PrefPathsUi.ui:28
 #, fuzzy
 msgid "Ly&XServer pipe:"
 msgstr "`%s' קיפא תחיתפב (%s) הלקת"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:38
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:51
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:61
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:77
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:123
+#: src/frontends/qt4/ui/PrefPathsUi.ui:38
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51
+#: src/frontends/qt4/ui/PrefPathsUi.ui:61
+#: src/frontends/qt4/ui/PrefPathsUi.ui:77
+#: src/frontends/qt4/ui/PrefPathsUi.ui:123
 msgid "Browse..."
 msgstr "עיין..."
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:87
+#: src/frontends/qt4/ui/PrefPathsUi.ui:87
 #, fuzzy
 msgid "&PATH prefix:"
 msgstr "GNOME Prefix"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:97
+#: src/frontends/qt4/ui/PrefPathsUi.ui:97
 #, fuzzy
 msgid "&Temporary directory:"
 msgstr "ספריה נוצרה"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:107
+#: src/frontends/qt4/ui/PrefPathsUi.ui:107
 #, fuzzy
 msgid "&Backup directory:"
 msgstr "ספריה נוצרה"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:133
+#: src/frontends/qt4/ui/PrefPathsUi.ui:133
 #, fuzzy
 msgid "&Working directory:"
 msgstr "Invalid working directory: %s"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:143
+#: src/frontends/qt4/ui/PrefPathsUi.ui:143
 msgid "&Document templates:"
 msgstr "תבניות מסמך"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:36
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:36
 #, fuzzy
 msgid "&roff command:"
 msgstr "פקודה קודמת"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2097
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/lyxrc.C:2097
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:82
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:82
 #, fuzzy
 msgid "Output &line length:"
 msgstr "Length of scale's slider"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:92
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:92
 msgid "External app for formating tables in plain text output"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:47
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:47
 #, fuzzy
 msgid "Name of the default printer"
 msgstr "Get the name of the default source"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:54
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:54
 #, fuzzy
 msgid "Use printer name explicitely"
 msgstr "The icon name to use for the printer"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:57
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:57
 msgid "Adapt outp&ut"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:64
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:64
 #, fuzzy
 msgid "Command Options"
 msgstr "`s' הדוקפל םיבורמ `g' ינייפאמ"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:76
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:76
 #, fuzzy
 msgid "Re&verse:"
 msgstr "\t-W re-interval\t\t--re-interval\n"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:92
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:92
 #, fuzzy
 msgid "To p&rinter:"
 msgstr "עבור אל"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:102
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:102
 msgid "Paper si&ze:"
 msgstr "גודל הדף"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:118
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:118
 #, fuzzy
 msgid "To &file:"
 msgstr "שנה את שם הקובץ \"%s\" ל:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:137
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:137
 #, fuzzy
 msgid "Spool &command:"
 msgstr "פקודה קודמת"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:153
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "&Odd pages:"
 msgstr "עמודים אי-זוגיים"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:166
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Paper t&ype:"
 msgstr "סוג דף"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:179
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:179
 msgid "E&xtra options:"
 msgstr "אפשרויות נוספות"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:189
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:189
 msgid "Spool pref&ix:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:202
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:202
 #, fuzzy
 msgid "Co&llated:"
 msgstr "צ_בע:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:215
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:215
 msgid "&Even pages:"
 msgstr "עמודים זוגיים"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:225
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:225
 msgid "File ex&tension:"
 msgstr "סיומת של הקובץ:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:238
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:238
 msgid "Lan&dscape:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:251
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:251
 msgid "Co&pies:"
 msgstr "עותקים:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:261
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:261
 msgid "Pa&ge range:"
 msgstr "טווח עמודים"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:271
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:271
 msgid "Specify the command option names for your printer command"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:297
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:297
 msgid "Printer co&mmand:"
 msgstr "פקודת מדפסת"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:307
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:307
 msgid "Printer &name:"
 msgstr "שם המדפסת"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:69
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sa&ns Serif:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:104
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:104
 msgid "T&ypewriter:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:163
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:163
 msgid "Screen &DPI:"
 msgstr "DPI של המסך"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:180
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:180
 msgid "&Zoom %:"
 msgstr "הגדלה"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:217
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:217
 msgid "Font Sizes"
 msgstr "גדלי גופן"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:256
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:256
 msgid "Larger:"
 msgstr "גדול יותר:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:266
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:266
 msgid "Largest:"
 msgstr "גדול אף יותר"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:279
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:279
 msgid "Huge:"
 msgstr "ענק:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:289
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:289
 msgid "Hugest:"
 msgstr "יותר ענק"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:299
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:299
 msgid "Smallest:"
 msgstr "קטן אף יותר"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:309
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:309
 msgid "Smaller:"
 msgstr "קטן יותר:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:319
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:319
 msgid "Small:"
 msgstr "קטן:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:329
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:329
 msgid "Normal:"
 msgstr "רגיל:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:339
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:339
 msgid "Tiny:"
 msgstr "זעיר"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:349
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:349
 msgid "Large:"
 msgstr "גדול:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:36
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:36
 msgid "Spellchec&ker executable:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:65
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:65
 msgid "Override the language used for the spellchecker"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:72
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:72
 msgid "Al&ternative language:"
 msgstr "שפה חלופית:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:89
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:89
 #, fuzzy
 msgid "Escape cha&racters:"
 msgstr "Escape"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:115
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:115
 msgid "Specify a personal dictionary file other than the default"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:122
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:122
 msgid "Personal &dictionary:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:153
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:153
 msgid "Accept words such as \"diskdrive\""
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:156
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:156
 #, fuzzy
 msgid "Accept compound &words"
 msgstr "מסמך Applixware Words"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:163
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:163
 msgid "Use input encod&ing"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefUi.ui:33
+#: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "Scrolling"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefUi.ui:48
+#: src/frontends/qt4/ui/PrefUi.ui:48
 #, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Horizontal Scrollbar Policy"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:84
+#: src/frontends/qt4/ui/PrefUi.ui:84
 msgid "B&rowse..."
 msgstr "עיון..."
 
-#: src/frontends/qt4/ui/QPrefUi.ui:91
+#: src/frontends/qt4/ui/PrefUi.ui:91
 msgid "&User interface file:"
 msgstr "קובץ ממשק משתמש:"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:101
+#: src/frontends/qt4/ui/PrefUi.ui:101
 #, fuzzy
 msgid "&Bind file:"
 msgstr "%d קובץ %lld %s"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:132
+#: src/frontends/qt4/ui/PrefUi.ui:132
 #, fuzzy
 msgid "Session"
 msgstr "_תצורת הפעלה"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:144
+#: src/frontends/qt4/ui/PrefUi.ui:144
 msgid "Save/restore window size, or use fixed size"
 msgstr "שמור/שחזר גודל חלון או השתמש בגודל קבוע"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:167
+#: src/frontends/qt4/ui/PrefUi.ui:167
 msgid "Load opened files from last session"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefUi.ui:174
+#: src/frontends/qt4/ui/PrefUi.ui:174
 msgid "Restore cursor positions"
 msgstr "שחזר מיקום מצביע"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:184
+#: src/frontends/qt4/ui/PrefUi.ui:184
 msgid "Restore to cursor position when the file was last closed"
 msgstr "שחזר את מיקום המצביע למתי שהקובץ נסגר בפעם האחרונה"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:187
+#: src/frontends/qt4/ui/PrefUi.ui:187
 msgid "Save/restore window position"
 msgstr "שמור/שחזר את מיקום החלון"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:221
-#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:194
-#: src/frontends/qt4/QBox.C:228
+#: src/frontends/qt4/ui/PrefUi.ui:221
+#: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.C:292
+#: src/frontends/qt4/QBox.C:326
 msgid "Width"
 msgstr "רוחב"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:247
-#: src/frontends/controllers/ControlBox.C:80 src/frontends/qt4/QBox.C:185
-#: src/frontends/qt4/QBox.C:219
+#: src/frontends/qt4/ui/PrefUi.ui:247
+#: src/frontends/controllers/ControlBox.cpp:80 src/frontends/qt4/QBox.C:283
+#: src/frontends/qt4/QBox.C:317
 msgid "Height"
 msgstr "גובה"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:291
+#: src/frontends/qt4/ui/PrefUi.ui:291
 msgid "Documents"
 msgstr "מסמכים"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:303
+#: src/frontends/qt4/ui/PrefUi.ui:303
 msgid "B&ackup documents "
 msgstr "גבה מסמכים"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:334
+#: src/frontends/qt4/ui/PrefUi.ui:334
 msgid " every"
 msgstr "כל"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:354
+#: src/frontends/qt4/ui/PrefUi.ui:354
 msgid "minutes"
 msgstr " דקות"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:371
+#: src/frontends/qt4/ui/PrefUi.ui:371
 #, fuzzy
 msgid "&Maximum last files:"
 msgstr "מוריד קבצים מ-"
 
-#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:727
+#: src/frontends/qt4/ui/PrefsUi.ui:76 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyxfunc.C:726
 msgid "&Save"
 msgstr "שמור"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:31
+#: src/frontends/qt4/ui/PrintUi.ui:31
 msgid "Pages"
 msgstr "עמודים"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:62
+#: src/frontends/qt4/ui/PrintUi.ui:62
 msgid "Page number to print from"
 msgstr "מספר העמוד ממנו להתחיל להדפיס"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:69
+#: src/frontends/qt4/ui/PrintUi.ui:69
 msgid "&To:[[as in 'From page x to page y']]"
 msgstr "עד עמוד"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:82
+#: src/frontends/qt4/ui/PrintUi.ui:82
 msgid "Page number to print to"
 msgstr "מספר העמוד בו להפסיק להדפיס"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:91 src/frontends/qt4/ui/QPrintUi.ui:104
+#: src/frontends/qt4/ui/PrintUi.ui:91 src/frontends/qt4/ui/PrintUi.ui:104
 msgid "Print all pages"
 msgstr "הדפס את כל הדפים"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:94
+#: src/frontends/qt4/ui/PrintUi.ui:94
 msgid "Fro&m"
 msgstr "מעמוד"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:107
+#: src/frontends/qt4/ui/PrintUi.ui:107
 msgid "&All"
 msgstr "הכל"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:119
+#: src/frontends/qt4/ui/PrintUi.ui:119
 msgid "Print &odd-numbered pages"
 msgstr "הדפס עמודים אי-זוגיים בלבד"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:129
+#: src/frontends/qt4/ui/PrintUi.ui:129
 msgid "Print &even-numbered pages"
 msgstr "הדפס להדפיס עמודים זוגיים בלבד"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:139
+#: src/frontends/qt4/ui/PrintUi.ui:139
 msgid "Print in reverse order"
 msgstr "הדפס עמודים בסדר הפוך"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:142
+#: src/frontends/qt4/ui/PrintUi.ui:142
 msgid "Re&verse order"
 msgstr "סדר עמודים הפוך"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:152
+#: src/frontends/qt4/ui/PrintUi.ui:152
 msgid "Copies"
 msgstr "עותקים"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:164
+#: src/frontends/qt4/ui/PrintUi.ui:164
 msgid "Number of copies"
 msgstr "מספר עותקים"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:180
+#: src/frontends/qt4/ui/PrintUi.ui:180
 msgid "Collate copies"
 msgstr "אסוף עותקים"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:183
+#: src/frontends/qt4/ui/PrintUi.ui:183
 msgid "&Collate"
 msgstr "אסוף"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:233
+#: src/frontends/qt4/ui/PrintUi.ui:233
 msgid "&Print"
 msgstr "הדפס"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:261
+#: src/frontends/qt4/ui/PrintUi.ui:261
 msgid "Print Destination"
 msgstr "יעד הדפסה"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:273
+#: src/frontends/qt4/ui/PrintUi.ui:273
 msgid "Send output to the printer"
 msgstr "שלח פלט למדפסת"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:276
+#: src/frontends/qt4/ui/PrintUi.ui:276
 msgid "P&rinter:"
 msgstr "מדפסת:"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:286
+#: src/frontends/qt4/ui/PrintUi.ui:286
 msgid "Send output to the given printer"
 msgstr "שלח את הפלט למדפסת הנתונה"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:293 src/frontends/qt4/ui/QPrintUi.ui:306
+#: src/frontends/qt4/ui/PrintUi.ui:293 src/frontends/qt4/ui/PrintUi.ui:306
 msgid "Send output to a file"
 msgstr "שלח פלט לקובץ"
 
-#: src/frontends/qt4/ui/QRefUi.ui:46
+#: src/frontends/qt4/ui/RefUi.ui:46
 #, fuzzy
 msgid "La&bels in:"
 msgstr "\\%s כבר נמצא בספר"
 
-#: src/frontends/qt4/ui/QRefUi.ui:166
+#: src/frontends/qt4/ui/RefUi.ui:166
 msgid "Cross-reference as it appears in output"
 msgstr "הפנה כפי שזה מופיע בפלט"
 
-#: src/frontends/qt4/ui/QRefUi.ui:170
+#: src/frontends/qt4/ui/RefUi.ui:170
 #, fuzzy
 msgid "<reference>"
 msgstr "!םלענ (%s) רושיקה לש דעיה"
 
-#: src/frontends/qt4/ui/QRefUi.ui:175
+#: src/frontends/qt4/ui/RefUi.ui:175
 #, fuzzy
 msgid "(<reference>)"
 msgstr "!םלענ (%s) רושיקה לש דעיה"
 
-#: src/frontends/qt4/ui/QRefUi.ui:180
+#: src/frontends/qt4/ui/RefUi.ui:180
 #, fuzzy
 msgid "<page>"
 msgstr "Page"
 
-#: src/frontends/qt4/ui/QRefUi.ui:185
+#: src/frontends/qt4/ui/RefUi.ui:185
 #, fuzzy
 msgid "on page <page>"
 msgstr "Current Page"
 
-#: src/frontends/qt4/ui/QRefUi.ui:190
+#: src/frontends/qt4/ui/RefUi.ui:190
 #, fuzzy
 msgid "<reference> on page <page>"
 msgstr "Default Page Setup"
 
-#: src/frontends/qt4/ui/QRefUi.ui:195
+#: src/frontends/qt4/ui/RefUi.ui:195
 #, fuzzy
 msgid "Formatted reference"
 msgstr "!םלענ (%s) רושיקה לש דעיה"
 
-#: src/frontends/qt4/ui/QRefUi.ui:206
+#: src/frontends/qt4/ui/RefUi.ui:206
 msgid "Sort labels in alphabetical order"
 msgstr "סדר תוויות בסדר אלפאביתי"
 
-#: src/frontends/qt4/ui/QRefUi.ui:209
+#: src/frontends/qt4/ui/RefUi.ui:209
 msgid "&Sort"
 msgstr "מיין תוויות לפי סדר הא\"ב"
 
-#: src/frontends/qt4/ui/QRefUi.ui:232
+#: src/frontends/qt4/ui/RefUi.ui:232
 #, fuzzy
 msgid "Update the label list"
 msgstr "Appears as list"
 
-#: src/frontends/qt4/ui/QRefUi.ui:250
+#: src/frontends/qt4/ui/RefUi.ui:250
 #, fuzzy
 msgid "Jump to the label"
 msgstr "Custom tab label"
 
-#: src/frontends/qt4/ui/QRefUi.ui:253 src/frontends/qt4/QRef.C:147
+#: src/frontends/qt4/ui/RefUi.ui:253 src/frontends/qt4/QRef.C:292
 msgid "&Go to Label"
 msgstr "לך לתווית"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:31
+#: src/frontends/qt4/ui/SearchUi.ui:31
 msgid "&Find:"
 msgstr "מצא"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:71
+#: src/frontends/qt4/ui/SearchUi.ui:71
 msgid "Replace &with:"
 msgstr "החלף עם:"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:108
+#: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Case &sensitive"
 msgstr "הבדל בין אותיות גדולות לקטנות"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:115
+#: src/frontends/qt4/ui/SearchUi.ui:115
 msgid "Match whole words onl&y"
 msgstr "התאם מילים שלמות בלבד"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:173
+#: src/frontends/qt4/ui/SearchUi.ui:173
 msgid "Find &Next"
 msgstr "חפש הבא"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:186
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:51
-#: src/frontends/qt4/ui/QThesaurusUi.ui:111
+#: src/frontends/qt4/ui/SearchUi.ui:186
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:51
+#: src/frontends/qt4/ui/ThesaurusUi.ui:111
 msgid "&Replace"
 msgstr "החלף"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:196
+#: src/frontends/qt4/ui/SearchUi.ui:196
 msgid "Replace &All"
 msgstr "החלף הכל"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:203
+#: src/frontends/qt4/ui/SearchUi.ui:203
 msgid "Search &backwards"
 msgstr "חפש אחורנית"
 
-#: src/frontends/qt4/ui/QSendtoUi.ui:45
+#: src/frontends/qt4/ui/SendtoUi.ui:45
 msgid "Process the converted file with this command ($$FName = file name)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QSendtoUi.ui:104
+#: src/frontends/qt4/ui/SendtoUi.ui:104
 #, fuzzy
 msgid "&Export formats:"
 msgstr "Export filename"
 
-#: src/frontends/qt4/ui/QSendtoUi.ui:114
+#: src/frontends/qt4/ui/SendtoUi.ui:114
 msgid "&Command:"
 msgstr "פקודה:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:38
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:38
 msgid "Suggestions:"
 msgstr "הצעות:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:48
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:48
 msgid "Replace word with current choice"
 msgstr "החלף מילה עם הבחירה הנוכחית"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:58
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
 msgid "Add the word to your personal dictionary"
 msgstr "הוסף את המילה למילונך הפרטי"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:68
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:68
 msgid "Ignore this word"
 msgstr "התעלם ממילה זו"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:71
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:71
 msgid "&Ignore"
 msgstr "התעלם"
 
 # איך מתרגמים session?
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:78
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:78
 msgid "Ignore this word throughout this session"
 msgstr "התעלם ממילה זו עד להפעלה מחדש של התוכנה"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:81
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:81
 msgid "I&gnore All"
 msgstr "התעלם מהכל"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:104
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:104
 msgid "Replacement:"
 msgstr "החלפה"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:114
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:114
 msgid "Current word"
 msgstr "מילה נוכחית"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:121
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:121
 msgid "Unknown word:"
 msgstr "מילה לא מוכרת:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:142
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:142
 msgid "Replace with selected word"
 msgstr "החלף עם המילה המסומנת"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:41
+#: src/frontends/qt4/ui/TabularUi.ui:41
 msgid "&Table Settings"
 msgstr "&הגדרות טבלה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:53
+#: src/frontends/qt4/ui/TabularUi.ui:53
 msgid "Column Width"
 msgstr "רוחב עמודה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:71
+#: src/frontends/qt4/ui/TabularUi.ui:71
 msgid "Fixed width of the column"
 msgstr "רוחב קבוע של העמודה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:81
+#: src/frontends/qt4/ui/TabularUi.ui:81
 msgid "Vertical alignment for fixed width columns"
 msgstr "יישור אנכי עבור עמודות בעלות רוחב קבוע"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:113
+#: src/frontends/qt4/ui/TabularUi.ui:113
 msgid "&Vertical alignment:"
 msgstr "יישור אנכי"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:126
+#: src/frontends/qt4/ui/TabularUi.ui:126
 msgid "&Horizontal alignment:"
 msgstr "יישור אופקי"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:136
+#: src/frontends/qt4/ui/TabularUi.ui:136
 msgid "Horizontal alignment in column"
 msgstr "יישור אופקי בעמודה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:140 src/frontends/qt4/QTabular.C:264
+#: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QTabular.C:745
 msgid "Justified"
 msgstr "מיושר לשני הכיוונים"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:182
+#: src/frontends/qt4/ui/TabularUi.ui:182
 msgid "Rotate the table by 90 degrees"
 msgstr "סובב את הטבלה ב- 90 מעלות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:185
+#: src/frontends/qt4/ui/TabularUi.ui:185
 msgid "&Rotate table 90 degrees"
 msgstr "סובב טבלה ב- 90 מעלות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:192
+#: src/frontends/qt4/ui/TabularUi.ui:192
 msgid "Rotate this cell by 90 degrees"
 msgstr "סובב את התא ב- 90 מעלות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:195
+#: src/frontends/qt4/ui/TabularUi.ui:195
 msgid "Rotate &cell 90 degrees"
 msgstr "סובב תא ב- 90 מעלות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:202
+#: src/frontends/qt4/ui/TabularUi.ui:202
 msgid "Merge cells"
 msgstr "אחד תאים"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:205
+#: src/frontends/qt4/ui/TabularUi.ui:205
 msgid "&Multicolumn"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:212
+#: src/frontends/qt4/ui/TabularUi.ui:212
 msgid "LaTe&X argument:"
 msgstr "ארגומנט LaTeX"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:222
+#: src/frontends/qt4/ui/TabularUi.ui:222
 msgid "Custom column format (LaTeX)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:230
+#: src/frontends/qt4/ui/TabularUi.ui:230
 msgid "&Borders"
 msgstr "גבולות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:250
+#: src/frontends/qt4/ui/TabularUi.ui:250
 msgid "All Borders"
 msgstr "כל הגבולות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:262
+#: src/frontends/qt4/ui/TabularUi.ui:262
 msgid "Set all borders of the current (selected) cell(s)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:265
+#: src/frontends/qt4/ui/TabularUi.ui:265
 msgid "&Set"
 msgstr "קבע"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:272
+#: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:275
+#: src/frontends/qt4/ui/TabularUi.ui:275
 msgid "C&lear"
 msgstr "נקה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:301
+#: src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
 msgstr "סגנון"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:313
+#: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:316
+#: src/frontends/qt4/ui/TabularUi.ui:316
 #, fuzzy
 msgid "Fo&rmal"
 msgstr "צור _תיקייה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:326
+#: src/frontends/qt4/ui/TabularUi.ui:326
 msgid "Use default (grid-like) border style"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:329
+#: src/frontends/qt4/ui/TabularUi.ui:329
 msgid "De&fault"
 msgstr "ברירת מחדל"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:352
+#: src/frontends/qt4/ui/TabularUi.ui:352
 msgid "Set Borders"
 msgstr "קבע גבולות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:660
+#: src/frontends/qt4/ui/TabularUi.ui:660
 msgid "Set borders of the current (selected) cell(s)"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:673
+#: src/frontends/qt4/ui/TabularUi.ui:673
 #, fuzzy
 msgid "Additional Space"
 msgstr "מרווח נוסף"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:685
+#: src/frontends/qt4/ui/TabularUi.ui:685
 #, fuzzy
 msgid "T&op of row:"
 msgstr "Row Spacing"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:745
+#: src/frontends/qt4/ui/TabularUi.ui:745
 #, fuzzy
 msgid "Botto&m of row:"
 msgstr "Row Spacing"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:758
+#: src/frontends/qt4/ui/TabularUi.ui:758
 #, fuzzy
 msgid "Bet&ween rows:"
 msgstr "The number of rows of the pixbuf"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:796
+#: src/frontends/qt4/ui/TabularUi.ui:796
 msgid "&Longtable"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:824
+#: src/frontends/qt4/ui/TabularUi.ui:824
 msgid "Set a page break on the current row"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:827
+#: src/frontends/qt4/ui/TabularUi.ui:827
 msgid "Page &break on current row"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:837
+#: src/frontends/qt4/ui/TabularUi.ui:837
 msgid "Settings"
 msgstr "הגדרות"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:849
+#: src/frontends/qt4/ui/TabularUi.ui:849
 #, fuzzy
 msgid "Status"
 msgstr "Status"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:856
+#: src/frontends/qt4/ui/TabularUi.ui:856
 #, fuzzy
 msgid "Header:"
 msgstr "כותרת:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:863
+#: src/frontends/qt4/ui/TabularUi.ui:863
 #, fuzzy
 msgid "Footer:"
 msgstr "footer"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:870
+#: src/frontends/qt4/ui/TabularUi.ui:870
 #, fuzzy
 msgid "First header:"
 msgstr "column header"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:877
+#: src/frontends/qt4/ui/TabularUi.ui:877
 #, fuzzy
 msgid "Last footer:"
 msgstr "סיומת עמוד אמצעית:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:884
+#: src/frontends/qt4/ui/TabularUi.ui:884
 msgid "Contents"
 msgstr "תוכן"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:891
+#: src/frontends/qt4/ui/TabularUi.ui:891
 #, fuzzy
 msgid "Border above"
 msgstr "Above child"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:898
+#: src/frontends/qt4/ui/TabularUi.ui:898
 #, fuzzy
 msgid "Border below"
 msgstr "Border relief"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:905
+#: src/frontends/qt4/ui/TabularUi.ui:905
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:908
-#: src/frontends/qt4/ui/QTabularUi.ui:921
-#: src/frontends/qt4/ui/QTabularUi.ui:931
-#: src/frontends/qt4/ui/QTabularUi.ui:941
+#: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
+#: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
 #, fuzzy
 msgid "on"
 msgstr "on"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:915
+#: src/frontends/qt4/ui/TabularUi.ui:915
 msgid "This row is the header of the first page"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:928
+#: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:938
+#: src/frontends/qt4/ui/TabularUi.ui:938
 msgid "This row is the footer of the last page"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:951
-#: src/frontends/qt4/ui/QTabularUi.ui:958
-#: src/frontends/qt4/ui/QTabularUi.ui:965
-#: src/frontends/qt4/ui/QTabularUi.ui:972
-#: src/frontends/qt4/ui/QTabularUi.ui:979
-#: src/frontends/qt4/ui/QTabularUi.ui:986
-#: src/frontends/qt4/ui/QTabularUi.ui:993
-#: src/frontends/qt4/ui/QTabularUi.ui:1000
+#: src/frontends/qt4/ui/TabularUi.ui:951 src/frontends/qt4/ui/TabularUi.ui:958
+#: src/frontends/qt4/ui/TabularUi.ui:965 src/frontends/qt4/ui/TabularUi.ui:972
+#: src/frontends/qt4/ui/TabularUi.ui:979 src/frontends/qt4/ui/TabularUi.ui:986
+#: src/frontends/qt4/ui/TabularUi.ui:993
+#: src/frontends/qt4/ui/TabularUi.ui:1000
 msgid "double"
 msgstr "כפול"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1007
+#: src/frontends/qt4/ui/TabularUi.ui:1007
 #, fuzzy
 msgid "Don't output the last footer"
 msgstr "** Multicolumn output from last row:\n"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1010
-#: src/frontends/qt4/ui/QTabularUi.ui:1020
+#: src/frontends/qt4/ui/TabularUi.ui:1010
+#: src/frontends/qt4/ui/TabularUi.ui:1020
 msgid "is empty"
 msgstr "הוא ריק"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1017
+#: src/frontends/qt4/ui/TabularUi.ui:1017
 msgid "Don't output the first header"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1030
+#: src/frontends/qt4/ui/TabularUi.ui:1030
 msgid "Select for tables that span multiple pages"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1033
+#: src/frontends/qt4/ui/TabularUi.ui:1033
 msgid "&Use long table"
 msgstr "השתמש בטבלה ארוכה"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1052
+#: src/frontends/qt4/ui/TabularUi.ui:1052
 msgid "Current cell:"
 msgstr "תא נוכחי:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1076
+#: src/frontends/qt4/ui/TabularUi.ui:1076
 msgid "Current row position"
 msgstr "מיקום שורה נוכחי"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1100
+#: src/frontends/qt4/ui/TabularUi.ui:1100
 msgid "Current column position"
 msgstr "מיקום עמודה נוכחי"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:55
+#: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
 msgstr "סגור דיאלוג זה"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:91
+#: src/frontends/qt4/ui/TexinfoUi.ui:91
 #, fuzzy
 msgid "Rebuild the file lists"
 msgstr "בחר קובץ סגנון"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:94
+#: src/frontends/qt4/ui/TexinfoUi.ui:94
 msgid "&Rescan"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:104
+#: src/frontends/qt4/ui/TexinfoUi.ui:104
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:107
+#: src/frontends/qt4/ui/TexinfoUi.ui:107
 #, fuzzy
 msgid "&View"
 msgstr "ת&צוגה"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:124
+#: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:128
+#: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:133
+#: src/frontends/qt4/ui/TexinfoUi.ui:133
 msgid "LaTeX styles"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:138
+#: src/frontends/qt4/ui/TexinfoUi.ui:138
 msgid "BibTeX styles"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:162
+#: src/frontends/qt4/ui/TexinfoUi.ui:162
 #, fuzzy
 msgid "Toggles view of the file list"
 msgstr "הצג פרטים (הקובץ ~/.xsession-errors)"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:165
+#: src/frontends/qt4/ui/TexinfoUi.ui:165
 #, fuzzy
 msgid "Show &path"
 msgstr "נתיב בסיס:"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:42
+#: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
 msgstr "ערך באינדקס"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:225
+#: src/frontends/qt4/ui/ThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:224
 msgid "&Keyword:"
 msgstr "מילת מפתח:"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:55 lib/layouts/moderncv.layout:49
+#: src/frontends/qt4/ui/ThesaurusUi.ui:55 lib/layouts/moderncv.layout:49
 #, fuzzy
 msgid "Entry"
 msgstr "entry"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:88
-#: src/frontends/qt4/ui/QThesaurusUi.ui:101
+#: src/frontends/qt4/ui/ThesaurusUi.ui:88
+#: src/frontends/qt4/ui/ThesaurusUi.ui:101
 #, fuzzy
 msgid "The selected entry"
 msgstr "Has Entry"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:91
+#: src/frontends/qt4/ui/ThesaurusUi.ui:91
 msgid "&Selection:"
 msgstr "&בחירה"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:108
+#: src/frontends/qt4/ui/ThesaurusUi.ui:108
 #, fuzzy
 msgid "Replace the entry with the selection"
 msgstr "החלף עם המילה המסומנת"
 
-#: src/frontends/qt4/ui/QTocUi.ui:36
+#: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Decrease nesting depth of selected item"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:39
+#: src/frontends/qt4/ui/TocUi.ui:39
 msgid "<- P&romote"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:46
+#: src/frontends/qt4/ui/TocUi.ui:46
 #, fuzzy
 msgid "Move selected item down by one"
 msgstr "הזז את המובאה הנוכחית למטה"
 
-#: src/frontends/qt4/ui/QTocUi.ui:49
+#: src/frontends/qt4/ui/TocUi.ui:49
 #, fuzzy
 msgid "D&own"
 msgstr "למטה"
 
-#: src/frontends/qt4/ui/QTocUi.ui:56
+#: src/frontends/qt4/ui/TocUi.ui:56
 msgid "Increase nesting depth of selected item"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:59
+#: src/frontends/qt4/ui/TocUi.ui:59
 msgid "De&mote ->"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:66
+#: src/frontends/qt4/ui/TocUi.ui:66
 msgid "Update navigation tree"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:69
+#: src/frontends/qt4/ui/TocUi.ui:69
 #, fuzzy
 msgid "Upd&ate"
 msgstr "עדכן"
 
-#: src/frontends/qt4/ui/QTocUi.ui:76
+#: src/frontends/qt4/ui/TocUi.ui:76
 #, fuzzy
 msgid "Move selected item up by one"
 msgstr "הזז את המובאה הנוכחית למעלה"
 
-#: src/frontends/qt4/ui/QTocUi.ui:96
+#: src/frontends/qt4/ui/TocUi.ui:96
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:115
+#: src/frontends/qt4/ui/TocUi.ui:115
 msgid "Adjust the depth of the navigation tree"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:137
+#: src/frontends/qt4/ui/TocUi.ui:137
 #, fuzzy
 msgid "&Type:"
 msgstr "סוג:"
 
-#: src/frontends/qt4/ui/QURLUi.ui:31 src/frontends/qt4/ui/QURLUi.ui:64
+#: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
 #: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:186
 #: src/frontends/qt4/UrlView.C:33
 #, fuzzy
 msgid "URL"
 msgstr "קישור"
 
-#: src/frontends/qt4/ui/QURLUi.ui:34
+#: src/frontends/qt4/ui/URLUi.ui:34
 #, fuzzy
 msgid "&URL:"
 msgstr "קישור"
 
-#: src/frontends/qt4/ui/QURLUi.ui:44 src/frontends/qt4/ui/QURLUi.ui:57
+#: src/frontends/qt4/ui/URLUi.ui:44 src/frontends/qt4/ui/URLUi.ui:57
 #, fuzzy
 msgid "Name associated with the URL"
 msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
 
-#: src/frontends/qt4/ui/QURLUi.ui:79
+#: src/frontends/qt4/ui/URLUi.ui:79
 #, fuzzy
 msgid "Output as a hyperlink ?"
 msgstr "Appears as list"
 
-#: src/frontends/qt4/ui/QURLUi.ui:82
+#: src/frontends/qt4/ui/URLUi.ui:82
 msgid "&Generate hyperlink"
 msgstr "ייצר היפר-קישור"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:28
+#: src/frontends/qt4/ui/VSpaceUi.ui:28
 #, fuzzy
 msgid "&Spacing:"
 msgstr "Spacing"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:38
+#: src/frontends/qt4/ui/VSpaceUi.ui:38
 #, fuzzy
 msgid "&Value:"
 msgstr "ערך"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:51
+#: src/frontends/qt4/ui/VSpaceUi.ui:51
 msgid "&Protect:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:61
+#: src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Insert the spacing even after a page break"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:74
+#: src/frontends/qt4/ui/VSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:81
+#: src/frontends/qt4/ui/VSpaceUi.ui:81
 #, fuzzy
 msgid "Supported spacing types"
 msgstr "Default Outside Spacing"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:85
+#: src/frontends/qt4/ui/VSpaceUi.ui:85
 msgid "DefSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:90
-#: src/frontends/qt4/QDocumentDialog.C:110
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.C:116
 msgid "SmallSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:95
-#: src/frontends/qt4/QDocumentDialog.C:111
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.C:117
 msgid "MedSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:100
-#: src/frontends/qt4/QDocumentDialog.C:112
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.C:118
 msgid "BigSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:105
+#: src/frontends/qt4/ui/VSpaceUi.ui:105
 msgid "VFill"
 msgstr ""
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:36
+#: src/frontends/qt4/ui/ViewSourceUi.ui:36
 #, fuzzy
 msgid "Complete source"
 msgstr "\t-W source=תינכת-טסקט\t--source=תינכת-טסקט\n"
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:43
+#: src/frontends/qt4/ui/ViewSourceUi.ui:43
 msgid "Automatic update"
 msgstr "עדכון אוטומטי"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:53
+#: src/frontends/qt4/ui/WrapUi.ui:53
 #, fuzzy
 msgid "Default (outer)"
 msgstr "ספר ברירת במחדל"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:68
+#: src/frontends/qt4/ui/WrapUi.ui:68
 msgid "Outer"
 msgstr ""
 
-#: src/frontends/qt4/ui/QWrapUi.ui:76
+#: src/frontends/qt4/ui/WrapUi.ui:76
 #, fuzzy
 msgid "&Placement:"
 msgstr "Window Placement"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:103
+#: src/frontends/qt4/ui/WrapUi.ui:103
 #, fuzzy
 msgid "Units of width value"
 msgstr "Invalid argument value"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:125
+#: src/frontends/qt4/ui/WrapUi.ui:125
 msgid "&Units:"
 msgstr ""
 
@@ -3161,7 +3131,7 @@ msgstr "מסמך עם שתי עמודות"
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
 #: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.C:46
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:187
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
 msgid "Standard"
 msgstr "רגיל"
 
@@ -3307,7 +3277,7 @@ msgstr "הגדרה #:"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:318
+#: src/frontends/qt4/QDocument.C:367
 msgid "Example"
 msgstr "דוגמה"
 
@@ -3379,7 +3349,7 @@ msgstr "טענה #:"
 #: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/insetnote.C:65
+#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:65
 msgid "Note"
 msgstr "הערה"
 
@@ -3550,7 +3520,7 @@ msgstr "End index"
 #: lib/layouts/aguplus.inc:168 lib/layouts/aguplus.inc:170
 #: lib/layouts/amsdefs.inc:229 lib/layouts/scrclass.inc:223
 #: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:326
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocument.C:469
 msgid "Bibliography"
 msgstr "בביליוגרפיה"
 
@@ -3731,7 +3701,7 @@ msgid "Acknowledgements."
 msgstr "הכרת תודות."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefsDialog.C:285
+#: src/frontends/qt4/QPrefs.C:302
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -3743,7 +3713,7 @@ msgid "Email"
 msgstr "דוא\"ל"
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.C:148
 msgid "Thesaurus"
 msgstr "אגרון"
 
@@ -8006,7 +7976,7 @@ msgstr "כותרת קצרה"
 msgid "Index Entry|I"
 msgstr "ערך באינדקס"
 
-#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:229
+#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:228
 msgid "Glossary Entry"
 msgstr "ערך במילון המונחים"
 
@@ -8122,7 +8092,7 @@ msgstr "מפריד תפריטים"
 msgid "Horizontal Line"
 msgstr "קו אופקי"
 
-#: lib/ui/classic.ui:257 src/insets/insetpagebreak.h:49
+#: lib/ui/classic.ui:257 src/insets/InsetPagebreak.h:49
 msgid "Page Break"
 msgstr "עמוד חדש"
 
@@ -8505,17 +8475,17 @@ msgid "Redo|R"
 msgstr "בצע שוב"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:449 src/text3.C:835
+#: src/mathed/InsetMathNest.cpp:449 src/text3.C:835
 msgid "Cut"
 msgstr "גזור"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:457 src/text3.C:840
+#: src/mathed/InsetMathNest.cpp:457 src/text3.C:840
 msgid "Copy"
 msgstr "העתק"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
+#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "הדבק"
@@ -8848,7 +8818,7 @@ msgstr "הסתר שלוחה"
 msgid "File|e"
 msgstr "קובץ"
 
-#: lib/ui/stdmenus.inc:298 src/insets/insetbox.C:154
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:154
 msgid "Box"
 msgstr "תיבה"
 
@@ -9430,7 +9400,33 @@ msgstr "עדכן PostScript"
 msgid "Math Panels"
 msgstr "לוח מתמטיקה"
 
-#: lib/ui/stdtoolbars.inc:212
+#: lib/ui/stdtoolbars.inc:191
+#, fuzzy
+msgid "Math Spacing"
+msgstr "Default Outside Spacing"
+
+#: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
+#, fuzzy
+msgid "Roots"
+msgstr "נקודות"
+
+#: lib/ui/stdtoolbars.inc:193 lib/ui/stdtoolbars.inc:262
+#, fuzzy
+msgid "Styles"
+msgstr "סגנון"
+
+#: lib/ui/stdtoolbars.inc:194 lib/ui/stdtoolbars.inc:269
+#, fuzzy
+msgid "Fractions"
+msgstr "קוד LyX:"
+
+#: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
+#: src/frontends/qt4/QDocument.C:463
+#, fuzzy
+msgid "Fonts"
+msgstr "גופן:"
+
+#: lib/ui/stdtoolbars.inc:196 lib/ui/stdtoolbars.inc:212
 #, fuzzy
 msgid "Functions"
 msgstr "&פונקציות"
@@ -9621,11 +9617,6 @@ msgstr "The amount of space between children"
 msgid "Negative space\t\\!"
 msgstr "Space style"
 
-#: lib/ui/stdtoolbars.inc:257
-#, fuzzy
-msgid "Roots"
-msgstr "נקודות"
-
 #: lib/ui/stdtoolbars.inc:258
 #, fuzzy
 msgid "Square root\t\\sqrt"
@@ -9635,11 +9626,6 @@ msgstr "%g ילילש טנמוגרא םע ארקנ :sqrt"
 #, fuzzy
 msgid "Other root\t\\root"
 msgstr "הכנס שורש"
-
-#: lib/ui/stdtoolbars.inc:262
-#, fuzzy
-msgid "Styles"
-msgstr "סגנון"
 
 #: lib/ui/stdtoolbars.inc:263
 #, fuzzy
@@ -9658,11 +9644,6 @@ msgstr ""
 #: lib/ui/stdtoolbars.inc:266
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
-
-#: lib/ui/stdtoolbars.inc:269
-#, fuzzy
-msgid "Fractions"
-msgstr "קוד LyX:"
 
 #: lib/ui/stdtoolbars.inc:270
 #, fuzzy
@@ -9690,11 +9671,6 @@ msgstr ""
 #, fuzzy
 msgid "Binomial\t\\choose"
 msgstr "בחר פעולה"
-
-#: lib/ui/stdtoolbars.inc:278 src/frontends/qt4/QDocumentDialog.C:393
-#, fuzzy
-msgid "Fonts"
-msgstr "גופן:"
 
 #: lib/ui/stdtoolbars.inc:279
 msgid "Roman\t\\mathrm"
@@ -9773,107 +9749,107 @@ msgid "Frame Decorations"
 msgstr "עיטורי מסגרת"
 
 #: lib/ui/stdtoolbars.inc:299
-msgid "widehat"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:300
-msgid "widetilde"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:301
-msgid "overbrace"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:302
-#, fuzzy
-msgid "overleftarrow"
-msgstr "Row Spacing"
-
-#: lib/ui/stdtoolbars.inc:303
-msgid "overrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:304
-#, fuzzy
-msgid "overline"
-msgstr "סלובנית"
-
-#: lib/ui/stdtoolbars.inc:305
-#, fuzzy
-msgid "underbrace"
-msgstr "קו תחתי"
-
-#: lib/ui/stdtoolbars.inc:306
-#, fuzzy
-msgid "underline"
-msgstr "קו תחתי"
-
-#: lib/ui/stdtoolbars.inc:307
-msgid "underleftarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:308
-msgid "underrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:309
-msgid "underleftrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:310
-msgid "overleftrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:311
 msgid "hat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:312
-#, fuzzy
-msgid "acute"
-msgstr "תאריך"
-
-#: lib/ui/stdtoolbars.inc:313
-msgid "bar"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:314
-msgid "dot"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:315
-#, fuzzy
-msgid "check"
-msgstr "בודק איות"
-
-#: lib/ui/stdtoolbars.inc:316
-#, fuzzy
-msgid "grave"
-msgstr "שמור"
-
-#: lib/ui/stdtoolbars.inc:317
-msgid "vec"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:318
-#, fuzzy
-msgid "ddot"
-msgstr "הו_סף..."
-
-#: lib/ui/stdtoolbars.inc:319
-#, fuzzy
-msgid "breve"
-msgstr "תצוגה מקדימה"
-
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:300
 #, fuzzy
 msgid "tilde"
 msgstr "קובץ"
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:301
+msgid "bar"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:302
+#, fuzzy
+msgid "grave"
+msgstr "שמור"
+
+#: lib/ui/stdtoolbars.inc:303
+msgid "dot"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:304
+#, fuzzy
+msgid "check"
+msgstr "בודק איות"
+
+#: lib/ui/stdtoolbars.inc:305
+msgid "widehat"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:306
+msgid "widetilde"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:307
+msgid "vec"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:308
+#, fuzzy
+msgid "acute"
+msgstr "תאריך"
+
+#: lib/ui/stdtoolbars.inc:309
+#, fuzzy
+msgid "ddot"
+msgstr "הו_סף..."
+
+#: lib/ui/stdtoolbars.inc:310
+#, fuzzy
+msgid "breve"
+msgstr "תצוגה מקדימה"
+
+#: lib/ui/stdtoolbars.inc:311
+#, fuzzy
+msgid "overline"
+msgstr "סלובנית"
+
+#: lib/ui/stdtoolbars.inc:312
+msgid "overbrace"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:313
+#, fuzzy
+msgid "overleftarrow"
+msgstr "Row Spacing"
+
+#: lib/ui/stdtoolbars.inc:314
+msgid "overrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:315
+msgid "overleftrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:316
 #, fuzzy
 msgid "overset"
 msgstr "\t-W re-interval\t\t--re-interval\n"
+
+#: lib/ui/stdtoolbars.inc:317
+#, fuzzy
+msgid "underline"
+msgstr "קו תחתי"
+
+#: lib/ui/stdtoolbars.inc:318
+#, fuzzy
+msgid "underbrace"
+msgstr "קו תחתי"
+
+#: lib/ui/stdtoolbars.inc:319
+msgid "underleftarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:320
+msgid "underrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:321
+msgid "underleftrightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:322
 #, fuzzy
@@ -11781,11 +11757,11 @@ msgstr ""
 "\n"
 "האם אתה רוצה חזור לגרסה השמורה?"
 
-#: src/BufferView.C:237 src/lyxfunc.C:900
+#: src/BufferView.C:237 src/lyxfunc.C:899
 msgid "Revert to saved document?"
 msgstr "חזור למסמך השמור?"
 
-#: src/BufferView.C:238 src/lyxfunc.C:901 src/lyxvc.C:175
+#: src/BufferView.C:238 src/lyxfunc.C:900 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "חזור"
 
@@ -11874,27 +11850,27 @@ msgstr "מילים שלמות"
 msgid "Select LyX document to insert"
 msgstr ""
 
-#: src/BufferView.C:1590 src/frontends/controllers/ControlBibtex.C:54
-#: src/frontends/controllers/ControlBibtex.C:66
-#: src/frontends/controllers/ControlExternal.C:169
-#: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1867 src/lyxfunc.C:1906 src/lyxfunc.C:1979
+#: src/BufferView.C:1590 src/frontends/controllers/ControlBibtex.cpp:52
+#: src/frontends/controllers/ControlBibtex.cpp:64
+#: src/frontends/controllers/ControlExternal.cpp:169
+#: src/frontends/controllers/ControlGraphics.cpp:96
+#: src/frontends/controllers/ControlInclude.cpp:91 src/lyx_cb.C:136
+#: src/lyxfunc.C:1866 src/lyxfunc.C:1905 src/lyxfunc.C:1978
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "מסמכים|מ"
 
-#: src/BufferView.C:1591 src/lyxfunc.C:1907 src/lyxfunc.C:1980
+#: src/BufferView.C:1591 src/lyxfunc.C:1906 src/lyxfunc.C:1979
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/BufferView.C:1595 src/lyx_cb.C:142 src/lyxfunc.C:1872
-#: src/lyxfunc.C:1911
+#: src/BufferView.C:1595 src/lyx_cb.C:142 src/lyxfunc.C:1871
+#: src/lyxfunc.C:1910
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/BufferView.C:1607 src/lyxfunc.C:1921 src/lyxfunc.C:2001
-#: src/lyxfunc.C:2015 src/lyxfunc.C:2031
+#: src/BufferView.C:1607 src/lyxfunc.C:1920 src/lyxfunc.C:2000
+#: src/lyxfunc.C:2014 src/lyxfunc.C:2030
 #, fuzzy
 msgid "Canceled."
 msgstr "בוטל"
@@ -12011,7 +11987,7 @@ msgstr "טקסט LaTeX"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/LColor.C:110 src/insets/insetnote.C:311
+#: src/LColor.C:110 src/insets/InsetNote.cpp:311
 msgid "note"
 msgstr "הערה"
 
@@ -12213,19 +12189,19 @@ msgstr "התעלם"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr ""
 
-#: src/LaTeX.C:298 src/LaTeX.C:385
+#: src/LaTeX.C:302 src/LaTeX.C:381
 #, fuzzy
 msgid "Running MakeIndex."
 msgstr "מריץ טלאי...\n"
 
-#: src/LaTeX.C:307 src/LaTeX.C:396
-#, fuzzy
-msgid "Running MakeIndex for nomencl."
-msgstr "מריץ טלאי...\n"
-
-#: src/LaTeX.C:326
+#: src/LaTeX.C:322
 #, fuzzy
 msgid "Running BibTeX."
+msgstr "מריץ טלאי...\n"
+
+#: src/LaTeX.C:462
+#, fuzzy
+msgid "Running MakeIndex for nomencl."
 msgstr "מריץ טלאי...\n"
 
 #: src/MenuBackend.C:463 src/MenuBackend.C:500 src/MenuBackend.C:572
@@ -12529,7 +12505,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:725
 msgid "Save changed document?"
 msgstr "האם לשמור את המסמך שעבר שינוי?"
 
@@ -12787,7 +12763,7 @@ msgstr ""
 msgid "RowPainter profiling"
 msgstr "Profiling alarm clock"
 
-#: src/exporter.C:82 src/lyxfunc.C:1063
+#: src/exporter.C:82 src/lyxfunc.C:1062
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12795,12 +12771,12 @@ msgid ""
 "Do you want to over-write that file?"
 msgstr ""
 
-#: src/exporter.C:85 src/lyxfunc.C:1066
+#: src/exporter.C:85 src/lyxfunc.C:1065
 #, fuzzy
 msgid "Over-write file?"
 msgstr "אין אפשרות לכתוב אל הקובץ %s"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1067 src/lyxfunc.C:2028
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1066 src/lyxfunc.C:2027
 #, fuzzy
 msgid "&Over-write"
 msgstr "שגיאה בכתיבה"
@@ -12908,19 +12884,19 @@ msgstr "property is read only"
 msgid "Formatting document..."
 msgstr "מעצב מסמך"
 
-#: src/frontends/controllers/ControlAboutlyx.C:58
+#: src/frontends/controllers/ControlAboutlyx.cpp:58
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr "שגיאה: LyX לא יכל לקרוא את קובץ התודות \n"
 
-#: src/frontends/controllers/ControlAboutlyx.C:59
+#: src/frontends/controllers/ControlAboutlyx.cpp:59
 msgid "Please install correctly to estimate the great\n"
 msgstr ""
 
-#: src/frontends/controllers/ControlAboutlyx.C:60
+#: src/frontends/controllers/ControlAboutlyx.cpp:60
 msgid "amount of work other people have done for the LyX project."
 msgstr ""
 
-#: src/frontends/controllers/ControlAboutlyx.C:67
+#: src/frontends/controllers/ControlAboutlyx.cpp:67
 #, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
@@ -12929,7 +12905,7 @@ msgstr ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 
-#: src/frontends/controllers/ControlAboutlyx.C:73
+#: src/frontends/controllers/ControlAboutlyx.cpp:73
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -12937,7 +12913,7 @@ msgid ""
 "any later version."
 msgstr ""
 
-#: src/frontends/controllers/ControlAboutlyx.C:79
+#: src/frontends/controllers/ControlAboutlyx.cpp:79
 #, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
@@ -12956,443 +12932,443 @@ msgstr ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
-#: src/frontends/controllers/ControlAboutlyx.C:87
+#: src/frontends/controllers/ControlAboutlyx.cpp:87
 #, fuzzy
 msgid "LyX Version "
 msgstr "גרסת xfdiff"
 
-#: src/frontends/controllers/ControlAboutlyx.C:92
+#: src/frontends/controllers/ControlAboutlyx.cpp:92
 #, fuzzy
 msgid "Library directory: "
 msgstr "ספריה נוצרה"
 
-#: src/frontends/controllers/ControlAboutlyx.C:95
+#: src/frontends/controllers/ControlAboutlyx.cpp:95
 #, fuzzy
 msgid "User directory: "
 msgstr "ספריה נוצרה"
 
-#: src/frontends/controllers/ControlBibtex.C:56
+#: src/frontends/controllers/ControlBibtex.cpp:54
 #, fuzzy
 msgid "BibTeX Databases (*.bib)"
 msgstr "SIGHUP received, reloading all databases"
 
-#: src/frontends/controllers/ControlBibtex.C:58
+#: src/frontends/controllers/ControlBibtex.cpp:56
 #, fuzzy
 msgid "Select a BibTeX database to add"
 msgstr "בחר \"התקן\" בכדי להוסיף את ערכת הנושא מהקובץ '%s'."
 
-#: src/frontends/controllers/ControlBibtex.C:68
+#: src/frontends/controllers/ControlBibtex.cpp:66
 msgid "BibTeX Styles (*.bst)"
 msgstr ""
 
-#: src/frontends/controllers/ControlBibtex.C:70
+#: src/frontends/controllers/ControlBibtex.cpp:68
 #, fuzzy
 msgid "Select a BibTeX style"
 msgstr "בחר קובץ סגנון"
 
-#: src/frontends/controllers/ControlBox.C:62
+#: src/frontends/controllers/ControlBox.cpp:62
 #, fuzzy
 msgid "No frame drawn"
 msgstr "Appearance of the frame border"
 
-#: src/frontends/controllers/ControlBox.C:63
+#: src/frontends/controllers/ControlBox.cpp:63
 #, fuzzy
 msgid "Rectangular box"
 msgstr "הגדרות תיבה"
 
-#: src/frontends/controllers/ControlBox.C:64
+#: src/frontends/controllers/ControlBox.cpp:64
 #, fuzzy
 msgid "Oval box, thin"
 msgstr "Color of the selection box"
 
-#: src/frontends/controllers/ControlBox.C:65
+#: src/frontends/controllers/ControlBox.cpp:65
 #, fuzzy
 msgid "Oval box, thick"
 msgstr "Color of the selection box"
 
-#: src/frontends/controllers/ControlBox.C:66
+#: src/frontends/controllers/ControlBox.cpp:66
 #, fuzzy
 msgid "Shadow box"
 msgstr "הגדרות תיבה"
 
-#: src/frontends/controllers/ControlBox.C:67
+#: src/frontends/controllers/ControlBox.cpp:67
 #, fuzzy
 msgid "Double box"
 msgstr "הגדרות תיבה"
 
-#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:188
-#: src/frontends/qt4/QBox.C:222
+#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.C:286
+#: src/frontends/qt4/QBox.C:320
 #, fuzzy
 msgid "Depth"
 msgstr "עומק צבע:"
 
-#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:191
-#: src/frontends/qt4/QBox.C:225 src/frontends/qt4/QBox.C:258
-#: src/frontends/qt4/QBoxDialog.C:107
+#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.C:133
+#: src/frontends/qt4/QBox.C:289 src/frontends/qt4/QBox.C:323
+#: src/frontends/qt4/QBox.C:356
 #, fuzzy
 msgid "Total Height"
 msgstr "גובה גדילה"
 
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:870 src/lyxfont.C:52
 msgid "Roman"
 msgstr ""
 
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:874 src/lyxfont.C:52
 #, fuzzy
 msgid "Sans Serif"
 msgstr "Sans 12"
 
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:878 src/lyxfont.C:52
 msgid "Typewriter"
 msgstr ""
 
-#: src/frontends/controllers/ControlErrorList.C:57
+#: src/frontends/controllers/ControlErrorList.cpp:57
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr ""
 
-#: src/frontends/controllers/ControlExternal.C:163
+#: src/frontends/controllers/ControlExternal.cpp:163
 #, fuzzy
 msgid "Select external file"
 msgstr "בחר קובץ ימני"
 
-#: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
 #, fuzzy
 msgid "Top left"
 msgstr "ישר לשמאל"
 
-#: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
 #, fuzzy
 msgid "Bottom left"
 msgstr "ישר לשמאל"
 
-#: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
 #, fuzzy
 msgid "Baseline left"
 msgstr "ישר לשמאל"
 
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
 #, fuzzy
 msgid "Top center"
 msgstr "_מרכז"
 
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
 #, fuzzy
 msgid "Bottom center"
 msgstr "_מרכז"
 
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
 #, fuzzy
 msgid "Baseline center"
 msgstr "_מרכז"
 
-#: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
 #, fuzzy
 msgid "Top right"
 msgstr "שוליים ימיניים"
 
-#: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
 #, fuzzy
 msgid "Bottom right"
 msgstr "שוליים ימיניים"
 
-#: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
 #, fuzzy
 msgid "Baseline right"
 msgstr "שוליים ימיניים"
 
-#: src/frontends/controllers/ControlGraphics.C:87
+#: src/frontends/controllers/ControlGraphics.cpp:87
 msgid "Select graphics file"
 msgstr "בחר קובץ תמונה"
 
-#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlGraphics.cpp:95
 msgid "Clipart|#C#c"
 msgstr ""
 
-#: src/frontends/controllers/ControlInclude.C:78
+#: src/frontends/controllers/ControlInclude.cpp:78
 #, fuzzy
 msgid "Select document to include"
 msgstr "בחר קובץ להדפסה"
 
-#: src/frontends/controllers/ControlInclude.C:85
+#: src/frontends/controllers/ControlInclude.cpp:85
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:81
+#: src/frontends/controllers/ControlLog.cpp:81
 msgid "LaTeX Log"
 msgstr "תיעוד LaTeX"
 
-#: src/frontends/controllers/ControlLog.C:84
+#: src/frontends/controllers/ControlLog.cpp:84
 msgid "Literate Programming Build Log"
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:87
+#: src/frontends/controllers/ControlLog.cpp:87
 #, fuzzy
 msgid "lyx2lyx Error Log"
 msgstr "התחבר בכל מקרה"
 
-#: src/frontends/controllers/ControlLog.C:90
+#: src/frontends/controllers/ControlLog.cpp:90
 msgid "Version Control Log"
 msgstr "תיעוד בקרת גרסה"
 
-#: src/frontends/controllers/ControlLog.C:116
+#: src/frontends/controllers/ControlLog.cpp:116
 msgid "No LaTeX log file found."
 msgstr "לא נמצא תיעוד LaTeX"
 
-#: src/frontends/controllers/ControlLog.C:119
+#: src/frontends/controllers/ControlLog.cpp:119
 msgid "No literate programming build log file found."
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:122
+#: src/frontends/controllers/ControlLog.cpp:122
 msgid "No lyx2lyx error log file found."
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:125
+#: src/frontends/controllers/ControlLog.cpp:125
 msgid "No version control log file found."
 msgstr "לא נמצא תיעוד בקרת גרסה."
 
-#: src/frontends/controllers/ControlPrefs.C:110
+#: src/frontends/controllers/ControlPrefs.cpp:110
 msgid "Choose bind file"
 msgstr "בחר קובץ קישור"
 
-#: src/frontends/controllers/ControlPrefs.C:111
+#: src/frontends/controllers/ControlPrefs.cpp:111
 msgid "LyX bind files (*.bind)"
 msgstr "קבצי קישור של LyX (*.bind)"
 
-#: src/frontends/controllers/ControlPrefs.C:118
+#: src/frontends/controllers/ControlPrefs.cpp:118
 msgid "Choose UI file"
 msgstr "בחר קובץ ממשק משתמש"
 
-#: src/frontends/controllers/ControlPrefs.C:119
+#: src/frontends/controllers/ControlPrefs.cpp:119
 msgid "LyX UI files (*.ui)"
 msgstr "קבצי ממשק משתמש של LyX (*.ui)"
 
-#: src/frontends/controllers/ControlPrefs.C:126
+#: src/frontends/controllers/ControlPrefs.cpp:126
 msgid "Choose keyboard map"
 msgstr "בחר פריסת מקלדת"
 
-#: src/frontends/controllers/ControlPrefs.C:127
+#: src/frontends/controllers/ControlPrefs.cpp:127
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "פריסות המקלדת של LyX (*.kmap)"
 
-#: src/frontends/controllers/ControlPrefs.C:135
-#: src/frontends/controllers/ControlPrefs.C:139
+#: src/frontends/controllers/ControlPrefs.cpp:135
+#: src/frontends/controllers/ControlPrefs.cpp:139
 msgid "Choose personal dictionary"
 msgstr "בחר מילון אישי"
 
-#: src/frontends/controllers/ControlPrefs.C:136
+#: src/frontends/controllers/ControlPrefs.cpp:136
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/controllers/ControlPrefs.C:140
+#: src/frontends/controllers/ControlPrefs.cpp:140
 msgid "*.ispell"
 msgstr "*.ispell"
 
-#: src/frontends/controllers/ControlPrint.C:73
+#: src/frontends/controllers/ControlPrint.cpp:73
 msgid "Print to file"
 msgstr "הדפס לקובץ"
 
-#: src/frontends/controllers/ControlPrint.C:74
+#: src/frontends/controllers/ControlPrint.cpp:74
 msgid "PostScript files (*.ps)"
 msgstr "קבצי PostScript (*.ps)"
 
-#: src/frontends/controllers/ControlSpellchecker.C:117
+#: src/frontends/controllers/ControlSpellchecker.cpp:117
 msgid "Spellchecker error"
 msgstr "שגיאה בבודק האיות"
 
-#: src/frontends/controllers/ControlSpellchecker.C:118
+#: src/frontends/controllers/ControlSpellchecker.cpp:118
 msgid "The spellchecker could not be started\n"
 msgstr "לא ניתן להתחיל את בודק האיות \n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:276
+#: src/frontends/controllers/ControlSpellchecker.cpp:276
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:279
+#: src/frontends/controllers/ControlSpellchecker.cpp:279
 msgid "The spellchecker has failed.\n"
 msgstr "בודק האיות נכשל.\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:283
+#: src/frontends/controllers/ControlSpellchecker.cpp:283
 msgid "The spellchecker has failed"
 msgstr "בודק האיות נכשל"
 
-#: src/frontends/controllers/ControlSpellchecker.C:297
+#: src/frontends/controllers/ControlSpellchecker.cpp:297
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d מילים נבדקו"
 
-#: src/frontends/controllers/ControlSpellchecker.C:299
+#: src/frontends/controllers/ControlSpellchecker.cpp:299
 msgid "One word checked."
 msgstr "מילה אחת נבדקה"
 
-#: src/frontends/controllers/ControlSpellchecker.C:302
+#: src/frontends/controllers/ControlSpellchecker.cpp:302
 msgid "Spelling check completed"
 msgstr "בדיקת איות הושלמה"
 
-#: src/frontends/controllers/ControlToc.C:134 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
 msgid "Table of Contents"
 msgstr "תוכן עניינים"
 
-#: src/frontends/controllers/biblio.C:224
+#: src/frontends/controllers/frontend_helpers.cpp:244
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s ו %2$s"
 
-#: src/frontends/controllers/biblio.C:228
+#: src/frontends/controllers/frontend_helpers.cpp:248
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/frontends/controllers/biblio.C:265
+#: src/frontends/controllers/frontend_helpers.cpp:285
 msgid "No year"
 msgstr "אין שנה"
 
-#: src/frontends/controllers/biblio.C:798
+#: src/frontends/controllers/frontend_helpers.cpp:818
 msgid "before"
 msgstr "לפני"
 
-#: src/frontends/controllers/character.C:29
-#: src/frontends/controllers/character.C:59
-#: src/frontends/controllers/character.C:85
-#: src/frontends/controllers/character.C:119
-#: src/frontends/controllers/character.C:185
-#: src/frontends/controllers/character.C:215
-#: src/frontends/controllers/frnt_lang.C:52
+#: src/frontends/controllers/frontend_helpers.cpp:866
+#: src/frontends/controllers/frontend_helpers.cpp:896
+#: src/frontends/controllers/frontend_helpers.cpp:922
+#: src/frontends/controllers/frontend_helpers.cpp:956
+#: src/frontends/controllers/frontend_helpers.cpp:1022
+#: src/frontends/controllers/frontend_helpers.cpp:1052
+#: src/frontends/controllers/frontend_helpers.cpp:1125
 msgid "No change"
 msgstr "ללא שינוי"
 
-#: src/frontends/controllers/character.C:45
-#: src/frontends/controllers/character.C:71
-#: src/frontends/controllers/character.C:105
-#: src/frontends/controllers/character.C:171
-#: src/frontends/controllers/character.C:201
-#: src/frontends/controllers/character.C:255
-#: src/frontends/controllers/frnt_lang.C:54
+#: src/frontends/controllers/frontend_helpers.cpp:882
+#: src/frontends/controllers/frontend_helpers.cpp:908
+#: src/frontends/controllers/frontend_helpers.cpp:942
+#: src/frontends/controllers/frontend_helpers.cpp:1008
+#: src/frontends/controllers/frontend_helpers.cpp:1038
+#: src/frontends/controllers/frontend_helpers.cpp:1092
+#: src/frontends/controllers/frontend_helpers.cpp:1127
 msgid "Reset"
 msgstr "אתחל"
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
+#: src/frontends/controllers/frontend_helpers.cpp:900 src/lyxfont.C:57
 #, fuzzy
 msgid "Medium"
 msgstr "בינונית"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
+#: src/frontends/controllers/frontend_helpers.cpp:904 src/lyxfont.C:57
 msgid "Bold"
 msgstr "מובלט"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
+#: src/frontends/controllers/frontend_helpers.cpp:926 src/lyxfont.C:60
 msgid "Upright"
 msgstr ""
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
+#: src/frontends/controllers/frontend_helpers.cpp:930 src/lyxfont.C:60
 #, fuzzy
 msgid "Italic"
 msgstr "נטוי"
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
+#: src/frontends/controllers/frontend_helpers.cpp:934 src/lyxfont.C:60
 msgid "Slanted"
 msgstr ""
 
-#: src/frontends/controllers/character.C:101
+#: src/frontends/controllers/frontend_helpers.cpp:938
 #, fuzzy
 msgid "Small Caps"
 msgstr "תצוגה קטנה"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:1000 src/lyxfont.C:65
 msgid "Increase"
 msgstr "הגדל"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:1004 src/lyxfont.C:65
 msgid "Decrease"
 msgstr "הקטן"
 
-#: src/frontends/controllers/character.C:189
+#: src/frontends/controllers/frontend_helpers.cpp:1026
 msgid "Emph"
 msgstr "הדגש"
 
-#: src/frontends/controllers/character.C:193
+#: src/frontends/controllers/frontend_helpers.cpp:1030
 msgid "Underbar"
 msgstr "קו תחתי"
 
-#: src/frontends/controllers/character.C:197
+#: src/frontends/controllers/frontend_helpers.cpp:1034
 msgid "Noun"
 msgstr ""
 
-#: src/frontends/controllers/character.C:219
+#: src/frontends/controllers/frontend_helpers.cpp:1056
 msgid "No color"
 msgstr "ללא צבע"
 
-#: src/frontends/controllers/character.C:223
+#: src/frontends/controllers/frontend_helpers.cpp:1060
 msgid "Black"
 msgstr "שחור"
 
-#: src/frontends/controllers/character.C:227
+#: src/frontends/controllers/frontend_helpers.cpp:1064
 msgid "White"
 msgstr "לבן"
 
-#: src/frontends/controllers/character.C:231
+#: src/frontends/controllers/frontend_helpers.cpp:1068
 #, fuzzy
 msgid "Red"
 msgstr "אדום"
 
-#: src/frontends/controllers/character.C:235
+#: src/frontends/controllers/frontend_helpers.cpp:1072
 #, fuzzy
 msgid "Green"
 msgstr "ירוק"
 
-#: src/frontends/controllers/character.C:239
+#: src/frontends/controllers/frontend_helpers.cpp:1076
 #, fuzzy
 msgid "Blue"
 msgstr "כחול"
 
-#: src/frontends/controllers/character.C:243
+#: src/frontends/controllers/frontend_helpers.cpp:1080
 msgid "Cyan"
 msgstr "ציאן"
 
-#: src/frontends/controllers/character.C:247
+#: src/frontends/controllers/frontend_helpers.cpp:1084
 msgid "Magenta"
 msgstr "מגנטה"
 
-#: src/frontends/controllers/character.C:251
+#: src/frontends/controllers/frontend_helpers.cpp:1088
 msgid "Yellow"
 msgstr "צהוב"
 
-#: src/frontends/controllers/helper_funcs.C:102
+#: src/frontends/controllers/frontend_helpers.cpp:1220
 #, fuzzy
 msgid "System files|#S#s"
 msgstr "%d קבצים %lld %s"
 
-#: src/frontends/controllers/helper_funcs.C:105
+#: src/frontends/controllers/frontend_helpers.cpp:1223
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "%d קבצים %lld %s"
 
-#: src/frontends/controllers/tex_helpers.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:1306
 msgid "Could not update TeX information"
 msgstr "לא יכל לעדכן מידע על TeX"
 
-#: src/frontends/controllers/tex_helpers.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:1307
 #, c-format
 msgid "The script `%s' failed."
 msgstr "התסריט `%s' נכשל."
 
-#: src/frontends/qt4/Alert_pimpl.C:60 src/frontends/qt4/Alert_pimpl.C:87
-#: src/frontends/qt4/Alert_pimpl.C:107 src/frontends/qt4/Alert_pimpl.C:126
-#: src/frontends/qt4/Alert_pimpl.C:137
+#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
+#: src/frontends/qt4/Alert_pimpl.C:105 src/frontends/qt4/Alert_pimpl.C:124
+#: src/frontends/qt4/Alert_pimpl.C:135
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -13418,21 +13394,21 @@ msgstr ""
 msgid "Dings 4"
 msgstr ""
 
-#: src/frontends/qt4/Dialogs.C:224
+#: src/frontends/qt4/Dialogs.C:223
 msgid "Index Entry"
 msgstr "ערך באינדקס"
 
-#: src/frontends/qt4/Dialogs.C:234
+#: src/frontends/qt4/Dialogs.C:233
 #, fuzzy
 msgid "Label"
 msgstr "Label"
 
-#: src/frontends/qt4/Dialogs.C:246
+#: src/frontends/qt4/Dialogs.C:245
 #, fuzzy
 msgid "LaTeX Source"
 msgstr "הצג קוד מקור"
 
-#: src/frontends/qt4/Dialogs.C:308
+#: src/frontends/qt4/Dialogs.C:307
 #, fuzzy
 msgid "Toc"
 msgstr "תוסף פרוטוקול TOC"
@@ -13467,21 +13443,21 @@ msgstr "LyX:"
 msgid "unknown version"
 msgstr "גרסת xfdiff"
 
-#: src/frontends/qt4/QBibitem.C:31
+#: src/frontends/qt4/QBibitem.C:69
 #, fuzzy
 msgid "Bibliography Entry Settings"
 msgstr "אפשרויות גופן אחרות"
 
-#: src/frontends/qt4/QBibtex.C:48
+#: src/frontends/qt4/QBibtex.C:260
 #, fuzzy
 msgid "BibTeX Bibliography"
 msgstr "רישום ביבליוגרפי"
 
-#: src/frontends/qt4/QBox.C:49
+#: src/frontends/qt4/QBox.C:148
 msgid "Box Settings"
 msgstr "הגדרות תיבה"
 
-#: src/frontends/qt4/QBranch.C:33
+#: src/frontends/qt4/QBranch.C:71
 #, fuzzy
 msgid "Branch Settings"
 msgstr "הגדרות מחלקה"
@@ -13496,34 +13472,34 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:625
+#: src/frontends/qt4/QDocument.C:690
 #, fuzzy
 msgid "Yes"
 msgstr "כן"
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocument.C:689
 #, fuzzy
 msgid "No"
 msgstr "לא"
 
-#: src/frontends/qt4/QChanges.C:35
+#: src/frontends/qt4/QChanges.C:85
 #, fuzzy
 msgid "Merge Changes"
 msgstr "אחד שינויים"
 
-#: src/frontends/qt4/QChanges.C:57
+#: src/frontends/qt4/QChanges.C:107
 #, fuzzy, c-format
 msgid ""
 "Change by %1$s\n"
 "\n"
 msgstr "אומנות על ידי"
 
-#: src/frontends/qt4/QChanges.C:59
+#: src/frontends/qt4/QChanges.C:109
 #, fuzzy, c-format
 msgid "Change made at %1$s\n"
 msgstr "מחפש את %s ב-%s"
 
-#: src/frontends/qt4/QCharacter.C:34
+#: src/frontends/qt4/QCharacter.C:92
 msgid "Text Style"
 msgstr "סגנון טקסט"
 
@@ -13576,195 +13552,191 @@ msgstr "(ללא)"
 msgid "Variable"
 msgstr "משתנה"
 
-#: src/frontends/qt4/QDocument.C:48
-#, fuzzy
-msgid "Document Settings"
-msgstr "הגדרות מחלקה"
-
-#: src/frontends/qt4/QDocumentDialog.C:113
+#: src/frontends/qt4/QDocument.C:119
 #, fuzzy
 msgid "Length"
 msgstr "Length: "
 
-#: src/frontends/qt4/QDocumentDialog.C:119 src/text.C:1740
+#: src/frontends/qt4/QDocument.C:125 src/text.C:1740
 msgid "OneHalf"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:149
-#: src/frontends/qt4/QDocumentDialog.C:155
-#: src/frontends/qt4/QDocumentDialog.C:161
+#: src/frontends/qt4/QDocument.C:164 src/frontends/qt4/QDocument.C:170
+#: src/frontends/qt4/QDocument.C:176
 msgid " (not installed)"
 msgstr "(לא מותקן)"
 
-#: src/frontends/qt4/QDocumentDialog.C:165
-#: src/frontends/qt4/QDocumentDialog.C:191
-#: src/frontends/qt4/QDocumentDialog.C:534
+#: src/frontends/qt4/QDocument.C:180 src/frontends/qt4/QDocument.C:217
+#: src/frontends/qt4/QDocument.C:599
 #, fuzzy
 msgid "default"
 msgstr "default"
 
-#: src/frontends/qt4/QDocumentDialog.C:166
+#: src/frontends/qt4/QDocument.C:181
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:167
+#: src/frontends/qt4/QDocument.C:182
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:168
+#: src/frontends/qt4/QDocument.C:183
 #, fuzzy
 msgid "12"
 msgstr "Sans 12"
 
-#: src/frontends/qt4/QDocumentDialog.C:192
+#: src/frontends/qt4/QDocument.C:218
 #, fuzzy
 msgid "empty"
 msgstr "(ריק)"
 
-#: src/frontends/qt4/QDocumentDialog.C:193
+#: src/frontends/qt4/QDocument.C:219
 #, fuzzy
 msgid "plain"
 msgstr "פשוט"
 
-#: src/frontends/qt4/QDocumentDialog.C:194
+#: src/frontends/qt4/QDocument.C:220
 #, fuzzy
 msgid "headings"
 msgstr "כותרות"
 
-#: src/frontends/qt4/QDocumentDialog.C:195
+#: src/frontends/qt4/QDocument.C:221
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:211
+#: src/frontends/qt4/QDocument.C:237
 #, fuzzy
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocumentDialog.C:212
+#: src/frontends/qt4/QDocument.C:238
 #, fuzzy
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocumentDialog.C:296
+#: src/frontends/qt4/QDocument.C:341
 #, fuzzy
 msgid "LaTeX default"
 msgstr "ספר ברירת במחדל"
 
-#: src/frontends/qt4/QDocumentDialog.C:302
+#: src/frontends/qt4/QDocument.C:347
 #, fuzzy
 msgid "``text''"
 msgstr "מלל"
 
-#: src/frontends/qt4/QDocumentDialog.C:303
+#: src/frontends/qt4/QDocument.C:348
 #, fuzzy
 msgid "''text''"
 msgstr "מלל"
 
-#: src/frontends/qt4/QDocumentDialog.C:304
+#: src/frontends/qt4/QDocument.C:349
 #, fuzzy
 msgid ",,text``"
 msgstr "מלל"
 
-#: src/frontends/qt4/QDocumentDialog.C:305
+#: src/frontends/qt4/QDocument.C:350
 #, fuzzy
 msgid ",,text''"
 msgstr "מלל"
 
-#: src/frontends/qt4/QDocumentDialog.C:306
+#: src/frontends/qt4/QDocument.C:351
 #, fuzzy
 msgid "<<text>>"
 msgstr "מלל"
 
-#: src/frontends/qt4/QDocumentDialog.C:307
+#: src/frontends/qt4/QDocument.C:352
 #, fuzzy
 msgid ">>text<<"
 msgstr "מלל"
 
-#: src/frontends/qt4/QDocumentDialog.C:319
+#: src/frontends/qt4/QDocument.C:368
 #, fuzzy
 msgid "Numbered"
 msgstr "רשימה ממוספרת"
 
-#: src/frontends/qt4/QDocumentDialog.C:320
+#: src/frontends/qt4/QDocument.C:369
 #, fuzzy
 msgid "Appears in TOC"
 msgstr "תוסף פרוטוקול TOC"
 
-#: src/frontends/qt4/QDocumentDialog.C:333
+#: src/frontends/qt4/QDocument.C:389
 #, fuzzy
 msgid "Author-year"
 msgstr "The selected year"
 
-#: src/frontends/qt4/QDocumentDialog.C:334
+#: src/frontends/qt4/QDocument.C:390
 msgid "Numerical"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:366
+#: src/frontends/qt4/QDocument.C:432
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "לא זמין"
 
-#: src/frontends/qt4/QDocumentDialog.C:392
-#: src/frontends/qt4/QDocumentDialog.C:405
+#: src/frontends/qt4/QDocument.C:462 src/frontends/qt4/QDocument.C:475
 #, fuzzy
 msgid "Document Class"
 msgstr "הגדרות מחלקה"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocument.C:464
 #, fuzzy
 msgid "Text Layout"
 msgstr "Layout style"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocument.C:465
 #, fuzzy
 msgid "Page Layout"
 msgstr "Layout style"
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocument.C:466
 #, fuzzy
 msgid "Page Margins"
 msgstr "שולי סביבת העבודה"
 
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocument.C:468
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "תוסף פרוטוקול TOC"
 
-#: src/frontends/qt4/QDocumentDialog.C:400
+#: src/frontends/qt4/QDocument.C:470
 #, fuzzy
 msgid "Math Options"
 msgstr "אפשרויות מתקדמות"
 
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocument.C:471
 #, fuzzy
 msgid "Float Placement"
 msgstr "Window Placement"
 
-#: src/frontends/qt4/QDocumentDialog.C:402
+#: src/frontends/qt4/QDocument.C:472
 msgid "Bullets"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:403
+#: src/frontends/qt4/QDocument.C:473
 #, fuzzy
 msgid "Branches"
 msgstr "שלוחות"
 
-#: src/frontends/qt4/QDocumentDialog.C:404
-#: src/frontends/qt4/QDocumentDialog.C:421
+#: src/frontends/qt4/QDocument.C:474 src/frontends/qt4/QDocument.C:486
 msgid "LaTeX Preamble"
 msgstr ""
 
-#: src/frontends/qt4/QERT.C:30
+#: src/frontends/qt4/QDocument.C:1237
+#, fuzzy
+msgid "Document Settings"
+msgstr "הגדרות מחלקה"
+
+#: src/frontends/qt4/QERT.C:68
 #, fuzzy
 msgid "TeX Code Settings"
 msgstr "אפשרויות גופן אחרות"
 
-#: src/frontends/qt4/QExternal.C:282
+#: src/frontends/qt4/QExternal.C:495
 #, fuzzy
 msgid "External Material"
 msgstr "עורך טקסט חיצוני"
 
-#: src/frontends/qt4/QExternal.C:342
+#: src/frontends/qt4/QExternal.C:555
 #, fuzzy
 msgid "Scale%"
 msgstr "סולם"
@@ -13774,11 +13746,11 @@ msgstr "סולם"
 msgid "Float Settings"
 msgstr "הגדרות מחלקה"
 
-#: src/frontends/qt4/QGraphics.C:63 src/frontends/qt4/QPrefsDialog.C:586
+#: src/frontends/qt4/QGraphics.C:63 src/frontends/qt4/QPrefs.C:625
 msgid "Graphics"
 msgstr "תמונות"
 
-#: src/frontends/qt4/QInclude.C:42
+#: src/frontends/qt4/QInclude.C:134
 #, fuzzy
 msgid "Child Document"
 msgstr "מסמך חדש"
@@ -13793,221 +13765,231 @@ msgstr "הכנס מטריצה"
 msgid "LyX: Insert Matrix"
 msgstr "Insert"
 
-#: src/frontends/qt4/QNote.C:34
+#: src/frontends/qt4/QNote.C:70
 #, fuzzy
 msgid "Note Settings"
 msgstr "הגדרות מחלקה"
 
-#: src/frontends/qt4/QParagraph.C:42
+#: src/frontends/qt4/QParagraph.C:71
+msgid ""
+"As described in the User Guide, the length of this text will determine how "
+"wide the label part of each item is in environments like List and "
+"Description.\n"
+"\n"
+" Normally you won't need to set this, since the largest label width of all "
+"the items is used. But if you need to, you can change it here."
+msgstr ""
+
+#: src/frontends/qt4/QParagraph.C:177
 msgid "Paragraph Settings"
 msgstr "הגדרות פסקה"
 
-#: src/frontends/qt4/QParagraph.C:104 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:239 src/paragraph.C:1591
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.C:38
-#, fuzzy
-msgid "Preferences"
-msgstr "העדפות"
-
-#: src/frontends/qt4/QPrefsDialog.C:78
+#: src/frontends/qt4/QPrefs.C:73
 #, fuzzy
 msgid "Look and feel"
 msgstr "חיפוש והחלפה"
 
-#: src/frontends/qt4/QPrefsDialog.C:79
+#: src/frontends/qt4/QPrefs.C:74
 msgid "Language settings"
 msgstr "הגדרות שפה"
 
-#: src/frontends/qt4/QPrefsDialog.C:80
+#: src/frontends/qt4/QPrefs.C:75
 msgid "Outputs"
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:174
+#: src/frontends/qt4/QPrefs.C:173
 #, fuzzy
 msgid "Plain text"
 msgstr "טקסט רגיל"
 
-#: src/frontends/qt4/QPrefsDialog.C:199
+#: src/frontends/qt4/QPrefs.C:204
 #, fuzzy
 msgid "Date format"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/QPrefsDialog.C:220
+#: src/frontends/qt4/QPrefs.C:231
 msgid "Keyboard"
 msgstr "מקלדת"
 
-#: src/frontends/qt4/QPrefsDialog.C:332
+#: src/frontends/qt4/QPrefs.C:355
 msgid "Screen fonts"
 msgstr "גופני מסך"
 
-#: src/frontends/qt4/QPrefsDialog.C:484
+#: src/frontends/qt4/QPrefs.C:513
 msgid "Colors"
 msgstr "צבעים"
 
-#: src/frontends/qt4/QPrefsDialog.C:565 src/frontends/qt4/QPrefsDialog.C:653
+#: src/frontends/qt4/QPrefs.C:599 src/frontends/qt4/QPrefs.C:698
 #, fuzzy
 msgid "Paths"
 msgstr "נתיבית"
 
-#: src/frontends/qt4/QPrefsDialog.C:704
+#: src/frontends/qt4/QPrefs.C:749
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "בחר ספריה להחלת הטלאי "
 
-#: src/frontends/qt4/QPrefsDialog.C:714
+#: src/frontends/qt4/QPrefs.C:759
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "תיקייה לא נמצאה"
 
-#: src/frontends/qt4/QPrefsDialog.C:724
+#: src/frontends/qt4/QPrefs.C:769
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "תיקייה לא נמצאה"
 
-#: src/frontends/qt4/QPrefsDialog.C:734
+#: src/frontends/qt4/QPrefs.C:779
 #, fuzzy
 msgid "Select a document directory"
 msgstr "תיקייה לא נמצאה"
 
-#: src/frontends/qt4/QPrefsDialog.C:744
+#: src/frontends/qt4/QPrefs.C:789
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:751 src/frontends/qt4/QSpellchecker.C:34
+#: src/frontends/qt4/QPrefs.C:802 src/frontends/qt4/QSpellchecker.C:135
 msgid "Spellchecker"
 msgstr "בודק איות"
 
-#: src/frontends/qt4/QPrefsDialog.C:773
+#: src/frontends/qt4/QPrefs.C:824
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefsDialog.C:774
+#: src/frontends/qt4/QPrefs.C:825
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:775
+#: src/frontends/qt4/QPrefs.C:826
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:777
+#: src/frontends/qt4/QPrefs.C:828
 #, fuzzy
 msgid "pspell (library)"
 msgstr "ספרייה משותפת"
 
-#: src/frontends/qt4/QPrefsDialog.C:780
+#: src/frontends/qt4/QPrefs.C:831
 #, fuzzy
 msgid "aspell (library)"
 msgstr "ספרייה משותפת"
 
-#: src/frontends/qt4/QPrefsDialog.C:853
+#: src/frontends/qt4/QPrefs.C:912
 msgid "Converters"
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:1037
+#: src/frontends/qt4/QPrefs.C:1102
 msgid "Copiers"
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:1281
+#: src/frontends/qt4/QPrefs.C:1355
 #, fuzzy
 msgid "File formats"
 msgstr "%d קובץ %lld %s"
 
-#: src/frontends/qt4/QPrefsDialog.C:1473
+#: src/frontends/qt4/QPrefs.C:1547
 #, fuzzy
 msgid "Format in use"
 msgstr "Use Markup in secondary"
 
-#: src/frontends/qt4/QPrefsDialog.C:1474
+#: src/frontends/qt4/QPrefs.C:1548
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:1565
+#: src/frontends/qt4/QPrefs.C:1649
 #, fuzzy
 msgid "Printer"
 msgstr "Printer"
 
-#: src/frontends/qt4/QPrefsDialog.C:1657 src/frontends/qt4/QPrefsDialog.C:1844
+#: src/frontends/qt4/QPrefs.C:1747 src/frontends/qt4/QPrefs.C:1941
 msgid "User interface"
 msgstr "ממשק משתמש"
 
-#: src/frontends/qt4/QPrefsDialog.C:1770
+#: src/frontends/qt4/QPrefs.C:1865
 #, fuzzy
 msgid "Identity"
 msgstr "זהות"
+
+#: src/frontends/qt4/QPrefs.C:2007
+#, fuzzy
+msgid "Preferences"
+msgstr "העדפות"
 
 #: src/frontends/qt4/QPrint.C:36
 msgid "Print Document"
 msgstr "הדפס מסמך"
 
-#: src/frontends/qt4/QRef.C:45
+#: src/frontends/qt4/QRef.C:188
 msgid "Cross-reference"
 msgstr "הפניה"
 
-#: src/frontends/qt4/QRef.C:139
+#: src/frontends/qt4/QRef.C:284
 #, fuzzy
 msgid "&Go Back"
 msgstr "א_חורה"
 
-#: src/frontends/qt4/QRef.C:141
+#: src/frontends/qt4/QRef.C:286
 #, fuzzy
 msgid "Jump back"
 msgstr "א_חורה"
 
-#: src/frontends/qt4/QRef.C:149
+#: src/frontends/qt4/QRef.C:294
 #, fuzzy
 msgid "Jump to label"
 msgstr "Custom tab label"
 
-#: src/frontends/qt4/QSearch.C:30
+#: src/frontends/qt4/QSearch.C:138
 msgid "Find and Replace"
 msgstr "חיפוש והחלפה"
 
-#: src/frontends/qt4/QSendto.C:35
+#: src/frontends/qt4/QSendto.C:84
 #, fuzzy
 msgid "Send Document to Command"
 msgstr "`s' הדוקפל םיבורמ `g' ינייפאמ"
 
-#: src/frontends/qt4/QShowFile.C:32
+#: src/frontends/qt4/QShowFile.C:57
 #, fuzzy
 msgid "Show File"
 msgstr "Show file operations"
 
-#: src/frontends/qt4/QTabular.C:42
+#: src/frontends/qt4/QTabular.C:523
 msgid "Table Settings"
 msgstr "הגדרות טבלה"
 
-#: src/frontends/qt4/QTabularCreate.C:29
+#: src/frontends/qt4/QTabularCreate.C:73
 #, fuzzy
 msgid "Insert Table"
 msgstr "&הגדרות טבלה"
 
-#: src/frontends/qt4/QTexinfo.C:32
+#: src/frontends/qt4/QTexinfo.C:127
 #, fuzzy
 msgid "TeX Information"
 msgstr "מידע החבילה %s"
 
-#: src/frontends/qt4/QVSpace.C:132
+#: src/frontends/qt4/QVSpace.C:188
 #, fuzzy
 msgid "Vertical Space Settings"
 msgstr "אפשרויות גופן אחרות"
 
-#: src/frontends/qt4/QWrap.C:39
+#: src/frontends/qt4/QWrap.C:83
 msgid "Text Wrap Settings"
 msgstr "הגדרות גלישת שורות"
 
-#: src/frontends/qt4/validators.C:157
+#: src/frontends/qt4/validators.C:153
 #, fuzzy
 msgid "space"
 msgstr "Space style"
 
-#: src/frontends/qt4/validators.C:186
+#: src/frontends/qt4/validators.C:180
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Invalid filename"
 
-#: src/frontends/qt4/validators.C:187
+#: src/frontends/qt4/validators.C:181
 msgid ""
 "LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
@@ -14032,182 +14014,182 @@ msgstr ""
 msgid "imported."
 msgstr "יובא"
 
-#: src/insets/insetbase.C:242
+#: src/insets/InsetBase.cpp:252
 #, fuzzy
 msgid "Opened inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetbibtex.C:109
+#: src/insets/InsetBibtex.cpp:109
 msgid "BibTeX Generated Bibliography"
 msgstr ""
 
-#: src/insets/insetbibtex.C:206 src/insets/insetbibtex.C:259
+#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Warning message"
 
-#: src/insets/insetbibtex.C:207
+#: src/insets/InsetBibtex.cpp:207
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/insetbibtex.C:260
+#: src/insets/InsetBibtex.cpp:260
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
 
-#: src/insets/insetbox.C:65
+#: src/insets/InsetBox.cpp:65
 msgid "Boxed"
 msgstr ""
 
-#: src/insets/insetbox.C:66
+#: src/insets/InsetBox.cpp:66
 msgid "Frameless"
 msgstr "חסר מסגרת"
 
-#: src/insets/insetbox.C:67
+#: src/insets/InsetBox.cpp:67
 msgid "ovalbox"
 msgstr ""
 
-#: src/insets/insetbox.C:68
+#: src/insets/InsetBox.cpp:68
 msgid "Ovalbox"
 msgstr ""
 
-#: src/insets/insetbox.C:69
+#: src/insets/InsetBox.cpp:69
 msgid "Shadowbox"
 msgstr ""
 
-#: src/insets/insetbox.C:70
+#: src/insets/InsetBox.cpp:70
 msgid "Doublebox"
 msgstr ""
 
-#: src/insets/insetbox.C:126
+#: src/insets/InsetBox.cpp:126
 #, fuzzy
 msgid "Opened Box Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetbranch.C:76
+#: src/insets/InsetBranch.cpp:76
 #, fuzzy
 msgid "Opened Branch Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetbranch.C:101
+#: src/insets/InsetBranch.cpp:101
 #, fuzzy
 msgid "Branch: "
 msgstr "הסתר שלוחה"
 
-#: src/insets/insetbranch.C:108 src/insets/insetcharstyle.C:163
-#: src/insets/insetcharstyle.C:212
+#: src/insets/InsetBranch.cpp:108 src/insets/InsetCharStyle.cpp:163
+#: src/insets/InsetCharStyle.cpp:212
 msgid "Undef: "
 msgstr ""
 
-#: src/insets/insetbranch.C:239
+#: src/insets/InsetBranch.cpp:239
 #, fuzzy
 msgid "branch"
 msgstr "הסתר שלוחה"
 
-#: src/insets/insetcaption.C:87
+#: src/insets/InsetCaption.cpp:87
 msgid "Opened Caption Inset"
 msgstr "פתח את תוספת הטקסט של הכותרת"
 
-#: src/insets/insetcaption.C:276
+#: src/insets/InsetCaption.cpp:276
 msgid "Senseless!!! "
 msgstr "חסר משמעות!!!"
 
-#: src/insets/insetcharstyle.C:123
+#: src/insets/InsetCharStyle.cpp:123
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetcommand.C:98
+#: src/insets/InsetCommand.cpp:98
 #, fuzzy
 msgid "LaTeX Command: "
 msgstr "פקודה קודמת"
 
-#: src/insets/insetcommandparams.C:268
+#: src/insets/InsetCommandParams.cpp:268
 #, fuzzy
 msgid "Unknown inset name: "
 msgstr "מילה לא מוכרת:"
 
-#: src/insets/insetcommandparams.C:292
+#: src/insets/InsetCommandParams.cpp:292
 #, fuzzy
-msgid "Inset Command :"
+msgid "Inset Command: "
 msgstr "פקודה קודמת"
 
-#: src/insets/insetcommandparams.C:293
+#: src/insets/InsetCommandParams.cpp:293
 #, fuzzy
 msgid "Unknown parameter name: "
 msgstr "Invalid argument value"
 
-#: src/insets/insetcommandparams.C:300
+#: src/insets/InsetCommandParams.cpp:300
 msgid "Missing \\end_inset at this point."
 msgstr ""
 
-#: src/insets/insetenv.C:66
+#: src/insets/InsetEnv.cpp:66
 #, fuzzy
 msgid "Opened Environment Inset: "
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetert.C:143
+#: src/insets/InsetERT.cpp:143
 #, fuzzy
 msgid "Opened ERT Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetert.C:390
+#: src/insets/InsetERT.cpp:390
 msgid "ERT"
 msgstr ""
 
-#: src/insets/insetexternal.C:576
+#: src/insets/InsetExternal.cpp:576
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr ""
 
-#: src/insets/insetfloat.C:121 src/insets/insetfloat.C:373
-#: src/insets/insetfloat.C:383
+#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:373
+#: src/insets/InsetFloat.cpp:383
 #, fuzzy
 msgid "float: "
 msgstr "Expected float, got %s"
 
-#: src/insets/insetfloat.C:278
+#: src/insets/InsetFloat.cpp:278
 #, fuzzy
 msgid "Opened Float Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetfloat.C:334
+#: src/insets/InsetFloat.cpp:334
 #, fuzzy
 msgid "float"
 msgstr "Expected float, got %s"
 
-#: src/insets/insetfloat.C:385
+#: src/insets/InsetFloat.cpp:385
 msgid " (sideways)"
 msgstr ""
 
-#: src/insets/insetfloatlist.C:59
+#: src/insets/InsetFloatList.cpp:59
 #, fuzzy
 msgid "ERROR: Nonexistent float type!"
 msgstr ".תכרעמ גוס עובקל תורשפא ןיא ,תרש לש יוגש הנעמ\n"
 
-#: src/insets/insetfloatlist.C:124
+#: src/insets/InsetFloatList.cpp:124
 #, fuzzy, c-format
 msgid "List of %1$s"
 msgstr "רשימה"
 
-#: src/insets/insetfoot.C:37 src/insets/insetfoot.C:45
+#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:45
 msgid "foot"
 msgstr ""
 
-#: src/insets/insetfoot.C:58
+#: src/insets/InsetFoot.cpp:58
 #, fuzzy
 msgid "Opened Footnote Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetfoot.C:87
+#: src/insets/InsetFoot.cpp:87
 #, fuzzy
 msgid "footnote"
 msgstr "הערת תחתית"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:448
+#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14215,32 +14197,32 @@ msgid ""
 "into the temporary directory."
 msgstr ""
 
-#: src/insets/insetgraphics.C:709
+#: src/insets/InsetGraphics.cpp:709
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:821
+#: src/insets/InsetGraphics.cpp:821
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "%d קובץ %lld %s"
 
-#: src/insets/insethfill.C:48
+#: src/insets/InsetHFill.cpp:48
 #, fuzzy
 msgid "Horizontal Fill"
 msgstr "מלא מצולעים"
 
-#: src/insets/insetinclude.C:306
+#: src/insets/InsetInclude.cpp:306
 #, fuzzy
 msgid "Verbatim Input"
 msgstr "קלט נדרש"
 
-#: src/insets/insetinclude.C:309
+#: src/insets/InsetInclude.cpp:309
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "קלט נדרש"
 
-#: src/insets/insetinclude.C:411
+#: src/insets/InsetInclude.cpp:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -14248,255 +14230,255 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/insetinclude.C:417
+#: src/insets/InsetInclude.cpp:417
 #, fuzzy
 msgid "Different textclasses"
 msgstr "חלקים שונים נמצאו"
 
-#: src/insets/insetindex.C:42
+#: src/insets/InsetIndex.cpp:42
 msgid "Idx"
 msgstr ""
 
-#: src/insets/insetindex.C:75
+#: src/insets/InsetIndex.cpp:75
 #, fuzzy
 msgid "Index"
 msgstr "מפתח"
 
-#: src/insets/insetmarginal.C:33 src/insets/insetmarginal.C:41
-#: src/insets/insetmarginal.C:71
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:41
+#: src/insets/InsetMarginal.cpp:71
 #, fuzzy
 msgid "margin"
 msgstr "Margin"
 
-#: src/insets/insetmarginal.C:54
+#: src/insets/InsetMarginal.cpp:54
 msgid "Opened Marginal Note Inset"
 msgstr ""
 
-#: src/insets/insetnomencl.C:39
+#: src/insets/InsetNomencl.cpp:39
 #, fuzzy
 msgid "Glo"
 msgstr "הגדרות גלובליות"
 
-#: src/insets/insetnomencl.C:86
+#: src/insets/InsetNomencl.cpp:86
 #, fuzzy
 msgid "Glossary"
 msgstr "מילון מונחים"
 
-#: src/insets/insetnote.C:66
+#: src/insets/InsetNote.cpp:66
 msgid "Comment"
 msgstr "הערה"
 
-#: src/insets/insetnote.C:67
+#: src/insets/InsetNote.cpp:67
 #, fuzzy
 msgid "Greyed out"
 msgstr "הת_רחק"
 
-#: src/insets/insetnote.C:68
+#: src/insets/InsetNote.cpp:68
 #, fuzzy
 msgid "Framed"
 msgstr "frame"
 
-#: src/insets/insetnote.C:69
+#: src/insets/InsetNote.cpp:69
 #, fuzzy
 msgid "Shaded"
 msgstr "הגדרות תיבה"
 
-#: src/insets/insetnote.C:149
+#: src/insets/InsetNote.cpp:149
 #, fuzzy
 msgid "Opened Note Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetoptarg.C:37 src/insets/insetoptarg.C:47
+#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
 msgid "opt"
 msgstr ""
 
-#: src/insets/insetoptarg.C:59
+#: src/insets/InsetOptArg.cpp:59
 msgid "Opened Optional Argument Inset"
 msgstr ""
 
-#: src/insets/insetpagebreak.h:65
+#: src/insets/InsetPagebreak.h:65
 msgid "Clear Page"
 msgstr "נקה עמוד"
 
-#: src/insets/insetpagebreak.h:81
+#: src/insets/InsetPagebreak.h:81
 msgid "Clear Double Page"
 msgstr "נקה עמוד כפול"
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:187
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
 #, fuzzy
 msgid "Ref: "
 msgstr "%s: %s-ל (array_ref) הינפה\n"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:188
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr ""
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:188
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr ""
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:189
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page Number"
 msgstr "דומע רפסמ ןיא %s-ב"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:189
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page: "
 msgstr "Page"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:190
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "דומע רפסמ ןיא %s-ב"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:190
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr ""
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:191
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Standard+Textual Page"
 msgstr "Default Page Setup"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:191
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "סגנון טקסט"
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:192
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:192
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "מבנה לא תקין"
 
-#: src/insets/insettabular.C:451
+#: src/insets/InsetTabular.cpp:451
 #, fuzzy
 msgid "Opened table"
 msgstr "&הגדרות טבלה"
 
-#: src/insets/insettabular.C:1606
+#: src/insets/InsetTabular.cpp:1606
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "%s: שגיאה בקביעת %s ל %s"
 
-#: src/insets/insettabular.C:1607
+#: src/insets/InsetTabular.cpp:1607
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:236
+#: src/insets/InsetText.cpp:236
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insettheorem.C:41
+#: src/insets/InsetTheorem.cpp:41
 #, fuzzy
 msgid "theorem"
 msgstr "משפט"
 
-#: src/insets/insettheorem.C:91
+#: src/insets/InsetTheorem.cpp:91
 #, fuzzy
 msgid "Opened Theorem Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insettoc.C:47
+#: src/insets/InsetTOC.cpp:47
 #, fuzzy
 msgid "Unknown toc list"
 msgstr "Appears as list"
 
-#: src/insets/inseturl.C:42
+#: src/insets/InsetUrl.cpp:42
 #, fuzzy
 msgid "Url: "
 msgstr "קישור"
 
-#: src/insets/inseturl.C:42
+#: src/insets/InsetUrl.cpp:42
 msgid "HtmlUrl: "
 msgstr ""
 
-#: src/insets/insetvspace.C:110
+#: src/insets/InsetVSpace.cpp:110
 #, fuzzy
 msgid "Vertical Space"
 msgstr "Space style"
 
-#: src/insets/insetwrap.C:49
+#: src/insets/InsetWrap.cpp:49
 #, fuzzy
 msgid "wrap: "
 msgstr "Wrap"
 
-#: src/insets/insetwrap.C:178
+#: src/insets/InsetWrap.cpp:178
 #, fuzzy
 msgid "Opened Wrap Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/insetwrap.C:198
+#: src/insets/InsetWrap.cpp:198
 #, fuzzy
 msgid "wrap"
 msgstr "Wrap"
 
-#: src/insets/render_graphic.C:90 src/insets/render_graphic.C:94
+#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
 #, fuzzy
 msgid "Not shown."
 msgstr "Popup shown"
 
-#: src/insets/render_graphic.C:97
+#: src/insets/RenderGraphic.cpp:97
 msgid "Loading..."
 msgstr "טוען..."
 
-#: src/insets/render_graphic.C:100
+#: src/insets/RenderGraphic.cpp:100
 msgid "Converting to loadable format..."
 msgstr ""
 
-#: src/insets/render_graphic.C:103
+#: src/insets/RenderGraphic.cpp:103
 msgid "Loaded into memory. Generating pixmap..."
 msgstr ""
 
-#: src/insets/render_graphic.C:106
+#: src/insets/RenderGraphic.cpp:106
 #, fuzzy
 msgid "Scaling etc..."
 msgstr "Font scaling factor"
 
-#: src/insets/render_graphic.C:109
+#: src/insets/RenderGraphic.cpp:109
 #, fuzzy
 msgid "Ready to display"
 msgstr "מלל להצגה"
 
-#: src/insets/render_graphic.C:112
+#: src/insets/RenderGraphic.cpp:112
 msgid "No file found!"
 msgstr "אף קובץ לא נמצא!"
 
-#: src/insets/render_graphic.C:115
+#: src/insets/RenderGraphic.cpp:115
 msgid "Error converting to loadable format"
 msgstr ""
 
-#: src/insets/render_graphic.C:118
+#: src/insets/RenderGraphic.cpp:118
 #, fuzzy
 msgid "Error loading file into memory"
 msgstr "שגיאה בפתיחת קובץ הקטלוג '"
 
-#: src/insets/render_graphic.C:121
+#: src/insets/RenderGraphic.cpp:121
 #, fuzzy
 msgid "Error generating the pixmap"
 msgstr "תמונת Palm Pixmap"
 
-#: src/insets/render_graphic.C:124
+#: src/insets/RenderGraphic.cpp:124
 #, fuzzy
 msgid "No image"
 msgstr "אין תמונה"
 
-#: src/insets/render_preview.C:92
+#: src/insets/RenderPreview.cpp:92
 #, fuzzy
 msgid "Preview loading"
 msgstr "טוען סמלים..."
 
-#: src/insets/render_preview.C:95
+#: src/insets/RenderPreview.cpp:95
 #, fuzzy
 msgid "Preview ready"
 msgstr "תצוגה מקדימה של תמונות"
 
-#: src/insets/render_preview.C:98
+#: src/insets/RenderPreview.cpp:98
 #, fuzzy
 msgid "Preview failed"
 msgstr "שמירה אוטומטית נכשלה!"
@@ -14639,11 +14621,11 @@ msgstr "שנה שם"
 msgid "Choose a filename to save document as"
 msgstr "בחר שם למסמך כדי לשמור אותו"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1868
+#: src/lyx_cb.C:137 src/lyxfunc.C:1867
 msgid "Templates|#T#t"
 msgstr "תבניות"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2025
+#: src/lyx_cb.C:167 src/lyxfunc.C:2024
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14654,7 +14636,7 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:2027
+#: src/lyx_cb.C:169 src/lyxfunc.C:2026
 msgid "Over-write document?"
 msgstr "להחליף את המסמך הקיים?"
 
@@ -14974,7 +14956,7 @@ msgstr "ב ךרוצ ןיא\n"
 msgid "Unknown action"
 msgstr "העודי הנניא `%s' הדוקפ"
 
-#: src/lyxfunc.C:426 src/lyxfunc.C:710
+#: src/lyxfunc.C:426 src/lyxfunc.C:709
 #, fuzzy
 msgid "Command disabled"
 msgstr "פקודה קודמת"
@@ -14983,15 +14965,15 @@ msgstr "פקודה קודמת"
 msgid "Command not allowed without any document open"
 msgstr "הפקודה איננה אפשרית ללא מסמך פתוח"
 
-#: src/lyxfunc.C:696
+#: src/lyxfunc.C:695
 msgid "Document is read-only"
 msgstr "המסמך הוא לקריאה בלבד."
 
-#: src/lyxfunc.C:704
+#: src/lyxfunc.C:703
 msgid "This portion of the document is deleted."
 msgstr "חלק זה של המסמך נמחק."
 
-#: src/lyxfunc.C:723
+#: src/lyxfunc.C:722
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14999,7 +14981,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/lyxfunc.C:741
+#: src/lyxfunc.C:740
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -15008,108 +14990,108 @@ msgstr ""
 "לא יכול להדפיס את המסמך %1$s. \n"
 "בדוק שהמדפסת מוגדרת כראוי."
 
-#: src/lyxfunc.C:744
+#: src/lyxfunc.C:743
 msgid "Print document failed"
 msgstr "הדפסת המסמך נכשלה"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:762
 #, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr ""
 
-#: src/lyxfunc.C:766
+#: src/lyxfunc.C:765
 msgid "Could not change class"
 msgstr "אין אפשרות לשנות מחלקה"
 
-#: src/lyxfunc.C:878
+#: src/lyxfunc.C:877
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "שומר מסמך %1$s..."
 
-#: src/lyxfunc.C:882
+#: src/lyxfunc.C:881
 #, fuzzy
 msgid " done."
 msgstr "ב החלצה"
 
-#: src/lyxfunc.C:898
+#: src/lyxfunc.C:897
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "כל השינויים יאבדו. אתה בטוח שברצונך לחזור לגרסה השמורה של המסמך %1$s?"
 
-#: src/lyxfunc.C:1090
+#: src/lyxfunc.C:1089
 msgid "Exiting."
 msgstr "יוצא"
 
-#: src/lyxfunc.C:1116 src/text3.C:1312
+#: src/lyxfunc.C:1115 src/text3.C:1312
 #, fuzzy
 msgid "Missing argument"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
 
-#: src/lyxfunc.C:1125
+#: src/lyxfunc.C:1124
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "שגיאה בפתיחת הקובץ %s!"
 
-#: src/lyxfunc.C:1400
+#: src/lyxfunc.C:1399
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/lyxfunc.C:1487
+#: src/lyxfunc.C:1486
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1498
+#: src/lyxfunc.C:1497
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1612
+#: src/lyxfunc.C:1611
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "The current page in the document"
 
-#: src/lyxfunc.C:1615
+#: src/lyxfunc.C:1614
 msgid "Unable to save document defaults"
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
 
-#: src/lyxfunc.C:1671
+#: src/lyxfunc.C:1670
 msgid "Converting document to new document class..."
 msgstr "ממיר מסמך למחלקת מסמך חדשה"
 
-#: src/lyxfunc.C:1865
+#: src/lyxfunc.C:1864
 msgid "Select template file"
 msgstr "בחר קובץ תבנית"
 
-#: src/lyxfunc.C:1904
+#: src/lyxfunc.C:1903
 msgid "Select document to open"
 msgstr "בחר קובץ לפתיחה"
 
-#: src/lyxfunc.C:1943
+#: src/lyxfunc.C:1942
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/lyxfunc.C:1947
+#: src/lyxfunc.C:1946
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "מסמך חדש"
 
-#: src/lyxfunc.C:1949
+#: src/lyxfunc.C:1948
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "לא יכול לפתוח את הקובץ"
 
-#: src/lyxfunc.C:1974
+#: src/lyxfunc.C:1973
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "בחר קובץ להדפסה"
 
-#: src/lyxfunc.C:2098
+#: src/lyxfunc.C:2097
 msgid "Welcome to LyX!"
 msgstr "ברוכים הבאים ל- LyX!"
 
@@ -15548,85 +15530,85 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "לחזור לגרסה השמורה של המסמך?"
 
-#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.cpp:127 src/mathed/MathMacroTemplate.cpp:108
 #, fuzzy, c-format
 msgid " Macro: %1$s: "
 msgstr "Macro"
 
-#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1241
-#: src/mathed/InsetMathSplit.C:76 src/mathed/InsetMathSubstack.C:75
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1241
+#: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathCases.C:98
+#: src/mathed/InsetMathCases.cpp:98
 #, fuzzy, c-format
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Width, in pixels, of the tree view grid lines"
 
-#: src/mathed/InsetMathGrid.C:1312
+#: src/mathed/InsetMathGrid.cpp:1312
 #, fuzzy
 msgid "Only one row"
 msgstr ".דחא ןולח קר םייק"
 
-#: src/mathed/InsetMathGrid.C:1318
+#: src/mathed/InsetMathGrid.cpp:1318
 #, fuzzy
 msgid "Only one column"
 msgstr ".דחא ןולח קר םייק"
 
-#: src/mathed/InsetMathGrid.C:1326
+#: src/mathed/InsetMathGrid.cpp:1326
 #, fuzzy
 msgid "No hline to delete"
 msgstr "אין כתובת לשיגור"
 
-#: src/mathed/InsetMathGrid.C:1335
+#: src/mathed/InsetMathGrid.cpp:1335
 #, fuzzy
 msgid "No vline to delete"
 msgstr "אין כתובת לשיגור"
 
-#: src/mathed/InsetMathGrid.C:1353
+#: src/mathed/InsetMathGrid.cpp:1353
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "פורמט תמונה לא ידוע"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.cpp:1080 src/mathed/InsetMathHull.cpp:1089
 #, fuzzy
 msgid "No number"
 msgstr "דומע רפסמ ןיא %s-ב"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.cpp:1080 src/mathed/InsetMathHull.cpp:1089
 msgid "Number"
 msgstr "מספר"
 
-#: src/mathed/InsetMathHull.C:1214
+#: src/mathed/InsetMathHull.cpp:1214
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1224
+#: src/mathed/InsetMathHull.cpp:1224
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1234
+#: src/mathed/InsetMathHull.cpp:1234
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1330 src/text3.C:185
+#: src/mathed/InsetMathHull.cpp:1330 src/text3.C:185
 #, fuzzy
 msgid "Math editor mode"
 msgstr "מצב החלקת הקצוות."
 
-#: src/mathed/InsetMathNest.C:847
+#: src/mathed/InsetMathNest.cpp:847
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:850
+#: src/mathed/InsetMathNest.cpp:850
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.C:240
+#: src/mathed/MathMacroTemplate.cpp:240
 #, fuzzy
 msgid "math macro"
 msgstr "Background color"
@@ -15978,12 +15960,12 @@ msgstr "Layout style"
 msgid " not known"
 msgstr "(לא מותקן)"
 
-#: src/text3.C:1417 src/text3.C:1429
+#: src/text3.C:1424 src/text3.C:1436
 #, fuzzy
 msgid "Character set"
 msgstr "הגדר קבוצה"
 
-#: src/text3.C:1560
+#: src/text3.C:1567
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraph background set"
@@ -17852,10 +17834,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Load the file."
 #~ msgstr "%d קובץ %lld %s"
-
-#, fuzzy
-#~ msgid "Math Spacing"
-#~ msgstr "Default Outside Spacing"
 
 #, fuzzy
 #~ msgid "Math Styles & Fonts"

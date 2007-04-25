@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-22 11:29+0200\n"
+"POT-Creation-Date: 2007-04-25 23:02+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -138,10 +138,10 @@ msgid "Add a new branch to the list"
 msgstr "Fügen Sie einen neuen Zweig zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:116
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:54
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:54
+#: src/frontends/qt4/ui/BibtexAddUi.ui:70
+#: src/frontends/qt4/ui/CitationUi.ui:116
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 msgid "&Add"
 msgstr "&Hinzufügen"
 
@@ -158,8 +158,8 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:68
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -184,73 +184,71 @@ msgid "&Font:"
 msgstr "&Schrift:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
-#: src/frontends/qt4/ui/QCharacterUi.ui:227
+#: src/frontends/qt4/ui/CharacterUi.ui:227
 msgid "Si&ze:"
 msgstr "&Größe:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:66
-#: src/frontends/qt4/ui/QExternalUi.ui:192
-#: src/frontends/qt4/ui/QGraphicsUi.ui:604
-#: src/frontends/qt4/ui/QParagraphUi.ui:214
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:78
-#: src/frontends/qt4/ui/QTabularUi.ui:707
-#: src/frontends/qt4/ui/QTabularUi.ui:726
-#: src/frontends/qt4/ui/QTabularUi.ui:774 lib/ui/stdtoolbars.inc:81
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:203 src/lyxfont.C:518
-#: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
+#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
+#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/ParagraphUi.ui:214
+#: src/frontends/qt4/ui/PrefLatexUi.ui:78
+#: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
+#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/ControlExternal.cpp:234
+#: src/frontends/controllers/ControlGraphics.cpp:170
+#: src/frontends/qt4/QDocument.C:229 src/lyxfont.C:518 src/tex-strings.C:68
+#: src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Standard"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:960 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "Winzig"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:964 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "Sehr klein"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:968 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "Kleiner"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:972 src/lyxfont.C:64
 msgid "Small"
 msgstr "Klein"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:976 src/lyxfont.C:64
 msgid "Normal"
 msgstr "Normal"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:980 src/lyxfont.C:64
 msgid "Large"
 msgstr "Groß"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:984 src/lyxfont.C:65
 msgid "Larger"
 msgstr "Größer"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:106
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:988 src/lyxfont.C:65
 msgid "Largest"
 msgstr "Noch größer"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:992 src/lyxfont.C:65
 msgid "Huge"
 msgstr "Riesig"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:996 src/lyxfont.C:65
 msgid "Huger"
 msgstr "Gigantisch"
 
@@ -319,7 +317,7 @@ msgid "&Typewriter:"
 msgstr "&Schreibmaschine:"
 
 #: src/frontends/qt4/ui/FontUi.ui:90
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:114
 msgid "&Roman:"
 msgstr "&Roman:"
 
@@ -360,7 +358,7 @@ msgid "Postscript &driver:"
 msgstr "PostScript-&Treiber:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:36
-#: src/frontends/qt4/ui/QCharacterUi.ui:163
+#: src/frontends/qt4/ui/CharacterUi.ui:163
 msgid "&Language:"
 msgstr "S&prache:"
 
@@ -440,14 +438,14 @@ msgstr "&Nummerierung"
 msgid "Paper Size"
 msgstr "Papiergröße"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/QBoxUi.ui:122
-#: src/frontends/qt4/ui/QExternalUi.ui:507
+#: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/BoxUi.ui:122
+#: src/frontends/qt4/ui/ExternalUi.ui:507
 msgid "&Height:"
 msgstr "&Höhe:"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:138
-#: src/frontends/qt4/ui/QExternalUi.ui:484
-#: src/frontends/qt4/ui/QTabularUi.ui:103 src/frontends/qt4/ui/QWrapUi.ui:39
+#: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/BoxUi.ui:138
+#: src/frontends/qt4/ui/ExternalUi.ui:484
+#: src/frontends/qt4/ui/TabularUi.ui:103 src/frontends/qt4/ui/WrapUi.ui:39
 msgid "&Width:"
 msgstr "&Breite:"
 
@@ -485,1228 +483,1215 @@ msgstr "Formatieren Sie die Seite für doppelseitigen Ausdruck"
 msgid "&Two-sided document"
 msgstr "&Doppelseitiges Dokument"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:32
+#: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
 msgstr "Version"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:50
+#: src/frontends/qt4/ui/AboutUi.ui:50
 msgid "Version goes here"
 msgstr "Version kommt hierher"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:64
+#: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
 msgstr "Ruhm und Ehre"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:80 lib/layouts/apa.layout:199
+#: src/frontends/qt4/ui/AboutUi.ui:80 lib/layouts/apa.layout:199
 #: lib/layouts/agu_stdtitle.inc:81
 msgid "Copyright"
 msgstr "Urheberrecht"
 
-#: src/frontends/qt4/ui/QAboutUi.ui:131 src/frontends/qt4/ui/QBibitemUi.ui:121
-#: src/frontends/qt4/ui/QBoxUi.ui:351 src/frontends/qt4/ui/QBranchUi.ui:41
-#: src/frontends/qt4/ui/QDelimiterUi.ui:235
-#: src/frontends/qt4/ui/QErrorListUi.ui:62
-#: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
-#: src/frontends/qt4/ui/QIncludeUi.ui:199 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QParagraphUi.ui:99 src/frontends/qt4/ui/QPrefsUi.ui:96
-#: src/frontends/qt4/ui/QRefUi.ui:100 src/frontends/qt4/ui/QSearchUi.ui:210
-#: src/frontends/qt4/ui/QShowFileUi.ui:58
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
-#: src/frontends/qt4/ui/QTexinfoUi.ui:58
-#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QURLUi.ui:115
-#: src/frontends/qt4/ui/QVSpaceUi.ui:168 src/frontends/qt4/ui/QWrapUi.ui:216
+#: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
+#: src/frontends/qt4/ui/BoxUi.ui:351 src/frontends/qt4/ui/BranchUi.ui:41
+#: src/frontends/qt4/ui/DelimiterUi.ui:107
+#: src/frontends/qt4/ui/ErrorListUi.ui:62
+#: src/frontends/qt4/ui/ExternalUi.ui:705 src/frontends/qt4/ui/FloatUi.ui:85
+#: src/frontends/qt4/ui/IncludeUi.ui:199 src/frontends/qt4/ui/LogUi.ui:71
+#: src/frontends/qt4/ui/ParagraphUi.ui:99 src/frontends/qt4/ui/PrefsUi.ui:96
+#: src/frontends/qt4/ui/RefUi.ui:100 src/frontends/qt4/ui/SearchUi.ui:210
+#: src/frontends/qt4/ui/ShowFileUi.ui:58
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:31
+#: src/frontends/qt4/ui/TexinfoUi.ui:58
+#: src/frontends/qt4/ui/ThesaurusUi.ui:144 src/frontends/qt4/ui/URLUi.ui:115
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:216
 msgid "&Close"
 msgstr "&Schließen"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:16
+#: src/frontends/qt4/ui/AskForTextUi.ui:16
 msgid "LyX: Enter text"
 msgstr "LyX: Text eingeben"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:47
+#: src/frontends/qt4/ui/AskForTextUi.ui:47
 msgid "&Dummy"
 msgstr "&Dummy"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:84
-#: src/frontends/qt4/ui/QBibitemUi.ui:111
-#: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
-#: src/frontends/qt4/ui/QBranchUi.ui:31
-#: src/frontends/qt4/ui/QCharacterUi.ui:370
-#: src/frontends/qt4/ui/QCitationUi.ui:303
-#: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
-#: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
-#: src/frontends/qt4/ui/QGraphicsUi.ui:702
-#: src/frontends/qt4/ui/QIncludeUi.ui:189 src/frontends/qt4/ui/QIndexUi.ui:82
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:170
-#: src/frontends/qt4/ui/QNomenclUi.ui:92 src/frontends/qt4/ui/QNoteUi.ui:31
-#: src/frontends/qt4/ui/QParagraphUi.ui:76 src/frontends/qt4/ui/QRefUi.ui:80
-#: src/frontends/qt4/ui/QSendtoUi.ui:75
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:68
-#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:145
-#: src/frontends/qt4/ui/QWrapUi.ui:193
+#: src/frontends/qt4/ui/AskForTextUi.ui:84
+#: src/frontends/qt4/ui/BibitemUi.ui:111 src/frontends/qt4/ui/BibtexUi.ui:216
+#: src/frontends/qt4/ui/BoxUi.ui:325 src/frontends/qt4/ui/BranchUi.ui:31
+#: src/frontends/qt4/ui/CharacterUi.ui:370
+#: src/frontends/qt4/ui/CitationUi.ui:303
+#: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:100
+#: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
+#: src/frontends/qt4/ui/GraphicsUi.ui:702
+#: src/frontends/qt4/ui/IncludeUi.ui:189 src/frontends/qt4/ui/IndexUi.ui:82
+#: src/frontends/qt4/ui/MathMatrixUi.ui:170
+#: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
+#: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
+#: src/frontends/qt4/ui/SendtoUi.ui:75
+#: src/frontends/qt4/ui/TabularCreateUi.ui:68
+#: src/frontends/qt4/ui/URLUi.ui:105 src/frontends/qt4/ui/VSpaceUi.ui:145
+#: src/frontends/qt4/ui/WrapUi.ui:193
 msgid "&OK"
 msgstr "&OK"
 
-#: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:323
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
+#: src/frontends/qt4/ui/AskForTextUi.ui:94
+#: src/frontends/qt4/ui/CitationUi.ui:323
+#: src/frontends/qt4/ui/DocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:728
-#: src/lyxfunc.C:901 src/lyxfunc.C:1067 src/lyxfunc.C:2028 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:727
+#: src/lyxfunc.C:900 src/lyxfunc.C:1066 src/lyxfunc.C:2027 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:39 src/frontends/qt4/ui/QBibitemUi.ui:74
+#: src/frontends/qt4/ui/BibitemUi.ui:39 src/frontends/qt4/ui/BibitemUi.ui:74
 msgid "The bibliography key"
 msgstr "Der Literaturschlüssel"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:54 src/frontends/qt4/ui/QBibitemUi.ui:61
+#: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/BibitemUi.ui:61
 msgid "The label as it appears in the document"
 msgstr "Die Marke, wie sie im Dokument erscheint"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
-#: src/frontends/qt4/Dialogs.C:235
+#: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/RefUi.ui:145
+#: src/frontends/qt4/Dialogs.C:234
 msgid "&Label:"
 msgstr "&Marke:"
 
-#: src/frontends/qt4/ui/QBibitemUi.ui:77
+#: src/frontends/qt4/ui/BibitemUi.ui:77
 msgid "&Key:"
 msgstr "&Schlüssel:"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:24
+#: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
 msgstr "LyX: BibTeX-Datenbank hinzufügen"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:83
-#: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
-#: src/frontends/qt4/ui/QIndexUi.ui:92 src/frontends/qt4/ui/QNomenclUi.ui:105
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:264
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
+#: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
+#: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
+#: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
+#: src/BufferView.C:264 src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:843
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:119
+#: src/frontends/qt4/ui/BibtexAddUi.ui:119
 msgid "Enter BibTeX database name"
 msgstr "Name der BibTeX-Datenbank eingeben"
 
-#: src/frontends/qt4/ui/QBibtexAddUi.ui:126
-#: src/frontends/qt4/ui/QBibtexUi.ui:106
-#: src/frontends/qt4/ui/QExternalUi.ui:99
-#: src/frontends/qt4/ui/QGraphicsUi.ui:71
-#: src/frontends/qt4/ui/QIncludeUi.ui:145 src/frontends/qt4/ui/QPrintUi.ui:316
+#: src/frontends/qt4/ui/BibtexAddUi.ui:126
+#: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:99
+#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/IncludeUi.ui:145
+#: src/frontends/qt4/ui/PrintUi.ui:316
 msgid "&Browse..."
 msgstr "&Durchsuchen..."
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:34
+#: src/frontends/qt4/ui/BibtexUi.ui:34
 msgid "Add bibliography to the table of contents"
 msgstr "Literaturverzeichnis im Inhaltsverzeichnis aufführen"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:37
+#: src/frontends/qt4/ui/BibtexUi.ui:37
 msgid "Add bibliography to &TOC"
 msgstr "Literaturverzeichnis ins &Inhaltsverzeichnis"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:52 src/frontends/qt4/ui/QBibtexUi.ui:65
+#: src/frontends/qt4/ui/BibtexUi.ui:52 src/frontends/qt4/ui/BibtexUi.ui:65
 msgid "This bibliography section contains..."
 msgstr "Dieser Literaturverzeichnis-Abschnitt enthält..."
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:55
+#: src/frontends/qt4/ui/BibtexUi.ui:55
 msgid "&Content:"
 msgstr "&Inhalt:"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:69
+#: src/frontends/qt4/ui/BibtexUi.ui:69
 msgid "all cited references"
 msgstr "alle zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:74
+#: src/frontends/qt4/ui/BibtexUi.ui:74
 msgid "all uncited references"
 msgstr "alle nicht zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:79
+#: src/frontends/qt4/ui/BibtexUi.ui:79
 msgid "all references"
 msgstr "alle Literatureinträge"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:103 src/frontends/qt4/ui/QBibtexUi.ui:116
+#: src/frontends/qt4/ui/BibtexUi.ui:103 src/frontends/qt4/ui/BibtexUi.ui:116
 msgid "Choose a style file"
 msgstr "Wählen Sie eine Stil-Datei"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:148
+#: src/frontends/qt4/ui/BibtexUi.ui:148
 msgid "Remove the selected database"
 msgstr "Die ausgewählte Datenbank entfernen"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:151
+#: src/frontends/qt4/ui/BibtexUi.ui:151
 msgid "&Delete"
 msgstr "&Löschen"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:158
+#: src/frontends/qt4/ui/BibtexUi.ui:158
 msgid "Add a BibTeX database file"
 msgstr "Füge eine BibTeX-Datenbank-Datei hinzu"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:161
+#: src/frontends/qt4/ui/BibtexUi.ui:161
 msgid "&Add..."
 msgstr "&Hinzufügen..."
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:176
+#: src/frontends/qt4/ui/BibtexUi.ui:176
 msgid "BibTeX database to use"
 msgstr "Zu verwendende BibTeX-Datenbank"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:179
+#: src/frontends/qt4/ui/BibtexUi.ui:179
 msgid "Databa&ses"
 msgstr "&Datenbanken"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:249
+#: src/frontends/qt4/ui/BibtexUi.ui:249
 msgid "The BibTeX style"
 msgstr "Der BibTeX-Stil"
 
-#: src/frontends/qt4/ui/QBibtexUi.ui:252
+#: src/frontends/qt4/ui/BibtexUi.ui:252
 msgid "St&yle"
 msgstr "&Stil"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:34 src/frontends/qt4/ui/QBoxUi.ui:63
+#: src/frontends/qt4/ui/BoxUi.ui:34 src/frontends/qt4/ui/BoxUi.ui:63
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "Innere Box -- benötigt für feste Breite & Zeilenumbrüche"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:38 src/frontends/qt4/ui/QTabularUi.ui:702
-#: src/frontends/qt4/ui/QTabularUi.ui:721
-#: src/frontends/qt4/ui/QTabularUi.ui:769
-#: src/frontends/controllers/ControlBox.C:79 src/frontends/qt4/QBox.C:170
-#: src/frontends/qt4/QBox.C:286 src/frontends/qt4/QBoxDialog.C:74
+#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/TabularUi.ui:702
+#: src/frontends/qt4/ui/TabularUi.ui:721 src/frontends/qt4/ui/TabularUi.ui:769
+#: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.C:100
+#: src/frontends/qt4/QBox.C:268 src/frontends/qt4/QBox.C:384
 msgid "None"
 msgstr "Keine"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:43 src/frontends/qt4/QBox.C:172
-#: src/frontends/qt4/QBox.C:279 src/frontends/qt4/QBox.C:287
-#: src/insets/insetbox.C:158
+#: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.C:270
+#: src/frontends/qt4/QBox.C:377 src/frontends/qt4/QBox.C:385
+#: src/insets/InsetBox.cpp:158
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/qt4/QBox.C:280
-#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:160
+#: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.C:378
+#: src/frontends/qt4/QBox.C:386 src/insets/InsetBox.cpp:160
 msgid "Minipage"
 msgstr "Minipage"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:76
+#: src/frontends/qt4/ui/BoxUi.ui:56 src/frontends/qt4/ui/BoxUi.ui:76
 msgid "Supported box types"
 msgstr "Unterstützte Box-Arten"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:66
+#: src/frontends/qt4/ui/BoxUi.ui:66
 msgid "Inner Bo&x:"
 msgstr "&Innere Box:"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:79
+#: src/frontends/qt4/ui/BoxUi.ui:79
 msgid "&Decoration:"
 msgstr "&Verzierung:"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
+#: src/frontends/qt4/ui/BoxUi.ui:97 src/frontends/qt4/ui/BoxUi.ui:119
 msgid "Height value"
 msgstr "Höhenwert"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:112 src/frontends/qt4/ui/QBoxUi.ui:135
-#: src/frontends/qt4/ui/QWrapUi.ui:118
+#: src/frontends/qt4/ui/BoxUi.ui:112 src/frontends/qt4/ui/BoxUi.ui:135
+#: src/frontends/qt4/ui/WrapUi.ui:118
 msgid "Width value"
 msgstr "Breite"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:148
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:202
-#: src/frontends/qt4/ui/QParagraphUi.ui:251
+#: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
+#: src/frontends/qt4/ui/ParagraphUi.ui:251
 msgid "Alignment"
 msgstr "Ausrichtung"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:160 src/frontends/qt4/ui/QBoxUi.ui:187
+#: src/frontends/qt4/ui/BoxUi.ui:160 src/frontends/qt4/ui/BoxUi.ui:187
 msgid "Horizontal alignment of the content inside the box"
 msgstr "Horizontale Ausrichtung des Inhalts innerhalb der Box"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:164 src/frontends/qt4/ui/QTabularUi.ui:145
-#: src/frontends/qt4/ui/QWrapUi.ui:58 src/frontends/qt4/QTabular.C:260
+#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/TabularUi.ui:145
+#: src/frontends/qt4/ui/WrapUi.ui:58 src/frontends/qt4/QTabular.C:741
 msgid "Left"
 msgstr "Links"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QTabularUi.ui:150
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
-#: src/frontends/qt4/QTabular.C:261
+#: src/frontends/qt4/ui/BoxUi.ui:169 src/frontends/qt4/ui/TabularUi.ui:150
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+#: src/frontends/qt4/QTabular.C:742
 msgid "Center"
 msgstr "Zentriert"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:174 src/frontends/qt4/ui/QTabularUi.ui:155
-#: src/frontends/qt4/ui/QWrapUi.ui:63 src/frontends/qt4/QTabular.C:262
+#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/TabularUi.ui:155
+#: src/frontends/qt4/ui/WrapUi.ui:63 src/frontends/qt4/QTabular.C:743
 msgid "Right"
 msgstr "Rechts"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:179 src/frontends/qt4/ui/QBoxUi.ui:261
+#: src/frontends/qt4/ui/BoxUi.ui:179 src/frontends/qt4/ui/BoxUi.ui:261
 msgid "Stretch"
 msgstr "Dehnen"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:190
+#: src/frontends/qt4/ui/BoxUi.ui:190
 msgid "Horizontal"
 msgstr "Horizontal"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:197 src/frontends/qt4/ui/BoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
 msgstr "Vertikale Ausrichtung der Box (bzgl. Grundlinie)"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:201 src/frontends/qt4/ui/QBoxUi.ui:246
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:218
-#: src/frontends/qt4/ui/QTabularUi.ui:85
+#: src/frontends/qt4/ui/BoxUi.ui:201 src/frontends/qt4/ui/BoxUi.ui:246
+#: src/frontends/qt4/ui/MathMatrixUi.ui:218
+#: src/frontends/qt4/ui/TabularUi.ui:85
 msgid "Top"
 msgstr "Oben"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:206 src/frontends/qt4/ui/QBoxUi.ui:251
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:223
-#: src/frontends/qt4/ui/QTabularUi.ui:90
+#: src/frontends/qt4/ui/BoxUi.ui:206 src/frontends/qt4/ui/BoxUi.ui:251
+#: src/frontends/qt4/ui/MathMatrixUi.ui:223
+#: src/frontends/qt4/ui/TabularUi.ui:90
 msgid "Middle"
 msgstr "Mitte"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:211 src/frontends/qt4/ui/QBoxUi.ui:256
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:228
-#: src/frontends/qt4/ui/QTabularUi.ui:95
+#: src/frontends/qt4/ui/BoxUi.ui:211 src/frontends/qt4/ui/BoxUi.ui:256
+#: src/frontends/qt4/ui/MathMatrixUi.ui:228
+#: src/frontends/qt4/ui/TabularUi.ui:95
 msgid "Bottom"
 msgstr "Unten"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:222
+#: src/frontends/qt4/ui/BoxUi.ui:222
 msgid "&Box:"
 msgstr "Bo&x:"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:232
+#: src/frontends/qt4/ui/BoxUi.ui:232
 msgid "Co&ntent:"
 msgstr "I&nhalt:"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
+#: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Vertical alignment of the content inside the box"
 msgstr "Vertikale Ausrichtung des Inhalts innerhalb der Box"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:272
+#: src/frontends/qt4/ui/BoxUi.ui:272
 msgid "Vertical"
 msgstr "Vertikal"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:283
-#: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
-#: src/frontends/qt4/ui/QGraphicsUi.ui:673
-#: src/frontends/qt4/ui/QParagraphUi.ui:50 src/frontends/qt4/ui/QPrefsUi.ui:50
-#: src/frontends/qt4/ui/QWrapUi.ui:164
+#: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
+#: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
+#: src/frontends/qt4/ui/GraphicsUi.ui:673
+#: src/frontends/qt4/ui/ParagraphUi.ui:50 src/frontends/qt4/ui/PrefsUi.ui:50
+#: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
 msgstr "&Zurücksetzen"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:380
-#: src/frontends/qt4/ui/QDocumentUi.ui:145
-#: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:723
-#: src/frontends/qt4/ui/QParagraphUi.ui:89 src/frontends/qt4/ui/QPrefsUi.ui:86
-#: src/frontends/qt4/ui/QRefUi.ui:90 src/frontends/qt4/ui/QSendtoUi.ui:88
-#: src/frontends/qt4/ui/QVSpaceUi.ui:158 src/frontends/qt4/ui/QWrapUi.ui:206
+#: src/frontends/qt4/ui/BoxUi.ui:338 src/frontends/qt4/ui/CharacterUi.ui:380
+#: src/frontends/qt4/ui/DocumentUi.ui:145
+#: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
+#: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
+#: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
+#: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
 msgid "&Apply"
 msgstr "&Übernehmen"
 
-#: src/frontends/qt4/ui/QBranchUi.ui:59
+#: src/frontends/qt4/ui/BranchUi.ui:59
 msgid "&Available branches:"
 msgstr "&Verfügbare Zweige:"
 
-#: src/frontends/qt4/ui/QBranchUi.ui:69
+#: src/frontends/qt4/ui/BranchUi.ui:69
 msgid "Select your branch"
 msgstr "Wählen Sie Ihren Zweig aus"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:31
+#: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
 msgstr "Änderung:"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:49
+#: src/frontends/qt4/ui/ChangesUi.ui:49
 msgid "Go to next change"
 msgstr "Gehe zur nächsten Änderung"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:52
+#: src/frontends/qt4/ui/ChangesUi.ui:52
 msgid "&Next change"
 msgstr "&Nächste Änderung"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:95
+#: src/frontends/qt4/ui/ChangesUi.ui:95
 msgid "Accept this change"
 msgstr "Diese Änderung akzeptieren"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:98
+#: src/frontends/qt4/ui/ChangesUi.ui:98
 msgid "&Accept"
 msgstr "&Akzeptieren"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:108
+#: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Reject this change"
 msgstr "Diese Änderung ablehnen"
 
-#: src/frontends/qt4/ui/QChangesUi.ui:111
+#: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Reject"
 msgstr "&Ablehnen"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:44
-#: src/frontends/qt4/ui/QCharacterUi.ui:132
+#: src/frontends/qt4/ui/CharacterUi.ui:44
+#: src/frontends/qt4/ui/CharacterUi.ui:132
 msgid "Font family"
 msgstr "Schriftfamilie"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:47
+#: src/frontends/qt4/ui/CharacterUi.ui:47
 msgid "&Family:"
 msgstr "&Familie:"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:65
-#: src/frontends/qt4/ui/QCharacterUi.ui:75
+#: src/frontends/qt4/ui/CharacterUi.ui:65
+#: src/frontends/qt4/ui/CharacterUi.ui:75
 msgid "Font shape"
 msgstr "Schriftform"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:78
+#: src/frontends/qt4/ui/CharacterUi.ui:78
 msgid "S&hape:"
 msgstr "F&orm:"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:96
-#: src/frontends/qt4/ui/QCharacterUi.ui:173
+#: src/frontends/qt4/ui/CharacterUi.ui:96
+#: src/frontends/qt4/ui/CharacterUi.ui:173
 msgid "Font series"
 msgstr "Schriftserie"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:114
-#: src/frontends/qt4/ui/QCharacterUi.ui:160 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocumentDialog.C:397
-#: src/frontends/qt4/QPrefsDialog.C:1490
+#: src/frontends/qt4/ui/CharacterUi.ui:114
+#: src/frontends/qt4/ui/CharacterUi.ui:160 lib/layouts/europecv.layout:144
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.C:467
+#: src/frontends/qt4/QPrefs.C:1569
 msgid "Language"
 msgstr "Sprache"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:150
-#: src/frontends/qt4/ui/QCharacterUi.ui:189
+#: src/frontends/qt4/ui/CharacterUi.ui:150
+#: src/frontends/qt4/ui/CharacterUi.ui:189
 msgid "Font color"
 msgstr "Schriftfarbe"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:176
+#: src/frontends/qt4/ui/CharacterUi.ui:176
 msgid "&Series:"
 msgstr "&Serie:"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:192
+#: src/frontends/qt4/ui/CharacterUi.ui:192
 msgid "&Color:"
 msgstr "F&arbe:"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:212
+#: src/frontends/qt4/ui/CharacterUi.ui:212
 msgid "Never Toggled"
 msgstr "Kein Umschalten"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:224
-#: src/frontends/qt4/ui/QCharacterUi.ui:245
+#: src/frontends/qt4/ui/CharacterUi.ui:224
+#: src/frontends/qt4/ui/CharacterUi.ui:245
 msgid "Font size"
 msgstr "Schriftgröße"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:258
-#: src/frontends/qt4/ui/QCharacterUi.ui:283
+#: src/frontends/qt4/ui/CharacterUi.ui:258
+#: src/frontends/qt4/ui/CharacterUi.ui:283
 msgid "Other font settings"
 msgstr "Andere Schrift-Einstellungen"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:261
+#: src/frontends/qt4/ui/CharacterUi.ui:261
 msgid "Always Toggled"
 msgstr "Immer Umschalten"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:273
+#: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "&Misc:"
 msgstr "&Diverses:"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:308
+#: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "toggle font on all of the above"
 msgstr "Alle obigen Eigenschaften für die Schrift umschalten"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:311
+#: src/frontends/qt4/ui/CharacterUi.ui:311
 msgid "&Toggle all"
 msgstr "Alle &umschalten"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:318
+#: src/frontends/qt4/ui/CharacterUi.ui:318
 msgid "Apply each change automatically"
 msgstr "Jede Änderung automatisch übernehmen"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:321
+#: src/frontends/qt4/ui/CharacterUi.ui:321
 msgid "Apply changes immediately"
 msgstr "Änderungen sofort übernehmen"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:390 src/frontends/qt4/ui/QERTUi.ui:110
-#: src/frontends/qt4/ui/QGraphicsUi.ui:744
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:177
-#: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:75
-#: src/frontends/qt4/ui/QTabularUi.ui:1131 src/frontends/qt4/Qt2BC.h:37
+#: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
+#: src/frontends/qt4/ui/GraphicsUi.ui:744
+#: src/frontends/qt4/ui/MathMatrixUi.ui:177 src/frontends/qt4/ui/NoteUi.ui:41
+#: src/frontends/qt4/ui/PrintUi.ui:246 src/frontends/qt4/ui/TabularUi.ui:1131
+#: src/frontends/qt4/ui/TabularCreateUi.ui:75 src/frontends/qt4/Qt2BC.h:37
 msgid "Close"
 msgstr "Schließen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:52
+#: src/frontends/qt4/ui/CitationUi.ui:52
 msgid "Move the selected citation up"
 msgstr "Ausgewähltes Zitat nach vorne verschieben"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:55 src/frontends/qt4/ui/TocUi.ui:79
 msgid "&Up"
 msgstr "Au&f"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:73
+#: src/frontends/qt4/ui/CitationUi.ui:73
 msgid "Move the selected citation down"
 msgstr "Ausgewähltes Zitat nach hinten verschieben"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:76
+#: src/frontends/qt4/ui/CitationUi.ui:76
 msgid "&Down"
 msgstr "A&b"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:99
+#: src/frontends/qt4/ui/CitationUi.ui:99
 msgid "D&elete"
 msgstr "&Löschen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:126
+#: src/frontends/qt4/ui/CitationUi.ui:126
 msgid "&Selected Citations:"
 msgstr "Ausge&wählte Zitate:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:136
+#: src/frontends/qt4/ui/CitationUi.ui:136
 msgid "A&vailable Citations:"
 msgstr "&Verfügbare Zitate:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:162
+#: src/frontends/qt4/ui/CitationUi.ui:162
 msgid "Formatting"
 msgstr "Formatierung"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:185
+#: src/frontends/qt4/ui/CitationUi.ui:185
 msgid "Natbib citation style to use"
 msgstr "Zu verwendender Natbib-Zitat-Stil"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:192
+#: src/frontends/qt4/ui/CitationUi.ui:192
 msgid "Citation st&yle:"
 msgstr "Z&itat-Stil:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:202
+#: src/frontends/qt4/ui/CitationUi.ui:202
 msgid "List all authors"
 msgstr "Alle Autoren im Zitat nennen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:205
+#: src/frontends/qt4/ui/CitationUi.ui:205
 msgid "Full aut&hor list"
 msgstr "Alle Autore&n"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:212
+#: src/frontends/qt4/ui/CitationUi.ui:212
 msgid "Force upper case in citation"
 msgstr "Großschreibung im Zitat erzwingen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:215
+#: src/frontends/qt4/ui/CitationUi.ui:215
 msgid "&Force upper case"
 msgstr "Großschreibung &erzwingen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:222
+#: src/frontends/qt4/ui/CitationUi.ui:222
 msgid "&Text after:"
 msgstr "&Text danach:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:240
+#: src/frontends/qt4/ui/CitationUi.ui:240
 msgid "Text to place after citation"
 msgstr "Nach dem Zitat einzufügender Text"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:247
+#: src/frontends/qt4/ui/CitationUi.ui:247
 msgid "Text &before:"
 msgstr "Text &davor:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:265
+#: src/frontends/qt4/ui/CitationUi.ui:265
 msgid "Text to place before citation"
 msgstr "Vor dem Zitat einzufügender Text"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:316
+#: src/frontends/qt4/ui/CitationUi.ui:316
 msgid "A&pply"
 msgstr "&Übernehmen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:335
+#: src/frontends/qt4/ui/CitationUi.ui:335
 msgid "Search Citation"
 msgstr "Zitat suchen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:358
+#: src/frontends/qt4/ui/CitationUi.ui:358
 msgid "Case Se&nsitive"
 msgstr ""
 "&Groß-/Kleinschreibung\n"
 "beachten"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:365
+#: src/frontends/qt4/ui/CitationUi.ui:365
 msgid "Regular E&xpression"
 msgstr "&Regulärer Ausdruck"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:377
+#: src/frontends/qt4/ui/CitationUi.ui:377
 msgid "<- C&lear"
 msgstr "<- &Entfernen"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:391
+#: src/frontends/qt4/ui/CitationUi.ui:391
 msgid "F&ind:"
 msgstr "&Suchen:"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:73
-msgid "&Size:"
-msgstr "&Größe:"
-
-#: src/frontends/qt4/ui/QDelimiterUi.ui:217
+#: src/frontends/qt4/ui/DelimiterUi.ui:89
 msgid "Insert the delimiters"
 msgstr "Füge die Trennzeichen ein"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:220
+#: src/frontends/qt4/ui/DelimiterUi.ui:92
 msgid "&Insert"
 msgstr "&Einfügen"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:252
+#: src/frontends/qt4/ui/DelimiterUi.ui:132
+msgid "&Size:"
+msgstr "&Größe:"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:180
 #: src/frontends/qt4/QDelimiterDialog.C:190
 msgid "TeX Code: "
 msgstr "TeX-Code: "
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:276
+#: src/frontends/qt4/ui/DelimiterUi.ui:289
 msgid "Match delimiter types"
 msgstr "Wählen Sie zusammengehörige Trennzeichen"
 
-#: src/frontends/qt4/ui/QDelimiterUi.ui:279
+#: src/frontends/qt4/ui/DelimiterUi.ui:292
 msgid "&Keep matched"
 msgstr "&Zusammenpassend"
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:58
+#: src/frontends/qt4/ui/DocumentUi.ui:58
 msgid "Reset to the default settings for the document class"
 msgstr "Setzen Sie auf die Standardeinstellungen der Dokumentklasse zurück"
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:61
+#: src/frontends/qt4/ui/DocumentUi.ui:61
 msgid "Use Class Defaults"
 msgstr "Klassen-Standards verwenden"
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:76
+#: src/frontends/qt4/ui/DocumentUi.ui:76
 msgid "Save settings as LyX's default document settings"
 msgstr "Einstellungen als Standard-Dokument-Einstellungen für LyX speichern"
 
-#: src/frontends/qt4/ui/QDocumentUi.ui:79
+#: src/frontends/qt4/ui/DocumentUi.ui:79
 msgid "Save as Document Defaults"
 msgstr "Als Dokument-Standards speichern"
 
-#: src/frontends/qt4/ui/QERTUi.ui:31
+#: src/frontends/qt4/ui/ERTUi.ui:31
 msgid "Display"
 msgstr "Anzeige"
 
-#: src/frontends/qt4/ui/QERTUi.ui:43
+#: src/frontends/qt4/ui/ERTUi.ui:43
 msgid "Show ERT inline"
 msgstr "ERT eingebettet anzeigen"
 
-#: src/frontends/qt4/ui/QERTUi.ui:46
+#: src/frontends/qt4/ui/ERTUi.ui:46
 msgid "&Inline"
 msgstr "&Eingebettet"
 
-#: src/frontends/qt4/ui/QERTUi.ui:53
+#: src/frontends/qt4/ui/ERTUi.ui:53
 msgid "Show ERT button only"
 msgstr "Nur ERT-Knopf anzeigen"
 
-#: src/frontends/qt4/ui/QERTUi.ui:56
+#: src/frontends/qt4/ui/ERTUi.ui:56
 msgid "&Collapsed"
 msgstr "&Geschlossen"
 
-#: src/frontends/qt4/ui/QERTUi.ui:63
+#: src/frontends/qt4/ui/ERTUi.ui:63
 msgid "Show ERT contents"
 msgstr "ERT-Inhalt anzeigen"
 
-#: src/frontends/qt4/ui/QERTUi.ui:66
+#: src/frontends/qt4/ui/ERTUi.ui:66
 msgid "O&pen"
 msgstr "Ge&öffnet"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:51
+#: src/frontends/qt4/ui/ExternalUi.ui:51
 msgid "File"
 msgstr "Datei"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:63
+#: src/frontends/qt4/ui/ExternalUi.ui:63
 msgid "&Draft"
 msgstr "&Entwurf"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:86
+#: src/frontends/qt4/ui/ExternalUi.ui:86
 msgid "Edit the file externally"
 msgstr "Datei mit externem Editor bearbeiten"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:89
+#: src/frontends/qt4/ui/ExternalUi.ui:89
 msgid "&Edit File..."
 msgstr "&Datei bearbeiten..."
 
-#: src/frontends/qt4/ui/QExternalUi.ui:96
-#: src/frontends/qt4/ui/QIncludeUi.ui:142
+#: src/frontends/qt4/ui/ExternalUi.ui:96 src/frontends/qt4/ui/IncludeUi.ui:142
 msgid "Select a file"
 msgstr "Wählen Sie eine Datei"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:106
-#: src/frontends/qt4/ui/QExternalUi.ui:119
+#: src/frontends/qt4/ui/ExternalUi.ui:106
+#: src/frontends/qt4/ui/ExternalUi.ui:119
 msgid "Filename"
 msgstr "Dateiname"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:109
-#: src/frontends/qt4/ui/QGraphicsUi.ui:88
-#: src/frontends/qt4/ui/QIncludeUi.ui:155 src/frontends/qt4/ui/QPrintUi.ui:296
+#: src/frontends/qt4/ui/ExternalUi.ui:109
+#: src/frontends/qt4/ui/GraphicsUi.ui:88 src/frontends/qt4/ui/IncludeUi.ui:155
+#: src/frontends/qt4/ui/PrintUi.ui:296
 msgid "&File:"
 msgstr "&Datei:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:126
+#: src/frontends/qt4/ui/ExternalUi.ui:126
 msgid "Template"
 msgstr "Vorlage"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:165
+#: src/frontends/qt4/ui/ExternalUi.ui:165
 msgid "Available templates"
 msgstr "Verfügbare Vorlagen"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:176
+#: src/frontends/qt4/ui/ExternalUi.ui:176
 msgid "LyX View"
 msgstr "LyX-Ansicht"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:188
-#: src/frontends/qt4/ui/QExternalUi.ui:261
-#: src/frontends/qt4/ui/QGraphicsUi.ui:587
-#: src/frontends/qt4/ui/QGraphicsUi.ui:600
+#: src/frontends/qt4/ui/ExternalUi.ui:188
+#: src/frontends/qt4/ui/ExternalUi.ui:261
+#: src/frontends/qt4/ui/GraphicsUi.ui:587
+#: src/frontends/qt4/ui/GraphicsUi.ui:600
 msgid "Screen display"
 msgstr "Bildschirmanzeige"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:197
-#: src/frontends/qt4/ui/QGraphicsUi.ui:609
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:66
+#: src/frontends/qt4/ui/ExternalUi.ui:197
+#: src/frontends/qt4/ui/GraphicsUi.ui:609
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:66
 msgid "Monochrome"
 msgstr "Schwarzweiß"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:202
-#: src/frontends/qt4/ui/QGraphicsUi.ui:614
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:71
+#: src/frontends/qt4/ui/ExternalUi.ui:202
+#: src/frontends/qt4/ui/GraphicsUi.ui:614
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:71
 msgid "Grayscale"
 msgstr "Graustufen"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:207
-#: src/frontends/qt4/ui/QGraphicsUi.ui:619
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
+#: src/frontends/qt4/ui/ExternalUi.ui:207
+#: src/frontends/qt4/ui/GraphicsUi.ui:619
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
 msgid "Color"
 msgstr "Farbe"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:212
+#: src/frontends/qt4/ui/ExternalUi.ui:212
 msgid "Preview"
 msgstr "Vorschau"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:239
-#: src/frontends/qt4/ui/QExternalUi.ui:274
-#: src/frontends/qt4/ui/QGraphicsUi.ui:627
-#: src/frontends/qt4/ui/QGraphicsUi.ui:651
+#: src/frontends/qt4/ui/ExternalUi.ui:239
+#: src/frontends/qt4/ui/ExternalUi.ui:274
+#: src/frontends/qt4/ui/GraphicsUi.ui:627
+#: src/frontends/qt4/ui/GraphicsUi.ui:651
 msgid "Percentage to scale by in LyX"
 msgstr "Prozentangabe für die Skalierung in LyX"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:252
+#: src/frontends/qt4/ui/ExternalUi.ui:252
 msgid "%"
 msgstr "%"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:264
-#: src/frontends/qt4/ui/QGraphicsUi.ui:590
+#: src/frontends/qt4/ui/ExternalUi.ui:264
+#: src/frontends/qt4/ui/GraphicsUi.ui:590
 msgid "&Display:"
 msgstr "&Anzeige:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:277
+#: src/frontends/qt4/ui/ExternalUi.ui:277
 msgid "Sca&le:"
 msgstr "&Größe:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:300
+#: src/frontends/qt4/ui/ExternalUi.ui:300
 msgid "Display image in LyX"
 msgstr "Bild in LyX anzeigen"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:303
+#: src/frontends/qt4/ui/ExternalUi.ui:303
 msgid "&Show in LyX"
 msgstr "In LyX &anzeigen"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:324
+#: src/frontends/qt4/ui/ExternalUi.ui:324
 msgid "Rotate"
 msgstr "Drehen"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:381
-#: src/frontends/qt4/ui/QExternalUi.ui:411
-#: src/frontends/qt4/ui/QGraphicsUi.ui:113
-#: src/frontends/qt4/ui/QGraphicsUi.ui:134
+#: src/frontends/qt4/ui/ExternalUi.ui:381
+#: src/frontends/qt4/ui/ExternalUi.ui:411
+#: src/frontends/qt4/ui/GraphicsUi.ui:113
+#: src/frontends/qt4/ui/GraphicsUi.ui:134
 msgid "Angle to rotate image by"
 msgstr "Winkel, um den das Bild gedreht werden soll"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:391
-#: src/frontends/qt4/ui/QExternalUi.ui:404
-#: src/frontends/qt4/ui/QGraphicsUi.ui:141
-#: src/frontends/qt4/ui/QGraphicsUi.ui:154
+#: src/frontends/qt4/ui/ExternalUi.ui:391
+#: src/frontends/qt4/ui/ExternalUi.ui:404
+#: src/frontends/qt4/ui/GraphicsUi.ui:141
+#: src/frontends/qt4/ui/GraphicsUi.ui:154
 msgid "The origin of the rotation"
 msgstr "Der Ausgangspunkt für die Drehung"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:394
+#: src/frontends/qt4/ui/ExternalUi.ui:394
 msgid "&Origin:"
 msgstr "&Drehpunkt:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:414
+#: src/frontends/qt4/ui/ExternalUi.ui:414
 msgid "A&ngle:"
 msgstr "&Winkel:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:427
+#: src/frontends/qt4/ui/ExternalUi.ui:427
 msgid "Scale"
 msgstr "Größe"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:448
-#: src/frontends/qt4/ui/QGraphicsUi.ui:230
+#: src/frontends/qt4/ui/ExternalUi.ui:448
+#: src/frontends/qt4/ui/GraphicsUi.ui:230
 msgid "Height of image in output"
 msgstr "Höhe des Bilds bei der Ausgabe"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:458
+#: src/frontends/qt4/ui/ExternalUi.ui:458
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Seitenverhältnis bzgl. größerer Abmessung beibehalten"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:461
-#: src/frontends/qt4/ui/QGraphicsUi.ui:276
+#: src/frontends/qt4/ui/ExternalUi.ui:461
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 msgid "&Maintain aspect ratio"
 msgstr "Seiten&verhältnis beibehalten"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:497
-#: src/frontends/qt4/ui/QGraphicsUi.ui:196
+#: src/frontends/qt4/ui/ExternalUi.ui:497
+#: src/frontends/qt4/ui/GraphicsUi.ui:196
 msgid "Width of image in output"
 msgstr "Breite des Bilds bei der Ausgabe"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:518
+#: src/frontends/qt4/ui/ExternalUi.ui:518
 msgid "Crop"
 msgstr "Zuschneiden"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:530
-#: src/frontends/qt4/ui/QGraphicsUi.ui:440
+#: src/frontends/qt4/ui/ExternalUi.ui:530
+#: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "Get bounding box from the (EPS) file"
 msgstr "Begrenzungsbox aus der (EPS-)Datei ermitteln"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:533
-#: src/frontends/qt4/ui/QGraphicsUi.ui:443
+#: src/frontends/qt4/ui/ExternalUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:443
 msgid "&Get from File"
 msgstr "L&ese aus Datei"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:553
-#: src/frontends/qt4/ui/QGraphicsUi.ui:312
+#: src/frontends/qt4/ui/ExternalUi.ui:553
+#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to bounding box values"
 msgstr "Auf die Werte der Begrenzungsbox zuschneiden"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:556
-#: src/frontends/qt4/ui/QGraphicsUi.ui:315
+#: src/frontends/qt4/ui/ExternalUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:315
 msgid "Clip to &bounding box"
 msgstr "Auf &Begrenzungsbox zuschneiden"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:573
-#: src/frontends/qt4/ui/QGraphicsUi.ui:348
+#: src/frontends/qt4/ui/ExternalUi.ui:573
+#: src/frontends/qt4/ui/GraphicsUi.ui:348
 msgid "&Left bottom:"
 msgstr "&Links unten:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:586
-#: src/frontends/qt4/ui/QGraphicsUi.ui:386
+#: src/frontends/qt4/ui/ExternalUi.ui:586
+#: src/frontends/qt4/ui/GraphicsUi.ui:386
 msgid "Right &top:"
 msgstr "&Rechts oben:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:612
+#: src/frontends/qt4/ui/ExternalUi.ui:612
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:619
+#: src/frontends/qt4/ui/ExternalUi.ui:619
 msgid "y"
 msgstr "y"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:627
+#: src/frontends/qt4/ui/ExternalUi.ui:627
 msgid "Options"
 msgstr "Optionen"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:655
+#: src/frontends/qt4/ui/ExternalUi.ui:655
 msgid "O&ption:"
 msgstr "&Option:"
 
-#: src/frontends/qt4/ui/QExternalUi.ui:668
+#: src/frontends/qt4/ui/ExternalUi.ui:668
 msgid "Forma&t:"
 msgstr "&Format:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:43
+#: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
 msgstr "&Grafik"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:55
+#: src/frontends/qt4/ui/GraphicsUi.ui:55
 msgid "&Edit"
 msgstr "&Bearbeiten"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:68
+#: src/frontends/qt4/ui/GraphicsUi.ui:68
 msgid "Select an image file"
 msgstr "Wählen Sie eine Bilddatei"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:85
+#: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
 msgid "File name of image"
 msgstr "Dateiname des Bilds"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:98
+#: src/frontends/qt4/ui/GraphicsUi.ui:98
 msgid "Rotate Graphics"
 msgstr "Grafik drehen"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:116
+#: src/frontends/qt4/ui/GraphicsUi.ui:116
 msgid "A&ngle (Degrees):"
 msgstr "&Winkel (Grad):"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:144
+#: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Or&igin:"
 msgstr "Dreh&punkt:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:164
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Output Size"
 msgstr "Ausgabegröße"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:240
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 "Legt die Höhe der Grafik fest. Falls nicht ausgewählt, wird die Höhe "
 "automatisch bestimmt."
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:243
 msgid "Set &height:"
 msgstr "&Höhe festlegen:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "&Scale Graphics (%):"
 msgstr "Grafik &skalieren (%):"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:260
+#: src/frontends/qt4/ui/GraphicsUi.ui:260
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 "Legt die Breite der Grafik fest. Falls nicht ausgewählt, wird die Breite "
 "automatisch bestimmt."
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:263
 msgid "Set &width:"
 msgstr "&Breite festlegen:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:273
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 "Skalieren Sie das Bild auf die maximale Größe, die sowohl Höhe und Breite "
 "nicht überschreitet"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:287
+#: src/frontends/qt4/ui/GraphicsUi.ui:287
 msgid "&Clipping"
 msgstr "&Ausschnitt"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:396
-#: src/frontends/qt4/ui/QGraphicsUi.ui:403
+#: src/frontends/qt4/ui/GraphicsUi.ui:396
+#: src/frontends/qt4/ui/GraphicsUi.ui:403
 msgid "y:"
 msgstr "y:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:410
-#: src/frontends/qt4/ui/QGraphicsUi.ui:417
+#: src/frontends/qt4/ui/GraphicsUi.ui:410
+#: src/frontends/qt4/ui/GraphicsUi.ui:417
 msgid "x:"
 msgstr "x:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:451
+#: src/frontends/qt4/ui/GraphicsUi.ui:451
 msgid "LaTe&X and LyX options"
 msgstr "LaTeX- und LyX-&Optionen"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:463
-#: src/frontends/qt4/ui/QGraphicsUi.ui:484
+#: src/frontends/qt4/ui/GraphicsUi.ui:463
+#: src/frontends/qt4/ui/GraphicsUi.ui:484
 msgid "Additional LaTeX options"
 msgstr "Zusätzliche LaTeX-Optionen"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:466
+#: src/frontends/qt4/ui/GraphicsUi.ui:466
 msgid "LaTeX &options:"
 msgstr "LaTeX-&Optionen:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:491
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Bild vor dem Exportieren nach LaTeX nicht dekomprimieren"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:494
+#: src/frontends/qt4/ui/GraphicsUi.ui:494
 msgid "Don't un&zip on export"
 msgstr "&Beim Exportieren nicht entpacken"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:501
+#: src/frontends/qt4/ui/GraphicsUi.ui:501
 msgid "Draft mode"
 msgstr "Entwurfsmodus"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:504
+#: src/frontends/qt4/ui/GraphicsUi.ui:504
 msgid "&Draft mode"
 msgstr "&Entwurfsmodus"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:514
 msgid "S&ubfigure"
 msgstr "&Teilabbildung"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:535
-#: src/frontends/qt4/ui/QGraphicsUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:535
+#: src/frontends/qt4/ui/GraphicsUi.ui:556
 msgid "The caption for the sub-figure"
 msgstr "Die Legende der Teilabbildung"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:538
+#: src/frontends/qt4/ui/GraphicsUi.ui:538
 msgid "Ca&ption:"
 msgstr "&Legende:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:569
+#: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sho&w in LyX"
 msgstr "In Ly&X anzeigen"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:630
+#: src/frontends/qt4/ui/GraphicsUi.ui:630
 msgid "Sca&le on Screen (%):"
 msgstr "&Skalierung auf Bildschirm (%):"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:36
+#: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Show LaTeX preview"
 msgstr "LaTeX-Vorschau anzeigen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:39
+#: src/frontends/qt4/ui/IncludeUi.ui:39
 msgid "&Show preview"
 msgstr "&Vorschau anzeigen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:54
+#: src/frontends/qt4/ui/IncludeUi.ui:54
 msgid "Underline spaces in generated output"
 msgstr "Leerzeichen in der erzeugten Ausgabe unterstreichen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:57
+#: src/frontends/qt4/ui/IncludeUi.ui:57
 msgid "&Mark spaces in output"
 msgstr "&Leerzeichen bei der Ausgabe kennzeichnen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:80
+#: src/frontends/qt4/ui/IncludeUi.ui:80
 msgid "File name to include"
 msgstr "Name der einzubindenden Datei"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:87
+#: src/frontends/qt4/ui/IncludeUi.ui:87
 msgid "Load the file"
 msgstr "Lade die Datei"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:90
+#: src/frontends/qt4/ui/IncludeUi.ui:90
 msgid "&Load"
 msgstr "&Öffnen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:114 src/insets/insetinclude.C:312
+#: src/frontends/qt4/ui/IncludeUi.ui:114 src/insets/InsetInclude.cpp:312
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:119 src/insets/insetinclude.C:303
+#: src/frontends/qt4/ui/IncludeUi.ui:119 src/insets/InsetInclude.cpp:303
 msgid "Input"
 msgstr "Input"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:124 lib/layouts/manpage.layout:122
+#: src/frontends/qt4/ui/IncludeUi.ui:124 lib/layouts/manpage.layout:122
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:132
+#: src/frontends/qt4/ui/IncludeUi.ui:132
 msgid "&Include Type:"
 msgstr "&Art der Einbindung:"
 
-#: src/frontends/qt4/ui/QLogUi.ui:58
+#: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
 msgstr "Anzeige aktualisieren"
 
-#: src/frontends/qt4/ui/QLogUi.ui:61 src/frontends/qt4/ui/QRefUi.ui:235
-#: src/frontends/qt4/ui/QViewSourceUi.ui:56
+#: src/frontends/qt4/ui/LogUi.ui:61 src/frontends/qt4/ui/RefUi.ui:235
+#: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Aktualisieren"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:39
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:52
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:84
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:126
+#: src/frontends/qt4/ui/MathMatrixUi.ui:39
+#: src/frontends/qt4/ui/MathMatrixUi.ui:52
+#: src/frontends/qt4/ui/TabularCreateUi.ui:84
+#: src/frontends/qt4/ui/TabularCreateUi.ui:126
 msgid "Number of rows"
 msgstr "Anzahl der Zeilen"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:42
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:87
+#: src/frontends/qt4/ui/MathMatrixUi.ui:42
+#: src/frontends/qt4/ui/TabularCreateUi.ui:87
 msgid "&Rows:"
 msgstr "&Zeilen:"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:68
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:81
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:113
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:142
+#: src/frontends/qt4/ui/MathMatrixUi.ui:68
+#: src/frontends/qt4/ui/MathMatrixUi.ui:81
+#: src/frontends/qt4/ui/TabularCreateUi.ui:113
+#: src/frontends/qt4/ui/TabularCreateUi.ui:142
 msgid "Number of columns"
 msgstr "Anzahl der Spalten"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:71
-#: src/frontends/qt4/ui/QTabularCreateUi.ui:116
+#: src/frontends/qt4/ui/MathMatrixUi.ui:71
+#: src/frontends/qt4/ui/TabularCreateUi.ui:116
 msgid "&Columns:"
 msgstr "&Spalten:"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:139
+#: src/frontends/qt4/ui/MathMatrixUi.ui:139
 msgid "Resize this to the correct table dimensions"
 msgstr "Verändern Sie die Größe hinsichtlich der korrekten Tabellenmaße"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:214
-#: src/frontends/qt4/ui/QWrapUi.ui:49
+#: src/frontends/qt4/ui/MathMatrixUi.ui:214 src/frontends/qt4/ui/WrapUi.ui:49
 msgid "Vertical alignment"
 msgstr "Vert. Ausrichtung"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:236
+#: src/frontends/qt4/ui/MathMatrixUi.ui:236
 msgid "&Vertical:"
 msgstr "&Vertikal:"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:257
+#: src/frontends/qt4/ui/MathMatrixUi.ui:257
 msgid "Horizontal alignment per column (l,c,r)"
 msgstr "Horizontale Ausrichtung pro Spalte (l,c,r)"
 
-#: src/frontends/qt4/ui/QMathMatrixUi.ui:264
+#: src/frontends/qt4/ui/MathMatrixUi.ui:264
 msgid "&Horizontal:"
 msgstr "&Horizontal:"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:31
+#: src/frontends/qt4/ui/NomenclUi.ui:31
 msgid "Sort &as:"
 msgstr "&Einsortieren als:"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:41
+#: src/frontends/qt4/ui/NomenclUi.ui:41
 msgid "&Description:"
 msgstr "&Beschreibung:"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:51
+#: src/frontends/qt4/ui/NomenclUi.ui:51
 msgid "&Symbol:"
 msgstr "&Symbol:"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:51
+#: src/frontends/qt4/ui/NoteUi.ui:51
 msgid "Type"
 msgstr "Art"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:63
+#: src/frontends/qt4/ui/NoteUi.ui:63
 msgid "LyX internal only"
 msgstr "Nur LyX-intern"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:66
+#: src/frontends/qt4/ui/NoteUi.ui:66
 msgid "LyX &Note"
 msgstr "&LyX-Notiz"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:73
+#: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "Export to LaTeX/Docbook but don't print"
 msgstr "Nach LaTeX/Docbook exportieren, aber nicht drucken"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:76
+#: src/frontends/qt4/ui/NoteUi.ui:76
 msgid "&Comment"
 msgstr "&Kommentar"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:83
+#: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "Print as grey text"
 msgstr "Als grauen Text drucken"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:86
+#: src/frontends/qt4/ui/NoteUi.ui:86
 msgid "&Greyed out"
 msgstr "&Grauschrift"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:93
+#: src/frontends/qt4/ui/NoteUi.ui:93
 msgid "Framed in box"
 msgstr "Eingerahmt in Box"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:96
+#: src/frontends/qt4/ui/NoteUi.ui:96
 msgid "&Framed"
 msgstr "&Eingerahmt"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:103
+#: src/frontends/qt4/ui/NoteUi.ui:103
 msgid "Box with shaded background"
 msgstr "Box mit schattiertem Hintergrund"
 
-#: src/frontends/qt4/ui/QNoteUi.ui:106
+#: src/frontends/qt4/ui/NoteUi.ui:106
 msgid "&Shaded"
 msgstr "&Schattiert"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:114
+#: src/frontends/qt4/ui/ParagraphUi.ui:114
 msgid "Label Width"
 msgstr "Markenbreite"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:126
-#: src/frontends/qt4/ui/QParagraphUi.ui:133
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
 msgid "This text defines the width of the paragraph label"
 msgstr "Dieser Text definiert die Breite der Absatzmarke"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:136
+#: src/frontends/qt4/ui/ParagraphUi.ui:136
 msgid "&Longest label"
 msgstr "Längste &Marke"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:157
+#: src/frontends/qt4/ui/ParagraphUi.ui:157
 msgid "Indent &Paragraph"
 msgstr "Absatz &einrücken"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:203
+#: src/frontends/qt4/ui/ParagraphUi.ui:203
 msgid "L&ine spacing:"
 msgstr "Zeilen&abstand:"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:219
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1737
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/frontends/qt4/QDocument.C:123
+#: src/text.C:1737
 msgid "Single"
 msgstr "Einfach"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:224
+#: src/frontends/qt4/ui/ParagraphUi.ui:224
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:229
-#: src/frontends/qt4/QDocumentDialog.C:121 src/text.C:1743
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/frontends/qt4/QDocument.C:127
+#: src/text.C:1743
 msgid "Double"
 msgstr "Doppelt"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:234
-#: src/frontends/qt4/ui/QTabularUi.ui:712
-#: src/frontends/qt4/ui/QTabularUi.ui:731
-#: src/frontends/qt4/ui/QTabularUi.ui:779
-#: src/frontends/qt4/ui/QVSpaceUi.ui:110
-#: src/frontends/qt4/QDocumentDialog.C:123
-#: src/frontends/qt4/QDocumentDialog.C:204
+#: src/frontends/qt4/ui/ParagraphUi.ui:234
+#: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
+#: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
+#: src/frontends/qt4/QDocument.C:129 src/frontends/qt4/QDocument.C:230
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:271
+#: src/frontends/qt4/ui/ParagraphUi.ui:271
 msgid "&Default"
 msgstr "&Standard"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:278
+#: src/frontends/qt4/ui/ParagraphUi.ui:278
 msgid "&Justified"
 msgstr "&Blocksatz"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:285
+#: src/frontends/qt4/ui/ParagraphUi.ui:285
 msgid "&Left"
 msgstr "&Links"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:292
+#: src/frontends/qt4/ui/ParagraphUi.ui:292
 msgid "&Right"
 msgstr "&Rechts"
 
-#: src/frontends/qt4/ui/QParagraphUi.ui:299
+#: src/frontends/qt4/ui/ParagraphUi.ui:299
 msgid "&Center"
 msgstr "Zen&triert"
 
-#: src/frontends/qt4/ui/QPrefColorsUi.ui:25
+#: src/frontends/qt4/ui/PrefColorsUi.ui:25
 msgid "&Colors"
 msgstr "&Farben"
 
-#: src/frontends/qt4/ui/QPrefColorsUi.ui:54
+#: src/frontends/qt4/ui/PrefColorsUi.ui:54
 msgid "&Alter..."
 msgstr "&Ändern..."
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:25
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 msgid "Converter File Cache"
 msgstr "Konverter-Datei-Cache"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:45
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
 msgid "&Enabled"
 msgstr "&Aktiv"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:65
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
 msgid "&Maximum Age (in days):"
 msgstr "&Maximales Alter (in Tagen):"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:83
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
 msgid "Converter Defi&nitions"
 msgstr "Konverter-&Definitionen"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:115
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 msgid "A&dd"
 msgstr "&Hinzufügen"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:61
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 msgid "&Modify"
 msgstr "&Ändern"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:137
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
 msgid "&From format:"
 msgstr "&Von Format:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:207
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
 msgid "&To format:"
 msgstr "&Nach Format:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:241
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
 msgid "E&xtra flag:"
 msgstr "&Zusatz-Flag:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:264
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
 msgid "C&onverter:"
 msgstr "&Konverter:"
 
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:25
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
 msgid "C&opiers"
 msgstr "K&opierer"
 
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:100
-#: src/frontends/qt4/ui/QRefUi.ui:132
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
 msgid "&Format:"
 msgstr "&Format:"
 
-#: src/frontends/qt4/ui/QPrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
 msgid "&Copier:"
 msgstr "&Kopierer:"
 
-#: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:44
+#: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
@@ -1716,283 +1701,276 @@ msgstr ""
 "Pfade in LaTex-Dateien ausgeben soll. Dies ist nützlich, wenn Sie das native "
 "Windows MikTeX anstelle von Cygwin teTeX verwenden."
 
-#: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:47
+#: src/frontends/qt4/ui/PrefCygwinPathUi.ui:47
 msgid "&Use Windows-style paths in LaTeX files"
 msgstr "Verwende &Windows-konforme Pfade in LaTeX-Dateien"
 
-#: src/frontends/qt4/ui/QPrefDateUi.ui:36
+#: src/frontends/qt4/ui/PrefDateUi.ui:36
 msgid "&Date format:"
 msgstr "&Datumsformat:"
 
-#: src/frontends/qt4/ui/QPrefDateUi.ui:46
+#: src/frontends/qt4/ui/PrefDateUi.ui:46
 msgid "Date format for strftime output"
 msgstr "Datumsformat für die 'strftime'-Ausgabe"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:36
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:36
 msgid "Display &Graphics:"
 msgstr "&Grafik anzeigen:"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "Aus"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:52
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:52
 msgid "No math"
 msgstr "Kein Mathe"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "An"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:81
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:81
 msgid "Do not display"
 msgstr "Nicht anzeigen"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:89
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:89
 msgid "Instant &Preview:"
 msgstr "Sofortige &Vorschau:"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:25
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:25
 msgid "&File formats"
 msgstr "Datei&formate"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:100
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:100
 msgid "&Document format"
 msgstr "&Dokumentenformat"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:107
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:107
 msgid "Vector graphi&cs format"
 msgstr "&Vektorgrafik-Format"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:132
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "F&ormat:"
 msgstr "&Format:"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
 msgid "S&hortcut:"
 msgstr "&Kürzel:"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:152
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "&Viewer:"
 msgstr "&Betrachter:"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:191
 msgid "&GUI name:"
 msgstr "&GUI-Name:"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:201
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:201
 msgid "E&xtension:"
 msgstr "Datei&endung:"
 
-#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:211
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:211
 msgid "Ed&itor:"
 msgstr "&Bearbeiter:"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:36
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:36
 msgid "&E-mail:"
 msgstr "&EMail:"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:46
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:46
 msgid "Your name"
 msgstr "Ihr Name"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:53
-#: src/frontends/qt4/ui/QRefUi.ui:119 src/frontends/qt4/ui/QURLUi.ui:47
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:53 src/frontends/qt4/ui/RefUi.ui:119
+#: src/frontends/qt4/ui/URLUi.ui:47
 msgid "&Name:"
 msgstr "&Name:"
 
-#: src/frontends/qt4/ui/QPrefIdentityUi.ui:63
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:63
 msgid "Your E-mail address"
 msgstr "Ihre EMail-Adresse"
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:58
-#: src/frontends/qt4/ui/QPrefUi.ui:114
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:58
+#: src/frontends/qt4/ui/PrefUi.ui:114
 msgid "Bro&wse..."
 msgstr "&Durchsuchen..."
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:71
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:71
 msgid "S&econd:"
 msgstr "&Zweite:"
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:84
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:84
 msgid "&First:"
 msgstr "&Erste:"
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:97
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:82
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:97
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:82
 msgid "Br&owse..."
 msgstr "&Durchsuchen..."
 
-#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:107
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:107
 msgid "Use &keyboard map"
 msgstr "&Tastaturtabelle verwenden"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:28
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:28
 msgid "Command s&tart:"
 msgstr "Befehl &Anfang:"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:50
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:50
 msgid "&Default language:"
 msgstr "Standard-&Sprache:"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:60
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:60
 msgid "Command e&nd:"
 msgstr "Befehl &Ende:"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:70
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:70
 msgid "Language pac&kage:"
 msgstr "Sprach-&Paket:"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:80
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:80
 msgid "Auto &begin"
 msgstr "A&uto Beginn"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:87
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Use b&abel"
 msgstr "&Babel verwenden"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:110
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:110
 msgid "&Global"
 msgstr "&Global"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:117
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:117
 msgid "&Right-to-left language support"
 msgstr "&Rechts-nach-links Sprachunterstützung"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:124
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:124
 msgid "Auto &end"
 msgstr "Au&to Ende"
 
-#: src/frontends/qt4/ui/QPrefLanguageUi.ui:131
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:131
 msgid "Mark &foreign languages"
 msgstr "&Fremdsprachen markieren"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:28
+#: src/frontends/qt4/ui/PrefLatexUi.ui:28
 msgid "Set class options to default on class change"
 msgstr ""
 "Klassenoptionen nach einem Wechsel der Klasse auf die Standardwerte "
 "zurücksetzen"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:31
+#: src/frontends/qt4/ui/PrefLatexUi.ui:31
 msgid "&Reset class options when document class changes"
 msgstr "&Klassenoptionen beim Wechsel der Dokumentklasse zurücksetzen"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:54
+#: src/frontends/qt4/ui/PrefLatexUi.ui:54
 msgid "Default paper si&ze:"
 msgstr "Standard-&Papiergröße:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:64
+#: src/frontends/qt4/ui/PrefLatexUi.ui:64
 msgid "Te&X encoding:"
 msgstr "&TeX-Kodierung:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:205
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.C:231
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:206
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.C:232
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:207
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.C:233
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:208
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.C:234
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:209
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.C:235
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:210
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.C:236
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.C:239
 msgid "B5"
 msgstr "B5"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:137
+#: src/frontends/qt4/ui/PrefLatexUi.ui:137
 msgid "External Applications"
 msgstr "Externe Anwendungen"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:149
+#: src/frontends/qt4/ui/PrefLatexUi.ui:149
 msgid "CheckTeX start options and flags"
 msgstr "CheckTeX-Startoptionen und -Flags"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:156
+#: src/frontends/qt4/ui/PrefLatexUi.ui:156
 msgid "Chec&kTeX command:"
 msgstr "&CheckTeX-Befehl:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:166
+#: src/frontends/qt4/ui/PrefLatexUi.ui:166
 msgid "BibTeX command and options"
 msgstr "BibTeX-Befehl und -Optionen"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:173
+#: src/frontends/qt4/ui/PrefLatexUi.ui:173
 msgid "&BibTeX command:"
 msgstr "&BibTeX-Befehl:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:183
+#: src/frontends/qt4/ui/PrefLatexUi.ui:183
 msgid "Index command and options (makeindex, xindy)"
 msgstr "Befehl und Optionen für Stichwortverzeichnis (makeindex, xindy)"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:190
+#: src/frontends/qt4/ui/PrefLatexUi.ui:190
 msgid "Index command:"
 msgstr "Befehl für Stichwortverzeichnis:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:200
+#: src/frontends/qt4/ui/PrefLatexUi.ui:200
 msgid "DVI viewer paper size options:"
 msgstr "DVI-Betrachter Papiergrößen-Optionen:"
 
-#: src/frontends/qt4/ui/QPrefLatexUi.ui:210
+#: src/frontends/qt4/ui/PrefLatexUi.ui:210
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Optionales Papiergrößen-Flag (-paper) für einige DVI-Betrachter"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:28
+#: src/frontends/qt4/ui/PrefPathsUi.ui:28
 msgid "Ly&XServer pipe:"
 msgstr "Ly&X-Server-Weiterleitung:"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:38
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:51
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:61
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:77
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:123
+#: src/frontends/qt4/ui/PrefPathsUi.ui:38
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51
+#: src/frontends/qt4/ui/PrefPathsUi.ui:61
+#: src/frontends/qt4/ui/PrefPathsUi.ui:77
+#: src/frontends/qt4/ui/PrefPathsUi.ui:123
 msgid "Browse..."
 msgstr "Durchsuchen..."
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:87
+#: src/frontends/qt4/ui/PrefPathsUi.ui:87
 msgid "&PATH prefix:"
 msgstr "&PATH-Präfix:"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:97
+#: src/frontends/qt4/ui/PrefPathsUi.ui:97
 msgid "&Temporary directory:"
 msgstr "&Temporäres Verzeichnis:"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:107
+#: src/frontends/qt4/ui/PrefPathsUi.ui:107
 msgid "&Backup directory:"
 msgstr "&Sicherungsverzeichnis:"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:133
+#: src/frontends/qt4/ui/PrefPathsUi.ui:133
 msgid "&Working directory:"
 msgstr "&Arbeitsverzeichnis:"
 
-#: src/frontends/qt4/ui/QPrefPathsUi.ui:143
+#: src/frontends/qt4/ui/PrefPathsUi.ui:143
 msgid "&Document templates:"
 msgstr "&Dokumentvorlagen:"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:36
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:36
 msgid "&roff command:"
 msgstr "&roff-Befehl:"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2097
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/lyxrc.C:2097
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -2003,876 +1981,871 @@ msgstr ""
 "Zeilenlänge größer 0 ist, sind Absätze durch eine Leerzeile voneinander "
 "getrennt."
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:82
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:82
 msgid "Output &line length:"
 msgstr "Ausgabe &Zeilenlänge:"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:92
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:92
 msgid "External app for formating tables in plain text output"
 msgstr ""
 "Externe Anwendung für die Formatierung von Tabellen bei der Ausgabe als "
 "einfacher Text"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:47
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:47
 msgid "Name of the default printer"
 msgstr "Name des Standard-Druckers"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:54
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:54
 msgid "Use printer name explicitely"
 msgstr "Druckernamen explizit verwenden"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:57
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:57
 msgid "Adapt outp&ut"
 msgstr "&Ausgabe anpassen"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:64
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:64
 msgid "Command Options"
 msgstr "Befehlsoptionen"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:76
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:76
 msgid "Re&verse:"
 msgstr "&Umgekehrt:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:92
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:92
 msgid "To p&rinter:"
 msgstr "Zum &Drucker:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:102
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:102
 msgid "Paper si&ze:"
 msgstr "&Papiergröße:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:118
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:118
 msgid "To &file:"
 msgstr "In &Datei:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:137
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:137
 msgid "Spool &command:"
 msgstr "Spool-&Befehl:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:153
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "&Odd pages:"
 msgstr "&Ungerade Seiten:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:166
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Paper t&ype:"
 msgstr "Papier&art:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:179
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:179
 msgid "E&xtra options:"
 msgstr "&Zusatz-Optionen:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:189
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:189
 msgid "Spool pref&ix:"
 msgstr "&Spool-Präfix:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:202
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:202
 msgid "Co&llated:"
 msgstr "&Wiederholt:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:215
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:215
 msgid "&Even pages:"
 msgstr "&Gerade Seiten:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:225
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:225
 msgid "File ex&tension:"
 msgstr "Datei&endung:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:238
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:238
 msgid "Lan&dscape:"
 msgstr "&Querformat:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:251
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:251
 msgid "Co&pies:"
 msgstr "&Kopien:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:261
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:261
 msgid "Pa&ge range:"
 msgstr "&Seitenbereich:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:271
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:271
 msgid "Specify the command option names for your printer command"
 msgstr "Geben Sie die Befehlsoptions-Namen für ihren Druckbefehl an"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:297
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:297
 msgid "Printer co&mmand:"
 msgstr "&Druckerbefehl:"
 
-#: src/frontends/qt4/ui/QPrefPrinterUi.ui:307
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:307
 msgid "Printer &name:"
 msgstr "&Druckername:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:69
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sa&ns Serif:"
 msgstr "&Serifenfrei:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:104
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:104
 msgid "T&ypewriter:"
 msgstr "&Schreibmaschine:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:163
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:163
 msgid "Screen &DPI:"
 msgstr "Bildschirm &DPI:"
 
 # , c-format
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:180
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:180
 msgid "&Zoom %:"
 msgstr "&Vergrößerung %:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:217
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:217
 msgid "Font Sizes"
 msgstr "Schriftgrößen"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:256
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:256
 msgid "Larger:"
 msgstr "Größer:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:266
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:266
 msgid "Largest:"
 msgstr "Noch größer:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:279
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:279
 msgid "Huge:"
 msgstr "Riesig:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:289
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:289
 msgid "Hugest:"
 msgstr "Gigantisch:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:299
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:299
 msgid "Smallest:"
 msgstr "Sehr klein:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:309
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:309
 msgid "Smaller:"
 msgstr "Kleiner:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:319
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:319
 msgid "Small:"
 msgstr "Klein:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:329
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:329
 msgid "Normal:"
 msgstr "Normal:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:339
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:339
 msgid "Tiny:"
 msgstr "Winzig:"
 
-#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:349
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:349
 msgid "Large:"
 msgstr "Groß:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:36
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:36
 msgid "Spellchec&ker executable:"
 msgstr "&Rechtschreibprogramm:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:65
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:65
 msgid "Override the language used for the spellchecker"
 msgstr ""
 "Geben Sie die Sprache vor, die für die Rechtschreibprüfung verwendet werden "
 "soll"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:72
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:72
 msgid "Al&ternative language:"
 msgstr "&Alternative Sprache:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:89
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:89
 msgid "Escape cha&racters:"
 msgstr "'&Escape'-Zeichen:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:115
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:115
 msgid "Specify a personal dictionary file other than the default"
 msgstr "Geben Sie eine alternative, persönliche Wörterbuchdatei an."
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:122
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:122
 msgid "Personal &dictionary:"
 msgstr "Persönliches &Wörterbuch:"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:153
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:153
 msgid "Accept words such as \"diskdrive\""
 msgstr "Akzeptieren Sie Wörter wie \"Verzeichnisname\""
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:156
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:156
 msgid "Accept compound &words"
 msgstr "&Zusammengesetzte Wörter akzeptieren"
 
-#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:163
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:163
 msgid "Use input encod&ing"
 msgstr "&Eingabekodierung verwenden"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:33
+#: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "Scrolling"
 msgstr "Bilddurchlauf"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:48
+#: src/frontends/qt4/ui/PrefUi.ui:48
 msgid "Cursor follows &scrollbar"
 msgstr "Cursor folgt &Rollbalken"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:84
+#: src/frontends/qt4/ui/PrefUi.ui:84
 msgid "B&rowse..."
 msgstr "&Durchsuchen..."
 
-#: src/frontends/qt4/ui/QPrefUi.ui:91
+#: src/frontends/qt4/ui/PrefUi.ui:91
 msgid "&User interface file:"
 msgstr "&GUI-Datei:"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:101
+#: src/frontends/qt4/ui/PrefUi.ui:101
 msgid "&Bind file:"
 msgstr "&Tastaturkürzel-Datei:"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:132
+#: src/frontends/qt4/ui/PrefUi.ui:132
 msgid "Session"
 msgstr "Sitzung"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:144
+#: src/frontends/qt4/ui/PrefUi.ui:144
 msgid "Save/restore window size, or use fixed size"
 msgstr "Fenstergröße speichern/wieder herstellen oder feste Größe verwenden"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:167
+#: src/frontends/qt4/ui/PrefUi.ui:167
 msgid "Load opened files from last session"
 msgstr "Geöffnete Dateien der letzten Sitzung laden"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:174
+#: src/frontends/qt4/ui/PrefUi.ui:174
 msgid "Restore cursor positions"
 msgstr "Cursor-Positionen wieder herstellen"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:184
+#: src/frontends/qt4/ui/PrefUi.ui:184
 msgid "Restore to cursor position when the file was last closed"
 msgstr ""
 "Stellen Sie die Position wieder her, die der Cursor beim letztmaligen "
 "Schließen der Datei hatte"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:187
+#: src/frontends/qt4/ui/PrefUi.ui:187
 msgid "Save/restore window position"
 msgstr "Fensterposition speichern/wieder herstellen"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:221
-#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:194
-#: src/frontends/qt4/QBox.C:228
+#: src/frontends/qt4/ui/PrefUi.ui:221
+#: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.C:292
+#: src/frontends/qt4/QBox.C:326
 msgid "Width"
 msgstr "Breite"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:247
-#: src/frontends/controllers/ControlBox.C:80 src/frontends/qt4/QBox.C:185
-#: src/frontends/qt4/QBox.C:219
+#: src/frontends/qt4/ui/PrefUi.ui:247
+#: src/frontends/controllers/ControlBox.cpp:80 src/frontends/qt4/QBox.C:283
+#: src/frontends/qt4/QBox.C:317
 msgid "Height"
 msgstr "Höhe"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:291
+#: src/frontends/qt4/ui/PrefUi.ui:291
 msgid "Documents"
 msgstr "Dokumente"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:303
+#: src/frontends/qt4/ui/PrefUi.ui:303
 msgid "B&ackup documents "
 msgstr "&Sicherung der Dokumente "
 
-#: src/frontends/qt4/ui/QPrefUi.ui:334
+#: src/frontends/qt4/ui/PrefUi.ui:334
 msgid " every"
 msgstr " alle"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:354
+#: src/frontends/qt4/ui/PrefUi.ui:354
 msgid "minutes"
 msgstr "Minuten"
 
-#: src/frontends/qt4/ui/QPrefUi.ui:371
+#: src/frontends/qt4/ui/PrefUi.ui:371
 msgid "&Maximum last files:"
 msgstr "&Maximale Anzahl letzter Dateien:"
 
-#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:727
+#: src/frontends/qt4/ui/PrefsUi.ui:76 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyxfunc.C:726
 msgid "&Save"
 msgstr "&Speichern"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:31
+#: src/frontends/qt4/ui/PrintUi.ui:31
 msgid "Pages"
 msgstr "Seiten"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:62
+#: src/frontends/qt4/ui/PrintUi.ui:62
 msgid "Page number to print from"
 msgstr "Drucke ab Seite Nr."
 
-#: src/frontends/qt4/ui/QPrintUi.ui:69
+#: src/frontends/qt4/ui/PrintUi.ui:69
 msgid "&To:[[as in 'From page x to page y']]"
 msgstr "&Bis:"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:82
+#: src/frontends/qt4/ui/PrintUi.ui:82
 msgid "Page number to print to"
 msgstr "Drucke bis einschließlich Seite Nr."
 
-#: src/frontends/qt4/ui/QPrintUi.ui:91 src/frontends/qt4/ui/QPrintUi.ui:104
+#: src/frontends/qt4/ui/PrintUi.ui:91 src/frontends/qt4/ui/PrintUi.ui:104
 msgid "Print all pages"
 msgstr "Alle Seiten drucken"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:94
+#: src/frontends/qt4/ui/PrintUi.ui:94
 msgid "Fro&m"
 msgstr "&Von"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:107
+#: src/frontends/qt4/ui/PrintUi.ui:107
 msgid "&All"
 msgstr "&Alle"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:119
+#: src/frontends/qt4/ui/PrintUi.ui:119
 msgid "Print &odd-numbered pages"
 msgstr "&Ungerade Seiten drucken"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:129
+#: src/frontends/qt4/ui/PrintUi.ui:129
 msgid "Print &even-numbered pages"
 msgstr "&Gerade Seiten drucken"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:139
+#: src/frontends/qt4/ui/PrintUi.ui:139
 msgid "Print in reverse order"
 msgstr "In umgekehrter Reihenfolge drucken"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:142
+#: src/frontends/qt4/ui/PrintUi.ui:142
 msgid "Re&verse order"
 msgstr "&Umgekehrte Reihenfolge"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:152
+#: src/frontends/qt4/ui/PrintUi.ui:152
 msgid "Copies"
 msgstr "Kopien"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:164
+#: src/frontends/qt4/ui/PrintUi.ui:164
 msgid "Number of copies"
 msgstr "Anzahl der Kopien"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:180
+#: src/frontends/qt4/ui/PrintUi.ui:180
 msgid "Collate copies"
 msgstr "Kopien sortieren"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:183
+#: src/frontends/qt4/ui/PrintUi.ui:183
 msgid "&Collate"
 msgstr "&Sortieren"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:233
+#: src/frontends/qt4/ui/PrintUi.ui:233
 msgid "&Print"
 msgstr "&Drucken"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:261
+#: src/frontends/qt4/ui/PrintUi.ui:261
 msgid "Print Destination"
 msgstr "Druck-Ziel"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:273
+#: src/frontends/qt4/ui/PrintUi.ui:273
 msgid "Send output to the printer"
 msgstr "Auf dem Drucker ausgeben"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:276
+#: src/frontends/qt4/ui/PrintUi.ui:276
 msgid "P&rinter:"
 msgstr "D&rucker:"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:286
+#: src/frontends/qt4/ui/PrintUi.ui:286
 msgid "Send output to the given printer"
 msgstr "Auf dem Drucker ausgeben"
 
-#: src/frontends/qt4/ui/QPrintUi.ui:293 src/frontends/qt4/ui/QPrintUi.ui:306
+#: src/frontends/qt4/ui/PrintUi.ui:293 src/frontends/qt4/ui/PrintUi.ui:306
 msgid "Send output to a file"
 msgstr "In eine Datei drucken"
 
-#: src/frontends/qt4/ui/QRefUi.ui:46
+#: src/frontends/qt4/ui/RefUi.ui:46
 msgid "La&bels in:"
 msgstr "Ma&rken in:"
 
-#: src/frontends/qt4/ui/QRefUi.ui:166
+#: src/frontends/qt4/ui/RefUi.ui:166
 msgid "Cross-reference as it appears in output"
 msgstr "Querverweis, wie er in der Ausgabe erscheint"
 
-#: src/frontends/qt4/ui/QRefUi.ui:170
+#: src/frontends/qt4/ui/RefUi.ui:170
 msgid "<reference>"
 msgstr "<Querverweis>"
 
-#: src/frontends/qt4/ui/QRefUi.ui:175
+#: src/frontends/qt4/ui/RefUi.ui:175
 msgid "(<reference>)"
 msgstr "(<Querverweis>)"
 
-#: src/frontends/qt4/ui/QRefUi.ui:180
+#: src/frontends/qt4/ui/RefUi.ui:180
 msgid "<page>"
 msgstr "<Seite>"
 
-#: src/frontends/qt4/ui/QRefUi.ui:185
+#: src/frontends/qt4/ui/RefUi.ui:185
 msgid "on page <page>"
 msgstr "auf Seite <Seite>"
 
-#: src/frontends/qt4/ui/QRefUi.ui:190
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "<reference> on page <page>"
 msgstr "<Querverweis> auf Seite <Seite>"
 
-#: src/frontends/qt4/ui/QRefUi.ui:195
+#: src/frontends/qt4/ui/RefUi.ui:195
 msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
-#: src/frontends/qt4/ui/QRefUi.ui:206
+#: src/frontends/qt4/ui/RefUi.ui:206
 msgid "Sort labels in alphabetical order"
 msgstr "Marken alphabetisch sortieren"
 
-#: src/frontends/qt4/ui/QRefUi.ui:209
+#: src/frontends/qt4/ui/RefUi.ui:209
 msgid "&Sort"
 msgstr "&Sortieren"
 
-#: src/frontends/qt4/ui/QRefUi.ui:232
+#: src/frontends/qt4/ui/RefUi.ui:232
 msgid "Update the label list"
 msgstr "Liste der Marken aktualisieren"
 
-#: src/frontends/qt4/ui/QRefUi.ui:250
+#: src/frontends/qt4/ui/RefUi.ui:250
 msgid "Jump to the label"
 msgstr "Springe zur Marke"
 
-#: src/frontends/qt4/ui/QRefUi.ui:253 src/frontends/qt4/QRef.C:147
+#: src/frontends/qt4/ui/RefUi.ui:253 src/frontends/qt4/QRef.C:292
 msgid "&Go to Label"
 msgstr "&Gehe zur Marke"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:31
+#: src/frontends/qt4/ui/SearchUi.ui:31
 msgid "&Find:"
 msgstr "&Suchen:"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:71
+#: src/frontends/qt4/ui/SearchUi.ui:71
 msgid "Replace &with:"
 msgstr "Ersetzen &durch:"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:108
+#: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Case &sensitive"
 msgstr ""
 "&Groß-/Kleinschreibung\n"
 "beachten"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:115
+#: src/frontends/qt4/ui/SearchUi.ui:115
 msgid "Match whole words onl&y"
 msgstr "Nur ganze &Wörter"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:173
+#: src/frontends/qt4/ui/SearchUi.ui:173
 msgid "Find &Next"
 msgstr "&Nächstes suchen"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:186
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:51
-#: src/frontends/qt4/ui/QThesaurusUi.ui:111
+#: src/frontends/qt4/ui/SearchUi.ui:186
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:51
+#: src/frontends/qt4/ui/ThesaurusUi.ui:111
 msgid "&Replace"
 msgstr "&Ersetzen"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:196
+#: src/frontends/qt4/ui/SearchUi.ui:196
 msgid "Replace &All"
 msgstr "&Alles ersetzen"
 
-#: src/frontends/qt4/ui/QSearchUi.ui:203
+#: src/frontends/qt4/ui/SearchUi.ui:203
 msgid "Search &backwards"
 msgstr "&Rückwärts suchen"
 
-#: src/frontends/qt4/ui/QSendtoUi.ui:45
+#: src/frontends/qt4/ui/SendtoUi.ui:45
 msgid "Process the converted file with this command ($$FName = file name)"
 msgstr ""
 "Verarbeiten Sie die konvertierte Datei mit diesem Befehl ($$FName = "
 "Dateiname)"
 
-#: src/frontends/qt4/ui/QSendtoUi.ui:104
+#: src/frontends/qt4/ui/SendtoUi.ui:104
 msgid "&Export formats:"
 msgstr "&Export-Formate:"
 
-#: src/frontends/qt4/ui/QSendtoUi.ui:114
+#: src/frontends/qt4/ui/SendtoUi.ui:114
 msgid "&Command:"
 msgstr "&Befehl:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:38
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:38
 msgid "Suggestions:"
 msgstr "Vorschläge:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:48
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:48
 msgid "Replace word with current choice"
 msgstr "Wort durch die aktuelle Auswahl ersetzen"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:58
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
 msgid "Add the word to your personal dictionary"
 msgstr "Das Wort zum persönlichen Wörterbuch hinzufügen"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:68
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:68
 msgid "Ignore this word"
 msgstr "Dieses Wort ignorieren"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:71
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:71
 msgid "&Ignore"
 msgstr "&Ignorieren"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:78
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:78
 msgid "Ignore this word throughout this session"
 msgstr "Dieses Wort während dieses Durchgangs ignorieren"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:81
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:81
 msgid "I&gnore All"
 msgstr "&Alle ignorieren"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:104
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:104
 msgid "Replacement:"
 msgstr "Ersetzung:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:114
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:114
 msgid "Current word"
 msgstr "Aktuelles Wort"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:121
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:121
 msgid "Unknown word:"
 msgstr "Unbekanntes Wort:"
 
-#: src/frontends/qt4/ui/QSpellcheckerUi.ui:142
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:142
 msgid "Replace with selected word"
 msgstr "Ersetze durch das ausgewählte Wort"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:41
+#: src/frontends/qt4/ui/TabularUi.ui:41
 msgid "&Table Settings"
 msgstr "&Tabellen-Einstellungen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:53
+#: src/frontends/qt4/ui/TabularUi.ui:53
 msgid "Column Width"
 msgstr "Spaltenbreite"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:71
+#: src/frontends/qt4/ui/TabularUi.ui:71
 msgid "Fixed width of the column"
 msgstr "Feste Spaltenbreite"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:81
+#: src/frontends/qt4/ui/TabularUi.ui:81
 msgid "Vertical alignment for fixed width columns"
 msgstr "Vertikale Ausrichtung für Spalten mit fester Breite"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:113
+#: src/frontends/qt4/ui/TabularUi.ui:113
 msgid "&Vertical alignment:"
 msgstr "&Vertikale Ausrichtung:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:126
+#: src/frontends/qt4/ui/TabularUi.ui:126
 msgid "&Horizontal alignment:"
 msgstr "&Horizontale Ausrichtung:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:136
+#: src/frontends/qt4/ui/TabularUi.ui:136
 msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:140 src/frontends/qt4/QTabular.C:264
+#: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QTabular.C:745
 msgid "Justified"
 msgstr "Blocksatz"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:182
+#: src/frontends/qt4/ui/TabularUi.ui:182
 msgid "Rotate the table by 90 degrees"
 msgstr "Drehen Sie die Tabelle um 90 Grad"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:185
+#: src/frontends/qt4/ui/TabularUi.ui:185
 msgid "&Rotate table 90 degrees"
 msgstr "Tabelle um 90 Grad &drehen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:192
+#: src/frontends/qt4/ui/TabularUi.ui:192
 msgid "Rotate this cell by 90 degrees"
 msgstr "Drehen Sie diese Zelle um 90 Grad"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:195
+#: src/frontends/qt4/ui/TabularUi.ui:195
 msgid "Rotate &cell 90 degrees"
 msgstr "&Zelle um 90 Grad drehen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:202
+#: src/frontends/qt4/ui/TabularUi.ui:202
 msgid "Merge cells"
 msgstr "Zellen zusammenfassen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:205
+#: src/frontends/qt4/ui/TabularUi.ui:205
 msgid "&Multicolumn"
 msgstr "&Mehrfachspalte"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:212
+#: src/frontends/qt4/ui/TabularUi.ui:212
 msgid "LaTe&X argument:"
 msgstr "LaTe&X-Argument:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:222
+#: src/frontends/qt4/ui/TabularUi.ui:222
 msgid "Custom column format (LaTeX)"
 msgstr "Benutzerdefiniertes Spaltenformat (LaTeX)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:230
+#: src/frontends/qt4/ui/TabularUi.ui:230
 msgid "&Borders"
 msgstr "&Rahmen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:250
+#: src/frontends/qt4/ui/TabularUi.ui:250
 msgid "All Borders"
 msgstr "Alle Rahmen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:262
+#: src/frontends/qt4/ui/TabularUi.ui:262
 msgid "Set all borders of the current (selected) cell(s)"
 msgstr "Setzen Sie alle Rahmen der aktuellen (ausgewählten) Zelle(n)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:265
+#: src/frontends/qt4/ui/TabularUi.ui:265
 msgid "&Set"
 msgstr "&Festlegen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:272
+#: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Löschen Sie alle Rahmen der aktuellen (ausgewählten) Zelle(n)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:275
+#: src/frontends/qt4/ui/TabularUi.ui:275
 msgid "C&lear"
 msgstr "&Löschen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:301
+#: src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
 msgstr "Stil"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:313
+#: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
 "Verwenden Sie einen formalen, auch 'booktabs' genannten Rahmenstil (ohne "
 "vertikale Rahmen)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:316
+#: src/frontends/qt4/ui/TabularUi.ui:316
 msgid "Fo&rmal"
 msgstr "Fo&rmal"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:326
+#: src/frontends/qt4/ui/TabularUi.ui:326
 msgid "Use default (grid-like) border style"
 msgstr "Verwenden Sie den standardmäßigen, gitterartigen Rahmenstil"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:329
+#: src/frontends/qt4/ui/TabularUi.ui:329
 msgid "De&fault"
 msgstr "&Standard"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:352
+#: src/frontends/qt4/ui/TabularUi.ui:352
 msgid "Set Borders"
 msgstr "Rahmen ein"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:660
+#: src/frontends/qt4/ui/TabularUi.ui:660
 msgid "Set borders of the current (selected) cell(s)"
 msgstr "Setzen Sie die Rahmen der aktuellen (ausgewählten) Zelle(n)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:673
+#: src/frontends/qt4/ui/TabularUi.ui:673
 msgid "Additional Space"
 msgstr "Zusätzlicher Abstand"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:685
+#: src/frontends/qt4/ui/TabularUi.ui:685
 msgid "T&op of row:"
 msgstr "&Oberhalb der Zeile:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:745
+#: src/frontends/qt4/ui/TabularUi.ui:745
 msgid "Botto&m of row:"
 msgstr "&Unterhalb der Zeile:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:758
+#: src/frontends/qt4/ui/TabularUi.ui:758
 msgid "Bet&ween rows:"
 msgstr "&Zwischen den Zeilen:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:796
+#: src/frontends/qt4/ui/TabularUi.ui:796
 msgid "&Longtable"
 msgstr "&Lange Tabelle"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:824
+#: src/frontends/qt4/ui/TabularUi.ui:824
 msgid "Set a page break on the current row"
 msgstr "Einen Seitenumbruch nach der aktuellen Zeile festlegen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:827
+#: src/frontends/qt4/ui/TabularUi.ui:827
 msgid "Page &break on current row"
 msgstr "&Seitenumbruch nach der aktuellen Zeile"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:837
+#: src/frontends/qt4/ui/TabularUi.ui:837
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:849
+#: src/frontends/qt4/ui/TabularUi.ui:849
 msgid "Status"
 msgstr "Status"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:856
+#: src/frontends/qt4/ui/TabularUi.ui:856
 msgid "Header:"
 msgstr "Kopfzeile:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:863
+#: src/frontends/qt4/ui/TabularUi.ui:863
 msgid "Footer:"
 msgstr "Fußzeile:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:870
+#: src/frontends/qt4/ui/TabularUi.ui:870
 msgid "First header:"
 msgstr "Erste Kopfzeile:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:877
+#: src/frontends/qt4/ui/TabularUi.ui:877
 msgid "Last footer:"
 msgstr "Letzte Fußzeile:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:884
+#: src/frontends/qt4/ui/TabularUi.ui:884
 msgid "Contents"
 msgstr "Inhalt"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:891
+#: src/frontends/qt4/ui/TabularUi.ui:891
 msgid "Border above"
 msgstr "Rahmen oben"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:898
+#: src/frontends/qt4/ui/TabularUi.ui:898
 msgid "Border below"
 msgstr "Rahmen unten"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:905
+#: src/frontends/qt4/ui/TabularUi.ui:905
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
 "Wiederholen Sie diese Zeile als Kopfzeile auf jeder Seite (außer der ersten)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:908
-#: src/frontends/qt4/ui/QTabularUi.ui:921
-#: src/frontends/qt4/ui/QTabularUi.ui:931
-#: src/frontends/qt4/ui/QTabularUi.ui:941
+#: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
+#: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
 msgid "on"
 msgstr "an"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:915
+#: src/frontends/qt4/ui/TabularUi.ui:915
 msgid "This row is the header of the first page"
 msgstr "Diese Zeile ist die Kopfzeile auf der ersten Seite"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:928
+#: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
 "Wiederholen Sie diese Zeile als Fußzeile auf jeder Seite (außer der ersten)"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:938
+#: src/frontends/qt4/ui/TabularUi.ui:938
 msgid "This row is the footer of the last page"
 msgstr "Diese Zeile ist die Fußzeile auf der letzten Seite"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:951
-#: src/frontends/qt4/ui/QTabularUi.ui:958
-#: src/frontends/qt4/ui/QTabularUi.ui:965
-#: src/frontends/qt4/ui/QTabularUi.ui:972
-#: src/frontends/qt4/ui/QTabularUi.ui:979
-#: src/frontends/qt4/ui/QTabularUi.ui:986
-#: src/frontends/qt4/ui/QTabularUi.ui:993
-#: src/frontends/qt4/ui/QTabularUi.ui:1000
+#: src/frontends/qt4/ui/TabularUi.ui:951 src/frontends/qt4/ui/TabularUi.ui:958
+#: src/frontends/qt4/ui/TabularUi.ui:965 src/frontends/qt4/ui/TabularUi.ui:972
+#: src/frontends/qt4/ui/TabularUi.ui:979 src/frontends/qt4/ui/TabularUi.ui:986
+#: src/frontends/qt4/ui/TabularUi.ui:993
+#: src/frontends/qt4/ui/TabularUi.ui:1000
 msgid "double"
 msgstr "doppelt"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1007
+#: src/frontends/qt4/ui/TabularUi.ui:1007
 msgid "Don't output the last footer"
 msgstr "Geben Sie die letzte Fußzeile nicht aus"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1010
-#: src/frontends/qt4/ui/QTabularUi.ui:1020
+#: src/frontends/qt4/ui/TabularUi.ui:1010
+#: src/frontends/qt4/ui/TabularUi.ui:1020
 msgid "is empty"
 msgstr "ist leer"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1017
+#: src/frontends/qt4/ui/TabularUi.ui:1017
 msgid "Don't output the first header"
 msgstr "Geben Sie die erste Kopfzeile nicht aus"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1030
+#: src/frontends/qt4/ui/TabularUi.ui:1030
 msgid "Select for tables that span multiple pages"
 msgstr "Bitte aktivieren, wenn die Tabelle mehrere Seiten umfasst"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1033
+#: src/frontends/qt4/ui/TabularUi.ui:1033
 msgid "&Use long table"
 msgstr "&Lange Tabelle verwenden"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1052
+#: src/frontends/qt4/ui/TabularUi.ui:1052
 msgid "Current cell:"
 msgstr "Aktuelle Zelle:"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1076
+#: src/frontends/qt4/ui/TabularUi.ui:1076
 msgid "Current row position"
 msgstr "Aktuelle Zeilenposition"
 
-#: src/frontends/qt4/ui/QTabularUi.ui:1100
+#: src/frontends/qt4/ui/TabularUi.ui:1100
 msgid "Current column position"
 msgstr "Aktuelle Spaltenposition"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:55
+#: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
 msgstr "Diesen Dialog schließen"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:91
+#: src/frontends/qt4/ui/TexinfoUi.ui:91
 msgid "Rebuild the file lists"
 msgstr "Dateilisten neu erstellen"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:94
+#: src/frontends/qt4/ui/TexinfoUi.ui:94
 msgid "&Rescan"
 msgstr "&Neu lesen"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:104
+#: src/frontends/qt4/ui/TexinfoUi.ui:104
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Zeige den Inhalt der markierten Datei. Nur möglich, wenn die Dateien mit "
 "Pfad angezeigt werden."
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:107
+#: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
 msgstr "&Ansicht"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:124
+#: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
 msgstr "Ausgewählte Klassen oder Stile"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:128
+#: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
 msgstr "LaTeX-Klassen"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:133
+#: src/frontends/qt4/ui/TexinfoUi.ui:133
 msgid "LaTeX styles"
 msgstr "LaTeX-Stile"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:138
+#: src/frontends/qt4/ui/TexinfoUi.ui:138
 msgid "BibTeX styles"
 msgstr "BibTeX-Stile"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:162
+#: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
 msgstr "Ansicht der Dateiliste an/aus"
 
-#: src/frontends/qt4/ui/QTexinfoUi.ui:165
+#: src/frontends/qt4/ui/TexinfoUi.ui:165
 msgid "Show &path"
 msgstr "&Pfad anzeigen"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:42
+#: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
 msgstr "Stichwort"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:225
+#: src/frontends/qt4/ui/ThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:224
 msgid "&Keyword:"
 msgstr "&Schlagwort:"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:55 lib/layouts/moderncv.layout:49
+#: src/frontends/qt4/ui/ThesaurusUi.ui:55 lib/layouts/moderncv.layout:49
 msgid "Entry"
 msgstr "Eintrag"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:88
-#: src/frontends/qt4/ui/QThesaurusUi.ui:101
+#: src/frontends/qt4/ui/ThesaurusUi.ui:88
+#: src/frontends/qt4/ui/ThesaurusUi.ui:101
 msgid "The selected entry"
 msgstr "Der ausgewählte Eintrag"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:91
+#: src/frontends/qt4/ui/ThesaurusUi.ui:91
 msgid "&Selection:"
 msgstr "&Auswahl:"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:108
+#: src/frontends/qt4/ui/ThesaurusUi.ui:108
 msgid "Replace the entry with the selection"
 msgstr "Eintrag durch die Auswahl ersetzen"
 
-#: src/frontends/qt4/ui/QTocUi.ui:36
+#: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Decrease nesting depth of selected item"
 msgstr "Verringern Sie die Verschachtelungstiefe des ausgewählten Elements"
 
-#: src/frontends/qt4/ui/QTocUi.ui:39
+#: src/frontends/qt4/ui/TocUi.ui:39
 msgid "<- P&romote"
 msgstr "<- Ebene h&öher"
 
-#: src/frontends/qt4/ui/QTocUi.ui:46
+#: src/frontends/qt4/ui/TocUi.ui:46
 msgid "Move selected item down by one"
 msgstr "Verschieben Sie das ausgewählte Element nach unten"
 
-#: src/frontends/qt4/ui/QTocUi.ui:49
+#: src/frontends/qt4/ui/TocUi.ui:49
 msgid "D&own"
 msgstr "&Ab"
 
-#: src/frontends/qt4/ui/QTocUi.ui:56
+#: src/frontends/qt4/ui/TocUi.ui:56
 msgid "Increase nesting depth of selected item"
 msgstr "Erhöhen Sie die Verschachtelungstiefe des ausgewählten Elements"
 
-#: src/frontends/qt4/ui/QTocUi.ui:59
+#: src/frontends/qt4/ui/TocUi.ui:59
 msgid "De&mote ->"
 msgstr "Ebene &tiefer ->"
 
-#: src/frontends/qt4/ui/QTocUi.ui:66
+#: src/frontends/qt4/ui/TocUi.ui:66
 msgid "Update navigation tree"
 msgstr "Aktualisieren Sie den Navigationsbaum"
 
-#: src/frontends/qt4/ui/QTocUi.ui:69
+#: src/frontends/qt4/ui/TocUi.ui:69
 msgid "Upd&ate"
 msgstr "A&ktualisieren"
 
-#: src/frontends/qt4/ui/QTocUi.ui:76
+#: src/frontends/qt4/ui/TocUi.ui:76
 msgid "Move selected item up by one"
 msgstr "Verschieben Sie das ausgewählte Element nach oben"
 
-#: src/frontends/qt4/ui/QTocUi.ui:96
+#: src/frontends/qt4/ui/TocUi.ui:96
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
@@ -2880,109 +2853,106 @@ msgstr ""
 "Wechseln Sie zwischen Inhaltsverzeichnis, Abbildungsverzeichnis und "
 "Tabellenverzeichnis (falls vorhanden)"
 
-#: src/frontends/qt4/ui/QTocUi.ui:115
+#: src/frontends/qt4/ui/TocUi.ui:115
 msgid "Adjust the depth of the navigation tree"
 msgstr "Passen Sie die Tiefe des Navigationsbaums an"
 
-#: src/frontends/qt4/ui/QTocUi.ui:137
+#: src/frontends/qt4/ui/TocUi.ui:137
 msgid "&Type:"
 msgstr "&Art:"
 
-#: src/frontends/qt4/ui/QURLUi.ui:31 src/frontends/qt4/ui/QURLUi.ui:64
+#: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
 #: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:186
 #: src/frontends/qt4/UrlView.C:33
 msgid "URL"
 msgstr "URL"
 
-#: src/frontends/qt4/ui/QURLUi.ui:34
+#: src/frontends/qt4/ui/URLUi.ui:34
 msgid "&URL:"
 msgstr "&URL:"
 
-#: src/frontends/qt4/ui/QURLUi.ui:44 src/frontends/qt4/ui/QURLUi.ui:57
+#: src/frontends/qt4/ui/URLUi.ui:44 src/frontends/qt4/ui/URLUi.ui:57
 msgid "Name associated with the URL"
 msgstr "Name für die URL"
 
-#: src/frontends/qt4/ui/QURLUi.ui:79
+#: src/frontends/qt4/ui/URLUi.ui:79
 msgid "Output as a hyperlink ?"
 msgstr "Als Hyperlink ausgeben?"
 
-#: src/frontends/qt4/ui/QURLUi.ui:82
+#: src/frontends/qt4/ui/URLUi.ui:82
 msgid "&Generate hyperlink"
 msgstr "&Hyperlink erzeugen"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:28
+#: src/frontends/qt4/ui/VSpaceUi.ui:28
 msgid "&Spacing:"
 msgstr "&Abstand:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:38
+#: src/frontends/qt4/ui/VSpaceUi.ui:38
 msgid "&Value:"
 msgstr "&Wert:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:51
+#: src/frontends/qt4/ui/VSpaceUi.ui:51
 msgid "&Protect:"
 msgstr "&Schützen:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:61
+#: src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Insert the spacing even after a page break"
 msgstr "Den Abstand auch nach einem Seitenumbruch einfügen"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:74
+#: src/frontends/qt4/ui/VSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr ""
 "Benutzerdefinierter Wert. Setzt Abstandsart \"Benutzerdefiniert\" voraus."
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:81
+#: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Supported spacing types"
 msgstr "Unterstützte Abstandsarten"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:85
+#: src/frontends/qt4/ui/VSpaceUi.ui:85
 msgid "DefSkip"
 msgstr "Standard"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:90
-#: src/frontends/qt4/QDocumentDialog.C:110
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.C:116
 msgid "SmallSkip"
 msgstr "Klein"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:95
-#: src/frontends/qt4/QDocumentDialog.C:111
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.C:117
 msgid "MedSkip"
 msgstr "Mittel"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:100
-#: src/frontends/qt4/QDocumentDialog.C:112
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.C:118
 msgid "BigSkip"
 msgstr "Groß"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:105
+#: src/frontends/qt4/ui/VSpaceUi.ui:105
 msgid "VFill"
 msgstr "Variabel"
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:36
+#: src/frontends/qt4/ui/ViewSourceUi.ui:36
 msgid "Complete source"
 msgstr "Vollständige Quelle"
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:43
+#: src/frontends/qt4/ui/ViewSourceUi.ui:43
 msgid "Automatic update"
 msgstr "Automatische Aktualisierung"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:53
+#: src/frontends/qt4/ui/WrapUi.ui:53
 msgid "Default (outer)"
 msgstr "Standard (außen)"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:68
+#: src/frontends/qt4/ui/WrapUi.ui:68
 msgid "Outer"
 msgstr "Außen"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:76
+#: src/frontends/qt4/ui/WrapUi.ui:76
 msgid "&Placement:"
 msgstr "&Platzierung:"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:103
+#: src/frontends/qt4/ui/WrapUi.ui:103
 msgid "Units of width value"
 msgstr "Einheiten des Breitenwerts"
 
-#: src/frontends/qt4/ui/QWrapUi.ui:125
+#: src/frontends/qt4/ui/WrapUi.ui:125
 msgid "&Units:"
 msgstr "&Einheiten:"
 
@@ -3034,7 +3004,7 @@ msgstr "&Zweispaltiges Dokument"
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
 #: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.C:46
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:187
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
 msgid "Standard"
 msgstr "Standard"
 
@@ -3178,7 +3148,7 @@ msgstr "Definition #:"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:318
+#: src/frontends/qt4/QDocument.C:367
 msgid "Example"
 msgstr "Beispiel"
 
@@ -3250,7 +3220,7 @@ msgstr "Behauptung #:"
 #: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/insetnote.C:65
+#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:65
 msgid "Note"
 msgstr "Notiz"
 
@@ -3420,7 +3390,7 @@ msgstr "Stichwörter---"
 #: lib/layouts/aguplus.inc:168 lib/layouts/aguplus.inc:170
 #: lib/layouts/amsdefs.inc:229 lib/layouts/scrclass.inc:223
 #: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:326
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocument.C:469
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
 
@@ -3598,7 +3568,7 @@ msgid "Acknowledgements."
 msgstr "Danksagungen."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefsDialog.C:285
+#: src/frontends/qt4/QPrefs.C:302
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -3610,7 +3580,7 @@ msgid "Email"
 msgstr "EMail"
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.C:148
 msgid "Thesaurus"
 msgstr "Thesaurus"
 
@@ -7571,7 +7541,7 @@ msgstr "Kurztitel|K"
 msgid "Index Entry|I"
 msgstr "Stichwort|S"
 
-#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:229
+#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:228
 msgid "Glossary Entry"
 msgstr "Glossareintrag"
 
@@ -7683,7 +7653,7 @@ msgstr "Menütrenner|M"
 msgid "Horizontal Line"
 msgstr "Horizontale Linie"
 
-#: lib/ui/classic.ui:257 src/insets/insetpagebreak.h:49
+#: lib/ui/classic.ui:257 src/insets/InsetPagebreak.h:49
 msgid "Page Break"
 msgstr "Seitenumbruch"
 
@@ -8038,17 +8008,17 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.C:449 src/text3.C:835
+#: src/mathed/InsetMathNest.cpp:449 src/text3.C:835
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.C:457 src/text3.C:840
+#: src/mathed/InsetMathNest.cpp:457 src/text3.C:840
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.C:1206 src/mathed/InsetMathNest.C:428
+#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:428
 #: src/text3.C:816
 msgid "Paste"
 msgstr "Einfügen"
@@ -8329,7 +8299,7 @@ msgstr "Zweig|w"
 msgid "File|e"
 msgstr "Datei|D"
 
-#: lib/ui/stdmenus.inc:298 src/insets/insetbox.C:154
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:154
 msgid "Box"
 msgstr "Box"
 
@@ -8867,7 +8837,29 @@ msgstr "PostScript aktualisieren"
 msgid "Math Panels"
 msgstr "Mathe-Kontrollflächen"
 
-#: lib/ui/stdtoolbars.inc:212
+#: lib/ui/stdtoolbars.inc:191
+#, fuzzy
+msgid "Math Spacing"
+msgstr "Abstand"
+
+#: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
+msgid "Roots"
+msgstr "Wurzeln"
+
+#: lib/ui/stdtoolbars.inc:193 lib/ui/stdtoolbars.inc:262
+msgid "Styles"
+msgstr "Stile"
+
+#: lib/ui/stdtoolbars.inc:194 lib/ui/stdtoolbars.inc:269
+msgid "Fractions"
+msgstr "Brüche"
+
+#: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
+#: src/frontends/qt4/QDocument.C:463
+msgid "Fonts"
+msgstr "Schriften"
+
+#: lib/ui/stdtoolbars.inc:196 lib/ui/stdtoolbars.inc:212
 msgid "Functions"
 msgstr "Funktionen"
 
@@ -9031,10 +9023,6 @@ msgstr "Doppelter 'quadratin'-Abstand\t\\qquad"
 msgid "Negative space\t\\!"
 msgstr "Negativer Abstand\t\\!"
 
-#: lib/ui/stdtoolbars.inc:257
-msgid "Roots"
-msgstr "Wurzeln"
-
 #: lib/ui/stdtoolbars.inc:258
 msgid "Square root\t\\sqrt"
 msgstr "Quadratwurzel\t\\sqrt"
@@ -9042,10 +9030,6 @@ msgstr "Quadratwurzel\t\\sqrt"
 #: lib/ui/stdtoolbars.inc:259
 msgid "Other root\t\\root"
 msgstr "Andere Wurzel\t\\root"
-
-#: lib/ui/stdtoolbars.inc:262
-msgid "Styles"
-msgstr "Stile"
 
 #: lib/ui/stdtoolbars.inc:263
 msgid "Display style\t\\displaystyle"
@@ -9062,10 +9046,6 @@ msgstr "Script-Stil (klein)\t\\scriptstyle"
 #: lib/ui/stdtoolbars.inc:266
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Scriptscript-Stil (kleiner)\t\\scriptscriptstyle"
-
-#: lib/ui/stdtoolbars.inc:269
-msgid "Fractions"
-msgstr "Brüche"
 
 #: lib/ui/stdtoolbars.inc:270
 msgid "Standard\t\\frac"
@@ -9090,10 +9070,6 @@ msgstr "Display-Stil (amsmath)\t\\dfrac"
 #: lib/ui/stdtoolbars.inc:275
 msgid "Binomial\t\\choose"
 msgstr "Binomialkoeffizient\t\\choose"
-
-#: lib/ui/stdtoolbars.inc:278 src/frontends/qt4/QDocumentDialog.C:393
-msgid "Fonts"
-msgstr "Schriften"
 
 #: lib/ui/stdtoolbars.inc:279
 msgid "Roman\t\\mathrm"
@@ -9160,96 +9136,96 @@ msgid "Frame Decorations"
 msgstr "Rahmen-Verzierungen"
 
 #: lib/ui/stdtoolbars.inc:299
-msgid "widehat"
-msgstr "widehat"
-
-#: lib/ui/stdtoolbars.inc:300
-msgid "widetilde"
-msgstr "widetilde"
-
-#: lib/ui/stdtoolbars.inc:301
-msgid "overbrace"
-msgstr "overbrace"
-
-#: lib/ui/stdtoolbars.inc:302
-msgid "overleftarrow"
-msgstr "overleftarrow"
-
-#: lib/ui/stdtoolbars.inc:303
-msgid "overrightarrow"
-msgstr "overrightarrow"
-
-#: lib/ui/stdtoolbars.inc:304
-msgid "overline"
-msgstr "overline"
-
-#: lib/ui/stdtoolbars.inc:305
-msgid "underbrace"
-msgstr "underbrace"
-
-#: lib/ui/stdtoolbars.inc:306
-msgid "underline"
-msgstr "underline"
-
-#: lib/ui/stdtoolbars.inc:307
-msgid "underleftarrow"
-msgstr "underleftarrow"
-
-#: lib/ui/stdtoolbars.inc:308
-msgid "underrightarrow"
-msgstr "underrightarrow"
-
-#: lib/ui/stdtoolbars.inc:309
-msgid "underleftrightarrow"
-msgstr "underleftrightarrow"
-
-#: lib/ui/stdtoolbars.inc:310
-msgid "overleftrightarrow"
-msgstr "overleftrightarrow"
-
-#: lib/ui/stdtoolbars.inc:311
 msgid "hat"
 msgstr "hat"
 
-#: lib/ui/stdtoolbars.inc:312
-msgid "acute"
-msgstr "acute"
-
-#: lib/ui/stdtoolbars.inc:313
-msgid "bar"
-msgstr "bar"
-
-#: lib/ui/stdtoolbars.inc:314
-msgid "dot"
-msgstr "dot"
-
-#: lib/ui/stdtoolbars.inc:315
-msgid "check"
-msgstr "check"
-
-#: lib/ui/stdtoolbars.inc:316
-msgid "grave"
-msgstr "grave"
-
-#: lib/ui/stdtoolbars.inc:317
-msgid "vec"
-msgstr "vec"
-
-#: lib/ui/stdtoolbars.inc:318
-msgid "ddot"
-msgstr "ddot"
-
-#: lib/ui/stdtoolbars.inc:319
-msgid "breve"
-msgstr "breve"
-
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:300
 msgid "tilde"
 msgstr "tilde"
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:301
+msgid "bar"
+msgstr "bar"
+
+#: lib/ui/stdtoolbars.inc:302
+msgid "grave"
+msgstr "grave"
+
+#: lib/ui/stdtoolbars.inc:303
+msgid "dot"
+msgstr "dot"
+
+#: lib/ui/stdtoolbars.inc:304
+msgid "check"
+msgstr "check"
+
+#: lib/ui/stdtoolbars.inc:305
+msgid "widehat"
+msgstr "widehat"
+
+#: lib/ui/stdtoolbars.inc:306
+msgid "widetilde"
+msgstr "widetilde"
+
+#: lib/ui/stdtoolbars.inc:307
+msgid "vec"
+msgstr "vec"
+
+#: lib/ui/stdtoolbars.inc:308
+msgid "acute"
+msgstr "acute"
+
+#: lib/ui/stdtoolbars.inc:309
+msgid "ddot"
+msgstr "ddot"
+
+#: lib/ui/stdtoolbars.inc:310
+msgid "breve"
+msgstr "breve"
+
+#: lib/ui/stdtoolbars.inc:311
+msgid "overline"
+msgstr "overline"
+
+#: lib/ui/stdtoolbars.inc:312
+msgid "overbrace"
+msgstr "overbrace"
+
+#: lib/ui/stdtoolbars.inc:313
+msgid "overleftarrow"
+msgstr "overleftarrow"
+
+#: lib/ui/stdtoolbars.inc:314
+msgid "overrightarrow"
+msgstr "overrightarrow"
+
+#: lib/ui/stdtoolbars.inc:315
+msgid "overleftrightarrow"
+msgstr "overleftrightarrow"
+
+#: lib/ui/stdtoolbars.inc:316
 msgid "overset"
 msgstr "overset"
+
+#: lib/ui/stdtoolbars.inc:317
+msgid "underline"
+msgstr "underline"
+
+#: lib/ui/stdtoolbars.inc:318
+msgid "underbrace"
+msgstr "underbrace"
+
+#: lib/ui/stdtoolbars.inc:319
+msgid "underleftarrow"
+msgstr "underleftarrow"
+
+#: lib/ui/stdtoolbars.inc:320
+msgid "underrightarrow"
+msgstr "underrightarrow"
+
+#: lib/ui/stdtoolbars.inc:321
+msgid "underleftrightarrow"
+msgstr "underleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:322
 msgid "underset"
@@ -11006,11 +10982,11 @@ msgstr ""
 "\n"
 "Möchten Sie zu der gespeicherten Version zurückkehren?"
 
-#: src/BufferView.C:237 src/lyxfunc.C:900
+#: src/BufferView.C:237 src/lyxfunc.C:899
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument wieder herstellen?"
 
-#: src/BufferView.C:238 src/lyxfunc.C:901 src/lyxvc.C:175
+#: src/BufferView.C:238 src/lyxfunc.C:900 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Wieder herstellen"
 
@@ -11091,26 +11067,26 @@ msgstr "Wörter zählen"
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView.C:1590 src/frontends/controllers/ControlBibtex.C:54
-#: src/frontends/controllers/ControlBibtex.C:66
-#: src/frontends/controllers/ControlExternal.C:169
-#: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1867 src/lyxfunc.C:1906 src/lyxfunc.C:1979
+#: src/BufferView.C:1590 src/frontends/controllers/ControlBibtex.cpp:52
+#: src/frontends/controllers/ControlBibtex.cpp:64
+#: src/frontends/controllers/ControlExternal.cpp:169
+#: src/frontends/controllers/ControlGraphics.cpp:96
+#: src/frontends/controllers/ControlInclude.cpp:91 src/lyx_cb.C:136
+#: src/lyxfunc.C:1866 src/lyxfunc.C:1905 src/lyxfunc.C:1978
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView.C:1591 src/lyxfunc.C:1907 src/lyxfunc.C:1980
+#: src/BufferView.C:1591 src/lyxfunc.C:1906 src/lyxfunc.C:1979
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView.C:1595 src/lyx_cb.C:142 src/lyxfunc.C:1872
-#: src/lyxfunc.C:1911
+#: src/BufferView.C:1595 src/lyx_cb.C:142 src/lyxfunc.C:1871
+#: src/lyxfunc.C:1910
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView.C:1607 src/lyxfunc.C:1921 src/lyxfunc.C:2001
-#: src/lyxfunc.C:2015 src/lyxfunc.C:2031
+#: src/BufferView.C:1607 src/lyxfunc.C:1920 src/lyxfunc.C:2000
+#: src/lyxfunc.C:2014 src/lyxfunc.C:2030
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -11228,7 +11204,7 @@ msgstr "LaTeX-Text"
 msgid "previewed snippet"
 msgstr "Vorschau-Schnipsel"
 
-#: src/LColor.C:110 src/insets/insetnote.C:311
+#: src/LColor.C:110 src/insets/InsetNote.cpp:311
 msgid "note"
 msgstr "Notiz"
 
@@ -11397,17 +11373,17 @@ msgstr "ignorieren"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Warten auf LaTeX-Durchlauf Nr. %1$d"
 
-#: src/LaTeX.C:298 src/LaTeX.C:385
+#: src/LaTeX.C:302 src/LaTeX.C:381
 msgid "Running MakeIndex."
 msgstr "MakeIndex wird ausgeführt."
 
-#: src/LaTeX.C:307 src/LaTeX.C:396
-msgid "Running MakeIndex for nomencl."
-msgstr "MakeIndex wird für nomencl ausgeführt."
-
-#: src/LaTeX.C:326
+#: src/LaTeX.C:322
 msgid "Running BibTeX."
 msgstr "BibTeX wird ausgeführt."
+
+#: src/LaTeX.C:462
+msgid "Running MakeIndex for nomencl."
+msgstr "MakeIndex wird für nomencl ausgeführt."
 
 #: src/MenuBackend.C:463 src/MenuBackend.C:500 src/MenuBackend.C:572
 #: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
@@ -11715,7 +11691,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern oder die Änderungen verwerfen?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:725
 msgid "Save changed document?"
 msgstr "Geändertes Dokument speichern?"
 
@@ -11750,7 +11726,8 @@ msgid ""
 "class or style file required by it is not\n"
 "available. See the Customization documentation\n"
 "for more information.\n"
-msgstr "Die für dieses Dokument erforderliche Layoutdatei\n"
+msgstr ""
+"Die für dieses Dokument erforderliche Layoutdatei\n"
 "%1$s.layout\n"
 "ist nicht verwendbar. Dies liegt wahrscheinlich daran,\n"
 "dass eine benötigte LaTeX-Klasse oder Style-Datei\n"
@@ -11963,7 +11940,7 @@ msgstr "Externe Vorlagen/Einfügungs-Meldungen"
 msgid "RowPainter profiling"
 msgstr "RowPainter-Profiling"
 
-#: src/exporter.C:82 src/lyxfunc.C:1063
+#: src/exporter.C:82 src/lyxfunc.C:1062
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -11974,11 +11951,11 @@ msgstr ""
 "\n"
 "Möchten Sie die Datei überschreiben?"
 
-#: src/exporter.C:85 src/lyxfunc.C:1066
+#: src/exporter.C:85 src/lyxfunc.C:1065
 msgid "Over-write file?"
 msgstr "Datei überschreiben?"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1067 src/lyxfunc.C:2028
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1066 src/lyxfunc.C:2027
 msgid "&Over-write"
 msgstr "&Überschreiben"
 
@@ -12075,19 +12052,19 @@ msgstr " (schreibgeschützt)"
 msgid "Formatting document..."
 msgstr "Formatieren des Dokuments..."
 
-#: src/frontends/controllers/ControlAboutlyx.C:58
+#: src/frontends/controllers/ControlAboutlyx.cpp:58
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr "Fehler: LyX konnte die Datei CREDITS nicht öffnen\n"
 
-#: src/frontends/controllers/ControlAboutlyx.C:59
+#: src/frontends/controllers/ControlAboutlyx.cpp:59
 msgid "Please install correctly to estimate the great\n"
 msgstr "Bitte installieren Sie diese Datei, um die große Menge\n"
 
-#: src/frontends/controllers/ControlAboutlyx.C:60
+#: src/frontends/controllers/ControlAboutlyx.cpp:60
 msgid "amount of work other people have done for the LyX project."
 msgstr "an Arbeit abschätzen zu können, die andere in LyX gesteckt haben."
 
-#: src/frontends/controllers/ControlAboutlyx.C:67
+#: src/frontends/controllers/ControlAboutlyx.cpp:67
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
@@ -12095,7 +12072,7 @@ msgstr ""
 "LyX - Copyright (C) 1995 Matthias Ettrich,\n"
 "1995-2006 LyX-Team"
 
-#: src/frontends/controllers/ControlAboutlyx.C:73
+#: src/frontends/controllers/ControlAboutlyx.cpp:73
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -12107,7 +12084,7 @@ msgstr ""
 "Software Foundation weitergeben und/oder verändern. Verwenden Sie Version 2 "
 "oder (nach Ihrer Entscheidung) eine spätere Version der Lizenz."
 
-#: src/frontends/controllers/ControlAboutlyx.C:79
+#: src/frontends/controllers/ControlAboutlyx.cpp:79
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -12126,241 +12103,241 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
 "USA."
 
-#: src/frontends/controllers/ControlAboutlyx.C:87
+#: src/frontends/controllers/ControlAboutlyx.cpp:87
 msgid "LyX Version "
 msgstr "LyX Version "
 
-#: src/frontends/controllers/ControlAboutlyx.C:92
+#: src/frontends/controllers/ControlAboutlyx.cpp:92
 msgid "Library directory: "
 msgstr "Systemverzeichnis: "
 
-#: src/frontends/controllers/ControlAboutlyx.C:95
+#: src/frontends/controllers/ControlAboutlyx.cpp:95
 msgid "User directory: "
 msgstr "Benutzerverzeichnis: "
 
-#: src/frontends/controllers/ControlBibtex.C:56
+#: src/frontends/controllers/ControlBibtex.cpp:54
 msgid "BibTeX Databases (*.bib)"
 msgstr "BibTeX-Datenbanken (*.bib)"
 
-#: src/frontends/controllers/ControlBibtex.C:58
+#: src/frontends/controllers/ControlBibtex.cpp:56
 msgid "Select a BibTeX database to add"
 msgstr "Wählen Sie eine hinzuzufügende BibTeX-Datenbank"
 
-#: src/frontends/controllers/ControlBibtex.C:68
+#: src/frontends/controllers/ControlBibtex.cpp:66
 msgid "BibTeX Styles (*.bst)"
 msgstr "BibTeX-Stile (*.bst)"
 
-#: src/frontends/controllers/ControlBibtex.C:70
+#: src/frontends/controllers/ControlBibtex.cpp:68
 msgid "Select a BibTeX style"
 msgstr "Wählen Sie einen BibTeX-Stil"
 
-#: src/frontends/controllers/ControlBox.C:62
+#: src/frontends/controllers/ControlBox.cpp:62
 msgid "No frame drawn"
 msgstr "Kein Rahmen"
 
-#: src/frontends/controllers/ControlBox.C:63
+#: src/frontends/controllers/ControlBox.cpp:63
 msgid "Rectangular box"
 msgstr "Rechteckige Box"
 
-#: src/frontends/controllers/ControlBox.C:64
+#: src/frontends/controllers/ControlBox.cpp:64
 msgid "Oval box, thin"
 msgstr "Ovale Box, dünn"
 
-#: src/frontends/controllers/ControlBox.C:65
+#: src/frontends/controllers/ControlBox.cpp:65
 msgid "Oval box, thick"
 msgstr "Ovale Box, dick"
 
-#: src/frontends/controllers/ControlBox.C:66
+#: src/frontends/controllers/ControlBox.cpp:66
 msgid "Shadow box"
 msgstr "Schattierte Box"
 
-#: src/frontends/controllers/ControlBox.C:67
+#: src/frontends/controllers/ControlBox.cpp:67
 msgid "Double box"
 msgstr "Doppelte Box"
 
-#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:188
-#: src/frontends/qt4/QBox.C:222
+#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.C:286
+#: src/frontends/qt4/QBox.C:320
 msgid "Depth"
 msgstr "Tiefe"
 
-#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:191
-#: src/frontends/qt4/QBox.C:225 src/frontends/qt4/QBox.C:258
-#: src/frontends/qt4/QBoxDialog.C:107
+#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.C:133
+#: src/frontends/qt4/QBox.C:289 src/frontends/qt4/QBox.C:323
+#: src/frontends/qt4/QBox.C:356
 msgid "Total Height"
 msgstr "Gesamthöhe"
 
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:870 src/lyxfont.C:52
 msgid "Roman"
 msgstr "Roman"
 
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:874 src/lyxfont.C:52
 msgid "Sans Serif"
 msgstr "Serifenfrei"
 
-#: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:878 src/lyxfont.C:52
 msgid "Typewriter"
 msgstr "Schreibmaschine"
 
-#: src/frontends/controllers/ControlErrorList.C:57
+#: src/frontends/controllers/ControlErrorList.cpp:57
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s Fehler (%2$s)"
 
-#: src/frontends/controllers/ControlExternal.C:163
+#: src/frontends/controllers/ControlExternal.cpp:163
 msgid "Select external file"
 msgstr "Wählen Sie eine externe Datei"
 
-#: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
 msgid "Top left"
 msgstr "Oben links"
 
-#: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
 msgid "Bottom left"
 msgstr "Unten links"
 
-#: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
 msgid "Baseline left"
 msgstr "Grundlinie links"
 
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
 msgid "Top center"
 msgstr "Oben zentriert"
 
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
 msgid "Bottom center"
 msgstr "Unten zentriert"
 
-#: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
 msgid "Baseline center"
 msgstr "Grundlinie zentriert"
 
-#: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
 msgid "Top right"
 msgstr "Oben rechts"
 
-#: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
 msgid "Bottom right"
 msgstr "Unten rechts"
 
-#: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
 msgid "Baseline right"
 msgstr "Grundlinie rechts"
 
-#: src/frontends/controllers/ControlGraphics.C:87
+#: src/frontends/controllers/ControlGraphics.cpp:87
 msgid "Select graphics file"
 msgstr "Wählen Sie eine Grafikdatei"
 
-#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlGraphics.cpp:95
 msgid "Clipart|#C#c"
 msgstr "Clipart|#C#c"
 
-#: src/frontends/controllers/ControlInclude.C:78
+#: src/frontends/controllers/ControlInclude.cpp:78
 msgid "Select document to include"
 msgstr "Wählen Sie das einzubindende Dokument"
 
-#: src/frontends/controllers/ControlInclude.C:85
+#: src/frontends/controllers/ControlInclude.cpp:85
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX-Dokumente (*.tex *.lyx)"
 
-#: src/frontends/controllers/ControlLog.C:81
+#: src/frontends/controllers/ControlLog.cpp:81
 msgid "LaTeX Log"
 msgstr "LaTeX-Protokoll"
 
-#: src/frontends/controllers/ControlLog.C:84
+#: src/frontends/controllers/ControlLog.cpp:84
 msgid "Literate Programming Build Log"
 msgstr "Erstellungsprotokoll für die literarische Programmierung"
 
-#: src/frontends/controllers/ControlLog.C:87
+#: src/frontends/controllers/ControlLog.cpp:87
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx-Fehlerprotokoll"
 
-#: src/frontends/controllers/ControlLog.C:90
+#: src/frontends/controllers/ControlLog.cpp:90
 msgid "Version Control Log"
 msgstr "Protokoll der Versionskontrolle"
 
-#: src/frontends/controllers/ControlLog.C:116
+#: src/frontends/controllers/ControlLog.cpp:116
 msgid "No LaTeX log file found."
 msgstr "Keine LaTeX-Protokolldatei gefunden."
 
-#: src/frontends/controllers/ControlLog.C:119
+#: src/frontends/controllers/ControlLog.cpp:119
 msgid "No literate programming build log file found."
 msgstr ""
 "Keine Erstellungsprotokolldatei für die literarische Programmierung gefunden."
 
-#: src/frontends/controllers/ControlLog.C:122
+#: src/frontends/controllers/ControlLog.cpp:122
 msgid "No lyx2lyx error log file found."
 msgstr "Keine lyx2lyx-Fehlerprotokolldatei gefunden."
 
-#: src/frontends/controllers/ControlLog.C:125
+#: src/frontends/controllers/ControlLog.cpp:125
 msgid "No version control log file found."
 msgstr "Es wurde keine Protokolldatei der Versionskontrolle gefunden."
 
-#: src/frontends/controllers/ControlPrefs.C:110
+#: src/frontends/controllers/ControlPrefs.cpp:110
 msgid "Choose bind file"
 msgstr "Wählen Sie eine Tastaturkürzel-Datei"
 
-#: src/frontends/controllers/ControlPrefs.C:111
+#: src/frontends/controllers/ControlPrefs.cpp:111
 msgid "LyX bind files (*.bind)"
 msgstr "LyX Tastaturkürzel-Dateien (*.bind)"
 
-#: src/frontends/controllers/ControlPrefs.C:118
+#: src/frontends/controllers/ControlPrefs.cpp:118
 msgid "Choose UI file"
 msgstr "Wählen Sie eine 'UI'-Datei"
 
-#: src/frontends/controllers/ControlPrefs.C:119
+#: src/frontends/controllers/ControlPrefs.cpp:119
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI-Dateien (*.ui)"
 
-#: src/frontends/controllers/ControlPrefs.C:126
+#: src/frontends/controllers/ControlPrefs.cpp:126
 msgid "Choose keyboard map"
 msgstr "Wählen Sie eine Tastaturtabelle"
 
-#: src/frontends/controllers/ControlPrefs.C:127
+#: src/frontends/controllers/ControlPrefs.cpp:127
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX Tastaturtabellen (*.kmap)"
 
-#: src/frontends/controllers/ControlPrefs.C:135
-#: src/frontends/controllers/ControlPrefs.C:139
+#: src/frontends/controllers/ControlPrefs.cpp:135
+#: src/frontends/controllers/ControlPrefs.cpp:139
 msgid "Choose personal dictionary"
 msgstr "Wählen Sie ein persönliches Wörterbuch"
 
-#: src/frontends/controllers/ControlPrefs.C:136
+#: src/frontends/controllers/ControlPrefs.cpp:136
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/controllers/ControlPrefs.C:140
+#: src/frontends/controllers/ControlPrefs.cpp:140
 msgid "*.ispell"
 msgstr "*.ispell"
 
-#: src/frontends/controllers/ControlPrint.C:73
+#: src/frontends/controllers/ControlPrint.cpp:73
 msgid "Print to file"
 msgstr "Ausgabe in Datei"
 
-#: src/frontends/controllers/ControlPrint.C:74
+#: src/frontends/controllers/ControlPrint.cpp:74
 msgid "PostScript files (*.ps)"
 msgstr "PostScript-Dateien (*.ps)"
 
-#: src/frontends/controllers/ControlSpellchecker.C:117
+#: src/frontends/controllers/ControlSpellchecker.cpp:117
 msgid "Spellchecker error"
 msgstr "Fehler des Rechtschreibprogramms"
 
-#: src/frontends/controllers/ControlSpellchecker.C:118
+#: src/frontends/controllers/ControlSpellchecker.cpp:118
 msgid "The spellchecker could not be started\n"
 msgstr "Das Rechtschreibprogramm konnte nicht gestartet werden\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:276
+#: src/frontends/controllers/ControlSpellchecker.cpp:276
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -12368,169 +12345,169 @@ msgstr ""
 "Das Rechtschreibprogramm hat sich unplanmäßig beendet.\n"
 "Möglicherweise wurde das Programm durch ein 'kill' beendet."
 
-#: src/frontends/controllers/ControlSpellchecker.C:279
+#: src/frontends/controllers/ControlSpellchecker.cpp:279
 msgid "The spellchecker has failed.\n"
 msgstr "Das Rechtschreibprogramm ist fehlgeschlagen.\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:283
+#: src/frontends/controllers/ControlSpellchecker.cpp:283
 msgid "The spellchecker has failed"
 msgstr "Das Rechtschreibprogramm ist fehlgeschlagen"
 
-#: src/frontends/controllers/ControlSpellchecker.C:297
+#: src/frontends/controllers/ControlSpellchecker.cpp:297
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d Wörter wurden geprüft."
 
-#: src/frontends/controllers/ControlSpellchecker.C:299
+#: src/frontends/controllers/ControlSpellchecker.cpp:299
 msgid "One word checked."
 msgstr "Ein Wort wurde geprüft."
 
-#: src/frontends/controllers/ControlSpellchecker.C:302
+#: src/frontends/controllers/ControlSpellchecker.cpp:302
 msgid "Spelling check completed"
 msgstr "Die Rechtschreibprüfung ist abgeschlossen"
 
-#: src/frontends/controllers/ControlToc.C:134 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
 
-#: src/frontends/controllers/biblio.C:224
+#: src/frontends/controllers/frontend_helpers.cpp:244
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s und %2$s"
 
-#: src/frontends/controllers/biblio.C:228
+#: src/frontends/controllers/frontend_helpers.cpp:248
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/frontends/controllers/biblio.C:265
+#: src/frontends/controllers/frontend_helpers.cpp:285
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/frontends/controllers/biblio.C:798
+#: src/frontends/controllers/frontend_helpers.cpp:818
 msgid "before"
 msgstr "davor"
 
-#: src/frontends/controllers/character.C:29
-#: src/frontends/controllers/character.C:59
-#: src/frontends/controllers/character.C:85
-#: src/frontends/controllers/character.C:119
-#: src/frontends/controllers/character.C:185
-#: src/frontends/controllers/character.C:215
-#: src/frontends/controllers/frnt_lang.C:52
+#: src/frontends/controllers/frontend_helpers.cpp:866
+#: src/frontends/controllers/frontend_helpers.cpp:896
+#: src/frontends/controllers/frontend_helpers.cpp:922
+#: src/frontends/controllers/frontend_helpers.cpp:956
+#: src/frontends/controllers/frontend_helpers.cpp:1022
+#: src/frontends/controllers/frontend_helpers.cpp:1052
+#: src/frontends/controllers/frontend_helpers.cpp:1125
 msgid "No change"
 msgstr "Keine Änderung"
 
-#: src/frontends/controllers/character.C:45
-#: src/frontends/controllers/character.C:71
-#: src/frontends/controllers/character.C:105
-#: src/frontends/controllers/character.C:171
-#: src/frontends/controllers/character.C:201
-#: src/frontends/controllers/character.C:255
-#: src/frontends/controllers/frnt_lang.C:54
+#: src/frontends/controllers/frontend_helpers.cpp:882
+#: src/frontends/controllers/frontend_helpers.cpp:908
+#: src/frontends/controllers/frontend_helpers.cpp:942
+#: src/frontends/controllers/frontend_helpers.cpp:1008
+#: src/frontends/controllers/frontend_helpers.cpp:1038
+#: src/frontends/controllers/frontend_helpers.cpp:1092
+#: src/frontends/controllers/frontend_helpers.cpp:1127
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
+#: src/frontends/controllers/frontend_helpers.cpp:900 src/lyxfont.C:57
 msgid "Medium"
 msgstr "Mittel"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
+#: src/frontends/controllers/frontend_helpers.cpp:904 src/lyxfont.C:57
 msgid "Bold"
 msgstr "Fett"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
+#: src/frontends/controllers/frontend_helpers.cpp:926 src/lyxfont.C:60
 msgid "Upright"
 msgstr "Normal"
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
+#: src/frontends/controllers/frontend_helpers.cpp:930 src/lyxfont.C:60
 msgid "Italic"
 msgstr "Kursiv"
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
+#: src/frontends/controllers/frontend_helpers.cpp:934 src/lyxfont.C:60
 msgid "Slanted"
 msgstr "Geneigt"
 
-#: src/frontends/controllers/character.C:101
+#: src/frontends/controllers/frontend_helpers.cpp:938
 msgid "Small Caps"
 msgstr "Kapitälchen"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:1000 src/lyxfont.C:65
 msgid "Increase"
 msgstr "Vergrößern"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:1004 src/lyxfont.C:65
 msgid "Decrease"
 msgstr "Verkleinern"
 
-#: src/frontends/controllers/character.C:189
+#: src/frontends/controllers/frontend_helpers.cpp:1026
 msgid "Emph"
 msgstr "Hervorgehoben"
 
-#: src/frontends/controllers/character.C:193
+#: src/frontends/controllers/frontend_helpers.cpp:1030
 msgid "Underbar"
 msgstr "Unterstrichen"
 
-#: src/frontends/controllers/character.C:197
+#: src/frontends/controllers/frontend_helpers.cpp:1034
 msgid "Noun"
 msgstr "Eigenname"
 
-#: src/frontends/controllers/character.C:219
+#: src/frontends/controllers/frontend_helpers.cpp:1056
 msgid "No color"
 msgstr "Keine Farbe"
 
-#: src/frontends/controllers/character.C:223
+#: src/frontends/controllers/frontend_helpers.cpp:1060
 msgid "Black"
 msgstr "Schwarz"
 
-#: src/frontends/controllers/character.C:227
+#: src/frontends/controllers/frontend_helpers.cpp:1064
 msgid "White"
 msgstr "Weiß"
 
-#: src/frontends/controllers/character.C:231
+#: src/frontends/controllers/frontend_helpers.cpp:1068
 msgid "Red"
 msgstr "Rot"
 
-#: src/frontends/controllers/character.C:235
+#: src/frontends/controllers/frontend_helpers.cpp:1072
 msgid "Green"
 msgstr "Grün"
 
-#: src/frontends/controllers/character.C:239
+#: src/frontends/controllers/frontend_helpers.cpp:1076
 msgid "Blue"
 msgstr "Blau"
 
-#: src/frontends/controllers/character.C:243
+#: src/frontends/controllers/frontend_helpers.cpp:1080
 msgid "Cyan"
 msgstr "Türkis"
 
-#: src/frontends/controllers/character.C:247
+#: src/frontends/controllers/frontend_helpers.cpp:1084
 msgid "Magenta"
 msgstr "Purpurrot"
 
-#: src/frontends/controllers/character.C:251
+#: src/frontends/controllers/frontend_helpers.cpp:1088
 msgid "Yellow"
 msgstr "Gelb"
 
-#: src/frontends/controllers/helper_funcs.C:102
+#: src/frontends/controllers/frontend_helpers.cpp:1220
 msgid "System files|#S#s"
 msgstr "Systemdateien|#S#s"
 
-#: src/frontends/controllers/helper_funcs.C:105
+#: src/frontends/controllers/frontend_helpers.cpp:1223
 msgid "User files|#U#u"
 msgstr "Benutzerdateien|#B#b"
 
-#: src/frontends/controllers/tex_helpers.C:64
+#: src/frontends/controllers/frontend_helpers.cpp:1306
 msgid "Could not update TeX information"
 msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
-#: src/frontends/controllers/tex_helpers.C:65
+#: src/frontends/controllers/frontend_helpers.cpp:1307
 #, c-format
 msgid "The script `%s' failed."
 msgstr "Das Skript `%s' ist fehlgeschlagen."
 
-#: src/frontends/qt4/Alert_pimpl.C:60 src/frontends/qt4/Alert_pimpl.C:87
-#: src/frontends/qt4/Alert_pimpl.C:107 src/frontends/qt4/Alert_pimpl.C:126
-#: src/frontends/qt4/Alert_pimpl.C:137
+#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
+#: src/frontends/qt4/Alert_pimpl.C:105 src/frontends/qt4/Alert_pimpl.C:124
+#: src/frontends/qt4/Alert_pimpl.C:135
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -12555,19 +12532,19 @@ msgstr "Dings 3"
 msgid "Dings 4"
 msgstr "Dings 4"
 
-#: src/frontends/qt4/Dialogs.C:224
+#: src/frontends/qt4/Dialogs.C:223
 msgid "Index Entry"
 msgstr "Stichwort"
 
-#: src/frontends/qt4/Dialogs.C:234
+#: src/frontends/qt4/Dialogs.C:233
 msgid "Label"
 msgstr "Marke"
 
-#: src/frontends/qt4/Dialogs.C:246
+#: src/frontends/qt4/Dialogs.C:245
 msgid "LaTeX Source"
 msgstr "LaTeX-Quelle"
 
-#: src/frontends/qt4/Dialogs.C:308
+#: src/frontends/qt4/Dialogs.C:307
 msgid "Toc"
 msgstr "Inhaltsverzeichnis"
 
@@ -12595,19 +12572,19 @@ msgstr "LyX"
 msgid "unknown version"
 msgstr "unbekannte Version"
 
-#: src/frontends/qt4/QBibitem.C:31
+#: src/frontends/qt4/QBibitem.C:69
 msgid "Bibliography Entry Settings"
 msgstr "Literatureintrag-Einstellungen"
 
-#: src/frontends/qt4/QBibtex.C:48
+#: src/frontends/qt4/QBibtex.C:260
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-Literaturverzeichnis"
 
-#: src/frontends/qt4/QBox.C:49
+#: src/frontends/qt4/QBox.C:148
 msgid "Box Settings"
 msgstr "Box-Einstellungen"
 
-#: src/frontends/qt4/QBranch.C:33
+#: src/frontends/qt4/QBranch.C:71
 msgid "Branch Settings"
 msgstr "Zweig-Einstellungen"
 
@@ -12620,19 +12597,19 @@ msgid "Activated"
 msgstr "Aktiviert"
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:625
+#: src/frontends/qt4/QDocument.C:690
 msgid "Yes"
 msgstr "Ja"
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocument.C:689
 msgid "No"
 msgstr "Nein"
 
-#: src/frontends/qt4/QChanges.C:35
+#: src/frontends/qt4/QChanges.C:85
 msgid "Merge Changes"
 msgstr "Änderungen zusammenfassen"
 
-#: src/frontends/qt4/QChanges.C:57
+#: src/frontends/qt4/QChanges.C:107
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -12641,12 +12618,12 @@ msgstr ""
 "Änderung durch %1$s\n"
 "\n"
 
-#: src/frontends/qt4/QChanges.C:59
+#: src/frontends/qt4/QChanges.C:109
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "Geändert am %1$s\n"
 
-#: src/frontends/qt4/QCharacter.C:34
+#: src/frontends/qt4/QCharacter.C:92
 msgid "Text Style"
 msgstr "Textstil"
 
@@ -12691,166 +12668,162 @@ msgstr "(Kein)"
 msgid "Variable"
 msgstr "Variabel"
 
-#: src/frontends/qt4/QDocument.C:48
-msgid "Document Settings"
-msgstr "Dokument-Einstellungen"
-
-#: src/frontends/qt4/QDocumentDialog.C:113
+#: src/frontends/qt4/QDocument.C:119
 msgid "Length"
 msgstr "Länge"
 
-#: src/frontends/qt4/QDocumentDialog.C:119 src/text.C:1740
+#: src/frontends/qt4/QDocument.C:125 src/text.C:1740
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
-#: src/frontends/qt4/QDocumentDialog.C:149
-#: src/frontends/qt4/QDocumentDialog.C:155
-#: src/frontends/qt4/QDocumentDialog.C:161
+#: src/frontends/qt4/QDocument.C:164 src/frontends/qt4/QDocument.C:170
+#: src/frontends/qt4/QDocument.C:176
 msgid " (not installed)"
 msgstr " (nicht installiert)"
 
-#: src/frontends/qt4/QDocumentDialog.C:165
-#: src/frontends/qt4/QDocumentDialog.C:191
-#: src/frontends/qt4/QDocumentDialog.C:534
+#: src/frontends/qt4/QDocument.C:180 src/frontends/qt4/QDocument.C:217
+#: src/frontends/qt4/QDocument.C:599
 msgid "default"
 msgstr "Standard"
 
-#: src/frontends/qt4/QDocumentDialog.C:166
+#: src/frontends/qt4/QDocument.C:181
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocumentDialog.C:167
+#: src/frontends/qt4/QDocument.C:182
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocumentDialog.C:168
+#: src/frontends/qt4/QDocument.C:183
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocumentDialog.C:192
+#: src/frontends/qt4/QDocument.C:218
 msgid "empty"
 msgstr "leer"
 
-#: src/frontends/qt4/QDocumentDialog.C:193
+#: src/frontends/qt4/QDocument.C:219
 msgid "plain"
 msgstr "einfach"
 
-#: src/frontends/qt4/QDocumentDialog.C:194
+#: src/frontends/qt4/QDocument.C:220
 msgid "headings"
 msgstr "mit Überschriften"
 
-#: src/frontends/qt4/QDocumentDialog.C:195
+#: src/frontends/qt4/QDocument.C:221
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt4/QDocumentDialog.C:211
+#: src/frontends/qt4/QDocument.C:237
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocumentDialog.C:212
+#: src/frontends/qt4/QDocument.C:238
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocumentDialog.C:296
+#: src/frontends/qt4/QDocument.C:341
 msgid "LaTeX default"
 msgstr "LaTeX-Standard"
 
-#: src/frontends/qt4/QDocumentDialog.C:302
+#: src/frontends/qt4/QDocument.C:347
 msgid "``text''"
 msgstr "``Text''"
 
-#: src/frontends/qt4/QDocumentDialog.C:303
+#: src/frontends/qt4/QDocument.C:348
 msgid "''text''"
 msgstr "''Text''"
 
-#: src/frontends/qt4/QDocumentDialog.C:304
+#: src/frontends/qt4/QDocument.C:349
 msgid ",,text``"
 msgstr ",,Text``"
 
-#: src/frontends/qt4/QDocumentDialog.C:305
+#: src/frontends/qt4/QDocument.C:350
 msgid ",,text''"
 msgstr ",,Text''"
 
-#: src/frontends/qt4/QDocumentDialog.C:306
+#: src/frontends/qt4/QDocument.C:351
 msgid "<<text>>"
 msgstr "«Text»"
 
-#: src/frontends/qt4/QDocumentDialog.C:307
+#: src/frontends/qt4/QDocument.C:352
 msgid ">>text<<"
 msgstr "»Text«"
 
-#: src/frontends/qt4/QDocumentDialog.C:319
+#: src/frontends/qt4/QDocument.C:368
 msgid "Numbered"
 msgstr "Nummeriert"
 
-#: src/frontends/qt4/QDocumentDialog.C:320
+#: src/frontends/qt4/QDocument.C:369
 msgid "Appears in TOC"
 msgstr "Erscheint im Inhaltsverzeichnis"
 
-#: src/frontends/qt4/QDocumentDialog.C:333
+#: src/frontends/qt4/QDocument.C:389
 msgid "Author-year"
 msgstr " Autor-Jahr"
 
-#: src/frontends/qt4/QDocumentDialog.C:334
+#: src/frontends/qt4/QDocument.C:390
 msgid "Numerical"
 msgstr "Nummerisch"
 
-#: src/frontends/qt4/QDocumentDialog.C:366
+#: src/frontends/qt4/QDocument.C:432
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Nicht verfügbar: %1$s"
 
-#: src/frontends/qt4/QDocumentDialog.C:392
-#: src/frontends/qt4/QDocumentDialog.C:405
+#: src/frontends/qt4/QDocument.C:462 src/frontends/qt4/QDocument.C:475
 msgid "Document Class"
 msgstr "Dokumentklasse"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocument.C:464
 msgid "Text Layout"
 msgstr "Textformat"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocument.C:465
 msgid "Page Layout"
 msgstr "Seitenformat"
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocument.C:466
 msgid "Page Margins"
 msgstr "Seitenränder"
 
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocument.C:468
 msgid "Numbering & TOC"
 msgstr "Nummerierung & Inhaltsverzeichnis"
 
-#: src/frontends/qt4/QDocumentDialog.C:400
+#: src/frontends/qt4/QDocument.C:470
 msgid "Math Options"
 msgstr "Mathe-Optionen"
 
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocument.C:471
 msgid "Float Placement"
 msgstr "Gleitobjekt-Platzierung"
 
-#: src/frontends/qt4/QDocumentDialog.C:402
+#: src/frontends/qt4/QDocument.C:472
 msgid "Bullets"
 msgstr "Auflistungszeichen"
 
-#: src/frontends/qt4/QDocumentDialog.C:403
+#: src/frontends/qt4/QDocument.C:473
 msgid "Branches"
 msgstr "Zweige"
 
-#: src/frontends/qt4/QDocumentDialog.C:404
-#: src/frontends/qt4/QDocumentDialog.C:421
+#: src/frontends/qt4/QDocument.C:474 src/frontends/qt4/QDocument.C:486
 msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
-#: src/frontends/qt4/QERT.C:30
+#: src/frontends/qt4/QDocument.C:1237
+msgid "Document Settings"
+msgstr "Dokument-Einstellungen"
+
+#: src/frontends/qt4/QERT.C:68
 msgid "TeX Code Settings"
 msgstr "TeX-Code-Einstellungen"
 
-#: src/frontends/qt4/QExternal.C:282
+#: src/frontends/qt4/QExternal.C:495
 msgid "External Material"
 msgstr "Externes Material"
 
-#: src/frontends/qt4/QExternal.C:342
+#: src/frontends/qt4/QExternal.C:555
 msgid "Scale%"
 msgstr "Größe%"
 
@@ -12858,11 +12831,11 @@ msgstr "Größe%"
 msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
-#: src/frontends/qt4/QGraphics.C:63 src/frontends/qt4/QPrefsDialog.C:586
+#: src/frontends/qt4/QGraphics.C:63 src/frontends/qt4/QPrefs.C:625
 msgid "Graphics"
 msgstr "Grafik"
 
-#: src/frontends/qt4/QInclude.C:42
+#: src/frontends/qt4/QInclude.C:134
 msgid "Child Document"
 msgstr "Unterdokument"
 
@@ -12874,197 +12847,207 @@ msgstr "Mathe-Matrix"
 msgid "LyX: Insert Matrix"
 msgstr "LyX: Matrix einfügen"
 
-#: src/frontends/qt4/QNote.C:34
+#: src/frontends/qt4/QNote.C:70
 msgid "Note Settings"
 msgstr "Notiz-Einstellungen"
 
-#: src/frontends/qt4/QParagraph.C:42
+#: src/frontends/qt4/QParagraph.C:71
+msgid ""
+"As described in the User Guide, the length of this text will determine how "
+"wide the label part of each item is in environments like List and "
+"Description.\n"
+"\n"
+" Normally you won't need to set this, since the largest label width of all "
+"the items is used. But if you need to, you can change it here."
+msgstr ""
+
+#: src/frontends/qt4/QParagraph.C:177
 msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
-#: src/frontends/qt4/QParagraph.C:104 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:239 src/paragraph.C:1591
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/frontends/qt4/QPrefs.C:38
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/frontends/qt4/QPrefsDialog.C:78
+#: src/frontends/qt4/QPrefs.C:73
 msgid "Look and feel"
 msgstr "Aussehen & Handhabung"
 
-#: src/frontends/qt4/QPrefsDialog.C:79
+#: src/frontends/qt4/QPrefs.C:74
 msgid "Language settings"
 msgstr "Spracheinstellungen"
 
-#: src/frontends/qt4/QPrefsDialog.C:80
+#: src/frontends/qt4/QPrefs.C:75
 msgid "Outputs"
 msgstr "Ausgaben"
 
-#: src/frontends/qt4/QPrefsDialog.C:174
+#: src/frontends/qt4/QPrefs.C:173
 msgid "Plain text"
 msgstr "Einfacher Text"
 
-#: src/frontends/qt4/QPrefsDialog.C:199
+#: src/frontends/qt4/QPrefs.C:204
 msgid "Date format"
 msgstr "Datumsformat"
 
-#: src/frontends/qt4/QPrefsDialog.C:220
+#: src/frontends/qt4/QPrefs.C:231
 msgid "Keyboard"
 msgstr "Tastatur"
 
-#: src/frontends/qt4/QPrefsDialog.C:332
+#: src/frontends/qt4/QPrefs.C:355
 msgid "Screen fonts"
 msgstr "Bildschirmschriften"
 
-#: src/frontends/qt4/QPrefsDialog.C:484
+#: src/frontends/qt4/QPrefs.C:513
 msgid "Colors"
 msgstr "Farben"
 
-#: src/frontends/qt4/QPrefsDialog.C:565 src/frontends/qt4/QPrefsDialog.C:653
+#: src/frontends/qt4/QPrefs.C:599 src/frontends/qt4/QPrefs.C:698
 msgid "Paths"
 msgstr "Pfade"
 
-#: src/frontends/qt4/QPrefsDialog.C:704
+#: src/frontends/qt4/QPrefs.C:749
 msgid "Select a document templates directory"
 msgstr "Wählen Sie ein Verzeichnis für die Dokumentvorlagen"
 
-#: src/frontends/qt4/QPrefsDialog.C:714
+#: src/frontends/qt4/QPrefs.C:759
 msgid "Select a temporary directory"
 msgstr "Wählen Sie ein temporäres Verzeichnis"
 
-#: src/frontends/qt4/QPrefsDialog.C:724
+#: src/frontends/qt4/QPrefs.C:769
 msgid "Select a backups directory"
 msgstr "Wählen Sie ein Verzeichnis für Sicherungen"
 
-#: src/frontends/qt4/QPrefsDialog.C:734
+#: src/frontends/qt4/QPrefs.C:779
 msgid "Select a document directory"
 msgstr "Wählen Sie ein Dokumentverzeichnis"
 
-#: src/frontends/qt4/QPrefsDialog.C:744
+#: src/frontends/qt4/QPrefs.C:789
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
-#: src/frontends/qt4/QPrefsDialog.C:751 src/frontends/qt4/QSpellchecker.C:34
+#: src/frontends/qt4/QPrefs.C:802 src/frontends/qt4/QSpellchecker.C:135
 msgid "Spellchecker"
 msgstr "Rechtschreibprüfung"
 
-#: src/frontends/qt4/QPrefsDialog.C:773
+#: src/frontends/qt4/QPrefs.C:824
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefsDialog.C:774
+#: src/frontends/qt4/QPrefs.C:825
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:775
+#: src/frontends/qt4/QPrefs.C:826
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:777
+#: src/frontends/qt4/QPrefs.C:828
 msgid "pspell (library)"
 msgstr "pspell (Bibliothek)"
 
-#: src/frontends/qt4/QPrefsDialog.C:780
+#: src/frontends/qt4/QPrefs.C:831
 msgid "aspell (library)"
 msgstr "aspell (Bibliothek)"
 
-#: src/frontends/qt4/QPrefsDialog.C:853
+#: src/frontends/qt4/QPrefs.C:912
 msgid "Converters"
 msgstr "Konverter"
 
-#: src/frontends/qt4/QPrefsDialog.C:1037
+#: src/frontends/qt4/QPrefs.C:1102
 msgid "Copiers"
 msgstr "Kopierer"
 
-#: src/frontends/qt4/QPrefsDialog.C:1281
+#: src/frontends/qt4/QPrefs.C:1355
 msgid "File formats"
 msgstr "Dateiformate"
 
-#: src/frontends/qt4/QPrefsDialog.C:1473
+#: src/frontends/qt4/QPrefs.C:1547
 msgid "Format in use"
 msgstr "Format wird verwendet"
 
-#: src/frontends/qt4/QPrefsDialog.C:1474
+#: src/frontends/qt4/QPrefs.C:1548
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
 "werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt4/QPrefsDialog.C:1565
+#: src/frontends/qt4/QPrefs.C:1649
 msgid "Printer"
 msgstr "Drucker"
 
-#: src/frontends/qt4/QPrefsDialog.C:1657 src/frontends/qt4/QPrefsDialog.C:1844
+#: src/frontends/qt4/QPrefs.C:1747 src/frontends/qt4/QPrefs.C:1941
 msgid "User interface"
 msgstr "Benutzerschnittstelle"
 
-#: src/frontends/qt4/QPrefsDialog.C:1770
+#: src/frontends/qt4/QPrefs.C:1865
 msgid "Identity"
 msgstr "Identität"
+
+#: src/frontends/qt4/QPrefs.C:2007
+msgid "Preferences"
+msgstr "Einstellungen"
 
 #: src/frontends/qt4/QPrint.C:36
 msgid "Print Document"
 msgstr "Dokument drucken"
 
-#: src/frontends/qt4/QRef.C:45
+#: src/frontends/qt4/QRef.C:188
 msgid "Cross-reference"
 msgstr "Querverweis"
 
-#: src/frontends/qt4/QRef.C:139
+#: src/frontends/qt4/QRef.C:284
 msgid "&Go Back"
 msgstr "&Gehe zurück"
 
-#: src/frontends/qt4/QRef.C:141
+#: src/frontends/qt4/QRef.C:286
 msgid "Jump back"
 msgstr "Springe zurück"
 
-#: src/frontends/qt4/QRef.C:149
+#: src/frontends/qt4/QRef.C:294
 msgid "Jump to label"
 msgstr "Springe zur Marke"
 
-#: src/frontends/qt4/QSearch.C:30
+#: src/frontends/qt4/QSearch.C:138
 msgid "Find and Replace"
 msgstr "Suchen und Ersetzen"
 
-#: src/frontends/qt4/QSendto.C:35
+#: src/frontends/qt4/QSendto.C:84
 msgid "Send Document to Command"
 msgstr "Dokument an Befehl senden"
 
-#: src/frontends/qt4/QShowFile.C:32
+#: src/frontends/qt4/QShowFile.C:57
 msgid "Show File"
 msgstr "Zeige Datei"
 
-#: src/frontends/qt4/QTabular.C:42
+#: src/frontends/qt4/QTabular.C:523
 msgid "Table Settings"
 msgstr "Tabellen-Einstellungen"
 
-#: src/frontends/qt4/QTabularCreate.C:29
+#: src/frontends/qt4/QTabularCreate.C:73
 msgid "Insert Table"
 msgstr "Tabelle einfügen"
 
-#: src/frontends/qt4/QTexinfo.C:32
+#: src/frontends/qt4/QTexinfo.C:127
 msgid "TeX Information"
 msgstr "TeX-Informationen"
 
-#: src/frontends/qt4/QVSpace.C:132
+#: src/frontends/qt4/QVSpace.C:188
 msgid "Vertical Space Settings"
 msgstr "Einstellungen für vertikalen Abstand"
 
-#: src/frontends/qt4/QWrap.C:39
+#: src/frontends/qt4/QWrap.C:83
 msgid "Text Wrap Settings"
 msgstr "Einstellungen für umflossenes Gleitobjekt"
 
-#: src/frontends/qt4/validators.C:157
+#: src/frontends/qt4/validators.C:153
 msgid "space"
 msgstr "Leerzeichen"
 
-#: src/frontends/qt4/validators.C:186
+#: src/frontends/qt4/validators.C:180
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
-#: src/frontends/qt4/validators.C:187
+#: src/frontends/qt4/validators.C:181
 msgid ""
 "LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
@@ -13090,19 +13073,19 @@ msgstr "Keine Informationen vorhanden, um das Format %1$s zu importieren."
 msgid "imported."
 msgstr "wurde eingefügt."
 
-#: src/insets/insetbase.C:242
+#: src/insets/InsetBase.cpp:252
 msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
-#: src/insets/insetbibtex.C:109
+#: src/insets/InsetBibtex.cpp:109
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-erzeugtes Literaturverzeichnis"
 
-#: src/insets/insetbibtex.C:206 src/insets/insetbibtex.C:259
+#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
 msgid "Export Warning!"
 msgstr "Export-Warnung!"
 
-#: src/insets/insetbibtex.C:207
+#: src/insets/InsetBibtex.cpp:207
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -13110,7 +13093,7 @@ msgstr ""
 "Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
 "BiBTeX wird die Datenbanken nicht finden."
 
-#: src/insets/insetbibtex.C:260
+#: src/insets/InsetBibtex.cpp:260
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -13118,139 +13101,139 @@ msgstr ""
 "Der Pfad zu Ihrer BibTeX-Stil-Datei enthält Leerzeichen.\n"
 "BiBTeX wird sie nicht finden."
 
-#: src/insets/insetbox.C:65
+#: src/insets/InsetBox.cpp:65
 msgid "Boxed"
 msgstr "Gerahmt"
 
-#: src/insets/insetbox.C:66
+#: src/insets/InsetBox.cpp:66
 msgid "Frameless"
 msgstr "Rahmenlos"
 
-#: src/insets/insetbox.C:67
+#: src/insets/InsetBox.cpp:67
 msgid "ovalbox"
 msgstr "Ovale Box, dünn"
 
-#: src/insets/insetbox.C:68
+#: src/insets/InsetBox.cpp:68
 msgid "Ovalbox"
 msgstr "Ovale Box, dick"
 
-#: src/insets/insetbox.C:69
+#: src/insets/InsetBox.cpp:69
 msgid "Shadowbox"
 msgstr "Schattierte Box"
 
-#: src/insets/insetbox.C:70
+#: src/insets/InsetBox.cpp:70
 msgid "Doublebox"
 msgstr "Doppelt gerahmte Box"
 
-#: src/insets/insetbox.C:126
+#: src/insets/InsetBox.cpp:126
 msgid "Opened Box Inset"
 msgstr "Box-Einfügung geöffnet"
 
-#: src/insets/insetbranch.C:76
+#: src/insets/InsetBranch.cpp:76
 msgid "Opened Branch Inset"
 msgstr "Zweig-Einfügung geöffnet"
 
-#: src/insets/insetbranch.C:101
+#: src/insets/InsetBranch.cpp:101
 msgid "Branch: "
 msgstr "Zweig: "
 
-#: src/insets/insetbranch.C:108 src/insets/insetcharstyle.C:163
-#: src/insets/insetcharstyle.C:212
+#: src/insets/InsetBranch.cpp:108 src/insets/InsetCharStyle.cpp:163
+#: src/insets/InsetCharStyle.cpp:212
 msgid "Undef: "
 msgstr "Undef.: "
 
-#: src/insets/insetbranch.C:239
+#: src/insets/InsetBranch.cpp:239
 msgid "branch"
 msgstr "Zweig"
 
-#: src/insets/insetcaption.C:87
+#: src/insets/InsetCaption.cpp:87
 msgid "Opened Caption Inset"
 msgstr "Legenden-Einfügung geöffnet"
 
-#: src/insets/insetcaption.C:276
+#: src/insets/InsetCaption.cpp:276
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/insets/insetcharstyle.C:123
+#: src/insets/InsetCharStyle.cpp:123
 msgid "Opened CharStyle Inset"
 msgstr "Zeichenstil-Einfügung geöffnet"
 
-#: src/insets/insetcommand.C:98
+#: src/insets/InsetCommand.cpp:98
 msgid "LaTeX Command: "
 msgstr "LaTeX-Befehl: "
 
-#: src/insets/insetcommandparams.C:268
+#: src/insets/InsetCommandParams.cpp:268
 msgid "Unknown inset name: "
 msgstr "Unbekannter Name für Einfügung: "
 
-#: src/insets/insetcommandparams.C:292
+#: src/insets/InsetCommandParams.cpp:292
 msgid "Inset Command: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/insetcommandparams.C:293
+#: src/insets/InsetCommandParams.cpp:293
 msgid "Unknown parameter name: "
 msgstr "Unbekannter Argumentname: "
 
-#: src/insets/insetcommandparams.C:300
+#: src/insets/InsetCommandParams.cpp:300
 msgid "Missing \\end_inset at this point."
 msgstr "Fehlendes \\end_inset an dieser Stelle."
 
-#: src/insets/insetenv.C:66
+#: src/insets/InsetEnv.cpp:66
 msgid "Opened Environment Inset: "
 msgstr "Umgebungseinfügung geöffnet: "
 
-#: src/insets/insetert.C:143
+#: src/insets/InsetERT.cpp:143
 msgid "Opened ERT Inset"
 msgstr "ERT-Einfügung geöffnet"
 
-#: src/insets/insetert.C:390
+#: src/insets/InsetERT.cpp:390
 msgid "ERT"
 msgstr "ERT"
 
-#: src/insets/insetexternal.C:576
+#: src/insets/InsetExternal.cpp:576
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Externe Vorlage %1$s ist nicht installiert"
 
-#: src/insets/insetfloat.C:121 src/insets/insetfloat.C:373
-#: src/insets/insetfloat.C:383
+#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:373
+#: src/insets/InsetFloat.cpp:383
 msgid "float: "
 msgstr "Gleitobjekt: "
 
-#: src/insets/insetfloat.C:278
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Gleitobjekt-Einfügung geöffnet"
 
-#: src/insets/insetfloat.C:334
+#: src/insets/InsetFloat.cpp:334
 msgid "float"
 msgstr "Gleitobjekt"
 
-#: src/insets/insetfloat.C:385
+#: src/insets/InsetFloat.cpp:385
 msgid " (sideways)"
 msgstr " (seitwärts)"
 
-#: src/insets/insetfloatlist.C:59
+#: src/insets/InsetFloatList.cpp:59
 msgid "ERROR: Nonexistent float type!"
 msgstr "FEHLER: Nicht existierender Gleitobjekt-Typ!"
 
-#: src/insets/insetfloatlist.C:124
+#: src/insets/InsetFloatList.cpp:124
 #, c-format
 msgid "List of %1$s"
 msgstr "Liste der %1$s"
 
-#: src/insets/insetfoot.C:37 src/insets/insetfoot.C:45
+#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:45
 msgid "foot"
 msgstr "Fußnote"
 
-#: src/insets/insetfoot.C:58
+#: src/insets/InsetFoot.cpp:58
 msgid "Opened Footnote Inset"
 msgstr "Fußnoten-Einfügung geöffnet"
 
-#: src/insets/insetfoot.C:87
+#: src/insets/InsetFoot.cpp:87
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:448
+#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -13261,29 +13244,29 @@ msgstr ""
 "%1$s\n"
 "konnte nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/insetgraphics.C:709
+#: src/insets/InsetGraphics.cpp:709
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
-#: src/insets/insetgraphics.C:821
+#: src/insets/InsetGraphics.cpp:821
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
-#: src/insets/insethfill.C:48
+#: src/insets/InsetHFill.cpp:48
 msgid "Horizontal Fill"
 msgstr "Variabler horiz. Abstand"
 
-#: src/insets/insetinclude.C:306
+#: src/insets/InsetInclude.cpp:306
 msgid "Verbatim Input"
 msgstr "Unformatiert"
 
-#: src/insets/insetinclude.C:309
+#: src/insets/InsetInclude.cpp:309
 msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
-#: src/insets/insetinclude.C:411
+#: src/insets/InsetInclude.cpp:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -13294,220 +13277,220 @@ msgstr ""
 "hat die Textklasse `%2$s'\n"
 "während die Hauptdatei die Textklasse `%3$s' hat."
 
-#: src/insets/insetinclude.C:417
+#: src/insets/InsetInclude.cpp:417
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
-#: src/insets/insetindex.C:42
+#: src/insets/InsetIndex.cpp:42
 msgid "Idx"
 msgstr "Stichwort"
 
-#: src/insets/insetindex.C:75
+#: src/insets/InsetIndex.cpp:75
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
-#: src/insets/insetmarginal.C:33 src/insets/insetmarginal.C:41
-#: src/insets/insetmarginal.C:71
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:41
+#: src/insets/InsetMarginal.cpp:71
 msgid "margin"
 msgstr "Rand"
 
-#: src/insets/insetmarginal.C:54
+#: src/insets/InsetMarginal.cpp:54
 msgid "Opened Marginal Note Inset"
 msgstr "Randnotiz-Einfügung geöffnet"
 
-#: src/insets/insetnomencl.C:39
+#: src/insets/InsetNomencl.cpp:39
 msgid "Glo"
 msgstr "Glo"
 
-#: src/insets/insetnomencl.C:86
+#: src/insets/InsetNomencl.cpp:86
 msgid "Glossary"
 msgstr "Glossar"
 
-#: src/insets/insetnote.C:66
+#: src/insets/InsetNote.cpp:66
 msgid "Comment"
 msgstr "Kommentar"
 
-#: src/insets/insetnote.C:67
+#: src/insets/InsetNote.cpp:67
 msgid "Greyed out"
 msgstr "Grauschrift"
 
-#: src/insets/insetnote.C:68
+#: src/insets/InsetNote.cpp:68
 msgid "Framed"
 msgstr "Eingerahmt"
 
-#: src/insets/insetnote.C:69
+#: src/insets/InsetNote.cpp:69
 msgid "Shaded"
 msgstr "Schattiert"
 
-#: src/insets/insetnote.C:149
+#: src/insets/InsetNote.cpp:149
 msgid "Opened Note Inset"
 msgstr "Notiz-Einfügung geöffnet"
 
-#: src/insets/insetoptarg.C:37 src/insets/insetoptarg.C:47
+#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
 msgid "opt"
 msgstr "Opt"
 
-#: src/insets/insetoptarg.C:59
+#: src/insets/InsetOptArg.cpp:59
 msgid "Opened Optional Argument Inset"
 msgstr "Einfügung für optionales Argument geöffnet"
 
-#: src/insets/insetpagebreak.h:65
+#: src/insets/InsetPagebreak.h:65
 msgid "Clear Page"
 msgstr "Seite leeren"
 
-#: src/insets/insetpagebreak.h:81
+#: src/insets/InsetPagebreak.h:81
 msgid "Clear Double Page"
 msgstr "Doppelseite leeren"
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:187
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "Querverweis: "
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:188
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "Gleichung"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:188
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "(Querverweis): "
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:189
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:189
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "Seite: "
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:190
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:190
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "TextSeite: "
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:191
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:191
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "Querverweis+Text: "
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:192
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:192
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
 msgid "FormatRef: "
 msgstr "Formatiert: "
 
-#: src/insets/insettabular.C:451
+#: src/insets/InsetTabular.cpp:451
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/insettabular.C:1606
+#: src/insets/InsetTabular.cpp:1606
 msgid "Error setting multicolumn"
 msgstr "Fehler beim Festlegen der Mehrfachspalte"
 
-#: src/insets/insettabular.C:1607
+#: src/insets/InsetTabular.cpp:1607
 msgid "You cannot set multicolumn vertically."
 msgstr "Sie können eine Mehrfachspalte nicht vertikal festlegen."
 
-#: src/insets/insettext.C:236
+#: src/insets/InsetText.cpp:236
 msgid "Opened Text Inset"
 msgstr "Text-Einfügung geöffnet"
 
-#: src/insets/insettheorem.C:41
+#: src/insets/InsetTheorem.cpp:41
 msgid "theorem"
 msgstr "Theorem"
 
-#: src/insets/insettheorem.C:91
+#: src/insets/InsetTheorem.cpp:91
 msgid "Opened Theorem Inset"
 msgstr "Theorem-Einfügung geöffnet"
 
-#: src/insets/insettoc.C:47
+#: src/insets/InsetTOC.cpp:47
 msgid "Unknown toc list"
 msgstr "Unbekannte Inhaltsverzeichnis-Liste"
 
-#: src/insets/inseturl.C:42
+#: src/insets/InsetUrl.cpp:42
 msgid "Url: "
 msgstr "URL: "
 
-#: src/insets/inseturl.C:42
+#: src/insets/InsetUrl.cpp:42
 msgid "HtmlUrl: "
 msgstr "HTML-URL: "
 
-#: src/insets/insetvspace.C:110
+#: src/insets/InsetVSpace.cpp:110
 msgid "Vertical Space"
 msgstr "Vertikaler Abstand"
 
-#: src/insets/insetwrap.C:49
+#: src/insets/InsetWrap.cpp:49
 msgid "wrap: "
 msgstr "Umflossenes Gleitobjekt: "
 
-#: src/insets/insetwrap.C:178
+#: src/insets/InsetWrap.cpp:178
 msgid "Opened Wrap Inset"
 msgstr "Einfügung für umflossenes Gleitobjekt geöffnet"
 
-#: src/insets/insetwrap.C:198
+#: src/insets/InsetWrap.cpp:198
 msgid "wrap"
 msgstr "Umflossenes Gleitobjekt"
 
-#: src/insets/render_graphic.C:90 src/insets/render_graphic.C:94
+#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
 msgid "Not shown."
 msgstr "Nicht angezeigt."
 
-#: src/insets/render_graphic.C:97
+#: src/insets/RenderGraphic.cpp:97
 msgid "Loading..."
 msgstr "Lade..."
 
-#: src/insets/render_graphic.C:100
+#: src/insets/RenderGraphic.cpp:100
 msgid "Converting to loadable format..."
 msgstr "Konvertiere in ein darstellbares Format..."
 
-#: src/insets/render_graphic.C:103
+#: src/insets/RenderGraphic.cpp:103
 msgid "Loaded into memory. Generating pixmap..."
 msgstr "In den Speicher geladen. Erzeugung der Pixmap..."
 
-#: src/insets/render_graphic.C:106
+#: src/insets/RenderGraphic.cpp:106
 msgid "Scaling etc..."
 msgstr "Skaliere etc..."
 
-#: src/insets/render_graphic.C:109
+#: src/insets/RenderGraphic.cpp:109
 msgid "Ready to display"
 msgstr "Bereit zur Anzeige"
 
-#: src/insets/render_graphic.C:112
+#: src/insets/RenderGraphic.cpp:112
 msgid "No file found!"
 msgstr "Keine Datei gefunden!"
 
-#: src/insets/render_graphic.C:115
+#: src/insets/RenderGraphic.cpp:115
 msgid "Error converting to loadable format"
 msgstr "Fehler bei der Konvertierung in ein darstellbares Format"
 
-#: src/insets/render_graphic.C:118
+#: src/insets/RenderGraphic.cpp:118
 msgid "Error loading file into memory"
 msgstr "Fehler beim Laden der Datei in den Speicher"
 
-#: src/insets/render_graphic.C:121
+#: src/insets/RenderGraphic.cpp:121
 msgid "Error generating the pixmap"
 msgstr "Fehler beim Generieren der Pixmap"
 
-#: src/insets/render_graphic.C:124
+#: src/insets/RenderGraphic.cpp:124
 msgid "No image"
 msgstr "Kein Bild"
 
-#: src/insets/render_preview.C:92
+#: src/insets/RenderPreview.cpp:92
 msgid "Preview loading"
 msgstr "Laden der Vorschau"
 
-#: src/insets/render_preview.C:95
+#: src/insets/RenderPreview.cpp:95
 msgid "Preview ready"
 msgstr "Vorschau bereit"
 
-#: src/insets/render_preview.C:98
+#: src/insets/RenderPreview.cpp:98
 msgid "Preview failed"
 msgstr "Die Vorschau ist fehlgeschlagen"
 
@@ -13657,11 +13640,11 @@ msgstr "&Umbenennen"
 msgid "Choose a filename to save document as"
 msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1868
+#: src/lyx_cb.C:137 src/lyxfunc.C:1867
 msgid "Templates|#T#t"
 msgstr "Vorlagen|#V"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2025
+#: src/lyx_cb.C:167 src/lyxfunc.C:2024
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13672,7 +13655,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument überschreiben?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:2027
+#: src/lyx_cb.C:169 src/lyxfunc.C:2026
 msgid "Over-write document?"
 msgstr "Dokument überschreiben?"
 
@@ -14004,7 +13987,7 @@ msgstr "Nichts zu tun"
 msgid "Unknown action"
 msgstr "Unbekannte Aktion"
 
-#: src/lyxfunc.C:426 src/lyxfunc.C:710
+#: src/lyxfunc.C:426 src/lyxfunc.C:709
 msgid "Command disabled"
 msgstr "Befehl ist deaktiviert"
 
@@ -14012,15 +13995,15 @@ msgstr "Befehl ist deaktiviert"
 msgid "Command not allowed without any document open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/lyxfunc.C:696
+#: src/lyxfunc.C:695
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#: src/lyxfunc.C:704
+#: src/lyxfunc.C:703
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/lyxfunc.C:723
+#: src/lyxfunc.C:722
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14031,7 +14014,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/lyxfunc.C:741
+#: src/lyxfunc.C:740
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -14040,11 +14023,11 @@ msgstr ""
 "Das Dokument %1$s konnte nicht gedruckt werden.\n"
 "Prüfen Sie, ob Ihr Drucker korrekt konfiguriert ist."
 
-#: src/lyxfunc.C:744
+#: src/lyxfunc.C:743
 msgid "Print document failed"
 msgstr "Das Drucken des Dokuments ist fehlgeschlagen"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:762
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -14053,20 +14036,20 @@ msgstr ""
 "Das Dokument konnte nicht in die Dokumentklasse\n"
 "%1$s konvertiert werden."
 
-#: src/lyxfunc.C:766
+#: src/lyxfunc.C:765
 msgid "Could not change class"
 msgstr "Die Klasse konnte nicht geändert werden"
 
-#: src/lyxfunc.C:878
+#: src/lyxfunc.C:877
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Speichere Dokument %1$s..."
 
-#: src/lyxfunc.C:882
+#: src/lyxfunc.C:881
 msgid " done."
 msgstr " fertig."
 
-#: src/lyxfunc.C:898
+#: src/lyxfunc.C:897
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -14075,77 +14058,77 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/lyxfunc.C:1090
+#: src/lyxfunc.C:1089
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/lyxfunc.C:1116 src/text3.C:1312
+#: src/lyxfunc.C:1115 src/text3.C:1312
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/lyxfunc.C:1125
+#: src/lyxfunc.C:1124
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/lyxfunc.C:1400
+#: src/lyxfunc.C:1399
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/lyxfunc.C:1487
+#: src/lyxfunc.C:1486
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1498
+#: src/lyxfunc.C:1497
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen - die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/lyxfunc.C:1612
+#: src/lyxfunc.C:1611
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/lyxfunc.C:1615
+#: src/lyxfunc.C:1614
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/lyxfunc.C:1671
+#: src/lyxfunc.C:1670
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/lyxfunc.C:1865
+#: src/lyxfunc.C:1864
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/lyxfunc.C:1904
+#: src/lyxfunc.C:1903
 msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
-#: src/lyxfunc.C:1943
+#: src/lyxfunc.C:1942
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/lyxfunc.C:1947
+#: src/lyxfunc.C:1946
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/lyxfunc.C:1949
+#: src/lyxfunc.C:1948
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/lyxfunc.C:1974
+#: src/lyxfunc.C:1973
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/lyxfunc.C:2098
+#: src/lyxfunc.C:2097
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
@@ -14705,79 +14688,79 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.cpp:127 src/mathed/MathMacroTemplate.cpp:108
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1241
-#: src/mathed/InsetMathSplit.C:76 src/mathed/InsetMathSubstack.C:75
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1241
+#: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Es können keine vertikalen Gitterlinien in '%1$s' hinzugefügt werden."
 
-#: src/mathed/InsetMathCases.C:98
+#: src/mathed/InsetMathCases.cpp:98
 #, c-format
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Keine vertikalen Gitterlinien in '%1$s'"
 
-#: src/mathed/InsetMathGrid.C:1312
+#: src/mathed/InsetMathGrid.cpp:1312
 msgid "Only one row"
 msgstr "Nur eine Zeile"
 
-#: src/mathed/InsetMathGrid.C:1318
+#: src/mathed/InsetMathGrid.cpp:1318
 msgid "Only one column"
 msgstr "Nur eine Spalte"
 
-#: src/mathed/InsetMathGrid.C:1326
+#: src/mathed/InsetMathGrid.cpp:1326
 msgid "No hline to delete"
 msgstr "Keine horizontale Linie zu löschen"
 
-#: src/mathed/InsetMathGrid.C:1335
+#: src/mathed/InsetMathGrid.cpp:1335
 msgid "No vline to delete"
 msgstr "Keine vertikale Linie zu löschen"
 
-#: src/mathed/InsetMathGrid.C:1353
+#: src/mathed/InsetMathGrid.cpp:1353
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.cpp:1080 src/mathed/InsetMathHull.cpp:1089
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.cpp:1080 src/mathed/InsetMathHull.cpp:1089
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.C:1214
+#: src/mathed/InsetMathHull.cpp:1214
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.C:1224
+#: src/mathed/InsetMathHull.cpp:1224
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.C:1234
+#: src/mathed/InsetMathHull.cpp:1234
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
 
-#: src/mathed/InsetMathHull.C:1330 src/text3.C:185
+#: src/mathed/InsetMathHull.cpp:1330 src/text3.C:185
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/mathed/InsetMathNest.C:847
+#: src/mathed/InsetMathNest.cpp:847
 msgid "create new math text environment ($...$)"
 msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
-#: src/mathed/InsetMathNest.C:850
+#: src/mathed/InsetMathNest.cpp:850
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
-#: src/mathed/MathMacroTemplate.C:240
+#: src/mathed/MathMacroTemplate.cpp:240
 msgid "math macro"
 msgstr "Mathe-Makro"
 
@@ -15118,11 +15101,11 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/text3.C:1417 src/text3.C:1429
+#: src/text3.C:1424 src/text3.C:1436
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1560
+#: src/text3.C:1567
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
