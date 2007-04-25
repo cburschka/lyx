@@ -1272,6 +1272,7 @@ lib_examples_da_files = Split('''
 ''')
 
 lib_examples_de_files = Split('''
+    Dezimal.lyx
     ItemizeBullets.lyx
     Lebenslauf.lyx
     Minipage.lyx
