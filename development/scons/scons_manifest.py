@@ -1316,7 +1316,6 @@ lib_examples_de_files = Split('''
     Waehrungen.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx
-    decimal.lyx
     splash.lyx
     mathed.lyx
     multicol.lyx
@@ -1419,7 +1418,6 @@ lib_examples_files = Split('''
     chessgame.lyx
     currency.lyx
     cv.lyx
-    decimal.lyx
     docbook_article.lyx
     example_lyxified.lyx
     example_raw.lyx
