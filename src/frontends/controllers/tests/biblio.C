@@ -13,7 +13,7 @@ using std::string;
 // Escape special chars.
 // All characters are literals except: '.|*?+(){}[]^$\'
 // These characters are literals when preceded by a "\", which is done here
-// This function is unfortunately copied from ../biblio.C, so we should
+// This function is unfortunately copied from ../frontend_helpers.cpp, so we should
 // try to make sure to keep the two in sync.
 string const escape_special_chars(string const & expr)
 {
@@ -35,7 +35,7 @@ typedef std::map<string, string> InfoMap;
 
 // A functor for use with std::find_if, used to ascertain whether a
 // data entry matches the required regex_
-// This class is unfortunately copied from ../biblio.C, so we should
+// This class is unfortunately copied from ../frontend_helpers.cpp, so we should
 // try to make sure to keep the two in sync.
 class RegexMatch : public std::unary_function<string, bool>
 {

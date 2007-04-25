@@ -402,7 +402,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 		// the various \\footcite commands. We should increase the
 		// file format number and read these commands here, too.
 		// Then we should use is_possible_cite_command() in
-		// src/frontends/controllers/biblio.C to test for valid cite
+		// src/frontends/controllers/frontend_helpers.cpp to test for valid cite
 		// commands.
 		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
 			inset.reset(new InsetCitation(inscmd));

@@ -585,11 +585,7 @@ src_frontends_controllers_files = Split('''
     ControlWrap.C
     Dialog.C
     Kernel.C
-    biblio.C
-    character.C
-    frnt_lang.C
-    helper_funcs.C
-    tex_helpers.C
+    frontend_helpers.cpp
 ''')
 
 

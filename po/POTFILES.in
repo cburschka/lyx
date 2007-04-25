@@ -30,11 +30,7 @@ src/frontends/controllers/ControlPrefs.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSpellchecker.C
 src/frontends/controllers/ControlToc.C
-src/frontends/controllers/biblio.C
-src/frontends/controllers/character.C
-src/frontends/controllers/frnt_lang.C
-src/frontends/controllers/helper_funcs.C
-src/frontends/controllers/tex_helpers.C
+src/frontends/controllers/frontend_helpers.cpp
 src/frontends/qt4/Alert_pimpl.C
 src/frontends/qt4/BulletsModule.C
 src/frontends/qt4/Dialogs.C

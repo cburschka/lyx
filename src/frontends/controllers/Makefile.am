@@ -15,13 +15,9 @@ libcontrollers_la_SOURCES= \
 	Dialog.h \
 	Kernel.C \
 	Kernel.h \
-	biblio.C \
 	biblio.h \
-	character.C \
 	character.h \
-	frnt_lang.C \
 	frnt_lang.h \
-	tex_helpers.C \
 	tex_helpers.h \
 	BCView.h \
 	BCView.C \
@@ -99,5 +95,5 @@ libcontrollers_la_SOURCES= \
 	ControlVSpace.h \
 	ControlWrap.C \
 	ControlWrap.h \
-	helper_funcs.C \
+	frontend_helpers.cpp \
 	helper_funcs.h
