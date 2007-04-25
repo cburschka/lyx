@@ -1329,6 +1329,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		mathDispatch(cur, FuncRequest(LFUN_SELF_INSERT, "^"), false);
 		break;
 
+	case LFUN_GREEK_INSERT: {
+		cur.insert(new InsetMathHull(hullSimple));
+		cur.dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+		cur.dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+		cur.dispatch(cmd);
+		break;
+	}
 	case LFUN_MATH_INSERT:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
@@ -1934,7 +1941,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_CLEARDOUBLEPAGE_INSERT:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_IMPORT_SELECTION:
-	case LFUN_MATH_INSERT:
+	case LFUN_GREEK_INSERT:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MACRO:
 	case LFUN_MATH_MATRIX:

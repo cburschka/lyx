@@ -180,6 +180,7 @@ void LyXAction::init()
 		{ LFUN_FONT_STATE, "font-state", ReadOnly },
 		{ LFUN_FONT_UNDERLINE, "font-underline", Noop },
 		{ LFUN_FOOTNOTE_INSERT, "footnote-insert", Noop },
+		{ LFUN_GREEK_INSERT, "greek-insert", Noop },
 		{ LFUN_HFILL_INSERT, "hfill-insert", Noop },
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument},
 		{ LFUN_HTML_INSERT, "html-insert", Noop },

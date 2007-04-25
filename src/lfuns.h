@@ -375,11 +375,12 @@ enum kb_action {
 	// 285
 	LFUN_BOOKMARK_CLEAR,             // bpeng 20061031
 	LFUN_TOOLBAR_TOGGLE_STATE,       // bpeng 20061101
-	LFUN_NOMENCL_INSERT,			 // Ugras
-	LFUN_NOMENCL_PRINT,			     // Ugras
+	LFUN_NOMENCL_INSERT,             // Ugras
+	LFUN_NOMENCL_PRINT,              // Ugras
 	LFUN_CLEARPAGE_INSERT,           // Ugras 20061125
 	//290
-	LFUN_CLEARDOUBLEPAGE_INSERT,     // ugras 20061125
+	LFUN_CLEARDOUBLEPAGE_INSERT,     // Ugras 20061125
+	LFUN_GREEK_INSERT,               // André 20070402
 
 	LFUN_LASTACTION                  // end of the table
 };
