@@ -148,7 +148,7 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 	PKG_PROG_PKG_CONFIG
 	save_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 	if test -n "$qt4_cv_dir" ; then
-	  PKG_CONFIG_PATH=$qt4_cv_dir/lib:$PKG_CONFIG_PATH
+	  PKG_CONFIG_PATH=$qt4_cv_dir/lib:$qt4_cv_dir/lib/pkgconfig:$PKG_CONFIG_PATH
 	  export PKG_CONFIG_PATH
 	fi
 	PKG_CHECK_MODULES(QT4_CORE, QtCore,,[:])
