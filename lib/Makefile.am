@@ -194,7 +194,6 @@ dist_examples_DATA = \
 	examples/chessgame.lyx \
 	examples/currency.lyx \
 	examples/cv.lyx \
-	examples/decimal.lyx \
 	examples/docbook_article.lyx \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
