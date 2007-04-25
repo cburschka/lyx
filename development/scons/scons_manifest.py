@@ -237,7 +237,7 @@ src_mathed_header_files = Split('''
     MathMacroTable.h
     MathMacroTemplate.h
     MathParser.h
-    MathReplace.h
+    ReplaceData.h
     MathStream.h
     MathSupport.h
     TextPainter.h
@@ -257,7 +257,7 @@ src_mathed_files = Split('''
     InsetMathCases.cpp
     InsetMathChar.cpp
     InsetMathColor.cpp
-    InsetMathCommand.cpp
+    CommandInset.cpp
     InsetMathComment.cpp
     InsetMathDFrac.cpp
     InsetMathDecoration.cpp
@@ -279,7 +279,7 @@ src_mathed_files = Split('''
     InsetMathKern.cpp
     InsetMathLefteqn.cpp
     InsetMathLim.cpp
-    InsetMathMacro.cpp
+    MathMacro.cpp
     InsetMathMakebox.cpp
     InsetMathMatrix.cpp
     InsetMathNest.cpp
@@ -466,11 +466,11 @@ src_frontends_files = Split('''
 
 
 src_graphics_header_files = Split('''
-    GraphicsCache.h
-    GraphicsCacheItem.h
+    Cache.h
+    CacheItem.h
     GraphicsConverter.h
-    GraphicsImage.h
-    GraphicsLoader.h
+    Image.h
+    Loader.h
     GraphicsParams.h
     GraphicsTypes.h
     LoaderQueue.h
@@ -481,11 +481,11 @@ src_graphics_header_files = Split('''
 
 
 src_graphics_files = Split('''
-    GraphicsCache.cpp
-    GraphicsCacheItem.cpp
+    Cache.cpp
+    CacheItem.cpp
     GraphicsConverter.cpp
-    GraphicsImage.cpp
-    GraphicsLoader.cpp
+    Image.cpp
+    Loader.cpp
     GraphicsParams.cpp
     GraphicsTypes.cpp
     LoaderQueue.cpp
@@ -684,6 +684,8 @@ src_frontends_qt4_moc_files = Split('''
     QLog.C
     QParagraph.C
     QShowFile.C
+    QBibitem.C
+    QNomencl.C
     emptytable.C
     FileDialog_private.C
     FloatPlacement.C
@@ -693,22 +695,21 @@ src_frontends_qt4_moc_files = Split('''
     lengthcombo.C
     InsertTableWidget.C
     panelstack.C
-    QBibitemDialog.C
-    QBibtexDialog.C
-    QBranchDialog.C
+    QBibtex.C
+    QBranch.C
     QBranches.C
-    QChangesDialog.C
-    QCharacterDialog.C
+    QChanges.C
+    QCharacter.C
     QCitationDialog.C
     QCommandBuffer.C
     QCommandEdit.C
     QDelimiterDialog.C
-    QErrorListDialog.C
-    QExternalDialog.C
+    QErrorList.C
+    QExternal.C
     QFloatDialog.C
     QGraphicsDialog.C
-    QIncludeDialog.C
-    QIndexDialog.C
+    QInclude.C
+    QIndex.C
     Action.C
     QLog.C
     QViewSource.C
@@ -717,11 +718,10 @@ src_frontends_qt4_moc_files = Split('''
     QLPrintDialog.C
     QMathMatrixDialog.C
     QNomencl.C
-    QNomenclDialog.C
-    QNoteDialog.C
-    QPrefsDialog.C
-    QRefDialog.C
-    QSendtoDialog.C
+    QNote.C
+    QPrefs.C
+    QRef.C
+    QSendto.C
     qsetborder.C
     QDialogView.C
     TocModel.C
@@ -754,18 +754,14 @@ src_frontends_qt4_header_files = Split('''
     InsertTableWidget.h
     About.h
     QBibitem.h
-    QBibitemDialog.h
     QBibtex.h
-    QBibtexDialog.h
     QBox.h
     QBranch.h
-    QBranchDialog.h
     QBranches.h
     QBrowseBox.h
     QChanges.h
-    QChangesDialog.h
     QCharacter.h
-    QCharacterDialog.h
+    QCharacter.h
     QCitation.h
     QCitationDialog.h
     QCommandBuffer.h
@@ -775,18 +771,14 @@ src_frontends_qt4_header_files = Split('''
     QDocument.h
     QERT.h
     QErrorList.h
-    QErrorListDialog.h
     QExternal.h
-    QExternalDialog.h
     QFloat.h
     QFloatDialog.h
     QGraphics.h
     QGraphicsDialog.h
     QGraphicsUi.h
     QInclude.h
-    QIncludeDialog.h
     QIndex.h
-    QIndexDialog.h
     QLImage.h
     QLMenubar.h
     QLPainter.h
@@ -797,18 +789,13 @@ src_frontends_qt4_header_files = Split('''
     QLyXKeySym.h
     QMathMatrixDialog.h
     QNomencl.h
-    QNomenclDialog.h
     QNote.h
-    QNoteDialog.h
     QParagraph.h
     QPrefs.h
-    QPrefsDialog.h
     QPrint.h
     QRef.h
-    QRefDialog.h
     QSearch.h
     QSendto.h
-    QSendtoDialog.h
     QShowFile.h
     QSpellchecker.h
     QTabular.h
@@ -860,17 +847,12 @@ src_frontends_qt4_files = Split('''
     LyXKeySymFactory.C
     QAbout.C
     QBibitem.C
-    QBibitemDialog.C
     QBibtex.C
-    QBibtexDialog.C
     QBox.C
     QBranch.C
-    QBranchDialog.C
     QBranches.C
     QChanges.C
-    QChangesDialog.C
     QCharacter.C
-    QCharacterDialog.C
     QCitation.C
     QCitationDialog.C
     QCommandBuffer.C
@@ -880,17 +862,13 @@ src_frontends_qt4_files = Split('''
     QDocument.C
     QERT.C
     QErrorList.C
-    QErrorListDialog.C
     QExternal.C
-    QExternalDialog.C
     QFloat.C
     QFloatDialog.C
     QGraphics.C
     QGraphicsDialog.C
     QInclude.C
-    QIncludeDialog.C
     QIndex.C
-    QIndexDialog.C
     QLImage.C
     QLMenubar.C
     QLPainter.C
@@ -901,18 +879,13 @@ src_frontends_qt4_files = Split('''
     QLyXKeySym.C
     QMathMatrixDialog.C
     QNomencl.C
-    QNomenclDialog.C
     QNote.C
-    QNoteDialog.C
     QParagraph.C
     QPrefs.C
-    QPrefsDialog.C
     QPrint.C
     QRef.C
-    QRefDialog.C
     QSearch.C
     QSendto.C
-    QSendtoDialog.C
     QShowFile.C
     QSpellchecker.C
     QTabular.C
@@ -1088,7 +1061,6 @@ src_header_files = Split('''
     paper.h
     paragraph.h
     paragraph_funcs.h
-    paragraph_pimpl.h
     ParagraphMetrics.h
     pariterator.h
     pspell.h
@@ -1192,7 +1164,6 @@ src_pre_files = Split('''
     outputparams.C
     paragraph.C
     paragraph_funcs.C
-    paragraph_pimpl.C
     ParagraphMetrics.C
     pariterator.C
     rowpainter.C
