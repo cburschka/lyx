@@ -1,4 +1,4 @@
-/**
+/*
  * \file QCitation.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
@@ -27,13 +27,11 @@ using std::vector;
 using std::string;
 
 
-namespace {
-
 template<typename String> static QStringList to_qstring_list(vector<String> const & v)
 {
 	QStringList qlist;
 
-	for (size_t i=0; i != v.size(); ++i) {
+	for (size_t i = 0; i != v.size(); ++i) {
 		if (v[i].empty())
 			continue;
 		qlist.append(lyx::toqstr(v[i]));
@@ -42,7 +40,7 @@ template<typename String> static QStringList to_qstring_list(vector<String> cons
 }
 
 
-vector<string> const to_string_vector(QStringList const & qlist)
+static vector<string> const to_string_vector(QStringList const & qlist)
 {
 	vector<string> v;
 	for (int i = 0; i != qlist.size(); ++i) {
@@ -51,8 +49,6 @@ vector<string> const to_string_vector(QStringList const & qlist)
 		v.push_back(lyx::fromqstr(qlist[i]));
 	}
 	return v;
-}
-
 }
 
 

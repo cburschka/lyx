@@ -17,8 +17,6 @@
 #include <QPushButton>
 #include <QLineEdit>
 
-using lyx::docstring;
-
 namespace lyx {
 namespace frontend {
 
@@ -37,16 +35,12 @@ void Qt2BC::setButtonEnabled(QPushButton * obj, bool enabled) const
 void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled) const
 {
 	// yuck, rtti, but the user comes first
-	if (obj->inherits("QLineEdit")) {
-		QLineEdit * le(static_cast<QLineEdit*>(obj));
+	if (QLineEdit * le = qobject_cast<QLineEdit*>(obj))
 		le->setReadOnly(!enabled);
-	} else {
+	else
 		obj->setEnabled(enabled);
-	}
 
-	Qt::FocusPolicy const p =
-		(enabled) ? Qt::StrongFocus : Qt::NoFocus;
-	obj->setFocusPolicy(p);
+	obj->setFocusPolicy(enabled ? Qt::StrongFocus : Qt::NoFocus);
 }
 
 

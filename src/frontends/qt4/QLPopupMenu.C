@@ -32,14 +32,9 @@ using std::string;
 using std::pair;
 using std::endl;
 
-namespace {
-
-} // namespace anon
 
 namespace lyx {
-
 namespace frontend {
-
 
 QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 						 MenuItem const & mi, bool topLevelMenu)
@@ -54,11 +49,10 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 }
 
 
-
 void QLPopupMenu::update()
 {
 	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION << endl;
-	LYXERR(Debug::GUI) << "\tTriggered menu: " << lyx::to_utf8(name_) << endl;
+	LYXERR(Debug::GUI) << "\tTriggered menu: " << to_utf8(name_) << endl;
 
 	clear();
 
@@ -72,16 +66,18 @@ void QLPopupMenu::update()
 	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view()->buffer());
 
 	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
-		LYXERR(Debug::GUI) << "\tWARNING: menu seems empty" << lyx::to_utf8(topLevelMenu_.name()) << endl;
+		LYXERR(Debug::GUI) << "\tWARNING: menu seems empty"	
+			<< to_utf8(topLevelMenu_.name()) << endl;
 	}
 	populate(this, &topLevelMenu_);
 }
 
 void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 {
-	LYXERR(Debug::GUI) << "populating menu " << lyx::to_utf8(menu->name()) ;
+	LYXERR(Debug::GUI) << "populating menu " << to_utf8(menu->name()) ;
 	if (menu->size() == 0) {
-		LYXERR(Debug::GUI) << "\tERROR: empty menu " << lyx::to_utf8(menu->name()) << endl;
+		LYXERR(Debug::GUI) << "\tERROR: empty menu "
+			<< to_utf8(menu->name()) << endl;
 		return;
 	}
 	else {
@@ -100,13 +96,15 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 
 		} else if (m->kind() == MenuItem::Submenu) {
 
-			LYXERR(Debug::GUI) << "** creating New Sub-Menu " << lyx::to_utf8(getLabel(*m)) << endl;
+			LYXERR(Debug::GUI) << "** creating New Sub-Menu "
+				<< to_utf8(getLabel(*m)) << endl;
 			QMenu * subMenu = qMenu->addMenu(toqstr(getLabel(*m)));
 			populate(subMenu, m->submenu());
 
 		} else { // we have a MenuItem::Command
 
-			LYXERR(Debug::GUI) << "creating Menu Item " << lyx::to_utf8(m->label()) << endl;
+			LYXERR(Debug::GUI) << "creating Menu Item "
+				<< to_utf8(m->label()) << endl;
 
 			docstring label = getLabel(*m);
 			addBinding(label, *m);
@@ -118,12 +116,12 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 	}
 }
 
+
 docstring const QLPopupMenu::getLabel(MenuItem const & mi)
 {
 	docstring const shortcut = mi.shortcut();
 	docstring label = support::subst(mi.label(),
-				      lyx::from_ascii("&"),
-				      lyx::from_ascii("&&"));
+	from_ascii("&"), from_ascii("&&"));
 
 	if (!shortcut.empty()) {
 		docstring::size_type pos = label.find(shortcut);

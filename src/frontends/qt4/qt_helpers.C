@@ -134,9 +134,11 @@ void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 	LengthCombo * lengthCombo) 
 {
 	if (!checkBox->isChecked()) 
-		lengthToWidgets(lineEdit, lengthCombo, "auto", lengthCombo->currentLengthItem());
+		lengthToWidgets(lineEdit, lengthCombo,
+		                "auto", lengthCombo->currentLengthItem());
 	else if (lineEdit->text() == "auto")
-		lengthToWidgets(lineEdit, lengthCombo, string(""), lengthCombo->currentLengthItem());
+		lengthToWidgets(lineEdit, lengthCombo, string(),
+		                lengthCombo->currentLengthItem());
 }
 
 
@@ -176,25 +178,25 @@ docstring const formatted(docstring const & text, int w)
 				      nxtpos2 < nxtpos1);
 
 		docstring const line_plus_word =
-			line.empty() ? word : line + lyx::char_type(' ') + word;
+			line.empty() ? word : line + char_type(' ') + word;
 
 		// FIXME: make w be size_t
 		if (int(line_plus_word.length()) >= w) {
-			sout += line + lyx::char_type('\n');
+			sout += line + char_type('\n');
 			if (newline) {
-				sout += word + lyx::char_type('\n');
+				sout += word + char_type('\n');
 				line.erase();
 			} else {
 				line = word;
 			}
 
 		} else if (newline) {
-			sout += line_plus_word + lyx::char_type('\n');
+			sout += line_plus_word + char_type('\n');
 			line.erase();
 
 		} else {
 			if (!line.empty())
-				line += lyx::char_type(' ');
+				line += char_type(' ');
 			line += word;
 		}
 

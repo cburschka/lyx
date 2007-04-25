@@ -38,6 +38,7 @@ private:
 	QIndex * form_;
 };
 
+
 class ControlCommand;
 
 class QIndex :
@@ -46,7 +47,7 @@ class QIndex :
 public:
 	friend class QIndexDialog;
 
-	QIndex(Dialog &, lyx::docstring const & title, QString const & label);
+	QIndex(Dialog &, docstring const & title, QString const & label);
 protected:
 	virtual bool isValid();
 private:

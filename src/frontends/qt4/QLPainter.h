@@ -90,11 +90,10 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual int text(int x, int y,
-		lyx::docstring const & str, LyXFont const & f);
+		docstring const & str, LyXFont const & f);
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual int text(int x, int y,
-                lyx::char_type c, LyXFont const & f);
+	virtual int text(int x, int y, char_type c, LyXFont const & f);
 
 private:
 	/// draw small caps text

@@ -17,8 +17,6 @@
 #include <QWidget>
 
 #include <map>
-#include <string>
-
 
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -35,23 +33,24 @@ public:
 	PanelStack(QWidget * parent = 0);
 
 	/// add a category with no associated panel
-	void addCategory(lyx::docstring const & name,
-		lyx::docstring const & parent = lyx::docstring());
+	void addCategory(docstring const & name,
+		docstring const & parent = docstring());
 
 	/// add a widget panel with a given name, under the given parent
-	void addPanel(QWidget * panel, lyx::docstring const & name,
-		lyx::docstring const & parent = lyx::docstring());
+	void addPanel(QWidget * panel, docstring const & name,
+		docstring const & parent = docstring());
 
 	/// set current panel by logical name
-	void setCurrentPanel(lyx::docstring const &);
+	void setCurrentPanel(docstring const &);
 
 	virtual QSize sizeHint() const;
+
 public Q_SLOTS:
 	/// set current panel from an item
-	void switchPanel(QTreeWidgetItem * i, QTreeWidgetItem* previous=0);
+	void switchPanel(QTreeWidgetItem * it, QTreeWidgetItem * previous = 0);
 
 private:
-	typedef std::map<lyx::docstring, QTreeWidgetItem *> PanelMap;
+	typedef std::map<docstring, QTreeWidgetItem *> PanelMap;
 
 	PanelMap panel_map_;
 

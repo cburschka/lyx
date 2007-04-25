@@ -71,7 +71,7 @@ docstring const GuiSelection::get() const
 
 void GuiSelection::put(docstring const & str)
 {
-	LYXERR(Debug::ACTION) << "GuiSelection::put: " << lyx::to_utf8(str) << endl;
+	LYXERR(Debug::ACTION) << "GuiSelection::put: " << to_utf8(str) << endl;
 
 	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
 	                           QClipboard::Selection);

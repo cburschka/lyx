@@ -43,40 +43,40 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 {
 	setupUi(this);
 	//main buttons
-	connect(okPB, SIGNAL( clicked() ),
-		form, SLOT( slotOK() ) );
-	connect(applyPB, SIGNAL( clicked() ),
-		form, SLOT( slotApply() ) );
-	connect(closePB, SIGNAL( clicked() ),
-		form, SLOT( slotClose() ) );
-	connect(restorePB, SIGNAL( clicked() ),
-		form, SLOT( slotRestore() ) );
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()),
+		form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()),
+		form, SLOT(slotRestore()));
 	
 	//graphics pane
-	connect(filename, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
-	connect(WidthCB, SIGNAL(  clicked() ),
-		this, SLOT( change_adaptor() ) );
-	connect(HeightCB, SIGNAL(  clicked() ),
-		this, SLOT( change_adaptor() ) );
-	connect(Width, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
-	connect(Height, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
-	connect(heightUnit, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ),
-		this, SLOT( change_adaptor() ) );
-	connect(widthUnit, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ),
-		this, SLOT( change_adaptor() ) );
-	connect(aspectratio, SIGNAL( stateChanged(int) ),
-		this, SLOT( change_adaptor() ) );
-	connect(angle, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
-	connect(origin, SIGNAL( activated(int) ),
-		this, SLOT( change_adaptor() ) );
-	connect(scaleCB, SIGNAL( clicked() ),
-		this, SLOT(change_adaptor()) );
-	connect(Scale, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
+	connect(filename, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(WidthCB, SIGNAL( clicked()),
+		this, SLOT(change_adaptor()));
+	connect(HeightCB, SIGNAL( clicked()),
+		this, SLOT(change_adaptor()));
+	connect(Width, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(Height, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(heightUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+		this, SLOT(change_adaptor()));
+	connect(widthUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+		this, SLOT(change_adaptor()));
+	connect(aspectratio, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(angle, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(origin, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(scaleCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(Scale, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
 	
 	filename->setValidator(new PathValidator(true, filename));
 	setFocusProxy(filename);
@@ -90,26 +90,26 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	angle->setValidator(new QDoubleValidator(-360, 360, 2, angle));
 
 	//clipping pane
-	connect(clip, SIGNAL( stateChanged(int) ),
-		this, SLOT( change_adaptor() ) );
-	connect(lbY, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_bb() ) );
-	connect(lbYunit, SIGNAL( activated(int) ),
-		this, SLOT( change_bb() ) );
-	connect(rtY, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_bb() ) );
-	connect(rtYunit, SIGNAL( activated(int) ),
-		this, SLOT( change_bb() ) );
-	connect(lbX, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_bb() ) );
-	connect(lbXunit, SIGNAL( activated(int) ),
-		this, SLOT( change_bb() ) );
-	connect(rtX, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_bb() ) );
-	connect(rtXunit, SIGNAL( activated(int) ),
-		this, SLOT( change_bb() ) );
-	connect(getPB, SIGNAL( clicked() ),
-		this, SLOT( change_adaptor() ) );
+	connect(clip, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(lbY, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_bb()));
+	connect(lbYunit, SIGNAL(activated(int)),
+		this, SLOT(change_bb()));
+	connect(rtY, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_bb()));
+	connect(rtYunit, SIGNAL(activated(int)),
+		this, SLOT(change_bb()));
+	connect(lbX, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_bb()));
+	connect(lbXunit, SIGNAL(activated(int)),
+		this, SLOT(change_bb()));
+	connect(rtX, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_bb()));
+	connect(rtXunit, SIGNAL(activated(int)),
+		this, SLOT(change_bb()));
+	connect(getPB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	
 	lbX->setValidator(new QDoubleValidator(lbX));
 	lbY->setValidator(new QDoubleValidator(lbY));
@@ -117,12 +117,12 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	rtY->setValidator(new QDoubleValidator(rtY));
 
 	//extra options pane
-	connect(latexoptions, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
-	connect(draftCB, SIGNAL( stateChanged(int) ),
-		this, SLOT( change_adaptor() ) );
-	connect(unzipCB, SIGNAL( stateChanged(int) ),
-		this, SLOT( change_adaptor() ) );
+	connect(latexoptions, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(draftCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(unzipCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
 	// FIXME: we should connect to clicked() when we move to Qt 4.2	because
 	// the toggled(bool) signal is also trigged when we update the widgets
 	// (rgh-4/07) this isn't as much or a problem as it was, because we're now
@@ -130,16 +130,16 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	// setChecked(). Note, too, that clicked() would get called whenever it
 	// is clicked, even right clicked (I think), not just whenever it is
 	// toggled.
-	connect(subfigure, SIGNAL( toggled(bool) ),
-		this, SLOT( change_adaptor() ) );
-	connect(subcaption, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
-	connect(displayGB, SIGNAL( toggled(bool) ),
-		this, SLOT( change_adaptor() ) );
-	connect(showCB, SIGNAL( currentIndexChanged(int) ),
-		this, SLOT( change_adaptor() ) );
-	connect(displayscale, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( change_adaptor() ) );
+	connect(subfigure, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(subcaption, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(displayGB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(showCB, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(displayscale, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
 	displayscale->setValidator(new QIntValidator(displayscale));
 }
 

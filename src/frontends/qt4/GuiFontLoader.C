@@ -45,9 +45,6 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiFontLoader::~GuiFontLoader() {
-}
-
 namespace {
 
 struct symbol_font {

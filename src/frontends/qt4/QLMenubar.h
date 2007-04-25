@@ -29,8 +29,6 @@ class Menu;
 class MenuItem;
 
 namespace lyx {
-
-
 namespace frontend {
 
 class GuiView;
@@ -41,7 +39,7 @@ public:
 	QLMenubar(LyXView *, MenuBackend &);
 
 	/// opens a top-level submenu given its name
-	void openByName(lyx::docstring const &);
+	void openByName(docstring const &);
 
 	/// return the owning view
 	GuiView * view();
@@ -69,7 +67,7 @@ private:
 	/// menu controller
 	MenuBackend & menubackend_;
 
-	typedef std::map<lyx::docstring, QLPopupMenu *> NameMap;
+	typedef std::map<docstring, QLPopupMenu *> NameMap;
 
 	/// name to menu for openByName
 	NameMap name_map_;

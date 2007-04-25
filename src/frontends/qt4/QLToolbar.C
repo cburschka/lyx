@@ -219,7 +219,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo.items.end();
 		for (; it != end; ++it) 
-			if (!lyx::getStatus(it->func_).unknown()) {
+			if (!getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,
 					getIcon(it->func_),
 					it->label_,
@@ -253,7 +253,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo.items.end();
 		for (; it != end; ++it)
-			if (!lyx::getStatus(it->func_).unknown()) {
+			if (!getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,
 					getIcon(it->func_, false),
 					it->label_,
@@ -267,7 +267,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		break;
 		}
 	case ToolbarItem::COMMAND: {
-		if (lyx::getStatus(item.func_).unknown())
+		if (getStatus(item.func_).unknown())
 			break;
 
 		Action * action = new Action(owner_,

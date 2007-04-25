@@ -433,7 +433,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 			latexModule->classCO->addItem(toqstr(cit->description()));
 		} else {
 			docstring item =
-				bformat(_("Unavailable: %1$s"), lyx::from_utf8(cit->description()));
+				bformat(_("Unavailable: %1$s"), from_utf8(cit->description()));
 			latexModule->classCO->addItem(toqstr(item));
 		}
 	}
@@ -667,7 +667,7 @@ void QDocumentDialog::classChanged()
 	ControlDocument & cntrl = form_->controller();
 	BufferParams & params = cntrl.params();
 
-	lyx::textclass_type const tc = latexModule->classCO->currentIndex();
+	textclass_type const tc = latexModule->classCO->currentIndex();
 
 	if (form_->controller().loadTextclass(tc)) {
 		params.textclass = tc;

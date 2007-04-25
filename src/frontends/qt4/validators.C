@@ -32,8 +32,6 @@
 #include <sstream>
 
 using lyx::support::isStrDbl;
-using lyx::docstring;
-
 using std::string;
 
 
@@ -141,9 +139,7 @@ PathValidator::PathValidator(bool acceptable_if_empty,
 {}
 
 
-namespace {
-
-docstring const printable_list(docstring const & invalid_chars)
+static docstring const printable_list(docstring const & invalid_chars)
 {
 	docstring s;
 	docstring::const_iterator const begin = invalid_chars.begin();
@@ -161,8 +157,6 @@ docstring const printable_list(docstring const & invalid_chars)
 
 	return s;
 }
-
-} // namespace anon
 
 
 QValidator::State PathValidator::validate(QString & qtext, int &) const

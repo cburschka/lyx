@@ -1181,7 +1181,7 @@ class SamePrettyName {
 public:
 	SamePrettyName(string const & n) : pretty_name_(n) {}
 
-	bool operator()(lyx::Format const & fmt) const {
+	bool operator()(Format const & fmt) const {
 		return fmt.prettyname() == pretty_name_;
 	}
 
@@ -1192,8 +1192,8 @@ private:
 
 Format const * getFormat(std::string const & prettyname)
 {
-	Formats::const_iterator it = lyx::formats.begin();
-	Formats::const_iterator const end = lyx::formats.end();
+	Formats::const_iterator it = formats.begin();
+	Formats::const_iterator const end = formats.end();
 	it = std::find_if(it, end, SamePrettyName(prettyname));
 	return it == end ? 0 : &*it;
 }
@@ -1595,8 +1595,7 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	defaultLanguageCO->clear();
 
 	// store the lang identifiers for later
-	std::vector<LanguagePair> const langs =
-		lyx::frontend::getLanguageData(false);
+	std::vector<LanguagePair> const langs = frontend::getLanguageData(false);
 	lang_ = getSecond(langs);
 
 	std::vector<LanguagePair>::const_iterator lit  = langs.begin();

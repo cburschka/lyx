@@ -75,7 +75,7 @@ typedef QController<ControlErrorList, QView<QErrorListDialog> >
 	ErrorListBase;
 
 QErrorList::QErrorList(Dialog & parent)
-	: ErrorListBase(parent, lyx::docstring())
+	: ErrorListBase(parent, docstring())
 {}
 
 
@@ -96,7 +96,7 @@ void QErrorList::select(QListWidgetItem * wi)
 
 void QErrorList::update_contents()
 {
-	setTitle(lyx::from_utf8(controller().name()));
+	setTitle(from_utf8(controller().name()));
 	dialog_->errorsLW->clear();
 	dialog_->descriptionTB->setPlainText(QString());
 

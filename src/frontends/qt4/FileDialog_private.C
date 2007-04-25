@@ -22,36 +22,29 @@
 #include <QHBoxLayout>
 
 using lyx::support::split;
-using lyx::docstring;
-
 using std::string;
-
-
-namespace {
-
-/// return the Qt form of the label
-docstring const getLabel(docstring const & ucs4str) {
-	// FIXME UNICODE
-	string str = lyx::to_utf8(ucs4str);
-	string label;
-	string sc(split(str, label, '|'));
-	if (sc.length() < 2)
-		return lyx::from_utf8(label);
-	string::size_type pos = label.find(sc[1]);
-	if (pos == string::npos)
-		return lyx::from_utf8(label);
-	label.insert(pos, 1, '&');
-	return lyx::from_utf8(label);
-}
-
-} // namespace anon
-
 
 namespace lyx {
 
+/// return the Qt form of the label
+static docstring const getLabel(docstring const & ucs4str) {
+	// FIXME UNICODE
+	string str = to_utf8(ucs4str);
+	string label;
+	string sc(split(str, label, '|'));
+	if (sc.length() < 2)
+		return from_utf8(label);
+	string::size_type pos = label.find(sc[1]);
+	if (pos == string::npos)
+		return from_utf8(label);
+	label.insert(pos, 1, '&');
+	return from_utf8(label);
+}
+
+
 LyXFileDialog::LyXFileDialog(docstring const & t,
 			     docstring const & p,
-			     lyx::support::FileFilterList const & filters,
+			     support::FileFilterList const & filters,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
 				 // FIXME replace that with theApp->gui()->currentView()

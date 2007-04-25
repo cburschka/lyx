@@ -40,14 +40,14 @@ public:
 
 
 /// Hold info about a particular font
-class GuiFontLoader: public FontLoader 
+class GuiFontLoader : public FontLoader 
 {
 public:
 	///
 	GuiFontLoader();
 	
 	/// Destructor
-	virtual ~GuiFontLoader();
+	virtual ~GuiFontLoader() {}
 
 	virtual void update();
 	virtual bool available(LyXFont const & f);

@@ -24,11 +24,6 @@ const QColor grey80(0xcc, 0xcc, 0xcc);
 const QColor grey90(0xe5, 0xe5, 0xe5);
 const QColor none = Qt::black;
 
-
-ColorCache::ColorCache()
-{
-}
-
 QColor const & ColorCache::get(LColor_color col) const
 {
 	lcolor_map::const_iterator cit = colormap.find(col);
@@ -58,7 +53,7 @@ void ColorCache::clear()
 }
 
 
-QColor const rgb2qcolor(lyx::RGBColor const & rgb)
+QColor const rgb2qcolor(RGBColor const & rgb)
 {
 	return QColor(rgb.r, rgb.g, rgb.b);
 }

@@ -32,18 +32,16 @@
 
 using std::pair;
 using std::make_pair;
+using lyx::support::bformat;
 
 namespace lyx {
-
-using lyx::support::bformat;
-using lyx::docstring;
 
 namespace {
 
 class MessageBox: public QMessageBox
 {
 public:
-	MessageBox(QWidget * parent = 0): QMessageBox(parent)
+	MessageBox(QWidget * parent = 0) : QMessageBox(parent)
 	{
 		setAttribute(Qt::WA_DeleteOnClose, true);
 		setAttribute(Qt::WA_QuitOnClose, false);
@@ -139,7 +137,7 @@ askForText_pimpl(docstring const & msg, docstring const & dflt)
 	bool ok;
 	QString text = QInputDialog::getText(qApp->focusWidget(),
 		toqstr(title),
-		toqstr(lyx::char_type('&') + msg),
+		toqstr(char_type('&') + msg),
 		QLineEdit::Normal,
 		toqstr(dflt), &ok);
 

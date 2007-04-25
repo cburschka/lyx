@@ -19,10 +19,6 @@
 
 #include <QAction>
 
-//class FuncRequest;
-
-//class string;
-
 namespace lyx {
 namespace frontend {
 
@@ -33,15 +29,15 @@ class GuiView;
  *
  * Action can be used in LyX menubar and/or toolbars.
  */
-class Action: public QAction {
+class Action : public QAction {
 	Q_OBJECT
 public:
 
-	Action(GuiView & lyxView, lyx::docstring const & text,
-		FuncRequest const & func, lyx::docstring const & tooltip = lyx::docstring());
+	Action(GuiView & lyxView, docstring const & text,
+		FuncRequest const & func, docstring const & tooltip = docstring());
 
-	Action(GuiView & lyxView, std::string const & icon, lyx::docstring const & text,
-		FuncRequest const & func, lyx::docstring const & tooltip = lyx::docstring());
+	Action(GuiView & lyxView, std::string const & icon, docstring const & text,
+		FuncRequest const & func, docstring const & tooltip = docstring());
 
 	void update();
 

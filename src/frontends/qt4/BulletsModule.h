@@ -25,10 +25,8 @@ namespace lyx {
 class BulletsModule : public QWidget, public Ui::BulletsUi {
 	Q_OBJECT
 public:
-
+	///
 	BulletsModule(QWidget * parent = 0, const char * name = 0, Qt::WFlags fl = 0);
-
-	~BulletsModule();
 
 	/// set a bullet
 	void setBullet(int level, Bullet const & bullet);
@@ -45,12 +43,13 @@ protected Q_SLOTS:
 	void on_bulletsizeCO_activated(int level);
 	void on_customCB_clicked(bool);
 	void on_customLE_textEdited(const QString &);
-	void bulletSelected(QListWidgetItem *, QListWidgetItem*);
+	void bulletSelected(QListWidgetItem *, QListWidgetItem *);
 	void showLevel(int);
 
 private:
 	void selectItem(int font, int character, bool select);
-	void setupPanel(QListWidget * lw, QString panelname, std::string fname);
+	void setupPanel(QListWidget * lw, QString const & panelname,
+		std::string const & fname);
 
 	/// store results
 	boost::array<Bullet, 4> bullets_;

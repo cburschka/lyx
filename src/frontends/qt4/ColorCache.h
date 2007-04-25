@@ -30,7 +30,7 @@ struct RGBColor;
  */
 class ColorCache {
 public:
-	ColorCache();
+	ColorCache() {}
 
 	/// get the given color
 	QColor const & get(LColor_color color) const;
@@ -45,7 +45,7 @@ private:
 };
 
 ///
-QColor const rgb2qcolor(lyx::RGBColor const &);
+QColor const rgb2qcolor(RGBColor const &);
 
 } // namespace lyx
 

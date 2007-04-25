@@ -369,7 +369,7 @@ void QBibtex::apply()
 		controller().params()["options"] = "bibtotoc," + bibstyle;
 	} else if (bibtotoc) {
 		// bibtotoc and no style
-		controller().params()["options"] = lyx::from_ascii("bibtotoc");
+		controller().params()["options"] = from_ascii("bibtotoc");
 	} else {
 		// only style. An empty one is valid, because some
 		// documentclasses have an own \bibliographystyle{}
@@ -385,13 +385,13 @@ void QBibtex::apply()
 
 	switch (btp) {
 	case 0:
-		controller().params()["btprint"] = lyx::from_ascii("btPrintCited");
+		controller().params()["btprint"] = from_ascii("btPrintCited");
 		break;
 	case 1:
-		controller().params()["btprint"] = lyx::from_ascii("btPrintNotCited");
+		controller().params()["btprint"] = from_ascii("btPrintNotCited");
 		break;
 	case 2:
-		controller().params()["btprint"] = lyx::from_ascii("btPrintAll");
+		controller().params()["btprint"] = from_ascii("btPrintAll");
 		break;
 	}
 

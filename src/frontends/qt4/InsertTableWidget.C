@@ -146,7 +146,7 @@ void InsertTableWidget::drawGrid(int const rows, int const cols, Qt::GlobalColor
 
 void InsertTableWidget::updateParent()
 {
-	bool status = lyx::getStatus(FuncRequest(LFUN_TABULAR_INSERT)).enabled();
+	bool status = getStatus(FuncRequest(LFUN_TABULAR_INSERT)).enabled();
 	parentWidget()->setEnabled(status);
 }
 

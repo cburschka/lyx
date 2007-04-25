@@ -22,7 +22,7 @@ namespace frontend {
 /**
  * The Qt4 version of the Selection.
  */
-class GuiSelection: public Selection
+class GuiSelection : public Selection
 {
 public:
 	virtual ~GuiSelection() {}

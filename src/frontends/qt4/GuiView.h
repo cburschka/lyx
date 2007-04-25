@@ -69,7 +69,7 @@ public:
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();
-	virtual void message(lyx::docstring const & str);
+	virtual void message(docstring const & str);
 	virtual void clearMessage();
 	virtual bool hasFocus() const;
 
@@ -124,7 +124,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(lyx::docstring const & t, lyx::docstring const & it);
+	virtual void setWindowTitle(docstring const & t, docstring const & it);
 
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);

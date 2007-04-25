@@ -32,13 +32,7 @@ using std::pair;
 using std::string;
 using std::endl;
 
-namespace {
-
-} // namespace anon
-
 namespace lyx {
-
-
 namespace frontend {
 
 // MacOSX specific stuff is at the end.
@@ -48,17 +42,18 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 {
 	macxMenuBarInit();
 
-	LYXERR(Debug::GUI) << "populating menu bar" << lyx::to_utf8(menubackend_.getMenubar().name()) << endl;
+	LYXERR(Debug::GUI) << "populating menu bar" << to_utf8(menubackend_.getMenubar().name()) << endl;
 
 	if (menubackend_.getMenubar().size() == 0) {
-		LYXERR(Debug::GUI) << "\tERROR: empty menu bar" << lyx::to_utf8(menubackend_.getMenubar().name()) << endl;
+		LYXERR(Debug::GUI) << "\tERROR: empty menu bar"
+			<< to_utf8(menubackend_.getMenubar().name()) << endl;
 		return;
 		//			continue;
 	}
 	else {
-		LYXERR(Debug::GUI) << "menu bar entries " << menubackend_.getMenubar().size();
+		LYXERR(Debug::GUI) << "menu bar entries "
+			<< menubackend_.getMenubar().size();
 	}
-	//	for (; m != end; ++m) {
 
 	Menu menu;
 	menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
@@ -69,15 +64,18 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 	for (; m != end; ++m) {
 
 		if (m->kind() != MenuItem::Submenu) {
-			LYXERR(Debug::GUI) << "\tERROR: not a submenu " << lyx::to_utf8(m->label()) << endl;
+			LYXERR(Debug::GUI) << "\tERROR: not a submenu "
+				<< to_utf8(m->label()) << endl;
 			continue;
 		}
 
-		LYXERR(Debug::GUI) << "menu bar item " << lyx::to_utf8(m->label()) << " is a submenu named " << lyx::to_utf8(m->submenuname()) << endl;
+		LYXERR(Debug::GUI) << "menu bar item " << to_utf8(m->label())
+			<< " is a submenu named " << to_utf8(m->submenuname()) << endl;
 
 		docstring name = m->submenuname();
 		if (!menubackend_.hasMenu(name)) {
-			LYXERR(Debug::GUI) << "\tERROR: " << lyx::to_utf8(name) << " submenu has no menu!" << endl;
+			LYXERR(Debug::GUI) << "\tERROR: " << to_utf8(name)
+				<< " submenu has no menu!" << endl;
 			continue;
 		}
 
@@ -89,7 +87,8 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 
 		pair<NameMap::iterator, bool> I = name_map_.insert(make_pair(name, qMenu));
 		if (!I.second) {
-			LYXERR(Debug::GUI) << "\tERROR: " << lyx::to_utf8(name) << " submenu is already there!" << endl;
+			LYXERR(Debug::GUI) << "\tERROR: " << to_utf8(name)
+				<< " submenu is already there!" << endl;
 		}
 /*
 		QObject::connect(qMenu, SIGNAL(aboutToShow()), this, SLOT(update()));

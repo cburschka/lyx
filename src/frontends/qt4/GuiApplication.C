@@ -136,6 +136,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	guiApp = this;
 }
 
+
 Clipboard& GuiApplication::clipboard()
 {
 	return clipboard_;
@@ -248,7 +249,7 @@ void GuiApplication::syncEvents()
 
 
 bool GuiApplication::getRgbColor(LColor_color col,
-	lyx::RGBColor & rgbcol)
+	RGBColor & rgbcol)
 {
 	QColor const & qcol = color_cache_.get(col);
 	if (!qcol.isValid()) {

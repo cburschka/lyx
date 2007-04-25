@@ -29,12 +29,7 @@ using lyx::support::externalLineEnding;
 using std::endl;
 using std::string;
 
-
-namespace {
-
-char const * const mime_type = "application/x-lyx";
-
-}
+static char const * const mime_type = "application/x-lyx";
 
 
 namespace lyx {

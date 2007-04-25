@@ -16,7 +16,6 @@
 
 #include "controllers/ButtonController.h"
 
-using lyx::docstring;
 
 namespace lyx {
 namespace frontend {

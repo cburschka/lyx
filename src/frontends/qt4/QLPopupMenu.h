@@ -43,14 +43,14 @@ private:
 	QLMenubar * owner_;
 
 	/// the name of this menu
-	lyx::docstring name_;
+	docstring name_;
 
 private:
 	/// Get a Menu item label from the menu backend
-	lyx::docstring const getLabel(MenuItem const & mi);
+	docstring const getLabel(MenuItem const & mi);
 
 	/// add binding keys a the menu item label.
-	void addBinding(lyx::docstring & label, MenuItem const & mi);
+	void addBinding(docstring & label, MenuItem const & mi);
 
 	/// Top Level Menu
 	Menu topLevelMenu_;

@@ -24,13 +24,10 @@
 
 #include <boost/bind.hpp>
 
-using lyx::docstring;
-
 using std::string;
 using std::endl;
 
 namespace lyx {
-
 namespace frontend {
 
 
@@ -70,7 +67,7 @@ void Action::setAction(FuncRequest const & func)
 
 void Action::update()
 {
-	FuncStatus const status = lyx::getStatus(func_);
+	FuncStatus const status = getStatus(func_);
 
 	if (status.onoff(true)) {
 		setCheckable(true);

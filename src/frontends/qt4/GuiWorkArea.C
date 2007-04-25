@@ -678,7 +678,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		rLength = 0;
 	}
 
-	int const right_margin = lyx::rightMargin();
+	int const right_margin = rightMargin();
 	Painter::preedit_style ps;
 	// Most often there would be only one line:
 	preedit_lines_ = 1;

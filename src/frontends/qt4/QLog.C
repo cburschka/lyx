@@ -110,7 +110,7 @@ void LogHighlighter::highlightBlock(QString const & text)
 typedef QController<ControlLog, QView<QLogDialog> > LogBase;
 
 QLog::QLog(Dialog & parent)
-	: LogBase(parent, lyx::docstring())
+	: LogBase(parent, docstring())
 {}
 
 

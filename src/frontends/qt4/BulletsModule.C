@@ -22,7 +22,7 @@
 
 namespace lyx {
 
-using lyx::support::libFileSearch;
+using support::libFileSearch;
 
 using std::string;
 
@@ -30,9 +30,9 @@ BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 {
 	setupUi(this);
 
-	for (int iter = 0; iter < 4; ++iter) {
+	for (int iter = 0; iter < 4; ++iter)
 		bullets_[iter] = ITEMIZE_DEFAULTS[iter];
-	}
+
 	current_font_ = -1;
 	current_char_ = 0;
 
@@ -50,17 +50,15 @@ BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 3"), "psnfss3");
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 4"), "psnfss4");
 
-	connect(levelLW, SIGNAL(currentRowChanged(int)), this, SLOT(showLevel(int)));
-	connect(bulletpaneCO, SIGNAL(activated(int)), bulletpaneSW, SLOT(setCurrentIndex(int)));
+	connect(levelLW, SIGNAL(currentRowChanged(int)),
+		this, SLOT(showLevel(int)));
+	connect(bulletpaneCO, SIGNAL(activated(int)), bulletpaneSW,
+		SLOT(setCurrentIndex(int)));
 }
 
 
-BulletsModule::~BulletsModule()
-{
-}
-
-
-void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string fname)
+void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
+	std::string const & fname)
 {
 	connect(lw, SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)),
 		this, SLOT(bulletSelected(QListWidgetItem *, QListWidgetItem*)));
@@ -199,10 +197,7 @@ Bullet const & BulletsModule::getBullet(int level) const
 	return bullets_[level];
 }
 
-
 } // namespace lyx
 
 
 #include "BulletsModule_moc.cpp"
-
-
