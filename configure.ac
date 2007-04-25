@@ -25,7 +25,7 @@ fi
 AM_MAINTAINER_MODE
 
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar no-define 1.9])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.9])
 PACKAGE=$save_PACKAGE
 
 ### Set the execute permissions of the various scripts correctly
