@@ -404,6 +404,8 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        boost/libs/signals/src/Makefile \
        config/Makefile \
        development/Makefile \
+       development/MacOSX/Makefile \
+       development/MacOSX/spotlight/Makefile \
        development/lyx.spec \
        lib/Makefile \
        lib/doc/Makefile \
