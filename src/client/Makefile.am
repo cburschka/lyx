@@ -19,7 +19,7 @@ lyxclient_LDADD = \
 	$(BOOST_LIBS) $(LIBICONV) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)
 
 lyxclient_SOURCES = \
-	boost.C \
+	boost.cpp \
 	client.C \
 	debug.C \
 	debug.h \

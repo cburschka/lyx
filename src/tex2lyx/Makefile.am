@@ -37,7 +37,7 @@ BUILT_SOURCES = $(PCH_FILE) $(LINKED_FILES)
 tex2lyx_SOURCES = \
 	$(LINKED_FILES) \
 	Spacing.h \
-	boost.C \
+	boost.cpp \
 	context.C \
 	context.h \
 	gettext.C \

@@ -14,8 +14,8 @@ AM_CPPFLAGS += $(BOOST_INCLUDES)
 
 biblio_LDADD = $(BOOST_REGEX)
 biblio_SOURCES = \
-	biblio.C \
-	boost.C
+	biblio.cpp \
+	boost.cpp
 
 makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \

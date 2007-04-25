@@ -11,85 +11,85 @@ noinst_LTLIBRARIES = libcontrollers.la
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 libcontrollers_la_SOURCES= \
-	Dialog.C \
+	Dialog.cpp \
 	Dialog.h \
-	Kernel.C \
+	Kernel.cpp \
 	Kernel.h \
 	BCView.h \
-	BCView.C \
-	ButtonController.C \
+	BCView.cpp \
+	ButtonController.cpp \
 	ButtonController.h \
-	ButtonPolicies.C \
+	ButtonPolicies.cpp \
 	ButtonPolicies.h \
-	ControlAboutlyx.C \
+	ControlAboutlyx.cpp \
 	ControlAboutlyx.h \
-	ControlBibtex.C \
+	ControlBibtex.cpp \
 	ControlBibtex.h \
-	ControlBox.C \
+	ControlBox.cpp \
 	ControlBox.h \
-	ControlBranch.C \
+	ControlBranch.cpp \
 	ControlBranch.h \
-	ControlCharacter.C \
+	ControlCharacter.cpp \
 	ControlCharacter.h \
-	ControlChanges.C \
+	ControlChanges.cpp \
 	ControlChanges.h \
-	ControlCitation.C \
+	ControlCitation.cpp \
 	ControlCitation.h \
-	ControlCommand.C \
+	ControlCommand.cpp \
 	ControlCommand.h \
-	ControlCommandBuffer.C \
+	ControlCommandBuffer.cpp \
 	ControlCommandBuffer.h \
-	ControlDocument.C \
+	ControlDocument.cpp \
 	ControlDocument.h \
-	ControlErrorList.C \
+	ControlErrorList.cpp \
 	ControlErrorList.h \
-	ControlERT.C \
+	ControlERT.cpp \
 	ControlERT.h \
-	ControlExternal.C \
+	ControlExternal.cpp \
 	ControlExternal.h \
-	ControlFloat.C \
+	ControlFloat.cpp \
 	ControlFloat.h \
-	ControlGraphics.C \
+	ControlGraphics.cpp \
 	ControlGraphics.h \
-	ControlInclude.C \
+	ControlInclude.cpp \
 	ControlInclude.h \
-	ControlLog.C \
+	ControlLog.cpp \
 	ControlLog.h \
-	ControlViewSource.C \
+	ControlViewSource.cpp \
 	ControlViewSource.h \
-	ControlMath.C \
+	ControlMath.cpp \
 	ControlMath.h \
-	ControlNote.C \
+	ControlNote.cpp \
 	ControlNote.h \
-	ControlParagraph.C \
+	ControlParagraph.cpp \
 	ControlParagraph.h \
-	ControlPrefs.C \
+	ControlPrefs.cpp \
 	ControlPrefs.h \
-	ControlPrint.C \
+	ControlPrint.cpp \
 	ControlPrint.h \
-	ControlRef.C \
+	ControlRef.cpp \
 	ControlRef.h \
-	ControlSearch.C \
+	ControlSearch.cpp \
 	ControlSearch.h \
-	ControlSendto.C \
+	ControlSendto.cpp \
 	ControlSendto.h \
-	ControlShowFile.C \
+	ControlShowFile.cpp \
 	ControlShowFile.h \
-	ControlSpellchecker.C \
+	ControlSpellchecker.cpp \
 	ControlSpellchecker.h \
-	ControlTabular.C \
+	ControlTabular.cpp \
 	ControlTabular.h \
-	ControlTabularCreate.C \
+	ControlTabularCreate.cpp \
 	ControlTabularCreate.h \
-	ControlTexinfo.C \
+	ControlTexinfo.cpp \
 	ControlTexinfo.h \
-	ControlThesaurus.C \
+	ControlThesaurus.cpp \
 	ControlThesaurus.h \
-	ControlToc.C \
+	ControlToc.cpp \
 	ControlToc.h \
-	ControlVSpace.C \
+	ControlVSpace.cpp \
 	ControlVSpace.h \
-	ControlWrap.C \
+	ControlWrap.cpp \
 	ControlWrap.h \
 	frontend_helpers.cpp \
 	frontend_helpers.h

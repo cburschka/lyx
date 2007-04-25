@@ -18,7 +18,7 @@ set(LINKED_FILES
 )
 
 set(tex2lyx_sources
-	${TOP_SRC_DIR}/src/tex2lyx/boost.C
+	${TOP_SRC_DIR}/src/tex2lyx/boost.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/context.C
 	${TOP_SRC_DIR}/src/tex2lyx/gettext.C
 	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.C

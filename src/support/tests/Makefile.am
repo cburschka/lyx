@@ -21,18 +21,18 @@ convert_LDADD = ../../debug.o ../convert.o ../docstring.o ../lstrings.o ../unico
 convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 convert_SOURCES = \
 	convert.C \
-	boost.C
+	boost.cpp
 
 filetools_LDADD = ../../debug.o ../libsupport.la $(BOOST_REGEX) $(BOOST_FILESYSTEM)
 filetools_SOURCES = \
 	filetools.C \
-	boost.C
+	boost.cpp
 
 lstrings_LDADD = ../../debug.o ../lstrings.o ../convert.o ../docstring.o ../unicode.o ../qstring_helpers.o $(QT4_CORE_LIB)
 lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 lstrings_SOURCES = \
 	lstrings.C \
-	boost.C
+	boost.cpp
 
 makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \

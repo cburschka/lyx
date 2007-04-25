@@ -115,7 +115,7 @@ lyx_SOURCES = \
 	WordLangTuple.h \
 	author.C \
 	author.h \
-	boost.C \
+	boost.cpp \
 	box.h \
 	box.C \
 	buffer.C \
