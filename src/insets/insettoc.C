@@ -1,5 +1,5 @@
 /**
- * \file insettoc.C
+ * \file InsetTOC.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insettoc.h"
+#include "InsetTOC.h"
 
 #include "buffer.h"
 #include "dispatchresult.h"

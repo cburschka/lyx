@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetbibtex.h
+ * \file InsetBibtex.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 
 #include <vector>
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 #include "support/filename.h"
 

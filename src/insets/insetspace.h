@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetspace.h
+ * \file InsetSpace.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,7 +16,7 @@
 #define INSET_SPACE_H
 
 
-#include "inset.h"
+#include "Inset.h"
 
 
 namespace lyx {

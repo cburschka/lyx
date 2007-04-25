@@ -25,7 +25,7 @@
 #include "ParagraphParameters.h"
 #include "sgml.h"
 
-#include "insets/insetcommand.h"
+#include "insets/InsetCommand.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

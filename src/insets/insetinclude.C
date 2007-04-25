@@ -1,5 +1,5 @@
 /**
- * \file insetinclude.C
+ * \file InsetInclude.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetinclude.h"
+#include "InsetInclude.h"
 
 #include "buffer.h"
 #include "buffer_funcs.h"
@@ -38,7 +38,7 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
-#include "insets/render_preview.h"
+#include "insets/RenderPreview.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains

@@ -1,5 +1,5 @@
 /**
- * \file render_button.C
+ * \file RenderButton.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "render_button.h"
+#include "RenderButton.h"
 
 #include "LColor.h"
 #include "metricsinfo.h"

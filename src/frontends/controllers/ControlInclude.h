@@ -16,7 +16,7 @@
 
 
 #include "Dialog.h"
-#include "insets/insetcommandparams.h"
+#include "insets/InsetCommandParams.h"
 
 #include "support/docstring.h"
 

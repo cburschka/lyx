@@ -30,7 +30,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
-#include "insets/insettabular.h"
+#include "insets/InsetTabular.h"
 
 #include "support/lstrings.h"
 #include "support/convert.h"

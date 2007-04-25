@@ -36,7 +36,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "insets/insettext.h"
+#include "insets/InsetText.h"
 
 #include "support/textutils.h"
 
@@ -176,7 +176,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	// FIXME: We should always use font, see documentation of
-	// noFontChange() in insetbase.h.
+	// noFontChange() in InsetBase.h.
 	pi.base.font = inset->noFontChange() ?
 		bv_.buffer()->params().getFont() :
 		font;

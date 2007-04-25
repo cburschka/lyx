@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file inset.h
+ * \file Inset.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,7 +15,7 @@
 #ifndef INSETOLD_H
 #define INSETOLD_H
 
-#include "insetbase.h"
+#include "InsetBase.h"
 
 
 namespace lyx {
@@ -53,7 +53,7 @@ private:
 
 /** \c InsetBase_code is a wrapper for InsetBase::Code.
  *  It can be forward-declared and passed as a function argument without
- *  having to expose inset.h.
+ *  having to expose Inset.h.
  */
 class InsetBase_code {
 	InsetBase::Code val_;

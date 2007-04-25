@@ -19,7 +19,7 @@
 #include "controllers/ButtonController.h"
 #include "controllers/ControlRef.h"
 
-#include "insets/insetref.h"
+#include "insets/InsetRef.h"
 
 #include <QLineEdit>
 #include <QCheckBox>

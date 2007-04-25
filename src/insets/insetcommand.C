@@ -1,5 +1,5 @@
 /**
- * \file insetcommand.C
+ * \file InsetCommand.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 #include "BufferView.h"
 #include "dispatchresult.h"

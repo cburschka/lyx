@@ -28,7 +28,7 @@
 #include "controllers/ControlGraphics.h"
 #include "controllers/helper_funcs.h"
 
-#include "insets/insetgraphicsParams.h"
+#include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"

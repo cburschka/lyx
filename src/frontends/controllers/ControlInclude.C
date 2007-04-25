@@ -22,7 +22,7 @@
 #include "gettext.h"
 #include "lyxrc.h"
 
-#include "insets/insetinclude.h"
+#include "insets/InsetInclude.h"
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"

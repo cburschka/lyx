@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetgraphics.h
+ * \file InsetGraphics.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,9 +13,9 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-#include "inset.h"
-#include "insetgraphicsParams.h"
-#include "mailinset.h"
+#include "Inset.h"
+#include "InsetGraphicsParams.h"
+#include "MailInset.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>

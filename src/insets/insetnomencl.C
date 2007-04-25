@@ -1,5 +1,5 @@
 /**
- * \file insetnomencl.C
+ * \file InsetNomencl.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  */
 #include <config.h>
 
-#include "insetnomencl.h"
-#include "insetnote.h"
+#include "InsetNomencl.h"
+#include "InsetNote.h"
 
 #include "buffer.h"
 #include "dispatchresult.h"

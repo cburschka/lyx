@@ -1,5 +1,5 @@
 /**
- * \file insetbox.C
+ * \file InsetBox.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "insetbox.h"
+#include "InsetBox.h"
 
 #include "BufferView.h"
 #include "cursor.h"

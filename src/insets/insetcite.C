@@ -1,5 +1,5 @@
 /**
- * \file insetcite.C
+ * \file InsetCite.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "insetcite.h"
+#include "InsetCite.h"
 
 #include "buffer.h"
 #include "bufferparams.h"

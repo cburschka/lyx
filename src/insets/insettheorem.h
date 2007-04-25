@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insettheorem.h
+ * \file InsetTheorem.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define InsetTheorem_H
 
 
-#include "insetcollapsable.h"
+#include "InsetCollapsable.h"
 
 
 namespace lyx {

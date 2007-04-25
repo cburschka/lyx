@@ -4,118 +4,118 @@ noinst_LTLIBRARIES = libinsets.la
 
 EXTRA_DIST = \
 	pch.h \
-	insettheorem.C \
-	insettheorem.h
+	InsetTheorem.cpp \
+	InsetTheorem.h
 
 BUILT_SOURCES = $(PCH_FILE)
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libinsets_la_SOURCES = \
-	mailinset.C \
-	mailinset.h \
+	MailInset.cpp \
+	MailInset.h \
 	ExternalSupport.C \
 	ExternalSupport.h \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
 	ExternalTransforms.C \
 	ExternalTransforms.h \
-	render_base.h \
-	render_button.C \
-	render_button.h \
-	render_graphic.C \
-	render_graphic.h \
-	render_preview.C \
-	render_preview.h \
-	inset.C \
-	inset.h \
-	insetbase.h \
-	insetbase.C \
-	insetbibitem.C \
-	insetbibitem.h \
-	insetbibtex.C \
-	insetbibtex.h \
-	insetbox.C \
-	insetbox.h \
-	insetbranch.C \
-	insetbranch.h \
-	insetcaption.C \
-	insetcaption.h \
-	insetcharstyle.C \
-	insetcharstyle.h \
-	insetcite.C \
-	insetcite.h \
-	insetcollapsable.C \
-	insetcollapsable.h \
-	insetcommand.C \
-	insetcommand.h \
-	insetcommandparams.C \
-	insetcommandparams.h \
-	insetenv.C \
-	insetenv.h \
-	insetert.C \
-	insetert.h \
-	insetexternal.C \
-	insetexternal.h \
-	insetfloat.h \
-	insetfloat.C \
-	insetfloatlist.C \
-	insetfloatlist.h \
-	insetfoot.C \
-	insetfoot.h \
-	insetfootlike.C \
-	insetfootlike.h \
-	insetgraphicsParams.h \
-	insetgraphicsParams.C \
-	insetgraphics.C \
-	insetgraphics.h \
-	insethfill.C \
-	insethfill.h \
-	insetinclude.C \
-	insetinclude.h \
-	insetindex.C \
-	insetindex.h \
-	insetlabel.C \
-	insetlabel.h \
-	insetline.C \
-	insetline.h \
-	insetmarginal.h \
-	insetmarginal.C \
-	insetnewline.C \
-	insetnewline.h \
-	insetnomencl.C \
-	insetnomencl.h \
-	insetnote.C \
-	insetnote.h \
-	insetoptarg.C \
-	insetoptarg.h \
-	insetpagebreak.C \
-	insetpagebreak.h \
-	insetquotes.C \
-	insetquotes.h \
-	insetref.C \
-	insetref.h \
-	insetspace.C \
-	insetspace.h \
-	insetspecialchar.C \
-	insetspecialchar.h \
-	insettabular.C \
-	insettabular.h \
-	insettext.C \
-	insettext.h \
-	insettoc.C \
-	insettoc.h \
-	inseturl.C \
-	inseturl.h \
-	insetvspace.C \
-	insetvspace.h \
-	insetwrap.h \
-	insetwrap.C
+	RenderBase.h \
+	RenderButton.cpp \
+	RenderButton.h \
+	RenderGraphic.cpp \
+	RenderGraphic.h \
+	RenderPreview.cpp \
+	RenderPreview.h \
+	Inset.cpp \
+	Inset.h \
+	InsetBase.h \
+	InsetBase.cpp \
+	InsetBibitem.cpp \
+	InsetBibitem.h \
+	InsetBibtex.cpp \
+	InsetBibtex.h \
+	InsetBox.cpp \
+	InsetBox.h \
+	InsetBranch.cpp \
+	InsetBranch.h \
+	InsetCaption.cpp \
+	InsetCaption.h \
+	InsetCharStyle.cpp \
+	InsetCharStyle.h \
+	InsetCite.cpp \
+	InsetCite.h \
+	InsetCollapsable.cpp \
+	InsetCollapsable.h \
+	InsetCommand.cpp \
+	InsetCommand.h \
+	InsetCommandParams.cpp \
+	InsetCommandParams.h \
+	InsetEnv.cpp \
+	InsetEnv.h \
+	InsetERT.cpp \
+	InsetERT.h \
+	InsetExternal.cpp \
+	InsetExternal.h \
+	InsetFloat.h \
+	InsetFloat.cpp \
+	InsetFloatList.cpp \
+	InsetFloatList.h \
+	InsetFoot.cpp \
+	InsetFoot.h \
+	InsetFootlike.cpp \
+	InsetFootlike.h \
+	InsetGraphicsParams.h \
+	InsetGraphicsParams.cpp \
+	InsetGraphics.cpp \
+	InsetGraphics.h \
+	InsetHFill.cpp \
+	InsetHFill.h \
+	InsetInclude.cpp \
+	InsetInclude.h \
+	InsetIndex.cpp \
+	InsetIndex.h \
+	InsetLabel.cpp \
+	InsetLabel.h \
+	InsetLine.cpp \
+	InsetLine.h \
+	InsetMarginal.h \
+	InsetMarginal.cpp \
+	InsetNewline.cpp \
+	InsetNewline.h \
+	InsetNomencl.cpp \
+	InsetNomencl.h \
+	InsetNote.cpp \
+	InsetNote.h \
+	InsetOptArg.cpp \
+	InsetOptArg.h \
+	InsetPageBreak.cpp \
+	InsetPageBreak.h \
+	InsetQuotes.cpp \
+	InsetQuotes.h \
+	InsetRef.cpp \
+	InsetRef.h \
+	InsetSpace.cpp \
+	InsetSpace.h \
+	InsetSpecialChar.cpp \
+	InsetSpecialChar.h \
+	InsetTabular.cpp \
+	InsetTabular.h \
+	InsetText.cpp \
+	InsetText.h \
+	InsetTOC.cpp \
+	InsetTOC.h \
+	InsetUrl.cpp \
+	InsetUrl.h \
+	InsetVSpace.cpp \
+	InsetVSpace.h \
+	InsetWrap.h \
+	InsetWrap.cpp
 
 #	insetlist.C \
 #	insetlist.h \
 #	insetsection.h \
 #	insetsection.C \
-#	insettheorem.C \
-#	insettheorem.h
+#	InsetTheorem.cpp \
+#	InsetTheorem.h
 

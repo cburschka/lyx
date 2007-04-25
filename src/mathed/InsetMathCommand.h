@@ -15,7 +15,7 @@
 
 #include "InsetMathNest.h"
 
-#include "insets/render_button.h"
+#include "insets/RenderButton.h"
 
 
 namespace lyx {

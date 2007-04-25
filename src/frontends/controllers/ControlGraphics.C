@@ -23,7 +23,7 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
-#include "insets/insetgraphics.h"
+#include "insets/InsetGraphics.h"
 
 #include "support/convert.h"
 #include "support/filefilterlist.h"

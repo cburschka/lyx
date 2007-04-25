@@ -20,7 +20,7 @@
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
 
-#include "insets/insettabular.h"
+#include "insets/InsetTabular.h"
 
 #include <boost/assert.hpp>
 #include <boost/current_function.hpp>

@@ -12,7 +12,7 @@
 
 #include "ControlFloat.h"
 #include "funcrequest.h"
-#include "insets/insetfloat.h"
+#include "insets/InsetFloat.h"
 
 
 using std::string;

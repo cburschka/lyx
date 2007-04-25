@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetcite.h
+ * \file InsetCite.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #define INSET_CITE_H
 
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 #include "frontends/controllers/biblio.h"
 

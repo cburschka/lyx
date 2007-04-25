@@ -16,7 +16,7 @@
 
 #include "controllers/ControlNote.h"
 
-#include "insets/insetnote.h"
+#include "insets/InsetNote.h"
 
 #include <qradiobutton.h>
 #include <qpushbutton.h>

@@ -1,5 +1,5 @@
 /**
- * \file insetbibtex.C
+ * \file InsetBibtex.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetbibtex.h"
+#include "InsetBibtex.h"
 
 #include "buffer.h"
 #include "bufferparams.h"

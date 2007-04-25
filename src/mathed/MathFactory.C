@@ -56,7 +56,7 @@
 
 #include "debug.h"
 
-#include "insets/insetcommand.h"
+#include "insets/InsetCommand.h"
 
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"

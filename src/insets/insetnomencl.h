@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetnomencl.h
+ * \file InsetNomencl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #define INSET_NOMENCL_H
 
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {

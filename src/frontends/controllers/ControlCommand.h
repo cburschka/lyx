@@ -17,7 +17,7 @@
 
 
 #include "Dialog.h"
-#include "insets/insetcommandparams.h"
+#include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {

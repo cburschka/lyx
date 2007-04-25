@@ -1,5 +1,5 @@
 /**
- * \file insettext.C
+ * \file InsetText.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "insettext.h"
-#include "insetnewline.h"
+#include "InsetText.h"
+#include "InsetNewline.h"
 
 #include "buffer.h"
 #include "bufferparams.h"

@@ -18,7 +18,7 @@
 #include "lyxtextclass.h"
 #include "paper.h"
 
-#include "insets/insetquotes.h"
+#include "insets/InsetQuotes.h"
 
 #include "support/copied_ptr.h"
 #include "support/types.h"

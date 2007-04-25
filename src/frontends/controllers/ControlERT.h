@@ -15,7 +15,7 @@
 
 
 #include "Dialog.h"
-#include "insets/insetert.h" // InsetERT::ERTStatus
+#include "insets/InsetERT.h" // InsetERT::ERTStatus
 
 namespace lyx {
 namespace frontend {

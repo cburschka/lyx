@@ -1,5 +1,5 @@
 /**
- * \file inset.C
+ * \file Inset.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "inset.h"
+#include "Inset.h"
 
 #include "BufferView.h"
 #include "debug.h"

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file render_graphic.h
+ * \file RenderGraphic.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,10 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef RENDER_GRAPHIC_H
-#define RENDER_GRAPHIC_H
+#ifndef RENDERGRAPHIC_H
+#define RENDERGRAPHIC_H
 
-#include "render_base.h"
+#include "RenderBase.h"
 
 #include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsParams.h"
@@ -52,4 +52,4 @@ private:
 
 } // namespace lyx
 
-#endif // NOT RENDER_GRAPHIC_H
+#endif // NOT RENDERGRAPHIC_H

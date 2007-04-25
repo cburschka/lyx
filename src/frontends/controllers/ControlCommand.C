@@ -13,7 +13,7 @@
 #include "ControlCommand.h"
 
 #include "funcrequest.h"
-#include "insets/insetcommand.h"
+#include "insets/InsetCommand.h"
 
 
 using std::string;

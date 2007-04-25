@@ -25,7 +25,7 @@
 #include "controllers/ControlBox.h"
 #include "controllers/helper_funcs.h"
 
-#include "insets/insetbox.h"
+#include "insets/InsetBox.h"
 
 #include "support/lstrings.h"
 

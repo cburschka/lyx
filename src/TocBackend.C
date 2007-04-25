@@ -22,7 +22,7 @@
 #include "paragraph.h"
 #include "debug.h"
 
-#include "insets/insetoptarg.h"
+#include "insets/InsetOptArg.h"
 
 #include "support/convert.h"
 

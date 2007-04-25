@@ -17,7 +17,7 @@
 
 #include "controllers/ControlFloat.h"
 
-#include "insets/insetfloat.h"
+#include "insets/InsetFloat.h"
 
 #include <QPushButton>
 

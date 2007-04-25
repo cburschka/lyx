@@ -1,5 +1,5 @@
 /**
- * \file insetcaption.C
+ * \file InsetCaption.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,9 +10,9 @@
 
 #include <config.h>
 
-#include "insetcaption.h"
-#include "insetfloat.h"
-#include "insetwrap.h"
+#include "InsetCaption.h"
+#include "InsetFloat.h"
+#include "InsetWrap.h"
 
 #include "buffer.h"
 #include "bufferparams.h"

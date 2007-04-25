@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file render_button.h
+ * \file RenderButton.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,10 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef RENDER_BUTTON_H
-#define RENDER_BUTTON_H
+#ifndef RENDERBUTTON_H
+#define RENDERBUTTON_H
 
-#include "render_base.h"
+#include "RenderBase.h"
 #include "box.h"
 #include "support/docstring.h"
 
@@ -53,4 +53,4 @@ private:
 
 } // namespace lyx
 
-#endif // NOT RENDER_BUTTON_H
+#endif // NOT RENDERBUTTON_H

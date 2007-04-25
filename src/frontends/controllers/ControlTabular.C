@@ -16,7 +16,7 @@
 #include "funcrequest.h"
 #include "lyxrc.h"
 #include "paragraph.h"
-#include "insets/insettabular.h"
+#include "insets/InsetTabular.h"
 
 
 using std::string;

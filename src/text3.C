@@ -51,12 +51,12 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
-#include "insets/insetcommand.h"
-#include "insets/insetfloatlist.h"
-#include "insets/insetnewline.h"
-#include "insets/insetquotes.h"
-#include "insets/insetspecialchar.h"
-#include "insets/insettext.h"
+#include "insets/InsetCommand.h"
+#include "insets/InsetFloatList.h"
+#include "insets/InsetNewline.h"
+#include "insets/InsetQuotes.h"
+#include "insets/InsetSpecialChar.h"
+#include "insets/InsetText.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

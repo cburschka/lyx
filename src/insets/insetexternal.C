@@ -1,5 +1,5 @@
 /**
- * \file insetexternal.C
+ * \file InsetExternal.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-#include "insetexternal.h"
+#include "InsetExternal.h"
 #include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
-#include "insets/render_button.h"
-#include "insets/render_graphic.h"
-#include "insets/render_preview.h"
+#include "insets/RenderButton.h"
+#include "insets/RenderGraphic.h"
+#include "insets/RenderPreview.h"
 
 #include "buffer.h"
 #include "cursor.h"

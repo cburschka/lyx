@@ -26,7 +26,7 @@
 #include "outputparams.h"
 #include "sgml.h"
 
-#include "insets/insetcommand.h"
+#include "insets/InsetCommand.h"
 
 
 namespace lyx {

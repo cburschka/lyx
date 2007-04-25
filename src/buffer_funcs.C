@@ -37,10 +37,10 @@
 
 #include "frontends/Alert.h"
 
-#include "insets/insetbibitem.h"
-#include "insets/insetcaption.h"
-#include "insets/insetinclude.h"
-#include "insets/insettabular.h"
+#include "insets/InsetBibitem.h"
+#include "insets/InsetCaption.h"
+#include "insets/InsetInclude.h"
+#include "insets/InsetTabular.h"
 
 #include "support/filetools.h"
 #include "support/fs_extras.h"

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insettext.h
+ * \file InsetText.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef INSETTEXT_H
 #define INSETTEXT_H
 
-#include "inset.h"
+#include "Inset.h"
 #include "RowList_fwd.h"
 #include "lyxfont.h"
 #include "lyxtext.h"

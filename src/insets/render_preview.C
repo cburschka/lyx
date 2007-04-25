@@ -1,5 +1,5 @@
 /**
- * \file render_preview.C
+ * \file RenderPreview.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "insets/render_preview.h"
-#include "insets/inset.h"
+#include "insets/RenderPreview.h"
+#include "insets/Inset.h"
 
 #include "BufferView.h"
 #include "dimension.h"

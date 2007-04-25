@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetindex.h
+ * \file InsetIndex.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define INSET_INDEX_H
 
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {

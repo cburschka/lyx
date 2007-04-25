@@ -14,7 +14,7 @@
 #include "FloatPlacement.h"
 #include "qt_helpers.h"
 
-#include "insets/insetfloat.h"
+#include "insets/InsetFloat.h"
 #include "support/lstrings.h"
 
 using lyx::support::contains;

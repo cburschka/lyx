@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetfloatlist.h
+ * \file InsetFloatList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define INSET_FLOATLIST_H
 
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {

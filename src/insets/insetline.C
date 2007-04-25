@@ -1,5 +1,5 @@
 /**
- * \file insetline.C
+ * \file InsetLine.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetline.h"
+#include "InsetLine.h"
 
 #include "debug.h"
 #include "LColor.h"

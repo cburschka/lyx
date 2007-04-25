@@ -1,5 +1,5 @@
 /**
- * \file insetnote.C
+ * \file InsetNote.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "insetnote.h"
+#include "InsetNote.h"
 
 #include "BufferView.h"
 #include "cursor.h"

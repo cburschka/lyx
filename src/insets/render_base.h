@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file render_base.h
+ * \file RenderBase.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef RENDER_BASE_H
-#define RENDER_BASE_H
+#ifndef RENDERBASE_H
+#define RENDERBASE_H
 
 #include "dimension.h"
 
@@ -64,4 +64,4 @@ protected:
 
 } // namespace lyx
 
-#endif // NOT RENDER_BASE_H
+#endif // NOT RENDERBASE_H

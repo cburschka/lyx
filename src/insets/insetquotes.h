@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetquotes.h
+ * \file InsetQuotes.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define INSET_QUOTES_H
 
 
-#include "inset.h"
+#include "Inset.h"
 
 #include "support/types.h"
 

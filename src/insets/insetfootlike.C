@@ -1,5 +1,5 @@
 /**
- * \file insetfootlike.C
+ * \file InsetFootlike.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetfootlike.h"
+#include "InsetFootlike.h"
 
 #include "buffer.h"
 #include "BufferView.h"

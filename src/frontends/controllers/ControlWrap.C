@@ -12,7 +12,7 @@
 
 #include "ControlWrap.h"
 #include "funcrequest.h"
-#include "insets/insetwrap.h"
+#include "insets/InsetWrap.h"
 
 
 using std::string;

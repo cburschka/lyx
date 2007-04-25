@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetinclude.h
+ * \file InsetInclude.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,10 +12,10 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "inset.h"
-#include "insetcommandparams.h"
-#include "render_button.h"
-#include "mailinset.h"
+#include "Inset.h"
+#include "InsetCommandParams.h"
+#include "RenderButton.h"
+#include "MailInset.h"
 
 #include "support/filename.h"
 

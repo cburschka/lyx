@@ -17,7 +17,7 @@
 #ifndef CURSORSLICE_H
 #define CURSORSLICE_H
 
-#include "insets/insetbase.h"
+#include "insets/InsetBase.h"
 #include "support/types.h"
 
 #include <cstddef>

@@ -9,7 +9,7 @@ project(insets)
 file(GLOB insets_sources ${TOP_SRC_DIR}/src/insets/${LYX_CPP_FILES})
 file(GLOB insets_headers ${TOP_SRC_DIR}/src/insets/${LYX_HPP_FILES})
 
-list(REMOVE_ITEM insets_sources ${TOP_SRC_DIR}/src/insets/insettheorem.C)
+list(REMOVE_ITEM insets_sources ${TOP_SRC_DIR}/src/insets/InsetTheorem.cpp)
 
 lyx_add_msvc_pch(insets)
 

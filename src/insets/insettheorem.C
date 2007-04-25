@@ -1,5 +1,5 @@
 /**
- * \file insettheorem.C
+ * \file InsetTheorem.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "insettheorem.h"
-#include "insets/insettext.h"
+#include "InsetTheorem.h"
+#include "insets/InsetText.h"
 
 #include "debug.h"
 #include "gettext.h"

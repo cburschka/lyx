@@ -53,7 +53,7 @@
 
 #include "frontends/FontMetrics.h"
 
-#include "insets/insetenv.h"
+#include "insets/InsetEnv.h"
 
 #include "mathed/InsetMathHull.h"
 

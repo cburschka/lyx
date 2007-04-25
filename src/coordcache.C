@@ -14,7 +14,7 @@
 
 #include "lyxtext.h"
 
-#include "insets/insetbase.h"
+#include "insets/InsetBase.h"
 
 #include <boost/assert.hpp>
 

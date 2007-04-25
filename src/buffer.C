@@ -50,10 +50,10 @@
 #include "undo.h"
 #include "version.h"
 
-#include "insets/insetbibitem.h"
-#include "insets/insetbibtex.h"
-#include "insets/insetinclude.h"
-#include "insets/insettext.h"
+#include "insets/InsetBibitem.h"
+#include "insets/InsetBibtex.h"
+#include "insets/InsetInclude.h"
+#include "insets/InsetText.h"
 
 #include "mathed/MathMacroTemplate.h"
 #include "mathed/MathMacroTable.h"

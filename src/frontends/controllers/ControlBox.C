@@ -12,7 +12,7 @@
 
 #include "ControlBox.h"
 #include "funcrequest.h"
-#include "insets/insetbox.h"
+#include "insets/InsetBox.h"
 #include "gettext.h"
 
 

@@ -18,7 +18,7 @@
 #include "BranchList.h"
 #include "debug.h"
 
-#include "insets/insetbranch.h"
+#include "insets/InsetBranch.h"
 
 
 namespace lyx {

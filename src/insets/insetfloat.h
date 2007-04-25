@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetfloat.h
+ * \file InsetFloat.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,8 +13,8 @@
 #ifndef INSETFLOAT_H
 #define INSETFLOAT_H
 
-#include "insetcollapsable.h"
-#include "mailinset.h"
+#include "InsetCollapsable.h"
+#include "MailInset.h"
 
 
 namespace lyx {

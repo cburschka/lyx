@@ -1,5 +1,5 @@
 /**
- * \file insethfill.C
+ * \file InsetHFill.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insethfill.h"
+#include "InsetHFill.h"
 #include "gettext.h"
 
 #include "support/std_ostream.h"

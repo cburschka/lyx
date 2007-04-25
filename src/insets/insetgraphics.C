@@ -1,5 +1,5 @@
 /**
- * \file insetgraphics.C
+ * \file InsetGraphics.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -49,8 +49,8 @@ TODO
 
 #include <config.h>
 
-#include "insets/insetgraphics.h"
-#include "insets/render_graphic.h"
+#include "insets/InsetGraphics.h"
+#include "insets/RenderGraphic.h"
 
 #include "buffer.h"
 #include "BufferView.h"

@@ -19,7 +19,7 @@
 #include "controllers/ControlExternal.h"
 
 #include "insets/ExternalTemplate.h"
-#include "insets/insetexternal.h"
+#include "insets/InsetExternal.h"
 
 #include "support/lstrings.h"
 #include "support/convert.h"

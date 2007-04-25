@@ -18,7 +18,7 @@
 
 #include "controllers/ControlWrap.h"
 
-#include "insets/insetwrap.h"
+#include "insets/InsetWrap.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"

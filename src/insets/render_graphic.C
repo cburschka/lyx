@@ -1,5 +1,5 @@
 /**
- * \file render_graphic.C
+ * \file RenderGraphic.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,9 +10,9 @@
 
 #include <config.h>
 
-#include "render_graphic.h"
+#include "RenderGraphic.h"
 
-#include "insets/inset.h"
+#include "insets/Inset.h"
 
 #include "gettext.h"
 #include "LColor.h"

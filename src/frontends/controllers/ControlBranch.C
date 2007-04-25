@@ -17,7 +17,7 @@
 #include "bufferparams.h"
 #include "BranchList.h"
 #include "funcrequest.h"
-#include "insets/insetbranch.h"
+#include "insets/InsetBranch.h"
 
 
 using std::string;

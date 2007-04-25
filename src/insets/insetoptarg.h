@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetoptarg.h
+ * \file InsetOptArg.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define INSETOPTARG_H
 
 
-#include "insetcollapsable.h"
+#include "InsetCollapsable.h"
 
 
 namespace lyx {

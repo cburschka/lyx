@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include "insetbase.h"
+#include "InsetBase.h"
 
 #include <boost/any.hpp>
 #include <boost/assert.hpp>

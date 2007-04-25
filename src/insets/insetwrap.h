@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetwrap.h
+ * \file InsetWrap.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,9 +12,9 @@
 #ifndef INSETWRAP_H
 #define INSETWRAP_H
 
-#include "insetcollapsable.h"
+#include "InsetCollapsable.h"
 #include "lyxlength.h"
-#include "mailinset.h"
+#include "MailInset.h"
 
 
 namespace lyx {

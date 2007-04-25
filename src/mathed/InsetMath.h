@@ -15,7 +15,7 @@
 
 #include "MathData.h"
 
-#include "insets/insetbase.h"
+#include "insets/InsetBase.h"
 
 
 namespace lyx {

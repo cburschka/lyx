@@ -22,7 +22,7 @@
 #include "lyxlayout_ptr_fwd.h"
 #include "RowList_fwd.h"
 
-#include "insets/insetbase.h" // only for InsetBase::Code
+#include "insets/InsetBase.h" // only for InsetBase::Code
 
 
 namespace lyx {

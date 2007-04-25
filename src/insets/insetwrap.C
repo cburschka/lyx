@@ -1,5 +1,5 @@
 /**
- * \file insetwrap.C
+ * \file InsetWrap.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetwrap.h"
+#include "InsetWrap.h"
 
 #include "buffer.h"
 #include "bufferparams.h"

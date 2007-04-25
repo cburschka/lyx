@@ -15,7 +15,7 @@
 #include "ButtonController.h"
 
 #include "funcrequest.h"
-#include "insets/insetvspace.h"
+#include "insets/InsetVSpace.h"
 
 
 using std::istringstream;

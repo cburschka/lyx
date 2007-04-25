@@ -19,7 +19,7 @@
 
 #include "controllers/ControlBranch.h"
 
-#include "insets/insetbranch.h"
+#include "insets/InsetBranch.h"
 
 #include <QPushButton>
 

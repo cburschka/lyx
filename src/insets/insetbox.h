@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetbox.h
+ * \file InsetBox.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,9 +13,9 @@
 #ifndef INSETBOX_H
 #define INSETBOX_H
 
-#include "insetcollapsable.h"
+#include "InsetCollapsable.h"
 #include "lyxlength.h"
-#include "mailinset.h"
+#include "MailInset.h"
 
 
 namespace lyx {

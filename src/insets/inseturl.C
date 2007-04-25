@@ -1,5 +1,5 @@
 /**
- * \file inseturl.C
+ * \file InsetUrl.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "inseturl.h"
+#include "InsetUrl.h"
 
 #include "dispatchresult.h"
 #include "funcrequest.h"

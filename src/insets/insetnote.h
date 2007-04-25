@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetnote.h
+ * \file InsetNote.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,8 @@
 #ifndef INSETNOTE_H
 #define INSETNOTE_H
 
-#include "insetcollapsable.h"
-#include "mailinset.h"
+#include "InsetCollapsable.h"
+#include "MailInset.h"
 
 
 namespace lyx {

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetbibitem.h
+ * \file InsetBibitem.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #define INSET_BIBITEM_H
 
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {

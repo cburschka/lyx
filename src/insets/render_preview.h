@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file render_preview.h
+ * \file RenderPreview.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,10 +13,10 @@
  * methods. The Inset would own an instance of this daughter class.
  */
 
-#ifndef RENDER_PREVIEW_H
-#define RENDER_PREVIEW_H
+#ifndef RENDERPREVIEW_H
+#define RENDERPREVIEW_H
 
-#include "render_base.h"
+#include "RenderBase.h"
 
 #include "support/FileMonitor.h"
 #include "support/docstring.h"

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetexternal.h
+ * \file InsetExternal.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef INSET_EXTERNAL_H
 #define INSET_EXTERNAL_H
 
-#include "inset.h"
+#include "Inset.h"
 #include "ExternalTransforms.h"
 
 #include "support/filename.h"
@@ -21,7 +21,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
-#include "mailinset.h"
+#include "MailInset.h"
 
 
 /** No two InsetExternalParams variables can have the same temporary file.

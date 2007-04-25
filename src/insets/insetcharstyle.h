@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetcharstyle.h
+ * \file InsetCharStyle.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #ifndef INSETCHARSTYLE_H
 #define INSETCHARSTYLE_H
 
-#include "insetcollapsable.h"
+#include "InsetCollapsable.h"
 #include "lyxtextclass.h"
 
 

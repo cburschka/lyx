@@ -18,7 +18,7 @@
 #include "lyxrc.h"
 #include "paragraph.h"
 
-#include "insets/inset.h"
+#include "insets/Inset.h"
 
 
 namespace lyx {

@@ -25,8 +25,8 @@
 #include "texrow.h"
 #include "vspace.h"
 
-#include "insets/insetbibitem.h"
-#include "insets/insetoptarg.h"
+#include "insets/InsetBibitem.h"
+#include "insets/InsetOptArg.h"
 
 #include "support/lstrings.h"
 

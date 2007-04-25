@@ -1,5 +1,5 @@
 /**
- * \file insetpagebreak.C
+ * \file InsetPageBreak.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetpagebreak.h"
+#include "InsetPageBreak.h"
 
 #include "debug.h"
 #include "gettext.h"

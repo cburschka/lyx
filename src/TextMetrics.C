@@ -201,7 +201,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
-	// noFontChange() in insetbase.h.
+	// noFontChange() in InsetBase.h.
 	LyXFont const bufferfont = buffer.params().getFont();
 	InsetList::const_iterator ii = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();

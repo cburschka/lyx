@@ -23,7 +23,7 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
-#include "insets/insetexternal.h"
+#include "insets/InsetExternal.h"
 #include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
 

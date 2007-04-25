@@ -12,7 +12,7 @@
 
 #include "ControlNote.h"
 #include "funcrequest.h"
-#include "insets/insetnote.h"
+#include "insets/InsetNote.h"
 #include "gettext.h"
 
 

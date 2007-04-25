@@ -1,5 +1,5 @@
 /**
- * \file insetnewline.C
+ * \file InsetNewline.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetnewline.h"
+#include "InsetNewline.h"
 
 #include "debug.h"
 #include "LColor.h"

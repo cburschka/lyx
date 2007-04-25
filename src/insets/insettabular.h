@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insettabular.h
+ * \file InsetTabular.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -32,9 +32,9 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
-#include "inset.h"
+#include "Inset.h"
 #include "tabular.h"
-#include "mailinset.h"
+#include "MailInset.h"
 
 namespace lyx {
 

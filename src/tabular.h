@@ -16,7 +16,7 @@
 #define TABULAR_H
 
 #include "lyxlength.h"
-#include "insets/insettext.h"
+#include "insets/InsetText.h"
 
 #include <boost/shared_ptr.hpp>
 

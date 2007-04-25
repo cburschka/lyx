@@ -55,10 +55,10 @@
 #include "WordLangTuple.h"
 #include "metricsinfo.h"
 
-#include "insets/insetbibtex.h"
-#include "insets/insetcommand.h" // ChangeRefs
-#include "insets/insetref.h"
-#include "insets/insettext.h"
+#include "insets/InsetBibtex.h"
+#include "insets/InsetCommand.h" // ChangeRefs
+#include "insets/InsetRef.h"
+#include "insets/InsetText.h"
 
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"

@@ -46,8 +46,8 @@
 #include "TextPainter.h"
 #include "undo.h"
 
-#include "insets/render_preview.h"
-#include "insets/insetlabel.h"
+#include "insets/RenderPreview.h"
+#include "insets/InsetLabel.h"
 
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"

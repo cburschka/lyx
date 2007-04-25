@@ -36,8 +36,8 @@
 #include "pariterator.h"
 #include "undo.h"
 
-#include "insets/insetcharstyle.h"
-#include "insets/insettabular.h"
+#include "insets/InsetCharStyle.h"
+#include "insets/InsetTabular.h"
 
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"

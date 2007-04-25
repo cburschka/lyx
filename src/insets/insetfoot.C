@@ -1,5 +1,5 @@
 /**
- * \file insetfoot.C
+ * \file InsetFoot.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "insetfoot.h"
+#include "InsetFoot.h"
 
 #include "gettext.h"
 // the following are needed just to get the layout of the enclosing

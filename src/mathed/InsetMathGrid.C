@@ -28,7 +28,7 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 
-#include "insets/mailinset.h"
+#include "insets/MailInset.h"
 
 #include "support/lstrings.h"
 

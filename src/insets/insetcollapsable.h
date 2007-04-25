@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetcollapsable.h
+ * \file InsetCollapsable.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,8 +14,8 @@
 #ifndef INSETCOLLAPSABLE_H
 #define INSETCOLLAPSABLE_H
 
-#include "inset.h"
-#include "insettext.h"
+#include "Inset.h"
+#include "InsetText.h"
 
 #include "box.h"
 #include "lyxfont.h"

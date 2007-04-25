@@ -14,7 +14,7 @@
 #include "ExternalSupport.h"
 #include "ExternalTemplate.h"
 #include "ExternalTransforms.h"
-#include "insetexternal.h"
+#include "InsetExternal.h"
 
 #include "buffer.h"
 #include "converter.h"

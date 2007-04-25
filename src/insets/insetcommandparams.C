@@ -1,5 +1,5 @@
 /**
- * \file insetcommandparams.C
+ * \file InsetCommandParams.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "insetcommandparams.h"
+#include "InsetCommandParams.h"
 
 #include "debug.h"
 #include "gettext.h"

@@ -24,7 +24,7 @@
 
 #include "controllers/ControlGraphics.h"
 
-#include "insets/insetgraphicsParams.h"
+#include "insets/InsetGraphicsParams.h"
 
 #include <QCloseEvent>
 #include <QPushButton>

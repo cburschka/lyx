@@ -1,5 +1,5 @@
 /**
- * \file insetref.C
+ * \file InsetRef.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,7 +9,7 @@
  */
 #include <config.h>
 
-#include "insetref.h"
+#include "InsetRef.h"
 
 #include "buffer.h"
 #include "cursor.h"

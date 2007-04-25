@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insettoc.h
+ * \file InsetTOC.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef INSET_TOC_H
 #define INSET_TOC_H
 
-#include "insetcommand.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {

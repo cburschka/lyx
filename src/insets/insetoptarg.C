@@ -1,5 +1,5 @@
 /**
- * \file insetoptarg.C
+ * \file InsetOptArg.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insetoptarg.h"
+#include "InsetOptArg.h"
 
 #include "debug.h"
 #include "gettext.h"

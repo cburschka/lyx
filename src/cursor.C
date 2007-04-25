@@ -33,8 +33,8 @@
 #include "paragraph_funcs.h"
 #include "pariterator.h"
 
-#include "insets/insettabular.h"
-#include "insets/insettext.h"
+#include "insets/InsetTabular.h"
+#include "insets/InsetText.h"
 
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"

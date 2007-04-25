@@ -1,5 +1,5 @@
 /**
- * \file insetindex.C
+ * \file InsetIndex.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,7 +9,7 @@
  */
 #include <config.h>
 
-#include "insetindex.h"
+#include "InsetIndex.h"
 
 #include "dispatchresult.h"
 #include "funcrequest.h"

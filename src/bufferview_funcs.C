@@ -33,8 +33,8 @@
 
 #include "frontends/Alert.h"
 
-#include "insets/insetcommand.h"
-#include "insets/insettext.h"
+#include "insets/InsetCommand.h"
+#include "insets/InsetText.h"
 
 #include "support/convert.h"
 
