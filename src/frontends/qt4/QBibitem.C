@@ -11,24 +11,62 @@
 #include <config.h>
 
 #include "QBibitem.h"
-#include "QBibitemDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "controllers/ControlCommand.h"
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QLineEdit>
+#include <QPushButton>
 
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCommand, QView<QBibitemDialog> > bibitem_base_class;
+/////////////////////////////////////////////////////////////////////
+//
+// QBibItemDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QBibitemDialog::QBibitemDialog(QBibitem * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+
+	connect(keyED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(labelED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+}
+
+
+void QBibitemDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QBibitemDialog::closeEvent(QCloseEvent *e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QBibItem
+//
+/////////////////////////////////////////////////////////////////////
+
+typedef QController<ControlCommand, QView<QBibitemDialog> > BibItemBase;
 
 
 QBibitem::QBibitem(Dialog & parent)
-	: bibitem_base_class(parent, _("Bibliography Entry Settings"))
+	: BibItemBase(parent, _("Bibliography Entry Settings"))
 {
 }
 
@@ -65,3 +103,5 @@ bool QBibitem::isValid()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBibitem_moc.cpp"

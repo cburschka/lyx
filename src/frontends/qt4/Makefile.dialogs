@@ -87,10 +87,10 @@ MOCFILES = \
 	lengthcombo.C lengthcombo.h \
 	panelstack.C panelstack.h \
 	QAbout.C QAbout.h \
-	QBibitemDialog.C QBibitemDialog.h \
-	QBibtexDialog.C QBibtexDialog.h \
+	QBibitem.C QBibitem.h \
+	QBibtex.C QBibtex.h \
 	QBox.C QBox.h \
-	QBranchDialog.C QBranchDialog.h \
+	QBranch.C QBranch.h \
 	QBranches.C QBranches.h \
 	QChangesDialog.C QChangesDialog.h \
 	QCharacterDialog.C QCharacterDialog.h \
@@ -101,11 +101,11 @@ MOCFILES = \
 	QDocument.C QDocument.h \
 	QErrorListDialog.C QErrorListDialog.h \
 	QERT.C QERT.h \
-	QExternalDialog.C QExternalDialog.h \
+	QExternal.C QExternal.h \
 	QFloatDialog.C QFloatDialog.h \
 	QGraphicsDialog.C QGraphicsDialog.h \
 	QIncludeDialog.C QIncludeDialog.h \
-	QIndexDialog.C QIndexDialog.h \
+	QIndex.C QIndex.h \
 	QLog.C QLog.h \
 	QViewSource.C QViewSource.h \
 	QLMenubar.C QLMenubar.h \

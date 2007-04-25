@@ -41,21 +41,16 @@ libqt4_la_SOURCES = \
 	GuiSelection.h GuiSelection.C \
 	LyXKeySymFactory.C \
 	QLMenubar.C QLMenubar.h \
-	QBibitem.C QBibitem.h \
-	QBibtex.C QBibtex.h \
 	QBox.C QBox.h \
-	QBranch.C QBranch.h \
 	QBranches.C QBranches.h \
 	QChanges.C QChanges.h \
 	QCharacter.C QCharacter.h \
 	QCitation.C QCitation.h \
 	QDialogView.C QDialogView.h \
 	QErrorList.C QErrorList.h \
-	QExternal.C QExternal.h \
 	QFloat.C QFloat.h \
 	QGraphics.C QGraphics.h \
 	QInclude.C QInclude.h \
-	QIndex.C QIndex.h \
 	QLImage.C QLImage.h \
 	QViewSource.C QViewSource.h \
 	QLPainter.C QLPainter.h \

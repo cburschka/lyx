@@ -12,11 +12,32 @@
 #ifndef QBIBITEM_CONTROLLER_H
 #define QBIBITEM_CONTROLLER_H
 
-#include "QBibitemDialog.h"
 #include "QDialogView.h"
+
+#include "ui/BibitemUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
+
 
 namespace lyx {
 namespace frontend {
+
+class QBibitem;
+
+class QBibitemDialog : public QDialog, public Ui::QBibitemUi {
+	Q_OBJECT
+public:
+
+	QBibitemDialog(QBibitem * form);
+protected Q_SLOTS:
+	virtual void change_adaptor();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QBibitem * form_;
+};
+
 
 class ControlCommand;
 

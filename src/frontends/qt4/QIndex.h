@@ -14,10 +14,29 @@
 #define QINDEX_H
 
 #include "QDialogView.h"
-#include "QIndexDialog.h"
+#include "ui/IndexUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
+
+class QIndex;
+
+class QIndexDialog : public QDialog, public Ui::QIndexUi {
+	Q_OBJECT
+public:
+	QIndexDialog(QIndex * form);
+
+protected Q_SLOTS:
+	virtual void change_adaptor();
+	virtual void reject();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QIndex * form_;
+};
 
 class ControlCommand;
 

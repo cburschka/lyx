@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "QBranch.h"
-#include "QBranchDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -22,9 +21,48 @@
 #include "insets/InsetBranch.h"
 
 #include <QPushButton>
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
+
+/////////////////////////////////////////////////////////////////////
+//
+// QBranchDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QBranchDialog::QBranchDialog(QBranch * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+	connect(branchCO, SIGNAL( activated(int) ), 
+		this, SLOT( change_adaptor() ) );
+}
+
+
+void QBranchDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+void QBranchDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QBranch
+//
+/////////////////////////////////////////////////////////////////////
 
 typedef QController<ControlBranch, QView<QBranchDialog> > branch_base_class;
 
@@ -75,3 +113,5 @@ void QBranch::apply()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBranch_moc.cpp"

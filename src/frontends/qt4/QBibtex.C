@@ -14,13 +14,15 @@
 
 #include "QBibtex.h"
 
-#include "QBibtexDialog.h"
 #include "ui/BibtexAddUi.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "validators.h"
-
 #include "lyxrc.h"
+#include "checkedwidgets.h"
+
+#include "controllers/ControlBibtex.h"
+#include "controllers/ButtonPolicies.h"
 
 #include "controllers/ControlBibtex.h"
 
@@ -30,7 +32,8 @@
 #include <QPushButton>
 #include <QListWidget>
 #include <QCheckBox>
-
+#include <QCloseEvent>
+#include <QLineEdit>
 
 using lyx::support::changeExtension;
 using lyx::support::split;
@@ -39,13 +42,222 @@ using lyx::support::trim;
 using std::vector;
 using std::string;
 
+#include "debug.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
+
+
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlBibtex, QView<QBibtexDialog> > bibtex_base_class;
+
+/////////////////////////////////////////////////////////////////////
+//
+// QBibtexDialog
+//
+/////////////////////////////////////////////////////////////////////
+
+QBibtexDialog::QBibtexDialog(QBibtex * form)
+	: form_(form)
+{
+	setupUi(this);
+	QDialog::setModal(true);
+
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+	connect(stylePB, SIGNAL(clicked()),
+		this, SLOT( browsePressed()));
+	connect(deletePB, SIGNAL(clicked()),
+		this, SLOT( deletePressed()));
+	connect(styleCB, SIGNAL(editTextChanged (const QString &)),
+		this, SLOT( change_adaptor()));
+	connect(databaseLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT( databaseChanged()));
+	connect(bibtocCB, SIGNAL(clicked()),
+		this, SLOT( change_adaptor()));
+	connect(btPrintCO, SIGNAL(activated(int)),
+		this, SLOT( change_adaptor()));
+	connect(addBibPB, SIGNAL(clicked()),
+		this, SLOT( addPressed()));
+
+	add_ = new UiDialog<Ui::QBibtexAddUi>(this, true);
+
+	Qt2BC * bcview = new Qt2BC(add_bc_);
+	add_bc_.view(bcview);
+	add_bc_.bp(new OkCancelPolicy);
+
+	bcview->setOK(add_->addPB);
+	bcview->setCancel(add_->closePB);
+
+	add_->bibED->setValidator(new PathValidator(true, add_->bibED));
+	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
+
+	connect(add_->bibED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(bibEDChanged()));
+	connect(add_->addPB, SIGNAL(clicked()),
+		this, SLOT(addDatabase()));
+	connect(add_->addPB, SIGNAL(clicked()),
+		add_, SLOT(accept()));
+	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
+		this, SLOT(addDatabase()));
+	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
+		add_, SLOT(accept()));
+	connect(add_->bibLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(availableChanged()));
+	connect(add_->browsePB, SIGNAL(clicked()),
+		this, SLOT(browseBibPressed()));
+	connect(add_->closePB, SIGNAL(clicked()),
+		add_, SLOT(reject()));
+
+}
+
+
+void QBibtexDialog::bibEDChanged()
+{
+	// Indicate to the button controller that the contents have
+	// changed. The actual test of validity is carried out by
+	// the checkedLineEdit.
+	add_bc_.valid(true);
+}
+
+
+void QBibtexDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QBibtexDialog::browsePressed()
+{
+	docstring const file = form_->controller().browseBst(docstring());
+
+	if (!file.empty()) {
+		// FIXME UNICODE
+		docstring const filen = from_utf8(changeExtension(to_utf8(file), ""));
+		bool present = false;
+		unsigned int pres = 0;
+
+		for (int i = 0; i != styleCB->count(); ++i) {
+			if (qstring_to_ucs4(styleCB->itemText(i)) == filen) {
+				present = true;
+				pres = i;
+			}
+		}
+
+		if (!present)
+			styleCB->insertItem(0, toqstr(filen));
+
+		styleCB->setCurrentIndex(pres);
+		form_->changed();
+	}
+}
+
+
+void QBibtexDialog::browseBibPressed()
+{
+	docstring const file = trim(form_->controller().browseBib(docstring()));
+
+	if (!file.empty()) {
+		// FIXME UNICODE
+		QString const f = toqstr(changeExtension(to_utf8(file), ""));
+		bool present = false;
+
+		for (int i = 0; i < add_->bibLW->count(); ++i) {
+			if (add_->bibLW->item(i)->text() == f)
+				present = true;
+		}
+
+		if (!present) {
+			add_->bibLW->addItem(f);
+			form_->changed();
+		}
+
+		add_->bibED->setText(f);
+	}
+}
+
+
+void QBibtexDialog::addPressed()
+{
+	add_bc_.valid(false);
+	add_->exec();
+}
+
+
+void QBibtexDialog::addDatabase()
+{
+	int const sel = add_->bibLW->currentRow();
+	docstring const file = trim(qstring_to_ucs4(add_->bibED->text()));
+
+	if (sel < 0 && file.empty())
+		return;
+
+	// Add the selected browser_bib keys to browser_database
+	// multiple selections are possible
+	for (int i = 0; i != add_->bibLW->count(); ++i) {
+		QListWidgetItem * const item = add_->bibLW->item(i);
+		if (add_->bibLW->isItemSelected(item)) {
+			add_->bibLW->setItemSelected(item, false);
+			QList<QListWidgetItem *> matches =
+				databaseLW->findItems(item->text(), Qt::MatchExactly);
+			if (matches.empty())
+				databaseLW->addItem(item->text());
+		}
+	}
+
+	if (!file.empty()) {
+		add_->bibED->clear();
+		QString const f = toqstr(from_utf8(changeExtension(to_utf8(file), "")));
+		QList<QListWidgetItem *> matches =
+			databaseLW->findItems(f, Qt::MatchExactly);
+		if (matches.empty())
+			databaseLW->addItem(f);
+	}
+
+	form_->changed();
+}
+
+
+void QBibtexDialog::deletePressed()
+{
+	databaseLW->takeItem(databaseLW->currentRow());
+	form_->changed();
+}
+
+
+
+void QBibtexDialog::databaseChanged()
+{
+	deletePB->setEnabled(!form_->readOnly() && databaseLW->currentRow() != -1);
+}
+
+
+void QBibtexDialog::availableChanged()
+{
+	add_bc_.valid(true);
+}
+
+
+void QBibtexDialog::closeEvent(QCloseEvent *e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QBibTex
+//
+/////////////////////////////////////////////////////////////////////
+
+
+typedef QController<ControlBibtex, QView<QBibtexDialog> > BibtexBase;
 
 QBibtex::QBibtex(Dialog & parent)
-	: bibtex_base_class(parent, _("BibTeX Bibliography"))
+	: BibtexBase(parent, _("BibTeX Bibliography"))
 {
 }
 
@@ -195,3 +407,5 @@ bool QBibtex::isValid()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBibtex_moc.cpp"

@@ -13,12 +13,44 @@
 #define QEXTERNAL_H
 
 #include "QDialogView.h"
-#include "QExternalDialog.h"
+
+#include "ui/ExternalUi.h"
+
+#include <QCloseEvent>
+#include <QDialog>
 
 #include <map>
 
 namespace lyx {
 namespace frontend {
+
+class QExternal;
+
+class QExternalDialog : public QDialog, public Ui::QExternalUi {
+	Q_OBJECT
+public:
+	QExternalDialog(QExternal * form);
+
+	virtual void show();
+protected Q_SLOTS:
+	virtual void bbChanged();
+	virtual void browseClicked();
+	virtual void change_adaptor();
+	virtual void editClicked();
+	virtual void extraChanged(const QString&);
+	virtual void formatChanged(const QString&);
+	virtual void getbbClicked();
+	virtual void sizeChanged();
+	virtual void templateChanged();
+	virtual void widthUnitChanged();
+
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	bool activateAspectratio() const;
+	QExternal * form_;
+};
+
 
 class ControlExternal;
 

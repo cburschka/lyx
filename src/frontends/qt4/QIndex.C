@@ -14,24 +14,88 @@
 #include "ControlCommand.h"
 #include "qt_helpers.h"
 
-#include "QIndexDialog.h"
 #include "QIndex.h"
 #include "Qt2BC.h"
 #include "ButtonController.h"
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+
+#include <QLabel>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QWhatsThis>
+#include <QCloseEvent>
+
 
 using std::string;
+
+/////////////////////////////////////////////////////////////////////
+//
+// QIndexDialog
+//
+/////////////////////////////////////////////////////////////////////
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCommand, QView<QIndexDialog> > index_base_class;
+QIndexDialog::QIndexDialog(QIndex * form)
+	: form_(form)
+{
+	setupUi(this);
 
+	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect( keywordED, SIGNAL(textChanged(const QString &)), 
+		this, SLOT(change_adaptor()));
+
+	setFocusProxy(keywordED);
+
+	keywordED->setWhatsThis( qt_(
+		"The format of the entry in the index.\n"
+		"\n"
+		"An entry can be specified as a sub-entry of\n"
+		"another with \"!\":\n"
+		"\n"
+		"cars!mileage\n"
+		"\n"
+		"You can cross-refer to another entry like so:\n"
+		"\n"
+		"cars!mileage|see{economy}\n"
+		"\n"
+		"For further details refer to the local LaTeX\n"
+		"documentation.\n")
+	);
+}
+
+
+void QIndexDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void QIndexDialog::reject()
+{
+	form_->slotClose();
+}
+
+
+void QIndexDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// QIndex
+//
+/////////////////////////////////////////////////////////////////////
+
+
+typedef QController<ControlCommand, QView<QIndexDialog> > IndexBase;
 
 QIndex::QIndex(Dialog & parent, docstring const & title, QString const & label)
-	: index_base_class(parent, title), label_(label)
+	: IndexBase(parent, title), label_(label)
 {
 }
 
@@ -70,3 +134,5 @@ bool QIndex::isValid()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QIndex_moc.cpp"

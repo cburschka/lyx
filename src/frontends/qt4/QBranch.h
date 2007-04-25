@@ -12,11 +12,28 @@
 #ifndef QBRANCH_H
 #define QBRANCH_H
 
-#include "QBranchDialog.h"
 #include "QDialogView.h"
+#include "ui/BranchUi.h"
+
+#include <QCloseEvent>
+#include <QDialog>
 
 namespace lyx {
 namespace frontend {
+
+class QBranch;
+
+class QBranchDialog : public QDialog, public Ui::QBranchUi {
+	Q_OBJECT
+public:
+	QBranchDialog(QBranch * form);
+protected Q_SLOTS:
+	virtual void change_adaptor();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QBranch * form_;
+};
 
 class ControlBranch;
 
