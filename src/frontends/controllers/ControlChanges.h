@@ -42,10 +42,10 @@ public:
 	void next();
 
 	/// return date of change
-	lyx::docstring const getChangeDate();
+	docstring const getChangeDate();
 
 	/// return author of change
-	lyx::docstring const getChangeAuthor();
+	docstring const getChangeAuthor();
 
 	/// accept the current change
 	void accept();

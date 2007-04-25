@@ -37,7 +37,6 @@ public:
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	Dialog(LyXView & lv, std::string const & name);
-	~Dialog();
 
 	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the kernel.
@@ -228,7 +227,7 @@ public:
 	/** \param parent Dialog owning this Controller.
 	 *  \param title  is the dialog title displayed by the WM.
 	 */
-	View(Dialog & parent, lyx::docstring title);
+	View(Dialog & parent, docstring title);
 	virtual ~View() {}
 
 	/** \name Generic View
@@ -266,9 +265,9 @@ public:
 	virtual void partialUpdate(int id);
 
 	/// sets the title of the dialog (window caption)
-	void setTitle(lyx::docstring const &);
+	void setTitle(docstring const &);
 	/// gets the title of the dialog (window caption)
-	lyx::docstring const & getTitle() const;
+	docstring const & getTitle() const;
 
 	/** \name View Access
 	 *  Enable the derived classes to access the other parts of the whole.
@@ -290,7 +289,7 @@ protected:
 
 private:
 	Dialog & p_;
-	lyx::docstring title_;
+	docstring title_;
 };
 
 } // namespace frontend

@@ -43,7 +43,7 @@ public:
 	virtual kb_action getLfun() const { return LFUN_BUFFER_PRINT; }
 
 	/// Browse for a file
-	lyx::docstring const browse(lyx::docstring const &) const;
+	docstring const browse(docstring const &) const;
 	///
 	PrinterParams & params() const;
 private:

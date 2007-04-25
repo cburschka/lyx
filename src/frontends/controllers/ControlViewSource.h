@@ -37,12 +37,12 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// The title displayed by the dialog reflects source type. 
-	lyx::docstring const title() const;
+	docstring const title() const;
 
 	/** get the source code of selected paragraphs, or the whole document
 		\param fullSource get full source code
 	 */
-	lyx::docstring const updateContent(bool fullSource);
+	docstring const updateContent(bool fullSource);
 };
 
 } // namespace frontend

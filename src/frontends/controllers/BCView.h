@@ -39,7 +39,7 @@ class ButtonPolicy;
 class CheckedWidget {
 public:
 	///
-	virtual ~CheckedWidget();
+	virtual ~CheckedWidget() {}
 
 	/** Returns true if the widget is in a valid state.
 	*  Might also change the visual appearance of the widget,
@@ -95,7 +95,7 @@ class GuiBC : public BCView {
 public:
 	///
 	GuiBC(ButtonController const & parent,
-	      lyx::docstring const & cancel, lyx::docstring const & close);
+	      docstring const & cancel, docstring const & close);
 
 	//@{
 	/** Store pointers to these widgets. The pointers are _not_
@@ -124,10 +124,10 @@ private:
 	/// Enable/Disable a button
 	virtual void setButtonEnabled(Button * obj, bool enable) const = 0;
 	/// Set the Label on the button
-	virtual void setButtonLabel(Button * obj, lyx::docstring const & label) const = 0;
+	virtual void setButtonLabel(Button * obj, docstring const & label) const = 0;
 
-	lyx::docstring const cancel_label_;
-	lyx::docstring const close_label_;
+	docstring const cancel_label_;
+	docstring const close_label_;
 
 	Button * okay_;
 	Button * apply_;

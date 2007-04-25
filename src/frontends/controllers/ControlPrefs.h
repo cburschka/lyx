@@ -52,18 +52,18 @@ public:
 	Movers const & movers() const { return movers_; }
 
 	/// various file pickers
-	lyx::docstring const browsebind(lyx::docstring const & file) const;
-	lyx::docstring const browseUI(lyx::docstring const & file) const;
-	lyx::docstring const browsekbmap(lyx::docstring const & file) const;
-	lyx::docstring const browsedict(lyx::docstring const & file) const;
+	docstring const browsebind(docstring const & file) const;
+	docstring const browseUI(docstring const & file) const;
+	docstring const browsekbmap(docstring const & file) const;
+	docstring const browsedict(docstring const & file) const;
 
 	/// general browse
-	lyx::docstring const browse(lyx::docstring const & file,
-				 lyx::docstring const & title) const;
+	docstring const browse(docstring const & file,
+				 docstring const & title) const;
 
 	/// browse directory
-	lyx::docstring const browsedir(lyx::docstring const & path,
-				    lyx::docstring const & title) const;
+	docstring const browsedir(docstring const & path,
+				    docstring const & title) const;
 
 	/// set a color
 	void setColor(LColor_color col, std::string const & hex);

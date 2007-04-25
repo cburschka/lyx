@@ -26,7 +26,7 @@ public:
 	///
 	ControlRef(Dialog &);
 	///
-	std::vector<lyx::docstring> const getLabelList(std::string const &) const;
+	std::vector<docstring> const getLabelList(std::string const &) const;
 	///
 	void gotoRef(std::string const &);
 	///

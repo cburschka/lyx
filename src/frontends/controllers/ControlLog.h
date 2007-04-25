@@ -39,7 +39,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// The title displayed by the dialog reflects the \c LOGTYPE
-	lyx::docstring const title() const;
+	docstring const title() const;
 	/// put the log file into the ostream
 	void getContents(std::ostream & ss) const;
 

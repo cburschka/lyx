@@ -16,10 +16,6 @@
 namespace lyx {
 namespace frontend {
 
-CheckedWidget::~CheckedWidget()
-{}
-
-
 BCView::BCView(ButtonController const & p)
 	: parent(p)
 {}

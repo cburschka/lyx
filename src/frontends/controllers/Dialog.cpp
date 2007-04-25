@@ -21,7 +21,6 @@
 #include "FuncStatus.h"
 #include "lyxfunc.h"
 
-using lyx::docstring;
 
 using std::string;
 
@@ -31,10 +30,6 @@ namespace frontend {
 Dialog::Dialog(LyXView & lv, string const & name)
 	: is_closing_(false), kernel_(lv), name_(name),
 	  bc_ptr_(new ButtonController)
-{}
-
-
-Dialog::~Dialog()
 {}
 
 
@@ -208,7 +203,7 @@ Dialog::Controller::Controller(Dialog & parent)
 bool Dialog::Controller::canApply() const
 {
 	FuncRequest const fr(getLfun(), dialog().name());
-	FuncStatus const fs(lyx::getStatus(fr));
+	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }
 
