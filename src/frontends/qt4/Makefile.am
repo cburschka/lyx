@@ -62,7 +62,6 @@ libqt4_la_SOURCES = \
 	QLyXKeySym.C QLyXKeySym.h \
 	QNomencl.C QNomencl.h \
 	QNote.C QNote.h \
-	QPrefs.C QPrefs.h \
 	QPrint.C QPrint.h \
 	QRef.C QRef.h \
 	QSendto.C QSendto.h \
