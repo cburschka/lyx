@@ -1385,6 +1385,7 @@ lib_examples_files = Split('''
     docbook_article.lyx
     example_lyxified.lyx
     example_raw.lyx
+    g-brief2.lyx
     iecc05.fen
     iecc07.fen
     iecc12.fen
@@ -1394,8 +1395,8 @@ lib_examples_files = Split('''
     multicol.lyx
     noweb2lyx.lyx
     script_form.lyx
+    simplecv.lyx
     splash.lyx
-    g-brief2.lyx
 ''')
 
 lib_fonts_files = Split('''
@@ -2133,6 +2134,7 @@ lib_layouts_files = Split('''
     scrreprt.layout
     seminar.layout
     siamltex.layout
+    simplecv.layout
     slides.layout
     spie.layout
     svglobal.layout
