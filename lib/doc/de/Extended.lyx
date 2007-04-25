@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 264
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12,18 +12,71 @@
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
 
+\usepackage{ifpdf}
+
+% if pdflatex is used
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ % if it exists
+ {\usepackage{lmodern}}
+ % if it exists not
+ {\usepackage[scaled=0.92]{helvet}
+   \usepackage{mathptmx}
+   \usepackage{courier}
+ }
+
+% link all cross references and URLs
+% in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=0,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={LYXs erweitertes Benutzerhandbuch},
+  pdfsubject={LyX-Dokumentation, Benutzerhandbuch},
+  pdfkeywords={LyX}]{hyperref}
+
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in DVI output
+ \usepackage[ps2pdf, colorlinks=true,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
+
+\fi % end if pdflatex is used
+
+% that links to image floats jumps
+% to the beginning of the float and 
+% not to its caption
+\usepackage[figure]{hypcap}
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{Inhaltsverzeichnis}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% provides caption formatting
+\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+
 % Damit mehrere Spalten verwendet können, siehe Kap. 7.2
 \usepackage{multicol}
 
 % Befehl aus Kapitel 7.4
 \newcommand{\extratablespace}[1]{\noalign{vskip#1}} 
-\usepackage [chapter,nottoc]{tocbibind}
-% Damit der Index den Namen "Stichwortverzeichnis" erhält
-\usepackage[german]{babel}
-\addto\captionsgerman
-{\renewcommand{\indexname}
-{Stichwortverzeichnis}}
 \end_preamble
+\options bibtotoc, idxtotoc
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -59,18 +112,19 @@
 \tracking_changes false
 \output_changes false
 \author "usti" 
+\author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Handbuchergänzungen:
+Handbuchergänzungen
 \size large
 
 \newline
-erweiterte Textbearbeitung mit LyX
+--- erweiterte Textbearbeitung mit LyX
 \newline
-(Version 1.4.x)
+(Version 1.5.x)
 \end_layout
 
 \begin_layout Author
@@ -81,28 +135,13 @@ status open
 \begin_layout Standard
 
 \size normal
-Übersetzung: 
+Übersetzung und Bearbeitung: 
 \size default
-\noun on
 Hartmut
-\size normal
-\noun default
- 
-\size default
 \noun on
+ 
+\noun default
 Haase
-\size normal
-\noun default
-, 
-\size default
-\noun on
-Peter
-\size normal
-\noun default
- 
-\size default
-\noun on
-Sütterlin
 \end_layout
 
 \end_inset
@@ -111,8 +150,8 @@ Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
- November 2006
+letzte Änderung: 24.
+ April 2007
 \end_layout
 
 \begin_layout Standard
@@ -133,6 +172,69 @@ letzte Änderung: 17.
 
 \begin_layout Chapter
 Einleitung
+\end_layout
+
+\begin_layout Section*
+Vorbemerkung
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+HHa
+\noun default
+: Ich habe ab dieser Version alle Unterstreichnungen von Menü-Befehlen weggelass
+en, weil es zu mühsam ist, die Änderungen während der Weiterentwicklung
+ immer wieder nachzuvollziehen.
+ Ein Befehl sieht jetzt so aus: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Werkzeugleisten
+\family default
+ an Stelle von 
+\family sans
+Ans
+\bar under
+i
+\bar default
+cht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+\bar under
+W
+\bar default
+erkzeugleisten
+\family default
+.
+ Wenn Sie mit Tastenkürzeln arbeiten wollen, können Sie sich die unterstrichenen
+ Buchstaben merken, wenn Sie einen Menü-Befehl aufrufen.
+\end_layout
+
+\begin_layout Standard
+Außerdem hat 
+\noun on
+Uwe Stöhr
+\noun default
+ in den LaTeX-Vorspann (siehe 
+\family sans
+Hilfe\SpecialChar \menuseparator
+Handbuchergän\SpecialChar \-
+zun\SpecialChar \-
+gen
+\family default
+) Elemente eingefügt, die bewirken, dass in der druckbaren Version Einträge
+ in den Verzeichnissen und Querverweise blau unterstrichen werden und wie
+ eine URL angeklickt werden können.
+\end_layout
+
+\begin_layout Section
+Was Sie hier finden
 \end_layout
 
 \begin_layout Standard
@@ -235,7 +337,7 @@ s-Team verfasst.
 \begin_layout Standard
 Weil alle Themen dieses Handbuchs stark vom Zusammenspiel LyX--LaTeX abhängen,
  beschreibt das erste Kapitel die innere Arbeitsweise von LyX und wie man
- LyX dazu bringt, den gewünschten LaTeX-Code (ERT = Evil Red Text) zu erzeugen.
+ LyX dazu bringt, den gewünschten LaTeX-Code zu erzeugen.
  Es ist offensichtlich für erfahrenere LyX-Benutzer gedacht.
 \end_layout
 
@@ -263,17 +365,6 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Die Klammerung {} verhindert, dass der Sonderbegriff LaTeX erkannt wird,
- ebenso bei LyX, TeX usw.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -309,6 +400,17 @@ name "LyX und LaTeX"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Die Klammerung {} verhindert, dass der Sonderbegriff LaTeX erkannt wird,
+ ebenso bei LyX, TeX usw.
+\end_layout
+
+\end_inset
+
+
 \begin_inset LatexCommand label
 name "sec:lyxandlatex"
 
@@ -322,7 +424,7 @@ nisse voraussetzen.
 \end_layout
 
 \begin_layout Standard
-Einst nannten wir LyX ein 
+Einst nannten wir LyX eine 
 \begin_inset Quotes gld
 \end_inset
 
@@ -331,17 +433,45 @@ WYSIWYM
 status open
 
 \begin_layout Standard
-What You See Is What You Mean
+What You See Is What You Mean 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+HHa: Der Text wurde von LyX unterstrichen, weil er als englisch markiert
+ wurde (
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Benutzerdefiniert\SpecialChar \menuseparator
+Sprache
+\family default
+ oder 
+\begin_inset Graphics
+	filename /windows/D/EigeneDateien/LyX/Dokumentation/15x/images/dialog-show_character.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
+ Das hat bei der Rechtschreibprüfung den Vorteil, dass er dann übergangen
+ wird.
 \end_layout
 
 \end_inset
 
--Frontende für LaTeX
+
+\end_layout
+
+\end_inset
+
+-Oberfläche für LaTeX
 \begin_inset Quotes grd
 \end_inset
 
 , aber das stimmt nicht mehr.
- Es gibt Frontenden für LaTeX.
+ Es gibt Oberflächen für LaTeX.
  Sie sind im Grunde Editoren, die LaTeX laufen lassen können und Fehler
  in der editierten Datei markieren.
  Obwohl LyX ein Editor 
@@ -361,8 +491,8 @@ status open
 
 \begin_layout Standard
 Das LyX-Team hat das wegen Parsing/Kodierung gemacht.
- Die neuen Makros erleichtern es LyX, ERTs zu erzeugen und sicherzustellen,
- dass das Ergebnis richtig ist.
+ Die neuen Makros erleichtern es LyX, LaTeX-Code zu erzeugen und sicherzustellen
+, dass das Ergebnis richtig ist.
  Darüber müssen Sie sich als Benutzer keine Sorgen machen.
 \end_layout
 
@@ -370,37 +500,29 @@ Das LyX-Team hat das wegen Parsing/Kodierung gemacht.
 
  Versuchen Sie einmal folgendes: wählen Sie 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Ansicht\SpecialChar \menuseparator
+Quelle\InsetSpace \space{}
+ansehen 
 \family default
-, dann schauen Sie sich den Vorspann der erzeugten .
-\family typewriter
-tex
+und
+\family sans
+ 
 \family default
--Datei an.
+kreuzen 
+\family sans
+Vollständige
+\family default
+\InsetSpace \space{}
+
+\family sans
+Quelle
+\family default
+\InsetSpace \space{}
+
+\family sans
+anzeigen
+\family default
+ an.
  Sie werden eine Vielzahl neuer Makros bemerken, die speziell durch LyX
  definiert wurden.
 \begin_inset Foot
@@ -432,109 +554,90 @@ Es gibt mehrere Befehle, bei denen automatisch LaTeX gestartet wird:
 \begin_layout Itemize
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
+Ansicht\SpecialChar \menuseparator
+DVI (Strg+D
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
-\bar under
-D
-\bar default
-VI (Strg+D)
-\end_layout
+\end_inset
 
-\begin_layout Itemize
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-TML
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-PDF (dvipdf
-\bar under
-m
-\bar default
 )
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-PD
-\bar under
-F
+Ansicht\SpecialChar \menuseparator
+HTML
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Ansicht\SpecialChar \menuseparator
+PDF (dvipdfm)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Ansicht\SpecialChar \menuseparator
+PDF
 \family default
-\bar default
  
 \family sans
-(pdflatex)
+(pdflatex
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_pdf2.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-DF (ps2pdf)
+Ansicht\SpecialChar \menuseparator
+PDF (ps2pdf)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-Pos
-\bar under
-t
-\bar default
-script (Strg+T)
+Ansicht\SpecialChar \menuseparator
+Postscript (Strg+T 
+\family default
+oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ktualisieren\SpecialChar \menuseparator
+Ansicht\SpecialChar \menuseparator
+Aktualisieren\SpecialChar \menuseparator
 
 \family default
 \SpecialChar \ldots{}
@@ -544,18 +647,11 @@ ktualisieren\SpecialChar \menuseparator
 \begin_layout Itemize
 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-rucken\SpecialChar \ldots{}
-
+Datei\SpecialChar \menuseparator
+Drucken\SpecialChar \ldots{}
+ (Strg+P 
 \family default
- 
+oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.xpm
 	scale 70
@@ -563,21 +659,14 @@ rucken\SpecialChar \ldots{}
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-Fa
-\bar under
-x
-\bar default
-en\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Faxen\SpecialChar \ldots{}
 
 \end_layout
 
@@ -601,7 +690,7 @@ Das Dokument wird nach LaTeX konvertiert und in eine
 \family typewriter
 .lyx
 \family default
--Datei gespeichert
+-Datei gespeichert.
 \end_layout
 
 \begin_layout Enumerate
@@ -623,16 +712,20 @@ Wenn Fehler auftreten, werden sie in der
 \begin_layout Standard
 Wenn LaTeX aufgrund 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
+Ansicht\SpecialChar \menuseparator
+DVI (Strg+D
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
-\bar under
-D
-\bar default
-VI (Strg+D)
+\end_inset
+
+
+\family sans
+)
 \family default
  gestartet wurde, wird LyX dann 
 \family typewriter
@@ -645,36 +738,35 @@ xdvi
 i-Datei ausführen.
  Wenn Sie 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-Pos
-\bar under
-t
-\bar default
-script (Strg+T)
+Ansicht\SpecialChar \menuseparator
+Postscript (Strg+T 
+\family default
+oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+)
 \family default
  oder 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-rucken
+Datei\SpecialChar \menuseparator
+Drucken
 \family default
 \SpecialChar \ldots{}
 \InsetSpace \space{}
 
 \family sans
-(Strg+P,
-\family default
+(Strg+P
+\family typewriter
  
+\family default
+oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.xpm
 	scale 70
@@ -706,11 +798,19 @@ i-Datei nach PostScript® zu konvertieren:
 Für 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Pos
-\bar under
-t
-\bar default
-script (Strg+T)
+Postscript (Strg+T 
+\family default
+oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+)
 \family default
  hat die Ausgabedatei die Endung 
 \family typewriter
@@ -733,21 +833,25 @@ tmp
 \begin_layout Itemize
 Für 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-rucken\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Drucken\SpecialChar \ldots{}
 
 \family default
-\InsetSpace \space{}
+ 
+\family sans
+(Strg+P 
+\family default
+oder 
+\begin_inset Graphics
+	filename ../../images/dialog-show_print.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
 
 \family sans
-(Strg+P)
+)
 \family default
  hat die Ausgabedatei wie erwartet die Endung 
 \family typewriter
@@ -772,8 +876,11 @@ Ansicht\SpecialChar \menuseparator
 PDF
 \family default
 \InsetSpace ~
-(\SpecialChar \ldots{}
-)\InsetSpace \space{}
+
+\family sans
+(ps2pdf)
+\family default
+\InsetSpace \space{}
 aufgerufen haben, wird die 
 \family typewriter
 .ps
@@ -788,6 +895,7 @@ ps2pdf
 \family default
 -Datei konvertiert und mit einem pdf-Betrachter angezeigt (zum Beispiel
  Acrobat®Reader).
+ Bei den beiden anderen PDF-Betrachtern kommen andere Programme zum Einsatz.
 \end_layout
 
 \begin_layout Section
@@ -845,8 +953,7 @@ John Weiss
 \end_layout
 
 \begin_layout Standard
-Wir wollen es richtigstellen.
- LyX produziert zwei LaTeX-Dateitypen.
+Wir wollen es richtigstellen: LyX produziert zwei LaTeX-Dateitypen.
  Einer kann von Menschen gelesen werden.
  Der andere kann von LyX gelesen werden.
  Jedesmal, wenn LyX LaTeX ausführt, erzeugt es eine LaTeX-Datei, die es
@@ -863,20 +970,9 @@ Wir wollen es richtigstellen.
 \family default
 -Datei wollen, um sie jemandem zu schicken, wählen Sie 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -891,7 +987,7 @@ X.
 \end_layout
 
 \begin_layout Standard
-Wir sagen es nochmal, speziell abgesetzt für Begriffsstutzige:
+Wir sagen es nochmal, speziell hervorgehoben für Begriffsstutzige:
 \end_layout
 
 \begin_layout Quote
@@ -909,20 +1005,9 @@ Wenn Sie eine
  
 \family sans
 \series bold
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+LaTe
 \series default
 
 \begin_inset ERT
@@ -964,25 +1049,20 @@ status collapsed
 \end_inset
 
 X konvertieren
+\begin_inset LatexCommand label
+name "sec:LaTeX-Dateien-nach-LyX"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Mit 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Datei\SpecialChar \menuseparator
+Importieren\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -1037,7 +1117,7 @@ lyx
 \family typewriter
 tex2lyx
 \family default
- benötigt Perl (Version 5.002 oder höher).
+ benötigt Perl.
 \end_layout
 
 \end_inset
@@ -1061,13 +1141,7 @@ wird die meisten zulässigen LaTeX-Texte übersetzen, aber nicht alles.
 \family typewriter
 tex2lyx
 \family default
-hat in diesem Handbuch ein eigenes Kapitel (
-\begin_inset LatexCommand vref
-reference "sec:reLyX"
-
-\end_inset
-
-) und eine Unix-
+ hat eine 
 \family typewriter
 man
 \family default
@@ -1081,8 +1155,8 @@ Wenn Sie
 \family typewriter
 tex2lyx
 \family default
- nicht zum laufen bringen oder nur ein Stück ERT in eine LyX-Datei einsetzen
- wollen, lesen Sie Abschnitt 
+ nicht zum laufen bringen oder nur ein Stück LaTeX-Code in eine LyX-Datei
+ einsetzen wollen, lesen Sie Abschnitt 
 \begin_inset LatexCommand vref
 reference "sec:latexcodes"
 
@@ -1103,7 +1177,17 @@ status collapsed
 
 \end_inset
 
-X-Code (ERT
+X-Code
+\begin_inset LatexCommand index
+name "LaTeX-Code"
+
+\end_inset
+
+ 
+\family sans
+(ERT
+\family default
+
 \begin_inset LatexCommand index
 name "ERT"
 
@@ -1129,17 +1213,24 @@ name "sec:latexcodes"
 
 \end_inset
 
- Dies ist ein ziemlich wichtiger Punkt: Sie können immer ERTs in jedes LyX-Dokum
+ Dies ist ein ziemlich wichtiger Punkt: Sie können LaTeX-Code in jedes LyX-Dokum
 ent einsetzen.
  LyX kann einfach nicht jede mögliche LaTeX-Konstruktion darstellen und
  wird es wohl auch nie können.
  Wenn Sie jemals LaTeX-Befehle in Ihr LyX-Dokument einsetzen müssen, können
- Sie den ERT-Einsatz benutzen, den Sie mit 
+ Sie den ERT
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Evil Red Text
+\end_layout
+
+\end_inset
+
+-Einsatz benutzen, den Sie mit 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Te
 \begin_inset ERT
 status collapsed
@@ -1151,16 +1242,17 @@ status collapsed
 
 \end_inset
 
-
-\bar under
-X
-\bar default
--Code
+X-Code
 \family default
-, Strg+l oder 
+, 
+\family sans
+Strg+L
+\family default
+ oder 
 \begin_inset Graphics
 	filename ../../images/ert-insert.xpm
-	BoundingBox 0bp 6bp 18bp 18bp
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -1168,7 +1260,7 @@ X
 \end_layout
 
 \begin_layout Standard
-Der ERT-Einsatz hat drei Formen: geschlossen, geöfnet und eingebettet.
+Der ERT-Einsatz hat drei Formen: geschlossen, geöffnet und eingebettet.
  Die ersten beiden Formen werden wie alle zusammenklappbaren Schaltflächen
  benutzt (zum Beispiel Fußnoten) und sind für die meisten LaTeX-Befehle
  nützlich.
@@ -1194,7 +1286,8 @@ status inlined
 
 \begin_layout Standard
 Sie können zwischen den drei Formen hin- und herschalten, indem Sie mit
- der rechten Maustaste auf die ERT-Schaltfläche klicken.
+ der rechten Maustaste auf die ERT-Schaltfläche oder bei eingebettet auf
+ das rote Rechteck klicken.
 \end_layout
 
 \begin_layout Standard
@@ -1237,8 +1330,7 @@ begin{verbatim}
 \backslash
 begin{minipage}{5cm}
 \newline
-Dies ...
- 
+Dies  
 \newline
 
 \backslash
@@ -1387,23 +1479,13 @@ Zusätzlich zu diesen beiden Methoden können Sie eine separate Datei erstellen,
  die komplexere LaTeX-Strukturen enthält.
  Mit 
 \family sans
-\bar under
-Ei
-\bar default
-nfügen\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-atei
+Einfügen\SpecialChar \menuseparator
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-U
-\bar default
-nterdokument
+Unterdokument
 \family default
  können Sie dann diese Datei einfügen (im Menüfenster 
 \family sans
@@ -1602,8 +1684,7 @@ müssen
 \emph default
 , um die gewünschte Wirkung zu erzielen.
  (Es gibt andere Variablen, die Sie auch im Dokument (zurück)setzen können.)
- Ränder sind ein gutes Beispiel dafür, was im Vorspann gesetzt werden muss
- .
+ Ränder sind ein gutes Beispiel dafür, was im Vorspann gesetzt werden muss.
  Ein anderes Beispiel ist Markenformat für Listen.
  Eigentlich können Sie diese fast überall setzen, aber am besten ist es,
  das nur einmal im Vorspann zu tun.
@@ -1662,16 +1743,8 @@ Die Befehle, die LyX dem Vorspann einer LaTeX-Datei hinzufügt, sind fest;
 \begin_layout Enumerate
 Wählen Sie 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
@@ -1796,12 +1869,12 @@ hoffset
 \backslash
 voffset
 \family default
- sind beide 0pt., das heißt die Seite wird nicht verschoben.
+ sind beide 0pt, das heißt die Seite wird nicht verschoben.
 \end_layout
 
 \begin_layout Standard
 Unglücklicherweise scheinen einige DVI-Treiber die Seite immer zu verschieben.
- Wir wissen nicht warum oder warum der Systemadministrator solch ein Verhalten
+ Wir wissen nicht, warum oder warum der Systemadministrator solch ein Verhalten
  nicht korrigiert hat.
  Wenn Sie LyX auf einem System benutzen, das Sie nicht selber warten und
  Ihr Systemadministrator ein wenig beschränkt ist, können Sie sich mit 
@@ -1838,8 +1911,6 @@ voffset}{-1.5 cm}
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
-\InsetSpace \space{}
 und Ihre Ränder sollten jetzt richtig sein.
 \end_layout
 
@@ -1921,8 +1992,20 @@ Die Werte für x1 -- x6 hängen von Ihren Adressaufklebern ab.
 \family typewriter
 
 \backslash
-begin{la\SpecialChar \-
-bels}
+begin
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+{labels}
 \family default
  und 
 \family typewriter
@@ -1992,19 +2075,12 @@ Dann werden die ersten Zeilen aller Absätze eingerückt.
 \begin_layout Standard
 Wenn Sie aber einen vertikalen Abstand wollen (
 \family sans
-D
-\bar under
-o
-\bar default
-kument
+Dokument
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-instellungen
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
@@ -2015,16 +2091,13 @@ Textformat
 \SpecialChar \menuseparator
 
 \family sans
-Absätze\InsetSpace ~
-trennen\InsetSpace ~
+Absätze\InsetSpace \space{}
+trennen\InsetSpace \space{}
 durch:
 \family default
  
 \family sans
-\bar under
-V
-\bar default
-ertikaler\InsetSpace ~
+Vertikaler\InsetSpace \space{}
 Abstand
 \family default
 ), wird zwischen zwei Absätze ein Standard-Zwischenraum eingefügt.
@@ -2043,7 +2116,7 @@ Beispiel 4: Dieses Dokument
 \end_layout
 
 \begin_layout Standard
-Sie können sich den Vorspann diese Dokuments ansehen, um eine Vorstellung
+Sie können sich den Vorspann dieses Dokuments ansehen, um eine Vorstellung
  davon zu bekommen, was für fortgeschrittene Dinge Sie machen können.
  Sie sollten das 
 \family sans
@@ -2128,11 +2201,7 @@ reference "sec:Help!-LyX-generated"
 \begin_layout Standard
 Einige ziehen es vor, die log-Datei direkt anzusehen, was man mit 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
 status collapsed
@@ -2144,12 +2213,8 @@ status collapsed
 
 \end_inset
 
-X\InsetSpace ~
-
-\bar under
-P
-\bar default
-rotokoll
+X\InsetSpace \space{}
+Protokoll
 \family default
  erreicht.
  Es gibt einige ziemlich einfache Fehlermeldungen und Warnungen.
@@ -2249,7 +2314,7 @@ liebt
 \end_layout
 
 \begin_layout Standard
-Sie können diese blöden Meldungen ignorieren.
+Sie können diese Meldungen ignorieren.
  Sie werden selber sehen, ob es mit zu langen Zeilen Probleme gibt; sehen
  Sie sich einfach den Ausdruck an.
 \end_layout
@@ -2367,15 +2432,8 @@ age{}
 -Befehl benutzt haben, fehlt eins der Pakete, das LyX versuchte zu laden.
  Benutzen Sie 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Hilfe\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -2386,7 +2444,7 @@ status collapsed
 
 \end_inset
 
-X\InsetSpace ~
+X\InsetSpace \space{}
 Kon\SpecialChar \-
 fi\SpecialChar \-
 gu\SpecialChar \-
@@ -2397,20 +2455,9 @@ tion
  Diese Datei wird immer dann aktualisiert, wenn Sie LyX neu konfigurieren
  (mit 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge
-\bar under
-\SpecialChar \menuseparator
-
-\bar default
+Werkzeuge\SpecialChar \menuseparator
 Neu\InsetSpace ~
-k
-\bar under
-o
-\bar default
-nfigurieren
+konfigurieren
 \family default
 ), und sagt Ihnen, welche Pakete gefunden wurden und was sie machen.
 \end_layout
@@ -2501,14 +2548,8 @@ Wenn es keine gibt, prüfen Sie, ob Sie die Befehle richtig benutzt haben.
 \end_layout
 
 \begin_layout Enumerate
-Wenn Sie viele Fehlerkästchen am Anfang des Dokumentes aufgestapelt sehen,
- ist der Vorspann fehlerhaft.
- Suchen und korrigieren Sie diese Fehler.
-\end_layout
-
-\begin_layout Enumerate
 Wenn Sie den Vorspann nicht angerührt und keinen LaTeX-Befehl benutzt haben,
- ist der erste Verdächtigte Ihre LaTeX-Distribution selber.
+ ist der erste Verdächtige Ihre LaTeX-Distribution selber.
  Suchen Sie nach fehlenden Paketen und installieren Sie sie.
 \end_layout
 
@@ -2529,19 +2570,6 @@ Gut, Sie haben keine der Feineinstellungen benutzt, Sie haben die Regeln
  beachtet.
  Haben Sie etwas Ausgefallenes gemacht? Haben Sie in einer Tabelle oder
  Gleichung etwas Irres gemacht, zum Beispiel ein Bild in eine Tabelle eingefügt?
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -2567,19 +2595,6 @@ begin{sloppypar}
 end{sloppypar}
 \family default
  setzen, um LaTeX die Zeilen etwas schlampiger umbrechen zu lassen.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -2625,7 +2640,7 @@ Ergänzende Werkzeuge
 \end_layout
 
 \begin_layout Section
-Erstellen eines Literaturverzeichnisses
+Literaturverzeichnisse
 \begin_inset LatexCommand index
 name "Literaturverzeichnis"
 
@@ -2649,6 +2664,12 @@ name "BibTeX"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sec:Literaturverzeichnisse-mit-BibTeX"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2658,7 +2679,7 @@ Mike Ressler
 \end_layout
 
 \begin_layout Standard
-Wenn Sie nicht wissen, was BibTeX ist, und auch nicht wissen wie man es
+Wenn Sie nicht wissen, was BibTeX ist, und auch nicht wissen, wie man es
  sinnvoll verwendet, das heißt wie man eine eigene Literaturdatenbank erstellt,
  können Sie sich die zweite Auf\SpecialChar \textcompwordmark{}
 lage von 
@@ -2712,7 +2733,7 @@ TEXINPUTS
 
 \begin_layout Standard
 Für diejenigen, die BibTeX nicht kennen: es ist ein System zum Erstellen
- einer großen Datenbank mit Ihren am häufigsten benutzen Literaturzitaten.
+ einer Datenbank mit Ihren am häufigsten benutzen Literaturzitaten.
  Bei allen zukünftigen Artikeln, die Sie schreiben, müssen Sie nur noch
  diese Datenbank einbinden und für ein Zitat den einer Referenz zugeordneten
  Schlüssel angeben.
@@ -2730,22 +2751,11 @@ Benutzerhandbuch
  Beim Einfügen von BibTeX-Querverweisen handelt es sich um denselben Mechanismus.
  Am Ende Ihres Dokumentes wählen Sie den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-iste\InsetSpace ~
-/\InsetSpace ~
+Einfügen\SpecialChar \menuseparator
+Liste\InsetSpace \space{}
+/\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-ibTe
+BibTe
 \begin_inset ERT
 status collapsed
 
@@ -2756,7 +2766,7 @@ status collapsed
 
 \end_inset
 
-X-Literaturverzeicnis
+X-Literaturverzeichnis
 \family default
 .
  In der sich dann öffnenden Dialogbox tragen Sie folgendes ein:
@@ -2768,8 +2778,9 @@ X-Literaturverzeicnis
 \series medium
 Datenbank
 \family default
+en
 \series default
-en geben Sie den Namen Ihrer 
+ Geben Sie den Namen Ihrer 
 \family typewriter
 .bib
 \family default
@@ -2793,7 +2804,7 @@ ohne
 Stil
 \family default
 \series default
- wählen Sie den einen Stil für BibTeX aus.
+ Wählen Sie den einen Stil für BibTeX aus.
  Die Standardeinstellung ist 
 \family sans
 plain
@@ -2810,38 +2821,504 @@ Wenn Sie nun ein Zitat einfügen wollen, dessen Referenz in der
 -Datei enthalten ist, müssen Sie lediglich den Cursor an die gewünschte
  Stelle im Text positionieren, den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-Z
-\bar default
-itat\SpecialChar \ldots{}
+Einfügen\SpecialChar \menuseparator
+Zitat\SpecialChar \ldots{}
 
 \family default
  wählen und den entsprechenden Schlüssel eintragen.
  Sonst sind keine weiteren Aktionen nötig.
  Ein Blick in die Druckvorschau (
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ansicht\SpecialChar \menuseparator
+DVI
 \family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/buffer-view_dvi.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
 ) zeigt, dass LyX automatisch die notwendigen Programme (BibTeX, LaTeX inklusive
  eventuell notwendiger mehrfacher Aufrufe) startet.
 \end_layout
 
+\begin_layout Subsection
+Alternative Zitatstile
+\end_layout
+
+\begin_layout Standard
+BibTeX benutzt standardmäßig Zahlen (zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+[12]
+\begin_inset Quotes grd
+\end_inset
+
+), um auf ein zitiertes Werk zu verweisen.
+ Aber in vielen wissenschaftlichen Disziplinen werden andere Zitatstile
+ benutzt.
+ Der gebräuchlichste ist der Autor-Jahr-Stil (zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+
+\noun on
+Knuth
+\noun default
+ 1984a
+\begin_inset Quotes grd
+\end_inset
+
+).
+ LyX unterstützt zwei Pakete, die diesen Stil liefern: 
+\family typewriter
+natbib
+\family default
+ und 
+\family typewriter
+jurabib
+\family default
+.
+ Beide Pakete haben Vor- und Nachteile, die nicht im Einzelnen erläutert
+ werden können.
+ Wenn Sie nur Autor-Jahr oder Autor-numerisch zitieren oder eine der unzähligen
+ 
+\family typewriter
+natbib
+\family default
+-Stildateien benutzen wollen, dann ist das 
+\family typewriter
+natbib
+\family default
+-Paket wahrscheinlich das richtige.
+ Wenn Sie aber besondere Funktionen wie Kurztitel oder ibidem usw.\InsetSpace \space{}
+benötigen,
+ Sollten Sie das ziemlich neue 
+\family typewriter
+jurabib
+\family default
+-Paket in Erwägung ziehen.
+\end_layout
+
+\begin_layout Standard
+Beide Pakete werden in LyX ähnlich benutzt.
+ Unter 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Literaturverzeichnis
+\family default
+ (bei der xforms-Oberfläche unter 
+\family sans
+Extras
+\family default
+) wählen Sie zunächst den 
+\family sans
+Zitat-Stil
+\family default
+ aus.
+ Bei beiden Paketen enthält der 
+\family sans
+Zitat
+\family default
+-Dialog weitere Funktionen, und Sie zum Beispiel wie folgt zitieren: 
+\begin_inset Quotes gld
+\end_inset
+
+
+\noun on
+Knuth
+\noun default
+ 1984
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+
+\noun on
+Knuth
+\noun default
+ (1984)
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+
+\noun on
+Knuth
+\noun default
+, 1984
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+1984
+\begin_inset Quotes grd
+\end_inset
+
+ usw.
+ Beide Pakete benötigen besondere Stildateien und bringen ihre eigenen mit
+ sich, während es für 
+\family typewriter
+natbib
+\family default
+ viele andere und sogar interaktive Stildatei-Ersteller
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Siehe 
+\begin_inset LatexCommand url
+target "ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ gibt.
+\end_layout
+
+\begin_layout Subsection
+Abschnittsweise Literaturverzeichnisse
+\begin_inset LatexCommand label
+name "sub:Sectionated-Bibliographies"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Manchmal ist es vielleicht nötig, Ihr Literaturverzeichnis in mehrere Abschnitte
+ aufzuteilen.
+ Wenn Sie vielleicht Historiker sind, ist die Möglichkeit, Quellen und wissensch
+aftliche Arbeiten zu trennen, ein 
+\emph on
+Muss
+\emph default
+.
+ Unglücklicherweise erlaubt BibTeX dies nicht.
+ Aber mit Hilfe einiger LaTeX-Pakete kann BibTeX erweitert werden.
+\end_layout
+
+\begin_layout Standard
+Ab Version 1.4.0 unterstützt LyX 
+\noun on
+Stefan Ulrich
+\noun default
+s 
+\family typewriter
+bibtopic
+\family default
+.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Zu finden auf 
+\begin_inset LatexCommand url
+target "ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Der Vorteil dieses Paketes -- verglichen mit anderen wie 
+\family typewriter
+multibib
+\family default
+ -- ist, dass Sie keine neuen Literaturverzeichnis-Befehle definieren müssen.
+ Stattdessen müssen Sie verschiedene Literaturverzeichnis-Datenbanken erstellen,
+ die die Einträge für die verschiedenen Abschnitte des Literaturverzeichnisses
+ enthalten.
+ Wenn Sie zum Beispiel Ihr Literaturverzeichnis in die Abschnitte 
+\begin_inset Quotes gld
+\end_inset
+
+Quellen
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+wissenschaftliche Arbeiten
+\begin_inset Quotes grd
+\end_inset
+
+ unterteilen wollen, müssen Sie zunächst zwei Literaturverzeichnis-Datenbanken
+ erstellen, zum Beispiel 
+\family typewriter
+Quellen.bib
+\family default
+ und 
+\family typewriter
+Wissenschaft.bib
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In
+\family sans
+ Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Literaturverzeichnis
+\family default
+ (bei der xforms-Oberfläche unter 
+\family sans
+Extras
+\family default
+) kreuzen Sie 
+\family sans
+Abschnittsspezifisches\InsetSpace \space{}
+Literaturverzeichnis
+\family default
+ an.
+ Jetzt fügen Sie mehrere BibTeX-Verzeichnisse ein, wie in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "sec:Literaturverzeichnisse-mit-BibTeX"
+
+\end_inset
+
+ beschrieben, eins für jeden Abschnitt Ihres Literaturverzeichnisses.
+ In unserem Beispiel fügen Sie also 
+\family typewriter
+Quellen.bib
+\family default
+ und 
+\family typewriter
+Wissenschaft.bib
+\family default
+ hinzu.
+ Sie können denselben oder einen unterschiedlichen Zitat-Stil benutzen.
+ Zusätzlich können Sie festlegen, ob der Abschnitt des Literaturverzeichnisse
+ 
+\begin_inset Quotes gld
+\end_inset
+
+alle zitierten Literatureinträge
+\begin_inset Quotes grd
+\end_inset
+
+ (Standard), 
+\begin_inset Quotes gld
+\end_inset
+
+alle unzitierten Literatureinträge
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+alle Literatureinträge
+\begin_inset Quotes grd
+\end_inset
+
+  enthalten soll.
+ Das kann hilfreich sein, wenn Sie Ihr Literaturverzeichnis zum Beispiel
+ in 
+\begin_inset Quotes gld
+\end_inset
+
+zitierte Quellen
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+nicht zitierte Quellen
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+wissenschaftliche Arbeiten
+\begin_inset Quotes grd
+\end_inset
+
+ aufteilen wollen.
+ Die Abschnittstitel können wie gewöhnliche Abschnitte oder Unterabschnitte
+ hinzugefügt werden.
+ Weil 
+\family typewriter
+bibtopic
+\family default
+ den Literaturverzeichnis-Titel entfernt, müssen Sie ihn von Hand wieder
+ einfügen, zum Beispiel als 
+\family sans
+Kapitel*
+\family default
+ oder 
+\family sans
+Abschnitt*
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Mehrfache Literaturverzeichnisse
+\end_layout
+
+\begin_layout Standard
+Mehrfache Literaturverzeichnisse, zum Beispiel ein Literaturverzeichnis
+ für jeden Teil oder jedes Kapitel des Dokumentes, werden von BibTeX nicht
+ unterstützt.
+ Aber mit dem 
+\family typewriter
+bibtopic
+\family default
+-Paket, das man für abschnittsweise Literaturverzeichnisse (siehe Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand vref
+reference "sub:Sectionated-Bibliographies"
+
+\end_inset
+
+) benutzen kann, ermöglicht auch dies, wenn Sie bereit sind, ein wenig 
+ LaTeX-Code (ERT, siehe Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand vref
+reference "sec:latexcodes"
+
+\end_inset
+
+) zu benutzen.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Alternativen bieten die Pakete 
+\family typewriter
+chapterbib
+\family default
+ und 
+\family typewriter
+bibunits
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zunächst kreuzen Sie in
+\family sans
+ Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Literaturverzeichnis
+\family default
+ (bei der xforms-Oberfläche unter 
+\family sans
+Extras
+\family default
+) 
+\family sans
+Abschnittsspezifisches\InsetSpace \space{}
+Literaturverzeichnis
+\family default
+ an.
+ Im Dokument müssen Sie die Teile, die eigene Literaturverzeichnisse bekommen
+ sollen (einschließlich BibTeX selber), zwischen 
+\family typewriter
+begin{btUnit}
+\family default
+ und 
+\family typewriter
+
+\backslash
+end{btUnit}
+\family default
+ einschließen.
+ Diese Befehle müssen als ERT eingefügt werden (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\family default
+, 
+\family sans
+Strg+L
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/ert-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
+ Das Literaturverzeichnis wird alle Verweise, die in der jeweiligen 
+\family typewriter
+btUnit
+\family default
+ zitiert werden, enthalten.
+ 
+\end_layout
+
+\begin_layout Description
+Anmerkung: Wenn Sie so vorgehen, muss 
+\emph on
+jeder
+\emph default
+ Querverweis innerhalb einer 
+\family typewriter
+btUnit
+\family default
+ sein.
+ Außerdem können 
+\family typewriter
+btUnit
+\family default
+s nicht geschachtelt werden.
+\end_layout
+
 \begin_layout Section
-Erstellen eines Stichwortverzeichnisses
+Stichwortverzeichnisse
 \begin_inset LatexCommand index
 name "Stichwortverzeichnis"
 
@@ -2851,7 +3328,7 @@ name "Stichwortverzeichnis"
 \end_layout
 
 \begin_layout Standard
-Ein gutes Stichwortverzeichnisses zu erstellen gehört bei längeren Dokumenten
+Ein gutes Stichwortverzeichnis zu erstellen gehört bei längeren Dokumenten
  mit zu den schwierigsten Aufgaben.
  Aber LyX unterstützt Sie auch hier und vereinfacht die Dinge, indem es
  eine Schnittstelle zu einem Programm zur Erzeugung von Stichwortverzeichnissen,
@@ -2875,36 +3352,34 @@ nisses, das im vorigen Abschnitt
 Setzen Sie den Cursor zunächst ganz ans Ende und wählen Sie dort den Menüpunkt
  
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-iste\InsetSpace ~
+Einfügen\SpecialChar \menuseparator
+Liste\InsetSpace ~
 /\InsetSpace ~
 Inhaltsverzeichnis\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-tichwortverzeichnis
+Stichwortverzeichnis
 \family default
 .
  Für jedes Wort, das in dieser Liste erscheinen soll, setzen Sie nun den
  Cursor direkt hinter dieses Wort und wählen den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-Stich
-\bar under
-w
-\bar default
-ort.
+Einfügen\SpecialChar \menuseparator
+Stichwort 
+\family default
+oder
+\family sans
+ 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/index-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+.
 
 \family default
  Eine Schaltfläche mit der Aufschrift 
@@ -2919,24 +3394,14 @@ Sie können den Text ändern, indem Sie auf die Schaltfläche klicken.
  Wenn Sie vor dem Aufruf mehrere Worte markiert haben, stehen alle in Feld
  
 \family sans
-\bar under
-S
-\bar default
-tichwort
+Schlagwort
 \family default
-:.
+.
  Das ist bereits alles; LyX ruft bei Bedarf automatisch das Programm auf,
  das in 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Ausgabe\SpecialChar \menuseparator
 LaTe
@@ -2957,20 +3422,19 @@ im Feld
 \family sans
 Befehl\InsetSpace ~
 für\InsetSpace ~
-Stichwortverz.
-
+Stichwortverzeichnis
 \family default
  eingetragen ist, das ist standardmäßig 
 \family typewriter
 makeindex
 \family default
- auf, welches dann den eigentlichen Index erzeugt.
+ auf, welches dann das eigentliche Stichwortverzeichnis erzeugt.
 \end_layout
 
 \begin_layout Standard
 Achten Sie darauf, dass sich zwischen dem zu indizierenden Wort im Text
  und der Stichwort-Marke kein Leerzeichen befindet, da auf diese Weise falsche
- Seitennummern im Index erzeugt werden können.
+ Seitennummern im Stichwortverzeichnis erzeugt werden können.
  Außerdem möchten wir darauf hinweisen, dass mit dem Programm 
 \family typewriter
 makeindex
@@ -3009,7 +3473,7 @@ captionsgerman{
 \backslash
 renewcommand{
 \backslash
-indexname}{Stichwortver-zeichnis}}
+indexname}{Stichwort-ver-zeich-nis}}
 \end_layout
 
 \begin_layout Standard
@@ -3027,24 +3491,18 @@ mähen
 
  ins Stichwortverzeichnis aufzunehmen, schreiben Sie ins Feld 
 \family sans
-\bar under
-S
-\bar default
-tichwort:
+Schlagwort
 \family default
  folgendes: mahen@mähen, usw.
  Für Soße also Sose@Soße.
- Damit werden Umlaute und ß richtig einsortiet, und in der Ausgabe so geschriebe
-n, wie es hinter @ steht.
+ Damit werden Umlaute und ß richtig einsortiert, und in der Ausgabe so geschrieb
+en, wie es hinter @ steht.
 \end_layout
 
 \begin_layout Enumerate
 Sie schreiben im Feld 
 \family sans
-\bar under
-S
-\bar default
-tichwort:
+Schlagwort
 \family default
  folgendes: "a für ä, \SpecialChar \ldots{}
  , "U für Ü und "s für ß.
@@ -3067,7 +3525,7 @@ quote '='
 
 \begin_layout Standard
 Die erste Möglichkeit ist wahrscheinlich die einfachere, weil Sie sonst
- nicht weiter beachten müssen.
+ nichts weiter beachten müssen.
  In einem Dokument sollten Sie  nicht beide Möglichkeiten mischen.
  
 \end_layout
@@ -3076,15 +3534,8 @@ Die erste Möglichkeit ist wahrscheinlich die einfachere, weil Sie sonst
 Um auch noch das komplette Ordnungsschema nach DIN 5007 anwenden zu können,
  müssen Sie in 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Ausgabe\SpecialChar \menuseparator
 LaTe
@@ -3104,22 +3555,360 @@ X
 \family sans
 Befehl\InsetSpace ~
 für\InsetSpace \space{}
-Stichwortverz.
-
+Stichwortverzeichnis
 \family default
  folgendes eintragen:
 \end_layout
 
 \begin_layout LyX-Code
-
+makeindex
 \family typewriter
-makeindex -c -q -g -s [n]german.ist
+ -c -q -g -s [n]
+\family default
+german
+\family typewriter
+.ist
 \family default
 .
 \end_layout
 
 \begin_layout Standard
 -g ohne die Datei geht nicht!
+\end_layout
+
+\begin_layout Section
+Glossare
+\begin_inset LatexCommand index
+name "Glossar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+von 
+\noun on
+Özgür Ug̃raş Baran
+\end_layout
+
+\begin_layout Standard
+Manchmal benötigen Sie vielleicht eine Liste von Symbolen oder Begriffen
+ mit deren Bedeutung.
+ Das LaTeX-Paket 
+\family typewriter
+nomencl
+\family default
+ erzeugt solche Listen auf einfache Weise.
+ 
+\family typewriter
+nomencl
+\family default
+ ist in den meisten Linux-Distributionen enthalten.
+ Wenn nicht, können Sie es von CTAN beziehen und installieren.
+\end_layout
+
+\begin_layout Standard
+Einen Glossar-Eintrag erstellen Sie, indem Sie den Cursor hinter ein Symbol
+ oder einen Begriff stellen und 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Glossareintrag\SpecialChar \ldots{}
+
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/nomencl-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ wählen.
+  Ein graues Kästchen mit der Aufschrift 
+\family sans
+Glo
+\family default
+ wird eingefügt und das Glossareintrag-Menüfenster geöffnet.
+ Ein Glossar-Eintrag besteht aus drei Teilen: das 
+\family sans
+Symbol
+\family default
+, die 
+\family sans
+Beschreibung
+\family default
+ und 
+\family sans
+Einsortieren\InsetSpace \space{}
+als
+\family default
+.
+ Wenn es sich bei 
+\family sans
+Symbol
+\family default
+ zum Beispiel um etwas Mathematisches handelt wie 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, müssen Sie den entsprechenden LaTeX-Code eingeben, ist es ein normales
+ Wort, wird es direkt übernommen.
+\end_layout
+
+\begin_layout Subsection
+Glossar-Einträge sortieren
+\begin_inset LatexCommand index
+name "Glossar!sortieren"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nehmen wir an, Sie hätten zwei Glossareinträge für die Symbole 
+\begin_inset Formula $a$
+\end_inset
+
+ und 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ 
+\family typewriter
+nomencl
+\family default
+ sortiert diese beim Drucken nach dem, was im Feld 
+\family sans
+Symbol
+\family default
+ steht.
+ Haben Sie zum Beispiel 
+\begin_inset Formula $a$
+\end_inset
+
+ als 
+\family typewriter
+$a$
+\family default
+ eingegeben und 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ als 
+\family typewriter
+$
+\backslash
+sigma$
+\family default
+, erscheint 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ vor 
+\begin_inset Formula $a$
+\end_inset
+
+, weil das Zeichen 
+\begin_inset Quotes gld
+\end_inset
+
+
+\backslash
+
+\begin_inset Quotes grd
+\end_inset
+
+ vor 
+\begin_inset Quotes gld
+\end_inset
+
+a
+\begin_inset Quotes grd
+\end_inset
+
+ steht.
+ Um das zu ändern, können Sie etwas ins Feld 
+\family sans
+Einsortieren\InsetSpace \space{}
+als
+\family default
+ schreiben, zum Beispiel 
+\family typewriter
+a
+\family default
+ und 
+\family typewriter
+sigma
+\family default
+.
+ Dann stimmt die Sortierreihenfolge wieder.
+\end_layout
+
+\begin_layout Standard
+Auf diese Weise können Sie die Sortierreihenfolge beliebig manipulieren.
+ Um verschachtelte Glossare zu erstellen, lesen Sie bitte in der 
+\family typewriter
+nomencl
+\family default
+-Dokumentation nach.
+\end_layout
+
+\begin_layout Subsection
+Glossar-Verweise
+\begin_inset LatexCommand index
+name "Glossar!-Verweise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In den Glossareinträgen können Sie auf Gleichungen und Seiten verweisen,
+ indem Sie am Ende des 
+\family sans
+Beschreibung
+\family default
+-Feldes eine der folgenden sechs Verweis-Optionen eingeben:
+\end_layout
+
+\begin_layout Description
+
+\backslash
+refeq: Verweis mit dem Ausdruck 
+\begin_inset Quotes gld
+\end_inset
+
+, siehe Gleichung (#)
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\backslash
+refpage: Verweis mit dem Ausdruck 
+\begin_inset Quotes gld
+\end_inset
+
+, Seite (#)
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\backslash
+refeqpage: Ist die Kurzform von 
+\family sans
+\series bold
+
+\backslash
+refeq
+\backslash
+refpage
+\family default
+\series default
+.
+\end_layout
+
+\begin_layout Description
+
+\backslash
+norefeq,\InsetSpace ~
+
+\backslash
+norefpag,\InsetSpace ~
+
+\backslash
+norefeqpage: Schaltet die entsprechende Verweis-Option ab, wenn sie global
+ gesetzt wurde (siehe die 
+\family typewriter
+nomencl
+\family default
+-Dokumentation).
+\end_layout
+
+\begin_layout Subsection
+Glossar drucken
+\begin_inset LatexCommand index
+name "Glossar!drucken"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste\InsetSpace ~
+/\InsetSpace ~
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Glossar
+\family default
+ können Sie ein Glossar-Verzeichnis einfügen.
+ An der Stelle erscheint ein hellblaues Kästchen mit der Aufschrift 
+\family sans
+Glossar
+\family default
+, und dort wird das Verzeichnis auch gedruckt.
+ Ebenso wie beim Stichwortverzeichnis passiert nichts, wenn Sie auf das
+ Kästchen klicken.
+ In der Druckausgabe erscheint Das Glossar als
+\series bold
+ Nomenclature
+\series default
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Dies wird für einige Sprachen automatisch übersetzt.
+\end_layout
+
+\end_inset
+
+.
+ Wenn Ihnen der Titel nicht gefällt, können Sie ihn im LaTeX-Vorspann ändern:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Symbolliste}
+\end_layout
+
+\begin_layout Standard
+Wenn Sie mit dem Symbolabstand nicht zufrieden sind, können Sie ihn im LaTeX-Vor
+spann ebenfalls ändern:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand{
+\backslash
+nomlabelwidth}{3.0cm}
+\end_layout
+
+\begin_layout Standard
+Was Sie sonst noch machen müssen, um überhaupt ein Glossar zu bekommen,
+ lesen Sie am besten in der 
+\family typewriter
+nomencl
+\family default
+-Dokumentation nach.
 \end_layout
 
 \begin_layout Section
@@ -3176,15 +3965,8 @@ end{document}
 \begin_layout Standard
 In LyX können externe Dateien sehr einfach über den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-atei
+Einfügen\SpecialChar \menuseparator
+Datei
 \family default
  integriert werden.
  Die verschiedenen Möglichkeiten sind im 
@@ -3232,7 +4014,6 @@ Include
 Input
 \family default
  eingebundene Dateien auf der aktuellen Seite gesetzt werden.
- LyX wird eines Tages geändert werden, um dies darzustellen.
 \end_layout
 
 \begin_layout Standard
@@ -3253,13 +4034,10 @@ Unformatiert
  LyX-Verhalten.
  Über den Auswahlpunkt 
 \family sans
-\bar under
-L
-\bar default
-eerzeichen\InsetSpace ~
-bei\InsetSpace ~
-der\InsetSpace ~
-Ausgabe\InsetSpace ~
+Leerzeichen\InsetSpace \space{}
+bei\InsetSpace \space{}
+der\InsetSpace \space{}
+Ausgabe\InsetSpace \space{}
 kennzeichnen
 \family default
  können diese durch eine kleine Markierung ersetzt werden, die das Vorhandensein
@@ -3283,104 +4061,16 @@ Es ist möglich, Querverweise zwischen verschiedenen Dateien zu machen.
  Setzen Sie jetzt in A eine Marke, auf die Sie in B verweisen wollen, so
  öffnen Sie in B 
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-Q
-\bar default
-uerverweis
+Querverweis
 \family default
 \SpecialChar \ldots{}
 \InsetSpace ~
-und wählen im Feld 
-\family sans
-Ma
-\bar under
-r
-\bar default
-ken\InsetSpace ~
-in
-\family default
- die gewünschte Datei.
-\end_layout
-
-\begin_layout Section
-Algorithmen
-\begin_inset LatexCommand index
-name "Algorithmen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-(aus der LaTeX-Konfiguration)
-\end_layout
-
-\begin_layout Standard
-Das Paket 
-\family typewriter
-algorithm
-\family default
- wird von LyX benötigt, um 
-\emph on
-gleitende
-\emph default
- 
-\emph on
-Algorithmen
-\emph default
- verwenden zu können.
- Diese sind hilf\SpecialChar \-
-reich, wenn es darum geht, Algorithmen an Seitenumbrüchen
- zu positionieren oder ein Algorithmenverzeichnis anzulegen.
-\end_layout
-
-\begin_layout Section
-Teilabbildungen
-\begin_inset LatexCommand index
-name "Teilabbildungen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-(aus der LaTeX-Konfiguration)
-\end_layout
-
-\begin_layout Standard
-Das Paket 
-\family typewriter
-subfigure
-\family default
- wird von LyX verwendet, wenn im Dialog 
-\family sans
-Abbildung
-\family default
- unter 
-\family sans
-Zusatz-Optionen
-\family default
- 
-\family sans
-Teilabbildung
-\family default
- angekreuzt wird.
- Damit lassen sich mehrere Abbildungen in einem einzigen Gleitobjekt unterbringe
-n, wobei jede Teilabbildung ihre eigene Bildunterschrift erhält.
+und wählen die gewünschte .
 \end_layout
 
 \begin_layout Section
@@ -3419,13 +4109,9 @@ Benutzerhandbuch
 \emph default
  beschrieben) das Seitenformat im Menü 
 \family sans
-Dokument-Einstellungne\SpecialChar \menuseparator
+Dokument-Einstellungen\SpecialChar \menuseparator
 Seitenformat\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-eiten-Stil
+Seiten-Stil
 \family default
  auf 
 \family sans
@@ -3592,20 +4278,7 @@ Die Dicke der Linien, die unter der Kopf- und über der Fußzeile eingefügt
 \backslash
 renewcommand{
 \backslash
-headrulewidth}
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-{0.4pt}
+headrulewidth}{0.4pt}
 \family default
  und 
 \family typewriter
@@ -3631,20 +4304,7 @@ style{empty}
 \family typewriter
 
 \backslash
-thispagestyle
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-{plain}
+thispagestyle{plain}
 \family default
  und 
 \family typewriter
@@ -3671,7 +4331,7 @@ fancy
 \end_layout
 
 \begin_layout Standard
-Es gibt noch weitere komplexere Befehle, zum Beispiel um Dinge nur auf ungeraden
+Es gibt noch weitere komplexe Befehle, zum Beispiel um Dinge nur auf ungeraden
  Seiten zu setzen usw., doch für deren Beschreibung seien Sie an die Dokumentatio
 n des LaTeX-Paketes 
 \family typewriter
@@ -3716,21 +4376,22 @@ resizebox{1in}{!}{
 includegraphics{logo.eps}}}
 \end_layout
 
-\begin_layout Standard
-(Falls Sie außer diesem Logo keine weiteren EPS-Abbildungen in Ihrem Dokument
- verwenden, müssen Sie davor außerdem noch die Zeile 
-\family typewriter
-
-\backslash
-usepackage{graphics}
-\family default
- einfügen.)
-\end_layout
-
 \begin_layout Section
-Box
+Box,
 \begin_inset LatexCommand index
 name "Box"
+
+\end_inset
+
+ Teilseite,
+\begin_inset LatexCommand index
+name "Teilseite"
+
+\end_inset
+
+ Absatzbox
+\begin_inset LatexCommand index
+name "Absatzbox"
 
 \end_inset
 
@@ -3743,20 +4404,24 @@ In LaTeX gibt es eine Möglichkeit, so etwas wie eine Seite innerhalb einer
 \emph on
 Minipage
 \emph default
+
+\begin_inset LatexCommand index
+name "Minipage"
+
+\end_inset
+
 .
- Innerhalb einer solchen Minipage gelten alle gewöhnlichen Regeln zur Einrückung
-, Zeilenumbruch usw\SpecialChar \@.
+ Innerhalb einer solchen Teilseite gelten alle gewöhnlichen Regeln zur Einrückun
+g, Zeilenumbruch usw\SpecialChar \@.
  Auch LyX unterstützt den Benutzer beim sinnvollen Einsatz
  der Vorteile, die eine Minipage bietet.
 \end_layout
 
 \begin_layout Standard
-Minipages haben in LyX ihr eigenes Einfügekästchen; fügen Sie eins mit 
+Teilseiten haben in LyX ihr eigenes Einfügekästchen; fügen Sie eins mit
+ 
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
 \SpecialChar \menuseparator
 
@@ -3765,29 +4430,26 @@ Box
 \family default
  ein.
  Ein Rechtsklick auf das mit Minipage beschriftete Kästchen öffnet einen
- Dialog zum ändern der Größe und der Ausrichtung.
+ Dialog zum Ändern der Größe und der Ausrichtung.
  
 \series bold
 Warnung
 \series default
-: wenn die Minipage zu lang ist, um auf eine Seite zu passen, wird sie abgeschni
-tten, nicht auf die nächste Seite umgebrochen.
+: wenn die Teilseite zu lang ist, um auf eine Seite zu passen, wird sie
+ abgeschnitten, nicht auf die nächste Seite umgebrochen.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie zwei Minipages horizontal nebeneinandersetzen, kann zwischen ihnen
+Wenn Sie zwei Teilseiten horizontal nebeneinandersetzen, kann zwischen ihnen
  ein 
 \family sans
-\bar under
-V
-\bar default
-ariabler\InsetSpace ~
-horiz.\InsetSpace ~
+Variabler\InsetSpace \space{}
+horiz.\InsetSpace \space{}
 Abstand
 \family default
  eingefügt werden.
  Durch diesen speziellen LaTeX-Befehl wird ein variabler Leerraum zwischen
- den Minipages eingefügt, so dass die erste am linken Rand der Seite beginnt
+ den Teilseiten eingefügt, so dass die erste am linken Rand der Seite beginnt
  und die zweite mit dem rechten Rand abschließt.
  Die Beispiele unten zeigen die Unterschiede.
 \end_layout
@@ -3801,13 +4463,14 @@ inner_pos "c"
 use_parbox 0
 width "1.5in"
 special "none"
-height "1pt"
+height "1in"
 height_special "totalheight"
 status open
 
 \begin_layout Standard
-Hier ein Beispiel für zwei neben\SpecialChar \-
-einanderliegende Minipages, die 
+Hier ein Beispiel für zwei unter\SpecialChar \-
+ein\SpecialChar \-
+anderliegende Teilseiten, die 
 \emph on
 nicht
 \emph default
@@ -3837,7 +4500,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Standard
-Dies ist die zweite der beiden Minipages, die nicht durch einen variablen
+Dies ist die zweite der beiden Teilseiten, die nicht durch einen variablen
  Leerraum getrennt sind.
  Beachten Sie den Abstand zwi\SpecialChar \-
 schen den Blöcken.
@@ -3872,7 +4535,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Standard
-Dies ist nun ein Beispiel für zwei nebeneinanderliegende Minipages, die
+Dies ist nun ein Beispiel für zwei nebeneinanderliegende Teilseiten, die
  durch einen variablen Leerraum voneinander getrennt sind.
 \end_layout
 
@@ -3889,12 +4552,12 @@ inner_pos "c"
 use_parbox 0
 width "1.5in"
 special "none"
-height "1pt"
+height "1in"
 height_special "totalheight"
 status open
 
 \begin_layout Standard
-Dies ist die zweite Minipage, von der ersten durch einen variablen Leerraum
+Dies ist die zweite Teilseite, von der ersten durch einen variablen Leerraum
  getrennt.
  Beachten Sie die Ausrichtung und den Abstand zwischen den Blöcken.
 \end_layout
@@ -3902,6 +4565,31 @@ Dies ist die zweite Minipage, von der ersten durch einen variablen Leerraum
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie Sie sehen, wurde an zwei Stellen ein vertikaler Abstand eingefügt.
+ Das ist manchmal nötig, weil LyX/LaTeX mit Boxen nicht immer wie gewünscht
+ klarkommen.
+\end_layout
+
+\begin_layout Standard
+Die Standardeinstellung für eine Box ist Minipage.
+ Sie können das aber auch in eine Absatzbox (LaTeX 
+\emph on
+parbox
+\emph default
+) ändern.
+ Der Hauptunterschied zwischen Teilseite und Absatzbox besteht darin, dass
+ letztere keine Befehle für Textausrichtungen, Aufzählungen, Listen und
+ Theoreme enthalten darf.
 \end_layout
 
 \begin_layout Section
@@ -3926,19 +4614,20 @@ Sehr oft wird die Frage gestellt, ob es möglich ist, den Text um eine Abbildung
 \emph on
 herumfließen
 \emph default
- zu lassen, so dass diese Abbildung nur einen Teil der Satzbreite belegt
+ zu lassen, so dass diese Abbildung nur einen Teil der Seitenbreite belegt
  und der Rest von Text ausgefüllt wird.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Wrap figure
+placement r
 width "70col%"
 status open
 
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../mobius.eps
+	filename ../clipart/mobius.eps
 	lyxscale 50
 	width 60col%
 	BoundingBox 0bp 0bp 367bp 158bp
@@ -3991,31 +4680,16 @@ Benutzerhandbuch
  Um den Text wie hier im Beispiel um die Abbildung herumfließen zu lassen,
  müssen Sie 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-Gleit
-\bar under
-o
-\bar default
-bjekt\SpecialChar \menuseparator
-
-\bar under
-U
-\bar default
-mflossenes
-\family default
-\InsetSpace ~
-
-\family sans
+Einfügen\SpecialChar \menuseparator
+Gleitobjekt\SpecialChar \menuseparator
+Umflossenes\InsetSpace \space{}
 Gleitobjekt
 \family default
  auswählen.
  Damit bekommt man zunächst einen mit 
 \emph on
-Umflossenes\InsetSpace ~
-Gleitobjekt:\InsetSpace ~
+Umflossenes\InsetSpace \space{}
+Gleitobjekt:\InsetSpace \space{}
 Abbildung:
 \emph default
  beschrifteten Rahmen, in dem zunächst nur 
@@ -4023,51 +4697,63 @@ Abbildung:
 Abbildung #:
 \series default
  steht.
- Dessen Absatzumgebung ändern Sie zunächst von 
+ Dann fügen Sie mit 
 \family sans
-Legende
+Einfügen\SpecialChar \menuseparator
+Grafik 
 \family default
- in 
+oder
 \family sans
-Standard
+ 
 \family default
- um und fügen eine Abbildung ein (
-\family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
 
-\bar under
-G
-\bar default
-rafik
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family sans
+ 
 \family default
-\SpecialChar \ldots{}
-).
+eine Abbildung oder mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Tabelle 
+\family default
+oder 
+\begin_inset Graphics
+	filename ../../images/tabular-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family sans
+ 
+\family default
+eine Tabelle ein.
+ Den Titel können Sie, wie im Benutzerhandbuch beschrieben, entfernen.
  Wenn Sie den Abbildungstitel über der Abbildung haben wollen, stellen Sie
- den Cursor vor die Abbildung, sonst dahinter, drücken 
+ den Cursor vor die Abbildung, sonst dahinter und drücken 
 \family sans
 Eingabe
 \family default
-, ändern die Absatzumgebung wieder in 
-\family sans
-Legende
-\family default
- und geben den Abbildungstitel ein.
- 
+.
 \end_layout
 
 \begin_layout Standard
-Ein Rechtsklick auf den Abbildungstitel oder die graue Schaltfläche öffnet
- das Fenster 
+Ein Rechtsklick auf die graue Schaltfläche öffnet das Fenster 
 \family sans
-Einstellungen\InsetSpace ~
-für\InsetSpace ~
-umflossenes\InsetSpace ~
+Einstellungen\InsetSpace \space{}
+für\InsetSpace \space{}
+umflossenes\InsetSpace \space{}
 Gleitobjekt
 \family default
-, in dem sie die Platzierung der Abbildung und ihre Breite festlegen können.
+, in dem Sie die Platzierung der Abbildung und ihre Breite festlegen können.
  Außerdem sollten Sie sich durch einen Rechtsklick auf die Abbildung davon
  überzeugen, dass die Abbildung nicht breiter als ihr 
 \emph on
@@ -4080,18 +4766,12 @@ Rahmen
 \emph default
  ist, kann man sie durch 
 \family sans
-\bar under
-B
-\bar default
-earbeiten
+Bearbeiten
 \family default
  \SpecialChar \menuseparator
 
 \family sans
-\bar under
-A
-\bar default
-bsatz-Einstellungen\SpecialChar \ldots{}
+Absatz-Einstellungen\SpecialChar \ldots{}
 
 \family default
  (
@@ -4106,19 +4786,30 @@ bsatz-Einstellungen\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
+Wenn die Abbildung oder Tabelle zu groß ist, um auf den Rest der Seite zu
+ passen, wird sie überhaupt nicht gedruckt oder in den Druckvorschauen gezeigt.
+ Dann muss man sich mit einem manuellen Seitenumbruch behelfen oder die
+ Abbildung verkleinern oder alles weiter nach oben schieben oder \SpecialChar \ldots{}
 
-\series bold
-Hinweis
-\series default
-: Diese umflossenen Abbildungen sind ziemlich 
-\emph on
-empfindlich
-\emph default
+\end_layout
+
+\begin_layout Standard
+Zur Zeit können Sie diese Gleitobjekte aber nur rechts oder links, aber
+ nicht in der Mitte einer Zeile positionieren, weil LyX hierfür das LaTeX-Paket
+ 
+\family typewriter
+floatflt
+\family default
+ benutzt.
+ Für zentrierte Bilder gibt es das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
 .
- Wenn Sie beispielsweise eine Abbildung zu dicht am unteren Rand der Seite
- einfügen, gerät der Seitenspiegel recht schnell durcheinander, ebenso,
- wenn Sie zwei Abbildungen zu dicht beieinander verwenden wollen.
- Wenn Sie nicht genügend Text schreiben, der um die Abbildung fließen soll,
+\end_layout
+
+\begin_layout Standard
+Wenn Sie nicht genügend Text schreiben, der um die Abbildung fließen soll,
  kann es Probleme mit der nächsten Überschrift geben.
  Und wenn der Platz für den Text neben der Abbildung zu gering ist, wird
  es Probleme mit der Silbentrennung geben, die Sie aber meistens mit 
@@ -4126,7 +4817,7 @@ empfindlich
 sloppypar
 \family default
  (siehe Fehlerbehebung 
-\begin_inset LatexCommand vref
+\begin_inset LatexCommand vpageref
 reference "enu:sloppypar"
 
 \end_inset
@@ -4170,7 +4861,7 @@ Breite:
  einen Wert eintragen, wird für die Spalte eine feste Breite definiert.
  Im Feld 
 \family sans
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -4181,11 +4872,7 @@ status collapsed
 
 \end_inset
 
-e
-\bar under
-X
-\bar default
--Argument:
+X-Argument:
 \family default
  können Sie verschiedene Spaltentrenner definieren, zum Beispiel 
 \begin_inset Quotes gld
@@ -4380,7 +5067,7 @@ Hier wurden die Spaltenformate links auf
 
 
 \family typewriter
-@{} l
+@{} |
 \family default
 
 \begin_inset Quotes grd
@@ -4392,7 +5079,7 @@ Hier wurden die Spaltenformate links auf
 
 
 \family typewriter
-l @{}
+| @{}
 \family default
 
 \begin_inset Quotes grd
@@ -4436,7 +5123,7 @@ Angenommen, Sie wollten, aus welchem Grund auch immer,
 \backslash
 sqrt{
 \backslash
-pi}$~} l
+pi}$~} |
 \family default
 
 \begin_inset Quotes grd
@@ -4756,11 +5443,7 @@ status collapsed
 
 \end_inset
 
-
-\bar under
-X
-\bar default
--Argument:
+X-Argument:
 \family default
  
 \begin_inset Quotes gld
@@ -4768,7 +5451,7 @@ X
 
 
 \family typewriter
-@{}l
+@{}|
 \family default
 
 \begin_inset Quotes grd
@@ -4782,10 +5465,7 @@ Wert
  in das oberste mittlere Feld, markieren das Wort und das (leere) Feld rechts
  daneben und klicken dann auf 
 \family sans
-\bar under
-M
-\bar default
-ehrfachspalte
+Mehrfachspalte
 \family default
 .
  Einfach, nicht wahr?
@@ -4813,7 +5493,7 @@ dcolumn
 \begin_layout LyX-Code
 
 \backslash
-usepackage{dcolumn} 
+usepackage{dcolumn}
 \end_layout
 
 \begin_layout LyX-Code
@@ -4837,15 +5517,7 @@ status collapsed
 
 \end_inset
 
-
-\bar under
-X
-\bar default
--
-\bar under
-A
-\bar default
-rgument
+X-Argument
 \family default
  des 
 \family sans
@@ -4870,27 +5542,18 @@ decimal.lyx
 \family default
  an (
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-Ö
-\bar default
-ffnen
+Öffnen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-B
-\bar default
-eispiele
+Beispiele
 \family default
 ).
 \end_layout
@@ -4904,19 +5567,13 @@ d{}
 .
  Setzt man für eine einzelne Zelle die Option 
 \family sans
-\bar under
-M
-\bar default
-ehrfachspalte
+Mehrfachspalte
 \family default
 , wird die Dezimalpunktausrichtung wieder aufgehoben.
  Ein Nachteil dieser Methode ist, dass keine mathematischen Formeln benutzt
  werden können, es sei denn, das Attribut 
 \family sans
-\bar under
-M
-\bar default
-ehrfachspalte
+Mehrfachspalte
 \family default
  wurde gesetzt.
 \end_layout
@@ -4946,14 +5603,10 @@ dcolumn
 \end_layout
 
 \begin_layout Standard
-In de/TableExamples.lyx (
+In der Datei TableExamples.lyx (
 \family sans
 Strg+O\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-eispiele
+Beispiele
 \family default
 ) finden Sie noch mehr Beispiele für die Manipulation von Tabellen.
 \end_layout
@@ -5012,34 +5665,31 @@ Das Dialogfenster
 \begin_layout Standard
 Öffnen Sie das Dialogfenster mit 
 \family sans
-\bar under
-D
-\bar default
-okument
+Dokument
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
-Aufzählungszeichen.
+Auflistungszeichen.
 
 \family default
- Der Dialog zeigt eine Tabelle der Aufzählungszeichen.
+ Der Dialog zeigt eine Tabelle der Auflistungszeichen.
  Auf linken Seite können Sie für die vier Ebenen jeweils sechs verschiedene
  Felder mit Zeichen auswählen.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie Benutzerdefiniert anklicken, erscheint ein weiteres Fenster, das
- den LaTeX-Befehl des Zeichens anzeigt.
- Dieses Feld kann editiert werden.
- Wenn Sie den Eintrag von Hand ändern, kann es aber notwendig sein, ein
- entsprechendes LaTeX-Paket, in dem der Eintrag definiert wird, selber in
- den LaTeX-Vorspann einzutragen.
+Wenn Sie 
+\family sans
+Benutzerdef.\InsetSpace \space{}
+Zeichen
+\family default
+ ankreuzen, eird ein Feld aktiviert, in das Sie den LaTeX-Befehl des Zeichens
+ eingeben müssen.
+ Wenn Sie das tun, kann es aber notwendig sein, ein entsprechendes LaTeX-Paket,
+ in dem der Eintrag definiert wird, selber in den LaTeX-Vorspann einzutragen.
 \end_layout
 
 \begin_layout Standard
@@ -5239,8 +5889,7 @@ LyX hindert Sie nicht daran, Aufzählungszeichen aus Paketen zu verwenden,
 \end_layout
 
 \begin_layout Standard
-Auf der rechten Seite ist für jede Ebene ein Auswahlmenü für die Größe des
- Zeichens.
+Außerdem können Sie für jede Ebene die Größe des Zeichens wählen.
  Die Namen sind die gleichen wie für Buchstaben.
 \end_layout
 
@@ -5251,26 +5900,12 @@ So funktioniert es
 \begin_layout Standard
 Legen Sie fest, welche Aufzählungsebene Sie ändern wollen, und wählen Sie
  dann ein Zeichen aus.
- Die Änderung wird innerhalb von LyX 
-\series bold
-nicht sichtbar
-\series default
- sein, sondern erst, wenn Sie den Text als 
-\family typewriter
-xdvi
-\family default
- oder PostScript®-Datei betrachten.
-\end_layout
-
-\begin_layout Standard
-Falls Sie 
+ Falls Sie 
 \emph on
 wirklich
 \emph default
  in verschiedenen Absätzen unterschiedliche Aufzählungszeichen verwenden
  wollen, müssen Sie von Hand eingreifen.
- Allerdings kann Ihnen der Dialog dabei ein wenig helfen, da er den LaTeX-Code,
- der das jeweilige Zeichen erzeugt, gleich angibt.
  Um nun Ihren eigenen, abweichenden Absatz anzulegen, haben Sie folgende
  Möglichkeiten:
 \end_layout
@@ -5468,33 +6103,43 @@ Benutzerhandbuch
  In diesem Abschnitt erfahren Sie mehr darüber, was passiert, wenn Sie eine
  der Funktionen unter 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mportieren
+Datei\SpecialChar \menuseparator
+Importieren
 \family default
  oder 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren
+Datei\SpecialChar \menuseparator
+Exportieren
 \family default
  auswählen.
 \end_layout
 
 \begin_layout Section
 Import anderer Formate
+\end_layout
+
+\begin_layout Subsection
+CJK Ly
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+X \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+Hierbei handelt es sich um chinesische, japanische und koreanische Dokumente.
 \end_layout
 
 \begin_layout Subsection
@@ -5531,13 +6176,9 @@ tex2lyx
  Obwohl es ein eigenständiges Programm ist, das auf der Kommandozeile gestartet
  werden kann, startet LyX es automatisch, wenn ein LaTeX-Dokument importiert
  werden soll.
- Eine vollständige Beschreibung von 
-\family typewriter
-tex2lyx
-\family default
- finden Sie in Abschnitt 
+ Weitere Einzelheiten finden Sie in Abschnitt 
 \begin_inset LatexCommand vref
-reference "sec:reLyX"
+reference "sec:LaTeX-Dateien-nach-LyX"
 
 \end_inset
 
@@ -5597,9 +6238,9 @@ name "Dateiformat!Import!NoWeb"
 \end_layout
 
 \begin_layout Subsection
-ASCII-Text
+Einfacher Text
 \begin_inset LatexCommand index
-name "Dateiformat!Import!ASCII-Text"
+name "Dateiformat!Import!Einfacher Text"
 
 \end_inset
 
@@ -5610,28 +6251,25 @@ name "Dateiformat!Import!ASCII-Text"
 Es gibt es zwei Methoden, um ASCII-Text zu importieren.
  Importiert man ihn als 
 \family sans
-Einf
-\bar under
-a
-\bar default
-cher\InsetSpace ~
-Text\InsetSpace ~
-als\InsetSpace ~
-Zeilen
+Einfacher\InsetSpace \space{}
+Text
 \family default
-\SpecialChar \ldots{}
 , so werden alle Zeilenumbrüche beibehalten.
  Für LyX sieht dann jede Zeile wie ein Absatz aus.
- Importiert man ihn als 
+ 
+\end_layout
+
+\begin_layout Subsection
+Einfacher Text, Zeilen verbinden
+\end_layout
+
+\begin_layout Standard
+Importiert man den ASCII-Text als 
 \family sans
-Einf
-\bar under
-a
-\bar default
-cher\InsetSpace ~
-Text\InsetSpace ~
-als\InsetSpace ~
-Absätze
+Einfacher\InsetSpace \space{}
+Text,\InsetSpace \space{}
+Zeilen\InsetSpace \space{}
+verbinden
 \family default
 , bilden Zeilen, die nur durch einen Zeilenumbruch getrennt sind, einen
  Absatz.
@@ -5644,6 +6282,30 @@ Absätze
 
 \begin_layout Section
 Export in andere Formate
+\end_layout
+
+\begin_layout Subsection
+CJK Ly
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+X \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+Hierbei handelt es sich um chinesische, japanische und koreanische Dokumente.
 \end_layout
 
 \begin_layout Subsection
@@ -5678,20 +6340,9 @@ name "Dateiformat!Export!HTML"
 \begin_layout Standard
 LyX-Dokumente können mit 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-TML
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+HTML
 \family default
  nach HTML konvertiert werden.
  LyX benutzt 
@@ -5700,18 +6351,12 @@ htlatex
 \family default
 , aber in 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge
+Werkzeuge
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-instellungen
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
@@ -5737,17 +6382,11 @@ X->HTML
 \family default
  können Sie das im Feld 
 \family sans
-\bar under
-K
-\bar default
-onverter:
+Konverter:
 \family default
  überschreiben und auch 
 \family sans
-\bar under
-Z
-\bar default
-usatz-Flag
+Zusatz-Flag
 \family default
 s setzen.
  Allerdings müssen diese Pakete gesondert installiert werden, weil sie weder
@@ -5758,23 +6397,13 @@ s setzen.
 Tipp: Manchmal werden Dateien mit Bildern nicht konvertiert.
  Wenn Sie dann die Datei mit 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren
+Datei\SpecialChar \menuseparator
+Exportieren
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-L
-\bar default
-aTe
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -5790,6 +6419,15 @@ X
  nach LaTeX exportieren, das Bild oder die Bilder durch die entsprechende(n)
  .eps-Datei(en) ersetzen und die Datei noch einmal nach HTML exportieren,
  wird es funktionieren.
+\end_layout
+
+\begin_layout Subsection
+HTML (MS Word)
+\end_layout
+
+\begin_layout Standard
+Hiermit wird auch eine HTML-Datei erstellt, die von Word gelesen/importiert
+ werden kann.
 \end_layout
 
 \begin_layout Subsection
@@ -5821,16 +6459,8 @@ name "Dateiformat!Export!LaTeX"
 LyX erzeugt zwei LaTeX-Dateitypen: unleserliche Versionen für die normale
  Bearbeitung (
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ansicht\SpecialChar \menuseparator
+DVI
 \family default
  usw.), die man normalerweise niemals sieht, und für Menschen lesbare Versionen,
  die Sie mit Ihren Kollegen austauschen können.
@@ -5840,15 +6470,8 @@ VI
  vorkommen würden.
  Optionen können Sie mit 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-E
-\bar under
-i
-\bar default
-nstellungen
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
@@ -5872,9 +6495,30 @@ X
 \end_layout
 
 \begin_layout Subsection
-LyX 1.3.x
+Ly
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+X 1.3.x
 \begin_inset LatexCommand index
 name "Dateiformat!Export!LyX 1.3.x"
+
+\end_inset
+
+ und 1.4.x
+\begin_inset LatexCommand index
+name "Dateiformat!Export!LyX 1.4.x"
 
 \end_inset
 
@@ -5886,7 +6530,10 @@ Hiermit können Dokumente in ein Format
 \emph on
 zurück
 \emph default
-gewandelt werden, das LyX-Versionen 1.3.x bearbeiten können.
+gewandelt werden, das LyX-Ver\SpecialChar \-
+si\SpecialChar \-
+o\SpecialChar \-
+nen 1.3.x bearbeiten können.
 \end_layout
 
 \begin_layout Subsection
@@ -5900,8 +6547,8 @@ name "Dateiformat!Import!MS Word (HTML)"
 \end_layout
 
 \begin_layout Standard
-Hiermit können Sie Ihre LyX-Dokumente in ein HTML-Format exporteiren, das
- von MS Word gelesen werden kann.
+Hiermit können Sie Ihre LyX-Dokumente in ein HTML-Format exportieren, das
+ von MS Word gelesen werden kann.b
 \end_layout
 
 \begin_layout Subsection
@@ -5911,7 +6558,7 @@ name "Dateiformat!Export!PDF"
 
 \end_inset
 
-
+(dvipdfm, pdflatex und ps2pdf)
 \end_layout
 
 \begin_layout Standard
@@ -5927,43 +6574,7 @@ Tsur
 \end_layout
 
 \begin_layout Standard
-PDF-Datei ohne Marken, Links, usw.\InsetSpace \space{}
-erstellen Sie am einfachsten mit 
-\family sans
-\bar under
-D
-\bar default
-atei
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-E
-\bar default
-xportieren
-\family default
-\InsetSpace ~
-
-\family sans
-PDF\InsetSpace ~
-(dvipdf
-\bar under
-m
-\bar default
-)/PD
-\bar under
-F
-\bar default
-\InsetSpace ~
-(pdflatex)/
-\bar under
-P
-\bar default
-DF\InsetSpace ~
-(ps2pdf)
-\family default
-.
+Hiermit erstellen Sie eine PDF-Datei ohne Marken, Links, usw.
  Es gibt ein paar Probleme mit Fonts, die Sie beachten müssen (siehe Abschnitt
  
 \begin_inset LatexCommand vref
@@ -5997,11 +6608,11 @@ pstricks
 \family default
  nicht benutzen.
  Andererseits können Sie mit pdfLaTeX Bilder im JPEG- und PNG-Format direkt
- einfügen, True-Type-Fonts benutzen, und mehr.
+ einfügen, True-Type-Fonts benutzen und mehr.
 \end_layout
 
 \begin_layout Subsubsection
-Warum sieht der Text mit Acrobat®Reader so schlecht aus?
+Probleme mit Acrobat®Reader
 \begin_inset LatexCommand label
 name "sec:badfonts"
 
@@ -6085,15 +6696,8 @@ LyX benutzt standardmäßig das T1-Font-Encoding.
  empfohlen wird, wenn Sie nicht nur englische Dokumente schreiben, schreiben
  Sie in das Feld 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-E
-\bar under
-i
-\bar default
-nstellungen\SpecialChar \ldots{}
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Ausgabe\SpecialChar \menuseparator
 LaTe
@@ -6108,11 +6712,7 @@ status collapsed
 \end_inset
 
 X\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-e
+Te
 \begin_inset ERT
 status collapsed
 
@@ -6147,24 +6747,14 @@ pu\SpecialChar \-
 ter-Modern-Fonts zu benutzen.
  Dazu müssen Sie in 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Textformat
 \family default
  als 
 \family sans
-\bar under
-S
-\bar default
-chrift
+Schrift
 \family default
  
 \family sans
@@ -6214,13 +6804,13 @@ Insgesamt erzielen Computer-Modern-Fonts und PostScript®-Fonts mit ein paar
 \end_layout
 
 \begin_layout Subsubsection
-Warum funktioniert der Befehl 
+
 \family typewriter
 
 \backslash
 boldsymbol{}
 \family default
- nicht mit 
+ und 
 \family typewriter
 ps\SpecialChar \-
 latex
@@ -6275,7 +6865,7 @@ pmb{1#}}
 \end_layout
 
 \begin_layout Subsubsection
-Kann man LaTe
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -6286,7 +6876,7 @@ status collapsed
 
 \end_inset
 
-X-Code schreiben, der nur mit pdfLaTe
+X-Code und pdfLaTe
 \begin_inset ERT
 status collapsed
 
@@ -6297,7 +6887,7 @@ status collapsed
 
 \end_inset
 
-X bearbeitet wird?
+X
 \end_layout
 
 \begin_layout Standard
@@ -6360,15 +6950,15 @@ ifpdf
 \begin_layout LyX-Code
    
 \backslash
-pdfinfo { /Autor (your name and e-mail address)
+pdfinfo { /Autor (Ihr Name und e-mail-Adresse)
 \end_layout
 
 \begin_layout LyX-Code
-      /Titel (official title -- i.e., title element)
+      /Titel (offizieller Titel -- d.h., Titel Element)
 \end_layout
 
 \begin_layout LyX-Code
-      /Subject (one line description of the document)
+      /Subject (einzeilige Beschreibung des Dokuments)
 \end_layout
 
 \begin_layout LyX-Code
@@ -6427,12 +7017,8 @@ target "http://ev-en.org/wiki/moin.cgi/LyxPdf"
 .
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
-Plain text
+Einfacher Text
 \begin_inset LatexCommand index
 name "Dateiformat!Export!einfacher Text"
 
@@ -6456,6 +7042,10 @@ tei und der roff-Befehl.
 \end_layout
 
 \begin_layout Subsection
+Einfacher Text (ps2ascii)
+\end_layout
+
+\begin_layout Subsection
 PostScript®
 \begin_inset LatexCommand index
 name "Dateiformat!Export!PostScript®"
@@ -6466,21 +7056,26 @@ name "Dateiformat!Export!PostScript®"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Den letzten Schritt macht normalerweise das Programm 
 \family typewriter
 dvips
 \family default
 , obwohl das mit 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-E
-\bar under
-i
-\bar default
-nstellungen
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
@@ -6500,6 +7095,27 @@ dvips
 -r
 \family default
  setzen.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rich Text Format
+\end_layout
+
+\begin_layout Standard
+Das ist das in der Windows-Welt weitverbreitete RTF-Format.
 \end_layout
 
 \begin_layout Subsection
@@ -6510,26 +7126,17 @@ Benutzerdefiniert\SpecialChar \ldots{}
 \begin_layout Standard
 Benutzerdefinierte Exporte (
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-xportieren
+Exportieren
 \family default
-\bar under
 \SpecialChar \menuseparator
 
 \family sans
-B
-\bar default
-enutzerdefiniert\SpecialChar \ldots{}
+Benutzerdefiniert\SpecialChar \ldots{}
 
 \family default
 ) sind möglich, wenn Sie ein besonders seltsames Format haben, in das Sie
@@ -6541,10 +7148,7 @@ Eingabedatei
 \emph default
  wird im 
 \family sans
-\bar under
-E
-\bar default
-xport-Formate:
+Export-Formate:
 \family default
  festgelegt.
  LyX wird bis zu dem Befehl normal konvertieren und dann an den Konverter
@@ -6554,10 +7158,7 @@ xport-Formate:
 \begin_layout Standard
 Der Konverterbefehl wird in 
 \family sans
-\bar under
-B
-\bar default
-efehl
+Befehl
 \family default
  festgelegt.
  Er sollte ein vollständig qualifizierter Kommandozeilenbefehl sein, der
@@ -6585,15 +7186,7 @@ s-Datei editieren und folgende Zeile hinzufügen:
 \begin_layout LyX-Code
 
 \backslash
-custom_export_command 
-\begin_inset Quotes gld
-\end_inset
-
-mycommand $$FName
-\begin_inset Quotes grd
-\end_inset
-
-
+custom_export_command "mycommand $$FName"
 \end_layout
 
 \begin_layout Chapter
@@ -6704,8 +7297,7 @@ einige Probleme umschiffen.
 \end_layout
 
 \begin_layout Subsection
-Vorbereitung und Umgang mit einem DocBook (SGML)-Doku\SpecialChar \-
-ment
+DocBook (SGML)-Dokumente
 \end_layout
 
 \begin_layout Subsubsection
@@ -6715,15 +7307,8 @@ Zu Beginn
 \begin_layout Standard
 Als erstes wählen Sie im Dialog 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen
+Dokument\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 
@@ -6809,20 +7394,9 @@ DocBook\InsetSpace ~
 -Format speichern.
  Sie erreichen dies durch die Auswahl 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-Doc
-\bar under
-B
-\bar default
-ook
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+DocBook
 \family default
  oder 
 \family sans
@@ -6849,7 +7423,7 @@ reference "sec:sgmloperate"
 \end_layout
 
 \begin_layout Subsection
-Die Verwendung der Absatzumgebungen in 
+Absatzumgebungen in 
 \family sans
 DocBook\InsetSpace ~
 \SpecialChar \ldots{}
@@ -6858,7 +7432,7 @@ DocBook\InsetSpace ~
 \end_layout
 
 \begin_layout Subsubsection
-Die Struktur eines 
+Struktur eines 
 \family sans
 DocBook\InsetSpace ~
 \SpecialChar \ldots{}
@@ -6960,15 +7534,8 @@ Unterabschnitt
 \family default
  im Dialog 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 
 \family default
  ab.
@@ -7119,11 +7686,7 @@ Bearbeiten
 \SpecialChar \menuseparator
 
 \family sans
-Te
-\bar under
-x
-\bar default
-tstil
+Textstil
 \family default
 \SpecialChar \ldots{}
  
@@ -7162,6 +7725,99 @@ Hinweis des Autors:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Querverweise und HTML 
+\end_layout
+
+\begin_layout Standard
+Im 
+\family sans
+Einfügen
+\family default
+-Menü gibt es zwei neue Optionen für URL-Adressen.
+ Wenn Sie die benutzen, werden Sie hervorgehobenen TeX-Code in Ihrem Dokument
+ sehen, der in zwei Blöcke mit Leerraum dazwischen aufgeteilt ist und so
+ aussieht:
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+
+\backslash
+htmlurl{
+\family default
+ oder 
+\family typewriter
+
+\backslash
+url{
+\family default
+
+\hfill
+Leerraum 
+\family typewriter
+
+\hfill
+}{
+\family default
+
+\hfill
+Leerraum
+\hfill
+
+\family typewriter
+}
+\end_layout
+
+\begin_layout Standard
+In die ersten geschweiften Klammern schreiben Sie eine HTML-Adresse, zum
+ Beispiel 
+\begin_inset LatexCommand url
+target "http://any.address"
+
+\end_inset
+
+ oder 
+\begin_inset LatexCommand url
+target "mailto:me@my.address"
+
+\end_inset
+
+.
+ In die zweiten geschweiften Klammern schreiben Sie eine Beschreibung der
+ Adresse.
+ 
+\family typewriter
+url
+\family default
+ und 
+\family typewriter
+htmlurl
+\family default
+ unterscheiden sich wie folgt:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+url
+\family sans
+:
+\family default
+ die HTML-Adresse und die Beschreibung erscheinen im druckfertigen Dokument
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+htmlurl
+\family sans
+:
+\family default
+ nur die Beschreibung erscheint im druckfertigen Dokument
 \end_layout
 
 \begin_layout Subsection
@@ -7212,7 +7868,7 @@ target "http://pobox.com/~cg/sgmltools"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -7253,20 +7909,9 @@ Folgen Sie den Anweisungen zur Installation und Benutzung des Paketes.
  Dies alles müssen Sie -- unabhängig von LyX -- durchgeführt haben, bevor
  Sie den Menüpunkt 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-Linu
-\bar under
-x
-\bar default
-Doc
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+LinuxDoc
 \family default
  auswählen können.
 \end_layout
@@ -7295,6 +7940,1571 @@ Wenn Sie ein Dokument ausdrucken oder (als Dvi oder Postscript®) betrachten
 \end_layout
 
 \begin_layout Section
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X prüfen
+\end_layout
+
+\begin_layout Standard
+von 
+\noun on
+Asger Alstrup
+\end_layout
+
+\begin_layout Subsection
+Einführung
+\end_layout
+
+\begin_layout Standard
+Im 
+\family sans
+Werkzeuge
+\family default
+-Menü finden Sie den 
+\family sans
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace \space{}
+prüfen
+\family default
+-Befehl.
+ Er ist nur aktiviert, wenn das 
+\family typewriter
+chktex
+\family default
+-Programm installiert ist.
+ Sie können es bei CTAN oder von der Seite 
+\begin_inset LatexCommand url
+target "http://www.ifi.uio.no/~jensthi/chktex/"
+
+\end_inset
+
+ beziehen.
+\end_layout
+
+\begin_layout Standard
+Das 
+\family typewriter
+chktex
+\family default
+-Paket hat 
+\noun on
+Jens T.
+ Berger Thielemann
+\noun default
+ aus Frust darüber geschrieben, dass einige LaTeX-Konstrukte manchmal nicht
+ intuitiv und leicht zu vergessen sind.
+ Das Programm läuft durch Ihre LaTeX-Datei, prüft ihre Integrität und markiert
+ Fehler.
+ Es ist eine Art 
+\family typewriter
+Lint
+\family default
+ für LaTeX.
+\end_layout
+
+\begin_layout Standard
+Nun, was macht eine Syntax-Prüfung in LyX, das sowieso richtiges LaTeX produzier
+en sollte? Die Antwort ist einfach: So wie 
+\family typewriter
+Lint
+\family default
+ nicht nur die 
+\emph on
+Syntax
+\emph default
+ von C-Programmen prüft, sondern auch die 
+\emph on
+Semantik
+\emph default
+, findet 
+\family typewriter
+chktex
+\family default
+ einfache 
+\emph on
+typographische
+\emph default
+ Fehler, zusätzlich zu den syntaktischen.
+ Insbesondere findet 
+\family typewriter
+chktex
+\family default
+ folgende Fehler:
+\end_layout
+
+\begin_layout Itemize
+Fortsetzungspunkte:
+\newline
+Benutzen Sie \SpecialChar \ldots{}
+ anstatt ...
+\end_layout
+
+\begin_layout Itemize
+Kein Leerzeichen vor/nach Anführungszeichen:
+\newline
+(falsche Zwischenräume)
+\end_layout
+
+\begin_layout Itemize
+Erzwingung von normalen Leerzeichen bei Abkürzungen:
+\newline
+Hier z.
+ B.
+ ist der Abstand zu groß.
+\end_layout
+
+\begin_layout Itemize
+Erzwingung des Satzende-Leerzeichens, wenn der Satz mit einem Großbuchstaben
+ endet:
+\newline
+Dies ist ein TEST.
+ Und dies ist ein falscher Abstand.
+\end_layout
+
+\begin_layout Itemize
+Leerzeichen vor Marken und ähnliche Befehle:
+\newline
+Die Marke sollte am Text 
+\emph on
+kleben
+\emph default
+, damit sie nicht auf die falsche Seite gerät.
+ 
+\begin_inset LatexCommand label
+name "sec:chktex"
+
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Diese Fußnote könnte auf der falschen Seite landen.
+\end_layout
+
+\end_inset
+
+ Die Marke ist zu weit weg.
+\end_layout
+
+\begin_layout Itemize
+Normale Leerzeichen vor Querverweisen anstatt geschützter:
+\newline
+Wenn Sie Pech
+ haben, wird die Zeile zwischen dem Text und dem Querverweis umgebrochen,
+ was schade wäre.
+ Siehe Abschnitt 
+\begin_inset LatexCommand ref
+reference "sec:chktex"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Zwischen Zahlen wird 
+\begin_inset Quotes gld
+\end_inset
+
+x
+\begin_inset Quotes grd
+\end_inset
+
+ anstatt 
+\begin_inset Formula $\times$
+\end_inset
+
+ benutzt:
+\newline
+2x2 sieht armselig aus, verglichen mit 
+\begin_inset Formula $2\times2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+und noch mehr \SpecialChar \ldots{}
+ Es ist ein unersetzliches Werkzeug, um Ihrem Dokument vor
+ dem Druck den letzten Schliff zu geben.
+ Sie sollten es gleich nach der obligatorischen Rechtschreibprüfung benutzen,
+ noch bevor Sie die letzten Feinheiten des Drucksatzes bearbeiten.
+\end_layout
+
+\begin_layout Subsection
+Wie es geht
+\end_layout
+
+\begin_layout Standard
+Wählen Sie 
+\family sans
+Werkzeuge
+\family default
+\SpecialChar \menuseparator
+ 
+\family sans
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace \space{}
+prüfen
+\family default
+.
+ LyX wird aus Ihrem Dokument eine LaTeX-Datei erzeugen, 
+\family typewriter
+chktex
+\family default
+  starten und ein Fenster mit den 
+\family typewriter
+chktex
+\family default
+-Warnungen öffnen.
+ Wenn Sie im oberen Teil auf eine Warnung klicken, wird im unteren Teil
+ der (englische) Text der Warnung erscheinen, und der Cursor wird ans Ende
+ des blau hinterlegten Textteiles, der die Warnung erzeugte, gestellt.
+ Sie können dann den Fehler korrigieren oder die Warnung ignorieren, weil
+ sie vielleicht doch nicht zutrifft.
+\end_layout
+
+\begin_layout Standard
+An diesem Dokument können Sie diese Funktion ausprobieren, weil Sie bestimmt
+ eine Menge Warnungen bekommen werden, von denen aber viele falsche Alarme
+ sein werden.
+\end_layout
+
+\begin_layout Subsection
+Feineinstellungen
+\end_layout
+
+\begin_layout Standard
+Manchmal wird 
+\family typewriter
+chktex
+\family default
+ mehr Lärm erzeugen als Sie vertragen können.
+ Dann können Sie versuchen, 
+\family typewriter
+chktex
+\family default
+ anzupassen.
+ Obwohl 
+\family typewriter
+chktex
+\family default
+ sehr gut kofigurier- und erweiterbar ist, werden Sie nicht alle Probleme
+ lösen können.
+ Weil LyX eine etwas 
+\emph on
+besondere
+\emph default
+ LaTeX-Datei erzeugen muss, damit  die Zeilennummern der 
+\family typewriter
+chktex
+\family default
+-Ausgabe zur internen Dokumentstruktur passen,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Die 
+\family typewriter
+chktex
+\family default
+-Ausgabe können Sie sich mit 
+\family sans
+Dokument\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Protokoll
+\family default
+ ansehen.
+\end_layout
+
+\end_inset
+
+ werden einige Warnungen verkehrt erscheinen.
+ Sie haben zwei Möglichkeiten, das zu ändern:
+\end_layout
+
+\begin_layout Itemize
+Sie können den 
+\family typewriter
+chktex
+\family default
+-Aufruf in 
+\family sans
+Werkzeuge
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Ausgaben\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\SpecialChar \menuseparator
+ChkTeX-Befehl:
+\family default
+ oder die globale Konfigurationsdatei 
+\family typewriter
+chktexrc
+\family default
+ ändern.
+ Weiter unten sehen Sie, welche Warnungen Sie auf der Kommandozeile (de)aktivier
+en können.
+\end_layout
+
+\begin_layout Itemize
+Exportieren Sie Ihr Dokument als einfache LaTeX-Datei mit 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace \space{}
+(plain)
+\family default
+ und lassen Sie 
+\family typewriter
+chktex
+\family default
+ darüber laufen.
+ Es wird mühsam sein, die zugehörige Stelle im LyX-Dokument zu finden, aber
+ mit etwas Gedulde sollten Sie es schaffen.
+\end_layout
+
+\begin_layout Standard
+Hier ist eine Liste der Warnungen, die Sie in der 
+\family sans
+ChkTeX-Befehl:
+\family default
+-Zeile (de)aktivieren können.
+ Mit 
+\family typewriter
+-n#
+\family default
+ wird die Warnung 
+\family typewriter
+#
+\family default
+ deaktiviert, mit 
+\family typewriter
+w#
+\family default
+ aktiviert.
+ Die 
+\emph on
+hervorgehobenen
+\emph default
+ Warnungen sind standardmäßig deaktiviert, der Standardaufruf ist "
+\family typewriter
+chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38
+\family default
+".
+\end_layout
+
+\begin_layout Standard
+Beachten Sie, dass Sie nur Warnungen (de)aktivieren sollten, weil LyX sich
+ darauf verlässt, dass einige andere Kommandozeilen-Parameter so gesetzt
+ sind, dass es mit 
+\family typewriter
+chktex
+\family default
+ kommunizieren kann.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+Command terminated with space.
+ --- Befehl endete mit einem Leerzeichen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Non-breaking space (
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+~
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) should have been used.
+ --- Geschütztes Leerzeichen (
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+~
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+) wäre besser.
+ In LyX: 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Geschütztes\InsetSpace \space{}
+Leerzeichen
+\family default
+ oder 
+\family sans
+Strg+ Leertaste
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+You should enclose the previous parenthesis with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+{}
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Sie sollten die vorigen Klammern in 
+\begin_inset Quotes gld
+\end_inset
+
+({})
+\begin_inset Quotes grd
+\end_inset
+
+ einschließen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Italic correction (
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+/
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) found in non-italic buffer.
+ --- Kursiv-Korrektur (
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+/
+\family default
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+)
+\size small
+ in nicht-kursivem Text.
+ Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Italic correction (
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+/
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) found more than once.
+ --- Kursiv-Korrektur (
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+/
+\family default
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+) wurde mehrfach benutzt.
+ Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+No italic correction (
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+\emph default
+
+\backslash
+/
+\family default
+\emph on
+
+\begin_inset Quotes erd
+\end_inset
+
+) found.
+ --- Keine Kursiv-Korrektur (
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+\emph default
+
+\backslash
+/
+\family default
+\size default
+\emph on
+
+\begin_inset Quotes grd
+\end_inset
+
+)
+\size small
+ gefunden.
+ 
+\emph default
+Das sollte in LyX nicht nötig sein.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Accent command 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+cmd
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ needs use of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+cmd
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Der Akzent-Befehl 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+cmd
+\family default
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+ benötigt 
+\size small
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+cmd
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ (???)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Wrong length of dash may have been used.
+ --- Eventuell verkehrte Länge des Gedankenstrichs.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+\emph default
+%s
+\family default
+\emph on
+
+\begin_inset Quotes erd
+\end_inset
+
+ expected, found 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+\emph default
+%s
+\family default
+\emph on
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+\emph default
+%s
+\family default
+\emph on
+
+\begin_inset Quotes grd
+\end_inset
+
+ erwartet, 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+\emph default
+%s
+\family default
+\emph on
+
+\begin_inset Quotes grd
+\end_inset
+
+ gefunden.
+ 
+\emph default
+(???)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Solo 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ found.
+ --- Einzelnes 
+\emph on
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+\emph default
+%s
+\family default
+\emph on
+
+\begin_inset Quotes grd
+\end_inset
+
+ gefunden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should use 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ to achieve an ellipsis.
+ --- Sie sollten 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ für Fortsetzungspunkte benutzen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Inter-word spacing (
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+
+\family default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+) should perhaps be used.
+ --- Vielleicht sollten Sie ein normales Leerzeichen (
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+ 
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+) benutzen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Inter-sentence spacing (
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+@
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) should perhaps be used.
+ --- Vielleicht sollten Sie einen Satzendepunkt (
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+@
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+) benutzen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Could not find argument for command.
+ --- Konnte kein Befehlsargument finden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+No match found for 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Konnte nichts Passendes für 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ finden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Math mode still on at end of LaTeX file.
+ --- Der Mathe-Modus ist am Ende der LaTeX-Datei immer noch an.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Number of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+char
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ doesn't match the number of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+char
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Die Anzahl der 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+char
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ passt nicht zur Anzahl der 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+char
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ (???)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should use either 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family default
+ or 
+\family typewriter
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ as an alternative to 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+"
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Sie sollten 
+\family typewriter
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family default
+\InsetSpace ~
+und 
+\family typewriter
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\family default
+ anstatt 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+"
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ benutzen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should use "'" (ASCII 39) instead of "´" (ASCII 180).
+ --- Sie sollten 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+'
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ (ASCII 39) anstatt 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\begin_inset Quotes grs
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ (ASCII 180) benutzen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+User-specified pattern found.
+ --- Benutzerdefiniertes Muster gefunden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+This command might not be intended.
+ --- Dieser Befehl war vielleicht nicht gewollt.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+Comment displayed.
+ --- Kommentar angezeigt.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Either 
+\family typewriter
+''
+\backslash
+,'
+\family default
+\InsetSpace ~
+or 
+\family typewriter
+'
+\backslash
+,''
+\family default
+\InsetSpace ~
+will look better.
+ --- Ein kleiner Abstand sieht besser aus.
+ In LyX: 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Kleiner\InsetSpace \space{}
+Abstand
+\family default
+\InsetSpace \space{}
+oder 
+\family sans
+Strg+Umschalt+Leertaste
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Delete this space to maintain correct page references.
+ --- Löschen Sie dieses Leerzeichen, um korrekte Seitenverweise zu erhalten.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+You might wish to put this between a pair of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+{}
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Sie sollten dies in 
+\begin_inset Quotes gld
+\end_inset
+
+{}
+\begin_inset Quotes grd
+\end_inset
+
+ einschließen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You ought to remove spaces in front of punctuation.
+ --- Sie sollten Leer- vor Satzzeichen entfernen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Could not execute LaTeX command.
+ --- LaTeX-Befehl konnte nicht ausgeführt werden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Don't use 
+\family typewriter
+
+\backslash
+/
+\family default
+ in front of small punctuation.
+ --- Benutzen Sie keine Kursiv-Korrektur 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+/
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ vor kleinen Satzzeichen.
+ Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+$
+\backslash
+times$
+\family default
+ may look prettier here.
+ --- 
+\family typewriter
+$
+\backslash
+times$
+\family default
+\size default
+\InsetSpace ~
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $\times$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\size small
+sieht hier wahrscheinlich besser aus.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+Multiple spaces detected in output.
+ --- Mehrfache Leerzeichen in der Ausgabe entdeckt.
+ 
+\emph default
+Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+This text may be ignored.
+ --- Dieser Text wird wahrscheinlich ignoriert.
+ Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Use 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family default
+\InsetSpace \space{}
+to begin quotation, not 
+\family typewriter
+'
+\family default
+.
+ --- Benutzen Sie 
+\family typewriter
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family default
+\InsetSpace \space{}
+am Anfang eines Zitats, nicht 
+\family typewriter
+\size default
+
+\begin_inset Quotes gls
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Use 
+\family typewriter
+'
+\family default
+\InsetSpace \space{}
+to end quotation, not 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family default
+.
+ --- Benutzen Sie 
+\family typewriter
+
+\begin_inset Quotes grs
+\end_inset
+
+
+\family default
+\InsetSpace \space{}
+am Ende eines Zitats, nicht
+\size default
+ 
+\family typewriter
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Don't mix quotes.
+ --- Mischen Sie keine Anführungszeichen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should perhaps use 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+cmd
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ instead.
+ --- Vielleicht sollten Sie besser 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+cmd
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ benutzen.
+ (???)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should put a space in front of/after parenthesis.
+ --- Vor/nach Klammern sollten Sie ein Leerzeichen einfügen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should avoid spaces in front of/after parenthesis.
+ --- Vor/nach Klammern sollten Sie mehrfache Leerzeichen vermeiden.
+ Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+You should not use punctuation in front of/after quotes.
+ --- Vor/nach Anführungszeichen sollten Sie keine Satzzeichen verwenden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Double space found.
+ --- Doppeltes Leerzeichen gefunden.
+ Das sollte in LyX nicht passieren.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should put punctuation outside inner/inside display math mode.
+ --- Sie sollten Satzzeichen außerhalb des inneren und innerhalb des anzeige-Mat
+he-Modus verwenden.
+ (???)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You ought to not use primitive TeX in LaTeX code.
+ --- Im LaTeX-Code sollten Sie keinen TeX-Code verwenden.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+You should remove spaces in front of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Vor 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+ sollten Sie Leerzeichen entfernen.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ is normally not followed by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%c
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ --- Auf 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+%s
+\family default
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\size small
+ folgt normalerweise kein 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+%
+\size default
+c
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\size small
+.
+\end_layout
+
+\begin_layout Standard
+In späteren LyX-Versionen werden wir hoffentlich eine vollständigere Schnittstel
+le zu 
+\family typewriter
+chktex
+\family default
+ bekommen (und seinem kleineren Vetter 
+\family typewriter
+lacheck
+\family default
+)t.
+ Aber auch jetzt ist es schon recht hilfreich.
+ Versuchen Sie es.
+\end_layout
+
+\begin_layout Description
+Anmerkung von 
+\noun on
+HHa
+\noun default
+: Die Warnungen 26 und 36 sollte man besser deaktivieren.
+\end_layout
+
+\begin_layout Section
 Versionskontrolle
 \begin_inset LatexCommand index
 name "Versionskontrolle"
@@ -7316,9 +9526,9 @@ X
 \end_layout
 
 \begin_layout Standard
-von
+von 
 \noun on
- Lars Gullik Bjønnes
+Lars Gullik Bjønnes
 \end_layout
 
 \begin_layout Subsection
@@ -7354,7 +9564,7 @@ intro
 \family typewriter
 man rcsintro
 \family default
-).
+)\SpecialChar \@.
  Dieser Text beschreibt alle grundlegenden Fähigkeiten von RCS.
  Insbesondere sollten Sie den Hinweis über das RCS-Verzeichnis und den Begriff
  der RCS-Master-Datei (die Datei mit der Endung 
@@ -7388,15 +9598,8 @@ X
 Die folgenden Abschnitte beschreiben die von LyX unterstützten RCS-Befehle.
  Sie finden sie im Menü 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-Versions
-\bar under
-k
-\bar default
-ontrolle
+Datei\SpecialChar \menuseparator
+Versionskontrolle
 \family default
 .
 \end_layout
@@ -7431,7 +9634,7 @@ Mit diesem Befehl registrieren Sie Ihr Dokument bei der Versionskontrolle.
  Dann wird das Dokument als schreibgeschützt markiert.
  Um es zu verändern, müssen Sie zuerst 
 \family sans
-Arbeitskopie\InsetSpace ~
+Arbeitskopie\InsetSpace \space{}
 erzeugen
 \family default
  auswählen.
@@ -7502,7 +9705,8 @@ name "Versionskontrolle!Arbeitskopie"
 
 \begin_layout Standard
 Dadurch wird das Dokument gesperrt, und nur noch Sie können es verändern.
- Dadurch wird für Sie außerdem das Dokument als veränderbar markiert.
+ Da\SpecialChar \-
+durch wird für Sie außerdem das Dokument als veränderbar markiert.
  Normalerweise werden Sie nun eine ganze Weile mit dem Text arbeiten, ihn
  verändern und zum Schluss den geänderten Text wieder an die Versionskontrolle
  übergeben.
@@ -7819,7 +10023,7 @@ Um mit NoWeb zusammenzuarbeiten, waren einige Änderungen in LyX notwendig.
 \end_layout
 
 \begin_layout Subsubsection
-Erstellen von Dokumentation und Quellcode (weben und verknoten)
+Erstellen von Dokumentation und Quellcode
 \end_layout
 
 \begin_layout Paragraph
@@ -7866,7 +10070,9 @@ letter
 article\InsetSpace ~
 (AMS)
 \family default
- entsprechend angepasst werden.
+ ent\SpecialChar \-
+spre\SpecialChar \-
+chend angepasst werden.
  Die Beschränkung auf drei Klassen ist eine Folge des Wunsches, die Auswahlliste
  nicht übermäßig lang werden zu lassen.
  Falls Sie irgendwelche besonderen Wünsche haben, lassen Sie mich das wissen
@@ -7976,7 +10182,9 @@ Der Nachteil davon ist, dass aufeinanderfolgende Code-Absätze durch eine
  der gedruckten Dokumentation.
  Dies können Sie umgehen, indem Sie die einzelnen Zeilen mit 
 \family sans
-Strg+Eingabe
+Strg+Ein\SpecialChar \-
+ga\SpecialChar \-
+be
 \family default
  anstelle von 
 \family sans
@@ -8060,26 +10268,14 @@ Scrap
 Ein Beispiel für die Benutzung und die Querverweisausgabe finden Sie in
  der Datei 
 \family typewriter
-lister\SpecialChar \-
-rors.lyx
+listerrors.lyx
 \family default
  (
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-Ö
-\bar under
-f
-\bar default
-fnen\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Öffnen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-eispiele
+Beispiele
 \family default
 ).
 \end_layout
@@ -8094,11 +10290,7 @@ Sie haben nun ein neues Dokument mit der korrekten Dokumentenklasse und
  Wie drucken Sie das nun aus? Die Antwort ist einfach: wählen Sie 
 \family sans
 Ansicht\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+DVI
 \family default
  oder was immer Sie verwenden, wenn Sie normale Dokumente in der Vorschau
  betrachten wollen.
@@ -8131,7 +10323,8 @@ preferences
 \family typewriter
 
 \backslash
-literate_extension
+literate_exten\SpecialChar \-
+sion
 \family default
  (standardmäßig 
 \family typewriter
@@ -8181,7 +10374,7 @@ NoWeb benutzen, gefolgt von NoWeb
 \begin_inset Formula $\rightarrow$
 \end_inset
 
-LaT
+LaTe
 \family sans
 
 \begin_inset ERT
@@ -8196,22 +10389,15 @@ status collapsed
 
 
 \family default
-eX, um die LaTeX-Datei zu erzeugen.
+X, um die LaTeX-Datei zu erzeugen.
 \begin_inset Foot
 status open
 
 \begin_layout Standard
 Die Konverter finden Sie unter 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-E
-\bar under
-i
-\bar default
-nstellungen\SpecialChar \ldots{}
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Konverter
 \family default
@@ -8243,24 +10429,16 @@ Erstellung des Programmcodes
 \begin_layout Standard
 Wenn Sie den Menüpunkt 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Programm\InsetSpace ~
-
-\bar under
-e
-\bar default
-r\SpecialChar \-
+er\SpecialChar \-
 stel\SpecialChar \-
 len
 \family default
  auswählen, wird wie oben in Schritt 1 eine LaTeX-Datei erzeugt.
  Dann startet LyX den 
 \family typewriter
-NoWeb->Pro\SpecialChar \-
-gram
+NoWeb->Program
 \family default
 -Konverter.
  Typischerweise hat dieser Konverter wie alle anderen zwei Teile:
@@ -8282,11 +10460,7 @@ Der Parser der Fehlerdatei.
 \begin_layout Standard
 Der erste Teil, der 
 \family sans
-B
-\bar under
-e
-\bar default
-fehl
+Befehl
 \family default
 , sollte den Eintrag 
 \family typewriter
@@ -8325,10 +10499,7 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
 \begin_layout Standard
 Der zweite Teil sind die 
 \family sans
-\bar under
-E
-\bar default
-xtra\InsetSpace ~
+Extra\InsetSpace ~
 flags
 \family default
  für den Konverter, die auf 
@@ -8346,8 +10517,7 @@ status collapsed
 
 \end_inset
 
-=lister\SpecialChar \-
-rors
+=listerrors
 \family default
  gesetzt werden müssen.
  Damit werden alle von 
@@ -8364,7 +10534,7 @@ listerrors
 \begin_layout Standard
 Der Konverter sucht zuerst im Verzeichnis ~/.lyx/scripts, dann in 
 \emph on
-L
+Ly
 \family sans
 \emph default
 
@@ -8381,7 +10551,7 @@ status collapsed
 
 \family default
 \emph on
-yXDir/scripts
+XDir/scripts
 \emph default
  und dann im Pfad des 
 \family typewriter
@@ -8422,7 +10592,8 @@ notangle
 \family sans
 Scrap
 \family default
-, genannt 
+, ge\SpecialChar \-
+nannt 
 \family typewriter
 build-script
 \family default
@@ -8454,10 +10625,10 @@ ei.nw
 fi
 \newline
 [...
- Code zum Extrahieren von Dateien ...]
+ Code zum Extrahieren von Dateien ]
 \newline
 [...
- Code zum Extrahieren von Dateien ...]
+ Code zum Extrahieren von Dateien ]
 \newline
 @
 \end_layout
@@ -8568,33 +10739,11 @@ X-Konfiguration
 \begin_layout Standard
 Alle Einstellungen für die Literarische Programmierung werden in 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-E
-\bar under
-i
-\bar default
-n\SpecialChar \-
+Bearbeiten\SpecialChar \menuseparator
+Ein\SpecialChar \-
 stel\SpecialChar \-
 lun\SpecialChar \-
 gen\SpecialChar \ldots{}
-
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-""
-\end_layout
-
-\end_inset
-
-
-\family sans
 \SpecialChar \menuseparator
 Konverter
 \family default
@@ -8616,10 +10765,7 @@ Name im
 \family default
  
 \family sans
-\bar under
-G
-\bar default
-UI
+GUI
 \family default
  wird auf 
 \family typewriter
@@ -8628,11 +10774,7 @@ NoWeb
  gesetzt, die 
 \family sans
 Datei\InsetSpace ~
-
-\bar under
-E
-\bar default
-ndung
+Endung
 \family default
  auf 
 \family typewriter
@@ -8657,7 +10799,7 @@ NoWeb
 \begin_inset Formula $\rightarrow$
 \end_inset
 
-LaT
+LaTe
 \family sans
 
 \begin_inset ERT
@@ -8672,18 +10814,14 @@ status collapsed
 
 
 \family default
-eX Dieser Konverter 
+X Dieser Konverter 
 \emph on
 webt
 \emph default
  das literarische Dokument.
  Für Noweb wird der 
 \family sans
-B
-\bar under
-e
-\bar default
-fehl
+Befehl
 \family default
  auf 
 \newline
@@ -8699,18 +10837,14 @@ NoWeb
 \begin_inset Formula $\rightarrow$
 \end_inset
 
-Program Dies ist Schritt zum 
+Program Dies ist der Schritt zum 
 \emph on
 Verknoten
 \emph default
 .
  Wie oben erwähnt werden hier der 
 \family sans
-B
-\bar under
-e
-\bar default
-fehl
+Befehl
 \family default
  auf 
 \newline
@@ -8720,10 +10854,7 @@ build-script $$i
 \family default
  und 
 \family sans
-\bar under
-E
-\bar default
-xtra\InsetSpace ~
+Extra\InsetSpace ~
 flags
 \family default
  auf 
@@ -8744,18 +10875,7 @@ In den LyX-Server wurde eine neue Funktion implementiert, und zwar
 
 
 \family typewriter
-server-goto-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-""
-\end_layout
-
-\end_inset
-
-file-row
+server-goto- file-row
 \family default
 
 \begin_inset Quotes grd
@@ -9024,7 +11144,8 @@ Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Aussehen\SpecialChar \menuseparator
-Farben
+Far\SpecialChar \-
+ben
 \family default
  gemacht.
 \end_layout
@@ -9070,17 +11191,10 @@ TeX
 \family default
 -Schalter in der Werkzeugleiste zu verwenden oder (via 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -9091,14 +11205,14 @@ status collapsed
 
 \end_inset
 
-eX-Vorspann
+X-Vorspann
 \family default
 ) TeX-Befehle selber in den LaTeX-Vorspann einzutragen.
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel werden einige Tipps, Tricks und sonstige guten Ideen aufgezeig
-t, um Ihren Dokumenten einen besonderen Anstrich zu geben.
+In diesem Kapitel werden einige Tipps, Tricks und sonstige gute Ideen aufgezeigt
+, um Ihren Dokumenten einen besonderen Anstrich zu geben.
  
 \emph on
 Machen Sie das aber zu Hause!
@@ -9205,7 +11319,7 @@ Der folgende Befehl schaltet die Nummerierung um auf kleine Buchstaben.
 \family typewriter
 dvi
 \family default
-- oder PostScript®-Vorschau.
+-, PDF- oder PostScript®-Vorschau.
 \begin_inset ERT
 status open
 
@@ -9379,7 +11493,7 @@ Betrachten Sie in der
 \family typewriter
 dvi
 \family default
-- oder PostScript®-Vorschau, was der folgende Befehl bewirkt.
+-, PDF- oder PostScript®-Vorschau, was der folgende Befehl bewirkt.
 \end_layout
 
 \begin_layout Standard
@@ -9967,7 +12081,7 @@ end{multicols}
 Für fortgeschrittenere Beispiele (Abstände, Trennlinien) lesen Sie bitte
  die Datei 
 \family typewriter
-multicols.lyx
+/de/multicols.lyx
 \family default
  im Verzeichnis mit den Beispielen.
 \end_layout
@@ -10123,12 +12237,11 @@ Zahlen
 arabic{}
 \family default
 ,
-\newline
-
 \family typewriter
-
+ 
 \backslash
-roman{}
+ro\SpecialChar \-
+man{}
 \family default
 , 
 \family typewriter
@@ -10288,8 +12401,6 @@ newcommand{
 extratablespace}[1]{
 \backslash
 noalign{vskip#1}}
-\family default
- 
 \end_layout
 
 \begin_layout Standard
@@ -10613,8 +12724,6 @@ Es ist kurz, süß und macht die Arbeit schnell, obwohl es wirklich hässlich
  ist.
  Werfen Sie das verrottete Gemüse jetzt weg! Ich verspreche, ich würde so
  etwas niemals vorschlagen!
-\newpage
-
 \end_layout
 
 \begin_layout Section
@@ -10681,7 +12790,7 @@ hangafter=-3
  iejenigen unter Ihnen, denen der Stil alter Bücher gefällt, würden sicherlich
  in Ihren Texten auch gerne jene abgesetzten großen Buchstaben am Anfang
  eines Kapitels verwenden.
- Mit etwas Kenntnis von TeX ist dies durchaus möglich --- allerdings etwas
+ Mit etwas Kenntnis von LaTeX ist dies durchaus möglich --- allerdings etwas
  aufwendig, wie das Beispiel am Anfang dieses Absatzes zeigt.
 \begin_inset Foot
 status open
@@ -10739,7 +12848,7 @@ dropping
 status open
 
 \begin_layout Standard
-Der TeX-Befehl wäre 
+Der LaTeX-Befehl wäre 
 \family typewriter
 
 \backslash
@@ -10816,17 +12925,14 @@ tfm
 \family default
 -Datei gibt (schauen Sie sich ruhig einmal im Verzeichnis 
 \family typewriter
-.../texmf/fonts/tfm
+\SpecialChar \ldots{}
+/texmf/fonts/tfm
 \family default
  um).
 \end_layout
 
 \begin_layout Standard
-Sehr schön ist zum Beispiel
-\begin_inset Quotes gld
-\end_inset
-
-
+Sehr schön ist zum Beispiel 
 \family typewriter
 yinit
 \family default
@@ -11100,7 +13206,7 @@ Es gibt Zeiten, da muss die Tyrannei der rechteckigen Absätze gebrochen
 parshape
 \family default
  an.
- Wie Sie sehen können Sie beliebige Formen mit einem geeigneten Satz von
+ Wie Sie sehen, können Sie beliebige Formen mit einem geeigneten Satz von
  Zeilenlängendefinitionen herstellen.
  Während dieses Beispiel ein wenig töricht und nutzlos aussehen mag, könnte
  man sich Situationen vorstellen, die aus einem solchen Handwerkzeug Nutzen
@@ -11178,11 +13284,33 @@ Morgenstern
 
 \end_inset
 
- ist es doch wichtig zu zeigen, dass Sie fast alles was Sie wollen mit LyX
- machen können, wenn Sie herausfinden wie es mit TeX und LaTeX gemacht wird.
+ ist es doch wichtig zu zeigen, dass Sie fast alles, was Sie wollen, mit
+ LyX machen können, wenn Sie herausfinden, wie es mit LaTeX gemacht wird.
  TeX ist ein fantastisch mächtiges Drucksetzsystem, und all das steht Ihnen
  zur Verfügung, weil LyX es im Hintergrund benutzt.
- 
+\end_layout
+
+\begin_layout Description
+Anmerkung von 
+\noun on
+HHa
+\noun default
+: Wenn es Sie interessiert, was ich so mit LyX und ein wenig LaTeX mache,
+ sehen Sie sich doch 'mal 
+\begin_inset LatexCommand url
+target "http://www.ekima.de"
+
+\end_inset
+
+\SpecialChar \menuseparator
+
+\family sans
+brückle\SpecialChar \menuseparator
+brückle\InsetSpace \space{}
+als\InsetSpace \space{}
+pdf
+\family default
+ an.
 \end_layout
 
 \begin_layout Standard
@@ -11251,7 +13379,7 @@ target "ftp://ftp.ams.org/pub/tex/amslatex/"
 \end_layout
 
 \begin_layout Enumerate
-amsart - Das AMS-Standardformat für Artikel.
+amsart -- Das AMS-Standardformat für Artikel.
  Alle Ergebnisse und gleichwertige Aussagen werden in der Form 
 \begin_inset Formula $(n,m)$
 \end_inset
@@ -11266,7 +13394,7 @@ amsart - Das AMS-Standardformat für Artikel.
 \end_layout
 
 \begin_layout Enumerate
-amsart-seq - Hier ist die Nummerierung unabhängig vom Abschnitt und wird
+amsart-seq -- Hier ist die Nummerierung unabhängig vom Abschnitt und wird
  für jeden Typ von Aussage getrennt geführt.
  Einige öfters benötigte Typen (nicht alle) stehen ebenfalls in einer nichtnumme
 rierten Form zur Verfügung, die durch einen Stern am Ende des Namens gekennzeich
@@ -11274,7 +13402,7 @@ net ist.
 \end_layout
 
 \begin_layout Enumerate
-amsbook - Das AMS-Standardformat für Bücher (oder besser Monographien).
+amsbook -- Das AMS-Standardformat für Bücher (oder besser Monographien).
  Die Nummerierung erfolgt ähnlich wie bei amsart, allerdings umfasst die
  Nummerierung drei Ziffern, 
 \begin_inset Formula $(n,m,p)$
@@ -11306,8 +13434,9 @@ Dies ist eine umfangreiche Aufzählung der Umgebungstypen, die von den Formaten
  der AMS-Klasse bereitgestellt werden.
  AMS-LaTeX selber bietet die Möglichkeit, eine Unzahl derartiger Typen selber
  für eigene Zwecke zu definieren.
- Die hier realisierte Auswahl entspricht den Empfehlungen der AMS.
- Zusätzlich zu den normalen LyX-Typen wie 
+ Die hier realisierte Auswahl entspricht den Empfehlungen der AMS\SpecialChar \@.
+ Zusätzlich
+ zu den normalen LyX-Typen wie 
 \family sans
 Abschnitt
 \family default
@@ -11567,7 +13696,12 @@ Case
 \family sans
 Case
 \family default
- hat sein eigenes, unabhängiges Nummerierungsschema.
+ hat sein eigenes, unabhängiges Num\SpecialChar \-
+me\SpecialChar \-
+rie\SpecialChar \-
+rungs\SpecialChar \-
+sche\SpecialChar \-
+ma.
 \end_layout
 
 \begin_layout Description
@@ -11719,10 +13853,7 @@ LyXDir/templates
 \family default
  (
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
@@ -11733,10 +13864,7 @@ von
 \InsetSpace ~
 
 \family sans
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
 , 
@@ -11796,7 +13924,9 @@ Dieser Abschnitt beschreibt, wie man mit LyX Artikel für die Veröffentlichung
 \emph on
 Astronomy & Astrophysics
 \emph default
- (
+
+\newline
+(
 \begin_inset LatexCommand url
 target "http://www.edpsciences.fr/aa/"
 
@@ -11886,15 +14016,8 @@ Der Anfang
 \begin_layout Standard
 Sie beginnen ein neues Dokument über den Menüpunkt 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-N
-\bar default
-eu\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Neu\SpecialChar \ldots{}
 
 \family default
 \InsetSpace \space{}
@@ -11904,17 +14027,10 @@ Strg+N
 \family default
 ) oder 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu\InsetSpace ~
 von\InsetSpace ~
-
-\bar under
-V
-\bar default
-or\SpecialChar \-
+Vor\SpecialChar \-
 la\SpecialChar \-
 ge\SpecialChar \ldots{}
 \InsetSpace \space{}
@@ -12084,15 +14200,8 @@ maketitle
 Wenn Sie im Titelblock Fußnoten verwenden wollen, zum Beispiel um Ihre gegenwärt
 ige Adresse anzugeben, können Sie dazu die normale Fußnote 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-ußnote
+Einfügen\SpecialChar \menuseparator
+Fußnote
 \family default
  verwenden.
  LyX verwendet dann automatisch die in diesem Fall korrekte LaTeX-Form 
@@ -12470,15 +14579,8 @@ Benutzerhandbuch
  sollten.
  Verwenden Sie dazu die Einstellungsmöglichkeit im Menü 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-bsatz-Einstellungen (
+Bearbeiten\SpecialChar \menuseparator
+Absatz-Einstellungen (
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.xpm
 	scale 70
@@ -12498,15 +14600,8 @@ hrift neben dem Bild dar.
 \begin_layout Enumerate
 Erzeugen Sie eine breite Gleitabbildung: 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-Gleit
-\bar under
-o
-\bar default
-bjekt\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
+Gleitobjekt\SpecialChar \menuseparator
 Abbildung.
 \end_layout
 
@@ -12525,15 +14620,8 @@ Eingabe,
 \begin_layout Enumerate
 Fügen Sie die Abbildung ein: 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-rafik
+Einfügen\SpecialChar \menuseparator
+Grafik
 \family default
 \SpecialChar \ldots{}
  Die Abbildung sollte auf eine Breite von 12
@@ -12547,18 +14635,10 @@ cm skaliert werden.
 Positionieren Sie den Cursor hinter die Abbildung und fügen Sie einen horizontal
 en Leerraum ein: 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-esondere\InsetSpace ~
+Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-Variabler\InsetSpace ~
-horiz.\InsetSpace ~
+Variabler\InsetSpace \space{}
+horiz.\InsetSpace \space{}
 Abstand
 \family default
 .
@@ -12621,16 +14701,15 @@ referee
  Verwenden Sie hierzu im Menü 
 \family sans
 Dokument-Einstellungen\SpecialChar \menuseparator
-Dokument\SpecialChar \-
+Do\SpecialChar \-
+ku\SpecialChar \-
+ment\SpecialChar \-
 klas\SpecialChar \-
 se,
 \family default
  Feld 
 \family sans
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
 :, und geben Sie dort das Wort 
 \family typewriter
@@ -12647,35 +14726,14 @@ Der Beispielartikel
 Im Verzeichnis Beispiele, in das Sie über den entsprechenden Knopf im Dialog
  
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-Ö
-\bar under
-f
-\bar default
-fnen\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Öffnen\SpecialChar \ldots{}
 
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-""
-\end_layout
-
-\end_inset
-
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-B
-\bar default
-eispiele
+Beispiele
 \family default
  gelangen, finden Sie einen Artikel für dieses Format (
 \family typewriter
@@ -12781,17 +14839,10 @@ Einen neuen Artikel beginnen
 Es ist sehr ratsam, mit der beigefügten Vorlagedatei zu beginnen.
  Klicken Sie dazu auf 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-Neu\InsetSpace ~
-von
-\bar under
-\InsetSpace ~
-V
-\bar default
-orlage
+Datei\SpecialChar \menuseparator
+Neu\InsetSpace \space{}
+von\InsetSpace \space{}
+Vorlage
 \family default
 \SpecialChar \ldots{}
 , geben Sie einen Dateinamen ein und wählen Sie dann 
@@ -12832,27 +14883,19 @@ Der Abschluss eines Artikels
 
 \begin_layout Standard
 Wenn das Dokument zu Ihrer Zufriedenheit erstellt ist und einwandfrei in
- der Vorschau betrachtet und ausgedruckt werden kann, sind einige Nachbearbeitun
-gsschritte notwendig, bevor der Text eingereicht werden kann.
+ der Vor\SpecialChar \-
+schau betrachtet und ausgedruckt werden kann, sind einige Nachbearbeitun
+gsschritte not\SpecialChar \-
+wen\SpecialChar \-
+dig, bevor der Text eingereicht werden kann.
 \end_layout
 
 \begin_layout Enumerate
 Exportieren Sie den Text als LaTeX-Datei (
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -12892,7 +14935,8 @@ Entfernen Sie (falls vorhanden) die Zeile
 \family typewriter
 
 \backslash
-usepackage...{fontenc}
+usepackage\SpecialChar \ldots{}
+{fontenc}
 \family default
  (normalerweise direkt nach 
 \family typewriter
@@ -13184,22 +15228,12 @@ flushrt
  (3.4).
  Tragen Sie sie einfach im Feld 
 \family sans
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
  in 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Dokumentformat
 \family default
@@ -13224,6 +15258,16 @@ end{sloppypar}
 
 \begin_layout Subsubsection
 Dinge, die funktionieren, jedoch zusätzlicher Hinweise bedürfen
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+Dinge, die funktionieren
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -13393,15 +15437,8 @@ figcaption
  (2.14.2) -- Sie können ein optionales Dateinamen-Argument einfügen, indem
  Sie den Cursor am Textanfang platzieren und 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-K
-\bar default
-urztitel
+Einfügen\SpecialChar \menuseparator
+Kurztitel
 \family default
  auswählen.
  
@@ -13640,15 +15677,8 @@ deluxtable
  wirklich verwenden wollen, legen Sie die Tabelle mit einem normalen Editor
  als Datei an und fügen Sie diese über den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-atei
+Einfügen\SpecialChar \menuseparator
+Datei
 \family default
  in Ihre LyX-Datei ein.
  In der Datei 
@@ -13752,16 +15782,9 @@ target "~/.lyx/layouts"
 \begin_layout Enumerate
 Rekonfigurieren Sie LyX mit 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar \menuseparator
 Neu\InsetSpace ~
-k
-\bar under
-o
-\bar default
-nfigurieren
+konfigurieren
 \family default
  und starten Sie LyX dann neu.
 \end_layout
@@ -13770,22 +15793,13 @@ nfigurieren
 Öffnen Sie eine neue Datei (nicht mit Vorlagedatei).
  Erscheint AASTeX als Auswahloption in 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Dokumentklasse\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-okumentklasse
+Dokument\SpecialChar \-
+klas\SpecialChar \-
+se
 \family default
 ?
 \end_layout
@@ -13823,15 +15837,8 @@ LyX versucht standardmäßig, die Über/Unterschriften von Tabellen zu zentriere
  Dies verursacht scheinbar Probleme im Zusammenhang mit AASTeX, Sie sollten
  deshalb für diese Abschnitte in 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-bsatz
+Bearbeiten\SpecialChar \menuseparator
+Absatz
 \family default
 -
 \family sans
@@ -13979,7 +15986,13 @@ Ihre Erfahrung mag eine andere sein.
 \end_layout
 
 \begin_layout Section
-ijmpd
+qijmpc
+\begin_inset LatexCommand index
+name "qijmpc"
+
+\end_inset
+
+ und ijmpd
 \begin_inset LatexCommand index
 name "Dokumentenklasse!ijmpd"
 
@@ -13996,6 +16009,57 @@ Panayotis Papasotiriou
 
 \begin_layout Subsection
 Überblick
+\end_layout
+
+\begin_layout Standard
+The ijmpc package is a set of macros that facilitates electronic manuscript
+ submission to the 
+\emph on
+International Journal of Modern Physics C
+\emph default
+.
+ Similarly, the ijmpd package is for creating manuscripts to be submitted
+ to the 
+\emph on
+International Journal of Modern Physics D
+\emph default
+.
+ Both journals are published by World Scientific.
+ The corresponding document classes are named 
+\family typewriter
+ws-ijmpc.cls
+\family default
+ and 
+\family typewriter
+ws-ijmpd.cls
+\family default
+, respectively.
+ These files, together with instructions for the authors, can be downloaded
+ from the sites 
+\begin_inset LatexCommand url
+target "http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml"
+
+\end_inset
+
+ and 
+\begin_inset LatexCommand url
+target "http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml"
+
+\end_inset
+
+.
+ Both packages are modified versions of the standard 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ package, and they are almost (but not exactly) identical.
+ Most of their features are supported by LyX.
+ I have used LyX successfully to write articles submitted to both journals
+ without any problem.
 \end_layout
 
 \begin_layout Standard
@@ -14028,25 +16092,412 @@ Ein Papier schreiben
 \end_layout
 
 \begin_layout Standard
+As usual, the easiest way to write a paper is to start with a template.
+ Click on 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
+New from
+\family default
+ 
+\family sans
+\bar under
+T
+\bar default
+emplate
+\family default
+, then choose the 
+\family typewriter
+ijmpc.lyx
+\family default
+ or 
+\family typewriter
+ijmpd.lyx
+\family default
+ template.
+ This will give an (almost) empty document that includes the most common
+ fields found in a manuscript.
+ Simply overwrite the existing text (including the brackets, 
+\family typewriter
+<>
+\family default
+) with your text.
+ You should keep in mind the following remarks.
+\end_layout
+
+\begin_layout Enumerate
+LyX won't let you change the font size and the page style of the document,
+ because such modifications are not allowed by both packages.
+\end_layout
+
+\begin_layout Enumerate
+The language of the document should not be changed.
+ Before previewing your paper, be sure that the babel package is not used.
+ To do this, click on 
+\family sans
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references
+\family default
+, select the 
+\family sans
+Lang Opts
+\family default
+ tab, deselect the 
+\family sans
+\bar under
+U
+\bar default
+se babel
+\family default
+ checkbox in the language settings, and click on 
+\family sans
+\bar under
+A
+\bar default
+pply
+\family default
+ (or 
+\family sans
+Save
+\family default
+, if you wish to make this change permanent).
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Keywords
+\begin_inset Quotes erd
+\end_inset
+
+ style must be used to define keywords.
+\end_layout
+
+\begin_layout Enumerate
+The ijmpc package provides a style named 
+\begin_inset Quotes eld
+\end_inset
+
+Classification Codes
+\begin_inset Quotes erd
+\end_inset
+
+, which can be used to define classification codes, such as PACS numbers.
+ Note that this facility is not supported by the ijmpd package.
+\end_layout
+
+\begin_layout Enumerate
+Several new environments are available: 
+\begin_inset Quotes eld
+\end_inset
+
+Definition
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Step
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Example
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Remark
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Notation
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Theorem
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Proof
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Corollary
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Lemma
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Proposition
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Prop
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Claim
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+Conjecture
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Their use is more or less obvious.
+ LyX supports all these environments; it will use the proper label, text
+ style, and numbering scheme for each of them.
+\end_layout
+
+\begin_layout Enumerate
+Both packages use basic citations; the natbib package should not be used.
+ In LyX, citation references are shown as usual; in the output, citations
+ are shown as superscripts.
+ If you want to use a citation as normal text, you should use the 
+\family typewriter
+refcite
+\family default
+ command, e.\InsetSpace \thinspace{}
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+See Ref.\InsetSpace ~
+
+\family typewriter
+
+\backslash
+refcite{key}
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+There is no 
+\begin_inset Quotes eld
+\end_inset
+
+Acknowledgments
+\begin_inset Quotes erd
+\end_inset
+
+ section in both packages.
+ To put acknowledgments, just use the 
+\begin_inset Quotes eld
+\end_inset
+
+Section*
+\begin_inset Quotes erd
+\end_inset
+
+ environment.
+\end_layout
+
+\begin_layout Enumerate
+Appendices may be added to the paper, 
+\emph on
+after
+\emph default
+ the Acknowledgments and 
+\shape italic
+before
+\shape default
+ the References.
+ LyX provides a special environment, called 
+\begin_inset Quotes eld
+\end_inset
+
+Appendices Section
+\begin_inset Quotes erd
+\end_inset
+
+ which marks the beginning of the appendices.
+ This environment should be left blank; it just sends a LaTeX command, but
+ nothing is really printed.
+ In LyX, the word 
+\begin_inset Quotes eld
+\end_inset
+
+Appendix
+\begin_inset Quotes erd
+\end_inset
+
+ is printed with blue letters, as a signal that all sections after that
+ point are appendices.
+ To write an appendix, use the 
+\begin_inset Quotes eld
+\end_inset
+
+Appendix
+\begin_inset Quotes erd
+\end_inset
+
+ environment.
+ LyX will number each appendix with capital letters, as required by both
+ journals.
+ Note that 
+\begin_inset Quotes eld
+\end_inset
+
+Appendices Section
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+must
+\emph default
+ be present before the first appendix; if not, all appendices will be numbered
+ as normal sections in the output.
+\end_layout
+
+\begin_layout Enumerate
+The ijmpc and the ijmpd packages use the 
+\family typewriter
+tbl
+\family default
+ command to implement table captions.
+ As a result, a table created by LyX is printed correctly, but its caption
+ is ignored.
+ However, you can use some ERT to overpass this problem, so that captions
+ are printed as expected.
+ To do so, create a float table as usual, remove the caption, and replace
+ it with the ERT 
+\family typewriter
+
+\backslash
+tbl{
+\emph on
+your table caption
+\emph default
+}{
+\family default
+ (sic); you must also the ERT 
+\family typewriter
+}
+\family default
+ immediately after the tabular material.
+ Study the example table included in the template files to see how this
+ trick is implemented.
+ Alternatively, If you need table captions, you should implement the whole
+ table float in a 
+\family typewriter
+.tex
+\family default
+ file, then include this file to the LyX document (
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar \menuseparator
+Fil
+\bar under
+e
+\bar default
+\SpecialChar \menuseparator
+Chil
+\bar under
+d
+\bar default
+\InsetSpace ~
+Document
+\family default
+).
+ Details on how to create a table float can be found in the files 
+\family typewriter
+ws-ijmpc.tex
+\family default
+ and 
+\family typewriter
+ws-ijmpd.tex
+\family default
+, included in the corresponding packages.
+\end_layout
+
+\begin_layout Standard
 Der einfachste Weg, ein Papier zu schreiben, ist mit einer Vorlagendatei
  anzufangen.
  Klicken Sie auf 
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
 Neu\InsetSpace ~
 von\InsetSpace ~
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
 \InsetSpace ~
@@ -14073,22 +16524,11 @@ Das ijmpd-Paket verlangt, dass die Dokumentsprache nicht geändert wird.
  Bevor Sie Ihr Papier in der Druckansicht ansehen, überzeugen Sie sich,
  dass das Babel-Paket nicht benutzt wird: deaktivieren Sie 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \menuseparator
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Sprach-Einstellungen\SpecialChar \menuseparator
 Sprache\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-abel\InsetSpace ~
+Babel\InsetSpace ~
 verwenden.
 \end_layout
 
@@ -14127,12 +16567,8 @@ Das ijmpd-Paket behandelt Tabellenbeschriftungen ganz anders als LyX.
 -Datei einbauen und dann diese Datei in das LyX-Dokument importieren (
 \family sans
 Einfügen\SpecialChar \menuseparator
-Datei\InsetSpace ~
-ein
-\bar under
-b
-\bar default
-inden
+Datei\InsetSpace \space{}
+einbinden
 \family default
 \SpecialChar \ldots{}
  ).
@@ -14149,28 +16585,101 @@ Ein Papier zum Versenden vorbereiten
 \end_layout
 
 \begin_layout Standard
-Bevor Sie Ihr Papier versenden, müssen Sie es als LaTeX-Datei (
+Before you submit your paper you must export the LyX document as a LaTeX
+ file (
 \family sans
 \bar under
-D
+F
 \bar default
-atei
-\family default
-\SpecialChar \menuseparator
+ile\SpecialChar \menuseparator
 
-\family sans
 \bar under
 E
 \bar default
-xportieren
+xport\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+a
+\family default
+T
+\family sans
+eX
+\family default
+)
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Actually you have the choice between LaTeX (plain) and pdflatex.
+ If you intend to use pdflatex to prepare the paper, you should use the
+ pdflatex option so that included graphics are converted to PDF format,
+ ready for use by pdflatex.
+\end_layout
+
+\end_inset
+
+, then make the following changes to the resulting 
+\family typewriter
+.tex
+\family default
+ file.
+\end_layout
+
+\begin_layout Enumerate
+Remove the comment lines before the 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+ command.
+\end_layout
+
+\begin_layout Enumerate
+Remove everything between (and including) the 
+\family typewriter
+
+\backslash
+makeatletter
+\family default
+ and 
+\family typewriter
+
+\backslash
+makeatother
+\family default
+ commands, except for any commands you specifically put into the LaTeX preamble.
+\end_layout
+
+\begin_layout Standard
+The modified 
+\family typewriter
+.tex
+\family default
+ file should be saved and processed through LaTeX as many times as necessary.
+ You may also want to check the resulting 
+\family typewriter
+.dvi
+\family default
+ document.
+\end_layout
+
+\begin_layout Standard
+Bevor Sie Ihr Papier versenden, müssen Sie es als LaTeX-Datei (
+\family sans
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-L
-\bar default
-aTe
+Exportieren
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -14226,6 +16735,35 @@ Die geänderte
 .dvi
 \family default
 -Dokument ansehen.
+\end_layout
+
+\begin_layout Subsection
+Use of ERT
+\end_layout
+
+\begin_layout Standard
+The use of ERT is reduced to two commands, which must be placed at the top
+ of the document.
+ If you started writing your paper by using the 
+\family typewriter
+ijmpc.lyx
+\family default
+ or the 
+\family typewriter
+ijmpd.lyx
+\family default
+ template, the ERT needed is already in its place; you usually don't need
+ to delete it.
+ You may only modify the first ERT to specify the information printed to
+ the top of odd and even pages (authors' names and short paper's title,
+ respectively).
+ This ERT must have the form 
+\family typewriter
+
+\backslash
+markboth{Authors' Names}{Short Paper's Title}
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -14305,21 +16843,14 @@ Der einfachste Weg, ein Papier zu schreiben, ist mit einer Vorlagendatei
  anzufangen.
  Klicken Sie auf 
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
 Neu\InsetSpace ~
 von\InsetSpace ~
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
 \InsetSpace ~
@@ -14351,26 +16882,17 @@ nachbearbeiten
 \begin_layout Enumerate
 Exportieren Sie Ihr Papier als LaTeX-Datei (
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-xportieren
+Exportieren
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-L
-\bar default
-aTe
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -14572,7 +17094,7 @@ Die Vorlage
 kluwer.lyx
 \family default
  passt auf all diese Besonderheiten auf.
- Wenn Sie ein neues Papier mit dieser vorlage beginnen, müssen Sie nichts
+ Wenn Sie ein neues Papier mit dieser Vorlage beginnen, müssen Sie nichts
  Besonderes machen.
 \end_layout
 
@@ -14643,18 +17165,7 @@ scrartcl.cls
 , 
 \family typewriter
 scr\SpecialChar \-
-reprt.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-""
-\end_layout
-
-\end_inset
-
-cls
+reprt.cls
 \family default
 , 
 \family typewriter
@@ -14768,18 +17279,11 @@ Kapitel
  modifiziert werden (in LyX einzugeben im Feld 
 \family sans
 Weitere\InsetSpace ~
-
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
  (???) des Menüfensters 
 \family sans
-\bar under
-D
-\bar default
-okument-Einstellungen
+Dokument-Einstellungen
 \family default
 \SpecialChar \menuseparator
 (???)).
@@ -14792,8 +17296,13 @@ scrguide
 \end_layout
 
 \begin_layout Itemize
-Hauptsächliches Mittel der Koma-Script-Dokumentenklassen für die Satzspiegelgest
-altung ist die Benutzung der Optionen 
+Hauptsächliches Mittel der Koma-Script-Dokumentenklassen für die Satz\SpecialChar \-
+spie\SpecialChar \-
+gel\SpecialChar \-
+ge\SpecialChar \-
+st
+al\SpecialChar \-
+tung ist die Benutzung der Optionen 
 \family sans
 BCOR
 \family default
@@ -14801,12 +17310,12 @@ BCOR
 \family sans
 DIV
 \family default
- (in LyX einzugeben im Feld 
+ (in LyX ein\SpecialChar \-
+zu\SpecialChar \-
+ge\SpecialChar \-
+ben im Feld 
 \family sans
-\bar under
-D
-\bar default
-oku\SpecialChar \-
+Doku\SpecialChar \-
 ment-Einstellungen\SpecialChar \menuseparator
 
 \family default
@@ -14814,10 +17323,7 @@ ment-Einstellungen\SpecialChar \menuseparator
  Sie ermöglichen eine klarere Modifikation von Seitenrändern als die Optionen
  im Menüfenster 
 \family sans
-\bar under
-D
-\bar default
-oku\SpecialChar \-
+Doku\SpecialChar \-
 ment-Einstellungen\SpecialChar \menuseparator
 Seitenränder
 \family default
@@ -14829,13 +17335,19 @@ tion
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/koma-script/scrguide.pdf).
+ (zum Beispiel /usr/share/texmf/doc/latex/koma-script/scrguide.
+ pdf).
 \end_layout
 
 \begin_layout Itemize
 Die LaTeX-Dokumentenklassen der Koma-Script-Familie definieren eine Reihe
  zusätzlicher Befehle.
- Der für LyX sinnvolle Teil davon ist in den LyX-Dokumentenklassen in entspreche
+ Der für LyX sinnvolle Teil davon ist in den LyX-Do\SpecialChar \-
+ku\SpecialChar \-
+men\SpecialChar \-
+ten\SpecialChar \-
+klas\SpecialChar \-
+sen in entspreche
 nden Absatztypen umgesetzt.
 \end_layout
 
@@ -14845,7 +17357,9 @@ Eine ausführliche deutsche Beschreibung der LaTeX-Dokumentenklassen der
 \emph on
 scrguide
 \emph default
- (zum Beispiel 
+ (zum Beispiel
+\newline
+
 \begin_inset LatexCommand url
 target "/usr/share/texmf/doc/latex/koma-script/scrguide.pdf"
 
@@ -14872,7 +17386,7 @@ klassen relevant sind.
 \end_layout
 
 \begin_layout Subsection
-article (koma-script), report (koma-script) und book (koma-script)
+article, report und book
 \end_layout
 
 \begin_layout Standard
@@ -15073,7 +17587,9 @@ Oben
 Legende\InsetSpace ~
 Unten
 \family default
- sind spezielle Legenden, die die unterschiedlichen Abstände berücksichtigen,
+ sind spezielle Legenden, die die unterschied\SpecialChar \-
+li\SpecialChar \-
+chen Abstände berücksichtigen,
  welche Über- und Unterschriften benötigen (Überschriften verwendet man
  vor allem bei Tabellen; dies wird von der Typografie auch empfohlen).
  Alternativ kann man die Klassenoption 
@@ -15396,7 +17912,10 @@ letter (koma-script)
 scrlettr.layout
 \family default
  implementiert.
- Sie enthält sämtliche, teilweise modifizierten, Absatztypen der entsprechenden
+ Sie enthält sämtliche, teilweise modifizierten, Absatztypen der ent\SpecialChar \-
+spre\SpecialChar \-
+chen\SpecialChar \-
+den
  Standard-Doku\SpecialChar \-
 mentenklasse 
 \family sans
@@ -15468,10 +17987,7 @@ Gedicht
 Das Aussehen des durch diese Dokumentenklasse erzeugten Briefes kann durch
  eine Reihe von LaTeX-Befehlen (in LyX einzugeben in 
 \family sans
-\bar under
-D
-\bar default
-okument-Einstellungen\SpecialChar \menuseparator
+Dokument-Einstellungen\SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
 status collapsed
@@ -15522,7 +18038,7 @@ fromname
 \backslash
 ignorespaces 
 \backslash
-fromaddress}} 
+fromaddress}}
 \end_layout
 
 \begin_layout LyX-Code
@@ -15777,7 +18293,9 @@ Der eingegebene Wert des
 Telefon
 \family default
 -Typs wird standardmäßig im erzeugten Brief überhaupt nicht angezeigt.
- Auf die Möglichkeiten zur freien Gestaltung des Briefkopfes wurde oben
+ Auf die Möglichkeiten zur freien Gestaltung des Brief\SpecialChar \-
+kop\SpecialChar \-
+fes wurde oben
  in einer Fußnote bereits hingewiesen.
 \end_layout
 
@@ -16130,15 +18648,8 @@ Logo
 \family default
 , welche ein Bild für den Briefkopf (mit Hilfe von 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-rafik
+Einfügen\SpecialChar \menuseparator
+Grafik
 \family default
 \SpecialChar \ldots{}
 ) entgegennimmt.
@@ -16149,15 +18660,8 @@ Der größte Vorteil der neuen Klasse ist jedoch ihre Flexibilität, denn das
  Format lässt sich an beinahe alle Bedürfnisse anpassen.
  Dies können Sie mit Hilfe des LaTeX-Vorspanns (
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
@@ -16188,22 +18692,11 @@ e emuliert.
  Will man die letztere laden, kann man einfach die Klassenoption KOMAold
  in 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Dokumentklasse\SpecialChar \menuseparator
-
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
  eingeben.
 \end_layout
@@ -16244,15 +18737,8 @@ letter
  Dafür sind keine speziellen LaTeX-Befehle nötig.
  Im Menüfenster 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-bsatz-Einstellungen
+Bearbeiten\SpecialChar \menuseparator
+Absatz-Einstellungen
 \family default
 \SpecialChar \ldots{}
 \InsetSpace \space{}
@@ -16270,10 +18756,7 @@ Absatztrennung
 \family default
  auf 
 \family sans
-\bar under
-E
-\bar default
-inrückung
+Einrückung
 \family default
 .
  Der Wert 
@@ -16309,14 +18792,28 @@ Beschreibung
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Dies sind Format-Dateien für einige Zeitschriftenformate, die vom Springer-Verla
-g verwendet und auf 
+g verwendet und auf\InsetSpace \space{}
+
 \begin_inset LatexCommand url
 target "http://www.springer.de/author/tex/help-journals.html"
 
 \end_inset
 
- aufgelistet werden, wo Sie auch die Klassen-Dateien bekommen sollten.
+ auf\SpecialChar \-
+gelistet werden, wo Sie auch die Klassen-Dateien bekommen sollten.
  Es ist ein modulares System: die allen Zeitschriften gemeinsamen Dinge
  sind in 
 \family typewriter
@@ -16329,6 +18826,19 @@ svjour.inc
 svjog.layout
 \family default
  für das Journal of Geodesy enthalten sein.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16379,8 +18889,8 @@ eladen haben, in ein geeignetes Verzeichnis, konfigurieren LaTeX im teTeX-Fall
 \family typewriter
 texhash
 \family default
-, wenn nötig als root -- kümmert sich LyX nicht darum?) und LyX neu, und
- es sollte funktionieren.
+, wenn nötig als root (kümmert sich LyX nicht darum?) und LyX neu, und es
+ sollte funktionieren.
 \end_layout
 
 \begin_layout Subsection
@@ -16521,7 +19031,9 @@ Beschreibung
 Dies sind die Formatdateien für einige Journale der American Geophysical
  Society.
  Es wird vorausgesetzt, dass Sie sowohl AGUs Klassendateien als auch AGUplus
- installiert haben (Sie finden beides unter 
+ installiert haben (Sie finden beides unter
+\newline
+
 \begin_inset LatexCommand url
 target "ftp://ftp.agu.org/journals/latex/journals"
 
@@ -16652,6 +19164,65 @@ aguplus.inc
  an.
 \end_layout
 
+\begin_layout Subsection
+Bugs and things to remember
+\end_layout
+
+\begin_layout Standard
+In order to use the new layouts, you must remember to do the following for
+ a new document:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Turn off babel
+\emph default
+.
+ This can be done in the 
+\family sans
+layout\SpecialChar \menuseparator
+document
+\family default
+ or 
+\family sans
+document\SpecialChar \menuseparator
+settings
+\family default
+ menu item.
+ (AGU articles are always in English, right? So 
+\emph on
+don't
+\emph default
+ choose a language.)
+\end_layout
+
+\begin_layout Enumerate
+Enter 
+\family typewriter
+jgrga
+\family default
+ into the document's 
+\family sans
+Extra Options
+\family default
+ field.
+ (Yes, this is a bug.)
+\end_layout
+
+\begin_layout Enumerate
+Make sure you use the 
+\family typewriter
+agu.bst
+\family default
+ bibliography style, by entering 
+\family sans
+agu
+\family default
+ into the second field of the BibTeX inset.
+ None of the standard styles will do.
+\end_layout
+
 \begin_layout Section
 EGS journals (egs)
 \begin_inset LatexCommand index
@@ -16738,7 +19309,7 @@ std*.inc
 \end_layout
 
 \begin_layout Section
-Folien mit slides (default) 
+Folien mit slides (default)
 \begin_inset LatexCommand label
 name "sec:slitex"
 
@@ -16845,15 +19416,8 @@ name "sec:Slidestart"
 \begin_layout Standard
 Als erstes müssen Sie im Dialogfeld 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Dokumentklasse
 \family default
@@ -16894,10 +19458,7 @@ slides
 \begin_layout Itemize
 Die möglichen Einstellungen im Feld 
 \family sans
-\bar under
-S
-\bar default
-eiten-Stil
+Seiten-Stil
 \family default
  des Dialogfensters 
 \family sans
@@ -16965,12 +19526,13 @@ slides
 clock
 \family default
 .
- Um sie zu verwenden, geben Sie ,,clock`` im Feld 
+ Um sie zu verwenden, geben Sie ,,clock
+\begin_inset Quotes grd
+\end_inset
+
+ im Feld 
 \family sans
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
  des Dialogfensters 
 \family sans
@@ -17003,17 +19565,10 @@ slides
 \family default
  zu erstellen (benutzen Sie dazu 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu\InsetSpace ~
 von\InsetSpace ~
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
 , um ein neues Dokument zu öffnen).
@@ -17822,7 +20377,7 @@ invisible \SpecialChar \ldots{}
 {
 \backslash
 visible \SpecialChar \ldots{}
-)
+}
 \end_layout
 
 \begin_layout Standard
@@ -17969,7 +20524,8 @@ Die Argumente für beide Befehle müssen in Sekunden angegeben werden.
 \family typewriter
 
 \backslash
-settime{}
+set\SpecialChar \-
+time{}
 \family default
  stellt die Zeitmarke auf den angegebenen Wert, 
 \family typewriter
@@ -18070,17 +20626,10 @@ Es existiert auch eine Vorlagedatei, die Sie als Grundgerüst für eigene
  Präsentationen verwenden können.
  Legen Sie dazu Ihre neue Datei über den Menüpunkt 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu\InsetSpace ~
 von\InsetSpace ~
-
-\bar under
-V
-\bar default
-orlage\SpecialChar \ldots{}
+Vorlage\SpecialChar \ldots{}
 
 \family default
 \InsetSpace \space{}
@@ -18329,7 +20878,8 @@ status collapsed
 
 X)
 \family default
- basiert auf der Version 2.1 der Klassendatei 
+ basiert auf der Version 2.1 der Klassen\SpecialChar \-
+datei 
 \family typewriter
 foils.cls
 \family default
@@ -18343,15 +20893,8 @@ Zu Beginn
 \begin_layout Standard
 Als erstes müssen Sie im Dialogfeld 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Dokumentklasse
 \family default
@@ -18471,10 +21014,7 @@ Gleitobjekt-Platzierung
 \begin_layout Itemize
 Die Einstellung 
 \family sans
-\bar under
-S
-\bar default
-eiten-Stil
+Seiten-Stil
 \family default
  weicht ein wenig vom normalen Verhalten ab.
  
@@ -18524,7 +21064,9 @@ immer
 \family sans
 empty
 \family default
- Keinerlei Seitennummerierung, Kopf- oder Fußzeilen außer Fußnoten, falls
+ Keinerlei Seitennummerierung, Kopf- oder Fußzeilen außer Fuß\SpecialChar \-
+no\SpecialChar \-
+ten, falls
  diese verwendet werden.
 \end_layout
 
@@ -18590,10 +21132,7 @@ Weitere Optionen
 \begin_layout Standard
 Die folgenden Optionen können Sie im Feld 
 \family sans
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
  im Menüfenster 
 \family sans
@@ -18910,7 +21449,8 @@ end{multicols}
 
 \begin_layout Standard
 \noindent
-Das umfasst alle wichtigen Umgebungstypen mit Ausnahme der diversen Abschnittsum
+Das umfasst alle wichtigen Umgebungstypen mit Ausnahme der diversen Abschnitts\SpecialChar \-
+um
 gebungen.
  Da Folien im Prinzip selber eine Art Aufteilung in Abschnitte mit Überschrift
  und Inhalt darstellen, gibt es für derartige Aufteilungen spezielle Befehle
@@ -19370,15 +21910,8 @@ Foils.lyx
 \family default
 , wenn Sie im Dialog 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-Ö
-\bar under
-f
-\bar default
-fnen\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Öffnen\SpecialChar \ldots{}
 
 \family default
  auf den Knopf 
@@ -19578,15 +22111,8 @@ X
  Originaltext stehen.
  Falls Sie die Platzierung der Gleitobjekte verändert haben (
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 
 \family default
 ), so wird dies ignoriert.
@@ -19772,8 +22298,9 @@ foilhead\SpecialChar \-
 skip
 \family default
  verändert werden.
- Um zum Beispiel alle Titel 1 Zentimeter näher an den Text heranzurücken,
- geben Sie im LaTeX-Vorspann folgenden Befehl ein:
+ Um zum Beispiel alle Titel 1\InsetSpace ~
+cm näher an den Text heranzurücken, geben Sie
+ im LaTeX-Vorspann folgenden Befehl ein:
 \end_layout
 
 \begin_layout Labeling
@@ -19907,6 +22434,18 @@ dateabstractskip
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Die letzte Einstellung beeinflusst alle Aufzählungsumgebungen.
  Wenn Sie den LaTeX-Befehl 
 \family typewriter
@@ -19931,6 +22470,19 @@ m zwischen den einzelnen Einträgen entfernt.
 setlength
 \family default
 -ähnlichen Dinge benötigt.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -19984,15 +22536,8 @@ LogoOn
 \begin_layout Standard
 Falls Sie in 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 
 \family default
 \InsetSpace \space{}
@@ -20608,7 +23153,9 @@ A
 
 \family default
 Wird automatisch nummeriert.
- Am Bildschirm in arabischen Ziffern, die gedruckte Version zeigt römische
+ Am Bildschirm in arabischen Ziffern, die ge\SpecialChar \-
+druck\SpecialChar \-
+te Version zeigt römische
  Ziffern.
 \end_layout
 
@@ -20658,7 +23205,9 @@ Eine besondere Form von
 \family sans
 Narrative
 \family default
-, die beschreibt, was beim Heben des Vorhanges geschieht.
+, die beschreibt, was beim Heben des Vor\SpecialChar \-
+han\SpecialChar \-
+ges geschieht.
 \end_layout
 
 \begin_layout Itemize
@@ -20861,7 +23410,9 @@ Installation
 \begin_layout Standard
 Alles was Sie tun müssen, ist das Paket gemäß der ihm beiliegenden README-Datei
  zu installieren.
- Das Paket selber finden Sie bei 
+ Das Paket selber finden Sie bei
+\newline
+
 \begin_inset LatexCommand url
 name "RevTeX 4 unter"
 target "http://publish.aps.org/revtex4/"
@@ -20934,22 +23485,12 @@ documentstyle
 \family default
  können Sie wie gewohnt in der Rubrik 
 \family sans
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
  in 
 \family sans
-\bar under
-D
-\bar default
-okument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen
+Dokument\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \InsetSpace \space{}
@@ -21113,7 +23654,10 @@ Email
 Titel
 \family default
  nicht verwenden können (es ist ein generelles Problem von LyX, dass für
- Gliederungsumgebungen keine optionalen Argumente angegeben werden können).
+ Gliederungsumgebungen keine optionalen Argumente an\SpecialChar \-
+ge\SpecialChar \-
+ge\SpecialChar \-
+ben werden können).
 \end_layout
 
 \begin_layout Standard
@@ -21396,6 +23940,469 @@ article
 -Dokumentenklasse benutzt.
  Für Einzelheiten, was Elsevier macht und was nicht, lesen Sie bitte ihre
  Dokumentation.
+\end_layout
+
+\begin_layout Section
+Memoir
+\end_layout
+
+\begin_layout Standard
+von 
+\noun on
+Jürgen Spitzmüller
+\end_layout
+
+\begin_layout Subsection
+Overview
+\end_layout
+
+\begin_layout Standard
+Memoir is a very powerful and constantly evolving class.
+ It has been designed with regard to fictional and non-fictional literature.
+ Its aim is to let the user have maximum control over the typesetting of
+ his document.
+ Memoir is based on the standard book class, but it can also emulate the
+ article class (see below).
+\end_layout
+
+\begin_layout Standard
+Peter Wilson, the developer of Memoir, is known as the author of lots of
+ useful packages in the LaTeX world.
+ Most of them have been merged with Memoir.
+ Therefore, it is much easier to layout the table of contents, appendices,
+ chapter designs and such.
+ LyX, though, does not support all of these goodies natively.
+ Some of them might be added to forthcoming releases
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+You are invited to send suggestions to 
+\begin_inset LatexCommand url
+target "lyx-devel@lists.lyx.org"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, lots will probably never, due to the limitations of LyX's framework.
+ Of course you can still use all features with the help of some native LaTeX
+ commands (ERT
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Inserting-LaTeX-Code"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+).
+ In this section, we can only list those features which are natively supported
+ by LyX.
+ For detailed descriptions (and for the rest of features) we are recommending
+ to have a look at the detailed manual of the Memoir class
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset LatexCommand url
+target "CTAN:/macros/latex/memoir/memman.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, which is not only a user guide for the class, but also both a comprehensive
+ description on good typesetting and a superb example for good typesetting
+ itself.
+\end_layout
+
+\begin_layout Subsection
+Basic features and restrictions
+\end_layout
+
+\begin_layout Standard
+Memoir supports basically all features of the standard book classes.
+ There are, however, some differences, as follows:
+\end_layout
+
+\begin_layout Description
+Font\InsetSpace ~
+sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14,
+ 17
+\end_layout
+
+\begin_layout Description
+Page\InsetSpace ~
+style: The fancy page style is not supported, due to a command clash
+ between Memoir and the fancyhdr package (they are both defining a command
+ with the same name, which confuses LaTeX).
+ Instead, Memoir comes with a bunch of own page styles (see 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Page\InsetSpace ~
+Style
+\family default
+).
+ If you want to use these for the chapter pages, you have to use the command
+ 
+\family typewriter
+
+\backslash
+chapterstyle
+\family default
+ in the main text or in preamble (e.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+,
+\end_layout
+
+\end_inset
+
+g.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+
+\backslash
+chapterstyle{companion}
+\family default
+).
+\end_layout
+
+\begin_layout Description
+Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
+ an optional argument in the standard classes.
+ With this, you can specify an alternative version of the title for the
+ table of contents and the headers (for instance, if the title is too long).
+ In LyX, you can do this via 
+\family sans
+Insert\SpecialChar \menuseparator
+Short\InsetSpace ~
+Title
+\family default
+ at the beginning of a chapter/section.
+ Memoir features a second optional argument and thus separates the table
+ of contents from the header.
+ You can define three variants of a title with this: one for the main text,
+ one for the table of contents, and one for the headers.
+ Simply insert two optional arguments if you need this feature, the first
+ one containing the short title for the Table of Contents, the second one
+ containing an alternative short title for the headers.
+\end_layout
+
+\begin_layout Description
+TOC/LOT/LOF: In the standard classes (and in many other classes), the table
+ of contents, the list of figures and the list of table start a new page
+ automatically.
+ Memoir does not follow this route.
+ You have to insert a page break yourself, if you want to have one.
+\end_layout
+
+\begin_layout Description
+Titlepage: For some unknown reason, Memoir uses pagination on the title
+ page (in the standard classes, title pages are 
+\begin_inset Quotes eld
+\end_inset
+
+empty
+\begin_inset Quotes erd
+\end_inset
+
+, i.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+,
+\end_layout
+
+\end_inset
+
+e.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+without pagina).
+ If you want an empty title page, type 
+\family typewriter
+
+\backslash
+aliaspagestyle{title}{empty}
+\family default
+ in the preamble.
+\end_layout
+
+\begin_layout Description
+Article: With the class option 
+\emph on
+article
+\emph default
+ (to be inserted in 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Extra\InsetSpace ~
+Options
+\family default
+), you can emulate article style.
+ That is, counters (footnotes, figures, tables etc.) will not be reset on
+ new chapters, chapters don't start a new page (but are---in contrary to
+ 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ article classes---still allowed), parts, though, use their own page, as
+ in book.
+\end_layout
+
+\begin_layout Description
+Oldfontcommands: By default, Memoir does not allow the use of the deprecated
+ font commands, which have been used in the old LaTeX version 2.09 (e.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+,
+\end_layout
+
+\end_inset
+
+g.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+
+\backslash
+rm
+\family default
+, 
+\family typewriter
+
+\backslash
+it
+\family default
+).
+ It produces an error and stops LaTeX whenever such a command appears.
+ The class option 
+\emph on
+oldfontcommands
+\emph default
+ reallows the commands and spits out warnings instead (which does at least
+ not stop LaTeX).
+ Since a lot of packages and particularly BibTeX style files are still using
+ those commands, we have decided to use this option by default.
+\end_layout
+
+\begin_layout Subsection
+Extra features
+\end_layout
+
+\begin_layout Standard
+We will only describe the features supported by LyX (which is not much currently
+).
+ Please consult the Memoir manual
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset LatexCommand url
+target "CTAN:/macros/latex/memoir/memman.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Description
+Abstract: You may wonder why an abstract is an extra feature.
+ Well, it is in book class.
+ Usually books don't have abstracts.
+ Memoir, however, has.
+ You can use it wherever and how often you like.
+\end_layout
+
+\begin_layout Description
+Chapterprecis: You may know this from belletristic: The contents of a chapter
+ is shortly described below the title and also in the table of contents
+ (e.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+,
+\end_layout
+
+\end_inset
+
+g.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\emph on
+Our hero arrives in Troia; he loses some friends; he finds others
+\emph default
+).
+ Chapterprecis does exactly this.
+ It is therefore only sensible below a chapter.
+\end_layout
+
+\begin_layout Description
+Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
+ The epigraph environment provides an elegant way of typesetting such a
+ motto.
+ The motto itself (text) and its author (source) are divided by a short
+ line.
+ Unfortunately, we have to fool LyX a bit here again, since the environment
+ needs two arguments (text and source).
+ In this case, we have to use curly brackets (in TeX mode) between the two
+ arguments: 
+\emph on
+<smart slogan>
+\emph default
+ 
+\family typewriter
+}{
+\family default
+ 
+\emph on
+<author of the slogan>.
+\end_layout
+
+\begin_layout Description
+Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
+ complex figurative poems).
+ LyX can only support a few of them.
+ One is poemtitle, which is a centered title for poems, which will also
+ be added to the table of contents (verse is the standard environment for
+ poems.
+ Memoir has some enhanced versions of verse, but you need to use ERT, because
+ they have to be nested inside regular verse environments, which is not
+ possible with LyX).
+\end_layout
+
+\begin_layout Description
+Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 \end_layout
 
 \begin_layout Standard
