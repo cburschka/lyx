@@ -46,24 +46,24 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 
 	/// order of movement through the cells when pressing the left key
-	bool idxLeft(LCursor &) const;
+	bool idxLeft(Cursor &) const;
 	/// order of movement through the cells when pressing the right key
-	bool idxRight(LCursor &) const;
+	bool idxRight(Cursor &) const;
 
 	/// move one physical cell up
-	bool idxNext(LCursor &) const;
+	bool idxNext(Cursor &) const;
 	/// move one physical cell down
-	bool idxPrev(LCursor &) const;
+	bool idxPrev(Cursor &) const;
 
 	/// target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(LCursor &) const;
+	bool idxFirst(Cursor &) const;
 	/// target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(LCursor &) const;
+	bool idxLast(Cursor &) const;
 
 	/// number of cells currently governed by us
 	idx_type nargs() const;
@@ -72,7 +72,7 @@ public:
 	/// access to the lock
 	void lock(bool);
 	/// get notification when the cursor leaves this inset
-	bool notifyCursorLeaves(LCursor & cur);
+	bool notifyCursorLeaves(Cursor & cur);
 
 	/// direct access to the cell.
 	/// inlined because shows in profile.
@@ -106,38 +106,38 @@ public:
 
 protected:
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
-	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 	///
-	void handleFont(LCursor & cur,
+	void handleFont(Cursor & cur,
 		docstring const & arg, docstring const & font);
-	void handleFont(LCursor & cur,
+	void handleFont(Cursor & cur,
 		docstring const & arg, char const * const font);
 	///
-	void handleFont2(LCursor & cur, docstring const & arg);
+	void handleFont2(Cursor & cur, docstring const & arg);
 
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.
-	bool interpretChar(LCursor & cur, char_type c);
+	bool interpretChar(Cursor & cur, char_type c);
 	///
-	bool script(LCursor & cur, bool,
+	bool script(Cursor & cur, bool,
 		docstring const & save_selection = docstring());
 
 public:
 	/// interpret \p str and insert the result at the current position of
 	/// \p cur if it is something known. Return whether \p cur was
 	/// inserted.
-	bool interpretString(LCursor & cur, docstring const & str);
+	bool interpretString(Cursor & cur, docstring const & str);
 
 private:
 	/// lfun handler
-	void lfunMousePress(LCursor &, FuncRequest &);
+	void lfunMousePress(Cursor &, FuncRequest &);
 	///
-	void lfunMouseRelease(LCursor &, FuncRequest &);
+	void lfunMouseRelease(Cursor &, FuncRequest &);
 	///
-	void lfunMouseMotion(LCursor &, FuncRequest &);
+	void lfunMouseMotion(Cursor &, FuncRequest &);
 
 protected:
 	/// we store the cells in a vector

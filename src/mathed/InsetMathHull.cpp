@@ -35,7 +35,7 @@
 #include "FuncStatus.h"
 #include "LColor.h"
 #include "LaTeXFeatures.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -208,7 +208,7 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 }
 
 
-InsetBase * InsetMathHull::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetMathHull::editXY(Cursor & cur, int x, int y)
 {
 	if (use_preview_) {
 		edit(cur, true);
@@ -227,7 +227,7 @@ InsetMath::mode_type InsetMathHull::currentMode() const
 }
 
 
-bool InsetMathHull::idxFirst(LCursor & cur) const
+bool InsetMathHull::idxFirst(Cursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = 0;
@@ -235,7 +235,7 @@ bool InsetMathHull::idxFirst(LCursor & cur) const
 }
 
 
-bool InsetMathHull::idxLast(LCursor & cur) const
+bool InsetMathHull::idxLast(Cursor & cur) const
 {
 	cur.idx() = nargs() - 1;
 	cur.pos() = cur.lastpos();
@@ -409,7 +409,7 @@ void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-bool InsetMathHull::notifyCursorLeaves(LCursor & cur)
+bool InsetMathHull::notifyCursorLeaves(Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		Buffer const & buffer = cur.buffer();
@@ -954,7 +954,7 @@ void InsetMathHull::check() const
 }
 
 
-void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
+void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 {
 	docstring dlang;
 	docstring extra;
@@ -1034,7 +1034,7 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 }
 
 
-void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "action: " << cmd.action << endl;
 	switch (cmd.action) {
@@ -1174,7 +1174,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action) {
@@ -1286,7 +1286,7 @@ void InsetMathHull::mutateToText()
 }
 
 
-void InsetMathHull::handleFont(LCursor & cur, docstring const & arg,
+void InsetMathHull::handleFont(Cursor & cur, docstring const & arg,
 	docstring const & font)
 {
 	// this whole function is a hack and won't work for incremental font
@@ -1301,7 +1301,7 @@ void InsetMathHull::handleFont(LCursor & cur, docstring const & arg,
 }
 
 
-void InsetMathHull::handleFont2(LCursor & cur, docstring const & arg)
+void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 {
 	recordUndo(cur);
 	LyXFont font;
@@ -1314,7 +1314,7 @@ void InsetMathHull::handleFont2(LCursor & cur, docstring const & arg)
 }
 
 
-void InsetMathHull::edit(LCursor & cur, bool left)
+void InsetMathHull::edit(Cursor & cur, bool left)
 {
 	cur.push(*this);
 	left ? idxFirst(cur) : idxLast(cur);
@@ -1331,7 +1331,7 @@ docstring const InsetMathHull::editMessage() const
 }
 
 
-void InsetMathHull::revealCodes(LCursor & cur) const
+void InsetMathHull::revealCodes(Cursor & cur) const
 {
 	if (!cur.inMathed())
 		return;

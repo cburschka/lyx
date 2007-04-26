@@ -18,7 +18,7 @@
 
 #include "Buffer.h"
 #include "buffer_funcs.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "LyXText.h"
@@ -126,7 +126,7 @@ void doRecordUndo(Undo::undo_kind kind,
 
 
 void recordUndo(Undo::undo_kind kind,
-	LCursor & cur, pit_type first_pit, pit_type last_pit,
+	Cursor & cur, pit_type first_pit, pit_type last_pit,
 	limited_stack<Undo> & stack)
 {
 	BOOST_ASSERT(first_pit <= cur.lastpit());
@@ -215,7 +215,7 @@ bool textUndoOrRedo(BufferView & bv,
 	BOOST_ASSERT(undo.array == 0);
 
 	// Set cursor
-	LCursor & cur = bv.cursor();
+	Cursor & cur = bv.cursor();
 	cur.setCursor(undo.cursor.asDocIterator(&buf->inset()));
 	cur.selection() = false;
 	cur.resetAnchor();
@@ -250,7 +250,7 @@ bool textRedo(BufferView & bv)
 
 
 void recordUndo(Undo::undo_kind kind,
-	LCursor & cur, pit_type first, pit_type last)
+	Cursor & cur, pit_type first, pit_type last)
 {
 	Buffer * buf = cur.bv().buffer();
 	recordUndo(kind, cur, first, last, buf->undostack());
@@ -261,15 +261,15 @@ void recordUndo(Undo::undo_kind kind,
 }
 
 
-void recordUndo(LCursor & cur, Undo::undo_kind kind)
+void recordUndo(Cursor & cur, Undo::undo_kind kind)
 {
 	recordUndo(kind, cur, cur.pit(), cur.pit());
 }
 
 
-void recordUndoInset(LCursor & cur, Undo::undo_kind kind)
+void recordUndoInset(Cursor & cur, Undo::undo_kind kind)
 {
-	LCursor c = cur;
+	Cursor c = cur;
 	c.pop();
 	Buffer * buf = cur.bv().buffer();
 	doRecordUndo(kind, c, c.pit(), c.pit(),	cur,
@@ -277,19 +277,19 @@ void recordUndoInset(LCursor & cur, Undo::undo_kind kind)
 }
 
 
-void recordUndoSelection(LCursor & cur, Undo::undo_kind kind)
+void recordUndoSelection(Cursor & cur, Undo::undo_kind kind)
 {
 	recordUndo(kind, cur, cur.selBegin().pit(), cur.selEnd().pit());
 }
 
 
-void recordUndo(LCursor & cur, Undo::undo_kind kind, pit_type from)
+void recordUndo(Cursor & cur, Undo::undo_kind kind, pit_type from)
 {
 	recordUndo(kind, cur, cur.pit(), from);
 }
 
 
-void recordUndo(LCursor & cur, Undo::undo_kind kind,
+void recordUndo(Cursor & cur, Undo::undo_kind kind,
 	pit_type from, pit_type to)
 {
 	recordUndo(kind, cur, from, to);

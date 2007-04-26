@@ -17,7 +17,7 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
@@ -120,7 +120,7 @@ InsetInclude::~InsetInclude()
 }
 
 
-void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -150,7 +150,7 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetInclude::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

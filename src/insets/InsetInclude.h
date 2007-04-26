@@ -98,11 +98,11 @@ public:
 	///
 	void updateLabels(Buffer const & buffer) const;
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 

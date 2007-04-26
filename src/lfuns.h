@@ -26,7 +26,7 @@ namespace lyx {
  *
  * They are managed in LyXAction.cpp and handled in various
  * ::dispatch() functions, starting with LyXFunc.C:dispatch(),
- * BufferView::dispatch(), LCursor::dispatch() and
+ * BufferView::dispatch(), Cursor::dispatch() and
  * Inset*::doDispatch();
  */
 enum kb_action {

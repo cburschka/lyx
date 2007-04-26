@@ -20,7 +20,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CoordCache.h"
 #include "gettext.h"
 #include "Language.h"
@@ -170,7 +170,7 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 		sl.inset().cursorPos(bv, sl, boundary && ((i+1) == dit.depth()), xx, yy);
 		x += xx;
 		y += yy;
-		//lyxerr << "LCursor::getPos, i: "
+		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;
 	}
 
@@ -303,7 +303,7 @@ void findInset(DocIterator & dit, InsetBase_code code, bool same_content)
 void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 	       bool same_content)
 {
-	LCursor tmpcur = bv->cursor();
+	Cursor tmpcur = bv->cursor();
 	if (!findInset(tmpcur, codes, same_content)) {
 		bv->cursor().message(_("No more insets"));
 		return;

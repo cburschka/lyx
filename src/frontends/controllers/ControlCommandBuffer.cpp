@@ -15,7 +15,7 @@
 #include "ControlCommandBuffer.h"
 
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "LyXFunc.h"
 #include "LyXAction.h"
 #include "FuncRequest.h"

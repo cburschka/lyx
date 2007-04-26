@@ -55,7 +55,7 @@ TODO
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Converter.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
@@ -174,7 +174,7 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_GRAPHICS_EDIT: {
@@ -211,7 +211,7 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetGraphics::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -227,7 +227,7 @@ bool InsetGraphics::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetGraphics::edit(LCursor & cur, bool)
+void InsetGraphics::edit(Cursor & cur, bool)
 {
 	InsetGraphicsMailer(*this).showDialog(&cur.bv());
 }

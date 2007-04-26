@@ -17,7 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "FloatList.h"
@@ -297,7 +297,7 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 }
 
 
-void InsetCollapsable::edit(LCursor & cur, bool left)
+void InsetCollapsable::edit(Cursor & cur, bool left)
 {
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
 	cur.push(*this);
@@ -305,7 +305,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetCollapsable::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status() == Collapsed || (button_dim.contains(x, y) && status() != Inlined))
@@ -315,7 +315,7 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 }
 
 
-void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
 	//	<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
@@ -412,7 +412,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetCollapsable::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -437,7 +437,7 @@ void InsetCollapsable::setLabel(docstring const & l)
 }
 
 
-void InsetCollapsable::setStatus(LCursor & cur, CollapseStatus status)
+void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 {
 	status_ = status;
 	setButtonLabel();

@@ -39,7 +39,7 @@
 #include "LColor.h"
 #include "bufferview_funcs.h"
 #include "CoordCache.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -138,7 +138,7 @@ void InsetMathNest::metrics(MetricsInfo const & mi) const
 }
 
 
-bool InsetMathNest::idxNext(LCursor & cur) const
+bool InsetMathNest::idxNext(Cursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (cur.idx() == cur.lastidx())
@@ -149,13 +149,13 @@ bool InsetMathNest::idxNext(LCursor & cur) const
 }
 
 
-bool InsetMathNest::idxRight(LCursor & cur) const
+bool InsetMathNest::idxRight(Cursor & cur) const
 {
 	return idxNext(cur);
 }
 
 
-bool InsetMathNest::idxPrev(LCursor & cur) const
+bool InsetMathNest::idxPrev(Cursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (cur.idx() == 0)
@@ -166,13 +166,13 @@ bool InsetMathNest::idxPrev(LCursor & cur) const
 }
 
 
-bool InsetMathNest::idxLeft(LCursor & cur) const
+bool InsetMathNest::idxLeft(Cursor & cur) const
 {
 	return idxPrev(cur);
 }
 
 
-bool InsetMathNest::idxFirst(LCursor & cur) const
+bool InsetMathNest::idxFirst(Cursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (nargs() == 0)
@@ -183,7 +183,7 @@ bool InsetMathNest::idxFirst(LCursor & cur) const
 }
 
 
-bool InsetMathNest::idxLast(LCursor & cur) const
+bool InsetMathNest::idxLast(Cursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (nargs() == 0)
@@ -223,7 +223,7 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	BufferView & bv = *pi.base.bv;
 	// this should use the x/y values given, not the cached values
-	LCursor & cur = bv.cursor();
+	Cursor & cur = bv.cursor();
 	if (!cur.selection())
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
@@ -346,7 +346,7 @@ int InsetMathNest::latex(Buffer const &, odocstream & os,
 }
 
 
-bool InsetMathNest::notifyCursorLeaves(LCursor & /*cur*/)
+bool InsetMathNest::notifyCursorLeaves(Cursor & /*cur*/)
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -380,14 +380,14 @@ bool InsetMathNest::notifyCursorLeaves(LCursor & /*cur*/)
 
 
 void InsetMathNest::handleFont
-	(LCursor & cur, docstring const & arg, char const * const font)
+	(Cursor & cur, docstring const & arg, char const * const font)
 {
 	handleFont(cur, arg, from_ascii(font));
 }
 
 
 void InsetMathNest::handleFont
-	(LCursor & cur, docstring const & arg, docstring const & font)
+	(Cursor & cur, docstring const & arg, docstring const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
@@ -403,7 +403,7 @@ void InsetMathNest::handleFont
 }
 
 
-void InsetMathNest::handleFont2(LCursor & cur, docstring const & arg)
+void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 {
 	recordUndo(cur, Undo::ATOMIC);
 	LyXFont font;
@@ -416,7 +416,7 @@ void InsetMathNest::handleFont2(LCursor & cur, docstring const & arg)
 }
 
 
-void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetMathNest: request: " << cmd << std::endl;
 	//CursorSlice sl = cur.current();
@@ -701,7 +701,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// cmd.argument is the next character of the macro name.
 		// Otherwise we'll get an invalid cursor if we undo after
 		// the macro was finished and the macro is a known command,
-		// e.g. sqrt. LCursor::macroModeClose replaces in this case
+		// e.g. sqrt. Cursor::macroModeClose replaces in this case
 		// the InsetMathUnknown with name "frac" by an empty
 		// InsetMathFrac -> a pos value > 0 is invalid.
 		// A side effect is that an undo before the macro is finished
@@ -991,7 +991,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathNest::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
@@ -1091,7 +1091,7 @@ bool InsetMathNest::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathNest::edit(LCursor & cur, bool left)
+void InsetMathNest::edit(Cursor & cur, bool left)
 {
 	cur.push(*this);
 	cur.idx() = left ? 0 : cur.lastidx();
@@ -1101,7 +1101,7 @@ void InsetMathNest::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetMathNest::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetMathNest::editXY(Cursor & cur, int x, int y)
 {
 	int idx_min = 0;
 	int dist_min = 1000000;
@@ -1128,7 +1128,7 @@ InsetBase * InsetMathNest::editXY(LCursor & cur, int x, int y)
 }
 
 
-void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	BufferView & bv = cur.bv();
@@ -1159,11 +1159,11 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetMathNest::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::lfunMouseMotion(Cursor & cur, FuncRequest & cmd)
 {
 	// only select with button 1
 	if (cmd.button() == mouse_button::button1) {
-		LCursor & bvcur = cur.bv().cursor();
+		Cursor & bvcur = cur.bv().cursor();
 		if (bvcur.anchor_.hasPart(cur)) {
 			//lyxerr << "## lfunMouseMotion: cursor: " << cur << endl;
 			bvcur.setCursor(cur);
@@ -1175,7 +1175,7 @@ void InsetMathNest::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
@@ -1183,7 +1183,7 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 		if (!cur.selection())
 			cur.noUpdate();
 		else {
-			LCursor & bvcur = cur.bv().cursor();
+			Cursor & bvcur = cur.bv().cursor();
 			bvcur.selection() = true;
 			cap::saveSelection(bvcur);
 		}
@@ -1194,7 +1194,7 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathNest::interpretChar(LCursor & cur, char_type c)
+bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	docstring save_selection;
@@ -1389,7 +1389,7 @@ bool InsetMathNest::interpretChar(LCursor & cur, char_type c)
 }
 
 
-bool InsetMathNest::interpretString(LCursor & cur, docstring const & str)
+bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 {
 	// Create a InsetMathBig from cur.cell()[cur.pos() - 1] and t if
 	// possible
@@ -1412,7 +1412,7 @@ bool InsetMathNest::interpretString(LCursor & cur, docstring const & str)
 }
 
 
-bool InsetMathNest::script(LCursor & cur, bool up, 
+bool InsetMathNest::script(Cursor & cur, bool up, 
 		docstring const & save_selection)
 {
 	// Hack to get \^ and \_ working

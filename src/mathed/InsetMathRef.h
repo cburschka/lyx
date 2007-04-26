@@ -57,9 +57,9 @@ public:
 	static docstring const & getName(int type);
 protected:
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;

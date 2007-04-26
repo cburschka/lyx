@@ -16,7 +16,7 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "LyXRC.h"
 #include "LyXText.h"
@@ -242,7 +242,7 @@ void TransManager::disableKeymap()
 }
 
 
-void  TransManager::translateAndInsert(char_type c, LyXText * text, LCursor & cur)
+void  TransManager::translateAndInsert(char_type c, LyXText * text, Cursor & cur)
 {
 	docstring res = active_->process(c, *this);
 
@@ -256,14 +256,14 @@ void  TransManager::translateAndInsert(char_type c, LyXText * text, LCursor & cu
 }
 
 
-void TransManager::insert(docstring const & str, LyXText * text, LCursor & cur)
+void TransManager::insert(docstring const & str, LyXText * text, Cursor & cur)
 {
 	for (string::size_type i = 0, n = str.size(); i < n; ++i)
 		text->insertChar(cur, str[i]);
 }
 
 
-void TransManager::deadkey(char_type c, tex_accent accent, LyXText * t, LCursor & cur)
+void TransManager::deadkey(char_type c, tex_accent accent, LyXText * t, Cursor & cur)
 {
 	if (c == 0 && active_ != &default_) {
 		// A deadkey was pressed that cannot be printed

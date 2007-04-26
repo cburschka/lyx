@@ -65,7 +65,7 @@ void InsetMathSplit::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetMathSplit::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

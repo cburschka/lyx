@@ -50,13 +50,13 @@ public:
 	///
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	virtual void edit(LCursor & cur, bool left);
+	virtual void edit(Cursor & cur, bool left);
 	///
-	virtual InsetBase * editXY(LCursor & cur, int x, int y);
+	virtual InsetBase * editXY(Cursor & cur, int x, int y);
 	///
 	bool insetAllowed(InsetBase::Code code) const;
 	///
-	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	virtual bool wide() const { return false; }
 	///

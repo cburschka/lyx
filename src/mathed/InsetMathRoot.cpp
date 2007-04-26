@@ -14,7 +14,7 @@
 #include "InsetMathRoot.h"
 #include "MathArray.h"
 #include "MathStream.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "LColor.h"
 
 #include "frontends/Painter.h"
@@ -85,9 +85,9 @@ void InsetMathRoot::normalize(NormalStream & os) const
 }
 
 
-bool InsetMathRoot::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathRoot::idxUpDown(Cursor & cur, bool up) const
 {
-	LCursor::idx_type const target = up ? 0 : 1;
+	Cursor::idx_type const target = up ? 0 : 1;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;

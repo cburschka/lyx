@@ -31,7 +31,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	InsetBase * editXY(LCursor &, int, int);
+	InsetBase * editXY(Cursor &, int, int);
 	///
 	void write(WriteStream & os) const;
 	//

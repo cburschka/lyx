@@ -42,15 +42,15 @@ public:
 	void drawT(TextPainter & pi, int x, int y) const;
 
 	/// move cursor left
-	bool idxLeft(LCursor & cur) const;
+	bool idxLeft(Cursor & cur) const;
 	/// move cursor right
-	bool idxRight(LCursor & cur) const;
+	bool idxRight(Cursor & cur) const;
 	/// move cursor up or down
-	bool idxUpDown(LCursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const;
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(LCursor & cur) const;
+	bool idxFirst(Cursor & cur) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(LCursor & cur) const;
+	bool idxLast(Cursor & cur) const;
 
 	/// write LaTeX and Lyx code
 	void write(WriteStream & os) const;
@@ -103,7 +103,7 @@ public:
 	/// say whether we have displayed limits
 	void infoize2(odocstream & os) const;
 protected:
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// returns x offset for main part
@@ -129,7 +129,7 @@ private:
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
 	/// clean up empty cells and return true if a cell has been deleted.
-	bool notifyCursorLeaves(LCursor & cur);
+	bool notifyCursorLeaves(Cursor & cur);
 
 	/// possible subscript (index 0) and superscript (index 1)
 	bool cell_1_is_up_;

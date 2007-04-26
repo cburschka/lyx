@@ -77,9 +77,9 @@ public:
 protected:
 	InsetERT(InsetERT const &);
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///

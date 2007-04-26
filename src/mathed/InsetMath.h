@@ -84,7 +84,7 @@ class InfoStream;
 class MathMacroTemplate;
 class MathMacro;
 class MathPosFinder;
-class LCursor;
+class Cursor;
 class TextPainter;
 class TextMetricsInfo;
 class ReplaceData;

@@ -26,7 +26,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "CoordCache.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "Language.h"
 #include "LColor.h"

@@ -94,7 +94,7 @@ public:
 	///
 	InsetBoxParams const & params() const { return params_; }
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	enum BoxType {
 		Frameless,
@@ -106,7 +106,7 @@ public:
 	};
 protected:
 	InsetBox(InsetBox const &);
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const;
 private:

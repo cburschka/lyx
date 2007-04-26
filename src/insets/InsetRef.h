@@ -61,7 +61,7 @@ protected:
 	InsetRef(InsetRef const &);
 
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
 		return std::auto_ptr<InsetBase>(new InsetRef(*this));

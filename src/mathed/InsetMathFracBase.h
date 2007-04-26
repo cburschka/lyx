@@ -23,11 +23,11 @@ public:
 	///
 	InsetMathFracBase();
 	///
-	bool idxUpDown(LCursor &, bool up) const;
+	bool idxUpDown(Cursor &, bool up) const;
 	///
-	bool idxLeft(LCursor &) const;
+	bool idxLeft(Cursor &) const;
 	///
-	bool idxRight(LCursor &) const;
+	bool idxRight(Cursor &) const;
 };
 
 

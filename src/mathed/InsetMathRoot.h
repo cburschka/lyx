@@ -25,7 +25,7 @@ public:
 	///
 	InsetMathRoot();
 	///
-	bool idxUpDown(LCursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const;
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

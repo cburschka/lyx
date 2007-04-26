@@ -17,7 +17,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Undo.h"
@@ -68,7 +68,7 @@ void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathCases::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
 	switch (cmd.action) {
@@ -86,7 +86,7 @@ void InsetMathCases::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathCases::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

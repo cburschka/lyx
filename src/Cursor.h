@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LCursor.h
+ * \file Cursor.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -37,10 +37,10 @@ class Encoding;
 
 // The public inheritance should go in favour of a suitable data member
 // (or maybe private inheritance) at some point of time.
-class LCursor : public DocIterator {
+class Cursor : public DocIterator {
 public:
 	/// create the cursor of a BufferView
-	explicit LCursor(BufferView & bv);
+	explicit Cursor(BufferView & bv);
 
 	/// dispatch from innermost inset upwards
 	void dispatch(FuncRequest const & cmd);
@@ -178,7 +178,7 @@ public:
 	void fixIfBroken();
 
 	/// output
-	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);
+	friend std::ostream & operator<<(std::ostream & os, Cursor const & cur);
 
 public:
 	///

@@ -144,14 +144,14 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
 	InsetExternal(InsetExternal const &);
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 

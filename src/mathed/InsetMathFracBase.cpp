@@ -12,7 +12,7 @@
 
 #include "InsetMathFracBase.h"
 #include "MathArray.h"
-#include "LCursor.h"
+#include "Cursor.h"
 
 
 namespace lyx {
@@ -23,19 +23,19 @@ InsetMathFracBase::InsetMathFracBase()
 {}
 
 
-bool InsetMathFracBase::idxRight(LCursor &) const
+bool InsetMathFracBase::idxRight(Cursor &) const
 {
 	return false;
 }
 
 
-bool InsetMathFracBase::idxLeft(LCursor &) const
+bool InsetMathFracBase::idxLeft(Cursor &) const
 {
 	return false;
 }
 
 
-bool InsetMathFracBase::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
 {
 	InsetMath::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
 	if (cur.idx() == target)

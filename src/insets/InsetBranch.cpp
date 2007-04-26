@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BranchList.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -122,7 +122,7 @@ bool InsetBranch::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -178,7 +178,7 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

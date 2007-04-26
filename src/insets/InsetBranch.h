@@ -77,11 +77,11 @@ public:
 	 */
 	bool isBranchSelected(Buffer const & buffer) const;
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
 	InsetBranch(InsetBranch const &);
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetBranchParams;
 

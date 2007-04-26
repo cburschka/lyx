@@ -16,7 +16,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "Floating.h"
@@ -135,7 +135,7 @@ InsetFloat::~InsetFloat()
 }
 
 
-void InsetFloat::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -171,7 +171,7 @@ void InsetFloat::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetFloat::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

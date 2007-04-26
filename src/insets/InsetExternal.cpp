@@ -18,7 +18,7 @@
 #include "insets/RenderPreview.h"
 
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
@@ -425,7 +425,7 @@ void InsetExternal::statusChanged() const
 }
 
 
-void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -459,7 +459,7 @@ void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetExternal::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -476,7 +476,7 @@ bool InsetExternal::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetExternal::edit(LCursor & cur, bool)
+void InsetExternal::edit(Cursor & cur, bool)
 {
 	InsetExternalMailer(*this).showDialog(&cur.bv());
 }

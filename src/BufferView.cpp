@@ -107,7 +107,7 @@ namespace {
 
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
-T * getInsetByCode(LCursor & cur, InsetBase::Code code)
+T * getInsetByCode(Cursor & cur, InsetBase::Code code)
 {
 	T * inset = 0;
 	DocIterator it = cur;
@@ -196,7 +196,7 @@ void BufferView::setBuffer(Buffer * b)
 	}
 
 	// Reset old cursor
-	cursor_ = LCursor(*this);
+	cursor_ = Cursor(*this);
 	anchor_ref_ = 0;
 	offset_ref_ = 0;
 
@@ -511,7 +511,7 @@ void BufferView::setCursorFromScrollbar()
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
 	int const last = height_ - height;
-	LCursor & cur = cursor_;
+	Cursor & cur = cursor_;
 
 	bv_funcs::CurStatus st = bv_funcs::status(this, cur);
 
@@ -752,7 +752,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	if (!buffer_)
 		return Update::None;
 
-	LCursor & cur = cursor_;
+	Cursor & cur = cursor_;
 	// Default Update flags.
 	Update::flags updateFlags = Update::Force | Update::FitCursor;
 
@@ -957,7 +957,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
-		LCursor tmpcur = cursor_;
+		Cursor tmpcur = cursor_;
 		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
@@ -969,7 +969,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
-		LCursor tmpcur = cursor_;
+		Cursor tmpcur = cursor_;
 		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
@@ -1022,7 +1022,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		// wants to toggle.
 		InsetBase * inset = cur.nextInset();
 		if (inset && inset->isActive()) {
-			LCursor tmpcur = cur;
+			Cursor tmpcur = cur;
 			tmpcur.pushLeft(*inset);
 			inset->dispatch(tmpcur, tmpcmd);
 			if (tmpcur.result().dispatched()) {
@@ -1052,7 +1052,7 @@ docstring const BufferView::requestSelection()
 	if (!buffer_)
 		return docstring();
 
-	LCursor & cur = cursor_;
+	Cursor & cur = cursor_;
 
 	if (!cur.selection()) {
 		xsel_cache_.set = false;
@@ -1162,7 +1162,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	if (!buffer_)
 		return false;
 
-	LCursor cur(*this);
+	Cursor cur(*this);
 	cur.push(buffer_->inset());
 	cur.selection() = cursor_.selection();
 
@@ -1341,7 +1341,7 @@ void BufferView::setCursor(DocIterator const & dit)
 }
 
 
-bool BufferView::checkDepm(LCursor & cur, LCursor & old)
+bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 {
 	// Would be wrong to delete anything if we have a selection.
 	if (cur.selection())
@@ -1365,7 +1365,7 @@ bool BufferView::checkDepm(LCursor & cur, LCursor & old)
 }
 
 
-bool BufferView::mouseSetCursor(LCursor & cur)
+bool BufferView::mouseSetCursor(Cursor & cur)
 {
 	BOOST_ASSERT(&cur.bv() == this);
 
@@ -1425,13 +1425,13 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 }
 
 
-LCursor & BufferView::cursor()
+Cursor & BufferView::cursor()
 {
 	return cursor_;
 }
 
 
-LCursor const & BufferView::cursor() const
+Cursor const & BufferView::cursor() const
 {
 	return cursor_;
 }

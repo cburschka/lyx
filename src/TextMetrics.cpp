@@ -193,7 +193,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// FIXME: this has nothing to do here and is the reason why text_ is not
 	// const.
 	if (par.checkBiblio(buffer.params().trackChanges))
-		const_cast<LCursor &>(bv_->cursor()).posRight();
+		const_cast<Cursor &>(bv_->cursor()).posRight();
 
 	// Optimisation: this is used in the next two loops
 	// so better to calculate that once here.

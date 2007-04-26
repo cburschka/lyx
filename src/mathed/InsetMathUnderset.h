@@ -26,11 +26,11 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	bool idxFirst(LCursor & cur) const;
+	bool idxFirst(Cursor & cur) const;
 	///
-	bool idxLast(LCursor & cur) const;
+	bool idxLast(Cursor & cur) const;
 	///
-	bool idxUpDown(LCursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const;
 	///
 	void write(WriteStream & ws) const;
 	///

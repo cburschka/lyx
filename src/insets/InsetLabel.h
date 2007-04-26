@@ -36,7 +36,7 @@ public:
 	///
 	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 protected:
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };

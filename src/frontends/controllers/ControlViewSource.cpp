@@ -17,7 +17,7 @@
 #include "support/types.h"
 #include "BufferView.h"
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include <sstream>
 
 using std::string;

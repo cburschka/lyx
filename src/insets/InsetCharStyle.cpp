@@ -20,7 +20,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -216,7 +216,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	// a visual clue when the cursor is inside the inset
-	LCursor & cur = pi.base.bv->cursor();
+	Cursor & cur = pi.base.bv->cursor();
 	if (cur.isInside(this)) {
 		y -= ascent();
 		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
@@ -235,7 +235,7 @@ void InsetCharStyle::getDrawFont(LyXFont & font) const
 }
 
 
-void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	setInlined();
 	switch (cmd.action) {
@@ -266,7 +266,7 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetCharStyle::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {

@@ -74,15 +74,15 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetGraphics(InsetGraphics const &);
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetGraphicsMailer;
 

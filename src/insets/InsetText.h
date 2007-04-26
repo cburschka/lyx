@@ -99,7 +99,7 @@ public:
 		return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
 	}
 	///
-	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 	/// set the change for the entire inset
 	void setChange(Change const & change);
@@ -115,9 +115,9 @@ public:
 	void addPreview(graphics::PreviewLoader &) const;
 
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 
 	/// number of cells in this inset
 	size_t nargs() const { return 1; }
@@ -140,7 +140,7 @@ public:
 
 protected:
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 private:
 	///

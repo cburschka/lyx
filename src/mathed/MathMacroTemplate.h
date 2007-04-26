@@ -35,7 +35,7 @@ public:
 	///
 	explicit MathMacroTemplate(const docstring & str);
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///

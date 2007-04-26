@@ -15,7 +15,7 @@
 #ifndef TOC_H
 #define TOC_H
 
-class LCursor;
+class Cursor;
 
 namespace lyx {
 namespace toc {
@@ -29,7 +29,7 @@ enum OutlineOp {
 };
 
 
-void outline(OutlineOp, LCursor &);
+void outline(OutlineOp, Cursor &);
 
 
 } // namespace toc

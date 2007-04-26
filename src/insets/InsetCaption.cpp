@@ -17,7 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "BufferView.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -174,14 +174,14 @@ void InsetCaption::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCaption::edit(LCursor & cur, bool left)
+void InsetCaption::edit(Cursor & cur, bool left)
 {
 	cur.push(*this);
 	InsetText::edit(cur, left);
 }
 
 
-InsetBase * InsetCaption::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetCaption::editXY(Cursor & cur, int x, int y)
 {
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
@@ -203,7 +203,7 @@ bool InsetCaption::insetAllowed(InsetBase::Code code) const
 }
 
 
-bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {

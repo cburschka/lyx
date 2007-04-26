@@ -29,7 +29,7 @@ namespace lyx {
 class BufferParams;
 class BufferView;
 class DocIterator;
-class LCursor;
+class Cursor;
 class MathArray;
 class ParagraphList;
 
@@ -115,26 +115,26 @@ void finishUndo();
  * Right now we use recordUndoInset if more than one cell is changed,
  * but that puts the cursor in front of the inset after undo. We would need
  * something like
- * recordUndoGrid(LCursor & cur, Undo::undo_kind kind, idx_type from, idx_type to);
+ * recordUndoGrid(Cursor & cur, Undo::undo_kind kind, idx_type from, idx_type to);
  * and store the cell information in class Undo.
  */
 
 /// The general case: prepare undo for an arbitrary range.
-/// FIXME: replace LCursor with DocIterator. This is not possible right
+/// FIXME: replace Cursor with DocIterator. This is not possible right
 /// now because we need access to Buffer->params()!.
-void recordUndo(LCursor & cur, Undo::undo_kind kind,
+void recordUndo(Cursor & cur, Undo::undo_kind kind,
 	pit_type from, pit_type to);
 
 /// Convenience: prepare undo for the range between 'from' and cursor.
-void recordUndo(LCursor & cur, Undo::undo_kind kind, pit_type from);
+void recordUndo(Cursor & cur, Undo::undo_kind kind, pit_type from);
 
 /// Convenience: prepare undo for the single paragraph or cell
 /// containing the cursor
-void recordUndo(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
+void recordUndo(Cursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 /// Convenience: prepare undo for the inset containing the cursor
-void recordUndoInset(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
+void recordUndoInset(Cursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 /// Convenience: prepare undo for the selected paragraphs
-void recordUndoSelection(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
+void recordUndoSelection(Cursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 
 /// Convenience: prepare undo for the whole buffer
 void recordUndoFullDocument(BufferView * bv);

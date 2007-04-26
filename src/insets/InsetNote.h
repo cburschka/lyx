@@ -70,11 +70,11 @@ public:
 	///
 	InsetNoteParams const & params() const { return params_; }
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetNote(InsetNote const &);
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetNoteParams;
 

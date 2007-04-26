@@ -63,7 +63,7 @@ void InsetMathSubstack::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetMathSubstack::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

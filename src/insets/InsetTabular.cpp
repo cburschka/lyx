@@ -23,7 +23,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "CoordCache.h"
 #include "debug.h"
@@ -184,17 +184,6 @@ public:
 private:
 	Tabular::Feature feature_;
 };
-
-
-string const featureAsString(Tabular::Feature feature)
-{
-	TabularFeature * end = tabularFeature +
-		sizeof(tabularFeature) / sizeof(TabularFeature);
-	TabularFeature * it = std::find_if(tabularFeature, end,
-					   FeatureEqual(feature));
-	return (it == end) ? string() : it->feature;
-}
-
 
 
 template <class T>
@@ -473,6 +462,17 @@ void l_getline(istream & is, string & str)
 }
 
 } // namespace
+
+
+string const featureAsString(Tabular::Feature feature)
+{
+	TabularFeature * end = tabularFeature +
+		sizeof(tabularFeature) / sizeof(TabularFeature);
+	TabularFeature * it = std::find_if(tabularFeature, end,
+					   FeatureEqual(feature));
+	return (it == end) ? string() : it->feature;
+}
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -1094,7 +1094,7 @@ namespace {
  * merge cell paragraphs and reset layout to standard for variable width
  * cells.
  */
-void toggleFixedWidth(LCursor & cur, InsetText * inset, bool fixedWidth)
+void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
 {
 	inset->setAutoBreakRows(fixedWidth);
 	if (fixedWidth)
@@ -1116,7 +1116,7 @@ void toggleFixedWidth(LCursor & cur, InsetText * inset, bool fixedWidth)
 }
 
 
-void Tabular::setColumnPWidth(LCursor & cur, idx_type cell,
+void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 		LyXLength const & width)
 {
 	col_type const j = column_of_cell(cell);
@@ -1137,7 +1137,7 @@ void Tabular::setColumnPWidth(LCursor & cur, idx_type cell,
 }
 
 
-bool Tabular::setMColumnPWidth(LCursor & cur, idx_type cell,
+bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
 		LyXLength const & width)
 {
 	if (!isMultiColumn(cell))
@@ -3060,7 +3060,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 
-	LCursor & cur = pi.base.bv->cursor();
+	Cursor & cur = pi.base.bv->cursor();
 
 	x += scx_ + ADD_TO_TABULAR_WIDTH;
 
@@ -3156,7 +3156,7 @@ docstring const InsetTabular::editMessage() const
 }
 
 
-void InsetTabular::edit(LCursor & cur, bool left)
+void InsetTabular::edit(Cursor & cur, bool left)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
 	finishUndo();
@@ -3183,12 +3183,12 @@ void InsetTabular::edit(LCursor & cur, bool left)
 }
 
 
-void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::DEBUG) << "# InsetTabular::doDispatch: cmd: " << cmd
 			     << "\n  cur:" << cur << endl;
 	CursorSlice sl = cur.top();
-	LCursor & bvcur = cur.bv().cursor();
+	Cursor & bvcur = cur.bv().cursor();
 
 	switch (cmd.action) {
 
@@ -3495,7 +3495,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			row_type rs, re;
 			col_type cs, ce;
 			getSelection(cur, rs, re, cs, ce);
-			LCursor tmpcur = cur;
+			Cursor tmpcur = cur;
 			for (row_type i = rs; i <= re; ++i) {
 				for (col_type j = cs; j <= ce; ++j) {
 					// cursor follows cell:
@@ -3531,7 +3531,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 // function sets an object as defined in func_status.h:
 // states OK, Unknown, Disabled, On, Off.
-bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
@@ -3924,7 +3924,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 }
 
 
-InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetTabular::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
@@ -3935,7 +3935,7 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 }
 
 
-void InsetTabular::setCursorFromCoordinates(LCursor & cur, int x, int y) const
+void InsetTabular::setCursorFromCoordinates(Cursor & cur, int x, int y) const
 {
 	cur.idx() = getNearestCell(cur.bv(), x, y);
 	cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
@@ -3973,7 +3973,7 @@ int InsetTabular::getCellXPos(idx_type const cell) const
 }
 
 
-void InsetTabular::resetPos(LCursor & cur) const
+void InsetTabular::resetPos(Cursor & cur) const
 {
 	BufferView & bv = cur.bv();
 	int const maxwidth = bv.workWidth();
@@ -3999,7 +3999,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 }
 
 
-void InsetTabular::moveNextCell(LCursor & cur)
+void InsetTabular::moveNextCell(Cursor & cur)
 {
 	if (isRightToLeft(cur)) {
 		if (tabular.isFirstCellInRow(cur.idx())) {
@@ -4023,7 +4023,7 @@ void InsetTabular::moveNextCell(LCursor & cur)
 }
 
 
-void InsetTabular::movePrevCell(LCursor & cur)
+void InsetTabular::movePrevCell(Cursor & cur)
 {
 	if (isRightToLeft(cur)) {
 		if (tabular.isLastCellInRow(cur.idx())) {
@@ -4050,7 +4050,7 @@ void InsetTabular::movePrevCell(LCursor & cur)
 }
 
 
-bool InsetTabular::tabularFeatures(LCursor & cur, string const & what)
+bool InsetTabular::tabularFeatures(Cursor & cur, string const & what)
 {
 	Tabular::Feature action = Tabular::LAST_ACTION;
 
@@ -4094,7 +4094,7 @@ static void checkLongtableSpecial(Tabular::ltType & ltt,
 }
 
 
-void InsetTabular::tabularFeatures(LCursor & cur,
+void InsetTabular::tabularFeatures(Cursor & cur,
 	Tabular::Feature feature, string const & value)
 {
 	BufferView & bv = cur.bv();
@@ -4495,7 +4495,7 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 }
 
 
-bool InsetTabular::copySelection(LCursor & cur)
+bool InsetTabular::copySelection(Cursor & cur)
 {
 	if (!cur.selection())
 		return false;
@@ -4544,7 +4544,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 }
 
 
-bool InsetTabular::pasteClipboard(LCursor & cur)
+bool InsetTabular::pasteClipboard(Cursor & cur)
 {
 	if (!paste_tabular)
 		return false;
@@ -4580,7 +4580,7 @@ bool InsetTabular::pasteClipboard(LCursor & cur)
 }
 
 
-void InsetTabular::cutSelection(LCursor & cur)
+void InsetTabular::cutSelection(Cursor & cur)
 {
 	if (!cur.selection())
 		return;
@@ -4610,7 +4610,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 }
 
 
-bool InsetTabular::isRightToLeft(LCursor & cur) const
+bool InsetTabular::isRightToLeft(Cursor & cur) const
 {
 	BOOST_ASSERT(cur.depth() > 1);
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
@@ -4620,7 +4620,7 @@ bool InsetTabular::isRightToLeft(LCursor & cur) const
 }
 
 
-void InsetTabular::getSelection(LCursor & cur,
+void InsetTabular::getSelection(Cursor & cur,
 	row_type & rs, row_type & re, col_type & cs, col_type & ce) const
 {
 	CursorSlice const & beg = cur.selBegin();
@@ -4787,7 +4787,7 @@ void InsetTabular::addPreview(PreviewLoader & loader) const
 }
 
 
-bool InsetTabular::tablemode(LCursor & cur) const
+bool InsetTabular::tablemode(Cursor & cur) const
 {
 	return cur.selection() && cur.selBegin().idx() != cur.selEnd().idx();
 }

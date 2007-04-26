@@ -28,7 +28,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "DispatchResult.h"
@@ -146,7 +146,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-bool getLocalStatus(LCursor cursor,
+bool getLocalStatus(Cursor cursor,
 	       FuncRequest const & cmd, FuncStatus & status)
 {
 	// Try to fix cursor in case it is broken.
@@ -155,10 +155,10 @@ bool getLocalStatus(LCursor cursor,
 	// This is, of course, a mess. Better create a new doc iterator and use
 	// this in Inset::getStatus. This might require an additional
 	// BufferView * arg, though (which should be avoided)
-	//LCursor safe = *this;
+	//Cursor safe = *this;
 	bool res = false;
 	for ( ; cursor.depth(); cursor.pop()) {
-		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
+		//lyxerr << "\nCursor::getStatus: cmd: " << cmd << endl << *this << endl;
 		BOOST_ASSERT(cursor.idx() <= cursor.lastidx());
 		BOOST_ASSERT(cursor.pit() <= cursor.lastpit());
 		BOOST_ASSERT(cursor.pos() <= cursor.lastpos());
@@ -383,7 +383,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	LCursor & cur = view()->cursor();
+	Cursor & cur = view()->cursor();
 
 	/* In LyX/Mac, when a dialog is open, the menus of the
 	   application can still be accessed without giving focus to
@@ -1556,7 +1556,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			InsetBase::Code const inset_code =
 				InsetBase::translate(name);
 
-			LCursor & cur = view()->cursor();
+			Cursor & cur = view()->cursor();
 			FuncRequest fr(LFUN_INSET_TOGGLE, action);
 
 			InsetBase & inset = lyx_view_->buffer()->inset();
@@ -1566,7 +1566,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (!it->asInsetMath()
 				    && (inset_code == InsetBase::NO_CODE
 				    || inset_code == it->lyxCode())) {
-					LCursor tmpcur = cur;
+					Cursor tmpcur = cur;
 					tmpcur.pushLeft(*it);
 					it->dispatch(tmpcur, fr);
 				}
@@ -1635,7 +1635,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (engine == lyx_view_->buffer()->params().getEngine())
 				break;
 
-			LCursor & cur = view()->cursor();
+			Cursor & cur = view()->cursor();
 			FuncRequest fr(LFUN_INSET_REFRESH);
 
 			InsetBase & inset = lyx_view_->buffer()->inset();

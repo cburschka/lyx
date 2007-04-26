@@ -25,7 +25,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -100,7 +100,7 @@ namespace {
 	bool toggleall = false;
 
 
-	void toggleAndShow(LCursor & cur, LyXText * text,
+	void toggleAndShow(Cursor & cur, LyXText * text,
 		LyXFont const & font, bool toggleall = true)
 	{
 		text->toggleFree(cur, font, toggleall);
@@ -119,7 +119,7 @@ namespace {
 	}
 
 
-	void moveCursor(LCursor & cur, bool selecting)
+	void moveCursor(Cursor & cur, bool selecting)
 	{
 		if (selecting || cur.mark())
 			cur.setSelection();
@@ -128,14 +128,14 @@ namespace {
 	}
 
 
-	void finishChange(LCursor & cur, bool selecting)
+	void finishChange(Cursor & cur, bool selecting)
 	{
 		finishUndo();
 		moveCursor(cur, selecting);
 	}
 
 
-	void mathDispatch(LCursor & cur, FuncRequest const & cmd, bool display)
+	void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 	{
 		recordUndo(cur);
 		docstring sel = cur.selectionAsString(false);
@@ -201,7 +201,7 @@ string const freefont2string()
 
 }
 
-void LyXText::cursorPrevious(LCursor & cur)
+void LyXText::cursorPrevious(Cursor & cur)
 {
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
@@ -220,7 +220,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 }
 
 
-void LyXText::cursorNext(LCursor & cur)
+void LyXText::cursorNext(Cursor & cur)
 {
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
@@ -242,7 +242,7 @@ void LyXText::cursorNext(LCursor & cur)
 
 namespace {
 
-void specialChar(LCursor & cur, InsetSpecialChar::Kind kind)
+void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 {
 	cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
@@ -250,7 +250,7 @@ void specialChar(LCursor & cur, InsetSpecialChar::Kind kind)
 }
 
 
-bool doInsertInset(LCursor & cur, LyXText * text,
+bool doInsertInset(Cursor & cur, LyXText * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
 	InsetBase * inset = createInset(&cur.bv(), cmd);
@@ -284,7 +284,7 @@ bool doInsertInset(LCursor & cur, LyXText * text,
 } // anon namespace
 
 
-void LyXText::number(LCursor & cur)
+void LyXText::number(Cursor & cur)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setNumber(LyXFont::TOGGLE);
@@ -298,7 +298,7 @@ bool LyXText::isRTL(Buffer const & buffer, Paragraph const & par) const
 }
 
 
-void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
+void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION) << "LyXText::dispatch: cmd: " << cmd << endl;
 
@@ -1062,7 +1062,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		//	return false;
 
 		// ignore motions deeper nested than the real anchor
-		LCursor & bvcur = cur.bv().cursor();
+		Cursor & bvcur = cur.bv().cursor();
 		if (bvcur.anchor_.hasPart(cur)) {
 			CursorSlice old = bvcur.top();
 
@@ -1109,7 +1109,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				// finish selection
 				// if double click, cur is moved to the end of word by selectWord
 				// but bvcur is current mouse position
-				LCursor & bvcur = cur.bv().cursor();
+				Cursor & bvcur = cur.bv().cursor();
 				bvcur.selection() = true;
 				saveSelection(bvcur);
 			}
@@ -1629,7 +1629,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool LyXText::getStatus(Cursor & cur, FuncRequest const & cmd,
 			FuncStatus & flag) const
 {
 	BOOST_ASSERT(cur.text() == this);
@@ -1991,7 +1991,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void LyXText::pasteString(LCursor & cur, docstring const & clip,
+void LyXText::pasteString(Cursor & cur, docstring const & clip,
 		bool asParagraphs)
 {
 	cur.clearSelection();

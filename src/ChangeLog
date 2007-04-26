@@ -522,7 +522,7 @@
 	* text3.C (dispatch): LFUN_NEXT_INSET_TOGGLE: first try to
 	dispatch LFUN_INSET_TOGGLE to inset at cursor, and then to
 	containg inset. If this does not work, the same command will be
-	sent to other insets down the queue by LCursor::dispatch. (bug 2066)
+	sent to other insets down the queue by Cursor::dispatch. (bug 2066)
 
 	* lyxfunc.C (dispatch): make sure the cursor is correct when doing
 	a dispatch.
@@ -674,7 +674,7 @@
 2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (setCursor): remove the unused 'boundary' parameter for
-	the CursorSlice version; adapt the LCursor version.
+	the CursorSlice version; adapt the Cursor version.
 
 	* lyxrc.C (write): 
 	* paragraph_pimpl.C (markErased): 
@@ -2378,7 +2378,7 @@
 2004-11-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus, dispatch): use FuncStatus::message; only
-	call BufferView::getStatus if LCursor::getStatus did nothing
+	call BufferView::getStatus if Cursor::getStatus did nothing
 	(setStatusMessage, getStatusMessage): removed.
 
 	* FuncStatus.C (message): new methods. Used to provide an error
@@ -3112,9 +3112,9 @@
 
 	Fix toggling of collapsable insets with the mouse (bug 1558)
 
-	* lyxfunc.C (dispatch): adapt to LCursor changes
+	* lyxfunc.C (dispatch): adapt to Cursor changes
 
-	* BufferView_pimpl.C (workAreaDispatch): adapt to LCursor changes;
+	* BufferView_pimpl.C (workAreaDispatch): adapt to Cursor changes;
 	make sure that dispatch is not invoked twice
 
 	* cursor.C (needsUpdate): new method
@@ -4085,7 +4085,7 @@
 
 2004-03-01  André Pönitz  <poenitz@gmx.net>
 
-	* dociterator.[Ch]: new class for the 'iterator part' of LCursor.
+	* dociterator.[Ch]: new class for the 'iterator part' of Cursor.
 
 	* cursor.[Ch]: adjust, additioally: remove the 'current_' machinery
 
@@ -4222,7 +4222,7 @@
 	* lyxtext.h:
 	* text.C:
 	* text2.C:
-	* text3.C: add LCursor & parameter to most cursor movement functions
+	* text3.C: add Cursor & parameter to most cursor movement functions
 	  remove usage of LyXText::cursorRow() and cursorPar()
 
 	* cursor.[Ch]: add textRow() needed members
@@ -4242,7 +4242,7 @@
 	* cursor.[Ch]: fix mathed crash
 
 	* lyxfind.C:
-	* lyxtext.h: move selectionAsText to LCursor
+	* lyxtext.h: move selectionAsText to Cursor
 
 	* output_latex.C:
 	* paragraph.C:
@@ -4284,10 +4284,10 @@
 
 2004-02-03  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* BufferView_pimpl.C (dispatch): remove call to LCursor::dispatch
+	* BufferView_pimpl.C (dispatch): remove call to Cursor::dispatch
 	on the default clause of the switch
 	* lyxfunc.C (dispatch): call BufferView::dispatch if the event
-	wasn't catched by LCursor::dispatch
+	wasn't catched by Cursor::dispatch
 
 2004-02-03  André Pönitz  <poenitz@gmx.net>
 
@@ -4474,7 +4474,7 @@
 	* text2.C:
 	* text3.C:
 	* undo.[Ch]: lots of IU. Shift selection stuff from the BufferView to
-	  LCursor and mathcursor parts to LCursor and InsetBase.
+	  Cursor and mathcursor parts to Cursor and InsetBase.
 
 2004-01-15  André Pönitz  <poenitz@gmx.net>
 
@@ -5024,7 +5024,7 @@
 
 2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* lyxfunc.C (dispatch): add a missing LCursor::updatePos (fix
+	* lyxfunc.C (dispatch): add a missing Cursor::updatePos (fix
 	cursor position after e.g. inset insert)
 
 2003-11-16  Alfredo Braunstein  <abraunst@lyx.org>
@@ -5226,7 +5226,7 @@
 	* cursor.[Ch]: restructure
 
 	* BufferView.[Ch]:
-	* BufferView_pimpl.[Ch]: new LCursor cursor_ member
+	* BufferView_pimpl.[Ch]: new Cursor cursor_ member
 
 	* iterators.[Ch] (asCursor): remove
 

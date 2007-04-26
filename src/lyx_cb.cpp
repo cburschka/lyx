@@ -20,7 +20,7 @@
 #include "BufferList.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
@@ -330,7 +330,7 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 	if (tmpstr.empty())
 		return;
 
-	LCursor & cur = bv->cursor();
+	Cursor & cur = bv->cursor();
 	cap::replaceSelection(cur);
 	recordUndo(cur);
 	if (asParagraph)

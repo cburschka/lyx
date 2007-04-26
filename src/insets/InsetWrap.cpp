@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "Floating.h"
@@ -64,7 +64,7 @@ InsetWrap::~InsetWrap()
 }
 
 
-void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -95,7 +95,7 @@ void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetWrap::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

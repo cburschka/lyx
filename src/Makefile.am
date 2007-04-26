@@ -137,8 +137,8 @@ lyx_SOURCES = \
 	Counters.h \
 	CoordCache.cpp \
 	CoordCache.h \
-	LCursor.cpp \
-	LCursor.h \
+	Cursor.cpp \
+	Cursor.h \
 	CursorSlice.cpp \
 	CursorSlice.h \
 	debug.cpp \

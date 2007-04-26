@@ -14,7 +14,7 @@
 #include "InsetVSpace.h"
 
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "gettext.h"
@@ -63,7 +63,7 @@ std::auto_ptr<InsetBase> InsetVSpace::doClone() const
 }
 
 
-void InsetVSpace::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

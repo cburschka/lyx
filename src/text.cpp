@@ -24,7 +24,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "ParIterator.h"
 #include "CoordCache.h"
 #include "CutAndPaste.h"
@@ -579,7 +579,7 @@ LColor_color LyXText::backgroundColor() const
 }
 
 
-void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
+void LyXText::breakParagraph(Cursor & cur, bool keep_layout)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -661,7 +661,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 
 // insert a character, moves all the following breaks in the
 // same Paragraph one to the right and make a rebreak
-void LyXText::insertChar(LCursor & cur, char_type c)
+void LyXText::insertChar(Cursor & cur, char_type c)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(c != Paragraph::META_INSET);
@@ -768,11 +768,11 @@ void LyXText::charInserted()
 // the cursor set functions have a special mechanism. When they
 // realize, that you left an empty paragraph, they will delete it.
 
-bool LyXText::cursorRightOneWord(LCursor & cur)
+bool LyXText::cursorRightOneWord(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
-	LCursor old = cur;
+	Cursor old = cur;
 
 	if (old.pos() == old.lastpos() && old.pit() != old.lastpit()) {
 		++old.pit();
@@ -789,11 +789,11 @@ bool LyXText::cursorRightOneWord(LCursor & cur)
 }
 
 
-bool LyXText::cursorLeftOneWord(LCursor & cur)
+bool LyXText::cursorLeftOneWord(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
-	LCursor old = cur;
+	Cursor old = cur;
 
 	if (old.pos() == 0 && old.pit() != 0) {
 		--old.pit();
@@ -810,7 +810,7 @@ bool LyXText::cursorLeftOneWord(LCursor & cur)
 }
 
 
-void LyXText::selectWord(LCursor & cur, word_location loc)
+void LyXText::selectWord(Cursor & cur, word_location loc)
 {
 	BOOST_ASSERT(this == cur.text());
 	CursorSlice from = cur.top();
@@ -829,7 +829,7 @@ void LyXText::selectWord(LCursor & cur, word_location loc)
 
 // Select the word currently under the cursor when no
 // selection is currently set
-bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
+bool LyXText::selectWordWhenUnderCursor(Cursor & cur, word_location loc)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.selection())
@@ -839,7 +839,7 @@ bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 }
 
 
-void LyXText::acceptOrRejectChanges(LCursor & cur, ChangeOp op)
+void LyXText::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -1014,7 +1014,7 @@ void LyXText::rejectChanges(BufferParams const & bparams)
 
 
 // Delete from cursor up to the end of the current or next word.
-void LyXText::deleteWordForward(LCursor & cur)
+void LyXText::deleteWordForward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
@@ -1031,7 +1031,7 @@ void LyXText::deleteWordForward(LCursor & cur)
 
 
 // Delete from cursor to start of current or prior word.
-void LyXText::deleteWordBackward(LCursor & cur)
+void LyXText::deleteWordBackward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
@@ -1048,7 +1048,7 @@ void LyXText::deleteWordBackward(LCursor & cur)
 
 
 // Kill to end of line.
-void LyXText::deleteLineForward(LCursor & cur)
+void LyXText::deleteLineForward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0) {
@@ -1069,7 +1069,7 @@ void LyXText::deleteLineForward(LCursor & cur)
 }
 
 
-void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
+void LyXText::changeCase(Cursor & cur, LyXText::TextCase action)
 {
 	BOOST_ASSERT(this == cur.text());
 	CursorSlice from;
@@ -1170,7 +1170,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 }
 
 
-bool LyXText::erase(LCursor & cur)
+bool LyXText::erase(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	bool needsUpdate = false;
@@ -1211,7 +1211,7 @@ bool LyXText::erase(LCursor & cur)
 }
 
 
-bool LyXText::backspacePos0(LCursor & cur)
+bool LyXText::backspacePos0(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.pit() == 0)
@@ -1223,7 +1223,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 	LyXTextClass const & tclass = bufparams.getLyXTextClass();
 	ParagraphList & plist = cur.text()->paragraphs();
 	Paragraph const & par = cur.paragraph();
-	LCursor prevcur = cur;
+	Cursor prevcur = cur;
 	--prevcur.pit();
 	prevcur.pos() = prevcur.lastpos();
 	Paragraph const & prevpar = prevcur.paragraph();
@@ -1262,7 +1262,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 }
 
 
-bool LyXText::backspace(LCursor & cur)
+bool LyXText::backspace(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	bool needsUpdate = false;
@@ -1306,7 +1306,7 @@ bool LyXText::backspace(LCursor & cur)
 }
 
 
-bool LyXText::dissolveInset(LCursor & cur) {
+bool LyXText::dissolveInset(Cursor & cur) {
 	BOOST_ASSERT(this == cur.text());
 
 	if (isMainText(*cur.bv().buffer()) || cur.inset().nargs() != 1)
@@ -1360,7 +1360,7 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 // only used for inset right now. should also be used for main text
 void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 {
-	LCursor & cur = pi.base.bv->cursor();
+	Cursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
 		return;
 	if (!ptr_cmp(cur.text(), this))
@@ -1692,7 +1692,7 @@ int LyXText::cursorY(BufferView const & bv, CursorSlice const & sl, bool boundar
 
 
 // Returns the current font and depth as a message.
-docstring LyXText::currentState(LCursor & cur)
+docstring LyXText::currentState(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	Buffer & buf = cur.buffer();
@@ -1771,7 +1771,7 @@ docstring LyXText::currentState(LCursor & cur)
 }
 
 
-docstring LyXText::getPossibleLabel(LCursor & cur) const
+docstring LyXText::getPossibleLabel(Cursor & cur) const
 {
 	pit_type pit = cur.pit();
 
@@ -1834,7 +1834,7 @@ docstring LyXText::getPossibleLabel(LCursor & cur) const
 }
 
 
-void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
+void LyXText::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
 {
 	BOOST_ASSERT(this == cur.text());
 	pit_type pit = getPitNearY(cur.bv(), y);
@@ -1884,7 +1884,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 }
 
 
-void LyXText::charsTranspose(LCursor & cur)
+void LyXText::charsTranspose(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 

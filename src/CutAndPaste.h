@@ -24,7 +24,7 @@ class Buffer;
 class ErrorList;
 class InsetText;
 class LyXTextClass;
-class LCursor;
+class Cursor;
 class ParagraphList;
 
 namespace cap {
@@ -42,11 +42,11 @@ docstring getSelection(Buffer const & buffer, size_t sel_index);
  * cursor; otherwise set cursor before anchor.
  * Does handle undo.
  */
-void replaceSelectionWithString(LCursor & cur, docstring const & str,
+void replaceSelectionWithString(Cursor & cur, docstring const & str,
 				bool backwards);
 /// If a selection exists, delete it without pushing it to the cut buffer.
 /// Does handle undo.
-void replaceSelection(LCursor & cur);
+void replaceSelection(Cursor & cur);
 
 /**
  * Cut the current selection and possibly push it to the cut buffer and
@@ -58,37 +58,37 @@ void replaceSelection(LCursor & cur);
  *                system clipboard. Set this to false to only delete the
  *                selection. 
  */
-void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
+void cutSelection(Cursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
-void copySelection(LCursor & cur);
+void copySelection(Cursor & cur);
 /**
  * Push the current selection to the cut buffer and the system clipboard.
  * \param plaintext plain text version of the selection for the system
  *        clipboard
  */
-void copySelection(LCursor & cur, docstring const & plaintext);
+void copySelection(Cursor & cur, docstring const & plaintext);
 /// Push the selection buffer to the cut buffer.
 void copySelectionToStack();
 /// Store the current selection in the internal selection buffer
-void saveSelection(LCursor & cur);
+void saveSelection(Cursor & cur);
 /// Is a selection available in our selection buffer?
 bool selection();
 /// Clear our selection buffer
 void clearSelection();
 /// Paste the current selection at \p cur
 /// Does handle undo. Does only work in text, not mathed.
-void pasteSelection(LCursor & cur, ErrorList &);
+void pasteSelection(Cursor & cur, ErrorList &);
 /// Replace the current selection with the clipboard contents (internal or
 /// external: which is newer)
 /// Does handle undo. Does only work in text, not mathed.
-void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs = true);
+void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs = true);
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
-void pasteFromStack(LCursor & cur, ErrorList & errorList, size_t sel_index);
+void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);
 
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.
-void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
+void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 			textclass_type textclass, ErrorList & errorList);
 
 
@@ -101,20 +101,20 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.
-docstring grabSelection(LCursor const & cur);
+docstring grabSelection(Cursor const & cur);
 /// Erase the current selection.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
-void eraseSelection(LCursor & cur);
+void eraseSelection(Cursor & cur);
 /// Erase the selection and return it as a string.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
-docstring grabAndEraseSelection(LCursor & cur);
+docstring grabAndEraseSelection(Cursor & cur);
 // other selection methods
 /// Erase the selection if one exists.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
-void selDel(LCursor & cur);
+void selDel(Cursor & cur);
 /// Clear or delete the selection if one exists, depending on lyxrc setting.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
-void selClearOrDel(LCursor & cur);
+void selClearOrDel(Cursor & cur);
 
 /** Tabular has its own paste stack for multiple cells
  *  but it needs to know whether there is a more recent

@@ -16,7 +16,7 @@
 #include "lyxfind.h"
 
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "buffer_funcs.h"
 #include "BufferView.h"
@@ -224,7 +224,7 @@ int replace(BufferView * bv, docstring const & searchstr,
 	if (!stringSelected(bv, searchstr, cs, mw, fw))
 		return 0;
 
-	LCursor & cur = bv->cursor();
+	Cursor & cur = bv->cursor();
 	cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);

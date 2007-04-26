@@ -15,7 +15,7 @@
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -58,7 +58,7 @@ void RefInset::infoize(odocstream & os) const
 }
 
 
-void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void RefInset::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
@@ -105,7 +105,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool RefInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool RefInset::getStatus(Cursor & cur, FuncRequest const & cmd,
 			 FuncStatus & status) const
 {
 	switch (cmd.action) {

@@ -61,7 +61,7 @@ namespace frontend { class Painter; }
 
 
 class InsetTabular;
-class LCursor;
+class Cursor;
 class OutputParams;
 
 //
@@ -294,9 +294,9 @@ public:
 	void setVAlignment(idx_type cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	void setColumnPWidth(LCursor &, idx_type, LyXLength const &);
+	void setColumnPWidth(Cursor &, idx_type, LyXLength const &);
 	///
-	bool setMColumnPWidth(LCursor &, idx_type, LyXLength const &);
+	bool setMColumnPWidth(Cursor &, idx_type, LyXLength const &);
 	///
 	void setAlignSpecial(idx_type cell, docstring const & special,
 			     Feature what);
@@ -711,9 +711,9 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	bool tabularFeatures(LCursor & cur, std::string const & what);
+	bool tabularFeatures(Cursor & cur, std::string const & what);
 	///
-	void tabularFeatures(LCursor & cur, Tabular::Feature feature,
+	void tabularFeatures(Cursor & cur, Tabular::Feature feature,
 			     std::string const & val = std::string());
 	///
 	void openLayoutDialog(BufferView *) const;
@@ -749,9 +749,9 @@ public:
 	/// set the owning buffer
 	void buffer(Buffer const * buf);
 	/// lock cell with given index
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
 
@@ -764,9 +764,9 @@ protected:
 	///
 	InsetTabular(InsetTabular const &);
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	int scroll() const { return scx_; }
 
@@ -777,33 +777,33 @@ private:
 	void drawCellLines(frontend::Painter &, int x, int y, row_type row,
 			   idx_type cell, bool erased) const;
 	///
-	void setCursorFromCoordinates(LCursor & cur, int x, int y) const;
+	void setCursorFromCoordinates(Cursor & cur, int x, int y) const;
 
 	///
-	void moveNextCell(LCursor & cur);
+	void moveNextCell(Cursor & cur);
 	///
-	void movePrevCell(LCursor & cur);
+	void movePrevCell(Cursor & cur);
 	///
 	int getCellXPos(idx_type cell) const;
 	///
-	void resetPos(LCursor & cur) const;
+	void resetPos(Cursor & cur) const;
 	///
 	void removeTabularRow();
 	///
-	bool copySelection(LCursor & cur);
+	bool copySelection(Cursor & cur);
 	///
-	bool pasteClipboard(LCursor & cur);
+	bool pasteClipboard(Cursor & cur);
 	///
-	void cutSelection(LCursor & cur);
+	void cutSelection(Cursor & cur);
 	///
-	bool isRightToLeft(LCursor & cur) const;
+	bool isRightToLeft(Cursor & cur) const;
 	///
-	void getSelection(LCursor & cur, row_type & rs, row_type & re,
+	void getSelection(Cursor & cur, row_type & rs, row_type & re,
 			  col_type & cs, col_type & ce) const;
 	///
 	bool insertPlaintextString(BufferView &, docstring const & buf, bool usePaste);
 	/// are we operating on several cells?
-	bool tablemode(LCursor & cur) const;
+	bool tablemode(Cursor & cur) const;
 
 	/// return the "Manhattan distance" to nearest corner
 	int dist(BufferView &, idx_type cell, int x, int y) const;

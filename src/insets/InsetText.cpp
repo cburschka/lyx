@@ -18,7 +18,7 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "CutAndPaste.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
@@ -237,7 +237,7 @@ docstring const InsetText::editMessage() const
 }
 
 
-void InsetText::edit(LCursor & cur, bool left)
+void InsetText::edit(Cursor & cur, bool left)
 {
 	//lyxerr << "InsetText: edit left/right" << endl;
 	int const pit = left ? 0 : paragraphs().size() - 1;
@@ -248,13 +248,13 @@ void InsetText::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetText::editXY(Cursor & cur, int x, int y)
 {
 	return text_.editXY(cur, x, y);
 }
 
 
-void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION
 			     << " [ cmd.action = "
@@ -263,7 +263,7 @@ void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetText::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	return text_.getStatus(cur, cmd, status);

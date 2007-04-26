@@ -17,7 +17,7 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
@@ -104,7 +104,7 @@ int InsetMathMBox::latex(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetMathMBox::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathMBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	text_.dispatch(cur, cmd);
 }

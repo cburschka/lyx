@@ -16,7 +16,7 @@
 #include "CoordCache.h"
 #include "BufferView.h"
 #include "LColor.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
@@ -135,7 +135,7 @@ InsetBase::Code InsetBase::translate(std::string const & name)
 }
 
 
-void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetBase::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
@@ -143,14 +143,14 @@ void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetBase::doDispatch(LCursor & cur, FuncRequest &)
+void InsetBase::doDispatch(Cursor & cur, FuncRequest &)
 {
 	cur.noUpdate();
 	cur.undispatched();
 }
 
 
-bool InsetBase::getStatus(LCursor &, FuncRequest const & cmd,
+bool InsetBase::getStatus(Cursor &, FuncRequest const & cmd,
 	FuncStatus & flag) const
 {
 	// LFUN_INSET_APPLY is sent from the dialogs when the data should
@@ -182,14 +182,14 @@ bool InsetBase::getStatus(LCursor &, FuncRequest const & cmd,
 }
 
 
-void InsetBase::edit(LCursor &, bool)
+void InsetBase::edit(Cursor &, bool)
 {
 	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
 			      << ": edit left/right" << std::endl;
 }
 
 
-InsetBase * InsetBase::editXY(LCursor &, int x, int y)
+InsetBase * InsetBase::editXY(Cursor &, int x, int y)
 {
 	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
 			      << ": x=" << x << " y= " << y
@@ -216,7 +216,7 @@ bool InsetBase::idxBetween(idx_type idx, idx_type from, idx_type to) const
 }
 
 
-bool InsetBase::idxUpDown(LCursor &, bool) const
+bool InsetBase::idxUpDown(Cursor &, bool) const
 {
 	return false;
 }

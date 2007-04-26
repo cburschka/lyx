@@ -42,13 +42,13 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 	/// target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(LCursor &) const;
+	bool idxFirst(Cursor &) const;
 	/// target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(LCursor &) const;
+	bool idxLast(Cursor &) const;
 	///
-	virtual bool notifyCursorLeaves(LCursor &);
+	virtual bool notifyCursorLeaves(Cursor &);
 	///
 	docstring name() const;
 	///

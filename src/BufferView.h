@@ -16,7 +16,7 @@
 #define BUFFER_VIEW_H
 
 #include "CoordCache.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "MetricsInfo.h"
 #include "TextMetrics.h"
 #include "UpdateFlags.h"
@@ -41,7 +41,7 @@ class DocIterator;
 class FuncRequest;
 class FuncStatus;
 class Intl;
-class LCursor;
+class Cursor;
 class LyXText;
 class ParIterator;
 class ParagraphMetrics;
@@ -175,18 +175,18 @@ public:
 	pit_type anchor_ref() const;
 
 	/// access to full cursor.
-	LCursor & cursor();
+	Cursor & cursor();
 	/// access to full cursor.
-	LCursor const & cursor() const;
+	Cursor const & cursor() const;
 	/// sets cursor.
 	/// This will also open all relevant collapsable insets.
 	void setCursor(DocIterator const &);
 	/// Check deleteEmptyParagraphMechanism and update metrics if needed.
 	/// \retval true if an update was needed.
-	bool checkDepm(LCursor & cur, LCursor & old);
+	bool checkDepm(Cursor & cur, Cursor & old);
 	/// sets cursor.
 	/// This is used when handling LFUN_MOUSE_PRESS.
-	bool mouseSetCursor(LCursor & cur);
+	bool mouseSetCursor(Cursor & cur);
 
 	/// sets the selection.
 	/* When \c backwards == false, set anchor
@@ -285,7 +285,7 @@ private:
 		bool set;
 	} xsel_cache_;
 	///
-	LCursor cursor_;
+	Cursor cursor_;
 	///
 	bool multiparsel_cache_;
 	///

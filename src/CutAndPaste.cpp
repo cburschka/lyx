@@ -18,7 +18,7 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
@@ -105,7 +105,7 @@ bool checkPastePossible(int index)
 
 
 pair<PitPosPair, pit_type>
-pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
+pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		     textclass_type textclass, ErrorList & errorlist)
 {
 	Buffer const & buffer = cur.buffer();
@@ -399,7 +399,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 
 namespace cap {
 
-docstring grabAndEraseSelection(LCursor & cur)
+docstring grabAndEraseSelection(Cursor & cur)
 {
 	if (!cur.selection())
 		return docstring();
@@ -510,7 +510,7 @@ size_type numberOfSelections()
 }
 
 
-void cutSelection(LCursor & cur, bool doclear, bool realcut)
+void cutSelection(Cursor & cur, bool doclear, bool realcut)
 {
 	// This doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -587,7 +587,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 }
 
 
-void copySelection(LCursor & cur)
+void copySelection(Cursor & cur)
 {
 	copySelection(cur, cur.selectionAsString(true));
 }
@@ -595,7 +595,7 @@ void copySelection(LCursor & cur)
 
 namespace {
 
-void copySelectionToStack(LCursor & cur, CutStack & cutstack)
+void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 {
 	// this doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -642,7 +642,7 @@ void copySelectionToStack()
 }
 
 
-void copySelection(LCursor & cur, docstring const & plaintext)
+void copySelection(Cursor & cur, docstring const & plaintext)
 {
 	// In tablemode, because copy and paste actually use special table stack
 	// we do not attemp to get selected paragraphs under cursor. Instead, a 
@@ -664,7 +664,7 @@ void copySelection(LCursor & cur, docstring const & plaintext)
 }
 
 
-void saveSelection(LCursor & cur)
+void saveSelection(Cursor & cur)
 {
 	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION << ": `"
 	       << to_utf8(cur.selectionAsString(true)) << "'."
@@ -697,7 +697,7 @@ docstring getSelection(Buffer const & buf, size_t sel_index)
 }
 
 
-void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
+void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 			textclass_type textclass, ErrorList & errorList)
 {
 	if (cur.inTexted()) {
@@ -720,7 +720,7 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 }
 
 
-void pasteFromStack(LCursor & cur, ErrorList & errorList, size_t sel_index)
+void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 {
 	// this does not make sense, if there is nothing to paste
 	if (!checkPastePossible(sel_index))
@@ -734,7 +734,7 @@ void pasteFromStack(LCursor & cur, ErrorList & errorList, size_t sel_index)
 }
 
 
-void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
+void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 {
 	// Use internal clipboard if it is the most recent one
 	if (theClipboard().isInternal()) {
@@ -772,7 +772,7 @@ void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
 }
 
 
-void pasteSelection(LCursor & cur, ErrorList & errorList)
+void pasteSelection(Cursor & cur, ErrorList & errorList)
 {
 	if (selectionBuffer.empty())
 		return;
@@ -783,7 +783,7 @@ void pasteSelection(LCursor & cur, ErrorList & errorList)
 }
 
 
-void replaceSelectionWithString(LCursor & cur, docstring const & str, bool backwards)
+void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwards)
 {
 	recordUndo(cur);
 	DocIterator selbeg = cur.selectionBegin();
@@ -813,14 +813,14 @@ void replaceSelectionWithString(LCursor & cur, docstring const & str, bool backw
 }
 
 
-void replaceSelection(LCursor & cur)
+void replaceSelection(Cursor & cur)
 {
 	if (cur.selection())
 		cutSelection(cur, true, false);
 }
 
 
-void eraseSelection(LCursor & cur)
+void eraseSelection(Cursor & cur)
 {
 	//lyxerr << "cap::eraseSelection begin: " << cur << endl;
 	CursorSlice const & i1 = cur.selBegin();
@@ -854,7 +854,7 @@ void eraseSelection(LCursor & cur)
 }
 
 
-void selDel(LCursor & cur)
+void selDel(Cursor & cur)
 {
 	//lyxerr << "cap::selDel" << endl;
 	if (cur.selection())
@@ -862,7 +862,7 @@ void selDel(LCursor & cur)
 }
 
 
-void selClearOrDel(LCursor & cur)
+void selClearOrDel(Cursor & cur)
 {
 	//lyxerr << "cap::selClearOrDel" << endl;
 	if (lyxrc.auto_region_delete)
@@ -872,7 +872,7 @@ void selClearOrDel(LCursor & cur)
 }
 
 
-docstring grabSelection(LCursor const & cur)
+docstring grabSelection(Cursor const & cur)
 {
 	if (!cur.selection())
 		return docstring();

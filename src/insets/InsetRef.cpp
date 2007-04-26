@@ -12,7 +12,7 @@
 #include "InsetRef.h"
 
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "gettext.h"
@@ -42,7 +42,7 @@ InsetRef::InsetRef(InsetRef const & ir)
 {}
 
 
-void InsetRef::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:

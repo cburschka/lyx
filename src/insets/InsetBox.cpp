@@ -15,7 +15,7 @@
 #include "InsetBox.h"
 
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "debug.h"
 #include "FuncStatus.h"
@@ -206,7 +206,7 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -236,7 +236,7 @@ void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetBox::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

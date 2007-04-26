@@ -15,7 +15,7 @@
 #include "InsetNote.h"
 
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
@@ -207,7 +207,7 @@ bool InsetNote::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetNote::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -234,7 +234,7 @@ void InsetNote::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetNote::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

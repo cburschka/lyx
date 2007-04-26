@@ -21,7 +21,7 @@
 #include "LyXAction.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "Undo.h"
 
@@ -29,7 +29,7 @@
 namespace lyx {
 namespace toc {
 
-void outline(OutlineOp mode,  LCursor & cur)
+void outline(OutlineOp mode,  Cursor & cur)
 {
 	Buffer * buf = & cur.buffer();
 	pit_type & pit = cur.pit();

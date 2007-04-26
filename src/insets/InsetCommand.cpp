@@ -108,7 +108,7 @@ int InsetCommand::docbook(Buffer const &, odocstream &,
 }
 
 
-void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_REFRESH:
@@ -145,7 +145,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetCommand::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {

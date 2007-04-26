@@ -36,7 +36,7 @@ class FuncRequest;
 class FuncStatus;
 class InsetBase;
 class LColor_color;
-class LCursor;
+class Cursor;
 class PainterInfo;
 class Row;
 class RowMetrics;
@@ -64,14 +64,14 @@ public:
 		LyXFont const & font);
 
 	/// what you expect when pressing \<enter\> at cursor position
-	void breakParagraph(LCursor & cur, bool keep_layout = false);
+	void breakParagraph(Cursor & cur, bool keep_layout = false);
 
 	/// set layout over selection
 	void setLayout(Buffer const & buffer, pit_type start, pit_type end,
 		std::string const & layout);
 	/// Set given layout to current cursor position.
-	/// FIXME: replace LCursor with DocIterator.
-	void setLayout(LCursor & cur, std::string const & layout);
+	/// FIXME: replace Cursor with DocIterator.
+	void setLayout(Cursor & cur, std::string const & layout);
 
 	/// what type of depth change to make
 	enum DEPTH_CHANGE {
@@ -79,30 +79,30 @@ public:
 		DEC_DEPTH
 	};
 	/// Increase or decrease the nesting depth of the selected paragraph(s)
-	/// FIXME: replace LCursor with DocIterator.
-	void changeDepth(LCursor & cur, DEPTH_CHANGE type);
+	/// FIXME: replace Cursor with DocIterator.
+	void changeDepth(Cursor & cur, DEPTH_CHANGE type);
 
 	/// Returns whether something would be changed by changeDepth
-	/// FIXME: replace LCursor with DocIterator.
-	bool changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const;
+	/// FIXME: replace Cursor with DocIterator.
+	bool changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const;
 
 	/// Set font over selection paragraphs and rebreak.
-	/// FIXME: replace LCursor with DocIterator.
-	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
+	/// FIXME: replace Cursor with DocIterator.
+	void setFont(Cursor & cur, LyXFont const &, bool toggleall = false);
 
 	///
-	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
+	void toggleFree(Cursor & cur, LyXFont const &, bool toggleall = false);
 
 	/// ???
-	/// FIXME: replace LCursor with DocIterator.
-	docstring getStringToIndex(LCursor const & cur);
+	/// FIXME: replace Cursor with DocIterator.
+	docstring getStringToIndex(Cursor const & cur);
 
 	/// insert a character at cursor position
-	/// FIXME: replace LCursor with DocIterator.
-	void insertChar(LCursor & cur, char_type c);
+	/// FIXME: replace Cursor with DocIterator.
+	void insertChar(Cursor & cur, char_type c);
 	/// insert an inset at cursor position
-	/// FIXME: replace LCursor with DocIterator.
-	void insertInset(LCursor & cur, InsetBase * inset);
+	/// FIXME: replace Cursor with DocIterator.
+	void insertInset(Cursor & cur, InsetBase * inset);
 
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -110,10 +110,10 @@ public:
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 
 	/// try to handle that request
-	/// FIXME: replace LCursor with DocIterator.
-	void dispatch(LCursor & cur, FuncRequest & cmd);
+	/// FIXME: replace Cursor with DocIterator.
+	void dispatch(Cursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
-	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 
 	/// read-only access to individual paragraph
@@ -121,8 +121,8 @@ public:
 	/// read-write access to individual paragraph
 	Paragraph & getPar(pit_type pit) { return pars_[pit]; }
 	// Returns the current font and depth as a message.
-	/// FIXME: replace LCursor with DocIterator.
-	docstring currentState(LCursor & cur);
+	/// FIXME: replace Cursor with DocIterator.
+	docstring currentState(Cursor & cur);
 
 	/** returns row near the specified
 	  * y-coordinate in given paragraph (relative to the screen).
@@ -146,7 +146,7 @@ public:
 	 */
 	void getWord(CursorSlice & from, CursorSlice & to, word_location const);
 	/// just selects the word the cursor is in
-	void selectWord(LCursor & cur, word_location loc);
+	void selectWord(Cursor & cur, word_location loc);
 
 	/// what type of change operation to make 
 	enum ChangeOp {
@@ -154,31 +154,31 @@ public:
 		REJECT
 	};
 	/// accept or reject the selected change
-	void acceptOrRejectChanges(LCursor & cur, ChangeOp op);
+	void acceptOrRejectChanges(Cursor & cur, ChangeOp op);
 	/// accept the changes within the complete LyXText
 	void acceptChanges(BufferParams const & bparams);
 	/// reject the changes within the complete LyXText
 	void rejectChanges(BufferParams const & bparams);
 
 	/// returns true if par was empty and was removed
-	bool setCursor(LCursor & cur, pit_type par, pos_type pos,
+	bool setCursor(Cursor & cur, pit_type par, pos_type pos,
 		       bool setfont = true, bool boundary = false);
 	///
 	void setCursor(CursorSlice &, pit_type par, pos_type pos);
 	///
-	void setCursorIntern(LCursor & cur, pit_type par,
+	void setCursorIntern(Cursor & cur, pit_type par,
 		 pos_type pos, bool setfont = true, bool boundary = false);
 	///
-	void setCurrentFont(LCursor & cur);
+	void setCurrentFont(Cursor & cur);
 
 	///
-	void recUndo(LCursor & cur, pit_type first, pit_type last) const;
+	void recUndo(Cursor & cur, pit_type first, pit_type last) const;
 	///
-	void recUndo(LCursor & cur, pit_type first) const;
+	void recUndo(Cursor & cur, pit_type first) const;
 
 	/// sets cursor only within this LyXText.
 	/// x,y are screen coordinates
-	void setCursorFromCoordinates(LCursor & cur, int x, int y);
+	void setCursorFromCoordinates(Cursor & cur, int x, int y);
 
 	/// sets cursor recursively descending into nested editable insets
 	/**
@@ -189,63 +189,63 @@ public:
 	/// FIXME: move to TextMetrics.
 	/// FIXME: cleanup to use BufferView::getCoveringInset() and
 	/// setCursorFromCoordinates() instead of checkInsetHit().
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 	
 	/// Move cursor one line up.
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
 	/// FIXME: move to TextMetrics.
-	bool cursorUp(LCursor & cur);
+	bool cursorUp(Cursor & cur);
 	/// Move cursor one line down.
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
 	/// FIXME: move to TextMetrics.
-	bool cursorDown(LCursor & cur);
+	bool cursorDown(Cursor & cur);
 	/// Move cursor one position left
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
-	bool cursorLeft(LCursor & cur);
+	bool cursorLeft(Cursor & cur);
 	/// Move cursor one position right
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
-	bool cursorRight(LCursor & cur);
+	bool cursorRight(Cursor & cur);
 	///
-	bool cursorLeftOneWord(LCursor & cur);
+	bool cursorLeftOneWord(Cursor & cur);
 	///
-	bool cursorRightOneWord(LCursor & cur);
+	bool cursorRightOneWord(Cursor & cur);
 	///
-	bool cursorUpParagraph(LCursor & cur);
+	bool cursorUpParagraph(Cursor & cur);
 	///
-	bool cursorDownParagraph(LCursor & cur);
-	///
-	/// FIXME: move to TextMetrics.
-	bool cursorHome(LCursor & cur);
+	bool cursorDownParagraph(Cursor & cur);
 	///
 	/// FIXME: move to TextMetrics.
-	bool cursorEnd(LCursor & cur);
+	bool cursorHome(Cursor & cur);
 	///
-	void cursorPrevious(LCursor & cur);
+	/// FIXME: move to TextMetrics.
+	bool cursorEnd(Cursor & cur);
 	///
-	void cursorNext(LCursor & cur);
+	void cursorPrevious(Cursor & cur);
 	///
-	bool cursorTop(LCursor & cur);
+	void cursorNext(Cursor & cur);
 	///
-	bool cursorBottom(LCursor & cur);
+	bool cursorTop(Cursor & cur);
+	///
+	bool cursorBottom(Cursor & cur);
 	/// Erase character at cursor. Honour change tracking
-	/// FIXME: replace LCursor with DocIterator.
-	bool erase(LCursor & cur);
+	/// FIXME: replace Cursor with DocIterator.
+	bool erase(Cursor & cur);
 	/// Delete character before cursor. Honour CT
-	/// FIXME: replace LCursor with DocIterator.
-	bool backspace(LCursor & cur);
+	/// FIXME: replace Cursor with DocIterator.
+	bool backspace(Cursor & cur);
 	// Dissolve the inset under cursor
-	/// FIXME: replace LCursor with DocIterator.
-	bool dissolveInset(LCursor & cur);
+	/// FIXME: replace Cursor with DocIterator.
+	bool dissolveInset(Cursor & cur);
 	///
-	bool selectWordWhenUnderCursor(LCursor & cur, word_location);
+	bool selectWordWhenUnderCursor(Cursor & cur, word_location);
 	///
 	enum TextCase {
 		///
@@ -256,16 +256,16 @@ public:
 		text_uppercase = 2
 	};
 	/// Change the case of the word at cursor position.
-	void changeCase(LCursor & cur, TextCase action);
+	void changeCase(Cursor & cur, TextCase action);
 	/// Transposes the character at the cursor with the one before it
-	void charsTranspose(LCursor & cur);
+	void charsTranspose(Cursor & cur);
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
 	 last. When a paragraph is broken, the top settings rest, the bottom
 	 settings are given to the new one.
 	 */
-	void setParagraph(LCursor & cur,
+	void setParagraph(Cursor & cur,
 			  Spacing const & spacing,
 			  LyXAlignment align,
 			  docstring const & labelwidthstring,
@@ -274,11 +274,11 @@ public:
 	/* these things are for search and replace */
 
 	/// needed to insert the selection
-	/// FIXME: replace LCursor with DocIterator.
-	void insertStringAsLines(LCursor & cur, docstring const & str);
+	/// FIXME: replace Cursor with DocIterator.
+	void insertStringAsLines(Cursor & cur, docstring const & str);
 	/// needed to insert the selection
-	/// FIXME: replace LCursor with DocIterator.
-	void insertStringAsParagraphs(LCursor & cur, docstring const & str);
+	/// FIXME: replace Cursor with DocIterator.
+	void insertStringAsParagraphs(Cursor & cur, docstring const & str);
 
 	/// Returns an inset if inset was hit, or 0 if not.
 	/// \warning This method is not recursive! It will return the
@@ -324,12 +324,12 @@ public:
 	///
 	double spacing(Buffer const & buffer, Paragraph const & par) const;
 	/// make a suggestion for a label
-	/// FIXME: replace LCursor with DocIterator.
-	docstring getPossibleLabel(LCursor & cur) const;
+	/// FIXME: replace Cursor with DocIterator.
+	docstring getPossibleLabel(Cursor & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Buffer const &, Paragraph const & par) const;
 	///
-	bool checkAndActivateInset(LCursor & cur, bool front);
+	bool checkAndActivateInset(Cursor & cur, bool front);
 
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
@@ -347,10 +347,10 @@ public:
 
 	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
 	/// \retval true if a change has happened and we need a redraw.
-	/// FIXME: replace LCursor with DocIterator. This is not possible right
-	/// now because recordUndo() is called which needs a LCursor.
-	static bool deleteEmptyParagraphMechanism(LCursor & cur,
-		LCursor & old, bool & need_anchor_change);
+	/// FIXME: replace Cursor with DocIterator. This is not possible right
+	/// now because recordUndo() is called which needs a Cursor.
+	static bool deleteEmptyParagraphMechanism(Cursor & cur,
+		Cursor & old, bool & need_anchor_change);
 
 	/// delete double spaces, leading spaces, and empty paragraphs
 	/// from \first to \last paragraph
@@ -386,23 +386,23 @@ private:
 
 	// At cursor position 0, try to merge the paragraph with the one before it.
 	// Ignore change tracking, i.e., physically remove the end-of-par character
-	bool backspacePos0(LCursor & cur);
+	bool backspacePos0(Cursor & cur);
 
 	///
-	void deleteWordForward(LCursor & cur);
+	void deleteWordForward(Cursor & cur);
 	///
-	void deleteWordBackward(LCursor & cur);
+	void deleteWordBackward(Cursor & cur);
 	///
-	void deleteLineForward(LCursor & cur);
+	void deleteLineForward(Cursor & cur);
 	///
 	void charInserted();
 	/// set 'number' font property
-	void number(LCursor & cur);
+	void number(Cursor & cur);
 
 	/// paste plain text at current cursor.
 	/// \param str string to paste
 	/// \param asParagraphs whether to paste as paragraphs or as lines
-	void pasteString(LCursor & cur, docstring const & str,
+	void pasteString(Cursor & cur, docstring const & str,
 			bool asParagraphs);
 };
 

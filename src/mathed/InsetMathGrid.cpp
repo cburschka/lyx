@@ -19,7 +19,7 @@
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
 #include "LColor.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "gettext.h"
@@ -772,7 +772,7 @@ int InsetMathGrid::cellYOffset(idx_type idx) const
 }
 
 
-bool InsetMathGrid::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathGrid::idxUpDown(Cursor & cur, bool up) const
 {
 	if (up) {
 		if (cur.row() == 0)
@@ -788,7 +788,7 @@ bool InsetMathGrid::idxUpDown(LCursor & cur, bool up) const
 }
 
 
-bool InsetMathGrid::idxLeft(LCursor & cur) const
+bool InsetMathGrid::idxLeft(Cursor & cur) const
 {
 	// leave matrix if on the left hand edge
 	if (cur.col() == 0)
@@ -799,7 +799,7 @@ bool InsetMathGrid::idxLeft(LCursor & cur) const
 }
 
 
-bool InsetMathGrid::idxRight(LCursor & cur) const
+bool InsetMathGrid::idxRight(Cursor & cur) const
 {
 	// leave matrix if on the right hand edge
 	if (cur.col() + 1 == ncols())
@@ -810,7 +810,7 @@ bool InsetMathGrid::idxRight(LCursor & cur) const
 }
 
 
-bool InsetMathGrid::idxFirst(LCursor & cur) const
+bool InsetMathGrid::idxFirst(Cursor & cur) const
 {
 	switch (v_align_) {
 		case 't':
@@ -827,7 +827,7 @@ bool InsetMathGrid::idxFirst(LCursor & cur) const
 }
 
 
-bool InsetMathGrid::idxLast(LCursor & cur) const
+bool InsetMathGrid::idxLast(Cursor & cur) const
 {
 	switch (v_align_) {
 		case 't':
@@ -1012,7 +1012,7 @@ int InsetMathGrid::border() const
 }
 
 
-void InsetMathGrid::splitCell(LCursor & cur)
+void InsetMathGrid::splitCell(Cursor & cur)
 {
 	if (cur.idx() == cur.lastidx())
 		return;
@@ -1025,7 +1025,7 @@ void InsetMathGrid::splitCell(LCursor & cur)
 }
 
 
-void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathGrid: request: " << cmd << endl;
 	switch (cmd.action) {
@@ -1301,7 +1301,7 @@ void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathGrid::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action) {

@@ -15,7 +15,7 @@
 #include "MathParser.h"
 #include "MathSupport.h"
 
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "gettext.h"
 #include "Lexer.h"
@@ -78,7 +78,7 @@ auto_ptr<InsetBase> MathMacroTemplate::doClone() const
 }
 
 
-void MathMacroTemplate::edit(LCursor & cur, bool)
+void MathMacroTemplate::edit(Cursor & cur, bool)
 {
 	//lyxerr << "MathMacroTemplate: edit left/right" << endl;
 	cur.push(*this);
@@ -162,7 +162,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 #warning FIXME
 #endif
 #if 0
-	LCursor & cur = p.base.bv->cursor();
+	Cursor & cur = p.base.bv->cursor();
 	if (cur.isInside(this))
 		cur.drawSelection(pi);
 #endif

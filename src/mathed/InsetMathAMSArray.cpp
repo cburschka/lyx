@@ -101,7 +101,7 @@ void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetMathAMSArray::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathAMSArray::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {

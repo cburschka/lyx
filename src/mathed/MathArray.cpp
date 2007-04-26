@@ -21,7 +21,7 @@
 
 #include "BufferView.h"
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "LColor.h"
 

@@ -17,7 +17,7 @@
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
-#include "LCursor.h"
+#include "Cursor.h"
 
 
 namespace lyx {
@@ -88,9 +88,9 @@ public:
 
 protected:
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	docstring const getCommand() const { return p_.getCommand(); }
 	///

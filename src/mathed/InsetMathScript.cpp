@@ -17,7 +17,7 @@
 #include "InsetMathSymbol.h"
 #include "InsetMathFont.h"
 #include "DispatchResult.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "Undo.h"
@@ -70,7 +70,7 @@ InsetMathScript * InsetMathScript::asScriptInset()
 }
 
 
-bool InsetMathScript::idxFirst(LCursor & cur) const
+bool InsetMathScript::idxFirst(Cursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = 0;
@@ -78,7 +78,7 @@ bool InsetMathScript::idxFirst(LCursor & cur) const
 }
 
 
-bool InsetMathScript::idxLast(LCursor & cur) const
+bool InsetMathScript::idxLast(Cursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = nuc().size();
@@ -454,19 +454,19 @@ InsetBase::idx_type InsetMathScript::idxOfScript(bool up) const
 }
 
 
-bool InsetMathScript::idxRight(LCursor &) const
+bool InsetMathScript::idxRight(Cursor &) const
 {
 	return false;
 }
 
 
-bool InsetMathScript::idxLeft(LCursor &) const
+bool InsetMathScript::idxLeft(Cursor &) const
 {
 	return false;
 }
 
 
-bool InsetMathScript::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 {
 	// in nucleus?
 	if (cur.idx() == 0) {
@@ -647,7 +647,7 @@ void InsetMathScript::infoize2(odocstream & os) const
 }
 
 
-bool InsetMathScript::notifyCursorLeaves(LCursor & cur)
+bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 {
 	InsetMathNest::notifyCursorLeaves(cur);
 
@@ -672,12 +672,12 @@ bool InsetMathScript::notifyCursorLeaves(LCursor & cur)
 		recordUndoInset(cur);
 		removeScript(cell_1_is_up_);
 		// Let the script inset commit suicide. This is
-		// modelled on LCursor.pullArg(), but tries not to
+		// modelled on Cursor.pullArg(), but tries not to
 		// invoke notifyCursorLeaves again and does not touch
 		// cur (since the top slice will be deleted
 		// afterwards))
 		MathArray ar = cell(0);
-		LCursor tmpcur = cur;
+		Cursor tmpcur = cur;
 		tmpcur.pop();
 		tmpcur.cell().erase(tmpcur.pos());
 		tmpcur.cell().insert(tmpcur.pos(), ar);
@@ -689,7 +689,7 @@ bool InsetMathScript::notifyCursorLeaves(LCursor & cur)
 }
 
 
-void InsetMathScript::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetMathScript: request: " << cmd << std::endl;
 

@@ -85,9 +85,9 @@ public:
 	///
 	char defaultColAlign(col_type col);
 	///
-	bool idxFirst(LCursor &) const;
+	bool idxFirst(Cursor &) const;
 	///
-	bool idxLast(LCursor &) const;
+	bool idxLast(Cursor &) const;
 
 	///
 	void write(WriteStream & os) const;
@@ -112,7 +112,7 @@ public:
 	virtual void textString(Buffer const &, odocstream &) const;
 
 	/// get notification when the cursor leaves this inset
-	bool notifyCursorLeaves(LCursor & cur);
+	bool notifyCursorLeaves(Cursor & cur);
 	///
 	//bool insetAllowed(Code code) const;
 	///
@@ -124,10 +124,10 @@ public:
 protected:
 	InsetMathHull(InsetMathHull const &);
 
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 	/// do we want to handle this event?
-	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 	///
 	docstring eolString(row_type row, bool emptyline, bool fragile) const;
@@ -145,7 +145,7 @@ private:
 	///
 	docstring nicelabel(row_type row) const;
 	///
-	void doExtern(LCursor & cur, FuncRequest & func);
+	void doExtern(Cursor & cur, FuncRequest & func);
 	///
 	void glueall();
 	/*!
@@ -192,13 +192,13 @@ public:
 	///
 	virtual void mutateToText();
 	///
-	virtual void revealCodes(LCursor & cur) const;
+	virtual void revealCodes(Cursor & cur) const;
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 	///
 	bool display() const;
 	///
@@ -206,10 +206,10 @@ public:
 
 protected:
 	///
-	void handleFont(LCursor & cur, docstring const & arg,
+	void handleFont(Cursor & cur, docstring const & arg,
 		docstring const & font);
 	///
-	void handleFont2(LCursor & cur, docstring const & arg);
+	void handleFont2(Cursor & cur, docstring const & arg);
 	///
 	bool previewState(BufferView * bv) const;
 };

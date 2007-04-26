@@ -16,7 +16,7 @@
 #include "MathMacroTemplate.h"
 
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "gettext.h"
 #include "LColor.h"
@@ -163,7 +163,7 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 #warning FIXME
 #endif
 #if 0
-	LCursor & cur = p.base.bv->cursor();
+	Cursor & cur = p.base.bv->cursor();
 	if (cur.isInside(this))
 		cur.drawSelection(pi);
 #endif

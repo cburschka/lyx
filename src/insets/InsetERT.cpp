@@ -16,7 +16,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -200,7 +200,7 @@ int InsetERT::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
@@ -261,7 +261,7 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {

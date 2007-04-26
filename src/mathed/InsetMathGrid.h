@@ -150,15 +150,15 @@ public:
 	row_type row(idx_type idx) const;
 
 	///
-	bool idxUpDown(LCursor &, bool up) const;
+	bool idxUpDown(Cursor &, bool up) const;
 	///
-	bool idxLeft(LCursor &) const;
+	bool idxLeft(Cursor &) const;
 	///
-	bool idxRight(LCursor &) const;
+	bool idxRight(Cursor &) const;
 	///
-	bool idxFirst(LCursor &) const;
+	bool idxFirst(Cursor &) const;
 	///
-	bool idxLast(LCursor &) const;
+	bool idxLast(Cursor &) const;
 	///
 	bool idxDelete(idx_type & idx);
 	/// pulls cell after pressing erase
@@ -216,9 +216,9 @@ public:
 	//void octave(OctaveStream &) const;
 
 protected:
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 	/// returns x offset of cell compared to inset
 	int cellXOffset(idx_type idx) const;
@@ -232,7 +232,7 @@ protected:
 	/// extract number of columns from alignment string
 	col_type guessColumns(docstring const & halign) const;
 	/// splits cells and shifts right part to the next cell
-	void splitCell(LCursor & cur);
+	void splitCell(Cursor & cur);
 
 	/// row info.
 	/// rowinfo_[nrows()] is a dummy row used only for hlines.

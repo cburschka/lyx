@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
@@ -146,7 +146,7 @@ bool isLetter(DocIterator const & dit)
 }
 
 
-WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
+WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 {
 	BufferParams const & bp = cur.bv().buffer()->params();
 	bool inword = false;
@@ -199,7 +199,7 @@ void ControlSpellchecker::check()
 
 	SpellBase::Result res = SpellBase::OK;
 
-	LCursor cur = kernel().bufferview()->cursor();
+	Cursor cur = kernel().bufferview()->cursor();
 	while (cur && cur.pos() && isLetter(cur)) {
 		cur.backwardPos();
 	}

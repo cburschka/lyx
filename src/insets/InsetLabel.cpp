@@ -59,7 +59,7 @@ docstring const InsetLabel::getScreenLabel(Buffer const &) const
 }
 
 
-void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

@@ -15,7 +15,7 @@
 
 #include "Buffer.h"
 #include "CoordCache.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -844,7 +844,7 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 	RowList::const_iterator rit, LyXText const & text)
 {
 	// Is there a cursor on this row (or inside inset on row)
-	LCursor & cur = pi.base.bv->cursor();
+	Cursor & cur = pi.base.bv->cursor();
 	for (size_type d = 0; d < cur.depth(); ++d) {
 		CursorSlice const & sl = cur[d];
 		if (sl.text() == &text
@@ -862,7 +862,7 @@ bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
 {
 	// Is there a cursor inside an inset on this row, and is this inset
 	// the only "character" on this row
-	LCursor & cur = pi.base.bv->cursor();
+	Cursor & cur = pi.base.bv->cursor();
 	if (rit->pos() + 1 != rit->endpos())
 		return false;
 	for (size_type d = 0; d < cur.depth(); d++) {
@@ -880,7 +880,7 @@ bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
 bool inNarrowInset(PainterInfo & pi)
 {
 	// check whether the current inset is nested in a non-wide inset
-	LCursor & cur = pi.base.bv->cursor();
+	Cursor & cur = pi.base.bv->cursor();
 	for (int i = cur.depth() - 1; --i >= 0; ) {
 		InsetBase * const in = &cur[i].inset();
 		if (in) {

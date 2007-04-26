@@ -1,5 +1,5 @@
 /**
- * \file LCursor.cpp
+ * \file Cursor.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,7 +15,7 @@
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -80,7 +80,7 @@ namespace {
 
 	// Find position closest to (x, y) in cell given by iter.
 	// Used only in mathed
-	DocIterator bruteFind2(LCursor const & c, int x, int y)
+	DocIterator bruteFind2(Cursor const & c, int x, int y)
 	{
 		double best_dist = std::numeric_limits<double>::max();
 
@@ -130,7 +130,7 @@ namespace {
 
 
 	/// moves position closest to (x, y) in given box
-	bool bruteFind(LCursor & cursor,
+	bool bruteFind(Cursor & cursor,
 		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	{
 		BOOST_ASSERT(!cursor.empty());
@@ -186,7 +186,7 @@ namespace {
 
 
 	/// moves position closest to (x, y) in given box
-	bool bruteFind3(LCursor & cur, int x, int y, bool up)
+	bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	{
 		BufferView & bv = cur.bv();
 		int ylow  = up ? 0 : y + 1;
@@ -250,13 +250,13 @@ namespace {
 
 // be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
-LCursor::LCursor(BufferView & bv)
+Cursor::Cursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1),
 	  selection_(false), mark_(false), logicalpos_(false)
 {}
 
 
-void LCursor::reset(InsetBase & inset)
+void Cursor::reset(InsetBase & inset)
 {
 	clear();
 	push_back(CursorSlice(inset));
@@ -268,13 +268,13 @@ void LCursor::reset(InsetBase & inset)
 
 
 // this (intentionally) does neither touch anchor nor selection status
-void LCursor::setCursor(DocIterator const & cur)
+void Cursor::setCursor(DocIterator const & cur)
 {
 	DocIterator::operator=(cur);
 }
 
 
-void LCursor::dispatch(FuncRequest const & cmd0)
+void Cursor::dispatch(FuncRequest const & cmd0)
 {
 	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
 			     << " cmd: " << cmd0 << '\n'
@@ -284,10 +284,10 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 
 	fixIfBroken();
 	FuncRequest cmd = cmd0;
-	LCursor safe = *this;
+	Cursor safe = *this;
 
 	for (; depth(); pop()) {
-		LYXERR(Debug::DEBUG) << "LCursor::dispatch: cmd: "
+		LYXERR(Debug::DEBUG) << "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
@@ -313,20 +313,20 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 }
 
 
-DispatchResult LCursor::result() const
+DispatchResult Cursor::result() const
 {
 	return disp_;
 }
 
 
-BufferView & LCursor::bv() const
+BufferView & Cursor::bv() const
 {
 	BOOST_ASSERT(bv_);
 	return *bv_;
 }
 
 
-Buffer & LCursor::buffer() const
+Buffer & Cursor::buffer() const
 {
 	BOOST_ASSERT(bv_);
 	BOOST_ASSERT(bv_->buffer());
@@ -334,20 +334,20 @@ Buffer & LCursor::buffer() const
 }
 
 
-void LCursor::pop()
+void Cursor::pop()
 {
 	BOOST_ASSERT(depth() >= 1);
 	pop_back();
 }
 
 
-void LCursor::push(InsetBase & p)
+void Cursor::push(InsetBase & p)
 {
 	push_back(CursorSlice(p));
 }
 
 
-void LCursor::pushLeft(InsetBase & p)
+void Cursor::pushLeft(InsetBase & p)
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Entering inset " << t << " left" << endl;
@@ -356,7 +356,7 @@ void LCursor::pushLeft(InsetBase & p)
 }
 
 
-bool LCursor::popLeft()
+bool Cursor::popLeft()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the left" << endl;
@@ -368,7 +368,7 @@ bool LCursor::popLeft()
 }
 
 
-bool LCursor::popRight()
+bool Cursor::popRight()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the right" << endl;
@@ -382,7 +382,7 @@ bool LCursor::popRight()
 }
 
 
-int LCursor::currentMode()
+int Cursor::currentMode()
 {
 	BOOST_ASSERT(!empty());
 	for (int i = depth() - 1; i >= 0; --i) {
@@ -394,7 +394,7 @@ int LCursor::currentMode()
 }
 
 
-void LCursor::getPos(int & x, int & y) const
+void Cursor::getPos(int & x, int & y) const
 {
 	Point p = bv_funcs::getPos(bv(), *this, boundary());
 	x = p.x_;
@@ -402,7 +402,7 @@ void LCursor::getPos(int & x, int & y) const
 }
 
 
-Row const & LCursor::textRow() const
+Row const & Cursor::textRow() const
 {
 	ParagraphMetrics const & pm = bv().parMetrics(text(), pit());
 	BOOST_ASSERT(!pm.rows().empty());
@@ -410,14 +410,14 @@ Row const & LCursor::textRow() const
 }
 
 
-void LCursor::resetAnchor()
+void Cursor::resetAnchor()
 {
 	anchor_ = *this;
 }
 
 
 
-bool LCursor::posLeft()
+bool Cursor::posLeft()
 {
 	if (pos() == 0)
 		return false;
@@ -426,7 +426,7 @@ bool LCursor::posLeft()
 }
 
 
-bool LCursor::posRight()
+bool Cursor::posRight()
 {
 	if (pos() == lastpos())
 		return false;
@@ -435,7 +435,7 @@ bool LCursor::posRight()
 }
 
 
-CursorSlice LCursor::anchor() const
+CursorSlice Cursor::anchor() const
 {
 	BOOST_ASSERT(anchor_.depth() >= depth());
 	CursorSlice normal = anchor_[depth() - 1];
@@ -447,7 +447,7 @@ CursorSlice LCursor::anchor() const
 }
 
 
-CursorSlice LCursor::selBegin() const
+CursorSlice Cursor::selBegin() const
 {
 	if (!selection())
 		return top();
@@ -455,7 +455,7 @@ CursorSlice LCursor::selBegin() const
 }
 
 
-CursorSlice LCursor::selEnd() const
+CursorSlice Cursor::selEnd() const
 {
 	if (!selection())
 		return top();
@@ -463,7 +463,7 @@ CursorSlice LCursor::selEnd() const
 }
 
 
-DocIterator LCursor::selectionBegin() const
+DocIterator Cursor::selectionBegin() const
 {
 	if (!selection())
 		return *this;
@@ -473,7 +473,7 @@ DocIterator LCursor::selectionBegin() const
 }
 
 
-DocIterator LCursor::selectionEnd() const
+DocIterator Cursor::selectionEnd() const
 {
 	if (!selection())
 		return *this;
@@ -486,7 +486,7 @@ DocIterator LCursor::selectionEnd() const
 }
 
 
-void LCursor::setSelection()
+void Cursor::setSelection()
 {
 	selection() = true;
 	// A selection with no contents is not a selection
@@ -498,7 +498,7 @@ void LCursor::setSelection()
 }
 
 
-void LCursor::setSelection(DocIterator const & where, int n)
+void Cursor::setSelection(DocIterator const & where, int n)
 {
 	setCursor(where);
 	selection() = true;
@@ -507,7 +507,7 @@ void LCursor::setSelection(DocIterator const & where, int n)
 }
 
 
-void LCursor::clearSelection()
+void Cursor::clearSelection()
 {
 	selection() = false;
 	mark() = false;
@@ -515,26 +515,26 @@ void LCursor::clearSelection()
 }
 
 
-int & LCursor::x_target()
+int & Cursor::x_target()
 {
 	return x_target_;
 }
 
 
-int LCursor::x_target() const
+int Cursor::x_target() const
 {
 	return x_target_;
 }
 
 
-void LCursor::clearTargetX()
+void Cursor::clearTargetX()
 {
 	x_target_ = -1;
 }
 
 
 
-void LCursor::info(odocstream & os) const
+void Cursor::info(odocstream & os) const
 {
 	for (int i = 1, n = depth(); i < n; ++i) {
 		operator[](i).inset().infoize(os);
@@ -551,9 +551,9 @@ void LCursor::info(odocstream & os) const
 }
 
 
-bool LCursor::selHandle(bool sel)
+bool Cursor::selHandle(bool sel)
 {
-	//lyxerr << "LCursor::selHandle" << endl;
+	//lyxerr << "Cursor::selHandle" << endl;
 	if (sel == selection())
 		return false;
 
@@ -564,7 +564,7 @@ bool LCursor::selHandle(bool sel)
 }
 
 
-std::ostream & operator<<(std::ostream & os, LCursor const & cur)
+std::ostream & operator<<(std::ostream & os, Cursor const & cur)
 {
 	os << "\n cursor:                                | anchor:\n";
 	for (size_t i = 0, n = cur.depth(); i != n; ++i) {
@@ -608,7 +608,7 @@ namespace lyx {
 //#define FILEDEBUG 1
 
 
-bool LCursor::isInside(InsetBase const * p)
+bool Cursor::isInside(InsetBase const * p)
 {
 	for (size_t i = 0; i != depth(); ++i)
 		if (&operator[](i).inset() == p)
@@ -617,7 +617,7 @@ bool LCursor::isInside(InsetBase const * p)
 }
 
 
-void LCursor::leaveInset(InsetBase const & inset)
+void Cursor::leaveInset(InsetBase const & inset)
 {
 	for (size_t i = 0; i != depth(); ++i) {
 		if (&operator[](i).inset() == &inset) {
@@ -628,7 +628,7 @@ void LCursor::leaveInset(InsetBase const & inset)
 }
 
 
-bool LCursor::openable(MathAtom const & t) const
+bool Cursor::openable(MathAtom const & t) const
 {
 	if (!t->isActive())
 		return false;
@@ -649,7 +649,7 @@ bool LCursor::openable(MathAtom const & t) const
 }
 
 
-void LCursor::setScreenPos(int x, int y)
+void Cursor::setScreenPos(int x, int y)
 {
 	x_target() = x;
 	bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
@@ -657,42 +657,42 @@ void LCursor::setScreenPos(int x, int y)
 
 
 
-void LCursor::plainErase()
+void Cursor::plainErase()
 {
 	cell().erase(pos());
 }
 
 
-void LCursor::markInsert()
+void Cursor::markInsert()
 {
 	insert(char_type(0));
 }
 
 
-void LCursor::markErase()
+void Cursor::markErase()
 {
 	cell().erase(pos());
 }
 
 
-void LCursor::plainInsert(MathAtom const & t)
+void Cursor::plainInsert(MathAtom const & t)
 {
 	cell().insert(pos(), t);
 	++pos();
 }
 
 
-void LCursor::insert(docstring const & str)
+void Cursor::insert(docstring const & str)
 {
 	for_each(str.begin(), str.end(),
-		 boost::bind(static_cast<void(LCursor::*)(char_type)>
-			     (&LCursor::insert), this, _1));
+		 boost::bind(static_cast<void(Cursor::*)(char_type)>
+			     (&Cursor::insert), this, _1));
 }
 
 
-void LCursor::insert(char_type c)
+void Cursor::insert(char_type c)
 {
-	//lyxerr << "LCursor::insert char '" << c << "'" << endl;
+	//lyxerr << "Cursor::insert char '" << c << "'" << endl;
 	BOOST_ASSERT(!empty());
 	if (inMathed()) {
 		cap::selClearOrDel(*this);
@@ -703,16 +703,16 @@ void LCursor::insert(char_type c)
 }
 
 
-void LCursor::insert(MathAtom const & t)
+void Cursor::insert(MathAtom const & t)
 {
-	//lyxerr << "LCursor::insert MathAtom '" << t << "'" << endl;
+	//lyxerr << "Cursor::insert MathAtom '" << t << "'" << endl;
 	macroModeClose();
 	cap::selClearOrDel(*this);
 	plainInsert(t);
 }
 
 
-void LCursor::insert(InsetBase * inset)
+void Cursor::insert(InsetBase * inset)
 {
 	if (inMathed())
 		insert(MathAtom(inset));
@@ -721,7 +721,7 @@ void LCursor::insert(InsetBase * inset)
 }
 
 
-void LCursor::niceInsert(docstring const & t)
+void Cursor::niceInsert(docstring const & t)
 {
 	MathArray ar;
 	asArray(t, ar);
@@ -732,7 +732,7 @@ void LCursor::niceInsert(docstring const & t)
 }
 
 
-void LCursor::niceInsert(MathAtom const & t)
+void Cursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
 	docstring const safe = cap::grabAndEraseSelection(*this);
@@ -751,7 +751,7 @@ void LCursor::niceInsert(MathAtom const & t)
 }
 
 
-void LCursor::insert(MathArray const & ar)
+void Cursor::insert(MathArray const & ar)
 {
 	macroModeClose();
 	if (selection())
@@ -761,7 +761,7 @@ void LCursor::insert(MathArray const & ar)
 }
 
 
-bool LCursor::backspace()
+bool Cursor::backspace()
 {
 	autocorrect() = false;
 
@@ -813,7 +813,7 @@ bool LCursor::backspace()
 }
 
 
-bool LCursor::erase()
+bool Cursor::erase()
 {
 	autocorrect() = false;
 	if (inMacroMode())
@@ -861,7 +861,7 @@ bool LCursor::erase()
 }
 
 
-bool LCursor::up()
+bool Cursor::up()
 {
 	macroModeClose();
 	DocIterator save = *this;
@@ -873,7 +873,7 @@ bool LCursor::up()
 }
 
 
-bool LCursor::down()
+bool Cursor::down()
 {
 	macroModeClose();
 	DocIterator save = *this;
@@ -885,7 +885,7 @@ bool LCursor::down()
 }
 
 
-bool LCursor::macroModeClose()
+bool Cursor::macroModeClose()
 {
 	if (!inMacroMode())
 		return false;
@@ -912,15 +912,15 @@ bool LCursor::macroModeClose()
 }
 
 
-docstring LCursor::macroName()
+docstring Cursor::macroName()
 {
 	return inMacroMode() ? activeMacro()->name() : docstring();
 }
 
 
-void LCursor::handleNest(MathAtom const & a, int c)
+void Cursor::handleNest(MathAtom const & a, int c)
 {
-	//lyxerr << "LCursor::handleNest: " << c << endl;
+	//lyxerr << "Cursor::handleNest: " << c << endl;
 	MathAtom t = a;
 	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
 	insert(t);
@@ -929,7 +929,7 @@ void LCursor::handleNest(MathAtom const & a, int c)
 }
 
 
-int LCursor::targetX() const
+int Cursor::targetX() const
 {
 	if (x_target() != -1)
 		return x_target();
@@ -940,7 +940,7 @@ int LCursor::targetX() const
 }
 
 
-void LCursor::setTargetX()
+void Cursor::setTargetX()
 {
 	int x;
 	int y;
@@ -949,7 +949,7 @@ void LCursor::setTargetX()
 }
 
 
-bool LCursor::inMacroMode() const
+bool Cursor::inMacroMode() const
 {
 	if (pos() == 0)
 		return false;
@@ -958,13 +958,13 @@ bool LCursor::inMacroMode() const
 }
 
 
-InsetMathUnknown * LCursor::activeMacro()
+InsetMathUnknown * Cursor::activeMacro()
 {
 	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : 0;
 }
 
 
-void LCursor::pullArg()
+void Cursor::pullArg()
 {
 #ifdef WITH_WARNINGS
 #warning Look here
@@ -980,7 +980,7 @@ void LCursor::pullArg()
 }
 
 
-void LCursor::touch()
+void Cursor::touch()
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -994,7 +994,7 @@ void LCursor::touch()
 }
 
 
-void LCursor::normalize()
+void Cursor::normalize()
 {
 	if (idx() > lastidx()) {
 		lyxerr << "this should not really happen - 1: "
@@ -1016,7 +1016,7 @@ void LCursor::normalize()
 }
 
 
-bool LCursor::goUpDown(bool up)
+bool Cursor::goUpDown(bool up)
 {
 	// Be warned: The 'logic' implemented in this function is highly
 	// fragile. A distance of one pixel or a '<' vs '<=' _really
@@ -1111,7 +1111,7 @@ bool LCursor::goUpDown(bool up)
 }
 
 
-void LCursor::handleFont(string const & font)
+void Cursor::handleFont(string const & font)
 {
 	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION << ": " << font << endl;
 	docstring safe;
@@ -1146,19 +1146,19 @@ void LCursor::handleFont(string const & font)
 }
 
 
-void LCursor::message(docstring const & msg) const
+void Cursor::message(docstring const & msg) const
 {
 	theLyXFunc().setMessage(msg);
 }
 
 
-void LCursor::errorMessage(docstring const & msg) const
+void Cursor::errorMessage(docstring const & msg) const
 {
 	theLyXFunc().setErrorMessage(msg);
 }
 
 
-docstring LCursor::selectionAsString(bool label) const
+docstring Cursor::selectionAsString(bool label) const
 {
 	if (!selection())
 		return docstring();
@@ -1199,7 +1199,7 @@ docstring LCursor::selectionAsString(bool label) const
 }
 
 
-docstring LCursor::currentState()
+docstring Cursor::currentState()
 {
 	if (inMathed()) {
 		odocstringstream os;
@@ -1214,13 +1214,13 @@ docstring LCursor::currentState()
 }
 
 
-docstring LCursor::getPossibleLabel()
+docstring Cursor::getPossibleLabel()
 {
 	return inMathed() ? from_ascii("eq:") : text()->getPossibleLabel(*this);
 }
 
 
-Encoding const * LCursor::getEncoding() const
+Encoding const * Cursor::getEncoding() const
 {
 	if (empty())
 		return 0;
@@ -1240,31 +1240,31 @@ Encoding const * LCursor::getEncoding() const
 }
 
 
-void LCursor::undispatched()
+void Cursor::undispatched()
 {
 	disp_.dispatched(false);
 }
 
 
-void LCursor::dispatched()
+void Cursor::dispatched()
 {
 	disp_.dispatched(true);
 }
 
 
-void LCursor::updateFlags(Update::flags f)
+void Cursor::updateFlags(Update::flags f)
 {
 	disp_.update(f);
 }
 
 
-void LCursor::noUpdate()
+void Cursor::noUpdate()
 {
 	disp_.update(Update::None);
 }
 
 
-LyXFont LCursor::getFont() const
+LyXFont Cursor::getFont() const
 {
 	// HACK. far from being perfect...
 	int s = 0;
@@ -1284,10 +1284,10 @@ LyXFont LCursor::getFont() const
 }
 
 
-void LCursor::fixIfBroken()
+void Cursor::fixIfBroken()
 {
 	// find out last good level
-	LCursor copy = *this;
+	Cursor copy = *this;
 	size_t newdepth = depth();
 	while (!copy.empty()) {
 		if (copy.idx() > copy.lastidx()) {

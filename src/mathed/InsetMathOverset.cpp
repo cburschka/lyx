@@ -14,7 +14,7 @@
 #include "MathArray.h"
 #include "MathStream.h"
 
-#include "LCursor.h"
+#include "Cursor.h"
 #include "LaTeXFeatures.h"
 
 
@@ -57,7 +57,7 @@ void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetMathOverset::idxFirst(LCursor & cur) const
+bool InsetMathOverset::idxFirst(Cursor & cur) const
 {
 	cur.idx() = 1;
 	cur.pos() = 0;
@@ -65,7 +65,7 @@ bool InsetMathOverset::idxFirst(LCursor & cur) const
 }
 
 
-bool InsetMathOverset::idxLast(LCursor & cur) const
+bool InsetMathOverset::idxLast(Cursor & cur) const
 {
 	cur.idx() = 1;
 	cur.pos() = cur.lastpos();

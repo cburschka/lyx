@@ -17,7 +17,7 @@
 #include "MathStream.h"
 
 #include "Buffer.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
@@ -208,7 +208,7 @@ void MathMacro::validate(LaTeXFeatures & features) const
 }
 
 
-InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
+InsetBase * MathMacro::editXY(Cursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {
@@ -226,21 +226,21 @@ InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
 }
 
 
-bool MathMacro::idxFirst(LCursor & cur) const 
+bool MathMacro::idxFirst(Cursor & cur) const 
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::idxFirst(cur);
 }
 
 
-bool MathMacro::idxLast(LCursor & cur) const 
+bool MathMacro::idxLast(Cursor & cur) const 
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::idxLast(cur);
 }
 
 
-bool MathMacro::notifyCursorLeaves(LCursor & cur)
+bool MathMacro::notifyCursorLeaves(Cursor & cur)
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(cur);

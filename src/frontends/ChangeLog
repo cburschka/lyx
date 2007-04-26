@@ -68,7 +68,7 @@
 
 2005-01-10  André Pönitz  <poenitz@gmx.net>
 
-	* screen.C (showCursor): use new function LCursor::getFont
+	* screen.C (showCursor): use new function Cursor::getFont
 
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
 
@@ -246,14 +246,14 @@
 
 2003-11-13  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* screen.[Ch] (fitCursor): use LCursor::getDim, simplify
+	* screen.[Ch] (fitCursor): use Cursor::getDim, simplify
 	(fitManualCursor): remove
 	(topCursorVisible): remove
 
 
 2003-11-11  Alfredo Braunstein  <abraunst@libero.it>
 
-	* screen.C (showCursor): use absolute coords form LCursor
+	* screen.C (showCursor): use absolute coords form Cursor
 
 2003-11-10  André Pönitz  <poenitz@gmx.net>
 

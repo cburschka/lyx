@@ -79,23 +79,23 @@ public:
 	///
 	bool allowSpellCheck() const { return true; }
 	///
-	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void setStatus(LCursor & cur, CollapseStatus st);
+	void setStatus(Cursor & cur, CollapseStatus st);
 	///
 	bool setMouseHover(bool mouse_hover);
 
 protected:
 	///
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Dimension dimensionCollapsed() const;
 	///
 	Box const & buttonDim() const;
 	///
-	void edit(LCursor & cur, bool left);
+	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(Cursor & cur, int x, int y);
 	///
 	void setInlined() { status_ = Inlined; }
 	///
@@ -126,7 +126,7 @@ private:
 };
 
 // A helper function that pushes the cursor out of the inset.
-void leaveInset(LCursor & cur, InsetBase const & in);
+void leaveInset(Cursor & cur, InsetBase const & in);
 
 } // namespace lyx
 

@@ -23,7 +23,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"

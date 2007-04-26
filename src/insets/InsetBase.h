@@ -32,7 +32,7 @@ class InsetMath;
 class InsetText;
 class LaTeXFeatures;
 class LColor_color;
-class LCursor;
+class Cursor;
 class Lexer;
 class LyXText;
 class MetricsInfo;
@@ -77,7 +77,7 @@ public:
 	virtual bool inMathed() const { return false; }
 
 	/// the real dispatcher
-	void dispatch(LCursor & cur, FuncRequest & cmd);
+	void dispatch(Cursor & cur, FuncRequest & cmd);
 	/**
 	 * \returns true if this function made a definitive decision on
 	 * whether the inset wants to handle the request \p cmd or not.
@@ -97,13 +97,13 @@ public:
 	 * - LFUN_MOUSE_* need not to be handled in getStatus(), because these
 	 *   are dispatched directly
 	 */
-	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
+	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 
 	/// cursor enters
-	virtual void edit(LCursor & cur, bool left);
+	virtual void edit(Cursor & cur, bool left);
 	/// cursor enters
-	virtual InsetBase * editXY(LCursor & cur, int x, int y);
+	virtual InsetBase * editXY(Cursor & cur, int x, int y);
 
 	/// compute the size of the object returned in dim
 	/// \retval true if metrics changed.
@@ -136,28 +136,28 @@ public:
 	virtual void setPosCache(PainterInfo const &, int, int) const {}
 	/// do we cover screen position x/y?
 	virtual bool covers(BufferView const & bv, int x, int y) const;
-	/// get the screen positions of the cursor (see note in LCursor.cpp)
+	/// get the screen positions of the cursor (see note in Cursor.cpp)
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 
 	/// is this an inset that can be moved into?
 	virtual bool isActive() const { return nargs() > 0; }
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown(LCursor & cur, bool up) const;
+	virtual bool idxUpDown(Cursor & cur, bool up) const;
 	/// Move one cell to the left
-	virtual bool idxLeft(LCursor &) const { return false; }
+	virtual bool idxLeft(Cursor &) const { return false; }
 	/// Move one cell to the right
-	virtual bool idxRight(LCursor &) const { return false; }
+	virtual bool idxRight(Cursor &) const { return false; }
 
 	/// Move one physical cell up
-	virtual bool idxNext(LCursor &) const { return false; }
+	virtual bool idxNext(Cursor &) const { return false; }
 	/// Move one physical cell down
-	virtual bool idxPrev(LCursor &) const { return false; }
+	virtual bool idxPrev(Cursor &) const { return false; }
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	virtual bool idxFirst(LCursor &) const { return false; }
+	virtual bool idxFirst(Cursor &) const { return false; }
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	virtual bool idxLast(LCursor &) const { return false; }
+	virtual bool idxLast(Cursor &) const { return false; }
 
 	/// Delete a cell and move cursor
 	virtual bool idxDelete(idx_type &) { return false; }
@@ -185,7 +185,7 @@ public:
 	virtual size_t ncols() const { return 0; }
 	/// is called when the cursor leaves this inset
 	//  returns true if cursor is now invalid.
-	virtual bool notifyCursorLeaves(LCursor &) { return false; }
+	virtual bool notifyCursorLeaves(Cursor &) { return false; }
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
 	virtual bool setMouseHover(bool) { return false; }
@@ -456,22 +456,22 @@ public:
 		Open
 	};
 	///
-	virtual void setStatus(LCursor &, CollapseStatus) {}
+	virtual void setStatus(Cursor &, CollapseStatus) {}
 protected:
 	InsetBase();
 	InsetBase(InsetBase const & i);
 	/** The real dispatcher.
-	 *  Gets normally called from LCursor::dispatch(). LCursor::dispatch()
+	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
-	 *  This has to be overriden by calling LCursor::undispatched() or
-	 *  LCursor::noUpdate() if appropriate.
+	 *  This has to be overriden by calling Cursor::undispatched() or
+	 *  Cursor::noUpdate() if appropriate.
 	 *  If you need to call the dispatch method of some inset directly
 	 *  you may have to explicitly request an update at that place. Don't
 	 *  do it in doDispatch(), since that causes nested updates when
-	 *  called from LCursor::dispatch(), and these can lead to crashes.
+	 *  called from Cursor::dispatch(), and these can lead to crashes.
 	 *  \sa getStatus
 	 */
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 	/// Cached dimensions of the inset.
 	mutable Dimension dim_;
