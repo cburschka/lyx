@@ -62,7 +62,7 @@ following hack as starting point to write some macros:
 #include "MathMacroArgument.h"
 #include "MathSupport.h"
 
-#include "lyxlex.h"
+#include "LyXLex.h"
 #include "debug.h"
 
 #include "support/convert.h"

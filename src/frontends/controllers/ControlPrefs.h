@@ -13,10 +13,10 @@
 #define CONTROLPREFS_H
 
 #include "Dialog.h"
-#include "converter.h"
-#include "format.h"
-#include "lyxrc.h"
-#include "mover.h"
+#include "Converter.h"
+#include "Format.h"
+#include "LyXRC.h"
+#include "Mover.h"
 
 #include <string>
 #include <vector>

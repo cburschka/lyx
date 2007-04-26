@@ -16,8 +16,8 @@
 #include "gettext.h"
 #include "support/types.h"
 #include "BufferView.h"
-#include "buffer.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "LCursor.h"
 #include <sstream>
 
 using std::string;

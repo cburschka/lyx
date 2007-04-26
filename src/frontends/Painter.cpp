@@ -16,7 +16,7 @@
 #include "frontends/FontMetrics.h"
 
 #include "LColor.h"
-#include "lyxfont.h"
+#include "LyXFont.h"
 
 using lyx::docstring;
 

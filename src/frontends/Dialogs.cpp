@@ -59,7 +59,7 @@ BugfixSignal<boost::signal<void(string const &, InsetBase*)> > hideSignal;
 void Dialogs::hide(string const & name, InsetBase* inset)
 {
 	// Don't send the signal if we are quitting, because on MSVC it is
-	// destructed before the cut stack in CutAndPaste.C, and this method
+	// destructed before the cut stack in CutAndPaste.cpp, and this method
 	// is called from some inset destructor if the cut stack is not empty
 	// on exit.
 	if (!quitting)

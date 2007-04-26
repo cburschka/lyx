@@ -1,5 +1,5 @@
 /**
- * \file lyx_cb.C
+ * \file lyx_cb.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,22 +16,22 @@
 
 #include "lyx_cb.h"
 
-#include "buffer.h"
-#include "bufferlist.h"
+#include "Buffer.h"
+#include "BufferList.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
-#include "session.h"
+#include "Session.h"
 #include "LaTeXFeatures.h"
-#include "lyx_main.h"
-#include "lyxlayout.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
-#include "paragraph.h"
-#include "undo.h"
+#include "LyX.h"
+#include "LyXLayout.h"
+#include "LyXRC.h"
+#include "LyXText.h"
+#include "Paragraph.h"
+#include "Undo.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
@@ -93,7 +93,7 @@ using std::ios;
 using std::istream_iterator;
 
 
-// this should be static, but I need it in buffer.C
+// this should be static, but I need it in Buffer.cpp
 bool quitting;	// flag, that we are quitting the program
 
 //

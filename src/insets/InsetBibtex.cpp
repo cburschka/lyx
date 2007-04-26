@@ -12,16 +12,16 @@
 
 #include "InsetBibtex.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "dispatchresult.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "DispatchResult.h"
 #include "debug.h"
-#include "encoding.h"
-#include "funcrequest.h"
+#include "Encoding.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "metricsinfo.h"
-#include "outputparams.h"
+#include "MetricsInfo.h"
+#include "OutputParams.h"
 
 #include "frontends/Alert.h"
 

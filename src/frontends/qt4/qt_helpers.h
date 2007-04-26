@@ -13,7 +13,7 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "support/docstring.h"
 #include "support/qstring_helpers.h"
 

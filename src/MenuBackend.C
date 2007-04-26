@@ -1,5 +1,5 @@
 /**
- * \file MenuBackend.C
+ * \file MenuBackend.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -18,24 +18,24 @@
 #include "MenuBackend.h"
 
 #include "BranchList.h"
-#include "buffer.h"
-#include "bufferlist.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferList.h"
+#include "BufferParams.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "exporter.h"
+#include "Exporter.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "format.h"
+#include "Format.h"
 #include "gettext.h"
-#include "importer.h"
-#include "kbmap.h"
-#include "session.h"
+#include "Importer.h"
+#include "kb_keymap.h"
+#include "Session.h"
 #include "LyXAction.h"
-#include "lyx_main.h" // for lastfiles
-#include "lyxfunc.h"
-#include "lyxlex.h"
-#include "paragraph.h"
+#include "LyX.h" // for lastfiles
+#include "LyXFunc.h"
+#include "LyXLex.h"
+#include "Paragraph.h"
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
 

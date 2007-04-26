@@ -15,15 +15,15 @@
 #include "MathStream.h"
 
 #include "BufferView.h"
-#include "buffer.h"
-#include "bufferparams.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 #include "output_latex.h"
-#include "outputparams.h"
-#include "paragraph.h"
-#include "texrow.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
+#include "TexRow.h"
 #include "TextMetrics.h"
 
 namespace lyx {

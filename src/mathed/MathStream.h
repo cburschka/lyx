@@ -17,7 +17,7 @@
 // settled.
 
 
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 #include "support/docstream.h"
 #include "support/docstring.h"
 

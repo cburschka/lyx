@@ -12,12 +12,12 @@
 
 #include "InsetEnv.h"
 
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "gettext.h"
-#include "paragraph.h"
-#include "outputparams.h"
+#include "Paragraph.h"
+#include "OutputParams.h"
 #include "output_latex.h"
-#include "texrow.h"
+#include "TexRow.h"
 
 
 namespace lyx {

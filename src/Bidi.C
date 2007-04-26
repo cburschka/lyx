@@ -1,5 +1,5 @@
 /**
- * \file Bidi.C
+ * \file Bidi.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,11 +11,11 @@
 #include <config.h>
 
 #include "Bidi.h"
-#include "buffer.h"
-#include "lyxfont.h"
-#include "lyxrow.h"
-#include "lyxrc.h"
-#include "paragraph.h"
+#include "Buffer.h"
+#include "LyXFont.h"
+#include "Row.h"
+#include "LyXRC.h"
+#include "Paragraph.h"
 
 
 namespace lyx {

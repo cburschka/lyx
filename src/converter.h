@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file converter.h
+ * \file Converter.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,8 @@
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
-#include "graph.h"
-#include "outputparams.h"
+#include "Graph.h"
+#include "OutputParams.h"
 
 #include <vector>
 #include <string>
@@ -162,11 +162,11 @@ private:
 };
 
 /// The global instance.
-/// Implementation is in lyx_main.C.
+/// Implementation is in LyX.cpp.
 extern Converters & theConverters();
 
 /// The global copy after reading lyxrc.defaults.
-/// Implementation is in lyx_main.C.
+/// Implementation is in LyX.cpp.
 extern Converters & theSystemConverters();
 
 } // namespace lyx

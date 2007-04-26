@@ -1,5 +1,5 @@
 /**
- * \file cursor.C
+ * \file LCursor.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,24 +14,24 @@
 
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "buffer.h"
-#include "cursor.h"
-#include "coordcache.h"
+#include "Buffer.h"
+#include "LCursor.h"
+#include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "encoding.h"
-#include "funcrequest.h"
-#include "language.h"
+#include "DispatchResult.h"
+#include "Encoding.h"
+#include "FuncRequest.h"
+#include "Language.h"
 #include "lfuns.h"
-#include "lyxfont.h"
-#include "lyxfunc.h" // only for setMessage()
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "LyXFont.h"
+#include "LyXFunc.h" // only for setMessage()
+#include "LyXRC.h"
+#include "Row.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
-#include "pariterator.h"
+#include "ParIterator.h"
 
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"

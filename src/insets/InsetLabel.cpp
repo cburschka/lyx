@@ -12,14 +12,14 @@
 
 #include "InsetLabel.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "InsetList.h"
-#include "lyxtext.h"
-#include "paragraph.h"
-#include "pariterator.h"
+#include "LyXText.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
 #include "sgml.h"
 
 #include "support/lstrings.h"

@@ -14,7 +14,7 @@
 
 
 #include "Inset.h"
-#include "vspace.h"
+#include "VSpace.h"
 #include "MailInset.h"
 
 

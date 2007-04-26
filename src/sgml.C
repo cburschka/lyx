@@ -1,5 +1,5 @@
 /**
- * \file sgml.C
+ * \file sgml.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,12 +13,12 @@
 
 #include "sgml.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "counters.h"
-#include "lyxtext.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "Counters.h"
+#include "LyXText.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 
 #include "support/docstring.h"
 #include "support/lstrings.h"

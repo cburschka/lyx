@@ -1,5 +1,5 @@
 /**
- * \file graph.C
+ * \file Graph.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "graph.h"
-#include "format.h"
+#include "Graph.h"
+#include "Format.h"
 
 #include <algorithm>
 

@@ -12,7 +12,7 @@
 
 #include "InsetMathFracBase.h"
 #include "MathArray.h"
-#include "cursor.h"
+#include "LCursor.h"
 
 
 namespace lyx {

@@ -19,7 +19,7 @@
 #include <config.h>
 
 #include "frontends/LyXView.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include <QMainWindow>
 #include <QTimer>

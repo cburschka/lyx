@@ -14,7 +14,7 @@
 #define TEX2LYX_H
 
 #include "texparser.h"
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 
 #include <iosfwd>
 #include <string>
@@ -35,7 +35,7 @@ LyXTextClass const parse_preamble(Parser & p, std::ostream & os, std::string con
 extern std::map<std::string, std::vector<std::string> > used_packages;
 
 
-/// in text.C
+/// in text.cpp
 std::string translate_len(std::string const &);
 
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,

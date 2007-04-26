@@ -20,12 +20,12 @@
 #include "frontends/LyXView.h"
 #include "frontends/WorkArea.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "lyx_main.h"  // for lyx::use_gui
-#include "lyxfont.h"
-#include "lyxfunc.h"
-#include "lyxrc.h"
+#include "LyX.h"  // for lyx::use_gui
+#include "LyXFont.h"
+#include "LyXFunc.h"
+#include "LyXRC.h"
 
 #include "support/lstrings.h"
 #include "support/os.h"

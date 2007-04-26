@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ControlTexinfo.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include "support/filetools.h"
 

@@ -27,12 +27,12 @@
 #include "support/package.h"
 
 #include "BufferView.h"
-#include "Color.h"
+#include "color.h"
 #include "debug.h"
-#include "funcrequest.h"
-#include "lyx_main.h"
-#include "lyxfunc.h"
-#include "lyxrc.h"
+#include "FuncRequest.h"
+#include "LyX.h"
+#include "LyXFunc.h"
+#include "LyXRC.h"
 
 #include <QApplication>
 #include <QClipboard>

@@ -17,10 +17,10 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
-#include "cursor.h"
-#include "funcrequest.h"
+#include "LCursor.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "undo.h"
+#include "Undo.h"
 
 #include "support/lstrings.h"
 

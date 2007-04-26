@@ -1,5 +1,5 @@
 /**
- * \file lyxvc.C
+ * \file LyXVC.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,10 +15,10 @@
 
 #include <config.h>
 
-#include "lyxvc.h"
-#include "vc-backend.h"
+#include "LyXVC.h"
+#include "VCBackend.h"
 #include "debug.h"
-#include "buffer.h"
+#include "Buffer.h"
 #include "gettext.h"
 
 #include "frontends/Alert.h"

@@ -1,4 +1,4 @@
-/* \file messages.C
+/* \file Messages.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,7 +9,7 @@
 
 #include <config.h>
 
-#include "messages.h"
+#include "Messages.h"
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/package.h"

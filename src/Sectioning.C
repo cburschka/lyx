@@ -1,5 +1,5 @@
 /**
- * \file Sectioning.C
+ * \file Section.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "Sectioning.h"
+#include "Section.h"
 
 
 namespace lyx {

@@ -17,7 +17,7 @@
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
-#include "cursor.h"
+#include "LCursor.h"
 
 
 namespace lyx {

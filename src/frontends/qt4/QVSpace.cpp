@@ -23,9 +23,9 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "lyxrc.h" // to set the default length values
+#include "LyXRC.h" // to set the default length values
 #include "Spacing.h"
-#include "vspace.h"
+#include "VSpace.h"
 
 #include "controllers/ControlVSpace.h"
 #include "controllers/frontend_helpers.h"

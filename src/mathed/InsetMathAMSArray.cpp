@@ -17,7 +17,7 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 

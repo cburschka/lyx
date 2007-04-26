@@ -1,5 +1,5 @@
 /**
- * \file lyxlayout.C
+ * \file LyXLayout.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,9 +12,9 @@
 
 #include <config.h>
 
-#include "lyxlayout.h"
-#include "lyxtextclass.h"
-#include "lyxlex.h"
+#include "LyXLayout.h"
+#include "LyXTextClass.h"
+#include "LyXLex.h"
 #include "debug.h"
 
 #include "support/lstrings.h"
@@ -194,7 +194,7 @@ bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
 	// parse style section
 	while (!finished && lexrc.isOK() && !error) {
 		int le = lexrc.lex();
-		// See comment in lyxrc.C.
+		// See comment in LyXRC.cpp.
 		switch (le) {
 		case LyXLex::LEX_FEOF:
 			continue;

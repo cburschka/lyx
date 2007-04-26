@@ -12,9 +12,9 @@
 
 #include "GraphicsConverter.h"
 
-#include "converter.h"
+#include "Converter.h"
 #include "debug.h"
-#include "format.h"
+#include "Format.h"
 
 #include "support/filetools.h"
 #include "support/forkedcallqueue.h"

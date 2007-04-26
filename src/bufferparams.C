@@ -1,5 +1,5 @@
 /**
- * \file bufferparams.C
+ * \file BufferParams.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,26 +15,26 @@
 
 #include <config.h>
 
-#include "bufferparams.h"
+#include "BufferParams.h"
 
-#include "author.h"
+#include "Author.h"
 #include "BranchList.h"
 #include "Bullet.h"
 #include "debug.h"
-#include "encoding.h"
+#include "Encoding.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "lyxfont.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
-#include "lyxtextclasslist.h"
-#include "outputparams.h"
+#include "LyXFont.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
+#include "LyXTextClassList.h"
+#include "OutputParams.h"
 #include "tex-strings.h"
 #include "Spacing.h"
-#include "texrow.h"
-#include "vspace.h"
+#include "TexRow.h"
+#include "VSpace.h"
 
 #include "frontends/Alert.h"
 

@@ -13,7 +13,7 @@
 #ifndef TOOLBAR_BACKEND_H
 #define TOOLBAR_BACKEND_H
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include <vector>
 

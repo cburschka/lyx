@@ -17,8 +17,8 @@
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "metricsinfo.h"
+#include "LyXLex.h"
+#include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

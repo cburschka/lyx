@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ControlTabularCreate.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include "support/convert.h"
 

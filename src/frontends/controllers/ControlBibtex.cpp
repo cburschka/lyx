@@ -15,10 +15,10 @@
 #include "ControlBibtex.h"
 #include "frontend_helpers.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 
-#include "lyxrc.h"
+#include "LyXRC.h"
 #include "gettext.h"
 
 #include "support/filefilterlist.h"

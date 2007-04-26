@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "support/lyxtime.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 using std::string;
 

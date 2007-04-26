@@ -12,13 +12,13 @@
 
 #include "InsetBibitem.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
-#include "lyxfont.h"
-#include "lyxlex.h"
-#include "paragraph.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
+#include "LyXFont.h"
+#include "LyXLex.h"
+#include "Paragraph.h"
 #include "ParagraphList.h"
 
 #include "support/lstrings.h"

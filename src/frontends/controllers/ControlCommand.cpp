@@ -12,7 +12,7 @@
 
 #include "ControlCommand.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetCommand.h"
 
 

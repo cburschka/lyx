@@ -16,11 +16,11 @@
 #include "frontend_helpers.h"
 #include "Kernel.h"
 
-#include "buffer.h"
-#include "format.h"
-#include "funcrequest.h"
+#include "Buffer.h"
+#include "Format.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "insets/InsetInclude.h"
 

@@ -1,5 +1,5 @@
 /**
- * \file texrow.C
+ * \file TexRow.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "texrow.h"
+#include "TexRow.h"
 #include "debug.h"
 
 #include <algorithm>

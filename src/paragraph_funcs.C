@@ -1,5 +1,5 @@
 /**
- * \file paragraph_funcs.C
+ * \file paragraph_funcs.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,10 +12,10 @@
 
 #include "paragraph_funcs.h"
 
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 #include "ParagraphParameters.h"
 
 

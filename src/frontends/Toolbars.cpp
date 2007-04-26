@@ -13,16 +13,16 @@
 
 #include "Toolbars.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "lyxfunc.h"
-#include "lyxtextclass.h"
+#include "LyXFunc.h"
+#include "LyXTextClass.h"
 #include "LyXView.h"
-#include "lyx_main.h"
+#include "LyX.h"
 
 
 namespace lyx {

@@ -12,7 +12,7 @@
 #ifndef ROW_LIST_FWD_H
 #define ROW_LIST_FWD_H
 
-#include "lyxrow.h"
+#include "Row.h"
 
 #include <vector>
 #include <map>

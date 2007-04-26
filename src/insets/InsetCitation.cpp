@@ -13,11 +13,11 @@
 
 #include "InsetCitation.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 
 #include "frontends/controllers/frontend_helpers.h"

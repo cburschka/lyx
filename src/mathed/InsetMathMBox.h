@@ -17,7 +17,7 @@
 #define MATH_MBOXINSET_H
 
 #include "InsetMathDim.h"
-#include "lyxtext.h"
+#include "LyXText.h"
 
 
 namespace lyx {

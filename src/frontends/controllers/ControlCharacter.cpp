@@ -13,11 +13,11 @@
 #include "ControlCharacter.h"
 #include "ButtonController.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "bufferview_funcs.h"
-#include "funcrequest.h"
-#include "language.h"
+#include "FuncRequest.h"
+#include "Language.h"
 #include "LColor.h"
 
 using lyx::bv_funcs::font2string;

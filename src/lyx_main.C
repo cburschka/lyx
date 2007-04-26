@@ -1,5 +1,5 @@
 /**
- * \file lyx_main.C
+ * \file LyX.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,33 +15,33 @@
 #include <config.h>
 #include <version.h>
 
-#include "lyx_main.h"
+#include "LyX.h"
 
 #include "ConverterCache.h"
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
-#include "converter.h"
+#include "BufferList.h"
+#include "Converter.h"
 #include "debug.h"
-#include "encoding.h"
-#include "errorlist.h"
-#include "format.h"
+#include "Encoding.h"
+#include "ErrorList.h"
+#include "Format.h"
 #include "gettext.h"
-#include "kbmap.h"
-#include "language.h"
-#include "session.h"
+#include "kb_keymap.h"
+#include "Language.h"
+#include "Session.h"
 #include "LColor.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
-#include "lyxfunc.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
-#include "lyxserver.h"
-#include "lyxsocket.h"
-#include "lyxtextclasslist.h"
+#include "LyXFunc.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
+#include "LyXServer.h"
+#include "LyXServerSocket.h"
+#include "LyXTextClassList.h"
 #include "MenuBackend.h"
-#include "messages.h"
-#include "mover.h"
+#include "Messages.h"
+#include "Mover.h"
 #include "ToolbarBackend.h"
 
 #include "frontends/Alert.h"

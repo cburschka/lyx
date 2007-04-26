@@ -13,9 +13,9 @@
 
 #include "ControlRef.h"
 
-#include "buffer.h"
-#include "bufferlist.h"
-#include "funcrequest.h"
+#include "Buffer.h"
+#include "BufferList.h"
+#include "FuncRequest.h"
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 

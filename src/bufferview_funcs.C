@@ -1,5 +1,5 @@
 /**
- * \file bufferview_funcs.C
+ * \file bufferview_funcs.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,20 +16,20 @@
 
 #include "bufferview_funcs.h"
 
-#include "author.h"
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Author.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "cursor.h"
-#include "coordcache.h"
+#include "LCursor.h"
+#include "CoordCache.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "lyxrow.h"
-#include "paragraph.h"
+#include "LyXLex.h"
+#include "Row.h"
+#include "Paragraph.h"
 #include "ParagraphParameters.h"
-#include "pariterator.h"
+#include "ParIterator.h"
 
 #include "frontends/Alert.h"
 

@@ -23,7 +23,7 @@
 #include "qt_helpers.h"
 
 #include "debug.h"
-#include "language.h"
+#include "Language.h"
 #include "LColor.h"
 
 #include "support/unicode.h"

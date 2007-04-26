@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file bufferlist.h
+ * \file BufferList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -116,7 +116,7 @@ private:
 	void emergencyWrite(Buffer * buf);
 };
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern BufferList & theBufferList();
 
 

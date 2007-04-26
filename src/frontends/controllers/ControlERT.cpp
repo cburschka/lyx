@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "ControlERT.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 
 using std::string;

@@ -11,11 +11,11 @@
 
 #include "InsetIndex.h"
 
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 #include "sgml.h"
 
 #include "support/std_ostream.h"

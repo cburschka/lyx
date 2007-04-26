@@ -1,5 +1,5 @@
 /**
- * \file kbmap.C
+ * \file kb_keymap.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,12 +13,12 @@
 
 #include <config.h>
 
-#include "kbmap.h"
+#include "kb_keymap.h"
 
 #include "debug.h"
-#include "kbsequence.h"
+#include "kb_sequence.h"
 #include "LyXAction.h"
-#include "lyxlex.h"
+#include "LyXLex.h"
 
 #include "frontends/LyXKeySym.h"
 

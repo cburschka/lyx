@@ -13,7 +13,7 @@
 #define INSETWRAP_H
 
 #include "InsetCollapsable.h"
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "MailInset.h"
 
 

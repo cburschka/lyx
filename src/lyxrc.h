@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxrc.h
+ * \file LyXRC.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -374,7 +374,7 @@ public:
 
 /** \c LyXRC_PreviewStatus is a wrapper for LyXRC::PreviewStatus.
  *  It can be forward-declared and passed as a function argument without
- *  having to expose lyxrc.h.
+ *  having to expose LyXRC.h.
  */
 class LyXRC_PreviewStatus {
 	LyXRC::PreviewStatus val_;

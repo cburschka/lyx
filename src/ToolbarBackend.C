@@ -1,5 +1,5 @@
 /**
- * \file ToolbarBackend.C
+ * \file ToolbarBackend.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,8 @@
 #include <config.h>
 
 #include "ToolbarBackend.h"
-#include "funcrequest.h"
-#include "lyxlex.h"
+#include "FuncRequest.h"
+#include "LyXLex.h"
 #include "debug.h"
 #include "gettext.h"
 #include "LyXAction.h"

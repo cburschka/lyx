@@ -1,5 +1,5 @@
 /**
- * \file buffer_funcs.C
+ * \file buffer_funcs.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,27 +13,27 @@
 #include <config.h>
 
 #include "buffer_funcs.h"
-#include "buffer.h"
-#include "bufferlist.h"
-#include "bufferparams.h"
-#include "dociterator.h"
-#include "counters.h"
-#include "errorlist.h"
+#include "Buffer.h"
+#include "BufferList.h"
+#include "BufferParams.h"
+#include "DocIterator.h"
+#include "Counters.h"
+#include "ErrorList.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LaTeX.h"
-#include "lyxtextclass.h"
-#include "paragraph.h"
+#include "LyXTextClass.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
-#include "pariterator.h"
-#include "lyxvc.h"
-#include "texrow.h"
+#include "ParIterator.h"
+#include "LyXVC.h"
+#include "TexRow.h"
 #include "TocBackend.h"
-#include "vc-backend.h"
+#include "VCBackend.h"
 
 #include "frontends/Alert.h"
 

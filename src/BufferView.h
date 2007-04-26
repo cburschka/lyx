@@ -15,9 +15,9 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
-#include "coordcache.h"
-#include "cursor.h"
-#include "metricsinfo.h"
+#include "CoordCache.h"
+#include "LCursor.h"
+#include "MetricsInfo.h"
 #include "TextMetrics.h"
 #include "UpdateFlags.h"
 

@@ -16,7 +16,7 @@
 #include "qt_helpers.h"
 
 #include "gettext.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "frontends/Alert.h"
 

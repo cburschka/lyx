@@ -17,9 +17,9 @@
 
 #include "frontends/LyXView.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 
 
 using std::string;

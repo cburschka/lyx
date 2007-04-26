@@ -17,7 +17,7 @@
 #ifndef PARAGRAPH_METRICS_H
 #define PARAGRAPH_METRICS_H
 
-#include "paragraph.h"
+#include "Paragraph.h"
 
 namespace lyx {
 

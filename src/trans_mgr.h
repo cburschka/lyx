@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file trans_mgr.h
+ * \file TransState.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #ifndef TRANS_MANAGER_H
 #define TRANS_MANAGER_H
 
-#include "trans_decl.h"
+#include "KmodInfo.h"
 
 #include <boost/scoped_ptr.hpp>
 

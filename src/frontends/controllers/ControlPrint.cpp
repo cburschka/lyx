@@ -15,9 +15,9 @@
 #include "ButtonController.h"
 #include "frontend_helpers.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "funcrequest.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 #include "PrinterParams.h"
 

@@ -1,5 +1,5 @@
 /**
- * \file BufferView.C
+ * \file BufferView.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,44 +16,44 @@
 
 #include "BufferView.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
-#include "bufferparams.h"
+#include "BufferList.h"
+#include "BufferParams.h"
 #include "bufferview_funcs.h"
-#include "coordcache.h"
+#include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "errorlist.h"
+#include "DispatchResult.h"
+#include "ErrorList.h"
 #include "factory.h"
 #include "FloatList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "intl.h"
-#include "insetiterator.h"
-#include "language.h"
+#include "Intl.h"
+#include "InsetIterator.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "lyx_cb.h" // added for Dispatch functions
-#include "lyx_main.h"
+#include "LyX.h"
 #include "lyxfind.h"
-#include "lyxfunc.h"
-#include "lyxlayout.h"
-#include "lyxtext.h"
-#include "lyxtextclass.h"
-#include "lyxrc.h"
-#include "session.h"
-#include "paragraph.h"
+#include "LyXFunc.h"
+#include "LyXLayout.h"
+#include "LyXText.h"
+#include "LyXTextClass.h"
+#include "LyXRC.h"
+#include "Session.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "pariterator.h"
-#include "texrow.h"
+#include "ParIterator.h"
+#include "TexRow.h"
 #include "toc.h"
-#include "undo.h"
-#include "vspace.h"
+#include "Undo.h"
+#include "VSpace.h"
 #include "WordLangTuple.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCommand.h" // ChangeRefs
@@ -1205,7 +1205,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			//metrics_info_.y1 = ymin of button;
 			//metrics_info_.y2 = ymax of button;
 			//
-			// Unfortunately, rowpainter.C:paintText() does not distinguish
+			// Unfortunately, rowpainter.cpp:paintText() does not distinguish
 			// between background updates and text updates. So we use the hammer
 			// solution for now. We could also avoid the updateMetrics() below
 			// by using the first and last pit of the CoordCache. Have a look

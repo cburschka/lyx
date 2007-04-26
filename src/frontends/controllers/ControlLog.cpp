@@ -14,7 +14,7 @@
 #include "ControlLog.h"
 
 #include "gettext.h"
-#include "lyxlex.h"
+#include "LyXLex.h"
 
 #include <sstream>
 #include <fstream>

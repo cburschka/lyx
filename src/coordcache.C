@@ -1,4 +1,4 @@
-/* \file coordcache.C
+/* \file CoordCache.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,10 +9,10 @@
 
 #include <config.h>
 
-#include "coordcache.h"
+#include "CoordCache.h"
 #include "debug.h"
 
-#include "lyxtext.h"
+#include "LyXText.h"
 
 #include "insets/InsetBase.h"
 

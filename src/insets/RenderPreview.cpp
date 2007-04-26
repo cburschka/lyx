@@ -14,12 +14,12 @@
 #include "insets/Inset.h"
 
 #include "BufferView.h"
-#include "dimension.h"
+#include "Dimension.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "lyx_main.h"
-#include "lyxrc.h"
-#include "metricsinfo.h"
+#include "LyX.h"
+#include "LyXRC.h"
+#include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

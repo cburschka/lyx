@@ -14,7 +14,7 @@
 #define INSETCHARSTYLE_H
 
 #include "InsetCollapsable.h"
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 
 
 namespace lyx {

@@ -15,7 +15,7 @@
 #define PARAGRAPHPARAMETERS_H
 
 #include "layout.h"
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "Spacing.h"
 
 #include "support/types.h"

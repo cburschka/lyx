@@ -13,9 +13,9 @@
 #include "InsetMathDim.h"
 
 #include "BufferView.h"
-#include "coordcache.h"
+#include "CoordCache.h"
 #include "debug.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 
 
 namespace lyx {

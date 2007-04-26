@@ -11,13 +11,13 @@
 #include <config.h>
 
 #include "ControlErrorList.h"
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "paragraph.h"
-#include "pariterator.h"
+#include "LyXText.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
 
 // FIXME: those two headers are needed because of the
 // WorkArea::redraw() call below.

@@ -1,5 +1,5 @@
 /**
- * \file undo.C
+ * \file Undo.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,15 +14,15 @@
 
 #include <config.h>
 
-#include "undo.h"
+#include "Undo.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 #include "ParagraphList.h"
 
 #include "mathed/MathSupport.h"

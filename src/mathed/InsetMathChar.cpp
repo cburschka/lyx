@@ -16,7 +16,7 @@
 #include "MathStream.h"
 
 #include "debug.h"
-#include "dimension.h"
+#include "Dimension.h"
 #include "support/lstrings.h"
 #include "TextPainter.h"
 

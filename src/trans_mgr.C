@@ -1,5 +1,5 @@
 /**
- * \file trans_mgr.C
+ * \file TransState.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,16 +11,16 @@
 
 #include <config.h>
 
-#include "trans_mgr.h"
+#include "TransState.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
-#include "trans.h"
+#include "LyXRC.h"
+#include "LyXText.h"
+#include "Trans.h"
 
 #include "support/lstrings.h"
 

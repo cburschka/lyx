@@ -15,7 +15,7 @@
 
 #include "Dialog.h"
 #include "lfuns.h" // for kb_action
-#include "lyxfont.h"
+#include "LyXFont.h"
 
 #include <map>
 

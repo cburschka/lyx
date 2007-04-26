@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file cursor.h
+ * \file LCursor.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,11 +9,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef CURSOR_H
-#define CURSOR_H
+#ifndef LCURSOR_H
+#define LCURSOR_H
 
-#include "dispatchresult.h"
-#include "dociterator.h"
+#include "DispatchResult.h"
+#include "DocIterator.h"
 
 #include <iosfwd>
 #include <vector>
@@ -313,4 +313,4 @@ public:
 
 } // namespace lyx
 
-#endif // LYXCURSOR_H
+#endif // LYXLCURSOR_H

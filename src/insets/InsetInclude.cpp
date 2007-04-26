@@ -12,24 +12,24 @@
 
 #include "InsetInclude.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
-#include "bufferparams.h"
+#include "BufferList.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "exporter.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "Exporter.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "lyx_main.h"
-#include "lyxrc.h"
-#include "lyxlex.h"
-#include "metricsinfo.h"
-#include "outputparams.h"
+#include "LyX.h"
+#include "LyXRC.h"
+#include "LyXLex.h"
+#include "MetricsInfo.h"
+#include "OutputParams.h"
 #include "TocBackend.h"
 
 #include "frontends/Alert.h"
@@ -437,7 +437,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	} else {
 		// Copy the file to the temp dir, so that .aux files etc.
 		// are not created in the original dir. Files included by
-		// this file will be found via input@path, see ../buffer.C.
+		// this file will be found via input@path, see ../Buffer.cpp.
 		unsigned long const checksum_in  = sum(included_file);
 		unsigned long const checksum_out = sum(writefile);
 

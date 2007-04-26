@@ -9,34 +9,34 @@ project(tex2lyx)
 
 
 set(LINKED_FILES
-	${TOP_SRC_DIR}/src/FloatList.C
-	${TOP_SRC_DIR}/src/Floating.C
-	${TOP_SRC_DIR}/src/counters.C
-	${TOP_SRC_DIR}/src/lyxlayout.C
-	${TOP_SRC_DIR}/src/lyxtextclass.C
-	${TOP_SRC_DIR}/src/lyxlex.C
+	${TOP_SRC_DIR}/src/FloatList.cpp
+	${TOP_SRC_DIR}/src/Floating.cpp
+	${TOP_SRC_DIR}/src/Counters.cpp
+	${TOP_SRC_DIR}/src/LyXLayout.cpp
+	${TOP_SRC_DIR}/src/LyXTextClass.cpp
+	${TOP_SRC_DIR}/src/LyXLex.cpp
 )
 
 set(tex2lyx_sources
-	${TOP_SRC_DIR}/src/tex2lyx/boost.C
+	${TOP_SRC_DIR}/src/tex2lyx/boost.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/context.C
-	${TOP_SRC_DIR}/src/tex2lyx/gettext.C
-	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.C
-	${TOP_SRC_DIR}/src/tex2lyx/lyxfont.C
+	${TOP_SRC_DIR}/src/tex2lyx/gettext.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/LyXFont.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/texparser.C
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.C
 	${TOP_SRC_DIR}/src/tex2lyx/preamble.C
 	${TOP_SRC_DIR}/src/tex2lyx/math.C
 	${TOP_SRC_DIR}/src/tex2lyx/table.C
-	${TOP_SRC_DIR}/src/tex2lyx/text.C
+	${TOP_SRC_DIR}/src/tex2lyx/text.cpp
 )
 
 set(tex2lyx_headers
-	${TOP_SRC_DIR}/src/lyxlayout.h
-	${TOP_SRC_DIR}/src/lyxtextclass.h
+	${TOP_SRC_DIR}/src/LyXLayout.h
+	${TOP_SRC_DIR}/src/LyXTextClass.h
 	${TOP_SRC_DIR}/src/tex2lyx/Spacing.h
 	${TOP_SRC_DIR}/src/tex2lyx/context.h
-	${TOP_SRC_DIR}/src/tex2lyx/lyxfont.h
+	${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h
 	${TOP_SRC_DIR}/src/tex2lyx/texparser.h
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.h
 )
@@ -44,13 +44,13 @@ set(tex2lyx_headers
 include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx)
 
 if(MSVC)
-	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/lyxlayout.C ${TOP_SRC_DIR}/src/lyxtextclass.C
+	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/LyXLayout.cpp ${TOP_SRC_DIR}/src/LyXTextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
-		"/FI${TOP_SRC_DIR}/src/tex2lyx/lyxfont.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+		"/FI${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 else(MSVC)
-	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/lyxlayout.C ${TOP_SRC_DIR}/src/lyxtextclass.C
+	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/LyXLayout.cpp ${TOP_SRC_DIR}/src/LyXTextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
-		"-include ${TOP_SRC_DIR}/src/tex2lyx/lyxfont.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+		"-include ${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 endif(MSVC)
 
 #TODO

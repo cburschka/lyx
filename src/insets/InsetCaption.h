@@ -13,7 +13,7 @@
 #define INSETCAPTION_H
 
 #include "InsetText.h"
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 
 
 namespace lyx {

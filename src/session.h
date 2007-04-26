@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file session.h
+ * \file Session.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

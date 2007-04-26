@@ -1,5 +1,5 @@
 /**
- * \file Color.C
+ * \file color.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "Color.h"
+#include "color.h"
 
 #include "LColor.h"
 

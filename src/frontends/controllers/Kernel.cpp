@@ -12,10 +12,10 @@
 
 #include "Kernel.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
-#include "funcrequest.h"
-#include "lyxfunc.h"
+#include "FuncRequest.h"
+#include "LyXFunc.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 

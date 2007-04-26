@@ -1,5 +1,5 @@
 /**
- * \file lyxserver.C
+ * \file LyXServer.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -39,11 +39,11 @@
 
 #include <config.h>
 
-#include "lyxserver.h"
+#include "LyXServer.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "LyXAction.h"
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 #include "frontends/Application.h"
 
 #include "support/filename.h"

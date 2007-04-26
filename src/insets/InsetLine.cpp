@@ -14,10 +14,10 @@
 
 #include "debug.h"
 #include "LColor.h"
-#include "lyxtext.h"
-#include "metricsinfo.h"
+#include "LyXText.h"
+#include "MetricsInfo.h"
 #include "LaTeXFeatures.h"
-#include "outputparams.h"
+#include "OutputParams.h"
 
 #include "frontends/Painter.h"
 

@@ -14,9 +14,9 @@
 #include "InsetGraphicsParams.h"
 
 #include "debug.h"
-#include "lyx_main.h" // for use_gui
-#include "lyxlex.h"
-#include "lyxrc.h"
+#include "LyX.h" // for use_gui
+#include "LyXLex.h"
+#include "LyXRC.h"
 
 #include "graphics/GraphicsParams.h"
 

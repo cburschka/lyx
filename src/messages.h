@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/* \file messages.h
+/* \file Messages.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -40,10 +40,10 @@ private:
 };
 
 /// Access to the unique Messages object for the passed \p language.
-/// Implementation is in lyx_main.C.
+/// Implementation is in LyX.cpp.
 extern Messages & getMessages(std::string const & language);
 /// Access to the unique Messages object used for GUI element.
-/// Implementation is in lyx_main.C.
+/// Implementation is in LyX.cpp.
 extern Messages & getGuiMessages();
 
 } // namespace lyx

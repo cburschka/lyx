@@ -1,5 +1,5 @@
 /**
- * \file src/lyxfont.C
+ * \file src/LyXFont.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,15 +14,15 @@
 
 #include <config.h>
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 
-#include "bufferparams.h" // stateText
+#include "BufferParams.h" // stateText
 #include "debug.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
 
 #include "support/lstrings.h"
 

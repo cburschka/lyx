@@ -15,8 +15,8 @@
 
 #include "qt_helpers.h"
 
-#include "language.h"
-#include "dimension.h"
+#include "Language.h"
+#include "Dimension.h"
 
 #include "support/unicode.h"
 

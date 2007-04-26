@@ -1,5 +1,5 @@
 /**
- * \file lyxfind.C
+ * \file lyxfind.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,18 +15,18 @@
 
 #include "lyxfind.h"
 
-#include "buffer.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "LCursor.h"
 #include "CutAndPaste.h"
 #include "buffer_funcs.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "paragraph.h"
-#include "pariterator.h"
-#include "undo.h"
+#include "LyXText.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
+#include "Undo.h"
 
 #include "frontends/Alert.h"
 

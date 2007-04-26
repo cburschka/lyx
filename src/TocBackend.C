@@ -1,5 +1,5 @@
 /**
- * \file TocBackend.C
+ * \file TocBackend.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,12 +14,12 @@
 
 #include "TocBackend.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "FloatList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "LyXAction.h"
-#include "paragraph.h"
+#include "Paragraph.h"
 #include "debug.h"
 
 #include "insets/InsetOptArg.h"

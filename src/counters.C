@@ -1,5 +1,5 @@
 /**
- * \file counters.C
+ * \file Counters.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "counters.h"
+#include "Counters.h"
 #include "debug.h"
 
 #include "support/lstrings.h"

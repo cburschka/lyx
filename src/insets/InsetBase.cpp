@@ -12,19 +12,19 @@
 
 #include "InsetBase.h"
 
-#include "buffer.h"
-#include "coordcache.h"
+#include "Buffer.h"
+#include "CoordCache.h"
 #include "BufferView.h"
 #include "LColor.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "dimension.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "Dimension.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "metricsinfo.h"
+#include "LyXText.h"
+#include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
 

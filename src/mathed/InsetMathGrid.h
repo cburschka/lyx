@@ -13,7 +13,7 @@
 #define MATH_GRID_H
 
 #include "InsetMathNest.h"
-#include "lyxlength.h"
+#include "LyXLength.h"
 
 
 namespace lyx {

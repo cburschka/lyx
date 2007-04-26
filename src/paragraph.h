@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file paragraph.h
+ * \file Paragraph.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,8 +16,8 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
-#include "changes.h"
-#include "dimension.h"
+#include "Changes.h"
+#include "Dimension.h"
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "RowList_fwd.h"

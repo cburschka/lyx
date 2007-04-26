@@ -12,11 +12,11 @@
 
 #include "InsetUrl.h"
 
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
-#include "outputparams.h"
+#include "OutputParams.h"
 
 #include "support/lstrings.h"
 

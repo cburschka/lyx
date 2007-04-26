@@ -1,5 +1,5 @@
 /**
- * \file InsetList.C
+ * \file InsetList.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,8 +13,8 @@
 
 #include "InsetList.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BranchList.h"
 #include "debug.h"
 

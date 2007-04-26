@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file metricsinfo.h
+ * \file MetricsInfo.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef METRICSINFO_H
 #define METRICSINFO_H
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 #include "support/docstring.h"
 #include <string>
 

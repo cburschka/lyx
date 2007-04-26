@@ -20,9 +20,9 @@
 #include "GuiWorkArea.h"
 
 #include "BufferView.h"
-#include "bufferlist.h"
-#include "funcrequest.h"
-#include "lyxfunc.h"
+#include "BufferList.h"
+#include "FuncRequest.h"
+#include "LyXFunc.h"
 
 #include <QApplication>
 

@@ -13,13 +13,13 @@
 #include "InsetNomencl.h"
 #include "InsetNote.h"
 
-#include "buffer.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "Buffer.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "insetiterator.h"
+#include "InsetIterator.h"
 #include "LaTeXFeatures.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 #include "sgml.h"
 
 

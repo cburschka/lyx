@@ -13,7 +13,7 @@
 #include "ControlThesaurus.h"
 
 #include "lyxfind.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 using std::string;
 

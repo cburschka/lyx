@@ -1,5 +1,5 @@
 /**
- * \file encoding.C
+ * \file Encoding.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,12 +12,12 @@
 
 #include <config.h>
 
-#include "encoding.h"
+#include "Encoding.h"
 
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
 
 #include "support/filename.h"
 #include "support/lstrings.h"

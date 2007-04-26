@@ -910,46 +910,46 @@ src_frontends_qt4_files = Split('''
 
 src_client_header_files = Split('''
     debug.h
-    messages.h
+    Messages.h
 ''')
 
 
 src_client_files = Split('''
-    boost.C
+    boost.cpp
     client.C
-    debug.C
-    gettext.C
-    messages.C
+    debug.cpp
+    gettext.cpp
+    Messages.cpp
 ''')
 
 
 src_tex2lyx_header_files = Split('''
     Spacing.h
     context.h
-    lyxfont.h
+    LyXFont.h
     tex2lyx.h
     texparser.h
 ''')
 
 
 src_tex2lyx_files = Split('''
-    FloatList.C
-    Floating.C
-    boost.C
+    FloatList.cpp
+    Floating.cpp
+    boost.cpp
     context.C
-    counters.C
-    gettext.C
-    lengthcommon.C
-    lyxfont.C
-    lyxlayout.C
-    lyxlex.C
-    lyxtextclass.C
+    Counters.cpp
+    gettext.cpp
+    lengthcommon.cpp
+    LyXFont.cpp
+    LyXLayout.cpp
+    LyXLex.cpp
+    LyXTextClass.cpp
     math.C
     preamble.C
     table.C
     tex2lyx.C
     texparser.C
-    text.C
+    text.cpp
 ''')
 
 
@@ -959,7 +959,7 @@ src_header_files = Split('''
     BufferView.h
     Bullet.h
     Chktex.h
-    Color.h
+    color.h
     ConverterCache.h
     CutAndPaste.h
     DepTable.h
@@ -978,7 +978,7 @@ src_header_files = Split('''
     ParagraphParameters.h
     PrinterParams.h
     RowList_fwd.h
-    Sectioning.h
+    Section.h
     Spacing.h
     SpellBase.h
     Thesaurus.h
@@ -987,204 +987,204 @@ src_header_files = Split('''
     UpdateFlags.h
     Variables.h
     WordLangTuple.h
-    aspell_local.h
-    author.h
-    box.h
-    buffer.h
+    ASpell_local.h
+    Author.h
+    Box.h
+    Buffer.h
     buffer_funcs.h
-    bufferlist.h
-    bufferparams.h
+    BufferList.h
+    BufferParams.h
     bufferview_funcs.h
-    changes.h
-    converter.h
-    coordcache.h
-    counters.h
-    cursor.h
-    cursor_slice.h
+    Changes.h
+    Converter.h
+    CoordCache.h
+    Counters.h
+    LCursor.h
+    CursorSlice.h
     debug.h
-    dimension.h
-    dispatchresult.h
-    dociterator.h
-    encoding.h
-    errorlist.h
-    exporter.h
+    Dimension.h
+    DispatchResult.h
+    DocIterator.h
+    Encoding.h
+    ErrorList.h
+    Exporter.h
     factory.h
-    format.h
-    funcrequest.h
+    Format.h
+    FuncRequest.h
     gettext.h
-    graph.h
-    importer.h
-    insetiterator.h
-    intl.h
-    ispell.h
-    kbmap.h
-    kbsequence.h
-    language.h
+    Graph.h
+    Importer.h
+    InsetIterator.h
+    Intl.h
+    ISpell.h
+    kb_keymap.h
+    kb_sequence.h
+    Language.h
     layout.h
     lengthcommon.h
     lfuns.h
     lyx_cb.h
-    lyx_main.h
+    LyX.h
     lyx_sty.h
     lyxfind.h
-    lyxfont.h
-    lyxfunc.h
-    lyxgluelength.h
-    lyxlayout.h
+    LyXFont.h
+    LyXFunc.h
+    LyXGlueLength.h
+    LyXLayout.h
     lyxlayout_ptr_fwd.h
-    lyxlength.h
-    lyxlex.h
-    lyxrc.h
-    lyxrow.h
-    lyxserver.h
-    lyxsocket.h
-    lyxtext.h
-    lyxtextclass.h
-    lyxtextclasslist.h
-    lyxvc.h
-    messages.h
-    metricsinfo.h
-    mover.h
+    LyXLength.h
+    LyXLex.h
+    LyXRC.h
+    Row.h
+    LyXServer.h
+    LyXServerSocket.h
+    LyXText.h
+    LyXTextClass.h
+    LyXTextClassList.h
+    LyXVC.h
+    Messages.h
+    MetricsInfo.h
+    Mover.h
     output.h
     output_docbook.h
     output_latex.h
     output_plaintext.h
-    outputparams.h
+    OutputParams.h
     paper.h
-    paragraph.h
+    Paragraph.h
     paragraph_funcs.h
     ParagraphMetrics.h
-    pariterator.h
-    pspell.h
+    ParIterator.h
+    PSpell.h
     rowpainter.h
-    session.h
+    Session.h
     sgml.h
-    tabular.h
+    LyXTabular.h
     tex-accent.h
     tex-strings.h
-    texrow.h
+    TexRow.h
     TextMetrics.h
     toc.h
-    trans.h
-    trans_decl.h
-    trans_mgr.h
-    undo.h
-    vc-backend.h
+    Trans.h
+    KmodInfo.h
+    TransState.h
+    Undo.h
+    VCBackend.h
     version.h
-    vspace.h
+    VSpace.h
 ''')
 
 
 src_pre_files = Split('''
-    Bidi.C
-    BranchList.C
-    BufferView.C
-    Bullet.C
-    Chktex.C
-    Color.C
-    ConverterCache.C
-    CutAndPaste.C
-    DepTable.C
-    FloatList.C
-    Floating.C
-    FontIterator.C
-    FuncStatus.C
-    InsetList.C
-    LColor.C
-    LaTeX.C
-    LaTeXFeatures.C
-    LyXAction.C
-    MenuBackend.C
-    ParagraphParameters.C
-    Spacing.C
-    TocBackend.C
-    ToolbarBackend.C
-    author.C
-    boost.C
-    buffer.C
-    buffer_funcs.C
-    bufferlist.C
-    bufferparams.C
-    bufferview_funcs.C
-    changes.C
-    converter.C
-    coordcache.C
-    counters.C
-    cursor.C
-    cursor_slice.C
-    debug.C
-    dociterator.C
-    encoding.C
-    errorlist.C
-    exporter.C
-    factory.C
-    format.C
-    funcrequest.C
-    gettext.C
-    graph.C
-    importer.C
-    insetiterator.C
-    intl.C
-    kbmap.C
-    kbsequence.C
-    language.C
-    lengthcommon.C
-    lyx_cb.C
-    lyx_main.C
-    lyx_sty.C
-    lyxfind.C
-    lyxfont.C
-    lyxfunc.C
-    lyxgluelength.C
-    lyxlayout.C
-    lyxlength.C
-    lyxlex.C
-    lyxrc.C
-    lyxrow.C
-    lyxserver.C
-    lyxsocket.C
-    lyxtextclass.C
-    lyxtextclasslist.C
-    lyxvc.C
-    messages.C
-    metricsinfo.C
-    mover.C
-    output.C
-    output_docbook.C
-    output_latex.C
-    output_plaintext.C
-    outputparams.C
-    paragraph.C
-    paragraph_funcs.C
-    ParagraphMetrics.C
-    pariterator.C
-    rowpainter.C
-    session.C
-    sgml.C
-    tex-accent.C
-    tex-strings.C
-    texrow.C
-    text.C
-    text2.C
-    text3.C
-    TextMetrics.C
-    toc.C
-    trans.C
-    trans_mgr.C
-    undo.C
-    vc-backend.C
+    Bidi.cpp
+    BranchList.cpp
+    BufferView.cpp
+    Bullet.cpp
+    Chktex.cpp
+    color.cpp
+    ConverterCache.cpp
+    CutAndPaste.cpp
+    DepTable.cpp
+    FloatList.cpp
+    Floating.cpp
+    FontIterator.cpp
+    FuncStatus.cpp
+    InsetList.cpp
+    LColor.cpp
+    LaTeX.cpp
+    LaTeXFeatures.cpp
+    LyXAction.cpp
+    MenuBackend.cpp
+    ParagraphParameters.cpp
+    Spacing.cpp
+    TocBackend.cpp
+    ToolbarBackend.cpp
+    Author.cpp
+    boost.cpp
+    Buffer.cpp
+    buffer_funcs.cpp
+    BufferList.cpp
+    BufferParams.cpp
+    bufferview_funcs.cpp
+    Changes.cpp
+    Converter.cpp
+    CoordCache.cpp
+    Counters.cpp
+    LCursor.cpp
+    CursorSlice.cpp
+    debug.cpp
+    DocIterator.cpp
+    Encoding.cpp
+    ErrorList.cpp
+    Exporter.cpp
+    factory.cpp
+    Format.cpp
+    FuncRequest.cpp
+    gettext.cpp
+    Graph.cpp
+    Importer.cpp
+    InsetIterator.cpp
+    Intl.cpp
+    kb_keymap.cpp
+    kb_sequence.cpp
+    Language.cpp
+    lengthcommon.cpp
+    lyx_cb.cpp
+    LyX.cpp
+    lyx_sty.cpp
+    lyxfind.cpp
+    LyXFont.cpp
+    LyXFunc.cpp
+    LyXGlueLength.cpp
+    LyXLayout.cpp
+    LyXLength.cpp
+    LyXLex.cpp
+    LyXRC.cpp
+    Row.cpp
+    LyXServer.cpp
+    LyXServerSocket.cpp
+    LyXTextClass.cpp
+    LyXTextClassList.cpp
+    LyXVC.cpp
+    Messages.cpp
+    MetricsInfo.cpp
+    Mover.cpp
+    output.cpp
+    output_docbook.cpp
+    output_latex.cpp
+    output_plaintext.cpp
+    OutputParams.cpp
+    Paragraph.cpp
+    paragraph_funcs.cpp
+    ParagraphMetrics.cpp
+    ParIterator.cpp
+    rowpainter.cpp
+    Session.cpp
+    sgml.cpp
+    tex-accent.cpp
+    tex-strings.cpp
+    TexRow.cpp
+    text.cpp
+    text2.cpp
+    text3.cpp
+    TextMetrics.cpp
+    toc.cpp
+    Trans.cpp
+    TransState.cpp
+    Undo.cpp
+    VCBackend.cpp
     version.C
-    vspace.C
+    VSpace.cpp
 ''')
 
 
 src_post_files = Split('''
-    tabular.C
-    dimension.C
-    PrinterParams.C
-    box.C
-    Thesaurus.C
-    SpellBase.C
+    LyXTabular.cpp
+    Dimension.cpp
+    PrinterParams.cpp
+    Box.cpp
+    Thesaurus.cpp
+    SpellBase.cpp
 ''')
 
 

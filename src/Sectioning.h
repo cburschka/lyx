@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file Sectioning.h
+ * \file Section.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,10 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef SECTIONING_H
-#define SECTIONING_H
+#ifndef SECTION_H
+#define SECTION_H
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 
 #include <map>
 

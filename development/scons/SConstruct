@@ -1793,8 +1793,8 @@ if build_tex2lyx:
     print "Processing files in src/tex2lyx..."
 
     #
-    for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C', 
-        'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
+    for file in ['FloatList.cpp', 'Floating.cpp', 'Counters.cpp', 'LyXLayout.h', 'LyXLayout.cpp', 
+        'LyXTextClass.h', 'LyXTextClass.cpp', 'LyXLex.cpp', 'lyxlex_pimpl.C']:
         frontend_env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
             [Copy('$TARGET', '$SOURCE')])
 
@@ -1824,14 +1824,14 @@ if build_lyxbase:
     env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.C.in')
 
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-        src_post_files.append('aspell.C')
+        src_post_files.append('ASpell.cpp')
     elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-        src_post_files.append('pspell.C')
+        src_post_files.append('PSpell.cpp')
     elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-        src_post_files.append('ispell.C')
+        src_post_files.append('ISpell.cpp')
 
     # msvc requires at least one source file with main()
-    # so I exclude main.C from lyxbase
+    # so I exclude main.cpp from lyxbase
     lyxbase_pre = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_pre',
         source = ['$BUILDDIR/common/%s' % x for x in src_pre_files]
@@ -1850,7 +1850,7 @@ if build_lyx:
     #
     lyx = frontend_env.Program(
         target = '$BUILDDIR/lyx',
-        source = ['$BUILDDIR/common/main.C'] + \
+        source = ['$BUILDDIR/common/main.cpp'] + \
             utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
         LIBS = [
             'lyxbase_pre',

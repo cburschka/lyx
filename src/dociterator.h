@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file dociterator.h
+ * \file DocIterator.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef DOCITERATOR_H
 #define DOCITERATOR_H
 
-#include "cursor_slice.h"
+#include "CursorSlice.h"
 
 #include <vector>
 #include <iosfwd>

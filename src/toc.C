@@ -1,5 +1,5 @@
 /**
- * \file toc.C
+ * \file toc.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,16 +14,16 @@
 
 #include "toc.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "funcrequest.h"
-#include "lyxtext.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "FuncRequest.h"
+#include "LyXText.h"
 #include "LyXAction.h"
-#include "paragraph.h"
-#include "pariterator.h"
-#include "cursor.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "undo.h"
+#include "Undo.h"
 
 
 namespace lyx {

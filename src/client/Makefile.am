@@ -21,11 +21,11 @@ lyxclient_LDADD = \
 lyxclient_SOURCES = \
 	boost.cpp \
 	client.C \
-	debug.C \
+	debug.cpp \
 	debug.h \
-	gettext.C \
-	messages.C \
-	messages.h
+	gettext.cpp \
+	Messages.cpp \
+	Messages.h
 
 lyxclient.1:
 	cp -p $(srcdir)/lyxclient.man lyxclient.1

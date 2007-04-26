@@ -1,5 +1,5 @@
 /**
- * \file output_latex.C
+ * \file output_latex.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,18 +12,18 @@
 
 #include "output_latex.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "encoding.h"
-#include "language.h"
-#include "lyxrc.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "Encoding.h"
+#include "Language.h"
+#include "LyXRC.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "texrow.h"
-#include "vspace.h"
+#include "TexRow.h"
+#include "VSpace.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetOptArg.h"

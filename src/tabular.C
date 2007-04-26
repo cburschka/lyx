@@ -1,5 +1,5 @@
 /**
- * \file tabular.C
+ * \file LyXTabular.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -17,17 +17,17 @@
 
 #include <config.h>
 
-#include "tabular.h"
+#include "LyXTabular.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "lyxlex.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "LyXLex.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 
 #include "insets/InsetTabular.h"
@@ -809,7 +809,7 @@ int LyXTabular::getAdditionalHeight(row_type row) const
 int LyXTabular::getAdditionalWidth(idx_type cell) const
 {
 	// internally already set in setWidthOfCell
-	// used to get it back in text.C
+	// used to get it back in text.cpp
 	col_type const col = right_column_of_cell(cell);
 	row_type const row = row_of_cell(cell);
 	if (col < columns_ - 1 && rightLine(cell) &&

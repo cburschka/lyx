@@ -30,7 +30,7 @@
 #ifndef BRANCHES_H
 #define BRANCHES_H
 
-#include "Color.h"
+#include "color.h"
 
 #include "support/docstring.h"
 

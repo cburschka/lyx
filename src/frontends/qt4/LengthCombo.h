@@ -14,7 +14,7 @@
 
 #include <QComboBox>
 
-#include "vspace.h"
+#include "VSpace.h"
 
 
 //namespace lyx {

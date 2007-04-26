@@ -14,7 +14,7 @@
 #define INSETBOX_H
 
 #include "InsetCollapsable.h"
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "MailInset.h"
 
 

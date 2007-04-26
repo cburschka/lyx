@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "Color.h"
+#include "color.h"
 #include "ColorCache.h"
 
 #include "LColor.h"

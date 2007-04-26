@@ -13,7 +13,7 @@
 #define RENDERBUTTON_H
 
 #include "RenderBase.h"
-#include "box.h"
+#include "Box.h"
 #include "support/docstring.h"
 
 

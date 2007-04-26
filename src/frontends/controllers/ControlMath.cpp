@@ -12,7 +12,7 @@
 
 #include "ControlMath.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include "support/lyxalgo.h" // sorted
 #include "support/lstrings.h"

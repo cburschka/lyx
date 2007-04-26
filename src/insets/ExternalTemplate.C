@@ -14,7 +14,7 @@
 #include "ExternalTemplate.h"
 
 #include "debug.h"
-#include "lyxlex.h"
+#include "LyXLex.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"

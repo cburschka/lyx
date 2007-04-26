@@ -12,7 +12,7 @@
 #ifndef MATH_XYMATRIX_H
 #define MATH_XYMATRIX_H
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "InsetMathGrid.h"
 
 

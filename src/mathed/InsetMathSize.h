@@ -13,7 +13,7 @@
 #define MATHSIZEINSET_H
 
 #include "InsetMathNest.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 
 
 namespace lyx {

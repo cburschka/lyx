@@ -15,10 +15,10 @@
 #include "ControlCommandBuffer.h"
 
 #include "BufferView.h"
-#include "cursor.h"
-#include "lyxfunc.h"
+#include "LCursor.h"
+#include "LyXFunc.h"
 #include "LyXAction.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include "frontends/LyXView.h"
 

@@ -15,9 +15,9 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "lyxfont.h"
-#include "lyxtext.h"
-#include "metricsinfo.h"
+#include "LyXFont.h"
+#include "LyXText.h"
+#include "MetricsInfo.h"
 
 #include "support/std_ostream.h"
 

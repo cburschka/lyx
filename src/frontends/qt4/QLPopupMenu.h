@@ -14,7 +14,7 @@
 
 #include <QMenu>
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "MenuBackend.h"
 
 namespace lyx {

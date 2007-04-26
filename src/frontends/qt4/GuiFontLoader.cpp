@@ -15,7 +15,7 @@
 #include "qt_helpers.h"
 
 #include "debug.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"

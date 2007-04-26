@@ -1,5 +1,5 @@
 /**
- * \file text3.C
+ * \file text3.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,38 +15,38 @@
 
 #include <config.h>
 
-#include "lyxtext.h"
+#include "LyXText.h"
 
 #include "BranchList.h"
 #include "FloatList.h"
 #include "FuncStatus.h"
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "cursor.h"
-#include "coordcache.h"
+#include "LCursor.h"
+#include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "errorlist.h"
+#include "DispatchResult.h"
+#include "ErrorList.h"
 #include "factory.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "intl.h"
-#include "language.h"
+#include "Intl.h"
+#include "Language.h"
 #include "LyXAction.h"
-#include "lyxfunc.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "paragraph.h"
+#include "LyXFunc.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
+#include "Row.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "undo.h"
-#include "vspace.h"
-#include "pariterator.h"
+#include "Undo.h"
+#include "VSpace.h"
+#include "ParIterator.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file undo.h
+ * \file Undo.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,8 +16,8 @@
 #ifndef UNDO_H
 #define UNDO_H
 
-#include "dociterator.h"
-#include "bufferparams.h"
+#include "DocIterator.h"
+#include "BufferParams.h"
 #include "ParagraphList_fwd.h"
 
 #include "support/types.h"

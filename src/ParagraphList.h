@@ -12,7 +12,7 @@
 #ifndef PARAGRAPH_LIST_H
 #define PARAGRAPH_LIST_H
 
-#include "paragraph.h"
+#include "Paragraph.h"
 
 #include "support/RandomAccessList.h"
 

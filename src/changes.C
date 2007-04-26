@@ -1,5 +1,5 @@
 /**
- * \file changes.C
+ * \file Changes.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "changes.h"
+#include "Changes.h"
 #include "debug.h"
 
 #include <boost/assert.hpp>

@@ -17,7 +17,7 @@
 #include "InsetMathSqrt.h"
 
 #include "debug.h"
-#include "dociterator.h"
+#include "DocIterator.h"
 
 #include <boost/assert.hpp>
 

@@ -16,7 +16,7 @@
 #include "qt_helpers.h"
 
 #include "lyx_cb.h"
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 #include "FuncStatus.h"
 #include "debug.h"
 

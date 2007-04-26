@@ -20,7 +20,7 @@
 #include <vector>
 #include <string>
 
-#include "pariterator.h"
+#include "ParIterator.h"
 
 #include "support/docstream.h"
 

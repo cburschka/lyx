@@ -1,5 +1,5 @@
 /**
- * \file trans.C
+ * \file Trans.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,12 +11,12 @@
 
 #include <config.h>
 
-#include "trans.h"
+#include "Trans.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "lyxlex.h"
+#include "LyXLex.h"
 #include "debug.h"
-#include "trans_mgr.h"
+#include "TransState.h"
 
 
 namespace lyx {

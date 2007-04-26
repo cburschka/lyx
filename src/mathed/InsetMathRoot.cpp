@@ -14,7 +14,7 @@
 #include "InsetMathRoot.h"
 #include "MathArray.h"
 #include "MathStream.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "LColor.h"
 
 #include "frontends/Painter.h"

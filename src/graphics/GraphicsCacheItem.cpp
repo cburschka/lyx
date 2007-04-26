@@ -18,7 +18,7 @@
 
 #include "ConverterCache.h"
 #include "debug.h"
-#include "format.h"
+#include "Format.h"
 
 #include "support/filetools.h"
 #include "support/FileMonitor.h"

@@ -16,12 +16,12 @@
 #include "MathMacroTemplate.h"
 
 #include "BufferView.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "outputparams.h"
+#include "LyXLex.h"
+#include "OutputParams.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

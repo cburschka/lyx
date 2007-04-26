@@ -14,7 +14,7 @@
 #include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "dimension.h"
+#include "Dimension.h"
 
 
 namespace lyx {

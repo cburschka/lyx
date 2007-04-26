@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxserver.h
+ * \file LyXServer.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -143,7 +143,7 @@ private:
 	LyXComm pipes;
 };
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern LyXServer & theLyXServer();
 
 
@@ -151,4 +151,4 @@ extern LyXServer & theLyXServer();
 
 #endif /* _LYXSERVER_H_ */
 
-/* === End of File: lyxserver.h ========================================== */
+/* === End of File: LyXServer.h ========================================== */

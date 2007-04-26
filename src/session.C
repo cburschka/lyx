@@ -1,5 +1,5 @@
 /**
- * \file session.C
+ * \file Session.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "session.h"
+#include "Session.h"
 #include "debug.h"
 #include "support/package.h"
 #include "support/filetools.h"

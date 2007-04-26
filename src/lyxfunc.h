@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxfunc.h
+ * \file LyXFunc.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,7 +15,7 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
-#include "kbsequence.h"
+#include "kb_sequence.h"
 #include "lfuns.h"
 
 #include "support/docstring.h"
@@ -125,13 +125,13 @@ private:
 	bool ensureBufferClean(BufferView * bv);
 };
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern LyXFunc & theLyXFunc();
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern FuncStatus getStatus(FuncRequest const & action);
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern void dispatch(FuncRequest const & action);
 
 } // namespace lyx

@@ -1,5 +1,5 @@
 /**
- * \file text2.C
+ * \file text2.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -19,37 +19,37 @@
 
 #include <config.h>
 
-#include "lyxtext.h"
+#include "LyXText.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
-#include "bufferparams.h"
+#include "BufferList.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "Bullet.h"
-#include "coordcache.h"
-#include "cursor.h"
+#include "CoordCache.h"
+#include "LCursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "errorlist.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "ErrorList.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LColor.h"
-#include "lyxfunc.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "paragraph.h"
+#include "LyXFunc.h"
+#include "LyXRC.h"
+#include "Row.h"
+#include "Paragraph.h"
 #include "TextMetrics.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "pariterator.h"
-#include "lyxserver.h"
-#include "lyxsocket.h"
-#include "undo.h"
-#include "vspace.h"
+#include "ParIterator.h"
+#include "LyXServer.h"
+#include "LyXServerSocket.h"
+#include "Undo.h"
+#include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
 
@@ -139,7 +139,7 @@ InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 
 
 // Gets the fully instantiated font at a given position in a paragraph
-// Basically the same routine as Paragraph::getFont() in paragraph.C.
+// Basically the same routine as Paragraph::getFont() in Paragraph.cpp.
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)

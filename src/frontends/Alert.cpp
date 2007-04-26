@@ -14,7 +14,7 @@
 #include "Alert_pimpl.h"
 
 #include "debug.h"
-#include "lyx_main.h" // for lyx::use_gui
+#include "LyX.h" // for lyx::use_gui
 
 using std::endl;
 using std::make_pair;

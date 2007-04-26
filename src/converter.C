@@ -1,5 +1,5 @@
 /**
- * \file converter.C
+ * \file Converter.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,18 +10,18 @@
 
 #include <config.h>
 
-#include "converter.h"
+#include "Converter.h"
 
 #include "ConverterCache.h"
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "format.h"
+#include "Format.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LaTeX.h"
-#include "mover.h"
+#include "Mover.h"
 
 #include "frontends/Alert.h"
 

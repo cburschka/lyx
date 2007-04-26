@@ -38,15 +38,15 @@
 #include "FuncStatus.h"
 #include "LColor.h"
 #include "bufferview_funcs.h"
-#include "coordcache.h"
-#include "cursor.h"
+#include "CoordCache.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "outputparams.h"
-#include "undo.h"
+#include "LyXText.h"
+#include "OutputParams.h"
+#include "Undo.h"
 
 #include "support/lstrings.h"
 #include "support/textutils.h"
@@ -55,9 +55,9 @@
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
-#include "funcrequest.h"
-#include "lyxserver.h"
-#include "lyxsocket.h"
+#include "FuncRequest.h"
+#include "LyXServer.h"
+#include "LyXServerSocket.h"
 
 #include <sstream>
 

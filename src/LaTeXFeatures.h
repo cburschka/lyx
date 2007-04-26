@@ -14,7 +14,7 @@
 #define LATEXFEATURES_H
 
 
-#include "outputparams.h"
+#include "OutputParams.h"
 #include "support/docstring.h"
 
 #include <set>
@@ -39,7 +39,7 @@ class Language;
  *  packages which don't have special requirements are handled automatically.
  *  If your new package does need special consideration you'll need to alter
  *  string const getPackages() const;
- *  Remember to update the validate function in buffer.C and paragraph.C
+ *  Remember to update the validate function in Buffer.cpp and Paragraph.cpp
  *  when you do so.
  */
 class LaTeXFeatures {

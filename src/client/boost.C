@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "lyx_main.h"
+#include "LyX.h"
 #include "debug.h"
 #include "support/lyxlib.h"
 

@@ -13,7 +13,7 @@
 #include "RenderButton.h"
 
 #include "LColor.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

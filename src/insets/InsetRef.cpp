@@ -11,14 +11,14 @@
 
 #include "InsetRef.h"
 
-#include "buffer.h"
-#include "cursor.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "Buffer.h"
+#include "LCursor.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "lyxfunc.h"
-#include "outputparams.h"
+#include "LyXFunc.h"
+#include "OutputParams.h"
 #include "sgml.h"
 
 #include "support/lstrings.h"

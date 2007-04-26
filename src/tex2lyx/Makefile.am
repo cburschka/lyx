@@ -23,14 +23,14 @@ BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM) $(BOOST_IOSTREAMS)
 COMPRESSIONLIB = -lz
 
 LINKED_FILES = \
-	FloatList.C \
-	Floating.C \
-	counters.C \
-	lyxlayout.h \
-	lyxlayout.C \
-	lyxtextclass.C \
-	lyxtextclass.h \
-	lyxlex.C 
+	FloatList.cpp \
+	Floating.cpp \
+	Counters.cpp \
+	LyXLayout.h \
+	LyXLayout.cpp \
+	LyXTextClass.cpp \
+	LyXTextClass.h \
+	LyXLex.cpp 
 
 BUILT_SOURCES = $(PCH_FILE) $(LINKED_FILES)
 
@@ -40,10 +40,10 @@ tex2lyx_SOURCES = \
 	boost.cpp \
 	context.C \
 	context.h \
-	gettext.C \
-	lengthcommon.C \
-	lyxfont.C \
-	lyxfont.h \
+	gettext.cpp \
+	lengthcommon.cpp \
+	LyXFont.cpp \
+	LyXFont.h \
 	texparser.C \
 	texparser.h \
 	tex2lyx.C \
@@ -51,7 +51,7 @@ tex2lyx_SOURCES = \
 	preamble.C \
 	math.C \
 	table.C \
-	text.C
+	text.cpp
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \

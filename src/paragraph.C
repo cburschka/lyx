@@ -1,5 +1,5 @@
 /**
- * \file paragraph.C
+ * \file Paragraph.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -17,30 +17,30 @@
 
 #include <config.h>
 
-#include "paragraph.h"
+#include "Paragraph.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "counters.h"
-#include "encoding.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "Counters.h"
+#include "Encoding.h"
 #include "debug.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "lyxlength.h"
-#include "lyxfont.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "messages.h"
-#include "outputparams.h"
+#include "LyXLength.h"
+#include "LyXFont.h"
+#include "LyXRC.h"
+#include "Row.h"
+#include "Messages.h"
+#include "OutputParams.h"
 #include "output_latex.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "rowpainter.h"
 #include "sgml.h"
-#include "texrow.h"
-#include "vspace.h"
+#include "TexRow.h"
+#include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
 
@@ -1330,7 +1330,7 @@ LyXFont const Paragraph::getFirstFontSettings(BufferParams const & bparams) cons
 
 
 // Gets the fully instantiated font at a given position in a paragraph
-// This is basically the same function as LyXText::GetFont() in text2.C.
+// This is basically the same function as LyXText::GetFont() in text2.cpp.
 // The difference is that this one is used for generating the LaTeX file,
 // and thus cosmetic "improvements" are disallowed: This has to deliver
 // the true picture of the buffer. (Asger)
@@ -1461,7 +1461,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 	BOOST_ASSERT(pos <= size());
 
 	// First, reduce font against layout/label font
-	// Update: The setCharFont() routine in text2.C already
+	// Update: The setCharFont() routine in text2.cpp already
 	// reduces font, so we don't need to do that here. (Asger)
 	// No need to simplify this because it will disappear
 	// in a new kernel. (Asger)

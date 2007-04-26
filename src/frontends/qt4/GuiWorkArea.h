@@ -15,7 +15,7 @@
 
 #include "frontends/WorkArea.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "frontends/Timeout.h"
 
 #include <QAbstractScrollArea>

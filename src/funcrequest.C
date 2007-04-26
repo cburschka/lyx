@@ -1,5 +1,5 @@
 /**
- * \file funcrequest.C
+ * \file FuncRequest.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include <iostream>
 #include <sstream>

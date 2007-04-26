@@ -1,5 +1,5 @@
 /**
- * \file src/text.C
+ * \file src/text.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,39 +16,39 @@
 
 #include <config.h>
 
-#include "lyxtext.h"
+#include "LyXText.h"
 
-#include "author.h"
-#include "buffer.h"
+#include "Author.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "cursor.h"
-#include "pariterator.h"
-#include "coordcache.h"
+#include "LCursor.h"
+#include "ParIterator.h"
+#include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "dispatchresult.h"
-#include "encoding.h"
-#include "errorlist.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "Encoding.h"
+#include "ErrorList.h"
+#include "FuncRequest.h"
 #include "factory.h"
 #include "FontIterator.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LColor.h"
-#include "lyxlength.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "metricsinfo.h"
-#include "paragraph.h"
+#include "LyXLength.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
+#include "Row.h"
+#include "MetricsInfo.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "rowpainter.h"
-#include "undo.h"
-#include "vspace.h"
+#include "Undo.h"
+#include "VSpace.h"
 #include "WordLangTuple.h"
 
 #include "frontends/FontMetrics.h"

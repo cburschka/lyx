@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxgluelength.h
+ * \file LyXGlueLength.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #ifndef LYX_GLUE_LENGTH_H
 #define LYX_GLUE_LENGTH_H
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 
 
 namespace lyx {

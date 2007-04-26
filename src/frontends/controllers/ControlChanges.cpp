@@ -13,12 +13,12 @@
 
 #include "ControlChanges.h"
 
-#include "author.h"
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Author.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "changes.h"
-#include "funcrequest.h"
+#include "Changes.h"
+#include "FuncRequest.h"
 #include "lyxfind.h"
 
 #include "support/lyxtime.h"

@@ -12,7 +12,7 @@
 #ifndef EXTERNALTRANSFORMS_H
 #define EXTERNALTRANSFORMS_H
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 
 #include "graphics/GraphicsParams.h"
 

@@ -13,12 +13,12 @@
 
 #include "ControlToc.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "debug.h"
 #include "FloatList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 
 #include "frontends/LyXView.h"

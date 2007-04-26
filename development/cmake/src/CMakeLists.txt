@@ -24,15 +24,15 @@ file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources
-	${TOP_SRC_DIR}/src/aspell.C
-	${TOP_SRC_DIR}/src/pspell.C
-	${TOP_SRC_DIR}/src/ispell.C
-	${TOP_SRC_DIR}/src/Variables.C
-	${TOP_SRC_DIR}/src/Sectioning.C)
+	${TOP_SRC_DIR}/src/ASpell.cpp
+	${TOP_SRC_DIR}/src/PSpell.cpp
+	${TOP_SRC_DIR}/src/ISpell.cpp
+	${TOP_SRC_DIR}/src/Variables.cpp
+	${TOP_SRC_DIR}/src/Section.cpp)
 	
 if(ASPELL_FOUND)
 	include_directories(${ASPELL_INCLUDE_DIR})
-	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/aspell.C)
+	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/ASpell.cpp)
 endif(ASPELL_FOUND)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})

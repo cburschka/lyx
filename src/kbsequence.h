@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file kbsequence.h
+ * \file kb_sequence.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef KBSEQUENCE_H
-#define KBSEQUENCE_H
+#ifndef KB_SEQUENCE_H
+#define KB_SEQUENCE_H
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"

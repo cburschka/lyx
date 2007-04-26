@@ -1,5 +1,5 @@
 /**
- * \file format.C
+ * \file Format.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,13 +10,13 @@
 
 #include <config.h>
 
-#include "format.h"
-#include "buffer.h"
-#include "bufferparams.h"
-#include "lyxrc.h"
+#include "Format.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "LyXRC.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lyxsocket.h"
+#include "LyXServerSocket.h"
 
 #include "frontends/Application.h"
 #include "frontends/Alert.h" //to be removed?

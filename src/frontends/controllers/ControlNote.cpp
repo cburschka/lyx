@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ControlNote.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetNote.h"
 #include "gettext.h"
 

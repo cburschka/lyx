@@ -14,10 +14,10 @@
 
 #include "debug.h"
 #include "LColor.h"
-#include "lyxtext.h"
-#include "metricsinfo.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "LyXText.h"
+#include "MetricsInfo.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 
 #include "frontends/FontMetrics.h"

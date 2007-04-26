@@ -119,7 +119,7 @@ public:
 
 	/** Used when setting the user_support directory.
 	 *  Used also when expanding "~/" or contracting to "~/". (filetools.C)
-	 *  Used in emergencyWrite (bufferlist.C) as one possible location
+	 *  Used in emergencyWrite (BufferList.cpp) as one possible location
 	 *  for the dump.
 	 *  This may be empty (e. g. when run under a CGI environment)
 	 */

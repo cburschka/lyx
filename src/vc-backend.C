@@ -1,5 +1,5 @@
 /**
- * \file vc-backend.C
+ * \file VCBackend.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,9 +10,9 @@
 
 #include <config.h>
 
-#include "vc-backend.h"
+#include "VCBackend.h"
 #include "debug.h"
-#include "buffer.h"
+#include "Buffer.h"
 
 #include "support/path.h"
 #include "support/filetools.h"

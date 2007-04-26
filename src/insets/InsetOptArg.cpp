@@ -15,7 +15,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "paragraph.h"
+#include "Paragraph.h"
 
 #include <sstream>
 

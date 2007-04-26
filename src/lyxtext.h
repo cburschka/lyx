@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxtext.h
+ * \file LyXText.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,8 +15,8 @@
 #define LYXTEXT_H
 
 #include "Bidi.h"
-#include "dispatchresult.h"
-#include "lyxfont.h"
+#include "DispatchResult.h"
+#include "LyXFont.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "ParagraphList.h"

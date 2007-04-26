@@ -11,9 +11,9 @@
 
 #include <config.h>
 
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 #include "FuncStatus.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "LyXView.h"
 
 #include "qt_helpers.h"

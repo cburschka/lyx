@@ -17,9 +17,9 @@
 
 #include "debug.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "metricsinfo.h"
-#include "outputparams.h"
+#include "LyXLex.h"
+#include "MetricsInfo.h"
+#include "OutputParams.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

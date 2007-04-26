@@ -1,5 +1,5 @@
 /**
- * \file ispell.C
+ * \file ISpell.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,14 +12,14 @@
 
 #include <config.h>
 
-#include "ispell.h"
+#include "ISpell.h"
 
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "encoding.h"
+#include "Encoding.h"
 #include "gettext.h"
-#include "language.h"
-#include "lyxrc.h"
+#include "Language.h"
+#include "LyXRC.h"
 #include "WordLangTuple.h"
 
 #include "support/forkedcall.h"

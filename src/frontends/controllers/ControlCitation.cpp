@@ -13,8 +13,8 @@
 
 #include "ControlCitation.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h" // temporary
 
 #include "support/lstrings.h"

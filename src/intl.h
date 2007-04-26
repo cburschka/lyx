@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file intl.h
+ * \file Intl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,7 +15,7 @@
 #ifndef INTL_H
 #define INTL_H
 
-#include "trans_mgr.h"
+#include "TransState.h"
 
 
 namespace lyx {

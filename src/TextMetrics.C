@@ -1,5 +1,5 @@
 /**
- * \file src/TextMetrics.C
+ * \file src/TextMetrics.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -19,22 +19,22 @@
 
 #include "TextMetrics.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "paragraph_funcs.h"
-#include "pariterator.h"
-#include "coordcache.h"
+#include "ParIterator.h"
+#include "CoordCache.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FontIterator.h"
 #include "LColor.h"
-#include "lyxlength.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
-#include "metricsinfo.h"
+#include "LyXLength.h"
+#include "LyXRC.h"
+#include "LyXText.h"
+#include "MetricsInfo.h"
 #include "ParagraphParameters.h"
-#include "vspace.h"
+#include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

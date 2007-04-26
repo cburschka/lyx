@@ -1,5 +1,5 @@
 /**
- * \file exporter.C
+ * \file Exporter.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,18 +16,18 @@
 
 #include <config.h>
 
-#include "exporter.h"
+#include "Exporter.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferparams.h"
-#include "converter.h"
-#include "format.h"
+#include "BufferParams.h"
+#include "Converter.h"
+#include "Format.h"
 #include "gettext.h"
-#include "lyxrc.h"
-#include "mover.h"
+#include "LyXRC.h"
+#include "Mover.h"
 #include "output_plaintext.h"
-#include "outputparams.h"
+#include "OutputParams.h"
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"

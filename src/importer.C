@@ -1,5 +1,5 @@
 /**
- * \file importer.C
+ * \file Importer.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,11 +12,11 @@
 
 #include <config.h>
 
-#include "importer.h"
-#include "converter.h"
-#include "format.h"
+#include "Importer.h"
+#include "Converter.h"
+#include "Format.h"
 #include "frontends/LyXView.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "lyx_cb.h"
 
 #include "support/filetools.h"

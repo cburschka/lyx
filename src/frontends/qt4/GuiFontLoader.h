@@ -16,8 +16,8 @@
 
 #include "GuiFontMetrics.h"
 
-#include "encoding.h"
-#include "lyxfont.h"
+#include "Encoding.h"
+#include "LyXFont.h"
 
 #include <QFont>
 

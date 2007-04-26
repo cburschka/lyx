@@ -1,5 +1,5 @@
 /**
- * \file lyxrc.C
+ * \file LyXRC.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -19,17 +19,17 @@
 #include <fstream>
 #include <iostream>
 
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "debug.h"
-#include "converter.h"
-#include "format.h"
+#include "Converter.h"
+#include "Format.h"
 #include "gettext.h"
-#include "session.h"
+#include "Session.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "lyxfont.h"
-#include "mover.h"
+#include "LyXLex.h"
+#include "LyXFont.h"
+#include "Mover.h"
 
 #include "graphics/GraphicsTypes.h"
 

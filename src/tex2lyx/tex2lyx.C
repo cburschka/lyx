@@ -16,7 +16,7 @@
 #include "context.h"
 
 #include "debug.h"
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"

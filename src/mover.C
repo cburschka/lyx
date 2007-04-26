@@ -1,5 +1,5 @@
 /**
- * \file mover.C
+ * \file Mover.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "mover.h"
+#include "Mover.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"

@@ -15,7 +15,7 @@
 #ifndef LENGTH_COMMON_H
 #define LENGTH_COMMON_H
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 
 
 namespace lyx {

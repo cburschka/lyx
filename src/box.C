@@ -1,5 +1,5 @@
 /**
- * \file box.C
+ * \file Box.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -8,11 +8,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-// Code moved out of line and out of box.h by Angus (7 Jan 2002)
+// Code moved out of line and out of Box.h by Angus (7 Jan 2002)
 
 #include <config.h>
 
-#include "box.h"
+#include "Box.h"
 
 #include "support/std_ostream.h"
 

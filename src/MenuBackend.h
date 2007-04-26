@@ -14,7 +14,7 @@
 #define MENUBACKEND_H
 
 #include "FuncStatus.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include <boost/shared_ptr.hpp>
 

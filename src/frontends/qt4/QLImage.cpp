@@ -15,7 +15,7 @@
 #include "qt_helpers.h"
 
 #include "debug.h"
-#include "format.h"
+#include "Format.h"
 
 #include "graphics/GraphicsParams.h"
 

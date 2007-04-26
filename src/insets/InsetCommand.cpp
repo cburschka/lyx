@@ -14,12 +14,12 @@
 #include "InsetCommand.h"
 
 #include "BufferView.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "lyxlex.h"
-#include "metricsinfo.h"
+#include "LyXLex.h"
+#include "MetricsInfo.h"
 
 #include <sstream>
 

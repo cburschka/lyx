@@ -1,5 +1,5 @@
 /**
- * \file cursor_slice.C
+ * \file CursorSlice.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,10 +13,10 @@
 
 #include <config.h>
 
-#include "cursor_slice.h"
+#include "CursorSlice.h"
 #include "debug.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 
 #include "mathed/InsetMath.h"
 #include "mathed/MathArray.h"

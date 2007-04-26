@@ -28,8 +28,8 @@
 #include "support/environment.h"
 #include "support/unicode.h"
 
-#include "encoding.h"
-#include "language.h"
+#include "Encoding.h"
+#include "Language.h"
 
 
 namespace lyx {

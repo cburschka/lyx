@@ -12,7 +12,7 @@
 
 #include "GraphicsParams.h"
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 
 #include <sstream>
 

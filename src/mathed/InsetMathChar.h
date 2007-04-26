@@ -14,7 +14,7 @@
 
 #include "InsetMath.h"
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 
 namespace lyx {
 

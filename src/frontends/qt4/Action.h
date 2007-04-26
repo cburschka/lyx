@@ -13,7 +13,7 @@
 #define ACTION_H
 
 #include "frontends/LyXView.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include "support/docstring.h"
 

@@ -14,7 +14,7 @@
 
 #include "frontends/FontMetrics.h"
 
-#include "dimension.h"
+#include "Dimension.h"
 
 #include "support/docstring.h"
 

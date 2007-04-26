@@ -12,18 +12,18 @@
 
 #include "InsetBranch.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BranchList.h"
-#include "cursor.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "LCursor.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "paragraph.h"
-#include "outputparams.h"
+#include "LyXLex.h"
+#include "Paragraph.h"
+#include "OutputParams.h"
 
 #include <sstream>
 

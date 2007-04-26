@@ -15,7 +15,7 @@
 
 
 #include "graphics/GraphicsTypes.h"
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "support/filename.h"
 
 namespace lyx {

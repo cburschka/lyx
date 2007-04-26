@@ -11,9 +11,9 @@ endif
 SUBDIRS = mathed insets graphics support frontends . $(CLIENT) tex2lyx
 
 EXTRA_DIST = config.h.in stamp-h.in version.C.in \
-	Sectioning.h \
-	Sectioning.C \
-	Variables.C \
+	Section.h \
+	Section.cpp \
+	Variables.cpp \
 	Variables.h \
 	paper.h \
 	pch.h
@@ -35,7 +35,7 @@ EXTRA_PROGRAMS = lyx-qt4
 
 lyx_qt4_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
 	frontends/qt4/libqt4.la $(LYX_POST_LIBS) $(OTHERLIBS)
-lyx_qt4_SOURCES = main.C
+lyx_qt4_SOURCES = main.cpp
 
 lyx$(EXEEXT): $(FRONTENDS_PROGS)
 	rm -f $@
@@ -48,237 +48,237 @@ BUILT_SOURCES = $(PCH_FILE) version.C
 AM_CPPFLAGS += $(PCH_FLAGS) $(BOOST_INCLUDES)
 
 if USE_ASPELL
-ASPELL = aspell.C aspell_local.h
+ASPELL = ASpell.cpp ASpell_local.h
 endif
 if USE_PSPELL
-PSPELL = pspell.C pspell.h
+PSPELL = PSpell.cpp PSpell.h
 endif
 if USE_ISPELL
-ISPELL = ispell.C ispell.h
+ISPELL = ISpell.cpp ISpell.h
 endif
 
 
 
 lyx_SOURCES = \
-	Bidi.C \
+	Bidi.cpp \
 	Bidi.h \
-	BufferView.C \
+	BufferView.cpp \
 	BufferView.h \
-	Bullet.C \
+	Bullet.cpp \
 	Bullet.h \
-	BranchList.C \
+	BranchList.cpp \
 	BranchList.h \
-	Chktex.C \
+	Chktex.cpp \
 	Chktex.h \
-	Color.C \
-	Color.h \
-	ConverterCache.C \
+	color.cpp \
+	color.h \
+	ConverterCache.cpp \
 	ConverterCache.h \
-	CutAndPaste.C \
+	CutAndPaste.cpp \
 	CutAndPaste.h \
-	DepTable.C \
+	DepTable.cpp \
 	DepTable.h \
-	FloatList.C \
+	FloatList.cpp \
 	FloatList.h \
-	Floating.C \
+	Floating.cpp \
 	Floating.h \
-	FontIterator.C \
+	FontIterator.cpp \
 	FontIterator.h \
-	FuncStatus.C \
+	FuncStatus.cpp \
 	FuncStatus.h \
-	InsetList.C \
+	InsetList.cpp \
 	InsetList.h \
-	LColor.C \
+	LColor.cpp \
 	LColor.h \
-	LaTeX.C \
+	LaTeX.cpp \
 	LaTeX.h \
-	LaTeXFeatures.C \
+	LaTeXFeatures.cpp \
 	LaTeXFeatures.h \
-	LyXAction.C \
+	LyXAction.cpp \
 	LyXAction.h \
-	MenuBackend.C \
+	MenuBackend.cpp \
 	MenuBackend.h \
 	ParagraphList.h \
 	ParagraphList_fwd.h \
-	ParagraphParameters.C \
+	ParagraphParameters.cpp \
 	ParagraphParameters.h \
-	PrinterParams.C \
+	PrinterParams.cpp \
 	PrinterParams.h \
 	RowList_fwd.h \
-	Spacing.C \
+	Spacing.cpp \
 	Spacing.h \
-	Thesaurus.C \
+	Thesaurus.cpp \
 	Thesaurus.h \
-	ToolbarBackend.C \
+	ToolbarBackend.cpp \
 	ToolbarBackend.h \
 	UpdateFlags.h \
 	WordLangTuple.h \
-	author.C \
-	author.h \
+	Author.cpp \
+	Author.h \
 	boost.cpp \
-	box.h \
-	box.C \
-	buffer.C \
-	buffer.h \
-	buffer_funcs.C \
+	Box.h \
+	Box.cpp \
+	Buffer.cpp \
+	Buffer.h \
+	buffer_funcs.cpp \
 	buffer_funcs.h \
-	bufferlist.C \
-	bufferlist.h \
-	bufferparams.C \
-	bufferparams.h \
-	bufferview_funcs.C \
+	BufferList.cpp \
+	BufferList.h \
+	BufferParams.cpp \
+	BufferParams.h \
+	bufferview_funcs.cpp \
 	bufferview_funcs.h \
-	changes.C \
-	changes.h \
+	Changes.cpp \
+	Changes.h \
 	config.h.in \
-	converter.C \
-	converter.h \
-	counters.C \
-	counters.h \
-	coordcache.C \
-	coordcache.h \
-	cursor.C \
-	cursor.h \
-	cursor_slice.C \
-	cursor_slice.h \
-	debug.C \
+	Converter.cpp \
+	Converter.h \
+	Counters.cpp \
+	Counters.h \
+	CoordCache.cpp \
+	CoordCache.h \
+	LCursor.cpp \
+	LCursor.h \
+	CursorSlice.cpp \
+	CursorSlice.h \
+	debug.cpp \
 	debug.h \
-	dimension.C \
-	dimension.h \
-	dociterator.C \
-	dociterator.h \
-	dispatchresult.h \
-	encoding.C \
-	encoding.h \
-	errorlist.C \
-	errorlist.h \
-	exporter.C \
-	exporter.h \
-	gettext.C \
+	Dimension.cpp \
+	Dimension.h \
+	DocIterator.cpp \
+	DocIterator.h \
+	DispatchResult.h \
+	Encoding.cpp \
+	Encoding.h \
+	ErrorList.cpp \
+	ErrorList.h \
+	Exporter.cpp \
+	Exporter.h \
+	gettext.cpp \
 	gettext.h \
 	factory.h \
-	factory.C \
-	format.C \
-	format.h \
-	funcrequest.h \
-	funcrequest.C \
-	graph.C \
-	graph.h \
-	importer.C \
-	importer.h \
-	intl.C \
-	intl.h \
-	insetiterator.C \
-	insetiterator.h \
-	kbmap.C \
-	kbmap.h \
-	kbsequence.C \
-	kbsequence.h \
-	language.C \
-	language.h \
-	session.C \
-	session.h \
+	factory.cpp \
+	Format.cpp \
+	Format.h \
+	FuncRequest.h \
+	FuncRequest.cpp \
+	Graph.cpp \
+	Graph.h \
+	Importer.cpp \
+	Importer.h \
+	Intl.cpp \
+	Intl.h \
+	InsetIterator.cpp \
+	InsetIterator.h \
+	kb_keymap.cpp \
+	kb_keymap.h \
+	kb_sequence.cpp \
+	kb_sequence.h \
+	Language.cpp \
+	Language.h \
+	Session.cpp \
+	Session.h \
 	layout.h \
-	lengthcommon.C \
+	lengthcommon.cpp \
 	lengthcommon.h \
 	lfuns.h \
-	lyx_cb.C \
+	lyx_cb.cpp \
 	lyx_cb.h \
-	lyx_main.C \
-	lyx_main.h \
-	lyx_sty.C \
+	LyX.cpp \
+	LyX.h \
+	lyx_sty.cpp \
 	lyx_sty.h \
-	lyxfont.C \
-	lyxfont.h \
-	lyxfind.C \
+	LyXFont.cpp \
+	LyXFont.h \
+	lyxfind.cpp \
 	lyxfind.h \
-	lyxfunc.C \
-	lyxfunc.h \
-	lyxgluelength.C \
-	lyxgluelength.h \
-	lyxlayout.C \
-	lyxlayout.h \
+	LyXFunc.cpp \
+	LyXFunc.h \
+	LyXGlueLength.cpp \
+	LyXGlueLength.h \
+	LyXLayout.cpp \
+	LyXLayout.h \
 	lyxlayout_ptr_fwd.h \
-	lyxlength.C \
-	lyxlength.h \
-	lyxlex.C \
-	lyxlex.h \
-	lyxrc.C \
-	lyxrc.h \
-	lyxrow.C \
-	lyxrow.h \
-	lyxserver.C \
-	lyxserver.h \
-	lyxsocket.C \
-	lyxsocket.h \
-	lyxtext.h \
-	lyxtextclass.C \
-	lyxtextclass.h \
-	lyxtextclasslist.C \
-	lyxtextclasslist.h \
-	lyxvc.C \
-	lyxvc.h \
-	messages.C \
-	messages.h \
-	metricsinfo.C \
-	metricsinfo.h \
-	mover.C \
-	mover.h \
-	output.C \
+	LyXLength.cpp \
+	LyXLength.h \
+	LyXLex.cpp \
+	LyXLex.h \
+	LyXRC.cpp \
+	LyXRC.h \
+	Row.cpp \
+	Row.h \
+	LyXServer.cpp \
+	LyXServer.h \
+	LyXServerSocket.cpp \
+	LyXServerSocket.h \
+	LyXText.h \
+	LyXTextClass.cpp \
+	LyXTextClass.h \
+	LyXTextClassList.cpp \
+	LyXTextClassList.h \
+	LyXVC.cpp \
+	LyXVC.h \
+	Messages.cpp \
+	Messages.h \
+	MetricsInfo.cpp \
+	MetricsInfo.h \
+	Mover.cpp \
+	Mover.h \
+	output.cpp \
 	output.h \
-	outputparams.C \
-	outputparams.h \
-	output_docbook.C \
+	OutputParams.cpp \
+	OutputParams.h \
+	output_docbook.cpp \
 	output_docbook.h \
-	output_latex.C \
+	output_latex.cpp \
 	output_latex.h \
-	output_plaintext.C \
+	output_plaintext.cpp \
 	output_plaintext.h \
 	paper.h \
-	paragraph.C \
-	paragraph.h \
-	ParagraphMetrics.C \
+	Paragraph.cpp \
+	Paragraph.h \
+	ParagraphMetrics.cpp \
 	ParagraphMetrics.h \
-	paragraph_funcs.C \
+	paragraph_funcs.cpp \
 	paragraph_funcs.h \
-	pariterator.C \
-	pariterator.h \
-	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.C \
+	ParIterator.cpp \
+	ParIterator.h \
+	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	SpellBase.h \
-	rowpainter.C \
+	rowpainter.cpp \
 	rowpainter.h \
-	sgml.C \
+	sgml.cpp \
 	sgml.h \
-	tabular.C \
-	tabular.h \
-	tex-accent.C \
+	LyXTabular.cpp \
+	LyXTabular.h \
+	tex-accent.cpp \
 	tex-accent.h \
-	tex-strings.C \
+	tex-strings.cpp \
 	tex-strings.h \
-	texrow.C \
-	texrow.h \
-	text.C \
-	text2.C \
-	text3.C \
-	TextMetrics.C \
+	TexRow.cpp \
+	TexRow.h \
+	text.cpp \
+	text2.cpp \
+	text3.cpp \
+	TextMetrics.cpp \
 	TextMetrics.h \
-	TocBackend.C \
+	TocBackend.cpp \
 	TocBackend.h \
-	toc.C \
+	toc.cpp \
 	toc.h \
-	trans.C \
-	trans.h \
-	trans_decl.h \
-	trans_mgr.C \
-	trans_mgr.h \
-	undo.C \
-	undo.h \
-	vc-backend.C \
-	vc-backend.h \
+	Trans.cpp \
+	Trans.h \
+	KmodInfo.h \
+	TransState.cpp \
+	TransState.h \
+	Undo.cpp \
+	Undo.h \
+	VCBackend.cpp \
+	VCBackend.h \
 	version.C \
 	version.h \
-	vspace.C \
-	vspace.h
+	VSpace.cpp \
+	VSpace.h
 
 version.C: stamp-version
 	@:

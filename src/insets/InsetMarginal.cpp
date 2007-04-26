@@ -14,8 +14,8 @@
 #include "InsetMarginal.h"
 
 #include "gettext.h"
-#include "paragraph.h"
-#include "outputparams.h"
+#include "Paragraph.h"
+#include "OutputParams.h"
 
 #include "support/std_ostream.h"
 

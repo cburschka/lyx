@@ -1,5 +1,5 @@
 /**
- * \file intl.h
+ * \file Intl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,9 +13,9 @@
 
 #include <config.h>
 
-#include "intl.h"
+#include "Intl.h"
 #include "debug.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 
 namespace lyx {

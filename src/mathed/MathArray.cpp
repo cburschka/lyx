@@ -20,8 +20,8 @@
 #include "ReplaceData.h"
 
 #include "BufferView.h"
-#include "buffer.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "LCursor.h"
 #include "debug.h"
 #include "LColor.h"
 

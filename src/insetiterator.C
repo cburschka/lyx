@@ -1,5 +1,5 @@
 /**
- * \file insetiterator.C
+ * \file InsetIterator.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "insetiterator.h"
+#include "InsetIterator.h"
 
 #include <boost/assert.hpp>
 

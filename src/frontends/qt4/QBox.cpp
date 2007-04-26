@@ -19,7 +19,7 @@
 #include "qt_helpers.h"
 #include "Qt2BC.h"
 #include "lengthcommon.h"
-#include "lyxrc.h" // to set the default length values
+#include "LyXRC.h" // to set the default length values
 #include "Validator.h"
 
 #include "controllers/ControlBox.h"

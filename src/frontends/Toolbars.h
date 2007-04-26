@@ -26,7 +26,7 @@
 #include "ToolbarBackend.h"
 #include <boost/shared_ptr.hpp>
 #include <map>
-#include "session.h"
+#include "Session.h"
 
 
 namespace lyx {

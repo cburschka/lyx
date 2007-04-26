@@ -14,21 +14,21 @@
 #include "InsetFloat.h"
 #include "InsetWrap.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "counters.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "Counters.h"
+#include "LCursor.h"
 #include "BufferView.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "metricsinfo.h"
+#include "MetricsInfo.h"
 #include "output_latex.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "TocBackend.h"
 
@@ -158,7 +158,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// the text inset or the paragraph?
 	// We should also draw the float number (Lgb)
 
-	// Answer: the text inset (in buffer_funcs.C: setCaption).
+	// Answer: the text inset (in buffer_funcs.cpp: setCaption).
 
 	labelwidth_ = pi.pain.text(x, y, full_label_, pi.base.font);
 	// add some space to separate the label from the inset text

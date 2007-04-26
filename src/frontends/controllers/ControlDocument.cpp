@@ -14,17 +14,17 @@
 #include "Kernel.h"
 
 #include "BranchList.h"
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "outputparams.h"
-#include "lyxtextclasslist.h"
+#include "OutputParams.h"
+#include "LyXTextClassList.h"
 #include "tex-strings.h"
 
 // FIXME: those two headers are needed because of the

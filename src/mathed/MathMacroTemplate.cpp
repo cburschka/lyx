@@ -15,10 +15,10 @@
 #include "MathParser.h"
 #include "MathSupport.h"
 
-#include "cursor.h"
+#include "LCursor.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lyxlex.h"
+#include "LyXLex.h"
 #include "LColor.h"
 
 #include "frontends/FontMetrics.h"

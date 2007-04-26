@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyx_main.h
+ * \file LyX.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYX_MAIN_H
-#define LYX_MAIN_H
+#ifndef LYX_H
+#define LYX_H
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
@@ -174,4 +174,4 @@ private:
 
 } // namespace lyx
 
-#endif // LYX_MAIN_H
+#endif // LYX_H

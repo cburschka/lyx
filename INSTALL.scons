@@ -184,7 +184,7 @@ A typical working sequence:
     (build lyx, client and tex2lyx, options like qt_dir will be carried
     over here)
   > scons rebuild=lyxbase
-    (working on lyx_main.C, so only need to rebuild lyxbase)
+    (working on LyX.cpp, so only need to rebuild lyxbase)
   > scons
     (build again, only lyxbase will be rebuilt)
   > scons prefix=/usr/site DESTDIR=/install/dir

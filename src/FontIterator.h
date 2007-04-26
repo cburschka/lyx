@@ -20,7 +20,7 @@
 #ifndef FONTITERATOR_H
 #define FONTITERATOR_H
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 
 #include "support/types.h"
 

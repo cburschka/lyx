@@ -1,5 +1,5 @@
 /*
- * \file CutAndPaste.C
+ * \file CutAndPaste.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,26 +15,26 @@
 
 #include "CutAndPaste.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
-#include "bufferparams.h"
-#include "cursor.h"
+#include "BufferParams.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "errorlist.h"
-#include "funcrequest.h"
+#include "ErrorList.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "insetiterator.h"
-#include "language.h"
+#include "InsetIterator.h"
+#include "Language.h"
 #include "lfuns.h"
-#include "lyxfunc.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
-#include "lyxtextclasslist.h"
-#include "paragraph.h"
+#include "LyXFunc.h"
+#include "LyXRC.h"
+#include "LyXText.h"
+#include "LyXTextClassList.h"
+#include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "pariterator.h"
-#include "undo.h"
+#include "ParIterator.h"
+#include "Undo.h"
 
 #include "insets/InsetCharStyle.h"
 #include "insets/InsetTabular.h"

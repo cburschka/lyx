@@ -17,8 +17,8 @@
 #include "Inset.h"
 #include "InsetText.h"
 
-#include "box.h"
-#include "lyxfont.h"
+#include "Box.h"
+#include "LyXFont.h"
 
 #include <string>
 

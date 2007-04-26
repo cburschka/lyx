@@ -1,5 +1,5 @@
 /**
- * \file lyxsocket.C
+ * \file LyXServerSocket.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,12 +14,12 @@
 
 #include <config.h>
 
-#include "lyxsocket.h"
+#include "LyXServerSocket.h"
 
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "LyXAction.h"
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 
 #include "frontends/Application.h"
 

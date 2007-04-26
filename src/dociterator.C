@@ -1,5 +1,5 @@
 /**
- * \file dociterator.C
+ * \file DocIterator.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,11 +11,11 @@
 
 #include <config.h>
 
-#include "dociterator.h"
+#include "DocIterator.h"
 
 #include "debug.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 
 #include "mathed/MathArray.h"
 #include "mathed/InsetMath.h"

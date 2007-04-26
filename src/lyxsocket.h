@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxsocket.h
+ * \file LyXServerSocket.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,12 +11,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXSOCKET_H
-#define LYXSOCKET_H
+#ifndef LYXSERVERSOCKET_H
+#define LYXSERVERSOCKET_H
 
 #include "support/filename.h"
 #include "support/socktools.h"
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -93,10 +93,10 @@ private:
 	std::string buffer_;
 };
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern LyXServerSocket & theLyXServerSocket();
 
 
 } // namespace lyx
 
-#endif // LYXSOCKET_H
+#endif // LYXSERVERSOCKET_H

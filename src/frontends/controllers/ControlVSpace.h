@@ -14,7 +14,7 @@
 #define CONTROLVSPACE_H
 
 #include "Dialog.h"
-#include "vspace.h"
+#include "VSpace.h"
 
 namespace lyx {
 namespace frontend {

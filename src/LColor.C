@@ -1,5 +1,5 @@
 /**
- * \file LColor.C
+ * \file LColor.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -190,7 +190,7 @@ string const LColor::getX11Name(LColor::color c) const
 		return it->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
-		  " entry in LColor.C for " << c << '\n'
+		  " entry in LColor.cpp for " << c << '\n'
 	       << "Using black." << endl;
 	return "black";
 }

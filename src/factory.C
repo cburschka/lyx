@@ -1,5 +1,5 @@
 /**
- * \file factory.C
+ * \file factory.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,16 +12,16 @@
 
 #include "factory.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "debug.h"
 #include "FloatList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "LColor.h"
-#include "lyxlex.h"
-#include "lyx_main.h"
-#include "paragraph.h"
+#include "LyXLex.h"
+#include "LyX.h"
+#include "Paragraph.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"

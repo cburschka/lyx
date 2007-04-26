@@ -14,7 +14,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "format.h"
+#include "Format.h"
 
 #include "controllers/ControlSendto.h"
 

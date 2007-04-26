@@ -17,7 +17,7 @@
 #include "Validator.h"
 #include "qt_helpers.h"
 
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "controllers/ControlDocument.h"
 
 #include "support/lstrings.h"

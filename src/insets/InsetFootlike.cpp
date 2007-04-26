@@ -12,12 +12,12 @@
 
 #include "InsetFootlike.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "BufferView.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "LColor.h"
-#include "metricsinfo.h"
-#include "paragraph.h"
+#include "MetricsInfo.h"
+#include "Paragraph.h"
 
 
 namespace lyx {

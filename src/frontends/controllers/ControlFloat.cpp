@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ControlFloat.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetFloat.h"
 
 

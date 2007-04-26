@@ -16,8 +16,8 @@
 #include "MathExtern.h"
 #include "MathStream.h"
 
-#include "buffer.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "LCursor.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"

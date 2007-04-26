@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ControlBox.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetBox.h"
 #include "gettext.h"
 

@@ -1054,7 +1054,7 @@ bool readLink(FileName const & file, FileName & link)
 cmd_ret const runCommand(string const & cmd)
 {
 	// FIXME: replace all calls to RunCommand with ForkedCall
-	// (if the output is not needed) or the code in ispell.C
+	// (if the output is not needed) or the code in ISpell.cpp
 	// (if the output is needed).
 
 	// One question is if we should use popen or

@@ -21,7 +21,7 @@
 
 #include <QToolBar>
 #include <vector>
-#include "session.h"
+#include "Session.h"
 
 class QComboBox;
 

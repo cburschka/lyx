@@ -19,7 +19,7 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "controllers/ControlInclude.h"
 

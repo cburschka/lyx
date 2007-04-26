@@ -1,5 +1,5 @@
 /**
- * \file ConverterCache.C
+ * \file ConverterCache.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,8 +15,8 @@
 #include "ConverterCache.h"
 
 #include "debug.h"
-#include "lyxrc.h"
-#include "mover.h"
+#include "LyXRC.h"
+#include "Mover.h"
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"

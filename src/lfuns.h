@@ -8,7 +8,7 @@
  *
  * To add a new function:
  * - add a new enum constant immediately before LFUN_LASTACTION
- * - add an appropriate line in LyXAction.C
+ * - add an appropriate line in LyXAction.cpp
  * - add a branch to a suitable ::doDispatch() method
  * - add correct test to the corresponding ::getStatus() method
  */
@@ -24,7 +24,7 @@ namespace lyx {
 /** These are all the lyx functions, the main mechanism
  * through which the frontends communicate with the core.
  *
- * They are managed in LyXAction.C and handled in various
+ * They are managed in LyXAction.cpp and handled in various
  * ::dispatch() functions, starting with LyXFunc.C:dispatch(),
  * BufferView::dispatch(), LCursor::dispatch() and
  * Inset*::doDispatch();

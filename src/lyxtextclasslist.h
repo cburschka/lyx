@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxtextclasslist.h
+ * \file LyXTextClassList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef LYXTEXTCLASSLIST_H
 #define LYXTEXTCLASSLIST_H
 
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 
 #include "support/types.h"
 

@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ControlWrap.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetWrap.h"
 
 

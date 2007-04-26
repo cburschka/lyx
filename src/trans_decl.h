@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file trans_decl.h
+ * \file KmodInfo.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef TRANS_DECL_H
-#define TRANS_DECL_H
+#ifndef KMODINFO_H
+#define KMODINFO_H
 
 #include "tex-accent.h"
 

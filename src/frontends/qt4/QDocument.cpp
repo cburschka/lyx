@@ -27,13 +27,13 @@
 // For latexHighlighter use in the preamble.
 #include "QViewSource.h"
 
-#include "bufferparams.h"
-#include "encoding.h"
+#include "BufferParams.h"
+#include "Encoding.h"
 #include "gettext.h"
 #include "frontend_helpers.h" // getSecond()
-#include "language.h"
-#include "lyxrc.h" // defaultUnit
-#include "lyxtextclasslist.h"
+#include "Language.h"
+#include "LyXRC.h" // defaultUnit
+#include "LyXTextClassList.h"
 #include "tex-strings.h" // tex_graphics
 #include "Spacing.h"
 

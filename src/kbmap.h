@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file kbmap.h
+ * \file kb_keymap.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,10 +11,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef KBMAP_H
-#define KBMAP_H
+#ifndef KB_KEYMAP_H
+#define KB_KEYMAP_H
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
@@ -132,10 +132,10 @@ private:
 	Table table;
 };
 
-/// Implementation is in lyx_main.C
+/// Implementation is in LyX.cpp
 extern kb_keymap & theTopLevelKeymap();
 
 
 } // namespace lyx
 
-#endif // KBMAP_H
+#endif // KB_KEYMAP_H

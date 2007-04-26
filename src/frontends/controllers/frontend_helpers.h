@@ -13,7 +13,7 @@
 #ifndef FRONTEND_HELPERS_H
 #define FRONTEND_HELPERS_H
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 #include "support/docstring.h"
 
 #include <utility>

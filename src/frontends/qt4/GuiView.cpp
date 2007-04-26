@@ -32,17 +32,17 @@
 #include "support/lstrings.h"
 
 #include "BufferView.h"
-#include "bufferlist.h"
+#include "BufferList.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "lyx_cb.h"
-#include "lyxrc.h"
-#include "lyx_main.h"
-#include "session.h"
-#include "lyxfunc.h"
+#include "LyXRC.h"
+#include "LyX.h"
+#include "Session.h"
+#include "LyXFunc.h"
 #include "MenuBackend.h"
-#include "buffer.h"
-#include "bufferlist.h"
+#include "Buffer.h"
+#include "BufferList.h"
 
 #include <QAction>
 #include <QApplication>
@@ -405,7 +405,7 @@ void GuiView::setGeometry(unsigned int width,
 	}
 	else
 	{
-		// FIXME: move this code into parse_geometry() (lyx_main.C)
+		// FIXME: move this code into parse_geometry() (LyX.cpp)
 #ifdef Q_WS_WIN
 		int x, y;
 		int w, h;

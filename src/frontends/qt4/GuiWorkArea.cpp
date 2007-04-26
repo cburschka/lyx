@@ -23,10 +23,10 @@
 #include "BufferView.h"
 #include "rowpainter.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "LColor.h"
 #include "version.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "support/filetools.h" // LibFileSearch
 #include "support/os.h"

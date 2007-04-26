@@ -1,5 +1,5 @@
 /**
- * \file main.C
+ * \file main.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "debug.h"
-#include "lyx_main.h"
+#include "LyX.h"
 #include "gettext.h"
 
 #include "support/os.h"

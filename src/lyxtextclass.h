@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxtextclass.h
+ * \file LyXTextClass.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 #ifndef LYXTEXTCLASS_H
 #define LYXTEXTCLASS_H
 
-#include "lyxlayout.h"
+#include "LyXLayout.h"
 #include "lyxlayout_ptr_fwd.h"
 
 #include <boost/shared_ptr.hpp>

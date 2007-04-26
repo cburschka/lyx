@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxlex.h
+ * \file LyXLex.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -53,7 +53,7 @@ struct keyword_item {
 		return param;
 	} 
 
-    @see lyxrc.C for an example of usage.
+    @see LyXRC.cpp for an example of usage.
   */
 class LyXLex : boost::noncopyable {
 public:

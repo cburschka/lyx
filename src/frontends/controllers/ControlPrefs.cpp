@@ -15,9 +15,9 @@
 #include "frontend_helpers.h"
 #include "Kernel.h"
 
-#include "bufferlist.h"
+#include "BufferList.h"
 #include "gettext.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "paper.h"
 #include "LColor.h"
 

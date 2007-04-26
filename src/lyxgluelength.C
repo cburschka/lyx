@@ -1,5 +1,5 @@
 /**
- * \file lyxgluelength.C
+ * \file LyXGlueLength.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "lyxgluelength.h"
+#include "LyXGlueLength.h"
 #include "lengthcommon.h"
 
 #include <sstream>

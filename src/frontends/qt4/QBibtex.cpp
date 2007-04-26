@@ -18,7 +18,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 #include "CheckedLineEdit.h"
 
 #include "controllers/ControlBibtex.h"

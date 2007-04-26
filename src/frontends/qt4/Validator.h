@@ -25,8 +25,8 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 
-#include "lyxlength.h"
-#include "lyxgluelength.h"
+#include "LyXLength.h"
+#include "LyXGlueLength.h"
 
 #include <QValidator>
 

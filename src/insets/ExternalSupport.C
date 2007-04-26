@@ -16,12 +16,12 @@
 #include "ExternalTransforms.h"
 #include "InsetExternal.h"
 
-#include "buffer.h"
-#include "converter.h"
+#include "Buffer.h"
+#include "Converter.h"
 #include "debug.h"
-#include "exporter.h"
-#include "format.h"
-#include "mover.h"
+#include "Exporter.h"
+#include "Format.h"
+#include "Mover.h"
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"

@@ -12,12 +12,12 @@
 
 #include "InsetTOC.h"
 
-#include "buffer.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "Buffer.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 #include "gettext.h"
-#include "metricsinfo.h"
-#include "outputparams.h"
+#include "MetricsInfo.h"
+#include "OutputParams.h"
 #include "TocBackend.h"
 
 #include "support/std_ostream.h"

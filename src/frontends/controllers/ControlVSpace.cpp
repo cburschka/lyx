@@ -14,7 +14,7 @@
 #include "ControlVSpace.h"
 #include "ButtonController.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetVSpace.h"
 
 

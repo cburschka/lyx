@@ -33,7 +33,7 @@
 #define INSETTABULAR_H
 
 #include "Inset.h"
-#include "tabular.h"
+#include "LyXTabular.h"
 #include "MailInset.h"
 
 namespace lyx {

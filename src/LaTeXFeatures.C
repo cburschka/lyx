@@ -1,5 +1,5 @@
 /**
- * \file LaTeXFeatures.C
+ * \file LaTeXFeatures.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,17 +16,17 @@
 
 #include "LaTeXFeatures.h"
 
-#include "bufferparams.h"
-#include "Color.h"
+#include "BufferParams.h"
+#include "color.h"
 #include "debug.h"
-#include "encoding.h"
+#include "Encoding.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "LColor.h"
-#include "language.h"
-#include "lyxlex.h"
+#include "Language.h"
+#include "LyXLex.h"
 #include "lyx_sty.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "support/docstream.h"
 #include "support/filetools.h"

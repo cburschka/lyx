@@ -17,7 +17,7 @@
 #define CONTROLTABULAR_H
 
 #include "Dialog.h"
-#include "tabular.h"
+#include "LyXTabular.h"
 
 namespace lyx {
 namespace frontend {

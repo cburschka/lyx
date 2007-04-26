@@ -1,5 +1,5 @@
 /**
- * \file lyxtextclass.C
+ * \file LyXTextClass.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,10 +14,10 @@
 
 #include <config.h>
 
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 #include "debug.h"
-#include "lyxlex.h"
-#include "counters.h"
+#include "LyXLex.h"
+#include "Counters.h"
 #include "Floating.h"
 #include "FloatList.h"
 

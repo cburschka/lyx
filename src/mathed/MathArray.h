@@ -17,7 +17,7 @@
 #include <vector>
 
 #include "MathAtom.h"
-#include "dimension.h"
+#include "Dimension.h"
 
 #include "support/docstream.h"
 

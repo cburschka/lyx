@@ -1,5 +1,5 @@
 /**
- * \file lyxlength.C
+ * \file LyXLength.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,9 +15,9 @@
 
 #include <config.h>
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "lengthcommon.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "support/docstream.h"
 #include <sstream>

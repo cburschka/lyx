@@ -12,7 +12,7 @@
 #ifndef CONTEXT_H
 #define CONTEXT_H
 
-#include "lyxtextclass.h"
+#include "LyXTextClass.h"
 
 #include <iosfwd>
 

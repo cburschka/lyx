@@ -1,5 +1,5 @@
 /**
- * \file rowpainter.C
+ * \file rowpainter.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,25 +13,25 @@
 
 #include "rowpainter.h"
 
-#include "buffer.h"
-#include "coordcache.h"
-#include "cursor.h"
+#include "Buffer.h"
+#include "CoordCache.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "bufferparams.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "encoding.h"
+#include "Encoding.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LColor.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "metricsinfo.h"
-#include "paragraph.h"
+#include "LyXRC.h"
+#include "Row.h"
+#include "MetricsInfo.h"
+#include "Paragraph.h"
 #include "ParagraphMetrics.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextMetrics.h"
-#include "vspace.h"
+#include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

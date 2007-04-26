@@ -1,5 +1,5 @@
 /**
- * \file language.C
+ * \file Language.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,12 +12,12 @@
 
 #include <config.h>
 
-#include "language.h"
+#include "Language.h"
 
 #include "debug.h"
-#include "encoding.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
+#include "Encoding.h"
+#include "LyXLex.h"
+#include "LyXRC.h"
 
 #include "support/filename.h"
 

@@ -12,7 +12,7 @@
 #ifndef RENDERBASE_H
 #define RENDERBASE_H
 
-#include "dimension.h"
+#include "Dimension.h"
 
 #include <memory>
 

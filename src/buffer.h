@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file buffer.h
+ * \file Buffer.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,10 +12,10 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "errorlist.h"
+#include "ErrorList.h"
 #include "InsetList.h"
 
-#include "dociterator.h"
+#include "DocIterator.h"
 #include "ParagraphList_fwd.h"
 
 #include "support/filename.h"

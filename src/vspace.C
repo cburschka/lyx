@@ -1,5 +1,5 @@
 /**
- * \file vspace.C
+ * \file VSpace.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,13 +10,13 @@
 
 #include <config.h>
 
-#include "vspace.h"
-#include "buffer.h"
-#include "bufferparams.h"
+#include "VSpace.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "lengthcommon.h"
-#include "lyxtext.h"
+#include "LyXText.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"

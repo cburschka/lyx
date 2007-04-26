@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathSymbol.h"
-#include "dimension.h"
+#include "Dimension.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"

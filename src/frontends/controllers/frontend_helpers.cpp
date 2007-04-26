@@ -13,12 +13,12 @@
 
 #include "frontend_helpers.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
 #include "gettext.h"
-#include "language.h"
-#include "lyxlength.h"
+#include "Language.h"
+#include "LyXLength.h"
 
 #include <boost/regex.hpp>
 

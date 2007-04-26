@@ -13,10 +13,10 @@
 
 #include "ControlBranch.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BranchList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "insets/InsetBranch.h"
 
 

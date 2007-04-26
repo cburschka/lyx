@@ -15,8 +15,8 @@
 #include "tex2lyx.h"
 
 #include "layout.h"
-#include "lyxtextclass.h"
-#include "lyxlex.h"
+#include "LyXTextClass.h"
+#include "LyXLex.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -159,7 +159,7 @@ void add_package(string const & name, vector<string> & options)
 	v.insert(v.end(), options.begin(), options.end());
 	if (name == "jurabib") {
 		// Don't output the order argument (see the cite command
-		// handling code in text.C).
+		// handling code in text.cpp).
 		vector<string>::iterator end =
 			remove(options.begin(), options.end(), "natbiborder");
 		end = remove(options.begin(), end, "jurabiborder");

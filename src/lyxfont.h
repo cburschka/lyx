@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file src/lyxfont.h
+ * \file src/LyXFont.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -356,7 +356,7 @@ private:
 
 /** \c LyXFont_size is a wrapper for LyXFont::FONT_SIZE.
  *  It can be forward-declared and passed as a function argument without
- *  having to expose lyxfont.h.
+ *  having to expose LyXFont.h.
  */
 class LyXFont_size {
 public:

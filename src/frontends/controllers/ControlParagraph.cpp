@@ -13,9 +13,9 @@
 
 #include "ControlParagraph.h"
 #include "ButtonController.h"
-#include "funcrequest.h"
-#include "lyxlex.h"
-#include "paragraph.h"
+#include "FuncRequest.h"
+#include "LyXLex.h"
+#include "Paragraph.h"
 #include "ParagraphParameters.h"
 
 #include <sstream>

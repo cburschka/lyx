@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxlayout.h
+ * \file LyXLayout.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #ifndef LYX_LAYOUT_H
 #define LYX_LAYOUT_H
 
-#include "lyxfont.h"
+#include "LyXFont.h"
 #include "layout.h"
 #include "Spacing.h"
 #include "support/docstring.h"

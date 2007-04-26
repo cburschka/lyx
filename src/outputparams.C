@@ -1,5 +1,5 @@
 /**
- * \file outputparams.C
+ * \file OutputParams.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "outputparams.h"
-#include "exporter.h"
+#include "OutputParams.h"
+#include "Exporter.h"
 
 
 namespace lyx {

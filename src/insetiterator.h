@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetiterator.h
+ * \file InsetIterator.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef INSETITERATOR_H
 #define INSETITERATOR_H
 
-#include "dociterator.h"
+#include "DocIterator.h"
 
 
 namespace lyx {

@@ -16,11 +16,11 @@
 #include "MathSupport.h"
 #include "InsetMathSymbol.h"
 #include "InsetMathFont.h"
-#include "dispatchresult.h"
-#include "cursor.h"
+#include "DispatchResult.h"
+#include "LCursor.h"
 #include "debug.h"
-#include "funcrequest.h"
-#include "undo.h"
+#include "FuncRequest.h"
+#include "Undo.h"
 
 #include <boost/assert.hpp>
 

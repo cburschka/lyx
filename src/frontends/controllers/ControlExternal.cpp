@@ -14,10 +14,10 @@
 
 #include "ControlExternal.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 #include "frontend_helpers.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"

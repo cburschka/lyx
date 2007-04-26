@@ -12,7 +12,7 @@
 #ifndef CONTROLERRORLIST_H
 #define CONTROLERRORLIST_H
 
-#include "errorlist.h"
+#include "ErrorList.h"
 #include "Dialog.h"
 
 namespace lyx {

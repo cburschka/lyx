@@ -15,7 +15,7 @@
 #include "QDialogView.h"
 
 #include "LColor.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "ui/PrefsUi.h"
 

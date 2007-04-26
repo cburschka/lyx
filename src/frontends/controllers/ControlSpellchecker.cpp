@@ -12,25 +12,25 @@
 
 #include "ControlSpellchecker.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "cursor.h"
+#include "LCursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
-#include "language.h"
-#include "lyxrc.h"
-#include "paragraph.h"
+#include "Language.h"
+#include "LyXRC.h"
+#include "Paragraph.h"
 
 #if defined(USE_ASPELL)
-# include "aspell_local.h"
+# include "ASpell_local.h"
 #elif defined(USE_PSPELL)
-# include "pspell.h"
+# include "PSpell.h"
 #endif
 
 #if defined(USE_ISPELL)
-# include "ispell.h"
+# include "ISpell.h"
 #else
 # include "SpellBase.h"
 #endif

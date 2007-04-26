@@ -1,5 +1,5 @@
 /**
- * \file ParagraphParameters.C
+ * \file ParagraphParameters.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,12 +16,12 @@
 
 #include "ParagraphParameters.h"
 
-#include "buffer.h"
+#include "Buffer.h"
 #include "gettext.h"
-#include "lyxlayout.h"
-#include "lyxlex.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "LyXLayout.h"
+#include "LyXLex.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 #include "tex-strings.h"
 
 #include "support/lstrings.h"

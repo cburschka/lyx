@@ -12,17 +12,17 @@
 
 #include "InsetFloatList.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "dispatchresult.h"
+#include "DispatchResult.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "lyxlex.h"
-#include "metricsinfo.h"
+#include "LyXLex.h"
+#include "MetricsInfo.h"
 #include "TocBackend.h"
 
 #include "support/lstrings.h"

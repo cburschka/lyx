@@ -1,5 +1,5 @@
 /**
- * \file output_plaintext.C
+ * \file output_plaintext.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,13 +12,13 @@
 
 #include "output_plaintext.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
 #include "gettext.h"
 #include "output.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 

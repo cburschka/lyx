@@ -1,5 +1,5 @@
 /**
- * \file src/FontIterator.C
+ * \file src/FontIterator.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,9 +14,9 @@
 
 #include "FontIterator.h"
 
-#include "buffer.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "Buffer.h"
+#include "LyXText.h"
+#include "Paragraph.h"
 
 
 namespace lyx {

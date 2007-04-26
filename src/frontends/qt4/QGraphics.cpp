@@ -23,7 +23,7 @@
 #include "Validator.h"
 
 #include "lengthcommon.h"
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 #include "controllers/ControlGraphics.h"
 #include "controllers/frontend_helpers.h"

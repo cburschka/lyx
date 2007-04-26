@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxrow.h
+ * \file Row.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,8 @@
  * Metrics for an on-screen text row.
  */
 
-#ifndef LYXROW_H
-#define LYXROW_H
+#ifndef ROW_H
+#define ROW_H
 
 #include "support/types.h"
 

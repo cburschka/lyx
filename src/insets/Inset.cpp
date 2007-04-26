@@ -18,9 +18,9 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "metricsinfo.h"
-#include "coordcache.h"
+#include "LyXText.h"
+#include "MetricsInfo.h"
+#include "CoordCache.h"
 
 
 namespace lyx {

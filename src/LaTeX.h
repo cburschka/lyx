@@ -14,7 +14,7 @@
 #ifndef LATEX_H
 #define LATEX_H
 
-#include "outputparams.h"
+#include "OutputParams.h"
 
 #include "support/docstring.h"
 #include "support/filename.h"

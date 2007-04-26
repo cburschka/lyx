@@ -16,10 +16,10 @@
 #include "qt_helpers.h"
 #include "GuiApplication.h"
 
-#include "session.h"
+#include "Session.h"
 #include "debug.h"
 #include "LColor.h"
-#include "lyxfont.h"
+#include "LyXFont.h"
 #include "PanelStack.h"
 #include "QFontExample.h"
 #include "gettext.h"

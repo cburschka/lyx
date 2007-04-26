@@ -15,7 +15,7 @@
 #include "MathStream.h"
 #include "MathStream.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"

@@ -14,13 +14,13 @@
 
 #include <config.h>
 
-#include "buffer.h"
-#include "bufferparams.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "debug.h"
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "lyxfunc.h"
+#include "LyXFunc.h"
 #include "IconPalette.h"
 
 #include "GuiView.h"

@@ -14,15 +14,15 @@
 #include "PreviewImage.h"
 #include "GraphicsCache.h"
 
-#include "buffer.h"
-#include "converter.h"
+#include "Buffer.h"
+#include "Converter.h"
 #include "debug.h"
-#include "format.h"
-#include "insetiterator.h"
+#include "Format.h"
+#include "InsetIterator.h"
 #include "LColor.h"
-#include "lyxrc.h"
-#include "outputparams.h"
-#include "paragraph.h"
+#include "LyXRC.h"
+#include "OutputParams.h"
+#include "Paragraph.h"
 
 #include "frontends/Application.h" // hexName
 

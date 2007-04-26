@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file aspell_local.h
+ * \file ASpell_local.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

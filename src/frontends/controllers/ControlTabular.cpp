@@ -12,10 +12,10 @@
 
 #include "BufferView.h"
 #include "ControlTabular.h"
-#include "cursor.h"
-#include "funcrequest.h"
-#include "lyxrc.h"
-#include "paragraph.h"
+#include "LCursor.h"
+#include "FuncRequest.h"
+#include "LyXRC.h"
+#include "Paragraph.h"
 #include "insets/InsetTabular.h"
 
 

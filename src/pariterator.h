@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/* \file pariterator.h
+/* \file ParIterator.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef PARITERATOR_H
 #define PARITERATOR_H
 
-#include "dociterator.h"
+#include "DocIterator.h"
 #include "ParagraphList_fwd.h"
 
 #include "support/types.h"
@@ -58,7 +58,7 @@ public:
 	ParIterator & operator++();
 	///
 	ParIterator operator++(int);
-	/// See comment in pariterator.C
+	/// See comment in ParIterator.cpp
 	//ParIterator & operator--();
 	///
 	Paragraph & operator*() const;

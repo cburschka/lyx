@@ -1,5 +1,5 @@
 /**
- * \file paragraph.C
+ * \file Paragraph.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -19,25 +19,25 @@
 
 #include "ParagraphMetrics.h"
 
-#include "buffer.h"
-#include "bufferparams.h"
-#include "counters.h"
-#include "encoding.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "Counters.h"
+#include "Encoding.h"
 #include "debug.h"
 #include "gettext.h"
-#include "language.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
-#include "lyxfont.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
-#include "outputparams.h"
+#include "LyXFont.h"
+#include "LyXRC.h"
+#include "Row.h"
+#include "OutputParams.h"
 #include "paragraph_funcs.h"
 
 #include "rowpainter.h"
 
 #include "sgml.h"
-#include "texrow.h"
-#include "vspace.h"
+#include "TexRow.h"
+#include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
 

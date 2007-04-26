@@ -1,5 +1,5 @@
 /**
- * \file pspell.C
+ * \file PSpell.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,10 +16,10 @@
 #define USE_ORIGINAL_MANAGER_FUNCS 1
 // new aspell pspell missing extern "C"
 extern "C" {
-#include <pspell/pspell.h>
+#include <pspell/PSpell.h>
 }
 
-#include "pspell.h"
+#include "PSpell.h"
 #include "WordLangTuple.h"
 
 #include <boost/assert.hpp>

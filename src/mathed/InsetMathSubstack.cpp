@@ -16,7 +16,7 @@
 #include "MathStream.h"
 #include "support/std_ostream.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 

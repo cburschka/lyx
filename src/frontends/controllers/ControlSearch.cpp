@@ -12,7 +12,7 @@
 
 #include "ControlSearch.h"
 
-#include "funcrequest.h"
+#include "FuncRequest.h"
 #include "lyxfind.h"
 
 namespace lyx {

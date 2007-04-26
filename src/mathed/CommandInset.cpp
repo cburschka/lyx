@@ -13,8 +13,8 @@
 #include "CommandInset.h"
 #include "MathArray.h"
 #include "MathStream.h"
-#include "dispatchresult.h"
-#include "funcrequest.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
 
 #include <sstream>
 

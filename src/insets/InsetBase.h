@@ -12,8 +12,8 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include "changes.h"
-#include "dimension.h"
+#include "Changes.h"
+#include "Dimension.h"
 
 #include "support/docstream.h"
 
@@ -136,7 +136,7 @@ public:
 	virtual void setPosCache(PainterInfo const &, int, int) const {}
 	/// do we cover screen position x/y?
 	virtual bool covers(BufferView const & bv, int x, int y) const;
-	/// get the screen positions of the cursor (see note in cursor.C)
+	/// get the screen positions of the cursor (see note in LCursor.cpp)
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 

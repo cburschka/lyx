@@ -12,7 +12,7 @@
 #ifndef PRINTERPARAMS_H
 #define PRINTERPARAMS_H
 
-#include "lyxrc.h"
+#include "LyXRC.h"
 
 
 namespace lyx {

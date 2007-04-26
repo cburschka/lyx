@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file tabular.h
+ * \file LyXTabular.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,10 +12,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef TABULAR_H
-#define TABULAR_H
+#ifndef LYXTABULAR_H
+#define LYXTABULAR_H
 
-#include "lyxlength.h"
+#include "LyXLength.h"
 #include "insets/InsetText.h"
 
 #include <boost/shared_ptr.hpp>

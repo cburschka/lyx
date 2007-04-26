@@ -12,11 +12,11 @@
 
 #include "ControlSendto.h"
 
-#include "buffer.h"
-#include "converter.h"
-#include "format.h"
-#include "funcrequest.h"
-#include "lyxrc.h"
+#include "Buffer.h"
+#include "Converter.h"
+#include "Format.h"
+#include "FuncRequest.h"
+#include "LyXRC.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
