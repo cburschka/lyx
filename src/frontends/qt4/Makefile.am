@@ -9,7 +9,7 @@ DISTCLEANFILES += *_moc.cpp
 
 libqt4_la_DEPENDENCIES = $(MOCEDFILES)
 
-MOCEDFILES = $(MOCFILES:.C=_moc.cpp)
+MOCEDFILES = $(MOCFILES:.cpp=_moc.cpp)
 
 %_moc.cpp: %.h
 	$(MOC4) -o $@ $<
