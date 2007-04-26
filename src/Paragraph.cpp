@@ -789,10 +789,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += 15;
 			break;
 
-		// The following characters could be written literally in latin1, but they
-		// would be wrongly converted on systems where char is signed, so we give
-		// the code points.
-		// This also makes us independant from the encoding of this source file.
 		case '|': case '<': case '>':
 			// In T1 encoding, these characters exist
 			if (lyxrc.fontenc == "T1") {
