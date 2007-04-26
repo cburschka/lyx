@@ -454,14 +454,14 @@ src_frontends_header_files = Split('''
 
 
 src_frontends_files = Split('''
-    Alert.C
-    Application.C
-    Dialogs.C
-    LyXView.C
-    Painter.C
-    Timeout.C
-    Toolbars.C
-    WorkArea.C
+    Alert.cpp
+    Application.cpp
+    Dialogs.cpp
+    LyXView.cpp
+    Painter.cpp
+    Timeout.cpp
+    Toolbars.cpp
+    WorkArea.cpp
 ''')
 
 

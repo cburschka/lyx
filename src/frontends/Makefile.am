@@ -13,10 +13,10 @@ noinst_LTLIBRARIES = libfrontends.la
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 libfrontends_la_SOURCES = \
-	Alert.C \
+	Alert.cpp \
 	Alert.h \
 	Alert_pimpl.h \
-	Application.C \
+	Application.cpp \
 	Application.h \
 	NoGuiFontLoader.h \
 	NoGuiFontMetrics.h \
@@ -27,19 +27,19 @@ libfrontends_la_SOURCES = \
 	FontMetrics.h \
 	LyXKeySym.h \
 	LyXKeySymFactory.h \
-	LyXView.C \
+	LyXView.cpp \
 	LyXView.h \
 	Menubar.h \
-	Painter.C \
+	Painter.cpp \
 	Painter.h \
-	Timeout.C \
+	Timeout.cpp \
 	Timeout.h \
-	Toolbars.C \
+	Toolbars.cpp \
 	Toolbars.h \
 	Clipboard.h \
 	Gui.h \
 	Selection.h \
-	WorkArea.C \
+	WorkArea.cpp \
 	WorkArea.h \
 	key_state.h \
 	mouse_state.h

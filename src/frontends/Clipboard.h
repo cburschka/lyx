@@ -63,7 +63,7 @@ public:
 
 } // namespace frontend
 
-/// Implementation is in Application.C
+/// Implementation is in Application.cpp
 extern frontend::Clipboard & theClipboard();
 
 } // namespace lyx

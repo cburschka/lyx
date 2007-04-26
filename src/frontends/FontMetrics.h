@@ -118,7 +118,7 @@ public:
 
 class LyXFont;
 
-/// Implementation is in Application.C
+/// Implementation is in Application.cpp
 frontend::FontMetrics const & theFontMetrics(LyXFont const & f);
 
 } // namespace lyx
