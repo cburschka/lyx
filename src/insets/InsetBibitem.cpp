@@ -17,7 +17,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LyXFont.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 
@@ -84,7 +84,7 @@ void InsetBibitem::setCounter(int c)
 }
 
 
-void InsetBibitem::read(Buffer const & buf, LyXLex & lex)
+void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 {
 	InsetCommand::read(buf, lex);
 

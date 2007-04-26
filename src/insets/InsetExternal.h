@@ -69,7 +69,7 @@ public:
 	InsetExternalParams();
 
 	void write(Buffer const &, std::ostream &) const;
-	bool read(Buffer const &, LyXLex &);
+	bool read(Buffer const &, Lexer &);
 
 	/// The name of the tempfile used for manipulations.
 	support::FileName const & tempname() const { return tempname_(); }
@@ -122,7 +122,7 @@ public:
 	///
 	virtual void write(Buffer const &, std::ostream &) const;
 	///
-	virtual void read(Buffer const &, LyXLex & lex);
+	virtual void read(Buffer const &, Lexer & lex);
 
 	/// \returns the number of rows (\n's) of generated code.
 	int latex(Buffer const &, odocstream &,

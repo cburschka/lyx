@@ -34,7 +34,7 @@ class AuthorList;
 class BranchList;
 class Bullet;
 class Encoding;
-class LyXLex;
+class Lexer;
 class LatexFeatures;
 class Spacing;
 class TexRow;
@@ -61,7 +61,7 @@ public:
 	~BufferParams();
 
 	/// read a header token, if unrecognised, return it or an unknown class name
-	std::string const readToken(LyXLex & lex, std::string const & token);
+	std::string const readToken(Lexer & lex, std::string const & token);
 
 	///
 	void writeFile(std::ostream &) const;
@@ -197,15 +197,15 @@ public:
 	Bullet & user_defined_bullet(size_type index);
 	Bullet const & user_defined_bullet(size_type index) const;
 	///
-	void readPreamble(LyXLex &);
+	void readPreamble(Lexer &);
 	///
-	void readLanguage(LyXLex &);
+	void readLanguage(Lexer &);
 	///
-	void readGraphicsDriver(LyXLex &);
+	void readGraphicsDriver(Lexer &);
 	///
-	void readBullets(LyXLex &);
+	void readBullets(Lexer &);
 	///
-	void readBulletsLaTeX(LyXLex &);
+	void readBulletsLaTeX(Lexer &);
 
 	/// Whether to load a package such as amsmath or esint.
 	/// The enum values must not be changed (file format!)

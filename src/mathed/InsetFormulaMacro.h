@@ -19,7 +19,7 @@
 namespace lyx {
 
 class MathMacroTemplate;
-class LyXLex;
+class Lexer;
 
 
 // An InsetFormulaMacro only knows its name and asks the global
@@ -40,7 +40,7 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 	///
 	void write(Buffer const &, std::ostream & os) const;
 	///

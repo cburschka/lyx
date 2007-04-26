@@ -181,6 +181,8 @@ lyx_SOURCES = \
 	layout.h \
 	lengthcommon.cpp \
 	lengthcommon.h \
+	Lexer.cpp \
+	Lexer.h \
 	lfuns.h \
 	lyx_cb.cpp \
 	lyx_cb.h \
@@ -201,8 +203,6 @@ lyx_SOURCES = \
 	lyxlayout_ptr_fwd.h \
 	LyXLength.cpp \
 	LyXLength.h \
-	LyXLex.cpp \
-	LyXLex.h \
 	LyXRC.cpp \
 	LyXRC.h \
 	Row.cpp \

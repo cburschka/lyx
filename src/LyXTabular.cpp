@@ -25,7 +25,7 @@
 #include "LCursor.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
@@ -1342,7 +1342,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 }
 
 
-void LyXTabular::read(Buffer const & buf, LyXLex & lex)
+void LyXTabular::read(Buffer const & buf, Lexer & lex)
 {
 	string line;
 	istream & is = lex.getStream();

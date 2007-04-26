@@ -42,7 +42,7 @@ public:
 	int docbook(Buffer const &, odocstream &,
 	            OutputParams const &) const;
 	///
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///

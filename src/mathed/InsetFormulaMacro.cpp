@@ -20,7 +20,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "OutputParams.h"
 
 #include "frontends/FontMetrics.h"
@@ -108,7 +108,7 @@ int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os,
 }
 
 
-void InsetFormulaMacro::read(Buffer const &, LyXLex & lex)
+void InsetFormulaMacro::read(Buffer const &, Lexer & lex)
 {
 	read(lex.getStream());
 }

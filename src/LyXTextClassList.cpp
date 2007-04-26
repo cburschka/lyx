@@ -14,7 +14,7 @@
 #include "LyXTextClassList.h"
 #include "LyXTextClass.h"
 #include "debug.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 
 #include "support/filetools.h"
 
@@ -96,7 +96,7 @@ public:
 // Reads LyX textclass definitions according to textclass config file
 bool LyXTextClassList::read()
 {
-	LyXLex lex(0, 0);
+	Lexer lex(0, 0);
 	support::FileName const real_file = libFileSearch("", "textclass.lst");
 	LYXERR(Debug::TCLASS) << "Reading textclasses from `"
 			      << real_file << '\'' << endl;
@@ -135,7 +135,7 @@ bool LyXTextClassList::read()
 	while (lex.isOK() && !finished) {
 		LYXERR(Debug::TCLASS) << "\tline by line" << endl;
 		switch (lex.lex()) {
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			finished = true;
 			break;
 		default:

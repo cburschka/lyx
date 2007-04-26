@@ -27,7 +27,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(LyXLex & lex);
+	void read(Lexer & lex);
 	///
 	docstring branch;
 };
@@ -49,7 +49,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const & buf, LyXLex & lex);
+	void read(Buffer const & buf, Lexer & lex);
 	///
 	void setButtonLabel();
 	///

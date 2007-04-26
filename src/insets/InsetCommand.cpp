@@ -18,7 +18,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 
 #include <sstream>
@@ -193,7 +193,7 @@ void InsetCommandMailer::string2params(string const & name,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string n;

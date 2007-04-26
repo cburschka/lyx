@@ -65,7 +65,7 @@ TODO
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LyXLength.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "Mover.h"
 #include "OutputParams.h"
@@ -262,7 +262,7 @@ void InsetGraphics::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetGraphics::read(Buffer const & buf, LyXLex & lex)
+void InsetGraphics::read(Buffer const & buf, Lexer & lex)
 {
 	string const token = lex.getString();
 
@@ -275,7 +275,7 @@ void InsetGraphics::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-void InsetGraphics::readInsetGraphics(LyXLex & lex, string const & bufpath)
+void InsetGraphics::readInsetGraphics(Lexer & lex, string const & bufpath)
 {
 	bool finished = false;
 
@@ -965,7 +965,7 @@ void InsetGraphicsMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

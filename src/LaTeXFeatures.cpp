@@ -24,7 +24,7 @@
 #include "FloatList.h"
 #include "LColor.h"
 #include "Language.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "lyx_sty.h"
 #include "LyXRC.h"
 
@@ -76,7 +76,7 @@ void LaTeXFeatures::require(string const & name)
 
 void LaTeXFeatures::getAvailable()
 {
-	LyXLex lex(0, 0);
+	Lexer lex(0, 0);
 	support::FileName const real_file = libFileSearch("", "packages.lst");
 
 	if (real_file.empty())
@@ -94,7 +94,7 @@ void LaTeXFeatures::getAvailable()
 	// Parse config-file
 	while (lex.isOK() && !finished) {
 		switch (lex.lex()) {
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			finished = true;
 			break;
 		default:

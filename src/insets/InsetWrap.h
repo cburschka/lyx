@@ -25,7 +25,7 @@ public:
 	///
 	void write(std::ostream &) const;
 	///
-	void read(LyXLex &);
+	void read(Lexer &);
 
 	///
 	std::string type;
@@ -47,7 +47,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const & buf, LyXLex & lex);
+	void read(Buffer const & buf, Lexer & lex);
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

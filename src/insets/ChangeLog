@@ -3003,7 +3003,7 @@
 
 	* insetbibtex.[Ch] (clone): move out of line; use copy c-tor.
 
-	* insetexternal.C (read): use pushpophelper.
+	* insetexternal.C (read): use PushPopHelper.
 
 2003-07-28  José Matos  <jamatos@lyx.org>
 
@@ -3419,7 +3419,7 @@
 	* insetexternal.h: remove Params::parameters variable.
 
 	* insetexternal.C (read, write): rewrite to output new ExternalInset
-	format and read it back making full use of LyXLex.
+	format and read it back making full use of Lexer.
 
 2003-06-04  André Pönitz  <poenitz@gmx.net>
 

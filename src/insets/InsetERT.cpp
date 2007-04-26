@@ -25,7 +25,7 @@
 #include "Language.h"
 #include "LColor.h"
 #include "LyXAction.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXTextClass.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
@@ -114,7 +114,7 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetERT::read(Buffer const & buf, LyXLex & lex)
+void InsetERT::read(Buffer const & buf, Lexer & lex)
 {
 	InsetCollapsable::read(buf, lex);
 
@@ -456,7 +456,7 @@ void InsetERTMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

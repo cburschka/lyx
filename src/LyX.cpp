@@ -34,7 +34,7 @@
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "LyXServer.h"
 #include "LyXServerSocket.h"
@@ -1179,7 +1179,7 @@ bool LyX::readUIFile(string const & name, bool include)
 
 	LYXERR(Debug::INIT) << "Found " << name
 			    << " in " << ui_path << endl;
-	LyXLex lex(uitags, ui_last - 1);
+	Lexer lex(uitags, ui_last - 1);
 	lex.setFile(ui_path);
 	if (!lex.isOK()) {
 		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path

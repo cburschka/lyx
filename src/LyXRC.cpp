@@ -27,7 +27,7 @@
 #include "gettext.h"
 #include "Session.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXFont.h"
 #include "Mover.h"
 
@@ -303,7 +303,7 @@ void oldFontFormat(string & family, string & foundry)
 
 int LyXRC::read(FileName const & filename)
 {
-	LyXLex lexrc(lyxrcTags, lyxrcCount);
+	Lexer lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
@@ -318,7 +318,7 @@ int LyXRC::read(FileName const & filename)
 
 int LyXRC::read(std::istream & is)
 {
-	LyXLex lexrc(lyxrcTags, lyxrcCount);
+	Lexer lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
@@ -331,7 +331,7 @@ int LyXRC::read(std::istream & is)
 }
 
 
-int LyXRC::read(LyXLex & lexrc)
+int LyXRC::read(Lexer & lexrc)
 {
 	if (!lexrc.isOK()) return -2;
 
@@ -339,16 +339,16 @@ int LyXRC::read(LyXLex & lexrc)
 		// By using two switches we take advantage of the compiler
 		// telling us if we have missed a LyXRCTags element in
 		// the second switch.
-		// Note that this also shows a problem with LyXLex since it
+		// Note that this also shows a problem with Lexer since it
 		// helps us avoid taking advantage of the strictness of the
 		// compiler.
 
 		int le = lexrc.lex();
 		switch (le) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
 			continue;
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			continue;
 		default: break;
 		}
@@ -1053,9 +1053,9 @@ int LyXRC::read(LyXLex & lexrc)
 			// Hack to ensure compatibility with versions older
 			// than 1.5.0
 			int le = lexrc.lex();
-			if (le != LyXLex::LEX_FEOF && le != LyXLex::LEX_UNDEF) {
+			if (le != Lexer::LEX_FEOF && le != Lexer::LEX_UNDEF) {
 				flags = lexrc.getString();
-				if (le != LyXLex::LEX_DATA) {
+				if (le != Lexer::LEX_DATA) {
 					// We have got a known token.
 					// Therefore this is an old style
 					// format definition without

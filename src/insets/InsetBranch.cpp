@@ -21,7 +21,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "Paragraph.h"
 #include "OutputParams.h"
 
@@ -84,7 +84,7 @@ void InsetBranch::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetBranch::read(Buffer const & buf, LyXLex & lex)
+void InsetBranch::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -296,7 +296,7 @@ void InsetBranchMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;
@@ -321,7 +321,7 @@ void InsetBranchParams::write(ostream & os) const
 }
 
 
-void InsetBranchParams::read(LyXLex & lex)
+void InsetBranchParams::read(Lexer & lex)
 {
 	lex >> branch;
 }

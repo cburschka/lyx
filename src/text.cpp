@@ -39,7 +39,7 @@
 #include "Language.h"
 #include "LColor.h"
 #include "LyXLength.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "Row.h"
 #include "MetricsInfo.h"
@@ -97,7 +97,7 @@ using frontend::FontMetrics;
 
 namespace {
 
-void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
+void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	string const & token, LyXFont & font, Change & change, ErrorList & errorList)
 {
 	BufferParams const & bp = buf.params();
@@ -297,7 +297,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 }
 
 
-void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex,
+void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 	ErrorList & errorList)
 {
 	lex.nextToken();
@@ -1523,7 +1523,7 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 }
 
 
-bool LyXText::read(Buffer const & buf, LyXLex & lex, ErrorList & errorList)
+bool LyXText::read(Buffer const & buf, Lexer & lex, ErrorList & errorList)
 {
 	depth_type depth = 0;
 

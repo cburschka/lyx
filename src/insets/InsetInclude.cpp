@@ -27,7 +27,7 @@
 #include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "LyXRC.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "TocBackend.h"
@@ -262,13 +262,13 @@ void InsetInclude::write(ostream & os) const
 }
 
 
-void InsetInclude::read(Buffer const &, LyXLex & lex)
+void InsetInclude::read(Buffer const &, Lexer & lex)
 {
 	read(lex);
 }
 
 
-void InsetInclude::read(LyXLex & lex)
+void InsetInclude::read(Lexer & lex)
 {
 	if (lex.isOK()) {
 		lex.eatLine();
@@ -826,7 +826,7 @@ void InsetIncludeMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

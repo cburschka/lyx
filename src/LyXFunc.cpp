@@ -50,7 +50,7 @@
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "Row.h"
 #include "LyXServer.h"
@@ -1271,11 +1271,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					data = "literate ";
 					break;
 				}
-				data += LyXLex::quoteString(logfile.second);
+				data += Lexer::quoteString(logfile.second);
 				lyx_view_->getDialogs().show("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +
-					LyXLex::quoteString(lyx_view_->buffer()->lyxvc().getLogFile());
+					Lexer::quoteString(lyx_view_->buffer()->lyxvc().getLogFile());
 				lyx_view_->getDialogs().show("log", data);
 			} else
 				lyx_view_->getDialogs().show(name, data);
@@ -1596,7 +1596,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer defaults(fname);
 
 			istringstream ss(argument);
-			LyXLex lex(0,0);
+			Lexer lex(0,0);
 			lex.setStream(ss);
 			int const unknown_tokens = defaults.readHeader(lex);
 
@@ -1621,7 +1621,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				lyx_view_->buffer()->params().getEngine();
 
 			istringstream ss(argument);
-			LyXLex lex(0,0);
+			Lexer lex(0,0);
 			lex.setStream(ss);
 			int const unknown_tokens =
 				lyx_view_->buffer()->readHeader(lex);

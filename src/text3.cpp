@@ -38,7 +38,7 @@
 #include "Language.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "Row.h"
 #include "Paragraph.h"
@@ -170,7 +170,7 @@ namespace {
 			{
 				InsetMathHull * formula = new InsetMathHull;
 				istringstream is(to_utf8(sel));
-				LyXLex lex(0, 0);
+				Lexer lex(0, 0);
 				lex.setStream(is);
 				formula->read(cur.buffer(), lex);
 				if (formula->getType() == hullNone)
@@ -1548,7 +1548,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// generated in the Paragraph dialog, this function sets
 		// the current paragraph appropriately.
 		istringstream is(to_utf8(cmd.argument()));
-		LyXLex lex(0, 0);
+		Lexer lex(0, 0);
 		lex.setStream(is);
 		ParagraphParameters params;
 		params.read(lex);

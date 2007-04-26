@@ -24,7 +24,7 @@
 
 namespace lyx {
 
-class LyXLex;
+class Lexer;
 class LyXTextClass;
 
 ///
@@ -33,21 +33,21 @@ public:
 	///
 	LyXLayout();
 	///
-	bool read(LyXLex &, LyXTextClass const &);
+	bool read(Lexer &, LyXTextClass const &);
 	///
-	void readAlign(LyXLex &);
+	void readAlign(Lexer &);
 	///
-	void readAlignPossible(LyXLex &);
+	void readAlignPossible(Lexer &);
 	///
-	void readLabelType(LyXLex &);
+	void readLabelType(Lexer &);
 	///
-	void readEndLabelType(LyXLex &);
+	void readEndLabelType(Lexer &);
 	///
-	void readMargin(LyXLex &);
+	void readMargin(Lexer &);
 	///
-	void readLatexType(LyXLex &);
+	void readLatexType(Lexer &);
 	///
-	void readSpacing(LyXLex &);
+	void readSpacing(Lexer &);
 	///
 	std::string const & name() const;
 	///

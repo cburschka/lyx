@@ -30,7 +30,7 @@ using std::endl;
 using std::ostream;
 
 
-void InsetLine::read(Buffer const &, LyXLex &)
+void InsetLine::read(Buffer const &, Lexer &)
 {
 	/* Nothing to read */
 }

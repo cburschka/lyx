@@ -22,7 +22,7 @@
 namespace lyx {
 
 
-class LyXLex;
+class Lexer;
 class BufferParams;
 class Language;
 
@@ -288,8 +288,8 @@ public:
 	/// Is a given font fully resolved?
 	bool resolved() const;
 
-	/// Read a font specification from LyXLex. Used for layout files.
-	LyXFont & lyxRead(LyXLex &);
+	/// Read a font specification from Lexer. Used for layout files.
+	LyXFont & lyxRead(Lexer &);
 
 	/// Writes the changes from this font to orgfont in .lyx format in file
 	void lyxWriteChanges(LyXFont const & orgfont, std::ostream &) const;

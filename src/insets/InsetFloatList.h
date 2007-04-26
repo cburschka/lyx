@@ -37,7 +37,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const &, LyXLex &);
+	void read(Buffer const &, Lexer &);
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;

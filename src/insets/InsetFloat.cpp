@@ -26,7 +26,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "TocBackend.h"
@@ -206,7 +206,7 @@ void InsetFloatParams::write(ostream & os) const
 }
 
 
-void InsetFloatParams::read(LyXLex & lex)
+void InsetFloatParams::read(Lexer & lex)
 {
 	string token;
 	lex >> token;
@@ -244,7 +244,7 @@ void InsetFloat::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetFloat::read(Buffer const & buf, LyXLex & lex)
+void InsetFloat::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	wide(params_.wide, buf.params());
@@ -433,7 +433,7 @@ void InsetFloatMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

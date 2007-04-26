@@ -45,7 +45,7 @@ public:
 	void write(Buffer const &, std::ostream & os) const
 		{ p_.write(os); }
 	///
-	virtual void read(Buffer const &, LyXLex & lex)
+	virtual void read(Buffer const &, Lexer & lex)
 		{ p_.read(lex); }
 	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;

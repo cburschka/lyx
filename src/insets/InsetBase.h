@@ -33,7 +33,7 @@ class InsetText;
 class LaTeXFeatures;
 class LColor_color;
 class LCursor;
-class LyXLex;
+class Lexer;
 class LyXText;
 class MetricsInfo;
 class Dimension;
@@ -383,7 +383,7 @@ public:
 	/// write inset in .lyx format
 	virtual void write(Buffer const &, std::ostream &) const {}
 	/// read inset in .lyx format
-	virtual void read(Buffer const &, LyXLex &) {}
+	virtual void read(Buffer const &, Lexer &) {}
 	/** Export the inset to LaTeX.
 	 *  Don't use a temporary stringstream if the final output is
 	 *  supposed to go to a file.

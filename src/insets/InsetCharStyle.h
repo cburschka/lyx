@@ -25,7 +25,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(LyXLex & lex);
+	void read(Lexer & lex);
 	///
 	std::string type;
 	///
@@ -66,7 +66,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const & buf, LyXLex & lex);
+	void read(Buffer const & buf, Lexer & lex);
 	///
 	bool metrics(MetricsInfo &, Dimension &) const;
 	///

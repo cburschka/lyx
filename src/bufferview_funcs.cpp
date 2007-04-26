@@ -25,7 +25,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "Row.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
@@ -84,7 +84,7 @@ bool font2string(LyXFont const & font, bool const toggle, string & data)
 bool string2font(string const & data, LyXFont & font, bool & toggle)
 {
 	istringstream is(data);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(is);
 
 	int nset = 0;

@@ -15,7 +15,7 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 
 #include "support/ExceptionMessage.h"
 #include "support/lstrings.h"
@@ -256,7 +256,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 }
 
 
-void InsetCommandParams::read(LyXLex & lex)
+void InsetCommandParams::read(Lexer & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
@@ -310,7 +310,7 @@ void InsetCommandParams::write(ostream & os) const
 		if (!params_[i].empty())
 			// FIXME UNICODE
 			os << info_->paramnames[i] << ' '
-			   << LyXLex::quoteString(to_utf8(params_[i]))
+			   << Lexer::quoteString(to_utf8(params_[i]))
 			   << '\n';
 }
 

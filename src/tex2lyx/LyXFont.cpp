@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "LyXFont.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "support/lstrings.h"
 
 
@@ -22,7 +22,7 @@ using lyx::support::ascii_lowercase;
 using std::string;
 
 
-LyXFont & LyXFont::lyxRead(LyXLex & lex)
+LyXFont & LyXFont::lyxRead(Lexer & lex)
 {
 	bool error = false;
 	bool finished = false;

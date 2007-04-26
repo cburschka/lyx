@@ -13,7 +13,7 @@
 
 #include "ToolbarBackend.h"
 #include "FuncRequest.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "debug.h"
 #include "gettext.h"
 #include "LyXAction.h"
@@ -79,7 +79,7 @@ void ToolbarInfo::add(ToolbarItem const & item)
 }
 
 
-ToolbarInfo & ToolbarInfo::read(LyXLex & lex)
+ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 {
 	enum tooltags {
 		TO_COMMAND = 1,
@@ -208,7 +208,7 @@ ToolbarBackend::ToolbarBackend()
 }
 
 
-void ToolbarBackend::readToolbars(LyXLex & lex)
+void ToolbarBackend::readToolbars(Lexer & lex)
 {
 	enum tooltags {
 		TO_TOOLBAR = 1,
@@ -255,7 +255,7 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 }
 
 
-void ToolbarBackend::readToolbarSettings(LyXLex & lex)
+void ToolbarBackend::readToolbarSettings(Lexer & lex)
 {
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbars")) {

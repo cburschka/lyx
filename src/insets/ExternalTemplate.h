@@ -21,7 +21,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class LyXLex;
+class Lexer;
 
 namespace external {
 
@@ -30,7 +30,7 @@ public:
 	/// We have to have default commands for safety reasons!
 	Template();
 	///
-	void readTemplate(LyXLex &);
+	void readTemplate(Lexer &);
 	///
 	void dumpFormats(std::ostream &) const;
 
@@ -64,7 +64,7 @@ public:
 	public:
 		Format();
 		///
-		void readFormat(LyXLex &);
+		void readFormat(Lexer &);
 
 		/// The text that should be inserted into the exported file
 		std::string product;

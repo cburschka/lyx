@@ -19,7 +19,7 @@
 
 namespace lyx {
 
-class LyXLex;
+class Lexer;
 
 class LyXFont {
 public:
@@ -31,7 +31,7 @@ public:
 	explicit LyXFont(LyXFont::FONT_INIT1) {}
 	explicit LyXFont(LyXFont::FONT_INIT3) {}
 
-	LyXFont & lyxRead(LyXLex &);
+	LyXFont & lyxRead(Lexer &);
 
 	LyXFont & realize(LyXFont const &) { return *this; }
 	bool resolved() const { return true; }

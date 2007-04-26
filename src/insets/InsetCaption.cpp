@@ -67,7 +67,7 @@ void InsetCaption::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetCaption::read(Buffer const & buf, LyXLex & lex)
+void InsetCaption::read(Buffer const & buf, Lexer & lex)
 {
 #if 0
 	// We will enably this check again when the compability

@@ -25,7 +25,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "TocBackend.h"
@@ -121,7 +121,7 @@ void InsetWrapParams::write(ostream & os) const
 }
 
 
-void InsetWrapParams::read(LyXLex & lex)
+void InsetWrapParams::read(Lexer & lex)
 {
 	string token;
 	lex >> token;
@@ -153,7 +153,7 @@ void InsetWrap::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetWrap::read(Buffer const & buf, LyXLex & lex)
+void InsetWrap::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -262,7 +262,7 @@ void InsetWrapMailer::string2params(string const & in, InsetWrapParams & params)
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

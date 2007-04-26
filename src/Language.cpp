@@ -16,7 +16,7 @@
 
 #include "debug.h"
 #include "Encoding.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 
 #include "support/FileName.h"
@@ -44,7 +44,7 @@ void Languages::read(support::FileName const & filename)
 			      encodings.getFromLyXName("iso8859-1"),
 			      "latex", "");
 
-	LyXLex lex(0, 0);
+	Lexer lex(0, 0);
 	lex.setFile(filename);
 	while (lex.isOK()) {
 		string lang;

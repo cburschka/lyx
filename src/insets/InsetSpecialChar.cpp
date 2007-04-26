@@ -17,7 +17,7 @@
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
@@ -147,7 +147,7 @@ void InsetSpecialChar::write(Buffer const &, ostream & os) const
 
 
 // This function will not be necessary when lyx3
-void InsetSpecialChar::read(Buffer const &, LyXLex & lex)
+void InsetSpecialChar::read(Buffer const &, Lexer & lex)
 {
 	lex.next();
 	string const command = lex.getString();

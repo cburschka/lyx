@@ -15,7 +15,7 @@
 
 #include "debug.h"
 #include "LyX.h" // for use_gui
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 
 #include "graphics/GraphicsParams.h"
@@ -192,7 +192,7 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 }
 
 
-bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const & bufpath)
+bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const & bufpath)
 {
 	if (token == "filename") {
 		lex.eatLine();

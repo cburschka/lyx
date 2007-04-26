@@ -26,7 +26,7 @@
 #include "Language.h"
 #include "LColor.h"
 #include "lyx_cb.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -220,7 +220,7 @@ void InsetTabular::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetTabular::read(Buffer const & buf, LyXLex & lex)
+void InsetTabular::read(Buffer const & buf, Lexer & lex)
 {
 	bool const old_format = (lex.getString() == "\\LyXTable");
 
@@ -2112,7 +2112,7 @@ string const InsetTabularMailer::inset2string(Buffer const &) const
 void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 {
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	if (in.empty())

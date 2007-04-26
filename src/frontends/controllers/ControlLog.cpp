@@ -14,7 +14,7 @@
 #include "ControlLog.h"
 
 #include "gettext.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 
 #include <sstream>
 #include <fstream>
@@ -38,7 +38,7 @@ ControlLog::ControlLog(Dialog & parent)
 bool ControlLog::initialiseParams(string const & data)
 {
 	istringstream is(data);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(is);
 
 	string logtype, logfile;

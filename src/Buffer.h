@@ -41,7 +41,7 @@ class FuncRequest;
 class InsetBase;
 class InsetText;
 class LyXFont;
-class LyXLex;
+class Lexer;
 class LyXRC;
 class LyXText;
 class LyXVC;
@@ -111,13 +111,13 @@ public:
 	bool readFile(support::FileName const & filename);
 
 	/// read the header, returns number of unknown tokens
-	int readHeader(LyXLex & lex);
+	int readHeader(Lexer & lex);
 
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
 	*/
-	bool readDocument(LyXLex &);
+	bool readDocument(Lexer &);
 
 	///
 	void insertStringAsLines(ParagraphList & plist,
@@ -394,7 +394,7 @@ private:
 	/** Inserts a file into a document
 	    \return \c false if method fails.
 	*/
-	ReadStatus readFile(LyXLex &, support::FileName const & filename,
+	ReadStatus readFile(Lexer &, support::FileName const & filename,
 	                    bool fromString = false);
 
 	/// Use the Pimpl idiom to hide the internals.

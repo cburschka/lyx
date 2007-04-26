@@ -30,7 +30,7 @@ LINKED_FILES = \
 	LyXLayout.cpp \
 	LyXTextClass.cpp \
 	LyXTextClass.h \
-	LyXLex.cpp 
+	Lexer.cpp 
 
 BUILT_SOURCES = $(PCH_FILE) $(LINKED_FILES)
 

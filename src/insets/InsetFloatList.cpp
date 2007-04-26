@@ -21,7 +21,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "TocBackend.h"
 
@@ -72,7 +72,7 @@ void InsetFloatList::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
+void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	string token;

@@ -38,7 +38,7 @@ public:
 	int docbook(Buffer const &, odocstream &,
 	            OutputParams const &) const;
 
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 
 	virtual void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset

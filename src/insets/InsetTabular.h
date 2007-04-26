@@ -39,7 +39,7 @@
 namespace lyx {
 
 class FuncStatus;
-class LyXLex;
+class Lexer;
 class BufferView;
 class Buffer;
 class BufferParams;
@@ -56,7 +56,7 @@ public:
 	///
 	~InsetTabular();
 	///
-	void read(Buffer const &, LyXLex &);
+	void read(Buffer const &, Lexer &);
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

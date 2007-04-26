@@ -27,7 +27,7 @@
 #include "Intl.h"
 #include "LColor.h"
 #include "lyxfind.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
@@ -141,7 +141,7 @@ void InsetText::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetText::read(Buffer const & buf, LyXLex & lex)
+void InsetText::read(Buffer const & buf, Lexer & lex)
 {
 	clear();
 

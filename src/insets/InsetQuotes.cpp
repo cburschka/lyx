@@ -17,7 +17,7 @@
 #include "debug.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -284,7 +284,7 @@ void InsetQuotes::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetQuotes::read(Buffer const &, LyXLex & lex)
+void InsetQuotes::read(Buffer const &, Lexer & lex)
 {
 	lex.next();
 	parseString(lex.getString());

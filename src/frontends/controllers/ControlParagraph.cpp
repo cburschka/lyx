@@ -14,7 +14,7 @@
 #include "ControlParagraph.h"
 #include "ButtonController.h"
 #include "FuncRequest.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 
@@ -35,7 +35,7 @@ ControlParagraph::ControlParagraph(Dialog & parent)
 bool ControlParagraph::initialiseParams(string const & data)
 {
 	istringstream is(data);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(is);
 
 	// Set tri-state flag:

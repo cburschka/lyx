@@ -16,7 +16,7 @@
 
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 
 #include "support/FileName.h"
@@ -278,7 +278,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 {
 	// We must read the symbolsfile first, because the Encoding
 	// constructor depends on it.
-	LyXLex symbolslex(0, 0);
+	Lexer symbolslex(0, 0);
 	symbolslex.setFile(symbolsfile);
 	while (symbolslex.isOK()) {
 		char_type symbol;
@@ -348,7 +348,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		{ "end", et_end }
 	};
 
-	LyXLex lex(encodingtags, et_last - 1);
+	Lexer lex(encodingtags, et_last - 1);
 	lex.setFile(encfile);
 	while (lex.isOK()) {
 		switch (lex.lex()) {
@@ -370,7 +370,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		case et_end:
 			lex.printError("Encodings::read: Misplaced end");
 			break;
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			break;
 		default:
 			lex.printError("Encodings::read: "

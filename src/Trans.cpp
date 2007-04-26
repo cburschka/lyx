@@ -14,7 +14,7 @@
 #include "Trans.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "debug.h"
 #include "TransState.h"
 
@@ -126,7 +126,7 @@ void Trans::addDeadkey(tex_accent accent, docstring const & keys)
 }
 
 
-int Trans::load(LyXLex & lex)
+int Trans::load(Lexer & lex)
 {
 	bool error = false;
 
@@ -281,7 +281,7 @@ int Trans::load(LyXLex & lex)
 					key, str);
 			break;
 		}
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			LYXERR(Debug::PARSER) << "End of parsing" << endl;
 			break;
 		default:
@@ -328,7 +328,7 @@ int Trans::load(string const & language)
 		return -1;
 
 	freeKeymap();
-	LyXLex lex(kmapTags, K_LAST - 1);
+	Lexer lex(kmapTags, K_LAST - 1);
 	lex.setFile(filename);
 
 	int const res = load(lex);

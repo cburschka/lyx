@@ -79,7 +79,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const &, LyXLex &);
+	void read(Buffer const &, Lexer &);
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
@@ -120,7 +120,7 @@ private:
 	///
 	void write(std::ostream &) const;
 	///
-	void read(LyXLex &);
+	void read(Lexer &);
 
 	/// the parameters
 	InsetCommandParams params_;

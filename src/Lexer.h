@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXLex.h
+ * \file Lexer.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,8 +14,8 @@
 //  It can be used for simple syntax parsers, like lyxrc,
 //  texclass and others to come.
 
-#ifndef LYXLEX_H
-#define LYXLEX_H
+#ifndef LEXER_H
+#define LEXER_H
 
 #include "support/docstring.h"
 
@@ -55,12 +55,12 @@ struct keyword_item {
 
     @see LyXRC.cpp for an example of usage.
   */
-class LyXLex : boost::noncopyable {
+class Lexer : boost::noncopyable {
 public:
 	///
-	LyXLex(keyword_item *, int);
+	Lexer(keyword_item *, int);
 	///
-	~LyXLex();
+	~Lexer();
 
 	/// Lex basic codes
 	enum {
@@ -158,19 +158,19 @@ public:
 	void printTable(std::ostream &);
 
 	/// extract string
-	LyXLex & operator>>(std::string &);
+	Lexer & operator>>(std::string &);
 	/// extract docstring
-	LyXLex & operator>>(docstring &);
+	Lexer & operator>>(docstring &);
 	/// extract double
-	LyXLex & operator>>(double &);
+	Lexer & operator>>(double &);
 	/// extract integer
-	LyXLex & operator>>(int &);
+	Lexer & operator>>(int &);
 	/// extract unsigned integer
-	LyXLex & operator>>(unsigned int &);
+	Lexer & operator>>(unsigned int &);
 	/// extract bool
-	LyXLex & operator>>(bool &);
+	Lexer & operator>>(bool &);
 
-	/// Quotes a string so that reading it again with LyXLex::next(true)
+	/// Quotes a string so that reading it again with Lexer::next(true)
 	/// gets the original string
 	static std::string const quoteString(std::string const &);
 
@@ -189,25 +189,25 @@ private:
     exceptions.
     @author Lgb
 */
-class pushpophelper {
+class PushPopHelper {
 public:
 	///
-	pushpophelper(LyXLex & lexrc, keyword_item * i, int s) : lex(lexrc) {
+	PushPopHelper(Lexer & lexrc, keyword_item * i, int s) : lex(lexrc) {
 		lex.pushTable(i, s);
 	}
 	///
-	~pushpophelper() {
+	~PushPopHelper() {
 		lex.popTable();
 	}
 	///
-	LyXLex & lex;
+	Lexer & lex;
 };
-/** Avoid wrong usage of pushpophelper.
+/** Avoid wrong usage of PushPopHelper.
     To avoid wrong usage:
-    pushpophelper(...); // wrong
-    pushpophelper pph(...); // right
+    PushPopHelper(...); // wrong
+    PushPopHelper pph(...); // right
 */
-#define pushpophelper(x, y, z) unnamed_pushpophelper;
+#define PushPopHelper(x, y, z) unnamed_PushPopHelper;
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 

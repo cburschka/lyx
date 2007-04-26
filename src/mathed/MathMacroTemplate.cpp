@@ -18,7 +18,7 @@
 #include "LCursor.h"
 #include "debug.h"
 #include "gettext.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LColor.h"
 
 #include "frontends/FontMetrics.h"
@@ -185,7 +185,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 }
 
 
-void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
+void MathMacroTemplate::read(Buffer const &, Lexer & lex)
 {
 	MathArray ar;
 	mathed_parse_cell(ar, lex.getStream());

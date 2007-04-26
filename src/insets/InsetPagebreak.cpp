@@ -32,7 +32,7 @@ using std::endl;
 using std::ostream;
 
 
-void InsetPagebreak::read(Buffer const &, LyXLex &)
+void InsetPagebreak::read(Buffer const &, Lexer &)
 {
 	/* Nothing to read */
 }

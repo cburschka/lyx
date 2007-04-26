@@ -22,7 +22,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class LyXLex;
+class Lexer;
 class Counters;
 class FloatList;
 
@@ -69,19 +69,19 @@ public:
 	/// Performs the read of the layout file.
 	bool read(support::FileName const & filename, bool merge = false);
 	///
-	void readOutputType(LyXLex &);
+	void readOutputType(Lexer &);
 	///
-	void readTitleType(LyXLex &);
+	void readTitleType(Lexer &);
 	///
-	void readMaxCounter(LyXLex &);
+	void readMaxCounter(Lexer &);
 	///
-	void readClassOptions(LyXLex &);
+	void readClassOptions(Lexer &);
 	///
-	void readCharStyle(LyXLex &, std::string const &);
+	void readCharStyle(Lexer &, std::string const &);
 	///
-	void readFloat(LyXLex &);
+	void readFloat(Lexer &);
 	///
-	void readCounter(LyXLex &);
+	void readCounter(Lexer &);
 	///
 	bool hasLayout(std::string const & name) const;
 
@@ -174,7 +174,7 @@ private:
 	///
 	bool delete_layout(std::string const &);
 	///
-	bool do_readStyle(LyXLex &, LyXLayout &);
+	bool do_readStyle(Lexer &, LyXLayout &);
 	/// Layout file name
 	std::string name_;
 	/// document class name

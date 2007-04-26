@@ -14,7 +14,7 @@
 
 #include "LyXLayout.h"
 #include "LyXTextClass.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "debug.h"
 
 #include "support/lstrings.h"
@@ -132,7 +132,7 @@ LyXLayout::LyXLayout ()
 
 
 // Reads a layout definition from file
-bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
+bool LyXLayout::read(Lexer & lexrc, LyXTextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {
@@ -196,10 +196,10 @@ bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
 		int le = lexrc.lex();
 		// See comment in LyXRC.cpp.
 		switch (le) {
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			continue;
 
-		case LyXLex::LEX_UNDEF:		// parse error
+		case Lexer::LEX_UNDEF:		// parse error
 			lexrc.printError("Unknown layout tag `$$Token'");
 			error = true;
 			continue;
@@ -501,7 +501,7 @@ enum AlignTags {
 };
 
 
-void LyXLayout::readAlign(LyXLex & lexrc)
+void LyXLayout::readAlign(Lexer & lexrc)
 {
 	keyword_item alignTags[] = {
 		{ "block",  AT_BLOCK },
@@ -511,10 +511,10 @@ void LyXLayout::readAlign(LyXLex & lexrc)
 		{ "right",  AT_RIGHT }
 	};
 
-	pushpophelper pph(lexrc, alignTags, AT_LAYOUT);
+	PushPopHelper pph(lexrc, alignTags, AT_LAYOUT);
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown alignment `$$Token'");
 		return;
 	default: break;
@@ -539,7 +539,7 @@ void LyXLayout::readAlign(LyXLex & lexrc)
 }
 
 
-void LyXLayout::readAlignPossible(LyXLex & lexrc)
+void LyXLayout::readAlignPossible(Lexer & lexrc)
 {
 	keyword_item alignTags[] = {
 		{ "block",  AT_BLOCK },
@@ -555,7 +555,7 @@ void LyXLayout::readAlignPossible(LyXLex & lexrc)
 	do {
 		int le = lexrc.lex();
 		switch (le) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown alignment `$$Token'");
 			continue;
 		default: break;
@@ -596,7 +596,7 @@ enum LabelTypeTags {
 };
 
 
-void LyXLayout::readLabelType(LyXLex & lexrc)
+void LyXLayout::readLabelType(Lexer & lexrc)
 {
 	keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
@@ -611,10 +611,10 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	{ "top_environment",          LA_TOP_ENVIRONMENT }
 	};
 
-	pushpophelper pph(lexrc, labelTypeTags, LA_BIBLIO);
+	PushPopHelper pph(lexrc, labelTypeTags, LA_BIBLIO);
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown labeltype tag `$$Token'");
 		return;
 	default: break;
@@ -666,13 +666,13 @@ keyword_item endlabelTypeTags[] = {
 } // namespace anon
 
 
-void LyXLayout::readEndLabelType(LyXLex & lexrc)
+void LyXLayout::readEndLabelType(Lexer & lexrc)
 {
-	pushpophelper pph(lexrc, endlabelTypeTags,
+	PushPopHelper pph(lexrc, endlabelTypeTags,
 			  END_LABEL_ENUM_LAST-END_LABEL_ENUM_FIRST+1);
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown labeltype tag `$$Token'");
 		break;
 	case END_LABEL_STATIC:
@@ -689,7 +689,7 @@ void LyXLayout::readEndLabelType(LyXLex & lexrc)
 }
 
 
-void LyXLayout::readMargin(LyXLex & lexrc)
+void LyXLayout::readMargin(Lexer & lexrc)
 {
 	keyword_item marginTags[] = {
 		{ "dynamic",           MARGIN_DYNAMIC },
@@ -699,11 +699,11 @@ void LyXLayout::readMargin(LyXLex & lexrc)
 		{ "static",            MARGIN_STATIC }
 	};
 
-	pushpophelper pph(lexrc, marginTags, MARGIN_RIGHT_ADDRESS_BOX);
+	PushPopHelper pph(lexrc, marginTags, MARGIN_RIGHT_ADDRESS_BOX);
 
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown margin type tag `$$Token'");
 		return;
 	case MARGIN_STATIC:
@@ -721,7 +721,7 @@ void LyXLayout::readMargin(LyXLex & lexrc)
 }
 
 
-void LyXLayout::readLatexType(LyXLex & lexrc)
+void LyXLayout::readLatexType(Lexer & lexrc)
 {
 	keyword_item latexTypeTags[] = {
 		{ "bib_environment",  LATEX_BIB_ENVIRONMENT },
@@ -732,10 +732,10 @@ void LyXLayout::readLatexType(LyXLex & lexrc)
 		{ "paragraph",        LATEX_PARAGRAPH }
 	};
 
-	pushpophelper pph(lexrc, latexTypeTags, LATEX_LIST_ENVIRONMENT);
+	PushPopHelper pph(lexrc, latexTypeTags, LATEX_LIST_ENVIRONMENT);
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown latextype tag `$$Token'");
 		return;
 	case LATEX_PARAGRAPH:
@@ -762,7 +762,7 @@ enum SpacingTags {
 };
 
 
-void LyXLayout::readSpacing(LyXLex & lexrc)
+void LyXLayout::readSpacing(Lexer & lexrc)
 {
 	keyword_item spacingTags[] = {
 		{"double",  ST_SPACING_DOUBLE },
@@ -771,10 +771,10 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 		{"single",  ST_SPACING_SINGLE }
 	};
 
-	pushpophelper pph(lexrc, spacingTags, ST_OTHER);
+	PushPopHelper pph(lexrc, spacingTags, ST_OTHER);
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown spacing token `$$Token'");
 		return;
 	default: break;

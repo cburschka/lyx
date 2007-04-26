@@ -1429,7 +1429,7 @@ void InsetMathHull::write(Buffer const &, std::ostream & os) const
 }
 
 
-void InsetMathHull::read(Buffer const &, LyXLex & lex)
+void InsetMathHull::read(Buffer const &, Lexer & lex)
 {
 	MathAtom at;
 	mathed_parse_normal(at, lex);

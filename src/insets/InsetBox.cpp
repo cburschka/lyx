@@ -23,7 +23,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "TextMetrics.h"
@@ -134,7 +134,7 @@ void InsetBox::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetBox::read(Buffer const & buf, LyXLex & lex)
+void InsetBox::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -485,7 +485,7 @@ void InsetBoxMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;
@@ -533,7 +533,7 @@ void InsetBoxParams::write(ostream & os) const
 }
 
 
-void InsetBoxParams::read(LyXLex & lex)
+void InsetBoxParams::read(Lexer & lex)
 {
 	if (!lex.isOK())
 		return;

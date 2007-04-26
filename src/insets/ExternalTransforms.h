@@ -25,7 +25,7 @@
 
 namespace lyx {
 
-class LyXLex;
+class Lexer;
 
 namespace external {
 

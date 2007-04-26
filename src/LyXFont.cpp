@@ -21,7 +21,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 
 #include "support/lstrings.h"
@@ -626,7 +626,7 @@ string const LyXFont::latexSize() const
 
 // Read a font definition from given file in lyx format
 // Used for layouts
-LyXFont & LyXFont::lyxRead(LyXLex & lex)
+LyXFont & LyXFont::lyxRead(Lexer & lex)
 {
 	bool error = false;
 	bool finished = false;

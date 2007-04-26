@@ -19,7 +19,7 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyX.h"
 #include "Paragraph.h"
 
@@ -372,7 +372,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 }
 
 
-InsetBase * readInset(LyXLex & lex, Buffer const & buf)
+InsetBase * readInset(Lexer & lex, Buffer const & buf)
 {
 	// consistency check
 	if (lex.getString() != "\\begin_inset") {

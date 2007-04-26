@@ -46,7 +46,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const & buf, LyXLex & lex);
+	void read(Buffer const & buf, Lexer & lex);
 	///
 	virtual docstring const editMessage() const;
 	///

@@ -101,7 +101,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream & os) const;
 	///
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 	///
 	int plaintext(Buffer const &, odocstream &,
 	              OutputParams const &) const;

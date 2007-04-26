@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -101,7 +101,7 @@ void InsetNoteParams::write(ostream & os) const
 }
 
 
-void InsetNoteParams::read(LyXLex & lex)
+void InsetNoteParams::read(Lexer & lex)
 {
 	string label;
 	lex >> label;
@@ -157,7 +157,7 @@ void InsetNote::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetNote::read(Buffer const & buf, LyXLex & lex)
+void InsetNote::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -391,7 +391,7 @@ void InsetNoteMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

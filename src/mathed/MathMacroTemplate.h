@@ -39,7 +39,7 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 	///
 	void write(Buffer const &, std::ostream & os) const;
 	///

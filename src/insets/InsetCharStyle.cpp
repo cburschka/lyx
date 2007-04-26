@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
@@ -131,7 +131,7 @@ void InsetCharStyle::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetCharStyle::read(Buffer const & buf, LyXLex & lex)
+void InsetCharStyle::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -353,7 +353,7 @@ void InsetCharStyleParams::write(ostream & os) const
 }
 
 
-void InsetCharStyleParams::read(LyXLex & lex)
+void InsetCharStyleParams::read(Lexer & lex)
 {
 	while (lex.isOK()) {
 		lex.next();

@@ -14,7 +14,7 @@
 #include "ExternalTemplate.h"
 
 #include "debug.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -251,7 +251,7 @@ void TemplateManager::readTemplates(support::FileName const & path)
 		{ "templateend", TM_TEMPLATE_END }
 	};
 
-	LyXLex lex(templatetags, TM_TEMPLATE_END);
+	Lexer lex(templatetags, TM_TEMPLATE_END);
 
 	support::FileName const filename = support::libFileSearch("", "external_templates");
 	if (filename.empty() || !lex.setFile(filename)) {
@@ -310,7 +310,7 @@ void add(vector<TransformID> & ids, string const & name)
 } // namespace anon
 
 
-void Template::readTemplate(LyXLex & lex)
+void Template::readTemplate(Lexer & lex)
 {
 	enum TemplateOptionTags {
 		TO_GUINAME = 1,
@@ -334,7 +334,7 @@ void Template::readTemplate(LyXLex & lex)
 		{ "transform", TO_TRANSFORM }
 	};
 
-	pushpophelper pph(lex, templateoptiontags, TO_END);
+	PushPopHelper pph(lex, templateoptiontags, TO_END);
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {
@@ -466,7 +466,7 @@ void setOptionFactory(Template::Format & format, string const & transform,
 } // namespace anon
 
 
-void Template::Format::readFormat(LyXLex & lex)
+void Template::Format::readFormat(Lexer & lex)
 {
 	enum FormatTags {
 		FO_PRODUCT = 1,
@@ -494,7 +494,7 @@ void Template::Format::readFormat(LyXLex & lex)
 		{ "updateresult", FO_UPDATERESULT }
 	};
 
-	pushpophelper pph(lex, formattags, FO_END);
+	PushPopHelper pph(lex, formattags, FO_END);
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {

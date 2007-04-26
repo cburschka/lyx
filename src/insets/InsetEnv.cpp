@@ -55,7 +55,7 @@ void InsetEnvironment::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetEnvironment::read(Buffer const & buf, LyXLex & lex)
+void InsetEnvironment::read(Buffer const & buf, Lexer & lex)
 {
 	InsetText::read(buf, lex);
 }

@@ -25,7 +25,7 @@ namespace lyx {
 class MathAtom;
 class MathArray;
 class InsetMathGrid;
-class LyXLex;
+class Lexer;
 
 
 ///
@@ -64,7 +64,7 @@ latexkeys const * in_word_set(docstring const & str);
 /// parse formula from a string
 bool mathed_parse_normal(MathAtom &, docstring const &);
 /// ... the LyX lexxer
-bool mathed_parse_normal(MathAtom &, LyXLex &);
+bool mathed_parse_normal(MathAtom &, Lexer &);
 /// parse formula from a string into a grid
 void mathed_parse_normal(InsetMathGrid &, docstring const &);
 

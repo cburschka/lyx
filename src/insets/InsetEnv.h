@@ -25,7 +25,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const & buf, LyXLex & lex);
+	void read(Buffer const & buf, Lexer & lex);
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::ENVIRONMENT_CODE; }
 	///

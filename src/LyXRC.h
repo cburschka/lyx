@@ -29,7 +29,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class LyXLex;
+class Lexer;
 
 /// This contains the runtime configuration of LyX
 class LyXRC //: public noncopyable 
@@ -155,7 +155,7 @@ public:
 	int read(std::istream &);
 private:
 	///
-	int read(LyXLex &);
+	int read(Lexer &);
 public:
 	///
 	void write(support::FileName const & filename,

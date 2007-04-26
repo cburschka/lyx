@@ -21,14 +21,14 @@
 
 namespace lyx {
 
-class LyXLex;
+class Lexer;
 
 class InsetCommandParams {
 public:
 	/// Construct parameters for command \p name. \p name must be known.
 	explicit InsetCommandParams(std::string const & name);
 	///
-	void read(LyXLex &);
+	void read(Lexer &);
 	/// Parse the command
 	/// FIXME remove
 	void scanCommand(std::string const &);

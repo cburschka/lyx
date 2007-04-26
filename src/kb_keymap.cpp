@@ -18,7 +18,7 @@
 #include "debug.h"
 #include "kb_sequence.h"
 #include "LyXAction.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 
 #include "frontends/LyXKeySym.h"
 
@@ -95,7 +95,7 @@ bool kb_keymap::read(string const & bind_file)
 {
 	const int bindCount = sizeof(bindTags) / sizeof(keyword_item);
 
-	LyXLex lexrc(bindTags, bindCount);
+	Lexer lexrc(bindTags, bindCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
@@ -112,11 +112,11 @@ bool kb_keymap::read(string const & bind_file)
 	bool error = false;
 	while (lexrc.isOK()) {
 		switch (lexrc.lex()) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
 			error = true;
 			continue;
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			continue;
 		case BN_BIND:
 		{

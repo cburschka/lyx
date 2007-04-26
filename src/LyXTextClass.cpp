@@ -16,7 +16,7 @@
 
 #include "LyXTextClass.h"
 #include "debug.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "Counters.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -125,7 +125,7 @@ bool LyXTextClass::isTeXClassAvailable() const
 }
 
 
-bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
+bool LyXTextClass::do_readStyle(Lexer & lexrc, LyXLayout & lay)
 {
 	LYXERR(Debug::TCLASS) << "Reading style " << lay.name() << endl;
 	if (!lay.read(lexrc, *this)) {
@@ -214,7 +214,7 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 				     << to_utf8(makeDisplayPath(filename.absFilename()))
 				     << endl;
 
-	LyXLex lexrc(textClassTags,
+	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
 
 	lexrc.setFile(filename);
@@ -228,10 +228,10 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 		int le = lexrc.lex();
 
 		switch (le) {
-		case LyXLex::LEX_FEOF:
+		case Lexer::LEX_FEOF:
 			continue;
 
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown TextClass tag `$$Token'");
 			error = true;
 			continue;
@@ -476,18 +476,18 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 }
 
 
-void LyXTextClass::readTitleType(LyXLex & lexrc)
+void LyXTextClass::readTitleType(Lexer & lexrc)
 {
 	keyword_item titleTypeTags[] = {
 		{ "commandafter", TITLE_COMMAND_AFTER },
 		{ "environment", TITLE_ENVIRONMENT }
 	};
 
-	pushpophelper pph(lexrc, titleTypeTags, TITLE_ENVIRONMENT);
+	PushPopHelper pph(lexrc, titleTypeTags, TITLE_ENVIRONMENT);
 
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown output type `$$Token'");
 		return;
 	case TITLE_COMMAND_AFTER:
@@ -503,7 +503,7 @@ void LyXTextClass::readTitleType(LyXLex & lexrc)
 }
 
 
-void LyXTextClass::readOutputType(LyXLex & lexrc)
+void LyXTextClass::readOutputType(Lexer & lexrc)
 {
 	keyword_item outputTypeTags[] = {
 		{ "docbook", DOCBOOK },
@@ -511,11 +511,11 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 		{ "literate", LITERATE }
 	};
 
-	pushpophelper pph(lexrc, outputTypeTags, LITERATE);
+	PushPopHelper pph(lexrc, outputTypeTags, LITERATE);
 
 	int le = lexrc.lex();
 	switch (le) {
-	case LyXLex::LEX_UNDEF:
+	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown output type `$$Token'");
 		return;
 	case LATEX:
@@ -541,7 +541,7 @@ enum ClassOptionsTags {
 };
 
 
-void LyXTextClass::readClassOptions(LyXLex & lexrc)
+void LyXTextClass::readClassOptions(Lexer & lexrc)
 {
 	keyword_item classOptionsTags[] = {
 		{"end", CO_END },
@@ -556,7 +556,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
 		switch (le) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
 			continue;
 		default: break;
@@ -597,7 +597,7 @@ enum CharStyleTags {
 };
 
 
-void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
+void LyXTextClass::readCharStyle(Lexer & lexrc, string const & name)
 {
 	keyword_item elementTags[] = {
 		{ "end", CS_END },
@@ -622,7 +622,7 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
 		switch (le) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
 			continue;
 		default: break;
@@ -687,7 +687,7 @@ enum FloatTags {
 };
 
 
-void LyXTextClass::readFloat(LyXLex & lexrc)
+void LyXTextClass::readFloat(Lexer & lexrc)
 {
 	keyword_item floatTags[] = {
 		{ "end", FT_END },
@@ -716,7 +716,7 @@ void LyXTextClass::readFloat(LyXLex & lexrc)
 	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
 		switch (le) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
 			continue;
 		default: break;
@@ -781,7 +781,7 @@ enum CounterTags {
 	CT_END
 };
 
-void LyXTextClass::readCounter(LyXLex & lexrc)
+void LyXTextClass::readCounter(Lexer & lexrc)
 {
 	keyword_item counterTags[] = {
 		{ "end", CT_END },
@@ -798,7 +798,7 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
 		switch (le) {
-		case LyXLex::LEX_UNDEF:
+		case Lexer::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
 			continue;
 		default: break;

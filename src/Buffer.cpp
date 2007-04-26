@@ -32,7 +32,7 @@
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
 #include "LyXAction.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXText.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
@@ -406,7 +406,7 @@ void unknownClass(string const & unknown)
 } // anon
 
 
-int Buffer::readHeader(LyXLex & lex)
+int Buffer::readHeader(Lexer & lex)
 {
 	int unknown_tokens = 0;
 	int line = -1;
@@ -480,7 +480,7 @@ int Buffer::readHeader(LyXLex & lex)
 // Uwe C. Schroeder
 // changed to be public and have one parameter
 // Returns false if "\end_document" is not read (Asger)
-bool Buffer::readDocument(LyXLex & lex)
+bool Buffer::readDocument(Lexer & lex)
 {
 	ErrorList & errorList = errorLists_["Parse"];
 	errorList.clear();
@@ -574,7 +574,7 @@ bool Buffer::readString(std::string const & s)
 
 	// remove dummy empty par
 	paragraphs().clear();
-	LyXLex lex(0, 0);
+	Lexer lex(0, 0);
 	std::istringstream is(s);
 	lex.setStream(is);
 	FileName const name(tempName());
@@ -606,7 +606,7 @@ bool Buffer::readFile(FileName const & filename)
 
 	// remove dummy empty par
 	paragraphs().clear();
-	LyXLex lex(0, 0);
+	Lexer lex(0, 0);
 	lex.setFile(filename);
 	if (readFile(lex, filename) != success)
 		return false;
@@ -627,7 +627,7 @@ void Buffer::fully_loaded(bool const value)
 }
 
 
-Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
+Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		bool fromstring)
 {
 	BOOST_ASSERT(!filename.empty());

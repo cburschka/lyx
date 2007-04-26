@@ -21,7 +21,7 @@
 namespace lyx {
 
 
-class LyXLex;
+class Lexer;
 
 class ToolbarItem {
 public:
@@ -97,7 +97,7 @@ public:
 	Flags flags;
 
 	/// read a toolbar from the file
-	ToolbarInfo & read(LyXLex &);
+	ToolbarInfo & read(Lexer &);
 
 private:
 	/// add toolbar item
@@ -122,10 +122,10 @@ public:
 	Toolbars::iterator end() { return usedtoolbars.end(); }
 
 	/// read toolbars from the file
-	void readToolbars(LyXLex &);
+	void readToolbars(Lexer &);
 
 	/// read ui toolbar settings
-	void readToolbarSettings(LyXLex &);
+	void readToolbarSettings(Lexer &);
 	///
 	ToolbarInfo const & getToolbar(std::string const & name) const;
 	///

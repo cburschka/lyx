@@ -62,7 +62,7 @@ following hack as starting point to write some macros:
 #include "MathMacroArgument.h"
 #include "MathSupport.h"
 
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "debug.h"
 
 #include "support/convert.h"
@@ -314,7 +314,7 @@ public:
 	typedef  InsetMath::mode_type mode_type;
 
 	///
-	Parser(LyXLex & lex);
+	Parser(Lexer & lex);
 	/// Only use this for reading from .lyx file format, for the reason
 	/// see Parser::tokenize(std::istream &).
 	Parser(istream & is);
@@ -386,7 +386,7 @@ private:
 };
 
 
-Parser::Parser(LyXLex & lexer)
+Parser::Parser(Lexer & lexer)
 	: lineno_(lexer.getLineNo()), pos_(0)
 {
 	tokenize(lexer.getStream());
@@ -1472,7 +1472,7 @@ bool mathed_parse_normal(MathAtom & t, docstring const & str)
 }
 
 
-bool mathed_parse_normal(MathAtom & t, LyXLex & lex)
+bool mathed_parse_normal(MathAtom & t, Lexer & lex)
 {
 	return Parser(lex).parse(t);
 }

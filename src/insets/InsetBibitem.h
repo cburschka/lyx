@@ -28,7 +28,7 @@ public:
 	///
 	InsetBibitem(InsetCommandParams const &);
 	///
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///

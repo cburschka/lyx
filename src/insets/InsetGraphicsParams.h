@@ -22,7 +22,7 @@ namespace lyx {
 
 namespace graphics { class Params; }
 
-class LyXLex;
+class Lexer;
 
 
 /// This class holds all the parameters needed by insetGraphics.
@@ -73,7 +73,7 @@ public:
 	/// Save the parameters in the LyX format stream.
 	void Write(std::ostream & os, std::string const & bufpath) const;
 	/// If the token belongs to our parameters, read it.
-	bool Read(LyXLex & lex, std::string const & token, std::string const & bufpath);
+	bool Read(Lexer & lex, std::string const & token, std::string const & bufpath);
 	/// convert
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether

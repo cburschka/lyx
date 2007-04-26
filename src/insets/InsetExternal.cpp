@@ -27,7 +27,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -239,7 +239,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 }
 
 
-bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
+bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 {
 	enum ExternalTags {
 		EX_TEMPLATE = 1,
@@ -277,7 +277,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		{ "width",           EX_WIDTH }
 	};
 
-	pushpophelper pph(lex, external_tags, EX_END);
+	PushPopHelper pph(lex, external_tags, EX_END);
 
 	bool found_end  = false;
 	bool read_error = false;
@@ -665,7 +665,7 @@ void InsetExternal::write(Buffer const & buffer, ostream & os) const
 }
 
 
-void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
+void InsetExternal::read(Buffer const & buffer, Lexer & lex)
 {
 	InsetExternalParams params;
 	if (params.read(buffer, lex))
@@ -868,7 +868,7 @@ void InsetExternalMailer::string2params(string const & in,
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

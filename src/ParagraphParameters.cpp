@@ -19,7 +19,7 @@
 #include "Buffer.h"
 #include "gettext.h"
 #include "LyXLayout.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXText.h"
 #include "Paragraph.h"
 #include "tex-strings.h"
@@ -176,7 +176,7 @@ void ParagraphParameters::leftIndent(LyXLength const & li)
 }
 
 
-void ParagraphParameters::read(LyXLex & lex)
+void ParagraphParameters::read(Lexer & lex)
 {
 	while (lex.isOK()) {
 		lex.nextToken();

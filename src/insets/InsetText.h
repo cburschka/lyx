@@ -47,7 +47,7 @@ public:
 	/// empty inset to empty par
 	void clear();
 	///
-	void read(Buffer const & buf, LyXLex & lex);
+	void read(Buffer const & buf, Lexer & lex);
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///

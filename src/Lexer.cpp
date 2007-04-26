@@ -1,5 +1,5 @@
 /**
- * \file LyXLex.cpp
+ * \file Lexer.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "LyXLex.h"
+#include "Lexer.h"
 
 #include "debug.h"
 
@@ -64,13 +64,13 @@ using std::ostream;
 
 //////////////////////////////////////////////////////////////////////
 //
-// LyXLex::Pimpl
+// Lexer::Pimpl
 //
 //////////////////////////////////////////////////////////////////////
 
 
 ///
-class LyXLex::Pimpl : boost::noncopyable {
+class Lexer::Pimpl : boost::noncopyable {
 public:
 	///
 	Pimpl(keyword_item * tab, int num);
@@ -171,7 +171,7 @@ public:
 } // end of anon namespace
 
 
-LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
+Lexer::Pimpl::Pimpl(keyword_item * tab, int num)
 	: is(&fb_), table(tab), no_items(num),
 	  status(0), lineno(0), commentChar('#')
 {
@@ -179,19 +179,19 @@ LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
 }
 
 
-string const LyXLex::Pimpl::getString() const
+string const Lexer::Pimpl::getString() const
 {
 	return buff;
 }
 
 
-docstring const LyXLex::Pimpl::getDocString() const
+docstring const Lexer::Pimpl::getDocString() const
 {
 	return from_utf8(buff);
 }
 
 
-void LyXLex::Pimpl::printError(string const & message) const
+void Lexer::Pimpl::printError(string const & message) const
 {
 	string const tmpmsg = subst(message, "$$Token", getString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
@@ -199,7 +199,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 }
 
 
-void LyXLex::Pimpl::printTable(ostream & os)
+void Lexer::Pimpl::printTable(ostream & os)
 {
 	os << "\nNumber of tags: " << no_items << endl;
 	for (int i= 0; i < no_items; ++i)
@@ -210,12 +210,12 @@ void LyXLex::Pimpl::printTable(ostream & os)
 }
 
 
-void LyXLex::Pimpl::verifyTable()
+void Lexer::Pimpl::verifyTable()
 {
 	// Check if the table is sorted and if not, sort it.
 	if (table
 	    && !lyx::sorted(table, table + no_items, compare_tags())) {
-		lyxerr << "The table passed to LyXLex is not sorted!\n"
+		lyxerr << "The table passed to Lexer is not sorted!\n"
 		       << "Tell the developers to fix it!" << endl;
 		// We sort it anyway to avoid problems.
 		lyxerr << "\nUnsorted:" << endl;
@@ -228,7 +228,7 @@ void LyXLex::Pimpl::verifyTable()
 }
 
 
-void LyXLex::Pimpl::pushTable(keyword_item * tab, int num)
+void Lexer::Pimpl::pushTable(keyword_item * tab, int num)
 {
 	pushed_table tmppu(table, no_items);
 	pushed.push(tmppu);
@@ -240,10 +240,10 @@ void LyXLex::Pimpl::pushTable(keyword_item * tab, int num)
 }
 
 
-void LyXLex::Pimpl::popTable()
+void Lexer::Pimpl::popTable()
 {
 	if (pushed.empty()) {
-		lyxerr << "LyXLex error: nothing to pop!" << endl;
+		lyxerr << "Lexer error: nothing to pop!" << endl;
 		return;
 	}
 
@@ -254,7 +254,7 @@ void LyXLex::Pimpl::popTable()
 }
 
 
-bool LyXLex::Pimpl::setFile(FileName const & filename)
+bool Lexer::Pimpl::setFile(FileName const & filename)
 {
 	// Check the format of the file.
 	string const format = getFormatFromContents(filename);
@@ -266,7 +266,7 @@ bool LyXLex::Pimpl::setFile(FileName const & filename)
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
 		if (!gz_.empty() || istream::off_type(is.tellg()) > -1)
-			LYXERR(Debug::LYXLEX) << "Error in LyXLex::setFile: "
+			LYXERR(Debug::LYXLEX) << "Error in Lexer::setFile: "
 				"file or stream already set." << endl;
 		gz_.push(io::gzip_decompressor());
 		gz_.push(io::file_source(filename.toFilesystemEncoding()));
@@ -281,7 +281,7 @@ bool LyXLex::Pimpl::setFile(FileName const & filename)
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
 		if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
-			LYXERR(Debug::LYXLEX) << "Error in LyXLex::setFile: "
+			LYXERR(Debug::LYXLEX) << "Error in Lexer::setFile: "
 				"file or stream already set." << endl;
 		fb_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
@@ -292,23 +292,23 @@ bool LyXLex::Pimpl::setFile(FileName const & filename)
 }
 
 
-void LyXLex::Pimpl::setStream(istream & i)
+void Lexer::Pimpl::setStream(istream & i)
 {
 	if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
-		LYXERR(Debug::LYXLEX)  << "Error in LyXLex::setStream: "
+		LYXERR(Debug::LYXLEX)  << "Error in Lexer::setStream: "
 			"file or stream already set." << endl;
 	is.rdbuf(i.rdbuf());
 	lineno = 0;
 }
 
 
-void LyXLex::Pimpl::setCommentChar(char c)
+void Lexer::Pimpl::setCommentChar(char c)
 {
 	commentChar = c;
 }
 
 
-bool LyXLex::Pimpl::next(bool esc /* = false */)
+bool Lexer::Pimpl::next(bool esc /* = false */)
 {
 	if (!pushTok.empty()) {
 		// There can have been a whole line pushed so
@@ -506,7 +506,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 }
 
 
-int LyXLex::Pimpl::search_kw(char const * const tag) const
+int Lexer::Pimpl::search_kw(char const * const tag) const
 {
 	keyword_item search_tag = { tag, 0 };
 	keyword_item * res =
@@ -522,7 +522,7 @@ int LyXLex::Pimpl::search_kw(char const * const tag) const
 }
 
 
-int LyXLex::Pimpl::lex()
+int Lexer::Pimpl::lex()
 {
 	//NOTE: possible bug.
 	if (next() && status == LEX_TOKEN) 
@@ -531,7 +531,7 @@ int LyXLex::Pimpl::lex()
 }
 
 
-bool LyXLex::Pimpl::eatLine()
+bool Lexer::Pimpl::eatLine()
 {
 	buff.clear();
 
@@ -540,7 +540,7 @@ bool LyXLex::Pimpl::eatLine()
 	while (is && c != '\n') {
 		is.get(cc);
 		c = cc;
-		//LYXERR(Debug::LYXLEX) << "LyXLex::EatLine read char: `"
+		//LYXERR(Debug::LYXLEX) << "Lexer::EatLine read char: `"
 		//		      << c << '\'' << endl;
 		if (c != '\r')
 			buff.push_back(c);
@@ -560,7 +560,7 @@ bool LyXLex::Pimpl::eatLine()
 }
 
 
-bool LyXLex::Pimpl::nextToken()
+bool Lexer::Pimpl::nextToken()
 {
 	if (!pushTok.empty()) {
 		// There can have been a whole line pushed so
@@ -617,13 +617,13 @@ bool LyXLex::Pimpl::nextToken()
 }
 
 
-bool LyXLex::Pimpl::inputAvailable()
+bool Lexer::Pimpl::inputAvailable()
 {
 	return is.good(); 
 }
 
 
-void LyXLex::Pimpl::pushToken(string const & pt)
+void Lexer::Pimpl::pushToken(string const & pt)
 {
 	pushTok = pt;
 }
@@ -633,93 +633,93 @@ void LyXLex::Pimpl::pushToken(string const & pt)
 
 //////////////////////////////////////////////////////////////////////
 //
-// LyXLex
+// Lexer
 //
 //////////////////////////////////////////////////////////////////////
 
-LyXLex::LyXLex(keyword_item * tab, int num)
+Lexer::Lexer(keyword_item * tab, int num)
 	: pimpl_(new Pimpl(tab, num))
 {}
 
 
-LyXLex::~LyXLex()
+Lexer::~Lexer()
 {
 	delete pimpl_;
 }
 
 
-bool LyXLex::isOK() const
+bool Lexer::isOK() const
 {
 	return pimpl_->inputAvailable();
 }
 
 
-void LyXLex::setLineNo(int l)
+void Lexer::setLineNo(int l)
 {
 	pimpl_->lineno = l;
 }
 
 
-int LyXLex::getLineNo() const
+int Lexer::getLineNo() const
 {
 	return pimpl_->lineno;
 }
 
 
-istream & LyXLex::getStream()
+istream & Lexer::getStream()
 {
 	return pimpl_->is;
 }
 
 
-void LyXLex::pushTable(keyword_item * tab, int num)
+void Lexer::pushTable(keyword_item * tab, int num)
 {
 	pimpl_->pushTable(tab, num);
 }
 
 
-void LyXLex::popTable()
+void Lexer::popTable()
 {
 	pimpl_->popTable();
 }
 
 
-void LyXLex::printTable(ostream & os)
+void Lexer::printTable(ostream & os)
 {
 	pimpl_->printTable(os);
 }
 
 
-void LyXLex::printError(string const & message) const
+void Lexer::printError(string const & message) const
 {
 	pimpl_->printError(message);
 }
 
 
-bool LyXLex::setFile(support::FileName const & filename)
+bool Lexer::setFile(support::FileName const & filename)
 {
 	return pimpl_->setFile(filename);
 }
 
 
-void LyXLex::setStream(istream & i)
+void Lexer::setStream(istream & i)
 {
 	pimpl_->setStream(i);
 }
 
 
-void LyXLex::setCommentChar(char c)
+void Lexer::setCommentChar(char c)
 {
 	pimpl_->setCommentChar(c);
 }
 
-int LyXLex::lex()
+int Lexer::lex()
 {
 	return pimpl_->lex();
 }
 
 
-int LyXLex::getInteger() const
+int Lexer::getInteger() const
 {
 	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
 	if (!lastReadOk_) {
@@ -736,7 +736,7 @@ int LyXLex::getInteger() const
 }
 
 
-double LyXLex::getFloat() const
+double Lexer::getFloat() const
 {
 	// replace comma with dot in case the file was written with
 	// the wrong locale (should be rare, but is easy enough to
@@ -757,7 +757,7 @@ double LyXLex::getFloat() const
 }
 
 
-string const LyXLex::getString() const
+string const Lexer::getString() const
 {
 	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
 
@@ -768,7 +768,7 @@ string const LyXLex::getString() const
 }
 
 
-docstring const LyXLex::getDocString() const
+docstring const Lexer::getDocString() const
 {
 	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
 	
@@ -782,7 +782,7 @@ docstring const LyXLex::getDocString() const
 // I would prefer to give a tag number instead of an explicit token
 // here, but it is not possible because Buffer::readDocument uses
 // explicit tokens (JMarc)
-string const LyXLex::getLongString(string const & endtoken)
+string const Lexer::getLongString(string const & endtoken)
 {
 	string str, prefix;
 	bool firstline = true;
@@ -828,7 +828,7 @@ string const LyXLex::getLongString(string const & endtoken)
 }
 
 
-bool LyXLex::getBool() const
+bool Lexer::getBool() const
 {
 	if (pimpl_->getString() == "true") {
 		lastReadOk_ = true;
@@ -843,31 +843,31 @@ bool LyXLex::getBool() const
 }
 
 
-bool LyXLex::eatLine()
+bool Lexer::eatLine()
 {
 	return pimpl_->eatLine();
 }
 
 
-bool LyXLex::next(bool esc)
+bool Lexer::next(bool esc)
 {
 	return pimpl_->next(esc);
 }
 
 
-bool LyXLex::nextToken()
+bool Lexer::nextToken()
 {
 	return pimpl_->nextToken();
 }
 
 
-void LyXLex::pushToken(string const & pt)
+void Lexer::pushToken(string const & pt)
 {
 	pimpl_->pushToken(pt);
 }
 
 
-LyXLex::operator void const *() const
+Lexer::operator void const *() const
 {
 	// This behaviour is NOT the same as the std::streams which would
 	// use fail() here. However, our implementation of getString() et al.
@@ -877,13 +877,13 @@ LyXLex::operator void const *() const
 }
 
 
-bool LyXLex::operator!() const
+bool Lexer::operator!() const
 {
 	return !lastReadOk_;
 }
 
 
-LyXLex & LyXLex::operator>>(std::string & s)
+Lexer & Lexer::operator>>(std::string & s)
 {
 	if (isOK()) {
 		next();
@@ -895,7 +895,7 @@ LyXLex & LyXLex::operator>>(std::string & s)
 }
 
 
-LyXLex & LyXLex::operator>>(docstring & s)
+Lexer & Lexer::operator>>(docstring & s)
 {
 	if (isOK()) {
 		next();
@@ -907,7 +907,7 @@ LyXLex & LyXLex::operator>>(docstring & s)
 }
 
 
-LyXLex & LyXLex::operator>>(double & s)
+Lexer & Lexer::operator>>(double & s)
 {
 	if (isOK()) {
 		next();
@@ -919,7 +919,7 @@ LyXLex & LyXLex::operator>>(double & s)
 }
 
 
-LyXLex & LyXLex::operator>>(int & s)
+Lexer & Lexer::operator>>(int & s)
 {
 	if (isOK()) {
 		next();
@@ -931,7 +931,7 @@ LyXLex & LyXLex::operator>>(int & s)
 }
 
 
-LyXLex & LyXLex::operator>>(unsigned int & s)
+Lexer & Lexer::operator>>(unsigned int & s)
 {
 	if (isOK()) {
 		next();
@@ -943,7 +943,7 @@ LyXLex & LyXLex::operator>>(unsigned int & s)
 }
 
 
-LyXLex & LyXLex::operator>>(bool & s)
+Lexer & Lexer::operator>>(bool & s)
 {
 	if (isOK()) {
 		next();
@@ -956,7 +956,7 @@ LyXLex & LyXLex::operator>>(bool & s)
 
 
 /// quotes a string, e.g. for use in preferences files or as an argument of the "log" dialog
-string const LyXLex::quoteString(string const & arg)
+string const Lexer::quoteString(string const & arg)
 {
 	std::ostringstream os;
 	os << '"' << subst(subst(arg, "\\", "\\\\"), "\"", "\\\"") << '"';

@@ -23,7 +23,7 @@
 
 namespace lyx {
 
-class LyXLex;
+class Lexer;
 class Buffer;
 class Menu;
 
@@ -161,7 +161,7 @@ public:
 	/// menu item.
 	Menu & addWithStatusCheck(MenuItem const &);
 	///
-	Menu & read(LyXLex &);
+	Menu & read(Lexer &);
 	///
 	docstring const & name() const { return name_; }
 	///
@@ -207,7 +207,7 @@ public:
 	///
 	MenuBackend() {}
 	///
-	void read(LyXLex &);
+	void read(Lexer &);
 	///
 	void add(Menu const &);
 	///

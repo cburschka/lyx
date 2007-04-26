@@ -27,7 +27,7 @@
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 #include "LyXFont.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "LyXTextClassList.h"
 #include "OutputParams.h"
@@ -411,7 +411,7 @@ void BufferParams::setDefSkip(VSpace const & vs)
 }
 
 
-string const BufferParams::readToken(LyXLex & lex, string const & token)
+string const BufferParams::readToken(Lexer & lex, string const & token)
 {
 	if (token == "\\textclass") {
 		lex.next();
@@ -1187,7 +1187,7 @@ LyXFont const BufferParams::getFont() const
 }
 
 
-void BufferParams::readPreamble(LyXLex & lex)
+void BufferParams::readPreamble(Lexer & lex)
 {
 	if (lex.getString() != "\\begin_preamble")
 		lyxerr << "Error (BufferParams::readPreamble):"
@@ -1197,7 +1197,7 @@ void BufferParams::readPreamble(LyXLex & lex)
 }
 
 
-void BufferParams::readLanguage(LyXLex & lex)
+void BufferParams::readLanguage(Lexer & lex)
 {
 	if (!lex.next()) return;
 
@@ -1215,7 +1215,7 @@ void BufferParams::readLanguage(LyXLex & lex)
 }
 
 
-void BufferParams::readGraphicsDriver(LyXLex & lex)
+void BufferParams::readGraphicsDriver(Lexer & lex)
 {
 	if (!lex.next()) return;
 
@@ -1239,7 +1239,7 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 }
 
 
-void BufferParams::readBullets(LyXLex & lex)
+void BufferParams::readBullets(Lexer & lex)
 {
 	if (!lex.next()) return;
 
@@ -1257,7 +1257,7 @@ void BufferParams::readBullets(LyXLex & lex)
 }
 
 
-void BufferParams::readBulletsLaTeX(LyXLex & lex)
+void BufferParams::readBulletsLaTeX(Lexer & lex)
 {
 	// The bullet class should be able to read this.
 	if (!lex.next()) return;

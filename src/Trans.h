@@ -22,7 +22,7 @@
 namespace lyx {
 
 
-class LyXLex;
+class Lexer;
 
 class TransManager;
 
@@ -53,7 +53,7 @@ private:
 	///
 	void freeKeymap();
 	///
-	int load(LyXLex &);
+	int load(Lexer &);
 	///
 	docstring const & match(char_type c);
 	///

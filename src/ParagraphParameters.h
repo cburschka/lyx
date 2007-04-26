@@ -29,7 +29,7 @@ namespace lyx {
 
 class BufferView;
 class LyXLength;
-class LyXLex;
+class Lexer;
 class Paragraph;
 class Spacing;
 
@@ -81,7 +81,7 @@ public:
 	void leftIndent(LyXLength const &);
 
 	/// read the parameters from a lex
-	void read(LyXLex & lex);
+	void read(Lexer & lex);
 
 	/// write out the parameters to a stream
 	void write(std::ostream & os) const;

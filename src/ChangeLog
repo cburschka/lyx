@@ -7043,12 +7043,12 @@
 
 	* bufferparams.h: add compressed var
 
-	* buffer_funcs.C (readFile): adjust for LyXLex change
+	* buffer_funcs.C (readFile): adjust for Lexer change
 	(newFile): ditto + simplify
 
 	* buffer.C (writeFile): handle writing of compressed files
 
-	* buffer.[Ch] (readFile): begin LyXLex here, remove one argument.
+	* buffer.[Ch] (readFile): begin Lexer here, remove one argument.
 	Check if the file is compressed and set a bufferparm if so.
 
 	* Makefile.am (lyx_LDADD): remove explicit -lz

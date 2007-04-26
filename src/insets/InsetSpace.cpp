@@ -17,7 +17,7 @@
 
 #include "debug.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
@@ -140,7 +140,7 @@ void InsetSpace::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetSpace::read(Buffer const &, LyXLex & lex)
+void InsetSpace::read(Buffer const &, Lexer & lex)
 {
 	lex.next();
 	string const command = lex.getString();

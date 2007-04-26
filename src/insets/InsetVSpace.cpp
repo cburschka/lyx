@@ -19,7 +19,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -83,7 +83,7 @@ void InsetVSpace::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetVSpace::read(Buffer const &, LyXLex & lex)
+void InsetVSpace::read(Buffer const &, Lexer & lex)
 {
 	BOOST_ASSERT(lex.isOK());
 	string vsp;
@@ -247,7 +247,7 @@ void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 		return;
 
 	istringstream data(in);
-	LyXLex lex(0,0);
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

@@ -16,7 +16,7 @@
 
 #include "layout.h"
 #include "LyXTextClass.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

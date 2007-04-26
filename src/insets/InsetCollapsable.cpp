@@ -24,7 +24,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LColor.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "FuncRequest.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
@@ -99,7 +99,7 @@ void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
+void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 {
 	bool token_found = false;
 	if (lex.isOK()) {

@@ -41,7 +41,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const &, LyXLex & lex);
+	void read(Buffer const &, Lexer & lex);
 
 	/** returns the number of rows (\n's) of generated tex code.
 	 #fragile == true# means, that the inset should take care about
@@ -89,7 +89,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	/// Read the inset native format
-	void readInsetGraphics(LyXLex & lex, std::string const & bufpath);
+	void readInsetGraphics(Lexer & lex, std::string const & bufpath);
 
 	/// Get the status message, depends on the image loading status.
 	std::string const statusMessage() const;

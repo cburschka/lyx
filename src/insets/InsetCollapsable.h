@@ -44,7 +44,7 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
-	void read(Buffer const &, LyXLex &);
+	void read(Buffer const &, Lexer &);
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

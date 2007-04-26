@@ -34,7 +34,7 @@
 #include "LyXAction.h"
 #include "LyX.h" // for lastfiles
 #include "LyXFunc.h"
-#include "LyXLex.h"
+#include "Lexer.h"
 #include "Paragraph.h"
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
@@ -210,7 +210,7 @@ Menu & Menu::addWithStatusCheck(MenuItem const & i)
 }
 
 
-Menu & Menu::read(LyXLex & lex)
+Menu & Menu::read(Lexer & lex)
 {
 	enum Menutags {
 		md_item = 1,
@@ -904,7 +904,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 }
 
 
-void MenuBackend::read(LyXLex & lex)
+void MenuBackend::read(Lexer & lex)
 {
 	enum Menutags {
 		md_menu = 1,
