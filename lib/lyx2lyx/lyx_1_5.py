@@ -732,7 +732,7 @@ def convert_lyxline(document):
         k = 0
         while i < len(document.body):
             i = find_token(document.body, "\\size " + fontsizes[n], i)
-            k = find_token(document.body, "\\lyxline",i)
+            k = find_token(document.body, "\\lyxline", i)
             # the corresponding fontsize command is always 2 lines before the \lyxline
             if (i != -1 and k == i+2):
                 document.body[i:i+1] = []
@@ -1257,6 +1257,32 @@ def revert_cv_textclass(document):
         document.textclass = "cv"
 
 
+def convert_tableborder(document):
+    # The problematic is: LyX double the table cell border as it ignores the "|" character in
+    # the cell arguments. A fix takes care of this and therefore the "|" has to be removed
+    i = 0
+    while i < len(document.body):
+        h = document.body[i].find("leftline=\"true\"", 0, len(document.body[i]))
+        k = document.body[i].find("|>{", 0, len(document.body[i]))
+        # the two tokens have to be in one line
+        if (h != -1 and k != -1):
+            # delete the "|"
+            document.body[i] = document.body[i][:k] + document.body[i][k+1:len(document.body[i])-1]
+        i = i + 1
+
+
+def revert_tableborder(document):
+    i = 0
+    while i < len(document.body):
+        h = document.body[i].find("leftline=\"true\"", 0, len(document.body[i]))
+        k = document.body[i].find(">{", 0, len(document.body[i]))
+        # the two tokens have to be in one line
+        if (h != -1 and k != -1):
+            # add the "|"
+            document.body[i] = document.body[i][:k] + '|' + document.body[i][k:]
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1280,9 +1306,11 @@ convert = [[246, []],
            [261, [convert_changes]],
            [262, []],
            [263, [normalize_language_name]],
-           [264, [convert_cv_textclass]]]
+           [264, [convert_cv_textclass]],
+           [265, [convert_tableborder]]]
 
-revert =  [[263, [revert_cv_textclass]],
+revert =  [[264, [revert_tableborder]],
+           [263, [revert_cv_textclass]],
            [262, [revert_language_name]],
            [261, [revert_ascii]],
            [260, []],
@@ -1305,5 +1333,4 @@ revert =  [[263, [revert_cv_textclass]],
 
 if __name__ == "__main__":
     pass
-
 

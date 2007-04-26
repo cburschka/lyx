@@ -1,5 +1,13 @@
 LyX file-format changes
 -----------------------
+
+2007-04-26  Uwe Stöhr  <uwestoehr@web.de>
+
+	* format incremented to 265: fix LyX's table border line handling
+	With the fix (see bug 1746) LyX now takes care if the user has entered
+	a "|" character in the argument field of tables. Therefore the "|"
+	character has to be removed when also a table border is set.
+
 2007-04-24  José Matos  <jamatos@lyx.org>
 
 	* format incremented to 264:
@@ -45,7 +53,7 @@ LyX file-format changes
 	     'xx \textbf{yy} zz'.
 	New: Spaces are always output with the font set by the user.
 
-2007-01-31  Uwe Stöhr
+2007-01-31  Uwe Stöhr  <uwestoehr@web.de>
 
 	* format incremented to 258: new \lyxline definition
 	Old:

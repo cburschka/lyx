@@ -835,14 +835,8 @@ bool Tabular::leftLine(idx_type cell, bool wholecolumn) const
 		return false;
 	if (!wholecolumn && isMultiColumn(cell) &&
 		(isFirstCellInRow(cell) || isMultiColumn(cell-1)))
-	{
-		if (cellinfo_of_cell(cell).align_special.empty())
-			return cellinfo_of_cell(cell).left_line;
-		return prefixIs(ltrim(cellinfo_of_cell(cell).align_special), '|');
-	}
-	if (column_info[column_of_cell(cell)].align_special.empty())
-		return column_info[column_of_cell(cell)].left_line;
-	return prefixIs(ltrim(column_info[column_of_cell(cell)].align_special), '|');
+		return cellinfo_of_cell(cell).left_line;
+	return column_info[column_of_cell(cell)].left_line;
 }
 
 
@@ -852,14 +846,8 @@ bool Tabular::rightLine(idx_type cell, bool wholecolumn) const
 		return false;
 	if (!wholecolumn && isMultiColumn(cell) &&
 		(isLastCellInRow(cell) || isMultiColumn(cell + 1)))
-	{
-		if (cellinfo_of_cell(cell).align_special.empty())
-			return cellinfo_of_cell(cell).right_line;
-		return suffixIs(rtrim(cellinfo_of_cell(cell).align_special), '|');
-	}
-	if (column_info[column_of_cell(cell)].align_special.empty())
-		return column_info[right_column_of_cell(cell)].right_line;
-	return suffixIs(rtrim(column_info[column_of_cell(cell)].align_special), '|');
+		return cellinfo_of_cell(cell).right_line;
+	return column_info[right_column_of_cell(cell)].right_line;
 }
 
 
@@ -2055,16 +2043,14 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 	}
 	if (isMultiColumn(cell)) {
 		os << "\\multicolumn{" << cells_in_multicolumn(cell) << "}{";
+		if (leftLine(cell) &&
+			(isFirstCellInRow(cell) ||
+			 (!isMultiColumn(cell - 1) && !leftLine(cell, true) &&
+			  !rightLine(cell - 1, true))))
+			os << '|';
 		if (!cellinfo_of_cell(cell).align_special.empty()) {
-			os << cellinfo_of_cell(cell).align_special << "}{";
+			os << cellinfo_of_cell(cell).align_special;
 		} else {
-			if (leftLine(cell) &&
-				(isFirstCellInRow(cell) ||
-				 (!isMultiColumn(cell - 1) && !leftLine(cell, true) &&
-				  !rightLine(cell - 1, true))))
-			{
-				os << '|';
-			}
 			if (!getPWidth(cell).zero()) {
 				switch (getVAlignment(cell)) {
 				case LYX_VALIGN_TOP:
@@ -2092,15 +2078,15 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 					os << 'c';
 					break;
 				}
-			}
-			if (rightLine(cell))
-				os << '|';
-			if (((cell + 1) < numberofcells) && !isFirstCellInRow(cell+1) &&
-				leftLine(cell+1))
-				os << '|';
-			os << "}{";
+			} // end if else !getPWidth
+		} // end if else !cellinfo_of_cell
+		if (rightLine(cell))
+			os << '|';
+		if (((cell + 1) < numberofcells) && !isFirstCellInRow(cell+1) &&
+			leftLine(cell+1))
+			os << '|';
+		os << "}{";
 		}
-	}
 	if (getUsebox(cell) == BOX_PARBOX) {
 		os << "\\parbox[";
 		switch (getVAlignment(cell)) {
@@ -2361,11 +2347,11 @@ int Tabular::latex(Buffer const & buf, odocstream & os,
 	else
 		os << "\\begin{tabular}{";
 	for (col_type i = 0; i < columns_; ++i) {
+		if (!use_booktabs && column_info[i].left_line)
+			os << '|';
 		if (!column_info[i].align_special.empty()) {
 			os << column_info[i].align_special;
 		} else {
-			if (!use_booktabs && column_info[i].left_line)
-				os << '|';
 			if (!column_info[i].p_width.zero()) {
 				switch (column_info[i].alignment) {
 				case LYX_ALIGN_LEFT:
@@ -2410,10 +2396,10 @@ int Tabular::latex(Buffer const & buf, odocstream & os,
 					os << 'c';
 					break;
 				}
-			}
-			if (!use_booktabs && column_info[i].right_line)
-				os << '|';
-		}
+			} // end if else !column_info[i].p_width
+		} // end if else !column_info[i].align_special
+		if (!use_booktabs && column_info[i].right_line)
+			os << '|';
 	}
 	os << "}\n";
 	++ret;
