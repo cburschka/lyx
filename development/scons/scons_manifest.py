@@ -959,7 +959,7 @@ src_header_files = Split('''
     BufferView.h
     Bullet.h
     Chktex.h
-    color.h
+    Color.h
     ConverterCache.h
     CutAndPaste.h
     DepTable.h
@@ -968,7 +968,6 @@ src_header_files = Split('''
     FontIterator.h
     FuncStatus.h
     InsetList.h
-    LColor.h
     LaTeX.h
     LaTeXFeatures.h
     LyXAction.h
@@ -1079,7 +1078,7 @@ src_pre_files = Split('''
     BufferView.cpp
     Bullet.cpp
     Chktex.cpp
-    color.cpp
+    Color.cpp
     ConverterCache.cpp
     CutAndPaste.cpp
     DepTable.cpp
@@ -1088,7 +1087,6 @@ src_pre_files = Split('''
     FontIterator.cpp
     FuncStatus.cpp
     InsetList.cpp
-    LColor.cpp
     LaTeX.cpp
     LaTeXFeatures.cpp
     LyXAction.cpp
