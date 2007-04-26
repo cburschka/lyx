@@ -19,9 +19,17 @@
 
 namespace lyx {
 
-/// Container for all kind of Paragraphs used in Lyx.
-typedef RandomAccessList<Paragraph> ParagraphList;
-
+/// Container for all kind of Paragraphs used in LyX.
+class ParagraphList : public RandomAccessList<Paragraph> {
+public:
+	///
+	ParagraphList() {}
+	///
+	template<class InputIterator>
+	ParagraphList(InputIterator first, InputIterator last)
+		: RandomAccessList<Paragraph>(first, last)
+	{}
+};
 
 } // namespace lyx
 

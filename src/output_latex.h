@@ -12,8 +12,6 @@
 #ifndef OUTPUT_LATEX_H
 #define OUTPUT_LATEX_H
 
-#include "ParagraphList_fwd.h"
-
 #include "support/docstream.h"
 
 
@@ -22,6 +20,8 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class Encoding;
+class Paragraph;
+class ParagraphList;
 class OutputParams;
 class TexRow;
 

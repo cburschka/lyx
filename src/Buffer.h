@@ -16,7 +16,6 @@
 #include "InsetList.h"
 
 #include "DocIterator.h"
-#include "ParagraphList_fwd.h"
 
 #include "support/FileName.h"
 #include "support/limited_stack.h"
@@ -52,11 +51,12 @@ class MacroData;
 class OutputParams;
 class ParConstIterator;
 class ParIterator;
+class ParagraphList;
+class StableDocIterator;
 class TeXErrors;
 class TexRow;
 class TocBackend;
 class Undo;
-class StableDocIterator;
 
 
 /** The buffer object.

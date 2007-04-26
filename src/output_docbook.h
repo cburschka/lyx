@@ -13,16 +13,13 @@
 #ifndef OUTPUT_DOCBOOK_H
 #define OUTPUT_DOCBOOK_H
 
-#include "ParagraphList_fwd.h"
 #include "support/docstream.h"
-
-#include <iosfwd>
-
 
 namespace lyx {
 
 class Buffer;
 class OutputParams;
+class ParagraphList;
 
 ///
 void docbookParagraphs(ParagraphList const & subset,

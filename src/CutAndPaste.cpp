@@ -357,9 +357,11 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	ParagraphList copy_pars(boost::next(pars.begin(), startpit),
 				boost::next(pars.begin(), endpit + 1));
 
-	// Remove the end of the last paragraph; afterwards, remove the beginning
-	// of the first paragraph. Keep this order - there may only be one paragraph!
-	// Do not track deletions here; this is an internal action not visible to the user
+	// Remove the end of the last paragraph; afterwards, remove the
+	// beginning of the first paragraph. Keep this order - there may only
+	// be one paragraph!  Do not track deletions here; this is an internal
+	// action not visible to the user
+
 	Paragraph & back = copy_pars.back();
 	back.eraseChars(end, back.size(), false);
 	Paragraph & front = copy_pars.front();

@@ -14,8 +14,6 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
-#include "ParagraphList_fwd.h"
-
 #include "support/docstring.h"
 
 #include <vector>
@@ -27,6 +25,7 @@ class ErrorList;
 class InsetText;
 class LyXTextClass;
 class LCursor;
+class ParagraphList;
 
 namespace cap {
 

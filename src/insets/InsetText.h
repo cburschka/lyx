@@ -16,7 +16,6 @@
 #include "RowList_fwd.h"
 #include "LyXFont.h"
 #include "LyXText.h"
-#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 
@@ -31,6 +30,7 @@ class BufferView;
 class CursorSlice;
 class Dimension;
 class LColor_color;
+class ParagraphList;
 
 
 /**
@@ -43,8 +43,6 @@ public:
 	explicit InsetText(BufferParams const &);
 	///
 	InsetText();
-	///
-	virtual ~InsetText() {}
 
 	/// empty inset to empty par
 	void clear();

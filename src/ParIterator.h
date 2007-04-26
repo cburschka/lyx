@@ -13,21 +13,17 @@
 #define PARITERATOR_H
 
 #include "DocIterator.h"
-#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
-
-#include <boost/optional.hpp>
 
 #include <vector>
 
 
 namespace lyx {
 
-
-
 class InsetBase;
 class LyXText;
+class ParagraphList;
 
 
 class ParIterator : public std::iterator<std::forward_iterator_tag, Paragraph>,
@@ -43,7 +39,6 @@ public:
 
 	///
 	ParIterator() : DocIterator() {}
-
 
 	///
 	ParIterator(InsetBase &, pit_type pit);

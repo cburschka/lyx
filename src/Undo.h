@@ -18,7 +18,6 @@
 
 #include "DocIterator.h"
 #include "BufferParams.h"
-#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 
@@ -32,6 +31,7 @@ class BufferView;
 class DocIterator;
 class LCursor;
 class MathArray;
+class ParagraphList;
 
 
 /**
