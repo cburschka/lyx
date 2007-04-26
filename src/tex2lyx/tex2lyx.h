@@ -13,7 +13,7 @@
 #ifndef TEX2LYX_H
 #define TEX2LYX_H
 
-#include "texparser.h"
+#include "Parser.h"
 #include "LyXTextClass.h"
 
 #include <iosfwd>
@@ -28,7 +28,7 @@ namespace support { class FileName; }
 
 class Context;
 
-/// in preamble.C
+/// in preamble.cpp
 LyXTextClass const parse_preamble(Parser & p, std::ostream & os, std::string const & forceclass);
 
 /// used packages with options
@@ -52,16 +52,16 @@ void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
 			 bool outer, Context const & context);
 
 
-/// in math.C
+/// in math.cpp
 void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 
 
-/// in table.C
+/// in table.cpp
 void handle_tabular(Parser & p, std::ostream & os, bool is_long_tabular,
 		    Context & context);
 
 
-/// in tex2lyx.C
+/// in tex2lyx.cpp
 std::string const trim(std::string const & a, char const * p = " \t\n\r");
 
 void split(std::string const & s, std::vector<std::string> & result,

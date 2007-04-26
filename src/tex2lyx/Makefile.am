@@ -7,8 +7,8 @@ DISTCLEANFILES += tex2lyx.1 $(LINKED_FILES)
 #noinst_LTLIBRARIES = libtexparser.la
 #
 #libtexparser_la_SOURCES = \
-#	texparser.C \
-#	texparser.h
+#	Parser.cpp \
+#	Parser.h
 #
 #tex2lyx_LDADD = libtexparser.la
 
@@ -38,19 +38,19 @@ tex2lyx_SOURCES = \
 	$(LINKED_FILES) \
 	Spacing.h \
 	boost.cpp \
-	context.C \
-	context.h \
+	Context.cpp \
+	Context.h \
 	gettext.cpp \
 	lengthcommon.cpp \
 	LyXFont.cpp \
 	LyXFont.h \
-	texparser.C \
-	texparser.h \
-	tex2lyx.C \
+	Parser.cpp \
+	Parser.h \
+	tex2lyx.cpp \
 	tex2lyx.h \
-	preamble.C \
-	math.C \
-	table.C \
+	preamble.cpp \
+	math.cpp \
+	table.cpp \
 	text.cpp
 
 tex2lyx_LDADD = \

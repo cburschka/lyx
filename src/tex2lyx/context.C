@@ -1,5 +1,5 @@
 /**
- * \file context.C
+ * \file Context.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #include <iostream>
 
 #include "support/lstrings.h"
-#include "context.h"
+#include "Context.h"
 
 
 namespace lyx {

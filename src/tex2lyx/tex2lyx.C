@@ -1,5 +1,5 @@
 /**
- * \file tex2lyx.C
+ * \file tex2lyx.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "tex2lyx.h"
-#include "context.h"
+#include "Context.h"
 
 #include "debug.h"
 #include "LyXTextClass.h"

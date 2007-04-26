@@ -19,15 +19,15 @@ set(LINKED_FILES
 
 set(tex2lyx_sources
 	${TOP_SRC_DIR}/src/tex2lyx/boost.cpp
-	${TOP_SRC_DIR}/src/tex2lyx/context.C
+	${TOP_SRC_DIR}/src/tex2lyx/Context.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/gettext.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/LyXFont.cpp
-	${TOP_SRC_DIR}/src/tex2lyx/texparser.C
-	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.C
-	${TOP_SRC_DIR}/src/tex2lyx/preamble.C
-	${TOP_SRC_DIR}/src/tex2lyx/math.C
-	${TOP_SRC_DIR}/src/tex2lyx/table.C
+	${TOP_SRC_DIR}/src/tex2lyx/Parser.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/preamble.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/math.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/table.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/text.cpp
 )
 
@@ -35,9 +35,9 @@ set(tex2lyx_headers
 	${TOP_SRC_DIR}/src/LyXLayout.h
 	${TOP_SRC_DIR}/src/LyXTextClass.h
 	${TOP_SRC_DIR}/src/tex2lyx/Spacing.h
-	${TOP_SRC_DIR}/src/tex2lyx/context.h
+	${TOP_SRC_DIR}/src/tex2lyx/Context.h
 	${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h
-	${TOP_SRC_DIR}/src/tex2lyx/texparser.h
+	${TOP_SRC_DIR}/src/tex2lyx/Parser.h
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.h
 )
 

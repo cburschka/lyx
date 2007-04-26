@@ -925,10 +925,10 @@ src_client_files = Split('''
 
 src_tex2lyx_header_files = Split('''
     Spacing.h
-    context.h
+    Context.h
     LyXFont.h
     tex2lyx.h
-    texparser.h
+    Parser.h
 ''')
 
 
@@ -936,7 +936,7 @@ src_tex2lyx_files = Split('''
     FloatList.cpp
     Floating.cpp
     boost.cpp
-    context.C
+    Context.cpp
     Counters.cpp
     gettext.cpp
     lengthcommon.cpp
@@ -944,11 +944,11 @@ src_tex2lyx_files = Split('''
     LyXLayout.cpp
     LyXLex.cpp
     LyXTextClass.cpp
-    math.C
-    preamble.C
-    table.C
-    tex2lyx.C
-    texparser.C
+    math.cpp
+    preamble.cpp
+    table.cpp
+    tex2lyx.cpp
+    Parser.cpp
     text.cpp
 ''')
 

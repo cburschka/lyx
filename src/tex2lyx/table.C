@@ -1,5 +1,5 @@
 /**
- * \file table.C
+ * \file table.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -36,7 +36,7 @@ using std::string;
 using std::vector;
 
 
-// filled in preamble.C
+// filled in preamble.cpp
 std::map<char, int> special_columns;
 
 
