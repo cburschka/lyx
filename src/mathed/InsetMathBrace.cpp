@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathBrace.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "LColor.h"
@@ -32,7 +32,7 @@ InsetMathBrace::InsetMathBrace()
 {}
 
 
-InsetMathBrace::InsetMathBrace(MathArray const & ar)
+InsetMathBrace::InsetMathBrace(MathData const & ar)
 	: InsetMathNest(1)
 {
 	cell(0) = ar;

@@ -23,7 +23,7 @@ public:
 	///
 	InsetMathPar() {}
 	///
-	InsetMathPar(MathArray const & ar);
+	InsetMathPar(MathData const & ar);
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

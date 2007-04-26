@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathMakebox.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 

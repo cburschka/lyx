@@ -404,7 +404,7 @@ MathAtom createInsetMath(docstring const & s)
 }
 
 
-bool createInsetMath_fromDialogStr(docstring const & str, MathArray & ar)
+bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 {
 	// An example str:
 	// "ref LatexCommand ref\nreference \"sec:Title\"\n\\end_inset\n\n";

@@ -324,12 +324,12 @@ public:
 	///
 	bool parse(MathAtom & at);
 	///
-	void parse(MathArray & array, unsigned flags, mode_type mode);
+	void parse(MathData & array, unsigned flags, mode_type mode);
 	///
 	void parse1(InsetMathGrid & grid, unsigned flags, mode_type mode,
 		bool numbered);
 	///
-	MathArray parse(unsigned flags, mode_type mode);
+	MathData parse(unsigned flags, mode_type mode);
 	///
 	int lineno() const { return lineno_; }
 	///
@@ -613,7 +613,7 @@ void Parser::error(string const & msg)
 bool Parser::parse(MathAtom & at)
 {
 	skipSpaces();
-	MathArray ar;
+	MathData ar;
 	parse(ar, false, InsetMath::UNDECIDED_MODE);
 	if (ar.size() != 1 || ar.front()->getType() == hullNone) {
 		lyxerr << "unusual contents found: " << ar << endl;
@@ -666,15 +666,15 @@ docstring Parser::parse_verbatim_item()
 }
 
 
-MathArray Parser::parse(unsigned flags, mode_type mode)
+MathData Parser::parse(unsigned flags, mode_type mode)
 {
-	MathArray ar;
+	MathData ar;
 	parse(ar, flags, mode);
 	return ar;
 }
 
 
-void Parser::parse(MathArray & array, unsigned flags, mode_type mode)
+void Parser::parse(MathData & array, unsigned flags, mode_type mode)
 {
 	InsetMathGrid grid(1, 1);
 	parse1(grid, flags, mode, false);
@@ -695,7 +695,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 	int limits = 0;
 	InsetMathGrid::row_type cellrow = 0;
 	InsetMathGrid::col_type cellcol = 0;
-	MathArray * cell = &grid.cell(grid.index(cellrow, cellcol));
+	MathData * cell = &grid.cell(grid.index(cellrow, cellcol));
 
 	if (grid.asHullInset())
 		grid.asHullInset()->numbered(cellrow, numbered);
@@ -746,7 +746,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		if (flags & FLAG_OPTION) {
 			if (t.cat() == catOther && t.character() == '[') {
-				MathArray ar;
+				MathData ar;
 				parse(ar, FLAG_BRACK_LAST, mode);
 				cell->append(ar);
 			} else {
@@ -809,7 +809,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new InsetMathChar(t.character())));
 
 		else if (t.cat() == catBegin) {
-			MathArray ar;
+			MathData ar;
 			parse(ar, FLAG_BRACE_LAST, mode);
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
@@ -938,11 +938,11 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			}
 
-			MathArray ar1;
+			MathData ar1;
 			parse(ar1, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
 
 			// we cannot handle recursive stuff at all
-			//MathArray test;
+			//MathData test;
 			//test.push_back(createInsetMath(name));
 			//if (ar1.contains(test)) {
 			//	error("we cannot handle recursive macros at all.");
@@ -951,7 +951,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			// is a version for display attached?
 			skipSpaces();
-			MathArray ar2;
+			MathData ar2;
 			if (nextToken().cat() == catBegin)
 				parse(ar2, FLAG_ITEM, InsetMath::MATH_MODE);
 
@@ -1036,7 +1036,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 #if 0
 		else if (t.cs() == "multicolumn") {
 			// extract column count and insert dummy cells
-			MathArray count;
+			MathData count;
 			parse(count, FLAG_ITEM, mode);
 			int cols = 1;
 			if (!extractNumber(count, cols)) {
@@ -1056,7 +1056,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			grid.cellinfo(grid.index(cellrow, cellcol)).dummy_ = false;
 
 			// read special alignment
-			MathArray align;
+			MathData align;
 			parse(align, FLAG_ITEM, mode);
 			//grid.cellinfo(grid.index(cellrow, cellcol)).align_ = extractString(align);
 
@@ -1086,7 +1086,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "sqrt") {
-			MathArray ar;
+			MathData ar;
 			parse(ar, FLAG_OPTION, mode);
 			if (ar.size()) {
 				cell->push_back(MathAtom(new InsetMathRoot));
@@ -1118,7 +1118,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// can't handle \|
 			// FIXME: fix this in InsetMathDelim itself!
 			docstring const l = tl.cs() == "|" ? from_ascii("Vert") : tl.asString();
-			MathArray ar;
+			MathData ar;
 			parse(ar, FLAG_RIGHT, mode);
 			if (!good())
 				break;
@@ -1274,7 +1274,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "label") {
 			// FIXME: This is swallowed in inline formulas
 			docstring label = parse_verbatim_item();
-			MathArray ar;
+			MathData ar;
 			asArray(label, ar);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
@@ -1343,7 +1343,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 #if 0
 		else if (t.cs() == "infer") {
-			MathArray ar;
+			MathData ar;
 			parse(ar, FLAG_OPTION, mode);
 			cell->push_back(createInsetMath(t.cs()));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
@@ -1427,7 +1427,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				//lyxerr << "default creation: m2: " << m << endl;
 				InsetMath::idx_type start = 0;
 				// this fails on \bigg[...\bigg]
-				//MathArray opt;
+				//MathData opt;
 				//parse(opt, FLAG_OPTION, InsetMath::VERBATIM_MODE);
 				//if (opt.size()) {
 				//	start = 1;
@@ -1454,13 +1454,13 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 } // anonymous namespace
 
 
-void mathed_parse_cell(MathArray & ar, docstring const & str)
+void mathed_parse_cell(MathData & ar, docstring const & str)
 {
 	Parser(str).parse(ar, 0, InsetMath::MATH_MODE);
 }
 
 
-void mathed_parse_cell(MathArray & ar, istream & is)
+void mathed_parse_cell(MathData & ar, istream & is)
 {
 	Parser(is).parse(ar, 0, InsetMath::MATH_MODE);
 }

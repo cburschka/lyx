@@ -12,7 +12,7 @@
 
 #include "InsetMathTFrac.h"
 
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 
 #include "LaTeXFeatures.h"

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file MathArray.h
+ * \file MathData.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -33,7 +33,7 @@ class TextMetricsInfo;
 class TextPainter;
 
 
-class MathArray : private std::vector<MathAtom> {
+class MathData : private std::vector<MathAtom> {
 public:
 	/// re-use inhertited stuff
 	typedef std::vector<MathAtom> base_type;
@@ -56,16 +56,16 @@ public:
 
 public:
 	///
-	MathArray() {}
+	MathData() {}
 	///
-	MathArray(const_iterator from, const_iterator to);
+	MathData(const_iterator from, const_iterator to);
 	///
-	void append(MathArray const & ar);
+	void append(MathData const & ar);
 
 	/// inserts single atom at position pos
 	void insert(size_type pos, MathAtom const & at);
 	/// inserts multiple atoms at position pos
-	void insert(size_type pos, MathArray const & ar);
+	void insert(size_type pos, MathData const & ar);
 
 	/// erase range from pos1 to pos2
 	void erase(iterator pos1, iterator pos2);
@@ -83,18 +83,18 @@ public:
 	///
 	void replace(ReplaceData &);
 	///
-	void substitute(MathArray const & m);
+	void substitute(MathData const & m);
 
 	/// looks for exact match
-	bool match(MathArray const & ar) const;
+	bool match(MathData const & ar) const;
 	/// looks for inclusion match starting at pos
-	bool matchpart(MathArray const & ar, pos_type pos) const;
+	bool matchpart(MathData const & ar, pos_type pos) const;
 	/// looks for containment, return == size mean not found
-	size_type find(MathArray const & ar) const;
+	size_type find(MathData const & ar) const;
 	/// looks for containment, return == size mean not found
-	size_type find_last(MathArray const & ar) const;
+	size_type find_last(MathData const & ar) const;
 	///
-	bool contains(MathArray const & ar) const;
+	bool contains(MathData const & ar) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
@@ -160,7 +160,7 @@ public:
 	/// superscript kerning
 	int kerning() const { return kerning_; }
 	/// 
-	void swap(MathArray & ar) { base_type::swap(ar); }
+	void swap(MathData & ar) { base_type::swap(ar); }
 
 protected:
 	/// cached dimensions of cell
@@ -174,13 +174,13 @@ protected:
 
 private:
 	/// is this an exact match at this position?
-	bool find1(MathArray const & ar, size_type pos) const;
+	bool find1(MathData const & ar, size_type pos) const;
 };
 
 ///
-std::ostream & operator<<(std::ostream & os, MathArray const & ar);
+std::ostream & operator<<(std::ostream & os, MathData const & ar);
 ///
-odocstream & operator<<(odocstream & os, MathArray const & ar);
+odocstream & operator<<(odocstream & os, MathData const & ar);
 
 
 } // namespace lyx

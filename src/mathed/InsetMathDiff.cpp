@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathDiff.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "debug.h"
 
@@ -33,7 +33,7 @@ auto_ptr<InsetBase> InsetMathDiff::doClone() const
 }
 
 
-void InsetMathDiff::addDer(MathArray const & der)
+void InsetMathDiff::addDer(MathData const & der)
 {
 	cells_.push_back(der);
 }

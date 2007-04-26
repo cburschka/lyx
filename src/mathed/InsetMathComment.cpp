@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathComment.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "support/std_ostream.h"

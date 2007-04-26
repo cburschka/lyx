@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMath.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathExtern.h"
 #include "MathStream.h"
 
@@ -36,7 +36,7 @@ NormalStream & operator<<(NormalStream & ns, MathAtom const & at)
 }
 
 
-NormalStream & operator<<(NormalStream & ns, MathArray const & ar)
+NormalStream & operator<<(NormalStream & ns, MathData const & ar)
 {
 	normalize(ar, ns);
 	return ns;
@@ -139,7 +139,7 @@ WriteStream & operator<<(WriteStream & ws, MathAtom const & at)
 }
 
 
-WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
+WriteStream & operator<<(WriteStream & ws, MathData const & ar)
 {
 	write(ar, ws);
 	return ws;
@@ -202,7 +202,7 @@ MathStream & operator<<(MathStream & ms, MathAtom const & at)
 }
 
 
-MathStream & operator<<(MathStream & ms, MathArray const & ar)
+MathStream & operator<<(MathStream & ms, MathData const & ar)
 {
 	mathmlize(ar, ms);
 	return ms;
@@ -266,7 +266,7 @@ MapleStream & operator<<(MapleStream & ms, MathAtom const & at)
 }
 
 
-MapleStream & operator<<(MapleStream & ms, MathArray const & ar)
+MapleStream & operator<<(MapleStream & ms, MathData const & ar)
 {
 	maple(ar, ms);
 	return ms;
@@ -318,7 +318,7 @@ MaximaStream & operator<<(MaximaStream & ms, MathAtom const & at)
 }
 
 
-MaximaStream & operator<<(MaximaStream & ms, MathArray const & ar)
+MaximaStream & operator<<(MaximaStream & ms, MathData const & ar)
 {
 	maxima(ar, ms);
 	return ms;
@@ -370,7 +370,7 @@ MathematicaStream & operator<<(MathematicaStream & ms, MathAtom const & at)
 }
 
 
-MathematicaStream & operator<<(MathematicaStream & ms, MathArray const & ar)
+MathematicaStream & operator<<(MathematicaStream & ms, MathData const & ar)
 {
 	mathematica(ar, ms);
 	return ms;
@@ -422,7 +422,7 @@ OctaveStream & operator<<(OctaveStream & ns, MathAtom const & at)
 }
 
 
-OctaveStream & operator<<(OctaveStream & ns, MathArray const & ar)
+OctaveStream & operator<<(OctaveStream & ns, MathData const & ar)
 {
 	octave(ar, ns);
 	return ns;

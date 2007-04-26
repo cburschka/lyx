@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathLefteqn.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "support/std_ostream.h"
 
 

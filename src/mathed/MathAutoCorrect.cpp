@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "MathAutoCorrect.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMath.h"
 #include "MathSupport.h"
 #include "MathParser.h"
@@ -62,7 +62,7 @@ bool Correction::read(idocstream & is)
 		return false;
 	if (s2.size() != 1)
 		return false;
-	MathArray ar1, ar3;
+	MathData ar1, ar3;
 	mathed_parse_cell(ar1, s1);
 	mathed_parse_cell(ar3, s3);
 	if (ar1.size() != 1 || ar3.size() != 1)

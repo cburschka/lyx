@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathFBox.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "LColor.h"
 

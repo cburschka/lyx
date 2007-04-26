@@ -10,7 +10,7 @@
 
 // This file contains most of the magic that extracts "context
 // information" from the unstructered layout-oriented stuff in an
-// MathArray.
+// MathData.
 
 #include <config.h>
 
@@ -18,7 +18,7 @@
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathDelim.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMathDiff.h"
 #include "InsetMathExFunc.h"
 #include "InsetMathExInt.h"
@@ -72,14 +72,14 @@ static size_t const npos = lyx::docstring::npos;
 typedef bool TestItemFunc(MathAtom const &);
 
 // define a function for replacing subexpressions
-typedef MathAtom ReplaceArgumentFunc(const MathArray & ar);
+typedef MathAtom ReplaceArgumentFunc(const MathData & ar);
 
 
 
 // try to extract a super/subscript
 // modify iterator position to point behind the thing
-bool extractScript(MathArray & ar,
-	MathArray::iterator & pos, MathArray::iterator last, bool superscript)
+bool extractScript(MathData & ar,
+	MathData::iterator & pos, MathData::iterator last, bool superscript)
 {
 	// nothing to get here
 	if (pos == last)
@@ -102,8 +102,8 @@ bool extractScript(MathArray & ar,
 
 // try to extract an "argument" to some function.
 // returns position behind the argument
-MathArray::iterator extractArgument(MathArray & ar,
-	MathArray::iterator pos, MathArray::iterator last, bool function = false)
+MathData::iterator extractArgument(MathData & ar,
+	MathData::iterator pos, MathData::iterator last, bool function = false)
 {
 	// nothing to get here
 	if (pos == last)
@@ -113,9 +113,9 @@ MathArray::iterator extractArgument(MathArray & ar,
 	if ((*pos)->asDelimInset()) {
 		// leave out delimiters if this is a function argument
 		if (function) {
-			MathArray const & arg = (*pos)->asDelimInset()->cell(0);
-			MathArray::const_iterator cur = arg.begin();
-			MathArray::const_iterator end = arg.end();
+			MathData const & arg = (*pos)->asDelimInset()->cell(0);
+			MathData::const_iterator cur = arg.begin();
+			MathData::const_iterator end = arg.end();
 			while (cur != end)
 				ar.push_back(*cur++);
 		} else
@@ -146,7 +146,7 @@ MathArray::iterator extractArgument(MathArray & ar,
 
 	// but it might be more than that.
 	// FIXME: not implemented
-	//for (MathArray::iterator it = pos + 1; it != last; ++it) {
+	//for (MathData::iterator it = pos + 1; it != last; ++it) {
 	//	// always take the first thing, no matter
 	//	if (it == pos) {
 	//		ar.push_back(*it);
@@ -160,7 +160,7 @@ MathArray::iterator extractArgument(MathArray & ar,
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
 docstring charSequence
-	(MathArray::const_iterator it, MathArray::const_iterator end)
+	(MathData::const_iterator it, MathData::const_iterator end)
 {
 	docstring s;
 	for (; it != end && (*it)->asCharInset(); ++it)
@@ -169,7 +169,7 @@ docstring charSequence
 }
 
 
-void extractStrings(MathArray & ar)
+void extractStrings(MathData & ar)
 {
 	//lyxerr << "\nStrings from: " << ar << endl;
 	for (size_t i = 0; i < ar.size(); ++i) {
@@ -183,14 +183,14 @@ void extractStrings(MathArray & ar)
 }
 
 
-void extractMatrices(MathArray & ar)
+void extractMatrices(MathData & ar)
 {
 	//lyxerr << "\nMatrices from: " << ar << endl;
 	// first pass for explicitly delimited stuff
 	for (size_t i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asDelimInset())
 			continue;
-		MathArray const & arr = ar[i]->asDelimInset()->cell(0);
+		MathData const & arr = ar[i]->asDelimInset()->cell(0);
 		if (arr.size() != 1)
 			continue;
 		if (!arr.front()->asGridInset())
@@ -246,7 +246,7 @@ bool extractFunctionName(MathAtom const & at, docstring & str)
 	}
 	if (at->asFontInset() && at->name() == "mathrm") {
 		// assume it is well known...
-		MathArray const & ar = at->asFontInset()->cell(0);
+		MathData const & ar = at->asFontInset()->cell(0);
 		str = charSequence(ar.begin(), ar.end());
 		return ar.size() == str.size();
 	}
@@ -255,7 +255,7 @@ bool extractFunctionName(MathAtom const & at, docstring & str)
 
 
 // convert this inset somehow to a number
-bool extractNumber(MathArray const & ar, int & i)
+bool extractNumber(MathData const & ar, int & i)
 {
 	idocstringstream is(charSequence(ar.begin(), ar.end()));
 	is >> i;
@@ -263,7 +263,7 @@ bool extractNumber(MathArray const & ar, int & i)
 }
 
 
-bool extractNumber(MathArray const & ar, double & d)
+bool extractNumber(MathData const & ar, double & d)
 {
 	idocstringstream is(charSequence(ar.begin(), ar.end()));
 	is >> d;
@@ -284,9 +284,9 @@ bool testString(MathAtom const & at, char const * const str)
 }
 
 // search end of nested sequence
-MathArray::iterator endNestSearch(
-	MathArray::iterator it,
-	MathArray::iterator last,
+MathData::iterator endNestSearch(
+	MathData::iterator it,
+	MathData::iterator last,
 	TestItemFunc testOpen,
 	TestItemFunc testClose
 )
@@ -305,7 +305,7 @@ MathArray::iterator endNestSearch(
 
 // replace nested sequences by a real Insets
 void replaceNested(
-	MathArray & ar,
+	MathData & ar,
 	TestItemFunc testOpen,
 	TestItemFunc testClose,
 	ReplaceArgumentFunc replaceArg
@@ -319,13 +319,13 @@ void replaceNested(
 			continue;
 
 		// search end of sequence
-		MathArray::iterator it = ar.begin() + i;
-		MathArray::iterator jt = endNestSearch(it, ar.end(), testOpen, testClose);
+		MathData::iterator it = ar.begin() + i;
+		MathData::iterator jt = endNestSearch(it, ar.end(), testOpen, testClose);
 		if (jt == ar.end())
 			continue;
 
 		// replace the original stuff by the new inset
-		ar[i] = replaceArg(MathArray(it + 1, jt));
+		ar[i] = replaceArg(MathData(it + 1, jt));
 		ar.erase(it + 1, jt + 1);
 	}
 }
@@ -337,7 +337,7 @@ void replaceNested(
 // front of super...
 //
 
-void splitScripts(MathArray & ar)
+void splitScripts(MathData & ar)
 {
 	//lyxerr << "\nScripts from: " << ar << endl;
 	for (size_t i = 0; i < ar.size(); ++i) {
@@ -367,9 +367,9 @@ void splitScripts(MathArray & ar)
 
 		// if we don't have a subscript, get rid of the ScriptInset
 		if (!script->hasDown()) {
-			MathArray arg(p->nuc());
-			MathArray::const_iterator it = arg.begin();
-			MathArray::const_iterator et = arg.end();
+			MathData arg(p->nuc());
+			MathData::const_iterator it = arg.begin();
+			MathData::const_iterator et = arg.end();
 			ar.erase(i);
 			while (it != et)
 				ar.insert(i++, *it++);
@@ -387,7 +387,7 @@ void splitScripts(MathArray & ar)
 // extract exp(...)
 //
 
-void extractExps(MathArray & ar)
+void extractExps(MathData & ar)
 {
 	//lyxerr << "\nExps from: " << ar << endl;
 	for (size_t i = 0; i + 1 < ar.size(); ++i) {
@@ -411,10 +411,10 @@ void extractExps(MathArray & ar)
 //
 // extract det(...)  from |matrix|
 //
-void extractDets(MathArray & ar)
+void extractDets(MathData & ar)
 {
 	//lyxerr << "\ndet from: " << ar << endl;
-	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
+	for (MathData::iterator it = ar.begin(); it != ar.end(); ++it) {
 		InsetMathDelim const * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
@@ -438,7 +438,7 @@ bool isDigitOrSimilar(char_type c)
 
 // returns sequence of digits
 docstring digitSequence
-	(MathArray::const_iterator it, MathArray::const_iterator end)
+	(MathData::const_iterator it, MathData::const_iterator end)
 {
 	docstring s;
 	for (; it != end && (*it)->asCharInset(); ++it) {
@@ -450,7 +450,7 @@ docstring digitSequence
 }
 
 
-void extractNumbers(MathArray & ar)
+void extractNumbers(MathData & ar)
 {
 	//lyxerr << "\nNumbers from: " << ar << endl;
 	for (size_t i = 0; i < ar.size(); ++i) {
@@ -485,7 +485,7 @@ bool testCloseParen(MathAtom const & at)
 }
 
 
-MathAtom replaceParenDelims(const MathArray & ar)
+MathAtom replaceParenDelims(const MathData & ar)
 {
 	return MathAtom(new InsetMathDelim(from_ascii("("), from_ascii(")"), ar));
 }
@@ -503,14 +503,14 @@ bool testCloseBracket(MathAtom const & at)
 }
 
 
-MathAtom replaceBracketDelims(const MathArray & ar)
+MathAtom replaceBracketDelims(const MathData & ar)
 {
 	return MathAtom(new InsetMathDelim(from_ascii("["), from_ascii("]"), ar));
 }
 
 
 // replace '('...')' and '['...']' sequences by a real InsetMathDelim
-void extractDelims(MathArray & ar)
+void extractDelims(MathData & ar)
 {
 	//lyxerr << "\nDelims from: " << ar << endl;
 	replaceNested(ar, testOpenParen, testCloseParen, replaceParenDelims);
@@ -527,7 +527,7 @@ void extractDelims(MathArray & ar)
 
 // replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real InsetMathExFunc
 // assume 'extractDelims' ran before
-void extractFunctions(MathArray & ar)
+void extractFunctions(MathData & ar)
 {
 	// we need at least two items...
 	if (ar.size() < 2)
@@ -535,8 +535,8 @@ void extractFunctions(MathArray & ar)
 
 	//lyxerr << "\nFunctions from: " << ar << endl;
 	for (size_t i = 0; i + 1 < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
-		MathArray::iterator jt = it + 1;
+		MathData::iterator it = ar.begin() + i;
+		MathData::iterator jt = it + 1;
 
 		docstring name;
 		// is it a function?
@@ -559,14 +559,14 @@ void extractFunctions(MathArray & ar)
 
 		// do we have an exponent like in
 		// 'sin' '^2' 'x' -> 'sin(x)' '^2'
-		MathArray exp;
+		MathData exp;
 		extractScript(exp, jt, ar.end(), true);
 
 		// create a proper inset as replacement
 		auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(name));
 
 		// jt points to the "argument". Get hold of this.
-		MathArray::iterator st = extractArgument(p->cell(0), jt, ar.end(), true);
+		MathData::iterator st = extractArgument(p->cell(0), jt, ar.end(), true);
 
 		// replace the function name by a real function inset
 		*it = MathAtom(p.release());
@@ -622,7 +622,7 @@ bool testIntDiff(MathAtom const & at)
 
 // replace '\int' ['_^'] x 'd''x'(...)' sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
-void extractIntegrals(MathArray & ar)
+void extractIntegrals(MathData & ar)
 {
 	// we need at least three items...
 	if (ar.size() < 3)
@@ -630,10 +630,10 @@ void extractIntegrals(MathArray & ar)
 
 	//lyxerr << "\nIntegrals from: " << ar << endl;
 	for (size_t i = 0; i + 1 < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
+		MathData::iterator it = ar.begin() + i;
 
 		// search 'd'
-		MathArray::iterator jt =
+		MathData::iterator jt =
 			endNestSearch(it, ar.end(), testIntegral, testIntDiff);
 
 		// something sensible found?
@@ -652,10 +652,10 @@ void extractIntegrals(MathArray & ar)
 			p->cell(2) = (*it)->asScriptInset()->down();
 			p->cell(3) = (*it)->asScriptInset()->up();
 		}
-		p->cell(0) = MathArray(it + 1, jt);
+		p->cell(0) = MathData(it + 1, jt);
 
 		// use the "thing" behind the 'd' as differential
-		MathArray::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end());
+		MathData::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end());
 
 		// remove used parts
 		ar.erase(it + 1, tt);
@@ -673,8 +673,8 @@ bool testTermDelimiter(MathAtom const & at)
 
 // try to extract a "term", i.e., something delimited by '+' or '-'.
 // returns position behind the term
-MathArray::iterator extractTerm(MathArray & ar,
-	MathArray::iterator pos, MathArray::iterator last)
+MathData::iterator extractTerm(MathData & ar,
+	MathData::iterator pos, MathData::iterator last)
 {
 	while (pos != last && !testTermDelimiter(*pos)) {
 		ar.push_back(*pos);
@@ -713,7 +713,7 @@ bool testSum(MathAtom const & at)
 
 // replace '\sum' ['_^'] f(x) sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
-void extractSums(MathArray & ar)
+void extractSums(MathData & ar)
 {
 	// we need at least two items...
 	if (ar.size() < 2)
@@ -721,7 +721,7 @@ void extractSums(MathArray & ar)
 
 	//lyxerr << "\nSums from: " << ar << endl;
 	for (size_t i = 0; i + 1 < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
+		MathData::iterator it = ar.begin() + i;
 
 		// is this a sum name?
 		if (!testSum(ar[i]))
@@ -734,14 +734,14 @@ void extractSums(MathArray & ar)
 		InsetMathScript const * sub = ar[i]->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
-			MathArray const & ar = sub->down();
-			MathArray::const_iterator xt =
+			MathData const & ar = sub->down();
+			MathData::const_iterator xt =
 				find_if(ar.begin(), ar.end(), &testEqualSign);
 			if (xt != ar.end()) {
 				// we found a '=', use everything in front of that as index,
 				// and everything behind as lower index
-				p->cell(1) = MathArray(ar.begin(), xt);
-				p->cell(2) = MathArray(xt + 1, ar.end());
+				p->cell(1) = MathData(ar.begin(), xt);
+				p->cell(2) = MathData(xt + 1, ar.end());
 			} else {
 				// use everything as summation index, don't use scripts.
 				p->cell(1) = ar;
@@ -753,7 +753,7 @@ void extractSums(MathArray & ar)
 			p->cell(3) = sub->up();
 
 		// use something  behind the script as core
-		MathArray::iterator tt = extractTerm(p->cell(0), it + 1, ar.end());
+		MathData::iterator tt = extractTerm(p->cell(0), it + 1, ar.end());
 
 		// cleanup
 		ar.erase(it + 1, tt);
@@ -783,7 +783,7 @@ bool testDiffItem(MathAtom const & at)
 }
 
 
-bool testDiffArray(MathArray const & ar)
+bool testDiffArray(MathData const & ar)
 {
 	return ar.size() && testDiffItem(ar.front());
 }
@@ -798,11 +798,11 @@ bool testDiffFrac(MathAtom const & at)
 }
 
 
-void extractDiff(MathArray & ar)
+void extractDiff(MathData & ar)
 {
 	//lyxerr << "\nDiffs from: " << ar << endl;
 	for (size_t i = 0; i < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
+		MathData::iterator it = ar.begin() + i;
 
 		// is this a "differential fraction"?
 		if (!testDiffFrac(*it))
@@ -818,36 +818,36 @@ void extractDiff(MathArray & ar)
 		auto_ptr<InsetMathDiff> diff(new InsetMathDiff);
 
 		// collect function, let jt point behind last used item
-		MathArray::iterator jt = it + 1;
+		MathData::iterator jt = it + 1;
 		//int n = 1;
-		MathArray numer(f->cell(0));
+		MathData numer(f->cell(0));
 		splitScripts(numer);
 		if (numer.size() > 1 && numer[1]->asScriptInset()) {
 			// this is something like  d^n f(x) / d... or  d^n / d...
 			// FIXME
 			//n = 1;
 			if (numer.size() > 2)
-				diff->cell(0) = MathArray(numer.begin() + 2, numer.end());
+				diff->cell(0) = MathData(numer.begin() + 2, numer.end());
 			else
 				jt = extractTerm(diff->cell(0), jt, ar.end());
 		} else {
 			// simply d f(x) / d... or  d/d...
 			if (numer.size() > 1)
-				diff->cell(0) = MathArray(numer.begin() + 1, numer.end());
+				diff->cell(0) = MathData(numer.begin() + 1, numer.end());
 			else
 				jt = extractTerm(diff->cell(0), jt, ar.end());
 		}
 
 		// collect denominator parts
-		MathArray denom(f->cell(1));
+		MathData denom(f->cell(1));
 		splitScripts(denom);
-		for (MathArray::iterator dt = denom.begin(); dt != denom.end();) {
+		for (MathData::iterator dt = denom.begin(); dt != denom.end();) {
 			// find the next 'd'
-			MathArray::iterator et
+			MathData::iterator et
 				= find_if(dt + 1, denom.end(), &testDiffItem);
 
 			// point before this
-			MathArray::iterator st = et - 1;
+			MathData::iterator st = et - 1;
 			InsetMathScript const * script = (*st)->asScriptInset();
 			if (script && script->hasUp()) {
 				// things like   d.../dx^n
@@ -855,11 +855,11 @@ void extractDiff(MathArray & ar)
 				if (extractNumber(script->up(), mult)) {
 					//lyxerr << "mult: " << mult << endl;
 					for (int i = 0; i < mult; ++i)
-						diff->addDer(MathArray(dt + 1, st));
+						diff->addDer(MathData(dt + 1, st));
 				}
 			} else {
 				// just  d.../dx
-				diff->addDer(MathArray(dt + 1, et));
+				diff->addDer(MathData(dt + 1, et));
 			}
 			dt = et;
 		}
@@ -886,11 +886,11 @@ bool testRightArrow(MathAtom const & at)
 
 // replace '\lim_{x->x0} f(x)' sequences by a real InsetMathLim
 // assume 'extractDelims' ran before
-void extractLims(MathArray & ar)
+void extractLims(MathData & ar)
 {
 	//lyxerr << "\nLimits from: " << ar << endl;
 	for (size_t i = 0; i < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
+		MathData::iterator it = ar.begin() + i;
 
 		// must be a script inset with a subscript (without superscript)
 		InsetMathScript const * sub = (*it)->asScriptInset();
@@ -902,18 +902,18 @@ void extractLims(MathArray & ar)
 			continue;
 
 		// subscript must contain a -> symbol
-		MathArray const & s = sub->down();
-		MathArray::const_iterator st = find_if(s.begin(), s.end(), &testRightArrow);
+		MathData const & s = sub->down();
+		MathData::const_iterator st = find_if(s.begin(), s.end(), &testRightArrow);
 		if (st == s.end())
 			continue;
 
 		// the -> splits the subscript int x and x0
-		MathArray x  = MathArray(s.begin(), st);
-		MathArray x0 = MathArray(st + 1, s.end());
+		MathData x  = MathData(s.begin(), st);
+		MathData x0 = MathData(st + 1, s.end());
 
 		// use something behind the script as core
-		MathArray f;
-		MathArray::iterator tt = extractTerm(f, it + 1, ar.end());
+		MathData f;
+		MathData::iterator tt = extractTerm(f, it + 1, ar.end());
 
 		// cleanup
 		ar.erase(it + 1, tt);
@@ -929,7 +929,7 @@ void extractLims(MathArray & ar)
 // combine searches
 //
 
-void extractStructure(MathArray & ar)
+void extractStructure(MathData & ar)
 {
 	//lyxerr << "\nStructure from: " << ar << endl;
 	splitScripts(ar);
@@ -948,64 +948,64 @@ void extractStructure(MathArray & ar)
 }
 
 
-void write(MathArray const & dat, WriteStream & wi)
+void write(MathData const & dat, WriteStream & wi)
 {
-	MathArray ar = dat;
+	MathData ar = dat;
 	extractStrings(ar);
 	wi.firstitem() = true;
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it) {
 		(*it)->write(wi);
 		wi.firstitem() = false;
 	}
 }
 
 
-void normalize(MathArray const & ar, NormalStream & os)
+void normalize(MathData const & ar, NormalStream & os)
 {
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 		(*it)->normalize(os);
 }
 
 
-void octave(MathArray const & dat, OctaveStream & os)
+void octave(MathData const & dat, OctaveStream & os)
 {
-	MathArray ar = dat;
+	MathData ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 		(*it)->octave(os);
 }
 
 
-void maple(MathArray const & dat, MapleStream & os)
+void maple(MathData const & dat, MapleStream & os)
 {
-	MathArray ar = dat;
+	MathData ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 		(*it)->maple(os);
 }
 
 
-void maxima(MathArray const & dat, MaximaStream & os)
+void maxima(MathData const & dat, MaximaStream & os)
 {
-	MathArray ar = dat;
+	MathData ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 		(*it)->maxima(os);
 }
 
 
-void mathematica(MathArray const & dat, MathematicaStream & os)
+void mathematica(MathData const & dat, MathematicaStream & os)
 {
-	MathArray ar = dat;
+	MathData ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 		(*it)->mathematica(os);
 }
 
 
-void mathmlize(MathArray const & dat, MathStream & os)
+void mathmlize(MathData const & dat, MathStream & os)
 {
-	MathArray ar = dat;
+	MathData ar = dat;
 	extractStructure(ar);
 	if (ar.size() == 0)
 		os << "<mrow/>";
@@ -1013,7 +1013,7 @@ void mathmlize(MathArray const & dat, MathStream & os)
 		os << ar.front();
 	else {
 		os << MTag("mrow");
-		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			(*it)->mathmlize(os);
 		os << ETag("mrow");
 	}
@@ -1081,7 +1081,7 @@ namespace {
 		return npos;
 	}
 
-	MathArray pipeThroughMaxima(docstring const &, MathArray const & ar)
+	MathData pipeThroughMaxima(docstring const &, MathData const & ar)
 	{
 		odocstringstream os;
 		MaximaStream ms(os);
@@ -1131,7 +1131,7 @@ namespace {
 
 		vector<std::string> tmp = getVectorFromString(out, "$$");
 		if (tmp.size() < 2)
-			return MathArray();
+			return MathData();
 
 		out = subst(tmp[1], "\\>", std::string());
 		lyxerr << "output: '" << out << "'" << endl;
@@ -1170,13 +1170,13 @@ namespace {
 			//lyxerr << "output: " << out << endl;
 			i = out.find("\\over", i + 4);
 		}
-		MathArray res;
+		MathData res;
 		mathed_parse_cell(res, from_utf8(out));
 		return res;
 	}
 
 
-	MathArray pipeThroughMaple(docstring const & extra, MathArray const & ar)
+	MathData pipeThroughMaple(docstring const & extra, MathData const & ar)
 	{
 		std::string header = "readlib(latex):\n";
 
@@ -1248,13 +1248,13 @@ namespace {
 		// change \_ into _
 
 		//
-		MathArray res;
+		MathData res;
 		mathed_parse_cell(res, from_utf8(out));
 		return res;
 	}
 
 
-	MathArray pipeThroughOctave(docstring const &, MathArray const & ar)
+	MathData pipeThroughOctave(docstring const &, MathData const & ar)
 	{
 		odocstringstream os;
 		OctaveStream vs(os);
@@ -1307,13 +1307,13 @@ namespace {
 		// ansi control sequence before, such as '\033[?1034hans = '
 		size_t i = out.find("ans = ");
 		if (i == string::npos)
-			return MathArray();
+			return MathData();
 		out = out.substr(i + 6);
 
 		// parse output as matrix or single number
 		MathAtom at(new InsetMathArray(from_ascii("array"), from_utf8(out)));
 		InsetMathArray const * mat = at->asArrayInset();
-		MathArray res;
+		MathData res;
 		if (mat->ncols() == 1 && mat->nrows() == 1)
 			res.append(mat->cell(0));
 		else {
@@ -1372,7 +1372,7 @@ namespace {
 	}
 
 
-	MathArray pipeThroughMathematica(docstring const &, MathArray const & ar)
+	MathData pipeThroughMathematica(docstring const &, MathData const & ar)
 	{
 		odocstringstream os;
 		MathematicaStream ms(os);
@@ -1391,7 +1391,7 @@ namespace {
 		size_t pos2 = out.find("In[2]:=");
 
 		if (pos1 == string::npos || pos2 == string::npos)
-			return MathArray();
+			return MathData();
 
 		// get everything from pos1+17 to pos2
 		out = out.substr(pos1 + 17, pos2 - pos1 - 17);
@@ -1402,7 +1402,7 @@ namespace {
 		prettifyMathematicaOutput(out, "Muserfunction", true, false);
 		prettifyMathematicaOutput(out, "Mvariable", false, false);
 
-		MathArray res;
+		MathData res;
 		mathed_parse_cell(res, from_utf8(out));
 		return res;
 	}
@@ -1410,8 +1410,8 @@ namespace {
 }
 
 
-MathArray pipeThroughExtern(string const & lang, docstring const & extra,
-	MathArray const & ar)
+MathData pipeThroughExtern(string const & lang, docstring const & extra,
+	MathData const & ar)
 {
 	if (lang == "octave")
 		return pipeThroughOctave(extra, ar);
@@ -1438,12 +1438,12 @@ MathArray pipeThroughExtern(string const & lang, docstring const & extra,
 	support::FileName const file = libFileSearch("mathed", "extern_" + lang);
 	if (file.empty()) {
 		lyxerr << "converter to '" << lang << "' not found" << endl;
-		return MathArray();
+		return MathData();
 	}
 
 	// run external sript
 	string out = captureOutput(file.absFilename(), data);
-	MathArray res;
+	MathData res;
 	mathed_parse_cell(res, from_utf8(out));
 	return res;
 }

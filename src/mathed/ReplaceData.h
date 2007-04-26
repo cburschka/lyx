@@ -13,7 +13,7 @@
 #define MATH_REPLACE_H
 
 
-#include "MathArray.h"
+#include "MathData.h"
 
 
 namespace lyx {
@@ -21,9 +21,9 @@ namespace lyx {
 class ReplaceData {
 public:
 	///
-	MathArray from;
+	MathData from;
 	///
-	MathArray to;
+	MathData to;
 };
 
 

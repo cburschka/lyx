@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetMathFrac.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "TextPainter.h"
 #include "LaTeXFeatures.h"

@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathFont.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathParser.h"
 #include "LaTeXFeatures.h"

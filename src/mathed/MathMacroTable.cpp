@@ -45,7 +45,7 @@ MacroData::MacroData(docstring const & def, int numargs, docstring const & disp,
 {}
 
 
-void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
+void MacroData::expand(vector<MathData> const & args, MathData & to) const
 {
 	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
 	// FIXME UNICODE

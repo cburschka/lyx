@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathBox.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "support/std_ostream.h"

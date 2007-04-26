@@ -24,7 +24,7 @@
 
 namespace lyx {
 
-class MathArray;
+class MathData;
 class InsetMath;
 class MathAtom;
 
@@ -61,7 +61,7 @@ private:
 	odocstream & os_;
 	/// do we have to write \\protect sometimes
 	bool fragile_;
-	/// are we at the beginning of an MathArray?
+	/// are we at the beginning of an MathData?
 	bool firstitem_;
 	/// are we writing to .tex?
 	int latex_;
@@ -74,7 +74,7 @@ private:
 ///
 WriteStream & operator<<(WriteStream &, MathAtom const &);
 ///
-WriteStream & operator<<(WriteStream &, MathArray const &);
+WriteStream & operator<<(WriteStream &, MathData const &);
 ///
 WriteStream & operator<<(WriteStream &, docstring const &);
 ///
@@ -140,7 +140,7 @@ private:
 ///
 MathStream & operator<<(MathStream &, MathAtom const &);
 ///
-MathStream & operator<<(MathStream &, MathArray const &);
+MathStream & operator<<(MathStream &, MathData const &);
 ///
 MathStream & operator<<(MathStream &, docstring const &);
 ///
@@ -172,7 +172,7 @@ private:
 ///
 NormalStream & operator<<(NormalStream &, MathAtom const &);
 ///
-NormalStream & operator<<(NormalStream &, MathArray const &);
+NormalStream & operator<<(NormalStream &, MathData const &);
 ///
 NormalStream & operator<<(NormalStream &, docstring const &);
 ///
@@ -203,7 +203,7 @@ private:
 ///
 MapleStream & operator<<(MapleStream &, MathAtom const &);
 ///
-MapleStream & operator<<(MapleStream &, MathArray const &);
+MapleStream & operator<<(MapleStream &, MathData const &);
 ///
 MapleStream & operator<<(MapleStream &, docstring const &);
 ///
@@ -236,7 +236,7 @@ private:
 ///
 MaximaStream & operator<<(MaximaStream &, MathAtom const &);
 ///
-MaximaStream & operator<<(MaximaStream &, MathArray const &);
+MaximaStream & operator<<(MaximaStream &, MathData const &);
 ///
 MaximaStream & operator<<(MaximaStream &, docstring const &);
 ///
@@ -269,7 +269,7 @@ private:
 ///
 MathematicaStream & operator<<(MathematicaStream &, MathAtom const &);
 ///
-MathematicaStream & operator<<(MathematicaStream &, MathArray const &);
+MathematicaStream & operator<<(MathematicaStream &, MathData const &);
 ///
 MathematicaStream & operator<<(MathematicaStream &, docstring const &);
 ///
@@ -299,7 +299,7 @@ private:
 ///
 OctaveStream & operator<<(OctaveStream &, MathAtom const &);
 ///
-OctaveStream & operator<<(OctaveStream &, MathArray const &);
+OctaveStream & operator<<(OctaveStream &, MathData const &);
 ///
 OctaveStream & operator<<(OctaveStream &, docstring const &);
 ///

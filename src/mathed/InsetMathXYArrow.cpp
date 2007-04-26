@@ -40,14 +40,14 @@ InsetMathXYMatrix const * InsetMathXYArrow::targetMatrix() const
 }
 
 
-MathArray const & InsetMathXYArrow::targetCell() const
+MathData const & InsetMathXYArrow::targetCell() const
 {
 #if 0
 	InsetMathXYMatrix const * p = targetMatrix();
 	int x = 0;
 	int y = 0;
-	MathArray const & t = cell(0);
-	for (MathArray::const_iterator it = t.begin(); it != t.end(); ++it) {
+	MathData const & t = cell(0);
+	for (MathData::const_iterator it = t.begin(); it != t.end(); ++it) {
 		switch ((*it)->getChar()) {
 			case 'l': --x; break;
 			case 'r': ++x; break;
@@ -64,18 +64,18 @@ MathArray const & InsetMathXYArrow::targetCell() const
 	}
 	return p->cell(n);
 #else
-	static MathArray dummy;
+	static MathData dummy;
 	return dummy;
 #endif
 }
 
 
-MathArray const & InsetMathXYArrow::sourceCell() const
+MathData const & InsetMathXYArrow::sourceCell() const
 {
 #if 0
 	return targetMatrix()->cell(mi_.idx);
 #else
-	static MathArray dummy;
+	static MathData dummy;
 	return dummy;
 #endif
 }
@@ -131,8 +131,8 @@ void InsetMathXYArrow::draw(PainterInfo & pi, int x, int y) const
 	} else {
 
 		pi.pain.text(x, y, "X");
-		MathArray const & s = sourceCell();
-		MathArray const & t = targetCell();
+		MathData const & s = sourceCell();
+		MathData const & t = targetCell();
 		pi.pain.line(s.xm(), s.ym(), t.xm(), t.ym(), LColor::math);
 		cell(1).draw(pi, (s.xm() + t.xm())/2, (s.ym() + t.ym())/2);
 

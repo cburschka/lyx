@@ -13,7 +13,7 @@
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMathDelim.h"
 #include "MathExtern.h"
 #include "MathFactory.h"
@@ -98,9 +98,9 @@ namespace {
 
 	// returns position of first relation operator in the array
 	// used for "intelligent splitting"
-	size_t firstRelOp(MathArray const & ar)
+	size_t firstRelOp(MathData const & ar)
 	{
-		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			if ((*it)->isRelOp())
 				return it - ar.begin();
 		return ar.size();
@@ -680,7 +680,7 @@ docstring InsetMathHull::nicelabel(row_type row) const
 
 void InsetMathHull::glueall()
 {
-	MathArray ar;
+	MathData ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
 	*this = InsetMathHull(hullSimple);
@@ -696,7 +696,7 @@ void InsetMathHull::splitTo2Cols()
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 2 * row;
 		pos_type pos = firstRelOp(cell(i));
-		cell(i + 1) = MathArray(cell(i).begin() + pos, cell(i).end());
+		cell(i + 1) = MathData(cell(i).begin() + pos, cell(i).end());
 		cell(i).erase(pos, cell(i).size());
 	}
 }
@@ -711,7 +711,7 @@ void InsetMathHull::splitTo3Cols()
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 3 * row + 1;
 		if (cell(i).size()) {
-			cell(i + 1) = MathArray(cell(i).begin() + 1, cell(i).end());
+			cell(i + 1) = MathData(cell(i).begin() + 1, cell(i).end());
 			cell(i).erase(1, cell(i).size());
 		}
 	}
@@ -967,7 +967,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
 	//if (cur.selection()) {
-	//	MathArray ar;
+	//	MathData ar;
 	//	selGet(cur.ar);
 	//	lyxerr << "use selection: " << ar << endl;
 	//	insert(pipeThroughExtern(lang, extra, ar));
@@ -975,7 +975,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	//}
 #endif
 
-	MathArray eq;
+	MathData eq;
 	eq.push_back(MathAtom(new InsetMathChar('=')));
 
 	// go to first item in line
@@ -984,14 +984,14 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 
 	if (getType() == hullSimple) {
 		size_type pos = cur.cell().find_last(eq);
-		MathArray ar;
+		MathData ar;
 		if (cur.inMathed() && cur.selection()) {
 			asArray(grabAndEraseSelection(cur), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
 		} else {
-			ar = MathArray(cur.cell().begin() + pos + 1, cur.cell().end());
+			ar = MathData(cur.cell().begin() + pos + 1, cur.cell().end());
 			lyxerr << "use partial cell form pos: " << pos << endl;
 		}
 		cur.cell().append(eq);
@@ -1003,7 +1003,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	if (getType() == hullEquation) {
 		lyxerr << "use equation inset" << endl;
 		mutate(hullEqnArray);
-		MathArray & ar = cur.cell();
+		MathData & ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
 		++cur.idx();
 		cur.cell() = eq;
@@ -1018,7 +1018,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		lyxerr << "use eqnarray" << endl;
 		cur.idx() += 2 - cur.idx() % ncols();
 		cur.pos() = 0;
-		MathArray ar = cur.cell();
+		MathData ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
@@ -1385,7 +1385,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 #endif
 	static InsetMathHull * lastformula = 0;
 	static CursorBase current = DocIterator(ibegin(nucleus()));
-	static MathArray ar;
+	static MathData ar;
 	static string laststr;
 
 	if (lastformula != this || laststr != str) {
@@ -1402,7 +1402,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 
 	for (DocIterator it = current; it != iend(nucleus()); increment(it)) {
 		CursorSlice & top = it.back();
-		MathArray const & a = top.asInsetMath()->cell(top.idx_);
+		MathData const & a = top.asInsetMath()->cell(top.idx_);
 		if (a.matchpart(ar, top.pos_)) {
 			bv->cursor().setSelection(it, ar.size());
 			current = it;

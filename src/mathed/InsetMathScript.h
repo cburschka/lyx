@@ -75,17 +75,17 @@ public:
 	/// get limits
 	int limits() const { return limits_; }
 	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
-	MathArray const & down() const;
+	MathData const & down() const;
 	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
-	MathArray & down();
+	MathData & down();
 	/// returns superscript. Always run 'hasUp' or 'has(true)' before!
-	MathArray const & up() const;
+	MathData const & up() const;
 	/// returns superscript. Always run 'hasUp' or 'has(true)' before!
-	MathArray & up();
+	MathData & up();
 	/// returns nucleus
-	MathArray const & nuc() const;
+	MathData const & nuc() const;
 	/// returns nucleus
-	MathArray & nuc();
+	MathData & nuc();
 	/// do we have a superscript?
 	bool hasUp() const;
 	/// do we have a subscript?

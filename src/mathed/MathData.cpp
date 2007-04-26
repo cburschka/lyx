@@ -1,5 +1,5 @@
 /**
- * \file MathArray.cpp
+ * \file MathData.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "MathMacro.h"
@@ -41,70 +41,70 @@ using std::string;
 using std::vector;
 
 
-MathArray::MathArray(const_iterator from, const_iterator to)
+MathData::MathData(const_iterator from, const_iterator to)
 	: base_type(from, to)
 {}
 
 
-MathAtom & MathArray::operator[](pos_type pos)
+MathAtom & MathData::operator[](pos_type pos)
 {
 	BOOST_ASSERT(pos < size());
 	return base_type::operator[](pos);
 }
 
 
-MathAtom const & MathArray::operator[](pos_type pos) const
+MathAtom const & MathData::operator[](pos_type pos) const
 {
 	BOOST_ASSERT(pos < size());
 	return base_type::operator[](pos);
 }
 
 
-void MathArray::insert(size_type pos, MathAtom const & t)
+void MathData::insert(size_type pos, MathAtom const & t)
 {
 	base_type::insert(begin() + pos, t);
 }
 
 
-void MathArray::insert(size_type pos, MathArray const & ar)
+void MathData::insert(size_type pos, MathData const & ar)
 {
 	BOOST_ASSERT(pos <= size());
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 
 
-void MathArray::append(MathArray const & ar)
+void MathData::append(MathData const & ar)
 {
 	insert(size(), ar);
 }
 
 
-void MathArray::erase(size_type pos)
+void MathData::erase(size_type pos)
 {
 	if (pos < size())
 		erase(pos, pos + 1);
 }
 
 
-void MathArray::erase(iterator pos1, iterator pos2)
+void MathData::erase(iterator pos1, iterator pos2)
 {
 	base_type::erase(pos1, pos2);
 }
 
 
-void MathArray::erase(iterator pos)
+void MathData::erase(iterator pos)
 {
 	base_type::erase(pos);
 }
 
 
-void MathArray::erase(size_type pos1, size_type pos2)
+void MathData::erase(size_type pos1, size_type pos2)
 {
 	base_type::erase(begin() + pos1, begin() + pos2);
 }
 
 
-void MathArray::dump2() const
+void MathData::dump2() const
 {
 	odocstringstream os;
 	NormalStream ns(os);
@@ -114,7 +114,7 @@ void MathArray::dump2() const
 }
 
 
-void MathArray::dump() const
+void MathData::dump() const
 {
 	odocstringstream os;
 	NormalStream ns(os);
@@ -124,20 +124,20 @@ void MathArray::dump() const
 }
 
 
-void MathArray::validate(LaTeXFeatures & features) const
+void MathData::validate(LaTeXFeatures & features) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
 		(*it)->validate(features);
 }
 
 
-bool MathArray::match(MathArray const & ar) const
+bool MathData::match(MathData const & ar) const
 {
 	return size() == ar.size() && matchpart(ar, 0);
 }
 
 
-bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
+bool MathData::matchpart(MathData const & ar, pos_type pos) const
 {
 	if (size() < ar.size() + pos)
 		return false;
@@ -149,7 +149,7 @@ bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
 }
 
 
-void MathArray::replace(ReplaceData & rep)
+void MathData::replace(ReplaceData & rep)
 {
 	for (size_type i = 0; i < size(); ++i) {
 		if (find1(rep.from, i)) {
@@ -168,7 +168,7 @@ void MathArray::replace(ReplaceData & rep)
 }
 
 
-bool MathArray::find1(MathArray const & ar, size_type pos) const
+bool MathData::find1(MathData const & ar, size_type pos) const
 {
 	lyxerr << "finding '" << ar << "' in '" << *this << "'" << endl;
 	for (size_type i = 0, n = ar.size(); i < n; ++i)
@@ -178,7 +178,7 @@ bool MathArray::find1(MathArray const & ar, size_type pos) const
 }
 
 
-MathArray::size_type MathArray::find(MathArray const & ar) const
+MathData::size_type MathData::find(MathData const & ar) const
 {
 	for (int i = 0, last = size() - ar.size(); i < last; ++i)
 		if (find1(ar, i))
@@ -187,7 +187,7 @@ MathArray::size_type MathArray::find(MathArray const & ar) const
 }
 
 
-MathArray::size_type MathArray::find_last(MathArray const & ar) const
+MathData::size_type MathData::find_last(MathData const & ar) const
 {
 	for (int i = size() - ar.size(); i >= 0; --i)
 		if (find1(ar, i))
@@ -196,7 +196,7 @@ MathArray::size_type MathArray::find_last(MathArray const & ar) const
 }
 
 
-bool MathArray::contains(MathArray const & ar) const
+bool MathData::contains(MathData const & ar) const
 {
 	if (find(ar) != size())
 		return true;
@@ -207,12 +207,12 @@ bool MathArray::contains(MathArray const & ar) const
 }
 
 
-void MathArray::touch() const
+void MathData::touch() const
 {
 }
 
 
-bool MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
+bool MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim = dim_;
 	metrics(mi);
@@ -225,7 +225,7 @@ bool MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 
 namespace {
 
-bool isInside(DocIterator const & it, MathArray const & ar,
+bool isInside(DocIterator const & it, MathData const & ar,
 	pos_type p1, pos_type p2)
 {
 	for (size_t i = 0; i != it.depth(); ++i) {
@@ -240,7 +240,7 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 
 
 
-void MathArray::metrics(MetricsInfo & mi) const
+void MathData::metrics(MetricsInfo & mi) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim_ = fm.dimension('I');
@@ -273,8 +273,8 @@ void MathArray::metrics(MetricsInfo & mi) const
 			lyxerr << "metrics:found macro: " << mac->name()
 				<< " numargs: " << numargs << endl;
 			if (!isInside(bv.cursor(), *this, i + 1, i + numargs + 1)) {
-				MathArray args(begin() + i + 1, begin() + i + numargs + 1);
-				MathArray exp;
+				MathData args(begin() + i + 1, begin() + i + numargs + 1);
+				MathData exp;
 				tmpl.expand(args, exp);
 				mac->setExpansion(exp, args);
 				mac->metricsExpanded(mi, d);
@@ -292,9 +292,9 @@ void MathArray::metrics(MetricsInfo & mi) const
 }
 
 
-void MathArray::draw(PainterInfo & pi, int x, int y) const
+void MathData::draw(PainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
+	//lyxerr << "MathData::draw: x: " << x << " y: " << y << endl;
 	BufferView & bv  = *pi.base.bv;
 	setXY(bv, x, y);
 
@@ -337,7 +337,7 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void MathData::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	dim.clear();
 	Dimension d;
@@ -348,7 +348,7 @@ void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void MathArray::drawT(TextPainter & pain, int x, int y) const
+void MathData::drawT(TextPainter & pain, int x, int y) const
 {
 	//lyxerr << "x: " << x << " y: " << y << ' ' << pain.workAreaHeight() << endl;
 
@@ -363,13 +363,13 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-int MathArray::pos2x(size_type pos) const
+int MathData::pos2x(size_type pos) const
 {
 	return pos2x(pos, 0);
 }
 
 
-int MathArray::pos2x(size_type pos, int glue) const
+int MathData::pos2x(size_type pos, int glue) const
 {
 	int x = 0;
 	size_type target = min(pos, size());
@@ -385,13 +385,13 @@ int MathArray::pos2x(size_type pos, int glue) const
 }
 
 
-MathArray::size_type MathArray::x2pos(int targetx) const
+MathData::size_type MathData::x2pos(int targetx) const
 {
 	return x2pos(targetx, 0);
 }
 
 
-MathArray::size_type MathArray::x2pos(int targetx, int glue) const
+MathData::size_type MathData::x2pos(int targetx, int glue) const
 {
 	const_iterator it = begin();
 	int lastx = 0;
@@ -424,7 +424,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 }
 
 
-int MathArray::dist(BufferView const & bv, int x, int y) const
+int MathData::dist(BufferView const & bv, int x, int y) const
 {
 	int xx = 0;
 	int yy = 0;
@@ -446,26 +446,26 @@ int MathArray::dist(BufferView const & bv, int x, int y) const
 }
 
 
-void MathArray::setXY(BufferView & bv, int x, int y) const
+void MathData::setXY(BufferView & bv, int x, int y) const
 {
-	//lyxerr << "setting position cache for MathArray " << this << std::endl;
+	//lyxerr << "setting position cache for MathData " << this << std::endl;
 	bv.coordCache().arrays().add(this, x, y);
 }
 
 
-int MathArray::xo(BufferView const & bv) const
+int MathData::xo(BufferView const & bv) const
 {
 	return bv.coordCache().getArrays().x(this);
 }
 
 
-int MathArray::yo(BufferView const & bv) const
+int MathData::yo(BufferView const & bv) const
 {
 	return bv.coordCache().getArrays().y(this);
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathArray const & ar)
+std::ostream & operator<<(std::ostream & os, MathData const & ar)
 {
 	odocstringstream oss;
 	NormalStream ns(oss);
@@ -474,7 +474,7 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 }
 
 
-odocstream & operator<<(odocstream & os, MathArray const & ar)
+odocstream & operator<<(odocstream & os, MathData const & ar)
 {
 	NormalStream ns(os);
 	ns << ar;

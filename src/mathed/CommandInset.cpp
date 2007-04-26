@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "CommandInset.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"

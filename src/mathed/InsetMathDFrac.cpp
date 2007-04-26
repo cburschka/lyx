@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathDFrac.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"

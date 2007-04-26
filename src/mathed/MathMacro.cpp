@@ -38,7 +38,7 @@ using std::vector;
 class MathMacroArgumentValue : public InsetMathDim {
 public:
 	///
-	MathMacroArgumentValue(MathArray const * value, docstring const & macroName) 
+	MathMacroArgumentValue(MathData const * value, docstring const & macroName) 
 		: value_(value), macroName_(macroName) {}
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -47,7 +47,7 @@ public:
 	
 private:
 	std::auto_ptr<InsetBase> doClone() const;
-	MathArray const * value_;
+	MathData const * value_;
 	docstring macroName_;
 };
 
@@ -115,7 +115,7 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		MacroData const & macro = MacroTable::globalMacros().get(name());
 		if (macro.locked()) {
 			mathed_string_dim(mi.base.font, "Self reference: " + name(), dim);
-			expanded_ = MathArray();
+			expanded_ = MathData();
 		} else if (editing(mi.base.bv)) {
 			// FIXME UNICODE
 			asArray(macro.def(), tmpl_);
@@ -127,7 +127,7 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			// FIXME UNICODE
 			int ww = mathed_string_width(font, from_ascii("#1: "));
 			for (idx_type i = 0; i < nargs(); ++i) {
-				MathArray const & c = cell(i);
+				MathData const & c = cell(i);
 				c.metrics(mi);
 				dim.wid  = max(dim.wid, c.width() + ww);
 				dim.des += c.height() + 10;
@@ -135,7 +135,7 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		} else {
 			// create MathMacroArgumentValue object pointing to the cells of the macro
 			MacroData const & macro = MacroTable::globalMacros().get(name());
-			vector<MathArray> values(nargs());
+			vector<MathData> values(nargs());
 			for (size_t i = 0; i != nargs(); ++i) 
 				values[i].insert(0, MathAtom(new MathMacroArgumentValue(&cells_[i], name())));
 			macro.expand(values, expanded_);
@@ -175,7 +175,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			docstring t = from_ascii("#1: ");
 			mathed_string_dim(font, t, ldim);
 			for (idx_type i = 0; i < nargs(); ++i) {
-				MathArray const & c = cell(i);
+				MathData const & c = cell(i);
 				h += max(c.ascent(), ldim.asc) + 5;
 				c.draw(pi, x + ldim.wid, h);
 				char_type str[] = { '#', '1', ':', '\0' };

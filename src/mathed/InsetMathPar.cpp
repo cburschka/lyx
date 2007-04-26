@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathPar.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "support/std_ostream.h"
 
@@ -22,7 +22,7 @@ namespace lyx {
 using std::auto_ptr;
 
 
-InsetMathPar::InsetMathPar(MathArray const & ar)
+InsetMathPar::InsetMathPar(MathData const & ar)
 {
 	cells_[0] = ar;
 }

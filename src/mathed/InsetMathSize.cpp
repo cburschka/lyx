@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathSize.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
 

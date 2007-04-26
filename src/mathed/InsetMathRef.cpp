@@ -20,7 +20,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathFactory.h"
 #include "MathSupport.h"
 #include "OutputParams.h"
@@ -63,7 +63,7 @@ void RefInset::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ref") {
-			MathArray ar;
+			MathData ar;
 			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 				*this = *ar[0].nucleus()->asRefInset();
 				break;

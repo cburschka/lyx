@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathGrid.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
 
@@ -333,7 +333,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi) const
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			MathArray const & c = cell(index(row, col));
+			MathData const & c = cell(index(row, col));
 			asc  = max(asc,  c.ascent());
 			desc = max(desc, c.descent());
 		}
@@ -519,7 +519,7 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			MathArray const & c = cell(index(row, col));
+			MathData const & c = cell(index(row, col));
 			asc  = max(asc,  c.ascent());
 			desc = max(desc, c.descent());
 		}
@@ -614,7 +614,7 @@ docstring InsetMathGrid::eolString(row_type row, bool emptyline, bool fragile) c
 
 	// make sure an upcoming '[' does not break anything
 	if (row + 1 < nrows()) {
-		MathArray const & c = cell(index(row + 1, 0));
+		MathData const & c = cell(index(row + 1, 0));
 		if (c.size() && c.front()->getChar() == '[')
 			//eol += "[0pt]";
 			eol += "{}";
@@ -640,7 +640,7 @@ void InsetMathGrid::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert
-		(cells_.begin() + (row + 1) * ncols(), ncols(), MathArray());
+		(cells_.begin() + (row + 1) * ncols(), ncols(), MathData());
 	cellinfo_.insert
 		(cellinfo_.begin() + (row + 1) * ncols(), ncols(), CellInfo());
 }
@@ -649,7 +649,7 @@ void InsetMathGrid::addRow(row_type row)
 void InsetMathGrid::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
-	//cells_.insert(cells_.end(), ncols(), MathArray());
+	//cells_.insert(cells_.end(), ncols(), MathData());
 	for (col_type col = 0; col < ncols(); ++col) {
 		cells_.push_back(cells_type::value_type());
 		cellinfo_.push_back(CellInfo());
@@ -1016,7 +1016,7 @@ void InsetMathGrid::splitCell(Cursor & cur)
 {
 	if (cur.idx() == cur.lastidx())
 		return;
-	MathArray ar = cur.cell();
+	MathData ar = cur.cell();
 	ar.erase(0, cur.pos());
 	cur.cell().erase(cur.pos(), cur.lastpos());
 	++cur.idx();

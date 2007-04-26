@@ -23,7 +23,7 @@ namespace lyx {
 class PainterInfo;
 class LyXFont;
 class Dimension;
-class MathArray;
+class MathData;
 class MathAtom;
 class InsetMath;
 
@@ -51,12 +51,12 @@ void augmentFont(LyXFont & f, docstring const & cmd);
 bool isFontName(docstring const & name);
 
 // converts single cell to string
-docstring asString(MathArray const & ar);
+docstring asString(MathData const & ar);
 // converts single inset to string
 docstring asString(InsetMath const &);
 docstring asString(MathAtom const &);
 // converts string to single cell
-void asArray(docstring const & str, MathArray & ar);
+void asArray(docstring const & str, MathData & ar);
 
 } // namespace lyx
 

@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetMathRoot.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "Cursor.h"
 #include "LColor.h"

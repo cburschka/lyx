@@ -12,7 +12,7 @@
 
 #include "LaTeXFeatures.h"
 #include "InsetMathSubstack.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "support/std_ostream.h"
 

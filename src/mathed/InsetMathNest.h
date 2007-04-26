@@ -77,8 +77,8 @@ public:
 	/// direct access to the cell.
 	/// inlined because shows in profile.
 	//@{
-	MathArray & cell(idx_type i) { return cells_[i]; }
-	MathArray const & cell(idx_type i) const { return cells_[i]; }
+	MathData & cell(idx_type i) { return cells_[i]; }
+	MathData const & cell(idx_type i) const { return cells_[i]; }
 	//@}
 
 	/// can we move into this cell (see macroarg.h)
@@ -89,9 +89,9 @@ public:
 	/// replace in all cells
 	void replace(ReplaceData &);
 	/// do we contain a given pattern?
-	bool contains(MathArray const &) const;
+	bool contains(MathData const &) const;
 	/// glue everything to a single cell
-	MathArray glue() const;
+	MathData glue() const;
 
 	/// debug helper
 	void dump() const;
@@ -141,7 +141,7 @@ private:
 
 protected:
 	/// we store the cells in a vector
-	typedef std::vector<MathArray> cells_type;
+	typedef std::vector<MathData> cells_type;
 	/// thusly:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor

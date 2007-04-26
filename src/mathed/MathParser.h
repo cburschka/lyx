@@ -23,7 +23,7 @@ namespace lyx {
 
 
 class MathAtom;
-class MathArray;
+class MathData;
 class InsetMathGrid;
 class Lexer;
 
@@ -69,10 +69,10 @@ bool mathed_parse_normal(MathAtom &, Lexer &);
 void mathed_parse_normal(InsetMathGrid &, docstring const &);
 
 /// parse a single cell from a string
-void mathed_parse_cell(MathArray & ar, docstring const &);
+void mathed_parse_cell(MathData & ar, docstring const &);
 /// parse a single cell from a stream. Only use this for reading from .lyx
 /// file format, for the reason see Parser::tokenize(std::istream &).
-void mathed_parse_cell(MathArray & ar, std::istream &);
+void mathed_parse_cell(MathData & ar, std::istream &);
 
 void initParser();
 

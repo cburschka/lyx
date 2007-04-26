@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetMathDelim.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -45,7 +45,7 @@ InsetMathDelim::InsetMathDelim(docstring const & l, docstring const & r)
 
 
 InsetMathDelim::InsetMathDelim
-		(docstring const & l, docstring const & r, MathArray const & ar)
+		(docstring const & l, docstring const & r, MathData const & ar)
 	: InsetMathNest(1), left_(l), right_(r)
 {
 	cell(0) = ar;

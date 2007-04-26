@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathBinom.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathSupport.h"
 #include "MathStream.h"
 

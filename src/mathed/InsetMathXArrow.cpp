@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathXArrow.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"

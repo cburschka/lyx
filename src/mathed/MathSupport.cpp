@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "MathSupport.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMath.h"
 #include "MathStream.h"
 #include "MathParser.h"
@@ -678,7 +678,7 @@ void augmentFont(LyXFont & font, docstring const & name)
 }
 
 
-docstring asString(MathArray const & ar)
+docstring asString(MathData const & ar)
 {
 	odocstringstream os;
 	WriteStream ws(os);
@@ -687,7 +687,7 @@ docstring asString(MathArray const & ar)
 }
 
 
-void asArray(docstring const & str, MathArray & ar)
+void asArray(docstring const & str, MathData & ar)
 {
 	mathed_parse_cell(ar, str);
 }

@@ -26,7 +26,7 @@ public:
 	///
 	InsetMathDiff();
 	///
-	void addDer(MathArray const & der);
+	void addDer(MathData const & der);
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

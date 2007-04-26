@@ -24,21 +24,21 @@ class MathematicaStream;
 class MathStream;
 class OctaveStream;
 class WriteStream;
-class MathArray;
+class MathData;
 
-void write(MathArray const &, WriteStream &);
-void normalize(MathArray const &, NormalStream &);
-void maple(MathArray const &, MapleStream &);
-void maxima(MathArray const &, MaximaStream &);
-void mathematica(MathArray const &, MathematicaStream &);
-void mathmlize(MathArray const &, MathStream &);
-void octave(MathArray const &, OctaveStream &);
+void write(MathData const &, WriteStream &);
+void normalize(MathData const &, NormalStream &);
+void maple(MathData const &, MapleStream &);
+void maxima(MathData const &, MaximaStream &);
+void mathematica(MathData const &, MathematicaStream &);
+void mathmlize(MathData const &, MathStream &);
+void octave(MathData const &, OctaveStream &);
 
-bool extractNumber(MathArray const & ar, int & i);
-bool extractNumber(MathArray const & ar, double & i);
+bool extractNumber(MathData const & ar, int & i);
+bool extractNumber(MathData const & ar, double & i);
 
-MathArray pipeThroughExtern(std::string const & language,
-	docstring const & extra, MathArray const & ar);
+MathData pipeThroughExtern(std::string const & language,
+	docstring const & extra, MathData const & ar);
 
 
 } // namespace lyx

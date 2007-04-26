@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathMBox.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 
 #include "BufferView.h"

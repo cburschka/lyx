@@ -24,7 +24,7 @@ namespace lyx {
 class InsetMathLim : public InsetMathNest {
 public:
 	///
-	InsetMathLim(MathArray const & f, MathArray const & x, MathArray const & x0);
+	InsetMathLim(MathData const & f, MathData const & x, MathData const & x0);
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

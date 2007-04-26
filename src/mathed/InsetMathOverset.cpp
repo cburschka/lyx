@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathOverset.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 
 #include "Cursor.h"

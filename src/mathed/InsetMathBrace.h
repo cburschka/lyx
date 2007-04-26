@@ -24,7 +24,7 @@ public:
 	///
 	InsetMathBrace();
 	///
-	InsetMathBrace(MathArray const & ar);
+	InsetMathBrace(MathData const & ar);
 	///
 	InsetMathBrace const * asBraceInset() const { return this; }
 	/// we write extra braces in any case...

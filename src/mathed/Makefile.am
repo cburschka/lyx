@@ -131,8 +131,8 @@ libmathed_la_SOURCES = \
 	MathAtom.h \
 	MathAutoCorrect.cpp \
 	MathAutoCorrect.h \
-	MathArray.cpp \
-	MathArray.h \
+	MathData.cpp \
+	MathData.h \
 	MathExtern.cpp \
 	MathExtern.h \
 	MathFactory.cpp \

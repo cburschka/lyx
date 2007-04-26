@@ -18,7 +18,7 @@
 #include "InsetMathBrace.h"
 #include "InsetMathColor.h"
 #include "InsetMathComment.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMathDelim.h"
 #include "MathFactory.h"
 #include "InsetMathHull.h"
@@ -92,13 +92,13 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 {
 // FIXME: This is a hack. Ideally, the coord cache should not store
 // absolute positions, but relative ones. This would mean to call
-// setXY() not in MathArray::draw(), but in the parent insets' draw()
+// setXY() not in MathData::draw(), but in the parent insets' draw()
 // with the correctly adjusted x,y values. But this means that we'd have
 // to touch all (math)inset's draw() methods. Right now, we'll store
 // absolute value, and make them here relative, only to make them
 // absolute again when actually drawing the cursor. What a mess.
 	BOOST_ASSERT(ptr_cmp(&sl.inset(), this));
-	MathArray const & ar = sl.cell();
+	MathData const & ar = sl.cell();
 	CoordCache const & coord_cache = bv.coordCache();
 	if (!coord_cache.getArrays().has(&ar)) {
 		// this can (semi-)legally happen if we just created this cell
@@ -117,7 +117,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 		return;
 	}
 	Point const pt2 = coord_cache.getInsets().xy(this);
-	//lyxerr << "retrieving position cache for MathArray "
+	//lyxerr << "retrieving position cache for MathData "
 	//	<< pt.x_ << ' ' << pt.y_ << std::endl;
 	x = pt.x_ - pt2.x_ + ar.pos2x(sl.pos());
 	y = pt.y_ - pt2.y_;
@@ -240,7 +240,7 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 	//lyxerr << "InsetMathNest::drawing selection: "
 	//	<< " s1: " << s1 << " s2: " << s2 << endl;
 	if (s1.idx() == s2.idx()) {
-		MathArray const & c = cell(s1.idx());
+		MathData const & c = cell(s1.idx());
 		int x1 = c.xo(bv) + c.pos2x(s1.pos());
 		int y1 = c.yo(bv) - c.ascent();
 		int x2 = c.xo(bv) + c.pos2x(s2.pos());
@@ -252,7 +252,7 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 	} else {
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
-				MathArray const & c = cell(i);
+				MathData const & c = cell(i);
 				int x1 = c.xo(bv);
 				int y1 = c.yo(bv) - c.ascent();
 				int x2 = c.xo(bv) + c.width();
@@ -278,7 +278,7 @@ void InsetMathNest::replace(ReplaceData & rep)
 }
 
 
-bool InsetMathNest::contains(MathArray const & ar) const
+bool InsetMathNest::contains(MathData const & ar) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		if (cell(i).contains(ar))
@@ -305,9 +305,9 @@ bool InsetMathNest::isActive() const
 }
 
 
-MathArray InsetMathNest::glue() const
+MathData InsetMathNest::glue() const
 {
-	MathArray ar;
+	MathData ar;
 	for (size_t i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
 	return ar;
@@ -352,12 +352,12 @@ bool InsetMathNest::notifyCursorLeaves(Cursor & /*cur*/)
 #warning look here
 #endif
 #if 0
-	MathArray & ar = cur.cell();
+	MathData & ar = cur.cell();
 	// remove base-only "scripts"
 	for (pos_type i = 0; i + 1 < ar.size(); ++i) {
 		InsetMathScript * p = operator[](i).nucleus()->asScriptInset();
 		if (p && p->nargs() == 1) {
-			MathArray ar = p->nuc();
+			MathData ar = p->nuc();
 			erase(i);
 			insert(i, ar);
 			cur.adjust(i, ar.size() - 1);
@@ -975,7 +975,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		MathArray ar;
+		MathData ar;
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 			recordUndo(cur);
 			cur.insert(ar);
@@ -1112,7 +1112,7 @@ InsetBase * InsetMathNest::editXY(Cursor & cur, int x, int y)
 			idx_min = i;
 		}
 	}
-	MathArray & ar = cell(idx_min);
+	MathData & ar = cell(idx_min);
 	cur.push(*this);
 	cur.idx() = idx_min;
 	cur.pos() = ar.x2pos(x - ar.xo(cur.bv()));
@@ -1144,7 +1144,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 		// cur.result().update(): don't overwrite previously set flags.
 		cur.updateFlags(Update::Decoration | Update::FitCursor | cur.result().update());
 	} else if (cmd.button() == mouse_button::button2) {
-		MathArray ar;
+		MathData ar;
 		if (cap::selection()) {
 			// See comment in LyXText::dispatch why we do this
 			cap::copySelectionToStack();

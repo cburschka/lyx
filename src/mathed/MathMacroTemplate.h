@@ -13,7 +13,7 @@
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathMacroTable.h"
 #include "InsetMathNest.h"
 
@@ -30,8 +30,8 @@ public:
 	///
 	MathMacroTemplate(docstring const & name, int nargs,
 		docstring const & type,
-		MathArray const & = MathArray(),
-		MathArray const & = MathArray());
+		MathData const & = MathData(),
+		MathData const & = MathData());
 	///
 	explicit MathMacroTemplate(const docstring & str);
 	///

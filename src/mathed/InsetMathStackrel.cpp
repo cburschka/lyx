@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathStackrel.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 
 

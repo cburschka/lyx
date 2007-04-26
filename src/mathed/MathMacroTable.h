@@ -21,7 +21,7 @@
 
 namespace lyx {
 
-class MathArray;
+class MathData;
 
 ///
 class MacroData {
@@ -37,7 +37,7 @@ public:
 	///
 	int numargs() const { return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,..
-	void expand(std::vector<MathArray> const & from, MathArray & to) const;
+	void expand(std::vector<MathData> const & from, MathData & to) const;
 	///
 	std::string requires() const { return requires_; }
 	///

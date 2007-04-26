@@ -13,7 +13,7 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "MathArray.h"
+#include "MathData.h"
 
 #include "insets/InsetBase.h"
 
@@ -104,9 +104,9 @@ public:
 	virtual void drawT(TextPainter &, int x, int y) const;
 
 	/// return cell given its number
-	virtual MathArray & cell(idx_type);
+	virtual MathData & cell(idx_type);
 	/// return cell given its number
-	virtual MathArray const & cell(idx_type) const;
+	virtual MathData const & cell(idx_type) const;
 
 	/// identifies certain types of insets
 	virtual InsetMathAMSArray       * asAMSArrayInset()       { return 0; }
@@ -161,7 +161,7 @@ public:
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?
-	virtual bool contains(MathArray const &) const { return false; }
+	virtual bool contains(MathData const &) const { return false; }
 	/// access to the lock (only nest array have one)
 	virtual bool lock() const { return false; }
 	/// access to the lock (only nest array have one)

@@ -44,7 +44,7 @@ MathMacroTemplate::MathMacroTemplate()
 
 
 MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
-		docstring const & type, MathArray const & ar1, MathArray const & ar2)
+		docstring const & type, MathData const & ar1, MathData const & ar2)
 	: InsetMathNest(2), numargs_(numargs), name_(name), type_(type)
 {
 	initMath();
@@ -62,7 +62,7 @@ MathMacroTemplate::MathMacroTemplate(docstring const & str)
 {
 	initMath();
 
-	MathArray ar;
+	MathData ar;
 	mathed_parse_cell(ar, str);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
@@ -187,7 +187,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 
 void MathMacroTemplate::read(Buffer const &, Lexer & lex)
 {
-	MathArray ar;
+	MathData ar;
 	mathed_parse_cell(ar, lex.getStream());
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;

@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathExFunc.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -29,7 +29,7 @@ InsetMathExFunc::InsetMathExFunc(docstring const & name)
 {}
 
 
-InsetMathExFunc::InsetMathExFunc(docstring const & name, MathArray const & ar)
+InsetMathExFunc::InsetMathExFunc(docstring const & name, MathData const & ar)
 	: InsetMathNest(1), name_(name)
 {
 	cell(0) = ar;

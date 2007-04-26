@@ -28,7 +28,7 @@ public:
 	///
 	explicit InsetMathExFunc(docstring const & name);
 	///
-	InsetMathExFunc(docstring const & name, MathArray const & ar);
+	InsetMathExFunc(docstring const & name, MathData const & ar);
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

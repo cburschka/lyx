@@ -47,9 +47,9 @@ public:
 	///
 	InsetMathXYMatrix const * targetMatrix() const;
 	///
-	MathArray const & targetCell() const;
+	MathData const & targetCell() const;
 	///
-	MathArray const & sourceCell() const;
+	MathData const & sourceCell() const;
 
 	///
 	bool up_;

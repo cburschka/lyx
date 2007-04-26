@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetMath.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "gettext.h"
 #include "debug.h"
@@ -28,17 +28,17 @@ namespace lyx {
 
 
 
-MathArray & InsetMath::cell(idx_type)
+MathData & InsetMath::cell(idx_type)
 {
-	static MathArray dummyCell;
+	static MathData dummyCell;
 	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
 	return dummyCell;
 }
 
 
-MathArray const & InsetMath::cell(idx_type) const
+MathData const & InsetMath::cell(idx_type) const
 {
-	static MathArray dummyCell;
+	static MathData dummyCell;
 	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
 	return dummyCell;
 }

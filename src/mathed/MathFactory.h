@@ -18,7 +18,7 @@
 namespace lyx {
 
 class MathAtom;
-class MathArray;
+class MathData;
 
 
 MathAtom createInsetMath(docstring const &);
@@ -28,7 +28,7 @@ MathAtom createInsetMath(char const * const);
  *  str is created by the frontend dialog's and returned to the LyX core.
  *  The function returns true if successful.
  */
-bool createInsetMath_fromDialogStr(docstring const &, MathArray &);
+bool createInsetMath_fromDialogStr(docstring const &, MathData &);
 
 
 } // namespace lyx

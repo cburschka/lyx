@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathSqrt.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "TextPainter.h"
 #include "LColor.h"

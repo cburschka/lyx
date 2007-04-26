@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathScript.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "InsetMathSymbol.h"
@@ -86,7 +86,7 @@ bool InsetMathScript::idxLast(Cursor & cur) const
 }
 
 
-MathArray const & InsetMathScript::down() const
+MathData const & InsetMathScript::down() const
 {
 	if (nargs() == 3)
 		return cell(2);
@@ -95,7 +95,7 @@ MathArray const & InsetMathScript::down() const
 }
 
 
-MathArray & InsetMathScript::down()
+MathData & InsetMathScript::down()
 {
 	if (nargs() == 3)
 		return cell(2);
@@ -104,14 +104,14 @@ MathArray & InsetMathScript::down()
 }
 
 
-MathArray const & InsetMathScript::up() const
+MathData const & InsetMathScript::up() const
 {
 	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
 }
 
 
-MathArray & InsetMathScript::up()
+MathData & InsetMathScript::up()
 {
 	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
@@ -122,26 +122,26 @@ void InsetMathScript::ensure(bool up)
 {
 	if (nargs() == 1) {
 		// just nucleus so far
-		cells_.push_back(MathArray());
+		cells_.push_back(MathData());
 		cell_1_is_up_ = up;
 	} else if (nargs() == 2 && !has(up)) {
 		if (up) {
 			cells_.push_back(cell(1));
 			cell(1).clear();
 		} else {
-			cells_.push_back(MathArray());
+			cells_.push_back(MathData());
 		}
 	}
 }
 
 
-MathArray const & InsetMathScript::nuc() const
+MathData const & InsetMathScript::nuc() const
 {
 	return cell(0);
 }
 
 
-MathArray & InsetMathScript::nuc()
+MathData & InsetMathScript::nuc()
 {
 	return cell(0);
 }
@@ -157,7 +157,7 @@ bool isAlphaSymbol(MathAtom const & at)
 		return true;
 
 	if (at->asFontInset()) {
-		MathArray const & ar = at->asFontInset()->cell(0);
+		MathData const & ar = at->asFontInset()->cell(0);
 		for (size_t i = 0; i < ar.size(); ++i) {
 			if (!(ar[i]->asCharInset() ||
 					(ar[i]->asSymbolInset() &&
@@ -676,7 +676,7 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		// invoke notifyCursorLeaves again and does not touch
 		// cur (since the top slice will be deleted
 		// afterwards))
-		MathArray ar = cell(0);
+		MathData ar = cell(0);
 		Cursor tmpcur = cur;
 		tmpcur.pop();
 		tmpcur.cell().erase(tmpcur.pos());

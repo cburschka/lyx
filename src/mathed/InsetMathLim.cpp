@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathLim.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "MathStream.h"
 #include "debug.h"
 
@@ -23,7 +23,7 @@ using std::endl;
 
 
 InsetMathLim::InsetMathLim
-	(MathArray const & f, MathArray const & x, MathArray const & x0)
+	(MathData const & f, MathData const & x, MathData const & x0)
 	: InsetMathNest(3)
 {
 	cell(0) = f;

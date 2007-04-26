@@ -14,7 +14,7 @@
 #define MATH_MACRO_H
 
 #include "InsetMathNest.h"
-#include "MathArray.h"
+#include "MathData.h"
 #include "InsetMathNest.h"
 #include "MathMacroTable.h"
 
@@ -52,7 +52,7 @@ public:
 	///
 	docstring name() const;
 	///
-	void setExpansion(MathArray const & exp, MathArray const & args) const;
+	void setExpansion(MathData const & exp, MathData const & args) const;
 
 	///
 	void validate(LaTeXFeatures &) const;
@@ -78,9 +78,9 @@ private:
 	/// name of macro
 	docstring name_;
 	/// the unexpanded macro defintition
-	mutable MathArray tmpl_;
+	mutable MathData tmpl_;
 	/// the macro substituted with our args
-	mutable MathArray expanded_;
+	mutable MathData expanded_;
 };
 
 
