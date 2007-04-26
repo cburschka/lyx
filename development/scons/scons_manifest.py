@@ -916,7 +916,7 @@ src_client_header_files = Split('''
 
 src_client_files = Split('''
     boost.cpp
-    client.C
+    client.cpp
     debug.cpp
     gettext.cpp
     Messages.cpp

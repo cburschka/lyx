@@ -20,7 +20,7 @@ lyxclient_LDADD = \
 
 lyxclient_SOURCES = \
 	boost.cpp \
-	client.C \
+	client.cpp \
 	debug.cpp \
 	debug.h \
 	gettext.cpp \
