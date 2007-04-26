@@ -7,30 +7,29 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" ; always here
- File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  SetOutPath "$INSTDIR\Resources\bind"
- File "${PRODUCT_SOURCEDIR}\Resources\bind\aqua.bind"
- File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
- SetOutPath "$INSTDIR\Resources\doc"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" ; must be here when another \doc file has been changed
- File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
- SetOutPath "$INSTDIR\Resources\doc\es"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Extended.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" ; must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\sciword.bind"
+ SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" ; must be here when another \doc file has been changed
+ SetOutPath "$INSTDIR\Resources\doc\it"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Customization.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\it\TOC.lyx" ; must be here when another \doc file has been changed
+ SetOutPath "$INSTDIR\Resources\examples"
+ Delete "$INSTDIR\Resources\examples\de\Dezimal.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
  SetOutPath "$INSTDIR\Resources\layouts"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief2.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\simplecv.layout"
+ SetOutPath "$INSTDIR\Resources\lyx2lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\tex_copy.py"
  SetOutPath "$INSTDIR\Resources\ui"
- File "${PRODUCT_SOURCEDIR}\Resources\ui\default.ui"
- File "${PRODUCT_SOURCEDIR}\Resources\ui\classic.ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
- File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
 FunctionEnd
 
