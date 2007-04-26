@@ -17,12 +17,11 @@
 #include "LaTeXFeatures.h"
 
 #include "BufferParams.h"
-#include "color.h"
+#include "Color.h"
 #include "debug.h"
 #include "Encoding.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "Color.h"
 #include "Language.h"
 #include "Lexer.h"
 #include "lyx_sty.h"

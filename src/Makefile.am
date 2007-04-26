@@ -60,144 +60,123 @@ endif
 
 
 lyx_SOURCES = \
-	Bidi.cpp \
-	Bidi.h \
-	BufferView.cpp \
-	BufferView.h \
-	Bullet.cpp \
-	Bullet.h \
-	BranchList.cpp \
-	BranchList.h \
-	Chktex.cpp \
-	Chktex.h \
-	color.cpp \
-	color.h \
-	ConverterCache.cpp \
-	ConverterCache.h \
-	CutAndPaste.cpp \
-	CutAndPaste.h \
-	DepTable.cpp \
-	DepTable.h \
-	FloatList.cpp \
-	FloatList.h \
-	Floating.cpp \
-	Floating.h \
-	FontIterator.cpp \
-	FontIterator.h \
-	FuncStatus.cpp \
-	FuncStatus.h \
-	InsetList.cpp \
-	InsetList.h \
-	Color.cpp \
-	Color.h \
-	LaTeX.cpp \
-	LaTeX.h \
-	LaTeXFeatures.cpp \
-	LaTeXFeatures.h \
-	LyXAction.cpp \
-	LyXAction.h \
-	MenuBackend.cpp \
-	MenuBackend.h \
-	ParagraphList.h \
-	ParagraphList_fwd.h \
-	ParagraphParameters.cpp \
-	ParagraphParameters.h \
-	PrinterParams.cpp \
-	PrinterParams.h \
-	RowList_fwd.h \
-	Spacing.cpp \
-	Spacing.h \
-	Thesaurus.cpp \
-	Thesaurus.h \
-	ToolbarBackend.cpp \
-	ToolbarBackend.h \
-	UpdateFlags.h \
-	WordLangTuple.h \
+	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	Author.cpp \
 	Author.h \
+	Bidi.cpp \
+	Bidi.h \
 	boost.cpp \
-	Box.h \
 	Box.cpp \
+	Box.h \
+	BranchList.cpp \
+	BranchList.h \
 	Buffer.cpp \
-	Buffer.h \
 	buffer_funcs.cpp \
 	buffer_funcs.h \
+	Buffer.h \
 	BufferList.cpp \
 	BufferList.h \
 	BufferParams.cpp \
 	BufferParams.h \
+	BufferView.cpp \
 	bufferview_funcs.cpp \
 	bufferview_funcs.h \
+	BufferView.h \
+	Bullet.cpp \
+	Bullet.h \
 	Changes.cpp \
 	Changes.h \
+	Chktex.cpp \
+	Chktex.h \
+	Color.cpp \
+	Color.h \
 	config.h.in \
+	ConverterCache.cpp \
+	ConverterCache.h \
 	Converter.cpp \
 	Converter.h \
-	Counters.cpp \
-	Counters.h \
 	CoordCache.cpp \
 	CoordCache.h \
+	Counters.cpp \
+	Counters.h \
 	Cursor.cpp \
 	Cursor.h \
 	CursorSlice.cpp \
 	CursorSlice.h \
+	CutAndPaste.cpp \
+	CutAndPaste.h \
 	debug.cpp \
 	debug.h \
+	DepTable.cpp \
+	DepTable.h \
 	Dimension.cpp \
 	Dimension.h \
+	DispatchResult.h \
 	DocIterator.cpp \
 	DocIterator.h \
-	DispatchResult.h \
 	Encoding.cpp \
 	Encoding.h \
 	ErrorList.cpp \
 	ErrorList.h \
 	Exporter.cpp \
 	Exporter.h \
-	gettext.cpp \
-	gettext.h \
-	factory.h \
 	factory.cpp \
+	factory.h \
+	Floating.cpp \
+	Floating.h \
+	FloatList.cpp \
+	FloatList.h \
+	FontIterator.cpp \
+	FontIterator.h \
 	Format.cpp \
 	Format.h \
-	FuncRequest.h \
 	FuncRequest.cpp \
+	FuncRequest.h \
+	FuncStatus.cpp \
+	FuncStatus.h \
+	gettext.cpp \
+	gettext.h \
 	Graph.cpp \
 	Graph.h \
 	Importer.cpp \
 	Importer.h \
-	Intl.cpp \
-	Intl.h \
 	InsetIterator.cpp \
 	InsetIterator.h \
+	InsetList.cpp \
+	InsetList.h \
+	Intl.cpp \
+	Intl.h \
 	kb_keymap.cpp \
 	kb_keymap.h \
 	kb_sequence.cpp \
 	kb_sequence.h \
+	KmodInfo.h \
 	Language.cpp \
 	Language.h \
-	Session.cpp \
-	Session.h \
+	LaTeX.cpp \
+	LaTeXFeatures.cpp \
+	LaTeXFeatures.h \
+	LaTeX.h \
 	layout.h \
 	lengthcommon.cpp \
 	lengthcommon.h \
 	Lexer.cpp \
 	Lexer.h \
 	lfuns.h \
+	LyXAction.cpp \
+	LyXAction.h \
 	lyx_cb.cpp \
 	lyx_cb.h \
 	LyX.cpp \
-	LyX.h \
-	lyx_sty.cpp \
-	lyx_sty.h \
-	LyXFont.cpp \
-	LyXFont.h \
 	lyxfind.cpp \
 	lyxfind.h \
+	LyXFont.cpp \
+	LyXFont.h \
 	LyXFunc.cpp \
 	LyXFunc.h \
 	LyXGlueLength.cpp \
 	LyXGlueLength.h \
+	LyX.h \
 	LyXLayout.cpp \
 	LyXLayout.h \
 	lyxlayout_ptr_fwd.h \
@@ -205,19 +184,21 @@ lyx_SOURCES = \
 	LyXLength.h \
 	LyXRC.cpp \
 	LyXRC.h \
-	Row.cpp \
-	Row.h \
 	LyXServer.cpp \
 	LyXServer.h \
 	LyXServerSocket.cpp \
 	LyXServerSocket.h \
-	LyXText.h \
+	lyx_sty.cpp \
+	lyx_sty.h \
 	LyXTextClass.cpp \
 	LyXTextClass.h \
 	LyXTextClassList.cpp \
 	LyXTextClassList.h \
+	LyXText.h \
 	LyXVC.cpp \
 	LyXVC.h \
+	MenuBackend.cpp \
+	MenuBackend.h \
 	Messages.cpp \
 	Messages.h \
 	MetricsInfo.cpp \
@@ -225,56 +206,73 @@ lyx_SOURCES = \
 	Mover.cpp \
 	Mover.h \
 	output.cpp \
-	output.h \
-	OutputParams.cpp \
-	OutputParams.h \
 	output_docbook.cpp \
 	output_docbook.h \
+	output.h \
 	output_latex.cpp \
 	output_latex.h \
+	OutputParams.cpp \
+	OutputParams.h \
 	output_plaintext.cpp \
 	output_plaintext.h \
 	paper.h \
 	Paragraph.cpp \
-	Paragraph.h \
-	ParagraphMetrics.cpp \
-	ParagraphMetrics.h \
 	paragraph_funcs.cpp \
 	paragraph_funcs.h \
+	Paragraph.h \
+	ParagraphList_fwd.h \
+	ParagraphList.h \
+	ParagraphMetrics.cpp \
+	ParagraphMetrics.h \
+	ParagraphParameters.cpp \
+	ParagraphParameters.h \
 	ParIterator.cpp \
 	ParIterator.h \
-	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
-	SpellBase.h \
+	PrinterParams.cpp \
+	PrinterParams.h \
+	Row.cpp \
+	Row.h \
+	RowList_fwd.h \
 	rowpainter.cpp \
 	rowpainter.h \
+	Session.cpp \
+	Session.h \
 	sgml.cpp \
 	sgml.h \
+	Spacing.cpp \
+	Spacing.h \
+	SpellBase.h \
 	tex-accent.cpp \
 	tex-accent.h \
-	tex-strings.cpp \
-	tex-strings.h \
 	TexRow.cpp \
 	TexRow.h \
-	text.cpp \
+	tex-strings.cpp \
+	tex-strings.h \
 	text2.cpp \
 	text3.cpp \
+	text.cpp \
 	TextMetrics.cpp \
 	TextMetrics.h \
+	Thesaurus.cpp \
+	Thesaurus.h \
 	TocBackend.cpp \
 	TocBackend.h \
 	toc.cpp \
 	toc.h \
+	ToolbarBackend.cpp \
+	ToolbarBackend.h \
 	Trans.cpp \
 	Trans.h \
-	KmodInfo.h \
 	TransState.cpp \
 	TransState.h \
 	Undo.cpp \
 	Undo.h \
+	UpdateFlags.h \
 	VCBackend.cpp \
 	VCBackend.h \
 	version.C \
 	version.h \
+	WordLangTuple.h \
 	VSpace.cpp \
 	VSpace.h
 

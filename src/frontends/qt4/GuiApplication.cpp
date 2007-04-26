@@ -27,7 +27,7 @@
 #include "support/Package.h"
 
 #include "BufferView.h"
-#include "color.h"
+#include "Color.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "LyX.h"
