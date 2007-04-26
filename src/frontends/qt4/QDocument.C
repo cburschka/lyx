@@ -1,5 +1,5 @@
 /**
- * \file QDocument.C
+ * \file QDocument.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -18,11 +18,11 @@
 #include <QCloseEvent>
 
 #include "FloatPlacement.h"
-#include "lengthcombo.h"
-#include "validators.h"
-#include "panelstack.h"
+#include "LengthCombo.h"
+#include "Validator.h"
+#include "PanelStack.h"
 #include "Qt2BC.h"
-#include "checkedwidgets.h"
+#include "CheckedLineEdit.h"
 
 // For latexHighlighter use in the preamble.
 #include "QViewSource.h"

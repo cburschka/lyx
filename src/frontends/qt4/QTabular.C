@@ -1,5 +1,5 @@
 /**
- * \file QTabular.C
+ * \file QTabular.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,12 +12,12 @@
 
 #include <config.h>
 
-#include "checkedwidgets.h"
+#include "CheckedLineEdit.h"
 #include "QTabular.h"
 #include "Qt2BC.h"
 
-#include "lengthcombo.h"
-#include "validators.h"
+#include "LengthCombo.h"
+#include "Validator.h"
 #include "qt_helpers.h"
 
 #include "controllers/ButtonController.h"
@@ -31,7 +31,7 @@
 #include <QRadioButton>
 #include <QLineEdit>
 
-#include "qsetborder.h"
+#include "QSetBorder.h"
 
 using std::string;
 

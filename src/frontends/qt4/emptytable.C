@@ -1,5 +1,5 @@
 /**
- * \file emptytable.C
+ * \file EmptyTable.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "emptytable.h"
+#include "EmptyTable.h"
 
 #include <QPainter>
 #include <QMouseEvent>
@@ -113,7 +113,7 @@ void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 }
 */
 
-#include "emptytable_moc.cpp"
+#include "EmptyTable_moc.cpp"
 
 
 namespace lyx {

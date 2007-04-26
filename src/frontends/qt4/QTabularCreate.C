@@ -1,5 +1,5 @@
 /**
- * \file QTabularCreate.C
+ * \file QTabularCreate.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include "QTabularCreate.h"
 #include "Qt2BC.h"
-#include "emptytable.h"
+#include "EmptyTable.h"
 
 #include "controllers/ControlTabularCreate.h"
 

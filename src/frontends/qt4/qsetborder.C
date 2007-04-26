@@ -1,5 +1,5 @@
 /**
- * \file qsetborder.C
+ * \file QSetBorder.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "qsetborder.h"
+#include "QSetBorder.h"
 
 #include <QPainter>
 
@@ -241,7 +241,7 @@ bool QSetBorder::getBottom()
 	return bottom_.set;
 }
 
-#include "qsetborder_moc.cpp"
+#include "QSetBorder_moc.cpp"
 
 
 namespace lyx {

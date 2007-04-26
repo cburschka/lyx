@@ -1,5 +1,5 @@
 /**
- * \file QBranches.C
+ * \file QBranches.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 #include "QBranches.h"
 
 #include "GuiApplication.h"
-#include "validators.h"
+#include "Validator.h"
 #include "qt_helpers.h"
 
 #include "bufferparams.h"

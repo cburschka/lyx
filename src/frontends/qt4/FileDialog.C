@@ -1,5 +1,5 @@
 /**
- * \file qt4/FileDialog.C
+ * \file qt4/FileDialog.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 
 #include "frontends/FileDialog.h"
 
-#include "FileDialog_private.h"
+#include "LyXFileDialog.h"
 #include "qt_helpers.h"
 
 #include "debug.h"

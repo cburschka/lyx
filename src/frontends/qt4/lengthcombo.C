@@ -1,5 +1,5 @@
 /**
- * \file lengthcombo.C
+ * \file LengthCombo.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "lengthcombo.h"
+#include "LengthCombo.h"
 #include "lengthcommon.h"
 #include "qt_helpers.h"
 
@@ -70,4 +70,4 @@ void LengthCombo::noPercents()
 	}
 }
 
-#include "lengthcombo_moc.cpp"
+#include "LengthCombo_moc.cpp"

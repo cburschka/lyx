@@ -1,5 +1,5 @@
 /**
- * \file QGraphics.C
+ * \file QGraphics.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,12 +15,12 @@
 
 #include "QGraphics.h"
 
-#include "checkedwidgets.h"
-#include "lengthcombo.h"
+#include "CheckedLineEdit.h"
+#include "LengthCombo.h"
 #include "QGraphicsDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "validators.h"
+#include "Validator.h"
 
 #include "lengthcommon.h"
 #include "lyxrc.h"

@@ -1,5 +1,5 @@
 /**
- * \file QExternal.C
+ * \file QExternal.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -30,10 +30,10 @@
 #include "QExternal.h"
 #include "Qt2BC.h"
 
-#include "checkedwidgets.h"
-#include "lengthcombo.h"
+#include "CheckedLineEdit.h"
+#include "LengthCombo.h"
 #include "qt_helpers.h"
-#include "validators.h"
+#include "Validator.h"
 
 #include <QLineEdit>
 #include <QPushButton>

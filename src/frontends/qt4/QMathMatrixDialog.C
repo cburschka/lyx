@@ -1,5 +1,5 @@
 /**
- * \file QMathMatrixDialog.C
+ * \file QMathMatrixDialog.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include "QMathMatrixDialog.h"
 
-#include "emptytable.h"
+#include "EmptyTable.h"
 #include "qt_helpers.h"
 
 #include "controllers/ControlMath.h"

@@ -20,7 +20,7 @@ libfrontends_la_SOURCES = \
 	Application.h \
 	NoGuiFontLoader.h \
 	NoGuiFontMetrics.h \
-	Dialogs.C \
+	Dialogs.cpp \
 	Dialogs.h \
 	FileDialog.h \
 	FontLoader.h \

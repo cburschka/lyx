@@ -30,34 +30,34 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends/controllers
 
 libqt4_la_SOURCES = \
-	Alert_pimpl.C \
-	ColorCache.h ColorCache.C \
+	Alert_pimpl.cpp \
+	ColorCache.h ColorCache.cpp \
 	DockView.h \
-	Dialogs.C \
-	FileDialog.C \
-	GuiClipboard.h GuiClipboard.C \
-	GuiFontLoader.h GuiFontLoader.C \
-	GuiFontMetrics.h GuiFontMetrics.C \
-	GuiSelection.h GuiSelection.C \
-	LyXKeySymFactory.C \
-	QLMenubar.C QLMenubar.h \
-	QBox.C QBox.h \
-	QBranches.C QBranches.h \
-	QCitation.C QCitation.h \
-	QDialogView.C QDialogView.h \
-	QFloat.C QFloat.h \
-	QGraphics.C QGraphics.h \
-	QLImage.C QLImage.h \
-	QViewSource.C QViewSource.h \
-	QLPainter.C QLPainter.h \
-	QLyXKeySym.C QLyXKeySym.h \
-	QPrint.C QPrint.h \
-	Qt2BC.C	Qt2BC.h	\
-	checkedwidgets.C checkedwidgets.h \
-	panelstack.h panelstack.C \
-	qfontexample.h qfontexample.C \
+	Dialogs.cpp \
+	FileDialog.cpp \
+	GuiClipboard.h GuiClipboard.cpp \
+	GuiFontLoader.h GuiFontLoader.cpp \
+	GuiFontMetrics.h GuiFontMetrics.cpp \
+	GuiSelection.h GuiSelection.cpp \
+	LyXKeySymFactory.cpp \
+	QLMenubar.cpp QLMenubar.h \
+	QBox.cpp QBox.h \
+	QBranches.cpp QBranches.h \
+	QCitation.cpp QCitation.h \
+	QDialogView.cpp QDialogView.h \
+	QFloat.cpp QFloat.h \
+	QGraphics.cpp QGraphics.h \
+	QLImage.cpp QLImage.h \
+	QViewSource.cpp QViewSource.h \
+	QLPainter.cpp QLPainter.h \
+	QLyXKeySym.cpp QLyXKeySym.h \
+	QPrint.cpp QPrint.h \
+	Qt2BC.cpp	Qt2BC.h	\
+	CheckedLineEdit.cpp CheckedLineEdit.h \
+	PanelStack.h PanelStack.cpp \
+	QFontExample.h QFontExample.cpp \
 	qlkey.h \
-	qt_helpers.h qt_helpers.C \
-	qtTimeout.C qtTimeout.h \
-	UrlView.C UrlView.h \
+	qt_helpers.h qt_helpers.cpp \
+	qtTimeout.cpp qtTimeout.h \
+	UrlView.cpp UrlView.h \
 	$(MOCFILES)

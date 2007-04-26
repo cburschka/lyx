@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file validators.h
+ * \file Validator.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,8 +22,8 @@
  * further details.
  */
 
-#ifndef VALIDATORS_H
-#define VALIDATORS_H
+#ifndef VALIDATOR_H
+#define VALIDATOR_H
 
 #include "lyxlength.h"
 #include "lyxgluelength.h"
@@ -165,4 +165,4 @@ PathValidator * getPathValidator(QLineEdit *);
 
 } // namespace lyx
 
-# endif // NOT VALIDATORS_H
+# endif // NOT VALIDATOR_H

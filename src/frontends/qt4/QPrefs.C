@@ -1,5 +1,5 @@
 /**
- * \file QPrefs.C
+ * \file QPrefs.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -20,8 +20,8 @@
 #include "debug.h"
 #include "LColor.h"
 #include "lyxfont.h"
-#include "panelstack.h"
-#include "qfontexample.h"
+#include "PanelStack.h"
+#include "QFontExample.h"
 #include "gettext.h"
 
 #include "support/lstrings.h"

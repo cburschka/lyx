@@ -1,5 +1,5 @@
 /**
- * \file FileDialog_private.C
+ * \file LyXFileDialog.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "FileDialog_private.h"
+#include "LyXFileDialog.h"
 
 #include "qt_helpers.h"
 
@@ -84,5 +84,5 @@ void LyXFileDialog::buttonClicked()
 
 } // namespace lyx
 
-#include "FileDialog_private_moc.cpp"
+#include "LyXFileDialog_moc.cpp"
 

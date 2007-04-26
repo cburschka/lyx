@@ -1,5 +1,5 @@
 /**
- * \file qt_helpers.C
+ * \file qt_helpers.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "lengthcombo.h"
+#include "LengthCombo.h"
 #include "qt_helpers.h"
 
 #include "lengthcommon.h"

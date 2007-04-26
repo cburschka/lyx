@@ -1,5 +1,5 @@
 /**
- * \file panelstack.C
+ * \file PanelStack.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "panelstack.h"
+#include "PanelStack.h"
 
 #include "qt_helpers.h"
 
@@ -139,4 +139,4 @@ QSize PanelStack::sizeHint() const
 } // namespace frontend
 } // namespace lyx
 
-#include "panelstack_moc.cpp"
+#include "PanelStack_moc.cpp"

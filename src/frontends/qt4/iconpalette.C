@@ -1,5 +1,5 @@
 /**
- * \file iconpalette.C
+ * \file IconPalette.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "iconpalette.h"
+#include "IconPalette.h"
 #include "qt_helpers.h"
 #include "controllers/ControlMath.h" // for find_xpm
 
@@ -182,4 +182,4 @@ void ButtonMenu::updateParent()
 } // namespace frontend
 } // namespace lyx
 
-#include "iconpalette_moc.cpp"
+#include "IconPalette_moc.cpp"

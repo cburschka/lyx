@@ -1,5 +1,5 @@
 /**
- * \file QBox.C
+ * \file QBox.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,13 +14,13 @@
 
 #include "QBox.h"
 
-#include "checkedwidgets.h"
-#include "lengthcombo.h"
+#include "CheckedLineEdit.h"
+#include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Qt2BC.h"
 #include "lengthcommon.h"
 #include "lyxrc.h" // to set the default length values
-#include "validators.h"
+#include "Validator.h"
 
 #include "controllers/ControlBox.h"
 #include "controllers/frontend_helpers.h"

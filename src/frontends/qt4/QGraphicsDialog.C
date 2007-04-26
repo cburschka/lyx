@@ -1,5 +1,5 @@
 /**
- * \file QGraphicsDialog.C
+ * \file QGraphicsDialog.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -16,8 +16,8 @@
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
 
-#include "lengthcombo.h"
-#include "validators.h"
+#include "LengthCombo.h"
+#include "Validator.h"
 #include "qt_helpers.h"
 
 #include "debug.h"

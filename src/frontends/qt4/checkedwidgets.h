@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt4/checkedwidgets.h
+ * \file qt4/CheckedLineEdit.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef CHECKEDWIDGETS_H
-#define CHECKEDWIDGETS_H
+#ifndef CHECKEDLINEEDIT_H
+#define CHECKEDLINEEDIT_H
 
 #include "BCView.h"
 
@@ -39,4 +39,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // CHECKEDWIDGETS_H
+#endif // CHECKEDLINEEDIT_H

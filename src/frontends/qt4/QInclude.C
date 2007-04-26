@@ -1,5 +1,5 @@
 /**
- * \file QInclude.C
+ * \file QInclude.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,10 +14,10 @@
 
 #include "QInclude.h"
 
-#include "checkedwidgets.h"
+#include "CheckedLineEdit.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "validators.h"
+#include "Validator.h"
 
 #include "lyxrc.h"
 

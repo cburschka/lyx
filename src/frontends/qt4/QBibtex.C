@@ -1,5 +1,5 @@
 /**
- * \file QBibtex.C
+ * \file QBibtex.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -17,9 +17,9 @@
 #include "ui/BibtexAddUi.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "validators.h"
+#include "Validator.h"
 #include "lyxrc.h"
-#include "checkedwidgets.h"
+#include "CheckedLineEdit.h"
 
 #include "controllers/ControlBibtex.h"
 #include "controllers/ButtonPolicies.h"

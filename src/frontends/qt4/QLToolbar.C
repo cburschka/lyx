@@ -1,5 +1,5 @@
 /**
- * \file qt4/QLToolbar.C
+ * \file qt4/QLToolbar.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -21,7 +21,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "lyxfunc.h"
-#include "iconpalette.h"
+#include "IconPalette.h"
 
 #include "GuiView.h"
 #include "QLToolbar.h"
