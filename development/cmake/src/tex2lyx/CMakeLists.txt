@@ -14,7 +14,7 @@ set(LINKED_FILES
 	${TOP_SRC_DIR}/src/Counters.cpp
 	${TOP_SRC_DIR}/src/LyXLayout.cpp
 	${TOP_SRC_DIR}/src/LyXTextClass.cpp
-	${TOP_SRC_DIR}/src/LyXLex.cpp
+	${TOP_SRC_DIR}/src/Lexer.cpp
 )
 
 set(tex2lyx_sources
