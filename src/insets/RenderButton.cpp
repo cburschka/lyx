@@ -12,7 +12,7 @@
 
 #include "RenderButton.h"
 
-#include "LColor.h"
+#include "Color.h"
 #include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
@@ -67,14 +67,14 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 {
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);
-	font.setColor(LColor::command);
+	font.setColor(Color::command);
 	font.decSize();
 
 	if (editable_) {
 		pi.pain.buttonText(x + 2, y, text_, font, renderState());
 	} else {
 		pi.pain.rectText(x + 2, y, text_, font,
-				 LColor::commandbg, LColor::commandframe);
+				 Color::commandbg, Color::commandframe);
 	}
 }
 

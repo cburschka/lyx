@@ -20,7 +20,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "OutputParams.h"
@@ -99,17 +99,17 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 
 	docstring s = _("Branch: ") + params_.branch;
-	font.setColor(LColor::foreground);
+	font.setColor(Color::foreground);
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
-		LColor_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
-		if (c == LColor::none) {
-			c = LColor::error;
+		Color_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
+		if (c == Color::none) {
+			c = Color::error;
 			s = _("Undef: ") + s;
 		}
 		setBackgroundColor(c);
 	} else
-		setBackgroundColor(LColor::background);
+		setBackgroundColor(Color::background);
 	setLabel(isOpen() ? s : getNewLabel(s) );
 	setLabelFont(font);
 }

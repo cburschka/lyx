@@ -16,7 +16,7 @@
 #include "MathStream.h"
 
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "frontends/Painter.h"
 
@@ -61,7 +61,7 @@ void InsetMathTFrac::draw(PainterInfo & pi, int x, int y) const
 	int m = x + dim_.wid / 2;
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
-	pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, LColor::math);
+	pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, Color::math);
 	setPosCache(pi, x, y);
 }
 

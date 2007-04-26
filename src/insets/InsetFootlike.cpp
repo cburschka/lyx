@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferParams.h"
-#include "LColor.h"
+#include "Color.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 
@@ -28,7 +28,7 @@ InsetFootlike::InsetFootlike(BufferParams const & bp)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::collapsable);
+	font.setColor(Color::collapsable);
 	setLabelFont(font);
 }
 
@@ -39,7 +39,7 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::collapsable);
+	font.setColor(Color::collapsable);
 	setLabelFont(font);
 }
 

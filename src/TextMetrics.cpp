@@ -28,7 +28,7 @@
 #include "debug.h"
 #include "FuncRequest.h"
 #include "FontIterator.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXLength.h"
 #include "LyXRC.h"
 #include "LyXText.h"

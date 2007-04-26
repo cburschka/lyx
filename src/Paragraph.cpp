@@ -27,7 +27,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXLength.h"
 #include "LyXFont.h"
 #include "LyXRC.h"
@@ -969,13 +969,13 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 					     << endl;
 		}
 		switch (fcit->font().color()) {
-		case LColor::none:
-		case LColor::inherit:
-		case LColor::ignore:
+		case Color::none:
+		case Color::inherit:
+		case Color::ignore:
 			// probably we should put here all interface colors used for
 			// font displaying! For now I just add this ones I know of (Jug)
-		case LColor::latex:
-		case LColor::note:
+		case Color::latex:
+		case Color::note:
 			break;
 		default:
 			features.require("color");

@@ -37,7 +37,7 @@
 #include "FontIterator.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXLength.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -573,9 +573,9 @@ int LyXText::leftMargin(Buffer const & buffer, int max_width,
 }
 
 
-LColor_color LyXText::backgroundColor() const
+Color_color LyXText::backgroundColor() const
 {
-	return LColor_color(LColor::color(background_color_));
+	return Color_color(Color::color(background_color_));
 }
 
 
@@ -1440,7 +1440,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		// paint only one rectangle
 		int const b( !isRTL(*bv.buffer(), par1) ? x + x1 : x + X1 );
 		int const w( !isRTL(*bv.buffer(), par1) ? X2 - x1 : x2 - X1 );
-		pi.pain.fillRectangle(b, y1, w, y2 - y1, LColor::selection);
+		pi.pain.fillRectangle(b, y1, w, y2 - y1, Color::selection);
 		return;
 	}
 
@@ -1450,13 +1450,13 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 
 	// paint upper rectangle
 	pi.pain.fillRectangle(x + x1, y1, x2 - x1, y2 - y1,
-				      LColor::selection);
+				      Color::selection);
 	// paint bottom rectangle
 	pi.pain.fillRectangle(x + X1, Y1, X2 - X1, Y2 - Y1,
-				      LColor::selection);
+				      Color::selection);
 	// paint center rectangle
 	pi.pain.fillRectangle(x, y2, tm.width(),
-			      Y1 - y2, LColor::selection);
+			      Y1 - y2, Color::selection);
 }
 
 

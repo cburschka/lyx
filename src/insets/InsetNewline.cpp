@@ -13,7 +13,7 @@
 #include "InsetNewline.h"
 
 #include "debug.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -101,7 +101,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 		xp[2] = int(x + wid * 0.625);
 	}
 
-	pi.pain.lines(xp, yp, 3, LColor::eolmarker);
+	pi.pain.lines(xp, yp, 3, Color::eolmarker);
 
 	yp[0] = int(y - 0.500 * asc * 0.75);
 	yp[1] = int(y - 0.500 * asc * 0.75);
@@ -117,7 +117,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 		xp[2] = int(x);
 	}
 
-	pi.pain.lines(xp, yp, 3, LColor::eolmarker);
+	pi.pain.lines(xp, yp, 3, Color::eolmarker);
 }
 
 

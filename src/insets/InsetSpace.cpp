@@ -16,7 +16,7 @@
 #include "InsetSpace.h"
 
 #include "debug.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -101,9 +101,9 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	yp[3] = y - max(h / 4, 1);
 
 	if (kind_ == PROTECTED || kind_ == ENSPACE || kind_ == NEGTHIN)
-		pi.pain.lines(xp, yp, 4, LColor::latex);
+		pi.pain.lines(xp, yp, 4, Color::latex);
 	else
-		pi.pain.lines(xp, yp, 4, LColor::special);
+		pi.pain.lines(xp, yp, 4, Color::special);
 }
 
 

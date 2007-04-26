@@ -13,7 +13,7 @@
 #include "color.h"
 #include "ColorCache.h"
 
-#include "LColor.h"
+#include "Color.h"
 
 
 namespace lyx {
@@ -24,7 +24,7 @@ const QColor grey80(0xcc, 0xcc, 0xcc);
 const QColor grey90(0xe5, 0xe5, 0xe5);
 const QColor none = Qt::black;
 
-QColor const & ColorCache::get(LColor_color col) const
+QColor const & ColorCache::get(Color_color col) const
 {
 	lcolor_map::const_iterator cit = colormap.find(col);
 	if (cit != colormap.end())

@@ -24,7 +24,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -50,7 +50,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::collapsable);
+	font.setColor(Color::collapsable);
 	setLabelFont(font);
 	params_.type = type;
 	params_.width = LyXLength(50, LyXLength::PCW);

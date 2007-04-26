@@ -24,7 +24,7 @@ namespace lyx {
 using std::auto_ptr;
 using std::string;
 
-InsetMathColor::InsetMathColor(bool oldstyle, LColor_color const & color)
+InsetMathColor::InsetMathColor(bool oldstyle, Color_color const & color)
 	: InsetMathNest(1), oldstyle_(oldstyle),
 	  color_(from_utf8(lcolor.getLaTeXName(color)))
 {}
@@ -54,7 +54,7 @@ bool InsetMathColor::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 {
-	LColor_color origcol = pi.base.font.color();
+	Color_color origcol = pi.base.font.color();
 	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_)));
 	cell(0).draw(pi, x + 1, y);
 	pi.base.font.setColor(origcol);

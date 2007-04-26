@@ -60,9 +60,9 @@ public:
 	void setColor(RGBColor const &);
 	/**
 	 * Set color from a string "#rrggbb".
-	 * Use LColor:background if the string is no valid color.
+	 * Use Color:background if the string is no valid color.
 	 * This ensures compatibility with LyX 1.4.0 that had the symbolic
-	 * color "none" that was displayed as LColor:background.
+	 * color "none" that was displayed as Color:background.
 	 */
 	void setColor(std::string const &);
 

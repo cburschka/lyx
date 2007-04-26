@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LColor.h
+ * \file Color.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -33,7 +33,7 @@ namespace lyx {
  * To serve as a color-namespace container (the Color enum).
  */
 /**
- * \class LColor
+ * \class Color
  *
  * A class holding color definitions and associated names for
  * LaTeX, X11, the GUI, and LyX internally.
@@ -44,7 +44,7 @@ namespace lyx {
  * - A logical color, such as no color, inherit, math
  */
 
-class LColor
+class Color
 // made copyable for same reasons as LyXRC was made copyable. See there for
 // explanation.
 {
@@ -184,18 +184,18 @@ public:
 
 
 	///
-	LColor();
+	Color();
 	///
-	LColor(LColor const &);
+	Color(Color const &);
 	///
-	~LColor();
+	~Color();
 	///
-	LColor & operator=(LColor);
+	Color & operator=(Color);
 
 	/** set the given LyX color to the color defined by the X11 name given
 	 *  \returns true if successful.
 	 */
-	bool setColor(LColor::color col, std::string const & x11name);
+	bool setColor(Color::color col, std::string const & x11name);
 
 	/** set the given LyX color to the color defined by the X11
 	 *  name given \returns true if successful. A new color entry
@@ -204,24 +204,24 @@ public:
 	bool setColor(std::string const & lyxname, std::string const & x11name);
 
 	/// Get the GUI name of \c color.
-	docstring const getGUIName(LColor::color c) const;
+	docstring const getGUIName(Color::color c) const;
 
 	/// Get the X11 name of \c color.
-	std::string const getX11Name(LColor::color c) const;
+	std::string const getX11Name(Color::color c) const;
 
 	/// Get the LaTeX name of \c color.
-	std::string const getLaTeXName(LColor::color c) const;
+	std::string const getLaTeXName(Color::color c) const;
 
 	/// Get the LyX name of \c color.
-	std::string const getLyXName(LColor::color c) const;
+	std::string const getLyXName(Color::color c) const;
 
-	/// \returns the LColor::color associated with the LyX name.
-	LColor::color getFromLyXName(std::string const & lyxname) const;
-	/// \returns the LColor::color associated with the LaTeX name.
-	LColor::color getFromLaTeXName(std::string const & latexname) const;
+	/// \returns the Color::color associated with the LyX name.
+	Color::color getFromLyXName(std::string const & lyxname) const;
+	/// \returns the Color::color associated with the LaTeX name.
+	Color::color getFromLaTeXName(std::string const & latexname) const;
 private:
 	///
-	void addColor(LColor::color c, std::string const & lyxname) const;
+	void addColor(Color::color c, std::string const & lyxname) const;
 	///
 	class Pimpl;
 	///
@@ -229,26 +229,26 @@ private:
 };
 
 
-/** \c LColor_color is a wrapper for LColor::color. It can be forward-declared and
- *  passed as a function argument without having to expose LColor.h.
+/** \c Color_color is a wrapper for Color::color. It can be forward-declared and
+ *  passed as a function argument without having to expose Color.h.
  */
-class LColor_color {
-	LColor::color val_;
+class Color_color {
+	Color::color val_;
 public:
 	/** The default constructor is nasty,
-	 *  but allows us to use LColor_color in STL containers.
+	 *  but allows us to use Color_color in STL containers.
 	 */
-	LColor_color() : val_(static_cast<LColor::color>(-1)) {}
+	Color_color() : val_(static_cast<Color::color>(-1)) {}
 
-	LColor_color(LColor::color val) : val_(val) {}
-	operator LColor::color() const{ return val_; }
+	Color_color(Color::color val) : val_(val) {}
+	operator Color::color() const{ return val_; }
 };
 
 
 /// the current color definitions
-extern LColor lcolor;
+extern Color lcolor;
 /// the system color definitions
-extern LColor system_lcolor;
+extern Color system_lcolor;
 
 
 } // namespace lyx

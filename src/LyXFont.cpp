@@ -20,7 +20,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 
@@ -116,7 +116,7 @@ LyXFont::FontBits LyXFont::sane = {
 	MEDIUM_SERIES,
 	UP_SHAPE,
 	SIZE_NORMAL,
-	LColor::none,
+	Color::none,
 	OFF,
 	OFF,
 	OFF,
@@ -128,7 +128,7 @@ LyXFont::FontBits LyXFont::inherit = {
 	INHERIT_SERIES,
 	INHERIT_SHAPE,
 	INHERIT_SIZE,
-	LColor::inherit,
+	Color::inherit,
 	INHERIT,
 	INHERIT,
 	INHERIT,
@@ -140,7 +140,7 @@ LyXFont::FontBits LyXFont::ignore = {
 	IGNORE_SERIES,
 	IGNORE_SHAPE,
 	IGNORE_SIZE,
-	LColor::ignore,
+	Color::ignore,
 	IGNORE,
 	IGNORE,
 	IGNORE,
@@ -198,9 +198,9 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
 
 
 
-LColor_color LyXFont::color() const
+Color_color LyXFont::color() const
 {
-	return LColor::color(bits.color);
+	return Color::color(bits.color);
 }
 
 
@@ -259,7 +259,7 @@ void LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
 }
 
 
-void LyXFont::setColor(LColor_color c)
+void LyXFont::setColor(Color_color c)
 {
 	bits.color = int(c);
 }
@@ -417,8 +417,8 @@ void LyXFont::update(LyXFont const & newfont,
 		setLanguage(newfont.language());
 
 	if (newfont.color() == color() && toggleall)
-		setColor(LColor::inherit); // toggle 'back'
-	else if (newfont.color() != LColor::ignore)
+		setColor(Color::inherit); // toggle 'back'
+	else if (newfont.color() != Color::ignore)
 		setColor(newfont.color());
 }
 
@@ -441,7 +441,7 @@ void LyXFont::reduce(LyXFont const & tmplt)
 	if (noun() == tmplt.noun())
 		setNoun(INHERIT);
 	if (color() == tmplt.color())
-		setColor(LColor::inherit);
+		setColor(Color::inherit);
 }
 
 
@@ -474,7 +474,7 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 	if (bits.noun == INHERIT)
 		bits.noun = tmplt.bits.noun;
 
-	if (bits.color == LColor::inherit)
+	if (bits.color == Color::inherit)
 		bits.color = tmplt.bits.color;
 
 	return *this;
@@ -488,7 +488,7 @@ bool LyXFont::resolved() const
 		shape() != INHERIT_SHAPE && size() != INHERIT_SIZE &&
 		emph() != INHERIT && underbar() != INHERIT &&
 		noun() != INHERIT &&
-		color() != LColor::inherit);
+		color() != Color::inherit);
 }
 
 
@@ -503,7 +503,7 @@ docstring const LyXFont::stateText(BufferParams * params) const
 		os << _(GUIShapeNames[shape()]) << ", ";
 	if (size() != INHERIT_SIZE)
 		os << _(GUISizeNames[size()]) << ", ";
-	if (color() != LColor::inherit)
+	if (color() != Color::inherit)
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
 		os << bformat(_("Emphasis %1$s, "),
@@ -791,7 +791,7 @@ int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
 		env = true; //We have opened a new environment
 	}
-	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
+	if (f.color() != Color::inherit && f.color() != Color::ignore) {
 		os << "\\textcolor{"
 		   << from_ascii(lcolor.getLaTeXName(f.color()))
 		   << "}{";
@@ -859,7 +859,7 @@ int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
+	if (f.color() != Color::inherit && f.color() != Color::ignore) {
 		os << '}';
 		++count;
 		env = true; // Size change need not bother about closing env.
@@ -902,10 +902,10 @@ int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
 }
 
 
-LColor_color LyXFont::realColor() const
+Color_color LyXFont::realColor() const
 {
-	if (color() == LColor::none)
-		return LColor::foreground;
+	if (color() == Color::none)
+		return Color::foreground;
 	return color();
 }
 

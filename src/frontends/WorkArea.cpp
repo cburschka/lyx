@@ -29,7 +29,7 @@
 #include "Cursor.h"
 #include "debug.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXFont.h"
 #include "LyXRC.h"
 #include "Row.h"

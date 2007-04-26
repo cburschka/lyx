@@ -35,7 +35,7 @@ class ErrorList;
 class FuncRequest;
 class FuncStatus;
 class InsetBase;
-class LColor_color;
+class Color_color;
 class Cursor;
 class PainterInfo;
 class Row;
@@ -296,7 +296,7 @@ public:
 		LyXFont const & Font) const;
 
 	/// return the color of the canvas
-	LColor_color backgroundColor() const;
+	Color_color backgroundColor() const;
 
 	/**
 	 * Returns the left beginning of the text.

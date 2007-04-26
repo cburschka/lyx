@@ -23,7 +23,7 @@
 
 namespace lyx {
 
-class LColor_color;
+class Color_color;
 
 namespace frontend {
 
@@ -66,7 +66,7 @@ public:
 				    docstring const & title) const;
 
 	/// set a color
-	void setColor(LColor_color col, std::string const & hex);
+	void setColor(Color_color col, std::string const & hex);
 
 	/// update the screen fonts after change
 	void updateScreenFonts();

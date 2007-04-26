@@ -759,7 +759,7 @@
 
 2004-11-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* QPrefsDialog.h: include LColor.h to satisfy concept checks.
+	* QPrefsDialog.h: include Color.h to satisfy concept checks.
 	* lcolorcache.h: ditto
 
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -1034,7 +1034,7 @@
 2004-05-02  Angus Leeming  <leeming@lyx.org>
 
 	* QLPainter.C (image): set the background colour to
-	LColor::graphicsbg.
+	Color::graphicsbg.
 
 	* QLImage.C (setPixmap_impl): remove commented out xforms code
 	to set pixmap background colour.
@@ -1658,7 +1658,7 @@
 	* QPrefsDialog.h:
 	* lcolorcache.C:
 	* lcolorcache.h:
-	* lyx_gui.C: rename EnumLColor as LColor_color.
+	* lyx_gui.C: rename EnumColor as Color_color.
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
@@ -1667,27 +1667,27 @@
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* QCharacter.C, QPrefs.C, lyx_gui.C: add #include "LColor.h".
+	* QCharacter.C, QPrefs.C, lyx_gui.C: add #include "Color.h".
 
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
-	* QLPainter.C: add #include "LColor.h".
+	* QLPainter.C: add #include "Color.h".
 	* QLPainter.[Ch] (setPen, point, line, lines, rectangle, fillPolygon, arc):
-	pass EnumLColor args, rather than LColor::color ones.
+	pass EnumColor args, rather than Color::color ones.
 
-	* QPrefsDialog.C: add #include "LColor.h".
-	* QPrefsDialog.h: remove #include "LColor.h". Store a vector<EnumLColor> colors_;
+	* QPrefsDialog.C: add #include "Color.h".
+	* QPrefsDialog.h: remove #include "Color.h". Store a vector<EnumColor> colors_;
 
-	* QWorkArea.C: add #include "LColor.h".
+	* QWorkArea.C: add #include "Color.h".
 
-	* lcolorcache.C: add #include "LColor.h".
-	* lcolorcache.h: store a map<EnumLColor, QColor>.
-	* lcolorcache.[Ch] (get):pass EnumLColor args, rather than LColor::color ones.
+	* lcolorcache.C: add #include "Color.h".
+	* lcolorcache.h: store a map<EnumColor, QColor>.
+	* lcolorcache.[Ch] (get):pass EnumColor args, rather than Color::color ones.
 
-	* qscreen.C: add #include "LColor.h".
+	* qscreen.C: add #include "Color.h".
 
-	* lyx_gui.C (hexname, update_color): pass EnumLColor args, rather
-	than LColor::color ones.
+	* lyx_gui.C (hexname, update_color): pass EnumColor args, rather
+	than Color::color ones.
 
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
@@ -2129,7 +2129,7 @@
 
 	* Makefile.am:
 	* lcolorcache.h:
-	* lcolorcache.C: add LColor::color -> QColor cache
+	* lcolorcache.C: add Color::color -> QColor cache
 
 	* QLPainter.C:
 	* QPrefs.C:
@@ -3394,7 +3394,7 @@
 
 2002-11-25  John Levon  <levon@movementarian.org>
 
-	* qscreen.C: use LColor::cursor properly
+	* qscreen.C: use Color::cursor properly
 
 	* QPrefs.C:
 	* ui/QPrefKeyboardModule.ui:

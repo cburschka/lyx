@@ -248,7 +248,7 @@ void GuiApplication::syncEvents()
 }
 
 
-bool GuiApplication::getRgbColor(LColor_color col,
+bool GuiApplication::getRgbColor(Color_color col,
 	RGBColor & rgbcol)
 {
 	QColor const & qcol = color_cache_.get(col);
@@ -265,13 +265,13 @@ bool GuiApplication::getRgbColor(LColor_color col,
 }
 
 
-string const GuiApplication::hexName(LColor_color col)
+string const GuiApplication::hexName(Color_color col)
 {
 	return lyx::support::ltrim(fromqstr(color_cache_.get(col).name()), "#");
 }
 
 
-void GuiApplication::updateColor(LColor_color)
+void GuiApplication::updateColor(Color_color)
 {
 	// FIXME: Bleh, can't we just clear them all at once ?
 	color_cache_.clear();

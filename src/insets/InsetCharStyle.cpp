@@ -23,7 +23,7 @@
 #include "Cursor.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
@@ -102,7 +102,7 @@ void InsetCharStyle::setUndefined()
 	params_.latexparam.clear();
 	params_.font = LyXFont(LyXFont::ALL_INHERIT);
 	params_.labelfont = LyXFont(LyXFont::ALL_INHERIT);
-	params_.labelfont.setColor(LColor::error);
+	params_.labelfont.setColor(Color::error);
 	params_.show_label = true;
 }
 
@@ -212,7 +212,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 			s = _("Undef: ") + s;
 		theFontMetrics(font).rectText(s, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
-			s, font, LColor::none, LColor::none);
+			s, font, Color::none, Color::none);
 	}
 
 	// a visual clue when the cursor is inside the inset

@@ -16,7 +16,7 @@
 #include "MathStream.h"
 #include "TextPainter.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "frontends/Painter.h"
 
 
@@ -86,7 +86,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(x + cell(0).width(), 
 				y + dim_.des - 2, 
 				x + cell(0).width() + 5, 
-				y - dim_.asc + 2, LColor::math);
+				y - dim_.asc + 2, Color::math);
 	} else {
 		cell(0).draw(pi, m - cell(0).width() / 2, 
 				y - cell(0).descent() - 2 - 5);
@@ -95,7 +95,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	}
 	if (kind_ == FRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5, 
-				x + dim_.wid - 2, y - 5, LColor::math);
+				x + dim_.wid - 2, y - 5, Color::math);
 	drawMarkers(pi, x, y);
 }
 

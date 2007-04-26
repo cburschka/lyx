@@ -16,7 +16,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "LColor.h"
+#include "Color.h"
 
 
 #include <QCloseEvent>

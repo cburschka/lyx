@@ -572,7 +572,7 @@
 	* ControlBranch.[Ch] (branchlist): new member function.
 
 	* ControlDocument.C (setBranchColor): removed.
-	(apply): update LColor to accommodate the new BranchList colors.
+	(apply): update Color to accommodate the new BranchList colors.
 
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
@@ -720,28 +720,28 @@
 	* ControlCharacter.h:
 	* ControlPrefs.C:
 	* ControlPrefs.h:
-	* character.h: rename EnumLColor as LColor_color.
+	* character.h: rename EnumColor as Color_color.
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* ControlCharacter.C: add #include "LColor.h".
+	* ControlCharacter.C: add #include "Color.h".
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* character.C: add #include "LColor.h".
+	* character.C: add #include "Color.h".
 
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
 	* ControlCharacter.C (setColor, getColor):
-	pass EnumLColor args, rather than LColor::color ones.
+	pass EnumColor args, rather than Color::color ones.
 
-	* ControlPrefs.C: add #include "LColor.h".
-	* ControlPrefs.h:remove #include "LColor.h".
+	* ControlPrefs.C: add #include "Color.h".
+	* ControlPrefs.h:remove #include "Color.h".
 
-	* ControlPrefs.[Ch] (setColor): pass EnumLColor arg, not than LColor::color one.
+	* ControlPrefs.[Ch] (setColor): pass EnumColor arg, not than Color::color one.
 
-	* character.h:remove #include "LColor.h".
-	typedef ColorPair as a std::pair<string, EnumLColor>.
+	* character.h:remove #include "Color.h".
+	typedef ColorPair as a std::pair<string, EnumColor>.
 
 2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
@@ -808,7 +808,7 @@
 	and have a "display colour" to distinguish them on-screen.
 
 	ColorHandler was somewhat cleaned up.
-	(1) make possible a dynamically growing LColor list by allowing
+	(1) make possible a dynamically growing Color list by allowing
 	the graphic context cache to grow along (vector);
 	(2) eliminate an IMHO unnecessary step in colour allocation.
 

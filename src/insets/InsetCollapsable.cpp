@@ -23,7 +23,7 @@
 #include "FloatList.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "FuncRequest.h"
 #include "MetricsInfo.h"
@@ -57,7 +57,7 @@ InsetCollapsable::InsetCollapsable
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
-	setFrameColor(LColor::collapsableframe);
+	setFrameColor(Color::collapsableframe);
 	setInsetName(from_ascii("Collapsable"));
 	setButtonLabel();
 }

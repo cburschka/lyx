@@ -88,8 +88,8 @@ lyx_SOURCES = \
 	FuncStatus.h \
 	InsetList.cpp \
 	InsetList.h \
-	LColor.cpp \
-	LColor.h \
+	Color.cpp \
+	Color.h \
 	LaTeX.cpp \
 	LaTeX.h \
 	LaTeXFeatures.cpp \

@@ -31,7 +31,7 @@ class FuncStatus;
 class InsetMath;
 class InsetText;
 class LaTeXFeatures;
-class LColor_color;
+class Color_color;
 class Cursor;
 class Lexer;
 class LyXText;
@@ -446,9 +446,9 @@ public:
 	///
 	int scroll() const { return 0; }
 	///
-	void setBackgroundColor(LColor_color);
+	void setBackgroundColor(Color_color);
 	///
-	LColor_color backgroundColor() const;
+	Color_color backgroundColor() const;
 	///
 	enum CollapseStatus {
 		Collapsed,
@@ -477,7 +477,7 @@ protected:
 	mutable Dimension dim_;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const = 0;
-	/** We store the LColor::color value as an int to get LColor.h out
+	/** We store the Color::color value as an int to get Color.h out
 	 *  of the header file.
 	 */
 	int background_color_;

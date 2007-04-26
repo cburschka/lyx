@@ -14,7 +14,7 @@
 
 #include "QDialogView.h"
 
-#include "LColor.h"
+#include "Color.h"
 #include "LyXRC.h"
 
 #include "ui/PrefsUi.h"
@@ -158,7 +158,7 @@ private Q_SLOTS:
 	void change_color();
 
 private:
-	std::vector<LColor_color> lcolors_;
+	std::vector<Color_color> lcolors_;
 	// FIXME the use of mutable here is required due to the
 	// fact that initialization is not done in the controller
 	// but in the constructor.

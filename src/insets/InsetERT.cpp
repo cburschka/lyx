@@ -23,7 +23,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXAction.h"
 #include "Lexer.h"
 #include "LyXTextClass.h"
@@ -57,7 +57,7 @@ void InsetERT::init()
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::latex);
+	font.setColor(Color::latex);
 	setLabelFont(font);
 	text_.current_font.setLanguage(latex_language);
 	text_.real_current_font.setLanguage(latex_language);
@@ -431,7 +431,7 @@ void InsetERT::getDrawFont(LyXFont & font) const
 {
 	font = LyXFont(LyXFont::ALL_INHERIT, latex_language);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-	font.setColor(LColor::latex);
+	font.setColor(Color::latex);
 }
 
 

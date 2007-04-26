@@ -25,7 +25,7 @@
 #include <algorithm>
 #include <config.h>
 
-#include "LColor.h"
+#include "Color.h"
 
 #include "frontends/FileDialog.h"
 #include "frontends/Alert.h"
@@ -1050,47 +1050,47 @@ vector<ColorPair> const getColorData()
 	ColorPair pr;
 
 	pr.first = _("No change");
-	pr.second = LColor::ignore;
+	pr.second = Color::ignore;
 	color[0] = pr;
 
 	pr.first = _("No color");
-	pr.second = LColor::none;
+	pr.second = Color::none;
 	color[1] = pr;
 
 	pr.first = _("Black");
-	pr.second = LColor::black;
+	pr.second = Color::black;
 	color[2] = pr;
 
 	pr.first = _("White");
-	pr.second = LColor::white;
+	pr.second = Color::white;
 	color[3] = pr;
 
 	pr.first = _("Red");
-	pr.second = LColor::red;
+	pr.second = Color::red;
 	color[4] = pr;
 
 	pr.first = _("Green");
-	pr.second = LColor::green;
+	pr.second = Color::green;
 	color[5] = pr;
 
 	pr.first = _("Blue");
-	pr.second = LColor::blue;
+	pr.second = Color::blue;
 	color[6] = pr;
 
 	pr.first = _("Cyan");
-	pr.second = LColor::cyan;
+	pr.second = Color::cyan;
 	color[7] = pr;
 
 	pr.first = _("Magenta");
-	pr.second = LColor::magenta;
+	pr.second = Color::magenta;
 	color[8] = pr;
 
 	pr.first = _("Yellow");
-	pr.second = LColor::yellow;
+	pr.second = Color::yellow;
 	color[9] = pr;
 
 	pr.first = _("Reset");
-	pr.second = LColor::inherit;
+	pr.second = Color::inherit;
 	color[10] = pr;
 
 	return color;

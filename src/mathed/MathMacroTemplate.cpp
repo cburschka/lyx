@@ -19,7 +19,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Lexer.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -143,7 +143,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 
 	// label
 	LyXFont font = p.base.font;
-	font.setColor(LColor::math);
+	font.setColor(Color::math);
 
 	PainterInfo pi(p.base.bv, p.pain);
 	pi.base.style = LM_ST_TEXT;
@@ -153,10 +153,10 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	int const w = dim_.wid - 2;
 	int const h = dim_.height() - 2;
 
-	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
+	// Color::mathbg used to be "AntiqueWhite" but is "linen" now, too
 	// the next line would overwrite the selection!
-	//pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
-	pi.pain.rectangle(x, a, w, h, LColor::mathframe);
+	//pi.pain.fillRectangle(x, a, w, h, Color::mathmacrobg);
+	pi.pain.rectangle(x, a, w, h, Color::mathframe);
 
 #ifdef WITH_WARNINGS
 #warning FIXME
@@ -175,10 +175,10 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	int const w1 = cell(1).width();
 	cell(0).draw(pi, x + 2, y + 1);
 	pi.pain.rectangle(x, y - dim_.ascent() + 3,
-		w0 + 4, dim_.height() - 6, LColor::mathline);
+		w0 + 4, dim_.height() - 6, Color::mathline);
 	cell(1).draw(pi, x + 8 + w0, y + 1);
 	pi.pain.rectangle(x + w0 + 6, y - dim_.ascent() + 3,
-		w1 + 4, dim_.height() - 6, LColor::mathline);
+		w1 + 4, dim_.height() - 6, Color::mathline);
 	
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();

@@ -12,7 +12,7 @@
 #ifndef MATH_COLORINSET_H
 #define MATH_COLORINSET_H
 
-#include "LColor.h"
+#include "Color.h"
 
 #include "InsetMathNest.h"
 
@@ -25,7 +25,7 @@ class InsetMathColor : public InsetMathNest {
 public:
 	/// Create a color inset from LyX color number
 	explicit InsetMathColor(bool oldstyle,
-		LColor_color const & color = LColor::none);
+		Color_color const & color = Color::none);
 	/// Create a color inset from LaTeX color name
 	explicit InsetMathColor(bool oldstyle, docstring const & color);
 	///

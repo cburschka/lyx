@@ -29,7 +29,7 @@ class BufferParams;
 class BufferView;
 class CursorSlice;
 class Dimension;
-class LColor_color;
+class Color_color;
 class ParagraphList;
 
 
@@ -89,9 +89,9 @@ public:
 	///
 	void setDrawFrame(bool);
 	///
-	LColor_color frameColor() const;
+	Color_color frameColor() const;
 	///
-	void setFrameColor(LColor_color);
+	void setFrameColor(Color_color);
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -150,7 +150,7 @@ private:
 
 	///
 	bool drawFrame_;
-	/** We store the LColor::color value as an int to get LColor.h out
+	/** We store the Color::color value as an int to get Color.h out
 	 *  of the header file.
 	 */
 	int frame_color_;

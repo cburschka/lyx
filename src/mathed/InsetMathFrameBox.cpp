@@ -14,7 +14,7 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "LColor.h"
+#include "Color.h"
 #include "frontends/Painter.h"
 
 
@@ -54,7 +54,7 @@ void InsetMathFrameBox::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
-		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
+		dim_.width() - 2, dim_.height() - 2, Color::foreground);
 	x += 5;
 
 	drawStrBlack(pi, x, y, from_ascii("["));

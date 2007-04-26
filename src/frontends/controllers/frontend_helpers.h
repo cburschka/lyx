@@ -174,7 +174,7 @@ getAuthorYearStrings(std::string const & key,
 } // namespace lyx
 
 
-class LColor_color;
+class Color_color;
 
 
 /** Functions of use to the character GUI controller and view */
@@ -206,7 +206,7 @@ typedef std::pair<docstring, LyXFont::FONT_SIZE>   SizePair;
 ///
 typedef std::pair<docstring, FONT_STATE> BarPair;
 ///
-typedef std::pair<docstring, LColor_color> ColorPair;
+typedef std::pair<docstring, Color_color> ColorPair;
 
 ///
 std::vector<FamilyPair>   const getFamilyData();

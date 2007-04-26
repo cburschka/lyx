@@ -19,7 +19,7 @@ namespace lyx {
 
 class BufferView;
 class LyXView;
-class LColor_color;
+class Color_color;
 struct RGBColor;
 
 namespace frontend {
@@ -145,17 +145,17 @@ public:
 	* The function returns true if successful.
 	* It returns false on failure and sets r, g, b to 0.
 	*/
-	virtual bool getRgbColor(LColor_color col, RGBColor & rgbcol) = 0;
+	virtual bool getRgbColor(Color_color col, RGBColor & rgbcol) = 0;
 
-	/** Eg, passing LColor::black returns "000000",
-	*      passing LColor::white returns "ffffff".
+	/** Eg, passing Color::black returns "000000",
+	*      passing Color::white returns "ffffff".
 	*/
-	virtual std::string const hexName(LColor_color col) = 0;
+	virtual std::string const hexName(Color_color col) = 0;
 
 	/**
 	* update an altered GUI color
 	*/
-	virtual void updateColor(LColor_color col) = 0;
+	virtual void updateColor(Color_color col) = 0;
 
 	/**
 	* add a callback for socket read notification

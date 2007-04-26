@@ -19,7 +19,7 @@
 #include "debug.h"
 #include "Format.h"
 #include "InsetIterator.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -592,8 +592,8 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << support::quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor_) << ' '
-	   << theApp()->hexName(LColor::preview) << ' '
-	   << theApp()->hexName(LColor::background);
+	   << theApp()->hexName(Color::preview) << ' '
+	   << theApp()->hexName(Color::background);
 
 	string const command = support::libScriptSearch(cs.str());
 

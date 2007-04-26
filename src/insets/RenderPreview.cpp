@@ -16,7 +16,7 @@
 #include "BufferView.h"
 #include "Dimension.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -160,7 +160,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 				  y - dim_.asc,
 				  dim_.wid - 2 * offset,
 				  dim_.asc + dim_.des,
-				  LColor::foreground);
+				  Color::foreground);
 
 		LyXFont font(pi.base.font);
 		font.setFamily(LyXFont::SANS_FAMILY);

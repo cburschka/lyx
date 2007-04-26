@@ -22,7 +22,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
@@ -164,8 +164,8 @@ void InsetBox::setButtonLabel()
 
 	setLabel(label);
 
-	font.setColor(LColor::foreground);
-	setBackgroundColor(LColor::background);
+	font.setColor(Color::foreground);
+	setBackgroundColor(Color::background);
 	setLabelFont(font);
 }
 

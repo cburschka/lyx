@@ -44,7 +44,7 @@
 #include "Intl.h"
 #include "kb_keymap.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Session.h"
 #include "LyX.h"
 #include "lyx_cb.h"
@@ -1489,8 +1489,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			bool const graphicsbg_changed =
-				(lyx_name == lcolor.getLyXName(LColor::graphicsbg) &&
-				 x11_name != lcolor.getX11Name(LColor::graphicsbg));
+				(lyx_name == lcolor.getLyXName(Color::graphicsbg) &&
+				 x11_name != lcolor.getX11Name(Color::graphicsbg));
 
 			if (!lcolor.setColor(lyx_name, x11_name)) {
 				setErrorMessage(

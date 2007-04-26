@@ -24,7 +24,7 @@
 #include "CoordCache.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "Row.h"
 #include "Paragraph.h"
@@ -130,7 +130,7 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 
 		} else if (token == "color") {
 			int const next = lex.getInteger();
-			font.setColor(LColor::color(next));
+			font.setColor(Color::color(next));
 
 		} else if (token == "language") {
 			string const next = lex.getString();

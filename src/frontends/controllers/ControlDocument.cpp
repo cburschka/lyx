@@ -22,7 +22,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "OutputParams.h"
 #include "LyXTextClassList.h"
 #include "tex-strings.h"

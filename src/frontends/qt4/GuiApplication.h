@@ -63,9 +63,9 @@ public:
 	virtual std::string const romanFontName();
 	virtual std::string const sansFontName();
 	virtual std::string const typewriterFontName();
-	virtual bool getRgbColor(LColor_color col, RGBColor & rgbcol);
-	virtual std::string const hexName(LColor_color col);
-	virtual void updateColor(LColor_color col);
+	virtual bool getRgbColor(Color_color col, RGBColor & rgbcol);
+	virtual std::string const hexName(Color_color col);
+	virtual void updateColor(Color_color col);
 	virtual void registerSocketCallback(
 		int fd, boost::function<void()> func);
 	void unregisterSocketCallback(int fd);

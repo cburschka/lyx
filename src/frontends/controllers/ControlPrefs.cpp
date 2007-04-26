@@ -19,7 +19,7 @@
 #include "gettext.h"
 #include "FuncRequest.h"
 #include "paper.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "support/FileFilterList.h"
 
@@ -92,7 +92,7 @@ void ControlPrefs::dispatchParams()
 }
 
 
-void ControlPrefs::setColor(LColor_color col, string const & hex)
+void ControlPrefs::setColor(Color_color col, string const & hex)
 {
 	colors_.push_back(lcolor.getLyXName(col) + ' ' + hex);
 }

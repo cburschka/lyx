@@ -37,7 +37,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Row.h"
@@ -75,7 +75,7 @@ using std::min;
 
 LyXText::LyXText()
 	: current_font(LyXFont::ALL_INHERIT),
-	  background_color_(LColor::background),
+	  background_color_(Color::background),
 	  autoBreakRows_(false)
 {}
 

@@ -14,7 +14,7 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -63,7 +63,7 @@ bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont font = pi.base.font;
-	font.setColor(LColor::latex);
+	font.setColor(Color::latex);
 	Dimension t = theFontMetrics(font).dimension('{');
 	pi.pain.text(x, y, '{', font);
 	cell(0).draw(pi, x + t.wid, y);

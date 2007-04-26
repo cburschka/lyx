@@ -25,7 +25,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Intl.h"
-#include "LColor.h"
+#include "Color.h"
 #include "lyxfind.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -77,7 +77,7 @@ int InsetText::border_ = 2;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: drawFrame_(false), frame_color_(LColor::insetframe)
+	: drawFrame_(false), frame_color_(Color::insetframe)
 {
 	paragraphs().push_back(Paragraph());
 	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
@@ -393,13 +393,13 @@ void InsetText::setDrawFrame(bool flag)
 }
 
 
-LColor_color InsetText::frameColor() const
+Color_color InsetText::frameColor() const
 {
-	return LColor::color(frame_color_);
+	return Color::color(frame_color_);
 }
 
 
-void InsetText::setFrameColor(LColor_color col)
+void InsetText::setFrameColor(Color_color col)
 {
 	frame_color_ = col;
 }

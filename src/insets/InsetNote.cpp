@@ -23,7 +23,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -176,24 +176,24 @@ void InsetNote::setButtonLabel()
 
 	switch (params_.type) {
 	case InsetNoteParams::Note:
-		font.setColor(LColor::note);
-		setBackgroundColor(LColor::notebg);
+		font.setColor(Color::note);
+		setBackgroundColor(Color::notebg);
 		break;
 	case InsetNoteParams::Comment:
-		font.setColor(LColor::comment);
-		setBackgroundColor(LColor::commentbg);
+		font.setColor(Color::comment);
+		setBackgroundColor(Color::commentbg);
 		break;
 	case InsetNoteParams::Greyedout:
-		font.setColor(LColor::greyedout);
-		setBackgroundColor(LColor::greyedoutbg);
+		font.setColor(Color::greyedout);
+		setBackgroundColor(Color::greyedoutbg);
 		break;
 	case InsetNoteParams::Framed:
-		font.setColor(LColor::greyedout);
-		setBackgroundColor(LColor::greyedoutbg);
+		font.setColor(Color::greyedout);
+		setBackgroundColor(Color::greyedoutbg);
 		break;
 	case InsetNoteParams::Shaded:
-		font.setColor(LColor::greyedout);
-		setBackgroundColor(LColor::shadedbg);
+		font.setColor(Color::greyedout);
+		setBackgroundColor(Color::shadedbg);
 		break;
 	}
 	setLabelFont(font);

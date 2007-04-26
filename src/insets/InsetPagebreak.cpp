@@ -14,7 +14,7 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -58,7 +58,7 @@ bool InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont font;
-	font.setColor(LColor::pagebreak);
+	font.setColor(Color::pagebreak);
 	font.decSize();
 
 	int w = 0;
@@ -70,12 +70,12 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int const text_end = text_start + w;
 
 	pi.pain.rectText(text_start, y + d, insetLabel(), font,
-		LColor::none, LColor::none);
+		Color::none, Color::none);
 
 	pi.pain.line(x, y, text_start, y,
-		   LColor::pagebreak, Painter::line_onoffdash);
+		   Color::pagebreak, Painter::line_onoffdash);
 	pi.pain.line(text_end, y, int(x + dim_.wid), y,
-		   LColor::pagebreak, Painter::line_onoffdash);
+		   Color::pagebreak, Painter::line_onoffdash);
 }
 
 

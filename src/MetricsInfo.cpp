@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "BufferView.h"
-#include "LColor.h"
+#include "Color.h"
 #include "MetricsInfo.h"
 
 #include "mathed/MathSupport.h"

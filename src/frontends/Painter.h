@@ -17,7 +17,7 @@
 
 namespace lyx {
 
-class LColor_color;
+class Color_color;
 class LyXFont;
 
 namespace graphics { class Image; }
@@ -80,7 +80,7 @@ public:
 	virtual void line(
 		int x1, int y1,
 		int x2, int y2,
-		LColor_color,
+		Color_color,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
 
@@ -94,7 +94,7 @@ public:
 		int const * xp,
 		int const * yp,
 		int np,
-		LColor_color,
+		Color_color,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
 
@@ -102,7 +102,7 @@ public:
 	virtual void rectangle(
 		int x, int y,
 		int w, int h,
-		LColor_color,
+		Color_color,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
 
@@ -110,19 +110,19 @@ public:
 	virtual void fillRectangle(
 		int x, int y,
 		int w, int h,
-		LColor_color) = 0;
+		Color_color) = 0;
 
 	/// draw an arc
 	virtual void arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
-		LColor_color) = 0;
+		Color_color) = 0;
 
 	/// draw a pixel
 	virtual void point(
 		int x, int y,
-		LColor_color) = 0;
+		Color_color) = 0;
 
 	/// draw a filled rectangle with the shape of a 3D button
 	virtual void button(int x, int y,
@@ -158,8 +158,8 @@ public:
 	void rectText(int x, int baseline,
 		docstring const & str,
 		LyXFont const & font,
-		LColor_color back,
-		LColor_color frame);
+		Color_color back,
+		Color_color frame);
 
 	/// draw a string and enclose it inside a button frame
 	void buttonText(int x, int baseline, docstring const & s,

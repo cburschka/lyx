@@ -18,7 +18,7 @@
 
 #include "Session.h"
 #include "debug.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXFont.h"
 #include "PanelStack.h"
 #include "QFontExample.h"
@@ -517,19 +517,19 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 	// FIXME: all of this initialization should be put into the controller.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg113301.html
 	// for some discussion of why that is not trivial.
-	for (int i = 0; i < LColor::ignore; ++i) {
-		LColor::color lc = static_cast<LColor::color>(i);
-		if (lc == LColor::none
-			|| lc == LColor::black
-			|| lc == LColor::white
-			|| lc == LColor::red
-			|| lc == LColor::green
-			|| lc == LColor::blue
-			|| lc == LColor::cyan
-			|| lc == LColor::magenta
-			|| lc == LColor::yellow
-			|| lc == LColor::inherit
-			|| lc == LColor::ignore) continue;
+	for (int i = 0; i < Color::ignore; ++i) {
+		Color::color lc = static_cast<Color::color>(i);
+		if (lc == Color::none
+			|| lc == Color::black
+			|| lc == Color::white
+			|| lc == Color::red
+			|| lc == Color::green
+			|| lc == Color::blue
+			|| lc == Color::cyan
+			|| lc == Color::magenta
+			|| lc == Color::yellow
+			|| lc == Color::inherit
+			|| lc == Color::ignore) continue;
 
 		lcolors_.push_back(lc);
 		QColor color = QColor(guiApp->colorCache().get(lc));

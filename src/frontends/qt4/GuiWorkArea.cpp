@@ -24,7 +24,7 @@
 #include "rowpainter.h"
 #include "debug.h"
 #include "FuncRequest.h"
-#include "LColor.h"
+#include "Color.h"
 #include "version.h"
 #include "LyXRC.h"
 
@@ -129,7 +129,7 @@ public:
 
 	void update(int x, int y, int h, CursorShape shape)
 	{
-		color_ = guiApp->colorCache().get(LColor::cursor);
+		color_ = guiApp->colorCache().get(Color::cursor);
 		rect_ = QRect(x, y, CursorWidth, h);
 		shape_ = shape;
 	}
@@ -458,7 +458,7 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 void GuiWorkArea::doGreyOut(QLPainter & pain)
 {
 	pain.fillRectangle(0, 0, width(), height(),
-		LColor::bottomarea);
+		Color::bottomarea);
 
 	//if (!lyxrc.show_banner)
 	//	return;

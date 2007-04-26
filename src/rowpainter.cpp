@@ -22,7 +22,7 @@
 #include "Encoding.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXRC.h"
 #include "Row.h"
 #include "MetricsInfo.h"
@@ -223,10 +223,10 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	int const x2 = x1 + dim.wid;
 	int const y1 = yo_ + dim.des;
 	int const y2 = yo_ - dim.asc;
-	pi.pain.line(x1, y1, x1, y2, LColor::green);
-	pi.pain.line(x1, y1, x2, y1, LColor::green);
-	pi.pain.line(x2, y1, x2, y2, LColor::green);
-	pi.pain.line(x1, y2, x2, y2, LColor::green);
+	pi.pain.line(x1, y1, x1, y2, Color::green);
+	pi.pain.line(x1, y1, x2, y1, Color::green);
+	pi.pain.line(x2, y1, x2, y2, Color::green);
+	pi.pain.line(x1, y2, x2, y2, Color::green);
 #endif
 }
 
@@ -368,9 +368,9 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 	if (prev_change != Change::UNCHANGED) {
 		LyXFont copy(font);
 		if (prev_change == Change::DELETED) {
-			copy.setColor(LColor::strikeout);
+			copy.setColor(Color::strikeout);
 		} else if (prev_change == Change::INSERTED) {
-			copy.setColor(LColor::newtext);
+			copy.setColor(Color::newtext);
 		}
 		x_ += pain_.text(int(x_), yo_, s, copy);
 	} else {
@@ -389,7 +389,7 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & font, int desc)
 		return;
 
 	int const y = yo_ + 1 + desc;
-	pain_.line(int(orig_x), y, int(x_), y, LColor::language);
+	pain_.line(int(orig_x), y, int(x_), y, Color::language);
 }
 
 
@@ -449,7 +449,7 @@ void RowPainter::paintChangeBar()
 		? row_.ascent()
 		: row_.height();
 
-	pain_.fillRectangle(5, yo_ - row_.ascent(), 3, height, LColor::changebar);
+	pain_.fillRectangle(5, yo_ - row_.ascent(), 3, height, Color::changebar);
 }
 
 
@@ -463,8 +463,8 @@ void RowPainter::paintAppendix()
 	if (par_.params().startOfAppendix())
 		y += 2 * defaultRowHeight();
 
-	pain_.line(1, y, 1, yo_ + row_.height(), LColor::appendix);
-	pain_.line(width_ - 2, y, width_ - 2, yo_ + row_.height(), LColor::appendix);
+	pain_.line(1, y, 1, yo_ + row_.height(), Color::appendix);
+	pain_.line(width_ - 2, y, width_ - 2, yo_ + row_.height(), Color::appendix);
 }
 
 
@@ -501,12 +501,12 @@ void RowPainter::paintDepthBar()
 		int const starty = yo_ - row_.ascent();
 		int const h =  row_.height() - 1 - (i - next_depth - 1) * 3;
 
-		pain_.line(x, starty, x, starty + h, LColor::depthbar);
+		pain_.line(x, starty, x, starty + h, Color::depthbar);
 
 		if (i > prev_depth)
-			pain_.fillRectangle(x, starty, w, 2, LColor::depthbar);
+			pain_.fillRectangle(x, starty, w, 2, Color::depthbar);
 		if (i > next_depth)
-			pain_.fillRectangle(x, starty + h, w, 2, LColor::depthbar);
+			pain_.fillRectangle(x, starty + h, w, 2, Color::depthbar);
 	}
 }
 
@@ -514,7 +514,7 @@ void RowPainter::paintDepthBar()
 int RowPainter::paintAppendixStart(int y)
 {
 	LyXFont pb_font;
-	pb_font.setColor(LColor::appendix);
+	pb_font.setColor(Color::appendix);
 	pb_font.decSize();
 
 	int w = 0;
@@ -527,10 +527,10 @@ int RowPainter::paintAppendixStart(int y)
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
-	pain_.rectText(text_start, y + d, label, pb_font, LColor::none, LColor::none);
+	pain_.rectText(text_start, y + d, label, pb_font, Color::none, Color::none);
 
-	pain_.line(int(xo_ + 1), y, text_start, y, LColor::appendix);
-	pain_.line(text_end, y, int(xo_ + width_ - 2), y, LColor::appendix);
+	pain_.line(int(xo_ + 1), y, text_start, y, Color::appendix);
+	pain_.line(text_end, y, int(xo_ + width_ - 2), y, Color::appendix);
 
 	return 3 * defaultRowHeight();
 }
@@ -669,7 +669,7 @@ void RowPainter::paintLast()
 	if (par_.isInserted(par_.size()) || par_.isDeleted(par_.size())) {
 		FontMetrics const & fm = theFontMetrics(bv_.buffer()->params().getFont());
 		int const length = fm.maxAscent() / 2;
-		LColor::color col = par_.isInserted(par_.size()) ? LColor::newtext : LColor::strikeout;
+		Color::color col = par_.isInserted(par_.size()) ? Color::newtext : Color::strikeout;
 		
 		pain_.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 		           Painter::line_solid, Painter::line_thick);
@@ -692,9 +692,9 @@ void RowPainter::paintLast()
 			x += (size - width_ + row_.width() + 1) * (is_rtl ? -1 : 1);
 
 		if (endlabel == END_LABEL_BOX)
-			pain_.rectangle(x, y, size, size, LColor::eolmarker);
+			pain_.rectangle(x, y, size, size, Color::eolmarker);
 		else
-			pain_.fillRectangle(x, y, size, size, LColor::eolmarker);
+			pain_.fillRectangle(x, y, size, size, Color::eolmarker);
 		break;
 	}
 
@@ -779,7 +779,7 @@ void RowPainter::paintText()
 				= theFontMetrics(bv_.buffer()->params().getFont());
 			int const middle = yo_ - fm.maxAscent() / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
-				LColor::strikeout, Painter::line_solid, Painter::line_thin);
+				Color::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
 		}
 
@@ -797,23 +797,23 @@ void RowPainter::paintText()
 			int const y0 = yo_;
 			int const y1 = y0 - defaultRowHeight() / 2;
 
-			pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
+			pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
 
 			if (par_.hfillExpansion(row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
 					pain_.line(int(x_), y2, int(x_ + hfill_), y2,
-						  LColor::added_space,
+						  Color::added_space,
 						  Painter::line_onoffdash);
 					x_ += hfill_;
 				} else {
 					pain_.line(int(x_), y2, int(x_ + label_hfill_), y2,
-						  LColor::added_space,
+						  Color::added_space,
 						  Painter::line_onoffdash);
 					x_ += label_hfill_;
 				}
-				pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
+				pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
 			}
 			x_ += 2;
 			++vpos;
@@ -834,7 +834,7 @@ void RowPainter::paintText()
 			= theFontMetrics(bv_.buffer()->params().getFont());
 		int const middle = yo_ - fm.maxAscent() / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
-			LColor::strikeout, Painter::line_solid, Painter::line_thin);
+			Color::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
 	}
 }
@@ -1042,12 +1042,12 @@ void paintText(BufferView & bv,
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text.getPar(vi.p1).ascent() << endl;
 	if (vi.y1 > 0 && vi.update_strategy != SingleParUpdate)
-		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, LColor::bottomarea);
+		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, Color::bottomarea);
 
 	// and possibly grey out below
 //	lyxerr << "par descent: " << text.getPar(vi.p1).ascent() << endl;
 	if (vi.y2 < bv.workHeight() && vi.update_strategy != SingleParUpdate)
-		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, LColor::bottomarea);
+		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, Color::bottomarea);
 }
 
 

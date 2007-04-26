@@ -18,7 +18,7 @@
 #include "bufferview_funcs.h"
 #include "FuncRequest.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 
 using lyx::bv_funcs::font2string;
 using std::string;
@@ -44,7 +44,7 @@ bool ControlCharacter::initialiseParams(string const &)
 	    getShape()    != LyXFont::IGNORE_SHAPE  ||
 	    getSize()     != LyXFont::IGNORE_SIZE ||
 	    getBar()      != IGNORE ||
-	    getColor()    != LColor::ignore ||
+	    getColor()    != Color::ignore ||
 	    font_->language() != ignore_language)
 		dialog().bc().valid();
 
@@ -178,29 +178,29 @@ void ControlCharacter::setBar(FONT_STATE val)
 }
 
 
-LColor_color ControlCharacter::getColor() const
+Color_color ControlCharacter::getColor() const
 {
 	if (!font_.get())
-		return LColor::ignore;
+		return Color::ignore;
 
 	return font_->color();
 }
 
 
-void ControlCharacter::setColor(LColor_color val)
+void ControlCharacter::setColor(Color_color val)
 {
 	switch (val) {
-	case LColor::ignore:
-	case LColor::none:
-	case LColor::black:
-	case LColor::white:
-	case LColor::red:
-	case LColor::green:
-	case LColor::blue:
-	case LColor::cyan:
-	case LColor::magenta:
-	case LColor::yellow:
-	case LColor::inherit:
+	case Color::ignore:
+	case Color::none:
+	case Color::black:
+	case Color::white:
+	case Color::red:
+	case Color::green:
+	case Color::blue:
+	case Color::cyan:
+	case Color::magenta:
+	case Color::yellow:
+	case Color::inherit:
 		font_->setColor(val);
 		break;
 	default:

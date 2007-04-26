@@ -22,7 +22,7 @@
 #include "Encoding.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Language.h"
 #include "Lexer.h"
 #include "lyx_sty.h"
@@ -328,7 +328,7 @@ string const LaTeXFeatures::getPackages() const
 	}
 	// shadecolor for shaded
 	if (mustProvide("framed")) {
-		RGBColor c = RGBColor(lcolor.getX11Name(LColor::shadedbg));
+		RGBColor c = RGBColor(lcolor.getX11Name(Color::shadedbg));
 		packages << "\\definecolor{shadecolor}{rgb}{" 
 			<< c.r/255 << ',' << c.g/255 << ',' << c.b/255 << "}\n";
 	}

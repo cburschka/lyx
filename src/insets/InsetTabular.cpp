@@ -33,7 +33,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "lyx_cb.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -3096,7 +3096,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				int const w = tabular.getWidthOfColumn(cell);
 				if (i >= cs && i <= ce && j >= rs && j <= re)
 					pi.pain.fillRectangle(xx, y, w, h,
-							      LColor::selection);
+							      Color::selection);
 				xx += w;
 			}
 			y += h;
@@ -3113,12 +3113,12 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 {
 	int x2 = x + tabular.getWidthOfColumn(cell);
 	bool on_off = false;
-	LColor::color col = LColor::tabularline;
-	LColor::color onoffcol = LColor::tabularonoffline;
+	Color::color col = Color::tabularline;
+	Color::color onoffcol = Color::tabularonoffline;
 
 	if (erased) {
-		col = LColor::strikeout;
-		onoffcol = LColor::strikeout;
+		col = Color::strikeout;
+		onoffcol = Color::strikeout;
 	}
 
 	if (!tabular.topAlreadyDrawn(cell)) {

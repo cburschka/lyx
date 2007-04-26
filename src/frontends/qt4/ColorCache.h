@@ -12,7 +12,7 @@
 #ifndef COLORCACHE_H
 #define COLORCACHE_H
 
-#include "LColor.h"
+#include "Color.h"
 
 #include <QColor>
 
@@ -26,20 +26,20 @@ struct RGBColor;
 // FIXME: use a fixed-size array not a map ?
 
 /**
- * Cache from LColor to QColor.
+ * Cache from Color to QColor.
  */
 class ColorCache {
 public:
 	ColorCache() {}
 
 	/// get the given color
-	QColor const & get(LColor_color color) const;
+	QColor const & get(Color_color color) const;
 
 	/// clear all colors
 	void clear();
 
 private:
-	typedef std::map<LColor_color, QColor> lcolor_map;
+	typedef std::map<Color_color, QColor> lcolor_map;
 
 	mutable lcolor_map colormap;
 };

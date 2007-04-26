@@ -33,7 +33,7 @@
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LaTeXFeatures.h"
 #include "Cursor.h"
 #include "debug.h"
@@ -1307,7 +1307,7 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(to_utf8(arg), font, b);
-	if (font.color() != LColor::inherit) {
+	if (font.color() != Color::inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
 	}

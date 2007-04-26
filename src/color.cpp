@@ -12,7 +12,7 @@
 
 #include "color.h"
 
-#include "LColor.h"
+#include "Color.h"
 
 #include <cmath>
 #include <sstream>

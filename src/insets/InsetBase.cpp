@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "CoordCache.h"
 #include "BufferView.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "Dimension.h"
@@ -109,7 +109,7 @@ static TranslatorMap const build_translator()
 
 
 /// pretty arbitrary dimensions
-InsetBase::InsetBase(): dim_(10, 10, 10), background_color_(LColor::background)
+InsetBase::InsetBase(): dim_(10, 10, 10), background_color_(Color::background)
 {}
 
 
@@ -286,8 +286,8 @@ void InsetBase::metricsMarkers2(Dimension & dim, int framesize) const
 
 void InsetBase::drawMarkers(PainterInfo & pi, int x, int y) const
 {
-	LColor::color pen_color = editing(pi.base.bv)?
-		LColor::mathframe : LColor::background;
+	Color::color pen_color = editing(pi.base.bv)?
+		Color::mathframe : Color::background;
 
 	int const t = x + width() - 1;
 	int const d = y + descent();
@@ -301,8 +301,8 @@ void InsetBase::drawMarkers(PainterInfo & pi, int x, int y) const
 
 void InsetBase::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
-	LColor::color pen_color = editing(pi.base.bv)?
-		LColor::mathframe : LColor::background;
+	Color::color pen_color = editing(pi.base.bv)?
+		Color::mathframe : Color::background;
 
 	drawMarkers(pi, x, y);
 	int const t = x + width() - 1;
@@ -355,15 +355,15 @@ void InsetBase::dump() const
 }
 
 
-void InsetBase::setBackgroundColor(LColor_color color)
+void InsetBase::setBackgroundColor(Color_color color)
 {
 	background_color_ = color;
 }
 
 
-LColor_color InsetBase::backgroundColor() const
+Color_color InsetBase::backgroundColor() const
 {
-	return LColor::color(background_color_);
+	return Color::color(background_color_);
 }
 
 

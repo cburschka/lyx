@@ -14,7 +14,7 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "TextPainter.h"
-#include "LColor.h"
+#include "Color.h"
 #include "frontends/Painter.h"
 
 
@@ -59,7 +59,7 @@ void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 	xp[1] = x + 8;            yp[1] = y - a + 1;
 	xp[2] = x + 5;            yp[2] = y + d - 1;
 	xp[3] = x;                yp[3] = y + (d - a)/2;
-	pi.pain.lines(xp, yp, 4, LColor::math);
+	pi.pain.lines(xp, yp, 4, Color::math);
 	drawMarkers(pi, x, y);
 }
 

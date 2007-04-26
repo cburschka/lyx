@@ -25,7 +25,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
+#include "Color.h"
 #include "LyXFont.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -527,9 +527,9 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 				string color = lex.getString();
 				if (branch_ptr)
 					branch_ptr->setColor(color);
-				// Update also the LColor table:
+				// Update also the Color table:
 				if (color == "none")
-					color = lcolor.getX11Name(LColor::background);
+					color = lcolor.getX11Name(Color::background);
 				// FIXME UNICODE
 				lcolor.setColor(to_utf8(branch), color);
 

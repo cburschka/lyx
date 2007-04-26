@@ -23,7 +23,7 @@
 #include "Buffer.h"
 #include "Cursor.h"
 #include "debug.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -299,7 +299,7 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 	setXY(bv, x, y);
 
 	if (empty()) {
-		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
+		pi.pain.rectangle(x, y - ascent(), width(), height(), Color::mathline);
 		return;
 	}
 

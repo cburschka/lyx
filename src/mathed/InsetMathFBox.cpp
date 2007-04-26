@@ -13,7 +13,7 @@
 #include "InsetMathFBox.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "support/std_ostream.h"
 #include "frontends/Painter.h"
@@ -56,7 +56,7 @@ bool InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathFBox::draw(PainterInfo & pi, int x, int y) const
 {
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
-		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
+		dim_.width() - 2, dim_.height() - 2, Color::foreground);
 	FontSetChanger dummy(pi.base, "textnormal");
 	cell(0).draw(pi, x + 3, y);
 	setPosCache(pi, x, y);

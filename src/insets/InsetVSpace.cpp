@@ -18,7 +18,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Lexer.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
@@ -179,7 +179,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	int d = 0;
 
 	LyXFont font;
-	font.setColor(LColor::added_space);
+	font.setColor(Color::added_space);
 	font.decSize();
 	font.decSize();
 	docstring const lab = label();
@@ -187,18 +187,18 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 
 	pi.pain.rectText(x + 2 * arrow_size + 5,
 			 start + (end - start) / 2 + (a - d) / 2,
-			 lab, font, LColor::none, LColor::none);
+			 lab, font, Color::none, Color::none);
 
 	// top arrow
-	pi.pain.line(x, ty1, midx, ty2, LColor::added_space);
-	pi.pain.line(midx, ty2, rightx, ty1, LColor::added_space);
+	pi.pain.line(x, ty1, midx, ty2, Color::added_space);
+	pi.pain.line(midx, ty2, rightx, ty1, Color::added_space);
 
 	// bottom arrow
-	pi.pain.line(x, by1, midx, by2, LColor::added_space);
-	pi.pain.line(midx, by2, rightx, by1, LColor::added_space);
+	pi.pain.line(x, by1, midx, by2, Color::added_space);
+	pi.pain.line(midx, by2, rightx, by1, Color::added_space);
 
 	// joining line
-	pi.pain.line(midx, ty2, midx, by2, LColor::added_space);
+	pi.pain.line(midx, ty2, midx, by2, Color::added_space);
 }
 
 

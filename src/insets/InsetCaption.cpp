@@ -24,7 +24,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "OutputParams.h"
@@ -56,7 +56,7 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
-	setFrameColor(LColor::captionframe);
+	setFrameColor(Color::captionframe);
 }
 
 

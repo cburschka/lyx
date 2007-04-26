@@ -19,7 +19,7 @@
 
 namespace lyx {
 
-class LColor_color;
+class Color_color;
 
 namespace frontend {
 
@@ -49,7 +49,7 @@ public:
 	///
 	void setBar(FONT_STATE);
 	///
-	void setColor(LColor_color);
+	void setColor(Color_color);
 	///
 	void setLanguage(std::string const &);
 	///
@@ -66,7 +66,7 @@ public:
 	///
 	FONT_STATE getBar() const;
 	///
-	LColor_color getColor() const;
+	Color_color getColor() const;
 	///
 	std::string getLanguage() const;
 	///

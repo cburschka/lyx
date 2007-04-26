@@ -30,7 +30,7 @@
 #include "kb_keymap.h"
 #include "Language.h"
 #include "Session.h"
-#include "LColor.h"
+#include "Color.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"

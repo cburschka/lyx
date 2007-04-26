@@ -14,7 +14,7 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "Color.h"
 #include "Paragraph.h"
 
 #include <sstream>
@@ -32,7 +32,7 @@ InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins)
 {
 	LyXFont font(LyXFont::ALL_SANE);
-	font.setColor(LColor::collapsable);
+	font.setColor(Color::collapsable);
 	setLabelFont(font);
 	setLabel(_("opt"));
 }
@@ -42,7 +42,7 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 	: InsetCollapsable(in)
 {
 	LyXFont font(LyXFont::ALL_SANE);
-	font.setColor(LColor::collapsable);
+	font.setColor(Color::collapsable);
 	setLabelFont(font);
 	setLabel(_("opt"));
 }

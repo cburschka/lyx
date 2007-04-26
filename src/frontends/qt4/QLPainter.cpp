@@ -24,7 +24,7 @@
 
 #include "debug.h"
 #include "Language.h"
-#include "LColor.h"
+#include "Color.h"
 
 #include "support/unicode.h"
 
@@ -38,7 +38,7 @@ QLPainter::QLPainter(QPaintDevice * device)
 	: QPainter(device), Painter()
 {
 	// new QPainter has default QPen:
-	current_color_ = LColor::black;
+	current_color_ = Color::black;
 	current_ls_ = line_solid;
 	current_lw_ = line_thin;
 }
@@ -51,7 +51,7 @@ QLPainter::~QLPainter()
 }
 
 
-void QLPainter::setQPainterPen(LColor_color col,
+void QLPainter::setQPainterPen(Color_color col,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
@@ -79,7 +79,7 @@ void QLPainter::setQPainterPen(LColor_color col,
 }
 
 
-void QLPainter::point(int x, int y, LColor_color col)
+void QLPainter::point(int x, int y, Color_color col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -90,7 +90,7 @@ void QLPainter::point(int x, int y, LColor_color col)
 
 
 void QLPainter::line(int x1, int y1, int x2, int y2,
-	LColor_color col,
+	Color_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -105,7 +105,7 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 
 
 void QLPainter::lines(int const * xp, int const * yp, int np,
-	LColor_color col,
+	Color_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -133,7 +133,7 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 
 
 void QLPainter::rectangle(int x, int y, int w, int h,
-	LColor_color col,
+	Color_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -145,14 +145,14 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 }
 
 
-void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
+void QLPainter::fillRectangle(int x, int y, int w, int h, Color_color col)
 {
 	fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
 
 void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
-	int a1, int a2, LColor_color col)
+	int a1, int a2, Color_color col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -170,7 +170,7 @@ void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 	graphics::QLImage const & qlimage =
 		static_cast<graphics::QLImage const &>(i);
 
-	fillRectangle(x, y, w, h, LColor::graphicsbg);
+	fillRectangle(x, y, w, h, Color::graphicsbg);
 
 	if (!isDrawingEnabled())
 		return;

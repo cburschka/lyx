@@ -42,7 +42,7 @@ InsetTheorem::InsetTheorem()
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::collapsable);
+	font.setColor(Color::collapsable);
 	setLabelFont(font);
 #if 0
 	setAutoCollapse(false);

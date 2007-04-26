@@ -15,7 +15,7 @@
 #ifndef LYXFONT_H
 #define LYXFONT_H
 
-#include "LColor.h"
+#include "Color.h"
 #include "support/docstream.h"
 
 
@@ -170,7 +170,7 @@ public:
 		FONT_SHAPE shape;
 		///
 		FONT_SIZE size;
-		/** We store the LColor::color value as an int to get LColor.h out
+		/** We store the Color::color value as an int to get Color.h out
 		 *  of the header file.
 		 */
 		int color;
@@ -223,7 +223,7 @@ public:
 	///
 	FONT_MISC_STATE number() const { return bits.number; }
 	///
-	LColor_color color() const;
+	Color_color color() const;
 	///
 	Language const * language() const { return lang; }
 	///
@@ -242,7 +242,7 @@ public:
 	void setUnderbar(LyXFont::FONT_MISC_STATE u);
 	void setNoun(LyXFont::FONT_MISC_STATE n);
 	void setNumber(LyXFont::FONT_MISC_STATE n);
-	void setColor(LColor_color c);
+	void setColor(Color_color c);
 	void setLanguage(Language const * l);
 
 	/// Set family after LyX text format
@@ -314,7 +314,7 @@ public:
 	docstring const stateText(BufferParams * params) const;
 
 	///
-	LColor_color realColor() const;
+	Color_color realColor() const;
 
 	///
 	friend
