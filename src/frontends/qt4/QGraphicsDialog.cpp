@@ -53,29 +53,29 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotRestore()));
 	
 	//graphics pane
-	connect(filename, SIGNAL(textChanged(const QString&)),
+	connect(filename, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(WidthCB, SIGNAL( clicked()),
 		this, SLOT(change_adaptor()));
 	connect(HeightCB, SIGNAL( clicked()),
 		this, SLOT(change_adaptor()));
-	connect(Width, SIGNAL(textChanged(const QString&)),
+	connect(Width, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(Height, SIGNAL(textChanged(const QString&)),
+	connect(Height, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(heightUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(heightUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(widthUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(aspectratio, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(angle, SIGNAL(textChanged(const QString&)),
+	connect(angle, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(origin, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(scaleCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(Scale, SIGNAL(textChanged(const QString&)),
+	connect(Scale, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	
 	filename->setValidator(new PathValidator(true, filename));

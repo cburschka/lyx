@@ -69,7 +69,7 @@ QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 		this, SLOT(enableCustom(int)));
 	connect(keepCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(unitCO, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(unitCO, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 		this, SLOT(change_adaptor()));
 
 	valueLE->setValidator(unsignedLengthValidator(valueLE));

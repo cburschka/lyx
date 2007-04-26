@@ -278,10 +278,8 @@ void TocWidget::setTocModel(size_t type)
 void TocWidget::reconnectSelectionModel()
 {
 	connect(tocTV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &,
-			const QModelIndex &)),
-		this, SLOT(selectionChanged(const QModelIndex &,
-			const QModelIndex &)));
+		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
+		this, SLOT(selectionChanged(const QModelIndex &, const QModelIndex &)));
 }
 
 } // namespace frontend

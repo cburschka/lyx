@@ -87,35 +87,35 @@ QExternalDialog::QExternalDialog(QExternal * form)
 		this, SLOT(browseClicked()));
 	connect(editPB, SIGNAL(clicked()),
 		this, SLOT(editClicked()));
-	connect(externalCO, SIGNAL(activated(const QString&)),
+	connect(externalCO, SIGNAL(activated(const QString &)),
 		this, SLOT(templateChanged()));
-	connect(extraED, SIGNAL(textChanged(const QString&)),
+	connect(extraED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(extraChanged(const QString&)));
-	connect(extraFormatCO, SIGNAL(activated(const QString&)),
+	connect(extraFormatCO, SIGNAL(activated(const QString &)),
 		this, SLOT(formatChanged(const QString&)));
 	connect(widthUnitCO, SIGNAL(activated(int)),
 		this, SLOT(widthUnitChanged()));
-	connect(heightUnitCO, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(heightUnitCO, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(displayCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(displayscaleED, SIGNAL(textChanged(const QString&)),
+	connect(displayscaleED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(angleED, SIGNAL(textChanged(const QString&)),
+	connect(angleED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(widthED, SIGNAL(textChanged(const QString&)),
+	connect(widthED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(sizeChanged()));
-	connect(heightED, SIGNAL(textChanged(const QString&)),
+	connect(heightED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(sizeChanged()));
-	connect(fileED, SIGNAL(textChanged(const QString&)),
+	connect(fileED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(clipCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(getbbPB, SIGNAL(clicked()), this, SLOT(getbbClicked()));
-	connect(xrED, SIGNAL(textChanged(const QString&)), this, SLOT(bbChanged()));
-	connect(ytED, SIGNAL(textChanged(const QString&)), this, SLOT(bbChanged()));
-	connect(xlED, SIGNAL(textChanged(const QString&)), this, SLOT(bbChanged()));
-	connect(ybED, SIGNAL(textChanged(const QString&)), this, SLOT(bbChanged()));
+	connect(xrED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
+	connect(ytED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
+	connect(xlED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
+	connect(ybED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
 	connect(draftCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	QIntValidator * validator = new QIntValidator(displayscaleED);

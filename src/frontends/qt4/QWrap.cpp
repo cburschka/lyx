@@ -52,7 +52,7 @@ QWrapDialog::QWrapDialog(QWrap * form)
 
 	connect(widthED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(unitsLC, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(unitsLC, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
