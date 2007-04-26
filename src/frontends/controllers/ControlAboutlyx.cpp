@@ -16,7 +16,7 @@
 #include "version.h"
 
 #include "support/filetools.h" // FileSearch
-#include "support/package.h"
+#include "support/Package.h"
 
 #include <fstream>
 #include <sstream>

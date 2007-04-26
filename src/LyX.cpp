@@ -55,9 +55,9 @@
 #include "support/convert.h"
 #include "support/ExceptionMessage.h"
 #include "support/os.h"
-#include "support/package.h"
-#include "support/path.h"
-#include "support/systemcall.h"
+#include "support/Package.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>

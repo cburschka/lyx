@@ -13,7 +13,7 @@
 #ifndef DEP_TABLE_H
 #define DEP_TABLE_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <map>
 #include <string>

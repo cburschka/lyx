@@ -29,7 +29,7 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/path.h"
+#include "support/Path.h"
 #include "support/textutils.h"
 
 #include <boost/tokenizer.hpp>

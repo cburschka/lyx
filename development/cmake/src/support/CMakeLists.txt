@@ -6,16 +6,16 @@
 
 project(support)
 
-configure_file(${TOP_SRC_DIR}/src/support/package.C.in 
+configure_file(${TOP_SRC_DIR}/src/support/Package.C.in 
                ${CMAKE_CURRENT_BINARY_DIR}/package.C)
 
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/${LYX_CPP_FILES})
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM support_sources 	
-	${TOP_SRC_DIR}/src/support/os_win32.C
-	${TOP_SRC_DIR}/src/support/os_unix.C
-	${TOP_SRC_DIR}/src/support/os_cygwin.C
+	${TOP_SRC_DIR}/src/support/os_win32.cpp
+	${TOP_SRC_DIR}/src/support/os_unix.cpp
+	${TOP_SRC_DIR}/src/support/os_cygwin.cpp
 	${TOP_SRC_DIR}/src/support/os_os2.C
 	${TOP_SRC_DIR}/src/support/atexit.c
 	${TOP_SRC_DIR}/src/support/strerror.c)
@@ -30,10 +30,10 @@ if(NOT MERGE_FILES)
 	add_library(support ${library_type} ${support_sources} ${support_headers})
 else(NOT MERGE_FILES)
 	# move to front
-	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/convert.C)
-	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/convert.C)
-	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
-	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
+	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/convert.cpp)
+	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/convert.cpp)
+	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/lstrings.cpp)
+	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/lstrings.cpp)
 	list(REVERSE support_sources)
 	lyx_const_touched_files(_allinone  support_sources)
 	add_library(support ${library_type} ${_allinone_files})

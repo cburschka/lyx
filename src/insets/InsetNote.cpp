@@ -30,7 +30,7 @@
 #include "Paragraph.h"
 
 #include "support/lyxalgo.h"
-#include "support/translator.h"
+#include "support/Translator.h"
 
 #include <sstream>
 

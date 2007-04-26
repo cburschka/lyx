@@ -28,7 +28,7 @@
 #include "graphics/PreviewLoader.h"
 #include "graphics/Previews.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>

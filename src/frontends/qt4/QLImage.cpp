@@ -19,7 +19,7 @@
 
 #include "graphics/GraphicsParams.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/lstrings.h"       // ascii_lowercase
 
 #include <QPainter>

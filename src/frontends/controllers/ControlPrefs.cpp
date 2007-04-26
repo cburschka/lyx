@@ -21,7 +21,7 @@
 #include "paper.h"
 #include "LColor.h"
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 
 #include <sstream>
 

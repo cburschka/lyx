@@ -17,7 +17,7 @@
 #include "Format.h"
 
 #include "support/filetools.h"
-#include "support/forkedcallqueue.h"
+#include "support/ForkedCallQueue.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

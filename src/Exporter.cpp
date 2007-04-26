@@ -32,7 +32,7 @@
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "support/package.h"
+#include "support/Package.h"
 
 #include <boost/filesystem/operations.hpp>
 

@@ -22,7 +22,7 @@
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
-#include "support/forkedcall.h"
+#include "support/Forkedcall.h"
 #include "support/lstrings.h"
 #include "support/unicode.h"
 

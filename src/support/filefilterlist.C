@@ -1,5 +1,5 @@
 /**
- * \file filefilterlist.C
+ * \file FileFilterList.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/lstrings.h"
 
 // FIXME Interface violation

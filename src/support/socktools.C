@@ -1,5 +1,5 @@
 /**
- * \file socktools.C
+ * \file socktools.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "support/socktools.h"
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #if !defined (HAVE_FCNTL)
 // We provide stubs because we don't (yet?) support the native OS API.

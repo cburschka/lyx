@@ -26,9 +26,9 @@
 #include "insets/InsetGraphics.h"
 
 #include "support/convert.h"
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
-#include "support/package.h"
+#include "support/Package.h"
 #include "support/types.h"
 
 #include <boost/filesystem/operations.hpp>

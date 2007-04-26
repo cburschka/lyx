@@ -1,5 +1,5 @@
 /**
- * \file filename.C
+ * \file FileName.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"

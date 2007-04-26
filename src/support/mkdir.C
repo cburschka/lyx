@@ -1,5 +1,5 @@
 /**
- * \file mkdir.C
+ * \file mkdir.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #ifdef HAVE_SYS_STAT_H
 # include <sys/stat.h>

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file path.h
+ * \file Path.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #ifndef PATH_H
 #define PATH_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <boost/utility.hpp>
 

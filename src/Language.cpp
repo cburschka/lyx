@@ -19,7 +19,7 @@
 #include "LyXLex.h"
 #include "LyXRC.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 
 namespace lyx {

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file forkedcallqueue.h
+ * \file ForkedCallQueue.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -18,7 +18,7 @@
 #ifndef FORKEDCALLQUEUE_H
 #define FORKEDCALLQUEUE_H
 
-#include "support/forkedcall.h"
+#include "support/Forkedcall.h"
 
 #include <queue>
 #include <utility>

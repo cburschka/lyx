@@ -1,5 +1,5 @@
 /**
- * \file os_win32.C
+ * \file os_win32.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -19,8 +19,8 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/ExceptionMessage.h"
-#include "support/package.h"
-#include "support/path.h"
+#include "support/Package.h"
+#include "support/Path.h"
 
 #include "debug.h"
 #include "gettext.h"

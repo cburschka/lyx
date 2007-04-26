@@ -13,7 +13,7 @@
 #ifndef SESSION_H
 #define SESSION_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/types.h"
 
 #include <boost/utility.hpp>

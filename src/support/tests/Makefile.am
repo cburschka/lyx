@@ -20,18 +20,18 @@ AM_CPPFLAGS += $(BOOST_INCLUDES) -I$(srcdir)/../..
 convert_LDADD = ../../debug.o ../convert.o ../docstring.o ../lstrings.o ../unicode.o ../qstring_helpers.o $(BOOST_REGEX) $(QT4_CORE_LIB)
 convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 convert_SOURCES = \
-	convert.C \
+	convert.cpp \
 	boost.cpp
 
 filetools_LDADD = ../../debug.o ../libsupport.la $(BOOST_REGEX) $(BOOST_FILESYSTEM)
 filetools_SOURCES = \
-	filetools.C \
+	filetools.cpp \
 	boost.cpp
 
 lstrings_LDADD = ../../debug.o ../lstrings.o ../convert.o ../docstring.o ../unicode.o ../qstring_helpers.o $(QT4_CORE_LIB)
 lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 lstrings_SOURCES = \
-	lstrings.C \
+	lstrings.cpp \
 	boost.cpp
 
 makeregfiles: ${check_PROGRAMS}

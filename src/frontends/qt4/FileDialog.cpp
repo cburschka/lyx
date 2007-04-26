@@ -19,7 +19,7 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/os.h"
 
 /** when this is defined, the code will use

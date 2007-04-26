@@ -21,7 +21,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lyxtime.h"
-#include "support/package.h"
+#include "support/Package.h"
 
 #include <boost/crc.hpp>
 #include <boost/filesystem/operations.hpp>

@@ -19,7 +19,7 @@
 #include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/systemcall.h"
+#include "support/Systemcall.h"
 
 #include <boost/format.hpp>
 

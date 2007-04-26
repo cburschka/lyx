@@ -1,5 +1,5 @@
 /**
- * \file filetools.C
+ * \file filetools.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -28,9 +28,9 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/package.h"
-#include "support/path.h"
-#include "support/systemcall.h"
+#include "support/Package.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 
 // FIXME Interface violation
 #include "gettext.h"

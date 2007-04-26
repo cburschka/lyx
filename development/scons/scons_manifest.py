@@ -100,12 +100,12 @@ src_support_header_files = Split('''
     docstring.h
     environment.h
     ExceptionMessage.h
-    filefilterlist.h
-    filename.h
+    FileFilterList.h
+    FileName.h
     filetools.h
-    forkedcall.h
-    forkedcallqueue.h
-    forkedcontr.h
+    Forkedcall.h
+    ForkedCallQueue.h
+    ForkedcallsController.h
     fs_extras.h
     limited_stack.h
     lstrings.h
@@ -115,15 +115,15 @@ src_support_header_files = Split('''
     lyxtime.h
     os.h
     os_win32.h
-    package.h
-    path.h
+    Package.h
+    Path.h
     qstring_helpers.h
     socktools.h
     std_istream.h
     std_ostream.h
-    systemcall.h
+    Systemcall.h
     textutils.h
-    translator.h
+    Translator.h
     types.h
     unicode.h
     userinfo.h
@@ -131,39 +131,39 @@ src_support_header_files = Split('''
 
 
 src_support_files = Split('''
-    FileMonitor.C
-    abort.C
-    chdir.C
-    convert.C
-    copy.C
-    docstream.C
-    docstring.C
-    environment.C
-    filefilterlist.C
-    filename.C
-    filetools.C
-    forkedcall.C
-    forkedcallqueue.C
-    forkedcontr.C
-    fs_extras.C
-    getcwd.C
-    kill.C
-    lstrings.C
-    lyxsum.C
-    lyxtime.C
-    mkdir.C
-    os.C
+    FileMonitor.cpp
+    abort.cpp
+    chdir.cpp
+    convert.cpp
+    copy.cpp
+    docstream.cpp
+    docstring.cpp
+    environment.cpp
+    FileFilterList.cpp
+    FileName.cpp
+    filetools.cpp
+    Forkedcall.cpp
+    ForkedCallQueue.cpp
+    ForkedcallsController.cpp
+    fs_extras.cpp
+    getcwd.cpp
+    kill.cpp
+    lstrings.cpp
+    lyxsum.cpp
+    lyxtime.cpp
+    mkdir.cpp
+    os.cpp
     package.C
-    path.C
-    qstring_helpers.C
-    rename.C
-    socktools.C
-    systemcall.C
-    tempname.C
-    textutils.C
-    unicode.C
-    unlink.C
-    userinfo.C
+    Path.cpp
+    qstring_helpers.cpp
+    rename.cpp
+    socktools.cpp
+    Systemcall.cpp
+    tempname.cpp
+    textutils.cpp
+    unicode.cpp
+    unlink.cpp
+    userinfo.cpp
 ''')
 
 

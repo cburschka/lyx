@@ -12,7 +12,7 @@
 #include "Messages.h"
 #include "debug.h"
 #include "support/filetools.h"
-#include "support/package.h"
+#include "support/Package.h"
 #include "support/unicode.h"
 
 #include <boost/current_function.hpp>

@@ -18,8 +18,8 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/package.h"
-#include "support/path.h"
+#include "support/Package.h"
+#include "support/Path.h"
 
 using std::endl;
 using std::for_each;

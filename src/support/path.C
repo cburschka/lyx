@@ -1,5 +1,5 @@
 /**
- * \file path.C
+ * \file Path.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 // Needed to prevent the definition of the unnamed_Path macro in the header file.
 #define PATH_C
 
-#include "support/path.h"
+#include "support/Path.h"
 #include "support/lyxlib.h"
 
 

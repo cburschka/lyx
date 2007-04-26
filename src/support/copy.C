@@ -1,5 +1,5 @@
 /**
- * \file copy.C
+ * \file copy.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <fstream>
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/lyxlib.h"
 
 #ifdef HAVE_SYS_STAT_H

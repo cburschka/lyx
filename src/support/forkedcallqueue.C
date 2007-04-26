@@ -1,5 +1,5 @@
 /**
- * \file forkedcallqueue.C
+ * \file ForkedCallQueue.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/forkedcallqueue.h"
+#include "support/ForkedCallQueue.h"
 
 #include "debug.h"
 

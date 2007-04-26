@@ -17,7 +17,7 @@
 #include "RenderButton.h"
 #include "MailInset.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <boost/scoped_ptr.hpp>
 

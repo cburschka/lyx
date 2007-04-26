@@ -24,7 +24,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/systemcall.h"
+#include "support/Systemcall.h"
 
 #include <boost/filesystem/operations.hpp>
 

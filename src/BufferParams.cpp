@@ -40,7 +40,7 @@
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/convert.h"
-#include "support/translator.h"
+#include "support/Translator.h"
 
 #include <boost/array.hpp>
 

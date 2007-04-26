@@ -28,7 +28,7 @@
 #include "Paragraph.h"
 #include "TextMetrics.h"
 
-#include "support/translator.h"
+#include "support/Translator.h"
 
 #include <sstream>
 

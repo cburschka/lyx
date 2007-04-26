@@ -14,11 +14,11 @@
 #include "debug.h"
 #include "Buffer.h"
 
-#include "support/path.h"
+#include "support/Path.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
 #include "support/lstrings.h"
-#include "support/systemcall.h"
+#include "support/Systemcall.h"
 
 #include <boost/filesystem/operations.hpp>
 #include <boost/regex.hpp>

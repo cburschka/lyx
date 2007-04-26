@@ -1,5 +1,5 @@
 /**
- * \file systemcall.C
+ * \file Systemcall.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "support/systemcall.h"
+#include "support/Systemcall.h"
 #include "support/os.h"
 
 #include <cstdlib>

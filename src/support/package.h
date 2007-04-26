@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file package.h
+ * \file Package.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,7 +15,7 @@
 #ifndef LYX_PACHAGE_H
 #define LYX_PACHAGE_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <string>
 
@@ -118,7 +118,7 @@ public:
 	FileName & temp_dir() const;
 
 	/** Used when setting the user_support directory.
-	 *  Used also when expanding "~/" or contracting to "~/". (filetools.C)
+	 *  Used also when expanding "~/" or contracting to "~/". (filetools.cpp)
 	 *  Used in emergencyWrite (BufferList.cpp) as one possible location
 	 *  for the dump.
 	 *  This may be empty (e. g. when run under a CGI environment)

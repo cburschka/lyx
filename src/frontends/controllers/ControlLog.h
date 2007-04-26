@@ -15,7 +15,7 @@
 
 #include "Dialog.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 namespace lyx {
 namespace frontend {

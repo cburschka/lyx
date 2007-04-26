@@ -13,7 +13,7 @@
 
 #include "Session.h"
 #include "debug.h"
-#include "support/package.h"
+#include "support/Package.h"
 #include "support/filetools.h"
 
 #include <boost/filesystem/operations.hpp>

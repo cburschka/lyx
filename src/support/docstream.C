@@ -1,5 +1,5 @@
 /**
- * \file docstream.C
+ * \file docstream.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

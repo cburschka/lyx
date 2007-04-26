@@ -69,7 +69,7 @@
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/path.h"
+#include "support/Path.h"
 #include "support/textutils.h"
 #include "support/convert.h"
 

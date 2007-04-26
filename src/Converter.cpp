@@ -28,8 +28,8 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/path.h"
-#include "support/systemcall.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 
 
 namespace lyx {

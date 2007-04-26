@@ -14,7 +14,7 @@
 #ifndef LYXSERVERSOCKET_H
 #define LYXSERVERSOCKET_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/socktools.h"
 #include "LyXFunc.h"
 

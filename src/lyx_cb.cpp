@@ -38,14 +38,14 @@
 #include "frontends/FileDialog.h"
 #include "frontends/LyXView.h"
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
-#include "support/forkedcall.h"
+#include "support/Forkedcall.h"
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
-#include "support/package.h"
-#include "support/path.h"
-#include "support/systemcall.h"
+#include "support/Package.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 
 #if !defined (HAVE_FORK)
 # define fork() -1

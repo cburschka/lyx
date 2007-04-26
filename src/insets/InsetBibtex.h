@@ -16,7 +16,7 @@
 #include <vector>
 #include "InsetCommand.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 
 namespace lyx {

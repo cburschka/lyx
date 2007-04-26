@@ -1,5 +1,5 @@
 /**
- * \file forkedcontr.C
+ * \file ForkedcallsController.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,8 +14,8 @@
 
 #include <config.h>
 
-#include "support/forkedcontr.h"
-#include "support/forkedcall.h"
+#include "support/ForkedcallsController.h"
+#include "support/Forkedcall.h"
 
 #include "debug.h"
 

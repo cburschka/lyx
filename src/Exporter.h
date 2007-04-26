@@ -13,7 +13,7 @@
 #ifndef EXPORTER_H
 #define EXPORTER_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <map>
 #include <string>

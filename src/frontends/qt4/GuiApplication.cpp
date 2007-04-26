@@ -24,7 +24,7 @@
 
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/package.h"
+#include "support/Package.h"
 
 #include "BufferView.h"
 #include "color.h"

@@ -21,7 +21,7 @@
 #include "LyXRC.h"
 #include "gettext.h"
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

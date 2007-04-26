@@ -132,10 +132,10 @@ src/output.cpp
 src/output_plaintext.cpp
 src/Paragraph.cpp
 src/rowpainter.cpp
-src/support/filefilterlist.C
-src/support/os_win32.C
-src/support/package.C.in
-src/support/userinfo.C
+src/support/FileFilterList.cpp
+src/support/os_win32.cpp
+src/support/Package.C.in
+src/support/userinfo.cpp
 src/tex-strings.cpp
 src/text.cpp
 src/text2.cpp

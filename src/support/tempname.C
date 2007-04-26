@@ -1,5 +1,5 @@
 /**
- * \file tempname.C
+ * \file tempname.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 #include "support/convert.h"
 #include "support/filetools.h"
-#include "support/package.h"
+#include "support/Package.h"
 
 #include "debug.h"
 

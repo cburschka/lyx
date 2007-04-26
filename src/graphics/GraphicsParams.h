@@ -16,7 +16,7 @@
 
 #include "GraphicsTypes.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <string>
 #include <iosfwd>

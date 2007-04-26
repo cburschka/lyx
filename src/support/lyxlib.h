@@ -15,7 +15,7 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <string>
 

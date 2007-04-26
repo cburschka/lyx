@@ -25,7 +25,7 @@
 #include "support/lyxlib.h"
 #include "support/ExceptionMessage.h"
 #include "support/os.h"
-#include "support/package.h"
+#include "support/Package.h"
 #include "support/unicode.h"
 
 #include <boost/function.hpp>

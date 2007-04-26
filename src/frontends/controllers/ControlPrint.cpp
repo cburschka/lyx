@@ -22,7 +22,7 @@
 #include "PrinterParams.h"
 
 #include "support/convert.h"
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
 
 using std::string;

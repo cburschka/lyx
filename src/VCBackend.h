@@ -12,7 +12,7 @@
 #ifndef VC_BACKEND_H
 #define VC_BACKEND_H
 
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <string>
 

@@ -4,8 +4,8 @@ SUBDIRS = . tests
 
 CLEANFILES += $(BUILT_SOURCES)
 
-EXTRA_DIST = package.C.in pch.h \
-	os_cygwin.C os_unix.C os_win32.C os_win32.h
+EXTRA_DIST = Package.C.in pch.h \
+	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
 
 noinst_LTLIBRARIES = libsupport.la
 
@@ -19,86 +19,86 @@ AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
 libsupport_la_SOURCES = \
 	FileMonitor.h \
-	FileMonitor.C \
+	FileMonitor.cpp \
 	RandomAccessList.h \
-	abort.C \
-	chdir.C \
-	convert.C \
+	abort.cpp \
+	chdir.cpp \
+	convert.cpp \
 	convert.h \
-	copy.C \
+	copy.cpp \
 	copied_ptr.h \
 	cow_ptr.h \
 	debugstream.h \
-	docstream.C \
+	docstream.cpp \
 	docstream.h \
-	docstring.C \
+	docstring.cpp \
 	docstring.h \
 	environment.h \
-	environment.C \
+	environment.cpp \
 	ExceptionMessage.h \
-	filefilterlist.C \
-	filefilterlist.h \
-	filename.C \
-	filename.h \
-	filetools.C \
+	FileFilterList.cpp \
+	FileFilterList.h \
+	FileName.cpp \
+	FileName.h \
+	filetools.cpp \
 	filetools.h \
-	forkedcall.C \
-	forkedcall.h \
-	forkedcallqueue.C \
-	forkedcallqueue.h \
-	forkedcontr.C \
-	forkedcontr.h \
-	fs_extras.C \
+	Forkedcall.cpp \
+	Forkedcall.h \
+	ForkedCallQueue.cpp \
+	ForkedCallQueue.h \
+	ForkedcallsController.cpp \
+	ForkedcallsController.h \
+	fs_extras.cpp \
 	fs_extras.h \
-	getcwd.C \
-	kill.C \
+	getcwd.cpp \
+	kill.cpp \
 	limited_stack.h \
-	lstrings.C \
+	lstrings.cpp \
 	lstrings.h \
 	lyxalgo.h \
 	lyxlib.h \
 	lyxmanip.h \
-	lyxtime.C \
+	lyxtime.cpp \
 	lyxtime.h \
-	lyxsum.C \
-	mkdir.C \
-	os.C \
+	lyxsum.cpp \
+	mkdir.cpp \
+	os.cpp \
 	os.h \
-	path.C \
-	path.h \
+	Path.cpp \
+	Path.h \
 	package.C \
-	package.h \
-	qstring_helpers.C \
+	Package.h \
+	qstring_helpers.cpp \
 	qstring_helpers.h \
-	rename.C \
-	socktools.C \
+	rename.cpp \
+	socktools.cpp \
 	socktools.h \
 	std_istream.h \
 	std_ostream.h \
-	systemcall.C \
-	systemcall.h \
-	tempname.C \
-	textutils.C \
+	Systemcall.cpp \
+	Systemcall.h \
+	tempname.cpp \
+	textutils.cpp \
 	textutils.h \
-	translator.h \
+	Translator.h \
 	types.h \
-	userinfo.C \
+	userinfo.cpp \
 	userinfo.h \
-	unicode.C \
+	unicode.cpp \
 	unicode.h \
-	unlink.C
+	unlink.cpp
 
 
 package.C: build_package
 
 # Solaris sed does not like spaces bewteen the ;-delimited commands
-build_package: package.C.in
+build_package: Package.C.in
 	@rm -f tmp_package ;\
 	sed "s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
 s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
 s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
 s,@PROGRAM_SUFFIX@,$(program_suffix)," \
-		$(srcdir)/package.C.in > tmp_package ;\
+		$(srcdir)/Package.C.in > tmp_package ;\
 	if cmp -s tmp_package package.C ; then \
 		rm -f tmp_package ;\
 	else \

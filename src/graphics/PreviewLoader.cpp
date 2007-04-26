@@ -29,8 +29,8 @@
 #include "insets/Inset.h"
 
 #include "support/filetools.h"
-#include "support/forkedcall.h"
-#include "support/forkedcontr.h"
+#include "support/Forkedcall.h"
+#include "support/ForkedcallsController.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"

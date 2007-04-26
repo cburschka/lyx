@@ -79,7 +79,7 @@ TODO
 #include "support/lyxlib.h" // sum
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/systemcall.h"
+#include "support/Systemcall.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>

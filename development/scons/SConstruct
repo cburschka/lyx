@@ -362,7 +362,7 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 # 3. compiler commands and flags like CCFLAGS.
 #     MSGFMT used to process po files
 # 4. Variables that will be used to replace variables in some_file.in
-#     src/support/package.C.in:
+#     src/support/Package.C.in:
 #       TOP_SRCDIR, LOCALEDIR, LYX_DIR, PROGRAM_SUFFIX
 #     lib/lyx2lyx/lyx2lyx_version.py.in
 #       PACKAGE_VERSION
@@ -400,12 +400,12 @@ if env.has_key('version_suffix'):
         program_suffix = env['version_suffix']
 else:
     program_suffix = ''
-# used by package.C.in
+# used by Package.C.in
 env['PROGRAM_SUFFIX'] = program_suffix
 
 # whether or not add suffix to file and directory names
 add_suffix = packaging_method != 'windows'
-# LYX_DIR are different (used in package.C.in)
+# LYX_DIR are different (used in Package.C.in)
 if add_suffix:
     env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir + program_suffix)).abspath
 else:
@@ -1639,7 +1639,7 @@ if build_support:
     print "Processing files in src/support..."
 
     frontend_env.Depends('$BUILDDIR/common/support/package.C', '$BUILDDIR/common/config.h')
-    env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/package.C.in')
+    env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/Package.C.in')
 
     support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',

@@ -24,7 +24,7 @@
 #include "frontends/Application.h"
 
 #include "support/environment.h"
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/lyxlib.h"
 #include "support/socktools.h"
 

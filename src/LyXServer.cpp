@@ -46,7 +46,7 @@
 #include "LyXFunc.h"
 #include "frontends/Application.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 

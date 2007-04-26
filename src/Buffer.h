@@ -18,7 +18,7 @@
 #include "DocIterator.h"
 #include "ParagraphList_fwd.h"
 
-#include "support/filename.h"
+#include "support/FileName.h"
 #include "support/limited_stack.h"
 #include "support/types.h"
 #include "support/docstring.h"

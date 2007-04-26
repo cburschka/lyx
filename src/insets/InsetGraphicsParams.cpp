@@ -24,7 +24,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
-#include "support/translator.h"
+#include "support/Translator.h"
 
 
 namespace lyx {

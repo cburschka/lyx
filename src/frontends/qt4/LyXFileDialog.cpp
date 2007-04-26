@@ -14,7 +14,7 @@
 
 #include "qt_helpers.h"
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/lstrings.h"
 
 #include <QApplication>

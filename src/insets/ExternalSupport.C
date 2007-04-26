@@ -24,12 +24,12 @@
 #include "Mover.h"
 
 #include "support/filetools.h"
-#include "support/forkedcall.h"
+#include "support/Forkedcall.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/package.h"
+#include "support/Package.h"
 
 #include <boost/filesystem/operations.hpp>
 

@@ -20,7 +20,7 @@
 #include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/systemcall.h"
+#include "support/Systemcall.h"
 
 #include <qfontinfo.h>
 

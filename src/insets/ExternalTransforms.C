@@ -17,7 +17,7 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h" // float_equal
 #include "support/convert.h"
-#include "support/translator.h"
+#include "support/Translator.h"
 
 #include <boost/regex.hpp>
 

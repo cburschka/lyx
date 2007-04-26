@@ -40,7 +40,7 @@
 #include "rowpainter.h"
 
 #include "gettext.h"
-#include "support/forkedcontr.h"
+#include "support/ForkedcallsController.h"
 
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>

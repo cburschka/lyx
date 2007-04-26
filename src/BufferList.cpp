@@ -27,7 +27,7 @@
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
-#include "support/package.h"
+#include "support/Package.h"
 
 #include <boost/bind.hpp>
 

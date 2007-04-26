@@ -16,7 +16,7 @@
 #include "support/docstring.h"
 #include "support/environment.h"
 #include "support/filetools.h"
-#include "support/package.h"
+#include "support/Package.h"
 #include "support/unicode.h"
 
 #include <boost/current_function.hpp>
@@ -82,7 +82,7 @@ docstring const Messages::get(string const & m) const
 		return it->second;
 	// The string was not found, use gettext to generate it:
 
-	// In this order, see support/filetools.C:
+	// In this order, see support/filetools.cpp:
 	string lang = getEnv("LC_ALL");
 	if (lang.empty()) {
 		lang = getEnv("LC_MESSAGES");

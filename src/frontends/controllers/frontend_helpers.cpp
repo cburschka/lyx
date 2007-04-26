@@ -31,14 +31,14 @@
 #include "frontends/Alert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/package.h"
+#include "support/Package.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/os.h"
-#include "support/package.h"
-#include "support/path.h"
-#include "support/systemcall.h"
+#include "support/Package.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 
 #include <boost/cregex.hpp>
 #include <fstream>

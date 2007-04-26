@@ -13,7 +13,7 @@
 #define LYX_FILETOOL_H
 
 #include "support/docstring.h"
-#include "support/filename.h"
+#include "support/FileName.h"
 
 #include <vector>
 #include <utility>

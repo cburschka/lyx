@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file forkedcontr.h
+ * \file ForkedcallsController.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,8 +13,8 @@
  * fork() and execvp().
  */
 
-#ifndef FORKEDCONTR_H
-#define FORKEDCONTR_H
+#ifndef FORKEDCALLSCONTROLLER_H
+#define FORKEDCALLSCONTROLLER_H
 
 #include <boost/shared_ptr.hpp>
 
@@ -76,4 +76,4 @@ std::string const getChildErrorMessage();
 } // namespace support
 } // namespace lyx
 
-#endif // FORKEDCONTR_H
+#endif // FORKEDCALLSCONTROLLER_H

@@ -15,7 +15,7 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
-#include "support/translator.h"
+#include "support/Translator.h"
 
 #include <string>
 

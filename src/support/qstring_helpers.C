@@ -1,5 +1,5 @@
 /**
- * \file qstring_helpers.C
+ * \file qstring_helpers.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

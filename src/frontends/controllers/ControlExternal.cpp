@@ -27,7 +27,7 @@
 #include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
 
-#include "support/filefilterlist.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/convert.h"
 

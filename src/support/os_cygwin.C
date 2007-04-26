@@ -1,5 +1,5 @@
 /**
- * \file os_cygwin.C
+ * \file os_cygwin.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -34,8 +34,8 @@ using lyx::support::contains;
 
 #ifdef X_DISPLAY_MISSING
 #include "support/filetools.h"
-#include "support/package.h"
-#include "support/path.h"
+#include "support/Package.h"
+#include "support/Path.h"
 using lyx::support::addName;
 using lyx::support::addPath;
 using lyx::support::package;
