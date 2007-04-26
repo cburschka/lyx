@@ -12,7 +12,7 @@
 
 #include "BufferView.h"
 #include "ControlTabular.h"
-#include "LCursor.h"
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -25,7 +25,7 @@ namespace lyx {
 namespace frontend {
 
 ControlTabular::ControlTabular(Dialog & parent)
-	: Dialog::Controller(parent), active_cell_(LyXTabular::npos)
+	: Dialog::Controller(parent), active_cell_(Tabular::npos)
 {}
 
 
@@ -34,7 +34,7 @@ bool ControlTabular::initialiseParams(string const & data)
 	// try to get the current cell
 	BufferView const * const bv = kernel().bufferview();
 	if (bv) {
-		LCursor const & cur = bv->cursor();
+		Cursor const & cur = bv->cursor();
 		// get the innermost tabular inset;
 		// assume that it is "ours"
 		for (int i = cur.depth() - 1; i >= 0; --i)
@@ -45,7 +45,7 @@ bool ControlTabular::initialiseParams(string const & data)
 	}
 	InsetTabular tmp(kernel().buffer());
 	InsetTabularMailer::string2params(data, tmp);
-	params_.reset(new LyXTabular(tmp.tabular));
+	params_.reset(new Tabular(tmp.tabular));
 	return true;
 }
 
@@ -53,24 +53,24 @@ bool ControlTabular::initialiseParams(string const & data)
 void ControlTabular::clearParams()
 {
 	params_.reset();
-	active_cell_ = LyXTabular::npos;
+	active_cell_ = Tabular::npos;
 }
 
 
-LyXTabular::idx_type ControlTabular::getActiveCell() const
+Tabular::idx_type ControlTabular::getActiveCell() const
 {
 	return active_cell_;
 }
 
 
-LyXTabular const & ControlTabular::tabular() const
+Tabular const & ControlTabular::tabular() const
 {
 	BOOST_ASSERT(params_.get());
 	return *params_.get();
 }
 
 
-void ControlTabular::set(LyXTabular::Feature f, string const & arg)
+void ControlTabular::set(Tabular::Feature f, string const & arg)
 {
 	string const data = featureAsString(f) + ' ' + arg;
 	kernel().dispatch(FuncRequest(getLfun(), data));
@@ -86,54 +86,54 @@ bool ControlTabular::useMetricUnits() const
 void ControlTabular::toggleTopLine()
 {
 	if (tabular().isMultiColumn(getActiveCell()))
-		set(LyXTabular::M_TOGGLE_LINE_TOP);
+		set(Tabular::M_TOGGLE_LINE_TOP);
 	else
-		set(LyXTabular::TOGGLE_LINE_TOP);
+		set(Tabular::TOGGLE_LINE_TOP);
 }
 
 
 void ControlTabular::toggleBottomLine()
 {
 	if (tabular().isMultiColumn(getActiveCell()))
-		set(LyXTabular::M_TOGGLE_LINE_BOTTOM);
+		set(Tabular::M_TOGGLE_LINE_BOTTOM);
 	else
-		set(LyXTabular::TOGGLE_LINE_BOTTOM);
+		set(Tabular::TOGGLE_LINE_BOTTOM);
 }
 
 
 void ControlTabular::toggleLeftLine()
 {
 	if (tabular().isMultiColumn(getActiveCell()))
-		set(LyXTabular::M_TOGGLE_LINE_LEFT);
+		set(Tabular::M_TOGGLE_LINE_LEFT);
 	else
-		set(LyXTabular::TOGGLE_LINE_LEFT);
+		set(Tabular::TOGGLE_LINE_LEFT);
 }
 
 
 void ControlTabular::toggleRightLine()
 {
 	if (tabular().isMultiColumn(getActiveCell()))
-		set(LyXTabular::M_TOGGLE_LINE_RIGHT);
+		set(Tabular::M_TOGGLE_LINE_RIGHT);
 	else
-		set(LyXTabular::TOGGLE_LINE_RIGHT);
+		set(Tabular::TOGGLE_LINE_RIGHT);
 }
 
 
 void ControlTabular::setSpecial(string const & special)
 {
 	if (tabular().isMultiColumn(getActiveCell()))
-		set(LyXTabular::SET_SPECIAL_MULTI, special);
+		set(Tabular::SET_SPECIAL_MULTI, special);
 	else
-		set(LyXTabular::SET_SPECIAL_COLUMN, special);
+		set(Tabular::SET_SPECIAL_COLUMN, special);
 }
 
 
 void ControlTabular::setWidth(string const & width)
 {
 	if (tabular().isMultiColumn(getActiveCell()))
-		set(LyXTabular::SET_MPWIDTH, width);
+		set(Tabular::SET_MPWIDTH, width);
 	else
-		set(LyXTabular::SET_PWIDTH, width);
+		set(Tabular::SET_PWIDTH, width);
 
 	dialog().view().update();
 }
@@ -141,7 +141,7 @@ void ControlTabular::setWidth(string const & width)
 
 void ControlTabular::toggleMultiColumn()
 {
-	set(LyXTabular::MULTICOLUMN);
+	set(Tabular::MULTICOLUMN);
 	dialog().view().update();
 }
 
@@ -149,41 +149,41 @@ void ControlTabular::toggleMultiColumn()
 void ControlTabular::rotateTabular(bool yes)
 {
 	if (yes)
-		set(LyXTabular::SET_ROTATE_TABULAR);
+		set(Tabular::SET_ROTATE_TABULAR);
 	else
-		set(LyXTabular::UNSET_ROTATE_TABULAR);
+		set(Tabular::UNSET_ROTATE_TABULAR);
 }
 
 
 void ControlTabular::rotateCell(bool yes)
 {
 	if (yes)
-		set(LyXTabular::SET_ROTATE_CELL);
+		set(Tabular::SET_ROTATE_CELL);
 	else
-		set(LyXTabular::UNSET_ROTATE_CELL);
+		set(Tabular::UNSET_ROTATE_CELL);
 }
 
 
 void ControlTabular::halign(ControlTabular::HALIGN h)
 {
-	LyXTabular::Feature num = LyXTabular::ALIGN_LEFT;
-	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
+	Tabular::Feature num = Tabular::ALIGN_LEFT;
+	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
 
 	switch (h) {
 		case LEFT:
-			num = LyXTabular::ALIGN_LEFT;
-			multi_num = LyXTabular::M_ALIGN_LEFT;
+			num = Tabular::ALIGN_LEFT;
+			multi_num = Tabular::M_ALIGN_LEFT;
 			break;
 		case CENTER:
-			num = LyXTabular::ALIGN_CENTER;
-			multi_num = LyXTabular::M_ALIGN_CENTER;
+			num = Tabular::ALIGN_CENTER;
+			multi_num = Tabular::M_ALIGN_CENTER;
 			break;
 		case RIGHT:
-			num = LyXTabular::ALIGN_RIGHT;
-			multi_num = LyXTabular::M_ALIGN_RIGHT;
+			num = Tabular::ALIGN_RIGHT;
+			multi_num = Tabular::M_ALIGN_RIGHT;
 			break;
 		case BLOCK:
-			num = LyXTabular::ALIGN_BLOCK;
+			num = Tabular::ALIGN_BLOCK;
 			//multi_num: no equivalent
 			break;
 	}
@@ -197,21 +197,21 @@ void ControlTabular::halign(ControlTabular::HALIGN h)
 
 void ControlTabular::valign(ControlTabular::VALIGN v)
 {
-	LyXTabular::Feature num = LyXTabular::VALIGN_MIDDLE;
-	LyXTabular::Feature multi_num = LyXTabular::M_VALIGN_MIDDLE;
+	Tabular::Feature num = Tabular::VALIGN_MIDDLE;
+	Tabular::Feature multi_num = Tabular::M_VALIGN_MIDDLE;
 
 	switch (v) {
 		case TOP:
-			num = LyXTabular::VALIGN_TOP;
-			multi_num = LyXTabular::M_VALIGN_TOP;
+			num = Tabular::VALIGN_TOP;
+			multi_num = Tabular::M_VALIGN_TOP;
 			break;
 		case MIDDLE:
-			num = LyXTabular::VALIGN_MIDDLE;
-			multi_num = LyXTabular::M_VALIGN_MIDDLE;
+			num = Tabular::VALIGN_MIDDLE;
+			multi_num = Tabular::M_VALIGN_MIDDLE;
 			break;
 		case BOTTOM:
-			num = LyXTabular::VALIGN_BOTTOM;
-			multi_num = LyXTabular::M_VALIGN_BOTTOM;
+			num = Tabular::VALIGN_BOTTOM;
+			multi_num = Tabular::M_VALIGN_BOTTOM;
 			break;
 	}
 
@@ -225,18 +225,18 @@ void ControlTabular::valign(ControlTabular::VALIGN v)
 void ControlTabular::booktabs(bool yes)
 {
 	if (yes)
-		set(LyXTabular::SET_BOOKTABS);
+		set(Tabular::SET_BOOKTABS);
 	else
-		set(LyXTabular::UNSET_BOOKTABS);
+		set(Tabular::UNSET_BOOKTABS);
 }
 
 
 void ControlTabular::longTabular(bool yes)
 {
 	if (yes)
-		set(LyXTabular::SET_LONGTABULAR);
+		set(Tabular::SET_LONGTABULAR);
 	else
-		set(LyXTabular::UNSET_LONGTABULAR);
+		set(Tabular::UNSET_LONGTABULAR);
 }
 
 } // namespace frontend

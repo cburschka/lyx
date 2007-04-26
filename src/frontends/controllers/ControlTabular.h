@@ -17,7 +17,7 @@
 #define CONTROLTABULAR_H
 
 #include "Dialog.h"
-#include "LyXTabular.h"
+#include "insets/InsetTabular.h"
 
 namespace lyx {
 namespace frontend {
@@ -38,13 +38,13 @@ public:
 	virtual kb_action getLfun() const { return LFUN_TABULAR_FEATURE; }
 
 	///
-	LyXTabular::idx_type getActiveCell() const;
+	Tabular::idx_type getActiveCell() const;
 	/// get the contained tabular
-	LyXTabular const & tabular() const;
+	Tabular const & tabular() const;
 	/// return true if units should default to metric
 	bool useMetricUnits() const;
 	/// set a parameter
-	void set(LyXTabular::Feature, std::string const & arg = std::string());
+	void set(Tabular::Feature, std::string const & arg = std::string());
 
 	/// borders
 	void toggleTopLine();
@@ -75,9 +75,9 @@ public:
 
 private:
 	///
-	LyXTabular::idx_type active_cell_;
+	Tabular::idx_type active_cell_;
 	///
-	boost::scoped_ptr<LyXTabular> params_;
+	boost::scoped_ptr<Tabular> params_;
 };
 
 } // namespace frontend
