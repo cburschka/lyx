@@ -132,20 +132,20 @@ void QTabularDialog::topspace_changed()
 {
 	switch(topspaceCO->currentIndex()) {
 		case 0: {
-			form_->controller().set(LyXTabular::SET_TOP_SPACE, "");
+			form_->controller().set(Tabular::SET_TOP_SPACE, "");
 				topspaceED->setEnabled(false);
 				topspaceUnit->setEnabled(false);
 			break;
 		}
 		case 1: {
-			form_->controller().set(LyXTabular::SET_TOP_SPACE, "default");
+			form_->controller().set(Tabular::SET_TOP_SPACE, "default");
 			topspaceED->setEnabled(false);
 			topspaceUnit->setEnabled(false);
 			break;
 		}
 		case 2: {
 			if (!topspaceED->text().isEmpty())
-				form_->controller().set(LyXTabular::SET_TOP_SPACE,
+				form_->controller().set(Tabular::SET_TOP_SPACE,
 					widgetsToLength(topspaceED, topspaceUnit));
 			if (!form_->bc().bp().isReadOnly()) {
 				topspaceED->setEnabled(true);
@@ -162,20 +162,20 @@ void QTabularDialog::bottomspace_changed()
 {
 	switch(bottomspaceCO->currentIndex()) {
 		case 0: {
-			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
+			form_->controller().set(Tabular::SET_BOTTOM_SPACE, "");
 				bottomspaceED->setEnabled(false);
 				bottomspaceUnit->setEnabled(false);
 			break;
 		}
 		case 1: {
-			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+			form_->controller().set(Tabular::SET_BOTTOM_SPACE, "default");
 			bottomspaceED->setEnabled(false);
 			bottomspaceUnit->setEnabled(false);
 			break;
 		}
 		case 2: {
 			if (!bottomspaceED->text().isEmpty())
-				form_->controller().set(LyXTabular::SET_BOTTOM_SPACE,
+				form_->controller().set(Tabular::SET_BOTTOM_SPACE,
 					widgetsToLength(bottomspaceED, bottomspaceUnit));
 			if (!form_->bc().bp().isReadOnly()) {
 				bottomspaceED->setEnabled(true);
@@ -192,20 +192,20 @@ void QTabularDialog::interlinespace_changed()
 {
 	switch(interlinespaceCO->currentIndex()) {
 		case 0: {
-			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
+			form_->controller().set(Tabular::SET_INTERLINE_SPACE, "");
 				interlinespaceED->setEnabled(false);
 				interlinespaceUnit->setEnabled(false);
 			break;
 		}
 		case 1: {
-			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+			form_->controller().set(Tabular::SET_INTERLINE_SPACE, "default");
 			interlinespaceED->setEnabled(false);
 			interlinespaceUnit->setEnabled(false);
 			break;
 		}
 		case 2: {
 			if (!interlinespaceED->text().isEmpty())
-				form_->controller().set(LyXTabular::SET_INTERLINE_SPACE,
+				form_->controller().set(Tabular::SET_INTERLINE_SPACE,
 					widgetsToLength(interlinespaceED, interlinespaceUnit));
 			if (!form_->bc().bp().isReadOnly()) {
 				interlinespaceED->setEnabled(true);
@@ -227,7 +227,7 @@ void QTabularDialog::close_clicked()
 
 void QTabularDialog::borderSet_clicked()
 {
-	form_->controller().set(LyXTabular::SET_ALL_LINES);
+	form_->controller().set(Tabular::SET_ALL_LINES);
 	form_->update_borders();
 	form_->changed();
 }
@@ -235,7 +235,7 @@ void QTabularDialog::borderSet_clicked()
 
 void QTabularDialog::borderUnset_clicked()
 {
-	form_->controller().set(LyXTabular::UNSET_ALL_LINES);
+	form_->controller().set(Tabular::UNSET_ALL_LINES);
 	form_->update_borders();
 	form_->changed();
 }
@@ -344,7 +344,7 @@ void QTabularDialog::longTabular()
 
 void QTabularDialog::ltNewpage_clicked()
 {
-	form_->controller().set(LyXTabular::SET_LTNEWPAGE);
+	form_->controller().set(Tabular::SET_LTNEWPAGE);
 	form_->changed();
 }
 
@@ -353,9 +353,9 @@ void QTabularDialog::ltHeaderStatus_clicked()
 {
 	bool enable(headerStatusCB->isChecked());
 	if (enable)
-		form_->controller().set(LyXTabular::SET_LTHEAD, "");
+		form_->controller().set(Tabular::SET_LTHEAD, "");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTHEAD, "");
+		form_->controller().set(Tabular::UNSET_LTHEAD, "");
 	headerBorderAboveCB->setEnabled(enable);
 	headerBorderBelowCB->setEnabled(enable);
 	firstheaderNoContentsCB->setEnabled(enable);
@@ -366,9 +366,9 @@ void QTabularDialog::ltHeaderStatus_clicked()
 void QTabularDialog::ltHeaderBorderAbove_clicked()
 {
 	if (headerBorderAboveCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTHEAD, "dl_above");
+		form_->controller().set(Tabular::SET_LTHEAD, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTHEAD, "dl_above");
+		form_->controller().set(Tabular::UNSET_LTHEAD, "dl_above");
 	form_->changed();
 }
 
@@ -376,9 +376,9 @@ void QTabularDialog::ltHeaderBorderAbove_clicked()
 void QTabularDialog::ltHeaderBorderBelow_clicked()
 {
 	if (headerBorderBelowCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTHEAD, "dl_below");
+		form_->controller().set(Tabular::SET_LTHEAD, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTHEAD, "dl_below");
+		form_->controller().set(Tabular::UNSET_LTHEAD, "dl_below");
 	form_->changed();
 }
 
@@ -386,9 +386,9 @@ void QTabularDialog::ltHeaderBorderBelow_clicked()
 void QTabularDialog::ltFirstHeaderBorderAbove_clicked()
 {
 	if (firstheaderBorderAboveCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "dl_above");
+		form_->controller().set(Tabular::SET_LTFIRSTHEAD, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "dl_above");
+		form_->controller().set(Tabular::UNSET_LTFIRSTHEAD, "dl_above");
 	form_->changed();
 }
 
@@ -396,9 +396,9 @@ void QTabularDialog::ltFirstHeaderBorderAbove_clicked()
 void QTabularDialog::ltFirstHeaderBorderBelow_clicked()
 {
 	if (firstheaderBorderBelowCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "dl_below");
+		form_->controller().set(Tabular::SET_LTFIRSTHEAD, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "dl_below");
+		form_->controller().set(Tabular::UNSET_LTFIRSTHEAD, "dl_below");
 	form_->changed();
 }
 
@@ -407,9 +407,9 @@ void QTabularDialog::ltFirstHeaderStatus_clicked()
 {
 	bool enable(firstheaderStatusCB->isChecked());
 	if (enable)
-		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "");
+		form_->controller().set(Tabular::SET_LTFIRSTHEAD, "");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "");
+		form_->controller().set(Tabular::UNSET_LTFIRSTHEAD, "");
 	firstheaderBorderAboveCB->setEnabled(enable);
 	firstheaderBorderBelowCB->setEnabled(enable);
 	form_->changed();
@@ -420,9 +420,9 @@ void QTabularDialog::ltFirstHeaderEmpty_clicked()
 {
 	bool enable(firstheaderNoContentsCB->isChecked());
 	if (enable)
-		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "empty");
+		form_->controller().set(Tabular::SET_LTFIRSTHEAD, "empty");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "empty");
+		form_->controller().set(Tabular::UNSET_LTFIRSTHEAD, "empty");
 	firstheaderStatusCB->setEnabled(!enable);
 	firstheaderBorderAboveCB->setEnabled(!enable);
 	firstheaderBorderBelowCB->setEnabled(!enable);
@@ -434,9 +434,9 @@ void QTabularDialog::ltFooterStatus_clicked()
 {
 	bool enable(footerStatusCB->isChecked());
 	if (enable)
-		form_->controller().set(LyXTabular::SET_LTFOOT, "");
+		form_->controller().set(Tabular::SET_LTFOOT, "");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFOOT, "");
+		form_->controller().set(Tabular::UNSET_LTFOOT, "");
 	footerBorderAboveCB->setEnabled(enable);
 	footerBorderBelowCB->setEnabled(enable);
 	lastfooterNoContentsCB->setEnabled(enable);
@@ -447,9 +447,9 @@ void QTabularDialog::ltFooterStatus_clicked()
 void QTabularDialog::ltFooterBorderAbove_clicked()
 {
 	if (footerBorderAboveCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTFOOT, "dl_above");
+		form_->controller().set(Tabular::SET_LTFOOT, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFOOT, "dl_above");
+		form_->controller().set(Tabular::UNSET_LTFOOT, "dl_above");
 	form_->changed();
 }
 
@@ -457,9 +457,9 @@ void QTabularDialog::ltFooterBorderAbove_clicked()
 void QTabularDialog::ltFooterBorderBelow_clicked()
 {
 	if (footerBorderBelowCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTFOOT, "dl_below");
+		form_->controller().set(Tabular::SET_LTFOOT, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFOOT, "dl_below");
+		form_->controller().set(Tabular::UNSET_LTFOOT, "dl_below");
 	form_->changed();
 }
 
@@ -468,9 +468,9 @@ void QTabularDialog::ltLastFooterStatus_clicked()
 {
 	bool enable(lastfooterStatusCB->isChecked());
 	if (enable)
-		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "");
+		form_->controller().set(Tabular::SET_LTLASTFOOT, "");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "");
+		form_->controller().set(Tabular::UNSET_LTLASTFOOT, "");
 	lastfooterBorderAboveCB->setEnabled(enable);
 	lastfooterBorderBelowCB->setEnabled(enable);
 	form_->changed();
@@ -480,9 +480,9 @@ void QTabularDialog::ltLastFooterStatus_clicked()
 void QTabularDialog::ltLastFooterBorderAbove_clicked()
 {
 	if (lastfooterBorderAboveCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "dl_above");
+		form_->controller().set(Tabular::SET_LTLASTFOOT, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "dl_above");
+		form_->controller().set(Tabular::UNSET_LTLASTFOOT, "dl_above");
 	form_->changed();
 }
 
@@ -490,9 +490,9 @@ void QTabularDialog::ltLastFooterBorderAbove_clicked()
 void QTabularDialog::ltLastFooterBorderBelow_clicked()
 {
 	if (lastfooterBorderBelowCB->isChecked())
-		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "dl_below");
+		form_->controller().set(Tabular::SET_LTLASTFOOT, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "dl_below");
+		form_->controller().set(Tabular::UNSET_LTLASTFOOT, "dl_below");
 	form_->changed();
 }
 
@@ -501,9 +501,9 @@ void QTabularDialog::ltLastFooterEmpty_clicked()
 {
 	bool enable(lastfooterNoContentsCB->isChecked());
 	if (enable)
-		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "empty");
+		form_->controller().set(Tabular::SET_LTLASTFOOT, "empty");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "empty");
+		form_->controller().set(Tabular::UNSET_LTLASTFOOT, "empty");
 	lastfooterStatusCB->setEnabled(!enable);
 	lastfooterBorderAboveCB->setEnabled(!enable);
 	lastfooterBorderBelowCB->setEnabled(!enable);
@@ -591,8 +591,8 @@ bool QTabular::isValid()
 
 void QTabular::update_borders()
 {
-	LyXTabular const & tabular = controller().tabular();
-	LyXTabular::idx_type const cell = controller().getActiveCell();
+	Tabular const & tabular = controller().tabular();
+	Tabular::idx_type const cell = controller().getActiveCell();
 	bool const isMulticolumnCell = tabular.isMultiColumn(cell);
 
 	if (!isMulticolumnCell) {
@@ -633,11 +633,11 @@ void QTabular::update_borders()
 
 void QTabular::update_contents()
 {
-	LyXTabular const & tabular(controller().tabular());
-	LyXTabular::idx_type const cell = controller().getActiveCell();
+	Tabular const & tabular(controller().tabular());
+	Tabular::idx_type const cell = controller().getActiveCell();
 
-	LyXTabular::row_type const row(tabular.row_of_cell(cell));
-	LyXTabular::col_type const col(tabular.column_of_cell(cell));
+	Tabular::row_type const row(tabular.row_of_cell(cell));
+	Tabular::col_type const col(tabular.column_of_cell(cell));
 
 	dialog_->tabularRowED->setText(toqstr(convert<string>(row + 1)));
 	dialog_->tabularColumnED->setText(toqstr(convert<string>(col + 1)));
@@ -657,10 +657,10 @@ void QTabular::update_contents()
 	docstring special;
 
 	if (multicol) {
-		special = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+		special = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
 		pwidth = tabular.getMColumnPWidth(cell);
 	} else {
-		special = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+		special = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
 		pwidth = tabular.getColumnPWidth(cell);
 	}
 
@@ -769,13 +769,13 @@ void QTabular::update_contents()
 
 	int valign = 0;
 	switch (tabular.getVAlignment(cell)) {
-	case LyXTabular::LYX_VALIGN_TOP:
+	case Tabular::LYX_VALIGN_TOP:
 		valign = 0;
 		break;
-	case LyXTabular::LYX_VALIGN_MIDDLE:
+	case Tabular::LYX_VALIGN_MIDDLE:
 		valign = 1;
 		break;
-	case LyXTabular::LYX_VALIGN_BOTTOM:
+	case Tabular::LYX_VALIGN_BOTTOM:
 		valign = 2;
 		break;
 	default:
@@ -809,7 +809,7 @@ void QTabular::update_contents()
 		return;
 	}
 
-	LyXTabular::ltType ltt;
+	Tabular::ltType ltt;
 	bool use_empty;
 	bool row_set = tabular.getRowOfLTHead(row, ltt);
 	dialog_->headerStatusCB->setChecked(row_set);
@@ -888,10 +888,10 @@ void QTabular::closeGUI()
 	// Subtle here, we must /not/ apply any changes and
 	// then refer to tabular, as it will have been freed
 	// since the changes update the actual controller().tabular()
-	LyXTabular const & tabular(controller().tabular());
+	Tabular const & tabular(controller().tabular());
 
 	// apply the fixed width values
-	LyXTabular::idx_type const cell = controller().getActiveCell();
+	Tabular::idx_type const cell = controller().getActiveCell();
 	bool const multicol = tabular.isMultiColumn(cell);
 	string width = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
 	string width2;
@@ -909,34 +909,34 @@ void QTabular::closeGUI()
 	docstring sa2;
 
 	if (multicol)
-		sa2 = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+		sa2 = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
 	else
-		sa2 = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+		sa2 = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
 
 	if (sa1 != sa2) {
 		if (multicol)
-			controller().set(LyXTabular::SET_SPECIAL_MULTI, to_utf8(sa1));
+			controller().set(Tabular::SET_SPECIAL_MULTI, to_utf8(sa1));
 		else
-			controller().set(LyXTabular::SET_SPECIAL_COLUMN, to_utf8(sa1));
+			controller().set(Tabular::SET_SPECIAL_COLUMN, to_utf8(sa1));
 	}
 
 	if (width != width2) {
 		if (multicol)
-			controller().set(LyXTabular::SET_MPWIDTH, width);
+			controller().set(Tabular::SET_MPWIDTH, width);
 		else
-			controller().set(LyXTabular::SET_PWIDTH, width);
+			controller().set(Tabular::SET_PWIDTH, width);
 	}
 
 	/* DO WE NEED THIS?
 	switch (dialog_->topspaceCO->currentIndex()) {
 		case 0:
-			controller().set(LyXTabular::SET_TOP_SPACE, "");
+			controller().set(Tabular::SET_TOP_SPACE, "");
 			break;
 		case 1:
-			controller().set(LyXTabular::SET_TOP_SPACE, "default");
+			controller().set(Tabular::SET_TOP_SPACE, "default");
 			break;
 		case 2:
-			controller().set(LyXTabular::SET_TOP_SPACE,
+			controller().set(Tabular::SET_TOP_SPACE,
 				widgetsToLength(dialog_->topspaceED, 
 					dialog_->topspaceUnit));
 			break;
@@ -944,13 +944,13 @@ void QTabular::closeGUI()
 
 	switch (dialog_->bottomspaceCO->currentIndex()) {
 		case 0:
-			controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
+			controller().set(Tabular::SET_BOTTOM_SPACE, "");
 			break;
 		case 1:
-			controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+			controller().set(Tabular::SET_BOTTOM_SPACE, "default");
 			break;
 		case 2:
-			controller().set(LyXTabular::SET_BOTTOM_SPACE,
+			controller().set(Tabular::SET_BOTTOM_SPACE,
 				widgetsToLength(dialog_->bottomspaceED, 
 					dialog_->bottomspaceUnit));
 			break;
@@ -958,13 +958,13 @@ void QTabular::closeGUI()
 
 	switch (dialog_->interlinespaceCO->currentIndex()) {
 		case 0:
-			controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
+			controller().set(Tabular::SET_INTERLINE_SPACE, "");
 			break;
 		case 1:
-			controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+			controller().set(Tabular::SET_INTERLINE_SPACE, "default");
 			break;
 		case 2:
-			controller().set(LyXTabular::SET_INTERLINE_SPACE,
+			controller().set(Tabular::SET_INTERLINE_SPACE,
 				widgetsToLength(dialog_->interlinespaceED, 
 					dialog_->interlinespaceUnit));
 			break;
