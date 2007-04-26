@@ -1,10 +1,9 @@
 #!/bin/sh
 
-ACLOCAL="aclocal -I ${PWD}/m4"
+ACLOCAL="aclocal -I m4 -I config"
 AUTOHEADER="autoheader"
 AUTOMAKE="automake --add-missing --copy --foreign"
 AUTOCONF="autoconf"
-ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 pkg.m4 qt4.m4 spell.m4"
 
 # Discover what version of automake we are using.
 automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`
@@ -70,12 +69,6 @@ fi
 # Delete old cache directories.
 # automake will stop if their contents was created by an earlier version.
 rm -rf autom4te.cache
-
-# Generate acinclude.m4
-echo -n "Generate acinclude.m4... "
-rm -f acinclude.m4
-(cd config ; cat ${ACINCLUDE_FILES} ${EXTRA_ACINCLUDE_FILES} >../acinclude.m4)
-echo "done."
 
 # Generate the Makefiles and configure files
 if ( $ACLOCAL --version ) < /dev/null > /dev/null 2>&1; then
