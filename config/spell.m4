@@ -33,7 +33,7 @@ AC_DEFUN([CHECK_WITH_PSPELL],
     test "$with_pspell" = "no" && lyx_use_pspell=false
 
     if $lyx_use_pspell ; then
-	AC_CHECK_HEADERS(pspell/PSpell.h,, lyx_use_pspell=false)
+	AC_CHECK_HEADERS(pspell/pspell.h,, lyx_use_pspell=false)
 	AC_CHECK_LIB(pspell, main, LIBS="-lpspell $LIBS", lyx_use_pspell=false)
 
 	AC_MSG_CHECKING([whether to use pspell])
