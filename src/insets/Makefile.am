@@ -14,11 +14,11 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 libinsets_la_SOURCES = \
 	MailInset.cpp \
 	MailInset.h \
-	ExternalSupport.C \
+	ExternalSupport.cpp \
 	ExternalSupport.h \
-	ExternalTemplate.C \
+	ExternalTemplate.cpp \
 	ExternalTemplate.h \
-	ExternalTransforms.C \
+	ExternalTransforms.cpp \
 	ExternalTransforms.h \
 	RenderBase.h \
 	RenderButton.cpp \

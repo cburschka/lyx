@@ -375,9 +375,9 @@ src_insets_header_files = Split('''
 
 
 src_insets_files = Split('''
-    ExternalSupport.C
-    ExternalTemplate.C
-    ExternalTransforms.C
+    ExternalSupport.cpp
+    ExternalTemplate.cpp
+    ExternalTransforms.cpp
     Inset.cpp
     InsetBase.cpp
     InsetBibitem.cpp
