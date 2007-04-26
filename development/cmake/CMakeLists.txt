@@ -31,7 +31,7 @@ if(NOT GROUP_CODE)
 endif(NOT GROUP_CODE)
 
 # lyx's source files
-set(LYX_CPP_FILES *.C)
+set(LYX_CPP_FILES *.cpp)
 set(LYX_HPP_FILES *.h)
 
 include(LyXPaths)
@@ -42,7 +42,7 @@ if(merge)
 	set(merge 1 CACHE TYPE STRING FORCE)
 	set(MERGE_FILES 1 CACHE TYPE STRING FORCE)
 	message(STATUS "")
-	message(STATUS "will merge all *.C files of a project into two files, disable with -Dmerge=0")
+	message(STATUS "will merge all *.cpp files of a project into two files, disable with -Dmerge=0")
 	message(STATUS "")
 	set(disable-pch  1)
 else(merge)
