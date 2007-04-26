@@ -941,8 +941,8 @@ src_tex2lyx_files = Split('''
     gettext.cpp
     lengthcommon.cpp
     LyXFont.cpp
+    Lexer.cpp
     LyXLayout.cpp
-    LyXLex.cpp
     LyXTextClass.cpp
     math.cpp
     preamble.cpp
@@ -974,7 +974,6 @@ src_header_files = Split('''
     LyXAction.h
     MenuBackend.h
     ParagraphList.h
-    ParagraphList_fwd.h
     ParagraphParameters.h
     PrinterParams.h
     RowList_fwd.h
@@ -999,7 +998,7 @@ src_header_files = Split('''
     Converter.h
     CoordCache.h
     Counters.h
-    LCursor.h
+    Cursor.h
     CursorSlice.h
     debug.h
     Dimension.h
@@ -1033,7 +1032,7 @@ src_header_files = Split('''
     LyXLayout.h
     lyxlayout_ptr_fwd.h
     LyXLength.h
-    LyXLex.h
+    Lexer.h
     LyXRC.h
     Row.h
     LyXServer.h
@@ -1059,7 +1058,6 @@ src_header_files = Split('''
     rowpainter.h
     Session.h
     sgml.h
-    LyXTabular.h
     tex-accent.h
     tex-strings.h
     TexRow.h
@@ -1110,7 +1108,7 @@ src_pre_files = Split('''
     Converter.cpp
     CoordCache.cpp
     Counters.cpp
-    LCursor.cpp
+    Cursor.cpp
     CursorSlice.cpp
     debug.cpp
     DocIterator.cpp
@@ -1138,7 +1136,7 @@ src_pre_files = Split('''
     LyXGlueLength.cpp
     LyXLayout.cpp
     LyXLength.cpp
-    LyXLex.cpp
+    Lexer.cpp
     LyXRC.cpp
     Row.cpp
     LyXServer.cpp
@@ -1179,7 +1177,6 @@ src_pre_files = Split('''
 
 
 src_post_files = Split('''
-    LyXTabular.cpp
     Dimension.cpp
     PrinterParams.cpp
     Box.cpp
