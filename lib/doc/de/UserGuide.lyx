@@ -1,5 +1,5 @@
-#LyX 1.5.0svn, 17698, 2. 4. 07 created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 264
 \begin_document
 \begin_header
 \textclass scrbook
@@ -104,8 +104,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Hartmut Haase" hha4491@atomstromfrei.de
 \author "usti" 
+\author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
 \begin_body
@@ -145,7 +145,7 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 9.
+letzte Änderung: 25.
  April 2007
 \end_layout
 
@@ -503,8 +503,8 @@ Sprache
 \end_inset
 
 ).
- Das hat bei der Rechtschreibprüfung den Vorteil, dass er dann in einem
- englischen Wörterbuch gesucht wird.
+ Das hat bei der Rechtschreibprüfung den Vorteil, dass er dann übergangen
+ wird.
 \end_layout
 
 \end_inset
@@ -16639,6 +16639,15 @@ reference "sec:figurefloats"
 Legende
 \family default
  eingegeben wird.
+ Weitere Einzelheiten finden Sie in 
+\emph on
+Eigebettete
+\emph default
+ 
+\emph on
+Objekte
+\emph default
+.
  Schließlich können LaTeX-Zauberer über die Karteikarte 
 \family sans
 Zusatz-Optionen
@@ -20898,13 +20907,15 @@ Abbildungsverzeichnis
 
 \begin_layout Standard
 Für die beiden anderen Klassen von Gleitobjekten gilt sinngemäß dasselbe.
- Dem aufmerksamen Leser mag auffallen, dass die gleitenden Algorithmen an
- keiner anderen Stelle im 
+ Die gleitenden Algorithmen werden in 
 \emph on
-Benutzerhandbuch
+Eingebettete
 \emph default
- erwähnt werden -- sie sind eine Neuerung, die leider noch nicht ausreichend
- dokumentiert ist.
+ 
+\emph on
+Objekte
+\emph default
+ näher beschrieben.
 \end_layout
 
 \begin_layout Chapter
@@ -21123,17 +21134,7 @@ fläche
 \family sans
  
 \family default
-Mathe-Kon\SpecialChar \-
-troll\SpecialChar \-
-fläche 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathpanel.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-, Darstellungsmodus 
+Darstellungsmodus 
 \begin_inset Graphics
 	filename ../../images/math/equation.xpm
 	scale 70
@@ -25639,12 +25640,7 @@ reference "sub:Create-macro"
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset LatexCommand prettyref
-reference "sub:Create-macro"
-
-\end_inset
-
- sieht aus wie 1.
+Formatierter Querverweis sieht aus wie 1.
 \end_layout
 
 \begin_layout Standard
