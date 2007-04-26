@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 265
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10467,11 +10467,11 @@ Tabla multicolumna perfecta
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="middle" leftline="true" width="0" special="|>{\centering}m{1.25cm-6.2pt}">
+<column alignment="center" valignment="middle" leftline="true" width="0" special=">{\centering}m{1.25cm-6.2pt}">
 <column alignment="center" valignment="middle" leftline="true" width="0">
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
 <row topline="true">
-<cell multicolumn="1" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none" special="|>{\centering}m{2.5cm}|">
+<cell multicolumn="1" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none" special=">{\centering}m{2.5cm}">
 \begin_inset Text
 
 \begin_layout Standard
@@ -10902,17 +10902,13 @@ centering
 \begin_layout Standard
 
 \series bold
-|>{
+>{
 \backslash
 centering}m{1.25cm-6.2pt}
 \end_layout
 
 \begin_layout Standard
-La barra "
-\series bold
-|
-\series default
-" al principio dibuja el borde y el comando 
+El comando 
 \series bold
 >{ }
 \series default
@@ -10929,9 +10925,9 @@ Aunque hemos escogido alineación centrada para el texto de la celda multicolumn
 \begin_layout Standard
 
 \series bold
-|>{
+>{
 \backslash
-centering}m{2.5cm}|
+centering}m{2.5cm}
 \end_layout
 
 \begin_layout Subsection
@@ -13829,7 +13825,7 @@ Tabla con colortbl
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0" special=">{\columncolor{verdeoscuro}\centering}c">
+<column alignment="center" valignment="top" width="0" special=">{\columncolor{verdeoscuro}\centering}c">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -14088,7 +14084,7 @@ Si quieres tener varios colores, define más formatos de columna.
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -14112,9 +14108,9 @@ Tabla con líneas verticales coloreadas
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0" special="WcW">
+<column alignment="center" valignment="top" width="0" special="Wc">
+<column alignment="center" valignment="top" width="0" special="WcW">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14486,9 +14482,9 @@ Tabla con líneas coloreadas
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0" special="Wc">
 <column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0" special="WcW">
+<column alignment="center" valignment="top" width="0" special="Wc">
+<column alignment="center" valignment="top" width="0" special="WcW">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14698,7 +14694,28 @@ reference "sec:Tablas-Formales"
  LyX insertará 0.5\InsetSpace \thinspace{}
 em por defecto.
  Si la tabla es de estilo normal el espacio adicional destruirá las líneas
- verticales, como se ve en la tabla siguiente: 
+ verticales, como se ve en la tabla siguiente:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hspace*{0pt}
+\end_layout
+
+\end_inset
+
+
+\hfill
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
 <features>
@@ -14742,6 +14759,25 @@ C
 \end_inset
 
 
+\hfill
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hspace*{0pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
 \newline
 Así pues, insertar espacio superior en tablas normales solo es útil en tablas
  sin líneas verticales.
@@ -14766,7 +14802,28 @@ filas añade espacio entre la fila actual y la siguiente.
  Si la tabla es formal LyX inserta 0.5\InsetSpace \thinspace{}
 em por defecto.
  En tablas normales, el espacio adicional destruirá las líneas verticales
- de la tabla, como se ve en la siguiente: 
+ de la tabla, como se ve en la siguiente:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hspace*{0pt}
+\end_layout
+
+\end_inset
+
+
+\hfill
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
 <features>
@@ -14818,6 +14875,25 @@ mm entre las filas
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\hfill
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hspace*{0pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -15015,13 +15091,6 @@ Esta es una tabla 4×2.
 \end_layout
 
 \begin_layout Standard
-Si quieres una línea vertical a la derecha de la segunda columna, usa en
- su lugar el argumento LaTeX: 
-\series bold
-@{}l|
-\end_layout
-
-\begin_layout Standard
 La tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -15064,11 +15133,11 @@ Tabla con varias alineaciones.
 <lyxtabular version="3" rows="4" columns="6">
 <features>
 <column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" rightline="true" width="0" special="@{}l|">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" rightline="true" width="0" special="@{}l|">
+<column alignment="left" valignment="top" rightline="true" width="0" special="@{}l">
 <column alignment="right" valignment="top" width="0">
 <column alignment="left" valignment="top" rightline="true" width="0" special="@{}l">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0" special="@{}l">
 <row bottomline="true">
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -15441,9 +15510,9 @@ dcolumn
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
-<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{4.9}|">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}|">
-<column alignment="center" valignment="top" rightline="true" width="0" special="D{~}{\,}{9.7}">
+<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{4.9}">
+<column alignment="center" valignment="top" rightline="true" width="0" special="D{x}{\times}{4.9}">
+<column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
 <row bottomline="true">
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -15556,7 +15625,7 @@ Pixels
 \begin_layout Standard
 1024
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -15608,7 +15677,7 @@ cm
 \begin_layout Standard
 32
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -15740,7 +15809,7 @@ reference "sub:Líneas-Múltiples-en"
 \begin_layout Standard
 
 \series bold
-|M{ancho}
+M{ancho}
 \end_layout
 
 \begin_layout Standard
@@ -15820,7 +15889,7 @@ Ahora puedes introducir
 \begin_layout Standard
 
 \series bold
-|S{ancho de la celda multicolumna}{número de columnas extendidas}
+S{ancho de la celda multicolumna}{número de columnas extendidas}
 \end_layout
 
 \begin_layout Standard
@@ -15895,7 +15964,7 @@ reference "tab:Tabla-con-formatos-definidos-por"
 \begin_layout Standard
 
 \series bold
-|M{2.5cm}
+M{2.5cm}
 \end_layout
 
 \begin_layout Standard
@@ -15905,7 +15974,7 @@ para la primera columna y la multicolumna,
 \begin_layout Standard
 
 \series bold
-|K{red}|
+K{red}
 \end_layout
 
 \begin_layout Standard
@@ -15915,7 +15984,7 @@ para la última columna y
 \begin_layout Standard
 
 \series bold
-|S{2.5cm}{2}
+S{2.5cm}{2}
 \end_layout
 
 \begin_layout Standard
@@ -15951,10 +16020,10 @@ Tabla con formatos definidos por el usuario
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
 <features>
-<column alignment="center" valignment="middle" leftline="true" width="2.5cm" special="|M{2.5cm}">
-<column alignment="center" valignment="middle" leftline="true" width="0" special="|S{2.5cm}{2}">
+<column alignment="center" valignment="middle" leftline="true" width="2.5cm" special="M{2.5cm}">
+<column alignment="center" valignment="middle" leftline="true" width="0" special="S{2.5cm}{2}">
 <column alignment="center" valignment="middle" leftline="true" width="0">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0" special="|K{red}|">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0" special="K{red}">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15965,7 +16034,7 @@ palabramuylargaenceldadetabla
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="M{2.5cm}|">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="M{2.5cm}">
 \begin_inset Text
 
 \begin_layout Standard
@@ -16654,9 +16723,9 @@ pt de grosor
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0" special="Vc">
-<column alignment="center" valignment="top" leftline="true" width="0" special="Vc">
-<column alignment="center" valignment="top" leftline="true" width="0" special="VcV">
+<column alignment="center" valignment="top" width="0" special="Vc">
+<column alignment="center" valignment="top" width="0" special="Vc">
+<column alignment="center" valignment="top" width="0" special="VcV">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
