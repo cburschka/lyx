@@ -17,7 +17,7 @@
 #include "LyXText.h"
 #include "Paragraph.h"
 
-#include "mathed/MathArray.h"
+#include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
 
 #include "insets/InsetTabular.h"
@@ -232,14 +232,14 @@ DocIterator::col_type DocIterator::col() const
 }
 
 
-MathArray const & DocIterator::cell() const
+MathData const & DocIterator::cell() const
 {
 //	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
-MathArray & DocIterator::cell()
+MathData & DocIterator::cell()
 {
 //	BOOST_ASSERT(inMathed());
 	return top().cell();

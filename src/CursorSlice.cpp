@@ -19,7 +19,7 @@
 #include "Paragraph.h"
 
 #include "mathed/InsetMath.h"
-#include "mathed/MathArray.h"
+#include "mathed/MathData.h"
 
 #include <boost/assert.hpp>
 
@@ -41,7 +41,7 @@ CursorSlice::CursorSlice(InsetBase & p)
 }
 
 
-MathArray & CursorSlice::cell() const
+MathData & CursorSlice::cell() const
 {
 	return inset_->asInsetMath()->cell(idx_);
 }

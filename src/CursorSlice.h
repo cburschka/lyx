@@ -27,7 +27,7 @@
 namespace lyx {
 
 class InsetBase;
-class MathArray;
+class MathData;
 class LyXText;
 class Paragraph;
 
@@ -35,7 +35,7 @@ class Paragraph;
 /// for cursors.
 
 // After IU, the distinction of MathInset and InsetOld as well as
-// that of MathArray and LyXText should vanish. They are conceptually the
+// that of MathData and LyXText should vanish. They are conceptually the
 // same (now...)
 
 class CursorSlice {
@@ -109,7 +109,7 @@ public:
 	/// returns the owning inset if it is a InsetMath, else 0
 	InsetMath * asInsetMath() const { return inset_->asInsetMath(); }
 	/// returns cell corresponding to this position
-	MathArray & cell() const;
+	MathData & cell() const;
 
 	/// write some debug information to \p os
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);

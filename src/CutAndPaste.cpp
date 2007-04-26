@@ -39,7 +39,7 @@
 #include "insets/InsetCharStyle.h"
 #include "insets/InsetTabular.h"
 
-#include "mathed/MathArray.h"
+#include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
 #include "mathed/MathSupport.h"
 
@@ -891,8 +891,8 @@ docstring grabSelection(Cursor const & cur)
 
 	if (i1.idx() == i2.idx()) {
 		if (i1.inset().asInsetMath()) {
-			MathArray::const_iterator it = i1.cell().begin();
-			return asString(MathArray(it + i1.pos(), it + i2.pos()));
+			MathData::const_iterator it = i1.cell().begin();
+			return asString(MathData(it + i1.pos(), it + i2.pos()));
 		} else {
 			return from_ascii("unknown selection 1");
 		}

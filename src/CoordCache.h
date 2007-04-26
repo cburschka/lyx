@@ -22,7 +22,7 @@ namespace lyx {
 
 class InsetBase;
 class LyXText;
-class MathArray;
+class MathData;
 class Paragraph;
 
 void lyxbreaker(void const * data, const char * hint, int size);
@@ -122,9 +122,9 @@ public:
 	/// A map from a CursorSlice to screen points
 	typedef std::map<LyXText const *, InnerParPosCache> SliceCache;
 
-	/// A map from MathArray to position on the screen
-	CoordCacheBase<MathArray> & arrays() { return arrays_; }
-	CoordCacheBase<MathArray> const & getArrays() const { return arrays_; }
+	/// A map from MathData to position on the screen
+	CoordCacheBase<MathData> & arrays() { return arrays_; }
+	CoordCacheBase<MathData> const & getArrays() const { return arrays_; }
 	/// A map from insets to positions on the screen
 	CoordCacheBase<InsetBase> & insets() { return insets_; }
 	CoordCacheBase<InsetBase> const & getInsets() const { return insets_; }
@@ -144,8 +144,8 @@ public:
 	/// Dump the contents of the cache to lyxerr in debugging form
 	void dump() const;
 private:
-	/// MathArrays
-	CoordCacheBase<MathArray> arrays_;
+	/// MathDatas
+	CoordCacheBase<MathData> arrays_;
 	// All insets
 	CoordCacheBase<InsetBase> insets_;
 	/// Paragraph grouped by owning text

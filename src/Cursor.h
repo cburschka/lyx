@@ -238,7 +238,7 @@ public:
 	///
 	void insert(MathAtom const &);
 	///
-	void insert(MathArray const &);
+	void insert(MathData const &);
 	/// return false for empty math insets
 	bool erase();
 	/// return false for empty math insets

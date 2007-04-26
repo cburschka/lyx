@@ -36,7 +36,7 @@
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
 
-#include "mathed/MathArray.h"
+#include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathScript.h"
 #include "mathed/MathMacroTable.h"
@@ -723,7 +723,7 @@ void Cursor::insert(InsetBase * inset)
 
 void Cursor::niceInsert(docstring const & t)
 {
-	MathArray ar;
+	MathData ar;
 	asArray(t, ar);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
@@ -744,14 +744,14 @@ void Cursor::niceInsert(MathAtom const & t)
 		// push the clone, not the original
 		pushLeft(*nextInset());
 		// We may not use niceInsert here (recursion)
-		MathArray ar;
+		MathData ar;
 		asArray(safe, ar);
 		insert(ar);
 	}
 }
 
 
-void Cursor::insert(MathArray const & ar)
+void Cursor::insert(MathData const & ar)
 {
 	macroModeClose();
 	if (selection())
@@ -969,7 +969,7 @@ void Cursor::pullArg()
 #ifdef WITH_WARNINGS
 #warning Look here
 #endif
-	MathArray ar = cell();
+	MathData ar = cell();
 	if (popLeft() && inMathed()) {
 		plainErase();
 		cell().insert(pos(), ar);
@@ -1130,9 +1130,9 @@ void Cursor::handleFont(string const & font)
 			popRight();
 		} else {
 			// cursor in between. split cell
-			MathArray::iterator bt = cell().begin();
+			MathData::iterator bt = cell().begin();
 			MathAtom at = createInsetMath(from_utf8(font));
-			at.nucleus()->cell(0) = MathArray(bt, bt + pos());
+			at.nucleus()->cell(0) = MathData(bt, bt + pos());
 			cell().erase(bt, bt + pos());
 			popLeft();
 			plainInsert(at);

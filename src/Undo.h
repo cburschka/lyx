@@ -30,7 +30,7 @@ class BufferParams;
 class BufferView;
 class DocIterator;
 class Cursor;
-class MathArray;
+class MathData;
 class ParagraphList;
 
 
@@ -86,8 +86,8 @@ public:
 	pit_type end;
 	/// the contents of the saved Paragraphs (for texted)
 	ParagraphList * pars;
-	/// the contents of the saved MathArray (for mathed)
-	MathArray * array;
+	/// the contents of the saved MathData (for mathed)
+	MathData * array;
 	/// Only used in case of full backups
 	BufferParams bparams;
 	/// Only used in case of full backups

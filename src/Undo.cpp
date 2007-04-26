@@ -26,7 +26,7 @@
 #include "ParagraphList.h"
 
 #include "mathed/MathSupport.h"
-#include "mathed/MathArray.h"
+#include "mathed/MathData.h"
 
 #include "insets/Inset.h"
 
@@ -101,7 +101,7 @@ void doRecordUndo(Undo::undo_kind kind,
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
 		// simply use the whole cell
-		undo.array = new MathArray(cell.cell());
+		undo.array = new MathData(cell.cell());
 	} else {
 		// some more effort needed here as 'the whole cell' of the
 		// main LyXText _is_ the whole document.

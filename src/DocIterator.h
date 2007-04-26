@@ -138,9 +138,9 @@ public:
 	// math-specific part
 	//
 	/// return the mathed cell this cursor is in
-	MathArray const & cell() const;
+	MathData const & cell() const;
 	/// return the mathed cell this cursor is in
-	MathArray & cell();
+	MathData & cell();
 	/// the mathatom left of the cursor
 	MathAtom const & prevAtom() const;
 	/// the mathatom left of the cursor
