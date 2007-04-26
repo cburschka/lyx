@@ -229,7 +229,7 @@ src_mathed_header_files = Split('''
     InsetMathXYMatrix.h
     MathAtom.h
     MathAutoCorrect.h
-    MathArray.h
+    MathData.h
     MathExtern.h
     MathFactory.h
     MathGridInfo.h
@@ -306,7 +306,7 @@ src_mathed_files = Split('''
     InsetMathXYMatrix.cpp
     MathAtom.cpp
     MathAutoCorrect.cpp
-    MathArray.cpp
+    MathData.cpp
     MathExtern.cpp
     MathFactory.cpp
     MathMacroArgument.cpp
