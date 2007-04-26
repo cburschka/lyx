@@ -249,8 +249,6 @@ lyx_SOURCES = \
 	rowpainter.h \
 	sgml.cpp \
 	sgml.h \
-	LyXTabular.cpp \
-	LyXTabular.h \
 	tex-accent.cpp \
 	tex-accent.h \
 	tex-strings.cpp \

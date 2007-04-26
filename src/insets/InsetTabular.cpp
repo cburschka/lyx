@@ -4,6 +4,14 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Jürgen Vigna
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ * \author José Matos
+ * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
+ * \author André Pönitz
+ * \author Jürgen Vigna
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -24,6 +32,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "Language.h"
+#include "LaTeXFeatures.h"
 #include "LColor.h"
 #include "lyx_cb.h"
 #include "Lexer.h"
@@ -35,6 +44,7 @@
 #include "Undo.h"
 
 #include "support/convert.h"
+#include "support/lstrings.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Clipboard.h"
@@ -48,28 +58,39 @@
 
 namespace lyx {
 
+using support::prefixIs;
+using support::ltrim;
+using support::rtrim;
+using support::suffixIs;
+
+using boost::shared_ptr;
+using boost::dynamic_pointer_cast;
+
+using std::abs;
+using std::auto_ptr;
+using std::endl;
+using std::getline;
+using std::istream;
+using std::istringstream;
+using std::max;
+using std::ostream;
+using std::ostringstream;
+using std::string;
+using std::swap;
+using std::vector;
+
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
 using cap::dirtyTabularStack;
 using cap::tabularStackDirty;
 using cap::saveSelection;
 
 using graphics::PreviewLoader;
 
-using support::ltrim;
-
 using frontend::Painter;
 using frontend::Clipboard;
-
-using boost::shared_ptr;
-
-using std::auto_ptr;
-using std::endl;
-using std::max;
-using std::string;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::swap;
-using std::vector;
 
 namespace Alert = frontend::Alert;
 
@@ -79,93 +100,93 @@ namespace {
 int const ADD_TO_HEIGHT = 2;
 int const ADD_TO_TABULAR_WIDTH = 2;
 int const default_line_space = 10;
+int const WIDTH_OF_LINE = 5;
+
 
 ///
-boost::scoped_ptr<LyXTabular> paste_tabular;
+boost::scoped_ptr<Tabular> paste_tabular;
 
 
 struct TabularFeature {
-	LyXTabular::Feature action;
+	Tabular::Feature action;
 	string feature;
 };
 
 
 TabularFeature tabularFeature[] =
 {
-	{ LyXTabular::APPEND_ROW, "append-row" },
-	{ LyXTabular::APPEND_COLUMN, "append-column" },
-	{ LyXTabular::DELETE_ROW, "delete-row" },
-	{ LyXTabular::DELETE_COLUMN, "delete-column" },
-	{ LyXTabular::COPY_ROW, "copy-row" },
-	{ LyXTabular::COPY_COLUMN, "copy-column" },
-	{ LyXTabular::TOGGLE_LINE_TOP, "toggle-line-top" },
-	{ LyXTabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
-	{ LyXTabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
-	{ LyXTabular::TOGGLE_LINE_RIGHT, "toggle-line-right" },
-	{ LyXTabular::ALIGN_LEFT, "align-left" },
-	{ LyXTabular::ALIGN_RIGHT, "align-right" },
-	{ LyXTabular::ALIGN_CENTER, "align-center" },
-	{ LyXTabular::ALIGN_BLOCK, "align-block" },
-	{ LyXTabular::VALIGN_TOP, "valign-top" },
-	{ LyXTabular::VALIGN_BOTTOM, "valign-bottom" },
-	{ LyXTabular::VALIGN_MIDDLE, "valign-middle" },
-	{ LyXTabular::M_TOGGLE_LINE_TOP, "m-toggle-line-top" },
-	{ LyXTabular::M_TOGGLE_LINE_BOTTOM, "m-toggle-line-bottom" },
-	{ LyXTabular::M_TOGGLE_LINE_LEFT, "m-toggle-line-left" },
-	{ LyXTabular::M_TOGGLE_LINE_RIGHT, "m-toggle-line-right" },
-	{ LyXTabular::M_ALIGN_LEFT, "m-align-left" },
-	{ LyXTabular::M_ALIGN_RIGHT, "m-align-right" },
-	{ LyXTabular::M_ALIGN_CENTER, "m-align-center" },
-	{ LyXTabular::M_VALIGN_TOP, "m-valign-top" },
-	{ LyXTabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
-	{ LyXTabular::M_VALIGN_MIDDLE, "m-valign-middle" },
-	{ LyXTabular::MULTICOLUMN, "multicolumn" },
-	{ LyXTabular::SET_ALL_LINES, "set-all-lines" },
-	{ LyXTabular::UNSET_ALL_LINES, "unset-all-lines" },
-	{ LyXTabular::SET_LONGTABULAR, "set-longtabular" },
-	{ LyXTabular::UNSET_LONGTABULAR, "unset-longtabular" },
-	{ LyXTabular::SET_PWIDTH, "set-pwidth" },
-	{ LyXTabular::SET_MPWIDTH, "set-mpwidth" },
-	{ LyXTabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
-	{ LyXTabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
-	{ LyXTabular::SET_ROTATE_CELL, "set-rotate-cell" },
-	{ LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
-	{ LyXTabular::SET_USEBOX, "set-usebox" },
-	{ LyXTabular::SET_LTHEAD, "set-lthead" },
-	{ LyXTabular::UNSET_LTHEAD, "unset-lthead" },
-	{ LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
-	{ LyXTabular::UNSET_LTFIRSTHEAD, "unset-ltfirsthead" },
-	{ LyXTabular::SET_LTFOOT, "set-ltfoot" },
-	{ LyXTabular::UNSET_LTFOOT, "unset-ltfoot" },
-	{ LyXTabular::SET_LTLASTFOOT, "set-ltlastfoot" },
-	{ LyXTabular::UNSET_LTLASTFOOT, "unset-ltlastfoot" },
-	{ LyXTabular::SET_LTNEWPAGE, "set-ltnewpage" },
-	{ LyXTabular::SET_SPECIAL_COLUMN, "set-special-column" },
-	{ LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
-	{ LyXTabular::SET_BOOKTABS, "set-booktabs" },
-	{ LyXTabular::UNSET_BOOKTABS, "unset-booktabs" },
-	{ LyXTabular::SET_TOP_SPACE, "set-top-space" },
-	{ LyXTabular::SET_BOTTOM_SPACE, "set-bottom-space" },
-	{ LyXTabular::SET_INTERLINE_SPACE, "set-interline-space" },
-	{ LyXTabular::LAST_ACTION, "" }
+	{ Tabular::APPEND_ROW, "append-row" },
+	{ Tabular::APPEND_COLUMN, "append-column" },
+	{ Tabular::DELETE_ROW, "delete-row" },
+	{ Tabular::DELETE_COLUMN, "delete-column" },
+	{ Tabular::COPY_ROW, "copy-row" },
+	{ Tabular::COPY_COLUMN, "copy-column" },
+	{ Tabular::TOGGLE_LINE_TOP, "toggle-line-top" },
+	{ Tabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
+	{ Tabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
+	{ Tabular::TOGGLE_LINE_RIGHT, "toggle-line-right" },
+	{ Tabular::ALIGN_LEFT, "align-left" },
+	{ Tabular::ALIGN_RIGHT, "align-right" },
+	{ Tabular::ALIGN_CENTER, "align-center" },
+	{ Tabular::ALIGN_BLOCK, "align-block" },
+	{ Tabular::VALIGN_TOP, "valign-top" },
+	{ Tabular::VALIGN_BOTTOM, "valign-bottom" },
+	{ Tabular::VALIGN_MIDDLE, "valign-middle" },
+	{ Tabular::M_TOGGLE_LINE_TOP, "m-toggle-line-top" },
+	{ Tabular::M_TOGGLE_LINE_BOTTOM, "m-toggle-line-bottom" },
+	{ Tabular::M_TOGGLE_LINE_LEFT, "m-toggle-line-left" },
+	{ Tabular::M_TOGGLE_LINE_RIGHT, "m-toggle-line-right" },
+	{ Tabular::M_ALIGN_LEFT, "m-align-left" },
+	{ Tabular::M_ALIGN_RIGHT, "m-align-right" },
+	{ Tabular::M_ALIGN_CENTER, "m-align-center" },
+	{ Tabular::M_VALIGN_TOP, "m-valign-top" },
+	{ Tabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
+	{ Tabular::M_VALIGN_MIDDLE, "m-valign-middle" },
+	{ Tabular::MULTICOLUMN, "multicolumn" },
+	{ Tabular::SET_ALL_LINES, "set-all-lines" },
+	{ Tabular::UNSET_ALL_LINES, "unset-all-lines" },
+	{ Tabular::SET_LONGTABULAR, "set-longtabular" },
+	{ Tabular::UNSET_LONGTABULAR, "unset-longtabular" },
+	{ Tabular::SET_PWIDTH, "set-pwidth" },
+	{ Tabular::SET_MPWIDTH, "set-mpwidth" },
+	{ Tabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
+	{ Tabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
+	{ Tabular::SET_ROTATE_CELL, "set-rotate-cell" },
+	{ Tabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
+	{ Tabular::SET_USEBOX, "set-usebox" },
+	{ Tabular::SET_LTHEAD, "set-lthead" },
+	{ Tabular::UNSET_LTHEAD, "unset-lthead" },
+	{ Tabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
+	{ Tabular::UNSET_LTFIRSTHEAD, "unset-ltfirsthead" },
+	{ Tabular::SET_LTFOOT, "set-ltfoot" },
+	{ Tabular::UNSET_LTFOOT, "unset-ltfoot" },
+	{ Tabular::SET_LTLASTFOOT, "set-ltlastfoot" },
+	{ Tabular::UNSET_LTLASTFOOT, "unset-ltlastfoot" },
+	{ Tabular::SET_LTNEWPAGE, "set-ltnewpage" },
+	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column" },
+	{ Tabular::SET_SPECIAL_MULTI, "set-special-multi" },
+	{ Tabular::SET_BOOKTABS, "set-booktabs" },
+	{ Tabular::UNSET_BOOKTABS, "unset-booktabs" },
+	{ Tabular::SET_TOP_SPACE, "set-top-space" },
+	{ Tabular::SET_BOTTOM_SPACE, "set-bottom-space" },
+	{ Tabular::SET_INTERLINE_SPACE, "set-interline-space" },
+	{ Tabular::LAST_ACTION, "" }
 };
 
 
 class FeatureEqual : public std::unary_function<TabularFeature, bool> {
 public:
-	FeatureEqual(LyXTabular::Feature feature)
+	FeatureEqual(Tabular::Feature feature)
 		: feature_(feature) {}
 	bool operator()(TabularFeature const & tf) const {
 		return tf.action == feature_;
 	}
 private:
-	LyXTabular::Feature feature_;
+	Tabular::Feature feature_;
 };
 
-} // namespace anon
 
-
-string const featureAsString(LyXTabular::Feature feature)
+string const featureAsString(Tabular::Feature feature)
 {
 	TabularFeature * end = tabularFeature +
 		sizeof(tabularFeature) / sizeof(TabularFeature);
@@ -174,6 +195,2690 @@ string const featureAsString(LyXTabular::Feature feature)
 	return (it == end) ? string() : it->feature;
 }
 
+
+
+template <class T>
+string const write_attribute(string const & name, T const & t)
+{
+	string const s = tostr(t);
+	return s.empty() ? s : " " + name + "=\"" + s + "\"";
+}
+
+template <>
+string const write_attribute(string const & name, string const & t)
+{
+	return t.empty() ? t : " " + name + "=\"" + t + "\"";
+}
+
+
+template <>
+string const write_attribute(string const & name, docstring const & t)
+{
+	return t.empty() ? string() : " " + name + "=\"" + to_utf8(t) + "\"";
+}
+
+
+template <>
+string const write_attribute(string const & name, bool const & b)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	return b ? write_attribute(name, convert<string>(b)) : string();
+}
+
+
+template <>
+string const write_attribute(string const & name, int const & i)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	return i ? write_attribute(name, convert<string>(i)) : string();
+}
+
+
+template <>
+string const write_attribute(string const & name, Tabular::idx_type const & i)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	return i ? write_attribute(name, convert<string>(i)) : string();
+}
+
+
+template <>
+string const write_attribute(string const & name, LyXLength const & value)
+{
+	// we write only the value if we really have one same reson as above.
+	return value.zero() ? string() : write_attribute(name, value.asString());
+}
+
+
+string const tostr(LyXAlignment const & num)
+{
+	switch (num) {
+	case LYX_ALIGN_NONE:
+		return "none";
+	case LYX_ALIGN_BLOCK:
+		return "block";
+	case LYX_ALIGN_LEFT:
+		return "left";
+	case LYX_ALIGN_CENTER:
+		return "center";
+	case LYX_ALIGN_RIGHT:
+		return "right";
+	case LYX_ALIGN_LAYOUT:
+		return "layout";
+	case LYX_ALIGN_SPECIAL:
+		return "special";
+	}
+	return string();
+}
+
+
+string const tostr(Tabular::VAlignment const & num)
+{
+	switch (num) {
+	case Tabular::LYX_VALIGN_TOP:
+		return "top";
+	case Tabular::LYX_VALIGN_MIDDLE:
+		return "middle";
+	case Tabular::LYX_VALIGN_BOTTOM:
+		return "bottom";
+	}
+	return string();
+}
+
+
+string const tostr(Tabular::BoxType const & num)
+{
+	switch (num) {
+	case Tabular::BOX_NONE:
+		return "none";
+	case Tabular::BOX_PARBOX:
+		return "parbox";
+	case Tabular::BOX_MINIPAGE:
+		return "minipage";
+	}
+	return string();
+}
+
+
+// I would have liked a fromstr template a lot better. (Lgb)
+bool string2type(string const str, LyXAlignment & num)
+{
+	if (str == "none")
+		num = LYX_ALIGN_NONE;
+	else if (str == "block")
+		num = LYX_ALIGN_BLOCK;
+	else if (str == "left")
+		num = LYX_ALIGN_LEFT;
+	else if (str == "center")
+		num = LYX_ALIGN_CENTER;
+	else if (str == "right")
+		num = LYX_ALIGN_RIGHT;
+	else
+		return false;
+	return true;
+}
+
+
+bool string2type(string const str, Tabular::VAlignment & num)
+{
+	if (str == "top")
+		num = Tabular::LYX_VALIGN_TOP;
+	else if (str == "middle" )
+		num = Tabular::LYX_VALIGN_MIDDLE;
+	else if (str == "bottom")
+		num = Tabular::LYX_VALIGN_BOTTOM;
+	else
+		return false;
+	return true;
+}
+
+
+bool string2type(string const str, Tabular::BoxType & num)
+{
+	if (str == "none")
+		num = Tabular::BOX_NONE;
+	else if (str == "parbox")
+		num = Tabular::BOX_PARBOX;
+	else if (str == "minipage")
+		num = Tabular::BOX_MINIPAGE;
+	else
+		return false;
+	return true;
+}
+
+
+bool string2type(string const str, bool & num)
+{
+	if (str == "true")
+		num = true;
+	else if (str == "false")
+		num = false;
+	else
+		return false;
+	return true;
+}
+
+
+bool getTokenValue(string const & str, char const * token, string & ret)
+{
+	ret.erase();
+	size_t token_length = strlen(token);
+	string::size_type pos = str.find(token);
+
+	if (pos == string::npos || pos + token_length + 1 >= str.length()
+		|| str[pos + token_length] != '=')
+		return false;
+	pos += token_length + 1;
+	char ch = str[pos];
+	if (ch != '"' && ch != '\'') { // only read till next space
+		ret += ch;
+		ch = ' ';
+	}
+	while (pos < str.length() - 1 && str[++pos] != ch)
+		ret += str[pos];
+
+	return true;
+}
+
+
+bool getTokenValue(string const & str, char const * token, docstring & ret)
+{
+	string tmp;
+	bool const success = getTokenValue(str, token, tmp);
+	ret = from_utf8(tmp);
+	return success;
+}
+
+
+bool getTokenValue(string const & str, char const * token, int & num)
+{
+	string tmp;
+	num = 0;
+	if (!getTokenValue(str, token, tmp))
+		return false;
+	num = convert<int>(tmp);
+	return true;
+}
+
+
+bool getTokenValue(string const & str, char const * token, LyXAlignment & num)
+{
+	string tmp;
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
+}
+
+
+bool getTokenValue(string const & str, char const * token,
+				   Tabular::VAlignment & num)
+{
+	string tmp;
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
+}
+
+
+bool getTokenValue(string const & str, char const * token,
+				   Tabular::BoxType & num)
+{
+	string tmp;
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
+}
+
+
+bool getTokenValue(string const & str, char const * token, bool & flag)
+{
+	// set the flag always to false as this should be the default for bools
+	// not in the file-format.
+	flag = false;
+	string tmp;
+	return getTokenValue(str, token, tmp) && string2type(tmp, flag);
+}
+
+
+bool getTokenValue(string const & str, char const * token, LyXLength & len)
+{
+	// set the lenght to be zero() as default as this it should be if not
+	// in the file format.
+	len = LyXLength();
+	string tmp;
+	return getTokenValue(str, token, tmp) && isValidLength(tmp, &len);
+}
+
+
+bool getTokenValue(string const & str, char const * token, LyXLength & len, bool & flag)
+{
+	len = LyXLength();
+	flag = false;
+	string tmp;
+	if (!getTokenValue(str, token, tmp))
+		return false;
+	if (tmp == "default") {
+		flag = true;
+		return  true;
+	}
+	return isValidLength(tmp, &len);
+}
+
+
+void l_getline(istream & is, string & str)
+{
+	str.erase();
+	while (str.empty()) {
+		getline(is, str);
+		if (!str.empty() && str[str.length() - 1] == '\r')
+			str.erase(str.length() - 1);
+	}
+}
+
+} // namespace
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// Tabular
+//
+/////////////////////////////////////////////////////////////////////
+
+
+Tabular::cellstruct::cellstruct(BufferParams const & bp)
+	: cellno(0),
+	  width_of_cell(0),
+	  multicolumn(Tabular::CELL_NORMAL),
+	  alignment(LYX_ALIGN_CENTER),
+	  valignment(LYX_VALIGN_TOP),
+	  top_line(true),
+	  bottom_line(false),
+	  left_line(true),
+	  right_line(false),
+	  usebox(BOX_NONE),
+	  rotate(false),
+	  inset(new InsetText(bp))
+{}
+
+
+Tabular::cellstruct::cellstruct(cellstruct const & cs)
+	: cellno(cs.cellno),
+	  width_of_cell(cs.width_of_cell),
+	  multicolumn(cs.multicolumn),
+	  alignment(cs.alignment),
+	  valignment(cs.valignment),
+	  top_line(cs.top_line),
+	  bottom_line(cs.bottom_line),
+	  left_line(cs.left_line),
+	  right_line(cs.right_line),
+	  usebox(cs.usebox),
+	  rotate(cs.rotate),
+	  align_special(cs.align_special),
+	  p_width(cs.p_width),
+	  inset(dynamic_cast<InsetText*>(cs.inset->clone().release()))
+{}
+
+
+Tabular::cellstruct &
+Tabular::cellstruct::operator=(cellstruct cs)
+{
+	swap(cs);
+	return *this;
+}
+
+
+void
+Tabular::cellstruct::swap(cellstruct & rhs)
+{
+	std::swap(cellno, rhs.cellno);
+	std::swap(width_of_cell, rhs.width_of_cell);
+	std::swap(multicolumn, rhs.multicolumn);
+	std::swap(alignment, rhs.alignment);
+	std::swap(valignment, rhs.valignment);
+	std::swap(top_line, rhs.top_line);
+	std::swap(bottom_line, rhs.bottom_line);
+	std::swap(left_line, rhs.left_line);
+	std::swap(right_line, rhs.right_line);
+	std::swap(usebox, rhs.usebox);
+	std::swap(rotate, rhs.rotate);
+	std::swap(align_special, rhs.align_special);
+	p_width.swap(rhs.p_width);
+	inset.swap(rhs.inset);
+}
+
+
+Tabular::rowstruct::rowstruct()
+	: ascent_of_row(0),
+	  descent_of_row(0),
+	  top_line(true),
+	  bottom_line(false),
+	  top_space_default(false),
+	  bottom_space_default(false),
+	  interline_space_default(false),
+	  endhead(false),
+	  endfirsthead(false),
+	  endfoot(false),
+	  endlastfoot(false),
+	  newpage(false)
+{}
+
+
+Tabular::columnstruct::columnstruct()
+	: alignment(LYX_ALIGN_CENTER),
+	  valignment(LYX_VALIGN_TOP),
+	  left_line(true),
+	  right_line(false),
+	  width_of_column(0)
+{
+}
+
+
+Tabular::ltType::ltType()
+	: topDL(false),
+	  bottomDL(false),
+	  empty(false)
+{}
+
+
+Tabular::Tabular(BufferParams const & bp, row_type rows_arg,
+		       col_type columns_arg)
+{
+	init(bp, rows_arg, columns_arg);
+}
+
+
+// activates all lines and sets all widths to 0
+void Tabular::init(BufferParams const & bp, row_type rows_arg,
+		      col_type columns_arg)
+{
+	rows_    = rows_arg;
+	columns_ = columns_arg;
+	row_info = row_vector(rows_);
+	column_info = column_vector(columns_);
+	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
+	row_info.reserve(10);
+	column_info.reserve(10);
+	cell_info.reserve(100);
+	fixCellNums();
+	for (row_type i = 0; i < rows_; ++i)
+		cell_info[i].back().right_line = true;
+	row_info.back().bottom_line = true;
+	row_info.front().bottom_line = true;
+	column_info.back().right_line = true;
+	is_long_tabular = false;
+	rotate = false;
+	use_booktabs = false;
+}
+
+
+void Tabular::fixCellNums()
+{
+	idx_type cellno = 0;
+	for (row_type i = 0; i < rows_; ++i) {
+		for (col_type j = 0; j < columns_; ++j) {
+			// When debugging it can be nice to set
+			// this to true.
+			cell_info[i][j].inset->setDrawFrame(false);
+			cell_info[i][j].cellno = cellno++;
+		}
+		cell_info[i].back().right_line = true;
+	}
+
+	set_row_column_number_info();
+}
+
+
+void Tabular::appendRow(BufferParams const & bp, idx_type const cell)
+{
+	++rows_;
+
+	row_type const row = row_of_cell(cell);
+
+	row_vector::iterator rit = row_info.begin() + row;
+	row_info.insert(rit, rowstruct());
+	// now set the values of the row before
+	row_info[row] = row_info[row + 1];
+
+	cell_vvector old(rows_ - 1);
+	for (row_type i = 0; i < rows_ - 1; ++i)
+		swap(cell_info[i], old[i]);
+
+	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
+
+	for (row_type i = 0; i <= row; ++i)
+		swap(cell_info[i], old[i]);
+	for (row_type i = row + 2; i < rows_; ++i)
+		swap(cell_info[i], old[i - 1]);
+
+	if (bp.trackChanges)
+		for (col_type j = 0; j < columns_; ++j)
+			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
+
+	set_row_column_number_info();
+}
+
+
+void Tabular::deleteRow(row_type const row)
+{
+	// Not allowed to delete last row
+	if (rows_ == 1)
+		return;
+
+	row_info.erase(row_info.begin() + row);
+	cell_info.erase(cell_info.begin() + row);
+	--rows_;
+	fixCellNums();
+}
+
+
+void Tabular::copyRow(BufferParams const & bp, row_type const row)
+{
+	++rows_;
+
+	row_info.insert(row_info.begin() + row, row_info[row]);
+	cell_info.insert(cell_info.begin() + row, cell_info[row]);
+
+	if (bp.trackChanges)
+		for (col_type j = 0; j < columns_; ++j)
+			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
+
+	set_row_column_number_info();
+}
+
+
+void Tabular::appendColumn(BufferParams const & bp, idx_type const cell)
+{
+	++columns_;
+
+	col_type const column = column_of_cell(cell);
+	column_vector::iterator cit = column_info.begin() + column + 1;
+	column_info.insert(cit, columnstruct());
+	// set the column values of the column before
+	column_info[column + 1] = column_info[column];
+
+	for (row_type i = 0; i < rows_; ++i) {
+		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(bp));
+
+		// care about multicolumns
+		if (cell_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
+			cell_info[i][column + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
+
+		if (column + 2 >= columns_
+		    || cell_info[i][column + 2].multicolumn != CELL_PART_OF_MULTICOLUMN)
+			cell_info[i][column + 1].multicolumn = Tabular::CELL_NORMAL;
+	}
+	//++column;
+	for (row_type i = 0; i < rows_; ++i) {
+		cell_info[i][column + 1].inset->clear();
+		if (bp.trackChanges)
+			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
+	}
+	fixCellNums();
+}
+
+
+void Tabular::deleteColumn(col_type const column)
+{
+	// Not allowed to delete last column
+	if (columns_ == 1)
+		return;
+
+	column_info.erase(column_info.begin() + column);
+	for (row_type i = 0; i < rows_; ++i)
+		cell_info[i].erase(cell_info[i].begin() + column);
+	--columns_;
+	fixCellNums();
+}
+
+
+void Tabular::copyColumn(BufferParams const & bp, col_type const column)
+{
+	++columns_;
+
+	column_info.insert(column_info.begin() + column, column_info[column]);
+
+	for (row_type i = 0; i < rows_; ++i)
+		cell_info[i].insert(cell_info[i].begin() + column, cell_info[i][column]);
+
+	if (bp.trackChanges)
+		for (row_type i = 0; i < rows_; ++i)
+			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
+	fixCellNums();
+}
+
+
+void Tabular::set_row_column_number_info()
+{
+	numberofcells = 0;
+	for (row_type row = 0; row < rows_; ++row) {
+		for (col_type column = 0; column < columns_; ++column) {
+			if (cell_info[row][column].multicolumn
+				!= Tabular::CELL_PART_OF_MULTICOLUMN)
+				++numberofcells;
+			if (numberofcells == 0)
+				// FIXME: Is this intended?
+				cell_info[row][column].cellno = npos;
+			else
+				cell_info[row][column].cellno =
+					numberofcells - 1;
+		}
+	}
+
+	rowofcell.resize(numberofcells);
+	columnofcell.resize(numberofcells);
+
+	row_type row = 0;
+	col_type column = 0;
+	for (idx_type c = 0;
+		 c < numberofcells && row < rows_ && column < columns_;) {
+		rowofcell[c] = row;
+		columnofcell[c] = column;
+		++c;
+		do {
+			++column;
+		} while (column < columns_ &&
+				 cell_info[row][column].multicolumn
+				 == Tabular::CELL_PART_OF_MULTICOLUMN);
+
+		if (column == columns_) {
+			column = 0;
+			++row;
+		}
+	}
+
+	for (row_type row = 0; row < rows_; ++row) {
+		for (col_type column = 0; column < columns_; ++column) {
+			if (isPartOfMultiColumn(row,column))
+				continue;
+			cell_info[row][column].inset->setAutoBreakRows(
+				!getPWidth(getCellNumber(row, column)).zero());
+		}
+	}
+}
+
+
+Tabular::idx_type Tabular::getNumberOfCells() const
+{
+	return numberofcells;
+}
+
+
+Tabular::idx_type Tabular::numberOfCellsInRow(idx_type const cell) const
+{
+	row_type const row = row_of_cell(cell);
+	idx_type result = 0;
+	for (col_type i = 0; i < columns_; ++i)
+		if (cell_info[row][i].multicolumn != Tabular::CELL_PART_OF_MULTICOLUMN)
+			++result;
+	return result;
+}
+
+
+bool Tabular::topLine(idx_type const cell, bool const wholerow) const
+{
+	if (!wholerow && isMultiColumn(cell) &&
+	    !(use_booktabs && row_of_cell(cell) == 0))
+		return cellinfo_of_cell(cell).top_line;
+	return row_info[row_of_cell(cell)].top_line;
+}
+
+
+bool Tabular::bottomLine(idx_type const cell, bool wholerow) const
+{
+	if (!wholerow && isMultiColumn(cell) &&
+	    !(use_booktabs && isLastRow(cell)))
+		return cellinfo_of_cell(cell).bottom_line;
+	return row_info[row_of_cell(cell)].bottom_line;
+}
+
+
+bool Tabular::leftLine(idx_type cell, bool wholecolumn) const
+{
+	if (use_booktabs)
+		return false;
+	if (!wholecolumn && isMultiColumn(cell) &&
+		(isFirstCellInRow(cell) || isMultiColumn(cell-1)))
+	{
+		if (cellinfo_of_cell(cell).align_special.empty())
+			return cellinfo_of_cell(cell).left_line;
+		return prefixIs(ltrim(cellinfo_of_cell(cell).align_special), '|');
+	}
+	if (column_info[column_of_cell(cell)].align_special.empty())
+		return column_info[column_of_cell(cell)].left_line;
+	return prefixIs(ltrim(column_info[column_of_cell(cell)].align_special), '|');
+}
+
+
+bool Tabular::rightLine(idx_type cell, bool wholecolumn) const
+{
+	if (use_booktabs)
+		return false;
+	if (!wholecolumn && isMultiColumn(cell) &&
+		(isLastCellInRow(cell) || isMultiColumn(cell + 1)))
+	{
+		if (cellinfo_of_cell(cell).align_special.empty())
+			return cellinfo_of_cell(cell).right_line;
+		return suffixIs(rtrim(cellinfo_of_cell(cell).align_special), '|');
+	}
+	if (column_info[column_of_cell(cell)].align_special.empty())
+		return column_info[right_column_of_cell(cell)].right_line;
+	return suffixIs(rtrim(column_info[column_of_cell(cell)].align_special), '|');
+}
+
+
+bool Tabular::topAlreadyDrawn(idx_type cell) const
+{
+	row_type row = row_of_cell(cell);
+	if (row > 0 && !getAdditionalHeight(row)) {
+		col_type column = column_of_cell(cell);
+		--row;
+		while (column
+			   && cell_info[row][column].multicolumn
+			   == Tabular::CELL_PART_OF_MULTICOLUMN)
+			--column;
+		if (cell_info[row][column].multicolumn == Tabular::CELL_NORMAL)
+			return row_info[row].bottom_line;
+		else
+			return cell_info[row][column].bottom_line;
+	}
+	return false;
+}
+
+
+bool Tabular::leftAlreadyDrawn(idx_type cell) const
+{
+	col_type column = column_of_cell(cell);
+	if (column > 0) {
+		row_type row = row_of_cell(cell);
+		while (--column &&
+			   (cell_info[row][column].multicolumn ==
+				Tabular::CELL_PART_OF_MULTICOLUMN));
+		if (getAdditionalWidth(cell_info[row][column].cellno))
+			return false;
+		return rightLine(cell_info[row][column].cellno);
+	}
+	return false;
+}
+
+
+bool Tabular::isLastRow(idx_type cell) const
+{
+	return row_of_cell(cell) == rows_ - 1;
+}
+
+
+int Tabular::getAdditionalHeight(row_type row) const
+{
+	if (!row || row >= rows_)
+		return 0;
+
+	bool top = true;
+	bool bottom = true;
+
+	for (col_type column = 0; column < columns_ && bottom; ++column) {
+		switch (cell_info[row - 1][column].multicolumn) {
+		case Tabular::CELL_BEGIN_OF_MULTICOLUMN:
+			bottom = cell_info[row - 1][column].bottom_line;
+			break;
+		case Tabular::CELL_NORMAL:
+			bottom = row_info[row - 1].bottom_line;
+		}
+	}
+	for (col_type column = 0; column < columns_ && top; ++column) {
+		switch (cell_info[row][column].multicolumn) {
+		case Tabular::CELL_BEGIN_OF_MULTICOLUMN:
+			top = cell_info[row][column].top_line;
+			break;
+		case Tabular::CELL_NORMAL:
+			top = row_info[row].top_line;
+		}
+	}
+	int const interline_space = row_info[row - 1].interline_space_default ?
+		default_line_space :
+		row_info[row - 1].interline_space.inPixels(width_of_tabular);
+	if (top && bottom)
+		return interline_space + WIDTH_OF_LINE;
+	return interline_space;
+}
+
+
+int Tabular::getAdditionalWidth(idx_type cell) const
+{
+	// internally already set in setWidthOfCell
+	// used to get it back in text.cpp
+	col_type const col = right_column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
+	if (col < columns_ - 1 && rightLine(cell) &&
+		leftLine(cell_info[row][col+1].cellno)) // column_info[col+1].left_line)
+	{
+		return WIDTH_OF_LINE;
+	}
+	return 0;
+}
+
+
+// returns the maximum over all rows
+int Tabular::getWidthOfColumn(idx_type cell) const
+{
+	col_type const column1 = column_of_cell(cell);
+	col_type const column2 = right_column_of_cell(cell);
+	int result = 0;
+	for (col_type i = column1; i <= column2; ++i)
+		result += column_info[i].width_of_column;
+	return result;
+}
+
+
+int Tabular::getWidthOfTabular() const
+{
+	return width_of_tabular;
+}
+
+
+// returns true if a complete update is necessary, otherwise false
+bool Tabular::setWidthOfMulticolCell(idx_type cell, int new_width)
+{
+	if (!isMultiColumn(cell))
+		return false;
+
+	row_type const row = row_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
+	col_type const column2 = right_column_of_cell(cell);
+	int const old_val = cell_info[row][column2].width_of_cell;
+
+	// first set columns to 0 so we can calculate the right width
+	for (col_type i = column1; i <= column2; ++i) {
+		cell_info[row][i].width_of_cell = 0;
+	}
+	// set the width to MAX_WIDTH until width > 0
+	int width = new_width + 2 * WIDTH_OF_LINE;
+	col_type i = column1;
+	for (; i < column2 && width > column_info[i].width_of_column; ++i) {
+		cell_info[row][i].width_of_cell = column_info[i].width_of_column;
+		width -= column_info[i].width_of_column;
+	}
+	if (width > 0) {
+		cell_info[row][i].width_of_cell = width;
+	}
+	if (old_val != cell_info[row][column2].width_of_cell) {
+		// in this case we have to recalculate all multicolumn cells which
+		// have this column as one of theirs but not as last one
+		calculate_width_of_column_NMC(i);
+		recalculateMulticolumnsOfColumn(i);
+		calculate_width_of_column(i);
+	}
+	return true;
+}
+
+
+void Tabular::recalculateMulticolumnsOfColumn(col_type column)
+{
+	// the last column does not have to be recalculated because all
+	// multicolumns will have here there last multicolumn cell which
+	// always will have the whole rest of the width of the cell.
+	if (columns_ < 2 || column > (columns_ - 2))
+		return;
+	for (row_type row = 0; row < rows_; ++row) {
+		int mc = cell_info[row][column].multicolumn;
+		int nmc = cell_info[row][column+1].multicolumn;
+		// we only have to update multicolumns which do not have this
+		// column as their last column!
+		if (mc == CELL_BEGIN_OF_MULTICOLUMN ||
+			  (mc == CELL_PART_OF_MULTICOLUMN &&
+			   nmc == CELL_PART_OF_MULTICOLUMN))
+		{
+			idx_type const cellno = cell_info[row][column].cellno;
+			setWidthOfMulticolCell(cellno,
+					       getWidthOfCell(cellno) - 2 * WIDTH_OF_LINE);
+		}
+	}
+}
+
+
+void Tabular::setWidthOfCell(idx_type cell, int new_width)
+{
+	row_type const row = row_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
+	bool tmp = false;
+	int width = 0;
+	int add_width = 0;
+
+	if (rightLine(cell_info[row][column1].cellno, true) &&
+		column1 < columns_ - 1 &&
+		leftLine(cell_info[row][column1+1].cellno, true))
+	{
+		add_width = WIDTH_OF_LINE;
+	}
+
+	if (getWidthOfCell(cell) == new_width + 2 * WIDTH_OF_LINE + add_width)
+		return;
+
+	if (isMultiColumnReal(cell)) {
+		tmp = setWidthOfMulticolCell(cell, new_width);
+	} else {
+		width = new_width + 2 * WIDTH_OF_LINE + add_width;
+		cell_info[row][column1].width_of_cell = width;
+		tmp = calculate_width_of_column_NMC(column1);
+		if (tmp)
+			recalculateMulticolumnsOfColumn(column1);
+	}
+	if (tmp) {
+		for (col_type i = 0; i < columns_; ++i)
+			calculate_width_of_column(i);
+		calculate_width_of_tabular();
+	}
+}
+
+
+void Tabular::setAlignment(idx_type cell, LyXAlignment align,
+			      bool onlycolumn)
+{
+	if (!isMultiColumn(cell) || onlycolumn)
+		column_info[column_of_cell(cell)].alignment = align;
+	if (!onlycolumn)
+		cellinfo_of_cell(cell).alignment = align;
+}
+
+
+void Tabular::setVAlignment(idx_type cell, VAlignment align,
+			       bool onlycolumn)
+{
+	if (!isMultiColumn(cell) || onlycolumn)
+		column_info[column_of_cell(cell)].valignment = align;
+	if (!onlycolumn)
+		cellinfo_of_cell(cell).valignment = align;
+}
+
+
+namespace {
+
+/**
+ * Allow line and paragraph breaks for fixed width cells or disallow them,
+ * merge cell paragraphs and reset layout to standard for variable width
+ * cells.
+ */
+void toggleFixedWidth(LCursor & cur, InsetText * inset, bool fixedWidth)
+{
+	inset->setAutoBreakRows(fixedWidth);
+	if (fixedWidth)
+		return;
+
+	// merge all paragraphs to one
+	BufferParams const & bp = cur.bv().buffer()->params();
+	while (inset->paragraphs().size() > 1)
+		mergeParagraph(bp, inset->paragraphs(), 0);
+
+	// reset layout
+	cur.push(*inset);
+	// undo information has already been recorded
+	inset->getText(0)->setLayout(*cur.bv().buffer(), 0, cur.lastpit() + 1,
+			bp.getLyXTextClass().defaultLayoutName());
+	cur.pop();
+}
+
+}
+
+
+void Tabular::setColumnPWidth(LCursor & cur, idx_type cell,
+		LyXLength const & width)
+{
+	col_type const j = column_of_cell(cell);
+
+	column_info[j].p_width = width;
+	for (row_type i = 0; i < rows_; ++i) {
+		idx_type const cell = getCellNumber(i, j);
+		// because of multicolumns
+		toggleFixedWidth(cur, getCellInset(cell).get(),
+				 !getPWidth(cell).zero());
+	}
+	// cur paragraph can become invalid after paragraphs were merged
+	if (cur.pit() > cur.lastpit())
+		cur.pit() = cur.lastpit();
+	// cur position can become invalid after newlines were removed
+	if (cur.pos() > cur.lastpos())
+		cur.pos() = cur.lastpos();
+}
+
+
+bool Tabular::setMColumnPWidth(LCursor & cur, idx_type cell,
+		LyXLength const & width)
+{
+	if (!isMultiColumn(cell))
+		return false;
+
+	cellinfo_of_cell(cell).p_width = width;
+	toggleFixedWidth(cur, getCellInset(cell).get(), !width.zero());
+	// cur paragraph can become invalid after paragraphs were merged
+	if (cur.pit() > cur.lastpit())
+		cur.pit() = cur.lastpit();
+	// cur position can become invalid after newlines were removed
+	if (cur.pos() > cur.lastpos())
+		cur.pos() = cur.lastpos();
+	return true;
+}
+
+
+void Tabular::setAlignSpecial(idx_type cell, docstring const & special,
+				 Tabular::Feature what)
+{
+	if (what == SET_SPECIAL_MULTI)
+		cellinfo_of_cell(cell).align_special = special;
+	else
+		column_info[column_of_cell(cell)].align_special = special;
+}
+
+
+void Tabular::setAllLines(idx_type cell, bool line)
+{
+	setTopLine(cell, line);
+	setBottomLine(cell, line);
+	setRightLine(cell, line);
+	setLeftLine(cell, line);
+}
+
+
+void Tabular::setTopLine(idx_type cell, bool line, bool wholerow)
+{
+	row_type const row = row_of_cell(cell);
+	if (wholerow || !isMultiColumn(cell))
+		row_info[row].top_line = line;
+	else
+		cellinfo_of_cell(cell).top_line = line;
+}
+
+
+void Tabular::setBottomLine(idx_type cell, bool line, bool wholerow)
+{
+	if (wholerow || !isMultiColumn(cell))
+		row_info[row_of_cell(cell)].bottom_line = line;
+	else
+		cellinfo_of_cell(cell).bottom_line = line;
+}
+
+
+void Tabular::setLeftLine(idx_type cell, bool line, bool wholecolumn)
+{
+	if (wholecolumn || !isMultiColumn(cell))
+		column_info[column_of_cell(cell)].left_line = line;
+	else
+		cellinfo_of_cell(cell).left_line = line;
+}
+
+
+void Tabular::setRightLine(idx_type cell, bool line, bool wholecolumn)
+{
+	if (wholecolumn || !isMultiColumn(cell))
+		column_info[right_column_of_cell(cell)].right_line = line;
+	else
+		cellinfo_of_cell(cell).right_line = line;
+}
+
+
+LyXAlignment Tabular::getAlignment(idx_type cell, bool onlycolumn) const
+{
+	if (!onlycolumn && isMultiColumn(cell))
+		return cellinfo_of_cell(cell).alignment;
+	return column_info[column_of_cell(cell)].alignment;
+}
+
+
+Tabular::VAlignment
+Tabular::getVAlignment(idx_type cell, bool onlycolumn) const
+{
+	if (!onlycolumn && isMultiColumn(cell))
+		return cellinfo_of_cell(cell).valignment;
+	return column_info[column_of_cell(cell)].valignment;
+}
+
+
+LyXLength const Tabular::getPWidth(idx_type cell) const
+{
+	if (isMultiColumn(cell))
+		return cellinfo_of_cell(cell).p_width;
+	return column_info[column_of_cell(cell)].p_width;
+}
+
+
+LyXLength const Tabular::getColumnPWidth(idx_type cell) const
+{
+	return column_info[column_of_cell(cell)].p_width;
+}
+
+
+LyXLength const Tabular::getMColumnPWidth(idx_type cell) const
+{
+	if (isMultiColumn(cell))
+		return cellinfo_of_cell(cell).p_width;
+	return LyXLength();
+}
+
+
+docstring const Tabular::getAlignSpecial(idx_type cell, int what) const
+{
+	if (what == SET_SPECIAL_MULTI)
+		return cellinfo_of_cell(cell).align_special;
+	return column_info[column_of_cell(cell)].align_special;
+}
+
+
+int Tabular::getWidthOfCell(idx_type cell) const
+{
+	row_type const row = row_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
+	col_type const column2 = right_column_of_cell(cell);
+	int result = 0;
+	for (col_type i = column1; i <= column2; ++i)
+		result += cell_info[row][i].width_of_cell;
+	return result;
+}
+
+
+int Tabular::getBeginningOfTextInCell(idx_type cell) const
+{
+	int x = 0;
+
+	switch (getAlignment(cell)) {
+	case LYX_ALIGN_CENTER:
+		x += (getWidthOfColumn(cell) - getWidthOfCell(cell)) / 2;
+		break;
+	case LYX_ALIGN_RIGHT:
+		x += getWidthOfColumn(cell) - getWidthOfCell(cell);
+		// + getAdditionalWidth(cell);
+		break;
+	default:
+		// LYX_ALIGN_LEFT: nothing :-)
+		break;
+	}
+
+	// the LaTeX Way :-(
+	x += WIDTH_OF_LINE;
+	return x;
+}
+
+
+bool Tabular::isFirstCellInRow(idx_type cell) const
+{
+	return column_of_cell(cell) == 0;
+}
+
+
+Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
+{
+	if (row > rows_ - 1)
+		row = rows_ - 1;
+	return cell_info[row][0].cellno;
+}
+
+
+bool Tabular::isLastCellInRow(idx_type cell) const
+{
+	return right_column_of_cell(cell) == columns_ - 1;
+}
+
+
+Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
+{
+	if (row > rows_ - 1)
+		row = rows_ - 1;
+	return cell_info[row][columns_-1].cellno;
+}
+
+
+void Tabular::calculate_width_of_column(col_type column)
+{
+	int maximum = 0;
+	for (row_type i = 0; i < rows_; ++i)
+		maximum = max(cell_info[i][column].width_of_cell, maximum);
+	column_info[column].width_of_column = maximum;
+}
+
+
+//
+// Calculate the columns regarding ONLY the normal cells and if this
+// column is inside a multicolumn cell then use it only if its the last
+// column of this multicolumn cell as this gives an added width to the
+// column, all the rest should be adapted!
+//
+bool Tabular::calculate_width_of_column_NMC(col_type column)
+{
+	int const old_column_width = column_info[column].width_of_column;
+	int max = 0;
+	for (row_type i = 0; i < rows_; ++i) {
+		idx_type cell = getCellNumber(i, column);
+		bool ismulti = isMultiColumnReal(cell);
+		if ((!ismulti || column == right_column_of_cell(cell)) &&
+			cell_info[i][column].width_of_cell > max)
+		{
+			max = cell_info[i][column].width_of_cell;
+		}
+	}
+	column_info[column].width_of_column = max;
+	return column_info[column].width_of_column != old_column_width;
+}
+
+
+void Tabular::calculate_width_of_tabular()
+{
+	width_of_tabular = 0;
+	for (col_type i = 0; i < columns_; ++i)
+		width_of_tabular += column_info[i].width_of_column;
+}
+
+
+Tabular::row_type Tabular::row_of_cell(idx_type cell) const
+{
+	if (cell >= numberofcells)
+		return rows_ - 1;
+	if (cell == npos)
+		return 0;
+	return rowofcell[cell];
+}
+
+
+Tabular::col_type Tabular::column_of_cell(idx_type cell) const
+{
+	if (cell >= numberofcells)
+		return columns_ - 1;
+	if (cell == npos)
+		return 0;
+	return columnofcell[cell];
+}
+
+
+Tabular::col_type Tabular::right_column_of_cell(idx_type cell) const
+{
+	row_type const row = row_of_cell(cell);
+	col_type column = column_of_cell(cell);
+	while (column < columns_ - 1 &&
+		   cell_info[row][column + 1].multicolumn == Tabular::CELL_PART_OF_MULTICOLUMN)
+		++column;
+	return column;
+}
+
+
+void Tabular::write(Buffer const & buf, ostream & os) const
+{
+	// header line
+	os << "<lyxtabular"
+	   << write_attribute("version", 3)
+	   << write_attribute("rows", rows_)
+	   << write_attribute("columns", columns_)
+	   << ">\n";
+	// global longtable options
+	os << "<features"
+	   << write_attribute("rotate", rotate)
+	   << write_attribute("booktabs", use_booktabs)
+	   << write_attribute("islongtable", is_long_tabular)
+	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
+	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
+	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
+	   << write_attribute("headTopDL", endhead.topDL)
+	   << write_attribute("headBottomDL", endhead.bottomDL)
+	   << write_attribute("footTopDL", endfoot.topDL)
+	   << write_attribute("footBottomDL", endfoot.bottomDL)
+	   << write_attribute("lastFootTopDL", endlastfoot.topDL)
+	   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
+	   << write_attribute("lastFootEmpty", endlastfoot.empty)
+	   << ">\n";
+	for (col_type j = 0; j < columns_; ++j) {
+		os << "<column"
+		   << write_attribute("alignment", column_info[j].alignment)
+		   << write_attribute("valignment", column_info[j].valignment)
+		   << write_attribute("leftline", column_info[j].left_line)
+		   << write_attribute("rightline", column_info[j].right_line)
+		   << write_attribute("width", column_info[j].p_width.asString())
+		   << write_attribute("special", column_info[j].align_special)
+		   << ">\n";
+	}
+	for (row_type i = 0; i < rows_; ++i) {
+		os << "<row"
+		   << write_attribute("topline", row_info[i].top_line)
+		   << write_attribute("bottomline", row_info[i].bottom_line);
+		static const string def("default");
+		if (row_info[i].top_space_default)
+			os << write_attribute("topspace", def);
+		else
+			os << write_attribute("topspace", row_info[i].top_space);
+		if (row_info[i].bottom_space_default)
+			os << write_attribute("bottomspace", def);
+		else
+			os << write_attribute("bottomspace", row_info[i].bottom_space);
+		if (row_info[i].interline_space_default)
+			os << write_attribute("interlinespace", def);
+		else
+			os << write_attribute("interlinespace", row_info[i].interline_space);
+		os << write_attribute("endhead", row_info[i].endhead)
+		   << write_attribute("endfirsthead", row_info[i].endfirsthead)
+		   << write_attribute("endfoot", row_info[i].endfoot)
+		   << write_attribute("endlastfoot", row_info[i].endlastfoot)
+		   << write_attribute("newpage", row_info[i].newpage)
+		   << ">\n";
+		for (col_type j = 0; j < columns_; ++j) {
+			os << "<cell"
+			   << write_attribute("multicolumn", cell_info[i][j].multicolumn)
+			   << write_attribute("alignment", cell_info[i][j].alignment)
+			   << write_attribute("valignment", cell_info[i][j].valignment)
+			   << write_attribute("topline", cell_info[i][j].top_line)
+			   << write_attribute("bottomline", cell_info[i][j].bottom_line)
+			   << write_attribute("leftline", cell_info[i][j].left_line)
+			   << write_attribute("rightline", cell_info[i][j].right_line)
+			   << write_attribute("rotate", cell_info[i][j].rotate)
+			   << write_attribute("usebox", cell_info[i][j].usebox)
+			   << write_attribute("width", cell_info[i][j].p_width)
+			   << write_attribute("special", cell_info[i][j].align_special)
+			   << ">\n";
+			os << "\\begin_inset ";
+			cell_info[i][j].inset->write(buf, os);
+			os << "\n\\end_inset\n"
+			   << "</cell>\n";
+		}
+		os << "</row>\n";
+	}
+	os << "</lyxtabular>\n";
+}
+
+
+void Tabular::read(Buffer const & buf, Lexer & lex)
+{
+	string line;
+	istream & is = lex.getStream();
+
+	l_getline(is, line);
+	if (!prefixIs(line, "<lyxtabular ")
+		&& !prefixIs(line, "<Tabular ")) {
+		BOOST_ASSERT(false);
+		return;
+	}
+
+	int version;
+	if (!getTokenValue(line, "version", version))
+		return;
+	BOOST_ASSERT(version >= 2);
+
+	int rows_arg;
+	if (!getTokenValue(line, "rows", rows_arg))
+		return;
+	int columns_arg;
+	if (!getTokenValue(line, "columns", columns_arg))
+		return;
+	init(buf.params(), rows_arg, columns_arg);
+	l_getline(is, line);
+	if (!prefixIs(line, "<features")) {
+		lyxerr << "Wrong tabular format (expected <features ...> got"
+		       << line << ')' << endl;
+		return;
+	}
+	getTokenValue(line, "rotate", rotate);
+	getTokenValue(line, "booktabs", use_booktabs);
+	getTokenValue(line, "islongtable", is_long_tabular);
+	getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
+	getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
+	getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
+	getTokenValue(line, "headTopDL", endhead.topDL);
+	getTokenValue(line, "headBottomDL", endhead.bottomDL);
+	getTokenValue(line, "footTopDL", endfoot.topDL);
+	getTokenValue(line, "footBottomDL", endfoot.bottomDL);
+	getTokenValue(line, "lastFootTopDL", endlastfoot.topDL);
+	getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
+	getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
+
+	for (col_type j = 0; j < columns_; ++j) {
+		l_getline(is,line);
+		if (!prefixIs(line,"<column")) {
+			lyxerr << "Wrong tabular format (expected <column ...> got"
+			       << line << ')' << endl;
+			return;
+		}
+		getTokenValue(line, "alignment", column_info[j].alignment);
+		getTokenValue(line, "valignment", column_info[j].valignment);
+		getTokenValue(line, "leftline", column_info[j].left_line);
+		getTokenValue(line, "rightline", column_info[j].right_line);
+		getTokenValue(line, "width", column_info[j].p_width);
+		getTokenValue(line, "special", column_info[j].align_special);
+	}
+
+	for (row_type i = 0; i < rows_; ++i) {
+		l_getline(is, line);
+		if (!prefixIs(line, "<row")) {
+			lyxerr << "Wrong tabular format (expected <row ...> got"
+			       << line << ')' << endl;
+			return;
+		}
+		getTokenValue(line, "topline", row_info[i].top_line);
+		getTokenValue(line, "bottomline", row_info[i].bottom_line);
+		getTokenValue(line, "topspace", row_info[i].top_space,
+		              row_info[i].top_space_default);
+		getTokenValue(line, "bottomspace", row_info[i].bottom_space,
+		              row_info[i].bottom_space_default);
+		getTokenValue(line, "interlinespace", row_info[i].interline_space,
+		              row_info[i].interline_space_default);
+		getTokenValue(line, "endfirsthead", row_info[i].endfirsthead);
+		getTokenValue(line, "endhead", row_info[i].endhead);
+		getTokenValue(line, "endfoot", row_info[i].endfoot);
+		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
+		getTokenValue(line, "newpage", row_info[i].newpage);
+		for (col_type j = 0; j < columns_; ++j) {
+			l_getline(is, line);
+			if (!prefixIs(line, "<cell")) {
+				lyxerr << "Wrong tabular format (expected <cell ...> got"
+				       << line << ')' << endl;
+				return;
+			}
+			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
+			getTokenValue(line, "alignment", cell_info[i][j].alignment);
+			getTokenValue(line, "valignment", cell_info[i][j].valignment);
+			getTokenValue(line, "topline", cell_info[i][j].top_line);
+			getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
+			getTokenValue(line, "leftline", cell_info[i][j].left_line);
+			getTokenValue(line, "rightline", cell_info[i][j].right_line);
+			getTokenValue(line, "rotate", cell_info[i][j].rotate);
+			getTokenValue(line, "usebox", cell_info[i][j].usebox);
+			getTokenValue(line, "width", cell_info[i][j].p_width);
+			getTokenValue(line, "special", cell_info[i][j].align_special);
+			l_getline(is, line);
+			if (prefixIs(line, "\\begin_inset")) {
+				cell_info[i][j].inset->read(buf, lex);
+				l_getline(is, line);
+			}
+			if (!prefixIs(line, "</cell>")) {
+				lyxerr << "Wrong tabular format (expected </cell> got"
+				       << line << ')' << endl;
+				return;
+			}
+		}
+		l_getline(is, line);
+		if (!prefixIs(line, "</row>")) {
+			lyxerr << "Wrong tabular format (expected </row> got"
+			       << line << ')' << endl;
+			return;
+		}
+	}
+	while (!prefixIs(line, "</lyxtabular>")) {
+		l_getline(is, line);
+	}
+	set_row_column_number_info();
+}
+
+
+bool Tabular::isMultiColumn(idx_type cell) const
+{
+	return cellinfo_of_cell(cell).multicolumn != Tabular::CELL_NORMAL;
+}
+
+
+bool Tabular::isMultiColumnReal(idx_type cell) const
+{
+	return column_of_cell(cell) != right_column_of_cell(cell) &&
+			cellinfo_of_cell(cell).multicolumn != Tabular::CELL_NORMAL;
+}
+
+
+Tabular::cellstruct & Tabular::cellinfo_of_cell(idx_type cell) const
+{
+	return cell_info[row_of_cell(cell)][column_of_cell(cell)];
+}
+
+
+void Tabular::setMultiColumn(Buffer * buffer, idx_type cell,
+				idx_type number)
+{
+	cellstruct & cs = cellinfo_of_cell(cell);
+	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
+	cs.alignment = column_info[column_of_cell(cell)].alignment;
+	cs.top_line = row_info[row_of_cell(cell)].top_line;
+	cs.bottom_line = row_info[row_of_cell(cell)].bottom_line;
+	cs.left_line = column_info[column_of_cell(cell)].left_line;
+	cs.right_line = column_info[column_of_cell(cell+number-1)].right_line;
+	for (idx_type i = 1; i < number; ++i) {
+		cellstruct & cs1 = cellinfo_of_cell(cell + i);
+		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
+		cs.inset->appendParagraphs(buffer, cs1.inset->paragraphs());
+		cs1.inset->clear();
+	}
+	set_row_column_number_info();
+}
+
+
+Tabular::idx_type Tabular::cells_in_multicolumn(idx_type cell) const
+{
+	row_type const row = row_of_cell(cell);
+	col_type column = column_of_cell(cell);
+	idx_type result = 1;
+	++column;
+	while (column < columns_ &&
+		   cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN)
+	{
+		++result;
+		++column;
+	}
+	return result;
+}
+
+
+Tabular::idx_type Tabular::unsetMultiColumn(idx_type cell)
+{
+	row_type const row = row_of_cell(cell);
+	col_type column = column_of_cell(cell);
+
+	idx_type result = 0;
+
+	if (cell_info[row][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN) {
+		cell_info[row][column].multicolumn = CELL_NORMAL;
+		++column;
+		while (column < columns_ &&
+			   cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN)
+		{
+			cell_info[row][column].multicolumn = CELL_NORMAL;
+			++column;
+			++result;
+		}
+	}
+	set_row_column_number_info();
+	return result;
+}
+
+
+void Tabular::setBookTabs(bool what)
+{
+	use_booktabs = what;
+}
+
+
+bool Tabular::useBookTabs() const
+{
+	return use_booktabs;
+}
+
+
+void Tabular::setLongTabular(bool what)
+{
+	is_long_tabular = what;
+}
+
+
+bool Tabular::isLongTabular() const
+{
+	return is_long_tabular;
+}
+
+
+void Tabular::setRotateTabular(bool flag)
+{
+	rotate = flag;
+}
+
+
+bool Tabular::getRotateTabular() const
+{
+	return rotate;
+}
+
+
+void Tabular::setRotateCell(idx_type cell, bool flag)
+{
+	cellinfo_of_cell(cell).rotate = flag;
+}
+
+
+bool Tabular::getRotateCell(idx_type cell) const
+{
+	return cellinfo_of_cell(cell).rotate;
+}
+
+
+bool Tabular::needRotating() const
+{
+	if (rotate)
+		return true;
+	for (row_type i = 0; i < rows_; ++i)
+		for (col_type j = 0; j < columns_; ++j)
+			if (cell_info[i][j].rotate)
+				return true;
+	return false;
+}
+
+
+bool Tabular::isLastCell(idx_type cell) const
+{
+	if (cell + 1 < numberofcells)
+		return false;
+	return true;
+}
+
+
+Tabular::idx_type Tabular::getCellAbove(idx_type cell) const
+{
+	if (row_of_cell(cell) > 0)
+		return cell_info[row_of_cell(cell)-1][column_of_cell(cell)].cellno;
+	return cell;
+}
+
+
+Tabular::idx_type Tabular::getCellBelow(idx_type cell) const
+{
+	if (row_of_cell(cell) + 1 < rows_)
+		return cell_info[row_of_cell(cell)+1][column_of_cell(cell)].cellno;
+	return cell;
+}
+
+
+Tabular::idx_type Tabular::getLastCellAbove(idx_type cell) const
+{
+	if (row_of_cell(cell) == 0)
+		return cell;
+	if (!isMultiColumn(cell))
+		return getCellAbove(cell);
+	return cell_info[row_of_cell(cell) - 1][right_column_of_cell(cell)].cellno;
+}
+
+
+Tabular::idx_type Tabular::getLastCellBelow(idx_type cell) const
+{
+	if (row_of_cell(cell) + 1 >= rows_)
+		return cell;
+	if (!isMultiColumn(cell))
+		return getCellBelow(cell);
+	return cell_info[row_of_cell(cell) + 1][right_column_of_cell(cell)].cellno;
+}
+
+
+Tabular::idx_type Tabular::getCellNumber(row_type row,
+					       col_type column) const
+{
+	BOOST_ASSERT(column != npos && column < columns_ &&
+		     row    != npos && row    < rows_);
+	return cell_info[row][column].cellno;
+}
+
+
+void Tabular::setUsebox(idx_type cell, BoxType type)
+{
+	cellinfo_of_cell(cell).usebox = type;
+}
+
+
+Tabular::BoxType Tabular::getUsebox(idx_type cell) const
+{
+	if (column_info[column_of_cell(cell)].p_width.zero() &&
+		!(isMultiColumn(cell) && !cellinfo_of_cell(cell).p_width.zero()))
+		return BOX_NONE;
+	if (cellinfo_of_cell(cell).usebox > 1)
+		return cellinfo_of_cell(cell).usebox;
+	return useParbox(cell);
+}
+
+
+///
+//  This are functions used for the longtable support
+///
+void Tabular::setLTHead(row_type row, bool flag, ltType const & hd,
+			   bool first)
+{
+	if (first) {
+		endfirsthead = hd;
+		if (hd.set)
+			row_info[row].endfirsthead = flag;
+	} else {
+		endhead = hd;
+		if (hd.set)
+			row_info[row].endhead = flag;
+	}
+}
+
+
+bool Tabular::getRowOfLTHead(row_type row, ltType & hd) const
+{
+	hd = endhead;
+	hd.set = haveLTHead();
+	return row_info[row].endhead;
+}
+
+
+bool Tabular::getRowOfLTFirstHead(row_type row, ltType & hd) const
+{
+	hd = endfirsthead;
+	hd.set = haveLTFirstHead();
+	return row_info[row].endfirsthead;
+}
+
+
+void Tabular::setLTFoot(row_type row, bool flag, ltType const & fd,
+			   bool last)
+{
+	if (last) {
+		endlastfoot = fd;
+		if (fd.set)
+			row_info[row].endlastfoot = flag;
+	} else {
+		endfoot = fd;
+		if (fd.set)
+			row_info[row].endfoot = flag;
+	}
+}
+
+
+bool Tabular::getRowOfLTFoot(row_type row, ltType & fd) const
+{
+	fd = endfoot;
+	fd.set = haveLTFoot();
+	return row_info[row].endfoot;
+}
+
+
+bool Tabular::getRowOfLTLastFoot(row_type row, ltType & fd) const
+{
+	fd = endlastfoot;
+	fd.set = haveLTLastFoot();
+	return row_info[row].endlastfoot;
+}
+
+
+void Tabular::setLTNewPage(row_type row, bool what)
+{
+	row_info[row].newpage = what;
+}
+
+
+bool Tabular::getLTNewPage(row_type row) const
+{
+	return row_info[row].newpage;
+}
+
+
+bool Tabular::haveLTHead() const
+{
+	for (row_type i = 0; i < rows_; ++i)
+		if (row_info[i].endhead)
+			return true;
+	return false;
+}
+
+
+bool Tabular::haveLTFirstHead() const
+{
+	if (endfirsthead.empty)
+		return false;
+	for (row_type i = 0; i < rows_; ++i)
+		if (row_info[i].endfirsthead)
+			return true;
+	return false;
+}
+
+
+bool Tabular::haveLTFoot() const
+{
+	for (row_type i = 0; i < rows_; ++i)
+		if (row_info[i].endfoot)
+			return true;
+	return false;
+}
+
+
+bool Tabular::haveLTLastFoot() const
+{
+	if (endlastfoot.empty)
+		return false;
+	for (row_type i = 0; i < rows_; ++i)
+		if (row_info[i].endlastfoot)
+			return true;
+	return false;
+}
+
+
+// end longtable support functions
+
+void Tabular::setAscentOfRow(row_type row, int height)
+{
+	if (row >= rows_ || row_info[row].ascent_of_row == height)
+		return;
+	row_info[row].ascent_of_row = height;
+}
+
+
+void Tabular::setDescentOfRow(row_type row, int height)
+{
+	if (row >= rows_ || row_info[row].descent_of_row == height)
+		return;
+	row_info[row].descent_of_row = height;
+}
+
+
+int Tabular::getAscentOfRow(row_type row) const
+{
+	if (row >= rows_)
+		return 0;
+	return row_info[row].ascent_of_row;
+}
+
+
+int Tabular::getDescentOfRow(row_type row) const
+{
+	BOOST_ASSERT(row < rows_);
+	return row_info[row].descent_of_row;
+}
+
+
+int Tabular::getHeightOfTabular() const
+{
+	int height = 0;
+	for (row_type row = 0; row < rows_; ++row)
+		height += getAscentOfRow(row) + getDescentOfRow(row) +
+			getAdditionalHeight(row);
+	return height;
+}
+
+
+bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
+{
+	BOOST_ASSERT(row < rows_);
+	BOOST_ASSERT(column < columns_);
+	return cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN;
+}
+
+
+int Tabular::TeXTopHLine(odocstream & os, row_type row) const
+{
+	// FIXME: assert or return 0 as in TeXBottomHLine()?
+	BOOST_ASSERT(row != npos);
+	BOOST_ASSERT(row < rows_);
+
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
+
+	for (idx_type i = fcell; i < n; ++i) {
+		if (topLine(i))
+			++tmp;
+	}
+	if (use_booktabs && row == 0) {
+		os << "\\toprule ";
+	} else if (tmp == n - fcell) {
+		os << (use_booktabs ? "\\midrule " : "\\hline ");
+	} else if (tmp) {
+		for (idx_type i = fcell; i < n; ++i) {
+			if (topLine(i)) {
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
+				   << column_of_cell(i) + 1
+				   << '-'
+				   << right_column_of_cell(i) + 1
+				   << "} ";
+			}
+		}
+	} else {
+		return 0;
+	}
+	os << "\n";
+	return 1;
+}
+
+
+int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
+{
+	// FIXME: return 0 or assert as in TeXTopHLine()?
+	if (row == npos || row >= rows_)
+		return 0;
+
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
+
+	for (idx_type i = fcell; i < n; ++i) {
+		if (bottomLine(i))
+			++tmp;
+	}
+	if (use_booktabs && row == rows_ - 1) {
+		os << "\\bottomrule";
+	} else if (tmp == n - fcell) {
+		os << (use_booktabs ? "\\midrule" : "\\hline");
+	} else if (tmp) {
+		for (idx_type i = fcell; i < n; ++i) {
+			if (bottomLine(i)) {
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
+				   << column_of_cell(i) + 1
+				   << '-'
+				   << right_column_of_cell(i) + 1
+				   << "} ";
+			}
+		}
+	} else {
+		return 0;
+	}
+	os << "\n";
+	return 1;
+}
+
+
+int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
+{
+	int ret = 0;
+
+	if (getRotateCell(cell)) {
+		os << "\\begin{sideways}\n";
+		++ret;
+	}
+	if (isMultiColumn(cell)) {
+		os << "\\multicolumn{" << cells_in_multicolumn(cell) << "}{";
+		if (!cellinfo_of_cell(cell).align_special.empty()) {
+			os << cellinfo_of_cell(cell).align_special << "}{";
+		} else {
+			if (leftLine(cell) &&
+				(isFirstCellInRow(cell) ||
+				 (!isMultiColumn(cell - 1) && !leftLine(cell, true) &&
+				  !rightLine(cell - 1, true))))
+			{
+				os << '|';
+			}
+			if (!getPWidth(cell).zero()) {
+				switch (getVAlignment(cell)) {
+				case LYX_VALIGN_TOP:
+					os << 'p';
+					break;
+				case LYX_VALIGN_MIDDLE:
+					os << 'm';
+					break;
+				case LYX_VALIGN_BOTTOM:
+					os << 'b';
+					break;
+				}
+				os << '{'
+				   << from_ascii(getPWidth(cell).asLatexString())
+				   << '}';
+			} else {
+				switch (getAlignment(cell)) {
+				case LYX_ALIGN_LEFT:
+					os << 'l';
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << 'r';
+					break;
+				default:
+					os << 'c';
+					break;
+				}
+			}
+			if (rightLine(cell))
+				os << '|';
+			if (((cell + 1) < numberofcells) && !isFirstCellInRow(cell+1) &&
+				leftLine(cell+1))
+				os << '|';
+			os << "}{";
+		}
+	}
+	if (getUsebox(cell) == BOX_PARBOX) {
+		os << "\\parbox[";
+		switch (getVAlignment(cell)) {
+		case LYX_VALIGN_TOP:
+			os << 't';
+			break;
+		case LYX_VALIGN_MIDDLE:
+			os << 'c';
+			break;
+		case LYX_VALIGN_BOTTOM:
+			os << 'b';
+			break;
+		}
+		os << "]{" << from_ascii(getPWidth(cell).asLatexString())
+		   << "}{";
+	} else if (getUsebox(cell) == BOX_MINIPAGE) {
+		os << "\\begin{minipage}[";
+		switch (getVAlignment(cell)) {
+		case LYX_VALIGN_TOP:
+			os << 't';
+			break;
+		case LYX_VALIGN_MIDDLE:
+			os << 'm';
+			break;
+		case LYX_VALIGN_BOTTOM:
+			os << 'b';
+			break;
+		}
+		os << "]{" << from_ascii(getPWidth(cell).asLatexString())
+		   << "}\n";
+		++ret;
+	}
+	return ret;
+}
+
+
+int Tabular::TeXCellPostamble(odocstream & os, idx_type cell) const
+{
+	int ret = 0;
+
+	// usual cells
+	if (getUsebox(cell) == BOX_PARBOX)
+		os << '}';
+	else if (getUsebox(cell) == BOX_MINIPAGE) {
+		os << "%\n\\end{minipage}";
+		ret += 2;
+	}
+	if (isMultiColumn(cell)) {
+		os << '}';
+	}
+	if (getRotateCell(cell)) {
+		os << "%\n\\end{sideways}";
+		++ret;
+	}
+	return ret;
+}
+
+
+int Tabular::TeXLongtableHeaderFooter(odocstream & os, Buffer const & buf,
+					 OutputParams const & runparams) const
+{
+	if (!is_long_tabular)
+		return 0;
+
+	int ret = 0;
+	// output header info
+	if (haveLTHead()) {
+		if (endhead.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (row_type i = 0; i < rows_; ++i) {
+			if (row_info[i].endhead) {
+				ret += TeXRow(os, i, buf, runparams);
+			}
+		}
+		if (endhead.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endhead\n";
+		++ret;
+		if (endfirsthead.empty) {
+			os << "\\endfirsthead\n";
+			++ret;
+		}
+	}
+	// output firstheader info
+	if (haveLTFirstHead()) {
+		if (endfirsthead.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (row_type i = 0; i < rows_; ++i) {
+			if (row_info[i].endfirsthead) {
+				ret += TeXRow(os, i, buf, runparams);
+			}
+		}
+		if (endfirsthead.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endfirsthead\n";
+		++ret;
+	}
+	// output footer info
+	if (haveLTFoot()) {
+		if (endfoot.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (row_type i = 0; i < rows_; ++i) {
+			if (row_info[i].endfoot) {
+				ret += TeXRow(os, i, buf, runparams);
+			}
+		}
+		if (endfoot.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endfoot\n";
+		++ret;
+		if (endlastfoot.empty) {
+			os << "\\endlastfoot\n";
+			++ret;
+		}
+	}
+	// output lastfooter info
+	if (haveLTLastFoot()) {
+		if (endlastfoot.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (row_type i = 0; i < rows_; ++i) {
+			if (row_info[i].endlastfoot) {
+				ret += TeXRow(os, i, buf, runparams);
+			}
+		}
+		if (endlastfoot.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endlastfoot\n";
+		++ret;
+	}
+	return ret;
+}
+
+
+bool Tabular::isValidRow(row_type row) const
+{
+	if (!is_long_tabular)
+		return true;
+	return !row_info[row].endhead && !row_info[row].endfirsthead &&
+			!row_info[row].endfoot && !row_info[row].endlastfoot;
+}
+
+
+int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
+		       OutputParams const & runparams) const
+{
+	idx_type cell = getCellNumber(i, 0);
+	int ret = TeXTopHLine(os, i);
+	if (row_info[i].top_space_default) {
+		if (use_booktabs)
+			os << "\\addlinespace\n";
+		else
+			os << "\\noalign{\\vskip\\doublerulesep}\n";
+		++ret;
+	} else if(!row_info[i].top_space.zero()) {
+		if (use_booktabs)
+			os << "\\addlinespace["
+			   << from_ascii(row_info[i].top_space.asLatexString())
+			   << "]\n";
+		else {
+			os << "\\noalign{\\vskip"
+			   << from_ascii(row_info[i].top_space.asLatexString())
+			   << "}\n";
+		}
+		++ret;
+	}
+	
+	for (col_type j = 0; j < columns_; ++j) {
+		if (isPartOfMultiColumn(i, j))
+			continue;
+		ret += TeXCellPreamble(os, cell);
+		shared_ptr<InsetText> inset = getCellInset(cell);
+
+		Paragraph const & par = inset->paragraphs().front();
+		bool rtl = par.isRightToLeftPar(buf.params())
+			&& !par.empty()
+			&& getPWidth(cell).zero();
+
+		if (rtl)
+			os << "\\R{";
+		ret += inset->latex(buf, os, runparams);
+		if (rtl)
+			os << '}';
+
+		ret += TeXCellPostamble(os, cell);
+		if (!isLastCellInRow(cell)) { // not last cell in row
+			os << " & ";
+		}
+		++cell;
+	}
+	os << "\\tabularnewline";
+	if (row_info[i].bottom_space_default) {
+		if (use_booktabs)
+			os << "\\addlinespace";
+		else
+			os << "[\\doublerulesep]";
+	} else if (!row_info[i].bottom_space.zero()) {
+		if (use_booktabs)
+			os << "\\addlinespace";
+		os << '['
+		   << from_ascii(row_info[i].bottom_space.asLatexString())
+		   << ']';
+	}
+	os << '\n';
+	++ret;
+	ret += TeXBottomHLine(os, i);
+	if (row_info[i].interline_space_default) {
+		if (use_booktabs)
+			os << "\\addlinespace\n";
+		else
+			os << "\\noalign{\\vskip\\doublerulesep}\n";
+		++ret;
+	} else if (!row_info[i].interline_space.zero()) {
+		if (use_booktabs)
+			os << "\\addlinespace["
+			   << from_ascii(row_info[i].interline_space.asLatexString())
+			   << "]\n";
+		else
+			os << "\\noalign{\\vskip"
+			   << from_ascii(row_info[i].interline_space.asLatexString())
+			   << "}\n";
+		++ret;
+	}
+	return ret;
+}
+
+
+int Tabular::latex(Buffer const & buf, odocstream & os,
+		      OutputParams const & runparams) const
+{
+	int ret = 0;
+
+	//+---------------------------------------------------------------------
+	//+                      first the opening preamble                    +
+	//+---------------------------------------------------------------------
+
+	if (rotate) {
+		os << "\\begin{sideways}\n";
+		++ret;
+	}
+	if (is_long_tabular)
+		os << "\\begin{longtable}{";
+	else
+		os << "\\begin{tabular}{";
+	for (col_type i = 0; i < columns_; ++i) {
+		if (!column_info[i].align_special.empty()) {
+			os << column_info[i].align_special;
+		} else {
+			if (!use_booktabs && column_info[i].left_line)
+				os << '|';
+			if (!column_info[i].p_width.zero()) {
+				switch (column_info[i].alignment) {
+				case LYX_ALIGN_LEFT:
+					os << ">{\\raggedright}";
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << ">{\\raggedleft}";
+					break;
+				case LYX_ALIGN_CENTER:
+					os << ">{\\centering}";
+					break;
+				case LYX_ALIGN_NONE:
+				case LYX_ALIGN_BLOCK:
+				case LYX_ALIGN_LAYOUT:
+				case LYX_ALIGN_SPECIAL:
+					break;
+				}
+
+				switch (column_info[i].valignment) {
+				case LYX_VALIGN_TOP:
+					os << 'p';
+					break;
+				case LYX_VALIGN_MIDDLE:
+					os << 'm';
+					break;
+				case LYX_VALIGN_BOTTOM:
+					os << 'b';
+					break;
+			}
+				os << '{'
+				   << from_ascii(column_info[i].p_width.asLatexString())
+				   << '}';
+			} else {
+				switch (column_info[i].alignment) {
+				case LYX_ALIGN_LEFT:
+					os << 'l';
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << 'r';
+					break;
+				default:
+					os << 'c';
+					break;
+				}
+			}
+			if (!use_booktabs && column_info[i].right_line)
+				os << '|';
+		}
+	}
+	os << "}\n";
+	++ret;
+
+	ret += TeXLongtableHeaderFooter(os, buf, runparams);
+
+	//+---------------------------------------------------------------------
+	//+                      the single row and columns (cells)            +
+	//+---------------------------------------------------------------------
+
+	for (row_type i = 0; i < rows_; ++i) {
+		if (isValidRow(i)) {
+			ret += TeXRow(os, i, buf, runparams);
+			if (is_long_tabular && row_info[i].newpage) {
+				os << "\\newpage\n";
+				++ret;
+			}
+		}
+	}
+
+	//+---------------------------------------------------------------------
+	//+                      the closing of the tabular                    +
+	//+---------------------------------------------------------------------
+
+	if (is_long_tabular)
+		os << "\\end{longtable}";
+	else
+		os << "\\end{tabular}";
+	if (rotate) {
+		os << "\n\\end{sideways}";
+		++ret;
+	}
+
+	return ret;
+}
+
+
+int Tabular::docbookRow(Buffer const & buf, odocstream & os, row_type row,
+			   OutputParams const & runparams) const
+{
+	int ret = 0;
+	idx_type cell = getFirstCellInRow(row);
+
+	os << "<row>\n";
+	for (col_type j = 0; j < columns_; ++j) {
+		if (isPartOfMultiColumn(row, j))
+			continue;
+
+		os << "<entry align=\"";
+		switch (getAlignment(cell)) {
+		case LYX_ALIGN_LEFT:
+			os << "left";
+			break;
+		case LYX_ALIGN_RIGHT:
+			os << "right";
+			break;
+		default:
+			os << "center";
+			break;
+		}
+
+		os << "\" valign=\"";
+		switch (getVAlignment(cell)) {
+		case LYX_VALIGN_TOP:
+			os << "top";
+			break;
+		case LYX_VALIGN_BOTTOM:
+			os << "bottom";
+			break;
+		case LYX_VALIGN_MIDDLE:
+			os << "middle";
+		}
+		os << '"';
+
+		if (isMultiColumn(cell)) {
+			os << " namest=\"col" << j << "\" ";
+			os << "nameend=\"col" << j + cells_in_multicolumn(cell) - 1<< '"';
+		}
+
+		os << '>';
+		ret += getCellInset(cell)->docbook(buf, os, runparams);
+		os << "</entry>\n";
+		++cell;
+	}
+	os << "</row>\n";
+	return ret;
+}
+
+
+int Tabular::docbook(Buffer const & buf, odocstream & os,
+			OutputParams const & runparams) const
+{
+	int ret = 0;
+
+	//+---------------------------------------------------------------------
+	//+                      first the opening preamble                    +
+	//+---------------------------------------------------------------------
+
+	os << "<tgroup cols=\"" << columns_
+	   << "\" colsep=\"1\" rowsep=\"1\">\n";
+
+	for (col_type i = 0; i < columns_; ++i) {
+		os << "<colspec colname=\"col" << i << "\" align=\"";
+		switch (column_info[i].alignment) {
+		case LYX_ALIGN_LEFT:
+			os << "left";
+			break;
+		case LYX_ALIGN_RIGHT:
+			os << "right";
+			break;
+		default:
+			os << "center";
+			break;
+		}
+		os << '"';
+		if (runparams.flavor == OutputParams::XML)
+			os << '/';
+		os << ">\n";
+		++ret;
+	}
+
+	//+---------------------------------------------------------------------
+	//+                      Long Tabular case                             +
+	//+---------------------------------------------------------------------
+
+	// output header info
+	if (haveLTHead() || haveLTFirstHead()) {
+		os << "<thead>\n";
+		++ret;
+		for (row_type i = 0; i < rows_; ++i) {
+			if (row_info[i].endhead || row_info[i].endfirsthead) {
+				ret += docbookRow(buf, os, i, runparams);
+			}
+		}
+		os << "</thead>\n";
+		++ret;
+	}
+	// output footer info
+	if (haveLTFoot() || haveLTLastFoot()) {
+		os << "<tfoot>\n";
+		++ret;
+		for (row_type i = 0; i < rows_; ++i) {
+			if (row_info[i].endfoot || row_info[i].endlastfoot) {
+				ret += docbookRow(buf, os, i, runparams);
+			}
+		}
+		os << "</tfoot>\n";
+		++ret;
+	}
+
+	//+---------------------------------------------------------------------
+	//+                      the single row and columns (cells)            +
+	//+---------------------------------------------------------------------
+
+	os << "<tbody>\n";
+	++ret;
+	for (row_type i = 0; i < rows_; ++i) {
+		if (isValidRow(i)) {
+			ret += docbookRow(buf, os, i, runparams);
+		}
+	}
+	os << "</tbody>\n";
+	++ret;
+	//+---------------------------------------------------------------------
+	//+                      the closing of the tabular                    +
+	//+---------------------------------------------------------------------
+
+	os << "</tgroup>";
+	++ret;
+
+	return ret;
+}
+
+
+bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
+                                   vector<unsigned int> const & clen) const
+{
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
+
+	for (idx_type i = fcell; i < n; ++i) {
+		if (topLine(i)) {
+			++tmp;
+			break;
+		}
+	}
+	if (!tmp)
+		return false;
+
+	char_type ch;
+	for (idx_type i = fcell; i < n; ++i) {
+		if (topLine(i)) {
+			if (leftLine(i))
+				os << "+-";
+			else
+				os << "--";
+			ch = '-';
+		} else {
+			os << "  ";
+			ch = ' ';
+		}
+		col_type column = column_of_cell(i);
+		int len = clen[column];
+		while (column < columns_ - 1
+		       && isPartOfMultiColumn(row, ++column))
+			len += clen[column] + 4;
+		os << docstring(len, ch);
+		if (topLine(i)) {
+			if (rightLine(i))
+				os << "-+";
+			else
+				os << "--";
+		} else {
+			os << "  ";
+		}
+	}
+	os << endl;
+	return true;
+}
+
+
+bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
+                                      vector<unsigned int> const & clen) const
+{
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
+
+	for (idx_type i = fcell; i < n; ++i) {
+		if (bottomLine(i)) {
+			++tmp;
+			break;
+		}
+	}
+	if (!tmp)
+		return false;
+
+	char_type ch;
+	for (idx_type i = fcell; i < n; ++i) {
+		if (bottomLine(i)) {
+			if (leftLine(i))
+				os << "+-";
+			else
+				os << "--";
+			ch = '-';
+		} else {
+			os << "  ";
+			ch = ' ';
+		}
+		col_type column = column_of_cell(i);
+		int len = clen[column];
+		while (column < columns_ -1
+		       && isPartOfMultiColumn(row, ++column))
+			len += clen[column] + 4;
+		os << docstring(len, ch);
+		if (bottomLine(i)) {
+			if (rightLine(i))
+				os << "-+";
+			else
+				os << "--";
+		} else {
+			os << "  ";
+		}
+	}
+	os << endl;
+	return true;
+}
+
+
+void Tabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
+			       OutputParams const & runparams,
+			       idx_type cell, row_type row, col_type column,
+			       vector<unsigned int> const & clen,
+			       bool onlydata) const
+{
+	odocstringstream sstr;
+	getCellInset(cell)->plaintext(buf, sstr, runparams);
+
+	if (onlydata) {
+		os << sstr.str();
+		return;
+	}
+
+	if (leftLine(cell))
+		os << "| ";
+	else
+		os << "  ";
+
+	unsigned int len1 = sstr.str().length();
+	unsigned int len2 = clen[column];
+	while (column < columns_ -1
+	       && isPartOfMultiColumn(row, ++column))
+		len2 += clen[column] + 4;
+	len2 -= len1;
+
+	switch (getAlignment(cell)) {
+	default:
+	case LYX_ALIGN_LEFT:
+		len1 = 0;
+		break;
+	case LYX_ALIGN_RIGHT:
+		len1 = len2;
+		len2 = 0;
+		break;
+	case LYX_ALIGN_CENTER:
+		len1 = len2 / 2;
+		len2 -= len1;
+		break;
+	}
+
+	os << docstring(len1, ' ') << sstr.str()
+	   << docstring(len2, ' ');
+
+	if (rightLine(cell))
+		os << " |";
+	else
+		os << "  ";
+}
+
+
+void Tabular::plaintext(Buffer const & buf, odocstream & os,
+                           OutputParams const & runparams, int const depth,
+                           bool onlydata, unsigned char delim) const
+{
+	// first calculate the width of the single columns
+	vector<unsigned int> clen(columns_);
+
+	if (!onlydata) {
+		// first all non (real) multicolumn cells!
+		for (col_type j = 0; j < columns_; ++j) {
+			clen[j] = 0;
+			for (row_type i = 0; i < rows_; ++i) {
+				idx_type cell = getCellNumber(i, j);
+				if (isMultiColumnReal(cell))
+					continue;
+				odocstringstream sstr;
+				getCellInset(cell)->plaintext(buf, sstr, runparams);
+				if (clen[j] < sstr.str().length())
+					clen[j] = sstr.str().length();
+			}
+		}
+		// then all (real) multicolumn cells!
+		for (col_type j = 0; j < columns_; ++j) {
+			for (row_type i = 0; i < rows_; ++i) {
+				idx_type cell = getCellNumber(i, j);
+				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
+					continue;
+				odocstringstream sstr;
+				getCellInset(cell)->plaintext(buf, sstr, runparams);
+				int len = int(sstr.str().length());
+				idx_type const n = cells_in_multicolumn(cell);
+				for (col_type k = j; len > 0 && k < j + n - 1; ++k)
+					len -= clen[k];
+				if (len > int(clen[j + n - 1]))
+					clen[j + n - 1] = len;
+			}
+		}
+	}
+	idx_type cell = 0;
+	for (row_type i = 0; i < rows_; ++i) {
+		if (!onlydata && plaintextTopHLine(os, i, clen))
+			os << docstring(depth * 2, ' ');
+		for (col_type j = 0; j < columns_; ++j) {
+			if (isPartOfMultiColumn(i, j))
+				continue;
+			if (onlydata && j > 0)
+				os << delim;
+			plaintextPrintCell(buf, os, runparams,
+			                   cell, i, j, clen, onlydata);
+			++cell;
+		}
+		os << endl;
+		if (!onlydata) {
+			os << docstring(depth * 2, ' ');
+			if (plaintextBottomHLine(os, i, clen))
+				os << docstring(depth * 2, ' ');
+		}
+	}
+}
+
+
+shared_ptr<InsetText> Tabular::getCellInset(idx_type cell) const
+{
+	return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
+}
+
+
+shared_ptr<InsetText> Tabular::getCellInset(row_type row,
+					       col_type column) const
+{
+	return cell_info[row][column].inset;
+}
+
+
+void Tabular::setCellInset(row_type row, col_type column,
+			      shared_ptr<InsetText> ins) const
+{
+	cell_info[row][column].inset = ins;
+}
+
+
+Tabular::idx_type
+Tabular::getCellFromInset(InsetBase const * inset) const
+{
+	// is this inset part of the tabular?
+	if (!inset) {
+		lyxerr << "Error: this is not a cell of the tabular!" << endl;
+		BOOST_ASSERT(false);
+	}
+
+	for (idx_type cell = 0, n = getNumberOfCells(); cell < n; ++cell)
+		if (getCellInset(cell).get() == inset) {
+			LYXERR(Debug::INSETTEXT) << "Tabular::getCellFromInset: "
+				<< "cell=" << cell << endl;
+			return cell;
+		}
+
+	// We should have found a cell at this point
+	lyxerr << "Tabular::getCellFromInset: Cell of inset "
+		<< inset << " not found!" << endl;
+	BOOST_ASSERT(false);
+	// shut up compiler
+	return 0;
+}
+
+
+void Tabular::validate(LaTeXFeatures & features) const
+{
+	features.require("NeedTabularnewline");
+	if (useBookTabs())
+		features.require("booktabs");
+	if (isLongTabular())
+		features.require("longtable");
+	if (needRotating())
+		features.require("rotating");
+	for (idx_type cell = 0; cell < numberofcells; ++cell) {
+		if (getVAlignment(cell) != LYX_VALIGN_TOP ||
+		     (!getPWidth(cell).zero() && !isMultiColumn(cell)))
+			features.require("array");
+		getCellInset(cell)->validate(features);
+	}
+}
+
+
+Tabular::BoxType Tabular::useParbox(idx_type cell) const
+{
+	ParagraphList const & parlist = getCellInset(cell)->paragraphs();
+	ParagraphList::const_iterator cit = parlist.begin();
+	ParagraphList::const_iterator end = parlist.end();
+
+	for (; cit != end; ++cit)
+		for (int i = 0; i < cit->size(); ++i)
+			if (cit->isNewline(i))
+				return BOX_PARBOX;
+
+	return BOX_NONE;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetTabular
+//
+/////////////////////////////////////////////////////////////////////
 
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
@@ -263,7 +2968,7 @@ bool InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			MetricsInfo m = mi;
 			LyXLength p_width;
 			if (tabular.cell_info[i][j].multicolumn ==
-			    LyXTabular::CELL_BEGIN_OF_MULTICOLUMN)
+			    Tabular::CELL_BEGIN_OF_MULTICOLUMN)
 				p_width = tabular.cellinfo_of_cell(cell).p_width;
 			else
 				p_width = tabular.column_info[j].p_width;
@@ -315,7 +3020,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	x += ADD_TO_TABULAR_WIDTH;
 
 	idx_type idx = 0;
-	first_visible_cell = LyXTabular::npos;
+	first_visible_cell = Tabular::npos;
 	for (row_type i = 0; i < tabular.rows(); ++i) {
 		int nx = x;
 		int const a = tabular.getAscentOfRow(i);
@@ -324,7 +3029,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 		for (col_type j = 0; j < tabular.columns(); ++j) {
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
-			if (first_visible_cell == LyXTabular::npos)
+			if (first_visible_cell == Tabular::npos)
 				first_visible_cell = idx;
 
 			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
@@ -393,7 +3098,6 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 					pi.pain.fillRectangle(xx, y, w, h,
 							      LColor::selection);
 				xx += w;
-
 			}
 			y += h;
 		}
@@ -832,16 +3536,16 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		int action = LyXTabular::LAST_ACTION;
+		int action = Tabular::LAST_ACTION;
 		int i = 0;
-		for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
+		for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
 			string const tmp = tabularFeature[i].feature;
 			if (tmp == to_utf8(cmd.argument()).substr(0, tmp.length())) {
 				action = tabularFeature[i].action;
 				break;
 			}
 		}
-		if (action == LyXTabular::LAST_ACTION) {
+		if (action == Tabular::LAST_ACTION) {
 			status.clear();
 			status.unknown(true);
 			return true;
@@ -853,171 +3557,171 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;
 		col_type dummy;
-		LyXTabular::ltType dummyltt;
+		Tabular::ltType dummyltt;
 		bool flag = true;
 
 		getSelection(cur, sel_row_start, sel_row_end, dummy, dummy);
 
 		switch (action) {
-		case LyXTabular::SET_PWIDTH:
-		case LyXTabular::SET_MPWIDTH:
-		case LyXTabular::SET_SPECIAL_COLUMN:
-		case LyXTabular::SET_SPECIAL_MULTI:
-		case LyXTabular::APPEND_ROW:
-		case LyXTabular::APPEND_COLUMN:
-		case LyXTabular::DELETE_ROW:
-		case LyXTabular::DELETE_COLUMN:
-		case LyXTabular::COPY_ROW:
-		case LyXTabular::COPY_COLUMN:
-		case LyXTabular::SET_ALL_LINES:
-		case LyXTabular::UNSET_ALL_LINES:
-		case LyXTabular::SET_TOP_SPACE:
-		case LyXTabular::SET_BOTTOM_SPACE:
-		case LyXTabular::SET_INTERLINE_SPACE:
+		case Tabular::SET_PWIDTH:
+		case Tabular::SET_MPWIDTH:
+		case Tabular::SET_SPECIAL_COLUMN:
+		case Tabular::SET_SPECIAL_MULTI:
+		case Tabular::APPEND_ROW:
+		case Tabular::APPEND_COLUMN:
+		case Tabular::DELETE_ROW:
+		case Tabular::DELETE_COLUMN:
+		case Tabular::COPY_ROW:
+		case Tabular::COPY_COLUMN:
+		case Tabular::SET_ALL_LINES:
+		case Tabular::UNSET_ALL_LINES:
+		case Tabular::SET_TOP_SPACE:
+		case Tabular::SET_BOTTOM_SPACE:
+		case Tabular::SET_INTERLINE_SPACE:
 			status.clear();
 			return true;
 
-		case LyXTabular::MULTICOLUMN:
+		case Tabular::MULTICOLUMN:
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
-		case LyXTabular::M_TOGGLE_LINE_TOP:
+		case Tabular::M_TOGGLE_LINE_TOP:
 			flag = false;
-		case LyXTabular::TOGGLE_LINE_TOP:
+		case Tabular::TOGGLE_LINE_TOP:
 			status.setOnOff(tabular.topLine(cur.idx(), flag));
 			break;
 
-		case LyXTabular::M_TOGGLE_LINE_BOTTOM:
+		case Tabular::M_TOGGLE_LINE_BOTTOM:
 			flag = false;
-		case LyXTabular::TOGGLE_LINE_BOTTOM:
+		case Tabular::TOGGLE_LINE_BOTTOM:
 			status.setOnOff(tabular.bottomLine(cur.idx(), flag));
 			break;
 
-		case LyXTabular::M_TOGGLE_LINE_LEFT:
+		case Tabular::M_TOGGLE_LINE_LEFT:
 			flag = false;
-		case LyXTabular::TOGGLE_LINE_LEFT:
+		case Tabular::TOGGLE_LINE_LEFT:
 			status.setOnOff(tabular.leftLine(cur.idx(), flag));
 			break;
 
-		case LyXTabular::M_TOGGLE_LINE_RIGHT:
+		case Tabular::M_TOGGLE_LINE_RIGHT:
 			flag = false;
-		case LyXTabular::TOGGLE_LINE_RIGHT:
+		case Tabular::TOGGLE_LINE_RIGHT:
 			status.setOnOff(tabular.rightLine(cur.idx(), flag));
 			break;
 
-		case LyXTabular::M_ALIGN_LEFT:
+		case Tabular::M_ALIGN_LEFT:
 			flag = false;
-		case LyXTabular::ALIGN_LEFT:
+		case Tabular::ALIGN_LEFT:
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_LEFT);
 			break;
 
-		case LyXTabular::M_ALIGN_RIGHT:
+		case Tabular::M_ALIGN_RIGHT:
 			flag = false;
-		case LyXTabular::ALIGN_RIGHT:
+		case Tabular::ALIGN_RIGHT:
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_RIGHT);
 			break;
 
-		case LyXTabular::M_ALIGN_CENTER:
+		case Tabular::M_ALIGN_CENTER:
 			flag = false;
-		case LyXTabular::ALIGN_CENTER:
+		case Tabular::ALIGN_CENTER:
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_CENTER);
 			break;
 
-		case LyXTabular::ALIGN_BLOCK:
+		case Tabular::ALIGN_BLOCK:
 			status.enabled(!tabular.getPWidth(cur.idx()).zero());
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_BLOCK);
 			break;
 
-		case LyXTabular::M_VALIGN_TOP:
+		case Tabular::M_VALIGN_TOP:
 			flag = false;
-		case LyXTabular::VALIGN_TOP:
+		case Tabular::VALIGN_TOP:
 			status.setOnOff(
-				tabular.getVAlignment(cur.idx(), flag) == LyXTabular::LYX_VALIGN_TOP);
+				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_TOP);
 			break;
 
-		case LyXTabular::M_VALIGN_BOTTOM:
+		case Tabular::M_VALIGN_BOTTOM:
 			flag = false;
-		case LyXTabular::VALIGN_BOTTOM:
+		case Tabular::VALIGN_BOTTOM:
 			status.setOnOff(
-				tabular.getVAlignment(cur.idx(), flag) == LyXTabular::LYX_VALIGN_BOTTOM);
+				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_BOTTOM);
 			break;
 
-		case LyXTabular::M_VALIGN_MIDDLE:
+		case Tabular::M_VALIGN_MIDDLE:
 			flag = false;
-		case LyXTabular::VALIGN_MIDDLE:
+		case Tabular::VALIGN_MIDDLE:
 			status.setOnOff(
-				tabular.getVAlignment(cur.idx(), flag) == LyXTabular::LYX_VALIGN_MIDDLE);
+				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_MIDDLE);
 			break;
 
-		case LyXTabular::SET_LONGTABULAR:
+		case Tabular::SET_LONGTABULAR:
 			status.setOnOff(tabular.isLongTabular());
 			break;
 
-		case LyXTabular::UNSET_LONGTABULAR:
+		case Tabular::UNSET_LONGTABULAR:
 			status.setOnOff(!tabular.isLongTabular());
 			break;
 
-		case LyXTabular::SET_ROTATE_TABULAR:
+		case Tabular::SET_ROTATE_TABULAR:
 			status.setOnOff(tabular.getRotateTabular());
 			break;
 
-		case LyXTabular::UNSET_ROTATE_TABULAR:
+		case Tabular::UNSET_ROTATE_TABULAR:
 			status.setOnOff(!tabular.getRotateTabular());
 			break;
 
-		case LyXTabular::SET_ROTATE_CELL:
+		case Tabular::SET_ROTATE_CELL:
 			status.setOnOff(tabular.getRotateCell(cur.idx()));
 			break;
 
-		case LyXTabular::UNSET_ROTATE_CELL:
+		case Tabular::UNSET_ROTATE_CELL:
 			status.setOnOff(!tabular.getRotateCell(cur.idx()));
 			break;
 
-		case LyXTabular::SET_USEBOX:
+		case Tabular::SET_USEBOX:
 			status.setOnOff(convert<int>(argument) == tabular.getUsebox(cur.idx()));
 			break;
 
-		case LyXTabular::SET_LTFIRSTHEAD:
+		case Tabular::SET_LTFIRSTHEAD:
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::UNSET_LTFIRSTHEAD:
+		case Tabular::UNSET_LTFIRSTHEAD:
 			status.setOnOff(!tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::SET_LTHEAD:
+		case Tabular::SET_LTHEAD:
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::UNSET_LTHEAD:
+		case Tabular::UNSET_LTHEAD:
 			status.setOnOff(!tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::SET_LTFOOT:
+		case Tabular::SET_LTFOOT:
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::UNSET_LTFOOT:
+		case Tabular::UNSET_LTFOOT:
 			status.setOnOff(!tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::SET_LTLASTFOOT:
+		case Tabular::SET_LTLASTFOOT:
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::UNSET_LTLASTFOOT:
+		case Tabular::UNSET_LTLASTFOOT:
 			status.setOnOff(!tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
-		case LyXTabular::SET_LTNEWPAGE:
+		case Tabular::SET_LTNEWPAGE:
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
 			break;
 
-		case LyXTabular::SET_BOOKTABS:
+		case Tabular::SET_BOOKTABS:
 			status.setOnOff(tabular.useBookTabs());
 			break;
 
-		case LyXTabular::UNSET_BOOKTABS:
+		case Tabular::UNSET_BOOKTABS:
 			status.setOnOff(!tabular.useBookTabs());
 			break;
 
@@ -1348,20 +4052,20 @@ void InsetTabular::movePrevCell(LCursor & cur)
 
 bool InsetTabular::tabularFeatures(LCursor & cur, string const & what)
 {
-	LyXTabular::Feature action = LyXTabular::LAST_ACTION;
+	Tabular::Feature action = Tabular::LAST_ACTION;
 
 	int i = 0;
-	for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
+	for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
 		string const tmp = tabularFeature[i].feature;
 
 		if (tmp == what.substr(0, tmp.length())) {
 			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
-			//tabularFeatures[i].feature.length())) {
+			//tabularFeatures[i].feature.length())) 
 			action = tabularFeature[i].action;
 			break;
 		}
 	}
-	if (action == LyXTabular::LAST_ACTION)
+	if (action == Tabular::LAST_ACTION)
 		return false;
 
 	string const val =
@@ -1371,9 +4075,7 @@ bool InsetTabular::tabularFeatures(LCursor & cur, string const & what)
 }
 
 
-namespace {
-
-void checkLongtableSpecial(LyXTabular::ltType & ltt,
+static void checkLongtableSpecial(Tabular::ltType & ltt,
 			  string const & special, bool & flag)
 {
 	if (special == "dl_above") {
@@ -1391,11 +4093,9 @@ void checkLongtableSpecial(LyXTabular::ltType & ltt,
 	}
 }
 
-} // anon namespace
-
 
 void InsetTabular::tabularFeatures(LCursor & cur,
-	LyXTabular::Feature feature, string const & value)
+	Tabular::Feature feature, string const & value)
 {
 	BufferView & bv = cur.bv();
 	col_type sel_col_start;
@@ -1404,42 +4104,42 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	row_type sel_row_end;
 	bool setLines = false;
 	LyXAlignment setAlign = LYX_ALIGN_LEFT;
-	LyXTabular::VAlignment setVAlign = LyXTabular::LYX_VALIGN_TOP;
+	Tabular::VAlignment setVAlign = Tabular::LYX_VALIGN_TOP;
 
 	switch (feature) {
 
-	case LyXTabular::M_ALIGN_LEFT:
-	case LyXTabular::ALIGN_LEFT:
+	case Tabular::M_ALIGN_LEFT:
+	case Tabular::ALIGN_LEFT:
 		setAlign = LYX_ALIGN_LEFT;
 		break;
 
-	case LyXTabular::M_ALIGN_RIGHT:
-	case LyXTabular::ALIGN_RIGHT:
+	case Tabular::M_ALIGN_RIGHT:
+	case Tabular::ALIGN_RIGHT:
 		setAlign = LYX_ALIGN_RIGHT;
 		break;
 
-	case LyXTabular::M_ALIGN_CENTER:
-	case LyXTabular::ALIGN_CENTER:
+	case Tabular::M_ALIGN_CENTER:
+	case Tabular::ALIGN_CENTER:
 		setAlign = LYX_ALIGN_CENTER;
 		break;
 
-	case LyXTabular::ALIGN_BLOCK:
+	case Tabular::ALIGN_BLOCK:
 		setAlign = LYX_ALIGN_BLOCK;
 		break;
 
-	case LyXTabular::M_VALIGN_TOP:
-	case LyXTabular::VALIGN_TOP:
-		setVAlign = LyXTabular::LYX_VALIGN_TOP;
+	case Tabular::M_VALIGN_TOP:
+	case Tabular::VALIGN_TOP:
+		setVAlign = Tabular::LYX_VALIGN_TOP;
 		break;
 
-	case LyXTabular::M_VALIGN_BOTTOM:
-	case LyXTabular::VALIGN_BOTTOM:
-		setVAlign = LyXTabular::LYX_VALIGN_BOTTOM;
+	case Tabular::M_VALIGN_BOTTOM:
+	case Tabular::VALIGN_BOTTOM:
+		setVAlign = Tabular::LYX_VALIGN_BOTTOM;
 		break;
 
-	case LyXTabular::M_VALIGN_MIDDLE:
-	case LyXTabular::VALIGN_MIDDLE:
-		setVAlign = LyXTabular::LYX_VALIGN_MIDDLE;
+	case Tabular::M_VALIGN_MIDDLE:
+	case Tabular::VALIGN_MIDDLE:
+		setVAlign = Tabular::LYX_VALIGN_MIDDLE;
 		break;
 
 	default:
@@ -1452,40 +4152,40 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	row_type const row = tabular.row_of_cell(cur.idx());
 	col_type const column = tabular.column_of_cell(cur.idx());
 	bool flag = true;
-	LyXTabular::ltType ltt;
+	Tabular::ltType ltt;
 
 	switch (feature) {
 
-	case LyXTabular::SET_PWIDTH: {
+	case Tabular::SET_PWIDTH: {
 		LyXLength const len(value);
 		tabular.setColumnPWidth(cur, cur.idx(), len);
 		if (len.zero()
 		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
-			tabularFeatures(cur, LyXTabular::ALIGN_CENTER, string());
+			tabularFeatures(cur, Tabular::ALIGN_CENTER, string());
 		break;
 	}
 
-	case LyXTabular::SET_MPWIDTH:
+	case Tabular::SET_MPWIDTH:
 		tabular.setMColumnPWidth(cur, cur.idx(), LyXLength(value));
 		break;
 
-	case LyXTabular::SET_SPECIAL_COLUMN:
-	case LyXTabular::SET_SPECIAL_MULTI:
+	case Tabular::SET_SPECIAL_COLUMN:
+	case Tabular::SET_SPECIAL_MULTI:
 		tabular.setAlignSpecial(cur.idx(), from_utf8(value), feature);
 		break;
 
-	case LyXTabular::APPEND_ROW:
+	case Tabular::APPEND_ROW:
 		// append the row into the tabular
 		tabular.appendRow(bv.buffer()->params(), cur.idx());
 		break;
 
-	case LyXTabular::APPEND_COLUMN:
+	case Tabular::APPEND_COLUMN:
 		// append the column into the tabular
 		tabular.appendColumn(bv.buffer()->params(), cur.idx());
 		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
-	case LyXTabular::DELETE_ROW:
+	case Tabular::DELETE_ROW:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			tabular.deleteRow(sel_row_start);
 		if (sel_row_start >= tabular.rows())
@@ -1496,7 +4196,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		cur.selection() = false;
 		break;
 
-	case LyXTabular::DELETE_COLUMN:
+	case Tabular::DELETE_COLUMN:
 		for (col_type i = sel_col_start; i <= sel_col_end; ++i)
 			tabular.deleteColumn(sel_col_start);
 		if (sel_col_start >= tabular.columns())
@@ -1507,18 +4207,18 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		cur.selection() = false;
 		break;
 
-	case LyXTabular::COPY_ROW:
+	case Tabular::COPY_ROW:
 		tabular.copyRow(bv.buffer()->params(), row);
 		break;
 
-	case LyXTabular::COPY_COLUMN:
+	case Tabular::COPY_COLUMN:
 		tabular.copyColumn(bv.buffer()->params(), column);
 		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
-	case LyXTabular::M_TOGGLE_LINE_TOP:
+	case Tabular::M_TOGGLE_LINE_TOP:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_TOP: {
+	case Tabular::TOGGLE_LINE_TOP: {
 		bool lineSet = !tabular.topLine(cur.idx(), flag);
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
@@ -1528,9 +4228,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::M_TOGGLE_LINE_BOTTOM:
+	case Tabular::M_TOGGLE_LINE_BOTTOM:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_BOTTOM: {
+	case Tabular::TOGGLE_LINE_BOTTOM: {
 		bool lineSet = !tabular.bottomLine(cur.idx(), flag);
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
@@ -1541,9 +4241,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::M_TOGGLE_LINE_LEFT:
+	case Tabular::M_TOGGLE_LINE_LEFT:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_LEFT: {
+	case Tabular::TOGGLE_LINE_LEFT: {
 		bool lineSet = !tabular.leftLine(cur.idx(), flag);
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
@@ -1554,9 +4254,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::M_TOGGLE_LINE_RIGHT:
+	case Tabular::M_TOGGLE_LINE_RIGHT:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_RIGHT: {
+	case Tabular::TOGGLE_LINE_RIGHT: {
 		bool lineSet = !tabular.rightLine(cur.idx(), flag);
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
@@ -1567,14 +4267,14 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::M_ALIGN_LEFT:
-	case LyXTabular::M_ALIGN_RIGHT:
-	case LyXTabular::M_ALIGN_CENTER:
+	case Tabular::M_ALIGN_LEFT:
+	case Tabular::M_ALIGN_RIGHT:
+	case Tabular::M_ALIGN_CENTER:
 		flag = false;
-	case LyXTabular::ALIGN_LEFT:
-	case LyXTabular::ALIGN_RIGHT:
-	case LyXTabular::ALIGN_CENTER:
-	case LyXTabular::ALIGN_BLOCK:
+	case Tabular::ALIGN_LEFT:
+	case Tabular::ALIGN_RIGHT:
+	case Tabular::ALIGN_CENTER:
+	case Tabular::ALIGN_BLOCK:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setAlignment(
@@ -1583,13 +4283,13 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 					flag);
 		break;
 
-	case LyXTabular::M_VALIGN_TOP:
-	case LyXTabular::M_VALIGN_BOTTOM:
-	case LyXTabular::M_VALIGN_MIDDLE:
+	case Tabular::M_VALIGN_TOP:
+	case Tabular::M_VALIGN_BOTTOM:
+	case Tabular::M_VALIGN_MIDDLE:
 		flag = false;
-	case LyXTabular::VALIGN_TOP:
-	case LyXTabular::VALIGN_BOTTOM:
-	case LyXTabular::VALIGN_MIDDLE:
+	case Tabular::VALIGN_TOP:
+	case Tabular::VALIGN_BOTTOM:
+	case Tabular::VALIGN_MIDDLE:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setVAlignment(
@@ -1597,7 +4297,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 					setVAlign, flag);
 		break;
 
-	case LyXTabular::MULTICOLUMN: {
+	case Tabular::MULTICOLUMN: {
 		if (sel_row_start != sel_row_end) {
 #ifdef WITH_WARNINGS
 #warning Need I say it ? This is horrible.
@@ -1628,100 +4328,100 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::SET_ALL_LINES:
+	case Tabular::SET_ALL_LINES:
 		setLines = true;
-	case LyXTabular::UNSET_ALL_LINES:
+	case Tabular::UNSET_ALL_LINES:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setAllLines(
 					tabular.getCellNumber(i,j), setLines);
 		break;
 
-	case LyXTabular::SET_LONGTABULAR:
+	case Tabular::SET_LONGTABULAR:
 		tabular.setLongTabular(true);
 		break;
 
-	case LyXTabular::UNSET_LONGTABULAR:
+	case Tabular::UNSET_LONGTABULAR:
 		tabular.setLongTabular(false);
 		break;
 
-	case LyXTabular::SET_ROTATE_TABULAR:
+	case Tabular::SET_ROTATE_TABULAR:
 		tabular.setRotateTabular(true);
 		break;
 
-	case LyXTabular::UNSET_ROTATE_TABULAR:
+	case Tabular::UNSET_ROTATE_TABULAR:
 		tabular.setRotateTabular(false);
 		break;
 
-	case LyXTabular::SET_ROTATE_CELL:
+	case Tabular::SET_ROTATE_CELL:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setRotateCell(
 					tabular.getCellNumber(i, j), true);
 		break;
 
-	case LyXTabular::UNSET_ROTATE_CELL:
+	case Tabular::UNSET_ROTATE_CELL:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setRotateCell(
 					tabular.getCellNumber(i, j), false);
 		break;
 
-	case LyXTabular::SET_USEBOX: {
-		LyXTabular::BoxType val = LyXTabular::BoxType(convert<int>(value));
+	case Tabular::SET_USEBOX: {
+		Tabular::BoxType val = Tabular::BoxType(convert<int>(value));
 		if (val == tabular.getUsebox(cur.idx()))
-			val = LyXTabular::BOX_NONE;
+			val = Tabular::BOX_NONE;
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setUsebox(tabular.getCellNumber(i, j), val);
 		break;
 	}
 
-	case LyXTabular::UNSET_LTFIRSTHEAD:
+	case Tabular::UNSET_LTFIRSTHEAD:
 		flag = false;
-	case LyXTabular::SET_LTFIRSTHEAD:
+	case Tabular::SET_LTFIRSTHEAD:
 		tabular.getRowOfLTFirstHead(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTHead(row, flag, ltt, true);
 		break;
 
-	case LyXTabular::UNSET_LTHEAD:
+	case Tabular::UNSET_LTHEAD:
 		flag = false;
-	case LyXTabular::SET_LTHEAD:
+	case Tabular::SET_LTHEAD:
 		tabular.getRowOfLTHead(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTHead(row, flag, ltt, false);
 		break;
 
-	case LyXTabular::UNSET_LTFOOT:
+	case Tabular::UNSET_LTFOOT:
 		flag = false;
-	case LyXTabular::SET_LTFOOT:
+	case Tabular::SET_LTFOOT:
 		tabular.getRowOfLTFoot(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTFoot(row, flag, ltt, false);
 		break;
 
-	case LyXTabular::UNSET_LTLASTFOOT:
+	case Tabular::UNSET_LTLASTFOOT:
 		flag = false;
-	case LyXTabular::SET_LTLASTFOOT:
+	case Tabular::SET_LTLASTFOOT:
 		tabular.getRowOfLTLastFoot(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTFoot(row, flag, ltt, true);
 		break;
 
-	case LyXTabular::SET_LTNEWPAGE:
+	case Tabular::SET_LTNEWPAGE:
 		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
 		break;
 
-	case LyXTabular::SET_BOOKTABS:
+	case Tabular::SET_BOOKTABS:
 		tabular.setBookTabs(true);
 		break;
 
-	case LyXTabular::UNSET_BOOKTABS:
+	case Tabular::UNSET_BOOKTABS:
 		tabular.setBookTabs(false);
 		break;
 
-	case LyXTabular::SET_TOP_SPACE: {
+	case Tabular::SET_TOP_SPACE: {
 		LyXLength len;
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
@@ -1739,7 +4439,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::SET_BOTTOM_SPACE: {
+	case Tabular::SET_BOTTOM_SPACE: {
 		LyXLength len;
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
@@ -1757,7 +4457,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	case LyXTabular::SET_INTERLINE_SPACE: {
+	case Tabular::SET_INTERLINE_SPACE: {
 		LyXLength len;
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
@@ -1776,7 +4476,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	}
 
 	// dummy stuff just to avoid warnings
-	case LyXTabular::LAST_ACTION:
+	case Tabular::LAST_ACTION:
 		break;
 	}
 }
@@ -1804,7 +4504,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 	col_type cs, ce;
 	getSelection(cur, rs, re, cs, ce);
 
-	paste_tabular.reset(new LyXTabular(tabular));
+	paste_tabular.reset(new Tabular(tabular));
 
 	for (row_type i = 0; i < rs; ++i)
 		paste_tabular->deleteRow(0);
@@ -2004,13 +4704,13 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 		++p;
 	}
 	maxCols = max(cols, maxCols);
-	LyXTabular * loctab;
+	Tabular * loctab;
 	idx_type cell = 0;
 	col_type ocol = 0;
 	row_type row = 0;
 	if (usePaste) {
 		paste_tabular.reset(
-			new LyXTabular(buffer.params(), rows, maxCols));
+			new Tabular(buffer.params(), rows, maxCols));
 		loctab = paste_tabular.get();
 		cols = 0;
 		dirtyTabularStack(true);
