@@ -2518,8 +2518,16 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 	if (!Encodings::is_arabic(c))
 		return c;
 
-	value_type const prev_char = pos > 0 ? getChar(pos - 1) : ' ';
+	value_type prev_char = ' ';
 	value_type next_char = ' ';
+
+	for (pos_type i = pos - 1; i >= 0; --i) {
+		value_type const par_char = getChar(i);
+		if (!Encodings::isComposeChar_arabic(par_char)) {
+			prev_char = par_char;
+			break;
+		}
+	}
 
 	for (pos_type i = pos + 1, end = size(); i < end; ++i) {
 		value_type const par_char = getChar(i);
