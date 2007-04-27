@@ -10,6 +10,7 @@ src/Exporter.cpp
 src/Format.cpp
 src/ISpell.cpp
 src/Importer.cpp
+src/KeySequence.cpp
 src/LaTeX.cpp
 src/LyX.cpp
 src/LyXFont.cpp
@@ -116,7 +117,6 @@ src/insets/InsetVSpace.cpp
 src/insets/InsetWrap.cpp
 src/insets/RenderGraphic.cpp
 src/insets/RenderPreview.cpp
-src/kb_sequence.cpp
 src/lengthcommon.cpp
 src/lyx_cb.cpp
 src/lyxfind.cpp
