@@ -1013,8 +1013,8 @@ src_header_files = Split('''
     InsetIterator.h
     Intl.h
     ISpell.h
-    kb_keymap.h
-    kb_sequence.h
+    KeyMap.h
+    KeySequence.h
     Language.h
     layout.h
     lengthcommon.h
@@ -1119,8 +1119,8 @@ src_pre_files = Split('''
     Importer.cpp
     InsetIterator.cpp
     Intl.cpp
-    kb_keymap.cpp
-    kb_sequence.cpp
+    KeyMap.cpp
+    KeySequence.cpp
     Language.cpp
     lengthcommon.cpp
     lyx_cb.cpp
