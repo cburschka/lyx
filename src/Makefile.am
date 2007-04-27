@@ -148,8 +148,8 @@ lyx_SOURCES = \
 	Intl.h \
 	KeyMap.cpp \
 	KeyMap.h \
-	kb_sequence.cpp \
-	kb_sequence.h \
+	KeySequence.cpp \
+	KeySequence.h \
 	KmodInfo.h \
 	Language.cpp \
 	Language.h \

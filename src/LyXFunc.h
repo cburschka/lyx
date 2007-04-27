@@ -15,7 +15,7 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
-#include "kb_sequence.h"
+#include "KeySequence.h"
 #include "lfuns.h"
 
 #include "support/docstring.h"
@@ -92,9 +92,9 @@ private:
 	char_type encoded_last_key;
 
 	///
-	boost::scoped_ptr<kb_sequence> keyseq;
+	boost::scoped_ptr<KeySequence> keyseq;
 	///
-	boost::scoped_ptr<kb_sequence> cancel_meta_seq;
+	boost::scoped_ptr<KeySequence> cancel_meta_seq;
 	///
 	key_modifier::state meta_fake_bit;
 

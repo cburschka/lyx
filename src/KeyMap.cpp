@@ -16,7 +16,7 @@
 #include "KeyMap.h"
 
 #include "debug.h"
-#include "kb_sequence.h"
+#include "KeySequence.h"
 #include "LyXAction.h"
 #include "Lexer.h"
 
@@ -61,7 +61,7 @@ size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 	       << seq << "' Action `"
 	       << func.action << '\'' << endl;
 
-	kb_sequence k(0, 0);
+	KeySequence k(0, 0);
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos) {
@@ -172,7 +172,7 @@ bool KeyMap::read(string const & bind_file)
 
 FuncRequest const &
 KeyMap::lookup(LyXKeySymPtr key,
-		  key_modifier::state mod, kb_sequence * seq) const
+		  key_modifier::state mod, KeySequence * seq) const
 {
 	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
 
@@ -224,7 +224,7 @@ docstring const KeyMap::print(bool forgui) const
 }
 
 
-void KeyMap::defkey(kb_sequence * seq, FuncRequest const & func, unsigned int r)
+void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 {
 	LyXKeySymPtr code = seq->sequence[r];
 	if (!code->isOK())
@@ -292,12 +292,12 @@ docstring const KeyMap::printbindings(FuncRequest const & func) const
 
 KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func) const
 {
-	return findbindings(func, kb_sequence(0, 0));
+	return findbindings(func, KeySequence(0, 0));
 }
 
 
 KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
-			kb_sequence const & prefix) const
+			KeySequence const & prefix) const
 {
 	Bindings res;
 	if (table.empty()) return res;
@@ -306,13 +306,13 @@ KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
 		if (cit->table.get()) {
-			kb_sequence seq = prefix;
+			KeySequence seq = prefix;
 			seq.addkey(cit->code, cit->mod.first);
 			Bindings res2 =
 				cit->table->findbindings(func, seq);
 			res.insert(res.end(), res2.begin(), res2.end());
 		} else if (cit->func == func) {
-			kb_sequence seq = prefix;
+			KeySequence seq = prefix;
 			seq.addkey(cit->code, cit->mod.first);
 			res.push_back(seq);
 		}

@@ -209,8 +209,8 @@ LyXFunc::LyXFunc()
 
 void LyXFunc::initKeySequences(KeyMap * kb)
 {
-	keyseq.reset(new kb_sequence(kb, kb));
-	cancel_meta_seq.reset(new kb_sequence(kb, kb));
+	keyseq.reset(new KeySequence(kb, kb));
+	cancel_meta_seq.reset(new KeySequence(kb, kb));
 }
 
 

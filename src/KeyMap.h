@@ -29,7 +29,7 @@
 
 namespace lyx {
 
-class kb_sequence;
+class KeySequence;
 
 /// Defines key maps and actions for key sequences
 class KeyMap {
@@ -38,7 +38,7 @@ public:
 	 * Bind a key sequence to an action.
 	 * @return 0 on success, or position in string seq where error
 	 * occurs.
-	 * See kb_sequence::parse for the syntax of the seq string
+	 * See KeySequence::parse for the syntax of the seq string
 	 */
 	size_t bind(std::string const & seq, FuncRequest const & func);
 
@@ -61,10 +61,10 @@ public:
 	 */
 	FuncRequest const &
 	lookup(LyXKeySymPtr key,
-	       key_modifier::state mod, kb_sequence * seq) const;
+	       key_modifier::state mod, KeySequence * seq) const;
 
 	///
-	typedef std::deque<kb_sequence> Bindings;
+	typedef std::deque<KeySequence> Bindings;
 
 	/// Given an action, find all keybindings.
 	Bindings findbindings(FuncRequest const & func) const;
@@ -111,7 +111,7 @@ private:
 	 * Define an action for a key sequence.
 	 * @param r internal recursion level
 	 */
-	void defkey(kb_sequence * seq, FuncRequest const & func,
+	void defkey(KeySequence * seq, FuncRequest const & func,
 		    unsigned int r = 0);
 
 	/**
@@ -120,7 +120,7 @@ private:
 	 * @param prefix a sequence to prepend the results
 	 */
 	Bindings findbindings(FuncRequest const & func,
-			      kb_sequence const & prefix) const;
+			      KeySequence const & prefix) const;
 
 	/// is the table empty ?
 	bool empty() const { return table.empty(); }

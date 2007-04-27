@@ -1,5 +1,5 @@
 /**
- * \file kb_sequence.cpp
+ * \file KeySequence.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "kb_sequence.h"
+#include "KeySequence.h"
 
 #include "gettext.h"
 #include "KeyMap.h"
@@ -29,7 +29,7 @@ using std::string;
 
 
 FuncRequest const &
-kb_sequence::addkey(LyXKeySymPtr key,
+KeySequence::addkey(LyXKeySymPtr key,
 		    key_modifier::state mod, key_modifier::state nmod)
 {
 	// adding a key to a deleted sequence
@@ -52,11 +52,12 @@ kb_sequence::addkey(LyXKeySymPtr key,
 }
 
 
-string::size_type kb_sequence::parse(string const & s)
+size_t KeySequence::parse(string const & s)
 {
-	if (s.empty()) return 1;
+	if (s.empty())
+		return 1;
 
-	string::size_type i = 0;
+	size_t i = 0;
 	key_modifier::state mod = key_modifier::none;
 	key_modifier::state nmod = key_modifier::none;
 
@@ -103,16 +104,15 @@ string::size_type kb_sequence::parse(string const & s)
 			}
 		} else {
 			string tbuf;
-			string::size_type j = i;
+			size_t j = i;
 			for (; j < s.length() && s[j] != ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 
 			LyXKeySymPtr key(LyXKeySymFactory::create());
 			key->init(tbuf);
 
-			if ( ! key->isOK() ) {
+			if (!key->isOK())
 				return j;
-			}
 
 			i = j;
 
@@ -130,25 +130,23 @@ string::size_type kb_sequence::parse(string const & s)
 }
 
 
-docstring const kb_sequence::print(bool forgui) const
+docstring const KeySequence::print(bool forgui) const
 {
 	docstring buf;
 
-	const KeySequence::size_type length = sequence.size();
+	size_t const length = sequence.size();
 
-	for (KeySequence::size_type i = 0; i < length; ++i) {
+	for (size_t i = 0; i < length; ++i) {
 		buf += sequence[i]->print(modifiers[i].first, forgui);
-
 		// append a blank
-		if (i + 1 < length) {
+		if (i + 1 < length)
 			buf += ' ';
-		}
 	}
 	return buf;
 }
 
 
-docstring const kb_sequence::printOptions(bool forgui) const
+docstring const KeySequence::printOptions(bool forgui) const
 {
 	docstring buf;
 
@@ -163,19 +161,19 @@ docstring const kb_sequence::printOptions(bool forgui) const
 }
 
 
-void kb_sequence::mark_deleted()
+void KeySequence::mark_deleted()
 {
 	deleted_ = true;
 }
 
 
-void kb_sequence::reset()
+void KeySequence::reset()
 {
 	mark_deleted();
 	curmap = stdmap;
 }
 
-void kb_sequence::clear()
+void KeySequence::clear()
 {
 	sequence.clear();
 	reset();

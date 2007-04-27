@@ -1,6 +1,6 @@
-// -*- C++ -*-
+// -*- C++ -*-
 /**
- * \file kb_sequence.h
+ * \file KeySequence.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -26,14 +26,14 @@ class KeyMap;
 class FuncRequest;
 
 /// Holds a key sequence and the current and standard keymaps
-class kb_sequence {
+class KeySequence {
 public:
-	typedef std::vector<LyXKeySymPtr> KeySequence;
+	typedef std::vector<LyXKeySymPtr> Sequence;
 
 	friend class KeyMap;
 
 	///
-	kb_sequence(KeyMap * std, KeyMap * cur)
+	KeySequence(KeyMap * std, KeyMap * cur)
 		: stdmap(std), curmap(cur), deleted_(false) {}
 
 	/**
@@ -59,7 +59,7 @@ public:
 	 * Prefixes can also be ignored by using the Tilde "~"
 	 * f.ex.: "~S-Space".
 	 */
-	std::string::size_type parse(std::string const & s);
+	size_t parse(std::string const & s);
 
 	/**
 	 * Return the current sequence as a string.
@@ -86,14 +86,10 @@ public:
 	/// clear in full
 	void clear();
 
-	bool deleted() const {
-		return deleted_;
-	}
+	bool deleted() const { return deleted_; }
 
 	/// length of sequence
-	KeySequence::size_type length() const {
-		return sequence.size();
-	}
+	size_t length() const { return sequence.size(); }
 
 	/// Keymap to use if a new sequence is starting
 	KeyMap * stdmap;
@@ -106,7 +102,7 @@ private:
 	 * Array holding the current key sequence as KeySyms.
 	 * If sequence[length - 1] < 0xff it can be used as ISO8859 char
 	 */
-	KeySequence sequence;
+	Sequence sequence;
 
 	typedef std::pair<key_modifier::state, key_modifier::state>
 		modifier_pair;
