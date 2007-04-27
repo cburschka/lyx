@@ -1,5 +1,5 @@
 /**
- * \file QLyXKeySym.cpp
+ * \file QKeySymbol.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "QLyXKeySym.h"
+#include "QKeySymbol.h"
 #include "qlkey.h"
 #include "qt_helpers.h"
 
@@ -78,13 +78,13 @@ char const encode(string const & encoding, QString const & str)
 }
 
 
-QLyXKeySym::QLyXKeySym()
-	: LyXKeySym(), key_(0)
+QKeySymbol::QKeySymbol()
+	: KeySymbol(), key_(0)
 {
 }
 
 
-void QLyXKeySym::set(QKeyEvent * ev)
+void QKeySymbol::set(QKeyEvent * ev)
 {
 	key_ = ev->key();
 	if (ev->text().isNull()) {
@@ -97,7 +97,7 @@ void QLyXKeySym::set(QKeyEvent * ev)
 }
 
 
-void QLyXKeySym::init(string const & symbolname)
+void QKeySymbol::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
 	text_ = toqstr(symbolname);
@@ -105,7 +105,7 @@ void QLyXKeySym::init(string const & symbolname)
 }
 
 
-bool QLyXKeySym::isOK() const
+bool QKeySymbol::isOK() const
 {
 	bool const ok(!(text_.isEmpty() && key_ == Qt::Key_unknown));
 	LYXERR(Debug::KEY) << "isOK is " << ok << endl;
@@ -113,7 +113,7 @@ bool QLyXKeySym::isOK() const
 }
 
 
-bool QLyXKeySym::isModifier() const
+bool QKeySymbol::isModifier() const
 {
 	bool const mod(q_is_modifier(key_));
 	LYXERR(Debug::KEY) << "isMod is " << mod << endl;
@@ -121,7 +121,7 @@ bool QLyXKeySym::isModifier() const
 }
 
 
-string QLyXKeySym::getSymbolName() const
+string QKeySymbol::getSymbolName() const
 {
 	string sym(qkey_to_string(key_));
 
@@ -133,7 +133,7 @@ string QLyXKeySym::getSymbolName() const
 }
 
 
-char_type QLyXKeySym::getUCSEncoded() const
+char_type QKeySymbol::getUCSEncoded() const
 {
 	if (text_.isEmpty())
 		return 0;
@@ -143,7 +143,7 @@ char_type QLyXKeySym::getUCSEncoded() const
 
 	if (lyxerr.debugging() && text_.size() > 1) {
 		// We don't know yet how well support the full ucs4 range.
-		LYXERR(Debug::KEY) << "QLyXKeySym::getUCSEncoded()" << endl;
+		LYXERR(Debug::KEY) << "QKeySymbol::getUCSEncoded()" << endl;
 		for (int i = 0; i < text_.size(); ++i) {
 			LYXERR(Debug::KEY) << "char " << i << ": "
 				<< text_[i].unicode() << endl;
@@ -156,7 +156,7 @@ char_type QLyXKeySym::getUCSEncoded() const
 }
 
 
-docstring const QLyXKeySym::print(key_modifier::state mod, bool forgui) const
+docstring const QKeySymbol::print(key_modifier::state mod, bool forgui) const
 {
 	int tmpkey = key_;
 
@@ -174,7 +174,7 @@ docstring const QLyXKeySym::print(key_modifier::state mod, bool forgui) const
 }
 
 
-bool QLyXKeySym::isText() const
+bool QKeySymbol::isText() const
 {
 	if (text_.isEmpty()) {
 		LYXERR(Debug::KEY) << "text_ empty, isText() == false" << endl;
@@ -185,9 +185,9 @@ bool QLyXKeySym::isText() const
 }
 
 
-bool QLyXKeySym::operator==(LyXKeySym const & ks) const
+bool QKeySymbol::operator==(KeySymbol const & ks) const
 {
-	QLyXKeySym const & qks = static_cast<QLyXKeySym const &>(ks);
+	QKeySymbol const & qks = static_cast<QKeySymbol const &>(ks);
 
 	// we do not have enough info for a fair comparison, so return
 	// false. This works out OK because unknown text from Qt will

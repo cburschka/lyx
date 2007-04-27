@@ -20,7 +20,7 @@
 #include "LyXAction.h"
 #include "Lexer.h"
 
-#include "frontends/LyXKeySym.h"
+#include "frontends/KeySymbol.h"
 
 #include "support/filetools.h"
 
@@ -36,7 +36,7 @@ using std::endl;
 using std::string;
 
 
-string const KeyMap::printKeySym(LyXKeySym const & key,
+string const KeyMap::printKeySym(KeySymbol const & key,
 				    key_modifier::state mod)
 {
 	string buf;
@@ -171,7 +171,7 @@ bool KeyMap::read(string const & bind_file)
 
 
 FuncRequest const &
-KeyMap::lookup(LyXKeySymPtr key,
+KeyMap::lookup(KeySymbolPtr key,
 		  key_modifier::state mod, KeySequence * seq) const
 {
 	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
@@ -226,7 +226,7 @@ docstring const KeyMap::print(bool forgui) const
 
 void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 {
-	LyXKeySymPtr code = seq->sequence[r];
+	KeySymbolPtr code = seq->sequence[r];
 	if (!code->isOK())
 		return;
 
@@ -322,7 +322,7 @@ KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
 }
 
 
-std::pair<LyXKeySym const *, key_modifier::state>
+std::pair<KeySymbol const *, key_modifier::state>
 KeyMap::find1keybinding(FuncRequest const & func) const
 {
 	Table::const_iterator end = table.end();
@@ -332,7 +332,7 @@ KeyMap::find1keybinding(FuncRequest const & func) const
 			return std::make_pair(cit->code.get(), cit->mod.first);
 	}
 
-	return std::make_pair<LyXKeySym const *, key_modifier::state>(0, key_modifier::none);
+	return std::make_pair<KeySymbol const *, key_modifier::state>(0, key_modifier::none);
 }
 
 

@@ -17,7 +17,7 @@
 #include "FuncRequest.h"
 
 #include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
+#include "frontends/KeySymbol.h"
 
 #include "support/docstream.h"
 
@@ -60,7 +60,7 @@ public:
 	 * @return the action / LFUN_COMMAND_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
-	lookup(LyXKeySymPtr key,
+	lookup(KeySymbolPtr key,
 	       key_modifier::state mod, KeySequence * seq) const;
 
 	///
@@ -74,10 +74,10 @@ public:
 
 	/**
 	 *  Given an action, find the first 1-key binding (if it exists).
-	 *  The LyXKeySym pointer is 0 is no key is found.
+	 *  The KeySymbol pointer is 0 is no key is found.
 	 *  [only used by the Qt/Mac frontend]
 	 */
-	std::pair<LyXKeySym const *, key_modifier::state>
+	std::pair<KeySymbol const *, key_modifier::state>
 	find1keybinding(FuncRequest const & func) const;
 
 
@@ -86,7 +86,7 @@ public:
 	 * @param key the key as a keysym
 	 * @param mod the modifiers
 	 */
-	static std::string const printKeySym(LyXKeySym const & key,
+	static std::string const printKeySym(KeySymbol const & key,
 					     key_modifier::state mod);
 
 	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
@@ -95,7 +95,7 @@ private:
 	///
 	struct Key {
 		/// Keysym
-		LyXKeySymPtr code;
+		KeySymbolPtr code;
 
 		/// Modifier masks
 		modifier_pair mod;

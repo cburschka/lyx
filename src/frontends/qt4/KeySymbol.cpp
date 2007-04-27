@@ -1,5 +1,5 @@
 /**
- * \file qt4/LyXKeySymFactory.cpp
+ * \file qt4/KeySymbolFactory.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,21 +10,15 @@
 
 #include <config.h>
 
-#include "frontends/LyXKeySymFactory.h"
+#include "frontends/KeySymbol.h"
 
-#include "QLyXKeySym.h"
-
+#include "QKeySymbol.h"
 
 namespace lyx {
 
-namespace LyXKeySymFactory {
-
-LyXKeySym * create()
+KeySymbol * createKeySymbol()
 {
-	return new QLyXKeySym;
+	return new QKeySymbol;
 }
-
-} // namespace LyXKeySymFactory
-
 
 } // namespace lyx

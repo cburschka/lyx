@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QLyXKeySym.h
+ * \file QKeySymbol.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 #ifndef QLYXKEYSYM_H
 #define QLYXKEYSYM_H
 
-#include "frontends/LyXKeySym.h"
+#include "frontends/KeySymbol.h"
 
 #include <QString>
 #include <QKeyEvent>
@@ -28,16 +28,16 @@ namespace lyx {
  *
  * This is some really sick stuff.
  */
-class QLyXKeySym : public LyXKeySym {
+class QKeySymbol : public KeySymbol {
 public:
-	QLyXKeySym();
+	QKeySymbol();
 
-	virtual ~QLyXKeySym() {}
+	virtual ~QKeySymbol() {}
 
 	/// .
 	/// inlined out because of profiling results under linux when
 	/// opening a document.
-	inline bool operator==(LyXKeySym const& ks) const;
+	inline bool operator==(KeySymbol const& ks) const;
 
 	/// delayed constructor
 	void set(QKeyEvent * ev);
@@ -59,7 +59,7 @@ public:
 
 	/**
 	 * Return the value of the keysym into the UCS-4 encoding.
-	 * This converts the LyXKeySym to a 32-bit encoded character.
+	 * This converts the KeySymbol to a 32-bit encoded character.
 	 */
 	virtual char_type getUCSEncoded() const;
 

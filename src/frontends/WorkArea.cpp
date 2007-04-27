@@ -165,7 +165,7 @@ void WorkArea::redraw()
 }
 
 
-void WorkArea::processKeySym(LyXKeySymPtr key, key_modifier::state state)
+void WorkArea::processKeySym(KeySymbolPtr key, key_modifier::state state)
 {
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.

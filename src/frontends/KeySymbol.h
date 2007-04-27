@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXKeySym.h
+ * \file KeySymbol.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXKEYSYM_H
-#define LYXKEYSYM_H
+#ifndef KEYSYMBOL_H
+#define KEYSYMBOL_H
 
 #include <string>
 
@@ -29,14 +29,14 @@ namespace lyx {
  * the functionality that LyX needs in regards to
  * key presses.
  */
-class LyXKeySym {
+class KeySymbol {
 public:
-	LyXKeySym() {}
+	KeySymbol() {}
 
-	virtual ~LyXKeySym() {}
+	virtual ~KeySymbol() {}
 
 	///
-	virtual bool operator==(LyXKeySym const& ks) const = 0;
+	virtual bool operator==(KeySymbol const& ks) const = 0;
 
 	/// Initialize with the name of a key. F. ex. "space" or "a"
 	virtual void init(std::string const & symbolname) = 0;
@@ -55,7 +55,7 @@ public:
 
 	/**
 	 * Return the value of the keysym into the UCS-4 encoding.
-	 * This converts the LyXKeySym to a 32-bit encoded character.
+	 * This converts the KeySymbol to a 32-bit encoded character.
 	 */
 	virtual char_type getUCSEncoded() const = 0;
 
@@ -67,7 +67,14 @@ public:
 };
 
 
-typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
+typedef boost::shared_ptr<KeySymbol> KeySymbolPtr;
+
+
+/**
+ * Make a KeySymbol. Used because we want to
+ * generate a toolkit-specific instance.
+ */
+KeySymbol * createKeySymbol();
 
 
 } // namespace lyx

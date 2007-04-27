@@ -15,7 +15,7 @@
 #define BASE_WORKAREA_H
 
 #include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
+#include "frontends/KeySymbol.h"
 #include "frontends/Timeout.h"
 
 #include "support/docstring.h"
@@ -93,7 +93,7 @@ public:
 
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
-	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
+	void processKeySym(KeySymbolPtr key, key_modifier::state state);
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;

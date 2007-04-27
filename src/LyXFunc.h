@@ -28,7 +28,7 @@ namespace lyx {
 class BufferView;
 class FuncRequest;
 class FuncStatus;
-class LyXKeySym;
+class KeySymbol;
 class LyXText;
 class LyXView;
 
@@ -57,7 +57,7 @@ public:
 	docstring const viewStatusMessage();
 
 	///
-	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
+	void processKeySym(KeySymbolPtr key, key_modifier::state state);
 
 	///
 	FuncStatus getStatus(FuncRequest const & action) const;

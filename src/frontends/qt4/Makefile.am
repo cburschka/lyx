@@ -39,7 +39,7 @@ libqt4_la_SOURCES = \
 	GuiFontLoader.h GuiFontLoader.cpp \
 	GuiFontMetrics.h GuiFontMetrics.cpp \
 	GuiSelection.h GuiSelection.cpp \
-	LyXKeySymFactory.cpp \
+	KeySymbol.cpp \
 	QLMenubar.cpp QLMenubar.h \
 	QBox.cpp QBox.h \
 	QBranches.cpp QBranches.h \
@@ -50,7 +50,7 @@ libqt4_la_SOURCES = \
 	QLImage.cpp QLImage.h \
 	QViewSource.cpp QViewSource.h \
 	QLPainter.cpp QLPainter.h \
-	QLyXKeySym.cpp QLyXKeySym.h \
+	QKeySymbol.cpp QKeySymbol.h \
 	QPrint.cpp QPrint.h \
 	Qt2BC.cpp	Qt2BC.h	\
 	CheckedLineEdit.cpp CheckedLineEdit.h \

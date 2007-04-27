@@ -80,7 +80,7 @@
 #include "frontends/FileDialog.h"
 #include "frontends/FontLoader.h"
 #include "frontends/Gui.h"
-#include "frontends/LyXKeySym.h"
+#include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
 #include "frontends/Toolbars.h"
@@ -275,7 +275,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 }
 
 
-void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
+void LyXFunc::processKeySym(KeySymbolPtr keysym, key_modifier::state state)
 {
 	LYXERR(Debug::KEY) << "KeySym is " << keysym->getSymbolName() << endl;
 

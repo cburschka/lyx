@@ -17,7 +17,7 @@
 
 #include "GuiImplementation.h"
 #include "GuiWorkArea.h"
-#include "QLyXKeySym.h"
+#include "QKeySymbol.h"
 #include "QLMenubar.h"
 #include "QLToolbar.h"
 #include "QCommandBuffer.h"
@@ -650,7 +650,7 @@ bool GuiView::event(QEvent * e)
 	if (e->type() == QEvent::ShortcutOverride) {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
-			boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+			boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
 			sym->set(ke);
 			BOOST_ASSERT(work_area_);
 			work_area_->processKeySym(sym, key_modifier::none);

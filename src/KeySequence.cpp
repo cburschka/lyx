@@ -18,8 +18,7 @@
 #include "KeyMap.h"
 #include "lfuns.h"
 
-#include "frontends/LyXKeySym.h"
-#include "frontends/LyXKeySymFactory.h"
+#include "frontends/KeySymbol.h"
 
 
 namespace lyx {
@@ -29,7 +28,7 @@ using std::string;
 
 
 FuncRequest const &
-KeySequence::addkey(LyXKeySymPtr key,
+KeySequence::addkey(KeySymbolPtr key,
 		    key_modifier::state mod, key_modifier::state nmod)
 {
 	// adding a key to a deleted sequence
@@ -108,7 +107,7 @@ size_t KeySequence::parse(string const & s)
 			for (; j < s.length() && s[j] != ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 
-			LyXKeySymPtr key(LyXKeySymFactory::create());
+			KeySymbolPtr key(createKeySymbol());
 			key->init(tbuf);
 
 			if (!key->isOK())

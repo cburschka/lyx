@@ -14,7 +14,7 @@
 #define KB_SEQUENCE_H
 
 #include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
+#include "frontends/KeySymbol.h"
 
 #include <string>
 #include <vector>
@@ -28,7 +28,7 @@ class FuncRequest;
 /// Holds a key sequence and the current and standard keymaps
 class KeySequence {
 public:
-	typedef std::vector<LyXKeySymPtr> Sequence;
+	typedef std::vector<KeySymbolPtr> Sequence;
 
 	friend class KeyMap;
 
@@ -45,7 +45,7 @@ public:
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
-	addkey(LyXKeySymPtr keysym, key_modifier::state mod,
+	addkey(KeySymbolPtr keysym, key_modifier::state mod,
 	       key_modifier::state nmod = key_modifier::none);
 
 	/**

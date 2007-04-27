@@ -15,7 +15,7 @@
 
 #include "GuiApplication.h"
 #include "QLPainter.h"
-#include "QLyXKeySym.h"
+#include "QKeySymbol.h"
 #include "qt_helpers.h"
 
 #include "LyXView.h"
@@ -421,7 +421,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 		<< " key=" << e->key()
 		<< endl;
 
-	boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+	boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
 	sym->set(e);
 	processKeySym(sym, q_key_state(e->modifiers()));
 }
