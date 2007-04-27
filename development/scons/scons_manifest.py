@@ -439,8 +439,7 @@ src_frontends_header_files = Split('''
     FontLoader.h
     FontMetrics.h
     Gui.h
-    LyXKeySym.h
-    LyXKeySymFactory.h
+    KeySymbol.h
     LyXView.h
     Menubar.h
     Painter.h
@@ -778,7 +777,7 @@ src_frontends_qt4_header_files = Split('''
     QLPrintDialog.h
     QLToolbar.h
     QLog.h
-    QLyXKeySym.h
+    QKeySymbol.h
     QMathMatrixDialog.h
     QNomencl.h
     QNote.h
@@ -836,7 +835,6 @@ src_frontends_qt4_files = Split('''
     GuiView.cpp
     GuiWorkArea.cpp
     InsertTableWidget.cpp
-    LyXKeySymFactory.cpp
     QAbout.cpp
     QBibitem.cpp
     QBibtex.cpp
@@ -868,7 +866,7 @@ src_frontends_qt4_files = Split('''
     QLPrintDialog.cpp
     QLToolbar.cpp
     QLog.cpp
-    QLyXKeySym.cpp
+    QKeySymbol.cpp
     QMathMatrixDialog.cpp
     QNomencl.cpp
     QNote.cpp
