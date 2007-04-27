@@ -835,6 +835,7 @@ src_frontends_qt4_files = Split('''
     GuiView.cpp
     GuiWorkArea.cpp
     InsertTableWidget.cpp
+    KeySymbol.cpp
     QAbout.cpp
     QBibitem.cpp
     QBibtex.cpp
@@ -857,6 +858,7 @@ src_frontends_qt4_files = Split('''
     QFloatDialog.cpp
     QGraphics.cpp
     QGraphicsDialog.cpp
+    QKeySymbol.cpp
     QInclude.cpp
     QIndex.cpp
     QLImage.cpp
@@ -866,7 +868,6 @@ src_frontends_qt4_files = Split('''
     QLPrintDialog.cpp
     QLToolbar.cpp
     QLog.cpp
-    QKeySymbol.cpp
     QMathMatrixDialog.cpp
     QNomencl.cpp
     QNote.cpp
