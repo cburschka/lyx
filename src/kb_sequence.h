@@ -22,7 +22,7 @@
 
 namespace lyx {
 
-class kb_keymap;
+class KeyMap;
 class FuncRequest;
 
 /// Holds a key sequence and the current and standard keymaps
@@ -30,10 +30,10 @@ class kb_sequence {
 public:
 	typedef std::vector<LyXKeySymPtr> KeySequence;
 
-	friend class kb_keymap;
+	friend class KeyMap;
 
 	///
-	kb_sequence(kb_keymap * std, kb_keymap * cur)
+	kb_sequence(KeyMap * std, KeyMap * cur)
 		: stdmap(std), curmap(cur), deleted_(false) {}
 
 	/**
@@ -96,10 +96,10 @@ public:
 	}
 
 	/// Keymap to use if a new sequence is starting
-	kb_keymap * stdmap;
+	KeyMap * stdmap;
 
 	/// Keymap to use for the next key
-	kb_keymap * curmap;
+	KeyMap * curmap;
 
 private:
 	/**

@@ -1,5 +1,5 @@
 /**
- * \file kb_keymap.cpp
+ * \file KeyMap.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "kb_keymap.h"
+#include "KeyMap.h"
 
 #include "debug.h"
 #include "kb_sequence.h"
@@ -36,7 +36,7 @@ using std::endl;
 using std::string;
 
 
-string const kb_keymap::printKeySym(LyXKeySym const & key,
+string const KeyMap::printKeySym(LyXKeySym const & key,
 				    key_modifier::state mod)
 {
 	string buf;
@@ -55,7 +55,7 @@ string const kb_keymap::printKeySym(LyXKeySym const & key,
 }
 
 
-string::size_type kb_keymap::bind(string const & seq, FuncRequest const & func)
+size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 {
 	LYXERR(Debug::KBMAP) << "BIND: Sequence `"
 	       << seq << "' Action `"
@@ -91,7 +91,7 @@ keyword_item bindTags[] = {
 }
 
 
-bool kb_keymap::read(string const & bind_file)
+bool KeyMap::read(string const & bind_file)
 {
 	const int bindCount = sizeof(bindTags) / sizeof(keyword_item);
 
@@ -102,7 +102,7 @@ bool kb_keymap::read(string const & bind_file)
 	FileName const tmp(i18nLibFileSearch("bind", bind_file, "bind"));
 	lexrc.setFile(tmp);
 	if (!lexrc.isOK()) {
-		lyxerr << "kb_keymap::read: cannot open bind file:"
+		lyxerr << "KeyMap::read: cannot open bind file:"
 		       << tmp << endl;
 		return false;
 	}
@@ -164,14 +164,14 @@ bool kb_keymap::read(string const & bind_file)
 	}
 
 	if (error)
-		lyxerr << "kb_keymap::read: error while reading bind file:"
+		lyxerr << "KeyMap::read: error while reading bind file:"
 		       << tmp << endl;
 	return !error;
 }
 
 
 FuncRequest const &
-kb_keymap::lookup(LyXKeySymPtr key,
+KeyMap::lookup(LyXKeySymPtr key,
 		  key_modifier::state mod, kb_sequence * seq) const
 {
 	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
@@ -212,7 +212,7 @@ kb_keymap::lookup(LyXKeySymPtr key,
 }
 
 
-docstring const kb_keymap::print(bool forgui) const
+docstring const KeyMap::print(bool forgui) const
 {
 	docstring buf;
 	Table::const_iterator end = table.end();
@@ -224,8 +224,7 @@ docstring const kb_keymap::print(bool forgui) const
 }
 
 
-void kb_keymap::defkey(kb_sequence * seq,
-		       FuncRequest const & func, unsigned int r)
+void KeyMap::defkey(kb_sequence * seq, FuncRequest const & func, unsigned int r)
 {
 	LyXKeySymPtr code = seq->sequence[r];
 	if (!code->isOK())
@@ -266,7 +265,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 		}
 	}
 
-	Table::iterator newone = table.insert(table.end(), kb_key());
+	Table::iterator newone = table.insert(table.end(), Key());
 	newone->code = code;
 	newone->mod = seq->modifiers[r];
 	if (r + 1 == seq->length()) {
@@ -274,13 +273,13 @@ void kb_keymap::defkey(kb_sequence * seq,
 		newone->func.origin = FuncRequest::KEYBOARD;
 		newone->table.reset();
 	} else {
-		newone->table.reset(new kb_keymap);
+		newone->table.reset(new KeyMap);
 		newone->table->defkey(seq, func, r + 1);
 	}
 }
 
 
-docstring const kb_keymap::printbindings(FuncRequest const & func) const
+docstring const KeyMap::printbindings(FuncRequest const & func) const
 {
 	odocstringstream res;
 	Bindings bindings = findbindings(func);
@@ -291,15 +290,13 @@ docstring const kb_keymap::printbindings(FuncRequest const & func) const
 }
 
 
-kb_keymap::Bindings
-kb_keymap::findbindings(FuncRequest const & func) const
+KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func) const
 {
 	return findbindings(func, kb_sequence(0, 0));
 }
 
 
-kb_keymap::Bindings
-kb_keymap::findbindings(FuncRequest const & func,
+KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
 			kb_sequence const & prefix) const
 {
 	Bindings res;
@@ -326,7 +323,7 @@ kb_keymap::findbindings(FuncRequest const & func,
 
 
 std::pair<LyXKeySym const *, key_modifier::state>
-kb_keymap::find1keybinding(FuncRequest const & func) const
+KeyMap::find1keybinding(FuncRequest const & func) const
 {
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin();

@@ -51,7 +51,7 @@ public:
 	void setLyXView(LyXView * lv);
 
 	///
-	void initKeySequences(kb_keymap * kb);
+	void initKeySequences(KeyMap * kb);
 
 	/// return the status bar state string
 	docstring const viewStatusMessage();

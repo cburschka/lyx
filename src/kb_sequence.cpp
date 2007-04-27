@@ -15,7 +15,7 @@
 #include "kb_sequence.h"
 
 #include "gettext.h"
-#include "kb_keymap.h"
+#include "KeyMap.h"
 #include "lfuns.h"
 
 #include "frontends/LyXKeySym.h"

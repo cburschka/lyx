@@ -34,7 +34,7 @@ class Messages;
 class Mover;
 class Movers;
 class Session;
-class kb_keymap;
+class KeyMap;
 
 extern bool use_gui;
 
@@ -77,8 +77,8 @@ public:
 	frontend::Application const & application() const;
 
 	///
-	kb_keymap & topLevelKeymap();
-	kb_keymap const & topLevelKeymap() const;
+	KeyMap & topLevelKeymap();
+	KeyMap const & topLevelKeymap() const;
 	
 	///
 	Converters & converters();
@@ -130,9 +130,9 @@ private:
 	/// initial LyX set up
 	bool init();
 	/// set up the default key bindings
-	void defaultKeyBindings(kb_keymap * kbmap);
+	void defaultKeyBindings(KeyMap * kbmap);
 	/// set up the default dead key bindings if requested
-	void deadKeyBindings(kb_keymap * kbmap);
+	void deadKeyBindings(KeyMap * kbmap);
 	/** Check for the existence of the user's support directory and,
 	 *  if not present, create it. Exits the program if the directory
 	 *  cannot be created.

@@ -1,6 +1,6 @@
-// -*- C++ -*-
+// -*- C++ -*-
 /**
- * \file kb_keymap.h
+ * \file KeyMap.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef KB_KEYMAP_H
-#define KB_KEYMAP_H
+#ifndef KEYMAP_H
+#define KEYMAP_H
 
 #include "FuncRequest.h"
 
@@ -32,7 +32,7 @@ namespace lyx {
 class kb_sequence;
 
 /// Defines key maps and actions for key sequences
-class kb_keymap {
+class KeyMap {
 public:
 	/**
 	 * Bind a key sequence to an action.
@@ -40,7 +40,7 @@ public:
 	 * occurs.
 	 * See kb_sequence::parse for the syntax of the seq string
 	 */
-	std::string::size_type bind(std::string const & seq, FuncRequest const & func);
+	size_t bind(std::string const & seq, FuncRequest const & func);
 
 	// Parse a bind file
 	bool read(std::string const & bind_file);
@@ -93,7 +93,7 @@ public:
 
 private:
 	///
-	struct kb_key {
+	struct Key {
 		/// Keysym
 		LyXKeySymPtr code;
 
@@ -101,7 +101,7 @@ private:
 		modifier_pair mod;
 
 		/// Keymap for prefix keys
-		boost::shared_ptr<kb_keymap> table;
+		boost::shared_ptr<KeyMap> table;
 
 		/// Action for !prefix keys
 		FuncRequest func;
@@ -123,19 +123,17 @@ private:
 			      kb_sequence const & prefix) const;
 
 	/// is the table empty ?
-	bool empty() const {
-		return table.empty();
-	}
+	bool empty() const { return table.empty(); }
 	///
-	typedef std::vector<kb_key> Table;
+	typedef std::vector<Key> Table;
 	///
 	Table table;
 };
 
 /// Implementation is in LyX.cpp
-extern kb_keymap & theTopLevelKeymap();
+extern KeyMap & theTopLevelKeymap();
 
 
 } // namespace lyx
 
-#endif // KB_KEYMAP_H
+#endif // KEYMAP_H

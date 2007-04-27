@@ -42,7 +42,7 @@
 #include "Importer.h"
 #include "InsetIterator.h"
 #include "Intl.h"
-#include "kb_keymap.h"
+#include "KeyMap.h"
 #include "Language.h"
 #include "Color.h"
 #include "Session.h"
@@ -207,7 +207,7 @@ LyXFunc::LyXFunc()
 }
 
 
-void LyXFunc::initKeySequences(kb_keymap * kb)
+void LyXFunc::initKeySequences(KeyMap * kb)
 {
 	keyseq.reset(new kb_sequence(kb, kb));
 	cancel_meta_seq.reset(new kb_sequence(kb, kb));

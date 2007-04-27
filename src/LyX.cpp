@@ -27,7 +27,7 @@
 #include "ErrorList.h"
 #include "Format.h"
 #include "gettext.h"
-#include "kb_keymap.h"
+#include "KeyMap.h"
 #include "Language.h"
 #include "Session.h"
 #include "Color.h"
@@ -161,7 +161,7 @@ struct LyX::Singletons
 	///
 	BufferList buffer_list_;
 	///
-	boost::scoped_ptr<kb_keymap> toplevel_keymap_;
+	boost::scoped_ptr<KeyMap> toplevel_keymap_;
 	///
 	boost::scoped_ptr<LyXServer> lyx_server_;
 	///
@@ -307,7 +307,7 @@ frontend::Application const & LyX::application() const
 }
 
 
-kb_keymap & LyX::topLevelKeymap()
+KeyMap & LyX::topLevelKeymap()
 {
 	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
 	return *pimpl_->toplevel_keymap_.get();
@@ -326,7 +326,7 @@ Converters & LyX::systemConverters()
 }
 
 
-kb_keymap const & LyX::topLevelKeymap() const
+KeyMap const & LyX::topLevelKeymap() const
 {
 	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
 	return *pimpl_->toplevel_keymap_.get();
@@ -885,7 +885,7 @@ bool LyX::init()
 		//setGuiLanguage(lyxrc.gui_language);
 
 		// Set up bindings
-		pimpl_->toplevel_keymap_.reset(new kb_keymap);
+		pimpl_->toplevel_keymap_.reset(new KeyMap);
 		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
 		pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
 
@@ -938,7 +938,7 @@ bool LyX::init()
 }
 
 
-void LyX::defaultKeyBindings(kb_keymap  * kbmap)
+void LyX::defaultKeyBindings(KeyMap  * kbmap)
 {
 	kbmap->bind("Right", FuncRequest(LFUN_CHAR_FORWARD));
 	kbmap->bind("Left", FuncRequest(LFUN_CHAR_BACKWARD));
@@ -1007,7 +1007,7 @@ void LyX::emergencyCleanup() const
 }
 
 
-void LyX::deadKeyBindings(kb_keymap * kbmap)
+void LyX::deadKeyBindings(KeyMap * kbmap)
 {
 	// bindKeyings for transparent handling of deadkeys
 	// The keysyms are gotten from XFree86 X11R6
@@ -1480,7 +1480,7 @@ LyXServerSocket & theLyXServerSocket()
 }
 
 
-kb_keymap & theTopLevelKeymap()
+KeyMap & theTopLevelKeymap()
 {
 	BOOST_ASSERT(use_gui);
 	return LyX::ref().topLevelKeymap();

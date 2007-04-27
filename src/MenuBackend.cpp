@@ -29,7 +29,7 @@
 #include "Format.h"
 #include "gettext.h"
 #include "Importer.h"
-#include "kb_keymap.h"
+#include "KeyMap.h"
 #include "Session.h"
 #include "LyXAction.h"
 #include "LyX.h" // for lastfiles
@@ -139,7 +139,7 @@ docstring const MenuItem::binding(bool forgui) const
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	kb_keymap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
+	KeyMap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
 
 	if (bindings.size()) {
 		return bindings.begin()->print(forgui);
