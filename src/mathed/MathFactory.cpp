@@ -318,7 +318,7 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathKern);
 	if (s.substr(0, 8) == "xymatrix") {
 		char spacing_code = '\0';
-		LyXLength spacing;
+		Length spacing;
 		size_t const len = s.length();
 		size_t i = 8;
 		if (i < len && s[i] == '@') {
@@ -338,7 +338,7 @@ MathAtom createInsetMath(docstring const & s)
 			}
 			if (i < len && s[i] == '=') {
 				++i;
-				spacing = LyXLength(to_ascii(s.substr(i)));
+				spacing = Length(to_ascii(s.substr(i)));
 			}
 		}
 		return MathAtom(new InsetMathXYMatrix(spacing, spacing_code));

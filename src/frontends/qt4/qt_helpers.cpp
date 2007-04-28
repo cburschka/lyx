@@ -71,38 +71,38 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 	if (isValidGlueLength(fromqstr(length)))
 		return fromqstr(length);
 
-	LyXLength::UNIT const unit = combo->currentLengthItem();
+	Length::UNIT const unit = combo->currentLengthItem();
 
-	return LyXLength(length.toDouble(), unit).asString();
+	return Length(length.toDouble(), unit).asString();
 }
 
 
-LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo)
+Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 {
 	QString const length = input->text();
 	if (length.isEmpty())
-		return LyXLength();
+		return Length();
 
 	// don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(fromqstr(length)))
-		return LyXLength(fromqstr(length));
+		return Length(fromqstr(length));
 
-	LyXLength::UNIT const unit = unitFromString(fromqstr(combo->currentText()));
+	Length::UNIT const unit = unitFromString(fromqstr(combo->currentText()));
 
-	return LyXLength(length.toDouble(), unit);
+	return Length(length.toDouble(), unit);
 }
 
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	LyXLength const & len, LyXLength::UNIT defaultUnit) 
+	Length const & len, Length::UNIT defaultUnit) 
 {
-	combo->setCurrentItem(LyXLength(len).unit());
-	input->setText(toqstr(convert<string>(LyXLength(len).value())));
+	combo->setCurrentItem(Length(len).unit());
+	input->setText(toqstr(convert<string>(Length(len).value())));
 }
 
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	string const & len, LyXLength::UNIT defaultUnit)
+	string const & len, Length::UNIT defaultUnit)
 {
 	if (len.empty()) {
 		// no length (UNIT_NONE)
@@ -113,13 +113,13 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		combo->setCurrentItem(defaultUnit);
 		input->setText(toqstr(len));
 	} else {
-		lengthToWidgets(input, combo, LyXLength(len), defaultUnit);
+		lengthToWidgets(input, combo, Length(len), defaultUnit);
 	}
 }
 
 
 void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo, 
-	LyXLength const & len, LyXLength::UNIT defaultUnit)
+	Length const & len, Length::UNIT defaultUnit)
 {
 	if (len.value() == 0) 
 		lengthToWidgets(input, combo, "auto", defaultUnit);

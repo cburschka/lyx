@@ -235,7 +235,7 @@ string const write_attribute(string const & name, Tabular::idx_type const & i)
 
 
 template <>
-string const write_attribute(string const & name, LyXLength const & value)
+string const write_attribute(string const & name, Length const & value)
 {
 	// we write only the value if we really have one same reson as above.
 	return value.zero() ? string() : write_attribute(name, value.asString());
@@ -426,19 +426,19 @@ bool getTokenValue(string const & str, char const * token, bool & flag)
 }
 
 
-bool getTokenValue(string const & str, char const * token, LyXLength & len)
+bool getTokenValue(string const & str, char const * token, Length & len)
 {
 	// set the lenght to be zero() as default as this it should be if not
 	// in the file format.
-	len = LyXLength();
+	len = Length();
 	string tmp;
 	return getTokenValue(str, token, tmp) && isValidLength(tmp, &len);
 }
 
 
-bool getTokenValue(string const & str, char const * token, LyXLength & len, bool & flag)
+bool getTokenValue(string const & str, char const * token, Length & len, bool & flag)
 {
-	len = LyXLength();
+	len = Length();
 	flag = false;
 	string tmp;
 	if (!getTokenValue(str, token, tmp))
@@ -1105,7 +1105,7 @@ void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
 
 
 void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
-		LyXLength const & width)
+		Length const & width)
 {
 	col_type const j = column_of_cell(cell);
 
@@ -1126,7 +1126,7 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 
 
 bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
-		LyXLength const & width)
+		Length const & width)
 {
 	if (!isMultiColumn(cell))
 		return false;
@@ -1216,7 +1216,7 @@ Tabular::getVAlignment(idx_type cell, bool onlycolumn) const
 }
 
 
-LyXLength const Tabular::getPWidth(idx_type cell) const
+Length const Tabular::getPWidth(idx_type cell) const
 {
 	if (isMultiColumn(cell))
 		return cellinfo_of_cell(cell).p_width;
@@ -1224,17 +1224,17 @@ LyXLength const Tabular::getPWidth(idx_type cell) const
 }
 
 
-LyXLength const Tabular::getColumnPWidth(idx_type cell) const
+Length const Tabular::getColumnPWidth(idx_type cell) const
 {
 	return column_info[column_of_cell(cell)].p_width;
 }
 
 
-LyXLength const Tabular::getMColumnPWidth(idx_type cell) const
+Length const Tabular::getMColumnPWidth(idx_type cell) const
 {
 	if (isMultiColumn(cell))
 		return cellinfo_of_cell(cell).p_width;
-	return LyXLength();
+	return Length();
 }
 
 
@@ -2952,7 +2952,7 @@ bool InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 				continue;
 			Dimension dim;
 			MetricsInfo m = mi;
-			LyXLength p_width;
+			Length p_width;
 			if (tabular.cell_info[i][j].multicolumn ==
 			    Tabular::CELL_BEGIN_OF_MULTICOLUMN)
 				p_width = tabular.cellinfo_of_cell(cell).p_width;
@@ -4143,7 +4143,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	switch (feature) {
 
 	case Tabular::SET_PWIDTH: {
-		LyXLength const len(value);
+		Length const len(value);
 		tabular.setColumnPWidth(cur, cur.idx(), len);
 		if (len.zero()
 		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
@@ -4152,7 +4152,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 
 	case Tabular::SET_MPWIDTH:
-		tabular.setMColumnPWidth(cur, cur.idx(), LyXLength(value));
+		tabular.setMColumnPWidth(cur, cur.idx(), Length(value));
 		break;
 
 	case Tabular::SET_SPECIAL_COLUMN:
@@ -4408,7 +4408,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::SET_TOP_SPACE: {
-		LyXLength len;
+		Length len;
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 				tabular.row_info[i].top_space_default = true;
@@ -4426,7 +4426,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 
 	case Tabular::SET_BOTTOM_SPACE: {
-		LyXLength len;
+		Length len;
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 				tabular.row_info[i].bottom_space_default = true;
@@ -4444,7 +4444,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 
 	case Tabular::SET_INTERLINE_SPACE: {
-		LyXLength len;
+		Length len;
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 				tabular.row_info[i].interline_space_default = true;

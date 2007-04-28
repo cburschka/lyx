@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXLength.h
+ * \file Length.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -24,11 +24,17 @@ namespace lyx {
 #undef PC
 #undef SP
 
+/////////////////////////////////////////////////////////////////////
+//
+// Length
+//
+/////////////////////////////////////////////////////////////////////
+
 
 /**
- * LyXLength - Represents latex length measurement
+ * Length - Represents latex length measurement
  */
-class LyXLength {
+class Length {
 public:
 	/// length units
 	enum UNIT {
@@ -54,14 +60,14 @@ public:
 	};
 
 	///
-	LyXLength();
+	Length();
 	///
-	LyXLength(double v, LyXLength::UNIT u);
+	Length(double v, Length::UNIT u);
 
 	/// "data" must be a decimal number, followed by a unit
-	explicit LyXLength(std::string const & data);
+	explicit Length(std::string const & data);
 
-	void swap(LyXLength & rhs)
+	void swap(Length & rhs)
 	{
 		std::swap(val_, rhs.val_);
 		std::swap(unit_, rhs.unit_);
@@ -70,11 +76,11 @@ public:
 	///
 	double value() const;
 	///
-	LyXLength::UNIT unit() const;
+	Length::UNIT unit() const;
 	///
 	void value(double);
 	///
-	void unit(LyXLength::UNIT unit);
+	void unit(Length::UNIT unit);
 	///
 	bool zero() const;
 	///
@@ -90,19 +96,19 @@ public:
 	/// return the on-screen size of this length of an image
 	int inBP() const;
 
-	friend bool isValidLength(std::string const & data, LyXLength * result);
+	friend bool isValidLength(std::string const & data, Length * result);
 
 private:
 	///
 	double          val_;
 	///
-	LyXLength::UNIT unit_;
+	Length::UNIT unit_;
 };
 
 ///
-bool operator==(LyXLength const & l1, LyXLength const & l2);
+bool operator==(Length const & l1, Length const & l2);
 ///
-bool operator!=(LyXLength const & l1, LyXLength const & l2);
+bool operator!=(Length const & l1, Length const & l2);
 /** Test whether \p data represents a valid length.
  * 
  * \returns whether \p data is a valid length
@@ -110,13 +116,71 @@ bool operator!=(LyXLength const & l1, LyXLength const & l2);
  * and LaTeX format is the representation of length variables as units (e.g.
  * \c text% vs. \c \\textwidth) you can actually use this function as well
  * for testing LaTeX lengths as long as they only contain real units like pt.
- * \param result Pointer to a LyXLength variable. If \p result is not 0 and
+ * \param result Pointer to a Length variable. If \p result is not 0 and
  * \p data is valid, the length represented by it is stored into \p result.
  */
-bool isValidLength(std::string const & data, LyXLength * result = 0);
+bool isValidLength(std::string const & data, Length * result = 0);
 /// return the LyX name of the given unit number
 char const * stringFromUnit(int unit);
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// GlueLength
+//
+/////////////////////////////////////////////////////////////////////
+
+class GlueLength {
+public:
+	///
+	GlueLength() {}
+	///
+	explicit GlueLength(Length const & len);
+	///
+	GlueLength(Length const & len,
+		      Length const & plus,
+		      Length const & minus);
+
+	/** "data" must be a decimal number, followed by a unit, and
+	  optional "glue" indicated by "+" and "-".  You may abbreviate
+	  reasonably.  Examples:
+	  1.2 cm  //  4mm +2pt  //  2cm -4mm +2mm  //  4+0.1-0.2cm
+	  The traditional Latex format is also accepted, like
+	  4cm plus 10pt minus 10pt */
+	explicit GlueLength(std::string const & data);
+
+	///
+	Length const & len() const;
+	///
+	Length const & plus() const;
+	///
+	Length const & minus() const;
+
+
+	/// conversion
+	std::string const asString() const;
+	///
+	std::string const asLatexString() const;
+
+	friend bool isValidGlueLength(std::string const & data,
+				      GlueLength* result);
+
+private:
+	/// the normal vlaue
+	Length len_;
+	/// extra stretch
+	Length plus_;
+	/// extra shrink
+	Length minus_;
+};
+
+///
+bool operator==(GlueLength const & l1, GlueLength const & l2);
+///
+bool operator!=(GlueLength const & l1, GlueLength const & l2);
+/** If "data" is valid, the length represented by it is
+    stored into "result", if that is not 0. */
+bool isValidGlueLength(std::string const & data, GlueLength * result = 0);
 
 } // namespace lyx
 

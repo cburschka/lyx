@@ -52,7 +52,7 @@ QWrapDialog::QWrapDialog(QWrap * form)
 
 	connect(widthED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(unitsLC, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(unitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
@@ -103,13 +103,13 @@ void QWrap::build_dialog()
 void QWrap::apply()
 {
 	double const value = convert<double>(fromqstr(dialog_->widthED->text()));
-	LyXLength::UNIT unit = dialog_->unitsLC->currentLengthItem();
+	Length::UNIT unit = dialog_->unitsLC->currentLengthItem();
 	if (dialog_->widthED->text().isEmpty())
-		unit = LyXLength::UNIT_NONE;
+		unit = Length::UNIT_NONE;
 
 	InsetWrapParams & params = controller().params();
 
-	params.width = LyXLength(value, unit);
+	params.width = Length(value, unit);
 
 	switch (dialog_->valignCO->currentIndex()) {
 	case 0:
@@ -144,7 +144,7 @@ void QWrap::update_contents()
 {
 	InsetWrapParams & params = controller().params();
 
-	LyXLength len(params.width);
+	Length len(params.width);
 	dialog_->widthED->setText(toqstr(numtostr(len.value())));
 	dialog_->unitsLC->setCurrentItem(len.unit());
 

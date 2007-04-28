@@ -53,7 +53,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	font.setColor(Color::collapsable);
 	setLabelFont(font);
 	params_.type = type;
-	params_.width = LyXLength(50, LyXLength::PCW);
+	params_.width = Length(50, Length::PCW);
 	setInsetName(from_utf8(type));
 }
 
@@ -136,7 +136,7 @@ void InsetWrapParams::read(Lexer & lex)
 	lex >> token;
 	if (token == "width") {
 		lex.next();
-		width = LyXLength(lex.getString());
+		width = Length(lex.getString());
 	} else {
 		lyxerr << "InsetWrap::Read:: Missing 'width'-tag!"
 			<< endl;

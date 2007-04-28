@@ -27,9 +27,9 @@ LengthCombo::LengthCombo(QWidget * parent)
 }
 
 
-lyx::LyXLength::UNIT LengthCombo::currentLengthItem() const
+lyx::Length::UNIT LengthCombo::currentLengthItem() const
 {
-	return static_cast<lyx::LyXLength::UNIT>(currentIndex());
+	return static_cast<lyx::Length::UNIT>(currentIndex());
 }
 
 
@@ -40,7 +40,7 @@ void LengthCombo::has_activated(int)
 }
 
 
-void LengthCombo::setCurrentItem(lyx::LyXLength::UNIT unit)
+void LengthCombo::setCurrentItem(lyx::Length::UNIT unit)
 {
 	QComboBox::setCurrentIndex(int(unit));
 }

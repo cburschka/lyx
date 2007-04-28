@@ -311,13 +311,13 @@ InsetMathGrid::row_type InsetMathGrid::row(idx_type idx) const
 }
 
 
-void InsetMathGrid::vcrskip(LyXLength const & crskip, row_type row)
+void InsetMathGrid::vcrskip(Length const & crskip, row_type row)
 {
 	rowinfo_[row].crskip_ = crskip;
 }
 
 
-LyXLength InsetMathGrid::vcrskip(row_type row) const
+Length InsetMathGrid::vcrskip(row_type row) const
 {
 	return rowinfo_[row].crskip_;
 }

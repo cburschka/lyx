@@ -14,7 +14,7 @@
 #define INSETBOX_H
 
 #include "InsetCollapsable.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "MailInset.h"
 
 
@@ -36,7 +36,7 @@ public:
 	/// columnwidth?
 	bool inner_box;
 	///
-	LyXLength width;
+	Length width;
 	/// "special" widths, see usrguide.dvi §3.5
 	std::string special;
 	///
@@ -46,7 +46,7 @@ public:
 	///
 	char inner_pos;
 	///
-	LyXLength height;
+	Length height;
 	///
 	std::string height_special;
 };

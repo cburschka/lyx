@@ -95,7 +95,7 @@ QExternalDialog::QExternalDialog(QExternal * form)
 		this, SLOT(formatChanged(const QString&)));
 	connect(widthUnitCO, SIGNAL(activated(int)),
 		this, SLOT(widthUnitChanged()));
-	connect(heightUnitCO, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(heightUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(displayCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
@@ -155,7 +155,7 @@ bool QExternalDialog::activateAspectratio() const
 	bool const wIsDbl = isStrDbl(wstr);
 	if (wIsDbl && float_equal(convert<double>(wstr), 0.0, 0.05))
 		return false;
-	LyXLength l;
+	Length l;
 	if (!wIsDbl && (!isValidLength(wstr, &l) || l.zero()))
 		return false;
 
@@ -269,14 +269,14 @@ void QExternalDialog::widthUnitChanged()
 
 namespace {
 
-LyXLength::UNIT defaultUnit()
+Length::UNIT defaultUnit()
 {
-	LyXLength::UNIT default_unit = LyXLength::CM;
+	Length::UNIT default_unit = Length::CM;
 	switch (lyxrc.default_papersize) {
 	case PAPER_USLETTER:
 	case PAPER_USLEGAL:
 	case PAPER_USEXECUTIVE:
-		default_unit = LyXLength::IN;
+		default_unit = Length::IN;
 		break;
 	default:
 		break;
@@ -394,7 +394,7 @@ void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 	}
 
 	string const h = data.height.zero() ? string() : data.height.asString();
-	LyXLength::UNIT default_unit = data.width.zero() ?
+	Length::UNIT default_unit = data.width.zero() ?
 		defaultUnit() : data.width.unit();
 	lengthToWidgets(&heightED, &heightUnitCO, h, default_unit);
 
@@ -420,24 +420,24 @@ void getSize(external::ResizeData & data,
 		// Subtract one, because scale is 0.
 		int const unit = widthUnitCO.currentIndex() - 1;
 
-		LyXLength w;
+		Length w;
 		if (isValidLength(width, &w))
 			data.width = w;
 		else if (isStrDbl(width))
-			data.width = LyXLength(convert<double>(width),
-					   static_cast<LyXLength::UNIT>(unit));
+			data.width = Length(convert<double>(width),
+					   static_cast<Length::UNIT>(unit));
 		else
-			data.width = LyXLength();
+			data.width = Length();
 
 		data.scale = string();
 
 	} else {
 		// scaling instead of a width
 		data.scale = width;
-		data.width = LyXLength();
+		data.width = Length();
 	}
 
-	data.height = LyXLength(widgetsToLength(&heightED, &heightUnitCO));
+	data.height = Length(widgetsToLength(&heightED, &heightUnitCO));
 
 	data.keepAspectRatio = aspectratioCB.isChecked();
 }

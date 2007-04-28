@@ -63,9 +63,9 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT(change_adaptor()));
 	connect(Height, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(heightUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(heightUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
-	connect(widthUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(widthUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(aspectratio, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));

@@ -25,8 +25,7 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 
-#include "LyXLength.h"
-#include "LyXGlueLength.h"
+#include "Length.h"
 
 #include <QValidator>
 
@@ -37,7 +36,7 @@ class QLineEdit;
 namespace lyx {
 
 /** A class to ascertain whether the data passed to the @c validate()
- *  member function can be interpretted as a LyXGlueLength.
+ *  member function can be interpretted as a GlueLength.
  */
 class LengthValidator : public QValidator
 {
@@ -46,18 +45,18 @@ public:
 	/// Define a validator for widget @c parent.
 	LengthValidator(QWidget * parent);
 
-	/** @returns QValidator::Acceptable if @c data is a LyXGlueLength.
+	/** @returns QValidator::Acceptable if @c data is a GlueLength.
 	 *  If not, returns QValidator::Intermediate.
 	 */
 	QValidator::State validate(QString & data, int &) const;
 
 	/** @name Bottom
-	 *  Set and retrieve the minimum allowed LyXLength value.
+	 *  Set and retrieve the minimum allowed Length value.
 	 */
 	//@{
-	void setBottom(LyXLength const &);
-	void setBottom(LyXGlueLength const &);
-	LyXLength bottom() const { return b_; }
+	void setBottom(Length const &);
+	void setBottom(GlueLength const &);
+	Length bottom() const { return b_; }
 	//@}
 
 private:
@@ -66,8 +65,8 @@ private:
 	LengthValidator& operator=( const LengthValidator & );
 #endif
 
-	LyXLength b_;
-	LyXGlueLength g_;
+	Length b_;
+	GlueLength g_;
 	bool no_bottom_;
 	bool glue_length_;
 };
@@ -81,7 +80,7 @@ LengthValidator * unsignedLengthValidator(QLineEdit *);
 //hard-coding it as "auto". But see qt_helpers.h for reasons this
 //is not so trivial and an idea about how to do it. (RGH)
 /** A class to ascertain whether the data passed to the @c validate()
- *  member function can be interpretted as a LyXGlueLength or is "auto".
+ *  member function can be interpretted as a GlueLength or is "auto".
  */
 class LengthAutoValidator : public LengthValidator
 {
@@ -90,7 +89,7 @@ class LengthAutoValidator : public LengthValidator
 	/// Define a validator for widget @c parent.
 		LengthAutoValidator(QWidget * parent);
 
-	/** @returns QValidator::Acceptable if @c data is a LyXGlueLength
+	/** @returns QValidator::Acceptable if @c data is a GlueLength
 		* or is "auto". If not, returns QValidator::Intermediate.
 	 */
 		QValidator::State validate(QString & data, int &) const;

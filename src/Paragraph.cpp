@@ -28,7 +28,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Color.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "LyXFont.h"
 #include "LyXRC.h"
 #include "Row.h"

@@ -18,7 +18,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Language.h"
-#include "LyXLength.h"
+#include "Length.h"
 
 #include <boost/regex.hpp>
 

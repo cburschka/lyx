@@ -64,7 +64,7 @@ TODO
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "Mover.h"
@@ -350,53 +350,53 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
-docstring const InsetGraphics::toDocbookLength(LyXLength const & len) const
+docstring const InsetGraphics::toDocbookLength(Length const & len) const
 {
 	odocstringstream result;
 	switch (len.unit()) {
-		case LyXLength::SP: // Scaled point (65536sp = 1pt) TeX's smallest unit.
+		case Length::SP: // Scaled point (65536sp = 1pt) TeX's smallest unit.
 			result << len.value() * 65536.0 * 72 / 72.27 << "pt";
 			break;
-		case LyXLength::PT: // Point = 1/72.27in = 0.351mm
+		case Length::PT: // Point = 1/72.27in = 0.351mm
 			result << len.value() * 72 / 72.27 << "pt";
 			break;
-		case LyXLength::BP: // Big point (72bp = 1in), also PostScript point
+		case Length::BP: // Big point (72bp = 1in), also PostScript point
 			result << len.value() << "pt";
 			break;
-		case LyXLength::DD: // Didot point = 1/72 of a French inch, = 0.376mm
+		case Length::DD: // Didot point = 1/72 of a French inch, = 0.376mm
 			result << len.value() * 0.376 << "mm";
 			break;
-		case LyXLength::MM: // Millimeter = 2.845pt
+		case Length::MM: // Millimeter = 2.845pt
 			result << len.value() << "mm";
 			break;
-		case LyXLength::PC: // Pica = 12pt = 4.218mm
+		case Length::PC: // Pica = 12pt = 4.218mm
 			result << len.value() << "pc";
 			break;
-		case LyXLength::CC: // Cicero = 12dd = 4.531mm
+		case Length::CC: // Cicero = 12dd = 4.531mm
 			result << len.value() * 4.531 << "mm";
 			break;
-		case LyXLength::CM: // Centimeter = 10mm = 2.371pc
+		case Length::CM: // Centimeter = 10mm = 2.371pc
 			result << len.value() << "cm";
 			break;
-		case LyXLength::IN: // Inch = 25.4mm = 72.27pt = 6.022pc
+		case Length::IN: // Inch = 25.4mm = 72.27pt = 6.022pc
 			result << len.value() << "in";
 			break;
-		case LyXLength::EX: // Height of a small "x" for the current font.
+		case Length::EX: // Height of a small "x" for the current font.
 			// Obviously we have to compromise here. Any better ratio than 1.5 ?
 			result << len.value() / 1.5 << "em";
 			break;
-		case LyXLength::EM: // Width of capital "M" in current font.
+		case Length::EM: // Width of capital "M" in current font.
 			result << len.value() << "em";
 			break;
-		case LyXLength::MU: // Math unit (18mu = 1em) for positioning in math mode
+		case Length::MU: // Math unit (18mu = 1em) for positioning in math mode
 			result << len.value() * 18 << "em";
 			break;
-		case LyXLength::PTW: // Percent of TextWidth
-		case LyXLength::PCW: // Percent of ColumnWidth
-		case LyXLength::PPW: // Percent of PageWidth
-		case LyXLength::PLW: // Percent of LineWidth
-		case LyXLength::PTH: // Percent of TextHeight
-		case LyXLength::PPH: // Percent of Paper
+		case Length::PTW: // Percent of TextWidth
+		case Length::PCW: // Percent of ColumnWidth
+		case Length::PPW: // Percent of PageWidth
+		case Length::PLW: // Percent of LineWidth
+		case Length::PTH: // Percent of TextHeight
+		case Length::PPH: // Percent of Paper
 			// Sigh, this will go wrong.
 			result << len.value() << "%";
 			break;

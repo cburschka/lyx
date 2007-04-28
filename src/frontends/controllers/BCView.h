@@ -34,7 +34,7 @@ class ButtonPolicy;
  *
  *  Many widgets can be grouped together in the derived class if they
  *  make a logical whole. E.g., an input and a choice widget that together
- *  are used to set a LyXLength can be interrogated together.
+ *  are used to set a Length can be interrogated together.
  */
 class CheckedWidget {
 public:

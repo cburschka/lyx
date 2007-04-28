@@ -69,7 +69,7 @@ QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 		this, SLOT(enableCustom(int)));
 	connect(keepCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(unitCO, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(unitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 
 	valueLE->setValidator(unsignedLengthValidator(valueLE));
@@ -133,8 +133,8 @@ static void setWidgetsFromVSpace(VSpace const & space,
 	spacing->setCurrentIndex(item);
 	keep->setChecked(space.keep());
 
-	LyXLength::UNIT default_unit =
-			(lyxrc.default_papersize > 3) ? LyXLength::CM : LyXLength::IN;
+	Length::UNIT default_unit =
+			(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
 	bool const custom_vspace = space.kind() == VSpace::LENGTH;
 	if (custom_vspace) {
 		value->setEnabled(true);
@@ -173,7 +173,7 @@ static VSpace setVSpaceFromWidgets(int spacing,
 		space = VSpace(VSpace::VFILL);
 		break;
 	case 5:
-		space = VSpace(LyXGlueLength(widgetsToLength(value, unit)));
+		space = VSpace(GlueLength(widgetsToLength(value, unit)));
 		break;
 	}
 

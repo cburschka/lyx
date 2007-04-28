@@ -30,7 +30,7 @@ InsetMathKern::InsetMathKern()
 }
 
 
-InsetMathKern::InsetMathKern(LyXLength const & w)
+InsetMathKern::InsetMathKern(Length const & w)
 	: wid_(w)
 {
 	dim_.asc = 0;

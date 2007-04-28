@@ -96,7 +96,7 @@ private:
 	/// Create the options for the latex command.
 	std::string const createLatexOptions() const;
 	/// Create length values for docbook export.
-	docstring const toDocbookLength(LyXLength const & len) const;
+	docstring const toDocbookLength(Length const & len) const;
 	/// Create the atributes for docbook export.
 	docstring const createDocBookAttributes() const;
 	/// Convert the file if needed, and return the location of the file.

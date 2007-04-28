@@ -139,12 +139,12 @@ void QGraphics::update_contents()
 	InsetGraphicsParams & igp = controller().params();
 
 	// set the right default unit
-	LyXLength::UNIT unitDefault = LyXLength::CM;
+	Length::UNIT unitDefault = Length::CM;
 	switch (lyxrc.default_papersize) {
 		case PAPER_USLETTER:
 		case PAPER_USLEGAL:
 		case PAPER_USEXECUTIVE:
-			unitDefault = LyXLength::IN;
+			unitDefault = Length::IN;
 			break;
 		default:
 			break;
@@ -169,7 +169,7 @@ void QGraphics::update_contents()
 		controller().bbChanged = false;
 	} else {
 		// get the values from the inset
-		LyXLength anyLength;
+		Length anyLength;
 		string const xl(token(igp.bb, ' ', 0));
 		string const yl(token(igp.bb, ' ', 1));
 		string const xr(token(igp.bb, ' ', 2));
@@ -347,19 +347,19 @@ void QGraphics::apply()
 	//the graphics section
 	if (dialog_->scaleCB->isChecked()	&& !dialog_->Scale->text().isEmpty()) {
 		igp.scale = fromqstr(dialog_->Scale->text());
-		igp.width = LyXLength("0pt");
-		igp.height = LyXLength("0pt");
+		igp.width = Length("0pt");
+		igp.height = Length("0pt");
 		igp.keepAspectRatio = false;
 	} else {
 		igp.scale = string();
 		igp.width = dialog_->WidthCB->isChecked() ? 
 			//Note that this works even if dialog_->Width is "auto", since in
 			//that case we get "0pt".
-			LyXLength(widgetsToLength(dialog_->Width, dialog_->widthUnit)): 
-			LyXLength("0pt");
+			Length(widgetsToLength(dialog_->Width, dialog_->widthUnit)): 
+			Length("0pt");
 		igp.height = dialog_->HeightCB->isChecked() ? 
-			LyXLength(widgetsToLength(dialog_->Height, dialog_->heightUnit)) :
-			LyXLength("0pt");
+			Length(widgetsToLength(dialog_->Height, dialog_->heightUnit)) :
+			Length("0pt");
 		igp.keepAspectRatio = dialog_->aspectratio->isEnabled() &&
 			dialog_->aspectratio->isChecked() &&
 			igp.width.value() > 0 && igp.height.value() > 0;

@@ -12,7 +12,7 @@
 #ifndef EXTERNALTRANSFORMS_H
 #define EXTERNALTRANSFORMS_H
 
-#include "LyXLength.h"
+#include "Length.h"
 
 #include "graphics/GraphicsParams.h"
 
@@ -63,8 +63,8 @@ public:
 	bool usingScale() const;
 
 	std::string scale;
-	LyXLength width;
-	LyXLength height;
+	Length width;
+	Length height;
 	bool keepAspectRatio;
 };
 

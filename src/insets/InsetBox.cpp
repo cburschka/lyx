@@ -508,12 +508,12 @@ InsetBoxParams::InsetBoxParams(string const & label)
 	: type(label),
 	  use_parbox(false),
 	  inner_box(true),
-	  width(LyXLength("100col%")),
+	  width(Length("100col%")),
 	  special("none"),
 	  pos('t'),
 	  hor_pos('c'),
 	  inner_pos('t'),
-	  height(LyXLength("1in")),
+	  height(Length("1in")),
 	  height_special("totalheight") // default is 1\\totalheight
 {}
 
@@ -614,7 +614,7 @@ void InsetBoxParams::read(Lexer & lex)
 		return;
 	if (token == "width") {
 		lex.next();
-		width = LyXLength(lex.getString());
+		width = Length(lex.getString());
 	} else {
 		lyxerr << "InsetBox::Read: Missing 'width'-tag!" << endl;
 		lex.pushToken(token);
@@ -638,7 +638,7 @@ void InsetBoxParams::read(Lexer & lex)
 		return;
 	if (token == "height") {
 		lex.next();
-		height = LyXLength(lex.getString());
+		height = Length(lex.getString());
 	} else {
 		lyxerr << "InsetBox::Read: Missing 'height'-tag!" << endl;
 		lex.pushToken(token);

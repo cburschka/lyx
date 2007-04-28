@@ -38,7 +38,7 @@
 
 #include "Inset.h"
 #include "MailInset.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "InsetText.h"
 
 
@@ -294,9 +294,9 @@ public:
 	void setVAlignment(idx_type cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	void setColumnPWidth(Cursor &, idx_type, LyXLength const &);
+	void setColumnPWidth(Cursor &, idx_type, Length const &);
 	///
-	bool setMColumnPWidth(Cursor &, idx_type, LyXLength const &);
+	bool setMColumnPWidth(Cursor &, idx_type, Length const &);
 	///
 	void setAlignSpecial(idx_type cell, docstring const & special,
 			     Feature what);
@@ -307,11 +307,11 @@ public:
 	VAlignment getVAlignment(idx_type cell,
 				 bool onlycolumn = false) const;
 	///
-	LyXLength const getPWidth(idx_type cell) const;
+	Length const getPWidth(idx_type cell) const;
 	///
-	LyXLength const getColumnPWidth(idx_type cell) const;
+	Length const getColumnPWidth(idx_type cell) const;
 	///
-	LyXLength const getMColumnPWidth(idx_type cell) const;
+	Length const getMColumnPWidth(idx_type cell) const;
 	///
 	docstring const getAlignSpecial(idx_type cell, int what) const;
 	///
@@ -489,7 +489,7 @@ public:
 		///
 		docstring align_special;
 		///
-		LyXLength p_width; // this is only set for multicolumn!!!
+		Length p_width; // this is only set for multicolumn!!!
 		///
 		boost::shared_ptr<InsetText> inset;
 	};
@@ -513,15 +513,15 @@ public:
 		///
 		bool bottom_line;
 		/// Extra space between the top line and this row
-		LyXLength top_space;
+		Length top_space;
 		/// Ignore top_space if true and use the default top space
 		bool top_space_default;
 		/// Extra space between this row and the bottom line
-		LyXLength bottom_space;
+		Length bottom_space;
 		/// Ignore bottom_space if true and use the default bottom space
 		bool bottom_space_default;
 		/// Extra space between the bottom line and the next top line
-		LyXLength interline_space;
+		Length interline_space;
 		/// Ignore interline_space if true and use the default interline space
 		bool interline_space_default;
 		/// This are for longtabulars only
@@ -555,7 +555,7 @@ public:
 		///
 		int  width_of_column;
 		///
-		LyXLength p_width;
+		Length p_width;
 		///
 		docstring align_special;
 	};

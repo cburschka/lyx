@@ -164,13 +164,13 @@ void ParagraphParameters::labelWidthString(docstring const & lws)
 }
 
 
-LyXLength const & ParagraphParameters::leftIndent() const
+Length const & ParagraphParameters::leftIndent() const
 {
 	return leftindent_;
 }
 
 
-void ParagraphParameters::leftIndent(LyXLength const & li)
+void ParagraphParameters::leftIndent(Length const & li)
 {
 	leftindent_ = li;
 }
@@ -194,7 +194,7 @@ void ParagraphParameters::read(Lexer & lex)
 			noindent(true);
 		} else if (token == "\\leftindent") {
 			lex.next();
-			LyXLength value(lex.getString());
+			Length value(lex.getString());
 			leftIndent(value);
 		} else if (token == "\\start_of_appendix") {
 			startOfAppendix(true);

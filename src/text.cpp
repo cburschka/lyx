@@ -38,7 +38,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "Color.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Row.h"

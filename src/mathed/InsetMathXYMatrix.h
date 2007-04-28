@@ -12,7 +12,7 @@
 #ifndef MATH_XYMATRIX_H
 #define MATH_XYMATRIX_H
 
-#include "LyXLength.h"
+#include "Length.h"
 #include "InsetMathGrid.h"
 
 
@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathXYMatrix : public InsetMathGrid {
 public:
 	///
-	InsetMathXYMatrix(LyXLength const & = LyXLength(), char c = '\0');
+	InsetMathXYMatrix(Length const & = Length(), char c = '\0');
 	///
 	bool metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -48,7 +48,7 @@ private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// extra spacing, may be empty
-	LyXLength spacing_;
+	Length spacing_;
 	///
 	char spacing_code_;
 };

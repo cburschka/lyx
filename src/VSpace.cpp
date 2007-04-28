@@ -38,10 +38,10 @@ namespace {
 /// used to return numeric values in parsing vspace
 double number[4] = { 0, 0, 0, 0 };
 /// used to return unit types in parsing vspace
-LyXLength::UNIT unit[4] = { LyXLength::UNIT_NONE,
-			    LyXLength::UNIT_NONE,
-			    LyXLength::UNIT_NONE,
-			    LyXLength::UNIT_NONE };
+Length::UNIT unit[4] = { Length::UNIT_NONE,
+			    Length::UNIT_NONE,
+			    Length::UNIT_NONE,
+			    Length::UNIT_NONE };
 
 /// the current position in the number array
 int number_index;
@@ -154,7 +154,7 @@ char nextToken(string & data)
 			unit[unit_index] = unitFromString(buffer);
 		}
 
-		if (unit[unit_index] != LyXLength::UNIT_NONE) {
+		if (unit[unit_index] != Length::UNIT_NONE) {
 			++unit_index;
 			return 'u';
 		}
@@ -203,7 +203,7 @@ const char * stringFromUnit(int unit)
 }
 
 
-bool isValidGlueLength(string const & data, LyXGlueLength * result)
+bool isValidGlueLength(string const & data, GlueLength * result)
 {
 	// This parser is table-driven.  First, it constructs a "pattern"
 	// that describes the sequence of tokens in "data".  For example,
@@ -211,7 +211,7 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 	// numbers and units are stored into static arrays.  Then, "pattern"
 	// is searched in the "table".  If it is found, the associated
 	// table entries tell us which number and unit should go where
-	// in the LyXLength structure.  Example: if "data" has the "pattern"
+	// in the Length structure.  Example: if "data" has the "pattern"
 	// "nu+nu-nu", the associated table entries are "2, 3, 2, 3".
 	// That means, "plus_val" is the second number that was seen
 	// in the input, "minus_val" is the third number, and "plus_uni"
@@ -280,7 +280,7 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 }
 
 
-bool isValidLength(string const & data, LyXLength * result)
+bool isValidLength(string const & data, Length * result)
 {
 	// This is a trimmed down version of isValidGlueLength.
 	// The parser may seem overkill for lengths without
@@ -350,12 +350,12 @@ VSpace::VSpace(vspace_kind k)
 {}
 
 
-VSpace::VSpace(LyXLength const & l)
+VSpace::VSpace(Length const & l)
 	: kind_(LENGTH), len_(l), keep_(false)
 {}
 
 
-VSpace::VSpace(LyXGlueLength const & l)
+VSpace::VSpace(GlueLength const & l)
 	: kind_(LENGTH), len_(l), keep_(false)
 {}
 
@@ -392,7 +392,7 @@ VSpace::VSpace(string const & data)
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.
 		kind_ = LENGTH;
-		len_  = LyXGlueLength(LyXLength(convert<double>(input), LyXLength::CM));
+		len_  = GlueLength(Length(convert<double>(input), Length::CM));
 	}
 }
 
@@ -403,7 +403,7 @@ VSpace::vspace_kind VSpace::kind() const
 }
 
 
-LyXGlueLength const & VSpace::length() const
+GlueLength const & VSpace::length() const
 {
 	return len_;
 }

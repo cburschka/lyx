@@ -69,8 +69,8 @@ void InsetGraphicsParams::init()
 	lyxscale = 100;			// lyx scaling in percentage
 	display = graphics::DefaultDisplay; // display mode; see preferences
 	scale = string("100");			// output scaling in percentage
-	width = LyXLength();
-	height = LyXLength();
+	width = Length();
+	height = Length();
 	keepAspectRatio = false;	// for LaTeX output
 	draft = false;			// draft mode
 	noUnzip = false;		// unzip files
@@ -209,11 +209,11 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 		scale = lex.getString();
 	} else if (token == "width") {
 		lex.next();
-		width = LyXLength(lex.getString());
+		width = Length(lex.getString());
 		scale = string();
 	} else if (token == "height") {
 		lex.next();
-		height = LyXLength(lex.getString());
+		height = Length(lex.getString());
 		scale = string();
 	} else if (token == "keepAspectRatio") {
 		keepAspectRatio = true;

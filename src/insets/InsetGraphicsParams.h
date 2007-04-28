@@ -15,7 +15,7 @@
 
 
 #include "graphics/GraphicsTypes.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "support/FileName.h"
 
 namespace lyx {
@@ -38,9 +38,9 @@ public:
 	/// Scaling for output (LaTeX)
 	std::string scale;
 	/// sizes for output (LaTeX)
-	LyXLength width;
+	Length width;
 	///
-	LyXLength height;
+	Length height;
 	/// Keep the ratio between height and width when resizing.
 	bool keepAspectRatio;
 	/// draft mode

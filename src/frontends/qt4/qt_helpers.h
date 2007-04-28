@@ -13,7 +13,7 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-#include "LyXLength.h"
+#include "Length.h"
 #include "support/docstring.h"
 #include "support/qstring_helpers.h"
 
@@ -32,21 +32,21 @@ std::string makeFontName(std::string const & family, std::string const & foundry
 
 std::pair<std::string,std::string> parseFontName(std::string const & name);
 
-/// method to get a LyXLength from widgets (LengthCombo)
+/// method to get a Length from widgets (LengthCombo)
 std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
-/// method to get a LyXLength from widgets (QComboBox)
-LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo);
+/// method to get a Length from widgets (QComboBox)
+Length widgetsToLength(QLineEdit const * input, QComboBox const * combo);
 
 //FIXME It would be nice if defaultUnit were a default argument
-/// method to set widgets from a LyXLength
+/// method to set widgets from a Length
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo, 
-	LyXLength const & len, LyXLength::UNIT default_unit);
+	Length const & len, Length::UNIT default_unit);
 /// method to set widgets from a string
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	std::string const & len, LyXLength::UNIT default_unit);
-/// method to set widgets from a LyXLength with optional "auto" if zero
+	std::string const & len, Length::UNIT default_unit);
+/// method to set widgets from a Length with optional "auto" if zero
 void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo, 
-	LyXLength const & len, LyXLength::UNIT defaultUnit);
+	Length const & len, Length::UNIT defaultUnit);
 
 //FIXME setAutoTextCB should really take an argument, as indicated, that
 //determines what text is to be written for "auto". But making

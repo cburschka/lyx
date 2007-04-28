@@ -20,7 +20,7 @@
 namespace lyx {
 
 
-InsetMathXYMatrix::InsetMathXYMatrix(LyXLength const & s, char c)
+InsetMathXYMatrix::InsetMathXYMatrix(Length const & s, char c)
 	: InsetMathGrid(1, 1), spacing_(s), spacing_code_(c)
 {}
 

@@ -963,14 +963,14 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 {
 	// set the default unit
 	// FIXME: move to controller
-	LyXLength::UNIT defaultUnit = LyXLength::CM;
+	Length::UNIT defaultUnit = Length::CM;
 	switch (lyxrc.default_papersize) {
 		case PAPER_DEFAULT: break;
 
 		case PAPER_USLETTER:
 		case PAPER_USLEGAL:
 		case PAPER_USEXECUTIVE:
-			defaultUnit = LyXLength::IN;
+			defaultUnit = Length::IN;
 			break;
 
 		case PAPER_A3:
@@ -979,7 +979,7 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 		case PAPER_B3:
 		case PAPER_B4:
 		case PAPER_B5:
-			defaultUnit = LyXLength::CM;
+			defaultUnit = Length::CM;
 			break;
 		case PAPER_CUSTOM:
 			break;

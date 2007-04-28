@@ -158,6 +158,8 @@ lyx_SOURCES = \
 	LaTeXFeatures.h \
 	LaTeX.h \
 	layout.h \
+	Length.cpp \
+	Length.h \
 	lengthcommon.cpp \
 	lengthcommon.h \
 	Lexer.cpp \
@@ -174,14 +176,10 @@ lyx_SOURCES = \
 	LyXFont.h \
 	LyXFunc.cpp \
 	LyXFunc.h \
-	LyXGlueLength.cpp \
-	LyXGlueLength.h \
 	LyX.h \
 	LyXLayout.cpp \
 	LyXLayout.h \
 	lyxlayout_ptr_fwd.h \
-	LyXLength.cpp \
-	LyXLength.h \
 	LyXRC.cpp \
 	LyXRC.h \
 	LyXServer.cpp \

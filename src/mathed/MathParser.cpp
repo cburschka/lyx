@@ -134,7 +134,7 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 			return false;
 		}
 	}
-	grid.vcrskip(LyXLength(to_utf8(vskip)), cellrow - 1);
+	grid.vcrskip(Length(to_utf8(vskip)), cellrow - 1);
 	grid.rowinfo(cellrow - 1).allow_pagebreak_ = allow_pagebreak;
 	return true;
 }

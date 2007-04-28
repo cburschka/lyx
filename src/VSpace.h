@@ -12,7 +12,7 @@
 #ifndef VSPACE_H
 #define VSPACE_H
 
-#include "LyXGlueLength.h"
+#include "Length.h"
 
 
 namespace lyx {
@@ -39,9 +39,9 @@ public:
 
 	explicit VSpace(vspace_kind k);
 
-	explicit VSpace(LyXLength const & l);
+	explicit VSpace(Length const & l);
 
-	explicit VSpace(LyXGlueLength const & l);
+	explicit VSpace(GlueLength const & l);
 
 	/// Constructor for reading from a .lyx file
 	explicit VSpace(std::string const & data);
@@ -49,7 +49,7 @@ public:
 	/// return the type of vertical space
 	vspace_kind kind() const;
 	/// return the length of this space
-	LyXGlueLength const & length() const;
+	GlueLength const & length() const;
 
 	// a flag that switches between \vspace and \vspace*
 	bool keep() const;
@@ -73,7 +73,7 @@ private:
 	/// This VSpace kind
 	vspace_kind kind_;
 	/// the specified length
-	LyXGlueLength len_;
+	GlueLength len_;
 	/// if true, use \vspace* type
 	bool keep_;
 };

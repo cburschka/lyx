@@ -15,7 +15,7 @@
 #define PARAGRAPHPARAMETERS_H
 
 #include "layout.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "Spacing.h"
 
 #include "support/types.h"
@@ -28,7 +28,7 @@
 namespace lyx {
 
 class BufferView;
-class LyXLength;
+class Length;
 class Lexer;
 class Paragraph;
 class Spacing;
@@ -76,9 +76,9 @@ public:
 	///
 	void labelWidthString(docstring const &);
 	///
-	LyXLength const & leftIndent() const;
+	Length const & leftIndent() const;
 	///
-	void leftIndent(LyXLength const &);
+	void leftIndent(Length const &);
 
 	/// read the parameters from a lex
 	void read(Lexer & lex);
@@ -107,7 +107,7 @@ private:
 	///
 	docstring labelwidthstring_;
 	///
-	LyXLength leftindent_;
+	Length leftindent_;
 };
 
 

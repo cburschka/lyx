@@ -13,7 +13,7 @@
 #define MATH_CHEATINSET_H
 
 #include "InsetMath.h"
-#include "LyXLength.h"
+#include "Length.h"
 
 
 namespace lyx {
@@ -27,7 +27,7 @@ public:
 	///
 	InsetMathKern();
 	///
-	explicit InsetMathKern(LyXLength const & wid);
+	explicit InsetMathKern(Length const & wid);
 	///
 	explicit InsetMathKern(docstring const & wid);
 	///
@@ -41,7 +41,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width in em
-	LyXLength wid_;
+	Length wid_;
 };
 
 

@@ -337,7 +337,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 
 		case EX_HEIGHT:
 			lex.next();
-			resizedata.height = LyXLength(lex.getString());
+			resizedata.height = Length(lex.getString());
 			break;
 
 		case EX_KEEPASPECTRATIO:
@@ -361,7 +361,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 
 		case EX_WIDTH:
 			lex.next();
-			resizedata.width = LyXLength(lex.getString());
+			resizedata.width = Length(lex.getString());
 			break;
 
 		case EX_END:

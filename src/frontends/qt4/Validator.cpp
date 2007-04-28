@@ -50,12 +50,12 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 		return QValidator::Acceptable;
 
 	if (glue_length_) {
-		LyXGlueLength gl;
+		GlueLength gl;
 		return (isValidGlueLength(text, &gl)) ?
 			QValidator::Acceptable : QValidator::Intermediate;
 		}
 
-	LyXLength l;
+	Length l;
 	bool const valid_length = isValidLength(text, &l);
 	if (!valid_length)
 		return QValidator::Intermediate;
@@ -68,14 +68,14 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 }
 
 
-void LengthValidator::setBottom(LyXLength const & b)
+void LengthValidator::setBottom(Length const & b)
 {
 	b_ = b;
 	no_bottom_ = false;
 }
 
 
-void LengthValidator::setBottom(LyXGlueLength const & g)
+void LengthValidator::setBottom(GlueLength const & g)
 {
 	g_ = g;
 	no_bottom_ = false;
@@ -86,7 +86,7 @@ void LengthValidator::setBottom(LyXGlueLength const & g)
 LengthValidator * unsignedLengthValidator(QLineEdit * ed)
 {
 	LengthValidator * v = new LengthValidator(ed);
-	v->setBottom(LyXLength());
+	v->setBottom(Length());
 	return v;
 }
 
@@ -108,7 +108,7 @@ QValidator::State LengthAutoValidator::validate(QString & qtext, int & dummy) co
 LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed)
 {
 	LengthAutoValidator * v = new LengthAutoValidator(ed);
-	v->setBottom(LyXLength());
+	v->setBottom(Length());
 	return v;
 }
 

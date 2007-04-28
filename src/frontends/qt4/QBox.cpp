@@ -60,13 +60,13 @@ QBoxDialog::QBoxDialog(QBox * form)
 
 	connect(widthED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(heightED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::LyXLength::UNIT) ),
+	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT) ),
 		this, SLOT(change_adaptor()));
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(restoreClicked()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
@@ -127,7 +127,7 @@ void QBoxDialog::restoreClicked()
 {
 	form_->setInnerType(true, 2);
 	widthED->setText("100");
-	widthUnitsLC->setCurrentItem(LyXLength::PCW);
+	widthUnitsLC->setCurrentItem(Length::PCW);
 	heightED->setText("1");
 	for (int j = 0; j < heightUnitsLC->count(); j++) {
 		if (heightUnitsLC->itemText(j) == qt_("Total Height"))
@@ -217,8 +217,8 @@ void QBox::update_contents()
 	dialog_->halignCO->setEnabled(!ibox);
 	setSpecial(ibox);
 
-	LyXLength::UNIT default_unit =
-		(lyxrc.default_papersize > 3) ? LyXLength::CM : LyXLength::IN;
+	Length::UNIT default_unit =
+		(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
 
 	lengthToWidgets(dialog_->widthED, dialog_->widthUnitsLC,
 		(controller().params().width).asString(), default_unit);
@@ -308,7 +308,7 @@ void QBox::apply()
 	} else
 		width = widgetsToLength(dialog_->widthED, dialog_->widthUnitsLC);
 
-	controller().params().width = LyXLength(width);
+	controller().params().width = Length(width);
 
 	i = 0;
 	spec = false;
@@ -342,7 +342,7 @@ void QBox::apply()
 	} else
 		height = widgetsToLength(dialog_->heightED, dialog_->heightUnitsLC);
 
-	controller().params().height = LyXLength(height);
+	controller().params().height = Length(height);
 }
 
 

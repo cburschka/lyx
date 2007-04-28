@@ -961,19 +961,19 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			}
 		}
 		if (!topmargin.empty())
-			os << ",tmargin=" << from_ascii(LyXLength(topmargin).asLatexString());
+			os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
 		if (!bottommargin.empty())
-			os << ",bmargin=" << from_ascii(LyXLength(bottommargin).asLatexString());
+			os << ",bmargin=" << from_ascii(Length(bottommargin).asLatexString());
 		if (!leftmargin.empty())
-			os << ",lmargin=" << from_ascii(LyXLength(leftmargin).asLatexString());
+			os << ",lmargin=" << from_ascii(Length(leftmargin).asLatexString());
 		if (!rightmargin.empty())
-			os << ",rmargin=" << from_ascii(LyXLength(rightmargin).asLatexString());
+			os << ",rmargin=" << from_ascii(Length(rightmargin).asLatexString());
 		if (!headheight.empty())
-			os << ",headheight=" << from_ascii(LyXLength(headheight).asLatexString());
+			os << ",headheight=" << from_ascii(Length(headheight).asLatexString());
 		if (!headsep.empty())
-			os << ",headsep=" << from_ascii(LyXLength(headsep).asLatexString());
+			os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
 		if (!footskip.empty())
-			os << ",footskip=" << from_ascii(LyXLength(footskip).asLatexString());
+			os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
 		os << "}\n";
 		texrow.newline();
 	}

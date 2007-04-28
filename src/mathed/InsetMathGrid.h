@@ -13,7 +13,7 @@
 #define MATH_GRID_H
 
 #include "InsetMathNest.h"
-#include "LyXLength.h"
+#include "Length.h"
 
 
 namespace lyx {
@@ -59,7 +59,7 @@ public:
 		/// how many hlines above this row?
 		unsigned int lines_;
 		/// parameter to the line break
-		LyXLength crskip_;
+		Length crskip_;
 		/// extra distance between lines
 		int skip_;
 		/// Is a page break allowed after this row?
@@ -123,9 +123,9 @@ public:
 	///
 	char valign() const;
 	///
-	void vcrskip(LyXLength const &, row_type row);
+	void vcrskip(Length const &, row_type row);
 	///
-	LyXLength vcrskip(row_type row) const;
+	Length vcrskip(row_type row) const;
 	///
 	void resize(short int type, col_type cols);
 	///

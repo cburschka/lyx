@@ -15,7 +15,7 @@
 #ifndef LENGTH_COMMON_H
 #define LENGTH_COMMON_H
 
-#include "LyXLength.h"
+#include "Length.h"
 
 
 namespace lyx {
@@ -33,7 +33,7 @@ extern char const * const unit_name[];
 extern char const * const unit_name_gui[];
 
 /// return the unit given a string representation such as "cm"
-LyXLength::UNIT unitFromString(std::string const & data);
+Length::UNIT unitFromString(std::string const & data);
 
 
 

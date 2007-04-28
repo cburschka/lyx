@@ -2305,18 +2305,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 				if (!known_vspace) {
 					switch (unitFromString(unit)) {
-					case LyXLength::SP:
-					case LyXLength::PT:
-					case LyXLength::BP:
-					case LyXLength::DD:
-					case LyXLength::MM:
-					case LyXLength::PC:
-					case LyXLength::CC:
-					case LyXLength::CM:
-					case LyXLength::IN:
-					case LyXLength::EX:
-					case LyXLength::EM:
-					case LyXLength::MU:
+					case Length::SP:
+					case Length::PT:
+					case Length::BP:
+					case Length::DD:
+					case Length::MM:
+					case Length::PC:
+					case Length::CC:
+					case Length::CM:
+					case Length::IN:
+					case Length::EX:
+					case Length::EM:
+					case Length::MU:
 						known_unit = true;
 						break;
 					default:

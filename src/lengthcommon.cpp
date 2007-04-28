@@ -39,12 +39,12 @@ char const * const unit_name_gui[] = {
 	N_("Text Width %"), N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
 	N_("Text Height %"), N_("Page Height %"), "" };
 
-LyXLength::UNIT unitFromString(string const & data)
+Length::UNIT unitFromString(string const & data)
 {
 	int i = 0;
 	while (i < num_units && data != unit_name[i])
 		++i;
-	return static_cast<LyXLength::UNIT>(i);
+	return static_cast<Length::UNIT>(i);
 }
 
 

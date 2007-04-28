@@ -13,7 +13,7 @@
 #define INSETWRAP_H
 
 #include "InsetCollapsable.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "MailInset.h"
 
 
@@ -32,7 +32,7 @@ public:
 	///
 	std::string placement;
 	///
-	LyXLength width;
+	Length width;
 };
 
 

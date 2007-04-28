@@ -56,17 +56,17 @@ QTabularDialog::QTabularDialog(QTabular * form)
 
 	connect(topspaceED, SIGNAL(returnPressed()),
 	        this, SLOT(topspace_changed()));
-	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 	        this, SLOT(topspace_changed()));
 	connect(topspaceCO, SIGNAL(activated(int)), this, SLOT(topspace_changed()));
 	connect(bottomspaceED, SIGNAL(returnPressed()),
 	        this, SLOT(bottomspace_changed()));
-	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 	        this, SLOT(bottomspace_changed()));
 	connect(bottomspaceCO, SIGNAL(activated(int)), this, SLOT(bottomspace_changed()));
 	connect(interlinespaceED, SIGNAL(returnPressed()),
 	        this, SLOT(interlinespace_changed()));
-	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
+	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 	        this, SLOT(interlinespace_changed()));
 	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
 	connect(booktabsRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
@@ -95,7 +95,7 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	connect(lastfooterNoContentsCB, SIGNAL(clicked()), this, SLOT(ltLastFooterEmpty_clicked()));
 	connect(specialAlignmentED, SIGNAL(returnPressed()), this, SLOT(specialAlignment_changed()));
 	connect(widthED, SIGNAL(returnPressed()), this, SLOT(width_changed()));
-	connect(widthUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)), this, SLOT(width_changed()));
+	connect(widthUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)), this, SLOT(width_changed()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(close_clicked()));
 	connect(borders, SIGNAL(topSet(bool)), this, SLOT(topBorder_changed()));
 	connect(borders, SIGNAL(bottomSet(bool)), this, SLOT(bottomBorder_changed()));
@@ -653,7 +653,7 @@ void QTabular::update_contents()
 
 	update_borders();
 
-	LyXLength pwidth;
+	Length pwidth;
 	docstring special;
 
 	if (multicol) {
@@ -669,7 +669,7 @@ void QTabular::update_contents()
 	bool const isReadonly = bc().bp().isReadOnly();
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
-	LyXLength::UNIT default_unit = controller().useMetricUnits() ? LyXLength::CM : LyXLength::IN;
+	Length::UNIT default_unit = controller().useMetricUnits() ? Length::CM : Length::IN;
 
 	dialog_->borderDefaultRB->setChecked(!tabular.useBookTabs());
 	dialog_->booktabsRB->setChecked(tabular.useBookTabs());
@@ -896,8 +896,8 @@ void QTabular::closeGUI()
 	string width = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
 	string width2;
 
-	LyXLength llen = tabular.getColumnPWidth(cell);
-	LyXLength llenMulti = tabular.getMColumnPWidth(cell);
+	Length llen = tabular.getColumnPWidth(cell);
+	Length llenMulti = tabular.getMColumnPWidth(cell);
 
 	if (multicol && !llenMulti.zero())
 			width2 = llenMulti.asString();

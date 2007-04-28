@@ -12,7 +12,7 @@
 
 #include "GraphicsParams.h"
 
-#include "LyXLength.h"
+#include "Length.h"
 
 #include <sstream>
 
@@ -71,10 +71,10 @@ BoundingBox::BoundingBox(string const & bb)
 
 	// inBP returns the length in Postscript points.
 	// Note further that there are 72 Postscript pixels per inch.
-	unsigned int const xl_tmp = abs(LyXLength(a).inBP());
-	unsigned int const yb_tmp = abs(LyXLength(b).inBP());
-	unsigned int const xr_tmp = abs(LyXLength(c).inBP());
-	unsigned int const yt_tmp = abs(LyXLength(d).inBP());
+	unsigned int const xl_tmp = abs(Length(a).inBP());
+	unsigned int const yb_tmp = abs(Length(b).inBP());
+	unsigned int const xr_tmp = abs(Length(c).inBP());
+	unsigned int const yt_tmp = abs(Length(d).inBP());
 
 	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
 		return;

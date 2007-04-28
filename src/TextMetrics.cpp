@@ -29,7 +29,7 @@
 #include "FuncRequest.h"
 #include "FontIterator.h"
 #include "Color.h"
-#include "LyXLength.h"
+#include "Length.h"
 #include "LyXRC.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
