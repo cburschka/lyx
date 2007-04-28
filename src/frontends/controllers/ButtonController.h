@@ -12,7 +12,7 @@
 #ifndef BUTTONCONTROLLER_H
 #define BUTTONCONTROLLER_H
 
-#include "ButtonPolicies.h"
+#include "ButtonPolicy.h"
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {

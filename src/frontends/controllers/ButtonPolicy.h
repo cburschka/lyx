@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file ButtonPolicies.h
+ * \file ButtonPolicy.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,8 @@
  * used by the dialogs.
  */
 
-#ifndef BUTTONPOLICIES_H
-#define BUTTONPOLICIES_H
+#ifndef BUTTONPOLICY_H
+#define BUTTONPOLICY_H
 
 
 #include <vector>

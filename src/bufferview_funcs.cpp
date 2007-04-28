@@ -31,7 +31,7 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "insets/InsetCommand.h"
 #include "insets/InsetText.h"

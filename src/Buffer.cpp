@@ -56,10 +56,10 @@
 #include "insets/InsetText.h"
 
 #include "mathed/MathMacroTemplate.h"
-#include "mathed/MathMacroTable.h"
+#include "mathed/MacroTable.h"
 #include "mathed/MathSupport.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "graphics/Previews.h"
 

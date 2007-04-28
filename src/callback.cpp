@@ -1,5 +1,5 @@
 /**
- * \file lyx_cb.cpp
+ * \file callback.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 #include <config.h>
 
-#include "lyx_cb.h"
+#include "callback.h"
 
 #include "Buffer.h"
 #include "BufferList.h"
@@ -33,7 +33,7 @@
 #include "Paragraph.h"
 #include "Undo.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/FileDialog.h"
 #include "frontends/LyXView.h"

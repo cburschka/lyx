@@ -18,7 +18,7 @@
 #include "gettext.h"
 #include "LyXRC.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "frontends/controllers/Dialog.h"
 

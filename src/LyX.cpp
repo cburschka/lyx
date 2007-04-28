@@ -31,7 +31,7 @@
 #include "Language.h"
 #include "Session.h"
 #include "Color.h"
-#include "lyx_cb.h"
+#include "callback.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 #include "Lexer.h"
@@ -44,7 +44,7 @@
 #include "Mover.h"
 #include "ToolbarBackend.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"

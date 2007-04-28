@@ -14,7 +14,7 @@
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "MathMacro.h"
-#include "MathMacroTable.h"
+#include "MacroTable.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "ReplaceData.h"

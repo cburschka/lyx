@@ -32,7 +32,7 @@
 #include "OutputParams.h"
 #include "TocBackend.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"

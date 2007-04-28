@@ -30,7 +30,7 @@
 #include "controllers/ControlPrefs.h"
 #include "controllers/frontend_helpers.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Application.h"
 
 #include <QCheckBox>

@@ -28,7 +28,7 @@
 #include "Color.h"
 
 #include "frontends/FileDialog.h"
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Package.h"

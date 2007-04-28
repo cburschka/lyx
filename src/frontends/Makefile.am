@@ -13,8 +13,8 @@ noinst_LTLIBRARIES = libfrontends.la
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 libfrontends_la_SOURCES = \
-	Alert.cpp \
-	Alert.h \
+	alert.cpp \
+	alert.h \
 	Alert_pimpl.h \
 	Application.cpp \
 	Application.h \

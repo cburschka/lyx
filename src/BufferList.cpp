@@ -18,13 +18,13 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Session.h"
-#include "lyx_cb.h"
+#include "callback.h"
 #include "LyX.h"
 #include "output_latex.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/filetools.h"
 #include "support/Package.h"

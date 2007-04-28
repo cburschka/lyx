@@ -15,7 +15,7 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 
-#include "lyx_cb.h"
+#include "callback.h"
 #include "LyXFunc.h"
 #include "FuncStatus.h"
 #include "debug.h"

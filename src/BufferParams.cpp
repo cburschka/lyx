@@ -36,7 +36,7 @@
 #include "TexRow.h"
 #include "VSpace.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/convert.h"

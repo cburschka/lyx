@@ -23,7 +23,7 @@
 #include "LaTeX.h"
 #include "Mover.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"

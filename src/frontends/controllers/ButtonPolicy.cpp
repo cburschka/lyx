@@ -1,5 +1,5 @@
 /**
- * \file ButtonPolicies.cpp
+ * \file ButtonPolicy.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "ButtonPolicies.h"
+#include "ButtonPolicy.h"
 #include "debug.h"
 #include <string>
 

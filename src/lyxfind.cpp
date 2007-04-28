@@ -28,7 +28,7 @@
 #include "ParIterator.h"
 #include "Undo.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/convert.h"
 #include "support/docstream.h"

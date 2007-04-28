@@ -47,7 +47,7 @@
 #include "Color.h"
 #include "Session.h"
 #include "LyX.h"
-#include "lyx_cb.h"
+#include "callback.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
 #include "Lexer.h"
@@ -75,7 +75,7 @@
 #include "insets/InsetWrap.h"
 
 #include "frontends/Application.h"
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontLoader.h"

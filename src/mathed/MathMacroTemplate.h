@@ -14,7 +14,7 @@
 #define MATH_MACROTEMPLATE_H
 
 #include "MathData.h"
-#include "MathMacroTable.h"
+#include "MacroTable.h"
 #include "InsetMathNest.h"
 
 #include "support/types.h"

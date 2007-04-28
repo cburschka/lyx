@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyx_cb.h
+ * \file callback.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYX_CB_H
-#define LYX_CB_H
+#ifndef CALLBACK_H
+#define CALLBACK_H
 
 #include "support/docstring.h"
 

@@ -1,5 +1,5 @@
 /**
- * \file Alert.cpp
+ * \file alert.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "Alert.h"
+#include "alert.h"
 #include "Alert_pimpl.h"
 
 #include "debug.h"

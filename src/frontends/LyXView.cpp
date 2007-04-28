@@ -29,7 +29,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Intl.h"
-#include "lyx_cb.h"
+#include "callback.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "LyXText.h"

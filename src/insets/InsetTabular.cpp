@@ -34,7 +34,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Color.h"
-#include "lyx_cb.h"
+#include "callback.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -46,7 +46,7 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"

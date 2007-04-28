@@ -13,7 +13,7 @@
 #ifndef DISPATCH_RESULT_H
 #define DISPATCH_RESULT_H
 
-#include "UpdateFlags.h"
+#include "update_flags.h"
 
 namespace lyx {
 

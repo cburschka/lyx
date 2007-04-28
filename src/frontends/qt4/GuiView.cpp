@@ -35,7 +35,7 @@
 #include "BufferList.h"
 #include "debug.h"
 #include "FuncRequest.h"
-#include "lyx_cb.h"
+#include "callback.h"
 #include "LyXRC.h"
 #include "LyX.h"
 #include "Session.h"

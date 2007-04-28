@@ -19,8 +19,8 @@ libcontrollers_la_SOURCES= \
 	BCView.cpp \
 	ButtonController.cpp \
 	ButtonController.h \
-	ButtonPolicies.cpp \
-	ButtonPolicies.h \
+	ButtonPolicy.cpp \
+	ButtonPolicy.h \
 	ControlAboutlyx.cpp \
 	ControlAboutlyx.h \
 	ControlBibtex.cpp \

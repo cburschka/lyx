@@ -19,7 +19,7 @@
 #include "Cursor.h"
 #include "MetricsInfo.h"
 #include "TextMetrics.h"
-#include "UpdateFlags.h"
+#include "update_flags.h"
 
 #include "support/types.h"
 

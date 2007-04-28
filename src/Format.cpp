@@ -19,7 +19,7 @@
 #include "LyXServerSocket.h"
 
 #include "frontends/Application.h"
-#include "frontends/Alert.h" //to be removed?
+#include "frontends/alert.h" //to be removed?
 
 #include "support/filetools.h"
 #include "support/lstrings.h"

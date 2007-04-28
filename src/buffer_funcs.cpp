@@ -35,7 +35,7 @@
 #include "TocBackend.h"
 #include "VCBackend.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetCaption.h"

@@ -167,8 +167,8 @@ lyx_SOURCES = \
 	lfuns.h \
 	LyXAction.cpp \
 	LyXAction.h \
-	lyx_cb.cpp \
-	lyx_cb.h \
+	callback.cpp \
+	callback.h \
 	LyX.cpp \
 	lyxfind.cpp \
 	lyxfind.h \
@@ -265,7 +265,7 @@ lyx_SOURCES = \
 	TransState.h \
 	Undo.cpp \
 	Undo.h \
-	UpdateFlags.h \
+	update_flags.h \
 	VCBackend.cpp \
 	VCBackend.h \
 	version.C \

@@ -51,8 +51,8 @@ libinsets_la_SOURCES = \
 	InsetCommand.h \
 	InsetCommandParams.cpp \
 	InsetCommandParams.h \
-	InsetEnv.cpp \
-	InsetEnv.h \
+	InsetEnvironment.cpp \
+	InsetEnvironment.h \
 	InsetERT.cpp \
 	InsetERT.h \
 	InsetExternal.cpp \

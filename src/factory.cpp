@@ -28,7 +28,7 @@
 #include "insets/InsetCaption.h"
 #include "insets/InsetCitation.h"
 #include "insets/InsetCharStyle.h"
-#include "insets/InsetEnv.h"
+#include "insets/InsetEnvironment.h"
 #include "insets/InsetERT.h"
 #include "insets/InsetExternal.h"
 #include "insets/InsetFloat.h"
@@ -58,7 +58,7 @@
 #include "mathed/MathMacroTemplate.h"
 #include "mathed/InsetMathHull.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"

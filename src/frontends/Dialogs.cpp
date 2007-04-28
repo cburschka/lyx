@@ -14,7 +14,7 @@
 
 #include "Dialogs.h"
 
-#include "lyx_cb.h"
+#include "callback.h"
 
 #include "controllers/Dialog.h"
 

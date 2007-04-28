@@ -17,11 +17,11 @@
 #include "Format.h"
 #include "frontends/LyXView.h"
 #include "FuncRequest.h"
-#include "lyx_cb.h"
+#include "callback.h"
 
 #include "support/filetools.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "gettext.h"
 #include "BufferView.h"

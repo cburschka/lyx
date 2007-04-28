@@ -50,7 +50,7 @@
 #include "InsetMathXArrow.h"
 #include "InsetMathXYMatrix.h"
 #include "MathMacroArgument.h"
-#include "MathMacroTable.h"
+#include "MacroTable.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 

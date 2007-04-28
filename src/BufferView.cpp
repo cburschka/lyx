@@ -35,7 +35,7 @@
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "lyx_cb.h" // added for Dispatch functions
+#include "callback.h" // added for Dispatch functions
 #include "LyX.h"
 #include "lyxfind.h"
 #include "LyXFunc.h"
@@ -60,7 +60,7 @@
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
 

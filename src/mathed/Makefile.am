@@ -140,8 +140,8 @@ libmathed_la_SOURCES = \
 	MathGridInfo.h \
 	MathMacroArgument.cpp \
 	MathMacroArgument.h \
-	MathMacroTable.cpp \
-	MathMacroTable.h \
+	MacroTable.cpp \
+	MacroTable.h \
 	MathMacroTemplate.cpp \
 	MathMacroTemplate.h \
 	MathParser.cpp \

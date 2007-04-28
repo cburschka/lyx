@@ -234,7 +234,7 @@ src_mathed_header_files = Split('''
     MathFactory.h
     MathGridInfo.h
     MathMacroArgument.h
-    MathMacroTable.h
+    MacroTable.h
     MathMacroTemplate.h
     MathParser.h
     ReplaceData.h
@@ -314,7 +314,7 @@ src_mathed_files = Split('''
     MathExtern.cpp
     MathFactory.cpp
     MathMacroArgument.cpp
-    MathMacroTable.cpp
+    MacroTable.cpp
     MathMacroTemplate.cpp
     MathParser.cpp
     MathStream.cpp
@@ -339,7 +339,7 @@ src_insets_header_files = Split('''
     InsetCollapsable.h
     InsetCommand.h
     InsetCommandParams.h
-    InsetEnv.h
+    InsetEnvironment.h
     InsetERT.h
     InsetExternal.h
     InsetFloat.h
@@ -397,7 +397,7 @@ src_insets_files = Split('''
     InsetCollapsable.cpp
     InsetCommand.cpp
     InsetCommandParams.cpp
-    InsetEnv.cpp
+    InsetEnvironment.cpp
     InsetERT.cpp
     InsetExternal.cpp
     InsetFloat.cpp
@@ -435,7 +435,7 @@ src_insets_files = Split('''
 
 
 src_frontends_header_files = Split('''
-    Alert.h
+    alert.h
     Alert_pimpl.h
     Application.h
     Clipboard.h
@@ -460,7 +460,7 @@ src_frontends_header_files = Split('''
 
 
 src_frontends_files = Split('''
-    Alert.cpp
+    alert.cpp
     Application.cpp
     Dialogs.cpp
     LyXView.cpp
@@ -504,7 +504,7 @@ src_graphics_files = Split('''
 src_frontends_controllers_header_files = Split('''
     BCView.h
     ButtonController.h
-    ButtonPolicies.h
+    ButtonPolicy.h
     ControlAboutlyx.h
     ControlBibtex.h
     ControlBox.h
@@ -549,7 +549,7 @@ src_frontends_controllers_header_files = Split('''
 src_frontends_controllers_files = Split('''
     BCView.cpp
     ButtonController.cpp
-    ButtonPolicies.cpp
+    ButtonPolicy.cpp
     ControlAboutlyx.cpp
     ControlBibtex.cpp
     ControlBox.cpp
@@ -825,7 +825,7 @@ src_frontends_qt4_header_files = Split('''
 
 src_frontends_qt4_files = Split('''
     Action.cpp
-    Alert_pimpl.cpp
+    alert_pimpl.cpp
     BulletsModule.cpp
     ColorCache.cpp
     Dialogs.cpp
@@ -996,7 +996,7 @@ src_header_files = Split('''
     Thesaurus.h
     TocBackend.h
     ToolbarBackend.h
-    UpdateFlags.h
+    update_flags.h
     Variables.h
     WordLangTuple.h
     ASpell_local.h
@@ -1035,7 +1035,7 @@ src_header_files = Split('''
     layout.h
     lengthcommon.h
     lfuns.h
-    lyx_cb.h
+    callback.h
     LyX.h
     lyx_sty.h
     lyxfind.h
@@ -1138,7 +1138,7 @@ src_pre_files = Split('''
     KeySequence.cpp
     Language.cpp
     lengthcommon.cpp
-    lyx_cb.cpp
+    callback.cpp
     LyX.cpp
     lyx_sty.cpp
     lyxfind.cpp

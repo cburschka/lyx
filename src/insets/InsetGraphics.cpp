@@ -71,7 +71,7 @@ TODO
 #include "OutputParams.h"
 #include "sgml.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"

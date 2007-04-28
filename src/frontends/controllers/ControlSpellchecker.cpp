@@ -39,7 +39,7 @@
 #include "support/convert.h"
 #include "support/docstring.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 // FIXME: those two headers are needed because of the
 // WorkArea::redraw() call below.
 #include "frontends/LyXView.h"

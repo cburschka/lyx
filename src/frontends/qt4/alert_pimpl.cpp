@@ -1,5 +1,5 @@
 /**
- * \file qt4/Alert_pimpl.cpp
+ * \file qt4/alert_pimpl.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "Alert_pimpl.h"
-#include "Alert.h"
+#include "alert.h"
 
 #include "ui/AskForTextUi.h"
 #include "qt_helpers.h"

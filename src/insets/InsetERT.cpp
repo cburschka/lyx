@@ -31,7 +31,7 @@
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include <sstream>
 

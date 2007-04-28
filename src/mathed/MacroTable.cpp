@@ -1,5 +1,5 @@
 /**
- * \file MathMacroTable.cpp
+ * \file MacroTable.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "MathMacroTable.h"
+#include "MacroTable.h"
 #include "MathMacroTemplate.h"
 #include "MathMacroArgument.h"
 #include "MathSupport.h"

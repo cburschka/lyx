@@ -44,7 +44,7 @@
 #include "TexRow.h"
 #include "Undo.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 #include "frontends/Painter.h"
 
 #include "support/lyxalgo.h" // count

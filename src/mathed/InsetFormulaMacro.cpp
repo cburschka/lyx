@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetFormulaMacro.h"
-#include "MathMacroTable.h"
+#include "MacroTable.h"
 #include "MathMacroTemplate.h"
 
 #include "BufferView.h"

@@ -41,7 +41,7 @@ src/frontends/controllers/ControlPrint.cpp
 src/frontends/controllers/ControlSpellchecker.cpp
 src/frontends/controllers/ControlToc.cpp
 src/frontends/controllers/frontend_helpers.cpp
-src/frontends/qt4/Alert_pimpl.cpp
+src/frontends/qt4/alert_pimpl.cpp
 src/frontends/qt4/BulletsModule.cpp
 src/frontends/qt4/Dialogs.cpp
 src/frontends/qt4/FileDialog.cpp
@@ -93,7 +93,7 @@ src/insets/InsetCharStyle.cpp
 src/insets/InsetCommand.cpp
 src/insets/InsetCommandParams.cpp
 src/insets/InsetERT.cpp
-src/insets/InsetEnv.cpp
+src/insets/InsetEnvironment.cpp
 src/insets/InsetExternal.cpp
 src/insets/InsetFloat.cpp
 src/insets/InsetFloatList.cpp
@@ -118,7 +118,7 @@ src/insets/InsetWrap.cpp
 src/insets/RenderGraphic.cpp
 src/insets/RenderPreview.cpp
 src/lengthcommon.cpp
-src/lyx_cb.cpp
+src/callback.cpp
 src/lyxfind.cpp
 src/mathed/InsetFormulaMacro.cpp
 src/mathed/InsetMathAMSArray.cpp

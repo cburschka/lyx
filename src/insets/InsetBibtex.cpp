@@ -23,7 +23,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
-#include "frontends/Alert.h"
+#include "frontends/alert.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"

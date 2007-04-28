@@ -30,7 +30,7 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends/controllers
 
 libqt4_la_SOURCES = \
-	Alert_pimpl.cpp \
+	alert_pimpl.cpp \
 	ColorCache.h ColorCache.cpp \
 	DockView.h \
 	Dialogs.cpp \

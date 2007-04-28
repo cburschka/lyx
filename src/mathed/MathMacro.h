@@ -16,7 +16,7 @@
 #include "InsetMathNest.h"
 #include "MathData.h"
 #include "InsetMathNest.h"
-#include "MathMacroTable.h"
+#include "MacroTable.h"
 
 
 namespace lyx {

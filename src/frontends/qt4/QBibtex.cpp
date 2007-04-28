@@ -22,7 +22,7 @@
 #include "CheckedLineEdit.h"
 
 #include "controllers/ControlBibtex.h"
-#include "controllers/ButtonPolicies.h"
+#include "controllers/ButtonPolicy.h"
 
 #include "controllers/ControlBibtex.h"
 
