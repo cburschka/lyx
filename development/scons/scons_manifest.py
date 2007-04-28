@@ -1026,10 +1026,9 @@ src_header_files = Split('''
     lyxfind.h
     LyXFont.h
     LyXFunc.h
-    LyXGlueLength.h
     LyXLayout.h
     lyxlayout_ptr_fwd.h
-    LyXLength.h
+    Length.h
     Lexer.h
     LyXRC.h
     Row.h
@@ -1130,9 +1129,8 @@ src_pre_files = Split('''
     lyxfind.cpp
     LyXFont.cpp
     LyXFunc.cpp
-    LyXGlueLength.cpp
     LyXLayout.cpp
-    LyXLength.cpp
+    Length.cpp
     Lexer.cpp
     LyXRC.cpp
     Row.cpp
