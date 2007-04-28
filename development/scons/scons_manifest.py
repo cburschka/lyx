@@ -153,7 +153,7 @@ src_support_files = Split('''
     lyxtime.cpp
     mkdir.cpp
     os.cpp
-    package.C
+    Package.cpp
     Path.cpp
     qstring_helpers.cpp
     rename.cpp
@@ -243,6 +243,10 @@ src_mathed_header_files = Split('''
     TextPainter.h
 ''')
 
+src_mathed_extra_files = Split('''
+    InsetFormulaMacro.h
+    InsetFormulaMacro.cpp
+''')
 
 src_mathed_files = Split('''
     InsetMath.cpp
@@ -361,7 +365,6 @@ src_insets_header_files = Split('''
     InsetSpecialChar.h
     InsetTabular.h
     InsetText.h
-    InsetTheorem.h
     InsetTOC.h
     InsetUrl.h
     InsetVSpace.h
@@ -373,6 +376,10 @@ src_insets_header_files = Split('''
     RenderPreview.h
 ''')
 
+src_inests_extra_files = Split('''
+    InsetTheorem.h
+    InsetTheorem.cpp
+''')
 
 src_insets_files = Split('''
     ExternalSupport.cpp
@@ -730,7 +737,6 @@ src_frontends_qt4_moc_files = Split('''
 
 src_frontends_qt4_header_files = Split('''
     Action.h
-    BiblioModuleBase.h
     BulletsModule.h
     ColorCache.h
     DockView.h
@@ -743,13 +749,12 @@ src_frontends_qt4_header_files = Split('''
     GuiView.h
     GuiWorkArea.h
     InsertTableWidget.h
-    About.h
+    QAbout.h
     QBibitem.h
     QBibtex.h
     QBox.h
     QBranch.h
     QBranches.h
-    QBrowseBox.h
     QChanges.h
     QCharacter.h
     QCharacter.h
@@ -931,18 +936,28 @@ src_tex2lyx_header_files = Split('''
 ''')
 
 
-src_tex2lyx_files = Split('''
+src_tex2lyx_copied_header_files = Split('''
+    LyXLayout.h
+    LyXTextClass.h
+    Lexer.h
+''')
+
+src_tex2lyx_copied_files = Split('''
     FloatList.cpp
     Floating.cpp
+    Counters.cpp
+    LyXLayout.cpp
+    LyXTextClass.cpp
+    Lexer.cpp
+''')
+
+
+src_tex2lyx_files = Split('''
     boost.cpp
     Context.cpp
-    Counters.cpp
     gettext.cpp
     lengthcommon.cpp
     LyXFont.cpp
-    Lexer.cpp
-    LyXLayout.cpp
-    LyXTextClass.cpp
     math.cpp
     preamble.cpp
     table.cpp
@@ -1166,7 +1181,7 @@ src_pre_files = Split('''
     TransState.cpp
     Undo.cpp
     VCBackend.cpp
-    version.C
+    version.cpp
     VSpace.cpp
 ''')
 

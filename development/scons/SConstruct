@@ -734,6 +734,7 @@ if platform_name == 'cygwin':
 # install customized builders
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
 env['BUILDERS']['installTOC'] = Builder(action = utils.env_toc)
+env['BUILDERS']['potfiles'] = Builder(action = utils.env_potfiles)
 
 
 #----------------------------------------------------------
@@ -1638,8 +1639,8 @@ if build_support:
     #
     print "Processing files in src/support..."
 
-    frontend_env.Depends('$BUILDDIR/common/support/package.C', '$BUILDDIR/common/config.h')
-    env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/Package.cpp.in')
+    frontend_env.Depends('$BUILDDIR/common/support/Package.cpp', '$BUILDDIR/common/config.h')
+    env.substFile('$BUILDDIR/common/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
 
     support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
@@ -1793,15 +1794,14 @@ if build_tex2lyx:
     print "Processing files in src/tex2lyx..."
 
     #
-    for file in ['FloatList.cpp', 'Floating.cpp', 'Counters.cpp', 'LyXLayout.h', 'LyXLayout.cpp', 
-        'LyXTextClass.h', 'LyXTextClass.cpp', 'Lexer.cpp', 'Lexer.h']:
+    for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
         frontend_env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
             [Copy('$TARGET', '$SOURCE')])
 
     tex2lyx = frontend_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
         LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
-        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files] + \
+        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
             utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/tex2lyx.rc'),
         CPPPATH = ['$BUILDDIR/common/tex2lyx', '$CPPPATH'],
         LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
@@ -1820,8 +1820,8 @@ if build_lyxbase:
     #
     print "Processing files in src..."
 
-    env.Depends('$BUILDDIR/common/version.C', '$BUILDDIR/common/config.h')
-    env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.cpp.in')
+    env.Depends('$BUILDDIR/common/version.cpp', '$BUILDDIR/common/config.h')
+    env.substFile('$BUILDDIR/common/version.cpp', '$TOP_SRCDIR/src/version.cpp.in')
 
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
         src_post_files.append('ASpell.cpp')
@@ -1986,6 +1986,22 @@ if update_po:
     if not env['XGETTEXT'] or not env['MSGMERGE'] or not env['MSGUNIQ']:
         print 'xgettext or msgmerge does not exist. Cannot merge po files'
         Exit(1)
+    # rebuild POTFILES.in
+    POTFILES_in = env.potfiles('$TOP_SRCDIR/po/POTFILES.in', 
+        ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files if x != 'version.cpp'] + \
+        ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files if x != 'Package.cpp'] + \
+        ['$TOP_SRCDIR/src/mathed/%s' % x for x in  src_mathed_header_files + src_mathed_files] + \
+        ['$TOP_SRCDIR/src/insets/%s' % x for x in  src_insets_header_files + src_insets_files] + \
+        ['$TOP_SRCDIR/src/frontends/%s' % x for x in  src_frontends_header_files + src_frontends_files] + \
+        ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files + src_graphics_files] + \
+        ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files + src_frontends_controllers_files] + \
+        ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files + src_frontends_qt4_files + src_frontends_qt4_moc_files] + \
+        ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files + src_client_files ]  + \
+        ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]  + \
+        ['$TOP_SRCDIR/src/version.cpp.in', '$TOP_SRCDIR/src/support/Package.cpp.in',\
+          '$TOP_SRCDIR/src/ASpell.cpp', '$TOP_SRCDIR/src/ISpell.cpp', '$TOP_SRCDIR/src/PSpell.cpp']
+    )
+    Alias('update_po', POTFILES_in)
     # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot
     # and combine them to lyx.po
     env['LYX_POT'] = 'python $TOP_SRCDIR/po/lyx_pot.py'
@@ -2011,6 +2027,7 @@ if update_po:
                 --copyright-holder="LyX Developers" \
                 --msgid-bugs-address="lyx-devel@lists.lyx.org" ''']
         )
+    env.Depends(lyx_po, POTFILES_in)
     # copy lyx.po to lyx.pot
     lyx_pot = env.Command('$BUILDDIR/po/lyx.pot', lyx_po,
         Copy('$TARGET', '$SOURCE'))
@@ -2030,9 +2047,6 @@ if update_po:
         '$MSGMERGE $TOP_SRCDIR/po/${TARGET.filebase}.po $SOURCE -o $TARGET',
         Copy('$TOP_SRCDIR/po/${TARGET.filebase}.po', '$TARGET')]
         )
-    # get dependency files from POTFILES.in
-    dep_files = ['$TOP_SRCDIR/%s' % x.strip() for x in open(env.File('$TOP_SRCDIR/po/POTFILES.in').abspath).readlines()]
-    dep_files.append('$TOP_SRCDIR/po/POTFILES.in')
     # for each po file, generate pot
     for po_file in transfiles:
         # get filename
@@ -2043,7 +2057,7 @@ if update_po:
         if not languages or country in languages:
             # merge po files, the generated lan.po_new file is copied to lan.po file.
             po = env.msgmerge('$BUILDDIR/po/%s.po' % country, lyx_pot)
-            env.Depends(po, dep_files)
+            env.Depends(po, POTFILES_in)
             Alias('update_po', po)
 
 

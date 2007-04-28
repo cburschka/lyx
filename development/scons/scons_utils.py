@@ -123,6 +123,22 @@ def env_cat(target, source, env):
     output.close()
 
 
+def env_potfiles(target, source, env):
+    '''Build po/POTFILES.in'''
+    # command 
+    #   grep -l '_(\".*\")' `find src \( -name '*.h' -o -name '*.cpp' -o -name '*.cpp.in' \) -print` | grep -v -e "src/support/Package.cpp$$" | sort | uniq
+    # is used under *nix but windows users have to do these all in python
+    target_file = open(str(target[0]), "w")
+    potfiles = []
+    trans = re.compile('_\(".*"\)', re.M)
+    for file in source:
+        if str(file) not in potfiles and trans.search(open(str(file)).read()):
+            potfiles.append(str(file))
+    potfiles.sort()
+    print >> target_file, '\n'.join(potfiles)
+    target_file.close()
+
+    
 def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':
