@@ -931,6 +931,7 @@ return std::count(a, a+5, 'l');
         ('setenv', 'HAVE_SETENV', None),
         ('putenv', 'HAVE_PUTENV', None),
         ('fcntl', 'HAVE_FCNTL', None),
+        ('mkfifo', 'HAVE_MKFIFO', None),
     ],
     types = [
         ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
