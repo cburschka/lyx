@@ -371,8 +371,8 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	LC_ALL=C ; export LC_ALL ; \
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
-	     grep -l "_(\".*\")" `find src \( -name '*.[ch]' -o -name '*.cpp' -o -name '*.C.in' \) -print` |\
-	     grep -v -e "src/support/package.C$$" |\
+	     grep -l "_(\".*\")" `find src \( -name '*.[ch]' -o -name '*.cpp' -o -name '*.cpp.in' \) -print` |\
+	     grep -v -e "src/support/Package.cpp$$" |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 

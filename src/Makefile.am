@@ -10,7 +10,7 @@ endif
 
 SUBDIRS = mathed insets graphics support frontends . $(CLIENT) tex2lyx
 
-EXTRA_DIST = config.h.in stamp-h.in version.C.in \
+EXTRA_DIST = config.h.in stamp-h.in version.cpp.in \
 	Section.h \
 	Section.cpp \
 	Variables.cpp \

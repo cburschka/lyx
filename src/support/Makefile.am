@@ -4,7 +4,7 @@ SUBDIRS = . tests
 
 CLEANFILES += $(BUILT_SOURCES)
 
-EXTRA_DIST = Package.C.in pch.h \
+EXTRA_DIST = Package.cpp.in pch.h \
 	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
 
 noinst_LTLIBRARIES = libsupport.la
@@ -92,13 +92,13 @@ libsupport_la_SOURCES = \
 package.C: build_package
 
 # Solaris sed does not like spaces bewteen the ;-delimited commands
-build_package: Package.C.in
+build_package: Package.cpp.in
 	@rm -f tmp_package ;\
 	sed "s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
 s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
 s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
 s,@PROGRAM_SUFFIX@,$(program_suffix)," \
-		$(srcdir)/Package.C.in > tmp_package ;\
+		$(srcdir)/Package.cpp.in > tmp_package ;\
 	if cmp -s tmp_package package.C ; then \
 		rm -f tmp_package ;\
 	else \

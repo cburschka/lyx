@@ -6,7 +6,7 @@
 
 project(support)
 
-configure_file(${TOP_SRC_DIR}/src/support/Package.C.in 
+configure_file(${TOP_SRC_DIR}/src/support/Package.cpp.in 
                ${CMAKE_CURRENT_BINARY_DIR}/package.C)
 
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/${LYX_CPP_FILES})
