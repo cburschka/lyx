@@ -967,7 +967,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		docstring const & name = cmd.argument();
 		string data;
 		if (name == "ref") {
-			RefInset tmp(name);
+			InsetMathRef tmp(name);
 			data = tmp.createDialogStr(to_utf8(name));
 		}
 		cur.bv().showInsetDialog(to_utf8(name), data, 0);

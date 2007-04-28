@@ -265,7 +265,7 @@ MathAtom createInsetMath(docstring const & s)
 		docstring const & inset = l->inset;
 		//lyxerr << " found inset: '" << inset << '\'' << endl;
 		if (inset == "ref")
-			return MathAtom(new RefInset(l->name));
+			return MathAtom(new InsetMathRef(l->name));
 		if (inset == "overset")
 			return MathAtom(new InsetMathOverset);
 		if (inset == "underset")

@@ -20,12 +20,12 @@ namespace lyx {
 class Buffer;
 
 // for \ref
-class RefInset : public CommandInset {
+class InsetMathRef : public CommandInset {
 public:
 	///
-	RefInset();
+	InsetMathRef();
 	///
-	explicit RefInset(docstring const & data);
+	explicit InsetMathRef(docstring const & data);
 	///
 	//void write(WriteStream & os) const;
 	///
@@ -35,7 +35,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	virtual RefInset * asRefInset() { return this; }
+	virtual InsetMathRef * asRefInset() { return this; }
 
 	/// docbook output
 	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;

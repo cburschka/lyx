@@ -36,29 +36,29 @@ using std::auto_ptr;
 using std::endl;
 
 
-RefInset::RefInset()
+InsetMathRef::InsetMathRef()
 	: CommandInset(from_ascii("ref"))
 {}
 
 
-RefInset::RefInset(docstring const & data)
+InsetMathRef::InsetMathRef(docstring const & data)
 	: CommandInset(data)
 {}
 
 
-auto_ptr<InsetBase> RefInset::doClone() const
+auto_ptr<InsetBase> InsetMathRef::doClone() const
 {
-	return auto_ptr<InsetBase>(new RefInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathRef(*this));
 }
 
 
-void RefInset::infoize(odocstream & os) const
+void InsetMathRef::infoize(odocstream & os) const
 {
 	os << "Ref: " << cell(0);
 }
 
 
-void RefInset::doDispatch(Cursor & cur, FuncRequest & cmd)
+void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
@@ -105,7 +105,7 @@ void RefInset::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool RefInset::getStatus(Cursor & cur, FuncRequest const & cmd,
+bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 			 FuncStatus & status) const
 {
 	switch (cmd.action) {
@@ -123,7 +123,7 @@ bool RefInset::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-docstring const RefInset::screenLabel() const
+docstring const InsetMathRef::screenLabel() const
 {
 	docstring str;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
@@ -142,7 +142,7 @@ docstring const RefInset::screenLabel() const
 }
 
 
-void RefInset::validate(LaTeXFeatures & features) const
+void InsetMathRef::validate(LaTeXFeatures & features) const
 {
 	if (commandname() == "vref" || commandname() == "vpageref")
 		features.require("varioref");
@@ -151,7 +151,7 @@ void RefInset::validate(LaTeXFeatures & features) const
 }
 
 
-int RefInset::docbook(Buffer const & buf, odocstream & os,
+int InsetMathRef::docbook(Buffer const & buf, odocstream & os,
                       OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
@@ -173,7 +173,7 @@ int RefInset::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-string const RefInset::createDialogStr(string const & name) const
+string const InsetMathRef::createDialogStr(string const & name) const
 {
 	InsetCommandParams icp(to_ascii(commandname()));
 	icp["reference"] = asString(cell(0));
@@ -183,7 +183,7 @@ string const RefInset::createDialogStr(string const & name) const
 }
 
 
-RefInset::ref_type_info RefInset::types[] = {
+InsetMathRef::ref_type_info InsetMathRef::types[] = {
 	{ from_ascii("ref"),       from_ascii(N_("Standard")),              from_ascii(N_("Ref: "))},
 	{ from_ascii("eqref"),     from_ascii(N_("Equation")),              from_ascii(N_("EqRef: "))},
 	{ from_ascii("pageref"),   from_ascii(N_("Page Number")),           from_ascii(N_("Page: "))},
