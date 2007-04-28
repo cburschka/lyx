@@ -1,4 +1,4 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -1346,7 +1346,7 @@ lösung und Vergrößerungsfaktor
 
 \begin_layout Standard
 LyX versucht, automatisch die verwendeten Zeichensätze so zu skalieren,
- daß ihre Darstellung auf dem Bildschirm bis auf den sogenannten ZooAlt+Faktor
+ daß ihre Darstellung auf dem Bildschirm bis auf den sogenannten Zoom-Faktor
  der späteren Größe auf dem Papier entspricht.
 \end_layout
 
@@ -1426,23 +1426,23 @@ Einstellungen
 
 \begin_layout Standard
 Wenn der Text nun für Ihren Geschmack zu groß oder zu klein ist, können
- Sie mit dem ZooAlt+Faktor experimentieren.
+ Sie mit dem Zoom-Faktor experimentieren.
  Mit diesem Faktor wird die Größe der Zeichensätze multipliziert.
- Wenn Ihre Einstellung des DPI-Wertes richtig ist und der ZooAlt+Faktor
- auf 100 eingestellt ist, wird LyX den Text in derselben Größe darstellen
- wie auf dem Papier.
+ Wenn Ihre Einstellung des DPI-Wertes richtig ist und der Zoom-Faktor auf
+ 100 eingestellt ist, wird LyX den Text in derselben Größe darstellen wie
+ auf dem Papier.
  Ist der Faktor 200, wird die Darstellung am Bildschirm doppelt so groß
  sein wie auf dem Papier.
  All dies natürlich unter der Voraussetzung, daß LyX den Zeichensatz in
  der so berechneten Größe findet, worauf man sich nicht immer verlassen
  kann.
- Doch da es sich bei LyX um ein WYSIWYAlt+System handelt, ist diese Einschränkun
-g nicht sehr bedeutend.
+ Doch da es sich bei LyX um ein WYSIWYM-System handelt, ist diese Einschränkung
+ nicht sehr bedeutend.
 \end_layout
 
 \begin_layout Standard
-Die Standardeinstellung für den ZooAlt+Faktor ist 150, da ein Bildschirm
- normalerweise breiter als ein Blatt Papier ist.
+Die Standardeinstellung für den Zoom-Faktor ist 150, da ein Bildschirm normalerw
+eise breiter als ein Blatt Papier ist.
  Sie sollten aber mit der Einstellung experimentieren.
  Verändern können Sie den Wert über das Feld 
 \family sans
@@ -1558,8 +1558,8 @@ Groß
 Groß\InsetSpace ~
 2
 \family default
- durch denselben BildschirAlt+Zeichensatz dargestellt werden und dadurch
- nur schwer zu unterscheiden sind.
+ durch denselben Bildschirm-Zeichensatz dargestellt werden und dadurch nur
+ schwer zu unterscheiden sind.
 \end_layout
 
 \begin_layout Standard
@@ -1660,7 +1660,7 @@ Inhaltsverzeichnis
  kaum lesbar sein, wenn nicht auch dort die neue Kodierung verwendet wird.
  Normalerweise verwendet LyX hierzu den Zeichensatz 
 \family typewriter
--*-helvetica-mediuAlt+r
+-*-helvetica-medium-r
 \family default
 , doch meist ist Helvetica in der von Ihnen benötigten Kodierung nicht vorhanden.
  Deshalb können Sie den für Menüs verwendeten Zeichensatz im Dialogbereich
@@ -1680,7 +1680,7 @@ Wie Sie sehen, gibt es eine ganze Reihe von Befehlen, mit denen Sie der
  --- da lohnt es sich, eine perfekte Darstellung zu haben.
  Und während Sie bei anderen Textverarbeitungen darauf angewiesen sind,
  Zeichensätze zu verwenden, die sowohl am Bildschirm als auch auf dem Papier
- gut aussehen, können Sie bei LyX als WYSIWYAlt+Programm die besten Zeichensätze
+ gut aussehen, können Sie bei LyX als WYSIWYM-Programm die besten Zeichensätze
  für die Bildschirmdarstellung verwenden, ohne sich dabei Gedanken um den
  Ausdruck machen zu müssen.
 \end_layout
@@ -1891,7 +1891,7 @@ Compose
 \family default
  und/oder die rechte 
 \family sans
-Windoof
+Windows
 \family default
 -Taste (rechts von 
 \family sans
@@ -2143,8 +2143,8 @@ Tastaturkürzel
 Tastaturkürzel dienen dazu, einer Taste oder Tastenkombination eine LyX-Funktion
  zuzuordnen.
  Die LyX-Distribution umfasst einige Dateien mit unterschiedlichen Tastaturzuord
-nungen: CUA, die typische Belegung auf PC und CDE, eine EmacUmschalt+Version
- für diejenigen, die der 
+nungen: CUA, die typische Belegung auf PC und CDE, eine Emacs-Version für
+ diejenigen, die der 
 \emph on
 reinen
 \emph default
@@ -3274,7 +3274,7 @@ sendfax
 print_spool_command
 \family default
 \series default
- wird für SysteAlt+V-Systeme auf 
+ wird für System-V-Systeme auf 
 \family typewriter
 lp
 \family default
@@ -3325,7 +3325,7 @@ font_encoding
  Falls die 
 \family typewriter
 \series bold
-eStrg+Z
+ec-Z
 \family default
 \series default
 eichensätze gefunden und von LaTeX unterstützt werden, wird dies auf 
@@ -3335,7 +3335,7 @@ T1
  gesetzt.
  Haben Sie nur die 
 \family typewriter
-dStrg+Z
+dc-Z
 \family default
 eichensätze, können Sie die Option von Hand aktivieren.
 \end_layout
@@ -3566,14 +3566,14 @@ Strg+Umschalt+N
 \family default
  das Popup 
 \family typewriter
-new-file-froAlt+template
+new-file-from-template
 \begin_inset Foot
 status open
 
 \begin_layout Standard
 
 \family typewriter
-new-file-froAlt+template
+new-file-from-template
 \family default
  ist der LyX-interne Befehl, der das Menü 
 \family sans
@@ -3723,8 +3723,8 @@ po
 de\SpecialChar \-
 fi\SpecialChar \-
 ni\SpecialChar \-
-tionUmschalt+Mechanismus verwendet
- -- deshalb müssen auch in 
+tions-Mechanismus verwendet -- deshalb
+ müssen auch in 
 \family typewriter
 menus.bind
 \family default
@@ -3833,8 +3833,8 @@ status open
 
 \begin_layout Standard
 Wir empfehlen, für diese Aufgabe Emacs zu benutzen, da die Distribution
- der gettext-Library auch einen hübschen EmacUmschalt+Modus enthält, der
- Sie bei dieser Arbeit unterstützt.
+ der gettext-Library auch einen hübschen Emacs-Modus enthält, der Sie bei
+ dieser Arbeit unterstützt.
 \end_layout
 
 \end_inset
@@ -3910,8 +3910,8 @@ po
 \emph on
 Distribution
 \emph default
- hinzuzufügen, müssen eine Reihe von Dateien (KonfigurationUmschalt+Skripts
- und mehr) verändert werden.
+ hinzuzufügen, müssen eine Reihe von Dateien (Konfigurations-Skripts und
+ mehr) verändert werden.
  Aber dank der gettext-Bibliothek ist ein Einbinden in den LyX-Quellcode
  für den Anwender unnötig.
 \end_layout
@@ -4590,7 +4590,7 @@ begin{sloppypar}
 
 Auch sollte es die 
 \family typewriter
-lyxrStrg+D
+lyxrc-D
 \family default
 atei nach Voreinstellungen durchsuchen (zum Beispiel nach einer Option
 \family typewriter
@@ -5347,7 +5347,7 @@ Tasten (dead keys)
 Nehmen wir an, Sie benötigen eine Zirkumflex-Taste.
  Diese können Sie definieren, indem Sie in der 
 \family typewriter
-lyxrStrg+D
+lyxrc-D
 \family default
 atei folgende Zeile einfügen:
 \end_layout
@@ -5382,8 +5382,8 @@ asciicircum
 status collapsed
 
 \begin_layout Standard
-Die Bezeichnungen anderer Symbole lassen sich ganz gut aus einer Strg+Include-Da
-tei namens 
+Die Bezeichnungen anderer Symbole lassen sich ganz gut aus einer c-Include-Datei
+ namens 
 \family typewriter
 keysymdef.h 
 \family default
@@ -5431,7 +5431,7 @@ Ihre Sprachkonfiguration einstellen
 \begin_layout Standard
 Sie können Ihre 
 \family typewriter
-lyxrStrg+D
+lyxrc-D
 \family default
 atei so verändern, daß Ihre gewünschte Sprachumgebung automatisch geladen
  wird, wenn LyX gestartet wird.
@@ -5449,7 +5449,7 @@ Zeichensatzkodierung
 \begin_layout Standard
 In Ihrer 
 \family typewriter
-lyxrStrg+D
+lyxrc-D
 \family default
 atei finden Sie verschiedene Beispiele, wie man sie konfigurieren kann.
  Zum Beispiel können Sie einen Eintrag für eine Tastaturbelegung folgendermaßen
@@ -5902,8 +5902,7 @@ Unterstützung neuer Dokumentenklassen
 \begin_layout Standard
 Generell können drei Situationen auftreten, wenn Sie eine neue Dokumentenklasse
  unterstützen wollen.
- Bei den beiden einfacheren Fällen handelt es sich um LaTeX2e clasUmschalt+
- (
+ Bei den beiden einfacheren Fällen handelt es sich um LaTeX2e class- (
 \family typewriter
 .cls
 \family default
@@ -6066,7 +6065,7 @@ status collapsed
 
 X2e 
 \family typewriter
-clUmschalt+
+cls-
 \family default
 Datei
 \end_layout
@@ -7044,7 +7043,7 @@ string=""
 Sonstige Optionen für die Dokumentenklasse, die durch Komma getrennt werden.
  Sie werden in dem 
 \family typewriter
-documentclasUmschalt+
+documentclass-
 \family default
 Befehl als optionales Argument übergeben.
 \end_layout
@@ -8762,7 +8761,7 @@ Als\InsetSpace \space{}
 \bar under
 D
 \bar default
-okumentUmschalt+Standards\InsetSpace \space{}
+okuments-Standards\InsetSpace \space{}
 speichern
 \family default
  anklicken.
@@ -8857,10 +8856,10 @@ zum Beispiel
 \end_layout
 
 \begin_layout Standard
-Einige Linux-Distributionen werden mit sogenannten MagiStrg+Filtern ausgeliefert
+Einige Linux-Distributionen werden mit sogenannten Magic-Filtern ausgeliefert
  und installieren diese selbständig.
  Anstelle der Prozedur, die wir unten beschreiben, können Sie auch diese
- MagiStrg+Filter-Prozedur benutzen.
+ Magic-Filter-Prozedur benutzen.
  Allerdings wird es vermutlich etwas schwieriger sein, die Möglichkeiten
  Ihres Druckers voll auszuschöpfen.
  Wenn Ihre Linux-Distribution mit einem Extraprogramm für die Druckerinstallatio
@@ -9660,7 +9659,7 @@ Die meisten Drucker benutzen allerdings die parallele Schnittstelle.
 \emph on
 fast allen
 \emph default
- PStrg+Kompatiblen Computern an 
+ PC-Kompatiblen Computern an 
 \family typewriter
 \size normal
 /dev/lp1
@@ -9707,7 +9706,7 @@ nicht
 /dev/lp2
 \family default
 .
- Da die meisten PStrg+Kompatiblen Computer die parallele Schnittstelle auf
+ Da die meisten PC-Kompatiblen Computer die parallele Schnittstelle auf
  die Adresse 
 \family typewriter
 0x378
@@ -10409,11 +10408,11 @@ bj200 BubbleJet BJ-200
 \begin_layout Description
 
 \size normal
-bjc600 Color BubbleJet BJStrg+600, BJStrg+4000 
+bjc600 Color BubbleJet BJC-600, BJC-4000 
 \size default
 u
 \size normal
-nd BJStrg+70
+nd BJC-70
 \begin_inset Foot
 status collapsed
 
@@ -10431,7 +10430,7 @@ Funktioniert auch für Apple-Drucker wie dem StyleWriter 2x00
 \begin_layout Description
 
 \size normal
-bjc800 Color BubbleJet BJStrg+800
+bjc800 Color BubbleJet BJC-800
 \end_layout
 
 \begin_layout Description
@@ -10445,7 +10444,7 @@ Laserdrucker
 \begin_layout Description
 
 \size normal
-lips3 LIPUmschalt+III 
+lips3 LIPs-III 
 \size default
 Laserdrucker im 
 \size normal
@@ -10780,7 +10779,7 @@ iver
 \size default
 -
 \size normal
-500Strg+
+500c-
 \size default
 Treiber (arbeitet nicht mit dem
 \size normal
@@ -11120,7 +11119,7 @@ oki182 Okidata MicroLine 182
 \begin_layout Description
 
 \size normal
-okiibm Okidata MicroLine IBAlt+K
+okiibm Okidata MicroLine IBM-K
 \size default
 ompatible Drucker
 \end_layout
@@ -11459,7 +11458,7 @@ John Weiss
 \noun default
 : Dies ist mein 
 \family typewriter
-pUmschalt+
+ps-
 \family default
 Drucker.
  Ich benutze einen ähnlichen Filter für meinen 
@@ -11667,7 +11666,7 @@ lpd
 \family default
  erst einmal auf Ihrem System läuft, können Sie ihn mit Hilfe des 
 \family typewriter
-lpStrg+B
+lpc-B
 \family default
 efehls kontrollieren.
  Auch hierzu müssen Sie als 
@@ -12507,7 +12506,7 @@ transfig
 \family default
 -Datei die oben erwähnte Originaldatei, und die 
 \family typewriter
-.pUmschalt+
+.ps-
 \family default
 Datei die tatsächlich eingebundene Datei.
 \end_layout
@@ -13385,7 +13384,7 @@ V
 \family sans
 E
 \family typewriter
- vStrg+history 
+ vc-history 
 \end_layout
 
 \begin_layout Labeling
@@ -13394,7 +13393,7 @@ E
 \family sans
 V
 \family typewriter
- vStrg+check-in
+ vc-check-in
 \end_layout
 
 \begin_layout Labeling
@@ -13403,7 +13402,7 @@ V
 \family sans
 L
 \family typewriter
- vStrg+revert
+ vc-revert
 \end_layout
 
 \begin_layout Labeling
@@ -13413,7 +13412,7 @@ L
 \InsetSpace ~
 
 \family typewriter
- vStrg+check-out
+ vc-check-out
 \end_layout
 
 \begin_layout Labeling
@@ -13423,7 +13422,7 @@ L
 \InsetSpace ~
 
 \family typewriter
- vStrg+register
+ vc-register
 \end_layout
 
 \begin_layout Labeling
@@ -13432,7 +13431,7 @@ L
 \family sans
 W
 \family typewriter
- vStrg+undo-last
+ vc-undo-last
 \end_layout
 
 \end_deeper
@@ -13842,7 +13841,7 @@ A
 \family default
  
 \family typewriter
-graphicUmschalt+insert
+graphics-insert
 \end_layout
 
 \begin_layout Labeling
@@ -13998,7 +13997,7 @@ I
 \family default
  
 \family typewriter
-toStrg+insert
+toc-insert
 \end_layout
 
 \begin_layout Labeling
@@ -14177,7 +14176,7 @@ F
 \family default
  
 \family typewriter
-dotUmschalt+insert
+dots-insert
 \end_layout
 
 \begin_layout Labeling
@@ -15012,7 +15011,7 @@ Leertaste
 \family default
  
 \family typewriter
-drop-layoutUmschalt+choice
+drop-layouts-choice
 \end_layout
 
 \begin_layout Labeling
@@ -15788,7 +15787,7 @@ C
 \family default
  
 \family typewriter
-vStrg+undo-last
+vc-undo-last
 \end_layout
 
 \begin_layout Labeling
@@ -15801,7 +15800,7 @@ H
 \family default
  
 \family typewriter
-vStrg+history
+vc-history
 \end_layout
 
 \begin_layout Labeling
@@ -15814,7 +15813,7 @@ I
 \family default
  
 \family typewriter
-vStrg+register
+vc-register
 \end_layout
 
 \begin_layout Labeling
@@ -15827,7 +15826,7 @@ U
 \family default
  
 \family typewriter
-vStrg+revert
+vc-revert
 \end_layout
 
 \begin_layout Labeling
@@ -15840,7 +15839,7 @@ V
 \family default
  
 \family typewriter
-vStrg+check-in
+vc-check-in
 \end_layout
 
 \begin_layout Labeling
@@ -16474,7 +16473,7 @@ Alt+.
 \family default
  
 \family typewriter
-dotUmschalt+insert
+dots-insert
 \end_layout
 
 \begin_layout Labeling
@@ -17334,7 +17333,7 @@ Alt+.
 \family default
  
 \family typewriter
-dotUmschalt+insert
+dots-insert
 \end_layout
 
 \begin_layout Labeling
@@ -17593,7 +17592,7 @@ Strg+K
 \family typewriter
 line-delete-forward
 \family default
- EmacUmschalt+like binding
+ Emacs-like binding
 \end_layout
 
 \begin_layout Standard
@@ -17893,20 +17892,16 @@ math-delim | |
 
 \family sans
 Strg+Umschalt+
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¦
-\end_layout
-
-\end_inset
-
-
 \family default
- 
+¦ 
 \family typewriter
-math-delim | |
+math-delim 
+\family default
+¦
+\family typewriter
+ 
+\family default
+¦
 \end_layout
 
 \begin_layout Labeling
@@ -18453,7 +18448,8 @@ math-insert geq
 \labelwidthstring 00.00.0000
 
 \family sans
-Strg+S Umschalt+<
+Strg+S\InsetSpace ~
+Umschalt+<
 \family default
  
 \family typewriter
@@ -18464,9 +18460,8 @@ math-insert ll
 \labelwidthstring 00.00.0000
 
 \family sans
-Strg+S Umschalt+>
-\family default
- 
+Strg+S\InsetSpace ~
+Umschalt+> 
 \family typewriter
 math-insert gg
 \end_layout
