@@ -121,7 +121,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		font = Font(Font::ALL_INHERIT, bp.language);
 		change = Change(Change::UNCHANGED);
 
-		LyXTextClass const & tclass = bp.getLyXTextClass();
+		TextClass const & tclass = bp.getTextClass();
 
 		if (layoutname.empty()) {
 			layoutname = tclass.defaultLayoutName();
@@ -136,12 +136,12 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 			layoutname = tclass.defaultLayoutName();
 		}
 
-		par.layout(bp.getLyXTextClass()[layoutname]);
+		par.layout(bp.getTextClass()[layoutname]);
 
 		// Test whether the layout is obsolete.
 		Layout_ptr const & layout = par.layout();
 		if (!layout->obsoleted_by().empty())
-			par.layout(bp.getLyXTextClass()[layout->obsoleted_by()]);
+			par.layout(bp.getTextClass()[layout->obsoleted_by()]);
 
 		par.params().read(lex);
 
@@ -402,7 +402,7 @@ int LyXText::leftMargin(Buffer const & buffer, int max_width,
 	BOOST_ASSERT(pos >= 0);
 	BOOST_ASSERT(pos <= par.size());
 	//lyxerr << "LyXText::leftMargin: pit: " << pit << " pos: " << pos << endl;
-	LyXTextClass const & tclass = buffer.params().getLyXTextClass();
+	TextClass const & tclass = buffer.params().getTextClass();
 	Layout_ptr const & layout = par.layout();
 
 	string parindent = layout->parindent;
@@ -586,7 +586,7 @@ void LyXText::breakParagraph(Cursor & cur, bool keep_layout)
 	Paragraph & cpar = cur.paragraph();
 	pit_type cpit = cur.pit();
 
-	LyXTextClass const & tclass = cur.buffer().params().getLyXTextClass();
+	TextClass const & tclass = cur.buffer().params().getTextClass();
 	Layout_ptr const & layout = cpar.layout();
 
 	// this is only allowed, if the current paragraph is not empty
@@ -1220,7 +1220,7 @@ bool LyXText::backspacePos0(Cursor & cur)
 	bool needsUpdate = false;
 
 	BufferParams const & bufparams = cur.buffer().params();
-	LyXTextClass const & tclass = bufparams.getLyXTextClass();
+	TextClass const & tclass = bufparams.getTextClass();
 	ParagraphList & plist = cur.text()->paragraphs();
 	Paragraph const & par = cur.paragraph();
 	Cursor prevcur = cur;

@@ -41,7 +41,7 @@
 #include "LyXFunc.h"
 #include "Layout.h"
 #include "LyXText.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "LyXRC.h"
 #include "Session.h"
 #include "Paragraph.h"

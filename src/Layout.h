@@ -25,7 +25,7 @@
 namespace lyx {
 
 class Lexer;
-class LyXTextClass;
+class TextClass;
 
 ///
 class Layout {
@@ -33,7 +33,7 @@ public:
 	///
 	Layout();
 	///
-	bool read(Lexer &, LyXTextClass const &);
+	bool read(Lexer &, TextClass const &);
 	///
 	void readAlign(Lexer &);
 	///

@@ -33,7 +33,7 @@
 #include "frontend_helpers.h" // getSecond()
 #include "Language.h"
 #include "LyXRC.h" // defaultUnit
-#include "LyXTextClassList.h"
+#include "TextClassList.h"
 #include "tex-strings.h" // tex_graphics
 #include "Spacing.h"
 
@@ -423,7 +423,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex
-	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
+	for (TextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
 		if (cit->isTeXClassAvailable()) {
 			latexModule->classCO->addItem(toqstr(cit->description()));
@@ -678,8 +678,8 @@ void QDocumentDialog::classChanged()
 
 void QDocumentDialog::updateNumbering()
 {
-	LyXTextClass const & tclass =
-		form_->controller().params().getLyXTextClass();
+	TextClass const & tclass =
+		form_->controller().params().getTextClass();
 
 	numberingModule->tocTW->setUpdatesEnabled(false);
 	numberingModule->tocTW->clear();
@@ -688,8 +688,8 @@ void QDocumentDialog::updateNumbering()
 	int const toc = numberingModule->tocSL->value();
 	QString const no = qt_("No");
 	QString const yes = qt_("Yes");
-	LyXTextClass::const_iterator end = tclass.end();
-	LyXTextClass::const_iterator cit = tclass.begin();
+	TextClass::const_iterator end = tclass.end();
+	TextClass::const_iterator cit = tclass.begin();
 	QTreeWidgetItem * item = 0;
 	for ( ; cit != end ; ++cit) {
 		int const toclevel = (*cit)->toclevel;
@@ -768,7 +768,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	params.language = languages.getLanguage(lang_[pos]);
 
 	// numbering
-	if (params.getLyXTextClass().hasTocLevels()) {
+	if (params.getTextClass().hasTocLevels()) {
 		params.tocdepth = numberingModule->tocSL->value();
 		params.secnumdepth = numberingModule->depthSL->value();
 	}
@@ -907,9 +907,9 @@ void QDocumentDialog::apply(BufferParams & params)
 		pageLayoutModule->paperheightUnitCO);
 
 	if (pageLayoutModule->facingPagesCB->isChecked())
-		params.sides = LyXTextClass::TwoSides;
+		params.sides = TextClass::TwoSides;
 	else
-		params.sides = LyXTextClass::OneSide;
+		params.sides = TextClass::OneSide;
 
 	if (pageLayoutModule->landscapeRB->isChecked())
 		params.orientation = ORIENTATION_LANDSCAPE;
@@ -1183,7 +1183,7 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 	pageLayoutModule->portraitRB->setChecked(!landscape);
 
 	pageLayoutModule->facingPagesCB->setChecked(
-		params.sides == LyXTextClass::TwoSides);
+		params.sides == TextClass::TwoSides);
 
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,

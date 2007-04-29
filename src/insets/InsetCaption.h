@@ -13,7 +13,7 @@
 #define INSETCAPTION_H
 
 #include "InsetText.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 
 
 namespace lyx {
@@ -97,7 +97,7 @@ private:
 	///
 	int counter_;
 	///
-	LyXTextClass const & textclass_;
+	TextClass const & textclass_;
 };
 
 

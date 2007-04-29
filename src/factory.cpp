@@ -104,7 +104,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		case LFUN_CHARSTYLE_INSERT: {
 			string s = cmd.getArg(0);
-			LyXTextClass tclass = params.getLyXTextClass();
+			TextClass tclass = params.getTextClass();
 			CharStyles::iterator found_cs = tclass.charstyle(s);
 			if (found_cs != tclass.charstyles().end())
 				return new InsetCharStyle(params, found_cs);
@@ -151,7 +151,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
-			if (params.getLyXTextClass().floats().typeExist(argument))
+			if (params.getTextClass().floats().typeExist(argument))
 				return new InsetFloat(params, argument);
 			lyxerr << "Non-existent float type: " << argument << endl;
 			return 0;
@@ -160,7 +160,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		case LFUN_FLOAT_WIDE_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
-			if (params.getLyXTextClass().floats().typeExist(argument)) {
+			if (params.getTextClass().floats().typeExist(argument)) {
 				auto_ptr<InsetFloat> p(new InsetFloat(params, argument));
 				p->wide(true, params);
 				return p.release();
@@ -382,7 +382,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 	auto_ptr<Inset> inset;
 
-	LyXTextClass tclass = buf.params().getLyXTextClass();
+	TextClass tclass = buf.params().getTextClass();
 
 	lex.next();
 	string tmptok = lex.getString();

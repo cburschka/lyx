@@ -51,7 +51,7 @@ InsetFloatList::InsetFloatList(string const & type)
 
 docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 {
-	FloatList const & floats = buf.params().getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getTextClass().floats();
 	FloatList::const_iterator it = floats[to_ascii(getParam("type"))];
 	if (it != floats.end())
 		return buf.B_(it->second.listName());
@@ -74,7 +74,7 @@ void InsetFloatList::write(Buffer const &, ostream & os) const
 
 void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 {
-	FloatList const & floats = buf.params().getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getTextClass().floats();
 	string token;
 
 	if (lex.eatLine()) {
@@ -101,7 +101,7 @@ void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 int InsetFloatList::latex(Buffer const & buf, odocstream & os,
                           OutputParams const &) const
 {
-	FloatList const & floats = buf.params().getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getTextClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {

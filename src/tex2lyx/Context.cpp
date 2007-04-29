@@ -84,7 +84,7 @@ bool Context::empty = true;
 
 
 Context::Context(bool need_layout_,
-		 LyXTextClass const & textclass_,
+		 TextClass const & textclass_,
 		 Layout_ptr layout_, Layout_ptr parent_layout_,
 		 TeXFont font_)
 	: need_layout(need_layout_),

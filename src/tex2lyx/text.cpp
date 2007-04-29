@@ -445,13 +445,13 @@ private:
 };
 
 
-Layout_ptr findLayout(LyXTextClass const & textclass,
+Layout_ptr findLayout(TextClass const & textclass,
 			 string const & name)
 {
-	LyXTextClass::const_iterator beg = textclass.begin();
-	LyXTextClass::const_iterator end = textclass.end();
+	TextClass::const_iterator beg = textclass.begin();
+	TextClass::const_iterator end = textclass.end();
 
-	LyXTextClass::const_iterator
+	TextClass::const_iterator
 		it = std::find_if(beg, end, isLayout(name));
 
 	return (it == end) ? Layout_ptr() : *it;

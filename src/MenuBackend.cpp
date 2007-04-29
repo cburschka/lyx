@@ -575,7 +575,7 @@ void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 	}
 
 	FloatList const & floats =
-		buf->params().getLyXTextClass().floats();
+		buf->params().getTextClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -597,7 +597,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 	}
 
 	FloatList const & floats =
-		buf->params().getLyXTextClass().floats();
+		buf->params().getTextClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -619,7 +619,7 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 	CharStyles & charstyles =
-		buf->params().getLyXTextClass().charstyles();
+		buf->params().getTextClass().charstyles();
 	CharStyles::iterator cit = charstyles.begin();
 	CharStyles::iterator end = charstyles.end();
 	for (; cit != end; ++cit) {
@@ -714,7 +714,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		tomenu.add(MenuItem(MenuItem::Command, _("Master Document"), f));
 	}
 
-	FloatList const & floatlist = buf->params().getLyXTextClass().floats();
+	FloatList const & floatlist = buf->params().getTextClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
 	TocList::const_iterator end = toc_list.end();

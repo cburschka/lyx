@@ -71,7 +71,7 @@ void breakParagraph(BufferParams const & bparams,
 
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
-	tmp->layout(bparams.getLyXTextClass().defaultLayout());
+	tmp->layout(bparams.getTextClass().defaultLayout());
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par.inInset());
 
@@ -135,7 +135,7 @@ void breakParagraph(BufferParams const & bparams,
 
 	if (!isempty) {
 		par.params().clear();
-		par.layout(bparams.getLyXTextClass().defaultLayout());
+		par.layout(bparams.getTextClass().defaultLayout());
 	}
 
 	// layout stays the same with latex-environments

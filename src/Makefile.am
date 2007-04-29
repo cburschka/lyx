@@ -188,10 +188,10 @@ lyx_SOURCES = \
 	ServerSocket.h \
 	lyx_sty.cpp \
 	lyx_sty.h \
-	LyXTextClass.cpp \
-	LyXTextClass.h \
-	LyXTextClassList.cpp \
-	LyXTextClassList.h \
+	TextClass.cpp \
+	TextClass.h \
+	TextClassList.cpp \
+	TextClassList.h \
 	LyXText.h \
 	LyXVC.cpp \
 	LyXVC.h \

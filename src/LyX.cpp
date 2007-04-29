@@ -38,7 +38,7 @@
 #include "LyXRC.h"
 #include "Server.h"
 #include "ServerSocket.h"
-#include "LyXTextClassList.h"
+#include "TextClassList.h"
 #include "MenuBackend.h"
 #include "Messages.h"
 #include "Mover.h"

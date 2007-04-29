@@ -278,9 +278,9 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(buffer.params().getLyXTextClass().name(),
+		if (!contains(buffer.params().getTextClass().name(),
 			      "art")) {
-			if (buffer.params().sides == LyXTextClass::OneSide) {
+			if (buffer.params().sides == TextClass::OneSide) {
 				// oneside
 				os << "\\clearpage";
 			} else {

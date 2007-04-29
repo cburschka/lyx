@@ -178,7 +178,7 @@ void ParagraphMetrics::dump() const
 int ParagraphMetrics::rightMargin(Buffer const & buffer) const
 {
 	BufferParams const & params = buffer.params();
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	TextClass const & tclass = params.getTextClass();
 	docstring trmarg = from_utf8(tclass.rightmargin());
 	docstring lrmarg = from_utf8(par_->layout()->rightmargin);
 	frontend::FontMetrics const & fm = theFontMetrics(params.getFont());

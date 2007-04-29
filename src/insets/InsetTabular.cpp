@@ -1097,7 +1097,7 @@ void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
 	cur.push(*inset);
 	// undo information has already been recorded
 	inset->getText(0)->setLayout(*cur.bv().buffer(), 0, cur.lastpit() + 1,
-			bp.getLyXTextClass().defaultLayoutName());
+			bp.getTextClass().defaultLayoutName());
 	cur.pop();
 }
 

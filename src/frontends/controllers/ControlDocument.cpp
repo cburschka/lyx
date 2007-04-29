@@ -24,7 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "Color.h"
 #include "OutputParams.h"
-#include "LyXTextClassList.h"
+#include "TextClassList.h"
 #include "tex-strings.h"
 
 // FIXME: those two headers are needed because of the
@@ -80,7 +80,7 @@ BufferParams & ControlDocument::params() const
 }
 
 
-LyXTextClass const & ControlDocument::textClass() const
+TextClass const & ControlDocument::textClass() const
 {
 	return textclasslist[bp_->textclass];
 }

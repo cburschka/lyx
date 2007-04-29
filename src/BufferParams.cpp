@@ -29,7 +29,7 @@
 #include "Font.h"
 #include "Lexer.h"
 #include "LyXRC.h"
-#include "LyXTextClassList.h"
+#include "TextClassList.h"
 #include "OutputParams.h"
 #include "tex-strings.h"
 #include "Spacing.h"
@@ -156,13 +156,13 @@ PaperOrientationTranslator const & paperorientationtranslator()
 
 
 // Page sides
-typedef Translator<int, LyXTextClass::PageSides> SidesTranslator;
+typedef Translator<int, TextClass::PageSides> SidesTranslator;
 
 
 SidesTranslator const init_sidestranslator()
 {
-	SidesTranslator translator(1, LyXTextClass::OneSide);
-	translator.addPair(2, LyXTextClass::TwoSides);
+	SidesTranslator translator(1, TextClass::OneSide);
+	translator.addPair(2, TextClass::TwoSides);
 	return translator;
 }
 
@@ -320,7 +320,7 @@ BufferParams::BufferParams()
 	fontsTypewriterScale = 100;
 	inputenc = "auto";
 	graphicsDriver = "default";
-	sides = LyXTextClass::OneSide;
+	sides = TextClass::OneSide;
 	columns = 1;
 	pagestyle = "default";
 	compressed = false;
@@ -433,7 +433,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		// FIXME: isTeXClassAvailable will try to load the layout file, but will
 		// fail because of the lack of path info. Warnings will be given although
 		// the layout file will be correctly loaded later.
-		if (!getLyXTextClass().isTeXClassAvailable()) {
+		if (!getTextClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
 					         "%1$s.layout,\n"
@@ -731,7 +731,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 {
 	os << "\\documentclass";
 
-	LyXTextClass const & tclass = getLyXTextClass();
+	TextClass const & tclass = getTextClass();
 
 	ostringstream clsoptions; // the document class options.
 
@@ -779,10 +779,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// if needed
 	if (sides != tclass.sides()) {
 		switch (sides) {
-		case LyXTextClass::OneSide:
+		case TextClass::OneSide:
 			clsoptions << "oneside,";
 			break;
-		case LyXTextClass::TwoSides:
+		case TextClass::TwoSides:
 			clsoptions << "twoside,";
 			break;
 		}
@@ -1140,7 +1140,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	LyXTextClass const & tclass = textclasslist[textclass];
+	TextClass const & tclass = textclasslist[textclass];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1156,7 +1156,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	LyXTextClass const & tclass = textclasslist[textclass];
+	TextClass const & tclass = textclasslist[textclass];
 
 	return (sides == tclass.sides()
 		&& columns == tclass.columns()
@@ -1167,7 +1167,7 @@ bool BufferParams::hasClassDefaults() const
 }
 
 
-LyXTextClass const & BufferParams::getLyXTextClass() const
+TextClass const & BufferParams::getTextClass() const
 {
 	return textclasslist[textclass];
 }
@@ -1175,7 +1175,7 @@ LyXTextClass const & BufferParams::getLyXTextClass() const
 
 Font const BufferParams::getFont() const
 {
-	Font f = getLyXTextClass().defaultfont();
+	Font f = getTextClass().defaultfont();
 	f.setLanguage(language);
 	if (fontsDefaultFamily == "rmdefault")
 		f.setFamily(Font::ROMAN_FAMILY);
@@ -1491,7 +1491,7 @@ biblio::CiteEngine BufferParams::getEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
-	if (getLyXTextClass().provides("natbib")
+	if (getTextClass().provides("natbib")
 	    && cite_engine_ != biblio::ENGINE_NATBIB_NUMERICAL)
 		return biblio::ENGINE_NATBIB_AUTHORYEAR;
 	return cite_engine_;

@@ -273,7 +273,7 @@ bool doInsertInset(Cursor & cur, LyXText * text,
 		// reset first par to default
 		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
 			Layout_ptr const layout =
-				cur.buffer().params().getLyXTextClass().defaultLayout();
+				cur.buffer().params().getTextClass().defaultLayout();
 			cur.text()->paragraphs().begin()->layout(layout);
 		}
 	}
@@ -878,7 +878,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
-		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
+		TextClass const & tclass = bv->buffer()->params().getTextClass();
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 		bool hasLayout = tclass.hasLayout(layout);
@@ -1226,7 +1226,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posRight();
 		ParagraphList & pars = cur.text()->paragraphs();
 
-		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
+		TextClass const & tclass = bv->buffer()->params().getTextClass();
 
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
@@ -1495,7 +1495,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FLOAT_LIST: {
-		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
+		TextClass const & tclass = bv->buffer()->params().getTextClass();
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
 			// not quite sure if we want this...
 			recordUndo(cur);
@@ -1735,7 +1735,7 @@ bool LyXText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_CHARSTYLE_INSERT:
 		code = Inset::CHARSTYLE_CODE;
-		if (cur.buffer().params().getLyXTextClass().charstyles().empty())
+		if (cur.buffer().params().getTextClass().charstyles().empty())
 			enable = false;
 		break;
 	case LFUN_BOX_INSERT:

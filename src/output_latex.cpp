@@ -250,7 +250,7 @@ TeXOnePar(Buffer const & buf,
 	if (!pit->forceDefaultParagraphs())
 		style = pit->layout();
 	else
-		style = bparams.getLyXTextClass().defaultLayout();
+		style = bparams.getTextClass().defaultLayout();
 
 	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style->needprotect;
@@ -502,7 +502,7 @@ void latexParagraphs(Buffer const & buf,
 {
 	bool was_title = false;
 	bool already_title = false;
-	LyXTextClass const & tclass = buf.params().getLyXTextClass();
+	TextClass const & tclass = buf.params().getTextClass();
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator endpar = paragraphs.end();
 

@@ -332,7 +332,7 @@ void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 	BOOST_ASSERT(start != end);
 
 	BufferParams const & bufparams = buffer.params();
-	Layout_ptr const & lyxlayout = bufparams.getLyXTextClass()[layout];
+	Layout_ptr const & lyxlayout = bufparams.getTextClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
@@ -351,7 +351,7 @@ void LyXText::setLayout(Cursor & cur, string const & layout)
 	// special handling of new environment insets
 	BufferView & bv = cur.bv();
 	BufferParams const & params = bv.buffer()->params();
-	Layout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
+	Layout_ptr const & lyxlayout = params.getTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
 		LYXERR(Debug::DEBUG) << "setting layout " << layout << endl;

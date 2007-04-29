@@ -1611,7 +1611,7 @@ docstring const Paragraph::translateIfPossible(docstring const & s,
 docstring Paragraph::expandLabel(Layout_ptr const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
-	LyXTextClass const & tclass = bparams.getLyXTextClass();
+	TextClass const & tclass = bparams.getTextClass();
 
 	docstring fmt;
 	if (process_appendix && params().appendix())
@@ -1915,7 +1915,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	bool asdefault = forceDefaultParagraphs();
 
 	if (asdefault) {
-		style = bparams.getLyXTextClass().defaultLayout();
+		style = bparams.getTextClass().defaultLayout();
 	} else {
 		style = layout();
 	}

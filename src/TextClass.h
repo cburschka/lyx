@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXTextClass.h
+ * \file TextClass.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -45,7 +45,7 @@ typedef std::vector<CharStyle> CharStyles;
 
 
 /// Stores the layout specification of a LyX document class.
-class LyXTextClass {
+class TextClass {
 public:
 	/// The individual styles comprising the document class
 	typedef std::vector<Layout_ptr> LayoutList;
@@ -53,7 +53,7 @@ public:
 	typedef LayoutList::const_iterator const_iterator;
 	/// Construct a layout with default values. Actual values loaded later.
 	explicit
-	LyXTextClass(std::string const & = std::string(),
+	TextClass(std::string const & = std::string(),
 		     std::string const & = std::string(),
 		     std::string const & = std::string(),
 		     bool = false);
@@ -249,7 +249,7 @@ private:
 
 
 /// convert page sides option to text 1 or 2
-std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p);
+std::ostream & operator<<(std::ostream & os, TextClass::PageSides p);
 
 
 } // namespace lyx

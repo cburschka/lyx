@@ -19,7 +19,7 @@
 namespace lyx {
 
 class BufferParams;
-class LyXTextClass;
+class TextClass;
 
 namespace frontend {
 
@@ -46,7 +46,7 @@ public:
 	/// always true since we don't manipulate document contents
 	virtual bool canApply() const { return true; }
 	///
-	LyXTextClass const & textClass() const;
+	TextClass const & textClass() const;
 	///
 	BufferParams & params() const;
 	///

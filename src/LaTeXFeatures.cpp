@@ -119,7 +119,7 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 		return;
 	}
 
-	LyXTextClass const & tclass = params_.getLyXTextClass();
+	TextClass const & tclass = params_.getTextClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
 		list<string>::const_iterator cit = usedLayouts_.begin();
@@ -154,7 +154,7 @@ bool LaTeXFeatures::isRequired(string const & name) const
 
 bool LaTeXFeatures::mustProvide(string const & name) const
 {
-	return isRequired(name) && !params_.getLyXTextClass().provides(name);
+	return isRequired(name) && !params_.getTextClass().provides(name);
 }
 
 
@@ -181,7 +181,7 @@ void LaTeXFeatures::useFloat(string const & name)
 	// We only need float.sty if we use non builtin floats, or if we
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
-	Floating const & fl = params_.getLyXTextClass().floats().getType(name);
+	Floating const & fl = params_.getTextClass().floats().getType(name);
 	if (!fl.type().empty() && !fl.builtin()) {
 		require("float");
 	}
@@ -266,7 +266,7 @@ int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
-	LyXTextClass const & tclass = params_.getLyXTextClass();
+	TextClass const & tclass = params_.getTextClass();
 
 	//
 	//  These are all the 'simple' includes.  i.e
@@ -506,7 +506,7 @@ string const LaTeXFeatures::getBabelOptions() const
 docstring const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble
-	LyXTextClass const & tclass = params_.getLyXTextClass();
+	TextClass const & tclass = params_.getTextClass();
 	odocstringstream tcpreamble;
 
 	tcpreamble << tclass.preamble();
@@ -588,7 +588,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 
 void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 {
-	FloatList const & floats = params_.getLyXTextClass().floats();
+	FloatList const & floats = params_.getTextClass().floats();
 
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.

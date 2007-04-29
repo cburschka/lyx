@@ -134,7 +134,7 @@ docstring const ControlToc::getGuiName(string const & type) const
 		return _("Table of Contents");
 
 	FloatList const & floats =
-		kernel().buffer().params().getLyXTextClass().floats();
+		kernel().buffer().params().getTextClass().floats();
 	if (floats.typeExist(type))
 		return from_utf8(floats.getType(type).name());
 	else

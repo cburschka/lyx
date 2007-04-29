@@ -14,7 +14,7 @@
 #define TEX2LYX_H
 
 #include "Parser.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 
 #include <iosfwd>
 #include <string>
@@ -29,7 +29,7 @@ namespace support { class FileName; }
 class Context;
 
 /// in preamble.cpp
-LyXTextClass const parse_preamble(Parser & p, std::ostream & os, std::string const & forceclass);
+TextClass const parse_preamble(Parser & p, std::ostream & os, std::string const & forceclass);
 
 /// used packages with options
 extern std::map<std::string, std::vector<std::string> > used_packages;

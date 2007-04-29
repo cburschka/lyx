@@ -20,7 +20,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LyXFunc.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "LyXView.h"
 #include "LyX.h"
 
@@ -361,10 +361,10 @@ void Toolbars::update()
 
 void layoutSelected(LyXView & lv, string const & name)
 {
-	LyXTextClass const & tc = lv.buffer()->params().getLyXTextClass();
+	TextClass const & tc = lv.buffer()->params().getTextClass();
 
-	LyXTextClass::const_iterator it  = tc.begin();
-	LyXTextClass::const_iterator const end = tc.end();
+	TextClass::const_iterator it  = tc.begin();
+	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
 		string const & itname = (*it)->name();
 		// Yes, the lyx::to_utf8(_()) is correct

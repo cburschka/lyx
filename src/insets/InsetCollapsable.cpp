@@ -455,7 +455,7 @@ void InsetCollapsable::setLabelFont(Font & font)
 
 docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp) const
 {
-	FloatList const & floats = bp.getLyXTextClass().floats();
+	FloatList const & floats = bp.getTextClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
 	return (it == floats.end()) ? from_ascii(type) : _(it->second.name());

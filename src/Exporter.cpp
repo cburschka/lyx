@@ -63,7 +63,7 @@ namespace {
 vector<string> const Backends(Buffer const & buffer)
 {
 	vector<string> v;
-	if (buffer.params().getLyXTextClass().isTeXClassAvailable()) {
+	if (buffer.params().getTextClass().isTeXClassAvailable()) {
 		v.push_back(bufferFormat(buffer));
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (v.back() == "latex")

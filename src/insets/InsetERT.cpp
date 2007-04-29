@@ -26,7 +26,7 @@
 #include "Color.h"
 #include "LyXAction.h"
 #include "Lexer.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
@@ -225,7 +225,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		BufferParams const & bp = cur.buffer().params();
 		Layout_ptr const layout =
-			bp.getLyXTextClass().defaultLayout();
+			bp.getTextClass().defaultLayout();
 		Font font = layout->font;
 		// ERT contents has always latex_language
 		font.setLanguage(latex_language);

@@ -57,9 +57,9 @@ namespace frontend {
 
 namespace {
 
-LyXTextClass const & getTextClass(LyXView const & lv)
+TextClass const & getTextClass(LyXView const & lv)
 {
-	return lv.buffer()->params().getLyXTextClass();
+	return lv.buffer()->params().getTextClass();
 }
 
 
@@ -84,7 +84,7 @@ QLayoutBox::QLayoutBox(QToolBar * toolbar, GuiView & owner)
 
 void QLayoutBox::set(string const & layout)
 {
-	LyXTextClass const & tc = getTextClass(owner_);
+	TextClass const & tc = getTextClass(owner_);
 
 	QString const & name = qt_(tc[layout]->name());
 
@@ -106,14 +106,14 @@ void QLayoutBox::set(string const & layout)
 
 void QLayoutBox::update()
 {
-	LyXTextClass const & tc = getTextClass(owner_);
+	TextClass const & tc = getTextClass(owner_);
 
 	combo_->setUpdatesEnabled(false);
 
 	combo_->clear();
 
-	LyXTextClass::const_iterator it = tc.begin();
-	LyXTextClass::const_iterator const end = tc.end();
+	TextClass::const_iterator it = tc.begin();
+	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
 		// ignore obsolete entries
 		if ((*it)->obsoleted_by().empty())

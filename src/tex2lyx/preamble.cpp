@@ -15,7 +15,7 @@
 #include "tex2lyx.h"
 
 #include "layout.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "Lexer.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -234,7 +234,7 @@ void handle_package(string const & name, string const & opts)
 
 
 
-void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
+void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2\n"
 	   << "\\lyxformat 245\n"
@@ -274,7 +274,7 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 
 } // anonymous namespace
 
-LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & forceclass)
+TextClass const parse_preamble(Parser & p, ostream & os, string const & forceclass)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
@@ -497,7 +497,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;
 		exit(1);
 	}
-	LyXTextClass textclass;
+	TextClass textclass;
 	textclass.read(layoutfilename);
 	if (h_papersides.empty()) {
 		ostringstream ss;

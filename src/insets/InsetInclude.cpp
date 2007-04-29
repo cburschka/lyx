@@ -412,8 +412,8 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 						"has textclass `%2$s'\n"
 							     "while parent file has textclass `%3$s'."),
 					      makeDisplayPath(included_file.absFilename()),
-					      from_utf8(tmp->params().getLyXTextClass().name()),
-					      from_utf8(m_buffer->params().getLyXTextClass().name()));
+					      from_utf8(tmp->params().getTextClass().name()),
+					      from_utf8(m_buffer->params().getTextClass().name()));
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}

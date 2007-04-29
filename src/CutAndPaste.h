@@ -23,7 +23,7 @@ namespace lyx {
 class Buffer;
 class ErrorList;
 class InsetText;
-class LyXTextClass;
+class TextClass;
 class Cursor;
 class ParagraphList;
 

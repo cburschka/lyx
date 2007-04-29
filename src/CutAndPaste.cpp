@@ -29,7 +29,7 @@
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "LyXText.h"
-#include "LyXTextClassList.h"
+#include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -146,7 +146,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// set the paragraphs to default
 	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
 		Layout_ptr const layout = 
-			buffer.params().getLyXTextClass().defaultLayout();
+			buffer.params().getTextClass().defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin(); 
 				par != end; ++par)
@@ -416,8 +416,8 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 	if (c1 == c2)
 		return;
 
-	LyXTextClass const & tclass1 = textclasslist[c1];
-	LyXTextClass const & tclass2 = textclasslist[c2];
+	TextClass const & tclass1 = textclasslist[c1];
+	TextClass const & tclass2 = textclasslist[c2];
 
 	// layouts
 	ParIterator end = par_iterator_end(in);
@@ -625,7 +625,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.layout(bp.getLyXTextClass().defaultLayout());
+		par.layout(bp.getTextClass().defaultLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		cutstack.push(make_pair(pars, bp.textclass));
@@ -652,7 +652,7 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.layout(bp.getLyXTextClass().defaultLayout());
+		par.layout(bp.getTextClass().defaultLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.textclass));

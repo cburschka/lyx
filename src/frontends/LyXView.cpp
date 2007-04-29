@@ -394,7 +394,7 @@ void LyXView::updateLayoutChoice()
 
 	// Update the layout display
 	if (toolbars_->updateLayoutList(buffer()->params().textclass)) {
-		current_layout = buffer()->params().getLyXTextClass().defaultLayoutName();
+		current_layout = buffer()->params().getTextClass().defaultLayoutName();
 	}
 
 	BOOST_ASSERT(work_area_);

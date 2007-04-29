@@ -54,7 +54,7 @@
 #include "LyXRC.h"
 #include "Row.h"
 #include "Server.h"
-#include "LyXTextClassList.h"
+#include "TextClassList.h"
 #include "LyXVC.h"
 #include "Paragraph.h"
 #include "ParIterator.h"

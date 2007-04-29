@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "Layout.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "Lexer.h"
 #include "debug.h"
 
@@ -132,7 +132,7 @@ Layout::Layout ()
 
 
 // Reads a layout definition from file
-bool Layout::read(Lexer & lexrc, LyXTextClass const & tclass)
+bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {
@@ -224,9 +224,9 @@ bool Layout::read(Lexer & lexrc, LyXTextClass const & tclass)
 					       << style << "'\n"
 					       << "All layouts so far:"
 					       << endl;
-					LyXTextClass::const_iterator it =
+					TextClass::const_iterator it =
 						tclass.begin();
-					LyXTextClass::const_iterator end =
+					TextClass::const_iterator end =
 						tclass.end();
 					for (; it != end; ++it) {
 						lyxerr << (*it)->name()

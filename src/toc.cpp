@@ -41,10 +41,10 @@ void outline(OutlineOp mode,  Cursor & cur)
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator end = pars.end();
 
-	LyXTextClass::const_iterator lit =
-		buf->params().getLyXTextClass().begin();
-	LyXTextClass::const_iterator const lend =
-		buf->params().getLyXTextClass().end();
+	TextClass::const_iterator lit =
+		buf->params().getTextClass().begin();
+	TextClass::const_iterator const lend =
+		buf->params().getTextClass().end();
 
 	int const thistoclevel = start->layout()->toclevel;
 	int toclevel;

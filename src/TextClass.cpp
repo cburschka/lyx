@@ -1,5 +1,5 @@
 /**
- * \file LyXTextClass.cpp
+ * \file TextClass.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 #include <config.h>
 
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "debug.h"
 #include "Lexer.h"
 #include "Counters.h"
@@ -98,7 +98,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 } // namespace anon
 
 
-LyXTextClass::LyXTextClass(string const & fn, string const & cln,
+TextClass::TextClass(string const & fn, string const & cln,
 			   string const & desc, bool texClassAvail )
 	: name_(fn), latexname_(cln), description_(desc),
 	  floatlist_(new FloatList), ctrs_(new Counters),
@@ -119,13 +119,13 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 }
 
 
-bool LyXTextClass::isTeXClassAvailable() const
+bool TextClass::isTeXClassAvailable() const
 {
 	return texClassAvail_;
 }
 
 
-bool LyXTextClass::do_readStyle(Lexer & lexrc, Layout & lay)
+bool TextClass::do_readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS) << "Reading style " << lay.name() << endl;
 	if (!lay.read(lexrc, *this)) {
@@ -170,7 +170,7 @@ enum TextClassTags {
 
 
 // Reads a textclass structure from file.
-bool LyXTextClass::read(FileName const & filename, bool merge)
+bool TextClass::read(FileName const & filename, bool merge)
 {
 	if (!support::isFileReadable(filename)) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
@@ -476,7 +476,7 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 }
 
 
-void LyXTextClass::readTitleType(Lexer & lexrc)
+void TextClass::readTitleType(Lexer & lexrc)
 {
 	keyword_item titleTypeTags[] = {
 		{ "commandafter", TITLE_COMMAND_AFTER },
@@ -496,14 +496,14 @@ void LyXTextClass::readTitleType(Lexer & lexrc)
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
-		       << " in LyXTextClass::readTitleType." << endl;
+		       << " in TextClass::readTitleType." << endl;
 
 		break;
 	}
 }
 
 
-void LyXTextClass::readOutputType(Lexer & lexrc)
+void TextClass::readOutputType(Lexer & lexrc)
 {
 	keyword_item outputTypeTags[] = {
 		{ "docbook", DOCBOOK },
@@ -525,7 +525,7 @@ void LyXTextClass::readOutputType(Lexer & lexrc)
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
-		       << " in LyXTextClass::readOutputType." << endl;
+		       << " in TextClass::readOutputType." << endl;
 
 		break;
 	}
@@ -541,7 +541,7 @@ enum ClassOptionsTags {
 };
 
 
-void LyXTextClass::readClassOptions(Lexer & lexrc)
+void TextClass::readClassOptions(Lexer & lexrc)
 {
 	keyword_item classOptionsTags[] = {
 		{"end", CO_END },
@@ -597,7 +597,7 @@ enum CharStyleTags {
 };
 
 
-void LyXTextClass::readCharStyle(Lexer & lexrc, string const & name)
+void TextClass::readCharStyle(Lexer & lexrc, string const & name)
 {
 	keyword_item elementTags[] = {
 		{ "end", CS_END },
@@ -687,7 +687,7 @@ enum FloatTags {
 };
 
 
-void LyXTextClass::readFloat(Lexer & lexrc)
+void TextClass::readFloat(Lexer & lexrc)
 {
 	keyword_item floatTags[] = {
 		{ "end", FT_END },
@@ -781,7 +781,7 @@ enum CounterTags {
 	CT_END
 };
 
-void LyXTextClass::readCounter(Lexer & lexrc)
+void TextClass::readCounter(Lexer & lexrc)
 {
 	keyword_item counterTags[] = {
 		{ "end", CT_END },
@@ -832,25 +832,25 @@ void LyXTextClass::readCounter(Lexer & lexrc)
 }
 
 
-Font const & LyXTextClass::defaultfont() const
+Font const & TextClass::defaultfont() const
 {
 	return defaultfont_;
 }
 
 
-string const & LyXTextClass::leftmargin() const
+string const & TextClass::leftmargin() const
 {
 	return leftmargin_;
 }
 
 
-string const & LyXTextClass::rightmargin() const
+string const & TextClass::rightmargin() const
 {
 	return rightmargin_;
 }
 
 
-bool LyXTextClass::hasLayout(string const & n) const
+bool TextClass::hasLayout(string const & n) const
 {
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
@@ -861,7 +861,7 @@ bool LyXTextClass::hasLayout(string const & n) const
 
 
 
-Layout_ptr const & LyXTextClass::operator[](string const & name) const
+Layout_ptr const & TextClass::operator[](string const & name) const
 {
 	BOOST_ASSERT(!name.empty());
 
@@ -887,7 +887,7 @@ Layout_ptr const & LyXTextClass::operator[](string const & name) const
 
 
 
-bool LyXTextClass::delete_layout(string const & name)
+bool TextClass::delete_layout(string const & name)
 {
 	if (name == defaultLayoutName())
 		return false;
@@ -904,7 +904,7 @@ bool LyXTextClass::delete_layout(string const & name)
 
 
 // Load textclass info if not loaded yet
-bool LyXTextClass::load(string const & path) const
+bool TextClass::load(string const & path) const
 {
 	if (loaded_)
 		return true;
@@ -915,7 +915,7 @@ bool LyXTextClass::load(string const & path) const
 		layout_file = FileName(addName(path, name_ + ".layout"));
 	if (layout_file.empty() || !fs::exists(layout_file.toFilesystemEncoding()))
 		layout_file = libFileSearch("layouts", name_, "layout");
-	loaded_ = const_cast<LyXTextClass*>(this)->read(layout_file) == 0;
+	loaded_ = const_cast<TextClass*>(this)->read(layout_file) == 0;
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
@@ -929,25 +929,25 @@ bool LyXTextClass::load(string const & path) const
 }
 
 
-FloatList & LyXTextClass::floats()
+FloatList & TextClass::floats()
 {
 	return *floatlist_.get();
 }
 
 
-FloatList const & LyXTextClass::floats() const
+FloatList const & TextClass::floats() const
 {
 	return *floatlist_.get();
 }
 
 
-Counters & LyXTextClass::counters() const
+Counters & TextClass::counters() const
 {
 	return *ctrs_.get();
 }
 
 
-CharStyles::iterator LyXTextClass::charstyle(string const & s) const
+CharStyles::iterator TextClass::charstyle(string const & s) const
 {
 	CharStyles::iterator cs = charstyles().begin();
 	CharStyles::iterator csend = charstyles().end();
@@ -959,153 +959,153 @@ CharStyles::iterator LyXTextClass::charstyle(string const & s) const
 }
 
 
-string const & LyXTextClass::defaultLayoutName() const
+string const & TextClass::defaultLayoutName() const
 {
 	// This really should come from the actual layout... (Lgb)
 	return defaultlayout_;
 }
 
 
-Layout_ptr const & LyXTextClass::defaultLayout() const
+Layout_ptr const & TextClass::defaultLayout() const
 {
 	return operator[](defaultLayoutName());
 }
 
 
-string const & LyXTextClass::name() const
+string const & TextClass::name() const
 {
 	return name_;
 }
 
 
-string const & LyXTextClass::latexname() const
+string const & TextClass::latexname() const
 {
-	const_cast<LyXTextClass*>(this)->load();
+	const_cast<TextClass*>(this)->load();
 	return latexname_;
 }
 
 
-string const & LyXTextClass::description() const
+string const & TextClass::description() const
 {
 	return description_;
 }
 
 
-string const & LyXTextClass::opt_fontsize() const
+string const & TextClass::opt_fontsize() const
 {
 	return opt_fontsize_;
 }
 
 
-string const & LyXTextClass::opt_pagestyle() const
+string const & TextClass::opt_pagestyle() const
 {
 	return opt_pagestyle_;
 }
 
 
-string const & LyXTextClass::options() const
+string const & TextClass::options() const
 {
 	return options_;
 }
 
 
-string const & LyXTextClass::class_header() const
+string const & TextClass::class_header() const
 {
 	return class_header_;
 }
 
 
-string const & LyXTextClass::pagestyle() const
+string const & TextClass::pagestyle() const
 {
 	return pagestyle_;
 }
 
 
-docstring const & LyXTextClass::preamble() const
+docstring const & TextClass::preamble() const
 {
 	return preamble_;
 }
 
 
-LyXTextClass::PageSides LyXTextClass::sides() const
+TextClass::PageSides TextClass::sides() const
 {
 	return sides_;
 }
 
 
-int LyXTextClass::secnumdepth() const
+int TextClass::secnumdepth() const
 {
 	return secnumdepth_;
 }
 
 
-int LyXTextClass::tocdepth() const
+int TextClass::tocdepth() const
 {
 	return tocdepth_;
 }
 
 
-OutputType LyXTextClass::outputType() const
+OutputType TextClass::outputType() const
 {
 	return outputType_;
 }
 
 
-bool LyXTextClass::provides(string const & p) const
+bool TextClass::provides(string const & p) const
 {
 	return provides_.find(p) != provides_.end();
 }
 
 
-unsigned int LyXTextClass::columns() const
+unsigned int TextClass::columns() const
 {
 	return columns_;
 }
 
 
-LYX_TITLE_LATEX_TYPES LyXTextClass::titletype() const
+LYX_TITLE_LATEX_TYPES TextClass::titletype() const
 {
 	return titletype_;
 }
 
 
-string const & LyXTextClass::titlename() const
+string const & TextClass::titlename() const
 {
 	return titlename_;
 }
 
 
-int LyXTextClass::size() const
+int TextClass::size() const
 {
 	return layoutlist_.size();
 }
 
 
-int LyXTextClass::min_toclevel() const
+int TextClass::min_toclevel() const
 {
 	return min_toclevel_;
 }
 
 
-int LyXTextClass::max_toclevel() const
+int TextClass::max_toclevel() const
 {
 	return max_toclevel_;
 }
 
 
-bool LyXTextClass::hasTocLevels() const
+bool TextClass::hasTocLevels() const
 {
 	return min_toclevel_ != Layout::NOT_IN_TOC;
 }
 
 
-ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
+ostream & operator<<(ostream & os, TextClass::PageSides p)
 {
 	switch (p) {
-	case LyXTextClass::OneSide:
+	case TextClass::OneSide:
 		os << '1';
 		break;
-	case LyXTextClass::TwoSides:
+	case TextClass::TwoSides:
 		os << '2';
 		break;
 	}

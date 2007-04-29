@@ -16,7 +16,7 @@
 #include "Context.h"
 
 #include "debug.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"
@@ -425,7 +425,7 @@ void tex2lyx(std::istream &is, std::ostream &os)
 	//p.dump();
 
 	stringstream ss;
-	LyXTextClass textclass = parse_preamble(p, ss, documentclass);
+	TextClass textclass = parse_preamble(p, ss, documentclass);
 
 	active_environments.push_back("document");
 	Context context(true, textclass);

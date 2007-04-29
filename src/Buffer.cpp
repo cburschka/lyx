@@ -497,8 +497,8 @@ bool Buffer::readDocument(Lexer & lex)
 	BOOST_ASSERT(paragraphs().empty());
 
 	readHeader(lex);
-	if (!params().getLyXTextClass().load(filePath())) {
-		string theclass = params().getLyXTextClass().name();
+	if (!params().getTextClass().load(filePath())) {
+		string theclass = params().getTextClass().name();
 		Alert::error(_("Can't load document class"), bformat(
 			_("Using the default document class, because the "
 				     "class %1$s could not be loaded."), from_utf8(theclass)));
@@ -1023,19 +1023,19 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 bool Buffer::isLatex() const
 {
-	return params().getLyXTextClass().outputType() == LATEX;
+	return params().getTextClass().outputType() == LATEX;
 }
 
 
 bool Buffer::isLiterate() const
 {
-	return params().getLyXTextClass().outputType() == LITERATE;
+	return params().getTextClass().outputType() == LITERATE;
 }
 
 
 bool Buffer::isDocBook() const
 {
-	return params().getLyXTextClass().outputType() == DOCBOOK;
+	return params().getTextClass().outputType() == DOCBOOK;
 }
 
 
@@ -1067,7 +1067,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	texrow().reset();
 
-	LyXTextClass const & tclass = params().getLyXTextClass();
+	TextClass const & tclass = params().getTextClass();
 	string const top_element = tclass.latexname();
 
 	if (!only_body) {
@@ -1122,7 +1122,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	    << " file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
-	params().getLyXTextClass().counters().reset();
+	params().getTextClass().counters().reset();
 
 	sgml::openTag(os, top);
 	os << '\n';
@@ -1176,7 +1176,7 @@ int Buffer::runChktex()
 
 void Buffer::validate(LaTeXFeatures & features) const
 {
-	LyXTextClass const & tclass = params().getLyXTextClass();
+	TextClass const & tclass = params().getTextClass();
 
 	if (features.isAvailable("dvipost") && params().outputChanges)
 		features.require("dvipost");

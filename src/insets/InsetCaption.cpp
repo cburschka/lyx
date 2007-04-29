@@ -52,7 +52,7 @@ namespace lyx {
 using support::bformat;
 
 InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp), textclass_(bp.getLyXTextClass())
+	: InsetText(bp), textclass_(bp.getTextClass())
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);

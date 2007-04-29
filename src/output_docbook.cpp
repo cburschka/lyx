@@ -110,7 +110,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    ParagraphList::const_iterator const & pend)
 {
 	Layout_ptr const & defaultstyle =
-		buf.params().getLyXTextClass().defaultLayout();
+		buf.params().getTextClass().defaultLayout();
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
@@ -134,7 +134,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      ParagraphList::const_iterator const & pend) {
 	ParagraphList::const_iterator par = pbegin;
 
-	Layout_ptr const & defaultstyle = buf.params().getLyXTextClass().defaultLayout();
+	Layout_ptr const & defaultstyle = buf.params().getTextClass().defaultLayout();
 	Layout_ptr const & bstyle = par->layout();
 	string item_tag;
 

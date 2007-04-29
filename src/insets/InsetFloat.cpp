@@ -281,7 +281,7 @@ docstring const InsetFloat::editMessage() const
 int InsetFloat::latex(Buffer const & buf, odocstream & os,
                       OutputParams const & runparams) const
 {
-	FloatList const & floats = buf.params().getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getTextClass().floats();
 	string tmptype = (params_.wide ? params_.type + "*" : params_.type);
 	if (params_.sideways) {
 		if (params_.type == "table")

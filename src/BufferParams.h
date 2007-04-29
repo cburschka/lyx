@@ -15,7 +15,7 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
@@ -97,7 +97,7 @@ public:
 	///
 	textclass_type textclass;
 	///
-	LyXTextClass const & getLyXTextClass() const;
+	TextClass const & getTextClass() const;
 
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
@@ -187,7 +187,7 @@ public:
 	///
 	unsigned int columns;
 	///
-	LyXTextClass::PageSides sides;
+	TextClass::PageSides sides;
 	///
 	std::string pagestyle;
 	/// \param index should lie in the range 0 <= \c index <= 3.

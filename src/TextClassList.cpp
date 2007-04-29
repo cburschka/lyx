@@ -1,5 +1,5 @@
 /**
- * \file LyXTextClassList.cpp
+ * \file TextClassList.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
 
 #include <config.h>
 
-#include "LyXTextClassList.h"
-#include "LyXTextClass.h"
+#include "TextClassList.h"
+#include "TextClass.h"
 #include "debug.h"
 #include "Lexer.h"
 
@@ -48,12 +48,12 @@ using std::ifstream;
 
 // Gets textclass number from name
 pair<bool, textclass_type> const
-LyXTextClassList::numberOfClass(string const & textclass) const
+TextClassList::numberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
 		find_if(classlist_.begin(), classlist_.end(),
 			bind(equal_to<string>(),
-			     bind(&LyXTextClass::name, _1),
+			     bind(&TextClass::name, _1),
 			     textclass));
 
 	return cit != classlist_.end() ?
@@ -63,8 +63,8 @@ LyXTextClassList::numberOfClass(string const & textclass) const
 
 
 // Gets a textclass structure from number
-LyXTextClass const &
-LyXTextClassList::operator[](textclass_type textclass) const
+TextClass const &
+TextClassList::operator[](textclass_type textclass) const
 {
 	classlist_[textclass].load();
 	if (textclass < classlist_.size())
@@ -76,11 +76,11 @@ LyXTextClassList::operator[](textclass_type textclass) const
 
 // used when sorting the textclass list.
 class less_textclass_avail_desc
-	: public std::binary_function<LyXTextClass, LyXTextClass, int>
+	: public std::binary_function<TextClass, TextClass, int>
 {
 public:
-	int operator()(LyXTextClass const & tc1,
-		       LyXTextClass const & tc2) const
+	int operator()(TextClass const & tc1,
+		       TextClass const & tc2) const
 	{
 		// Ordering criteria:
 		//   1. Availability of text class
@@ -94,7 +94,7 @@ public:
 
 
 // Reads LyX textclass definitions according to textclass config file
-bool LyXTextClassList::read()
+bool TextClassList::read()
 {
 	Lexer lex(0, 0);
 	support::FileName const real_file = libFileSearch("", "textclass.lst");
@@ -102,7 +102,7 @@ bool LyXTextClassList::read()
 			      << real_file << '\'' << endl;
 
 	if (real_file.empty()) {
-		lyxerr << "LyXTextClassList::Read: unable to find "
+		lyxerr << "TextClassList::Read: unable to find "
 		          "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'. Exiting." << endl;
@@ -115,13 +115,13 @@ bool LyXTextClassList::read()
 	}
 
 	if (!lex.setFile(real_file)) {
-		lyxerr << "LyXTextClassList::Read: "
+		lyxerr << "TextClassList::Read: "
 			"lyxlex was not able to set file: "
 		       << real_file << endl;
 	}
 
 	if (!lex.isOK()) {
-		lyxerr << "LyXTextClassList::Read: unable to open "
+		lyxerr << "TextClassList::Read: unable to open "
 		          "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'\nCheck your installation. LyX can't continue."
@@ -152,7 +152,7 @@ bool LyXTextClassList::read()
 						LYXERR(Debug::TCLASS) << "Avail: " << avail << endl;
 						// This code is run when we have
 						// fname, clname, desc, and avail
-						LyXTextClass tmpl(fname, clname, desc, avail);
+						TextClass tmpl(fname, clname, desc, avail);
 						if (lyxerr.debugging(Debug::TCLASS)) {
 							tmpl.load();
 						}
@@ -165,7 +165,7 @@ bool LyXTextClassList::read()
 	LYXERR(Debug::TCLASS) << "End of parsing of textclass.lst" << endl;
 
 	if (classlist_.empty()) {
-		lyxerr << "LyXTextClassList::Read: no textclasses found!"
+		lyxerr << "TextClassList::Read: no textclasses found!"
 		       << endl;
 		return false;
 	}
@@ -176,7 +176,7 @@ bool LyXTextClassList::read()
 
 
 std::pair<bool, textclass_type> const
-LyXTextClassList::addTextClass(std::string const & textclass, std::string const & path)
+TextClassList::addTextClass(std::string const & textclass, std::string const & path)
 {
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
 	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
@@ -199,7 +199,7 @@ LyXTextClassList::addTextClass(std::string const & textclass, std::string const 
 				// returns: whole string, classtype (not used here), first option, description
 				BOOST_ASSERT(sub.size()==4);
 				// now, add the layout to textclass.
-				LyXTextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2), 
+				TextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2), 
 					sub.str(3) + " <" + path + ">", true);
 				if (lyxerr.debugging(Debug::TCLASS))
 					tmpl.load(path);
@@ -214,7 +214,7 @@ LyXTextClassList::addTextClass(std::string const & textclass, std::string const 
 	
 
 // Global variable: textclass table.
-LyXTextClassList textclasslist;
+TextClassList textclasslist;
 
 
 // Reads the style files

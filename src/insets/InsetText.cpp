@@ -80,7 +80,7 @@ InsetText::InsetText(BufferParams const & bp)
 	: drawFrame_(false), frame_color_(Color::insetframe)
 {
 	paragraphs().push_back(Paragraph());
-	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
+	paragraphs().back().layout(bp.getTextClass().defaultLayout());
 	// Dispose of the infamous L-shaped cursor.
 	text_.current_font.setLanguage(bp.language);
 	text_.real_current_font.setLanguage(bp.language);

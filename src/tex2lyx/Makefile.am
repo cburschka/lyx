@@ -28,8 +28,8 @@ LINKED_FILES = \
 	Counters.cpp \
 	Layout.h \
 	Layout.cpp \
-	LyXTextClass.cpp \
-	LyXTextClass.h \
+	TextClass.cpp \
+	TextClass.h \
 	Lexer.cpp 
 
 BUILT_SOURCES = $(PCH_FILE) $(LINKED_FILES)

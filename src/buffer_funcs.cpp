@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeX.h"
-#include "LyXTextClass.h"
+#include "TextClass.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList.h"
@@ -389,7 +389,7 @@ void setCaptionLabels(Inset & inset, string const & type,
 }
 
 
-void setCaptions(Paragraph & par, LyXTextClass const & textclass)
+void setCaptions(Paragraph & par, TextClass const & textclass)
 {
 	if (par.insetlist.empty())
 		return;
@@ -421,7 +421,7 @@ void setCaptions(Paragraph & par, LyXTextClass const & textclass)
 }
 
 // set the label of a paragraph. This includes the counters.
-void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textclass)
+void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 {
 	Paragraph & par = *it;
 	Layout_ptr const & layout = par.layout();
@@ -610,7 +610,7 @@ bool updateCurrentLabel(Buffer const & buf,
 	case LABEL_CENTERED_TOP_ENVIRONMENT:
 	case LABEL_STATIC:
 	case LABEL_ITEMIZE:
-		setLabel(buf, it, buf.params().getLyXTextClass());
+		setLabel(buf, it, buf.params().getTextClass());
 		return true;
 
 	case LABEL_SENSITIVE:
@@ -651,7 +651,7 @@ void updateLabels(Buffer const & buf, ParIterator & iter, bool childonly)
 void updateLabels(Buffer const & buf, bool childonly)
 {
 	// Use the master text class also for child documents
-	LyXTextClass const & textclass = buf.params().getLyXTextClass();
+	TextClass const & textclass = buf.params().getTextClass();
 
 	if (!childonly) {
 		// If this is a child document start with the master
