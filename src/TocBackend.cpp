@@ -149,7 +149,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	}
 
 	int const toclevel = toc_item->par_it_->layout()->toclevel;
-	if (toclevel != LyXLayout::NOT_IN_TOC
+	if (toclevel != Layout::NOT_IN_TOC
 	    && toclevel >= min_toclevel
 	    && toclevel <= bufparams.tocdepth
 		&& tocstring.empty())
@@ -199,7 +199,7 @@ void TocBackend::update()
 
 		/// now the toc entry for the paragraph
 		int const toclevel = pit->layout()->toclevel;
-		if (toclevel != LyXLayout::NOT_IN_TOC
+		if (toclevel != Layout::NOT_IN_TOC
 		    && toclevel >= min_toclevel
 		    && toclevel <= bufparams.tocdepth) {
 			// insert this into the table of contents

@@ -10,7 +10,7 @@
 #ifndef LYXTEXTCLASS_H
 #define LYXTEXTCLASS_H
 
-#include "LyXLayout.h"
+#include "Layout.h"
 #include "lyxlayout_ptr_fwd.h"
 
 #include <boost/shared_ptr.hpp>
@@ -48,7 +48,7 @@ typedef std::vector<CharStyle> CharStyles;
 class LyXTextClass {
 public:
 	/// The individual styles comprising the document class
-	typedef std::vector<LyXLayout_ptr> LayoutList;
+	typedef std::vector<Layout_ptr> LayoutList;
 	/// Enumerate the paragraph styles.
 	typedef LayoutList::const_iterator const_iterator;
 	/// Construct a layout with default values. Actual values loaded later.
@@ -86,7 +86,7 @@ public:
 	bool hasLayout(std::string const & name) const;
 
 	///
-	LyXLayout_ptr const & operator[](std::string const & vname) const;
+	Layout_ptr const & operator[](std::string const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
 	bool load(std::string const & path = std::string()) const;
@@ -106,7 +106,7 @@ public:
 	///
 	std::string const & defaultLayoutName() const;
 	///
-	LyXLayout_ptr const & defaultLayout() const;
+	Layout_ptr const & defaultLayout() const;
 	///
 	std::string const & name() const;
 	///
@@ -174,7 +174,7 @@ private:
 	///
 	bool delete_layout(std::string const &);
 	///
-	bool do_readStyle(Lexer &, LyXLayout &);
+	bool do_readStyle(Lexer &, Layout &);
 	/// Layout file name
 	std::string name_;
 	/// document class name

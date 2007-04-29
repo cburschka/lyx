@@ -129,7 +129,7 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 				return;
 		}
 
-		LyXLayout_ptr const & lyt = tclass[layoutname];
+		Layout_ptr const & lyt = tclass[layoutname];
 		if (!lyt->depends_on().empty()) {
 			++level;
 			useLayout(lyt->depends_on());

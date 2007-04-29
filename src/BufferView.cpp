@@ -39,7 +39,7 @@
 #include "LyX.h"
 #include "lyxfind.h"
 #include "LyXFunc.h"
-#include "LyXLayout.h"
+#include "Layout.h"
 #include "LyXText.h"
 #include "LyXTextClass.h"
 #include "LyXRC.h"

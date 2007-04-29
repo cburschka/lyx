@@ -139,7 +139,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		par.layout(bp.getLyXTextClass()[layoutname]);
 
 		// Test whether the layout is obsolete.
-		LyXLayout_ptr const & layout = par.layout();
+		Layout_ptr const & layout = par.layout();
 		if (!layout->obsoleted_by().empty())
 			par.layout(bp.getLyXTextClass()[layout->obsoleted_by()]);
 
@@ -403,7 +403,7 @@ int LyXText::leftMargin(Buffer const & buffer, int max_width,
 	BOOST_ASSERT(pos <= par.size());
 	//lyxerr << "LyXText::leftMargin: pit: " << pit << " pos: " << pos << endl;
 	LyXTextClass const & tclass = buffer.params().getLyXTextClass();
-	LyXLayout_ptr const & layout = par.layout();
+	Layout_ptr const & layout = par.layout();
 
 	string parindent = layout->parindent;
 
@@ -587,7 +587,7 @@ void LyXText::breakParagraph(Cursor & cur, bool keep_layout)
 	pit_type cpit = cur.pit();
 
 	LyXTextClass const & tclass = cur.buffer().params().getLyXTextClass();
-	LyXLayout_ptr const & layout = cpar.layout();
+	Layout_ptr const & layout = cpar.layout();
 
 	// this is only allowed, if the current paragraph is not empty
 	// or caption and if it has not the keepempty flag active
@@ -1775,7 +1775,7 @@ docstring LyXText::getPossibleLabel(Cursor & cur) const
 {
 	pit_type pit = cur.pit();
 
-	LyXLayout_ptr layout = pars_[pit].layout();
+	Layout_ptr layout = pars_[pit].layout();
 
 	docstring text;
 	docstring par_text = pars_[pit].asString(cur.buffer(), false);
@@ -1799,7 +1799,7 @@ docstring LyXText::getPossibleLabel(Cursor & cur) const
 
 	// For section, subsection, etc...
 	if (layout->latextype == LATEX_PARAGRAPH && pit != 0) {
-		LyXLayout_ptr const & layout2 = pars_[pit - 1].layout();
+		Layout_ptr const & layout2 = pars_[pit - 1].layout();
 		if (layout2->latextype != LATEX_PARAGRAPH) {
 			--pit;
 			layout = layout2;

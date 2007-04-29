@@ -18,7 +18,7 @@
 
 #include "Buffer.h"
 #include "gettext.h"
-#include "LyXLayout.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "LyXText.h"
 #include "Paragraph.h"
@@ -276,7 +276,7 @@ void params2string(Paragraph const & par, string & data)
 	params.labelWidthString(par.getLabelWidthString());
 
 	// Alignment
-	LyXLayout_ptr const & layout = par.layout();
+	Layout_ptr const & layout = par.layout();
 	if (params.align() == LYX_ALIGN_LAYOUT)
 		params.align(layout->align);
 

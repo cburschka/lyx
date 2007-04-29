@@ -16,7 +16,7 @@
 #include "gettext.h"
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
-#include "LyXLayout.h"
+#include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"

@@ -272,7 +272,7 @@ bool doInsertInset(Cursor & cur, LyXText * text,
 		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
 		// reset first par to default
 		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
-			LyXLayout_ptr const layout =
+			Layout_ptr const layout =
 				cur.buffer().params().getLyXTextClass().defaultLayout();
 			cur.text()->paragraphs().begin()->layout(layout);
 		}
@@ -953,7 +953,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph & par = cur.paragraph();
 		pos_type pos = cur.pos();
 		BufferParams const & bufparams = bv->buffer()->params();
-		LyXLayout_ptr const & style = par.layout();
+		Layout_ptr const & style = par.layout();
 		if (!style->pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
 			// this avoids a double undo

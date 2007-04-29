@@ -26,8 +26,8 @@ LINKED_FILES = \
 	FloatList.cpp \
 	Floating.cpp \
 	Counters.cpp \
-	LyXLayout.h \
-	LyXLayout.cpp \
+	Layout.h \
+	Layout.cpp \
 	LyXTextClass.cpp \
 	LyXTextClass.h \
 	Lexer.cpp 

@@ -1,5 +1,5 @@
 /**
- * \file LyXLayout.cpp
+ * \file Layout.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "LyXLayout.h"
+#include "Layout.h"
 #include "LyXTextClass.h"
 #include "Lexer.h"
 #include "debug.h"
@@ -29,7 +29,7 @@ using std::endl;
 using std::string;
 
 /// Special value of toclevel for layouts that to not belong in a TOC
-const int LyXLayout::NOT_IN_TOC = -1000;
+const int Layout::NOT_IN_TOC = -1000;
 
 //  The order of the LayoutTags enum is no more important. [asierra300396]
 // Tags indexes.
@@ -95,7 +95,7 @@ enum LayoutTags {
 /////////////////////
 
 // Constructor for layout
-LyXLayout::LyXLayout ()
+Layout::Layout ()
 {
 	margintype = MARGIN_STATIC;
 	latextype = LATEX_PARAGRAPH;
@@ -132,7 +132,7 @@ LyXLayout::LyXLayout ()
 
 
 // Reads a layout definition from file
-bool LyXLayout::read(Lexer & lexrc, LyXTextClass const & tclass)
+bool Layout::read(Lexer & lexrc, LyXTextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {
@@ -501,7 +501,7 @@ enum AlignTags {
 };
 
 
-void LyXLayout::readAlign(Lexer & lexrc)
+void Layout::readAlign(Lexer & lexrc)
 {
 	keyword_item alignTags[] = {
 		{ "block",  AT_BLOCK },
@@ -539,7 +539,7 @@ void LyXLayout::readAlign(Lexer & lexrc)
 }
 
 
-void LyXLayout::readAlignPossible(Lexer & lexrc)
+void Layout::readAlignPossible(Lexer & lexrc)
 {
 	keyword_item alignTags[] = {
 		{ "block",  AT_BLOCK },
@@ -596,7 +596,7 @@ enum LabelTypeTags {
 };
 
 
-void LyXLayout::readLabelType(Lexer & lexrc)
+void Layout::readLabelType(Lexer & lexrc)
 {
 	keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
@@ -666,7 +666,7 @@ keyword_item endlabelTypeTags[] = {
 } // namespace anon
 
 
-void LyXLayout::readEndLabelType(Lexer & lexrc)
+void Layout::readEndLabelType(Lexer & lexrc)
 {
 	PushPopHelper pph(lexrc, endlabelTypeTags,
 			  END_LABEL_ENUM_LAST-END_LABEL_ENUM_FIRST+1);
@@ -683,13 +683,13 @@ void LyXLayout::readEndLabelType(Lexer & lexrc)
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
-		       << " in LyXLayout::readEndLabelType." << endl;
+		       << " in Layout::readEndLabelType." << endl;
 		break;
 	}
 }
 
 
-void LyXLayout::readMargin(Lexer & lexrc)
+void Layout::readMargin(Lexer & lexrc)
 {
 	keyword_item marginTags[] = {
 		{ "dynamic",           MARGIN_DYNAMIC },
@@ -715,13 +715,13 @@ void LyXLayout::readMargin(Lexer & lexrc)
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
-		       << " in LyXLayout::readMargin." << endl;
+		       << " in Layout::readMargin." << endl;
 		break;
 	}
 }
 
 
-void LyXLayout::readLatexType(Lexer & lexrc)
+void Layout::readLatexType(Lexer & lexrc)
 {
 	keyword_item latexTypeTags[] = {
 		{ "bib_environment",  LATEX_BIB_ENVIRONMENT },
@@ -748,7 +748,7 @@ void LyXLayout::readLatexType(Lexer & lexrc)
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
-		       << " in LyXLayout::readLatexType." << endl;
+		       << " in Layout::readLatexType." << endl;
 		break;
 	}
 }
@@ -762,7 +762,7 @@ enum SpacingTags {
 };
 
 
-void LyXLayout::readSpacing(Lexer & lexrc)
+void Layout::readSpacing(Lexer & lexrc)
 {
 	keyword_item spacingTags[] = {
 		{"double",  ST_SPACING_DOUBLE },
@@ -797,25 +797,25 @@ void LyXLayout::readSpacing(Lexer & lexrc)
 }
 
 
-string const & LyXLayout::name() const
+string const & Layout::name() const
 {
 	return name_;
 }
 
 
-void LyXLayout::setName(string const & n)
+void Layout::setName(string const & n)
 {
 	name_ = n;
 }
 
 
-string const & LyXLayout::obsoleted_by() const
+string const & Layout::obsoleted_by() const
 {
 	return obsoleted_by_;
 }
 
 
-string const & LyXLayout::depends_on() const
+string const & Layout::depends_on() const
 {
 	return depends_on_;
 }

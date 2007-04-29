@@ -548,7 +548,7 @@ void RowPainter::paintFirst()
 
 	Buffer const & buffer = *bv_.buffer();
 
-	LyXLayout_ptr const & layout = par_.layout();
+	Layout_ptr const & layout = par_.layout();
 
 	if (buffer.params().paragraph_separation == BufferParams::PARSEP_SKIP) {
 		if (pit_ != 0) {
@@ -556,7 +556,7 @@ void RowPainter::paintFirst()
 				&& !par_.getDepth()) {
 				y_top += buffer.params().getDefSkip().inPixels(bv_);
 			} else {
-				LyXLayout_ptr const & playout = pars_[pit_ - 1].layout();
+				Layout_ptr const & playout = pars_[pit_ - 1].layout();
 				if (playout->latextype == LATEX_PARAGRAPH
 					&& !pars_[pit_ - 1].getDepth()) {
 					// is it right to use defskip here, too? (AS)
@@ -724,7 +724,7 @@ void RowPainter::paintText()
 		body_pos = 0;
 	}
 
-	LyXLayout_ptr const & layout = par_.layout();
+	Layout_ptr const & layout = par_.layout();
 
 	bool running_strikeout = false;
 	bool is_struckout = false;

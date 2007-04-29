@@ -31,7 +31,7 @@ class InsetMathMBox : public InsetMathDim {
 public:
 	///
 	explicit InsetMathMBox();
-	explicit InsetMathMBox(LyXLayout_ptr const & layout);
+	explicit InsetMathMBox(Layout_ptr const & layout);
 
 	/// this stores metrics information in cache_
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;

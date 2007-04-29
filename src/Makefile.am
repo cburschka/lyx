@@ -177,8 +177,8 @@ lyx_SOURCES = \
 	LyXFunc.cpp \
 	LyXFunc.h \
 	LyX.h \
-	LyXLayout.cpp \
-	LyXLayout.h \
+	Layout.cpp \
+	Layout.h \
 	lyxlayout_ptr_fwd.h \
 	LyXRC.cpp \
 	LyXRC.h \

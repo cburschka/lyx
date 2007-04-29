@@ -693,7 +693,7 @@ void QDocumentDialog::updateNumbering()
 	QTreeWidgetItem * item = 0;
 	for ( ; cit != end ; ++cit) {
 		int const toclevel = (*cit)->toclevel;
-		if (toclevel != LyXLayout::NOT_IN_TOC 
+		if (toclevel != Layout::NOT_IN_TOC 
 		    && (*cit)->labeltype == LABEL_COUNTER) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);
 			item->setText(0, qt_((*cit)->name()));

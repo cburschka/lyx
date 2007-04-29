@@ -148,7 +148,7 @@ Font LyXText::getFont(Buffer const & buffer, Paragraph const & par,
 {
 	BOOST_ASSERT(pos >= 0);
 
-	LyXLayout_ptr const & layout = par.layout();
+	Layout_ptr const & layout = par.layout();
 #ifdef WITH_WARNINGS
 #warning broken?
 #endif
@@ -228,7 +228,7 @@ void LyXText::applyOuterFont(Buffer const & buffer, Font & font) const {
 
 Font LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
-	LyXLayout_ptr const & layout = pars_[pit].layout();
+	Layout_ptr const & layout = pars_[pit].layout();
 
 	if (!pars_[pit].getDepth())  {
 		Font lf = layout->resfont;
@@ -249,7 +249,7 @@ Font LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 
 Font LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 {
-	LyXLayout_ptr const & layout = par.layout();
+	Layout_ptr const & layout = par.layout();
 
 	if (!par.getDepth()) {
 		Font lf = layout->reslabelfont;
@@ -271,7 +271,7 @@ void LyXText::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt)
 {
 	Font font = fnt;
-	LyXLayout_ptr const & layout = pars_[pit].layout();
+	Layout_ptr const & layout = pars_[pit].layout();
 
 	// Get concrete layout font to reduce against
 	Font layoutfont;
@@ -332,7 +332,7 @@ void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 	BOOST_ASSERT(start != end);
 
 	BufferParams const & bufparams = buffer.params();
-	LyXLayout_ptr const & lyxlayout = bufparams.getLyXTextClass()[layout];
+	Layout_ptr const & lyxlayout = bufparams.getLyXTextClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
@@ -351,7 +351,7 @@ void LyXText::setLayout(Cursor & cur, string const & layout)
 	// special handling of new environment insets
 	BufferView & bv = cur.bv();
 	BufferParams const & params = bv.buffer()->params();
-	LyXLayout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
+	Layout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
 		LYXERR(Debug::DEBUG) << "setting layout " << layout << endl;
@@ -606,7 +606,7 @@ void LyXText::setParagraph(Cursor & cur,
 		params.spacing(spacing);
 
 		// does the layout allow the new alignment?
-		LyXLayout_ptr const & layout = par.layout();
+		Layout_ptr const & layout = par.layout();
 
 		if (align == LYX_ALIGN_LAYOUT)
 			align = layout->align;

@@ -424,7 +424,7 @@ void setCaptions(Paragraph & par, LyXTextClass const & textclass)
 void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textclass)
 {
 	Paragraph & par = *it;
-	LyXLayout_ptr const & layout = par.layout();
+	Layout_ptr const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
 	if (it.pit() == 0) {
@@ -703,7 +703,7 @@ void updateLabels(Buffer const & buf, bool childonly)
 void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 {
 	if (par_it->layout()->labeltype == LABEL_COUNTER
-		&& par_it->layout()->toclevel != LyXLayout::NOT_IN_TOC) {
+		&& par_it->layout()->toclevel != Layout::NOT_IN_TOC) {
 		buffer.tocBackend().updateItem(par_it);
 		buffer.structureChanged();
 	}

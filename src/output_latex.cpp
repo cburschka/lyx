@@ -94,7 +94,7 @@ TeXEnvironment(Buffer const & buf,
 
 	BufferParams const & bparams = buf.params();
 
-	LyXLayout_ptr const & style = pit->layout();
+	Layout_ptr const & style = pit->layout();
 
 	Language const * const par_language = pit->getParLanguage(bparams);
 	Language const * const doc_language = bparams.language;
@@ -243,7 +243,7 @@ TeXOnePar(Buffer const & buf,
 	LYXERR(Debug::LATEX) << "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'" << endl;
 	BufferParams const & bparams = buf.params();
-	LyXLayout_ptr style;
+	Layout_ptr style;
 
 	// In an inset with unlimited length (all in one row),
 	// force layout to default
@@ -526,7 +526,7 @@ void latexParagraphs(Buffer const & buf,
 		// any environment other than the default layout of the
 		// text class to be valid!
 		if (!par->forceDefaultParagraphs()) {
-			LyXLayout_ptr const & layout = par->layout();
+			Layout_ptr const & layout = par->layout();
 
 			if (layout->intitle) {
 				if (already_title) {

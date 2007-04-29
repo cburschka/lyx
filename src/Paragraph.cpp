@@ -76,7 +76,7 @@ using support::rsplit;
 /////////////////////////////////////////////////////////////////////
 
 class Encoding;
-class LyXLayout;
+class Layout;
 
 
 class Paragraph::Pimpl {
@@ -185,7 +185,7 @@ public:
 			     pos_type & i,
 			     unsigned int & column,
 			     Font const & font,
-			     LyXLayout const & style);
+			     Layout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 	                           odocstream &,
@@ -195,13 +195,13 @@ public:
 				   Font const & outerfont,
 				   bool & open_font,
 				   Change::Type & running_change,
-				   LyXLayout const & style,
+				   Layout const & style,
 				   pos_type & i,
 				   unsigned int & column, value_type const c);
 
 	///
 	void validate(LaTeXFeatures & features,
-		      LyXLayout const & layout) const;
+		      Layout const & layout) const;
 
 	///
 	unsigned int id_;
@@ -584,7 +584,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
                                        pos_type & i,
 				       unsigned int & column,
 				       Font const & font,
-				       LyXLayout const & style)
+				       Layout const & style)
 {
 	if (style.pass_thru)
 		return false;
@@ -666,7 +666,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     Font const & outerfont,
 					     bool & open_font,
 					     Change::Type & running_change,
-					     LyXLayout const & style,
+					     Layout const & style,
 					     pos_type & i,
 					     unsigned int & column,
 					     value_type const c)
@@ -942,7 +942,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 
 
 void Paragraph::Pimpl::validate(LaTeXFeatures & features,
-				LyXLayout const & layout) const
+				Layout const & layout) const
 {
 	BufferParams const & bparams = features.bufferParams();
 
@@ -1335,7 +1335,7 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 {
 	BOOST_ASSERT(pos >= 0);
 
-	LyXLayout_ptr const & lout = layout();
+	Layout_ptr const & lout = layout();
 
 	pos_type const body_pos = beginOfBody();
 
@@ -1608,7 +1608,7 @@ docstring const Paragraph::translateIfPossible(docstring const & s,
 }
 
 
-docstring Paragraph::expandLabel(LyXLayout_ptr const & layout,
+docstring Paragraph::expandLabel(Layout_ptr const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
 	LyXTextClass const & tclass = bparams.getLyXTextClass();
@@ -1637,7 +1637,7 @@ docstring Paragraph::expandLabel(LyXLayout_ptr const & layout,
 }
 
 
-void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
+void Paragraph::applyLayout(Layout_ptr const & new_layout)
 {
 	layout(new_layout);
 	params().labelWidthString(docstring());
@@ -1905,7 +1905,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 	bool return_value = false;
 
-	LyXLayout_ptr style;
+	Layout_ptr style;
 
 	// well we have to check if we are in an inset with unlimited
 	// length (all in one row) if that is true then we don't allow
@@ -2249,7 +2249,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 {
 	bool emph_flag = false;
 
-	LyXLayout_ptr const & style = layout();
+	Layout_ptr const & style = layout();
 	Font font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
@@ -2457,13 +2457,13 @@ int Paragraph::id() const
 }
 
 
-LyXLayout_ptr const & Paragraph::layout() const
+Layout_ptr const & Paragraph::layout() const
 {
 	return layout_;
 }
 
 
-void Paragraph::layout(LyXLayout_ptr const & new_layout)
+void Paragraph::layout(Layout_ptr const & new_layout)
 {
 	layout_ = new_layout;
 }

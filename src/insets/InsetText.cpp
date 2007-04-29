@@ -119,7 +119,7 @@ void InsetText::clear()
 	ParagraphList & pars = paragraphs();
 
 	// This is a gross hack...
-	LyXLayout_ptr old_layout = pars.begin()->layout();
+	Layout_ptr old_layout = pars.begin()->layout();
 
 	pars.clear();
 	pars.push_back(Paragraph());

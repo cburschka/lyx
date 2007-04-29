@@ -17,10 +17,10 @@
 
 namespace lyx {
 
-class LyXLayout;
+class Layout;
 
 /// Global typedef
-typedef boost::shared_ptr<LyXLayout> LyXLayout_ptr;
+typedef boost::shared_ptr<Layout> Layout_ptr;
 
 
 } // namespace lyx

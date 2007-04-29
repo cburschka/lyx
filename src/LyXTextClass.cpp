@@ -51,12 +51,12 @@ using std::ostream;
 
 namespace {
 
-class LayoutNamesEqual : public std::unary_function<LyXLayout_ptr, bool> {
+class LayoutNamesEqual : public std::unary_function<Layout_ptr, bool> {
 public:
 	LayoutNamesEqual(string const & name)
 		: name_(name)
 	{}
-	bool operator()(LyXLayout_ptr const & c) const
+	bool operator()(Layout_ptr const & c) const
 	{
 		return c->name() == name_;
 	}
@@ -125,7 +125,7 @@ bool LyXTextClass::isTeXClassAvailable() const
 }
 
 
-bool LyXTextClass::do_readStyle(Lexer & lexrc, LyXLayout & lay)
+bool LyXTextClass::do_readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS) << "Reading style " << lay.name() << endl;
 	if (!lay.read(lexrc, *this)) {
@@ -283,17 +283,17 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 				string const name = subst(lexrc.getString(),
 						    '_', ' ');
 				if (hasLayout(name)) {
-					LyXLayout * lay = operator[](name).get();
+					Layout * lay = operator[](name).get();
 					error = do_readStyle(lexrc, *lay);
 				} else {
-					LyXLayout lay;
+					Layout lay;
 					lay.setName(name);
 					if (le == TC_ENVIRONMENT)
 						lay.is_environment = true;
 					error = do_readStyle(lexrc, lay);
 					if (!error)
 						layoutlist_.push_back(
-							boost::shared_ptr<LyXLayout>(new LyXLayout(lay))
+							boost::shared_ptr<Layout>(new Layout(lay))
 							);
 
 					if (defaultlayout_.empty()) {
@@ -447,14 +447,14 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 			error = true;
 		}
 
-		min_toclevel_ = LyXLayout::NOT_IN_TOC;
-		max_toclevel_ = LyXLayout::NOT_IN_TOC;
+		min_toclevel_ = Layout::NOT_IN_TOC;
+		max_toclevel_ = Layout::NOT_IN_TOC;
 		const_iterator cit = begin();
 		const_iterator the_end = end();
 		for ( ; cit != the_end ; ++cit) {
 			int const toclevel = (*cit)->toclevel;
-			if (toclevel != LyXLayout::NOT_IN_TOC) {
-				if (min_toclevel_ == LyXLayout::NOT_IN_TOC)
+			if (toclevel != Layout::NOT_IN_TOC) {
+				if (min_toclevel_ == Layout::NOT_IN_TOC)
 					min_toclevel_ = toclevel;
 				else
 					min_toclevel_ = std::min(min_toclevel_,
@@ -861,7 +861,7 @@ bool LyXTextClass::hasLayout(string const & n) const
 
 
 
-LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
+Layout_ptr const & LyXTextClass::operator[](string const & name) const
 {
 	BOOST_ASSERT(!name.empty());
 
@@ -966,7 +966,7 @@ string const & LyXTextClass::defaultLayoutName() const
 }
 
 
-LyXLayout_ptr const & LyXTextClass::defaultLayout() const
+Layout_ptr const & LyXTextClass::defaultLayout() const
 {
 	return operator[](defaultLayoutName());
 }
@@ -1095,7 +1095,7 @@ int LyXTextClass::max_toclevel() const
 
 bool LyXTextClass::hasTocLevels() const
 {
-	return min_toclevel_ != LyXLayout::NOT_IN_TOC;
+	return min_toclevel_ != Layout::NOT_IN_TOC;
 }
 
 

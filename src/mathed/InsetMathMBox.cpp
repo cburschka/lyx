@@ -41,7 +41,7 @@ InsetMathMBox::InsetMathMBox()
 }
 
 
-InsetMathMBox::InsetMathMBox(LyXLayout_ptr const & layout)
+InsetMathMBox::InsetMathMBox(Layout_ptr const & layout)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());

@@ -145,7 +145,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// If we are in an inset which returns forceDefaultParagraphs,
 	// set the paragraphs to default
 	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
-		LyXLayout_ptr const layout = 
+		Layout_ptr const layout = 
 			buffer.params().getLyXTextClass().defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin(); 

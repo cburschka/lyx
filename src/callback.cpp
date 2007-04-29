@@ -27,7 +27,7 @@
 #include "Session.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
-#include "LyXLayout.h"
+#include "Layout.h"
 #include "LyXRC.h"
 #include "LyXText.h"
 #include "Paragraph.h"

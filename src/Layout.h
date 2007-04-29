@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXLayout.h
+ * \file Layout.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -28,10 +28,10 @@ class Lexer;
 class LyXTextClass;
 
 ///
-class LyXLayout {
+class Layout {
 public:
 	///
-	LyXLayout();
+	Layout();
 	///
 	bool read(Lexer &, LyXTextClass const &);
 	///

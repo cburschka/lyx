@@ -91,7 +91,7 @@ int InsetEnvironment::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-LyXLayout_ptr const & InsetEnvironment::layout() const
+Layout_ptr const & InsetEnvironment::layout() const
 {
 	return layout_;
 }

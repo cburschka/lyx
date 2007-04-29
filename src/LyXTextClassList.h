@@ -24,7 +24,7 @@
 
 namespace lyx {
 
-class LyXLayout;
+class Layout;
 
 /// Reads the style files
 extern bool LyXSetStyle();

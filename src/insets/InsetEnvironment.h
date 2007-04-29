@@ -41,7 +41,7 @@ public:
 	///
 	Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	LyXLayout_ptr const & layout() const;
+	Layout_ptr const & layout() const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
@@ -51,7 +51,7 @@ protected:
 private:
 	virtual std::auto_ptr<Inset> doClone() const;
 	/// the layout
-	LyXLayout_ptr layout_;
+	Layout_ptr layout_;
 	///
 	docstring name_;
 };

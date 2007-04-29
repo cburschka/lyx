@@ -56,7 +56,7 @@ void outline(OutlineOp mode,  Cursor & cur)
 			// Seek the one (on same level) below
 			for (; finish != end; ++finish) {
 				toclevel = finish->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC
+				if (toclevel != Layout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
@@ -70,10 +70,10 @@ void outline(OutlineOp mode,  Cursor & cur)
 				--dest;
 				toclevel = dest->layout()->toclevel;
 			} while(dest != bgn
-				&& (toclevel == LyXLayout::NOT_IN_TOC
+				&& (toclevel == Layout::NOT_IN_TOC
 				    || toclevel > thistoclevel));
 			// Not found; do nothing
-			if (toclevel == LyXLayout::NOT_IN_TOC
+			if (toclevel == Layout::NOT_IN_TOC
 			    || toclevel > thistoclevel)
 				break;
 			pit_type const newpit = std::distance(bgn, dest);
@@ -93,7 +93,7 @@ void outline(OutlineOp mode,  Cursor & cur)
 			// Find next same-level header:
 			for (; finish != end; ++finish) {
 				toclevel = finish->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC
+				if (toclevel != Layout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
@@ -107,7 +107,7 @@ void outline(OutlineOp mode,  Cursor & cur)
 			// Go further down to find header to insert in front of:
 			for (; dest != end; ++dest) {
 				toclevel = dest->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC
+				if (toclevel != Layout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
