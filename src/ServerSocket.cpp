@@ -1,5 +1,5 @@
 /**
- * \file LyXServerSocket.cpp
+ * \file ServerSocket.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 #include <config.h>
 
-#include "LyXServerSocket.h"
+#include "ServerSocket.h"
 
 #include "debug.h"
 #include "FuncRequest.h"
@@ -48,7 +48,7 @@ namespace lyx {
 // Address is the unix address for the socket.
 // MAX_CLIENTS is the maximum number of clients
 // that can connect at the same time.
-LyXServerSocket::LyXServerSocket(LyXFunc * f, support::FileName const & addr)
+ServerSocket::ServerSocket(LyXFunc * f, support::FileName const & addr)
 	: func(f),
 	  fd_(support::socktools::listen(addr, 3)),
 	  address_(addr)
@@ -66,7 +66,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, support::FileName const & addr)
 
 	theApp()->registerSocketCallback(
 		fd_,
-		boost::bind(&LyXServerSocket::serverCallback, this)
+		boost::bind(&ServerSocket::serverCallback, this)
 		);
 
 	LYXERR(Debug::LYXSERVER) << "lyx: New server socket "
@@ -75,7 +75,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, support::FileName const & addr)
 
 
 // Close the socket and remove the address of the filesystem.
-LyXServerSocket::~LyXServerSocket()
+ServerSocket::~ServerSocket()
 {
 	if (fd_ != -1) {
 		BOOST_ASSERT (theApp());
@@ -89,7 +89,7 @@ LyXServerSocket::~LyXServerSocket()
 }
 
 
-string const LyXServerSocket::address() const
+string const ServerSocket::address() const
 {
 	return address_.absFilename();
 }
@@ -97,7 +97,7 @@ string const LyXServerSocket::address() const
 
 // Creates a new LyXDataSocket and checks to see if the connection
 // is OK and if the number of clients does not exceed MAX_CLIENTS
-void LyXServerSocket::serverCallback()
+void ServerSocket::serverCallback()
 {
 	int const client_fd = support::socktools::accept(fd_);
 
@@ -117,7 +117,7 @@ void LyXServerSocket::serverCallback()
 		shared_ptr<LyXDataSocket>(new LyXDataSocket(client_fd));
 	theApp()->registerSocketCallback(
 		client_fd,
-		boost::bind(&LyXServerSocket::dataCallback,
+		boost::bind(&ServerSocket::dataCallback,
 			    this, client_fd)
 		);
 }
@@ -125,14 +125,14 @@ void LyXServerSocket::serverCallback()
 
 // Reads and processes input from client and check
 // if the connection has been closed
-void LyXServerSocket::dataCallback(int fd)
+void ServerSocket::dataCallback(int fd)
 {
 	shared_ptr<LyXDataSocket> client = clients[fd];
 
 	string line;
 	string::size_type pos;
 	bool saidbye = false;
-	while ((!saidbye) && client->readln(line)) {
+	while (!saidbye && client->readln(line)) {
 		// The protocol must be programmed here
 		// Split the key and the data
 		if ((pos = line.find(':')) == string::npos) {
@@ -160,19 +160,19 @@ void LyXServerSocket::dataCallback(int fd)
 		}
 	}
 
-	if (saidbye || (!client->connected())) {
+	if (saidbye || !client->connected()) {
 		clients.erase(fd);
 	}
 }
 
 
-void LyXServerSocket::writeln(string const & line)
+void ServerSocket::writeln(string const & line)
 {
-	string const linen(line + '\n');
+	string const linen = line + '\n';
 	int const size = linen.size();
 	int const written = ::write(fd_, linen.c_str(), size);
 	if (written < size) { // Always mean end of connection.
-		if ((written == -1) && (errno == EPIPE)) {
+		if (written == -1 && errno == EPIPE) {
 			// The program will also receive a SIGPIPE
 			// that must be caught
 			lyxerr << "lyx: Server socket " << fd_
@@ -188,9 +188,9 @@ void LyXServerSocket::writeln(string const & line)
 }
 
 // Debug
-// void LyXServerSocket::dump() const
+// void ServerSocket::dump() const
 // {
-//	lyxerr << "LyXServerSocket debug dump.\n"
+//	lyxerr << "ServerSocket debug dump.\n"
 //	     << "fd = " << fd_ << ", address = " << address_.absFilename() << ".\n"
 //	     << "Clients: " << clients.size() << ".\n";
 //	std::map<int, shared_ptr<LyXDataSocket> >::const_iterator client = clients.begin();
@@ -265,11 +265,11 @@ bool LyXDataSocket::readln(string & line)
 // Write a line of the form <key>:<value> to the socket
 void LyXDataSocket::writeln(string const & line)
 {
-	string const linen(line + '\n');
+	string const linen = line + '\n';
 	int const size = linen.size();
 	int const written = ::write(fd_, linen.c_str(), size);
 	if (written < size) { // Always mean end of connection.
-		if ((written == -1) && (errno == EPIPE)) {
+		if (written == -1 && errno == EPIPE) {
 			// The program will also receive a SIGPIPE
 			// that must be catched
 			lyxerr << "lyx: Data socket " << fd_

@@ -182,10 +182,10 @@ lyx_SOURCES = \
 	lyxlayout_ptr_fwd.h \
 	LyXRC.cpp \
 	LyXRC.h \
-	LyXServer.cpp \
-	LyXServer.h \
-	LyXServerSocket.cpp \
-	LyXServerSocket.h \
+	Server.cpp \
+	Server.h \
+	ServerSocket.cpp \
+	ServerSocket.h \
 	lyx_sty.cpp \
 	lyx_sty.h \
 	LyXTextClass.cpp \

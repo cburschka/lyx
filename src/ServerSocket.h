@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXServerSocket.h
+ * \file ServerSocket.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -26,7 +26,6 @@
 
 namespace lyx {
 
-class LyXServerSocket;
 class LyXDataSocket;
 
 
@@ -39,12 +38,12 @@ class LyXDataSocket;
  * This class encapsulates local (unix) server socket operations and
  * manages LyXDataSockets objects that are created when clients connect.
  */
-class LyXServerSocket {
+class ServerSocket {
 public:
 	///
-	LyXServerSocket(LyXFunc *, support::FileName const &);
+	ServerSocket(LyXFunc *, support::FileName const &);
 	///
-	~LyXServerSocket();
+	~ServerSocket();
 	/// Address of the local socket
 	std::string const address() const;
 	/// To be called when there is activity in the server socket
@@ -94,7 +93,7 @@ private:
 };
 
 /// Implementation is in LyX.cpp
-extern LyXServerSocket & theLyXServerSocket();
+extern ServerSocket & theServerSocket();
 
 
 } // namespace lyx

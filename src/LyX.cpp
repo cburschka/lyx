@@ -36,8 +36,8 @@
 #include "LyXFunc.h"
 #include "Lexer.h"
 #include "LyXRC.h"
-#include "LyXServer.h"
-#include "LyXServerSocket.h"
+#include "Server.h"
+#include "ServerSocket.h"
 #include "LyXTextClassList.h"
 #include "MenuBackend.h"
 #include "Messages.h"
@@ -163,9 +163,9 @@ struct LyX::Singletons
 	///
 	boost::scoped_ptr<KeyMap> toplevel_keymap_;
 	///
-	boost::scoped_ptr<LyXServer> lyx_server_;
+	boost::scoped_ptr<Server> lyx_server_;
 	///
-	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
+	boost::scoped_ptr<ServerSocket> lyx_socket_;
 	///
 	boost::scoped_ptr<frontend::Application> application_;
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
@@ -265,28 +265,28 @@ LyXFunc const & LyX::lyxFunc() const
 }
 
 
-LyXServer & LyX::server()
+Server & LyX::server()
 {
 	BOOST_ASSERT(pimpl_->lyx_server_.get());
 	return *pimpl_->lyx_server_.get(); 
 }
 
 
-LyXServer const & LyX::server() const 
+Server const & LyX::server() const 
 {
 	BOOST_ASSERT(pimpl_->lyx_server_.get());
 	return *pimpl_->lyx_server_.get(); 
 }
 
 
-LyXServerSocket & LyX::socket()
+ServerSocket & LyX::socket()
 {
 	BOOST_ASSERT(pimpl_->lyx_socket_.get());
 	return *pimpl_->lyx_socket_.get();
 }
 
 
-LyXServerSocket const & LyX::socket() const
+ServerSocket const & LyX::socket() const
 {
 	BOOST_ASSERT(pimpl_->lyx_socket_.get());
 	return *pimpl_->lyx_socket_.get();
@@ -454,8 +454,8 @@ int LyX::exec(int & argc, char * argv[])
 	*/
 	// Note: socket callback must be registered after init(argc, argv)
 	// such that package().temp_dir() is properly initialized.
-	pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
-	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
+	pimpl_->lyx_server_.reset(new Server(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
+	pimpl_->lyx_socket_.reset(new ServerSocket(&pimpl_->lyxfunc_, 
 			FileName(package().temp_dir().absFilename() + "/lyxsocket")));
 
 	// Start the real execution loop.
@@ -1464,7 +1464,7 @@ LyXFunc & theLyXFunc()
 }
 
 
-LyXServer & theLyXServer()
+Server & theServer()
 {
 	// FIXME: this should not be use_gui dependent
 	BOOST_ASSERT(use_gui);
@@ -1472,7 +1472,7 @@ LyXServer & theLyXServer()
 }
 
 
-LyXServerSocket & theLyXServerSocket()
+ServerSocket & theServerSocket()
 {
 	// FIXME: this should not be use_gui dependent
 	BOOST_ASSERT(use_gui);

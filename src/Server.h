@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXServer.h
+ * \file Server.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXSERVER_H
-#define LYXSERVER_H
+#ifndef SERVER_H
+#define SERVER_H
 
 #include <boost/signals/trackable.hpp>
 
@@ -19,9 +19,8 @@
 namespace lyx {
 
 class LyXFunc;
-class LyXServer;
+class Server;
 
-/* --- i/o pipes --------------------------------------------------------- */
 
 /** This class managed the pipes used for communicating with clients.
  Usage: Initialize with pipe-filename-base, client class to receive
@@ -36,19 +35,18 @@ public:
 	  This is one of the small things that would have been a lot
 	  cleaner with a Signal/Slot thing.
 	 */
-	typedef void (*ClientCallbackfct)(LyXServer *, std::string const &);
+	typedef void (*ClientCallbackfct)(Server *, std::string const &);
 
 	/// Construct with pipe-basename and callback to receive messages
-	LyXComm(std::string const & pip, LyXServer * cli, ClientCallbackfct ccb = 0)
-		: pipename(pip), client(cli), clientcb(ccb) {
+	LyXComm(std::string const & pip, Server * cli, ClientCallbackfct ccb = 0)
+		: pipename(pip), client(cli), clientcb(ccb)
+	{
 		ready = false;
 		openConnection();
 	}
 
 	///
-	~LyXComm() {
-		closeConnection();
-	}
+	~LyXComm() { closeConnection(); }
 
 	/// clean up in emergency
 	void emergencyCleanup();
@@ -91,16 +89,16 @@ private:
 	std::string pipename;
 
 	/// The client
-	LyXServer * client;
+	Server * client;
 
 	/// The client callback function
 	ClientCallbackfct clientcb;
 };
 
 
-/* --- prototypes -------------------------------------------------------- */
+
 ///
-class LyXServer {
+class Server {
 public:
 	// FIXME IN 0.13
 	// Hack! This should be changed in 0.13
@@ -113,21 +111,19 @@ public:
 	// lyxserver is using a buffer that is being edited with a bufferview.
 	// With a common buffer list this is not a problem, maybe. (Alejandro)
 	///
-	LyXServer(LyXFunc * f, std::string const & pip)
+	Server(LyXFunc * f, std::string const & pip)
 		: numclients(0), func(f), pipes(pip, (this), callback) {}
 	///
-	~LyXServer();
+	~Server();
 	///
 	void notifyClient(std::string const &);
 
 	/// whilst crashing etc.
-	void emergencyCleanup() {
-		pipes.emergencyCleanup();
-	}
+	void emergencyCleanup() { pipes.emergencyCleanup(); }
 
 private:
 	///
-	static void callback(LyXServer *, std::string const & msg);
+	static void callback(Server *, std::string const & msg);
 	/// Names and number of current clients
 	enum {
 		///
@@ -144,11 +140,9 @@ private:
 };
 
 /// Implementation is in LyX.cpp
-extern LyXServer & theLyXServer();
+extern Server & theServer();
 
 
 } // namespace lyx
 
-#endif /* _LYXSERVER_H_ */
-
-/* === End of File: LyXServer.h ========================================== */
+#endif // SERVER_H 

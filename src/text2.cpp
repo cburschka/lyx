@@ -46,8 +46,8 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
-#include "LyXServer.h"
-#include "LyXServerSocket.h"
+#include "Server.h"
+#include "ServerSocket.h"
 #include "Undo.h"
 #include "VSpace.h"
 

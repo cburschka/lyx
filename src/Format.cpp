@@ -16,7 +16,7 @@
 #include "LyXRC.h"
 #include "debug.h"
 #include "gettext.h"
-#include "LyXServerSocket.h"
+#include "ServerSocket.h"
 
 #include "frontends/Application.h"
 #include "frontends/alert.h" //to be removed?
@@ -314,7 +314,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 
 	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
 	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
-	command = subst(command, token_socket_format, quoteName(theLyXServerSocket().address()));
+	command = subst(command, token_socket_format, quoteName(theServerSocket().address()));
 	LYXERR(Debug::FILES) << "Executing command: " << command << std::endl;
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
@@ -373,7 +373,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 
 	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
 	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
-	command = subst(command, token_socket_format, quoteName(theLyXServerSocket().address()));
+	command = subst(command, token_socket_format, quoteName(theServerSocket().address()));
 	LYXERR(Debug::FILES) << "Executing command: " << command << std::endl;
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));

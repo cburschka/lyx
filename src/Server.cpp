@@ -1,5 +1,5 @@
 /**
- * \file LyXServer.cpp
+ * \file Server.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -39,7 +39,7 @@
 
 #include <config.h>
 
-#include "LyXServer.h"
+#include "Server.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "LyXAction.h"
@@ -331,9 +331,9 @@ string const LyXComm::outPipeName() const
 }
 
 
-// LyXServer class
+// Server class
 
-LyXServer::~LyXServer()
+Server::~Server()
 {
 	// say goodbye to clients so they stop sending messages
 	// modified june 1999 by stefano@zool.su.se to send as many bye
@@ -352,9 +352,9 @@ LyXServer::~LyXServer()
     Purpose   : handle data gotten from communication
 \* ---F------------------------------------------------------------------- */
 
-void LyXServer::callback(LyXServer * serv, string const & msg)
+void Server::callback(Server * serv, string const & msg)
 {
-	LYXERR(Debug::LYXSERVER) << "LyXServer: Received: '"
+	LYXERR(Debug::LYXSERVER) << "Server: Received: '"
 				 << msg << '\'' << endl;
 
 	char const * p = msg.c_str();
@@ -370,7 +370,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		if (compare(p, "LYXSRV:", 7) == 0) {
 			server_only = true;
 		} else if (0 != compare(p, "LYXCMD:", 7)) {
-			lyxerr << "LyXServer: Unknown request \""
+			lyxerr << "Server: Unknown request \""
 			       << p << '"' << endl;
 			return;
 		}
@@ -397,7 +397,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		}
 
 		LYXERR(Debug::LYXSERVER)
-			<< "LyXServer: Client: '" << client
+			<< "Server: Client: '" << client
 			<< "' Command: '" << cmd
 			<< "' Argument: '" << arg << '\'' << endl;
 
@@ -411,7 +411,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				// One more client
 				if (serv->numclients == MAX_CLIENTS) { //paranoid check
 					LYXERR(Debug::LYXSERVER)
-						<< "LyXServer: too many clients..."
+						<< "Server: too many clients..."
 						<< endl;
 					return;
 				}
@@ -423,7 +423,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				serv->numclients++;
 				buf = "LYXSRV:" + client + ":hello\n";
 				LYXERR(Debug::LYXSERVER)
-					<< "LyXServer: Greeting "
+					<< "Server: Greeting "
 					<< client << endl;
 				serv->pipes.send(buf);
 			} else if (cmd == "bye") {
@@ -437,16 +437,16 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 					serv->numclients--;
 					serv->clients[i].erase();
 					LYXERR(Debug::LYXSERVER)
-						<< "LyXServer: Client "
+						<< "Server: Client "
 						<< client << " said goodbye"
 						<< endl;
 				} else {
 					LYXERR(Debug::LYXSERVER)
-						<< "LyXServer: ignoring bye messge from unregistered client"
+						<< "Server: ignoring bye messge from unregistered client"
 						<< client << endl;
 				}
 			} else {
-				lyxerr <<"LyXServer: Undefined server command "
+				lyxerr <<"Server: Undefined server command "
 				       << cmd << '.' << endl;
 			}
 			return;
@@ -496,7 +496,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
    Returns   : nothing
    \* ---F------------------------------------------------------------------- */
 
-void LyXServer::notifyClient(string const & s)
+void Server::notifyClient(string const & s)
 {
 	string buf = string("NOTIFY:") + s + "\n";
 	pipes.send(buf);

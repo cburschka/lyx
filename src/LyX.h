@@ -27,8 +27,8 @@ class Converters;
 class ErrorItem;
 class Inset;
 class LyXFunc;
-class LyXServer;
-class LyXServerSocket;
+class Server;
+class ServerSocket;
 class LyXView;
 class Messages;
 class Mover;
@@ -66,11 +66,11 @@ public:
 	LyXFunc & lyxFunc();
 	LyXFunc const & lyxFunc() const;
 	///
-	LyXServer & server();
-	LyXServer const & server() const;
+	Server & server();
+	Server const & server() const;
 	///
-	LyXServerSocket & socket();
-	LyXServerSocket const & socket() const;
+	ServerSocket & socket();
+	ServerSocket const & socket() const;
 
 	///
 	frontend::Application & application();

@@ -53,7 +53,7 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Row.h"
-#include "LyXServer.h"
+#include "Server.h"
 #include "LyXTextClassList.h"
 #include "LyXVC.h"
 #include "Paragraph.h"
@@ -1220,7 +1220,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_SERVER_NOTIFY:
 			dispatch_buffer = keyseq->print(false);
-			theLyXServer().notifyClient(to_utf8(dispatch_buffer));
+			theServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW: {
