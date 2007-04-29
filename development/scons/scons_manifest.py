@@ -935,8 +935,8 @@ src_tex2lyx_header_files = Split('''
 
 
 src_tex2lyx_copied_header_files = Split('''
-    LyXLayout.h
-    LyXTextClass.h
+    Layout.h
+    TextClass.h
     Lexer.h
 ''')
 
@@ -944,8 +944,8 @@ src_tex2lyx_copied_files = Split('''
     FloatList.cpp
     Floating.cpp
     Counters.cpp
-    LyXLayout.cpp
-    LyXTextClass.cpp
+    Layout.cpp
+    TextClass.cpp
     Lexer.cpp
 ''')
 
@@ -1048,8 +1048,8 @@ src_header_files = Split('''
     Server.h
     ServerSocket.h
     LyXText.h
-    LyXTextClass.h
-    LyXTextClassList.h
+    TextClass.h
+    TextClassList.h
     LyXVC.h
     Messages.h
     MetricsInfo.h
@@ -1149,8 +1149,8 @@ src_pre_files = Split('''
     Row.cpp
     Server.cpp
     ServerSocket.cpp
-    LyXTextClass.cpp
-    LyXTextClassList.cpp
+    TextClass.cpp
+    TextClassList.cpp
     LyXVC.cpp
     Messages.cpp
     MetricsInfo.cpp
