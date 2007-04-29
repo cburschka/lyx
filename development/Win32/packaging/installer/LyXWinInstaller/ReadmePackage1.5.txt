@@ -9,7 +9,9 @@ http://developer.berlios.de/projects/lyxwininstall/
 ---
 General
 To compile the installer scripts you need at least NSIS version 2.25.
-The installer scripts need the plugins "FindProc" and "InetLoad". To use it copy the files "FindProcDLL.dll" and "InetLoad.dll" from the "LyXPackage" folder to NSIS'"Plugins" directory.
+The installer scripts needs the plugins "FindProc" and "InetLoad".
+To use them copy the files "FindProcDLL.dll" and "InetLoad.dll" from the
+"LyXPackage" folder to NSIS'"Plugins" directory.
 
 ---
 Internationalization

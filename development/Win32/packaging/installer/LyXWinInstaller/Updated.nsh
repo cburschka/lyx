@@ -1,6 +1,6 @@
 Function UpdateModifiedFiles
 
- ; list with modified files for LyX 1.5svn xx-04-2007
+ ; list with modified files for LyX 1.5svn 30-04-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" ; always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" ; always here
@@ -13,9 +13,11 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" ; must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" ; must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" ; must be here when another \doc file has been changed
@@ -26,7 +28,9 @@ Function UpdateModifiedFiles
  Delete "$INSTDIR\Resources\examples\de\Dezimal.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
  SetOutPath "$INSTDIR\Resources\images"
- File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math-superscript.xpm" 
+ SetOutPath "$INSTDIR\Resources\images\math"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\super.xpm"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\simplecv.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx"

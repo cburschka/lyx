@@ -32,7 +32,7 @@ SetCompressor lzma
 !include "Settings.nsh"
 
 !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
-!define PRODUCT_VERSION_OLD "LyX 1.5svn-15-04-2007"
+!define PRODUCT_VERSION_OLD "LyX 1.5beta2-21-04-2007"
 !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
 
 ;--------------------------------
