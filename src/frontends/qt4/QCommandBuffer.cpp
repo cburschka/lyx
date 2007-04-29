@@ -101,6 +101,7 @@ QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control)
 	connect(edit_, SIGNAL(tabPressed()), this, SLOT(complete()));
 	connect(edit_, SIGNAL(upPressed()), this, SLOT(up()));
 	connect(edit_, SIGNAL(downPressed()), this, SLOT(down()));
+	connect(edit_, SIGNAL(hidePressed()), this, SLOT(hideParent()));
 
 	layout->addWidget(up, 0);
 	layout->addWidget(down, 0);
@@ -211,6 +212,15 @@ void QCommandBuffer::down()
 	} else {
 		edit_->setText(toqstr(h));
 	}
+}
+
+
+void QCommandBuffer::hideParent()
+{
+	view_->setFocus();
+	edit_->setText(QString());
+	edit_->clearFocus();
+	controller_.hide();
 }
 
 

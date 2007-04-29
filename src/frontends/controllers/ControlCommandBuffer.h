@@ -44,6 +44,9 @@ public:
 	/// return the font and depth in the active BufferView as a message.
 	docstring const getCurrentState() const;
 
+	/// hide the command buffer.
+	void hide() const;
+
 	/// return the possible completions
 	std::vector<std::string> const completions(std::string const & prefix,
 					      std::string & new_prefix);

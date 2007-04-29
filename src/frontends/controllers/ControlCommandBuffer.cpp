@@ -85,6 +85,12 @@ docstring const ControlCommandBuffer::getCurrentState() const
 }
 
 
+void ControlCommandBuffer::hide() const
+{
+	lv_.getToolbars().display("minibuffer", false);
+}
+
+
 vector<string> const
 ControlCommandBuffer::completions(string const & prefix, string & new_prefix)
 {

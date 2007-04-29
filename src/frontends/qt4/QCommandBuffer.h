@@ -43,6 +43,8 @@ public Q_SLOTS:
 	void up();
 	/// down
 	void down();
+	/// leave and hide the command buffer
+	void hideParent();
 private:
 	/// owning view
 	GuiView * view_;
