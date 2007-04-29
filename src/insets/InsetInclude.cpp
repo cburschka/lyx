@@ -104,7 +104,7 @@ InsetInclude::InsetInclude(InsetCommandParams const & p)
 
 
 InsetInclude::InsetInclude(InsetInclude const & other)
-	: InsetBase(other),
+	: Inset(other),
 	  params_(other.params_),
 	  include_label(other.include_label),
 	  preview_(new RenderMonitoredPreview(this)),
@@ -144,7 +144,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetBase::doDispatch(cur, cmd);
+		Inset::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -161,7 +161,7 @@ bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetBase::getStatus(cur, cmd, flag);
+		return Inset::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -243,9 +243,9 @@ void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 }
 
 
-auto_ptr<InsetBase> InsetInclude::doClone() const
+auto_ptr<Inset> InsetInclude::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetInclude(*this));
+	return auto_ptr<Inset>(new InsetInclude(*this));
 }
 
 

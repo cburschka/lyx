@@ -36,9 +36,9 @@ docstring InsetMathBig::name() const
 }
 
 
-auto_ptr<InsetBase> InsetMathBig::doClone() const
+auto_ptr<Inset> InsetMathBig::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathBig(*this));
+	return auto_ptr<Inset>(new InsetMathBig(*this));
 }
 
 

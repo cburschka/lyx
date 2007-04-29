@@ -31,7 +31,7 @@ public:
 	///
 	std::size_t number() const { return number_; }
 	///
-	InsetBase::Code lyxCode() const { return MATHMACROARG_CODE; }
+	Inset::Code lyxCode() const { return MATHMACROARG_CODE; }
 
 	///
 	void normalize(NormalStream &) const;
@@ -39,7 +39,7 @@ public:
 	void write(WriteStream & os) const;
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	/// A number between 1 and 9
 	std::size_t number_;
 	///

@@ -31,13 +31,13 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const;
+	Inset::Code lyxCode() const;
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const {
-		return std::auto_ptr<InsetBase>(new InsetIndex(params()));
+	virtual std::auto_ptr<Inset> doClone() const {
+		return std::auto_ptr<Inset>(new InsetIndex(params()));
 	}
 };
 
@@ -51,14 +51,14 @@ public:
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const;
+	Inset::Code lyxCode() const;
 	///
 	bool display() const { return true; }
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const {
-		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));
+	virtual std::auto_ptr<Inset> doClone() const {
+		return std::auto_ptr<Inset>(new InsetPrintIndex(params()));
 	}
 };
 

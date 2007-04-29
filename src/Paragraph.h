@@ -22,7 +22,7 @@
 #include "lyxlayout_ptr_fwd.h"
 #include "RowList_fwd.h"
 
-#include "insets/InsetBase.h" // only for InsetBase::Code
+#include "insets/Inset.h" // only for Inset::Code
 
 
 namespace lyx {
@@ -31,10 +31,10 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class Counters;
-class InsetBase;
+class Inset;
 class InsetBibitem;
 class LaTeXFeatures;
-class InsetBase_code;
+class Inset_code;
 class Language;
 class LyXFont;
 class LyXFont_size;
@@ -158,11 +158,11 @@ public:
 	void makeSameLayout(Paragraph const & par);
 
 	///
-	void setInsetOwner(InsetBase * inset);
+	void setInsetOwner(Inset * inset);
 	///
-	InsetBase * inInset() const;
+	Inset * inInset() const;
 	///
-	InsetBase::Code ownerCode() const;
+	Inset::Code ownerCode() const;
 	///
 	bool forceDefaultParagraphs() const;
 
@@ -303,26 +303,26 @@ public:
 	void insertChar(pos_type pos, value_type c,
 	                LyXFont const &, Change const & change);
 	///
-	void insertInset(pos_type pos, InsetBase * inset,
+	void insertInset(pos_type pos, Inset * inset,
 	                 Change const & change);
 	///
-	void insertInset(pos_type pos, InsetBase * inset,
+	void insertInset(pos_type pos, Inset * inset,
 	                 LyXFont const &, Change const & change);
 	///
-	bool insetAllowed(InsetBase_code code);
+	bool insetAllowed(Inset_code code);
 	///
-	InsetBase * getInset(pos_type pos) {
+	Inset * getInset(pos_type pos) {
 		return insetlist.get(pos);
 	}
 	///
-	InsetBase const * getInset(pos_type pos) const {
+	Inset const * getInset(pos_type pos) const {
 		return insetlist.get(pos);
 	}
 
 	///
 	bool isHfill(pos_type pos) const {
 		return isInset(pos)
-		       && getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
+		       && getInset(pos)->lyxCode() == Inset::HFILL_CODE;
 	}
 	/// hinted by profiler
 	bool isInset(pos_type pos) const {
@@ -339,7 +339,7 @@ public:
 	bool isLetter(pos_type pos) const;
 
 	/// returns -1 if inset not found
-	int getPositionOfInset(InsetBase const * inset) const;
+	int getPositionOfInset(Inset const * inset) const;
 
 	/// returns true if at least one line break or line separator has been deleted 
 	/// at the beginning of the paragraph (either physically or logically)

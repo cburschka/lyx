@@ -71,7 +71,7 @@ public:
 	}
 
 protected:
-	InsetBase & inset() const { return inset_; }
+	Inset & inset() const { return inset_; }
 	InsetMathGrid & inset_;
 };
 
@@ -184,9 +184,9 @@ InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, docstring const & h
 }
 
 
-auto_ptr<InsetBase> InsetMathGrid::doClone() const
+auto_ptr<Inset> InsetMathGrid::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathGrid(*this));
+	return auto_ptr<Inset>(new InsetMathGrid(*this));
 }
 
 

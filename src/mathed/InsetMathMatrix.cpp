@@ -25,9 +25,9 @@ InsetMathMatrix::InsetMathMatrix(InsetMathGrid const & p)
 {}
 
 
-auto_ptr<InsetBase> InsetMathMatrix::doClone() const
+auto_ptr<Inset> InsetMathMatrix::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathMatrix(*this));
+	return auto_ptr<Inset>(new InsetMathMatrix(*this));
 }
 
 

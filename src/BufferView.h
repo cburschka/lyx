@@ -238,7 +238,7 @@ public:
 
 	/// This signal is emitted when some inset dialogs needs to be shown.
 	boost::signal<void(std::string name, std::string data,
-		InsetBase * inset)> showInsetDialog;
+		Inset * inset)> showInsetDialog;
 
 	/// This signal is emitted when some dialogs needs to be updated.
 	boost::signal<void(std::string name,
@@ -253,7 +253,7 @@ private:
 
 	/// Search recursively for the the innermost inset that covers (x, y) position.
 	/// \retval 0 if no inset is found.
-	InsetBase const * getCoveringInset(
+	Inset const * getCoveringInset(
 		LyXText const & text, //< The LyXText where we start searching.
 		int x, //< x-coordinate on screen
 		int y  //< y-coordinate on screen
@@ -297,7 +297,7 @@ private:
 	boost::scoped_ptr<Intl> const intl_;
 
 	/// last visited inset (kept to send setMouseHover(false) )
-	InsetBase * last_inset_;
+	Inset * last_inset_;
 
 	/// A map from a LyXText to the associated text metrics
 	typedef std::map<LyXText const *, TextMetrics> TextMetricsCache;

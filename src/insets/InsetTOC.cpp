@@ -34,9 +34,9 @@ InsetTOC::InsetTOC(InsetCommandParams const & p)
 {}
 
 
-std::auto_ptr<InsetBase> InsetTOC::doClone() const
+std::auto_ptr<Inset> InsetTOC::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetTOC(*this));
+	return std::auto_ptr<Inset>(new InsetTOC(*this));
 }
 
 
@@ -48,11 +48,11 @@ docstring const InsetTOC::getScreenLabel(Buffer const &) const
 }
 
 
-InsetBase::Code InsetTOC::lyxCode() const
+Inset::Code InsetTOC::lyxCode() const
 {
 	if (getCmdName() == "tableofcontents")
-		return InsetBase::TOC_CODE;
-	return InsetBase::NO_CODE;
+		return Inset::TOC_CODE;
+	return Inset::NO_CODE;
 }
 
 

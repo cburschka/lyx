@@ -15,7 +15,7 @@
 #define INSET_SPECIALCHAR_H
 
 
-#include "InsetBase.h"
+#include "Inset.h"
 
 
 namespace lyx {
@@ -23,7 +23,7 @@ namespace lyx {
 class LaTeXFeatures;
 
 ///  Used to insert special chars
-class InsetSpecialChar : public InsetBase {
+class InsetSpecialChar : public Inset {
 public:
 
 	/// The different kinds of special chars we support
@@ -68,7 +68,7 @@ public:
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::SPECIALCHAR_CODE; }
+	Inset::Code lyxCode() const { return Inset::SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 	///
@@ -81,7 +81,7 @@ public:
 	// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// And which kind is this?
 	Kind kind_;

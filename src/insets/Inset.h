@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetBase.h
+ * \file Inset.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -54,7 +54,7 @@ namespace graphics { class PreviewLoader; }
 // everything storing large quantities of insets. Mathed e.g. would
 // suffer.
 
-class InsetBase {
+class Inset {
 public:
 	///
 	typedef ptrdiff_t  difference_type;
@@ -70,9 +70,9 @@ public:
 	typedef size_t     col_type;
 
 	/// virtual base class destructor
-	virtual ~InsetBase() {}
+	virtual ~Inset() {}
 	/// replicate ourselves
-	std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<Inset> clone() const;
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }
@@ -93,9 +93,9 @@ public:
 	 * - A request that is disabled in getStatus() does not need to
 	 *   appear in doDispatch(). It is guaranteed that doDispatch()
 	 *   is never called with this request.
-	 * - A few requests are en- or disabled in InsetBase::getStatus().
+	 * - A few requests are en- or disabled in Inset::getStatus().
 	 *   These need to be handled in the doDispatch() methods of the
-	 *   derived insets, since InsetBase::doDispatch() has not enough
+	 *   derived insets, since Inset::doDispatch() has not enough
 	 *   information to handle them.
 	 * - LFUN_MOUSE_* need not to be handled in getStatus(), because these
 	 *   are dispatched directly
@@ -106,7 +106,7 @@ public:
 	/// cursor enters
 	virtual void edit(Cursor & cur, bool left);
 	/// cursor enters
-	virtual InsetBase * editXY(Cursor & cur, int x, int y);
+	virtual Inset * editXY(Cursor & cur, int x, int y);
 
 	/// compute the size of the object returned in dim
 	/// \retval true if metrics changed.
@@ -249,7 +249,7 @@ public:
 
 	/** This is not quite the correct place for this enum. I think
 	    the correct would be to let each subclass of Inset declare
-	    its own enum code. Actually the notion of an InsetBase::Code
+	    its own enum code. Actually the notion of an Inset::Code
 	    should be avoided, but I am not sure how this could be done
 	    in a cleaner way. */
 	enum Code {
@@ -365,7 +365,7 @@ public:
 	virtual bool hasFixedWidth() const { return false; }
 
 	///
-	virtual docstring getInsetName() const;
+	virtual docstring insetName() const;
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater
@@ -464,8 +464,8 @@ public:
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
 protected:
-	InsetBase();
-	InsetBase(InsetBase const & i);
+	Inset();
+	Inset(Inset const & i);
 	/** The real dispatcher.
 	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
@@ -482,7 +482,7 @@ protected:
 	/// Cached dimensions of the inset.
 	mutable Dimension dim_;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const = 0;
+	virtual std::auto_ptr<Inset> doClone() const = 0;
 	/** We store the Color::color value as an int to get Color.h out
 	 *  of the header file.
 	 */
@@ -494,25 +494,25 @@ private:
  * returns true if pointer argument is valid
  * and points to an editable inset
  */
-bool isEditableInset(InsetBase const * inset);
+bool isEditableInset(Inset const * inset);
 
 
 /**
  * returns true if pointer argument is valid
  * and points to a highly editable inset
  */
-bool isHighlyEditableInset(InsetBase const * inset);
+bool isHighlyEditableInset(Inset const * inset);
 
-/** \c InsetBase_code is a wrapper for InsetBase::Code.
+/** \c Inset_code is a wrapper for Inset::Code.
  *  It can be forward-declared and passed as a function argument without
- *  having to expose InsetBase.h.
+ *  having to expose Inset.h.
  */
 
-class InsetBase_code {
-	InsetBase::Code val_;
+class Inset_code {
+	Inset::Code val_;
 public:
-	InsetBase_code(InsetBase::Code val) : val_(val) {}
-	operator InsetBase::Code() const { return val_; }
+	Inset_code(Inset::Code val) : val_(val) {}
+	operator Inset::Code() const { return val_; }
 };
 
 

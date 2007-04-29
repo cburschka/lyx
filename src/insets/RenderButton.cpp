@@ -30,7 +30,7 @@ RenderButton::RenderButton()
 {}
 
 
-auto_ptr<RenderBase> RenderButton::clone(InsetBase const *) const
+auto_ptr<RenderBase> RenderButton::clone(Inset const *) const
 {
 	return auto_ptr<RenderBase>(new RenderButton(*this));
 }

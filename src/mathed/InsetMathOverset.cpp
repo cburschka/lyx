@@ -24,9 +24,9 @@ using std::max;
 using std::auto_ptr;
 
 
-auto_ptr<InsetBase> InsetMathOverset::doClone() const
+auto_ptr<Inset> InsetMathOverset::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathOverset(*this));
+	return auto_ptr<Inset>(new InsetMathOverset(*this));
 }
 
 

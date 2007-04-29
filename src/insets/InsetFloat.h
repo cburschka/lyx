@@ -49,7 +49,7 @@ public:
 	///
 	~InsetFloat();
 	///
-	docstring getInsetName() const { return name_; }
+	docstring insetName() const { return name_; }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
@@ -57,7 +57,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::FLOAT_CODE; }
+	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
 	///
 	virtual bool wide() const { return false; }
 	///
@@ -72,7 +72,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool insetAllowed(InsetBase::Code) const;
+	bool insetAllowed(Inset::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
@@ -93,7 +93,7 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	InsetFloatParams params_;
 	///
@@ -106,7 +106,7 @@ public:
 	///
 	InsetFloatMailer(InsetFloat & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

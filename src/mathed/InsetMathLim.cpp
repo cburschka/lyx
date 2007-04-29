@@ -32,9 +32,9 @@ InsetMathLim::InsetMathLim
 }
 
 
-auto_ptr<InsetBase> InsetMathLim::doClone() const
+auto_ptr<Inset> InsetMathLim::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathLim(*this));
+	return auto_ptr<Inset>(new InsetMathLim(*this));
 }
 
 

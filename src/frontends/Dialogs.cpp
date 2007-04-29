@@ -51,12 +51,12 @@ private:
 
 namespace {
 
-BugfixSignal<boost::signal<void(string const &, InsetBase*)> > hideSignal;
+BugfixSignal<boost::signal<void(string const &, Inset*)> > hideSignal;
 
 }
 
 
-void Dialogs::hide(string const & name, InsetBase* inset)
+void Dialogs::hide(string const & name, Inset* inset)
 {
 	// Don't send the signal if we are quitting, because on MSVC it is
 	// destructed before the cut stack in CutAndPaste.cpp, and this method
@@ -106,7 +106,7 @@ void Dialogs::show(string const & name, string const & data)
 }
 
 
-void Dialogs::show(string const & name, string const & data, InsetBase * inset)
+void Dialogs::show(string const & name, string const & data, Inset * inset)
 {
 	if (in_show_) {
 		return;
@@ -145,7 +145,7 @@ void Dialogs::update(string const & name, string const & data)
 }
 
 
-void Dialogs::hideSlot(string const & name, InsetBase * inset)
+void Dialogs::hideSlot(string const & name, Inset * inset)
 {
 	std::map<string, DialogPtr>::const_iterator it =
 		dialogs_.find(name);
@@ -172,12 +172,12 @@ void Dialogs::disconnect(string const & name)
 }
 
 
-InsetBase * Dialogs::getOpenInset(string const & name) const
+Inset * Dialogs::getOpenInset(string const & name) const
 {
 	if (!isValidName(name))
 		return 0;
 
-	std::map<string, InsetBase *>::const_iterator it =
+	std::map<string, Inset *>::const_iterator it =
 		open_insets_.find(name);
 	return it == open_insets_.end() ? 0 : it->second;
 }

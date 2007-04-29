@@ -12,7 +12,7 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
@@ -30,7 +30,7 @@ class RenderMonitoredPreview;
 
 
 /// for including tex/lyx files
-class InsetInclude : public InsetBase {
+class InsetInclude : public Inset {
 public:
 	///
 	InsetInclude(InsetCommandParams const &);
@@ -47,7 +47,7 @@ public:
 	InsetCommandParams const & params() const;
 
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::INCLUDE_CODE; }
+	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
 	/** Fills \c list
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param list the list of labels in the child buffer.
@@ -104,7 +104,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
@@ -141,7 +141,7 @@ public:
 	///
 	InsetIncludeMailer(InsetInclude & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

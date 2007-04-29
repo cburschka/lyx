@@ -42,7 +42,7 @@ Andre'
 
 namespace lyx {
 
-class InsetBase;
+class Inset;
 class InsetMath;
 
 class MathAtom {
@@ -51,7 +51,7 @@ public:
 	// std::containers
 	MathAtom();
 	/// the "real constructor"
-	explicit MathAtom(InsetBase * p);
+	explicit MathAtom(Inset * p);
 	/// copy constructor, invokes nucleus_->clone()
 	MathAtom(MathAtom const &);
 	/// we really need to clean up

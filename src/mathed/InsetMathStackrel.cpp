@@ -26,9 +26,9 @@ InsetMathStackrel::InsetMathStackrel()
 {}
 
 
-auto_ptr<InsetBase> InsetMathStackrel::doClone() const
+auto_ptr<Inset> InsetMathStackrel::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathStackrel(*this));
+	return auto_ptr<Inset>(new InsetMathStackrel(*this));
 }
 
 

@@ -76,9 +76,9 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 {}
 
 
-std::auto_ptr<InsetBase> InsetBibtex::doClone() const
+std::auto_ptr<Inset> InsetBibtex::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetBibtex(*this));
+	return std::auto_ptr<Inset>(new InsetBibtex(*this));
 }
 
 

@@ -44,9 +44,9 @@ InsetMathSymbol::InsetMathSymbol(docstring const & name)
 {}
 
 
-auto_ptr<InsetBase> InsetMathSymbol::doClone() const
+auto_ptr<Inset> InsetMathSymbol::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathSymbol(*this));
+	return auto_ptr<Inset>(new InsetMathSymbol(*this));
 }
 
 

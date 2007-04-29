@@ -18,7 +18,7 @@
 #include "LyXRC.h"
 #include "Paragraph.h"
 
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 
 namespace lyx {
@@ -85,7 +85,7 @@ void Previews::generateBufferPreviews(Buffer const & buffer) const
 {
 	PreviewLoader & ploader = loader(buffer);
 
-	InsetBase & inset = buffer.inset();
+	Inset & inset = buffer.inset();
 	InsetIterator it = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
 

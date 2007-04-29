@@ -20,7 +20,7 @@
 
 namespace lyx {
 
-class InsetBase;
+class Inset;
 class LyXView;
 
 namespace frontend { class Dialog; }
@@ -73,7 +73,7 @@ public:
 	    dialog on 'Apply'; should it be used to create a new inset at
 	    the current cursor position or modify an existing, 'open' inset?
 	*/
-	void show(std::string const & name, std::string const & data, InsetBase * inset);
+	void show(std::string const & name, std::string const & data, Inset * inset);
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
 	    to update the contents of a particular dialog with \param data.
@@ -87,14 +87,14 @@ public:
 	/** All Dialogs of the given \param name will be closed if they are
 	    connected to the given \param inset.
 	*/
-	static void hide(std::string const & name, InsetBase * inset);
+	static void hide(std::string const & name, Inset * inset);
 	///
 	void disconnect(std::string const & name);
 	///
-	InsetBase * getOpenInset(std::string const & name) const;
+	Inset * getOpenInset(std::string const & name) const;
 private:
 	///
-	void hideSlot(std::string const & name, InsetBase * inset);
+	void hideSlot(std::string const & name, Inset * inset);
 	///
 	void redraw() const;
 	///
@@ -109,7 +109,7 @@ private:
 	///
 	LyXView & lyxview_;
 	///
-	std::map<std::string, InsetBase *> open_insets_;
+	std::map<std::string, Inset *> open_insets_;
 
 	///
 	std::map<std::string, DialogPtr> dialogs_;

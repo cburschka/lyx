@@ -51,9 +51,9 @@ InsetMathChar::InsetMathChar(char_type c)
 
 
 
-auto_ptr<InsetBase> InsetMathChar::doClone() const
+auto_ptr<Inset> InsetMathChar::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathChar(*this));
+	return auto_ptr<Inset>(new InsetMathChar(*this));
 }
 
 

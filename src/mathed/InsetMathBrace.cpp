@@ -39,9 +39,9 @@ InsetMathBrace::InsetMathBrace(MathData const & ar)
 }
 
 
-auto_ptr<InsetBase> InsetMathBrace::doClone() const
+auto_ptr<Inset> InsetMathBrace::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathBrace(*this));
+	return auto_ptr<Inset>(new InsetMathBrace(*this));
 }
 
 

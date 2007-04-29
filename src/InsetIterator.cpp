@@ -19,13 +19,13 @@
 namespace lyx {
 
 
-InsetIterator::InsetIterator(InsetBase & inset)
+InsetIterator::InsetIterator(Inset & inset)
 	: DocIterator(inset)
 {
 }
 
 
-InsetIterator inset_iterator_begin(InsetBase & inset)
+InsetIterator inset_iterator_begin(Inset & inset)
 {
 	InsetIterator it = InsetIterator(inset);
 	it.forwardInset();
@@ -33,7 +33,7 @@ InsetIterator inset_iterator_begin(InsetBase & inset)
 }
 
 
-InsetIterator inset_iterator_end(InsetBase & inset)
+InsetIterator inset_iterator_end(Inset & inset)
 {
 	return InsetIterator(inset);
 }

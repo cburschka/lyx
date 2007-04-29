@@ -67,15 +67,15 @@ void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 
 void InsetFootlike::write(Buffer const & buf, std::ostream & os) const
 {
-	os << to_utf8(getInsetName()) << "\n";
+	os << to_utf8(insetName()) << "\n";
 	InsetCollapsable::write(buf, os);
 }
 
 
-bool InsetFootlike::insetAllowed(InsetBase::Code code) const
+bool InsetFootlike::insetAllowed(Inset::Code code) const
 {
-	if (code == InsetBase::FOOT_CODE || code == InsetBase::MARGIN_CODE
-	    || code == InsetBase::FLOAT_CODE)
+	if (code == Inset::FOOT_CODE || code == Inset::MARGIN_CODE
+	    || code == Inset::FLOAT_CODE)
 		return false;
 	return InsetCollapsable::insetAllowed(code);
 }

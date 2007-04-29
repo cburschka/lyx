@@ -33,9 +33,9 @@ InsetMathDecoration::InsetMathDecoration(latexkeys const * key)
 }
 
 
-std::auto_ptr<InsetBase> InsetMathDecoration::doClone() const
+std::auto_ptr<Inset> InsetMathDecoration::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetMathDecoration(*this));
+	return std::auto_ptr<Inset>(new InsetMathDecoration(*this));
 }
 
 

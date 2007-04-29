@@ -47,9 +47,9 @@ public:
 	/// get the resut of the last dispatch
 	DispatchResult result() const;
 	/// add a new cursor slice
-	void push(InsetBase & inset);
+	void push(Inset & inset);
 	/// add a new cursor slice, place cursor on left end
-	void pushLeft(InsetBase & inset);
+	void pushLeft(Inset & inset);
 	/// pop one level off the cursor
 	void pop();
 	/// pop one slice off the cursor stack and go left
@@ -57,7 +57,7 @@ public:
 	/// pop one slice off the cursor stack and go right
 	bool popRight();
 	/// make sure we are outside of given inset
-	void leaveInset(InsetBase const & inset);
+	void leaveInset(Inset const & inset);
 	/// sets cursor part
 	void setCursor(DocIterator const & it);
 
@@ -115,7 +115,7 @@ public:
 	bool posRight();
 
 	/// insert an inset
-	void insert(InsetBase *);
+	void insert(Inset *);
 	/// insert a single char
 	void insert(char_type c);
 	/// insert a string
@@ -146,7 +146,7 @@ public:
 	int currentMode();
 	/// reset cursor bottom to the beginning of the given inset
 	// (sort of 'chroot' environment...)
-	void reset(InsetBase &);
+	void reset(Inset &);
 	/// for spellchecking
 	void replaceWord(std::string const & replacestring);
 	/**
@@ -272,7 +272,7 @@ public:
 	// selection in given cell of atom
 	void handleNest(MathAtom const & at, int cell = 0);
 	///
-	bool isInside(InsetBase const *);
+	bool isInside(Inset const *);
 
 	/// make sure cursor position is valid
 	void normalize();

@@ -34,7 +34,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::BIBITEM_CODE; }
+	Inset::Code lyxCode() const { return Inset::BIBITEM_CODE; }
 	///
 	void setCounter(int);
 	///
@@ -47,7 +47,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	///
 	int counter;

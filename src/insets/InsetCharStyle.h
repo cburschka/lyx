@@ -53,7 +53,7 @@ public:
 	///
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
 	///
-	docstring getInsetName() const { return from_ascii("CharStyle"); }
+	docstring insetName() const { return from_ascii("CharStyle"); }
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;
@@ -64,7 +64,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::CHARSTYLE_CODE; }
+	Inset::Code lyxCode() const { return Inset::CHARSTYLE_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
@@ -106,7 +106,7 @@ protected:
 private:
 	friend class InsetCharStyleParams;
 
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// used by the constructors
 	void init();

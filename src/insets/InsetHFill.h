@@ -27,7 +27,7 @@ public:
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::HFILL_CODE; }
+	Inset::Code lyxCode() const { return Inset::HFILL_CODE; }
 	///
 	int plaintext(Buffer const &, odocstream &,
 	              OutputParams const &) const;
@@ -42,7 +42,7 @@ public:
 	// a line separator)?
 	bool isSpace() const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 };
 
 

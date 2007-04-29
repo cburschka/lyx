@@ -27,9 +27,9 @@ InsetMathDiff::InsetMathDiff()
 {}
 
 
-auto_ptr<InsetBase> InsetMathDiff::doClone() const
+auto_ptr<Inset> InsetMathDiff::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathDiff(*this));
+	return auto_ptr<Inset>(new InsetMathDiff(*this));
 }
 
 

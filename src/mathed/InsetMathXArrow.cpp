@@ -30,9 +30,9 @@ InsetMathXArrow::InsetMathXArrow(docstring const & name)
 {}
 
 
-auto_ptr<InsetBase> InsetMathXArrow::doClone() const
+auto_ptr<Inset> InsetMathXArrow::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathXArrow(*this));
+	return auto_ptr<Inset>(new InsetMathXArrow(*this));
 }
 
 

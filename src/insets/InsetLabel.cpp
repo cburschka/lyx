@@ -41,9 +41,9 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
-std::auto_ptr<InsetBase> InsetLabel::doClone() const
+std::auto_ptr<Inset> InsetLabel::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetLabel(params()));
+	return std::auto_ptr<Inset>(new InsetLabel(params()));
 }
 
 
@@ -73,7 +73,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (p["name"] != params()["name"])
 			cur.bv().buffer()->changeRefsIfUnique(params()["name"],
-					p["name"], InsetBase::REF_CODE);
+					p["name"], Inset::REF_CODE);
 		setParams(p);
 		break;
 	}

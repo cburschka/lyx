@@ -36,7 +36,7 @@ public:
 	void write(WriteStream & os) const;
 private:
 	///
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 };
 
 

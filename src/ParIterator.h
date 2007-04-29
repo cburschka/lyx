@@ -21,7 +21,7 @@
 
 namespace lyx {
 
-class InsetBase;
+class Inset;
 class LyXText;
 class ParagraphList;
 
@@ -41,7 +41,7 @@ public:
 	ParIterator() : DocIterator() {}
 
 	///
-	ParIterator(InsetBase &, pit_type pit);
+	ParIterator(Inset &, pit_type pit);
 	///
 	ParIterator(ParIterator const &);
 	///
@@ -73,9 +73,9 @@ public:
 
 DocIterator makeDocIterator(ParIterator const &, pos_type);
 
-ParIterator par_iterator_begin(InsetBase & inset);
+ParIterator par_iterator_begin(Inset & inset);
 
-ParIterator par_iterator_end(InsetBase & inset);
+ParIterator par_iterator_end(Inset & inset);
 
 
 ///
@@ -116,9 +116,9 @@ bool operator!=(ParConstIterator const & iter1,
 		ParConstIterator const & iter2);
 
 
-ParConstIterator par_const_iterator_begin(InsetBase const & inset);
+ParConstIterator par_const_iterator_begin(Inset const & inset);
 
-ParConstIterator par_const_iterator_end(InsetBase const & inset);
+ParConstIterator par_const_iterator_end(Inset const & inset);
 
 
 

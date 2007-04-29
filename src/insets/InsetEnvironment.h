@@ -23,13 +23,13 @@ public:
 	///
 	InsetEnvironment(BufferParams const &, std::string const & name);
 	///
-	docstring getInsetName() const { return name_; }
+	docstring insetName() const { return name_; }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::ENVIRONMENT_CODE; }
+	Inset::Code lyxCode() const { return Inset::ENVIRONMENT_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
@@ -39,7 +39,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	InsetBase::EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	LyXLayout_ptr const & layout() const;
 	/** returns true if, when outputing LaTeX, font changes should
@@ -49,7 +49,7 @@ public:
 protected:
 	InsetEnvironment(InsetEnvironment const &);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	/// the layout
 	LyXLayout_ptr layout_;
 	///

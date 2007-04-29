@@ -27,9 +27,9 @@ InsetMathString::InsetMathString(docstring const & s)
 {}
 
 
-auto_ptr<InsetBase> InsetMathString::doClone() const
+auto_ptr<Inset> InsetMathString::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathString(*this));
+	return auto_ptr<Inset>(new InsetMathString(*this));
 }
 
 

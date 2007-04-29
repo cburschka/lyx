@@ -29,9 +29,9 @@ InsetMathFBox::InsetMathFBox()
 {}
 
 
-auto_ptr<InsetBase> InsetMathFBox::doClone() const
+auto_ptr<Inset> InsetMathFBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathFBox(*this));
+	return auto_ptr<Inset>(new InsetMathFBox(*this));
 }
 
 

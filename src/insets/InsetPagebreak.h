@@ -13,17 +13,17 @@
 #define INSET_PAGEBREAK_H
 
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "gettext.h"
 
 
 namespace lyx {
 
-class InsetPagebreak : public InsetBase {
+class InsetPagebreak : public Inset {
 public:
 	InsetPagebreak() {}
 
-	InsetBase::Code lyxCode() const { return InsetBase::PAGEBREAK_CODE; }
+	Inset::Code lyxCode() const { return Inset::PAGEBREAK_CODE; }
 
 	bool metrics(MetricsInfo &, Dimension &) const;
 
@@ -51,9 +51,9 @@ public:
 	virtual std::string getCmdName() const { return "\\newpage"; }
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const
+	virtual std::auto_ptr<Inset> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetPagebreak);
+		return std::auto_ptr<Inset>(new InsetPagebreak);
 	}
 };
 
@@ -67,9 +67,9 @@ public:
 	std::string getCmdName() const { return "\\clearpage"; }
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const
+	virtual std::auto_ptr<Inset> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetClearPage);
+		return std::auto_ptr<Inset>(new InsetClearPage);
 	}
 };
 
@@ -83,9 +83,9 @@ public:
 	std::string getCmdName() const { return "\\cleardoublepage"; }
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const
+	virtual std::auto_ptr<Inset> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetClearDoublePage);
+		return std::auto_ptr<Inset>(new InsetClearDoublePage);
 	}
 };
 

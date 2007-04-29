@@ -45,9 +45,9 @@ InsetMathTabular::InsetMathTabular(docstring const & name, char valign,
 {}
 
 
-auto_ptr<InsetBase> InsetMathTabular::doClone() const
+auto_ptr<Inset> InsetMathTabular::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathTabular(*this));
+	return auto_ptr<Inset>(new InsetMathTabular(*this));
 }
 
 

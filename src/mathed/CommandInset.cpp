@@ -31,9 +31,9 @@ CommandInset::CommandInset(docstring const & name)
 }
 
 
-auto_ptr<InsetBase> CommandInset::doClone() const
+auto_ptr<Inset> CommandInset::doClone() const
 {
-	return auto_ptr<InsetBase>(new CommandInset(*this));
+	return auto_ptr<Inset>(new CommandInset(*this));
 }
 
 
@@ -51,7 +51,7 @@ bool CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-InsetBase * CommandInset::editXY(Cursor & cur, int /*x*/, int /*y*/)
+Inset * CommandInset::editXY(Cursor & cur, int /*x*/, int /*y*/)
 {
 	edit(cur, true);
 	return this;

@@ -156,7 +156,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		       << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset?.\n";
 	} else if (token == "\\begin_inset") {
-		InsetBase * inset = readInset(lex, buf);
+		Inset * inset = readInset(lex, buf);
 		if (inset)
 			par.insertInset(par.size(), inset, font, change);
 		else {
@@ -230,7 +230,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 				}
 			}
 		} else {
-			auto_ptr<InsetBase> inset;
+			auto_ptr<Inset> inset;
 			if (token == "\\SpecialChar" )
 				inset.reset(new InsetSpecialChar);
 			else
@@ -242,11 +242,11 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
 	} else if (token == "\\newline") {
-		auto_ptr<InsetBase> inset(new InsetNewline);
+		auto_ptr<Inset> inset(new InsetNewline);
 		inset->read(buf, lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\LyXTable") {
-		auto_ptr<InsetBase> inset(new InsetTabular(buf));
+		auto_ptr<Inset> inset(new InsetTabular(buf));
 		inset->read(buf, lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\hfill") {
@@ -896,14 +896,14 @@ void LyXText::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 		// skip if this is not the last paragraph of the document
 		// note: the user should be able to accept/reject the par break of the last par!
-		if (pit == endPit && pit != pars_.size() - 1)
+		if (pit == endPit && pit + 1 != int(pars_.size()))
 			break; // last iteration anway
 
 		if (op == ACCEPT) {
 			if (pars_[pit].isInserted(pos)) {
 				pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 			} else if (pars_[pit].isDeleted(pos)) {
-				if (pit == pars_.size() - 1) {
+				if (pit + 1 == int(pars_.size())) {
 					// we cannot remove a par break at the end of the last paragraph;
 					// instead, we mark it unchanged
 					pars_[pit].setChange(pos, Change(Change::UNCHANGED));
@@ -917,7 +917,7 @@ void LyXText::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 			if (pars_[pit].isDeleted(pos)) {
 				pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 			} else if (pars_[pit].isInserted(pos)) {
-				if (pit == pars_.size() - 1) {
+				if (pit + 1 == int(pars_.size())) {
 					// we mark the par break at the end of the last paragraph unchanged
 					pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 				} else {
@@ -1809,18 +1809,18 @@ docstring LyXText::getPossibleLabel(Cursor & cur) const
 		name = from_ascii(layout->latexname());
 
 	// for captions, we just take the caption type
-	InsetBase * caption_inset = cur.innerInsetOfType(InsetBase::CAPTION_CODE);
+	Inset * caption_inset = cur.innerInsetOfType(Inset::CAPTION_CODE);
 	if (caption_inset)
 		name = from_ascii(static_cast<InsetCaption *>(caption_inset)->type());
 
 	// Inside floats or wraps, if none of the above worked
 	// we want by default the abbreviation of the float type.
 	if (name.empty()) {
-		InsetBase * float_inset = cur.innerInsetOfType(InsetBase::FLOAT_CODE);
+		Inset * float_inset = cur.innerInsetOfType(Inset::FLOAT_CODE);
 		if (!float_inset)
-			float_inset = cur.innerInsetOfType(InsetBase::WRAP_CODE);
+			float_inset = cur.innerInsetOfType(Inset::WRAP_CODE);
 		if (float_inset)
-			name = float_inset->getInsetName();
+			name = float_inset->insetName();
 	}
 
 	// Create a correct prefix for prettyref

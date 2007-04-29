@@ -166,9 +166,9 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<InsetBase> InsetWrap::doClone() const
+auto_ptr<Inset> InsetWrap::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetWrap(*this));
+	return auto_ptr<Inset>(new InsetWrap(*this));
 }
 
 
@@ -213,7 +213,7 @@ int InsetWrap::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-bool InsetWrap::insetAllowed(InsetBase::Code code) const
+bool InsetWrap::insetAllowed(Inset::Code code) const
 {
 	switch(code) {
 	case FLOAT_CODE:

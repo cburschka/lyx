@@ -266,9 +266,9 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<InsetBase> InsetFloat::doClone() const
+auto_ptr<Inset> InsetFloat::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetFloat(*this));
+	return auto_ptr<Inset>(new InsetFloat(*this));
 }
 
 
@@ -350,11 +350,11 @@ int InsetFloat::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-bool InsetFloat::insetAllowed(InsetBase::Code code) const
+bool InsetFloat::insetAllowed(Inset::Code code) const
 {
-	return code != InsetBase::FLOAT_CODE
-	    && code != InsetBase::FOOT_CODE
-	    && code != InsetBase::MARGIN_CODE;
+	return code != Inset::FLOAT_CODE
+	    && code != Inset::FOOT_CODE
+	    && code != Inset::MARGIN_CODE;
 }
 
 

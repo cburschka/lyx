@@ -188,9 +188,9 @@ InsetMathHull::~InsetMathHull()
 {}
 
 
-auto_ptr<InsetBase> InsetMathHull::doClone() const
+auto_ptr<Inset> InsetMathHull::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathHull(*this));
+	return auto_ptr<Inset>(new InsetMathHull(*this));
 }
 
 
@@ -208,7 +208,7 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 }
 
 
-InsetBase * InsetMathHull::editXY(Cursor & cur, int x, int y)
+Inset * InsetMathHull::editXY(Cursor & cur, int x, int y)
 {
 	if (use_preview_) {
 		edit(cur, true);
@@ -1128,7 +1128,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring old = label(r);
 			if (str != old) {
 				cur.bv().buffer()->changeRefsIfUnique(old, str,
-							InsetBase::REF_CODE);
+							Inset::REF_CODE);
 				label(r, str);
 			}
 			break;
@@ -1367,7 +1367,7 @@ void InsetMathHull::revealCodes(Cursor & cur) const
 }
 
 
-InsetBase::Code InsetMathHull::lyxCode() const
+Inset::Code InsetMathHull::lyxCode() const
 {
 	return MATH_CODE;
 }

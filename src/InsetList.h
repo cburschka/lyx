@@ -19,7 +19,7 @@
 
 namespace lyx {
 
-class InsetBase;
+class Inset;
 class Buffer;
 
 
@@ -30,11 +30,11 @@ public:
 	class InsetTable {
 	public:
 		///
-		InsetTable(pos_type p, InsetBase * i) : pos(p), inset(i) {}
+		InsetTable(pos_type p, Inset * i) : pos(p), inset(i) {}
 		///
 		pos_type pos;
 		///
-		InsetBase * inset;
+		Inset * inset;
 	};
 	///
 	typedef std::vector<InsetTable> List;
@@ -60,13 +60,13 @@ public:
 	///
 	const_iterator insetIterator(pos_type pos) const;
 	///
-	void insert(InsetBase * inset, pos_type pos);
+	void insert(Inset * inset, pos_type pos);
 	///
 	void erase(pos_type pos);
 	///
-	InsetBase * release(pos_type);
+	Inset * release(pos_type);
 	///
-	InsetBase * get(pos_type pos) const;
+	Inset * get(pos_type pos) const;
 	///
 	void increasePosAfterPos(pos_type pos);
 	///

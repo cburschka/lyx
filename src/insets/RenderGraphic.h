@@ -24,9 +24,9 @@ namespace lyx {
 class RenderGraphic : public RenderBase
 {
 public:
-	RenderGraphic(InsetBase const *);
-	RenderGraphic(RenderGraphic const &, InsetBase const *);
-	std::auto_ptr<RenderBase> clone(InsetBase const *) const;
+	RenderGraphic(Inset const *);
+	RenderGraphic(RenderGraphic const &, Inset const *);
+	std::auto_ptr<RenderBase> clone(Inset const *) const;
 
 	/// compute the size of the object returned in dim
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;

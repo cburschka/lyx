@@ -12,7 +12,7 @@
 #ifndef INSETTEXT_H
 #define INSETTEXT_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "RowList_fwd.h"
 #include "LyXFont.h"
 #include "LyXText.h"
@@ -37,7 +37,7 @@ class ParagraphList;
  A text inset is like a TeX box to write full text
  (including styles and other insets) in a given space.
  */
-class InsetText : public InsetBase {
+class InsetText : public Inset {
 public:
 	///
 	explicit InsetText(BufferParams const &);
@@ -117,7 +117,7 @@ public:
 	///
 	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 
 	/// number of cells in this inset
 	size_t nargs() const { return 1; }
@@ -144,7 +144,7 @@ protected:
 
 private:
 	///
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	void init();
 

@@ -52,9 +52,9 @@ InsetMathScript::InsetMathScript(MathAtom const & at, bool up)
 }
 
 
-auto_ptr<InsetBase> InsetMathScript::doClone() const
+auto_ptr<Inset> InsetMathScript::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathScript(*this));
+	return auto_ptr<Inset>(new InsetMathScript(*this));
 }
 
 
@@ -440,7 +440,7 @@ bool InsetMathScript::hasDown() const
 }
 
 
-InsetBase::idx_type InsetMathScript::idxOfScript(bool up) const
+Inset::idx_type InsetMathScript::idxOfScript(bool up) const
 {
 	if (nargs() == 1)
 		return 0;

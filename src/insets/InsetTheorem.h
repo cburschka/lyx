@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetBase.heorem.h
+ * \file Inset.heorem.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef InsetBase.heorem_H
-#define InsetBase.heorem_H
+#ifndef Inset.heorem_H
+#define Inset.heorem_H
 
 
 #include "InsetCollapsable.h"
@@ -21,10 +21,10 @@ namespace lyx {
 /** The theorem inset
 
 */
-class InsetBase.heorem : public InsetCollapsable {
+class Inset.heorem : public InsetCollapsable {
 public:
 	///
-	InsetBase.heorem();
+	Inset.heorem();
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
@@ -39,7 +39,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	///
 	mutable unsigned int center_indent_;

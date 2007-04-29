@@ -114,9 +114,9 @@ InsetBox::~InsetBox()
 }
 
 
-auto_ptr<InsetBase> InsetBox::doClone() const
+auto_ptr<Inset> InsetBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetBox(*this));
+	return auto_ptr<Inset>(new InsetBox(*this));
 }
 
 

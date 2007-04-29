@@ -64,7 +64,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::BOX_CODE; }
+	Inset::Code lyxCode() const { return Inset::BOX_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
@@ -110,11 +110,11 @@ protected:
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const;
 	///
-	virtual docstring getInsetName() const { return from_ascii("Box"); }
+	virtual docstring insetName() const { return from_ascii("Box"); }
 private:
 	friend class InsetBoxParams;
 
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// used by the constructors
 	void init();
@@ -128,7 +128,7 @@ public:
 	///
 	InsetBoxMailer(InsetBox & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

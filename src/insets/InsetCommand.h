@@ -13,7 +13,7 @@
 #ifndef INSET_LATEXCOMMAND_H
 #define INSET_LATEXCOMMAND_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
@@ -31,7 +31,7 @@ namespace lyx {
  */
 
 ///
-class InsetCommand : public InsetBase {
+class InsetCommand : public Inset {
 public:
 	///
 	InsetCommand(InsetCommandParams const &, std::string const & mailer_name);
@@ -54,7 +54,7 @@ public:
 	///
 	int docbook(Buffer const &, odocstream &, OutputParams const & runparams) const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::NO_CODE; }
+	Inset::Code lyxCode() const { return Inset::NO_CODE; }
 
 	///
 	InsetCommandParams const & params() const { return p_; }
@@ -125,7 +125,7 @@ public:
 	///
 	InsetCommandMailer(std::string const & name, InsetCommand & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

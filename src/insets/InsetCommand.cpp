@@ -138,7 +138,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetBase::doDispatch(cur, cmd);
+		Inset::doDispatch(cur, cmd);
 		break;
 	}
 
@@ -160,7 +160,7 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.enabled(true);
 		return true;
 	default:
-		return InsetBase::getStatus(cur, cmd, status);
+		return Inset::getStatus(cur, cmd, status);
 	}
 }
 

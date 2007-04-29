@@ -14,7 +14,7 @@
 
 #include "LyXText.h"
 
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 #include <boost/assert.hpp>
 
@@ -62,27 +62,28 @@ Point CoordCache::get(LyXText const * text, pit_type pit) const
 void CoordCache::dump() const
 {
 	lyxerr << "ParPosCache contains:" << std::endl;
-	for (ParPosCache::const_iterator i = getParPos().begin(); i != getParPos().end(); ++i) {
-		LyXText const * lt = (*i).first;
-		InnerParPosCache const & cache = (*i).second;
+	for (ParPosCache::const_iterator it = getParPos().begin(); it != getParPos().end(); ++it) {
+		LyXText const * lt = it->first;
+		InnerParPosCache const & cache = it->second;
 		lyxerr << "LyXText:" << lt << std::endl;
-		for (InnerParPosCache::const_iterator j = cache.begin(); j != cache.end(); ++j) {
-			pit_type pit = (*j).first;
+		for (InnerParPosCache::const_iterator jt = cache.begin(); jt != cache.end(); ++jt) {
+			pit_type pit = jt->first;
 			Paragraph const & par = lt->getPar(pit);
-			Point p = (*j).second;
+			Point p = jt->second;
 			lyxerr << "Paragraph " << pit << ": \"";
-			for (int k = 0; k < std::min(static_cast<lyx::pos_type>(10), par.size()); ++k) {
-				lyxerr << to_utf8(docstring(1,par.getChar(k)));
-			}
+			int const n = std::min(static_cast<lyx::pos_type>(10), par.size());
+			for (int k = 0; k < n; ++k)
+				lyxerr << to_utf8(docstring(1, par.getChar(k)));
 			lyxerr << "\" has point " << p.x_ << "," << p.y_ << std::endl;
 		}
 	}
 
 	lyxerr << "InsetCache contains:" << std::endl;
-	for (CoordCacheBase<InsetBase>::cache_type::const_iterator i = getInsets().getData().begin(); i != getInsets().getData().end(); ++i) {
-		InsetBase const * inset = (*i).first;
-		Point p = (*i).second;
-		lyxerr << "Inset " << inset << "(" << to_utf8(inset->getInsetName()) << ") has point " << p.x_ << "," << p.y_ << std::endl;
+	for (CoordCacheBase<Inset>::cache_type::const_iterator it = getInsets().getData().begin(); it != getInsets().getData().end(); ++it) {
+		Inset const * inset = it->first;
+		Point const p = it->second;
+		lyxerr << "Inset " << inset << "(" << to_utf8(inset->insetName())
+			<< ") has point " << p.x_ << "," << p.y_ << std::endl;
 	}
 }
 

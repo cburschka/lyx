@@ -29,9 +29,9 @@ InsetMathUnknown::InsetMathUnknown(docstring const & nm, bool final, bool black)
 {}
 
 
-auto_ptr<InsetBase> InsetMathUnknown::doClone() const
+auto_ptr<Inset> InsetMathUnknown::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathUnknown(*this));
+	return auto_ptr<Inset>(new InsetMathUnknown(*this));
 }
 
 

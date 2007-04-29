@@ -48,9 +48,9 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 }
 
 
-auto_ptr<InsetBase> InsetOptArg::doClone() const
+auto_ptr<Inset> InsetOptArg::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetOptArg(*this));
+	return auto_ptr<Inset>(new InsetOptArg(*this));
 }
 
 

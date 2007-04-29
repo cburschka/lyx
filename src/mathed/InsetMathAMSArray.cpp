@@ -41,9 +41,9 @@ InsetMathAMSArray::InsetMathAMSArray(docstring const & name)
 {}
 
 
-auto_ptr<InsetBase> InsetMathAMSArray::doClone() const
+auto_ptr<Inset> InsetMathAMSArray::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathAMSArray(*this));
+	return auto_ptr<Inset>(new InsetMathAMSArray(*this));
 }
 
 

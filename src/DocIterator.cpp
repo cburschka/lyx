@@ -38,12 +38,12 @@ DocIterator::DocIterator()
 {}
 
 
-DocIterator::DocIterator(InsetBase & inset)
+DocIterator::DocIterator(Inset & inset)
 	: boundary_(false), inset_(&inset)
 {}
 
 
-DocIterator doc_iterator_begin(InsetBase & inset)
+DocIterator doc_iterator_begin(Inset & inset)
 {
 	DocIterator dit(inset);
 	dit.forwardPos();
@@ -51,13 +51,13 @@ DocIterator doc_iterator_begin(InsetBase & inset)
 }
 
 
-DocIterator doc_iterator_end(InsetBase & inset)
+DocIterator doc_iterator_end(Inset & inset)
 {
 	return DocIterator(inset);
 }
 
 
-InsetBase * DocIterator::nextInset()
+Inset * DocIterator::nextInset()
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
@@ -72,7 +72,7 @@ InsetBase * DocIterator::nextInset()
 }
 
 
-InsetBase * DocIterator::prevInset()
+Inset * DocIterator::prevInset()
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
@@ -89,7 +89,7 @@ InsetBase * DocIterator::prevInset()
 }
 
 
-InsetBase const * DocIterator::prevInset() const
+Inset const * DocIterator::prevInset() const
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
@@ -106,11 +106,11 @@ InsetBase const * DocIterator::prevInset() const
 }
 
 
-InsetBase * DocIterator::realInset() const
+Inset * DocIterator::realInset() const
 {
 	BOOST_ASSERT(inTexted());
 	// if we are in a tabular, we need the cell
-	if (inset().lyxCode() == InsetBase::TABULAR_CODE) {
+	if (inset().lyxCode() == Inset::TABULAR_CODE) {
 		InsetTabular & tabular = static_cast<InsetTabular&>(inset());
 		return tabular.cell(idx()).get();
 	}
@@ -269,7 +269,7 @@ LyXText const * DocIterator::innerText() const
 }
 
 
-InsetBase * DocIterator::innerInsetOfType(int code) const
+Inset * DocIterator::innerInsetOfType(int code) const
 {
 	for (int i = depth() - 1; i >= 0; --i)
 		if (slices_[i].inset_->lyxCode() == code)
@@ -286,12 +286,12 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 		return;
 	}
 
-	InsetBase * const nextinset = nextInset();
+	Inset * const nextinset = nextInset();
 	// jump over collapsables if they are collapsed
 	// FIXME: the check for asInsetMath() shouldn't be necessary
 	// but math insets do not return a sensible editable() state yet.
 	if (ignorecollapsed && nextinset && (!nextinset->asInsetMath()
-	    && nextinset->editable() != InsetBase::HIGHLY_EDITABLE)) {
+	    && nextinset->editable() != Inset::HIGHLY_EDITABLE)) {
 		++top().pos();
 		return;
 	}
@@ -303,7 +303,7 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 	pos_type const lastp = lastpos();
 
 	// move into an inset to the right if possible
-	InsetBase * n = 0;
+	Inset * n = 0;
 
 	if (tip.pos() != lastp) {
 		// this is impossible for pos() == size()
@@ -481,7 +481,7 @@ void DocIterator::backwardPos()
 	}
 
 	// move into an inset to the left if possible
-	InsetBase * n = 0;
+	Inset * n = 0;
 
 	if (inMathed()) {
 		n = (tip.cell().begin() + tip.pos())->nucleus();
@@ -510,7 +510,7 @@ bool DocIterator::hasPart(DocIterator const & it) const
 }
 
 
-void DocIterator::updateInsets(InsetBase * inset)
+void DocIterator::updateInsets(Inset * inset)
 {
 	// this function re-creates the cache of inset pointers.
 	// code taken in part from StableDocIterator::asDocIterator.
@@ -548,7 +548,7 @@ StableDocIterator::StableDocIterator(DocIterator const & dit)
 }
 
 
-DocIterator StableDocIterator::asDocIterator(InsetBase * inset) const
+DocIterator StableDocIterator::asDocIterator(Inset * inset) const
 {
 	// this function re-creates the cache of inset pointers
 	//lyxerr << "converting:\n" << *this << endl;

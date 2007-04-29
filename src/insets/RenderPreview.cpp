@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "insets/RenderPreview.h"
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 #include "BufferView.h"
 #include "Color.h"
@@ -48,13 +48,13 @@ LyXRC_PreviewStatus RenderPreview::status()
 }
 
 
-RenderPreview::RenderPreview(InsetBase const * inset)
+RenderPreview::RenderPreview(Inset const * inset)
 	: parent_(inset)
 {}
 
 
 RenderPreview::RenderPreview(RenderPreview const & other,
-			     InsetBase const * inset)
+			     Inset const * inset)
 	: RenderBase(other),
 	  boost::signals::trackable(),
 	  snippet_(other.snippet_),
@@ -62,7 +62,7 @@ RenderPreview::RenderPreview(RenderPreview const & other,
 {}
 
 
-auto_ptr<RenderBase> RenderPreview::clone(InsetBase const * inset) const
+auto_ptr<RenderBase> RenderPreview::clone(Inset const * inset) const
 {
 	return auto_ptr<RenderBase>(new RenderPreview(*this, inset));
 }
@@ -154,7 +154,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 			      *image);
 
 	} else {
-		int const offset = InsetBase::TEXT_TO_INSET_OFFSET;
+		int const offset = Inset::TEXT_TO_INSET_OFFSET;
 
 		pi.pain.rectangle(x + offset,
 				  y - dim_.asc,
@@ -241,7 +241,7 @@ void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 }
 
 
-RenderMonitoredPreview::RenderMonitoredPreview(InsetBase const * inset)
+RenderMonitoredPreview::RenderMonitoredPreview(Inset const * inset)
 	: RenderPreview(inset),
 	  monitor_(FileName(), 2000)
 {}

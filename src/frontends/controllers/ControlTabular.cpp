@@ -38,7 +38,7 @@ bool ControlTabular::initialiseParams(string const & data)
 		// get the innermost tabular inset;
 		// assume that it is "ours"
 		for (int i = cur.depth() - 1; i >= 0; --i)
-			if (cur[i].inset().lyxCode() == InsetBase::TABULAR_CODE) {
+			if (cur[i].inset().lyxCode() == Inset::TABULAR_CODE) {
 				active_cell_ = cur[i].idx();
 				break;
 			}

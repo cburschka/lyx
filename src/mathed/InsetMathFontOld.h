@@ -47,7 +47,7 @@ public:
 	int kerning() const { return cell(0).kerning(); }
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	/// the font to be used on screen
 	latexkeys const * key_;
 };

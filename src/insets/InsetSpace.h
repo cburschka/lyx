@@ -16,7 +16,7 @@
 #define INSET_SPACE_H
 
 
-#include "InsetBase.h"
+#include "Inset.h"
 
 
 namespace lyx {
@@ -24,7 +24,7 @@ namespace lyx {
 class LaTeXFeatures;
 
 ///  Used to insert different kinds of spaces
-class InsetSpace : public InsetBase {
+class InsetSpace : public Inset {
 public:
 
 	/// The different kinds of spaces we support
@@ -76,7 +76,7 @@ public:
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::SPACE_CODE; }
+	Inset::Code lyxCode() const { return Inset::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 
@@ -88,7 +88,7 @@ public:
 	// a line separator)?
 	bool isSpace() const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// And which kind is this?
 	Kind kind_;

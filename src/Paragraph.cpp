@@ -110,13 +110,13 @@ public:
 	///
 	void insertChar(pos_type pos, value_type c, Change const & change);
 	///
-	void insertInset(pos_type pos, InsetBase * inset, Change const & change);
+	void insertInset(pos_type pos, Inset * inset, Change const & change);
 	/// (logically) erase the char at pos; return true if it was actually erased
 	bool eraseChar(pos_type pos, bool trackChanges);
 	/// (logically) erase the given range; return the number of chars actually erased
 	int eraseChars(pos_type start, pos_type end, bool trackChanges);
 	///
-	InsetBase * inset_owner;
+	Inset * inset_owner;
 
 	/** A font entry covers a range of positions. Notice that the
 	    entries in the list are inserted in random order.
@@ -457,7 +457,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 }
 
 
-void Paragraph::Pimpl::insertInset(pos_type pos, InsetBase * inset,
+void Paragraph::Pimpl::insertInset(pos_type pos, Inset * inset,
                                    Change const & change)
 {
 	BOOST_ASSERT(inset);
@@ -687,14 +687,14 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 	// and then split to handle the two modes separately.
 	switch (c) {
 	case Paragraph::META_INSET: {
-		InsetBase * inset = owner_->getInset(i);
+		Inset * inset = owner_->getInset(i);
 
 		// FIXME: remove this check
 		if (!inset)
 			break;
 
 		// FIXME: move this to InsetNewline::latex
-		if (inset->lyxCode() == InsetBase::NEWLINE_CODE) {
+		if (inset->lyxCode() == Inset::NEWLINE_CODE) {
 			// newlines are handled differently here than
 			// the default in simpleTeXSpecialChars().
 			if (!style.newline_allowed) {
@@ -740,9 +740,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		bool close = false;
 		odocstream::pos_type const len = os.tellp();
 
-		if ((inset->lyxCode() == InsetBase::GRAPHICS_CODE
-		     || inset->lyxCode() == InsetBase::MATH_CODE
-		     || inset->lyxCode() == InsetBase::URL_CODE)
+		if ((inset->lyxCode() == Inset::GRAPHICS_CODE
+		     || inset->lyxCode() == Inset::MATH_CODE
+		     || inset->lyxCode() == Inset::URL_CODE)
 		    && running_font.isRightToLeft()) {
 			os << "\\L{";
 			close = true;
@@ -1005,7 +1005,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		if (icit->inset) {
 			icit->inset->validate(features);
 			if (layout.needprotect &&
-			    icit->inset->lyxCode() == InsetBase::FOOT_CODE)
+			    icit->inset->lyxCode() == Inset::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
 	}
@@ -1139,7 +1139,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 		switch (c) {
 		case META_INSET:
 		{
-			InsetBase const * inset = getInset(i);
+			Inset const * inset = getInset(i);
 			if (inset)
 				if (inset->directWrite()) {
 					// international char, let it write
@@ -1242,14 +1242,14 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 }
 
 
-void Paragraph::insertInset(pos_type pos, InsetBase * inset,
+void Paragraph::insertInset(pos_type pos, Inset * inset,
                             Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 }
 
 
-void Paragraph::insertInset(pos_type pos, InsetBase * inset,
+void Paragraph::insertInset(pos_type pos, Inset * inset,
                             LyXFont const & font, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
@@ -1257,7 +1257,7 @@ void Paragraph::insertInset(pos_type pos, InsetBase * inset,
 }
 
 
-bool Paragraph::insetAllowed(InsetBase_code code)
+bool Paragraph::insetAllowed(Inset_code code)
 {
 	return !pimpl_->inset_owner || pimpl_->inset_owner->insetAllowed(code);
 }
@@ -1688,7 +1688,7 @@ void Paragraph::setBeginOfBody()
 
 
 // returns -1 if inset not found
-int Paragraph::getPositionOfInset(InsetBase const * inset) const
+int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
 	InsetList::const_iterator it = insetlist.begin();
@@ -1703,8 +1703,8 @@ int Paragraph::getPositionOfInset(InsetBase const * inset) const
 InsetBibitem * Paragraph::bibitem() const
 {
 	if (!insetlist.empty()) {
-		InsetBase * inset = insetlist.begin()->inset;
-		if (inset->lyxCode() == InsetBase::BIBITEM_CODE)
+		Inset * inset = insetlist.begin()->inset;
+		if (inset->lyxCode() == Inset::BIBITEM_CODE)
 			return static_cast<InsetBibitem *>(inset);
 	}
 	return 0;
@@ -1722,9 +1722,9 @@ namespace {
 // paragraphs inside floats need different alignment tags to avoid
 // unwanted space
 
-bool noTrivlistCentering(InsetBase::Code code)
+bool noTrivlistCentering(Inset::Code code)
 {
-	return code == InsetBase::FLOAT_CODE || code == InsetBase::WRAP_CODE;
+	return code == Inset::FLOAT_CODE || code == Inset::WRAP_CODE;
 }
 
 
@@ -1741,7 +1741,7 @@ string correction(string const & orig)
 
 
 string const corrected_env(string const & suffix, string const & env,
-	InsetBase::Code code)
+	Inset::Code code)
 {
 	string output = suffix + "{";
 	if (noTrivlistCentering(code))
@@ -2169,14 +2169,14 @@ bool Paragraph::emptyTag() const
 {
 	for (pos_type i = 0; i < size(); ++i) {
 		if (isInset(i)) {
-			InsetBase const * inset = getInset(i);
-			InsetBase::Code lyx_code = inset->lyxCode();
-			if (lyx_code != InsetBase::TOC_CODE &&
-			    lyx_code != InsetBase::INCLUDE_CODE &&
-			    lyx_code != InsetBase::GRAPHICS_CODE &&
-			    lyx_code != InsetBase::ERT_CODE &&
-			    lyx_code != InsetBase::FLOAT_CODE &&
-			    lyx_code != InsetBase::TABULAR_CODE) {
+			Inset const * inset = getInset(i);
+			Inset::Code lyx_code = inset->lyxCode();
+			if (lyx_code != Inset::TOC_CODE &&
+			    lyx_code != Inset::INCLUDE_CODE &&
+			    lyx_code != Inset::GRAPHICS_CODE &&
+			    lyx_code != Inset::ERT_CODE &&
+			    lyx_code != Inset::FLOAT_CODE &&
+			    lyx_code != Inset::TABULAR_CODE) {
 				return false;
 			}
 		} else {
@@ -2193,9 +2193,9 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) cons
 {
 	for (pos_type i = 0; i < size(); ++i) {
 		if (isInset(i)) {
-			InsetBase const * inset = getInset(i);
-			InsetBase::Code lyx_code = inset->lyxCode();
-			if (lyx_code == InsetBase::LABEL_CODE) {
+			Inset const * inset = getInset(i);
+			Inset::Code lyx_code = inset->lyxCode();
+			if (lyx_code == Inset::LABEL_CODE) {
 				string const id = static_cast<InsetCommand const *>(inset)->getContents();
 				return "id='" + to_utf8(sgml::cleanID(buf, runparams, from_utf8(id))) + "'";
 			}
@@ -2211,7 +2211,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 	pos_type i;
 	for (i = 0; i < size(); ++i) {
 		if (isInset(i)) {
-			InsetBase const * inset = getInset(i);
+			Inset const * inset = getInset(i);
 			inset->docbook(buf, os, runparams);
 		} else {
 			value_type c = getChar(i);
@@ -2272,7 +2272,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		}
 
 		if (isInset(i)) {
-			InsetBase const * inset = getInset(i);
+			Inset const * inset = getInset(i);
 			inset->docbook(buf, os, runparams);
 		} else {
 			value_type c = getChar(i);
@@ -2299,7 +2299,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 bool Paragraph::isNewline(pos_type pos) const
 {
 	return isInset(pos)
-		&& getInset(pos)->lyxCode() == InsetBase::NEWLINE_CODE;
+		&& getInset(pos)->lyxCode() == Inset::NEWLINE_CODE;
 }
 
 
@@ -2340,7 +2340,7 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->rightToLeft()
-		&& ownerCode() != InsetBase::ERT_CODE;
+		&& ownerCode() != Inset::ERT_CODE;
 }
 
 
@@ -2402,7 +2402,7 @@ docstring const Paragraph::asString(Buffer const & buffer,
 }
 
 
-void Paragraph::setInsetOwner(InsetBase * inset)
+void Paragraph::setInsetOwner(Inset * inset)
 {
 	pimpl_->inset_owner = inset;
 }
@@ -2469,16 +2469,16 @@ void Paragraph::layout(LyXLayout_ptr const & new_layout)
 }
 
 
-InsetBase * Paragraph::inInset() const
+Inset * Paragraph::inInset() const
 {
 	return pimpl_->inset_owner;
 }
 
 
-InsetBase::Code Paragraph::ownerCode() const
+Inset::Code Paragraph::ownerCode() const
 {
 	return pimpl_->inset_owner
-		? pimpl_->inset_owner->lyxCode() : InsetBase::NO_CODE;
+		? pimpl_->inset_owner->lyxCode() : Inset::NO_CODE;
 }
 
 
@@ -2500,8 +2500,8 @@ bool Paragraph::isFreeSpacing() const
 		return true;
 
 	// for now we just need this, later should we need this in some
-	// other way we can always add a function to InsetBase too.
-	return ownerCode() == InsetBase::ERT_CODE;
+	// other way we can always add a function to Inset too.
+	return ownerCode() == Inset::ERT_CODE;
 }
 
 
@@ -2509,7 +2509,7 @@ bool Paragraph::allowEmpty() const
 {
 	if (layout()->keepempty)
 		return true;
-	return ownerCode() == InsetBase::ERT_CODE;
+	return ownerCode() == Inset::ERT_CODE;
 }
 
 
@@ -2598,13 +2598,13 @@ bool Paragraph::checkBiblio(bool track_changes)
 	bool hasbibitem = !insetlist.empty()
 		// Insist on it being in pos 0
 		&& getChar(0) == Paragraph::META_INSET
-		&& insetlist.begin()->inset->lyxCode() == InsetBase::BIBITEM_CODE;
+		&& insetlist.begin()->inset->lyxCode() == Inset::BIBITEM_CODE;
 
 	if (hasbibitem)
 		return false;
 
 	InsetBibitem * inset(new InsetBibitem(InsetCommandParams("bibitem")));
-	insertInset(0, static_cast<InsetBase *>(inset),
+	insertInset(0, static_cast<Inset *>(inset),
 		Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
 
 	return true;

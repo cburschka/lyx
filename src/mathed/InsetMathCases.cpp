@@ -41,9 +41,9 @@ InsetMathCases::InsetMathCases(row_type n)
 {}
 
 
-auto_ptr<InsetBase> InsetMathCases::doClone() const
+auto_ptr<Inset> InsetMathCases::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathCases(*this));
+	return auto_ptr<Inset>(new InsetMathCases(*this));
 }
 
 

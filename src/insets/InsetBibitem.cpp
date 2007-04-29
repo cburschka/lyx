@@ -46,11 +46,11 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 }
 
 
-auto_ptr<InsetBase> InsetBibitem::doClone() const
+auto_ptr<Inset> InsetBibitem::doClone() const
 {
 	auto_ptr<InsetBibitem> b(new InsetBibitem(params()));
 	b->setCounter(counter);
-	return auto_ptr<InsetBase>(b);
+	return auto_ptr<Inset>(b);
 }
 
 
@@ -67,7 +67,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (p["key"] != params()["key"])
 			cur.bv().buffer()->changeRefsIfUnique(params()["key"],
-						       p["key"], InsetBase::CITE_CODE);
+						       p["key"], Inset::CITE_CODE);
 		setParams(p);
 	}
 

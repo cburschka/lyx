@@ -25,7 +25,7 @@ class Buffer;
 class BufferList;
 class Converters;
 class ErrorItem;
-class InsetBase;
+class Inset;
 class LyXFunc;
 class LyXServer;
 class LyXServerSocket;
@@ -97,7 +97,7 @@ public:
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * const updateInset(InsetBase const *) const;
+	Buffer const * const updateInset(Inset const *) const;
 
 	/// Execute batch commands if available.
 	void execBatchCommands();

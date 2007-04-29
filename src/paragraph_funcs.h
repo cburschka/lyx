@@ -19,7 +19,7 @@ namespace lyx {
 
 class Buffer;
 class BufferParams;
-class InsetBase;
+class Inset;
 class LyXFont;
 class Paragraph;
 class ParagraphList;

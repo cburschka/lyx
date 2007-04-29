@@ -30,7 +30,7 @@ namespace lyx {
 namespace support { class FileName; }
 
 class Buffer;
-class InsetBase;
+class Inset;
 class Menubar;
 
 class BufferView;
@@ -186,7 +186,7 @@ public:
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * const updateInset(InsetBase const *) const;
+	Buffer const * const updateInset(Inset const *) const;
 
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
@@ -268,7 +268,7 @@ private:
 	void showDialogWithData(std::string const & name,
 		std::string const & data);
 	void showInsetDialog(std::string const & name,
-		std::string const & data, InsetBase * inset);
+		std::string const & data, Inset * inset);
 	void updateDialog(std::string const & name,
 		std::string const & data);
 	//@}

@@ -133,7 +133,7 @@ protected:
 	docstring eolString(row_type row, bool emptyline, bool fragile) const;
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	void setType(HullType type);
 	///
@@ -198,7 +198,7 @@ public:
 	///
 	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	bool display() const;
 	///

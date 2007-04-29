@@ -28,7 +28,7 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &);
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::URL_CODE; }
+	Inset::Code lyxCode() const { return Inset::URL_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -50,8 +50,8 @@ public:
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const {
-		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
+	virtual std::auto_ptr<Inset> doClone() const {
+		return std::auto_ptr<Inset>(new InsetUrl(params()));
 	}
 };
 

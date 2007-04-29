@@ -242,7 +242,7 @@ LyXText & Buffer::text() const
 }
 
 
-InsetBase & Buffer::inset() const
+Inset & Buffer::inset() const
 {
 	return const_cast<InsetText &>(pimpl_->inset);
 }
@@ -1254,15 +1254,15 @@ void Buffer::fillWithBibKeys(vector<pair<string, docstring> > & keys)
 	}
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
+		if (it->lyxCode() == Inset::BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
 			inset.fillWithBibKeys(*this, keys);
-		} else if (it->lyxCode() == InsetBase::INCLUDE_CODE) {
+		} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
 			InsetInclude const & inset =
 				static_cast<InsetInclude const &>(*it);
 			inset.fillWithBibKeys(*this, keys);
-		} else if (it->lyxCode() == InsetBase::BIBITEM_CODE) {
+		} else if (it->lyxCode() == Inset::BIBITEM_CODE) {
 			InsetBibitem const & inset =
 				static_cast<InsetBibitem const &>(*it);
 			// FIXME UNICODE
@@ -1290,14 +1290,14 @@ void Buffer::updateBibfilesCache()
 
 	bibfilesCache_.clear();
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
+		if (it->lyxCode() == Inset::BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
 			vector<FileName> const bibfiles = inset.getFiles(*this);
 			bibfilesCache_.insert(bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
-		} else if (it->lyxCode() == InsetBase::INCLUDE_CODE) {
+		} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache(*this);
@@ -1604,7 +1604,7 @@ void Buffer::buildMacros()
 		InsetList::const_iterator end = insets.end();
 		for ( ; it != end; ++it) {
 			//lyxerr << "found inset code " << it->inset->lyxCode() << std::endl;
-			if (it->inset->lyxCode() == InsetBase::MATHMACRO_CODE) {
+			if (it->inset->lyxCode() == Inset::MATHMACRO_CODE) {
 				MathMacroTemplate const & mac
 					= static_cast<MathMacroTemplate const &>(*it->inset);
 				insertMacro(mac.name(), mac.asMacroData());
@@ -1622,14 +1622,14 @@ void Buffer::saveCursor(StableDocIterator cur, StableDocIterator anc)
 
 
 void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
-	InsetBase::Code code)
+	Inset::Code code)
 {
 	//FIXME: This does not work for child documents yet.
-	BOOST_ASSERT(code == InsetBase::CITE_CODE || code == InsetBase::REF_CODE);
+	BOOST_ASSERT(code == Inset::CITE_CODE || code == Inset::REF_CODE);
 	// Check if the label 'from' appears more than once
 	vector<docstring> labels;
 
-	if (code == InsetBase::CITE_CODE) {
+	if (code == Inset::CITE_CODE) {
 		vector<pair<string, docstring> > keys;
 		fillWithBibKeys(keys);
 		vector<pair<string, docstring> >::const_iterator bit  = keys.begin();

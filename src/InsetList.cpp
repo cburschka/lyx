@@ -71,7 +71,7 @@ InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 }
 
 
-void InsetList::insert(InsetBase * inset, pos_type pos)
+void InsetList::insert(Inset * inset, pos_type pos)
 {
 	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
@@ -95,12 +95,12 @@ void InsetList::erase(pos_type pos)
 }
 
 
-InsetBase * InsetList::release(pos_type pos)
+Inset * InsetList::release(pos_type pos)
 {
 	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
-		InsetBase * tmp = it->inset;
+		Inset * tmp = it->inset;
 		it->inset = 0;
 		return tmp;
 	}
@@ -108,7 +108,7 @@ InsetBase * InsetList::release(pos_type pos)
 }
 
 
-InsetBase * InsetList::get(pos_type pos) const
+Inset * InsetList::get(pos_type pos) const
 {
 	List::const_iterator end = list_.end();
 	List::const_iterator it = insetIterator(pos);

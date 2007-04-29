@@ -32,9 +32,9 @@ InsetMathRoot::InsetMathRoot()
 {}
 
 
-auto_ptr<InsetBase> InsetMathRoot::doClone() const
+auto_ptr<Inset> InsetMathRoot::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathRoot(*this));
+	return auto_ptr<Inset>(new InsetMathRoot(*this));
 }
 
 

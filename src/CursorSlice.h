@@ -17,8 +17,8 @@
 #ifndef CURSORSLICE_H
 #define CURSORSLICE_H
 
-#include "insets/InsetBase.h"
 #include "support/types.h"
+#include "insets/Inset.h"
 
 #include <cstddef>
 #include <iosfwd>
@@ -26,7 +26,7 @@
 
 namespace lyx {
 
-class InsetBase;
+class Inset;
 class MathData;
 class LyXText;
 class Paragraph;
@@ -50,10 +50,10 @@ public:
 	///
 	CursorSlice();
 	///
-	explicit CursorSlice(InsetBase &);
+	explicit CursorSlice(Inset &);
 
 	/// the current inset
-	InsetBase & inset() const { return *inset_; }
+	Inset & inset() const { return *inset_; }
 	/// return the cell this cursor is in
 	idx_type idx() const { return idx_; }
 	/// return the cell this cursor is in
@@ -115,7 +115,7 @@ public:
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
 public:
 	/// pointer to 'owning' inset. This is some kind of cache.
-	InsetBase * inset_;
+	Inset * inset_;
 private:
 	/*!
 	 * Cell index of a position in this inset.

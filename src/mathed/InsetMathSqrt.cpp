@@ -28,9 +28,9 @@ InsetMathSqrt::InsetMathSqrt()
 {}
 
 
-auto_ptr<InsetBase> InsetMathSqrt::doClone() const
+auto_ptr<Inset> InsetMathSqrt::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathSqrt(*this));
+	return auto_ptr<Inset>(new InsetMathSqrt(*this));
 }
 
 

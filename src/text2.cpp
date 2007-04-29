@@ -87,7 +87,7 @@ bool LyXText::isMainText(Buffer const & buffer) const
 
 
 //takes screen x,y coordinates
-InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
+Inset * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 {
 	pit_type pit = getPitNearY(bv, y);
 	BOOST_ASSERT(pit != -1);
@@ -103,7 +103,7 @@ InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 	InsetList::const_iterator iit = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; iit != iend; ++iit) {
-		InsetBase * inset = iit->inset;
+		Inset * inset = iit->inset;
 #if 1
 		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
@@ -358,7 +358,7 @@ void LyXText::setLayout(Cursor & cur, string const & layout)
 		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
 		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
 		lyx::dispatch(FuncRequest(LFUN_CUT));
-		InsetBase * inset = new InsetEnvironment(params, layout);
+		Inset * inset = new InsetEnvironment(params, layout);
 		insertInset(cur, inset);
 		//inset->edit(cur, true);
 		//lyx::dispatch(FuncRequest(LFUN_PASTE));
@@ -623,7 +623,7 @@ void LyXText::setParagraph(Cursor & cur,
 
 
 // this really should just insert the inset and not move the cursor.
-void LyXText::insertInset(Cursor & cur, InsetBase * inset)
+void LyXText::insertInset(Cursor & cur, Inset * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
@@ -846,7 +846,7 @@ Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) con
 
 // x,y are absolute screen coordinates
 // sets cursor recursively descending into nested editable insets
-InsetBase * LyXText::editXY(Cursor & cur, int x, int y)
+Inset * LyXText::editXY(Cursor & cur, int x, int y)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		lyxerr << "LyXText::editXY(cur, " << x << ", " << y << ")" << std::endl;
@@ -868,7 +868,7 @@ InsetBase * LyXText::editXY(Cursor & cur, int x, int y)
 	cur.x_target() = x;
 
 	// try to descend into nested insets
-	InsetBase * inset = checkInsetHit(cur.bv(), x, y);
+	Inset * inset = checkInsetHit(cur.bv(), x, y);
 	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset) {
 		// Either we deconst editXY or better we move current_font
@@ -877,8 +877,8 @@ InsetBase * LyXText::editXY(Cursor & cur, int x, int y)
 		return 0;
 	}
 
-	InsetBase * insetBefore = pos? pars_[pit].getInset(pos - 1): 0;
-	//InsetBase * insetBehind = pars_[pit].getInset(pos);
+	Inset * insetBefore = pos? pars_[pit].getInset(pos - 1): 0;
+	//Inset * insetBehind = pars_[pit].getInset(pos);
 
 	// This should be just before or just behind the
 	// cursor position set above.
@@ -905,7 +905,7 @@ bool LyXText::checkAndActivateInset(Cursor & cur, bool front)
 		return false;
 	if (cur.pos() == cur.lastpos())
 		return false;
-	InsetBase * inset = cur.nextInset();
+	Inset * inset = cur.nextInset();
 	if (!isHighlyEditableInset(inset))
 		return false;
 	inset->edit(cur, front);

@@ -239,13 +239,13 @@ CurStatus status(BufferView const * bv, DocIterator const & dit)
 namespace {
 
 bool findNextInset(DocIterator & dit,
-		   vector<InsetBase_code> const & codes,
+		   vector<Inset_code> const & codes,
 		   string const & contents)
 {
 	DocIterator tmpdit = dit;
 
 	while (tmpdit) {
-		InsetBase const * inset = tmpdit.nextInset();
+		Inset const * inset = tmpdit.nextInset();
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
@@ -262,7 +262,7 @@ bool findNextInset(DocIterator & dit,
 } // namespace anon
 
 
-bool findInset(DocIterator & dit, vector<InsetBase_code> const & codes,
+bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
 	       bool same_content)
 {
 	string contents;
@@ -272,7 +272,7 @@ bool findInset(DocIterator & dit, vector<InsetBase_code> const & codes,
 		return false;
 
 	if (same_content) {
-		InsetBase const * inset = tmpdit.nextInset();
+		Inset const * inset = tmpdit.nextInset();
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
 			contents = static_cast<InsetCommand const *>(inset)->getContents();
@@ -294,13 +294,13 @@ bool findInset(DocIterator & dit, vector<InsetBase_code> const & codes,
 }
 
 
-void findInset(DocIterator & dit, InsetBase_code code, bool same_content)
+void findInset(DocIterator & dit, Inset_code code, bool same_content)
 {
-	findInset(dit, vector<InsetBase_code>(1, code), same_content);
+	findInset(dit, vector<Inset_code>(1, code), same_content);
 }
 
 
-void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
+void gotoInset(BufferView * bv, vector<Inset_code> const & codes,
 	       bool same_content)
 {
 	Cursor tmpcur = bv->cursor();
@@ -314,9 +314,9 @@ void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 }
 
 
-void gotoInset(BufferView * bv, InsetBase_code code, bool same_content)
+void gotoInset(BufferView * bv, Inset_code code, bool same_content)
 {
-	gotoInset(bv, vector<InsetBase_code>(1, code), same_content);
+	gotoInset(bv, vector<Inset_code>(1, code), same_content);
 }
 
 

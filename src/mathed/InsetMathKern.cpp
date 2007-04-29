@@ -46,9 +46,9 @@ InsetMathKern::InsetMathKern(docstring const & s)
 }
 
 
-auto_ptr<InsetBase> InsetMathKern::doClone() const
+auto_ptr<Inset> InsetMathKern::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathKern(*this));
+	return auto_ptr<Inset>(new InsetMathKern(*this));
 }
 
 

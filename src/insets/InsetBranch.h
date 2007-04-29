@@ -45,7 +45,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::BRANCH_CODE; }
+	Inset::Code lyxCode() const { return Inset::BRANCH_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
@@ -85,11 +85,11 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring getInsetName() const { return from_ascii("Branch"); }
+	docstring insetName() const { return from_ascii("Branch"); }
 private:
 	friend class InsetBranchParams;
 
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// used by the constructors
 	void init();
@@ -103,7 +103,7 @@ public:
 	///
 	InsetBranchMailer(InsetBranch & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

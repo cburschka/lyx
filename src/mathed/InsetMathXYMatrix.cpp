@@ -25,9 +25,9 @@ InsetMathXYMatrix::InsetMathXYMatrix(Length const & s, char c)
 {}
 
 
-std::auto_ptr<InsetBase> InsetMathXYMatrix::doClone() const
+std::auto_ptr<Inset> InsetMathXYMatrix::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetMathXYMatrix(*this));
+	return std::auto_ptr<Inset>(new InsetMathXYMatrix(*this));
 }
 
 

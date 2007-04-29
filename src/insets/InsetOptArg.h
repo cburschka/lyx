@@ -28,7 +28,7 @@ public:
 	InsetOptArg(BufferParams const &);
 
 	/// code of the inset
-	InsetBase::Code lyxCode() const { return InsetBase::OPTARG_CODE; }
+	Inset::Code lyxCode() const { return Inset::OPTARG_CODE; }
 	/// return an message upon editing
 	virtual docstring const editMessage() const;
 	///
@@ -55,7 +55,7 @@ public:
 protected:
 	InsetOptArg(InsetOptArg const &);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 };
 
 

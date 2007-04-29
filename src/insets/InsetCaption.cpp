@@ -181,14 +181,14 @@ void InsetCaption::edit(Cursor & cur, bool left)
 }
 
 
-InsetBase * InsetCaption::editXY(Cursor & cur, int x, int y)
+Inset * InsetCaption::editXY(Cursor & cur, int x, int y)
 {
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
 }
 
 
-bool InsetCaption::insetAllowed(InsetBase::Code code) const
+bool InsetCaption::insetAllowed(Inset::Code code) const
 {
 	switch (code) {
 	case FLOAT_CODE:
@@ -282,9 +282,9 @@ void InsetCaption::computeFullLabel() const
 }
 
 
-auto_ptr<InsetBase> InsetCaption::doClone() const
+auto_ptr<Inset> InsetCaption::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetCaption(*this));
+	return auto_ptr<Inset>(new InsetCaption(*this));
 }
 
 

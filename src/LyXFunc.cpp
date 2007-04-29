@@ -467,7 +467,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		enable = cur.innerInsetOfType(InsetBase::TABULAR_CODE);
+		enable = cur.innerInsetOfType(Inset::TABULAR_CODE);
 		break;
 
 	case LFUN_LAYOUT:
@@ -496,27 +496,27 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = false;
 		if (!cur)
 			break;
-		InsetBase::Code code = cur.inset().lyxCode();
+		Inset::Code code = cur.inset().lyxCode();
 		switch (code) {
-			case InsetBase::TABULAR_CODE:
+			case Inset::TABULAR_CODE:
 				enable = cmd.argument() == "tabular";
 				break;
-			case InsetBase::ERT_CODE:
+			case Inset::ERT_CODE:
 				enable = cmd.argument() == "ert";
 				break;
-			case InsetBase::FLOAT_CODE:
+			case Inset::FLOAT_CODE:
 				enable = cmd.argument() == "float";
 				break;
-			case InsetBase::WRAP_CODE:
+			case Inset::WRAP_CODE:
 				enable = cmd.argument() == "wrap";
 				break;
-			case InsetBase::NOTE_CODE:
+			case Inset::NOTE_CODE:
 				enable = cmd.argument() == "note";
 				break;
-			case InsetBase::BRANCH_CODE:
+			case Inset::BRANCH_CODE:
 				enable = cmd.argument() == "branch";
 				break;
-			case InsetBase::BOX_CODE:
+			case Inset::BOX_CODE:
 				enable = cmd.argument() == "box";
 				break;
 			default:
@@ -527,7 +527,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
-		InsetBase * inset = lyx_view_->getDialogs().getOpenInset(name);
+		Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
 		if (inset) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 			FuncStatus fs;
@@ -555,7 +555,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = Exporter::isExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character")
-			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
+			enable = cur.inset().lyxCode() != Inset::ERT_CODE;
 		else if (name == "latexlog")
 			enable = isFileReadable(FileName(buf->getLogName().second));
 		else if (name == "spellchecker")
@@ -570,8 +570,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
-		if (cur.inset().lyxCode() == InsetBase::CAPTION_CODE) {
+		enable = cur.inset().lyxCode() != Inset::ERT_CODE;
+		if (cur.inset().lyxCode() == Inset::CAPTION_CODE) {
 			FuncStatus flag;
 			if (cur.inset().getStatus(cur, cmd, flag))
 				return flag;
@@ -1345,7 +1345,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			string const & name = argument;
 			// Can only update a dialog connected to an existing inset
-			InsetBase * inset = lyx_view_->getDialogs().getOpenInset(name);
+			Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
 				inset->dispatch(view()->cursor(), fr);
@@ -1535,7 +1535,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_INSET_APPLY: {
 			BOOST_ASSERT(lyx_view_);
 			string const name = cmd.getArg(0);
-			InsetBase * inset = lyx_view_->getDialogs().getOpenInset(name);
+			Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_MODIFY, argument);
 				inset->dispatch(view()->cursor(), fr);
@@ -1553,18 +1553,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			string action;
 			string const name = split(argument, action, ' ');
-			InsetBase::Code const inset_code =
-				InsetBase::translate(name);
+			Inset::Code const inset_code =
+				Inset::translate(name);
 
 			Cursor & cur = view()->cursor();
 			FuncRequest fr(LFUN_INSET_TOGGLE, action);
 
-			InsetBase & inset = lyx_view_->buffer()->inset();
+			Inset & inset = lyx_view_->buffer()->inset();
 			InsetIterator it  = inset_iterator_begin(inset);
 			InsetIterator const end = inset_iterator_end(inset);
 			for (; it != end; ++it) {
 				if (!it->asInsetMath()
-				    && (inset_code == InsetBase::NO_CODE
+				    && (inset_code == Inset::NO_CODE
 				    || inset_code == it->lyxCode())) {
 					Cursor tmpcur = cur;
 					tmpcur.pushLeft(*it);
@@ -1638,11 +1638,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Cursor & cur = view()->cursor();
 			FuncRequest fr(LFUN_INSET_REFRESH);
 
-			InsetBase & inset = lyx_view_->buffer()->inset();
+			Inset & inset = lyx_view_->buffer()->inset();
 			InsetIterator it  = inset_iterator_begin(inset);
 			InsetIterator const end = inset_iterator_end(inset);
 			for (; it != end; ++it)
-				if (it->lyxCode() == InsetBase::CITE_CODE)
+				if (it->lyxCode() == Inset::CITE_CODE)
 					it->dispatch(cur, fr);
 			break;
 		}

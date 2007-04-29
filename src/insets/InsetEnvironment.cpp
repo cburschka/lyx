@@ -41,15 +41,15 @@ InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 {}
 
 
-auto_ptr<InsetBase> InsetEnvironment::doClone() const
+auto_ptr<Inset> InsetEnvironment::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetEnvironment(*this));
+	return auto_ptr<Inset>(new InsetEnvironment(*this));
 }
 
 
 void InsetEnvironment::write(Buffer const & buf, ostream & os) const
 {
-	os << "Environment " << to_utf8(getInsetName()) << "\n";
+	os << "Environment " << to_utf8(insetName()) << "\n";
 	InsetText::write(buf, os);
 }
 
@@ -62,7 +62,7 @@ void InsetEnvironment::read(Buffer const & buf, Lexer & lex)
 
 docstring const InsetEnvironment::editMessage() const
 {
-	return _("Opened Environment Inset: ") + getInsetName();
+	return _("Opened Environment Inset: ") + insetName();
 }
 
 
@@ -83,7 +83,7 @@ int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 int InsetEnvironment::plaintext(Buffer const & buf, odocstream & os,
                                 OutputParams const & runparams) const
 {
-	os << '[' << to_utf8(getInsetName()) << ":\n";
+	os << '[' << to_utf8(insetName()) << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

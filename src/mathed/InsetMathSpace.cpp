@@ -75,9 +75,9 @@ InsetMathSpace::InsetMathSpace(docstring const & name)
 }
 
 
-auto_ptr<InsetBase> InsetMathSpace::doClone() const
+auto_ptr<Inset> InsetMathSpace::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathSpace(*this));
+	return auto_ptr<Inset>(new InsetMathSpace(*this));
 }
 
 

@@ -352,7 +352,7 @@ bool needEnumCounterReset(ParIterator const & it)
 }
 
 
-void setCaptionLabels(InsetBase & inset, string const & type,
+void setCaptionLabels(Inset & inset, string const & type,
 		docstring const label, Counters & counters)
 {
 	LyXText * text = inset.getText(0);
@@ -372,10 +372,10 @@ void setCaptionLabels(InsetBase & inset, string const & type,
 		// Any caption within this float should have the same
 		// label prefix but different numbers.
 		for (; it2 != end2; ++it2) {
-			InsetBase & icap = *it2->inset;
+			Inset & icap = *it2->inset;
 			// Look deeper just in case.
 			setCaptionLabels(icap, type, label, counters);
-			if (icap.lyxCode() == InsetBase::CAPTION_CODE) {
+			if (icap.lyxCode() == Inset::CAPTION_CODE) {
 				// We found a caption!
 				counters.step(counter); 
 				int number = counters.value(counter);
@@ -399,10 +399,10 @@ void setCaptions(Paragraph & par, LyXTextClass const & textclass)
 	InsetList::iterator it = par.insetlist.begin();
 	InsetList::iterator end = par.insetlist.end();
 	for (; it != end; ++it) {
-		InsetBase & inset = *it->inset;
-		if (inset.lyxCode() == InsetBase::FLOAT_CODE 
-			|| inset.lyxCode() == InsetBase::WRAP_CODE) {
-			docstring const & name = inset.getInsetName();
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == Inset::FLOAT_CODE 
+			|| inset.lyxCode() == Inset::WRAP_CODE) {
+			docstring const & name = inset.insetName();
 			if (name.empty())
 				continue;
 
@@ -412,7 +412,7 @@ void setCaptions(Paragraph & par, LyXTextClass const & textclass)
 			docstring const label = from_utf8(fl.name());
 			setCaptionLabels(inset, type, label, counters);
 		}
-		else if (inset.lyxCode() == InsetBase::TABULAR_CODE
+		else if (inset.lyxCode() == Inset::TABULAR_CODE
 			&&  static_cast<InsetTabular &>(inset).tabular.isLongTabular()) {
 			// FIXME: are "table" and "Table" the correct type and label?
 			setCaptionLabels(inset, "table", from_ascii("Table"), counters);
@@ -549,23 +549,23 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
 		size_t i = it.depth();
-		InsetBase * in = 0;
+		Inset * in = 0;
 		while (i > 0) {
 			--i;
-			InsetBase::Code const code = it[i].inset().lyxCode();
-			if (code == InsetBase::FLOAT_CODE ||
-			    code == InsetBase::WRAP_CODE) {
+			Inset::Code const code = it[i].inset().lyxCode();
+			if (code == Inset::FLOAT_CODE ||
+			    code == Inset::WRAP_CODE) {
 				in = &it[i].inset();
 				break;
 			}
 		}
-		// FIXME Can getInsetName() return an empty name for wide or
+		// FIXME Can insetName() return an empty name for wide or
 		// float insets? If not we can put the definition of type
 		// inside the if (in) clause and use that instead of
 		// if (!type.empty()).
 		docstring type;
 		if (in)
-			type = in->getInsetName();
+			type = in->insetName();
 
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(to_ascii(type));
@@ -688,7 +688,7 @@ void updateLabels(Buffer const & buf, bool childonly)
 		InsetList::const_iterator iit = it->insetlist.begin();
 		InsetList::const_iterator end = it->insetlist.end();
 		for (; iit != end; ++iit) {
-			if (iit->inset->lyxCode() == InsetBase::INCLUDE_CODE)
+			if (iit->inset->lyxCode() == Inset::INCLUDE_CODE)
 				static_cast<InsetInclude const *>(iit->inset)
 					->updateLabels(buf);
 		}

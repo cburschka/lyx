@@ -29,9 +29,9 @@ InsetMathEnv::InsetMathEnv(docstring const & name)
 {}
 
 
-auto_ptr<InsetBase> InsetMathEnv::doClone() const
+auto_ptr<Inset> InsetMathEnv::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathEnv(*this));
+	return auto_ptr<Inset>(new InsetMathEnv(*this));
 }
 
 

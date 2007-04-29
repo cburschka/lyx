@@ -28,9 +28,9 @@ InsetMathBinom::InsetMathBinom(bool choose)
 {}
 
 
-auto_ptr<InsetBase> InsetMathBinom::doClone() const
+auto_ptr<Inset> InsetMathBinom::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathBinom(*this));
+	return auto_ptr<Inset>(new InsetMathBinom(*this));
 }
 
 

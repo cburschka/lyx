@@ -1,5 +1,5 @@
 /**
- * \file InsetBase.cpp
+ * \file Inset.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 #include <config.h>
 
-#include "InsetBase.h"
+#include "Inset.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
@@ -44,67 +44,67 @@ namespace lyx {
 
 class InsetName {
 public:
-	InsetName(std::string const & n, InsetBase::Code c)
+	InsetName(std::string const & n, Inset::Code c)
 		: name(n), code(c) {}
 	std::string name;
-	InsetBase::Code code;
+	Inset::Code code;
 };
 
 
-typedef std::map<std::string, InsetBase::Code> TranslatorMap;
+typedef std::map<std::string, Inset::Code> TranslatorMap;
 
 
 static TranslatorMap const build_translator()
 {
 	InsetName const insetnames[] = {
-		InsetName("toc", InsetBase::TOC_CODE),
-		InsetName("quote", InsetBase::QUOTE_CODE),
-		InsetName("ref", InsetBase::REF_CODE),
-		InsetName("url", InsetBase::URL_CODE),
-		InsetName("htmlurl", InsetBase::HTMLURL_CODE),
-		InsetName("separator", InsetBase::SEPARATOR_CODE),
-		InsetName("ending", InsetBase::ENDING_CODE),
-		InsetName("label", InsetBase::LABEL_CODE),
-		InsetName("note", InsetBase::NOTE_CODE),
-		InsetName("accent", InsetBase::ACCENT_CODE),
-		InsetName("math", InsetBase::MATH_CODE),
-		InsetName("index", InsetBase::INDEX_CODE),
-		InsetName("nomenclature", InsetBase::NOMENCL_CODE),
-		InsetName("include", InsetBase::INCLUDE_CODE),
-		InsetName("graphics", InsetBase::GRAPHICS_CODE),
-		InsetName("bibitem", InsetBase::BIBITEM_CODE),
-		InsetName("bibtex", InsetBase::BIBTEX_CODE),
-		InsetName("text", InsetBase::TEXT_CODE),
-		InsetName("ert", InsetBase::ERT_CODE),
-		InsetName("foot", InsetBase::FOOT_CODE),
-		InsetName("margin", InsetBase::MARGIN_CODE),
-		InsetName("float", InsetBase::FLOAT_CODE),
-		InsetName("wrap", InsetBase::WRAP_CODE),
-		InsetName("specialchar", InsetBase::SPECIALCHAR_CODE),
-		InsetName("tabular", InsetBase::TABULAR_CODE),
-		InsetName("external", InsetBase::EXTERNAL_CODE),
-		InsetName("caption", InsetBase::CAPTION_CODE),
-		InsetName("mathmacro", InsetBase::MATHMACRO_CODE),
-		InsetName("cite", InsetBase::CITE_CODE),
-		InsetName("float_list", InsetBase::FLOAT_LIST_CODE),
-		InsetName("index_print", InsetBase::INDEX_PRINT_CODE),
-		InsetName("nomencl_print", InsetBase::NOMENCL_PRINT_CODE),
-		InsetName("optarg", InsetBase::OPTARG_CODE),
-		InsetName("environment", InsetBase::ENVIRONMENT_CODE),
-		InsetName("hfill", InsetBase::HFILL_CODE),
-		InsetName("newline", InsetBase::NEWLINE_CODE),
-		InsetName("line", InsetBase::LINE_CODE),
-		InsetName("branch", InsetBase::BRANCH_CODE),
-		InsetName("box", InsetBase::BOX_CODE),
-		InsetName("charstyle", InsetBase::CHARSTYLE_CODE),
-		InsetName("vspace", InsetBase::VSPACE_CODE),
-		InsetName("mathmacroarg", InsetBase::MATHMACROARG_CODE),
+		InsetName("toc", Inset::TOC_CODE),
+		InsetName("quote", Inset::QUOTE_CODE),
+		InsetName("ref", Inset::REF_CODE),
+		InsetName("url", Inset::URL_CODE),
+		InsetName("htmlurl", Inset::HTMLURL_CODE),
+		InsetName("separator", Inset::SEPARATOR_CODE),
+		InsetName("ending", Inset::ENDING_CODE),
+		InsetName("label", Inset::LABEL_CODE),
+		InsetName("note", Inset::NOTE_CODE),
+		InsetName("accent", Inset::ACCENT_CODE),
+		InsetName("math", Inset::MATH_CODE),
+		InsetName("index", Inset::INDEX_CODE),
+		InsetName("nomenclature", Inset::NOMENCL_CODE),
+		InsetName("include", Inset::INCLUDE_CODE),
+		InsetName("graphics", Inset::GRAPHICS_CODE),
+		InsetName("bibitem", Inset::BIBITEM_CODE),
+		InsetName("bibtex", Inset::BIBTEX_CODE),
+		InsetName("text", Inset::TEXT_CODE),
+		InsetName("ert", Inset::ERT_CODE),
+		InsetName("foot", Inset::FOOT_CODE),
+		InsetName("margin", Inset::MARGIN_CODE),
+		InsetName("float", Inset::FLOAT_CODE),
+		InsetName("wrap", Inset::WRAP_CODE),
+		InsetName("specialchar", Inset::SPECIALCHAR_CODE),
+		InsetName("tabular", Inset::TABULAR_CODE),
+		InsetName("external", Inset::EXTERNAL_CODE),
+		InsetName("caption", Inset::CAPTION_CODE),
+		InsetName("mathmacro", Inset::MATHMACRO_CODE),
+		InsetName("cite", Inset::CITE_CODE),
+		InsetName("float_list", Inset::FLOAT_LIST_CODE),
+		InsetName("index_print", Inset::INDEX_PRINT_CODE),
+		InsetName("nomencl_print", Inset::NOMENCL_PRINT_CODE),
+		InsetName("optarg", Inset::OPTARG_CODE),
+		InsetName("environment", Inset::ENVIRONMENT_CODE),
+		InsetName("hfill", Inset::HFILL_CODE),
+		InsetName("newline", Inset::NEWLINE_CODE),
+		InsetName("line", Inset::LINE_CODE),
+		InsetName("branch", Inset::BRANCH_CODE),
+		InsetName("box", Inset::BOX_CODE),
+		InsetName("charstyle", Inset::CHARSTYLE_CODE),
+		InsetName("vspace", Inset::VSPACE_CODE),
+		InsetName("mathmacroarg", Inset::MATHMACROARG_CODE),
 	};
 
 	std::size_t const insetnames_size =
 		sizeof(insetnames) / sizeof(insetnames[0]);
 
-	std::map<std::string, InsetBase::Code> data;
+	std::map<std::string, Inset::Code> data;
 	for (std::size_t i = 0; i != insetnames_size; ++i) {
 		InsetName const & var = insetnames[i];
 		data[var.name] = var.code;
@@ -115,31 +115,31 @@ static TranslatorMap const build_translator()
 
 
 /// pretty arbitrary dimensions
-InsetBase::InsetBase()
+Inset::Inset()
 	: dim_(10, 10, 10), background_color_(Color::background)
 {}
 
 
-InsetBase::InsetBase(InsetBase const & inset)
+Inset::Inset(Inset const & inset)
 	: dim_(inset.dim_), background_color_(inset.background_color_)
 {}
 
 
-std::auto_ptr<InsetBase> InsetBase::clone() const
+std::auto_ptr<Inset> Inset::clone() const
 {
-	std::auto_ptr<InsetBase> b = doClone();
+	std::auto_ptr<Inset> b = doClone();
 	BOOST_ASSERT(typeid(*b) == typeid(*this));
 	return b;
 }
 
 
-docstring InsetBase::getInsetName() const 
+docstring Inset::insetName() const 
 {
 	return from_ascii("unknown");
 }
 
 
-InsetBase::Code InsetBase::translate(std::string const & name)
+Inset::Code Inset::translate(std::string const & name)
 {
 	static TranslatorMap const translator = build_translator();
 
@@ -148,7 +148,7 @@ InsetBase::Code InsetBase::translate(std::string const & name)
 }
 
 
-void InsetBase::dispatch(Cursor & cur, FuncRequest & cmd)
+void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
@@ -156,14 +156,14 @@ void InsetBase::dispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetBase::doDispatch(Cursor & cur, FuncRequest &)
+void Inset::doDispatch(Cursor & cur, FuncRequest &)
 {
 	cur.noUpdate();
 	cur.undispatched();
 }
 
 
-bool InsetBase::getStatus(Cursor &, FuncRequest const & cmd,
+bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 	FuncStatus & flag) const
 {
 	// LFUN_INSET_APPLY is sent from the dialogs when the data should
@@ -195,14 +195,14 @@ bool InsetBase::getStatus(Cursor &, FuncRequest const & cmd,
 }
 
 
-void InsetBase::edit(Cursor &, bool)
+void Inset::edit(Cursor &, bool)
 {
 	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
 			      << ": edit left/right" << std::endl;
 }
 
 
-InsetBase * InsetBase::editXY(Cursor &, int x, int y)
+Inset * Inset::editXY(Cursor &, int x, int y)
 {
 	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
 			      << ": x=" << x << " y= " << y
@@ -211,7 +211,7 @@ InsetBase * InsetBase::editXY(Cursor &, int x, int y)
 }
 
 
-InsetBase::idx_type InsetBase::index(row_type row, col_type col) const
+Inset::idx_type Inset::index(row_type row, col_type col) const
 {
 	if (row != 0)
 		lyxerr << BOOST_CURRENT_FUNCTION
@@ -223,66 +223,66 @@ InsetBase::idx_type InsetBase::index(row_type row, col_type col) const
 }
 
 
-bool InsetBase::idxBetween(idx_type idx, idx_type from, idx_type to) const
+bool Inset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 {
 	return from <= idx && idx <= to;
 }
 
 
-bool InsetBase::idxUpDown(Cursor &, bool) const
+bool Inset::idxUpDown(Cursor &, bool) const
 {
 	return false;
 }
 
 
-int InsetBase::docbook(Buffer const &,
+int Inset::docbook(Buffer const &,
 	odocstream &, OutputParams const &) const
 {
 	return 0;
 }
 
 
-bool InsetBase::directWrite() const
+bool Inset::directWrite() const
 {
 	return false;
 }
 
 
-InsetBase::EDITABLE InsetBase::editable() const
+Inset::EDITABLE Inset::editable() const
 {
 	return NOT_EDITABLE;
 }
 
 
-bool InsetBase::autoDelete() const
+bool Inset::autoDelete() const
 {
 	return false;
 }
 
 
-docstring const InsetBase::editMessage() const
+docstring const Inset::editMessage() const
 {
 	return _("Opened inset");
 }
 
 
-void InsetBase::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
+void Inset::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 		bool, int & x, int & y) const
 {
-	lyxerr << "InsetBase::cursorPos called directly" << std::endl;
+	lyxerr << "Inset::cursorPos called directly" << std::endl;
 	x = 100;
 	y = 100;
 }
 
 
-void InsetBase::metricsMarkers(Dimension & dim, int framesize) const
+void Inset::metricsMarkers(Dimension & dim, int framesize) const
 {
 	dim.wid += 2 * framesize;
 	dim.asc += framesize;
 }
 
 
-void InsetBase::metricsMarkers2(Dimension & dim, int framesize) const
+void Inset::metricsMarkers2(Dimension & dim, int framesize) const
 {
 	dim.wid += 2 * framesize;
 	dim.asc += framesize;
@@ -290,7 +290,7 @@ void InsetBase::metricsMarkers2(Dimension & dim, int framesize) const
 }
 
 
-void InsetBase::drawMarkers(PainterInfo & pi, int x, int y) const
+void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
 	Color::color pen_color = editing(pi.base.bv)?
 		Color::mathframe : Color::background;
@@ -305,7 +305,7 @@ void InsetBase::drawMarkers(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetBase::drawMarkers2(PainterInfo & pi, int x, int y) const
+void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
 	Color::color pen_color = editing(pi.base.bv)?
 		Color::mathframe : Color::background;
@@ -321,27 +321,27 @@ void InsetBase::drawMarkers2(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetBase::editing(BufferView * bv) const
+bool Inset::editing(BufferView * bv) const
 {
 	return bv->cursor().isInside(this);
 }
 
 
-int InsetBase::xo(BufferView const & bv) const
+int Inset::xo(BufferView const & bv) const
 {
 	return bv.coordCache().getInsets().x(this);
 }
 
 
-int InsetBase::yo(BufferView const & bv) const
+int Inset::yo(BufferView const & bv) const
 {
 	return bv.coordCache().getInsets().y(this);
 }
 
 
-bool InsetBase::covers(BufferView const & bv, int x, int y) const
+bool Inset::covers(BufferView const & bv, int x, int y) const
 {
-	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y
+	//lyxerr << "Inset::covers, x: " << x << " y: " << y
 	//	<< " xo: " << xo(bv) << " yo: " << yo()
 	//	<< " x1: " << xo(bv) << " x2: " << xo() + width()
 	//	<< " y1: " << yo(bv) - ascent() << " y2: " << yo() + descent()
@@ -354,43 +354,43 @@ bool InsetBase::covers(BufferView const & bv, int x, int y) const
 }
 
 
-void InsetBase::dump() const
+void Inset::dump() const
 {
 	Buffer buf("foo", 1);
 	write(buf, lyxerr);
 }
 
 
-void InsetBase::setBackgroundColor(Color_color color)
+void Inset::setBackgroundColor(Color_color color)
 {
 	background_color_ = color;
 }
 
 
-Color_color InsetBase::backgroundColor() const
+Color_color Inset::backgroundColor() const
 {
 	return Color::color(background_color_);
 }
 
 
-void InsetBase::setPosCache(PainterInfo const & pi, int x, int y) const
+void Inset::setPosCache(PainterInfo const & pi, int x, int y) const
 {
-	//lyxerr << "InsetBase:: position cache to " << x << " " << y << std::endl;
+	//lyxerr << "Inset:: position cache to " << x << " " << y << std::endl;
 	pi.base.bv->coordCache().insets().add(this, x, y);
 }
 
 
 /////////////////////////////////////////
 
-bool isEditableInset(InsetBase const * inset)
+bool isEditableInset(Inset const * inset)
 {
 	return inset && inset->editable();
 }
 
 
-bool isHighlyEditableInset(InsetBase const * inset)
+bool isHighlyEditableInset(Inset const * inset)
 {
-	return inset && inset->editable() == InsetBase::HIGHLY_EDITABLE;
+	return inset && inset->editable() == Inset::HIGHLY_EDITABLE;
 }
 
 

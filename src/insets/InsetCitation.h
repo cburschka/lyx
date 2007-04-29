@@ -33,7 +33,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::CITE_CODE; }
+	Inset::Code lyxCode() const { return Inset::CITE_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
@@ -52,9 +52,9 @@ public:
 	void replaceContents(std::string const & from, std::string const & to);
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const
+	virtual std::auto_ptr<Inset> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
+		return std::auto_ptr<Inset>(new InsetCitation(params()));
 	}
 
 	/// This function does the donkey work of creating the pretty label

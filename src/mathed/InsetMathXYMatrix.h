@@ -46,7 +46,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 private:
 	///
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	/// extra spacing, may be empty
 	Length spacing_;
 	///

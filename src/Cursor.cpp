@@ -93,10 +93,10 @@ namespace {
 		for (size_t i = 0;; ++i) {
 			int xo;
 			int yo;
-			InsetBase const * inset = &it.inset();
-			std::map<InsetBase const *, Point> const & data =
+			Inset const * inset = &it.inset();
+			std::map<Inset const *, Point> const & data =
 				c.bv().coordCache().getInsets().getData();
-			std::map<InsetBase const *, Point>::const_iterator I = data.find(inset);
+			std::map<Inset const *, Point>::const_iterator I = data.find(inset);
 
 			// FIXME: in the case where the inset is not in the cache, this
 			// means that no part of it is visible on screen. In this case
@@ -134,7 +134,7 @@ namespace {
 		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	{
 		BOOST_ASSERT(!cursor.empty());
-		InsetBase & inset = cursor[0].inset();
+		Inset & inset = cursor[0].inset();
 		BufferView & bv = cursor.bv();
 
 		CoordCache::InnerParPosCache const & cache =
@@ -203,7 +203,7 @@ namespace {
 		//	<< " xlow: " << xlow << " xhigh: " << xhigh
 		//	<< " ylow: " << ylow << " yhigh: " << yhigh
 		//	<< endl;
-		InsetBase & inset = bv.buffer()->inset();
+		Inset & inset = bv.buffer()->inset();
 		DocIterator it = doc_iterator_begin(inset);
 		it.pit() = from;
 		DocIterator et = doc_iterator_end(inset);
@@ -256,7 +256,7 @@ Cursor::Cursor(BufferView & bv)
 {}
 
 
-void Cursor::reset(InsetBase & inset)
+void Cursor::reset(Inset & inset)
 {
 	clear();
 	push_back(CursorSlice(inset));
@@ -341,13 +341,13 @@ void Cursor::pop()
 }
 
 
-void Cursor::push(InsetBase & p)
+void Cursor::push(Inset & p)
 {
 	push_back(CursorSlice(p));
 }
 
 
-void Cursor::pushLeft(InsetBase & p)
+void Cursor::pushLeft(Inset & p)
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Entering inset " << t << " left" << endl;
@@ -387,10 +387,10 @@ int Cursor::currentMode()
 	BOOST_ASSERT(!empty());
 	for (int i = depth() - 1; i >= 0; --i) {
 		int res = operator[](i).inset().currentMode();
-		if (res != InsetBase::UNDECIDED_MODE)
+		if (res != Inset::UNDECIDED_MODE)
 			return res;
 	}
-	return InsetBase::TEXT_MODE;
+	return Inset::TEXT_MODE;
 }
 
 
@@ -541,7 +541,7 @@ void Cursor::info(odocstream & os) const
 		os << "  ";
 	}
 	if (pos() != 0) {
-		InsetBase const * inset = prevInset();
+		Inset const * inset = prevInset();
 		// prevInset() can return 0 in certain case.
 		if (inset)
 			prevInset()->infoize2(os);
@@ -608,7 +608,7 @@ namespace lyx {
 //#define FILEDEBUG 1
 
 
-bool Cursor::isInside(InsetBase const * p)
+bool Cursor::isInside(Inset const * p)
 {
 	for (size_t i = 0; i != depth(); ++i)
 		if (&operator[](i).inset() == p)
@@ -617,7 +617,7 @@ bool Cursor::isInside(InsetBase const * p)
 }
 
 
-void Cursor::leaveInset(InsetBase const & inset)
+void Cursor::leaveInset(Inset const & inset)
 {
 	for (size_t i = 0; i != depth(); ++i) {
 		if (&operator[](i).inset() == &inset) {
@@ -712,7 +712,7 @@ void Cursor::insert(MathAtom const & t)
 }
 
 
-void Cursor::insert(InsetBase * inset)
+void Cursor::insert(Inset * inset)
 {
 	if (inMathed())
 		insert(MathAtom(inset));

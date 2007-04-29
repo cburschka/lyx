@@ -290,7 +290,7 @@ void LyXView::showDialogWithData(string const & name, string const & data)
 
 
 void LyXView::showInsetDialog(string const & name, string const & data,
-		InsetBase * inset)
+		Inset * inset)
 {
 	getDialogs().show(name, data, inset);
 }
@@ -442,7 +442,7 @@ void LyXView::dispatch(FuncRequest const & cmd)
 }
 
 
-Buffer const * const LyXView::updateInset(InsetBase const * inset) const
+Buffer const * const LyXView::updateInset(Inset const * inset) const
 {
 	Buffer const * buffer_ptr = 0;
 	if (inset) {

@@ -31,7 +31,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	InsetBase * editXY(Cursor &, int, int);
+	Inset * editXY(Cursor &, int, int);
 	///
 	void write(WriteStream & os) const;
 	//
@@ -41,7 +41,7 @@ public:
 	///
 	docstring const & commandname() const { return name_; }
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	///
 	docstring name_;

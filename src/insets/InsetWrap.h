@@ -51,7 +51,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::WRAP_CODE; }
+	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
@@ -64,7 +64,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool insetAllowed(InsetBase::Code) const;
+	bool insetAllowed(Inset::Code) const;
 	///
 	void addToToc(TocList &, Buffer const &) const;
 	///
@@ -77,9 +77,9 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	virtual docstring getInsetName() const { return name_; }
+	virtual docstring insetName() const { return name_; }
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	///
 	InsetWrapParams params_;
@@ -93,7 +93,7 @@ public:
 	///
 	InsetWrapMailer(InsetWrap & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

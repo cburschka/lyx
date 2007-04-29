@@ -28,7 +28,7 @@
 #include "mathed/MathSupport.h"
 #include "mathed/MathData.h"
 
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 #include <algorithm>
 

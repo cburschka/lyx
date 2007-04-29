@@ -209,8 +209,8 @@ void writePlaintextParagraph(Buffer const & buf,
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
 			int len = par.getInset(i)->plaintext(buf, os, rp);
-			if (len >= InsetBase::PLAINTEXT_NEWLINE)
-				currlinelen = len - InsetBase::PLAINTEXT_NEWLINE;
+			if (len >= Inset::PLAINTEXT_NEWLINE)
+				currlinelen = len - Inset::PLAINTEXT_NEWLINE;
 			else
 				currlinelen += len;
 			break;

@@ -53,9 +53,9 @@ int InsetIndex::docbook(Buffer const &, odocstream & os,
 }
 
 
-InsetBase::Code InsetIndex::lyxCode() const
+Inset::Code InsetIndex::lyxCode() const
 {
-	return InsetBase::INDEX_CODE;
+	return Inset::INDEX_CODE;
 }
 
 
@@ -82,9 +82,9 @@ void InsetPrintIndex::validate(LaTeXFeatures & features) const
 }
 
 
-InsetBase::Code InsetPrintIndex::lyxCode() const
+Inset::Code InsetPrintIndex::lyxCode() const
 {
-	return InsetBase::INDEX_PRINT_CODE;
+	return Inset::INDEX_PRINT_CODE;
 }
 
 

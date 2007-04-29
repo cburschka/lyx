@@ -46,9 +46,9 @@ InsetMathRef::InsetMathRef(docstring const & data)
 {}
 
 
-auto_ptr<InsetBase> InsetMathRef::doClone() const
+auto_ptr<Inset> InsetMathRef::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathRef(*this));
+	return auto_ptr<Inset>(new InsetMathRef(*this));
 }
 
 

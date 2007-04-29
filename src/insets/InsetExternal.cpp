@@ -400,16 +400,16 @@ InsetExternal::InsetExternal()
 
 
 InsetExternal::InsetExternal(InsetExternal const & other)
-	: InsetBase(other),
+	: Inset(other),
 	  boost::signals::trackable(),
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone(this))
 {}
 
 
-auto_ptr<InsetBase> InsetExternal::doClone() const
+auto_ptr<Inset> InsetExternal::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetExternal(*this));
+	return auto_ptr<Inset>(new InsetExternal(*this));
 }
 
 
@@ -454,7 +454,7 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetBase::doDispatch(cur, cmd);
+		Inset::doDispatch(cur, cmd);
 	}
 }
 
@@ -471,7 +471,7 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetBase::getStatus(cur, cmd, flag);
+		return Inset::getStatus(cur, cmd, flag);
 	}
 }
 

@@ -27,8 +27,8 @@ libinsets_la_SOURCES = \
 	RenderGraphic.h \
 	RenderPreview.cpp \
 	RenderPreview.h \
-	InsetBase.h \
-	InsetBase.cpp \
+	Inset.h \
+	Inset.cpp \
 	InsetBibitem.cpp \
 	InsetBibitem.h \
 	InsetBibtex.cpp \

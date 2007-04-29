@@ -38,9 +38,9 @@ InsetMathSplit::InsetMathSplit(docstring const & name, char valign)
 }
 
 
-auto_ptr<InsetBase> InsetMathSplit::doClone() const
+auto_ptr<Inset> InsetMathSplit::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathSplit(*this));
+	return auto_ptr<Inset>(new InsetMathSplit(*this));
 }
 
 

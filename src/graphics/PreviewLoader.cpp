@@ -26,7 +26,7 @@
 
 #include "frontends/Application.h" // hexName
 
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 #include "support/filetools.h"
 #include "support/Forkedcall.h"
@@ -702,12 +702,12 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 	   << "\n";
 
 	// Loop over the insets in the buffer and dump all the math-macros.
-	InsetBase & inset = buffer_.inset();
+	Inset & inset = buffer_.inset();
 	InsetIterator it = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
 
 	for (; it != end; ++it)
-		if (it->lyxCode() == InsetBase::MATHMACRO_CODE)
+		if (it->lyxCode() == Inset::MATHMACRO_CODE)
 			it->latex(buffer_, os, runparams);
 
 	// All equation labels appear as "(#)" + preview.sty's rendering of

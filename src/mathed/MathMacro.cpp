@@ -46,15 +46,15 @@ public:
 	void draw(PainterInfo &, int x, int y) const;
 	
 private:
-	std::auto_ptr<InsetBase> doClone() const;
+	std::auto_ptr<Inset> doClone() const;
 	MathData const * value_;
 	docstring macroName_;
 };
 
 
-auto_ptr<InsetBase> MathMacroArgumentValue::doClone() const 
+auto_ptr<Inset> MathMacroArgumentValue::doClone() const 
 {
-	return auto_ptr<InsetBase>(new MathMacroArgumentValue(*this));
+	return auto_ptr<Inset>(new MathMacroArgumentValue(*this));
 }
 
 
@@ -86,9 +86,9 @@ MathMacro::MathMacro(docstring const & name, int numargs)
 {}
 
 
-auto_ptr<InsetBase> MathMacro::doClone() const
+auto_ptr<Inset> MathMacro::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathMacro(*this));
+	return auto_ptr<Inset>(new MathMacro(*this));
 }
 
 
@@ -208,7 +208,7 @@ void MathMacro::validate(LaTeXFeatures & features) const
 }
 
 
-InsetBase * MathMacro::editXY(Cursor & cur, int x, int y)
+Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {

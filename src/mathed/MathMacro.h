@@ -42,7 +42,7 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	InsetBase * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 	/// target pos when we enter the inset from the left by pressing "Right"
 	bool idxFirst(Cursor &) const;
 	/// target pos when we enter the inset from the right by pressing "Left"
@@ -69,7 +69,7 @@ public:
 	void infoize2(odocstream &) const;
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	void updateExpansion() const;
 	///

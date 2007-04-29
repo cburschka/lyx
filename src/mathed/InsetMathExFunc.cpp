@@ -36,9 +36,9 @@ InsetMathExFunc::InsetMathExFunc(docstring const & name, MathData const & ar)
 }
 
 
-auto_ptr<InsetBase> InsetMathExFunc::doClone() const
+auto_ptr<Inset> InsetMathExFunc::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathExFunc(*this));
+	return auto_ptr<Inset>(new InsetMathExFunc(*this));
 }
 
 

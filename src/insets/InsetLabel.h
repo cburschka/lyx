@@ -26,7 +26,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::LABEL_CODE; }
+	Inset::Code lyxCode() const { return Inset::LABEL_CODE; }
 	/// Appends \c list with this label
 	void getLabelList(Buffer const &, std::vector<docstring> & list) const;
 	///
@@ -38,7 +38,7 @@ public:
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 };
 
 

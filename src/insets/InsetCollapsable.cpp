@@ -257,7 +257,7 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 }
 
 
-InsetBase::EDITABLE InsetCollapsable::editable() const
+Inset::EDITABLE InsetCollapsable::editable() const
 {
 	return status() != Collapsed ? HIGHLY_EDITABLE : IS_EDITABLE;
 }
@@ -304,7 +304,7 @@ void InsetCollapsable::edit(Cursor & cur, bool left)
 }
 
 
-InsetBase * InsetCollapsable::editXY(Cursor & cur, int x, int y)
+Inset * InsetCollapsable::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status() == Collapsed || (button_dim.contains(x, y) && status() != Inlined))

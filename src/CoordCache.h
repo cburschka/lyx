@@ -20,7 +20,7 @@
 
 namespace lyx {
 
-class InsetBase;
+class Inset;
 class LyXText;
 class MathData;
 class Paragraph;
@@ -126,8 +126,8 @@ public:
 	CoordCacheBase<MathData> & arrays() { return arrays_; }
 	CoordCacheBase<MathData> const & getArrays() const { return arrays_; }
 	/// A map from insets to positions on the screen
-	CoordCacheBase<InsetBase> & insets() { return insets_; }
-	CoordCacheBase<InsetBase> const & getInsets() const { return insets_; }
+	CoordCacheBase<Inset> & insets() { return insets_; }
+	CoordCacheBase<Inset> const & getInsets() const { return insets_; }
 	/// A map from (LyXText, paragraph) pair to screen positions
 	ParPosCache & parPos() { return pars_; }
 	ParPosCache const & getParPos() const { return pars_; }
@@ -147,7 +147,7 @@ private:
 	/// MathDatas
 	CoordCacheBase<MathData> arrays_;
 	// All insets
-	CoordCacheBase<InsetBase> insets_;
+	CoordCacheBase<Inset> insets_;
 	/// Paragraph grouped by owning text
 	ParPosCache pars_;
 	/// Used with boundary == 0

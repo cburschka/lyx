@@ -65,10 +65,10 @@ public:
 	/// identifies macro templates
 	MathMacroTemplate const * asMacroTemplate() const { return this; }
 	///
-	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
+	Inset::Code lyxCode() const { return MATHMACRO_CODE; }
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	/// prefix in inset
 	docstring prefix() const;
 

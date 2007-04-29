@@ -47,9 +47,9 @@ public:
 	/// a wrapper for Previews::status()
 	static LyXRC_PreviewStatus status();
 
-	RenderPreview(InsetBase const *);
-	RenderPreview(RenderPreview const &, InsetBase const *);
-	std::auto_ptr<RenderBase> clone(InsetBase const *) const;
+	RenderPreview(Inset const *);
+	RenderPreview(RenderPreview const &, Inset const *);
+	std::auto_ptr<RenderBase> clone(Inset const *) const;
 
 	/// Compute the size of the object, returned in dim
 	bool metrics(MetricsInfo &, Dimension & dim) const;
@@ -100,13 +100,13 @@ private:
 	boost::signals::connection ploader_connection_;
 
 	/// Inform the core that the inset has changed.
-	InsetBase const * parent_;
+	Inset const * parent_;
 };
 
 
 class RenderMonitoredPreview : public RenderPreview {
 public:
-	RenderMonitoredPreview(InsetBase const *);
+	RenderMonitoredPreview(Inset const *);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

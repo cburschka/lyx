@@ -24,7 +24,7 @@ MathAtom::MathAtom()
 {}
 
 
-MathAtom::MathAtom(InsetBase * p)
+MathAtom::MathAtom(Inset * p)
 	: nucleus_(static_cast<InsetMath *>(p))
 {}
 

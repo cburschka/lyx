@@ -30,9 +30,9 @@ InsetMathFontOld::InsetMathFontOld(latexkeys const * key)
 }
 
 
-auto_ptr<InsetBase> InsetMathFontOld::doClone() const
+auto_ptr<Inset> InsetMathFontOld::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathFontOld(*this));
+	return auto_ptr<Inset>(new InsetMathFontOld(*this));
 }
 
 

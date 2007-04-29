@@ -77,9 +77,9 @@ InsetERT::InsetERT(InsetERT const & in)
 }
 
 
-auto_ptr<InsetBase> InsetERT::doClone() const
+auto_ptr<Inset> InsetERT::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetERT(*this));
+	return auto_ptr<Inset>(new InsetERT(*this));
 }
 
 
@@ -388,7 +388,7 @@ void InsetERT::setButtonLabel()
 }
 
 
-bool InsetERT::insetAllowed(InsetBase::Code /* code */) const
+bool InsetERT::insetAllowed(Inset::Code /* code */) const
 {
 	return false;
 }

@@ -13,17 +13,17 @@
 #define INSET_LINE_H
 
 
-#include "InsetBase.h"
+#include "Inset.h"
 
 
 namespace lyx {
 
-class InsetLine : public InsetBase {
+class InsetLine : public Inset {
 public:
 
 	InsetLine() {}
 
-	InsetBase::Code lyxCode() const { return InsetBase::LINE_CODE; }
+	Inset::Code lyxCode() const { return Inset::LINE_CODE; }
 
 	bool metrics(MetricsInfo &, Dimension &) const;
 
@@ -48,9 +48,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const
+	virtual std::auto_ptr<Inset> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetLine);
+		return std::auto_ptr<Inset>(new InsetLine);
 	}
 };
 

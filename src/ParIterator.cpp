@@ -15,7 +15,7 @@
 #include "Paragraph.h"
 #include "LyXText.h"
 
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 
 namespace lyx {
@@ -29,13 +29,13 @@ ParIterator::ParIterator(DocIterator const & cur)
 {}
 
 
-ParIterator par_iterator_begin(InsetBase & inset)
+ParIterator par_iterator_begin(Inset & inset)
 {
 	return ParIterator(doc_iterator_begin(inset));
 }
 
 
-ParIterator par_iterator_end(InsetBase & inset)
+ParIterator par_iterator_end(Inset & inset)
 {
 	return ParIterator(doc_iterator_end(inset));
 }
@@ -183,15 +183,15 @@ bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 #warning const correctness!
 #endif
 
-ParConstIterator par_const_iterator_begin(InsetBase const & inset)
+ParConstIterator par_const_iterator_begin(Inset const & inset)
 {
-	return ParConstIterator(doc_iterator_begin(const_cast<InsetBase &>(inset)));
+	return ParConstIterator(doc_iterator_begin(const_cast<Inset &>(inset)));
 }
 
 
-ParConstIterator par_const_iterator_end(InsetBase const & inset)
+ParConstIterator par_const_iterator_end(Inset const & inset)
 {
-	return ParConstIterator(doc_iterator_end(const_cast<InsetBase &>(inset)));
+	return ParConstIterator(doc_iterator_end(const_cast<Inset &>(inset)));
 }
 
 

@@ -35,7 +35,7 @@ public:
 	///
 	virtual bool neverIndent(Buffer const &) const { return true; }
 	///
-	virtual InsetBase::Code lyxCode() const;
+	virtual Inset::Code lyxCode() const;
 	///
 	virtual docstring const editMessage() const;
 	///
@@ -52,9 +52,9 @@ public:
 	///
 	virtual void edit(Cursor & cur, bool left);
 	///
-	virtual InsetBase * editXY(Cursor & cur, int x, int y);
+	virtual Inset * editXY(Cursor & cur, int x, int y);
 	///
-	bool insetAllowed(InsetBase::Code code) const;
+	bool insetAllowed(Inset::Code code) const;
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
@@ -85,7 +85,7 @@ private:
 	///
 	void computeFullLabel() const;
 	///
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	mutable docstring full_label_;
 	///
@@ -109,7 +109,7 @@ bool InsetCaption::display() const
 
 
 inline
-InsetBase::Code InsetCaption::lyxCode() const
+Inset::Code InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }

@@ -235,9 +235,9 @@ int InsetSpace::textString(Buffer const & buf, odocstream & os,
 }
 
 
-auto_ptr<InsetBase> InsetSpace::doClone() const
+auto_ptr<Inset> InsetSpace::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetSpace(kind_));
+	return auto_ptr<Inset>(new InsetSpace(kind_));
 }
 
 

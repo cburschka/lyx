@@ -15,7 +15,7 @@
 
 #include "MathData.h"
 
-#include "insets/InsetBase.h"
+#include "insets/Inset.h"
 
 
 namespace lyx {
@@ -90,7 +90,7 @@ class TextMetricsInfo;
 class ReplaceData;
 
 
-class InsetMath : public InsetBase {
+class InsetMath : public Inset {
 public:
 	/// identification as math inset
 	InsetMath * asInsetMath() { return this; }

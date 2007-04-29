@@ -386,15 +386,15 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<InsetBase> InsetQuotes::doClone() const
+auto_ptr<Inset> InsetQuotes::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetQuotes(language_, side_, times_));
+	return auto_ptr<Inset>(new InsetQuotes(language_, side_, times_));
 }
 
 
-InsetBase::Code InsetQuotes::lyxCode() const
+Inset::Code InsetQuotes::lyxCode() const
 {
-	return InsetBase::QUOTE_CODE;
+	return Inset::QUOTE_CODE;
 }
 
 

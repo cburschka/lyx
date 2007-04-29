@@ -49,7 +49,7 @@ public:
 	///
 	DocIterator();
 	///
-	explicit DocIterator(InsetBase & inset);
+	explicit DocIterator(Inset & inset);
 
 	/// access slice at position \p i
 	CursorSlice const & operator[](size_t i) const { return slices_[i]; }
@@ -80,7 +80,7 @@ public:
 	/// how many nested insets do we have?
 	size_t depth() const { return slices_.size(); }
 	/// the containing inset
-	InsetBase & inset() const { return top().inset(); }
+	Inset & inset() const { return top().inset(); }
 	/// return the cell of the inset this cursor is in
 	idx_type idx() const { return top().idx(); }
 	/// return the cell of the inset this cursor is in
@@ -115,11 +115,11 @@ public:
 	/// return the last column of the top grid
 	col_type lastcol() const { return ncols() - 1; }
 	/// the inset just behind the cursor
-	InsetBase * nextInset();
+	Inset * nextInset();
 	/// the inset just in front of the cursor
-	InsetBase * prevInset();
+	Inset * prevInset();
 	/// the inset just in front of the cursor
-	InsetBase const * prevInset() const;
+	Inset const * prevInset() const;
 	///
 	bool boundary() const { return boundary_; }
 	///
@@ -162,9 +162,9 @@ public:
 	///
 	LyXText const * text() const;
 	/// the containing inset or the cell, respectively
-	InsetBase * realInset() const;
+	Inset * realInset() const;
 	///
-	InsetBase * innerInsetOfType(int code) const;
+	Inset * innerInsetOfType(int code) const;
 	///
 	LyXText * innerText();
 	///
@@ -218,7 +218,7 @@ public:
 	///
 	void pop_back() { slices_.pop_back(); }
 	/// recompute the inset parts of the cursor from the document data
-	void updateInsets(InsetBase * inset);
+	void updateInsets(Inset * inset);
 
 private:
 	/**
@@ -244,12 +244,12 @@ private:
 	///
 	std::vector<CursorSlice> slices_;
 	///
-	InsetBase * inset_;
+	Inset * inset_;
 };
 
 
-DocIterator doc_iterator_begin(InsetBase & inset);
-DocIterator doc_iterator_end(InsetBase & inset);
+DocIterator doc_iterator_begin(Inset & inset);
+DocIterator doc_iterator_end(Inset & inset);
 
 
 inline
@@ -277,7 +277,7 @@ public:
 	/// non-explicit intended
 	StableDocIterator(const DocIterator & it);
 	///
-	DocIterator asDocIterator(InsetBase * start) const;
+	DocIterator asDocIterator(Inset * start) const;
 	///
 	size_t size() const { return data_.size(); }
 	///  return the position within the paragraph

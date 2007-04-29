@@ -73,9 +73,9 @@ InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 }
 
 
-auto_ptr<InsetBase> InsetMathArray::doClone() const
+auto_ptr<Inset> InsetMathArray::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathArray(*this));
+	return auto_ptr<Inset>(new InsetMathArray(*this));
 }
 
 

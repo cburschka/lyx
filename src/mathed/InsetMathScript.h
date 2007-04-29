@@ -105,7 +105,7 @@ public:
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	/// returns x offset for main part
 	int dxx() const;
 	/// returns width of nucleus if any

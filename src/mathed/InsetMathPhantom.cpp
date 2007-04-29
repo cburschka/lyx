@@ -29,9 +29,9 @@ InsetMathPhantom::InsetMathPhantom(Kind k)
 {}
 
 
-std::auto_ptr<InsetBase> InsetMathPhantom::doClone() const
+std::auto_ptr<Inset> InsetMathPhantom::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetMathPhantom(*this));
+	return std::auto_ptr<Inset>(new InsetMathPhantom(*this));
 }
 
 

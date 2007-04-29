@@ -54,9 +54,9 @@ public:
 	            OutputParams const &) const;
 
 	///
-	std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<Inset> clone() const;
 	///
-	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
+	Inset::Code lyxCode() const { return MATHMACRO_CODE; }
 	///
 	docstring const & getInsetName() const { return name_; }
 	///

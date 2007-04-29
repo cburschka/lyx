@@ -34,15 +34,15 @@ public:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetBase::Code lyxCode() const;
+	Inset::Code lyxCode() const;
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
 	int docbookGlossary(odocstream &) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const {
-		return std::auto_ptr<InsetBase>(new InsetNomencl(params()));
+	virtual std::auto_ptr<Inset> doClone() const {
+		return std::auto_ptr<Inset>(new InsetNomencl(params()));
 	}
 	/// unique id for this glossary entry for docbook export
 	docstring glossary_entry_id;
@@ -65,14 +65,14 @@ public:
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
-	InsetBase::Code lyxCode() const;
+	Inset::Code lyxCode() const;
 	///
 	bool display() const { return true; }
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const {
-		return std::auto_ptr<InsetBase>(new InsetPrintNomencl(params()));
+	virtual std::auto_ptr<Inset> doClone() const {
+		return std::auto_ptr<Inset>(new InsetPrintNomencl(params()));
 	}
 };
 

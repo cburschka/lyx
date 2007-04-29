@@ -153,7 +153,7 @@ InsetGraphics::InsetGraphics()
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
-	: InsetBase(ig),
+	: Inset(ig),
 	  boost::signals::trackable(),
 		graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(*ig.graphic_, this))
@@ -162,9 +162,9 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 }
 
 
-auto_ptr<InsetBase> InsetGraphics::doClone() const
+auto_ptr<Inset> InsetGraphics::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetGraphics(*this));
+	return auto_ptr<Inset>(new InsetGraphics(*this));
 }
 
 
@@ -205,7 +205,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetBase::doDispatch(cur, cmd);
+		Inset::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -222,7 +222,7 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetBase::getStatus(cur, cmd, flag);
+		return Inset::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -249,7 +249,7 @@ void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-InsetBase::EDITABLE InsetGraphics::editable() const
+Inset::EDITABLE InsetGraphics::editable() const
 {
 	return IS_EDITABLE;
 }

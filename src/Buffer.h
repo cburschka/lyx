@@ -38,7 +38,7 @@ namespace lyx {
 class BufferParams;
 class ErrorItem;
 class FuncRequest;
-class InsetBase;
+class Inset;
 class InsetText;
 class LyXFont;
 class Lexer;
@@ -352,7 +352,7 @@ public:
 	LyXText & text() const;
 
 	/// Our top InsetText!
-	InsetBase & inset() const;
+	Inset & inset() const;
 
 	//
 	// Macro handling
@@ -374,7 +374,7 @@ public:
 	StableDocIterator getAnchor() const { return anchor_; }
 	///
 	void changeRefsIfUnique(docstring const & from, docstring const & to,
-		InsetBase::Code code);
+		Inset::Code code);
 /// get source code (latex/docbook) for some paragraphs, or all paragraphs
 /// including preamble
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source);

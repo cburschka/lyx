@@ -26,9 +26,9 @@ public:
 	///
 	InsetFoot(BufferParams const &);
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::FOOT_CODE; }
+	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///
-	docstring getInsetName() const { return from_ascii("Foot"); }
+	docstring insetName() const { return from_ascii("Foot"); }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
@@ -43,7 +43,7 @@ public:
 protected:
 	InsetFoot(InsetFoot const &);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 };
 
 

@@ -64,9 +64,9 @@ InsetFormulaMacro::InsetFormulaMacro(string const & s)
 }
 
 
-auto_ptr<InsetBase> InsetFormulaMacro::clone() const
+auto_ptr<Inset> InsetFormulaMacro::clone() const
 {
-	return auto_ptr<InsetBase>(new InsetFormulaMacro(*this));
+	return auto_ptr<Inset>(new InsetFormulaMacro(*this));
 }
 
 

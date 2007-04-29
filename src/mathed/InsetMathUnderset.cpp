@@ -25,9 +25,9 @@ using std::auto_ptr;
 
 
 
-auto_ptr<InsetBase> InsetMathUnderset::doClone() const
+auto_ptr<Inset> InsetMathUnderset::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathUnderset(*this));
+	return auto_ptr<Inset>(new InsetMathUnderset(*this));
 }
 
 

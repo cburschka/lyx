@@ -172,11 +172,11 @@ int RowPainter::leftMargin() const
 
 void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 {
-	InsetBase const * inset = par_.getInset(pos);
+	Inset const * inset = par_.getInset(pos);
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	// FIXME: We should always use font, see documentation of
-	// noFontChange() in InsetBase.h.
+	// noFontChange() in Inset.h.
 	pi.base.font = inset->noFontChange() ?
 		bv_.buffer()->params().getFont() :
 		font;
@@ -882,7 +882,7 @@ bool inNarrowInset(PainterInfo & pi)
 	// check whether the current inset is nested in a non-wide inset
 	Cursor & cur = pi.base.bv->cursor();
 	for (int i = cur.depth() - 1; --i >= 0; ) {
-		InsetBase * const in = &cur[i].inset();
+		Inset * const in = &cur[i].inset();
 		if (in) {
 			InsetText * t = 
 				const_cast<InsetText *>(in->asTextInset());
@@ -939,7 +939,7 @@ void paintPar
 		// JSpitzm: We should aim at removing wide() altogether while retaining
 		// typing speed within insets.
 		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
-			InsetBase const * const in = par.getInset(i);
+			Inset const * const in = par.getInset(i);
 			if (in) {
 				InsetText * t = const_cast<InsetText *>(in->asTextInset());
 				if (t)

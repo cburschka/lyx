@@ -36,7 +36,7 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	Change const tmpChange = fromPar.lookupChange(fromPos);
 
 	if (tmpChar == Paragraph::META_INSET) {
-		InsetBase * tmpInset = 0;
+		Inset * tmpInset = 0;
 		if (fromPar.getInset(fromPos)) {
 			// the inset is not in the paragraph any more
 			tmpInset = fromPar.insetlist.release(fromPos);
@@ -310,7 +310,7 @@ int numberOfOptArgs(Paragraph const & par)
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end ; ++it) {
-		if (it->inset->lyxCode() == InsetBase::OPTARG_CODE)
+		if (it->inset->lyxCode() == Inset::OPTARG_CODE)
 			++num;
 	}
 	return num;

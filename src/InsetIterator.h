@@ -22,20 +22,20 @@ class InsetIterator : public DocIterator
 {
 public:
 	///
-	explicit InsetIterator(InsetBase & inset);
+	explicit InsetIterator(Inset & inset);
 	///
 	void operator++() { forwardInset(); }
 	///
 	void operator--();
 	///
-	InsetBase * operator->() { return nextInset(); }
+	Inset * operator->() { return nextInset(); }
 	///
-	InsetBase & operator*() { return *nextInset(); }
+	Inset & operator*() { return *nextInset(); }
 };
 
-InsetIterator inset_iterator_begin(InsetBase & inset);
+InsetIterator inset_iterator_begin(Inset & inset);
 
-InsetIterator inset_iterator_end(InsetBase & inset);
+InsetIterator inset_iterator_end(Inset & inset);
 
 
 

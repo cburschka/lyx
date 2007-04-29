@@ -27,7 +27,7 @@ public:
 	///
 	InsetMarginal(BufferParams const &);
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::MARGIN_CODE; }
+	Inset::Code lyxCode() const { return Inset::MARGIN_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
@@ -42,7 +42,7 @@ public:
 protected:
 	InsetMarginal(InsetMarginal const &);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 };
 
 

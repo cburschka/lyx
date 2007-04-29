@@ -13,17 +13,17 @@
 #define INSET_NEWLINE_H
 
 
-#include "InsetBase.h"
+#include "Inset.h"
 
 
 namespace lyx {
 
-class InsetNewline : public InsetBase {
+class InsetNewline : public Inset {
 public:
 
 	InsetNewline() {}
 
-	InsetBase::Code lyxCode() const { return InsetBase::NEWLINE_CODE; }
+	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
 
 	bool metrics(MetricsInfo &, Dimension &) const;
 
@@ -44,9 +44,9 @@ public:
 	// a line separator)?
 	bool isSpace() const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const
+	virtual std::auto_ptr<Inset> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetNewline);
+		return std::auto_ptr<Inset>(new InsetNewline);
 	}
 };
 

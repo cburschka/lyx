@@ -36,9 +36,9 @@ InsetMathComment::InsetMathComment(docstring const & str)
 }
 
 
-auto_ptr<InsetBase> InsetMathComment::doClone() const
+auto_ptr<Inset> InsetMathComment::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathComment(*this));
+	return auto_ptr<Inset>(new InsetMathComment(*this));
 }
 
 

@@ -135,8 +135,8 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	InsetList::const_iterator it = toc_item->par_it_->insetlist.begin();
 	InsetList::const_iterator end = toc_item->par_it_->insetlist.end();
 	for (; it != end; ++it) {
-		InsetBase & inset = *it->inset;
-		if (inset.lyxCode() == InsetBase::OPTARG_CODE) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == Inset::OPTARG_CODE) {
 			if (!tocstring.empty())
 				break;
 			Paragraph const & par = 
@@ -179,10 +179,10 @@ void TocBackend::update()
 		InsetList::const_iterator it = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
-			InsetBase & inset = *it->inset;
+			Inset & inset = *it->inset;
 			inset.addToToc(tocs_, *buffer_);
 			switch (inset.lyxCode()) {
-			case InsetBase::OPTARG_CODE: {
+			case Inset::OPTARG_CODE: {
 				if (!tocstring.empty())
 					break;
 				Paragraph const & par = 

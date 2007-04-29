@@ -240,9 +240,9 @@ int InsetSpecialChar::textString(Buffer const & buf, odocstream & os,
 }
 
 
-auto_ptr<InsetBase> InsetSpecialChar::doClone() const
+auto_ptr<Inset> InsetSpecialChar::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetSpecialChar(kind_));
+	return auto_ptr<Inset>(new InsetSpecialChar(kind_));
 }
 
 

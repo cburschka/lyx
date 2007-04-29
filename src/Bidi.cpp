@@ -59,7 +59,7 @@ void Bidi::computeTables(Paragraph const & par,
 		return;
 	}
 
-	if (par.ownerCode() == InsetBase::ERT_CODE) {
+	if (par.ownerCode() == Inset::ERT_CODE) {
 		start_ = -1;
 		return;
 	}

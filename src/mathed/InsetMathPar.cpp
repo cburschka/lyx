@@ -60,9 +60,9 @@ void InsetMathPar::infoize(odocstream & os) const
 }
 
 
-auto_ptr<InsetBase> InsetMathPar::doClone() const
+auto_ptr<Inset> InsetMathPar::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathPar(*this));
+	return auto_ptr<Inset>(new InsetMathPar(*this));
 }
 
 

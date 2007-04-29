@@ -45,9 +45,9 @@ InsetFoot::InsetFoot(InsetFoot const & in)
 }
 
 
-auto_ptr<InsetBase> InsetFoot::doClone() const
+auto_ptr<Inset> InsetFoot::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetFoot(*this));
+	return auto_ptr<Inset>(new InsetFoot(*this));
 }
 
 

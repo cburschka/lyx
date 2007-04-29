@@ -34,7 +34,7 @@ class DocIterator;
 class ErrorList;
 class FuncRequest;
 class FuncStatus;
-class InsetBase;
+class Inset;
 class Color_color;
 class Cursor;
 class PainterInfo;
@@ -102,7 +102,7 @@ public:
 	void insertChar(Cursor & cur, char_type c);
 	/// insert an inset at cursor position
 	/// FIXME: replace Cursor with DocIterator.
-	void insertInset(Cursor & cur, InsetBase * inset);
+	void insertInset(Cursor & cur, Inset * inset);
 
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -189,7 +189,7 @@ public:
 	/// FIXME: move to TextMetrics.
 	/// FIXME: cleanup to use BufferView::getCoveringInset() and
 	/// setCursorFromCoordinates() instead of checkInsetHit().
-	InsetBase * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 	
 	/// Move cursor one line up.
 	/**
@@ -284,7 +284,7 @@ public:
 	/// \warning This method is not recursive! It will return the
 	/// outermost inset within this LyXText.
 	/// \sa BufferView::getCoveringInset() to get the innermost inset.
-	InsetBase * checkInsetHit(BufferView &, int x, int y);
+	Inset * checkInsetHit(BufferView &, int x, int y);
 
 	///
 	/// FIXME: move to TextMetrics.

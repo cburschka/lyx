@@ -2803,7 +2803,7 @@ void Tabular::setCellInset(row_type row, col_type column,
 
 
 Tabular::idx_type
-Tabular::getCellFromInset(InsetBase const * inset) const
+Tabular::getCellFromInset(Inset const * inset) const
 {
 	// is this inset part of the tabular?
 	if (!inset) {
@@ -2874,7 +2874,7 @@ InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
-	: InsetBase(tab), tabular(tab.tabular),
+	: Inset(tab), tabular(tab.tabular),
 		buffer_(tab.buffer_), scx_(0), is_deleted_(false)
 {}
 
@@ -2886,9 +2886,9 @@ InsetTabular::~InsetTabular()
 }
 
 
-auto_ptr<InsetBase> InsetTabular::doClone() const
+auto_ptr<Inset> InsetTabular::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetTabular(*this));
+	return auto_ptr<Inset>(new InsetTabular(*this));
 }
 
 
@@ -3804,7 +3804,7 @@ int InsetTabular::docbook(Buffer const & buf, odocstream & os,
                           OutputParams const & runparams) const
 {
 	int ret = 0;
-	InsetBase * master = 0;
+	Inset * master = 0;
 
 #ifdef WITH_WARNINGS
 #warning Why not pass a proper DocIterator here?
@@ -3813,7 +3813,7 @@ int InsetTabular::docbook(Buffer const & buf, odocstream & os,
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
 	for (master = owner(); master; master = master->owner())
-		if (master->lyxCode() == InsetBase::FLOAT_CODE)
+		if (master->lyxCode() == Inset::FLOAT_CODE)
 			break;
 #endif
 
@@ -3883,7 +3883,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 {
 	int xx = 0;
 	int yy = 0;
-	InsetBase const & inset = *tabular.getCellInset(cell);
+	Inset const & inset = *tabular.getCellInset(cell);
 	Point o = bv.coordCache().getInsets().xy(&inset);
 	int const xbeg = o.x_ - tabular.getBeginningOfTextInCell(cell);
 	int const xend = xbeg + tabular.getWidthOfColumn(cell);
@@ -3910,7 +3910,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 }
 
 
-InsetBase * InsetTabular::editXY(Cursor & cur, int x, int y)
+Inset * InsetTabular::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;

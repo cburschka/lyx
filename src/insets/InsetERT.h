@@ -42,9 +42,9 @@ public:
 	///
 	~InsetERT();
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::ERT_CODE; }
+	Inset::Code lyxCode() const { return Inset::ERT_CODE; }
 	///
-	docstring getInsetName() const { return from_ascii("ERT"); }
+	docstring insetName() const { return from_ascii("ERT"); }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
@@ -52,7 +52,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool insetAllowed(InsetBase::Code code) const;
+	bool insetAllowed(Inset::Code code) const;
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
@@ -83,7 +83,7 @@ protected:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	void init();
 	///
@@ -98,7 +98,7 @@ public:
 	///
 	InsetERTMailer(InsetERT & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

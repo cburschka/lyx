@@ -27,9 +27,9 @@ InsetMathBoldSymbol::InsetMathBoldSymbol()
 {}
 
 
-auto_ptr<InsetBase> InsetMathBoldSymbol::doClone() const
+auto_ptr<Inset> InsetMathBoldSymbol::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathBoldSymbol(*this));
+	return auto_ptr<Inset>(new InsetMathBoldSymbol(*this));
 }
 
 

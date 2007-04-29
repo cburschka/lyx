@@ -57,9 +57,9 @@ InsetVSpace::~InsetVSpace()
 }
 
 
-std::auto_ptr<InsetBase> InsetVSpace::doClone() const
+std::auto_ptr<Inset> InsetVSpace::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new InsetVSpace(*this));
+	return std::auto_ptr<Inset>(new InsetVSpace(*this));
 }
 
 
@@ -77,7 +77,7 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetBase::doDispatch(cur, cmd);
+		Inset::doDispatch(cur, cmd);
 		break;
 	}
 }

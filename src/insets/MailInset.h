@@ -18,7 +18,7 @@
 namespace lyx {
 
 
-class InsetBase;
+class Inset;
 class Buffer;
 class BufferView;
 
@@ -38,7 +38,7 @@ public:
 
 protected:
 	///
-	virtual InsetBase & inset() const = 0;
+	virtual Inset & inset() const = 0;
 	///
 	virtual std::string const & name() const = 0;
 };

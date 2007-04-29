@@ -831,7 +831,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MODE: {
 #if 1
 		// ignore math-mode on when already in math mode
-		if (currentMode() == InsetBase::MATH_MODE && cmd.argument() == "on")
+		if (currentMode() == Inset::MATH_MODE && cmd.argument() == "on")
 			break;
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);
@@ -842,7 +842,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.pushLeft(*cur.nextInset());
 		cur.niceInsert(save_selection);
 #else
-		if (currentMode() == InsetBase::TEXT_MODE) {
+		if (currentMode() == Inset::TEXT_MODE) {
 			cur.niceInsert(MathAtom(new InsetMathHull("simple")));
 			cur.message(_("create new math text environment ($...$)"));
 		} else {
@@ -1101,7 +1101,7 @@ void InsetMathNest::edit(Cursor & cur, bool left)
 }
 
 
-InsetBase * InsetMathNest::editXY(Cursor & cur, int x, int y)
+Inset * InsetMathNest::editXY(Cursor & cur, int x, int y)
 {
 	int idx_min = 0;
 	int dist_min = 1000000;

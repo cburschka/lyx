@@ -49,9 +49,9 @@ InsetMathMBox::InsetMathMBox(LyXLayout_ptr const & layout)
 }
 
 
-auto_ptr<InsetBase> InsetMathMBox::doClone() const
+auto_ptr<Inset> InsetMathMBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathMBox(*this));
+	return auto_ptr<Inset>(new InsetMathMBox(*this));
 }
 
 

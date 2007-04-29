@@ -89,7 +89,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: InsetBase(in), text_()
+	: Inset(in), text_()
 {
 	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
@@ -128,9 +128,9 @@ void InsetText::clear()
 }
 
 
-auto_ptr<InsetBase> InsetText::doClone() const
+auto_ptr<Inset> InsetText::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetText(*this));
+	return auto_ptr<Inset>(new InsetText(*this));
 }
 
 
@@ -248,7 +248,7 @@ void InsetText::edit(Cursor & cur, bool left)
 }
 
 
-InsetBase * InsetText::editXY(Cursor & cur, int x, int y)
+Inset * InsetText::editXY(Cursor & cur, int x, int y)
 {
 	return text_.editXY(cur, x, y);
 }

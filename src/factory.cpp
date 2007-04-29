@@ -80,7 +80,7 @@ using std::endl;
 using std::string;
 
 
-InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
+Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 {
 	BufferParams const & params = bv->buffer()->params();
 
@@ -372,7 +372,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 }
 
 
-InsetBase * readInset(Lexer & lex, Buffer const & buf)
+Inset * readInset(Lexer & lex, Buffer const & buf)
 {
 	// consistency check
 	if (lex.getString() != "\\begin_inset") {
@@ -380,7 +380,7 @@ InsetBase * readInset(Lexer & lex, Buffer const & buf)
 		       << endl;
 	}
 
-	auto_ptr<InsetBase> inset;
+	auto_ptr<Inset> inset;
 
 	LyXTextClass tclass = buf.params().getLyXTextClass();
 
@@ -531,7 +531,7 @@ InsetBase * readInset(Lexer & lex, Buffer const & buf)
 #ifdef WITH_WARNINGS
 #warning hack..
 #endif
-		if (inset->lyxCode() == InsetBase::MATHMACRO_CODE) {
+		if (inset->lyxCode() == Inset::MATHMACRO_CODE) {
 			MathMacroTemplate const * tmpl =
 				static_cast<MathMacroTemplate*>(inset.get());
 			MacroTable::globalMacros().insert

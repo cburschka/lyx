@@ -12,7 +12,7 @@
 #ifndef INSET_EXTERNAL_H
 #define INSET_EXTERNAL_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "ExternalTransforms.h"
 
 #include "support/FileName.h"
@@ -104,14 +104,14 @@ private:
 class RenderBase;
 
 ///
-class InsetExternal : public InsetBase, public boost::signals::trackable
+class InsetExternal : public Inset, public boost::signals::trackable
 {
 public:
 	InsetExternal();
 	///
 	virtual ~InsetExternal();
 	///
-	virtual InsetBase::Code lyxCode() const { return EXTERNAL_CODE; }
+	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
 	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 
@@ -153,7 +153,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.
@@ -177,7 +177,7 @@ public:
 	///
 	InsetExternalMailer(InsetExternal & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

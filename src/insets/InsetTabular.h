@@ -36,7 +36,7 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "MailInset.h"
 #include "Length.h"
 #include "InsetText.h"
@@ -444,7 +444,7 @@ public:
 			  boost::shared_ptr<InsetText>) const;
 	/// Search for \param inset in the tabular, with the
 	///
-	idx_type getCellFromInset(InsetBase const * inset) const;
+	idx_type getCellFromInset(Inset const * inset) const;
 	///
 	row_type rows() const { return rows_; }
 	///
@@ -661,7 +661,7 @@ private:
 
 
 
-class InsetTabular : public InsetBase {
+class InsetTabular : public Inset {
 public:
 	///
 	InsetTabular(Buffer const &, row_type rows = 1,
@@ -683,7 +683,7 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	bool insetAllowed(InsetBase::Code) const { return true; }
+	bool insetAllowed(Inset::Code) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
 	///
@@ -706,7 +706,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Code lyxCode() const { return InsetBase::TABULAR_CODE; }
+	Code lyxCode() const { return Inset::TABULAR_CODE; }
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
@@ -751,7 +751,7 @@ public:
 	/// lock cell with given index
 	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
 
@@ -771,7 +771,7 @@ protected:
 	int scroll() const { return scx_; }
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	///
 	void drawCellLines(frontend::Painter &, int x, int y, row_type row,
@@ -827,7 +827,7 @@ public:
 	///
 	InsetTabularMailer(InsetTabular const & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

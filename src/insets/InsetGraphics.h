@@ -13,7 +13,7 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "InsetGraphicsParams.h"
 #include "MailInset.h"
 
@@ -28,7 +28,7 @@ class RenderGraphic;
 class LaTeXFeatures;
 
 ///
-class InsetGraphics : public InsetBase, public boost::signals::trackable {
+class InsetGraphics : public Inset, public boost::signals::trackable {
 public:
 	///
 	InsetGraphics();
@@ -62,7 +62,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	InsetBase::Code lyxCode() const { return InsetBase::GRAPHICS_CODE; }
+	Inset::Code lyxCode() const { return Inset::GRAPHICS_CODE; }
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.
@@ -86,7 +86,7 @@ protected:
 private:
 	friend class InsetGraphicsMailer;
 
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// Read the inset native format
 	void readInsetGraphics(Lexer & lex, std::string const & bufpath);
@@ -118,7 +118,7 @@ public:
 	///
 	InsetGraphicsMailer(InsetGraphics & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

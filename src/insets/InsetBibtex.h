@@ -32,7 +32,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::BIBTEX_CODE; }
+	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
 	bool display() const { return true; }
 	///
@@ -51,7 +51,7 @@ public:
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 };
 

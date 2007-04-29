@@ -34,9 +34,9 @@ InsetMathTFrac::InsetMathTFrac()
 {}
 
 
-auto_ptr<InsetBase> InsetMathTFrac::doClone() const
+auto_ptr<Inset> InsetMathTFrac::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathTFrac(*this));
+	return auto_ptr<Inset>(new InsetMathTFrac(*this));
 }
 
 

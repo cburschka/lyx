@@ -72,9 +72,9 @@ MathMacroTemplate::MathMacroTemplate(docstring const & str)
 }
 
 
-auto_ptr<InsetBase> MathMacroTemplate::doClone() const
+auto_ptr<Inset> MathMacroTemplate::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathMacroTemplate(*this));
+	return auto_ptr<Inset>(new MathMacroTemplate(*this));
 }
 
 

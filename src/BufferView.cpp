@@ -107,7 +107,7 @@ namespace {
 
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
-T * getInsetByCode(Cursor & cur, InsetBase::Code code)
+T * getInsetByCode(Cursor & cur, Inset::Code code)
 {
 	T * inset = 0;
 	DocIterator it = cur;
@@ -588,7 +588,7 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 			// crash lyx when the cursor can not be set to these insets.
 			size_t const n = dit.depth();
 			for (size_t i = 0; i < n; ++i)
-				if (dit[i].inset().editable() != InsetBase::HIGHLY_EDITABLE) {
+				if (dit[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
 					dit.resize(i);
 					break;
 				}
@@ -696,7 +696,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_LABEL_GOTO: {
 		flag.enabled(!cmd.argument().empty()
-		    || getInsetByCode<InsetRef>(cursor_, InsetBase::REF_CODE));
+		    || getInsetByCode<InsetRef>(cursor_, Inset::REF_CODE));
 		break;
 	}
 
@@ -806,7 +806,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		if (label.empty()) {
 			InsetRef * inset =
 				getInsetByCode<InsetRef>(cursor_,
-							 InsetBase::REF_CODE);
+							 Inset::REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
 				// persistent=false: use temp_bookmark
@@ -872,13 +872,13 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_NOTE_NEXT:
-		bv_funcs::gotoInset(this, InsetBase::NOTE_CODE, false);
+		bv_funcs::gotoInset(this, Inset::NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_NEXT: {
-		vector<InsetBase_code> tmp;
-		tmp.push_back(InsetBase::LABEL_CODE);
-		tmp.push_back(InsetBase::REF_CODE);
+		vector<Inset_code> tmp;
+		tmp.push_back(Inset::LABEL_CODE);
+		tmp.push_back(Inset::REF_CODE);
 		bv_funcs::gotoInset(this, tmp, true);
 		break;
 	}
@@ -958,9 +958,9 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
 		Cursor tmpcur = cursor_;
-		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
+		bv_funcs::findInset(tmpcur, Inset::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
-						InsetBase::BIBTEX_CODE);
+						Inset::BIBTEX_CODE);
 		if (inset) {
 			if (inset->addDatabase(to_utf8(cmd.argument())))
 				buffer_->updateBibfilesCache();
@@ -970,9 +970,9 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
 		Cursor tmpcur = cursor_;
-		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
+		bv_funcs::findInset(tmpcur, Inset::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
-						InsetBase::BIBTEX_CODE);
+						Inset::BIBTEX_CODE);
 		if (inset) {
 			if (inset->delDatabase(to_utf8(cmd.argument())))
 				buffer_->updateBibfilesCache();
@@ -1020,7 +1020,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_TOGGLE, cmd.origin);
 		// if there is an inset at cursor, see whether it
 		// wants to toggle.
-		InsetBase * inset = cur.nextInset();
+		Inset * inset = cur.nextInset();
 		if (inset && inset->isActive()) {
 			Cursor tmpcur = cur;
 			tmpcur.pushLeft(*inset);
@@ -1102,7 +1102,7 @@ void BufferView::workAreaResize(int width, int height)
 }
 
 
-InsetBase const * BufferView::getCoveringInset(LyXText const & text, int x, int y)
+Inset const * BufferView::getCoveringInset(LyXText const & text, int x, int y)
 {
 	pit_type pit = text.getPitNearY(*this, y);
 	BOOST_ASSERT(pit != -1);
@@ -1117,7 +1117,7 @@ InsetBase const * BufferView::getCoveringInset(LyXText const & text, int x, int 
 	InsetList::const_iterator iit = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; iit != iend; ++iit) {
-		InsetBase * const inset = iit->inset;
+		Inset * const inset = iit->inset;
 		if (inset->covers(*this, x, y)) {
 			if (!inset->descendable())
 				// No need to go further down if the inset is not 
@@ -1130,7 +1130,7 @@ InsetBase const * BufferView::getCoveringInset(LyXText const & text, int x, int 
 				LyXText const * inner_text = inset->getText(i);
 				if (inner_text) {
 					// Try deeper.
-					InsetBase const * inset_deeper = 
+					Inset const * inset_deeper = 
 						getCoveringInset(*inner_text, x, y);
 					if (inset_deeper)
 						return inset_deeper;
@@ -1175,7 +1175,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
 		
 		// Get inset under mouse, if there is one.
-		InsetBase const * covering_inset = 
+		Inset const * covering_inset = 
 			getCoveringInset(buffer_->text(), cmd.x, cmd.y);
 		if (covering_inset == last_inset_)
 			// Same inset, no need to do anything...
@@ -1183,7 +1183,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 		bool need_redraw = false;
 		// const_cast because of setMouseHover().
-		InsetBase * inset = const_cast<InsetBase *>(covering_inset);
+		Inset * inset = const_cast<Inset *>(covering_inset);
 		if (last_inset_)
 			// Remove the hint on the last hovered inset (if any).
 			need_redraw |= last_inset_->setMouseHover(false);
@@ -1226,7 +1226,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	}
 	
 	// Build temporary cursor.
-	InsetBase * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
+	Inset * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
 
 	// Put anchor at the same position.
 	cur.resetAnchor();

@@ -34,7 +34,7 @@ CursorSlice::CursorSlice()
 {}
 
 
-CursorSlice::CursorSlice(InsetBase & p)
+CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
 	BOOST_ASSERT(inset_);

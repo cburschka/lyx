@@ -14,7 +14,7 @@
 #ifndef INSETCOLLAPSABLE_H
 #define INSETCOLLAPSABLE_H
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "InsetText.h"
 
 #include "Box.h"
@@ -44,7 +44,7 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
-	docstring getInsetName() const { return from_ascii("Collapsable"); }
+	docstring insetName() const { return from_ascii("Collapsable"); }
 	///
 	void read(Buffer const &, Lexer &);
 	///
@@ -97,7 +97,7 @@ protected:
 	///
 	void edit(Cursor & cur, bool left);
 	///
-	InsetBase * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	void setInlined() { status_ = Inlined; }
 	///
@@ -128,7 +128,7 @@ private:
 };
 
 // A helper function that pushes the cursor out of the inset.
-void leaveInset(Cursor & cur, InsetBase const & in);
+void leaveInset(Cursor & cur, Inset const & in);
 
 } // namespace lyx
 

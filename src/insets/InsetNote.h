@@ -50,9 +50,9 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::NOTE_CODE; }
+	Inset::Code lyxCode() const { return Inset::NOTE_CODE; }
 	///
-	docstring getInsetName() const { return from_ascii("Note"); }
+	docstring insetName() const { return from_ascii("Note"); }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
@@ -80,7 +80,7 @@ protected:
 private:
 	friend class InsetNoteParams;
 
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 
 	/// used by the constructors
 	void init();
@@ -94,7 +94,7 @@ public:
 	///
 	InsetNoteMailer(InsetNote & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

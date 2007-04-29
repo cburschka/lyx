@@ -36,9 +36,9 @@ InsetMathSubstack::InsetMathSubstack()
 {}
 
 
-auto_ptr<InsetBase> InsetMathSubstack::doClone() const
+auto_ptr<Inset> InsetMathSubstack::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathSubstack(*this));
+	return auto_ptr<Inset>(new InsetMathSubstack(*this));
 }
 
 

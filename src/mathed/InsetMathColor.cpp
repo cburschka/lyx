@@ -35,9 +35,9 @@ InsetMathColor::InsetMathColor(bool oldstyle, docstring const & color)
 {}
 
 
-auto_ptr<InsetBase> InsetMathColor::doClone() const
+auto_ptr<Inset> InsetMathColor::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathColor(*this));
+	return auto_ptr<Inset>(new InsetMathColor(*this));
 }
 
 

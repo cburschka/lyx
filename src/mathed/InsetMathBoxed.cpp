@@ -30,9 +30,9 @@ InsetMathBoxed::InsetMathBoxed()
 {}
 
 
-auto_ptr<InsetBase> InsetMathBoxed::doClone() const
+auto_ptr<Inset> InsetMathBoxed::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathBoxed(*this));
+	return auto_ptr<Inset>(new InsetMathBoxed(*this));
 }
 
 

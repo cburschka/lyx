@@ -29,9 +29,9 @@ InsetMathSize::InsetMathSize(latexkeys const * l)
 {}
 
 
-auto_ptr<InsetBase> InsetMathSize::doClone() const
+auto_ptr<Inset> InsetMathSize::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathSize(*this));
+	return auto_ptr<Inset>(new InsetMathSize(*this));
 }
 
 

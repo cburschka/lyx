@@ -30,9 +30,9 @@ InsetMathDots::InsetMathDots(latexkeys const * key)
 {}
 
 
-auto_ptr<InsetBase> InsetMathDots::doClone() const
+auto_ptr<Inset> InsetMathDots::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetMathDots(*this));
+	return auto_ptr<Inset>(new InsetMathDots(*this));
 }
 
 

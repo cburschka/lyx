@@ -83,10 +83,10 @@ bool dirty_tabular_stack_ = false;
 
 
 void region(CursorSlice const & i1, CursorSlice const & i2,
-	InsetBase::row_type & r1, InsetBase::row_type & r2,
-	InsetBase::col_type & c1, InsetBase::col_type & c2)
+	Inset::row_type & r1, Inset::row_type & r2,
+	Inset::col_type & c1, Inset::col_type & c2)
 {
-	InsetBase & p = i1.inset();
+	Inset & p = i1.inset();
 	c1 = p.col(i1.idx());
 	c2 = p.col(i2.idx());
 	if (c1 > c2)
@@ -128,7 +128,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// Convert newline to paragraph break in ERT inset.
 	// This should not be here!
 	if (pars[pit].inInset() &&
-	    pars[pit].inInset()->lyxCode() == InsetBase::ERT_CODE) {
+	    pars[pit].inInset()->lyxCode() == Inset::ERT_CODE) {
 		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
 			for (pos_type j = 0; j < insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {
@@ -220,7 +220,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		for (; lit != eit; ++lit) {
 			switch (lit->inset->lyxCode()) {
-			case InsetBase::TABULAR_CODE: {
+			case Inset::TABULAR_CODE: {
 				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
 				it->buffer(&buffer);
 				break;
@@ -374,7 +374,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 		// ERT paragraphs have the Language latex_language.
 		// This is invalid outside of ERT, so we need to change it
 		// to the buffer language.
-		if (it->ownerCode() == InsetBase::ERT_CODE) {
+		if (it->ownerCode() == Inset::ERT_CODE) {
 			it->changeLanguage(buf.params(), latex_language,
 			                   buf.getLanguage());
 		}
@@ -446,7 +446,7 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 	// character styles
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		if (it->lyxCode() == InsetBase::CHARSTYLE_CODE) {
+		if (it->lyxCode() == Inset::CHARSTYLE_CODE) {
 			InsetCharStyle & inset =
 				static_cast<InsetCharStyle &>(*it);
 			string const name = inset.params().type;
@@ -835,11 +835,11 @@ void eraseSelection(Cursor & cur)
 				cur.pos() = cur.lastpos();
 		} else {
 			InsetMath * p = i1.asInsetMath();
-			InsetBase::row_type r1, r2;
-			InsetBase::col_type c1, c2;
+			Inset::row_type r1, r2;
+			Inset::col_type c1, c2;
 			region(i1, i2, r1, r2, c1, c2);
-			for (InsetBase::row_type row = r1; row <= r2; ++row)
-				for (InsetBase::col_type col = c1; col <= c2; ++col)
+			for (Inset::row_type row = r1; row <= r2; ++row)
+				for (Inset::col_type col = c1; col <= c2; ++col)
 					p->cell(p->index(row, col)).clear();
 			// We've deleted the whole cell. Only pos 0 is valid.
 			cur.pos() = 0;
@@ -898,16 +898,16 @@ docstring grabSelection(Cursor const & cur)
 		}
 	}
 
-	InsetBase::row_type r1, r2;
-	InsetBase::col_type c1, c2;
+	Inset::row_type r1, r2;
+	Inset::col_type c1, c2;
 	region(i1, i2, r1, r2, c1, c2);
 
 	docstring data;
 	if (i1.inset().asInsetMath()) {
-		for (InsetBase::row_type row = r1; row <= r2; ++row) {
+		for (Inset::row_type row = r1; row <= r2; ++row) {
 			if (row > r1)
 				data += "\\\\";
-			for (InsetBase::col_type col = c1; col <= c2; ++col) {
+			for (Inset::col_type col = c1; col <= c2; ++col) {
 				if (col > c1)
 					data += '&';
 				data += asString(i1.asInsetMath()->

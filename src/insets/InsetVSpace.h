@@ -13,14 +13,14 @@
 #define INSET_VSPACE_H
 
 
-#include "InsetBase.h"
+#include "Inset.h"
 #include "VSpace.h"
 #include "MailInset.h"
 
 
 namespace lyx {
 
-class InsetVSpace : public InsetBase {
+class InsetVSpace : public Inset {
 public:
 	///
 	InsetVSpace() {}
@@ -55,7 +55,7 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
+	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	docstring const label() const;
 
@@ -69,7 +69,7 @@ public:
 	///
 	InsetVSpaceMailer(InsetVSpace & inset);
 	///
-	virtual InsetBase & inset() const { return inset_; }
+	virtual Inset & inset() const { return inset_; }
 	///
 	virtual std::string const & name() const { return name_; }
 	///

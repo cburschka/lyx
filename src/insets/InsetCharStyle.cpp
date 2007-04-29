@@ -82,9 +82,9 @@ InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
 }
 
 
-auto_ptr<InsetBase> InsetCharStyle::doClone() const
+auto_ptr<Inset> InsetCharStyle::doClone() const
 {
-	return auto_ptr<InsetBase>(new InsetCharStyle(*this));
+	return auto_ptr<Inset>(new InsetCharStyle(*this));
 }
 
 
