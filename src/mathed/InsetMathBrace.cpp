@@ -62,7 +62,7 @@ bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
-	LyXFont font = pi.base.font;
+	Font font = pi.base.font;
 	font.setColor(Color::latex);
 	Dimension t = theFontMetrics(font).dimension('{');
 	pi.pain.text(x, y, '{', font);

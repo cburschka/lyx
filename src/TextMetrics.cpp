@@ -202,14 +202,14 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in Inset.h.
-	LyXFont const bufferfont = buffer.params().getFont();
+	Font const bufferfont = buffer.params().getFont();
 	InsetList::const_iterator ii = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
 		int const w = max_width_ - text_->leftMargin(buffer, max_width_, pit, ii->pos)
 			- right_margin;
-		LyXFont const & font = ii->inset->noFontChange() ?
+		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : text_->getFont(buffer, par, ii->pos);
 		MetricsInfo mi(bv_, font, w);
 		changed |= ii->inset->metrics(mi, dim);
@@ -613,13 +613,13 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// start with so we don't have to do the assignment below too
 	// often.
 	Buffer const & buffer = *bv_->buffer();
-	LyXFont font = text_->getFont(buffer, par, row.pos());
-	LyXFont::FONT_SIZE const tmpsize = font.size();
+	Font font = text_->getFont(buffer, par, row.pos());
+	Font::FONT_SIZE const tmpsize = font.size();
 	font = text_->getLayoutFont(buffer, pit);
-	LyXFont::FONT_SIZE const size = font.size();
+	Font::FONT_SIZE const size = font.size();
 	font.setSize(tmpsize);
 
-	LyXFont labelfont = text_->getLabelFont(buffer, par);
+	Font labelfont = text_->getLabelFont(buffer, par);
 
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 	FontMetrics const & fontmetrics = theFontMetrics(font);
@@ -647,7 +647,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	int labeladdon = 0;
 	pos_type const pos_end = row.endpos();
 
-	LyXFont::FONT_SIZE maxsize =
+	Font::FONT_SIZE maxsize =
 		par.highestFontInRange(row.pos(), pos_end, size);
 	if (maxsize > font.size()) {
 		font.setSize(maxsize);
@@ -945,7 +945,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 
 int defaultRowHeight()
 {
-	return int(theFontMetrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);
+	return int(theFontMetrics(Font(Font::ALL_SANE)).maxHeight() *  1.2);
 }
 
 } // namespace lyx

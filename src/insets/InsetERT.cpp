@@ -53,7 +53,7 @@ using std::string;
 void InsetERT::init()
 {
 	setButtonLabel();
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 	font.setColor(Color::latex);
@@ -88,7 +88,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 		   Language const *, string const & contents, CollapseStatus status)
 	: InsetCollapsable(bp, status)
 {
-	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+	Font font(Font::ALL_INHERIT, latex_language);
 	paragraphs().begin()->insert(0, contents, font);
 
 	// the init has to be after the initialization of the paragraph
@@ -122,7 +122,7 @@ void InsetERT::read(Buffer const & buf, Lexer & lex)
 	// inherits the language from the last position of the existing text.
 	// As a side effect this makes us also robust against bugs in LyX
 	// that might lead to font changes in ERT in .lyx files.
-	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+	Font font(Font::ALL_INHERIT, latex_language);
 	ParagraphList::iterator par = paragraphs().begin();
 	ParagraphList::iterator const end = paragraphs().end();
 	while (par != end) {
@@ -226,7 +226,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		BufferParams const & bp = cur.buffer().params();
 		LyXLayout_ptr const layout =
 			bp.getLyXTextClass().defaultLayout();
-		LyXFont font = layout->font;
+		Font font = layout->font;
 		// ERT contents has always latex_language
 		font.setLanguage(latex_language);
 		ParagraphList::iterator const end = paragraphs().end();
@@ -396,7 +396,7 @@ bool InsetERT::insetAllowed(Inset::Code /* code */) const
 
 bool InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont tmpfont = mi.base.font;
+	Font tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
@@ -409,7 +409,7 @@ bool InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
-	LyXFont tmpfont = pi.base.font;
+	Font tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	pi.base.font.realize(tmpfont);
 	InsetCollapsable::draw(pi, x, y);
@@ -424,10 +424,10 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetERT::getDrawFont(LyXFont & font) const
+void InsetERT::getDrawFont(Font & font) const
 {
-	font = LyXFont(LyXFont::ALL_INHERIT, latex_language);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font = Font(Font::ALL_INHERIT, latex_language);
+	font.setFamily(Font::TYPEWRITER_FAMILY);
 	font.setColor(Color::latex);
 }
 

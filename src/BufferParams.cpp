@@ -26,7 +26,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Color.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "LyXTextClassList.h"
@@ -1173,16 +1173,16 @@ LyXTextClass const & BufferParams::getLyXTextClass() const
 }
 
 
-LyXFont const BufferParams::getFont() const
+Font const BufferParams::getFont() const
 {
-	LyXFont f = getLyXTextClass().defaultfont();
+	Font f = getLyXTextClass().defaultfont();
 	f.setLanguage(language);
 	if (fontsDefaultFamily == "rmdefault")
-		f.setFamily(LyXFont::ROMAN_FAMILY);
+		f.setFamily(Font::ROMAN_FAMILY);
 	else if (fontsDefaultFamily == "sfdefault")
-		f.setFamily(LyXFont::SANS_FAMILY);
+		f.setFamily(Font::SANS_FAMILY);
 	else if (fontsDefaultFamily == "ttdefault")
-		f.setFamily(LyXFont::TYPEWRITER_FAMILY);
+		f.setFamily(Font::TYPEWRITER_FAMILY);
 	return f;
 }
 

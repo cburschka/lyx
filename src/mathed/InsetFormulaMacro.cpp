@@ -144,7 +144,7 @@ bool InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 {
 	// label
-	LyXFont font = p.base.font;
+	Font font = p.base.font;
 	font.setColor(Color::math);
 
 	PainterInfo pi(p.base.bv, p.pain);

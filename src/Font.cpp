@@ -1,5 +1,5 @@
 /**
- * \file src/LyXFont.cpp
+ * \file src/Font.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -14,7 +14,7 @@
 
 #include <config.h>
 
-#include "LyXFont.h"
+#include "Font.h"
 
 #include "BufferParams.h" // stateText
 #include "debug.h"
@@ -48,7 +48,7 @@ using std::strlen;
 
 namespace {
 
-char const * GUIFamilyNames[LyXFont::NUM_FAMILIES + 2 /* default & error */] =
+char const * GUIFamilyNames[Font::NUM_FAMILIES + 2 /* default & error */] =
 { N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
   "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy", "esint",
   N_("Inherit"), N_("Ignore") };
@@ -72,7 +72,7 @@ char const * GUIMiscNames[5] =
 //
 // Strings used to read and write .lyx format files
 //
-char const * LyXFamilyNames[LyXFont::NUM_FAMILIES + 2 /* default & error */] =
+char const * LyXFamilyNames[Font::NUM_FAMILIES + 2 /* default & error */] =
 { "roman", "sans", "typewriter", "symbol",
   "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy", "esint",
   "default", "error" };
@@ -111,7 +111,7 @@ char const * LaTeXSizeNames[14] =
 
 
 // Initialize static member
-LyXFont::FontBits LyXFont::sane = {
+Font::FontBits Font::sane = {
 	ROMAN_FAMILY,
 	MEDIUM_SERIES,
 	UP_SHAPE,
@@ -123,7 +123,7 @@ LyXFont::FontBits LyXFont::sane = {
 	OFF };
 
 // Initialize static member
-LyXFont::FontBits LyXFont::inherit = {
+Font::FontBits Font::inherit = {
 	INHERIT_FAMILY,
 	INHERIT_SERIES,
 	INHERIT_SHAPE,
@@ -135,7 +135,7 @@ LyXFont::FontBits LyXFont::inherit = {
 	OFF };
 
 // Initialize static member
-LyXFont::FontBits LyXFont::ignore = {
+Font::FontBits Font::ignore = {
 	IGNORE_FAMILY,
 	IGNORE_SERIES,
 	IGNORE_SHAPE,
@@ -147,8 +147,8 @@ LyXFont::FontBits LyXFont::ignore = {
 	IGNORE };
 
 
-bool operator==(LyXFont::FontBits const & lhs,
-		LyXFont::FontBits const & rhs)
+bool operator==(Font::FontBits const & lhs,
+		Font::FontBits const & rhs)
 {
 	return lhs.family == rhs.family &&
 		lhs.series == rhs.series &&
@@ -162,123 +162,123 @@ bool operator==(LyXFont::FontBits const & lhs,
 }
 
 
-LyXFont::LyXFont()
+Font::Font()
 	: bits(sane), lang(default_language)
 {}
 
 
-LyXFont::LyXFont(LyXFont::FONT_INIT1)
+Font::Font(Font::FONT_INIT1)
 	: bits(inherit), lang(default_language)
 {}
 
 
-LyXFont::LyXFont(LyXFont::FONT_INIT2)
+Font::Font(Font::FONT_INIT2)
 	: bits(ignore), lang(ignore_language)
 {}
 
 
-LyXFont::LyXFont(LyXFont::FONT_INIT3)
+Font::Font(Font::FONT_INIT3)
 	: bits(sane), lang(default_language)
 {}
 
 
-LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
+Font::Font(Font::FONT_INIT1, Language const * l)
 	: bits(inherit), lang(l)
 {}
 
 
-LyXFont::LyXFont(LyXFont::FONT_INIT2, Language const * l)
+Font::Font(Font::FONT_INIT2, Language const * l)
 	: bits(ignore), lang(l)
 {}
 
 
-LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
+Font::Font(Font::FONT_INIT3, Language const * l)
 	: bits(sane), lang(l)
 {}
 
 
 
-Color_color LyXFont::color() const
+Color_color Font::color() const
 {
 	return Color::color(bits.color);
 }
 
 
-bool LyXFont::isRightToLeft() const
+bool Font::isRightToLeft() const
 {
 	return lang->rightToLeft();
 }
 
 
-bool LyXFont::isVisibleRightToLeft() const
+bool Font::isVisibleRightToLeft() const
 {
 	return (lang->rightToLeft() &&
 		number() != ON);
 }
 
 
-void LyXFont::setFamily(LyXFont::FONT_FAMILY f)
+void Font::setFamily(Font::FONT_FAMILY f)
 {
 	bits.family = f;
 }
 
 
-void LyXFont::setSeries(LyXFont::FONT_SERIES s)
+void Font::setSeries(Font::FONT_SERIES s)
 {
 	bits.series = s;
 }
 
 
-void LyXFont::setShape(LyXFont::FONT_SHAPE s)
+void Font::setShape(Font::FONT_SHAPE s)
 {
 	bits.shape = s;
 }
 
 
-void LyXFont::setSize(LyXFont::FONT_SIZE s)
+void Font::setSize(Font::FONT_SIZE s)
 {
 	bits.size = s;
 }
 
 
-void LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
+void Font::setEmph(Font::FONT_MISC_STATE e)
 {
 	bits.emph = e;
 }
 
 
-void LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
+void Font::setUnderbar(Font::FONT_MISC_STATE u)
 {
 	bits.underbar = u;
 }
 
 
-void LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
+void Font::setNoun(Font::FONT_MISC_STATE n)
 {
 	bits.noun = n;
 }
 
 
-void LyXFont::setColor(Color_color c)
+void Font::setColor(Color_color c)
 {
 	bits.color = int(c);
 }
 
 
-void LyXFont::setLanguage(Language const * l)
+void Font::setLanguage(Language const * l)
 {
 	lang = l;
 }
 
 
-void LyXFont::setNumber(LyXFont::FONT_MISC_STATE n)
+void Font::setNumber(Font::FONT_MISC_STATE n)
 {
 	bits.number = n;
 }
 
 
 /// Decreases font size by one
-LyXFont & LyXFont::decSize()
+Font & Font::decSize()
 {
 	switch (size()) {
 	case SIZE_HUGER:        setSize(SIZE_HUGE);     break;
@@ -292,16 +292,16 @@ LyXFont & LyXFont::decSize()
 	case SIZE_SCRIPT:       setSize(SIZE_TINY);     break;
 	case SIZE_TINY:         break;
 	case INCREASE_SIZE:
-		lyxerr << "Can't LyXFont::decSize on INCREASE_SIZE" << endl;
+		lyxerr << "Can't Font::decSize on INCREASE_SIZE" << endl;
 		break;
 	case DECREASE_SIZE:
-		lyxerr <<"Can't LyXFont::decSize on DECREASE_SIZE" << endl;
+		lyxerr <<"Can't Font::decSize on DECREASE_SIZE" << endl;
 		break;
 	case INHERIT_SIZE:
-		lyxerr <<"Can't LyXFont::decSize on INHERIT_SIZE" << endl;
+		lyxerr <<"Can't Font::decSize on INHERIT_SIZE" << endl;
 		break;
 	case IGNORE_SIZE:
-		lyxerr <<"Can't LyXFont::decSize on IGNORE_SIZE" << endl;
+		lyxerr <<"Can't Font::decSize on IGNORE_SIZE" << endl;
 		break;
 	}
 	return *this;
@@ -309,7 +309,7 @@ LyXFont & LyXFont::decSize()
 
 
 /// Increases font size by one
-LyXFont & LyXFont::incSize()
+Font & Font::incSize()
 {
 	switch (size()) {
 	case SIZE_HUGER:	break;
@@ -323,16 +323,16 @@ LyXFont & LyXFont::incSize()
 	case SIZE_SCRIPT:       setSize(SIZE_FOOTNOTE); break;
 	case SIZE_TINY:         setSize(SIZE_SCRIPT);   break;
 	case INCREASE_SIZE:
-		lyxerr <<"Can't LyXFont::incSize on INCREASE_SIZE" << endl;
+		lyxerr <<"Can't Font::incSize on INCREASE_SIZE" << endl;
 		break;
 	case DECREASE_SIZE:
-		lyxerr <<"Can't LyXFont::incSize on DECREASE_SIZE" << endl;
+		lyxerr <<"Can't Font::incSize on DECREASE_SIZE" << endl;
 		break;
 	case INHERIT_SIZE:
-		lyxerr <<"Can't LyXFont::incSize on INHERIT_SIZE" << endl;
+		lyxerr <<"Can't Font::incSize on INHERIT_SIZE" << endl;
 		break;
 	case IGNORE_SIZE:
-		lyxerr <<"Can't LyXFont::incSize on IGNORE_SIZE" << endl;
+		lyxerr <<"Can't Font::incSize on IGNORE_SIZE" << endl;
 		break;
 	}
 	return *this;
@@ -340,7 +340,7 @@ LyXFont & LyXFont::incSize()
 
 
 /// Updates a misc setting according to request
-LyXFont::FONT_MISC_STATE LyXFont::setMisc(FONT_MISC_STATE newfont,
+Font::FONT_MISC_STATE Font::setMisc(FONT_MISC_STATE newfont,
 					  FONT_MISC_STATE org)
 {
 	if (newfont == TOGGLE) {
@@ -349,7 +349,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setMisc(FONT_MISC_STATE newfont,
 		else if (org == OFF)
 			return ON;
 		else {
-			lyxerr <<"LyXFont::setMisc: Need state"
+			lyxerr <<"Font::setMisc: Need state"
 				" ON or OFF to toggle. Setting to ON" << endl;
 			return ON;
 		}
@@ -361,7 +361,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setMisc(FONT_MISC_STATE newfont,
 
 
 /// Updates font settings according to request
-void LyXFont::update(LyXFont const & newfont,
+void Font::update(Font const & newfont,
 		     Language const * document_language,
 		     bool toggleall)
 {
@@ -424,7 +424,7 @@ void LyXFont::update(LyXFont const & newfont,
 
 
 /// Reduce font to fall back to template where possible
-void LyXFont::reduce(LyXFont const & tmplt)
+void Font::reduce(Font const & tmplt)
 {
 	if (family() == tmplt.family())
 		setFamily(INHERIT_FAMILY);
@@ -446,7 +446,7 @@ void LyXFont::reduce(LyXFont const & tmplt)
 
 
 /// Realize font from a template
-LyXFont & LyXFont::realize(LyXFont const & tmplt)
+Font & Font::realize(Font const & tmplt)
 {
 	if (bits == inherit) {
 		bits = tmplt.bits;
@@ -482,7 +482,7 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 
 
 /// Is font resolved?
-bool LyXFont::resolved() const
+bool Font::resolved() const
 {
 	return (family() != INHERIT_FAMILY && series() != INHERIT_SERIES &&
 		shape() != INHERIT_SHAPE && size() != INHERIT_SIZE &&
@@ -492,7 +492,7 @@ bool LyXFont::resolved() const
 }
 
 
-docstring const LyXFont::stateText(BufferParams * params) const
+docstring const Font::stateText(BufferParams * params) const
 {
 	odocstringstream os;
 	if (family() != INHERIT_FAMILY)
@@ -527,7 +527,7 @@ docstring const LyXFont::stateText(BufferParams * params) const
 
 
 // Set family according to lyx format string
-LyXFont & LyXFont::setLyXFamily(string const & fam)
+Font & Font::setLyXFamily(string const & fam)
 {
 	string const s = ascii_lowercase(fam);
 
@@ -536,16 +536,16 @@ LyXFont & LyXFont::setLyXFamily(string const & fam)
 	       LyXFamilyNames[i] != string("error"))
 		++i;
 	if (s == LyXFamilyNames[i])
-		setFamily(LyXFont::FONT_FAMILY(i));
+		setFamily(Font::FONT_FAMILY(i));
 	else
-		lyxerr << "LyXFont::setLyXFamily: Unknown family `"
+		lyxerr << "Font::setLyXFamily: Unknown family `"
 		       << s << '\'' << endl;
 	return *this;
 }
 
 
 // Set series according to lyx format string
-LyXFont & LyXFont::setLyXSeries(string const & ser)
+Font & Font::setLyXSeries(string const & ser)
 {
 	string const s = ascii_lowercase(ser);
 
@@ -553,16 +553,16 @@ LyXFont & LyXFont::setLyXSeries(string const & ser)
 	while (LyXSeriesNames[i] != s &&
 	       LyXSeriesNames[i] != string("error")) ++i;
 	if (s == LyXSeriesNames[i]) {
-		setSeries(LyXFont::FONT_SERIES(i));
+		setSeries(Font::FONT_SERIES(i));
 	} else
-		lyxerr << "LyXFont::setLyXSeries: Unknown series `"
+		lyxerr << "Font::setLyXSeries: Unknown series `"
 		       << s << '\'' << endl;
 	return *this;
 }
 
 
 // Set shape according to lyx format string
-LyXFont & LyXFont::setLyXShape(string const & sha)
+Font & Font::setLyXShape(string const & sha)
 {
 	string const s = ascii_lowercase(sha);
 
@@ -570,32 +570,32 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 	while (LyXShapeNames[i] != s && LyXShapeNames[i] != string("error"))
 			++i;
 	if (s == LyXShapeNames[i])
-		setShape(LyXFont::FONT_SHAPE(i));
+		setShape(Font::FONT_SHAPE(i));
 	else
-		lyxerr << "LyXFont::setLyXShape: Unknown shape `"
+		lyxerr << "Font::setLyXShape: Unknown shape `"
 		       << s << '\'' << endl;
 	return *this;
 }
 
 
 // Set size according to lyx format string
-LyXFont & LyXFont::setLyXSize(string const & siz)
+Font & Font::setLyXSize(string const & siz)
 {
 	string const s = ascii_lowercase(siz);
 	int i = 0;
 	while (LyXSizeNames[i] != s && LyXSizeNames[i] != string("error"))
 		++i;
 	if (s == LyXSizeNames[i]) {
-		setSize(LyXFont::FONT_SIZE(i));
+		setSize(Font::FONT_SIZE(i));
 	} else
-		lyxerr << "LyXFont::setLyXSize: Unknown size `"
+		lyxerr << "Font::setLyXSize: Unknown size `"
 		       << s << '\'' << endl;
 	return *this;
 }
 
 
 // Set size according to lyx format string
-LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
+Font::FONT_MISC_STATE Font::setLyXMisc(string const & siz)
 {
 	string const s = ascii_lowercase(siz);
 	int i = 0;
@@ -603,14 +603,14 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 	       LyXMiscNames[i] != string("error")) ++i;
 	if (s == LyXMiscNames[i])
 		return FONT_MISC_STATE(i);
-	lyxerr << "LyXFont::setLyXMisc: Unknown misc flag `"
+	lyxerr << "Font::setLyXMisc: Unknown misc flag `"
 	       << s << '\'' << endl;
 	return OFF;
 }
 
 
 /// Sets color after LyX text format
-LyXFont & LyXFont::setLyXColor(string const & col)
+Font & Font::setLyXColor(string const & col)
 {
 	setColor(lcolor.getFromLyXName(col));
 	return *this;
@@ -618,7 +618,7 @@ LyXFont & LyXFont::setLyXColor(string const & col)
 
 
 // Returns size in latex format
-string const LyXFont::latexSize() const
+string const Font::latexSize() const
 {
 	return LaTeXSizeNames[size()];
 }
@@ -626,7 +626,7 @@ string const LyXFont::latexSize() const
 
 // Read a font definition from given file in lyx format
 // Used for layouts
-LyXFont & LyXFont::lyxRead(Lexer & lex)
+Font & Font::lyxRead(Lexer & lex)
 {
 	bool error = false;
 	bool finished = false;
@@ -687,7 +687,7 @@ LyXFont & LyXFont::lyxRead(Lexer & lex)
 
 
 /// Writes the changes from this font to orgfont in .lyx format in file
-void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
+void Font::lyxWriteChanges(Font const & orgfont,
 			      ostream & os) const
 {
 	os << "\n";
@@ -708,12 +708,12 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 		switch (underbar()) {
 		case OFF:	os << "\\bar no\n"; break;
 		case ON:        os << "\\bar under\n"; break;
-		case TOGGLE:	lyxerr << "LyXFont::lyxWriteFontChanges: "
+		case TOGGLE:	lyxerr << "Font::lyxWriteFontChanges: "
 					"TOGGLE should not appear here!"
 				       << endl;
 		break;
 		case INHERIT:   os << "\\bar default\n"; break;
-		case IGNORE:    lyxerr << "LyXFont::lyxWriteFontChanges: "
+		case IGNORE:    lyxerr << "Font::lyxWriteFontChanges: "
 					"IGNORE should not appear here!"
 				       << endl;
 		break;
@@ -736,8 +736,8 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
-                                    LyXFont const & prev) const
+int Font::latexWriteStartChanges(odocstream & os, Font const & base,
+                                    Font const & prev) const
 {
 	bool env = false;
 
@@ -767,7 +767,7 @@ int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 		count += 9;
 	}
 
-	LyXFont f = *this;
+	Font f = *this;
 	f.reduce(base);
 
 	if (f.family() != INHERIT_FAMILY) {
@@ -832,8 +832,8 @@ int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
-int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
-                                  LyXFont const & next) const
+int Font::latexWriteEndChanges(odocstream & os, Font const & base,
+                                  Font const & next) const
 {
 	int count = 0;
 	bool env = false;
@@ -841,7 +841,7 @@ int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
 	// reduce the current font to changes against the base
 	// font (of the layout). We use a temporary for this to
 	// avoid changing this font instance, as that would break
-	LyXFont f = *this;
+	Font f = *this;
 	f.reduce(base);
 
 	if (f.family() != INHERIT_FAMILY) {
@@ -902,7 +902,7 @@ int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
 }
 
 
-Color_color LyXFont::realColor() const
+Color_color Font::realColor() const
 {
 	if (color() == Color::none)
 		return Color::foreground;
@@ -910,13 +910,13 @@ Color_color LyXFont::realColor() const
 }
 
 
-ostream & operator<<(ostream & os, LyXFont::FONT_MISC_STATE fms)
+ostream & operator<<(ostream & os, Font::FONT_MISC_STATE fms)
 {
 	return os << int(fms);
 }
 
 
-std::ostream & operator<<(std::ostream & os, LyXFont const & font)
+std::ostream & operator<<(std::ostream & os, Font const & font)
 {
 	return os << "font:"
 		<< " family " << font.bits.family

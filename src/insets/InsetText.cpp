@@ -357,7 +357,7 @@ bool InsetText::showInsetDialog(BufferView *) const
 }
 
 
-void InsetText::setText(docstring const & data, LyXFont const & font, bool trackChanges)
+void InsetText::setText(docstring const & data, Font const & font, bool trackChanges)
 {
 	clear();
 	Paragraph & first = paragraphs().front();

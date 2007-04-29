@@ -12,7 +12,7 @@
 
 #include "Bidi.h"
 #include "Buffer.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "Row.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -100,11 +100,11 @@ void Bidi::computeTables(Paragraph const & par,
 			 !par.isLineSeparator(lpos + 1) &&
 			 !par.isNewline(lpos + 1))
 			? lpos + 1 : lpos;
-		LyXFont font = par.getFontSettings(bufparams, pos);
+		Font font = par.getFontSettings(bufparams, pos);
 		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
-		    font.number() == LyXFont::ON &&
+		    font.number() == Font::ON &&
 		    par.getFontSettings(bufparams, lpos - 1).number()
-		    == LyXFont::ON) {
+		    == Font::ON) {
 			font = par.getFontSettings(bufparams, lpos);
 			is_space = false;
 		}
@@ -196,7 +196,7 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 
 
 bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
-	pos_type pos, LyXFont const & font) const
+	pos_type pos, Font const & font) const
 {
 	if (!lyxrc.rtl_support)
 		return false;    // This is just for speedup

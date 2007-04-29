@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file src/LyXFont.h
+ * \file src/Font.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXFONT_H
-#define LYXFONT_H
+#ifndef FONT_H
+#define FONT_H
 
 #include "Color.h"
 #include "support/docstream.h"
@@ -28,12 +28,12 @@ class Language;
 
 
 ///
-class LyXFont {
+class Font {
 public:
 	/** The value INHERIT_* means that the font attribute is
 	    inherited from the layout. In the case of layout fonts, the
 	    attribute is inherited from the default font.
-	    The value IGNORE_* is used with LyXFont::update() when the
+	    The value IGNORE_* is used with Font::update() when the
 	    attribute should not be changed.
 	*/
 	enum FONT_FAMILY {
@@ -184,28 +184,25 @@ public:
 		FONT_MISC_STATE number;
 	};
 	///
-	LyXFont();
+	Font();
 
 	/// Shortcut initialization
-	explicit
-	LyXFont(LyXFont::FONT_INIT1);
+	explicit Font(Font::FONT_INIT1);
 	/// Shortcut initialization
-	explicit
-	LyXFont(LyXFont::FONT_INIT2);
+	explicit Font(Font::FONT_INIT2);
 	/// Shortcut initialization
-	explicit
-	LyXFont(LyXFont::FONT_INIT3);
+	explicit Font(Font::FONT_INIT3);
 	/// Shortcut initialization
-	LyXFont(LyXFont::FONT_INIT1, Language const * l);
+	Font(Font::FONT_INIT1, Language const * l);
 	/// Shortcut initialization
-	LyXFont(LyXFont::FONT_INIT2, Language const * l);
+	Font(Font::FONT_INIT2, Language const * l);
 	/// Shortcut initialization
-	LyXFont(LyXFont::FONT_INIT3, Language const * l);
+	Font(Font::FONT_INIT3, Language const * l);
 
 	/// Decreases font size by one
-	LyXFont & decSize();
+	Font & decSize();
 	/// Increases font size by one
-	LyXFont & incSize();
+	Font & incSize();
 	///
 	FONT_FAMILY family() const { return bits.family; }
 	///
@@ -234,34 +231,34 @@ public:
 	bool isSymbolFont() const;
 
 	///
-	void setFamily(LyXFont::FONT_FAMILY f);
-	void setSeries(LyXFont::FONT_SERIES s);
-	void setShape(LyXFont::FONT_SHAPE s);
-	void setSize(LyXFont::FONT_SIZE s);
-	void setEmph(LyXFont::FONT_MISC_STATE e);
-	void setUnderbar(LyXFont::FONT_MISC_STATE u);
-	void setNoun(LyXFont::FONT_MISC_STATE n);
-	void setNumber(LyXFont::FONT_MISC_STATE n);
+	void setFamily(Font::FONT_FAMILY f);
+	void setSeries(Font::FONT_SERIES s);
+	void setShape(Font::FONT_SHAPE s);
+	void setSize(Font::FONT_SIZE s);
+	void setEmph(Font::FONT_MISC_STATE e);
+	void setUnderbar(Font::FONT_MISC_STATE u);
+	void setNoun(Font::FONT_MISC_STATE n);
+	void setNumber(Font::FONT_MISC_STATE n);
 	void setColor(Color_color c);
 	void setLanguage(Language const * l);
 
 	/// Set family after LyX text format
-	LyXFont & setLyXFamily(std::string const &);
+	Font & setLyXFamily(std::string const &);
 
 	/// Set series after LyX text format
-	LyXFont & setLyXSeries(std::string const &);
+	Font & setLyXSeries(std::string const &);
 
 	/// Set shape after LyX text format
-	LyXFont & setLyXShape(std::string const &);
+	Font & setLyXShape(std::string const &);
 
 	/// Set size after LyX text format
-	LyXFont & setLyXSize(std::string const &);
+	Font & setLyXSize(std::string const &);
 
 	/// Returns misc flag after LyX text format
-	LyXFont::FONT_MISC_STATE setLyXMisc(std::string const &);
+	Font::FONT_MISC_STATE setLyXMisc(std::string const &);
 
 	/// Sets color after LyX text format
-	LyXFont & setLyXColor(std::string const &);
+	Font & setLyXColor(std::string const &);
 
 	/// Returns size of font in LaTeX text notation
 	std::string const latexSize() const;
@@ -275,39 +272,39 @@ public:
 	    a INHERIT_FAMILY was asked for.  This is necessary for the
 	    toggle-user-defined-style button on the toolbar.
 	*/
-	void update(LyXFont const & newfont,
+	void update(Font const & newfont,
 		    Language const * default_lang,
 		    bool toggleall = false);
 
 	/** Reduce font to fall back to template where possible.
 	    Equal fields are reduced to INHERIT */
-	void reduce(LyXFont const & tmplt);
+	void reduce(Font const & tmplt);
 
 	/// Realize font from a template (INHERIT are realized)
-	LyXFont & realize(LyXFont const & tmplt);
+	Font & realize(Font const & tmplt);
 	/// Is a given font fully resolved?
 	bool resolved() const;
 
 	/// Read a font specification from Lexer. Used for layout files.
-	LyXFont & lyxRead(Lexer &);
+	Font & lyxRead(Lexer &);
 
 	/// Writes the changes from this font to orgfont in .lyx format in file
-	void lyxWriteChanges(LyXFont const & orgfont, std::ostream &) const;
+	void lyxWriteChanges(Font const & orgfont, std::ostream &) const;
 
 	/** Writes the head of the LaTeX needed to change to this font.
 	    Writes to string, the head of the LaTeX needed to change
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(odocstream &, LyXFont const & base,
-	                           LyXFont const & prev) const;
+	int latexWriteStartChanges(odocstream &, Font const & base,
+	                           Font const & prev) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(odocstream &, LyXFont const & base,
-	                         LyXFont const & next) const;
+	int latexWriteEndChanges(odocstream &, Font const & base,
+	                         Font const & next) const;
 
 
 	/// Build GUI description of font state
@@ -318,14 +315,14 @@ public:
 
 	///
 	friend
-	bool operator==(LyXFont const & font1, LyXFont const & font2);
+	bool operator==(Font const & font1, Font const & font2);
 	///
 	friend
-	std::ostream & operator<<(std::ostream & os, LyXFont const & font);
+	std::ostream & operator<<(std::ostream & os, Font const & font);
 
 	/// Converts logical attributes to concrete shape attribute
 	// Try hard to inline this as it shows up with 4.6 % in the profiler.
-	LyXFont::FONT_SHAPE realShape() const {
+	inline Font::FONT_SHAPE realShape() const {
 		if (bits.noun == ON)
 			return SMALLCAPS_SHAPE;
 		if (bits.emph == ON)
@@ -349,40 +346,40 @@ private:
 	/// All ignore font
 	static FontBits ignore;
 	/// Updates a misc setting according to request
-	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
-					 LyXFont::FONT_MISC_STATE org);
+	Font::FONT_MISC_STATE setMisc(Font::FONT_MISC_STATE newfont,
+					 Font::FONT_MISC_STATE org);
 };
 
 
-/** \c LyXFont_size is a wrapper for LyXFont::FONT_SIZE.
+/** \c Font_size is a wrapper for Font::FONT_SIZE.
  *  It can be forward-declared and passed as a function argument without
- *  having to expose LyXFont.h.
+ *  having to expose Font.h.
  */
-class LyXFont_size {
+class Font_size {
 public:
 	///
-	LyXFont_size(LyXFont::FONT_SIZE val) : val_(val) {}
+	Font_size(Font::FONT_SIZE val) : val_(val) {}
 	///
-	operator LyXFont::FONT_SIZE() const { return val_; }
+	operator Font::FONT_SIZE() const { return val_; }
 private:
 	///
-	LyXFont::FONT_SIZE val_;
+	Font::FONT_SIZE val_;
 };
 
 
 
 inline
-bool LyXFont::isSymbolFont() const
+bool Font::isSymbolFont() const
 {
 	switch (family()) {
-	case LyXFont::SYMBOL_FAMILY:
-	case LyXFont::CMSY_FAMILY:
-	case LyXFont::CMM_FAMILY:
-	case LyXFont::CMEX_FAMILY:
-	case LyXFont::MSA_FAMILY:
-	case LyXFont::MSB_FAMILY:
-	case LyXFont::WASY_FAMILY:
-	case LyXFont::ESINT_FAMILY:
+	case Font::SYMBOL_FAMILY:
+	case Font::CMSY_FAMILY:
+	case Font::CMM_FAMILY:
+	case Font::CMEX_FAMILY:
+	case Font::MSA_FAMILY:
+	case Font::MSB_FAMILY:
+	case Font::WASY_FAMILY:
+	case Font::ESINT_FAMILY:
 		return true;
 	default:
 		return false;
@@ -390,26 +387,26 @@ bool LyXFont::isSymbolFont() const
 }
 
 ///
-std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
+std::ostream & operator<<(std::ostream &, Font::FONT_MISC_STATE);
 
-bool operator==(LyXFont::FontBits const & lhs, LyXFont::FontBits const & rhs);
+bool operator==(Font::FontBits const & lhs, Font::FontBits const & rhs);
 
 inline
-bool operator!=(LyXFont::FontBits const & lhs, LyXFont::FontBits const & rhs)
+bool operator!=(Font::FontBits const & lhs, Font::FontBits const & rhs)
 {
 	return !(lhs == rhs);
 }
 
 ///
 inline
-bool operator==(LyXFont const & font1, LyXFont const & font2)
+bool operator==(Font const & font1, Font const & font2)
 {
 	return font1.bits == font2.bits && font1.lang == font2.lang;
 }
 
 ///
 inline
-bool operator!=(LyXFont const & font1, LyXFont const & font2)
+bool operator!=(Font const & font1, Font const & font2)
 {
 	return !(font1 == font2);
 }

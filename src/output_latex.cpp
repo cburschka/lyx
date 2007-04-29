@@ -369,7 +369,7 @@ TeXOnePar(Buffer const & buf,
 		break;
 	}
 
-	LyXFont const outerfont =
+	Font const outerfont =
 		outerFont(std::distance(paragraphs.begin(), pit),
 			  paragraphs);
 
@@ -388,7 +388,7 @@ TeXOnePar(Buffer const & buf,
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
 
-	LyXFont const font =
+	Font const font =
 		(pit->empty()
 		 ? pit->getLayoutFont(bparams, outerfont)
 		 : pit->getFont(bparams, pit->size() - 1, outerfont));

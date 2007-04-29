@@ -71,7 +71,7 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	void getDrawFont(LyXFont &) const;
+	void getDrawFont(Font &) const;
 	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	/// should paragraph indendation be ommitted in any case?

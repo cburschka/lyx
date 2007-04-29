@@ -93,7 +93,7 @@ void InsetBranch::read(Buffer const & buf, Lexer & lex)
 
 void InsetBranch::setButtonLabel()
 {
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 

@@ -40,7 +40,7 @@ class ErrorItem;
 class FuncRequest;
 class Inset;
 class InsetText;
-class LyXFont;
+class Font;
 class Lexer;
 class LyXRC;
 class LyXText;
@@ -122,7 +122,7 @@ public:
 	///
 	void insertStringAsLines(ParagraphList & plist,
 		pit_type &, pos_type &,
-		LyXFont const &, docstring const &, bool);
+		Font const &, docstring const &, bool);
 	///
 	ParIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?

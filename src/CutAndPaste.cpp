@@ -626,7 +626,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
 		par.layout(bp.getLyXTextClass().defaultLayout());
-		par.insert(0, grabSelection(cur), LyXFont(), Change(Change::UNCHANGED));
+		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		cutstack.push(make_pair(pars, bp.textclass));
 	}
@@ -653,7 +653,7 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
 		par.layout(bp.getLyXTextClass().defaultLayout());
-		par.insert(0, plaintext, LyXFont(), Change(Change::UNCHANGED));
+		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.textclass));
 	} else
@@ -789,7 +789,7 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwa
 	DocIterator selbeg = cur.selectionBegin();
 
 	// Get font setting before we cut
-	LyXFont const font =
+	Font const font =
 		selbeg.paragraph().getFontSettings(cur.buffer().params(), selbeg.pos());
 
 	// Insert the new string

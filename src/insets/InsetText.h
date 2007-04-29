@@ -14,7 +14,7 @@
 
 #include "Inset.h"
 #include "RowList_fwd.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "LyXText.h"
 
 #include "support/types.h"
@@ -81,7 +81,7 @@ public:
 	///
 	Code lyxCode() const { return TEXT_CODE; }
 	///
-	void setText(docstring const &, LyXFont const &, bool trackChanges);
+	void setText(docstring const &, Font const &, bool trackChanges);
 	///
 	void setAutoBreakRows(bool);
 	///
@@ -162,7 +162,7 @@ public:
 	///
 	mutable LyXText text_;
 	///
-	mutable LyXFont font_;
+	mutable Font font_;
 	///
 	static int border_;
 };

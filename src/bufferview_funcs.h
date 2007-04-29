@@ -23,15 +23,15 @@ class Point;
 class BufferView;
 class DocIterator;
 class Inset_code;
-class LyXFont;
+class Font;
 
 namespace bv_funcs {
 
 /// Set \param data using \param font and \param toggle. Return success.
-bool font2string(LyXFont const & font, bool toggle, std::string & data);
+bool font2string(Font const & font, bool toggle, std::string & data);
 
 /// Set \param font and \param toggle using \param data. Return success.
-bool string2font(std::string const & data, LyXFont & font, bool & toggle);
+bool string2font(std::string const & data, Font & font, bool & toggle);
 
 /** Returns the current freefont, encoded as a std::string to be passed to the
  *  frontends.

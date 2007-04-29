@@ -126,7 +126,7 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form, QWidget * parent)
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
 		lwi->setToolTip(toqstr(delim));
-		LyXFont lyxfont;
+		Font lyxfont;
 		lyxfont.setFamily(ms.fontfamily);
 		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
 		lwi->setFont(symbol_font);

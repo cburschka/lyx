@@ -4725,7 +4725,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = loctab->getCellInset(cell);
 				Paragraph & par = inset->text_.getPar(0);
-				LyXFont const font = inset->text_.getFont(buffer, par, 0);
+				Font const font = inset->text_.getFont(buffer, par, 0);
 				inset->setText(buf.substr(op, p - op), font,
 				               buffer.params().trackChanges);
 				++cols;
@@ -4737,7 +4737,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = tabular.getCellInset(cell);
 				Paragraph & par = inset->text_.getPar(0);
-				LyXFont const font = inset->text_.getFont(buffer, par, 0);
+				Font const font = inset->text_.getFont(buffer, par, 0);
 				inset->setText(buf.substr(op, p - op), font,
 				               buffer.params().trackChanges);
 			}
@@ -4754,7 +4754,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	if (cell < cells && op < len) {
 		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
 		Paragraph & par = inset->text_.getPar(0);
-		LyXFont const font = inset->text_.getFont(buffer, par, 0);
+		Font const font = inset->text_.getFont(buffer, par, 0);
 		inset->setText(buf.substr(op, len - op), font,
 			buffer.params().trackChanges);
 	}

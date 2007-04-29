@@ -20,7 +20,7 @@
 #ifndef FONTITERATOR_H
 #define FONTITERATOR_H
 
-#include "LyXFont.h"
+#include "Font.h"
 
 #include "support/types.h"
 
@@ -32,18 +32,18 @@ class LyXText;
 class Paragraph;
 
 
-class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
+class FontIterator : std::iterator<std::forward_iterator_tag, Font>
 {
 public:
 	///
 	FontIterator(Buffer const & buffer, LyXText const & text,
 		Paragraph const & par, pos_type pos);
 	///
-	LyXFont const & operator*() const;
+	Font const & operator*() const;
 	///
 	FontIterator & operator++();
 	///
-	LyXFont * operator->();
+	Font * operator->();
 
 private:
 	///
@@ -55,7 +55,7 @@ private:
 	///
 	pos_type pos_;
 	///
-	LyXFont font_;
+	Font font_;
 	///
 	pos_type endspan_;
 	///

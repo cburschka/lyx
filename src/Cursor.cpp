@@ -24,7 +24,7 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "lfuns.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "LyXFunc.h" // only for setMessage()
 #include "LyXRC.h"
 #include "Row.h"
@@ -1234,7 +1234,7 @@ Encoding const * Cursor::getEncoding() const
 			break;
 	CursorSlice const & sl = operator[](s);
 	LyXText const & text = *sl.text();
-	LyXFont font = text.getPar(sl.pit()).getFont(
+	Font font = text.getPar(sl.pit()).getFont(
 		bv().buffer()->params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
 	return font.language()->encoding();
 }
@@ -1264,7 +1264,7 @@ void Cursor::noUpdate()
 }
 
 
-LyXFont Cursor::getFont() const
+Font Cursor::getFont() const
 {
 	// HACK. far from being perfect...
 	int s = 0;
@@ -1275,7 +1275,7 @@ LyXFont Cursor::getFont() const
 			break;
 	CursorSlice const & sl = operator[](s);
 	LyXText const & text = *sl.text();
-	LyXFont font = text.getPar(sl.pit()).getFont(
+	Font font = text.getPar(sl.pit()).getFont(
 		bv().buffer()->params(),
 		sl.pos(),
 		outerFont(sl.pit(), text.paragraphs()));

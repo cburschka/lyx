@@ -18,7 +18,7 @@
 namespace lyx {
 
 class Color_color;
-class LyXFont;
+class Font;
 
 namespace graphics { class Image; }
 
@@ -138,7 +138,7 @@ public:
 	* \return the width of the drawn text.
 	*/
 	virtual int text(int x, int y,
-		docstring const & str, LyXFont const & f) = 0;
+		docstring const & str, Font const & f) = 0;
 
 	void setDrawingEnabled(bool drawing_enabled = true)
 	{ drawing_enabled_ = drawing_enabled; }
@@ -147,7 +147,7 @@ public:
 	/**
 	* \return the width of the drawn text.
 	*/
-	virtual int text(int x, int y, char_type c, LyXFont const & f) = 0;
+	virtual int text(int x, int y, char_type c, Font const & f) = 0;
 
 	/**
 	 * Draw a string and enclose it inside a rectangle. If
@@ -157,25 +157,25 @@ public:
 	 */
 	void rectText(int x, int baseline,
 		docstring const & str,
-		LyXFont const & font,
+		Font const & font,
 		Color_color back,
 		Color_color frame);
 
 	/// draw a string and enclose it inside a button frame
 	void buttonText(int x, int baseline, docstring const & s,
-		LyXFont const & font, bool mouseHover);
+		Font const & font, bool mouseHover);
 
 	/// draw a character of a preedit string for cjk support.
 	int preeditText(int x, int y,
-		char_type c, LyXFont const & f, preedit_style style);
+		char_type c, Font const & f, preedit_style style);
 
 protected:
 	/// check the font, and if set, draw an underline
-	void underline(LyXFont const & f,
+	void underline(Font const & f,
 		int x, int y, int width);
 
 	/// check the font, and if set, draw an dashed underline
-	void dashedUnderline(LyXFont const & f,
+	void dashedUnderline(Font const & f,
 		int x, int y, int width);
 
 	/// draw a bevelled button border

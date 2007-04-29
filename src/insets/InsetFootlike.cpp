@@ -25,7 +25,7 @@ namespace lyx {
 InsetFootlike::InsetFootlike(BufferParams const & bp)
 	: InsetCollapsable(bp)
 {
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 	font.setColor(Color::collapsable);
@@ -36,7 +36,7 @@ InsetFootlike::InsetFootlike(BufferParams const & bp)
 InsetFootlike::InsetFootlike(InsetFootlike const & in)
 	: InsetCollapsable(in)
 {
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 	font.setColor(Color::collapsable);
@@ -46,7 +46,7 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 
 bool InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont tmpfont = mi.base.font;
+	Font tmpfont = mi.base.font;
 	mi.base.font = mi.base.bv->buffer()->params().getFont();
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
@@ -58,7 +58,7 @@ bool InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 {
-	LyXFont tmpfont = pi.base.font;
+	Font tmpfont = pi.base.font;
 	pi.base.font = pi.base.bv->buffer()->params().getFont();
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;

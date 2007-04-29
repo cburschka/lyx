@@ -78,20 +78,20 @@ public:
 	int maxWidth() { return max_width_; }
 
 private:
-	void paintForeignMark(double orig_x, LyXFont const & font, int desc = 0);
-	void paintHebrewComposeChar(pos_type & vpos, LyXFont const & font);
-	void paintArabicComposeChar(pos_type & vpos, LyXFont const & font);
-	void paintChars(pos_type & vpos, LyXFont const & font,
+	void paintForeignMark(double orig_x, Font const & font, int desc = 0);
+	void paintHebrewComposeChar(pos_type & vpos, Font const & font);
+	void paintArabicComposeChar(pos_type & vpos, Font const & font);
+	void paintChars(pos_type & vpos, Font const & font,
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
-	void paintInset(pos_type const pos, LyXFont const & font);
+	void paintInset(pos_type const pos, Font const & font);
 
 	/// return left margin
 	int leftMargin() const;
 
 	/// return the label font for this row
-	LyXFont const getLabelFont() const;
+	Font const getLabelFont() const;
 
 	/// bufferview to paint on
 	BufferView & bv_;
@@ -153,7 +153,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 }
 
 
-LyXFont const RowPainter::getLabelFont() const
+Font const RowPainter::getLabelFont() const
 {
 	return text_.getLabelFont(*bv_.buffer(), par_);
 }
@@ -170,7 +170,7 @@ int RowPainter::leftMargin() const
 // This draws green lines around each inset.
 
 
-void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
+void RowPainter::paintInset(pos_type const pos, Font const & font)
 {
 	Inset const * inset = par_.getInset(pos);
 	BOOST_ASSERT(inset);
@@ -231,7 +231,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 }
 
 
-void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
+void RowPainter::paintHebrewComposeChar(pos_type & vpos, Font const & font)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 
@@ -265,7 +265,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 }
 
 
-void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
+void RowPainter::paintArabicComposeChar(pos_type & vpos, Font const & font)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 	docstring str;
@@ -295,7 +295,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 }
 
 
-void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
+void RowPainter::paintChars(pos_type & vpos, Font const & font,
 			    bool hebrew, bool arabic)
 {
 	// This method takes up 70% of time when typing
@@ -366,7 +366,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 	docstring s(&str[0], str.size());
 
 	if (prev_change != Change::UNCHANGED) {
-		LyXFont copy(font);
+		Font copy(font);
 		if (prev_change == Change::DELETED) {
 			copy.setColor(Color::strikeout);
 		} else if (prev_change == Change::INSERTED) {
@@ -379,7 +379,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 }
 
 
-void RowPainter::paintForeignMark(double orig_x, LyXFont const & font, int desc)
+void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
@@ -396,7 +396,7 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & font, int desc)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = text_.bidi.vis2log(vpos);
-	LyXFont orig_font = text_.getFont(*bv_.buffer(), par_, pos);
+	Font orig_font = text_.getFont(*bv_.buffer(), par_, pos);
 
 	double const orig_x = x_;
 
@@ -513,7 +513,7 @@ void RowPainter::paintDepthBar()
 
 int RowPainter::paintAppendixStart(int y)
 {
-	LyXFont pb_font;
+	Font pb_font;
 	pb_font.setColor(Color::appendix);
 	pb_font.decSize();
 
@@ -576,7 +576,7 @@ void RowPainter::paintFirst()
 		      || layout->latextype != LATEX_ENVIRONMENT
 		      || is_seq)) {
 
-		LyXFont const font = getLabelFont();
+		Font const font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 
 		docstring const str = par_.getLabelstring();
@@ -626,7 +626,7 @@ void RowPainter::paintFirst()
 		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
-		LyXFont font = getLabelFont();
+		Font font = getLabelFont();
 		if (!par_.getLabelstring().empty()) {
 			docstring const str = par_.getLabelstring();
 			double spacing_val = 1.0;
@@ -682,7 +682,7 @@ void RowPainter::paintLast()
 	switch (endlabel) {
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
-		LyXFont const font = getLabelFont();
+		Font const font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
@@ -699,7 +699,7 @@ void RowPainter::paintLast()
 	}
 
 	case END_LABEL_STATIC: {
-		LyXFont font = getLabelFont();
+		Font font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 		docstring const & str = par_.layout()->endlabelstring();
 		double const x = is_rtl ?
@@ -732,7 +732,7 @@ void RowPainter::paintText()
 
 	// Use font span to speed things up, see below
 	FontSpan font_span;
-	LyXFont font;
+	Font font;
 	Buffer const & buffer = *bv_.buffer();
 
 	for (pos_type vpos = row_.pos(); vpos < end; ) {

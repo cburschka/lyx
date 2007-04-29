@@ -28,7 +28,7 @@
 #include "Session.h"
 #include "Color.h"
 #include "Lexer.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "Mover.h"
 
 #include "graphics/GraphicsTypes.h"
@@ -222,16 +222,16 @@ void LyXRC::setDefaults() {
 	geometry_height = 0;
 	geometry_xysaved = true;
 	// Default LaTeX font size:
-	font_sizes[LyXFont::SIZE_TINY] = "5.0";
-	font_sizes[LyXFont::SIZE_SCRIPT] = "7.0";
-	font_sizes[LyXFont::SIZE_FOOTNOTE] = "8.0";
-	font_sizes[LyXFont::SIZE_SMALL] = "9.0";
-	font_sizes[LyXFont::SIZE_NORMAL] = "10.0";
-	font_sizes[LyXFont::SIZE_LARGE] = "12.0";
-	font_sizes[LyXFont::SIZE_LARGER] = "14.4";
-	font_sizes[LyXFont::SIZE_LARGEST] = "17.26";
-	font_sizes[LyXFont::SIZE_HUGE] = "20.74";
-	font_sizes[LyXFont::SIZE_HUGER] = "24.88";
+	font_sizes[Font::SIZE_TINY] = "5.0";
+	font_sizes[Font::SIZE_SCRIPT] = "7.0";
+	font_sizes[Font::SIZE_FOOTNOTE] = "8.0";
+	font_sizes[Font::SIZE_SMALL] = "9.0";
+	font_sizes[Font::SIZE_NORMAL] = "10.0";
+	font_sizes[Font::SIZE_LARGE] = "12.0";
+	font_sizes[Font::SIZE_LARGER] = "14.4";
+	font_sizes[Font::SIZE_LARGEST] = "17.26";
+	font_sizes[Font::SIZE_HUGE] = "20.74";
+	font_sizes[Font::SIZE_HUGER] = "24.88";
 	use_scalable_fonts = true;
 	roman_font_name = "";
 	sans_font_name = "";
@@ -649,43 +649,43 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_SCREEN_FONT_SIZES:
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_TINY] =
+				font_sizes[Font::SIZE_TINY] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_SCRIPT] =
+				font_sizes[Font::SIZE_SCRIPT] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_FOOTNOTE] =
+				font_sizes[Font::SIZE_FOOTNOTE] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_SMALL] =
+				font_sizes[Font::SIZE_SMALL] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_NORMAL] =
+				font_sizes[Font::SIZE_NORMAL] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_LARGE] =
+				font_sizes[Font::SIZE_LARGE] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_LARGER] =
+				font_sizes[Font::SIZE_LARGER] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_LARGEST] =
+				font_sizes[Font::SIZE_LARGEST] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_HUGE] =
+				font_sizes[Font::SIZE_HUGE] =
 					lexrc.getString();
 			}
 			if (lexrc.next()) {
-				font_sizes[LyXFont::SIZE_HUGER] =
+				font_sizes[Font::SIZE_HUGER] =
 					lexrc.getString();
 			}
 			break;
@@ -1545,39 +1545,39 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		}
 	case RC_SCREEN_FONT_SIZES:
 		if (ignore_system_lyxrc ||
-		    font_sizes[LyXFont::SIZE_TINY]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_TINY] ||
-		    font_sizes[LyXFont::SIZE_SCRIPT]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] ||
-		    font_sizes[LyXFont::SIZE_FOOTNOTE]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] ||
-		    font_sizes[LyXFont::SIZE_SMALL]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_SMALL] ||
-		    font_sizes[LyXFont::SIZE_NORMAL]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_NORMAL] ||
-		    font_sizes[LyXFont::SIZE_LARGE]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_LARGE] ||
-		    font_sizes[LyXFont::SIZE_LARGER]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_LARGER] ||
-		    font_sizes[LyXFont::SIZE_LARGEST]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_LARGEST] ||
-		    font_sizes[LyXFont::SIZE_HUGE]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_HUGE] ||
-		    font_sizes[LyXFont::SIZE_HUGER]
-		    != system_lyxrc.font_sizes[LyXFont::SIZE_HUGER]) {
+		    font_sizes[Font::SIZE_TINY]
+		    != system_lyxrc.font_sizes[Font::SIZE_TINY] ||
+		    font_sizes[Font::SIZE_SCRIPT]
+		    != system_lyxrc.font_sizes[Font::SIZE_SCRIPT] ||
+		    font_sizes[Font::SIZE_FOOTNOTE]
+		    != system_lyxrc.font_sizes[Font::SIZE_FOOTNOTE] ||
+		    font_sizes[Font::SIZE_SMALL]
+		    != system_lyxrc.font_sizes[Font::SIZE_SMALL] ||
+		    font_sizes[Font::SIZE_NORMAL]
+		    != system_lyxrc.font_sizes[Font::SIZE_NORMAL] ||
+		    font_sizes[Font::SIZE_LARGE]
+		    != system_lyxrc.font_sizes[Font::SIZE_LARGE] ||
+		    font_sizes[Font::SIZE_LARGER]
+		    != system_lyxrc.font_sizes[Font::SIZE_LARGER] ||
+		    font_sizes[Font::SIZE_LARGEST]
+		    != system_lyxrc.font_sizes[Font::SIZE_LARGEST] ||
+		    font_sizes[Font::SIZE_HUGE]
+		    != system_lyxrc.font_sizes[Font::SIZE_HUGE] ||
+		    font_sizes[Font::SIZE_HUGER]
+		    != system_lyxrc.font_sizes[Font::SIZE_HUGER]) {
 			os.setf(ios::fixed);
 			os.precision(2);
 			os << "\\screen_font_sizes"
-			   << ' ' << font_sizes[LyXFont::SIZE_TINY]
-			   << ' ' << font_sizes[LyXFont::SIZE_SCRIPT]
-			   << ' ' << font_sizes[LyXFont::SIZE_FOOTNOTE]
-			   << ' ' << font_sizes[LyXFont::SIZE_SMALL]
-			   << ' ' << font_sizes[LyXFont::SIZE_NORMAL]
-			   << ' ' << font_sizes[LyXFont::SIZE_LARGE]
-			   << ' ' << font_sizes[LyXFont::SIZE_LARGER]
-			   << ' ' << font_sizes[LyXFont::SIZE_LARGEST]
-			   << ' ' << font_sizes[LyXFont::SIZE_HUGE]
-			   << ' ' << font_sizes[LyXFont::SIZE_HUGER]
+			   << ' ' << font_sizes[Font::SIZE_TINY]
+			   << ' ' << font_sizes[Font::SIZE_SCRIPT]
+			   << ' ' << font_sizes[Font::SIZE_FOOTNOTE]
+			   << ' ' << font_sizes[Font::SIZE_SMALL]
+			   << ' ' << font_sizes[Font::SIZE_NORMAL]
+			   << ' ' << font_sizes[Font::SIZE_LARGE]
+			   << ' ' << font_sizes[Font::SIZE_LARGER]
+			   << ' ' << font_sizes[Font::SIZE_LARGEST]
+			   << ' ' << font_sizes[Font::SIZE_HUGE]
+			   << ' ' << font_sizes[Font::SIZE_HUGER]
 			   << '\n';
 		}
 

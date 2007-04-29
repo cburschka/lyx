@@ -32,10 +32,10 @@ public:
 	virtual void update() {};
 
 	/// Is the given font available ?
-	virtual bool available(LyXFont const &) { return false; };
+	virtual bool available(Font const &) { return false; };
 
-	/// Get the Font metrics for this LyXFont
-	virtual FontMetrics const & metrics(LyXFont const &) { return metrics_; }
+	/// Get the Font metrics for this Font
+	virtual FontMetrics const & metrics(Font const &) { return metrics_; }
 
 private:
 	///

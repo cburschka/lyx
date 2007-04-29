@@ -23,7 +23,7 @@ namespace lyx {
 
 class Encoding;
 class ExportData;
-class LyXFont;
+class Font;
 
 
 class OutputParams {
@@ -63,7 +63,7 @@ public:
 
 	/** the font at the point where the inset is
 	 */
-	LyXFont const * local_font;
+	Font const * local_font;
 
 	/** Document language babel name
 	 */

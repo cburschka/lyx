@@ -14,7 +14,7 @@
 
 #include "InsetMath.h"
 
-#include "LyXFont.h"
+#include "Font.h"
 
 namespace lyx {
 
@@ -56,7 +56,7 @@ private:
 	/// cached kerning for superscript
 	mutable int kerning_;
 	///
-	mutable LyXFont font_cache_;
+	mutable Font font_cache_;
 };
 
 } // namespace lyx

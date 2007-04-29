@@ -40,10 +40,10 @@ tex2lyx_SOURCES = \
 	boost.cpp \
 	Context.cpp \
 	Context.h \
+	Font.cpp \
+	Font.h \
 	gettext.cpp \
 	lengthcommon.cpp \
-	LyXFont.cpp \
-	LyXFont.h \
 	Parser.cpp \
 	Parser.h \
 	tex2lyx.cpp \

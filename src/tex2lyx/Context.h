@@ -23,14 +23,14 @@ namespace lyx {
 /*!
  * Small helper struct that holds font properties.
  * The names are in LyX language, not LaTeX.
- * We don't use LyXFont, because it pulls in a lot of dependencies and has
+ * We don't use Font, because it pulls in a lot of dependencies and has
  * more strings than needed (e.g. font family error1 etc.).
  * If more font related stuff is needed, it might be good to change to
- * LyXFont.
+ * Font.
  */
-class Font {
+class TeXFont {
 public:
-	Font()
+	TeXFont()
 	{
 		init();
 	}
@@ -48,18 +48,18 @@ public:
 };
 
 
-bool operator==(Font const &, Font const &);
+bool operator==(TeXFont const &, TeXFont const &);
 
 
-inline bool operator!=(Font const & f1, Font const & f2)
+inline bool operator!=(TeXFont const & f1, TeXFont const & f2)
 {
 	return !operator==(f1, f2);
 }
 
 
 /// Output changed font parameters if \p oldfont and \p newfont differ
-void output_font_change(std::ostream & os, Font const & oldfont,
-			Font const & newfont);
+void output_font_change(std::ostream & os, TeXFont const & oldfont,
+			TeXFont const & newfont);
 
 
 /*!
@@ -80,7 +80,7 @@ public:
 		LyXTextClass const & textclass_,
 		LyXLayout_ptr layout_ = LyXLayout_ptr(),
 		LyXLayout_ptr parent_layout_= LyXLayout_ptr(),
-		Font font_ = Font());
+		TeXFont font_ = TeXFont());
 	~Context();
 
 	/// Output a \\begin_layout if requested
@@ -146,9 +146,9 @@ public:
 	/// The layout of the outer paragraph (for environment layouts)
 	LyXLayout_ptr parent_layout;
 	/// font attributes of this context
-	Font font;
+	TeXFont font;
 	/// font attributes of normal text
-	static Font normalfont;
+	static TeXFont normalfont;
 };
 
 

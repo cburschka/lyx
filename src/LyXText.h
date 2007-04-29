@@ -16,7 +16,7 @@
 
 #include "Bidi.h"
 #include "DispatchResult.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "ParagraphList.h"
@@ -50,18 +50,18 @@ public:
 	explicit LyXText();
 
 	///
-	LyXFont getFont(Buffer const & buffer, Paragraph const & par,
+	Font getFont(Buffer const & buffer, Paragraph const & par,
 		pos_type pos) const;
 	///
-	void applyOuterFont(Buffer const & buffer, LyXFont &) const;
+	void applyOuterFont(Buffer const & buffer, Font &) const;
 	///
-	LyXFont getLayoutFont(Buffer const & buffer, pit_type pit) const;
+	Font getLayoutFont(Buffer const & buffer, pit_type pit) const;
 	///
-	LyXFont getLabelFont(Buffer const & buffer,
+	Font getLabelFont(Buffer const & buffer,
 		Paragraph const & par) const;
 	///
 	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
-		LyXFont const & font);
+		Font const & font);
 
 	/// what you expect when pressing \<enter\> at cursor position
 	void breakParagraph(Cursor & cur, bool keep_layout = false);
@@ -88,10 +88,10 @@ public:
 
 	/// Set font over selection paragraphs and rebreak.
 	/// FIXME: replace Cursor with DocIterator.
-	void setFont(Cursor & cur, LyXFont const &, bool toggleall = false);
+	void setFont(Cursor & cur, Font const &, bool toggleall = false);
 
 	///
-	void toggleFree(Cursor & cur, LyXFont const &, bool toggleall = false);
+	void toggleFree(Cursor & cur, Font const &, bool toggleall = false);
 
 	/// ???
 	/// FIXME: replace Cursor with DocIterator.
@@ -293,7 +293,7 @@ public:
 	///
 	/// FIXME: move to TextMetrics.
 	int singleWidth(Paragraph const & par, pos_type pos, char_type c,
-		LyXFont const & Font) const;
+		Font const & Font) const;
 
 	/// return the color of the canvas
 	Color_color backgroundColor() const;
@@ -358,9 +358,9 @@ public:
 
 public:
 	/// the current font settings
-	LyXFont current_font;
+	Font current_font;
 	/// the current font
-	LyXFont real_current_font;
+	Font real_current_font;
 	///
 	int background_color_;
 
@@ -371,7 +371,7 @@ public:
 
 	/// our 'outermost' font. This is handed down from the surrounding
 	// inset through the pi/mi parameter (pi.base.font)
-	LyXFont font_;
+	Font font_;
 
 	///
 	bool autoBreakRows_;

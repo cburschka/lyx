@@ -21,7 +21,7 @@ namespace lyx {
 class Buffer;
 class Paragraph;
 class Row;
-class LyXFont;
+class Font;
 
 
 /// bidi stuff
@@ -32,7 +32,7 @@ public:
 			pos_type pos) const;
 	///
 	bool isBoundary(Buffer const &, Paragraph const & par,
-				pos_type pos, LyXFont const & font) const;
+				pos_type pos, Font const & font) const;
 	///
 	pos_type log2vis(pos_type pos) const;
 	/** Maps positions in the logical string to positions

@@ -21,32 +21,32 @@
 namespace lyx {
 
 class PainterInfo;
-class LyXFont;
+class Font;
 class Dimension;
 class MathData;
 class MathAtom;
 class InsetMath;
 
 
-int mathed_char_width(LyXFont const &, char_type c);
+int mathed_char_width(Font const &, char_type c);
 
-int mathed_char_kerning(LyXFont const &, char_type c);
+int mathed_char_kerning(Font const &, char_type c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	docstring const & name);
 
-void mathed_string_dim(LyXFont const & font,
+void mathed_string_dim(Font const & font,
 		       docstring const & s,
 		       Dimension & dim);
 
-int mathed_string_width(LyXFont const &, docstring const & s);
+int mathed_string_width(Font const &, docstring const & s);
 
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & s);
 void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & s);
 
-void math_font_max_dim(LyXFont const &, int & asc, int & desc);
+void math_font_max_dim(Font const &, int & asc, int & desc);
 
-void augmentFont(LyXFont & f, docstring const & cmd);
+void augmentFont(Font & f, docstring const & cmd);
 
 bool isFontName(docstring const & name);
 

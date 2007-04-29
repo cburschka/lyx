@@ -162,7 +162,7 @@ InsetMathHull::InsetMathHull()
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
 	//lyxerr << "sizeof InsetMathChar: " << sizeof(InsetMathChar) << endl;
-	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
+	//lyxerr << "sizeof Font: " << sizeof(Font) << endl;
 	initMath();
 	setDefaults();
 }
@@ -1304,7 +1304,7 @@ void InsetMathHull::handleFont(Cursor & cur, docstring const & arg,
 void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 {
 	recordUndo(cur);
-	LyXFont font;
+	Font font;
 	bool b;
 	bv_funcs::string2font(to_utf8(arg), font, b);
 	if (font.color() != Color::inherit) {

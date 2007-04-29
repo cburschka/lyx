@@ -13,7 +13,7 @@
 #ifndef FRONTEND_HELPERS_H
 #define FRONTEND_HELPERS_H
 
-#include "LyXFont.h"
+#include "Font.h"
 #include "support/docstring.h"
 
 #include <utility>
@@ -196,13 +196,13 @@ enum FONT_STATE {
 };
 
 ///
-typedef std::pair<docstring, LyXFont::FONT_FAMILY> FamilyPair;
+typedef std::pair<docstring, Font::FONT_FAMILY> FamilyPair;
 ///
-typedef std::pair<docstring, LyXFont::FONT_SERIES> SeriesPair;
+typedef std::pair<docstring, Font::FONT_SERIES> SeriesPair;
 ///
-typedef std::pair<docstring, LyXFont::FONT_SHAPE>  ShapePair;
+typedef std::pair<docstring, Font::FONT_SHAPE>  ShapePair;
 ///
-typedef std::pair<docstring, LyXFont::FONT_SIZE>   SizePair;
+typedef std::pair<docstring, Font::FONT_SIZE>   SizePair;
 ///
 typedef std::pair<docstring, FONT_STATE> BarPair;
 ///

@@ -31,13 +31,13 @@ FontIterator::FontIterator(Buffer const & buffer, LyXText const & text,
 {}
 
 
-LyXFont const & FontIterator::operator*() const
+Font const & FontIterator::operator*() const
 {
 	return font_;
 }
 
 
-LyXFont * FontIterator::operator->()
+Font * FontIterator::operator->()
 {
 	return &font_;
 }

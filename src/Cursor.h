@@ -25,7 +25,7 @@ class Buffer;
 class BufferView;
 class FuncStatus;
 class FuncRequest;
-class LyXFont;
+class Font;
 class Row;
 
 // these should go
@@ -306,7 +306,7 @@ public:
 	///
 	Encoding const * getEncoding() const;
 	/// font at cursor position
-	LyXFont getFont() const;
+	Font getFont() const;
 	///
 	bool isRTL() const;
 };

@@ -517,9 +517,9 @@ bool Buffer::readDocument(Lexer & lex)
 // needed to insert the selection
 void Buffer::insertStringAsLines(ParagraphList & pars,
 	pit_type & pit, pos_type & pos,
-	LyXFont const & fn, docstring const & str, bool autobreakrows)
+	Font const & fn, docstring const & str, bool autobreakrows)
 {
-	LyXFont font = fn;
+	Font font = fn;
 
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;

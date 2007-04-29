@@ -81,7 +81,7 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 #if 0
 	///
-	LyXFont const convertFont(LyXFont const & font) const;
+	Font const convertFont(Font const & font) const;
 #endif
 	///
 	void write(Buffer const &, std::ostream &) const;

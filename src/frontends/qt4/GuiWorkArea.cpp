@@ -479,7 +479,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 	// The font used to display the version info
 	font.setStyleHint(QFont::SansSerif);
 	font.setWeight(QFont::Bold);
-	font.setPointSize(convert<int>(lyxrc.font_sizes[LyXFont::SIZE_LARGE]));
+	font.setPointSize(convert<int>(lyxrc.font_sizes[Font::SIZE_LARGE]));
 
 	int const w = pm.width();
 	int const h = pm.height();
@@ -618,7 +618,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	QLPainter pain(&screen_);
 	buffer_view_->updateMetrics(false);
 	paintText(*buffer_view_, pain);
-	LyXFont font = buffer_view_->cursor().getFont();
+	Font font = buffer_view_->cursor().getFont();
 	FontMetrics const & fm = theFontMetrics(font);
 	int height = fm.maxHeight();
 	int cur_x = cursor_->rect().left();

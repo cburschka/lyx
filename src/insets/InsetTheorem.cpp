@@ -15,7 +15,7 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "LyXText.h"
 #include "MetricsInfo.h"
 
@@ -39,7 +39,7 @@ Inset.heorem::InsetTheorem()
 	: InsetCollapsable()
 {
 	setLabel(_("theorem"));
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 	font.setColor(Color::collapsable);

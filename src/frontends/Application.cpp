@@ -23,7 +23,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyX.h"  // for lyx::use_gui
-#include "LyXFont.h"
+#include "Font.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 
@@ -101,7 +101,7 @@ frontend::FontLoader & theFontLoader()
 }
 
 
-frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
+frontend::FontMetrics const & theFontMetrics(Font const & f)
 {
 	static frontend::NoGuiFontMetrics no_gui_font_metrics;
 

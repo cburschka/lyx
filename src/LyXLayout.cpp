@@ -103,10 +103,10 @@ LyXLayout::LyXLayout ()
 	optionalargs = 0;
 	needprotect = false;
 	keepempty = false;
-	font = LyXFont(LyXFont::ALL_INHERIT);
-	labelfont = LyXFont(LyXFont::ALL_INHERIT);
-	resfont = LyXFont(LyXFont::ALL_SANE);
-	reslabelfont = LyXFont(LyXFont::ALL_SANE);
+	font = Font(Font::ALL_INHERIT);
+	labelfont = Font(Font::ALL_INHERIT);
+	resfont = Font(Font::ALL_SANE);
+	reslabelfont = Font(Font::ALL_SANE);
 	nextnoindent = false;
 	parskip = 0.0;
 	itemsep = 0;

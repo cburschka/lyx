@@ -16,7 +16,7 @@
 #include "BufferView.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
@@ -143,13 +143,13 @@ docstring const bibitemWidest(Buffer const & buffer)
 	to use a hardcoded font like "Times" or so.
 
 	It is very important that the result of this function is the same both with 
-	and without GUI. After thinking about this it is clear that no LyXFont 
+	and without GUI. After thinking about this it is clear that no Font 
 	metrics should be used here, since these come from the gui. If we can't 
 	easily get the LaTeX font metrics we should make our own poor mans front 
 	metrics replacement, e.g. by hardcoding the metrics of the standard TeX 
 	font.
 	*/
-	LyXFont font;
+	Font font;
 
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();

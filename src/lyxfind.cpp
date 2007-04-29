@@ -179,7 +179,7 @@ int replaceAll(BufferView * bv,
 	DocIterator cur = doc_iterator_begin(buf.inset());
 	while (findForward(cur, match)) {
 		pos_type pos = cur.pos();
-		LyXFont const font
+		Font const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,
 							    buf.params().trackChanges);

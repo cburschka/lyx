@@ -110,7 +110,7 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	secnumdepth_ = 3;
 	tocdepth_ = 3;
 	pagestyle_ = "default";
-	defaultfont_ = LyXFont(LyXFont::ALL_SANE);
+	defaultfont_ = Font(Font::ALL_SANE);
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
 	titletype_ = TITLE_COMMAND_AFTER;
@@ -353,7 +353,7 @@ bool LyXTextClass::read(FileName const & filename, bool merge)
 			if (!defaultfont_.resolved()) {
 				lexrc.printError("Warning: defaultfont should "
 						 "be fully instantiated!");
-				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE));
+				defaultfont_.realize(Font(Font::ALL_SANE));
 			}
 			break;
 
@@ -614,8 +614,8 @@ void LyXTextClass::readCharStyle(Lexer & lexrc, string const & name)
 	string latextype;
 	string latexname;
 	string latexparam;
-	LyXFont font(LyXFont::ALL_INHERIT);
-	LyXFont labelfont(LyXFont::ALL_INHERIT);
+	Font font(Font::ALL_INHERIT);
+	Font labelfont(Font::ALL_INHERIT);
 	string preamble;
 
 	bool getout = false;
@@ -832,7 +832,7 @@ void LyXTextClass::readCounter(Lexer & lexrc)
 }
 
 
-LyXFont const & LyXTextClass::defaultfont() const
+Font const & LyXTextClass::defaultfont() const
 {
 	return defaultfont_;
 }

@@ -29,18 +29,18 @@ using std::auto_ptr;
 
 
 InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
-	: sym_(l), h_(0), scriptable_(false), font_cache_(LyXFont::ALL_IGNORE)
+	: sym_(l), h_(0), scriptable_(false), font_cache_(Font::ALL_IGNORE)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(char const * name)
 	: sym_(in_word_set(from_ascii(name))), h_(0), scriptable_(false),
-	font_cache_(LyXFont::ALL_IGNORE)
+	font_cache_(Font::ALL_IGNORE)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(docstring const & name)
-	: sym_(in_word_set(name)), h_(0), scriptable_(false), font_cache_(LyXFont::ALL_IGNORE)
+	: sym_(in_word_set(name)), h_(0), scriptable_(false), font_cache_(Font::ALL_IGNORE)
 {}
 
 

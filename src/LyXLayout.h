@@ -14,7 +14,7 @@
 #ifndef LYX_LAYOUT_H
 #define LYX_LAYOUT_H
 
-#include "LyXFont.h"
+#include "Font.h"
 #include "layout.h"
 #include "Spacing.h"
 #include "support/docstring.h"
@@ -78,30 +78,30 @@ public:
 	}
 	/** Default font for this layout/environment.
 	    The main font for this kind of environment. If an attribute has
-	    LyXFont::INHERITED_*, it means that the value is specified by
+	    Font::INHERITED_*, it means that the value is specified by
 	    the defaultfont for the entire layout. If we are nested, the
 	    font is inherited from the font in the environment one level
-	    up until the font is resolved. The values LyXFont::IGNORE_*
-	    and LyXFont::TOGGLE are illegal here.
+	    up until the font is resolved. The values Font::IGNORE_*
+	    and Font::TOGGLE are illegal here.
 	*/
-	LyXFont font;
+	Font font;
 
 	/** Default font for labels.
 	    Interpretation the same as for font above
 	*/
-	LyXFont labelfont;
+	Font labelfont;
 
 	/** Resolved version of the font for this layout/environment.
 	    This is a resolved version the default font. The font is resolved
 	    against the defaultfont of the entire layout.
 	*/
-	LyXFont resfont;
+	Font resfont;
 
 	/** Resolved version of the font used for labels.
 	    This is a resolved version the label font. The font is resolved
 	    against the defaultfont of the entire layout.
 	*/
-	LyXFont reslabelfont;
+	Font reslabelfont;
 
 	/// Text that dictates how wide the left margin is on the screen
 	std::string leftmargin;

@@ -16,7 +16,7 @@
 #include "frontends/FontMetrics.h"
 
 #include "Color.h"
-#include "LyXFont.h"
+#include "Font.h"
 
 using lyx::docstring;
 
@@ -47,7 +47,7 @@ void Painter::buttonFrame(int x, int y, int w, int h)
 
 void Painter::rectText(int x, int y,
 	docstring const & str,
-	LyXFont const & font,
+	Font const & font,
 	Color_color back,
 	Color_color frame)
 {
@@ -70,7 +70,7 @@ void Painter::rectText(int x, int y,
 
 
 void Painter::buttonText(int x, int y, docstring const & str, 
-	LyXFont const & font, bool mouseHover)
+	Font const & font, bool mouseHover)
 {
 	int width;
 	int ascent;
@@ -85,9 +85,9 @@ void Painter::buttonText(int x, int y, docstring const & str,
 
 
 int Painter::preeditText(int x, int y, char_type c,
-	LyXFont const & font, preedit_style style)
+	Font const & font, preedit_style style)
 {
-	LyXFont temp_font = font;
+	Font temp_font = font;
 	FontMetrics const & fm = theFontMetrics(font);
 	int ascent = fm.maxAscent();
 	int descent = fm.maxDescent();
@@ -117,7 +117,7 @@ int Painter::preeditText(int x, int y, char_type c,
 }
 
 
-void Painter::underline(LyXFont const & f, int x, int y, int width)
+void Painter::underline(Font const & f, int x, int y, int width)
 {
 	FontMetrics const & fm = theFontMetrics(f);
 
@@ -131,7 +131,7 @@ void Painter::underline(LyXFont const & f, int x, int y, int width)
 }
 
 
-void Painter::dashedUnderline(LyXFont const & f, int x, int y, int width)
+void Painter::dashedUnderline(Font const & f, int x, int y, int width)
 {
 	FontMetrics const & fm = theFontMetrics(f);
 

@@ -1,5 +1,5 @@
 /**
- * \file tex2lyx/LyXFont.cpp
+ * \file tex2lyx/Font.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "LyXFont.h"
+#include "Font.h"
 #include "Lexer.h"
 #include "support/lstrings.h"
 
@@ -22,7 +22,7 @@ using lyx::support::ascii_lowercase;
 using std::string;
 
 
-LyXFont & LyXFont::lyxRead(Lexer & lex)
+Font & Font::lyxRead(Lexer & lex)
 {
 	bool error = false;
 	bool finished = false;

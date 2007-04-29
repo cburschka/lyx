@@ -47,7 +47,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp), name_(from_utf8(type))
 {
 	setLabel(_("wrap: ") + floatName(type, bp));
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 	font.setColor(Color::collapsable);

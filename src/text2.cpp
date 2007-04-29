@@ -74,7 +74,7 @@ using std::min;
 
 
 LyXText::LyXText()
-	: current_font(LyXFont::ALL_INHERIT),
+	: current_font(Font::ALL_INHERIT),
 	  background_color_(Color::background),
 	  autoBreakRows_(false)
 {}
@@ -143,7 +143,7 @@ Inset * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)
-LyXFont LyXText::getFont(Buffer const & buffer, Paragraph const & par,
+Font LyXText::getFont(Buffer const & buffer, Paragraph const & par,
 		pos_type const pos) const
 {
 	BOOST_ASSERT(pos >= 0);
@@ -157,11 +157,11 @@ LyXFont LyXText::getFont(Buffer const & buffer, Paragraph const & par,
 
 	// We specialize the 95% common case:
 	if (!par.getDepth()) {
-		LyXFont f = par.getFontSettings(params, pos);
+		Font f = par.getFontSettings(params, pos);
 		if (!isMainText(buffer))
 			applyOuterFont(buffer, f);
-		LyXFont lf;
-		LyXFont rlf;
+		Font lf;
+		Font rlf;
 		if (layout->labeltype == LABEL_MANUAL && pos < body_pos) {
 			lf = layout->labelfont;
 			rlf = layout->reslabelfont;
@@ -170,19 +170,19 @@ LyXFont LyXText::getFont(Buffer const & buffer, Paragraph const & par,
 			rlf = layout->resfont;
 		}
 		// In case the default family has been customized
-		if (lf.family() == LyXFont::INHERIT_FAMILY)
+		if (lf.family() == Font::INHERIT_FAMILY)
 			rlf.setFamily(params.getFont().family());
 		return f.realize(rlf);
 	}
 
 	// The uncommon case need not be optimized as much
-	LyXFont layoutfont;
+	Font layoutfont;
 	if (pos < body_pos)
 		layoutfont = layout->labelfont;
 	else
 		layoutfont = layout->font;
 
-	LyXFont font = par.getFontSettings(params, pos);
+	Font font = par.getFontSettings(params, pos);
 	font.realize(layoutfont);
 
 	if (!isMainText(buffer))
@@ -217,8 +217,8 @@ LyXFont LyXText::getFont(Buffer const & buffer, Paragraph const & par,
 // the pi/mi parameters, and stored locally in a lyxtext in font_.
 // This is where the two are integrated in the final fully realized
 // font.
-void LyXText::applyOuterFont(Buffer const & buffer, LyXFont & font) const {
-	LyXFont lf(font_);
+void LyXText::applyOuterFont(Buffer const & buffer, Font & font) const {
+	Font lf(font_);
 	lf.reduce(buffer.params().getFont());
 	lf.realize(font);
 	lf.setLanguage(font.language());
@@ -226,19 +226,19 @@ void LyXText::applyOuterFont(Buffer const & buffer, LyXFont & font) const {
 }
 
 
-LyXFont LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
+Font LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	LyXLayout_ptr const & layout = pars_[pit].layout();
 
 	if (!pars_[pit].getDepth())  {
-		LyXFont lf = layout->resfont;
+		Font lf = layout->resfont;
 		// In case the default family has been customized
-		if (layout->font.family() == LyXFont::INHERIT_FAMILY)
+		if (layout->font.family() == Font::INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().family());
 		return lf;
 	}
 
-	LyXFont font = layout->font;
+	Font font = layout->font;
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));
 	font.realize(buffer.params().getFont());
@@ -247,19 +247,19 @@ LyXFont LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 }
 
 
-LyXFont LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) const
+Font LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 {
 	LyXLayout_ptr const & layout = par.layout();
 
 	if (!par.getDepth()) {
-		LyXFont lf = layout->reslabelfont;
+		Font lf = layout->reslabelfont;
 		// In case the default family has been customized
-		if (layout->labelfont.family() == LyXFont::INHERIT_FAMILY)
+		if (layout->labelfont.family() == Font::INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().family());
 		return lf;
 	}
 
-	LyXFont font = layout->labelfont;
+	Font font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
 	font.realize(buffer.params().getFont());
 
@@ -268,13 +268,13 @@ LyXFont LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) cons
 
 
 void LyXText::setCharFont(Buffer const & buffer, pit_type pit,
-		pos_type pos, LyXFont const & fnt)
+		pos_type pos, Font const & fnt)
 {
-	LyXFont font = fnt;
+	Font font = fnt;
 	LyXLayout_ptr const & layout = pars_[pit].layout();
 
 	// Get concrete layout font to reduce against
-	LyXFont layoutfont;
+	Font layoutfont;
 
 	if (pos < pars_[pit].beginOfBody())
 		layoutfont = layout->labelfont;
@@ -434,13 +434,13 @@ void LyXText::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 
 
 // set font over selection
-void LyXText::setFont(Cursor & cur, LyXFont const & font, bool toggleall)
+void LyXText::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
 	// if there is no selection just set the current_font
 	if (!cur.selection()) {
 		// Determine basis font
-		LyXFont layoutfont;
+		Font layoutfont;
 		pit_type pit = cur.pit();
 		if (cur.pos() < pars_[pit].beginOfBody())
 			layoutfont = getLabelFont(cur.buffer(), pars_[pit]);
@@ -475,7 +475,7 @@ void LyXText::setFont(Cursor & cur, LyXFont const & font, bool toggleall)
 	// nested insets.
 	for (; dit != ditend; dit.forwardPosNoDescend()) {
 		if (dit.pos() != dit.lastpos()) {
-			LyXFont f = getFont(cur.buffer(), dit.paragraph(), dit.pos());
+			Font f = getFont(cur.buffer(), dit.paragraph(), dit.pos());
 			f.update(font, params.language, toggleall);
 			setCharFont(cur.buffer(), dit.pit(), dit.pos(), f);
 		}
@@ -531,11 +531,11 @@ bool LyXText::cursorBottom(Cursor & cur)
 }
 
 
-void LyXText::toggleFree(Cursor & cur, LyXFont const & font, bool toggleall)
+void LyXText::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
 	// If the mask is completely neutral, tell user
-	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
+	if (font == Font(Font::ALL_IGNORE)) {
 		// Could only happen with user style
 		cur.message(_("No font change defined. "
 					   "Use Character under the Layout menu to define font change."));
@@ -548,7 +548,7 @@ void LyXText::toggleFree(Cursor & cur, LyXFont const & font, bool toggleall)
 	CursorSlice resetCursor = cur.top();
 	bool implicitSelection =
 		font.language() == ignore_language
-		&& font.number() == LyXFont::IGNORE
+		&& font.number() == Font::IGNORE
 		&& selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 
 	// Set font
@@ -744,9 +744,9 @@ void LyXText::setCurrentFont(Cursor & cur)
 	    && !cur.boundary()) {
 		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);
-		current_font.setNumber(LyXFont::OFF);
+		current_font.setNumber(Font::OFF);
 		real_current_font.setLanguage(lang);
-		real_current_font.setNumber(LyXFont::OFF);
+		real_current_font.setNumber(Font::OFF);
 	}
 }
 

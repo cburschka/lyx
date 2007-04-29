@@ -17,7 +17,7 @@
 #include "GuiFontMetrics.h"
 
 #include "Encoding.h"
-#include "LyXFont.h"
+#include "Font.h"
 
 #include <QFont>
 
@@ -25,12 +25,12 @@ namespace lyx {
 namespace frontend {
 
 /**
- * Qt font loader for LyX. Matches LyXFonts against
+ * Qt font loader for LyX. Matches Fonts against
  * actual QFont instances, and also caches metrics.
  */
 class QLFontInfo {
 public:
-	QLFontInfo(LyXFont const & f);
+	QLFontInfo(Font const & f);
 
 	/// The font instance
 	QFont font;
@@ -50,19 +50,19 @@ public:
 	virtual ~GuiFontLoader() {}
 
 	virtual void update();
-	virtual bool available(LyXFont const & f);
-	inline virtual FontMetrics const & metrics(LyXFont const & f) {
+	virtual bool available(Font const & f);
+	inline virtual FontMetrics const & metrics(Font const & f) {
 		return *fontinfo(f).metrics.get();
 	}
 
-	/// Get the QFont for this LyXFont
-	QFont const & get(LyXFont const & f) {
+	/// Get the QFont for this Font
+	QFont const & get(Font const & f) {
 		return fontinfo(f).font;
 	}
 
 
 	/// Get font info (font + metrics) for the given LyX font.
-	QLFontInfo & fontinfo(LyXFont const & f) {
+	QLFontInfo & fontinfo(Font const & f) {
 		// fi is a reference to the pointer type (QLFontInfo *) in the
 		// fontinfo_ table.
 		QLFontInfo * & fi =
@@ -74,7 +74,7 @@ public:
 
 private:
 	/// BUTT ugly !
-	QLFontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
+	QLFontInfo * fontinfo_[Font::NUM_FAMILIES][2][4][10];
 };
 
 

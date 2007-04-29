@@ -34,8 +34,8 @@ public:
 	std::string latextype;
 	std::string latexname;
 	std::string latexparam;
-	LyXFont font;
-	LyXFont labelfont;
+	Font font;
+	Font labelfont;
 	docstring preamble;
 };
 
@@ -149,7 +149,7 @@ public:
 	OutputType outputType() const;
 
 	///
-	LyXFont const & defaultfont() const;
+	Font const & defaultfont() const;
 
 	/// Text that dictates how wide the left margin is on the screen
 	std::string const & leftmargin() const;
@@ -209,10 +209,10 @@ private:
 	OutputType outputType_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
-	    LyXFont::INHERIT, LyXFont::IGNORE, and LyXFont::TOGGLE are
+	    Font::INHERIT, Font::IGNORE, and Font::TOGGLE are
 	    extremely illegal.
 	*/
-	LyXFont defaultfont_;
+	Font defaultfont_;
 	/// Text that dictates how wide the left margin is on the screen
 	std::string leftmargin_;
 

@@ -864,23 +864,23 @@ vector<FamilyPair> const getFamilyData()
 	FamilyPair pr;
 
 	pr.first = _("No change");
-	pr.second = LyXFont::IGNORE_FAMILY;
+	pr.second = Font::IGNORE_FAMILY;
 	family[0] = pr;
 
 	pr.first = _("Roman");
-	pr.second = LyXFont::ROMAN_FAMILY;
+	pr.second = Font::ROMAN_FAMILY;
 	family[1] = pr;
 
 	pr.first = _("Sans Serif");
-	pr.second = LyXFont::SANS_FAMILY;
+	pr.second = Font::SANS_FAMILY;
 	family[2] = pr;
 
 	pr.first = _("Typewriter");
-	pr.second = LyXFont::TYPEWRITER_FAMILY;
+	pr.second = Font::TYPEWRITER_FAMILY;
 	family[3] = pr;
 
 	pr.first = _("Reset");
-	pr.second = LyXFont::INHERIT_FAMILY;
+	pr.second = Font::INHERIT_FAMILY;
 	family[4] = pr;
 
 	return family;
@@ -894,19 +894,19 @@ vector<SeriesPair> const getSeriesData()
 	SeriesPair pr;
 
 	pr.first = _("No change");
-	pr.second = LyXFont::IGNORE_SERIES;
+	pr.second = Font::IGNORE_SERIES;
 	series[0] = pr;
 
 	pr.first = _("Medium");
-	pr.second = LyXFont::MEDIUM_SERIES;
+	pr.second = Font::MEDIUM_SERIES;
 	series[1] = pr;
 
 	pr.first = _("Bold");
-	pr.second = LyXFont::BOLD_SERIES;
+	pr.second = Font::BOLD_SERIES;
 	series[2] = pr;
 
 	pr.first = _("Reset");
-	pr.second = LyXFont::INHERIT_SERIES;
+	pr.second = Font::INHERIT_SERIES;
 	series[3] = pr;
 
 	return series;
@@ -920,27 +920,27 @@ vector<ShapePair> const getShapeData()
 	ShapePair pr;
 
 	pr.first = _("No change");
-	pr.second = LyXFont::IGNORE_SHAPE;
+	pr.second = Font::IGNORE_SHAPE;
 	shape[0] = pr;
 
 	pr.first = _("Upright");
-	pr.second = LyXFont::UP_SHAPE;
+	pr.second = Font::UP_SHAPE;
 	shape[1] = pr;
 
 	pr.first = _("Italic");
-	pr.second = LyXFont::ITALIC_SHAPE;
+	pr.second = Font::ITALIC_SHAPE;
 	shape[2] = pr;
 
 	pr.first = _("Slanted");
-	pr.second = LyXFont::SLANTED_SHAPE;
+	pr.second = Font::SLANTED_SHAPE;
 	shape[3] = pr;
 
 	pr.first = _("Small Caps");
-	pr.second = LyXFont::SMALLCAPS_SHAPE;
+	pr.second = Font::SMALLCAPS_SHAPE;
 	shape[4] = pr;
 
 	pr.first = _("Reset");
-	pr.second = LyXFont::INHERIT_SHAPE;
+	pr.second = Font::INHERIT_SHAPE;
 	shape[5] = pr;
 
 	return shape;
@@ -954,59 +954,59 @@ vector<SizePair> const getSizeData()
 	SizePair pr;
 
 	pr.first = _("No change");
-	pr.second = LyXFont::IGNORE_SIZE;
+	pr.second = Font::IGNORE_SIZE;
 	size[0] = pr;
 
 	pr.first = _("Tiny");
-	pr.second = LyXFont::SIZE_TINY;
+	pr.second = Font::SIZE_TINY;
 	size[1] = pr;
 
 	pr.first = _("Smallest");
-	pr.second = LyXFont::SIZE_SCRIPT;
+	pr.second = Font::SIZE_SCRIPT;
 	size[2] = pr;
 
 	pr.first = _("Smaller");
-	pr.second = LyXFont::SIZE_FOOTNOTE;
+	pr.second = Font::SIZE_FOOTNOTE;
 	size[3] = pr;
 
 	pr.first = _("Small");
-	pr.second = LyXFont::SIZE_SMALL;
+	pr.second = Font::SIZE_SMALL;
 	size[4] = pr;
 
 	pr.first = _("Normal");
-	pr.second = LyXFont::SIZE_NORMAL;
+	pr.second = Font::SIZE_NORMAL;
 	size[5] = pr;
 
 	pr.first = _("Large");
-	pr.second = LyXFont::SIZE_LARGE;
+	pr.second = Font::SIZE_LARGE;
 	size[6] = pr;
 
 	pr.first = _("Larger");
-	pr.second = LyXFont::SIZE_LARGER;
+	pr.second = Font::SIZE_LARGER;
 	size[7] = pr;
 
 	pr.first = _("Largest");
-	pr.second = LyXFont::SIZE_LARGEST;
+	pr.second = Font::SIZE_LARGEST;
 	size[8] = pr;
 
 	pr.first = _("Huge");
-	pr.second = LyXFont::SIZE_HUGE;
+	pr.second = Font::SIZE_HUGE;
 	size[9] = pr;
 
 	pr.first = _("Huger");
-	pr.second = LyXFont::SIZE_HUGER;
+	pr.second = Font::SIZE_HUGER;
 	size[10] = pr;
 
 	pr.first = _("Increase");
-	pr.second = LyXFont::INCREASE_SIZE;
+	pr.second = Font::INCREASE_SIZE;
 	size[11] = pr;
 
 	pr.first = _("Decrease");
-	pr.second = LyXFont::DECREASE_SIZE;
+	pr.second = Font::DECREASE_SIZE;
 	size[12] = pr;
 
 	pr.first = _("Reset");
-	pr.second = LyXFont::INHERIT_SIZE;
+	pr.second = Font::INHERIT_SIZE;
 	size[13] = pr;
 
 	return size;

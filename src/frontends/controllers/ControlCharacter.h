@@ -39,13 +39,13 @@ public:
 	virtual kb_action getLfun() const { return LFUN_FONT_FREE_UPDATE; }
 
 	///
-	void setFamily(LyXFont::FONT_FAMILY);
+	void setFamily(Font::FONT_FAMILY);
 	///
-	void setSeries(LyXFont::FONT_SERIES);
+	void setSeries(Font::FONT_SERIES);
 	///
-	void setShape(LyXFont::FONT_SHAPE);
+	void setShape(Font::FONT_SHAPE);
 	///
-	void setSize(LyXFont::FONT_SIZE);
+	void setSize(Font::FONT_SIZE);
 	///
 	void setBar(FONT_STATE);
 	///
@@ -56,13 +56,13 @@ public:
 	void setToggleAll(bool);
 
 	///
-	LyXFont::FONT_FAMILY getFamily() const;
+	Font::FONT_FAMILY getFamily() const;
 	///
-	LyXFont::FONT_SERIES getSeries() const;
+	Font::FONT_SERIES getSeries() const;
 	///
-	LyXFont::FONT_SHAPE getShape() const;
+	Font::FONT_SHAPE getShape() const;
 	///
-	LyXFont::FONT_SIZE getSize() const;
+	Font::FONT_SIZE getSize() const;
 	///
 	FONT_STATE getBar() const;
 	///
@@ -73,7 +73,7 @@ public:
 	bool getToggleAll() const;
 private:
 	///
-	boost::scoped_ptr<LyXFont> font_;
+	boost::scoped_ptr<Font> font_;
 	///
 	bool toggleall_;
 	/// If true the language should be reset.

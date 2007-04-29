@@ -20,7 +20,7 @@
 namespace lyx {
 
 
-class LyXFont;
+class Font;
 
 /// Support for \\mbox
 

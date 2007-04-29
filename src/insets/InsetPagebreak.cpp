@@ -57,7 +57,7 @@ bool InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
-	LyXFont font;
+	Font font;
 	font.setColor(Color::pagebreak);
 	font.decSize();
 

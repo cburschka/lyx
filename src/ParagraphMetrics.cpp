@@ -27,7 +27,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "LyXRC.h"
 #include "Row.h"
 #include "OutputParams.h"

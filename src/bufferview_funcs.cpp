@@ -56,7 +56,7 @@ namespace bv_funcs {
 
 // Set data using font and toggle
 // If successful, returns true
-bool font2string(LyXFont const & font, bool const toggle, string & data)
+bool font2string(Font const & font, bool const toggle, string & data)
 {
 	string lang = "ignore";
 	if (font.language())
@@ -81,7 +81,7 @@ bool font2string(LyXFont const & font, bool const toggle, string & data)
 
 // Set font and toggle using data
 // If successful, returns true
-bool string2font(string const & data, LyXFont & font, bool & toggle)
+bool string2font(string const & data, Font & font, bool & toggle)
 {
 	istringstream is(data);
 	Lexer lex(0,0);
@@ -98,26 +98,26 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 
 		if (token == "family") {
 			int const next = lex.getInteger();
-			font.setFamily(LyXFont::FONT_FAMILY(next));
+			font.setFamily(Font::FONT_FAMILY(next));
 
 		} else if (token == "series") {
 			int const next = lex.getInteger();
-			font.setSeries(LyXFont::FONT_SERIES(next));
+			font.setSeries(Font::FONT_SERIES(next));
 
 		} else if (token == "shape") {
 			int const next = lex.getInteger();
-			font.setShape(LyXFont::FONT_SHAPE(next));
+			font.setShape(Font::FONT_SHAPE(next));
 
 		} else if (token == "size") {
 			int const next = lex.getInteger();
-			font.setSize(LyXFont::FONT_SIZE(next));
+			font.setSize(Font::FONT_SIZE(next));
 
 		} else if (token == "emph" || token == "underbar" ||
 			   token == "noun" || token == "number") {
 
 			int const next = lex.getInteger();
-			LyXFont::FONT_MISC_STATE const misc =
-				LyXFont::FONT_MISC_STATE(next);
+			Font::FONT_MISC_STATE const misc =
+				Font::FONT_MISC_STATE(next);
 
 			if (token == "emph")
 			    font.setEmph(misc);

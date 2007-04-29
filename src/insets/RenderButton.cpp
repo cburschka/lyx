@@ -45,7 +45,7 @@ void RenderButton::update(docstring const & text, bool editable)
 
 bool RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 {
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
@@ -66,7 +66,7 @@ bool RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 void RenderButton::draw(PainterInfo & pi, int x, int y) const
 {
 	// Draw it as a box with the LaTeX text
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.setColor(Color::command);
 	font.decSize();
 

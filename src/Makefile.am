@@ -126,6 +126,8 @@ lyx_SOURCES = \
 	Floating.h \
 	FloatList.cpp \
 	FloatList.h \
+	Font.cpp \
+	Font.h \
 	FontIterator.cpp \
 	FontIterator.h \
 	Format.cpp \
@@ -172,8 +174,6 @@ lyx_SOURCES = \
 	LyX.cpp \
 	lyxfind.cpp \
 	lyxfind.h \
-	LyXFont.cpp \
-	LyXFont.h \
 	LyXFunc.cpp \
 	LyXFunc.h \
 	LyX.h \

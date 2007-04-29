@@ -128,9 +128,9 @@ bool RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc = 50;
 		dim.des = 0;
 
-		LyXFont font(mi.base.font);
-		font.setFamily(LyXFont::SANS_FAMILY);
-		font.setSize(LyXFont::SIZE_FOOTNOTE);
+		Font font(mi.base.font);
+		font.setFamily(Font::SANS_FAMILY);
+		font.setSize(Font::SIZE_FOOTNOTE);
 		docstring const stat = statusMessage(mi.base.bv, snippet_);
 		dim.wid = 15 + theFontMetrics(font).width(stat);
 	}
@@ -162,9 +162,9 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 				  dim_.asc + dim_.des,
 				  Color::foreground);
 
-		LyXFont font(pi.base.font);
-		font.setFamily(LyXFont::SANS_FAMILY);
-		font.setSize(LyXFont::SIZE_FOOTNOTE);
+		Font font(pi.base.font);
+		font.setFamily(Font::SANS_FAMILY);
+		font.setSize(Font::SIZE_FOOTNOTE);
 
 		docstring const stat = statusMessage(pi.base.bv, snippet_);
 		pi.pain.text(x + offset + 6,

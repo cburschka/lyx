@@ -36,7 +36,7 @@ class Menubar;
 class BufferView;
 class Dialogs;
 class LyXFunc;
-class LyXFont;
+class Font;
 class Timeout;
 class FuncRequest;
 

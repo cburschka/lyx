@@ -69,7 +69,7 @@ bool InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
-	LyXFont font = pi.base.font;
+	Font font = pi.base.font;
 
 	switch (kind_) {
 	case HYPHENATION:

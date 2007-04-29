@@ -35,9 +35,9 @@ public:
 	///
 	std::string latexparam;
 	///
-	LyXFont font;
+	Font font;
 	///
-	LyXFont labelfont;
+	Font labelfont;
 	///
 	bool show_label;
 };
@@ -74,7 +74,7 @@ public:
 	///
 	void draw(PainterInfo &, int, int) const;
 	///
-	void getDrawFont(LyXFont &) const;
+	void getDrawFont(Font &) const;
 	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	///

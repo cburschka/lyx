@@ -142,7 +142,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	setPosCache(p, x, y);
 
 	// label
-	LyXFont font = p.base.font;
+	Font font = p.base.font;
 	font.setColor(Color::math);
 
 	PainterInfo pi(p.base.bv, p.pain);

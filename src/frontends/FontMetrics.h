@@ -116,10 +116,10 @@ public:
 
 } // namespace frontend
 
-class LyXFont;
+class Font;
 
 /// Implementation is in Application.cpp
-frontend::FontMetrics const & theFontMetrics(LyXFont const & f);
+frontend::FontMetrics const & theFontMetrics(Font const & f);
 
 } // namespace lyx
 

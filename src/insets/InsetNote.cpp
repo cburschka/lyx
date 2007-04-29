@@ -169,7 +169,7 @@ void InsetNote::setButtonLabel()
 	docstring const label = notetranslator_loc().find(params_.type);
 	setLabel(label);
 
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 

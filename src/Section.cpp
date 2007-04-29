@@ -47,7 +47,7 @@ string const & Section::afterskip() const
 }
 
 
-LyXFont const & Section::style() const
+Font const & Section::style() const
 {
 	return style_;
 }

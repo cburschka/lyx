@@ -98,7 +98,7 @@ using frontend::FontMetrics;
 namespace {
 
 void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
-	string const & token, LyXFont & font, Change & change, ErrorList & errorList)
+	string const & token, Font & font, Change & change, ErrorList & errorList)
 {
 	BufferParams const & bp = buf.params();
 
@@ -118,7 +118,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		lex.eatLine();
 		string layoutname = lex.getString();
 
-		font = LyXFont(LyXFont::ALL_INHERIT, bp.language);
+		font = Font(Font::ALL_INHERIT, bp.language);
 		change = Change(Change::UNCHANGED);
 
 		LyXTextClass const & tclass = bp.getLyXTextClass();
@@ -198,11 +198,11 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		string const tok = lex.getString();
 
 		if (tok == "under")
-			font.setUnderbar(LyXFont::ON);
+			font.setUnderbar(Font::ON);
 		else if (tok == "no")
-			font.setUnderbar(LyXFont::OFF);
+			font.setUnderbar(Font::OFF);
 		else if (tok == "default")
-			font.setUnderbar(LyXFont::INHERIT);
+			font.setUnderbar(Font::INHERIT);
 		else
 			lex.printError("Unknown bar font flag "
 				       "`$$Token'");
@@ -302,7 +302,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 {
 	lex.nextToken();
 	string token = lex.getString();
-	LyXFont font;
+	Font font;
 	Change change(Change::UNCHANGED);
 
 	while (lex.isOK()) {
@@ -361,7 +361,7 @@ int LyXText::singleWidth(Buffer const & buffer, Paragraph const & par,
 
 
 int LyXText::singleWidth(Paragraph const & par,
-			 pos_type pos, char_type c, LyXFont const & font) const
+			 pos_type pos, char_type c, Font const & font) const
 {
 	// The most common case is handled first (Asger)
 	if (isPrintable(c)) {
@@ -439,7 +439,7 @@ int LyXText::leftMargin(Buffer const & buffer, int max_width,
 	    && pit > 0 && pars_[pit - 1].layout()->nextnoindent)
 		parindent.erase();
 
-	LyXFont const labelfont = getLabelFont(buffer, par);
+	Font const labelfont = getLabelFont(buffer, par);
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 
 	switch (layout->margintype) {
@@ -681,13 +681,13 @@ void LyXText::insertChar(Cursor & cur, char_type c)
 		static docstring const number_unary_operators = from_ascii("+-");
 		static docstring const number_seperators = from_ascii(".,:");
 
-		if (current_font.number() == LyXFont::ON) {
+		if (current_font.number() == Font::ON) {
 			if (!isDigit(c) && !contains(number_operators, c) &&
 			    !(contains(number_seperators, c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
-			      getFont(buffer, par, cur.pos()).number() == LyXFont::ON &&
-			      getFont(buffer, par, cur.pos() - 1).number() == LyXFont::ON)
+			      getFont(buffer, par, cur.pos()).number() == Font::ON &&
+			      getFont(buffer, par, cur.pos() - 1).number() == Font::ON)
 			   )
 				number(cur); // Set current_font.number to OFF
 		} else if (isDigit(c) &&
@@ -704,7 +704,7 @@ void LyXText::insertChar(Cursor & cur, char_type c)
 					setCharFont(buffer, pit, cur.pos() - 1, current_font);
 				} else if (contains(number_seperators, c)
 				     && cur.pos() >= 2
-				     && getFont(buffer, par, cur.pos() - 2).number() == LyXFont::ON) {
+				     && getFont(buffer, par, cur.pos() - 2).number() == Font::ON) {
 					setCharFont(buffer, pit, cur.pos() - 1, current_font);
 				}
 			}
@@ -1551,7 +1551,7 @@ bool LyXText::read(Buffer const & buf, Lexer & lex, ErrorList & errorList)
 
 			Paragraph par;
 			par.params().depth(depth);
-			par.setFont(0, LyXFont(LyXFont::ALL_INHERIT, buf.params().language));
+			par.setFont(0, Font(Font::ALL_INHERIT, buf.params().language));
 			pars_.push_back(par);
 
 			// FIXME: goddamn InsetTabular makes us pass a Buffer
@@ -1621,7 +1621,7 @@ int LyXText::cursorX(BufferView const & bv, CursorSlice const & sl,
 
 	// Use font span to speed things up, see below
 	FontSpan font_span;
-	LyXFont font;
+	Font font;
 	FontMetrics const & labelfm = theFontMetrics(
 		getLabelFont(buffer, par));
 
@@ -1717,7 +1717,7 @@ docstring LyXText::currentState(Cursor & cur)
 	// I think we should only show changes from the default
 	// font. (Asger)
 	// No, from the document font (MV)
-	LyXFont font = real_current_font;
+	Font font = real_current_font;
 	font.reduce(buf.params().getFont());
 
 	os << bformat(_("Font: %1$s"), font.stateText(&buf.params()));
@@ -1917,11 +1917,11 @@ void LyXText::charsTranspose(Cursor & cur)
 
 	// Store the characters to be transposed (including font information).
 	char_type char1 = par.getChar(pos1);
-	LyXFont const font1 =
+	Font const font1 =
 		par.getFontSettings(cur.buffer().params(), pos1);
 	
 	char_type char2 = par.getChar(pos2);
-	LyXFont const font2 =
+	Font const font2 =
 		par.getFontSettings(cur.buffer().params(), pos2);
 
 	// And finally, we are ready to perform the transposition.

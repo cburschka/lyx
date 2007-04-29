@@ -1252,7 +1252,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// special handling of font attribute changes
 			Token const prev = p.prev_token();
 			Token const next = p.next_token();
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			if (next.character() == '[' ||
 			    next.character() == ']' ||
 			    next.character() == '*') {
@@ -1752,7 +1752,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "textnormal" || t.cs() == "normalfont") {
 			context.check_layout(os);
-			Font oldFont = context.font;
+			TeXFont oldFont = context.font;
 			context.font.init();
 			context.font.size = oldFont.size;
 			os << "\n\\family " << context.font.family << "\n";
@@ -1903,7 +1903,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 context.new_layout_allowed) {
 			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.size = known_coded_sizes[where - known_sizes];
 			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
@@ -1914,7 +1914,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_font_families);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.family =
 				known_coded_font_families[where - known_font_families];
 			output_font_change(os, oldFont, context.font);
@@ -1926,7 +1926,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_font_series);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.series =
 				known_coded_font_series[where - known_font_series];
 			output_font_change(os, oldFont, context.font);
@@ -1938,7 +1938,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_font_shapes);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.shape =
 				known_coded_font_shapes[where - known_font_shapes];
 			output_font_change(os, oldFont, context.font);
@@ -1949,7 +1949,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_old_font_families);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.init();
 			context.font.size = oldFont.size;
 			context.font.family =
@@ -1963,7 +1963,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_old_font_series);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.init();
 			context.font.size = oldFont.size;
 			context.font.series =
@@ -1977,7 +1977,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_old_font_shapes);
 			context.check_layout(os);
-			Font const oldFont = context.font;
+			TeXFont const oldFont = context.font;
 			context.font.init();
 			context.font.size = oldFont.size;
 			context.font.shape =

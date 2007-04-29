@@ -87,7 +87,7 @@ WordList theWordList;
 
 bool math_font_available(docstring & name)
 {
-	LyXFont f;
+	Font f;
 	augmentFont(f, name);
 
 	// Do we have the font proper?

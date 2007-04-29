@@ -219,7 +219,7 @@ docstring const InsetQuotes::dispString(Language const * loclang) const
 
 bool InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont & font = mi.base.font;
+	Font & font = mi.base.font;
 	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
 	dim.asc = fm.maxAscent();
@@ -242,12 +242,12 @@ bool InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 
 
 #if 0
-LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
+Font const InsetQuotes::convertFont(Font const & f) const
 {
 #if 1
 	return f;
 #else
-	LyXFont font(f);
+	Font font(f);
 	return font;
 #endif
 }

@@ -25,8 +25,8 @@ using std::string;
 
 namespace {
 
-void begin_layout(ostream & os, LyXLayout_ptr layout, Font const & font,
-		  Font const & normalfont)
+void begin_layout(ostream & os, LyXLayout_ptr layout, TeXFont const & font,
+		  TeXFont const & normalfont)
 {
 	os << "\n\\begin_layout " << layout->name() << "\n";
 	// FIXME: This is not enough for things like
@@ -55,7 +55,7 @@ void end_deeper(ostream & os)
 }
 
 
-bool operator==(Font const & f1, Font const & f2)
+bool operator==(TeXFont const & f1, TeXFont const & f2)
 {
 	return
 		f1.size == f2.size &&
@@ -65,8 +65,8 @@ bool operator==(Font const & f1, Font const & f2)
 }
 
 
-void output_font_change(ostream & os, Font const & oldfont,
-			Font const & newfont)
+void output_font_change(ostream & os, TeXFont const & oldfont,
+			TeXFont const & newfont)
 {
 	if (oldfont.family != newfont.family)
 		os << "\n\\family " << newfont.family << '\n';
@@ -79,14 +79,14 @@ void output_font_change(ostream & os, Font const & oldfont,
 }
 
 
-Font Context::normalfont;
+TeXFont Context::normalfont;
 bool Context::empty = true;
 
 
 Context::Context(bool need_layout_,
 		 LyXTextClass const & textclass_,
 		 LyXLayout_ptr layout_, LyXLayout_ptr parent_layout_,
-		 Font font_)
+		 TeXFont font_)
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),
 	  has_item(false), deeper_paragraph(false),

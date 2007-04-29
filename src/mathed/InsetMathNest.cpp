@@ -404,7 +404,7 @@ void InsetMathNest::handleFont
 void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 {
 	recordUndo(cur, Undo::ATOMIC);
-	LyXFont font;
+	Font font;
 	bool b;
 	bv_funcs::string2font(to_utf8(arg), font, b);
 	if (font.color() != Color::inherit) {

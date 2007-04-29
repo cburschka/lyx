@@ -48,49 +48,49 @@ namespace frontend {
 namespace {
 
 struct symbol_font {
-	LyXFont::FONT_FAMILY lyx_family;
+	Font::FONT_FAMILY lyx_family;
 	string family;
 	string xlfd;
 };
 
 symbol_font symbol_fonts[] = {
-	{ LyXFont::SYMBOL_FAMILY,
+	{ Font::SYMBOL_FAMILY,
 		"symbol",
 		"-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific" },
 
-	{ LyXFont::CMR_FAMILY,
+	{ Font::CMR_FAMILY,
 		"cmr10",
 		"-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::CMSY_FAMILY,
+	{ Font::CMSY_FAMILY,
 		"cmsy10",
 		"-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::CMM_FAMILY,
+	{ Font::CMM_FAMILY,
 		"cmmi10",
 		"-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::CMEX_FAMILY,
+	{ Font::CMEX_FAMILY,
 		"cmex10",
 		"-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::MSA_FAMILY,
+	{ Font::MSA_FAMILY,
 		"msam10",
 		"-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::MSB_FAMILY,
+	{ Font::MSB_FAMILY,
 		"msbm10",
 		"-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::EUFRAK_FAMILY,
+	{ Font::EUFRAK_FAMILY,
 		"eufm10",
 		"-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::WASY_FAMILY,
+	{ Font::WASY_FAMILY,
 		"wasy10",
 		"-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ LyXFont::ESINT_FAMILY,
+	{ Font::ESINT_FAMILY,
 		"esint10",
 		"-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
 };
@@ -109,7 +109,7 @@ string getRawName(string const & family)
 }
 
 
-string const symbolFamily(LyXFont::FONT_FAMILY family)
+string const symbolFamily(Font::FONT_FAMILY family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
 		if (family == symbol_fonts[i].lyx_family)
@@ -119,10 +119,10 @@ string const symbolFamily(LyXFont::FONT_FAMILY family)
 }
 
 
-bool isSymbolFamily(LyXFont::FONT_FAMILY family)
+bool isSymbolFamily(Font::FONT_FAMILY family)
 {
-	return family >= LyXFont::SYMBOL_FAMILY &&
-	       family <= LyXFont::ESINT_FAMILY;
+	return family >= Font::SYMBOL_FAMILY &&
+	       family <= Font::ESINT_FAMILY;
 }
 
 
@@ -189,7 +189,7 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 
 GuiFontLoader::GuiFontLoader()
 {
-	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
+	for (int i1 = 0; i1 < Font::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4)
@@ -199,7 +199,7 @@ GuiFontLoader::GuiFontLoader()
 
 void GuiFontLoader::update()
 {
-	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
+	for (int i1 = 0; i1 < Font::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4) {
@@ -212,7 +212,7 @@ void GuiFontLoader::update()
 /////////////////////////////////////////////////
 
 
-QLFontInfo::QLFontInfo(LyXFont const & f)
+QLFontInfo::QLFontInfo(Font const & f)
 {
 	font.setKerning(false);
 	string const pat = symbolFamily(f.family());
@@ -221,15 +221,15 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 		boost::tie(font, tmp) = getSymbolFont(pat);
 	} else {
 		switch (f.family()) {
-		case LyXFont::ROMAN_FAMILY:
+		case Font::ROMAN_FAMILY:
 			font.setFamily(toqstr(makeFontName(lyxrc.roman_font_name,
 						    lyxrc.roman_font_foundry)));
 			break;
-		case LyXFont::SANS_FAMILY:
+		case Font::SANS_FAMILY:
 			font.setFamily(toqstr(makeFontName(lyxrc.sans_font_name,
 						    lyxrc.sans_font_foundry)));
 			break;
-		case LyXFont::TYPEWRITER_FAMILY:
+		case Font::TYPEWRITER_FAMILY:
 			font.setFamily(toqstr(makeFontName(lyxrc.typewriter_font_name,
 						    lyxrc.typewriter_font_foundry)));
 			break;
@@ -239,10 +239,10 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 	}
 
 	switch (f.series()) {
-		case LyXFont::MEDIUM_SERIES:
+		case Font::MEDIUM_SERIES:
 			font.setWeight(QFont::Normal);
 			break;
-		case LyXFont::BOLD_SERIES:
+		case Font::BOLD_SERIES:
 			font.setWeight(QFont::Bold);
 			break;
 		default:
@@ -250,8 +250,8 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 	}
 
 	switch (f.realShape()) {
-		case LyXFont::ITALIC_SHAPE:
-		case LyXFont::SLANTED_SHAPE:
+		case Font::ITALIC_SHAPE:
+		case Font::SLANTED_SHAPE:
 			font.setItalic(true);
 			break;
 		default:
@@ -276,13 +276,13 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 	LYXERR(Debug::FONT) << "The font has size: "
 			    << font.pointSizeF() << endl;
 
-	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+	if (f.realShape() != Font::SMALLCAPS_SHAPE) {
 		metrics.reset(new GuiFontMetrics(font));
 	}
 	else {	
 		// handle small caps ourselves ...
-		LyXFont smallfont = f;
-		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+		Font smallfont = f;
+		smallfont.decSize().decSize().setShape(Font::UP_SHAPE);
 		QFont font2(font);
 		font2.setKerning(false);
 		font2.setPointSizeF(convert<double>(lyxrc.font_sizes[smallfont.size()])
@@ -294,12 +294,12 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 }
 
 
-bool GuiFontLoader::available(LyXFont const & f)
+bool GuiFontLoader::available(Font const & f)
 {
-	static vector<int> cache_set(LyXFont::NUM_FAMILIES, false);
-	static vector<int> cache(LyXFont::NUM_FAMILIES, false);
+	static vector<int> cache_set(Font::NUM_FAMILIES, false);
+	static vector<int> cache(Font::NUM_FAMILIES, false);
 
-	LyXFont::FONT_FAMILY family = f.family();
+	Font::FONT_FAMILY family = f.family();
 	if (cache_set[family])
 		return cache[family];
 	cache_set[family] = true;

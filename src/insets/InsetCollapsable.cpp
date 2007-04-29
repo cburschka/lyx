@@ -448,7 +448,7 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-void InsetCollapsable::setLabelFont(LyXFont & font)
+void InsetCollapsable::setLabelFont(Font & font)
 {
 	labelfont_ = font;
 }

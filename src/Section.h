@@ -12,7 +12,7 @@
 #ifndef SECTION_H
 #define SECTION_H
 
-#include "LyXFont.h"
+#include "Font.h"
 
 #include <map>
 
@@ -34,7 +34,7 @@ public:
 	///
 	std::string const & afterskip() const;
 	///
-	LyXFont const & style() const;
+	Font const & style() const;
 	///
 	bool display() const;
 private:
@@ -49,7 +49,7 @@ private:
 	///
 	std::string afterskip_;
 	///
-	LyXFont style_;
+	Font style_;
 };
 
 

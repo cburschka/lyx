@@ -143,7 +143,7 @@ void InsetBox::read(Buffer const & buf, Lexer & lex)
 
 void InsetBox::setButtonLabel()
 {
-	LyXFont font(LyXFont::ALL_SANE);
+	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
 

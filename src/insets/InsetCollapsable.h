@@ -18,7 +18,7 @@
 #include "InsetText.h"
 
 #include "Box.h"
-#include "LyXFont.h"
+#include "Font.h"
 
 #include <string>
 
@@ -71,7 +71,7 @@ public:
 	///
 	virtual void setButtonLabel() {}
 	///
-	void setLabelFont(LyXFont & f);
+	void setLabelFont(Font & f);
 	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
@@ -105,7 +105,7 @@ protected:
 
 protected:
 	///
-	LyXFont labelfont_;
+	Font labelfont_;
 	///
 	mutable Box button_dim;
 	///

@@ -32,7 +32,7 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Therefore, it should only be used for breaking and merging paragraphs
 
 	Paragraph::value_type const tmpChar = fromPar.getChar(fromPos);
-	LyXFont const tmpFont = fromPar.getFontSettings(params, fromPos);
+	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
 	Change const tmpChange = fromPar.lookupChange(fromPos);
 
 	if (tmpChar == Paragraph::META_INSET) {
@@ -124,8 +124,8 @@ void breakParagraph(BufferParams const & bparams,
 		// Make sure that we keep the language when
 		// breaking paragraph.
 		if (tmp->empty()) {
-			LyXFont changed = tmp->getFirstFontSettings(bparams);
-			LyXFont old = par.getFontSettings(bparams, par.size());
+			Font changed = tmp->getFirstFontSettings(bparams);
+			Font old = par.getFontSettings(bparams, par.size());
 			changed.setLanguage(old.language());
 			tmp->setFont(0, changed);
 		}
@@ -282,10 +282,10 @@ int getEndLabel(pit_type p, ParagraphList const & pars)
 }
 
 
-LyXFont const outerFont(pit_type par_offset, ParagraphList const & pars)
+Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 {
 	depth_type par_depth = pars[par_offset].getDepth();
-	LyXFont tmpfont(LyXFont::ALL_INHERIT);
+	Font tmpfont(Font::ALL_INHERIT);
 
 	// Resolve against environment font information
 	while (par_offset != pit_type(pars.size())

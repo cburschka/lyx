@@ -96,17 +96,17 @@ extern string current_layout;
 namespace {
 
 	// globals...
-	LyXFont freefont(LyXFont::ALL_IGNORE);
+	Font freefont(Font::ALL_IGNORE);
 	bool toggleall = false;
 
 
 	void toggleAndShow(Cursor & cur, LyXText * text,
-		LyXFont const & font, bool toggleall = true)
+		Font const & font, bool toggleall = true)
 	{
 		text->toggleFree(cur, font, toggleall);
 
 		if (font.language() != ignore_language ||
-				font.number() != LyXFont::IGNORE) {
+				font.number() != Font::IGNORE) {
 			Paragraph & par = cur.paragraph();
 			text->bidi.computeTables(par, cur.buffer(), cur.textRow());
 			if (cur.boundary() !=
@@ -286,8 +286,8 @@ bool doInsertInset(Cursor & cur, LyXText * text,
 
 void LyXText::number(Cursor & cur)
 {
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setNumber(LyXFont::TOGGLE);
+	Font font(Font::ALL_IGNORE);
+	font.setNumber(Font::TOGGLE);
 	toggleAndShow(cur, this, font);
 }
 
@@ -860,9 +860,9 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SERVER_GET_FONT:
-		if (current_font.shape() == LyXFont::ITALIC_SHAPE)
+		if (current_font.shape() == Font::ITALIC_SHAPE)
 			cur.message(from_ascii("E"));
-		else if (current_font.shape() == LyXFont::SMALLCAPS_SHAPE)
+		else if (current_font.shape() == Font::SMALLCAPS_SHAPE)
 			cur.message(from_ascii("N"));
 		else
 			cur.message(from_ascii("0"));
@@ -1136,7 +1136,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 				cutSelection(cur, false, false);
 
 		cur.clearSelection();
-		LyXFont const old_font = real_current_font;
+		Font const old_font = real_current_font;
 
 		docstring::const_iterator cit = cmd.argument().begin();
 		docstring::const_iterator end = cmd.argument().end();
@@ -1340,62 +1340,62 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FONT_EMPH: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setEmph(LyXFont::TOGGLE);
+		Font font(Font::ALL_IGNORE);
+		font.setEmph(Font::TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_BOLD: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setSeries(LyXFont::BOLD_SERIES);
+		Font font(Font::ALL_IGNORE);
+		font.setSeries(Font::BOLD_SERIES);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_NOUN: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setNoun(LyXFont::TOGGLE);
+		Font font(Font::ALL_IGNORE);
+		font.setNoun(Font::TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_CODE: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
+		Font font(Font::ALL_IGNORE);
+		font.setFamily(Font::TYPEWRITER_FAMILY); // no good
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_SANS: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setFamily(LyXFont::SANS_FAMILY);
+		Font font(Font::ALL_IGNORE);
+		font.setFamily(Font::SANS_FAMILY);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_ROMAN: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setFamily(LyXFont::ROMAN_FAMILY);
+		Font font(Font::ALL_IGNORE);
+		font.setFamily(Font::ROMAN_FAMILY);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_DEFAULT: {
-		LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
+		Font font(Font::ALL_INHERIT, ignore_language);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_UNDERLINE: {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setUnderbar(LyXFont::TOGGLE);
+		Font font(Font::ALL_IGNORE);
+		font.setUnderbar(Font::TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_SIZE: {
-		LyXFont font(LyXFont::ALL_IGNORE);
+		Font font(Font::ALL_IGNORE);
 		font.setLyXSize(to_utf8(cmd.argument()));
 		toggleAndShow(cur, this, font);
 		break;
@@ -1405,7 +1405,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 		Language const * lang = languages.getLanguage(to_utf8(cmd.argument()));
 		if (!lang)
 			break;
-		LyXFont font(LyXFont::ALL_IGNORE);
+		Font font(Font::ALL_IGNORE);
 		font.setLanguage(lang);
 		toggleAndShow(cur, this, font);
 		bv->switchKeyMap();
@@ -1420,7 +1420,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Set the freefont using the contents of \param data dispatched from
 	// the frontends and apply it at the current cursor location.
 	case LFUN_FONT_FREE_UPDATE: {
-		LyXFont font;
+		Font font;
 		bool toggle;
 		if (bv_funcs::string2font(to_utf8(cmd.argument()), font, toggle)) {
 			freefont = font;
@@ -1634,7 +1634,7 @@ bool LyXText::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	BOOST_ASSERT(cur.text() == this);
 
-	LyXFont const & font = real_current_font;
+	Font const & font = real_current_font;
 	bool enable = true;
 	Inset::Code code = Inset::NO_CODE;
 
@@ -1803,27 +1803,27 @@ bool LyXText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_FONT_EMPH:
-		flag.setOnOff(font.emph() == LyXFont::ON);
+		flag.setOnOff(font.emph() == Font::ON);
 		return true;
 
 	case LFUN_FONT_NOUN:
-		flag.setOnOff(font.noun() == LyXFont::ON);
+		flag.setOnOff(font.noun() == Font::ON);
 		return true;
 
 	case LFUN_FONT_BOLD:
-		flag.setOnOff(font.series() == LyXFont::BOLD_SERIES);
+		flag.setOnOff(font.series() == Font::BOLD_SERIES);
 		return true;
 
 	case LFUN_FONT_SANS:
-		flag.setOnOff(font.family() == LyXFont::SANS_FAMILY);
+		flag.setOnOff(font.family() == Font::SANS_FAMILY);
 		return true;
 
 	case LFUN_FONT_ROMAN:
-		flag.setOnOff(font.family() == LyXFont::ROMAN_FAMILY);
+		flag.setOnOff(font.family() == Font::ROMAN_FAMILY);
 		return true;
 
 	case LFUN_FONT_CODE:
-		flag.setOnOff(font.family() == LyXFont::TYPEWRITER_FAMILY);
+		flag.setOnOff(font.family() == Font::TYPEWRITER_FAMILY);
 		return true;
 
 	case LFUN_CUT:

@@ -36,8 +36,8 @@ class InsetBibitem;
 class LaTeXFeatures;
 class Inset_code;
 class Language;
-class LyXFont;
-class LyXFont_size;
+class Font;
+class Font_size;
 class MetricsInfo;
 class OutputParams;
 class PainterInfo;
@@ -125,7 +125,7 @@ public:
 
 	///
 	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
-			     LyXFont const & outerfont, odocstream &,
+			     Font const & outerfont, odocstream &,
 			     TexRow & texrow, OutputParams const &) const;
 
 	/// Can we drop the standard paragraph wrapper?
@@ -141,14 +141,14 @@ public:
 				   OutputParams const & runparams) const;
 
 	/// Checks if the paragraph contains only text and no inset or font change.
-	bool onlyText(Buffer const & buf, LyXFont const & outerfont,
+	bool onlyText(Buffer const & buf, Font const & outerfont,
 		      pos_type initial) const;
 
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
 				 odocstream &,
 				 OutputParams const & runparams,
-				 LyXFont const & outerfont,
+				 Font const & outerfont,
 				 pos_type initial = 0) const;
 
 	///
@@ -256,24 +256,24 @@ public:
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
 	*/
-	LyXFont const
+	Font const
 	getFontSettings(BufferParams const &, pos_type pos) const;
 	///
-	LyXFont const getFirstFontSettings(BufferParams const &) const;
+	Font const getFirstFontSettings(BufferParams const &) const;
 
 	/** Get fully instantiated font. If pos == -1, use the layout
 	    font attached to this paragraph.
 	    If pos == -2, use the label font of the layout attached here.
 	    In all cases, the font is instantiated, i.e. does not have any
-	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or
-	    LyXFont::TOGGLE.
+	    attributes with values Font::INHERIT, Font::IGNORE or
+	    Font::TOGGLE.
 	*/
-	LyXFont const getFont(BufferParams const &, pos_type pos,
-			      LyXFont const & outerfont) const;
-	LyXFont const getLayoutFont(BufferParams const &,
-				    LyXFont const & outerfont) const;
-	LyXFont const getLabelFont(BufferParams const &,
-				   LyXFont const & outerfont) const;
+	Font const getFont(BufferParams const &, pos_type pos,
+			      Font const & outerfont) const;
+	Font const getLayoutFont(BufferParams const &,
+				    Font const & outerfont) const;
+	Font const getLabelFont(BufferParams const &,
+				   Font const & outerfont) const;
 	/**
 	 * The font returned by the above functions is the same in a
 	 * span of characters. This method will return the first and
@@ -287,27 +287,27 @@ public:
 	/// Get the char, but mirror all bracket characters if it is right-to-left
 	value_type getUChar(BufferParams const &, pos_type pos) const;
 	/// pos <= size() (there is a dummy font change at the end of each par)
-	void setFont(pos_type pos, LyXFont const & font);
+	void setFont(pos_type pos, Font const & font);
 	/// Returns the height of the highest font in range
-	LyXFont_size highestFontInRange(pos_type startpos,
-					pos_type endpos, LyXFont_size def_size) const;
+	Font_size highestFontInRange(pos_type startpos,
+					pos_type endpos, Font_size def_size) const;
 	///
 	void insert(pos_type pos, docstring const & str,
-	            LyXFont const & font, Change const & change);
+	            Font const & font, Change const & change);
 	///
 	void insertChar(pos_type pos, value_type c, bool trackChanges);
 	///
 	void insertChar(pos_type pos, value_type c,
-	                LyXFont const &, bool trackChanges);
+	                Font const &, bool trackChanges);
 	///
 	void insertChar(pos_type pos, value_type c,
-	                LyXFont const &, Change const & change);
+	                Font const &, Change const & change);
 	///
 	void insertInset(pos_type pos, Inset * inset,
 	                 Change const & change);
 	///
 	void insertInset(pos_type pos, Inset * inset,
-	                 LyXFont const &, Change const & change);
+	                 Font const &, Change const & change);
 	///
 	bool insetAllowed(Inset_code code);
 	///

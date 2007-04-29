@@ -15,7 +15,7 @@
 
 #include "Dialog.h"
 #include "lfuns.h" // for kb_action
-#include "LyXFont.h"
+#include "Font.h"
 
 #include <map>
 
@@ -24,12 +24,12 @@ namespace frontend {
 
 struct MathSymbol {
 	MathSymbol(char_type uc = '?', unsigned char fc = 0,
-		LyXFont::FONT_FAMILY ff = LyXFont::SYMBOL_FAMILY)
+		Font::FONT_FAMILY ff = Font::SYMBOL_FAMILY)
 		: unicode(uc), fontcode(fc), fontfamily(ff)
 	{}
 	char_type unicode;
 	unsigned char fontcode;
-	LyXFont::FONT_FAMILY fontfamily;
+	Font::FONT_FAMILY fontfamily;
 };
 
 class ControlMath : public Dialog::Controller {

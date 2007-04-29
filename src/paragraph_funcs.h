@@ -20,7 +20,7 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class Inset;
-class LyXFont;
+class Font;
 class Paragraph;
 class ParagraphList;
 
@@ -70,7 +70,7 @@ int getEndLabel(pit_type par, ParagraphList const & plist);
  * Get the font of the "environment" of paragraph \p par_offset in \p pars.
  * All font changes of the paragraph are relative to this font.
  */
-LyXFont const outerFont(pit_type par_offset, ParagraphList const & pars);
+Font const outerFont(pit_type par_offset, ParagraphList const & pars);
 
 /// return the number of InsetOptArg in a paragraph
 int numberOfOptArgs(Paragraph const & par);

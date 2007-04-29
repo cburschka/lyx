@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file tex2lyx/LyXFont.h
+ * \file tex2lyx/Font.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -21,19 +21,19 @@ namespace lyx {
 
 class Lexer;
 
-class LyXFont {
+class Font {
 public:
 	/// Trick to overload constructor and make it megafast
 	enum FONT_INIT1 { ALL_INHERIT };
 	enum FONT_INIT3 { ALL_SANE };
 
-	LyXFont() {}
-	explicit LyXFont(LyXFont::FONT_INIT1) {}
-	explicit LyXFont(LyXFont::FONT_INIT3) {}
+	Font() {}
+	explicit Font(Font::FONT_INIT1) {}
+	explicit Font(Font::FONT_INIT3) {}
 
-	LyXFont & lyxRead(Lexer &);
+	Font & lyxRead(Lexer &);
 
-	LyXFont & realize(LyXFont const &) { return *this; }
+	Font & realize(Font const &) { return *this; }
 	bool resolved() const { return true; }
 };
 

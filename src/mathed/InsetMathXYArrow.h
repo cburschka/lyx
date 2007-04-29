@@ -56,7 +56,7 @@ public:
 	///
 	mutable MetricsInfo mi_;
 	///
-	mutable LyXFont font_;
+	mutable Font font_;
 	///
 	mutable InsetMathXYMatrix const * target_;
 };

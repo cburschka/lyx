@@ -179,7 +179,7 @@ void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 }
 
 
-int QLPainter::text(int x, int y, char_type c, LyXFont const & f)
+int QLPainter::text(int x, int y, char_type c, Font const & f)
 {
 	docstring s(1, c);
 	return text(x, y, s, f);
@@ -187,10 +187,10 @@ int QLPainter::text(int x, int y, char_type c, LyXFont const & f)
 
 
 int QLPainter::smallCapsText(int x, int y,
-	QString const & s, LyXFont const & f)
+	QString const & s, Font const & f)
 {
-	LyXFont smallfont(f);
-	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+	Font smallfont(f);
+	smallfont.decSize().decSize().setShape(Font::UP_SHAPE);
 
 	QFont const & qfont = guiApp->guiFontLoader().get(f);
 	QFont const & qsmallfont = guiApp->guiFontLoader().get(smallfont);
@@ -214,7 +214,7 @@ int QLPainter::smallCapsText(int x, int y,
 
 
 int QLPainter::text(int x, int y, docstring const & s,
-		LyXFont const & f)
+		Font const & f)
 {
 	/* Caution: The following ucs4 to QString conversions work for symbol fonts
 	only because they are no real conversions but simple casts in reality.
@@ -240,7 +240,7 @@ int QLPainter::text(int x, int y, docstring const & s,
 
 	int textwidth;
 
-	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+	if (f.realShape() != Font::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());
 		if (font() != fi.font)
 			setFont(fi.font);
@@ -273,7 +273,7 @@ int QLPainter::text(int x, int y, docstring const & s,
 		textwidth = smallCapsText(x, y, str, f);
 	}
 
-	if (f.underbar() == LyXFont::ON) {
+	if (f.underbar() == Font::ON) {
 		underline(f, x, y, textwidth);
 	}
 

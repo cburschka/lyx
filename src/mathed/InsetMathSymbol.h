@@ -14,7 +14,7 @@
 
 #include "InsetMath.h"
 
-#include "LyXFont.h"
+#include "Font.h"
 
 namespace lyx {
 
@@ -82,7 +82,7 @@ private:
 	///
 	mutable bool scriptable_;
 	///
-	mutable LyXFont font_cache_;
+	mutable Font font_cache_;
 };
 
 } // namespace lyx

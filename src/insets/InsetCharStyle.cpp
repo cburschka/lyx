@@ -99,8 +99,8 @@ void InsetCharStyle::setUndefined()
 	params_.latextype.clear();
 	params_.latexname.clear();
 	params_.latexparam.clear();
-	params_.font = LyXFont(LyXFont::ALL_INHERIT);
-	params_.labelfont = LyXFont(LyXFont::ALL_INHERIT);
+	params_.font = Font(Font::ALL_INHERIT);
+	params_.labelfont = Font(Font::ALL_INHERIT);
 	params_.labelfont.setColor(Color::error);
 	params_.show_label = true;
 }
@@ -140,17 +140,17 @@ void InsetCharStyle::read(Buffer const & buf, Lexer & lex)
 
 bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont tmpfont = mi.base.font;
+	Font tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
-	mi.base.font.reduce(LyXFont(LyXFont::ALL_SANE));
+	mi.base.font.reduce(Font(Font::ALL_SANE));
 	mi.base.font.realize(tmpfont);
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
 	if (params_.show_label) {
 		// consider width of the inset label
-		LyXFont font(params_.labelfont);
-		font.realize(LyXFont(LyXFont::ALL_SANE));
+		Font font(params_.labelfont);
+		font.realize(Font(Font::ALL_SANE));
 		font.decSize();
 		font.decSize();
 		int w = 0;
@@ -179,7 +179,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 
-	LyXFont tmpfont = pi.base.font;
+	Font tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	// I don't understand why the above .reduce and .realize aren't
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
@@ -198,8 +198,8 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 
 	// the name of the charstyle. Can be toggled.
 	if (params_.show_label) {
-		LyXFont font(params_.labelfont);
-		font.realize(LyXFont(LyXFont::ALL_SANE));
+		Font font(params_.labelfont);
+		font.realize(Font(Font::ALL_SANE));
 		font.decSize();
 		font.decSize();
 		int w = 0;
@@ -228,7 +228,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCharStyle::getDrawFont(LyXFont & font) const
+void InsetCharStyle::getDrawFont(Font & font) const
 {
 	font = params_.font;
 }

@@ -29,7 +29,7 @@
 #include "LaTeXFeatures.h"
 #include "Color.h"
 #include "Length.h"
-#include "LyXFont.h"
+#include "Font.h"
 #include "LyXRC.h"
 #include "Row.h"
 #include "Messages.h"
@@ -132,7 +132,7 @@ public:
 	class FontTable  {
 	public:
 		///
-		FontTable(pos_type p, LyXFont const & f)
+		FontTable(pos_type p, Font const & f)
 			: pos_(p), font_(f)
 		{}
 		///
@@ -140,22 +140,22 @@ public:
 		///
 		void pos(pos_type p) { pos_ = p; }
 		///
-		LyXFont const & font() const { return font_; }
+		Font const & font() const { return font_; }
 		///
-		void font(LyXFont const & f) { font_ = f;}
+		void font(Font const & f) { font_ = f;}
 	private:
 		/// End position of paragraph this font attribute covers
 		pos_type pos_;
 		/** Font. Interpretation of the font values:
-		    If a value is LyXFont::INHERIT_*, it means that the font
+		    If a value is Font::INHERIT_*, it means that the font
 		    attribute is inherited from either the layout of this
 		    paragraph or, in the case of nested paragraphs, from the
 		    layout in the environment one level up until completely
 		    resolved.
-		    The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT
+		    The values Font::IGNORE_* and Font::TOGGLE are NOT
 		    allowed in these font tables.
 		*/
-		LyXFont font_;
+		Font font_;
 	};
 	///
 	friend class matchFT;
@@ -184,15 +184,15 @@ public:
 	                     odocstream &, TexRow & texrow,
 			     pos_type & i,
 			     unsigned int & column,
-			     LyXFont const & font,
+			     Font const & font,
 			     LyXLayout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 	                           odocstream &,
 	                           TexRow & texrow, OutputParams const &,
-	                           LyXFont & running_font,
-				   LyXFont & basefont,
-				   LyXFont const & outerfont,
+	                           Font & running_font,
+				   Font & basefont,
+				   Font const & outerfont,
 				   bool & open_font,
 				   Change::Type & running_change,
 				   LyXLayout const & style,
@@ -444,7 +444,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 	owner_->text_.insert(owner_->text_.begin() + pos, c);
 
 	// Update the font table.
-	FontTable search_font(pos, LyXFont());
+	FontTable search_font(pos, Font());
 	for (FontList::iterator it 
 	      = lower_bound(fontlist.begin(), fontlist.end(), search_font, matchFT());
 	     it != fontlist.end(); ++it)
@@ -512,7 +512,7 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 	owner_->text_.erase(owner_->text_.begin() + pos);
 
 	// Erase entries in the tables.
-	FontTable search_font(pos, LyXFont());
+	FontTable search_font(pos, Font());
 
 	FontList::iterator it =
 		lower_bound(fontlist.begin(),
@@ -583,7 +583,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
                                        odocstream & os, TexRow & texrow,
                                        pos_type & i,
 				       unsigned int & column,
-				       LyXFont const & font,
+				       Font const & font,
 				       LyXLayout const & style)
 {
 	if (style.pass_thru)
@@ -608,7 +608,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
 	    // ! . ? : at the end of a line
-	    && !(font.family() == LyXFont::TYPEWRITER_FAMILY
+	    && !(font.family() == Font::TYPEWRITER_FAMILY
 		 && (getChar(i - 1) == '.'
 		     || getChar(i - 1) == '?'
 		     || getChar(i - 1) == ':'
@@ -661,9 +661,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     odocstream & os,
 					     TexRow & texrow,
 					     OutputParams const & runparams,
-					     LyXFont & running_font,
-					     LyXFont & basefont,
-					     LyXFont const & outerfont,
+					     Font & running_font,
+					     Font & basefont,
+					     Font const & outerfont,
 					     bool & open_font,
 					     Change::Type & running_change,
 					     LyXLayout const & style,
@@ -706,7 +706,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					open_font = false;
 				}
 
-				if (running_font.family() == LyXFont::TYPEWRITER_FAMILY)
+				if (running_font.family() == Font::TYPEWRITER_FAMILY)
 					os << '~';
 
 				basefont = owner_->getLayoutFont(bparams, outerfont);
@@ -809,7 +809,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				break;
 			}
 			// Typewriter font also has them
-			if (running_font.family() == LyXFont::TYPEWRITER_FAMILY) {
+			if (running_font.family() == Font::TYPEWRITER_FAMILY) {
 				os.put(c);
 				break;
 			}
@@ -834,7 +834,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		case '-': // "--" in Typewriter mode -> "-{}-"
 			if (i <= size() - 2 &&
 			    getChar(i + 1) == '-' &&
-			    running_font.family() == LyXFont::TYPEWRITER_FAMILY) {
+			    running_font.family() == Font::TYPEWRITER_FAMILY) {
 				os << "-{}";
 				column += 2;
 			} else {
@@ -886,7 +886,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			// I assume this is hack treating typewriter as verbatim
 			// FIXME UNICODE: This can fail if c cannot be encoded
 			// in the current encoding.
-			if (running_font.family() == LyXFont::TYPEWRITER_FAMILY) {
+			if (running_font.family() == Font::TYPEWRITER_FAMILY) {
 				if (c != '\0') {
 					os.put(c);
 				}
@@ -959,7 +959,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	FontList::const_iterator fcit = fontlist.begin();
 	FontList::const_iterator fend = fontlist.end();
 	for (; fcit != fend; ++fcit) {
-		if (fcit->font().noun() == LyXFont::ON) {
+		if (fcit->font().noun() == Font::ON) {
 			LYXERR(Debug::LATEX) << "font.noun: "
 					     << fcit->font().noun()
 					     << endl;
@@ -1113,7 +1113,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 
 	params().write(os);
 
-	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
+	Font font1(Font::ALL_INHERIT, bparams.language);
 
 	Change running_change = Change(Change::UNCHANGED);
 
@@ -1128,7 +1128,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			break;
 
 		// Write font changes
-		LyXFont font2 = getFontSettings(bparams, i);
+		Font font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
@@ -1210,7 +1210,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 
 
 void Paragraph::insert(pos_type start, docstring const & str,
-                       LyXFont const & font, Change const & change)
+                       Font const & font, Change const & change)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
 		insertChar(start + i, str[i], font, change);
@@ -1226,7 +1226,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-                           LyXFont const & font, bool trackChanges)
+                           Font const & font, bool trackChanges)
 {
 	pimpl_->insertChar(pos, c, Change(trackChanges ?
 	                   Change::INSERTED : Change::UNCHANGED));
@@ -1235,7 +1235,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-                           LyXFont const & font, Change const & change)
+                           Font const & font, Change const & change)
 {
 	pimpl_->insertChar(pos, c, change);
 	setFont(pos, font);
@@ -1250,7 +1250,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 
 
 void Paragraph::insertInset(pos_type pos, Inset * inset,
-                            LyXFont const & font, Change const & change)
+                            Font const & font, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 	setFont(pos, font);
@@ -1264,7 +1264,7 @@ bool Paragraph::insetAllowed(Inset_code code)
 
 
 // Gets uninstantiated font setting at position.
-LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
+Font const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
 {
 	if (pos > size()) {
@@ -1284,7 +1284,7 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 	if (pos == size() && !empty())
 		return getFontSettings(bparams, pos - 1);
 
-	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
+	return Font(Font::ALL_INHERIT, getParLanguage(bparams));
 }
 
 
@@ -1316,12 +1316,12 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 
 
 // Gets uninstantiated font setting at position 0
-LyXFont const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
+Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 {
 	if (!empty() && !pimpl_->fontlist.empty())
 		return pimpl_->fontlist[0].font();
 
-	return LyXFont(LyXFont::ALL_INHERIT, bparams.language);
+	return Font(Font::ALL_INHERIT, bparams.language);
 }
 
 
@@ -1330,8 +1330,8 @@ LyXFont const Paragraph::getFirstFontSettings(BufferParams const & bparams) cons
 // The difference is that this one is used for generating the LaTeX file,
 // and thus cosmetic "improvements" are disallowed: This has to deliver
 // the true picture of the buffer. (Asger)
-LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
-				 LyXFont const & outerfont) const
+Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
+				 Font const & outerfont) const
 {
 	BOOST_ASSERT(pos >= 0);
 
@@ -1339,13 +1339,13 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 
 	pos_type const body_pos = beginOfBody();
 
-	LyXFont layoutfont;
+	Font layoutfont;
 	if (pos < body_pos)
 		layoutfont = lout->labelfont;
 	else
 		layoutfont = lout->font;
 
-	LyXFont font = getFontSettings(bparams, pos);
+	Font font = getFontSettings(bparams, pos);
 	font.realize(layoutfont);
 	font.realize(outerfont);
 	font.realize(bparams.getFont());
@@ -1354,10 +1354,10 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 }
 
 
-LyXFont const Paragraph::getLabelFont
-	(BufferParams const & bparams, LyXFont const & outerfont) const
+Font const Paragraph::getLabelFont
+	(BufferParams const & bparams, Font const & outerfont) const
 {
-	LyXFont tmpfont = layout()->labelfont;
+	Font tmpfont = layout()->labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
 	tmpfont.realize(bparams.getFont());
@@ -1365,10 +1365,10 @@ LyXFont const Paragraph::getLabelFont
 }
 
 
-LyXFont const Paragraph::getLayoutFont
-	(BufferParams const & bparams, LyXFont const & outerfont) const
+Font const Paragraph::getLayoutFont
+	(BufferParams const & bparams, Font const & outerfont) const
 {
-	LyXFont tmpfont = layout()->font;
+	Font tmpfont = layout()->font;
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
 	tmpfont.realize(bparams.getFont());
@@ -1377,8 +1377,8 @@ LyXFont const Paragraph::getLayoutFont
 
 
 /// Returns the height of the highest font in range
-LyXFont_size Paragraph::highestFontInRange
-	(pos_type startpos, pos_type endpos, LyXFont_size def_size) const
+Font_size Paragraph::highestFontInRange
+	(pos_type startpos, pos_type endpos, Font_size def_size) const
 {
 	if (pimpl_->fontlist.empty())
 		return def_size;
@@ -1399,12 +1399,12 @@ LyXFont_size Paragraph::highestFontInRange
 			break;
 	}
 
-	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
+	Font::FONT_SIZE maxsize = Font::SIZE_TINY;
 	for (; cit != end_it; ++cit) {
-		LyXFont::FONT_SIZE size = cit->font().size();
-		if (size == LyXFont::INHERIT_SIZE)
+		Font::FONT_SIZE size = cit->font().size();
+		if (size == Font::INHERIT_SIZE)
 			size = def_size;
-		if (size > maxsize && size <= LyXFont::SIZE_HUGER)
+		if (size > maxsize && size <= Font::SIZE_HUGER)
 			maxsize = size;
 	}
 	return maxsize;
@@ -1452,7 +1452,7 @@ Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 }
 
 
-void Paragraph::setFont(pos_type pos, LyXFont const & font)
+void Paragraph::setFont(pos_type pos, Font const & font)
 {
 	BOOST_ASSERT(pos <= size());
 
@@ -1897,7 +1897,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 // This one spits out the text of the paragraph
 bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				BufferParams const & bparams,
-				LyXFont const & outerfont,
+				Font const & outerfont,
 				odocstream & os, TexRow & texrow,
 				OutputParams const & runparams) const
 {
@@ -1926,7 +1926,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// As long as we are in the label, this font is the base font of the
 	// label. Before the first body character it is set to the base font
 	// of the body.
-	LyXFont basefont;
+	Font basefont;
 
 	// output change tracking marks only if desired,
 	// if dvipost is installed,
@@ -1950,7 +1950,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	}
 
 	// Which font is currently active?
-	LyXFont running_font(basefont);
+	Font running_font(basefont);
 	// Do we have an open font change?
 	bool open_font = false;
 
@@ -2017,9 +2017,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		value_type const c = getChar(i);
 
 		// Fully instantiated font
-		LyXFont const font = getFont(bparams, i, outerfont);
+		Font const font = getFont(bparams, i, outerfont);
 
-		LyXFont const last_font = running_font;
+		Font const last_font = running_font;
 
 		// Do we need to close the previous font?
 		if (open_font &&
@@ -2224,12 +2224,12 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 }
 
 
-bool Paragraph::onlyText(Buffer const & buf, LyXFont const & outerfont, pos_type initial) const
+bool Paragraph::onlyText(Buffer const & buf, Font const & outerfont, pos_type initial) const
 {
-	LyXFont font_old;
+	Font font_old;
 
 	for (pos_type i = initial; i < size(); ++i) {
-		LyXFont font = getFont(buf.params(), i, outerfont);
+		Font font = getFont(buf.params(), i, outerfont);
 		if (isInset(i))
 			return false;
 		if (i != initial && font != font_old)
@@ -2244,13 +2244,13 @@ bool Paragraph::onlyText(Buffer const & buf, LyXFont const & outerfont, pos_type
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    odocstream & os,
 				    OutputParams const & runparams,
-				    LyXFont const & outerfont,
+				    Font const & outerfont,
 				    pos_type initial) const
 {
 	bool emph_flag = false;
 
 	LyXLayout_ptr const & style = layout();
-	LyXFont font_old =
+	Font font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
 	if (style->pass_thru && !onlyText(buf, outerfont, initial))
@@ -2258,11 +2258,11 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
-		LyXFont font = getFont(buf.params(), i, outerfont);
+		Font font = getFont(buf.params(), i, outerfont);
 
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {
-			if (font.emph() == LyXFont::ON) {
+			if (font.emph() == Font::ON) {
 				os << "<emphasis>";
 				emph_flag = true;
 			} else if (i != initial) {
@@ -2349,7 +2349,7 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 {
 	// change language including dummy font change at the end
 	for (pos_type i = 0; i <= size(); ++i) {
-		LyXFont font = getFontSettings(bparams, i);
+		Font font = getFontSettings(bparams, i);
 		if (font.language() == from) {
 			font.setLanguage(to);
 			setFont(i, font);

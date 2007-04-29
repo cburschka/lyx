@@ -23,7 +23,7 @@
 
 namespace lyx {
 
-class LyXFont;
+class Font;
 
 namespace frontend {
 
