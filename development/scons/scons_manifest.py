@@ -328,7 +328,6 @@ src_insets_header_files = Split('''
     ExternalTemplate.h
     ExternalTransforms.h
     Inset.h
-    InsetBase.h
     InsetBibitem.h
     InsetBibtex.h
     InsetBox.h
@@ -386,7 +385,6 @@ src_insets_files = Split('''
     ExternalTemplate.cpp
     ExternalTransforms.cpp
     Inset.cpp
-    InsetBase.cpp
     InsetBibitem.cpp
     InsetBibtex.cpp
     InsetBox.cpp
