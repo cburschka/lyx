@@ -21,7 +21,7 @@ namespace lyx {
 
 class LaTeXFeatures;
 
-/** Used to insert glossary labels
+/** Used to insert nomenclature entries
   */
 class InsetNomencl : public InsetCommand {
 public:
@@ -44,8 +44,8 @@ private:
 	virtual std::auto_ptr<Inset> doClone() const {
 		return std::auto_ptr<Inset>(new InsetNomencl(params()));
 	}
-	/// unique id for this glossary entry for docbook export
-	docstring glossary_entry_id;
+	/// unique id for this nomenclature entry for docbook export
+	docstring nomenclature_entry_id;
 };
 
 

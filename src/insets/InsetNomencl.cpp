@@ -30,20 +30,20 @@ using std::string;
 
 InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 	: InsetCommand(p, "nomenclature"),
-	  glossary_entry_id(sgml::uniqueID(from_ascii("gloss")))
+	  nomenclature_entry_id(sgml::uniqueID(from_ascii("nomen")))
 {}
 
 
 docstring const InsetNomencl::getScreenLabel(Buffer const &) const
 {
-	return _("Glo");
+	return _("Nom");
 }
 
 
 int InsetNomencl::docbook(Buffer const &, odocstream & os,
 		OutputParams const &) const
 {
-	os << "<glossterm linkend=\"" << glossary_entry_id << "\">"
+	os << "<glossterm linkend=\"" << nomenclature_entry_id << "\">"
 	   << sgml::escapeString(getParam("symbol"))
 	   << "</glossterm>";
 	return 0;
@@ -52,7 +52,7 @@ int InsetNomencl::docbook(Buffer const &, odocstream & os,
 
 int InsetNomencl::docbookGlossary(odocstream & os) const
 {
-	os << "<glossentry id=\"" << glossary_entry_id << "\">\n"
+	os << "<glossentry id=\"" << nomenclature_entry_id << "\">\n"
 	   << "<glossterm>"
 	   << sgml::escapeString(getParam("symbol"))
 	   << "</glossterm>\n"
@@ -83,7 +83,7 @@ InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 
 docstring const InsetPrintNomencl::getScreenLabel(Buffer const &) const
 {
-	return _("Glossary");
+	return _("Nomenclature");
 }
 
 

@@ -302,7 +302,7 @@ Menuset
 		Item "Label...|L" "label-insert"
 		Item "Caption" "caption-insert"
 		Item "Index Entry|d" "index-insert"
-		Item "Glossary Entry...|y" "nomencl-insert"
+		Item "Nomenclature Entry...|y" "nomencl-insert"
 		Separator
 		Item "Table...|T" "tabular-insert"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"
@@ -375,7 +375,7 @@ Menuset
 		Item "Table of Contents|C" "toc-insert"
 		FloatListInsert
 		Item "Index List|I" "index-print"
-		Item "Glossary|G" "nomencl-print"
+		Item "Nomenclature|N" "nomencl-print"
 		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End
 

@@ -92,7 +92,7 @@ ToolbarSet
 		Item "Insert cross-reference" "dialog-show-new-inset ref"
 		Item "Insert citation" "dialog-show-new-inset citation"
 		Item "Insert index entry" "index-insert"
-		Item "Insert glossary entry" "nomencl-insert"
+		Item "Insert nomenclature entry" "nomencl-insert"
 		Separator
 		Item "Insert footnote" "footnote-insert"
 		Item "Insert margin note" "marginalnote-insert"

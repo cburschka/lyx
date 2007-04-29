@@ -225,7 +225,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "nomenclature") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
-		dialog->setView(new QNomencl(*dialog, _("Glossary Entry")));
+		dialog->setView(new QNomencl(*dialog, _("Nomenclature Entry")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
