@@ -355,7 +355,7 @@ bool needEnumCounterReset(ParIterator const & it)
 void setCaptionLabels(Inset & inset, string const & type,
 		docstring const label, Counters & counters)
 {
-	LyXText * text = inset.getText(0);
+	Text * text = inset.getText(0);
 	if (!text)
 		return;
 
@@ -598,7 +598,7 @@ bool updateCurrentLabel(Buffer const & buf,
     if (it == par_iterator_end(buf.inset()))
 	return false;
 
-//	if (it.lastpit == 0 && LyXText::isMainText(buf))
+//	if (it.lastpit == 0 && Text::isMainText(buf))
 //		return false;
 
 	switch (it->layout()->labeltype) {

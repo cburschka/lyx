@@ -24,7 +24,7 @@
 
 namespace lyx {
 
-class LyXText;
+class Text;
 class Paragraph;
 class CursorSlice;
 

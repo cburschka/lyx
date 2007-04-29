@@ -20,7 +20,7 @@
 #include "gettext.h"
 #include "Layout.h"
 #include "Lexer.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "tex-strings.h"
 

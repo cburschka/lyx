@@ -726,7 +726,7 @@ public:
 	///
 	boost::shared_ptr<InsetText> cell(idx_type);
 	///
-	LyXText * getText(int) const;
+	Text * getText(int) const;
 
 	/// set the change for the entire inset
 	void setChange(Change const & change);

@@ -26,7 +26,7 @@
 #include "InsetMathRef.h"
 
 #include "bufferview_funcs.h"
-#include "LyXText.h"
+#include "Text.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -1274,7 +1274,7 @@ void InsetMathHull::mutateToText()
 	string str = os.str();
 
 	// insert this text
-	LyXText * lt = view_->cursor().innerText();
+	Text * lt = view_->cursor().innerText();
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit)

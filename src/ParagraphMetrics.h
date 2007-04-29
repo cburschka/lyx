@@ -56,7 +56,7 @@ public:
 	unsigned int ascent() const { return dim_.ascent(); }
 	/// descend of paragraph below baseline
 	unsigned int descent() const { return dim_.descent(); }
-	/// LyXText updates the rows using this access point
+	/// Text updates the rows using this access point
 	RowList & rows() { return rows_; }
 	/// The painter and others use this
 	RowList const & rows() const { return rows_; }

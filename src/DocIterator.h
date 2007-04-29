@@ -20,7 +20,7 @@
 
 namespace lyx {
 
-class LyXText;
+class Text;
 class MathAtom;
 class Paragraph;
 
@@ -158,17 +158,17 @@ public:
 	/// the paragraph we're in
 	Paragraph const & paragraph() const;
 	///
-	LyXText * text();
+	Text * text();
 	///
-	LyXText const * text() const;
+	Text const * text() const;
 	/// the containing inset or the cell, respectively
 	Inset * realInset() const;
 	///
 	Inset * innerInsetOfType(int code) const;
 	///
-	LyXText * innerText();
+	Text * innerText();
 	///
-	LyXText const * innerText() const;
+	Text const * innerText() const;
 
 	//
 	// elementary moving

@@ -33,7 +33,7 @@
 #include "Font.h"
 #include "LyXRC.h"
 #include "Row.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "LyXView.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
@@ -280,7 +280,7 @@ void WorkArea::showCursor()
 
 	CursorShape shape = BAR_SHAPE;
 
-	LyXText const & text = *buffer_view_->cursor().innerText();
+	Text const & text = *buffer_view_->cursor().innerText();
 	Font const & realfont = text.real_current_font;
 	BufferParams const & bp = buffer_view_->buffer()->params();
 	bool const samelang = realfont.language() == bp.language;

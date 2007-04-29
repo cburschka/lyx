@@ -1326,7 +1326,7 @@ Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 
 
 // Gets the fully instantiated font at a given position in a paragraph
-// This is basically the same function as LyXText::GetFont() in text2.cpp.
+// This is basically the same function as Text::GetFont() in text2.cpp.
 // The difference is that this one is used for generating the LaTeX file,
 // and thus cosmetic "improvements" are disallowed: This has to deliver
 // the true picture of the buffer. (Asger)

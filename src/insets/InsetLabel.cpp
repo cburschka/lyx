@@ -17,7 +17,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "sgml.h"

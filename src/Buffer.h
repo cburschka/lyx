@@ -43,7 +43,7 @@ class InsetText;
 class Font;
 class Lexer;
 class LyXRC;
-class LyXText;
+class Text;
 class LyXVC;
 class LaTeXFeatures;
 class Language;
@@ -62,7 +62,7 @@ class Undo;
 /** The buffer object.
  * This is the buffer object. It contains all the informations about
  * a document loaded into LyX.
- * The buffer object owns the LyXText (wrapped in an InsetText), which
+ * The buffer object owns the Text (wrapped in an InsetText), which
  * contains the individual paragraphs of the document.
  *
  *
@@ -349,7 +349,7 @@ public:
 	void fully_loaded(bool);
 
 	/// Our main text (inside the top InsetText)
-	LyXText & text() const;
+	Text & text() const;
 
 	/// Our top InsetText!
 	Inset & inset() const;

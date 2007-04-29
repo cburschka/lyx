@@ -877,7 +877,7 @@ void InsetExternalMailer::string2params(string const & in,
 		return print_mailer_error("InsetExternalMailer", in, 1, name_);
 
 	// This is part of the inset proper that is usually swallowed
-	// by LyXText::readInset
+	// by Text::readInset
 	string id;
 	lex >> id;
 	if (!lex || id != "External")

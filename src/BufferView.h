@@ -42,7 +42,7 @@ class FuncRequest;
 class FuncStatus;
 class Intl;
 class Cursor;
-class LyXText;
+class Text;
 class ParIterator;
 class ParagraphMetrics;
 class ViewMetricsInfo;
@@ -207,10 +207,10 @@ public:
 	void updateMetrics(bool singlepar = false);
 
 	///
-	TextMetrics const & textMetrics(LyXText const * t) const;
-	TextMetrics & textMetrics(LyXText const * t);
+	TextMetrics const & textMetrics(Text const * t) const;
+	TextMetrics & textMetrics(Text const * t);
 	///
-	ParagraphMetrics const & parMetrics(LyXText const *, pit_type) const;
+	ParagraphMetrics const & parMetrics(Text const *, pit_type) const;
 
 	///
 	CoordCache & coordCache() {
@@ -254,7 +254,7 @@ private:
 	/// Search recursively for the the innermost inset that covers (x, y) position.
 	/// \retval 0 if no inset is found.
 	Inset const * getCoveringInset(
-		LyXText const & text, //< The LyXText where we start searching.
+		Text const & text, //< The Text where we start searching.
 		int x, //< x-coordinate on screen
 		int y  //< y-coordinate on screen
 		);
@@ -299,8 +299,8 @@ private:
 	/// last visited inset (kept to send setMouseHover(false) )
 	Inset * last_inset_;
 
-	/// A map from a LyXText to the associated text metrics
-	typedef std::map<LyXText const *, TextMetrics> TextMetricsCache;
+	/// A map from a Text to the associated text metrics
+	typedef std::map<Text const *, TextMetrics> TextMetricsCache;
 	mutable TextMetricsCache text_metrics_;
 };
 

@@ -28,7 +28,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MetricsInfo.h"
 #include "MetricsInfo.h"
 

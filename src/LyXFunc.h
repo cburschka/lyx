@@ -29,7 +29,7 @@ class BufferView;
 class FuncRequest;
 class FuncStatus;
 class KeySymbol;
-class LyXText;
+class Text;
 class LyXView;
 
 

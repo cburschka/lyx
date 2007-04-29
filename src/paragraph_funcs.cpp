@@ -14,7 +14,7 @@
 
 #include "BufferParams.h"
 #include "debug.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 

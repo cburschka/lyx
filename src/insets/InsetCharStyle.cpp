@@ -25,7 +25,7 @@
 #include "LaTeXFeatures.h"
 #include "Color.h"
 #include "Lexer.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"

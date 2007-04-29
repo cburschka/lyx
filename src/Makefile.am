@@ -187,11 +187,6 @@ lyx_SOURCES = \
 	ServerSocket.h \
 	lyx_sty.cpp \
 	lyx_sty.h \
-	TextClass.cpp \
-	TextClass.h \
-	TextClassList.cpp \
-	TextClassList.h \
-	LyXText.h \
 	LyXVC.cpp \
 	LyXVC.h \
 	MenuBackend.cpp \
@@ -243,11 +238,16 @@ lyx_SOURCES = \
 	tex-accent.h \
 	TexRow.cpp \
 	TexRow.h \
+	Text.h \
+	Text.cpp \
+	Text2.cpp \
+	Text3.cpp \
+	TextClass.cpp \
+	TextClass.h \
+	TextClassList.cpp \
+	TextClassList.h \
 	tex-strings.cpp \
 	tex-strings.h \
-	text2.cpp \
-	text3.cpp \
-	text.cpp \
 	TextMetrics.cpp \
 	TextMetrics.h \
 	Thesaurus.cpp \

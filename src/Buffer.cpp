@@ -33,7 +33,7 @@
 #include "LaTeXFeatures.h"
 #include "LyXAction.h"
 #include "Lexer.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Messages.h"
@@ -184,7 +184,7 @@ public:
 	 */
 	bool file_fully_loaded;
 
-	/// our LyXText that should be wrapped in an InsetText
+	/// our Text that should be wrapped in an InsetText
 	InsetText inset;
 
 	///
@@ -236,9 +236,9 @@ Buffer::~Buffer()
 }
 
 
-LyXText & Buffer::text() const
+Text & Buffer::text() const
 {
-	return const_cast<LyXText &>(pimpl_->inset.text_);
+	return const_cast<Text &>(pimpl_->inset.text_);
 }
 
 

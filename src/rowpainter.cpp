@@ -65,7 +65,7 @@ bool refreshInside;
 class RowPainter {
 public:
 	/// initialise and run painter
-	RowPainter(PainterInfo & pi, LyXText const & text,
+	RowPainter(PainterInfo & pi, Text const & text,
 		pit_type pit, Row const & row, int x, int y);
 
 	// paint various parts
@@ -99,8 +99,8 @@ private:
 	/// Painter to use
 	Painter & pain_;
 
-	/// LyXText for the row
-	LyXText const & text_;
+	/// Text for the row
+	Text const & text_;
 	TextMetrics & text_metrics_;
 	ParagraphList const & pars_;
 
@@ -128,7 +128,7 @@ private:
 
 
 RowPainter::RowPainter(PainterInfo & pi,
-	LyXText const & text, pit_type pit, Row const & row, int x, int y)
+	Text const & text, pit_type pit, Row const & row, int x, int y)
 	: bv_(*pi.base.bv), pain_(pi.pain), text_(text),
 	  text_metrics_(pi.base.bv->textMetrics(&text)),
 	  pars_(text.paragraphs()),
@@ -841,7 +841,7 @@ void RowPainter::paintText()
 
 
 bool CursorOnRow(PainterInfo & pi, pit_type const pit,
-	RowList::const_iterator rit, LyXText const & text)
+	RowList::const_iterator rit, Text const & text)
 {
 	// Is there a cursor on this row (or inside inset on row)
 	Cursor & cur = pi.base.bv->cursor();
@@ -858,7 +858,7 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 
 
 bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
-	RowList::const_iterator rit, LyXText const & text)
+	RowList::const_iterator rit, Text const & text)
 {
 	// Is there a cursor inside an inset on this row, and is this inset
 	// the only "character" on this row
@@ -895,7 +895,7 @@ bool inNarrowInset(PainterInfo & pi)
 
 
 void paintPar
-	(PainterInfo & pi, LyXText const & text, pit_type pit, int x, int y,
+	(PainterInfo & pi, Text const & text, pit_type pit, int x, int y,
 	 bool repaintAll)
 {
 //	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
@@ -1009,7 +1009,7 @@ void paintText(BufferView & bv,
 {
 	BOOST_ASSERT(bv.buffer());
 	Buffer const & buffer = *bv.buffer();
-	LyXText & text = buffer.text();
+	Text & text = buffer.text();
 	bool const select = bv.cursor().selection();
 	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
 	
@@ -1051,7 +1051,7 @@ void paintText(BufferView & bv,
 }
 
 
-void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
+void paintTextInset(Text const & text, PainterInfo & pi, int x, int y)
 {
 //	lyxerr << "  paintTextInset: y: " << y << endl;
 

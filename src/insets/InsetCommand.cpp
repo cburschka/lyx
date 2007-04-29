@@ -202,7 +202,7 @@ void InsetCommandMailer::string2params(string const & name,
 		return print_mailer_error("InsetCommandMailer", in, 1, name);
 
 	// This is part of the inset proper that is usually swallowed
-	// by LyXText::readInset
+	// by Text::readInset
 	string id;
 	lex >> id;
 	if (!lex || id != "LatexCommand")

@@ -44,7 +44,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "OutputParams.h"
 #include "Undo.h"
 
@@ -915,7 +915,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 								rdelim)));
 		}
 		// Don't call cur.undispatched() if we did nothing, this would
-		// lead to infinite recursion via LyXText::dispatch().
+		// lead to infinite recursion via Text::dispatch().
 		break;
 	}
 
@@ -1144,7 +1144,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 	} else if (cmd.button() == mouse_button::button2) {
 		MathData ar;
 		if (cap::selection()) {
-			// See comment in LyXText::dispatch why we do this
+			// See comment in Text::dispatch why we do this
 			cap::copySelectionToStack();
 			cmd = FuncRequest(LFUN_PASTE, "0");
 			doDispatch(cur, cmd);

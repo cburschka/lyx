@@ -40,7 +40,7 @@
 #include "lyxfind.h"
 #include "LyXFunc.h"
 #include "Layout.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "TextClass.h"
 #include "LyXRC.h"
 #include "Session.h"
@@ -417,7 +417,7 @@ void BufferView::updateScrollbar()
 		return;
 	}
 
-	LyXText & t = buffer_->text();
+	Text & t = buffer_->text();
 	TextMetrics & tm = text_metrics_[&t];
 
 	int const parsize = int(t.paragraphs().size() - 1);
@@ -485,7 +485,7 @@ void BufferView::scrollDocView(int value)
 	if (!buffer_)
 		return;
 
-	LyXText & t = buffer_->text();
+	Text & t = buffer_->text();
 	TextMetrics & tm = text_metrics_[&t];
 
 	float const bar = value / float(wh_ * t.paragraphs().size());
@@ -506,7 +506,7 @@ void BufferView::setCursorFromScrollbar()
 	if (!buffer_)
 		return;
 
-	LyXText & t = buffer_->text();
+	Text & t = buffer_->text();
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
@@ -668,7 +668,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT:
 	case LFUN_BOOKMARK_SAVE:
-		// FIXME: Actually, these LFUNS should be moved to LyXText
+		// FIXME: Actually, these LFUNS should be moved to Text
 		flag.enabled(cursor_.inTexted());
 		break;
 	case LFUN_FONT_STATE:
@@ -906,7 +906,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		cursor_.selHandle(true);
 		buffer_->text().cursorBottom(cursor_);
 		// accept everything in a single step to support atomic undo
-		buffer_->text().acceptOrRejectChanges(cursor_, LyXText::ACCEPT);
+		buffer_->text().acceptOrRejectChanges(cursor_, Text::ACCEPT);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
@@ -916,7 +916,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		buffer_->text().cursorBottom(cursor_);
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
-		buffer_->text().acceptOrRejectChanges(cursor_, LyXText::REJECT);
+		buffer_->text().acceptOrRejectChanges(cursor_, Text::REJECT);
 		break;
 
 	case LFUN_WORD_FIND:
@@ -1102,7 +1102,7 @@ void BufferView::workAreaResize(int width, int height)
 }
 
 
-Inset const * BufferView::getCoveringInset(LyXText const & text, int x, int y)
+Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 {
 	pit_type pit = text.getPitNearY(*this, y);
 	BOOST_ASSERT(pit != -1);
@@ -1127,7 +1127,7 @@ Inset const * BufferView::getCoveringInset(LyXText const & text, int x, int y)
 			size_t cell_number = inset->nargs();
 			// Check all the inner cell.
 			for (size_t i = 0; i != cell_number; ++i) {
-				LyXText const * inner_text = inset->getText(i);
+				Text const * inner_text = inset->getText(i);
 				if (inner_text) {
 					// Try deeper.
 					Inset const * inset_deeper = 
@@ -1167,7 +1167,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	cur.selection() = cursor_.selection();
 
 	// Either the inset under the cursor or the
-	// surrounding LyXText will handle this event.
+	// surrounding Text will handle this event.
 
 	// make sure we stay within the screen...
 	cmd.y = min(max(cmd.y, -1), height_);
@@ -1209,7 +1209,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			// between background updates and text updates. So we use the hammer
 			// solution for now. We could also avoid the updateMetrics() below
 			// by using the first and last pit of the CoordCache. Have a look
-			// at LyXText::getPitNearY() to see what I mean.
+			// at Text::getPitNearY() to see what I mean.
 			//
 			//metrics_info_.pit1 = first pit of CoordCache;
 			//metrics_info_.pit2 = last pit of CoordCache;
@@ -1257,7 +1257,7 @@ void BufferView::scroll(int /*lines*/)
 //	if (!buffer_)
 //		return;
 //
-//	LyXText const * t = &buffer_->text();
+//	Text const * t = &buffer_->text();
 //	int const line_height = defaultRowHeight();
 //
 //	// The new absolute coordinate
@@ -1300,24 +1300,24 @@ void BufferView::gotoLabel(docstring const & label)
 }
 
 
-TextMetrics const & BufferView::textMetrics(LyXText const * t) const
+TextMetrics const & BufferView::textMetrics(Text const * t) const
 {
 	return const_cast<BufferView *>(this)->textMetrics(t);
 }
 
 
-TextMetrics & BufferView::textMetrics(LyXText const * t)
+TextMetrics & BufferView::textMetrics(Text const * t)
 {
 	TextMetricsCache::iterator tmc_it  = text_metrics_.find(t);
 	if (tmc_it == text_metrics_.end()) {
 		tmc_it = text_metrics_.insert(
-			make_pair(t, TextMetrics(this, const_cast<LyXText *>(t)))).first;
+			make_pair(t, TextMetrics(this, const_cast<Text *>(t)))).first;
 	}	
 	return tmc_it->second;
 }
 
 
-ParagraphMetrics const & BufferView::parMetrics(LyXText const * t,
+ParagraphMetrics const & BufferView::parMetrics(Text const * t,
 		pit_type pit) const
 {
 	return textMetrics(t).parMetrics(pit);
@@ -1452,7 +1452,7 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 // FIXME: We should split-up updateMetrics() for the singlepar case.
 void BufferView::updateMetrics(bool singlepar)
 {
-	LyXText & buftext = buffer_->text();
+	Text & buftext = buffer_->text();
 	TextMetrics & tm = textMetrics(&buftext);
 	pit_type size = int(buftext.paragraphs().size());
 

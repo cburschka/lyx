@@ -37,7 +37,7 @@ class LaTeXFeatures;
 class Color_color;
 class Cursor;
 class Lexer;
-class LyXText;
+class Text;
 class MetricsInfo;
 class Dimension;
 class PainterInfo;
@@ -401,7 +401,7 @@ public:
 	virtual bool allowSpellCheck() const { return false; }
 
 	/// if this insets owns text cells (e.g. InsetText) return cell num
-	virtual LyXText * getText(int /*num*/) const { return 0; }
+	virtual Text * getText(int /*num*/) const { return 0; }
 
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
 	 *  into a bitmap image. Does not start the laoding process.

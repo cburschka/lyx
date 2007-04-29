@@ -28,7 +28,7 @@
 #include "LyXFunc.h" // only for setMessage()
 #include "LyXRC.h"
 #include "Row.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParIterator.h"
@@ -1233,7 +1233,7 @@ Encoding const * Cursor::getEncoding() const
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
-	LyXText const & text = *sl.text();
+	Text const & text = *sl.text();
 	Font font = text.getPar(sl.pit()).getFont(
 		bv().buffer()->params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
 	return font.language()->encoding();
@@ -1274,7 +1274,7 @@ Font Cursor::getFont() const
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
-	LyXText const & text = *sl.text();
+	Text const & text = *sl.text();
 	Font font = text.getPar(sl.pit()).getFont(
 		bv().buffer()->params(),
 		sl.pos(),

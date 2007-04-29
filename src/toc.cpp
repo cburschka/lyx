@@ -17,7 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "LyXAction.h"
 #include "Paragraph.h"
 #include "ParIterator.h"

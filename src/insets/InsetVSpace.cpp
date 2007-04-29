@@ -20,7 +20,7 @@
 #include "gettext.h"
 #include "Color.h"
 #include "Lexer.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 

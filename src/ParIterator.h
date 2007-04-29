@@ -22,7 +22,7 @@
 namespace lyx {
 
 class Inset;
-class LyXText;
+class Text;
 class ParagraphList;
 
 

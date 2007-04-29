@@ -28,7 +28,7 @@
 #include "lfuns.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
@@ -382,9 +382,9 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	}
 
 	// do not copy text (also nested in insets) which is marked as deleted
-	// acceptChanges() is defined for LyXText rather than ParagraphList
-	// Thus we must wrap copy_pars into a LyXText object and cross our fingers
-	LyXText lt;
+	// acceptChanges() is defined for Text rather than ParagraphList
+	// Thus we must wrap copy_pars into a Text object and cross our fingers
+	Text lt;
 	copy_pars.swap(lt.paragraphs());
 	lt.acceptChanges(buf.params());
 	copy_pars.swap(lt.paragraphs());
@@ -520,7 +520,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 	// and cur.selEnd()
 
 	if (cur.inTexted()) {
-		LyXText * text = cur.text();
+		Text * text = cur.text();
 		BOOST_ASSERT(text);
 
 		// make sure that the depth behind the selection are restored, too
@@ -602,7 +602,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		return;
 
 	if (cur.inTexted()) {
-		LyXText * text = cur.text();
+		Text * text = cur.text();
 		BOOST_ASSERT(text);
 		// ok we have a selection. This is always between cur.selBegin()
 		// and sel_end cursor
@@ -701,7 +701,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 			textclass_type textclass, ErrorList & errorList)
 {
 	if (cur.inTexted()) {
-		LyXText * text = cur.text();
+		Text * text = cur.text();
 		BOOST_ASSERT(text);
 
 		pit_type endpit;

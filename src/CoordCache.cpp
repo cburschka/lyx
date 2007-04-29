@@ -12,7 +12,7 @@
 #include "CoordCache.h"
 #include "debug.h"
 
-#include "LyXText.h"
+#include "Text.h"
 
 #include "insets/Inset.h"
 
@@ -49,7 +49,7 @@ void CoordCache::clear()
 }
 
 
-Point CoordCache::get(LyXText const * text, pit_type pit) const
+Point CoordCache::get(Text const * text, pit_type pit) const
 {
 	ParPosCache::const_iterator const it = pars_.find(text);
 	BOOST_ASSERT(it != pars_.end());
@@ -63,9 +63,9 @@ void CoordCache::dump() const
 {
 	lyxerr << "ParPosCache contains:" << std::endl;
 	for (ParPosCache::const_iterator it = getParPos().begin(); it != getParPos().end(); ++it) {
-		LyXText const * lt = it->first;
+		Text const * lt = it->first;
 		InnerParPosCache const & cache = it->second;
-		lyxerr << "LyXText:" << lt << std::endl;
+		lyxerr << "Text:" << lt << std::endl;
 		for (InnerParPosCache::const_iterator jt = cache.begin(); jt != cache.end(); ++jt) {
 			pit_type pit = jt->first;
 			Paragraph const & par = lt->getPar(pit);

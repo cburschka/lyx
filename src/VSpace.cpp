@@ -16,7 +16,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "lengthcommon.h"
-#include "LyXText.h"
+#include "Text.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"

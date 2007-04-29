@@ -16,7 +16,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 

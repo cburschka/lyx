@@ -15,7 +15,7 @@
 
 #include "CursorSlice.h"
 #include "debug.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 
 #include "mathed/InsetMath.h"

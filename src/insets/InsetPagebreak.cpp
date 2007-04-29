@@ -15,7 +15,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Color.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "TextMetrics.h"

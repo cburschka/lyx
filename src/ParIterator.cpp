@@ -13,7 +13,7 @@
 #include "ParIterator.h"
 
 #include "Paragraph.h"
-#include "LyXText.h"
+#include "Text.h"
 
 #include "insets/Inset.h"
 

@@ -19,7 +19,7 @@
 
 #include <config.h>
 
-#include "LyXText.h"
+#include "Text.h"
 
 #include "Buffer.h"
 #include "buffer_funcs.h"
@@ -73,21 +73,21 @@ using std::max;
 using std::min;
 
 
-LyXText::LyXText()
+Text::Text()
 	: current_font(Font::ALL_INHERIT),
 	  background_color_(Color::background),
 	  autoBreakRows_(false)
 {}
 
 
-bool LyXText::isMainText(Buffer const & buffer) const
+bool Text::isMainText(Buffer const & buffer) const
 {
 	return &buffer.text() == this;
 }
 
 
 //takes screen x,y coordinates
-Inset * LyXText::checkInsetHit(BufferView & bv, int x, int y)
+Inset * Text::checkInsetHit(BufferView & bv, int x, int y)
 {
 	pit_type pit = getPitNearY(bv, y);
 	BOOST_ASSERT(pit != -1);
@@ -143,7 +143,7 @@ Inset * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)
-Font LyXText::getFont(Buffer const & buffer, Paragraph const & par,
+Font Text::getFont(Buffer const & buffer, Paragraph const & par,
 		pos_type const pos) const
 {
 	BOOST_ASSERT(pos >= 0);
@@ -217,7 +217,7 @@ Font LyXText::getFont(Buffer const & buffer, Paragraph const & par,
 // the pi/mi parameters, and stored locally in a lyxtext in font_.
 // This is where the two are integrated in the final fully realized
 // font.
-void LyXText::applyOuterFont(Buffer const & buffer, Font & font) const {
+void Text::applyOuterFont(Buffer const & buffer, Font & font) const {
 	Font lf(font_);
 	lf.reduce(buffer.params().getFont());
 	lf.realize(font);
@@ -226,7 +226,7 @@ void LyXText::applyOuterFont(Buffer const & buffer, Font & font) const {
 }
 
 
-Font LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
+Font Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	Layout_ptr const & layout = pars_[pit].layout();
 
@@ -247,7 +247,7 @@ Font LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 }
 
 
-Font LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) const
+Font Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 {
 	Layout_ptr const & layout = par.layout();
 
@@ -267,7 +267,7 @@ Font LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 }
 
 
-void LyXText::setCharFont(Buffer const & buffer, pit_type pit,
+void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt)
 {
 	Font font = fnt;
@@ -308,7 +308,7 @@ void LyXText::setCharFont(Buffer const & buffer, pit_type pit,
 
 
 // return past-the-last paragraph influenced by a layout change on pit
-pit_type LyXText::undoSpan(pit_type pit)
+pit_type Text::undoSpan(pit_type pit)
 {
 	pit_type end = paragraphs().size();
 	pit_type nextpit = pit + 1;
@@ -326,7 +326,7 @@ pit_type LyXText::undoSpan(pit_type pit)
 }
 
 
-void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
+void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 		string const & layout)
 {
 	BOOST_ASSERT(start != end);
@@ -345,7 +345,7 @@ void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void LyXText::setLayout(Cursor & cur, string const & layout)
+void Text::setLayout(Cursor & cur, string const & layout)
 {
 	BOOST_ASSERT(this == cur.text());
 	// special handling of new environment insets
@@ -374,21 +374,21 @@ void LyXText::setLayout(Cursor & cur, string const & layout)
 }
 
 
-static bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
+static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 			Paragraph const & par, int max_depth)
 {
 	if (par.layout()->labeltype == LABEL_BIBLIO)
 		return false;
 	int const depth = par.params().depth();
-	if (type == LyXText::INC_DEPTH && depth < max_depth)
+	if (type == Text::INC_DEPTH && depth < max_depth)
 		return true;
-	if (type == LyXText::DEC_DEPTH && depth > 0)
+	if (type == Text::DEC_DEPTH && depth > 0)
 		return true;
 	return false;
 }
 
 
-bool LyXText::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
+bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 {
 	BOOST_ASSERT(this == cur.text());
 	// this happens when selecting several cells in tabular (bug 2630)
@@ -408,7 +408,7 @@ bool LyXText::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 }
 
 
-void LyXText::changeDepth(Cursor & cur, DEPTH_CHANGE type)
+void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 {
 	BOOST_ASSERT(this == cur.text());
 	pit_type const beg = cur.selBegin().pit();
@@ -434,7 +434,7 @@ void LyXText::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 
 
 // set font over selection
-void LyXText::setFont(Cursor & cur, Font const & font, bool toggleall)
+void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
 	// if there is no selection just set the current_font
@@ -486,7 +486,7 @@ void LyXText::setFont(Cursor & cur, Font const & font, bool toggleall)
 // the cursor set functions have a special mechanism. When they
 // realize you left an empty paragraph, they will delete it.
 
-bool LyXText::cursorHome(Cursor & cur)
+bool Text::cursorHome(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
@@ -495,7 +495,7 @@ bool LyXText::cursorHome(Cursor & cur)
 }
 
 
-bool LyXText::cursorEnd(Cursor & cur)
+bool Text::cursorEnd(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	// if not on the last row of the par, put the cursor before
@@ -517,21 +517,21 @@ bool LyXText::cursorEnd(Cursor & cur)
 }
 
 
-bool LyXText::cursorTop(Cursor & cur)
+bool Text::cursorTop(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	return setCursor(cur, 0, 0);
 }
 
 
-bool LyXText::cursorBottom(Cursor & cur)
+bool Text::cursorBottom(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	return setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
 }
 
 
-void LyXText::toggleFree(Cursor & cur, Font const & font, bool toggleall)
+void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
 	// If the mask is completely neutral, tell user
@@ -564,7 +564,7 @@ void LyXText::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 }
 
 
-docstring LyXText::getStringToIndex(Cursor const & cur)
+docstring Text::getStringToIndex(Cursor const & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -590,7 +590,7 @@ docstring LyXText::getStringToIndex(Cursor const & cur)
 }
 
 
-void LyXText::setParagraph(Cursor & cur,
+void Text::setParagraph(Cursor & cur,
 			   Spacing const & spacing, LyXAlignment align,
 			   docstring const & labelwidthstring, bool noindent)
 {
@@ -623,7 +623,7 @@ void LyXText::setParagraph(Cursor & cur,
 
 
 // this really should just insert the inset and not move the cursor.
-void LyXText::insertInset(Cursor & cur, Inset * inset)
+void Text::insertInset(Cursor & cur, Inset * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
@@ -634,7 +634,7 @@ void LyXText::insertInset(Cursor & cur, Inset * inset)
 
 
 // needed to insert the selection
-void LyXText::insertStringAsLines(Cursor & cur, docstring const & str)
+void Text::insertStringAsLines(Cursor & cur, docstring const & str)
 {
 	cur.buffer().insertStringAsLines(pars_, cur.pit(), cur.pos(),
 					 current_font, str, autoBreakRows_);
@@ -643,7 +643,7 @@ void LyXText::insertStringAsLines(Cursor & cur, docstring const & str)
 
 // turn double CR to single CR, others are converted into one
 // blank. Then insertStringAsLines is called
-void LyXText::insertStringAsParagraphs(Cursor & cur, docstring const & str)
+void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str)
 {
 	docstring linestr = str;
 	bool newline_inserted = false;
@@ -668,7 +668,7 @@ void LyXText::insertStringAsParagraphs(Cursor & cur, docstring const & str)
 }
 
 
-bool LyXText::setCursor(Cursor & cur, pit_type par, pos_type pos,
+bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
 			bool setfont, bool boundary)
 {
 	Cursor old = cur;
@@ -677,7 +677,7 @@ bool LyXText::setCursor(Cursor & cur, pit_type par, pos_type pos,
 }
 
 
-void LyXText::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
+void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 {
 	BOOST_ASSERT(par != int(paragraphs().size()));
 	cur.pit() = par;
@@ -701,7 +701,7 @@ void LyXText::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 }
 
 
-void LyXText::setCursorIntern(Cursor & cur,
+void Text::setCursorIntern(Cursor & cur,
 			      pit_type par, pos_type pos, bool setfont, bool boundary)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -712,7 +712,7 @@ void LyXText::setCursorIntern(Cursor & cur,
 }
 
 
-void LyXText::setCurrentFont(Cursor & cur)
+void Text::setCurrentFont(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	pos_type pos = cur.pos();
@@ -751,7 +751,7 @@ void LyXText::setCurrentFont(Cursor & cur)
 }
 
 // y is screen coordinate
-pit_type LyXText::getPitNearY(BufferView & bv, int y) const
+pit_type Text::getPitNearY(BufferView & bv, int y) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
 	BOOST_ASSERT(bv.coordCache().getParPos().find(this) != bv.coordCache().getParPos().end());
@@ -829,7 +829,7 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y) const
 }
 
 
-Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) const
+Row const & Text::getRowNearY(BufferView const & bv, int y, pit_type pit) const
 {
 	ParagraphMetrics const & pm = bv.parMetrics(this, pit);
 
@@ -846,10 +846,10 @@ Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) con
 
 // x,y are absolute screen coordinates
 // sets cursor recursively descending into nested editable insets
-Inset * LyXText::editXY(Cursor & cur, int x, int y)
+Inset * Text::editXY(Cursor & cur, int x, int y)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {
-		lyxerr << "LyXText::editXY(cur, " << x << ", " << y << ")" << std::endl;
+		lyxerr << "Text::editXY(cur, " << x << ", " << y << ")" << std::endl;
 		cur.bv().coordCache().dump();
 	}
 	pit_type pit = getPitNearY(cur.bv(), y);
@@ -899,7 +899,7 @@ Inset * LyXText::editXY(Cursor & cur, int x, int y)
 }
 
 
-bool LyXText::checkAndActivateInset(Cursor & cur, bool front)
+bool Text::checkAndActivateInset(Cursor & cur, bool front)
 {
 	if (cur.selection())
 		return false;
@@ -913,7 +913,7 @@ bool LyXText::checkAndActivateInset(Cursor & cur, bool front)
 }
 
 
-bool LyXText::cursorLeft(Cursor & cur)
+bool Text::cursorLeft(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
@@ -946,7 +946,7 @@ bool LyXText::cursorLeft(Cursor & cur)
 }
 
 
-bool LyXText::cursorRight(Cursor & cur)
+bool Text::cursorRight(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
@@ -978,7 +978,7 @@ bool LyXText::cursorRight(Cursor & cur)
 }
 
 
-bool LyXText::cursorUp(Cursor & cur)
+bool Text::cursorUp(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
@@ -1037,7 +1037,7 @@ bool LyXText::cursorUp(Cursor & cur)
 }
 
 
-bool LyXText::cursorDown(Cursor & cur)
+bool Text::cursorDown(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
@@ -1098,7 +1098,7 @@ bool LyXText::cursorDown(Cursor & cur)
 }
 
 
-bool LyXText::cursorUpParagraph(Cursor & cur)
+bool Text::cursorUpParagraph(Cursor & cur)
 {
 	bool updated = false;
 	if (cur.pos() > 0)
@@ -1109,7 +1109,7 @@ bool LyXText::cursorUpParagraph(Cursor & cur)
 }
 
 
-bool LyXText::cursorDownParagraph(Cursor & cur)
+bool Text::cursorDownParagraph(Cursor & cur)
 {
 	bool updated = false;
 	if (cur.pit() != cur.lastpit())
@@ -1122,7 +1122,7 @@ bool LyXText::cursorDownParagraph(Cursor & cur)
 
 // fix the cursor `cur' after a characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
-void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
+void Text::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 {
 	// Do nothing if cursor is not in the paragraph where the
 	// deletion occured,
@@ -1140,7 +1140,7 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 }
 
 
-bool LyXText::deleteEmptyParagraphMechanism(Cursor & cur,
+bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		Cursor & old, bool & need_anchor_change)
 {
 	//LYXERR(Debug::DEBUG) << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
@@ -1244,7 +1244,7 @@ bool LyXText::deleteEmptyParagraphMechanism(Cursor & cur,
 }
 
 
-void LyXText::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
+void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
 {
 	BOOST_ASSERT(first >= 0 && first <= last && last < (int) pars_.size());
 
@@ -1265,7 +1265,7 @@ void LyXText::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool 
 		}
 
 		// don't delete anything if this is the only remaining paragraph within the given range
-		// note: LyXText::acceptOrRejectChanges() sets the cursor to 'first' after calling DEPM 
+		// note: Text::acceptOrRejectChanges() sets the cursor to 'first' after calling DEPM 
 		if (first == last)
 			continue;
 
@@ -1285,13 +1285,13 @@ void LyXText::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool 
 }
 
 
-void LyXText::recUndo(Cursor & cur, pit_type first, pit_type last) const
+void Text::recUndo(Cursor & cur, pit_type first, pit_type last) const
 {
 	recordUndo(cur, Undo::ATOMIC, first, last);
 }
 
 
-void LyXText::recUndo(Cursor & cur, pit_type par) const
+void Text::recUndo(Cursor & cur, pit_type par) const
 {
 	recordUndo(cur, Undo::ATOMIC, par, par);
 }

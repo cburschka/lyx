@@ -29,7 +29,7 @@
 #include "lyxfind.h"
 #include "Lexer.h"
 #include "LyXRC.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_docbook.h"

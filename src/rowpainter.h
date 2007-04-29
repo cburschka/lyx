@@ -18,7 +18,7 @@
 
 namespace lyx {
 
-class LyXText;
+class Text;
 class BufferView;
 class PainterInfo;
 class ViewMetricsInfo;
@@ -29,7 +29,7 @@ namespace frontend { class Painter; }
 void paintText(BufferView & bv, frontend::Painter & painter);
 
 /// paint the rows of a text inset
-void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y);
+void paintTextInset(Text const & text, PainterInfo & pi, int x, int y);
 
 /// some space for drawing the 'nested' markers (in pixel)
 inline int nestMargin() { return 15; }

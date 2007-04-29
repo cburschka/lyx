@@ -31,7 +31,7 @@
 #include "Color.h"
 #include "Length.h"
 #include "LyXRC.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "VSpace.h"
@@ -106,7 +106,7 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 
 } // namespace anon
 
-TextMetrics::TextMetrics(BufferView * bv, LyXText * text)
+TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	: bv_(bv), text_(text)
 {
 	BOOST_ASSERT(bv_);
@@ -145,7 +145,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 	BOOST_ASSERT(mi.base.textwidth);
 	max_width_ = mi.base.textwidth;
 
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
+	//lyxerr << "Text::metrics: width: " << mi.base.textwidth
 	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
 	
 	bool changed = false;
@@ -765,7 +765,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 
 	// FIXME: the correct way is to do the following is to move the 
 	// following code in another method specially tailored for the 
-	// main LyXText. The following test is thus bogus.
+	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
 	if (main_text_) {
 		if (pit == 0 && row.pos() == 0)
@@ -788,7 +788,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 {
 	Buffer const & buffer = *bv_->buffer();
 
-	/// For the main LyXText, it is possible that this pit is not
+	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
 	int const xo = main_text_? 0 : bv_->coordCache().get(text_, pit).x_;
@@ -934,7 +934,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 }
 
 
-//int LyXText::pos2x(pit_type pit, pos_type pos) const
+//int Text::pos2x(pit_type pit, pos_type pos) const
 //{
 //	ParagraphMetrics const & pm = parMetrics(pit);
 //	Row const & r = pm.rows()[row];

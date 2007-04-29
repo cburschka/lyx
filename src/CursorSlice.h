@@ -28,14 +28,14 @@ namespace lyx {
 
 class Inset;
 class MathData;
-class LyXText;
+class Text;
 class Paragraph;
 
 /// This encapsulates a single slice of a document iterator as used e.g.
 /// for cursors.
 
 // After IU, the distinction of MathInset and InsetOld as well as
-// that of MathData and LyXText should vanish. They are conceptually the
+// that of MathData and Text should vanish. They are conceptually the
 // same (now...)
 
 class CursorSlice {
@@ -95,9 +95,9 @@ public:
 	/// texted specific stuff
 	///
 	/// returns text corresponding to this position
-	LyXText * text() { return inset_->getText(idx_); }
+	Text * text() { return inset_->getText(idx_); }
 	/// returns text corresponding to this position
-	LyXText const * text() const { return inset_->getText(idx_); }
+	Text const * text() const { return inset_->getText(idx_); }
 	/// paragraph in this cell
 	Paragraph & paragraph();
 	/// paragraph in this cell

@@ -15,7 +15,7 @@
 #include "Inset.h"
 #include "RowList_fwd.h"
 #include "Font.h"
-#include "LyXText.h"
+#include "Text.h"
 
 #include "support/types.h"
 
@@ -95,8 +95,8 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	LyXText * getText(int i) const {
-		return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
+	Text * getText(int i) const {
+		return (i == 0) ? const_cast<Text*>(&text_) : 0;
 	}
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
@@ -160,7 +160,7 @@ private:
 	bool wide_inset_;
 public:
 	///
-	mutable LyXText text_;
+	mutable Text text_;
 	///
 	mutable Font font_;
 	///

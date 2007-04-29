@@ -24,17 +24,17 @@
 namespace lyx {
 
 class BufferView;
-class LyXText;
+class Text;
 class MetricsInfo;
 
-/// A map from a LyXText to the map of paragraphs metrics
+/// A map from a Text to the map of paragraphs metrics
 class TextMetrics
 {
 public:
 	/// Default constructor (only here for STL containers).
 	TextMetrics(): text_(0) {}
 	/// The only useful constructor.
-	TextMetrics(BufferView *, LyXText *);
+	TextMetrics(BufferView *, Text *);
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
 	///
@@ -111,7 +111,7 @@ private:
 
 	/// The text contents (the model).
 	/// \todo FIXME: this should be const.
-	LyXText * text_;
+	Text * text_;
 
 	bool main_text_;
 	/// A map from paragraph index number to paragraph metrics
@@ -125,8 +125,8 @@ private:
 	/*
 	/// A map from paragraph index number to screen point
 	typedef std::map<pit_type, Point> InnerParPosCache;
-	/// A map from a LyXText to the map of paragraphs to screen points
-	typedef std::map<LyXText const *, InnerParPosCache> ParPosCache;
+	/// A map from a Text to the map of paragraphs to screen points
+	typedef std::map<Text const *, InnerParPosCache> ParPosCache;
 	/// Paragraph grouped by owning text
 	ParPosCache pars_;
 	*/

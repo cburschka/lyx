@@ -15,14 +15,14 @@
 #include "FontIterator.h"
 
 #include "Buffer.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 
 
 namespace lyx {
 
 
-FontIterator::FontIterator(Buffer const & buffer, LyXText const & text,
+FontIterator::FontIterator(Buffer const & buffer, Text const & text,
 		Paragraph const & par, pos_type pos)
 	: buffer_(buffer), text_(text), par_(par), pos_(pos),
 	  font_(text.getFont(buffer, par, pos)),

@@ -32,7 +32,7 @@
 #include "callback.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "MenuBackend.h"
 #include "Paragraph.h"
 

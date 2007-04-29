@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file LyXText.h
+ * \file Text.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXTEXT_H
-#define LYXTEXT_H
+#ifndef TEXT_H
+#define TEXT_H
 
 #include "Bidi.h"
 #include "DispatchResult.h"
@@ -44,10 +44,10 @@ class Spacing;
 
 
 /// This class encapsulates the main text data and operations in LyX
-class LyXText {
+class Text {
 public:
 	/// constructor
-	explicit LyXText();
+	explicit Text();
 
 	///
 	Font getFont(Buffer const & buffer, Paragraph const & par,
@@ -155,9 +155,9 @@ public:
 	};
 	/// accept or reject the selected change
 	void acceptOrRejectChanges(Cursor & cur, ChangeOp op);
-	/// accept the changes within the complete LyXText
+	/// accept the changes within the complete Text
 	void acceptChanges(BufferParams const & bparams);
-	/// reject the changes within the complete LyXText
+	/// reject the changes within the complete Text
 	void rejectChanges(BufferParams const & bparams);
 
 	/// returns true if par was empty and was removed
@@ -176,7 +176,7 @@ public:
 	///
 	void recUndo(Cursor & cur, pit_type first) const;
 
-	/// sets cursor only within this LyXText.
+	/// sets cursor only within this Text.
 	/// x,y are screen coordinates
 	void setCursorFromCoordinates(Cursor & cur, int x, int y);
 
@@ -282,7 +282,7 @@ public:
 
 	/// Returns an inset if inset was hit, or 0 if not.
 	/// \warning This method is not recursive! It will return the
-	/// outermost inset within this LyXText.
+	/// outermost inset within this Text.
 	/// \sa BufferView::getCoveringInset() to get the innermost inset.
 	Inset * checkInsetHit(BufferView &, int x, int y);
 

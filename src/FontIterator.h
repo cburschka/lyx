@@ -9,7 +9,7 @@
  * Full author contact details are available in file CREDITS.
  *
  *
- * Calling LyXText::getFont is slow. While rebreaking we scan a
+ * Calling Text::getFont is slow. While rebreaking we scan a
  * paragraph from left to right calling getFont for every char.  This
  * simple class address this problem by hidding an optimization trick
  * (not mine btw -AB): the font is reused in the whole font span.  The
@@ -28,7 +28,7 @@
 namespace lyx {
 
 class Buffer;
-class LyXText;
+class Text;
 class Paragraph;
 
 
@@ -36,7 +36,7 @@ class FontIterator : std::iterator<std::forward_iterator_tag, Font>
 {
 public:
 	///
-	FontIterator(Buffer const & buffer, LyXText const & text,
+	FontIterator(Buffer const & buffer, Text const & text,
 		Paragraph const & par, pos_type pos);
 	///
 	Font const & operator*() const;
@@ -49,7 +49,7 @@ private:
 	///
 	Buffer const & buffer_;
 	///
-	LyXText const & text_;
+	Text const & text_;
 	///
 	Paragraph const & par_;
 	///

@@ -14,7 +14,7 @@
 #include "DocIterator.h"
 
 #include "debug.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 
 #include "mathed/MathData.h"
@@ -152,13 +152,13 @@ MathAtom & DocIterator::nextAtom()
 }
 
 
-LyXText * DocIterator::text()
+Text * DocIterator::text()
 {
 	BOOST_ASSERT(!empty());
 	return top().text();
 }
 
-LyXText const * DocIterator::text() const
+Text const * DocIterator::text() const
 {
 	BOOST_ASSERT(!empty());
 	return top().text();
@@ -246,7 +246,7 @@ MathData & DocIterator::cell()
 }
 
 
-LyXText * DocIterator::innerText()
+Text * DocIterator::innerText()
 {
 	BOOST_ASSERT(!empty());
 	// Go up until first non-0 text is hit
@@ -257,7 +257,7 @@ LyXText * DocIterator::innerText()
 	return 0;
 }
 
-LyXText const * DocIterator::innerText() const
+Text const * DocIterator::innerText() const
 {
 	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit

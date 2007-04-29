@@ -15,7 +15,7 @@
 
 #include <config.h>
 
-#include "LyXText.h"
+#include "Text.h"
 
 #include "BranchList.h"
 #include "FloatList.h"
@@ -100,7 +100,7 @@ namespace {
 	bool toggleall = false;
 
 
-	void toggleAndShow(Cursor & cur, LyXText * text,
+	void toggleAndShow(Cursor & cur, Text * text,
 		Font const & font, bool toggleall = true)
 	{
 		text->toggleFree(cur, font, toggleall);
@@ -201,7 +201,7 @@ string const freefont2string()
 
 }
 
-void LyXText::cursorPrevious(Cursor & cur)
+void Text::cursorPrevious(Cursor & cur)
 {
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
@@ -220,7 +220,7 @@ void LyXText::cursorPrevious(Cursor & cur)
 }
 
 
-void LyXText::cursorNext(Cursor & cur)
+void Text::cursorNext(Cursor & cur)
 {
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
@@ -250,7 +250,7 @@ void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 }
 
 
-bool doInsertInset(Cursor & cur, LyXText * text,
+bool doInsertInset(Cursor & cur, Text * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
 	Inset * inset = createInset(&cur.bv(), cmd);
@@ -284,7 +284,7 @@ bool doInsertInset(Cursor & cur, LyXText * text,
 } // anon namespace
 
 
-void LyXText::number(Cursor & cur)
+void Text::number(Cursor & cur)
 {
 	Font font(Font::ALL_IGNORE);
 	font.setNumber(Font::TOGGLE);
@@ -292,15 +292,15 @@ void LyXText::number(Cursor & cur)
 }
 
 
-bool LyXText::isRTL(Buffer const & buffer, Paragraph const & par) const
+bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
 {
 	return par.isRightToLeftPar(buffer.params());
 }
 
 
-void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
+void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR(Debug::ACTION) << "LyXText::dispatch: cmd: " << cmd << endl;
+	LYXERR(Debug::ACTION) << "Text::dispatch: cmd: " << cmd << endl;
 
 	// FIXME: We use the update flag to indicates wether a singlePar or a
 	// full screen update is needed. We reset it here but shall we restore it
@@ -797,15 +797,15 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_UPCASE:
-		changeCase(cur, LyXText::text_uppercase);
+		changeCase(cur, Text::text_uppercase);
 		break;
 
 	case LFUN_WORD_LOWCASE:
-		changeCase(cur, LyXText::text_lowercase);
+		changeCase(cur, Text::text_lowercase);
 		break;
 
 	case LFUN_WORD_CAPITALIZE:
-		changeCase(cur, LyXText::text_capitalization);
+		changeCase(cur, Text::text_capitalization);
 		break;
 
 	case LFUN_CHARS_TRANSPOSE:
@@ -1575,7 +1575,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 		LYXERR(Debug::ACTION)
 			<< BOOST_CURRENT_FUNCTION
 			<< ": Command " << cmd
-			<< " not DISPATCHED by LyXText" << endl;
+			<< " not DISPATCHED by Text" << endl;
 		cur.undispatched();
 		break;
 	}
@@ -1584,7 +1584,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	// FIXME: The cursor flag is reset two lines below
 	// so we need to check here if some of the LFUN did touch that.
-	// for now only LyXText::erase() and LyXText::backspace() do that.
+	// for now only Text::erase() and Text::backspace() do that.
 	// The plan is to verify all the LFUNs and then to remove this
 	// singleParUpdate boolean altogether.
 	if (cur.result().update() & Update::Force) {
@@ -1629,7 +1629,7 @@ void LyXText::dispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool LyXText::getStatus(Cursor & cur, FuncRequest const & cmd,
+bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			FuncStatus & flag) const
 {
 	BOOST_ASSERT(cur.text() == this);
@@ -1991,7 +1991,7 @@ bool LyXText::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void LyXText::pasteString(Cursor & cur, docstring const & clip,
+void Text::pasteString(Cursor & cur, docstring const & clip,
 		bool asParagraphs)
 {
 	cur.clearSelection();

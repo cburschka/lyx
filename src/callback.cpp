@@ -29,7 +29,7 @@
 #include "LyX.h"
 #include "Layout.h"
 #include "LyXRC.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "Undo.h"
 

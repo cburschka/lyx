@@ -110,7 +110,7 @@ void InsetMathMBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-LyXText * InsetMathMBox::getText(int) const
+Text * InsetMathMBox::getText(int) const
 {
 	return &text_;
 }

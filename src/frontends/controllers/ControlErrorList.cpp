@@ -15,7 +15,7 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 

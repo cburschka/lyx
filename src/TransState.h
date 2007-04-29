@@ -22,7 +22,7 @@
 namespace lyx {
 
 class Cursor;
-class LyXText;
+class Text;
 class Trans;
 
 /// Translation state
@@ -148,7 +148,7 @@ private:
 	///
 	static Trans default_;
 	///
-	void insert(docstring const &, LyXText *, Cursor & cur);
+	void insert(docstring const &, Text *, Cursor & cur);
 public:
 	///
 	TransManager();
@@ -169,13 +169,13 @@ public:
 		return trans_fsm_.currentState->backspace();
 	}
 	///
-	void translateAndInsert(char_type, LyXText *, Cursor &);
+	void translateAndInsert(char_type, Text *, Cursor &);
 	///
 	docstring const deadkey(char_type, KmodInfo);
 	///
 	docstring const normalkey(char_type);
 	///
-	void deadkey(char_type, tex_accent, LyXText *, Cursor &);
+	void deadkey(char_type, tex_accent, Text *, Cursor &);
 };
 
 

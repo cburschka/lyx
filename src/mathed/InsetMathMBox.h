@@ -17,7 +17,7 @@
 #define MATH_MBOXINSET_H
 
 #include "InsetMathDim.h"
-#include "LyXText.h"
+#include "Text.h"
 
 
 namespace lyx {
@@ -50,7 +50,7 @@ public:
 	int latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const;
 	///
-	LyXText * getText(int) const;
+	Text * getText(int) const;
 	///
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
@@ -58,7 +58,7 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 	///
-	mutable LyXText text_;
+	mutable Text text_;
 
 private:
 	virtual std::auto_ptr<Inset> doClone() const;

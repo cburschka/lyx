@@ -3194,7 +3194,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (cmd.button() == mouse_button::button2) {
 			if (cap::selection()) {
-				// See comment in LyXText::dispatch why we
+				// See comment in Text::dispatch why we
 				// do this
 				// FIXME This does not use paste_tabular,
 				// another reason why paste_tabular should go.
@@ -3284,7 +3284,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
-			// if our LyXText didn't do anything to the cursor
+			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell below
 			// setting also the right targetX.
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
@@ -3314,13 +3314,13 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
-			// if our LyXText didn't do anything to the cursor
+			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell above
 			// setting also the right targetX.
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
-				LyXText const * text = cell(cur.idx())->getText(0);
+				Text const * text = cell(cur.idx())->getText(0);
 				TextMetrics const & tm = cur.bv().textMetrics(text);
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
@@ -4627,7 +4627,7 @@ void InsetTabular::getSelection(Cursor & cur,
 }
 
 
-LyXText * InsetTabular::getText(int idx) const
+Text * InsetTabular::getText(int idx) const
 {
 	return size_t(idx) < nargs() ? cell(idx)->getText(0) : 0;
 }

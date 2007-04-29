@@ -21,7 +21,7 @@
 #include "Cursor.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "LyXText.h"
+#include "Text.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 
@@ -104,9 +104,9 @@ void doRecordUndo(Undo::undo_kind kind,
 		undo.array = new MathData(cell.cell());
 	} else {
 		// some more effort needed here as 'the whole cell' of the
-		// main LyXText _is_ the whole document.
+		// main Text _is_ the whole document.
 		// record the relevant paragraphs
-		LyXText const * text = cell.text();
+		Text const * text = cell.text();
 		BOOST_ASSERT(text);
 		ParagraphList const & plist = text->paragraphs();
 		ParagraphList::const_iterator first = plist.begin();
@@ -184,7 +184,7 @@ bool textUndoOrRedo(BufferView & bv,
 		undo.array = 0;
 	} else {
 		// Some finer machinery is needed here.
-		LyXText * text = dit.text();
+		Text * text = dit.text();
 		BOOST_ASSERT(text);
 		BOOST_ASSERT(undo.pars);
 		ParagraphList & plist = text->paragraphs();

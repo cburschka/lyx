@@ -203,7 +203,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_QUOTE_INSERT: {
-		// We need to bypass the fancy quotes in LyXText
+		// We need to bypass the fancy quotes in Text
 		FuncRequest f(LFUN_SELF_INSERT, "\"");
 		dispatch(cur, f);
 		break;
