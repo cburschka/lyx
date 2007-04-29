@@ -39,7 +39,6 @@ using std::ostringstream;
 
 void InsetBranch::init()
 {
-	setInsetName(from_utf8("Branch"));
 	setButtonLabel();
 }
 

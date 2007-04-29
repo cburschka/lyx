@@ -109,6 +109,8 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const;
+	///
+	virtual docstring getInsetName() const { return from_ascii("Box"); }
 private:
 	friend class InsetBoxParams;
 

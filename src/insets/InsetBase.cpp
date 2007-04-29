@@ -3,6 +3,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Alejandro Aguilar Sierra
+ * \author Jürgen Vigna
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
  * \author André Pönitz
  *
  * Full author contact details are available in file CREDITS.
@@ -13,10 +17,11 @@
 #include "InsetBase.h"
 
 #include "Buffer.h"
-#include "CoordCache.h"
 #include "BufferView.h"
 #include "Color.h"
+#include "CoordCache.h"
 #include "Cursor.h"
+#include "debug.h"
 #include "debug.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
@@ -24,6 +29,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LyXText.h"
+#include "MetricsInfo.h"
 #include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
@@ -109,12 +115,13 @@ static TranslatorMap const build_translator()
 
 
 /// pretty arbitrary dimensions
-InsetBase::InsetBase(): dim_(10, 10, 10), background_color_(Color::background)
+InsetBase::InsetBase()
+	: dim_(10, 10, 10), background_color_(Color::background)
 {}
 
 
-InsetBase::InsetBase(InsetBase const & i)
-: dim_(i.dim_), background_color_(i.background_color_)
+InsetBase::InsetBase(InsetBase const & inset)
+	: dim_(inset.dim_), background_color_(inset.background_color_)
 {}
 
 
@@ -123,6 +130,12 @@ std::auto_ptr<InsetBase> InsetBase::clone() const
 	std::auto_ptr<InsetBase> b = doClone();
 	BOOST_ASSERT(typeid(*b) == typeid(*this));
 	return b;
+}
+
+
+docstring InsetBase::getInsetName() const 
+{
+	return from_ascii("unknown");
 }
 
 
@@ -253,13 +266,6 @@ docstring const InsetBase::editMessage() const
 }
 
 
-docstring const & InsetBase::getInsetName() const
-{
-	static docstring const name = from_ascii("unknown");
-	return name;
-}
-
-
 void InsetBase::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 		bool, int & x, int & y) const
 {
@@ -364,6 +370,13 @@ void InsetBase::setBackgroundColor(Color_color color)
 Color_color InsetBase::backgroundColor() const
 {
 	return Color::color(background_color_);
+}
+
+
+void InsetBase::setPosCache(PainterInfo const & pi, int x, int y) const
+{
+	//lyxerr << "InsetBase:: position cache to " << x << " " << y << std::endl;
+	pi.base.bv->coordCache().insets().add(this, x, y);
 }
 
 

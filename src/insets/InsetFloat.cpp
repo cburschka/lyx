@@ -116,7 +116,7 @@ using std::ostringstream;
 
 
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp), name_(from_utf8(type))
 {
 	setLabel(_("float: ") + floatName(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
@@ -125,7 +125,6 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	font.setColor(Color::collapsable);
 	setLabelFont(font);
 	params_.type = type;
-	setInsetName(from_utf8(type));
 }
 
 

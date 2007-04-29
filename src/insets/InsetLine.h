@@ -13,12 +13,12 @@
 #define INSET_LINE_H
 
 
-#include "Inset.h"
+#include "InsetBase.h"
 
 
 namespace lyx {
 
-class InsetLine : public InsetOld {
+class InsetLine : public InsetBase {
 public:
 
 	InsetLine() {}

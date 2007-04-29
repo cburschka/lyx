@@ -26,7 +26,7 @@
 
 #include "frontends/Application.h" // hexName
 
-#include "insets/Inset.h"
+#include "insets/InsetBase.h"
 
 #include "support/filetools.h"
 #include "support/Forkedcall.h"

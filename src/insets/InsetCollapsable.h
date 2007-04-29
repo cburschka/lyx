@@ -14,7 +14,7 @@
 #ifndef INSETCOLLAPSABLE_H
 #define INSETCOLLAPSABLE_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "InsetText.h"
 
 #include "Box.h"
@@ -43,6 +43,8 @@ public:
 	InsetCollapsable(BufferParams const &, CollapseStatus status = Open);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
+	///
+	docstring getInsetName() const { return from_ascii("Collapsable"); }
 	///
 	void read(Buffer const &, Lexer &);
 	///

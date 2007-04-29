@@ -58,24 +58,23 @@ InsetCollapsable::InsetCollapsable
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color::collapsableframe);
-	setInsetName(from_ascii("Collapsable"));
 	setButtonLabel();
 }
 
 
-InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs):
-	InsetText(rhs), 	
-	labelfont_(rhs.labelfont_),
-	button_dim(rhs.button_dim),
-	topx(rhs.topx),
-	topbaseline(rhs.topbaseline),
-	label(rhs.label),
-	status_(rhs.status_),
-	openinlined_(rhs.openinlined_),
-	autoOpen_(rhs.autoOpen_),
-	textdim_(rhs.textdim_),
-	// the sole purpose of this copy constructor
-	mouse_hover_(false)
+InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
+	: InsetText(rhs), 	
+		labelfont_(rhs.labelfont_),
+		button_dim(rhs.button_dim),
+		topx(rhs.topx),
+		topbaseline(rhs.topbaseline),
+		label(rhs.label),
+		status_(rhs.status_),
+		openinlined_(rhs.openinlined_),
+		autoOpen_(rhs.autoOpen_),
+		textdim_(rhs.textdim_),
+		// the sole purpose of this copy constructor
+		mouse_hover_(false)
 {
 }
 

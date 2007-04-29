@@ -400,7 +400,7 @@ InsetExternal::InsetExternal()
 
 
 InsetExternal::InsetExternal(InsetExternal const & other)
-	: InsetOld(other),
+	: InsetBase(other),
 	  boost::signals::trackable(),
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone(this))

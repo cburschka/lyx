@@ -80,8 +80,12 @@ public:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
+	///
 	InsetBranch(InsetBranch const &);
+	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	docstring getInsetName() const { return from_ascii("Branch"); }
 private:
 	friend class InsetBranchParams;
 

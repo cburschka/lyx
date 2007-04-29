@@ -15,7 +15,7 @@
 #include "Paragraph.h"
 #include "LyXText.h"
 
-#include "insets/Inset.h"
+#include "insets/InsetBase.h"
 
 
 namespace lyx {
@@ -24,7 +24,8 @@ namespace lyx {
 /// ParIterator
 ///
 
-ParIterator::ParIterator(DocIterator const & cur) : DocIterator(cur)
+ParIterator::ParIterator(DocIterator const & cur)
+	: DocIterator(cur)
 {}
 
 

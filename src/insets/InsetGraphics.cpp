@@ -153,7 +153,7 @@ InsetGraphics::InsetGraphics()
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
-	: InsetOld(ig),
+	: InsetBase(ig),
 	  boost::signals::trackable(),
 		graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(*ig.graphic_, this))

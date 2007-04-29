@@ -12,7 +12,7 @@
 
 #include "RenderGraphic.h"
 
-#include "insets/Inset.h"
+#include "insets/InsetBase.h"
 
 #include "gettext.h"
 #include "Color.h"
@@ -149,7 +149,7 @@ bool RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	if (image_ready) {
 		dim.wid = loader_.image()->getWidth() +
-			2 * InsetOld::TEXT_TO_INSET_OFFSET;
+			2 * InsetBase::TEXT_TO_INSET_OFFSET;
 	} else {
 		int font_width = 0;
 
@@ -194,16 +194,16 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 	// loaded yet, we draw just a rectangle.
 
 	if (displayGraphic(params_) && readyToDisplay(loader_)) {
-		pi.pain.image(x + InsetOld::TEXT_TO_INSET_OFFSET,
+		pi.pain.image(x + InsetBase::TEXT_TO_INSET_OFFSET,
 			      y - dim_.asc,
-			      dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
+			      dim_.wid - 2 * InsetBase::TEXT_TO_INSET_OFFSET,
 			      dim_.asc + dim_.des,
 			      *loader_.image());
 
 	} else {
-		pi.pain.rectangle(x + InsetOld::TEXT_TO_INSET_OFFSET,
+		pi.pain.rectangle(x + InsetBase::TEXT_TO_INSET_OFFSET,
 				  y - dim_.asc,
-				  dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
+				  dim_.wid - 2 * InsetBase::TEXT_TO_INSET_OFFSET,
 				  dim_.asc + dim_.des,
 				  Color::foreground);
 
@@ -214,7 +214,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
+			pi.pain.text(x + InsetBase::TEXT_TO_INSET_OFFSET + 6,
 				   y - theFontMetrics(msgFont).maxAscent() - 4,
 				   from_utf8(justname), msgFont);
 		}
@@ -223,7 +223,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
+			pi.pain.text(x + InsetBase::TEXT_TO_INSET_OFFSET + 6,
 				     y - 4, msg, msgFont);
 		}
 	}

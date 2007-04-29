@@ -76,11 +76,15 @@ public:
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	virtual docstring getInsetName() const { return name_; }
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
 	InsetWrapParams params_;
+	///
+	docstring name_;
 };
 
 

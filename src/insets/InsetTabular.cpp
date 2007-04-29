@@ -2874,7 +2874,7 @@ InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
-	: InsetOld(tab), tabular(tab.tabular),
+	: InsetBase(tab), tabular(tab.tabular),
 		buffer_(tab.buffer_), scx_(0), is_deleted_(false)
 {}
 

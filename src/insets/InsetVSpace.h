@@ -13,14 +13,14 @@
 #define INSET_VSPACE_H
 
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "VSpace.h"
 #include "MailInset.h"
 
 
 namespace lyx {
 
-class InsetVSpace : public InsetOld {
+class InsetVSpace : public InsetBase {
 public:
 	///
 	InsetVSpace() {}

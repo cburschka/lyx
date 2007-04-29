@@ -52,6 +52,8 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::NOTE_CODE; }
 	///
+	docstring getInsetName() const { return from_ascii("Note"); }
+	///
 	void write(Buffer const &, std::ostream &) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);

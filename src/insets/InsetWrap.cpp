@@ -44,7 +44,7 @@ using std::ostringstream;
 
 
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp), name_(from_utf8(type))
 {
 	setLabel(_("wrap: ") + floatName(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
@@ -54,7 +54,6 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	setLabelFont(font);
 	params_.type = type;
 	params_.width = Length(50, Length::PCW);
-	setInsetName(from_utf8(type));
 }
 
 

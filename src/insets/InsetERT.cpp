@@ -53,7 +53,6 @@ using std::string;
 void InsetERT::init()
 {
 	setButtonLabel();
-
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -61,8 +60,6 @@ void InsetERT::init()
 	setLabelFont(font);
 	text_.current_font.setLanguage(latex_language);
 	text_.real_current_font.setLanguage(latex_language);
-
-	setInsetName(from_ascii("ERT"));
 }
 
 

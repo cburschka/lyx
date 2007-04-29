@@ -44,6 +44,8 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::ERT_CODE; }
 	///
+	docstring getInsetName() const { return from_ascii("ERT"); }
+	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);

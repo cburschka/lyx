@@ -1,5 +1,5 @@
 /**
- * \file InsetTheorem.cpp
+ * \file InsetBase.heorem.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "InsetTheorem.h"
+#include "InsetBase.heorem.h"
 #include "insets/InsetText.h"
 
 #include "debug.h"
@@ -35,7 +35,7 @@ using std::ostream;
    user.
 */
 
-InsetTheorem::InsetTheorem()
+InsetBase.heorem::InsetTheorem()
 	: InsetCollapsable()
 {
 	setLabel(_("theorem"));
@@ -51,25 +51,25 @@ InsetTheorem::InsetTheorem()
 }
 
 
-void InsetTheorem::write(Buffer const * buf, ostream & os) const
+void InsetBase.heorem::write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);
 }
 
 
-auto_ptr<InsetBase> InsetTheorem::doClone() const
+auto_ptr<InsetBase> InsetBase.heorem::doClone() const
 {
 #ifdef WITH_WARNINGS
 #warning Is this inset used? If YES this is WRONG!!! (Jug)
 #endif
-	auto_ptr<InsetTheorem> result(new InsetTheorem);
+	auto_ptr<InsetBase.heorem> result(new InsetTheorem);
 	result->setCollapsed(!isOpen());
 
 	return result;
 }
 
-bool InsetTheorem::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetBase.heorem::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCollapsable::metrics(mi, dim);
 	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
@@ -86,13 +86,13 @@ void InsetTOC::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-string const InsetTheorem::editMessage() const
+string const InsetBase.heorem::editMessage() const
 {
 	return _("Opened Theorem Inset");
 }
 
 
-int InsetTheorem::latex(Buffer const * buf, odocstream & os,
+int InsetBase.heorem::latex(Buffer const * buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << "\\begin{theorem}%\n";

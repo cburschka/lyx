@@ -29,9 +29,8 @@ using std::ostream;
 
 InsetEnvironment::InsetEnvironment
 		(BufferParams const & bp, string const & name)
-	: InsetText(bp), layout_(bp.getLyXTextClass()[name])
+	: InsetText(bp), layout_(bp.getLyXTextClass()[name]), name_(from_utf8(name))
 {
-	setInsetName(from_utf8(name));
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 }

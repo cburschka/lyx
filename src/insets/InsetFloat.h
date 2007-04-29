@@ -49,6 +49,8 @@ public:
 	///
 	~InsetFloat();
 	///
+	docstring getInsetName() const { return name_; }
+	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);
@@ -90,10 +92,12 @@ public:
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
+	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
-
 	///
 	InsetFloatParams params_;
+	///
+	docstring name_;
 };
 
 

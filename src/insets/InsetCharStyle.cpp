@@ -51,7 +51,6 @@ using std::ostringstream;
 
 void InsetCharStyle::init()
 {
-	setInsetName(from_utf8("CharStyle"));
 	setInlined();
 	setDrawFrame(false);
 }

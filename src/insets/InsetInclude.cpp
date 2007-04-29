@@ -104,7 +104,7 @@ InsetInclude::InsetInclude(InsetCommandParams const & p)
 
 
 InsetInclude::InsetInclude(InsetInclude const & other)
-	: InsetOld(other),
+	: InsetBase(other),
 	  params_(other.params_),
 	  include_label(other.include_label),
 	  preview_(new RenderMonitoredPreview(this)),

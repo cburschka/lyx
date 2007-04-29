@@ -13,7 +13,7 @@
 #ifndef INSET_LATEXCOMMAND_H
 #define INSET_LATEXCOMMAND_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
@@ -31,7 +31,7 @@ namespace lyx {
  */
 
 ///
-class InsetCommand : public InsetOld {
+class InsetCommand : public InsetBase {
 public:
 	///
 	InsetCommand(InsetCommandParams const &, std::string const & mailer_name);
@@ -109,10 +109,13 @@ protected:
 private:
 	///
 	InsetCommandParams p_;
+	///
 	std::string mailer_name_;
 	/// changes color when mouse enters/leaves this inset
 	bool mouse_hover_;
+	///
 	mutable bool updateButtonLabel_;
+	///
 	mutable RenderButton button_;
 };
 

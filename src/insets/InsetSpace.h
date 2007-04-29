@@ -16,7 +16,7 @@
 #define INSET_SPACE_H
 
 
-#include "Inset.h"
+#include "InsetBase.h"
 
 
 namespace lyx {
@@ -24,7 +24,7 @@ namespace lyx {
 class LaTeXFeatures;
 
 ///  Used to insert different kinds of spaces
-class InsetSpace : public InsetOld {
+class InsetSpace : public InsetBase {
 public:
 
 	/// The different kinds of spaces we support

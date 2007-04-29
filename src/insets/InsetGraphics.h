@@ -13,7 +13,7 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "InsetGraphicsParams.h"
 #include "MailInset.h"
 
@@ -28,7 +28,7 @@ class RenderGraphic;
 class LaTeXFeatures;
 
 ///
-class InsetGraphics : public InsetOld, public boost::signals::trackable {
+class InsetGraphics : public InsetBase, public boost::signals::trackable {
 public:
 	///
 	InsetGraphics();

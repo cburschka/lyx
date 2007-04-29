@@ -4,7 +4,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author none
+ * \author Alejandro Aguilar Sierra
+ * \author Jürgen Vigna
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -133,7 +136,7 @@ public:
 	/// last drawn position for 'important' insets
 	int yo(BufferView const & bv) const;
 	/// set x/y drawing position cache if available
-	virtual void setPosCache(PainterInfo const &, int, int) const {}
+	virtual void setPosCache(PainterInfo const &, int, int) const;
 	/// do we cover screen position x/y?
 	virtual bool covers(BufferView const & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in Cursor.cpp)
@@ -362,7 +365,7 @@ public:
 	virtual bool hasFixedWidth() const { return false; }
 
 	///
-	virtual docstring const & getInsetName() const;
+	virtual docstring getInsetName() const;
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater
@@ -457,6 +460,9 @@ public:
 	};
 	///
 	virtual void setStatus(Cursor &, CollapseStatus) {}
+	//
+	enum { TEXT_TO_INSET_OFFSET = 4 };
+
 protected:
 	InsetBase();
 	InsetBase(InsetBase const & i);
@@ -496,6 +502,20 @@ bool isEditableInset(InsetBase const * inset);
  * and points to a highly editable inset
  */
 bool isHighlyEditableInset(InsetBase const * inset);
+
+/** \c InsetBase_code is a wrapper for InsetBase::Code.
+ *  It can be forward-declared and passed as a function argument without
+ *  having to expose InsetBase.h.
+ */
+
+class InsetBase_code {
+	InsetBase::Code val_;
+public:
+	InsetBase_code(InsetBase::Code val) : val_(val) {}
+	operator InsetBase::Code() const { return val_; }
+};
+
+
 
 } // namespace lyx
 

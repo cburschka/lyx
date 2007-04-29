@@ -12,7 +12,7 @@
 #ifndef INSET_EXTERNAL_H
 #define INSET_EXTERNAL_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "ExternalTransforms.h"
 
 #include "support/FileName.h"
@@ -104,7 +104,7 @@ private:
 class RenderBase;
 
 ///
-class InsetExternal : public InsetOld, public boost::signals::trackable
+class InsetExternal : public InsetBase, public boost::signals::trackable
 {
 public:
 	InsetExternal();

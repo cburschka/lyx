@@ -36,7 +36,7 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "MailInset.h"
 #include "Length.h"
 #include "InsetText.h"
@@ -661,7 +661,7 @@ private:
 
 
 
-class InsetTabular : public InsetOld {
+class InsetTabular : public InsetBase {
 public:
 	///
 	InsetTabular(Buffer const &, row_type rows = 1,

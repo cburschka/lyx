@@ -15,7 +15,7 @@
 #define INSET_SPECIALCHAR_H
 
 
-#include "Inset.h"
+#include "InsetBase.h"
 
 
 namespace lyx {
@@ -23,7 +23,7 @@ namespace lyx {
 class LaTeXFeatures;
 
 ///  Used to insert special chars
-class InsetSpecialChar : public InsetOld {
+class InsetSpecialChar : public InsetBase {
 public:
 
 	/// The different kinds of special chars we support

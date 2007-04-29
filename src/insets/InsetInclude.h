@@ -12,7 +12,7 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
@@ -30,7 +30,7 @@ class RenderMonitoredPreview;
 
 
 /// for including tex/lyx files
-class InsetInclude : public InsetOld {
+class InsetInclude : public InsetBase {
 public:
 	///
 	InsetInclude(InsetCommandParams const &);

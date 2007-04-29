@@ -12,7 +12,7 @@
 #ifndef INSETTEXT_H
 #define INSETTEXT_H
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "RowList_fwd.h"
 #include "LyXFont.h"
 #include "LyXText.h"
@@ -37,7 +37,7 @@ class ParagraphList;
  A text inset is like a TeX box to write full text
  (including styles and other insets) in a given space.
  */
-class InsetText : public InsetOld {
+class InsetText : public InsetBase {
 public:
 	///
 	explicit InsetText(BufferParams const &);

@@ -13,13 +13,13 @@
 #define INSET_PAGEBREAK_H
 
 
-#include "Inset.h"
+#include "InsetBase.h"
 #include "gettext.h"
 
 
 namespace lyx {
 
-class InsetPagebreak : public InsetOld {
+class InsetPagebreak : public InsetBase {
 public:
 	InsetPagebreak() {}
 

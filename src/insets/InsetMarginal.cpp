@@ -31,7 +31,6 @@ InsetMarginal::InsetMarginal(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
 	setLabel(_("margin"));
-	setInsetName(from_ascii("Marginal"));
 }
 
 
@@ -39,7 +38,6 @@ InsetMarginal::InsetMarginal(InsetMarginal const & in)
 	: InsetFootlike(in)
 {
 	setLabel(_("margin"));
-	setInsetName(from_ascii("Marginal"));
 }
 
 

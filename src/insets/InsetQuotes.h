@@ -13,7 +13,7 @@
 #define INSET_QUOTES_H
 
 
-#include "Inset.h"
+#include "InsetBase.h"
 
 #include "support/types.h"
 
@@ -28,7 +28,7 @@ class LaTeXFeatures;
 /** Quotes.
   Used for the various quotes. German, English, French, all either
   double or single **/
-class InsetQuotes : public InsetOld {
+class InsetQuotes : public InsetBase {
 public:
 	///
 	enum quote_language {
@@ -73,6 +73,8 @@ public:
 	InsetQuotes(char_type c, BufferParams const & params);
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(char_type c, quote_language l, quote_times t);
+	///
+	docstring getInsetName() const { return from_ascii("Quotes"); }
 	///
 	bool metrics(MetricsInfo &, Dimension &) const;
 	///

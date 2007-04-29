@@ -11,12 +11,12 @@
 #include <config.h>
 
 #include "insets/RenderPreview.h"
-#include "insets/Inset.h"
+#include "insets/InsetBase.h"
 
 #include "BufferView.h"
+#include "Color.h"
 #include "Dimension.h"
 #include "gettext.h"
-#include "Color.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -154,7 +154,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 			      *image);
 
 	} else {
-		int const offset = InsetOld::TEXT_TO_INSET_OFFSET;
+		int const offset = InsetBase::TEXT_TO_INSET_OFFSET;
 
 		pi.pain.rectangle(x + offset,
 				  y - dim_.asc,

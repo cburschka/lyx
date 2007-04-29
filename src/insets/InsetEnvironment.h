@@ -23,6 +23,8 @@ public:
 	///
 	InsetEnvironment(BufferParams const &, std::string const & name);
 	///
+	docstring getInsetName() const { return name_; }
+	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);
@@ -50,6 +52,8 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the layout
 	LyXLayout_ptr layout_;
+	///
+	docstring name_;
 };
 
 

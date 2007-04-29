@@ -28,6 +28,8 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::FOOT_CODE; }
 	///
+	docstring getInsetName() const { return from_ascii("Foot"); }
+	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;
 	///

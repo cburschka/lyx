@@ -52,6 +52,8 @@ public:
 	InsetCharStyle(BufferParams const &, std::string const);
 	///
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
+	///
+	docstring getInsetName() const { return from_ascii("CharStyle"); }
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;

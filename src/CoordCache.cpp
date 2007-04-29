@@ -58,8 +58,9 @@ Point CoordCache::get(LyXText const * text, pit_type pit) const
 	return posit->second;
 }
 
-void
-CoordCache::dump() const {
+
+void CoordCache::dump() const
+{
 	lyxerr << "ParPosCache contains:" << std::endl;
 	for (ParPosCache::const_iterator i = getParPos().begin(); i != getParPos().end(); ++i) {
 		LyXText const * lt = (*i).first;

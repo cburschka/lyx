@@ -112,7 +112,6 @@ void InsetNoteParams::read(Lexer & lex)
 
 void InsetNote::init()
 {
-	setInsetName(from_ascii("Note"));
 	setButtonLabel();
 }
 
