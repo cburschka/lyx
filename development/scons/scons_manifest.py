@@ -1045,8 +1045,8 @@ src_header_files = Split('''
     Lexer.h
     LyXRC.h
     Row.h
-    LyXServer.h
-    LyXServerSocket.h
+    Server.h
+    ServerSocket.h
     LyXText.h
     LyXTextClass.h
     LyXTextClassList.h
@@ -1147,8 +1147,8 @@ src_pre_files = Split('''
     Lexer.cpp
     LyXRC.cpp
     Row.cpp
-    LyXServer.cpp
-    LyXServerSocket.cpp
+    Server.cpp
+    ServerSocket.cpp
     LyXTextClass.cpp
     LyXTextClassList.cpp
     LyXVC.cpp
