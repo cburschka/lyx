@@ -13,7 +13,7 @@
 #define CONTROLPARAGRAPH_H
 
 #include "Dialog.h"
-#include "layout.h" // for LyXAlignment
+#include "Layout.h" // for LyXAlignment
 
 namespace lyx {
 

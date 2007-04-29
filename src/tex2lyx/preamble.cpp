@@ -14,9 +14,9 @@
 
 #include "tex2lyx.h"
 
-#include "layout.h"
-#include "TextClass.h"
+#include "Layout.h"
 #include "Lexer.h"
+#include "TextClass.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

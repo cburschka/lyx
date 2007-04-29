@@ -14,7 +14,7 @@
 #ifndef PARAGRAPHPARAMETERS_H
 #define PARAGRAPHPARAMETERS_H
 
-#include "layout.h"
+#include "Layout.h"
 #include "Length.h"
 #include "Spacing.h"
 

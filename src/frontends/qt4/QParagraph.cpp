@@ -18,7 +18,6 @@
 #include "debug.h"
 #include "ParagraphParameters.h"
 #include "Spacing.h"
-#include "layout.h"
 
 #include "controllers/ControlParagraph.h"
 #include "controllers/frontend_helpers.h"

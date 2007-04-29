@@ -15,11 +15,13 @@
 
 #include "QDialogView.h"
 
-#include <map>
+#include "Layout.h"
+#include "ui/ParagraphUi.h"
+
 #include <QDialog>
 #include <QCloseEvent>
-#include "layout.h"
-#include "ui/ParagraphUi.h"
+
+#include <map>
 
 namespace lyx {
 namespace frontend {

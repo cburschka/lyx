@@ -17,7 +17,7 @@
 #include "Bidi.h"
 #include "DispatchResult.h"
 #include "Font.h"
-#include "layout.h"
+#include "Layout.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "ParagraphList.h"
 
