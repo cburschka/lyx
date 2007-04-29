@@ -6,6 +6,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" ; always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" ; always here
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\sciword.bind"
@@ -28,7 +29,9 @@ Function UpdateModifiedFiles
  Delete "$INSTDIR\Resources\examples\de\Dezimal.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
  SetOutPath "$INSTDIR\Resources\images"
- File "${PRODUCT_SOURCEDIR}\Resources\images\math-superscript.xpm" 
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math-superscript.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_set-rotate-cell.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_set-rotate-tabular.xpm"
  SetOutPath "$INSTDIR\Resources\images\math"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\super.xpm"
  SetOutPath "$INSTDIR\Resources\layouts"
