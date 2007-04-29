@@ -307,6 +307,8 @@ public:
 	Encoding const * getEncoding() const;
 	/// font at cursor position
 	LyXFont getFont() const;
+	///
+	bool isRTL() const;
 };
 
 
