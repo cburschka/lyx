@@ -928,7 +928,7 @@ src_client_files = Split('''
 src_tex2lyx_header_files = Split('''
     Spacing.h
     Context.h
-    LyXFont.h
+    Font.h
     tex2lyx.h
     Parser.h
 ''')
@@ -955,7 +955,7 @@ src_tex2lyx_files = Split('''
     Context.cpp
     gettext.cpp
     lengthcommon.cpp
-    LyXFont.cpp
+    Font.cpp
     math.cpp
     preamble.cpp
     table.cpp
@@ -1019,6 +1019,7 @@ src_header_files = Split('''
     ErrorList.h
     Exporter.h
     factory.h
+    Font.h
     Format.h
     FuncRequest.h
     gettext.h
@@ -1036,7 +1037,6 @@ src_header_files = Split('''
     LyX.h
     lyx_sty.h
     lyxfind.h
-    LyXFont.h
     LyXFunc.h
     Layout.h
     lyxlayout_ptr_fwd.h
@@ -1124,6 +1124,7 @@ src_pre_files = Split('''
     ErrorList.cpp
     Exporter.cpp
     factory.cpp
+    Font.cpp
     Format.cpp
     FuncRequest.cpp
     gettext.cpp
@@ -1139,7 +1140,6 @@ src_pre_files = Split('''
     LyX.cpp
     lyx_sty.cpp
     lyxfind.cpp
-    LyXFont.cpp
     LyXFunc.cpp
     Layout.cpp
     Length.cpp
