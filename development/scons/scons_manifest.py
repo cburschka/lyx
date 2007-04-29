@@ -1030,7 +1030,6 @@ src_header_files = Split('''
     KeyMap.h
     KeySequence.h
     Language.h
-    layout.h
     lengthcommon.h
     lfuns.h
     callback.h
@@ -1039,7 +1038,7 @@ src_header_files = Split('''
     lyxfind.h
     LyXFont.h
     LyXFunc.h
-    LyXLayout.h
+    Layout.h
     lyxlayout_ptr_fwd.h
     Length.h
     Lexer.h
@@ -1142,7 +1141,7 @@ src_pre_files = Split('''
     lyxfind.cpp
     LyXFont.cpp
     LyXFunc.cpp
-    LyXLayout.cpp
+    Layout.cpp
     Length.cpp
     Lexer.cpp
     LyXRC.cpp
