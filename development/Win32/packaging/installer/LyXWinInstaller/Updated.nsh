@@ -12,6 +12,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\bind\sciword.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" ; must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Customization.lyx"
@@ -42,6 +43,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\tex_copy.py"
  SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\classic.ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
