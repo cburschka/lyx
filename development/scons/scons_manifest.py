@@ -2212,7 +2212,6 @@ lib_doc_extra_files = Split('''
     Makefile.depend
     README.Documentation
     depend.py
-    depend.pyc
     doc_toc.py
 ''')
 

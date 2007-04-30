@@ -1994,7 +1994,7 @@ if update_manifest:
     print >> manifest, 'from SCons.Util import Split\n'
     #
     ignore_dirs = ['boost/boost', 'm4', 'development']
-    ignore_types = ['.svn', '.deps', '.cache', '.tmp', 'bak', '.gmo', '.pyc', 'debug', 'release']
+    ignore_types = ['.svn', '.deps', '.cache', '.tmp', 'bak', '.gmo', '.pyc']
     ext_types = ['_header_files', '_files', '_pre_files', '_post_files', '_moc_files', 
         '_copied_files', '_copied_header_files', '_extra_header_files', '_extra_src_files', '_extra_files']
     for root,path,files in os.walk(env.Dir('$TOP_SRCDIR').abspath):
