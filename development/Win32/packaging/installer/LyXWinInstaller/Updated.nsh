@@ -27,8 +27,11 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\it\TOC.lyx" ; must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\examples"
- Delete "$INSTDIR\Resources\examples\de\Dezimal.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\europecv.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\moderncv.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\de"
+ File "$INSTDIR\Resources\examples\de\Dezimal.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math-superscript.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_set-rotate-cell.xpm"
