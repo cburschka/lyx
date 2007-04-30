@@ -153,8 +153,9 @@ def env_potfiles(target, source, env):
     potfiles = []
     trans = re.compile('_\(".*"\)', re.M)
     for file in source:
-        if str(file) not in potfiles and trans.search(open(str(file)).read()):
-            potfiles.append(relativePath(str(file), env.subst('$TOP_SRCDIR')))
+        rel_file = relativePath(str(file), env.subst('$TOP_SRCDIR'))
+        if rel_file not in potfiles and trans.search(open(str(file)).read()):
+            potfiles.append(rel_file)
     potfiles.sort()
     print >> target_file, '\n'.join(potfiles)
     target_file.close()
