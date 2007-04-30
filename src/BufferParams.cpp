@@ -31,7 +31,6 @@
 #include "LyXRC.h"
 #include "TextClassList.h"
 #include "OutputParams.h"
-#include "tex-strings.h"
 #include "Spacing.h"
 #include "TexRow.h"
 #include "VSpace.h"
@@ -46,13 +45,6 @@
 
 #include <sstream>
 
-
-namespace lyx {
-
-using support::bformat;
-using support::rtrim;
-using support::tokenPos;
-
 using std::endl;
 using std::string;
 using std::istringstream;
@@ -60,8 +52,44 @@ using std::ostream;
 using std::ostringstream;
 using std::pair;
 
-namespace Alert = lyx::frontend::Alert;
+using lyx::support::bformat;
+using lyx::support::rtrim;
+using lyx::support::tokenPos;
 
+
+static char const * const string_paragraph_separation[] = {
+	"indent", "skip", ""
+};
+
+
+static char const * const string_quotes_language[] = {
+	"english", "swedish", "german", "polish", "french", "danish", ""
+};
+
+
+static char const * const string_papersize[] = {
+	"default", "custom", "letterpaper", "executivepaper", "legalpaper",
+	"a3paper", "a4paper", "a5paper", "b3paper", "b4paper", "b5paper", ""
+};
+
+
+static char const * const string_orientation[] = {
+	"portrait", "landscape", ""
+};
+
+
+static char const * const string_footnotekinds[] = {
+	"footnote", "margin", "fig", "tab", "alg", "wide-fig", "wide-tab", ""
+};
+
+
+static char const * const tex_graphics[] = {
+	"default", "dvips", "dvitops", "emtex",
+	"ln", "oztex", "textures", "none", ""
+};
+
+
+namespace lyx {
 
 // Local translators
 namespace {
@@ -441,7 +469,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 					         "class or style file required by it is not\n"
 					         "available. See the Customization documentation\n"
 					         "for more information.\n"), from_utf8(classname));
-			Alert::warning(_("Document class not available"),
+			frontend::Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
 		}
 	} else if (token == "\\begin_preamble") {

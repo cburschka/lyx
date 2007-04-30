@@ -244,8 +244,6 @@ lyx_SOURCES = \
 	TextClass.h \
 	TextClassList.cpp \
 	TextClassList.h \
-	tex-strings.cpp \
-	tex-strings.h \
 	TextMetrics.cpp \
 	TextMetrics.h \
 	Thesaurus.cpp \

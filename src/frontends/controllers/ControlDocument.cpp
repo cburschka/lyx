@@ -25,7 +25,6 @@
 #include "Color.h"
 #include "OutputParams.h"
 #include "TextClassList.h"
-#include "tex-strings.h"
 
 // FIXME: those two headers are needed because of the
 // WorkArea::redraw() call below.

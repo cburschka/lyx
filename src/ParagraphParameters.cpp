@@ -22,20 +22,24 @@
 #include "Lexer.h"
 #include "Text.h"
 #include "Paragraph.h"
-#include "tex-strings.h"
 
 #include "support/lstrings.h"
 
 #include <sstream>
 
-namespace lyx {
-
-using support::rtrim;
+using lyx::support::rtrim;
 
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::string;
+
+
+namespace lyx {
+
+static char const * const string_align[] = {
+	"block", "left", "right", "center", ""
+};
 
 
 static int findToken(char const * const str[], string const & search_token)
