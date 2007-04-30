@@ -134,7 +134,6 @@ src_header_files = Split('''
     paragraph_funcs.h
     rowpainter.h
     sgml.h
-    tex-strings.h
     toc.h
     update_flags.h
     version.h
@@ -233,7 +232,6 @@ src_pre_files = Split('''
     paragraph_funcs.cpp
     rowpainter.cpp
     sgml.cpp
-    tex-strings.cpp
     toc.cpp
 ''')
 
