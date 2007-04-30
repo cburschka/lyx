@@ -46,7 +46,7 @@ include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx)
 if(MSVC)
 	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
-		"/FI${TOP_SRC_DIR}/src/tex2lyx/Font.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+		"/DFONT_H /FI${TOP_SRC_DIR}/src/tex2lyx/Font.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 else(MSVC)
 	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
