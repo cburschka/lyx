@@ -12,8 +12,8 @@ set(LINKED_FILES
 	${TOP_SRC_DIR}/src/FloatList.cpp
 	${TOP_SRC_DIR}/src/Floating.cpp
 	${TOP_SRC_DIR}/src/Counters.cpp
-	${TOP_SRC_DIR}/src/LyXLayout.cpp
-	${TOP_SRC_DIR}/src/LyXTextClass.cpp
+	${TOP_SRC_DIR}/src/Layout.cpp
+	${TOP_SRC_DIR}/src/TextClass.cpp
 	${TOP_SRC_DIR}/src/Lexer.cpp
 )
 
@@ -22,7 +22,7 @@ set(tex2lyx_sources
 	${TOP_SRC_DIR}/src/tex2lyx/Context.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/gettext.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.cpp
-	${TOP_SRC_DIR}/src/tex2lyx/LyXFont.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/Font.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/Parser.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/preamble.cpp
@@ -32,11 +32,11 @@ set(tex2lyx_sources
 )
 
 set(tex2lyx_headers
-	${TOP_SRC_DIR}/src/LyXLayout.h
-	${TOP_SRC_DIR}/src/LyXTextClass.h
+	${TOP_SRC_DIR}/src/Layout.h
+	${TOP_SRC_DIR}/src/TextClass.h
 	${TOP_SRC_DIR}/src/tex2lyx/Spacing.h
 	${TOP_SRC_DIR}/src/tex2lyx/Context.h
-	${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h
+	${TOP_SRC_DIR}/src/tex2lyx/Font.h
 	${TOP_SRC_DIR}/src/tex2lyx/Parser.h
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.h
 )
@@ -44,13 +44,13 @@ set(tex2lyx_headers
 include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx)
 
 if(MSVC)
-	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/LyXLayout.cpp ${TOP_SRC_DIR}/src/LyXTextClass.cpp
+	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
-		"/FI${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+		"/FI${TOP_SRC_DIR}/src/tex2lyx/Font.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 else(MSVC)
-	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/LyXLayout.cpp ${TOP_SRC_DIR}/src/LyXTextClass.cpp
+	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
-		"-include ${TOP_SRC_DIR}/src/tex2lyx/LyXFont.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+		"-include ${TOP_SRC_DIR}/src/tex2lyx/Font.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 endif(MSVC)
 
 #TODO
