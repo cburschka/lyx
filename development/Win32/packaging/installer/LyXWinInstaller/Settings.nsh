@@ -3,7 +3,7 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5svn-30-04-2007"
+!define PRODUCT_VERSION "1.5svn-02-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -31,10 +31,36 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 
+; definitions for the Update installer
+!if ${INSTALLER_VERSION} == "Update"
+ !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
+ !define PRODUCT_VERSION_OLD "LyX 1.5beta2-21-04-2007"
+ !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
+ !define PRODUCT_VERSION_SHORT_OLD "150svn"
+ !define JabRefVersionOld "JabRef 2.2"
+ !define MiKTeXDeliveredVersionOld "MiKTeX 2.5"
+!endif
+
+; definitions for the Small installer
+!if ${INSTALLER_VERSION} == "Small"
+ !define JabRefVersion "none" ; dummy entry to avoid NSIS warnig
+ !define MiKTeXDeliveredVersion "none" ; dummy entry to avoid NSIS warnig
+!endif
+
+; definitions for the Complete installer
+!if ${INSTALLER_VERSION} == "Complete"
+ !define GSviewInstall "external\gsv48w32.exe"
+ !define JabRefInstall "external\JabRef-2.2-Setup.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.5.2580.exe"
+ !define JabRefVersion "JabRef 2.2"
+ !define MiKTeXDeliveredVersion "MiKTeX 2.5"
+!endif
+
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
 !define ImageMagickVersion "6.3.3"
-!define ImageMagickDir "$INSTDIR\etc\ImageMagick" ; for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
+; for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
+!define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
 !define GhostscriptVersion "8.56"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
@@ -59,27 +85,4 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 Name "${PRODUCT_NAME}"
 OutFile "${INSTALLER_EXE}"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME} ${PRODUCT_VERSION}"
-
-; -------------------------------
-; Variables used by all installer versions
-
-Var LatexPath
-Var PythonPath
-Var ImageMagickPath
-Var PathPrefix
-Var Answer
-Var UserName
-Var CreateDesktopIcon
-Var StartmenuFolder
-Var ProductRootKey
-Var AppPre
-Var AppSuff
-Var AppPath
-Var String
-Var Search
-Var Pointer
-Var UserList
-Var FileName
-Var OldString
-Var NewString
 

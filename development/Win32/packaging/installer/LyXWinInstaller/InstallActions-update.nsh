@@ -3,6 +3,13 @@
 ; The '-' makes the section invisible.
 Section "-Installation actions" SecInstallation
 
+  ; dummy actions to avoid NSIS warnings
+  StrCpy $AspellBaseReg ""
+  StrCpy $LangCode ""
+  StrCpy $LangCodeSys ""
+  StrCpy $LangName ""
+  StrCpy $LangNameSys ""
+  
   ; extract modified files
   Call UpdateModifiedFiles ; macro from Updated.nsh
   
@@ -11,7 +18,7 @@ Section "-Installation actions" SecInstallation
   
   ; delete old uninstaller
   Delete "${PRODUCT_UNINSTALL_EXE}"
-
+  
   ; delete old start menu folder
   ReadRegStr $0 SHCTX "${PRODUCT_UNINST_KEY_OLD}" "StartMenu"
   RMDir /r $0
@@ -19,15 +26,98 @@ Section "-Installation actions" SecInstallation
   Delete "$DESKTOP\${PRODUCT_VERSION_OLD}.lnk"
   
   ; delete old registry entries
+  ${if} $CreateFileAssociations == "true"
+   DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
+   ; remove extension .lyx
+   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
+  ${endif}
   DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY_OLD}"
-  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
   DeleteRegKey HKCR "Applications\lyx.bat"
-  ; remove extension .lyx
-  ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
   DeleteRegKey HKCR "${PRODUCT_NAME}"
   
   ; determine the new name of the install location,
-  ; only when the user has used the default path settings of the previous LyX-version
+  ; Change the old install path to the new one (currently only when the user
+  ; has used the default path settings of the previous LyX-version)
+  Call InstDirChange
+  
+  ; Refresh registry setings for the uninstaller
+  Call RefreshRegUninst
+  
+  ; register LyX
+  ${if} $CreateFileAssociations == "true"
+   WriteRegStr SHCTX "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
+  ${endif}
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "RootKey" "$ProductRootKey"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayName" "LyX ${PRODUCT_VERSION}"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "UninstallString" "${PRODUCT_UNINSTALL_EXE}"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayIcon" "${PRODUCT_EXE}"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "URLUpdateInfo" "${PRODUCT_INFO_URL}"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_ABOUT_URL}"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "Publisher" "LyX Team"
+  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "HelpLink" "${PRODUCT_HELP_LINK}"
+  WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoModify" 0x00000001
+  WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
+  
+  ; create start menu entry
+  SetOutPath "$INSTDIR\bin"
+  CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
+  SetOutPath "$INSTDIR"
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "${PRODUCT_UNINSTALL_EXE}"
+  
+  ; create desktop icon
+  ${if} $CreateDesktopIcon == "true"
+   SetOutPath "$INSTDIR\bin"
+   CreateShortCut "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
+  ${endif}
+  
+  ; register the extension .lyx
+  ${if} $CreateFileAssociations == "true"
+   ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
+   ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
+  ${endif}
+  
+  ; create Uninstaller
+  WriteUninstaller "${PRODUCT_UNINSTALL_EXE}"
+  
+  ; test if Python is installed
+  ; only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered
+  ; with outdated Python interpreters
+  ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
+  ${if} $PythonPath == ""
+   StrCpy $PythonPath "$INSTDIR\bin"
+  ${else}
+   StrCpy $PythonPath $PythonPath -1 ; remove the "\" at the end
+  ${endif}
+  
+  ; run LyX's configure script
+  ; create a bat-file to start configure in a console window so that the user see the progress
+  ; of the configuration and to have a signal when the configuration is ready to start LyX
+  ; this is important when LyX is installed together with MiKTeX or when LyX is installed for the first
+  ; time on a computer, because the installation of missing LaTeX-files required by LyX could last minutes
+  ; a batch file is needed because simply calling ExecWait '"$PythonPath\python.exe" "$INSTDIR\Resources\configure.py"'
+  ; creates the config files in $INSTDIR\bin
+  StrCpy $1 $INSTDIR 2 ; get drive letter
+  FileOpen $R1 "$INSTDIR\Resources\configLyX.bat" w
+  FileWrite $R1 '$1$\r$\n\
+  		 cd $INSTDIR\Resources\$\r$\n\
+  		 "$PythonPath\python.exe" configure.py'
+  FileClose $R1
+  MessageBox MB_OK|MB_ICONINFORMATION "$(LatexConfigInfo)"
+  ExecWait '"$INSTDIR\Resources\configLyX.bat"'
+  Delete "$INSTDIR\Resources\configLyX.bat"
+
+SectionEnd
+
+; -------------------------------------------
+
+Function InstDirChange
+	
+  ; determine the new name of the install location,
+  ; Change the old install path to the new one (currently only when the user
+  ; has used the default path settings of the previous LyX-version)
   StrCpy $String $INSTDIR
   StrCpy $Search "${PRODUCT_VERSION_OLD}"
   StrLen $3 $String
@@ -71,66 +161,50 @@ Section "-Installation actions" SecInstallation
   
   ${endif} ; end ${if} $Pointer != "-1" (if the folder is renamed)
   
-  ; register LyX
-  WriteRegStr SHCTX "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "RootKey" "$ProductRootKey"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayName" "LyX ${PRODUCT_VERSION}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "UninstallString" "${PRODUCT_UNINSTALL_EXE}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayIcon" "${PRODUCT_EXE}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "URLUpdateInfo" "${PRODUCT_INFO_URL}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_ABOUT_URL}"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "Publisher" "LyX Team"
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "HelpLink" "${PRODUCT_HELP_LINK}"
-  WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoModify" 0x00000001
-  WriteRegDWORD SHCTX "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
- 
-  ; create start menu entry
-  SetOutPath "$INSTDIR\bin"
-  CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
-  SetOutPath "$INSTDIR"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "${PRODUCT_UNINSTALL_EXE}"
-  
-  ; create desktop icon
-  ${if} $CreateDesktopIcon == "true"
-   SetOutPath "$INSTDIR\bin"
-   CreateShortCut "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
-  ${endif}
-  
-  ; register the extension .lyx
-  ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
-  ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
-  
-  ; create Uninstaller
-  WriteUninstaller "${PRODUCT_UNINSTALL_EXE}"
-  
-  ; test if Python is installed
-  ; only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered
-  ; with outdated Python interpreters
-  ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
-  ${if} $PythonPath == ""
-   StrCpy $PythonPath "$INSTDIR\bin"
-  ${else}
-   StrCpy $PythonPath $PythonPath -1 ; remove the "\" at the end
-  ${endif}
-  
-  ; run LyX's configure script
-  ; create a bat-file to start configure in a console window so that the user see the progress
-  ; of the configuration and to have a signal when the configuration is ready to start LyX
-  ; this is important when LyX is installed together with MiKTeX or when LyX is installed for the first
-  ; time on a computer, because the installation of missing LaTeX-files required by LyX could last minutes
-  ; a batch file is needed because simply calling ExecWait '"$PythonPath\python.exe" "$INSTDIR\Resources\configure.py"'
-  ; creates the config files in $INSTDIR\bin
-  StrCpy $1 $INSTDIR 2 ; get drive letter
-  FileOpen $R1 "$INSTDIR\Resources\configLyX.bat" w
-  FileWrite $R1 '$1$\r$\n\
-  		 cd $INSTDIR\Resources\$\r$\n\
-  		 "$PythonPath\python.exe" configure.py'
-  FileClose $R1
-  MessageBox MB_OK|MB_ICONINFORMATION "$(LatexConfigInfo)"
-  ExecWait '"$INSTDIR\Resources\configLyX.bat"'
-  Delete "$INSTDIR\Resources\configLyX.bat"
+FunctionEnd
 
-SectionEnd
+; -------------------------------------------
+
+Function RefreshRegUninst
+
+  ; Refresh registry setings for the uninstaller
+
+  ; Aspell
+  ReadRegStr $0 SHCTX "Software\Aspell" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  ${endif}
+  
+  ; MiKTeX
+  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+   StrCpy $MiKTeXVersionVar ${MiKTeXDeliveredVersionOld}
+  ${endif}
+  
+  ; JabRef
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersionOld}" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersionOld}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+   StrCpy $JabRefVersionVar ${JabRefVersionOld}
+  ${endif}
+  
+  ; Aiksaurus
+  ReadRegStr $0 SHCTX "Software\Aiksaurus" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+   WriteRegStr HKLM "SOFTWARE\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  ${endif}
+  
+  ; ImageMagick
+  ReadRegStr $0 SHCTX "Software\ImageMagick" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  ${endif}
+  
+  ; Ghostscript and GSview
+  ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  ${endif}
+
+FunctionEnd

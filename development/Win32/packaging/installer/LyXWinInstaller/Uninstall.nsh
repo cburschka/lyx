@@ -57,7 +57,7 @@ Function un.onInit
   ${endif}
 
   ; test if JabRef was installed together with LyX
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX"
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$JabRefVersionVar" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    SectionSetText 4 "JabRef" ; names the corersponding uninstaller section
    StrCpy $JabRefInstalled "JabRef"
@@ -198,7 +198,7 @@ SectionEnd
 Section "un.MiKTeX" un.SecUnMiKTeX
 
  ${if} $MiKTeXInstalled == "MiKTeX" ; only uninstall MiKTeX when it was installed together with LyX 
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MiKTeXDeliveredVersion}" "UninstallString"
+  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$MiKTeXVersionVar" "UninstallString"
   ExecWait "$1" ; run MiKTeX's uninstaller
  ${endif}
 
@@ -209,7 +209,7 @@ SectionEnd
 Section "un.JabRef" un.SecUnJabRef
 
  ${if} $JabRefInstalled == "JabRef" ; only uninstall JabRef when it was installed together with LyX 
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "UninstallString"
+  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$JabRefVersionVar" "UninstallString"
   ExecWait "$1" ; run JabRef's uninstaller
  ${endif}
 

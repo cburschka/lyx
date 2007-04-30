@@ -31,14 +31,44 @@ SetCompressor lzma
 ; load the settings
 !include "Settings.nsh"
 
-!define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
-!define PRODUCT_VERSION_OLD "LyX 1.5beta2-21-04-2007"
-!define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
-
 ;--------------------------------
 ; variables only used in this installer version
 
 Var INSTDIR_NEW
+; Variables used by all installer versions
+Var AspellInstallYes
+Var AspellBaseReg
+Var AspellMessage
+Var ImageMagickPath
+Var JabRefInstalled
+Var JabRefVersionVar
+Var LatexPath
+Var MiKTeXInstalled
+Var MiKTeXVersionVar
+Var PythonPath
+Var Answer
+Var AppPre
+Var AppSuff
+Var AppPath
+Var CreateDesktopIcon
+Var CreateFileAssociations
+Var DictCode
+Var FileName
+Var LangCode
+Var LangCodeSys
+Var LangName
+Var LangNameSys
+Var NewString
+Var OldString
+Var PathPrefix
+Var Pointer
+Var ProductRootKey
+Var RunNumber
+Var StartmenuFolder
+Var String
+Var Search
+Var UserList
+Var UserName
 
 ;--------------------------------
 ; load some NSIS libraries
@@ -64,6 +94,9 @@ Var INSTDIR_NEW
 
 ; list with deleted files
 !include "Deleted.nsh"
+
+; Function for page to install Aspell dictionaries
+!include "Aspell.nsh"
 
 ;--------------------------------
 
@@ -160,6 +193,9 @@ LicenseData "$(LyXLicenseData)"
 Section "!${PRODUCT_NAME}" SecCore
   SectionIn RO
 SectionEnd
+Section "$(SecFileAssocTitle)" SecFileAssoc
+  StrCpy $CreateFileAssociations "true"
+SectionEnd
 Section "$(SecDesktopTitle)" SecDesktop
   StrCpy $CreateDesktopIcon "true"
 SectionEnd
@@ -252,86 +288,7 @@ FunctionEnd
 ;--------------------------------
 ; The Uninstaller
 
-Function un.onInit
-	
-  ; Check that LyX is not currently running
-  FindProcDLL::FindProc "lyx.exe"
-  ${if} $R0 == "1"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
-   Abort
-  ${endif}
-
-  ; set registry root key
-  StrCpy $Answer ""
-  !insertmacro IsUserAdmin $Answer $UserName ; macro from LyXUtils.nsh
-  ${if} $Answer == "yes"
-    SetShellVarContext all
-  ${else}
-   SetShellVarContext current
-  ${endif}
-
-  ; Ascertain whether the user has sufficient privileges to uninstall.
-  ; abort when LyX was installed with admin permissions but the user doesn't have administrator privileges
-  ReadRegStr $0 HKLM "${PRODUCT_UNINST_KEY}" "RootKey"
-  ${if} $0 != ""
-  ${andif} $Answer != "yes"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
-   Abort
-  ${endif}
-  ; abort when LyX couldn't be found in the registry
-  ${if} $0 == "" ; check in HKCU
-   ReadRegStr $0 HKCU "${PRODUCT_UNINST_KEY}" "RootKey"
-   ${if} $0 == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
-   ${endif}
-  ${endif}
+ !include "Uninstall.nsh"
   
-FunctionEnd
-
-Function un.onUninstSuccess
-
- HideWindow ; hides the uninstaller Window when it is ready
-
-FunctionEnd
-
-Section "un.LyX" un.SecUnProgramFiles
-
-  SectionIn RO
-
-  ; delete LaTeX class files that were installed together with LyX
-  FileOpen $R5 "$INSTDIR\Resources\uninstallPaths.dat" r
-  FileRead $R5 $LatexPath
-  FileClose $R5
-  StrCpy $String $LatexPath
-  StrCpy $Search "miktex\bin"
-  StrLen $3 $String
-  Call un.StrPoint ; search the LaTeXPath for the phrase "miktex\bin" (function from LyXUtils.nsh)
-  ${if} $Pointer != "-1" ; if something was found
-   IntOp $Pointer $Pointer - 1 ; jump before the first "\" of "\miktex\bin"
-   StrCpy $String $String "$Pointer" ; $String is now the part before "\miktex\bin"
-   Delete "$String\tex\latex\cv.cls"
-   RMDir /r "$String\tex\latex\lyx"
-   RMDir /r "$String\tex\latex\revtex"
-   RMDir /r "$String\tex\latex\hollywood"
-   RMDir /r "$String\tex\latex\broadway"
-   ExecWait "$LatexPath\initexmf --update-fndb"
-  ${endif}
-
-  ; delete start menu folder
-  ReadRegStr $0 SHCTX "${PRODUCT_UNINST_KEY}" "StartMenu"
-  RMDir /r "$0"
-  ; delete desktop icon
-  Delete "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk"
-  ; delete registry entries
-  DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
-  
-  ; run the installer of the old LyX version to clean up the third party products
-  WriteRegStr SHCTX "${PRODUCT_UNINST_KEY}" "RootKey" "Start" ; dummy entry to let the uninstaller start
-  Exec "${PRODUCT_UNINSTALL_EXE_OLD}"
-  
-SectionEnd
-
 
 ; eof

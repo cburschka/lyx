@@ -3,18 +3,27 @@
 ; The '-' makes the section invisible.
 Section "-Installation actions" SecInstallation
 
+  ; dummy actions to avoid NSIS warnings
+  StrCpy $FileName ""
+  StrCpy $NewString ""
+  StrCpy $OldString ""
+  
   ; extract all files
   SetOutPath "$INSTDIR"
   File /r "${PRODUCT_SOURCEDIR}\bin"
   File /r "${PRODUCT_SOURCEDIR}\etc"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
 
+  ; install GhostScript if it not installed
   Call Ghostscript
 
+  ; install ImageMagick if it not installed
   Call ImageMagick
 
+  ; install Aspell if it not installed
   Call Aspell
 
+  ; install Aiksaurus if it not installed
   Call Aiksaurus
 
   ; install the LaTeX class files that are delivered with LyX
@@ -76,6 +85,10 @@ Section "-Installation actions" SecInstallation
   FileOpen $R1 "$INSTDIR\Resources\uninstallPaths.dat" w
   FileWrite $R1 '$LaTeXPath'
   FileClose $R1
+
+  ; prepare variables for uninstaller
+  StrCpy $MiKTeXVersionVar ${MiKTeXDeliveredVersion}
+  StrCpy $JabRefVersionVar ${JabRefVersion}
 
 SectionEnd
 

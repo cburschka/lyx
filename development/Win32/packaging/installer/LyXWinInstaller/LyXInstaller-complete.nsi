@@ -31,13 +31,6 @@ CRCCheck force
 ; load the settings
 !include "Settings.nsh"
 
-!define GSviewInstall "external\gsv48w32.exe"
-!define JabRefInstall "external\JabRef-2.2-Setup.exe"
-!define JabRefVersion "JabRef 2.2"
-!define MiKTeXDeliveredVersion "MiKTeX 2.5"
-!define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.5.2580.exe"
-!define PRODUCT_VERSION_OLD "none" ; only here to avoid warning message - variable only used in Update installer version
-
 ;--------------------------------
 ; variables only used in this installer version
 
@@ -45,32 +38,54 @@ Var DelPythonFiles
 Var GhostscriptPath
 Var AiksaurusPath
 Var AspellPath
-Var AspellInstallYes
-Var AspellBaseReg
-Var AspellMessage
 Var Acrobat
 Var PSVPath
 Var EditorPath
 Var ImageEditorPath
 Var BibTeXEditorPath
-Var JabRefInstalled
-Var LangName
-Var LangNameSys
-Var LangCode
-Var LangCodeSys
 Var LangEncoding
 Var LangSysEncoding
-Var DictCode
 Var MissedProg
 Var LaTeXName
 Var MiKTeXVersion
-Var MiKTeXInstalled
 Var MiKTeXUser
 Var MiKTeXPath
 Var InstallGSview
 Var InstallJabRef
+; Variables used by all installer versions
+Var AspellInstallYes
+Var AspellBaseReg
+Var AspellMessage
+Var ImageMagickPath
+Var JabRefInstalled
+Var JabRefVersionVar
+Var LatexPath
+Var MiKTeXInstalled
+Var MiKTeXVersionVar
+Var PythonPath
+Var Answer
+Var AppPre
+Var AppSuff
+Var AppPath
+Var CreateDesktopIcon
 Var CreateFileAssociations
+Var DictCode
+Var FileName
+Var LangCode
+Var LangCodeSys
+Var LangName
+Var LangNameSys
+Var NewString
+Var OldString
+Var PathPrefix
+Var Pointer
+Var ProductRootKey
 Var RunNumber
+Var StartmenuFolder
+Var String
+Var Search
+Var UserList
+Var UserName
 
 ;--------------------------------
 ; load some NSIS libraries
