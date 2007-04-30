@@ -1517,6 +1517,7 @@ build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
     or build_install or 'all' in targets or build_installer
 build_lyxbase = build_lyx or 'lyxbase' in targets
 update_po = 'update_po' in targets
+update_manifest = 'update_manifest' in targets
 build_po = 'po' in targets or build_install or 'all' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
 build_msvs_projects = use_vc and 'msvs_projects' in targets
@@ -1977,6 +1978,66 @@ if build_msvs_projects:
         full_target = File(env.subst('$BUILDDIR/lyx$PROGSUFFIX')).abspath)
 
 
+if update_manifest:
+    #
+    # update scons_manifest.py
+    #
+    # When you run 'scons update_manifest', it tells you which files are missing
+    # and which files are not in the source tree. It also generates a 
+    # scons_manifest.py.new file with all the missing files added to 
+    # XXX_extra_files. It will *not* change other sections of existing
+    # manifest.py
+    #
+    print 'Validate and updating development/scons/scons_manifest.py.new'
+    #
+    manifest = open(env.File('$TOP_SRCDIR/development/scons/scons_manifest.py.new').abspath, 'w')
+    print >> manifest, 'from SCons.Util import Split\n'
+    #
+    ignore_dirs = ['boost/boost', 'm4', 'development']
+    ignore_types = ['.svn', '.deps', '.cache', '.tmp', 'bak', '.gmo', 'debug', 'release']
+    for root,path,files in os.walk(env.Dir('$TOP_SRCDIR').abspath):
+        if os.path.split(root)[-1][0] == '.' \
+            or True in [x in root for x in ignore_types] \
+            or True in [utils.isSubDir(root, x) for x in ignore_dirs]:
+            continue
+        dirname = utils.relativePath(root, env.subst('$TOP_SRCDIR')).replace(os.sep, '_')
+        # files in the current manifest.py
+        cur_files = []
+        for ext in ['_pre_files', '_post_files', '_moc_files', '_files', '_header_files', '_extra_files']:
+            if dirname + ext in locals():
+                cur_files.extend(eval(dirname + ext))
+        cur_files.sort()
+        # compare files with cur_files
+        files = [x for x in files if x[0] != '.' and True not in [y in x for y in ignore_types]]
+        files.sort()
+        if cur_files != files:
+            missing = []
+            for f in files:
+                if f not in cur_files:
+                    missing.append(f)
+            extra = []
+            for f in cur_files:
+                if f not in files:
+                    extra.append(f)
+            if len(missing) > 0:
+                print 'Missing: %s in %s' % (', '.join(missing), root)
+                if dirname + '_extra_files' in locals():
+                    exec('%s_extra_files.extend(missing)' % dirname)
+                else:
+                    exec('%s_extra_files = missing' % dirname)
+            if len(extra) > 0:
+                print 'Extra: %s in %s' % (', '.join(extra), root)
+        # write to a new manifest file
+        for ext in ['_pre_files', '_post_files', '_moc_files', '_files', '_header_files', '_extra_files']:
+            if dirname + ext in locals():
+                exec('%s%s.sort()' % (dirname, ext))
+                print >> manifest, "%s%s = Split('''\n   " % (dirname, ext),
+                print >> manifest, eval(r"'\n    '.join(%s%s)" % (dirname, ext))
+                print >> manifest, "''')\n\n"
+    manifest.close()
+    Alias('update_manifest', None)
+
+
 if update_po:
     #
     # update po files
@@ -1989,7 +2050,7 @@ if update_po:
         Exit(1)
     # rebuild POTFILES.in
     POTFILES_in = env.potfiles('$TOP_SRCDIR/po/POTFILES.in', 
-        ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files if x != 'version.cpp'] + \
+        ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files + src_extra_files if x != 'version.cpp'] + \
         ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files + src_support_extra_files if x != 'Package.cpp'] + \
         ['$TOP_SRCDIR/src/mathed/%s' % x for x in  src_mathed_header_files + src_mathed_files] + \
         ['$TOP_SRCDIR/src/insets/%s' % x for x in  src_insets_header_files + src_insets_files] + \
@@ -1998,9 +2059,7 @@ if update_po:
         ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files + src_frontends_controllers_files] + \
         ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files + src_frontends_qt4_files + src_frontends_qt4_moc_files] + \
         ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files + src_client_files ]  + \
-        ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]  + \
-        ['$TOP_SRCDIR/src/version.cpp.in', '$TOP_SRCDIR/src/support/Package.cpp.in',\
-          '$TOP_SRCDIR/src/ASpell.cpp', '$TOP_SRCDIR/src/ISpell.cpp', '$TOP_SRCDIR/src/PSpell.cpp']
+        ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]
     )
     Alias('update_po', POTFILES_in)
     # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot

@@ -40,10 +40,19 @@ def relativePath(path, base):
     path2 = os.path.normpath(os.path.realpath(base)).split(os.sep)
     if path1[:len(path2)] != path2:
         print "Path %s is not under top source directory" % path
+    if len(path2) == len(path1):
+        return ''
     path3 = os.path.join(*path1[len(path2):]);
     # replace all \ by / such that we get the same comments on Windows and *nix
     path3 = path3.replace('\\', '/')
     return path3
+
+
+def isSubDir(path, base):
+    '''Whether or not path is a subdirectory of base'''
+    path1 = os.path.normpath(os.path.realpath(path)).split(os.sep)
+    path2 = os.path.normpath(os.path.realpath(base)).split(os.sep)
+    return len(path2) <= len(path1) and path1[:len(path2)] == path2
 
 
 def writeToFile(filename, lines, append = False):
