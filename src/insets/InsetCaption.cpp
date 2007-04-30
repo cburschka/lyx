@@ -51,6 +51,14 @@ namespace lyx {
 
 using support::bformat;
 
+InsetCaption::InsetCaption(InsetCaption const & ic)
+	: InsetText(ic), textclass_(ic.textclass_)
+{
+	setAutoBreakRows(true);
+	setDrawFrame(true);
+	setFrameColor(Color::captionframe);
+}
+
 InsetCaption::InsetCaption(BufferParams const & bp)
 	: InsetText(bp), textclass_(bp.getTextClass())
 {

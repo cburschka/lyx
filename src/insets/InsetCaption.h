@@ -23,6 +23,7 @@ namespace lyx {
 class InsetCaption : public InsetText {
 public:
 	///
+	InsetCaption(InsetCaption const &);
 	InsetCaption(BufferParams const &);
 	///
 	virtual ~InsetCaption() {}
