@@ -185,8 +185,6 @@ lyx_SOURCES = \
 	Server.h \
 	ServerSocket.cpp \
 	ServerSocket.h \
-	lyx_sty.cpp \
-	lyx_sty.h \
 	LyXVC.cpp \
 	LyXVC.h \
 	MenuBackend.cpp \

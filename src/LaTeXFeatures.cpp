@@ -24,7 +24,6 @@
 #include "FloatList.h"
 #include "Language.h"
 #include "Lexer.h"
-#include "lyx_sty.h"
 #include "LyXRC.h"
 
 #include "support/docstream.h"
@@ -46,6 +45,139 @@ using std::list;
 using std::ostream;
 using std::ostringstream;
 using std::set;
+
+/////////////////////////////////////////////////////////////////////
+//
+// Strings
+//
+/////////////////////////////////////////////////////////////////////
+
+//\NeedsTeXFormat{LaTeX2e}
+//\ProvidesPackage{lyx}[1996/01/11 LLE v0.2 (LyX LaTeX Extensions)]
+//\message{LyX LaTeX Extensions (LLE v0.2) of 11-Jan-1996.}
+
+static string const lyx_def =
+	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}";
+
+static string const lyxline_def =
+	"\\newcommand{\\lyxline}[1][1pt]{%\n"
+	"  \\par\\noindent%\n"
+	"  \\rule[.5ex]{\\linewidth}{#1}\\par}";
+
+static string const noun_def = "\\newcommand{\\noun}[1]{\\textsc{#1}}";
+
+static string const lyxarrow_def =
+	"\\newcommand{\\lyxarrow}{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}";
+
+// for quotes without babel. This does not give perfect results, but
+// anybody serious about non-english quotes should use babel (JMarc).
+
+static string const quotedblbase_def =
+	"\\ProvideTextCommandDefault{\\quotedblbase}{%\n"
+	"  \\raisebox{-1.4ex}[1ex][.5ex]{\\textquotedblright}%\n"
+	"  \\penalty10000\\hskip0em\\relax%\n"
+	"}";
+
+static string const quotesinglbase_def =
+	"\\ProvideTextCommandDefault{\\quotesinglbase}{%\n"
+	"  \\raisebox{-1.4ex}[1ex][.5ex]{\\textquoteright}%\n"
+	"  \\penalty10000\\hskip0em\\relax%\n"
+	"}";
+
+static string const guillemotleft_def =
+	"\\ProvideTextCommandDefault{\\guillemotleft}{%\n"
+	"  {\\usefont{U}{lasy}{m}{n}\\char'50\\kern-.15em\\char'50}%\n"
+	"\\penalty10000\\hskip0pt\\relax%\n"
+	"}";
+
+static string const guillemotright_def =
+	"\\ProvideTextCommandDefault{\\guillemotright}{%\n"
+	"  \\penalty10000\\hskip0pt%\n"
+	"  {\\usefont{U}{lasy}{m}{n}\\char'51\\kern-.15em\\char'51}%\n"
+	"}";
+
+static string const guilsinglleft_def =
+	"\\ProvideTextCommandDefault{\\guilsinglleft}{%\n"
+	"  {\\usefont{U}{lasy}{m}{n}\\char'50}%\n"
+	"  \\penalty10000\\hskip0pt\\relax%\n"
+	"}";
+
+static string const guilsinglright_def =
+	"\\ProvideTextCommandDefault{\\guilsinglright}{%\n"
+	"  \\penalty10000\\hskip0pt%\n"
+	"  {\\usefont{U}{lasy}{m}{n}\\char'51}%\n"
+	"}";
+
+static string const paragraphleftindent_def =
+	"\\newenvironment{LyXParagraphLeftIndent}[1]%\n"
+	"{\n"
+	"  \\begin{list}{}{%\n"
+	"    \\setlength{\\topsep}{0pt}%\n"
+	"    \\addtolength{\\leftmargin}{#1}\n"
+// ho hum, yet more things commented out with no hint as to why they
+// weren't just removed
+//	"%%    \\addtolength{\\leftmargin}{#1\\textwidth}\n"
+//	"%%    \\setlength{\\textwidth}{#2\\textwidth}\n"
+//	"%%    \\setlength\\listparindent\\parindent%\n"
+//	"%%    \\setlength\\itemindent\\parindent%\n"
+	"    \\setlength{\\parsep}{0pt plus 1pt}%\n"
+	"  }\n"
+	"  \\item[]\n"
+	"}\n"
+	"{\\end{list}}\n";
+
+static string const floatingfootnote_def =
+	"%% Special footnote code from the package 'stblftnt.sty'\n"
+	"%% Author: Robin Fairbairns -- Last revised Dec 13 1996\n"
+	"\\let\\SF@@footnote\\footnote\n"
+	"\\def\\footnote{\\ifx\\protect\\@typeset@protect\n"
+	"    \\expandafter\\SF@@footnote\n"
+	"  \\else\n"
+	"    \\expandafter\\SF@gobble@opt\n"
+	"  \\fi\n"
+	"}\n"
+	"\\expandafter\\def\\csname SF@gobble@opt \\endcsname{\\@ifnextchar[%]\n"
+	"  \\SF@gobble@twobracket\n"
+	"  \\@gobble\n"
+	"}\n"
+	"\\edef\\SF@gobble@opt{\\noexpand\\protect\n"
+	"  \\expandafter\\noexpand\\csname SF@gobble@opt \\endcsname}\n"
+	"\\def\\SF@gobble@twobracket[#1]#2{}\n";
+
+static string const boldsymbol_def =
+	"%% Bold symbol macro for standard LaTeX users\n"
+	"\\providecommand{\\boldsymbol}[1]{\\mbox{\\boldmath $#1$}}\n";
+
+static string const binom_def =
+	"%% Binom macro for standard LaTeX users\n"
+	"\\newcommand{\\binom}[2]{{#1 \\choose #2}}\n";
+
+static string const mathcircumflex_def =
+	"%% For printing a cirumflex inside a formula\n"
+	"\\newcommand{\\mathcircumflex}[0]{\\mbox{\\^{}}}\n";
+
+static string const tabularnewline_def =
+	"%% Because html converters don't know tabularnewline\n"
+	"\\providecommand{\\tabularnewline}{\\\\}\n";
+
+static string const lyxgreyedout_def =
+	"%% The greyedout annotation environment\n"
+	"\\newenvironment{lyxgreyedout}{\\textcolor[gray]{0.8}\\bgroup}{\\egroup}\n";
+
+// We want to omit the file extension for includegraphics, but this does not
+// work when the filename contains other dots.
+// Idea from http://www.tex.ac.uk/cgi-bin/texfaq2html?label=unkgrfextn
+static string const lyxdot_def =
+	"%% A simple dot to overcome graphicx limitations\n"
+	"\\newcommand{\\lyxdot}{.}\n";
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// LaTeXFeatures
+//
+/////////////////////////////////////////////////////////////////////
 
 LaTeXFeatures::PackagesList LaTeXFeatures::packages_;
 
