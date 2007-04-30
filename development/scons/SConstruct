@@ -1642,11 +1642,11 @@ if build_support:
     print "Processing files in src/support..."
 
     frontend_env.Depends('$BUILDDIR/common/support/Package.cpp', '$BUILDDIR/common/config.h')
-    env.substFile('$BUILDDIR/common/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
+    Package_cpp = env.substFile('$BUILDDIR/common/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
 
     support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
-        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files],
+        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files] + Package_cpp,
     )
     Alias('support', support)
 
@@ -1823,7 +1823,7 @@ if build_lyxbase:
     print "Processing files in src..."
 
     env.Depends('$BUILDDIR/common/version.cpp', '$BUILDDIR/common/config.h')
-    env.substFile('$BUILDDIR/common/version.cpp', '$TOP_SRCDIR/src/version.cpp.in')
+    version_cpp = env.substFile('$BUILDDIR/common/version.cpp', '$TOP_SRCDIR/src/version.cpp.in')
 
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
         src_post_files.append('ASpell.cpp')
@@ -1836,7 +1836,7 @@ if build_lyxbase:
     # so I exclude main.cpp from lyxbase
     lyxbase_pre = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_pre',
-        source = ['$BUILDDIR/common/%s' % x for x in src_pre_files]
+        source = ['$BUILDDIR/common/%s' % x for x in src_pre_files] + version_cpp
     )
     lyxbase_post = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_post',
@@ -1914,36 +1914,6 @@ if build_msvs_projects:
         )
         Alias('msvs_projects', proj)
     #
-    boost_src = []
-    for lib in boost_libs:
-        boost_src += ['$TOP_SRCDIR/boost/libs/%s/src/%s' % (lib, x) for x in eval('boost_libs_%s_src_files' % lib)]
-    build_project('boost', src = boost_src)
-    #
-    build_project('intl', src = ['$TOP_SRCDIR/intl/%s' % x for x in intl_files], 
-        inc = ['$TOP_SRCDIR/intl/%s' % x for x in intl_header_files])
-    #
-    build_project('support', src = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files], 
-        inc = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files])
-    #
-    build_project('mathed', src = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files], 
-        inc = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files])
-    #
-    build_project('insets', src = ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files], 
-        inc = ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files])
-    #
-    build_project('frontends', src = ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files], 
-        inc = ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files])
-    #
-    build_project('graphics', src = ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files], 
-        inc = ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files])
-    #
-    build_project('controllers', src = ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files], 
-        inc = ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files])
-    #
-    build_project('qt4', src = ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
-        inc = ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
-        res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files])
-    #
     build_project('client', src = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_files],
         inc = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files],
         rebuildTargetOnly = False,
@@ -1954,11 +1924,9 @@ if build_msvs_projects:
         rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
     #
-    build_project('lyxbase', src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files],
-        inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files])
     build_project('lyx', 
-        src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \
-            ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files] + \
+        src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files + ['version.cpp']] + \
+            ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files + ['Package.cpp'] ] + \
             ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_files] + \
             ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files] + \
             ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
@@ -1988,13 +1956,16 @@ if update_manifest:
     # XXX_extra_files. It will *not* change other sections of existing
     # manifest.py
     #
-    print 'Validate and updating development/scons/scons_manifest.py.new'
+    print 'Validating development/scons/scons_manifest.py...'
     #
     manifest = open(env.File('$TOP_SRCDIR/development/scons/scons_manifest.py.new').abspath, 'w')
     print >> manifest, 'from SCons.Util import Split\n'
     #
-    ignore_dirs = ['boost/boost', 'm4', 'development']
-    ignore_types = ['.svn', '.deps', '.cache', '.tmp', 'bak', '.gmo', '.pyc']
+    ignore_dirs = ['boost/boost', 'm4', 'development', 
+        utils.relativePath(env.Dir('$BUILDDIR').abspath, env.Dir('$TOP_SRCDIR').abspath)]
+    ignore_types = ['.svn', '.deps', '.cache', '.tmp', '.bak', '.gmo', '.pot',
+        '.pyc', '.pyo', '.o', '_moc.cpp', 'Makefile.in', 'config.h.in',
+        'LaTeXConfig.lyx', 'version.cpp', 'Package.cpp']
     ext_types = ['_header_files', '_files', '_pre_files', '_post_files', '_moc_files', 
         '_copied_files', '_copied_header_files', '_extra_header_files', '_extra_src_files', '_extra_files']
     for root,path,files in os.walk(env.Dir('$TOP_SRCDIR').abspath):
@@ -2003,14 +1974,16 @@ if update_manifest:
             or True in [utils.isSubDir(root, x) for x in ignore_dirs]:
             continue
         dirname = utils.relativePath(root, env.subst('$TOP_SRCDIR')).replace(os.sep, '_')
+        if dirname == '':
+            dirname = 'TOP'
         # files in the current manifest.py
         cur_files = []
         for ext in ext_types:
-            if dirname + ext in locals():
+            if 'copied' not in ext and dirname + ext in locals():
                 cur_files.extend(eval(dirname + ext))
         cur_files.sort()
         # compare files with cur_files
-        files = [x for x in files if x[0] != '.' and True not in [y in x for y in ignore_types]]
+        files = [x for x in files if x[0] != '.' and True not in [len(x) >= len(y) and x[-len(y):] == y for y in ignore_types]]
         files.sort()
         if cur_files != files:
             missing = []
@@ -2053,9 +2026,9 @@ if update_po:
     # rebuild POTFILES.in
     POTFILES_in = env.potfiles('$TOP_SRCDIR/po/POTFILES.in', 
         ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files + \
-            src_extra_src_files if x != 'version.cpp'] + \
+            src_extra_src_files] + \
         ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files + \
-            src_support_extra_header_files + src_support_extra_src_files if x != 'Package.cpp'] + \
+            src_support_extra_header_files + src_support_extra_src_files] + \
         ['$TOP_SRCDIR/src/mathed/%s' % x for x in  src_mathed_header_files + src_mathed_files] + \
         ['$TOP_SRCDIR/src/insets/%s' % x for x in  src_insets_header_files + src_insets_files] + \
         ['$TOP_SRCDIR/src/frontends/%s' % x for x in  src_frontends_header_files + src_frontends_files] + \

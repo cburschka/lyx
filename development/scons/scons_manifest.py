@@ -1,6 +1,6 @@
 from SCons.Util import Split
 
-_extra_files = Split('''
+TOP_extra_files = Split('''
     ABOUT-NLS
     ANNOUNCE
     COPYING
@@ -243,7 +243,6 @@ src_pre_files = Split('''
     tex-accent.cpp
     tex-strings.cpp
     toc.cpp
-    version.cpp
 ''')
 
 
@@ -346,7 +345,6 @@ src_support_files = Split('''
     ForkedCallQueue.cpp
     Forkedcall.cpp
     ForkedcallsController.cpp
-    Package.cpp
     Path.cpp
     Systemcall.cpp
     abort.cpp
@@ -808,6 +806,7 @@ src_frontends_controllers_files = Split('''
 
 
 src_frontends_controllers_extra_files = Split('''
+    BCView.tmpl
     ChangeLog
     Makefile.am
     pch.h
@@ -1283,8 +1282,6 @@ intl_header_files = Split('''
     gettextP.h
     gmo.h
     hash-string.h
-    libgnuintl.h
-    libintl.h
     loadinfo.h
     localcharset.h
     os2compat.h
@@ -1328,7 +1325,6 @@ intl_files = Split('''
 
 intl_extra_files = Split('''
     ChangeLog
-    Makefile.in
     VERSION
     config.charset
     libgnuintl.h.in
