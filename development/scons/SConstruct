@@ -1994,7 +1994,9 @@ if update_manifest:
     print >> manifest, 'from SCons.Util import Split\n'
     #
     ignore_dirs = ['boost/boost', 'm4', 'development']
-    ignore_types = ['.svn', '.deps', '.cache', '.tmp', 'bak', '.gmo', 'debug', 'release']
+    ignore_types = ['.svn', '.deps', '.cache', '.tmp', 'bak', '.gmo', '.pyc', 'debug', 'release']
+    ext_types = ['_header_files', '_files', '_pre_files', '_post_files', '_moc_files', 
+        '_copied_files', '_copied_header_files', '_extra_header_files', '_extra_src_files', '_extra_files']
     for root,path,files in os.walk(env.Dir('$TOP_SRCDIR').abspath):
         if os.path.split(root)[-1][0] == '.' \
             or True in [x in root for x in ignore_types] \
@@ -2003,7 +2005,7 @@ if update_manifest:
         dirname = utils.relativePath(root, env.subst('$TOP_SRCDIR')).replace(os.sep, '_')
         # files in the current manifest.py
         cur_files = []
-        for ext in ['_pre_files', '_post_files', '_moc_files', '_files', '_header_files', '_extra_files']:
+        for ext in ext_types:
             if dirname + ext in locals():
                 cur_files.extend(eval(dirname + ext))
         cur_files.sort()
@@ -2028,7 +2030,7 @@ if update_manifest:
             if len(extra) > 0:
                 print 'Extra: %s in %s' % (', '.join(extra), root)
         # write to a new manifest file
-        for ext in ['_pre_files', '_post_files', '_moc_files', '_files', '_header_files', '_extra_files']:
+        for ext in ext_types:
             if dirname + ext in locals():
                 exec('%s%s.sort()' % (dirname, ext))
                 print >> manifest, "%s%s = Split('''\n   " % (dirname, ext),
@@ -2050,8 +2052,10 @@ if update_po:
         Exit(1)
     # rebuild POTFILES.in
     POTFILES_in = env.potfiles('$TOP_SRCDIR/po/POTFILES.in', 
-        ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files + src_extra_files if x != 'version.cpp'] + \
-        ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files + src_support_extra_files if x != 'Package.cpp'] + \
+        ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files + \
+            src_extra_src_files if x != 'version.cpp'] + \
+        ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files + \
+            src_support_extra_header_files + src_support_extra_src_files if x != 'Package.cpp'] + \
         ['$TOP_SRCDIR/src/mathed/%s' % x for x in  src_mathed_header_files + src_mathed_files] + \
         ['$TOP_SRCDIR/src/insets/%s' % x for x in  src_insets_header_files + src_insets_files] + \
         ['$TOP_SRCDIR/src/frontends/%s' % x for x in  src_frontends_header_files + src_frontends_files] + \

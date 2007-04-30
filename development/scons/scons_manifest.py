@@ -1,97 +1,316 @@
 from SCons.Util import Split
 
-intl_header_files = Split('''
-    eval-plural.h
-    gettextP.h
-    gmo.h
-    hash-string.h
-    libgnuintl.h
-    libintl.h
-    loadinfo.h
-    localcharset.h
-    os2compat.h
-    plural-exp.h
-    printf-args.h
-    printf-parse.h
-    relocatable.h
-    vasnprintf.h
-    vasnwprintf.h
-    wprintf-parse.h
-    xsize.h
+_extra_files = Split('''
+    ABOUT-NLS
+    ANNOUNCE
+    COPYING
+    ChangeLog
+    ChangeLog.1
+    INSTALL
+    INSTALL.MacOSX
+    INSTALL.Win32
+    INSTALL.autoconf
+    INSTALL.scons
+    Makefile.am
+    NEWS
+    OLD-CHANGES
+    README
+    README.Cygwin
+    README.Win32
+    README.localization
+    RELEASE-NOTES
+    UPGRADING
+    autogen.sh
+    config.log
+    configure.ac
+    lyx.man
+    rename.sh
+    scons_lyx.log
 ''')
 
 
-intl_files = Split('''
-    bindtextdom.c
-    dcgettext.c
-    dcigettext.c
-    dcngettext.c
-    dgettext.c
-    dngettext.c
-    explodename.c
-    finddomain.c
-    gettext.c
-    intl-compat.c
-    l10nflist.c
-    loadmsgcat.c
-    localcharset.c
-    localealias.c
-    localename.c
-    log.c
-    ngettext.c
-    osdep.c
-    plural-exp.c
-    plural.c
-    printf.c
-    relocatable.c
-    textdomain.c
+src_header_files = Split('''
+    ASpell_local.h
+    Author.h
+    Bidi.h
+    Box.h
+    BranchList.h
+    Buffer.h
+    BufferList.h
+    BufferParams.h
+    BufferView.h
+    Bullet.h
+    Changes.h
+    Chktex.h
+    Color.h
+    Converter.h
+    ConverterCache.h
+    CoordCache.h
+    Counters.h
+    Cursor.h
+    CursorSlice.h
+    CutAndPaste.h
+    DepTable.h
+    Dimension.h
+    DispatchResult.h
+    DocIterator.h
+    Encoding.h
+    ErrorList.h
+    Exporter.h
+    FloatList.h
+    Floating.h
+    Font.h
+    FontIterator.h
+    Format.h
+    FuncRequest.h
+    FuncStatus.h
+    Graph.h
+    ISpell.h
+    Importer.h
+    InsetIterator.h
+    InsetList.h
+    Intl.h
+    KeyMap.h
+    KeySequence.h
+    KmodInfo.h
+    LaTeX.h
+    LaTeXFeatures.h
+    Language.h
+    Layout.h
+    Length.h
+    Lexer.h
+    LyX.h
+    LyXAction.h
+    LyXFunc.h
+    LyXRC.h
+    LyXVC.h
+    MenuBackend.h
+    Messages.h
+    MetricsInfo.h
+    Mover.h
+    OutputParams.h
+    PSpell.h
+    ParIterator.h
+    Paragraph.h
+    ParagraphList.h
+    ParagraphMetrics.h
+    ParagraphParameters.h
+    PrinterParams.h
+    Row.h
+    RowList_fwd.h
+    Section.h
+    Server.h
+    ServerSocket.h
+    Session.h
+    Spacing.h
+    SpellBase.h
+    TexRow.h
+    Text.h
+    TextClass.h
+    TextClassList.h
+    TextMetrics.h
+    Thesaurus.h
+    TocBackend.h
+    ToolbarBackend.h
+    Trans.h
+    TransState.h
+    Undo.h
+    VCBackend.h
+    VSpace.h
+    Variables.h
+    WordLangTuple.h
+    buffer_funcs.h
+    bufferview_funcs.h
+    callback.h
+    debug.h
+    factory.h
+    gettext.h
+    lengthcommon.h
+    lfuns.h
+    lyx_sty.h
+    lyxfind.h
+    lyxlayout_ptr_fwd.h
+    output.h
+    output_docbook.h
+    output_latex.h
+    output_plaintext.h
+    paper.h
+    paragraph_funcs.h
+    rowpainter.h
+    sgml.h
+    tex-accent.h
+    tex-strings.h
+    toc.h
+    update_flags.h
+    version.h
 ''')
 
 
-boost_libs_signals_src_files = Split('''
-    connection.cpp
-    named_slot_map.cpp
-    signal_base.cpp
-    slot.cpp
-    trackable.cpp
+src_pre_files = Split('''
+    Author.cpp
+    Bidi.cpp
+    BranchList.cpp
+    Buffer.cpp
+    BufferList.cpp
+    BufferParams.cpp
+    BufferView.cpp
+    Bullet.cpp
+    Changes.cpp
+    Chktex.cpp
+    Color.cpp
+    Converter.cpp
+    ConverterCache.cpp
+    CoordCache.cpp
+    Counters.cpp
+    Cursor.cpp
+    CursorSlice.cpp
+    CutAndPaste.cpp
+    DepTable.cpp
+    DocIterator.cpp
+    Encoding.cpp
+    ErrorList.cpp
+    Exporter.cpp
+    FloatList.cpp
+    Floating.cpp
+    Font.cpp
+    FontIterator.cpp
+    Format.cpp
+    FuncRequest.cpp
+    FuncStatus.cpp
+    Graph.cpp
+    Importer.cpp
+    InsetIterator.cpp
+    InsetList.cpp
+    Intl.cpp
+    KeyMap.cpp
+    KeySequence.cpp
+    LaTeX.cpp
+    LaTeXFeatures.cpp
+    Language.cpp
+    Layout.cpp
+    Length.cpp
+    Lexer.cpp
+    LyX.cpp
+    LyXAction.cpp
+    LyXFunc.cpp
+    LyXRC.cpp
+    LyXVC.cpp
+    MenuBackend.cpp
+    Messages.cpp
+    MetricsInfo.cpp
+    Mover.cpp
+    OutputParams.cpp
+    ParIterator.cpp
+    Paragraph.cpp
+    ParagraphMetrics.cpp
+    ParagraphParameters.cpp
+    Row.cpp
+    Server.cpp
+    ServerSocket.cpp
+    Session.cpp
+    Spacing.cpp
+    TexRow.cpp
+    Text.cpp
+    Text2.cpp
+    Text3.cpp
+    TextClass.cpp
+    TextClassList.cpp
+    TextMetrics.cpp
+    TocBackend.cpp
+    ToolbarBackend.cpp
+    Trans.cpp
+    TransState.cpp
+    Undo.cpp
+    VCBackend.cpp
+    VSpace.cpp
+    boost.cpp
+    buffer_funcs.cpp
+    bufferview_funcs.cpp
+    callback.cpp
+    debug.cpp
+    factory.cpp
+    gettext.cpp
+    lengthcommon.cpp
+    lyx_sty.cpp
+    lyxfind.cpp
+    output.cpp
+    output_docbook.cpp
+    output_latex.cpp
+    output_plaintext.cpp
+    paragraph_funcs.cpp
+    rowpainter.cpp
+    sgml.cpp
+    tex-accent.cpp
+    tex-strings.cpp
+    toc.cpp
+    version.cpp
 ''')
 
 
-boost_libs_regex_src_files = Split('''
-    c_regex_traits.cpp
-    cpp_regex_traits.cpp
-    cregex.cpp
-    fileiter.cpp
-    instances.cpp
-    posix_api.cpp
-    regex.cpp
-    regex_debug.cpp
-    regex_raw_buffer.cpp
-    regex_traits_defaults.cpp
-    w32_regex_traits.cpp
-    wide_posix_api.cpp
-    winstances.cpp
+src_post_files = Split('''
+    Box.cpp
+    Dimension.cpp
+    PrinterParams.cpp
+    SpellBase.cpp
+    Thesaurus.cpp
 ''')
 
 
-boost_libs_filesystem_src_files = Split('''
-    exception.cpp
-    operations.cpp
-    path.cpp
-    portability.cpp
+src_extra_src_files = Split('''
+    ASpell.cpp
+    ISpell.cpp
+    PSpell.cpp
+    Section.cpp
+    Variables.cpp
+    main.cpp
+    stamp-h.in
+    version.cpp.in
 ''')
 
 
-boost_libs_iostreams_src_files = Split('''
-    file_descriptor.cpp
-    mapped_file.cpp
-    zlib.cpp
+src_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    pch.h
+''')
+
+
+src_client_header_files = Split('''
+    Messages.h
+    debug.h
+''')
+
+
+src_client_files = Split('''
+    Messages.cpp
+    boost.cpp
+    client.cpp
+    debug.cpp
+    gettext.cpp
+''')
+
+
+src_client_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    lyxclient.man
+    pch.h
 ''')
 
 
 src_support_header_files = Split('''
+    ExceptionMessage.h
+    FileFilterList.h
     FileMonitor.h
+    FileName.h
+    ForkedCallQueue.h
+    Forkedcall.h
+    ForkedcallsController.h
+    Package.h
+    Path.h
     RandomAccessList.h
+    Systemcall.h
+    Translator.h
     convert.h
     copied_ptr.h
     cow_ptr.h
@@ -99,13 +318,7 @@ src_support_header_files = Split('''
     docstream.h
     docstring.h
     environment.h
-    ExceptionMessage.h
-    FileFilterList.h
-    FileName.h
     filetools.h
-    Forkedcall.h
-    ForkedCallQueue.h
-    ForkedcallsController.h
     fs_extras.h
     limited_stack.h
     lstrings.h
@@ -115,15 +328,11 @@ src_support_header_files = Split('''
     lyxtime.h
     os.h
     os_win32.h
-    Package.h
-    Path.h
     qstring_helpers.h
     socktools.h
     std_istream.h
     std_ostream.h
-    Systemcall.h
     textutils.h
-    Translator.h
     types.h
     unicode.h
     userinfo.h
@@ -131,7 +340,15 @@ src_support_header_files = Split('''
 
 
 src_support_files = Split('''
+    FileFilterList.cpp
     FileMonitor.cpp
+    FileName.cpp
+    ForkedCallQueue.cpp
+    Forkedcall.cpp
+    ForkedcallsController.cpp
+    Package.cpp
+    Path.cpp
+    Systemcall.cpp
     abort.cpp
     chdir.cpp
     convert.cpp
@@ -139,12 +356,7 @@ src_support_files = Split('''
     docstream.cpp
     docstring.cpp
     environment.cpp
-    FileFilterList.cpp
-    FileName.cpp
     filetools.cpp
-    Forkedcall.cpp
-    ForkedCallQueue.cpp
-    ForkedcallsController.cpp
     fs_extras.cpp
     getcwd.cpp
     kill.cpp
@@ -153,12 +365,9 @@ src_support_files = Split('''
     lyxtime.cpp
     mkdir.cpp
     os.cpp
-    Package.cpp
-    Path.cpp
     qstring_helpers.cpp
     rename.cpp
     socktools.cpp
-    Systemcall.cpp
     tempname.cpp
     textutils.cpp
     unicode.cpp
@@ -167,314 +376,45 @@ src_support_files = Split('''
 ''')
 
 
-src_support_extra_files = Split('''
+src_support_extra_header_files = Split('''
+''')
+
+
+src_support_extra_src_files = Split('''
+    Package.cpp.in
+    atexit.c
     os_cygwin.cpp
-    os_win32.cpp
     os_unix.cpp
+    os_win32.cpp
+    strerror.c
 ''')
 
 
-src_mathed_header_files = Split('''
-    InsetMath.h
-    InsetMathAMSArray.h
-    InsetMathArray.h
-    InsetMathBig.h
-    InsetMathBinom.h
-    InsetMathBoldSymbol.h
-    InsetMathBox.h
-    InsetMathBoxed.h
-    InsetMathBrace.h
-    InsetMathCases.h
-    InsetMathChar.h
-    InsetMathColor.h
-    CommandInset.h
-    InsetMathComment.h
-    InsetMathDFrac.h
-    InsetMathDecoration.h
-    InsetMathDelim.h
-    InsetMathDiff.h
-    InsetMathDots.h
-    InsetMathEnv.h
-    InsetMathExFunc.h
-    InsetMathExInt.h
-    InsetMathFBox.h
-    InsetMathFont.h
-    InsetMathFontOld.h
-    InsetMathFrac.h
-    InsetMathFracBase.h
-    InsetMathFrameBox.h
-    InsetMathGrid.h
-    InsetMathHull.h
-    InsetMathKern.h
-    InsetMathLefteqn.h
-    InsetMathLim.h
-    MathMacro.h
-    InsetMathMakebox.h
-    InsetMathMatrix.h
-    InsetMathNest.h
-    InsetMathNumber.h
-    InsetMathOverset.h
-    InsetMathPar.h
-    InsetMathPhantom.h
-    InsetMathRef.h
-    InsetMathRoot.h
-    InsetMathScript.h
-    InsetMathSize.h
-    InsetMathSpace.h
-    InsetMathSplit.h
-    InsetMathSqrt.h
-    InsetMathStackrel.h
-    InsetMathString.h
-    InsetMathSubstack.h
-    InsetMathSymbol.h
-    InsetMathTFrac.h
-    InsetMathTabular.h
-    InsetMathUnderset.h
-    InsetMathUnknown.h
-    InsetMathXArrow.h
-    InsetMathXYMatrix.h
-    MathAtom.h
-    MathAutoCorrect.h
-    MathData.h
-    MathExtern.h
-    MathFactory.h
-    MathGridInfo.h
-    MathMacroArgument.h
-    MacroTable.h
-    MathMacroTemplate.h
-    MathParser.h
-    ReplaceData.h
-    MathStream.h
-    MathSupport.h
-    TextPainter.h
+src_support_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    pch.h
 ''')
 
 
-src_mathed_extra_files = Split('''
-    InsetFormulaMacro.h
-    InsetFormulaMacro.cpp
+src_support_tests_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    boost.cpp
+    convert.cpp
+    filetools.cpp
+    lstrings.cpp
+    pch.h
+    test_convert
+    test_filetools
+    test_lstrings
 ''')
 
 
-src_mathed_files = Split('''
-    InsetMath.cpp
-    InsetMathAMSArray.cpp
-    InsetMathArray.cpp
-    InsetMathBig.cpp
-    InsetMathBinom.cpp
-    InsetMathBoldSymbol.cpp
-    InsetMathBox.cpp
-    InsetMathBoxed.cpp
-    InsetMathBrace.cpp
-    InsetMathCases.cpp
-    InsetMathChar.cpp
-    InsetMathColor.cpp
-    CommandInset.cpp
-    InsetMathComment.cpp
-    InsetMathDFrac.cpp
-    InsetMathDecoration.cpp
-    InsetMathDelim.cpp
-    InsetMathDiff.cpp
-    InsetMathDots.cpp
-    InsetMathEnv.cpp
-    InsetMathExFunc.cpp
-    InsetMathExInt.cpp
-    InsetMathFBox.cpp
-    InsetMathFont.cpp
-    InsetMathFontOld.cpp
-    InsetMathFrac.cpp
-    InsetMathFracBase.cpp
-    InsetMathFrameBox.cpp
-    InsetMathGrid.cpp
-    InsetMathHull.cpp
-    InsetMathKern.cpp
-    InsetMathLefteqn.cpp
-    InsetMathLim.cpp
-    MathMacro.cpp
-    InsetMathMakebox.cpp
-    InsetMathMatrix.cpp
-    InsetMathNest.cpp
-    InsetMathNumber.cpp
-    InsetMathOverset.cpp
-    InsetMathPar.cpp
-    InsetMathPhantom.cpp
-    InsetMathRef.cpp
-    InsetMathRoot.cpp
-    InsetMathScript.cpp
-    InsetMathSize.cpp
-    InsetMathSpace.cpp
-    InsetMathSplit.cpp
-    InsetMathSqrt.cpp
-    InsetMathStackrel.cpp
-    InsetMathString.cpp
-    InsetMathSubstack.cpp
-    InsetMathSymbol.cpp
-    InsetMathTFrac.cpp
-    InsetMathTabular.cpp
-    InsetMathUnderset.cpp
-    InsetMathUnknown.cpp
-    InsetMathXArrow.cpp
-    InsetMathXYMatrix.cpp
-    MathAtom.cpp
-    MathAutoCorrect.cpp
-    MathData.cpp
-    MathExtern.cpp
-    MathFactory.cpp
-    MathMacroArgument.cpp
-    MacroTable.cpp
-    MathMacroTemplate.cpp
-    MathParser.cpp
-    MathStream.cpp
-    MathSupport.cpp
-    TextPainter.cpp
-''')
-
-
-src_insets_header_files = Split('''
-    ExternalSupport.h
-    ExternalTemplate.h
-    ExternalTransforms.h
-    Inset.h
-    InsetBibitem.h
-    InsetBibtex.h
-    InsetBox.h
-    InsetBranch.h
-    InsetCaption.h
-    InsetCharStyle.h
-    InsetCitation.h
-    InsetCollapsable.h
-    InsetCommand.h
-    InsetCommandParams.h
-    InsetEnvironment.h
-    InsetERT.h
-    InsetExternal.h
-    InsetFloat.h
-    InsetFloatList.h
-    InsetFoot.h
-    InsetFootlike.h
-    InsetGraphics.h
-    InsetGraphicsParams.h
-    InsetHFill.h
-    InsetInclude.h
-    InsetIndex.h
-    InsetLabel.h
-    InsetLine.h
-    InsetMarginal.h
-    InsetNewline.h
-    InsetNomencl.h
-    InsetNote.h
-    InsetOptArg.h
-    InsetPagebreak.h
-    InsetQuotes.h
-    InsetRef.h
-    InsetSpace.h
-    InsetSpecialChar.h
-    InsetTabular.h
-    InsetText.h
-    InsetTOC.h
-    InsetUrl.h
-    InsetVSpace.h
-    InsetWrap.h
-    MailInset.h
-    RenderBase.h
-    RenderButton.h
-    RenderGraphic.h
-    RenderPreview.h
-''')
-
-
-src_inests_extra_files = Split('''
-    InsetTheorem.h
-    InsetTheorem.cpp
-''')
-
-
-src_insets_files = Split('''
-    ExternalSupport.cpp
-    ExternalTemplate.cpp
-    ExternalTransforms.cpp
-    Inset.cpp
-    InsetBibitem.cpp
-    InsetBibtex.cpp
-    InsetBox.cpp
-    InsetBranch.cpp
-    InsetCaption.cpp
-    InsetCharStyle.cpp
-    InsetCitation.cpp
-    InsetCollapsable.cpp
-    InsetCommand.cpp
-    InsetCommandParams.cpp
-    InsetEnvironment.cpp
-    InsetERT.cpp
-    InsetExternal.cpp
-    InsetFloat.cpp
-    InsetFloatList.cpp
-    InsetFoot.cpp
-    InsetFootlike.cpp
-    InsetGraphics.cpp
-    InsetGraphicsParams.cpp
-    InsetHFill.cpp
-    InsetInclude.cpp
-    InsetIndex.cpp
-    InsetLabel.cpp
-    InsetLine.cpp
-    InsetMarginal.cpp
-    InsetNewline.cpp
-    InsetNomencl.cpp
-    InsetNote.cpp
-    InsetOptArg.cpp
-    InsetPagebreak.cpp
-    InsetQuotes.cpp
-    InsetRef.cpp
-    InsetSpace.cpp
-    InsetSpecialChar.cpp
-    InsetTabular.cpp
-    InsetText.cpp
-    InsetTOC.cpp
-    InsetUrl.cpp
-    InsetVSpace.cpp
-    InsetWrap.cpp
-    MailInset.cpp
-    RenderButton.cpp
-    RenderGraphic.cpp
-    RenderPreview.cpp
-''')
-
-
-src_frontends_header_files = Split('''
-    alert.h
-    Alert_pimpl.h
-    Application.h
-    Clipboard.h
-    NoGuiFontLoader.h
-    NoGuiFontMetrics.h
-    Dialogs.h
-    FileDialog.h
-    FontLoader.h
-    FontMetrics.h
-    Gui.h
-    KeySymbol.h
-    LyXView.h
-    Menubar.h
-    Painter.h
-    Selection.h
-    Timeout.h
-    Toolbars.h
-    WorkArea.h
-    key_state.h
-    mouse_state.h
-''')
-
-
-src_frontends_files = Split('''
-    alert.cpp
-    Application.cpp
-    Dialogs.cpp
-    LyXView.cpp
-    Painter.cpp
-    Timeout.cpp
-    Toolbars.cpp
-    WorkArea.cpp
+src_support_tests_regfiles_extra_files = Split('''
+    convert
+    filetools
+    lstrings
 ''')
 
 
@@ -505,6 +445,275 @@ src_graphics_files = Split('''
     PreviewImage.cpp
     PreviewLoader.cpp
     Previews.cpp
+''')
+
+
+src_graphics_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    pch.h
+''')
+
+
+src_mathed_header_files = Split('''
+    CommandInset.h
+    InsetMath.h
+    InsetMathAMSArray.h
+    InsetMathArray.h
+    InsetMathBig.h
+    InsetMathBinom.h
+    InsetMathBoldSymbol.h
+    InsetMathBox.h
+    InsetMathBoxed.h
+    InsetMathBrace.h
+    InsetMathCases.h
+    InsetMathChar.h
+    InsetMathColor.h
+    InsetMathComment.h
+    InsetMathDFrac.h
+    InsetMathDecoration.h
+    InsetMathDelim.h
+    InsetMathDiff.h
+    InsetMathDots.h
+    InsetMathEnv.h
+    InsetMathExFunc.h
+    InsetMathExInt.h
+    InsetMathFBox.h
+    InsetMathFont.h
+    InsetMathFontOld.h
+    InsetMathFrac.h
+    InsetMathFracBase.h
+    InsetMathFrameBox.h
+    InsetMathGrid.h
+    InsetMathHull.h
+    InsetMathKern.h
+    InsetMathLefteqn.h
+    InsetMathLim.h
+    InsetMathMakebox.h
+    InsetMathMatrix.h
+    InsetMathNest.h
+    InsetMathNumber.h
+    InsetMathOverset.h
+    InsetMathPar.h
+    InsetMathPhantom.h
+    InsetMathRef.h
+    InsetMathRoot.h
+    InsetMathScript.h
+    InsetMathSize.h
+    InsetMathSpace.h
+    InsetMathSplit.h
+    InsetMathSqrt.h
+    InsetMathStackrel.h
+    InsetMathString.h
+    InsetMathSubstack.h
+    InsetMathSymbol.h
+    InsetMathTFrac.h
+    InsetMathTabular.h
+    InsetMathUnderset.h
+    InsetMathUnknown.h
+    InsetMathXArrow.h
+    InsetMathXYMatrix.h
+    MacroTable.h
+    MathAtom.h
+    MathAutoCorrect.h
+    MathData.h
+    MathExtern.h
+    MathFactory.h
+    MathGridInfo.h
+    MathMacro.h
+    MathMacroArgument.h
+    MathMacroTemplate.h
+    MathParser.h
+    MathStream.h
+    MathSupport.h
+    ReplaceData.h
+    TextPainter.h
+''')
+
+
+src_mathed_files = Split('''
+    CommandInset.cpp
+    InsetMath.cpp
+    InsetMathAMSArray.cpp
+    InsetMathArray.cpp
+    InsetMathBig.cpp
+    InsetMathBinom.cpp
+    InsetMathBoldSymbol.cpp
+    InsetMathBox.cpp
+    InsetMathBoxed.cpp
+    InsetMathBrace.cpp
+    InsetMathCases.cpp
+    InsetMathChar.cpp
+    InsetMathColor.cpp
+    InsetMathComment.cpp
+    InsetMathDFrac.cpp
+    InsetMathDecoration.cpp
+    InsetMathDelim.cpp
+    InsetMathDiff.cpp
+    InsetMathDots.cpp
+    InsetMathEnv.cpp
+    InsetMathExFunc.cpp
+    InsetMathExInt.cpp
+    InsetMathFBox.cpp
+    InsetMathFont.cpp
+    InsetMathFontOld.cpp
+    InsetMathFrac.cpp
+    InsetMathFracBase.cpp
+    InsetMathFrameBox.cpp
+    InsetMathGrid.cpp
+    InsetMathHull.cpp
+    InsetMathKern.cpp
+    InsetMathLefteqn.cpp
+    InsetMathLim.cpp
+    InsetMathMakebox.cpp
+    InsetMathMatrix.cpp
+    InsetMathNest.cpp
+    InsetMathNumber.cpp
+    InsetMathOverset.cpp
+    InsetMathPar.cpp
+    InsetMathPhantom.cpp
+    InsetMathRef.cpp
+    InsetMathRoot.cpp
+    InsetMathScript.cpp
+    InsetMathSize.cpp
+    InsetMathSpace.cpp
+    InsetMathSplit.cpp
+    InsetMathSqrt.cpp
+    InsetMathStackrel.cpp
+    InsetMathString.cpp
+    InsetMathSubstack.cpp
+    InsetMathSymbol.cpp
+    InsetMathTFrac.cpp
+    InsetMathTabular.cpp
+    InsetMathUnderset.cpp
+    InsetMathUnknown.cpp
+    InsetMathXArrow.cpp
+    InsetMathXYMatrix.cpp
+    MacroTable.cpp
+    MathAtom.cpp
+    MathAutoCorrect.cpp
+    MathData.cpp
+    MathExtern.cpp
+    MathFactory.cpp
+    MathMacro.cpp
+    MathMacroArgument.cpp
+    MathMacroTemplate.cpp
+    MathParser.cpp
+    MathStream.cpp
+    MathSupport.cpp
+    TextPainter.cpp
+''')
+
+
+src_mathed_extra_files = Split('''
+    BUGS
+    ChangeLog
+    InsetFormulaMacro.cpp
+    InsetFormulaMacro.h
+    InsetMathMBox.cpp
+    InsetMathMBox.h
+    InsetMathXYArrow.cpp
+    InsetMathXYArrow.h
+    Makefile.am
+    README
+    pch.h
+    texify
+''')
+
+
+src_tex2lyx_header_files = Split('''
+    Context.h
+    Font.h
+    Parser.h
+    Spacing.h
+    tex2lyx.h
+''')
+
+
+src_tex2lyx_files = Split('''
+    Context.cpp
+    Font.cpp
+    Parser.cpp
+    boost.cpp
+    gettext.cpp
+    lengthcommon.cpp
+    math.cpp
+    preamble.cpp
+    table.cpp
+    tex2lyx.cpp
+    text.cpp
+''')
+
+
+src_tex2lyx_copied_files = Split('''
+    Counters.cpp
+    FloatList.cpp
+    Floating.cpp
+    Layout.cpp
+    Lexer.cpp
+    TextClass.cpp
+''')
+
+
+src_tex2lyx_copied_header_files = Split('''
+    Layout.h
+    Lexer.h
+    TextClass.h
+''')
+
+
+src_tex2lyx_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    pch.h
+    test-insets.tex
+    test-structure.tex
+    test.ltx
+    tex2lyx.man
+''')
+
+
+src_frontends_header_files = Split('''
+    Alert_pimpl.h
+    Application.h
+    Clipboard.h
+    Dialogs.h
+    FileDialog.h
+    FontLoader.h
+    FontMetrics.h
+    Gui.h
+    KeySymbol.h
+    LyXView.h
+    Menubar.h
+    NoGuiFontLoader.h
+    NoGuiFontMetrics.h
+    Painter.h
+    Selection.h
+    Timeout.h
+    Toolbars.h
+    WorkArea.h
+    alert.h
+    key_state.h
+    mouse_state.h
+''')
+
+
+src_frontends_files = Split('''
+    Application.cpp
+    Dialogs.cpp
+    LyXView.cpp
+    Painter.cpp
+    Timeout.cpp
+    Toolbars.cpp
+    WorkArea.cpp
+    alert.cpp
+''')
+
+
+src_frontends_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    pch.h
 ''')
 
 
@@ -598,27 +807,294 @@ src_frontends_controllers_files = Split('''
 ''')
 
 
+src_frontends_controllers_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    pch.h
+''')
+
+
+src_frontends_controllers_tests_extra_files = Split('''
+    Makefile.am
+    biblio.cpp
+    boost.cpp
+    pch.h
+    test_biblio
+''')
+
+
+src_frontends_controllers_tests_regfiles_extra_files = Split('''
+    biblio
+''')
+
+
+src_frontends_qt4_header_files = Split('''
+    Action.h
+    BulletsModule.h
+    CheckedLineEdit.h
+    ColorCache.h
+    DockView.h
+    EmptyTable.h
+    FloatPlacement.h
+    GuiApplication.h
+    GuiClipboard.h
+    GuiFontLoader.h
+    GuiImplementation.h
+    GuiSelection.h
+    GuiView.h
+    GuiWorkArea.h
+    IconPalette.h
+    InsertTableWidget.h
+    LengthCombo.h
+    LyXFileDialog.h
+    PanelStack.h
+    QAbout.h
+    QBibitem.h
+    QBibtex.h
+    QBox.h
+    QBranch.h
+    QBranches.h
+    QChanges.h
+    QCharacter.h
+    QCharacter.h
+    QCitation.h
+    QCitationDialog.h
+    QCommandBuffer.h
+    QCommandEdit.h
+    QDelimiterDialog.h
+    QDialogView.h
+    QDocument.h
+    QERT.h
+    QErrorList.h
+    QExternal.h
+    QFloat.h
+    QFloatDialog.h
+    QFontExample.h
+    QGraphics.h
+    QGraphicsDialog.h
+    QGraphicsUi.h
+    QInclude.h
+    QIndex.h
+    QKeySymbol.h
+    QLImage.h
+    QLMenubar.h
+    QLPainter.h
+    QLPopupMenu.h
+    QLPrintDialog.h
+    QLToolbar.h
+    QLog.h
+    QMathMatrixDialog.h
+    QNomencl.h
+    QNote.h
+    QParagraph.h
+    QPrefs.h
+    QPrint.h
+    QRef.h
+    QSearch.h
+    QSendto.h
+    QSetBorder.h
+    QShowFile.h
+    QSpellchecker.h
+    QTabular.h
+    QTabularCreate.h
+    QTexinfo.h
+    QThesaurus.h
+    QToc.h
+    QURLDialog.h
+    QVSpace.h
+    QViewSource.h
+    QWrap.h
+    Qt2BC.h
+    TocModel.h
+    TocWidget.h
+    UrlView.h
+    Validator.h
+    qlkey.h
+    qtTimeout.h
+    qt_helpers.h
+    socket_callback.h
+''')
+
+
+src_frontends_qt4_files = Split('''
+    Action.cpp
+    BulletsModule.cpp
+    CheckedLineEdit.cpp
+    ColorCache.cpp
+    Dialogs.cpp
+    EmptyTable.cpp
+    FileDialog.cpp
+    FloatPlacement.cpp
+    GuiApplication.cpp
+    GuiClipboard.cpp
+    GuiFontLoader.cpp
+    GuiFontMetrics.cpp
+    GuiImplementation.cpp
+    GuiSelection.cpp
+    GuiView.cpp
+    GuiWorkArea.cpp
+    IconPalette.cpp
+    InsertTableWidget.cpp
+    KeySymbol.cpp
+    LengthCombo.cpp
+    LyXFileDialog.cpp
+    PanelStack.cpp
+    QAbout.cpp
+    QBibitem.cpp
+    QBibtex.cpp
+    QBox.cpp
+    QBranch.cpp
+    QBranches.cpp
+    QChanges.cpp
+    QCharacter.cpp
+    QCitation.cpp
+    QCitationDialog.cpp
+    QCommandBuffer.cpp
+    QCommandEdit.cpp
+    QDelimiterDialog.cpp
+    QDialogView.cpp
+    QDocument.cpp
+    QERT.cpp
+    QErrorList.cpp
+    QExternal.cpp
+    QFloat.cpp
+    QFloatDialog.cpp
+    QFontExample.cpp
+    QGraphics.cpp
+    QGraphicsDialog.cpp
+    QInclude.cpp
+    QIndex.cpp
+    QKeySymbol.cpp
+    QLImage.cpp
+    QLMenubar.cpp
+    QLPainter.cpp
+    QLPopupMenu.cpp
+    QLPrintDialog.cpp
+    QLToolbar.cpp
+    QLog.cpp
+    QMathMatrixDialog.cpp
+    QNomencl.cpp
+    QNote.cpp
+    QParagraph.cpp
+    QPrefs.cpp
+    QPrint.cpp
+    QRef.cpp
+    QSearch.cpp
+    QSendto.cpp
+    QSetBorder.cpp
+    QShowFile.cpp
+    QSpellchecker.cpp
+    QTabular.cpp
+    QTabularCreate.cpp
+    QTexinfo.cpp
+    QThesaurus.cpp
+    QToc.cpp
+    QURLDialog.cpp
+    QVSpace.cpp
+    QViewSource.cpp
+    QWrap.cpp
+    Qt2BC.cpp
+    TocModel.cpp
+    TocWidget.cpp
+    UrlView.cpp
+    Validator.cpp
+    alert_pimpl.cpp
+    qtTimeout.cpp
+    qt_helpers.cpp
+    socket_callback.cpp
+''')
+
+
+src_frontends_qt4_moc_files = Split('''
+    Action.cpp
+    BulletsModule.cpp
+    EmptyTable.cpp
+    FloatPlacement.cpp
+    GuiApplication.cpp
+    GuiImplementation.cpp
+    GuiView.cpp
+    GuiWorkArea.cpp
+    IconPalette.cpp
+    InsertTableWidget.cpp
+    LengthCombo.cpp
+    LyXFileDialog.cpp
+    PanelStack.cpp
+    QAbout.cpp
+    QBibitem.cpp
+    QBibtex.cpp
+    QBox.cpp
+    QBranch.cpp
+    QBranches.cpp
+    QChanges.cpp
+    QCharacter.cpp
+    QCitationDialog.cpp
+    QCommandBuffer.cpp
+    QCommandEdit.cpp
+    QDelimiterDialog.cpp
+    QDialogView.cpp
+    QDocument.cpp
+    QERT.cpp
+    QErrorList.cpp
+    QExternal.cpp
+    QFloatDialog.cpp
+    QGraphicsDialog.cpp
+    QInclude.cpp
+    QIndex.cpp
+    QLMenubar.cpp
+    QLPopupMenu.cpp
+    QLPrintDialog.cpp
+    QLToolbar.cpp
+    QLog.cpp
+    QLog.cpp
+    QMathMatrixDialog.cpp
+    QNomencl.cpp
+    QNomencl.cpp
+    QNote.cpp
+    QParagraph.cpp
+    QPrefs.cpp
+    QRef.cpp
+    QSearch.cpp
+    QSendto.cpp
+    QSetBorder.cpp
+    QShowFile.cpp
+    QSpellchecker.cpp
+    QTabular.cpp
+    QTabularCreate.cpp
+    QTexinfo.cpp
+    QThesaurus.cpp
+    QToc.cpp
+    QURLDialog.cpp
+    QVSpace.cpp
+    QViewSource.cpp
+    QWrap.cpp
+    TocModel.cpp
+    TocWidget.cpp
+    Validator.cpp
+    socket_callback.cpp
+''')
+
+
+src_frontends_qt4_extra_files = Split('''
+    ChangeLog
+    GuiFontMetrics.h
+    Makefile.am
+    Makefile.dialogs
+    README
+    pch.h
+''')
+
 
 src_frontends_qt4_ui_files = Split('''
-    BiblioUi.ui
-    BranchesUi.ui
-    BulletsUi.ui
-    FloatPlacementUi.ui
-    FontUi.ui
-    LaTeXUi.ui
-    LanguageUi.ui
-    MarginsUi.ui
-    MathsUi.ui
-    NumberingUi.ui
-    PageLayoutUi.ui
-    PreambleUi.ui
     AboutUi.ui
     AskForTextUi.ui
     BibitemUi.ui
+    BiblioUi.ui
     BibtexAddUi.ui
     BibtexUi.ui
     BoxUi.ui
     BranchUi.ui
+    BranchesUi.ui
+    BulletsUi.ui
     ChangesUi.ui
     CharacterUi.ui
     CitationUi.ui
@@ -627,15 +1103,24 @@ src_frontends_qt4_ui_files = Split('''
     ERTUi.ui
     ErrorListUi.ui
     ExternalUi.ui
+    FloatPlacementUi.ui
     FloatUi.ui
+    FontUi.ui
     GraphicsUi.ui
     IncludeUi.ui
     IndexUi.ui
+    LaTeXUi.ui
+    LanguageUi.ui
     LogUi.ui
+    MarginsUi.ui
     MathMatrixUi.ui
+    MathsUi.ui
     NomenclUi.ui
     NoteUi.ui
+    NumberingUi.ui
+    PageLayoutUi.ui
     ParagraphUi.ui
+    PreambleUi.ui
     PrefColorsUi.ui
     PrefConvertersUi.ui
     PrefCopiersUi.ui
@@ -660,782 +1145,385 @@ src_frontends_qt4_ui_files = Split('''
     SendtoUi.ui
     ShowFileUi.ui
     SpellcheckerUi.ui
-    TabularUi.ui
     TabularCreateUi.ui
+    TabularUi.ui
     TexinfoUi.ui
+    TextLayoutUi.ui
     ThesaurusUi.ui
     TocUi.ui
     URLUi.ui
     VSpaceUi.ui
     ViewSourceUi.ui
     WrapUi.ui
-    TextLayoutUi.ui
 ''')
 
 
-src_frontends_qt4_moc_files = Split('''
-    BulletsModule.cpp
-    QBox.cpp
-    QERT.cpp
-    QSearch.cpp
-    QSpellchecker.cpp
-    QTabularCreate.cpp
-    QTexinfo.cpp
-    QThesaurus.cpp
-    QTabular.cpp
-    QVSpace.cpp
-    QWrap.cpp
-    QDocument.cpp
-    QLog.cpp
-    QParagraph.cpp
-    QShowFile.cpp
-    QBibitem.cpp
-    QNomencl.cpp
-    EmptyTable.cpp
-    LyXFileDialog.cpp
-    FloatPlacement.cpp
-    GuiApplication.cpp
-    GuiImplementation.cpp
-    IconPalette.cpp
-    LengthCombo.cpp
-    InsertTableWidget.cpp
-    PanelStack.cpp
-    QBibtex.cpp
-    QBranch.cpp
-    QBranches.cpp
-    QChanges.cpp
-    QCharacter.cpp
-    QCitationDialog.cpp
-    QCommandBuffer.cpp
-    QCommandEdit.cpp
-    QDelimiterDialog.cpp
-    QErrorList.cpp
-    QExternal.cpp
-    QFloatDialog.cpp
-    QGraphicsDialog.cpp
-    QInclude.cpp
-    QIndex.cpp
-    Action.cpp
-    QLog.cpp
-    QViewSource.cpp
-    QLMenubar.cpp
-    QLPopupMenu.cpp
-    QLPrintDialog.cpp
-    QMathMatrixDialog.cpp
-    QNomencl.cpp
-    QNote.cpp
-    QPrefs.cpp
-    QRef.cpp
-    QSendto.cpp
-    QSetBorder.cpp
-    QDialogView.cpp
-    TocModel.cpp
-    TocWidget.cpp
-    QToc.cpp
-    GuiView.cpp
-    QURLDialog.cpp
-    GuiWorkArea.cpp
-    QLToolbar.cpp
-    socket_callback.cpp
-    Validator.cpp
-    QAbout.cpp
+src_frontends_qt4_ui_extra_files = Split('''
+    Makefile.am
+    compile_uic.sh
 ''')
 
 
-src_frontends_qt4_header_files = Split('''
-    Action.h
-    BulletsModule.h
-    ColorCache.h
-    DockView.h
-    LyXFileDialog.h
-    GuiApplication.h
-    GuiClipboard.h
-    GuiFontLoader.h
-    GuiImplementation.h
-    GuiSelection.h
-    GuiView.h
-    GuiWorkArea.h
-    InsertTableWidget.h
-    QAbout.h
-    QBibitem.h
-    QBibtex.h
-    QBox.h
-    QBranch.h
-    QBranches.h
-    QChanges.h
-    QCharacter.h
-    QCharacter.h
-    QCitation.h
-    QCitationDialog.h
-    QCommandBuffer.h
-    QCommandEdit.h
-    QDelimiterDialog.h
-    QDialogView.h
-    QDocument.h
-    QERT.h
-    QErrorList.h
-    QExternal.h
-    QFloat.h
-    QFloatDialog.h
-    QGraphics.h
-    QGraphicsDialog.h
-    QGraphicsUi.h
-    QInclude.h
-    QIndex.h
-    QLImage.h
-    QLMenubar.h
-    QLPainter.h
-    QLPopupMenu.h
-    QLPrintDialog.h
-    QLToolbar.h
-    QLog.h
-    QKeySymbol.h
-    QMathMatrixDialog.h
-    QNomencl.h
-    QNote.h
-    QParagraph.h
-    QPrefs.h
-    QPrint.h
-    QRef.h
-    QSearch.h
-    QSendto.h
-    QShowFile.h
-    QSpellchecker.h
-    QTabular.h
-    QTabularCreate.h
-    QTexinfo.h
-    QThesaurus.h
-    QToc.h
-    QURLDialog.h
-    QVSpace.h
-    QViewSource.h
-    QWrap.h
-    Qt2BC.h
-    TocModel.h
-    TocWidget.h
-    UrlView.h
-    CheckedLineEdit.h
-    EmptyTable.h
-    FloatPlacement.h
-    IconPalette.h
-    LengthCombo.h
-    PanelStack.h
-    QFontExample.h
-    qlkey.h
-    QSetBorder.h
-    qtTimeout.h
-    qt_helpers.h
-    socket_callback.h
-    Validator.h
+src_insets_header_files = Split('''
+    ExternalSupport.h
+    ExternalTemplate.h
+    ExternalTransforms.h
+    Inset.h
+    InsetBibitem.h
+    InsetBibtex.h
+    InsetBox.h
+    InsetBranch.h
+    InsetCaption.h
+    InsetCharStyle.h
+    InsetCitation.h
+    InsetCollapsable.h
+    InsetCommand.h
+    InsetCommandParams.h
+    InsetERT.h
+    InsetEnvironment.h
+    InsetExternal.h
+    InsetFloat.h
+    InsetFloatList.h
+    InsetFoot.h
+    InsetFootlike.h
+    InsetGraphics.h
+    InsetGraphicsParams.h
+    InsetHFill.h
+    InsetInclude.h
+    InsetIndex.h
+    InsetLabel.h
+    InsetLine.h
+    InsetMarginal.h
+    InsetNewline.h
+    InsetNomencl.h
+    InsetNote.h
+    InsetOptArg.h
+    InsetPagebreak.h
+    InsetQuotes.h
+    InsetRef.h
+    InsetSpace.h
+    InsetSpecialChar.h
+    InsetTOC.h
+    InsetTabular.h
+    InsetText.h
+    InsetUrl.h
+    InsetVSpace.h
+    InsetWrap.h
+    MailInset.h
+    RenderBase.h
+    RenderButton.h
+    RenderGraphic.h
+    RenderPreview.h
 ''')
 
 
-src_frontends_qt4_files = Split('''
-    Action.cpp
-    alert_pimpl.cpp
-    BulletsModule.cpp
-    ColorCache.cpp
-    Dialogs.cpp
-    FileDialog.cpp
-    LyXFileDialog.cpp
-    GuiApplication.cpp
-    GuiClipboard.cpp
-    GuiFontLoader.cpp
-    GuiFontMetrics.cpp
-    GuiImplementation.cpp
-    GuiSelection.cpp
-    GuiView.cpp
-    GuiWorkArea.cpp
-    InsertTableWidget.cpp
-    KeySymbol.cpp
-    QAbout.cpp
-    QBibitem.cpp
-    QBibtex.cpp
-    QBox.cpp
-    QBranch.cpp
-    QBranches.cpp
-    QChanges.cpp
-    QCharacter.cpp
-    QCitation.cpp
-    QCitationDialog.cpp
-    QCommandBuffer.cpp
-    QCommandEdit.cpp
-    QDelimiterDialog.cpp
-    QDialogView.cpp
-    QDocument.cpp
-    QERT.cpp
-    QErrorList.cpp
-    QExternal.cpp
-    QFloat.cpp
-    QFloatDialog.cpp
-    QGraphics.cpp
-    QGraphicsDialog.cpp
-    QKeySymbol.cpp
-    QInclude.cpp
-    QIndex.cpp
-    QLImage.cpp
-    QLMenubar.cpp
-    QLPainter.cpp
-    QLPopupMenu.cpp
-    QLPrintDialog.cpp
-    QLToolbar.cpp
-    QLog.cpp
-    QMathMatrixDialog.cpp
-    QNomencl.cpp
-    QNote.cpp
-    QParagraph.cpp
-    QPrefs.cpp
-    QPrint.cpp
-    QRef.cpp
-    QSearch.cpp
-    QSendto.cpp
-    QShowFile.cpp
-    QSpellchecker.cpp
-    QTabular.cpp
-    QTabularCreate.cpp
-    QTexinfo.cpp
-    QThesaurus.cpp
-    QToc.cpp
-    QURLDialog.cpp
-    QVSpace.cpp
-    QViewSource.cpp
-    QWrap.cpp
-    Qt2BC.cpp
-    TocModel.cpp
-    TocWidget.cpp
-    UrlView.cpp
-    CheckedLineEdit.cpp
-    EmptyTable.cpp
-    FloatPlacement.cpp
-    IconPalette.cpp
-    LengthCombo.cpp
-    PanelStack.cpp
-    QFontExample.cpp
-    QSetBorder.cpp
-    qtTimeout.cpp
-    qt_helpers.cpp
-    socket_callback.cpp
-    Validator.cpp
+src_insets_files = Split('''
+    ExternalSupport.cpp
+    ExternalTemplate.cpp
+    ExternalTransforms.cpp
+    Inset.cpp
+    InsetBibitem.cpp
+    InsetBibtex.cpp
+    InsetBox.cpp
+    InsetBranch.cpp
+    InsetCaption.cpp
+    InsetCharStyle.cpp
+    InsetCitation.cpp
+    InsetCollapsable.cpp
+    InsetCommand.cpp
+    InsetCommandParams.cpp
+    InsetERT.cpp
+    InsetEnvironment.cpp
+    InsetExternal.cpp
+    InsetFloat.cpp
+    InsetFloatList.cpp
+    InsetFoot.cpp
+    InsetFootlike.cpp
+    InsetGraphics.cpp
+    InsetGraphicsParams.cpp
+    InsetHFill.cpp
+    InsetInclude.cpp
+    InsetIndex.cpp
+    InsetLabel.cpp
+    InsetLine.cpp
+    InsetMarginal.cpp
+    InsetNewline.cpp
+    InsetNomencl.cpp
+    InsetNote.cpp
+    InsetOptArg.cpp
+    InsetPagebreak.cpp
+    InsetQuotes.cpp
+    InsetRef.cpp
+    InsetSpace.cpp
+    InsetSpecialChar.cpp
+    InsetTOC.cpp
+    InsetTabular.cpp
+    InsetText.cpp
+    InsetUrl.cpp
+    InsetVSpace.cpp
+    InsetWrap.cpp
+    MailInset.cpp
+    RenderButton.cpp
+    RenderGraphic.cpp
+    RenderPreview.cpp
 ''')
 
 
-src_client_header_files = Split('''
-    debug.h
-    Messages.h
+src_insets_extra_files = Split('''
+    ChangeLog
+    InsetTheorem.cpp
+    InsetTheorem.h
+    Makefile.am
+    pch.h
 ''')
 
 
-src_client_files = Split('''
-    boost.cpp
-    client.cpp
-    debug.cpp
-    gettext.cpp
-    Messages.cpp
+intl_header_files = Split('''
+    eval-plural.h
+    gettextP.h
+    gmo.h
+    hash-string.h
+    libgnuintl.h
+    libintl.h
+    loadinfo.h
+    localcharset.h
+    os2compat.h
+    plural-exp.h
+    printf-args.h
+    printf-parse.h
+    relocatable.h
+    vasnprintf.h
+    vasnwprintf.h
+    wprintf-parse.h
+    xsize.h
 ''')
 
 
-src_tex2lyx_header_files = Split('''
-    Spacing.h
-    Context.h
-    Font.h
-    tex2lyx.h
-    Parser.h
+intl_files = Split('''
+    bindtextdom.c
+    dcgettext.c
+    dcigettext.c
+    dcngettext.c
+    dgettext.c
+    dngettext.c
+    explodename.c
+    finddomain.c
+    gettext.c
+    intl-compat.c
+    l10nflist.c
+    loadmsgcat.c
+    localcharset.c
+    localealias.c
+    localename.c
+    log.c
+    ngettext.c
+    osdep.c
+    plural-exp.c
+    plural.c
+    printf.c
+    relocatable.c
+    textdomain.c
 ''')
 
 
-src_tex2lyx_copied_header_files = Split('''
-    Layout.h
-    TextClass.h
-    Lexer.h
+intl_extra_files = Split('''
+    ChangeLog
+    Makefile.in
+    VERSION
+    config.charset
+    libgnuintl.h.in
+    locale.alias
+    os2compat.c
+    plural.y
+    printf-args.c
+    printf-parse.c
+    ref-add.sin
+    ref-del.sin
+    vasnprintf.c
 ''')
 
 
-src_tex2lyx_copied_files = Split('''
-    FloatList.cpp
-    Floating.cpp
-    Counters.cpp
-    Layout.cpp
-    TextClass.cpp
-    Lexer.cpp
+config_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    common.am
+    config.guess
+    config.rpath
+    config.sub
+    depcomp
+    install-sh
+    libtool.m4
+    ltmain.sh
+    lyxinclude.m4
+    missing
+    mkinstalldirs
+    pkg.m4
+    py-compile
+    qt4.m4
+    spell.m4
 ''')
 
 
-src_tex2lyx_files = Split('''
-    boost.cpp
-    Context.cpp
-    gettext.cpp
-    lengthcommon.cpp
-    Font.cpp
-    math.cpp
-    preamble.cpp
-    table.cpp
-    tex2lyx.cpp
-    Parser.cpp
-    text.cpp
+sourcedoc_extra_files = Split('''
+    Doxyfile.in
+    Makefile.am
 ''')
 
 
-src_header_files = Split('''
-    Bidi.h
-    BranchList.h
-    BufferView.h
-    Bullet.h
-    Chktex.h
-    Color.h
-    ConverterCache.h
-    CutAndPaste.h
-    DepTable.h
-    FloatList.h
-    Floating.h
-    FontIterator.h
-    FuncStatus.h
-    InsetList.h
-    LaTeX.h
-    LaTeXFeatures.h
-    LyXAction.h
-    MenuBackend.h
-    ParagraphList.h
-    ParagraphParameters.h
-    PrinterParams.h
-    RowList_fwd.h
-    Section.h
-    Spacing.h
-    SpellBase.h
-    Thesaurus.h
-    TocBackend.h
-    ToolbarBackend.h
-    update_flags.h
-    Variables.h
-    WordLangTuple.h
-    ASpell_local.h
-    Author.h
-    Box.h
-    Buffer.h
-    buffer_funcs.h
-    BufferList.h
-    BufferParams.h
-    bufferview_funcs.h
-    Changes.h
-    Converter.h
-    CoordCache.h
-    Counters.h
-    Cursor.h
-    CursorSlice.h
-    debug.h
-    Dimension.h
-    DispatchResult.h
-    DocIterator.h
-    Encoding.h
-    ErrorList.h
-    Exporter.h
-    factory.h
-    Font.h
-    Format.h
-    FuncRequest.h
-    gettext.h
-    Graph.h
-    Importer.h
-    InsetIterator.h
-    Intl.h
-    ISpell.h
-    KeyMap.h
-    KeySequence.h
-    Language.h
-    lengthcommon.h
-    lfuns.h
-    callback.h
-    LyX.h
-    lyx_sty.h
-    lyxfind.h
-    LyXFunc.h
-    Layout.h
-    lyxlayout_ptr_fwd.h
-    Length.h
-    Lexer.h
-    LyXRC.h
-    Row.h
-    Server.h
-    ServerSocket.h
-    TextClass.h
-    Text.h
-    TextClassList.h
-    LyXVC.h
-    Messages.h
-    MetricsInfo.h
-    Mover.h
-    output.h
-    output_docbook.h
-    output_latex.h
-    output_plaintext.h
-    OutputParams.h
-    paper.h
-    Paragraph.h
-    paragraph_funcs.h
-    ParagraphMetrics.h
-    ParIterator.h
-    PSpell.h
-    rowpainter.h
-    Session.h
-    sgml.h
-    tex-accent.h
-    tex-strings.h
-    TexRow.h
-    TextMetrics.h
-    toc.h
-    Trans.h
-    KmodInfo.h
-    TransState.h
-    Undo.h
-    VCBackend.h
-    version.h
-    VSpace.h
-''')
-
-
-src_pre_files = Split('''
-    Bidi.cpp
-    BranchList.cpp
-    BufferView.cpp
-    Bullet.cpp
-    Chktex.cpp
-    Color.cpp
-    ConverterCache.cpp
-    CutAndPaste.cpp
-    DepTable.cpp
-    FloatList.cpp
-    Floating.cpp
-    FontIterator.cpp
-    FuncStatus.cpp
-    InsetList.cpp
-    LaTeX.cpp
-    LaTeXFeatures.cpp
-    LyXAction.cpp
-    MenuBackend.cpp
-    ParagraphParameters.cpp
-    Spacing.cpp
-    TocBackend.cpp
-    ToolbarBackend.cpp
-    Author.cpp
-    boost.cpp
-    Buffer.cpp
-    buffer_funcs.cpp
-    BufferList.cpp
-    BufferParams.cpp
-    bufferview_funcs.cpp
-    Changes.cpp
-    Converter.cpp
-    CoordCache.cpp
-    Counters.cpp
-    Cursor.cpp
-    CursorSlice.cpp
-    debug.cpp
-    DocIterator.cpp
-    Encoding.cpp
-    ErrorList.cpp
-    Exporter.cpp
-    factory.cpp
-    Font.cpp
-    Format.cpp
-    FuncRequest.cpp
-    gettext.cpp
-    Graph.cpp
-    Importer.cpp
-    InsetIterator.cpp
-    Intl.cpp
-    KeyMap.cpp
-    KeySequence.cpp
-    Language.cpp
-    lengthcommon.cpp
-    callback.cpp
-    LyX.cpp
-    lyx_sty.cpp
-    lyxfind.cpp
-    LyXFunc.cpp
-    Layout.cpp
-    Length.cpp
-    Lexer.cpp
-    LyXRC.cpp
-    Row.cpp
-    Server.cpp
-    ServerSocket.cpp
-    TextClass.cpp
-    TextClassList.cpp
-    LyXVC.cpp
-    Messages.cpp
-    MetricsInfo.cpp
-    Mover.cpp
-    output.cpp
-    output_docbook.cpp
-    output_latex.cpp
-    output_plaintext.cpp
-    OutputParams.cpp
-    Paragraph.cpp
-    paragraph_funcs.cpp
-    ParagraphMetrics.cpp
-    ParIterator.cpp
-    rowpainter.cpp
-    Session.cpp
-    sgml.cpp
-    tex-accent.cpp
-    tex-strings.cpp
-    TexRow.cpp
-    Text.cpp
-    Text2.cpp
-    Text3.cpp
-    TextMetrics.cpp
-    toc.cpp
-    Trans.cpp
-    TransState.cpp
-    Undo.cpp
-    VCBackend.cpp
-    version.cpp
-    VSpace.cpp
-''')
-
-
-src_post_files = Split('''
-    Dimension.cpp
-    PrinterParams.cpp
-    Box.cpp
-    Thesaurus.cpp
-    SpellBase.cpp
+po_extra_files = Split('''
+    ChangeLog
+    LINGUAS
+    Makefile.in.in
+    Makevars
+    POTFILES.in
+    README
+    Rules-quot
+    bg.po
+    boldquot.sed
+    ca.po
+    cs.po
+    da.po
+    de.po
+    en@boldquot.header
+    en@quot.header
+    es.po
+    eu.po
+    fi.po
+    fr.po
+    gl.po
+    he.po
+    hu.po
+    insert-header.sin
+    it.po
+    ja.po
+    lyx_pot.py
+    nb.po
+    nl.po
+    nn.po
+    pl.po
+    pocheck.pl
+    postats.sh
+    pt.po
+    quot.sed
+    remove-potcdate.sin
+    ro.po
+    ru.po
+    sk.po
+    sl.po
+    sv.po
+    tr.po
+    wa.po
 ''')
 
 
 lib_files = Split('''
     CREDITS
     chkconfig.ltx
-    external_templates
+    configure.py
     encodings
+    external_templates
     languages
     symbols
     syntax.default
     unicodesymbols
-    configure.py
 ''')
 
 
-# do not install, ignore
-lib_image_noinst_files = Split('''
-    images/README
-    images/font-smallcaps.xpm
-    images/math/ams_arrows.xbm
-    images/math/ams_misc.xbm
-    images/math/ams_nrel.xbm
-    images/math/ams_ops.xbm
-    images/math/ams_rel.xbm
-    images/math/arrows.xbm
-    images/math/bop.xbm
-    images/math/brel.xbm
-    images/math/deco.xbm
-    images/math/deco.xpm
-    images/math/delim0.xpm
-    images/math/delim1.xpm
-    images/math/delim.xbm
-    images/math/dots.xbm
-    images/math/font.xbm
-    images/math/greek.xbm
-    images/math/misc.xbm
-    images/math/varsz.xbm
+lib_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    autocorrect
+    build-listerrors
+    generate_contributions.py
 ''')
 
 
-lib_bind_de_files = Split('''
-    menus.bind
+lib_kbd_files = Split('''
+    american-2.kmap
+    american.kmap
+    arabic.kmap
+    bg-bds-1251.kmap
+    brazil.kmap
+    brazil2.kmap
+    czech-prg.kmap
+    czech.kmap
+    espanol.kmap
+    european.kmap
+    francais.kmap
+    french.kmap
+    german-2.kmap
+    german-3.kmap
+    german.kmap
+    greek.kmap
+    hebrew.kmap
+    koi8-r.kmap
+    koi8-u.kmap
+    latvian.kmap
+    magyar-2.kmap
+    magyar-3.kmap
+    magyar.kmap
+    null.kmap
+    polish.kmap
+    polski.kmap
+    portuges.kmap
+    romanian.kmap
+    serbian.kmap
+    serbocroatian.kmap
+    sf.kmap
+    sg.kmap
+    slovak.kmap
+    slovene.kmap
+    thai-kedmanee.kmap
+    transilvanian.kmap
+    turkish-f.kmap
+    turkish.kmap
 ''')
 
 
-lib_bind_fi_files = Split('''
-    menus.bind
-''')
-
-
-lib_bind_pt_files = Split('''
-    menus.bind
-''')
-
-
-lib_bind_sv_files = Split('''
-    menus.bind
-''')
-
-
-lib_bind_files = Split('''
-    broadway.bind
-    cua.bind
-    cyrkeys.bind
-    emacs.bind
-    greekkeys.bind
-    hollywood.bind
-    latinkeys.bind
-    mac.bind
-    math.bind
-    menus.bind
-    sciword.bind
-    xemacs.bind
-    aqua.bind
-''')
-
-
-lib_examples_ca_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_cs_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_da_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_de_files = Split('''
-    Dezimal.lyx
-    ItemizeBullets.lyx
-    Lebenslauf.lyx
-    Minipage.lyx
-    TableExamples.lyx
-    Waehrungen.lyx
-    beispiel_gelyxt.lyx
-    beispiel_roh.lyx
-    splash.lyx
-    mathed.lyx
-    multicol.lyx
-''')
-
-
-lib_examples_es_files = Split('''
-    ejemplo_con_lyx.lyx
-    ejemplo_sin_lyx.lyx
-    splash.lyx
-''')
-
-
-lib_examples_eu_files = Split('''
-    adibide_gordina.lyx
-    adibide_lyx-atua.lyx
-    splash.lyx
-''')
-
-
-lib_examples_fr_files = Split('''
-    AlignementDecimal.lyx
-    CV.lyx
-    ExemplesTableaux.lyx
-    Foils.lyx
-    ListesPuces.lyx
-    Minipage.lyx
-    exemple_brut.lyx
-    exemple_lyxifie.lyx
-    mathed.lyx
-    multicol.lyx
-    splash.lyx
-''')
-
-
-lib_examples_he_files = Split('''
-    example_raw.lyx
-    he_example_lyxified.lyx
-    he_example_raw.lyx
-''')
-
-
-lib_examples_hu_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_it_files = Split('''
-    ItemizeBullets.lyx
-    splash.lyx
-''')
-
-
-lib_examples_nl_files = Split('''
-    multicol.lyx
-    opsommingstekens.lyx
-    splash.lyx
-    voorbeeld_ruw.lyx
-    voorbeeld_verlyxt.lyx
-''')
-
-
-lib_examples_pl_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_pt_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_ru_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_sl_files = Split('''
-    primer_lyxan.lyx
-    primer_surov.lyx
-    splash.lyx
-''')
-
-
-lib_examples_ro_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_files = Split('''
-    Foils.lyx
-    ItemizeBullets.lyx
-    Literate.lyx
-    Minipage.lyx
-    TableExamples.lyx
-    aa_sample.lyx
-    aas_sample.lyx
-    amsart-test.lyx
-    amsbook-test.lyx
-    beamer-g4.jpg
-    beamer-g4-mask.jpg
-    beamer-icsi-logo.pdf
-    beamer-knight1-mask.png
-    beamer-knight1.png
-    beamer-knight2-mask.png
-    beamer-knight2.png
-    beamer-knight3-mask.png
-    beamer-knight3.png
-    beamer-knight4-mask.png
-    beamer-knight4.png
-    beamerlyxexample1.lyx
-    chess-article.lyx
-    chessgame.lyx
-    currency.lyx
-    cv.lyx
+lib_templates_files = Split('''
+    CV-image.eps
+    CV-image.png
+    IEEEtran.lyx
+    README.new_templates
+    aa.lyx
+    aastex.lyx
+    agu_article.lyx
+    beamer-conference-ornate-20min.lyx
+    biblioExample.bib
+    de_beamer-conference-ornate-20min.lyx
+    dinbrief.lyx
     docbook_article.lyx
-    example_lyxified.lyx
-    example_raw.lyx
+    elsart.lyx
+    europeCV.lyx
+    fr_beamer-conference-ornate-20min.lyx
+    g-brief-de.lyx
+    g-brief-en.lyx
     g-brief2.lyx
-    iecc05.fen
-    iecc07.fen
-    iecc12.fen
-    landslide.lyx
-    listerrors.lyx
-    mathed.lyx
-    multicol.lyx
-    noweb2lyx.lyx
-    script_form.lyx
-    simplecv.lyx
-    splash.lyx
+    hollywood.lyx
+    ijmpc.lyx
+    ijmpd.lyx
+    kluwer.lyx
+    koma-letter2.lyx
+    latex8.lyx
+    letter.lyx
+    modernCV.lyx
+    revtex.lyx
+    revtex4.lyx
+    slides.lyx
+''')
+
+
+lib_ui_files = Split('''
+    classic.ui
+    default.ui
+    stdmenus.inc
+    stdtoolbars.inc
 ''')
 
 
 lib_fonts_files = Split('''
     BaKoMaFontLicense.txt
+    ReadmeBaKoMa4LyX.txt
     cmex10.ttf
     cmmi10.ttf
     cmr10.ttf
@@ -1443,14 +1531,13 @@ lib_fonts_files = Split('''
     eufm10.ttf
     msam10.ttf
     msbm10.ttf
-    ReadmeBaKoMa4LyX.txt
     wasy10.ttf
 ''')
 
 
 lib_images_files = Split('''
-    all-changes-reject.xpm
     all-changes-accept.xpm
+    all-changes-reject.xpm
     amssymb.xpm
     banner.png
     bookmark-goto.xpm
@@ -1507,9 +1594,9 @@ lib_images_files = Split('''
     footnote-insert.xpm
     index-insert.xpm
     label-insert.xpm
-    layout.xpm
     layout-document.xpm
     layout-paragraph.xpm
+    layout.xpm
     layout_Description.xpm
     layout_Enumerate.xpm
     layout_Itemize.xpm
@@ -1565,25 +1652,21 @@ lib_images_files = Split('''
 ''')
 
 
+lib_images_extra_files = Split('''
+    README
+    font-smallcaps.xpm
+''')
+
+
 lib_images_math_files = Split('''
-    style.xbm
-    font.xpm
-    delim.xpm
-    equation.xpm
-    matrix.xpm
-    space.xpm
-    sqrt-square.xpm
-    style.xpm
-    sub.xpm
-    super.xpm
     Bbbk.xpm
     Finv.xpm
     Game.xpm
     Im.xpm
     Lleftarrow.xpm
-    Rrightarrow.xpm
     Lsh.xpm
     Re.xpm
+    Rrightarrow.xpm
     Rsh.xpm
     Vert.xpm
     Vvdash.xpm
@@ -1672,6 +1755,7 @@ lib_images_math_files = Split('''
     ddagger.xpm
     ddot.xpm
     ddots.xpm
+    delim.xpm
     delta.xpm
     delta2.xpm
     diagdown.xpm
@@ -1684,9 +1768,9 @@ lib_images_math_files = Split('''
     dot.xpm
     doteq.xpm
     doteqdot.xpm
+    dotplus.xpm
     dotsint.xpm
     dotsintop.xpm
-    dotplus.xpm
     doublebarwedge.xpm
     downarrow.xpm
     downarrow2.xpm
@@ -1700,15 +1784,17 @@ lib_images_math_files = Split('''
     eqcirc.xpm
     eqslantgtr.xpm
     eqslantless.xpm
+    equation.xpm
     equiv.xpm
     eta.xpm
     eth.xpm
     exists.xpm
     fallingdotseq.xpm
     flat.xpm
+    font.xpm
     forall.xpm
-    frac.xpm
     frac-square.xpm
+    frac.xpm
     frown.xpm
     gamma.xpm
     gamma2.xpm
@@ -1741,8 +1827,8 @@ lib_images_math_files = Split('''
     iiiintop.xpm
     iiint.xpm
     iiintop.xpm
-    iintop.xpm
     iint.xpm
+    iintop.xpm
     imath.xpm
     in.xpm
     infty.xpm
@@ -1820,6 +1906,7 @@ lib_images_math_files = Split('''
     mathcal_O.xpm
     mathcircumflex.xpm
     mathrm_T.xpm
+    matrix.xpm
     measuredangle.xpm
     mho.xpm
     mid.xpm
@@ -1948,6 +2035,7 @@ lib_images_math_files = Split('''
     smallsetminus.xpm
     smallsmile.xpm
     smile.xpm
+    space.xpm
     spadesuit.xpm
     sphericalangle.xpm
     sqcap.xpm
@@ -1956,6 +2044,7 @@ lib_images_math_files = Split('''
     sqiintop.xpm
     sqint.xpm
     sqintop.xpm
+    sqrt-square.xpm
     sqrt.xpm
     sqsubset.xpm
     sqsubseteq.xpm
@@ -1963,6 +2052,9 @@ lib_images_math_files = Split('''
     sqsupseteq.xpm
     square.xpm
     star.xpm
+    style.xbm
+    style.xpm
+    sub.xpm
     subset.xpm
     subset2.xpm
     subseteq.xpm
@@ -1977,6 +2069,7 @@ lib_images_math_files = Split('''
     succnsim.xpm
     succsim.xpm
     sum.xpm
+    super.xpm
     supset.xpm
     supset2.xpm
     supseteq.xpm
@@ -1986,8 +2079,8 @@ lib_images_math_files = Split('''
     surd.xpm
     swarrow.xpm
     tau.xpm
-    textrm_Oe.xpm
     textrm_AA.xpm
+    textrm_Oe.xpm
     therefore.xpm
     theta.xpm
     theta2.xpm
@@ -2058,59 +2151,464 @@ lib_images_math_files = Split('''
 ''')
 
 
-lib_kbd_files = Split('''
-    american-2.kmap
-    american.kmap
-    arabic.kmap
-    bg-bds-1251.kmap
-    brazil.kmap
-    brazil2.kmap
-    czech-prg.kmap
-    czech.kmap
-    european.kmap
-    francais.kmap
-    french.kmap
-    german-2.kmap
-    german-3.kmap
-    german.kmap
-    greek.kmap
-    hebrew.kmap
-    koi8-r.kmap
-    koi8-u.kmap
-    latvian.kmap
-    magyar-2.kmap
-    magyar-3.kmap
-    magyar.kmap
-    null.kmap
-    polish.kmap
-    polski.kmap
-    portuges.kmap
-    romanian.kmap
-    serbian.kmap
-    serbocroatian.kmap
-    sf.kmap
-    sg.kmap
-    slovak.kmap
-    slovene.kmap
-    thai-kedmanee.kmap
-    transilvanian.kmap
-    turkish-f.kmap
-    turkish.kmap
-    espanol.kmap
+lib_images_math_extra_files = Split('''
+    ams_arrows.xbm
+    ams_misc.xbm
+    ams_nrel.xbm
+    ams_ops.xbm
+    ams_rel.xbm
+    arrows.xbm
+    bop.xbm
+    brel.xbm
+    deco.xbm
+    deco.xpm
+    delim.xbm
+    delim0.xpm
+    delim1.xpm
+    dots.xbm
+    font.xbm
+    functions.xpm
+    greek.xbm
+    misc.xbm
+    varsz.xbm
+''')
+
+
+lib_images_attic_extra_files = Split('''
+    dialog-show_mathpanel.xpm
+''')
+
+
+lib_tex_files = Split('''
+    broadway.cls
+    cv.cls
+    hollywood.cls
+    lyxchess.sty
+    lyxskak.sty
+    revtex.cls
+''')
+
+
+lib_doc_files = Split('''
+    Customization.lyx
+    DocStyle.lyx
+    DummyDocument1.lyx
+    DummyDocument2.lyx
+    DummyTextDocument.txt
+    EmbeddedObjects.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    LaTeXConfig.lyx.in
+    Reference.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+
+lib_doc_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    Makefile.depend
+    README.Documentation
+    depend.py
+    depend.pyc
+    doc_toc.py
+''')
+
+
+lib_doc_da_files = Split('''
+    Intro.lyx
+''')
+
+
+lib_doc_sk_files = Split('''
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+
+lib_doc_ro_files = Split('''
+    Intro.lyx
+''')
+
+
+lib_doc_fr_files = Split('''
+    Customization.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+
+lib_doc_es_files = Split('''
+    DocumentoPostizo1.lyx
+    DocumentoPostizo2.lyx
+    DocumentoTextoPostizo.txt
+    EmbeddedObjects.lyx
+    Extended.lyx
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_es_clipart_files = Split('''
+    ComentNotaImagenQt4.png
+    CuadroMinipagQt4.png
+    DocumentoHijoQt4.png
+    GrisNotaImagenQt4.png
+    MaterialExternoQt4.png
+    NotaEnmarcadaImg.png
+    NotaLyXImagenQt4.png
+    NotaSombreadaImg.png
+    etiquetaQt4.png
+    flotanteQt4.png
+    notapieQt4.png
+    referenciaQt4.png
+''')
+
+
+lib_doc_sv_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_ru_files = Split('''
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_it_files = Split('''
+    Customization.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+
+lib_doc_gl_extra_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_eu_files = Split('''
+    Customization.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+
+lib_doc_he_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_hu_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_clipart_files = Split('''
+    BoxInsetDefaultQt4.png
+    ChildDocumentQt4.png
+    CommentNoteImageQt4.png
+    ExternalMaterialQt4.png
+    FramedNoteImageQt4.png
+    GreyedOutNoteImageQt4.png
+    LyXNoteImageQt4.png
+    ShadedNoteImageQt4.png
+    endnotes.pdf
+    escher-lsd.eps
+    floatQt4.png
+    footnoteQt4.png
+    labelQt4.png
+    mobius.eps
+    platypus.eps
+    referenceQt4.png
+    with_fntright.pdf
+    without_fntright.pdf
+''')
+
+
+lib_doc_cs_files = Split('''
+    Tutorial.lyx
+''')
+
+
+lib_doc_nb_files = Split('''
+    Intro.lyx
+''')
+
+
+lib_doc_pl_files = Split('''
+    Extended.lyx
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_nl_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_pt_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_sl_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
+lib_doc_de_files = Split('''
+    Customization.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+
+lib_examples_files = Split('''
+    Foils.lyx
+    ItemizeBullets.lyx
+    Literate.lyx
+    Minipage.lyx
+    TableExamples.lyx
+    aa_sample.lyx
+    aas_sample.lyx
+    amsart-test.lyx
+    amsbook-test.lyx
+    beamer-g4-mask.jpg
+    beamer-g4.jpg
+    beamer-icsi-logo.pdf
+    beamer-knight1-mask.png
+    beamer-knight1.png
+    beamer-knight2-mask.png
+    beamer-knight2.png
+    beamer-knight3-mask.png
+    beamer-knight3.png
+    beamer-knight4-mask.png
+    beamer-knight4.png
+    beamerlyxexample1.lyx
+    chess-article.lyx
+    chessgame.lyx
+    currency.lyx
+    cv.lyx
+    docbook_article.lyx
+    example_lyxified.lyx
+    example_raw.lyx
+    g-brief2.lyx
+    iecc05.fen
+    iecc07.fen
+    iecc12.fen
+    landslide.lyx
+    listerrors.lyx
+    mathed.lyx
+    multicol.lyx
+    noweb2lyx.lyx
+    script_form.lyx
+    simplecv.lyx
+    splash.lyx
+''')
+
+
+lib_examples_da_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_ro_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_fr_files = Split('''
+    AlignementDecimal.lyx
+    CV.lyx
+    ExemplesTableaux.lyx
+    Foils.lyx
+    ListesPuces.lyx
+    Minipage.lyx
+    exemple_brut.lyx
+    exemple_lyxifie.lyx
+    mathed.lyx
+    multicol.lyx
+    splash.lyx
+''')
+
+
+lib_examples_es_files = Split('''
+    ejemplo_con_lyx.lyx
+    ejemplo_sin_lyx.lyx
+    splash.lyx
+''')
+
+
+lib_examples_ru_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_it_files = Split('''
+    ItemizeBullets.lyx
+    splash.lyx
+''')
+
+
+lib_examples_gl_extra_files = Split('''
+    exemplo_bruto.lyx
+    exemplo_lyxificado.lyx
+    splash.lyx
+''')
+
+
+lib_examples_eu_files = Split('''
+    adibide_gordina.lyx
+    adibide_lyx-atua.lyx
+    splash.lyx
+''')
+
+
+lib_examples_he_files = Split('''
+    example_raw.lyx
+    he_example_lyxified.lyx
+    he_example_raw.lyx
+''')
+
+
+lib_examples_ca_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_hu_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_hu_extra_files = Split('''
+    example_lyxified.lyx
+    example_raw.lyx
+''')
+
+
+lib_examples_cs_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_pl_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_nl_files = Split('''
+    multicol.lyx
+    opsommingstekens.lyx
+    splash.lyx
+    voorbeeld_ruw.lyx
+    voorbeeld_verlyxt.lyx
+''')
+
+
+lib_examples_pt_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_sl_files = Split('''
+    primer_lyxan.lyx
+    primer_surov.lyx
+    splash.lyx
+''')
+
+
+lib_examples_de_files = Split('''
+    Dezimal.lyx
+    ItemizeBullets.lyx
+    Lebenslauf.lyx
+    Minipage.lyx
+    TableExamples.lyx
+    Waehrungen.lyx
+    beispiel_gelyxt.lyx
+    beispiel_roh.lyx
+    mathed.lyx
+    multicol.lyx
+    splash.lyx
+''')
+
+
+lib_lyx2lyx_files = Split('''
+    LyX.py
+    generate_encoding_info.py
+    lyx2lyx
+    lyx2lyx_lang.py
+    lyx_0_06.py
+    lyx_0_08.py
+    lyx_0_10.py
+    lyx_0_12.py
+    lyx_1_0.py
+    lyx_1_1.py
+    lyx_1_1_5.py
+    lyx_1_1_6_0.py
+    lyx_1_1_6_3.py
+    lyx_1_2.py
+    lyx_1_3.py
+    lyx_1_4.py
+    lyx_1_5.py
+    parser_tools.py
+    profiling.py
+    test_parser_tools.py
+''')
+
+
+lib_lyx2lyx_extra_files = Split('''
+    ChangeLog
+    Makefile.am
+    lyx2lyx_version.py.in
 ''')
 
 
 lib_layouts_files = Split('''
     IEEEtran.layout
     aa.layout
+    aapaper.inc
     aapaper.layout
     aastex.layout
     agu-dtd.layout
+    agu_stdclass.inc
+    agu_stdcounters.inc
+    agu_stdlists.inc
+    agu_stdsections.inc
+    agu_stdtitle.inc
     agums.layout
+    aguplus.inc
     amsart-plain.layout
     amsart-seq.layout
     amsart.layout
     amsbook.layout
+    amsdefs.inc
+    amsmaths-plain.inc
+    amsmaths-seq.inc
+    amsmaths.inc
     apa.layout
     arab-article.layout
     article.layout
@@ -2120,6 +2618,16 @@ lib_layouts_files = Split('''
     chess.layout
     cl2emult.layout
     cv.layout
+    db_lyxmacros.inc
+    db_stdcharstyles.inc
+    db_stdclass.inc
+    db_stdcounters.inc
+    db_stdlayouts.inc
+    db_stdlists.inc
+    db_stdsections.inc
+    db_stdstarsections.inc
+    db_stdstruct.inc
+    db_stdtitle.inc
     dinbrief.layout
     docbook-book.layout
     docbook-chapter.layout
@@ -2151,20 +2659,26 @@ lib_layouts_files = Split('''
     literate-article.layout
     literate-book.layout
     literate-report.layout
+    literate-scrap.inc
     llncs.layout
     ltugboat.layout
+    lyxmacros.inc
     manpage.layout
     memoir.layout
     moderncv.layout
     mwart.layout
     mwbk.layout
     mwrep.layout
+    numarticle.inc
+    numreport.inc
+    numrevtex.inc
     paper.layout
     report.layout
     revtex.layout
     revtex4.layout
     scrartcl.layout
     scrbook.layout
+    scrclass.inc
     scrlettr.layout
     scrlttr2.layout
     scrreprt.layout
@@ -2173,36 +2687,6 @@ lib_layouts_files = Split('''
     simplecv.layout
     slides.layout
     spie.layout
-    svglobal.layout
-    svjog.layout
-    svprobth.layout
-    aapaper.inc
-    agu_stdclass.inc
-    agu_stdcounters.inc
-    agu_stdlists.inc
-    agu_stdsections.inc
-    agu_stdtitle.inc
-    aguplus.inc
-    amsdefs.inc
-    amsmaths-plain.inc
-    amsmaths-seq.inc
-    amsmaths.inc
-    db_lyxmacros.inc
-    db_stdcharstyles.inc
-    db_stdclass.inc
-    db_stdcounters.inc
-    db_stdlayouts.inc
-    db_stdlists.inc
-    db_stdsections.inc
-    db_stdstarsections.inc
-    db_stdstruct.inc
-    db_stdtitle.inc
-    literate-scrap.inc
-    lyxmacros.inc
-    numarticle.inc
-    numreport.inc
-    numrevtex.inc
-    scrclass.inc
     stdclass.inc
     stdcounters.inc
     stdfloats.inc
@@ -2213,7 +2697,10 @@ lib_layouts_files = Split('''
     stdstarsections.inc
     stdstruct.inc
     stdtitle.inc
+    svglobal.layout
+    svjog.layout
     svjour.inc
+    svprobth.layout
 ''')
 
 
@@ -2235,325 +2722,141 @@ lib_scripts_files = Split('''
 ''')
 
 
-lib_templates_files = Split('''
-    IEEEtran.lyx
-    README.new_templates
-    aa.lyx
-    aastex.lyx
-    agu_article.lyx
-    beamer-conference-ornate-20min.lyx
-    biblioExample.bib
-    CV-image.eps
-    CV-image.png
-    de_beamer-conference-ornate-20min.lyx
-    dinbrief.lyx
-    docbook_article.lyx
-    elsart.lyx
-    europeCV.lyx
-    fr_beamer-conference-ornate-20min.lyx
-    g-brief2.lyx
-    g-brief-de.lyx
-    g-brief-en.lyx
-    ijmpc.lyx
-    ijmpd.lyx
-    hollywood.lyx
-    kluwer.lyx
-    koma-letter2.lyx
-    latex8.lyx
-    letter.lyx
-    modernCV.lyx
-    revtex.lyx
-    revtex4.lyx
-    slides.lyx
+lib_bind_files = Split('''
+    aqua.bind
+    broadway.bind
+    cua.bind
+    cyrkeys.bind
+    emacs.bind
+    greekkeys.bind
+    hollywood.bind
+    latinkeys.bind
+    mac.bind
+    math.bind
+    menus.bind
+    sciword.bind
+    xemacs.bind
 ''')
 
 
-lib_tex_files = Split('''
-    broadway.cls
-    cv.cls
-    hollywood.cls
-    lyxchess.sty
-    lyxskak.sty
-    revtex.cls
+lib_bind_fi_files = Split('''
+    menus.bind
 ''')
 
 
-lib_ui_files = Split('''
-    classic.ui
-    default.ui
-    stdmenus.inc
-    stdtoolbars.inc
+lib_bind_sv_files = Split('''
+    menus.bind
 ''')
 
 
-lib_doc_clipart_files = Split('''
-    BoxInsetDefaultQt4.png
-    ChildDocumentQt4.png
-    CommentNoteImageQt4.png
-    escher-lsd.eps
-    endnotes.pdf
-    ExternalMaterialQt4.png
-    floatQt4.png
-    footnoteQt4.png
-    FramedNoteImageQt4.png
-    GreyedOutNoteImageQt4.png
-    labelQt4.png
-    LyXNoteImageQt4.png
-    mobius.eps
-    platypus.eps
-    referenceQt4.png
-    ShadedNoteImageQt4.png
-    with_fntright.pdf
-    without_fntright.pdf
+lib_bind_pt_files = Split('''
+    menus.bind
 ''')
 
 
-lib_doc_cs_files = Split('''
-    Tutorial.lyx
+lib_bind_de_files = Split('''
+    menus.bind
 ''')
 
 
-lib_doc_da_files = Split('''
-    Intro.lyx
+boost_extra_files = Split('''
+    ChangeLog
+    LICENSE_1_0.txt
+    Makefile.am
 ''')
 
 
-lib_doc_de_files = Split('''
-    Customization.lyx
-    Extended.lyx
-    FAQ.lyx
-    Intro.lyx
-    Tutorial.lyx
-    UserGuide.lyx
+boost_libs_extra_files = Split('''
+    Makefile.am
+    README
 ''')
 
 
-lib_doc_es_files = Split('''
-    DocumentoPostizo1.lyx
-    DocumentoPostizo2.lyx
-    DocumentoTextoPostizo.txt
-    EmbeddedObjects.lyx
-    Extended.lyx
-    Intro.lyx
-    Tutorial.lyx
+boost_libs_signals_extra_files = Split('''
+    Makefile.am
+    signals.vcproj
 ''')
 
 
-lib_doc_es_clipart_files = Split('''
-    ComentNotaImagenQt4.png
-    CuadroMinipagQt4.png
-    DocumentoHijoQt4.png
-    etiquetaQt4.png
-    flotanteQt4.png
-    GrisNotaImagenQt4.png
-    MaterialExternoQt4.png
-    NotaEnmarcadaImg.png
-    NotaLyXImagenQt4.png
-    notapieQt4.png
-    NotaSombreadaImg.png
-    referenciaQt4.png
+boost_libs_signals_src_files = Split('''
+    connection.cpp
+    named_slot_map.cpp
+    signal_base.cpp
+    slot.cpp
+    trackable.cpp
 ''')
 
 
-lib_doc_eu_files = Split('''
-    Customization.lyx
-    Extended.lyx
-    FAQ.lyx
-    Intro.lyx
-    Tutorial.lyx
-    UserGuide.lyx
+boost_libs_signals_src_extra_files = Split('''
+    Makefile.am
+    pch.h
 ''')
 
 
-lib_doc_fr_files = Split('''
-    Customization.lyx
-    Extended.lyx
-    FAQ.lyx
-    Intro.lyx
-    Tutorial.lyx
-    UserGuide.lyx
+boost_libs_regex_extra_files = Split('''
+    Makefile.am
+    regex.vcproj
 ''')
 
 
-lib_doc_he_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
+boost_libs_regex_src_files = Split('''
+    c_regex_traits.cpp
+    cpp_regex_traits.cpp
+    cregex.cpp
+    fileiter.cpp
+    instances.cpp
+    posix_api.cpp
+    regex.cpp
+    regex_debug.cpp
+    regex_raw_buffer.cpp
+    regex_traits_defaults.cpp
+    w32_regex_traits.cpp
+    wide_posix_api.cpp
+    winstances.cpp
 ''')
 
 
-lib_doc_hu_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
+boost_libs_regex_src_extra_files = Split('''
+    Makefile.am
+    pch.h
 ''')
 
 
-lib_doc_it_files = Split('''
-    Customization.lyx
-    Intro.lyx
-    Tutorial.lyx
-    UserGuide.lyx
+boost_libs_filesystem_extra_files = Split('''
+    Makefile.am
+    filesystem.vcproj
 ''')
 
 
-lib_doc_nl_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
+boost_libs_filesystem_src_files = Split('''
+    exception.cpp
+    operations.cpp
+    path.cpp
+    portability.cpp
 ''')
 
 
-lib_doc_nb_files = Split('''
-    Intro.lyx
+boost_libs_filesystem_src_extra_files = Split('''
+    Makefile.am
+    pch.h
 ''')
 
 
-lib_doc_pl_files = Split('''
-    Extended.lyx
-    Intro.lyx
-    Tutorial.lyx
+boost_libs_iostreams_extra_files = Split('''
+    Makefile.am
 ''')
 
 
-lib_doc_pt_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
+boost_libs_iostreams_src_files = Split('''
+    file_descriptor.cpp
+    mapped_file.cpp
+    zlib.cpp
 ''')
 
 
-lib_doc_ro_files = Split('''
-    Intro.lyx
+boost_libs_iostreams_src_extra_files = Split('''
+    Makefile.am
+    pch.h
 ''')
 
 
-lib_doc_ru_files = Split('''
-    FAQ.lyx
-    Intro.lyx
-    Tutorial.lyx
-''')
-
-
-lib_doc_sk_files = Split('''
-    Tutorial.lyx
-    UserGuide.lyx
-''')
-
-
-lib_doc_sl_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
-''')
-
-
-lib_doc_sv_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
-''')
-
-
-lib_doc_files = Split('''
-    Customization.lyx
-    DocStyle.lyx
-    DummyTextDocument.txt
-    DummyDocument1.lyx
-    DummyDocument2.lyx
-    EmbeddedObjects.lyx
-    Extended.lyx
-    FAQ.lyx
-    Intro.lyx
-    LaTeXConfig.lyx.in
-    Reference.lyx
-    Tutorial.lyx
-    UserGuide.lyx
-''')
-
-
-lib_lyx2lyx_files = Split('''
-    lyx2lyx
-    lyx2lyx_lang.py
-    generate_encoding_info.py
-    parser_tools.py
-    LyX.py
-    lyx_0_06.py
-    lyx_0_08.py
-    lyx_0_10.py
-    lyx_0_12.py
-    lyx_1_0.py
-    lyx_1_1.py
-    lyx_1_1_5.py
-    lyx_1_1_6_0.py
-    lyx_1_1_6_3.py
-    lyx_1_2.py
-    lyx_1_3.py
-    lyx_1_4.py
-    lyx_1_5.py
-    profiling.py
-    test_parser_tools.py
-''')
-
-
-win32_bakoma_fonts = Split('''
-    Readme.txt
-    Licence.txt
-    cmex10.ttf
-    cmr10.ttf
-    eufm10.ttf
-    msbm10.ttf
-    cmmi10.ttf
-    cmsy10.ttf
-    msam10.ttf
-    wasy10.ttf
-''')
-
-
-win32_packaging_installer_files = Split('''
-    license.rtf
-    lyx.nsi
-    settings.nsh
-    settings.user.nsh
-''')
-
-
-win32_packaging_installer_components_files = Split('''
-    configure.nsh
-    dicts.nsh
-    langselect.nsh
-    uninstall.nsh
-    viewer.nsh
-    core.nsh
-    external.nsh
-    reinstall.nsh
-    user.nsh
-''')
-
-
-win32_packaging_installer_dialogs_files = Split('''
-    external.ini
-    langselect.ini
-    reinstall.ini
-    user.ini
-    viewer.ini
-''')
-
-
-win32_packaging_installer_graphics_files = Split('''
-    header.bmp
-    wizard.bmp
-''')
-
-
-win32_packaging_installer_include_files = Split('''
-    declarations.nsh
-    detection.nsh
-    filelists.nsh
-    gui.nsh
-    init.nsh
-    lang.nsh
-    windows.nsh
-''')
-
-
-win32_packaging_installer_lang_files = Split('''
-    english.nsh
-    french.nsh
-    german.nsh
-    italian.nsh
-''')
