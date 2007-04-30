@@ -1469,8 +1469,6 @@ lib_kbd_files = Split('''
 
 
 lib_templates_files = Split('''
-    CV-image.eps
-    CV-image.png
     IEEEtran.lyx
     README.new_templates
     aa.lyx
@@ -1482,7 +1480,6 @@ lib_templates_files = Split('''
     dinbrief.lyx
     docbook_article.lyx
     elsart.lyx
-    europeCV.lyx
     fr_beamer-conference-ornate-20min.lyx
     g-brief-de.lyx
     g-brief-en.lyx
@@ -1494,7 +1491,6 @@ lib_templates_files = Split('''
     koma-letter2.lyx
     latex8.lyx
     letter.lyx
-    modernCV.lyx
     revtex.lyx
     revtex4.lyx
     slides.lyx
@@ -2374,6 +2370,8 @@ lib_doc_de_files = Split('''
 
 
 lib_examples_files = Split('''
+    CV-image.eps
+    CV-image.png
     Foils.lyx
     ItemizeBullets.lyx
     Literate.lyx
@@ -2400,15 +2398,16 @@ lib_examples_files = Split('''
     currency.lyx
     cv.lyx
     docbook_article.lyx
+    europeCV.lyx
     example_lyxified.lyx
     example_raw.lyx
-    g-brief2.lyx
     iecc05.fen
     iecc07.fen
     iecc12.fen
     landslide.lyx
     listerrors.lyx
     mathed.lyx
+    modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
     script_form.lyx

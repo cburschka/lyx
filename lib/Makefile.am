@@ -169,6 +169,8 @@ dist_slexamples_DATA = \
 
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
+	examples/CV-image.eps \
+	examples/CV-image.png \
 	examples/Foils.lyx \
 	examples/ItemizeBullets.lyx \
 	examples/Literate.lyx \
@@ -195,6 +197,7 @@ dist_examples_DATA = \
 	examples/currency.lyx \
 	examples/cv.lyx \
 	examples/docbook_article.lyx \
+	examples/europeCV.lyx \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
 	examples/iecc05.fen \
@@ -203,12 +206,12 @@ dist_examples_DATA = \
 	examples/landslide.lyx \
 	examples/listerrors.lyx \
 	examples/mathed.lyx \
+	examples/modernCV.lyx \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
 	examples/script_form.lyx \
 	examples/simplecv.lyx \
-	examples/splash.lyx \
-	examples/g-brief2.lyx
+	examples/splash.lyx
 
 fontsdir = $(pkgdatadir)/fonts
 dist_fonts_DATA = \
@@ -1015,13 +1018,10 @@ dist_templates_DATA = \
 	templates/agu_article.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/biblioExample.bib \
-	templates/CV-image.eps \
-	templates/CV-image.png \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
 	templates/elsart.lyx \
-	templates/europeCV.lyx \
 	templates/fr_beamer-conference-ornate-20min.lyx \
 	templates/g-brief2.lyx \
 	templates/g-brief-de.lyx \
@@ -1033,7 +1033,6 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/latex8.lyx \
 	templates/letter.lyx \
-	templates/modernCV.lyx \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx
