@@ -50,7 +50,7 @@ if(MSVC)
 else(MSVC)
 	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
 	 	PROPERTIES COMPILE_FLAGS 
-		"-include ${TOP_SRC_DIR}/src/tex2lyx/Font.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+		"-DFONT_H -include ${TOP_SRC_DIR}/src/tex2lyx/Font.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 endif(MSVC)
 
 #TODO
