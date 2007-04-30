@@ -133,12 +133,6 @@ std::auto_ptr<Inset> Inset::clone() const
 }
 
 
-docstring Inset::insetName() const 
-{
-	return from_ascii("unknown");
-}
-
-
 Inset::Code Inset::translate(std::string const & name)
 {
 	static TranslatorMap const translator = build_translator();

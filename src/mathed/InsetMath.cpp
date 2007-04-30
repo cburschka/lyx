@@ -139,12 +139,6 @@ HullType InsetMath::getType() const
 }
 
 
-docstring InsetMath::name() const
-{
-	return from_ascii("unknown");
-}
-
-
 std::ostream & operator<<(std::ostream & os, MathAtom const & at)
 {
 	odocstringstream oss;

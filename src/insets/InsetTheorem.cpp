@@ -53,7 +53,7 @@ Inset.heorem::InsetTheorem()
 
 void Inset.heorem::write(Buffer const * buf, ostream & os) const
 {
-	os << insetName() << "\n";
+	os << name() << "\n";
 	InsetCollapsable::write(buf, os);
 }
 

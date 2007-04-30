@@ -28,7 +28,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///
-	docstring insetName() const { return from_ascii("Foot"); }
+	docstring name() const { return from_ascii("Foot"); }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;

@@ -52,7 +52,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::NOTE_CODE; }
 	///
-	docstring insetName() const { return from_ascii("Note"); }
+	docstring name() const { return from_ascii("Note"); }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

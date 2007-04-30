@@ -74,7 +74,7 @@ public:
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(char_type c, quote_language l, quote_times t);
 	///
-	docstring insetName() const { return from_ascii("Quotes"); }
+	docstring name() const { return from_ascii("Quotes"); }
 	///
 	bool metrics(MetricsInfo &, Dimension &) const;
 	///

@@ -1820,7 +1820,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 		if (!float_inset)
 			float_inset = cur.innerInsetOfType(Inset::WRAP_CODE);
 		if (float_inset)
-			name = float_inset->insetName();
+			name = float_inset->name();
 	}
 
 	// Create a correct prefix for prettyref

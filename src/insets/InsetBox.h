@@ -110,7 +110,7 @@ protected:
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const;
 	///
-	virtual docstring insetName() const { return from_ascii("Box"); }
+	virtual docstring name() const { return from_ascii("Box"); }
 private:
 	friend class InsetBoxParams;
 

@@ -77,7 +77,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	virtual docstring insetName() const { return name_; }
+	virtual docstring name() const { return name_; }
 private:
 	virtual std::auto_ptr<Inset> doClone() const;
 

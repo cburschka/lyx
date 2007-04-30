@@ -53,7 +53,7 @@ public:
 	///
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
 	///
-	docstring insetName() const { return from_ascii("CharStyle"); }
+	docstring name() const { return from_ascii("CharStyle"); }
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;

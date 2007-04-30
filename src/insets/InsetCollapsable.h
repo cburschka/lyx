@@ -44,7 +44,7 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
-	docstring insetName() const { return from_ascii("Collapsable"); }
+	docstring name() const { return from_ascii("Collapsable"); }
 	///
 	void read(Buffer const &, Lexer &);
 	///

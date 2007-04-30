@@ -49,7 +49,7 @@ public:
 	///
 	~InsetFloat();
 	///
-	docstring insetName() const { return name_; }
+	docstring name() const { return name_; }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///

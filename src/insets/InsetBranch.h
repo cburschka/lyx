@@ -85,7 +85,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring insetName() const { return from_ascii("Branch"); }
+	docstring name() const { return from_ascii("Branch"); }
 private:
 	friend class InsetBranchParams;
 

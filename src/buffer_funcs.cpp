@@ -402,7 +402,7 @@ void setCaptions(Paragraph & par, TextClass const & textclass)
 		Inset & inset = *it->inset;
 		if (inset.lyxCode() == Inset::FLOAT_CODE 
 			|| inset.lyxCode() == Inset::WRAP_CODE) {
-			docstring const & name = inset.insetName();
+			docstring const name = inset.name();
 			if (name.empty())
 				continue;
 
@@ -559,13 +559,13 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 				break;
 			}
 		}
-		// FIXME Can insetName() return an empty name for wide or
+		// FIXME Can Inset::name() return an empty name for wide or
 		// float insets? If not we can put the definition of type
 		// inside the if (in) clause and use that instead of
 		// if (!type.empty()).
 		docstring type;
 		if (in)
-			type = in->insetName();
+			type = in->name();
 
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(to_ascii(type));

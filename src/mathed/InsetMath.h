@@ -195,8 +195,6 @@ public:
 	virtual HullType getType() const;
 	/// change type
 	virtual void mutate(HullType /*newtype*/) {}
-	/// usually the latex name
-	virtual docstring name() const;
 
 	/// math stuff usually isn't allowed in text mode
 	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }

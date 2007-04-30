@@ -82,7 +82,7 @@ void CoordCache::dump() const
 	for (CoordCacheBase<Inset>::cache_type::const_iterator it = getInsets().getData().begin(); it != getInsets().getData().end(); ++it) {
 		Inset const * inset = it->first;
 		Point const p = it->second;
-		lyxerr << "Inset " << inset << "(" << to_utf8(inset->insetName())
+		lyxerr << "Inset " << inset << "(" << to_utf8(inset->name())
 			<< ") has point " << p.x_ << "," << p.y_ << std::endl;
 	}
 }

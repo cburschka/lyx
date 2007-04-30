@@ -365,7 +365,7 @@ public:
 	virtual bool hasFixedWidth() const { return false; }
 
 	///
-	virtual docstring insetName() const;
+	virtual docstring name() const { return from_ascii("unknown"); }
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater
