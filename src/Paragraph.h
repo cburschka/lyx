@@ -20,7 +20,7 @@
 #include "Dimension.h"
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "RowList_fwd.h"
+#include "Row.h"
 
 #include "insets/Inset.h" // only for Inset::Code
 

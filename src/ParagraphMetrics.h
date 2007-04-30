@@ -21,6 +21,13 @@
 
 namespace lyx {
 
+/**
+ * Each paragraph is broken up into a number of rows on the screen.
+ * This is a list of such on-screen rows, ordered from the top row
+ * downwards.
+ */
+typedef std::vector<Row> RowList;
+
 class MetricsInfo;
 class PainterInfo;
 
@@ -72,6 +79,8 @@ public:
 	void dump() const;
 
 private:
+	///
+	typedef std::vector<size_type> RowSignature;
 	///
 	size_type calculateRowSignature(Row const &);
 	///

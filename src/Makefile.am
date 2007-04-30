@@ -222,7 +222,6 @@ lyx_SOURCES = \
 	PrinterParams.h \
 	Row.cpp \
 	Row.h \
-	RowList_fwd.h \
 	rowpainter.cpp \
 	rowpainter.h \
 	Session.cpp \

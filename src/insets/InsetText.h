@@ -13,7 +13,6 @@
 #define INSETTEXT_H
 
 #include "Inset.h"
-#include "RowList_fwd.h"
 #include "Font.h"
 #include "Text.h"
 
