@@ -1169,9 +1169,9 @@ src_pre_files = Split('''
     tex-accent.cpp
     tex-strings.cpp
     TexRow.cpp
-    text.cpp
-    text2.cpp
-    text3.cpp
+    Text.cpp
+    Text2.cpp
+    Text3.cpp
     TextMetrics.cpp
     toc.cpp
     Trans.cpp
