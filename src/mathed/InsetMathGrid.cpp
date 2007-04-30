@@ -28,8 +28,6 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 
-#include "insets/MailInset.h"
-
 #include "support/lstrings.h"
 
 #include <sstream>
@@ -49,31 +47,6 @@ using std::auto_ptr;
 using std::istream;
 using std::istringstream;
 using std::vector;
-
-class GridInsetMailer : public MailInset {
-public:
-	GridInsetMailer(InsetMathGrid & inset) : inset_(inset) {}
-	///
-	virtual string const & name() const
-	{
-		static string const theName = "tabular";
-		return theName;
-	}
-	///
-	virtual string const inset2string(Buffer const &) const
-	{
-		odocstringstream data;
-		//data << name() << " active_cell " << inset.getActCell() << '\n';
-		data << from_utf8(name()) << " active_cell " << 0 << '\n';
-		WriteStream ws(data);
-		inset_.write(ws);
-		return to_utf8(data.str());
-	}
-
-protected:
-	Inset & inset() const { return inset_; }
-	InsetMathGrid & inset_;
-};
 
 
 namespace {
@@ -1029,18 +1002,6 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathGrid: request: " << cmd << endl;
 	switch (cmd.action) {
-
-	case LFUN_MOUSE_RELEASE:
-		//if (cmd.button() == mouse_button::button3) {
-		//	GridInsetMailer(*this).showDialog();
-		//	return DispatchResult(true, true);
-		//}
-		InsetMathNest::doDispatch(cur, cmd);
-		break;
-
-	case LFUN_INSET_DIALOG_UPDATE:
-		GridInsetMailer(*this).updateDialog(&cur.bv());
-		break;
 
 	// insert file functions
 	case LFUN_LINE_DELETE:
