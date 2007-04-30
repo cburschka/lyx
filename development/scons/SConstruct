@@ -2086,7 +2086,8 @@ if update_po:
             ['$MSGUNIQ -o $TARGET $SOURCE',
              '''$XGETTEXT --default-domain=${TARGET.base} \
                 --directory=$TOP_SRCDIR --add-comments=TRANSLATORS: \
-                --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=qt_ \
+                --language=C++ --join-existing \
+                --keyword=_ --keyword=N_ --keyword=B_ --keyword=qt_ \
                 --files-from=$TOP_SRCDIR/po/POTFILES.in \
                 --copyright-holder="LyX Developers" \
                 --msgid-bugs-address="lyx-devel@lists.lyx.org" ''']
