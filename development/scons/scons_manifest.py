@@ -127,7 +127,6 @@ src_header_files = Split('''
     gettext.h
     lengthcommon.h
     lfuns.h
-    lyx_sty.h
     lyxfind.h
     lyxlayout_ptr_fwd.h
     output.h
@@ -231,7 +230,6 @@ src_pre_files = Split('''
     factory.cpp
     gettext.cpp
     lengthcommon.cpp
-    lyx_sty.cpp
     lyxfind.cpp
     output.cpp
     output_docbook.cpp
