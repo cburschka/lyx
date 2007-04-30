@@ -1039,7 +1039,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
-//		GridInsetMailer(*this).updateDialog(&cur.bv());
+		GridInsetMailer(*this).updateDialog(&cur.bv());
 		break;
 
 	// insert file functions
