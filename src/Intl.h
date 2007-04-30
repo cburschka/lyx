@@ -15,11 +15,10 @@
 #ifndef INTL_H
 #define INTL_H
 
-#include "TransState.h"
+#include "Trans.h"
 
 
 namespace lyx {
-
 
 /**
  * This class is used for managing keymaps
@@ -51,7 +50,7 @@ public:
 	void initKeyMapper(bool on);
 
 	// Get the Translation Manager
-	TransManager & getTransManager();
+	inline TransManager & getTransManager() { return trans; }
 
 	/// using primary or secondary keymap ?
 	Keymap keymap;
@@ -66,14 +65,6 @@ private:
 	/// the translation manager
 	TransManager trans;
 };
-
-
-inline
-TransManager & Intl::getTransManager()
-{
-	return trans;
-}
-
 
 } // namespace lyx
 

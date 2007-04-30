@@ -12,44 +12,138 @@
 #include <config.h>
 
 #include "Trans.h"
+
+#include "Buffer.h"
+#include "BufferView.h"
+#include "Cursor.h"
+#include "CutAndPaste.h"
+#include "debug.h"
+#include "Lexer.h"
+#include "LyXRC.h"
+#include "Text.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "Lexer.h"
-#include "debug.h"
-#include "TransState.h"
-
+#include "support/convert.h"
+#include "support/docstream.h"
 
 namespace lyx {
 
+using support::split;
 using support::contains;
 using support::libFileSearch;
 
 using std::endl;
 using std::string;
+using std::pair;
 using std::map;
 
 
-// KmodInfo
-KmodInfo::KmodInfo()
+/////////////////////////////////////////////////////////////////////
+//
+// TeXAccents
+//
+/////////////////////////////////////////////////////////////////////
+
+/* the names used by TeX and XWindows for deadkeys/accents are not the same
+   so here follows a table to clearify the differences. Please correct this
+   if I got it wrong
+
+   |------------------|------------------|------------------|--------------|
+   |      TeX         |     XWindows     |   \bind/LFUN     | used by intl |
+   |------------------|------------------|------------------|--------------|
+   |    grave         |    grave         |LFUN_ACCENT_GRAVE        | grave
+   |    acute         |    acute         |LFUN_ACCENT_ACUTE        | acute
+   |    circumflex    |    circumflex    |LFUN_ACCENT_CIRCUMFLEX   | circumflex
+   | umlaut/dieresis  |    diaeresis     |LFUN_ACCENT_UMLAUT       | umlaut
+   |    tilde         |    tilde         |LFUN_ACCENT_TILDE        | tilde
+   |    macron        |    maron         |LFUN_ACCENT_MACRON       | macron
+   |    dot           |    abovedot      |LFUN_ACCENT_DOT          | dot
+   |    cedilla       |    cedilla       |LFUN_ACCENT_CEDILLA      | cedilla
+   |    underdot      |                  |LFUN_ACCENT_UNDERDOT     | underdot
+   |    underbar      |                  |LFUN_ACCENT_UNDERBAR     | underbar
+   |    hácek         |    caron         |LFUN_ACCENT_CARON        | caron
+   |    breve         |    breve         |LFUN_ACCENT_BREVE        | breve
+   |    tie           |                  |LFUN_ACCENT_TIE          | tie
+   | Hungarian umlaut |    doubleacute   |LFUN_ACCENT_HUNGARIAN_UMLAUT  | hungarian umlaut
+   |    circle        |    abovering     |LFUN_ACCENT_CIRCLE       | circle
+   |                  |    ogonek        |                  |
+   |                  |    iota          |                  |
+   |                  |    voiced_sound  |                  |
+   |                  | semivoiced_sound |                  |
+   |                  |                  |LFUN_ACCENT_SPECIAL_CARON| special caron
+   */
+static tex_accent_struct lyx_accent_table[] = {
+	{TEX_NOACCENT,   0,      "",                LFUN_NOACTION},
+	{TEX_ACUTE,      0x0301, "acute",           LFUN_ACCENT_ACUTE},
+	{TEX_GRAVE,      0x0300, "grave",           LFUN_ACCENT_GRAVE},
+	{TEX_MACRON,     0x0304, "macron",          LFUN_ACCENT_MACRON},
+	{TEX_TILDE,      0x0303, "tilde",           LFUN_ACCENT_TILDE},
+	{TEX_UNDERBAR,   0x0320, "underbar",        LFUN_ACCENT_UNDERBAR},
+	{TEX_CEDILLA,    0x0327, "cedilla",         LFUN_ACCENT_CEDILLA},
+	{TEX_UNDERDOT,   0x0323, "underdot",        LFUN_ACCENT_UNDERDOT},
+	{TEX_CIRCUMFLEX, 0x0302, "circumflex",      LFUN_ACCENT_CIRCUMFLEX},
+	{TEX_CIRCLE,     0x030a, "circle",          LFUN_ACCENT_CIRCLE},
+	{TEX_TIE,        0x0361, "tie",             LFUN_ACCENT_TIE},
+	{TEX_BREVE,      0x0306, "breve",           LFUN_ACCENT_BREVE},
+	{TEX_CARON,      0x030c, "caron",           LFUN_ACCENT_CARON},
+//	{TEX_SPECIAL_CARON, 0x030c, "ooo",          LFUN_ACCENT_SPECIAL_CARON},
+	// Don't fix this typo for compatibility reasons!
+	{TEX_HUNGUML,    0x030b, "hugarian_umlaut", LFUN_ACCENT_HUNGARIAN_UMLAUT},
+	{TEX_UMLAUT,     0x0308, "umlaut",          LFUN_ACCENT_UMLAUT},
+	{TEX_DOT,        0x0307, "dot",             LFUN_ACCENT_DOT},
+	{TEX_OGONEK,     0x0328, "ogonek",          LFUN_ACCENT_OGONEK}
+};
+
+
+tex_accent_struct get_accent(kb_action action)
 {
+	int i = 0;
+	while (i <= TEX_MAX_ACCENT) {
+		if (lyx_accent_table[i].action == action)
+			return lyx_accent_table[i];
+		++i;
+	}
+	struct tex_accent_struct temp = { static_cast<tex_accent>(0), 0,
+					  0, static_cast<kb_action>(0)};
+	return temp;
 }
 
 
-// Trans class
-
-Trans::Trans()
+static docstring const doAccent(docstring const & s, tex_accent accent)
 {
+	if (s.empty())
+		return docstring(1, lyx_accent_table[accent].ucs4);
+
+	odocstringstream os;
+	os.put(s[0]);
+	os.put(lyx_accent_table[accent].ucs4);
+	if (s.length() > 1) {
+		if (accent != TEX_TIE || s.length() > 2)
+			lyxerr << "Warning: Too many characters given for accent "
+			       << lyx_accent_table[accent].name << '.' << std::endl;
+		os << s.substr(1);
+	}
+	return normalize_kc(os.str());
 }
 
 
-Trans::~Trans()
+static docstring const doAccent(char_type c, tex_accent accent)
 {
-	freeKeymap();
+	return doAccent(docstring(1, c), accent);
 }
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// Trans
+//
+/////////////////////////////////////////////////////////////////////
 
 
 void Trans::insertException(KmodException & exclist, char_type c,
-                            docstring const & data, bool flag, tex_accent accent)
+	docstring const & data, bool flag, tex_accent accent)
 {
 	Keyexc p;
 	p.c = c;
@@ -78,12 +172,6 @@ void Trans::freeKeymap()
 bool Trans::isDefined() const
 {
 	return !name_.empty();
-}
-
-
-string const & Trans::getName() const
-{
-	return name_;
 }
 
 
@@ -191,7 +279,7 @@ int Trans::load(Lexer & lex)
 			} else
 				return -1;
 
-			tex_accent accent_2= getkeymod(str);
+			tex_accent accent_2 = getkeymod(str);
 			if (accent_2 == TEX_NOACCENT) return -1;
 
 			map<tex_accent, KmodInfo>::iterator it1 =
@@ -333,9 +421,9 @@ int Trans::load(string const & language)
 
 	int const res = load(lex);
 
-	if (res == 0) {
+	if (res == 0)
 		name_ = language;
-	} else
+	else
 		name_.erase();
 
 	return res;
@@ -358,6 +446,269 @@ tex_accent getkeymod(string const & p)
 		}
 	}
 	return TEX_NOACCENT;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// TransState
+//
+/////////////////////////////////////////////////////////////////////
+
+
+// TransFSMData
+TransFSMData::TransFSMData()
+{
+	deadkey_ = deadkey2_ = 0;
+	deadkey_info_.accent = deadkey2_info_.accent = TEX_NOACCENT;
+}
+
+
+// TransState
+char_type const TransState::TOKEN_SEP = 4;
+
+
+// TransInitState
+TransInitState::TransInitState()
+{
+	init_state_ = this;
+}
+
+
+docstring const TransInitState::normalkey(char_type c)
+{
+	docstring res;
+	res = c;
+	return res;
+}
+
+
+docstring const TransInitState::deadkey(char_type c, KmodInfo d)
+{
+	deadkey_ = c;
+	deadkey_info_ = d;
+	currentState = deadkey_state_;
+	return docstring();
+}
+
+
+// TransDeadkeyState
+TransDeadkeyState::TransDeadkeyState()
+{
+	deadkey_state_ = this;
+}
+
+
+docstring const TransDeadkeyState::normalkey(char_type c)
+{
+	docstring res;
+
+	KmodException::iterator it = deadkey_info_.exception_list.begin();
+	KmodException::iterator end = deadkey_info_.exception_list.end();
+
+	for (; it != end; ++it) {
+		if (it->c == c) {
+			res = it->data;
+			break;
+		}
+	}
+	if (it == end) {
+		res = doAccent(c, deadkey_info_.accent);
+	}
+	currentState = init_state_;
+	return res;
+}
+
+
+docstring const TransDeadkeyState::deadkey(char_type c, KmodInfo d)
+{
+	docstring res;
+
+	// Check if the same deadkey was typed twice
+	if (deadkey_ == c) {
+		res = deadkey_;
+		deadkey_ = 0;
+		deadkey_info_.accent = TEX_NOACCENT;
+		currentState = init_state_;
+		return res;
+	}
+
+	// Check if it is a combination or an exception
+	KmodException::const_iterator cit = deadkey_info_.exception_list.begin();
+	KmodException::const_iterator end = deadkey_info_.exception_list.end();
+	for (; cit != end; ++cit) {
+		if (cit->combined == true && cit->accent == d.accent) {
+			deadkey2_ = c;
+			deadkey2_info_ = d;
+			comb_info_ = (*cit);
+			currentState = combined_state_;
+			return docstring();
+		}
+		if (cit->c == c) {
+			res = cit->data;
+			deadkey_ = 0;
+			deadkey_info_.accent = TEX_NOACCENT;
+			currentState = init_state_;
+			return res;
+		}
+	}
+
+	// Not a combination or an exception.
+	// Output deadkey1 and keep deadkey2
+
+	if (deadkey_!= 0)
+		res = deadkey_;
+	deadkey_ = c;
+	deadkey_info_ = d;
+	currentState = deadkey_state_;
+	return res;
+}
+
+
+TransCombinedState::TransCombinedState()
+{
+	combined_state_ = this;
+}
+
+
+docstring const TransCombinedState::normalkey(char_type c)
+{
+	docstring const temp = doAccent(c, deadkey2_info_.accent);
+	docstring const res = doAccent(temp, deadkey_info_.accent);
+	currentState = init_state_;
+	return res;
+}
+
+
+docstring const TransCombinedState::deadkey(char_type c, KmodInfo d)
+{
+	// Third key in a row. Output the first one and
+	// reenter with shifted deadkeys
+	docstring res;
+	if (deadkey_ != 0)
+		res = deadkey_;
+	res += TOKEN_SEP;
+	deadkey_ = deadkey2_;
+	deadkey_info_ = deadkey2_info_;
+	res += deadkey_state_->deadkey(c, d);
+	return res;
+}
+
+
+// TransFSM
+TransFSM::TransFSM():
+	TransFSMData(),
+	TransInitState(),
+	TransDeadkeyState(),
+	TransCombinedState()
+{
+	currentState = init_state_;
+}
+
+
+// TransManager
+
+// Initialize static member.
+Trans TransManager::default_;
+
+
+TransManager::TransManager()
+	: active_(0), t1_(new Trans), t2_(new Trans)
+{}
+
+
+// For the sake of boost::scoped_ptr.
+TransManager::~TransManager()
+{}
+
+
+int TransManager::setPrimary(string const & language)
+{
+	if (t1_->getName() == language)
+		return 0;
+
+	return t1_->load(language);
+}
+
+
+int TransManager::setSecondary(string const & language)
+{
+	if (t2_->getName() == language)
+		return 0;
+
+	return t2_->load(language);
+}
+
+
+void TransManager::enablePrimary()
+{
+	if (t1_->isDefined())
+		active_ = t1_.get();
+
+	LYXERR(Debug::KBMAP) << "Enabling primary keymap" << endl;
+}
+
+
+void TransManager::enableSecondary()
+{
+	if (t2_->isDefined())
+		active_ = t2_.get();
+	LYXERR(Debug::KBMAP) << "Enabling secondary keymap" << endl;
+}
+
+
+void TransManager::disableKeymap()
+{
+	active_ = &default_;
+	LYXERR(Debug::KBMAP) << "Disabling keymap" << endl;
+}
+
+
+void  TransManager::translateAndInsert(char_type c, Text * text, Cursor & cur)
+{
+	docstring res = active_->process(c, *this);
+
+	// Process with tokens
+	docstring temp;
+
+	while (res.length() > 0) {
+		res = split(res, temp, TransState::TOKEN_SEP);
+		insert(temp, text, cur);
+	}
+}
+
+
+void TransManager::insert(docstring const & str, Text * text, Cursor & cur)
+{
+	for (string::size_type i = 0, n = str.size(); i < n; ++i)
+		text->insertChar(cur, str[i]);
+}
+
+
+void TransManager::deadkey(char_type c, tex_accent accent, Text * t, Cursor & cur)
+{
+	if (c == 0 && active_ != &default_) {
+		// A deadkey was pressed that cannot be printed
+		// or a accent command was typed in the minibuffer
+		KmodInfo i;
+		if (active_->isAccentDefined(accent, i) == true) {
+			docstring const res = trans_fsm_
+				.currentState->deadkey(c, i);
+			insert(res, t, cur);
+			return;
+		}
+	}
+
+	if (active_ == &default_ || c == 0) {
+		KmodInfo i;
+		i.accent = accent;
+		i.data.erase();
+		docstring res = trans_fsm_.currentState->deadkey(c, i);
+		insert(res, t, cur);
+	} else {
+		// Go through the translation
+		translateAndInsert(c, t, cur);
+	}
 }
 
 

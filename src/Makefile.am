@@ -232,8 +232,6 @@ lyx_SOURCES = \
 	Spacing.cpp \
 	Spacing.h \
 	SpellBase.h \
-	tex-accent.cpp \
-	tex-accent.h \
 	TexRow.cpp \
 	TexRow.h \
 	Text.h \
@@ -256,8 +254,6 @@ lyx_SOURCES = \
 	ToolbarBackend.h \
 	Trans.cpp \
 	Trans.h \
-	TransState.cpp \
-	TransState.h \
 	Undo.cpp \
 	Undo.h \
 	update_flags.h \
