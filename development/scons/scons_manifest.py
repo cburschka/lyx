@@ -72,7 +72,6 @@ src_header_files = Split('''
     Intl.h
     KeyMap.h
     KeySequence.h
-    KmodInfo.h
     LaTeX.h
     LaTeXFeatures.h
     Language.h
@@ -113,7 +112,6 @@ src_header_files = Split('''
     TocBackend.h
     ToolbarBackend.h
     Trans.h
-    TransState.h
     Undo.h
     VCBackend.h
     VSpace.h
@@ -137,7 +135,6 @@ src_header_files = Split('''
     paragraph_funcs.h
     rowpainter.h
     sgml.h
-    tex-accent.h
     tex-strings.h
     toc.h
     update_flags.h
@@ -218,7 +215,6 @@ src_pre_files = Split('''
     TocBackend.cpp
     ToolbarBackend.cpp
     Trans.cpp
-    TransState.cpp
     Undo.cpp
     VCBackend.cpp
     VSpace.cpp
@@ -238,7 +234,6 @@ src_pre_files = Split('''
     paragraph_funcs.cpp
     rowpainter.cpp
     sgml.cpp
-    tex-accent.cpp
     tex-strings.cpp
     toc.cpp
 ''')
