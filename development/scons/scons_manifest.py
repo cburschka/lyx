@@ -167,6 +167,13 @@ src_support_files = Split('''
 ''')
 
 
+src_support_extra_files = Split('''
+    os_cygwin.cpp
+    os_win32.cpp
+    os_unix.cpp
+''')
+
+
 src_mathed_header_files = Split('''
     InsetMath.h
     InsetMathAMSArray.h
@@ -242,10 +249,12 @@ src_mathed_header_files = Split('''
     TextPainter.h
 ''')
 
+
 src_mathed_extra_files = Split('''
     InsetFormulaMacro.h
     InsetFormulaMacro.cpp
 ''')
+
 
 src_mathed_files = Split('''
     InsetMath.cpp
@@ -373,10 +382,12 @@ src_insets_header_files = Split('''
     RenderPreview.h
 ''')
 
+
 src_inests_extra_files = Split('''
     InsetTheorem.h
     InsetTheorem.cpp
 ''')
+
 
 src_insets_files = Split('''
     ExternalSupport.cpp
@@ -938,6 +949,7 @@ src_tex2lyx_copied_header_files = Split('''
     Lexer.h
 ''')
 
+
 src_tex2lyx_copied_files = Split('''
     FloatList.cpp
     Floating.cpp
@@ -1232,17 +1244,21 @@ lib_bind_de_files = Split('''
     menus.bind
 ''')
 
+
 lib_bind_fi_files = Split('''
     menus.bind
 ''')
+
 
 lib_bind_pt_files = Split('''
     menus.bind
 ''')
 
+
 lib_bind_sv_files = Split('''
     menus.bind
 ''')
+
 
 lib_bind_files = Split('''
     broadway.bind
@@ -1265,13 +1281,16 @@ lib_examples_ca_files = Split('''
     splash.lyx
 ''')
 
+
 lib_examples_cs_files = Split('''
     splash.lyx
 ''')
 
+
 lib_examples_da_files = Split('''
     splash.lyx
 ''')
+
 
 lib_examples_de_files = Split('''
     Dezimal.lyx
@@ -1287,17 +1306,20 @@ lib_examples_de_files = Split('''
     multicol.lyx
 ''')
 
+
 lib_examples_es_files = Split('''
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
     splash.lyx
 ''')
 
+
 lib_examples_eu_files = Split('''
     adibide_gordina.lyx
     adibide_lyx-atua.lyx
     splash.lyx
 ''')
+
 
 lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
@@ -1313,20 +1335,24 @@ lib_examples_fr_files = Split('''
     splash.lyx
 ''')
 
+
 lib_examples_he_files = Split('''
     example_raw.lyx
     he_example_lyxified.lyx
     he_example_raw.lyx
 ''')
 
+
 lib_examples_hu_files = Split('''
     splash.lyx
 ''')
+
 
 lib_examples_it_files = Split('''
     ItemizeBullets.lyx
     splash.lyx
 ''')
+
 
 lib_examples_nl_files = Split('''
     multicol.lyx
@@ -1336,17 +1362,21 @@ lib_examples_nl_files = Split('''
     voorbeeld_verlyxt.lyx
 ''')
 
+
 lib_examples_pl_files = Split('''
     splash.lyx
 ''')
+
 
 lib_examples_pt_files = Split('''
     splash.lyx
 ''')
 
+
 lib_examples_ru_files = Split('''
     splash.lyx
 ''')
+
 
 lib_examples_sl_files = Split('''
     primer_lyxan.lyx
@@ -1354,9 +1384,11 @@ lib_examples_sl_files = Split('''
     splash.lyx
 ''')
 
+
 lib_examples_ro_files = Split('''
     splash.lyx
 ''')
+
 
 lib_examples_files = Split('''
     Foils.lyx
@@ -1401,6 +1433,7 @@ lib_examples_files = Split('''
     splash.lyx
 ''')
 
+
 lib_fonts_files = Split('''
     BaKoMaFontLicense.txt
     cmex10.ttf
@@ -1413,6 +1446,7 @@ lib_fonts_files = Split('''
     ReadmeBaKoMa4LyX.txt
     wasy10.ttf
 ''')
+
 
 lib_images_files = Split('''
     all-changes-reject.xpm
@@ -2251,6 +2285,7 @@ lib_ui_files = Split('''
     stdtoolbars.inc
 ''')
 
+
 lib_doc_clipart_files = Split('''
     BoxInsetDefaultQt4.png
     ChildDocumentQt4.png
@@ -2272,13 +2307,16 @@ lib_doc_clipart_files = Split('''
     without_fntright.pdf
 ''')
 
+
 lib_doc_cs_files = Split('''
     Tutorial.lyx
 ''')
 
+
 lib_doc_da_files = Split('''
     Intro.lyx
 ''')
+
 
 lib_doc_de_files = Split('''
     Customization.lyx
@@ -2289,6 +2327,7 @@ lib_doc_de_files = Split('''
     UserGuide.lyx
 ''')
 
+
 lib_doc_es_files = Split('''
     DocumentoPostizo1.lyx
     DocumentoPostizo2.lyx
@@ -2298,6 +2337,7 @@ lib_doc_es_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
+
 
 lib_doc_es_clipart_files = Split('''
     ComentNotaImagenQt4.png
@@ -2314,6 +2354,7 @@ lib_doc_es_clipart_files = Split('''
     referenciaQt4.png
 ''')
 
+
 lib_doc_eu_files = Split('''
     Customization.lyx
     Extended.lyx
@@ -2322,6 +2363,7 @@ lib_doc_eu_files = Split('''
     Tutorial.lyx
     UserGuide.lyx
 ''')
+
 
 lib_doc_fr_files = Split('''
     Customization.lyx
@@ -2332,15 +2374,18 @@ lib_doc_fr_files = Split('''
     UserGuide.lyx
 ''')
 
+
 lib_doc_he_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
 
+
 lib_doc_hu_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
+
 
 lib_doc_it_files = Split('''
     Customization.lyx
@@ -2349,14 +2394,17 @@ lib_doc_it_files = Split('''
     UserGuide.lyx
 ''')
 
+
 lib_doc_nl_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
 
+
 lib_doc_nb_files = Split('''
     Intro.lyx
 ''')
+
 
 lib_doc_pl_files = Split('''
     Extended.lyx
@@ -2364,14 +2412,17 @@ lib_doc_pl_files = Split('''
     Tutorial.lyx
 ''')
 
+
 lib_doc_pt_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
 
+
 lib_doc_ro_files = Split('''
     Intro.lyx
 ''')
+
 
 lib_doc_ru_files = Split('''
     FAQ.lyx
@@ -2379,20 +2430,24 @@ lib_doc_ru_files = Split('''
     Tutorial.lyx
 ''')
 
+
 lib_doc_sk_files = Split('''
     Tutorial.lyx
     UserGuide.lyx
 ''')
+
 
 lib_doc_sl_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
 
+
 lib_doc_sv_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
+
 
 lib_doc_files = Split('''
     Customization.lyx

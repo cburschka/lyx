@@ -1990,7 +1990,7 @@ if update_po:
     # rebuild POTFILES.in
     POTFILES_in = env.potfiles('$TOP_SRCDIR/po/POTFILES.in', 
         ['$TOP_SRCDIR/src/%s' % x for x in  src_header_files + src_pre_files + src_post_files if x != 'version.cpp'] + \
-        ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files if x != 'Package.cpp'] + \
+        ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files + src_support_files + src_support_extra_files if x != 'Package.cpp'] + \
         ['$TOP_SRCDIR/src/mathed/%s' % x for x in  src_mathed_header_files + src_mathed_files] + \
         ['$TOP_SRCDIR/src/insets/%s' % x for x in  src_insets_header_files + src_insets_files] + \
         ['$TOP_SRCDIR/src/frontends/%s' % x for x in  src_frontends_header_files + src_frontends_files] + \
