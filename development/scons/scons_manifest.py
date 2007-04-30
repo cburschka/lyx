@@ -1046,8 +1046,8 @@ src_header_files = Split('''
     Row.h
     Server.h
     ServerSocket.h
-    LyXText.h
     TextClass.h
+    Text.h
     TextClassList.h
     LyXVC.h
     Messages.h
