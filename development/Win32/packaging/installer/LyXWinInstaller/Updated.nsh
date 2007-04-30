@@ -27,8 +27,10 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\it\TOC.lyx" ; must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\examples"
- File "${PRODUCT_SOURCEDIR}\Resources\examples\europecv.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\examples\moderncv.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.eps"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\europeCV.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\modernCV.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "$INSTDIR\Resources\examples\de\Dezimal.lyx"
