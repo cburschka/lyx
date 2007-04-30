@@ -181,6 +181,22 @@ Paragraph const & DocIterator::paragraph() const
 }
 
 
+Paragraph const & DocIterator::innerParagraph() const
+{
+	BOOST_ASSERT(!empty());
+	// go up until first non-0 text is hit
+	// (innermost text is 0 in mathed)
+	for (int i = depth() - 1; i >= 0; --i)
+		if (slices_[i].text())
+			return slices_[i].paragraph();
+
+	// This case is in principe not possible. We _must_
+	// we inside a Paragraph.
+	BOOST_ASSERT(false);
+	return paragraph();
+}
+
+
 pit_type DocIterator::lastpit() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;

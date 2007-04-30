@@ -155,8 +155,13 @@ public:
 	//
 	/// the paragraph we're in
 	Paragraph & paragraph();
-	/// the paragraph we're in
+	/// the paragraph we're in in text mode.
+	/// \warning only works within text!
 	Paragraph const & paragraph() const;
+	/// the paragraph we're in in any case.
+	/// This method will give the containing paragraph if
+	/// in not in text mode (ex: in mathed).
+	Paragraph const & innerParagraph() const;
 	///
 	Text * text();
 	///

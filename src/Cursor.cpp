@@ -1329,6 +1329,9 @@ void Cursor::fixIfBroken()
 
 bool Cursor::isRTL() const
 {
+	if (inMathed())
+		return innerParagraph().isRightToLeftPar(bv().buffer()->params());
+
 	return top().paragraph().isRightToLeftPar(bv().buffer()->params());
 }
 
