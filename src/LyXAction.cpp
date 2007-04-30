@@ -289,7 +289,6 @@ void LyXAction::init()
 #endif
 		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly },
 		{ LFUN_TOC_INSERT, "toc-insert", Noop },
-		{ LFUN_TOC_VIEW, "toc-view", ReadOnly },
 		{ LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, "toggle-cursor-follows-scrollbar", ReadOnly },
 		{ LFUN_UNDO, "undo", Noop },
 		{ LFUN_UP, "up", ReadOnly | NoUpdate},
@@ -327,7 +326,8 @@ void LyXAction::init()
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop },
 		{ LFUN_DIALOG_UPDATE, "dialog-update", NoBuffer },
-		{ LFUN_DIALOG_HIDE, "dialog-hide", Noop },
+		{ LFUN_DIALOG_HIDE, "dialog-hide", NoBuffer },
+		{ LFUN_DIALOG_TOGGLE, "dialog-toggle", NoBuffer },
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset", Noop },
 		{ LFUN_INSET_APPLY, "inset-apply", Noop },
 		{ LFUN_INSET_DISSOLVE, "inset-dissolve", Noop },

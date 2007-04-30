@@ -264,7 +264,7 @@ Menuset
 		Item "Open All Insets|O" "all-insets-toggle open"
 		Item "Close All Insets|C" "all-insets-toggle close"
 		Separator
-		Item "View Source|S" "dialog-show view-source"
+		Item "View Source|S" "dialog-toggle view-source"
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
@@ -406,7 +406,7 @@ Menuset
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
-		Item "Table of Contents|T" "toc-view"
+		Item "Table of Contents|T" "dialog-toggle toc"
 		Item "Start Appendix Here|A" "appendix"
 		Separator
 		Item "Compressed|o" "buffer-toggle-compression"

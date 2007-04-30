@@ -544,6 +544,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_DIALOG_TOGGLE:
+		flag.setOnOff(lyx_view_->getDialogs().visible(cmd.getArg(0)));
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
 		if (!buf)
@@ -637,7 +639,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_UPDATE:
 	case LFUN_BUFFER_VIEW:
 	case LFUN_BUFFER_IMPORT:
-	case LFUN_TOC_VIEW:
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
@@ -1091,14 +1092,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				theApp()->gui().closeAllViews();
 			break;
 
-		case LFUN_TOC_VIEW: {
-			BOOST_ASSERT(lyx_view_);
-			InsetCommandParams p("tableofcontents");
-			string const data = InsetCommandMailer::params2string("toc", p);
-			lyx_view_->getDialogs().show("toc", data, 0);
-			break;
-		}
-
 		case LFUN_BUFFER_AUTO_SAVE:
 			autoSave(view());
 			break;
@@ -1360,6 +1353,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DIALOG_HIDE:
 			Dialogs::hide(argument, 0);
 			break;
+
+		case LFUN_DIALOG_TOGGLE: {
+			BOOST_ASSERT(lyx_view_);
+			if (lyx_view_->getDialogs().visible(cmd.getArg(0)))
+				dispatch(FuncRequest(LFUN_DIALOG_HIDE, argument));
+			else
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, argument));
+			break;
+		}
 
 		case LFUN_DIALOG_DISCONNECT_INSET:
 			BOOST_ASSERT(lyx_view_);
