@@ -33,6 +33,18 @@ def getVerFromConfigure(path):
     return 'x.x.x'
 
 
+def relativePath(path, base):
+    '''return relative path from base, which is usually top source dir'''
+    # full pathname of path
+    path1 = os.path.normpath(os.path.realpath(path)).split(os.sep)
+    path2 = os.path.normpath(os.path.realpath(base)).split(os.sep)
+    if path1[:len(path2)] != path2:
+        print "Path %s is not under top source directory" % path
+    path3 = os.path.join(*path1[len(path2):]);
+    # replace all \ by / such that we get the same comments on Windows and *nix
+    path3 = path3.replace('\\', '/')
+    return path3
+
 
 def writeToFile(filename, lines, append = False):
     " utility function: write or append lines to filename "
@@ -133,7 +145,7 @@ def env_potfiles(target, source, env):
     trans = re.compile('_\(".*"\)', re.M)
     for file in source:
         if str(file) not in potfiles and trans.search(open(str(file)).read()):
-            potfiles.append(str(file))
+            potfiles.append(relativePath(str(file), env.subst('$TOP_SRCDIR')))
     potfiles.sort()
     print >> target_file, '\n'.join(potfiles)
     target_file.close()
