@@ -30,17 +30,14 @@
 
 #include <sstream>
 
-
-namespace lyx {
-
-using odocstream;
-using support::bformat;
-
 using std::string;
 using std::auto_ptr;
 using std::ostream;
 using std::endl;
 
+namespace lyx {
+
+using support::bformat;
 
 
 InsetFormulaMacro::InsetFormulaMacro()
@@ -49,7 +46,7 @@ InsetFormulaMacro::InsetFormulaMacro()
 
 
 InsetFormulaMacro::InsetFormulaMacro
-		(string const & name, int nargs, string const & type)
+		(docstring const & name, int nargs, docstring const & type)
 	: InsetMathNest(2), name_(name)
 {
 	MathMacroTable::create(MathAtom(new MathMacroTemplate(name, nargs, type)));

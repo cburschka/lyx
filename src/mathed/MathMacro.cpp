@@ -35,7 +35,7 @@ using std::vector;
 
 /// This class is the value of a macro argument, technically 
 /// a wrapper of the cells of MathMacro.
-class MathMacroArgumentValue : public InsetMathDim {
+class MathMacroArgumentValue : public InsetMath {
 public:
 	///
 	MathMacroArgumentValue(MathData const * value, docstring const & macroName) 

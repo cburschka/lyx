@@ -186,7 +186,6 @@ src_mathed_header_files = Split('''
     InsetMathDecoration.h
     InsetMathDelim.h
     InsetMathDiff.h
-    InsetMathDim.h
     InsetMathDots.h
     InsetMathEnv.h
     InsetMathExFunc.h
@@ -267,7 +266,6 @@ src_mathed_files = Split('''
     InsetMathDecoration.cpp
     InsetMathDelim.cpp
     InsetMathDiff.cpp
-    InsetMathDim.cpp
     InsetMathDots.cpp
     InsetMathEnv.cpp
     InsetMathExFunc.cpp

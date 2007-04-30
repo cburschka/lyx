@@ -13,14 +13,14 @@
 #ifndef MATHMACROARGUMENT_H
 #define MATHMACROARGUMENT_H
 
-#include "InsetMathDim.h"
+#include "InsetMath.h"
 
 
 namespace lyx {
 
 
 /// A macro argument.
-class MathMacroArgument : public InsetMathDim {
+class MathMacroArgument : public InsetMath {
 public:
 	///
 	explicit MathMacroArgument(std::size_t);

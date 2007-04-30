@@ -44,8 +44,6 @@ libmathed_la_SOURCES = \
 	InsetMathDFrac.h \
 	InsetMathDiff.cpp \
 	InsetMathDiff.h \
-	InsetMathDim.cpp \
-	InsetMathDim.h \
 	InsetMathDots.cpp \
 	InsetMathDots.h \
 	InsetMathEnv.cpp \

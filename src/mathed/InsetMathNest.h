@@ -12,7 +12,7 @@
 #ifndef MATH_NESTINSET_H
 #define MATH_NESTINSET_H
 
-#include "InsetMathDim.h"
+#include "InsetMath.h"
 
 
 namespace lyx {
@@ -23,7 +23,7 @@ namespace lyx {
     single symbol.
 */
 
-class InsetMathNest : public InsetMathDim {
+class InsetMathNest : public InsetMath {
 public:
 	/// nestinsets have a fixed size to start with
 	explicit InsetMathNest(idx_type ncells);

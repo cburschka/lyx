@@ -983,7 +983,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetMathDim::doDispatch(cur, cmd);
+		InsetMath::doDispatch(cur, cmd);
 		break;
 	}
 }

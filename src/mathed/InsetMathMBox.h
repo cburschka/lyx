@@ -16,7 +16,7 @@
 #ifndef MATH_MBOXINSET_H
 #define MATH_MBOXINSET_H
 
-#include "InsetMathDim.h"
+#include "InsetMath.h"
 #include "Text.h"
 
 
@@ -27,7 +27,7 @@ class BufferView;
 
 // almost a substitute for the real text inset...
 
-class InsetMathMBox : public InsetMathDim {
+class InsetMathMBox : public InsetMath {
 public:
 	///
 	explicit InsetMathMBox();

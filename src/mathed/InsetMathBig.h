@@ -12,7 +12,7 @@
 #ifndef MATH_BIGINSET_H
 #define MATH_BIGINSET_H
 
-#include "InsetMathDim.h"
+#include "InsetMath.h"
 
 #include <string>
 
@@ -20,7 +20,7 @@
 namespace lyx {
 
 /// Inset for \\bigl & Co.
-class InsetMathBig : public InsetMathDim {
+class InsetMathBig : public InsetMath {
 public:
 	///
 	InsetMathBig(docstring const & name, docstring const & delim);

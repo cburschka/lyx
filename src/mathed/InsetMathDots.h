@@ -12,7 +12,7 @@
 #ifndef MATH_DOTSINSET_H
 #define MATH_DOTSINSET_H
 
-#include "InsetMathDim.h"
+#include "InsetMath.h"
 
 
 namespace lyx {
@@ -20,7 +20,7 @@ namespace lyx {
 class latexkeys;
 
 /// The different kinds of ellipsis
-class InsetMathDots : public InsetMathDim {
+class InsetMathDots : public InsetMath {
 public:
 	///
 	explicit InsetMathDots(latexkeys const * l);

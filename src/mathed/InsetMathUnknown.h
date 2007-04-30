@@ -12,14 +12,14 @@
 #ifndef MATH_UNKNOWNINSET_H
 #define MATH_UNKNOWNINSET_H
 
-#include "InsetMathDim.h"
+#include "InsetMath.h"
 
 
 namespace lyx {
 
 
 /// LaTeX names for objects that we really don't know
-class InsetMathUnknown : public InsetMathDim {
+class InsetMathUnknown : public InsetMath {
 public:
 	///
 	explicit InsetMathUnknown(docstring const & name,
