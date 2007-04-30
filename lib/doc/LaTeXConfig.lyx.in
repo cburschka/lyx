@@ -1,17 +1,25 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0beta2 created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass article
 \language english
 \inputencoding default
-\fontscheme default
-\graphics dvips
-\paperfontsize 0
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -301,9 +309,9 @@ Notes: The
 \family sans
 Latin Modern
 \family default
- fonts are PostScript® versions of LaTeX' standard font (Computer Modern).
+ fonts are PostScriptÂ® versions of LaTeX' standard font (Computer Modern).
  They aim to become the default LaTeX font eventually.
- We recommend to use them instead of other PostScript® versions of Computer
+ We recommend to use them instead of other PostScriptÂ® versions of Computer
  Modern (like AE).
  
 \end_layout
@@ -327,7 +335,7 @@ Notes: The
 \family sans
 AE
 \family default
- package provide virtual PostScript® versions of LaTeX' standard font (Computer
+ package provide virtual PostScriptÂ® versions of LaTeX' standard font (Computer
  Modern).
  Unless you rely on special characters, we recommend to use 
 \family sans
@@ -384,12 +392,12 @@ Notes: The
 psnfss
 \family default
  bundle allows you to change the fonts used by LyX to one of the 35 classical
- fonts available on PostScript® printers.
+ fonts available on PostScriptÂ® printers.
  Currently, the support for 
 \family sans
 psnfss
 \family default
- is limited in LyX: you can only chose a few combinations of PostScript®
+ is limited in LyX: you can only chose a few combinations of PostScriptÂ®
  fonts in 
 \family sans
 \size normal
@@ -407,9 +415,9 @@ psnfss
  provide different font packages.
  Even if LyX supports the deprecated packages as well, we recommend that
  you take care to have the newest ones installed.
- A recent
+ A recent 
 \family sans
- psnfss
+psnfss
 \family default
  bundle should at least include:
 \end_layout
@@ -561,9 +569,9 @@ fonts/fourier-GUT
 \begin_layout Description
 Notes: The 
 \family sans
-fourier 
+fourier
 \family default
-package provides support for the Utopia PostScript® font.
+ package provides support for the Utopia PostScriptÂ® font.
  Contrary to the 
 \family sans
 utopia
@@ -636,10 +644,10 @@ macros/latex/contrib/ccfonts/
 \begin_layout Description
 Notes: The 
 \family sans
-ccfonts 
+ccfonts
 \family default
-package provides support for the font that has been designed by Donald Knuth
- for his 
+ package provides support for the font that has been designed by Donald
+ Knuth for his 
 \emph on
 Concrete Mathematics
 \emph default
@@ -663,9 +671,9 @@ fonts/LuxiMono/
 \begin_layout Description
 Notes: The 
 \family sans
-luximono 
+luximono
 \family default
-package provides support for the monospaced Luxida Mono font.
+ package provides support for the monospaced Luxida Mono font.
 \end_layout
 
 \begin_layout Subsection
@@ -685,9 +693,9 @@ fonts/tipa/
 \begin_layout Description
 Notes: The 
 \family sans
-tipa 
+tipa
 \family default
-package provides comprehensive support and fonts for typesetting phonetic
+ package provides comprehensive support and fonts for typesetting phonetic
  symbols, as defined in the 
 \emph on
 International Phonetic Alphabet
@@ -820,7 +828,8 @@ foils
 \family default
  instead if it is available (see\InsetSpace ~
 
-\begin_inset LatexCommand \ref{ssec:foils}
+\begin_inset LatexCommand ref
+reference "ssec:foils"
 
 \end_inset
 
@@ -874,9 +883,9 @@ Found: @chk_aa@
 \end_layout
 
 \begin_layout Description
-CTAN: N/A (available from ftp site
+CTAN: N/A (available from ftp site 
 \family typewriter
- ftp.edpsciences.org
+ftp.edpsciences.org
 \family default
  in directory 
 \family typewriter
@@ -907,9 +916,9 @@ Found: @chk_aastex@
 \end_layout
 
 \begin_layout Description
-CTAN: N/A (available from the American Astronomical Society's ftp site
+CTAN: N/A (available from the American Astronomical Society's ftp site 
 \family typewriter
- ftp.aas.
+ftp.aas.
 \family default
 org in directory 
 \family typewriter
@@ -943,9 +952,9 @@ Found: @chk_jgrga@, @chk_agums@
 \end_layout
 
 \begin_layout Description
-CTAN:
+CTAN: 
 \family typewriter
- macros/latex/contrib/aguplus
+macros/latex/contrib/aguplus
 \end_layout
 
 \begin_layout Description
@@ -1053,7 +1062,8 @@ tex/
 \begin_layout Description
 WWW: At the time of this writing, the latest version can be obtained at
  
-\begin_inset LatexCommand \url{http://www-rocq.inria.fr/~lasgoutt/lyx/cv-1.5.tar.gz}
+\begin_inset LatexCommand url
+target "http://www-rocq.inria.fr/~lasgoutt/lyx/cv-1.5.tar.gz"
 
 \end_inset
 
@@ -1084,7 +1094,8 @@ CTAN: N/A
 
 \begin_layout Description
 FTP: 
-\begin_inset LatexCommand \url{ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author}
+\begin_inset LatexCommand url
+target "ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author"
 
 \end_inset
 
@@ -1135,7 +1146,8 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.sgmltools.org}
+\begin_inset LatexCommand url
+target "http://www.sgmltools.org"
 
 \end_inset
 
@@ -1145,9 +1157,9 @@ WWW:
 \begin_layout Description
 Notes: The document class 
 \family sans
-docbook 
+docbook
 \family default
- is not a LaTeX document class.
+  is not a LaTeX document class.
  It is designed to produce Docbook SGML documents, which, in turn, can be
  exported as HTML, RTF, text, or dvi (through 
 \family typewriter
@@ -1181,7 +1193,7 @@ dtk
 \begin_inset Quotes eld
 \end_inset
 
-Die TeXnische Komödie
+Die TeXnische KomÃ¶die
 \begin_inset Quotes erd
 \end_inset
 
@@ -1190,7 +1202,8 @@ Die TeXnische Komödie
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.dante.de}
+\begin_inset LatexCommand url
+target "http://www.dante.de"
 
 \end_inset
 
@@ -1257,7 +1270,8 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://math.tulane.edu/~entcs/}
+\begin_inset LatexCommand url
+target "http://math.tulane.edu/~entcs/"
 
 \end_inset
 
@@ -1271,7 +1285,32 @@ entcs
 \family default
  is Elsevier Science's Electronic Notes in Theoretical Computer Science
  article style, used for the ENTCS series, and many conference proceedings.
- 
+\end_layout
+
+\begin_layout Subsection
+europecv
+\end_layout
+
+\begin_layout Description
+Found: @chk_europecv@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/europecv
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+europecv
+\family default
+ document class is intended to provide curriculum vitaes (resumes) according
+ to the official guidelines of the european community (europass).
+ It therefore supports the european language self-assessment.
+ An example curriculum vitae created using this document class can be found
+ in the examples.
 \end_layout
 
 \begin_layout Subsection
@@ -1319,7 +1358,8 @@ book
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand \label{ssec:foils}
+\begin_inset LatexCommand label
+name "ssec:foils"
 
 \end_inset
 
@@ -1438,6 +1478,7 @@ g-brief
 g-brief
 \family default
 .
+ A template document using this document class is shipped with LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -1485,7 +1526,8 @@ FTP: Currently, the IEEE ftp site only has an old version at:
 
 \family sans
 
-\begin_inset LatexCommand \url{ftp://ftp.ieee.org/info/publish/latex/ieeetran.cls}
+\begin_inset LatexCommand url
+target "ftp://ftp.ieee.org/info/publish/latex/ieeetran.cls"
 
 \end_inset
 
@@ -1502,7 +1544,8 @@ A newer version is available from:
 
 \family sans
 
-\begin_inset LatexCommand \url{ftp://ftp.isi.edu/pub/graham/infocom99/latest/IEEEtran.cls}
+\begin_inset LatexCommand url
+target "ftp://ftp.isi.edu/pub/graham/infocom99/latest/IEEEtran.cls"
 
 \end_inset
 
@@ -1510,11 +1553,11 @@ A newer version is available from:
 \end_layout
 
 \begin_layout Description
-Notes: The class
+Notes: The class 
 \family sans
- IEEEtran 
+IEEEtran
 \family default
-produces documents suitable for submission to most of the IEEE Transactions.
+ produces documents suitable for submission to most of the IEEE Transactions.
  You should consult the IEEE Author Information pages at 
 \family sans
 www.ieee.org
@@ -1564,7 +1607,8 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: available from the site
-\begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpc/mkt/guidelines.s}
+\begin_inset LatexCommand url
+target "http://www.worldscinet.com/ijmpc/mkt/guidelines.s"
 
 \end_inset
 
@@ -1595,7 +1639,8 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: available from the site 
-\begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml}
+\begin_inset LatexCommand url
+target "http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml"
 
 \end_inset
 
@@ -1626,7 +1671,8 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: available from the Kluwer Academic Publishers site 
-\begin_inset LatexCommand \url{http://www.wkap.nl/kaphtml.htm/STYLEFILES}
+\begin_inset LatexCommand url
+target "http://www.wkap.nl/kaphtml.htm/STYLEFILES"
 
 \end_inset
 
@@ -1644,7 +1690,8 @@ kluwer
 Astrophysics and Space Science, Solar Physics
 \emph default
  and many others (see a full list at 
-\begin_inset LatexCommand \url{http://www.wkap.nl/jrnllist.htm/JRNLHOME}
+\begin_inset LatexCommand url
+target "http://www.wkap.nl/jrnllist.htm/JRNLHOME"
 
 \end_inset
 
@@ -1653,7 +1700,8 @@ Astrophysics and Space Science, Solar Physics
 
 \begin_layout Subsection
 KOMA-Script
-\begin_inset LatexCommand \label{sub:Koma-Script}
+\begin_inset LatexCommand label
+name "sub:Koma-Script"
 
 \end_inset
 
@@ -1726,7 +1774,8 @@ macros/latex/contrib/koma-script/
 \begin_layout Description
 Notes: These letter classes are bundled with the Koma-Script classes (see
  
-\begin_inset LatexCommand \ref{sub:Koma-Script}
+\begin_inset LatexCommand ref
+reference "sub:Koma-Script"
 
 \end_inset
 
@@ -1817,9 +1866,9 @@ CTAN: N/A
 \begin_layout Description
 Notes: The document class 
 \family sans
-llncs 
+llncs
 \family default
-can be used to write articles for submission to the Springer journal 
+ can be used to write articles for submission to the Springer journal 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1832,7 +1881,8 @@ Lecture Notes in Computer Science
  URL:
 \newline
 
-\begin_inset LatexCommand \url{ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e}
+\begin_inset LatexCommand url
+target "ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e"
 
 \end_inset
 
@@ -1872,6 +1922,31 @@ al works as books, reports, articles or manuscripts.
 \end_layout
 
 \begin_layout Subsection
+moderncv
+\end_layout
+
+\begin_layout Description
+Found: @chk_moderncv@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/moderncv
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+moderncv
+\family default
+ document class is intended to provide nice looking curriculum vitae (resume).
+ It provides bibliography support (useful for academics).
+ An example curriculum vitae created using this document class can be found
+ in the examples.
+\end_layout
+
+\begin_layout Subsection
 mwcls (mwart, mwbk, mwrep)
 \end_layout
 
@@ -1900,7 +1975,7 @@ report
 book
 \family default
 .
- They have been adapted to polish typesetting standards by Marcin Woliñski.
+ They have been adapted to polish typesetting standards by Marcin WoliÃ±ski.
 \end_layout
 
 \begin_layout Subsection
@@ -1945,7 +2020,8 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://public.lanl.gov/kmh/spie/}
+\begin_inset LatexCommand url
+target "http://public.lanl.gov/kmh/spie/"
 
 \end_inset
 
@@ -1955,12 +2031,13 @@ WWW:
 \begin_layout Description
 Notes: 
 \family sans
-spie.cls 
+spie.cls
 \family default
-is a LaTeX class for submissions to the Proceedings of  SPIE--The International
+ is a LaTeX class for submissions to the Proceedings of  SPIE--The International
  Society for Optical Engineering.More info on submitting a manuscript can
  be found at the SPIE website under
-\begin_inset LatexCommand \url{http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings}
+\begin_inset LatexCommand url
+target "http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings"
 
 \end_inset
 
@@ -2024,7 +2101,8 @@ Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
  Topics---Accelerators and Beams), the American Institute of Physics, the
  Optical Society of America, and the Society for Exploration Geophysicists.
  Also see 
-\begin_inset LatexCommand \url{http://publish.aps.org/revtex4/}
+\begin_inset LatexCommand url
+target "http://publish.aps.org/revtex4/"
 
 \end_inset
 
@@ -2085,10 +2163,13 @@ cv
 cv
 \family default
  class on CTAN.
+ An example curriculum vitae created using this document class can be found
+ in the examples.
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand \label{svglobal}
+\begin_inset LatexCommand label
+name "svglobal"
 
 \end_inset
 
@@ -2107,7 +2188,8 @@ macros/latex/contrib/springer/svjour/global
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.springeronline.com}
+\begin_inset LatexCommand url
+target "http://www.springeronline.com"
 
 \end_inset
 
@@ -2170,7 +2252,8 @@ macros/latex/contrib/springer/svjour/jog
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.springeronline.com}
+\begin_inset LatexCommand url
+target "http://www.springeronline.com"
 
 \end_inset
 
@@ -2186,7 +2269,8 @@ svjog
  of Journal of Geodesy.
  It is not very well tested yet.
  For more information, see section 
-\begin_inset LatexCommand \ref{svglobal}
+\begin_inset LatexCommand ref
+reference "svglobal"
 
 \end_inset
 
@@ -2209,7 +2293,8 @@ macros/latex/contrib/springer/svjour/prothe
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.springeronline.com}
+\begin_inset LatexCommand url
+target "http://www.springeronline.com"
 
 \end_inset
 
@@ -2224,7 +2309,8 @@ svprobth
  is a format suitable for publication in the journal Probability Theory
  and Related Fields.
  For more information, see section 
-\begin_inset LatexCommand \ref{svglobal}
+\begin_inset LatexCommand ref
+reference "svglobal"
 
 \end_inset
 
@@ -2263,7 +2349,8 @@ TUGboat
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.tug.org}
+\begin_inset LatexCommand url
+target "http://www.tug.org"
 
 \end_inset
 
@@ -2292,7 +2379,8 @@ isprs
 
 \begin_layout Description
 WWW: 
-\begin_inset LatexCommand \url{http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls}
+\begin_inset LatexCommand url
+target "http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls"
 
 \end_inset
 
@@ -2437,7 +2525,7 @@ color
 \family default
  is needed by LyX to handle colored text.
  These colors will not show in the DVI preview window, but will be correct
- on the printed output or with a PostScript® previewer.
+ on the printed output or with a PostScriptÂ® previewer.
  This package is bundled with the 
 \family sans
 graphics
@@ -2464,7 +2552,7 @@ Notes: The package
 \family sans
 graphicx
 \family default
- is needed by LyX to insert PostScript® figures (using the new graphics
+ is needed by LyX to insert PostScriptÂ® figures (using the new graphics
  inset).
  You will also need 
 \family typewriter
@@ -2611,9 +2699,9 @@ Changing the margins of a document is one thing people like to do.
  up differently.
  You can use the package 
 \family sans
-geometry 
+geometry
 \family default
-for this purpose, but note that for the sake of readability, your lines
+ for this purpose, but note that for the sake of readability, your lines
  should not contain more than 60-70 characters.
 \end_layout
 
@@ -2738,9 +2826,9 @@ dvipost
  marks.
  To work properly, 
 \family sans
-dvipost 
+dvipost
 \family default
-needs teTeX version 2 or newer.
+ needs teTeX version 2 or newer.
 \end_layout
 
 \begin_layout Subsection
@@ -2853,11 +2941,11 @@ macros/latex/contrib/floatflt/
 \end_layout
 
 \begin_layout Description
-Notes: The package
+Notes: The package 
 \family sans
- floatflt 
+floatflt
 \family default
-(an extension of 
+ (an extension of 
 \family sans
 floatfig
 \family default
@@ -2889,10 +2977,10 @@ Notes: The package
 \family sans
 jurabib
 \family default
- 
 \color none
-(
-\begin_inset LatexCommand \url{http://www.jurabib.org}
+ (
+\begin_inset LatexCommand url
+target "http://www.jurabib.org"
 
 \end_inset
 
@@ -2926,11 +3014,7 @@ Notes: The package
 natbib
 \family default
  is needed by LyX to produce a flexible interface to most of the available
- bibliographic styles
-\family typewriter
- 
-\family default
-(you can also use 
+ bibliographic styles (you can also use 
 \family sans
 jurabib
 \family default
@@ -3038,7 +3122,7 @@ Notes: The package
 rotating
 \family default
  is needed by LyX to change the orientation of some parts of your documents.
- Note that it only really works with a PostScript® compatible printer.
+ Note that it only really works with a PostScriptÂ® compatible printer.
 \end_layout
 
 \begin_layout Subsection
@@ -3056,11 +3140,11 @@ macros/latex/contrib/subfigure
 \end_layout
 
 \begin_layout Description
-Notes: The package
+Notes: The package 
 \family sans
- subfigure 
+subfigure
 \family default
-is used by LyX when you select ``subfigure'' in the EPS figure popup.
+ is used by LyX when you select ``subfigure'' in the EPS figure popup.
  Several figures marked in this way can be packed into a single float with
  individual subcaptions.
 \end_layout
