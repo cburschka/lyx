@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-26 00:24-0500\n"
+"POT-Creation-Date: 2007-04-30 14:08+0200\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -116,61 +116,61 @@ msgstr "Boy:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
-#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/Font.cpp:518 src/frontends/controllers/ControlDocument.cpp:49
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
-#: src/frontends/qt4/QDocument.cpp:229 src/LyXFont.cpp:518
-#: src/tex-strings.cpp:68 src/tex-strings.cpp:79 src/tex-strings.cpp:89
+#: src/frontends/qt4/QDocument.cpp:229 src/tex-strings.cpp:68
+#: src/tex-strings.cpp:79 src/tex-strings.cpp:89
 msgid "Default"
 msgstr "Öntanýmlý"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:71
-#: src/frontends/controllers/frontend_helpers.cpp:960 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:960
 msgid "Tiny"
 msgstr "Minik"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:76
-#: src/frontends/controllers/frontend_helpers.cpp:964 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:964
 msgid "Smallest"
 msgstr "En küçük"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:81
-#: src/frontends/controllers/frontend_helpers.cpp:968 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:968
 msgid "Smaller"
 msgstr "Çok küçük"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:86
-#: src/frontends/controllers/frontend_helpers.cpp:972 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:972
 msgid "Small"
 msgstr "Küçük"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:91
-#: src/frontends/controllers/frontend_helpers.cpp:976 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:976
 msgid "Normal"
 msgstr "Normal"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:96
-#: src/frontends/controllers/frontend_helpers.cpp:980 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:980
 msgid "Large"
 msgstr "Büyük"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:101
-#: src/frontends/controllers/frontend_helpers.cpp:984 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:984
 msgid "Larger"
 msgstr "Çok büyük"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:106
-#: src/frontends/controllers/frontend_helpers.cpp:988 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:988
 msgid "Largest"
 msgstr "En büyük"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:111
-#: src/frontends/controllers/frontend_helpers.cpp:992 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:992
 msgid "Huge"
 msgstr "Dev"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:116
-#: src/frontends/controllers/frontend_helpers.cpp:996 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:996
 msgid "Huger"
 msgstr "Kocaman"
 
@@ -467,11 +467,11 @@ msgstr "&Tamam"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#: src/frontends/qt4/ui/DocumentUi.ui:152 src/buffer_funcs.cpp:101
-#: src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/lyx_cb.cpp:117 src/lyx_cb.cpp:170
-#: src/LyXFunc.cpp:727 src/LyXFunc.cpp:900 src/LyXFunc.cpp:1066
-#: src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:727 src/LyXFunc.cpp:900
+#: src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
+#: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
 msgstr "&Vazgeç"
 
@@ -499,7 +499,7 @@ msgstr "LyX: BibTeX Veritabaný Ekle"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/frontends/qt4/Qt2BC.h:36 src/LyXFunc.cpp:843
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:843 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Vazgeç"
 
@@ -591,13 +591,13 @@ msgstr "Yok"
 
 #: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.cpp:270
 #: src/frontends/qt4/QBox.cpp:377 src/frontends/qt4/QBox.cpp:385
-#: src/insets/InsetBox.cpp:158
+#: src/insets/InsetBox.cpp:157
 #, fuzzy
 msgid "Parbox"
 msgstr "Kýsým"
 
 #: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.cpp:378
-#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:160
+#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:159
 msgid "Minipage"
 msgstr "Ufak sayfa"
 
@@ -1515,8 +1515,8 @@ msgstr "Paragrafý &girintile"
 msgid "L&ine spacing:"
 msgstr "Satýr &aralýðý:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/frontends/qt4/QDocument.cpp:123
-#: src/text.cpp:1737
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1737
+#: src/frontends/qt4/QDocument.cpp:123
 msgid "Single"
 msgstr "Tek"
 
@@ -1524,8 +1524,8 @@ msgstr "Tek"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/frontends/qt4/QDocument.cpp:127
-#: src/text.cpp:1743
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1743
+#: src/frontends/qt4/QDocument.cpp:127
 msgid "Double"
 msgstr "Çift"
 
@@ -1660,7 +1660,7 @@ msgstr "strftime çýktýsý için tarih biçimi"
 msgid "Display &Graphics:"
 msgstr "&Grafik gösterimi:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/LyXFont.cpp:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:69
 msgid "Off"
 msgstr "Kapalý"
 
@@ -1669,7 +1669,7 @@ msgstr "Kapalý"
 msgid "No math"
 msgstr "matematik"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/LyXFont.cpp:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:69
 msgid "On"
 msgstr "Açýk"
 
@@ -7156,7 +7156,7 @@ msgstr "Hollandaca"
 msgid "English"
 msgstr "Ýngilizce"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Esperanto"
 msgstr "Esperanto"
 
@@ -7204,88 +7204,93 @@ msgstr "Ýtalyanca"
 msgid "Kazakh"
 msgstr "Kazakça"
 
-#: lib/languages:41
+#: lib/languages:40
 msgid "Lithuanian"
 msgstr "Litvanca"
 
-#: lib/languages:42
+#: lib/languages:41
 msgid "Latvian"
 msgstr "Letonca"
 
-#: lib/languages:43
+#: lib/languages:42
 msgid "Icelandic"
 msgstr "Ýzlandaca"
 
-#: lib/languages:44
+#: lib/languages:43
 msgid "Magyar"
 msgstr "Macarca"
 
-#: lib/languages:45
+#: lib/languages:44
 msgid "Norsk"
 msgstr "Norveççe"
 
-#: lib/languages:46
+#: lib/languages:45
 msgid "Nynorsk"
 msgstr ""
 
-#: lib/languages:47
+#: lib/languages:46
 msgid "Polish"
 msgstr "Lehçe"
 
-#: lib/languages:48
+#: lib/languages:47
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portekizce"
 
-#: lib/languages:49
+#: lib/languages:48
 msgid "Romanian"
 msgstr "Rumence"
 
-#: lib/languages:50
+#: lib/languages:49
 msgid "Russian"
 msgstr "Rusça"
 
-#: lib/languages:51
+#: lib/languages:50
 msgid "Scottish"
 msgstr "Ýskoçca"
 
-#: lib/languages:52
+#: lib/languages:51
 msgid "Serbian"
 msgstr "Sýrpça"
 
-#: lib/languages:53
+#: lib/languages:52
 msgid "Serbo-Croatian"
 msgstr "Sýrp-Hýrvatça"
 
-#: lib/languages:54
+#: lib/languages:53
 msgid "Spanish"
 msgstr "Ýspanyolca"
 
-#: lib/languages:55
+#: lib/languages:54
 msgid "Slovak"
 msgstr "Slovakça"
 
-#: lib/languages:56
+#: lib/languages:55
 msgid "Slovene"
 msgstr "Slovence"
 
-#: lib/languages:57
+#: lib/languages:56
 msgid "Swedish"
 msgstr "Ýsveççe"
 
-#: lib/languages:58
+#: lib/languages:57
 msgid "Thai"
 msgstr ""
 
-#: lib/languages:59
+#: lib/languages:58
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: lib/languages:60
+#: lib/languages:59
 msgid "Ukrainian"
 msgstr ""
 
-#: lib/languages:63
+#: lib/languages:60
+#, fuzzy
+msgid "Upper Sorbian"
+msgstr "Sýrpça"
+
+#: lib/languages:61
 msgid "Welsh"
 msgstr "Galce"
 
@@ -7705,7 +7710,7 @@ msgid "Index Entry|I"
 msgstr "Ýndeks Giriþi|Ý"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.cpp:228
-msgid "Glossary Entry"
+msgid "Nomenclature Entry"
 msgstr ""
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
@@ -7946,8 +7951,9 @@ msgid "Index List|I"
 msgstr "Ýndeks"
 
 #: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:378
-msgid "Glossary|G"
-msgstr ""
+#, fuzzy
+msgid "Nomenclature|N"
+msgstr "Not|N"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:379
 msgid "BibTeX Bibliography...|B"
@@ -8175,19 +8181,18 @@ msgstr "Pencereyi Kapat|P"
 msgid "Redo|R"
 msgstr "Ýleri al|Ý"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.cpp:449 src/text3.cpp:835
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:835
+#: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Kes"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.cpp:457 src/text3.cpp:840
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:840
+#: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Kopyala"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:428
-#: src/text3.cpp:816
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:816
+#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Yapýþtýr"
 
@@ -8476,7 +8481,7 @@ msgstr "Dal|l"
 msgid "File|e"
 msgstr "Dosya|D"
 
-#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:154
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:153
 msgid "Box"
 msgstr "Kutu"
 
@@ -8494,7 +8499,7 @@ msgstr "Ýndeks Giriþi|Ý"
 
 #: lib/ui/stdmenus.inc:305
 #, fuzzy
-msgid "Glossary Entry...|y"
+msgid "Nomenclature Entry...|y"
 msgstr "Ýndeks giriþi ekle"
 
 #: lib/ui/stdmenus.inc:307
@@ -8772,7 +8777,7 @@ msgstr "Ýndeks giriþi ekle"
 
 #: lib/ui/stdtoolbars.inc:95
 #, fuzzy
-msgid "Insert glossary entry"
+msgid "Insert nomenclature entry"
 msgstr "Ýndeks giriþi ekle"
 
 #: lib/ui/stdtoolbars.inc:97
@@ -11385,456 +11390,6 @@ msgstr "Ortalý"
 msgid "intercal"
 msgstr "Yazýcý"
 
-#: src/BufferView.cpp:234
-#, c-format
-msgid ""
-"The document %1$s is already loaded.\n"
-"\n"
-"Do you want to revert to the saved version?"
-msgstr ""
-
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
-msgid "Revert to saved document?"
-msgstr "Kayýtlý belgeye geri dön?"
-
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
-msgid "&Revert"
-msgstr "&Geri dön"
-
-#: src/BufferView.cpp:238
-#, fuzzy
-msgid "&Switch to document"
-msgstr "Açýk bir belgeye geç"
-
-#: src/BufferView.cpp:260
-#, c-format
-msgid ""
-"The document %1$s does not yet exist.\n"
-"\n"
-"Do you want to create a new document?"
-msgstr ""
-
-#: src/BufferView.cpp:263
-msgid "Create new document?"
-msgstr "Yeni bir belge oluþturayým mý?"
-
-#: src/BufferView.cpp:264
-msgid "&Create"
-msgstr "&Oluþtur"
-
-#: src/BufferView.cpp:570
-#, fuzzy
-msgid "Save bookmark"
-msgstr "Yerimi 5 Ýþaretle"
-
-#: src/BufferView.cpp:765
-msgid "No further undo information"
-msgstr "Baþka geri alma bilgisi yok"
-
-#: src/BufferView.cpp:775
-msgid "No further redo information"
-msgstr "Baþka ileri alma bilgisi yok"
-
-#: src/BufferView.cpp:933
-msgid "Mark off"
-msgstr "Ýþaret kapalý"
-
-#: src/BufferView.cpp:940
-msgid "Mark on"
-msgstr "Ýþaret açýk"
-
-#: src/BufferView.cpp:947
-msgid "Mark removed"
-msgstr "Ýþaret kaldýrýldý"
-
-#: src/BufferView.cpp:950
-msgid "Mark set"
-msgstr "Ýþaret kondu"
-
-#: src/BufferView.cpp:996
-#, c-format
-msgid "%1$d words in selection."
-msgstr "Seçimde %1$d sözcük var."
-
-#: src/BufferView.cpp:999
-#, c-format
-msgid "%1$d words in document."
-msgstr "Belgede %1$d sözcük var."
-
-#: src/BufferView.cpp:1004
-msgid "One word in selection."
-msgstr "Seçimdi bir sözcük var."
-
-#: src/BufferView.cpp:1006
-msgid "One word in document."
-msgstr "Belgede bir sözcük var."
-
-#: src/BufferView.cpp:1009
-msgid "Count words"
-msgstr "Sözcükleri say"
-
-#: src/BufferView.cpp:1588
-msgid "Select LyX document to insert"
-msgstr "Eklenecek LyX belgesini seçin"
-
-#: src/BufferView.cpp:1590 src/frontends/controllers/ControlBibtex.cpp:52
-#: src/frontends/controllers/ControlBibtex.cpp:64
-#: src/frontends/controllers/ControlExternal.cpp:169
-#: src/frontends/controllers/ControlGraphics.cpp:96
-#: src/frontends/controllers/ControlInclude.cpp:91 src/lyx_cb.cpp:136
-#: src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905 src/LyXFunc.cpp:1978
-msgid "Documents|#o#O"
-msgstr "Belgeler|#b#B"
-
-#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
-msgid "Examples|#E#e"
-msgstr "Örnekler|#ö#Ö"
-
-#: src/BufferView.cpp:1595 src/lyx_cb.cpp:142 src/LyXFunc.cpp:1871
-#: src/LyXFunc.cpp:1910
-msgid "LyX Documents (*.lyx)"
-msgstr "LyX Belgeleri (*.lyx)"
-
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
-#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
-msgid "Canceled."
-msgstr "Vazgeçildi."
-
-#: src/BufferView.cpp:1618
-#, c-format
-msgid "Inserting document %1$s..."
-msgstr "Belge %1$s ekleniyor..."
-
-#: src/BufferView.cpp:1629
-#, c-format
-msgid "Document %1$s inserted."
-msgstr "Belge %1$s eklendi."
-
-#: src/BufferView.cpp:1631
-#, c-format
-msgid "Could not insert document %1$s"
-msgstr "Belge %1$s eklenemedi"
-
-#: src/Chktex.cpp:71
-#, c-format
-msgid "ChkTeX warning id # %1$d"
-msgstr ""
-
-#: src/Chktex.cpp:73
-msgid "ChkTeX warning id # "
-msgstr ""
-
-#: src/CutAndPaste.cpp:433
-#, c-format
-msgid ""
-"Layout had to be changed from\n"
-"%1$s to %2$s\n"
-"because of class conversion from\n"
-"%3$s to %4$s"
-msgstr ""
-"'%3$s' dan '%4$s' a\n"
-"yapýlan sýnýf çevrimi nedeniyle\n"
-"yerleþim '%1$s',\n"
-"'%2$s' a çevrildi"
-
-#: src/CutAndPaste.cpp:438
-msgid "Changed Layout"
-msgstr "Yerleþim Deðiþti"
-
-#: src/CutAndPaste.cpp:457
-#, fuzzy, c-format
-msgid ""
-"Character style %1$s is undefined because of class conversion from\n"
-"%2$s to %3$s"
-msgstr ""
-"'%3$s' dan '%4$s' a\n"
-"yapýlan sýnýf çevrimi nedeniyle\n"
-"yerleþim '%1$s',\n"
-"'%2$s' a çevrildi"
-
-#: src/CutAndPaste.cpp:464
-msgid "Undefined character style"
-msgstr "Bilinmeyen karakter stili"
-
-#: src/LColor.cpp:95
-msgid "none"
-msgstr "yok"
-
-#: src/LColor.cpp:96
-msgid "black"
-msgstr "siyah"
-
-#: src/LColor.cpp:97
-msgid "white"
-msgstr "beyaz"
-
-#: src/LColor.cpp:98
-msgid "red"
-msgstr "kýrmýzý"
-
-#: src/LColor.cpp:99
-msgid "green"
-msgstr "yeþil"
-
-#: src/LColor.cpp:100
-msgid "blue"
-msgstr "mavi"
-
-#: src/LColor.cpp:101
-msgid "cyan"
-msgstr "cyan"
-
-#: src/LColor.cpp:102
-msgid "magenta"
-msgstr "magenta"
-
-#: src/LColor.cpp:103
-msgid "yellow"
-msgstr "sarý"
-
-#: src/LColor.cpp:104
-msgid "cursor"
-msgstr "imleç"
-
-#: src/LColor.cpp:105
-msgid "background"
-msgstr "arkaplan"
-
-#: src/LColor.cpp:106
-msgid "text"
-msgstr "metin"
-
-#: src/LColor.cpp:107
-msgid "selection"
-msgstr "seçim"
-
-#: src/LColor.cpp:108
-msgid "LaTeX text"
-msgstr "LaTeX metni"
-
-#: src/LColor.cpp:109
-msgid "previewed snippet"
-msgstr ""
-
-#: src/LColor.cpp:110 src/insets/InsetNote.cpp:311
-msgid "note"
-msgstr "not"
-
-#: src/LColor.cpp:111
-msgid "note background"
-msgstr "not arkaplaný"
-
-#: src/LColor.cpp:112
-msgid "comment"
-msgstr "açýklama"
-
-#: src/LColor.cpp:113
-msgid "comment background"
-msgstr "açýklama arkaplaný"
-
-#: src/LColor.cpp:114
-msgid "greyedout inset"
-msgstr ""
-
-#: src/LColor.cpp:115
-#, fuzzy
-msgid "greyedout inset background"
-msgstr "not arkaplaný"
-
-#: src/LColor.cpp:116
-#, fuzzy
-msgid "shaded box"
-msgstr "Gölgeli kutu"
-
-#: src/LColor.cpp:117
-msgid "depth bar"
-msgstr "derinlik çubuðu"
-
-#: src/LColor.cpp:118
-msgid "language"
-msgstr "dil"
-
-#: src/LColor.cpp:119
-msgid "command inset"
-msgstr ""
-
-#: src/LColor.cpp:120
-msgid "command inset background"
-msgstr ""
-
-#: src/LColor.cpp:121
-msgid "command inset frame"
-msgstr ""
-
-#: src/LColor.cpp:122
-msgid "special character"
-msgstr "özel karakter"
-
-#: src/LColor.cpp:123
-msgid "math"
-msgstr "matematik"
-
-#: src/LColor.cpp:124
-msgid "math background"
-msgstr "matematik arkaplaný"
-
-#: src/LColor.cpp:125
-msgid "graphics background"
-msgstr "grafik arkaplaný"
-
-#: src/LColor.cpp:126
-msgid "Math macro background"
-msgstr ""
-
-#: src/LColor.cpp:127
-msgid "math frame"
-msgstr "matematik çerçevesi"
-
-#: src/LColor.cpp:128
-msgid "math line"
-msgstr "matematik çizgisi"
-
-#: src/LColor.cpp:129
-msgid "caption frame"
-msgstr "baþlýk çerçevesi"
-
-#: src/LColor.cpp:130
-msgid "collapsable inset text"
-msgstr ""
-
-#: src/LColor.cpp:131
-msgid "collapsable inset frame"
-msgstr ""
-
-#: src/LColor.cpp:132
-msgid "inset background"
-msgstr ""
-
-#: src/LColor.cpp:133
-msgid "inset frame"
-msgstr ""
-
-#: src/LColor.cpp:134
-msgid "LaTeX error"
-msgstr "LaTeX hatasý"
-
-#: src/LColor.cpp:135
-msgid "end-of-line marker"
-msgstr "satýr sonu iþareti"
-
-#: src/LColor.cpp:136
-msgid "appendix marker"
-msgstr "ek iþareti"
-
-#: src/LColor.cpp:137
-#, fuzzy
-msgid "change bar"
-msgstr "Ayný kalsýn"
-
-#: src/LColor.cpp:138
-msgid "Deleted text"
-msgstr "Silinmiþ metin"
-
-#: src/LColor.cpp:139
-msgid "Added text"
-msgstr "Eklenen metin"
-
-#: src/LColor.cpp:140
-msgid "added space markers"
-msgstr "boþluk iþaretleri"
-
-#: src/LColor.cpp:141
-msgid "top/bottom line"
-msgstr "üst/alt çizgisi"
-
-#: src/LColor.cpp:142
-msgid "table line"
-msgstr "tablo çizgisi"
-
-#: src/LColor.cpp:144
-msgid "table on/off line"
-msgstr "tablo açýk/kapalý çizgisi"
-
-#: src/LColor.cpp:146
-msgid "bottom area"
-msgstr "alt alan"
-
-#: src/LColor.cpp:147
-msgid "page break"
-msgstr "sayfa kesimi"
-
-#: src/LColor.cpp:148
-#, fuzzy
-msgid "frame of button"
-msgstr "düðme sol kenarý"
-
-#: src/LColor.cpp:149
-msgid "button background"
-msgstr "düðme arkaplaný"
-
-#: src/LColor.cpp:150
-#, fuzzy
-msgid "button background under focus"
-msgstr "düðme arkaplaný"
-
-#: src/LColor.cpp:151
-msgid "inherit"
-msgstr ""
-
-#: src/LColor.cpp:152
-msgid "ignore"
-msgstr ""
-
-#: src/LaTeX.cpp:95
-#, c-format
-msgid "Waiting for LaTeX run number %1$d"
-msgstr ""
-
-#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
-msgid "Running MakeIndex."
-msgstr "MakeIndex çalýþtýrýlýyor."
-
-#: src/LaTeX.cpp:322
-msgid "Running BibTeX."
-msgstr "BibTeX çalýþtýrýlýyor."
-
-#: src/LaTeX.cpp:462
-#, fuzzy
-msgid "Running MakeIndex for nomencl."
-msgstr "MakeIndex çalýþtýrýlýyor."
-
-#: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
-#: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
-msgid "No Documents Open!"
-msgstr "Açýk belge yok!"
-
-#: src/MenuBackend.cpp:540
-#, fuzzy
-msgid "Plain Text"
-msgstr "Düz metin"
-
-#: src/MenuBackend.cpp:542
-#, fuzzy
-msgid "Plain Text, Join Lines"
-msgstr "Satýrlar Olarak Düz Metin"
-
-#: src/MenuBackend.cpp:714
-#, fuzzy
-msgid "Master Document"
-msgstr "Belgeyi kaydet"
-
-#: src/MenuBackend.cpp:746
-msgid "No Table of contents"
-msgstr "Ýçindekiler boþ"
-
-#: src/MenuBackend.cpp:791
-msgid " (auto)"
-msgstr ""
-
-#: src/SpellBase.cpp:51
-msgid "Native OS API not yet supported."
-msgstr "Ýþletim sisteminin kendi arabirimi henüz desteklenmiyor."
-
 #: src/Buffer.cpp:229
 msgid "Could not remove temporary directory"
 msgstr "Geçici dizin silinemedi"
@@ -11853,7 +11408,7 @@ msgstr "Bilinmeyen belge sýnýfý"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "%1$s sýnýfý bilinmediðinden, öntanýmlý belge sýnýfý kullanýlacak."
 
-#: src/Buffer.cpp:461 src/text.cpp:293
+#: src/Buffer.cpp:461 src/Text.cpp:293
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
@@ -11988,101 +11543,6 @@ msgstr "chktex hatasý"
 msgid "Could not run chktex successfully."
 msgstr "chktex baþarýyla çalýþtýrýlamadý."
 
-#: src/buffer_funcs.cpp:81
-#, c-format
-msgid ""
-"The specified document\n"
-"%1$s\n"
-"could not be read."
-msgstr ""
-
-#: src/buffer_funcs.cpp:83
-msgid "Could not read document"
-msgstr "Belge okunamýyor"
-
-#: src/buffer_funcs.cpp:96
-#, c-format
-msgid ""
-"An emergency save of the document %1$s exists.\n"
-"\n"
-"Recover emergency save?"
-msgstr ""
-"%1$s belgesinin bir acil durum kaydý var.\n"
-"\n"
-"Acil durum kaydýndan kurtarýlsýn mý?"
-
-#: src/buffer_funcs.cpp:99
-msgid "Load emergency save?"
-msgstr "Acil durum kaydý yüklensin mi?"
-
-#: src/buffer_funcs.cpp:100
-msgid "&Recover"
-msgstr "&Kurtar"
-
-#: src/buffer_funcs.cpp:100
-msgid "&Load Original"
-msgstr "&Aslýný Yükle"
-
-#: src/buffer_funcs.cpp:123
-#, c-format
-msgid ""
-"The backup of the document %1$s is newer.\n"
-"\n"
-"Load the backup instead?"
-msgstr ""
-"%1$s belgesinin yedeði belgeden daha yeni.\n"
-"\n"
-"Belge yerine yedek açýlsýn mý?"
-
-#: src/buffer_funcs.cpp:126
-msgid "Load backup?"
-msgstr "Yedeði yükle?"
-
-#: src/buffer_funcs.cpp:127
-msgid "&Load backup"
-msgstr "&Yedeði yükle"
-
-#: src/buffer_funcs.cpp:127
-msgid "Load &original"
-msgstr "&Özgünü yükle"
-
-#: src/buffer_funcs.cpp:166
-#, fuzzy, c-format
-msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Sürüm yönetimindeki dosyayý almak ister misiniz?"
-
-#: src/buffer_funcs.cpp:168
-msgid "Retrieve from version control?"
-msgstr "Dosyayý sürüm yönetiminden geri almak ister misiniz?"
-
-#: src/buffer_funcs.cpp:169
-msgid "&Retrieve"
-msgstr "&Geri al"
-
-#: src/buffer_funcs.cpp:202
-#, c-format
-msgid ""
-"The specified document template\n"
-"%1$s\n"
-"could not be read."
-msgstr ""
-
-#: src/buffer_funcs.cpp:204
-msgid "Could not read template"
-msgstr "Þablon okunamadý"
-
-#: src/buffer_funcs.cpp:521
-msgid "\\arabic{enumi}."
-msgstr ""
-
-#: src/buffer_funcs.cpp:527
-msgid "\\roman{enumiii}."
-msgstr ""
-
-#: src/buffer_funcs.cpp:530
-msgid "\\Alph{enumiv}."
-msgstr ""
-
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
 msgid ""
@@ -12138,29 +11598,373 @@ msgstr "Belge sýnýfý mevcut deðil!"
 msgid "LyX will not be able to produce output."
 msgstr "LyX çýktý oluþturamayacaktýr."
 
-#: src/bufferview_funcs.cpp:308
-msgid "No more insets"
-msgstr ""
-
-#: src/client/debug.cpp:44 src/debug.cpp:44
-msgid "No debugging message"
-msgstr "Hata bulma iletisi yok"
-
-#: src/client/debug.cpp:45 src/debug.cpp:45
-msgid "General information"
-msgstr "Genel bilgiler"
-
-#: src/client/debug.cpp:46 src/debug.cpp:70
-msgid "Developers' general debug messages"
-msgstr ""
-
-#: src/client/debug.cpp:47 src/debug.cpp:71
-msgid "All debugging messages"
-msgstr "Tüm hata bulma iletileri"
-
-#: src/client/debug.cpp:91 src/debug.cpp:115
+#: src/BufferView.cpp:234
 #, c-format
-msgid "Debugging `%1$s' (%2$s)"
+msgid ""
+"The document %1$s is already loaded.\n"
+"\n"
+"Do you want to revert to the saved version?"
+msgstr ""
+
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
+msgid "Revert to saved document?"
+msgstr "Kayýtlý belgeye geri dön?"
+
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
+msgid "&Revert"
+msgstr "&Geri dön"
+
+#: src/BufferView.cpp:238
+#, fuzzy
+msgid "&Switch to document"
+msgstr "Açýk bir belgeye geç"
+
+#: src/BufferView.cpp:260
+#, c-format
+msgid ""
+"The document %1$s does not yet exist.\n"
+"\n"
+"Do you want to create a new document?"
+msgstr ""
+
+#: src/BufferView.cpp:263
+msgid "Create new document?"
+msgstr "Yeni bir belge oluþturayým mý?"
+
+#: src/BufferView.cpp:264
+msgid "&Create"
+msgstr "&Oluþtur"
+
+#: src/BufferView.cpp:570
+#, fuzzy
+msgid "Save bookmark"
+msgstr "Yerimi 5 Ýþaretle"
+
+#: src/BufferView.cpp:765
+msgid "No further undo information"
+msgstr "Baþka geri alma bilgisi yok"
+
+#: src/BufferView.cpp:775
+msgid "No further redo information"
+msgstr "Baþka ileri alma bilgisi yok"
+
+#: src/BufferView.cpp:933
+msgid "Mark off"
+msgstr "Ýþaret kapalý"
+
+#: src/BufferView.cpp:940
+msgid "Mark on"
+msgstr "Ýþaret açýk"
+
+#: src/BufferView.cpp:947
+msgid "Mark removed"
+msgstr "Ýþaret kaldýrýldý"
+
+#: src/BufferView.cpp:950
+msgid "Mark set"
+msgstr "Ýþaret kondu"
+
+#: src/BufferView.cpp:996
+#, c-format
+msgid "%1$d words in selection."
+msgstr "Seçimde %1$d sözcük var."
+
+#: src/BufferView.cpp:999
+#, c-format
+msgid "%1$d words in document."
+msgstr "Belgede %1$d sözcük var."
+
+#: src/BufferView.cpp:1004
+msgid "One word in selection."
+msgstr "Seçimdi bir sözcük var."
+
+#: src/BufferView.cpp:1006
+msgid "One word in document."
+msgstr "Belgede bir sözcük var."
+
+#: src/BufferView.cpp:1009
+msgid "Count words"
+msgstr "Sözcükleri say"
+
+#: src/BufferView.cpp:1588
+msgid "Select LyX document to insert"
+msgstr "Eklenecek LyX belgesini seçin"
+
+#: src/BufferView.cpp:1590 src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905
+#: src/LyXFunc.cpp:1978 src/callback.cpp:136
+#: src/frontends/controllers/ControlBibtex.cpp:52
+#: src/frontends/controllers/ControlBibtex.cpp:64
+#: src/frontends/controllers/ControlExternal.cpp:169
+#: src/frontends/controllers/ControlGraphics.cpp:96
+#: src/frontends/controllers/ControlInclude.cpp:91
+msgid "Documents|#o#O"
+msgstr "Belgeler|#b#B"
+
+#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
+msgid "Examples|#E#e"
+msgstr "Örnekler|#ö#Ö"
+
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1871 src/LyXFunc.cpp:1910
+#: src/callback.cpp:142
+msgid "LyX Documents (*.lyx)"
+msgstr "LyX Belgeleri (*.lyx)"
+
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
+#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
+msgid "Canceled."
+msgstr "Vazgeçildi."
+
+#: src/BufferView.cpp:1618
+#, c-format
+msgid "Inserting document %1$s..."
+msgstr "Belge %1$s ekleniyor..."
+
+#: src/BufferView.cpp:1629
+#, c-format
+msgid "Document %1$s inserted."
+msgstr "Belge %1$s eklendi."
+
+#: src/BufferView.cpp:1631
+#, c-format
+msgid "Could not insert document %1$s"
+msgstr "Belge %1$s eklenemedi"
+
+#: src/Chktex.cpp:71
+#, c-format
+msgid "ChkTeX warning id # %1$d"
+msgstr ""
+
+#: src/Chktex.cpp:73
+msgid "ChkTeX warning id # "
+msgstr ""
+
+#: src/Color.cpp:268
+msgid "none"
+msgstr "yok"
+
+#: src/Color.cpp:269
+msgid "black"
+msgstr "siyah"
+
+#: src/Color.cpp:270
+msgid "white"
+msgstr "beyaz"
+
+#: src/Color.cpp:271
+msgid "red"
+msgstr "kýrmýzý"
+
+#: src/Color.cpp:272
+msgid "green"
+msgstr "yeþil"
+
+#: src/Color.cpp:273
+msgid "blue"
+msgstr "mavi"
+
+#: src/Color.cpp:274
+msgid "cyan"
+msgstr "cyan"
+
+#: src/Color.cpp:275
+msgid "magenta"
+msgstr "magenta"
+
+#: src/Color.cpp:276
+msgid "yellow"
+msgstr "sarý"
+
+#: src/Color.cpp:277
+msgid "cursor"
+msgstr "imleç"
+
+#: src/Color.cpp:278
+msgid "background"
+msgstr "arkaplan"
+
+#: src/Color.cpp:279
+msgid "text"
+msgstr "metin"
+
+#: src/Color.cpp:280
+msgid "selection"
+msgstr "seçim"
+
+#: src/Color.cpp:281
+msgid "LaTeX text"
+msgstr "LaTeX metni"
+
+#: src/Color.cpp:282
+msgid "previewed snippet"
+msgstr ""
+
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:310
+msgid "note"
+msgstr "not"
+
+#: src/Color.cpp:284
+msgid "note background"
+msgstr "not arkaplaný"
+
+#: src/Color.cpp:285
+msgid "comment"
+msgstr "açýklama"
+
+#: src/Color.cpp:286
+msgid "comment background"
+msgstr "açýklama arkaplaný"
+
+#: src/Color.cpp:287
+msgid "greyedout inset"
+msgstr ""
+
+#: src/Color.cpp:288
+#, fuzzy
+msgid "greyedout inset background"
+msgstr "not arkaplaný"
+
+#: src/Color.cpp:289
+#, fuzzy
+msgid "shaded box"
+msgstr "Gölgeli kutu"
+
+#: src/Color.cpp:290
+msgid "depth bar"
+msgstr "derinlik çubuðu"
+
+#: src/Color.cpp:291
+msgid "language"
+msgstr "dil"
+
+#: src/Color.cpp:292
+msgid "command inset"
+msgstr ""
+
+#: src/Color.cpp:293
+msgid "command inset background"
+msgstr ""
+
+#: src/Color.cpp:294
+msgid "command inset frame"
+msgstr ""
+
+#: src/Color.cpp:295
+msgid "special character"
+msgstr "özel karakter"
+
+#: src/Color.cpp:296
+msgid "math"
+msgstr "matematik"
+
+#: src/Color.cpp:297
+msgid "math background"
+msgstr "matematik arkaplaný"
+
+#: src/Color.cpp:298
+msgid "graphics background"
+msgstr "grafik arkaplaný"
+
+#: src/Color.cpp:299
+msgid "Math macro background"
+msgstr ""
+
+#: src/Color.cpp:300
+msgid "math frame"
+msgstr "matematik çerçevesi"
+
+#: src/Color.cpp:301
+msgid "math line"
+msgstr "matematik çizgisi"
+
+#: src/Color.cpp:302
+msgid "caption frame"
+msgstr "baþlýk çerçevesi"
+
+#: src/Color.cpp:303
+msgid "collapsable inset text"
+msgstr ""
+
+#: src/Color.cpp:304
+msgid "collapsable inset frame"
+msgstr ""
+
+#: src/Color.cpp:305
+msgid "inset background"
+msgstr ""
+
+#: src/Color.cpp:306
+msgid "inset frame"
+msgstr ""
+
+#: src/Color.cpp:307
+msgid "LaTeX error"
+msgstr "LaTeX hatasý"
+
+#: src/Color.cpp:308
+msgid "end-of-line marker"
+msgstr "satýr sonu iþareti"
+
+#: src/Color.cpp:309
+msgid "appendix marker"
+msgstr "ek iþareti"
+
+#: src/Color.cpp:310
+#, fuzzy
+msgid "change bar"
+msgstr "Ayný kalsýn"
+
+#: src/Color.cpp:311
+msgid "Deleted text"
+msgstr "Silinmiþ metin"
+
+#: src/Color.cpp:312
+msgid "Added text"
+msgstr "Eklenen metin"
+
+#: src/Color.cpp:313
+msgid "added space markers"
+msgstr "boþluk iþaretleri"
+
+#: src/Color.cpp:314
+msgid "top/bottom line"
+msgstr "üst/alt çizgisi"
+
+#: src/Color.cpp:315
+msgid "table line"
+msgstr "tablo çizgisi"
+
+#: src/Color.cpp:317
+msgid "table on/off line"
+msgstr "tablo açýk/kapalý çizgisi"
+
+#: src/Color.cpp:319
+msgid "bottom area"
+msgstr "alt alan"
+
+#: src/Color.cpp:320
+msgid "page break"
+msgstr "sayfa kesimi"
+
+#: src/Color.cpp:321
+#, fuzzy
+msgid "frame of button"
+msgstr "düðme sol kenarý"
+
+#: src/Color.cpp:322
+msgid "button background"
+msgstr "düðme arkaplaný"
+
+#: src/Color.cpp:323
+#, fuzzy
+msgid "button background under focus"
+msgstr "düðme arkaplaný"
+
+#: src/Color.cpp:324
+msgid "inherit"
+msgstr ""
+
+#: src/Color.cpp:325
+msgid "ignore"
 msgstr ""
 
 #: src/Converter.cpp:332 src/Converter.cpp:476 src/Converter.cpp:499
@@ -12231,103 +12035,37 @@ msgstr "Çýktý boþ"
 msgid "An empty output file was generated."
 msgstr "Boþ bir çýktý dosyasý oluþtu."
 
-#: src/debug.cpp:46
-msgid "Program initialisation"
-msgstr "Program açýlýþý"
-
-#: src/debug.cpp:47
-msgid "Keyboard events handling"
-msgstr "Klavye olaylarý"
-
-#: src/debug.cpp:48
-msgid "GUI handling"
-msgstr "Arabirim yönetimi"
-
-#: src/debug.cpp:49
-msgid "Lyxlex grammar parser"
+#: src/CutAndPaste.cpp:435
+#, c-format
+msgid ""
+"Layout had to be changed from\n"
+"%1$s to %2$s\n"
+"because of class conversion from\n"
+"%3$s to %4$s"
 msgstr ""
+"'%3$s' dan '%4$s' a\n"
+"yapýlan sýnýf çevrimi nedeniyle\n"
+"yerleþim '%1$s',\n"
+"'%2$s' a çevrildi"
 
-#: src/debug.cpp:50
-msgid "Configuration files reading"
-msgstr "Ayar dosyalarýnýn okunmasý"
+#: src/CutAndPaste.cpp:440
+msgid "Changed Layout"
+msgstr "Yerleþim Deðiþti"
 
-#: src/debug.cpp:51
-msgid "Custom keyboard definition"
+#: src/CutAndPaste.cpp:459
+#, fuzzy, c-format
+msgid ""
+"Character style %1$s is undefined because of class conversion from\n"
+"%2$s to %3$s"
 msgstr ""
+"'%3$s' dan '%4$s' a\n"
+"yapýlan sýnýf çevrimi nedeniyle\n"
+"yerleþim '%1$s',\n"
+"'%2$s' a çevrildi"
 
-#: src/debug.cpp:52
-msgid "LaTeX generation/execution"
-msgstr ""
-
-#: src/debug.cpp:53
-msgid "Math editor"
-msgstr ""
-
-#: src/debug.cpp:54
-msgid "Font handling"
-msgstr "Font yönetimi"
-
-#: src/debug.cpp:55
-msgid "Textclass files reading"
-msgstr ""
-
-#: src/debug.cpp:56
-msgid "Version control"
-msgstr "Sürüm yönetimi"
-
-#: src/debug.cpp:57
-msgid "External control interface"
-msgstr ""
-
-#: src/debug.cpp:58
-msgid "Keep *roff temporary files"
-msgstr ""
-
-#: src/debug.cpp:59
-msgid "User commands"
-msgstr "Kullanýcý komutlarý"
-
-#: src/debug.cpp:60
-msgid "The LyX Lexxer"
-msgstr ""
-
-#: src/debug.cpp:61
-msgid "Dependency information"
-msgstr "Baðýmlýlýk bilgisi"
-
-#: src/debug.cpp:62
-msgid "LyX Insets"
-msgstr ""
-
-#: src/debug.cpp:63
-msgid "Files used by LyX"
-msgstr "LyX tarafýndan kullanýlan dosyalar"
-
-#: src/debug.cpp:64
-msgid "Workarea events"
-msgstr "Çalýþma alaný olaylarý"
-
-#: src/debug.cpp:65
-msgid "Insettext/tabular messages"
-msgstr ""
-
-#: src/debug.cpp:66
-msgid "Graphics conversion and loading"
-msgstr ""
-
-#: src/debug.cpp:67
-#, fuzzy
-msgid "Change tracking"
-msgstr "Dil deðiþtir"
-
-#: src/debug.cpp:68
-#, fuzzy
-msgid "External template/inset messages"
-msgstr "Dýþ Uygulamalar"
-
-#: src/debug.cpp:69
-msgid "RowPainter profiling"
-msgstr ""
+#: src/CutAndPaste.cpp:466
+msgid "Undefined character style"
+msgstr "Bilinmeyen karakter stili"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1062
 #, c-format
@@ -12341,8 +12079,8 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
-#: src/Exporter.cpp:87 src/lyx_cb.cpp:170 src/LyXFunc.cpp:1066
-#: src/LyXFunc.cpp:2027
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027
+#: src/callback.cpp:170
 msgid "&Over-write"
 msgstr "&Üzerine Yaz"
 
@@ -12394,6 +12132,96 @@ msgstr "%1$s belgesi '%2$s' olarak dýþarý aktarýldý"
 msgid "Document exported as %1$s"
 msgstr "Belge %1$s olarak dýþarý aktarýldý"
 
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:870
+msgid "Roman"
+msgstr "Roman"
+
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:874
+msgid "Sans Serif"
+msgstr "Sans Serif"
+
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:878
+msgid "Typewriter"
+msgstr "Daktilo"
+
+#: src/Font.cpp:52
+msgid "Symbol"
+msgstr "Sembol"
+
+#: src/Font.cpp:54 src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:66
+#: src/Font.cpp:69
+msgid "Inherit"
+msgstr ""
+
+#: src/Font.cpp:54 src/Font.cpp:57 src/Font.cpp:61 src/Font.cpp:66
+#: src/Font.cpp:69
+msgid "Ignore"
+msgstr ""
+
+#: src/Font.cpp:57 src/frontends/controllers/frontend_helpers.cpp:900
+msgid "Medium"
+msgstr "Orta"
+
+#: src/Font.cpp:57 src/frontends/controllers/frontend_helpers.cpp:904
+msgid "Bold"
+msgstr "Kalýn"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:926
+msgid "Upright"
+msgstr ""
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:930
+msgid "Italic"
+msgstr "Ýtalik"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:934
+msgid "Slanted"
+msgstr "Eðik"
+
+#: src/Font.cpp:60
+msgid "Smallcaps"
+msgstr "Küçükbaþlýklar"
+
+#: src/Font.cpp:65 src/frontends/controllers/frontend_helpers.cpp:1000
+msgid "Increase"
+msgstr "Arttýr"
+
+#: src/Font.cpp:65 src/frontends/controllers/frontend_helpers.cpp:1004
+msgid "Decrease"
+msgstr "Azalt"
+
+#: src/Font.cpp:69
+msgid "Toggle"
+msgstr "Deðiþtir"
+
+#: src/Font.cpp:509
+#, c-format
+msgid "Emphasis %1$s, "
+msgstr "Vurgu %1$s, "
+
+#: src/Font.cpp:512
+#, c-format
+msgid "Underline %1$s, "
+msgstr "Altçizgi %1$s, "
+
+#: src/Font.cpp:515
+#, c-format
+msgid "Noun %1$s, "
+msgstr "Ad stili %1$s, "
+
+#: src/Font.cpp:520
+#, c-format
+msgid "Language: %1$s, "
+msgstr "Dil: %1$s, "
+
+#: src/Font.cpp:523
+#, c-format
+msgid "  Number %1$s"
+msgstr ""
+
 #: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292 src/Format.cpp:326
 msgid "Cannot view file"
 msgstr "Dosya gösterilemiyor"
@@ -12426,1458 +12254,6 @@ msgstr ""
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr ""
-
-#: src/frontends/LyXView.cpp:425
-msgid " (changed)"
-msgstr " (deðiþti)"
-
-#: src/frontends/LyXView.cpp:429
-msgid " (read only)"
-msgstr " (yalnýzca okunabilir)"
-
-#: src/frontends/WorkArea.cpp:242
-msgid "Formatting document..."
-msgstr "Belge biçimlendiriliyor..."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:58
-msgid "ERROR: LyX wasn't able to read CREDITS file\n"
-msgstr "HATA: LyX, CREDITS dosyasýný okuyamadý\n"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:59
-msgid "Please install correctly to estimate the great\n"
-msgstr "Katkýcýlarýn LyX projesine verdiði emeði\n"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:60
-msgid "amount of work other people have done for the LyX project."
-msgstr "görebilmek için lütfen yerine kurun."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:67
-#, fuzzy
-msgid ""
-"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team"
-msgstr ""
-"LyX Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Takýmý"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:73
-msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
-msgstr ""
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:79
-msgid ""
-"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE.\n"
-"See the GNU General Public License for more details.\n"
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
-msgstr ""
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:87
-msgid "LyX Version "
-msgstr "LyX Sürüm "
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:92
-msgid "Library directory: "
-msgstr "Sistem dizini: "
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:95
-msgid "User directory: "
-msgstr "Kullanýcý dizini: "
-
-#: src/frontends/controllers/ControlBibtex.cpp:54
-msgid "BibTeX Databases (*.bib)"
-msgstr "BibTeX Veritabanlarý (*.bib)"
-
-#: src/frontends/controllers/ControlBibtex.cpp:56
-msgid "Select a BibTeX database to add"
-msgstr "Eklenecek BibTeX veritabaný seçin"
-
-#: src/frontends/controllers/ControlBibtex.cpp:66
-msgid "BibTeX Styles (*.bst)"
-msgstr "BibTeX Stilleri (*.bst)"
-
-#: src/frontends/controllers/ControlBibtex.cpp:68
-msgid "Select a BibTeX style"
-msgstr "Bir BibTeX stili seçin"
-
-#: src/frontends/controllers/ControlBox.cpp:62
-msgid "No frame drawn"
-msgstr "Çerçeve yok"
-
-#: src/frontends/controllers/ControlBox.cpp:63
-msgid "Rectangular box"
-msgstr "Dikdörtgen kutu"
-
-#: src/frontends/controllers/ControlBox.cpp:64
-msgid "Oval box, thin"
-msgstr "Oval kutu, ince"
-
-#: src/frontends/controllers/ControlBox.cpp:65
-msgid "Oval box, thick"
-msgstr "Oval kutu, kalýn"
-
-#: src/frontends/controllers/ControlBox.cpp:66
-msgid "Shadow box"
-msgstr "Gölgeli kutu"
-
-#: src/frontends/controllers/ControlBox.cpp:67
-msgid "Double box"
-msgstr "Çift kutu"
-
-#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.cpp:286
-#: src/frontends/qt4/QBox.cpp:320
-msgid "Depth"
-msgstr "Derinlik"
-
-#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.cpp:133
-#: src/frontends/qt4/QBox.cpp:289 src/frontends/qt4/QBox.cpp:323
-#: src/frontends/qt4/QBox.cpp:356
-msgid "Total Height"
-msgstr "Toplam Yükseklik"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:870 src/LyXFont.cpp:52
-msgid "Roman"
-msgstr "Roman"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:874 src/LyXFont.cpp:52
-msgid "Sans Serif"
-msgstr "Sans Serif"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:878 src/LyXFont.cpp:52
-msgid "Typewriter"
-msgstr "Daktilo"
-
-#: src/frontends/controllers/ControlErrorList.cpp:57
-#, c-format
-msgid "%1$s Errors (%2$s)"
-msgstr ""
-
-#: src/frontends/controllers/ControlExternal.cpp:163
-msgid "Select external file"
-msgstr "Dýþ dosya seçin"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Top left"
-msgstr "Üst sol"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Bottom left"
-msgstr "Alt sol"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Baseline left"
-msgstr "Taban sol"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Top center"
-msgstr "Üst orta"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Bottom center"
-msgstr "Alt orta"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Baseline center"
-msgstr "Taban orta"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Top right"
-msgstr "Üst sað"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Bottom right"
-msgstr "Alt sað"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Baseline right"
-msgstr "Taban sað"
-
-#: src/frontends/controllers/ControlGraphics.cpp:87
-msgid "Select graphics file"
-msgstr "Grafik dosyasýný seçin"
-
-#: src/frontends/controllers/ControlGraphics.cpp:95
-msgid "Clipart|#C#c"
-msgstr ""
-
-#: src/frontends/controllers/ControlInclude.cpp:78
-msgid "Select document to include"
-msgstr "Eklenecek belgeyi seçin"
-
-#: src/frontends/controllers/ControlInclude.cpp:85
-msgid "LaTeX/LyX Documents (*.tex *.lyx)"
-msgstr "LaTeX/LyX Belgeleri (*.tex *.lyx)"
-
-#: src/frontends/controllers/ControlLog.cpp:81
-msgid "LaTeX Log"
-msgstr "LaTeX Kayýtlarý"
-
-#: src/frontends/controllers/ControlLog.cpp:84
-msgid "Literate Programming Build Log"
-msgstr ""
-
-#: src/frontends/controllers/ControlLog.cpp:87
-msgid "lyx2lyx Error Log"
-msgstr "lyx2lyx Hata Kütüðü"
-
-#: src/frontends/controllers/ControlLog.cpp:90
-msgid "Version Control Log"
-msgstr "Sürüm Yönetimi Kayýtlarý"
-
-#: src/frontends/controllers/ControlLog.cpp:116
-msgid "No LaTeX log file found."
-msgstr "LaTeX kayýt dosyasý bulunamadý."
-
-#: src/frontends/controllers/ControlLog.cpp:119
-#, fuzzy
-msgid "No literate programming build log file found."
-msgstr "Sürüm yönetimi kayýt dosyasý bulunamadý."
-
-#: src/frontends/controllers/ControlLog.cpp:122
-msgid "No lyx2lyx error log file found."
-msgstr "lyx2lyx hata kütük dosyasý bulunamadý."
-
-#: src/frontends/controllers/ControlLog.cpp:125
-msgid "No version control log file found."
-msgstr "Sürüm yönetimi kayýt dosyasý bulunamadý."
-
-#: src/frontends/controllers/ControlPrefs.cpp:110
-msgid "Choose bind file"
-msgstr "Baðlama dosyasý seçin"
-
-#: src/frontends/controllers/ControlPrefs.cpp:111
-msgid "LyX bind files (*.bind)"
-msgstr "LyX baðlama dosyasý (*.bind)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:118
-msgid "Choose UI file"
-msgstr "Arabirim dosyasý seçin"
-
-#: src/frontends/controllers/ControlPrefs.cpp:119
-msgid "LyX UI files (*.ui)"
-msgstr "LyX arabirim dosyalarý (*.ui)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:126
-msgid "Choose keyboard map"
-msgstr "Klavye haritasý seçin"
-
-#: src/frontends/controllers/ControlPrefs.cpp:127
-msgid "LyX keyboard maps (*.kmap)"
-msgstr "LyX klavye haritasý (*.kmap)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:135
-#: src/frontends/controllers/ControlPrefs.cpp:139
-msgid "Choose personal dictionary"
-msgstr "Kiþisel sözlüðü deðiþtir"
-
-#: src/frontends/controllers/ControlPrefs.cpp:136
-msgid "*.pws"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:140
-msgid "*.ispell"
-msgstr "*.ispell"
-
-#: src/frontends/controllers/ControlPrint.cpp:73
-msgid "Print to file"
-msgstr "Dosyaya yazdýr"
-
-#: src/frontends/controllers/ControlPrint.cpp:74
-msgid "PostScript files (*.ps)"
-msgstr "PostScript dosyalar (*.ps)"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:117
-msgid "Spellchecker error"
-msgstr "Yazým denetimi hatasý"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:118
-msgid "The spellchecker could not be started\n"
-msgstr "Yazým denetleyici baþlatýlamadý\n"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:276
-msgid ""
-"The spellchecker has died for some reason.\n"
-"Maybe it has been killed."
-msgstr ""
-"Yazým denetleyici bir nedenden kapandý.\n"
-"Dýþardan durdurulmuþ olabilir."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:279
-msgid "The spellchecker has failed.\n"
-msgstr "Yazým denetleyici sorun çýkardý.\n"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:283
-msgid "The spellchecker has failed"
-msgstr "Yazým denetleyici sorun çýkardý"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:297
-#, c-format
-msgid "%1$d words checked."
-msgstr "%1$d sözcük denetlendi."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:299
-msgid "One word checked."
-msgstr "Bir sözcük denetlendi."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:302
-msgid "Spelling check completed"
-msgstr "Yazým denetleme tamam"
-
-#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
-msgid "Table of Contents"
-msgstr "icindekiler"
-
-#: src/frontends/controllers/frontend_helpers.cpp:244
-#, c-format
-msgid "%1$s and %2$s"
-msgstr "%1$s ve %2$s"
-
-#: src/frontends/controllers/frontend_helpers.cpp:248
-#, c-format
-msgid "%1$s et al."
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:285
-msgid "No year"
-msgstr "Yýl yok"
-
-#: src/frontends/controllers/frontend_helpers.cpp:818
-msgid "before"
-msgstr "önce"
-
-#: src/frontends/controllers/frontend_helpers.cpp:866
-#: src/frontends/controllers/frontend_helpers.cpp:896
-#: src/frontends/controllers/frontend_helpers.cpp:922
-#: src/frontends/controllers/frontend_helpers.cpp:956
-#: src/frontends/controllers/frontend_helpers.cpp:1022
-#: src/frontends/controllers/frontend_helpers.cpp:1052
-#: src/frontends/controllers/frontend_helpers.cpp:1125
-msgid "No change"
-msgstr "Ayný kalsýn"
-
-#: src/frontends/controllers/frontend_helpers.cpp:882
-#: src/frontends/controllers/frontend_helpers.cpp:908
-#: src/frontends/controllers/frontend_helpers.cpp:942
-#: src/frontends/controllers/frontend_helpers.cpp:1008
-#: src/frontends/controllers/frontend_helpers.cpp:1038
-#: src/frontends/controllers/frontend_helpers.cpp:1092
-#: src/frontends/controllers/frontend_helpers.cpp:1127
-msgid "Reset"
-msgstr "Sýfýrla"
-
-#: src/frontends/controllers/frontend_helpers.cpp:900 src/LyXFont.cpp:57
-msgid "Medium"
-msgstr "Orta"
-
-#: src/frontends/controllers/frontend_helpers.cpp:904 src/LyXFont.cpp:57
-msgid "Bold"
-msgstr "Kalýn"
-
-#: src/frontends/controllers/frontend_helpers.cpp:926 src/LyXFont.cpp:60
-msgid "Upright"
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:930 src/LyXFont.cpp:60
-msgid "Italic"
-msgstr "Ýtalik"
-
-#: src/frontends/controllers/frontend_helpers.cpp:934 src/LyXFont.cpp:60
-msgid "Slanted"
-msgstr "Eðik"
-
-#: src/frontends/controllers/frontend_helpers.cpp:938
-msgid "Small Caps"
-msgstr "Küçük Baþlýklar"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1000 src/LyXFont.cpp:65
-msgid "Increase"
-msgstr "Arttýr"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1004 src/LyXFont.cpp:65
-msgid "Decrease"
-msgstr "Azalt"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1026
-msgid "Emph"
-msgstr "Vurgu"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1030
-msgid "Underbar"
-msgstr "Altçizgi"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1034
-msgid "Noun"
-msgstr "Ad"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1056
-msgid "No color"
-msgstr "Renksiz"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1060
-msgid "Black"
-msgstr "Siyah"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1064
-msgid "White"
-msgstr "Beyaz"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1068
-msgid "Red"
-msgstr "Kýrmýzý"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1072
-msgid "Green"
-msgstr "Yeþil"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1076
-msgid "Blue"
-msgstr "Mavi"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1080
-msgid "Cyan"
-msgstr "Cyan"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1084
-msgid "Magenta"
-msgstr "Magenta"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1088
-msgid "Yellow"
-msgstr "Sarý"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1220
-msgid "System files|#S#s"
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:1223
-#, fuzzy
-msgid "User files|#U#u"
-msgstr "Kullanýcý Klavuzu|K"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1306
-#, fuzzy
-msgid "Could not update TeX information"
-msgstr "Baþka ileri alma bilgisi yok"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1307
-#, fuzzy, c-format
-msgid "The script `%s' failed."
-msgstr "Yazým denetleyici sorun çýkardý.\n"
-
-#: src/frontends/qt4/Alert_pimpl.cpp:58 src/frontends/qt4/Alert_pimpl.cpp:85
-#: src/frontends/qt4/Alert_pimpl.cpp:105 src/frontends/qt4/Alert_pimpl.cpp:124
-#: src/frontends/qt4/Alert_pimpl.cpp:135
-#, c-format
-msgid "LyX: %1$s"
-msgstr "LyX: %1$s"
-
-#: src/frontends/qt4/BulletsModule.cpp:47
-#, fuzzy
-msgid "Maths"
-msgstr "Yollar"
-
-#: src/frontends/qt4/BulletsModule.cpp:48
-msgid "Dings 1"
-msgstr ""
-
-#: src/frontends/qt4/BulletsModule.cpp:49
-msgid "Dings 2"
-msgstr ""
-
-#: src/frontends/qt4/BulletsModule.cpp:50
-msgid "Dings 3"
-msgstr ""
-
-#: src/frontends/qt4/BulletsModule.cpp:51
-msgid "Dings 4"
-msgstr ""
-
-#: src/frontends/qt4/Dialogs.cpp:223
-msgid "Index Entry"
-msgstr "Ýndeks Giriþi"
-
-#: src/frontends/qt4/Dialogs.cpp:233
-msgid "Label"
-msgstr "Etiket"
-
-#: src/frontends/qt4/Dialogs.cpp:245
-#, fuzzy
-msgid "LaTeX Source"
-msgstr "LaTeX hatasý"
-
-#: src/frontends/qt4/Dialogs.cpp:307
-#, fuzzy
-msgid "Toc"
-msgstr "Üst"
-
-#: src/frontends/qt4/FileDialog.cpp:162
-msgid "Directories"
-msgstr "Dizinler"
-
-#: src/frontends/qt4/GuiView.cpp:133
-msgid "Small-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:139
-msgid "Normal-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:146
-msgid "Big-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:676
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:467
-#, fuzzy
-msgid "unknown version"
-msgstr "Bilinmeyen kullanýcý"
-
-#: src/frontends/qt4/QBibitem.cpp:69
-msgid "Bibliography Entry Settings"
-msgstr "Kaynakça Giriþ Ayarlarý"
-
-#: src/frontends/qt4/QBibtex.cpp:260
-msgid "BibTeX Bibliography"
-msgstr "BibTeX Kaynakça"
-
-#: src/frontends/qt4/QBox.cpp:148
-msgid "Box Settings"
-msgstr "Kutu Ayarlarý"
-
-#: src/frontends/qt4/QBranch.cpp:71
-msgid "Branch Settings"
-msgstr "Dal Ayarlarý"
-
-#: src/frontends/qt4/QBranches.cpp:42
-msgid "Branch"
-msgstr "Dal"
-
-#: src/frontends/qt4/QBranches.cpp:43
-msgid "Activated"
-msgstr ""
-
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:690
-msgid "Yes"
-msgstr "Evet"
-
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
-msgid "No"
-msgstr "Hayýr"
-
-#: src/frontends/qt4/QChanges.cpp:85
-msgid "Merge Changes"
-msgstr "Deðiþiklikleri Birleþtir"
-
-#: src/frontends/qt4/QChanges.cpp:107
-#, c-format
-msgid ""
-"Change by %1$s\n"
-"\n"
-msgstr ""
-
-#: src/frontends/qt4/QChanges.cpp:109
-#, c-format
-msgid "Change made at %1$s\n"
-msgstr ""
-
-#: src/frontends/qt4/QCharacter.cpp:92
-msgid "Text Style"
-msgstr "Metin Stili"
-
-#: src/frontends/qt4/QCommandBuffer.cpp:88
-msgid "Previous command"
-msgstr "Önceki komut"
-
-#: src/frontends/qt4/QCommandBuffer.cpp:91
-msgid "Next command"
-msgstr "Sonraki komut"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:46
-msgid "big[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:46
-msgid "Big[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:47
-msgid "bigg[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:47
-msgid "Bigg[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:69
-msgid "Math Delimiter"
-msgstr "Matematik Ayraç"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:112
-msgid "LyX: Delimiters"
-msgstr "LyX: Ayýrýcýlar"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:144
-#: src/frontends/qt4/QDelimiterDialog.cpp:145
-#, fuzzy
-msgid "(None)"
-msgstr "Yok"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:147
-#, fuzzy
-msgid "Variable"
-msgstr "tablo çizgisi"
-
-#: src/frontends/qt4/QDocument.cpp:119
-msgid "Length"
-msgstr "Boy"
-
-#: src/frontends/qt4/QDocument.cpp:125 src/text.cpp:1740
-msgid "OneHalf"
-msgstr "BirBuçuk"
-
-#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
-#: src/frontends/qt4/QDocument.cpp:176
-msgid " (not installed)"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
-#: src/frontends/qt4/QDocument.cpp:599
-msgid "default"
-msgstr "öntanýmlý"
-
-#: src/frontends/qt4/QDocument.cpp:181
-msgid "10"
-msgstr "10"
-
-#: src/frontends/qt4/QDocument.cpp:182
-msgid "11"
-msgstr "11"
-
-#: src/frontends/qt4/QDocument.cpp:183
-msgid "12"
-msgstr "12"
-
-#: src/frontends/qt4/QDocument.cpp:218
-msgid "empty"
-msgstr "boþ"
-
-#: src/frontends/qt4/QDocument.cpp:219
-msgid "plain"
-msgstr "sade"
-
-#: src/frontends/qt4/QDocument.cpp:220
-msgid "headings"
-msgstr "baþlýklar"
-
-#: src/frontends/qt4/QDocument.cpp:221
-msgid "fancy"
-msgstr "süslü"
-
-#: src/frontends/qt4/QDocument.cpp:237
-msgid "B3"
-msgstr "B3"
-
-#: src/frontends/qt4/QDocument.cpp:238
-msgid "B4"
-msgstr "B4"
-
-#: src/frontends/qt4/QDocument.cpp:341
-#, fuzzy
-msgid "LaTeX default"
-msgstr "LaTeX baþarýsýz oldu"
-
-#: src/frontends/qt4/QDocument.cpp:347
-msgid "``text''"
-msgstr "``metin''"
-
-#: src/frontends/qt4/QDocument.cpp:348
-msgid "''text''"
-msgstr "''metin''"
-
-#: src/frontends/qt4/QDocument.cpp:349
-msgid ",,text``"
-msgstr ",,metin``"
-
-#: src/frontends/qt4/QDocument.cpp:350
-msgid ",,text''"
-msgstr ",,metin''"
-
-#: src/frontends/qt4/QDocument.cpp:351
-msgid "<<text>>"
-msgstr "<<metin>>"
-
-#: src/frontends/qt4/QDocument.cpp:352
-msgid ">>text<<"
-msgstr ">>metin<<"
-
-#: src/frontends/qt4/QDocument.cpp:368
-msgid "Numbered"
-msgstr "Numaralý"
-
-#: src/frontends/qt4/QDocument.cpp:369
-msgid "Appears in TOC"
-msgstr "Ýçindekilerde gözükür"
-
-#: src/frontends/qt4/QDocument.cpp:389
-msgid "Author-year"
-msgstr "Yazar-yýl"
-
-#: src/frontends/qt4/QDocument.cpp:390
-msgid "Numerical"
-msgstr "Sayýsal"
-
-#: src/frontends/qt4/QDocument.cpp:432
-#, c-format
-msgid "Unavailable: %1$s"
-msgstr "Mevcut deðil: %1$s"
-
-#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
-msgid "Document Class"
-msgstr "Belge Sýnýfý"
-
-#: src/frontends/qt4/QDocument.cpp:464
-msgid "Text Layout"
-msgstr "Metin Yerleþimi"
-
-#: src/frontends/qt4/QDocument.cpp:465
-msgid "Page Layout"
-msgstr "Sayfa Yerleþimi"
-
-#: src/frontends/qt4/QDocument.cpp:466
-msgid "Page Margins"
-msgstr "Kenar Boþluklarý"
-
-#: src/frontends/qt4/QDocument.cpp:468
-msgid "Numbering & TOC"
-msgstr "Numaralama ve Ýçindekiler"
-
-#: src/frontends/qt4/QDocument.cpp:470
-msgid "Math Options"
-msgstr "Matematik Seçenekleri"
-
-#: src/frontends/qt4/QDocument.cpp:471
-msgid "Float Placement"
-msgstr "Yüzen Yerleþimi:"
-
-#: src/frontends/qt4/QDocument.cpp:472
-msgid "Bullets"
-msgstr "Madde imleri"
-
-#: src/frontends/qt4/QDocument.cpp:473
-msgid "Branches"
-msgstr "Dallar"
-
-#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
-msgid "LaTeX Preamble"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:1237
-msgid "Document Settings"
-msgstr "Belge Ayarlarý"
-
-#: src/frontends/qt4/QERT.cpp:68
-msgid "TeX Code Settings"
-msgstr "TeX Kod Ayarlarý"
-
-#: src/frontends/qt4/QExternal.cpp:495
-msgid "External Material"
-msgstr "Harici Materyal"
-
-#: src/frontends/qt4/QExternal.cpp:555
-msgid "Scale%"
-msgstr "Ölçek%"
-
-#: src/frontends/qt4/QFloat.cpp:31
-msgid "Float Settings"
-msgstr "Yüzen Ayarlarý"
-
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:625
-msgid "Graphics"
-msgstr "Grafikler"
-
-#: src/frontends/qt4/QInclude.cpp:134
-msgid "Child Document"
-msgstr "Alt Belge"
-
-#: src/frontends/qt4/QMathMatrixDialog.cpp:46
-msgid "Math Matrix"
-msgstr ""
-
-#: src/frontends/qt4/QMathMatrixDialog.cpp:61
-msgid "LyX: Insert Matrix"
-msgstr "LyX: Matris Ekle"
-
-#: src/frontends/qt4/QNote.cpp:70
-msgid "Note Settings"
-msgstr "Not Ayarlarý"
-
-#: src/frontends/qt4/QParagraph.cpp:71
-msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
-"\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
-msgstr ""
-
-#: src/frontends/qt4/QParagraph.cpp:177
-msgid "Paragraph Settings"
-msgstr "Paragraf Ayarlarý"
-
-#: src/frontends/qt4/QParagraph.cpp:239 src/Paragraph.cpp:1591
-msgid "Senseless with this layout!"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:73
-msgid "Look and feel"
-msgstr "Görünüm"
-
-#: src/frontends/qt4/QPrefs.cpp:74
-msgid "Language settings"
-msgstr "Dil ayarlarý"
-
-#: src/frontends/qt4/QPrefs.cpp:75
-msgid "Outputs"
-msgstr "Çýktýlar"
-
-#: src/frontends/qt4/QPrefs.cpp:173
-msgid "Plain text"
-msgstr "Düz metin"
-
-#: src/frontends/qt4/QPrefs.cpp:204
-msgid "Date format"
-msgstr "Tarih biçimi"
-
-#: src/frontends/qt4/QPrefs.cpp:231
-msgid "Keyboard"
-msgstr "Klavye"
-
-#: src/frontends/qt4/QPrefs.cpp:355
-msgid "Screen fonts"
-msgstr "Ekran fontlarý"
-
-#: src/frontends/qt4/QPrefs.cpp:513
-msgid "Colors"
-msgstr "Renkler"
-
-#: src/frontends/qt4/QPrefs.cpp:599 src/frontends/qt4/QPrefs.cpp:698
-msgid "Paths"
-msgstr "Yollar"
-
-#: src/frontends/qt4/QPrefs.cpp:749
-msgid "Select a document templates directory"
-msgstr "Belge þablonu dizini seçin"
-
-#: src/frontends/qt4/QPrefs.cpp:759
-msgid "Select a temporary directory"
-msgstr "Geçici dizin seçin"
-
-#: src/frontends/qt4/QPrefs.cpp:769
-msgid "Select a backups directory"
-msgstr "Yedekleme dizini seçin"
-
-#: src/frontends/qt4/QPrefs.cpp:779
-msgid "Select a document directory"
-msgstr "Belge dizini seçin"
-
-#: src/frontends/qt4/QPrefs.cpp:789
-msgid "Give a filename for the LyX server pipe"
-msgstr "LyX sunucu borusu için bir isim verin"
-
-#: src/frontends/qt4/QPrefs.cpp:802 src/frontends/qt4/QSpellchecker.cpp:135
-msgid "Spellchecker"
-msgstr "Yazým denetimi"
-
-#: src/frontends/qt4/QPrefs.cpp:824
-msgid "ispell"
-msgstr "ispell"
-
-#: src/frontends/qt4/QPrefs.cpp:825
-msgid "aspell"
-msgstr "aspell"
-
-#: src/frontends/qt4/QPrefs.cpp:826
-msgid "hspell"
-msgstr "hspell"
-
-#: src/frontends/qt4/QPrefs.cpp:828
-msgid "pspell (library)"
-msgstr "pspell (kitaplýk)"
-
-#: src/frontends/qt4/QPrefs.cpp:831
-msgid "aspell (library)"
-msgstr "aspell (kitaplýk)"
-
-#: src/frontends/qt4/QPrefs.cpp:912
-msgid "Converters"
-msgstr "Çeviriciler"
-
-#: src/frontends/qt4/QPrefs.cpp:1102
-#, fuzzy
-msgid "Copiers"
-msgstr "Kopyalar"
-
-#: src/frontends/qt4/QPrefs.cpp:1355
-msgid "File formats"
-msgstr "Dosya biçimleri"
-
-#: src/frontends/qt4/QPrefs.cpp:1547
-msgid "Format in use"
-msgstr "Kullanýlan biçim"
-
-#: src/frontends/qt4/QPrefs.cpp:1548
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Bir çevirici tarafýndan kullanýlan biçimi silemezsiniz. Önce çeviriciyi "
-"silin."
-
-#: src/frontends/qt4/QPrefs.cpp:1649
-msgid "Printer"
-msgstr "Yazýcý"
-
-#: src/frontends/qt4/QPrefs.cpp:1747 src/frontends/qt4/QPrefs.cpp:1941
-msgid "User interface"
-msgstr "Arayüz"
-
-#: src/frontends/qt4/QPrefs.cpp:1865
-msgid "Identity"
-msgstr "Kimlik"
-
-#: src/frontends/qt4/QPrefs.cpp:2007
-msgid "Preferences"
-msgstr "Ayarlar"
-
-#: src/frontends/qt4/QPrint.cpp:36
-msgid "Print Document"
-msgstr "Belgeyi Yazdýr"
-
-#: src/frontends/qt4/QRef.cpp:188
-msgid "Cross-reference"
-msgstr "Çapraz referans"
-
-#: src/frontends/qt4/QRef.cpp:284
-msgid "&Go Back"
-msgstr "&Geri git"
-
-#: src/frontends/qt4/QRef.cpp:286
-msgid "Jump back"
-msgstr "Geri git"
-
-#: src/frontends/qt4/QRef.cpp:294
-msgid "Jump to label"
-msgstr "Etikete git"
-
-#: src/frontends/qt4/QSearch.cpp:138
-msgid "Find and Replace"
-msgstr "Bul ve Deðiþtir"
-
-#: src/frontends/qt4/QSendto.cpp:84
-#, fuzzy
-msgid "Send Document to Command"
-msgstr "Açýlacak belgeyi seçin"
-
-#: src/frontends/qt4/QShowFile.cpp:57
-msgid "Show File"
-msgstr "Dosya Göster"
-
-#: src/frontends/qt4/QTabular.cpp:523
-msgid "Table Settings"
-msgstr "Tablo Ayarlarý"
-
-#: src/frontends/qt4/QTabularCreate.cpp:73
-msgid "Insert Table"
-msgstr "Tablo ekle"
-
-#: src/frontends/qt4/QTexinfo.cpp:127
-msgid "TeX Information"
-msgstr "TeX Bilgisi"
-
-#: src/frontends/qt4/QVSpace.cpp:188
-msgid "Vertical Space Settings"
-msgstr "Düþey Boþluk Ayarlarý"
-
-#: src/frontends/qt4/QWrap.cpp:83
-msgid "Text Wrap Settings"
-msgstr "Tablo Dönüþ Ayarlarý"
-
-#: src/frontends/qt4/Validator.cpp:153
-msgid "space"
-msgstr "boþluk"
-
-#: src/frontends/qt4/Validator.cpp:180
-msgid "Invalid filename"
-msgstr "Geçersiz dosya adý"
-
-#: src/frontends/qt4/Validator.cpp:181
-#, fuzzy
-msgid ""
-"LyX does not provide LaTeX support for file names containing any of these "
-"characters:\n"
-msgstr "Dosya adý þu karakterleri içeremez:"
-
-#: src/Importer.cpp:47
-#, c-format
-msgid "Importing %1$s..."
-msgstr ""
-
-#: src/Importer.cpp:68
-msgid "Couldn't import file"
-msgstr "Dosya içeri aktarýlamadý"
-
-#: src/Importer.cpp:69
-#, c-format
-msgid "No information for importing the format %1$s."
-msgstr ""
-
-#: src/Importer.cpp:95
-msgid "imported."
-msgstr "aktarýldý."
-
-#: src/insets/InsetBase.cpp:252
-msgid "Opened inset"
-msgstr ""
-
-#: src/insets/InsetBibtex.cpp:109
-msgid "BibTeX Generated Bibliography"
-msgstr ""
-
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
-msgid "Export Warning!"
-msgstr "Dýþarý Aktarým Uyarýsý!"
-
-#: src/insets/InsetBibtex.cpp:207
-msgid ""
-"There are spaces in the paths to your BibTeX databases.\n"
-"BibTeX will be unable to find them."
-msgstr ""
-
-#: src/insets/InsetBibtex.cpp:260
-msgid ""
-"There are spaces in the path to your BibTeX style file.\n"
-"BibTeX will be unable to find it."
-msgstr ""
-
-#: src/insets/InsetBox.cpp:65
-msgid "Boxed"
-msgstr "Kutulu"
-
-#: src/insets/InsetBox.cpp:66
-msgid "Frameless"
-msgstr "Çerçevesiz"
-
-#: src/insets/InsetBox.cpp:67
-msgid "ovalbox"
-msgstr "ovalkutu"
-
-#: src/insets/InsetBox.cpp:68
-msgid "Ovalbox"
-msgstr "Ovalkutu"
-
-#: src/insets/InsetBox.cpp:69
-msgid "Shadowbox"
-msgstr ""
-
-#: src/insets/InsetBox.cpp:70
-msgid "Doublebox"
-msgstr "Çift kutu"
-
-#: src/insets/InsetBox.cpp:126
-msgid "Opened Box Inset"
-msgstr ""
-
-#: src/insets/InsetBranch.cpp:76
-msgid "Opened Branch Inset"
-msgstr ""
-
-#: src/insets/InsetBranch.cpp:101
-msgid "Branch: "
-msgstr ""
-
-#: src/insets/InsetBranch.cpp:108 src/insets/InsetCharStyle.cpp:163
-#: src/insets/InsetCharStyle.cpp:212
-msgid "Undef: "
-msgstr ""
-
-#: src/insets/InsetBranch.cpp:239
-#, fuzzy
-msgid "branch"
-msgstr "Dal"
-
-#: src/insets/InsetCaption.cpp:87
-msgid "Opened Caption Inset"
-msgstr ""
-
-#: src/insets/InsetCaption.cpp:276
-msgid "Senseless!!! "
-msgstr ""
-
-#: src/insets/InsetCharStyle.cpp:123
-msgid "Opened CharStyle Inset"
-msgstr ""
-
-#: src/insets/InsetCommand.cpp:98
-#, fuzzy
-msgid "LaTeX Command: "
-msgstr "&BibTeX komutu:"
-
-#: src/insets/InsetCommandParams.cpp:268
-#, fuzzy
-msgid "Unknown inset name: "
-msgstr "Bilinmeyen fonksiyon."
-
-#: src/insets/InsetCommandParams.cpp:292
-#, fuzzy
-msgid "Inset Command: "
-msgstr "Sonraki komut"
-
-#: src/insets/InsetCommandParams.cpp:293
-msgid "Unknown parameter name: "
-msgstr ""
-
-#: src/insets/InsetCommandParams.cpp:300
-msgid "Missing \\end_inset at this point."
-msgstr ""
-
-#: src/insets/InsetEnv.cpp:66
-#, fuzzy
-msgid "Opened Environment Inset: "
-msgstr "Derinliði Azalt|z"
-
-#: src/insets/InsetERT.cpp:143
-msgid "Opened ERT Inset"
-msgstr ""
-
-#: src/insets/InsetERT.cpp:390
-msgid "ERT"
-msgstr ""
-
-#: src/insets/InsetExternal.cpp:576
-#, c-format
-msgid "External template %1$s is not installed"
-msgstr ""
-
-#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:373
-#: src/insets/InsetFloat.cpp:383
-msgid "float: "
-msgstr "yuzen: "
-
-#: src/insets/InsetFloat.cpp:278
-msgid "Opened Float Inset"
-msgstr ""
-
-#: src/insets/InsetFloat.cpp:334
-#, fuzzy
-msgid "float"
-msgstr "yuzen: "
-
-#: src/insets/InsetFloat.cpp:385
-msgid " (sideways)"
-msgstr ""
-
-#: src/insets/InsetFloatList.cpp:59
-msgid "ERROR: Nonexistent float type!"
-msgstr ""
-
-#: src/insets/InsetFloatList.cpp:124
-#, c-format
-msgid "List of %1$s"
-msgstr "%1$s Listesi"
-
-#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:45
-msgid "foot"
-msgstr "dipnot"
-
-#: src/insets/InsetFoot.cpp:58
-msgid "Opened Footnote Inset"
-msgstr ""
-
-#: src/insets/InsetFoot.cpp:87
-#, fuzzy
-msgid "footnote"
-msgstr "Dipnot|D"
-
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
-#, fuzzy, c-format
-msgid ""
-"Could not copy the file\n"
-"%1$s\n"
-"into the temporary directory."
-msgstr "Geçici dizin yaratýlamadý"
-
-#: src/insets/InsetGraphics.cpp:709
-#, c-format
-msgid "No conversion of %1$s is needed after all"
-msgstr ""
-
-#: src/insets/InsetGraphics.cpp:821
-#, c-format
-msgid "Graphics file: %1$s"
-msgstr ""
-
-#: src/insets/InsetHFill.cpp:48
-#, fuzzy
-msgid "Horizontal Fill"
-msgstr "Yatay hizalama|Y"
-
-#: src/insets/InsetInclude.cpp:306
-msgid "Verbatim Input"
-msgstr ""
-
-#: src/insets/InsetInclude.cpp:309
-msgid "Verbatim Input*"
-msgstr ""
-
-#: src/insets/InsetInclude.cpp:411
-#, c-format
-msgid ""
-"Included file `%1$s'\n"
-"has textclass `%2$s'\n"
-"while parent file has textclass `%3$s'."
-msgstr ""
-
-#: src/insets/InsetInclude.cpp:417
-msgid "Different textclasses"
-msgstr ""
-
-#: src/insets/InsetIndex.cpp:42
-msgid "Idx"
-msgstr ""
-
-#: src/insets/InsetIndex.cpp:75
-msgid "Index"
-msgstr "indeks"
-
-#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:41
-#: src/insets/InsetMarginal.cpp:71
-msgid "margin"
-msgstr "kenar"
-
-#: src/insets/InsetMarginal.cpp:54
-msgid "Opened Marginal Note Inset"
-msgstr ""
-
-#: src/insets/InsetNomencl.cpp:39
-#, fuzzy
-msgid "Glo"
-msgstr "&Genel"
-
-#: src/insets/InsetNomencl.cpp:86
-msgid "Glossary"
-msgstr ""
-
-#: src/insets/InsetNote.cpp:66
-msgid "Comment"
-msgstr "Açýklama"
-
-#: src/insets/InsetNote.cpp:67
-msgid "Greyed out"
-msgstr ""
-
-#: src/insets/InsetNote.cpp:68
-msgid "Framed"
-msgstr "Çerçeveli"
-
-#: src/insets/InsetNote.cpp:69
-msgid "Shaded"
-msgstr "Gölgeli"
-
-#: src/insets/InsetNote.cpp:149
-msgid "Opened Note Inset"
-msgstr ""
-
-#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
-msgid "opt"
-msgstr ""
-
-#: src/insets/InsetOptArg.cpp:59
-msgid "Opened Optional Argument Inset"
-msgstr ""
-
-#: src/insets/InsetPagebreak.h:65
-#, fuzzy
-msgid "Clear Page"
-msgstr "S&il"
-
-#: src/insets/InsetPagebreak.h:81
-msgid "Clear Double Page"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
-msgid "Ref: "
-msgstr ""
-
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
-msgid "Equation"
-msgstr "Denklem"
-
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
-msgid "EqRef: "
-msgstr ""
-
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
-msgid "Page Number"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
-msgid "Page: "
-msgstr "Sayfa: "
-
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
-msgid "Textual Page Number"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
-msgid "TextPage: "
-msgstr ""
-
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
-msgid "Standard+Textual Page"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
-msgid "Ref+Text: "
-msgstr ""
-
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
-msgid "PrettyRef"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
-#, fuzzy
-msgid "FormatRef: "
-msgstr "&Biçim"
-
-#: src/insets/InsetTabular.cpp:451
-msgid "Opened table"
-msgstr "Açýk tablo"
-
-#: src/insets/InsetTabular.cpp:1606
-msgid "Error setting multicolumn"
-msgstr ""
-
-#: src/insets/InsetTabular.cpp:1607
-msgid "You cannot set multicolumn vertically."
-msgstr ""
-
-#: src/insets/InsetText.cpp:236
-msgid "Opened Text Inset"
-msgstr ""
-
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "teorem"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr ""
-
-#: src/insets/InsetTOC.cpp:47
-msgid "Unknown toc list"
-msgstr ""
-
-#: src/insets/InsetUrl.cpp:42
-msgid "Url: "
-msgstr "Url: "
-
-#: src/insets/InsetUrl.cpp:42
-msgid "HtmlUrl: "
-msgstr "HtmlUrl: "
-
-#: src/insets/InsetVSpace.cpp:110
-msgid "Vertical Space"
-msgstr "Yatay Boþluk"
-
-#: src/insets/InsetWrap.cpp:49
-msgid "wrap: "
-msgstr ""
-
-#: src/insets/InsetWrap.cpp:178
-msgid "Opened Wrap Inset"
-msgstr ""
-
-#: src/insets/InsetWrap.cpp:198
-msgid "wrap"
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
-msgid "Not shown."
-msgstr "Gosterilmiyor."
-
-#: src/insets/RenderGraphic.cpp:97
-msgid "Loading..."
-msgstr "Yukleniyor..."
-
-#: src/insets/RenderGraphic.cpp:100
-msgid "Converting to loadable format..."
-msgstr "Cevriliyor..."
-
-#: src/insets/RenderGraphic.cpp:103
-msgid "Loaded into memory. Generating pixmap..."
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:106
-msgid "Scaling etc..."
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:109
-msgid "Ready to display"
-msgstr "Gosterime hazir"
-
-#: src/insets/RenderGraphic.cpp:112
-msgid "No file found!"
-msgstr "Dosya yok!"
-
-#: src/insets/RenderGraphic.cpp:115
-msgid "Error converting to loadable format"
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:118
-msgid "Error loading file into memory"
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:121
-msgid "Error generating the pixmap"
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:124
-msgid "No image"
-msgstr "Resim yok"
-
-#: src/insets/RenderPreview.cpp:92
-msgid "Preview loading"
-msgstr "Ongosterim yukleniyor"
-
-#: src/insets/RenderPreview.cpp:95
-msgid "Preview ready"
-msgstr "Ongosterim hazir"
-
-#: src/insets/RenderPreview.cpp:98
-msgid "Preview failed"
-msgstr "Ongosterim basarilamadi"
 
 #: src/ISpell.cpp:238 src/ISpell.cpp:245 src/ISpell.cpp:254
 msgid "Can't create pipe for spellchecker."
@@ -13924,174 +12300,45 @@ msgid ""
 "2$s'."
 msgstr ""
 
-#: src/kb_sequence.cpp:160
+#: src/Importer.cpp:47
+#, c-format
+msgid "Importing %1$s..."
+msgstr ""
+
+#: src/Importer.cpp:68
+msgid "Couldn't import file"
+msgstr "Dosya içeri aktarýlamadý"
+
+#: src/Importer.cpp:69
+#, c-format
+msgid "No information for importing the format %1$s."
+msgstr ""
+
+#: src/Importer.cpp:95
+msgid "imported."
+msgstr "aktarýldý."
+
+#: src/KeySequence.cpp:157
 msgid "   options: "
 msgstr ""
 
-#: src/lengthcommon.cpp:37
-msgid "sp"
-msgstr "sp"
-
-#: src/lengthcommon.cpp:37
-msgid "pt"
-msgstr "pt"
-
-#: src/lengthcommon.cpp:37
-msgid "bp"
-msgstr "bp"
-
-#: src/lengthcommon.cpp:37
-msgid "dd"
-msgstr "dd"
-
-#: src/lengthcommon.cpp:37
-msgid "mm"
-msgstr "mm"
-
-#: src/lengthcommon.cpp:37
-msgid "pc"
-msgstr "pc"
-
-#: src/lengthcommon.cpp:38
-msgid "cm"
-msgstr "cm"
-
-#: src/lengthcommon.cpp:38
-msgid "ex"
-msgstr "ex"
-
-#: src/lengthcommon.cpp:38
-msgid "em"
-msgstr "em"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Text Width %"
-msgstr "Sabit Geniþlik"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Column Width %"
-msgstr "Sütun Geniþliði"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Page Width %"
-msgstr "Etiket Geniþliði"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Line Width %"
-msgstr "Etiket Geniþliði"
-
-#: src/lengthcommon.cpp:40
-#, fuzzy
-msgid "Text Height %"
-msgstr "Toplam Yükseklik"
-
-#: src/lengthcommon.cpp:40
-#, fuzzy
-msgid "Page Height %"
-msgstr "Toplam Yükseklik"
-
-#: src/lyx_cb.cpp:114
+#: src/LaTeX.cpp:95
 #, c-format
-msgid ""
-"The document %1$s could not be saved.\n"
-"\n"
-"Do you want to rename the document and try again?"
+msgid "Waiting for LaTeX run number %1$d"
 msgstr ""
 
-#: src/lyx_cb.cpp:116
-msgid "Rename and save?"
-msgstr "Yeni adla kaydet?"
+#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
+msgid "Running MakeIndex."
+msgstr "MakeIndex çalýþtýrýlýyor."
 
-#: src/lyx_cb.cpp:117
-msgid "&Rename"
-msgstr "&Yeniden adlandýr"
+#: src/LaTeX.cpp:322
+msgid "Running BibTeX."
+msgstr "BibTeX çalýþtýrýlýyor."
 
-#: src/lyx_cb.cpp:134
-msgid "Choose a filename to save document as"
-msgstr ""
-
-#: src/lyx_cb.cpp:137 src/LyXFunc.cpp:1867
-msgid "Templates|#T#t"
-msgstr "Þablonlar|#Þ#þ"
-
-#: src/lyx_cb.cpp:167 src/LyXFunc.cpp:2024
-#, c-format
-msgid ""
-"The document %1$s already exists.\n"
-"\n"
-"Do you want to over-write that document?"
-msgstr ""
-
-#: src/lyx_cb.cpp:169 src/LyXFunc.cpp:2026
-msgid "Over-write document?"
-msgstr "Belgenin üzerine yazayým mý?"
-
-#: src/lyx_cb.cpp:218
-#, c-format
-msgid "Auto-saving %1$s"
-msgstr "%1$s otomatik kaydediliyor"
-
-#: src/lyx_cb.cpp:258
-msgid "Autosave failed!"
-msgstr "Otokayýt baþarýsýz!"
-
-#: src/lyx_cb.cpp:285
-msgid "Autosaving current document..."
-msgstr "Belge otomatik kaydediliyor..."
-
-#: src/lyx_cb.cpp:349
-msgid "Select file to insert"
-msgstr "Eklenecek dosyayý seçin"
-
-#: src/lyx_cb.cpp:368
-#, c-format
-msgid ""
-"Could not read the specified document\n"
-"%1$s\n"
-"due to the error: %2$s"
-msgstr ""
-
-#: src/lyx_cb.cpp:370
-msgid "Could not read file"
-msgstr "Dosya okunamýyor"
-
-#: src/lyx_cb.cpp:378
-#, c-format
-msgid ""
-"Could not open the specified document\n"
-"%1$s\n"
-"due to the error: %2$s"
-msgstr ""
-
-#: src/lyx_cb.cpp:380 src/output.cpp:41
-msgid "Could not open file"
-msgstr "Dosya açýlamýyor"
-
-#: src/lyx_cb.cpp:411
-msgid "Running configure..."
-msgstr "Yapýlandýrma çalýþtýrýlýyor..."
-
-#: src/lyx_cb.cpp:420
-msgid "Reloading configuration..."
-msgstr "Yapýlandýrma yenileniyor..."
-
-#: src/lyx_cb.cpp:425
-msgid "System reconfigured"
-msgstr "Sistem yeniden yapýlandýrýldý"
-
-#: src/lyx_cb.cpp:426
-msgid ""
-"The system has been reconfigured.\n"
-"You need to restart LyX to make use of any\n"
-"updated document class specifications."
-msgstr ""
-"Sistem yeniden yapýlandýrýldý.\n"
-"Güncellenen belge sýnýflarýný kullanabilmek\n"
-"için, LyX'i yeniden baþlatmalýsýnýz."
+#: src/LaTeX.cpp:462
+#, fuzzy
+msgid "Running MakeIndex for nomencl."
+msgstr "MakeIndex çalýþtýrýlýyor."
 
 #: src/LyX.cpp:129
 msgid "Could not read configuration file"
@@ -14223,7 +12470,7 @@ msgstr ""
 "\t-version        sürüm ve inþa bilgilerini verir\n"
 "Daha fazla bilgi için LyX man sayfasýna bakýnýz."
 
-#: src/LyX.cpp:1323 src/support/Package.C.in:568
+#: src/LyX.cpp:1323 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Kullanýcý dizini: "
@@ -14261,73 +12508,6 @@ msgstr "--import seçeneði için biçim [latex, ps, ...] eksik"
 #: src/LyX.cpp:1373
 msgid "Missing filename for --import"
 msgstr "--import seçeneði için dosya adý eksik"
-
-#: src/lyxfind.cpp:136
-msgid "Search error"
-msgstr "Arama hatasý"
-
-#: src/lyxfind.cpp:137
-msgid "Search string is empty"
-msgstr "Aranacak metin boþ"
-
-#: src/lyxfind.cpp:288 src/lyxfind.cpp:319
-msgid "String not found!"
-msgstr "Dizge bulunamadý!"
-
-#: src/lyxfind.cpp:323
-msgid "String has been replaced."
-msgstr "Dizge deðiþtirildi."
-
-#: src/lyxfind.cpp:326
-msgid " strings have been replaced."
-msgstr " dizge deðiþtirildi."
-
-#: src/LyXFont.cpp:52
-msgid "Symbol"
-msgstr "Sembol"
-
-#: src/LyXFont.cpp:54 src/LyXFont.cpp:57 src/LyXFont.cpp:60 src/LyXFont.cpp:66
-#: src/LyXFont.cpp:69
-msgid "Inherit"
-msgstr ""
-
-#: src/LyXFont.cpp:54 src/LyXFont.cpp:57 src/LyXFont.cpp:61 src/LyXFont.cpp:66
-#: src/LyXFont.cpp:69
-msgid "Ignore"
-msgstr ""
-
-#: src/LyXFont.cpp:60
-msgid "Smallcaps"
-msgstr "Küçükbaþlýklar"
-
-#: src/LyXFont.cpp:69
-msgid "Toggle"
-msgstr "Deðiþtir"
-
-#: src/LyXFont.cpp:509
-#, c-format
-msgid "Emphasis %1$s, "
-msgstr "Vurgu %1$s, "
-
-#: src/LyXFont.cpp:512
-#, c-format
-msgid "Underline %1$s, "
-msgstr "Altçizgi %1$s, "
-
-#: src/LyXFont.cpp:515
-#, c-format
-msgid "Noun %1$s, "
-msgstr "Ad stili %1$s, "
-
-#: src/LyXFont.cpp:520
-#, c-format
-msgid "Language: %1$s, "
-msgstr "Dil: %1$s, "
-
-#: src/LyXFont.cpp:523
-#, c-format
-msgid "  Number %1$s"
-msgstr ""
 
 #: src/LyXFunc.cpp:362
 msgid "Unknown function."
@@ -14408,7 +12588,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Çýk|Ç"
 
-#: src/LyXFunc.cpp:1115 src/text3.cpp:1312
+#: src/LyXFunc.cpp:1115 src/Text3.cpp:1312
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
@@ -14448,6 +12628,10 @@ msgstr "Belge yeni sýnýfa çevriliyor..."
 msgid "Select template file"
 msgstr "Þablon dosyasý seçin"
 
+#: src/LyXFunc.cpp:1867 src/callback.cpp:137
+msgid "Templates|#T#t"
+msgstr "Þablonlar|#Þ#þ"
+
 #: src/LyXFunc.cpp:1903
 msgid "Select document to open"
 msgstr "Açýlacak belgeyi seçin"
@@ -14471,6 +12655,18 @@ msgstr "Belge %1$s açýlamadý"
 #, c-format
 msgid "Select %1$s file to import"
 msgstr ""
+
+#: src/LyXFunc.cpp:2024 src/callback.cpp:167
+#, c-format
+msgid ""
+"The document %1$s already exists.\n"
+"\n"
+"Do you want to over-write that document?"
+msgstr ""
+
+#: src/LyXFunc.cpp:2026 src/callback.cpp:169
+msgid "Over-write document?"
+msgstr "Belgenin üzerine yazayým mý?"
 
 #: src/LyXFunc.cpp:2097
 msgid "Welcome to LyX!"
@@ -14901,10 +13097,1973 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Belgeyi kayýtlý sürüme geri al?"
 
-#: src/mathed/InsetFormulaMacro.cpp:127 src/mathed/MathMacroTemplate.cpp:108
-#, c-format
-msgid " Macro: %1$s: "
+#: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
+#: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
+msgid "No Documents Open!"
+msgstr "Açýk belge yok!"
+
+#: src/MenuBackend.cpp:540
+#, fuzzy
+msgid "Plain Text"
+msgstr "Düz metin"
+
+#: src/MenuBackend.cpp:542
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Satýrlar Olarak Düz Metin"
+
+#: src/MenuBackend.cpp:714
+#, fuzzy
+msgid "Master Document"
+msgstr "Belgeyi kaydet"
+
+#: src/MenuBackend.cpp:746
+msgid "No Table of contents"
+msgstr "Ýçindekiler boþ"
+
+#: src/MenuBackend.cpp:791
+msgid " (auto)"
 msgstr ""
+
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+msgid "Senseless with this layout!"
+msgstr ""
+
+#: src/SpellBase.cpp:51
+msgid "Native OS API not yet supported."
+msgstr "Ýþletim sisteminin kendi arabirimi henüz desteklenmiyor."
+
+#: src/Text.cpp:133
+msgid "Unknown layout"
+msgstr "Bilinmeyen yerleþim"
+
+#: src/Text.cpp:134
+#, c-format
+msgid ""
+"Layout '%1$s' does not exist in textclass '%2$s'\n"
+"Trying to use the default instead.\n"
+msgstr ""
+
+#: src/Text.cpp:165
+#, fuzzy
+msgid "Unknown Inset"
+msgstr "Bilinmeyen fonksiyon."
+
+#: src/Text.cpp:271 src/Text.cpp:284
+#, fuzzy
+msgid "Change tracking error"
+msgstr "Dil deðiþtir"
+
+#: src/Text.cpp:272
+#, c-format
+msgid "Unknown author index for insertion: %1$d\n"
+msgstr ""
+
+#: src/Text.cpp:285
+#, c-format
+msgid "Unknown author index for deletion: %1$d\n"
+msgstr ""
+
+#: src/Text.cpp:292
+#, fuzzy
+msgid "Unknown token"
+msgstr "Bilinmeyen fonksiyon."
+
+#: src/Text.cpp:726
+msgid ""
+"You cannot insert a space at the beginning of a paragraph. Please read the "
+"Tutorial."
+msgstr "Paragraf baþýna boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
+
+#: src/Text.cpp:737
+msgid "You cannot type two spaces this way. Please read the Tutorial."
+msgstr "Böyle iki boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
+
+#: src/Text.cpp:1703
+#, fuzzy
+msgid "[Change Tracking] "
+msgstr "Dil deðiþtir"
+
+#: src/Text.cpp:1709
+#, fuzzy
+msgid "Change: "
+msgstr "Sayfa: "
+
+#: src/Text.cpp:1713
+msgid " at "
+msgstr ""
+
+#: src/Text.cpp:1723
+#, c-format
+msgid "Font: %1$s"
+msgstr "Font: %1$s"
+
+#: src/Text.cpp:1728
+#, c-format
+msgid ", Depth: %1$d"
+msgstr ", Derinlik: %1$d"
+
+#: src/Text.cpp:1734
+msgid ", Spacing: "
+msgstr ", Aralýk: "
+
+#: src/Text.cpp:1740 src/frontends/qt4/QDocument.cpp:125
+msgid "OneHalf"
+msgstr "BirBuçuk"
+
+#: src/Text.cpp:1746
+msgid "Other ("
+msgstr "Diðer ("
+
+#: src/Text.cpp:1755
+#, fuzzy
+msgid ", Inset: "
+msgstr ", Derinlik: "
+
+#: src/Text.cpp:1756
+msgid ", Paragraph: "
+msgstr ", Paragraf: "
+
+#: src/Text.cpp:1757
+msgid ", Id: "
+msgstr ", Ad: "
+
+#: src/Text.cpp:1758
+msgid ", Position: "
+msgstr ", Konum: "
+
+#: src/Text.cpp:1764
+msgid ", Char: 0x"
+msgstr ""
+
+#: src/Text.cpp:1766
+msgid ", Boundary: "
+msgstr ", Sýnýr: "
+
+#: src/Text2.cpp:540
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+
+#: src/Text2.cpp:582
+msgid "Nothing to index!"
+msgstr "Ýndeksleyecek bir þey yok!"
+
+#: src/Text2.cpp:584
+msgid "Cannot index more than one paragraph!"
+msgstr "Birden fazla paragraf indekslenemez!"
+
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1330
+msgid "Math editor mode"
+msgstr ""
+
+#: src/Text3.cpp:721
+msgid "Unknown spacing argument: "
+msgstr ""
+
+#: src/Text3.cpp:894
+msgid "Layout "
+msgstr ""
+
+#: src/Text3.cpp:895
+msgid " not known"
+msgstr " bilinmiyor"
+
+#: src/Text3.cpp:1417 src/Text3.cpp:1429
+msgid "Character set"
+msgstr "Karakter seti"
+
+#: src/Text3.cpp:1560
+msgid "Paragraph layout set"
+msgstr ""
+
+#: src/VSpace.cpp:490
+msgid "Default skip"
+msgstr "Öntanýmlý aralýk"
+
+#: src/VSpace.cpp:493
+msgid "Small skip"
+msgstr "Küçük aralýk"
+
+#: src/VSpace.cpp:496
+msgid "Medium skip"
+msgstr "Orta aralýk"
+
+#: src/VSpace.cpp:499
+msgid "Big skip"
+msgstr "Büyük aralýk"
+
+#: src/VSpace.cpp:502
+msgid "Vertical fill"
+msgstr "Düþey doldurma"
+
+#: src/VSpace.cpp:509
+#, fuzzy
+msgid "protected"
+msgstr "Korumalý Boþluk|o"
+
+#: src/buffer_funcs.cpp:81
+#, c-format
+msgid ""
+"The specified document\n"
+"%1$s\n"
+"could not be read."
+msgstr ""
+
+#: src/buffer_funcs.cpp:83
+msgid "Could not read document"
+msgstr "Belge okunamýyor"
+
+#: src/buffer_funcs.cpp:96
+#, c-format
+msgid ""
+"An emergency save of the document %1$s exists.\n"
+"\n"
+"Recover emergency save?"
+msgstr ""
+"%1$s belgesinin bir acil durum kaydý var.\n"
+"\n"
+"Acil durum kaydýndan kurtarýlsýn mý?"
+
+#: src/buffer_funcs.cpp:99
+msgid "Load emergency save?"
+msgstr "Acil durum kaydý yüklensin mi?"
+
+#: src/buffer_funcs.cpp:100
+msgid "&Recover"
+msgstr "&Kurtar"
+
+#: src/buffer_funcs.cpp:100
+msgid "&Load Original"
+msgstr "&Aslýný Yükle"
+
+#: src/buffer_funcs.cpp:123
+#, c-format
+msgid ""
+"The backup of the document %1$s is newer.\n"
+"\n"
+"Load the backup instead?"
+msgstr ""
+"%1$s belgesinin yedeði belgeden daha yeni.\n"
+"\n"
+"Belge yerine yedek açýlsýn mý?"
+
+#: src/buffer_funcs.cpp:126
+msgid "Load backup?"
+msgstr "Yedeði yükle?"
+
+#: src/buffer_funcs.cpp:127
+msgid "&Load backup"
+msgstr "&Yedeði yükle"
+
+#: src/buffer_funcs.cpp:127
+msgid "Load &original"
+msgstr "&Özgünü yükle"
+
+#: src/buffer_funcs.cpp:166
+#, fuzzy, c-format
+msgid "Do you want to retrieve the document %1$s from version control?"
+msgstr "Sürüm yönetimindeki dosyayý almak ister misiniz?"
+
+#: src/buffer_funcs.cpp:168
+msgid "Retrieve from version control?"
+msgstr "Dosyayý sürüm yönetiminden geri almak ister misiniz?"
+
+#: src/buffer_funcs.cpp:169
+msgid "&Retrieve"
+msgstr "&Geri al"
+
+#: src/buffer_funcs.cpp:202
+#, c-format
+msgid ""
+"The specified document template\n"
+"%1$s\n"
+"could not be read."
+msgstr ""
+
+#: src/buffer_funcs.cpp:204
+msgid "Could not read template"
+msgstr "Þablon okunamadý"
+
+#: src/buffer_funcs.cpp:521
+msgid "\\arabic{enumi}."
+msgstr ""
+
+#: src/buffer_funcs.cpp:527
+msgid "\\roman{enumiii}."
+msgstr ""
+
+#: src/buffer_funcs.cpp:530
+msgid "\\Alph{enumiv}."
+msgstr ""
+
+#: src/bufferview_funcs.cpp:308
+msgid "No more insets"
+msgstr ""
+
+#: src/callback.cpp:114
+#, c-format
+msgid ""
+"The document %1$s could not be saved.\n"
+"\n"
+"Do you want to rename the document and try again?"
+msgstr ""
+
+#: src/callback.cpp:116
+msgid "Rename and save?"
+msgstr "Yeni adla kaydet?"
+
+#: src/callback.cpp:117
+msgid "&Rename"
+msgstr "&Yeniden adlandýr"
+
+#: src/callback.cpp:134
+msgid "Choose a filename to save document as"
+msgstr ""
+
+#: src/callback.cpp:218
+#, c-format
+msgid "Auto-saving %1$s"
+msgstr "%1$s otomatik kaydediliyor"
+
+#: src/callback.cpp:258
+msgid "Autosave failed!"
+msgstr "Otokayýt baþarýsýz!"
+
+#: src/callback.cpp:285
+msgid "Autosaving current document..."
+msgstr "Belge otomatik kaydediliyor..."
+
+#: src/callback.cpp:349
+msgid "Select file to insert"
+msgstr "Eklenecek dosyayý seçin"
+
+#: src/callback.cpp:368
+#, c-format
+msgid ""
+"Could not read the specified document\n"
+"%1$s\n"
+"due to the error: %2$s"
+msgstr ""
+
+#: src/callback.cpp:370
+msgid "Could not read file"
+msgstr "Dosya okunamýyor"
+
+#: src/callback.cpp:378
+#, c-format
+msgid ""
+"Could not open the specified document\n"
+"%1$s\n"
+"due to the error: %2$s"
+msgstr ""
+
+#: src/callback.cpp:380 src/output.cpp:41
+msgid "Could not open file"
+msgstr "Dosya açýlamýyor"
+
+#: src/callback.cpp:411
+msgid "Running configure..."
+msgstr "Yapýlandýrma çalýþtýrýlýyor..."
+
+#: src/callback.cpp:420
+msgid "Reloading configuration..."
+msgstr "Yapýlandýrma yenileniyor..."
+
+#: src/callback.cpp:425
+msgid "System reconfigured"
+msgstr "Sistem yeniden yapýlandýrýldý"
+
+#: src/callback.cpp:426
+msgid ""
+"The system has been reconfigured.\n"
+"You need to restart LyX to make use of any\n"
+"updated document class specifications."
+msgstr ""
+"Sistem yeniden yapýlandýrýldý.\n"
+"Güncellenen belge sýnýflarýný kullanabilmek\n"
+"için, LyX'i yeniden baþlatmalýsýnýz."
+
+#: src/client/debug.cpp:44 src/debug.cpp:44
+msgid "No debugging message"
+msgstr "Hata bulma iletisi yok"
+
+#: src/client/debug.cpp:45 src/debug.cpp:45
+msgid "General information"
+msgstr "Genel bilgiler"
+
+#: src/client/debug.cpp:46 src/debug.cpp:70
+msgid "Developers' general debug messages"
+msgstr ""
+
+#: src/client/debug.cpp:47 src/debug.cpp:71
+msgid "All debugging messages"
+msgstr "Tüm hata bulma iletileri"
+
+#: src/client/debug.cpp:91 src/debug.cpp:115
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr ""
+
+#: src/debug.cpp:46
+msgid "Program initialisation"
+msgstr "Program açýlýþý"
+
+#: src/debug.cpp:47
+msgid "Keyboard events handling"
+msgstr "Klavye olaylarý"
+
+#: src/debug.cpp:48
+msgid "GUI handling"
+msgstr "Arabirim yönetimi"
+
+#: src/debug.cpp:49
+msgid "Lyxlex grammar parser"
+msgstr ""
+
+#: src/debug.cpp:50
+msgid "Configuration files reading"
+msgstr "Ayar dosyalarýnýn okunmasý"
+
+#: src/debug.cpp:51
+msgid "Custom keyboard definition"
+msgstr ""
+
+#: src/debug.cpp:52
+msgid "LaTeX generation/execution"
+msgstr ""
+
+#: src/debug.cpp:53
+msgid "Math editor"
+msgstr ""
+
+#: src/debug.cpp:54
+msgid "Font handling"
+msgstr "Font yönetimi"
+
+#: src/debug.cpp:55
+msgid "Textclass files reading"
+msgstr ""
+
+#: src/debug.cpp:56
+msgid "Version control"
+msgstr "Sürüm yönetimi"
+
+#: src/debug.cpp:57
+msgid "External control interface"
+msgstr ""
+
+#: src/debug.cpp:58
+msgid "Keep *roff temporary files"
+msgstr ""
+
+#: src/debug.cpp:59
+msgid "User commands"
+msgstr "Kullanýcý komutlarý"
+
+#: src/debug.cpp:60
+msgid "The LyX Lexxer"
+msgstr ""
+
+#: src/debug.cpp:61
+msgid "Dependency information"
+msgstr "Baðýmlýlýk bilgisi"
+
+#: src/debug.cpp:62
+msgid "LyX Insets"
+msgstr ""
+
+#: src/debug.cpp:63
+msgid "Files used by LyX"
+msgstr "LyX tarafýndan kullanýlan dosyalar"
+
+#: src/debug.cpp:64
+msgid "Workarea events"
+msgstr "Çalýþma alaný olaylarý"
+
+#: src/debug.cpp:65
+msgid "Insettext/tabular messages"
+msgstr ""
+
+#: src/debug.cpp:66
+msgid "Graphics conversion and loading"
+msgstr ""
+
+#: src/debug.cpp:67
+#, fuzzy
+msgid "Change tracking"
+msgstr "Dil deðiþtir"
+
+#: src/debug.cpp:68
+#, fuzzy
+msgid "External template/inset messages"
+msgstr "Dýþ Uygulamalar"
+
+#: src/debug.cpp:69
+msgid "RowPainter profiling"
+msgstr ""
+
+#: src/frontends/LyXView.cpp:425
+msgid " (changed)"
+msgstr " (deðiþti)"
+
+#: src/frontends/LyXView.cpp:429
+msgid " (read only)"
+msgstr " (yalnýzca okunabilir)"
+
+#: src/frontends/WorkArea.cpp:242
+msgid "Formatting document..."
+msgstr "Belge biçimlendiriliyor..."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:58
+msgid "ERROR: LyX wasn't able to read CREDITS file\n"
+msgstr "HATA: LyX, CREDITS dosyasýný okuyamadý\n"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:59
+msgid "Please install correctly to estimate the great\n"
+msgstr "Katkýcýlarýn LyX projesine verdiði emeði\n"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:60
+msgid "amount of work other people have done for the LyX project."
+msgstr "görebilmek için lütfen yerine kurun."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:67
+#, fuzzy
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-2006 LyX Team"
+msgstr ""
+"LyX Copyright (C) 1995 Matthias Ettrich,\n"
+"1995-2001 LyX Takýmý"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:73
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:79
+msgid ""
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+msgstr ""
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:87
+msgid "LyX Version "
+msgstr "LyX Sürüm "
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:92
+msgid "Library directory: "
+msgstr "Sistem dizini: "
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:95
+msgid "User directory: "
+msgstr "Kullanýcý dizini: "
+
+#: src/frontends/controllers/ControlBibtex.cpp:54
+msgid "BibTeX Databases (*.bib)"
+msgstr "BibTeX Veritabanlarý (*.bib)"
+
+#: src/frontends/controllers/ControlBibtex.cpp:56
+msgid "Select a BibTeX database to add"
+msgstr "Eklenecek BibTeX veritabaný seçin"
+
+#: src/frontends/controllers/ControlBibtex.cpp:66
+msgid "BibTeX Styles (*.bst)"
+msgstr "BibTeX Stilleri (*.bst)"
+
+#: src/frontends/controllers/ControlBibtex.cpp:68
+msgid "Select a BibTeX style"
+msgstr "Bir BibTeX stili seçin"
+
+#: src/frontends/controllers/ControlBox.cpp:62
+msgid "No frame drawn"
+msgstr "Çerçeve yok"
+
+#: src/frontends/controllers/ControlBox.cpp:63
+msgid "Rectangular box"
+msgstr "Dikdörtgen kutu"
+
+#: src/frontends/controllers/ControlBox.cpp:64
+msgid "Oval box, thin"
+msgstr "Oval kutu, ince"
+
+#: src/frontends/controllers/ControlBox.cpp:65
+msgid "Oval box, thick"
+msgstr "Oval kutu, kalýn"
+
+#: src/frontends/controllers/ControlBox.cpp:66
+msgid "Shadow box"
+msgstr "Gölgeli kutu"
+
+#: src/frontends/controllers/ControlBox.cpp:67
+msgid "Double box"
+msgstr "Çift kutu"
+
+#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.cpp:286
+#: src/frontends/qt4/QBox.cpp:320
+msgid "Depth"
+msgstr "Derinlik"
+
+#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.cpp:133
+#: src/frontends/qt4/QBox.cpp:289 src/frontends/qt4/QBox.cpp:323
+#: src/frontends/qt4/QBox.cpp:356
+msgid "Total Height"
+msgstr "Toplam Yükseklik"
+
+#: src/frontends/controllers/ControlErrorList.cpp:57
+#, c-format
+msgid "%1$s Errors (%2$s)"
+msgstr ""
+
+#: src/frontends/controllers/ControlExternal.cpp:163
+msgid "Select external file"
+msgstr "Dýþ dosya seçin"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Top left"
+msgstr "Üst sol"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Bottom left"
+msgstr "Alt sol"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Baseline left"
+msgstr "Taban sol"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Top center"
+msgstr "Üst orta"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Bottom center"
+msgstr "Alt orta"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Baseline center"
+msgstr "Taban orta"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Top right"
+msgstr "Üst sað"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Bottom right"
+msgstr "Alt sað"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Baseline right"
+msgstr "Taban sað"
+
+#: src/frontends/controllers/ControlGraphics.cpp:87
+msgid "Select graphics file"
+msgstr "Grafik dosyasýný seçin"
+
+#: src/frontends/controllers/ControlGraphics.cpp:95
+msgid "Clipart|#C#c"
+msgstr ""
+
+#: src/frontends/controllers/ControlInclude.cpp:78
+msgid "Select document to include"
+msgstr "Eklenecek belgeyi seçin"
+
+#: src/frontends/controllers/ControlInclude.cpp:85
+msgid "LaTeX/LyX Documents (*.tex *.lyx)"
+msgstr "LaTeX/LyX Belgeleri (*.tex *.lyx)"
+
+#: src/frontends/controllers/ControlLog.cpp:81
+msgid "LaTeX Log"
+msgstr "LaTeX Kayýtlarý"
+
+#: src/frontends/controllers/ControlLog.cpp:84
+msgid "Literate Programming Build Log"
+msgstr ""
+
+#: src/frontends/controllers/ControlLog.cpp:87
+msgid "lyx2lyx Error Log"
+msgstr "lyx2lyx Hata Kütüðü"
+
+#: src/frontends/controllers/ControlLog.cpp:90
+msgid "Version Control Log"
+msgstr "Sürüm Yönetimi Kayýtlarý"
+
+#: src/frontends/controllers/ControlLog.cpp:116
+msgid "No LaTeX log file found."
+msgstr "LaTeX kayýt dosyasý bulunamadý."
+
+#: src/frontends/controllers/ControlLog.cpp:119
+#, fuzzy
+msgid "No literate programming build log file found."
+msgstr "Sürüm yönetimi kayýt dosyasý bulunamadý."
+
+#: src/frontends/controllers/ControlLog.cpp:122
+msgid "No lyx2lyx error log file found."
+msgstr "lyx2lyx hata kütük dosyasý bulunamadý."
+
+#: src/frontends/controllers/ControlLog.cpp:125
+msgid "No version control log file found."
+msgstr "Sürüm yönetimi kayýt dosyasý bulunamadý."
+
+#: src/frontends/controllers/ControlPrefs.cpp:110
+msgid "Choose bind file"
+msgstr "Baðlama dosyasý seçin"
+
+#: src/frontends/controllers/ControlPrefs.cpp:111
+msgid "LyX bind files (*.bind)"
+msgstr "LyX baðlama dosyasý (*.bind)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:118
+msgid "Choose UI file"
+msgstr "Arabirim dosyasý seçin"
+
+#: src/frontends/controllers/ControlPrefs.cpp:119
+msgid "LyX UI files (*.ui)"
+msgstr "LyX arabirim dosyalarý (*.ui)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:126
+msgid "Choose keyboard map"
+msgstr "Klavye haritasý seçin"
+
+#: src/frontends/controllers/ControlPrefs.cpp:127
+msgid "LyX keyboard maps (*.kmap)"
+msgstr "LyX klavye haritasý (*.kmap)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:135
+#: src/frontends/controllers/ControlPrefs.cpp:139
+msgid "Choose personal dictionary"
+msgstr "Kiþisel sözlüðü deðiþtir"
+
+#: src/frontends/controllers/ControlPrefs.cpp:136
+msgid "*.pws"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:140
+msgid "*.ispell"
+msgstr "*.ispell"
+
+#: src/frontends/controllers/ControlPrint.cpp:73
+msgid "Print to file"
+msgstr "Dosyaya yazdýr"
+
+#: src/frontends/controllers/ControlPrint.cpp:74
+msgid "PostScript files (*.ps)"
+msgstr "PostScript dosyalar (*.ps)"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:117
+msgid "Spellchecker error"
+msgstr "Yazým denetimi hatasý"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:118
+msgid "The spellchecker could not be started\n"
+msgstr "Yazým denetleyici baþlatýlamadý\n"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:276
+msgid ""
+"The spellchecker has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Yazým denetleyici bir nedenden kapandý.\n"
+"Dýþardan durdurulmuþ olabilir."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:279
+msgid "The spellchecker has failed.\n"
+msgstr "Yazým denetleyici sorun çýkardý.\n"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:283
+msgid "The spellchecker has failed"
+msgstr "Yazým denetleyici sorun çýkardý"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:297
+#, c-format
+msgid "%1$d words checked."
+msgstr "%1$d sözcük denetlendi."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:299
+msgid "One word checked."
+msgstr "Bir sözcük denetlendi."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:302
+msgid "Spelling check completed"
+msgstr "Yazým denetleme tamam"
+
+#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
+msgid "Table of Contents"
+msgstr "icindekiler"
+
+#: src/frontends/controllers/frontend_helpers.cpp:244
+#, c-format
+msgid "%1$s and %2$s"
+msgstr "%1$s ve %2$s"
+
+#: src/frontends/controllers/frontend_helpers.cpp:248
+#, c-format
+msgid "%1$s et al."
+msgstr ""
+
+#: src/frontends/controllers/frontend_helpers.cpp:285
+msgid "No year"
+msgstr "Yýl yok"
+
+#: src/frontends/controllers/frontend_helpers.cpp:818
+msgid "before"
+msgstr "önce"
+
+#: src/frontends/controllers/frontend_helpers.cpp:866
+#: src/frontends/controllers/frontend_helpers.cpp:896
+#: src/frontends/controllers/frontend_helpers.cpp:922
+#: src/frontends/controllers/frontend_helpers.cpp:956
+#: src/frontends/controllers/frontend_helpers.cpp:1022
+#: src/frontends/controllers/frontend_helpers.cpp:1052
+#: src/frontends/controllers/frontend_helpers.cpp:1125
+msgid "No change"
+msgstr "Ayný kalsýn"
+
+#: src/frontends/controllers/frontend_helpers.cpp:882
+#: src/frontends/controllers/frontend_helpers.cpp:908
+#: src/frontends/controllers/frontend_helpers.cpp:942
+#: src/frontends/controllers/frontend_helpers.cpp:1008
+#: src/frontends/controllers/frontend_helpers.cpp:1038
+#: src/frontends/controllers/frontend_helpers.cpp:1092
+#: src/frontends/controllers/frontend_helpers.cpp:1127
+msgid "Reset"
+msgstr "Sýfýrla"
+
+#: src/frontends/controllers/frontend_helpers.cpp:938
+msgid "Small Caps"
+msgstr "Küçük Baþlýklar"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1026
+msgid "Emph"
+msgstr "Vurgu"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1030
+msgid "Underbar"
+msgstr "Altçizgi"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1034
+msgid "Noun"
+msgstr "Ad"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1056
+msgid "No color"
+msgstr "Renksiz"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1060
+msgid "Black"
+msgstr "Siyah"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1064
+msgid "White"
+msgstr "Beyaz"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1068
+msgid "Red"
+msgstr "Kýrmýzý"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1072
+msgid "Green"
+msgstr "Yeþil"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1076
+msgid "Blue"
+msgstr "Mavi"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1080
+msgid "Cyan"
+msgstr "Cyan"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1084
+msgid "Magenta"
+msgstr "Magenta"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1088
+msgid "Yellow"
+msgstr "Sarý"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1220
+msgid "System files|#S#s"
+msgstr ""
+
+#: src/frontends/controllers/frontend_helpers.cpp:1223
+#, fuzzy
+msgid "User files|#U#u"
+msgstr "Kullanýcý Klavuzu|K"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1306
+#, fuzzy
+msgid "Could not update TeX information"
+msgstr "Baþka ileri alma bilgisi yok"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1307
+#, fuzzy, c-format
+msgid "The script `%s' failed."
+msgstr "Yazým denetleyici sorun çýkardý.\n"
+
+#: src/frontends/qt4/BulletsModule.cpp:47
+#, fuzzy
+msgid "Maths"
+msgstr "Yollar"
+
+#: src/frontends/qt4/BulletsModule.cpp:48
+msgid "Dings 1"
+msgstr ""
+
+#: src/frontends/qt4/BulletsModule.cpp:49
+msgid "Dings 2"
+msgstr ""
+
+#: src/frontends/qt4/BulletsModule.cpp:50
+msgid "Dings 3"
+msgstr ""
+
+#: src/frontends/qt4/BulletsModule.cpp:51
+msgid "Dings 4"
+msgstr ""
+
+#: src/frontends/qt4/Dialogs.cpp:223
+msgid "Index Entry"
+msgstr "Ýndeks Giriþi"
+
+#: src/frontends/qt4/Dialogs.cpp:233
+msgid "Label"
+msgstr "Etiket"
+
+#: src/frontends/qt4/Dialogs.cpp:245
+#, fuzzy
+msgid "LaTeX Source"
+msgstr "LaTeX hatasý"
+
+#: src/frontends/qt4/Dialogs.cpp:307
+#, fuzzy
+msgid "Toc"
+msgstr "Üst"
+
+#: src/frontends/qt4/FileDialog.cpp:162
+msgid "Directories"
+msgstr "Dizinler"
+
+#: src/frontends/qt4/GuiView.cpp:133
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:139
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:146
+msgid "Big-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:676
+msgid "LyX"
+msgstr "LyX"
+
+#: src/frontends/qt4/GuiWorkArea.cpp:467
+#, fuzzy
+msgid "unknown version"
+msgstr "Bilinmeyen kullanýcý"
+
+#: src/frontends/qt4/QBibitem.cpp:69
+msgid "Bibliography Entry Settings"
+msgstr "Kaynakça Giriþ Ayarlarý"
+
+#: src/frontends/qt4/QBibtex.cpp:260
+msgid "BibTeX Bibliography"
+msgstr "BibTeX Kaynakça"
+
+#: src/frontends/qt4/QBox.cpp:148
+msgid "Box Settings"
+msgstr "Kutu Ayarlarý"
+
+#: src/frontends/qt4/QBranch.cpp:71
+msgid "Branch Settings"
+msgstr "Dal Ayarlarý"
+
+#: src/frontends/qt4/QBranches.cpp:42
+msgid "Branch"
+msgstr "Dal"
+
+#: src/frontends/qt4/QBranches.cpp:43
+msgid "Activated"
+msgstr ""
+
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
+#: src/frontends/qt4/QDocument.cpp:690
+msgid "Yes"
+msgstr "Evet"
+
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
+msgid "No"
+msgstr "Hayýr"
+
+#: src/frontends/qt4/QChanges.cpp:85
+msgid "Merge Changes"
+msgstr "Deðiþiklikleri Birleþtir"
+
+#: src/frontends/qt4/QChanges.cpp:107
+#, c-format
+msgid ""
+"Change by %1$s\n"
+"\n"
+msgstr ""
+
+#: src/frontends/qt4/QChanges.cpp:109
+#, c-format
+msgid "Change made at %1$s\n"
+msgstr ""
+
+#: src/frontends/qt4/QCharacter.cpp:92
+msgid "Text Style"
+msgstr "Metin Stili"
+
+#: src/frontends/qt4/QCommandBuffer.cpp:88
+msgid "Previous command"
+msgstr "Önceki komut"
+
+#: src/frontends/qt4/QCommandBuffer.cpp:91
+msgid "Next command"
+msgstr "Sonraki komut"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:46
+msgid "big[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:46
+msgid "Big[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:47
+msgid "bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:47
+msgid "Bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:69
+msgid "Math Delimiter"
+msgstr "Matematik Ayraç"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:112
+msgid "LyX: Delimiters"
+msgstr "LyX: Ayýrýcýlar"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:144
+#: src/frontends/qt4/QDelimiterDialog.cpp:145
+#, fuzzy
+msgid "(None)"
+msgstr "Yok"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:147
+#, fuzzy
+msgid "Variable"
+msgstr "tablo çizgisi"
+
+#: src/frontends/qt4/QDocument.cpp:119
+msgid "Length"
+msgstr "Boy"
+
+#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
+#: src/frontends/qt4/QDocument.cpp:176
+msgid " (not installed)"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
+#: src/frontends/qt4/QDocument.cpp:599
+msgid "default"
+msgstr "öntanýmlý"
+
+#: src/frontends/qt4/QDocument.cpp:181
+msgid "10"
+msgstr "10"
+
+#: src/frontends/qt4/QDocument.cpp:182
+msgid "11"
+msgstr "11"
+
+#: src/frontends/qt4/QDocument.cpp:183
+msgid "12"
+msgstr "12"
+
+#: src/frontends/qt4/QDocument.cpp:218
+msgid "empty"
+msgstr "boþ"
+
+#: src/frontends/qt4/QDocument.cpp:219
+msgid "plain"
+msgstr "sade"
+
+#: src/frontends/qt4/QDocument.cpp:220
+msgid "headings"
+msgstr "baþlýklar"
+
+#: src/frontends/qt4/QDocument.cpp:221
+msgid "fancy"
+msgstr "süslü"
+
+#: src/frontends/qt4/QDocument.cpp:237
+msgid "B3"
+msgstr "B3"
+
+#: src/frontends/qt4/QDocument.cpp:238
+msgid "B4"
+msgstr "B4"
+
+#: src/frontends/qt4/QDocument.cpp:341
+#, fuzzy
+msgid "LaTeX default"
+msgstr "LaTeX baþarýsýz oldu"
+
+#: src/frontends/qt4/QDocument.cpp:347
+msgid "``text''"
+msgstr "``metin''"
+
+#: src/frontends/qt4/QDocument.cpp:348
+msgid "''text''"
+msgstr "''metin''"
+
+#: src/frontends/qt4/QDocument.cpp:349
+msgid ",,text``"
+msgstr ",,metin``"
+
+#: src/frontends/qt4/QDocument.cpp:350
+msgid ",,text''"
+msgstr ",,metin''"
+
+#: src/frontends/qt4/QDocument.cpp:351
+msgid "<<text>>"
+msgstr "<<metin>>"
+
+#: src/frontends/qt4/QDocument.cpp:352
+msgid ">>text<<"
+msgstr ">>metin<<"
+
+#: src/frontends/qt4/QDocument.cpp:368
+msgid "Numbered"
+msgstr "Numaralý"
+
+#: src/frontends/qt4/QDocument.cpp:369
+msgid "Appears in TOC"
+msgstr "Ýçindekilerde gözükür"
+
+#: src/frontends/qt4/QDocument.cpp:389
+msgid "Author-year"
+msgstr "Yazar-yýl"
+
+#: src/frontends/qt4/QDocument.cpp:390
+msgid "Numerical"
+msgstr "Sayýsal"
+
+#: src/frontends/qt4/QDocument.cpp:432
+#, c-format
+msgid "Unavailable: %1$s"
+msgstr "Mevcut deðil: %1$s"
+
+#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
+msgid "Document Class"
+msgstr "Belge Sýnýfý"
+
+#: src/frontends/qt4/QDocument.cpp:464
+msgid "Text Layout"
+msgstr "Metin Yerleþimi"
+
+#: src/frontends/qt4/QDocument.cpp:465
+msgid "Page Layout"
+msgstr "Sayfa Yerleþimi"
+
+#: src/frontends/qt4/QDocument.cpp:466
+msgid "Page Margins"
+msgstr "Kenar Boþluklarý"
+
+#: src/frontends/qt4/QDocument.cpp:468
+msgid "Numbering & TOC"
+msgstr "Numaralama ve Ýçindekiler"
+
+#: src/frontends/qt4/QDocument.cpp:470
+msgid "Math Options"
+msgstr "Matematik Seçenekleri"
+
+#: src/frontends/qt4/QDocument.cpp:471
+msgid "Float Placement"
+msgstr "Yüzen Yerleþimi:"
+
+#: src/frontends/qt4/QDocument.cpp:472
+msgid "Bullets"
+msgstr "Madde imleri"
+
+#: src/frontends/qt4/QDocument.cpp:473
+msgid "Branches"
+msgstr "Dallar"
+
+#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
+msgid "LaTeX Preamble"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:1237
+msgid "Document Settings"
+msgstr "Belge Ayarlarý"
+
+#: src/frontends/qt4/QERT.cpp:68
+msgid "TeX Code Settings"
+msgstr "TeX Kod Ayarlarý"
+
+#: src/frontends/qt4/QExternal.cpp:495
+msgid "External Material"
+msgstr "Harici Materyal"
+
+#: src/frontends/qt4/QExternal.cpp:555
+msgid "Scale%"
+msgstr "Ölçek%"
+
+#: src/frontends/qt4/QFloat.cpp:31
+msgid "Float Settings"
+msgstr "Yüzen Ayarlarý"
+
+#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:625
+msgid "Graphics"
+msgstr "Grafikler"
+
+#: src/frontends/qt4/QInclude.cpp:134
+msgid "Child Document"
+msgstr "Alt Belge"
+
+#: src/frontends/qt4/QMathMatrixDialog.cpp:46
+msgid "Math Matrix"
+msgstr ""
+
+#: src/frontends/qt4/QMathMatrixDialog.cpp:61
+msgid "LyX: Insert Matrix"
+msgstr "LyX: Matris Ekle"
+
+#: src/frontends/qt4/QNote.cpp:70
+msgid "Note Settings"
+msgstr "Not Ayarlarý"
+
+#: src/frontends/qt4/QParagraph.cpp:70
+msgid ""
+"As described in the User Guide, the length of this text will determine how "
+"wide the label part of each item is in environments like List and "
+"Description.\n"
+"\n"
+" Normally you won't need to set this, since the largest label width of all "
+"the items is used. But if you need to, you can change it here."
+msgstr ""
+
+#: src/frontends/qt4/QParagraph.cpp:176
+msgid "Paragraph Settings"
+msgstr "Paragraf Ayarlarý"
+
+#: src/frontends/qt4/QPrefs.cpp:73
+msgid "Look and feel"
+msgstr "Görünüm"
+
+#: src/frontends/qt4/QPrefs.cpp:74
+msgid "Language settings"
+msgstr "Dil ayarlarý"
+
+#: src/frontends/qt4/QPrefs.cpp:75
+msgid "Outputs"
+msgstr "Çýktýlar"
+
+#: src/frontends/qt4/QPrefs.cpp:173
+msgid "Plain text"
+msgstr "Düz metin"
+
+#: src/frontends/qt4/QPrefs.cpp:204
+msgid "Date format"
+msgstr "Tarih biçimi"
+
+#: src/frontends/qt4/QPrefs.cpp:231
+msgid "Keyboard"
+msgstr "Klavye"
+
+#: src/frontends/qt4/QPrefs.cpp:355
+msgid "Screen fonts"
+msgstr "Ekran fontlarý"
+
+#: src/frontends/qt4/QPrefs.cpp:513
+msgid "Colors"
+msgstr "Renkler"
+
+#: src/frontends/qt4/QPrefs.cpp:599 src/frontends/qt4/QPrefs.cpp:698
+msgid "Paths"
+msgstr "Yollar"
+
+#: src/frontends/qt4/QPrefs.cpp:749
+msgid "Select a document templates directory"
+msgstr "Belge þablonu dizini seçin"
+
+#: src/frontends/qt4/QPrefs.cpp:759
+msgid "Select a temporary directory"
+msgstr "Geçici dizin seçin"
+
+#: src/frontends/qt4/QPrefs.cpp:769
+msgid "Select a backups directory"
+msgstr "Yedekleme dizini seçin"
+
+#: src/frontends/qt4/QPrefs.cpp:779
+msgid "Select a document directory"
+msgstr "Belge dizini seçin"
+
+#: src/frontends/qt4/QPrefs.cpp:789
+msgid "Give a filename for the LyX server pipe"
+msgstr "LyX sunucu borusu için bir isim verin"
+
+#: src/frontends/qt4/QPrefs.cpp:802 src/frontends/qt4/QSpellchecker.cpp:135
+msgid "Spellchecker"
+msgstr "Yazým denetimi"
+
+#: src/frontends/qt4/QPrefs.cpp:824
+msgid "ispell"
+msgstr "ispell"
+
+#: src/frontends/qt4/QPrefs.cpp:825
+msgid "aspell"
+msgstr "aspell"
+
+#: src/frontends/qt4/QPrefs.cpp:826
+msgid "hspell"
+msgstr "hspell"
+
+#: src/frontends/qt4/QPrefs.cpp:828
+msgid "pspell (library)"
+msgstr "pspell (kitaplýk)"
+
+#: src/frontends/qt4/QPrefs.cpp:831
+msgid "aspell (library)"
+msgstr "aspell (kitaplýk)"
+
+#: src/frontends/qt4/QPrefs.cpp:912
+msgid "Converters"
+msgstr "Çeviriciler"
+
+#: src/frontends/qt4/QPrefs.cpp:1102
+#, fuzzy
+msgid "Copiers"
+msgstr "Kopyalar"
+
+#: src/frontends/qt4/QPrefs.cpp:1355
+msgid "File formats"
+msgstr "Dosya biçimleri"
+
+#: src/frontends/qt4/QPrefs.cpp:1547
+msgid "Format in use"
+msgstr "Kullanýlan biçim"
+
+#: src/frontends/qt4/QPrefs.cpp:1548
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Bir çevirici tarafýndan kullanýlan biçimi silemezsiniz. Önce çeviriciyi "
+"silin."
+
+#: src/frontends/qt4/QPrefs.cpp:1649
+msgid "Printer"
+msgstr "Yazýcý"
+
+#: src/frontends/qt4/QPrefs.cpp:1747 src/frontends/qt4/QPrefs.cpp:1941
+msgid "User interface"
+msgstr "Arayüz"
+
+#: src/frontends/qt4/QPrefs.cpp:1865
+msgid "Identity"
+msgstr "Kimlik"
+
+#: src/frontends/qt4/QPrefs.cpp:2007
+msgid "Preferences"
+msgstr "Ayarlar"
+
+#: src/frontends/qt4/QPrint.cpp:36
+msgid "Print Document"
+msgstr "Belgeyi Yazdýr"
+
+#: src/frontends/qt4/QRef.cpp:188
+msgid "Cross-reference"
+msgstr "Çapraz referans"
+
+#: src/frontends/qt4/QRef.cpp:284
+msgid "&Go Back"
+msgstr "&Geri git"
+
+#: src/frontends/qt4/QRef.cpp:286
+msgid "Jump back"
+msgstr "Geri git"
+
+#: src/frontends/qt4/QRef.cpp:294
+msgid "Jump to label"
+msgstr "Etikete git"
+
+#: src/frontends/qt4/QSearch.cpp:138
+msgid "Find and Replace"
+msgstr "Bul ve Deðiþtir"
+
+#: src/frontends/qt4/QSendto.cpp:84
+#, fuzzy
+msgid "Send Document to Command"
+msgstr "Açýlacak belgeyi seçin"
+
+#: src/frontends/qt4/QShowFile.cpp:57
+msgid "Show File"
+msgstr "Dosya Göster"
+
+#: src/frontends/qt4/QTabular.cpp:523
+msgid "Table Settings"
+msgstr "Tablo Ayarlarý"
+
+#: src/frontends/qt4/QTabularCreate.cpp:73
+msgid "Insert Table"
+msgstr "Tablo ekle"
+
+#: src/frontends/qt4/QTexinfo.cpp:127
+msgid "TeX Information"
+msgstr "TeX Bilgisi"
+
+#: src/frontends/qt4/QVSpace.cpp:188
+msgid "Vertical Space Settings"
+msgstr "Düþey Boþluk Ayarlarý"
+
+#: src/frontends/qt4/QWrap.cpp:83
+msgid "Text Wrap Settings"
+msgstr "Tablo Dönüþ Ayarlarý"
+
+#: src/frontends/qt4/Validator.cpp:153
+msgid "space"
+msgstr "boþluk"
+
+#: src/frontends/qt4/Validator.cpp:180
+msgid "Invalid filename"
+msgstr "Geçersiz dosya adý"
+
+#: src/frontends/qt4/Validator.cpp:181
+#, fuzzy
+msgid ""
+"LyX does not provide LaTeX support for file names containing any of these "
+"characters:\n"
+msgstr "Dosya adý þu karakterleri içeremez:"
+
+#: src/frontends/qt4/alert_pimpl.cpp:58 src/frontends/qt4/alert_pimpl.cpp:85
+#: src/frontends/qt4/alert_pimpl.cpp:105 src/frontends/qt4/alert_pimpl.cpp:124
+#: src/frontends/qt4/alert_pimpl.cpp:135
+#, c-format
+msgid "LyX: %1$s"
+msgstr "LyX: %1$s"
+
+#: src/insets/Inset.cpp:265
+msgid "Opened inset"
+msgstr ""
+
+#: src/insets/InsetBibtex.cpp:109
+msgid "BibTeX Generated Bibliography"
+msgstr ""
+
+#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+msgid "Export Warning!"
+msgstr "Dýþarý Aktarým Uyarýsý!"
+
+#: src/insets/InsetBibtex.cpp:207
+msgid ""
+"There are spaces in the paths to your BibTeX databases.\n"
+"BibTeX will be unable to find them."
+msgstr ""
+
+#: src/insets/InsetBibtex.cpp:260
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
+msgstr ""
+
+#: src/insets/InsetBox.cpp:65
+msgid "Boxed"
+msgstr "Kutulu"
+
+#: src/insets/InsetBox.cpp:66
+msgid "Frameless"
+msgstr "Çerçevesiz"
+
+#: src/insets/InsetBox.cpp:67
+msgid "ovalbox"
+msgstr "ovalkutu"
+
+#: src/insets/InsetBox.cpp:68
+msgid "Ovalbox"
+msgstr "Ovalkutu"
+
+#: src/insets/InsetBox.cpp:69
+msgid "Shadowbox"
+msgstr ""
+
+#: src/insets/InsetBox.cpp:70
+msgid "Doublebox"
+msgstr "Çift kutu"
+
+#: src/insets/InsetBox.cpp:125
+msgid "Opened Box Inset"
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:75
+msgid "Opened Branch Inset"
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:100
+msgid "Branch: "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:107 src/insets/InsetCharStyle.cpp:162
+#: src/insets/InsetCharStyle.cpp:211
+msgid "Undef: "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:238
+#, fuzzy
+msgid "branch"
+msgstr "Dal"
+
+#: src/insets/InsetCaption.cpp:87
+msgid "Opened Caption Inset"
+msgstr ""
+
+#: src/insets/InsetCaption.cpp:276
+msgid "Senseless!!! "
+msgstr ""
+
+#: src/insets/InsetCharStyle.cpp:122
+msgid "Opened CharStyle Inset"
+msgstr ""
+
+#: src/insets/InsetCommand.cpp:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "&BibTeX komutu:"
+
+#: src/insets/InsetCommandParams.cpp:268
+#, fuzzy
+msgid "Unknown inset name: "
+msgstr "Bilinmeyen fonksiyon."
+
+#: src/insets/InsetCommandParams.cpp:292
+#, fuzzy
+msgid "Inset Command: "
+msgstr "Sonraki komut"
+
+#: src/insets/InsetCommandParams.cpp:293
+msgid "Unknown parameter name: "
+msgstr ""
+
+#: src/insets/InsetCommandParams.cpp:300
+msgid "Missing \\end_inset at this point."
+msgstr ""
+
+#: src/insets/InsetERT.cpp:140
+msgid "Opened ERT Inset"
+msgstr ""
+
+#: src/insets/InsetERT.cpp:387
+msgid "ERT"
+msgstr ""
+
+#: src/insets/InsetEnvironment.cpp:65
+#, fuzzy
+msgid "Opened Environment Inset: "
+msgstr "Derinliði Azalt|z"
+
+#: src/insets/InsetExternal.cpp:576
+#, c-format
+msgid "External template %1$s is not installed"
+msgstr ""
+
+#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:372
+#: src/insets/InsetFloat.cpp:382
+msgid "float: "
+msgstr "yuzen: "
+
+#: src/insets/InsetFloat.cpp:277
+msgid "Opened Float Inset"
+msgstr ""
+
+#: src/insets/InsetFloat.cpp:333
+#, fuzzy
+msgid "float"
+msgstr "yuzen: "
+
+#: src/insets/InsetFloat.cpp:384
+msgid " (sideways)"
+msgstr ""
+
+#: src/insets/InsetFloatList.cpp:59
+msgid "ERROR: Nonexistent float type!"
+msgstr ""
+
+#: src/insets/InsetFloatList.cpp:124
+#, c-format
+msgid "List of %1$s"
+msgstr "%1$s Listesi"
+
+#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:44
+msgid "foot"
+msgstr "dipnot"
+
+#: src/insets/InsetFoot.cpp:56
+msgid "Opened Footnote Inset"
+msgstr ""
+
+#: src/insets/InsetFoot.cpp:85
+#, fuzzy
+msgid "footnote"
+msgstr "Dipnot|D"
+
+#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
+#, fuzzy, c-format
+msgid ""
+"Could not copy the file\n"
+"%1$s\n"
+"into the temporary directory."
+msgstr "Geçici dizin yaratýlamadý"
+
+#: src/insets/InsetGraphics.cpp:709
+#, c-format
+msgid "No conversion of %1$s is needed after all"
+msgstr ""
+
+#: src/insets/InsetGraphics.cpp:821
+#, c-format
+msgid "Graphics file: %1$s"
+msgstr ""
+
+#: src/insets/InsetHFill.cpp:48
+#, fuzzy
+msgid "Horizontal Fill"
+msgstr "Yatay hizalama|Y"
+
+#: src/insets/InsetInclude.cpp:306
+msgid "Verbatim Input"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:309
+msgid "Verbatim Input*"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:411
+#, c-format
+msgid ""
+"Included file `%1$s'\n"
+"has textclass `%2$s'\n"
+"while parent file has textclass `%3$s'."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:417
+msgid "Different textclasses"
+msgstr ""
+
+#: src/insets/InsetIndex.cpp:42
+msgid "Idx"
+msgstr ""
+
+#: src/insets/InsetIndex.cpp:75
+msgid "Index"
+msgstr "indeks"
+
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
+#: src/insets/InsetMarginal.cpp:69
+msgid "margin"
+msgstr "kenar"
+
+#: src/insets/InsetMarginal.cpp:52
+msgid "Opened Marginal Note Inset"
+msgstr ""
+
+#: src/insets/InsetNomencl.cpp:39
+#, fuzzy
+msgid "Nom"
+msgstr "Hayýr"
+
+#: src/insets/InsetNomencl.cpp:86
+msgid "Nomenclature"
+msgstr ""
+
+#: src/insets/InsetNote.cpp:66
+msgid "Comment"
+msgstr "Açýklama"
+
+#: src/insets/InsetNote.cpp:67
+msgid "Greyed out"
+msgstr ""
+
+#: src/insets/InsetNote.cpp:68
+msgid "Framed"
+msgstr "Çerçeveli"
+
+#: src/insets/InsetNote.cpp:69
+msgid "Shaded"
+msgstr "Gölgeli"
+
+#: src/insets/InsetNote.cpp:148
+msgid "Opened Note Inset"
+msgstr ""
+
+#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
+msgid "opt"
+msgstr ""
+
+#: src/insets/InsetOptArg.cpp:59
+msgid "Opened Optional Argument Inset"
+msgstr ""
+
+#: src/insets/InsetPagebreak.h:65
+#, fuzzy
+msgid "Clear Page"
+msgstr "S&il"
+
+#: src/insets/InsetPagebreak.h:81
+msgid "Clear Double Page"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+msgid "Ref: "
+msgstr ""
+
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+msgid "Equation"
+msgstr "Denklem"
+
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+msgid "EqRef: "
+msgstr ""
+
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+msgid "Page Number"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+msgid "Page: "
+msgstr "Sayfa: "
+
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+msgid "Textual Page Number"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+msgid "TextPage: "
+msgstr ""
+
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+msgid "Standard+Textual Page"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+msgid "Ref+Text: "
+msgstr ""
+
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+msgid "PrettyRef"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#, fuzzy
+msgid "FormatRef: "
+msgstr "&Biçim"
+
+#: src/insets/InsetTOC.cpp:47
+msgid "Unknown toc list"
+msgstr ""
+
+#: src/insets/InsetTabular.cpp:3141
+msgid "Opened table"
+msgstr "Açýk tablo"
+
+#: src/insets/InsetTabular.cpp:4292
+msgid "Error setting multicolumn"
+msgstr ""
+
+#: src/insets/InsetTabular.cpp:4293
+msgid "You cannot set multicolumn vertically."
+msgstr ""
+
+#: src/insets/InsetText.cpp:236
+msgid "Opened Text Inset"
+msgstr ""
+
+#: src/insets/InsetUrl.cpp:42
+msgid "Url: "
+msgstr "Url: "
+
+#: src/insets/InsetUrl.cpp:42
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/insets/InsetVSpace.cpp:110
+msgid "Vertical Space"
+msgstr "Yatay Boþluk"
+
+#: src/insets/InsetWrap.cpp:49
+msgid "wrap: "
+msgstr ""
+
+#: src/insets/InsetWrap.cpp:177
+msgid "Opened Wrap Inset"
+msgstr ""
+
+#: src/insets/InsetWrap.cpp:197
+msgid "wrap"
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
+msgid "Not shown."
+msgstr "Gosterilmiyor."
+
+#: src/insets/RenderGraphic.cpp:97
+msgid "Loading..."
+msgstr "Yukleniyor..."
+
+#: src/insets/RenderGraphic.cpp:100
+msgid "Converting to loadable format..."
+msgstr "Cevriliyor..."
+
+#: src/insets/RenderGraphic.cpp:103
+msgid "Loaded into memory. Generating pixmap..."
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:106
+msgid "Scaling etc..."
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:109
+msgid "Ready to display"
+msgstr "Gosterime hazir"
+
+#: src/insets/RenderGraphic.cpp:112
+msgid "No file found!"
+msgstr "Dosya yok!"
+
+#: src/insets/RenderGraphic.cpp:115
+msgid "Error converting to loadable format"
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:118
+msgid "Error loading file into memory"
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:121
+msgid "Error generating the pixmap"
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:124
+msgid "No image"
+msgstr "Resim yok"
+
+#: src/insets/RenderPreview.cpp:92
+msgid "Preview loading"
+msgstr "Ongosterim yukleniyor"
+
+#: src/insets/RenderPreview.cpp:95
+msgid "Preview ready"
+msgstr "Ongosterim hazir"
+
+#: src/insets/RenderPreview.cpp:98
+msgid "Preview failed"
+msgstr "Ongosterim basarilamadi"
+
+#: src/lengthcommon.cpp:37
+msgid "sp"
+msgstr "sp"
+
+#: src/lengthcommon.cpp:37
+msgid "pt"
+msgstr "pt"
+
+#: src/lengthcommon.cpp:37
+msgid "bp"
+msgstr "bp"
+
+#: src/lengthcommon.cpp:37
+msgid "dd"
+msgstr "dd"
+
+#: src/lengthcommon.cpp:37
+msgid "mm"
+msgstr "mm"
+
+#: src/lengthcommon.cpp:37
+msgid "pc"
+msgstr "pc"
+
+#: src/lengthcommon.cpp:38
+msgid "cm"
+msgstr "cm"
+
+#: src/lengthcommon.cpp:38
+msgid "ex"
+msgstr "ex"
+
+#: src/lengthcommon.cpp:38
+msgid "em"
+msgstr "em"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Text Width %"
+msgstr "Sabit Geniþlik"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Column Width %"
+msgstr "Sütun Geniþliði"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Page Width %"
+msgstr "Etiket Geniþliði"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Line Width %"
+msgstr "Etiket Geniþliði"
+
+#: src/lengthcommon.cpp:40
+#, fuzzy
+msgid "Text Height %"
+msgstr "Toplam Yükseklik"
+
+#: src/lengthcommon.cpp:40
+#, fuzzy
+msgid "Page Height %"
+msgstr "Toplam Yükseklik"
+
+#: src/lyxfind.cpp:136
+msgid "Search error"
+msgstr "Arama hatasý"
+
+#: src/lyxfind.cpp:137
+msgid "Search string is empty"
+msgstr "Aranacak metin boþ"
+
+#: src/lyxfind.cpp:288 src/lyxfind.cpp:319
+msgid "String not found!"
+msgstr "Dizge bulunamadý!"
+
+#: src/lyxfind.cpp:323
+msgid "String has been replaced."
+msgstr "Dizge deðiþtirildi."
+
+#: src/lyxfind.cpp:326
+msgid " strings have been replaced."
+msgstr " dizge deðiþtirildi."
 
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1241
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
@@ -14962,18 +15121,19 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1330 src/text3.cpp:185
-msgid "Math editor mode"
-msgstr ""
-
-#: src/mathed/InsetMathNest.cpp:847
+#: src/mathed/InsetMathNest.cpp:845
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:850
+#: src/mathed/InsetMathNest.cpp:848
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal metin\t\\textrm"
+
+#: src/mathed/MathMacroTemplate.cpp:108
+#, c-format
+msgid " Macro: %1$s: "
+msgstr ""
 
 #: src/mathed/MathMacroTemplate.cpp:240
 #, fuzzy
@@ -15001,6 +15161,57 @@ msgstr "Referanslar: "
 msgid "All files (*)"
 msgstr "Tüm dosyalar (*)"
 
+#: src/support/Package.cpp.in:448
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "Dizge bulunamadý!"
+
+#: src/support/Package.cpp.in:449
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+
+#: src/support/Package.cpp.in:569
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+
+#: src/support/Package.cpp.in:654 src/support/Package.cpp.in:681
+#, fuzzy
+msgid "File not found"
+msgstr "Dizge bulunamadý!"
+
+#: src/support/Package.cpp.in:655
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp.in:682
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp.in:707
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+
+#: src/support/Package.cpp.in:709
+#, fuzzy
+msgid "Directory not found"
+msgstr "Dizge bulunamadý!"
+
 #: src/support/os_win32.cpp:335
 #, fuzzy
 msgid "System file not found"
@@ -15022,57 +15233,6 @@ msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
 msgstr ""
-
-#: src/support/Package.C.in:448
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "Dizge bulunamadý!"
-
-#: src/support/Package.C.in:449
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.C.in:569
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.C.in:654 src/support/Package.C.in:681
-#, fuzzy
-msgid "File not found"
-msgstr "Dizge bulunamadý!"
-
-#: src/support/Package.C.in:655
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.C.in:682
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.C.in:707
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.C.in:709
-#, fuzzy
-msgid "Directory not found"
-msgstr "Dizge bulunamadý!"
 
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
@@ -15182,167 +15342,16 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Daktilo"
 
-#: src/text.cpp:133
-msgid "Unknown layout"
-msgstr "Bilinmeyen yerleþim"
-
-#: src/text.cpp:134
-#, c-format
-msgid ""
-"Layout '%1$s' does not exist in textclass '%2$s'\n"
-"Trying to use the default instead.\n"
-msgstr ""
-
-#: src/text.cpp:165
 #, fuzzy
-msgid "Unknown Inset"
-msgstr "Bilinmeyen fonksiyon."
+#~ msgid "Insert glossary entry"
+#~ msgstr "Ýndeks giriþi ekle"
 
-#: src/text.cpp:271 src/text.cpp:284
 #, fuzzy
-msgid "Change tracking error"
-msgstr "Dil deðiþtir"
+#~ msgid "Glo"
+#~ msgstr "&Genel"
 
-#: src/text.cpp:272
-#, c-format
-msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
-
-#: src/text.cpp:285
-#, c-format
-msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
-
-#: src/text.cpp:292
-#, fuzzy
-msgid "Unknown token"
-msgstr "Bilinmeyen fonksiyon."
-
-#: src/text.cpp:726
-msgid ""
-"You cannot insert a space at the beginning of a paragraph. Please read the "
-"Tutorial."
-msgstr "Paragraf baþýna boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
-
-#: src/text.cpp:737
-msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Böyle iki boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
-
-#: src/text.cpp:1703
-#, fuzzy
-msgid "[Change Tracking] "
-msgstr "Dil deðiþtir"
-
-#: src/text.cpp:1709
-#, fuzzy
-msgid "Change: "
-msgstr "Sayfa: "
-
-#: src/text.cpp:1713
-msgid " at "
-msgstr ""
-
-#: src/text.cpp:1723
-#, c-format
-msgid "Font: %1$s"
-msgstr "Font: %1$s"
-
-#: src/text.cpp:1728
-#, c-format
-msgid ", Depth: %1$d"
-msgstr ", Derinlik: %1$d"
-
-#: src/text.cpp:1734
-msgid ", Spacing: "
-msgstr ", Aralýk: "
-
-#: src/text.cpp:1746
-msgid "Other ("
-msgstr "Diðer ("
-
-#: src/text.cpp:1755
-#, fuzzy
-msgid ", Inset: "
-msgstr ", Derinlik: "
-
-#: src/text.cpp:1756
-msgid ", Paragraph: "
-msgstr ", Paragraf: "
-
-#: src/text.cpp:1757
-msgid ", Id: "
-msgstr ", Ad: "
-
-#: src/text.cpp:1758
-msgid ", Position: "
-msgstr ", Konum: "
-
-#: src/text.cpp:1764
-msgid ", Char: 0x"
-msgstr ""
-
-#: src/text.cpp:1766
-msgid ", Boundary: "
-msgstr ", Sýnýr: "
-
-#: src/text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-
-#: src/text2.cpp:582
-msgid "Nothing to index!"
-msgstr "Ýndeksleyecek bir þey yok!"
-
-#: src/text2.cpp:584
-msgid "Cannot index more than one paragraph!"
-msgstr "Birden fazla paragraf indekslenemez!"
-
-#: src/text3.cpp:721
-msgid "Unknown spacing argument: "
-msgstr ""
-
-#: src/text3.cpp:894
-msgid "Layout "
-msgstr ""
-
-#: src/text3.cpp:895
-msgid " not known"
-msgstr " bilinmiyor"
-
-#: src/text3.cpp:1417 src/text3.cpp:1429
-msgid "Character set"
-msgstr "Karakter seti"
-
-#: src/text3.cpp:1560
-msgid "Paragraph layout set"
-msgstr ""
-
-#: src/VSpace.cpp:490
-msgid "Default skip"
-msgstr "Öntanýmlý aralýk"
-
-#: src/VSpace.cpp:493
-msgid "Small skip"
-msgstr "Küçük aralýk"
-
-#: src/VSpace.cpp:496
-msgid "Medium skip"
-msgstr "Orta aralýk"
-
-#: src/VSpace.cpp:499
-msgid "Big skip"
-msgstr "Büyük aralýk"
-
-#: src/VSpace.cpp:502
-msgid "Vertical fill"
-msgstr "Düþey doldurma"
-
-#: src/VSpace.cpp:509
-#, fuzzy
-msgid "protected"
-msgstr "Korumalý Boþluk|o"
+#~ msgid "theorem"
+#~ msgstr "teorem"
 
 #, fuzzy
 #~ msgid "TeX Code:"

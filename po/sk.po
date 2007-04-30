@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-26 00:24-0500\n"
+"POT-Creation-Date: 2007-04-30 14:08+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -117,61 +117,61 @@ msgstr "&Veµkos»:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
-#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/Font.cpp:518 src/frontends/controllers/ControlDocument.cpp:49
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
-#: src/frontends/qt4/QDocument.cpp:229 src/LyXFont.cpp:518
-#: src/tex-strings.cpp:68 src/tex-strings.cpp:79 src/tex-strings.cpp:89
+#: src/frontends/qt4/QDocument.cpp:229 src/tex-strings.cpp:68
+#: src/tex-strings.cpp:79 src/tex-strings.cpp:89
 msgid "Default"
 msgstr "©tandardný"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:71
-#: src/frontends/controllers/frontend_helpers.cpp:960 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:960
 msgid "Tiny"
 msgstr "Drobné"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:76
-#: src/frontends/controllers/frontend_helpers.cpp:964 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:964
 msgid "Smallest"
 msgstr "Najmen¹ie"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:81
-#: src/frontends/controllers/frontend_helpers.cpp:968 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:968
 msgid "Smaller"
 msgstr "Men¹í"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:86
-#: src/frontends/controllers/frontend_helpers.cpp:972 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:972
 msgid "Small"
 msgstr "Malé"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:91
-#: src/frontends/controllers/frontend_helpers.cpp:976 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:976
 msgid "Normal"
 msgstr "Normálny"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:96
-#: src/frontends/controllers/frontend_helpers.cpp:980 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:980
 msgid "Large"
 msgstr "Veµké"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:101
-#: src/frontends/controllers/frontend_helpers.cpp:984 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:984
 msgid "Larger"
 msgstr "Väè¹í"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:106
-#: src/frontends/controllers/frontend_helpers.cpp:988 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:988
 msgid "Largest"
 msgstr "Najväè¹ie"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:111
-#: src/frontends/controllers/frontend_helpers.cpp:992 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:992
 msgid "Huge"
 msgstr "Obrovské"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:116
-#: src/frontends/controllers/frontend_helpers.cpp:996 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:996
 msgid "Huger"
 msgstr "Ozrutné"
 
@@ -481,11 +481,11 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#: src/frontends/qt4/ui/DocumentUi.ui:152 src/buffer_funcs.cpp:101
-#: src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/lyx_cb.cpp:117 src/lyx_cb.cpp:170
-#: src/LyXFunc.cpp:727 src/LyXFunc.cpp:900 src/LyXFunc.cpp:1066
-#: src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:727 src/LyXFunc.cpp:900
+#: src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
+#: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
 msgstr "&Zru¹i»"
 
@@ -513,7 +513,7 @@ msgstr "LyX: Prida» BibTeX databázu"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/frontends/qt4/Qt2BC.h:36 src/LyXFunc.cpp:843
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:843 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Zru¹i»"
 
@@ -605,12 +605,12 @@ msgstr "®iadne"
 
 #: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.cpp:270
 #: src/frontends/qt4/QBox.cpp:377 src/frontends/qt4/QBox.cpp:385
-#: src/insets/InsetBox.cpp:158
+#: src/insets/InsetBox.cpp:157
 msgid "Parbox"
 msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.cpp:378
-#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:160
+#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:159
 msgid "Minipage"
 msgstr "Minipage"
 
@@ -1550,8 +1550,8 @@ msgstr "O&dsadi» odsek"
 msgid "L&ine spacing:"
 msgstr "R&iadkovanie:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/frontends/qt4/QDocument.cpp:123
-#: src/text.cpp:1737
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1737
+#: src/frontends/qt4/QDocument.cpp:123
 msgid "Single"
 msgstr "Jednoduché"
 
@@ -1559,8 +1559,8 @@ msgstr "Jednoduché"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/frontends/qt4/QDocument.cpp:127
-#: src/text.cpp:1743
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1743
+#: src/frontends/qt4/QDocument.cpp:127
 msgid "Double"
 msgstr "Dvojité"
 
@@ -1693,7 +1693,7 @@ msgstr ""
 msgid "Display &Graphics:"
 msgstr "Zobrazi» &grafiku:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/LyXFont.cpp:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:69
 msgid "Off"
 msgstr "Vypnuté"
 
@@ -1701,7 +1701,7 @@ msgstr "Vypnuté"
 msgid "No math"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/LyXFont.cpp:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:69
 msgid "On"
 msgstr "Zapnuté"
 
@@ -7331,7 +7331,7 @@ msgstr "Holandsky"
 msgid "English"
 msgstr "Anglický jazyk"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Esperanto"
 msgstr "Esperanto"
 
@@ -7379,91 +7379,96 @@ msgstr "Taliansky"
 msgid "Kazakh"
 msgstr "Kaza¹sky"
 
-#: lib/languages:41
+#: lib/languages:40
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Jednotka ¹írky"
 
-#: lib/languages:42
+#: lib/languages:41
 #, fuzzy
 msgid "Latvian"
 msgstr "Chorvátsky"
 
-#: lib/languages:43
+#: lib/languages:42
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:44
+#: lib/languages:43
 msgid "Magyar"
 msgstr "Maïarsky"
 
-#: lib/languages:45
+#: lib/languages:44
 msgid "Norsk"
 msgstr "Nórsky"
 
-#: lib/languages:46
+#: lib/languages:45
 #, fuzzy
 msgid "Nynorsk"
 msgstr "Nórsky"
 
-#: lib/languages:47
+#: lib/languages:46
 msgid "Polish"
 msgstr "Poµsky"
 
-#: lib/languages:48
+#: lib/languages:47
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portugalsky"
 
-#: lib/languages:49
+#: lib/languages:48
 msgid "Romanian"
 msgstr "Rumunsky"
 
-#: lib/languages:50
+#: lib/languages:49
 msgid "Russian"
 msgstr "Rusky"
 
-#: lib/languages:51
+#: lib/languages:50
 msgid "Scottish"
 msgstr "©kótsky"
 
-#: lib/languages:52
+#: lib/languages:51
 msgid "Serbian"
 msgstr "Srbsky"
 
-#: lib/languages:53
+#: lib/languages:52
 msgid "Serbo-Croatian"
 msgstr "Srbo-chorvátsky"
 
-#: lib/languages:54
+#: lib/languages:53
 msgid "Spanish"
 msgstr "©panielsky"
 
-#: lib/languages:55
+#: lib/languages:54
 msgid "Slovak"
 msgstr "Slovensky"
 
-#: lib/languages:56
+#: lib/languages:55
 msgid "Slovene"
 msgstr "Slovinsky"
 
-#: lib/languages:57
+#: lib/languages:56
 msgid "Swedish"
 msgstr "©védsky"
 
-#: lib/languages:58
+#: lib/languages:57
 msgid "Thai"
 msgstr "Thajsky"
 
-#: lib/languages:59
+#: lib/languages:58
 msgid "Turkish"
 msgstr "Turecky"
 
-#: lib/languages:60
+#: lib/languages:59
 msgid "Ukrainian"
 msgstr "Ukrajinsky"
 
-#: lib/languages:63
+#: lib/languages:60
+#, fuzzy
+msgid "Upper Sorbian"
+msgstr "Srbsky"
+
+#: lib/languages:61
 msgid "Welsh"
 msgstr "Walesky"
 
@@ -7890,7 +7895,7 @@ msgid "Index Entry|I"
 msgstr "Polo¾ka indexu|i"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.cpp:228
-msgid "Glossary Entry"
+msgid "Nomenclature Entry"
 msgstr ""
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
@@ -8131,8 +8136,9 @@ msgid "Index List|I"
 msgstr "Index |I"
 
 #: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:378
-msgid "Glossary|G"
-msgstr ""
+#, fuzzy
+msgid "Nomenclature|N"
+msgstr "Poznámka|P"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:379
 msgid "BibTeX Bibliography...|B"
@@ -8362,19 +8368,18 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Znova|Z"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.cpp:449 src/text3.cpp:835
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:835
+#: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Vystrihnú»"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.cpp:457 src/text3.cpp:840
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:840
+#: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Kopírova»"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:428
-#: src/text3.cpp:816
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:816
+#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Vlo¾i»"
 
@@ -8704,7 +8709,7 @@ msgstr ""
 msgid "File|e"
 msgstr "Súbor|S"
 
-#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:154
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:153
 msgid "Box"
 msgstr ""
 
@@ -8724,7 +8729,7 @@ msgstr "Polo¾ka indexu"
 
 #: lib/ui/stdmenus.inc:305
 #, fuzzy
-msgid "Glossary Entry...|y"
+msgid "Nomenclature Entry...|y"
 msgstr "Vlo¾i» polo¾ku indexu"
 
 #: lib/ui/stdmenus.inc:307
@@ -9022,7 +9027,7 @@ msgstr "Vlo¾i» polo¾ku indexu"
 
 #: lib/ui/stdtoolbars.inc:95
 #, fuzzy
-msgid "Insert glossary entry"
+msgid "Insert nomenclature entry"
 msgstr "Vlo¾i» polo¾ku indexu"
 
 #: lib/ui/stdtoolbars.inc:97
@@ -11671,460 +11676,6 @@ msgstr "Na stred"
 msgid "intercal"
 msgstr "Doslovné"
 
-#: src/BufferView.cpp:234
-#, c-format
-msgid ""
-"The document %1$s is already loaded.\n"
-"\n"
-"Do you want to revert to the saved version?"
-msgstr ""
-
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
-#, fuzzy
-msgid "Revert to saved document?"
-msgstr "Obnovenie ulo¾enej verzie"
-
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
-#, fuzzy
-msgid "&Revert"
-msgstr "Vráti»|r"
-
-#: src/BufferView.cpp:238
-#, fuzzy
-msgid "&Switch to document"
-msgstr "Prepnú» na otvorenie dokumentu"
-
-#: src/BufferView.cpp:260
-#, c-format
-msgid ""
-"The document %1$s does not yet exist.\n"
-"\n"
-"Do you want to create a new document?"
-msgstr ""
-
-#: src/BufferView.cpp:263
-#, fuzzy
-msgid "Create new document?"
-msgstr "Vytvori» nový dokument s týmto názvom?"
-
-#: src/BufferView.cpp:264
-#, fuzzy
-msgid "&Create"
-msgstr "Uspo&riada»"
-
-#: src/BufferView.cpp:570
-#, fuzzy
-msgid "Save bookmark"
-msgstr "Ulo¾i» zálo¾ku 5"
-
-#: src/BufferView.cpp:765
-msgid "No further undo information"
-msgstr "Nie je viac informácií pre funkciu Vráti» spä»"
-
-#: src/BufferView.cpp:775
-msgid "No further redo information"
-msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
-
-#: src/BufferView.cpp:933
-msgid "Mark off"
-msgstr "Znaèka vypnutá"
-
-#: src/BufferView.cpp:940
-msgid "Mark on"
-msgstr "Znaèka zapnutá"
-
-#: src/BufferView.cpp:947
-msgid "Mark removed"
-msgstr "Znaèka odstránená"
-
-#: src/BufferView.cpp:950
-msgid "Mark set"
-msgstr "Znaèka nastavená"
-
-#: src/BufferView.cpp:996
-#, c-format
-msgid "%1$d words in selection."
-msgstr "%1$d slov vo výbere."
-
-#: src/BufferView.cpp:999
-#, c-format
-msgid "%1$d words in document."
-msgstr "%1$d slov v dokumente."
-
-#: src/BufferView.cpp:1004
-msgid "One word in selection."
-msgstr "Jedno slovo vo výbere."
-
-#: src/BufferView.cpp:1006
-msgid "One word in document."
-msgstr "Jedno slovo v dokumente."
-
-#: src/BufferView.cpp:1009
-msgid "Count words"
-msgstr "Poèet slov"
-
-#: src/BufferView.cpp:1588
-msgid "Select LyX document to insert"
-msgstr "Zvoµte LyX dokument na vlo¾enie"
-
-#: src/BufferView.cpp:1590 src/frontends/controllers/ControlBibtex.cpp:52
-#: src/frontends/controllers/ControlBibtex.cpp:64
-#: src/frontends/controllers/ControlExternal.cpp:169
-#: src/frontends/controllers/ControlGraphics.cpp:96
-#: src/frontends/controllers/ControlInclude.cpp:91 src/lyx_cb.cpp:136
-#: src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905 src/LyXFunc.cpp:1978
-msgid "Documents|#o#O"
-msgstr "Dokumenty|#o#O"
-
-#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
-msgid "Examples|#E#e"
-msgstr "Príklady|#P#p"
-
-#: src/BufferView.cpp:1595 src/lyx_cb.cpp:142 src/LyXFunc.cpp:1871
-#: src/LyXFunc.cpp:1910
-msgid "LyX Documents (*.lyx)"
-msgstr "LyX dokumenty (*.lyx)"
-
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
-#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
-msgid "Canceled."
-msgstr "Zru¹ené."
-
-#: src/BufferView.cpp:1618
-#, c-format
-msgid "Inserting document %1$s..."
-msgstr "Vkladám dokument %1$s..."
-
-#: src/BufferView.cpp:1629
-#, c-format
-msgid "Document %1$s inserted."
-msgstr "Dokument %1$s bol vlo¾ený."
-
-#: src/BufferView.cpp:1631
-#, c-format
-msgid "Could not insert document %1$s"
-msgstr "Nie je mo¾né vlo¾i» dokument %1$s"
-
-#: src/Chktex.cpp:71
-#, c-format
-msgid "ChkTeX warning id # %1$d"
-msgstr "Varovanie chktexu id # %1$d"
-
-#: src/Chktex.cpp:73
-msgid "ChkTeX warning id # "
-msgstr "Varovanie chktexu id # "
-
-#: src/CutAndPaste.cpp:433
-#, c-format
-msgid ""
-"Layout had to be changed from\n"
-"%1$s to %2$s\n"
-"because of class conversion from\n"
-"%3$s to %4$s"
-msgstr ""
-
-#: src/CutAndPaste.cpp:438
-msgid "Changed Layout"
-msgstr "Zmenené rozlo¾enie"
-
-#: src/CutAndPaste.cpp:457
-#, c-format
-msgid ""
-"Character style %1$s is undefined because of class conversion from\n"
-"%2$s to %3$s"
-msgstr ""
-
-#: src/CutAndPaste.cpp:464
-msgid "Undefined character style"
-msgstr "Nedefinovaný znakový ¹týl"
-
-#: src/LColor.cpp:95
-msgid "none"
-msgstr "¾iadna"
-
-#: src/LColor.cpp:96
-msgid "black"
-msgstr "èierna"
-
-#: src/LColor.cpp:97
-msgid "white"
-msgstr "biela"
-
-#: src/LColor.cpp:98
-msgid "red"
-msgstr "èervená"
-
-#: src/LColor.cpp:99
-msgid "green"
-msgstr "zelená"
-
-#: src/LColor.cpp:100
-msgid "blue"
-msgstr "modrá"
-
-#: src/LColor.cpp:101
-msgid "cyan"
-msgstr "modrozelená"
-
-#: src/LColor.cpp:102
-msgid "magenta"
-msgstr "fialová"
-
-#: src/LColor.cpp:103
-msgid "yellow"
-msgstr "¾ltá"
-
-#: src/LColor.cpp:104
-msgid "cursor"
-msgstr "kurzor"
-
-#: src/LColor.cpp:105
-msgid "background"
-msgstr "pozadie"
-
-#: src/LColor.cpp:106
-msgid "text"
-msgstr "text"
-
-#: src/LColor.cpp:107
-msgid "selection"
-msgstr "Výber"
-
-#: src/LColor.cpp:108
-msgid "LaTeX text"
-msgstr "LaTeX text"
-
-#: src/LColor.cpp:109
-msgid "previewed snippet"
-msgstr ""
-
-#: src/LColor.cpp:110 src/insets/InsetNote.cpp:311
-msgid "note"
-msgstr "poznámka"
-
-#: src/LColor.cpp:111
-msgid "note background"
-msgstr "poznámka na pozadí"
-
-#: src/LColor.cpp:112
-#, fuzzy
-msgid "comment"
-msgstr "Komentár"
-
-#: src/LColor.cpp:113
-#, fuzzy
-msgid "comment background"
-msgstr "pozadie matematiky"
-
-#: src/LColor.cpp:114
-#, fuzzy
-msgid "greyedout inset"
-msgstr "Otvorená príloha"
-
-#: src/LColor.cpp:115
-#, fuzzy
-msgid "greyedout inset background"
-msgstr "poznámka na pozadí"
-
-#: src/LColor.cpp:116
-msgid "shaded box"
-msgstr ""
-
-#: src/LColor.cpp:117
-msgid "depth bar"
-msgstr ""
-
-#: src/LColor.cpp:118
-msgid "language"
-msgstr "jazyk"
-
-#: src/LColor.cpp:119
-msgid "command inset"
-msgstr ""
-
-#: src/LColor.cpp:120
-msgid "command inset background"
-msgstr ""
-
-#: src/LColor.cpp:121
-msgid "command inset frame"
-msgstr ""
-
-#: src/LColor.cpp:122
-msgid "special character"
-msgstr "©peciálny znak"
-
-#: src/LColor.cpp:123
-msgid "math"
-msgstr "matematika"
-
-#: src/LColor.cpp:124
-msgid "math background"
-msgstr "pozadie matematiky"
-
-#: src/LColor.cpp:125
-msgid "graphics background"
-msgstr ""
-
-#: src/LColor.cpp:126
-msgid "Math macro background"
-msgstr ""
-
-#: src/LColor.cpp:127
-msgid "math frame"
-msgstr "matematický re¾im"
-
-#: src/LColor.cpp:128
-msgid "math line"
-msgstr "matematický panel"
-
-#: src/LColor.cpp:129
-msgid "caption frame"
-msgstr ""
-
-#: src/LColor.cpp:130
-msgid "collapsable inset text"
-msgstr ""
-
-#: src/LColor.cpp:131
-msgid "collapsable inset frame"
-msgstr ""
-
-#: src/LColor.cpp:132
-msgid "inset background"
-msgstr ""
-
-#: src/LColor.cpp:133
-msgid "inset frame"
-msgstr ""
-
-#: src/LColor.cpp:134
-msgid "LaTeX error"
-msgstr "LaTeX chyba"
-
-#: src/LColor.cpp:135
-msgid "end-of-line marker"
-msgstr "oznaèenie konca riadku"
-
-#: src/LColor.cpp:136
-#, fuzzy
-msgid "appendix marker"
-msgstr "panel prílohy"
-
-#: src/LColor.cpp:137
-#, fuzzy
-msgid "change bar"
-msgstr "®iadne zmeny"
-
-#: src/LColor.cpp:138
-#, fuzzy
-msgid "Deleted text"
-msgstr "latex príloha"
-
-#: src/LColor.cpp:139
-#, fuzzy
-msgid "Added text"
-msgstr "latex príloha"
-
-#: src/LColor.cpp:140
-msgid "added space markers"
-msgstr ""
-
-#: src/LColor.cpp:141
-msgid "top/bottom line"
-msgstr "horná/dolná èiara"
-
-#: src/LColor.cpp:142
-#, fuzzy
-msgid "table line"
-msgstr "Oznaèovanie"
-
-#: src/LColor.cpp:144
-#, fuzzy
-msgid "table on/off line"
-msgstr "Zvoli» po koniec riadku"
-
-#: src/LColor.cpp:146
-msgid "bottom area"
-msgstr "dolná oblas»"
-
-#: src/LColor.cpp:147
-msgid "page break"
-msgstr "zlom strany"
-
-#: src/LColor.cpp:148
-#, fuzzy
-msgid "frame of button"
-msgstr "µavý okraj tlaèítka"
-
-#: src/LColor.cpp:149
-msgid "button background"
-msgstr "pozadie tlaèítka"
-
-#: src/LColor.cpp:150
-#, fuzzy
-msgid "button background under focus"
-msgstr "pozadie tlaèítka"
-
-#: src/LColor.cpp:151
-msgid "inherit"
-msgstr "zdedené"
-
-#: src/LColor.cpp:152
-msgid "ignore"
-msgstr "ignorova»"
-
-#: src/LaTeX.cpp:95
-#, fuzzy, c-format
-msgid "Waiting for LaTeX run number %1$d"
-msgstr "Spustenie LaTeXu è. %1$d"
-
-#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
-msgid "Running MakeIndex."
-msgstr "MakeIndex spustený."
-
-#: src/LaTeX.cpp:322
-msgid "Running BibTeX."
-msgstr "BibTeX spustený."
-
-#: src/LaTeX.cpp:462
-#, fuzzy
-msgid "Running MakeIndex for nomencl."
-msgstr "MakeIndex spustený."
-
-#: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
-#: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
-msgid "No Documents Open!"
-msgstr "®iadny dokument nie je otvorený!"
-
-#: src/MenuBackend.cpp:540
-#, fuzzy
-msgid "Plain Text"
-msgstr "Jednoduchý text"
-
-#: src/MenuBackend.cpp:542
-#, fuzzy
-msgid "Plain Text, Join Lines"
-msgstr "Ascii text ako riadky"
-
-#: src/MenuBackend.cpp:714
-#, fuzzy
-msgid "Master Document"
-msgstr "Ulo¾i» dokument"
-
-#: src/MenuBackend.cpp:746
-msgid "No Table of contents"
-msgstr "Bez obsahu"
-
-#: src/MenuBackend.cpp:791
-msgid " (auto)"
-msgstr ""
-
-#: src/SpellBase.cpp:51
-#, fuzzy
-msgid "Native OS API not yet supported."
-msgstr "E¹te nie je podporované"
-
 #: src/Buffer.cpp:229
 #, fuzzy
 msgid "Could not remove temporary directory"
@@ -12145,7 +11696,7 @@ msgstr "do zvolenej triedy dokumentu"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:461 src/text.cpp:293
+#: src/Buffer.cpp:461 src/Text.cpp:293
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámy token: %1$s %2$s\n"
@@ -12284,102 +11835,6 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex úspe¹ne skonèil."
 
-#: src/buffer_funcs.cpp:81
-#, c-format
-msgid ""
-"The specified document\n"
-"%1$s\n"
-"could not be read."
-msgstr ""
-
-#: src/buffer_funcs.cpp:83
-#, fuzzy
-msgid "Could not read document"
-msgstr "Nedá sa otvori» dokument "
-
-#: src/buffer_funcs.cpp:96
-#, fuzzy, c-format
-msgid ""
-"An emergency save of the document %1$s exists.\n"
-"\n"
-"Recover emergency save?"
-msgstr "Existuje bezpeènostná kópia tohoto dokumentu!"
-
-#: src/buffer_funcs.cpp:99
-msgid "Load emergency save?"
-msgstr ""
-
-#: src/buffer_funcs.cpp:100
-#, fuzzy
-msgid "&Recover"
-msgstr "&Odstráni»"
-
-#: src/buffer_funcs.cpp:100
-msgid "&Load Original"
-msgstr ""
-
-#: src/buffer_funcs.cpp:123
-#, c-format
-msgid ""
-"The backup of the document %1$s is newer.\n"
-"\n"
-"Load the backup instead?"
-msgstr ""
-
-#: src/buffer_funcs.cpp:126
-#, fuzzy
-msgid "Load backup?"
-msgstr "Prejs» dozadu"
-
-#: src/buffer_funcs.cpp:127
-#, fuzzy
-msgid "&Load backup"
-msgstr "&Ís» spä»"
-
-#: src/buffer_funcs.cpp:127
-msgid "Load &original"
-msgstr ""
-
-#: src/buffer_funcs.cpp:166
-#, fuzzy, c-format
-msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
-
-#: src/buffer_funcs.cpp:168
-#, fuzzy
-msgid "Retrieve from version control?"
-msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
-
-#: src/buffer_funcs.cpp:169
-#, fuzzy
-msgid "&Retrieve"
-msgstr "O&bnovi»"
-
-#: src/buffer_funcs.cpp:202
-#, c-format
-msgid ""
-"The specified document template\n"
-"%1$s\n"
-"could not be read."
-msgstr ""
-
-#: src/buffer_funcs.cpp:204
-#, fuzzy
-msgid "Could not read template"
-msgstr "Nemô¾em pracova» so súborom:"
-
-#: src/buffer_funcs.cpp:521
-msgid "\\arabic{enumi}."
-msgstr ""
-
-#: src/buffer_funcs.cpp:527
-msgid "\\roman{enumiii}."
-msgstr ""
-
-#: src/buffer_funcs.cpp:530
-msgid "\\Alph{enumiv}."
-msgstr ""
-
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
 msgid ""
@@ -12435,31 +11890,385 @@ msgstr "Dokument nie je mo¾né ulo¾i»!"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nebude schopný vyprodukova» správne výstup."
 
-#: src/bufferview_funcs.cpp:308
-msgid "No more insets"
-msgstr "U¾ nie je viac príloh"
-
-#: src/client/debug.cpp:44 src/debug.cpp:44
-msgid "No debugging message"
-msgstr "®iadne správy pre ladenie"
-
-#: src/client/debug.cpp:45 src/debug.cpp:45
-msgid "General information"
-msgstr "V¹eobecné informácie"
-
-#: src/client/debug.cpp:46 src/debug.cpp:70
-#, fuzzy
-msgid "Developers' general debug messages"
-msgstr "V¹etky ladiace informácie"
-
-#: src/client/debug.cpp:47 src/debug.cpp:71
-msgid "All debugging messages"
-msgstr "V¹etky ladiace informácie"
-
-#: src/client/debug.cpp:91 src/debug.cpp:115
+#: src/BufferView.cpp:234
 #, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Ladenie `%1$s' (%2$s)"
+msgid ""
+"The document %1$s is already loaded.\n"
+"\n"
+"Do you want to revert to the saved version?"
+msgstr ""
+
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
+#, fuzzy
+msgid "Revert to saved document?"
+msgstr "Obnovenie ulo¾enej verzie"
+
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
+#, fuzzy
+msgid "&Revert"
+msgstr "Vráti»|r"
+
+#: src/BufferView.cpp:238
+#, fuzzy
+msgid "&Switch to document"
+msgstr "Prepnú» na otvorenie dokumentu"
+
+#: src/BufferView.cpp:260
+#, c-format
+msgid ""
+"The document %1$s does not yet exist.\n"
+"\n"
+"Do you want to create a new document?"
+msgstr ""
+
+#: src/BufferView.cpp:263
+#, fuzzy
+msgid "Create new document?"
+msgstr "Vytvori» nový dokument s týmto názvom?"
+
+#: src/BufferView.cpp:264
+#, fuzzy
+msgid "&Create"
+msgstr "Uspo&riada»"
+
+#: src/BufferView.cpp:570
+#, fuzzy
+msgid "Save bookmark"
+msgstr "Ulo¾i» zálo¾ku 5"
+
+#: src/BufferView.cpp:765
+msgid "No further undo information"
+msgstr "Nie je viac informácií pre funkciu Vráti» spä»"
+
+#: src/BufferView.cpp:775
+msgid "No further redo information"
+msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
+
+#: src/BufferView.cpp:933
+msgid "Mark off"
+msgstr "Znaèka vypnutá"
+
+#: src/BufferView.cpp:940
+msgid "Mark on"
+msgstr "Znaèka zapnutá"
+
+#: src/BufferView.cpp:947
+msgid "Mark removed"
+msgstr "Znaèka odstránená"
+
+#: src/BufferView.cpp:950
+msgid "Mark set"
+msgstr "Znaèka nastavená"
+
+#: src/BufferView.cpp:996
+#, c-format
+msgid "%1$d words in selection."
+msgstr "%1$d slov vo výbere."
+
+#: src/BufferView.cpp:999
+#, c-format
+msgid "%1$d words in document."
+msgstr "%1$d slov v dokumente."
+
+#: src/BufferView.cpp:1004
+msgid "One word in selection."
+msgstr "Jedno slovo vo výbere."
+
+#: src/BufferView.cpp:1006
+msgid "One word in document."
+msgstr "Jedno slovo v dokumente."
+
+#: src/BufferView.cpp:1009
+msgid "Count words"
+msgstr "Poèet slov"
+
+#: src/BufferView.cpp:1588
+msgid "Select LyX document to insert"
+msgstr "Zvoµte LyX dokument na vlo¾enie"
+
+#: src/BufferView.cpp:1590 src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905
+#: src/LyXFunc.cpp:1978 src/callback.cpp:136
+#: src/frontends/controllers/ControlBibtex.cpp:52
+#: src/frontends/controllers/ControlBibtex.cpp:64
+#: src/frontends/controllers/ControlExternal.cpp:169
+#: src/frontends/controllers/ControlGraphics.cpp:96
+#: src/frontends/controllers/ControlInclude.cpp:91
+msgid "Documents|#o#O"
+msgstr "Dokumenty|#o#O"
+
+#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
+msgid "Examples|#E#e"
+msgstr "Príklady|#P#p"
+
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1871 src/LyXFunc.cpp:1910
+#: src/callback.cpp:142
+msgid "LyX Documents (*.lyx)"
+msgstr "LyX dokumenty (*.lyx)"
+
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
+#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
+msgid "Canceled."
+msgstr "Zru¹ené."
+
+#: src/BufferView.cpp:1618
+#, c-format
+msgid "Inserting document %1$s..."
+msgstr "Vkladám dokument %1$s..."
+
+#: src/BufferView.cpp:1629
+#, c-format
+msgid "Document %1$s inserted."
+msgstr "Dokument %1$s bol vlo¾ený."
+
+#: src/BufferView.cpp:1631
+#, c-format
+msgid "Could not insert document %1$s"
+msgstr "Nie je mo¾né vlo¾i» dokument %1$s"
+
+#: src/Chktex.cpp:71
+#, c-format
+msgid "ChkTeX warning id # %1$d"
+msgstr "Varovanie chktexu id # %1$d"
+
+#: src/Chktex.cpp:73
+msgid "ChkTeX warning id # "
+msgstr "Varovanie chktexu id # "
+
+#: src/Color.cpp:268
+msgid "none"
+msgstr "¾iadna"
+
+#: src/Color.cpp:269
+msgid "black"
+msgstr "èierna"
+
+#: src/Color.cpp:270
+msgid "white"
+msgstr "biela"
+
+#: src/Color.cpp:271
+msgid "red"
+msgstr "èervená"
+
+#: src/Color.cpp:272
+msgid "green"
+msgstr "zelená"
+
+#: src/Color.cpp:273
+msgid "blue"
+msgstr "modrá"
+
+#: src/Color.cpp:274
+msgid "cyan"
+msgstr "modrozelená"
+
+#: src/Color.cpp:275
+msgid "magenta"
+msgstr "fialová"
+
+#: src/Color.cpp:276
+msgid "yellow"
+msgstr "¾ltá"
+
+#: src/Color.cpp:277
+msgid "cursor"
+msgstr "kurzor"
+
+#: src/Color.cpp:278
+msgid "background"
+msgstr "pozadie"
+
+#: src/Color.cpp:279
+msgid "text"
+msgstr "text"
+
+#: src/Color.cpp:280
+msgid "selection"
+msgstr "Výber"
+
+#: src/Color.cpp:281
+msgid "LaTeX text"
+msgstr "LaTeX text"
+
+#: src/Color.cpp:282
+msgid "previewed snippet"
+msgstr ""
+
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:310
+msgid "note"
+msgstr "poznámka"
+
+#: src/Color.cpp:284
+msgid "note background"
+msgstr "poznámka na pozadí"
+
+#: src/Color.cpp:285
+#, fuzzy
+msgid "comment"
+msgstr "Komentár"
+
+#: src/Color.cpp:286
+#, fuzzy
+msgid "comment background"
+msgstr "pozadie matematiky"
+
+#: src/Color.cpp:287
+#, fuzzy
+msgid "greyedout inset"
+msgstr "Otvorená príloha"
+
+#: src/Color.cpp:288
+#, fuzzy
+msgid "greyedout inset background"
+msgstr "poznámka na pozadí"
+
+#: src/Color.cpp:289
+msgid "shaded box"
+msgstr ""
+
+#: src/Color.cpp:290
+msgid "depth bar"
+msgstr ""
+
+#: src/Color.cpp:291
+msgid "language"
+msgstr "jazyk"
+
+#: src/Color.cpp:292
+msgid "command inset"
+msgstr ""
+
+#: src/Color.cpp:293
+msgid "command inset background"
+msgstr ""
+
+#: src/Color.cpp:294
+msgid "command inset frame"
+msgstr ""
+
+#: src/Color.cpp:295
+msgid "special character"
+msgstr "©peciálny znak"
+
+#: src/Color.cpp:296
+msgid "math"
+msgstr "matematika"
+
+#: src/Color.cpp:297
+msgid "math background"
+msgstr "pozadie matematiky"
+
+#: src/Color.cpp:298
+msgid "graphics background"
+msgstr ""
+
+#: src/Color.cpp:299
+msgid "Math macro background"
+msgstr ""
+
+#: src/Color.cpp:300
+msgid "math frame"
+msgstr "matematický re¾im"
+
+#: src/Color.cpp:301
+msgid "math line"
+msgstr "matematický panel"
+
+#: src/Color.cpp:302
+msgid "caption frame"
+msgstr ""
+
+#: src/Color.cpp:303
+msgid "collapsable inset text"
+msgstr ""
+
+#: src/Color.cpp:304
+msgid "collapsable inset frame"
+msgstr ""
+
+#: src/Color.cpp:305
+msgid "inset background"
+msgstr ""
+
+#: src/Color.cpp:306
+msgid "inset frame"
+msgstr ""
+
+#: src/Color.cpp:307
+msgid "LaTeX error"
+msgstr "LaTeX chyba"
+
+#: src/Color.cpp:308
+msgid "end-of-line marker"
+msgstr "oznaèenie konca riadku"
+
+#: src/Color.cpp:309
+#, fuzzy
+msgid "appendix marker"
+msgstr "panel prílohy"
+
+#: src/Color.cpp:310
+#, fuzzy
+msgid "change bar"
+msgstr "®iadne zmeny"
+
+#: src/Color.cpp:311
+#, fuzzy
+msgid "Deleted text"
+msgstr "latex príloha"
+
+#: src/Color.cpp:312
+#, fuzzy
+msgid "Added text"
+msgstr "latex príloha"
+
+#: src/Color.cpp:313
+msgid "added space markers"
+msgstr ""
+
+#: src/Color.cpp:314
+msgid "top/bottom line"
+msgstr "horná/dolná èiara"
+
+#: src/Color.cpp:315
+#, fuzzy
+msgid "table line"
+msgstr "Oznaèovanie"
+
+#: src/Color.cpp:317
+#, fuzzy
+msgid "table on/off line"
+msgstr "Zvoli» po koniec riadku"
+
+#: src/Color.cpp:319
+msgid "bottom area"
+msgstr "dolná oblas»"
+
+#: src/Color.cpp:320
+msgid "page break"
+msgstr "zlom strany"
+
+#: src/Color.cpp:321
+#, fuzzy
+msgid "frame of button"
+msgstr "µavý okraj tlaèítka"
+
+#: src/Color.cpp:322
+msgid "button background"
+msgstr "pozadie tlaèítka"
+
+#: src/Color.cpp:323
+#, fuzzy
+msgid "button background under focus"
+msgstr "pozadie tlaèítka"
+
+#: src/Color.cpp:324
+msgid "inherit"
+msgstr "zdedené"
+
+#: src/Color.cpp:325
+msgid "ignore"
+msgstr "ignorova»"
 
 #: src/Converter.cpp:332 src/Converter.cpp:476 src/Converter.cpp:499
 #: src/Converter.cpp:544
@@ -12533,104 +12342,29 @@ msgstr "je prázdny"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/debug.cpp:46
-msgid "Program initialisation"
-msgstr "Inicializácia programu"
-
-#: src/debug.cpp:47
-msgid "Keyboard events handling"
-msgstr "spravovanie udalostí klávesnice"
-
-#: src/debug.cpp:48
-msgid "GUI handling"
-msgstr "Spravovanie GUI"
-
-#: src/debug.cpp:49
-#, fuzzy
-msgid "Lyxlex grammar parser"
-msgstr "Analyzátor gramatiky Lyxlex"
-
-#: src/debug.cpp:50
-msgid "Configuration files reading"
-msgstr "Naèítavanie konfiguraèných súborov"
-
-#: src/debug.cpp:51
-msgid "Custom keyboard definition"
-msgstr "Vlastné definovaná klávesnica"
-
-#: src/debug.cpp:52
-msgid "LaTeX generation/execution"
-msgstr "Spú¹»anie/generovanie LaTeXu"
-
-#: src/debug.cpp:53
-msgid "Math editor"
-msgstr "Editor matematiky"
-
-#: src/debug.cpp:54
-msgid "Font handling"
-msgstr "Manipulácia s písmom"
-
-#: src/debug.cpp:55
-msgid "Textclass files reading"
-msgstr "Naèítavanie súborov s textovými triedami"
-
-#: src/debug.cpp:56
-msgid "Version control"
-msgstr "Kontrola verzií"
-
-#: src/debug.cpp:57
-msgid "External control interface"
-msgstr "Rozhranie externej kontroly"
-
-#: src/debug.cpp:58
-msgid "Keep *roff temporary files"
-msgstr "Uchova» doèasné *roff súbory"
-
-#: src/debug.cpp:59
-msgid "User commands"
-msgstr "Pou¾ívateµský príkaz"
-
-#: src/debug.cpp:60
-msgid "The LyX Lexxer"
-msgstr "LyX Lexxer"
-
-#: src/debug.cpp:61
-msgid "Dependency information"
-msgstr "Informácie o závislostiach"
-
-#: src/debug.cpp:62
-msgid "LyX Insets"
-msgstr "LyX prílohy"
-
-#: src/debug.cpp:63
-msgid "Files used by LyX"
-msgstr "Súbory pou¾ívané LyXom"
-
-#: src/debug.cpp:64
-msgid "Workarea events"
-msgstr "Udalosti pracovnej oblasti"
-
-#: src/debug.cpp:65
-msgid "Insettext/tabular messages"
+#: src/CutAndPaste.cpp:435
+#, c-format
+msgid ""
+"Layout had to be changed from\n"
+"%1$s to %2$s\n"
+"because of class conversion from\n"
+"%3$s to %4$s"
 msgstr ""
 
-#: src/debug.cpp:66
-msgid "Graphics conversion and loading"
-msgstr "Konverzia grafiky a naèítanie"
+#: src/CutAndPaste.cpp:440
+msgid "Changed Layout"
+msgstr "Zmenené rozlo¾enie"
 
-#: src/debug.cpp:67
-#, fuzzy
-msgid "Change tracking"
-msgstr "Zmeni» jazyk"
-
-#: src/debug.cpp:68
-#, fuzzy
-msgid "External template/inset messages"
-msgstr "Externé aplikácie"
-
-#: src/debug.cpp:69
-msgid "RowPainter profiling"
+#: src/CutAndPaste.cpp:459
+#, c-format
+msgid ""
+"Character style %1$s is undefined because of class conversion from\n"
+"%2$s to %3$s"
 msgstr ""
+
+#: src/CutAndPaste.cpp:466
+msgid "Undefined character style"
+msgstr "Nedefinovaný znakový ¹týl"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1062
 #, c-format
@@ -12645,8 +12379,8 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Zobrazi» súbor"
 
-#: src/Exporter.cpp:87 src/lyx_cb.cpp:170 src/LyXFunc.cpp:1066
-#: src/LyXFunc.cpp:2027
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027
+#: src/callback.cpp:170
 #, fuzzy
 msgid "&Over-write"
 msgstr "P&ísací stroj:"
@@ -12705,6 +12439,96 @@ msgstr "Dokument exportovaný ako "
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako "
 
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:870
+msgid "Roman"
+msgstr "Roman"
+
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:874
+msgid "Sans Serif"
+msgstr "Sans Serif"
+
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:878
+msgid "Typewriter"
+msgstr "Písací stroj"
+
+#: src/Font.cpp:52
+msgid "Symbol"
+msgstr "Symbol"
+
+#: src/Font.cpp:54 src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:66
+#: src/Font.cpp:69
+msgid "Inherit"
+msgstr "Zdedené"
+
+#: src/Font.cpp:54 src/Font.cpp:57 src/Font.cpp:61 src/Font.cpp:66
+#: src/Font.cpp:69
+msgid "Ignore"
+msgstr "Ignorova»"
+
+#: src/Font.cpp:57 src/frontends/controllers/frontend_helpers.cpp:900
+msgid "Medium"
+msgstr "Stredné"
+
+#: src/Font.cpp:57 src/frontends/controllers/frontend_helpers.cpp:904
+msgid "Bold"
+msgstr "Tuèné"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:926
+msgid "Upright"
+msgstr "Vzpriamený"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:930
+msgid "Italic"
+msgstr "Kurzíva"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:934
+msgid "Slanted"
+msgstr "Sklonený"
+
+#: src/Font.cpp:60
+msgid "Smallcaps"
+msgstr "Kapitálky"
+
+#: src/Font.cpp:65 src/frontends/controllers/frontend_helpers.cpp:1000
+msgid "Increase"
+msgstr "Nárast"
+
+#: src/Font.cpp:65 src/frontends/controllers/frontend_helpers.cpp:1004
+msgid "Decrease"
+msgstr "Zní¾enie"
+
+#: src/Font.cpp:69
+msgid "Toggle"
+msgstr "Prepnú»"
+
+#: src/Font.cpp:509
+#, c-format
+msgid "Emphasis %1$s, "
+msgstr "Zvýrazni» %1$s, "
+
+#: src/Font.cpp:512
+#, c-format
+msgid "Underline %1$s, "
+msgstr "Podèiarknu» %1$s, "
+
+#: src/Font.cpp:515
+#, c-format
+msgid "Noun %1$s, "
+msgstr "Kapitálky %1$s, "
+
+#: src/Font.cpp:520
+#, c-format
+msgid "Language: %1$s, "
+msgstr "Jazyk: %1$s, "
+
+#: src/Font.cpp:523
+#, c-format
+msgid "  Number %1$s"
+msgstr "  Èíslo %1$s"
+
 #: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292 src/Format.cpp:326
 msgid "Cannot view file"
 msgstr "Nemô¾em zobrazi» súbor"
@@ -12738,1538 +12562,6 @@ msgstr "®iadne informácie pre prezeranie %1$s"
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr ""
-
-#: src/frontends/LyXView.cpp:425
-msgid " (changed)"
-msgstr " (zmenený)"
-
-#: src/frontends/LyXView.cpp:429
-msgid " (read only)"
-msgstr " (iba pre èítanie)"
-
-#: src/frontends/WorkArea.cpp:242
-msgid "Formatting document..."
-msgstr "Formátujem dokument..."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:58
-msgid "ERROR: LyX wasn't able to read CREDITS file\n"
-msgstr "Chyba: LyXu sa nepodarilo naèíta» súbor CREDITS\n"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:59
-msgid "Please install correctly to estimate the great\n"
-msgstr "Prosím vykonajte správne in¹taláciu na ocenenie veµkého\n"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:60
-msgid "amount of work other people have done for the LyX project."
-msgstr "mno¾stva práce v¹etkých µudí, ktorí pracovali pre LyX projekt."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:67
-#, fuzzy
-msgid ""
-"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team"
-msgstr ""
-"LyX Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Team"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:73
-msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
-msgstr ""
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:79
-#, fuzzy
-msgid ""
-"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE.\n"
-"See the GNU General Public License for more details.\n"
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
-msgstr ""
-"LyX je ¹írený v nádeji, ¾e bude u¾itoèný, ale BEZ AKEJKO¥VEK ZÁRUKY; dokonca "
-"bez akejkoµvek OBCHODNEJ ZÁRUKY alebo VHODNOSTI K DANÉMU POU®ÍVANIU.\n"
-" Podrobnosti si pozrite v GNU General Public Licence.\n"
-"Kópiu tejto licencie by ste mali dosta» spolu s týmto programom; pokiaµ nie, "
-"tak napí¹te na The Free Software Foundation, Inc., 675 Mass Ave, Cambridge, "
-"MA 02139, USA. Slovenský preklad nájdete na http://www.linux.sk.  Èeský "
-"preklad je na http://www.freesoft.cz."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:87
-msgid "LyX Version "
-msgstr "LyX verzia "
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:92
-msgid "Library directory: "
-msgstr "Prieèinok kni¾níc: "
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:95
-msgid "User directory: "
-msgstr "Prieèinok pou¾ívateµa: "
-
-#: src/frontends/controllers/ControlBibtex.cpp:54
-#, fuzzy
-msgid "BibTeX Databases (*.bib)"
-msgstr "*.bib| BibTeX databázy (*.bib)"
-
-#: src/frontends/controllers/ControlBibtex.cpp:56
-msgid "Select a BibTeX database to add"
-msgstr ""
-
-#: src/frontends/controllers/ControlBibtex.cpp:66
-#, fuzzy
-msgid "BibTeX Styles (*.bst)"
-msgstr "BibTeX ¹týly"
-
-#: src/frontends/controllers/ControlBibtex.cpp:68
-msgid "Select a BibTeX style"
-msgstr "Vybra» BibTeX ¹týl"
-
-#: src/frontends/controllers/ControlBox.cpp:62
-msgid "No frame drawn"
-msgstr ""
-
-#: src/frontends/controllers/ControlBox.cpp:63
-msgid "Rectangular box"
-msgstr ""
-
-#: src/frontends/controllers/ControlBox.cpp:64
-msgid "Oval box, thin"
-msgstr ""
-
-#: src/frontends/controllers/ControlBox.cpp:65
-msgid "Oval box, thick"
-msgstr ""
-
-#: src/frontends/controllers/ControlBox.cpp:66
-msgid "Shadow box"
-msgstr ""
-
-#: src/frontends/controllers/ControlBox.cpp:67
-#, fuzzy
-msgid "Double box"
-msgstr "Dvojité"
-
-#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.cpp:286
-#: src/frontends/qt4/QBox.cpp:320
-msgid "Depth"
-msgstr "Håbka"
-
-#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.cpp:133
-#: src/frontends/qt4/QBox.cpp:289 src/frontends/qt4/QBox.cpp:323
-#: src/frontends/qt4/QBox.cpp:356
-msgid "Total Height"
-msgstr "Celková vý¹ka"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:870 src/LyXFont.cpp:52
-msgid "Roman"
-msgstr "Roman"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:874 src/LyXFont.cpp:52
-msgid "Sans Serif"
-msgstr "Sans Serif"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:878 src/LyXFont.cpp:52
-msgid "Typewriter"
-msgstr "Písací stroj"
-
-#: src/frontends/controllers/ControlErrorList.cpp:57
-#, c-format
-msgid "%1$s Errors (%2$s)"
-msgstr ""
-
-#: src/frontends/controllers/ControlExternal.cpp:163
-msgid "Select external file"
-msgstr "Zvoµte externý súbor"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Top left"
-msgstr "¥avý horný"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Bottom left"
-msgstr "¥avý dolný"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Baseline left"
-msgstr ""
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Top center"
-msgstr "Horný stredný"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Bottom center"
-msgstr "Dolný stredný"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-#, fuzzy
-msgid "Baseline center"
-msgstr "Zarovna» na stred|s"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Top right"
-msgstr "Horný pravý"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Bottom right"
-msgstr "Dolný pravý"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-#, fuzzy
-msgid "Baseline right"
-msgstr "Èiara vpravo|p"
-
-#: src/frontends/controllers/ControlGraphics.cpp:87
-msgid "Select graphics file"
-msgstr "Zvoµte grafický súbor"
-
-#: src/frontends/controllers/ControlGraphics.cpp:95
-msgid "Clipart|#C#c"
-msgstr "Klipart|#K#k"
-
-#: src/frontends/controllers/ControlInclude.cpp:78
-msgid "Select document to include"
-msgstr "Zvoµte dokument na vlo¾enie"
-
-#: src/frontends/controllers/ControlInclude.cpp:85
-msgid "LaTeX/LyX Documents (*.tex *.lyx)"
-msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
-
-#: src/frontends/controllers/ControlLog.cpp:81
-msgid "LaTeX Log"
-msgstr "Log LaTeXu"
-
-#: src/frontends/controllers/ControlLog.cpp:84
-msgid "Literate Programming Build Log"
-msgstr ""
-
-#: src/frontends/controllers/ControlLog.cpp:87
-msgid "lyx2lyx Error Log"
-msgstr "Záznam chýb lyx2lyx"
-
-#: src/frontends/controllers/ControlLog.cpp:90
-msgid "Version Control Log"
-msgstr "Záznam kontroly verzií"
-
-#: src/frontends/controllers/ControlLog.cpp:116
-msgid "No LaTeX log file found."
-msgstr "Logovací súbor LaTeXu nebol nájdený"
-
-#: src/frontends/controllers/ControlLog.cpp:119
-#, fuzzy
-msgid "No literate programming build log file found."
-msgstr "Logovací súbor kontroly verzií nebol nájdený."
-
-#: src/frontends/controllers/ControlLog.cpp:122
-#, fuzzy
-msgid "No lyx2lyx error log file found."
-msgstr "Logovací súbor LaTeXu nebol nájdený"
-
-#: src/frontends/controllers/ControlLog.cpp:125
-msgid "No version control log file found."
-msgstr "Logovací súbor kontroly verzií nebol nájdený."
-
-#: src/frontends/controllers/ControlPrefs.cpp:110
-msgid "Choose bind file"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:111
-msgid "LyX bind files (*.bind)"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:118
-msgid "Choose UI file"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:119
-#, fuzzy
-msgid "LyX UI files (*.ui)"
-msgstr "*| V¹etky súbory (*)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:126
-msgid "Choose keyboard map"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:127
-#, fuzzy
-msgid "LyX keyboard maps (*.kmap)"
-msgstr "Pou¾i» &klávesnicovú mapu"
-
-#: src/frontends/controllers/ControlPrefs.cpp:135
-#: src/frontends/controllers/ControlPrefs.cpp:139
-msgid "Choose personal dictionary"
-msgstr "Pou¾i» osobný slovník"
-
-#: src/frontends/controllers/ControlPrefs.cpp:136
-msgid "*.pws"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:140
-#, fuzzy
-msgid "*.ispell"
-msgstr "ispell"
-
-#: src/frontends/controllers/ControlPrint.cpp:73
-msgid "Print to file"
-msgstr "Tlaèi» do súboru"
-
-#: src/frontends/controllers/ControlPrint.cpp:74
-msgid "PostScript files (*.ps)"
-msgstr "PostScript súbory (*.ps)"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:117
-#, fuzzy
-msgid "Spellchecker error"
-msgstr "Kontrola pravopisu"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:118
-#, fuzzy
-msgid "The spellchecker could not be started\n"
-msgstr "Dokument nie je mo¾né ulo¾i»!"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:276
-#, fuzzy
-msgid ""
-"The spellchecker has died for some reason.\n"
-"Maybe it has been killed."
-msgstr ""
-"Kontrola pravopisu z nejakého dôvodu nebola dokonèená.\n"
-"Mo¾no bola zabitá."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:279
-msgid "The spellchecker has failed.\n"
-msgstr ""
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:283
-msgid "The spellchecker has failed"
-msgstr ""
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:297
-#, fuzzy, c-format
-msgid "%1$d words checked."
-msgstr "Jedno slovo skontrolované."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:299
-msgid "One word checked."
-msgstr "Jedno slovo skontrolované."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:302
-#, fuzzy
-msgid "Spelling check completed"
-msgstr "Kontrola pravopisu je dokonèená"
-
-#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
-msgid "Table of Contents"
-msgstr "Obsah"
-
-#: src/frontends/controllers/frontend_helpers.cpp:244
-#, c-format
-msgid "%1$s and %2$s"
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:248
-#, c-format
-msgid "%1$s et al."
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:285
-msgid "No year"
-msgstr "Bez roku"
-
-#: src/frontends/controllers/frontend_helpers.cpp:818
-#, fuzzy
-msgid "before"
-msgstr "Text pred:"
-
-#: src/frontends/controllers/frontend_helpers.cpp:866
-#: src/frontends/controllers/frontend_helpers.cpp:896
-#: src/frontends/controllers/frontend_helpers.cpp:922
-#: src/frontends/controllers/frontend_helpers.cpp:956
-#: src/frontends/controllers/frontend_helpers.cpp:1022
-#: src/frontends/controllers/frontend_helpers.cpp:1052
-#: src/frontends/controllers/frontend_helpers.cpp:1125
-msgid "No change"
-msgstr "®iadne zmeny"
-
-#: src/frontends/controllers/frontend_helpers.cpp:882
-#: src/frontends/controllers/frontend_helpers.cpp:908
-#: src/frontends/controllers/frontend_helpers.cpp:942
-#: src/frontends/controllers/frontend_helpers.cpp:1008
-#: src/frontends/controllers/frontend_helpers.cpp:1038
-#: src/frontends/controllers/frontend_helpers.cpp:1092
-#: src/frontends/controllers/frontend_helpers.cpp:1127
-msgid "Reset"
-msgstr "Obnovi»"
-
-#: src/frontends/controllers/frontend_helpers.cpp:900 src/LyXFont.cpp:57
-msgid "Medium"
-msgstr "Stredné"
-
-#: src/frontends/controllers/frontend_helpers.cpp:904 src/LyXFont.cpp:57
-msgid "Bold"
-msgstr "Tuèné"
-
-#: src/frontends/controllers/frontend_helpers.cpp:926 src/LyXFont.cpp:60
-msgid "Upright"
-msgstr "Vzpriamený"
-
-#: src/frontends/controllers/frontend_helpers.cpp:930 src/LyXFont.cpp:60
-msgid "Italic"
-msgstr "Kurzíva"
-
-#: src/frontends/controllers/frontend_helpers.cpp:934 src/LyXFont.cpp:60
-msgid "Slanted"
-msgstr "Sklonený"
-
-#: src/frontends/controllers/frontend_helpers.cpp:938
-msgid "Small Caps"
-msgstr "Malé kapitálky"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1000 src/LyXFont.cpp:65
-msgid "Increase"
-msgstr "Nárast"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1004 src/LyXFont.cpp:65
-msgid "Decrease"
-msgstr "Zní¾enie"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1026
-msgid "Emph"
-msgstr "Zvýrazni»"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1030
-msgid "Underbar"
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:1034
-msgid "Noun"
-msgstr "Kapitálky"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1056
-msgid "No color"
-msgstr ""
-
-#: src/frontends/controllers/frontend_helpers.cpp:1060
-msgid "Black"
-msgstr "Èierna"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1064
-msgid "White"
-msgstr "Biela"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1068
-msgid "Red"
-msgstr "Èervená"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1072
-msgid "Green"
-msgstr "Zelená"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1076
-msgid "Blue"
-msgstr "Modrá"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1080
-msgid "Cyan"
-msgstr "Azúrová"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1084
-msgid "Magenta"
-msgstr "Purpurová"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1088
-msgid "Yellow"
-msgstr "®ltá"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1220
-#, fuzzy
-msgid "System files|#S#s"
-msgstr "Systémové rozhranie|#S#s"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1223
-#, fuzzy
-msgid "User files|#U#u"
-msgstr "Pou¾. viazanie|#u"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1306
-#, fuzzy
-msgid "Could not update TeX information"
-msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1307
-#, c-format
-msgid "The script `%s' failed."
-msgstr ""
-
-#: src/frontends/qt4/Alert_pimpl.cpp:58 src/frontends/qt4/Alert_pimpl.cpp:85
-#: src/frontends/qt4/Alert_pimpl.cpp:105 src/frontends/qt4/Alert_pimpl.cpp:124
-#: src/frontends/qt4/Alert_pimpl.cpp:135
-#, c-format
-msgid "LyX: %1$s"
-msgstr "LyX: %1$s"
-
-#: src/frontends/qt4/BulletsModule.cpp:47
-#, fuzzy
-msgid "Maths"
-msgstr "Cesty"
-
-#: src/frontends/qt4/BulletsModule.cpp:48
-#, fuzzy
-msgid "Dings 1"
-msgstr "Ïal¹ie 1|#Ï"
-
-#: src/frontends/qt4/BulletsModule.cpp:49
-#, fuzzy
-msgid "Dings 2"
-msgstr "Ïal¹ie 2|#a"
-
-#: src/frontends/qt4/BulletsModule.cpp:50
-#, fuzzy
-msgid "Dings 3"
-msgstr "Ïal¹ie 3|#l"
-
-#: src/frontends/qt4/BulletsModule.cpp:51
-#, fuzzy
-msgid "Dings 4"
-msgstr "Ïal¹ie 4|#¹"
-
-#: src/frontends/qt4/Dialogs.cpp:223
-#, fuzzy
-msgid "Index Entry"
-msgstr "Polo¾ka indexu"
-
-#: src/frontends/qt4/Dialogs.cpp:233
-msgid "Label"
-msgstr "Oznaèenie"
-
-#: src/frontends/qt4/Dialogs.cpp:245
-#, fuzzy
-msgid "LaTeX Source"
-msgstr "Viditeµná medzera|#m"
-
-#: src/frontends/qt4/Dialogs.cpp:307
-#, fuzzy
-msgid "Toc"
-msgstr "Námet"
-
-#: src/frontends/qt4/FileDialog.cpp:162
-msgid "Directories"
-msgstr "Prieèinky"
-
-#: src/frontends/qt4/GuiView.cpp:133
-msgid "Small-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:139
-msgid "Normal-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:146
-msgid "Big-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:676
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:467
-#, fuzzy
-msgid "unknown version"
-msgstr "Neznáma akcia"
-
-#: src/frontends/qt4/QBibitem.cpp:69
-msgid "Bibliography Entry Settings"
-msgstr "Nastavenia polo¾ky bibliografie"
-
-#: src/frontends/qt4/QBibtex.cpp:260
-#, fuzzy
-msgid "BibTeX Bibliography"
-msgstr "Literatúra "
-
-#: src/frontends/qt4/QBox.cpp:148
-#, fuzzy
-msgid "Box Settings"
-msgstr "Nastavenia"
-
-#: src/frontends/qt4/QBranch.cpp:71
-#, fuzzy
-msgid "Branch Settings"
-msgstr "Nastavenia literatúry"
-
-#: src/frontends/qt4/QBranches.cpp:42
-#, fuzzy
-msgid "Branch"
-msgstr "Francúzsky"
-
-#: src/frontends/qt4/QBranches.cpp:43
-msgid "Activated"
-msgstr "Aktivované"
-
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:690
-#, fuzzy
-msgid "Yes"
-msgstr "&Áno"
-
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
-#, fuzzy
-msgid "No"
-msgstr "&Nie"
-
-#: src/frontends/qt4/QChanges.cpp:85
-#, fuzzy
-msgid "Merge Changes"
-msgstr "Spoji» bunky"
-
-#: src/frontends/qt4/QChanges.cpp:107
-#, c-format
-msgid ""
-"Change by %1$s\n"
-"\n"
-msgstr ""
-
-#: src/frontends/qt4/QChanges.cpp:109
-#, c-format
-msgid "Change made at %1$s\n"
-msgstr ""
-
-#: src/frontends/qt4/QCharacter.cpp:92
-#, fuzzy
-msgid "Text Style"
-msgstr "TeX ¹týl|X"
-
-#: src/frontends/qt4/QCommandBuffer.cpp:88
-msgid "Previous command"
-msgstr "Predchádzajúci príkaz"
-
-#: src/frontends/qt4/QCommandBuffer.cpp:91
-msgid "Next command"
-msgstr "Nasledujúci príkaz"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:46
-msgid "big[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:46
-msgid "Big[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:47
-msgid "bigg[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:47
-msgid "Bigg[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:69
-#, fuzzy
-msgid "Math Delimiter"
-msgstr "Matematický oddeµovaè"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:112
-msgid "LyX: Delimiters"
-msgstr "LyX: Oddelovaèe"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:144
-#: src/frontends/qt4/QDelimiterDialog.cpp:145
-#, fuzzy
-msgid "(None)"
-msgstr "®iadne"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:147
-#, fuzzy
-msgid "Variable"
-msgstr "Variabilná veµkos»"
-
-#: src/frontends/qt4/QDocument.cpp:119
-msgid "Length"
-msgstr "Då¾ka"
-
-#: src/frontends/qt4/QDocument.cpp:125 src/text.cpp:1740
-msgid "OneHalf"
-msgstr "Polovièné"
-
-#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
-#: src/frontends/qt4/QDocument.cpp:176
-msgid " (not installed)"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
-#: src/frontends/qt4/QDocument.cpp:599
-msgid "default"
-msgstr "¹tandardné"
-
-#: src/frontends/qt4/QDocument.cpp:181
-msgid "10"
-msgstr "10"
-
-#: src/frontends/qt4/QDocument.cpp:182
-msgid "11"
-msgstr "11"
-
-#: src/frontends/qt4/QDocument.cpp:183
-msgid "12"
-msgstr "12"
-
-#: src/frontends/qt4/QDocument.cpp:218
-msgid "empty"
-msgstr "prázdne"
-
-#: src/frontends/qt4/QDocument.cpp:219
-msgid "plain"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:220
-msgid "headings"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:221
-msgid "fancy"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:237
-msgid "B3"
-msgstr "B3"
-
-#: src/frontends/qt4/QDocument.cpp:238
-msgid "B4"
-msgstr "B4"
-
-#: src/frontends/qt4/QDocument.cpp:341
-#, fuzzy
-msgid "LaTeX default"
-msgstr "Log súbor LaTeXu|L"
-
-#: src/frontends/qt4/QDocument.cpp:347
-msgid "``text''"
-msgstr "``text''"
-
-#: src/frontends/qt4/QDocument.cpp:348
-msgid "''text''"
-msgstr "''text''"
-
-#: src/frontends/qt4/QDocument.cpp:349
-msgid ",,text``"
-msgstr ",,text``"
-
-#: src/frontends/qt4/QDocument.cpp:350
-msgid ",,text''"
-msgstr ",,text''"
-
-#: src/frontends/qt4/QDocument.cpp:351
-#, fuzzy
-msgid "<<text>>"
-msgstr "text"
-
-#: src/frontends/qt4/QDocument.cpp:352
-#, fuzzy
-msgid ">>text<<"
-msgstr "text"
-
-#: src/frontends/qt4/QDocument.cpp:368
-msgid "Numbered"
-msgstr "Èíslované"
-
-#: src/frontends/qt4/QDocument.cpp:369
-msgid "Appears in TOC"
-msgstr "Zobrazí sa obsahu"
-
-#: src/frontends/qt4/QDocument.cpp:389
-msgid "Author-year"
-msgstr "Autor-rok"
-
-#: src/frontends/qt4/QDocument.cpp:390
-msgid "Numerical"
-msgstr "Èíselný"
-
-#: src/frontends/qt4/QDocument.cpp:432
-#, c-format
-msgid "Unavailable: %1$s"
-msgstr "Nedostupné: %1$s"
-
-#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
-#, fuzzy
-msgid "Document Class"
-msgstr "T&rieda dokumentu:"
-
-#: src/frontends/qt4/QDocument.cpp:464
-#, fuzzy
-msgid "Text Layout"
-msgstr "Rozlo¾enie"
-
-#: src/frontends/qt4/QDocument.cpp:465
-#, fuzzy
-msgid "Page Layout"
-msgstr "Formát odstavca"
-
-#: src/frontends/qt4/QDocument.cpp:466
-#, fuzzy
-msgid "Page Margins"
-msgstr "Okraje"
-
-#: src/frontends/qt4/QDocument.cpp:468
-#, fuzzy
-msgid "Numbering & TOC"
-msgstr "Èíslovanie"
-
-#: src/frontends/qt4/QDocument.cpp:470
-#, fuzzy
-msgid "Math Options"
-msgstr "Mo¾nosti objektu"
-
-#: src/frontends/qt4/QDocument.cpp:471
-#, fuzzy
-msgid "Float Placement"
-msgstr "Umiestnenie objektov:|#U"
-
-#: src/frontends/qt4/QDocument.cpp:472
-msgid "Bullets"
-msgstr "Odrá¾ky"
-
-#: src/frontends/qt4/QDocument.cpp:473
-msgid "Branches"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
-msgid "LaTeX Preamble"
-msgstr "Preambula LaTeXu"
-
-#: src/frontends/qt4/QDocument.cpp:1237
-msgid "Document Settings"
-msgstr "Nastavenia dokumentu"
-
-#: src/frontends/qt4/QERT.cpp:68
-#, fuzzy
-msgid "TeX Code Settings"
-msgstr "LaTeX nastavenia"
-
-#: src/frontends/qt4/QExternal.cpp:495
-msgid "External Material"
-msgstr "Externý materiál"
-
-#: src/frontends/qt4/QExternal.cpp:555
-msgid "Scale%"
-msgstr "Mierka%"
-
-#: src/frontends/qt4/QFloat.cpp:31
-msgid "Float Settings"
-msgstr "Nastavenia objektu"
-
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:625
-msgid "Graphics"
-msgstr "Grafika"
-
-#: src/frontends/qt4/QInclude.cpp:134
-#, fuzzy
-msgid "Child Document"
-msgstr "Dokument"
-
-#: src/frontends/qt4/QMathMatrixDialog.cpp:46
-#, fuzzy
-msgid "Math Matrix"
-msgstr "Matematická matica"
-
-#: src/frontends/qt4/QMathMatrixDialog.cpp:61
-#, fuzzy
-msgid "LyX: Insert Matrix"
-msgstr "Vlo¾i» maticu"
-
-#: src/frontends/qt4/QNote.cpp:70
-#, fuzzy
-msgid "Note Settings"
-msgstr "Nastavenia objektu"
-
-#: src/frontends/qt4/QParagraph.cpp:71
-msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
-"\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
-msgstr ""
-
-#: src/frontends/qt4/QParagraph.cpp:177
-#, fuzzy
-msgid "Paragraph Settings"
-msgstr "Nastavenia literatúry"
-
-#: src/frontends/qt4/QParagraph.cpp:239 src/Paragraph.cpp:1591
-msgid "Senseless with this layout!"
-msgstr "V tomto formáte nemá zmysel!"
-
-#: src/frontends/qt4/QPrefs.cpp:73
-msgid "Look and feel"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:74
-#, fuzzy
-msgid "Language settings"
-msgstr "Nastavenia tlaèiarne"
-
-#: src/frontends/qt4/QPrefs.cpp:75
-#, fuzzy
-msgid "Outputs"
-msgstr "Výstup"
-
-#: src/frontends/qt4/QPrefs.cpp:173
-msgid "Plain text"
-msgstr "Jednoduchý text"
-
-#: src/frontends/qt4/QPrefs.cpp:204
-msgid "Date format"
-msgstr "Formát dátumu"
-
-#: src/frontends/qt4/QPrefs.cpp:231
-msgid "Keyboard"
-msgstr "Klávesnica"
-
-#: src/frontends/qt4/QPrefs.cpp:355
-msgid "Screen fonts"
-msgstr "Písma obrazovky"
-
-#: src/frontends/qt4/QPrefs.cpp:513
-msgid "Colors"
-msgstr "Farby"
-
-#: src/frontends/qt4/QPrefs.cpp:599 src/frontends/qt4/QPrefs.cpp:698
-msgid "Paths"
-msgstr "Cesty"
-
-#: src/frontends/qt4/QPrefs.cpp:749
-msgid "Select a document templates directory"
-msgstr "Zvoli» prieèinok pre ¹ablóny dokumentov"
-
-#: src/frontends/qt4/QPrefs.cpp:759
-msgid "Select a temporary directory"
-msgstr "Zvoli» doèasný prieèinok"
-
-#: src/frontends/qt4/QPrefs.cpp:769
-msgid "Select a backups directory"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:779
-msgid "Select a document directory"
-msgstr "Zvoli» prieèinok pre dokumenty"
-
-#: src/frontends/qt4/QPrefs.cpp:789
-msgid "Give a filename for the LyX server pipe"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:802 src/frontends/qt4/QSpellchecker.cpp:135
-msgid "Spellchecker"
-msgstr "Kontrola pravopisu"
-
-#: src/frontends/qt4/QPrefs.cpp:824
-msgid "ispell"
-msgstr "ispell"
-
-#: src/frontends/qt4/QPrefs.cpp:825
-msgid "aspell"
-msgstr "aspell"
-
-#: src/frontends/qt4/QPrefs.cpp:826
-#, fuzzy
-msgid "hspell"
-msgstr "ispell"
-
-#: src/frontends/qt4/QPrefs.cpp:828
-msgid "pspell (library)"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:831
-msgid "aspell (library)"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:912
-msgid "Converters"
-msgstr "Konvertor"
-
-#: src/frontends/qt4/QPrefs.cpp:1102
-#, fuzzy
-msgid "Copiers"
-msgstr "Kópie"
-
-#: src/frontends/qt4/QPrefs.cpp:1355
-msgid "File formats"
-msgstr "Formáty súborov"
-
-#: src/frontends/qt4/QPrefs.cpp:1547
-#, fuzzy
-msgid "Format in use"
-msgstr "Formáty"
-
-#: src/frontends/qt4/QPrefs.cpp:1548
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Nemô¾em odstráni» Formát pou¾ívaný Konvertorom. Odstráòte najprv konvertor."
-
-#: src/frontends/qt4/QPrefs.cpp:1649
-msgid "Printer"
-msgstr "Tlaèiareò"
-
-#: src/frontends/qt4/QPrefs.cpp:1747 src/frontends/qt4/QPrefs.cpp:1941
-msgid "User interface"
-msgstr "Pou¾ívateµské rozhranie"
-
-#: src/frontends/qt4/QPrefs.cpp:1865
-#, fuzzy
-msgid "Identity"
-msgstr "&Odsadi»"
-
-#: src/frontends/qt4/QPrefs.cpp:2007
-msgid "Preferences"
-msgstr "Nastavenia"
-
-#: src/frontends/qt4/QPrint.cpp:36
-#, fuzzy
-msgid "Print Document"
-msgstr "Dokument"
-
-#: src/frontends/qt4/QRef.cpp:188
-msgid "Cross-reference"
-msgstr "Krí¾ová referencia"
-
-#: src/frontends/qt4/QRef.cpp:284
-msgid "&Go Back"
-msgstr "Ís» s&pä»"
-
-#: src/frontends/qt4/QRef.cpp:286
-msgid "Jump back"
-msgstr "Prejs» dozadu"
-
-#: src/frontends/qt4/QRef.cpp:294
-msgid "Jump to label"
-msgstr "Skok na oznaèenie"
-
-#: src/frontends/qt4/QSearch.cpp:138
-msgid "Find and Replace"
-msgstr "Hµada» a nahradi»"
-
-#: src/frontends/qt4/QSendto.cpp:84
-msgid "Send Document to Command"
-msgstr "Posla» dokument príkazu"
-
-#: src/frontends/qt4/QShowFile.cpp:57
-msgid "Show File"
-msgstr "Zobrazi» súbor"
-
-#: src/frontends/qt4/QTabular.cpp:523
-msgid "Table Settings"
-msgstr "Nastavenia tabuµky"
-
-#: src/frontends/qt4/QTabularCreate.cpp:73
-msgid "Insert Table"
-msgstr "Vlo¾i» tabuµku"
-
-#: src/frontends/qt4/QTexinfo.cpp:127
-msgid "TeX Information"
-msgstr "TeX informácie"
-
-#: src/frontends/qt4/QVSpace.cpp:188
-msgid "Vertical Space Settings"
-msgstr "Nastavenia vertikálnej medzery"
-
-#: src/frontends/qt4/QWrap.cpp:83
-#, fuzzy
-msgid "Text Wrap Settings"
-msgstr "Nastavenia tabuµky"
-
-#: src/frontends/qt4/Validator.cpp:153
-#, fuzzy
-msgid "space"
-msgstr "&Nahradi»"
-
-#: src/frontends/qt4/Validator.cpp:180
-#, fuzzy
-msgid "Invalid filename"
-msgstr "In¹talované súbory"
-
-#: src/frontends/qt4/Validator.cpp:181
-#, fuzzy
-msgid ""
-"LyX does not provide LaTeX support for file names containing any of these "
-"characters:\n"
-msgstr "názov prieèinku nemô¾e obsahova» tieto znaky:"
-
-#: src/Importer.cpp:47
-#, c-format
-msgid "Importing %1$s..."
-msgstr "Importovanie %1$s..."
-
-#: src/Importer.cpp:68
-#, fuzzy
-msgid "Couldn't import file"
-msgstr "Nie je mo¾né importova» súbor"
-
-#: src/Importer.cpp:69
-#, fuzzy, c-format
-msgid "No information for importing the format %1$s."
-msgstr "®iadne informácie o importe z %1$s"
-
-#: src/Importer.cpp:95
-msgid "imported."
-msgstr "importované."
-
-#: src/insets/InsetBase.cpp:252
-msgid "Opened inset"
-msgstr "Otvorená príloha"
-
-#: src/insets/InsetBibtex.cpp:109
-#, fuzzy
-msgid "BibTeX Generated Bibliography"
-msgstr "Referencie generované BibTeXom"
-
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
-#, fuzzy
-msgid "Export Warning!"
-msgstr "Varovanie!"
-
-#: src/insets/InsetBibtex.cpp:207
-msgid ""
-"There are spaces in the paths to your BibTeX databases.\n"
-"BibTeX will be unable to find them."
-msgstr ""
-
-#: src/insets/InsetBibtex.cpp:260
-msgid ""
-"There are spaces in the path to your BibTeX style file.\n"
-"BibTeX will be unable to find it."
-msgstr ""
-
-#: src/insets/InsetBox.cpp:65
-#, fuzzy
-msgid "Boxed"
-msgstr "Tuèné"
-
-#: src/insets/InsetBox.cpp:66
-#, fuzzy
-msgid "Frameless"
-msgstr "Parametre"
-
-#: src/insets/InsetBox.cpp:67
-msgid "ovalbox"
-msgstr ""
-
-#: src/insets/InsetBox.cpp:68
-msgid "Ovalbox"
-msgstr ""
-
-#: src/insets/InsetBox.cpp:69
-msgid "Shadowbox"
-msgstr ""
-
-#: src/insets/InsetBox.cpp:70
-#, fuzzy
-msgid "Doublebox"
-msgstr "Dvojité"
-
-#: src/insets/InsetBox.cpp:126
-#, fuzzy
-msgid "Opened Box Inset"
-msgstr "Otvorený objekt prílohy"
-
-#: src/insets/InsetBranch.cpp:76
-#, fuzzy
-msgid "Opened Branch Inset"
-msgstr "Otvorený popis prílohy"
-
-#: src/insets/InsetBranch.cpp:101
-msgid "Branch: "
-msgstr ""
-
-#: src/insets/InsetBranch.cpp:108 src/insets/InsetCharStyle.cpp:163
-#: src/insets/InsetCharStyle.cpp:212
-#, fuzzy
-msgid "Undef: "
-msgstr "Ref: "
-
-#: src/insets/InsetBranch.cpp:239
-#, fuzzy
-msgid "branch"
-msgstr "Francúzsky"
-
-#: src/insets/InsetCaption.cpp:87
-msgid "Opened Caption Inset"
-msgstr "Otvorený popis prílohy"
-
-#: src/insets/InsetCaption.cpp:276
-#, fuzzy
-msgid "Senseless!!! "
-msgstr "Nezmyselné: "
-
-#: src/insets/InsetCharStyle.cpp:123
-#, fuzzy
-msgid "Opened CharStyle Inset"
-msgstr "Otvorený objekt prílohy"
-
-#: src/insets/InsetCommand.cpp:98
-#, fuzzy
-msgid "LaTeX Command: "
-msgstr "Príkaz &BibTeX:"
-
-#: src/insets/InsetCommandParams.cpp:268
-#, fuzzy
-msgid "Unknown inset name: "
-msgstr "Neznámy zoznam obsahu"
-
-#: src/insets/InsetCommandParams.cpp:292
-#, fuzzy
-msgid "Inset Command: "
-msgstr "Nasledujúci príkaz"
-
-#: src/insets/InsetCommandParams.cpp:293
-#, fuzzy
-msgid "Unknown parameter name: "
-msgstr "Neznámy parameter riadkovania: "
-
-#: src/insets/InsetCommandParams.cpp:300
-msgid "Missing \\end_inset at this point."
-msgstr ""
-
-#: src/insets/InsetEnv.cpp:66
-#, fuzzy
-msgid "Opened Environment Inset: "
-msgstr "Otvorený nepovinný argument prílohy"
-
-#: src/insets/InsetERT.cpp:143
-msgid "Opened ERT Inset"
-msgstr "Otvorený ERT prílohy"
-
-#: src/insets/InsetERT.cpp:390
-msgid "ERT"
-msgstr "ERT"
-
-#: src/insets/InsetExternal.cpp:576
-#, c-format
-msgid "External template %1$s is not installed"
-msgstr ""
-
-#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:373
-#: src/insets/InsetFloat.cpp:383
-msgid "float: "
-msgstr "objekt:"
-
-#: src/insets/InsetFloat.cpp:278
-msgid "Opened Float Inset"
-msgstr "Otvorený objekt prílohy"
-
-#: src/insets/InsetFloat.cpp:334
-#, fuzzy
-msgid "float"
-msgstr "objekt:"
-
-#: src/insets/InsetFloat.cpp:385
-msgid " (sideways)"
-msgstr ""
-
-#: src/insets/InsetFloatList.cpp:59
-msgid "ERROR: Nonexistent float type!"
-msgstr "CHYBA: Neexistujúci typ objektu!"
-
-#: src/insets/InsetFloatList.cpp:124
-#, c-format
-msgid "List of %1$s"
-msgstr "Zoznam %1$s"
-
-#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:45
-msgid "foot"
-msgstr "päta"
-
-#: src/insets/InsetFoot.cpp:58
-msgid "Opened Footnote Inset"
-msgstr "Otvorená poznámka pod èiarou prílohy"
-
-#: src/insets/InsetFoot.cpp:87
-#, fuzzy
-msgid "footnote"
-msgstr "Poznámka pod èiarou"
-
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
-#, fuzzy, c-format
-msgid ""
-"Could not copy the file\n"
-"%1$s\n"
-"into the temporary directory."
-msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
-
-#: src/insets/InsetGraphics.cpp:709
-#, c-format
-msgid "No conversion of %1$s is needed after all"
-msgstr ""
-
-#: src/insets/InsetGraphics.cpp:821
-#, c-format
-msgid "Graphics file: %1$s"
-msgstr "Grafický súbor: %1$s"
-
-#: src/insets/InsetHFill.cpp:48
-#, fuzzy
-msgid "Horizontal Fill"
-msgstr "Horizontálne zarovnanie:|#H"
-
-#: src/insets/InsetInclude.cpp:306
-msgid "Verbatim Input"
-msgstr "Doslovný vstup"
-
-#: src/insets/InsetInclude.cpp:309
-msgid "Verbatim Input*"
-msgstr "Verbatim vstup*"
-
-#: src/insets/InsetInclude.cpp:411
-#, c-format
-msgid ""
-"Included file `%1$s'\n"
-"has textclass `%2$s'\n"
-"while parent file has textclass `%3$s'."
-msgstr ""
-
-#: src/insets/InsetInclude.cpp:417
-msgid "Different textclasses"
-msgstr ""
-
-#: src/insets/InsetIndex.cpp:42
-msgid "Idx"
-msgstr "Idx"
-
-#: src/insets/InsetIndex.cpp:75
-msgid "Index"
-msgstr "Index"
-
-#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:41
-#: src/insets/InsetMarginal.cpp:71
-msgid "margin"
-msgstr "okraje"
-
-#: src/insets/InsetMarginal.cpp:54
-msgid "Opened Marginal Note Inset"
-msgstr "Otvorený poznámka na okraji prílohy"
-
-#: src/insets/InsetNomencl.cpp:39
-#, fuzzy
-msgid "Glo"
-msgstr "&Globálne"
-
-#: src/insets/InsetNomencl.cpp:86
-msgid "Glossary"
-msgstr ""
-
-#: src/insets/InsetNote.cpp:66
-msgid "Comment"
-msgstr "Komentár"
-
-#: src/insets/InsetNote.cpp:67
-msgid "Greyed out"
-msgstr ""
-
-#: src/insets/InsetNote.cpp:68
-#, fuzzy
-msgid "Framed"
-msgstr "Parametre"
-
-#: src/insets/InsetNote.cpp:69
-#, fuzzy
-msgid "Shaded"
-msgstr "&Tvar:"
-
-#: src/insets/InsetNote.cpp:149
-msgid "Opened Note Inset"
-msgstr "Otvorený objekt prílohy"
-
-#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
-msgid "opt"
-msgstr ""
-
-#: src/insets/InsetOptArg.cpp:59
-msgid "Opened Optional Argument Inset"
-msgstr "Otvorený nepovinný argument prílohy"
-
-#: src/insets/InsetPagebreak.h:65
-#, fuzzy
-msgid "Clear Page"
-msgstr "&Zmaza»"
-
-#: src/insets/InsetPagebreak.h:81
-msgid "Clear Double Page"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
-msgid "Ref: "
-msgstr "Ref: "
-
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
-#, fuzzy
-msgid "Equation"
-msgstr "Oznaèenie"
-
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
-#, fuzzy
-msgid "EqRef: "
-msgstr "Ref: "
-
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
-msgid "Page Number"
-msgstr "Èíslo strany"
-
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
-msgid "Page: "
-msgstr "Strana: "
-
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
-msgid "Textual Page Number"
-msgstr "Textové èíslo strany"
-
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
-msgid "TextPage: "
-msgstr "TextStrana: "
-
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
-msgid "Standard+Textual Page"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
-msgid "Ref+Text: "
-msgstr ""
-
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
-msgid "PrettyRef"
-msgstr "PeknýOdkaz"
-
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
-#, fuzzy
-msgid "FormatRef: "
-msgstr "F&ormát:"
-
-#: src/insets/InsetTabular.cpp:451
-#, fuzzy
-msgid "Opened table"
-msgstr "Otvori» súbor"
-
-#: src/insets/InsetTabular.cpp:1606
-msgid "Error setting multicolumn"
-msgstr ""
-
-#: src/insets/InsetTabular.cpp:1607
-msgid "You cannot set multicolumn vertically."
-msgstr ""
-
-#: src/insets/InsetText.cpp:236
-msgid "Opened Text Inset"
-msgstr "Otvorený text prílohy"
-
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "teoréma"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "Otvorená teoréma prílohy"
-
-#: src/insets/InsetTOC.cpp:47
-msgid "Unknown toc list"
-msgstr "Neznámy zoznam obsahu"
-
-#: src/insets/InsetUrl.cpp:42
-msgid "Url: "
-msgstr "Url: "
-
-#: src/insets/InsetUrl.cpp:42
-msgid "HtmlUrl: "
-msgstr "HtmlUrl: "
-
-#: src/insets/InsetVSpace.cpp:110
-#, fuzzy
-msgid "Vertical Space"
-msgstr "Vertikálna medzera:|#V"
-
-#: src/insets/InsetWrap.cpp:49
-msgid "wrap: "
-msgstr ""
-
-#: src/insets/InsetWrap.cpp:178
-msgid "Opened Wrap Inset"
-msgstr ""
-
-#: src/insets/InsetWrap.cpp:198
-msgid "wrap"
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
-#, fuzzy
-msgid "Not shown."
-msgstr " neznámy"
-
-#: src/insets/RenderGraphic.cpp:97
-msgid "Loading..."
-msgstr "Naèítavam..."
-
-#: src/insets/RenderGraphic.cpp:100
-msgid "Converting to loadable format..."
-msgstr "Konvertovanie do èitateµného formátu..."
-
-#: src/insets/RenderGraphic.cpp:103
-msgid "Loaded into memory. Generating pixmap..."
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:106
-msgid "Scaling etc..."
-msgstr "Mením atï..."
-
-#: src/insets/RenderGraphic.cpp:109
-msgid "Ready to display"
-msgstr "Pripravený na zobrazenie"
-
-#: src/insets/RenderGraphic.cpp:112
-msgid "No file found!"
-msgstr "Súbor nenájdený!"
-
-#: src/insets/RenderGraphic.cpp:115
-msgid "Error converting to loadable format"
-msgstr "Chyba pri konverzií do èitateµného formátu"
-
-#: src/insets/RenderGraphic.cpp:118
-msgid "Error loading file into memory"
-msgstr ""
-
-#: src/insets/RenderGraphic.cpp:121
-msgid "Error generating the pixmap"
-msgstr "Chyba pri generovaní pixmapy"
-
-#: src/insets/RenderGraphic.cpp:124
-msgid "No image"
-msgstr "Bez obrázku"
-
-#: src/insets/RenderPreview.cpp:92
-msgid "Preview loading"
-msgstr ""
-
-#: src/insets/RenderPreview.cpp:95
-#, fuzzy
-msgid "Preview ready"
-msgstr "Náhµad|#N"
-
-#: src/insets/RenderPreview.cpp:98
-#, fuzzy
-msgid "Preview failed"
-msgstr "Automatické ukladanie sa nepodarilo!"
 
 #: src/ISpell.cpp:238 src/ISpell.cpp:245 src/ISpell.cpp:254
 #, fuzzy
@@ -14318,176 +12610,46 @@ msgid ""
 "2$s'."
 msgstr ""
 
-#: src/kb_sequence.cpp:160
+#: src/Importer.cpp:47
+#, c-format
+msgid "Importing %1$s..."
+msgstr "Importovanie %1$s..."
+
+#: src/Importer.cpp:68
+#, fuzzy
+msgid "Couldn't import file"
+msgstr "Nie je mo¾né importova» súbor"
+
+#: src/Importer.cpp:69
+#, fuzzy, c-format
+msgid "No information for importing the format %1$s."
+msgstr "®iadne informácie o importe z %1$s"
+
+#: src/Importer.cpp:95
+msgid "imported."
+msgstr "importované."
+
+#: src/KeySequence.cpp:157
 msgid "   options: "
 msgstr "   mo¾nosti: "
 
-#: src/lengthcommon.cpp:37
-msgid "sp"
-msgstr ""
+#: src/LaTeX.cpp:95
+#, fuzzy, c-format
+msgid "Waiting for LaTeX run number %1$d"
+msgstr "Spustenie LaTeXu è. %1$d"
 
-#: src/lengthcommon.cpp:37
-msgid "pt"
-msgstr "bod"
+#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
+msgid "Running MakeIndex."
+msgstr "MakeIndex spustený."
 
-#: src/lengthcommon.cpp:37
-msgid "bp"
-msgstr ""
+#: src/LaTeX.cpp:322
+msgid "Running BibTeX."
+msgstr "BibTeX spustený."
 
-#: src/lengthcommon.cpp:37
-msgid "dd"
-msgstr ""
-
-#: src/lengthcommon.cpp:37
-msgid "mm"
-msgstr "mm"
-
-#: src/lengthcommon.cpp:37
-msgid "pc"
-msgstr ""
-
-#: src/lengthcommon.cpp:38
-msgid "cm"
-msgstr "cm"
-
-#: src/lengthcommon.cpp:38
-msgid "ex"
-msgstr "ex"
-
-#: src/lengthcommon.cpp:38
-msgid "em"
-msgstr "em"
-
-#: src/lengthcommon.cpp:39
+#: src/LaTeX.cpp:462
 #, fuzzy
-msgid "Text Width %"
-msgstr "Pevná ¹írka"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Column Width %"
-msgstr "©írka ståpca"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Page Width %"
-msgstr "©írka oznaèenia"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Line Width %"
-msgstr "©írka oznaèenia"
-
-#: src/lengthcommon.cpp:40
-#, fuzzy
-msgid "Text Height %"
-msgstr "Celková vý¹ka"
-
-#: src/lengthcommon.cpp:40
-#, fuzzy
-msgid "Page Height %"
-msgstr "Celková vý¹ka"
-
-#: src/lyx_cb.cpp:114
-#, c-format
-msgid ""
-"The document %1$s could not be saved.\n"
-"\n"
-"Do you want to rename the document and try again?"
-msgstr ""
-
-#: src/lyx_cb.cpp:116
-msgid "Rename and save?"
-msgstr ""
-
-#: src/lyx_cb.cpp:117
-#, fuzzy
-msgid "&Rename"
-msgstr "Meno"
-
-#: src/lyx_cb.cpp:134
-msgid "Choose a filename to save document as"
-msgstr "Zvoli» názov súboru, pod ktorým sa má dokument ulo¾i»"
-
-#: src/lyx_cb.cpp:137 src/LyXFunc.cpp:1867
-msgid "Templates|#T#t"
-msgstr "©ablóny|#¹"
-
-#: src/lyx_cb.cpp:167 src/LyXFunc.cpp:2024
-#, c-format
-msgid ""
-"The document %1$s already exists.\n"
-"\n"
-"Do you want to over-write that document?"
-msgstr ""
-
-#: src/lyx_cb.cpp:169 src/LyXFunc.cpp:2026
-#, fuzzy
-msgid "Over-write document?"
-msgstr "Ulo¾i» dokument?"
-
-#: src/lyx_cb.cpp:218
-#, c-format
-msgid "Auto-saving %1$s"
-msgstr "Automatické ukladanie %1$s"
-
-#: src/lyx_cb.cpp:258
-msgid "Autosave failed!"
-msgstr "Automatické ukladanie sa nepodarilo!"
-
-#: src/lyx_cb.cpp:285
-msgid "Autosaving current document..."
-msgstr "Automatické ukladanie dokumentu..."
-
-#: src/lyx_cb.cpp:349
-msgid "Select file to insert"
-msgstr "Vyberte súbor na vlo¾enie"
-
-#: src/lyx_cb.cpp:368
-#, c-format
-msgid ""
-"Could not read the specified document\n"
-"%1$s\n"
-"due to the error: %2$s"
-msgstr ""
-
-#: src/lyx_cb.cpp:370
-#, fuzzy
-msgid "Could not read file"
-msgstr "Nemô¾em pracova» so súborom:"
-
-#: src/lyx_cb.cpp:378
-#, c-format
-msgid ""
-"Could not open the specified document\n"
-"%1$s\n"
-"due to the error: %2$s"
-msgstr ""
-
-#: src/lyx_cb.cpp:380 src/output.cpp:41
-#, fuzzy
-msgid "Could not open file"
-msgstr "Nie je mo¾né otvori» súbor"
-
-#: src/lyx_cb.cpp:411
-msgid "Running configure..."
-msgstr "Spú¹»am konfigurovanie..."
-
-#: src/lyx_cb.cpp:420
-msgid "Reloading configuration..."
-msgstr "Nové naèítanie konfigurácie..."
-
-#: src/lyx_cb.cpp:425
-#, fuzzy
-msgid "System reconfigured"
-msgstr "Systém je prekonfigurovaný."
-
-#: src/lyx_cb.cpp:426
-msgid ""
-"The system has been reconfigured.\n"
-"You need to restart LyX to make use of any\n"
-"updated document class specifications."
-msgstr ""
+msgid "Running MakeIndex for nomencl."
+msgstr "MakeIndex spustený."
 
 #: src/LyX.cpp:129
 #, fuzzy
@@ -14627,7 +12789,7 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
-#: src/LyX.cpp:1323 src/support/Package.C.in:568
+#: src/LyX.cpp:1323 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Prieèinok pou¾ívateµa: "
@@ -14665,75 +12827,6 @@ msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 #: src/LyX.cpp:1373
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
-
-#: src/lyxfind.cpp:136
-#, fuzzy
-msgid "Search error"
-msgstr "Hµada»"
-
-#: src/lyxfind.cpp:137
-#, fuzzy
-msgid "Search string is empty"
-msgstr "Výsledný súbor je prázdny"
-
-#: src/lyxfind.cpp:288 src/lyxfind.cpp:319
-msgid "String not found!"
-msgstr "Re»azec nebol nájdený!"
-
-#: src/lyxfind.cpp:323
-msgid "String has been replaced."
-msgstr "Re»azec bol nahradený."
-
-#: src/lyxfind.cpp:326
-msgid " strings have been replaced."
-msgstr " re»azce boli nahradené."
-
-#: src/LyXFont.cpp:52
-msgid "Symbol"
-msgstr "Symbol"
-
-#: src/LyXFont.cpp:54 src/LyXFont.cpp:57 src/LyXFont.cpp:60 src/LyXFont.cpp:66
-#: src/LyXFont.cpp:69
-msgid "Inherit"
-msgstr "Zdedené"
-
-#: src/LyXFont.cpp:54 src/LyXFont.cpp:57 src/LyXFont.cpp:61 src/LyXFont.cpp:66
-#: src/LyXFont.cpp:69
-msgid "Ignore"
-msgstr "Ignorova»"
-
-#: src/LyXFont.cpp:60
-msgid "Smallcaps"
-msgstr "Kapitálky"
-
-#: src/LyXFont.cpp:69
-msgid "Toggle"
-msgstr "Prepnú»"
-
-#: src/LyXFont.cpp:509
-#, c-format
-msgid "Emphasis %1$s, "
-msgstr "Zvýrazni» %1$s, "
-
-#: src/LyXFont.cpp:512
-#, c-format
-msgid "Underline %1$s, "
-msgstr "Podèiarknu» %1$s, "
-
-#: src/LyXFont.cpp:515
-#, c-format
-msgid "Noun %1$s, "
-msgstr "Kapitálky %1$s, "
-
-#: src/LyXFont.cpp:520
-#, c-format
-msgid "Language: %1$s, "
-msgstr "Jazyk: %1$s, "
-
-#: src/LyXFont.cpp:523
-#, c-format
-msgid "  Number %1$s"
-msgstr "  Èíslo %1$s"
 
 #: src/LyXFunc.cpp:362
 msgid "Unknown function."
@@ -14815,7 +12908,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Koniec|K"
 
-#: src/LyXFunc.cpp:1115 src/text3.cpp:1312
+#: src/LyXFunc.cpp:1115 src/Text3.cpp:1312
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
@@ -14858,6 +12951,10 @@ msgstr "Prevod dokumentu do novej triedy dokumentov..."
 msgid "Select template file"
 msgstr "Zvoli» názov ¹ablóny"
 
+#: src/LyXFunc.cpp:1867 src/callback.cpp:137
+msgid "Templates|#T#t"
+msgstr "©ablóny|#¹"
+
 #: src/LyXFunc.cpp:1903
 msgid "Select document to open"
 msgstr "Zvoli» dokument pre otvorenie"
@@ -14881,6 +12978,19 @@ msgstr "Nedá sa otvori» dokument %1$s"
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoli» súbor %1$s na import"
+
+#: src/LyXFunc.cpp:2024 src/callback.cpp:167
+#, c-format
+msgid ""
+"The document %1$s already exists.\n"
+"\n"
+"Do you want to over-write that document?"
+msgstr ""
+
+#: src/LyXFunc.cpp:2026 src/callback.cpp:169
+#, fuzzy
+msgid "Over-write document?"
+msgstr "Ulo¾i» dokument?"
 
 #: src/LyXFunc.cpp:2097
 msgid "Welcome to LyX!"
@@ -15385,10 +13495,2073 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Vybera» po koniec dokumentu"
 
-#: src/mathed/InsetFormulaMacro.cpp:127 src/mathed/MathMacroTemplate.cpp:108
+#: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
+#: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
+msgid "No Documents Open!"
+msgstr "®iadny dokument nie je otvorený!"
+
+#: src/MenuBackend.cpp:540
+#, fuzzy
+msgid "Plain Text"
+msgstr "Jednoduchý text"
+
+#: src/MenuBackend.cpp:542
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Ascii text ako riadky"
+
+#: src/MenuBackend.cpp:714
+#, fuzzy
+msgid "Master Document"
+msgstr "Ulo¾i» dokument"
+
+#: src/MenuBackend.cpp:746
+msgid "No Table of contents"
+msgstr "Bez obsahu"
+
+#: src/MenuBackend.cpp:791
+msgid " (auto)"
+msgstr ""
+
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+msgid "Senseless with this layout!"
+msgstr "V tomto formáte nemá zmysel!"
+
+#: src/SpellBase.cpp:51
+#, fuzzy
+msgid "Native OS API not yet supported."
+msgstr "E¹te nie je podporované"
+
+#: src/Text.cpp:133
+msgid "Unknown layout"
+msgstr "Neznáme rozlo¾enie"
+
+#: src/Text.cpp:134
+#, c-format
+msgid ""
+"Layout '%1$s' does not exist in textclass '%2$s'\n"
+"Trying to use the default instead.\n"
+msgstr ""
+
+#: src/Text.cpp:165
+#, fuzzy
+msgid "Unknown Inset"
+msgstr "Neznámy zoznam obsahu"
+
+#: src/Text.cpp:271 src/Text.cpp:284
+#, fuzzy
+msgid "Change tracking error"
+msgstr "Zmeni» jazyk"
+
+#: src/Text.cpp:272
+#, c-format
+msgid "Unknown author index for insertion: %1$d\n"
+msgstr ""
+
+#: src/Text.cpp:285
+#, c-format
+msgid "Unknown author index for deletion: %1$d\n"
+msgstr ""
+
+#: src/Text.cpp:292
+#, fuzzy
+msgid "Unknown token"
+msgstr "Neznámy token: "
+
+#: src/Text.cpp:726
+msgid ""
+"You cannot insert a space at the beginning of a paragraph. Please read the "
+"Tutorial."
+msgstr ""
+"Nemô¾ete vlo¾i» medzeru na zaèiatok odstavca medzeru. Preèítajte si prosím "
+"Príruèku."
+
+#: src/Text.cpp:737
+msgid "You cannot type two spaces this way. Please read the Tutorial."
+msgstr ""
+"Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si, prosím, "
+"Príruèku."
+
+#: src/Text.cpp:1703
+#, fuzzy
+msgid "[Change Tracking] "
+msgstr "Zmeni» sledovanie|Z"
+
+#: src/Text.cpp:1709
+#, fuzzy
+msgid "Change: "
+msgstr "Strana: "
+
+#: src/Text.cpp:1713
+#, fuzzy
+msgid " at "
+msgstr " na "
+
+#: src/Text.cpp:1723
+#, c-format
+msgid "Font: %1$s"
+msgstr "Písmo: %1$s"
+
+#: src/Text.cpp:1728
+#, c-format
+msgid ", Depth: %1$d"
+msgstr ", Håbka: %1$d"
+
+#: src/Text.cpp:1734
+msgid ", Spacing: "
+msgstr ", Riadkovanie: "
+
+#: src/Text.cpp:1740 src/frontends/qt4/QDocument.cpp:125
+msgid "OneHalf"
+msgstr "Polovièné"
+
+#: src/Text.cpp:1746
+msgid "Other ("
+msgstr "Iné ("
+
+#: src/Text.cpp:1755
+#, fuzzy
+msgid ", Inset: "
+msgstr ", Håbka: "
+
+#: src/Text.cpp:1756
+msgid ", Paragraph: "
+msgstr ", Odstavec: "
+
+#: src/Text.cpp:1757
+msgid ", Id: "
+msgstr ""
+
+#: src/Text.cpp:1758
+#, fuzzy
+msgid ", Position: "
+msgstr "   mo¾nosti: "
+
+#: src/Text.cpp:1764
+msgid ", Char: 0x"
+msgstr ""
+
+#: src/Text.cpp:1766
+msgid ", Boundary: "
+msgstr ""
+
+#: src/Text2.cpp:540
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Nebola definovaná zmena písma.Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na "
+"definovanie zmeny písma."
+
+#: src/Text2.cpp:582
+msgid "Nothing to index!"
+msgstr "Nie je èo indexova»!"
+
+#: src/Text2.cpp:584
+msgid "Cannot index more than one paragraph!"
+msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
+
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1330
+msgid "Math editor mode"
+msgstr "Re¾im matematického editoru"
+
+#: src/Text3.cpp:721
+msgid "Unknown spacing argument: "
+msgstr "Neznámy parameter riadkovania: "
+
+#: src/Text3.cpp:894
+msgid "Layout "
+msgstr "Formát "
+
+#: src/Text3.cpp:895
+msgid " not known"
+msgstr " neznámy"
+
+#: src/Text3.cpp:1417 src/Text3.cpp:1429
+msgid "Character set"
+msgstr "Znaková sada"
+
+#: src/Text3.cpp:1560
+msgid "Paragraph layout set"
+msgstr "Formát odstavca je nastavený."
+
+#: src/VSpace.cpp:490
+#, fuzzy
+msgid "Default skip"
+msgstr "©td. vzdialenos»:|#d"
+
+#: src/VSpace.cpp:493
+#, fuzzy
+msgid "Small skip"
+msgstr "Malá"
+
+#: src/VSpace.cpp:496
+#, fuzzy
+msgid "Medium skip"
+msgstr "Stredná"
+
+#: src/VSpace.cpp:499
+#, fuzzy
+msgid "Big skip"
+msgstr "Veµká"
+
+#: src/VSpace.cpp:502
+#, fuzzy
+msgid "Vertical fill"
+msgstr " (vertikálne vyplnenie)"
+
+#: src/VSpace.cpp:509
+#, fuzzy
+msgid "protected"
+msgstr "Chránená medzera|m"
+
+#: src/buffer_funcs.cpp:81
+#, c-format
+msgid ""
+"The specified document\n"
+"%1$s\n"
+"could not be read."
+msgstr ""
+
+#: src/buffer_funcs.cpp:83
+#, fuzzy
+msgid "Could not read document"
+msgstr "Nedá sa otvori» dokument "
+
+#: src/buffer_funcs.cpp:96
 #, fuzzy, c-format
-msgid " Macro: %1$s: "
-msgstr " Makro: %s: "
+msgid ""
+"An emergency save of the document %1$s exists.\n"
+"\n"
+"Recover emergency save?"
+msgstr "Existuje bezpeènostná kópia tohoto dokumentu!"
+
+#: src/buffer_funcs.cpp:99
+msgid "Load emergency save?"
+msgstr ""
+
+#: src/buffer_funcs.cpp:100
+#, fuzzy
+msgid "&Recover"
+msgstr "&Odstráni»"
+
+#: src/buffer_funcs.cpp:100
+msgid "&Load Original"
+msgstr ""
+
+#: src/buffer_funcs.cpp:123
+#, c-format
+msgid ""
+"The backup of the document %1$s is newer.\n"
+"\n"
+"Load the backup instead?"
+msgstr ""
+
+#: src/buffer_funcs.cpp:126
+#, fuzzy
+msgid "Load backup?"
+msgstr "Prejs» dozadu"
+
+#: src/buffer_funcs.cpp:127
+#, fuzzy
+msgid "&Load backup"
+msgstr "&Ís» spä»"
+
+#: src/buffer_funcs.cpp:127
+msgid "Load &original"
+msgstr ""
+
+#: src/buffer_funcs.cpp:166
+#, fuzzy, c-format
+msgid "Do you want to retrieve the document %1$s from version control?"
+msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
+
+#: src/buffer_funcs.cpp:168
+#, fuzzy
+msgid "Retrieve from version control?"
+msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
+
+#: src/buffer_funcs.cpp:169
+#, fuzzy
+msgid "&Retrieve"
+msgstr "O&bnovi»"
+
+#: src/buffer_funcs.cpp:202
+#, c-format
+msgid ""
+"The specified document template\n"
+"%1$s\n"
+"could not be read."
+msgstr ""
+
+#: src/buffer_funcs.cpp:204
+#, fuzzy
+msgid "Could not read template"
+msgstr "Nemô¾em pracova» so súborom:"
+
+#: src/buffer_funcs.cpp:521
+msgid "\\arabic{enumi}."
+msgstr ""
+
+#: src/buffer_funcs.cpp:527
+msgid "\\roman{enumiii}."
+msgstr ""
+
+#: src/buffer_funcs.cpp:530
+msgid "\\Alph{enumiv}."
+msgstr ""
+
+#: src/bufferview_funcs.cpp:308
+msgid "No more insets"
+msgstr "U¾ nie je viac príloh"
+
+#: src/callback.cpp:114
+#, c-format
+msgid ""
+"The document %1$s could not be saved.\n"
+"\n"
+"Do you want to rename the document and try again?"
+msgstr ""
+
+#: src/callback.cpp:116
+msgid "Rename and save?"
+msgstr ""
+
+#: src/callback.cpp:117
+#, fuzzy
+msgid "&Rename"
+msgstr "Meno"
+
+#: src/callback.cpp:134
+msgid "Choose a filename to save document as"
+msgstr "Zvoli» názov súboru, pod ktorým sa má dokument ulo¾i»"
+
+#: src/callback.cpp:218
+#, c-format
+msgid "Auto-saving %1$s"
+msgstr "Automatické ukladanie %1$s"
+
+#: src/callback.cpp:258
+msgid "Autosave failed!"
+msgstr "Automatické ukladanie sa nepodarilo!"
+
+#: src/callback.cpp:285
+msgid "Autosaving current document..."
+msgstr "Automatické ukladanie dokumentu..."
+
+#: src/callback.cpp:349
+msgid "Select file to insert"
+msgstr "Vyberte súbor na vlo¾enie"
+
+#: src/callback.cpp:368
+#, c-format
+msgid ""
+"Could not read the specified document\n"
+"%1$s\n"
+"due to the error: %2$s"
+msgstr ""
+
+#: src/callback.cpp:370
+#, fuzzy
+msgid "Could not read file"
+msgstr "Nemô¾em pracova» so súborom:"
+
+#: src/callback.cpp:378
+#, c-format
+msgid ""
+"Could not open the specified document\n"
+"%1$s\n"
+"due to the error: %2$s"
+msgstr ""
+
+#: src/callback.cpp:380 src/output.cpp:41
+#, fuzzy
+msgid "Could not open file"
+msgstr "Nie je mo¾né otvori» súbor"
+
+#: src/callback.cpp:411
+msgid "Running configure..."
+msgstr "Spú¹»am konfigurovanie..."
+
+#: src/callback.cpp:420
+msgid "Reloading configuration..."
+msgstr "Nové naèítanie konfigurácie..."
+
+#: src/callback.cpp:425
+#, fuzzy
+msgid "System reconfigured"
+msgstr "Systém je prekonfigurovaný."
+
+#: src/callback.cpp:426
+msgid ""
+"The system has been reconfigured.\n"
+"You need to restart LyX to make use of any\n"
+"updated document class specifications."
+msgstr ""
+
+#: src/client/debug.cpp:44 src/debug.cpp:44
+msgid "No debugging message"
+msgstr "®iadne správy pre ladenie"
+
+#: src/client/debug.cpp:45 src/debug.cpp:45
+msgid "General information"
+msgstr "V¹eobecné informácie"
+
+#: src/client/debug.cpp:46 src/debug.cpp:70
+#, fuzzy
+msgid "Developers' general debug messages"
+msgstr "V¹etky ladiace informácie"
+
+#: src/client/debug.cpp:47 src/debug.cpp:71
+msgid "All debugging messages"
+msgstr "V¹etky ladiace informácie"
+
+#: src/client/debug.cpp:91 src/debug.cpp:115
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Ladenie `%1$s' (%2$s)"
+
+#: src/debug.cpp:46
+msgid "Program initialisation"
+msgstr "Inicializácia programu"
+
+#: src/debug.cpp:47
+msgid "Keyboard events handling"
+msgstr "spravovanie udalostí klávesnice"
+
+#: src/debug.cpp:48
+msgid "GUI handling"
+msgstr "Spravovanie GUI"
+
+#: src/debug.cpp:49
+#, fuzzy
+msgid "Lyxlex grammar parser"
+msgstr "Analyzátor gramatiky Lyxlex"
+
+#: src/debug.cpp:50
+msgid "Configuration files reading"
+msgstr "Naèítavanie konfiguraèných súborov"
+
+#: src/debug.cpp:51
+msgid "Custom keyboard definition"
+msgstr "Vlastné definovaná klávesnica"
+
+#: src/debug.cpp:52
+msgid "LaTeX generation/execution"
+msgstr "Spú¹»anie/generovanie LaTeXu"
+
+#: src/debug.cpp:53
+msgid "Math editor"
+msgstr "Editor matematiky"
+
+#: src/debug.cpp:54
+msgid "Font handling"
+msgstr "Manipulácia s písmom"
+
+#: src/debug.cpp:55
+msgid "Textclass files reading"
+msgstr "Naèítavanie súborov s textovými triedami"
+
+#: src/debug.cpp:56
+msgid "Version control"
+msgstr "Kontrola verzií"
+
+#: src/debug.cpp:57
+msgid "External control interface"
+msgstr "Rozhranie externej kontroly"
+
+#: src/debug.cpp:58
+msgid "Keep *roff temporary files"
+msgstr "Uchova» doèasné *roff súbory"
+
+#: src/debug.cpp:59
+msgid "User commands"
+msgstr "Pou¾ívateµský príkaz"
+
+#: src/debug.cpp:60
+msgid "The LyX Lexxer"
+msgstr "LyX Lexxer"
+
+#: src/debug.cpp:61
+msgid "Dependency information"
+msgstr "Informácie o závislostiach"
+
+#: src/debug.cpp:62
+msgid "LyX Insets"
+msgstr "LyX prílohy"
+
+#: src/debug.cpp:63
+msgid "Files used by LyX"
+msgstr "Súbory pou¾ívané LyXom"
+
+#: src/debug.cpp:64
+msgid "Workarea events"
+msgstr "Udalosti pracovnej oblasti"
+
+#: src/debug.cpp:65
+msgid "Insettext/tabular messages"
+msgstr ""
+
+#: src/debug.cpp:66
+msgid "Graphics conversion and loading"
+msgstr "Konverzia grafiky a naèítanie"
+
+#: src/debug.cpp:67
+#, fuzzy
+msgid "Change tracking"
+msgstr "Zmeni» jazyk"
+
+#: src/debug.cpp:68
+#, fuzzy
+msgid "External template/inset messages"
+msgstr "Externé aplikácie"
+
+#: src/debug.cpp:69
+msgid "RowPainter profiling"
+msgstr ""
+
+#: src/frontends/LyXView.cpp:425
+msgid " (changed)"
+msgstr " (zmenený)"
+
+#: src/frontends/LyXView.cpp:429
+msgid " (read only)"
+msgstr " (iba pre èítanie)"
+
+#: src/frontends/WorkArea.cpp:242
+msgid "Formatting document..."
+msgstr "Formátujem dokument..."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:58
+msgid "ERROR: LyX wasn't able to read CREDITS file\n"
+msgstr "Chyba: LyXu sa nepodarilo naèíta» súbor CREDITS\n"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:59
+msgid "Please install correctly to estimate the great\n"
+msgstr "Prosím vykonajte správne in¹taláciu na ocenenie veµkého\n"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:60
+msgid "amount of work other people have done for the LyX project."
+msgstr "mno¾stva práce v¹etkých µudí, ktorí pracovali pre LyX projekt."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:67
+#, fuzzy
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-2006 LyX Team"
+msgstr ""
+"LyX Copyright (C) 1995 Matthias Ettrich,\n"
+"1995-2001 LyX Team"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:73
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:79
+#, fuzzy
+msgid ""
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+msgstr ""
+"LyX je ¹írený v nádeji, ¾e bude u¾itoèný, ale BEZ AKEJKO¥VEK ZÁRUKY; dokonca "
+"bez akejkoµvek OBCHODNEJ ZÁRUKY alebo VHODNOSTI K DANÉMU POU®ÍVANIU.\n"
+" Podrobnosti si pozrite v GNU General Public Licence.\n"
+"Kópiu tejto licencie by ste mali dosta» spolu s týmto programom; pokiaµ nie, "
+"tak napí¹te na The Free Software Foundation, Inc., 675 Mass Ave, Cambridge, "
+"MA 02139, USA. Slovenský preklad nájdete na http://www.linux.sk.  Èeský "
+"preklad je na http://www.freesoft.cz."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:87
+msgid "LyX Version "
+msgstr "LyX verzia "
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:92
+msgid "Library directory: "
+msgstr "Prieèinok kni¾níc: "
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:95
+msgid "User directory: "
+msgstr "Prieèinok pou¾ívateµa: "
+
+#: src/frontends/controllers/ControlBibtex.cpp:54
+#, fuzzy
+msgid "BibTeX Databases (*.bib)"
+msgstr "*.bib| BibTeX databázy (*.bib)"
+
+#: src/frontends/controllers/ControlBibtex.cpp:56
+msgid "Select a BibTeX database to add"
+msgstr ""
+
+#: src/frontends/controllers/ControlBibtex.cpp:66
+#, fuzzy
+msgid "BibTeX Styles (*.bst)"
+msgstr "BibTeX ¹týly"
+
+#: src/frontends/controllers/ControlBibtex.cpp:68
+msgid "Select a BibTeX style"
+msgstr "Vybra» BibTeX ¹týl"
+
+#: src/frontends/controllers/ControlBox.cpp:62
+msgid "No frame drawn"
+msgstr ""
+
+#: src/frontends/controllers/ControlBox.cpp:63
+msgid "Rectangular box"
+msgstr ""
+
+#: src/frontends/controllers/ControlBox.cpp:64
+msgid "Oval box, thin"
+msgstr ""
+
+#: src/frontends/controllers/ControlBox.cpp:65
+msgid "Oval box, thick"
+msgstr ""
+
+#: src/frontends/controllers/ControlBox.cpp:66
+msgid "Shadow box"
+msgstr ""
+
+#: src/frontends/controllers/ControlBox.cpp:67
+#, fuzzy
+msgid "Double box"
+msgstr "Dvojité"
+
+#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.cpp:286
+#: src/frontends/qt4/QBox.cpp:320
+msgid "Depth"
+msgstr "Håbka"
+
+#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.cpp:133
+#: src/frontends/qt4/QBox.cpp:289 src/frontends/qt4/QBox.cpp:323
+#: src/frontends/qt4/QBox.cpp:356
+msgid "Total Height"
+msgstr "Celková vý¹ka"
+
+#: src/frontends/controllers/ControlErrorList.cpp:57
+#, c-format
+msgid "%1$s Errors (%2$s)"
+msgstr ""
+
+#: src/frontends/controllers/ControlExternal.cpp:163
+msgid "Select external file"
+msgstr "Zvoµte externý súbor"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Top left"
+msgstr "¥avý horný"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Bottom left"
+msgstr "¥avý dolný"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Baseline left"
+msgstr ""
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Top center"
+msgstr "Horný stredný"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Bottom center"
+msgstr "Dolný stredný"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+#, fuzzy
+msgid "Baseline center"
+msgstr "Zarovna» na stred|s"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Top right"
+msgstr "Horný pravý"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Bottom right"
+msgstr "Dolný pravý"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+#, fuzzy
+msgid "Baseline right"
+msgstr "Èiara vpravo|p"
+
+#: src/frontends/controllers/ControlGraphics.cpp:87
+msgid "Select graphics file"
+msgstr "Zvoµte grafický súbor"
+
+#: src/frontends/controllers/ControlGraphics.cpp:95
+msgid "Clipart|#C#c"
+msgstr "Klipart|#K#k"
+
+#: src/frontends/controllers/ControlInclude.cpp:78
+msgid "Select document to include"
+msgstr "Zvoµte dokument na vlo¾enie"
+
+#: src/frontends/controllers/ControlInclude.cpp:85
+msgid "LaTeX/LyX Documents (*.tex *.lyx)"
+msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
+
+#: src/frontends/controllers/ControlLog.cpp:81
+msgid "LaTeX Log"
+msgstr "Log LaTeXu"
+
+#: src/frontends/controllers/ControlLog.cpp:84
+msgid "Literate Programming Build Log"
+msgstr ""
+
+#: src/frontends/controllers/ControlLog.cpp:87
+msgid "lyx2lyx Error Log"
+msgstr "Záznam chýb lyx2lyx"
+
+#: src/frontends/controllers/ControlLog.cpp:90
+msgid "Version Control Log"
+msgstr "Záznam kontroly verzií"
+
+#: src/frontends/controllers/ControlLog.cpp:116
+msgid "No LaTeX log file found."
+msgstr "Logovací súbor LaTeXu nebol nájdený"
+
+#: src/frontends/controllers/ControlLog.cpp:119
+#, fuzzy
+msgid "No literate programming build log file found."
+msgstr "Logovací súbor kontroly verzií nebol nájdený."
+
+#: src/frontends/controllers/ControlLog.cpp:122
+#, fuzzy
+msgid "No lyx2lyx error log file found."
+msgstr "Logovací súbor LaTeXu nebol nájdený"
+
+#: src/frontends/controllers/ControlLog.cpp:125
+msgid "No version control log file found."
+msgstr "Logovací súbor kontroly verzií nebol nájdený."
+
+#: src/frontends/controllers/ControlPrefs.cpp:110
+msgid "Choose bind file"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:111
+msgid "LyX bind files (*.bind)"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:118
+msgid "Choose UI file"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:119
+#, fuzzy
+msgid "LyX UI files (*.ui)"
+msgstr "*| V¹etky súbory (*)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:126
+msgid "Choose keyboard map"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:127
+#, fuzzy
+msgid "LyX keyboard maps (*.kmap)"
+msgstr "Pou¾i» &klávesnicovú mapu"
+
+#: src/frontends/controllers/ControlPrefs.cpp:135
+#: src/frontends/controllers/ControlPrefs.cpp:139
+msgid "Choose personal dictionary"
+msgstr "Pou¾i» osobný slovník"
+
+#: src/frontends/controllers/ControlPrefs.cpp:136
+msgid "*.pws"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:140
+#, fuzzy
+msgid "*.ispell"
+msgstr "ispell"
+
+#: src/frontends/controllers/ControlPrint.cpp:73
+msgid "Print to file"
+msgstr "Tlaèi» do súboru"
+
+#: src/frontends/controllers/ControlPrint.cpp:74
+msgid "PostScript files (*.ps)"
+msgstr "PostScript súbory (*.ps)"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:117
+#, fuzzy
+msgid "Spellchecker error"
+msgstr "Kontrola pravopisu"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:118
+#, fuzzy
+msgid "The spellchecker could not be started\n"
+msgstr "Dokument nie je mo¾né ulo¾i»!"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:276
+#, fuzzy
+msgid ""
+"The spellchecker has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Kontrola pravopisu z nejakého dôvodu nebola dokonèená.\n"
+"Mo¾no bola zabitá."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:279
+msgid "The spellchecker has failed.\n"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:283
+msgid "The spellchecker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:297
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Jedno slovo skontrolované."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:299
+msgid "One word checked."
+msgstr "Jedno slovo skontrolované."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:302
+#, fuzzy
+msgid "Spelling check completed"
+msgstr "Kontrola pravopisu je dokonèená"
+
+#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
+msgid "Table of Contents"
+msgstr "Obsah"
+
+#: src/frontends/controllers/frontend_helpers.cpp:244
+#, c-format
+msgid "%1$s and %2$s"
+msgstr ""
+
+#: src/frontends/controllers/frontend_helpers.cpp:248
+#, c-format
+msgid "%1$s et al."
+msgstr ""
+
+#: src/frontends/controllers/frontend_helpers.cpp:285
+msgid "No year"
+msgstr "Bez roku"
+
+#: src/frontends/controllers/frontend_helpers.cpp:818
+#, fuzzy
+msgid "before"
+msgstr "Text pred:"
+
+#: src/frontends/controllers/frontend_helpers.cpp:866
+#: src/frontends/controllers/frontend_helpers.cpp:896
+#: src/frontends/controllers/frontend_helpers.cpp:922
+#: src/frontends/controllers/frontend_helpers.cpp:956
+#: src/frontends/controllers/frontend_helpers.cpp:1022
+#: src/frontends/controllers/frontend_helpers.cpp:1052
+#: src/frontends/controllers/frontend_helpers.cpp:1125
+msgid "No change"
+msgstr "®iadne zmeny"
+
+#: src/frontends/controllers/frontend_helpers.cpp:882
+#: src/frontends/controllers/frontend_helpers.cpp:908
+#: src/frontends/controllers/frontend_helpers.cpp:942
+#: src/frontends/controllers/frontend_helpers.cpp:1008
+#: src/frontends/controllers/frontend_helpers.cpp:1038
+#: src/frontends/controllers/frontend_helpers.cpp:1092
+#: src/frontends/controllers/frontend_helpers.cpp:1127
+msgid "Reset"
+msgstr "Obnovi»"
+
+#: src/frontends/controllers/frontend_helpers.cpp:938
+msgid "Small Caps"
+msgstr "Malé kapitálky"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1026
+msgid "Emph"
+msgstr "Zvýrazni»"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1030
+msgid "Underbar"
+msgstr ""
+
+#: src/frontends/controllers/frontend_helpers.cpp:1034
+msgid "Noun"
+msgstr "Kapitálky"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1056
+msgid "No color"
+msgstr ""
+
+#: src/frontends/controllers/frontend_helpers.cpp:1060
+msgid "Black"
+msgstr "Èierna"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1064
+msgid "White"
+msgstr "Biela"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1068
+msgid "Red"
+msgstr "Èervená"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1072
+msgid "Green"
+msgstr "Zelená"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1076
+msgid "Blue"
+msgstr "Modrá"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1080
+msgid "Cyan"
+msgstr "Azúrová"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1084
+msgid "Magenta"
+msgstr "Purpurová"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1088
+msgid "Yellow"
+msgstr "®ltá"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1220
+#, fuzzy
+msgid "System files|#S#s"
+msgstr "Systémové rozhranie|#S#s"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1223
+#, fuzzy
+msgid "User files|#U#u"
+msgstr "Pou¾. viazanie|#u"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1306
+#, fuzzy
+msgid "Could not update TeX information"
+msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1307
+#, c-format
+msgid "The script `%s' failed."
+msgstr ""
+
+#: src/frontends/qt4/BulletsModule.cpp:47
+#, fuzzy
+msgid "Maths"
+msgstr "Cesty"
+
+#: src/frontends/qt4/BulletsModule.cpp:48
+#, fuzzy
+msgid "Dings 1"
+msgstr "Ïal¹ie 1|#Ï"
+
+#: src/frontends/qt4/BulletsModule.cpp:49
+#, fuzzy
+msgid "Dings 2"
+msgstr "Ïal¹ie 2|#a"
+
+#: src/frontends/qt4/BulletsModule.cpp:50
+#, fuzzy
+msgid "Dings 3"
+msgstr "Ïal¹ie 3|#l"
+
+#: src/frontends/qt4/BulletsModule.cpp:51
+#, fuzzy
+msgid "Dings 4"
+msgstr "Ïal¹ie 4|#¹"
+
+#: src/frontends/qt4/Dialogs.cpp:223
+#, fuzzy
+msgid "Index Entry"
+msgstr "Polo¾ka indexu"
+
+#: src/frontends/qt4/Dialogs.cpp:233
+msgid "Label"
+msgstr "Oznaèenie"
+
+#: src/frontends/qt4/Dialogs.cpp:245
+#, fuzzy
+msgid "LaTeX Source"
+msgstr "Viditeµná medzera|#m"
+
+#: src/frontends/qt4/Dialogs.cpp:307
+#, fuzzy
+msgid "Toc"
+msgstr "Námet"
+
+#: src/frontends/qt4/FileDialog.cpp:162
+msgid "Directories"
+msgstr "Prieèinky"
+
+#: src/frontends/qt4/GuiView.cpp:133
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:139
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:146
+msgid "Big-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:676
+msgid "LyX"
+msgstr "LyX"
+
+#: src/frontends/qt4/GuiWorkArea.cpp:467
+#, fuzzy
+msgid "unknown version"
+msgstr "Neznáma akcia"
+
+#: src/frontends/qt4/QBibitem.cpp:69
+msgid "Bibliography Entry Settings"
+msgstr "Nastavenia polo¾ky bibliografie"
+
+#: src/frontends/qt4/QBibtex.cpp:260
+#, fuzzy
+msgid "BibTeX Bibliography"
+msgstr "Literatúra "
+
+#: src/frontends/qt4/QBox.cpp:148
+#, fuzzy
+msgid "Box Settings"
+msgstr "Nastavenia"
+
+#: src/frontends/qt4/QBranch.cpp:71
+#, fuzzy
+msgid "Branch Settings"
+msgstr "Nastavenia literatúry"
+
+#: src/frontends/qt4/QBranches.cpp:42
+#, fuzzy
+msgid "Branch"
+msgstr "Francúzsky"
+
+#: src/frontends/qt4/QBranches.cpp:43
+msgid "Activated"
+msgstr "Aktivované"
+
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
+#: src/frontends/qt4/QDocument.cpp:690
+#, fuzzy
+msgid "Yes"
+msgstr "&Áno"
+
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
+#, fuzzy
+msgid "No"
+msgstr "&Nie"
+
+#: src/frontends/qt4/QChanges.cpp:85
+#, fuzzy
+msgid "Merge Changes"
+msgstr "Spoji» bunky"
+
+#: src/frontends/qt4/QChanges.cpp:107
+#, c-format
+msgid ""
+"Change by %1$s\n"
+"\n"
+msgstr ""
+
+#: src/frontends/qt4/QChanges.cpp:109
+#, c-format
+msgid "Change made at %1$s\n"
+msgstr ""
+
+#: src/frontends/qt4/QCharacter.cpp:92
+#, fuzzy
+msgid "Text Style"
+msgstr "TeX ¹týl|X"
+
+#: src/frontends/qt4/QCommandBuffer.cpp:88
+msgid "Previous command"
+msgstr "Predchádzajúci príkaz"
+
+#: src/frontends/qt4/QCommandBuffer.cpp:91
+msgid "Next command"
+msgstr "Nasledujúci príkaz"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:46
+msgid "big[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:46
+msgid "Big[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:47
+msgid "bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:47
+msgid "Bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:69
+#, fuzzy
+msgid "Math Delimiter"
+msgstr "Matematický oddeµovaè"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:112
+msgid "LyX: Delimiters"
+msgstr "LyX: Oddelovaèe"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:144
+#: src/frontends/qt4/QDelimiterDialog.cpp:145
+#, fuzzy
+msgid "(None)"
+msgstr "®iadne"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:147
+#, fuzzy
+msgid "Variable"
+msgstr "Variabilná veµkos»"
+
+#: src/frontends/qt4/QDocument.cpp:119
+msgid "Length"
+msgstr "Då¾ka"
+
+#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
+#: src/frontends/qt4/QDocument.cpp:176
+msgid " (not installed)"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
+#: src/frontends/qt4/QDocument.cpp:599
+msgid "default"
+msgstr "¹tandardné"
+
+#: src/frontends/qt4/QDocument.cpp:181
+msgid "10"
+msgstr "10"
+
+#: src/frontends/qt4/QDocument.cpp:182
+msgid "11"
+msgstr "11"
+
+#: src/frontends/qt4/QDocument.cpp:183
+msgid "12"
+msgstr "12"
+
+#: src/frontends/qt4/QDocument.cpp:218
+msgid "empty"
+msgstr "prázdne"
+
+#: src/frontends/qt4/QDocument.cpp:219
+msgid "plain"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:220
+msgid "headings"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:221
+msgid "fancy"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:237
+msgid "B3"
+msgstr "B3"
+
+#: src/frontends/qt4/QDocument.cpp:238
+msgid "B4"
+msgstr "B4"
+
+#: src/frontends/qt4/QDocument.cpp:341
+#, fuzzy
+msgid "LaTeX default"
+msgstr "Log súbor LaTeXu|L"
+
+#: src/frontends/qt4/QDocument.cpp:347
+msgid "``text''"
+msgstr "``text''"
+
+#: src/frontends/qt4/QDocument.cpp:348
+msgid "''text''"
+msgstr "''text''"
+
+#: src/frontends/qt4/QDocument.cpp:349
+msgid ",,text``"
+msgstr ",,text``"
+
+#: src/frontends/qt4/QDocument.cpp:350
+msgid ",,text''"
+msgstr ",,text''"
+
+#: src/frontends/qt4/QDocument.cpp:351
+#, fuzzy
+msgid "<<text>>"
+msgstr "text"
+
+#: src/frontends/qt4/QDocument.cpp:352
+#, fuzzy
+msgid ">>text<<"
+msgstr "text"
+
+#: src/frontends/qt4/QDocument.cpp:368
+msgid "Numbered"
+msgstr "Èíslované"
+
+#: src/frontends/qt4/QDocument.cpp:369
+msgid "Appears in TOC"
+msgstr "Zobrazí sa obsahu"
+
+#: src/frontends/qt4/QDocument.cpp:389
+msgid "Author-year"
+msgstr "Autor-rok"
+
+#: src/frontends/qt4/QDocument.cpp:390
+msgid "Numerical"
+msgstr "Èíselný"
+
+#: src/frontends/qt4/QDocument.cpp:432
+#, c-format
+msgid "Unavailable: %1$s"
+msgstr "Nedostupné: %1$s"
+
+#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
+#, fuzzy
+msgid "Document Class"
+msgstr "T&rieda dokumentu:"
+
+#: src/frontends/qt4/QDocument.cpp:464
+#, fuzzy
+msgid "Text Layout"
+msgstr "Rozlo¾enie"
+
+#: src/frontends/qt4/QDocument.cpp:465
+#, fuzzy
+msgid "Page Layout"
+msgstr "Formát odstavca"
+
+#: src/frontends/qt4/QDocument.cpp:466
+#, fuzzy
+msgid "Page Margins"
+msgstr "Okraje"
+
+#: src/frontends/qt4/QDocument.cpp:468
+#, fuzzy
+msgid "Numbering & TOC"
+msgstr "Èíslovanie"
+
+#: src/frontends/qt4/QDocument.cpp:470
+#, fuzzy
+msgid "Math Options"
+msgstr "Mo¾nosti objektu"
+
+#: src/frontends/qt4/QDocument.cpp:471
+#, fuzzy
+msgid "Float Placement"
+msgstr "Umiestnenie objektov:|#U"
+
+#: src/frontends/qt4/QDocument.cpp:472
+msgid "Bullets"
+msgstr "Odrá¾ky"
+
+#: src/frontends/qt4/QDocument.cpp:473
+msgid "Branches"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
+msgid "LaTeX Preamble"
+msgstr "Preambula LaTeXu"
+
+#: src/frontends/qt4/QDocument.cpp:1237
+msgid "Document Settings"
+msgstr "Nastavenia dokumentu"
+
+#: src/frontends/qt4/QERT.cpp:68
+#, fuzzy
+msgid "TeX Code Settings"
+msgstr "LaTeX nastavenia"
+
+#: src/frontends/qt4/QExternal.cpp:495
+msgid "External Material"
+msgstr "Externý materiál"
+
+#: src/frontends/qt4/QExternal.cpp:555
+msgid "Scale%"
+msgstr "Mierka%"
+
+#: src/frontends/qt4/QFloat.cpp:31
+msgid "Float Settings"
+msgstr "Nastavenia objektu"
+
+#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:625
+msgid "Graphics"
+msgstr "Grafika"
+
+#: src/frontends/qt4/QInclude.cpp:134
+#, fuzzy
+msgid "Child Document"
+msgstr "Dokument"
+
+#: src/frontends/qt4/QMathMatrixDialog.cpp:46
+#, fuzzy
+msgid "Math Matrix"
+msgstr "Matematická matica"
+
+#: src/frontends/qt4/QMathMatrixDialog.cpp:61
+#, fuzzy
+msgid "LyX: Insert Matrix"
+msgstr "Vlo¾i» maticu"
+
+#: src/frontends/qt4/QNote.cpp:70
+#, fuzzy
+msgid "Note Settings"
+msgstr "Nastavenia objektu"
+
+#: src/frontends/qt4/QParagraph.cpp:70
+msgid ""
+"As described in the User Guide, the length of this text will determine how "
+"wide the label part of each item is in environments like List and "
+"Description.\n"
+"\n"
+" Normally you won't need to set this, since the largest label width of all "
+"the items is used. But if you need to, you can change it here."
+msgstr ""
+
+#: src/frontends/qt4/QParagraph.cpp:176
+#, fuzzy
+msgid "Paragraph Settings"
+msgstr "Nastavenia literatúry"
+
+#: src/frontends/qt4/QPrefs.cpp:73
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefs.cpp:74
+#, fuzzy
+msgid "Language settings"
+msgstr "Nastavenia tlaèiarne"
+
+#: src/frontends/qt4/QPrefs.cpp:75
+#, fuzzy
+msgid "Outputs"
+msgstr "Výstup"
+
+#: src/frontends/qt4/QPrefs.cpp:173
+msgid "Plain text"
+msgstr "Jednoduchý text"
+
+#: src/frontends/qt4/QPrefs.cpp:204
+msgid "Date format"
+msgstr "Formát dátumu"
+
+#: src/frontends/qt4/QPrefs.cpp:231
+msgid "Keyboard"
+msgstr "Klávesnica"
+
+#: src/frontends/qt4/QPrefs.cpp:355
+msgid "Screen fonts"
+msgstr "Písma obrazovky"
+
+#: src/frontends/qt4/QPrefs.cpp:513
+msgid "Colors"
+msgstr "Farby"
+
+#: src/frontends/qt4/QPrefs.cpp:599 src/frontends/qt4/QPrefs.cpp:698
+msgid "Paths"
+msgstr "Cesty"
+
+#: src/frontends/qt4/QPrefs.cpp:749
+msgid "Select a document templates directory"
+msgstr "Zvoli» prieèinok pre ¹ablóny dokumentov"
+
+#: src/frontends/qt4/QPrefs.cpp:759
+msgid "Select a temporary directory"
+msgstr "Zvoli» doèasný prieèinok"
+
+#: src/frontends/qt4/QPrefs.cpp:769
+msgid "Select a backups directory"
+msgstr ""
+
+#: src/frontends/qt4/QPrefs.cpp:779
+msgid "Select a document directory"
+msgstr "Zvoli» prieèinok pre dokumenty"
+
+#: src/frontends/qt4/QPrefs.cpp:789
+msgid "Give a filename for the LyX server pipe"
+msgstr ""
+
+#: src/frontends/qt4/QPrefs.cpp:802 src/frontends/qt4/QSpellchecker.cpp:135
+msgid "Spellchecker"
+msgstr "Kontrola pravopisu"
+
+#: src/frontends/qt4/QPrefs.cpp:824
+msgid "ispell"
+msgstr "ispell"
+
+#: src/frontends/qt4/QPrefs.cpp:825
+msgid "aspell"
+msgstr "aspell"
+
+#: src/frontends/qt4/QPrefs.cpp:826
+#, fuzzy
+msgid "hspell"
+msgstr "ispell"
+
+#: src/frontends/qt4/QPrefs.cpp:828
+msgid "pspell (library)"
+msgstr ""
+
+#: src/frontends/qt4/QPrefs.cpp:831
+msgid "aspell (library)"
+msgstr ""
+
+#: src/frontends/qt4/QPrefs.cpp:912
+msgid "Converters"
+msgstr "Konvertor"
+
+#: src/frontends/qt4/QPrefs.cpp:1102
+#, fuzzy
+msgid "Copiers"
+msgstr "Kópie"
+
+#: src/frontends/qt4/QPrefs.cpp:1355
+msgid "File formats"
+msgstr "Formáty súborov"
+
+#: src/frontends/qt4/QPrefs.cpp:1547
+#, fuzzy
+msgid "Format in use"
+msgstr "Formáty"
+
+#: src/frontends/qt4/QPrefs.cpp:1548
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Nemô¾em odstráni» Formát pou¾ívaný Konvertorom. Odstráòte najprv konvertor."
+
+#: src/frontends/qt4/QPrefs.cpp:1649
+msgid "Printer"
+msgstr "Tlaèiareò"
+
+#: src/frontends/qt4/QPrefs.cpp:1747 src/frontends/qt4/QPrefs.cpp:1941
+msgid "User interface"
+msgstr "Pou¾ívateµské rozhranie"
+
+#: src/frontends/qt4/QPrefs.cpp:1865
+#, fuzzy
+msgid "Identity"
+msgstr "&Odsadi»"
+
+#: src/frontends/qt4/QPrefs.cpp:2007
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: src/frontends/qt4/QPrint.cpp:36
+#, fuzzy
+msgid "Print Document"
+msgstr "Dokument"
+
+#: src/frontends/qt4/QRef.cpp:188
+msgid "Cross-reference"
+msgstr "Krí¾ová referencia"
+
+#: src/frontends/qt4/QRef.cpp:284
+msgid "&Go Back"
+msgstr "Ís» s&pä»"
+
+#: src/frontends/qt4/QRef.cpp:286
+msgid "Jump back"
+msgstr "Prejs» dozadu"
+
+#: src/frontends/qt4/QRef.cpp:294
+msgid "Jump to label"
+msgstr "Skok na oznaèenie"
+
+#: src/frontends/qt4/QSearch.cpp:138
+msgid "Find and Replace"
+msgstr "Hµada» a nahradi»"
+
+#: src/frontends/qt4/QSendto.cpp:84
+msgid "Send Document to Command"
+msgstr "Posla» dokument príkazu"
+
+#: src/frontends/qt4/QShowFile.cpp:57
+msgid "Show File"
+msgstr "Zobrazi» súbor"
+
+#: src/frontends/qt4/QTabular.cpp:523
+msgid "Table Settings"
+msgstr "Nastavenia tabuµky"
+
+#: src/frontends/qt4/QTabularCreate.cpp:73
+msgid "Insert Table"
+msgstr "Vlo¾i» tabuµku"
+
+#: src/frontends/qt4/QTexinfo.cpp:127
+msgid "TeX Information"
+msgstr "TeX informácie"
+
+#: src/frontends/qt4/QVSpace.cpp:188
+msgid "Vertical Space Settings"
+msgstr "Nastavenia vertikálnej medzery"
+
+#: src/frontends/qt4/QWrap.cpp:83
+#, fuzzy
+msgid "Text Wrap Settings"
+msgstr "Nastavenia tabuµky"
+
+#: src/frontends/qt4/Validator.cpp:153
+#, fuzzy
+msgid "space"
+msgstr "&Nahradi»"
+
+#: src/frontends/qt4/Validator.cpp:180
+#, fuzzy
+msgid "Invalid filename"
+msgstr "In¹talované súbory"
+
+#: src/frontends/qt4/Validator.cpp:181
+#, fuzzy
+msgid ""
+"LyX does not provide LaTeX support for file names containing any of these "
+"characters:\n"
+msgstr "názov prieèinku nemô¾e obsahova» tieto znaky:"
+
+#: src/frontends/qt4/alert_pimpl.cpp:58 src/frontends/qt4/alert_pimpl.cpp:85
+#: src/frontends/qt4/alert_pimpl.cpp:105 src/frontends/qt4/alert_pimpl.cpp:124
+#: src/frontends/qt4/alert_pimpl.cpp:135
+#, c-format
+msgid "LyX: %1$s"
+msgstr "LyX: %1$s"
+
+#: src/insets/Inset.cpp:265
+msgid "Opened inset"
+msgstr "Otvorená príloha"
+
+#: src/insets/InsetBibtex.cpp:109
+#, fuzzy
+msgid "BibTeX Generated Bibliography"
+msgstr "Referencie generované BibTeXom"
+
+#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#, fuzzy
+msgid "Export Warning!"
+msgstr "Varovanie!"
+
+#: src/insets/InsetBibtex.cpp:207
+msgid ""
+"There are spaces in the paths to your BibTeX databases.\n"
+"BibTeX will be unable to find them."
+msgstr ""
+
+#: src/insets/InsetBibtex.cpp:260
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
+msgstr ""
+
+#: src/insets/InsetBox.cpp:65
+#, fuzzy
+msgid "Boxed"
+msgstr "Tuèné"
+
+#: src/insets/InsetBox.cpp:66
+#, fuzzy
+msgid "Frameless"
+msgstr "Parametre"
+
+#: src/insets/InsetBox.cpp:67
+msgid "ovalbox"
+msgstr ""
+
+#: src/insets/InsetBox.cpp:68
+msgid "Ovalbox"
+msgstr ""
+
+#: src/insets/InsetBox.cpp:69
+msgid "Shadowbox"
+msgstr ""
+
+#: src/insets/InsetBox.cpp:70
+#, fuzzy
+msgid "Doublebox"
+msgstr "Dvojité"
+
+#: src/insets/InsetBox.cpp:125
+#, fuzzy
+msgid "Opened Box Inset"
+msgstr "Otvorený objekt prílohy"
+
+#: src/insets/InsetBranch.cpp:75
+#, fuzzy
+msgid "Opened Branch Inset"
+msgstr "Otvorený popis prílohy"
+
+#: src/insets/InsetBranch.cpp:100
+msgid "Branch: "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:107 src/insets/InsetCharStyle.cpp:162
+#: src/insets/InsetCharStyle.cpp:211
+#, fuzzy
+msgid "Undef: "
+msgstr "Ref: "
+
+#: src/insets/InsetBranch.cpp:238
+#, fuzzy
+msgid "branch"
+msgstr "Francúzsky"
+
+#: src/insets/InsetCaption.cpp:87
+msgid "Opened Caption Inset"
+msgstr "Otvorený popis prílohy"
+
+#: src/insets/InsetCaption.cpp:276
+#, fuzzy
+msgid "Senseless!!! "
+msgstr "Nezmyselné: "
+
+#: src/insets/InsetCharStyle.cpp:122
+#, fuzzy
+msgid "Opened CharStyle Inset"
+msgstr "Otvorený objekt prílohy"
+
+#: src/insets/InsetCommand.cpp:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "Príkaz &BibTeX:"
+
+#: src/insets/InsetCommandParams.cpp:268
+#, fuzzy
+msgid "Unknown inset name: "
+msgstr "Neznámy zoznam obsahu"
+
+#: src/insets/InsetCommandParams.cpp:292
+#, fuzzy
+msgid "Inset Command: "
+msgstr "Nasledujúci príkaz"
+
+#: src/insets/InsetCommandParams.cpp:293
+#, fuzzy
+msgid "Unknown parameter name: "
+msgstr "Neznámy parameter riadkovania: "
+
+#: src/insets/InsetCommandParams.cpp:300
+msgid "Missing \\end_inset at this point."
+msgstr ""
+
+#: src/insets/InsetERT.cpp:140
+msgid "Opened ERT Inset"
+msgstr "Otvorený ERT prílohy"
+
+#: src/insets/InsetERT.cpp:387
+msgid "ERT"
+msgstr "ERT"
+
+#: src/insets/InsetEnvironment.cpp:65
+#, fuzzy
+msgid "Opened Environment Inset: "
+msgstr "Otvorený nepovinný argument prílohy"
+
+#: src/insets/InsetExternal.cpp:576
+#, c-format
+msgid "External template %1$s is not installed"
+msgstr ""
+
+#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:372
+#: src/insets/InsetFloat.cpp:382
+msgid "float: "
+msgstr "objekt:"
+
+#: src/insets/InsetFloat.cpp:277
+msgid "Opened Float Inset"
+msgstr "Otvorený objekt prílohy"
+
+#: src/insets/InsetFloat.cpp:333
+#, fuzzy
+msgid "float"
+msgstr "objekt:"
+
+#: src/insets/InsetFloat.cpp:384
+msgid " (sideways)"
+msgstr ""
+
+#: src/insets/InsetFloatList.cpp:59
+msgid "ERROR: Nonexistent float type!"
+msgstr "CHYBA: Neexistujúci typ objektu!"
+
+#: src/insets/InsetFloatList.cpp:124
+#, c-format
+msgid "List of %1$s"
+msgstr "Zoznam %1$s"
+
+#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:44
+msgid "foot"
+msgstr "päta"
+
+#: src/insets/InsetFoot.cpp:56
+msgid "Opened Footnote Inset"
+msgstr "Otvorená poznámka pod èiarou prílohy"
+
+#: src/insets/InsetFoot.cpp:85
+#, fuzzy
+msgid "footnote"
+msgstr "Poznámka pod èiarou"
+
+#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
+#, fuzzy, c-format
+msgid ""
+"Could not copy the file\n"
+"%1$s\n"
+"into the temporary directory."
+msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
+
+#: src/insets/InsetGraphics.cpp:709
+#, c-format
+msgid "No conversion of %1$s is needed after all"
+msgstr ""
+
+#: src/insets/InsetGraphics.cpp:821
+#, c-format
+msgid "Graphics file: %1$s"
+msgstr "Grafický súbor: %1$s"
+
+#: src/insets/InsetHFill.cpp:48
+#, fuzzy
+msgid "Horizontal Fill"
+msgstr "Horizontálne zarovnanie:|#H"
+
+#: src/insets/InsetInclude.cpp:306
+msgid "Verbatim Input"
+msgstr "Doslovný vstup"
+
+#: src/insets/InsetInclude.cpp:309
+msgid "Verbatim Input*"
+msgstr "Verbatim vstup*"
+
+#: src/insets/InsetInclude.cpp:411
+#, c-format
+msgid ""
+"Included file `%1$s'\n"
+"has textclass `%2$s'\n"
+"while parent file has textclass `%3$s'."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:417
+msgid "Different textclasses"
+msgstr ""
+
+#: src/insets/InsetIndex.cpp:42
+msgid "Idx"
+msgstr "Idx"
+
+#: src/insets/InsetIndex.cpp:75
+msgid "Index"
+msgstr "Index"
+
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
+#: src/insets/InsetMarginal.cpp:69
+msgid "margin"
+msgstr "okraje"
+
+#: src/insets/InsetMarginal.cpp:52
+msgid "Opened Marginal Note Inset"
+msgstr "Otvorený poznámka na okraji prílohy"
+
+#: src/insets/InsetNomencl.cpp:39
+#, fuzzy
+msgid "Nom"
+msgstr "&Nie"
+
+#: src/insets/InsetNomencl.cpp:86
+#, fuzzy
+msgid "Nomenclature"
+msgstr "Dohad"
+
+#: src/insets/InsetNote.cpp:66
+msgid "Comment"
+msgstr "Komentár"
+
+#: src/insets/InsetNote.cpp:67
+msgid "Greyed out"
+msgstr ""
+
+#: src/insets/InsetNote.cpp:68
+#, fuzzy
+msgid "Framed"
+msgstr "Parametre"
+
+#: src/insets/InsetNote.cpp:69
+#, fuzzy
+msgid "Shaded"
+msgstr "&Tvar:"
+
+#: src/insets/InsetNote.cpp:148
+msgid "Opened Note Inset"
+msgstr "Otvorený objekt prílohy"
+
+#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
+msgid "opt"
+msgstr ""
+
+#: src/insets/InsetOptArg.cpp:59
+msgid "Opened Optional Argument Inset"
+msgstr "Otvorený nepovinný argument prílohy"
+
+#: src/insets/InsetPagebreak.h:65
+#, fuzzy
+msgid "Clear Page"
+msgstr "&Zmaza»"
+
+#: src/insets/InsetPagebreak.h:81
+msgid "Clear Double Page"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+msgid "Ref: "
+msgstr "Ref: "
+
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#, fuzzy
+msgid "Equation"
+msgstr "Oznaèenie"
+
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#, fuzzy
+msgid "EqRef: "
+msgstr "Ref: "
+
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+msgid "Page Number"
+msgstr "Èíslo strany"
+
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+msgid "Page: "
+msgstr "Strana: "
+
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+msgid "Textual Page Number"
+msgstr "Textové èíslo strany"
+
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+msgid "TextPage: "
+msgstr "TextStrana: "
+
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+msgid "Standard+Textual Page"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+msgid "Ref+Text: "
+msgstr ""
+
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+msgid "PrettyRef"
+msgstr "PeknýOdkaz"
+
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#, fuzzy
+msgid "FormatRef: "
+msgstr "F&ormát:"
+
+#: src/insets/InsetTOC.cpp:47
+msgid "Unknown toc list"
+msgstr "Neznámy zoznam obsahu"
+
+#: src/insets/InsetTabular.cpp:3141
+#, fuzzy
+msgid "Opened table"
+msgstr "Otvori» súbor"
+
+#: src/insets/InsetTabular.cpp:4292
+msgid "Error setting multicolumn"
+msgstr ""
+
+#: src/insets/InsetTabular.cpp:4293
+msgid "You cannot set multicolumn vertically."
+msgstr ""
+
+#: src/insets/InsetText.cpp:236
+msgid "Opened Text Inset"
+msgstr "Otvorený text prílohy"
+
+#: src/insets/InsetUrl.cpp:42
+msgid "Url: "
+msgstr "Url: "
+
+#: src/insets/InsetUrl.cpp:42
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/insets/InsetVSpace.cpp:110
+#, fuzzy
+msgid "Vertical Space"
+msgstr "Vertikálna medzera:|#V"
+
+#: src/insets/InsetWrap.cpp:49
+msgid "wrap: "
+msgstr ""
+
+#: src/insets/InsetWrap.cpp:177
+msgid "Opened Wrap Inset"
+msgstr ""
+
+#: src/insets/InsetWrap.cpp:197
+msgid "wrap"
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
+#, fuzzy
+msgid "Not shown."
+msgstr " neznámy"
+
+#: src/insets/RenderGraphic.cpp:97
+msgid "Loading..."
+msgstr "Naèítavam..."
+
+#: src/insets/RenderGraphic.cpp:100
+msgid "Converting to loadable format..."
+msgstr "Konvertovanie do èitateµného formátu..."
+
+#: src/insets/RenderGraphic.cpp:103
+msgid "Loaded into memory. Generating pixmap..."
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:106
+msgid "Scaling etc..."
+msgstr "Mením atï..."
+
+#: src/insets/RenderGraphic.cpp:109
+msgid "Ready to display"
+msgstr "Pripravený na zobrazenie"
+
+#: src/insets/RenderGraphic.cpp:112
+msgid "No file found!"
+msgstr "Súbor nenájdený!"
+
+#: src/insets/RenderGraphic.cpp:115
+msgid "Error converting to loadable format"
+msgstr "Chyba pri konverzií do èitateµného formátu"
+
+#: src/insets/RenderGraphic.cpp:118
+msgid "Error loading file into memory"
+msgstr ""
+
+#: src/insets/RenderGraphic.cpp:121
+msgid "Error generating the pixmap"
+msgstr "Chyba pri generovaní pixmapy"
+
+#: src/insets/RenderGraphic.cpp:124
+msgid "No image"
+msgstr "Bez obrázku"
+
+#: src/insets/RenderPreview.cpp:92
+msgid "Preview loading"
+msgstr ""
+
+#: src/insets/RenderPreview.cpp:95
+#, fuzzy
+msgid "Preview ready"
+msgstr "Náhµad|#N"
+
+#: src/insets/RenderPreview.cpp:98
+#, fuzzy
+msgid "Preview failed"
+msgstr "Automatické ukladanie sa nepodarilo!"
+
+#: src/lengthcommon.cpp:37
+msgid "sp"
+msgstr ""
+
+#: src/lengthcommon.cpp:37
+msgid "pt"
+msgstr "bod"
+
+#: src/lengthcommon.cpp:37
+msgid "bp"
+msgstr ""
+
+#: src/lengthcommon.cpp:37
+msgid "dd"
+msgstr ""
+
+#: src/lengthcommon.cpp:37
+msgid "mm"
+msgstr "mm"
+
+#: src/lengthcommon.cpp:37
+msgid "pc"
+msgstr ""
+
+#: src/lengthcommon.cpp:38
+msgid "cm"
+msgstr "cm"
+
+#: src/lengthcommon.cpp:38
+msgid "ex"
+msgstr "ex"
+
+#: src/lengthcommon.cpp:38
+msgid "em"
+msgstr "em"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Text Width %"
+msgstr "Pevná ¹írka"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Column Width %"
+msgstr "©írka ståpca"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Page Width %"
+msgstr "©írka oznaèenia"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Line Width %"
+msgstr "©írka oznaèenia"
+
+#: src/lengthcommon.cpp:40
+#, fuzzy
+msgid "Text Height %"
+msgstr "Celková vý¹ka"
+
+#: src/lengthcommon.cpp:40
+#, fuzzy
+msgid "Page Height %"
+msgstr "Celková vý¹ka"
+
+#: src/lyxfind.cpp:136
+#, fuzzy
+msgid "Search error"
+msgstr "Hµada»"
+
+#: src/lyxfind.cpp:137
+#, fuzzy
+msgid "Search string is empty"
+msgstr "Výsledný súbor je prázdny"
+
+#: src/lyxfind.cpp:288 src/lyxfind.cpp:319
+msgid "String not found!"
+msgstr "Re»azec nebol nájdený!"
+
+#: src/lyxfind.cpp:323
+msgid "String has been replaced."
+msgstr "Re»azec bol nahradený."
+
+#: src/lyxfind.cpp:326
+msgid " strings have been replaced."
+msgstr " re»azce boli nahradené."
 
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1241
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
@@ -15448,17 +15621,18 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1330 src/text3.cpp:185
-msgid "Math editor mode"
-msgstr "Re¾im matematického editoru"
-
-#: src/mathed/InsetMathNest.cpp:847
+#: src/mathed/InsetMathNest.cpp:845
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:850
+#: src/mathed/InsetMathNest.cpp:848
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.cpp:108
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr " Makro: %s: "
 
 #: src/mathed/MathMacroTemplate.cpp:240
 #, fuzzy
@@ -15484,6 +15658,57 @@ msgstr "Odkazy: "
 msgid "All files (*)"
 msgstr "V¹etky súbory (*)"
 
+#: src/support/Package.cpp.in:448
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "Re»azec nebol nájdený!"
+
+#: src/support/Package.cpp.in:449
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+
+#: src/support/Package.cpp.in:569
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+
+#: src/support/Package.cpp.in:654 src/support/Package.cpp.in:681
+#, fuzzy
+msgid "File not found"
+msgstr "Re»azec nebol nájdený!"
+
+#: src/support/Package.cpp.in:655
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp.in:682
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp.in:707
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+
+#: src/support/Package.cpp.in:709
+#, fuzzy
+msgid "Directory not found"
+msgstr "Re»azec nebol nájdený!"
+
 #: src/support/os_win32.cpp:335
 #, fuzzy
 msgid "System file not found"
@@ -15505,57 +15730,6 @@ msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
 msgstr ""
-
-#: src/support/Package.C.in:448
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "Re»azec nebol nájdený!"
-
-#: src/support/Package.C.in:449
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.C.in:569
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.C.in:654 src/support/Package.C.in:681
-#, fuzzy
-msgid "File not found"
-msgstr "Re»azec nebol nájdený!"
-
-#: src/support/Package.C.in:655
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.C.in:682
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.C.in:707
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.C.in:709
-#, fuzzy
-msgid "Directory not found"
-msgstr "Re»azec nebol nájdený!"
 
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
@@ -15665,180 +15839,19 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Písací stroj"
 
-#: src/text.cpp:133
-msgid "Unknown layout"
-msgstr "Neznáme rozlo¾enie"
-
-#: src/text.cpp:134
-#, c-format
-msgid ""
-"Layout '%1$s' does not exist in textclass '%2$s'\n"
-"Trying to use the default instead.\n"
-msgstr ""
-
-#: src/text.cpp:165
 #, fuzzy
-msgid "Unknown Inset"
-msgstr "Neznámy zoznam obsahu"
+#~ msgid "Insert glossary entry"
+#~ msgstr "Vlo¾i» polo¾ku indexu"
 
-#: src/text.cpp:271 src/text.cpp:284
 #, fuzzy
-msgid "Change tracking error"
-msgstr "Zmeni» jazyk"
+#~ msgid "Glo"
+#~ msgstr "&Globálne"
 
-#: src/text.cpp:272
-#, c-format
-msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
+#~ msgid "theorem"
+#~ msgstr "teoréma"
 
-#: src/text.cpp:285
-#, c-format
-msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
-
-#: src/text.cpp:292
-#, fuzzy
-msgid "Unknown token"
-msgstr "Neznámy token: "
-
-#: src/text.cpp:726
-msgid ""
-"You cannot insert a space at the beginning of a paragraph. Please read the "
-"Tutorial."
-msgstr ""
-"Nemô¾ete vlo¾i» medzeru na zaèiatok odstavca medzeru. Preèítajte si prosím "
-"Príruèku."
-
-#: src/text.cpp:737
-msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si, prosím, "
-"Príruèku."
-
-#: src/text.cpp:1703
-#, fuzzy
-msgid "[Change Tracking] "
-msgstr "Zmeni» sledovanie|Z"
-
-#: src/text.cpp:1709
-#, fuzzy
-msgid "Change: "
-msgstr "Strana: "
-
-#: src/text.cpp:1713
-#, fuzzy
-msgid " at "
-msgstr " na "
-
-#: src/text.cpp:1723
-#, c-format
-msgid "Font: %1$s"
-msgstr "Písmo: %1$s"
-
-#: src/text.cpp:1728
-#, c-format
-msgid ", Depth: %1$d"
-msgstr ", Håbka: %1$d"
-
-#: src/text.cpp:1734
-msgid ", Spacing: "
-msgstr ", Riadkovanie: "
-
-#: src/text.cpp:1746
-msgid "Other ("
-msgstr "Iné ("
-
-#: src/text.cpp:1755
-#, fuzzy
-msgid ", Inset: "
-msgstr ", Håbka: "
-
-#: src/text.cpp:1756
-msgid ", Paragraph: "
-msgstr ", Odstavec: "
-
-#: src/text.cpp:1757
-msgid ", Id: "
-msgstr ""
-
-#: src/text.cpp:1758
-#, fuzzy
-msgid ", Position: "
-msgstr "   mo¾nosti: "
-
-#: src/text.cpp:1764
-msgid ", Char: 0x"
-msgstr ""
-
-#: src/text.cpp:1766
-msgid ", Boundary: "
-msgstr ""
-
-#: src/text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Nebola definovaná zmena písma.Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na "
-"definovanie zmeny písma."
-
-#: src/text2.cpp:582
-msgid "Nothing to index!"
-msgstr "Nie je èo indexova»!"
-
-#: src/text2.cpp:584
-msgid "Cannot index more than one paragraph!"
-msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
-
-#: src/text3.cpp:721
-msgid "Unknown spacing argument: "
-msgstr "Neznámy parameter riadkovania: "
-
-#: src/text3.cpp:894
-msgid "Layout "
-msgstr "Formát "
-
-#: src/text3.cpp:895
-msgid " not known"
-msgstr " neznámy"
-
-#: src/text3.cpp:1417 src/text3.cpp:1429
-msgid "Character set"
-msgstr "Znaková sada"
-
-#: src/text3.cpp:1560
-msgid "Paragraph layout set"
-msgstr "Formát odstavca je nastavený."
-
-#: src/VSpace.cpp:490
-#, fuzzy
-msgid "Default skip"
-msgstr "©td. vzdialenos»:|#d"
-
-#: src/VSpace.cpp:493
-#, fuzzy
-msgid "Small skip"
-msgstr "Malá"
-
-#: src/VSpace.cpp:496
-#, fuzzy
-msgid "Medium skip"
-msgstr "Stredná"
-
-#: src/VSpace.cpp:499
-#, fuzzy
-msgid "Big skip"
-msgstr "Veµká"
-
-#: src/VSpace.cpp:502
-#, fuzzy
-msgid "Vertical fill"
-msgstr " (vertikálne vyplnenie)"
-
-#: src/VSpace.cpp:509
-#, fuzzy
-msgid "protected"
-msgstr "Chránená medzera|m"
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Otvorená teoréma prílohy"
 
 #, fuzzy
 #~ msgid "TeX Code:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-26 00:24-0500\n"
+"POT-Creation-Date: 2007-04-30 14:08+0200\n"
 "PO-Revision-Date: 2006-09-18 16:03+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -117,61 +117,61 @@ msgstr "Dimen&sione:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
-#: src/frontends/controllers/ControlDocument.cpp:49
+#: src/Font.cpp:518 src/frontends/controllers/ControlDocument.cpp:49
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
-#: src/frontends/qt4/QDocument.cpp:229 src/LyXFont.cpp:518
-#: src/tex-strings.cpp:68 src/tex-strings.cpp:79 src/tex-strings.cpp:89
+#: src/frontends/qt4/QDocument.cpp:229 src/tex-strings.cpp:68
+#: src/tex-strings.cpp:79 src/tex-strings.cpp:89
 msgid "Default"
 msgstr "Predefinito"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:71
-#: src/frontends/controllers/frontend_helpers.cpp:960 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:960
 msgid "Tiny"
 msgstr "Minuscolo"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:76
-#: src/frontends/controllers/frontend_helpers.cpp:964 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:964
 msgid "Smallest"
 msgstr "Piccolissimo"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:81
-#: src/frontends/controllers/frontend_helpers.cpp:968 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:968
 msgid "Smaller"
 msgstr "Molto piccolo"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:86
-#: src/frontends/controllers/frontend_helpers.cpp:972 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:972
 msgid "Small"
 msgstr "Piccolo"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:91
-#: src/frontends/controllers/frontend_helpers.cpp:976 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:976
 msgid "Normal"
 msgstr "Normale"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:96
-#: src/frontends/controllers/frontend_helpers.cpp:980 src/LyXFont.cpp:64
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:980
 msgid "Large"
 msgstr "Grande"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:101
-#: src/frontends/controllers/frontend_helpers.cpp:984 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:984
 msgid "Larger"
 msgstr "Molto grande"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:106
-#: src/frontends/controllers/frontend_helpers.cpp:988 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:988
 msgid "Largest"
 msgstr "Grandissimo"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:111
-#: src/frontends/controllers/frontend_helpers.cpp:992 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:992
 msgid "Huge"
 msgstr "Enorme"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:116
-#: src/frontends/controllers/frontend_helpers.cpp:996 src/LyXFont.cpp:65
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:996
 msgid "Huger"
 msgstr "Gigantesco"
 
@@ -482,11 +482,11 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#: src/frontends/qt4/ui/DocumentUi.ui:152 src/buffer_funcs.cpp:101
-#: src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/lyx_cb.cpp:117 src/lyx_cb.cpp:170
-#: src/LyXFunc.cpp:727 src/LyXFunc.cpp:900 src/LyXFunc.cpp:1066
-#: src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:727 src/LyXFunc.cpp:900
+#: src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
+#: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
 msgstr "&Cancella"
 
@@ -514,7 +514,7 @@ msgstr "LyX: aggiungi un database BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/frontends/qt4/Qt2BC.h:36 src/LyXFunc.cpp:843
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:843 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Cancella"
 
@@ -607,12 +607,12 @@ msgstr "Nessuno"
 
 #: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.cpp:270
 #: src/frontends/qt4/QBox.cpp:377 src/frontends/qt4/QBox.cpp:385
-#: src/insets/InsetBox.cpp:158
+#: src/insets/InsetBox.cpp:157
 msgid "Parbox"
 msgstr "Parbox"
 
 #: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.cpp:378
-#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:160
+#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:159
 msgid "Minipage"
 msgstr "Minipagina"
 
@@ -1552,8 +1552,8 @@ msgstr "In&denta paragrafo"
 msgid "L&ine spacing:"
 msgstr "I&nterlinea:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/frontends/qt4/QDocument.cpp:123
-#: src/text.cpp:1737
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1737
+#: src/frontends/qt4/QDocument.cpp:123
 msgid "Single"
 msgstr "Singolo"
 
@@ -1561,8 +1561,8 @@ msgstr "Singolo"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/frontends/qt4/QDocument.cpp:127
-#: src/text.cpp:1743
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1743
+#: src/frontends/qt4/QDocument.cpp:127
 msgid "Double"
 msgstr "Doppio"
 
@@ -1698,7 +1698,7 @@ msgstr "Formato della data per l'output strftime"
 msgid "Display &Graphics:"
 msgstr "Mostra &grafici:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/LyXFont.cpp:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:69
 msgid "Off"
 msgstr "Non attivo"
 
@@ -1706,7 +1706,7 @@ msgstr "Non attivo"
 msgid "No math"
 msgstr "Niente matematica"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/LyXFont.cpp:69
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:69
 msgid "On"
 msgstr "Attivo"
 
@@ -7058,7 +7058,7 @@ msgstr "Olandese"
 msgid "English"
 msgstr "Inglese"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Esperanto"
 msgstr "Esperanto"
 
@@ -7106,88 +7106,93 @@ msgstr "Italiano"
 msgid "Kazakh"
 msgstr "Kazakho"
 
-#: lib/languages:41
+#: lib/languages:40
 msgid "Lithuanian"
 msgstr "Lituano"
 
-#: lib/languages:42
+#: lib/languages:41
 msgid "Latvian"
 msgstr "Latviano"
 
-#: lib/languages:43
+#: lib/languages:42
 msgid "Icelandic"
 msgstr "Islandese"
 
-#: lib/languages:44
+#: lib/languages:43
 msgid "Magyar"
 msgstr "Magiaro"
 
-#: lib/languages:45
+#: lib/languages:44
 msgid "Norsk"
 msgstr "Norvegese"
 
-#: lib/languages:46
+#: lib/languages:45
 msgid "Nynorsk"
 msgstr "Nynorsk"
 
-#: lib/languages:47
+#: lib/languages:46
 msgid "Polish"
 msgstr "Polacco"
 
-#: lib/languages:48
+#: lib/languages:47
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: lib/languages:49
+#: lib/languages:48
 msgid "Romanian"
 msgstr "Romeno"
 
-#: lib/languages:50
+#: lib/languages:49
 msgid "Russian"
 msgstr "Russo"
 
-#: lib/languages:51
+#: lib/languages:50
 msgid "Scottish"
 msgstr "Scozzese"
 
-#: lib/languages:52
+#: lib/languages:51
 msgid "Serbian"
 msgstr "Serbo"
 
-#: lib/languages:53
+#: lib/languages:52
 msgid "Serbo-Croatian"
 msgstr "Serbocroato"
 
-#: lib/languages:54
+#: lib/languages:53
 msgid "Spanish"
 msgstr "Spagnolo"
 
-#: lib/languages:55
+#: lib/languages:54
 msgid "Slovak"
 msgstr "Slovacco"
 
-#: lib/languages:56
+#: lib/languages:55
 msgid "Slovene"
 msgstr "Sloveno"
 
-#: lib/languages:57
+#: lib/languages:56
 msgid "Swedish"
 msgstr "Svedese"
 
-#: lib/languages:58
+#: lib/languages:57
 msgid "Thai"
 msgstr "Thailandese"
 
-#: lib/languages:59
+#: lib/languages:58
 msgid "Turkish"
 msgstr "Turco"
 
-#: lib/languages:60
+#: lib/languages:59
 msgid "Ukrainian"
 msgstr "Ucraino"
 
-#: lib/languages:63
+#: lib/languages:60
+#, fuzzy
+msgid "Upper Sorbian"
+msgstr "Serbo"
+
+#: lib/languages:61
 msgid "Welsh"
 msgstr "Gallese"
 
@@ -7605,7 +7610,7 @@ msgid "Index Entry|I"
 msgstr "Voce d'indice|i"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.cpp:228
-msgid "Glossary Entry"
+msgid "Nomenclature Entry"
 msgstr ""
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
@@ -7841,8 +7846,9 @@ msgid "Index List|I"
 msgstr "Elenco indice|i"
 
 #: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:378
-msgid "Glossary|G"
-msgstr ""
+#, fuzzy
+msgid "Nomenclature|N"
+msgstr "Nota|N"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:379
 msgid "BibTeX Bibliography...|B"
@@ -8071,19 +8077,18 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Rifai|R"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66
-#: src/mathed/InsetMathNest.cpp:449 src/text3.cpp:835
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:835
+#: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Taglia"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67
-#: src/mathed/InsetMathNest.cpp:457 src/text3.cpp:840
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:840
+#: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Copia"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68
-#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:428
-#: src/text3.cpp:816
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:816
+#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Incolla"
 
@@ -8405,7 +8410,7 @@ msgstr "Ramo|R"
 msgid "File|e"
 msgstr "File|F"
 
-#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:154
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:153
 msgid "Box"
 msgstr "Casella"
 
@@ -8424,7 +8429,7 @@ msgstr "Voce d'indice|d"
 
 #: lib/ui/stdmenus.inc:305
 #, fuzzy
-msgid "Glossary Entry...|y"
+msgid "Nomenclature Entry...|y"
 msgstr "Inserisci voce d'indice"
 
 #: lib/ui/stdmenus.inc:307
@@ -8708,7 +8713,7 @@ msgstr "Inserisci voce d'indice"
 
 #: lib/ui/stdtoolbars.inc:95
 #, fuzzy
-msgid "Insert glossary entry"
+msgid "Insert nomenclature entry"
 msgstr "Inserisci voce d'indice"
 
 #: lib/ui/stdtoolbars.inc:97
@@ -11359,458 +11364,6 @@ msgstr "Centrato"
 msgid "intercal"
 msgstr "Letterale"
 
-#: src/BufferView.cpp:234
-#, c-format
-msgid ""
-"The document %1$s is already loaded.\n"
-"\n"
-"Do you want to revert to the saved version?"
-msgstr ""
-"Il documento %1$s è già stato caricato.\n"
-"\n"
-"Vuoi tornare alla versione salvata?"
-
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
-msgid "Revert to saved document?"
-msgstr "Ritorno all'ultimo salvataggio?"
-
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
-msgid "&Revert"
-msgstr "&Ritorna"
-
-#: src/BufferView.cpp:238
-msgid "&Switch to document"
-msgstr "&Passa al documento"
-
-#: src/BufferView.cpp:260
-#, c-format
-msgid ""
-"The document %1$s does not yet exist.\n"
-"\n"
-"Do you want to create a new document?"
-msgstr ""
-"Il documento %1$s non esiste ancora.\n"
-"\n"
-"Vuoi creare un nuovo documento?"
-
-#: src/BufferView.cpp:263
-msgid "Create new document?"
-msgstr "Creo un nuovo documento?"
-
-#: src/BufferView.cpp:264
-msgid "&Create"
-msgstr "&Crea"
-
-#: src/BufferView.cpp:570
-#, fuzzy
-msgid "Save bookmark"
-msgstr "Salva segnalibro 5"
-
-#: src/BufferView.cpp:765
-msgid "No further undo information"
-msgstr "Nessun altra operazione da annullare"
-
-#: src/BufferView.cpp:775
-msgid "No further redo information"
-msgstr "Nessun altra operazione da rifare"
-
-#: src/BufferView.cpp:933
-msgid "Mark off"
-msgstr "Evidenziazione disattivata"
-
-#: src/BufferView.cpp:940
-msgid "Mark on"
-msgstr "Evidenziazione attivata"
-
-#: src/BufferView.cpp:947
-msgid "Mark removed"
-msgstr "L'evidenziazione è stato rimossa"
-
-#: src/BufferView.cpp:950
-msgid "Mark set"
-msgstr "L'evidenziazione è stato impostata"
-
-#: src/BufferView.cpp:996
-#, c-format
-msgid "%1$d words in selection."
-msgstr "%1$d parole nella selezione."
-
-#: src/BufferView.cpp:999
-#, c-format
-msgid "%1$d words in document."
-msgstr "%1$d parole nel documento."
-
-#: src/BufferView.cpp:1004
-msgid "One word in selection."
-msgstr "Una sola parola nella selezione."
-
-#: src/BufferView.cpp:1006
-msgid "One word in document."
-msgstr "Una sola parola nel documento "
-
-#: src/BufferView.cpp:1009
-msgid "Count words"
-msgstr "Conta parole"
-
-#: src/BufferView.cpp:1588
-msgid "Select LyX document to insert"
-msgstr "Scegli il documento LyX da inserire"
-
-#: src/BufferView.cpp:1590 src/frontends/controllers/ControlBibtex.cpp:52
-#: src/frontends/controllers/ControlBibtex.cpp:64
-#: src/frontends/controllers/ControlExternal.cpp:169
-#: src/frontends/controllers/ControlGraphics.cpp:96
-#: src/frontends/controllers/ControlInclude.cpp:91 src/lyx_cb.cpp:136
-#: src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905 src/LyXFunc.cpp:1978
-msgid "Documents|#o#O"
-msgstr "Documenti|#o#O"
-
-#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
-msgid "Examples|#E#e"
-msgstr "Esempi|#E#e"
-
-#: src/BufferView.cpp:1595 src/lyx_cb.cpp:142 src/LyXFunc.cpp:1871
-#: src/LyXFunc.cpp:1910
-msgid "LyX Documents (*.lyx)"
-msgstr "Documenti LyX (*.lyx)"
-
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
-#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
-msgid "Canceled."
-msgstr "Cancellato."
-
-#: src/BufferView.cpp:1618
-#, c-format
-msgid "Inserting document %1$s..."
-msgstr "Sto inserendo il documento %1$s..."
-
-#: src/BufferView.cpp:1629
-#, c-format
-msgid "Document %1$s inserted."
-msgstr "E' stato inserito il documento %1$s"
-
-#: src/BufferView.cpp:1631
-#, c-format
-msgid "Could not insert document %1$s"
-msgstr "Non riesco ad inserire il documento %1$s"
-
-#: src/Chktex.cpp:71
-#, c-format
-msgid "ChkTeX warning id # %1$d"
-msgstr "Identificativo dell'avviso di ChkTeX numero %1$d"
-
-#: src/Chktex.cpp:73
-msgid "ChkTeX warning id # "
-msgstr "Identificativo dell'avviso di ChkTeX numero"
-
-#: src/CutAndPaste.cpp:433
-#, c-format
-msgid ""
-"Layout had to be changed from\n"
-"%1$s to %2$s\n"
-"because of class conversion from\n"
-"%3$s to %4$s"
-msgstr ""
-"Ho dovuto modificare la struttura da\n"
-"%1$s a %2$s\n"
-"a causa della conversione della classe da\n"
-"%3$s a %4$s"
-
-#: src/CutAndPaste.cpp:438
-msgid "Changed Layout"
-msgstr "Struttura modificata"
-
-#: src/CutAndPaste.cpp:457
-#, c-format
-msgid ""
-"Character style %1$s is undefined because of class conversion from\n"
-"%2$s to %3$s"
-msgstr ""
-"Lo stile del carattere %1$s è non definito a causa della conversione della "
-"classe da\n"
-"%2$s a %3$s"
-
-#: src/CutAndPaste.cpp:464
-msgid "Undefined character style"
-msgstr "Stile carattere indefinito"
-
-#: src/LColor.cpp:95
-msgid "none"
-msgstr "nessuno"
-
-#: src/LColor.cpp:96
-msgid "black"
-msgstr "nero"
-
-#: src/LColor.cpp:97
-msgid "white"
-msgstr "bianco"
-
-#: src/LColor.cpp:98
-msgid "red"
-msgstr "rosso"
-
-#: src/LColor.cpp:99
-msgid "green"
-msgstr "verde"
-
-#: src/LColor.cpp:100
-msgid "blue"
-msgstr "blu"
-
-#: src/LColor.cpp:101
-msgid "cyan"
-msgstr "ciano"
-
-#: src/LColor.cpp:102
-msgid "magenta"
-msgstr "magenta"
-
-#: src/LColor.cpp:103
-msgid "yellow"
-msgstr "giallo"
-
-#: src/LColor.cpp:104
-msgid "cursor"
-msgstr "cursore"
-
-#: src/LColor.cpp:105
-msgid "background"
-msgstr "sfondo"
-
-#: src/LColor.cpp:106
-msgid "text"
-msgstr "testo"
-
-#: src/LColor.cpp:107
-msgid "selection"
-msgstr "selezione"
-
-#: src/LColor.cpp:108
-msgid "LaTeX text"
-msgstr "Testo di LaTeX"
-
-#: src/LColor.cpp:109
-msgid "previewed snippet"
-msgstr "porzioni di anteprima"
-
-#: src/LColor.cpp:110 src/insets/InsetNote.cpp:311
-msgid "note"
-msgstr "nota"
-
-#: src/LColor.cpp:111
-msgid "note background"
-msgstr "sfondo nota"
-
-#: src/LColor.cpp:112
-msgid "comment"
-msgstr "commento"
-
-#: src/LColor.cpp:113
-msgid "comment background"
-msgstr "sfondo commento"
-
-#: src/LColor.cpp:114
-msgid "greyedout inset"
-msgstr "inserto ingrigito"
-
-#: src/LColor.cpp:115
-msgid "greyedout inset background"
-msgstr "sfondo dell'inserto ingrigito"
-
-#: src/LColor.cpp:116
-#, fuzzy
-msgid "shaded box"
-msgstr "Casella ombreggiata"
-
-#: src/LColor.cpp:117
-msgid "depth bar"
-msgstr "rientro barra"
-
-#: src/LColor.cpp:118
-msgid "language"
-msgstr "lingua"
-
-#: src/LColor.cpp:119
-msgid "command inset"
-msgstr "comando inserisci"
-
-#: src/LColor.cpp:120
-msgid "command inset background"
-msgstr "comando inserisci sfondo"
-
-#: src/LColor.cpp:121
-msgid "command inset frame"
-msgstr "comando inserisci cornice"
-
-#: src/LColor.cpp:122
-msgid "special character"
-msgstr "carattere speciale"
-
-#: src/LColor.cpp:123
-msgid "math"
-msgstr "matematica"
-
-#: src/LColor.cpp:124
-msgid "math background"
-msgstr "sfondo matematica"
-
-#: src/LColor.cpp:125
-msgid "graphics background"
-msgstr "sfondo grafici"
-
-#: src/LColor.cpp:126
-msgid "Math macro background"
-msgstr "sfondo macro matematica"
-
-#: src/LColor.cpp:127
-msgid "math frame"
-msgstr "cornice matematica"
-
-#: src/LColor.cpp:128
-msgid "math line"
-msgstr "linea matematica"
-
-#: src/LColor.cpp:129
-msgid "caption frame"
-msgstr "cornice didascalia"
-
-#: src/LColor.cpp:130
-msgid "collapsable inset text"
-msgstr "testo inserito riducibile"
-
-#: src/LColor.cpp:131
-msgid "collapsable inset frame"
-msgstr "cornice inserita riducibile"
-
-#: src/LColor.cpp:132
-msgid "inset background"
-msgstr "inserisci sfondo"
-
-#: src/LColor.cpp:133
-msgid "inset frame"
-msgstr "inserisci cornice"
-
-#: src/LColor.cpp:134
-msgid "LaTeX error"
-msgstr "Errore di LaTeX"
-
-#: src/LColor.cpp:135
-msgid "end-of-line marker"
-msgstr "marcatore di fine linea"
-
-#: src/LColor.cpp:136
-msgid "appendix marker"
-msgstr "evidenziatore di appendice"
-
-#: src/LColor.cpp:137
-msgid "change bar"
-msgstr "cambia barra"
-
-#: src/LColor.cpp:138
-msgid "Deleted text"
-msgstr "Testo cancellato"
-
-#: src/LColor.cpp:139
-msgid "Added text"
-msgstr "Testo aggiunto"
-
-#: src/LColor.cpp:140
-msgid "added space markers"
-msgstr "sono stati aggiunti gli evidenziatori di spazio"
-
-#: src/LColor.cpp:141
-msgid "top/bottom line"
-msgstr "linea superiore/inferiore"
-
-#: src/LColor.cpp:142
-msgid "table line"
-msgstr "linea tabellare"
-
-#: src/LColor.cpp:144
-msgid "table on/off line"
-msgstr "linea on/off della tabella"
-
-#: src/LColor.cpp:146
-msgid "bottom area"
-msgstr "area inferiore"
-
-#: src/LColor.cpp:147
-msgid "page break"
-msgstr "interruzione di pagina"
-
-#: src/LColor.cpp:148
-#, fuzzy
-msgid "frame of button"
-msgstr "sinistra del pulsante"
-
-#: src/LColor.cpp:149
-msgid "button background"
-msgstr "sfondo del pulsante"
-
-#: src/LColor.cpp:150
-#, fuzzy
-msgid "button background under focus"
-msgstr "sfondo del pulsante"
-
-#: src/LColor.cpp:151
-msgid "inherit"
-msgstr "eredità"
-
-#: src/LColor.cpp:152
-msgid "ignore"
-msgstr "ignora"
-
-#: src/LaTeX.cpp:95
-#, c-format
-msgid "Waiting for LaTeX run number %1$d"
-msgstr "In attesa del lancio di LaTeX numero %1$d"
-
-#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
-msgid "Running MakeIndex."
-msgstr "MakeIndex è in esecuzione."
-
-#: src/LaTeX.cpp:322
-msgid "Running BibTeX."
-msgstr "BibTeX è in esecuzione."
-
-#: src/LaTeX.cpp:462
-#, fuzzy
-msgid "Running MakeIndex for nomencl."
-msgstr "MakeIndex è in esecuzione."
-
-#: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
-#: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
-msgid "No Documents Open!"
-msgstr "Non è stato aperto alcun documento!"
-
-#: src/MenuBackend.cpp:540
-#, fuzzy
-msgid "Plain Text"
-msgstr "Testo semplice"
-
-#: src/MenuBackend.cpp:542
-#, fuzzy
-msgid "Plain Text, Join Lines"
-msgstr "Testo semplice come linee"
-
-#: src/MenuBackend.cpp:714
-#, fuzzy
-msgid "Master Document"
-msgstr "Salva documento"
-
-#: src/MenuBackend.cpp:746
-msgid "No Table of contents"
-msgstr "Nessun indice generale"
-
-#: src/MenuBackend.cpp:791
-msgid " (auto)"
-msgstr ""
-
-#: src/SpellBase.cpp:51
-msgid "Native OS API not yet supported."
-msgstr "Le API del sistema operativo nativo non sono ancora supportate."
-
 #: src/Buffer.cpp:229
 msgid "Could not remove temporary directory"
 msgstr "Non riesco a rimuovere la cartella temporanea"
@@ -11831,7 +11384,7 @@ msgstr ""
 "Uso la classe prestabilita del documento, perchè la classe %1$s è "
 "sconosciuta."
 
-#: src/Buffer.cpp:461 src/text.cpp:293
+#: src/Buffer.cpp:461 src/Text.cpp:293
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Simbolo sconosciuto: %1$s %2$s\n"
@@ -11974,107 +11527,6 @@ msgstr "chktex ha fallito"
 msgid "Could not run chktex successfully."
 msgstr "Chktex è stato eseguito con successo"
 
-#: src/buffer_funcs.cpp:81
-#, c-format
-msgid ""
-"The specified document\n"
-"%1$s\n"
-"could not be read."
-msgstr ""
-"Il documento specificato\n"
-"%1$s\n"
-"potrebbe non essere letto."
-
-#: src/buffer_funcs.cpp:83
-msgid "Could not read document"
-msgstr "Non riesco a leggere il documento "
-
-#: src/buffer_funcs.cpp:96
-#, c-format
-msgid ""
-"An emergency save of the document %1$s exists.\n"
-"\n"
-"Recover emergency save?"
-msgstr ""
-"Esiste una copia di emergenza del documento %1$s.\n"
-"\n"
-"Recupero il salvataggio di emergenza?"
-
-#: src/buffer_funcs.cpp:99
-msgid "Load emergency save?"
-msgstr "Carico il salvataggio di emergenza?"
-
-#: src/buffer_funcs.cpp:100
-msgid "&Recover"
-msgstr "&Recupera"
-
-#: src/buffer_funcs.cpp:100
-msgid "&Load Original"
-msgstr "&Carica originale"
-
-#: src/buffer_funcs.cpp:123
-#, c-format
-msgid ""
-"The backup of the document %1$s is newer.\n"
-"\n"
-"Load the backup instead?"
-msgstr ""
-"Il backup del documento %1$s è più recente.\n"
-"\n"
-"Carico il backup invece?"
-
-#: src/buffer_funcs.cpp:126
-msgid "Load backup?"
-msgstr "Carico la copia di backup?"
-
-#: src/buffer_funcs.cpp:127
-msgid "&Load backup"
-msgstr "&Carica copia di backup"
-
-#: src/buffer_funcs.cpp:127
-msgid "Load &original"
-msgstr "Carica &originale"
-
-#: src/buffer_funcs.cpp:166
-#, c-format
-msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Vuoi recuperare il documento %1$s dal controllo di versione?"
-
-#: src/buffer_funcs.cpp:168
-msgid "Retrieve from version control?"
-msgstr "Vuoi recuperare il documento mediante il controllo di versione?"
-
-#: src/buffer_funcs.cpp:169
-msgid "&Retrieve"
-msgstr "&Ripristina"
-
-#: src/buffer_funcs.cpp:202
-#, c-format
-msgid ""
-"The specified document template\n"
-"%1$s\n"
-"could not be read."
-msgstr ""
-"Il modello specificato di documento\n"
-"%1$s\n"
-"non può essere letto."
-
-#: src/buffer_funcs.cpp:204
-msgid "Could not read template"
-msgstr "Non posso leggere il modello"
-
-#: src/buffer_funcs.cpp:521
-msgid "\\arabic{enumi}."
-msgstr "\\arabic{enumi}."
-
-#: src/buffer_funcs.cpp:527
-msgid "\\roman{enumiii}."
-msgstr "\\roman{enumiii}."
-
-#: src/buffer_funcs.cpp:530
-msgid "\\Alph{enumiv}."
-msgstr "\\Alph{enumiv}."
-
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
 msgid ""
@@ -12130,30 +11582,377 @@ msgstr "Casse documento non disponibile"
 msgid "LyX will not be able to produce output."
 msgstr "LyX non sarà in grado di produrre alcun risultato."
 
-#: src/bufferview_funcs.cpp:308
-msgid "No more insets"
-msgstr "Nessuna altra aggiunta"
-
-#: src/client/debug.cpp:44 src/debug.cpp:44
-msgid "No debugging message"
-msgstr "Nessun messaggio di correzione"
-
-#: src/client/debug.cpp:45 src/debug.cpp:45
-msgid "General information"
-msgstr "Informazione generale"
-
-#: src/client/debug.cpp:46 src/debug.cpp:70
-msgid "Developers' general debug messages"
-msgstr "Messaggi di debug generale degli sviluppatori"
-
-#: src/client/debug.cpp:47 src/debug.cpp:71
-msgid "All debugging messages"
-msgstr "Tutti i messaggi di correzione"
-
-#: src/client/debug.cpp:91 src/debug.cpp:115
+#: src/BufferView.cpp:234
 #, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Sto correggendo `%1$s' (%2$s)"
+msgid ""
+"The document %1$s is already loaded.\n"
+"\n"
+"Do you want to revert to the saved version?"
+msgstr ""
+"Il documento %1$s è già stato caricato.\n"
+"\n"
+"Vuoi tornare alla versione salvata?"
+
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
+msgid "Revert to saved document?"
+msgstr "Ritorno all'ultimo salvataggio?"
+
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
+msgid "&Revert"
+msgstr "&Ritorna"
+
+#: src/BufferView.cpp:238
+msgid "&Switch to document"
+msgstr "&Passa al documento"
+
+#: src/BufferView.cpp:260
+#, c-format
+msgid ""
+"The document %1$s does not yet exist.\n"
+"\n"
+"Do you want to create a new document?"
+msgstr ""
+"Il documento %1$s non esiste ancora.\n"
+"\n"
+"Vuoi creare un nuovo documento?"
+
+#: src/BufferView.cpp:263
+msgid "Create new document?"
+msgstr "Creo un nuovo documento?"
+
+#: src/BufferView.cpp:264
+msgid "&Create"
+msgstr "&Crea"
+
+#: src/BufferView.cpp:570
+#, fuzzy
+msgid "Save bookmark"
+msgstr "Salva segnalibro 5"
+
+#: src/BufferView.cpp:765
+msgid "No further undo information"
+msgstr "Nessun altra operazione da annullare"
+
+#: src/BufferView.cpp:775
+msgid "No further redo information"
+msgstr "Nessun altra operazione da rifare"
+
+#: src/BufferView.cpp:933
+msgid "Mark off"
+msgstr "Evidenziazione disattivata"
+
+#: src/BufferView.cpp:940
+msgid "Mark on"
+msgstr "Evidenziazione attivata"
+
+#: src/BufferView.cpp:947
+msgid "Mark removed"
+msgstr "L'evidenziazione è stato rimossa"
+
+#: src/BufferView.cpp:950
+msgid "Mark set"
+msgstr "L'evidenziazione è stato impostata"
+
+#: src/BufferView.cpp:996
+#, c-format
+msgid "%1$d words in selection."
+msgstr "%1$d parole nella selezione."
+
+#: src/BufferView.cpp:999
+#, c-format
+msgid "%1$d words in document."
+msgstr "%1$d parole nel documento."
+
+#: src/BufferView.cpp:1004
+msgid "One word in selection."
+msgstr "Una sola parola nella selezione."
+
+#: src/BufferView.cpp:1006
+msgid "One word in document."
+msgstr "Una sola parola nel documento "
+
+#: src/BufferView.cpp:1009
+msgid "Count words"
+msgstr "Conta parole"
+
+#: src/BufferView.cpp:1588
+msgid "Select LyX document to insert"
+msgstr "Scegli il documento LyX da inserire"
+
+#: src/BufferView.cpp:1590 src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905
+#: src/LyXFunc.cpp:1978 src/callback.cpp:136
+#: src/frontends/controllers/ControlBibtex.cpp:52
+#: src/frontends/controllers/ControlBibtex.cpp:64
+#: src/frontends/controllers/ControlExternal.cpp:169
+#: src/frontends/controllers/ControlGraphics.cpp:96
+#: src/frontends/controllers/ControlInclude.cpp:91
+msgid "Documents|#o#O"
+msgstr "Documenti|#o#O"
+
+#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
+msgid "Examples|#E#e"
+msgstr "Esempi|#E#e"
+
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1871 src/LyXFunc.cpp:1910
+#: src/callback.cpp:142
+msgid "LyX Documents (*.lyx)"
+msgstr "Documenti LyX (*.lyx)"
+
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
+#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
+msgid "Canceled."
+msgstr "Cancellato."
+
+#: src/BufferView.cpp:1618
+#, c-format
+msgid "Inserting document %1$s..."
+msgstr "Sto inserendo il documento %1$s..."
+
+#: src/BufferView.cpp:1629
+#, c-format
+msgid "Document %1$s inserted."
+msgstr "E' stato inserito il documento %1$s"
+
+#: src/BufferView.cpp:1631
+#, c-format
+msgid "Could not insert document %1$s"
+msgstr "Non riesco ad inserire il documento %1$s"
+
+#: src/Chktex.cpp:71
+#, c-format
+msgid "ChkTeX warning id # %1$d"
+msgstr "Identificativo dell'avviso di ChkTeX numero %1$d"
+
+#: src/Chktex.cpp:73
+msgid "ChkTeX warning id # "
+msgstr "Identificativo dell'avviso di ChkTeX numero"
+
+#: src/Color.cpp:268
+msgid "none"
+msgstr "nessuno"
+
+#: src/Color.cpp:269
+msgid "black"
+msgstr "nero"
+
+#: src/Color.cpp:270
+msgid "white"
+msgstr "bianco"
+
+#: src/Color.cpp:271
+msgid "red"
+msgstr "rosso"
+
+#: src/Color.cpp:272
+msgid "green"
+msgstr "verde"
+
+#: src/Color.cpp:273
+msgid "blue"
+msgstr "blu"
+
+#: src/Color.cpp:274
+msgid "cyan"
+msgstr "ciano"
+
+#: src/Color.cpp:275
+msgid "magenta"
+msgstr "magenta"
+
+#: src/Color.cpp:276
+msgid "yellow"
+msgstr "giallo"
+
+#: src/Color.cpp:277
+msgid "cursor"
+msgstr "cursore"
+
+#: src/Color.cpp:278
+msgid "background"
+msgstr "sfondo"
+
+#: src/Color.cpp:279
+msgid "text"
+msgstr "testo"
+
+#: src/Color.cpp:280
+msgid "selection"
+msgstr "selezione"
+
+#: src/Color.cpp:281
+msgid "LaTeX text"
+msgstr "Testo di LaTeX"
+
+#: src/Color.cpp:282
+msgid "previewed snippet"
+msgstr "porzioni di anteprima"
+
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:310
+msgid "note"
+msgstr "nota"
+
+#: src/Color.cpp:284
+msgid "note background"
+msgstr "sfondo nota"
+
+#: src/Color.cpp:285
+msgid "comment"
+msgstr "commento"
+
+#: src/Color.cpp:286
+msgid "comment background"
+msgstr "sfondo commento"
+
+#: src/Color.cpp:287
+msgid "greyedout inset"
+msgstr "inserto ingrigito"
+
+#: src/Color.cpp:288
+msgid "greyedout inset background"
+msgstr "sfondo dell'inserto ingrigito"
+
+#: src/Color.cpp:289
+#, fuzzy
+msgid "shaded box"
+msgstr "Casella ombreggiata"
+
+#: src/Color.cpp:290
+msgid "depth bar"
+msgstr "rientro barra"
+
+#: src/Color.cpp:291
+msgid "language"
+msgstr "lingua"
+
+#: src/Color.cpp:292
+msgid "command inset"
+msgstr "comando inserisci"
+
+#: src/Color.cpp:293
+msgid "command inset background"
+msgstr "comando inserisci sfondo"
+
+#: src/Color.cpp:294
+msgid "command inset frame"
+msgstr "comando inserisci cornice"
+
+#: src/Color.cpp:295
+msgid "special character"
+msgstr "carattere speciale"
+
+#: src/Color.cpp:296
+msgid "math"
+msgstr "matematica"
+
+#: src/Color.cpp:297
+msgid "math background"
+msgstr "sfondo matematica"
+
+#: src/Color.cpp:298
+msgid "graphics background"
+msgstr "sfondo grafici"
+
+#: src/Color.cpp:299
+msgid "Math macro background"
+msgstr "sfondo macro matematica"
+
+#: src/Color.cpp:300
+msgid "math frame"
+msgstr "cornice matematica"
+
+#: src/Color.cpp:301
+msgid "math line"
+msgstr "linea matematica"
+
+#: src/Color.cpp:302
+msgid "caption frame"
+msgstr "cornice didascalia"
+
+#: src/Color.cpp:303
+msgid "collapsable inset text"
+msgstr "testo inserito riducibile"
+
+#: src/Color.cpp:304
+msgid "collapsable inset frame"
+msgstr "cornice inserita riducibile"
+
+#: src/Color.cpp:305
+msgid "inset background"
+msgstr "inserisci sfondo"
+
+#: src/Color.cpp:306
+msgid "inset frame"
+msgstr "inserisci cornice"
+
+#: src/Color.cpp:307
+msgid "LaTeX error"
+msgstr "Errore di LaTeX"
+
+#: src/Color.cpp:308
+msgid "end-of-line marker"
+msgstr "marcatore di fine linea"
+
+#: src/Color.cpp:309
+msgid "appendix marker"
+msgstr "evidenziatore di appendice"
+
+#: src/Color.cpp:310
+msgid "change bar"
+msgstr "cambia barra"
+
+#: src/Color.cpp:311
+msgid "Deleted text"
+msgstr "Testo cancellato"
+
+#: src/Color.cpp:312
+msgid "Added text"
+msgstr "Testo aggiunto"
+
+#: src/Color.cpp:313
+msgid "added space markers"
+msgstr "sono stati aggiunti gli evidenziatori di spazio"
+
+#: src/Color.cpp:314
+msgid "top/bottom line"
+msgstr "linea superiore/inferiore"
+
+#: src/Color.cpp:315
+msgid "table line"
+msgstr "linea tabellare"
+
+#: src/Color.cpp:317
+msgid "table on/off line"
+msgstr "linea on/off della tabella"
+
+#: src/Color.cpp:319
+msgid "bottom area"
+msgstr "area inferiore"
+
+#: src/Color.cpp:320
+msgid "page break"
+msgstr "interruzione di pagina"
+
+#: src/Color.cpp:321
+#, fuzzy
+msgid "frame of button"
+msgstr "sinistra del pulsante"
+
+#: src/Color.cpp:322
+msgid "button background"
+msgstr "sfondo del pulsante"
+
+#: src/Color.cpp:323
+#, fuzzy
+msgid "button background under focus"
+msgstr "sfondo del pulsante"
+
+#: src/Color.cpp:324
+msgid "inherit"
+msgstr "eredità"
+
+#: src/Color.cpp:325
+msgid "ignore"
+msgstr "ignora"
 
 #: src/Converter.cpp:332 src/Converter.cpp:476 src/Converter.cpp:499
 #: src/Converter.cpp:544
@@ -12226,101 +12025,36 @@ msgstr "Output vuoto"
 msgid "An empty output file was generated."
 msgstr "E' stato generato un output vuoto."
 
-#: src/debug.cpp:46
-msgid "Program initialisation"
-msgstr "Inizializzazione programma"
+#: src/CutAndPaste.cpp:435
+#, c-format
+msgid ""
+"Layout had to be changed from\n"
+"%1$s to %2$s\n"
+"because of class conversion from\n"
+"%3$s to %4$s"
+msgstr ""
+"Ho dovuto modificare la struttura da\n"
+"%1$s a %2$s\n"
+"a causa della conversione della classe da\n"
+"%3$s a %4$s"
 
-#: src/debug.cpp:47
-msgid "Keyboard events handling"
-msgstr "Gestione eventi da tastiera"
+#: src/CutAndPaste.cpp:440
+msgid "Changed Layout"
+msgstr "Struttura modificata"
 
-#: src/debug.cpp:48
-msgid "GUI handling"
-msgstr "Gestione GUI"
+#: src/CutAndPaste.cpp:459
+#, c-format
+msgid ""
+"Character style %1$s is undefined because of class conversion from\n"
+"%2$s to %3$s"
+msgstr ""
+"Lo stile del carattere %1$s è non definito a causa della conversione della "
+"classe da\n"
+"%2$s a %3$s"
 
-#: src/debug.cpp:49
-msgid "Lyxlex grammar parser"
-msgstr "Analizzatore grammaticale lyxlex"
-
-#: src/debug.cpp:50
-msgid "Configuration files reading"
-msgstr "Sto leggendo i file di configurazione"
-
-#: src/debug.cpp:51
-msgid "Custom keyboard definition"
-msgstr "Definizione personale della tastiera"
-
-#: src/debug.cpp:52
-msgid "LaTeX generation/execution"
-msgstr "Generazione/Esecuzione di LaTeX"
-
-#: src/debug.cpp:53
-msgid "Math editor"
-msgstr "Editor matematico"
-
-#: src/debug.cpp:54
-msgid "Font handling"
-msgstr "Gestione caratteri"
-
-#: src/debug.cpp:55
-msgid "Textclass files reading"
-msgstr "So leggendo i file delle classi di testo"
-
-#: src/debug.cpp:56
-msgid "Version control"
-msgstr "Controllo versione"
-
-#: src/debug.cpp:57
-msgid "External control interface"
-msgstr "Interfaccia esterna di controllo"
-
-#: src/debug.cpp:58
-msgid "Keep *roff temporary files"
-msgstr "Conserva file temporanei tipo *roff"
-
-#: src/debug.cpp:59
-msgid "User commands"
-msgstr "Comandi utente"
-
-#: src/debug.cpp:60
-msgid "The LyX Lexxer"
-msgstr "E' il Lexxer di LyX"
-
-#: src/debug.cpp:61
-msgid "Dependency information"
-msgstr "Informazioni sulle dipendenze"
-
-#: src/debug.cpp:62
-msgid "LyX Insets"
-msgstr "Aggiunte di LyX"
-
-#: src/debug.cpp:63
-msgid "Files used by LyX"
-msgstr "File usati da LyX"
-
-#: src/debug.cpp:64
-msgid "Workarea events"
-msgstr "Eventi area di lavoro"
-
-#: src/debug.cpp:65
-msgid "Insettext/tabular messages"
-msgstr "Messaggi Insettext/tabulari"
-
-#: src/debug.cpp:66
-msgid "Graphics conversion and loading"
-msgstr "Conversione grafici e caricamento"
-
-#: src/debug.cpp:67
-msgid "Change tracking"
-msgstr "Modifica tracciamento"
-
-#: src/debug.cpp:68
-msgid "External template/inset messages"
-msgstr "Modello esterno/inserisci messaggi"
-
-#: src/debug.cpp:69
-msgid "RowPainter profiling"
-msgstr "Creazione profilo RowPainter"
+#: src/CutAndPaste.cpp:466
+msgid "Undefined character style"
+msgstr "Stile carattere indefinito"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1062
 #, c-format
@@ -12337,8 +12071,8 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Sovrascrivo il file?"
 
-#: src/Exporter.cpp:87 src/lyx_cb.cpp:170 src/LyXFunc.cpp:1066
-#: src/LyXFunc.cpp:2027
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027
+#: src/callback.cpp:170
 msgid "&Over-write"
 msgstr "&Sovrascrivi"
 
@@ -12390,6 +12124,96 @@ msgstr "Il documento è stato esportato come %1$s sul file `%2$s'"
 msgid "Document exported as %1$s"
 msgstr "Il documento è stato esportato come %1$s"
 
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:870
+msgid "Roman"
+msgstr "Romano"
+
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:874
+msgid "Sans Serif"
+msgstr "Sans Serif"
+
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/frontends/controllers/frontend_helpers.cpp:878
+msgid "Typewriter"
+msgstr "Typewriter"
+
+#: src/Font.cpp:52
+msgid "Symbol"
+msgstr "Simbolo"
+
+#: src/Font.cpp:54 src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:66
+#: src/Font.cpp:69
+msgid "Inherit"
+msgstr "Eredità"
+
+#: src/Font.cpp:54 src/Font.cpp:57 src/Font.cpp:61 src/Font.cpp:66
+#: src/Font.cpp:69
+msgid "Ignore"
+msgstr "Ignora"
+
+#: src/Font.cpp:57 src/frontends/controllers/frontend_helpers.cpp:900
+msgid "Medium"
+msgstr "Medio"
+
+#: src/Font.cpp:57 src/frontends/controllers/frontend_helpers.cpp:904
+msgid "Bold"
+msgstr "Grassetto"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:926
+msgid "Upright"
+msgstr "Dritto"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:930
+msgid "Italic"
+msgstr "Italico"
+
+#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:934
+msgid "Slanted"
+msgstr "Sghembo"
+
+#: src/Font.cpp:60
+msgid "Smallcaps"
+msgstr "Maiuscoletto"
+
+#: src/Font.cpp:65 src/frontends/controllers/frontend_helpers.cpp:1000
+msgid "Increase"
+msgstr "Aumenta"
+
+#: src/Font.cpp:65 src/frontends/controllers/frontend_helpers.cpp:1004
+msgid "Decrease"
+msgstr "Riduci"
+
+#: src/Font.cpp:69
+msgid "Toggle"
+msgstr "Attiva/Disattiva"
+
+#: src/Font.cpp:509
+#, c-format
+msgid "Emphasis %1$s, "
+msgstr "Enfasi %1$s, "
+
+#: src/Font.cpp:512
+#, c-format
+msgid "Underline %1$s, "
+msgstr "Sottolinea %1$s, "
+
+#: src/Font.cpp:515
+#, c-format
+msgid "Noun %1$s, "
+msgstr "Sostantivo %1$s, "
+
+#: src/Font.cpp:520
+#, c-format
+msgid "Language: %1$s, "
+msgstr "Lingua: %1$s, "
+
+#: src/Font.cpp:523
+#, c-format
+msgid "  Number %1$s"
+msgstr "   Numero %1$s"
+
 #: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292 src/Format.cpp:326
 msgid "Cannot view file"
 msgstr "Non riesco a vedere il file"
@@ -12422,1492 +12246,6 @@ msgstr "Non vi sono informazioni per modificare %1$s"
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "L'automodifica del file %1$s non è riuscita"
-
-#: src/frontends/LyXView.cpp:425
-msgid " (changed)"
-msgstr " (modificato)"
-
-#: src/frontends/LyXView.cpp:429
-msgid " (read only)"
-msgstr " (sola lettura)"
-
-#: src/frontends/WorkArea.cpp:242
-msgid "Formatting document..."
-msgstr "Formattazione del documento..."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:58
-msgid "ERROR: LyX wasn't able to read CREDITS file\n"
-msgstr "ERRORE! LyX non è stato in grado di leggere il file CREDITS\n"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:59
-msgid "Please install correctly to estimate the great\n"
-msgstr "Per favore, installa LyX correttamente per avere un'idea dell'enorme\n"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:60
-msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:67
-#, fuzzy
-msgid ""
-"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team"
-msgstr ""
-"LyX è Copyright (C) 1995 di Matthias Ettrich,\n"
-"1995-2001 Gruppo LyX"
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:73
-msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
-msgstr ""
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:79
-#, fuzzy
-msgid ""
-"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE.\n"
-"See the GNU General Public License for more details.\n"
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
-msgstr ""
-"LyX è distribuito nella speranza di essere utile ma\n"
-"SENZA NESSUNA GARANZIA, nemmeno la garanzia\n"
-"implicita del COMMERCIABILE o dell'ADATTO AD UNO\n"
-"SCOPO PARTICOLARE. Leggi la Licenza Pubblica Generale\n"
-"(GPL) della GNU per ulteriori dettagli. Dovresti aver\n"
-"ricevuto una copia della Licenza Pubblica Generale (GPL)\n"
-"della GNU con questo programma; se non è così, scrivi a\n"
-"Free Software Foundation, Inc.,\n"
-"675 Mass Ave, Cambridge, MA 02139, USA."
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:87
-msgid "LyX Version "
-msgstr "Versione di LyX "
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:92
-msgid "Library directory: "
-msgstr "Cartella libreria: "
-
-#: src/frontends/controllers/ControlAboutlyx.cpp:95
-msgid "User directory: "
-msgstr "Cartella utente: "
-
-#: src/frontends/controllers/ControlBibtex.cpp:54
-msgid "BibTeX Databases (*.bib)"
-msgstr "Database BibTeX (*.bib)"
-
-#: src/frontends/controllers/ControlBibtex.cpp:56
-msgid "Select a BibTeX database to add"
-msgstr "Seleziona un database BibTeX da aggiungere"
-
-#: src/frontends/controllers/ControlBibtex.cpp:66
-msgid "BibTeX Styles (*.bst)"
-msgstr "Stili BibTeX (*.bst)"
-
-#: src/frontends/controllers/ControlBibtex.cpp:68
-msgid "Select a BibTeX style"
-msgstr "Seleziona uno stile BibTeX"
-
-#: src/frontends/controllers/ControlBox.cpp:62
-msgid "No frame drawn"
-msgstr "Nessuna cornice disegnata"
-
-#: src/frontends/controllers/ControlBox.cpp:63
-msgid "Rectangular box"
-msgstr "Casella rettangolare"
-
-#: src/frontends/controllers/ControlBox.cpp:64
-msgid "Oval box, thin"
-msgstr "Casella ovale, sottile"
-
-#: src/frontends/controllers/ControlBox.cpp:65
-msgid "Oval box, thick"
-msgstr "Casella ovale, spessa"
-
-#: src/frontends/controllers/ControlBox.cpp:66
-msgid "Shadow box"
-msgstr "Casella ombreggiata"
-
-#: src/frontends/controllers/ControlBox.cpp:67
-msgid "Double box"
-msgstr "Doppia casella"
-
-#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.cpp:286
-#: src/frontends/qt4/QBox.cpp:320
-msgid "Depth"
-msgstr "Rientro"
-
-#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.cpp:133
-#: src/frontends/qt4/QBox.cpp:289 src/frontends/qt4/QBox.cpp:323
-#: src/frontends/qt4/QBox.cpp:356
-msgid "Total Height"
-msgstr "Altezza totale"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:870 src/LyXFont.cpp:52
-msgid "Roman"
-msgstr "Romano"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:874 src/LyXFont.cpp:52
-msgid "Sans Serif"
-msgstr "Sans Serif"
-
-#: src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/frontend_helpers.cpp:878 src/LyXFont.cpp:52
-msgid "Typewriter"
-msgstr "Typewriter"
-
-#: src/frontends/controllers/ControlErrorList.cpp:57
-#, c-format
-msgid "%1$s Errors (%2$s)"
-msgstr "%1$s Errori (%2$s)"
-
-#: src/frontends/controllers/ControlExternal.cpp:163
-msgid "Select external file"
-msgstr "Seleziona file esterno"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Top left"
-msgstr "In alto a sinistra"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Bottom left"
-msgstr "In basso a sinistra"
-
-#: src/frontends/controllers/ControlExternal.cpp:235
-#: src/frontends/controllers/ControlGraphics.cpp:171
-msgid "Baseline left"
-msgstr "A sinistra della linea di base"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Top center"
-msgstr "Centrato in alto"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Bottom center"
-msgstr "Centrato in basso"
-
-#: src/frontends/controllers/ControlExternal.cpp:236
-#: src/frontends/controllers/ControlGraphics.cpp:172
-msgid "Baseline center"
-msgstr "Al centro della linea di base"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Top right"
-msgstr "In alto a destra"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Bottom right"
-msgstr "In basso a destra"
-
-#: src/frontends/controllers/ControlExternal.cpp:237
-#: src/frontends/controllers/ControlGraphics.cpp:173
-msgid "Baseline right"
-msgstr "A destra della linea di base"
-
-#: src/frontends/controllers/ControlGraphics.cpp:87
-msgid "Select graphics file"
-msgstr "Seleziona file grafico"
-
-#: src/frontends/controllers/ControlGraphics.cpp:95
-msgid "Clipart|#C#c"
-msgstr "Galleria|#G#g"
-
-#: src/frontends/controllers/ControlInclude.cpp:78
-msgid "Select document to include"
-msgstr "Scegli il documento da inserire"
-
-#: src/frontends/controllers/ControlInclude.cpp:85
-msgid "LaTeX/LyX Documents (*.tex *.lyx)"
-msgstr "Documenti LaTeX/LyX (*.tex *.lyx)"
-
-#: src/frontends/controllers/ControlLog.cpp:81
-msgid "LaTeX Log"
-msgstr "Registro di LaTeX"
-
-#: src/frontends/controllers/ControlLog.cpp:84
-msgid "Literate Programming Build Log"
-msgstr "Registro compilato di programmazione esperta"
-
-#: src/frontends/controllers/ControlLog.cpp:87
-msgid "lyx2lyx Error Log"
-msgstr "Registro errori di lyx2lyx"
-
-#: src/frontends/controllers/ControlLog.cpp:90
-msgid "Version Control Log"
-msgstr "Registro di controllo versione"
-
-#: src/frontends/controllers/ControlLog.cpp:116
-msgid "No LaTeX log file found."
-msgstr "Non ho trovato alcun file di registro di LaTeX."
-
-#: src/frontends/controllers/ControlLog.cpp:119
-msgid "No literate programming build log file found."
-msgstr ""
-"Non è stato trovato alcun registro compilato di programmazione esperta."
-
-#: src/frontends/controllers/ControlLog.cpp:122
-msgid "No lyx2lyx error log file found."
-msgstr "Non ho trovato alcun registro per il comando lyx2lyx."
-
-#: src/frontends/controllers/ControlLog.cpp:125
-msgid "No version control log file found."
-msgstr "Non è stato trovato nessun registro di controllo versione."
-
-#: src/frontends/controllers/ControlPrefs.cpp:110
-msgid "Choose bind file"
-msgstr "Scegli file di collegamento"
-
-#: src/frontends/controllers/ControlPrefs.cpp:111
-msgid "LyX bind files (*.bind)"
-msgstr "File di collegamento di LyX (*.bind)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:118
-msgid "Choose UI file"
-msgstr "Scegli file UI"
-
-#: src/frontends/controllers/ControlPrefs.cpp:119
-msgid "LyX UI files (*.ui)"
-msgstr "File UI di LyX (*.ui)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:126
-msgid "Choose keyboard map"
-msgstr "Scegli mappa di tastiera"
-
-#: src/frontends/controllers/ControlPrefs.cpp:127
-msgid "LyX keyboard maps (*.kmap)"
-msgstr "Mappa di tastiera di LyX (*.kmap)"
-
-#: src/frontends/controllers/ControlPrefs.cpp:135
-#: src/frontends/controllers/ControlPrefs.cpp:139
-msgid "Choose personal dictionary"
-msgstr "Scegli dizionario personale"
-
-#: src/frontends/controllers/ControlPrefs.cpp:136
-msgid "*.pws"
-msgstr ""
-
-#: src/frontends/controllers/ControlPrefs.cpp:140
-msgid "*.ispell"
-msgstr "*.ispell"
-
-#: src/frontends/controllers/ControlPrint.cpp:73
-msgid "Print to file"
-msgstr "Stampa su file"
-
-#: src/frontends/controllers/ControlPrint.cpp:74
-msgid "PostScript files (*.ps)"
-msgstr "File PostScript (*.ps)"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:117
-msgid "Spellchecker error"
-msgstr "Errore del correttore ortografico"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:118
-msgid "The spellchecker could not be started\n"
-msgstr "Il correttore ortografico non ha potuto essere avviato\n"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:276
-msgid ""
-"The spellchecker has died for some reason.\n"
-"Maybe it has been killed."
-msgstr ""
-"Il correttore ortografico è terminato per qualche motivo.\n"
-"Forse è stato chiuso."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:279
-msgid "The spellchecker has failed.\n"
-msgstr "Il correttore ortografico ha fallito.\n"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:283
-msgid "The spellchecker has failed"
-msgstr "Il correttore ortografico ha fallito"
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:297
-#, c-format
-msgid "%1$d words checked."
-msgstr "sono state controllate %1$d parole."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:299
-msgid "One word checked."
-msgstr "E' stata controllata una sola parola."
-
-#: src/frontends/controllers/ControlSpellchecker.cpp:302
-msgid "Spelling check completed"
-msgstr "Il controllo ortografico è completo"
-
-#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
-msgid "Table of Contents"
-msgstr "Indice generale"
-
-#: src/frontends/controllers/frontend_helpers.cpp:244
-#, c-format
-msgid "%1$s and %2$s"
-msgstr "%1$s e %2$s"
-
-#: src/frontends/controllers/frontend_helpers.cpp:248
-#, c-format
-msgid "%1$s et al."
-msgstr "%1$s et altri."
-
-#: src/frontends/controllers/frontend_helpers.cpp:285
-msgid "No year"
-msgstr "Nessun anno"
-
-#: src/frontends/controllers/frontend_helpers.cpp:818
-msgid "before"
-msgstr "prima"
-
-#: src/frontends/controllers/frontend_helpers.cpp:866
-#: src/frontends/controllers/frontend_helpers.cpp:896
-#: src/frontends/controllers/frontend_helpers.cpp:922
-#: src/frontends/controllers/frontend_helpers.cpp:956
-#: src/frontends/controllers/frontend_helpers.cpp:1022
-#: src/frontends/controllers/frontend_helpers.cpp:1052
-#: src/frontends/controllers/frontend_helpers.cpp:1125
-msgid "No change"
-msgstr "Nessuna modifica"
-
-#: src/frontends/controllers/frontend_helpers.cpp:882
-#: src/frontends/controllers/frontend_helpers.cpp:908
-#: src/frontends/controllers/frontend_helpers.cpp:942
-#: src/frontends/controllers/frontend_helpers.cpp:1008
-#: src/frontends/controllers/frontend_helpers.cpp:1038
-#: src/frontends/controllers/frontend_helpers.cpp:1092
-#: src/frontends/controllers/frontend_helpers.cpp:1127
-msgid "Reset"
-msgstr "Reimposta"
-
-#: src/frontends/controllers/frontend_helpers.cpp:900 src/LyXFont.cpp:57
-msgid "Medium"
-msgstr "Medio"
-
-#: src/frontends/controllers/frontend_helpers.cpp:904 src/LyXFont.cpp:57
-msgid "Bold"
-msgstr "Grassetto"
-
-#: src/frontends/controllers/frontend_helpers.cpp:926 src/LyXFont.cpp:60
-msgid "Upright"
-msgstr "Dritto"
-
-#: src/frontends/controllers/frontend_helpers.cpp:930 src/LyXFont.cpp:60
-msgid "Italic"
-msgstr "Italico"
-
-#: src/frontends/controllers/frontend_helpers.cpp:934 src/LyXFont.cpp:60
-msgid "Slanted"
-msgstr "Sghembo"
-
-#: src/frontends/controllers/frontend_helpers.cpp:938
-msgid "Small Caps"
-msgstr "Maiuscoletto"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1000 src/LyXFont.cpp:65
-msgid "Increase"
-msgstr "Aumenta"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1004 src/LyXFont.cpp:65
-msgid "Decrease"
-msgstr "Riduci"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1026
-msgid "Emph"
-msgstr "Enfatizza"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1030
-msgid "Underbar"
-msgstr "Sottolineato"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1034
-msgid "Noun"
-msgstr "Sostantivo"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1056
-msgid "No color"
-msgstr "Nessun colore"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1060
-msgid "Black"
-msgstr "Nero"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1064
-msgid "White"
-msgstr "Bianco"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1068
-msgid "Red"
-msgstr "Rosso"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1072
-msgid "Green"
-msgstr "Verde"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1076
-msgid "Blue"
-msgstr "Blu"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1080
-msgid "Cyan"
-msgstr "Ciano"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1084
-msgid "Magenta"
-msgstr "Magenta"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1088
-msgid "Yellow"
-msgstr "Giallo"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1220
-msgid "System files|#S#s"
-msgstr "File di sistema|#S#s"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1223
-msgid "User files|#U#u"
-msgstr "File utente|#U#u"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1306
-msgid "Could not update TeX information"
-msgstr "Non posso aggiornare le informazioni TeX"
-
-#: src/frontends/controllers/frontend_helpers.cpp:1307
-#, c-format
-msgid "The script `%s' failed."
-msgstr "Lo script `%s' è fallito."
-
-#: src/frontends/qt4/Alert_pimpl.cpp:58 src/frontends/qt4/Alert_pimpl.cpp:85
-#: src/frontends/qt4/Alert_pimpl.cpp:105 src/frontends/qt4/Alert_pimpl.cpp:124
-#: src/frontends/qt4/Alert_pimpl.cpp:135
-#, c-format
-msgid "LyX: %1$s"
-msgstr "LyX: %1$s"
-
-#: src/frontends/qt4/BulletsModule.cpp:47
-#, fuzzy
-msgid "Maths"
-msgstr "&Matematica"
-
-#: src/frontends/qt4/BulletsModule.cpp:48
-#, fuzzy
-msgid "Dings 1"
-msgstr "Ripeti &1"
-
-#: src/frontends/qt4/BulletsModule.cpp:49
-#, fuzzy
-msgid "Dings 2"
-msgstr "Ripeti &2"
-
-#: src/frontends/qt4/BulletsModule.cpp:50
-#, fuzzy
-msgid "Dings 3"
-msgstr "Ripeti &3"
-
-#: src/frontends/qt4/BulletsModule.cpp:51
-#, fuzzy
-msgid "Dings 4"
-msgstr "Ripeti &4"
-
-#: src/frontends/qt4/Dialogs.cpp:223
-msgid "Index Entry"
-msgstr "Voce d'indice"
-
-#: src/frontends/qt4/Dialogs.cpp:233
-msgid "Label"
-msgstr "Etichetta"
-
-#: src/frontends/qt4/Dialogs.cpp:245
-#, fuzzy
-msgid "LaTeX Source"
-msgstr "Spazio visibile|#s"
-
-#: src/frontends/qt4/Dialogs.cpp:307
-#, fuzzy
-msgid "Toc"
-msgstr "Argomento"
-
-#: src/frontends/qt4/FileDialog.cpp:162
-msgid "Directories"
-msgstr "Cartelle"
-
-#: src/frontends/qt4/GuiView.cpp:133
-msgid "Small-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:139
-msgid "Normal-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:146
-msgid "Big-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:676
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:467
-#, fuzzy
-msgid "unknown version"
-msgstr "Azione sconosciuta"
-
-#: src/frontends/qt4/QBibitem.cpp:69
-msgid "Bibliography Entry Settings"
-msgstr "Impostazioni voce bibliografica"
-
-#: src/frontends/qt4/QBibtex.cpp:260
-msgid "BibTeX Bibliography"
-msgstr "Bibliografia BibTeX"
-
-#: src/frontends/qt4/QBox.cpp:148
-msgid "Box Settings"
-msgstr "Impostazioni casella"
-
-#: src/frontends/qt4/QBranch.cpp:71
-msgid "Branch Settings"
-msgstr "Impostazioni ramo"
-
-#: src/frontends/qt4/QBranches.cpp:42
-#, fuzzy
-msgid "Branch"
-msgstr "Ramo:"
-
-#: src/frontends/qt4/QBranches.cpp:43
-msgid "Activated"
-msgstr "Attivato"
-
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:690
-msgid "Yes"
-msgstr "Sì"
-
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
-msgid "No"
-msgstr "No"
-
-#: src/frontends/qt4/QChanges.cpp:85
-msgid "Merge Changes"
-msgstr "Unisci modifiche"
-
-#: src/frontends/qt4/QChanges.cpp:107
-#, c-format
-msgid ""
-"Change by %1$s\n"
-"\n"
-msgstr ""
-"Modificato da %1$s\n"
-"\n"
-
-#: src/frontends/qt4/QChanges.cpp:109
-#, c-format
-msgid "Change made at %1$s\n"
-msgstr "Modifica eseguita a  %1$s\n"
-
-#: src/frontends/qt4/QCharacter.cpp:92
-msgid "Text Style"
-msgstr "Stile testo"
-
-#: src/frontends/qt4/QCommandBuffer.cpp:88
-msgid "Previous command"
-msgstr "Comando precedente"
-
-#: src/frontends/qt4/QCommandBuffer.cpp:91
-msgid "Next command"
-msgstr "Comando successivo"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:46
-msgid "big[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:46
-msgid "Big[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:47
-msgid "bigg[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:47
-msgid "Bigg[[delimiter size]]"
-msgstr ""
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:69
-msgid "Math Delimiter"
-msgstr "Delimitatore matematico"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:112
-msgid "LyX: Delimiters"
-msgstr "LyX: delimitatori"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:144
-#: src/frontends/qt4/QDelimiterDialog.cpp:145
-#, fuzzy
-msgid "(None)"
-msgstr "Nessuno"
-
-#: src/frontends/qt4/QDelimiterDialog.cpp:147
-#, fuzzy
-msgid "Variable"
-msgstr "linea tabellare"
-
-#: src/frontends/qt4/QDocument.cpp:119
-msgid "Length"
-msgstr "Lunghezza"
-
-#: src/frontends/qt4/QDocument.cpp:125 src/text.cpp:1740
-msgid "OneHalf"
-msgstr "Uno e mezzo"
-
-#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
-#: src/frontends/qt4/QDocument.cpp:176
-msgid " (not installed)"
-msgstr ""
-
-#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
-#: src/frontends/qt4/QDocument.cpp:599
-msgid "default"
-msgstr "predefinito"
-
-#: src/frontends/qt4/QDocument.cpp:181
-msgid "10"
-msgstr "10"
-
-#: src/frontends/qt4/QDocument.cpp:182
-msgid "11"
-msgstr "11"
-
-#: src/frontends/qt4/QDocument.cpp:183
-msgid "12"
-msgstr "12"
-
-#: src/frontends/qt4/QDocument.cpp:218
-msgid "empty"
-msgstr "vuoto"
-
-#: src/frontends/qt4/QDocument.cpp:219
-msgid "plain"
-msgstr "semplice"
-
-#: src/frontends/qt4/QDocument.cpp:220
-msgid "headings"
-msgstr "intestazioni"
-
-#: src/frontends/qt4/QDocument.cpp:221
-msgid "fancy"
-msgstr "eccessivo"
-
-#: src/frontends/qt4/QDocument.cpp:237
-msgid "B3"
-msgstr "B3"
-
-#: src/frontends/qt4/QDocument.cpp:238
-msgid "B4"
-msgstr "B4"
-
-#: src/frontends/qt4/QDocument.cpp:341
-#, fuzzy
-msgid "LaTeX default"
-msgstr "LaTeX ha fallito"
-
-#: src/frontends/qt4/QDocument.cpp:347
-msgid "``text''"
-msgstr "``testo''"
-
-#: src/frontends/qt4/QDocument.cpp:348
-msgid "''text''"
-msgstr "''testo''"
-
-#: src/frontends/qt4/QDocument.cpp:349
-msgid ",,text``"
-msgstr ",,testo``"
-
-#: src/frontends/qt4/QDocument.cpp:350
-msgid ",,text''"
-msgstr ",,testo''"
-
-#: src/frontends/qt4/QDocument.cpp:351
-msgid "<<text>>"
-msgstr "«testo»"
-
-#: src/frontends/qt4/QDocument.cpp:352
-msgid ">>text<<"
-msgstr "»testo«"
-
-#: src/frontends/qt4/QDocument.cpp:368
-msgid "Numbered"
-msgstr "Numerato"
-
-#: src/frontends/qt4/QDocument.cpp:369
-msgid "Appears in TOC"
-msgstr "Appare nell'Indice generale"
-
-#: src/frontends/qt4/QDocument.cpp:389
-msgid "Author-year"
-msgstr "Autore-anno"
-
-#: src/frontends/qt4/QDocument.cpp:390
-msgid "Numerical"
-msgstr "Numerico"
-
-#: src/frontends/qt4/QDocument.cpp:432
-#, c-format
-msgid "Unavailable: %1$s"
-msgstr "Non disponibile: %1$s"
-
-#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
-msgid "Document Class"
-msgstr "Classe documento"
-
-#: src/frontends/qt4/QDocument.cpp:464
-msgid "Text Layout"
-msgstr "Struttura testo"
-
-#: src/frontends/qt4/QDocument.cpp:465
-msgid "Page Layout"
-msgstr "Struttura pagina"
-
-#: src/frontends/qt4/QDocument.cpp:466
-msgid "Page Margins"
-msgstr "Margini"
-
-#: src/frontends/qt4/QDocument.cpp:468
-msgid "Numbering & TOC"
-msgstr "Numerazione & Indice generale"
-
-#: src/frontends/qt4/QDocument.cpp:470
-msgid "Math Options"
-msgstr "Opzioni matematiche"
-
-#: src/frontends/qt4/QDocument.cpp:471
-msgid "Float Placement"
-msgstr "Posizione degli oggetti mobili"
-
-#: src/frontends/qt4/QDocument.cpp:472
-msgid "Bullets"
-msgstr "Elenchi puntati"
-
-#: src/frontends/qt4/QDocument.cpp:473
-msgid "Branches"
-msgstr "Rami"
-
-#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
-msgid "LaTeX Preamble"
-msgstr "Preambolo di LaTeX"
-
-#: src/frontends/qt4/QDocument.cpp:1237
-msgid "Document Settings"
-msgstr "Impostazioni documento"
-
-#: src/frontends/qt4/QERT.cpp:68
-msgid "TeX Code Settings"
-msgstr "Impostazioni codice TeX"
-
-#: src/frontends/qt4/QExternal.cpp:495
-msgid "External Material"
-msgstr "Materiale esterno"
-
-#: src/frontends/qt4/QExternal.cpp:555
-msgid "Scale%"
-msgstr "Riscala %"
-
-#: src/frontends/qt4/QFloat.cpp:31
-msgid "Float Settings"
-msgstr "Impostazioni oggetti mobili"
-
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:625
-msgid "Graphics"
-msgstr "Grafici"
-
-#: src/frontends/qt4/QInclude.cpp:134
-msgid "Child Document"
-msgstr "Documento figlio"
-
-#: src/frontends/qt4/QMathMatrixDialog.cpp:46
-msgid "Math Matrix"
-msgstr "Matrice matematica"
-
-#: src/frontends/qt4/QMathMatrixDialog.cpp:61
-msgid "LyX: Insert Matrix"
-msgstr "LyX: inserisci matrice"
-
-#: src/frontends/qt4/QNote.cpp:70
-msgid "Note Settings"
-msgstr "Impostazioni nota"
-
-#: src/frontends/qt4/QParagraph.cpp:71
-msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
-"\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
-msgstr ""
-
-#: src/frontends/qt4/QParagraph.cpp:177
-msgid "Paragraph Settings"
-msgstr "Impostazioni paragrafo"
-
-#: src/frontends/qt4/QParagraph.cpp:239 src/Paragraph.cpp:1591
-msgid "Senseless with this layout!"
-msgstr "Non ha senso con questa struttura!"
-
-#: src/frontends/qt4/QPrefs.cpp:73
-msgid "Look and feel"
-msgstr ""
-
-#: src/frontends/qt4/QPrefs.cpp:74
-#, fuzzy
-msgid "Language settings"
-msgstr "Impostazioni paragrafo"
-
-#: src/frontends/qt4/QPrefs.cpp:75
-#, fuzzy
-msgid "Outputs"
-msgstr "Output"
-
-#: src/frontends/qt4/QPrefs.cpp:173
-msgid "Plain text"
-msgstr "Testo semplice"
-
-#: src/frontends/qt4/QPrefs.cpp:204
-msgid "Date format"
-msgstr "Formato data"
-
-#: src/frontends/qt4/QPrefs.cpp:231
-msgid "Keyboard"
-msgstr "Tastiera"
-
-#: src/frontends/qt4/QPrefs.cpp:355
-msgid "Screen fonts"
-msgstr "Caratteri schermo"
-
-#: src/frontends/qt4/QPrefs.cpp:513
-msgid "Colors"
-msgstr "Colori"
-
-#: src/frontends/qt4/QPrefs.cpp:599 src/frontends/qt4/QPrefs.cpp:698
-msgid "Paths"
-msgstr "Percorsi"
-
-#: src/frontends/qt4/QPrefs.cpp:749
-msgid "Select a document templates directory"
-msgstr "Seleziona una cartella per i modelli del documento"
-
-#: src/frontends/qt4/QPrefs.cpp:759
-msgid "Select a temporary directory"
-msgstr "Seleziona una cartella temporanea"
-
-#: src/frontends/qt4/QPrefs.cpp:769
-msgid "Select a backups directory"
-msgstr "Seleziona una cartella di backup"
-
-#: src/frontends/qt4/QPrefs.cpp:779
-msgid "Select a document directory"
-msgstr "Seleziona una cartella per i documenti"
-
-#: src/frontends/qt4/QPrefs.cpp:789
-msgid "Give a filename for the LyX server pipe"
-msgstr "Fornisci un nome di file per il LyX server pipe"
-
-#: src/frontends/qt4/QPrefs.cpp:802 src/frontends/qt4/QSpellchecker.cpp:135
-msgid "Spellchecker"
-msgstr "Correttore ortografico"
-
-#: src/frontends/qt4/QPrefs.cpp:824
-msgid "ispell"
-msgstr "ispell"
-
-#: src/frontends/qt4/QPrefs.cpp:825
-msgid "aspell"
-msgstr "aspell"
-
-#: src/frontends/qt4/QPrefs.cpp:826
-msgid "hspell"
-msgstr "hspell"
-
-#: src/frontends/qt4/QPrefs.cpp:828
-msgid "pspell (library)"
-msgstr "pspell (libreria)"
-
-#: src/frontends/qt4/QPrefs.cpp:831
-msgid "aspell (library)"
-msgstr "aspell (libreria)"
-
-#: src/frontends/qt4/QPrefs.cpp:912
-msgid "Converters"
-msgstr "Convertitori"
-
-#: src/frontends/qt4/QPrefs.cpp:1102
-msgid "Copiers"
-msgstr "Trascrittori"
-
-#: src/frontends/qt4/QPrefs.cpp:1355
-msgid "File formats"
-msgstr "Formati file"
-
-#: src/frontends/qt4/QPrefs.cpp:1547
-msgid "Format in use"
-msgstr "Formato in uso"
-
-#: src/frontends/qt4/QPrefs.cpp:1548
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Non posso rimuovere un formato usato da un convertitore. Rimuovi prima il "
-"convertitore."
-
-#: src/frontends/qt4/QPrefs.cpp:1649
-msgid "Printer"
-msgstr "Stampante"
-
-#: src/frontends/qt4/QPrefs.cpp:1747 src/frontends/qt4/QPrefs.cpp:1941
-msgid "User interface"
-msgstr "Interfaccia utente"
-
-#: src/frontends/qt4/QPrefs.cpp:1865
-msgid "Identity"
-msgstr "Identità"
-
-#: src/frontends/qt4/QPrefs.cpp:2007
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: src/frontends/qt4/QPrint.cpp:36
-msgid "Print Document"
-msgstr "Salta documento"
-
-#: src/frontends/qt4/QRef.cpp:188
-msgid "Cross-reference"
-msgstr "Riferimento incrociato"
-
-#: src/frontends/qt4/QRef.cpp:284
-msgid "&Go Back"
-msgstr "&Torna indietro"
-
-#: src/frontends/qt4/QRef.cpp:286
-msgid "Jump back"
-msgstr "Salta indietro"
-
-#: src/frontends/qt4/QRef.cpp:294
-msgid "Jump to label"
-msgstr "Salta all'etichetta"
-
-#: src/frontends/qt4/QSearch.cpp:138
-msgid "Find and Replace"
-msgstr "Trova e sostituisci"
-
-#: src/frontends/qt4/QSendto.cpp:84
-msgid "Send Document to Command"
-msgstr "Invia il documento ad un Comando"
-
-#: src/frontends/qt4/QShowFile.cpp:57
-msgid "Show File"
-msgstr "Mostra file"
-
-#: src/frontends/qt4/QTabular.cpp:523
-msgid "Table Settings"
-msgstr "Impostazioni tabella"
-
-#: src/frontends/qt4/QTabularCreate.cpp:73
-msgid "Insert Table"
-msgstr "Inserisci tabella"
-
-#: src/frontends/qt4/QTexinfo.cpp:127
-msgid "TeX Information"
-msgstr "Informazione di TeX"
-
-#: src/frontends/qt4/QVSpace.cpp:188
-msgid "Vertical Space Settings"
-msgstr "Impostazioni spazio verticale"
-
-#: src/frontends/qt4/QWrap.cpp:83
-msgid "Text Wrap Settings"
-msgstr "Impostazioni testo a capo"
-
-#: src/frontends/qt4/Validator.cpp:153
-msgid "space"
-msgstr "spazio"
-
-#: src/frontends/qt4/Validator.cpp:180
-msgid "Invalid filename"
-msgstr "Il nome del file non è valido"
-
-#: src/frontends/qt4/Validator.cpp:181
-#, fuzzy
-msgid ""
-"LyX does not provide LaTeX support for file names containing any of these "
-"characters:\n"
-msgstr ""
-"LyX non fornisce alcun supporto LateX per i nomi di file che contengono uno "
-"di questi caratteri:\n"
-
-#: src/Importer.cpp:47
-#, c-format
-msgid "Importing %1$s..."
-msgstr "Importa %1$s..."
-
-#: src/Importer.cpp:68
-msgid "Couldn't import file"
-msgstr "Non riesco ad importare il file"
-
-#: src/Importer.cpp:69
-#, c-format
-msgid "No information for importing the format %1$s."
-msgstr "Nessuna informazione per importare il formato %1$s."
-
-#: src/Importer.cpp:95
-msgid "imported."
-msgstr "importato."
-
-#: src/insets/InsetBase.cpp:252
-msgid "Opened inset"
-msgstr "E' stato aperto l'inserto"
-
-#: src/insets/InsetBibtex.cpp:109
-msgid "BibTeX Generated Bibliography"
-msgstr "Bibliografia generata di BibTeX"
-
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
-msgid "Export Warning!"
-msgstr "Allarme di esportazione!"
-
-#: src/insets/InsetBibtex.cpp:207
-msgid ""
-"There are spaces in the paths to your BibTeX databases.\n"
-"BibTeX will be unable to find them."
-msgstr ""
-"Ci sono degli spazi nei percorsi ai tuoi database BibTeX.\n"
-"BibTeX non sarà in grado di trovarli."
-
-#: src/insets/InsetBibtex.cpp:260
-#, fuzzy
-msgid ""
-"There are spaces in the path to your BibTeX style file.\n"
-"BibTeX will be unable to find it."
-msgstr ""
-"Ci sono degli spazi nei percorsi ai tuoi database BibTeX.\n"
-"BibTeX non sarà in grado di trovarli."
-
-#: src/insets/InsetBox.cpp:65
-msgid "Boxed"
-msgstr "Incasellato"
-
-#: src/insets/InsetBox.cpp:66
-msgid "Frameless"
-msgstr "Senza cornice"
-
-#: src/insets/InsetBox.cpp:67
-msgid "ovalbox"
-msgstr "ovalbox"
-
-#: src/insets/InsetBox.cpp:68
-msgid "Ovalbox"
-msgstr "Ovalbox"
-
-#: src/insets/InsetBox.cpp:69
-msgid "Shadowbox"
-msgstr "Shadowbox"
-
-#: src/insets/InsetBox.cpp:70
-msgid "Doublebox"
-msgstr "Doublebox"
-
-#: src/insets/InsetBox.cpp:126
-msgid "Opened Box Inset"
-msgstr "E' stato aperto l'inserto Casella"
-
-#: src/insets/InsetBranch.cpp:76
-msgid "Opened Branch Inset"
-msgstr "E' stato aperto l'inserto Ramo"
-
-#: src/insets/InsetBranch.cpp:101
-msgid "Branch: "
-msgstr "Ramo:"
-
-#: src/insets/InsetBranch.cpp:108 src/insets/InsetCharStyle.cpp:163
-#: src/insets/InsetCharStyle.cpp:212
-msgid "Undef: "
-msgstr "Non definito: "
-
-#: src/insets/InsetBranch.cpp:239
-#, fuzzy
-msgid "branch"
-msgstr "Ramo:"
-
-#: src/insets/InsetCaption.cpp:87
-msgid "Opened Caption Inset"
-msgstr "E' stato aperto l'inserto Didascalia"
-
-#: src/insets/InsetCaption.cpp:276
-#, fuzzy
-msgid "Senseless!!! "
-msgstr "E' privo di senso!"
-
-#: src/insets/InsetCharStyle.cpp:123
-msgid "Opened CharStyle Inset"
-msgstr "E' stato aperto l'inserto StileCarattere"
-
-#: src/insets/InsetCommand.cpp:98
-#, fuzzy
-msgid "LaTeX Command: "
-msgstr "Comando &BibTeX:"
-
-#: src/insets/InsetCommandParams.cpp:268
-#, fuzzy
-msgid "Unknown inset name: "
-msgstr "Inserto sconosciuto"
-
-#: src/insets/InsetCommandParams.cpp:292
-#, fuzzy
-msgid "Inset Command: "
-msgstr "Comando di indice:"
-
-#: src/insets/InsetCommandParams.cpp:293
-#, fuzzy
-msgid "Unknown parameter name: "
-msgstr "L'argomento di spaziatura è sconosciuto: "
-
-#: src/insets/InsetCommandParams.cpp:300
-msgid "Missing \\end_inset at this point."
-msgstr ""
-
-#: src/insets/InsetEnv.cpp:66
-msgid "Opened Environment Inset: "
-msgstr "E' stato aperto l'inserto Ambiente:"
-
-#: src/insets/InsetERT.cpp:143
-msgid "Opened ERT Inset"
-msgstr "E' stato aperto l'inserto ERT"
-
-#: src/insets/InsetERT.cpp:390
-msgid "ERT"
-msgstr "ERT"
-
-#: src/insets/InsetExternal.cpp:576
-#, c-format
-msgid "External template %1$s is not installed"
-msgstr "Il modello esterno %1$s non è installato"
-
-#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:373
-#: src/insets/InsetFloat.cpp:383
-msgid "float: "
-msgstr "mobile: "
-
-#: src/insets/InsetFloat.cpp:278
-msgid "Opened Float Inset"
-msgstr "E' stato aperto l'inserto Oggetto mobile"
-
-#: src/insets/InsetFloat.cpp:334
-#, fuzzy
-msgid "float"
-msgstr "mobile: "
-
-#: src/insets/InsetFloat.cpp:385
-msgid " (sideways)"
-msgstr " (obliquamente)"
-
-#: src/insets/InsetFloatList.cpp:59
-msgid "ERROR: Nonexistent float type!"
-msgstr "ERRORE! Non esiste questo tipo di oggetto mobile!"
-
-#: src/insets/InsetFloatList.cpp:124
-#, c-format
-msgid "List of %1$s"
-msgstr "Elenco di %1$s"
-
-#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:45
-msgid "foot"
-msgstr "piede"
-
-#: src/insets/InsetFoot.cpp:58
-msgid "Opened Footnote Inset"
-msgstr "E' stato aperto l'inserto Nota a piè di pagina"
-
-#: src/insets/InsetFoot.cpp:87
-#, fuzzy
-msgid "footnote"
-msgstr "Nota a piè di pagina"
-
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
-#, c-format
-msgid ""
-"Could not copy the file\n"
-"%1$s\n"
-"into the temporary directory."
-msgstr ""
-"Non ho potuto copiare il file\n"
-"%1$s\n"
-"nella cartella temporanea."
-
-#: src/insets/InsetGraphics.cpp:709
-#, c-format
-msgid "No conversion of %1$s is needed after all"
-msgstr "Non è necessaria alcuna conversione del file %1$s dopo tutto"
-
-#: src/insets/InsetGraphics.cpp:821
-#, c-format
-msgid "Graphics file: %1$s"
-msgstr "File grafici: %1$s"
-
-#: src/insets/InsetHFill.cpp:48
-#, fuzzy
-msgid "Horizontal Fill"
-msgstr "Allineamento orizzontale|o"
-
-#: src/insets/InsetInclude.cpp:306
-msgid "Verbatim Input"
-msgstr "Input testuale"
-
-#: src/insets/InsetInclude.cpp:309
-msgid "Verbatim Input*"
-msgstr "Input* testuale"
-
-#: src/insets/InsetInclude.cpp:411
-#, c-format
-msgid ""
-"Included file `%1$s'\n"
-"has textclass `%2$s'\n"
-"while parent file has textclass `%3$s'."
-msgstr ""
-"Il file incluso `%1$s'\n"
-"ha `%2$s' come classe di testo\n"
-"mentre il file genitore ha `%3$s' come classe di testo."
-
-#: src/insets/InsetInclude.cpp:417
-msgid "Different textclasses"
-msgstr "Classi testo differenti"
-
-#: src/insets/InsetIndex.cpp:42
-msgid "Idx"
-msgstr "Idx"
-
-#: src/insets/InsetIndex.cpp:75
-msgid "Index"
-msgstr "Indice"
-
-#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:41
-#: src/insets/InsetMarginal.cpp:71
-msgid "margin"
-msgstr "margine"
-
-#: src/insets/InsetMarginal.cpp:54
-msgid "Opened Marginal Note Inset"
-msgstr "E' stato aperto l'inserto Nota a margine"
-
-#: src/insets/InsetNomencl.cpp:39
-#, fuzzy
-msgid "Glo"
-msgstr "&Globale"
-
-#: src/insets/InsetNomencl.cpp:86
-msgid "Glossary"
-msgstr ""
-
-#: src/insets/InsetNote.cpp:66
-msgid "Comment"
-msgstr "Commento"
-
-#: src/insets/InsetNote.cpp:67
-msgid "Greyed out"
-msgstr "In grigio"
-
-#: src/insets/InsetNote.cpp:68
-#, fuzzy
-msgid "Framed"
-msgstr "Senza cornice"
-
-#: src/insets/InsetNote.cpp:69
-#, fuzzy
-msgid "Shaded"
-msgstr "F&orma:"
-
-#: src/insets/InsetNote.cpp:149
-msgid "Opened Note Inset"
-msgstr "E' stato aperto l'inserto Nota"
-
-#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
-msgid "opt"
-msgstr "opz"
-
-#: src/insets/InsetOptArg.cpp:59
-msgid "Opened Optional Argument Inset"
-msgstr "E' stato aperto l'inserto Argomento opzionale"
-
-#: src/insets/InsetPagebreak.h:65
-#, fuzzy
-msgid "Clear Page"
-msgstr "C&ancella"
-
-#: src/insets/InsetPagebreak.h:81
-msgid "Clear Double Page"
-msgstr ""
-
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
-msgid "Ref: "
-msgstr "Ref: "
-
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
-msgid "Equation"
-msgstr "Equazione"
-
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
-msgid "EqRef: "
-msgstr "EqRef: "
-
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
-msgid "Page Number"
-msgstr "Numero pagina"
-
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
-msgid "Page: "
-msgstr "Pagina: "
-
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
-msgid "Textual Page Number"
-msgstr "Numero pagina di tipo testuale"
-
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
-msgid "TextPage: "
-msgstr "Pagina di testo: "
-
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
-msgid "Standard+Textual Page"
-msgstr "Pagina usuale e testuale"
-
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
-msgid "Ref+Text: "
-msgstr "Riferimento e testo: "
-
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
-msgid "PrettyRef"
-msgstr "Riferimento considerevole"
-
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
-#, fuzzy
-msgid "FormatRef: "
-msgstr "F&ormato:"
-
-#: src/insets/InsetTabular.cpp:451
-msgid "Opened table"
-msgstr "La tabella è stata aperta"
-
-#: src/insets/InsetTabular.cpp:1606
-msgid "Error setting multicolumn"
-msgstr "Si è verificato un errore impostando le multicolonne"
-
-#: src/insets/InsetTabular.cpp:1607
-msgid "You cannot set multicolumn vertically."
-msgstr "Non puoi impostare le multicolonne verticalmente."
-
-#: src/insets/InsetText.cpp:236
-msgid "Opened Text Inset"
-msgstr "E' stato aperto l'inserto Testo"
-
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "teorema"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "E' stato aperto l'inserto Teorema"
-
-#: src/insets/InsetTOC.cpp:47
-msgid "Unknown toc list"
-msgstr "L'elenco dell'indice generale è sconosciuto"
-
-#: src/insets/InsetUrl.cpp:42
-msgid "Url: "
-msgstr "Url: "
-
-#: src/insets/InsetUrl.cpp:42
-msgid "HtmlUrl: "
-msgstr "HtmlUrl: "
-
-#: src/insets/InsetVSpace.cpp:110
-msgid "Vertical Space"
-msgstr "Spazio verticale"
-
-#: src/insets/InsetWrap.cpp:49
-msgid "wrap: "
-msgstr "rientro: "
-
-#: src/insets/InsetWrap.cpp:178
-msgid "Opened Wrap Inset"
-msgstr "E' stato aperto l'inserto Rientro"
-
-#: src/insets/InsetWrap.cpp:198
-#, fuzzy
-msgid "wrap"
-msgstr "rientro: "
-
-#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
-msgid "Not shown."
-msgstr "Non mostrato."
-
-#: src/insets/RenderGraphic.cpp:97
-msgid "Loading..."
-msgstr "Sto caricando..."
-
-#: src/insets/RenderGraphic.cpp:100
-msgid "Converting to loadable format..."
-msgstr "Sto convertendo ad un formato caricabile..."
-
-#: src/insets/RenderGraphic.cpp:103
-msgid "Loaded into memory. Generating pixmap..."
-msgstr "Caricato in memoria. Genero l'immagine pixmap."
-
-#: src/insets/RenderGraphic.cpp:106
-msgid "Scaling etc..."
-msgstr "Sto ridimensionando e..."
-
-#: src/insets/RenderGraphic.cpp:109
-msgid "Ready to display"
-msgstr "Pronto a mostrare"
-
-#: src/insets/RenderGraphic.cpp:112
-msgid "No file found!"
-msgstr "Non è stato trovato alcun file!"
-
-#: src/insets/RenderGraphic.cpp:115
-msgid "Error converting to loadable format"
-msgstr ""
-"Si è verificato un errore durante la conversione ad un formato caricabile"
-
-#: src/insets/RenderGraphic.cpp:118
-msgid "Error loading file into memory"
-msgstr "Si è verificato un errore caricando il file in memoria"
-
-#: src/insets/RenderGraphic.cpp:121
-msgid "Error generating the pixmap"
-msgstr "Si è verificato un errore generando l'immagine pixmap"
-
-#: src/insets/RenderGraphic.cpp:124
-msgid "No image"
-msgstr "Nessuna immagine"
-
-#: src/insets/RenderPreview.cpp:92
-msgid "Preview loading"
-msgstr "Caricamento anteprima"
-
-#: src/insets/RenderPreview.cpp:95
-msgid "Preview ready"
-msgstr "L'anteprima è pronta"
-
-#: src/insets/RenderPreview.cpp:98
-msgid "Preview failed"
-msgstr "Anteprima non riuscita"
 
 #: src/ISpell.cpp:238 src/ISpell.cpp:245 src/ISpell.cpp:254
 msgid "Can't create pipe for spellchecker."
@@ -13959,186 +12297,45 @@ msgid ""
 "2$s'."
 msgstr ""
 
-#: src/kb_sequence.cpp:160
+#: src/Importer.cpp:47
+#, c-format
+msgid "Importing %1$s..."
+msgstr "Importa %1$s..."
+
+#: src/Importer.cpp:68
+msgid "Couldn't import file"
+msgstr "Non riesco ad importare il file"
+
+#: src/Importer.cpp:69
+#, c-format
+msgid "No information for importing the format %1$s."
+msgstr "Nessuna informazione per importare il formato %1$s."
+
+#: src/Importer.cpp:95
+msgid "imported."
+msgstr "importato."
+
+#: src/KeySequence.cpp:157
 msgid "   options: "
 msgstr "   opzioni: "
 
-#: src/lengthcommon.cpp:37
-msgid "sp"
-msgstr "sp"
-
-#: src/lengthcommon.cpp:37
-msgid "pt"
-msgstr "pt"
-
-#: src/lengthcommon.cpp:37
-msgid "bp"
-msgstr "bp"
-
-#: src/lengthcommon.cpp:37
-msgid "dd"
-msgstr "dd"
-
-#: src/lengthcommon.cpp:37
-msgid "mm"
-msgstr "mm"
-
-#: src/lengthcommon.cpp:37
-msgid "pc"
-msgstr "pc"
-
-#: src/lengthcommon.cpp:38
-msgid "cm"
-msgstr "cm"
-
-#: src/lengthcommon.cpp:38
-msgid "ex"
-msgstr "ex"
-
-#: src/lengthcommon.cpp:38
-msgid "em"
-msgstr "em"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Text Width %"
-msgstr "Larghezza fissa"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Column Width %"
-msgstr "Larghezza colonna"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Page Width %"
-msgstr "Larghezza dell'etichetta"
-
-#: src/lengthcommon.cpp:39
-#, fuzzy
-msgid "Line Width %"
-msgstr "Larghezza dell'etichetta"
-
-#: src/lengthcommon.cpp:40
-#, fuzzy
-msgid "Text Height %"
-msgstr "Altezza totale"
-
-#: src/lengthcommon.cpp:40
-#, fuzzy
-msgid "Page Height %"
-msgstr "Altezza totale"
-
-#: src/lyx_cb.cpp:114
+#: src/LaTeX.cpp:95
 #, c-format
-msgid ""
-"The document %1$s could not be saved.\n"
-"\n"
-"Do you want to rename the document and try again?"
-msgstr ""
-"Non ho potuto salvare l documento %1$s.\n"
-"\n"
-"Vuoi rinominare il documento e provare ancora?"
+msgid "Waiting for LaTeX run number %1$d"
+msgstr "In attesa del lancio di LaTeX numero %1$d"
 
-#: src/lyx_cb.cpp:116
-msgid "Rename and save?"
-msgstr "Rinomino e salvo?"
+#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
+msgid "Running MakeIndex."
+msgstr "MakeIndex è in esecuzione."
 
-#: src/lyx_cb.cpp:117
-msgid "&Rename"
-msgstr "&Rinomina"
+#: src/LaTeX.cpp:322
+msgid "Running BibTeX."
+msgstr "BibTeX è in esecuzione."
 
-#: src/lyx_cb.cpp:134
-msgid "Choose a filename to save document as"
-msgstr "Scegli un nome con cui salvare il documento"
-
-#: src/lyx_cb.cpp:137 src/LyXFunc.cpp:1867
-msgid "Templates|#T#t"
-msgstr "Modelli|#M#m"
-
-#: src/lyx_cb.cpp:167 src/LyXFunc.cpp:2024
-#, c-format
-msgid ""
-"The document %1$s already exists.\n"
-"\n"
-"Do you want to over-write that document?"
-msgstr ""
-"Il documento %1$s esiste già.\n"
-"\n"
-"Vuoi davvero sovrascriverlo?"
-
-#: src/lyx_cb.cpp:169 src/LyXFunc.cpp:2026
-msgid "Over-write document?"
-msgstr "Sovrascrivo il documento?"
-
-#: src/lyx_cb.cpp:218
-#, c-format
-msgid "Auto-saving %1$s"
-msgstr "Salvataggio automatico %1$s"
-
-#: src/lyx_cb.cpp:258
-msgid "Autosave failed!"
-msgstr "L'autosalvataggio non ha funzionato!"
-
-#: src/lyx_cb.cpp:285
-msgid "Autosaving current document..."
-msgstr "Sto salvando automaticamente il documento corrente..."
-
-#: src/lyx_cb.cpp:349
-msgid "Select file to insert"
-msgstr "Scegli il documento da inserire"
-
-#: src/lyx_cb.cpp:368
-#, c-format
-msgid ""
-"Could not read the specified document\n"
-"%1$s\n"
-"due to the error: %2$s"
-msgstr ""
-"Non ho potuto leggere il documento specificato\n"
-"%1$s\n"
-"a causa dell'errore: %2$s"
-
-#: src/lyx_cb.cpp:370
-msgid "Could not read file"
-msgstr "Non riesco a leggere il file"
-
-#: src/lyx_cb.cpp:378
-#, c-format
-msgid ""
-"Could not open the specified document\n"
-"%1$s\n"
-"due to the error: %2$s"
-msgstr ""
-"Non ho potuto aprire il documento specificato\n"
-"%1$s\n"
-"a causa dell'errore: %2$s"
-
-#: src/lyx_cb.cpp:380 src/output.cpp:41
-msgid "Could not open file"
-msgstr "Non riesco ad aprire il file"
-
-#: src/lyx_cb.cpp:411
-msgid "Running configure..."
-msgstr "Sto configurando il sistema..."
-
-#: src/lyx_cb.cpp:420
-msgid "Reloading configuration..."
-msgstr "Sto caricando di nuovo la configurazione..."
-
-#: src/lyx_cb.cpp:425
-msgid "System reconfigured"
-msgstr "Il sistema è stato riconfigurato"
-
-#: src/lyx_cb.cpp:426
-msgid ""
-"The system has been reconfigured.\n"
-"You need to restart LyX to make use of any\n"
-"updated document class specifications."
-msgstr ""
-"Il sistema è stato riconfigurato.\n"
-"Devi riavviare LyX per poter usare ogni\n"
-"specifica aggiornata della classe del documento."
+#: src/LaTeX.cpp:462
+#, fuzzy
+msgid "Running MakeIndex for nomencl."
+msgstr "MakeIndex è in esecuzione."
 
 #: src/LyX.cpp:129
 msgid "Could not read configuration file"
@@ -14280,7 +12477,7 @@ msgstr ""
 "\t-versione        riassume la versione e le informazioni di compilazione.\n"
 "Guarda anche le pagine del manuale di LyX per più dettagli."
 
-#: src/LyX.cpp:1323 src/support/Package.C.in:568
+#: src/LyX.cpp:1323 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Cartella utente: "
@@ -14319,73 +12516,6 @@ msgstr ""
 #: src/LyX.cpp:1373
 msgid "Missing filename for --import"
 msgstr "Manca il nome file per --import"
-
-#: src/lyxfind.cpp:136
-msgid "Search error"
-msgstr "Cerca errore"
-
-#: src/lyxfind.cpp:137
-msgid "Search string is empty"
-msgstr "La stringa di ricerca è vuota"
-
-#: src/lyxfind.cpp:288 src/lyxfind.cpp:319
-msgid "String not found!"
-msgstr "Stringa non trovata!"
-
-#: src/lyxfind.cpp:323
-msgid "String has been replaced."
-msgstr "La stringa è stata sostituita."
-
-#: src/lyxfind.cpp:326
-msgid " strings have been replaced."
-msgstr " le stringhe sono state sostituite."
-
-#: src/LyXFont.cpp:52
-msgid "Symbol"
-msgstr "Simbolo"
-
-#: src/LyXFont.cpp:54 src/LyXFont.cpp:57 src/LyXFont.cpp:60 src/LyXFont.cpp:66
-#: src/LyXFont.cpp:69
-msgid "Inherit"
-msgstr "Eredità"
-
-#: src/LyXFont.cpp:54 src/LyXFont.cpp:57 src/LyXFont.cpp:61 src/LyXFont.cpp:66
-#: src/LyXFont.cpp:69
-msgid "Ignore"
-msgstr "Ignora"
-
-#: src/LyXFont.cpp:60
-msgid "Smallcaps"
-msgstr "Maiuscoletto"
-
-#: src/LyXFont.cpp:69
-msgid "Toggle"
-msgstr "Attiva/Disattiva"
-
-#: src/LyXFont.cpp:509
-#, c-format
-msgid "Emphasis %1$s, "
-msgstr "Enfasi %1$s, "
-
-#: src/LyXFont.cpp:512
-#, c-format
-msgid "Underline %1$s, "
-msgstr "Sottolinea %1$s, "
-
-#: src/LyXFont.cpp:515
-#, c-format
-msgid "Noun %1$s, "
-msgstr "Sostantivo %1$s, "
-
-#: src/LyXFont.cpp:520
-#, c-format
-msgid "Language: %1$s, "
-msgstr "Lingua: %1$s, "
-
-#: src/LyXFont.cpp:523
-#, c-format
-msgid "  Number %1$s"
-msgstr "   Numero %1$s"
 
 #: src/LyXFunc.cpp:362
 msgid "Unknown function."
@@ -14475,7 +12605,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Esci|i"
 
-#: src/LyXFunc.cpp:1115 src/text3.cpp:1312
+#: src/LyXFunc.cpp:1115 src/Text3.cpp:1312
 msgid "Missing argument"
 msgstr "Argomento mancante"
 
@@ -14517,6 +12647,10 @@ msgstr "Sto convertendo il documento alla nuova classe..."
 msgid "Select template file"
 msgstr "Seleziona file modello"
 
+#: src/LyXFunc.cpp:1867 src/callback.cpp:137
+msgid "Templates|#T#t"
+msgstr "Modelli|#M#m"
+
 #: src/LyXFunc.cpp:1903
 msgid "Select document to open"
 msgstr "Scegli documento da aprire"
@@ -14540,6 +12674,21 @@ msgstr "Non riesco ad aprire il documento %1$s"
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Scegli il %1$s file per l'importazone"
+
+#: src/LyXFunc.cpp:2024 src/callback.cpp:167
+#, c-format
+msgid ""
+"The document %1$s already exists.\n"
+"\n"
+"Do you want to over-write that document?"
+msgstr ""
+"Il documento %1$s esiste già.\n"
+"\n"
+"Vuoi davvero sovrascriverlo?"
+
+#: src/LyXFunc.cpp:2026 src/callback.cpp:169
+msgid "Over-write document?"
+msgstr "Sovrascrivo il documento?"
 
 #: src/LyXFunc.cpp:2097
 msgid "Welcome to LyX!"
@@ -15082,10 +13231,2022 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Torno alla versione salvata del documento?"
 
-#: src/mathed/InsetFormulaMacro.cpp:127 src/mathed/MathMacroTemplate.cpp:108
+#: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
+#: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
+msgid "No Documents Open!"
+msgstr "Non è stato aperto alcun documento!"
+
+#: src/MenuBackend.cpp:540
+#, fuzzy
+msgid "Plain Text"
+msgstr "Testo semplice"
+
+#: src/MenuBackend.cpp:542
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Testo semplice come linee"
+
+#: src/MenuBackend.cpp:714
+#, fuzzy
+msgid "Master Document"
+msgstr "Salva documento"
+
+#: src/MenuBackend.cpp:746
+msgid "No Table of contents"
+msgstr "Nessun indice generale"
+
+#: src/MenuBackend.cpp:791
+msgid " (auto)"
+msgstr ""
+
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+msgid "Senseless with this layout!"
+msgstr "Non ha senso con questa struttura!"
+
+#: src/SpellBase.cpp:51
+msgid "Native OS API not yet supported."
+msgstr "Le API del sistema operativo nativo non sono ancora supportate."
+
+#: src/Text.cpp:133
+msgid "Unknown layout"
+msgstr "Struttura sconosciuta"
+
+#: src/Text.cpp:134
 #, c-format
-msgid " Macro: %1$s: "
-msgstr "Macro: %1$s: "
+msgid ""
+"Layout '%1$s' does not exist in textclass '%2$s'\n"
+"Trying to use the default instead.\n"
+msgstr ""
+"La struttura '%1$s' non esiste nella classe di testo '%2$s'\n"
+"Cerco di usare quella predefinita al suo posto.\n"
+
+#: src/Text.cpp:165
+msgid "Unknown Inset"
+msgstr "Inserto sconosciuto"
+
+#: src/Text.cpp:271 src/Text.cpp:284
+msgid "Change tracking error"
+msgstr "Cambia tracciamento dell'errore"
+
+#: src/Text.cpp:272
+#, c-format
+msgid "Unknown author index for insertion: %1$d\n"
+msgstr "L'indice autore è sconosciuto per l'inserimento: %1$d\n"
+
+#: src/Text.cpp:285
+#, c-format
+msgid "Unknown author index for deletion: %1$d\n"
+msgstr "L'indice autore è sconosciuto per la cancellazione: %1$d\n"
+
+#: src/Text.cpp:292
+msgid "Unknown token"
+msgstr "Simbolo sconosciuto"
+
+#: src/Text.cpp:726
+msgid ""
+"You cannot insert a space at the beginning of a paragraph. Please read the "
+"Tutorial."
+msgstr ""
+"Non puoi inserire uno spazio all'inizio di un paragrafo. Per favore, leggi "
+"il Tutorial!"
+
+#: src/Text.cpp:737
+msgid "You cannot type two spaces this way. Please read the Tutorial."
+msgstr ""
+"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
+
+#: src/Text.cpp:1703
+#, fuzzy
+msgid "[Change Tracking] "
+msgstr "Cambia Tracciamento|C"
+
+#: src/Text.cpp:1709
+msgid "Change: "
+msgstr "Cambia: "
+
+#: src/Text.cpp:1713
+msgid " at "
+msgstr " a "
+
+#: src/Text.cpp:1723
+#, c-format
+msgid "Font: %1$s"
+msgstr "Carattere: %1$s"
+
+#: src/Text.cpp:1728
+#, c-format
+msgid ", Depth: %1$d"
+msgstr ", Rientro: %1$d"
+
+#: src/Text.cpp:1734
+msgid ", Spacing: "
+msgstr ", Spaziatura: "
+
+#: src/Text.cpp:1740 src/frontends/qt4/QDocument.cpp:125
+msgid "OneHalf"
+msgstr "Uno e mezzo"
+
+#: src/Text.cpp:1746
+msgid "Other ("
+msgstr "Altro ("
+
+#: src/Text.cpp:1755
+msgid ", Inset: "
+msgstr ", inserto: "
+
+#: src/Text.cpp:1756
+msgid ", Paragraph: "
+msgstr ", Paragrafo: "
+
+#: src/Text.cpp:1757
+msgid ", Id: "
+msgstr ", ID:"
+
+#: src/Text.cpp:1758
+msgid ", Position: "
+msgstr ", posizione:"
+
+#: src/Text.cpp:1764
+msgid ", Char: 0x"
+msgstr ""
+
+#: src/Text.cpp:1766
+msgid ", Boundary: "
+msgstr ", Contorno:"
+
+#: src/Text2.cpp:540
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Non è stata definita alcuna modifica del carattere. Usa Carattere nel menù "
+"Struttura per definire la modifica dei caratteri."
+
+#: src/Text2.cpp:582
+msgid "Nothing to index!"
+msgstr "Niente da indicizzare!"
+
+#: src/Text2.cpp:584
+msgid "Cannot index more than one paragraph!"
+msgstr "Non posso indicizzare più di un paragrafo!"
+
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1330
+msgid "Math editor mode"
+msgstr "Modalità editore matematico"
+
+#: src/Text3.cpp:721
+msgid "Unknown spacing argument: "
+msgstr "L'argomento di spaziatura è sconosciuto: "
+
+#: src/Text3.cpp:894
+msgid "Layout "
+msgstr "Struttura "
+
+#: src/Text3.cpp:895
+msgid " not known"
+msgstr " sconosciuta"
+
+#: src/Text3.cpp:1417 src/Text3.cpp:1429
+msgid "Character set"
+msgstr "Insieme di caratteri"
+
+#: src/Text3.cpp:1560
+msgid "Paragraph layout set"
+msgstr "Ho impostato la struttura del paragrafo"
+
+#: src/VSpace.cpp:490
+msgid "Default skip"
+msgstr "Salto predefinito"
+
+#: src/VSpace.cpp:493
+msgid "Small skip"
+msgstr "Salto piccolo"
+
+#: src/VSpace.cpp:496
+msgid "Medium skip"
+msgstr "Salto medio"
+
+#: src/VSpace.cpp:499
+msgid "Big skip"
+msgstr "Salto grande"
+
+#: src/VSpace.cpp:502
+msgid "Vertical fill"
+msgstr "Riempimento verticale "
+
+#: src/VSpace.cpp:509
+msgid "protected"
+msgstr "protetto"
+
+#: src/buffer_funcs.cpp:81
+#, c-format
+msgid ""
+"The specified document\n"
+"%1$s\n"
+"could not be read."
+msgstr ""
+"Il documento specificato\n"
+"%1$s\n"
+"potrebbe non essere letto."
+
+#: src/buffer_funcs.cpp:83
+msgid "Could not read document"
+msgstr "Non riesco a leggere il documento "
+
+#: src/buffer_funcs.cpp:96
+#, c-format
+msgid ""
+"An emergency save of the document %1$s exists.\n"
+"\n"
+"Recover emergency save?"
+msgstr ""
+"Esiste una copia di emergenza del documento %1$s.\n"
+"\n"
+"Recupero il salvataggio di emergenza?"
+
+#: src/buffer_funcs.cpp:99
+msgid "Load emergency save?"
+msgstr "Carico il salvataggio di emergenza?"
+
+#: src/buffer_funcs.cpp:100
+msgid "&Recover"
+msgstr "&Recupera"
+
+#: src/buffer_funcs.cpp:100
+msgid "&Load Original"
+msgstr "&Carica originale"
+
+#: src/buffer_funcs.cpp:123
+#, c-format
+msgid ""
+"The backup of the document %1$s is newer.\n"
+"\n"
+"Load the backup instead?"
+msgstr ""
+"Il backup del documento %1$s è più recente.\n"
+"\n"
+"Carico il backup invece?"
+
+#: src/buffer_funcs.cpp:126
+msgid "Load backup?"
+msgstr "Carico la copia di backup?"
+
+#: src/buffer_funcs.cpp:127
+msgid "&Load backup"
+msgstr "&Carica copia di backup"
+
+#: src/buffer_funcs.cpp:127
+msgid "Load &original"
+msgstr "Carica &originale"
+
+#: src/buffer_funcs.cpp:166
+#, c-format
+msgid "Do you want to retrieve the document %1$s from version control?"
+msgstr "Vuoi recuperare il documento %1$s dal controllo di versione?"
+
+#: src/buffer_funcs.cpp:168
+msgid "Retrieve from version control?"
+msgstr "Vuoi recuperare il documento mediante il controllo di versione?"
+
+#: src/buffer_funcs.cpp:169
+msgid "&Retrieve"
+msgstr "&Ripristina"
+
+#: src/buffer_funcs.cpp:202
+#, c-format
+msgid ""
+"The specified document template\n"
+"%1$s\n"
+"could not be read."
+msgstr ""
+"Il modello specificato di documento\n"
+"%1$s\n"
+"non può essere letto."
+
+#: src/buffer_funcs.cpp:204
+msgid "Could not read template"
+msgstr "Non posso leggere il modello"
+
+#: src/buffer_funcs.cpp:521
+msgid "\\arabic{enumi}."
+msgstr "\\arabic{enumi}."
+
+#: src/buffer_funcs.cpp:527
+msgid "\\roman{enumiii}."
+msgstr "\\roman{enumiii}."
+
+#: src/buffer_funcs.cpp:530
+msgid "\\Alph{enumiv}."
+msgstr "\\Alph{enumiv}."
+
+#: src/bufferview_funcs.cpp:308
+msgid "No more insets"
+msgstr "Nessuna altra aggiunta"
+
+#: src/callback.cpp:114
+#, c-format
+msgid ""
+"The document %1$s could not be saved.\n"
+"\n"
+"Do you want to rename the document and try again?"
+msgstr ""
+"Non ho potuto salvare l documento %1$s.\n"
+"\n"
+"Vuoi rinominare il documento e provare ancora?"
+
+#: src/callback.cpp:116
+msgid "Rename and save?"
+msgstr "Rinomino e salvo?"
+
+#: src/callback.cpp:117
+msgid "&Rename"
+msgstr "&Rinomina"
+
+#: src/callback.cpp:134
+msgid "Choose a filename to save document as"
+msgstr "Scegli un nome con cui salvare il documento"
+
+#: src/callback.cpp:218
+#, c-format
+msgid "Auto-saving %1$s"
+msgstr "Salvataggio automatico %1$s"
+
+#: src/callback.cpp:258
+msgid "Autosave failed!"
+msgstr "L'autosalvataggio non ha funzionato!"
+
+#: src/callback.cpp:285
+msgid "Autosaving current document..."
+msgstr "Sto salvando automaticamente il documento corrente..."
+
+#: src/callback.cpp:349
+msgid "Select file to insert"
+msgstr "Scegli il documento da inserire"
+
+#: src/callback.cpp:368
+#, c-format
+msgid ""
+"Could not read the specified document\n"
+"%1$s\n"
+"due to the error: %2$s"
+msgstr ""
+"Non ho potuto leggere il documento specificato\n"
+"%1$s\n"
+"a causa dell'errore: %2$s"
+
+#: src/callback.cpp:370
+msgid "Could not read file"
+msgstr "Non riesco a leggere il file"
+
+#: src/callback.cpp:378
+#, c-format
+msgid ""
+"Could not open the specified document\n"
+"%1$s\n"
+"due to the error: %2$s"
+msgstr ""
+"Non ho potuto aprire il documento specificato\n"
+"%1$s\n"
+"a causa dell'errore: %2$s"
+
+#: src/callback.cpp:380 src/output.cpp:41
+msgid "Could not open file"
+msgstr "Non riesco ad aprire il file"
+
+#: src/callback.cpp:411
+msgid "Running configure..."
+msgstr "Sto configurando il sistema..."
+
+#: src/callback.cpp:420
+msgid "Reloading configuration..."
+msgstr "Sto caricando di nuovo la configurazione..."
+
+#: src/callback.cpp:425
+msgid "System reconfigured"
+msgstr "Il sistema è stato riconfigurato"
+
+#: src/callback.cpp:426
+msgid ""
+"The system has been reconfigured.\n"
+"You need to restart LyX to make use of any\n"
+"updated document class specifications."
+msgstr ""
+"Il sistema è stato riconfigurato.\n"
+"Devi riavviare LyX per poter usare ogni\n"
+"specifica aggiornata della classe del documento."
+
+#: src/client/debug.cpp:44 src/debug.cpp:44
+msgid "No debugging message"
+msgstr "Nessun messaggio di correzione"
+
+#: src/client/debug.cpp:45 src/debug.cpp:45
+msgid "General information"
+msgstr "Informazione generale"
+
+#: src/client/debug.cpp:46 src/debug.cpp:70
+msgid "Developers' general debug messages"
+msgstr "Messaggi di debug generale degli sviluppatori"
+
+#: src/client/debug.cpp:47 src/debug.cpp:71
+msgid "All debugging messages"
+msgstr "Tutti i messaggi di correzione"
+
+#: src/client/debug.cpp:91 src/debug.cpp:115
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Sto correggendo `%1$s' (%2$s)"
+
+#: src/debug.cpp:46
+msgid "Program initialisation"
+msgstr "Inizializzazione programma"
+
+#: src/debug.cpp:47
+msgid "Keyboard events handling"
+msgstr "Gestione eventi da tastiera"
+
+#: src/debug.cpp:48
+msgid "GUI handling"
+msgstr "Gestione GUI"
+
+#: src/debug.cpp:49
+msgid "Lyxlex grammar parser"
+msgstr "Analizzatore grammaticale lyxlex"
+
+#: src/debug.cpp:50
+msgid "Configuration files reading"
+msgstr "Sto leggendo i file di configurazione"
+
+#: src/debug.cpp:51
+msgid "Custom keyboard definition"
+msgstr "Definizione personale della tastiera"
+
+#: src/debug.cpp:52
+msgid "LaTeX generation/execution"
+msgstr "Generazione/Esecuzione di LaTeX"
+
+#: src/debug.cpp:53
+msgid "Math editor"
+msgstr "Editor matematico"
+
+#: src/debug.cpp:54
+msgid "Font handling"
+msgstr "Gestione caratteri"
+
+#: src/debug.cpp:55
+msgid "Textclass files reading"
+msgstr "So leggendo i file delle classi di testo"
+
+#: src/debug.cpp:56
+msgid "Version control"
+msgstr "Controllo versione"
+
+#: src/debug.cpp:57
+msgid "External control interface"
+msgstr "Interfaccia esterna di controllo"
+
+#: src/debug.cpp:58
+msgid "Keep *roff temporary files"
+msgstr "Conserva file temporanei tipo *roff"
+
+#: src/debug.cpp:59
+msgid "User commands"
+msgstr "Comandi utente"
+
+#: src/debug.cpp:60
+msgid "The LyX Lexxer"
+msgstr "E' il Lexxer di LyX"
+
+#: src/debug.cpp:61
+msgid "Dependency information"
+msgstr "Informazioni sulle dipendenze"
+
+#: src/debug.cpp:62
+msgid "LyX Insets"
+msgstr "Aggiunte di LyX"
+
+#: src/debug.cpp:63
+msgid "Files used by LyX"
+msgstr "File usati da LyX"
+
+#: src/debug.cpp:64
+msgid "Workarea events"
+msgstr "Eventi area di lavoro"
+
+#: src/debug.cpp:65
+msgid "Insettext/tabular messages"
+msgstr "Messaggi Insettext/tabulari"
+
+#: src/debug.cpp:66
+msgid "Graphics conversion and loading"
+msgstr "Conversione grafici e caricamento"
+
+#: src/debug.cpp:67
+msgid "Change tracking"
+msgstr "Modifica tracciamento"
+
+#: src/debug.cpp:68
+msgid "External template/inset messages"
+msgstr "Modello esterno/inserisci messaggi"
+
+#: src/debug.cpp:69
+msgid "RowPainter profiling"
+msgstr "Creazione profilo RowPainter"
+
+#: src/frontends/LyXView.cpp:425
+msgid " (changed)"
+msgstr " (modificato)"
+
+#: src/frontends/LyXView.cpp:429
+msgid " (read only)"
+msgstr " (sola lettura)"
+
+#: src/frontends/WorkArea.cpp:242
+msgid "Formatting document..."
+msgstr "Formattazione del documento..."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:58
+msgid "ERROR: LyX wasn't able to read CREDITS file\n"
+msgstr "ERRORE! LyX non è stato in grado di leggere il file CREDITS\n"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:59
+msgid "Please install correctly to estimate the great\n"
+msgstr "Per favore, installa LyX correttamente per avere un'idea dell'enorme\n"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:60
+msgid "amount of work other people have done for the LyX project."
+msgstr ""
+"lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:67
+#, fuzzy
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-2006 LyX Team"
+msgstr ""
+"LyX è Copyright (C) 1995 di Matthias Ettrich,\n"
+"1995-2001 Gruppo LyX"
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:73
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:79
+#, fuzzy
+msgid ""
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+msgstr ""
+"LyX è distribuito nella speranza di essere utile ma\n"
+"SENZA NESSUNA GARANZIA, nemmeno la garanzia\n"
+"implicita del COMMERCIABILE o dell'ADATTO AD UNO\n"
+"SCOPO PARTICOLARE. Leggi la Licenza Pubblica Generale\n"
+"(GPL) della GNU per ulteriori dettagli. Dovresti aver\n"
+"ricevuto una copia della Licenza Pubblica Generale (GPL)\n"
+"della GNU con questo programma; se non è così, scrivi a\n"
+"Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:87
+msgid "LyX Version "
+msgstr "Versione di LyX "
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:92
+msgid "Library directory: "
+msgstr "Cartella libreria: "
+
+#: src/frontends/controllers/ControlAboutlyx.cpp:95
+msgid "User directory: "
+msgstr "Cartella utente: "
+
+#: src/frontends/controllers/ControlBibtex.cpp:54
+msgid "BibTeX Databases (*.bib)"
+msgstr "Database BibTeX (*.bib)"
+
+#: src/frontends/controllers/ControlBibtex.cpp:56
+msgid "Select a BibTeX database to add"
+msgstr "Seleziona un database BibTeX da aggiungere"
+
+#: src/frontends/controllers/ControlBibtex.cpp:66
+msgid "BibTeX Styles (*.bst)"
+msgstr "Stili BibTeX (*.bst)"
+
+#: src/frontends/controllers/ControlBibtex.cpp:68
+msgid "Select a BibTeX style"
+msgstr "Seleziona uno stile BibTeX"
+
+#: src/frontends/controllers/ControlBox.cpp:62
+msgid "No frame drawn"
+msgstr "Nessuna cornice disegnata"
+
+#: src/frontends/controllers/ControlBox.cpp:63
+msgid "Rectangular box"
+msgstr "Casella rettangolare"
+
+#: src/frontends/controllers/ControlBox.cpp:64
+msgid "Oval box, thin"
+msgstr "Casella ovale, sottile"
+
+#: src/frontends/controllers/ControlBox.cpp:65
+msgid "Oval box, thick"
+msgstr "Casella ovale, spessa"
+
+#: src/frontends/controllers/ControlBox.cpp:66
+msgid "Shadow box"
+msgstr "Casella ombreggiata"
+
+#: src/frontends/controllers/ControlBox.cpp:67
+msgid "Double box"
+msgstr "Doppia casella"
+
+#: src/frontends/controllers/ControlBox.cpp:81 src/frontends/qt4/QBox.cpp:286
+#: src/frontends/qt4/QBox.cpp:320
+msgid "Depth"
+msgstr "Rientro"
+
+#: src/frontends/controllers/ControlBox.cpp:82 src/frontends/qt4/QBox.cpp:133
+#: src/frontends/qt4/QBox.cpp:289 src/frontends/qt4/QBox.cpp:323
+#: src/frontends/qt4/QBox.cpp:356
+msgid "Total Height"
+msgstr "Altezza totale"
+
+#: src/frontends/controllers/ControlErrorList.cpp:57
+#, c-format
+msgid "%1$s Errors (%2$s)"
+msgstr "%1$s Errori (%2$s)"
+
+#: src/frontends/controllers/ControlExternal.cpp:163
+msgid "Select external file"
+msgstr "Seleziona file esterno"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Top left"
+msgstr "In alto a sinistra"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Bottom left"
+msgstr "In basso a sinistra"
+
+#: src/frontends/controllers/ControlExternal.cpp:235
+#: src/frontends/controllers/ControlGraphics.cpp:171
+msgid "Baseline left"
+msgstr "A sinistra della linea di base"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Top center"
+msgstr "Centrato in alto"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Bottom center"
+msgstr "Centrato in basso"
+
+#: src/frontends/controllers/ControlExternal.cpp:236
+#: src/frontends/controllers/ControlGraphics.cpp:172
+msgid "Baseline center"
+msgstr "Al centro della linea di base"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Top right"
+msgstr "In alto a destra"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Bottom right"
+msgstr "In basso a destra"
+
+#: src/frontends/controllers/ControlExternal.cpp:237
+#: src/frontends/controllers/ControlGraphics.cpp:173
+msgid "Baseline right"
+msgstr "A destra della linea di base"
+
+#: src/frontends/controllers/ControlGraphics.cpp:87
+msgid "Select graphics file"
+msgstr "Seleziona file grafico"
+
+#: src/frontends/controllers/ControlGraphics.cpp:95
+msgid "Clipart|#C#c"
+msgstr "Galleria|#G#g"
+
+#: src/frontends/controllers/ControlInclude.cpp:78
+msgid "Select document to include"
+msgstr "Scegli il documento da inserire"
+
+#: src/frontends/controllers/ControlInclude.cpp:85
+msgid "LaTeX/LyX Documents (*.tex *.lyx)"
+msgstr "Documenti LaTeX/LyX (*.tex *.lyx)"
+
+#: src/frontends/controllers/ControlLog.cpp:81
+msgid "LaTeX Log"
+msgstr "Registro di LaTeX"
+
+#: src/frontends/controllers/ControlLog.cpp:84
+msgid "Literate Programming Build Log"
+msgstr "Registro compilato di programmazione esperta"
+
+#: src/frontends/controllers/ControlLog.cpp:87
+msgid "lyx2lyx Error Log"
+msgstr "Registro errori di lyx2lyx"
+
+#: src/frontends/controllers/ControlLog.cpp:90
+msgid "Version Control Log"
+msgstr "Registro di controllo versione"
+
+#: src/frontends/controllers/ControlLog.cpp:116
+msgid "No LaTeX log file found."
+msgstr "Non ho trovato alcun file di registro di LaTeX."
+
+#: src/frontends/controllers/ControlLog.cpp:119
+msgid "No literate programming build log file found."
+msgstr ""
+"Non è stato trovato alcun registro compilato di programmazione esperta."
+
+#: src/frontends/controllers/ControlLog.cpp:122
+msgid "No lyx2lyx error log file found."
+msgstr "Non ho trovato alcun registro per il comando lyx2lyx."
+
+#: src/frontends/controllers/ControlLog.cpp:125
+msgid "No version control log file found."
+msgstr "Non è stato trovato nessun registro di controllo versione."
+
+#: src/frontends/controllers/ControlPrefs.cpp:110
+msgid "Choose bind file"
+msgstr "Scegli file di collegamento"
+
+#: src/frontends/controllers/ControlPrefs.cpp:111
+msgid "LyX bind files (*.bind)"
+msgstr "File di collegamento di LyX (*.bind)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:118
+msgid "Choose UI file"
+msgstr "Scegli file UI"
+
+#: src/frontends/controllers/ControlPrefs.cpp:119
+msgid "LyX UI files (*.ui)"
+msgstr "File UI di LyX (*.ui)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:126
+msgid "Choose keyboard map"
+msgstr "Scegli mappa di tastiera"
+
+#: src/frontends/controllers/ControlPrefs.cpp:127
+msgid "LyX keyboard maps (*.kmap)"
+msgstr "Mappa di tastiera di LyX (*.kmap)"
+
+#: src/frontends/controllers/ControlPrefs.cpp:135
+#: src/frontends/controllers/ControlPrefs.cpp:139
+msgid "Choose personal dictionary"
+msgstr "Scegli dizionario personale"
+
+#: src/frontends/controllers/ControlPrefs.cpp:136
+msgid "*.pws"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.cpp:140
+msgid "*.ispell"
+msgstr "*.ispell"
+
+#: src/frontends/controllers/ControlPrint.cpp:73
+msgid "Print to file"
+msgstr "Stampa su file"
+
+#: src/frontends/controllers/ControlPrint.cpp:74
+msgid "PostScript files (*.ps)"
+msgstr "File PostScript (*.ps)"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:117
+msgid "Spellchecker error"
+msgstr "Errore del correttore ortografico"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:118
+msgid "The spellchecker could not be started\n"
+msgstr "Il correttore ortografico non ha potuto essere avviato\n"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:276
+msgid ""
+"The spellchecker has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Il correttore ortografico è terminato per qualche motivo.\n"
+"Forse è stato chiuso."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:279
+msgid "The spellchecker has failed.\n"
+msgstr "Il correttore ortografico ha fallito.\n"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:283
+msgid "The spellchecker has failed"
+msgstr "Il correttore ortografico ha fallito"
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:297
+#, c-format
+msgid "%1$d words checked."
+msgstr "sono state controllate %1$d parole."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:299
+msgid "One word checked."
+msgstr "E' stata controllata una sola parola."
+
+#: src/frontends/controllers/ControlSpellchecker.cpp:302
+msgid "Spelling check completed"
+msgstr "Il controllo ortografico è completo"
+
+#: src/frontends/controllers/ControlToc.cpp:134 src/insets/InsetTOC.cpp:46
+msgid "Table of Contents"
+msgstr "Indice generale"
+
+#: src/frontends/controllers/frontend_helpers.cpp:244
+#, c-format
+msgid "%1$s and %2$s"
+msgstr "%1$s e %2$s"
+
+#: src/frontends/controllers/frontend_helpers.cpp:248
+#, c-format
+msgid "%1$s et al."
+msgstr "%1$s et altri."
+
+#: src/frontends/controllers/frontend_helpers.cpp:285
+msgid "No year"
+msgstr "Nessun anno"
+
+#: src/frontends/controllers/frontend_helpers.cpp:818
+msgid "before"
+msgstr "prima"
+
+#: src/frontends/controllers/frontend_helpers.cpp:866
+#: src/frontends/controllers/frontend_helpers.cpp:896
+#: src/frontends/controllers/frontend_helpers.cpp:922
+#: src/frontends/controllers/frontend_helpers.cpp:956
+#: src/frontends/controllers/frontend_helpers.cpp:1022
+#: src/frontends/controllers/frontend_helpers.cpp:1052
+#: src/frontends/controllers/frontend_helpers.cpp:1125
+msgid "No change"
+msgstr "Nessuna modifica"
+
+#: src/frontends/controllers/frontend_helpers.cpp:882
+#: src/frontends/controllers/frontend_helpers.cpp:908
+#: src/frontends/controllers/frontend_helpers.cpp:942
+#: src/frontends/controllers/frontend_helpers.cpp:1008
+#: src/frontends/controllers/frontend_helpers.cpp:1038
+#: src/frontends/controllers/frontend_helpers.cpp:1092
+#: src/frontends/controllers/frontend_helpers.cpp:1127
+msgid "Reset"
+msgstr "Reimposta"
+
+#: src/frontends/controllers/frontend_helpers.cpp:938
+msgid "Small Caps"
+msgstr "Maiuscoletto"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1026
+msgid "Emph"
+msgstr "Enfatizza"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1030
+msgid "Underbar"
+msgstr "Sottolineato"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1034
+msgid "Noun"
+msgstr "Sostantivo"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1056
+msgid "No color"
+msgstr "Nessun colore"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1060
+msgid "Black"
+msgstr "Nero"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1064
+msgid "White"
+msgstr "Bianco"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1068
+msgid "Red"
+msgstr "Rosso"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1072
+msgid "Green"
+msgstr "Verde"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1076
+msgid "Blue"
+msgstr "Blu"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1080
+msgid "Cyan"
+msgstr "Ciano"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1084
+msgid "Magenta"
+msgstr "Magenta"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1088
+msgid "Yellow"
+msgstr "Giallo"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1220
+msgid "System files|#S#s"
+msgstr "File di sistema|#S#s"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1223
+msgid "User files|#U#u"
+msgstr "File utente|#U#u"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1306
+msgid "Could not update TeX information"
+msgstr "Non posso aggiornare le informazioni TeX"
+
+#: src/frontends/controllers/frontend_helpers.cpp:1307
+#, c-format
+msgid "The script `%s' failed."
+msgstr "Lo script `%s' è fallito."
+
+#: src/frontends/qt4/BulletsModule.cpp:47
+#, fuzzy
+msgid "Maths"
+msgstr "&Matematica"
+
+#: src/frontends/qt4/BulletsModule.cpp:48
+#, fuzzy
+msgid "Dings 1"
+msgstr "Ripeti &1"
+
+#: src/frontends/qt4/BulletsModule.cpp:49
+#, fuzzy
+msgid "Dings 2"
+msgstr "Ripeti &2"
+
+#: src/frontends/qt4/BulletsModule.cpp:50
+#, fuzzy
+msgid "Dings 3"
+msgstr "Ripeti &3"
+
+#: src/frontends/qt4/BulletsModule.cpp:51
+#, fuzzy
+msgid "Dings 4"
+msgstr "Ripeti &4"
+
+#: src/frontends/qt4/Dialogs.cpp:223
+msgid "Index Entry"
+msgstr "Voce d'indice"
+
+#: src/frontends/qt4/Dialogs.cpp:233
+msgid "Label"
+msgstr "Etichetta"
+
+#: src/frontends/qt4/Dialogs.cpp:245
+#, fuzzy
+msgid "LaTeX Source"
+msgstr "Spazio visibile|#s"
+
+#: src/frontends/qt4/Dialogs.cpp:307
+#, fuzzy
+msgid "Toc"
+msgstr "Argomento"
+
+#: src/frontends/qt4/FileDialog.cpp:162
+msgid "Directories"
+msgstr "Cartelle"
+
+#: src/frontends/qt4/GuiView.cpp:133
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:139
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:146
+msgid "Big-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:676
+msgid "LyX"
+msgstr "LyX"
+
+#: src/frontends/qt4/GuiWorkArea.cpp:467
+#, fuzzy
+msgid "unknown version"
+msgstr "Azione sconosciuta"
+
+#: src/frontends/qt4/QBibitem.cpp:69
+msgid "Bibliography Entry Settings"
+msgstr "Impostazioni voce bibliografica"
+
+#: src/frontends/qt4/QBibtex.cpp:260
+msgid "BibTeX Bibliography"
+msgstr "Bibliografia BibTeX"
+
+#: src/frontends/qt4/QBox.cpp:148
+msgid "Box Settings"
+msgstr "Impostazioni casella"
+
+#: src/frontends/qt4/QBranch.cpp:71
+msgid "Branch Settings"
+msgstr "Impostazioni ramo"
+
+#: src/frontends/qt4/QBranches.cpp:42
+#, fuzzy
+msgid "Branch"
+msgstr "Ramo:"
+
+#: src/frontends/qt4/QBranches.cpp:43
+msgid "Activated"
+msgstr "Attivato"
+
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
+#: src/frontends/qt4/QDocument.cpp:690
+msgid "Yes"
+msgstr "Sì"
+
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
+msgid "No"
+msgstr "No"
+
+#: src/frontends/qt4/QChanges.cpp:85
+msgid "Merge Changes"
+msgstr "Unisci modifiche"
+
+#: src/frontends/qt4/QChanges.cpp:107
+#, c-format
+msgid ""
+"Change by %1$s\n"
+"\n"
+msgstr ""
+"Modificato da %1$s\n"
+"\n"
+
+#: src/frontends/qt4/QChanges.cpp:109
+#, c-format
+msgid "Change made at %1$s\n"
+msgstr "Modifica eseguita a  %1$s\n"
+
+#: src/frontends/qt4/QCharacter.cpp:92
+msgid "Text Style"
+msgstr "Stile testo"
+
+#: src/frontends/qt4/QCommandBuffer.cpp:88
+msgid "Previous command"
+msgstr "Comando precedente"
+
+#: src/frontends/qt4/QCommandBuffer.cpp:91
+msgid "Next command"
+msgstr "Comando successivo"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:46
+msgid "big[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:46
+msgid "Big[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:47
+msgid "bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:47
+msgid "Bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:69
+msgid "Math Delimiter"
+msgstr "Delimitatore matematico"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:112
+msgid "LyX: Delimiters"
+msgstr "LyX: delimitatori"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:144
+#: src/frontends/qt4/QDelimiterDialog.cpp:145
+#, fuzzy
+msgid "(None)"
+msgstr "Nessuno"
+
+#: src/frontends/qt4/QDelimiterDialog.cpp:147
+#, fuzzy
+msgid "Variable"
+msgstr "linea tabellare"
+
+#: src/frontends/qt4/QDocument.cpp:119
+msgid "Length"
+msgstr "Lunghezza"
+
+#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
+#: src/frontends/qt4/QDocument.cpp:176
+msgid " (not installed)"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
+#: src/frontends/qt4/QDocument.cpp:599
+msgid "default"
+msgstr "predefinito"
+
+#: src/frontends/qt4/QDocument.cpp:181
+msgid "10"
+msgstr "10"
+
+#: src/frontends/qt4/QDocument.cpp:182
+msgid "11"
+msgstr "11"
+
+#: src/frontends/qt4/QDocument.cpp:183
+msgid "12"
+msgstr "12"
+
+#: src/frontends/qt4/QDocument.cpp:218
+msgid "empty"
+msgstr "vuoto"
+
+#: src/frontends/qt4/QDocument.cpp:219
+msgid "plain"
+msgstr "semplice"
+
+#: src/frontends/qt4/QDocument.cpp:220
+msgid "headings"
+msgstr "intestazioni"
+
+#: src/frontends/qt4/QDocument.cpp:221
+msgid "fancy"
+msgstr "eccessivo"
+
+#: src/frontends/qt4/QDocument.cpp:237
+msgid "B3"
+msgstr "B3"
+
+#: src/frontends/qt4/QDocument.cpp:238
+msgid "B4"
+msgstr "B4"
+
+#: src/frontends/qt4/QDocument.cpp:341
+#, fuzzy
+msgid "LaTeX default"
+msgstr "LaTeX ha fallito"
+
+#: src/frontends/qt4/QDocument.cpp:347
+msgid "``text''"
+msgstr "``testo''"
+
+#: src/frontends/qt4/QDocument.cpp:348
+msgid "''text''"
+msgstr "''testo''"
+
+#: src/frontends/qt4/QDocument.cpp:349
+msgid ",,text``"
+msgstr ",,testo``"
+
+#: src/frontends/qt4/QDocument.cpp:350
+msgid ",,text''"
+msgstr ",,testo''"
+
+#: src/frontends/qt4/QDocument.cpp:351
+msgid "<<text>>"
+msgstr "«testo»"
+
+#: src/frontends/qt4/QDocument.cpp:352
+msgid ">>text<<"
+msgstr "»testo«"
+
+#: src/frontends/qt4/QDocument.cpp:368
+msgid "Numbered"
+msgstr "Numerato"
+
+#: src/frontends/qt4/QDocument.cpp:369
+msgid "Appears in TOC"
+msgstr "Appare nell'Indice generale"
+
+#: src/frontends/qt4/QDocument.cpp:389
+msgid "Author-year"
+msgstr "Autore-anno"
+
+#: src/frontends/qt4/QDocument.cpp:390
+msgid "Numerical"
+msgstr "Numerico"
+
+#: src/frontends/qt4/QDocument.cpp:432
+#, c-format
+msgid "Unavailable: %1$s"
+msgstr "Non disponibile: %1$s"
+
+#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
+msgid "Document Class"
+msgstr "Classe documento"
+
+#: src/frontends/qt4/QDocument.cpp:464
+msgid "Text Layout"
+msgstr "Struttura testo"
+
+#: src/frontends/qt4/QDocument.cpp:465
+msgid "Page Layout"
+msgstr "Struttura pagina"
+
+#: src/frontends/qt4/QDocument.cpp:466
+msgid "Page Margins"
+msgstr "Margini"
+
+#: src/frontends/qt4/QDocument.cpp:468
+msgid "Numbering & TOC"
+msgstr "Numerazione & Indice generale"
+
+#: src/frontends/qt4/QDocument.cpp:470
+msgid "Math Options"
+msgstr "Opzioni matematiche"
+
+#: src/frontends/qt4/QDocument.cpp:471
+msgid "Float Placement"
+msgstr "Posizione degli oggetti mobili"
+
+#: src/frontends/qt4/QDocument.cpp:472
+msgid "Bullets"
+msgstr "Elenchi puntati"
+
+#: src/frontends/qt4/QDocument.cpp:473
+msgid "Branches"
+msgstr "Rami"
+
+#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
+msgid "LaTeX Preamble"
+msgstr "Preambolo di LaTeX"
+
+#: src/frontends/qt4/QDocument.cpp:1237
+msgid "Document Settings"
+msgstr "Impostazioni documento"
+
+#: src/frontends/qt4/QERT.cpp:68
+msgid "TeX Code Settings"
+msgstr "Impostazioni codice TeX"
+
+#: src/frontends/qt4/QExternal.cpp:495
+msgid "External Material"
+msgstr "Materiale esterno"
+
+#: src/frontends/qt4/QExternal.cpp:555
+msgid "Scale%"
+msgstr "Riscala %"
+
+#: src/frontends/qt4/QFloat.cpp:31
+msgid "Float Settings"
+msgstr "Impostazioni oggetti mobili"
+
+#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:625
+msgid "Graphics"
+msgstr "Grafici"
+
+#: src/frontends/qt4/QInclude.cpp:134
+msgid "Child Document"
+msgstr "Documento figlio"
+
+#: src/frontends/qt4/QMathMatrixDialog.cpp:46
+msgid "Math Matrix"
+msgstr "Matrice matematica"
+
+#: src/frontends/qt4/QMathMatrixDialog.cpp:61
+msgid "LyX: Insert Matrix"
+msgstr "LyX: inserisci matrice"
+
+#: src/frontends/qt4/QNote.cpp:70
+msgid "Note Settings"
+msgstr "Impostazioni nota"
+
+#: src/frontends/qt4/QParagraph.cpp:70
+msgid ""
+"As described in the User Guide, the length of this text will determine how "
+"wide the label part of each item is in environments like List and "
+"Description.\n"
+"\n"
+" Normally you won't need to set this, since the largest label width of all "
+"the items is used. But if you need to, you can change it here."
+msgstr ""
+
+#: src/frontends/qt4/QParagraph.cpp:176
+msgid "Paragraph Settings"
+msgstr "Impostazioni paragrafo"
+
+#: src/frontends/qt4/QPrefs.cpp:73
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefs.cpp:74
+#, fuzzy
+msgid "Language settings"
+msgstr "Impostazioni paragrafo"
+
+#: src/frontends/qt4/QPrefs.cpp:75
+#, fuzzy
+msgid "Outputs"
+msgstr "Output"
+
+#: src/frontends/qt4/QPrefs.cpp:173
+msgid "Plain text"
+msgstr "Testo semplice"
+
+#: src/frontends/qt4/QPrefs.cpp:204
+msgid "Date format"
+msgstr "Formato data"
+
+#: src/frontends/qt4/QPrefs.cpp:231
+msgid "Keyboard"
+msgstr "Tastiera"
+
+#: src/frontends/qt4/QPrefs.cpp:355
+msgid "Screen fonts"
+msgstr "Caratteri schermo"
+
+#: src/frontends/qt4/QPrefs.cpp:513
+msgid "Colors"
+msgstr "Colori"
+
+#: src/frontends/qt4/QPrefs.cpp:599 src/frontends/qt4/QPrefs.cpp:698
+msgid "Paths"
+msgstr "Percorsi"
+
+#: src/frontends/qt4/QPrefs.cpp:749
+msgid "Select a document templates directory"
+msgstr "Seleziona una cartella per i modelli del documento"
+
+#: src/frontends/qt4/QPrefs.cpp:759
+msgid "Select a temporary directory"
+msgstr "Seleziona una cartella temporanea"
+
+#: src/frontends/qt4/QPrefs.cpp:769
+msgid "Select a backups directory"
+msgstr "Seleziona una cartella di backup"
+
+#: src/frontends/qt4/QPrefs.cpp:779
+msgid "Select a document directory"
+msgstr "Seleziona una cartella per i documenti"
+
+#: src/frontends/qt4/QPrefs.cpp:789
+msgid "Give a filename for the LyX server pipe"
+msgstr "Fornisci un nome di file per il LyX server pipe"
+
+#: src/frontends/qt4/QPrefs.cpp:802 src/frontends/qt4/QSpellchecker.cpp:135
+msgid "Spellchecker"
+msgstr "Correttore ortografico"
+
+#: src/frontends/qt4/QPrefs.cpp:824
+msgid "ispell"
+msgstr "ispell"
+
+#: src/frontends/qt4/QPrefs.cpp:825
+msgid "aspell"
+msgstr "aspell"
+
+#: src/frontends/qt4/QPrefs.cpp:826
+msgid "hspell"
+msgstr "hspell"
+
+#: src/frontends/qt4/QPrefs.cpp:828
+msgid "pspell (library)"
+msgstr "pspell (libreria)"
+
+#: src/frontends/qt4/QPrefs.cpp:831
+msgid "aspell (library)"
+msgstr "aspell (libreria)"
+
+#: src/frontends/qt4/QPrefs.cpp:912
+msgid "Converters"
+msgstr "Convertitori"
+
+#: src/frontends/qt4/QPrefs.cpp:1102
+msgid "Copiers"
+msgstr "Trascrittori"
+
+#: src/frontends/qt4/QPrefs.cpp:1355
+msgid "File formats"
+msgstr "Formati file"
+
+#: src/frontends/qt4/QPrefs.cpp:1547
+msgid "Format in use"
+msgstr "Formato in uso"
+
+#: src/frontends/qt4/QPrefs.cpp:1548
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Non posso rimuovere un formato usato da un convertitore. Rimuovi prima il "
+"convertitore."
+
+#: src/frontends/qt4/QPrefs.cpp:1649
+msgid "Printer"
+msgstr "Stampante"
+
+#: src/frontends/qt4/QPrefs.cpp:1747 src/frontends/qt4/QPrefs.cpp:1941
+msgid "User interface"
+msgstr "Interfaccia utente"
+
+#: src/frontends/qt4/QPrefs.cpp:1865
+msgid "Identity"
+msgstr "Identità"
+
+#: src/frontends/qt4/QPrefs.cpp:2007
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: src/frontends/qt4/QPrint.cpp:36
+msgid "Print Document"
+msgstr "Salta documento"
+
+#: src/frontends/qt4/QRef.cpp:188
+msgid "Cross-reference"
+msgstr "Riferimento incrociato"
+
+#: src/frontends/qt4/QRef.cpp:284
+msgid "&Go Back"
+msgstr "&Torna indietro"
+
+#: src/frontends/qt4/QRef.cpp:286
+msgid "Jump back"
+msgstr "Salta indietro"
+
+#: src/frontends/qt4/QRef.cpp:294
+msgid "Jump to label"
+msgstr "Salta all'etichetta"
+
+#: src/frontends/qt4/QSearch.cpp:138
+msgid "Find and Replace"
+msgstr "Trova e sostituisci"
+
+#: src/frontends/qt4/QSendto.cpp:84
+msgid "Send Document to Command"
+msgstr "Invia il documento ad un Comando"
+
+#: src/frontends/qt4/QShowFile.cpp:57
+msgid "Show File"
+msgstr "Mostra file"
+
+#: src/frontends/qt4/QTabular.cpp:523
+msgid "Table Settings"
+msgstr "Impostazioni tabella"
+
+#: src/frontends/qt4/QTabularCreate.cpp:73
+msgid "Insert Table"
+msgstr "Inserisci tabella"
+
+#: src/frontends/qt4/QTexinfo.cpp:127
+msgid "TeX Information"
+msgstr "Informazione di TeX"
+
+#: src/frontends/qt4/QVSpace.cpp:188
+msgid "Vertical Space Settings"
+msgstr "Impostazioni spazio verticale"
+
+#: src/frontends/qt4/QWrap.cpp:83
+msgid "Text Wrap Settings"
+msgstr "Impostazioni testo a capo"
+
+#: src/frontends/qt4/Validator.cpp:153
+msgid "space"
+msgstr "spazio"
+
+#: src/frontends/qt4/Validator.cpp:180
+msgid "Invalid filename"
+msgstr "Il nome del file non è valido"
+
+#: src/frontends/qt4/Validator.cpp:181
+#, fuzzy
+msgid ""
+"LyX does not provide LaTeX support for file names containing any of these "
+"characters:\n"
+msgstr ""
+"LyX non fornisce alcun supporto LateX per i nomi di file che contengono uno "
+"di questi caratteri:\n"
+
+#: src/frontends/qt4/alert_pimpl.cpp:58 src/frontends/qt4/alert_pimpl.cpp:85
+#: src/frontends/qt4/alert_pimpl.cpp:105 src/frontends/qt4/alert_pimpl.cpp:124
+#: src/frontends/qt4/alert_pimpl.cpp:135
+#, c-format
+msgid "LyX: %1$s"
+msgstr "LyX: %1$s"
+
+#: src/insets/Inset.cpp:265
+msgid "Opened inset"
+msgstr "E' stato aperto l'inserto"
+
+#: src/insets/InsetBibtex.cpp:109
+msgid "BibTeX Generated Bibliography"
+msgstr "Bibliografia generata di BibTeX"
+
+#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+msgid "Export Warning!"
+msgstr "Allarme di esportazione!"
+
+#: src/insets/InsetBibtex.cpp:207
+msgid ""
+"There are spaces in the paths to your BibTeX databases.\n"
+"BibTeX will be unable to find them."
+msgstr ""
+"Ci sono degli spazi nei percorsi ai tuoi database BibTeX.\n"
+"BibTeX non sarà in grado di trovarli."
+
+#: src/insets/InsetBibtex.cpp:260
+#, fuzzy
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
+msgstr ""
+"Ci sono degli spazi nei percorsi ai tuoi database BibTeX.\n"
+"BibTeX non sarà in grado di trovarli."
+
+#: src/insets/InsetBox.cpp:65
+msgid "Boxed"
+msgstr "Incasellato"
+
+#: src/insets/InsetBox.cpp:66
+msgid "Frameless"
+msgstr "Senza cornice"
+
+#: src/insets/InsetBox.cpp:67
+msgid "ovalbox"
+msgstr "ovalbox"
+
+#: src/insets/InsetBox.cpp:68
+msgid "Ovalbox"
+msgstr "Ovalbox"
+
+#: src/insets/InsetBox.cpp:69
+msgid "Shadowbox"
+msgstr "Shadowbox"
+
+#: src/insets/InsetBox.cpp:70
+msgid "Doublebox"
+msgstr "Doublebox"
+
+#: src/insets/InsetBox.cpp:125
+msgid "Opened Box Inset"
+msgstr "E' stato aperto l'inserto Casella"
+
+#: src/insets/InsetBranch.cpp:75
+msgid "Opened Branch Inset"
+msgstr "E' stato aperto l'inserto Ramo"
+
+#: src/insets/InsetBranch.cpp:100
+msgid "Branch: "
+msgstr "Ramo:"
+
+#: src/insets/InsetBranch.cpp:107 src/insets/InsetCharStyle.cpp:162
+#: src/insets/InsetCharStyle.cpp:211
+msgid "Undef: "
+msgstr "Non definito: "
+
+#: src/insets/InsetBranch.cpp:238
+#, fuzzy
+msgid "branch"
+msgstr "Ramo:"
+
+#: src/insets/InsetCaption.cpp:87
+msgid "Opened Caption Inset"
+msgstr "E' stato aperto l'inserto Didascalia"
+
+#: src/insets/InsetCaption.cpp:276
+#, fuzzy
+msgid "Senseless!!! "
+msgstr "E' privo di senso!"
+
+#: src/insets/InsetCharStyle.cpp:122
+msgid "Opened CharStyle Inset"
+msgstr "E' stato aperto l'inserto StileCarattere"
+
+#: src/insets/InsetCommand.cpp:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "Comando &BibTeX:"
+
+#: src/insets/InsetCommandParams.cpp:268
+#, fuzzy
+msgid "Unknown inset name: "
+msgstr "Inserto sconosciuto"
+
+#: src/insets/InsetCommandParams.cpp:292
+#, fuzzy
+msgid "Inset Command: "
+msgstr "Comando di indice:"
+
+#: src/insets/InsetCommandParams.cpp:293
+#, fuzzy
+msgid "Unknown parameter name: "
+msgstr "L'argomento di spaziatura è sconosciuto: "
+
+#: src/insets/InsetCommandParams.cpp:300
+msgid "Missing \\end_inset at this point."
+msgstr ""
+
+#: src/insets/InsetERT.cpp:140
+msgid "Opened ERT Inset"
+msgstr "E' stato aperto l'inserto ERT"
+
+#: src/insets/InsetERT.cpp:387
+msgid "ERT"
+msgstr "ERT"
+
+#: src/insets/InsetEnvironment.cpp:65
+msgid "Opened Environment Inset: "
+msgstr "E' stato aperto l'inserto Ambiente:"
+
+#: src/insets/InsetExternal.cpp:576
+#, c-format
+msgid "External template %1$s is not installed"
+msgstr "Il modello esterno %1$s non è installato"
+
+#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:372
+#: src/insets/InsetFloat.cpp:382
+msgid "float: "
+msgstr "mobile: "
+
+#: src/insets/InsetFloat.cpp:277
+msgid "Opened Float Inset"
+msgstr "E' stato aperto l'inserto Oggetto mobile"
+
+#: src/insets/InsetFloat.cpp:333
+#, fuzzy
+msgid "float"
+msgstr "mobile: "
+
+#: src/insets/InsetFloat.cpp:384
+msgid " (sideways)"
+msgstr " (obliquamente)"
+
+#: src/insets/InsetFloatList.cpp:59
+msgid "ERROR: Nonexistent float type!"
+msgstr "ERRORE! Non esiste questo tipo di oggetto mobile!"
+
+#: src/insets/InsetFloatList.cpp:124
+#, c-format
+msgid "List of %1$s"
+msgstr "Elenco di %1$s"
+
+#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:44
+msgid "foot"
+msgstr "piede"
+
+#: src/insets/InsetFoot.cpp:56
+msgid "Opened Footnote Inset"
+msgstr "E' stato aperto l'inserto Nota a piè di pagina"
+
+#: src/insets/InsetFoot.cpp:85
+#, fuzzy
+msgid "footnote"
+msgstr "Nota a piè di pagina"
+
+#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:448
+#, c-format
+msgid ""
+"Could not copy the file\n"
+"%1$s\n"
+"into the temporary directory."
+msgstr ""
+"Non ho potuto copiare il file\n"
+"%1$s\n"
+"nella cartella temporanea."
+
+#: src/insets/InsetGraphics.cpp:709
+#, c-format
+msgid "No conversion of %1$s is needed after all"
+msgstr "Non è necessaria alcuna conversione del file %1$s dopo tutto"
+
+#: src/insets/InsetGraphics.cpp:821
+#, c-format
+msgid "Graphics file: %1$s"
+msgstr "File grafici: %1$s"
+
+#: src/insets/InsetHFill.cpp:48
+#, fuzzy
+msgid "Horizontal Fill"
+msgstr "Allineamento orizzontale|o"
+
+#: src/insets/InsetInclude.cpp:306
+msgid "Verbatim Input"
+msgstr "Input testuale"
+
+#: src/insets/InsetInclude.cpp:309
+msgid "Verbatim Input*"
+msgstr "Input* testuale"
+
+#: src/insets/InsetInclude.cpp:411
+#, c-format
+msgid ""
+"Included file `%1$s'\n"
+"has textclass `%2$s'\n"
+"while parent file has textclass `%3$s'."
+msgstr ""
+"Il file incluso `%1$s'\n"
+"ha `%2$s' come classe di testo\n"
+"mentre il file genitore ha `%3$s' come classe di testo."
+
+#: src/insets/InsetInclude.cpp:417
+msgid "Different textclasses"
+msgstr "Classi testo differenti"
+
+#: src/insets/InsetIndex.cpp:42
+msgid "Idx"
+msgstr "Idx"
+
+#: src/insets/InsetIndex.cpp:75
+msgid "Index"
+msgstr "Indice"
+
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
+#: src/insets/InsetMarginal.cpp:69
+msgid "margin"
+msgstr "margine"
+
+#: src/insets/InsetMarginal.cpp:52
+msgid "Opened Marginal Note Inset"
+msgstr "E' stato aperto l'inserto Nota a margine"
+
+#: src/insets/InsetNomencl.cpp:39
+#, fuzzy
+msgid "Nom"
+msgstr "No"
+
+#: src/insets/InsetNomencl.cpp:86
+#, fuzzy
+msgid "Nomenclature"
+msgstr "Congettura"
+
+#: src/insets/InsetNote.cpp:66
+msgid "Comment"
+msgstr "Commento"
+
+#: src/insets/InsetNote.cpp:67
+msgid "Greyed out"
+msgstr "In grigio"
+
+#: src/insets/InsetNote.cpp:68
+#, fuzzy
+msgid "Framed"
+msgstr "Senza cornice"
+
+#: src/insets/InsetNote.cpp:69
+#, fuzzy
+msgid "Shaded"
+msgstr "F&orma:"
+
+#: src/insets/InsetNote.cpp:148
+msgid "Opened Note Inset"
+msgstr "E' stato aperto l'inserto Nota"
+
+#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
+msgid "opt"
+msgstr "opz"
+
+#: src/insets/InsetOptArg.cpp:59
+msgid "Opened Optional Argument Inset"
+msgstr "E' stato aperto l'inserto Argomento opzionale"
+
+#: src/insets/InsetPagebreak.h:65
+#, fuzzy
+msgid "Clear Page"
+msgstr "C&ancella"
+
+#: src/insets/InsetPagebreak.h:81
+msgid "Clear Double Page"
+msgstr ""
+
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+msgid "Ref: "
+msgstr "Ref: "
+
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+msgid "Equation"
+msgstr "Equazione"
+
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+msgid "EqRef: "
+msgstr "EqRef: "
+
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+msgid "Page Number"
+msgstr "Numero pagina"
+
+#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+msgid "Page: "
+msgstr "Pagina: "
+
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+msgid "Textual Page Number"
+msgstr "Numero pagina di tipo testuale"
+
+#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+msgid "TextPage: "
+msgstr "Pagina di testo: "
+
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+msgid "Standard+Textual Page"
+msgstr "Pagina usuale e testuale"
+
+#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+msgid "Ref+Text: "
+msgstr "Riferimento e testo: "
+
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+msgid "PrettyRef"
+msgstr "Riferimento considerevole"
+
+#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#, fuzzy
+msgid "FormatRef: "
+msgstr "F&ormato:"
+
+#: src/insets/InsetTOC.cpp:47
+msgid "Unknown toc list"
+msgstr "L'elenco dell'indice generale è sconosciuto"
+
+#: src/insets/InsetTabular.cpp:3141
+msgid "Opened table"
+msgstr "La tabella è stata aperta"
+
+#: src/insets/InsetTabular.cpp:4292
+msgid "Error setting multicolumn"
+msgstr "Si è verificato un errore impostando le multicolonne"
+
+#: src/insets/InsetTabular.cpp:4293
+msgid "You cannot set multicolumn vertically."
+msgstr "Non puoi impostare le multicolonne verticalmente."
+
+#: src/insets/InsetText.cpp:236
+msgid "Opened Text Inset"
+msgstr "E' stato aperto l'inserto Testo"
+
+#: src/insets/InsetUrl.cpp:42
+msgid "Url: "
+msgstr "Url: "
+
+#: src/insets/InsetUrl.cpp:42
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/insets/InsetVSpace.cpp:110
+msgid "Vertical Space"
+msgstr "Spazio verticale"
+
+#: src/insets/InsetWrap.cpp:49
+msgid "wrap: "
+msgstr "rientro: "
+
+#: src/insets/InsetWrap.cpp:177
+msgid "Opened Wrap Inset"
+msgstr "E' stato aperto l'inserto Rientro"
+
+#: src/insets/InsetWrap.cpp:197
+#, fuzzy
+msgid "wrap"
+msgstr "rientro: "
+
+#: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
+msgid "Not shown."
+msgstr "Non mostrato."
+
+#: src/insets/RenderGraphic.cpp:97
+msgid "Loading..."
+msgstr "Sto caricando..."
+
+#: src/insets/RenderGraphic.cpp:100
+msgid "Converting to loadable format..."
+msgstr "Sto convertendo ad un formato caricabile..."
+
+#: src/insets/RenderGraphic.cpp:103
+msgid "Loaded into memory. Generating pixmap..."
+msgstr "Caricato in memoria. Genero l'immagine pixmap."
+
+#: src/insets/RenderGraphic.cpp:106
+msgid "Scaling etc..."
+msgstr "Sto ridimensionando e..."
+
+#: src/insets/RenderGraphic.cpp:109
+msgid "Ready to display"
+msgstr "Pronto a mostrare"
+
+#: src/insets/RenderGraphic.cpp:112
+msgid "No file found!"
+msgstr "Non è stato trovato alcun file!"
+
+#: src/insets/RenderGraphic.cpp:115
+msgid "Error converting to loadable format"
+msgstr ""
+"Si è verificato un errore durante la conversione ad un formato caricabile"
+
+#: src/insets/RenderGraphic.cpp:118
+msgid "Error loading file into memory"
+msgstr "Si è verificato un errore caricando il file in memoria"
+
+#: src/insets/RenderGraphic.cpp:121
+msgid "Error generating the pixmap"
+msgstr "Si è verificato un errore generando l'immagine pixmap"
+
+#: src/insets/RenderGraphic.cpp:124
+msgid "No image"
+msgstr "Nessuna immagine"
+
+#: src/insets/RenderPreview.cpp:92
+msgid "Preview loading"
+msgstr "Caricamento anteprima"
+
+#: src/insets/RenderPreview.cpp:95
+msgid "Preview ready"
+msgstr "L'anteprima è pronta"
+
+#: src/insets/RenderPreview.cpp:98
+msgid "Preview failed"
+msgstr "Anteprima non riuscita"
+
+#: src/lengthcommon.cpp:37
+msgid "sp"
+msgstr "sp"
+
+#: src/lengthcommon.cpp:37
+msgid "pt"
+msgstr "pt"
+
+#: src/lengthcommon.cpp:37
+msgid "bp"
+msgstr "bp"
+
+#: src/lengthcommon.cpp:37
+msgid "dd"
+msgstr "dd"
+
+#: src/lengthcommon.cpp:37
+msgid "mm"
+msgstr "mm"
+
+#: src/lengthcommon.cpp:37
+msgid "pc"
+msgstr "pc"
+
+#: src/lengthcommon.cpp:38
+msgid "cm"
+msgstr "cm"
+
+#: src/lengthcommon.cpp:38
+msgid "ex"
+msgstr "ex"
+
+#: src/lengthcommon.cpp:38
+msgid "em"
+msgstr "em"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Text Width %"
+msgstr "Larghezza fissa"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Column Width %"
+msgstr "Larghezza colonna"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Page Width %"
+msgstr "Larghezza dell'etichetta"
+
+#: src/lengthcommon.cpp:39
+#, fuzzy
+msgid "Line Width %"
+msgstr "Larghezza dell'etichetta"
+
+#: src/lengthcommon.cpp:40
+#, fuzzy
+msgid "Text Height %"
+msgstr "Altezza totale"
+
+#: src/lengthcommon.cpp:40
+#, fuzzy
+msgid "Page Height %"
+msgstr "Altezza totale"
+
+#: src/lyxfind.cpp:136
+msgid "Search error"
+msgstr "Cerca errore"
+
+#: src/lyxfind.cpp:137
+msgid "Search string is empty"
+msgstr "La stringa di ricerca è vuota"
+
+#: src/lyxfind.cpp:288 src/lyxfind.cpp:319
+msgid "String not found!"
+msgstr "Stringa non trovata!"
+
+#: src/lyxfind.cpp:323
+msgid "String has been replaced."
+msgstr "La stringa è stata sostituita."
+
+#: src/lyxfind.cpp:326
+msgid " strings have been replaced."
+msgstr " le stringhe sono state sostituite."
 
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1241
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
@@ -15142,17 +15303,18 @@ msgstr "Non posso cambiare il numero di colonne in '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Non posso aggiungere le linee della griglia orizzontale in '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1330 src/text3.cpp:185
-msgid "Math editor mode"
-msgstr "Modalità editore matematico"
-
-#: src/mathed/InsetMathNest.cpp:847
+#: src/mathed/InsetMathNest.cpp:845
 msgid "create new math text environment ($...$)"
 msgstr "crea un nuovo ambiente di testo matematico ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:850
+#: src/mathed/InsetMathNest.cpp:848
 msgid "entered math text mode (textrm)"
 msgstr "sono entrato in modalità testo matematico textrm"
+
+#: src/mathed/MathMacroTemplate.cpp:108
+#, c-format
+msgid " Macro: %1$s: "
+msgstr "Macro: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:240
 #, fuzzy
@@ -15180,6 +15342,70 @@ msgstr "Referimenti: "
 msgid "All files (*)"
 msgstr "Tutti i file (*)"
 
+#: src/support/Package.cpp.in:448
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "Stringa non trovata!"
+
+#: src/support/Package.cpp.in:449
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
+"comando %1$s"
+
+#: src/support/Package.cpp.in:569
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Non riesco a determinate la cartella di sistema avendo cercato\n"
+"\t%1$s\n"
+"Usa il parametro di linea di comando  '-sysdir' o imposta la variabile "
+"d'ambienteLYX_DIR_15x alla cartella di sistema di LyX contenete il file "
+"`chkconfig.ltx'."
+
+#: src/support/Package.cpp.in:654 src/support/Package.cpp.in:681
+#, fuzzy
+msgid "File not found"
+msgstr "Stringa non trovata!"
+
+#: src/support/Package.cpp.in:655
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Il parametro %1$s non è valido.\n"
+"La cartella %2$s non contiene %3$s."
+
+#: src/support/Package.cpp.in:682
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"La variabile d'ambiente %1$s non è valida.\n"
+"La cartella %2$s non contiene %3$s."
+
+#: src/support/Package.cpp.in:707
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"La variabile d'ambiente %1$s non è valida.\n"
+"%2$s non è una cartella."
+
+#: src/support/Package.cpp.in:709
+#, fuzzy
+msgid "Directory not found"
+msgstr "Stringa non trovata!"
+
 #: src/support/os_win32.cpp:335
 #, fuzzy
 msgid "System file not found"
@@ -15201,70 +15427,6 @@ msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
 msgstr ""
-
-#: src/support/Package.C.in:448
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "Stringa non trovata!"
-
-#: src/support/Package.C.in:449
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
-"comando %1$s"
-
-#: src/support/Package.C.in:569
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-"Non riesco a determinate la cartella di sistema avendo cercato\n"
-"\t%1$s\n"
-"Usa il parametro di linea di comando  '-sysdir' o imposta la variabile "
-"d'ambienteLYX_DIR_15x alla cartella di sistema di LyX contenete il file "
-"`chkconfig.ltx'."
-
-#: src/support/Package.C.in:654 src/support/Package.C.in:681
-#, fuzzy
-msgid "File not found"
-msgstr "Stringa non trovata!"
-
-#: src/support/Package.C.in:655
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Il parametro %1$s non è valido.\n"
-"La cartella %2$s non contiene %3$s."
-
-#: src/support/Package.C.in:682
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"La variabile d'ambiente %1$s non è valida.\n"
-"La cartella %2$s non contiene %3$s."
-
-#: src/support/Package.C.in:707
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-"La variabile d'ambiente %1$s non è valida.\n"
-"%2$s non è una cartella."
-
-#: src/support/Package.C.in:709
-#, fuzzy
-msgid "Directory not found"
-msgstr "Stringa non trovata!"
 
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
@@ -15374,168 +15536,19 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Typewriter"
 
-#: src/text.cpp:133
-msgid "Unknown layout"
-msgstr "Struttura sconosciuta"
-
-#: src/text.cpp:134
-#, c-format
-msgid ""
-"Layout '%1$s' does not exist in textclass '%2$s'\n"
-"Trying to use the default instead.\n"
-msgstr ""
-"La struttura '%1$s' non esiste nella classe di testo '%2$s'\n"
-"Cerco di usare quella predefinita al suo posto.\n"
-
-#: src/text.cpp:165
-msgid "Unknown Inset"
-msgstr "Inserto sconosciuto"
-
-#: src/text.cpp:271 src/text.cpp:284
-msgid "Change tracking error"
-msgstr "Cambia tracciamento dell'errore"
-
-#: src/text.cpp:272
-#, c-format
-msgid "Unknown author index for insertion: %1$d\n"
-msgstr "L'indice autore è sconosciuto per l'inserimento: %1$d\n"
-
-#: src/text.cpp:285
-#, c-format
-msgid "Unknown author index for deletion: %1$d\n"
-msgstr "L'indice autore è sconosciuto per la cancellazione: %1$d\n"
-
-#: src/text.cpp:292
-msgid "Unknown token"
-msgstr "Simbolo sconosciuto"
-
-#: src/text.cpp:726
-msgid ""
-"You cannot insert a space at the beginning of a paragraph. Please read the "
-"Tutorial."
-msgstr ""
-"Non puoi inserire uno spazio all'inizio di un paragrafo. Per favore, leggi "
-"il Tutorial!"
-
-#: src/text.cpp:737
-msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
-
-#: src/text.cpp:1703
 #, fuzzy
-msgid "[Change Tracking] "
-msgstr "Cambia Tracciamento|C"
+#~ msgid "Insert glossary entry"
+#~ msgstr "Inserisci voce d'indice"
 
-#: src/text.cpp:1709
-msgid "Change: "
-msgstr "Cambia: "
+#, fuzzy
+#~ msgid "Glo"
+#~ msgstr "&Globale"
 
-#: src/text.cpp:1713
-msgid " at "
-msgstr " a "
+#~ msgid "theorem"
+#~ msgstr "teorema"
 
-#: src/text.cpp:1723
-#, c-format
-msgid "Font: %1$s"
-msgstr "Carattere: %1$s"
-
-#: src/text.cpp:1728
-#, c-format
-msgid ", Depth: %1$d"
-msgstr ", Rientro: %1$d"
-
-#: src/text.cpp:1734
-msgid ", Spacing: "
-msgstr ", Spaziatura: "
-
-#: src/text.cpp:1746
-msgid "Other ("
-msgstr "Altro ("
-
-#: src/text.cpp:1755
-msgid ", Inset: "
-msgstr ", inserto: "
-
-#: src/text.cpp:1756
-msgid ", Paragraph: "
-msgstr ", Paragrafo: "
-
-#: src/text.cpp:1757
-msgid ", Id: "
-msgstr ", ID:"
-
-#: src/text.cpp:1758
-msgid ", Position: "
-msgstr ", posizione:"
-
-#: src/text.cpp:1764
-msgid ", Char: 0x"
-msgstr ""
-
-#: src/text.cpp:1766
-msgid ", Boundary: "
-msgstr ", Contorno:"
-
-#: src/text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Non è stata definita alcuna modifica del carattere. Usa Carattere nel menù "
-"Struttura per definire la modifica dei caratteri."
-
-#: src/text2.cpp:582
-msgid "Nothing to index!"
-msgstr "Niente da indicizzare!"
-
-#: src/text2.cpp:584
-msgid "Cannot index more than one paragraph!"
-msgstr "Non posso indicizzare più di un paragrafo!"
-
-#: src/text3.cpp:721
-msgid "Unknown spacing argument: "
-msgstr "L'argomento di spaziatura è sconosciuto: "
-
-#: src/text3.cpp:894
-msgid "Layout "
-msgstr "Struttura "
-
-#: src/text3.cpp:895
-msgid " not known"
-msgstr " sconosciuta"
-
-#: src/text3.cpp:1417 src/text3.cpp:1429
-msgid "Character set"
-msgstr "Insieme di caratteri"
-
-#: src/text3.cpp:1560
-msgid "Paragraph layout set"
-msgstr "Ho impostato la struttura del paragrafo"
-
-#: src/VSpace.cpp:490
-msgid "Default skip"
-msgstr "Salto predefinito"
-
-#: src/VSpace.cpp:493
-msgid "Small skip"
-msgstr "Salto piccolo"
-
-#: src/VSpace.cpp:496
-msgid "Medium skip"
-msgstr "Salto medio"
-
-#: src/VSpace.cpp:499
-msgid "Big skip"
-msgstr "Salto grande"
-
-#: src/VSpace.cpp:502
-msgid "Vertical fill"
-msgstr "Riempimento verticale "
-
-#: src/VSpace.cpp:509
-msgid "protected"
-msgstr "protetto"
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "E' stato aperto l'inserto Teorema"
 
 #, fuzzy
 #~ msgid "TeX Code:"
