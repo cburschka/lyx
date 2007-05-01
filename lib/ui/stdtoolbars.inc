@@ -188,7 +188,7 @@ ToolbarSet
 	End
 
 	Toolbar "math_panels" "Math Panels"
-		PopupMenu "space" "Math Spacing"
+		PopupMenu "space" "Math Spacings"
 		PopupMenu "sqrt-square" "Roots"
 		PopupMenu "style" "Styles"
 		PopupMenu "frac-square" "Fractions"
@@ -245,7 +245,7 @@ ToolbarSet
 		Item "Pr" "math-insert \Pr"
 	End
 
-	Toolbar "space" "Spacing"
+	Toolbar "space" "Spacings"
 		Item "Thin space	\\," "math-insert \,"
 		Item "Medium space	\\:" "math-insert \:"
 		Item "Thick space	\\;" "math-insert \;"
