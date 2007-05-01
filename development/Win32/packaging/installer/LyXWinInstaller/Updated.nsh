@@ -1,6 +1,6 @@
 Function UpdateModifiedFiles
 
- # list with modified files for LyX 1.5svn 30-04-2007
+ # list with modified files for LyX 1.5svn 02-05-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\Console.dll"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
@@ -39,6 +39,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Dezimal.lyx"
  SetOutPath "$INSTDIR\Resources\images"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\dialog-toggle_toc.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math-superscript.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_set-rotate-cell.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_set-rotate-tabular.xpm"

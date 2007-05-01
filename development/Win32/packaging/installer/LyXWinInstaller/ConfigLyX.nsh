@@ -52,7 +52,7 @@ Function ConfigureLyX
   # (having one preferences file that is modified to fit the needs is possible but not easy to maintain
   # therefore simply delete the files that shouldn't be used)
   # if not Acrobat or Adobe Reader is used
-  ${if} $Acrobat == "None" # clear the entries in the preferences file that define PDFViewWin7 or 8 as viewer
+  ${if} $Acrobat == "None" # clear the entries in the preferences file that define PDFView or PDFViewWin8 as viewer
    Rename "$INSTDIR\Resources\preferencesGSview" "$INSTDIR\Resources\preferences"
    Delete "$INSTDIR\Resources\preferences7"
    Delete "$INSTDIR\Resources\preferences8"
