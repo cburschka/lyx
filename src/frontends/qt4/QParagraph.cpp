@@ -67,15 +67,14 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
 
 	labelWidth->setWhatsThis( qt_(
-		"As described in the User Guide, the length of"
-		" this text will determine how wide the label part"
-		" of each item is in environments like List and"
+		"As described in the User Guide, the width of"
+		" this text determines the width of the label part"
+		" of each item in environments like List and"
 		" Description.\n"
 		"\n"
-		" Normally you won't need to set this,"
+		" Normally, you won't need to set this,"
 		" since the largest label width of all the"
-		" items is used. But if you need to, you can"
-		" change it here."
+		" items is used."
 	));
 
 	radioMap[LYX_ALIGN_BLOCK] = alignJustRB;
