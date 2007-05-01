@@ -1966,7 +1966,7 @@ if update_manifest:
     ignore_types = ['.svn', '.deps', '.cache', '.tmp', '.bak', '.gmo', '.pot',
         '.pyc', '.pyo', '.o', '_moc.cpp', 'Makefile.in', 'config.h.in',
         'LaTeXConfig.lyx', 'version.cpp', 'Package.cpp']
-    ext_types = ['_header_files', '_files', '_pre_files', '_post_files', '_moc_files', 
+    ext_types = ['_header_files', '_files', '_pre_files', '_post_files', '_moc_files', '_inc_files',
         '_copied_files', '_copied_header_files', '_extra_header_files', '_extra_src_files', '_extra_files']
     for root,path,files in os.walk(env.Dir('$TOP_SRCDIR').abspath):
         if os.path.split(root)[-1][0] == '.' \
@@ -2048,7 +2048,7 @@ if update_po:
                 ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
                 '$LYX_POT -b $TOP_SRCDIR -t qt4 -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/layouts_l10n.pot', 
-                ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files],
+                ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files + lib_layouts_inc_files],
                 '$LYX_POT -b $TOP_SRCDIR -t layouts -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/languages_l10n.pot', '$TOP_SRCDIR/lib/languages', 
                 '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
@@ -2251,7 +2251,7 @@ if build_install:
             ('images', lib_images_files),
             ('images/math', lib_images_math_files),
             ('kbd', lib_kbd_files),
-            ('layouts', lib_layouts_files),
+            ('layouts', lib_layouts_files + lib_layouts_inc_files),
             ('lyx2lyx', lib_lyx2lyx_files),
             ('scripts', lib_scripts_files),
             ('templates', lib_templates_files),

@@ -365,6 +365,7 @@ src_support_files = Split('''
 
 
 src_support_extra_header_files = Split('''
+    
 ''')
 
 
@@ -2367,6 +2368,7 @@ lib_doc_de_files = Split('''
 
 
 lib_examples_files = Split('''
+    Armenian-article.lyx
     CV-image.eps
     CV-image.png
     Foils.lyx
@@ -2378,7 +2380,6 @@ lib_examples_files = Split('''
     aas_sample.lyx
     amsart-test.lyx
     amsbook-test.lyx
-    armenian-article.lyx
     beamer-g4-mask.jpg
     beamer-g4.jpg
     beamer-icsi-logo.pdf
@@ -2575,25 +2576,14 @@ lib_lyx2lyx_extra_files = Split('''
 lib_layouts_files = Split('''
     IEEEtran.layout
     aa.layout
-    aapaper.inc
     aapaper.layout
     aastex.layout
     agu-dtd.layout
-    agu_stdclass.inc
-    agu_stdcounters.inc
-    agu_stdlists.inc
-    agu_stdsections.inc
-    agu_stdtitle.inc
     agums.layout
-    aguplus.inc
     amsart-plain.layout
     amsart-seq.layout
     amsart.layout
     amsbook.layout
-    amsdefs.inc
-    amsmaths-plain.inc
-    amsmaths-seq.inc
-    amsmaths.inc
     apa.layout
     arab-article.layout
     armenian-article.layout
@@ -2604,16 +2594,6 @@ lib_layouts_files = Split('''
     chess.layout
     cl2emult.layout
     cv.layout
-    db_lyxmacros.inc
-    db_stdcharstyles.inc
-    db_stdclass.inc
-    db_stdcounters.inc
-    db_stdlayouts.inc
-    db_stdlists.inc
-    db_stdsections.inc
-    db_stdstarsections.inc
-    db_stdstruct.inc
-    db_stdtitle.inc
     dinbrief.layout
     docbook-book.layout
     docbook-chapter.layout
@@ -2645,26 +2625,20 @@ lib_layouts_files = Split('''
     literate-article.layout
     literate-book.layout
     literate-report.layout
-    literate-scrap.inc
     llncs.layout
     ltugboat.layout
-    lyxmacros.inc
     manpage.layout
     memoir.layout
     moderncv.layout
     mwart.layout
     mwbk.layout
     mwrep.layout
-    numarticle.inc
-    numreport.inc
-    numrevtex.inc
     paper.layout
     report.layout
     revtex.layout
     revtex4.layout
     scrartcl.layout
     scrbook.layout
-    scrclass.inc
     scrlettr.layout
     scrlttr2.layout
     scrreprt.layout
@@ -2673,6 +2647,40 @@ lib_layouts_files = Split('''
     simplecv.layout
     slides.layout
     spie.layout
+    svglobal.layout
+    svjog.layout
+    svprobth.layout
+''')
+
+
+lib_layouts_inc_files = Split('''
+    aapaper.inc
+    agu_stdclass.inc
+    agu_stdcounters.inc
+    agu_stdlists.inc
+    agu_stdsections.inc
+    agu_stdtitle.inc
+    aguplus.inc
+    amsdefs.inc
+    amsmaths-plain.inc
+    amsmaths-seq.inc
+    amsmaths.inc
+    db_lyxmacros.inc
+    db_stdcharstyles.inc
+    db_stdclass.inc
+    db_stdcounters.inc
+    db_stdlayouts.inc
+    db_stdlists.inc
+    db_stdsections.inc
+    db_stdstarsections.inc
+    db_stdstruct.inc
+    db_stdtitle.inc
+    literate-scrap.inc
+    lyxmacros.inc
+    numarticle.inc
+    numreport.inc
+    numrevtex.inc
+    scrclass.inc
     stdclass.inc
     stdcounters.inc
     stdfloats.inc
@@ -2683,10 +2691,7 @@ lib_layouts_files = Split('''
     stdstarsections.inc
     stdstruct.inc
     stdtitle.inc
-    svglobal.layout
-    svjog.layout
     svjour.inc
-    svprobth.layout
 ''')
 
 
