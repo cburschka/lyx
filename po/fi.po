@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 11:21+0200\n"
+"POT-Creation-Date: 2007-05-01 12:08+0200\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -9607,7 +9607,7 @@ msgstr "Matematiikkapaneeli"
 
 #: lib/ui/stdtoolbars.inc:191
 #, fuzzy
-msgid "Math Spacing"
+msgid "Math Spacings"
 msgstr "Matematiikkavälit"
 
 #: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
@@ -9794,7 +9794,7 @@ msgstr "Kopioi"
 
 #: lib/ui/stdtoolbars.inc:248
 #, fuzzy
-msgid "Spacing"
+msgid "Spacings"
 msgstr "R&iviväli"
 
 #: lib/ui/stdtoolbars.inc:249
@@ -13866,7 +13866,7 @@ msgstr "Ei sisällysluetteloa"
 msgid " (auto)"
 msgstr ""
 
-#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
@@ -15278,15 +15278,14 @@ msgstr "Irrallisten asetukset"
 
 #: src/frontends/qt4/QParagraph.cpp:70
 msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
+"As described in the User Guide, the width of this text determines the width "
+"of the label part of each item in environments like List and Description.\n"
 "\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
+" Normally, you won't need to set this, since the largest label width of all "
+"the items is used."
 msgstr ""
 
-#: src/frontends/qt4/QParagraph.cpp:176
+#: src/frontends/qt4/QParagraph.cpp:175
 #, fuzzy
 msgid "Paragraph Settings"
 msgstr "Kirjallisuusviitteiden asetukset"

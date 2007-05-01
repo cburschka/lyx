@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 11:21+0200\n"
+"POT-Creation-Date: 2007-05-01 12:08+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -9006,7 +9006,7 @@ msgstr "Panel symboli matematycznych"
 
 #: lib/ui/stdtoolbars.inc:191
 #, fuzzy
-msgid "Math Spacing"
+msgid "Math Spacings"
 msgstr "LyX: Odstêpy w trybie matematycznym"
 
 #: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
@@ -9193,7 +9193,7 @@ msgstr "Propozycja"
 
 #: lib/ui/stdtoolbars.inc:248
 #, fuzzy
-msgid "Spacing"
+msgid "Spacings"
 msgstr "&Odstêpy:"
 
 #: lib/ui/stdtoolbars.inc:249
@@ -13206,7 +13206,7 @@ msgstr "Brak spisu tre¶ci"
 msgid " (auto)"
 msgstr ""
 
-#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Bez sensu w tej konfiguracji!"
 
@@ -14568,15 +14568,14 @@ msgstr "Ustawienia wstawek"
 
 #: src/frontends/qt4/QParagraph.cpp:70
 msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
+"As described in the User Guide, the width of this text determines the width "
+"of the label part of each item in environments like List and Description.\n"
 "\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
+" Normally, you won't need to set this, since the largest label width of all "
+"the items is used."
 msgstr ""
 
-#: src/frontends/qt4/QParagraph.cpp:176
+#: src/frontends/qt4/QParagraph.cpp:175
 msgid "Paragraph Settings"
 msgstr "Ustawienia akapitu"
 

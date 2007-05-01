@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 11:21+0200\n"
+"POT-Creation-Date: 2007-05-01 12:08+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -11839,7 +11839,7 @@ msgstr "Матем. символи"
 # src/mathed/math_panel.C:128
 #: lib/ui/stdtoolbars.inc:191
 #, fuzzy
-msgid "Math Spacing"
+msgid "Math Spacings"
 msgstr "Разстояние"
 
 # src/insets/insetfoot.C:32
@@ -12052,7 +12052,7 @@ msgstr "Копирай"
 # src/mathed/math_panel.C:128
 #: lib/ui/stdtoolbars.inc:248
 #, fuzzy
-msgid "Spacing"
+msgid "Spacings"
 msgstr "Разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
@@ -16644,7 +16644,7 @@ msgid " (auto)"
 msgstr "Стандартно"
 
 # src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
-#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Неизползваем с това оформление!"
 
@@ -18390,16 +18390,15 @@ msgstr "Опции"
 
 #: src/frontends/qt4/QParagraph.cpp:70
 msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
+"As described in the User Guide, the width of this text determines the width "
+"of the label part of each item in environments like List and Description.\n"
 "\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
+" Normally, you won't need to set this, since the largest label width of all "
+"the items is used."
 msgstr ""
 
 # src/insets/insetbib.C:219
-#: src/frontends/qt4/QParagraph.cpp:176
+#: src/frontends/qt4/QParagraph.cpp:175
 #, fuzzy
 msgid "Paragraph Settings"
 msgstr "Библ. перо"
