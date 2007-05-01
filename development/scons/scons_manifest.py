@@ -1473,7 +1473,6 @@ lib_templates_files = Split('''
     aastex.lyx
     agu_article.lyx
     beamer-conference-ornate-20min.lyx
-    biblioExample.bib
     de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
     docbook_article.lyx
@@ -2392,6 +2391,7 @@ lib_examples_files = Split('''
     beamer-knight4-mask.png
     beamer-knight4.png
     beamerlyxexample1.lyx
+    biblioExample.bib
     chess-article.lyx
     chessgame.lyx
     currency.lyx

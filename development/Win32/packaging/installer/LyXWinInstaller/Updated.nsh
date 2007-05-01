@@ -33,6 +33,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.eps"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.png"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\armenian-article.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\europeCV.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\modernCV.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"

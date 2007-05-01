@@ -193,6 +193,7 @@ dist_examples_DATA = \
 	examples/beamer-knight4-mask.png \
 	examples/beamer-knight4.png \
 	examples/beamerlyxexample1.lyx \
+	examples/biblioExample.bib \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
 	examples/currency.lyx \
@@ -1019,7 +1020,6 @@ dist_templates_DATA = \
 	templates/aastex.lyx \
 	templates/agu_article.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
-	templates/biblioExample.bib \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \

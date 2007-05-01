@@ -7,6 +7,7 @@ Function DeleteFiles
  Delete "$INSTDIR\Resources\images\toc-view.xpm"  
  Delete "$INSTDIR\Resources\templates\CV-image.eps"
  Delete "$INSTDIR\Resources\templates\CV-image.png"
+ Delete "$INSTDIR\Resources\templates\biblioExample.bib"
  Delete "$INSTDIR\Resources\templates\europeCV.lyx"
  Delete "$INSTDIR\Resources\templates\modernCV.lyx"
 
