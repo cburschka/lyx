@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 11:21+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -6851,9 +6851,8 @@ msgid "AMS subject classifications."
 msgstr "AMS-Sachgebiet-Klassifikationen."
 
 #: lib/layouts/simplecv.layout:56
-#, fuzzy
 msgid "SubSection"
-msgstr "Unterabschnitt"
+msgstr ""
 
 #: lib/layouts/slides.layout:104
 msgid "New Slide:"
@@ -7136,9 +7135,8 @@ msgid "Ukrainian"
 msgstr "Ukrainisch"
 
 #: lib/languages:60
-#, fuzzy
 msgid "Upper Sorbian"
-msgstr "Serbisch"
+msgstr "Obersorbisch"
 
 #: lib/languages:61
 msgid "Welsh"
@@ -7559,7 +7557,7 @@ msgstr "Stichwort|S"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.cpp:228
 msgid "Nomenclature Entry"
-msgstr ""
+msgstr "Nomenklatureintrag"
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
 msgid "URL...|U"
@@ -7794,9 +7792,8 @@ msgid "Index List|I"
 msgstr "Stichwortverzeichnis|S"
 
 #: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:378
-#, fuzzy
 msgid "Nomenclature|N"
-msgstr "Notiz|N"
+msgstr "Nomenklatur|N"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:379
 msgid "BibTeX Bibliography...|B"
@@ -8332,9 +8329,8 @@ msgid "Index Entry|d"
 msgstr "Stichwort|w"
 
 #: lib/ui/stdmenus.inc:305
-#, fuzzy
 msgid "Nomenclature Entry...|y"
-msgstr "Glossareintrag...|l"
+msgstr "Nomenklatureintrag...|l"
 
 #: lib/ui/stdmenus.inc:307
 msgid "Table...|T"
@@ -8597,9 +8593,8 @@ msgid "Insert index entry"
 msgstr "Stichwort einfügen"
 
 #: lib/ui/stdtoolbars.inc:95
-#, fuzzy
 msgid "Insert nomenclature entry"
-msgstr "Stichwort einfügen"
+msgstr "Nomenklatureintrag einfügen"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Insert footnote"
@@ -8856,9 +8851,8 @@ msgid "Math Panels"
 msgstr "Mathe-Kontrollflächen"
 
 #: lib/ui/stdtoolbars.inc:191
-#, fuzzy
-msgid "Math Spacing"
-msgstr "Abstand"
+msgid "Math Spacings"
+msgstr "Mathe-Abstände"
 
 #: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
 msgid "Roots"
@@ -9014,8 +9008,8 @@ msgid "Pr"
 msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:248
-msgid "Spacing"
-msgstr "Abstand"
+msgid "Spacings"
+msgstr "Abstände"
 
 #: lib/ui/stdtoolbars.inc:249
 msgid "Thin space\t\\,"
@@ -12917,7 +12911,7 @@ msgstr "Kein Inhaltsverzeichnis"
 msgid " (auto)"
 msgstr " (automatisch)"
 
-#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:238
+#: src/Paragraph.cpp:1587 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
@@ -13033,18 +13027,14 @@ msgid ", Boundary: "
 msgstr ", Grenze: "
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Es wurde keine Schriftänderung definiert. Benutzen Sie dafür das Menü Format-"
-">Zeichen..."
+msgid "No font change defined."
+msgstr "Keine Schriftänderung definiert."
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Nichts zu indizieren!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
@@ -14265,15 +14255,20 @@ msgstr "Notiz-Einstellungen"
 
 #: src/frontends/qt4/QParagraph.cpp:70
 msgid ""
-"As described in the User Guide, the length of this text will determine how "
-"wide the label part of each item is in environments like List and "
-"Description.\n"
+"As described in the User Guide, the width of this text determines the width "
+"of the label part of each item in environments like List and Description.\n"
 "\n"
-" Normally you won't need to set this, since the largest label width of all "
-"the items is used. But if you need to, you can change it here."
+" Normally, you won't need to set this, since the largest label width of all "
+"the items is used."
 msgstr ""
+"Wie im Benutzerhandbuch beschrieben, bestimmt die Breite dieses Texts die "
+"Breite des Namensteils (Labels) eines jeden Punkts in einer Umgebung wie "
+"Liste oder Beschreibung.\n"
+"\n"
+"Normalerweise müssen Sie diese Breite nicht festlegen, da die maximale "
+"Breite aller Punkte verwendet wird."
 
-#: src/frontends/qt4/QParagraph.cpp:176
+#: src/frontends/qt4/QParagraph.cpp:175
 msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
@@ -14696,14 +14691,12 @@ msgid "Opened Marginal Note Inset"
 msgstr "Randnotiz-Einfügung geöffnet"
 
 #: src/insets/InsetNomencl.cpp:39
-#, fuzzy
 msgid "Nom"
-msgstr "Nein"
+msgstr "Nom"
 
 #: src/insets/InsetNomencl.cpp:86
-#, fuzzy
 msgid "Nomenclature"
-msgstr "Vermutung"
+msgstr "Nomenklatur"
 
 #: src/insets/InsetNote.cpp:67
 msgid "Comment"
@@ -14786,9 +14779,8 @@ msgid "FormatRef: "
 msgstr "Formatiert: "
 
 #: src/insets/InsetTOC.cpp:47
-#, fuzzy
 msgid "Unknown TOC type"
-msgstr "Unbekanntes Token"
+msgstr "Unbekannter Typ von Inhaltsverzeichnis"
 
 #: src/insets/InsetTabular.cpp:3141
 msgid "Opened table"
@@ -15147,6 +15139,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "Unknown toc list"
-#~ msgstr "Unbekannte Inhaltsverzeichnis-Liste"
