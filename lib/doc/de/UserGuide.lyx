@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 265
+\lyxformat 266
 \begin_document
 \begin_header
 \textclass scrbook
@@ -5823,7 +5823,7 @@ höchste Abschnittsstufe
 \begin_inset Text
 
 \begin_layout Standard
-article[ (koma-script)]
+article (koma-script)
 \end_layout
 
 \end_inset
@@ -5933,7 +5933,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Standard
-book[ (koma-script)]
+book (koma-script)
 \end_layout
 
 \end_inset
@@ -5988,7 +5988,7 @@ Kapitel
 \begin_inset Text
 
 \begin_layout Standard
-letter[ (german/koma-script)]
+letter (german/koma-script)
 \end_layout
 
 \end_inset
@@ -6041,7 +6041,7 @@ keine
 \begin_inset Text
 
 \begin_layout Standard
-report[ (koma-script)]
+report (koma-script)
 \end_layout
 
 \end_inset
@@ -15859,7 +15859,7 @@ Randnotiz
 Rand
 \emph default
  in Ihrem Text.
-\begin_inset Marginal
+\begin_inset Collapsable
 status open
 
 \begin_layout Standard
@@ -32310,7 +32310,7 @@ reference "sub:Unterdokument..."
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../../images/toc-view.xpm
+	filename ../../images/dialog-toggle_toc.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
