@@ -75,7 +75,7 @@ public:
 	static bool isAvailable(std::string const & name);
 	/// Has the package been required?
 	bool isRequired(std::string const & name) const;
-	/* Is it necessary to load the package? This is true is
+	/* Is it necessary to load the package? This is true if
 	   isRequired is true and the feature is not provided by the
 	   textclass.
 	*/
