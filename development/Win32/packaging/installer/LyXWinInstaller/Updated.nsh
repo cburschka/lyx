@@ -1,34 +1,34 @@
 Function UpdateModifiedFiles
 
- ; list with modified files for LyX 1.5svn 30-04-2007
+ # list with modified files for LyX 1.5svn 30-04-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\Console.dll"
- File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" ; always here
+ File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\LyXLauncher.exe"
- File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" ; always here
+ File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\encodings"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
- File /r "${PRODUCT_SOURCEDIR}\Resources\locale" ; always here
+ File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\sciword.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" ; must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Tutorial.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" ; must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" ; must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\it"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Customization.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\it\TOC.lyx" ; must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\it\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.eps"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.png"

@@ -147,7 +147,7 @@ LangString SecUnProgramFilesDescription "${LYX_LANG}" "Odinštaluj LyX a všetký j
 
 !undef LYX_LANG
 
-!endif ; _LYX_LANGUAGES_SLOVAK_NSH_
+!endif # _LYX_LANGUAGES_SLOVAK_NSH_
 
 
 

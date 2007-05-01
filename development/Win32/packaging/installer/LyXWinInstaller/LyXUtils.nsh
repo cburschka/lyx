@@ -1,40 +1,40 @@
-; This script contains the following functions:
-;
-; - LaTeXCheck (check installed LaTeX-system), uses:
-;    StrPointer
-;    StrPoint
-;    RevStrPointer
-;    RevStrPoint
-;
-; - un.DelAppPathSub and UnAppPreSuff, (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
-;    un.GetParentA
-;    un.GetUsers
-;    un.StrPoint
-;    StrPointer
-;    StrPoint
-;    UnAppPreSuff
-;
-; - CreateAppPathSub and AppPreSuff, (creates the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
-;    GetParentA
-;    GetUsers
-;    StrPointer
-;    StrPoint
-;    UnAppPreSuff
-;
-; - CheckAppPathPreferences (replaces the old install folder name with the new one in the preferences files)
-;                           (used by Update installer), uses:
-;    ReplaceLineContent
-;
-; - IsUserAdmin (checks if user is admin)
-;
-; - FileCheck (checks if a given file exists)
-;
-;--------------------------
+# This script contains the following functions:
+#
+# - LaTeXCheck (check installed LaTeX-system), uses:
+#    StrPointer
+#    StrPoint
+#    RevStrPointer
+#    RevStrPoint
+#
+# - un.DelAppPathSub and UnAppPreSuff, (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
+#    un.GetParentA
+#    un.GetUsers
+#    un.StrPoint
+#    StrPointer
+#    StrPoint
+#    UnAppPreSuff
+#
+# - CreateAppPathSub and AppPreSuff, (creates the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
+#    GetParentA
+#    GetUsers
+#    StrPointer
+#    StrPoint
+#    UnAppPreSuff
+#
+# - CheckAppPathPreferences (replaces the old install folder name with the new one in the preferences files)
+#                           (used by Update installer), uses:
+#    ReplaceLineContent
+#
+# - IsUserAdmin (checks if user is admin)
+#
+# - FileCheck (checks if a given file exists)
+#
+#--------------------------
 
 !macro StrPointer FindStr SearchStr Pointer
- ; searches for a string/character (SearchStr) in another string (FindStr)
- ; and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
- ; if nothing was found or the search is impossible the Pointer is set to -1
+ # searches for a string/character (SearchStr) in another string (FindStr)
+ # and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
+ # if nothing was found or the search is impossible the Pointer is set to -1
  
  StrLen $R2 ${SearchStr}
  StrLen $R4 ${FindStr}
@@ -59,18 +59,18 @@
 
 !macroend
  
-;--------------------------------
+#--------------------------------
 
 Function StrPoint
  !insertmacro StrPointer $String $Search $Pointer
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 !macro RevStrPointer FindStr SearchStr Pointer
- ; searches for a string/character (SearchStr) in another string (FindStr) in reverse order
- ; and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
- ; if nothing was found or the search is impossible the Pointer is set to +1
+ # searches for a string/character (SearchStr) in another string (FindStr) in reverse order
+ # and returns the number of the character in the FindStr where the SearchStr was found (Pointer)
+ # if nothing was found or the search is impossible the Pointer is set to +1
  
  StrLen $R2 ${SearchStr}
  StrLen $R4 ${FindStr}
@@ -95,42 +95,42 @@ FunctionEnd
 
 !macroend
  
-;--------------------------------
+#--------------------------------
 
 Function RevStrPoint
  !insertmacro RevStrPointer $String $Search $Pointer
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 !macro AppPreSuff AppPre AppSuff
- ; the APPDATA path has always the following structure:
- ; C:\Documents and Settings\username\Application Data
- ; this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
- ; and the "Application Data" substring into the variable "AppSuff"
+ # the APPDATA path has always the following structure:
+ # C:\Documents and Settings\username\Application Data
+ # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
+ # and the "Application Data" substring into the variable "AppSuff"
   
   StrCpy $String "$APPDATA"
   StrCpy $Search "\"
-  Call StrPoint ; search for the first "\"
-  IntOp $Pointer $Pointer + 1 ; jump after the "\"
-  StrCpy $String $String "" $Pointer ; cut off the part before the first "\"
+  Call StrPoint # search for the first "\"
+  IntOp $Pointer $Pointer + 1 # jump after the "\"
+  StrCpy $String $String "" $Pointer # cut off the part before the first "\"
   StrCpy $0 $Pointer
-  Call StrPoint ; search for the second "\"
-  IntOp $0 $0 + $Pointer ; $0 is now the pointer to the second "\" in the APPDATA string
-  StrCpy ${AppPre} $APPDATA $0 ; save the part before the second "\"
-  IntOp $Pointer $Pointer + 1 ; jump after the "\"
-  StrCpy $String $String "" $Pointer ; cut off the part before the second "\"
-  Call StrPoint ; search for the third "\"
-  IntOp $Pointer $Pointer + 1 ; jump after the "\"
-  StrCpy ${AppSuff} $String "" $Pointer ; save the part after the third "\"
+  Call StrPoint # search for the second "\"
+  IntOp $0 $0 + $Pointer # $0 is now the pointer to the second "\" in the APPDATA string
+  StrCpy ${AppPre} $APPDATA $0 # save the part before the second "\"
+  IntOp $Pointer $Pointer + 1 # jump after the "\"
+  StrCpy $String $String "" $Pointer # cut off the part before the second "\"
+  Call StrPoint # search for the third "\"
+  IntOp $Pointer $Pointer + 1 # jump after the "\"
+  StrCpy ${AppSuff} $String "" $Pointer # save the part after the third "\"
 
 !macroend
 
-;--------------------------------
+#--------------------------------
 
 Function GetParentA
- ; deletes a subfolder of the APPDATA path for all users
- ; used by the function "un.getUsers"
+ # deletes a subfolder of the APPDATA path for all users
+ # used by the function "un.getUsers"
 
   Exch $R0
   Push $R1
@@ -153,10 +153,10 @@ Function GetParentA
    
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function GetUsers
- ; reads the subfolders of the "Documents and Settings" folder to get a list of the users
+ # reads the subfolders of the "Documents and Settings" folder to get a list of the users
 
   StrCpy $R3 ""
   Push "$PROFILE"
@@ -183,11 +183,11 @@ Function GetUsers
   
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function un.GetParentA
- ; deletes a subfolder of the APPDATA path for all users
- ; used by the function "un.getUsers"
+ # deletes a subfolder of the APPDATA path for all users
+ # used by the function "un.getUsers"
 
   Exch $R0
   Push $R1
@@ -210,10 +210,10 @@ Function un.GetParentA
    
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function un.GetUsers
- ; reads the subfolders of the "Documents and Settings" folder to get a list of the users
+ # reads the subfolders of the "Documents and Settings" folder to get a list of the users
 
   StrCpy $R3 ""
   Push "$PROFILE"
@@ -240,172 +240,172 @@ Function un.GetUsers
   
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function un.StrPoint
  !insertmacro StrPointer $String $Search $Pointer
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 !macro UnAppPreSuff AppPre AppSuff
- ; the APPDATA path has always the following structure:
- ; C:\Documents and Settings\username\Application Data
- ; this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
- ; and the "Application Data" substring into the variable "AppSuff"
+ # the APPDATA path has always the following structure:
+ # C:\Documents and Settings\username\Application Data
+ # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
+ # and the "Application Data" substring into the variable "AppSuff"
   
   StrCpy $String "$APPDATA"
   StrCpy $Search "\"
-  Call un.StrPoint ; search for the first "\"
-  IntOp $Pointer $Pointer + 1 ; jump after the "\"
-  StrCpy $String $String "" $Pointer ; cut off the part before the first "\"
+  Call un.StrPoint # search for the first "\"
+  IntOp $Pointer $Pointer + 1 # jump after the "\"
+  StrCpy $String $String "" $Pointer # cut off the part before the first "\"
   StrCpy $0 $Pointer
-  Call un.StrPoint ; search for the second "\"
-  IntOp $0 $0 + $Pointer ; $0 is now the pointer to the second "\" in the APPDATA string
-  StrCpy ${AppPre} $APPDATA $0 ; save the part before the second "\"
-  IntOp $Pointer $Pointer + 1 ; jump after the "\"
-  StrCpy $String $String "" $Pointer ; cut off the part before the second "\"
-  Call un.StrPoint ; search for the third "\"
-  IntOp $Pointer $Pointer + 1 ; jump after the "\"
-  StrCpy ${AppSuff} $String "" $Pointer ; save the part after the third "\"
+  Call un.StrPoint # search for the second "\"
+  IntOp $0 $0 + $Pointer # $0 is now the pointer to the second "\" in the APPDATA string
+  StrCpy ${AppPre} $APPDATA $0 # save the part before the second "\"
+  IntOp $Pointer $Pointer + 1 # jump after the "\"
+  StrCpy $String $String "" $Pointer # cut off the part before the second "\"
+  Call un.StrPoint # search for the third "\"
+  IntOp $Pointer $Pointer + 1 # jump after the "\"
+  StrCpy ${AppSuff} $String "" $Pointer # save the part after the third "\"
 
 !macroend
 
-;--------------------------------
+#--------------------------------
 
 Function un.DelAppPathSub
- ; deletes a subfolder of the APPDATA path for all users
+ # deletes a subfolder of the APPDATA path for all users
 
-  ; get list of all users
+  # get list of all users
   Push $R0
   Push $R1
   Push $R2
   Push $R3
   Call un.GetUsers
-  StrCpy $UserList $R3 "" 1 ; cut off the "|" at the end of the list
+  StrCpy $UserList $R3 "" 1 # cut off the "|" at the end of the list
   Pop $R3
   Pop $R2
   Pop $R1
   Pop $R0
   
-  ; the usernames in the list of all users is separated by "|"
+  # the usernames in the list of all users is separated by "|"
   loop:
    StrCpy $String "$UserList"
    StrCpy $Search "|"
-   Call un.StrPoint ; search for the "|"
+   Call un.StrPoint # search for the "|"
    StrCmp $Pointer "-1" ready
-   StrCpy $0 $UserList $Pointer ; $0 contains now the username
-   IntOp $Pointer $Pointer + 1 ; jump after the "|"
-   StrCpy $UserList $UserList "" $Pointer ; cut off the first username in the list
-   ; generate the string for the current user
-   ; AppPre and AppSuff are generated in the macro "AppPreSuff"
+   StrCpy $0 $UserList $Pointer # $0 contains now the username
+   IntOp $Pointer $Pointer + 1 # jump after the "|"
+   StrCpy $UserList $UserList "" $Pointer # cut off the first username in the list
+   # generate the string for the current user
+   # AppPre and AppSuff are generated in the macro "AppPreSuff"
    StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
-   RMDir /r $AppPath ; delete the folder
+   RMDir /r $AppPath # delete the folder
   Goto loop
   ready:
   StrCpy $0 $UserList
   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
-  RMDir /r $AppPath ; delete the folder
+  RMDir /r $AppPath # delete the folder
   
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function CreateAppPathSub
- ; creates a subfolder of the APPDATA path for all users
+ # creates a subfolder of the APPDATA path for all users
 
-  ; get folder names
+  # get folder names
   !insertmacro AppPreSuff $AppPre $AppSuff
 
-  ; get list of all users
+  # get list of all users
   Push $R0
   Push $R1
   Push $R2
   Push $R3
   Call GetUsers
-  StrCpy $UserList $R3 "" 1 ; cut off the "|" at the end of the list
+  StrCpy $UserList $R3 "" 1 # cut off the "|" at the end of the list
   Pop $R3
   Pop $R2
   Pop $R1
   Pop $R0
   
-  ; the usernames in the list of all users is separated by "|"
+  # the usernames in the list of all users is separated by "|"
   loop:
    StrCpy $String "$UserList"
    StrCpy $Search "|"
-   Call StrPoint ; search for the "|"
-   StrCmp $Pointer "-1" ready ; the loop is finished when no "|" could be found
-   StrCpy $0 $UserList $Pointer ; $0 contains now the username
-   IntOp $Pointer $Pointer + 1 ; jump after the "|"
-   StrCpy $UserList $UserList "" $Pointer ; cut off the first username in the list
-   ; generate the string for the current user
-   ; AppPre and AppSuff are generated in the macro "AppPreSuff"
+   Call StrPoint # search for the "|"
+   StrCmp $Pointer "-1" ready # the loop is finished when no "|" could be found
+   StrCpy $0 $UserList $Pointer # $0 contains now the username
+   IntOp $Pointer $Pointer + 1 # jump after the "|"
+   StrCpy $UserList $UserList "" $Pointer # cut off the first username in the list
+   # generate the string for the current user
+   # AppPre and AppSuff are generated in the macro "AppPreSuff"
    StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
-   CreateDirectory $AppPath ; create the folder
+   CreateDirectory $AppPath # create the folder
    CopyFiles "$INSTDIR\Resources\session" "$AppPath"
   Goto loop
   ready:
-  ; now do the same for the last user name
+  # now do the same for the last user name
   StrCpy $0 $UserList
   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
-  CreateDirectory $AppPath ; create the folder
+  CreateDirectory $AppPath # create the folder
   CopyFiles "$INSTDIR\Resources\session" "$AppPath"
-  Delete "$INSTDIR\Resources\session" ; delete the session file in the INSTDIR because it is unneeded there
+  Delete "$INSTDIR\Resources\session" # delete the session file in the INSTDIR because it is unneeded there
   
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function ReplaceLineContent
- ; replaces "$OldString" with "LyX $NewString"
+ # replaces "$OldString" with "LyX $NewString"
 
- ${WordReplace} '$R9' "$OldString" "$NewString" "+" '$R9' ; macro from WordFunc.nsh
+ ${WordReplace} '$R9' "$OldString" "$NewString" "+" '$R9' # macro from WordFunc.nsh
  Push $0
  
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function CheckAppPathPreferences
- ; replaces a string "$OldString" with "$NewString" in a file "$FileName"
+ # replaces a string "$OldString" with "$NewString" in a file "$FileName"
 
-  ; get folder names
+  # get folder names
   !insertmacro AppPreSuff $AppPre $AppSuff
 
-  ; get list of all users
+  # get list of all users
   Push $R0
   Push $R1
   Push $R2
   Push $R3
   Call GetUsers
-  StrCpy $UserList $R3 "" 1 ; cut off the "|" at the end of the list
+  StrCpy $UserList $R3 "" 1 # cut off the "|" at the end of the list
   Pop $R3
   Pop $R2
   Pop $R1
   Pop $R0
   
-  ; the usernames in the list of all users is separated by "|"
+  # the usernames in the list of all users is separated by "|"
   loopPrefs:
    StrCpy $String "$UserList"
    StrCpy $Search "|"
-   Call StrPoint ; search for the "|"
-   StrCmp $Pointer "-1" ready ; the loop is finished when no "|" could be found
-   StrCpy $0 $UserList $Pointer ; $0 contains now the username
-   IntOp $Pointer $Pointer + 1 ; jump after the "|"
-   StrCpy $UserList $UserList "" $Pointer ; cut off the first username in the list
-   ; generate the string for the current user
-   ; AppPre and AppSuff are generated in the macro "AppPreSuff"
+   Call StrPoint # search for the "|"
+   StrCmp $Pointer "-1" ready # the loop is finished when no "|" could be found
+   StrCpy $0 $UserList $Pointer # $0 contains now the username
+   IntOp $Pointer $Pointer + 1 # jump after the "|"
+   StrCpy $UserList $UserList "" $Pointer # cut off the first username in the list
+   # generate the string for the current user
+   # AppPre and AppSuff are generated in the macro "AppPreSuff"
    StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
-   ; read the preferences file to test if it exists
+   # read the preferences file to test if it exists
    FileOpen $R1 "$AppPath\$FileName" r
    IfErrors doneA
    FileClose $R1
-   ; search for "$OldString" and replace it with "$NewString"
-   ${LineFind} "$AppPath\$FileName" "" "1:-1" "ReplaceLineContent" ; macro from TextFunc.nsh ; calls Function ReplaceLineContent
+   # search for "$OldString" and replace it with "$NewString"
+   ${LineFind} "$AppPath\$FileName" "" "1:-1" "ReplaceLineContent" # macro from TextFunc.nsh # calls Function ReplaceLineContent
    doneA:
   Goto loopPrefs
   ready:
-  ; now do the same for the last user name
+  # now do the same for the last user name
   StrCpy $0 $UserList
   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
   FileOpen $R1 "$AppPath\$FileName" r
@@ -416,7 +416,7 @@ Function CheckAppPathPreferences
   
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 !macro IsUserAdmin Result Name
 
@@ -440,10 +440,10 @@ FunctionEnd
 
 !macroend
 
-;--------------------------------
+#--------------------------------
 
 !macro FileCheck Result FileName FilePath
- ; checks if a file exists, returns "True" or "False"
+ # checks if a file exists, returns "True" or "False"
 
  Push $0
  Push $1
@@ -462,37 +462,37 @@ FunctionEnd
 
 !macroend
 
-;------------------------------------------
+#------------------------------------------
 
 Function LaTeXCheck
- ; searches the string "$Search" in the string "$String" and extracts the path around it
- ; the extracted path is checked if the file "latex.exe" is in it
+ # searches the string "$Search" in the string "$String" and extracts the path around it
+ # the extracted path is checked if the file "latex.exe" is in it
 
    StartCheck:
    StrLen $3 $String
    Call StrPoint
-   ${if} $Pointer == "-1" ; if nothing was found
+   ${if} $Pointer == "-1" # if nothing was found
     StrCpy $LatexPath ""
     Return
    ${endif}
    IntOp $3 $3 - $Pointer
-   StrCpy $4 $String $3 "-$3" ; $4 is now the part behind the $Search string
-   StrCpy $String $String $Pointer ; $String is now the part before the $Search string
-   StrCpy $Search ":" ; search for the ":" after the first previous drive letter
+   StrCpy $4 $String $3 "-$3" # $4 is now the part behind the $Search string
+   StrCpy $String $String $Pointer # $String is now the part before the $Search string
+   StrCpy $Search ":" # search for the ":" after the first previous drive letter
    Call RevStrPoint
-   IntOp $Pointer $Pointer - 1 ; jump before the ":" to the drive letter
-   StrCpy $Pointer $Pointer "" 1 ; cut of the "-" sign
+   IntOp $Pointer $Pointer - 1 # jump before the ":" to the drive letter
+   StrCpy $Pointer $Pointer "" 1 # cut of the "-" sign
    StrCpy $LatexPath $String $Pointer "-$Pointer"
    StrCpy $String $4
-   StrCpy $Search ";" ; search for the following ";" that separates the different paths
+   StrCpy $Search ";" # search for the following ";" that separates the different paths
    Call StrPoint
-   ${if} $Pointer != "-1" ; if something was found
+   ${if} $Pointer != "-1" # if something was found
     StrCpy $String $String $Pointer
    ${endif}
    StrCpy $LatexPath "$LatexPath$String"
-   ; check if the latex.exe exists in the $LatexPath folder
+   # check if the latex.exe exists in the $LatexPath folder
    !insertmacro FileCheck $5 "latex.exe" "$LatexPath"
-   ${if} $5 == "False" ; delete the entry with the wrong path to the latex.exe and try again
+   ${if} $5 == "False" # delete the entry with the wrong path to the latex.exe and try again
     StrCpy $LatexPath ""
     StrLen $3 $String
     StrCpy $String $4 "" $3

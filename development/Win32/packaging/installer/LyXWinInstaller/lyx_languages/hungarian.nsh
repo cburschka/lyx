@@ -145,4 +145,4 @@ LangString SecUnProgramFilesDescription "${LYX_LANG}" "A LyX és minden komponens
 
 !undef LYX_LANG
 
-!endif ; _LYX_LANGUAGES_HUNGARIAN_NSH_
+!endif # _LYX_LANGUAGES_HUNGARIAN_NSH_

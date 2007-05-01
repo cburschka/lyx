@@ -146,4 +146,4 @@ LangString SecUnProgramFilesDescription "${LYX_LANG}" "Verwijder LyX en alle bij
 
 !undef LYX_LANG
 
-!endif ; _LYX_LANGUAGES_DUTCH_NSH_
+!endif # _LYX_LANGUAGES_DUTCH_NSH_

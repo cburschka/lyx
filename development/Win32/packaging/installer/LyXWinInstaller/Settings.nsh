@@ -1,7 +1,7 @@
-; installer settings
-; You should need to change only these macros for new releases.
+# installer settings
+# You should need to change only these macros for new releases.
 
-!define PRODUCT_DIR "D:\LyXPackage1.5"
+!define PRODUCT_DIR "c:\lyx\LyXPackage"
 !define PRODUCT_NAME "LyX"
 !define PRODUCT_VERSION "1.5svn-02-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
@@ -22,13 +22,13 @@
 
 BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 
-; to check later if this installer version is running at the same time
+# to check later if this installer version is running at the same time
 !define INSTALLER_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER_VERSION}-3-14.exe"
 !define INSTALLER2_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER2_VERSION}-3-14.exe"
 !define INSTALLER3_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER3_VERSION}-3-14.exe"
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
-; Replaced by HKLM or HKCU depending on SetShellVarContext.
+# Replaced by HKLM or HKCU depending on SetShellVarContext.
 !define PRODUCT_ROOT_KEY "SHCTX"
 
 ; registry preparations
@@ -37,7 +37,7 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 
-; definitions for the Update installer
+# definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
  !define PRODUCT_VERSION_OLD "LyX 1.5beta2-21-04-2007"
@@ -47,13 +47,13 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
  !define MiKTeXDeliveredVersionOld "MiKTeX 2.5"
 !endif
 
-; definitions for the Small installer
+# definitions for the Small installer
 !if ${INSTALLER_VERSION} == "Small"
- !define JabRefVersion "none" ; dummy entry to avoid NSIS warnig
- !define MiKTeXDeliveredVersion "none" ; dummy entry to avoid NSIS warnig
+ !define JabRefVersion "none" # dummy entry to avoid NSIS warnig
+ !define MiKTeXDeliveredVersion "none" # dummy entry to avoid NSIS warnig
 !endif
 
-; definitions for the Complete installer
+# definitions for the Complete installer
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv48w32.exe"
  !define JabRefInstall "external\JabRef-2.2-Setup.exe"
@@ -65,7 +65,7 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
 !define ImageMagickVersion "6.3.3"
-; for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
+# for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
 !define GhostscriptVersion "8.56"
@@ -80,13 +80,13 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 !define AspellLocationExact "http://developer.berlios.de/project/showfiles.php?group_id=5117&release_id=9651"
 !define AspellLocation "http://developer.berlios.de/projects/lyxwininstall/"
 !define DVIPostFileDir "${PRODUCT_SOURCEDIR}\external\dvipost"
-; the following variable is needed for a possible CD-version
-;!define LaTeXPackagesDir "${PRODUCT_SOURCEDIR}\latex"
+# the following variable is needed for a possible CD-version
+#!define LaTeXPackagesDir "${PRODUCT_SOURCEDIR}\latex"
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 !define MiKTeXConfigFolder "MiKTeX\2.5\miktex\config"
 
-;--------------------------------
-; make some of the information above available to NSIS.
+#--------------------------------
+# make some of the information above available to NSIS.
 
 Name "${PRODUCT_NAME}"
 OutFile "${INSTALLER_EXE}"

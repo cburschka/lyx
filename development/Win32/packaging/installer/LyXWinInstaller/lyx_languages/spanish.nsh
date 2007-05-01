@@ -146,4 +146,4 @@ LangString SecUnProgramFilesDescription "${LYX_LANG}" "Desinstala LyX y todos su
 
 !undef LYX_LANG
 
-!endif ; _LYX_LANGUAGES_SPANISH_NSH_
+!endif # _LYX_LANGUAGES_SPANISH_NSH_
