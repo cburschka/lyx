@@ -1563,6 +1563,7 @@ lib_images_files = Split('''
     dialog-show_mathmatrix.xpm
     dialog-show_print.xpm
     dialog-show_spellchecker.xpm
+    dialog-toggle_toc.xpm
     down.xpm
     ert-insert.xpm
     file-open.xpm
@@ -1626,7 +1627,6 @@ lib_images_files = Split('''
     tabular-feature_valign-top.xpm
     tabular-insert.xpm
     thesaurus-entry.xpm
-    toc-view.xpm
     undo.xpm
     unknown.xpm
     up.xpm
