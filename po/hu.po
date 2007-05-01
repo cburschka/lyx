@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-04-30 14:08+0200\n"
+"POT-Creation-Date: 2007-05-01 11:21+0200\n"
 "PO-Revision-Date: 2007-03-14 16:08+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -16,394 +16,6 @@ msgstr ""
 "X-Poedit-Country: Hungary\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
 "X-Generator: KBabel 1.10.2\n"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:28
-msgid "Citation Style"
-msgstr "Irod. jegyzék stílusa"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:40
-msgid "Use the jurabib styles for law and humanities"
-msgstr "Jurabib stílusok használata jog és humán irányban"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:43
-msgid "&Jurabib"
-msgstr "&Jurabib"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:50
-msgid "Use the natbib styles for natural sciences and arts"
-msgstr "Natbib stílusok használata természettudományokhoz és mûvészetekhez"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:53
-msgid "&Natbib"
-msgstr "&Natbib használata"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:60
-msgid "Use BibTeX's default numerical styles"
-msgstr "Használja a BibTeX alapértelmezett számozott stílusait"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:63
-msgid "&Default (numerical)"
-msgstr "Alapé&rték (numerikus)"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:81
-msgid "Natbib &style:"
-msgstr "Natbib &stílus:"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:127
-msgid "Select this if you want to split your bibliography into sections"
-msgstr "Válassza ki ezt, ha szakaszokra akarja bontani az irodalomjegyzéket"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:130
-msgid "S&ectioned bibliography"
-msgstr "F&elosztott irodalomjegyzék"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:47
-msgid "Add a new branch to the list"
-msgstr "Új változat felvétele listára"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:50
-#: src/frontends/qt4/ui/BibtexAddUi.ui:70
-#: src/frontends/qt4/ui/CitationUi.ui:116
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
-msgid "&Add"
-msgstr "Hozzáa&dás"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:57
-msgid "A&vailable Branches:"
-msgstr "&Elérhetõ változatok:"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:67
-msgid "&New:"
-msgstr "Ú&j:"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:80
-msgid "Remove the selected branch"
-msgstr "Kiválasztott változat eltávolítása"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
-msgid "&Remove"
-msgstr "E&ltávolít"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:90
-msgid "Toggle the selected branch"
-msgstr "Kiválasztott változat (de)aktiválása"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:93
-msgid "(&De)activate"
-msgstr "(De)a&ktivál"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:100
-msgid "Define or change background color"
-msgstr "Háttérszín meghatározása vagy változtatása"
-
-#: src/frontends/qt4/ui/BranchesUi.ui:103
-msgid "Alter Co&lor..."
-msgstr "&Szín módosítása..."
-
-#: src/frontends/qt4/ui/BulletsUi.ui:34
-msgid "&Font:"
-msgstr "&Betûkészlet:"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:44
-#: src/frontends/qt4/ui/CharacterUi.ui:227
-msgid "Si&ze:"
-msgstr "&Méret:"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
-#: src/frontends/qt4/ui/ParagraphUi.ui:214
-#: src/frontends/qt4/ui/PrefLatexUi.ui:78
-#: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
-#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
-#: src/Font.cpp:518 src/frontends/controllers/ControlDocument.cpp:49
-#: src/frontends/controllers/ControlExternal.cpp:234
-#: src/frontends/controllers/ControlGraphics.cpp:170
-#: src/frontends/qt4/QDocument.cpp:229 src/tex-strings.cpp:68
-#: src/tex-strings.cpp:79 src/tex-strings.cpp:89
-msgid "Default"
-msgstr "Alapérték"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:64
-#: src/frontends/controllers/frontend_helpers.cpp:960
-msgid "Tiny"
-msgstr "Legkisebb"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:64
-#: src/frontends/controllers/frontend_helpers.cpp:964
-msgid "Smallest"
-msgstr "Mégkisebb"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:64
-#: src/frontends/controllers/frontend_helpers.cpp:968
-msgid "Smaller"
-msgstr "Kisebb"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:64
-#: src/frontends/controllers/frontend_helpers.cpp:972
-msgid "Small"
-msgstr "Kicsi"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:64
-#: src/frontends/controllers/frontend_helpers.cpp:976
-msgid "Normal"
-msgstr "Normál"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:64
-#: src/frontends/controllers/frontend_helpers.cpp:980
-msgid "Large"
-msgstr "Nagy"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:65
-#: src/frontends/controllers/frontend_helpers.cpp:984
-msgid "Larger"
-msgstr "Nagyobb"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:65
-#: src/frontends/controllers/frontend_helpers.cpp:988
-msgid "Largest"
-msgstr "Mégnagyobb"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:65
-#: src/frontends/controllers/frontend_helpers.cpp:992
-msgid "Huge"
-msgstr "Óriás"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:65
-#: src/frontends/controllers/frontend_helpers.cpp:996
-msgid "Huger"
-msgstr "Legnagyobb"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:144
-msgid "&Custom Bullet:"
-msgstr "&Egyedi jel:"
-
-#: src/frontends/qt4/ui/BulletsUi.ui:174
-msgid "&Level:"
-msgstr "&Szint:"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:16
-msgid "Form"
-msgstr "Form"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:28
-msgid "Use &default placement"
-msgstr "Alapértelmezett &elhelyezés"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:35
-msgid "Advanced Placement Options"
-msgstr "Speciális elhelyezési szabályok"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:47
-msgid "&Top of page"
-msgstr "Oldal &teteje"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:54
-msgid "&Ignore LaTeX rules"
-msgstr "&Mellõzd a LaTeX szabályokat"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:61
-msgid "Here de&finitely"
-msgstr "Feltét&lenül itt"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:68
-msgid "&Here if possible"
-msgstr "Itt, &ha lehetséges"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:75
-msgid "&Page of floats"
-msgstr "Ús&ztatások lapja"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:82
-msgid "&Bottom of page"
-msgstr "Ol&dal alja"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:92
-msgid "&Span columns"
-msgstr "Ha&sábok áthidalása"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:99
-msgid "&Rotate sideways"
-msgstr "Elfor&gatás oldalra"
-
-#: src/frontends/qt4/ui/FontUi.ui:13
-msgid "FontUi"
-msgstr "FontUi"
-
-#: src/frontends/qt4/ui/FontUi.ui:64
-msgid "Sc&ale (%):"
-msgstr "Mére&tarány (%):"
-
-#: src/frontends/qt4/ui/FontUi.ui:77
-msgid "&Typewriter:"
-msgstr "Írógé&p:"
-
-#: src/frontends/qt4/ui/FontUi.ui:90
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:114
-msgid "&Roman:"
-msgstr "&Roman:"
-
-#: src/frontends/qt4/ui/FontUi.ui:110
-msgid "S&cale (%):"
-msgstr "&Méretarány (%):"
-
-#: src/frontends/qt4/ui/FontUi.ui:123
-msgid "&Sans Serif:"
-msgstr "Sa&ns Serif:"
-
-#: src/frontends/qt4/ui/FontUi.ui:146
-msgid "Use &Old Style Figures"
-msgstr "Régi stílusú képeket használjon"
-
-#: src/frontends/qt4/ui/FontUi.ui:153
-msgid "Use true S&mall Caps"
-msgstr "Valódi &Kiskapitálist használjon"
-
-#: src/frontends/qt4/ui/FontUi.ui:160
-msgid "&Default Family:"
-msgstr "Ala&pértelmezett család:"
-
-#: src/frontends/qt4/ui/FontUi.ui:173
-msgid "&Base Size:"
-msgstr "Alap mé&ret:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:58
-msgid "Document &class:"
-msgstr "&Dokumentumosztály:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:68
-msgid "&Options:"
-msgstr "&Kapcsolók:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:78
-msgid "Postscript &driver:"
-msgstr "&PostScript meghajtó:"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:36
-#: src/frontends/qt4/ui/CharacterUi.ui:163
-msgid "&Language:"
-msgstr "Nye&lv:"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:76
-msgid "&Use language's default encoding"
-msgstr "A &nyelv alapértelmezett kódolásának használata"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:131
-msgid "&Encoding:"
-msgstr "&Kódolás:"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:141
-msgid "&Quote Style:"
-msgstr "&Idézõjel stílusa:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:28
-msgid "Use the margin settings provided by the document class"
-msgstr "A dokumentumosztály által megadott margóbeállítások használata"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:31
-msgid "&Default Margins"
-msgstr "Ala&pértelmezett margók"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:89
-msgid "&Top:"
-msgstr "&Felsõ:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:102
-msgid "&Bottom:"
-msgstr "A&lsó:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:115
-msgid "&Inner:"
-msgstr "&Belsõ:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:128
-msgid "O&uter:"
-msgstr "&Külsõ:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:141
-msgid "Head &sep:"
-msgstr "Fejléc k&ihagyás:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:154
-msgid "Head &height:"
-msgstr "Fejlé&c magasság:"
-
-#: src/frontends/qt4/ui/MarginsUi.ui:167
-msgid "&Foot skip:"
-msgstr "Láb kihagyá&s:"
-
-#: src/frontends/qt4/ui/MathsUi.ui:28
-msgid "&Use AMS math package automatically"
-msgstr "A&utomatikusan használja az AMS képlet csomagot"
-
-#: src/frontends/qt4/ui/MathsUi.ui:38
-msgid "Use AMS &math package"
-msgstr "AMS &képlet csomag használata"
-
-#: src/frontends/qt4/ui/MathsUi.ui:45
-msgid "Use esint package &automatically"
-msgstr "Automatikusan használja az esin&t csomagot"
-
-#: src/frontends/qt4/ui/MathsUi.ui:55
-msgid "Use &esint package"
-msgstr "Esint &csomag használata"
-
-#: src/frontends/qt4/ui/NumberingUi.ui:63
-msgid "&List in Table of Contents"
-msgstr "Mutassa a &tartalomjegyzékben"
-
-#: src/frontends/qt4/ui/NumberingUi.ui:73
-msgid "&Numbering"
-msgstr "&Számozás"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:28
-msgid "Paper Size"
-msgstr "Papírméret"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/BoxUi.ui:122
-#: src/frontends/qt4/ui/ExternalUi.ui:507
-msgid "&Height:"
-msgstr "Ma&gasság:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/BoxUi.ui:138
-#: src/frontends/qt4/ui/ExternalUi.ui:484
-#: src/frontends/qt4/ui/TabularUi.ui:103 src/frontends/qt4/ui/WrapUi.ui:39
-msgid "&Width:"
-msgstr "&Szélesség:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:74
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Válasszon papírméretet vagy adja megy az \"Egyedi\" méretét"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-msgid "Orientation"
-msgstr "Elrendezés"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:140
-msgid "&Portrait"
-msgstr "Á&lló"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:150
-msgid "&Landscape"
-msgstr "&Fekvõ"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:168
-msgid "Page &style:"
-msgstr "Ol&dalstílus:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:186
-msgid "Style used for the page header and footer"
-msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:195
-msgid "Lay out the page for double-sided printing"
-msgstr "Az oldal kinézete kétoldalas nyomtatáshoz"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:198
-msgid "&Two-sided document"
-msgstr "&Kétoldalas dokumentum"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -417,8 +29,8 @@ msgstr "Ide jön a verziószám"
 msgid "Credits"
 msgstr "Stáblista"
 
-#: src/frontends/qt4/ui/AboutUi.ui:80 lib/layouts/apa.layout:199
-#: lib/layouts/agu_stdtitle.inc:81
+#: src/frontends/qt4/ui/AboutUi.ui:80 lib/layouts/agu_stdtitle.inc:81
+#: lib/layouts/apa.layout:199
 msgid "Copyright"
 msgstr "Copyright"
 
@@ -468,8 +80,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:727 src/LyXFunc.cpp:900
-#: src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027 src/LyXVC.cpp:175
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:729 src/LyXFunc.cpp:902
+#: src/LyXFunc.cpp:1068 src/LyXFunc.cpp:2030 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
@@ -492,14 +104,62 @@ msgstr "&Címke:"
 msgid "&Key:"
 msgstr "&Kulcs:"
 
+#: src/frontends/qt4/ui/BiblioUi.ui:28
+msgid "Citation Style"
+msgstr "Irod. jegyzék stílusa"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:40
+msgid "Use the jurabib styles for law and humanities"
+msgstr "Jurabib stílusok használata jog és humán irányban"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:43
+msgid "&Jurabib"
+msgstr "&Jurabib"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:50
+msgid "Use the natbib styles for natural sciences and arts"
+msgstr "Natbib stílusok használata természettudományokhoz és mûvészetekhez"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:53
+msgid "&Natbib"
+msgstr "&Natbib használata"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:60
+msgid "Use BibTeX's default numerical styles"
+msgstr "Használja a BibTeX alapértelmezett számozott stílusait"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:63
+msgid "&Default (numerical)"
+msgstr "Alapé&rték (numerikus)"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:81
+msgid "Natbib &style:"
+msgstr "Natbib &stílus:"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:127
+msgid "Select this if you want to split your bibliography into sections"
+msgstr "Válassza ki ezt, ha szakaszokra akarja bontani az irodalomjegyzéket"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:130
+msgid "S&ectioned bibliography"
+msgstr "F&elosztott irodalomjegyzék"
+
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
 msgstr "LyX: BibTeX fájl hozzáadása"
 
+#: src/frontends/qt4/ui/BibtexAddUi.ui:70
+#: src/frontends/qt4/ui/BranchesUi.ui:50
+#: src/frontends/qt4/ui/CitationUi.ui:116
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
+msgid "&Add"
+msgstr "Hozzáa&dás"
+
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:843 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:845 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -621,6 +281,17 @@ msgstr "Magasság értéke"
 msgid "Width value"
 msgstr "Szélesség értéke"
 
+#: src/frontends/qt4/ui/BoxUi.ui:122 src/frontends/qt4/ui/ExternalUi.ui:507
+#: src/frontends/qt4/ui/PageLayoutUi.ui:43
+msgid "&Height:"
+msgstr "Ma&gasság:"
+
+#: src/frontends/qt4/ui/BoxUi.ui:138 src/frontends/qt4/ui/ExternalUi.ui:484
+#: src/frontends/qt4/ui/PageLayoutUi.ui:56
+#: src/frontends/qt4/ui/TabularUi.ui:103 src/frontends/qt4/ui/WrapUi.ui:39
+msgid "&Width:"
+msgstr "&Szélesség:"
+
 #: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
 #: src/frontends/qt4/ui/ParagraphUi.ui:251
 msgid "Alignment"
@@ -719,6 +390,125 @@ msgstr "&Elérhetõ változatok"
 msgid "Select your branch"
 msgstr "Változat kiválasztása"
 
+#: src/frontends/qt4/ui/BranchesUi.ui:47
+msgid "Add a new branch to the list"
+msgstr "Új változat felvétele listára"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:57
+msgid "A&vailable Branches:"
+msgstr "&Elérhetõ változatok:"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:67
+msgid "&New:"
+msgstr "Ú&j:"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:80
+msgid "Remove the selected branch"
+msgstr "Kiválasztott változat eltávolítása"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:83
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
+msgid "&Remove"
+msgstr "E&ltávolít"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:90
+msgid "Toggle the selected branch"
+msgstr "Kiválasztott változat (de)aktiválása"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:93
+msgid "(&De)activate"
+msgstr "(De)a&ktivál"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:100
+msgid "Define or change background color"
+msgstr "Háttérszín meghatározása vagy változtatása"
+
+#: src/frontends/qt4/ui/BranchesUi.ui:103
+msgid "Alter Co&lor..."
+msgstr "&Szín módosítása..."
+
+#: src/frontends/qt4/ui/BulletsUi.ui:34
+msgid "&Font:"
+msgstr "&Betûkészlet:"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:44
+#: src/frontends/qt4/ui/CharacterUi.ui:227
+msgid "Si&ze:"
+msgstr "&Méret:"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
+#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/ParagraphUi.ui:214
+#: src/frontends/qt4/ui/PrefLatexUi.ui:78
+#: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
+#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
+#: src/Font.cpp:518 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/ControlExternal.cpp:234
+#: src/frontends/controllers/ControlGraphics.cpp:170
+#: src/frontends/qt4/QDocument.cpp:66 src/frontends/qt4/QDocument.cpp:77
+#: src/frontends/qt4/QDocument.cpp:87 src/frontends/qt4/QDocument.cpp:264
+msgid "Default"
+msgstr "Alapérték"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:960
+msgid "Tiny"
+msgstr "Legkisebb"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:964
+msgid "Smallest"
+msgstr "Mégkisebb"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:968
+msgid "Smaller"
+msgstr "Kisebb"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:972
+msgid "Small"
+msgstr "Kicsi"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:976
+msgid "Normal"
+msgstr "Normál"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:64
+#: src/frontends/controllers/frontend_helpers.cpp:980
+msgid "Large"
+msgstr "Nagy"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:984
+msgid "Larger"
+msgstr "Nagyobb"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:988
+msgid "Largest"
+msgstr "Mégnagyobb"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:992
+msgid "Huge"
+msgstr "Óriás"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:65
+#: src/frontends/controllers/frontend_helpers.cpp:996
+msgid "Huger"
+msgstr "Legnagyobb"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:144
+msgid "&Custom Bullet:"
+msgstr "&Egyedi jel:"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:174
+msgid "&Level:"
+msgstr "&Szint:"
+
 #: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
 msgstr "Változás:"
@@ -772,7 +562,7 @@ msgstr "Betûtestesség"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:467
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:502
 #: src/frontends/qt4/QPrefs.cpp:1569
 msgid "Language"
 msgstr "Nyelv"
@@ -781,6 +571,11 @@ msgstr "Nyelv"
 #: src/frontends/qt4/ui/CharacterUi.ui:189
 msgid "Font color"
 msgstr "Betûszín"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:163
+#: src/frontends/qt4/ui/LanguageUi.ui:36
+msgid "&Language:"
+msgstr "Nye&lv:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:176
 msgid "&Series:"
@@ -831,8 +626,9 @@ msgstr "Változások azonnali alkalmazása"
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
 #: src/frontends/qt4/ui/GraphicsUi.ui:744
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177 src/frontends/qt4/ui/NoteUi.ui:41
-#: src/frontends/qt4/ui/PrintUi.ui:246 src/frontends/qt4/ui/TabularUi.ui:1131
-#: src/frontends/qt4/ui/TabularCreateUi.ui:75 src/frontends/qt4/Qt2BC.h:37
+#: src/frontends/qt4/ui/PrintUi.ui:246
+#: src/frontends/qt4/ui/TabularCreateUi.ui:75
+#: src/frontends/qt4/ui/TabularUi.ui:1131 src/frontends/qt4/Qt2BC.h:37
 msgid "Close"
 msgstr "Bezár"
 
@@ -1215,6 +1011,91 @@ msgstr "Op&ciók:"
 msgid "Forma&t:"
 msgstr "Fo&rmátum:"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:16
+msgid "Form"
+msgstr "Form"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:28
+msgid "Use &default placement"
+msgstr "Alapértelmezett &elhelyezés"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:35
+msgid "Advanced Placement Options"
+msgstr "Speciális elhelyezési szabályok"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:47
+msgid "&Top of page"
+msgstr "Oldal &teteje"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:54
+msgid "&Ignore LaTeX rules"
+msgstr "&Mellõzd a LaTeX szabályokat"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:61
+msgid "Here de&finitely"
+msgstr "Feltét&lenül itt"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:68
+msgid "&Here if possible"
+msgstr "Itt, &ha lehetséges"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:75
+msgid "&Page of floats"
+msgstr "Ús&ztatások lapja"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:82
+msgid "&Bottom of page"
+msgstr "Ol&dal alja"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:92
+msgid "&Span columns"
+msgstr "Ha&sábok áthidalása"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:99
+msgid "&Rotate sideways"
+msgstr "Elfor&gatás oldalra"
+
+#: src/frontends/qt4/ui/FontUi.ui:13
+msgid "FontUi"
+msgstr "FontUi"
+
+#: src/frontends/qt4/ui/FontUi.ui:64
+msgid "Sc&ale (%):"
+msgstr "Mére&tarány (%):"
+
+#: src/frontends/qt4/ui/FontUi.ui:77
+msgid "&Typewriter:"
+msgstr "Írógé&p:"
+
+#: src/frontends/qt4/ui/FontUi.ui:90
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:114
+msgid "&Roman:"
+msgstr "&Roman:"
+
+#: src/frontends/qt4/ui/FontUi.ui:110
+msgid "S&cale (%):"
+msgstr "&Méretarány (%):"
+
+#: src/frontends/qt4/ui/FontUi.ui:123
+msgid "&Sans Serif:"
+msgstr "Sa&ns Serif:"
+
+#: src/frontends/qt4/ui/FontUi.ui:146
+msgid "Use &Old Style Figures"
+msgstr "Régi stílusú képeket használjon"
+
+#: src/frontends/qt4/ui/FontUi.ui:153
+msgid "Use true S&mall Caps"
+msgstr "Valódi &Kiskapitálist használjon"
+
+#: src/frontends/qt4/ui/FontUi.ui:160
+msgid "&Default Family:"
+msgstr "Ala&pértelmezett család:"
+
+#: src/frontends/qt4/ui/FontUi.ui:173
+msgid "&Base Size:"
+msgstr "Alap mé&ret:"
+
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
 msgstr "&Grafika"
@@ -1382,6 +1263,30 @@ msgstr "Verbatim"
 msgid "&Include Type:"
 msgstr "&Csatolás módja:"
 
+#: src/frontends/qt4/ui/LaTeXUi.ui:58
+msgid "Document &class:"
+msgstr "&Dokumentumosztály:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:68
+msgid "&Options:"
+msgstr "&Kapcsolók:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:78
+msgid "Postscript &driver:"
+msgstr "&PostScript meghajtó:"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:76
+msgid "&Use language's default encoding"
+msgstr "A &nyelv alapértelmezett kódolásának használata"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:131
+msgid "&Encoding:"
+msgstr "&Kódolás:"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:141
+msgid "&Quote Style:"
+msgstr "&Idézõjel stílusa:"
+
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
 msgstr "Képernyõ frissítése"
@@ -1390,6 +1295,42 @@ msgstr "Képernyõ frissítése"
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Frissítés"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:28
+msgid "Use the margin settings provided by the document class"
+msgstr "A dokumentumosztály által megadott margóbeállítások használata"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:31
+msgid "&Default Margins"
+msgstr "Ala&pértelmezett margók"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:89
+msgid "&Top:"
+msgstr "&Felsõ:"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:102
+msgid "&Bottom:"
+msgstr "A&lsó:"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:115
+msgid "&Inner:"
+msgstr "&Belsõ:"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:128
+msgid "O&uter:"
+msgstr "&Külsõ:"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:141
+msgid "Head &sep:"
+msgstr "Fejléc k&ihagyás:"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:154
+msgid "Head &height:"
+msgstr "Fejlé&c magasság:"
+
+#: src/frontends/qt4/ui/MarginsUi.ui:167
+msgid "&Foot skip:"
+msgstr "Láb kihagyá&s:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:39
 #: src/frontends/qt4/ui/MathMatrixUi.ui:52
@@ -1434,6 +1375,22 @@ msgstr "Vízszintes igazítás oszloponként (l,c,r)"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:264
 msgid "&Horizontal:"
 msgstr "&Vízszintes:"
+
+#: src/frontends/qt4/ui/MathsUi.ui:28
+msgid "&Use AMS math package automatically"
+msgstr "A&utomatikusan használja az AMS képlet csomagot"
+
+#: src/frontends/qt4/ui/MathsUi.ui:38
+msgid "Use AMS &math package"
+msgstr "AMS &képlet csomag használata"
+
+#: src/frontends/qt4/ui/MathsUi.ui:45
+msgid "Use esint package &automatically"
+msgstr "Automatikusan használja az esin&t csomagot"
+
+#: src/frontends/qt4/ui/MathsUi.ui:55
+msgid "Use &esint package"
+msgstr "Esint &csomag használata"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:31
 msgid "Sort &as:"
@@ -1491,6 +1448,50 @@ msgstr "Keretben árnyékolt háttérrel"
 msgid "&Shaded"
 msgstr "Árnyé&kolt"
 
+#: src/frontends/qt4/ui/NumberingUi.ui:63
+msgid "&List in Table of Contents"
+msgstr "Mutassa a &tartalomjegyzékben"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:73
+msgid "&Numbering"
+msgstr "&Számozás"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:28
+msgid "Paper Size"
+msgstr "Papírméret"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:74
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr "Válasszon papírméretet vagy adja megy az \"Egyedi\" méretét"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+msgid "Orientation"
+msgstr "Elrendezés"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:140
+msgid "&Portrait"
+msgstr "Á&lló"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:150
+msgid "&Landscape"
+msgstr "&Fekvõ"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:168
+msgid "Page &style:"
+msgstr "Ol&dalstílus:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:186
+msgid "Style used for the page header and footer"
+msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:195
+msgid "Lay out the page for double-sided printing"
+msgstr "Az oldal kinézete kétoldalas nyomtatáshoz"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:198
+msgid "&Two-sided document"
+msgstr "&Kétoldalas dokumentum"
+
 #: src/frontends/qt4/ui/ParagraphUi.ui:114
 msgid "Label Width"
 msgstr "Címke szélesség"
@@ -1514,7 +1515,7 @@ msgid "L&ine spacing:"
 msgstr "Sor&köz:"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1737
-#: src/frontends/qt4/QDocument.cpp:123
+#: src/frontends/qt4/QDocument.cpp:158
 msgid "Single"
 msgstr "Egyszeres"
 
@@ -1523,14 +1524,14 @@ msgid "1.5"
 msgstr "Másfélszeres"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1743
-#: src/frontends/qt4/QDocument.cpp:127
+#: src/frontends/qt4/QDocument.cpp:162
 msgid "Double"
 msgstr "Kétszeres"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:129 src/frontends/qt4/QDocument.cpp:230
+#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:265
 msgid "Custom"
 msgstr "Egyéb"
 
@@ -1811,31 +1812,31 @@ msgstr "Alap &papírméret:"
 msgid "Te&X encoding:"
 msgstr "Te&X kódolás:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:231
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:266
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:232
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:267
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:233
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:268
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:234
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:269
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:235
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:270
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:236
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:271
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:239
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:274
 msgid "B5"
 msgstr "B5"
 
@@ -2190,7 +2191,7 @@ msgid "&Maximum last files:"
 msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:726
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:728
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -2714,6 +2715,34 @@ msgstr "A fájlok elérési útjának megjelenítése/elrejtése"
 msgid "Show &path"
 msgstr "M&utasd a helyét"
 
+#: src/frontends/qt4/ui/TextLayoutUi.ui:58
+msgid "&Line spacing:"
+msgstr "Sorkö&z:"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:68
+msgid "Separate Paragraphs With"
+msgstr "Bekezdések elválasztása"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:144
+msgid "&Vertical space"
+msgstr "&Függõleges kitöltés"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:151
+msgid "Indent consecutive paragraphs"
+msgstr "Egymásutáni bekezdések behúzása"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:154
+msgid "&Indentation"
+msgstr "Behúzá&s"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:180
+msgid "Format text into two columns"
+msgstr "A szöveget két oszlopba formázza"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:183
+msgid "Two-&column document"
+msgstr "&Kéthasábos dokumentum"
+
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
 msgstr "Tárgyszó"
@@ -2792,7 +2821,7 @@ msgid "&Type:"
 msgstr "&Típus:"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
-#: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:186
+#: lib/layouts/amsdefs.inc:186 lib/layouts/scrlttr2.layout:207
 #: src/frontends/qt4/UrlView.cpp:33
 msgid "URL"
 msgstr "URL"
@@ -2841,15 +2870,15 @@ msgstr "Támogatott kitöltési típusok"
 msgid "DefSkip"
 msgstr "Alap kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:116
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:151
 msgid "SmallSkip"
 msgstr "Kis kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:117
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:152
 msgid "MedSkip"
 msgstr "Közepes kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:118
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:153
 msgid "BigSkip"
 msgstr "Nagy kihagyás"
 
@@ -2886,40 +2915,13 @@ msgstr "Szélesség mértékegysége"
 msgid "&Units:"
 msgstr "&Mértékegység:"
 
-#: src/frontends/qt4/ui/TextLayoutUi.ui:58
-msgid "&Line spacing:"
-msgstr "Sorkö&z:"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:68
-msgid "Separate Paragraphs With"
-msgstr "Bekezdések elválasztása"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:144
-msgid "&Vertical space"
-msgstr "&Függõleges kitöltés"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:151
-msgid "Indent consecutive paragraphs"
-msgstr "Egymásutáni bekezdések behúzása"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:154
-msgid "&Indentation"
-msgstr "Behúzá&s"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:180
-msgid "Format text into two columns"
-msgstr "A szöveget két oszlopba formázza"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:183
-msgid "Two-&column document"
-msgstr "&Kéthasábos dokumentum"
-
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
-#: lib/layouts/amsart.layout:21 lib/layouts/amsbook.layout:22
-#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:29
-#: lib/layouts/broadway.layout:183 lib/layouts/chess.layout:27
-#: lib/layouts/cl2emult.layout:125 lib/layouts/cv.layout:14
+#: lib/layouts/agu_stdclass.inc:22 lib/layouts/amsart.layout:21
+#: lib/layouts/amsbook.layout:22 lib/layouts/apa.layout:24
+#: lib/layouts/beamer.layout:29 lib/layouts/broadway.layout:183
+#: lib/layouts/chess.layout:27 lib/layouts/cl2emult.layout:125
+#: lib/layouts/cv.layout:14 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
 #: lib/layouts/elsart.layout:49 lib/layouts/europecv.layout:16
 #: lib/layouts/foils.layout:30 lib/layouts/g-brief2.layout:30
@@ -2928,10 +2930,9 @@ msgstr "&Kéthasábos dokumentum"
 #: lib/layouts/manpage.layout:17 lib/layouts/memoir.layout:26
 #: lib/layouts/moderncv.layout:16 lib/layouts/paper.layout:14
 #: lib/layouts/revtex.layout:22 lib/layouts/revtex4.layout:26
-#: lib/layouts/scrlettr.layout:7 lib/layouts/scrlttr2.layout:7
-#: lib/layouts/siamltex.layout:19 lib/layouts/simplecv.layout:15
-#: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
-#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
+#: lib/layouts/scrclass.inc:15 lib/layouts/scrlettr.layout:7
+#: lib/layouts/scrlttr2.layout:7 lib/layouts/siamltex.layout:19
+#: lib/layouts/simplecv.layout:15 lib/layouts/slides.layout:60
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:55
 #: src/frontends/qt4/BulletsModule.cpp:46 src/insets/InsetRef.cpp:151
@@ -2943,11 +2944,11 @@ msgstr "Normál szöveg"
 msgid "TheoremTemplate"
 msgstr "Tétel-sablon"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:925
-#: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
-#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
-#: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
-#: lib/layouts/siamltex.layout:252 lib/layouts/amsdefs.inc:28
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/amsdefs.inc:28
+#: lib/layouts/beamer.layout:925 lib/layouts/elsart.layout:291
+#: lib/layouts/foils.layout:283 lib/layouts/heb-article.layout:95
+#: lib/layouts/ijmpc.layout:227 lib/layouts/ijmpd.layout:227
+#: lib/layouts/llncs.layout:374 lib/layouts/siamltex.layout:252
 #: lib/layouts/svjour.inc:436
 msgid "Proof"
 msgstr "Bizonyítás"
@@ -2957,12 +2958,12 @@ msgid "Proof:"
 msgstr "Bizonyítás:"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:1003
-#: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
-#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
-#: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
-#: lib/layouts/siamltex.layout:202 lib/layouts/amsmaths-plain.inc:33
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/amsmaths-plain.inc:33
 #: lib/layouts/amsmaths-seq.inc:32 lib/layouts/amsmaths.inc:62
+#: lib/layouts/beamer.layout:1003 lib/layouts/elsart.layout:262
+#: lib/layouts/foils.layout:223 lib/layouts/heb-article.layout:18
+#: lib/layouts/ijmpc.layout:205 lib/layouts/ijmpd.layout:208
+#: lib/layouts/llncs.layout:415 lib/layouts/siamltex.layout:202
 #: lib/layouts/svjour.inc:478
 msgid "Theorem"
 msgstr "Tétel"
@@ -2972,12 +2973,12 @@ msgid "Theorem #:"
 msgstr "Tétel #:"
 
 #: lib/layouts/IEEEtran.layout:81 lib/layouts/amsart-plain.layout:37
-#: lib/layouts/amsart-seq.layout:149 lib/layouts/elsart.layout:318
-#: lib/layouts/foils.layout:248 lib/layouts/heb-article.layout:45
-#: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:262
-#: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:217
-#: lib/layouts/amsmaths-plain.inc:53 lib/layouts/amsmaths-seq.inc:48
-#: lib/layouts/amsmaths.inc:125 lib/layouts/svjour.inc:415
+#: lib/layouts/amsart-seq.layout:149 lib/layouts/amsmaths-plain.inc:53
+#: lib/layouts/amsmaths-seq.inc:48 lib/layouts/amsmaths.inc:125
+#: lib/layouts/elsart.layout:318 lib/layouts/foils.layout:248
+#: lib/layouts/heb-article.layout:45 lib/layouts/ijmpc.layout:257
+#: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:354
+#: lib/layouts/siamltex.layout:217 lib/layouts/svjour.inc:415
 msgid "Lemma"
 msgstr "Segédtétel"
 
@@ -2986,12 +2987,12 @@ msgid "Lemma #:"
 msgstr "Segédtétel #:"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:489
-#: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
-#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
-#: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
-#: lib/layouts/siamltex.layout:224 lib/layouts/amsmaths-plain.inc:43
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/amsmaths-plain.inc:43
 #: lib/layouts/amsmaths-seq.inc:40 lib/layouts/amsmaths.inc:103
+#: lib/layouts/beamer.layout:489 lib/layouts/elsart.layout:325
+#: lib/layouts/foils.layout:255 lib/layouts/heb-article.layout:55
+#: lib/layouts/ijmpc.layout:247 lib/layouts/ijmpd.layout:248
+#: lib/layouts/llncs.layout:319 lib/layouts/siamltex.layout:224
 #: lib/layouts/svjour.inc:376
 msgid "Corollary"
 msgstr "Következmény"
@@ -3001,11 +3002,11 @@ msgid "Corollary #:"
 msgstr "Következmény #:"
 
 #: lib/layouts/IEEEtran.layout:101 lib/layouts/amsart-plain.layout:43
-#: lib/layouts/amsart-seq.layout:155 lib/layouts/elsart.layout:332
-#: lib/layouts/foils.layout:262 lib/layouts/ijmpc.layout:267
-#: lib/layouts/ijmpd.layout:273 lib/layouts/llncs.layout:388
-#: lib/layouts/siamltex.layout:231 lib/layouts/amsmaths-plain.inc:63
+#: lib/layouts/amsart-seq.layout:155 lib/layouts/amsmaths-plain.inc:63
 #: lib/layouts/amsmaths-seq.inc:56 lib/layouts/amsmaths.inc:147
+#: lib/layouts/elsart.layout:332 lib/layouts/foils.layout:262
+#: lib/layouts/ijmpc.layout:267 lib/layouts/ijmpd.layout:273
+#: lib/layouts/llncs.layout:388 lib/layouts/siamltex.layout:231
 #: lib/layouts/svjour.inc:450
 msgid "Proposition"
 msgstr "Javaslat"
@@ -3015,9 +3016,9 @@ msgid "Proposition #:"
 msgstr "Javaslat #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
-#: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
-#: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
+#: lib/layouts/amsart-seq.layout:161 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
+#: lib/layouts/elsart.layout:367 lib/layouts/llncs.layout:312
 #: lib/layouts/svjour.inc:369
 msgid "Conjecture"
 msgstr "Feltevés"
@@ -3027,9 +3028,9 @@ msgid "Conjecture #:"
 msgstr "Feltevés #:"
 
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/amsart-plain.layout:55
-#: lib/layouts/amsart-seq.layout:167 lib/layouts/elsart.layout:339
-#: lib/layouts/amsmaths-plain.inc:83 lib/layouts/amsmaths-seq.inc:72
-#: lib/layouts/amsmaths.inc:191
+#: lib/layouts/amsart-seq.layout:167 lib/layouts/amsmaths-plain.inc:83
+#: lib/layouts/amsmaths-seq.inc:72 lib/layouts/amsmaths.inc:191
+#: lib/layouts/elsart.layout:339
 msgid "Criterion"
 msgstr "Kritérium"
 
@@ -3038,9 +3039,9 @@ msgid "Criterion #:"
 msgstr "Kritérium #:"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:710
-#: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
-#: lib/layouts/amsmaths.inc:213
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/amsmaths-plain.inc:103
+#: lib/layouts/amsmaths-seq.inc:88 lib/layouts/amsmaths.inc:213
+#: lib/layouts/beamer.layout:710
 msgid "Fact"
 msgstr "Tény"
 
@@ -3059,12 +3060,12 @@ msgid "Axiom #:"
 msgstr "Axióma #:"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:652
-#: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
-#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
-#: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
-#: lib/layouts/siamltex.layout:238 lib/layouts/amsmaths-plain.inc:123
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/amsmaths-plain.inc:123
 #: lib/layouts/amsmaths-seq.inc:104 lib/layouts/amsmaths.inc:246
+#: lib/layouts/beamer.layout:652 lib/layouts/elsart.layout:353
+#: lib/layouts/foils.layout:269 lib/layouts/heb-article.layout:75
+#: lib/layouts/ijmpc.layout:140 lib/layouts/ijmpd.layout:137
+#: lib/layouts/llncs.layout:333 lib/layouts/siamltex.layout:238
 #: lib/layouts/svjour.inc:390
 msgid "Definition"
 msgstr "Definíció"
@@ -3074,12 +3075,12 @@ msgid "Definition #:"
 msgstr "Definíció #:"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:664
-#: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
-#: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
-#: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
-#: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:367
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/amsmaths-plain.inc:133
+#: lib/layouts/amsmaths-seq.inc:112 lib/layouts/amsmaths.inc:276
+#: lib/layouts/beamer.layout:664 lib/layouts/elsart.layout:374
+#: lib/layouts/ijmpc.layout:175 lib/layouts/ijmpd.layout:172
+#: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:397
+#: src/frontends/qt4/QDocument.cpp:402
 msgid "Example"
 msgstr "Példa"
 
@@ -3098,9 +3099,9 @@ msgid "Condition #:"
 msgstr "Feltétel #:"
 
 #: lib/layouts/IEEEtran.layout:181 lib/layouts/amsart-plain.layout:97
-#: lib/layouts/amsart-seq.layout:209 lib/layouts/elsart.layout:381
-#: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:153
+#: lib/layouts/amsart-seq.layout:209 lib/layouts/amsmaths-plain.inc:153
 #: lib/layouts/amsmaths-seq.inc:128 lib/layouts/amsmaths.inc:320
+#: lib/layouts/elsart.layout:381 lib/layouts/llncs.layout:367
 #: lib/layouts/svjour.inc:429
 msgid "Problem"
 msgstr "Probléma"
@@ -3110,9 +3111,9 @@ msgid "Problem #:"
 msgstr "Probléma #:"
 
 #: lib/layouts/IEEEtran.layout:191 lib/layouts/amsart-plain.layout:103
-#: lib/layouts/amsart-seq.layout:215 lib/layouts/llncs.layout:347
-#: lib/layouts/amsmaths-plain.inc:163 lib/layouts/amsmaths-seq.inc:136
-#: lib/layouts/amsmaths.inc:342 lib/layouts/svjour.inc:404
+#: lib/layouts/amsart-seq.layout:215 lib/layouts/amsmaths-plain.inc:163
+#: lib/layouts/amsmaths-seq.inc:136 lib/layouts/amsmaths.inc:342
+#: lib/layouts/llncs.layout:347 lib/layouts/svjour.inc:404
 msgid "Exercise"
 msgstr "Feladat"
 
@@ -3121,10 +3122,10 @@ msgid "Exercise #:"
 msgstr "Feladat #:"
 
 #: lib/layouts/IEEEtran.layout:201 lib/layouts/amsart-plain.layout:109
-#: lib/layouts/amsart-seq.layout:221 lib/layouts/elsart.layout:388
-#: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:183
-#: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:173
+#: lib/layouts/amsart-seq.layout:221 lib/layouts/amsmaths-plain.inc:173
 #: lib/layouts/amsmaths-seq.inc:144 lib/layouts/amsmaths.inc:365
+#: lib/layouts/elsart.layout:388 lib/layouts/ijmpc.layout:185
+#: lib/layouts/ijmpd.layout:183 lib/layouts/llncs.layout:401
 #: lib/layouts/svjour.inc:464
 msgid "Remark"
 msgstr "Észrevétel"
@@ -3134,11 +3135,11 @@ msgid "Remark #:"
 msgstr "Észrevétel #:"
 
 #: lib/layouts/IEEEtran.layout:211 lib/layouts/amsart-plain.layout:115
-#: lib/layouts/amsart-seq.layout:227 lib/layouts/elsart.layout:402
-#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:297
-#: lib/layouts/ijmpd.layout:306 lib/layouts/llncs.layout:305
-#: lib/layouts/amsmaths-plain.inc:183 lib/layouts/amsmaths-seq.inc:152
-#: lib/layouts/amsmaths.inc:396 lib/layouts/svjour.inc:348
+#: lib/layouts/amsart-seq.layout:227 lib/layouts/amsmaths-plain.inc:183
+#: lib/layouts/amsmaths-seq.inc:152 lib/layouts/amsmaths.inc:396
+#: lib/layouts/elsart.layout:402 lib/layouts/heb-article.layout:65
+#: lib/layouts/ijmpc.layout:297 lib/layouts/ijmpd.layout:306
+#: lib/layouts/llncs.layout:305 lib/layouts/svjour.inc:348
 msgid "Claim"
 msgstr "Követelés"
 
@@ -3147,11 +3148,11 @@ msgid "Claim #:"
 msgstr "Követelés #:"
 
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/amsart-plain.layout:121
-#: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
-#: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
-#: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
+#: lib/layouts/amsart-seq.layout:233 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:65
+#: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:395
+#: lib/layouts/llncs.layout:360 lib/layouts/slides.layout:167
+#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:66
 msgid "Note"
 msgstr "Megjegyzés"
 
@@ -3160,9 +3161,9 @@ msgid "Note #:"
 msgstr "Megjegyzés #:"
 
 #: lib/layouts/IEEEtran.layout:231 lib/layouts/amsart-plain.layout:127
-#: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:195
-#: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:203
+#: lib/layouts/amsart-seq.layout:239 lib/layouts/amsmaths-plain.inc:203
 #: lib/layouts/amsmaths-seq.inc:168 lib/layouts/amsmaths.inc:440
+#: lib/layouts/ijmpc.layout:195 lib/layouts/ijmpd.layout:194
 msgid "Notation"
 msgstr "Jelölés"
 
@@ -3171,9 +3172,9 @@ msgid "Notation #:"
 msgstr "Jelölés #:"
 
 #: lib/layouts/IEEEtran.layout:241 lib/layouts/amsart-plain.layout:145
-#: lib/layouts/amsart-seq.layout:257 lib/layouts/elsart.layout:417
-#: lib/layouts/llncs.layout:284 lib/layouts/amsmaths-plain.inc:233
+#: lib/layouts/amsart-seq.layout:257 lib/layouts/amsmaths-plain.inc:233
 #: lib/layouts/amsmaths-seq.inc:192 lib/layouts/amsmaths.inc:495
+#: lib/layouts/elsart.layout:417 lib/layouts/llncs.layout:284
 msgid "Case"
 msgstr "Eset"
 
@@ -3184,22 +3185,22 @@ msgstr "Eset #:"
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
-#: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
+#: lib/layouts/aastex.layout:166 lib/layouts/agu_stdsections.inc:30
+#: lib/layouts/aguplus.inc:27 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
 #: lib/layouts/beamer.layout:265 lib/layouts/cv.layout:29
-#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:28
-#: lib/layouts/ijmpc.layout:99 lib/layouts/ijmpd.layout:95
-#: lib/layouts/isprs.layout:157 lib/layouts/kluwer.layout:57
-#: lib/layouts/latex8.layout:41 lib/layouts/llncs.layout:44
-#: lib/layouts/ltugboat.layout:45 lib/layouts/manpage.layout:41
-#: lib/layouts/memoir.layout:51 lib/layouts/moderncv.layout:29
-#: lib/layouts/paper.layout:44 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
-#: lib/layouts/simplecv.layout:27 lib/layouts/spie.layout:19
-#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
-#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:13
+#: lib/layouts/db_stdsections.inc:28 lib/layouts/egs.layout:30
+#: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
+#: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
+#: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
+#: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
+#: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:51
+#: lib/layouts/moderncv.layout:29 lib/layouts/numarticle.inc:13
 #: lib/layouts/numreport.inc:21 lib/layouts/numrevtex.inc:6
-#: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
+#: lib/layouts/paper.layout:44 lib/layouts/revtex.layout:38
+#: lib/layouts/revtex4.layout:44 lib/layouts/scrclass.inc:61
+#: lib/layouts/siamltex.layout:41 lib/layouts/simplecv.layout:27
+#: lib/layouts/spie.layout:19 lib/layouts/stdsections.inc:51
 #: lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "Szakasz"
@@ -3207,19 +3208,19 @@ msgstr "Szakasz"
 #: lib/layouts/IEEEtran.layout:279 lib/layouts/aa.layout:40
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
-#: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
+#: lib/layouts/aastex.layout:179 lib/layouts/agu_stdsections.inc:40
+#: lib/layouts/aguplus.inc:41 lib/layouts/amsart.layout:72
 #: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
-#: lib/layouts/cv.layout:50 lib/layouts/egs.layout:51
-#: lib/layouts/ijmpc.layout:115 lib/layouts/ijmpd.layout:111
-#: lib/layouts/isprs.layout:168 lib/layouts/kluwer.layout:66
-#: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:52
-#: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:56
-#: lib/layouts/paper.layout:53 lib/layouts/revtex.layout:49
-#: lib/layouts/revtex4.layout:55 lib/layouts/siamltex.layout:59
-#: lib/layouts/simplecv.layout:48 lib/layouts/agu_stdsections.inc:40
-#: lib/layouts/aguplus.inc:41 lib/layouts/db_stdsections.inc:36
-#: lib/layouts/numarticle.inc:22 lib/layouts/numrevtex.inc:15
-#: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:72
+#: lib/layouts/cv.layout:50 lib/layouts/db_stdsections.inc:36
+#: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
+#: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
+#: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
+#: lib/layouts/llncs.layout:52 lib/layouts/ltugboat.layout:65
+#: lib/layouts/memoir.layout:56 lib/layouts/numarticle.inc:22
+#: lib/layouts/numrevtex.inc:15 lib/layouts/paper.layout:53
+#: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:55
+#: lib/layouts/scrclass.inc:68 lib/layouts/siamltex.layout:59
+#: lib/layouts/simplecv.layout:48 lib/layouts/stdsections.inc:72
 #: lib/layouts/svjour.inc:61
 msgid "Subsection"
 msgstr "Alszakasz"
@@ -3227,38 +3228,38 @@ msgstr "Alszakasz"
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/aa.layout:43
 #: lib/layouts/aa.layout:238 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:192 lib/layouts/amsart.layout:80
-#: lib/layouts/amsbook.layout:66 lib/layouts/ijmpc.layout:124
+#: lib/layouts/aastex.layout:192 lib/layouts/agu_stdsections.inc:50
+#: lib/layouts/amsart.layout:80 lib/layouts/amsbook.layout:66
+#: lib/layouts/db_stdsections.inc:44 lib/layouts/ijmpc.layout:124
 #: lib/layouts/ijmpd.layout:120 lib/layouts/isprs.layout:177
 #: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
 #: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:61
-#: lib/layouts/paper.layout:62 lib/layouts/revtex.layout:57
-#: lib/layouts/revtex4.layout:63 lib/layouts/siamltex.layout:65
-#: lib/layouts/agu_stdsections.inc:50 lib/layouts/db_stdsections.inc:44
 #: lib/layouts/numarticle.inc:31 lib/layouts/numrevtex.inc:24
-#: lib/layouts/scrclass.inc:75 lib/layouts/stdsections.inc:85
+#: lib/layouts/paper.layout:62 lib/layouts/revtex.layout:57
+#: lib/layouts/revtex4.layout:63 lib/layouts/scrclass.inc:75
+#: lib/layouts/siamltex.layout:65 lib/layouts/stdsections.inc:85
 #: lib/layouts/svjour.inc:70
 msgid "Subsubsection"
 msgstr "Alalszakasz"
 
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:297
+#: lib/layouts/IEEEtran.layout:295 lib/layouts/aguplus.inc:34
+#: lib/layouts/beamer.layout:297 lib/layouts/db_stdstarsections.inc:36
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
-#: lib/layouts/aguplus.inc:34 lib/layouts/db_stdstarsections.inc:36
 #: lib/layouts/stdstarsections.inc:30
 msgid "Section*"
 msgstr "Szakasz*"
 
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:339
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/aguplus.inc:48
+#: lib/layouts/beamer.layout:339 lib/layouts/db_stdstarsections.inc:48
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
-#: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
-#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
+#: lib/layouts/siamltex.layout:88 lib/layouts/stdstarsections.inc:39
 msgid "Subsection*"
 msgstr "Alszakasz*"
 
-#: lib/layouts/IEEEtran.layout:313 lib/layouts/isprs.layout:206
-#: lib/layouts/siamltex.layout:95 lib/layouts/db_stdstarsections.inc:60
+#: lib/layouts/IEEEtran.layout:313 lib/layouts/db_stdstarsections.inc:60
+#: lib/layouts/isprs.layout:206 lib/layouts/siamltex.layout:95
 #: lib/layouts/stdstarsections.inc:48
 msgid "Subsubsection*"
 msgstr "Alalszakasz*"
@@ -3267,21 +3268,21 @@ msgstr "Alalszakasz*"
 #: lib/layouts/aa.layout:284 lib/layouts/aa.layout:300
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:244
+#: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:125
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:79
-#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:492
-#: lib/layouts/elsart.layout:206 lib/layouts/elsart.layout:222
-#: lib/layouts/entcs.layout:83 lib/layouts/foils.layout:151
-#: lib/layouts/ijmpc.layout:66 lib/layouts/ijmpd.layout:69
-#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:258
-#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:240
-#: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:186
-#: lib/layouts/paper.layout:135 lib/layouts/revtex.layout:135
-#: lib/layouts/revtex4.layout:202 lib/layouts/siamltex.layout:143
-#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
-#: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
-#: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
+#: lib/layouts/cl2emult.layout:91 lib/layouts/db_stdstruct.inc:11
+#: lib/layouts/egs.layout:492 lib/layouts/elsart.layout:206
+#: lib/layouts/elsart.layout:222 lib/layouts/entcs.layout:83
+#: lib/layouts/foils.layout:151 lib/layouts/ijmpc.layout:66
+#: lib/layouts/ijmpd.layout:69 lib/layouts/isprs.layout:24
+#: lib/layouts/kluwer.layout:258 lib/layouts/latex8.layout:100
+#: lib/layouts/llncs.layout:240 lib/layouts/ltugboat.layout:171
+#: lib/layouts/ltugboat.layout:186 lib/layouts/paper.layout:135
+#: lib/layouts/revtex.layout:135 lib/layouts/revtex4.layout:202
+#: lib/layouts/scrclass.inc:216 lib/layouts/siamltex.layout:143
+#: lib/layouts/spie.layout:73 lib/layouts/stdstruct.inc:12
+#: lib/layouts/stdstruct.inc:27 lib/layouts/svglobal.layout:29
+#: lib/layouts/svjog.layout:34 lib/layouts/svjour.inc:252
 #: src/output_plaintext.cpp:145
 msgid "Abstract"
 msgstr "Kivonat"
@@ -3291,12 +3292,12 @@ msgid "Abstract---"
 msgstr "Kivonat---"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
+#: lib/layouts/aastex.layout:281 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:194 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:77 lib/layouts/ijmpd.layout:80
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:241
 #: lib/layouts/siamltex.layout:169 lib/layouts/spie.layout:39
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:194
 #: lib/layouts/svjour.inc:273
 msgid "Keywords"
 msgstr "Kulcsszavak"
@@ -3307,23 +3308,23 @@ msgstr "Tárgyszavak---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:440
-#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
-#: lib/layouts/cl2emult.layout:102 lib/layouts/cv.layout:143
-#: lib/layouts/egs.layout:563 lib/layouts/foils.layout:215
-#: lib/layouts/ijmpc.layout:358 lib/layouts/ijmpd.layout:369
-#: lib/layouts/latex8.layout:118 lib/layouts/llncs.layout:261
-#: lib/layouts/memoir.layout:138 lib/layouts/memoir.layout:140
-#: lib/layouts/moderncv.layout:193 lib/layouts/mwbk.layout:21
-#: lib/layouts/mwbk.layout:23 lib/layouts/mwrep.layout:12
-#: lib/layouts/mwrep.layout:14 lib/layouts/report.layout:12
-#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
-#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
-#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:183
-#: lib/layouts/simplecv.layout:145 lib/layouts/aguplus.inc:168
+#: lib/layouts/aapaper.layout:209 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
-#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:469
+#: lib/layouts/beamer.layout:440 lib/layouts/book.layout:21
+#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:102
+#: lib/layouts/cv.layout:143 lib/layouts/egs.layout:563
+#: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
+#: lib/layouts/ijmpd.layout:369 lib/layouts/latex8.layout:118
+#: lib/layouts/llncs.layout:261 lib/layouts/memoir.layout:138
+#: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:193
+#: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
+#: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
+#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
+#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
+#: lib/layouts/scrclass.inc:223 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:183
+#: lib/layouts/simplecv.layout:145 lib/layouts/stdstruct.inc:39
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:504
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
@@ -3356,37 +3357,37 @@ msgid "MarkBoth"
 msgstr "Mindkettõ jelölése"
 
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
-#: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
-#: lib/layouts/beamer.layout:41 lib/layouts/cv.layout:80
+#: lib/layouts/aastex.layout:76 lib/layouts/agu_stdlists.inc:13
+#: lib/layouts/apa.layout:308 lib/layouts/beamer.layout:41
+#: lib/layouts/cv.layout:80 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/egs.layout:163 lib/layouts/manpage.layout:82
-#: lib/layouts/simplecv.layout:82 lib/layouts/agu_stdlists.inc:13
-#: lib/layouts/db_stdlists.inc:12 lib/layouts/stdlists.inc:11
+#: lib/layouts/simplecv.layout:82 lib/layouts/stdlists.inc:11
 msgid "Itemize"
 msgstr "Felsorolás"
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
-#: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:59 lib/layouts/egs.layout:145
-#: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
+#: lib/layouts/aastex.layout:79 lib/layouts/agu_stdlists.inc:21
+#: lib/layouts/apa.layout:326 lib/layouts/beamer.layout:59
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/egs.layout:145
+#: lib/layouts/manpage.layout:65 lib/layouts/stdlists.inc:29
 msgid "Enumerate"
 msgstr "Számozott felsorolás"
 
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
-#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:77
+#: lib/layouts/aastex.layout:82 lib/layouts/agu_stdlists.inc:29
+#: lib/layouts/beamer.layout:77 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
-#: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
-#: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
-#: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
+#: lib/layouts/scrclass.inc:26 lib/layouts/scrlettr.layout:17
+#: lib/layouts/scrlttr2.layout:18 lib/layouts/stdlists.inc:47
 #: lib/ui/stdtoolbars.inc:85
 msgid "Description"
 msgstr "Leírás"
 
 #: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
-#: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
-#: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
+#: lib/layouts/scrclass.inc:40 lib/layouts/scrlettr.layout:32
+#: lib/layouts/scrlttr2.layout:33 lib/layouts/stdlists.inc:69
 #: lib/ui/stdtoolbars.inc:84
 msgid "List"
 msgstr "Lista"
@@ -3394,67 +3395,67 @@ msgstr "Lista"
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:60
 #: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:956
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
-#: lib/layouts/cv.layout:122 lib/layouts/docbook-book.layout:11
-#: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
-#: lib/layouts/egs.layout:247 lib/layouts/elsart.layout:92
-#: lib/layouts/entcs.layout:37 lib/layouts/foils.layout:129
-#: lib/layouts/hollywood.layout:346 lib/layouts/ijmpc.layout:33
-#: lib/layouts/ijmpd.layout:36 lib/layouts/isprs.layout:94
-#: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
-#: lib/layouts/llncs.layout:99 lib/layouts/ltugboat.layout:134
-#: lib/layouts/paper.layout:112 lib/layouts/revtex.layout:90
-#: lib/layouts/revtex4.layout:107 lib/layouts/scrlettr.layout:193
+#: lib/layouts/cv.layout:122 lib/layouts/db_stdtitle.inc:13
+#: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
+#: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
+#: lib/layouts/elsart.layout:92 lib/layouts/entcs.layout:37
+#: lib/layouts/foils.layout:129 lib/layouts/hollywood.layout:346
+#: lib/layouts/ijmpc.layout:33 lib/layouts/ijmpd.layout:36
+#: lib/layouts/isprs.layout:94 lib/layouts/kluwer.layout:104
+#: lib/layouts/latex8.layout:33 lib/layouts/llncs.layout:99
+#: lib/layouts/ltugboat.layout:134 lib/layouts/paper.layout:112
+#: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
+#: lib/layouts/scrclass.inc:146 lib/layouts/scrlettr.layout:193
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:109
-#: lib/layouts/simplecv.layout:124 lib/layouts/svprobth.layout:35
-#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:60
-#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:146
-#: lib/layouts/stdtitle.inc:12 lib/layouts/svjour.inc:129
+#: lib/layouts/simplecv.layout:124 lib/layouts/stdtitle.inc:12
+#: lib/layouts/svjour.inc:129 lib/layouts/svprobth.layout:35
 msgid "Title"
 msgstr "Cím"
 
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:1009
-#: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
-#: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
-#: lib/layouts/svjour.inc:152
+#: lib/layouts/aapaper.inc:9 lib/layouts/aapaper.layout:76
+#: lib/layouts/beamer.layout:1009 lib/layouts/kluwer.layout:122
+#: lib/layouts/llncs.layout:122 lib/layouts/svjour.inc:152
+#: lib/layouts/svprobth.layout:44
 msgid "Subtitle"
 msgstr "Felirat"
 
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
+#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:81
 #: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:416
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
-#: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
-#: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
-#: lib/layouts/hollywood.layout:333 lib/layouts/ijmpc.layout:41
-#: lib/layouts/ijmpd.layout:44 lib/layouts/isprs.layout:76
-#: lib/layouts/kluwer.layout:160 lib/layouts/llncs.layout:176
-#: lib/layouts/ltugboat.layout:154 lib/layouts/paper.layout:123
-#: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
-#: lib/layouts/siamltex.layout:126 lib/layouts/svprobth.layout:52
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:81
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:154
-#: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:182
+#: lib/layouts/db_stdtitle.inc:21 lib/layouts/egs.layout:290
+#: lib/layouts/elsart.layout:112 lib/layouts/entcs.layout:47
+#: lib/layouts/foils.layout:137 lib/layouts/hollywood.layout:333
+#: lib/layouts/ijmpc.layout:41 lib/layouts/ijmpd.layout:44
+#: lib/layouts/isprs.layout:76 lib/layouts/kluwer.layout:160
+#: lib/layouts/llncs.layout:176 lib/layouts/ltugboat.layout:154
+#: lib/layouts/paper.layout:123 lib/layouts/revtex.layout:98
+#: lib/layouts/revtex4.layout:115 lib/layouts/scrclass.inc:154
+#: lib/layouts/siamltex.layout:126 lib/layouts/stdtitle.inc:31
+#: lib/layouts/svjour.inc:182 lib/layouts/svprobth.layout:52
 msgid "Author"
 msgstr "Szerzõ"
 
 #: lib/layouts/aa.layout:68 lib/layouts/aa.layout:127
-#: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:234
+#: lib/layouts/aapaper.inc:30 lib/layouts/aapaper.layout:82
+#: lib/layouts/amsdefs.inc:152 lib/layouts/egs.layout:234
 #: lib/layouts/entcs.layout:57 lib/layouts/g-brief-en.layout:179
 #: lib/layouts/g-brief2.layout:715 lib/layouts/ijmpc.layout:50
 #: lib/layouts/ijmpd.layout:53 lib/layouts/isprs.layout:115
-#: lib/layouts/kluwer.layout:178 lib/layouts/revtex.layout:116
-#: lib/layouts/revtex4.layout:164 lib/layouts/scrlettr.layout:144
-#: lib/layouts/scrlttr2.layout:39 lib/layouts/aapaper.inc:30
-#: lib/layouts/amsdefs.inc:152 lib/layouts/lyxmacros.inc:43
+#: lib/layouts/kluwer.layout:178 lib/layouts/lyxmacros.inc:43
+#: lib/layouts/revtex.layout:116 lib/layouts/revtex4.layout:164
+#: lib/layouts/scrlettr.layout:144 lib/layouts/scrlttr2.layout:39
 msgid "Address"
 msgstr "Cím"
 
 #: lib/layouts/aa.layout:71 lib/layouts/aa.layout:144
-#: lib/layouts/aapaper.layout:88 lib/layouts/aapaper.inc:65
+#: lib/layouts/aapaper.inc:65 lib/layouts/aapaper.layout:88
 msgid "Offprint"
 msgstr "Offprint"
 
@@ -3466,24 +3467,24 @@ msgstr "Levél"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:630 lib/layouts/egs.layout:476
-#: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
-#: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
-#: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:101
+#: lib/layouts/beamer.layout:630 lib/layouts/db_stdtitle.inc:35
+#: lib/layouts/egs.layout:476 lib/layouts/foils.layout:144
+#: lib/layouts/g-brief-en.layout:188 lib/layouts/g-brief2.layout:800
+#: lib/layouts/kluwer.layout:143 lib/layouts/revtex.layout:106
+#: lib/layouts/revtex4.layout:123 lib/layouts/scrclass.inc:161
 #: lib/layouts/scrlettr.layout:165 lib/layouts/scrlttr2.layout:239
-#: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
+#: lib/layouts/siamltex.layout:137 lib/layouts/stdtitle.inc:50
 #: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:314
 msgid "Date"
 msgstr "Dátum"
 
 #: lib/layouts/aa.layout:83 lib/layouts/aa.layout:190
-#: lib/layouts/aapaper.layout:100 lib/layouts/amsart-plain.layout:139
-#: lib/layouts/amsart-seq.layout:251 lib/layouts/egs.layout:538
-#: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
+#: lib/layouts/aapaper.inc:83 lib/layouts/aapaper.layout:100
+#: lib/layouts/amsart-plain.layout:139 lib/layouts/amsart-seq.layout:251
 #: lib/layouts/amsmaths-plain.inc:223 lib/layouts/amsmaths-seq.inc:184
-#: lib/layouts/amsmaths.inc:473 lib/layouts/svjour.inc:319
+#: lib/layouts/amsmaths.inc:473 lib/layouts/egs.layout:538
+#: lib/layouts/elsart.layout:427 lib/layouts/svjour.inc:319
 msgid "Acknowledgement"
 msgstr "Köszönetnyilvánítás"
 
@@ -3500,40 +3501,56 @@ msgstr "Levelezés vele:"
 msgid "Acknowledgements."
 msgstr "Köszönetnyilvánítások."
 
+#: lib/layouts/aapaper.inc:47 lib/layouts/aapaper.layout:85
+#: lib/layouts/aastex.layout:97 lib/layouts/aastex.layout:307
+#: lib/layouts/amsdefs.inc:178 lib/layouts/latex8.layout:57
+#: lib/layouts/llncs.layout:232
+msgid "Email"
+msgstr "E-mail"
+
+#: lib/layouts/aapaper.inc:56
+msgid "email:"
+msgstr "email:"
+
+#: lib/layouts/aapaper.inc:95 lib/layouts/aastex.layout:112
+#: lib/layouts/aastex.layout:325 lib/layouts/apa.layout:222
+#: lib/layouts/egs.layout:513 lib/layouts/isprs.layout:215
+#: lib/layouts/kluwer.layout:302 lib/layouts/kluwer.layout:314
+#: lib/layouts/svjour.inc:294
+msgid "Acknowledgements"
+msgstr "Köszönetnyilvánítások"
+
+#: lib/layouts/aapaper.inc:107 lib/layouts/aapaper.layout:91
+#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.cpp:148
+msgid "Thesaurus"
+msgstr "Szótár"
+
+#: lib/layouts/aapaper.inc:118
+msgid "Thesaurus not supported in recent A&A:"
+msgstr "Fogalomtár nincs támogatva az újkeletû A&A-ban:"
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
 #: src/frontends/qt4/QPrefs.cpp:302
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: lib/layouts/aapaper.layout:85 lib/layouts/aastex.layout:97
-#: lib/layouts/aastex.layout:307 lib/layouts/latex8.layout:57
-#: lib/layouts/llncs.layout:232 lib/layouts/aapaper.inc:47
-#: lib/layouts/amsdefs.inc:178
-msgid "Email"
-msgstr "E-mail"
-
-#: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.cpp:148
-msgid "Thesaurus"
-msgstr "Szótár"
-
-#: lib/layouts/aastex.layout:73 lib/layouts/amsbook.layout:101
-#: lib/layouts/egs.layout:69 lib/layouts/kluwer.layout:84
-#: lib/layouts/llncs.layout:68 lib/layouts/ltugboat.layout:105
-#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:71
-#: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:71
-#: lib/layouts/siamltex.layout:71 lib/layouts/agu_stdsections.inc:60
-#: lib/layouts/aguplus.inc:55 lib/layouts/db_stdsections.inc:52
+#: lib/layouts/aastex.layout:73 lib/layouts/agu_stdsections.inc:60
+#: lib/layouts/aguplus.inc:55 lib/layouts/amsbook.layout:101
+#: lib/layouts/db_stdsections.inc:52 lib/layouts/egs.layout:69
+#: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:68
+#: lib/layouts/ltugboat.layout:105 lib/layouts/memoir.layout:66
 #: lib/layouts/numarticle.inc:40 lib/layouts/numrevtex.inc:33
-#: lib/layouts/scrclass.inc:82 lib/layouts/stdsections.inc:97
+#: lib/layouts/paper.layout:71 lib/layouts/revtex.layout:65
+#: lib/layouts/revtex4.layout:71 lib/layouts/scrclass.inc:82
+#: lib/layouts/siamltex.layout:71 lib/layouts/stdsections.inc:97
 #: lib/layouts/svjour.inc:79
 msgid "Paragraph"
 msgstr "Bekezdés"
 
 #: lib/layouts/aastex.layout:94 lib/layouts/aastex.layout:263
+#: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:60
 #: lib/layouts/apa.layout:150 lib/layouts/latex8.layout:81
-#: lib/layouts/revtex4.layout:133 lib/layouts/agu_stdtitle.inc:128
-#: lib/layouts/aguplus.inc:60
+#: lib/layouts/revtex4.layout:133
 msgid "Affiliation"
 msgstr "Kapcsolat"
 
@@ -3541,20 +3558,12 @@ msgstr "Kapcsolat"
 msgid "And"
 msgstr "És"
 
-#: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
-#: lib/layouts/apa.layout:222 lib/layouts/egs.layout:513
-#: lib/layouts/isprs.layout:215 lib/layouts/kluwer.layout:302
-#: lib/layouts/kluwer.layout:314 lib/layouts/aapaper.inc:95
-#: lib/layouts/svjour.inc:294
-msgid "Acknowledgements"
-msgstr "Köszönetnyilvánítások"
-
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:454
-#: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
-#: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
-#: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
-#: lib/layouts/siamltex.layout:194 lib/layouts/amsdefs.inc:243
+#: lib/layouts/aastex.layout:453 lib/layouts/amsdefs.inc:243
+#: lib/layouts/beamer.layout:454 lib/layouts/cl2emult.layout:116
+#: lib/layouts/egs.layout:577 lib/layouts/kluwer.layout:344
+#: lib/layouts/kluwer.layout:356 lib/layouts/llncs.layout:275
+#: lib/layouts/moderncv.layout:207 lib/layouts/siamltex.layout:194
 #: lib/layouts/stdstruct.inc:53 lib/layouts/svjour.inc:340
 #: src/output_plaintext.cpp:157
 msgid "References"
@@ -3652,27 +3661,355 @@ msgstr "Obj:"
 msgid "Dataset:"
 msgstr "Adatkészlet"
 
-#: lib/layouts/amsart-plain.layout:27 lib/layouts/foils.layout:300
-#: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:35
-#: lib/layouts/amsmaths.inc:95
+#: lib/layouts/agu_stdsections.inc:12 lib/layouts/article.layout:18
+#: lib/layouts/beamer.layout:897 lib/layouts/db_stdsections.inc:12
+#: lib/layouts/mwart.layout:23 lib/layouts/numarticle.inc:5
+#: lib/layouts/numreport.inc:7 lib/layouts/paper.layout:31
+#: lib/layouts/scrartcl.layout:20 lib/layouts/scrclass.inc:46
+#: lib/layouts/seminar.layout:24 lib/layouts/stdsections.inc:11
+msgid "Part"
+msgstr "Rész"
+
+#: lib/layouts/agu_stdsections.inc:21 lib/layouts/db_stdsections.inc:20
+#: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:46
+#: lib/layouts/numreport.inc:12 lib/layouts/scrbook.layout:16
+#: lib/layouts/scrclass.inc:53 lib/layouts/stdsections.inc:31
+msgid "Chapter"
+msgstr "Fejezet"
+
+#: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
+#: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
+#: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:71
+#: lib/layouts/numarticle.inc:49 lib/layouts/paper.layout:80
+#: lib/layouts/scrclass.inc:89 lib/layouts/stdsections.inc:105
+#: lib/layouts/svjour.inc:88
+msgid "Subparagraph"
+msgstr "Albekezdés"
+
+#: lib/layouts/agu_stdsections.inc:79
+msgid "Subsubparagraph"
+msgstr "Alalbekezdés"
+
+#: lib/layouts/agu_stdtitle.inc:13
+msgid "Header"
+msgstr "Fejléc"
+
+#: lib/layouts/agu_stdtitle.inc:19
+msgid "-- Header --"
+msgstr "-- Fejléc --"
+
+#: lib/layouts/agu_stdtitle.inc:31
+msgid "Special-section"
+msgstr "Speciális-szakasz"
+
+#: lib/layouts/agu_stdtitle.inc:37
+msgid "Special-section:"
+msgstr "Speciális-szakasz:"
+
+#: lib/layouts/agu_stdtitle.inc:47
+msgid "AGU-journal"
+msgstr "AGU-folyóirat"
+
+#: lib/layouts/agu_stdtitle.inc:51
+msgid "AGU-journal:"
+msgstr "AGU-folyóirat:"
+
+#: lib/layouts/agu_stdtitle.inc:56
+msgid "Citation-number"
+msgstr "Idézet száma"
+
+#: lib/layouts/agu_stdtitle.inc:59
+msgid "Citation-number:"
+msgstr "Idézet száma:"
+
+#: lib/layouts/agu_stdtitle.inc:65
+msgid "AGU-volume"
+msgstr "AGU-kötet"
+
+#: lib/layouts/agu_stdtitle.inc:68
+msgid "AGU-volume:"
+msgstr "AGU-kötet:"
+
+#: lib/layouts/agu_stdtitle.inc:73
+msgid "AGU-issue"
+msgstr "AGU-példány"
+
+#: lib/layouts/agu_stdtitle.inc:76
+msgid "AGU-issue:"
+msgstr "AGU-példány:"
+
+#: lib/layouts/agu_stdtitle.inc:84
+msgid "Copyright:"
+msgstr "Copyright:"
+
+#: lib/layouts/agu_stdtitle.inc:89
+msgid "Index-terms"
+msgstr "Tárgyszó-elemek"
+
+#: lib/layouts/agu_stdtitle.inc:93
+msgid "Index-terms..."
+msgstr "Tárgyszó-elemek..."
+
+#: lib/layouts/agu_stdtitle.inc:102
+msgid "Index-term"
+msgstr "Tárgyszó-elem"
+
+#: lib/layouts/agu_stdtitle.inc:106
+msgid "Index-term:"
+msgstr "Tárgyszó-elem:"
+
+#: lib/layouts/agu_stdtitle.inc:111
+msgid "Cross-term"
+msgstr "Keresztkifejezés"
+
+#: lib/layouts/agu_stdtitle.inc:115
+msgid "Cross-term:"
+msgstr "Keresztkifejezés:"
+
+#: lib/layouts/agu_stdtitle.inc:123 lib/layouts/ijmpc.layout:83
+#: lib/layouts/ijmpd.layout:86 lib/layouts/kluwer.layout:290
+#: lib/layouts/paper.layout:177 lib/layouts/revtex4.layout:246
+#: lib/layouts/spie.layout:46
+msgid "Keywords:"
+msgstr "Kulcsszavak:"
+
+#: lib/layouts/agu_stdtitle.inc:131 lib/layouts/apa.layout:162
+#: lib/layouts/revtex4.layout:145
+msgid "Affiliation:"
+msgstr "Kapcsolat:"
+
+#: lib/layouts/agu_stdtitle.inc:136
+msgid "Supplementary"
+msgstr "Kiegészítés"
+
+#: lib/layouts/agu_stdtitle.inc:140
+msgid "Supplementary..."
+msgstr "Kiegészítõ..."
+
+#: lib/layouts/agu_stdtitle.inc:149
+msgid "Supp-note"
+msgstr "Kiegészítõ-megjegyzés"
+
+#: lib/layouts/agu_stdtitle.inc:153
+msgid "Sup-mat-note:"
+msgstr "Kiegészítõ-mat-megjegyzés:"
+
+#: lib/layouts/agu_stdtitle.inc:158
+msgid "Cite-other"
+msgstr "Hivatkozás másra"
+
+#: lib/layouts/agu_stdtitle.inc:162
+msgid "Cite-other:"
+msgstr "Hivatkozás másra:"
+
+#: lib/layouts/agu_stdtitle.inc:184 lib/layouts/g-brief-de.layout:34
+#: lib/layouts/g-brief-en.layout:34 lib/layouts/g-brief2.layout:57
+#: lib/layouts/scrlettr.layout:116 lib/layouts/scrlttr2.layout:144
+msgid "Name"
+msgstr "Név"
+
+#: lib/layouts/agu_stdtitle.inc:188 lib/layouts/g-brief-de.layout:44
+#: lib/layouts/g-brief-en.layout:44 lib/layouts/g-brief2.layout:67
+#: lib/layouts/scrlettr.layout:128
+msgid "Name:"
+msgstr "Nyomtató neve:"
+
+#: lib/layouts/agu_stdtitle.inc:198 lib/layouts/aguplus.inc:107
+#: lib/layouts/egs.layout:407
+msgid "Received"
+msgstr "Beérkezett"
+
+#: lib/layouts/agu_stdtitle.inc:201 lib/layouts/aguplus.inc:111
+#: lib/layouts/egs.layout:421
+msgid "Received:"
+msgstr "Beérkezett:"
+
+#: lib/layouts/agu_stdtitle.inc:206 lib/layouts/aguplus.inc:115
+msgid "Revised"
+msgstr "Felülvizsgált"
+
+#: lib/layouts/agu_stdtitle.inc:209 lib/layouts/aguplus.inc:119
+msgid "Revised:"
+msgstr "Felülvizsgált:"
+
+#: lib/layouts/agu_stdtitle.inc:214 lib/layouts/aguplus.inc:123
+#: lib/layouts/egs.layout:430
+msgid "Accepted"
+msgstr "Elfogadott"
+
+#: lib/layouts/agu_stdtitle.inc:217 lib/layouts/aguplus.inc:127
+#: lib/layouts/egs.layout:444
+msgid "Accepted:"
+msgstr "Elfogadott:"
+
+#: lib/layouts/agu_stdtitle.inc:222
+msgid "Ident-line"
+msgstr "Behúzott sor"
+
+#: lib/layouts/agu_stdtitle.inc:225
+msgid "Ident-line:"
+msgstr "Behúzott sor"
+
+#: lib/layouts/agu_stdtitle.inc:230
+msgid "Runhead"
+msgstr "Futófej"
+
+#: lib/layouts/agu_stdtitle.inc:233
+msgid "Runhead:"
+msgstr "Futófej:"
+
+#: lib/layouts/agu_stdtitle.inc:241
+msgid "Published-online:"
+msgstr "Online kiadás:"
+
+#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.cpp:41
+msgid "Citation"
+msgstr "Idézet"
+
+#: lib/layouts/agu_stdtitle.inc:266
+msgid "Citation:"
+msgstr "Idézet:"
+
+#: lib/layouts/agu_stdtitle.inc:271
+msgid "Posting-order"
+msgstr "Postázási sorrend"
+
+#: lib/layouts/agu_stdtitle.inc:274
+msgid "Posting-order:"
+msgstr "Postázási sorrend:"
+
+#: lib/layouts/agu_stdtitle.inc:279
+msgid "AGU-pages"
+msgstr "AGU-oldalak"
+
+#: lib/layouts/agu_stdtitle.inc:282
+msgid "AGU-pages:"
+msgstr "AGU-oldalak:"
+
+#: lib/layouts/agu_stdtitle.inc:287
+msgid "Words"
+msgstr "Szavak"
+
+#: lib/layouts/agu_stdtitle.inc:290
+msgid "Words:"
+msgstr "Szavak:"
+
+#: lib/layouts/agu_stdtitle.inc:295
+msgid "Figures"
+msgstr "Ábrák"
+
+#: lib/layouts/agu_stdtitle.inc:298
+msgid "Figures:"
+msgstr "Ábrák:"
+
+#: lib/layouts/agu_stdtitle.inc:303
+msgid "Tables"
+msgstr "Táblázatok"
+
+#: lib/layouts/agu_stdtitle.inc:306
+msgid "Tables:"
+msgstr "Táblázat:"
+
+#: lib/layouts/agu_stdtitle.inc:311
+msgid "Datasets"
+msgstr "Adatkészletek"
+
+#: lib/layouts/agu_stdtitle.inc:314
+msgid "Datasets:"
+msgstr "Adatkészletek:"
+
+#: lib/layouts/aguplus.inc:66 lib/layouts/db_stdstarsections.inc:72
+#: lib/layouts/siamltex.layout:102 lib/layouts/stdstarsections.inc:57
+msgid "Paragraph*"
+msgstr "Bekezdés*"
+
+#: lib/layouts/aguplus.inc:75 lib/layouts/cv.layout:98
+#: lib/layouts/foils.layout:190 lib/layouts/simplecv.layout:100
+msgid "Left Header"
+msgstr "Bal fejléc"
+
+#: lib/layouts/aguplus.inc:89 lib/layouts/foils.layout:194
+msgid "Left Header:"
+msgstr "Bal fejléc:"
+
+#: lib/layouts/aguplus.inc:99 lib/layouts/cv.layout:115
+#: lib/layouts/foils.layout:198 lib/layouts/simplecv.layout:117
+msgid "Right Header"
+msgstr "Jobb fejléc"
+
+#: lib/layouts/aguplus.inc:103 lib/layouts/foils.layout:202
+msgid "Right Header:"
+msgstr "Jobb fejléc:"
+
+#: lib/layouts/aguplus.inc:131
+msgid "CCC"
+msgstr "CCC"
+
+#: lib/layouts/aguplus.inc:135
+msgid "CCC code:"
+msgstr "CCC kód:"
+
+#: lib/layouts/aguplus.inc:144
+msgid "PaperId"
+msgstr "Papír azonosító"
+
+#: lib/layouts/aguplus.inc:148
+msgid "Paper Id:"
+msgstr "Papír azonosító:"
+
+#: lib/layouts/aguplus.inc:152
+msgid "AuthorAddr"
+msgstr "Szerzõcíme"
+
+#: lib/layouts/aguplus.inc:156
+msgid "Author Address:"
+msgstr "Szerzõ címe:"
+
+#: lib/layouts/aguplus.inc:160
+msgid "SlugComment"
+msgstr "Köztes megjegyzés"
+
+#: lib/layouts/aguplus.inc:164
+msgid "Slug Comment:"
+msgstr "Köztes megjegyzés:"
+
+#: lib/layouts/aguplus.inc:180
+msgid "Plate"
+msgstr "Plate"
+
+#: lib/layouts/aguplus.inc:190
+msgid "Planotable"
+msgstr "Planotable"
+
+#: lib/layouts/aguplus.inc:201
+msgid "Table Caption"
+msgstr "Táblázat címe"
+
+#: lib/layouts/aguplus.inc:212
+msgid "TableCaption"
+msgstr "Táblázat címe"
+
+#: lib/layouts/amsart-plain.layout:27 lib/layouts/amsmaths-plain.inc:35
+#: lib/layouts/amsmaths.inc:95 lib/layouts/foils.layout:300
+#: lib/layouts/siamltex.layout:270
 msgid "Theorem."
 msgstr "Tétel."
 
-#: lib/layouts/amsart-plain.layout:33 lib/layouts/foils.layout:314
-#: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:45
-#: lib/layouts/amsmaths.inc:117
+#: lib/layouts/amsart-plain.layout:33 lib/layouts/amsmaths-plain.inc:45
+#: lib/layouts/amsmaths.inc:117 lib/layouts/foils.layout:314
+#: lib/layouts/siamltex.layout:284
 msgid "Corollary."
 msgstr "Következmény."
 
-#: lib/layouts/amsart-plain.layout:39 lib/layouts/foils.layout:307
-#: lib/layouts/siamltex.layout:277 lib/layouts/amsmaths-plain.inc:55
-#: lib/layouts/amsmaths.inc:139
+#: lib/layouts/amsart-plain.layout:39 lib/layouts/amsmaths-plain.inc:55
+#: lib/layouts/amsmaths.inc:139 lib/layouts/foils.layout:307
+#: lib/layouts/siamltex.layout:277
 msgid "Lemma."
 msgstr "Segédtétel."
 
-#: lib/layouts/amsart-plain.layout:45 lib/layouts/foils.layout:321
-#: lib/layouts/siamltex.layout:291 lib/layouts/amsmaths-plain.inc:65
-#: lib/layouts/amsmaths.inc:161
+#: lib/layouts/amsart-plain.layout:45 lib/layouts/amsmaths-plain.inc:65
+#: lib/layouts/amsmaths.inc:161 lib/layouts/foils.layout:321
+#: lib/layouts/siamltex.layout:291
 msgid "Proposition."
 msgstr "Javaslat."
 
@@ -3686,8 +4023,8 @@ msgid "Criterion."
 msgstr "Kritérium."
 
 #: lib/layouts/amsart-plain.layout:61 lib/layouts/amsart-seq.layout:173
-#: lib/layouts/elsart.layout:346 lib/layouts/amsmaths-plain.inc:93
-#: lib/layouts/amsmaths-seq.inc:80 lib/layouts/amsmaths.inc:202
+#: lib/layouts/amsmaths-plain.inc:93 lib/layouts/amsmaths-seq.inc:80
+#: lib/layouts/amsmaths.inc:202 lib/layouts/elsart.layout:346
 #: lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "Algoritmus"
@@ -3705,9 +4042,9 @@ msgstr "Tény."
 msgid "Axiom."
 msgstr "Axióma."
 
-#: lib/layouts/amsart-plain.layout:81 lib/layouts/foils.layout:328
-#: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:125
-#: lib/layouts/amsmaths.inc:268
+#: lib/layouts/amsart-plain.layout:81 lib/layouts/amsmaths-plain.inc:125
+#: lib/layouts/amsmaths.inc:268 lib/layouts/foils.layout:328
+#: lib/layouts/siamltex.layout:297
 msgid "Definition."
 msgstr "Definíció."
 
@@ -3736,8 +4073,8 @@ msgstr "Feladat."
 msgid "Remark."
 msgstr "Észrevétel."
 
-#: lib/layouts/amsart-plain.layout:117 lib/layouts/llncs.layout:308
-#: lib/layouts/amsmaths-plain.inc:185 lib/layouts/amsmaths.inc:410
+#: lib/layouts/amsart-plain.layout:117 lib/layouts/amsmaths-plain.inc:185
+#: lib/layouts/amsmaths.inc:410 lib/layouts/llncs.layout:308
 #: lib/layouts/svjour.inc:362
 msgid "Claim."
 msgstr "Követelés."
@@ -3753,8 +4090,8 @@ msgid "Notation."
 msgstr "Jelölés."
 
 #: lib/layouts/amsart-plain.layout:133 lib/layouts/amsart-seq.layout:245
-#: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:213
-#: lib/layouts/amsmaths-seq.inc:176 lib/layouts/amsmaths.inc:462
+#: lib/layouts/amsmaths-plain.inc:213 lib/layouts/amsmaths-seq.inc:176
+#: lib/layouts/amsmaths.inc:462 lib/layouts/elsart.layout:409
 msgid "Summary"
 msgstr "Összegzés"
 
@@ -3762,8 +4099,8 @@ msgstr "Összegzés"
 msgid "Summary."
 msgstr "Összegzés."
 
-#: lib/layouts/amsart-plain.layout:141 lib/layouts/egs.layout:552
-#: lib/layouts/amsmaths-plain.inc:225 lib/layouts/amsmaths.inc:487
+#: lib/layouts/amsart-plain.layout:141 lib/layouts/amsmaths-plain.inc:225
+#: lib/layouts/amsmaths.inc:487 lib/layouts/egs.layout:552
 #: lib/layouts/svjour.inc:322
 msgid "Acknowledgement."
 msgstr "Köszönetnyilvánítás."
@@ -3880,6 +4217,253 @@ msgstr "\\arabic{section}."
 msgid "Chapter Exercises"
 msgstr "Fejezet feladatok"
 
+#: lib/layouts/amsdefs.inc:43 lib/layouts/foils.layout:286
+#: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:236
+#: lib/layouts/llncs.layout:377 lib/layouts/siamltex.layout:255
+#: lib/layouts/svjour.inc:439
+msgid "Proof."
+msgstr "Bizonyítás"
+
+#: lib/layouts/amsdefs.inc:114 lib/layouts/g-brief-en.layout:191
+#: lib/layouts/g-brief2.layout:810 lib/layouts/revtex.layout:108
+#: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:168
+#: lib/layouts/scrlttr2.layout:243
+msgid "Date:"
+msgstr "Dátum:"
+
+#: lib/layouts/amsdefs.inc:139 lib/layouts/egs.layout:506
+#: lib/layouts/kluwer.layout:271 lib/layouts/llncs.layout:254
+#: lib/layouts/siamltex.layout:156 lib/layouts/svglobal.layout:44
+#: lib/layouts/svjog.layout:49 lib/layouts/svjour.inc:266
+msgid "Abstract."
+msgstr "Kivonat."
+
+#: lib/layouts/amsdefs.inc:163 lib/layouts/elsart.layout:141
+#: lib/layouts/g-brief-en.layout:184 lib/layouts/g-brief2.layout:726
+#: lib/layouts/revtex.layout:128 lib/layouts/revtex4.layout:167
+#: lib/layouts/scrlettr.layout:147 lib/layouts/scrlttr2.layout:56
+msgid "Address:"
+msgstr "Cím:"
+
+#: lib/layouts/amsdefs.inc:171
+msgid "Current Address"
+msgstr "Jelenlegi cím"
+
+#: lib/layouts/amsdefs.inc:174
+msgid "Current address:"
+msgstr "Jelenlegi cím:"
+
+#: lib/layouts/amsdefs.inc:182
+msgid "E-mail address:"
+msgstr "E-mail cím:"
+
+#: lib/layouts/amsdefs.inc:190 lib/layouts/elsart.layout:181
+#: lib/layouts/revtex4.layout:198
+msgid "URL:"
+msgstr "URL:"
+
+#: lib/layouts/amsdefs.inc:197
+msgid "Key words and phrases:"
+msgstr "Kulcsszavak és frázisok:"
+
+#: lib/layouts/amsdefs.inc:201 lib/layouts/elsart.layout:193
+#: lib/layouts/revtex4.layout:171
+msgid "Thanks"
+msgstr "Köszönet"
+
+#: lib/layouts/amsdefs.inc:204 lib/layouts/revtex4.layout:174
+msgid "Thanks:"
+msgstr "Köszönet:"
+
+#: lib/layouts/amsdefs.inc:208
+msgid "Dedicatory"
+msgstr "Ajánló"
+
+#: lib/layouts/amsdefs.inc:211 lib/layouts/svjour.inc:125
+msgid "Dedication:"
+msgstr "Dedikálás:"
+
+#: lib/layouts/amsdefs.inc:215
+msgid "Translator"
+msgstr "Fordító"
+
+#: lib/layouts/amsdefs.inc:218
+msgid "Translator:"
+msgstr "Fordító:"
+
+#: lib/layouts/amsdefs.inc:222
+msgid "Subjectclass"
+msgstr "Tárgyosztály"
+
+#: lib/layouts/amsdefs.inc:225
+msgid "1991 Mathematics Subject Classification:"
+msgstr "1991 Mathematikai Tárgy Osztályozás:"
+
+#: lib/layouts/amsmaths-plain.inc:95
+msgid "Algorithm #."
+msgstr "Algoritmus #."
+
+#: lib/layouts/amsmaths.inc:79 lib/layouts/ijmpd.layout:219
+msgid "Theorem @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. tétel"
+
+#: lib/layouts/amsmaths.inc:91 lib/layouts/foils.layout:297
+#: lib/layouts/siamltex.layout:267
+msgid "Theorem*"
+msgstr "Tétel*"
+
+#: lib/layouts/amsmaths.inc:106
+msgid "Corollary @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. következmény"
+
+#: lib/layouts/amsmaths.inc:114 lib/layouts/foils.layout:311
+#: lib/layouts/siamltex.layout:281
+msgid "Corollary*"
+msgstr "Következmény*"
+
+#: lib/layouts/amsmaths.inc:128
+msgid "Lemma @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. segédtétel"
+
+#: lib/layouts/amsmaths.inc:136 lib/layouts/foils.layout:304
+#: lib/layouts/siamltex.layout:274
+msgid "Lemma*"
+msgstr "Segédtétel*"
+
+#: lib/layouts/amsmaths.inc:150
+msgid "Proposition @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. feltevés"
+
+#: lib/layouts/amsmaths.inc:158 lib/layouts/foils.layout:318
+#: lib/layouts/siamltex.layout:288
+msgid "Proposition*"
+msgstr "Javaslat*"
+
+#: lib/layouts/amsmaths.inc:172
+msgid "Conjecture @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. feltevés"
+
+#: lib/layouts/amsmaths.inc:180
+msgid "Conjecture*"
+msgstr "Feltevés*"
+
+#: lib/layouts/amsmaths.inc:194
+msgid "Criterion @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. kritérium"
+
+#: lib/layouts/amsmaths.inc:205
+msgid "Algorithm @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. algoritmus"
+
+#: lib/layouts/amsmaths.inc:216
+msgid "Fact @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. tény"
+
+#: lib/layouts/amsmaths.inc:224
+msgid "Fact*"
+msgstr "Tény*"
+
+#: lib/layouts/amsmaths.inc:238
+msgid "Axiom @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. axióma"
+
+#: lib/layouts/amsmaths.inc:249
+msgid "Definition @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. definíció"
+
+#: lib/layouts/amsmaths.inc:264 lib/layouts/foils.layout:325
+#: lib/layouts/siamltex.layout:294
+msgid "Definition*"
+msgstr "Definíció*"
+
+#: lib/layouts/amsmaths.inc:279
+msgid "Example @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. példa"
+
+#: lib/layouts/amsmaths.inc:287
+msgid "Example*"
+msgstr "Példa*"
+
+#: lib/layouts/amsmaths.inc:301
+msgid "Condition @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. feltétel"
+
+#: lib/layouts/amsmaths.inc:309
+msgid "Condition*"
+msgstr "Feltétel*"
+
+#: lib/layouts/amsmaths.inc:323
+msgid "Problem @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. probléma"
+
+#: lib/layouts/amsmaths.inc:331
+msgid "Problem*"
+msgstr "Probléma*"
+
+#: lib/layouts/amsmaths.inc:345
+msgid "Exercise @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. észrevétel"
+
+#: lib/layouts/amsmaths.inc:354
+msgid "Exercise*"
+msgstr "Feladat*"
+
+#: lib/layouts/amsmaths.inc:368
+msgid "Remark @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. észrevétel"
+
+#: lib/layouts/amsmaths.inc:384
+msgid "Remark*"
+msgstr "Észrevétel*"
+
+#: lib/layouts/amsmaths.inc:399
+msgid "Claim @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. követelés"
+
+#: lib/layouts/amsmaths.inc:407
+msgid "Claim*"
+msgstr "Követelés*"
+
+#: lib/layouts/amsmaths.inc:421
+msgid "Note @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. megjegyzés"
+
+#: lib/layouts/amsmaths.inc:429
+msgid "Note*"
+msgstr "Megjegyzés*"
+
+#: lib/layouts/amsmaths.inc:443
+msgid "Notation @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. jelölés"
+
+#: lib/layouts/amsmaths.inc:451
+msgid "Notation*"
+msgstr "Jelölés*"
+
+#: lib/layouts/amsmaths.inc:465
+msgid "Summary @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. összegzés"
+
+#: lib/layouts/amsmaths.inc:476
+msgid "Acknowledgement @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. köszönetnyilvánítás"
+
+#: lib/layouts/amsmaths.inc:484
+msgid "Acknowledgement*"
+msgstr "Köszönetnyilvánítás*"
+
+#: lib/layouts/amsmaths.inc:498
+msgid "Case @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. eset"
+
+#: lib/layouts/amsmaths.inc:509
+msgid "Conclusion @Section@.\\arabic{theorem}."
+msgstr "@Section@.\\arabic{theorem}. következtetés"
+
+#: lib/layouts/amsmaths.inc:517
+msgid "Conclusion*"
+msgstr "Következtetés*"
+
 #: lib/layouts/apa.layout:50
 msgid "RightHeader"
 msgstr "Jobb fejléc"
@@ -3911,11 +4495,6 @@ msgstr "Három-szerzõ"
 #: lib/layouts/apa.layout:143
 msgid "FourAuthors"
 msgstr "Négy-szerzõ"
-
-#: lib/layouts/apa.layout:162 lib/layouts/revtex4.layout:145
-#: lib/layouts/agu_stdtitle.inc:131
-msgid "Affiliation:"
-msgstr "Kapcsolat:"
 
 #: lib/layouts/apa.layout:171
 msgid "TwoAffiliations"
@@ -3983,18 +4562,9 @@ msgstr "Seriate"
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:897
-#: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
-#: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
-#: lib/layouts/numarticle.inc:5 lib/layouts/numreport.inc:7
-#: lib/layouts/scrclass.inc:46 lib/layouts/stdsections.inc:11
-msgid "Part"
-msgstr "Rész"
-
-#: lib/layouts/article.layout:29 lib/layouts/mwart.layout:34
-#: lib/layouts/scrartcl.layout:30 lib/layouts/seminar.layout:35
-#: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
+#: lib/layouts/article.layout:29 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/mwart.layout:34 lib/layouts/scrartcl.layout:30
+#: lib/layouts/seminar.layout:35 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Rész*"
 
@@ -4156,8 +4726,8 @@ msgstr "Frame alcím"
 msgid "Institute"
 msgstr "Intézet"
 
-#: lib/layouts/beamer.layout:761 lib/layouts/egs.layout:641
-#: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
+#: lib/layouts/beamer.layout:761 lib/layouts/db_lyxmacros.inc:18
+#: lib/layouts/egs.layout:641 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX-kód"
 
@@ -4411,15 +4981,58 @@ msgstr "Téma"
 msgid "MMMMM"
 msgstr "MMMMM"
 
-#: lib/layouts/cv.layout:98 lib/layouts/foils.layout:190
-#: lib/layouts/simplecv.layout:100 lib/layouts/aguplus.inc:75
-msgid "Left Header"
-msgstr "Bal fejléc"
+#: lib/layouts/db_lyxmacros.inc:11 lib/layouts/manpage.layout:145
+msgid "Code"
+msgstr "Kód"
 
-#: lib/layouts/cv.layout:115 lib/layouts/foils.layout:198
-#: lib/layouts/simplecv.layout:117 lib/layouts/aguplus.inc:99
-msgid "Right Header"
-msgstr "Jobb fejléc"
+#: lib/layouts/db_stdlayouts.inc:11
+msgid "Literal"
+msgstr "Betûszerinti"
+
+#: lib/layouts/db_stdlayouts.inc:18 lib/layouts/egs.layout:94
+#: lib/layouts/stdlayouts.inc:11
+msgid "Quotation"
+msgstr "Idézet (hosszú)"
+
+#: lib/layouts/db_stdlayouts.inc:30 lib/layouts/manpage.layout:163
+msgid "SGML"
+msgstr "SGML"
+
+#: lib/layouts/db_stdstarsections.inc:24 lib/layouts/stdstarsections.inc:21
+msgid "Chapter*"
+msgstr "Fejezet*"
+
+#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:66
+msgid "Subparagraph*"
+msgstr "Albekezdés*"
+
+#: lib/layouts/db_stdtitle.inc:27
+msgid "Authorgroup"
+msgstr "Szerzõcsoport"
+
+#: lib/layouts/db_stdtitle.inc:43
+msgid "RevisionHistory"
+msgstr "Revízió elõélete"
+
+#: lib/layouts/db_stdtitle.inc:59
+msgid "Revision History"
+msgstr "Revízió elõélete"
+
+#: lib/layouts/db_stdtitle.inc:64
+msgid "Revision"
+msgstr "Revízió"
+
+#: lib/layouts/db_stdtitle.inc:80
+msgid "RevisionRemark"
+msgstr "Revíziós megjegyzés"
+
+#: lib/layouts/db_stdtitle.inc:97
+msgid "FirstName"
+msgstr "Keresztnév"
+
+#: lib/layouts/db_stdtitle.inc:101
+msgid "Surname"
+msgstr "Családnév"
 
 #: lib/layouts/dinbrief.layout:13 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
@@ -4519,20 +5132,6 @@ msgstr "Dátum"
 msgid "Datum:"
 msgstr "Dátum:"
 
-#: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
-#: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:71
-#: lib/layouts/paper.layout:80 lib/layouts/agu_stdsections.inc:70
-#: lib/layouts/db_stdsections.inc:60 lib/layouts/numarticle.inc:49
-#: lib/layouts/scrclass.inc:89 lib/layouts/stdsections.inc:105
-#: lib/layouts/svjour.inc:88
-msgid "Subparagraph"
-msgstr "Albekezdés"
-
-#: lib/layouts/egs.layout:94 lib/layouts/db_stdlayouts.inc:18
-#: lib/layouts/stdlayouts.inc:11
-msgid "Quotation"
-msgstr "Idézet (hosszú)"
-
 #: lib/layouts/egs.layout:112 lib/layouts/manpage.layout:29
 #: lib/layouts/stdlayouts.inc:29
 msgid "Quote"
@@ -4582,26 +5181,6 @@ msgstr "Elsõ szerzõ"
 msgid "1st_author_surname:"
 msgstr "Elsõ szerzõ családneve:"
 
-#: lib/layouts/egs.layout:407 lib/layouts/agu_stdtitle.inc:198
-#: lib/layouts/aguplus.inc:107
-msgid "Received"
-msgstr "Beérkezett"
-
-#: lib/layouts/egs.layout:421 lib/layouts/agu_stdtitle.inc:201
-#: lib/layouts/aguplus.inc:111
-msgid "Received:"
-msgstr "Beérkezett:"
-
-#: lib/layouts/egs.layout:430 lib/layouts/agu_stdtitle.inc:214
-#: lib/layouts/aguplus.inc:123
-msgid "Accepted"
-msgstr "Elfogadott"
-
-#: lib/layouts/egs.layout:444 lib/layouts/agu_stdtitle.inc:217
-#: lib/layouts/aguplus.inc:127
-msgid "Accepted:"
-msgstr "Elfogadott:"
-
 #: lib/layouts/egs.layout:453
 msgid "Offsets"
 msgstr "Eltolások"
@@ -4610,23 +5189,9 @@ msgstr "Eltolások"
 msgid "reprint_reqs_to:"
 msgstr "Újranyomási igények ide:"
 
-#: lib/layouts/egs.layout:506 lib/layouts/kluwer.layout:271
-#: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:156
-#: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
-#: lib/layouts/amsdefs.inc:139 lib/layouts/svjour.inc:266
-msgid "Abstract."
-msgstr "Kivonat."
-
 #: lib/layouts/elsart.layout:132
 msgid "Author Address"
 msgstr "Szerzõ cím"
-
-#: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:184
-#: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:128
-#: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:147
-#: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:163
-msgid "Address:"
-msgstr "Cím:"
 
 #: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:178
 msgid "Author Email"
@@ -4639,16 +5204,6 @@ msgstr "Email:"
 #: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:193
 msgid "Author URL"
 msgstr "Szerzõ URL"
-
-#: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:198
-#: lib/layouts/amsdefs.inc:190
-msgid "URL:"
-msgstr "URL:"
-
-#: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:171
-#: lib/layouts/amsdefs.inc:201
-msgid "Thanks"
-msgstr "Köszönet"
 
 #: lib/layouts/elsart.layout:278
 msgid "Theorem \\arabic{theorem}"
@@ -4867,14 +5422,6 @@ msgstr "Korlátozás"
 msgid "Restriction:"
 msgstr "Korlátozás:"
 
-#: lib/layouts/foils.layout:194 lib/layouts/aguplus.inc:89
-msgid "Left Header:"
-msgstr "Bal fejléc:"
-
-#: lib/layouts/foils.layout:202 lib/layouts/aguplus.inc:103
-msgid "Right Header:"
-msgstr "Jobb fejléc:"
-
 #: lib/layouts/foils.layout:206
 msgid "Right Footer"
 msgstr "Jobb lábjegyzet"
@@ -4912,38 +5459,6 @@ msgstr "Javaslat #."
 msgid "Definition #."
 msgstr "Definíció #."
 
-#: lib/layouts/foils.layout:286 lib/layouts/ijmpc.layout:236
-#: lib/layouts/ijmpd.layout:236 lib/layouts/llncs.layout:377
-#: lib/layouts/siamltex.layout:255 lib/layouts/amsdefs.inc:43
-#: lib/layouts/svjour.inc:439
-msgid "Proof."
-msgstr "Bizonyítás"
-
-#: lib/layouts/foils.layout:297 lib/layouts/siamltex.layout:267
-#: lib/layouts/amsmaths.inc:91
-msgid "Theorem*"
-msgstr "Tétel*"
-
-#: lib/layouts/foils.layout:304 lib/layouts/siamltex.layout:274
-#: lib/layouts/amsmaths.inc:136
-msgid "Lemma*"
-msgstr "Segédtétel*"
-
-#: lib/layouts/foils.layout:311 lib/layouts/siamltex.layout:281
-#: lib/layouts/amsmaths.inc:114
-msgid "Corollary*"
-msgstr "Következmény*"
-
-#: lib/layouts/foils.layout:318 lib/layouts/siamltex.layout:288
-#: lib/layouts/amsmaths.inc:158
-msgid "Proposition*"
-msgstr "Javaslat*"
-
-#: lib/layouts/foils.layout:325 lib/layouts/siamltex.layout:294
-#: lib/layouts/amsmaths.inc:264
-msgid "Definition*"
-msgstr "Definíció*"
-
 #: lib/layouts/g-brief-de.layout:16
 msgid "Brieftext"
 msgstr "Levélszövege"
@@ -4951,18 +5466,6 @@ msgstr "Levélszövege"
 #: lib/layouts/g-brief-de.layout:25
 msgid "Text:"
 msgstr "Szöveg:"
-
-#: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
-#: lib/layouts/g-brief2.layout:57 lib/layouts/scrlettr.layout:116
-#: lib/layouts/scrlttr2.layout:144 lib/layouts/agu_stdtitle.inc:184
-msgid "Name"
-msgstr "Név"
-
-#: lib/layouts/g-brief-de.layout:44 lib/layouts/g-brief-en.layout:44
-#: lib/layouts/g-brief2.layout:67 lib/layouts/scrlettr.layout:128
-#: lib/layouts/agu_stdtitle.inc:188
-msgid "Name:"
-msgstr "Nyomtató neve:"
 
 #: lib/layouts/g-brief-de.layout:53
 msgid "Unterschrift"
@@ -5236,13 +5739,6 @@ msgstr "Postai megjegyzés"
 #: lib/layouts/g-brief-en.layout:175 lib/layouts/g-brief2.layout:705
 msgid "PostalComment:"
 msgstr "Postai Megjegyzés:"
-
-#: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:810
-#: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
-#: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:243
-#: lib/layouts/amsdefs.inc:114
-msgid "Date:"
-msgstr "Dátum:"
 
 #: lib/layouts/g-brief-en.layout:195 lib/layouts/g-brief2.layout:820
 msgid "Reference"
@@ -5604,13 +6100,6 @@ msgstr "Általános"
 msgid "Scene"
 msgstr "Helyszín"
 
-#: lib/layouts/ijmpc.layout:83 lib/layouts/ijmpd.layout:86
-#: lib/layouts/kluwer.layout:290 lib/layouts/paper.layout:177
-#: lib/layouts/revtex4.layout:246 lib/layouts/spie.layout:46
-#: lib/layouts/agu_stdtitle.inc:123
-msgid "Keywords:"
-msgstr "Kulcsszavak:"
-
 #: lib/layouts/ijmpc.layout:92
 msgid "Classification Codes"
 msgstr "Osztályozási kódok"
@@ -5671,10 +6160,6 @@ msgstr "@Section@.\\arabic{remark}. észrevétel"
 #: lib/layouts/ijmpd.layout:198
 msgid "Notation @Section@.\\arabic{notation}."
 msgstr "@Section@.\\arabic{notation}. jelölés"
-
-#: lib/layouts/ijmpd.layout:219 lib/layouts/amsmaths.inc:79
-msgid "Theorem @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. tétel"
 
 #: lib/layouts/ijmpd.layout:252
 msgid "Corollary @Section@.\\arabic{corollary}."
@@ -5749,12 +6234,9 @@ msgstr "Futó szerzõ:"
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:46
-#: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
-#: lib/layouts/db_stdsections.inc:20 lib/layouts/numreport.inc:12
-#: lib/layouts/scrclass.inc:53 lib/layouts/stdsections.inc:31
-msgid "Chapter"
-msgstr "Fejezet"
+#: lib/layouts/literate-scrap.inc:12
+msgid "Scrap"
+msgstr "Töredék"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:174
 msgid "Running LaTeX Title"
@@ -5831,14 +6313,6 @@ msgstr "Megoldás"
 #: lib/layouts/llncs.layout:411 lib/layouts/svjour.inc:474
 msgid "Solution #."
 msgstr "Megoldás #."
-
-#: lib/layouts/manpage.layout:145 lib/layouts/db_lyxmacros.inc:11
-msgid "Code"
-msgstr "Kód"
-
-#: lib/layouts/manpage.layout:163 lib/layouts/db_stdlayouts.inc:30
-msgid "SGML"
-msgstr "SGML"
 
 #: lib/layouts/memoir.layout:76
 msgid "Chapterprecis"
@@ -5925,6 +6399,70 @@ msgstr "kijelölés"
 msgid "Close Section"
 msgstr "kijelölés"
 
+#: lib/layouts/numarticle.inc:8
+msgid "Part \\Roman{part}"
+msgstr "\\Roman{part}. rész"
+
+#: lib/layouts/numarticle.inc:25 lib/layouts/numarticle.inc:26
+msgid "@Section@.\\arabic{subsection}"
+msgstr "@Section@\\arabic{subsection}."
+
+#: lib/layouts/numarticle.inc:34 lib/layouts/numarticle.inc:35
+msgid "@Subsection@.\\arabic{subsubsection}"
+msgstr "@Subsection@\\arabic{subsubsection}."
+
+#: lib/layouts/numarticle.inc:43 lib/layouts/numarticle.inc:44
+msgid "@Subsubsection@.\\arabic{paragraph}"
+msgstr "@Subsubsection@\\arabic{paragraph}."
+
+#: lib/layouts/numarticle.inc:52 lib/layouts/numarticle.inc:53
+msgid "@Paragraph@.\\arabic{subparagraph}"
+msgstr "@Paragraph@\\arabic{subparagraph}."
+
+#: lib/layouts/numreport.inc:15
+msgid "Chapter \\arabic{chapter}"
+msgstr "\\arabic{chapter}. fejezet"
+
+#: lib/layouts/numreport.inc:16
+msgid "Appendix \\Alph{chapter}"
+msgstr "\\Alph{chapter}. melléklet"
+
+#: lib/layouts/numreport.inc:22
+msgid "\\arabic{chapter}.\\arabic{section}"
+msgstr "\\arabic{chapter}.\\arabic{section}."
+
+#: lib/layouts/numreport.inc:23
+msgid "\\Alph{chapter}.\\arabic{section}"
+msgstr "\\Alph{chapter}.\\arabic{section}."
+
+#: lib/layouts/numrevtex.inc:9
+msgid "\\Roman{section}."
+msgstr "\\Roman{section}."
+
+#: lib/layouts/numrevtex.inc:10
+msgid "Appendix \\Alph{section}:"
+msgstr "\\Alph{section}. melléklet:"
+
+#: lib/layouts/numrevtex.inc:18
+msgid "\\Alph{subsection}."
+msgstr "\\Alph{subsection}."
+
+#: lib/layouts/numrevtex.inc:19
+msgid "\\arabic{subsection}."
+msgstr "\\arabic{subsection}."
+
+#: lib/layouts/numrevtex.inc:27
+msgid "\\arabic{subsubsection}."
+msgstr "\\arabic{subsubsection}."
+
+#: lib/layouts/numrevtex.inc:28
+msgid "\\alph{subsubsection}."
+msgstr "\\alph{subsubsection}."
+
+#: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
+msgid "\\alph{paragraph}."
+msgstr "\\alph{paragraph}."
+
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
 msgstr "Alcím"
@@ -5940,10 +6478,6 @@ msgstr "Elõnyomat"
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
 msgid "AltAffiliation"
 msgstr "Másik kapcsolat"
-
-#: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
-msgid "Thanks:"
-msgstr "Köszönet:"
 
 #: lib/layouts/revtex4.layout:183
 msgid "Electronic Address:"
@@ -5969,10 +6503,75 @@ msgstr "\\arabic{chapter}."
 msgid "\\Alph{chapter}"
 msgstr "\\Alph{chapter}."
 
-#: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:25
-#: lib/layouts/scrclass.inc:32
+#: lib/layouts/scrclass.inc:32 lib/layouts/scrlettr.layout:24
+#: lib/layouts/scrlttr2.layout:25
 msgid "Labeling"
 msgstr "Címkézés"
+
+#: lib/layouts/scrclass.inc:98
+msgid "Addpart"
+msgstr "Rész hozzáadása"
+
+#: lib/layouts/scrclass.inc:104
+msgid "Addchap"
+msgstr "Fejezet hozzáadása"
+
+#: lib/layouts/scrclass.inc:110
+msgid "Addsec"
+msgstr "Szakasz hozzáadása"
+
+#: lib/layouts/scrclass.inc:116
+msgid "Addchap*"
+msgstr "Fejezet hozzáadása*"
+
+#: lib/layouts/scrclass.inc:122
+msgid "Addsec*"
+msgstr "Szakasz hozzáadása"
+
+#: lib/layouts/scrclass.inc:128
+msgid "Minisec"
+msgstr "Miniszakasz"
+
+#: lib/layouts/scrclass.inc:168 lib/layouts/scrlettr.layout:200
+#: lib/layouts/scrlttr2.layout:279
+msgid "Subject"
+msgstr "Tárgy"
+
+#: lib/layouts/scrclass.inc:174
+msgid "Publishers"
+msgstr "Kiadók"
+
+#: lib/layouts/scrclass.inc:180 lib/layouts/svjour.inc:121
+msgid "Dedication"
+msgstr "Ajánlás"
+
+#: lib/layouts/scrclass.inc:186
+msgid "Titlehead"
+msgstr "Címfej"
+
+#: lib/layouts/scrclass.inc:197
+msgid "Uppertitleback"
+msgstr "Címoldal háta felül"
+
+#: lib/layouts/scrclass.inc:203
+msgid "Lowertitleback"
+msgstr "Címoldal háta alul"
+
+#: lib/layouts/scrclass.inc:209
+msgid "Extratitle"
+msgstr "Extra címoldal"
+
+#: lib/layouts/scrclass.inc:231
+msgid "Captionabove"
+msgstr "Felirat felette"
+
+#: lib/layouts/scrclass.inc:251
+msgid "Captionbelow"
+msgstr "Felirat alatta"
+
+#: lib/layouts/scrclass.inc:271
+msgid "Dictum"
+msgstr "Szólás"
 
 #: lib/layouts/scrlettr.layout:51
 msgid "L"
@@ -6045,11 +6644,6 @@ msgstr "Hely:"
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:275
 msgid "Title:"
 msgstr "Cím:"
-
-#: lib/layouts/scrlettr.layout:200 lib/layouts/scrlttr2.layout:279
-#: lib/layouts/scrclass.inc:168
-msgid "Subject"
-msgstr "Tárgy"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:283
 msgid "Subject:"
@@ -6211,11 +6805,6 @@ msgstr "Fólialista-"
 msgid "."
 msgstr ""
 
-#: lib/layouts/siamltex.layout:102 lib/layouts/aguplus.inc:66
-#: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:57
-msgid "Paragraph*"
-msgstr "Bekezdés*"
-
 #: lib/layouts/siamltex.layout:172
 msgid "Key words."
 msgstr "Kulcsszavak."
@@ -6280,594 +6869,6 @@ msgstr "KIVONAT"
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
 msgstr "KÖSZÖNETNYILVÁNÍTÁSOK"
-
-#: lib/layouts/aapaper.inc:56
-msgid "email:"
-msgstr "email:"
-
-#: lib/layouts/aapaper.inc:118
-msgid "Thesaurus not supported in recent A&A:"
-msgstr "Fogalomtár nincs támogatva az újkeletû A&A-ban:"
-
-#: lib/layouts/agu_stdsections.inc:79
-msgid "Subsubparagraph"
-msgstr "Alalbekezdés"
-
-#: lib/layouts/agu_stdtitle.inc:13
-msgid "Header"
-msgstr "Fejléc"
-
-#: lib/layouts/agu_stdtitle.inc:19
-msgid "-- Header --"
-msgstr "-- Fejléc --"
-
-#: lib/layouts/agu_stdtitle.inc:31
-msgid "Special-section"
-msgstr "Speciális-szakasz"
-
-#: lib/layouts/agu_stdtitle.inc:37
-msgid "Special-section:"
-msgstr "Speciális-szakasz:"
-
-#: lib/layouts/agu_stdtitle.inc:47
-msgid "AGU-journal"
-msgstr "AGU-folyóirat"
-
-#: lib/layouts/agu_stdtitle.inc:51
-msgid "AGU-journal:"
-msgstr "AGU-folyóirat:"
-
-#: lib/layouts/agu_stdtitle.inc:56
-msgid "Citation-number"
-msgstr "Idézet száma"
-
-#: lib/layouts/agu_stdtitle.inc:59
-msgid "Citation-number:"
-msgstr "Idézet száma:"
-
-#: lib/layouts/agu_stdtitle.inc:65
-msgid "AGU-volume"
-msgstr "AGU-kötet"
-
-#: lib/layouts/agu_stdtitle.inc:68
-msgid "AGU-volume:"
-msgstr "AGU-kötet:"
-
-#: lib/layouts/agu_stdtitle.inc:73
-msgid "AGU-issue"
-msgstr "AGU-példány"
-
-#: lib/layouts/agu_stdtitle.inc:76
-msgid "AGU-issue:"
-msgstr "AGU-példány:"
-
-#: lib/layouts/agu_stdtitle.inc:84
-msgid "Copyright:"
-msgstr "Copyright:"
-
-#: lib/layouts/agu_stdtitle.inc:89
-msgid "Index-terms"
-msgstr "Tárgyszó-elemek"
-
-#: lib/layouts/agu_stdtitle.inc:93
-msgid "Index-terms..."
-msgstr "Tárgyszó-elemek..."
-
-#: lib/layouts/agu_stdtitle.inc:102
-msgid "Index-term"
-msgstr "Tárgyszó-elem"
-
-#: lib/layouts/agu_stdtitle.inc:106
-msgid "Index-term:"
-msgstr "Tárgyszó-elem:"
-
-#: lib/layouts/agu_stdtitle.inc:111
-msgid "Cross-term"
-msgstr "Keresztkifejezés"
-
-#: lib/layouts/agu_stdtitle.inc:115
-msgid "Cross-term:"
-msgstr "Keresztkifejezés:"
-
-#: lib/layouts/agu_stdtitle.inc:136
-msgid "Supplementary"
-msgstr "Kiegészítés"
-
-#: lib/layouts/agu_stdtitle.inc:140
-msgid "Supplementary..."
-msgstr "Kiegészítõ..."
-
-#: lib/layouts/agu_stdtitle.inc:149
-msgid "Supp-note"
-msgstr "Kiegészítõ-megjegyzés"
-
-#: lib/layouts/agu_stdtitle.inc:153
-msgid "Sup-mat-note:"
-msgstr "Kiegészítõ-mat-megjegyzés:"
-
-#: lib/layouts/agu_stdtitle.inc:158
-msgid "Cite-other"
-msgstr "Hivatkozás másra"
-
-#: lib/layouts/agu_stdtitle.inc:162
-msgid "Cite-other:"
-msgstr "Hivatkozás másra:"
-
-#: lib/layouts/agu_stdtitle.inc:206 lib/layouts/aguplus.inc:115
-msgid "Revised"
-msgstr "Felülvizsgált"
-
-#: lib/layouts/agu_stdtitle.inc:209 lib/layouts/aguplus.inc:119
-msgid "Revised:"
-msgstr "Felülvizsgált:"
-
-#: lib/layouts/agu_stdtitle.inc:222
-msgid "Ident-line"
-msgstr "Behúzott sor"
-
-#: lib/layouts/agu_stdtitle.inc:225
-msgid "Ident-line:"
-msgstr "Behúzott sor"
-
-#: lib/layouts/agu_stdtitle.inc:230
-msgid "Runhead"
-msgstr "Futófej"
-
-#: lib/layouts/agu_stdtitle.inc:233
-msgid "Runhead:"
-msgstr "Futófej:"
-
-#: lib/layouts/agu_stdtitle.inc:241
-msgid "Published-online:"
-msgstr "Online kiadás:"
-
-#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.cpp:41
-msgid "Citation"
-msgstr "Idézet"
-
-#: lib/layouts/agu_stdtitle.inc:266
-msgid "Citation:"
-msgstr "Idézet:"
-
-#: lib/layouts/agu_stdtitle.inc:271
-msgid "Posting-order"
-msgstr "Postázási sorrend"
-
-#: lib/layouts/agu_stdtitle.inc:274
-msgid "Posting-order:"
-msgstr "Postázási sorrend:"
-
-#: lib/layouts/agu_stdtitle.inc:279
-msgid "AGU-pages"
-msgstr "AGU-oldalak"
-
-#: lib/layouts/agu_stdtitle.inc:282
-msgid "AGU-pages:"
-msgstr "AGU-oldalak:"
-
-#: lib/layouts/agu_stdtitle.inc:287
-msgid "Words"
-msgstr "Szavak"
-
-#: lib/layouts/agu_stdtitle.inc:290
-msgid "Words:"
-msgstr "Szavak:"
-
-#: lib/layouts/agu_stdtitle.inc:295
-msgid "Figures"
-msgstr "Ábrák"
-
-#: lib/layouts/agu_stdtitle.inc:298
-msgid "Figures:"
-msgstr "Ábrák:"
-
-#: lib/layouts/agu_stdtitle.inc:303
-msgid "Tables"
-msgstr "Táblázatok"
-
-#: lib/layouts/agu_stdtitle.inc:306
-msgid "Tables:"
-msgstr "Táblázat:"
-
-#: lib/layouts/agu_stdtitle.inc:311
-msgid "Datasets"
-msgstr "Adatkészletek"
-
-#: lib/layouts/agu_stdtitle.inc:314
-msgid "Datasets:"
-msgstr "Adatkészletek:"
-
-#: lib/layouts/aguplus.inc:131
-msgid "CCC"
-msgstr "CCC"
-
-#: lib/layouts/aguplus.inc:135
-msgid "CCC code:"
-msgstr "CCC kód:"
-
-#: lib/layouts/aguplus.inc:144
-msgid "PaperId"
-msgstr "Papír azonosító"
-
-#: lib/layouts/aguplus.inc:148
-msgid "Paper Id:"
-msgstr "Papír azonosító:"
-
-#: lib/layouts/aguplus.inc:152
-msgid "AuthorAddr"
-msgstr "Szerzõcíme"
-
-#: lib/layouts/aguplus.inc:156
-msgid "Author Address:"
-msgstr "Szerzõ címe:"
-
-#: lib/layouts/aguplus.inc:160
-msgid "SlugComment"
-msgstr "Köztes megjegyzés"
-
-#: lib/layouts/aguplus.inc:164
-msgid "Slug Comment:"
-msgstr "Köztes megjegyzés:"
-
-#: lib/layouts/aguplus.inc:180
-msgid "Plate"
-msgstr "Plate"
-
-#: lib/layouts/aguplus.inc:190
-msgid "Planotable"
-msgstr "Planotable"
-
-#: lib/layouts/aguplus.inc:201
-msgid "Table Caption"
-msgstr "Táblázat címe"
-
-#: lib/layouts/aguplus.inc:212
-msgid "TableCaption"
-msgstr "Táblázat címe"
-
-#: lib/layouts/amsdefs.inc:171
-msgid "Current Address"
-msgstr "Jelenlegi cím"
-
-#: lib/layouts/amsdefs.inc:174
-msgid "Current address:"
-msgstr "Jelenlegi cím:"
-
-#: lib/layouts/amsdefs.inc:182
-msgid "E-mail address:"
-msgstr "E-mail cím:"
-
-#: lib/layouts/amsdefs.inc:197
-msgid "Key words and phrases:"
-msgstr "Kulcsszavak és frázisok:"
-
-#: lib/layouts/amsdefs.inc:208
-msgid "Dedicatory"
-msgstr "Ajánló"
-
-#: lib/layouts/amsdefs.inc:211 lib/layouts/svjour.inc:125
-msgid "Dedication:"
-msgstr "Dedikálás:"
-
-#: lib/layouts/amsdefs.inc:215
-msgid "Translator"
-msgstr "Fordító"
-
-#: lib/layouts/amsdefs.inc:218
-msgid "Translator:"
-msgstr "Fordító:"
-
-#: lib/layouts/amsdefs.inc:222
-msgid "Subjectclass"
-msgstr "Tárgyosztály"
-
-#: lib/layouts/amsdefs.inc:225
-msgid "1991 Mathematics Subject Classification:"
-msgstr "1991 Mathematikai Tárgy Osztályozás:"
-
-#: lib/layouts/amsmaths-plain.inc:95
-msgid "Algorithm #."
-msgstr "Algoritmus #."
-
-#: lib/layouts/amsmaths.inc:106
-msgid "Corollary @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. következmény"
-
-#: lib/layouts/amsmaths.inc:128
-msgid "Lemma @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. segédtétel"
-
-#: lib/layouts/amsmaths.inc:150
-msgid "Proposition @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. feltevés"
-
-#: lib/layouts/amsmaths.inc:172
-msgid "Conjecture @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. feltevés"
-
-#: lib/layouts/amsmaths.inc:180
-msgid "Conjecture*"
-msgstr "Feltevés*"
-
-#: lib/layouts/amsmaths.inc:194
-msgid "Criterion @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. kritérium"
-
-#: lib/layouts/amsmaths.inc:205
-msgid "Algorithm @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. algoritmus"
-
-#: lib/layouts/amsmaths.inc:216
-msgid "Fact @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. tény"
-
-#: lib/layouts/amsmaths.inc:224
-msgid "Fact*"
-msgstr "Tény*"
-
-#: lib/layouts/amsmaths.inc:238
-msgid "Axiom @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. axióma"
-
-#: lib/layouts/amsmaths.inc:249
-msgid "Definition @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. definíció"
-
-#: lib/layouts/amsmaths.inc:279
-msgid "Example @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. példa"
-
-#: lib/layouts/amsmaths.inc:287
-msgid "Example*"
-msgstr "Példa*"
-
-#: lib/layouts/amsmaths.inc:301
-msgid "Condition @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. feltétel"
-
-#: lib/layouts/amsmaths.inc:309
-msgid "Condition*"
-msgstr "Feltétel*"
-
-#: lib/layouts/amsmaths.inc:323
-msgid "Problem @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. probléma"
-
-#: lib/layouts/amsmaths.inc:331
-msgid "Problem*"
-msgstr "Probléma*"
-
-#: lib/layouts/amsmaths.inc:345
-msgid "Exercise @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. észrevétel"
-
-#: lib/layouts/amsmaths.inc:354
-msgid "Exercise*"
-msgstr "Feladat*"
-
-#: lib/layouts/amsmaths.inc:368
-msgid "Remark @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. észrevétel"
-
-#: lib/layouts/amsmaths.inc:384
-msgid "Remark*"
-msgstr "Észrevétel*"
-
-#: lib/layouts/amsmaths.inc:399
-msgid "Claim @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. követelés"
-
-#: lib/layouts/amsmaths.inc:407
-msgid "Claim*"
-msgstr "Követelés*"
-
-#: lib/layouts/amsmaths.inc:421
-msgid "Note @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. megjegyzés"
-
-#: lib/layouts/amsmaths.inc:429
-msgid "Note*"
-msgstr "Megjegyzés*"
-
-#: lib/layouts/amsmaths.inc:443
-msgid "Notation @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. jelölés"
-
-#: lib/layouts/amsmaths.inc:451
-msgid "Notation*"
-msgstr "Jelölés*"
-
-#: lib/layouts/amsmaths.inc:465
-msgid "Summary @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. összegzés"
-
-#: lib/layouts/amsmaths.inc:476
-msgid "Acknowledgement @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. köszönetnyilvánítás"
-
-#: lib/layouts/amsmaths.inc:484
-msgid "Acknowledgement*"
-msgstr "Köszönetnyilvánítás*"
-
-#: lib/layouts/amsmaths.inc:498
-msgid "Case @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. eset"
-
-#: lib/layouts/amsmaths.inc:509
-msgid "Conclusion @Section@.\\arabic{theorem}."
-msgstr "@Section@.\\arabic{theorem}. következtetés"
-
-#: lib/layouts/amsmaths.inc:517
-msgid "Conclusion*"
-msgstr "Következtetés*"
-
-#: lib/layouts/db_stdlayouts.inc:11
-msgid "Literal"
-msgstr "Betûszerinti"
-
-#: lib/layouts/db_stdstarsections.inc:24 lib/layouts/stdstarsections.inc:21
-msgid "Chapter*"
-msgstr "Fejezet*"
-
-#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:66
-msgid "Subparagraph*"
-msgstr "Albekezdés*"
-
-#: lib/layouts/db_stdtitle.inc:27
-msgid "Authorgroup"
-msgstr "Szerzõcsoport"
-
-#: lib/layouts/db_stdtitle.inc:43
-msgid "RevisionHistory"
-msgstr "Revízió elõélete"
-
-#: lib/layouts/db_stdtitle.inc:59
-msgid "Revision History"
-msgstr "Revízió elõélete"
-
-#: lib/layouts/db_stdtitle.inc:64
-msgid "Revision"
-msgstr "Revízió"
-
-#: lib/layouts/db_stdtitle.inc:80
-msgid "RevisionRemark"
-msgstr "Revíziós megjegyzés"
-
-#: lib/layouts/db_stdtitle.inc:97
-msgid "FirstName"
-msgstr "Keresztnév"
-
-#: lib/layouts/db_stdtitle.inc:101
-msgid "Surname"
-msgstr "Családnév"
-
-#: lib/layouts/literate-scrap.inc:12
-msgid "Scrap"
-msgstr "Töredék"
-
-#: lib/layouts/numarticle.inc:8
-msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}. rész"
-
-#: lib/layouts/numarticle.inc:25 lib/layouts/numarticle.inc:26
-msgid "@Section@.\\arabic{subsection}"
-msgstr "@Section@\\arabic{subsection}."
-
-#: lib/layouts/numarticle.inc:34 lib/layouts/numarticle.inc:35
-msgid "@Subsection@.\\arabic{subsubsection}"
-msgstr "@Subsection@\\arabic{subsubsection}."
-
-#: lib/layouts/numarticle.inc:43 lib/layouts/numarticle.inc:44
-msgid "@Subsubsection@.\\arabic{paragraph}"
-msgstr "@Subsubsection@\\arabic{paragraph}."
-
-#: lib/layouts/numarticle.inc:52 lib/layouts/numarticle.inc:53
-msgid "@Paragraph@.\\arabic{subparagraph}"
-msgstr "@Paragraph@\\arabic{subparagraph}."
-
-#: lib/layouts/numreport.inc:15
-msgid "Chapter \\arabic{chapter}"
-msgstr "\\arabic{chapter}. fejezet"
-
-#: lib/layouts/numreport.inc:16
-msgid "Appendix \\Alph{chapter}"
-msgstr "\\Alph{chapter}. melléklet"
-
-#: lib/layouts/numreport.inc:22
-msgid "\\arabic{chapter}.\\arabic{section}"
-msgstr "\\arabic{chapter}.\\arabic{section}."
-
-#: lib/layouts/numreport.inc:23
-msgid "\\Alph{chapter}.\\arabic{section}"
-msgstr "\\Alph{chapter}.\\arabic{section}."
-
-#: lib/layouts/numrevtex.inc:9
-msgid "\\Roman{section}."
-msgstr "\\Roman{section}."
-
-#: lib/layouts/numrevtex.inc:10
-msgid "Appendix \\Alph{section}:"
-msgstr "\\Alph{section}. melléklet:"
-
-#: lib/layouts/numrevtex.inc:18
-msgid "\\Alph{subsection}."
-msgstr "\\Alph{subsection}."
-
-#: lib/layouts/numrevtex.inc:19
-msgid "\\arabic{subsection}."
-msgstr "\\arabic{subsection}."
-
-#: lib/layouts/numrevtex.inc:27
-msgid "\\arabic{subsubsection}."
-msgstr "\\arabic{subsubsection}."
-
-#: lib/layouts/numrevtex.inc:28
-msgid "\\alph{subsubsection}."
-msgstr "\\alph{subsubsection}."
-
-#: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
-msgid "\\alph{paragraph}."
-msgstr "\\alph{paragraph}."
-
-#: lib/layouts/scrclass.inc:98
-msgid "Addpart"
-msgstr "Rész hozzáadása"
-
-#: lib/layouts/scrclass.inc:104
-msgid "Addchap"
-msgstr "Fejezet hozzáadása"
-
-#: lib/layouts/scrclass.inc:110
-msgid "Addsec"
-msgstr "Szakasz hozzáadása"
-
-#: lib/layouts/scrclass.inc:116
-msgid "Addchap*"
-msgstr "Fejezet hozzáadása*"
-
-#: lib/layouts/scrclass.inc:122
-msgid "Addsec*"
-msgstr "Szakasz hozzáadása"
-
-#: lib/layouts/scrclass.inc:128
-msgid "Minisec"
-msgstr "Miniszakasz"
-
-#: lib/layouts/scrclass.inc:174
-msgid "Publishers"
-msgstr "Kiadók"
-
-#: lib/layouts/scrclass.inc:180 lib/layouts/svjour.inc:121
-msgid "Dedication"
-msgstr "Ajánlás"
-
-#: lib/layouts/scrclass.inc:186
-msgid "Titlehead"
-msgstr "Címfej"
-
-#: lib/layouts/scrclass.inc:197
-msgid "Uppertitleback"
-msgstr "Címoldal háta felül"
-
-#: lib/layouts/scrclass.inc:203
-msgid "Lowertitleback"
-msgstr "Címoldal háta alul"
-
-#: lib/layouts/scrclass.inc:209
-msgid "Extratitle"
-msgstr "Extra címoldal"
-
-#: lib/layouts/scrclass.inc:231
-msgid "Captionabove"
-msgstr "Felirat felette"
-
-#: lib/layouts/scrclass.inc:251
-msgid "Captionbelow"
-msgstr "Felirat alatta"
-
-#: lib/layouts/scrclass.inc:271
-msgid "Dictum"
-msgstr "Szólás"
 
 #: lib/layouts/stdfloats.inc:39
 msgid "List of Algorithms"
@@ -7999,7 +8000,7 @@ msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:816
-#: src/mathed/InsetMathGrid.cpp:1206 src/mathed/InsetMathNest.cpp:426
+#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -8843,7 +8844,7 @@ msgid "Fractions"
 msgstr "LyX: Törtek"
 
 #: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
-#: src/frontends/qt4/QDocument.cpp:463
+#: src/frontends/qt4/QDocument.cpp:498
 msgid "Fonts"
 msgstr "Betûkészletek"
 
@@ -11377,7 +11378,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy elveti a módosításokat?"
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:725
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:727
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
@@ -11402,7 +11403,7 @@ msgstr "  Sikertelen mentés! Próbálkozok..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Sikertelen mentés! A csudába, a dokumentum elvesztett."
 
-#: src/BufferParams.cpp:438
+#: src/BufferParams.cpp:474
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -11413,11 +11414,11 @@ msgid ""
 "for more information.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:444
+#: src/BufferParams.cpp:480
 msgid "Document class not available"
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/BufferParams.cpp:445
+#: src/BufferParams.cpp:481
 msgid "LyX will not be able to produce output."
 msgstr "LyX nem tudja  elkészíteni a kimenetet."
 
@@ -11432,11 +11433,11 @@ msgstr ""
 "\n"
 "Vissza akar térni egy mentett változathoz?"
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:899
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:901
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:900 src/LyXVC.cpp:175
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:902 src/LyXVC.cpp:175
 msgid "&Revert"
 msgstr "&Visszatér"
 
@@ -11517,8 +11518,8 @@ msgstr "Szavak megszámolása"
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.cpp:1590 src/LyXFunc.cpp:1866 src/LyXFunc.cpp:1905
-#: src/LyXFunc.cpp:1978 src/callback.cpp:136
+#: src/BufferView.cpp:1590 src/LyXFunc.cpp:1869 src/LyXFunc.cpp:1908
+#: src/LyXFunc.cpp:1981 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11527,17 +11528,17 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1979
+#: src/BufferView.cpp:1591 src/LyXFunc.cpp:1909 src/LyXFunc.cpp:1982
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1871 src/LyXFunc.cpp:1910
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1874 src/LyXFunc.cpp:1913
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1920 src/LyXFunc.cpp:2000
-#: src/LyXFunc.cpp:2014 src/LyXFunc.cpp:2030
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1923 src/LyXFunc.cpp:2003
+#: src/LyXFunc.cpp:2017 src/LyXFunc.cpp:2033
 msgid "Canceled."
 msgstr "Törölve."
 
@@ -11625,7 +11626,7 @@ msgstr "LaTeX szöveg"
 msgid "previewed snippet"
 msgstr "elõnézet rész"
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:310
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:311
 msgid "note"
 msgstr "megjegyzés"
 
@@ -11890,7 +11891,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "Definiálatlan betûstílus"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1062
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1064
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -11901,11 +11902,11 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1065
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1067
 msgid "Over-write file?"
 msgstr "Felülírjam a fájlt?"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1066 src/LyXFunc.cpp:2027
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1068 src/LyXFunc.cpp:2030
 #: src/callback.cpp:170
 msgid "&Over-write"
 msgstr "&Kicserél"
@@ -11958,17 +11959,17 @@ msgstr "A %1$s dokumentumot exportáltam, mint `%2$s'"
 msgid "Document exported as %1$s"
 msgstr "A dokumentumot exportáltam, mint %1$s"
 
-#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:870
 msgid "Roman"
 msgstr "Roman"
 
-#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:874
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
-#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:49
+#: src/Font.cpp:52 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:878
 msgid "Typewriter"
 msgstr "Írógép"
@@ -12359,7 +12360,7 @@ msgstr "Nincs mit tenni"
 msgid "Unknown action"
 msgstr "Ismeretlen mûvelet"
 
-#: src/LyXFunc.cpp:426 src/LyXFunc.cpp:709
+#: src/LyXFunc.cpp:426 src/LyXFunc.cpp:711
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
@@ -12367,15 +12368,15 @@ msgstr "Letiltott parancs"
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/LyXFunc.cpp:695
+#: src/LyXFunc.cpp:697
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/LyXFunc.cpp:703
+#: src/LyXFunc.cpp:705
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/LyXFunc.cpp:722
+#: src/LyXFunc.cpp:724
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12386,7 +12387,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/LyXFunc.cpp:740
+#: src/LyXFunc.cpp:742
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12395,11 +12396,11 @@ msgstr ""
 "A %1$s dokumentum nem nyomtatható.\n"
 "Kérem ellenõrizze a nyomtató beállításait."
 
-#: src/LyXFunc.cpp:743
+#: src/LyXFunc.cpp:745
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
-#: src/LyXFunc.cpp:762
+#: src/LyXFunc.cpp:764
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12408,20 +12409,20 @@ msgstr ""
 "A dokumentumot nem lehet\n"
 " %1$s osztály formátumba átalakítani."
 
-#: src/LyXFunc.cpp:765
+#: src/LyXFunc.cpp:767
 msgid "Could not change class"
 msgstr "Osztály nem változtatható meg"
 
-#: src/LyXFunc.cpp:877
+#: src/LyXFunc.cpp:879
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése: %1$s..."
 
-#: src/LyXFunc.cpp:881
+#: src/LyXFunc.cpp:883
 msgid " done."
 msgstr " kész."
 
-#: src/LyXFunc.cpp:897
+#: src/LyXFunc.cpp:899
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -12430,81 +12431,81 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/LyXFunc.cpp:1089
+#: src/LyXFunc.cpp:1091
 msgid "Exiting."
 msgstr "Kilépés."
 
-#: src/LyXFunc.cpp:1115 src/Text3.cpp:1312
+#: src/LyXFunc.cpp:1109 src/Text3.cpp:1312
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/LyXFunc.cpp:1124
+#: src/LyXFunc.cpp:1118
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1399
+#: src/LyXFunc.cpp:1402
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Aldokumentum megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1486
+#: src/LyXFunc.cpp:1489
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Szintaxis: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1497
+#: src/LyXFunc.cpp:1500
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/LyXFunc.cpp:1611
+#: src/LyXFunc.cpp:1614
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentum alapértékek mentése %1$s-ban."
 
-#: src/LyXFunc.cpp:1614
+#: src/LyXFunc.cpp:1617
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/LyXFunc.cpp:1670
+#: src/LyXFunc.cpp:1673
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
-#: src/LyXFunc.cpp:1864
+#: src/LyXFunc.cpp:1867
 msgid "Select template file"
 msgstr "Sablon kiválasztása"
 
-#: src/LyXFunc.cpp:1867 src/callback.cpp:137
+#: src/LyXFunc.cpp:1870 src/callback.cpp:137
 msgid "Templates|#T#t"
 msgstr "Sablonok|#a#A"
 
-#: src/LyXFunc.cpp:1903
+#: src/LyXFunc.cpp:1906
 msgid "Select document to open"
 msgstr "Megnyitandó dokumentum kiválasztása"
 
-#: src/LyXFunc.cpp:1942
+#: src/LyXFunc.cpp:1945
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1946
+#: src/LyXFunc.cpp:1949
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentum megnyitva."
 
-#: src/LyXFunc.cpp:1948
+#: src/LyXFunc.cpp:1951
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentum nem nyitható meg %1$s"
 
-#: src/LyXFunc.cpp:1973
+#: src/LyXFunc.cpp:1976
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
-#: src/LyXFunc.cpp:2024 src/callback.cpp:167
+#: src/LyXFunc.cpp:2027 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12515,11 +12516,11 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/LyXFunc.cpp:2026 src/callback.cpp:169
+#: src/LyXFunc.cpp:2029 src/callback.cpp:169
 msgid "Over-write document?"
 msgstr "Felülírjam a dokumentumot?"
 
-#: src/LyXFunc.cpp:2097
+#: src/LyXFunc.cpp:2100
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
@@ -13147,7 +13148,7 @@ msgstr ", Mélység: %1$d"
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/Text.cpp:1740 src/frontends/qt4/QDocument.cpp:125
+#: src/Text.cpp:1740 src/frontends/qt4/QDocument.cpp:160
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -14059,11 +14060,11 @@ msgid "Activated"
 msgstr "Aktivált"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:690
+#: src/frontends/qt4/QDocument.cpp:725
 msgid "Yes"
 msgstr "Igen"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:689
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:724
 msgid "No"
 msgstr "Nem"
 
@@ -14130,146 +14131,242 @@ msgstr "(Nincs)"
 msgid "Variable"
 msgstr "Változó méret"
 
-#: src/frontends/qt4/QDocument.cpp:119
+#: src/frontends/qt4/QDocument.cpp:66
+msgid "Computer Modern Roman"
+msgstr "Computer Modern Roman"
+
+#: src/frontends/qt4/QDocument.cpp:66
+msgid "Latin Modern Roman"
+msgstr "Latin Modern Roman"
+
+#: src/frontends/qt4/QDocument.cpp:67
+msgid "AE (Almost European)"
+msgstr "AE (Almost European)"
+
+#: src/frontends/qt4/QDocument.cpp:67
+msgid "Times Roman"
+msgstr "Times Roman"
+
+#: src/frontends/qt4/QDocument.cpp:67
+msgid "Palatino"
+msgstr "Palatino"
+
+#: src/frontends/qt4/QDocument.cpp:67
+msgid "Bitstream Charter"
+msgstr "Bitstream Charter"
+
+#: src/frontends/qt4/QDocument.cpp:68
+msgid "New Century Schoolbook"
+msgstr "New Century Schoolbook"
+
+#: src/frontends/qt4/QDocument.cpp:68
+msgid "Bookman"
+msgstr "Bookman"
+
+#: src/frontends/qt4/QDocument.cpp:68
+msgid "Utopia"
+msgstr "Utopia"
+
+#: src/frontends/qt4/QDocument.cpp:68
+msgid "Bera Serif"
+msgstr "Bera Serif"
+
+#: src/frontends/qt4/QDocument.cpp:69
+msgid "Concrete Roman"
+msgstr "Concrete Roman"
+
+#: src/frontends/qt4/QDocument.cpp:69
+msgid "Zapf Chancery"
+msgstr "Zapf Chancery"
+
+#: src/frontends/qt4/QDocument.cpp:77
+msgid "Computer Modern Sans"
+msgstr "Computer Modern Sans"
+
+#: src/frontends/qt4/QDocument.cpp:77
+msgid "Latin Modern Sans"
+msgstr "Latin Modern Sans"
+
+#: src/frontends/qt4/QDocument.cpp:78
+msgid "Helvetica"
+msgstr "Helvetica"
+
+#: src/frontends/qt4/QDocument.cpp:78
+msgid "Avant Garde"
+msgstr "Avant Garde"
+
+#: src/frontends/qt4/QDocument.cpp:78
+msgid "Bera Sans"
+msgstr "Bera Sans"
+
+#: src/frontends/qt4/QDocument.cpp:78
+msgid "CM Bright"
+msgstr "CM Bright"
+
+#: src/frontends/qt4/QDocument.cpp:87
+msgid "Computer Modern Typewriter"
+msgstr "Computer Modern Typewriter"
+
+#: src/frontends/qt4/QDocument.cpp:88
+msgid "Latin Modern Typewriter"
+msgstr "Latin Modern Typewriter"
+
+#: src/frontends/qt4/QDocument.cpp:88
+msgid "Courier"
+msgstr "Courier"
+
+#: src/frontends/qt4/QDocument.cpp:88
+msgid "Bera Mono"
+msgstr "Bera Mono"
+
+#: src/frontends/qt4/QDocument.cpp:88
+msgid "LuxiMono"
+msgstr "LuxiMono"
+
+#: src/frontends/qt4/QDocument.cpp:89
+msgid "CM Typewriter Light"
+msgstr "CM Typewriter Light"
+
+#: src/frontends/qt4/QDocument.cpp:154
 msgid "Length"
 msgstr "Hossza"
 
-#: src/frontends/qt4/QDocument.cpp:164 src/frontends/qt4/QDocument.cpp:170
-#: src/frontends/qt4/QDocument.cpp:176
+#: src/frontends/qt4/QDocument.cpp:199 src/frontends/qt4/QDocument.cpp:205
+#: src/frontends/qt4/QDocument.cpp:211
 msgid " (not installed)"
 msgstr " (nincs telepítve)"
 
-#: src/frontends/qt4/QDocument.cpp:180 src/frontends/qt4/QDocument.cpp:217
-#: src/frontends/qt4/QDocument.cpp:599
+#: src/frontends/qt4/QDocument.cpp:215 src/frontends/qt4/QDocument.cpp:252
+#: src/frontends/qt4/QDocument.cpp:634
 msgid "default"
 msgstr "alapérték"
 
-#: src/frontends/qt4/QDocument.cpp:181
+#: src/frontends/qt4/QDocument.cpp:216
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocument.cpp:182
+#: src/frontends/qt4/QDocument.cpp:217
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocument.cpp:183
+#: src/frontends/qt4/QDocument.cpp:218
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocument.cpp:218
+#: src/frontends/qt4/QDocument.cpp:253
 msgid "empty"
 msgstr "Üres"
 
-#: src/frontends/qt4/QDocument.cpp:219
+#: src/frontends/qt4/QDocument.cpp:254
 msgid "plain"
 msgstr "sima"
 
-#: src/frontends/qt4/QDocument.cpp:220
+#: src/frontends/qt4/QDocument.cpp:255
 msgid "headings"
 msgstr "címek"
 
-#: src/frontends/qt4/QDocument.cpp:221
+#: src/frontends/qt4/QDocument.cpp:256
 msgid "fancy"
 msgstr "egyéb (fancy)"
 
-#: src/frontends/qt4/QDocument.cpp:237
+#: src/frontends/qt4/QDocument.cpp:272
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocument.cpp:238
+#: src/frontends/qt4/QDocument.cpp:273
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/QDocument.cpp:376
 msgid "LaTeX default"
 msgstr "LaTeX alapértékek"
 
-#: src/frontends/qt4/QDocument.cpp:347
+#: src/frontends/qt4/QDocument.cpp:382
 msgid "``text''"
 msgstr "``szöveg''"
 
-#: src/frontends/qt4/QDocument.cpp:348
+#: src/frontends/qt4/QDocument.cpp:383
 msgid "''text''"
 msgstr "''szöveg''"
 
-#: src/frontends/qt4/QDocument.cpp:349
+#: src/frontends/qt4/QDocument.cpp:384
 msgid ",,text``"
 msgstr ",,szöveg``"
 
-#: src/frontends/qt4/QDocument.cpp:350
+#: src/frontends/qt4/QDocument.cpp:385
 msgid ",,text''"
 msgstr ",,szöveg''"
 
-#: src/frontends/qt4/QDocument.cpp:351
+#: src/frontends/qt4/QDocument.cpp:386
 msgid "<<text>>"
 msgstr "<<szöveg>>"
 
-#: src/frontends/qt4/QDocument.cpp:352
+#: src/frontends/qt4/QDocument.cpp:387
 msgid ">>text<<"
 msgstr ">>szöveg<<"
 
-#: src/frontends/qt4/QDocument.cpp:368
+#: src/frontends/qt4/QDocument.cpp:403
 msgid "Numbered"
 msgstr "Számozás"
 
-#: src/frontends/qt4/QDocument.cpp:369
+#: src/frontends/qt4/QDocument.cpp:404
 msgid "Appears in TOC"
 msgstr "Megjelenik"
 
-#: src/frontends/qt4/QDocument.cpp:389
+#: src/frontends/qt4/QDocument.cpp:424
 msgid "Author-year"
 msgstr "Szerzõ-Év"
 
-#: src/frontends/qt4/QDocument.cpp:390
+#: src/frontends/qt4/QDocument.cpp:425
 msgid "Numerical"
 msgstr "Numerikus"
 
-#: src/frontends/qt4/QDocument.cpp:432
+#: src/frontends/qt4/QDocument.cpp:467
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Elérhetetlen: %1$s"
 
-#: src/frontends/qt4/QDocument.cpp:462 src/frontends/qt4/QDocument.cpp:475
+#: src/frontends/qt4/QDocument.cpp:497 src/frontends/qt4/QDocument.cpp:510
 msgid "Document Class"
 msgstr "Dokumentumosztály"
 
-#: src/frontends/qt4/QDocument.cpp:464
+#: src/frontends/qt4/QDocument.cpp:499
 msgid "Text Layout"
 msgstr "Szöveg formátum"
 
-#: src/frontends/qt4/QDocument.cpp:465
+#: src/frontends/qt4/QDocument.cpp:500
 msgid "Page Layout"
 msgstr "Oldal formátum"
 
-#: src/frontends/qt4/QDocument.cpp:466
+#: src/frontends/qt4/QDocument.cpp:501
 msgid "Page Margins"
 msgstr "Oldal margók"
 
-#: src/frontends/qt4/QDocument.cpp:468
+#: src/frontends/qt4/QDocument.cpp:503
 msgid "Numbering & TOC"
 msgstr "Számozás és tartalomjegyzék"
 
-#: src/frontends/qt4/QDocument.cpp:470
+#: src/frontends/qt4/QDocument.cpp:505
 msgid "Math Options"
 msgstr "Képlet beállítások"
 
-#: src/frontends/qt4/QDocument.cpp:471
+#: src/frontends/qt4/QDocument.cpp:506
 msgid "Float Placement"
 msgstr "Úsztatás elhelyezés"
 
-#: src/frontends/qt4/QDocument.cpp:472
+#: src/frontends/qt4/QDocument.cpp:507
 msgid "Bullets"
 msgstr "Felsorolásjelek"
 
-#: src/frontends/qt4/QDocument.cpp:473
+#: src/frontends/qt4/QDocument.cpp:508
 msgid "Branches"
 msgstr "Változatok"
 
-#: src/frontends/qt4/QDocument.cpp:474 src/frontends/qt4/QDocument.cpp:486
+#: src/frontends/qt4/QDocument.cpp:509 src/frontends/qt4/QDocument.cpp:521
 msgid "LaTeX Preamble"
 msgstr "LaTeX preambulum"
 
-#: src/frontends/qt4/QDocument.cpp:1237
+#: src/frontends/qt4/QDocument.cpp:1272
 msgid "Document Settings"
 msgstr "Dokumentumbeállítások"
 
@@ -14517,7 +14614,7 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/insets/Inset.cpp:265
+#: src/insets/Inset.cpp:259
 msgid "Opened inset"
 msgstr "Betét kinyitva"
 
@@ -14590,11 +14687,11 @@ msgstr "Undef: "
 msgid "branch"
 msgstr "változat"
 
-#: src/insets/InsetCaption.cpp:87
+#: src/insets/InsetCaption.cpp:95
 msgid "Opened Caption Inset"
 msgstr "Címbetét kinyitva"
 
-#: src/insets/InsetCaption.cpp:276
+#: src/insets/InsetCaption.cpp:284
 msgid "Senseless!!! "
 msgstr "Értelmetlen!"
 
@@ -14602,7 +14699,7 @@ msgstr "Értelmetlen!"
 msgid "Opened CharStyle Inset"
 msgstr "Betûstílus betét kinyitva: "
 
-#: src/insets/InsetCommand.cpp:98
+#: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
 msgstr "LaTeX parancs: "
 
@@ -14668,15 +14765,15 @@ msgstr "HIBA: nem létezõ úsztatott típus!"
 msgid "List of %1$s"
 msgstr "%1$s listája"
 
-#: src/insets/InsetFoot.cpp:37 src/insets/InsetFoot.cpp:44
+#: src/insets/InsetFoot.cpp:38 src/insets/InsetFoot.cpp:45
 msgid "foot"
 msgstr "lábjegyzet"
 
-#: src/insets/InsetFoot.cpp:56
+#: src/insets/InsetFoot.cpp:57
 msgid "Opened Footnote Inset"
 msgstr "Lábjegyzetbetét kinyitva"
 
-#: src/insets/InsetFoot.cpp:85
+#: src/insets/InsetFoot.cpp:86
 msgid "footnote"
 msgstr "lábjegyzet"
 
@@ -14735,12 +14832,12 @@ msgstr "Tárgyszó"
 msgid "Index"
 msgstr "Tárgymutató"
 
-#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
-#: src/insets/InsetMarginal.cpp:69
+#: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
+#: src/insets/InsetMarginal.cpp:70
 msgid "margin"
 msgstr "széljegyzet"
 
-#: src/insets/InsetMarginal.cpp:52
+#: src/insets/InsetMarginal.cpp:53
 msgid "Opened Marginal Note Inset"
 msgstr "Széljegyzetbetét kinyitva"
 
@@ -14754,23 +14851,23 @@ msgstr "Nem"
 msgid "Nomenclature"
 msgstr "Feltevés"
 
-#: src/insets/InsetNote.cpp:66
+#: src/insets/InsetNote.cpp:67
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: src/insets/InsetNote.cpp:67
+#: src/insets/InsetNote.cpp:68
 msgid "Greyed out"
 msgstr "Kiszürkített"
 
-#: src/insets/InsetNote.cpp:68
+#: src/insets/InsetNote.cpp:69
 msgid "Framed"
 msgstr "Keretes"
 
-#: src/insets/InsetNote.cpp:69
+#: src/insets/InsetNote.cpp:70
 msgid "Shaded"
 msgstr "Árnyékolt"
 
-#: src/insets/InsetNote.cpp:148
+#: src/insets/InsetNote.cpp:149
 msgid "Opened Note Inset"
 msgstr "Megjegyzésbetét kinyitva"
 
@@ -14836,8 +14933,9 @@ msgid "FormatRef: "
 msgstr "F&ormátum:"
 
 #: src/insets/InsetTOC.cpp:47
-msgid "Unknown toc list"
-msgstr "Ismeretlen toc lista"
+#, fuzzy
+msgid "Unknown TOC type"
+msgstr "Ismeretlen szimbólum"
 
 #: src/insets/InsetTabular.cpp:3141
 msgid "Opened table"
@@ -15026,23 +15124,23 @@ msgstr "Nem tudok függõleges rácsvonalat adni '%1$s'-hoz"
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Nincs függõleges rácsvonal '%1$s'-ban"
 
-#: src/mathed/InsetMathGrid.cpp:1312
+#: src/mathed/InsetMathGrid.cpp:1273
 msgid "Only one row"
 msgstr "Csak egy sor"
 
-#: src/mathed/InsetMathGrid.cpp:1318
+#: src/mathed/InsetMathGrid.cpp:1279
 msgid "Only one column"
 msgstr "Csak egy oszlop"
 
-#: src/mathed/InsetMathGrid.cpp:1326
+#: src/mathed/InsetMathGrid.cpp:1287
 msgid "No hline to delete"
 msgstr "Nincs törlendõ vízszintes vonal"
 
-#: src/mathed/InsetMathGrid.cpp:1335
+#: src/mathed/InsetMathGrid.cpp:1296
 msgid "No vline to delete"
 msgstr "Nincs törlendõ függõleges vonal"
 
-#: src/mathed/InsetMathGrid.cpp:1353
+#: src/mathed/InsetMathGrid.cpp:1314
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ismeretlen táblázat jellemzõ '%1$s'"
@@ -15078,12 +15176,12 @@ msgstr "Új képlet környezet létrehozása ($...$)"
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
-#: src/mathed/MathMacroTemplate.cpp:108
+#: src/mathed/MathMacroTemplate.cpp:109
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Makró: %1$s: "
 
-#: src/mathed/MathMacroTemplate.cpp:240
+#: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
 msgstr "képlet makró"
 
@@ -15196,101 +15294,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
 
-#: src/tex-strings.cpp:68
-msgid "Computer Modern Roman"
-msgstr "Computer Modern Roman"
-
-#: src/tex-strings.cpp:68
-msgid "Latin Modern Roman"
-msgstr "Latin Modern Roman"
-
-#: src/tex-strings.cpp:69
-msgid "AE (Almost European)"
-msgstr "AE (Almost European)"
-
-#: src/tex-strings.cpp:69
-msgid "Times Roman"
-msgstr "Times Roman"
-
-#: src/tex-strings.cpp:69
-msgid "Palatino"
-msgstr "Palatino"
-
-#: src/tex-strings.cpp:69
-msgid "Bitstream Charter"
-msgstr "Bitstream Charter"
-
-#: src/tex-strings.cpp:70
-msgid "New Century Schoolbook"
-msgstr "New Century Schoolbook"
-
-#: src/tex-strings.cpp:70
-msgid "Bookman"
-msgstr "Bookman"
-
-#: src/tex-strings.cpp:70
-msgid "Utopia"
-msgstr "Utopia"
-
-#: src/tex-strings.cpp:70
-msgid "Bera Serif"
-msgstr "Bera Serif"
-
-#: src/tex-strings.cpp:71
-msgid "Concrete Roman"
-msgstr "Concrete Roman"
-
-#: src/tex-strings.cpp:71
-msgid "Zapf Chancery"
-msgstr "Zapf Chancery"
-
-#: src/tex-strings.cpp:79
-msgid "Computer Modern Sans"
-msgstr "Computer Modern Sans"
-
-#: src/tex-strings.cpp:79
-msgid "Latin Modern Sans"
-msgstr "Latin Modern Sans"
-
-#: src/tex-strings.cpp:80
-msgid "Helvetica"
-msgstr "Helvetica"
-
-#: src/tex-strings.cpp:80
-msgid "Avant Garde"
-msgstr "Avant Garde"
-
-#: src/tex-strings.cpp:80
-msgid "Bera Sans"
-msgstr "Bera Sans"
-
-#: src/tex-strings.cpp:80
-msgid "CM Bright"
-msgstr "CM Bright"
-
-#: src/tex-strings.cpp:89
-msgid "Computer Modern Typewriter"
-msgstr "Computer Modern Typewriter"
-
-#: src/tex-strings.cpp:90
-msgid "Latin Modern Typewriter"
-msgstr "Latin Modern Typewriter"
-
-#: src/tex-strings.cpp:90
-msgid "Courier"
-msgstr "Courier"
-
-#: src/tex-strings.cpp:90
-msgid "Bera Mono"
-msgstr "Bera Mono"
-
-#: src/tex-strings.cpp:90
-msgid "LuxiMono"
-msgstr "LuxiMono"
-
-#: src/tex-strings.cpp:91
-msgid "CM Typewriter Light"
-msgstr "CM Typewriter Light"
+#~ msgid "Unknown toc list"
+#~ msgstr "Ismeretlen toc lista"
 
 #~ msgid "Glossary Entry"
 #~ msgstr "Szójegyzék elem"
