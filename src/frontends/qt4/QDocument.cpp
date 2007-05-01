@@ -1022,7 +1022,8 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 
 	// preamble
 	QString preamble = toqstr(params.preamble);
-	preambleModule->preambleTE->document()->setPlainText(preamble);
+	if (preamble != preambleModule->preambleTE->document()->toPlainText())
+		preambleModule->preambleTE->document()->setPlainText(preamble);
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
