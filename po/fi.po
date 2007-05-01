@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -13987,18 +13987,15 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Kirjasinlajin muutosta ei m‰‰ritetty. M‰‰rit‰ kirjasinlajin muutos Muotoilu-"
-"valikon Merkki-alivalikon avulla."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Siirry seuraavaan virheeseen"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Ei mit‰‰n hakemistossa!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lis‰t‰ vain yhden kappaleen!"
 
@@ -16210,6 +16207,13 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Tuntematon sana:"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Kirjasinlajin muutosta ei m‰‰ritetty. M‰‰rit‰ kirjasinlajin muutos "
+#~ "Muotoilu-valikon Merkki-alivalikon avulla."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Tuntematon luettelo sis‰llyksist‰"

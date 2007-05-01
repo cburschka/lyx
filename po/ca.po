@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0pre2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator:  Francesc Burrull i Mestres <>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -14502,17 +14502,16 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr "Canvi de font no definit. Utilitzeu Format->Caràcter per definir-lo"
+#, fuzzy
+msgid "No font change defined."
+msgstr "Anar al següent error"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Res a fer"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
@@ -16869,6 +16868,11 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Acció Desconeguda"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr "Canvi de font no definit. Utilitzeu Format->Caràcter per definir-lo"
 
 #, fuzzy
 #~ msgid "Unknown toc list"

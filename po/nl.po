@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -14110,19 +14110,16 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Geen verandering lettertype gedefinieerd. Gebruik Teken onder het Stijl-menu "
-"om verandering lettertype te definieren."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Naar volgende foutmelding"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Niets te doen"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan niet meer dan een alinea invoegen!"
@@ -16390,6 +16387,13 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Onbekend:"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Geen verandering lettertype gedefinieerd. Gebruik Teken onder het Stijl-"
+#~ "menu om verandering lettertype te definieren."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Onbekende inhoudsopgavelijst"

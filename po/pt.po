@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -14390,19 +14390,16 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Nenhuma mudança de fonte foi definida. Use Charactere no menu Layout para "
-"definir a mudança de fonte."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Ir para o próximo erro"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nada para fazer"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Célula não pode incluir mais que um parágrafo!"
@@ -16772,6 +16769,13 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Ação desconhecida"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Nenhuma mudança de fonte foi definida. Use Charactere no menu Layout para "
+#~ "definir a mudança de fonte."
 
 #, fuzzy
 #~ msgid "Unknown toc list"

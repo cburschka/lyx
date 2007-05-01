@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -13940,18 +13940,15 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Не определено изменение шрифта. Используйте 'Формат->Символы' чтобы "
-"определить изменение шрифта."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Перейти к следующей ошибке"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Нечего индексировать!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Нельзя индексировать более чем один абзац!"
 
@@ -16158,6 +16155,13 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Неизвестное слово:"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Не определено изменение шрифта. Используйте 'Формат->Символы' чтобы "
+#~ "определить изменение шрифта."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Неизвестный тип списка toc"

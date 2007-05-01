@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -13647,18 +13647,15 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Nebola definovaná zmena písma.Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na "
-"definovanie zmeny písma."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Prejs» na ïal¹iu zmenu"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Nie je èo indexova»!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
 
@@ -15839,6 +15836,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámy pou¾ívateµ"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Nebola definovaná zmena písma.Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na "
+#~ "definovanie zmeny písma."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Neznámy zoznam obsahu"

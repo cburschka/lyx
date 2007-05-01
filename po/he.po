@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2007-04-26 22:42+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -13457,17 +13457,16 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
+#, fuzzy
+msgid "No font change defined."
+msgstr "לך לשינוי הבא"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "ב ךרוצ ןיא\n"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 

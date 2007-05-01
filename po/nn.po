@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2006-11-13 23:37+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -13229,18 +13229,15 @@ msgid ", Boundary: "
 msgstr ", Grense: "
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Ingen endring av skrifttype er definert. Bruk Bokstavar i stilmenyen for å "
-"definere skrifttype."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Gå til neste endring"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Ingenting å lage indeks av!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikkje lage indeks av meir enn eit avsnitt!"
 
@@ -15353,6 +15350,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Ukjend brukar"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Ingen endring av skrifttype er definert. Bruk Bokstavar i stilmenyen for "
+#~ "å definere skrifttype."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Ukjend innhaldsliste"

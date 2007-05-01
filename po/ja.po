@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2007-04-30 17:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -12976,18 +12976,15 @@ msgid ", Boundary: "
 msgstr ", 境界: "
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"フォントの変更が指定されていません。フォントの変更を指定するためには、「割り"
-"付け」メニュー内の「文字」を使用してください。"
+#, fuzzy
+msgid "No font change defined."
+msgstr "次の変更に行く"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "索引にするものがありません！"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
@@ -15091,6 +15088,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "未知のユーザー"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "フォントの変更が指定されていません。フォントの変更を指定するためには、「割"
+#~ "り付け」メニュー内の「文字」を使用してください。"
 
 #~ msgid "Unknown toc list"
 #~ msgstr "未知の目次リストです"

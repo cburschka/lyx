@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -13275,18 +13275,15 @@ msgid ", Boundary: "
 msgstr ", Muga: "
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Letra-tipo aldaketarik ez da definitu. Aldatzeko Diseinua menuko Karakterea "
-"elementua eraibli."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Joan hurrengo aldaketara"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Ezer ez indexatzeko!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Ezin da paragrafo bat baino gehiago indexatu!"
 
@@ -15403,6 +15400,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Letra-tipo aldaketarik ez da definitu. Aldatzeko Diseinua menuko "
+#~ "Karakterea elementua eraibli."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Aurk. zerrenda ezezaguna"

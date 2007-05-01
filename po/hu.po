@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2007-03-14 16:08+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -13181,18 +13181,15 @@ msgid ", Boundary: "
 msgstr ", Határ: "
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Nincs betûváltás definiálva. Használja a Formátum menü Betû parancsát a "
-"betûkészletváltás definiálásához."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Menj a következõ változásra"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Nincs mit a szójegyzékbe rakni!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
@@ -15292,6 +15289,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Nincs betûváltás definiálva. Használja a Formátum menü Betû parancsát a "
+#~ "betûkészletváltás definiálásához."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Ismeretlen toc lista"

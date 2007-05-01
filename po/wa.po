@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -14332,18 +14332,16 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Nou candjmint di fonte di defini. Alez dins Cogne->Caractere pol defini"
+#, fuzzy
+msgid "No font change defined."
+msgstr "Potchî a l' aroke shûvante"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Rén a fé"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
@@ -16699,6 +16697,12 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Nou candjmint di fonte di defini. Alez dins Cogne->Caractere pol defini"
 
 #, fuzzy
 #~ msgid "Unknown toc list"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2006-11-07 18:46+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
@@ -13299,18 +13299,15 @@ msgid ", Boundary: "
 msgstr ", frontera: "
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"No se definió el cambio de fuente. Usar Carácter bajo el menú Formato para "
-"definir el cambio de fuente."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Ir al siguiente cambio"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "¡Nada que indexar!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "¡No se puede indexar más de un párrafo!"
 
@@ -15428,6 +15425,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Usuario desconocido"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "No se definió el cambio de fuente. Usar Carácter bajo el menú Formato "
+#~ "para definir el cambio de fuente."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Lista de contenidos desconocida"

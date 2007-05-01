@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -13770,18 +13770,15 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Ingen skriftændring er defineret. Brug Tegn under Layout-menuen til at "
-"definere skriftændring."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Gå til næste ændring"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Intet at indeksere!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
@@ -15972,6 +15969,13 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Ukendt indstik"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Ingen skriftændring er defineret. Brug Tegn under Layout-menuen til at "
+#~ "definere skriftændring."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Ukendt indholdsliste"

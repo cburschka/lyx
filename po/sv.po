@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2005-12-18 15:05+0100\n"
 "Last-Translator: Joacim Persson <>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -14352,19 +14352,16 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Ingen fontändring definerat. Välj Tecken under Stil-menyn för att definera "
-"fontändring."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Gå till näste fel"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Ingenting att göra"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "En tabellcell kan bara innehålla högst ett stycke!"
@@ -16712,6 +16709,13 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Okänd operation"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Ingen fontändring definerat. Välj Tecken under Stil-menyn för att "
+#~ "definera fontändring."
 
 #, fuzzy
 #~ msgid "Unknown toc list"

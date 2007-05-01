@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-01 12:08+0200\n"
+"POT-Creation-Date: 2007-05-01 12:26+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -13320,18 +13320,15 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:540
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Operacja zmiany czcionki nie jest zdefiniowana. Podaj j± w menu Formatowanie/"
-"Czcionki."
+#, fuzzy
+msgid "No font change defined."
+msgstr "Id¼ do nastêpnej zmiany"
 
-#: src/Text2.cpp:582
+#: src/Text2.cpp:581
 msgid "Nothing to index!"
 msgstr "Brak obiektów do indeksowania!"
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:583
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
@@ -15467,6 +15464,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Nieznany u¿ytkownik"
+
+#~ msgid ""
+#~ "No font change defined. Use Character under the Layout menu to define "
+#~ "font change."
+#~ msgstr ""
+#~ "Operacja zmiany czcionki nie jest zdefiniowana. Podaj j± w menu "
+#~ "Formatowanie/Czcionki."
 
 #~ msgid "Unknown toc list"
 #~ msgstr "Nieznany spis tre¶ci"
