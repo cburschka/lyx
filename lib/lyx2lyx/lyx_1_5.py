@@ -1283,6 +1283,36 @@ def revert_tableborder(document):
         i = i + 1
 
 
+def revert_armenian(document):
+    # Set document language from armenian to english an 
+    if document.language == "armenian":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    # set inputencoding from armscii8 to auto 
+    if document.inputencoding == "armscii8":
+        i = find_token(document.header, "\\inputencoding", 0)
+        if i != -1:
+            document.header[i] = "\\inputencoding auto"
+    # add the entry \usepackage{armtex} to the document preamble
+    # check if preamble exists, if not k is set to -1 
+    i = 0
+    k = -1
+    while i < len(document.preamble):
+        if k == -1:
+            k = document.preamble[i].find("\\", 0, len(document.preamble[i]))
+        if k == -1:
+            k = document.preamble[i].find("%", 0, len(document.preamble[i]))
+        i = i + 1
+    # set the armtex entry as the first preamble line
+    if k != -1:
+        document.preamble[0] = "\\usepackage{armtex}" + "\r" + document.preamble[0][0:]
+    # create the preamble when it doesn't exist
+    else:
+        document.preamble.append('\\usepackage{armtex}')
+
+
 ##
 # Conversion hub
 #
@@ -1307,9 +1337,11 @@ convert = [[246, []],
            [262, []],
            [263, [normalize_language_name]],
            [264, [convert_cv_textclass]],
-           [265, [convert_tableborder]]]
+           [265, [convert_tableborder]],
+           [266, []]]
 
-revert =  [[264, [revert_tableborder]],
+revert =  [[265, [revert_armenian]],
+           [264, [revert_tableborder]],
            [263, [revert_cv_textclass]],
            [262, [revert_language_name]],
            [261, [revert_ascii]],

@@ -923,6 +923,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
+	// The encoding "armscii8" is only available when the package "armtex" is loaded.
+	// armscii8 is used for Armenian.
+	if (language->encoding()->latexName() == "armscii8" || inputenc == "armscii8") {
+		os << "\\usepackage{armtex}\n";
+		texrow.newline();
+	}
+
 	if (use_geometry || nonstandard_papersize) {
 		os << "\\usepackage{geometry}\n";
 		texrow.newline();

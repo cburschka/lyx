@@ -180,6 +180,7 @@ dist_examples_DATA = \
 	examples/aas_sample.lyx \
 	examples/amsart-test.lyx \
 	examples/amsbook-test.lyx \
+	examples/armenian-article.lyx \
 	examples/beamer-g4.jpg \
 	examples/beamer-g4-mask.jpg \
 	examples/beamer-icsi-logo.pdf \
@@ -893,6 +894,7 @@ dist_layouts_DATA =\
 	layouts/amsmaths.inc \
 	layouts/apa.layout \
 	layouts/arab-article.layout \
+	layouts/armenian-article.layout \
 	layouts/article.layout \
 	layouts/beamer.layout \
 	layouts/book.layout \

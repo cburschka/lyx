@@ -2379,6 +2379,7 @@ lib_examples_files = Split('''
     aas_sample.lyx
     amsart-test.lyx
     amsbook-test.lyx
+    armenian-article.lyx
     beamer-g4-mask.jpg
     beamer-g4.jpg
     beamer-icsi-logo.pdf
@@ -2595,6 +2596,7 @@ lib_layouts_files = Split('''
     amsmaths.inc
     apa.layout
     arab-article.layout
+    armenian-article.layout
     article.layout
     beamer.layout
     book.layout

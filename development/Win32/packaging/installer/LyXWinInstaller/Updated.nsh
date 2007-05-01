@@ -7,8 +7,9 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\LyXLauncher.exe"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" ; always here
  SetOutPath "$INSTDIR\Resources"
- File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\encodings"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" ; always here
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\sciword.bind"
@@ -31,6 +32,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.eps"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\CV-image.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\armenian-article.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\europeCV.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\modernCV.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
@@ -43,6 +45,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\images\math"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\super.xpm"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\armenian-article.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\simplecv.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
