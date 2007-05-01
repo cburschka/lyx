@@ -1,7 +1,7 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define PRODUCT_DIR "c:\lyx\LyXPackage"
+!define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
 !define PRODUCT_VERSION "1.5svn-02-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"

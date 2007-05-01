@@ -51,18 +51,11 @@ Section "-Installation actions" SecInstallation
   # Refresh registry setings for the uninstaller
   Call RefreshRegUninst
   
-  # Create a batch file to start LyX with the environment variables set
+  # replace the lyx.exe in lyx.bat with LyXLauncher.exe
   # !only needed in this version! remove it for the next release
-  ClearErrors
-  Delete "${PRODUCT_BAT}"
-  FileOpen $R1 "${PRODUCT_BAT}" w
-  FileWrite $R1 '@echo off$\r$\n\
-		 SET LANG=$LangCode$\r$\n\
-		 SET AIK_DATA_DIR=${AiksaurusDir}$\r$\n\
-		 start "${PRODUCT_NAME}" "${LAUNCHER_NAME}" %*$\r$\n'
-  FileClose $R1
-  IfErrors 0 +2
-   MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
+  StrCpy $OldString "lyx.exe"
+  StrCpy $NewString "${LAUNCHER_NAME}"
+  ${LineFind} "${PRODUCT_BAT}" "" "1:-1" "ReplaceLineContent" # macro from TextFunc.nsh # calls Function ReplaceLineContent
   
   # register LyX
   ${if} $CreateFileAssociations == "true"
@@ -172,7 +165,7 @@ Function InstDirChange
    
    # set new PATH_PREFIX in the file lyxrc.dist
    FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" a
-   FileRead $R1 $PathPrefix
+   FileRead $R1 $PathPrefix # the whole file content is now in $PathPrefix
    ${WordReplace} $PathPrefix "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $PathPrefix
    FileSeek $R1 0 # set file pointer to the beginning
    FileWrite $R1 '$PathPrefix' # overwrite the existing path with the actual one
