@@ -807,7 +807,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetGraphics::plaintext(Buffer const &, odocstream & os,
+int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
                              OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
@@ -818,7 +818,7 @@ int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 	// FIXME UNICODE
 	// FIXME: We have no idea what the encoding of the filename is
 
-	docstring const str = bformat(_("Graphics file: %1$s"),
+	docstring const str = bformat(buf.B_("Graphics file: %1$s"),
 	                              from_utf8(params().filename.absFilename()));
 	os << '<' << str << '>';
 

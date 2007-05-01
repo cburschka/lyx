@@ -1451,11 +1451,7 @@ Language const * Buffer::getLanguage() const
 
 docstring const Buffer::B_(string const & l10n) const
 {
-	Language const * lang = pimpl_->params.language;
-	if (lang)
-		return getMessages(lang->code()).get(l10n);
-
-	return _(l10n);
+	return params().B_(l10n);
 }
 
 

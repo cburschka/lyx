@@ -13,6 +13,7 @@
 
 #include "InsetMarginal.h"
 
+#include "Buffer.h"
 #include "gettext.h"
 #include "Paragraph.h"
 #include "OutputParams.h"
@@ -66,7 +67,7 @@ int InsetMarginal::latex(Buffer const & buf, odocstream & os,
 int InsetMarginal::plaintext(Buffer const & buf, odocstream & os,
                              OutputParams const & runparams) const
 {
-	os << '[' << _("margin") << ":\n";
+	os << '[' << buf.B_("margin") << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

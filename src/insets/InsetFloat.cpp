@@ -330,7 +330,7 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 int InsetFloat::plaintext(Buffer const & buf, odocstream & os,
                           OutputParams const & runparams) const
 {
-	os << '[' << _("float") << ' ' << floatName(params_.type, buf.params()) << ":\n";
+	os << '[' << buf.B_("float") << ' ' << floatName(params_.type, buf.params()) << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

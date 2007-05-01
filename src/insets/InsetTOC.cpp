@@ -40,11 +40,11 @@ std::auto_ptr<Inset> InsetTOC::doClone() const
 }
 
 
-docstring const InsetTOC::getScreenLabel(Buffer const &) const
+docstring const InsetTOC::getScreenLabel(Buffer const & buf) const
 {
 	if (getCmdName() == "tableofcontents")
-		return _("Table of Contents");
-	return _("Unknown toc list");
+		return buf.B_("Table of Contents");
+	return _("Unknown TOC type");
 }
 
 

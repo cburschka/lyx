@@ -194,7 +194,7 @@ int InsetWrap::latex(Buffer const & buf, odocstream & os,
 int InsetWrap::plaintext(Buffer const & buf, odocstream & os,
                          OutputParams const & runparams) const
 {
-	os << '[' << _("wrap") << ' ' << floatName(params_.type, buf.params()) << ":\n";
+	os << '[' << buf.B_("wrap") << ' ' << floatName(params_.type, buf.params()) << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

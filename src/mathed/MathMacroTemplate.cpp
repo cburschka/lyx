@@ -15,6 +15,7 @@
 #include "MathParser.h"
 #include "MathSupport.h"
 
+#include "Buffer.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "gettext.h"
@@ -234,10 +235,10 @@ void MathMacroTemplate::write(WriteStream & os) const
 }
 
 
-int MathMacroTemplate::plaintext(Buffer const &, odocstream & os,
+int MathMacroTemplate::plaintext(Buffer const & buf, odocstream & os,
                                  OutputParams const &) const
 {
-	static docstring const str = '[' + _("math macro") + ']';
+	static docstring const str = '[' + buf.B_("math macro") + ']';
 
 	os << str;
 	return str.size();

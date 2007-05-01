@@ -142,10 +142,10 @@ void writePlaintextParagraph(Buffer const & buf,
 
 	case 6: // Abstract
 		if (runparams.linelen > 0) {
-			os << _("Abstract") << "\n\n";
+			os << buf.B_("Abstract") << "\n\n";
 			currlinelen = 0;
 		} else {
-			docstring const abst = _("Abstract: ");
+			docstring const abst = buf.B_("Abstract: ");
 			os << abst;
 			currlinelen += abst.length();
 		}
@@ -154,10 +154,10 @@ void writePlaintextParagraph(Buffer const & buf,
 	case 7: // Bibliography
 		if (!ref_printed) {
 			if (runparams.linelen > 0) {
-				os << _("References") << "\n\n";
+				os << buf.B_("References") << "\n\n";
 				currlinelen = 0;
 			} else {
-				docstring const refs = _("References: ");
+				docstring const refs = buf.B_("References: ");
 				os << refs;
 				currlinelen += refs.length();
 			}

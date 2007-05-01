@@ -60,6 +60,9 @@ public:
 	BufferParams();
 	~BufferParams();
 
+	/// get l10n translated to the buffers language
+	docstring const B_(std::string const & l10n) const;
+
 	/// read a header token, if unrecognised, return it or an unknown class name
 	std::string const readToken(Lexer & lex, std::string const & token);
 

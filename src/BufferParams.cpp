@@ -25,6 +25,7 @@
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
+#include "Messages.h"
 #include "Color.h"
 #include "Font.h"
 #include "Lexer.h"
@@ -361,6 +362,13 @@ BufferParams::BufferParams()
 
 BufferParams::~BufferParams()
 {}
+
+
+docstring const BufferParams::B_(string const & l10n) const
+{
+	BOOST_ASSERT(language);
+	return getMessages(language->code()).get(l10n);
+}
 
 
 AuthorList & BufferParams::authors()

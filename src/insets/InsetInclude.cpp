@@ -294,22 +294,22 @@ void InsetInclude::read(Lexer & lex)
 }
 
 
-docstring const InsetInclude::getScreenLabel(Buffer const &) const
+docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 {
 	docstring temp;
 
 	switch (type(params_)) {
 		case INPUT:
-			temp += _("Input");
+			temp += buf.B_("Input");
 			break;
 		case VERB:
-			temp += _("Verbatim Input");
+			temp += buf.B_("Verbatim Input");
 			break;
 		case VERBAST:
-			temp += _("Verbatim Input*");
+			temp += buf.B_("Verbatim Input*");
 			break;
 		case INCLUDE:
-			temp += _("Include");
+			temp += buf.B_("Include");
 			break;
 	}
 

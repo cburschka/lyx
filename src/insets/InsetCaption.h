@@ -84,7 +84,7 @@ public:
 
 private:
 	///
-	void computeFullLabel() const;
+	void computeFullLabel(Buffer const & buf) const;
 	///
 	virtual std::auto_ptr<Inset> doClone() const;
 	///

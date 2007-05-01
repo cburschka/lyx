@@ -134,7 +134,7 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	int const width_offset = TEXT_TO_INSET_OFFSET / 2;
 	mi.base.textwidth -= width_offset;
 
-	computeFullLabel();
+	computeFullLabel(*mi.base.bv->buffer());
 
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
@@ -257,7 +257,7 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
                             OutputParams const & runparams) const
 {
-	computeFullLabel();
+	computeFullLabel(buf);
 
 	os << '[' << full_label_ << "\n";
 	InsetText::plaintext(buf, os, runparams);
@@ -278,13 +278,13 @@ int InsetCaption::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetCaption::computeFullLabel() const
+void InsetCaption::computeFullLabel(Buffer const & buf) const
 {
 	if (type_.empty())
-		full_label_ = _("Senseless!!! ");
+		full_label_ = buf.B_("Senseless!!! ");
 	else {
 		docstring const number = convert<docstring>(counter_);
-		docstring label = custom_label_.empty()? _(type_): custom_label_;
+		docstring label = custom_label_.empty()? buf.B_(type_): custom_label_;
 		full_label_ = bformat(from_ascii("%1$s %2$s:"), label, number);
 	}
 }

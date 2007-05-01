@@ -13,6 +13,7 @@
 
 #include "InsetFoot.h"
 
+#include "Buffer.h"
 #include "gettext.h"
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
@@ -82,7 +83,7 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 int InsetFoot::plaintext(Buffer const & buf, odocstream & os,
                          OutputParams const & runparams) const
 {
-	os << '[' << _("footnote") << ":\n";
+	os << '[' << buf.B_("footnote") << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

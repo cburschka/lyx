@@ -235,7 +235,7 @@ int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
 	if (!isBranchSelected(buf))
 		return 0;
 
-	os << '[' << _("branch") << ' ' << params_.branch << ":\n";
+	os << '[' << buf.B_("branch") << ' ' << params_.branch << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

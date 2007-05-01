@@ -14,6 +14,7 @@
 
 #include "InsetNote.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "debug.h"
@@ -307,7 +308,7 @@ int InsetNote::plaintext(Buffer const & buf, odocstream & os,
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	}
-	os << '[' << _("note") << ":\n";
+	os << '[' << buf.B_("note") << ":\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 

@@ -13,6 +13,7 @@
 
 #include "InsetCommand.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -92,10 +93,10 @@ int InsetCommand::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetCommand::plaintext(Buffer const &, odocstream & os,
+int InsetCommand::plaintext(Buffer const & buf, odocstream & os,
                             OutputParams const &) const
 {
-	docstring const str = "[" + _("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
+	docstring const str = "[" + buf.B_("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
 	os << str;
 	return str.size();
 }
