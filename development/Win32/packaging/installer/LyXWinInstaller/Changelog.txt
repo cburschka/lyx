@@ -1,11 +1,14 @@
 ﻿Version LyX 1.5svn-02-05-2007
 - LyX 1.5svn from 02-05-2007
 
+- LyX's console window is now hidden -> updated source code Readmes
 - fix bug that file associations were set also when the user has chosen
   to leave them untouched
 - Update installer: new option to choose wheter the file associations
   should be updated or not
 - Update installer: fix uninstalling
+- Update installer: fix that a subfolder of the old install folder
+  remained after the new install folder has been set
 
 
 Version LyX 1.5beta2-21-04-2007
@@ -50,7 +53,7 @@ Version LyX 1.5svn-09-04-2007
   - new layout and template files for the g-brief2 letter class and the
     moderncv and europecv curriculum vitae classes
   - reworked BibTeX file parser
-  - reworked graphics, nomenclature, and math delimiter dialog
+  - reworked graphics, glossary, and  math delimiter dialog
   - new Spanish translation of the Extended manual
   - many other bugfixes
 

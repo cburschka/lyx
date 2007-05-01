@@ -112,11 +112,6 @@ Var UserName
 ; and LyX's menu language
 !include "LanguageSettings.nsh"
 
-; Use the Abiword macros to help set up associations with the file extension in the Registry.
-; Grabbed from
-; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
-!include "abi_util_fileassoc.nsh"
-
 ; Function to configure LyX
 !include "ConfigLyX.nsh"
 

@@ -132,6 +132,13 @@ Section "un.LyX" un.SecUnProgramFiles
    DeleteRegKey SHCTX "SOFTWARE\Aiksaurus"
   ${endif}
 
+  ; remove file extension .lyx
+  ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
+  ${if} $R0 == "${PRODUCT_REGNAME}"
+   DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
+   DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
+  ${endif}
+
   ; the following can only be done with admin permissions
   ${if} $Answer == "yes" ; if admin
   
@@ -163,10 +170,6 @@ Section "un.LyX" un.SecUnProgramFiles
    ; MiKTeX specific LyX setting 
    DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL"
    DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY"
-   
-   ; remove extension .lyx
-   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
-   DeleteRegKey HKCR "${PRODUCT_NAME}"
    
   ${endif} ; end if Answer (if admin)
   

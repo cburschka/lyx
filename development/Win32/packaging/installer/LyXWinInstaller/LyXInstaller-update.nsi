@@ -35,6 +35,7 @@ SetCompressor lzma
 ; variables only used in this installer version
 
 Var INSTDIR_NEW
+Var INSTDIR_OLD
 ; Variables used by all installer versions
 Var AspellInstallYes
 Var AspellBaseReg
@@ -83,11 +84,6 @@ Var UserName
 
 ; Set of various macros and functions
 !include "LyXUtils.nsh"
-
-; Use the Abiword macros to help set up associations with the file extension in the Registry.
-; Grabbed from
-; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
-!include "abi_util_fileassoc.nsh"
 
 ; list with modified files
 !include "Updated.nsh"

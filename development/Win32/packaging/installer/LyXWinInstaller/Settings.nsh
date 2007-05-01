@@ -11,11 +11,14 @@
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
 !define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
 !define PRODUCT_EXT ".lyx"
+!define PRODUCT_REGNAME "LyX.Document"
 !define PRODUCT_MIME_TYPE "application/lyx"
 !define PRODUCT_UNINSTALL_EXE "$INSTDIR\LyXWinUninstall.exe"
 !define PRODUCT_HELP_LINK "http://www.lyx.org/internet/mailing.php"
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
+!define LAUNCHER_NAME "LyXLauncher.exe"
+!define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
 
 BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 
@@ -28,6 +31,9 @@ BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
 !define PRODUCT_ROOT_KEY "SHCTX"
 
+; registry preparations
+!define SHCNE_ASSOCCHANGED 0x08000000
+!define SHCNF_IDLIST 0
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 

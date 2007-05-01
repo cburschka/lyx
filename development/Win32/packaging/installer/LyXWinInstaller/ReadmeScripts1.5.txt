@@ -8,10 +8,20 @@ http://developer.berlios.de/projects/lyxwininstall/
 
 ---
 General
+
 To compile the installer scripts you need at least NSIS version 2.25.
+
 The installer scripts needs the plugins "FindProc" and "InetLoad".
 To use them copy the files "FindProcDLL.dll" and "InetLoad.dll" from the
 "LyXPackage" folder to NSIS'"Plugins" directory.
+
+Only when you have built your own file tree:
+- Copy the files "preferencesxxx", "Aspellxxx.txt", and "session" from the
+  specials folder to the \Resources folder
+- Copy the files "Console.dll" and "LyXLauncher.exe" from the specials folder
+  to the \bin folder where also the "lyx.exe" is.
+- Copy all "*.exe" files from the specials\PDFViewWin folder to the \bin
+  folder where also the "lyx.exe" is.
 
 ---
 Internationalization

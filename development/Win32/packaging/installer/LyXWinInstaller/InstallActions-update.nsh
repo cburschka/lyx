@@ -10,6 +10,10 @@ Section "-Installation actions" SecInstallation
   StrCpy $LangName ""
   StrCpy $LangNameSys ""
   
+  ; init, this variable is later only set to a value in function InstDirChange
+  ; when the $INSTDIR is changed
+  StrCpy $INSTDIR_OLD ""
+  
   ; extract modified files
   Call UpdateModifiedFiles ; macro from Updated.nsh
   
@@ -28,8 +32,12 @@ Section "-Installation actions" SecInstallation
   ; delete old registry entries
   ${if} $CreateFileAssociations == "true"
    DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
-   ; remove extension .lyx
-   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
+   ; remove file extension .lyx
+   ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
+   ${if} $R0 == "${PRODUCT_REGNAME}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
+   ${endif}
   ${endif}
   DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY_OLD}"
   DeleteRegKey HKCR "Applications\lyx.bat"
@@ -42,6 +50,19 @@ Section "-Installation actions" SecInstallation
   
   ; Refresh registry setings for the uninstaller
   Call RefreshRegUninst
+  
+  ; Create a batch file to start LyX with the environment variables set
+  ; !only needed in this version! remove it for the next release
+  ClearErrors
+  Delete "${PRODUCT_BAT}"
+  FileOpen $R1 "${PRODUCT_BAT}" w
+  FileWrite $R1 '@echo off$\r$\n\
+		 SET LANG=$LangCode$\r$\n\
+		 SET AIK_DATA_DIR=${AiksaurusDir}$\r$\n\
+		 start "${PRODUCT_NAME}" "${LAUNCHER_NAME}" %*$\r$\n'
+  FileClose $R1
+  IfErrors 0 +2
+   MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
   
   ; register LyX
   ${if} $CreateFileAssociations == "true"
@@ -75,8 +96,15 @@ Section "-Installation actions" SecInstallation
   
   ; register the extension .lyx
   ${if} $CreateFileAssociations == "true"
-   ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
-   ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
+   ; write informations about file type
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_REGNAME}" "" "${PRODUCT_NAME} Document"
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_REGNAME}\DefaultIcon" "" "${PRODUCT_EXE}"
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_REGNAME}\Shell\open\command" "" '"${LAUNCHER_EXE}" "%1"'
+   ; write informations about file extensions
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}" "" "${PRODUCT_REGNAME}"
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}" "Content Type" "${PRODUCT_MIME_TYPE}"  
+   ; refresh shell
+   System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
   ${endif}
   
   ; create Uninstaller
@@ -108,6 +136,13 @@ Section "-Installation actions" SecInstallation
   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexConfigInfo)"
   ExecWait '"$INSTDIR\Resources\configLyX.bat"'
   Delete "$INSTDIR\Resources\configLyX.bat"
+  
+  ; for some unknown odd reason the folder $INSTDIR_OLD\Resources\ui
+  ; is not deleted in function InstDirChange, so the deletion has to be called
+  ; again to make it work
+  ${if} $INSTDIR_OLD != ""
+   RMDir /r $INSTDIR_OLD
+  ${endif}
 
 SectionEnd
 
@@ -132,6 +167,7 @@ Function InstDirChange
    CopyFiles "$INSTDIR\*.*" "$INSTDIR_NEW"
    ; delete the old folder
    RMDir /r $INSTDIR
+   StrCpy $INSTDIR_OLD $INSTDIR
    StrCpy $INSTDIR $INSTDIR_NEW
    
    ; set new PATH_PREFIX in the file lyxrc.dist

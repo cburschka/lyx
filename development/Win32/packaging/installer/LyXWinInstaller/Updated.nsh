@@ -2,7 +2,9 @@ Function UpdateModifiedFiles
 
  ; list with modified files for LyX 1.5svn 30-04-2007
  SetOutPath "$INSTDIR\bin"
+ File "${PRODUCT_SOURCEDIR}\bin\Console.dll"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" ; always here
+ File "${PRODUCT_SOURCEDIR}\bin\LyXLauncher.exe"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" ; always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
@@ -33,7 +35,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\modernCV.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\simplecv.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
- File "$INSTDIR\Resources\examples\de\Dezimal.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Dezimal.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math-superscript.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_set-rotate-cell.xpm"
