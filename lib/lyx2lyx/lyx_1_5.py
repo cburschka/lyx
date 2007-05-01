@@ -1307,7 +1307,7 @@ def revert_armenian(document):
         i = i + 1
     # set the armtex entry as the first preamble line
     if k != -1:
-        document.preamble[0] = "\\usepackage{armtex}" + "\r" + document.preamble[0][0:]
+        document.preamble[0:0] = ["\\usepackage{armtex}"]
     # create the preamble when it doesn't exist
     else:
         document.preamble.append('\\usepackage{armtex}')
