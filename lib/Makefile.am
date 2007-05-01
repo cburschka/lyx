@@ -273,6 +273,7 @@ dist_images_DATA = \
 	images/dialog-show_mathmatrix.xpm \
 	images/dialog-show_print.xpm \
 	images/dialog-show_spellchecker.xpm \
+	images/dialog-toggle_toc.xpm \
 	images/down.xpm \
 	images/ert-insert.xpm \
 	images/file-open.xpm \
@@ -336,7 +337,6 @@ dist_images_DATA = \
 	images/tabular-feature_valign-top.xpm \
 	images/tabular-insert.xpm \
 	images/thesaurus-entry.xpm \
-	images/toc-view.xpm \
 	images/undo.xpm \
 	images/unknown.xpm \
 	images/up.xpm \
