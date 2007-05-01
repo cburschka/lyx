@@ -537,8 +537,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 	// If the mask is completely neutral, tell user
 	if (font == Font(Font::ALL_IGNORE)) {
 		// Could only happen with user style
-		cur.message(_("No font change defined. "
-					   "Use Character under the Layout menu to define font change."));
+		cur.message(_("No font change defined."));
 		return;
 	}
 
