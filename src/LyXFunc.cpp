@@ -546,6 +546,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_DIALOG_TOGGLE:
 		flag.setOnOff(lyx_view_->getDialogs().visible(cmd.getArg(0)));
+		// fall through to set "enable"
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
 		if (!buf)
