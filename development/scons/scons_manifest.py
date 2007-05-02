@@ -2368,7 +2368,6 @@ lib_doc_de_files = Split('''
 
 
 lib_examples_files = Split('''
-    Armenian-article.lyx
     CV-image.eps
     CV-image.png
     Foils.lyx
@@ -2380,6 +2379,7 @@ lib_examples_files = Split('''
     aas_sample.lyx
     amsart-test.lyx
     amsbook-test.lyx
+    armenian-article.lyx
     beamer-g4-mask.jpg
     beamer-g4.jpg
     beamer-icsi-logo.pdf
