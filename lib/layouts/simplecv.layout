@@ -52,11 +52,6 @@ Style Subsection
 	LeftMargin            MMM
 End
 
-# we used to have this version with wrong case
-Style SubSection
-	ObsoletedBy           Subsection
-End
-
 Style Topic
 	Margin                Manual
 	LatexType             Item_environment
