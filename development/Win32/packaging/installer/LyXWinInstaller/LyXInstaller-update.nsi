@@ -27,6 +27,7 @@ SetCompressor lzma
 !define INSTALLER_VERSION "Update"
 !define INSTALLER2_VERSION "Small"
 !define INSTALLER3_VERSION "Complete"
+!define INSTALLER_TYPE "Update"
 
 # load the settings
 !include "Settings.nsh"

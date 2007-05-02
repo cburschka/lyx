@@ -1,12 +1,14 @@
 # This script contains the following functions:
 #
-# - LaTeXCheck (check installed LaTeX-system), uses:
+# - LaTeXCheck (check installed LaTeX-system),
+#    (only used by Small and Complete installer), uses:
 #    StrPointer
 #    StrPoint
 #    RevStrPointer
 #    RevStrPoint
 #
-# - un.DelAppPathSub and UnAppPreSuff, (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
+# - un.DelAppPathSub and UnAppPreSuff,
+#    (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
 #    un.GetParentA
 #    un.GetUsers
 #    un.StrPoint
@@ -14,7 +16,9 @@
 #    StrPoint
 #    UnAppPreSuff
 #
-# - CreateAppPathSub and AppPreSuff, (creates the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
+# - CreateAppPathSub and AppPreSuff,
+#    (creates the folder ~\Documents and Settings\username\Application Data\LyX for all users),
+#    (only used by Small and Complete installer), uses:
 #    GetParentA
 #    GetUsers
 #    StrPointer
@@ -97,9 +101,13 @@ FunctionEnd
  
 #--------------------------------
 
-Function RevStrPoint
- !insertmacro RevStrPointer $String $Search $Pointer
-FunctionEnd
+!if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
+
+ Function RevStrPoint
+  !insertmacro RevStrPointer $String $Search $Pointer
+ FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "NotUpdate"
 
 #--------------------------------
 
@@ -311,7 +319,9 @@ FunctionEnd
 
 #--------------------------------
 
-Function CreateAppPathSub
+!if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
+
+ Function CreateAppPathSub
  # creates a subfolder of the APPDATA path for all users
 
   # get folder names
@@ -352,21 +362,29 @@ Function CreateAppPathSub
   CopyFiles "$INSTDIR\Resources\session" "$AppPath"
   Delete "$INSTDIR\Resources\session" # delete the session file in the INSTDIR because it is unneeded there
   
-FunctionEnd
+ FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "NotUpdate"
 
 #--------------------------------
 
-Function ReplaceLineContent
+!if ${INSTALLER_TYPE} == "Update" # only for Update installer
+
+ Function ReplaceLineContent
  # replaces "$OldString" with "LyX $NewString"
 
- ${WordReplace} '$R9' "$OldString" "$NewString" "+" '$R9' # macro from WordFunc.nsh
- Push $0
+  ${WordReplace} '$R9' "$OldString" "$NewString" "+" '$R9' # macro from WordFunc.nsh
+  Push $0
  
-FunctionEnd
+ FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "Update"
 
 #--------------------------------
 
-Function CheckAppPathPreferences
+!if ${INSTALLER_TYPE} == "Update" # only for Update installer
+
+ Function CheckAppPathPreferences
  # replaces a string "$OldString" with "$NewString" in a file "$FileName"
 
   # get folder names
@@ -414,7 +432,9 @@ Function CheckAppPathPreferences
   ${LineFind} "$AppPath\$FileName" "" "1:-1" "ReplaceLineContent"
   doneB:
   
-FunctionEnd
+ FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "Update"
 
 #--------------------------------
 
@@ -464,7 +484,9 @@ FunctionEnd
 
 #------------------------------------------
 
-Function LaTeXCheck
+!if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
+
+ Function LaTeXCheck
  # searches the string "$Search" in the string "$String" and extracts the path around it
  # the extracted path is checked if the file "latex.exe" is in it
 
@@ -504,5 +526,7 @@ Function LaTeXCheck
     Goto StartCheck
    ${endif}
 
-FunctionEnd
+ FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "NotUpdate"
 

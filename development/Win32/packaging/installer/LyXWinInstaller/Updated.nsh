@@ -14,6 +14,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\examples"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\armenian-article.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\TabellenBeispiel.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"

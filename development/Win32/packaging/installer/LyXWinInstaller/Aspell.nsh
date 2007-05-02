@@ -1,5 +1,7 @@
 # Aspell dictionaries
 
+!if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
+
 Function DownloadDictionary
 	
  FileOpen $R5 "$INSTDIR\Resources\AspellDictionaryNames.txt" r
@@ -66,7 +68,11 @@ Function DownloadDictionary
 
 FunctionEnd
 
+!endif # endif ${INSTALLER_TYPE} == "NotUpdate"
+
 #--------------------------------
+
+!if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
 
 Function InstallAspellDictionary
 	
@@ -207,6 +213,8 @@ Function InstallAspellDictionary
  DownloadLater:
 	 
 FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "NotUpdate"
  
 #---------------------------
 

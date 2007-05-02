@@ -27,6 +27,7 @@ CRCCheck force
 !define INSTALLER_VERSION "Complete"
 !define INSTALLER2_VERSION "Small"
 !define INSTALLER3_VERSION "Update"
+!define INSTALLER_TYPE "NotUpdate"
 
 # load the settings
 !include "Settings.nsh"
@@ -93,10 +94,6 @@ Var UserName
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
-!include "TextFunc.nsh"
-!insertmacro LineFind
-!include "WordFunc.nsh"
-!insertmacro WordReplace
 
 # Set of various macros and functions
 !include "LyXUtils.nsh"

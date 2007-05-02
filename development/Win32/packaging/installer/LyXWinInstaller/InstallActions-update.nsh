@@ -5,10 +5,13 @@ Section "-Installation actions" SecInstallation
 
   # dummy actions to avoid NSIS warnings
   StrCpy $AspellBaseReg ""
+  StrCpy $AspellMessage ""
+  StrCpy $DictCode ""
   StrCpy $LangCode ""
   StrCpy $LangCodeSys ""
   StrCpy $LangName ""
   StrCpy $LangNameSys ""
+  StrCpy $RunNumber ""
   
   # init, this variable is later only set to a value in function InstDirChange
   # when the $INSTDIR is changed
