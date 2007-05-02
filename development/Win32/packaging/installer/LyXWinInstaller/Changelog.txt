@@ -1,14 +1,18 @@
 ﻿Version LyX 1.5svn-xx-05-2007
 - LyX 1.5svn from xx-05-2007
 
+- fix bug that LyX's menu language setting was ignored when LyX is
+  started by double-clicking on a LyX-file
+
 
 Version LyX 1.5svn-02-05-2007
 - LyX 1.5svn from 02-05-2007
+  - support for Armenian
 
 - LyX's console window is now hidden -> updated source code Readmes
 - fix bug that file associations were set also when the user has chosen
   to leave them untouched
-- Update installer: new option to choose wheter the file associations
+- Update installer: new option to choose whether the file associations
   should be updated or not
 - Update installer: fix uninstalling
 - Update installer: fix that a subfolder of the old install folder
