@@ -2163,7 +2163,6 @@ lib_images_attic_extra_files = Split('''
 
 lib_tex_files = Split('''
     broadway.cls
-    cv.cls
     hollywood.cls
     lyxchess.sty
     lyxskak.sty
@@ -2396,7 +2395,6 @@ lib_examples_files = Split('''
     chess-article.lyx
     chessgame.lyx
     currency.lyx
-    cv.lyx
     docbook_article.lyx
     europeCV.lyx
     example_lyxified.lyx
@@ -2593,7 +2591,6 @@ lib_layouts_files = Split('''
     broadway.layout
     chess.layout
     cl2emult.layout
-    cv.layout
     dinbrief.layout
     docbook-book.layout
     docbook-chapter.layout
