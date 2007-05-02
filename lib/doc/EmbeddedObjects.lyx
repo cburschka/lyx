@@ -4656,7 +4656,7 @@ Create a longtable
 \end_layout
 
 \begin_layout Enumerate
-Mark the first row an disable its upper line.
+Mark the first row and disable its upper line.
 \end_layout
 
 \begin_layout Enumerate
@@ -6225,6 +6225,9 @@ asd
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -6239,10 +6242,6 @@ LTcapwidth}{4in}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -9787,7 +9786,7 @@ name "Table ! Linebreaks"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -10000,6 +9999,7 @@ reference "tab:Table-with-and"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
