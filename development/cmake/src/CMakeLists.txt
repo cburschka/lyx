@@ -77,3 +77,5 @@ endif(APPLE)
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
+install(TARGETS lyx-${qt_postfix} DESTINATION bin)
+

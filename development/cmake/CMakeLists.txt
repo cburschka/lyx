@@ -252,3 +252,7 @@ include_directories(
 add_subdirectory(boost)
 add_subdirectory(intl)
 add_subdirectory(src)
+
+
+include(../Install)
+
