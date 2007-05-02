@@ -2373,7 +2373,6 @@ lib_examples_files = Split('''
     ItemizeBullets.lyx
     Literate.lyx
     Minipage.lyx
-    TableExamples.lyx
     aa_sample.lyx
     aas_sample.lyx
     amsart-test.lyx
@@ -2530,7 +2529,7 @@ lib_examples_de_files = Split('''
     ItemizeBullets.lyx
     Lebenslauf.lyx
     Minipage.lyx
-    TableExamples.lyx
+    TabellenBeispiel.lyx
     Waehrungen.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx

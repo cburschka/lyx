@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn, rev. 17876, 20. 4. 2007 created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language ngerman
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,17 +35,18 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Einige Beispiele für Tabellen in LyX 
+Einige Beispiele fÃ¼r Tabellen in LyX 
 \end_layout
 
 \begin_layout Author
-von Jürgen Vigna (jug@sad.it)
+von JÃ¼rgen Vigna (jug@sad.it)
 \end_layout
 
 \begin_layout Standard
@@ -75,7 +84,7 @@ Wie man die speziellen Optionen der Langen Tabelle anwendet
 \begin_layout Standard
 
 \series bold
-Telefonliste (ignoriere die Nmen)
+Telefonliste (ignoriere die Namen)
 \end_layout
 
 \end_inset
@@ -203,9 +212,9 @@ TEL.
 \begin_layout Standard
 
 \series bold
-wird fortgesetzt 
+wird fortgesetzt
 \series default
-\SpecialChar \ldots{}
+ \SpecialChar \ldots{}
 
 \end_layout
 
@@ -1205,7 +1214,7 @@ Vigna
 \begin_inset Text
 
 \begin_layout Standard
-Jürgen
+JÃ¼rgen
 \end_layout
 
 \end_inset
@@ -2195,7 +2204,7 @@ Vigna
 \begin_inset Text
 
 \begin_layout Standard
-Jürgen
+JÃ¼rgen
 \end_layout
 
 \end_inset
@@ -3135,7 +3144,7 @@ Das Paket
 multirow
 \family default
  (unbekannter Verfasser) automatisiert in Tabellen die Konstruktion von
- Zellen, die mehrere Zeilen überspannen mit dem 
+ Zellen, die mehrere Zeilen Ã¼berspannen mit dem 
 \family typewriter
 
 \backslash
@@ -3208,6 +3217,7 @@ status open
 
 \begin_layout Standard
 
+
 \backslash
 multirow{4}{14mm}{
 \end_layout
@@ -3219,6 +3229,7 @@ Text in Spalte 1
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -3247,6 +3258,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 multirow{4}{14mm}{
 \end_layout
@@ -3258,6 +3270,7 @@ Text in Spalte 3
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -3413,15 +3426,15 @@ C4e
 \end_layout
 
 \begin_layout Standard
-Fußzeilen -- 
+FuÃŸzeilen -- 
 \series bold
-Wie man Fußzeilen in Tabellen benutzt
+Wie man FuÃŸzeilen in Tabellen benutzt
 \end_layout
 
 \begin_layout Standard
-Es gibt mehrere Möglichkeiten, Fußzeilen in Tabellen zu erstellen.
- Ich werde die erklären, die in LyX ganz gut funktionieren (vielleicht sind
- es überhaupt die einzigen, die funktionieren :-).
+Es gibt mehrere MÃ¶glichkeiten, FuÃŸzeilen in Tabellen zu erstellen.
+ Ich werde die erklÃ¤ren, die in LyX ganz gut funktionieren (vielleicht sind
+ es Ã¼berhaupt die einzigen, die funktionieren :-).
 \end_layout
 
 \begin_layout Enumerate
@@ -3432,7 +3445,7 @@ Minipage-Umgebungen benutzen
 
 \begin_deeper
 \begin_layout Standard
-Beachten Sie, daß die Fußzeilen unmittelbar nach der Minipage erscheinen.
+Beachten Sie, daÃŸ die FuÃŸzeilen unmittelbar nach der Minipage erscheinen.
  Die Standardnumerierung benutzt Kleinbuchstaben.
 \end_layout
 
@@ -3525,6 +3538,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 footnote{
 \end_layout
@@ -3536,6 +3550,7 @@ Beispiel 1, Zelle (b,1)
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -3641,6 +3656,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 footnote{
 \end_layout
@@ -3652,6 +3668,7 @@ Beispiel 1, Zelle (d,9)
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -3692,7 +3709,7 @@ Lange Tabelle-Optionen benutzen
 
 \begin_deeper
 \begin_layout Standard
-Klicken Sie im Menü 
+Klicken Sie im MenÃ¼ 
 \family sans
 Tabellen-Einstellungen
 \family default
@@ -3704,7 +3721,7 @@ Lange Tabelle
 \family sans
 Lange Tabelle verwenden
 \family default
-, und die Fußzeilen erscheinen am Ende der Seite.
+, und die FuÃŸzeilen erscheinen am Ende der Seite.
 \end_layout
 
 \begin_layout Standard
@@ -3781,6 +3798,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 footnote{
 \end_layout
@@ -3792,6 +3810,7 @@ Beispiel 2, Zelle (b,1)
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -3897,6 +3916,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 footnote{
 \end_layout
@@ -3908,6 +3928,7 @@ Beispiel 2, Zelle (d,9)
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -3937,29 +3958,33 @@ status collapsed
 \begin_layout Enumerate
 
 \emph on
-Die LaTeX-Befehle 
-\family typewriter
+Die LaTeX-Befehle
 \emph default
+ 
+\family typewriter
 
 \backslash
 footnotemark
 \family default
+ 
 \emph on
- und 
-\family typewriter
+und
 \emph default
+ 
+\family typewriter
 
 \backslash
 footnotetext
 \family default
+ 
 \emph on
- benutzen
+benutzen
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Dies ist am aufwendigsten, aber es funktioniert.
- Benutzen Sie diese Methode in Minipages, wenn die Fußzeilen am Ende der
+ Benutzen Sie diese Methode in Minipages, wenn die FuÃŸzeilen am Ende der
  Seite erscheinen sollen.
 \end_layout
 
@@ -4037,6 +4062,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 footnotemark
 \end_layout
@@ -4143,6 +4169,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 footnotemark
 \end_layout
@@ -4175,6 +4202,7 @@ status open
 
 \begin_layout Standard
 
+
 \backslash
 addtocounter{footnote}{-1}
 \backslash
@@ -4182,6 +4210,7 @@ footnotetext{Beispiel 3, Zelle (b,1)}%
 \end_layout
 
 \begin_layout Standard
+
  
 \backslash
 addtocounter{footnote}{1}
