@@ -197,7 +197,6 @@ dist_examples_DATA = \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
 	examples/currency.lyx \
-	examples/cv.lyx \
 	examples/docbook_article.lyx \
 	examples/europeCV.lyx \
 	examples/example_lyxified.lyx \
@@ -902,7 +901,6 @@ dist_layouts_DATA =\
 	layouts/broadway.layout \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
-	layouts/cv.layout \
 	layouts/db_lyxmacros.inc \
 	layouts/db_stdclass.inc \
 	layouts/db_stdcharstyles.inc \
@@ -1042,7 +1040,6 @@ dist_templates_DATA = \
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \
 	tex/broadway.cls \
-	tex/cv.cls \
 	tex/hollywood.cls \
 	tex/lyxchess.sty \
 	tex/lyxskak.sty \
