@@ -51,12 +51,6 @@ Section "-Installation actions" SecInstallation
   # Refresh registry setings for the uninstaller
   Call RefreshRegUninst
   
-  # replace the lyx.exe in lyx.bat with LyXLauncher.exe
-  # !only needed in this version! remove it for the next release
-  StrCpy $OldString "lyx.exe"
-  StrCpy $NewString "${LAUNCHER_NAME}"
-  ${LineFind} "${PRODUCT_BAT}" "" "1:-1" "ReplaceLineContent" # macro from TextFunc.nsh # calls Function ReplaceLineContent
-  
   # register LyX
   ${if} $CreateFileAssociations == "true"
    WriteRegStr SHCTX "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"

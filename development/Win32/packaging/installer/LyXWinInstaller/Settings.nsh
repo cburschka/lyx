@@ -17,7 +17,6 @@
 !define PRODUCT_HELP_LINK "http://www.lyx.org/internet/mailing.php"
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
-!define LAUNCHER_NAME "LyXLauncher.exe"
 !define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
 
 BrandingText "LyXWinInstaller v3.14 - ${INSTALLER_VERSION}"

@@ -43,7 +43,7 @@ Function ConfigureLyX
   FileWrite $R1 '@echo off$\r$\n\
 		 SET LANG=$LangCode$\r$\n\
 		 SET AIK_DATA_DIR=${AiksaurusDir}$\r$\n\
-		 start "${PRODUCT_NAME}" "${LAUNCHER_NAME}" %*$\r$\n'
+		 start "${PRODUCT_NAME}" "${LAUNCHER_EXE}" %*$\r$\n'
   FileClose $R1
   IfErrors 0 +2
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"

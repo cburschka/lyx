@@ -85,9 +85,7 @@ Function ConfigureMiKTeX
   ${if} $Pointer != "-1" # if something was found
    IntOp $Pointer $Pointer - 1 # jump before the first "\" of "\miktex\bin"
    StrCpy $String $String "$Pointer" # $String is now the part before "\miktex\bin"
-   # install LaTeX class files
-   SetOutPath "$String\tex\latex"
-   File "${ClassFileDir}\cv.cls"
+   # install LyX's special LaTeX class files
    CreateDirectory "$String\tex\latex\lyx"
    SetOutPath "$String\tex\latex\lyx"
    File "${ClassFileDir}\lyxchess.sty"
