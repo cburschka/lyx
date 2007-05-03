@@ -60,28 +60,30 @@ ControlDocument::~ControlDocument()
 
 bool ControlDocument::initialiseParams(std::string const &)
 {
-	bp_.reset(new BufferParams);
-	*bp_ = kernel().buffer().params();
 	return true;
 }
 
 
 void ControlDocument::clearParams()
 {
-	bp_.reset();
 }
 
 
-BufferParams & ControlDocument::params() const
+BufferParams const & ControlDocument::params() const
 {
-	BOOST_ASSERT(bp_.get());
-	return *bp_;
+	return kernel().buffer().params();
+}
+
+
+BufferParams & ControlDocument::params()
+{
+	return kernel().buffer().params();
 }
 
 
 TextClass const & ControlDocument::textClass() const
 {
-	return textclasslist[bp_->textclass];
+	return textclasslist[params().textclass];
 }
 
 
@@ -108,14 +110,14 @@ void ControlDocument::dispatchParams()
 	// Set the document class.
 	textclass_type const old_class =
 		kernel().buffer().params().textclass;
-	textclass_type const new_class = bp_->textclass;
+	textclass_type const new_class = params().textclass;
 	if (new_class != old_class) {
 		string const name = textclasslist[new_class].name();
 		kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_APPLY, name));
 	}
 
 	int const old_secnumdepth = kernel().buffer().params().secnumdepth;
-	int const new_secnumdepth = bp_->secnumdepth;
+	int const new_secnumdepth = params().secnumdepth;
 
 	// Apply the BufferParams.
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_PARAMS_APPLY);
@@ -151,7 +153,7 @@ void ControlDocument::dispatchParams()
 
 void ControlDocument::setLanguage() const
 {
-	Language const * const newL = bp_->language;
+	Language const * const newL = params().language;
 	if (kernel().buffer().params().language == newL)
 		return;
 

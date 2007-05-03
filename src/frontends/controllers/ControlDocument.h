@@ -13,8 +13,8 @@
 #define CONTROLDOCUMENT_H
 
 #include "Dialog.h"
+
 #include "support/types.h"
-#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 
@@ -48,7 +48,9 @@ public:
 	///
 	TextClass const & textClass() const;
 	///
-	BufferParams & params() const;
+	BufferParams const & params() const;
+	///
+	BufferParams & params();
 	///
 	void setLanguage() const;
 	///
@@ -63,9 +65,6 @@ public:
 	bool const providesSC(std::string const & font) const;
 	/// does this font provide size adjustment?
 	bool const providesScale(std::string const & font) const;
-private:
-	///
-	boost::scoped_ptr<BufferParams> bp_;
 };
 
 } // namespace frontend
