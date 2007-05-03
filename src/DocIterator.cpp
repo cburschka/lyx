@@ -191,7 +191,7 @@ Paragraph const & DocIterator::innerParagraph() const
 			return slices_[i].paragraph();
 
 	// This case is in principe not possible. We _must_
-	// we inside a Paragraph.
+	// be inside a Paragraph.
 	BOOST_ASSERT(false);
 	return paragraph();
 }
