@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 265
+\lyxformat 266
 \begin_document
 \begin_header
 \textclass scrbook
@@ -6196,6 +6196,68 @@ status collapsed
 setlength{
 \backslash
 LTcapwidth}{4in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Nota:
+\lang english
+ 
+\series default
+When the LaTeX-package 
+\series bold
+\lang spanish
+caption
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-paquetes ! caption"
+
+\end_inset
+
+
+\lang english
+ is used, as in this document, the full page width is used for the caption
+ when you use the default value of 4\InsetSpace \thinspace{}
+in for 
+\series bold
+\lang spanish
+
+\backslash
+LTcapwidth
+\series default
+\lang english
+.
+ To get in this case exactly a 4\InsetSpace \thinspace{}
+in wide caption, you can either use a value
+ slightly different from 4.0\InsetSpace \thinspace{}
+in, e.g.
+ 3.99\InsetSpace \thinspace{}
+in, or the LaTeX-command 
+\series bold
+\lang spanish
+
+\backslash
+captionsetup{width=value}
+\series default
+\lang english
+ that is provided by the 
+\series bold
+\lang spanish
+caption
+\series default
+\lang english
+-package.
 \end_layout
 
 \end_inset
