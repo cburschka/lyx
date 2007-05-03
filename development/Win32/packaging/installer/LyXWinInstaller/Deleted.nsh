@@ -4,6 +4,7 @@ Function DeleteFiles
  Delete "$INSTDIR\Resources\examples\cv.lyx"
  Delete "$INSTDIR\Resources\examples\TableExamples.lyx"
  Delete "$INSTDIR\Resources\examples\de\TableExamples.lyx"
+ Delete "$INSTDIR\Resources\examples\fr\CV.lyx" 
  Delete "$INSTDIR\Resources\layouts\cv.layout"
  Delete "$INSTDIR\Resources\tex\cv.cls"
 

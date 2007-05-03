@@ -18,6 +18,10 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\armenian-article.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\TabellenBeispiel.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\fr"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\fr\simplecv.lyx"  
+ SetOutPath "$INSTDIR\Resources\images"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\simplecv.layout"
 
