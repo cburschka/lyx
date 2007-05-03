@@ -2425,7 +2425,7 @@ lib_examples_ro_files = Split('''
 
 lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
-    CV.lyx
+    simplecv.lyx
     ExemplesTableaux.lyx
     Foils.lyx
     ListesPuces.lyx
