@@ -1,21 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *succ[] = {
 /* columns rows colors chars-per-pixel */
-"12 12 3 1",
-"  c #000000",
-". c #000000",
+"11 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-".XXXXXXXXXXX",
-".XXXXXXXXXXX",
-"X.XXXXXXXXXX",
-"XX.XXXXXXXXX",
-"XXX...XXXXXX",
-"XXXXXX......",
-"XXX...XXXXXX",
-"XX.XXXXXXXXX",
-"X.XXXXXXXXXX",
-".XXXXXXXXXXX",
-".XXXXXXXXXXX",
-".XXXXXXXXXXX"
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"X XXXXXXXXX",
+"X XXXXXXXXX",
+"XX XXXXXXXX",
+"XXX  XXXXXX",
+"XXXXX     X",
+"XXX  XXXXXX",
+"XX XXXXXXXX",
+"X XXXXXXXXX",
+"X XXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX",
+"XXXXXXXXXXX"
 };

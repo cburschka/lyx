@@ -1,15 +1,22 @@
 /* XPM */
-static char * underscore_xpm[] = {
-"19 10 2 1",
+static char * underscore[] = {
+/* columns rows colors chars-per-pixel */
+"13 14 2 1",
 " 	c None",
 ".	c #000000",
-"                   ",
-"                   ",
-"                   ",
-"                   ",
-"                   ",
-"                   ",
-"                   ",
-"                   ",
-"                   ",
-"..................."};
+/* pixels */
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"             ",
+"      ......."
+};

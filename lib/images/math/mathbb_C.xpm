@@ -1,22 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *mathbb_C[] = {
 /* columns rows colors chars-per-pixel */
-"13 14 2 1",
-"  c #000000",
-". c None",
+"12 19 3 1",
+"  c black",
+". c gray100",
+"X c None",
 /* pixels */
-"...          ",
-".. .. .... . ",
-". .. ......  ",
-" ... ....... ",
-" .. .........",
-" .. .........",
-" .. .........",
-" .. .........",
-" .. .........",
-" .. .........",
-". . .........",
-". .. ....... ",
-".. ..  .... .",
-"...        .."
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXX      X",
+"XXX  XXXX  X",
+"XX X XXXXX X",
+"X X XXXXXXXX",
+"X X XXXXXXXX",
+"X X XXXXXXXX",
+"X X XXXXXXXX",
+"X X XXXXXXXX",
+"XX X XXXXXXX",
+"XXX  XXXX  X",
+"XXXXX    XXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX"
 };

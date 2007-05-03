@@ -1,19 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *triangleright[] = {
 /* columns rows colors chars-per-pixel */
-"9 10 3 1",
-"  c #000000",
-". c #000000",
+"9 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"..XXXXXXX",
-".X..XXXXX",
-".XXX..XXX",
-".XXXXX..X",
-".XXXXXXX.",
-".XXXXXX..",
-".XXXX..XX",
-".XXX.XXXX",
-".X..XXXXX",
-"..XXXXXXX"
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"X  XXXXXX",
+"X X  XXXX",
+"X XXX  XX",
+"X XXXXX X",
+"X XXX  XX",
+"X X  XXXX",
+"X  XXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX"
 };

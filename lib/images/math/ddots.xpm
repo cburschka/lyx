@@ -1,17 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *ddots[] = {
 /* columns rows colors chars-per-pixel */
-"8 8 3 1",
-"  c #000000",
-". c #000000",
+"14 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"..XXXXXX",
-"..XXXXXX",
-"XXXXXXXX",
-"XXX..XXX",
-"XXX..XXX",
-"XXXXXXXX",
-"XXXXXX..",
-"XXXXXX.."
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"X  XXXXXXXXXXX",
+"X  XXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXX  XXXXXX",
+"XXXXXX  XXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXX  X",
+"XXXXXXXXXXX  X",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXX"
 };

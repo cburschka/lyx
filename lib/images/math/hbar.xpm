@@ -1,23 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *hbar[] = {
 /* columns rows colors chars-per-pixel */
-"9 14 3 1",
-"  c #000000",
-". c #000000",
+"9 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"X...XXXXX",
-"XXX.XXXXX",
-".......XX",
-"XX..XXXXX",
-"XX.XXXXXX",
-"XX.X...XX",
-"XX..XX..X",
-"X..XXX..X",
-"X.XXXX.XX",
-"X.XXXX.XX",
-"X.XXXX.XX",
-"..XXX..X.",
-".XXXX.X.X",
-".XXXX...X"
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XX  XXXXX",
+"XXX XXXXX",
+"X      XX",
+"XX XXXXXX",
+"XX X  XXX",
+"XX  XX XX",
+"XX XXX XX",
+"X XXXX XX",
+"X XXX XXX",
+"X XXX X X",
+"X XXX  XX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX"
 };

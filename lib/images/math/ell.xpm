@@ -1,24 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *ell[] = {
 /* columns rows colors chars-per-pixel */
-"8 15 3 1",
-"  c #000000",
-". c #000000",
+"9 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"XXXXXX..",
-"XXXXX.X.",
-"XXXX.XX.",
-"XXXX.XX.",
-"XXX..X.X",
-"XXX.XX.X",
-"XXX.X.XX",
-"XX..X.XX",
-"XX...XXX",
-"XX..XXXX",
-"XX..XXXX",
-"XX.XXXXX",
-"...XXXXX",
-"XX.XX..X",
-"XXX..XXX"
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXX XX",
+"XXXXX X X",
+"XXXX XX X",
+"XXXX X XX",
+"XXX XX XX",
+"XXX X XXX",
+"XXX  XXXX",
+"XXX XXXXX",
+"XX  XXXXX",
+"X X XX XX",
+"XXXX  XXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX",
+"XXXXXXXXX"
 };

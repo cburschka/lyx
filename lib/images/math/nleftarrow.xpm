@@ -1,21 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *nleftarrow[] = {
 /* columns rows colors chars-per-pixel */
-"25 13 2 1",
-"  c #000000",
-". c None",
+"16 19 3 1",
+"  c black",
+". c gray100",
+"X c None",
 /* pixels */
-"............... .........",
-"............... .........",
-".... ......... ..........",
-"... .......... ..........",
-".. .......... ...........",
-". ........... ...........",
-"                         ",
-". ......... .............",
-".. ........ .............",
-"... ...... ..............",
-".... ..... ..............",
-"......... ...............",
-"......... ..............."
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXX XXXXX XXXXXX",
+"XX XXXXX XXXXXXX",
+"X              X",
+"XX XXXX XXXXXXXX",
+"XXX XX XXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX"
 };

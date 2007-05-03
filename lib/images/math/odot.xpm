@@ -1,23 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *odot[] = {
 /* columns rows colors chars-per-pixel */
-"14 14 3 1",
-"  c #000000",
-". c #000000",
+"13 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"XXXX......XXXX",
-"XXX..XXXX..XXX",
-"XX.XXXXXXXX.XX",
-"X.XXXXXXXXXX.X",
-"..XXXXXXXXXX..",
-".XXXXX..XXXXX.",
-".XXXXX..XXXXX.",
-".XXXXX..XXXXX.",
-".XXXXXXXXXXXX.",
-"..XXXXXXXXXX..",
-"X.XXXXXXXXXX.X",
-"XX.XXXXXXXX.XX",
-"XXX..XXXX..XXX",
-"XXXX......XXXX"
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXX     XXXX",
+"XXX XXXXX XXX",
+"XX XXXXXXX XX",
+"X XXXXXXXXX X",
+"X XXXX XXXX X",
+"X XXX   XXX X",
+"X XXXX XXXX X",
+"X XXXXXXXXX X",
+"XX XXXXXXX XX",
+"XXX XXXXX XXX",
+"XXXX     XXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX"
 };

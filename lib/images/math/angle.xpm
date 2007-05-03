@@ -1,22 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *angle[] = {
 /* columns rows colors chars-per-pixel */
-"8 13 3 1",
-"  c #000000",
-". c #000000",
+"12 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"XXXXXX.X",
-"XXXXX.XX",
-"XXXXX.XX",
-"XXXX.XXX",
-"XXXX.XXX",
-"XXX.XXXX",
-"XXX.XXXX",
-"XX.XXXXX",
-"XX.XXXXX",
-"X.XXXXXX",
-"X.XXXXXX",
-"........",
-".XXXXXXX"
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXX X",
+"XXXXXXXXX XX",
+"XXXXXXXX XXX",
+"XXXXXXX XXXX",
+"XXXXXX XXXXX",
+"XXXXX XXXXXX",
+"XXXX XXXXXXX",
+"XXX XXXXXXXX",
+"XX XXXXXXXXX",
+"X          X",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX",
+"XXXXXXXXXXXX"
 };

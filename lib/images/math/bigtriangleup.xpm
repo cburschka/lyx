@@ -1,24 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *bigtriangleup[] = {
 /* columns rows colors chars-per-pixel */
-"15 15 3 1",
-"  c #000000",
-". c #000000",
+"13 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"XXXXXXX.XXXXXXX",
-"XXXXXX.X.XXXXXX",
-"XXXXXX.X.XXXXXX",
-"XXXXX.XXX.XXXXX",
-"XXXXX.XXX.XXXXX",
-"XXXX.XXXXX.XXXX",
-"XXXX.XXXXX.XXXX",
-"XXX.XXXXXXX.XXX",
-"XXX.XXXXXXX.XXX",
-"XX.XXXXXXXXX.XX",
-"XX.XXXXXXXXX.XX",
-"X.XXXXXXXXXXX.X",
-"X.XXXXXXXXXXX.X",
-".XXXXXXXXXXXXX.",
-"..............."
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXX XXXXXX",
+"XXXXX X XXXXX",
+"XXXXX X XXXXX",
+"XXXX XXX XXXX",
+"XXXX XXX XXXX",
+"XXX XXXXX XXX",
+"XXX XXXXX XXX",
+"XX XXXXXXX XX",
+"XX XXXXXXX XX",
+"X XXXXXXXXX X",
+"X           X",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX"
 };

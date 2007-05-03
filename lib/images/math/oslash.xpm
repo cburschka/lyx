@@ -1,23 +1,28 @@
 /* XPM */
-static char *a[] = {
+static char *oslash[] = {
 /* columns rows colors chars-per-pixel */
-"14 14 3 1",
-"  c #000000",
-". c #000000",
+"13 19 3 1",
+"  c black",
+". c gray100",
 "X c None",
 /* pixels */
-"XXXX......XXXX",
-"XXX..XXXX..XXX",
-"XX.XXXXXXXX.XX",
-"X.XXXXXXXX.X.X",
-"..XXXXXXX.XX..",
-".XXXXXXX.XXXX.",
-".XXXXXX.XXXXX.",
-".XXXXX.XXXXXX.",
-".XXXX.XXXXXXX.",
-"..XX.XXXXXXX..",
-"X.X.XXXXXXXX.X",
-"XX.XXXXXXXX.XX",
-"XXX..XXXX..XXX",
-"XXXX......XXXX"
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX",
+"XXXX     XXXX",
+"XXX XXXXX XXX",
+"XX XXXXXX  XX",
+"X XXXXXX XX X",
+"X XXXXX XXX X",
+"X XXXX XXXX X",
+"X XXX XXXXX X",
+"X XX XXXXXX X",
+"XX  XXXXXX XX",
+"XXX XXXXX XXX",
+"XXXX     XXXX",
+"XXXXXXXXXXXXX",
+"XXXXXXXXXXXXX"
 };
