@@ -41,13 +41,13 @@ protected Q_SLOTS:
 	void selectionChanged(const QModelIndex & current,
 		const QModelIndex & previous);
 
-	void on_updatePB_clicked();
+	void on_updateTB_clicked();
 	void on_depthSL_valueChanged(int depth);
 	void on_typeCO_activated(int value);
-	void on_moveUpPB_clicked();
-	void on_moveDownPB_clicked();
-	void on_moveInPB_clicked();
-	void on_moveOutPB_clicked();
+	void on_moveUpTB_clicked();
+	void on_moveDownTB_clicked();
+	void on_moveInTB_clicked();
+	void on_moveOutTB_clicked();
 
 protected:
 	///

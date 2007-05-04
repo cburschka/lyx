@@ -260,6 +260,7 @@ dist_images_DATA = \
 	images/changes-track.xpm \
 	images/copy.xpm \
 	images/cut.xpm \
+	images/demote.xpm \
 	images/depth-decrement.xpm \
 	images/depth-increment.xpm \
 	images/dialog-preferences.xpm \
@@ -309,11 +310,13 @@ dist_images_DATA = \
 	images/note-insert.xpm \
 	images/note-next.xpm \
 	images/paste.xpm \
+	images/promote.xpm \
 	images/psnfss1.xpm \
 	images/psnfss2.xpm \
 	images/psnfss3.xpm \
 	images/psnfss4.xpm \
 	images/redo.xpm \
+	images/reload.xpm \
 	images/standard.xpm \
 	images/tabular-feature_align-center.xpm \
 	images/tabular-feature_align-left.xpm \

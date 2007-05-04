@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>257</width>
-    <height>404</height>
+    <width>251</width>
+    <height>378</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,94 +22,125 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="0" colspan="2" >
-    <layout class="QGridLayout" >
+   <item row="4" column="0" >
+    <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
      <property name="spacing" >
       <number>6</number>
      </property>
-     <item row="0" column="0" >
-      <widget class="QPushButton" name="moveOutPB" >
-       <property name="toolTip" >
-        <string>Decrease nesting depth of selected item</string>
-       </property>
-       <property name="text" >
-        <string>&lt;- P&amp;romote</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2" >
-      <widget class="QPushButton" name="moveDownPB" >
-       <property name="toolTip" >
-        <string>Move selected item down by one</string>
-       </property>
-       <property name="text" >
-        <string>D&amp;own</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" >
-      <widget class="QPushButton" name="moveInPB" >
-       <property name="toolTip" >
-        <string>Increase nesting depth of selected item</string>
-       </property>
-       <property name="text" >
-        <string>De&amp;mote -></string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="2" >
-      <widget class="QPushButton" name="updatePB" >
+     <item>
+      <widget class="QToolButton" name="updateTB" >
        <property name="toolTip" >
         <string>Update navigation tree</string>
        </property>
        <property name="text" >
-        <string>Upd&amp;ate</string>
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/reload.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
        </property>
       </widget>
      </item>
-     <item row="0" column="2" >
-      <widget class="QPushButton" name="moveUpPB" >
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>16</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="moveOutTB" >
+       <property name="toolTip" >
+        <string>Decrease nesting depth of selected item</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/promote.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="moveInTB" >
+       <property name="toolTip" >
+        <string>Increase nesting depth of selected item</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/demote.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="moveDownTB" >
+       <property name="toolTip" >
+        <string>Move selected item down by one</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/down.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="moveUpTB" >
        <property name="toolTip" >
         <string>Move selected item up by one</string>
        </property>
        <property name="text" >
-        <string>&amp;Up</string>
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/up.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="0" column="1" >
-    <widget class="QComboBox" name="typeCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Switch between table of contents, list of figures or list of tables, if available</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QTreeView" name="tocTV" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="3" column="0" >
     <widget class="QSlider" name="depthSL" >
      <property name="toolTip" >
       <string>Adjust the depth of the navigation tree</string>
@@ -131,7 +162,19 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
+   <item row="2" column="0" >
+    <widget class="QTreeView" name="tocTV" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
     <widget class="QLabel" name="typeLA" >
      <property name="text" >
       <string>&amp;Type:</string>
@@ -141,16 +184,27 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0" >
+    <widget class="QComboBox" name="typeCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Switch between table of contents, list of figures or list of tables, if available</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>typeCO</tabstop>
   <tabstop>tocTV</tabstop>
   <tabstop>depthSL</tabstop>
-  <tabstop>moveUpPB</tabstop>
-  <tabstop>moveDownPB</tabstop>
-  <tabstop>moveInPB</tabstop>
-  <tabstop>moveOutPB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>

@@ -1550,6 +1550,7 @@ lib_images_files = Split('''
     changes-track.xpm
     copy.xpm
     cut.xpm
+    demote.xpm
     depth-decrement.xpm
     depth-increment.xpm
     dialog-preferences.xpm
@@ -1599,11 +1600,13 @@ lib_images_files = Split('''
     note-insert.xpm
     note-next.xpm
     paste.xpm
+    promote.xpm
     psnfss1.xpm
     psnfss2.xpm
     psnfss3.xpm
     psnfss4.xpm
     redo.xpm
+    reload.xpm
     standard.xpm
     tabular-feature_align-center.xpm
     tabular-feature_align-left.xpm
