@@ -62,6 +62,7 @@
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
 
+#include <algorithm>
 #include <iostream>
 #include <csignal>
 #include <map>
@@ -549,6 +550,17 @@ int LyX::init(int & argc, char * argv[])
 		pimpl_->files_to_load_.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 
 	return EXIT_SUCCESS;
+}
+
+
+void LyX::addFileToLoad(FileName const & fname)
+{
+	vector<FileName>::const_iterator cit = std::find(
+		pimpl_->files_to_load_.begin(), pimpl_->files_to_load_.end(),
+		fname);
+
+	if (cit == pimpl_->files_to_load_.end())
+		pimpl_->files_to_load_.push_back(fname);
 }
 
 

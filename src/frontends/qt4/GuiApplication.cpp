@@ -22,6 +22,7 @@
 
 #include "graphics/LoaderQueue.h"
 
+#include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -74,6 +75,8 @@ int getDPI()
 
 
 namespace lyx {
+
+using support::FileName;
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {
@@ -207,8 +210,18 @@ bool GuiApplication::event(QEvent * e)
 	case QEvent::FileOpen: {
 		// Open a file; this happens only on Mac OS X for now
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
-		lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
-					  fromqstr(foe->file())));
+
+		if (!currentView() || !currentView()->view())
+			// The application is not properly initialized yet.
+			// So we acknowledge the event and delay the file opening
+			// until LyX is ready.
+			// FIXME UNICODE: FileName accept an utf8 encoded string.
+			LyX::ref().addFileToLoad(FileName(fromqstr(foe->file())));
+		else
+			lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
+				qstring_to_ucs4(foe->file())));
+
+		e->accept();
 		return true;
 	}
 	default:

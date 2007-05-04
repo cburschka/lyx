@@ -21,6 +21,10 @@
 
 namespace lyx {
 
+namespace support {
+class FileName;
+}
+
 class Buffer;
 class BufferList;
 class Converters;
@@ -101,6 +105,9 @@ public:
 
 	/// Execute batch commands if available.
 	void execBatchCommands();
+
+	///
+	void addFileToLoad(support::FileName const &);
 
 private:
 	/// Do some cleanup in preparation of an exit.
