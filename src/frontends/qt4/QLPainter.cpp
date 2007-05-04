@@ -98,7 +98,8 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 		return;
 
 	setQPainterPen(col, ls, lw);
-	setRenderHint(Antialiasing, x1 != x2 && y1 != y2);
+	bool const do_antialiasing = x1 != x2 && y1 != y2;
+	setRenderHint(Antialiasing, do_antialiasing);
 	drawLine(x1, y1, x2, y2);
 	setRenderHint(Antialiasing, false);
 }
@@ -109,26 +110,17 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 	line_style ls,
 	line_width lw)
 {
-	// FIXME ?
-
-	// Must use new as np is not known at compile time.
-	boost::scoped_array<QPoint> points(new QPoint[np]);
-
-	bool antialias = false;
-	for (int i = 0; i < np; ++i) {
-		points[i].setX(xp[i]);
-		points[i].setY(yp[i]);
-		if (i != 0) 
-			antialias |= xp[i-1] != xp[i] && yp[i-1] != yp[i];
-	}
-
 	if (!isDrawingEnabled())
 		return;
 
 	setQPainterPen(col, ls, lw);
-	setRenderHint(Antialiasing, antialias);
-	drawPolyline(points.get(), np);
-	setRenderHint(Antialiasing, false);
+	for (int i = 1; i < np; ++i) {
+		bool const do_antialiasing = false &&
+			xp[i-1] != xp[i] && yp[i-1] != yp[i];
+		setRenderHint(Antialiasing, do_antialiasing);
+		drawLine(xp[i-1], yp[i-1], xp[i], yp[i]);
+		setRenderHint(Antialiasing, false);
+	}
 }
 
 
@@ -159,7 +151,8 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setQPainterPen(col);
-	setRenderHint(Antialiasing, true);
+	bool const do_antialiasing = true; 
+	setRenderHint(Antialiasing, do_antialiasing);
 	drawArc(x, y, w, h, a1 / 4, a2 / 4);
 	setRenderHint(Antialiasing, false);
 }
