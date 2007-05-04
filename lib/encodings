@@ -16,6 +16,11 @@ End
 Encoding utf8x utf8x UTF-8
 End
 
+# A plain utf8 encoding that does not use the inputenc package.
+# Such an encoding is required for XeTeX.
+Encoding utf8-plain utf8-plain UTF-8
+End
+
 # This encoding is used to typeset Armenian using the armtex package
 Encoding armscii8 armscii8 ARMSCII-8
 End

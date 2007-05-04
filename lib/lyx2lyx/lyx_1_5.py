@@ -1198,6 +1198,18 @@ def revert_utf8x(document):
     document.inputencoding = get_value(document.header, "\\inputencoding", 0)
 
 
+def revert_utf8plain(document):
+    " Set utf8plain encoding to utf8. "
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.header.append("\\inputencoding auto")
+    else:
+        inputenc = get_value(document.header, "\\inputencoding", i)
+        if inputenc == "utf8-plain":
+            document.header[i] = "\\inputencoding utf8"
+    document.inputencoding = get_value(document.header, "\\inputencoding", 0)
+
+
 def convert_changes(document):
     " Switch output_changes off if tracking_changes is off. "
     i = find_token(document.header, '\\tracking_changes', 0)
@@ -1338,9 +1350,11 @@ convert = [[246, []],
            [263, [normalize_language_name]],
            [264, [convert_cv_textclass]],
            [265, [convert_tableborder]],
-           [266, []]]
+           [266, []],
+           [267, []]]
 
-revert =  [[265, [revert_armenian]],
+revert =  [[266, [revert_utf8plain]],
+           [265, [revert_armenian]],
            [264, [revert_tableborder]],
            [263, [revert_cv_textclass]],
            [262, [revert_language_name]],
