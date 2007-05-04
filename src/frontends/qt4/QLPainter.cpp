@@ -98,7 +98,8 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 		return;
 
 	setQPainterPen(col, ls, lw);
-	bool const do_antialiasing = x1 != x2 && y1 != y2;
+	bool const do_antialiasing = renderHints() & TextAntialiasing
+		&& x1 != x2 && y1 != y2;
 	setRenderHint(Antialiasing, do_antialiasing);
 	drawLine(x1, y1, x2, y2);
 	setRenderHint(Antialiasing, false);
@@ -113,10 +114,11 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 	if (!isDrawingEnabled())
 		return;
 
+	bool const text_is_antialiased = renderHints() & TextAntialiasing;
 	setQPainterPen(col, ls, lw);
 	for (int i = 1; i < np; ++i) {
-		bool const do_antialiasing = false &&
-			xp[i-1] != xp[i] && yp[i-1] != yp[i];
+		bool const do_antialiasing = text_is_antialiased 
+			&& xp[i-1] != xp[i] && yp[i-1] != yp[i];
 		setRenderHint(Antialiasing, do_antialiasing);
 		drawLine(xp[i-1], yp[i-1], xp[i], yp[i]);
 		setRenderHint(Antialiasing, false);
@@ -151,7 +153,7 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setQPainterPen(col);
-	bool const do_antialiasing = true; 
+	bool const do_antialiasing = renderHints() & TextAntialiasing;
 	setRenderHint(Antialiasing, do_antialiasing);
 	drawArc(x, y, w, h, a1 / 4, a2 / 4);
 	setRenderHint(Antialiasing, false);
