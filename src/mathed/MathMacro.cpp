@@ -203,6 +203,10 @@ void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 
 void MathMacro::validate(LaTeXFeatures & features) const
 {
+	string const require = MacroTable::globalMacros().get(name()).requires();
+	if (!require.empty())
+		features.require(require);
+
 	if (name() == "binom" || name() == "mathcircumflex")
 		features.require(to_utf8(name()));
 }
