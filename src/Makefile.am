@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += config.h libintl.h version.C stamp-version version.C-tmp
+DISTCLEANFILES += config.h libintl.h version.cpp stamp-version version.cpp-tmp
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
@@ -43,7 +43,7 @@ lyx$(EXEEXT): $(FRONTENDS_PROGS)
 
 #lyx_LDFLAGS=-Wl,-O1
 
-BUILT_SOURCES = $(PCH_FILE) version.C
+BUILT_SOURCES = $(PCH_FILE) version.cpp
 
 AM_CPPFLAGS += $(PCH_FLAGS) $(BOOST_INCLUDES)
 
@@ -258,20 +258,20 @@ lyx_SOURCES = \
 	update_flags.h \
 	VCBackend.cpp \
 	VCBackend.h \
-	version.C \
+	version.cpp \
 	version.h \
 	WordLangTuple.h \
 	VSpace.cpp \
 	VSpace.h
 
-version.C: stamp-version
+version.cpp: stamp-version
 	@:
 
-stamp-version: version.C-tmp
-	if cmp -s $< version.C ; then \
+stamp-version: version.cpp-tmp
+	if cmp -s $< version.cpp ; then \
 		: ;\
 	else \
-		rm -f version.C ;\
-		cp $< version.C ;\
+		rm -f version.cpp ;\
+		cp $< version.cpp ;\
 	fi
 	echo timestamp > $@

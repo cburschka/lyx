@@ -18,7 +18,7 @@ if(NOT MERGE_FILES)
 endif(NOT MERGE_FILES)
 
 
-configure_file(${TOP_SRC_DIR}/src/version.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/version.C)
+configure_file(${TOP_SRC_DIR}/src/version.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/version.cpp)
 
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
@@ -41,10 +41,10 @@ lyx_add_msvc_pch(lyx)
 
 
 if(NOT MERGE_FILES)
-	set(lyx_sources ${lyx_sources} ${CMAKE_CURRENT_BINARY_DIR}/version.C)
+	set(lyx_sources ${lyx_sources} ${CMAKE_CURRENT_BINARY_DIR}/version.cpp)
 else(NOT MERGE_FILES)
 	lyx_const_touched_files(_allinone  lyx_sources)
-	set(lyx_sources ${_allinone_files} ${CMAKE_CURRENT_BINARY_DIR}/version.C
+	set(lyx_sources ${_allinone_files} ${CMAKE_CURRENT_BINARY_DIR}/version.cpp
 	)
 endif(NOT MERGE_FILES)
 

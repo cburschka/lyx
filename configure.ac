@@ -417,7 +417,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        sourcedoc/Makefile \
        src/client/Makefile \
        src/Makefile \
-       src/version.C-tmp:src/version.cpp.in \
+       src/version.cpp-tmp:src/version.cpp.in \
        src/tex2lyx/Makefile \
        src/mathed/Makefile \
        src/graphics/Makefile \

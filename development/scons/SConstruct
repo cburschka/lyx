@@ -372,7 +372,7 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 # full path name is used to build msvs project files
 # and to replace TOP_SRCDIR in package.C
 env['TOP_SRCDIR'] = Dir(top_src_dir).abspath
-# needed by src/version.cpp.in => src/version.C
+# needed by src/version.cpp.in => src/version.cpp
 env['PACKAGE_VERSION'] = package_version
 env['LYX_DATE'] = time.asctime()
 
