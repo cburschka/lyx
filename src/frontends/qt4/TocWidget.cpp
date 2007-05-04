@@ -15,6 +15,8 @@
 
 #include "QToc.h"
 #include "qt_helpers.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 #include "debug.h"
 
@@ -34,8 +36,11 @@ using std::string;
 
 
 namespace lyx {
-namespace frontend {
 
+using support::FileName;
+using support::libFileSearch;
+	
+namespace frontend {
 
 TocWidget::TocWidget(QToc * form, QWidget * parent)
 	: QWidget(parent), form_(form), depth_(0)
@@ -44,7 +49,18 @@ TocWidget::TocWidget(QToc * form, QWidget * parent)
 
 	connect(form, SIGNAL(modelReset()),
 		SLOT(updateGui()));
-
+	
+	FileName icon_path = libFileSearch("images", "promote.xpm");
+	moveOutTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path = libFileSearch("images", "demote.xpm");
+	moveInTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path = libFileSearch("images", "up.xpm");
+	moveUpTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path = libFileSearch("images", "down.xpm");
+	moveDownTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path = libFileSearch("images", "reload.xpm");
+	updateTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+		
 	// avoid flickering
 	tocTV->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
@@ -55,6 +71,9 @@ TocWidget::TocWidget(QToc * form, QWidget * parent)
 	// like labels, bookmarks, etc...
 	// tocTV->header()->hide();
 	tocTV->header()->setVisible(false);
+
+	// Only one item selected at a time.
+	tocTV->setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
 
@@ -70,7 +89,7 @@ void TocWidget::selectionChanged(const QModelIndex & current,
 }
 
 
-void TocWidget::on_updatePB_clicked()
+void TocWidget::on_updateTB_clicked()
 {
 	form_->updateBackend();
 	form_->update();
@@ -127,7 +146,7 @@ void TocWidget::on_typeCO_activated(int value)
 }
 
 
-void TocWidget::on_moveUpPB_clicked()
+void TocWidget::on_moveUpTB_clicked()
 {
 	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
@@ -140,7 +159,7 @@ void TocWidget::on_moveUpPB_clicked()
 }
 
 
-void TocWidget::on_moveDownPB_clicked()
+void TocWidget::on_moveDownTB_clicked()
 {
 	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
@@ -153,7 +172,7 @@ void TocWidget::on_moveDownPB_clicked()
 }
 
 
-void TocWidget::on_moveInPB_clicked()
+void TocWidget::on_moveInTB_clicked()
 {
 	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
@@ -166,7 +185,7 @@ void TocWidget::on_moveInPB_clicked()
 }
 
 
-void TocWidget::on_moveOutPB_clicked()
+void TocWidget::on_moveOutTB_clicked()
 {
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
@@ -187,6 +206,7 @@ void TocWidget::select(QModelIndex const & index)
 	}
 
 	tocTV->selectionModel()->blockSignals(true);
+	tocTV->selectionModel()->clear();
 	tocTV->scrollTo(index);
 	tocTV->selectionModel()->setCurrentIndex(index,
 		QItemSelectionModel::ClearAndSelect);
@@ -196,15 +216,15 @@ void TocWidget::select(QModelIndex const & index)
 
 void TocWidget::enableControls(bool enable)
 {
-	updatePB->setEnabled(enable);
+	updateTB->setEnabled(enable);
 
 	if (!form_->canOutline(typeCO->currentIndex()))
 		enable = false;
 
-	moveUpPB->setEnabled(enable);
-	moveDownPB->setEnabled(enable);
-	moveInPB->setEnabled(enable);
-	moveOutPB->setEnabled(enable);
+	moveUpTB->setEnabled(enable);
+	moveDownTB->setEnabled(enable);
+	moveInTB->setEnabled(enable);
+	moveOutTB->setEnabled(enable);
 
 	depthSL->setEnabled(enable);
 }
