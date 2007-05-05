@@ -665,9 +665,10 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// is it a top line?
 	if (row.pos() == 0) {
 		BufferParams const & bufparams = buffer.params();
-		// some parksips VERY EASY IMPLEMENTATION
+		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation
 		    == BufferParams::PARSEP_SKIP
+			&& par.ownerCode() != Inset::ERT_CODE
 			&& pit > 0
 			&& ((layout->isParagraph() && par.getDepth() == 0)
 			    || (pars[pit - 1].layout()->isParagraph()
