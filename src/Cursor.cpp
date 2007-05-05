@@ -1176,14 +1176,21 @@ docstring Cursor::selectionAsString(bool label) const
 		if (startpit == endpit)
 			return pars[startpit].asString(buffer, startpos, endpos, label);
 
+		odocstringstream ods;
+		ods << "\n";
+		// only add blank line if we're not in an ERT inset
+		if (pars[startpit].ownerCode() != Inset::ERT_CODE)
+			ods << "\n";
+		docstring const parbreak = ods.str();
+
 		// First paragraph in selection
 		docstring result = pars[startpit].
-			asString(buffer, startpos, pars[startpit].size(), label) + "\n\n";
+			asString(buffer, startpos, pars[startpit].size(), label) + parbreak;
 
 		// The paragraphs in between (if any)
 		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
 			Paragraph const & par = pars[pit];
-			result += par.asString(buffer, 0, par.size(), label) + "\n\n";
+			result += par.asString(buffer, 0, par.size(), label) + parbreak;
 		}
 
 		// Last paragraph in selection

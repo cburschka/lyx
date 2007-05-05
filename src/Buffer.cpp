@@ -964,7 +964,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	} // output_preamble
 	LYXERR(Debug::INFO) << "preamble finished, now the body." << endl;
 
-	if (!lyxrc.language_auto_begin) {
+	if (!lyxrc.language_auto_begin &&
+	    !params().language->babel().empty()) {
 		// FIXME UNICODE
 		os << from_utf8(subst(lyxrc.language_command_begin,
 		                           "$$lang",
@@ -993,7 +994,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	os << endl;
 	texrow().newline();
 
-	if (!lyxrc.language_auto_end) {
+	if (!lyxrc.language_auto_end &&
+	    !params().language->babel().empty()) {
 		os << from_utf8(subst(lyxrc.language_command_end,
 		                           "$$lang",
 		                           params().language->babel()))

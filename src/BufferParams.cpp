@@ -846,7 +846,11 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	bool const use_babel = features.useBabel();
 	if (use_babel) {
 		language_options << features.getLanguages();
-		language_options << language->babel();
+		if (!language->babel().empty()) {
+			if (!language_options.str().empty())
+				language_options << ',';
+			language_options << language->babel();
+		}
 		if (lyxrc.language_global_options)
 			clsoptions << language_options.str() << ',';
 	}

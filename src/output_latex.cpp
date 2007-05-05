@@ -105,7 +105,8 @@ TeXEnvironment(Buffer const & buf,
 	if (par_language->babel() != prev_par_language->babel()) {
 
 		if (!lyxrc.language_command_end.empty() &&
-		    prev_par_language->babel() != doc_language->babel()) {
+		    prev_par_language->babel() != doc_language->babel() &&
+		    !prev_par_language->babel().empty()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
@@ -115,7 +116,8 @@ TeXEnvironment(Buffer const & buf,
 		}
 
 		if (lyxrc.language_command_end.empty() ||
-		    par_language->babel() != doc_language->babel()) {
+		    par_language->babel() != doc_language->babel() &&
+		    !par_language->babel().empty()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
@@ -271,7 +273,8 @@ TeXOnePar(Buffer const & buf,
 		     || boost::prior(pit)->getDepth() < pit->getDepth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
-		    prev_par_language->babel() != doc_language->babel())
+		    prev_par_language->babel() != doc_language->babel() &&
+		    !prev_par_language->babel().empty())
 		{
 			os << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
@@ -281,7 +284,8 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		if (lyxrc.language_command_end.empty() ||
-		    par_language->babel() != doc_language->babel())
+		    par_language->babel() != doc_language->babel() &&
+		    !par_language->babel().empty())
 		{
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
@@ -456,12 +460,15 @@ TeXOnePar(Buffer const & buf,
 			os << '\n';
 			texrow.newline();
 		}
-		if (lyxrc.language_command_end.empty())
-			os << from_ascii(subst(
-				lyxrc.language_command_begin,
-				"$$lang",
-				doc_language->babel()));
-		else
+		if (lyxrc.language_command_end.empty()) {
+			if (!doc_language->babel().empty()) {
+				os << from_ascii(subst(
+					lyxrc.language_command_begin,
+					"$$lang",
+					doc_language->babel()));
+				pending_newline = true;
+			}
+		} else if (!par_language->babel().empty())
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",

@@ -752,7 +752,7 @@ int Font::latexWriteStartChanges(odocstream & os, Font const & base,
 				os << "\\L{";
 				count += 3;
 			}
-		} else {
+		} else if (!language()->babel().empty()) {
 			string const tmp =
 				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());

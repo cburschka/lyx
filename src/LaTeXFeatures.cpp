@@ -191,7 +191,8 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 bool LaTeXFeatures::useBabel() const
 {
 	return lyxrc.language_use_babel ||
-		bufferParams().language->lang() != lyxrc.default_language ||
+		(bufferParams().language->lang() != lyxrc.default_language &&
+		 !bufferParams().language->babel().empty()) ||
 		this->hasLanguages();
 }
 
@@ -322,7 +323,8 @@ void LaTeXFeatures::useFloat(string const & name)
 
 void LaTeXFeatures::useLanguage(Language const * lang)
 {
-	UsedLanguages_.insert(lang);
+	if (!lang->babel().empty())
+		UsedLanguages_.insert(lang);
 }
 
 
