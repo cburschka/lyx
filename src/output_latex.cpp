@@ -468,12 +468,13 @@ TeXOnePar(Buffer const & buf,
 					doc_language->babel()));
 				pending_newline = true;
 			}
-		} else if (!par_language->babel().empty())
+		} else if (!par_language->babel().empty()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
 				par_language->babel()));
-		pending_newline = true;
+			pending_newline = true;
+		}
 	}
 
 	if (pending_newline) {
