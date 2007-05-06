@@ -123,25 +123,42 @@ struct CharInfo {
 typedef std::map<char_type, CharInfo> CharInfoMap;
 CharInfoMap unicodesymbols;
 
+
+/// The highest code point in UCS4 encoding (1<<20 + 1<<16)
+char_type const max_ucs4 = 0x110000;
+
 } // namespace anon
 
 
-Encoding::Encoding(string const & n, string const & l, string const & i)
-	: Name_(n), LatexName_(l), iconvName_(i)
+Encoding::Encoding(string const & n, string const & l, string const & i,
+                   bool f, Encoding::Package p)
+	: Name_(n), LatexName_(l), iconvName_(i), fixedwidth_(f), package_(p)
 {
-	if (n == "ascii")
+	if (n == "ascii") {
 		// ASCII can encode 128 code points and nothing else
 		start_encodable_ = 128;
-	else if (i == "UTF-8")
-		// UTF8 can encode all 1<<20 + 1<<16 UCS4 code points
-		start_encodable_ = 0x110000;
-	else {
-		start_encodable_ = 0;
-		// temporarily switch off lyxerr, since we will generate iconv errors
-		lyxerr.disable();
+		complete_ = true;
+	} else if (i == "UTF-8") {
+		// UTF8 can encode all UCS4 code points
+		start_encodable_ = max_ucs4;
+		complete_ = true;
+	} else {
+		complete_ = false;
+	}
+}
+
+
+void Encoding::init() const
+{
+	start_encodable_ = 0;
+	// temporarily switch off lyxerr, since we will generate iconv errors
+	lyxerr.disable();
+	if (fixedwidth_) {
+		// We do not need to check all UCS4 code points, it is enough
+		// if we check all 256 code points of this encoding.
 		for (unsigned short j = 0; j < 256; ++j) {
 			char const c = j;
-			std::vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, i);
+			std::vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, iconvName_);
 			if (ucs4.size() == 1) {
 				char_type const c = ucs4[0];
 				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
@@ -149,19 +166,36 @@ Encoding::Encoding(string const & n, string const & l, string const & i)
 					encodable_.insert(c);
 			}
 		}
-		lyxerr.enable();
-		CharSet::iterator it = encodable_.find(start_encodable_);
-		while (it != encodable_.end()) {
-			encodable_.erase(it);
-			++start_encodable_;
-			it = encodable_.find(start_encodable_);
+		} else {
+		// We do not know how many code points this encoding has, and
+		// they do not have a direct representation as a single byte,
+		// therefore we need to check all UCS4 code points.
+		// This is expensive!
+		for (char_type c = 0; c < max_ucs4; ++c) {
+			std::vector<char> const eightbit = ucs4_to_eightbit(&c, 1, iconvName_);
+			if (!eightbit.empty()) {
+				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+				if (it == unicodesymbols.end() || !it->second.force)
+					encodable_.insert(c);
+			}
 		}
 	}
+	lyxerr.enable();
+	CharSet::iterator it = encodable_.find(start_encodable_);
+	while (it != encodable_.end()) {
+		encodable_.erase(it);
+		++start_encodable_;
+		it = encodable_.find(start_encodable_);
+	}
+	complete_ = true;
 }
 
 
 docstring const Encoding::latexChar(char_type c) const
 {
+	// validate() should have been called before
+	//BOOST_ASSERT(complete_);
+
 	if (c < start_encodable_)
 		return docstring(1, c);
 	if (encodable_.find(c) == encodable_.end()) {
@@ -360,8 +394,32 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			string const latexname = lex.getString();
 			lex.next();
 			string const iconvname = lex.getString();
+			lex.next();
+			string const width = lex.getString();
+			bool fixedwidth;
+			if (width == "fixed")
+				fixedwidth = true;
+			else if (width == "variable")
+				fixedwidth = false;
+			else
+				lex.printError("Encodings::read: "
+				               "Unknown width: `$$Token'");
+			lex.next();
+			string const p = lex.getString();
+			Encoding::Package package;
+			if (p == "none")
+				package = Encoding::none;
+			else if (p == "inputenc")
+				package = Encoding::inputenc;
+			else if (p == "CJK")
+				package = Encoding::CJK;
+			else
+				lex.printError("Encodings::read: "
+				               "Unknown package: `$$Token'");
 			LYXERR(Debug::INFO) << "Reading encoding " << name << endl;
-			encodinglist[name] = Encoding(name, latexname, iconvname);
+			encodinglist[name] = Encoding(name, latexname,
+			                              iconvname, fixedwidth,
+			                              package);
 			if (lex.lex() != et_end)
 				lex.printError("Encodings::read: "
 					       "missing end");

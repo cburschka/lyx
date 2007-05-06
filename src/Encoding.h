@@ -28,11 +28,19 @@ class LaTeXFeatures;
 ///
 class Encoding {
 public:
+	/// Which LaTeX package handles this encoding?
+	enum Package {
+		none,
+		inputenc,
+		CJK
+	};
 	///
 	Encoding() {}
 	///
 	Encoding(std::string const & n, std::string const & l,
-	         std::string const & i);
+	         std::string const & i, bool f, Package p);
+	///
+	void init() const;
 	///
 	std::string const & name() const { return Name_; }
 	///
@@ -48,6 +56,8 @@ public:
 	 * character is returned.
 	 */
 	docstring const latexChar(char_type c) const;
+	/// Which LaTeX package handles this encoding?
+	Package package() const { return package_; }
 private:
 	///
 	std::string Name_;
@@ -55,15 +65,27 @@ private:
 	std::string LatexName_;
 	///
 	std::string iconvName_;
+	/// Is this a fixed width encoding?
+	bool fixedwidth_;
 	///
 	typedef std::set<char_type> CharSet;
 	/// Set of UCS4 characters that we can encode (for singlebyte
 	/// encodings only)
-	CharSet encodable_;
+	mutable CharSet encodable_;
 	/// All code points below this are encodable. This helps us to avoid
 	/// lokup of ASCII characters in encodable_ and gives about 1 sec
 	/// speedup on export of the Userguide.
-	char_type start_encodable_;
+	mutable char_type start_encodable_;
+	/// Which LaTeX package handles this encoding?
+	Package package_;
+	/**
+	 * If this is true the stored information about the encoding covers
+	 * all encodable characters. We set this to false initially so that
+	 * we only need to query iconv for the actually used encodings.
+	 * This is needed especially for the multibyte encodings, if we
+	 * complete all encoding info on startup it takes 2-3 minutes.
+	 */
+	mutable bool complete_;
 };
 
 class Encodings {

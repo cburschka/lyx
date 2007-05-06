@@ -893,16 +893,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (inputenc == "auto") {
 		string const doc_encoding =
 			language->encoding()->latexName();
+		Encoding::Package const package =
+			language->encoding()->package();
 
 		// Create a list with all the input encodings used
 		// in the document
 		std::set<string> encodings =
 			features.getEncodingSet(doc_encoding);
 
-		// thailatex does not use the inputenc package, but sets up
-		// babel directly for tis620-0 encoding, therefore we must
-		// not request inputenc for tis620-0 encoding
-		if (!encodings.empty() || doc_encoding != "tis620-0") {
+		if (!encodings.empty() || package == Encoding::inputenc) {
 			os << "\\usepackage[";
 			std::set<string>::const_iterator it = encodings.begin();
 			std::set<string>::const_iterator const end = encodings.end();
@@ -912,7 +911,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			}
 			for (; it != end; ++it)
 				os << ',' << from_ascii(*it);
-			if (doc_encoding != "tis620-0") {
+			if (package == Encoding::inputenc) {
 				if (!encodings.empty())
 					os << ',';
 				os << from_ascii(doc_encoding);
@@ -920,12 +919,24 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << "]{inputenc}\n";
 			texrow.newline();
 		}
-	// utf8-plain is for XeTeX users (inputenc not desired)
-	} else if (inputenc != "default" && inputenc != "tis620-0" &&
-	           inputenc != "ascii" &&  inputenc != "utf8-plain") {
-		os << "\\usepackage[" << from_ascii(inputenc)
-		   << "]{inputenc}\n";
-		texrow.newline();
+		if (package == Encoding::CJK) {
+			os << "\\usepackage{CJK}\n";
+			texrow.newline();
+		}
+	} else if (inputenc != "default") {
+		switch (language->encoding()->package()) {
+		case Encoding::none:
+			break;
+		case Encoding::inputenc:
+			os << "\\usepackage[" << from_ascii(inputenc)
+			   << "]{inputenc}\n";
+			texrow.newline();
+			break;
+		case Encoding::CJK:
+			os << "\\usepackage{CJK}\n";
+			texrow.newline();
+			break;
+		}
 	}
 
 	// The encoding "armscii8" is only available when the package "armtex" is loaded.

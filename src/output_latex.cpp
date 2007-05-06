@@ -297,7 +297,8 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	// Switch file encoding if necessary
-	if (bparams.inputenc == "auto") {
+	if (bparams.inputenc == "auto" &&
+	    runparams.encoding->package() == Encoding::inputenc) {
 		// Look ahead for future encoding changes.
 		// We try to output them at the beginning of the paragraph,
 		// since the \inputencoding command is not allowed e.g. in
@@ -313,7 +314,8 @@ TeXOnePar(Buffer const & buf,
 			// encoding to that required by the language of c.
 			Encoding const * const encoding =
 				pit->getFontSettings(bparams, i).language()->encoding();
-			if (switchEncoding(os, bparams, false,
+			if (encoding->package() == Encoding::inputenc &&
+			    switchEncoding(os, bparams, false,
 			                   *(runparams.encoding), *encoding) > 0) {
 				runparams.encoding = encoding;
 				os << '\n';
@@ -601,25 +603,44 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
                    bool moving_arg, Encoding const & oldEnc,
                    Encoding const & newEnc)
 {
-	// FIXME thailatex does not support the inputenc package, so we
-	// ignore switches from/to tis620-0 encoding here. This does of
-	// course only work as long as the non-thai text contains ASCII
-	// only, but it is the best we can do.
-	// Since the \inputencoding command does not work inside sections
-	// we ignore the encoding switch also in moving arguments.
+	// FIXME We ignore encoding switches from/to encodings that do
+	// neither support the inputenc package nor the CJK package here.
+	// This does of course only work in special cases (e.g. switch from
+	// tis620-0 to latin1, but the text in latin1 contains ASCII only,
+	// but it is the best we can do
 	if (((bparams.inputenc == "auto" && !moving_arg) ||
 	     bparams.inputenc == "default") &&
 	    oldEnc.name() != newEnc.name() &&
-	    oldEnc.name() != "ascii" && newEnc.name() != "ascii" &&
-	    oldEnc.name() != "tis620-0" && newEnc.name() != "tis620-0") {
+	    oldEnc.package() != Encoding::none &&
+	    newEnc.package() != Encoding::none) {
 		LYXERR(Debug::LATEX) << "Changing LaTeX encoding from "
 		                     << oldEnc.name() << " to "
 		                     << newEnc.name() << endl;
 		os << setEncoding(newEnc.iconvName());
 		if (bparams.inputenc != "default") {
 			docstring const inputenc(from_ascii(newEnc.latexName()));
-			os << "\\inputencoding{" << inputenc << '}';
-			return 16 + inputenc.length();
+			switch (newEnc.package()) {
+				case Encoding::none:
+					break;
+				case Encoding::inputenc: {
+					int count = inputenc.length();
+					if (oldEnc.package() == Encoding::CJK) {
+						os << "\\end{CJK}";
+						count += 9;
+					}
+					os << "\\inputencoding{" << inputenc << '}';
+					return count + 16;
+				}
+				case Encoding::CJK: {
+					int count = inputenc.length();
+					if (oldEnc.package() == Encoding::CJK) {
+						os << "\\end{CJK}";
+						count += 9;
+					}
+					os << "\\begin{CJK}{" << inputenc << "}{}";
+					return count + 15;
+				}
+			}
 		}
 	}
 	return 0;

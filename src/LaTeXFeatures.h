@@ -118,7 +118,7 @@ private:
 	static PackagesList packages_;
 	///
 	typedef std::set<Language const *> LanguageList;
-	///
+	/// used languages (only those that are supported by babel)
 	LanguageList UsedLanguages_;
 	///
 	typedef std::set<std::string> UsedFloats;

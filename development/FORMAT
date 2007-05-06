@@ -1,6 +1,18 @@
 LyX file-format changes
 -----------------------
 
+2007-05-06 Uwe Stöhr  <uwestoehr@web.de>
+
+	* format incremented to 268: add support for the CJK encodings
+	- all encodings supported by CJK.sty are now in lib/encodings
+	- lib/encoding has got two new flags:
+	  - encoding package:
+	    "inputenc" for those languages that use the inputenc-package and
+	    "CJK" for the CJK encodings
+	  - "fixed"/"variable" to divide between multi- or single-byte encoding 
+	- lib/languages allows now to set an empty language for babel
+	  in this case babel isn't called.
+	
 2007-05-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 267: add plain utf8 encoding (for XeTeX).

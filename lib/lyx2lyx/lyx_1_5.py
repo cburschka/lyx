@@ -1325,6 +1325,28 @@ def revert_armenian(document):
         document.preamble.append('\\usepackage{armtex}')
 
 
+def revert_CJK(document):
+    " Set CJK encodings to default and languages chinese, japanese and korean to english. "
+    encodings = ["Bg5", "Bg5+", "GB", "GBt", "GBK", "JIS",
+                 "KS", "SJIS", "UTF8", "EUC-TW", "EUC-JP"]
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.header.append("\\inputencoding auto")
+    else:
+        inputenc = get_value(document.header, "\\inputencoding", i)
+        if inputenc in encodings:
+            document.header[i] = "\\inputencoding default"
+    document.inputencoding = get_value(document.header, "\\inputencoding", 0)
+
+    if document.language == "chinese-simplified" or \
+       document.language == "chinese-traditional" or \
+       document.language == "japanese" or document.language == "korean":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+
+
 ##
 # Conversion hub
 #
@@ -1351,9 +1373,11 @@ convert = [[246, []],
            [264, [convert_cv_textclass]],
            [265, [convert_tableborder]],
            [266, []],
-           [267, []]]
+           [267, []],
+           [268, []]]
 
-revert =  [[266, [revert_utf8plain]],
+revert =  [[267, [revert_CJK]],
+           [266, [revert_utf8plain]],
            [265, [revert_armenian]],
            [264, [revert_tableborder]],
            [263, [revert_cv_textclass]],
@@ -1379,4 +1403,5 @@ revert =  [[266, [revert_utf8plain]],
 
 if __name__ == "__main__":
     pass
+
 

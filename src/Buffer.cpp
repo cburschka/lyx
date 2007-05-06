@@ -141,7 +141,7 @@ using std::string;
 
 namespace {
 
-int const LYX_FORMAT = 267;
+int const LYX_FORMAT = 268;
 
 } // namespace anon
 
@@ -974,6 +974,16 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		texrow().newline();
 	}
 
+	Encoding const & encoding = params().encoding();
+	if (encoding.package() == Encoding::CJK) {
+		// Open a CJK environment, since in contrast to the encodings
+		// handled by inputenc the document encoding is not set in
+		// the preamble if it is handled by CJK.sty.
+		os << "\\begin{CJK}{" << from_ascii(encoding.latexName())
+		   << "}{}\n";
+		texrow().newline();
+	}
+
 	// if we are doing a real file with body, even if this is the
 	// child of some other buffer, let's cut the link here.
 	// This happens for example if only a child document is printed.
@@ -993,6 +1003,14 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	// add this just in case after all the paragraphs
 	os << endl;
 	texrow().newline();
+
+	if (encoding.package() == Encoding::CJK) {
+		// Close the open CJK environment.
+		// latexParagraphs will have opened one even if the last text
+		// was not CJK.
+		os << "\\end{CJK}\n";
+		texrow().newline();
+	}
 
 	if (!lyxrc.language_auto_end &&
 	    !params().language->babel().empty()) {

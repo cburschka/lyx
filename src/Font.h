@@ -25,6 +25,7 @@ namespace lyx {
 class Lexer;
 class BufferParams;
 class Language;
+class OutputParams;
 
 
 ///
@@ -296,14 +297,18 @@ public:
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(odocstream &, Font const & base,
+	int latexWriteStartChanges(odocstream &, BufferParams const & bparams,
+	                           OutputParams const & runparams,
+	                           Font const & base,
 	                           Font const & prev) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(odocstream &, Font const & base,
+	int latexWriteEndChanges(odocstream &, BufferParams const & bparams,
+	                         OutputParams const & runparams,
+	                         Font const & base,
 	                         Font const & next) const;
 
 
@@ -348,6 +353,8 @@ private:
 	/// Updates a misc setting according to request
 	Font::FONT_MISC_STATE setMisc(Font::FONT_MISC_STATE newfont,
 					 Font::FONT_MISC_STATE org);
+	/// Did latexWriteStartChanges open an encoding environment?
+	mutable bool open_encoding_;
 };
 
 

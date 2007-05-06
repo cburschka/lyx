@@ -344,26 +344,29 @@ string LaTeXFeatures::getLanguages() const
 {
 	ostringstream languages;
 
-	for (LanguageList::const_iterator cit =
-		    UsedLanguages_.begin();
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
-	     ++cit)
-		languages << (*cit)->babel() << ',';
+	     ++cit) {
+		if (cit != begin)
+			languages << ',';
+		languages << (*cit)->babel();
+	}
 	return languages.str();
 }
 
 
 set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 {
+	// This does only find encodings of languages supported by babel, but
+	// that does not matter since we don't have a language with an
+	// encoding supported by inputenc but without babel support.
 	set<string> encodings;
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
 	LanguageList::const_iterator end = UsedLanguages_.end();
 	for (; it != end; ++it)
-		// thailatex does not use the inputenc package, but sets up
-		// babel directly for tis620-0 encoding, therefore we must
-		// not add tis620-0 to the encoding set.
 		if ((*it)->encoding()->latexName() != doc_encoding &&
-		    (*it)->encoding()->name() != "tis620-0")
+		    (*it)->encoding()->package() == Encoding::inputenc)
 			encodings.insert((*it)->encoding()->latexName());
 	return encodings;
 }

@@ -702,7 +702,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			} else {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(
-						os, basefont, basefont);
+						os, bparams, runparams,
+						basefont, basefont);
 					open_font = false;
 				}
 
@@ -757,7 +758,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		// some insets cannot be inside a font change command
 		if (open_font && inset->noFontChange()) {
 			column += running_font.latexWriteEndChanges(
-					os, basefont, basefont);
+					os, bparams, runparams,
+						basefont, basefont);
 			open_font = false;
 			basefont = owner_->getLayoutFont(bparams, outerfont);
 			running_font = basefont;
@@ -991,7 +993,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		{
 			features.useLanguage(language);
 			LYXERR(Debug::LATEX) << "Found language "
-					     << language->babel() << endl;
+					     << language->lang() << endl;
 		}
 	}
 
@@ -1975,7 +1977,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			if (body_pos > 0) {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(
-						os, basefont, basefont);
+						os, bparams, runparams,
+						basefont, basefont);
 					open_font = false;
 				}
 				basefont = getLayoutFont(bparams, outerfont);
@@ -2027,19 +2030,22 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		     font.language() != running_font.language()))
 		{
 			column += running_font.latexWriteEndChanges(
-					os, basefont,
+					os, bparams, runparams, basefont,
 					(i == body_pos-1) ? basefont : font);
 			running_font = basefont;
 			open_font = false;
 		}
 
 		// Switch file encoding if necessary
-		int const count = switchEncoding(os, bparams,
-				runparams.moving_arg, *(runparams.encoding),
-				*(font.language()->encoding()));
-		if (count > 0) {
-			column += count;
-			runparams.encoding = font.language()->encoding();
+		if (runparams.encoding->package() == Encoding::inputenc &&
+		    font.language()->encoding()->package() == Encoding::inputenc) {
+			int const count = switchEncoding(os, bparams,
+					runparams.moving_arg, *(runparams.encoding),
+					*(font.language()->encoding()));
+			if (count > 0) {
+				column += count;
+				runparams.encoding = font.language()->encoding();
+			}
 		}
 
 		// Do we need to change font?
@@ -2047,7 +2053,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		     font.language() != running_font.language()) &&
 			i != body_pos - 1)
 		{
-			column += font.latexWriteStartChanges(os, basefont,
+			column += font.latexWriteStartChanges(os, bparams,
+			                                      runparams, basefont,
 			                                      last_font);
 			running_font = font;
 			open_font = true;
@@ -2087,11 +2094,12 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 #ifdef FIXED_LANGUAGE_END_DETECTION
 		if (next_) {
 			running_font
-				.latexWriteEndChanges(os, basefont,
+				.latexWriteEndChanges(os, bparams, runparams,
+					basefont,
 					next_->getFont(bparams, 0, outerfont));
 		} else {
-			running_font.latexWriteEndChanges(os, basefont,
-							  basefont);
+			running_font.latexWriteEndChanges(os, bparams,
+					runparams, basefont, basefont);
 		}
 #else
 #ifdef WITH_WARNINGS
@@ -2099,7 +2107,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 //#warning there as we start another \selectlanguage with the next paragraph if
 //#warning we are in need of this. This should be fixed sometime (Jug)
 #endif
-		running_font.latexWriteEndChanges(os, basefont, basefont);
+		running_font.latexWriteEndChanges(os, bparams, runparams,
+				basefont, basefont);
 #endif
 	}
 

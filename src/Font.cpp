@@ -18,11 +18,14 @@
 
 #include "BufferParams.h" // stateText
 #include "debug.h"
+#include "Encoding.h"
 #include "gettext.h"
 #include "Language.h"
 #include "Color.h"
 #include "Lexer.h"
 #include "LyXRC.h"
+#include "output_latex.h"
+#include "OutputParams.h"
 
 #include "support/lstrings.h"
 
@@ -163,37 +166,37 @@ bool operator==(Font::FontBits const & lhs,
 
 
 Font::Font()
-	: bits(sane), lang(default_language)
+	: bits(sane), lang(default_language), open_encoding_(false)
 {}
 
 
 Font::Font(Font::FONT_INIT1)
-	: bits(inherit), lang(default_language)
+	: bits(inherit), lang(default_language), open_encoding_(false)
 {}
 
 
 Font::Font(Font::FONT_INIT2)
-	: bits(ignore), lang(ignore_language)
+	: bits(ignore), lang(ignore_language), open_encoding_(false)
 {}
 
 
 Font::Font(Font::FONT_INIT3)
-	: bits(sane), lang(default_language)
+	: bits(sane), lang(default_language), open_encoding_(false)
 {}
 
 
 Font::Font(Font::FONT_INIT1, Language const * l)
-	: bits(inherit), lang(l)
+	: bits(inherit), lang(l), open_encoding_(false)
 {}
 
 
 Font::Font(Font::FONT_INIT2, Language const * l)
-	: bits(ignore), lang(l)
+	: bits(ignore), lang(l), open_encoding_(false)
 {}
 
 
 Font::Font(Font::FONT_INIT3, Language const * l)
-	: bits(sane), lang(l)
+	: bits(sane), lang(l), open_encoding_(false)
 {}
 
 
@@ -736,7 +739,9 @@ void Font::lyxWriteChanges(Font const & orgfont,
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-int Font::latexWriteStartChanges(odocstream & os, Font const & base,
+int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
+                                    OutputParams const & runparams,
+                                    Font const & base,
                                     Font const & prev) const
 {
 	bool env = false;
@@ -758,6 +763,20 @@ int Font::latexWriteStartChanges(odocstream & os, Font const & base,
 				      "$$lang", language()->babel());
 			os << from_ascii(tmp);
 			count += tmp.length();
+		} else {
+			os << '{';
+			count += 1;
+		}
+	}
+
+	if (language()->encoding()->package() == Encoding::CJK) {
+		int const c = switchEncoding(os, bparams,
+				runparams.moving_arg, *(runparams.encoding),
+				*(language()->encoding()));
+		if (c > 0) {
+			open_encoding_ = true;
+			count += c;
+			runparams.encoding = language()->encoding();
 		}
 	}
 
@@ -832,7 +851,9 @@ int Font::latexWriteStartChanges(odocstream & os, Font const & base,
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
-int Font::latexWriteEndChanges(odocstream & os, Font const & base,
+int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
+                                  OutputParams const & runparams,
+                                  Font const & base,
                                   Font const & next) const
 {
 	int count = 0;
@@ -891,6 +912,19 @@ int Font::latexWriteEndChanges(odocstream & os, Font const & base,
 	    language()->lang() == "hebrew") {
 		os << "\\endL}";
 		count += 6;
+	}
+
+	if (open_encoding_) {
+		// We need to close the encoding even if it does not change
+		// to do correct environment nesting
+		Encoding const * const ascii = encodings.getFromLyXName("ascii");
+		int const c = switchEncoding(os, bparams,
+				runparams.moving_arg, *(runparams.encoding),
+				*ascii);
+		BOOST_ASSERT(c > 0);
+		count += c;
+		runparams.encoding = ascii;
+		open_encoding_ = false;
 	}
 
 	if (language() != base.language() && language() != next.language()) {
