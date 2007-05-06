@@ -902,7 +902,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// thailatex does not use the inputenc package, but sets up
 		// babel directly for tis620-0 encoding, therefore we must
 		// not request inputenc for tis620-0 encoding
-		if (!encodings.empty() && doc_encoding != "tis620-0") {
+		if (!encodings.empty() || doc_encoding != "tis620-0") {
 			os << "\\usepackage[";
 			std::set<string>::const_iterator it = encodings.begin();
 			std::set<string>::const_iterator const end = encodings.end();
