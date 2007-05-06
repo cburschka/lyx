@@ -37,25 +37,34 @@ What do I need to run LyX?
 How does the LyX version scheme work?
 
     LyX uses a contiguous numbering scheme for versions, where a
-    number "1.x.y" indicates a stable release '1.x', fix level 'y'.
-    Prereleases are denoted with the suffix "pre" and there are
-    therefore three possible types of file names:
+    number "1.x.y" indicates a stable release '1.x', maintenance
+    release 'y'.  In other words, LyX 1.4.0 was the first stable
+    release in the 1.4-series of LyX. At the time of writing, the
+    latest maintenance release in the 1.4-series was LyX 1.4.4.
 
-       lyx-1.5.0.tar.gz       -- stable release 
-       lyx-1.5.5.tar.gz       -- fifth maintenance release of LyX 1.5
-       lyx-1.5.0pre1.tar.gz   -- potentially unstable test release
+    Please note that maintenance releases are designed primarily to
+    fix bugs, and that the file format will _never_ change due to a
+    maintenance release.
 
-    The maintenance releases are designed primarily to fix bugs,
-    and the file format will _never_ change due to a maintenance
-    release! 
+    In addition to the stable releases and maintenance releases, some
+    users may want to give a ''release candidate'' a try. This is a
+    release that should be stable enough for daily work, but yet may
+    be potentially unstable. If no major bugs are found, the release
+    candiate is soon released as the first stable release in a a new
+    series. To summarize, there are three possible types of file names
+    that are of interest to normal users:
 
-    The goal here is not to have parallel development as for the
-    linux kernel (the team is too small to afford that), but rather
-    to include all the simple (so that the maintenance burden on us
-    is not too high) and safe (so that system administrators can
-    install them without fear) bug fixes.  Experience shows that
-    these releases will contain a few new features, and that the
-    bulk of the patches will be documentation updates.
+       lyx-1.5.0.tar.gz     -- stable release, first in the 1.5-series
+       lyx-1.5.5.tar.gz     -- fifth maintenance release of LyX 1.5
+       lyx-1.5.0rc1.tar.gz  -- potentially unstable release candidate
+
+    Note that the goal is not parallel development as for the linux
+    kernel --the team is too small to afford that-- but rather to
+    include all the simple and safe bug fixes. This is so that the
+    maintenance burden on us is not too high, and so that system
+    administrators can install new releases without fear.  Experience
+    shows that these releases will contain a few new features, and
+    that the bulk of the patches will be documentation updates.
 
     If you get the source from Subversion, the version string will
     look like one of:
@@ -114,20 +123,20 @@ Internet resources of relevance to LyX
     The LyX homepage contains valuable information about LyX and the
     various LyX mailing lists, as well as links to mirrors and other
     LyX homepages around the world:
-    http://www.lyx.org/
+	http://www.lyx.org/
 
     The LyX Wiki is the place where users can share information on
     setting up and using LyX.
-    http://wiki.lyx.org/
+	http://wiki.lyx.org/
 
     The main LyX archive site:
-    ftp://ftp.lyx.org/pub/lyx/
+	ftp://ftp.lyx.org/pub/lyx/
 
     The LyX Development page has information about the development
     effort. LyX is under Subversion control, so you can get the very
     latest sources from there at any time.
-    http://www.lyx.org/devel
-    ftp://ftp.devel.lyx.org/pub/lyx/
+	http://www.lyx.org/devel
+	ftp://ftp.devel.lyx.org/pub/lyx/
 
 How do I submit a bug report?
 
