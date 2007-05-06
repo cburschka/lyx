@@ -30,7 +30,7 @@
 #
 #   Minibuffer adds the command buffer (Qt only, only one may exist)
 #
-#   TableInsert adds a special widget for quick insertion of tables
+#   TableInsert "The tooltip" adds a special widget for quick insertion of tables
 #
 #   PopupMenu "name" "GUI Name"
 #
@@ -74,7 +74,7 @@ ToolbarSet
 		Separator
 		Item "Insert math" "math-mode"
 		Item "Insert graphics" "dialog-show-new-inset graphics"
-		TableInsert
+		TableInsert "Insert table"
 	End
 	
 	Toolbar "extra" "Extra"

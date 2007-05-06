@@ -197,6 +197,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		tb->setIcon(QPixmap(toqstr(getIcon(FuncRequest(LFUN_TABULAR_INSERT)))));
 		tb->setToolTip(qt_(to_ascii(item.label_)));
 		tb->setStatusTip(qt_(to_ascii(item.label_)));
+		tb->setText(qt_(to_ascii(item.label_)));
 		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
 		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));

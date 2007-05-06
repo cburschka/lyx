@@ -181,8 +181,11 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 			break;
 			
 		case TO_TABLEINSERT:
-			add(ToolbarItem(ToolbarItem::TABLEINSERT,
-				FuncRequest(kb_action(ToolbarItem::TABLEINSERT))));
+			if (lex.next(true)) {
+				docstring const tooltip = lex.getDocString();
+				add(ToolbarItem(ToolbarItem::TABLEINSERT,
+					FuncRequest(kb_action(ToolbarItem::TABLEINSERT)), tooltip));
+			}
 			break;
 			
 		case TO_ENDTOOLBAR:
