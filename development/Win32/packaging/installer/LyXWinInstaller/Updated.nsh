@@ -6,6 +6,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\encodings"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\images"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
@@ -26,6 +28,9 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\simplecv.layout"
+ SetOutPath "$INSTDIR\Resources\lyx2lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
