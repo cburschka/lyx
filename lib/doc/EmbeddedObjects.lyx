@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 266
+\lyxformat 267
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2407,17 +2407,13 @@ empty
 .
  In this context, first means first in this order: 
 \family sans
-Footer, Last\InsetSpace ~
-footer,
-\family default
- 
-\family sans
 Header,
 \family default
  
 \family sans
 First\InsetSpace ~
-header.
+header, Footer, Last\InsetSpace ~
+footer.
 
 \family default
  See the following longtable to see how it works:
@@ -18085,6 +18081,138 @@ Wrap floats are not allowed in section headings or tables.
 \end_layout
 
 \begin_layout Section
+Float Numbering
+\begin_inset LatexCommand label
+name "sec:Float-Numbering"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Floats ! Numbering"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Floats are usually numbered either independent from the sections the floats
+ are in, or in the scheme 
+\begin_inset Quotes eld
+\end_inset
+
+chapter.number
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+section.number
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This depends on the used document class.
+\end_layout
+
+\begin_layout Standard
+To change the section independent numbering, you can use this command in
+ the document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+thetable}{
+\backslash
+roman{table}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+thetable
+\series default
+ is the command that prints the table number, for figure floats, the command
+ would be 
+\series bold
+
+\backslash
+thefigure
+\series default
+.
+ The command 
+\series bold
+
+\backslash
+roman
+\series default
+ prints in the command above the table number as small roman number.
+\end_layout
+
+\begin_layout Standard
+To change the numbering scheme for example to 
+\begin_inset Quotes eld
+\end_inset
+
+subsection.number
+\begin_inset Quotes erd
+\end_inset
+
+, use this command in the preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+numberwithin{table}{subsection}
+\end_layout
+
+\begin_layout Standard
+To be able to use the command 
+\series bold
+
+\backslash
+numberwithin
+\series default
+, set in the tab 
+\family sans
+Math\InsetSpace ~
+Options
+\family default
+ in the document settings the option 
+\family sans
+Use\InsetSpace ~
+AMS\InsetSpace ~
+math\InsetSpace ~
+package
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Please also have a look at section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Footnote-Numbering"
+
+\end_inset
+
+ for the details and important notes about the numbering commands.
+\end_layout
+
+\begin_layout Section
 Referencing Floats
 \begin_inset LatexCommand label
 name "sec:Referencing-Floats"
@@ -21891,106 +22019,6 @@ name "Footnotes ! Numbering"
 \end_layout
 
 \begin_layout Standard
-If you want to have footnotes numbered in the scheme 
-\begin_inset Quotes eld
-\end_inset
-
-chapter.footnote
-\begin_inset Quotes erd
-\end_inset
-
-, add the following command to your document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-numberwithin{footnote}{chapter}
-\end_layout
-
-\begin_layout Standard
-To be able to use the command 
-\series bold
-
-\backslash
-numberwithin
-\series default
-, set in the tab 
-\family sans
-Math\InsetSpace ~
-Options
-\family default
- in the document settings the option 
-\family sans
-Use\InsetSpace ~
-AMS\InsetSpace ~
-math\InsetSpace ~
-package
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-numberwithin{footnote}{chapter}
-\end_layout
-
-\end_inset
-
-This is another example footnote:
-\series bold
-
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-This is a footnote numbered in the scheme 
-\begin_inset Quotes eld
-\end_inset
-
-chapter.footnote
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-numberwithin{footnote}{part}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 To reset the footnote number back to 1 after each section
 \family roman
 , add this command to your document preamble:
@@ -22173,6 +22201,164 @@ arabic
 roman
 \series default
  in the command above.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you want to have footnotes numbered in the scheme 
+\begin_inset Quotes eld
+\end_inset
+
+chapter.footnote
+\begin_inset Quotes erd
+\end_inset
+
+, add the following command to your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+numberwithin{footnote}{chapter}
+\end_layout
+
+\begin_layout Standard
+To be able to use the command 
+\series bold
+
+\backslash
+numberwithin
+\series default
+, set in the tab 
+\family sans
+Math\InsetSpace ~
+Options
+\family default
+ in the document settings the option 
+\family sans
+Use\InsetSpace ~
+AMS\InsetSpace ~
+math\InsetSpace ~
+package
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+numberwithin{footnote}{chapter}
+\end_layout
+
+\end_inset
+
+This is another example footnote:
+\series bold
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+This is a footnote numbered in the scheme 
+\begin_inset Quotes eld
+\end_inset
+
+chapter.footnote
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+numberwithin{footnote}{part}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\series bold
+
+\backslash
+numberwithin
+\series default
+ always prints out the footnote number as arabic number; previous redefinitions
+ to get non-arabic numbers are overwritten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So to get for example the scheme 
+\begin_inset Quotes eld
+\end_inset
+
+chapter.
+\backslash
+Roman{footnote}
+\begin_inset Quotes erd
+\end_inset
+
+, use this command instead of 
+\series bold
+
+\backslash
+numberwithin
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+thechapter.
+\backslash
+Roman{footnote}}
 \end_layout
 
 \begin_layout Subsection

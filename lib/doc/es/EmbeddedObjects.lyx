@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 266
+\lyxformat 267
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2355,9 +2355,13 @@ vacías
 .
  En este contexto, primera significa primero en este orden: 
 \family sans
-Pie, Último\InsetSpace ~
-pie, Encabezado, Primer\InsetSpace ~
+Encabezado, Primer\InsetSpace ~
 encabezado
+\family default
+, 
+\family sans
+Pie, Último\InsetSpace ~
+pie
 \family default
 .
  La siguiente tabla muestra cómo funciona:
@@ -18140,6 +18144,157 @@ Los flotantes adosados no están permitidos en cabeceras de sección o tablas.
 \end_layout
 
 \begin_layout Section
+
+\lang english
+Float Numbering
+\begin_inset LatexCommand label
+name "sec:Float-Numbering"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Flotantes ! Numeración"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Floats are usually numbered either independent from the sections the floats
+ are in, or in the scheme 
+\begin_inset Quotes eld
+\end_inset
+
+chapter.number
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+section.number
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This depends on the used document class.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To change the section independent numbering, you can use this command in
+ the document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+renewcommand{
+\backslash
+thetable}{
+\backslash
+roman{table}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+thetable
+\series default
+ is the command that prints the table number, for figure floats, the command
+ would be 
+\series bold
+
+\backslash
+thefigure
+\series default
+.
+ The command 
+\series bold
+
+\backslash
+roman
+\series default
+ prints in the command above the table number as small roman number.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To change the numbering scheme for example to 
+\begin_inset Quotes eld
+\end_inset
+
+subsection.number
+\begin_inset Quotes erd
+\end_inset
+
+, use this command in the preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+numberwithin{table}{subsection}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To be able to use the command 
+\series bold
+
+\backslash
+numberwithin
+\series default
+, set in the tab 
+\family sans
+Math\InsetSpace ~
+Options
+\family default
+ in the document settings the option 
+\family sans
+Use\InsetSpace ~
+AMS\InsetSpace ~
+math\InsetSpace ~
+package
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Please also have a look at section\InsetSpace ~
+
+\lang spanish
+
+\begin_inset LatexCommand ref
+reference "sub:Numeración-de-Notas-al-Pie"
+
+\end_inset
+
+
+\lang english
+ for the details and important notes about the numbering commands.
+\end_layout
+
+\begin_layout Section
 Referencias a Flotantes
 \begin_inset LatexCommand label
 name "sec:Referencias-a-Flotantes"
@@ -22104,117 +22259,6 @@ name "Notas al Pie ! Numeración"
 \end_layout
 
 \begin_layout Standard
-Si quieres numerar notas al pie en el esquema 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo.nota
-\begin_inset Quotes erd
-\end_inset
-
-, añade el siguiente comando al preámbulo del documento:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-numberwithin{footnote}{chapter}
-\end_layout
-
-\begin_layout Standard
-Para poder usar el comando 
-\series bold
-
-\backslash
-numberwithin
-\series default
-, marca la opción 
-\family sans
-Usar
-\family default
-\InsetSpace ~
-
-\family sans
-el
-\family default
-\InsetSpace ~
-
-\family sans
-paquete
-\family default
-\InsetSpace ~
-
-\family sans
-AMS
-\family default
- en la solapa 
-\family sans
-Ecuaciones
-\family default
- de la configuración del documento.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-numberwithin{footnote}{chapter}
-\end_layout
-
-\end_inset
-
-Esto es otro ejemplo de nota al pie:
-\series bold
-
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Nota al pie numerada en el esquema 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo.nota
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-numberwithin{footnote}{part}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Para reiniciar el número de pie a 1 en cada sección añade este 
 \family roman
 comando en el preámbulo:
@@ -22381,6 +22425,179 @@ arabic
 roman
 \series default
  en el comando anterior.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si quieres numerar notas al pie en el esquema 
+\begin_inset Quotes eld
+\end_inset
+
+capítulo.nota
+\begin_inset Quotes erd
+\end_inset
+
+, añade el siguiente comando al preámbulo del documento:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+numberwithin{footnote}{chapter}
+\end_layout
+
+\begin_layout Standard
+Para poder usar el comando 
+\series bold
+
+\backslash
+numberwithin
+\series default
+, marca la opción 
+\family sans
+Usar
+\family default
+\InsetSpace ~
+
+\family sans
+el
+\family default
+\InsetSpace ~
+
+\family sans
+paquete
+\family default
+\InsetSpace ~
+
+\family sans
+AMS
+\family default
+ en la solapa 
+\family sans
+Ecuaciones
+\family default
+ de la configuración del documento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+numberwithin{footnote}{chapter}
+\end_layout
+
+\end_inset
+
+Esto es otro ejemplo de nota al pie:
+\series bold
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Nota al pie numerada en el esquema 
+\begin_inset Quotes eld
+\end_inset
+
+capítulo.nota
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+numberwithin{footnote}{part}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ 
+\series bold
+
+\backslash
+numberwithin
+\series default
+ always prints out the footnote number as arabic number; previous redefinitions
+ to get non-arabic numbers are overwritten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+So to get for example the scheme 
+\begin_inset Quotes eld
+\end_inset
+
+chapter.
+\backslash
+Roman{footnote}
+\begin_inset Quotes erd
+\end_inset
+
+, use this command instead of 
+\series bold
+
+\backslash
+numberwithin
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+thechapter.
+\backslash
+Roman{footnote}}
 \end_layout
 
 \begin_layout Subsection
