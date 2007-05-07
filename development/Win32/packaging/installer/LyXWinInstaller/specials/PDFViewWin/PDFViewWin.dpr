@@ -72,6 +72,6 @@ begin //begin program
  end;
  //rename file
  RenameFile(Input,InputNew);
- ExecWait('pdfopen --file "'+InputNew+'"');
+ ExecWait('pdfopen --file "'+InputNew+'" --back');
 
 end. //end program 

@@ -1,8 +1,14 @@
 ﻿Version LyX 1.5svn-xx-05-2007
 - LyX 1.5svn from xx-05-2007
+  - fix bug, introduced with last version, that all margin notes in
+    a document are lost
 
 - fix bug that LyX's menu language setting was ignored when LyX is
   started by double-clicking on a LyX-file
+- when Updating PDFs, the PDF is opened at the last viewed position
+  (only works with Acrobat/adobe Reader version <= 7)
+- fix hopefully the case that PDFs couldn't be updated when
+  Adobe Reader 8 is used on Windows Vista
 
 
 Version LyX 1.5svn-02-05-2007

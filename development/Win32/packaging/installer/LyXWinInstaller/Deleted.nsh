@@ -1,6 +1,7 @@
 Function DeleteFiles
 
  # list with deleted files for LyX 1.5svn xx-05-2007
+ Delete "$INSTDIR\bin\PDFViewWin8.exe"
  Delete "$INSTDIR\Resources\examples\cv.lyx"
  Delete "$INSTDIR\Resources\examples\TableExamples.lyx"
  Delete "$INSTDIR\Resources\examples\de\TableExamples.lyx"

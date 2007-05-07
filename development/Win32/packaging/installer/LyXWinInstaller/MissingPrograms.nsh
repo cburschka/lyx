@@ -80,16 +80,8 @@ Function MissingPrograms
   ReadRegStr $String HKCR ".pdf" ""
   ${if} $String != "AcroExch.Document" # this name is only used by Acrobat and Adobe Reader
    StrCpy $Acrobat "None"
-  ${endif}
-  ${if} $Acrobat != "None"
-   ReadRegStr $String HKCR "AcroExch.Document\shell\open\command" ""
-   StrCpy $Search "8" # search for Acrobat or Adobe Reader 8 because then PDFViewWin8.exe is needed to view PDF-files
-   !insertmacro StrPointer $String $Search $Pointer # macro from LyXUtils
-   ${if} $Pointer == "-1" # if nothing was found
-    StrCpy $Acrobat "7"
-   ${else}
-    StrCpy $Acrobat "8"
-   ${endif}
+  ${else}
+   StrCpy $Acrobat "Yes"
   ${endif}
 
   # test if a PostScript-viewer is installed, only check for GSview32

@@ -3,10 +3,15 @@ Function UpdateModifiedFiles
  # list with modified files for LyX 1.5svn xx-05-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\pdfclose.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\pdfdde.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\pdfopen.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\PDFViewWin.exe"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
- File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File "${PRODUCT_SOURCEDIR}\Resources\encodings"
+ File "${PRODUCT_SOURCEDIR}\Resources\languages"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\images"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
