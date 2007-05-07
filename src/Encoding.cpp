@@ -193,8 +193,10 @@ void Encoding::init() const
 
 docstring const Encoding::latexChar(char_type c) const
 {
-	// validate() should have been called before
-	//BOOST_ASSERT(complete_);
+	// assure the used encoding is properly initialized
+	if (!complete_)
+		init();
+	BOOST_ASSERT(complete_);
 
 	if (c < start_encodable_)
 		return docstring(1, c);
