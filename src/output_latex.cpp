@@ -603,46 +603,54 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
                    bool moving_arg, Encoding const & oldEnc,
                    Encoding const & newEnc)
 {
+	if ((bparams.inputenc != "auto" || moving_arg)
+		&& bparams.inputenc != "default")
+		return 0;
+
+	// Do nothing if the encoding is unchanged.
+	if (oldEnc.name() == newEnc.name())
+		return 0;
+
 	// FIXME We ignore encoding switches from/to encodings that do
 	// neither support the inputenc package nor the CJK package here.
 	// This does of course only work in special cases (e.g. switch from
 	// tis620-0 to latin1, but the text in latin1 contains ASCII only,
 	// but it is the best we can do
-	if (((bparams.inputenc == "auto" && !moving_arg) ||
-	     bparams.inputenc == "default") &&
-	    oldEnc.name() != newEnc.name() &&
-	    oldEnc.package() != Encoding::none &&
-	    newEnc.package() != Encoding::none) {
-		LYXERR(Debug::LATEX) << "Changing LaTeX encoding from "
-		                     << oldEnc.name() << " to "
-		                     << newEnc.name() << endl;
-		os << setEncoding(newEnc.iconvName());
-		if (bparams.inputenc != "default") {
-			docstring const inputenc(from_ascii(newEnc.latexName()));
-			switch (newEnc.package()) {
-				case Encoding::none:
-					break;
-				case Encoding::inputenc: {
-					int count = inputenc.length();
-					if (oldEnc.package() == Encoding::CJK) {
-						os << "\\end{CJK}";
-						count += 9;
-					}
-					os << "\\inputencoding{" << inputenc << '}';
-					return count + 16;
-				}
-				case Encoding::CJK: {
-					int count = inputenc.length();
-					if (oldEnc.package() == Encoding::CJK) {
-						os << "\\end{CJK}";
-						count += 9;
-					}
-					os << "\\begin{CJK}{" << inputenc << "}{}";
-					return count + 15;
-				}
+	if (oldEnc.package() == Encoding::none
+		|| newEnc.package() == Encoding::none)
+		return 0;
+
+	LYXERR(Debug::LATEX) << "Changing LaTeX encoding from "
+		<< oldEnc.name() << " to "
+		<< newEnc.name() << endl;
+	os << setEncoding(newEnc.iconvName());
+	if (bparams.inputenc == "default")
+		return 0;
+
+	docstring const inputenc(from_ascii(newEnc.latexName()));
+	switch (newEnc.package()) {
+		case Encoding::none:
+			return 0;
+		case Encoding::inputenc: {
+			int count = inputenc.length();
+			if (oldEnc.package() == Encoding::CJK) {
+				os << "\\end{CJK}";
+				count += 9;
 			}
+			os << "\\inputencoding{" << inputenc << '}';
+			return count + 16;
+		 }
+		case Encoding::CJK: {
+			int count = inputenc.length();
+			if (oldEnc.package() == Encoding::CJK) {
+				os << "\\end{CJK}";
+				count += 9;
+			}
+			os << "\\begin{CJK}{" << inputenc << "}{}";
+			return count + 15;
 		}
 	}
+	// Dead code to avoid a warning:
 	return 0;
 }
 
