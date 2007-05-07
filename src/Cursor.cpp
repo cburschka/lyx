@@ -245,6 +245,16 @@ namespace {
 		return true;
 	}
 
+	docstring parbreak(Paragraph const & par)
+	{
+		odocstringstream ods;
+		ods << '\n';
+		// only add blank line if we're not in an ERT inset
+		if (par.ownerCode() != Inset::ERT_CODE)
+			ods << '\n';
+		return ods.str();
+	}
+
 } // namespace anon
 
 
@@ -1178,12 +1188,14 @@ docstring Cursor::selectionAsString(bool label) const
 
 		// First paragraph in selection
 		docstring result = pars[startpit].
-			asString(buffer, startpos, pars[startpit].size(), label) + "\n\n";
+			asString(buffer, startpos, pars[startpit].size(), label)
+				 + parbreak(pars[startpit]);
 
 		// The paragraphs in between (if any)
 		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
 			Paragraph const & par = pars[pit];
-			result += par.asString(buffer, 0, par.size(), label) + "\n\n";
+			result += par.asString(buffer, 0, par.size(), label)
+				  + parbreak(pars[pit]);
 		}
 
 		// Last paragraph in selection
