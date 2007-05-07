@@ -19,11 +19,6 @@ End
 Encoding utf8x utf8x UTF-8 variable inputenc
 End
 
-# A plain utf8 encoding that does not use the inputenc package.
-# Such an encoding is required for XeTeX.
-Encoding utf8-plain utf8-plain UTF-8 variable none
-End
-
 # This encoding is used to typeset Armenian using the armtex package
 Encoding armscii8 armscii8 ARMSCII-8 fixed inputenc
 End
@@ -153,7 +148,7 @@ End
 # For simplified chinese
 Encoding gbk GBK GBK variable CJK
 End
- 
+
 # For japanese
 Encoding jis JIS JIS variable CJK
 End
@@ -174,6 +169,7 @@ End
 Encoding euc-jp EUC-JP EUC-JP variable CJK
 End
 
+# encodings that do not use a package
 
 # This one needs hardcoded support, since the inputenc package does not know
 # tis620-0, and thailatex sets up babel directly to use tis620-0, so the
@@ -182,6 +178,10 @@ End
 Encoding tis620-0 tis620-0 TIS620-0 fixed none
 End
 
+# A plain utf8 encoding that does not use the inputenc package.
+# Such an encoding is required for XeTeX.
+Encoding utf8-plain utf8-plain UTF-8 variable none
+End
 
 # Pure 7bit ASCII encoding (partially hardcoded in LyX)
 Encoding ascii ascii ascii fixed none
