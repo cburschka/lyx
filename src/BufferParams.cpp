@@ -1391,6 +1391,11 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	string tmp = lyxrc.language_package;
 	if (!lyxrc.language_global_options && tmp == "\\usepackage{babel}")
 		tmp = string("\\usepackage[") + lang_opts + "]{babel}";
+	// suppress the babel call when there is no babel language defined
+	// in the lib/languages file
+	if (lyxrc.language_global_options && tmp == "\\usepackage{babel}" &&
+		language->babel().empty() )
+		tmp = string("");
 	return tmp;
 }
 
