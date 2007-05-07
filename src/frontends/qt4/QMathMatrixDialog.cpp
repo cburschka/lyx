@@ -61,8 +61,8 @@ QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)
 	setWindowTitle(qt_("LyX: Insert Matrix"));
 
 	table->setMinimumSize(100, 100);
-	rowsSB->setValue(2);
-	columnsSB->setValue(2);
+	rowsSB->setValue(5);
+	columnsSB->setValue(5);
 	valignCO->setCurrentIndex(1);
 
 	connect(okPB, SIGNAL(clicked()),
