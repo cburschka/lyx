@@ -14,16 +14,16 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\etc"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
 
-  # install GhostScript if it not installed
+  # install GhostScript if not already installed
   Call Ghostscript
 
-  # install ImageMagick if it not installed
+  # install ImageMagick if not already installed
   Call ImageMagick
 
-  # install Aspell if it not installed
-  Call Aspell
+  # install Aspell if not already installed
+  Call InstallAspell # function from Aspell.nsh
 
-  # install Aiksaurus if it not installed
+  # install Aiksaurus if not already installed
   Call Aiksaurus
 
   # install the LaTeX class files that are delivered with LyX
@@ -138,32 +138,6 @@ Function ImageMagick
   ${else}
    # delete unnecessary files
    RMDir /r ${ImageMagickDir}
-  ${endif}
-
-FunctionEnd
-
-# -------------------------------------------
-
-Function Aspell
-
-  # if Aspell is not installed
-  ${if} $AspellPath == ""
-   # extract Aspell's program files
-   SetOutPath "$INSTDIR\external"
-   File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
-   # copy the files and register Aspell
-   CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
-   
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
-   WriteRegStr HKLM "SOFTWARE\Aspell" "Personal Path" "${AspellPersonalPath}"
-   
-   WriteRegStr HKLM "Software\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
-   
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "DisplayName" "${AspellDisplay}"
-   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoModify" 0x00000001
-   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoRepair" 0x00000001
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
   ${endif}
 
 FunctionEnd

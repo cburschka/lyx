@@ -2,8 +2,42 @@
 
 !if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
 
+Function InstallAspell
+ # install Aspell when it is not already installed
+
+  ${if} $AspellPath == ""
+   # extract Aspell's program files
+   SetOutPath "$INSTDIR\external"
+   File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
+   # copy the files and register Aspell
+   CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
+   
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
+   WriteRegStr HKLM "SOFTWARE\Aspell" "Personal Path" "${AspellPersonalPath}"
+   
+   WriteRegStr HKLM "Software\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
+   
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "DisplayName" "${AspellDisplay}"
+   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoModify" 0x00000001
+   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "NoRepair" 0x00000001
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Aspell" "UninstallString" "${AspellDir}\${AspellUninstall}"
+  ${endif}
+
+FunctionEnd
+
+!endif # endif ${INSTALLER_TYPE} == "NotUpdate"
+
+#--------------------------------
+
+
+!if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
+
 Function DownloadDictionary
-	
+ # Downloads Aspell dictionaries from a location that is given in the file
+ # $INSTDIR\Resources\AspellDictionaryNames.txt
+ 
+ # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\AspellDictionaryNames.txt" r
  ${Do}
   FileRead $R5 $String # $String is now the dictionary name
@@ -71,6 +105,7 @@ FunctionEnd
 !endif # endif ${INSTALLER_TYPE} == "NotUpdate"
 
 #--------------------------------
+
 
 !if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
 
@@ -217,6 +252,7 @@ FunctionEnd
 !endif # endif ${INSTALLER_TYPE} == "NotUpdate"
  
 #---------------------------
+
 
 Function un.UninstAspell
 
