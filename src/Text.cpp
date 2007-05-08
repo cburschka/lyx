@@ -1813,20 +1813,29 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 	if (caption_inset)
 		name = from_ascii(static_cast<InsetCaption *>(caption_inset)->type());
 
-	// Inside floats or wraps, if none of the above worked
-	// we want by default the abbreviation of the float type.
+	// If none of the above worked, we'll see if we're inside various
+	// types of insets and take our abbreviation from them.
 	if (name.empty()) {
-		Inset * float_inset = cur.innerInsetOfType(Inset::FLOAT_CODE);
-		if (!float_inset)
-			float_inset = cur.innerInsetOfType(Inset::WRAP_CODE);
-		if (float_inset)
-			name = float_inset->name();
+		Inset::Code const codes[] = {
+			Inset::FLOAT_CODE, 
+			Inset::WRAP_CODE,
+			Inset::FOOT_CODE
+		};
+		for (unsigned int i = 0; i < (sizeof codes / sizeof codes[0]); ++i) {
+			Inset * float_inset = cur.innerInsetOfType(codes[i]);
+			if (float_inset) {
+				name = float_inset->name();
+				break;
+			}
+		}
 	}
-
+	
 	// Create a correct prefix for prettyref
 	if (name == "theorem")
 		name = from_ascii("thm");
-
+	else if (name == "Foot")
+		name = from_ascii("fn");
+		
 	if (!name.empty())
 		text = name.substr(0, 3) + ':' + text;
 
