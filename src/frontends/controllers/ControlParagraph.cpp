@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "ControlParagraph.h"
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "ButtonController.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
@@ -153,6 +155,11 @@ bool ControlParagraph::inInset() const
 	return ininset_;
 }
 
+bool ControlParagraph::canIndent() const
+{
+	return kernel().buffer().params().paragraph_separation == 
+		BufferParams::PARSEP_INDENT;
+}
 
 LyXAlignment ControlParagraph::alignPossible() const
 {

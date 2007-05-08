@@ -40,6 +40,8 @@ public:
 	///
 	bool inInset() const;
 	///
+	bool canIndent() const;
+	///
 	LyXAlignment alignPossible() const;
 	///
 	LyXAlignment alignDefault() const;

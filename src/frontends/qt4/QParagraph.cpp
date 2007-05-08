@@ -254,7 +254,9 @@ void QParagraph::update_contents()
 	dialog_->alignmentToRadioButtons(newAlignment);
 
 	//indentation
-	dialog_->indentCB->setChecked(!params.noindent());
+	bool const canindent = controller().canIndent();
+	dialog_->indentCB->setEnabled(canindent);
+	dialog_->indentCB->setChecked(canindent && !params.noindent());
 
 	// linespacing
 	int linespacing;
