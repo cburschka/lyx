@@ -59,9 +59,9 @@ private:
 // A single codepoint conversion for utf8_to_ucs4 does not make
 // sense, so that function is left out.
 
-std::vector<lyx::char_type> utf8_to_ucs4(std::vector<char> const & utf8str);
+std::vector<char_type> utf8_to_ucs4(std::vector<char> const & utf8str);
 
-std::vector<lyx::char_type> utf8_to_ucs4(char const * utf8str, size_t ls);
+std::vector<char_type> utf8_to_ucs4(char const * utf8str, size_t ls);
 
 // utf16_to_ucs4
 
@@ -73,21 +73,21 @@ std::vector<unsigned short> ucs4_to_utf16(char_type const * s, size_t ls);
 
 // ucs4_to_utf8
 
-std::vector<char> ucs4_to_utf8(lyx::char_type c);
+std::vector<char> ucs4_to_utf8(char_type c);
 
-std::vector<char> ucs4_to_utf8(std::vector<lyx::char_type> const & ucs4str);
+std::vector<char> ucs4_to_utf8(std::vector<char_type> const & ucs4str);
 
-std::vector<char> ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls);
+std::vector<char> ucs4_to_utf8(char_type const * ucs4str, size_t ls);
 
 /// convert \p s from encoding \p encoding to ucs4.
 /// \p encoding must be a valid iconv 8bit encoding
-std::vector<lyx::char_type>
+std::vector<char_type>
 eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding);
 
 /// convert \p s from ucs4 to encoding \p encoding.
 /// \p encoding must be a valid iconv 8bit encoding
 std::vector<char>
-ucs4_to_eightbit(lyx::char_type const * ucs4str, size_t ls, std::string const & encoding);
+ucs4_to_eightbit(char_type const * ucs4str, size_t ls, std::string const & encoding);
 
 extern char const * ucs4_codeset;
 
