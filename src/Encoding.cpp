@@ -166,7 +166,7 @@ void Encoding::init() const
 					encodable_.insert(c);
 			}
 		}
-		} else {
+	} else {
 		// We do not know how many code points this encoding has, and
 		// they do not have a direct representation as a single byte,
 		// therefore we need to check all UCS4 code points.
