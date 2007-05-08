@@ -15,6 +15,9 @@
 
 #include "Changes.h"
 #include "debug.h"
+#include "Author.h"
+#include "BufferParams.h"
+#include "LaTeXFeatures.h"
 
 #include <boost/assert.hpp>
 
@@ -291,46 +294,35 @@ void Changes::merge()
 }
 
 
-int Changes::latexMarkChange(odocstream & os,
-			     Change::Type const oldChangeType, Change::Type const changeType,
-			     bool const & output)
+int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
+			     Change const & oldChange, Change const & change)
 {
-	if (!output || oldChangeType == changeType)
+	if (!bparams.outputChanges || oldChange == change)
 		return 0;
-
-	static docstring const start(from_ascii("\\changestart{}"));
-	static docstring const end(from_ascii("\\changeend{}"));
-	static docstring const son(from_ascii("\\overstrikeon{}"));
-	static docstring const soff(from_ascii("\\overstrikeoff{}"));
 
 	int column = 0;
 
-	if (oldChangeType == Change::DELETED) {
-		os << soff;
-		column += soff.length();
+	if (oldChange.type != Change::UNCHANGED) {
+		os << '}'; // close \lyxinserted or \lyxdeleted
+		column++;
 	}
 
-	switch (changeType) {
-		case Change::UNCHANGED:
-			os << end;
-			column += end.length();
-			break;
+	docstring chgTime;
+	chgTime += ctime(&change.changetime);
+	chgTime.erase(chgTime.end() - 1); // remove trailing '\n'
 
-		case Change::DELETED:
-			if (oldChangeType == Change::UNCHANGED) {
-				os << start;
-				column += start.length();
-			}
-			os << son;
-			column += son.length();
-			break;
-
-		case Change::INSERTED:
-			if (oldChangeType == Change::UNCHANGED) {
-				os << start;
-				column += start.length();
-			}
-			break;
+	if (change.type == Change::DELETED) {
+		docstring str = "\\lyxdeleted{" +
+			bparams.authors().get(change.author).name() + "}{" +
+			chgTime + "}{"; 
+		os << str;
+		column += str.size();
+	} else if (change.type == Change::INSERTED) {
+		docstring str = "\\lyxinserted{" +
+			bparams.authors().get(change.author).name() + "}{" +
+			chgTime + "}{";
+		os << str;
+		column += str.size();
 	}
 
 	return column;

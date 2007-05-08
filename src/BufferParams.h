@@ -229,12 +229,9 @@ public:
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?
 	bool trackChanges;
-	/** This param decides whether change tracking marks should be output
-	 *  (using the dvipost package) or if the current "state" of the
-	 *  document should be output instead. Since dvipost needs dvi
-	 *  specials, it only works with dvi/ps output (the param will be
-	 *  ignored with other output flavors and disabled when dvipost is
-	 *  not installed).
+	/** This param decides whether change tracking marks should be used
+	 *  in output (irrespective of how these marks are actually defined;
+	 *  for instance, they may differ for DVI and PDF generation)
 	 */
 	bool outputChanges;
 	/// Time ago we agreed that this was a buffer property [ale990407]

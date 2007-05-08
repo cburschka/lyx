@@ -171,6 +171,25 @@ static string const lyxdot_def =
 	"%% A simple dot to overcome graphicx limitations\n"
 	"\\newcommand{\\lyxdot}{.}\n";
 
+static string const changetracking_dvipost_def =
+	"%% Change tracking with dvipost\n"
+	"\\dvipostlayout\n"
+	"\\dvipost{osstart color push Red}\n"
+	"\\dvipost{osend color pop}\n"
+	"\\dvipost{cbstart color push Blue}\n"
+	"\\dvipost{cbend color pop}\n"
+	"\\newcommand{\\lyxinserted}[3]{\\changestart#3\\changeend}\n"
+	"\\newcommand{\\lyxdeleted}[3]{%\n"
+	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n";
+
+// TODO
+//static string const changetracking_soul_def =
+//	"\\newcommand{\\lyxinserted}[3]{\\uwave{\\textcolor{blue}{#3}}}\n"
+//	"\\newcommand{\\lyxdeleted}[3]{\\sout{\\textcolor{red}{#3}}}";
+
+static string const changetracking_none_def =
+	"\\newcommand{\\lyxinserted}[3]{#3}\n"
+	"\\newcommand{\\lyxdeleted}[3]{}";
 
 
 /////////////////////////////////////////////////////////////////////
@@ -619,6 +638,12 @@ string const LaTeXFeatures::getMacros() const
 
 	// floats
 	getFloatDefinitions(macros);
+
+	// change tracking
+	if (mustProvide("dvipost"))
+		macros << changetracking_dvipost_def;
+	if (mustProvide("ct-none"))
+		macros << changetracking_none_def;
 
 	return macros.str();
 }

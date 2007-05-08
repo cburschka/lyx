@@ -1176,16 +1176,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	lyxpreamble += "\\makeatother\n";
 
-	// dvipost settings come after everything else
-	if (features.isAvailable("dvipost") && outputChanges) {
-		lyxpreamble +=
-			"\\dvipostlayout\n"
-			"\\dvipost{osstart color push Red}\n"
-			"\\dvipost{osend color pop}\n"
-			"\\dvipost{cbstart color push Blue}\n"
-			"\\dvipost{cbend color pop}\n";
-	}
-
 	int const nlines =
 		int(lyx::count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
 	for (int j = 0; j != nlines; ++j) {

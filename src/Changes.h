@@ -49,6 +49,8 @@ public:
 bool operator==(Change const & l, Change const & r);
 bool operator!=(Change const & l, Change const & r);
 
+class BufferParams;
+
 class Changes {
 public:
 	/// set the pos to the given change
@@ -76,8 +78,8 @@ public:
 
 	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
-	static int latexMarkChange(odocstream & os, Change::Type oldChangeType,
-		Change::Type changeType, bool const & output);
+	static int latexMarkChange(odocstream & os, BufferParams const & bparams,
+	                           Change const & oldChange, Change const & change);
 
 	/// output .lyx file format for transitions between changes
 	static void lyxMarkChange(std::ostream & os, int & column,

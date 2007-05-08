@@ -194,7 +194,7 @@ public:
 				   Font & basefont,
 				   Font const & outerfont,
 				   bool & open_font,
-				   Change::Type & running_change,
+				   Change & running_change,
 				   Layout const & style,
 				   pos_type & i,
 				   unsigned int & column, value_type const c);
@@ -665,7 +665,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     Font & basefont,
 					     Font const & outerfont,
 					     bool & open_font,
-					     Change::Type & running_change,
+					     Change & running_change,
 					     Layout const & style,
 					     pos_type & i,
 					     unsigned int & column,
@@ -724,18 +724,10 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 		}
 
-		// output change tracking marks only if desired,
-		// if dvipost is installed,
-		// and with dvi/ps (other formats don't work)
-		LaTeXFeatures features(buf, bparams, runparams);
-		bool const output = bparams.outputChanges
-			&& runparams.flavor == OutputParams::LATEX
-			&& features.isAvailable("dvipost");
-
 		if (inset->canTrackChanges()) {
-			column += Changes::latexMarkChange(os, running_change,
-				Change::UNCHANGED, output);
-			running_change = Change::UNCHANGED;
+			column += Changes::latexMarkChange(os, bparams, running_change,
+				Change(Change::UNCHANGED));
+			running_change = Change(Change::UNCHANGED);
 		}
 
 		bool close = false;
@@ -1930,13 +1922,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// of the body.
 	Font basefont;
 
-	// output change tracking marks only if desired,
-	// if dvipost is installed,
-	// and with dvi/ps (other formats don't work)
-	bool const output = bparams.outputChanges
-		&& runparams.flavor == OutputParams::LATEX
-		&& LaTeXFeatures::isAvailable("dvipost");
-
 	// Maybe we have to create a optional argument.
 	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
@@ -1956,7 +1941,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// Do we have an open font change?
 	bool open_font = false;
 
-	Change::Type runningChangeType = Change::UNCHANGED;
+	Change runningChange = Change(Change::UNCHANGED);
 
 	texrow.start(id(), 0);
 
@@ -1984,9 +1969,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				basefont = getLayoutFont(bparams, outerfont);
 				running_font = basefont;
 
-				column += Changes::latexMarkChange(os,
-						runningChangeType, Change::UNCHANGED, output);
-				runningChangeType = Change::UNCHANGED;
+				column += Changes::latexMarkChange(os, bparams,
+						runningChange, Change(Change::UNCHANGED));
+				runningChange = Change(Change::UNCHANGED);
 
 				os << "}] ";
 				column +=3;
@@ -2002,21 +1987,29 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 							    runparams.moving_arg);
 		}
 
-		Change::Type changeType = pimpl_->lookupChange(i).type;
+		Change const & change = pimpl_->lookupChange(i);
+
+		if (bparams.outputChanges && runningChange != change) {
+			if (open_font) {
+				column += running_font.latexWriteEndChanges(
+						os, bparams, runparams, basefont, basefont);
+				open_font = false;
+			}
+			basefont = getLayoutFont(bparams, outerfont);
+			running_font = basefont;
+
+			column += Changes::latexMarkChange(os, bparams, runningChange, change);
+			runningChange = change;
+		}
 
 		// do not output text which is marked deleted
 		// if change tracking output is disabled
-		if (!output && changeType == Change::DELETED) {
-			runningChangeType = changeType;
+		if (!bparams.outputChanges && change.type == Change::DELETED) {
 			continue;
 		}
 
 		++column;
 		
-		column += Changes::latexMarkChange(os, runningChangeType,
-			changeType, output);
-		runningChangeType = changeType;
-
 		value_type const c = getChar(i);
 
 		// Fully instantiated font
@@ -2086,7 +2079,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		pimpl_->simpleTeXSpecialChars(buf, bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
-					runningChangeType, *style, i, column, c);
+					runningChange, *style, i, column, c);
 	}
 
 	// If we have an open font definition, we have to close it
@@ -2112,8 +2105,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 #endif
 	}
 
-	column += Changes::latexMarkChange(os,
-			runningChangeType, Change::UNCHANGED, output);
+	column += Changes::latexMarkChange(os, bparams, runningChange, Change(Change::UNCHANGED));
 
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {

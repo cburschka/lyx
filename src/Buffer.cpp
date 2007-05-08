@@ -505,6 +505,22 @@ bool Buffer::readDocument(Lexer & lex)
 		params().textclass = 0;
 	}
 
+	if (params().outputChanges) {
+		if (!LaTeXFeatures::isAvailable("dvipost")) {
+			Alert::warning(_("Changes not shown in LaTeX output"),
+			               _("Changes will not be highlighted in LaTeX output, "
+			                 "because dvipost is not installed.\n"
+			                 "If you are familiar with TeX, consider redefining "
+			                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
+		} else {
+			Alert::warning(_("Changes not shown in LaTeX output"),
+			               _("Changes will not be highlighted in LaTeX output "
+			                 "when using pdflatex.\n"
+			                 "If you are familiar with TeX, consider redefining "
+			                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
+		}
+	}
+
 	bool const res = text().read(*this, lex, errorList);
 	for_each(text().paragraphs().begin(),
 		 text().paragraphs().end(),
@@ -1198,8 +1214,17 @@ void Buffer::validate(LaTeXFeatures & features) const
 {
 	TextClass const & tclass = params().getTextClass();
 
-	if (features.isAvailable("dvipost") && params().outputChanges)
-		features.require("dvipost");
+	if (params().outputChanges) {
+        	if (features.runparams().flavor == OutputParams::LATEX) {
+			if (LaTeXFeatures::isAvailable("dvipost")) {
+				features.require("dvipost");
+			} else {
+				features.require("ct-none");
+			}
+		} else if (features.runparams().flavor == OutputParams::PDFLATEX ) {
+			features.require("ct-none");
+        	}
+	}
 
 	// AMS Style is at document level
 	if (params().use_amsmath == BufferParams::package_on

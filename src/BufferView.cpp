@@ -706,7 +706,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
-		flag.enabled(buffer_ && LaTeXFeatures::isAvailable("dvipost"));
+		flag.enabled(buffer_);
 		flag.setOnOff(buffer_->params().outputChanges);
 		break;
 
@@ -889,6 +889,21 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_CHANGES_OUTPUT:
 		buffer_->params().outputChanges = !buffer_->params().outputChanges;
+		if (buffer_->params().outputChanges) {
+			if (!LaTeXFeatures::isAvailable("dvipost")) {
+				Alert::warning(_("Changes not shown in LaTeX output"),
+				               _("Changes will not be highlighted in LaTeX output, "
+				                 "because dvipost is not installed.\n"
+				                 "If you are familiar with TeX, consider redefining "
+				                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
+			} else {
+				Alert::warning(_("Changes not shown in LaTeX output"),
+				               _("Changes will not be highlighted in LaTeX output "
+				                 "when using pdflatex.\n"
+				                 "If you are familiar with TeX, consider redefining "
+				                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
+			}
+		}
 		break;
 
 	case LFUN_CHANGE_NEXT:
