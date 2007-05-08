@@ -23,6 +23,10 @@
 #include <map>
 
 using std::endl;
+using std::map;
+using std::make_pair;
+using std::string;
+using std::vector;
 
 namespace {
 
@@ -193,13 +197,13 @@ namespace {
 
 
 template<typename RetType, typename InType>
-std::vector<RetType>
+vector<RetType>
 iconv_convert(IconvProcessor & processor,
 	      InType const * buf,
 	      size_t buflen)
 {
 	if (buflen == 0)
-		return std::vector<RetType>();
+		return vector<RetType>();
 
 	char const * inbuf = reinterpret_cast<char const *>(buf);
 	size_t inbytesleft = buflen * sizeof(InType);
@@ -212,33 +216,33 @@ iconv_convert(IconvProcessor & processor,
 	if (bytes <= 0)
 		// Conversion failed
 		// FIXME Maybe throw an exception and handle that in the caller?
-		return std::vector<RetType>();
+		return vector<RetType>();
 
 	RetType const * tmp = reinterpret_cast<RetType const *>(out);
-	return std::vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
+	return vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
 }
 
 } // anon namespace
 
 
-std::vector<lyx::char_type> utf8_to_ucs4(std::vector<char> const & utf8str)
+vector<char_type> utf8_to_ucs4(vector<char> const & utf8str)
 {
 	if (utf8str.empty())
-		return std::vector<lyx::char_type>();
+		return vector<char_type>();
 
 	return utf8_to_ucs4(&utf8str[0], utf8str.size());
 }
 
 
-std::vector<lyx::char_type>
+vector<char_type>
 utf8_to_ucs4(char const * utf8str, size_t ls)
 {
 	static IconvProcessor processor(ucs4_codeset, "UTF-8");
-	return iconv_convert<lyx::char_type>(processor, utf8str, ls);
+	return iconv_convert<char_type>(processor, utf8str, ls);
 }
 
 
-std::vector<char_type>
+vector<char_type>
 utf16_to_ucs4(unsigned short const * s, size_t ls)
 {
 	static IconvProcessor processor(ucs4_codeset, utf16_codeset);
@@ -246,7 +250,7 @@ utf16_to_ucs4(unsigned short const * s, size_t ls)
 }
 
 
-std::vector<unsigned short>
+vector<unsigned short>
 ucs4_to_utf16(char_type const * s, size_t ls)
 {
 	static IconvProcessor processor(utf16_codeset, ucs4_codeset);
@@ -254,51 +258,51 @@ ucs4_to_utf16(char_type const * s, size_t ls)
 }
 
 
-std::vector<char>
-ucs4_to_utf8(lyx::char_type c)
+vector<char>
+ucs4_to_utf8(char_type c)
 {
 	static IconvProcessor processor("UTF-8", ucs4_codeset);
 	return iconv_convert<char>(processor, &c, 1);
 }
 
 
-std::vector<char>
-ucs4_to_utf8(std::vector<lyx::char_type> const & ucs4str)
+vector<char>
+ucs4_to_utf8(vector<char_type> const & ucs4str)
 {
 	if (ucs4str.empty())
-		return std::vector<char>();
+		return vector<char>();
 
 	return ucs4_to_utf8(&ucs4str[0], ucs4str.size());
 }
 
 
-std::vector<char>
-ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls)
+vector<char>
+ucs4_to_utf8(char_type const * ucs4str, size_t ls)
 {
 	static IconvProcessor processor("UTF-8", ucs4_codeset);
 	return iconv_convert<char>(processor, ucs4str, ls);
 }
 
 
-std::vector<lyx::char_type>
-eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding)
+vector<char_type>
+eightbit_to_ucs4(char const * s, size_t ls, string const & encoding)
 {
-	static std::map<std::string, IconvProcessor> processors;
+	static map<string, IconvProcessor> processors;
 	if (processors.find(encoding) == processors.end()) {
 		IconvProcessor processor(ucs4_codeset, encoding.c_str());
-		processors.insert(std::make_pair(encoding, processor));
+		processors.insert(make_pair(encoding, processor));
 	}
 	return iconv_convert<char_type>(processors[encoding], s, ls);
 }
 
 
-std::vector<char>
-ucs4_to_eightbit(lyx::char_type const * ucs4str, size_t ls, std::string const & encoding)
+vector<char>
+ucs4_to_eightbit(char_type const * ucs4str, size_t ls, string const & encoding)
 {
-	static std::map<std::string, IconvProcessor> processors;
+	static map<string, IconvProcessor> processors;
 	if (processors.find(encoding) == processors.end()) {
 		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
-		processors.insert(std::make_pair(encoding, processor));
+		processors.insert(make_pair(encoding, processor));
 	}
 	return iconv_convert<char>(processors[encoding], ucs4str, ls);
 }
