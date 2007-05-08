@@ -1384,8 +1384,14 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	// suppress the babel call when there is no babel language defined
 	// in the lib/languages file
 	if (lyxrc.language_global_options && tmp == "\\usepackage{babel}" &&
-		language->babel().empty() )
-		tmp = string("");
+		language->babel().empty() ) {
+		// if the armscii8 or a CJK encoding is used, babel has to be called
+		// for foreign languages
+		if (!lang_opts.empty())
+			tmp = string("\\usepackage[") + lang_opts + "]{babel}";
+		else
+			tmp.clear();
+	}
 	return tmp;
 }
 
