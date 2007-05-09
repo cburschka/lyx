@@ -33,6 +33,7 @@ public:
 	virtual void show();
 protected Q_SLOTS:
 	virtual void change_adaptor();
+	void validate_listings_params();
 	virtual void loadClicked();
 	virtual void browseClicked();
 	virtual void typeChanged(int v);

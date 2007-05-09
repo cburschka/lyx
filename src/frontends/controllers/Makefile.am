@@ -52,6 +52,8 @@ libcontrollers_la_SOURCES= \
 	ControlGraphics.cpp \
 	ControlGraphics.h \
 	ControlInclude.cpp \
+	ControlListings.h \
+	ControlListings.cpp \
 	ControlInclude.h \
 	ControlLog.cpp \
 	ControlLog.h \

@@ -726,6 +726,7 @@ src_frontends_controllers_header_files = Split('''
     ControlFloat.h
     ControlGraphics.h
     ControlInclude.h
+    ControlListings.h
     ControlLog.h
     ControlMath.h
     ControlNote.h
@@ -771,6 +772,7 @@ src_frontends_controllers_files = Split('''
     ControlFloat.cpp
     ControlGraphics.cpp
     ControlInclude.cpp
+    ControlListings.cpp
     ControlLog.cpp
     ControlMath.cpp
     ControlNote.cpp
@@ -866,6 +868,7 @@ src_frontends_qt4_header_files = Split('''
     QInclude.h
     QIndex.h
     QKeySymbol.h
+    QListings.h
     QLImage.h
     QLMenubar.h
     QLPainter.h
@@ -955,6 +958,7 @@ src_frontends_qt4_files = Split('''
     QInclude.cpp
     QIndex.cpp
     QKeySymbol.cpp
+    QListings.cpp
     QLImage.cpp
     QLMenubar.cpp
     QLPainter.cpp
@@ -1030,6 +1034,7 @@ src_frontends_qt4_moc_files = Split('''
     QGraphicsDialog.cpp
     QInclude.cpp
     QIndex.cpp
+    QListings.cpp
     QLMenubar.cpp
     QLPopupMenu.cpp
     QLPrintDialog.cpp
@@ -1101,6 +1106,7 @@ src_frontends_qt4_ui_files = Split('''
     IndexUi.ui
     LaTeXUi.ui
     LanguageUi.ui
+    ListingsUi.ui
     LogUi.ui
     MarginsUi.ui
     MathMatrixUi.ui
@@ -1183,6 +1189,8 @@ src_insets_header_files = Split('''
     InsetIndex.h
     InsetLabel.h
     InsetLine.h
+    InsetListings.h
+    InsetListingsParams.h
     InsetMarginal.h
     InsetNewline.h
     InsetNomencl.h
@@ -1236,6 +1244,8 @@ src_insets_files = Split('''
     InsetIndex.cpp
     InsetLabel.cpp
     InsetLine.cpp
+    InsetListings.cpp
+    InsetListingsParams.cpp
     InsetMarginal.cpp
     InsetNewline.cpp
     InsetNomencl.cpp

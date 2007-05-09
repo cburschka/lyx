@@ -348,7 +348,9 @@ public:
 		///
 		NOMENCL_PRINT_CODE,
 		///
-		PAGEBREAK_CODE
+		PAGEBREAK_CODE,
+		///
+		LISTINGS_CODE
 	};
 
 	/** returns the Code corresponding to the \c name.

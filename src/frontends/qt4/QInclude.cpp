@@ -21,6 +21,7 @@
 
 #include "LyXRC.h"
 
+#include "insets/InsetListingsParams.h"
 #include "controllers/ControlInclude.h"
 
 #include <QPushButton>
@@ -57,6 +58,8 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
 	connect(previewCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
+	connect(listingsED, SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
 
 	filenameED->setValidator(new PathValidator(true, filenameED));
 	setFocusProxy(filenameED);
@@ -72,6 +75,26 @@ void QIncludeDialog::show()
 void QIncludeDialog::change_adaptor()
 {
 	form_->changed();
+}
+
+
+void QIncludeDialog::validate_listings_params()
+{
+	static bool isOK = true;
+	try {
+		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
+		if (!isOK) {
+			isOK = true;
+			// listingsTB->setTextColor("black");
+			listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+			okPB->setEnabled(true);
+		}
+	} catch (invalidParam & e) {
+		isOK = false;
+		// listingsTB->setTextColor("red");
+		listingsTB->setPlainText(e.what());
+		okPB->setEnabled(false);
+	}
 }
 
 
@@ -91,18 +114,32 @@ void QIncludeDialog::typeChanged(int v)
 			visiblespaceCB->setChecked(false);
 			previewCB->setEnabled(false);
 			previewCB->setChecked(false);
+			listingsGB->setEnabled(false);
+			listingsED->setEnabled(false);
 			break;
 		//case Input
 		case 1:
 			visiblespaceCB->setEnabled(false);
 			visiblespaceCB->setChecked(false);
 			previewCB->setEnabled(true);
+			listingsGB->setEnabled(false);
+			listingsED->setEnabled(false);
+			break;
+		//case listings
+		case 3:
+			visiblespaceCB->setEnabled(false);
+			visiblespaceCB->setChecked(false);
+			previewCB->setEnabled(false);
+			listingsGB->setEnabled(true);
+			listingsED->setEnabled(true);
 			break;
 		//case Verbatim
 		default:
 			visiblespaceCB->setEnabled(true);
 			previewCB->setEnabled(false);
 			previewCB->setChecked(false);
+			listingsGB->setEnabled(false);
+			listingsED->setEnabled(false);
 			break;
 	}
 }
@@ -145,6 +182,8 @@ void QInclude::build_dialog()
 	bcview().addReadOnly(dialog_->browsePB);
 	bcview().addReadOnly(dialog_->visiblespaceCB);
 	bcview().addReadOnly(dialog_->typeCO);
+	bcview().addReadOnly(dialog_->listingsED);
+	dialog_->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
 
 	addCheckedLineEdit(bcview(), dialog_->filenameED, dialog_->filenameLA);
 }
@@ -164,11 +203,14 @@ void QInclude::update_contents()
 	dialog_->visiblespaceCB->setEnabled(false);
 	dialog_->previewCB->setChecked(false);
 	dialog_->previewCB->setEnabled(false);
+	dialog_->listingsGB->setEnabled(false);
+	dialog_->listingsED->setEnabled(false);
 
 	string cmdname = controller().params().getCmdName();
 	if (cmdname != "include" &&
 	    cmdname != "verbatiminput" &&
-	    cmdname != "verbatiminput*")
+	    cmdname != "verbatiminput*" &&
+		cmdname != "lstinputlisting")
 		cmdname = "input";
 
 	if (cmdname == "include") {
@@ -187,7 +229,14 @@ void QInclude::update_contents()
 	} else if (cmdname == "verbatiminput") {
 		dialog_->typeCO->setCurrentIndex(2);
 		dialog_->visiblespaceCB->setEnabled(true);
-	}
+
+	} else if (cmdname == "lstinputlisting") {
+		dialog_->typeCO->setCurrentIndex(3);
+		dialog_->listingsGB->setEnabled(true);
+		dialog_->listingsED->setEnabled(true);
+		InsetListingsParams par(params.getOptions());
+		dialog_->listingsED->setText(toqstr(par.separatedParams()));
+	}	
 }
 
 
@@ -199,15 +248,22 @@ void QInclude::apply()
 	params.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentIndex();
-	if (item == 0)
+	if (item == 0) {
 		params.setCmdName("include");
-	else if (item == 1)
+		params.setOptions(string());
+	} else if (item == 1) {
 		params.setCmdName("input");
-	else {
+		params.setOptions(string());
+	} else if (item == 3) {
+		params.setCmdName("lstinputlisting");
+		// the parameter string should have passed validation
+		params.setOptions(InsetListingsParams(fromqstr(dialog_->listingsED->toPlainText())).params());
+	} else {
 		if (dialog_->visiblespaceCB->isChecked())
 			params.setCmdName("verbatiminput*");
 		else
 			params.setCmdName("verbatiminput");
+		params.setOptions(string());
 	}
 	controller().setParams(params);
 }
@@ -222,8 +278,10 @@ void QInclude::browse()
 		type = ControlInclude::INCLUDE;
 	else if (item == 1)
 		type = ControlInclude::INPUT;
-	else
+	else if (item == 2)
 		type = ControlInclude::VERBATIM;
+	else
+		type = ControlInclude::LISTINGS;
 
 	docstring const & name =
 		controller().browse(qstring_to_ucs4(dialog_->filenameED->text()), type);

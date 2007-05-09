@@ -1,6 +1,16 @@
 LyX file-format changes
 -----------------------
 
+2007-05-08 Bo Peng <ben.bob@gmail.com>
+	* format incremented to 269: add listings support
+	- add preamble flag \listings_params, e.g. \listings_params "language=Python,float"
+	- add inset listings, with options lstparams and inline, e.g.
+		\begin_inset listings
+		lstparams "xleftmargin=50pt,language=Python"
+		inline false
+	- add \lstinputlisting Include type. e.g.
+		\begin_inset Include \lstinputlisting{newfile1.lyx}[firstline=10,lastline=15]
+
 2007-05-06 Uwe Stöhr  <uwestoehr@web.de>
 
 	* format incremented to 268: add support for the CJK encodings

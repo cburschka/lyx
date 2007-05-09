@@ -371,6 +371,7 @@ void LyXAction::init()
 		{ LFUN_NOMENCL_PRINT, "nomencl-print", Noop },
 		{ LFUN_CLEARPAGE_INSERT, "clearpage-insert", Noop },
 		{ LFUN_CLEARDOUBLEPAGE_INSERT, "cleardoublepage-insert", Noop },
+		{ LFUN_LISTING_INSERT, "listing-insert", Noop },
 
 		{ LFUN_NOACTION, "", Noop }
 	};

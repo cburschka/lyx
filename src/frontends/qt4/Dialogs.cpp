@@ -25,6 +25,7 @@
 #include "ControlFloat.h"
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
+#include "ControlListings.h"
 #include "ControlLog.h"
 #include "ControlViewSource.h"
 #include "ControlMath.h"
@@ -66,6 +67,7 @@
 #include "QIndex.h"
 #include "QMathMatrixDialog.h"
 #include "QNomencl.h"
+#include "QListings.h"
 #include "QLog.h"
 #include "QViewSource.h"
 #include "QNote.h"
@@ -112,7 +114,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"texinfo", "toc", "url", "view-source", "vspace", "wrap" };
+"texinfo", "toc", "url", "view-source", "vspace", "wrap", "listings" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -317,6 +319,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new QWrap(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "listings") {
+		dialog->setController(new ControlListings(*dialog));
+		dialog->setView(new QListings(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	}
 

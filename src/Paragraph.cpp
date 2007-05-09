@@ -2176,6 +2176,7 @@ bool Paragraph::emptyTag() const
 			    lyx_code != Inset::INCLUDE_CODE &&
 			    lyx_code != Inset::GRAPHICS_CODE &&
 			    lyx_code != Inset::ERT_CODE &&
+			    lyx_code != Inset::LISTINGS_CODE &&
 			    lyx_code != Inset::FLOAT_CODE &&
 			    lyx_code != Inset::TABULAR_CODE) {
 				return false;
@@ -2341,7 +2342,8 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->rightToLeft()
-		&& ownerCode() != Inset::ERT_CODE;
+		&& ownerCode() != Inset::ERT_CODE
+		&& ownerCode() != Inset::LISTINGS_CODE;
 }
 
 
@@ -2502,7 +2504,7 @@ bool Paragraph::isFreeSpacing() const
 
 	// for now we just need this, later should we need this in some
 	// other way we can always add a function to Inset too.
-	return ownerCode() == Inset::ERT_CODE;
+	return ownerCode() == Inset::ERT_CODE || ownerCode() == Inset::LISTINGS_CODE;
 }
 
 
@@ -2510,7 +2512,7 @@ bool Paragraph::allowEmpty() const
 {
 	if (layout()->keepempty)
 		return true;
-	return ownerCode() == Inset::ERT_CODE;
+	return ownerCode() == Inset::ERT_CODE || ownerCode() == Inset::LISTINGS_CODE;
 }
 
 

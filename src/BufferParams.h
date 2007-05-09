@@ -189,6 +189,8 @@ public:
 	std::string float_placement;
 	///
 	unsigned int columns;
+	/// parameters for the listings package
+	std::string listings_params;
 	///
 	TextClass::PageSides sides;
 	///

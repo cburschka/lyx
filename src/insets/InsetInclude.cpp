@@ -39,6 +39,7 @@
 #include "graphics/PreviewLoader.h"
 
 #include "insets/RenderPreview.h"
+#include "insets/InsetListingsParams.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
@@ -179,7 +180,8 @@ enum Types {
 	INCLUDE = 0,
 	VERB = 1,
 	INPUT = 2,
-	VERBAST = 3
+	VERBAST = 3,
+	LISTINGS = 4,
 };
 
 
@@ -193,6 +195,8 @@ Types type(InsetCommandParams const & params)
 		return VERB;
 	if  (command_name == "verbatiminput*")
 		return VERBAST;
+	if  (command_name == "lstinputlisting")
+		return LISTINGS;
 	return INCLUDE;
 }
 
@@ -202,6 +206,12 @@ bool isVerbatim(InsetCommandParams const & params)
 	string const command_name = params.getCmdName();
 	return command_name == "verbatiminput" ||
 		command_name == "verbatiminput*";
+}
+
+
+bool isListings(InsetCommandParams const & params)
+{
+	return params.getCmdName() == "lstinputlisting";
 }
 
 
@@ -311,6 +321,9 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 		case INCLUDE:
 			temp += buf.B_("Include");
 			break;
+		case LISTINGS:
+			temp += buf.B_("Program Listing");
+			break;
 	}
 
 	temp += ": ";
@@ -329,7 +342,7 @@ namespace {
 /// return the child buffer if the file is a LyX doc and is loaded
 Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params)
 {
-	if (isVerbatim(params))
+	if (isVerbatim(params) || isListings(params))
 		return 0;
 
 	string const included_file = includedFilename(buffer, params).absFilename();
@@ -343,7 +356,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 /// return true if the file is or got loaded.
 bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 {
-	if (isVerbatim(params))
+	if (isVerbatim(params) || isListings(params))
 		return false;
 
 	FileName const included_file = includedFilename(buffer, params);
@@ -478,6 +491,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			os << '\\' << from_ascii(params_.getCmdName())
 			   << '{' << from_utf8(incfile) <<  '}';
 		}
+	} else if (type(params_) == LISTINGS) {
+		os << '\\' << from_ascii(params_.getCmdName());
+		string opt = params_.getOptions();
+		// opt is set in QInclude dialog and should have passed validation.
+		InsetListingsParams params(opt);
+		if (!params.params().empty())
+			os << "[" << from_utf8(params.encodedString()) << "]";
+		os << '{'  << from_utf8(incfile) << '}';
 	} else {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
 						      exportfile);
@@ -498,7 +519,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
                             OutputParams const &) const
 {
-	if (isVerbatim(params_)) {
+	if (isVerbatim(params_) || isListings(params_)) {
 		os << '[' << getScreenLabel(buffer) << '\n';
 		// FIXME: We don't know the encoding of the file
 		docstring const str =
@@ -550,7 +571,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 	runparams.exportdata->addExternalFile("docbook-xml", writefile,
 					      exportfile);
 
-	if (isVerbatim(params_)) {
+	if (isVerbatim(params_) || isListings(params_)) {
 		os << "<inlinegraphic fileref=\""
 		   << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">";
@@ -575,7 +596,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	else
 		writefile = included_file;
 
-	if (!features.runparams().nice && !isVerbatim(params_)) {
+	if (!features.runparams().nice && !isVerbatim(params_) && !isListings(params_)) {
 		incfile = DocFileName(writefile).mangledFilename();
 		writefile = makeAbsPath(incfile,
 					buffer.getMasterBuffer()->temppath()).absFilename();
@@ -585,6 +606,8 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	if (isVerbatim(params_))
 		features.require("verbatim");
+	else if (isListings(params_))
+		features.require("listings");
 
 	// Here we must do the fun stuff...
 	// Load the file in the include if it needs

@@ -47,6 +47,7 @@ libqt4_la_SOURCES = \
 	QDialogView.cpp QDialogView.h \
 	QFloat.cpp QFloat.h \
 	QGraphics.cpp QGraphics.h \
+	QListings.cpp QListings.h \
 	QLImage.cpp QLImage.h \
 	QViewSource.cpp QViewSource.h \
 	QLPainter.cpp QLPainter.h \

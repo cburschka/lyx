@@ -67,6 +67,7 @@
 #include "insets/InsetERT.h"
 #include "insets/InsetExternal.h"
 #include "insets/InsetFloat.h"
+#include "insets/InsetListings.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetNote.h"
@@ -519,6 +520,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			case Inset::BOX_CODE:
 				enable = cmd.argument() == "box";
 				break;
+			case Inset::LISTINGS_CODE:
+				enable = cmd.argument() == "listings";
+				break;
 			default:
 				break;
 		}
@@ -558,7 +562,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = Exporter::isExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character")
-			enable = cur.inset().lyxCode() != Inset::ERT_CODE;
+			enable = cur.inset().lyxCode() != Inset::ERT_CODE &&
+				cur.inset().lyxCode() != Inset::LISTINGS_CODE;
 		else if (name == "latexlog")
 			enable = isFileReadable(FileName(buf->getLogName().second));
 		else if (name == "spellchecker")
@@ -573,7 +578,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		enable = cur.inset().lyxCode() != Inset::ERT_CODE;
+		enable = cur.inset().lyxCode() != Inset::ERT_CODE &&
+			cur.inset().lyxCode() != Inset::LISTINGS_CODE;
 		if (cur.inset().lyxCode() == Inset::CAPTION_CODE) {
 			FuncStatus flag;
 			if (cur.inset().getStatus(cur, cmd, flag))
@@ -1317,6 +1323,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} else if (name == "float") {
 				InsetFloatParams p;
 				data = InsetFloatMailer::params2string(p);
+			} else if (name == "listings") {
+				InsetListingsParams p;
+				data = InsetListingsMailer::params2string(p);
 			} else if (name == "graphics") {
 				InsetGraphicsParams p;
 				Buffer const & buffer = *lyx_view_->buffer();

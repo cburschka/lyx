@@ -27,6 +27,7 @@ UIFILES = \
 	IndexUi.ui \
 	LanguageUi.ui \
 	LaTeXUi.ui \
+	ListingsUi.ui \
 	LogUi.ui \
 	MarginsUi.ui \
 	MathMatrixUi.ui \
@@ -108,6 +109,7 @@ MOCFILES = \
 	QIndex.cpp QIndex.h \
 	QLog.cpp QLog.h \
 	QViewSource.cpp QViewSource.h \
+	QListings.cpp QListings.h \
 	QLMenubar.cpp QLMenubar.h \
 	QLPopupMenu.cpp QLPopupMenu.h \
 	QLPrintDialog.cpp QLPrintDialog.h \

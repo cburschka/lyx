@@ -86,6 +86,8 @@ docstring const ControlInclude::browse(docstring const & in_name, Type in_type) 
 		break;
 	case VERBATIM:
 		break;
+	case LISTINGS:
+		break;
 	}
 
 	pair<docstring, docstring> dir1(_("Documents|#o#O"),

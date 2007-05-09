@@ -1,0 +1,523 @@
+/**
+ * \file InsetListingsParams.cpp
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Bo Peng
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "Lexer.h"
+#include "InsetListingsParams.h"
+
+#include "gettext.h"
+#include "Length.h"
+
+#include <sstream>
+#include <boost/assert.hpp>
+
+#include "support/lstrings.h"
+#include "support/convert.h"
+
+using std::vector;
+using std::ostream;
+using std::string;
+using std::exception;
+using lyx::support::trim;
+
+namespace lyx
+{
+
+enum param_type {
+	ALL,
+	TRUEFALSE,
+	INTEGER,
+	LENGTH,
+	ONEOF,
+	SUBSETOF,
+};
+
+
+/** Information about each parameter
+ */
+struct listings_param_info {
+	/// name of the parameter
+	char const * name;
+	/// default value
+	char const * value;
+	// for option with value "true", "false", 
+	// if onoff is true,
+	//   "true":  option
+	//   "false": 
+	//   "other": option="other"
+	// onoff is false,
+	//   "true":  option=true
+	//   "false": option=false
+	bool onoff;
+	/// validator type
+	param_type type;
+	// ALL:
+	// TRUEFALSE:
+	// INTEGER:
+	// LENGTH:
+	//     info is ignored.
+	// ONEOF
+	//     info is a \n separated string with allowed values
+	// SUBSETOF
+	//     info is a string from which par is composed of
+	//     (e.g. floatplacement can be one or more of tbph)
+	char const * info;
+	//
+	char const * hint;
+};
+
+
+char const * allowed_languages = 
+	"no language\nBAP\nACSL\nAda\nALGOL\nC\nC++\nCaml\nClean\nCobol\n"
+	"Comal 80\ncsh\nDelphi\nEiffel\nElan\nEuphoria\nFortran\nHaskell\n"
+	"HTML\nIDL\nJava\nLisp\nLogo\nmake\nMathematica\nMatlab\nMercury\n"
+	"Miranda\nML\nModula-2\nOberon-2\nOCL\nPascal\nPerl\nPHP\nPL/I\nPOV\n"
+	"Python\nProlog\nR\nS\nSAS\nSHELXL\nSimula\ntcl\nSQL\nTeX\nVBScript\n"
+	"VHDL\nXML";
+
+char const * style_hint = "Use \\footnotessize, \\small, \\itshape, \\ttfamily or something like that";
+char const * frame_hint = "none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL";
+char const * frameround_hint = "The foru letters (t or f) attached to top right, bottom right, bottom left and top left corner.";
+char const * color_hint = "Enter something like \\color{white}";
+
+/// options copied from page 26 of listings manual
+// FIXME: add default parameters ... (which is not used now)
+listings_param_info const listings_param_table[] = {
+	{ "float", "false", true,  SUBSETOF, "tbph", "" },
+	{ "floatplacement", "tbp", false, SUBSETOF, "tbph", "" },
+	{ "aboveskip", "\\medskipamount", false, LENGTH, "", "" },
+	{ "belowskip", "\\medskipamount", false, LENGTH, "", "" },
+	{ "lineskip", "", false, LENGTH, "", "" },
+	{ "boxpos", "", false, SUBSETOF, "bct", "" },
+	{ "print", "", false, TRUEFALSE, "", "" },
+	{ "firstline", "", false, INTEGER, "", "" },
+	{ "lastline", "", false, INTEGER, "", "" },
+	{ "showlines", "", false, TRUEFALSE, "", "" },
+	{ "emptylines", "", false, ALL, "", "Expect a number with an optional * before it" },
+	{ "gobble", "", false, INTEGER, "", "" },
+	{ "style", "", false, ALL, "", "" },
+	{ "language", "", false, ONEOF, allowed_languages, "" },
+	{ "alsolanguage", "", false, ONEOF, allowed_languages, "" },
+	{ "defaultdialect", "", false, ONEOF, allowed_languages, "" },
+	{ "printpod", "", false, TRUEFALSE, "", "" },
+	{ "usekeywordsintag", "", false, TRUEFALSE, "", "" },
+	{ "tagstyle", "", false, ALL, "", style_hint },
+	{ "markfirstintag", "", false, ALL, "", style_hint },
+	{ "makemacrouse", "", false, TRUEFALSE, "", "" },
+	{ "basicstyle", "", false, ALL, "", style_hint },
+	{ "identifierstyle", "", false, ALL, "", style_hint },
+	{ "commentstyle", "", false, ALL, "", style_hint },
+	{ "stringstyle", "", false, ALL, "", style_hint },
+	{ "keywordstyle", "", false, ALL, "", style_hint },
+	{ "ndkeywordstyle", "", false, ALL, "", style_hint },
+	{ "classoffset", "", false, INTEGER, "", "" },
+	{ "texcsstyle", "", false, ALL, "", style_hint },
+	{ "directivestyle", "", false, ALL, "", style_hint },
+	{ "emph", "", false, ALL, "", "" },
+	{ "moreemph", "", false, ALL, "", "" },
+	{ "deleteemph", "", false, ALL, "", "" },
+	{ "emphstyle", "", false, ALL, "", "" },
+	{ "delim", "", false, ALL, "", "" },
+	{ "moredelim", "", false, ALL, "", "" },
+	{ "deletedelim", "", false, ALL, "", "" },
+	{ "extendedchars", "", false, TRUEFALSE, "", "" },
+	{ "inputencoding", "", false, ALL, "", "" },
+	{ "upquote", "", false, TRUEFALSE, "", "" },
+	{ "tabsize", "", false, INTEGER, "", "" },
+	{ "showtabs", "", false, ALL, "", "" },
+	{ "tab", "", false, ALL, "", "" },
+	{ "showspaces", "", false, TRUEFALSE, "", "" },
+	{ "showstringspaces", "", false, TRUEFALSE, "", "" },
+	{ "formfeed", "", false, ALL, "", "" },
+	{ "numbers", "", false, ONEOF, "none\nleft\nright", "" },
+	{ "stepnumber", "", false, INTEGER, "", "" },
+	{ "numberfirstline", "", false, TRUEFALSE, "", "" },
+	{ "numberstyle", "", false, ALL, "", style_hint },
+	{ "numbersep", "", false, LENGTH, "", "" },
+	{ "numberblanklines", "", false, ALL, "", "" },
+	{ "firstnumber", "", false, ALL, "", "auto, last or a number" },
+	{ "name", "", false, ALL, "", "" },
+	{ "thelstnumber", "", false, ALL, "", "" },
+	{ "title", "", false, ALL, "", "" },
+	{ "caption", "", false, ALL, "", "" },
+	{ "label", "", false, ALL, "", "" },
+	{ "nolol", "", false, TRUEFALSE, "", "" },
+	{ "captionpos", "", false, SUBSETOF, "tb", "" },
+	{ "abovecaptionskip", "", false, LENGTH, "", "" },
+	{ "belowcaptionskip", "", false, LENGTH, "", "" },
+	{ "linewidth", "", false, LENGTH, "", "" },
+	{ "xleftmargin", "", false, LENGTH, "", "" },
+	{ "xrightmargin", "", false, LENGTH, "", "" },
+	{ "resetmargin", "", false, TRUEFALSE, "", "" },
+	{ "breaklines", "", false, TRUEFALSE, "", "" },
+	{ "prebreak", "", false, ALL, "", "" },
+	{ "postbreak", "", false, ALL, "", "" },
+	{ "breakindent", "", false, LENGTH, "", "" },
+	{ "breakautoindent", "", false, TRUEFALSE, "", "" },
+	{ "frame", "", false, ALL, "", frame_hint },
+	{ "frameround", "", false, SUBSETOF, "tf", frameround_hint },
+	{ "framesep", "", false, LENGTH, "", "" },
+	{ "rulesep", "", false, LENGTH, "", "" },
+	{ "framerule", "", false, LENGTH, "", "" },
+	{ "framexleftmargin", "", false, LENGTH, "", "" },
+	{ "framexrightmargin", "", false, LENGTH, "", "" },
+	{ "framextopmargin", "", false, LENGTH, "", "" },
+	{ "framexbottommargin", "", false, LENGTH, "", "" },
+	{ "backgroundcolor", "", false, ALL, "", color_hint },
+	{ "rulecolor", "", false, ALL, "", color_hint },
+	{ "fillcolor", "", false, ALL, "", color_hint },
+	{ "rulesepcolor", "", false, ALL, "", color_hint },
+	{ "frameshape", "", false, ALL, "", "" },
+	{ "index", "", false, ALL, "", "" },
+	{ "moreindex", "", false, ALL, "", "" },
+	{ "deleteindex", "", false, ALL, "", "" },
+	{ "indexstyle", "", false, ALL, "", "" },
+	{ "columns", "", false, ALL, "", "" },
+	{ "flexiblecolumns", "", false, ALL, "", "" },
+	{ "keepspaces", "", false, TRUEFALSE, "", "" },
+	{ "basewidth", "", false, LENGTH, "", "" },
+	{ "fontadjust", "", true, TRUEFALSE, "", "" },
+	{ "texcl", "", false, TRUEFALSE, "", "" },
+	{ "mathescape", "", false, TRUEFALSE, "", "" },
+	{ "escapechar", "", false, ALL, "", "" },
+	{ "escapeinside", "", false, ALL, "", "" },
+	{ "escepeinside", "", false, ALL, "", "" },
+	{ "escepebegin", "", false, ALL, "", "" },
+	{ "escepeend", "", false, ALL, "", "" },
+	{ "fancyvrb", "", false, TRUEFALSE, "", "" },
+	{ "fvcmdparams", "", false, ALL, "", "" },
+	{ "morefvcmdparams", "", false, ALL, "", "" },
+	{ "keywordsprefix", "", false, ALL, "", "" },
+	{ "keywords", "", false, ALL, "", "" },
+	{ "morekeywords", "", false, ALL, "", "" },
+	{ "deletekeywords", "", false, ALL, "", "" },
+	{ "ndkeywords", "", false, ALL, "", "" },
+	{ "morendkeywords", "", false, ALL, "", "" },
+	{ "deletendkeywords", "", false, ALL, "", "" },
+	{ "texcs", "", false, ALL, "", "" },
+	{ "moretexcs", "", false, ALL, "", "" },
+	{ "deletetexcs", "", false, ALL, "", "" },
+	{ "directives", "", false, ALL, "", "" },
+	{ "moredirectives", "", false, ALL, "", "" },
+	{ "deletedirectives", "", false, ALL, "", "" },
+	{ "sensitive", "", false, ALL, "", "" },
+	{ "alsoletter", "", false, ALL, "", "" },
+	{ "alsodigit", "", false, ALL, "", "" },
+	{ "alsoother", "", false, ALL, "", "" },
+	{ "otherkeywords", "", false, ALL, "", "" },
+	{ "tag", "", false, ALL, "", "" },
+	{ "string", "", false, ALL, "", "" },
+	{ "morestring", "", false, ALL, "", "" },
+	{ "deletestring", "", false, ALL, "", "" },
+	{ "comment", "", false, ALL, "", "" },
+	{ "morecomment", "", false, ALL, "", "" },
+	{ "deletecomment", "", false, ALL, "", "" },
+	{ "keywordcomment", "", false, ALL, "", "" },
+	{ "morekeywordcomment", "", false, ALL, "", "" },
+	{ "deletekeywordcomment", "", false, ALL, "", "" },
+	{ "keywordcommentsemicolon", "", false, ALL, "", "" },
+	{ "podcomment", "", false, ALL, "", "" },
+	{ "", "", false, ALL, "", ""}
+};
+
+
+class parValidator
+{
+public:
+	parValidator(string const & name);
+
+	/// validate given parameter
+	/// invalidParam will be thrown if invalid 
+	/// parameter is found.
+	void validate(std::string const & par) const;
+
+private:
+	/// parameter name
+	string const & name;
+	///
+	listings_param_info const * info;
+};
+
+
+parValidator::parValidator(string const & n)
+	: name(n), info(0)
+{
+	if (name.empty())
+		throw invalidParam("Invalid (empty) listings param name.");
+	else if (name == "?") {
+		string pars;
+		size_t idx = 0;
+		while (listings_param_table[idx].name != string()) {
+			if (!pars.empty())
+				pars += ", ";
+			pars += listings_param_table[idx].name;
+			++idx;
+		}
+		throw invalidParam("Available listings parameters are " + pars);
+	}
+	// locate name in parameter table
+	size_t idx = 0;
+	while (listings_param_table[idx].name != name && listings_param_table[idx].name != string())
+		++idx;
+	// found the name
+	if (listings_param_table[idx].name != "") {
+		info = &listings_param_table[idx];
+		return;
+	}
+	// otherwise, produce a meaningful error message.
+	string matching_names;
+	for (size_t i = 0; i < idx; ++i) {
+		string n(listings_param_table[i].name);
+		if (n.size() >= name.size() && n.substr(0, name.size()) == name) {
+			if (matching_names.empty())
+				matching_names += n;
+			else
+				matching_names += ", " + n;
+		}
+	}
+	if (matching_names.empty())
+		throw invalidParam("Unknown listings param name: " + name);
+	else
+		throw invalidParam("Parameters starting with '" + name + 
+			"': " + matching_names);
+}
+
+
+void parValidator::validate(std::string const & par) const
+{
+	switch (info->type) {
+	case ALL:
+		if (par.empty() && !info->onoff) {
+			if (info->hint != "")
+				throw invalidParam(info->hint);
+			else
+				throw invalidParam("An value is expected");
+		}
+		return;
+	case TRUEFALSE: {
+		if (par.empty() && !info->onoff) {
+			if (info->hint != "")
+				throw invalidParam(info->hint);
+			else
+				throw invalidParam("Please specify true or false");
+		}
+		if (par != "true" && par != "false")
+			throw invalidParam("Only true or false is allowed for parameter" + name);
+		return;
+	}
+	case INTEGER: {
+		if (par.empty() && !info->onoff) {
+			if (info->hint != "")
+				throw invalidParam(info->hint);
+			else
+				throw invalidParam("Please specify an integer value");
+		}
+		if (convert<int>(par) == 0 && par[0] != '0')
+			throw invalidParam("An integer is expected for parameter " + name);
+		return;
+	}
+	case LENGTH: {
+		if (par.empty() && !info->onoff) {
+			if (info->hint != "")
+				throw invalidParam(info->hint);
+			else
+				throw invalidParam("Please specify a latex length expression");
+		}
+		if (!isValidLength(par))
+			throw invalidParam("Invalid latex length expression for parameter " + name);
+		return;
+	}
+	case ONEOF: {
+		if (par.empty() && !info->onoff) {
+			if (info->hint != "")
+				throw invalidParam(info->hint);
+			else
+				throw invalidParam("Please specify one of " + string(info->info));
+		}
+		// break value to allowed strings
+		vector<string> lists;
+		string v;
+		for (size_t i = 0; info->info[i] != '\0'; ++i) {
+			if (info->info[i] == '\n') {
+				lists.push_back(v);
+				v = string();
+			} else
+				v += info->info[i];
+		}
+		if (!v.empty())
+			lists.push_back(v);
+
+		// good, find the string
+		if (std::find(lists.begin(), lists.end(), par) != lists.end())
+			return;
+		// otherwise, produce a meaningful error message.
+		string matching_names;
+		for (vector<string>::iterator it = lists.begin(); 
+			it != lists.end(); ++it) {
+			if (it->size() >= par.size() && it->substr(0, par.size()) == par) {
+				if (matching_names.empty())
+					matching_names += *it;
+				else
+					matching_names += ", " + *it;
+			}
+		}
+		if (matching_names.empty())
+			throw invalidParam("Try one of " + string(info->info));
+		else
+			throw invalidParam("I guess you mean " + matching_names);
+		return;
+	}
+	case SUBSETOF: {
+		if (par.empty() && !info->onoff) {
+			if (info->hint != "")
+				throw invalidParam(info->hint);
+			else
+				throw invalidParam("Please specify one or more of " + string(info->info));
+		}
+		for (size_t i = 0; i < par.size(); ++i)
+			if (string(info->info).find(par[i], 0) == string::npos)
+				throw invalidParam("Parameter " + name + 
+					" should be composed of one or more of " + info->info);
+		return;
+	}
+	}
+}
+
+
+InsetListingsParams::InsetListingsParams() :
+	inline_(false), status_(InsetCollapsable::Open), params_()
+{
+}
+
+
+InsetListingsParams::InsetListingsParams(string const & par, bool in, InsetCollapsable::CollapseStatus s)
+	: inline_(in), status_(s)
+{
+	// this will activate parameter validation.
+	fromEncodedString(par);
+}
+
+
+void InsetListingsParams::write(ostream & os) const
+{
+	if (inline_)
+		os << "true ";
+	else
+		os << "false ";
+	os << status_ << " \""	<< encodedString() << "\"";
+}
+
+
+void InsetListingsParams::read(Lexer & lex)
+{
+	lex >> inline_;
+	int s;
+	lex >> s;
+	if (lex)
+		status_ = static_cast<InsetCollapsable::CollapseStatus>(s);
+	string par;
+	lex >> par;
+	fromEncodedString(par);
+}
+
+
+void InsetListingsParams::addParam(string const & key, string const & value)
+{	
+	if (key.empty())
+		return;
+	// exception may be thown.
+	parValidator(key.c_str()).validate(value);
+	if (!params_.empty())
+		params_ += ',';
+	if (value.empty())
+		params_ += key;
+	else {
+		// check onoff flag
+		size_t idx = 0;
+		while (listings_param_table[idx].name != key)
+			++idx;
+		BOOST_ASSERT(listings_param_table[idx].name == key);
+		if (listings_param_table[idx].onoff && value == "false")
+			params_ += key;
+		else
+			params_ += key + '=' + value;
+	}
+}
+
+
+void InsetListingsParams::setParams(string const & par)
+{
+	string key;
+	string value;
+	bool isValue = false;
+	params_.clear();
+	for (size_t i = 0; i < par.size(); ++i) {
+		// end of par
+		if (par[i] == '\n' || par[i] == ',') {
+			addParam(trim(key), trim(value));
+			key = string();
+			value = string();
+			isValue = false;
+		} else if (par[i] == '=')
+			isValue = true;
+		else if (isValue)
+			value += par[i];
+		else
+			key += par[i];
+	}
+	if (!trim(key).empty())
+		addParam(trim(key), trim(value));
+}
+
+
+string InsetListingsParams::encodedString() const
+{
+	// Encode string!
+	// FIXME:
+	// '"' should be handled differently because it will 
+	// terminate a lyx token. Right now, it is silently ignored. 
+	string par;
+	for (size_t i = 0; i < params_.size(); ++i) {
+		BOOST_ASSERT(params_[i] != '\n');
+		if (params_[i] != '"')
+			par += params_[i];
+	}
+	return par;
+}
+
+
+string InsetListingsParams::separatedParams(bool keepComma) const
+{
+	// , might be used as regular parameter option so 
+	// the prcess might be more complicated than what I am doing here
+	string opt;
+	for (size_t i = 0; i < params_.size(); ++i)
+		if (params_[i] == ',') {
+			if (keepComma)
+				opt += ",\n";
+			else
+				opt += "\n";
+		} else
+			opt += params_[i];
+	return opt;
+}
+
+
+void InsetListingsParams::fromEncodedString(string const & in)
+{
+	// Decode string! 
+	// Do nothing because " was silently ignored.
+	setParams(in);
+}
+
+
+
+} // namespace lyx

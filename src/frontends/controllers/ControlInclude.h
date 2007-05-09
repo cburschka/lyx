@@ -34,7 +34,9 @@ public:
 		///
 		VERBATIM,
 		///
-		INCLUDE
+		INCLUDE,
+		///
+		LISTINGS,
 	};
 	///
 	ControlInclude(Dialog &);

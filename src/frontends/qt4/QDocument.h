@@ -68,6 +68,7 @@ public:
 public Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
+	void validate_listings_params();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 

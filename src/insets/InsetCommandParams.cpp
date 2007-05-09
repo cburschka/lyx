@@ -113,6 +113,13 @@ InsetCommandParams::findInfo(std::string const & name)
 		return &info;
 	}
 
+	if (name == "lstinputlisting") {
+		static const char * const paramnames[] = {"filename", "lstparams", ""};
+		static const bool isoptional[] = {false, true};
+		static const CommandInfo info = {2, paramnames, isoptional};
+		return &info;
+	}
+
 	// InsetIndex, InsetPrintIndex, InsetLabel
 	if (name == "index" || name == "printindex" || name == "label") {
 		static const char * const paramnames[] = {"name", ""};

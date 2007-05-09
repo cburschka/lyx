@@ -1198,6 +1198,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BRANCH_INSERT:
 	case LFUN_BIBITEM_INSERT:
 	case LFUN_ERT_INSERT:
+	case LFUN_LISTING_INSERT:
 	case LFUN_FOOTNOTE_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_OPTIONAL_INSERT:
@@ -1695,10 +1696,15 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = Inset::VSPACE_CODE;
 		else if (cmd.argument() == "wrap")
 			code = Inset::WRAP_CODE;
+		else if (cmd.argument() == "listings")
+			code = Inset::LISTINGS_CODE;
 		break;
 
 	case LFUN_ERT_INSERT:
 		code = Inset::ERT_CODE;
+		break;
+	case LFUN_LISTING_INSERT:
+	    code = Inset::LISTINGS_CODE;
 		break;
 	case LFUN_FOOTNOTE_INSERT:
 		code = Inset::FOOT_CODE;

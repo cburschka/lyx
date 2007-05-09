@@ -37,6 +37,7 @@
 #include "VSpace.h"
 
 #include "frontends/alert.h"
+#include "insets/InsetListingsParams.h"
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/convert.h"
@@ -351,6 +352,7 @@ BufferParams::BufferParams()
 	graphicsDriver = "default";
 	sides = TextClass::OneSide;
 	columns = 1;
+	listings_params = string();
 	pagestyle = "default";
 	compressed = false;
 	for (int iter = 0; iter < 4; ++iter) {
@@ -603,6 +605,17 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		lex >> fontsize;
 	} else if (token == "\\papercolumns") {
 		lex >> columns;
+	} else if (token == "\\listings_params") {
+		string par;
+		lex >> par;
+		// validate par and produce a valid listings parameter string
+		try {
+			listings_params = InsetListingsParams(par).params();
+		} catch (invalidParam & e) {
+			lyxerr << "Invalid parameter string " << par << endl;
+			lyxerr << e.what() << endl;
+			listings_params = string();
+		}
 	} else if (token == "\\papersides") {
 		int psides;
 		lex >> psides;
@@ -734,6 +747,9 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\papercolumns " << columns
 	   << "\n\\papersides " << sides
 	   << "\n\\paperpagestyle " << pagestyle << '\n';
+	if (!listings_params.empty())
+		os << "\\listings_params \"" << 
+			InsetListingsParams(listings_params).encodedString() << "\"\n";
 	for (int i = 0; i < 4; ++i) {
 		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
 			if (user_defined_bullet(i).getFont() != -1) {
@@ -946,6 +962,20 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
+	if (!listings_params.empty()) {
+		os << "\\usepackage{listings}\n";
+		texrow.newline();
+		os << "\\lstset{";
+		// do not test validity because listings_params is supposed to be valid
+		string par = InsetListingsParams(listings_params).separatedParams(true);
+		os << from_ascii(par);
+		// count the number of newlines
+		for (size_t i = 0; i < par.size(); ++i)
+			if (par[i] == '\n')
+				texrow.newline();
+		os << "}\n";
+		texrow.newline();
+	}
 	if (use_geometry || nonstandard_papersize) {
 		os << "\\usepackage{geometry}\n";
 		texrow.newline();

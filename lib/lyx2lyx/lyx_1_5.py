@@ -1347,6 +1347,140 @@ def revert_CJK(document):
             document.header[i] = "\\language english"
 
 
+def revert_preamble_listings_params(document):
+    " Revert preamble option \listings_params "
+    i = find_token(document.header, "\\listings_params", 0)
+    if i != -1:
+        document.preamble.append('\\usepackage{listings}')
+        document.preamble.append('\\lstset{%s}' % document.header[i].split()[1].strip('"'))
+        document.header.pop(i);
+
+
+def revert_listings_inset(document):
+    r''' Revert listings inset to \lstinline or \begin, \end lstlisting, translate 
+FROM
+
+\begin_inset 
+lstparams "language=Delphi"
+inline true
+status open
+
+\begin_layout Standard
+var i = 10;
+\end_layout
+
+\end_inset
+
+TO
+
+\begin_inset ERT
+status open
+\begin_layout Standard
+
+
+\backslash
+lstinline[language=Delphi]{var i = 10;}
+\end_layout
+
+\end_inset
+'''
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset listings', i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # this should not happen
+            break
+        inline = 'false'
+        params = ''
+        status = 'open'
+        inlinecode = ''
+        # first three lines
+        for line in range(i + 1, i + 4):
+            if document.body[line].startswith('inline'):
+                inline = document.body[line].split()[1]
+            if document.body[line].startswith('lstparams'):
+                params = document.body[line].split()[1].strip('"')
+            if document.body[line].startswith('status'):
+                status = document.body[line].split()[1].strip()
+                k = line + 1
+        # looking for the oneline code for lstinline
+        for line in range(i + 2, j + 1):
+            if document.body[line].startswith(r'\begin_layout'):
+                inlinecode = document.body[line+1]
+                break
+        if inline == 'true':
+            document.body[i:(j+1)] = [r'\begin_inset ERT'
+                                      'status %s' % status,
+                                      r'\begin_layout Standard',
+                                      '', 
+                                      '',
+                                      r'\backslash',
+                                      'lstinline[%s]{%s}' % (params, inlinecode),
+                                      r'\end_layout',
+                                      '',
+                                      r'\end_inset']
+        else:
+            document.body[i: k] = [r'\begin_inset ERT',
+                                      'status %s' % status,
+                                      '',
+                                      r'\begin_layout Standard',
+                                      '',
+                                      '',
+                                      r'\backslash',
+                                      r'lstlisting[%s]{' % params,
+                                      r'\end_layout'
+                                    ]
+            
+
+def revert_include_listings(document):
+    r''' Revert lstinputlisting Include option , translate
+\begin_inset Include \lstinputlisting{file}[opt]
+preview false
+
+\end_inset
+
+TO
+
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+lstinputlisting{file}[opt]
+\end_layout
+
+\end_inset
+    '''
+
+    i = 0
+    while True:
+        i = find_token(document.body, r'\begin_inset Include \lstinputlisting', i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # this should not happen
+            break
+        # find command line
+        cmd = document.body[i].split()[2]
+        document.body[i : j + 1] = [r'\begin_inset ERT',
+                                    'status open',
+                                    '',
+                                    r'\begin_layout Standard',
+                                    '',
+                                    '',
+                                    r'\backslash',
+                                    '%s' % cmd[1:],
+                                    r'\end_layout',
+                                    '',
+                                    r'\end_inset']
+
+
 ##
 # Conversion hub
 #
@@ -1374,9 +1508,12 @@ convert = [[246, []],
            [265, [convert_tableborder]],
            [266, []],
            [267, []],
-           [268, []]]
+           [268, []],
+           [269, []]]
 
-revert =  [[267, [revert_CJK]],
+revert =  [
+           [268, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
+           [267, [revert_CJK]],
            [266, [revert_utf8plain]],
            [265, [revert_armenian]],
            [264, [revert_tableborder]],

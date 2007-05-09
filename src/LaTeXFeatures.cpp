@@ -568,6 +568,9 @@ string const LaTeXFeatures::getPackages() const
 	                    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
 		            "\\makenomenclature\n";
 	}
+
+	if (mustProvide("listings"))
+		packages << "\\usepackage{listings}\n";
  
 	return packages.str();
 }

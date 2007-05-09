@@ -38,9 +38,9 @@ public:
 	docstring const getCommand() const;
 	/// Return the command name
 	std::string const & getCmdName() const { return name_; }
-private:
-	/// FIXME remove
+	/// this is used by listings package.
 	std::string const getOptions() const;
+private:
 	/// FIXME remove
 	std::string const getSecOptions() const;
 public:
@@ -50,9 +50,9 @@ public:
 	/// are cleared except those that exist also in the new command.
 	/// What matters here is the parameter name, not position.
 	void setCmdName(std::string const & n);
-private:
-	/// FIXME remove
+	/// this is used by the listings package
 	void setOptions(std::string const &);
+private:
 	/// FIXME remove
 	void setSecOptions(std::string const &);
 public:

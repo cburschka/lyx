@@ -77,6 +77,10 @@ libinsets_la_SOURCES = \
 	InsetLabel.h \
 	InsetLine.cpp \
 	InsetLine.h \
+	InsetListings.h \
+	InsetListings.cpp \
+	InsetListingsParams.h \
+	InsetListingsParams.cpp \
 	InsetMarginal.h \
 	InsetMarginal.cpp \
 	InsetNewline.cpp \

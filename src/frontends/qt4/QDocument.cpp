@@ -36,6 +36,7 @@
 #include "TextClassList.h"
 #include "Spacing.h"
 
+#include "insets/InsetListingsParams.h"
 #include "controllers/ControlDocument.h"
 
 #include "support/lstrings.h"
@@ -143,6 +144,11 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(enableSkip(bool)));
 	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
+		this, SLOT(validate_listings_params()));
+	textLayoutModule->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
@@ -540,6 +546,26 @@ void QDocumentDialog::change_adaptor()
 }
 
 
+void QDocumentDialog::validate_listings_params()
+{
+	static bool isOK = true;
+	try {
+		InsetListingsParams par(fromqstr(textLayoutModule->listingsED->toPlainText()));
+		if (!isOK) {
+			isOK = true;
+			// listingsTB->setTextColor("black");
+			textLayoutModule->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+			okPB->setEnabled(true);
+		}
+	} catch (invalidParam & e) {
+		isOK = false;
+		// listingsTB->setTextColor("red");
+		textLayoutModule->listingsTB->setPlainText(e.what());
+		okPB->setEnabled(false);
+	}
+}
+
+
 void QDocumentDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -864,6 +890,9 @@ void QDocumentDialog::apply(BufferParams & params)
 	else
 		params.columns = 1;
 
+	// text should have passed validation
+	params.listings_params = InsetListingsParams(fromqstr(textLayoutModule->listingsED->toPlainText())).params();
+
 	if (textLayoutModule->indentRB->isChecked())
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
 	else
@@ -1168,6 +1197,10 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 
 	textLayoutModule->twoColumnCB->setChecked(
 		params.columns == 2);
+	
+	// break listings_params to multiple lines
+	string lstparams = InsetListingsParams(params.listings_params).separatedParams();
+	textLayoutModule->listingsED->setText(toqstr(lstparams));
 
 	if (!params.options.empty()) {
 		latexModule->optionsLE->setText(

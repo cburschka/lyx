@@ -30,6 +30,7 @@
 #include "insets/InsetCharStyle.h"
 #include "insets/InsetEnvironment.h"
 #include "insets/InsetERT.h"
+#include "insets/InsetListings.h"
 #include "insets/InsetExternal.h"
 #include "insets/InsetFloat.h"
 #include "insets/InsetFloatList.h"
@@ -135,6 +136,9 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		case LFUN_ERT_INSERT:
 			return new InsetERT(params);
+
+		case LFUN_LISTING_INSERT:
+			return new InsetListings(params);
 
 		case LFUN_FOOTNOTE_INSERT:
 			return new InsetFoot(params);
@@ -260,6 +264,11 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				InsetCollapsable::CollapseStatus st;
 				InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
 				return new InsetERT(params, st);
+			
+			} else if (name == "listings") {
+				InsetListingsParams par;
+				InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
+				return new InsetListings(params, par);
 
 			} else if (name == "external") {
 				Buffer const & buffer = *bv->buffer();
@@ -486,6 +495,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetEnvironment(buf.params(), lex.getString()));
 		} else if (tmptok == "ERT") {
 			inset.reset(new InsetERT(buf.params()));
+		} else if (tmptok == "listings") {
+			inset.reset(new InsetListings(buf.params()));
 		} else if (tmptok == "InsetSpace") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
