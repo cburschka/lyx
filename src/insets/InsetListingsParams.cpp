@@ -156,7 +156,7 @@ listings_param_info const listings_param_table[] = {
 	{ "linewidth", "", false, LENGTH, "", "" },
 	{ "xleftmargin", "", false, LENGTH, "", "" },
 	{ "xrightmargin", "", false, LENGTH, "", "" },
-	{ "resetmargin", "", false, TRUEFALSE, "", "" },
+	{ "resetmargins", "", false, TRUEFALSE, "", "" },
 	{ "breaklines", "", false, TRUEFALSE, "", "" },
 	{ "prebreak", "", false, ALL, "", "" },
 	{ "postbreak", "", false, ALL, "", "" },
