@@ -23,6 +23,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\armenian-article.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"

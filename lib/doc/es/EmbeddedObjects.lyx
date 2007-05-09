@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 267
+\lyxformat 268
 \begin_document
 \begin_header
 \textclass scrbook
@@ -204,6 +204,7 @@
 \tracking_changes false
 \output_changes false
 \author "usti" 
+\author "IG,,," 
 \author "IG" 
 \author "Uwe Stöhr" 
 \end_header
@@ -4567,7 +4568,7 @@ name "Tablas Largas ! Notas al pie"
 
 \begin_layout Standard
 Se pueden insertar notas al pie en cada celda de una tabla larga.
- Aparecen abajo en la página donde esté la celda con la nota.
+ Salen abajo en la página donde esté la celda con la nota.
  La tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -4611,7 +4612,7 @@ Marca la primera fila y deshabilita su línea superior.
 \end_layout
 
 \begin_layout Enumerate
-Inserta un encabezado mediante el menú 
+Inserta un encabezado con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Encabezado
@@ -5017,15 +5018,15 @@ status open
 \series bold
 Nota
 \series default
-: El número de la tabla es incrementado para cada tabla larga, aunque no
- pongas encabezado en alguna de ellas.
+: El número de la tabla se incrementa para cada tabla larga, aunque no pongas
+ encabezado en alguna de ellas.
  Por esto podría suceder que, p.\InsetSpace \thinspace{}
 e., la tabla\InsetSpace ~
 2.4 siga a la tabla\InsetSpace ~
 2.1 en la lista
  de tablas debido a que hay dos tablas largas sin encabezado.
- Para evitarlo, puedes añadir el siguiente comando en ERT detrás de cada
- tabla larga sin encabezado:
+ Para evitarlo, añade detrás de cada tabla larga sin encabezado este comando
+ en ERT:
 \end_layout
 
 \begin_layout Standard
@@ -5050,7 +5051,7 @@ status open
 \series bold
 Nota:
 \series default
- Si utilizas el paquete de LaTeX 
+ Si utilizas el paquete LaTeX 
 \series bold
 hyperref
 \series default
@@ -5060,8 +5061,8 @@ name "LaTeX-paquetes ! hyperref"
 
 \end_inset
 
- para enlazar referencias cruzadas en la salida, el enlace a una tabla larga
- te llevará siempre al principio del documento.
+ para enlazar referencias cruzadas en la salida, los enlaces a tablas largas
+ llevan siempre al principio del documento.
 \end_layout
 
 \end_inset
@@ -6209,18 +6210,15 @@ LTcapwidth}{4in}
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Standard
 
 \series bold
-Nota:
-\lang english
- 
+Nota: 
 \series default
-When the LaTeX-package 
+Si se usa el paquete LaTeX 
 \series bold
-\lang spanish
 caption
 \series default
 
@@ -6229,39 +6227,32 @@ name "LaTeX-paquetes ! caption"
 
 \end_inset
 
-
-\lang english
- is used, as in this document, the full page width is used for the caption
- when you use the default value of 4\InsetSpace \thinspace{}
-in for 
+, como en este documento, se usa la anchura de toda la página para el pie
+ si utilizas el valor por defecto de 4\InsetSpace \thinspace{}
+in para 
 \series bold
-\lang spanish
 
 \backslash
 LTcapwidth
 \series default
-\lang english
 .
- To get in this case exactly a 4\InsetSpace \thinspace{}
-in wide caption, you can either use a value
- slightly different from 4.0\InsetSpace \thinspace{}
-in, e.g.
+ En este caso, para conseguir exactamente un pie de 4\InsetSpace \thinspace{}
+in, puedes poner un
+ valor ligeramente diferente de 4.0\InsetSpace \thinspace{}
+in, p.\InsetSpace \thinspace{}
+e.
  3.99\InsetSpace \thinspace{}
-in, or the LaTeX-command 
+in, o el comando de LaTeX 
 \series bold
-\lang spanish
 
 \backslash
-captionsetup{width=value}
+captionsetup{width=valor}
 \series default
-\lang english
- that is provided by the 
+, suministrado por el paquete 
 \series bold
-\lang spanish
 caption
 \series default
-\lang english
--package.
+.
 \end_layout
 
 \end_inset
@@ -10942,7 +10933,7 @@ Al introducir un argumento LaTeX, todas las propiedades de celda puestas
  en el diálogo se ignoran.
  
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -17534,7 +17525,7 @@ reference "sec:Referencias-a-Flotantes"
 
 \end_inset
 
- .
+.
 \end_layout
 
 \begin_layout Standard
@@ -17599,7 +17590,7 @@ reference "sec:Colocación-de-Encabezados"
 
 \end_inset
 
- -- un cuadro gris con etiqueta en rojo.
+ ---un cuadro gris con etiqueta en rojo---.
 \end_layout
 
 \begin_layout Standard
@@ -18144,11 +18135,9 @@ Los flotantes adosados no están permitidos en cabeceras de sección o tablas.
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Float Numbering
+Numeración de flotantes
 \begin_inset LatexCommand label
-name "sec:Float-Numbering"
+name "sec:Numeración-de-flotantes"
 
 \end_inset
 
@@ -18162,40 +18151,34 @@ name "Flotantes ! Numeración"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Floats are usually numbered either independent from the sections the floats
- are in, or in the scheme 
+En general, los flotantes se numeran independientemente de las secciones
+ en las que se encuentran o según el esquema 
 \begin_inset Quotes eld
 \end_inset
 
-chapter.number
+capítulo.número
 \begin_inset Quotes erd
 \end_inset
 
- or 
+ o 
 \begin_inset Quotes eld
 \end_inset
 
-section.number
+sección.número
 \begin_inset Quotes erd
 \end_inset
 
-.
- This depends on the used document class.
+, dependiendo de la clase de documento utilizada.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To change the section independent numbering, you can use this command in
- the document preamble:
+Para cambiar la numeración independiente de la sección, puedes usar el siguiente
+ comando en el preámbulo del documento:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 renewcommand{
@@ -18208,90 +18191,78 @@ roman{table}}
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-thetable
+thetable 
 \series default
- is the command that prints the table number, for figure floats, the command
- would be 
+es el comando que imprime el número de la tabla, para figuras flotantes
+ el comando sería 
 \series bold
 
 \backslash
 thefigure
 \series default
 .
- The command 
+ El comando 
 \series bold
 
 \backslash
 roman
 \series default
- prints in the command above the table number as small roman number.
+ imprime el número de tabla en números romanos en minúscula.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To change the numbering scheme for example to 
+Para cambiar el esquema de numeración, por ejemplo a 
 \begin_inset Quotes eld
 \end_inset
 
-subsection.number
+subsección.número
 \begin_inset Quotes erd
 \end_inset
 
-, use this command in the preamble:
+, usa este comando en el preámbulo:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 numberwithin{table}{subsection}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To be able to use the command 
+Para poder usar el comando 
 \series bold
 
 \backslash
 numberwithin
 \series default
-, set in the tab 
+, debes marcar la opción 
 \family sans
-Math\InsetSpace ~
-Options
+Usar\InsetSpace ~
+el\InsetSpace ~
+paquete\InsetSpace ~
+AMS 
 \family default
- in the document settings the option 
+en el apartado 
 \family sans
-Use\InsetSpace ~
-AMS\InsetSpace ~
-math\InsetSpace ~
-package
+Ecuaciones 
 \family default
-.
+de las preferencias del documento.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Please also have a look at section\InsetSpace ~
-
-\lang spanish
+Puedes ver más detalles y notas importantes sobre comandos de numeración
+ en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Numeración-de-Notas-al-Pie"
 
 \end_inset
 
-
-\lang english
- for the details and important notes about the numbering commands.
+.
 \end_layout
 
 \begin_layout Section
@@ -22294,7 +22265,7 @@ roman{footnote}}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -22504,7 +22475,7 @@ Esto es otro ejemplo de nota al pie:
 \series bold
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Nota al pie numerada en el esquema 
@@ -22545,17 +22516,12 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
-\series default
- 
-\series bold
-
+Nota: 
 \backslash
-numberwithin
+numberwithin 
 \series default
- always prints out the footnote number as arabic number; previous redefinitions
- to get non-arabic numbers are overwritten.
+siempre imprime el número de nota al pie en números arábigos; las redefiniciones
+ previas para obtener números no arábigos se sobreescriben.
 \end_layout
 
 \end_inset
@@ -22564,19 +22530,17 @@ numberwithin
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-So to get for example the scheme 
+Así, para obtener por ejemplo el esquema 
 \begin_inset Quotes eld
 \end_inset
 
-chapter.
+capítulo.
 \backslash
 Roman{footnote}
 \begin_inset Quotes erd
 \end_inset
 
-, use this command instead of 
+, usa este comando en vez de 
 \series bold
 
 \backslash
@@ -22588,7 +22552,6 @@ numberwithin
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 renewcommand{
@@ -23049,7 +23012,7 @@ reference "sec:Notas-al-pie"
 \end_inset
 
 Las notas al pie también pueden colocarse al margen de la página y la alineación
- del texto del pie también puede cambiarse, ver el paquete LaTeX 
+ del texto del pie también puede cambiarse, véase el paquete LaTeX 
 \series bold
 footmisc
 \series default
@@ -23059,7 +23022,7 @@ name "LaTeX-paquetes ! footmisc"
 
 \end_inset
 
-, 
+ 
 \begin_inset LatexCommand cite
 key "footmisc"
 
@@ -23224,7 +23187,7 @@ normalmarginpar
 
 \end_inset
 
-Para volver a la ubicación predeterminada inserta el comando
+Para volver a la ubicación predeterminada inserta en ERT el comando
 \end_layout
 
 \begin_layout Standard
@@ -23236,9 +23199,6 @@ normalmarginpar
 \end_layout
 
 \begin_layout Standard
-en ERT.
-\newline
- 
 \begin_inset Note Greyedout
 status open
 
@@ -23347,8 +23307,8 @@ status open
 \series bold
 Nota:
 \series default
- Normalmente no pueden utilizarse notas al margen en tablas, flotantes,
- y notas al pie.
+ Normalmente no pueden utilizarse notas al margen en tablas, flotantes y
+ notas al pie.
 \end_layout
 
 \end_inset
@@ -23451,7 +23411,7 @@ marginnote
 \end_layout
 
 \begin_layout Standard
-donde offset es una longitud en una de las unidades listadas en la tabla\InsetSpace ~
+donde offset es una longitud en una de las unidades de la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:Unidades"
@@ -23482,7 +23442,7 @@ cm arriba
 
 
 \begin_inset Marginal
-status open
+status collapsed
 
 \begin_layout Standard
 Esta nota está 1.5\InsetSpace \thinspace{}
@@ -29375,9 +29335,11 @@ status collapsed
 
 \end_inset
 
- en alemán del paquete LaTeX 
+ del paquete LaTeX 
 \series bold
-caption
+caption 
+\series default
+(en alemán)
 \end_layout
 
 \begin_layout Bibliography
@@ -29676,7 +29638,7 @@ status collapsed
 
 \end_inset
 
- en alemán del paquete LaTeX 
+ del paquete LaTeX 
 \series bold
 koma-script
 \series default
@@ -29686,7 +29648,7 @@ name "LaTeX-paquetes ! koma-script"
 
 \end_inset
 
-
+ (en alemán)
 \end_layout
 
 \begin_layout Bibliography
