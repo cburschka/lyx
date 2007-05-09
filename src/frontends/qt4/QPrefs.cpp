@@ -578,7 +578,7 @@ void PrefColors::change_color()
 	QString color = newcolors_[row];
 	QColor c(QColorDialog::getColor(QColor(color), qApp->focusWidget()));
 
-	if (c.name() != color) {
+	if (c.isValid() && c.name() != color) {
 		newcolors_[row] = c.name();
 		QPixmap coloritem(32, 32);
 		coloritem.fill(c);
