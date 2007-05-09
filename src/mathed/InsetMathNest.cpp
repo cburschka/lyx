@@ -492,6 +492,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
+		if (cur.isRTL() )
+			goto goto_char_backwards;
+
+goto_char_forwards:
 		if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 			cur.pushLeft(*cur.nextAtom().nucleus());
 			cur.inset().idxFirst(cur);
@@ -511,6 +515,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
+		if (cur.isRTL())
+			goto goto_char_forwards;
+
+goto_char_backwards:
 		if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
 			cur.posLeft();
 			cur.push(*cur.nextAtom().nucleus());
