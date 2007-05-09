@@ -545,6 +545,8 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 
 	connect(colorChangePB, SIGNAL(clicked()),
 		this, SLOT(change_color()));
+	connect(lyxObjectsLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(change_lyxObjects_selection()));
 	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
 		this, SLOT(change_color()));
 }
@@ -570,12 +572,17 @@ void PrefColors::apply(LyXRC & /*rc*/) const
 // problem here.
 void PrefColors::update(LyXRC const & /*rc*/)
 {
+	change_lyxObjects_selection();
 }
 
 void PrefColors::change_color()
 {
 	int const row = lyxObjectsLW->currentRow();
-	QString color = newcolors_[row];
+
+	// just to be sure
+	if (row < 0) return;
+
+	QString const color = newcolors_[row];
 	QColor c(QColorDialog::getColor(QColor(color), qApp->focusWidget()));
 
 	if (c.isValid() && c.name() != color) {
@@ -586,6 +593,11 @@ void PrefColors::change_color()
 		// emit signal
 		changed();
 	}
+}
+
+void PrefColors::change_lyxObjects_selection()
+{
+	colorChangePB->setDisabled(lyxObjectsLW->currentRow() < 0);
 }
 
 

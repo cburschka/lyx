@@ -156,6 +156,7 @@ public:
 
 private Q_SLOTS:
 	void change_color();
+	void change_lyxObjects_selection();
 
 private:
 	std::vector<Color_color> lcolors_;
