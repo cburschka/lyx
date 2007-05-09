@@ -35,6 +35,7 @@ using std::string;
 
 void InsetListings::init()
 {
+	setButtonLabel();
 	// FIXME: define Color::listing?
 	Font font(Font::ALL_SANE);
 	font.decSize();
