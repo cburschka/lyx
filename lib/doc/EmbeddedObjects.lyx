@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 267
+\lyxformat 268
 \begin_document
 \begin_header
 \textclass scrbook
@@ -17462,41 +17462,14 @@ reference "sec:Referencing-Floats"
 To insert a float, use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Floats
+Float
 \family default
 .
- This inserts a box with a label in the 
+ This inserts the 
 \family sans
 Caption
 \family default
- environment
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-The 
-\family sans
-Caption
-\family default
- environment is described in LyX's 
-\emph on
-Userguide
-\emph default
-.
-\end_layout
-
-\end_inset
-
- into your document.
- Every label ends with the character 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
- as placeholder for the float number in the output.
+ inset, a box with a label.
  The label will automatically be translated to the document language in
  the output.
  Behind the label you can insert the caption text.

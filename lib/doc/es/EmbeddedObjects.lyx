@@ -17537,38 +17537,9 @@ Flotante
 .
  En el documento se inserta un cuadro con etiqueta en el entorno 
 \family sans
-Encabezado
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-El entorno 
-\family sans
-Encabezado
-\family default
- se describe en 
-\emph on
-Guía\InsetSpace ~
-del\InsetSpace ~
-Usuario
-\emph default
- de LyX.
-\end_layout
-
-\end_inset
-
-.
+Encabezado.
 
 \family default
- Cada etiqueta acaba con el carácter 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
- como receptáculo para el número de flotante en la salida.
  La etiqueta será traducida automáticamente al lenguaje del documento.
  Tras la etiqueta se puede insertar el texto de encabezado.
  La imagen o tabla se inserta encima o debajo del encabezado en un párrafo
