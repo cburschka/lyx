@@ -49,6 +49,26 @@ Building with GCC/Windows (Win2k only works with MSYS, XP?):
 - call: export QMAKESPEC=win32-g++ (MSYS) or set QMAKESPEC=win32-g++ (CMD)
 - call in the build directory 'cmake ..\trunk\development\cmake'
 
+Building with Xcode/Mac:
+- create a build directory, e.g. .../trunk/../build
+- call in the build directory 'cmake .../trunk/development/cmake -G Xcode'
+- open .../trunk/../build/lyx-qt4.xcodeproj
+
+TIPS: - Xcode prefers UTF8 when opening source files, though LyX usually uses
+        Latin1. To fix that select all source files in Xcode and click "Get Info"
+        in the context menu. Change the encoding to Latin1.
+      - You can run and debug LyX from Xcode. For that select the lyx-qt4 executable
+        in Xcode, click on "Get Info" in the context menu and add 
+        "-sysdir a_valid_LyX_resource_directory" pointing e.g. to a valid 
+        Contents/Resources of a LyX.app directory.
+      - LyX on Mac doesn't look for fonts in the resource directory if the
+        executable is not in an .app bundle. Instead you have to create a
+        symbolic link to the fonts directory in the place where the executable
+        is: ln -s .../trunk/lib/fonts .../trunk/../build/bin/Debug/
+        If you don't do that math character will not show up correctly.
+      - CMake properly finds the Qt4 library bundles from Trolltech's binary
+        Qt4 package for Mac. So no need to compile Qt on your own.
+
 
 To generate other build files call 'cmake'
 which shows a list of possibilities.
