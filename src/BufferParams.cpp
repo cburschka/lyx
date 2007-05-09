@@ -1409,16 +1409,16 @@ string const BufferParams::dvips_options() const
 string const BufferParams::babelCall(string const & lang_opts) const
 {
 	string lang_pack = lyxrc.language_package;
-    if (lang_pack == "\\usepackage{babel}") {
+	if (lang_pack == "\\usepackage{babel}") {
 		// suppress the babel call when there is no babel language defined
-	    // for the document language in the lib/languages file and if no
+		// for the document language in the lib/languages file and if no
 		// other languages are used
 		if (language->babel().empty() && lang_opts.empty())
-				lang_pack.clear();
-	    if (!lyxrc.language_global_options && !lang_opts.empty())
-	        lang_pack = string("\\usepackage[") + lang_opts + "]{babel}";
-	    if (lyxrc.language_global_options)
-	        return lang_pack;
+			lang_pack.clear();
+		if (!lyxrc.language_global_options && !lang_opts.empty())
+			lang_pack = string("\\usepackage[") + lang_opts + "]{babel}";
+		if (lyxrc.language_global_options)
+			return lang_pack;
 	}
 	return lang_pack;
 }
