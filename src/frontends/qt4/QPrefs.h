@@ -163,7 +163,7 @@ private:
 	// FIXME the use of mutable here is required due to the
 	// fact that initialization is not done in the controller
 	// but in the constructor.
-	mutable std::vector<QString> curcolors_;
+	std::vector<QString> curcolors_;
 	std::vector<QString> newcolors_;
 
 };

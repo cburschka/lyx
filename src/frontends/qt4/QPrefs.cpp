@@ -517,6 +517,7 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 	// FIXME: all of this initialization should be put into the controller.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg113301.html
 	// for some discussion of why that is not trivial.
+	QPixmap icon(32, 32);
 	for (int i = 0; i < Color::ignore; ++i) {
 		Color::color lc = static_cast<Color::color>(i);
 		if (lc == Color::none
@@ -532,15 +533,12 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 			|| lc == Color::ignore) continue;
 
 		lcolors_.push_back(lc);
-		QColor color = QColor(guiApp->colorCache().get(lc));
-		curcolors_.push_back(color.name());
-		QPixmap coloritem(32, 32);
-		coloritem.fill(color);
 		// This is not a memory leak:
-		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(coloritem),
+		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(icon),
 			toqstr(lcolor.getGUIName(lc)), lyxObjectsLW);
 	}
-	newcolors_ = curcolors_;
+	curcolors_.resize(lcolors_.size());
+	newcolors_.resize(lcolors_.size());
 	// End initialization
 
 	connect(colorChangePB, SIGNAL(clicked()),
@@ -555,23 +553,22 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 void PrefColors::apply(LyXRC & /*rc*/) const
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
-		if (curcolors_[i]!=newcolors_[i])
+		if (curcolors_[i] != newcolors_[i]) {
 			form_->controller().setColor(lcolors_[i], fromqstr(newcolors_[i]));
+		}
 	}
-	// HACK The following line is needed because the values are not 
-	// re-initialized in ControlPrefs::initialiseParams but are only 
-	// initialized in the constructor. But the constructor is only called 
-	// once, when the dialog if first created, and is not called again when 
-	// Tools > Preferences is selected a second time: It's just called up 
-	// from memory. [See QDialogView::show(): if (!form) { build(); }.]
-	curcolors_ = newcolors_;
 }
 
 
-// FIXME The fact that this method is empty is also a symptom of the
-// problem here.
 void PrefColors::update(LyXRC const & /*rc*/)
 {
+	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
+		QColor color = QColor(guiApp->colorCache().get(lcolors_[i]));
+		QPixmap coloritem(32, 32);
+		coloritem.fill(color);
+		lyxObjectsLW->item(i)->setIcon(QIcon(coloritem));
+		newcolors_[i] = curcolors_[i] = color.name();
+	}
 	change_lyxObjects_selection();
 }
 
