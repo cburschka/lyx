@@ -1296,18 +1296,12 @@ def revert_tableborder(document):
 
 
 def revert_armenian(document):
-    # Set document language from armenian to english an 
-    if document.language == "armenian":
-        document.language = "english"
-        i = find_token(document.header, "\\language", 0)
-        if i != -1:
-            document.header[i] = "\\language english"
+    
     # set inputencoding from armscii8 to auto 
     if document.inputencoding == "armscii8":
         i = find_token(document.header, "\\inputencoding", 0)
         if i != -1:
             document.header[i] = "\\inputencoding auto"
-    # add the entry \usepackage{armtex} to the document preamble
     # check if preamble exists, if not k is set to -1 
     i = 0
     k = -1
@@ -1317,12 +1311,20 @@ def revert_armenian(document):
         if k == -1:
             k = document.preamble[i].find("%", 0, len(document.preamble[i]))
         i = i + 1
-    # set the armtex entry as the first preamble line
-    if k != -1:
-        document.preamble[0:0] = ["\\usepackage{armtex}"]
-    # create the preamble when it doesn't exist
-    else:
-        document.preamble.append('\\usepackage{armtex}')
+    # add the entry \usepackage{armtex} to the document preamble
+    if document.language == "armenian":
+        # set the armtex entry as the first preamble line
+        if k != -1:
+            document.preamble[0:0] = ["\\usepackage{armtex}"]
+        # create the preamble when it doesn't exist
+        else:
+            document.preamble.append('\\usepackage{armtex}')
+    # Set document language from armenian to english 
+    if document.language == "armenian":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
 
 
 def revert_CJK(document):
