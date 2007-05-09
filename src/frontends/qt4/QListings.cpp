@@ -88,10 +88,10 @@ void QListingsDialog::validate_listings_params()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlListings, QView<QListingsDialog> > wrap_base_class;
+typedef QController<ControlListings, QView<QListingsDialog> > listings_wrap_base_class;
 
 QListings::QListings(Dialog & parent)
-	: wrap_base_class(parent, _("Program Listings Settings"))
+	: listings_wrap_base_class(parent, _("Program Listings Settings"))
 {
 }
 
