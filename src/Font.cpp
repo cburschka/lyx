@@ -780,8 +780,9 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		}
 	}
 
-	if (number() == ON && prev.number() != ON &&
-	    language()->lang() == "hebrew") {
+	// When the current language is Hebrew, Arabic, or Farsi
+	// the numbers are written Left-to-Right.
+	if (number() == ON && prev.number() != ON && isRightToLeft()) {
 		os << "{\\beginL ";
 		count += 9;
 	}
@@ -908,8 +909,9 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		}
 	}
 
-	if (number() == ON && next.number() != ON &&
-	    language()->lang() == "hebrew") {
+	// When the current language is Hebrew, Arabic, or Farsi
+	// the numbers are written Left-to-Right.
+	if (number() == ON && next.number() != ON && isRightToLeft()) {
 		os << "\\endL}";
 		count += 6;
 	}
