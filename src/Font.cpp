@@ -674,7 +674,7 @@ Font & Font::lyxRead(Lexer & lex)
 			} else if (ttok == "noun") {
 				setNoun(ON);
 			} else {
-				lex.printError("Illegal misc type `$$Token´");
+				lex.printError("Illegal misc type `$$Token'");
 			}
 		} else if (tok == "color") {
 			lex.next();

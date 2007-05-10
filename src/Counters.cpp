@@ -231,9 +231,9 @@ char alphaCounter(int const n)
 char hebrewCounter(int const n)
 {
 	static const char hebrew[22] = {
-		'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è',
-		'é', 'ë', 'ì', 'î', 'ð', 'ñ', 'ò', 'ô', 'ö',
-		'÷', 'ø', 'ù', 'ú'
+		'\xe0', '\xe1', '\xe2', '\xe3', '\xe4', '\xe5', '\xe6', '\xe7', '\xe8',
+		'\xe9', '\xeb', '\xec', '\xee', '\xf0', '\xf1', '\xf2', '\xf4', '\xf6',
+		'\xf7', '\xf8', '\xf9', '\xfa'
 	};
 
 	if (n < 1 || n > 22)

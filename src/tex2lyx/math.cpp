@@ -207,17 +207,17 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (t.cs() == "\"") {
 			string const name = p.verbatim_item();
-			     if (name == "a") os << 'ä';
-			else if (name == "o") os << 'ö';
-			else if (name == "u") os << 'ü';
-			else if (name == "A") os << 'Ä';
-			else if (name == "O") os << 'Ö';
-			else if (name == "U") os << 'Ü';
+			     if (name == "a") os << '\xe4';
+			else if (name == "o") os << '\xf6';
+			else if (name == "u") os << '\xfc';
+			else if (name == "A") os << '\xc4';
+			else if (name == "O") os << '\xd6';
+			else if (name == "U") os << '\xdc';
 			else os << "\"{" << name << "}";
 		}
 
 		else if (t.cs() == "ss")
-			os << "ß";
+			os << "\xdf";
 
 		else if (t.cs() == "cr") {
 			// lyx can't handle \\cr

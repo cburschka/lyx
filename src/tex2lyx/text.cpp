@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS.
@@ -1647,7 +1647,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			string const s = p.verbatim_item();
-			if (s == "±" || s == "³" || s == "²" || s == "µ")
+			if (s == "\xb1" || s == "\xb3" || s == "\xb2" || s == "\xb5")
 				os << s;
 			else
 				handle_ert(os, "\\ensuremath{" + s + "}",
@@ -2081,12 +2081,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "\"") {
 			context.check_layout(os);
 			string const name = p.verbatim_item();
-			     if (name == "a") os << 'ä';
-			else if (name == "o") os << 'ö';
-			else if (name == "u") os << 'ü';
-			else if (name == "A") os << 'Ä';
-			else if (name == "O") os << 'Ö';
-			else if (name == "U") os << 'Ü';
+			     if (name == "a") os << '\xe4';
+			else if (name == "o") os << '\xf6';
+			else if (name == "u") os << '\xfc';
+			else if (name == "A") os << '\xc4';
+			else if (name == "O") os << '\xd6';
+			else if (name == "U") os << '\xdc';
 			else handle_ert(os, "\"{" + name + "}", context);
 		}
 
@@ -2104,7 +2104,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// subset of LaTeX, so don't parse anything here,
 			// but use the raw argument.
 			// Otherwise we would convert \~{\i} wrongly.
-			// This will of course not translate \~{\ss} to \~{ß},
+			// This will of course not translate \~{\ss} to \~{ÃŸ},
 			// but that does at least compile and does only look
 			// strange on screen.
 			context.check_layout(os);
@@ -2115,7 +2115,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "ss") {
 			context.check_layout(os);
-			os << "ß";
+			os << "\xdf";
 			skip_braces(p); // eat {}
 		}
 
