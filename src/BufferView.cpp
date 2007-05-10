@@ -583,9 +583,12 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 		ParIterator par = buffer_->getParFromID(top_id);
 		if (par != buffer_->par_iterator_end()) {
 			DocIterator dit = makeDocIterator(par, min(par->size(), top_pos));
-			// Some slices of the iterator may not be reachable (e.g. closed collapsable inset)
-			// so the dociterator may need to be shortened. Otherwise, setCursor may
-			// crash lyx when the cursor can not be set to these insets.
+			// Some slices of the iterator may not be
+			// reachable (e.g. closed collapsable inset)
+			// so the dociterator may need to be
+			// shortened. Otherwise, setCursor may crash
+			// lyx when the cursor can not be set to these
+			// insets.
 			size_t const n = dit.depth();
 			for (size_t i = 0; i < n; ++i)
 				if (dit[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
@@ -604,14 +607,12 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 	// it will be restored to the left of the outmost inset that contains
 	// the bookmark.
 	if (static_cast<size_t>(bottom_pit) < buffer_->paragraphs().size()) {
-		ParIterator it = buffer_->par_iterator_begin();
-		ParIterator const end = buffer_->par_iterator_end();
-		for (; it != end; ++it)
-			if (it.pit() == bottom_pit) {
-				// restored pos may be bigger than it->size
-				setCursor(makeDocIterator(it, min(bottom_pos, it->size())));
-				return boost::make_tuple(bottom_pit, bottom_pos, it->id());
-			}
+		DocIterator it = doc_iterator_begin(buffer_->inset());
+		it.pit() = bottom_pit;
+		it.pos() = min(bottom_pos, it.paragraph().size());
+		setCursor(it);
+		return boost::make_tuple(it.pit(), it.pos(), 
+					 it.paragraph().id());
 	}
 	// both methods fail
 	return boost::make_tuple(pit_type(0), pos_type(0), 0);
