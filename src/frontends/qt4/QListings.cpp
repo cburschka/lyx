@@ -121,7 +121,7 @@ void QListings::apply()
 void QListings::update_contents()
 {
 	InsetListingsParams & params = controller().params();
-	dialog_->listingsED->setText(toqstr(params.separatedParams()));
+	dialog_->listingsED->setPlainText(toqstr(params.separatedParams()));
 	
 	if (params.isInline())
 		dialog_->inlineCB->setChecked(true);

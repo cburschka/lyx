@@ -1200,7 +1200,7 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 	
 	// break listings_params to multiple lines
 	string lstparams = InsetListingsParams(params.listings_params).separatedParams();
-	textLayoutModule->listingsED->setText(toqstr(lstparams));
+	textLayoutModule->listingsED->setPlainText(toqstr(lstparams));
 
 	if (!params.options.empty()) {
 		latexModule->optionsLE->setText(

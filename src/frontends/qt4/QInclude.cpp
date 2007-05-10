@@ -235,7 +235,7 @@ void QInclude::update_contents()
 		dialog_->listingsGB->setEnabled(true);
 		dialog_->listingsED->setEnabled(true);
 		InsetListingsParams par(params.getOptions());
-		dialog_->listingsED->setText(toqstr(par.separatedParams()));
+		dialog_->listingsED->setPlainText(toqstr(par.separatedParams()));
 	}	
 }
 
