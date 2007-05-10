@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 265
+\lyxformat 269
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12,22 +12,22 @@
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
 
-% if pdflatex is used
+% wenn pdflatex benutzt wird:
 \usepackage{ifpdf}
 \ifpdf
 
-% set fonts for nicer pdf view
+% Fonts fuer huebschere PDF-Ansichten
 \IfFileExists{lmodern.sty}
  {\usepackage{lmodern}} % if it exists
- {% if it exists not
+ {% wenn nicht vorhanden
   \usepackage[scaled=0.92]{helvet}
   \usepackage{mathptmx}
   \usepackage{courier}
- } % end if it exists not
+ } % Ende des Nein-Zweiges
 
-% link all cross references and URLs
-% in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=0,
+% Alle Querverweise und URLs als Link darstellen
+% In der PDF-Ausgabe
+\usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=0,
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
@@ -36,21 +36,20 @@
   pdfsubject={LyX-Dokumentation, Benutzerhandbuch},
   pdfkeywords={LyX}]{hyperref}
 
-\else % if dvi or ps is produced
+\else % In der DVI- oder PS-Ausgabe
 
- % link all cross references and URLs in DVI output
+% Alle Querverweise und URLs als Link in der DVI-Ansicht darstellen
  \usepackage[ps2pdf, colorlinks=true,
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
 
-\fi % end if pdflatex is used
+\fi % Ende von: wenn pdflatex benutzt wird
 
-% that links to image floats jumps
-% to the beginning of the float and 
-% not to its caption
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
 
-% the pages of the TOC are numbered roman
-% and a PDF-bookmark for the TOC is added
+% Die Seiten des Inhaltsverzeichnisses werden roemisch numeriert,
+% ein PDF-Lesezeichen fuer das Inhaltsverzeichnis wird hinzugefuegt
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
@@ -59,7 +58,7 @@
  \cleardoublepage
  \pagenumbering{arabic}}
 
-% provides caption formatting
+% Formatierung von Legenden
 \usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
@@ -142,11 +141,51 @@ Uwe Stöhr
 \end_inset
 
 
+\size default
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\noindent
+Wenn Sie Anmerkungen oder Korrekturvorschläge machen wollen, schreiben Sie
+ bitte an: 
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{mailto:lyx-docs@lists.lyx.org?subject=LyX's ExtendedInsets manual}{
+\end_layout
+
+\end_inset
+
+lyx-docs@lists.lyx.org
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
- April 2007
+letzte Änderung: 9.
+ Mai 2007
 \end_layout
 
 \begin_layout Standard
@@ -253,7 +292,7 @@ X?
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
@@ -476,7 +515,7 @@ name "WYSIWYG"
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -744,7 +783,7 @@ Befehle in den Menüs und Schalter in den Werkzeugleisten sind nur dann aktivier
  Ansonsten erscheinen sie in den Menüs grau-in-grau und in den Werkzeugleisten
  als graue Bildchen und können nicht angeklickt werden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -887,7 +926,7 @@ Speichern (Strg+S)
 
  
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -1020,7 +1059,7 @@ herstellen
  in den Originalzustand bringen, außerdem ist er hilfreich, wenn mehrere
  Personen an einem Text arbeiten.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie das vorhaben, sollten Sie sich die Unterstützung für Versionskontrolle
@@ -1687,7 +1726,7 @@ aller
 \emph default
  Tastaturfunktionen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -2112,7 +2151,8 @@ Compose\InsetSpace ~
 
 \end_deeper
 \begin_layout Standard
-Das ist die Theorie, aber Tabelle 
+Das ist die Theorie, aber Tabelle\InsetSpace \space{}
+
 \begin_inset LatexCommand vref
 reference "cap:Sonderzeichen"
 
@@ -2131,7 +2171,7 @@ XX
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -4587,7 +4627,7 @@ status collapsed
 
 X und anderen Programmen
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Ausschneiden und Kopieren
@@ -4720,7 +4760,7 @@ nicht
 , wie man LyX installiert oder einrichtet, sondern es beschreibt alles,
  was Sie benötigen, um alle Möglichkeiten von LyX ausnützen zu können.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Hier wollten wir hauptsächlich einige Informationen darüber festhalten,
@@ -4951,7 +4991,7 @@ Donald Knuth
 \noun default
  entwickelt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Eine Bemerkung zur Aussprache: TeX ist von griechischen Buchstaben abgeleitet,
@@ -5083,7 +5123,7 @@ einen PostScript®-Betrachter
 \family sans
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 LyX benutzt den
@@ -5122,7 +5162,7 @@ Betrachter:
 \begin_layout Standard
 Die Programme sind Betrachter für Dateien im DVI- und PostScript®
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 PostScript® ist ein eingetragenes Warenzeichen von Adobe Systems Incorporated.
@@ -5239,7 +5279,7 @@ Betrachter:
 Eine kurze Anmerkung zu den Betrachtern.
  Sie aktualisieren ihre Ausgabe automatisch, wenn die betrachtete Datei
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 das ist die 
@@ -5490,7 +5530,7 @@ Dokumentklasse
 Lesen Sie jetzt, welche Dokumentklassen Sie in LyX wählen können und wie
  man einige Eigenschaften feineinstellt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wir werden im folgenden die englischen Namen beibehalten, wie Sie sie in
@@ -5707,7 +5747,8 @@ Eigenschaften
 \end_layout
 
 \begin_layout Standard
-Jede Dokumentklasse hat Standardwerte, Tabelle 
+Jede Dokumentklasse hat Standardwerte, Tabelle\InsetSpace \space{}
+
 \begin_inset LatexCommand vref
 reference "table:Dokumentklassen"
 
@@ -5721,7 +5762,7 @@ reference "table:Dokumentklassen"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -5823,7 +5864,7 @@ höchste Abschnittsstufe
 \begin_inset Text
 
 \begin_layout Standard
-article (koma-script)
+article[ (koma-script)]
 \end_layout
 
 \end_inset
@@ -5933,7 +5974,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Standard
-book (koma-script)
+book[ (koma-script)]
 \end_layout
 
 \end_inset
@@ -5988,7 +6029,7 @@ Kapitel
 \begin_inset Text
 
 \begin_layout Standard
-letter (german/koma-script)
+letter[ (german/koma-script)]
 \end_layout
 
 \end_inset
@@ -6041,7 +6082,7 @@ keine
 \begin_inset Text
 
 \begin_layout Standard
-report (koma-script)
+report[ (koma-script)]
 \end_layout
 
 \end_inset
@@ -6490,7 +6531,7 @@ name "WYSIWYM"
 
 -Konzept.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 siehe 
@@ -6561,7 +6602,7 @@ name "Seiten-Stil"
  Dies ist eine weitere Liste mit fünf Optionen.
  Damit wird festgelegt, wie Überschriften und Seitenzahlen aussehen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 LaTeX macht diesen Teil.
@@ -6628,7 +6669,7 @@ end{sloppypar}
 
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
@@ -6656,7 +6697,7 @@ fancyhdr
 \family default
 -Paketes
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Zur Zeit unter /usr/share/texmf/doc/latex/fancyhdr/fancyhdr.dvi zu finden
@@ -6681,7 +6722,7 @@ name "Dokument!doppelseitig"
  benutzen.
  Wenn Sie einen Drucker mit Duplexdruck
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Das heißt beide Seiten eines Blattes werden bedruckt.
@@ -6896,7 +6937,7 @@ nicht
  ein.
  Nur die folgenden Absätze werden eingerückt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Die Unterschiede erkennt man am besten, wenn man sich die Dokumentation
@@ -6908,7 +6949,7 @@ Die Unterschiede erkennt man am besten, wenn man sich die Dokumentation
  Manch einer mag diese Konvention nicht, aber wenn Sie eingerückte Absätze
  benutzen wollen, müssen Sie damit leben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Man kann LaTeX nicht zwingen, 
@@ -6943,7 +6984,7 @@ Tatsächlich sind die vordefinierten vertikalen Abstände keine feste Zahl,
  um sicherzustellen, dass Bilder zusammen mit Text auf eine Seite passen,
  dass Abschnitte nicht am Fuß einer Seite beginnen usw.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Eigentlich macht LaTeX das, wenn LyX die Druckdatei erzeugen will.
@@ -7040,15 +7081,13 @@ gen
 Absatz\InsetSpace \space{}
 einrücken
 \family default
--Knopf drücken, um die Einrückart des aktuellen Absatzes zu ändern.
+-Knopf anklicken, um die Einrückart des aktuellen Absatzes zu ändern.
 \end_layout
 
 \begin_layout Standard
-Wenn Absätze standardmäßig eingerückt werden, wird der Knopf deaktiviert
- sein.
- Wenn Absätze nicht eingerückt werden, sondern durch zusätzlichen Leerraum
- getrennt werden, wird dieser Knopf völlig ignoriert (das heißt Sie können
- ihn auch nicht verwenden, um einen einzelnen Absatz einzurücken).
+Wenn Absätze standardmäßig nicht eingerückt werden, sondern durch zusätzlichen
+ Leerraum getrennt werden, wird dieser Knopf völlig ignoriert (das heißt
+ Sie können ihn auch nicht verwenden, um einen einzelnen Absatz einzurücken).
 \end_layout
 
 \begin_layout Standard
@@ -7540,7 +7579,7 @@ Alt+Eingabe
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Damit wird die Funktion 
@@ -9623,7 +9662,7 @@ rechts
 \family default
  geschaffen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Anmerkung von 
@@ -10336,7 +10375,7 @@ X-Code
  Sie setzt Text in einem Schreibmaschinenfont.
  Außerdem kann die Leertaste mehrfach hintereinander benutzt werden;
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 In der 
@@ -10609,7 +10648,7 @@ schine
  Mit einer Schreibmaschine ist Text bloß Tinte auf Papier.
  Bei einigen Textverarbeitungen ist das auch heute noch das Hauptproblem.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Nomen est omen!
@@ -10713,7 +10752,7 @@ Es gibt Umgebungen, die man in andere schachteln kann, aber in sie selber
 Hier ist eine Aufstellung der drei Schachteltypen und der zugehörigen Absatzumge
 bungen:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Seltsamerweise erlaubt LyX, 
@@ -11350,7 +11389,7 @@ Randnotiz
 en sind Gleitobjekte, ebenso Gleitobjekt-Abbildung, Gleitobjekt-Tabelle
  und Gleitobjekt-Algorithmus.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 In zweispaltigen Dokumenten können sich Gleitobjekte über zwei Spalten anstatt
@@ -11523,7 +11562,7 @@ Aufzählung
 LyX kann maximal sechsmal schachteln, ohne dass LaTeX meckert.
  Hier ist ein Beispiel, das zeigt, was wir meinen:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie dies in LyX lesen, erkennen Sie die Schachtelungen auch an den
@@ -11612,7 +11651,7 @@ A.
 
  erstellen wollten, würden wir Fehlermeldungen erhalten.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Noch einmal: LyX kümmert sich nicht um die Grenze, sondern LaTeX produziert
@@ -11648,7 +11687,7 @@ name "Schachtelungs!-beispiele"
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11909,7 +11948,7 @@ Standard
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12078,7 +12117,7 @@ name "Schachtelungs!-beispiele"
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Beispiel 3: Marken, Stufen \SpecialChar \ldots{}
@@ -13104,7 +13143,7 @@ Es gibt immer Situationen, in denen man Feineinstellungen vornehmen muss.
  Zum Beispiel schreiben ein wissenschaftliches Journal oder eine Firma vor,
  dass ein Font ohne Serifen in gewissen Situationen zu benutzen ist.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Bemerkung von 
@@ -15685,7 +15724,7 @@ name "Gleitobjekte"
 
 : Fußnoten, Randnotizen, Abbildungen und Tabellen
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Gleitobjekte
@@ -15859,6 +15898,7 @@ Randnotiz
 Rand
 \emph default
  in Ihrem Text.
+ 
 \begin_inset Marginal
 status open
 
@@ -15868,7 +15908,7 @@ Dies ist eine solche Randnotiz.
 
 \end_inset
 
- In diesem Feld können Sie den Text für die Randnotiz eingeben.
+In diesem Feld können Sie den Text für die Randnotiz eingeben.
  Wenn Sie auf die rote Rand-Marke klicken, wird die Randnotiz geschlossen.
  Sie können die Randnotiz zu jedem Zeitpunkt wieder öffnen, indem Sie erneut
  auf die Schaltfläche 
@@ -16056,7 +16096,7 @@ r auch, wenn Sie mit der linken Maustaste in die Abbildung klicken.
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -16736,7 +16776,7 @@ reference "sec:figures"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -16775,7 +16815,7 @@ M.C.
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -17130,8 +17170,7 @@ Tabelle
 öffnet sich darunter ein Fenster, in dem Sie die Größe mit dem Mauszeiger
  festlegen.
  In der so erstellten Tabelle ist jede Zelle umrandet.
- Die erste Zeile und die erste Spalte sind vom Rest durch eine doppelte
- Linie 
+ Die erste Zeile ist vom Rest durch eine doppelte Linie 
 \emph on
 abgetrennt
 \emph default
@@ -17143,7 +17182,7 @@ abgetrennt
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features islongtable="true">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
@@ -17719,19 +17758,21 @@ Letzte
 \family sans
 Fußzeile
 \family default
- sehen Sie 
+ finden Sie in Abschnitt\InsetSpace \space{}
+
 \begin_inset LatexCommand vpageref
 reference "enu:ErsteKopfzeile:-Die-aktuelle"
 
 \end_inset
 
-, oder am besten an einem Beispiel: 
+, oder Sie sehen sie sich an einem Beispiel an: 
 \family sans
 Datei\SpecialChar \menuseparator
 Öffnen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Beispiele\SpecialChar \menuseparator
-de_TableExamples.lyx
+de\SpecialChar \menuseparator
+TableExamples.lyx
 \family default
 .
 \end_layout
@@ -18078,7 +18119,7 @@ reference "table:Zellen-um-90°"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -19642,7 +19683,7 @@ reference "table:Mehrzeilige-Tabelle"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \noindent
@@ -19847,6 +19888,10 @@ Wie Sie sehen, wird in LyX der Text nicht (immer) mehrzeilig angezeigt,
  
 \end_layout
 
+\begin_layout Subsection
+Lange Tabellen
+\end_layout
+
 \begin_layout Standard
 Ein weiteres Problem in diesem Zusammenhang ist, dass Tabellen nicht automatisch
  so formatiert werden, dass sie auf die Seite passen.
@@ -20026,6 +20071,19 @@ de_TableExamples.lyx
 , um einen Eindruck zu bekommen, wie das funktioniert).
 \end_layout
 
+\begin_layout Standard
+Wenn Sie mit dem dem Seitenumbruch nicht zufrieden sind, können Sie mit
+ 
+\family sans
+Seitenumbruch\InsetSpace \space{}
+nach\InsetSpace \space{}
+der\InsetSpace \space{}
+aktuellen\InsetSpace \space{}
+Zeile
+\family default
+ einen erzwingen.
+\end_layout
+
 \end_deeper
 \begin_layout Enumerate
 Benutzen Sie das Feld 
@@ -20167,7 +20225,7 @@ reference "table:a table float"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -20228,7 +20286,7 @@ Eine gleitende Tabelle
 \begin_inset Text
 
 \begin_layout Standard
-Joe
+Martin
 \end_layout
 
 \end_inset
@@ -20237,7 +20295,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Standard
-Mary
+Lena
 \end_layout
 
 \end_inset
@@ -20246,7 +20304,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Standard
-Ted
+Alina
 \end_layout
 
 \end_inset
@@ -20366,7 +20424,7 @@ reference "table:a table float"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -20468,6 +20526,10 @@ status open
 \end_inset
 
 
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20479,7 +20541,7 @@ name "table:a table float with caption below"
 
 \end_inset
 
-Noch eine gleitende Tabelle, mit beschreibendem Text darunter.
+Noch eine gleitende Tabelle, mit dem Titel darunter
 \end_layout
 
 \end_inset
@@ -20544,7 +20606,7 @@ reference "table:captionless"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -21071,78 +21133,42 @@ B
 \end_layout
 
 \begin_layout Standard
-Sie können Mathed aber auch indirekt vom Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Mathe\SpecialChar \menuseparator
+Dann gibt es nocht die Mathe-Werkzeugleiste
+\begin_inset LatexCommand index
+name "Mathe-!Werkzeugleiste"
 
+\end_inset
+
+, die Sie über 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Werkzeugleisten\SpecialChar \menuseparator
+Mathe-Kontrollfächen
 \family default
+ ein- und ausschalten können.
+ Aktiv ist diese Werkzeugleiste aber nur, wenn Sie sich im 
+\family typewriter
+Mathe-Modus
+\family default
+ befinden.
+ Diese Werkzeugleiste hat die alte
+\family sans
  
-\family sans
-Mathe-Kon\SpecialChar \-
-troll\SpecialChar \-
-fläche
 \family default
- starten, aber nur mit einigen Schaltflächen (
-\begin_inset Graphics
-	filename ../../images/math/equation.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+Mathe-Kontrollfäche
+\begin_inset LatexCommand index
+name "Mathe-!Kontrollfäche"
 
 \end_inset
 
-
-\family sans
-, 
-\family default
-
-\begin_inset Graphics
-	filename ../../images/math/matrix.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- und 
-\begin_inset Graphics
-	filename ../../images/math/delim.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-).
- Das Menü 
-\family sans
-Mathe-Kon\SpecialChar \-
-troll\SpecialChar \-
-fläche
-\family default
- ist unglaublich nützlich, Sie sollten es deshalb geöffnet lassen.
- Wenn Sie irgendetwas aus dem Menü auswählen, wird Mathed gestartet.
+ ersetzt.
 \end_layout
 
 \begin_layout Description
-Hinweis: Einen Teil der Symbole aus dem Menü 
-\family sans
-Mathe-Kon\SpecialChar \-
-troll\SpecialChar \-
-fläche
-\family default
- sehen Sie am unteren Bildschirmrand, wenn der Cursor in einer Formel steht
- (das sind:
-\family sans
- 
-\family default
-Darstellungsmodus 
-\begin_inset Graphics
-	filename ../../images/math/equation.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-, Indizes 
+\paragraph_spacing onehalf
+Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
+ unteren Bildschirmrand, wenn der Cursor in einer Formel steht (das sind:
+ Indizes 
 \begin_inset Graphics
 	filename ../../images/math/sub.xpm
 	scale 70
@@ -21158,11 +21184,19 @@ Darstellungsmodus
 
 \end_inset
 
-, Wurzeln 
+, Quadraturzeln 
 \begin_inset Graphics
 	filename ../../images/math/sqrt.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 25bp
+
+\end_inset
+
+, Standardbrüche 
+\begin_inset Graphics
+	filename ../../images/math/frac.xpm
+	scale 70
+	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
 
@@ -21183,14 +21217,6 @@ Darstellungsmodus
 	filename ../../images/math/prod.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-, Brüche 
-\begin_inset Graphics
-	filename ../../images/math/frac.xpm
-	scale 70
-	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
 
@@ -21218,6 +21244,14 @@ Darstellungsmodus
 
 \end_inset
 
+, Trennzeichen 
+\begin_inset Graphics
+	filename ../../images/math/delim.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
 , Matrizen 
 \begin_inset Graphics
 	filename ../../images/math-matrix.xpm
@@ -21230,7 +21264,7 @@ Darstellungsmodus
 \begin_inset Graphics
 	filename ../../images/math/cases.xpm
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 8bp 20bp 20bp
 
 \end_inset
 
@@ -21246,7 +21280,7 @@ Darstellungsmodus
 
 
 \family default
-, Spalte löschen 
+, Spalte hinzufügen 
 \family sans
 
 \begin_inset Graphics
@@ -21268,7 +21302,11 @@ Darstellungsmodus
 
 \end_inset
 
-, Spalte löschen
+, 
+\family default
+Spalte löschen
+\family sans
+
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.xpm
 	scale 70
@@ -21279,6 +21317,23 @@ Darstellungsmodus
 
 \family default
 ).
+ Außerdem gibt es dort noch: Darstellungsmodus 
+\begin_inset Graphics
+	filename ../../images/math/equation.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+und allgemeine Wurzeln 
+\begin_inset Graphics
+	filename ../../images/math/root.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 25bp
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -21494,9 +21549,9 @@ reference "sub:Mathed-starten"
 
 \end_inset
 
- bereits erwähnt, finden Sie all diese Symbole im Menü 
+ bereits erwähnt, finden Sie all diese Symbole in der 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
 .
 \end_layout
@@ -21569,11 +21624,11 @@ name "Indizes"
 \end_layout
 
 \begin_layout Standard
-Sie können das Menü 
+Sie können die automatische 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
- benutzen, um Hoch- oder Tiefstellungen zu erzeugen (
+ am unteren Rand benutzen, um Hoch- oder Tiefstellungen zu erzeugen (
 \begin_inset Graphics
 	filename ../../images/math/super.xpm
 	scale 70
@@ -21673,11 +21728,11 @@ Einen Bruch kann man mit
 
 \end_inset
 
-aus dem 
+aus der 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
--Menü schreiben.
+ schreiben.
  Sie erhalten einen leeren Bruch mit zwei blauen Mathed-Kästchen  über und
  unter einem Bruchstrich.
   Der Cursor steht im Zähler.
@@ -21690,6 +21745,19 @@ Mathe-Kontrollfläche
 \end_inset
 
 -Taste wieder in den Zähler.
+ Mit der automatischen 
+\family sans
+Mathe-Werkzeugleiste
+\family default
+ am unteren Rand können Sie über 
+\begin_inset Graphics
+	filename ../../images/math/frac.xpm
+	scale 70
+	BoundingBox 0bp 6bp 12bp 22bp
+
+\end_inset
+
+ einen Standardbruch erzeugen.
  Jede mathematische Struktur kann in einen Bruch geschrieben werden, wie
  dieses Beispiel zeigt:
 \begin_inset Formula \[
@@ -21800,7 +21868,7 @@ Funktionen
 \family default
  im Menü 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  auswählt.
  Andere Spezialworte sind trigonometrische Funktionen (siehe Abschnitt 
@@ -21884,7 +21952,11 @@ verwenden
  ankreuzen, wenn Sie besondere Integralzeichen benötigen.
  Dieses Paket hat einen vollständigen Satz von Integralzeichen, die konsistent
  aussehen.
- Die meisten finden Sie auf der Mathe-Kontrollfläche.
+ Die meisten finden Sie in der 
+\family sans
+Mathe-Werkzeugleiste
+\family default
+.
  Dieses Dokument benutzt das 
 \family typewriter
 wasysym
@@ -21899,11 +21971,11 @@ esint
 \end_layout
 
 \begin_layout Subsection
-Das Menü 
+Die 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \begin_inset LatexCommand index
-name "Mathed!Kontrollfläche"
+name "Mathe-!Werkzeugleiste"
 
 \end_inset
 
@@ -21916,12 +21988,12 @@ name "sec:math-panel"
 
 \end_inset
 
-Das Menü 
+Die 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  besitzt eine sehr umfangreiche Liste an Symbolen, Funktionen und Strukturen.
- Wie bereits erwähnt können Sie es geöffnet lassen, wenn Sie mathematische
+ Wie bereits erwähnt können Sie sie anzeigen lassen, wenn Sie mathematische
  Formeln schreiben.
  Dadurch gelangen Sie leichter an die weniger trivialen Funktionen des 
 \family typewriter
@@ -21947,31 +22019,8 @@ Schaltknöpfe
 \end_layout
 
 \begin_layout Standard
-Die Symbole in der linken Spalte bedeuten:
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/sqrt.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 25bp
-
-\end_inset
-
- erzeugt Schablonen für Wurzeln wie 
-\begin_inset Formula $\sqrt{2}$
-\end_inset
-
-, 
-\begin_inset Formula $\sqrt[3]{45}$
-\end_inset
-
- oder 
-\begin_inset Formula $\sqrt[7]{a+b}$
-\end_inset
-
-, wobei Sie zwischen Quadrat-.
- Kubik- und Andere Wurzel wählen können.
+Wenn Sie auf einen Schaltknopf klicken, bekommen Sie eine Auswahl an Symbolen
+ angezeigt, von denen Sie eines durch Anklicken einfügen.
 \end_layout
 
 \begin_layout Enumerate
@@ -21991,12 +22040,31 @@ Die Symbole in der linken Spalte bedeuten:
 
 \begin_layout Enumerate
 \begin_inset Graphics
+	filename ../../images/math/sqrt.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 25bp
+
+\end_inset
+
+ erzeugt Schablonen für Wurzeln wie 
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+ oder 
+\begin_inset Formula $\sqrt[7]{a+b}$
+\end_inset
+
+, wobei Sie zwischen Quadrat- und Andere Wurzel wählen können.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
 	filename ../../images/math/style.xpm
 	scale 70
 
 \end_inset
 
- gibt eine Auswahl von Schriftgrößen.
+ gibt eine Auswahl von Schriftstilen.
  Dabei ist 
 \family typewriter
 
@@ -22022,7 +22090,7 @@ scriptstyle
 scriptscript\SpecialChar \-
 style
 \family default
- die Grundgröße für zweifache Umstellungen ( siehe auch 
+ die Grundgröße für zweifache Umstellungen (siehe auch 
 \begin_inset LatexCommand cite
 after "Abschnitt 5.5.2"
 key "latex-einführung"
@@ -22040,6 +22108,25 @@ reference "sub:Fontgrößen"
 
 \begin_layout Enumerate
 \begin_inset Graphics
+	filename ../../images/math/frac-square.xpm
+	scale 70
+	BoundingBox 0bp 6bp 12bp 22bp
+
+\end_inset
+
+\InsetSpace \space{}
+\InsetSpace \space{}
+erzeugt eine Schablone für Brüche wie 
+\begin_inset Formula $\frac{1}{2},\:{1\atop 2},\:\nicefrac{1}{2},\:\tfrac{1}{2},\:\dfrac{1}{2},\:{1 \choose 2}$
+\end_inset
+
+.
+ Auch hier gibt es eine Auswahl an Bruch-Typen, die mehr oder weniger selbsterkl
+ärend ist.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
 	filename ../../images/math/font.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -22050,140 +22137,170 @@ reference "sub:Fontgrößen"
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/frac.xpm
-	scale 70
-	BoundingBox 0bp 6bp 12bp 22bp
+Funktionen: siehe Abschnitt\InsetSpace \space{}
 
-\end_inset
+\begin_inset LatexCommand vref
+reference "sec:math-functions"
 
- erzeugt eine Schablone für Brüche wie 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-.
- Auch hier gibt es eine Auswahl an Bruch-Typen, die mehr oder weniger selbsterkl
-ärend ist.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/equation.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- erzeugt ein 
-\emph on
-abgesetztes
-\emph default
- leeres Kästchen für den 
-\family typewriter
-Mathe-Modus
-\family default
-, wenn der Cursor im normalen Textmodus ist.
- Im 
-\family typewriter
-Mathe-Modus
-\family default
- schaltet dieser Knopf zwischen 
-\emph on
-in
-\emph default
- 
-\emph on
-der
-\emph default
- 
-\emph on
-Zeile
-\emph default
- und 
-\emph on
-abgesetzt
-\emph default
- um.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/sub.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- erzeugt ein Kästchen für Indizes.
- Es ist dasselbe wie 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Formatierung\SpecialChar \menuseparator
-Tiefgestellt
-\family default
-.
- Nur der Schrifttyp ist anders.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/super.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- erzeugt ein Kästchen für Exponenten.
- Es ist dasselbe wie 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Forma\SpecialChar \-
-tie\SpecialChar \-
-rung\SpecialChar \menuseparator
-Hochgestellt
-\family default
-.
- Nur der Schrifttyp ist anders.
-\end_layout
-
-\begin_layout Enumerate
-Mit 
-\begin_inset Graphics
-	filename ../../images/math/matrix.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- definiert man die Größe einer Matrix und ihre Ausrichtung:
-\newline
- 
-\begin_inset Formula $\left[\begin{array}{clr}
-1 & 2 & 3\\
-45 & 67 & 89\end{array}\right]$
 \end_inset
 
 .
 \end_layout
 
+\begin_layout Standard
+Die folgenden Symbole sind auch in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "sub:Einige-Symbole-können"
+
+\end_inset
+
+ beschrieben.
+ Wenn Sie mit der Maus auf ein Symbol zeigen, erhalten Sie eine Beschreibung.
+\end_layout
+
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../../images/math/delim.xpm
+	filename ../../images/math/hat.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
- bringt eine Auswahl von Trennzeichen 
-\family sans
-und
-\family default
- Klammern, zum Beispiel 
-\begin_inset Formula $\left\{ 3\right\rangle $
+: Rahmen-Verzierungen.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/sum.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
 \end_inset
 
-.
- Diese werden in der Größe an ihren Inhalt angepasst.
+: große Operatoren
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/bigtriangledown.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: verschiedene, nicht zuzuordnende Synmbole
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/alpha.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: kleine griechische Buchstaben und die großen, die anders aussehen als
+ die lateinischen.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/leftarrow.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ : Pfeile
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/dashleftarrow.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: AMS-Pfeile
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/pm.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: Operatoren
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/leq.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: Relationen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/leqq.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: AMS-Relationen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/nless.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: AMS-Negierte-Relationen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/ldots.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: Punkte
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/dotplus.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: AMS-Operatoren
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math/digamma.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: AMS-Verschiedenes
 \end_layout
 
 \begin_layout Subsubsection
@@ -22202,11 +22319,7 @@ name "sec:math-functions"
 
 \end_inset
 
-Das Menü 
-\family sans
-Mathe-Kontrollfläche
-\family default
- enthält in der mittleren Spalte Funktionen wie 
+Die Funktionen wie 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -22215,7 +22328,7 @@ Mathe-Kontrollfläche
 \end_inset
 
 , usw.\InsetSpace \space{}
-(man kann sie in Mathed auch mit Befehlen wie 
+kann man in Mathed auch mit Befehlen wie 
 \family typewriter
 
 \backslash
@@ -22279,12 +22392,17 @@ name "mathematische!Symbole"
 \end_layout
 
 \begin_layout Standard
+\begin_inset LatexCommand label
+name "sub:Einige-Symbole-können"
+
+\end_inset
+
 Einige Symbole können, wie im vorigen Abschnitt beschrieben, direkt über
- das 
+ die 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleisten
 \family default
--Menü ausgewählt werden.
+ ausgewählt werden.
  Die meisten anderen Symbole kann man in den verschiedenen Kategorien finden:
 \end_layout
 
@@ -22344,12 +22462,11 @@ name "WYSIWYM"
 \end_inset
 
  in LyX dargestellt.
- Sie finden Sie im Menü 
+ Sie finden Sie in der 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
-\SpecialChar \menuseparator
-rechte Spalte.
+ rechts von den Funktionen.
  Die dort unter 
 \family sans
 Griechisch
@@ -22521,7 +22638,7 @@ Leertaste
 .
  Diese Leerräume können Sie auch über die 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  einfügen.
 \end_layout
@@ -22989,7 +23106,7 @@ X-Freaks
 Mathematische Ausdrücke kann man in LyX auf zwei Arten editieren.
  Sie können entweder die 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  benutzen, um Formeln WYSIWYM darzustellen, oder als LaTeX-Benutzer die
  Tastatur benutzen, um etwas wie  
@@ -23132,9 +23249,9 @@ Es gibt in LyX mehrere Klammerarten.
 <>
 \family default
  zu drücken.
- Aber die Wirkung ist besser, wenn Sie das Menü 
+ Aber die Wirkung ist besser, wenn Sie die
 \family sans
-Mathe-Kontrollfläche
+ Mathe-Werkzeugleiste
 \family default
  benutzen, insbesondere, wenn Sie große Strukturen wie Matrizen oder Brüche
  in Klammern setzen wollen, oder wenn Sie mehrere Klammernschichten haben.
@@ -23187,9 +23304,9 @@ right)
 
 \begin_layout Standard
 Es ist sehr einfach, die gewünschten Klammern zu bekommen.
- Klicken Sie im Menü 
+ Klicken Sie in der automatischen 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  auf 
 \begin_inset Graphics
@@ -23347,14 +23464,14 @@ Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
 Array-Umgebung
 \family default
-: dann bekommen Sie automatisch eine 2x2-Matrix, oder Sie klicken im Menü
- 
+: dann bekommen Sie automatisch eine 2x2-Matrix, oder Sie klicken in der
+ automatischen 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  den Knopf 
 \begin_inset Graphics
-	filename ../../images/math/matrix.xpm
+	filename ../../images/math-matrix.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -23422,7 +23539,7 @@ Horizontal
 \family default
  eingeben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23601,7 +23718,7 @@ Strg+Tab.
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie KDE als grafische Oberfläche verwenden, geht das leider nicht,
@@ -24056,7 +24173,7 @@ Befehlspuffer
 \family default
 ) folgendes:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24240,7 +24357,7 @@ Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
 
  auf der 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  oder Tastaturbefehle auswählen.
  Nicht alle erscheinen genau WYSIWYM
@@ -24309,7 +24426,7 @@ reference "table:Mathematik-Schriftstile"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -24948,7 +25065,7 @@ M
  Sie können in diesem Modus allerdings nicht den Zeichensatz wechseln oder
  Satzzeichen verwenden,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Außerdem gibt der mathematische Textmodus den Text in einer 
@@ -25083,7 +25200,7 @@ math-size displaystyle
 
  der 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  die entsprechende Größe aus, während der Cursor auf der Hauptlinie des
  Mathed-Kästchens steht: 
@@ -25703,7 +25820,7 @@ nummerierte
  sie ebenso wie für nichtnummerierte Abschnitte eigentlich keine Marken
  benutzen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Nun, man 
@@ -25820,7 +25937,7 @@ target "http://www.lyx.org"
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25988,7 +26105,7 @@ X-Notiz:
 \family default
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 LyX-Notiz
@@ -26012,7 +26129,7 @@ Kommentar:
 \family default
  
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Standard
 Kommentar
@@ -26036,7 +26153,7 @@ Grauschrift:
 \family default
  wird, wie der Name sagt, als 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Standard
 grauer
@@ -26530,23 +26647,26 @@ Mit
 Ausrichtung
 \family default
  ändern Sie einen oder mehrere Absätze.
- Sie haben vier Möglichkeiten 
+ Normalerweise ist 
 \family sans
-Blocksatz, Links, Rechts
+Standard
+\family default
+ angekreuzt, was 
+\family sans
+Blocksatz
+\family default
+ bedeutet, bei dem der Leerraum zwischen den Worten variabel ist und jede
+ Zeile des Absatzes den Platz zwischen den beiden Rändern ausfüllt..
+ Wenn Sie das Kreuz entfernen, haben Sie drei weitere Möglichkeiten:
+\family sans
+ Links, Rechts
 \family default
  und 
 \family sans
 Zentriert.
 
 \family default
- In den meisten Fällen ist die Voreinstellung 
-\family sans
-Blocksatz
-\family default
-, bei dem der Leerraum zwischen den Worten variabel ist und jede Zeile des
- Absatzes den Platz zwischen den beiden Rändern ausfüllt.
- Die drei anderen Ausrichtungen sind selbsterklärend und sehen wie folgt
- aus:
+ Diese Ausrichtungen sind selbsterklärend und sehen wie folgt aus:
 \end_layout
 
 \begin_layout Standard
@@ -26569,8 +26689,8 @@ und dieser ist rechtsbündig.
 \emph on
 Anmerkung
 \emph default
-: Bei diesen drei Absatzausrichtungen wird ober- und unterhalb zusätzlicher
- vertikaler Zwischenraum eingefügt.
+: Bei diesen drei Absatzausrichtungen wird ober- und unterhalb ein zusätzlicher
+ vertikaler Abstand eingefügt.
  Will man zum Beispiel mehrere kurze Zeilen zentriert setzen, sollte man
  nach jeder Zeile 
 \family sans
@@ -26625,6 +26745,15 @@ Benutzerdefiniert
 Doppelt
 \family default
  gewählt.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie 
+\family sans
+Benutzerdefiniert
+\family default
+ auswählen, müssen Sie rechts davon eine Zahl (zum Beispiel 3.5) eingeben,
+ die ein Vielfaches des einzeiligen Abstandes definiert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26712,7 +26841,7 @@ wirklich
 \emph default
  ändern müssen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Natürlich können Sie das auch kapitelweise tun, da ein Kapitel immer auf
@@ -27054,7 +27183,7 @@ Befehl
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -27514,7 +27643,7 @@ aspell
 \family default
 ,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Die neueste Version können Sie im Internet unter 
@@ -27538,7 +27667,7 @@ ispell.
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Die neueste Version können Sie im Internet unter
@@ -28129,7 +28258,7 @@ ispell
  Einige Benutzer haben den Wunsch geäußert, die Schreibweise eines Wortes
  global ändern zu können, anstatt bei jedem Auftreten des Wortes.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -28250,7 +28379,7 @@ Sprache
  Suchen Sie Ihre Sprache in der Liste und klicken Sie darauf.
  Der Sprachname wird ins Kästchen kopiert.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Für LaTeX bedeutet die Wahl einer anderen Sprache als der Standardeinstellung,
@@ -28483,7 +28612,7 @@ sty
 \family default
  in Ihre Dokumente einfügen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Das gilt für den Fall, wenn Sie diese Zeichen manuell einfügen wollen.
@@ -28507,7 +28636,7 @@ reference "sec:quotes"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -29172,7 +29301,7 @@ textcent
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Zeichen ¢ 
@@ -29508,7 +29637,7 @@ textcurrency
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Zeichen ¤ 
@@ -29687,7 +29816,7 @@ textyen
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Zeichen ¥ 
@@ -29866,7 +29995,7 @@ textbrokenbar
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Zeichen ¦ 
@@ -31440,7 +31569,7 @@ cedilla
 \hfill
 macron
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Die 
@@ -31518,7 +31647,7 @@ tilde
 \hfill
 cedilla
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Diese Zeichen sehen auf dem Bildschirm sicher nicht schön aus, dafür aber
@@ -32457,6 +32586,23 @@ Aktualisieren
 Postscript
 \end_layout
 
+\begin_layout Subsection
+Mathe-
+\family sans
+Werkzeugleiste
+\end_layout
+
+\begin_layout Standard
+Siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "sec:math-panel"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 
 \family sans
@@ -32914,7 +33060,7 @@ Cases/AMS align, alignat, f\SpecialChar \textcompwordmark{}
 lalign, gather und multline-Um\SpecialChar \-
 gebung
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 
