@@ -43,7 +43,7 @@ protected Q_SLOTS:
 
 	void on_updateTB_clicked();
 	void on_depthSL_valueChanged(int depth);
-	void on_typeCO_activated(int value);
+	void on_typeCO_currentIndexChanged(int value);
 	void on_moveUpTB_clicked();
 	void on_moveDownTB_clicked();
 	void on_moveInTB_clicked();

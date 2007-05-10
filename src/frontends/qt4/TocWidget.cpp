@@ -91,9 +91,10 @@ void TocWidget::selectionChanged(const QModelIndex & current,
 
 void TocWidget::on_updateTB_clicked()
 {
+	// The backend update can take some time so we disable
+	// the controls while waiting.
+	enableControls(false);
 	form_->updateBackend();
-	form_->update();
-	update();
 }
 
 /* FIXME (Ugras 17/11/06):
@@ -139,8 +140,7 @@ void TocWidget::setTreeDepth(int depth)
 	}
 }
 
-
-void TocWidget::on_typeCO_activated(int value)
+void TocWidget::on_typeCO_currentIndexChanged(int value)
 {
 	setTocModel(value);
 }
@@ -240,22 +240,30 @@ void TocWidget::update()
 
 void TocWidget::updateGui()
 {
-	QStringListModel * type_model = form_->typeModel();
-	if (type_model->stringList().isEmpty()) {
+	vector<docstring> const & type_names = form_->typeNames();
+	if (type_names.empty()) {
 		enableControls(false);
-		typeCO->setModel(type_model);
+		typeCO->clear();
 		tocTV->setModel(new QStandardItemModel);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 		return;
 	}
 
 	QString current_text = typeCO->currentText();
-	typeCO->setModel(type_model);
-	int const current_type = typeCO->findText(current_text);
+	lyxerr << "current_text " << fromqstr(current_text) << endl;
+	typeCO->blockSignals(true);
+	int current_type = -1;
+	for (size_t i = 0; i != type_names.size(); ++i) {
+		QString item = toqstr(type_names[i]);
+		typeCO->addItem(item);
+		if (item == current_text)
+			current_type = i;
+	}
 	if (current_type != -1)
 		typeCO->setCurrentIndex(current_type);
 	else
 		typeCO->setCurrentIndex(form_->selectedType());
+	typeCO->blockSignals(false);
 
 	setTocModel(typeCO->currentIndex());
 }

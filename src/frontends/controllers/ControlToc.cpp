@@ -117,6 +117,7 @@ void ControlToc::outlineOut()
 void ControlToc::updateBackend()
 {
 	kernel().buffer().tocBackend().update();
+	kernel().buffer().structureChanged();
 }
 
 

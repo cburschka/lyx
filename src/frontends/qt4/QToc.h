@@ -39,17 +39,9 @@ public:
 	///
 	void update();
 	///
-	void updateToc();
-	///
-	void updateType();
-
 	bool canOutline(int type) const;
 	
 	QStandardItemModel * tocModel(int type);
-
-	QStringListModel * typeModel()
-	{ return &type_model_; }
-
 	///
 	QModelIndex const getCurrentIndex(int type) const;
 	///
@@ -66,10 +58,6 @@ Q_SIGNALS:
 private:
 	///
 	std::vector<TocModel *> toc_models_;
-	///
-	QStringListModel type_model_;
-	///
-	int type_;
 };
 
 } // namespace frontend

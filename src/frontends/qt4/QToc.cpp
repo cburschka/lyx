@@ -67,7 +67,7 @@ QStandardItemModel * QToc::tocModel(int type)
 	}
 
 	LYXERR(Debug::GUI)
-		<< "QToc: type_ " << type
+		<< "QToc: type " << type
 		<< "  toc_models_.size() " << toc_models_.size()
 		<< endl;
 
@@ -110,32 +110,12 @@ bool QToc::initialiseParams(std::string const & data)
 	if (!ControlToc::initialiseParams(data))
 		return false;
 	update();
+	modelReset();
 	return true;
 }
 
 
 void QToc::update()
-{
-	updateType();
-	updateToc();
-	modelReset();
-}
-
-
-void QToc::updateType()
-{
-	QStringList type_list;
-
-	vector<docstring> const & type_names = typeNames();
-	BOOST_ASSERT(!type_names.empty());
-	for (size_t i = 0; i != type_names.size(); ++i)
-		type_list.append(toqstr(type_names[i]));
-
-	type_model_.setStringList(type_list);
-}
-
-
-void QToc::updateToc()
 {
 	toc_models_.clear();
 	TocList::const_iterator it = tocs().begin();
