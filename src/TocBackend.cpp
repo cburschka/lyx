@@ -123,6 +123,11 @@ Toc const & TocBackend::toc(std::string const & type) const
 
 void TocBackend::updateItem(ParConstIterator const & par_it)
 {
+	// TODO should not happen, 
+	// a call to TocBackend::update() is missing somewhere
+	if (toc("tableofcontents").empty())
+		return;
+
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getTextClass().min_toclevel();
 

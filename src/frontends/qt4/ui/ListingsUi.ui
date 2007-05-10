@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>392</height>
+    <width>448</width>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,135 +18,126 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="layoutWidget" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>431</width>
-     <height>371</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QCheckBox" name="inlineCB" >
-      <property name="text" >
-       <string>Inlined listing (\lstinline)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QGroupBox" name="listingsGB" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>7</hsizetype>
-        <vsizetype>7</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="title" >
-       <string>Parameters</string>
-      </property>
-      <widget class="QTextEdit" name="listingsED" >
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>411</width>
-         <height>171</height>
-        </rect>
+  <layout class="QVBoxLayout" >
+   <item>
+    <layout class="QVBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="inlineCB" >
+       <property name="text" >
+        <string>Inlined listing (\lstinline)</string>
        </property>
       </widget>
-      <widget class="QTextBrowser" name="listingsTB" >
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>411</width>
-         <height>71</height>
-        </rect>
-       </property>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="listingsGB" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>4</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="cursor" >
-        <cursor>14</cursor>
+       <property name="title" >
+        <string>Parameters</string>
        </property>
-       <property name="acceptDrops" >
-        <bool>false</bool>
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="QTextBrowser" name="listingsTB" >
+          <property name="cursor" stdset="0" >
+           <cursorShape>ForbiddenCursor</cursorShape>
+          </property>
+          <property name="acceptDrops" >
+           <bool>false</bool>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth" >
+           <number>0</number>
+          </property>
+          <property name="acceptRichText" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="listingsED" />
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="spacing" >
+        <number>6</number>
        </property>
-       <property name="frameShape" >
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth" >
+       <property name="leftMargin" >
         <number>0</number>
        </property>
-       <property name="acceptRichText" >
-        <bool>false</bool>
+       <property name="topMargin" >
+        <number>0</number>
        </property>
-      </widget>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType" >
-         <enum>QSizePolicy::Expanding</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>101</width>
-          <height>27</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="okPB" >
-        <property name="text" >
-         <string>OK</string>
-        </property>
-        <property name="default" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="closePB" >
-        <property name="text" >
-         <string>Cancel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+       <property name="rightMargin" >
+        <number>0</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>0</number>
+       </property>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>101</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="okPB" >
+         <property name="text" >
+          <string>OK</string>
+         </property>
+         <property name="default" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="closePB" >
+         <property name="text" >
+          <string>Cancel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <tabstops>
   <tabstop>okPB</tabstop>
