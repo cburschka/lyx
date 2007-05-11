@@ -256,7 +256,7 @@ void LyXRC::setDefaults() {
 	isp_use_pers_dict = false;
 	isp_use_esc_chars = false;
 	use_kbmap = false;
-	rtl_support = false;
+	rtl_support = true;
 	auto_number = true;
 	mark_foreign_language = true;
 	language_auto_begin = true;
@@ -277,7 +277,7 @@ void LyXRC::setDefaults() {
 	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
 	preview_scale_factor = "0.9";
-	use_converter_cache = false;
+	use_converter_cache = true;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 
 	user_name = to_utf8(support::user_name());
