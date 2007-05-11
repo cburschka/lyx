@@ -17,7 +17,6 @@
 
 #include "debug.h"
 #include "Dimension.h"
-#include "LyXRC.h"
 #include "TextPainter.h"
 
 #include "support/lstrings.h"

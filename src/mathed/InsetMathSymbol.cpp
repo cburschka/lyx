@@ -20,7 +20,6 @@
 #include "LaTeXFeatures.h"
 
 #include "debug.h"
-#include "LyXRC.h"
 
 #include "support/textutils.h"
 
