@@ -298,6 +298,7 @@ Color::Color()
 	{ graphicsbg, N_("graphics background"), "graphicsbg", "linen", "graphicsbg" },
 	{ mathmacrobg, N_("Math macro background"), "mathmacrobg", "linen", "mathmacrobg" },
 	{ mathframe, N_("math frame"), "mathframe", "Magenta", "mathframe" },
+	{ mathcorners, N_("math corners"), "mathcorners", "linen", "mathcorners" },
 	{ mathline, N_("math line"), "mathline", "Blue", "mathline" },
 	{ captionframe, N_("caption frame"), "captionframe", "DarkRed", "captionframe" },
 	{ collapsable, N_("collapsable inset text"), "collapsable", "DarkRed", "collapsable" },

@@ -1391,6 +1391,9 @@ lstinline[language=Delphi]{var i = 10;}
         i = find_token(document.body, '\\begin_inset listings', i)
         if i == -1:
             break
+        else:
+            if not '\\usepackage{listings}' in document.preamble:
+                document.preamble.append('\\usepackage{listings}')
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             # this should not happen
@@ -1410,31 +1413,41 @@ lstinline[language=Delphi]{var i = 10;}
                 k = line + 1
         # looking for the oneline code for lstinline
         for line in range(i + 2, j + 1):
-            if document.body[line].startswith(r'\begin_layout'):
-                inlinecode = document.body[line+1]
+            if document.body[line].startswith(r'\end_layout'):
+                inlinecode = document.body[line - 1]
                 break
+        if len(params) > 0:
+            params = '[%s]' % params
         if inline == 'true':
-            document.body[i:(j+1)] = [r'\begin_inset ERT'
+            document.body[i:(j+1)] = [r'\begin_inset ERT',
                                       'status %s' % status,
                                       r'\begin_layout Standard',
                                       '', 
                                       '',
                                       r'\backslash',
-                                      'lstinline[%s]{%s}' % (params, inlinecode),
+                                      'lstinline%s{%s}' % (params, inlinecode),
                                       r'\end_layout',
                                       '',
                                       r'\end_inset']
         else:
-            document.body[i: k] = [r'\begin_inset ERT',
+            document.body[i: j+1] =  [r'\begin_inset ERT',
                                       'status %s' % status,
                                       '',
                                       r'\begin_layout Standard',
                                       '',
                                       '',
                                       r'\backslash',
-                                      r'lstlisting[%s]{' % params,
+                                      r'begin{lstlisting}%s' % params,
                                       r'\end_layout'
-                                    ]
+                                    ] + document.body[k : j - 1] + \
+                                     ['',
+                                      r'\begin_layout Standard',
+                                      '',
+                                      r'\backslash',
+                                      'end{lstlisting}',
+                                      r'\end_layout',
+                                      '',
+                                      r'\end_inset']
             
 
 def revert_include_listings(document):
@@ -1464,6 +1477,9 @@ lstinputlisting{file}[opt]
         i = find_token(document.body, r'\begin_inset Include \lstinputlisting', i)
         if i == -1:
             break
+        else:
+            if not '\\usepackage{listings}' in document.preamble:
+                document.preamble.append('\\usepackage{listings}')
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             # this should not happen

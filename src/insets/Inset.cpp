@@ -117,12 +117,12 @@ static TranslatorMap const build_translator()
 
 /// pretty arbitrary dimensions
 Inset::Inset()
-	: dim_(10, 10, 10), background_color_(Color::background)
+	: dim_(10, 10, 10), background_color_(Color::background), redraw_background_(true)
 {}
 
 
 Inset::Inset(Inset const & inset)
-	: dim_(inset.dim_), background_color_(inset.background_color_)
+	: dim_(inset.dim_), background_color_(inset.background_color_), redraw_background_(true)
 {}
 
 
@@ -288,7 +288,7 @@ void Inset::metricsMarkers2(Dimension & dim, int framesize) const
 void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
 	Color::color pen_color = editing(pi.base.bv)?
-		Color::mathframe : Color::background;
+		Color::mathframe : Color::mathcorners;
 
 	int const t = x + width() - 1;
 	int const d = y + descent();
@@ -303,7 +303,7 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
 	Color::color pen_color = editing(pi.base.bv)?
-		Color::mathframe : Color::background;
+		Color::mathframe : Color::mathcorners;
 
 	drawMarkers(pi, x, y);
 	int const t = x + width() - 1;
