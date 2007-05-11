@@ -310,8 +310,6 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		|| x >= bv. workWidth())
 		return;
 
-		
-
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 #if 0
@@ -333,10 +331,7 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 #endif
 		bv.coordCache().insets().add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
-		at->setRedrawBackground(false);
-		lyxerr << "selection draw " << x << " " << y << " " << at->redrawBackground() << std::endl;
 		at->draw(pi, x, y);
-		//at->setRedrawBackground(true);
 		x += at->width();
 	}
 }

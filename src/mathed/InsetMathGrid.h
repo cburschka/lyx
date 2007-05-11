@@ -214,7 +214,7 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	//void octave(OctaveStream &) const;
-	/// tells an inset to redraw background
+
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

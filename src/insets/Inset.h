@@ -192,9 +192,6 @@ public:
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
 	virtual bool setMouseHover(bool) { return false; }
-	/// tells an inset to redraw background
-	virtual void setRedrawBackground(bool rd) const { redraw_background_ = rd; }
-	bool redrawBackground() const { return redraw_background_; }
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
@@ -492,8 +489,6 @@ private:
 	 *  of the header file.
 	 */
 	int background_color_;
-
-	mutable bool redraw_background_;
 };
 
 

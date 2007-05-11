@@ -15,7 +15,6 @@
 #include "InsetMathGrid.h"
 #include <boost/scoped_ptr.hpp>
 
-#include "debug.h"
 
 namespace lyx {
 
@@ -121,6 +120,7 @@ public:
 
 	///
 	static int displayMargin() { return 12; }
+
 protected:
 	InsetMathHull(InsetMathHull const &);
 
@@ -183,8 +183,6 @@ private:
 	boost::scoped_ptr<RenderPreview> preview_;
 	///
 	mutable bool use_preview_;
-	///
-	/// mutable bool redraw_background_;
 //
 // Incorporate me
 //

@@ -48,7 +48,6 @@
 
 #include "insets/RenderPreview.h"
 #include "insets/InsetLabel.h"
-#include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
@@ -170,7 +169,7 @@ InsetMathHull::InsetMathHull()
 
 
 InsetMathHull::InsetMathHull(HullType type)
-	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1), label_(1), 
+	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1), label_(1),
 	  preview_(new RenderPreview(this))
 {
 	initMath();
@@ -180,7 +179,7 @@ InsetMathHull::InsetMathHull(HullType type)
 
 InsetMathHull::InsetMathHull(InsetMathHull const & other)
 	: InsetMathGrid(other),
-	  type_(other.type_), nonum_(other.nonum_), label_(other.label_), 
+	  type_(other.type_), nonum_(other.nonum_), label_(other.label_),
 	  preview_(new RenderPreview(this))
 {}
 
@@ -334,15 +333,7 @@ bool InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
-	// setRedrawBackground(false);
 	use_preview_ = previewState(pi.base.bv);
-	/*Cursor & cur = pi.base.bv->cursor();
-	if (!editing(pi.base.bv) || !cur.selection() || &cur.inset() != this)
-	*/
-	lyxerr << "redraw " << x << " " << y << " " << width() << " " << redrawBackground() << std::endl;
-	if (redrawBackground())
-		pi.pain.fillRectangle(x + 1, y - ascent() + 1, width() - 2, 
-				ascent() + descent() - 1, Color::mathbg);
 
 	if (use_preview_) {
 		// one pixel gap in front
