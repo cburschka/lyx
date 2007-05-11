@@ -252,6 +252,7 @@ void TocWidget::updateGui()
 	QString current_text = typeCO->currentText();
 	lyxerr << "current_text " << fromqstr(current_text) << endl;
 	typeCO->blockSignals(true);
+	typeCO->clear();
 	int current_type = -1;
 	for (size_t i = 0; i != type_names.size(); ++i) {
 		QString item = toqstr(type_names[i]);
