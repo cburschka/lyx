@@ -115,8 +115,8 @@ TeXEnvironment(Buffer const & buf,
 			texrow.newline();
 		}
 
-		if (lyxrc.language_command_end.empty() ||
-		    par_language->babel() != doc_language->babel() &&
+		if ((lyxrc.language_command_end.empty() ||
+		     par_language->babel() != doc_language->babel()) &&
 		    !par_language->babel().empty()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
@@ -283,10 +283,9 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		if (lyxrc.language_command_end.empty() ||
-		    par_language->babel() != doc_language->babel() &&
-		    !par_language->babel().empty())
-		{
+		if ((lyxrc.language_command_end.empty() ||
+		     par_language->babel() != doc_language->babel()) &&
+		    !par_language->babel().empty()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
