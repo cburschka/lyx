@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 268
+\lyxformat 269
 \begin_document
 \begin_header
 \textclass scrbook
@@ -18035,8 +18035,8 @@ In general:
 \begin_layout Itemize
 Wrap floats should not be placed in paragraphs that run over a page break.
  That means that wrap floats should better be inserted to the exact place
- when the document is nearly ready and you are able to estimate where page
- breaks will appear.
+ when the document is nearly finished and you are able to estimate where
+ page breaks will appear.
 \end_layout
 
 \begin_layout Itemize
@@ -18752,7 +18752,11 @@ status open
 \series bold
 Note:
 \series default
- The set reference position has no effect for references to subfigures.
+ 
+\series bold
+hypcap
+\series default
+ has no effect for references to subfigures.
 \end_layout
 
 \end_inset

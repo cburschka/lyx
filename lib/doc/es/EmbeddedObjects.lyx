@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 268
+\lyxformat 269
 \begin_document
 \begin_header
 \textclass scrbook
@@ -18834,7 +18834,11 @@ status open
 \series bold
 Nota:
 \series default
- La colocación de referencias no afecta a las referencias a subfiguras.
+ 
+\series bold
+hypcap
+\series default
+ no afecta a las referencias a subfiguras.
 \end_layout
 
 \end_inset
