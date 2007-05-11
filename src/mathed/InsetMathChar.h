@@ -55,8 +55,6 @@ private:
 	char_type char_;
 	/// cached kerning for superscript
 	mutable int kerning_;
-	///
-	mutable Font font_cache_;
 };
 
 } // namespace lyx

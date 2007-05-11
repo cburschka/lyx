@@ -81,8 +81,6 @@ private:
 	mutable int kerning_;
 	///
 	mutable bool scriptable_;
-	///
-	mutable Font font_cache_;
 };
 
 } // namespace lyx

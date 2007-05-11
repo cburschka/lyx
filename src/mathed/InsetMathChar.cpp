@@ -17,8 +17,10 @@
 
 #include "debug.h"
 #include "Dimension.h"
-#include "support/lstrings.h"
+#include "LyXRC.h"
 #include "TextPainter.h"
+
+#include "support/lstrings.h"
 
 #include "frontends/FontMetrics.h"
 
@@ -59,12 +61,6 @@ auto_ptr<Inset> InsetMathChar::doClone() const
 
 bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (mi.base.font == font_cache_) {
-		dim = dim_;
-		return false;
-	}
-	font_cache_ = mi.base.font;
-
 #if 1
 	if (char_ == '=' && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmr");
@@ -92,6 +88,10 @@ bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2 * theFontMetrics(font_).width(' ');
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
+
+	if (dim_ == dim)
+		return false;
+
 	dim_ = dim;
 	return true;
 }
