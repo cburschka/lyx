@@ -176,8 +176,10 @@ void QGraphicsDialog::on_browsePB_clicked()
 {
 	docstring const str =
 		form_->controller().browse(qstring_to_ucs4(filename->text()));
-	filename->setText(toqstr(str));
-	form_->changed();
+	if(!str.empty()){
+		filename->setText(toqstr(str));
+		form_->changed();
+	}
 }
 
 
