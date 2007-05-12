@@ -1,3 +1,8 @@
+2007-05-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxfunc.C  (dispatch): do not attempt to toggle math insets
+	via ALL_INSETS_TOGGLE (partially fixes bug 3358).
+
 2007-04-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text3.C  (dispatch): fix undo in LFUN_QUOTE (bug 3439).
