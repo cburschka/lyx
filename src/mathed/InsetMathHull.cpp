@@ -337,7 +337,6 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	use_preview_ = previewState(pi.base.bv);
 
-	Cursor & cur = pi.base.bv->cursor();
 	// background of mathed under focus is not painted because
 	// selection at the top level of nested inset is difficult to handle.
 	if (!editing(pi.base.bv))
