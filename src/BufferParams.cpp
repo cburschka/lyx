@@ -867,7 +867,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		if (lyxrc.language_global_options)
+		if (lyxrc.language_global_options && !language_options.str().empty())
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1409,17 +1409,15 @@ string const BufferParams::dvips_options() const
 string const BufferParams::babelCall(string const & lang_opts) const
 {
 	string lang_pack = lyxrc.language_package;
-	if (lang_pack == "\\usepackage{babel}") {
-		// suppress the babel call when there is no babel language defined
-		// for the document language in the lib/languages file and if no
-		// other languages are used
-		if (language->babel().empty() && lang_opts.empty())
-			lang_pack.clear();
-		if (!lyxrc.language_global_options && !lang_opts.empty())
-			lang_pack = string("\\usepackage[") + lang_opts + "]{babel}";
-		if (lyxrc.language_global_options)
-			return lang_pack;
-	}
+	if (lang_pack != "\\usepackage{babel}")
+		return lang_pack;
+	// suppress the babel call when there is no babel language defined
+	// for the document language in the lib/languages file and if no
+	// other languages are used (lang_opts is then empty)
+	if (lang_opts.empty())
+		return string();
+	if (!lyxrc.language_global_options)
+		return string("\\usepackage[") + lang_opts + "]{babel}";
 	return lang_pack;
 }
 
