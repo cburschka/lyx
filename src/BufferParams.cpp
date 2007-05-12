@@ -1417,7 +1417,7 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	if (lang_opts.empty())
 		return string();
 	if (!lyxrc.language_global_options)
-		return string("\\usepackage[") + lang_opts + "]{babel}";
+		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }
 
