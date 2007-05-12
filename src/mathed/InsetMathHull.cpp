@@ -52,6 +52,8 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
+#include "frontends/Painter.h"
+
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 
@@ -334,6 +336,13 @@ bool InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	use_preview_ = previewState(pi.base.bv);
+
+	Cursor & cur = pi.base.bv->cursor();
+	// background of mathed under focus is not painted because
+	// selection at the top level of nested inset is difficult to handle.
+	if (!editing(pi.base.bv))
+		pi.pain.fillRectangle(x + 1, y - ascent() + 1, width() - 2, 
+				ascent() + descent() - 1, Color::mathbg);
 
 	if (use_preview_) {
 		// one pixel gap in front

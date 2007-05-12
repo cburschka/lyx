@@ -123,8 +123,10 @@ public:
 		mathbg,
 		/// Macro math inset background color
 		mathmacrobg,
-		/// Math inset frame color
+		/// Math inset frame color under focus
 		mathframe,
+		/// Math inset frame color not under focus
+		mathcorners,
 		/// Math line color
 		mathline,
 
