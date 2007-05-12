@@ -27,6 +27,7 @@ using std::ostream;
 using std::string;
 using std::exception;
 using lyx::support::trim;
+using lyx::support::isStrInt;
 
 namespace lyx
 {
@@ -314,7 +315,7 @@ void parValidator::validate(std::string const & par) const
 		return;
 	}
 	case INTEGER: {
-		if (par.empty() && !info->onoff) {
+		if (!isStrInt(par)) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
@@ -435,6 +436,11 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 		return;
 	// exception may be thown.
 	parValidator(key.c_str()).validate(value);
+	// duplicate parameters!
+	if (find(keys_.begin(), keys_.end(), key) != keys_.end())
+		throw invalidParam("Parameter " + key + " has already been defined");	
+	else
+		keys_.push_back(key);
 	if (!params_.empty())
 		params_ += ',';
 	if (value.empty())
@@ -453,28 +459,49 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 }
 
 
-void InsetListingsParams::setParams(string const & par)
+void InsetListingsParams::addParams(string const & par)
 {
 	string key;
 	string value;
 	bool isValue = false;
-	params_.clear();
+	int braces = 0;
 	for (size_t i = 0; i < par.size(); ++i) {
 		// end of par
-		if (par[i] == '\n' || par[i] == ',') {
+		if (par[i] == '\n') {
 			addParam(trim(key), trim(value));
 			key = string();
 			value = string();
 			isValue = false;
-		} else if (par[i] == '=')
+			continue;
+		} else if (par[i] == ',' && braces == 0) {
+			addParam(trim(key), trim(value));
+			key = string();
+			value = string();
+			isValue = false;
+			continue;
+		} else if (par[i] == '=' && braces == 0) {
 			isValue = true;
-		else if (isValue)
+			continue;
+		} else if (par[i] == '{' && par[i - 1] == '=')
+			braces ++;
+		else if (par[i] == '}' && (i == par.size() - 1 || par[i + 1] == ','))
+			braces --;
+		
+		if (isValue)
 			value += par[i];
 		else
 			key += par[i];
 	}
 	if (!trim(key).empty())
 		addParam(trim(key), trim(value));
+}
+
+
+void InsetListingsParams::setParams(string const & par)
+{
+	params_.clear();
+	keys_.clear();
+	addParams(par);
 }
 
 
@@ -499,12 +526,19 @@ string InsetListingsParams::separatedParams(bool keepComma) const
 	// , might be used as regular parameter option so 
 	// the prcess might be more complicated than what I am doing here
 	string opt;
+	int braces = 0;
 	for (size_t i = 0; i < params_.size(); ++i)
-		if (params_[i] == ',') {
+		if (params_[i] == ',' && braces == 0) {
 			if (keepComma)
 				opt += ",\n";
 			else
 				opt += "\n";
+		} else if (params_[i] == '{' && params_[i - 1] == '=') {
+			braces ++;
+			opt += params_[i];
+		} else if (params_[i] == '}' && (i == params_.size() -1 || params_[i + 1] == ',')) {
+			braces --;
+			opt += params_[i];
 		} else
 			opt += params_[i];
 	return opt;

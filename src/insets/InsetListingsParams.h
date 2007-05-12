@@ -39,6 +39,9 @@ public:
 	
 	/// add key=value to params_
 	void addParam(std::string const & key, std::string const & value);
+
+	/// add a few parameters
+	void addParams(std::string const & par);
 	
 	/// set params_ with par, throw an exception if par is valid
 	void setParams(std::string const & par);
@@ -73,6 +76,9 @@ private:
 	/// listing parameters, this will always be a *valid* string
 	/// that can be passed to listing packages.
 	std::string params_;
+
+	/// keys defined in params_ 
+	std::vector<std::string> keys_;
 
 	/// collapsable status
 	InsetCollapsable::CollapseStatus status_;
