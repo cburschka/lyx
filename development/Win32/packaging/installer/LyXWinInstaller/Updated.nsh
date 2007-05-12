@@ -38,6 +38,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
  SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
