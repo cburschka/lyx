@@ -144,9 +144,13 @@ public:
 		///
 		UNSET_ROTATE_TABULAR,
 		///
+		TOGGLE_ROTATE_TABULAR,
+		///
 		SET_ROTATE_CELL,
 		///
 		UNSET_ROTATE_CELL,
+		///
+		TOGGLE_ROTATE_CELL,
 		///
 		SET_USEBOX,
 		///
@@ -810,6 +814,10 @@ private:
 	/// return the cell nearest to x, y
 	idx_type getNearestCell(BufferView &, int x, int y) const;
 
+	/// test the rotation state of the give cell range.
+	bool oneCellHasRotationState(bool rotated,
+				row_type row_start, row_type row_end, 
+				col_type col_start, col_type col_end) const;
 	///
 	Buffer const * buffer_;
 	///

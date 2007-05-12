@@ -151,8 +151,10 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_MPWIDTH, "set-mpwidth" },
 	{ Tabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
 	{ Tabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
+	{ Tabular::TOGGLE_ROTATE_TABULAR, "toggle-rotate-tabular" },
 	{ Tabular::SET_ROTATE_CELL, "set-rotate-cell" },
 	{ Tabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
+	{ Tabular::TOGGLE_ROTATE_CELL, "toggle-rotate-cell" },
 	{ Tabular::SET_USEBOX, "set-usebox" },
 	{ Tabular::SET_LTHEAD, "set-lthead" },
 	{ Tabular::UNSET_LTHEAD, "unset-lthead" },
@@ -3542,11 +3544,12 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;
-		col_type dummy;
+		col_type sel_col_start = 0;
+		col_type sel_col_end = 0;
 		Tabular::ltType dummyltt;
 		bool flag = true;
 
-		getSelection(cur, sel_row_start, sel_row_end, dummy, dummy);
+		getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 
 		switch (action) {
 		case Tabular::SET_PWIDTH:
@@ -3647,6 +3650,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(!tabular.isLongTabular());
 			break;
 
+		case Tabular::TOGGLE_ROTATE_TABULAR:
 		case Tabular::SET_ROTATE_TABULAR:
 			status.setOnOff(tabular.getRotateTabular());
 			break;
@@ -3655,12 +3659,15 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(!tabular.getRotateTabular());
 			break;
 
+		case Tabular::TOGGLE_ROTATE_CELL:
 		case Tabular::SET_ROTATE_CELL:
-			status.setOnOff(tabular.getRotateCell(cur.idx()));
+			status.setOnOff(!oneCellHasRotationState(false, 
+				sel_row_start, sel_row_end, sel_col_start, sel_col_end));
 			break;
 
 		case Tabular::UNSET_ROTATE_CELL:
-			status.setOnOff(!tabular.getRotateCell(cur.idx()));
+			status.setOnOff(!oneCellHasRotationState(true, 
+				sel_row_start, sel_row_end, sel_col_start, sel_col_end));
 			break;
 
 		case Tabular::SET_USEBOX:
@@ -4079,6 +4086,20 @@ static void checkLongtableSpecial(Tabular::ltType & ltt,
 	}
 }
 
+bool InsetTabular::oneCellHasRotationState(bool rotated,
+		row_type row_start, row_type row_end, 
+		col_type col_start, col_type col_end) const {
+
+	for (row_type i = row_start; i <= row_end; ++i) {
+		for (col_type j = col_start; j <= col_end; ++j) {
+			if (tabular.getRotateCell(tabular.getCellNumber(i, j)) 
+				== rotated) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
 void InsetTabular::tabularFeatures(Cursor & cur,
 	Tabular::Feature feature, string const & value)
@@ -4339,6 +4360,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		tabular.setRotateTabular(false);
 		break;
 
+	case Tabular::TOGGLE_ROTATE_TABULAR:
+		tabular.setRotateTabular(!tabular.getRotateTabular());
+		break;
+
 	case Tabular::SET_ROTATE_CELL:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
@@ -4351,6 +4376,18 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setRotateCell(
 					tabular.getCellNumber(i, j), false);
+		break;
+
+	case Tabular::TOGGLE_ROTATE_CELL:
+		{
+		bool oneNotRotated = oneCellHasRotationState(false,
+			sel_row_start, sel_row_end, sel_col_start, sel_col_end);
+		
+		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
+			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
+				tabular.setRotateCell(tabular.getCellNumber(i, j), 
+									  oneNotRotated);
+		}
 		break;
 
 	case Tabular::SET_USEBOX: {

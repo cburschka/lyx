@@ -128,8 +128,8 @@ ToolbarSet
 		Item "Align middle" "tabular-feature valign-middle"
 		Item "Align bottom" "tabular-feature valign-bottom"
 		Separator
-		Item "Rotate cell" "tabular-feature set-rotate-cell"
-		Item "Rotate table" "tabular-feature set-rotate-tabular"
+		Item "Rotate cell" "tabular-feature toggle-rotate-cell"
+		Item "Rotate table" "tabular-feature toggle-rotate-tabular"
 		Item "Set multi-column" "tabular-feature multicolumn"
 	End
 	
