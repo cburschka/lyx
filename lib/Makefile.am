@@ -329,7 +329,9 @@ dist_images_DATA = \
 	images/tabular-feature_set-all-lines.xpm \
 	images/tabular-feature_set-longtabular.xpm \
 	images/tabular-feature_set-rotate-cell.xpm \
+	images/tabular-feature_toggle-rotate-cell.xpm \
 	images/tabular-feature_set-rotate-tabular.xpm \
+	images/tabular-feature_toggle-rotate-tabular.xpm \
 	images/tabular-feature_toggle-line-bottom.xpm \
 	images/tabular-feature_toggle-line-left.xpm \
 	images/tabular-feature_toggle-line-right.xpm \

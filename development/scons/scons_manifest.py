@@ -1629,7 +1629,9 @@ lib_images_files = Split('''
     tabular-feature_set-all-lines.xpm
     tabular-feature_set-longtabular.xpm
     tabular-feature_set-rotate-cell.xpm
+    tabular-feature_toggle-rotate-cell.xpm
     tabular-feature_set-rotate-tabular.xpm
+    tabular-feature_toggle-rotate-tabular.xpm
     tabular-feature_toggle-line-bottom.xpm
     tabular-feature_toggle-line-left.xpm
     tabular-feature_toggle-line-right.xpm
