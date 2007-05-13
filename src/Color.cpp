@@ -4,11 +4,11 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- * \author Lars Gullik Bjnnes
+ * \author Lars Gullik Bjønnes
  * \author Matthias Ettrich
  * \author Jean-Marc Lasgouttes
  * \author John Levon
- * \author Andrï¿½Pï¿½itz
+ * \author André Pönitz
  * \author Martin Vermeer
  *
  * Full author contact details are available in file CREDITS.
