@@ -124,7 +124,7 @@ def languages_l10n(input_files, output, base):
     for lineno, line in enumerate(input.readlines()):
         if line[0] == '#':
             continue
-        items = line.split('"')
+        items = line.split()
         # empty lines?
         if len(items) < 3:
             continue
@@ -135,7 +135,7 @@ def languages_l10n(input_files, output, base):
         #   msgid "Afrikaans"
         #   msgstr ""
         # I do not care extra "s like "af_ZA"
-        print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % (relativePath(input_files[0], base), lineno+1, items[1])
+        print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % (relativePath(input_files[0], base), lineno+1, items[2].strip('"'))
     input.close()
     output.close()
 
