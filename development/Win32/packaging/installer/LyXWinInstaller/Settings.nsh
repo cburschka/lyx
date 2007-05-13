@@ -3,7 +3,7 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5svn-xx-05-2007"
+!define PRODUCT_VERSION "1.5beta3-14-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -39,7 +39,7 @@ BrandingText "LyXWinInstaller v3.15 - ${INSTALLER_VERSION}"
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
- !define PRODUCT_VERSION_OLD "LyX 1.5beta2-21-04-2007"
+ !define PRODUCT_VERSION_OLD "LyX 1.5svn-02-05-2007"
  !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
  !define PRODUCT_VERSION_SHORT_OLD "150svn"
  !define JabRefVersionOld "JabRef 2.2"
