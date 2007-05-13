@@ -991,10 +991,10 @@ bool Text::cursorUp(Cursor & cur)
 	else
 		row = pm.pos2row(cur.pos());
 
-	// remember current position only if we are not at the end of a row.
-	if (cur.pos() != pm.rows()[row].endpos())
-		cur.setTargetX();
-	int const x = cur.targetX();
+	int x = cur.targetX();
+	cur.setTargetX();
+	if (cur.pos() != pm.rows()[row].endpos() || x < cur.targetX())
+		x = cur.targetX();
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
@@ -1050,10 +1050,10 @@ bool Text::cursorDown(Cursor & cur)
 	else
 		row = pm.pos2row(cur.pos());
 
-	// remember current position only if we are not at the end of a row.
-	if (cur.pos() != pm.rows()[row].endpos())
-		cur.setTargetX();
-	int const x = cur.targetX();
+	int x = cur.targetX();
+	cur.setTargetX();
+	if (cur.pos() != pm.rows()[row].endpos() || x < cur.targetX())
+		x = cur.targetX();
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
