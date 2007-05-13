@@ -1871,6 +1871,24 @@ The toolbar has the following icons:
  sets the current cell or selection as a multicolumn
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ For the output the vertical alignment of the first cell in a row is used
+ for all following cells in the row.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Edit Table Menu
 \begin_inset LatexCommand index
@@ -9858,8 +9876,8 @@ Table with multiple lines in cells
 <lyxtabular version="3" rows="3" columns="3">
 <features>
 <column alignment="center" valignment="middle" leftline="true" width="2.5cm">
-<column alignment="center" valignment="middle" leftline="true" width="0.5cm">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0.5cm">
+<column alignment="center" valignment="middle" leftline="true" width="0">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -9989,6 +10007,7 @@ reference "tab:Table-with-multiple"
  In the appearing table dialog we set a cell width of 2.5\InsetSpace \thinspace{}
 cm and choose centered
  for the vertical and horizontal alignment.
+ The vertical alignment is used for all cells of the row.
  As our text is smaller than than 2.5\InsetSpace \thinspace{}
 cm, only one line will appear.
  To get two lines, we add a line break with the command
@@ -10006,14 +10025,6 @@ linebreak
 in ERT.
  If the text is wider than the set cell width it will automatically be broken
  to several lines.
-\end_layout
-
-\begin_layout Standard
-To center the text inside the two other cells of the first row vertically,
- right-click in the second cell, adjust a fixed width of 0.5\InsetSpace \thinspace{}
-cm and choose
- centered alignments.
- Then do the same for the third cell of the row.
 \end_layout
 
 \begin_layout Standard
@@ -10076,8 +10087,8 @@ Table with and without hyphenation
 <lyxtabular version="3" rows="3" columns="3">
 <features>
 <column alignment="center" valignment="middle" leftline="true" width="2.5cm">
-<column alignment="center" valignment="middle" leftline="true" width="0.5cm">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0.5cm">
+<column alignment="center" valignment="middle" leftline="true" width="0">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -10176,8 +10187,8 @@ i
 <lyxtabular version="3" rows="3" columns="3">
 <features>
 <column alignment="center" valignment="middle" leftline="true" width="2.5cm">
-<column alignment="center" valignment="middle" leftline="true" width="0.5cm">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0.5cm">
+<column alignment="center" valignment="middle" leftline="true" width="0">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -18869,7 +18880,7 @@ page
 \end_layout
 
 \begin_layout Standard
-By default, each options has its own rules:
+By default, each option has its own rules:
 \end_layout
 
 \begin_layout Labeling
@@ -19397,7 +19408,7 @@ Figure #:
 \end_inset
 
  followed by the caption text.
- The number sign 
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19405,9 +19416,9 @@ Figure #:
 \begin_inset Quotes erd
 \end_inset
 
- is substituted in the printed output by the actual reference number.
+ is the actual reference number.
  By default the label and the number are in the same font as the caption
- text and a colon follows the number to divide then label from the text.
+ text and a colon follows the number to divide the label from the text.
  This caption format is not suitable for all document formats.
  
 \end_layout
@@ -21056,7 +21067,7 @@ Insert\SpecialChar \menuseparator
 Note
 \family default
 .
- There are three types of notes:
+ There are five types of notes:
 \end_layout
 
 \begin_layout Description
@@ -21326,7 +21337,7 @@ LyX\InsetSpace ~
 Note
 \family default
  is inserted.
- You can switch between the three note types by right-clicking on the note-box.
+ You can switch between the five note types by right-clicking on the note-box.
  
 \family roman
 \series medium
@@ -21840,42 +21851,6 @@ reference "foot:This-is-an"
 \end_inset
 
 .
-\newline
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Standard
-
-\series bold
-Note:
-\series default
- LyX doesn't provide a prefix for labels in footnotes, so you have to insert
- e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-the prefix 
-\family sans
-
-\begin_inset Quotes eld
-\end_inset
-
-foot:
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- manually when you want to use the reference style 
-\family sans
-Formatted\InsetSpace ~
-reference
-\family default
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

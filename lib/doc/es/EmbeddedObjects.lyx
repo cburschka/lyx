@@ -1815,6 +1815,26 @@ La barra de herramientas tiene los siguientes iconos:
  establece la celda actual o selección como multicolumna
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Nota:
+\lang english
+ 
+\series default
+For the output the vertical alignment of the first cell in a row is used
+ for all following cells in the row.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Menú Editar Tabla
 \begin_inset LatexCommand index
@@ -9833,8 +9853,8 @@ Tabla con líneas múltiples en celda
 <lyxtabular version="3" rows="3" columns="3">
 <features>
 <column alignment="center" valignment="middle" leftline="true" width="2.5cm">
-<column alignment="center" valignment="middle" leftline="true" width="0.5cm">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0.5cm">
+<column alignment="center" valignment="middle" leftline="true" width="0">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -9964,6 +9984,15 @@ reference "tab:Tabla-con-múltiples"
  En el diálogo que surge establece una anchura de 2.5\InsetSpace \thinspace{}
 cm y escoge centro en
  alineación vertical y horizontal.
+ 
+\lang english
+The 
+\lang spanish
+alineación vertical
+\lang english
+ is used for all cells of the row.
+
+\lang spanish
  Como nuestro texto es menor de 2.5\InsetSpace \thinspace{}
 cm, sólo aparece una línea.
  Para poner dos añadimos un salto de línea con el comando en ERT
@@ -9979,14 +10008,6 @@ linebreak
 
 \begin_layout Standard
 Si el texto es más ancho que la celda será automáticamente dividido en líneas.
-\end_layout
-
-\begin_layout Standard
-Para centrar verticalmente el texto en las otras dos celdas de la primera
- fila, haz clic-derecha en la segunda celda, ajusta una anchura de 0.5\InsetSpace \thinspace{}
-cm
- y marca alineaciones centrales.
- Haz lo mismo con la tercera celda de la fila.
 \end_layout
 
 \begin_layout Standard
@@ -10049,8 +10070,8 @@ Tablas con y sin guión
 <lyxtabular version="3" rows="3" columns="3">
 <features>
 <column alignment="center" valignment="middle" leftline="true" width="2.5cm">
-<column alignment="center" valignment="middle" leftline="true" width="0.5cm">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0.5cm">
+<column alignment="center" valignment="middle" leftline="true" width="0">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -10149,8 +10170,8 @@ i
 <lyxtabular version="3" rows="3" columns="3">
 <features>
 <column alignment="center" valignment="middle" leftline="true" width="2.5cm">
-<column alignment="center" valignment="middle" leftline="true" width="0.5cm">
-<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0.5cm">
+<column alignment="center" valignment="middle" leftline="true" width="0">
+<column alignment="center" valignment="middle" leftline="true" rightline="true" width="0">
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -19524,7 +19545,7 @@ Figura #
 \end_inset
 
  seguida por el texto.
- El símbolo de número 
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19532,7 +19553,11 @@ Figura #
 \begin_inset Quotes erd
 \end_inset
 
- es sustituido en la salida impresa por el número de referencia real.
+ 
+\lang english
+is the actual reference number
+\lang spanish
+.
  Por defecto la etiqueta y el número usan la misma fuente que el texto del
  encabezado y el signo dos puntos sigue al número para separar la etiqueta
  del texto.
@@ -21236,7 +21261,7 @@ Insertar\SpecialChar \menuseparator
 Nota
 \family default
 .
- Hay tres tipos de notas:
+ Hay cinco tipos de notas:
 \end_layout
 
 \begin_layout Description
@@ -21534,7 +21559,8 @@ Nota\InsetSpace ~
 LyX
 \family default
 .
- Puedes cambiar entre los tres tipos de nota con cilc-derecha sobre el recuadro.
+ Puedes cambiar entre los cinco tipos de nota con cilc-derecha sobre el
+ recuadro.
  
 \family roman
 \series medium
@@ -22047,43 +22073,6 @@ reference "pie:Esto-es-una"
 \end_inset
 
 .
-\newline
-
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-Nota:
-\series default
- LyX no suministra prefijos para etiquetas en notas al pie, así que has
- de insertar un prefijo, p.\InsetSpace \thinspace{}
-e.\InsetSpace ~
-
-\family sans
-
-\begin_inset Quotes eld
-\end_inset
-
-pie:
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- manualmente cuando quieras usar el estilo 
-\family sans
-Referencia\InsetSpace ~
-con\InsetSpace ~
-formato
-\family default
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
