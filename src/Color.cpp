@@ -4,11 +4,11 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik Bjnnes
  * \author Matthias Ettrich
  * \author Jean-Marc Lasgouttes
  * \author John Levon
- * \author André Pönitz
+ * \author Andrï¿½Pï¿½itz
  * \author Martin Vermeer
  *
  * Full author contact details are available in file CREDITS.
@@ -309,12 +309,11 @@ Color::Color()
 	{ eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
 	{ appendix, N_("appendix marker"), "appendix", "Brown", "appendix" },
 	{ changebar, N_("change bar"), "changebar", "Blue", "changebar" },
-	{ deletedtext, N_("Deleted text"), "deletedtext", "Red", "deletedtext" },
-	{ addedtext, N_("Added text"), "addedtext", "Blue", "addedtext" },
+	{ deletedtext, N_("Deleted text"), "deletedtext", "#ff0000", "deletedtext" },
+	{ addedtext, N_("Added text"), "addedtext", "#0000ff", "addedtext" },
 	{ added_space, N_("added space markers"), "added_space", "Brown", "added_space" },
 	{ topline, N_("top/bottom line"), "topline", "Brown", "topline" },
-	{ tabularline, N_("table line"), "tabularline", "black",
-	     "tabularline" },
+	{ tabularline, N_("table line"), "tabularline", "black", "tabularline" },
 	{ tabularonoffline, N_("table on/off line"), "tabularonoffline",
 	     "LightSteelBlue", "tabularonoffline" },
 	{ bottomarea, N_("bottom area"), "bottomarea", "grey40", "bottomarea" },
