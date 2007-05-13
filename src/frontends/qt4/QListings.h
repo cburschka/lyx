@@ -27,6 +27,8 @@ class QListingsDialog : public QDialog, public Ui::QListingsUi {
 	Q_OBJECT
 public:
 	QListingsDialog(QListings * form);
+	/// get values from all the widgets and form a string
+	std::string construct_params();
 protected Q_SLOTS:
 	virtual void change_adaptor();
 	/// AFAIK, QValidator only works for QLineEdit so 
