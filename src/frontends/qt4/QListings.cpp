@@ -289,9 +289,9 @@ void QListings::update_contents()
 			dialog_->placementLE->setText(toqstr(it->substr(15)));
 			*it = "";
 		} else if (prefixIs(*it, "numbers=")) {
-			if (contains(*it, "left") != string::npos)
+			if (contains(*it, "left"))
 				dialog_->numberLeftCB->setChecked(true);
-			else if (contains(*it, "right") != string::npos)
+			else if (contains(*it, "right"))
 				dialog_->numberRightCB->setChecked(true);
 			*it = "";
 		} else if (prefixIs(*it, "stepnumber=")) {
@@ -337,13 +337,13 @@ void QListings::update_contents()
 				*it = "";
 			}
 		} else if (prefixIs(*it, "breaklines=")) {
-			dialog_->breaklinesCB->setChecked(prefixIs(*it, "true") != string::npos);
+			dialog_->breaklinesCB->setChecked(prefixIs(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "showspaces=")) {
-			dialog_->spaceCB->setChecked(prefixIs(*it, "true") != string::npos);
+			dialog_->spaceCB->setChecked(prefixIs(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "extendedchars=")) {
-			dialog_->extendedcharsCB->setChecked(prefixIs(*it, "true") != string::npos);
+			dialog_->extendedcharsCB->setChecked(prefixIs(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "caption=")) {
 			string cap = it->substr(8);
