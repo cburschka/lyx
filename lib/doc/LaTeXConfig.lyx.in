@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 266
+\lyxformat 269
 \begin_document
 \begin_header
 \textclass article
@@ -33,6 +33,7 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "Jürgen Spitzmüller" 
 \author "Jean-Marc Lasgouttes" 
 \end_header
 
@@ -3136,6 +3137,31 @@ setspace
 \end_layout
 
 \begin_layout Subsection
+soul
+\end_layout
+
+\begin_layout Description
+Found: @chk_soul@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/soul
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+soul
+\family default
+ provides hyphenatable letterspacing (spacing out), underlining, striking
+ out, and some derivatives.
+ It is needed by LyX to output struck out text in change tracked documents.
+ 
+\end_layout
+
+\begin_layout Subsection
 url
 \end_layout
 
@@ -3155,6 +3181,34 @@ Notes: The package
 url
 \family default
  is needed by LyX to be able to output url's corrently.
+\end_layout
+
+\begin_layout Subsection
+xcolor
+\end_layout
+
+\begin_layout Description
+Found: @chk_xcolor@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/xcolor
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+xcolor
+\family default
+ provides advanced color features that are not covered by LaTeX's standard
+ 
+\family sans
+color
+\family default
+ package.
+ LyX uses it to output colored change tracking marks.
 \end_layout
 
 \end_body
