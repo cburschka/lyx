@@ -3105,8 +3105,8 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 	Color::color onoffcol = Color::tabularonoffline;
 
 	if (erased) {
-		col = Color::strikeout;
-		onoffcol = Color::strikeout;
+		col = Color::deletedtext;
+		onoffcol = Color::deletedtext;
 	}
 
 	if (!tabular.topAlreadyDrawn(cell)) {

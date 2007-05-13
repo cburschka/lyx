@@ -303,7 +303,7 @@ int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
 	int column = 0;
 
 	if (oldChange.type != Change::UNCHANGED) {
-		os << '}'; // close \lyxinserted or \lyxdeleted
+		os << '}'; // close \lyxadded or \lyxdeleted
 		column++;
 	}
 
@@ -318,7 +318,7 @@ int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
 		os << str;
 		column += str.size();
 	} else if (change.type == Change::INSERTED) {
-		docstring str = "\\lyxinserted{" +
+		docstring str = "\\lyxadded{" +
 			bparams.authors().get(change.author).name() + "}{" +
 			chgTime + "}{";
 		os << str;

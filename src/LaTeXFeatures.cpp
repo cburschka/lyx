@@ -178,18 +178,13 @@ static string const changetracking_dvipost_def =
 	"\\dvipost{osend color pop}\n"
 	"\\dvipost{cbstart color push Blue}\n"
 	"\\dvipost{cbend color pop}\n"
-	"\\newcommand{\\lyxinserted}[3]{\\changestart#3\\changeend}\n"
+	"\\newcommand{\\lyxadded}[3]{\\changestart#3\\changeend}\n"
 	"\\newcommand{\\lyxdeleted}[3]{%\n"
 	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n";
 
-// TODO
-//static string const changetracking_soul_def =
-//	"\\newcommand{\\lyxinserted}[3]{\\uwave{\\textcolor{blue}{#3}}}\n"
-//	"\\newcommand{\\lyxdeleted}[3]{\\sout{\\textcolor{red}{#3}}}";
-
 static string const changetracking_none_def =
-	"\\newcommand{\\lyxinserted}[3]{#3}\n"
-	"\\newcommand{\\lyxdeleted}[3]{}";
+	"\\newcommand{\\lyxadded}[3]{#3}\n"
+	"\\newcommand{\\lyxdeleted}[3]{}\n";
 
 
 /////////////////////////////////////////////////////////////////////
@@ -411,7 +406,10 @@ char const * simplefeatures[] = {
 	"nicefrac",
 	"tipa",
 	"framed",
+	"pdfcolmk",
+	"soul",
 	"textcomp",
+	"xcolor",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -643,10 +641,24 @@ string const LaTeXFeatures::getMacros() const
 	getFloatDefinitions(macros);
 
 	// change tracking
-	if (mustProvide("dvipost"))
+	if (mustProvide("ct-dvipost")) {
 		macros << changetracking_dvipost_def;
-	if (mustProvide("ct-none"))
+	}
+	if (mustProvide("ct-xcolor-soul")) {
+		RGBColor cadd = RGBColor(lcolor.getX11Name(Color::addedtext));
+		macros << "\\providecolor{lyxadded}{rgb}{" 
+		       << cadd.r/255 << ',' << cadd.g/255 << ',' << cadd.b/255 << "}\n";
+
+		RGBColor cdel = RGBColor(lcolor.getX11Name(Color::deletedtext));
+		macros << "\\providecolor{lyxdeleted}{rgb}{" 
+		       << cdel.r/255 << ',' << cdel.g/255 << ',' << cdel.b/255 << "}\n";
+
+		macros << "\\newcommand{\\lyxadded}[3]{\\textcolor{lyxadded}{#3}}\n"
+		       << "\\newcommand{\\lyxdeleted}[3]{\\textcolor{lyxdeleted}{\\st{#3}}}\n";
+	}
+	if (mustProvide("ct-none")) {
 		macros << changetracking_none_def;
+	}
 
 	return macros.str();
 }

@@ -153,10 +153,10 @@ public:
 		appendix,
 		/// changebar color
 		changebar,
-		/// strike-out color
-		strikeout,
+		/// deleted text color
+		deletedtext,
 		/// added text color
-		newtext,
+		addedtext,
 		/// Top and bottom line color
 		topline,
 		/// Table line color

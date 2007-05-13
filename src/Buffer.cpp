@@ -506,18 +506,22 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 
 	if (params().outputChanges) {
-		if (!LaTeXFeatures::isAvailable("dvipost")) {
+		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
+		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
+		                  LaTeXFeatures::isAvailable("xcolor");
+		
+		if (!dvipost && !xcolorsoul) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
 			               _("Changes will not be highlighted in LaTeX output, "
-			                 "because dvipost is not installed.\n"
-			                 "If you are familiar with TeX, consider redefining "
-			                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
-		} else {
+			                 "because neither dvipost nor xcolor/soul are installed.\n"
+			                 "Please install these packages or redefine "
+			                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+		} else if (!xcolorsoul) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
 			               _("Changes will not be highlighted in LaTeX output "
-			                 "when using pdflatex.\n"
-			                 "If you are familiar with TeX, consider redefining "
-			                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
+			                 "when using pdflatex, because xcolor and soul are not installed.\n"
+			                 "Please install both packages or redefine "
+			                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		}
 	}
 
@@ -1215,14 +1219,30 @@ void Buffer::validate(LaTeXFeatures & features) const
 	TextClass const & tclass = params().getTextClass();
 
 	if (params().outputChanges) {
+		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
+		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
+		                  LaTeXFeatures::isAvailable("xcolor");
+		
         	if (features.runparams().flavor == OutputParams::LATEX) {
-			if (LaTeXFeatures::isAvailable("dvipost")) {
+			if (dvipost) {
+				features.require("ct-dvipost");
 				features.require("dvipost");
-			} else {
+			} else if (xcolorsoul) {
+				features.require("ct-xcolor-soul");
+				features.require("soul");
+				features.require("xcolor");
+			} else {	
 				features.require("ct-none");
 			}
 		} else if (features.runparams().flavor == OutputParams::PDFLATEX ) {
-			features.require("ct-none");
+			if (xcolorsoul) {
+				features.require("ct-xcolor-soul");
+				features.require("soul");
+				features.require("xcolor");
+				features.require("pdfcolmk"); // improves color handling in PDF output
+			} else {
+				features.require("ct-none");
+			}
         	}
 	}
 

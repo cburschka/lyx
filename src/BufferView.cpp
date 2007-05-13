@@ -891,18 +891,22 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_CHANGES_OUTPUT:
 		buffer_->params().outputChanges = !buffer_->params().outputChanges;
 		if (buffer_->params().outputChanges) {
-			if (!LaTeXFeatures::isAvailable("dvipost")) {
+			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
+			bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
+			                  LaTeXFeatures::isAvailable("xcolor");
+		
+			if (!dvipost && !xcolorsoul) {
 				Alert::warning(_("Changes not shown in LaTeX output"),
 				               _("Changes will not be highlighted in LaTeX output, "
-				                 "because dvipost is not installed.\n"
-				                 "If you are familiar with TeX, consider redefining "
-				                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
-			} else {
+				                 "because neither dvipost nor xcolor/soul are installed.\n"
+				                 "Please install these packages or redefine "
+				                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+			} else if (!xcolorsoul) {
 				Alert::warning(_("Changes not shown in LaTeX output"),
 				               _("Changes will not be highlighted in LaTeX output "
-				                 "when using pdflatex.\n"
-				                 "If you are familiar with TeX, consider redefining "
-				                 "\\lyxinserted and \\lyxdeleted in the LaTeX preamble."));
+				                 "when using pdflatex, because xcolor and soul are not installed.\n"
+				                 "Please install both packages or redefine "
+				                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 			}
 		}
 		break;

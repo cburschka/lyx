@@ -368,9 +368,9 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 	if (prev_change != Change::UNCHANGED) {
 		Font copy(font);
 		if (prev_change == Change::DELETED) {
-			copy.setColor(Color::strikeout);
+			copy.setColor(Color::deletedtext);
 		} else if (prev_change == Change::INSERTED) {
-			copy.setColor(Color::newtext);
+			copy.setColor(Color::addedtext);
 		}
 		x_ += pain_.text(int(x_), yo_, s, copy);
 	} else {
@@ -669,7 +669,7 @@ void RowPainter::paintLast()
 	if (par_.isInserted(par_.size()) || par_.isDeleted(par_.size())) {
 		FontMetrics const & fm = theFontMetrics(bv_.buffer()->params().getFont());
 		int const length = fm.maxAscent() / 2;
-		Color::color col = par_.isInserted(par_.size()) ? Color::newtext : Color::strikeout;
+		Color::color col = par_.isInserted(par_.size()) ? Color::addedtext : Color::deletedtext;
 		
 		pain_.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 		           Painter::line_solid, Painter::line_thick);
@@ -779,7 +779,7 @@ void RowPainter::paintText()
 				= theFontMetrics(bv_.buffer()->params().getFont());
 			int const middle = yo_ - fm.maxAscent() / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
-				Color::strikeout, Painter::line_solid, Painter::line_thin);
+				Color::deletedtext, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
 		}
 
@@ -834,7 +834,7 @@ void RowPainter::paintText()
 			= theFontMetrics(bv_.buffer()->params().getFont());
 		int const middle = yo_ - fm.maxAscent() / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
-			Color::strikeout, Painter::line_solid, Painter::line_thin);
+			Color::deletedtext, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
 	}
 }
