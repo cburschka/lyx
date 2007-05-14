@@ -387,6 +387,8 @@ private:
 	// At cursor position 0, try to merge the paragraph with the one before it.
 	// Ignore change tracking, i.e., physically remove the end-of-par character
 	bool backspacePos0(Cursor & cur);
+	/// handle the case where bibitems were deleted
+	bool handleBibitems(Cursor & cur);
 
 	///
 	void deleteWordForward(Cursor & cur);

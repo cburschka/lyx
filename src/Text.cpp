@@ -1170,6 +1170,38 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 }
 
 
+bool Text::handleBibitems(Cursor & cur)
+{
+	if (cur.paragraph().layout()->labeltype != LABEL_BIBLIO)
+		return false;
+	// if a bibitem is deleted, merge with previous paragraph
+	// if this is a bibliography item as well
+	if (cur.pos() == 0) {
+		BufferParams const & bufparams = cur.buffer().params();
+		Paragraph const & par = cur.paragraph();
+		Cursor prevcur = cur;
+		if (cur.pit() > 0) {
+			--prevcur.pit();
+			prevcur.pos() = prevcur.lastpos();
+		}
+		Paragraph const & prevpar = prevcur.paragraph();
+		if (cur.pit() > 0 && par.layout() == prevpar.layout()) {
+			recordUndo(cur, Undo::ATOMIC, prevcur.pit());
+			mergeParagraph(bufparams, cur.text()->paragraphs(),
+				       prevcur.pit());
+			updateLabels(cur.buffer());
+			setCursorIntern(cur, prevcur.pit(), prevcur.pos());
+			cur.updateFlags(Update::Force);
+		// if not, reset the paragraph to default
+		} else
+			cur.paragraph().layout(
+				bufparams.getTextClass().defaultLayout());
+		return true;
+	}
+	return false;
+}
+
+
 bool Text::erase(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -1199,6 +1231,8 @@ bool Text::erase(Cursor & cur)
 			needsUpdate = backspacePos0(cur);
 		}
 	}
+
+	needsUpdate |= handleBibitems(cur);
 
 	if (needsUpdate) {
 		// Make sure the cursor is correct. Is this really needed?
@@ -1297,6 +1331,8 @@ bool Text::backspace(Cursor & cur)
 
 	if (cur.pos() == cur.lastpos())
 		setCurrentFont(cur);
+
+	needsUpdate |= handleBibitems(cur);
 
 	// A singlePar update is not enough in this case.
 //		cur.updateFlags(Update::Force);

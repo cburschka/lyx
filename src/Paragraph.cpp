@@ -2603,12 +2603,34 @@ bool Paragraph::checkBiblio(bool track_changes)
 		&& getChar(0) == Paragraph::META_INSET
 		&& insetlist.begin()->inset->lyxCode() == Inset::BIBITEM_CODE;
 
+	docstring oldkey;
+	docstring oldlabel;
+
+	// remove bibitems in pos != 0
+	// restore them later in pos 0 if necessary
+	// (e.g. if a user inserts contents _before_ the item)
+	InsetList::const_iterator it = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
+	for (; it != end; ++it)
+		if (it->inset->lyxCode() == Inset::BIBITEM_CODE
+		    && it->pos > 0) {
+			InsetBibitem * olditem = static_cast<InsetBibitem *>(it->inset);
+			oldkey = olditem->getParam("key");
+			oldlabel = olditem->getParam("label");
+			eraseChar(it->pos, track_changes);
+	}
+
 	if (hasbibitem)
 		return false;
 
 	InsetBibitem * inset(new InsetBibitem(InsetCommandParams("bibitem")));
+	// restore values of previously deleted item in this par.
+	if (!oldkey.empty())
+		inset->setParam("key", oldkey);
+	if (!oldlabel.empty())
+		inset->setParam("label", oldlabel);
 	insertInset(0, static_cast<Inset *>(inset),
-		Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
+		    Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
 
 	return true;
 }

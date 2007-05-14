@@ -1654,7 +1654,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_BIBITEM_INSERT:
-		enable = (cur.paragraph().layout()->labeltype == LABEL_BIBLIO);
+		enable = (cur.paragraph().layout()->labeltype == LABEL_BIBLIO
+			  && cur.pos() == 0);
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
