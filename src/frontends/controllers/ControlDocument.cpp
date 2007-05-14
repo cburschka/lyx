@@ -79,9 +79,9 @@ BufferParams & ControlDocument::params() const
 }
 
 
-int ControlDocument::id() const
+BufferId ControlDocument::id() const
 {
-	return (int) &kernel().buffer();
+	return &kernel().buffer();
 }
 
 

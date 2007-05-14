@@ -144,12 +144,15 @@ private:
 };
 
 
+typedef void const * BufferId;
+
+
 class PreambleModule : public UiWidget<Ui::PreambleUi>
 {
 	Q_OBJECT
 public:
 	PreambleModule();
-	void update(BufferParams const & params, int id);
+	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
 
 Q_SIGNALS:
@@ -161,9 +164,9 @@ protected:
 	void on_preambleTE_textChanged() { changed(); }
 
 private:
-	typedef std::map<int, std::pair<int,int> > Coords;
+	typedef std::map<BufferId, std::pair<int,int> > Coords;
 	Coords preamble_coords_;
-	int current_id_;
+	BufferId current_id_;
 };
 
 

@@ -112,7 +112,7 @@ PreambleModule::PreambleModule(): current_id_(0)
 }
 
 
-void PreambleModule::update(BufferParams const & params, int id)
+void PreambleModule::update(BufferParams const & params, BufferId id)
 {
 	QString preamble = toqstr(params.preamble);
 	// Nothing to do if the params and preamble are unchanged.

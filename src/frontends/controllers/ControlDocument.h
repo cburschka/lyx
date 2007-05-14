@@ -23,6 +23,9 @@ class TextClass;
 
 namespace frontend {
 
+///
+typedef void const * BufferId;
+
 /** A controller for Document dialogs.
  */
 class ControlDocument : public Dialog::Controller {
@@ -50,7 +53,7 @@ public:
 	///
 	BufferParams & params() const;
 	///
-	int id() const;
+	BufferId id() const;
 	///
 	void setLanguage() const;
 	///
