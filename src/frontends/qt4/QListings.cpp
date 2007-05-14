@@ -337,13 +337,13 @@ void QListings::update_contents()
 				*it = "";
 			}
 		} else if (prefixIs(*it, "breaklines=")) {
-			dialog_->breaklinesCB->setChecked(prefixIs(*it, "true"));
+			dialog_->breaklinesCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "showspaces=")) {
-			dialog_->spaceCB->setChecked(prefixIs(*it, "true"));
+			dialog_->spaceCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "extendedchars=")) {
-			dialog_->extendedcharsCB->setChecked(prefixIs(*it, "true"));
+			dialog_->extendedcharsCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "caption=")) {
 			string cap = it->substr(8);
