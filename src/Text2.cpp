@@ -993,8 +993,16 @@ bool Text::cursorUp(Cursor & cur)
 
 	int x = cur.targetX();
 	cur.setTargetX();
-	if (cur.pos() != pm.rows()[row].endpos() || x < cur.targetX())
+	// We want to keep the x-target on subsequent up movements
+	// that cross beyond the end of short lines. Thus a special
+	// handling when the cursor is at the end of line: Use the new 
+	// x-target only if the old one was before the end of line.
+	if (cur.pos() != pm.rows()[row].endpos() 
+		|| (!cur.isRTL() && x < cur.targetX())
+		|| (cur.isRTL() && x > cur.targetX())) {
+
 		x = cur.targetX();
+	}
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
@@ -1052,8 +1060,16 @@ bool Text::cursorDown(Cursor & cur)
 
 	int x = cur.targetX();
 	cur.setTargetX();
-	if (cur.pos() != pm.rows()[row].endpos() || x < cur.targetX())
+	// We want to keep the x-target on subsequent down movements
+	// that cross beyond the end of short lines. Thus a special
+	// handling when the cursor is at the end of line: Use the new 
+	// x-target only if the old one was before the end of line.
+	if (cur.pos() != pm.rows()[row].endpos() 
+		|| (!cur.isRTL() && x < cur.targetX())
+		|| (cur.isRTL() && x > cur.targetX())) {
+
 		x = cur.targetX();
+	}
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
