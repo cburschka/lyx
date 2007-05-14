@@ -187,8 +187,10 @@ void QExternalDialog::browseClicked()
 	docstring const str =
 		form_->controller().browse(qstring_to_ucs4(fileED->text()),
 					   template_name);
-	fileED->setText(toqstr(str));
-	form_->changed();
+	if(!str.empty()) {
+		fileED->setText(toqstr(str));
+		form_->changed();
+	}
 }
 
 
