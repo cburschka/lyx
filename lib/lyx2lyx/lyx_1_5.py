@@ -1210,6 +1210,43 @@ def revert_utf8plain(document):
     document.inputencoding = get_value(document.header, "\\inputencoding", 0)
 
 
+def revert_beamer_alert(document):
+    " Revert beamer's \\alert inset back to ERT. "
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset CharStyle Alert", i)
+        if i == -1:
+            return
+        document.body[i] = "\\begin_inset ERT"
+        i = i + 1
+        while 1:
+            if (document.body[i][:13] == "\\begin_layout"):
+                # Insert the \alert command
+                document.body[i + 1] = "\\alert{" + document.body[i + 1] + '}'
+                break
+            i = i + 1
+
+        i = i + 1
+
+
+def revert_beamer_structure(document):
+    " Revert beamer's \\structure inset back to ERT. "
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset CharStyle Structure", i)
+        if i == -1:
+            return
+        document.body[i] = "\\begin_inset ERT"
+        i = i + 1
+        while 1:
+            if (document.body[i][:13] == "\\begin_layout"):
+                document.body[i + 1] = "\\structure{" + document.body[i + 1] + '}'
+                break
+            i = i + 1
+
+        i = i + 1
+
+
 def convert_changes(document):
     " Switch output_changes off if tracking_changes is off. "
     i = find_token(document.header, '\\tracking_changes', 0)
@@ -1529,7 +1566,7 @@ convert = [[246, []],
            [268, []],
            [269, []]]
 
-revert =  [
+revert =  [[269, [revert_beamer_alert, revert_beamer_structure]],
            [268, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
            [267, [revert_CJK]],
            [266, [revert_utf8plain]],

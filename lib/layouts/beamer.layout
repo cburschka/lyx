@@ -1055,10 +1055,27 @@ Style Uncover
   EndFont
 End
 
-
-
-
 # Input lyxmacros.inc
+
+# Charstyles:
+
+CharStyle Alert
+        LatexType             Command
+        LatexName             alert
+        Font
+          Color               red
+        EndFont
+End
+
+
+CharStyle Structure
+        LatexType             Command
+        LatexName             structure
+        Font
+          Color               blue 
+        EndFont
+End
+
 
 Float
   Type                  table
