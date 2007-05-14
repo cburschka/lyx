@@ -307,4 +307,40 @@ ucs4_to_eightbit(char_type const * ucs4str, size_t ls, string const & encoding)
 	return iconv_convert<char>(processors[encoding], ucs4str, ls);
 }
 
+
+char ucs4_to_eightbit(char_type ucs4, string const & encoding)
+{
+	static map<string, IconvProcessor> processors;
+	map<string, IconvProcessor>::iterator it = processors.find(encoding);
+	if (it == processors.end()) {
+		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
+		it = processors.insert(make_pair(encoding, processor)).first;
+	}
+
+	char out;
+	int const bytes = it->second.convert((char *)(&ucs4), 4, &out, 1);
+	if (bytes > 0)
+		return out;
+	return 0;
+}
+
+
+void ucs4_to_multibytes(char_type ucs4, vector<char> & out,
+	string const & encoding)
+{
+	static map<string, IconvProcessor> processors;
+	map<string, IconvProcessor>::iterator it = processors.find(encoding);
+	if (it == processors.end()) {
+		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
+		it = processors.insert(make_pair(encoding, processor)).first;
+	}
+
+	out.resize(4);
+	int bytes = it->second.convert((char *)(&ucs4), 4, &out[0], 4);
+	if (bytes > 0)
+		out.resize(bytes);
+	else
+		out.clear();
+}
+
 } // namespace lyx

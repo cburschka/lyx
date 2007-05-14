@@ -89,6 +89,14 @@ eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding);
 std::vector<char>
 ucs4_to_eightbit(char_type const * ucs4str, size_t ls, std::string const & encoding);
 
+/// convert ucs4 character \p c to encoding \p encoding.
+/// \p encoding must be a valid iconv 8bit encoding
+char ucs4_to_eightbit(char_type c, std::string const & encoding);
+
+///
+void ucs4_to_multibytes(char_type ucs4, std::vector<char> & out,
+	std::string const & encoding);
+
 extern char const * ucs4_codeset;
 
 
