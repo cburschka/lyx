@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Bo Peng
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -11,6 +12,7 @@
 #include <config.h>
 
 #include "InsetListings.h"
+#include "InsetCaption.h"
 
 #include "Language.h"
 #include "gettext.h"
@@ -127,8 +129,8 @@ docstring const InsetListings::editMessage() const
 }
 
 
-int InsetListings::latex(Buffer const &, odocstream & os,
-		    OutputParams const &) const
+int InsetListings::latex(Buffer const & buf, odocstream & os,
+		    OutputParams const & runparams) const
 {
 	string param_string = params().encodedString();
 	// NOTE: I use {} to quote text, which is an experimental feature
@@ -141,10 +143,18 @@ int InsetListings::latex(Buffer const &, odocstream & os,
 		else
 			os << "\\lstinline[" << from_ascii(param_string) << "]{";
 	} else {
-		if (param_string.empty())
+		docstring const caption = getCaption(buf, runparams);
+		if (param_string.empty() && caption.empty())
 			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}\n";
-		else
-			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}[" << from_ascii(param_string) << "]\n";
+		else {
+			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}[";
+			if (!caption.empty()) {
+				os << "caption={" << caption << '}';
+				if (!param_string.empty())
+					os << ',';
+			}
+			os << from_ascii(param_string) << "]\n";
+		}
 		lines += 4;
 	}
 	ParagraphList::const_iterator par = paragraphs().begin();
@@ -152,16 +162,19 @@ int InsetListings::latex(Buffer const &, odocstream & os,
 
 	while (par != end) {
 		pos_type siz = par->size();
+		bool captionline = false;
 		for (pos_type i = 0; i < siz; ++i) {
-			// ignore all struck out text
-			if (par->isDeleted(i))
+			if (i == 0 && par->isInset(i) && i + 1 == siz)
+				captionline = true;
+			// ignore all struck out text and (caption) insets
+			if (par->isDeleted(i) || par->isInset(i))
 				continue;
 			os.put(par->getChar(i));
 		}
 		++par;
 		// for the inline case, if there are multiple paragraphs
-		// they are simply joined. Otherwise, expect latex errors. 
-		if (par != end && !lstinline) {
+		// they are simply joined. Otherwise, expect latex errors.
+		if (par != end && !lstinline && !captionline) {
 			os << "\n";
 			++lines;
 		}
@@ -210,6 +223,9 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_INSET_DIALOG_UPDATE:
 			status.enabled(true);
 			return true;
+		case LFUN_CAPTION_INSERT:
+			status.enabled(!params().isInline());
+			return true;
 		default:
 			return InsetERT::getStatus(cur, cmd, status);
 	}
@@ -242,6 +258,31 @@ void InsetListings::getDrawFont(Font & font) const
 	font = Font(Font::ALL_INHERIT, english_language);
 	font.setFamily(Font::TYPEWRITER_FAMILY);
 	font.setColor(Color::foreground);
+}
+
+
+docstring InsetListings::getCaption(Buffer const & buf,
+		    OutputParams const & runparams) const
+{
+	if (paragraphs().empty())
+		return docstring();
+
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	for (; pit != paragraphs().end(); ++pit) {
+		InsetList::const_iterator it = pit->insetlist.begin();
+		for (; it != pit->insetlist.end(); ++it) {
+			Inset & inset = *it->inset;
+			if (inset.lyxCode() == Inset::CAPTION_CODE) {
+				odocstringstream ods;
+				InsetCaption * ins =
+					static_cast<InsetCaption *>(it->inset);
+				ins->getOptArg(buf, ods, runparams);
+				ins->getArgument(buf, ods, runparams);
+				return ods.str();
+			}
+		}
+	}
+	return docstring();
 }
 
 

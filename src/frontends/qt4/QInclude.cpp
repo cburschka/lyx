@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/os.h"
+#include "support/lstrings.h"
 
 #include "QInclude.h"
 
@@ -30,9 +31,12 @@
 #include <QLineEdit>
 
 using std::string;
+using std::vector;
 
 using lyx::support::os::internal_path;
-
+using lyx::support::prefixIs;
+using lyx::support::getStringFromVector;
+using lyx::support::getVectorFromString;
 
 namespace lyx {
 namespace frontend {
@@ -58,6 +62,8 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
 	connect(previewCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(captionLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(labelLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
 
@@ -85,13 +91,11 @@ void QIncludeDialog::validate_listings_params()
 		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
 		if (!isOK) {
 			isOK = true;
-			// listingsTB->setTextColor("black");
-			listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+			listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
 		isOK = false;
-		// listingsTB->setTextColor("red");
 		listingsTB->setPlainText(e.what());
 		okPB->setEnabled(false);
 	}
@@ -115,7 +119,6 @@ void QIncludeDialog::typeChanged(int v)
 			previewCB->setEnabled(false);
 			previewCB->setChecked(false);
 			listingsGB->setEnabled(false);
-			listingsED->setEnabled(false);
 			break;
 		//case Input
 		case 1:
@@ -123,7 +126,6 @@ void QIncludeDialog::typeChanged(int v)
 			visiblespaceCB->setChecked(false);
 			previewCB->setEnabled(true);
 			listingsGB->setEnabled(false);
-			listingsED->setEnabled(false);
 			break;
 		//case listings
 		case 3:
@@ -131,7 +133,6 @@ void QIncludeDialog::typeChanged(int v)
 			visiblespaceCB->setChecked(false);
 			previewCB->setEnabled(false);
 			listingsGB->setEnabled(true);
-			listingsED->setEnabled(true);
 			break;
 		//case Verbatim
 		default:
@@ -139,7 +140,6 @@ void QIncludeDialog::typeChanged(int v)
 			previewCB->setEnabled(false);
 			previewCB->setChecked(false);
 			listingsGB->setEnabled(false);
-			listingsED->setEnabled(false);
 			break;
 	}
 }
@@ -183,7 +183,7 @@ void QInclude::build_dialog()
 	bcview().addReadOnly(dialog_->visiblespaceCB);
 	bcview().addReadOnly(dialog_->typeCO);
 	bcview().addReadOnly(dialog_->listingsED);
-	dialog_->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 
 	addCheckedLineEdit(bcview(), dialog_->filenameED, dialog_->filenameLA);
 }
@@ -235,7 +235,29 @@ void QInclude::update_contents()
 		dialog_->listingsGB->setEnabled(true);
 		dialog_->listingsED->setEnabled(true);
 		InsetListingsParams par(params.getOptions());
-		dialog_->listingsED->setPlainText(toqstr(par.separatedParams()));
+		// extract caption and label and put them into their respective editboxes
+		vector<string> pars = getVectorFromString(par.separatedParams(), "\n");
+		for (vector<string>::iterator it = pars.begin();
+			it != pars.end(); ++it) {
+			if (prefixIs(*it, "caption=")) {
+				string cap = it->substr(8);
+				if (cap[0] == '{' && cap[cap.size()-1] == '}')
+					dialog_->captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
+				else
+					throw invalidParam("caption parameter is not quoted with braces");
+				*it = "";
+			} else if (prefixIs(*it, "label=")) {
+				string lbl = it->substr(6);
+				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}')
+					dialog_->labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
+				else
+					throw invalidParam("label parameter is not quoted with braces");
+				*it = "";
+			}
+		}
+		// the rest is put to the extra edit box.
+		string extra = getStringFromVector(pars);
+		dialog_->listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
 	}	
 }
 
@@ -257,7 +279,14 @@ void QInclude::apply()
 	} else if (item == 3) {
 		params.setCmdName("lstinputlisting");
 		// the parameter string should have passed validation
-		params.setOptions(InsetListingsParams(fromqstr(dialog_->listingsED->toPlainText())).params());
+		InsetListingsParams par(fromqstr(dialog_->listingsED->toPlainText()));
+		string caption = fromqstr(dialog_->captionLE->text());
+		string label = fromqstr(dialog_->labelLE->text());
+		if (!caption.empty())
+			par.addParam("caption", "{" + caption + "}");
+		if (!label.empty())
+			par.addParam("label", "{" + label + "}");
+		params.setOptions(par.params());
 	} else {
 		if (dialog_->visiblespaceCB->isChecked())
 			params.setCmdName("verbatiminput*");

@@ -33,12 +33,12 @@ namespace lyx
 {
 
 enum param_type {
-	ALL,
-	TRUEFALSE,
-	INTEGER,
-	LENGTH,
-	ONEOF,
-	SUBSETOF,
+	ALL,  // accept all
+	TRUEFALSE, // accept 'true' or 'false'
+	INTEGER, // accept an integer
+	LENGTH,  // accept an latex length
+	ONEOF,  // accept one of a few values
+	SUBSETOF, // accept a string composed of given characters
 };
 
 
@@ -148,8 +148,12 @@ listings_param_info const listings_param_table[] = {
 	{ "name", "", false, ALL, "", "" },
 	{ "thelstnumber", "", false, ALL, "", "" },
 	{ "title", "", false, ALL, "", "" },
-	{ "caption", "", false, ALL, "", "" },
-	{ "label", "", false, ALL, "", "" },
+	// this option is not handled in the parameter box
+	{ "caption", "", false, ALL, "", "This parameter should not be entered here. "
+		"Please use caption editbox (Include dialog) or insert->caption (listings inset)" },
+	// this option is not handled in the parameter box
+	{ "label", "", false, ALL, "", "This parameter should not be entered here."
+		"Please use label editbox (Include dialog) or insert->caption (listings inset)"},
 	{ "nolol", "", false, TRUEFALSE, "", "" },
 	{ "captionpos", "", false, SUBSETOF, "tb", "" },
 	{ "abovecaptionskip", "", false, LENGTH, "", "" },

@@ -417,6 +417,8 @@ void setCaptions(Paragraph & par, TextClass const & textclass)
 			// FIXME: are "table" and "Table" the correct type and label?
 			setCaptionLabels(inset, "table", from_ascii("Table"), counters);
 		}
+		else if (inset.lyxCode() == Inset::LISTINGS_CODE)
+			setCaptionLabels(inset, "listing", from_ascii("Listing"), counters);
 	}
 }
 

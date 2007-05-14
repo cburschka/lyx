@@ -278,6 +278,20 @@ int InsetCaption::docbook(Buffer const & buf, odocstream & os,
 }
 
 
+int InsetCaption::getArgument(Buffer const & buf, odocstream & os,
+                        OutputParams const & runparams) const
+{
+	return InsetText::latex(buf, os, runparams);
+}
+
+
+int InsetCaption::getOptArg(Buffer const & buf, odocstream & os,
+                        OutputParams const & runparams) const
+{
+	return latexOptArgInsets(buf, paragraphs()[0], os, runparams, 1);
+}
+
+
 void InsetCaption::computeFullLabel(Buffer const & buf) const
 {
 	if (type_.empty())

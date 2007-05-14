@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Bo Peng
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -78,8 +79,6 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(breaklinesCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(spaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(extendedcharsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(captionLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(labelLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
@@ -108,7 +107,7 @@ string QListingsDialog::construct_params()
 	
 	bool left = numberLeftCB->checkState() == Qt::Checked;
 	bool right = numberRightCB->checkState() == Qt::Checked;
-	string step = fromqstr(numberStepLE->text());
+	string stepnumber = fromqstr(numberStepLE->text());
 	string numberfontsize = fromqstr(numberFontSizeCO->currentText());
 	string firstline = fromqstr(firstlineLE->text());
 	string lastline = fromqstr(lastlineLE->text());
@@ -122,11 +121,7 @@ string QListingsDialog::construct_params()
 		basicstyle += "\\" + fontstyle;
 	bool breakline = breaklinesCB->checkState() == Qt::Checked;
 	bool space = spaceCB->checkState() == Qt::Checked;
-	bool extendedchar = extendedcharsCB->checkState() == Qt::Checked;
-	
-	string caption = fromqstr(captionLE->text());
-	string label = fromqstr(labelLE->text());
-	
+	bool extendedchars = extendedcharsCB->checkState() == Qt::Checked;
 	string extra = fromqstr(listingsED->toPlainText());
 
 	// compose a string
@@ -147,18 +142,16 @@ string QListingsDialog::construct_params()
 		par.addParam("firstline", firstline);
 	if (!lastline.empty())
 		par.addParam("lastline", lastline);
-	if (basicstyle != "")
+	if (!stepnumber.empty())
+		par.addParam("stepnumber", stepnumber);
+	if (!basicstyle.empty())
 		par.addParam("basicstyle", basicstyle);
 	if (breakline)
 		par.addParam("breaklines", "true");
 	if (space)
 		par.addParam("showspaces", "true");
-	if (extendedchar)
+	if (extendedchars)
 		par.addParam("extendedchars", "true");
-	if (!caption.empty())
-		par.addParam("caption", "{" + caption + "}");
-	if (!label.empty())
-		par.addParam("label", "{" + label + "}");
 	par.addParams(extra);
 	return par.params();
 }
@@ -171,13 +164,11 @@ void QListingsDialog::validate_listings_params()
 		InsetListingsParams par(construct_params());
 		if (!isOK) {
 			isOK = true;
-			// listingsTB->setTextColor("black");
-			listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+			listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
 		isOK = false;
-		// listingsTB->setTextColor("red");
 		listingsTB->setPlainText(e.what());
 		okPB->setEnabled(false);
 	}
@@ -203,7 +194,7 @@ void QListings::build_dialog()
 	
 	bcview().setOK(dialog_->okPB);
 	bcview().setCancel(dialog_->closePB);
-	dialog_->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 
 	update_contents();
 }
@@ -257,7 +248,7 @@ void QListings::update_contents()
 	dialog_->placementLE->setValidator(new QRegExpValidator(QRegExp("[tbph]*"), this));
 
 	//
-	dialog_->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 
 	// set values from param string
 	InsetListingsParams & params = controller().params();
@@ -344,22 +335,6 @@ void QListings::update_contents()
 			*it = "";
 		} else if (prefixIs(*it, "extendedchars=")) {
 			dialog_->extendedcharsCB->setChecked(contains(*it, "true"));
-			*it = "";
-		} else if (prefixIs(*it, "caption=")) {
-			string cap = it->substr(8);
-			if ((cap[0] == '{' && cap[cap.size()-1] == '}') ||
-				(cap[0] == '"' && cap[cap.size()-1] == '"') )
-				dialog_->captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
-			else
-				dialog_->captionLE->setText(toqstr(cap));		
-			*it = "";
-		} else if (prefixIs(*it, "label=")) {
-			string lbl = it->substr(6);
-			if ((lbl[0] == '{' && lbl[lbl.size()-1] == '}') ||
-				(lbl[0] == '"' && lbl[lbl.size()-1] == '"') )
-				dialog_->labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
-			else
-				dialog_->labelLE->setText(toqstr(lbl));			
 			*it = "";
 		}
 	}

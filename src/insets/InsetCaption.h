@@ -69,6 +69,12 @@ public:
 	///
 	int docbook(Buffer const & buf, odocstream & os,
 	            OutputParams const & runparams) const;
+	/// return the mandatory argument (LaTeX format) only
+	int getArgument(Buffer const & buf, odocstream & os,
+	          OutputParams const &) const;
+	/// return the optional argument(s) only
+	int getOptArg(Buffer const & buf, odocstream & os,
+	          OutputParams const &) const;
 	///
 	void setCount(int c) { counter_ = c; }
 	///

@@ -1871,6 +1871,8 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 		name = from_ascii("thm");
 	else if (name == "Foot")
 		name = from_ascii("fn");
+	else if (name == "listing")
+		name = from_ascii("lst");
 		
 	if (!name.empty())
 		text = name.substr(0, 3) + ':' + text;

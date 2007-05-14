@@ -67,6 +67,8 @@ private:
 	///
 	void setButtonLabel();
 	///
+	docstring getCaption(Buffer const &, OutputParams const &) const;
+	///
 	InsetListingsParams params_;
 };
 
