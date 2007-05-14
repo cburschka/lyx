@@ -109,6 +109,7 @@ PreambleModule::PreambleModule(): current_id_(0)
 	// with this.
 	(void) new LaTeXHighlighter(preambleTE->document());
 	setFocusProxy(preambleTE);
+	connect(preambleTE, SIGNAL(textChanged()), this, SIGNAL(changed()));
 }
 
 
