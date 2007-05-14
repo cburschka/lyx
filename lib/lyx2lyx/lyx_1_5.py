@@ -340,19 +340,24 @@ key "argument"
 
 This must be called after convert_commandparams.
 """
-    regex = re.compile(r'\S+\s*(\[[^\[\{]*\])?(\{[^}]*\})')
     i = 0
     while 1:
         i = find_token(document.body, "\\bibitem", i)
         if i == -1:
             break
-        match = re.match(regex, document.body[i])
-        option = match.group(1)
-        argument = match.group(2)
+        j = document.body[i].find('[') + 1
+        k = document.body[i].rfind(']')
+        if j == 0: # No optional argument found
+            option = None
+        else:
+            option = document.body[i][j:k]
+        j = document.body[i].rfind('{') + 1
+        k = document.body[i].rfind('}')
+        argument = document.body[i][j:k]
         lines = ['\\begin_inset LatexCommand bibitem']
         if option != None:
-            lines.append('label "%s"' % option[1:-1].replace('"', '\\"'))
-        lines.append('key "%s"' % argument[1:-1].replace('"', '\\"'))
+            lines.append('label "%s"' % option.replace('"', '\\"'))
+        lines.append('key "%s"' % argument.replace('"', '\\"'))
         lines.append('')
         lines.append('\\end_inset')
         document.body[i:i+1] = lines
@@ -1564,7 +1569,8 @@ convert = [[246, []],
            [266, []],
            [267, []],
            [268, []],
-           [269, []]]
+           [269, []],
+           [270, []]]
 
 revert =  [[269, [revert_beamer_alert, revert_beamer_structure]],
            [268, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
