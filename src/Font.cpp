@@ -749,7 +749,14 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	int count = 0;
 	if (language()->babel() != base.language()->babel() &&
 	    language() != prev.language()) {
-		if (isRightToLeft() != prev.isRightToLeft()) {
+		if (language()->lang() == "farsi") {
+			os << "\\textFR{";
+			count += 8;
+		} else if (!isRightToLeft() && 
+			    base.language()->lang() == "farsi") {
+			os << "\\textLR{";
+			count += 8;
+		} else if (isRightToLeft() != prev.isRightToLeft()) {
 			if (isRightToLeft()) {
 				os << "\\R{";
 				count += 3;
@@ -781,8 +788,12 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	}
 
 	// When the current language is Hebrew, Arabic, or Farsi
-	// the numbers are written Left-to-Right.
-	if (number() == ON && prev.number() != ON && isRightToLeft()) {
+	// the numbers are written Left-to-Right. ArabTeX package 
+	// reorders the number automatically but the packages used
+	// for Hebrew and Farsi (Arabi) do not.
+	if (number() == ON && prev.number() != ON 
+		&& (language()->lang() == "hebrew" 
+			|| language()->lang() == "farsi")) {
 		os << "{\\beginL ";
 		count += 9;
 	}
@@ -910,8 +921,12 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 	}
 
 	// When the current language is Hebrew, Arabic, or Farsi
-	// the numbers are written Left-to-Right.
-	if (number() == ON && next.number() != ON && isRightToLeft()) {
+	// the numbers are written Left-to-Right. ArabTeX package 
+	// reorders the number automatically but the packages used
+	// for Hebrew and Farsi (Arabi) do not.
+	if (number() == ON && next.number() != ON 
+		&& (language()->lang() == "hebrew" 
+			|| language()->lang() == "farsi")) {
 		os << "\\endL}";
 		count += 6;
 	}
