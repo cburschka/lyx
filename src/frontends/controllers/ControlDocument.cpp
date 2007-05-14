@@ -79,6 +79,12 @@ BufferParams & ControlDocument::params() const
 }
 
 
+int ControlDocument::id() const
+{
+	return (int) &kernel().buffer();
+}
+
+
 TextClass const & ControlDocument::textClass() const
 {
 	return textclasslist[bp_->textclass];

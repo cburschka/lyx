@@ -25,10 +25,13 @@
 #include "ui/BiblioUi.h"
 #include "ui/NumberingUi.h"
 #include "ui/MarginsUi.h"
+
+// For the Preamble module
 #include "ui/PreambleUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>
+
 #include <vector>
 #include <string>
 
@@ -49,6 +52,7 @@ namespace frontend {
 
 class QBranches;
 class QDocument;
+class PreambleModule;
 
 class QDocumentDialog : public QDialog, public Ui::QDocumentUi {
 	Q_OBJECT
@@ -99,7 +103,7 @@ private:
 	UiWidget<Ui::BiblioUi> *biblioModule;
 	UiWidget<Ui::MathsUi> *mathsModule;
 	UiWidget<Ui::LaTeXUi> *latexModule;
-	UiWidget<Ui::PreambleUi> *preambleModule;
+	PreambleModule *preambleModule;
 
 	QBranches *branchesModule;
 
@@ -111,7 +115,6 @@ private:
 	/// FIXME
 	std::vector<std::string> lang_;
 };
-
 
 
 class ControlDocument;
@@ -139,6 +142,31 @@ private:
 	/// reset to default params
 	void useClassDefaults();
 };
+
+
+class PreambleModule : public UiWidget<Ui::PreambleUi>
+{
+	Q_OBJECT
+public:
+	PreambleModule();
+	void update(BufferParams const & params, int id);
+	void apply(BufferParams & params);
+
+Q_SIGNALS:
+	/// signal that something's changed in the Widget.
+	void changed();
+
+protected:
+	void closeEvent(QCloseEvent *);
+	void on_preambleTE_textChanged() { changed(); }
+
+private:
+	typedef std::map<int, std::pair<int,int> > Coords;
+	Coords preamble_coords_;
+	int current_id_;
+};
+
+
 
 } // namespace frontend
 } // namespace lyx

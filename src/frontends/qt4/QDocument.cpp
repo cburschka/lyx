@@ -11,21 +11,21 @@
 #include <config.h>
 
 #include "QDocument.h"
-#include "Qt2BC.h"
-#include "qt_helpers.h"
-#include "QBranches.h"
 
-#include <QCloseEvent>
-
+#include "CheckedLineEdit.h"
 #include "FloatPlacement.h"
 #include "LengthCombo.h"
-#include "Validator.h"
 #include "PanelStack.h"
 #include "Qt2BC.h"
-#include "CheckedLineEdit.h"
+#include "qt_helpers.h"
+#include "Validator.h"
 
-// For latexHighlighter use in the preamble.
-#include "QViewSource.h"
+// For the Branches module
+#include "QBranches.h"
+
+#include "QViewSource.h" // For latexHighlighter use in the preamble.
+
+#include "controllers/ControlDocument.h"
 
 #include "BufferParams.h"
 #include "Encoding.h"
@@ -41,8 +41,10 @@
 
 #include "support/lstrings.h"
 
-#include "controllers/ControlDocument.h"
+#include <QCloseEvent>
+#include <QTextCursor>
 
+#include <map>
 
 using lyx::support::token;
 using lyx::support::bformat;
@@ -50,6 +52,7 @@ using lyx::support::findToken;
 using lyx::support::getVectorFromString;
 
 using std::distance;
+using std::make_pair;
 using std::vector;
 using std::string;
 
@@ -92,6 +95,67 @@ char const * tex_fonts_monospaced_gui[] = { N_("Default"), N_("Computer Modern T
 
 namespace lyx {
 namespace frontend {
+
+/////////////////////////////////////////////////////////////////////
+//
+// PreambleModule
+//
+/////////////////////////////////////////////////////////////////////
+
+PreambleModule::PreambleModule(): current_id_(0)
+{
+	// This is not a memory leak. The object will be destroyed
+	// with this.
+	(void) new LaTeXHighlighter(preambleTE->document());
+	setFocusProxy(preambleTE);
+}
+
+
+void PreambleModule::update(BufferParams const & params, int id)
+{
+	QString preamble = toqstr(params.preamble);
+	// Nothing to do if the params and preamble are unchanged.
+	if (id == current_id_ 
+		&& preamble == preambleTE->document()->toPlainText())
+		return;
+
+	QTextCursor cur = preambleTE->textCursor();
+	// Save the coords before switching to the new one.
+	preamble_coords_[current_id_] = 
+		make_pair(cur.position(), preambleTE->verticalScrollBar()->value());
+
+	// Save the params address for further use.
+	current_id_ = id;
+	preambleTE->document()->setPlainText(preamble);
+	Coords::const_iterator it = preamble_coords_.find(current_id_);
+	if (it == preamble_coords_.end())
+		// First time we open this one.
+		preamble_coords_[current_id_] = make_pair(0,0);
+	else {
+		// Restore saved coords.
+		QTextCursor cur = preambleTE->textCursor();
+		cur.setPosition(it->second.first);
+		preambleTE->setTextCursor(cur);
+		preambleTE->verticalScrollBar()->setValue(it->second.second);
+	}
+}
+
+
+void PreambleModule::apply(BufferParams & params)
+{
+	params.preamble = fromqstr(preambleTE->document()->toPlainText());
+}
+
+
+void PreambleModule::closeEvent(QCloseEvent * e)
+{
+	// Save the coords before closing.
+	QTextCursor cur = preambleTE->textCursor();
+	preamble_coords_[current_id_] = 
+		make_pair(cur.position(), preambleTE->verticalScrollBar()->value());
+	e->accept();
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -481,13 +545,9 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(change_adaptor()));
 
 	// preamble
-	preambleModule = new UiWidget<Ui::PreambleUi>;
-	connect(preambleModule->preambleTE, SIGNAL(textChanged()),
+	preambleModule = new PreambleModule;
+	connect(preambleModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
-	// This is not a memory leak. The object will be destroyed
-	// with preambleModule.
-	(void) new LaTeXHighlighter(preambleModule->preambleTE->document());
-
 
 	// bullets
 	bulletsModule = new BulletsModule;
@@ -770,8 +830,7 @@ void QDocumentDialog::updateNumbering()
 void QDocumentDialog::apply(BufferParams & params)
 {
 	// preamble
-	params.preamble =
-		fromqstr(preambleModule->preambleTE->document()->toPlainText());
+	preambleModule->apply(params);
 
 	// biblio
 	params.setCiteEngine(biblio::ENGINE_BASIC);
@@ -1050,9 +1109,7 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 	}
 
 	// preamble
-	QString preamble = toqstr(params.preamble);
-	if (preamble != preambleModule->preambleTE->document()->toPlainText())
-		preambleModule->preambleTE->document()->setPlainText(preamble);
+	preambleModule->update(params, form_->controller().id());
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
@@ -1289,7 +1346,6 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 
 	branchesModule->update(params);
 }
-
 
 
 /////////////////////////////////////////////////////////////////////

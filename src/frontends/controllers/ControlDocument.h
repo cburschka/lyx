@@ -50,6 +50,8 @@ public:
 	///
 	BufferParams & params() const;
 	///
+	int id() const;
+	///
 	void setLanguage() const;
 	///
 	void saveAsDefault() const;
