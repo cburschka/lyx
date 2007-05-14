@@ -1441,11 +1441,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			InsetIterator const end = inset_iterator_end(inset);
 			for (; it != end; ++it) {
 				if (!it->asMathInset()
+				    && it->lyxCode() != InsetBase::TABULAR_CODE
 				    && (inset_code == InsetBase::NO_CODE
 				    || inset_code == it->lyxCode())) {
 					LCursor tmpcur = cur;
 					tmpcur.pushLeft(*it);
-					it->dispatch(tmpcur, fr);
+					if (!tmpcur.inset().asMathInset())
+						it->dispatch(tmpcur, fr);
 				}
 			}
 			update = true;

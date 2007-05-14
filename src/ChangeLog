@@ -1,3 +1,8 @@
+2007-05-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxfunc.C  (dispatch): assure math and tabular insets are 
+	really not toggled via ALL_INSETS_TOGGLE (fixes bug 3358).
+
 2007-05-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyxfunc.C  (dispatch): do not attempt to toggle math insets
