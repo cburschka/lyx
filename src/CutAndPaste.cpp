@@ -301,7 +301,12 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 	for (pit_type pit = startpit; pit != endpit + 1;) {
 		pos_type const left  = (pit == startpit ? startpos : 0);
-		pos_type const right = (pit == endpit ? endpos : pars[pit].size() + 1);
+		pos_type right = (pit == endpit ? endpos : pars[pit].size() + 1);
+		// FIXME: this is a quick fix for bug 3600. It stops a crash but the problem
+		// still remains unsolved (e.g. the second example in the bug report).
+		// c.f. http://bugzilla.lyx.org/show_bug.cgi?id=3600
+		if (right > pars[pit].size() + 1)
+			right = pars[pit].size() + 1;
 
 		bool const merge = pars[pit].isMergedOnEndOfParDeletion(params.trackChanges);
 
