@@ -42,6 +42,7 @@
 #include "support/lstrings.h"
 
 #include <QCloseEvent>
+#include <QScrollBar>
 #include <QTextCursor>
 
 #include <map>
