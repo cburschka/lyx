@@ -26,7 +26,6 @@ libfrontends_la_SOURCES = \
 	FontLoader.h \
 	FontMetrics.h \
 	KeySymbol.h \
-	KeySymbolFactory.h \
 	LyXView.cpp \
 	LyXView.h \
 	Menubar.h \

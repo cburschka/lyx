@@ -152,7 +152,6 @@ lyx_SOURCES = \
 	KeyMap.h \
 	KeySequence.cpp \
 	KeySequence.h \
-	KmodInfo.h \
 	Language.cpp \
 	Language.h \
 	LaTeX.cpp \
@@ -210,7 +209,6 @@ lyx_SOURCES = \
 	paragraph_funcs.cpp \
 	paragraph_funcs.h \
 	Paragraph.h \
-	ParagraphList_fwd.h \
 	ParagraphList.h \
 	ParagraphMetrics.cpp \
 	ParagraphMetrics.h \
