@@ -204,7 +204,6 @@ void QInclude::update_contents()
 	dialog_->previewCB->setChecked(false);
 	dialog_->previewCB->setEnabled(false);
 	dialog_->listingsGB->setEnabled(false);
-	dialog_->listingsED->setEnabled(false);
 
 	string cmdname = controller().params().getCmdName();
 	if (cmdname != "include" &&
