@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 269
+\lyxformat 270
 \begin_document
 \begin_header
 \textclass scrbook
@@ -203,6 +203,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
+\author "Bo Peng" 
 \author "usti" 
 \author "Uwe Stöhr" 
 \end_header
@@ -23638,6 +23639,118 @@ fi
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter
+Program Listings
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+listings 
+\family default
+latex package provides a powerful and flexible way to insert program source
+ code into your document.
+\end_layout
+
+\begin_layout Standard
+There are three types of listings, in listings package terms:
+\end_layout
+
+\begin_layout Description
+lstinline short piece of program code like 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+\color foreground
+int a=5;
+\end_layout
+
+\end_inset
+
+ .
+ To insert this listing, choose 
+\family typewriter
+Insert->Program Listing
+\family default
+ and choose 
+\family typewriter
+inline listing 
+\family default
+from the 
+\family typewriter
+placement 
+\family default
+section.
+\end_layout
+
+\begin_layout Description
+lstlisting long program listing in its own paragraphs and decorations, For
+ example, 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+\color foreground
+def func(param):
+\end_layout
+
+\begin_layout Standard
+    'this is a python function'
+\end_layout
+
+\begin_layout Standard
+    pass
+\end_layout
+
+\end_inset
+
+To insert this listing, choose 
+\family typewriter
+Insert->Program Listing
+\family default
+.
+\end_layout
+
+\begin_layout Description
+lstinputlisting read program listing from a file.
+ Parameters can be given to list only given lines.
+ For example, the following listings list line 10 - 15 of this lyx file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[firstline=10,lastline=15,language=TeX,breaklines=true,caption={Line 10 - 15 of this lyx file}]
+preview false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To insert this listing, choose 
+\family typewriter
+Insert-> File->Child Document
+\family default
+, and choose 
+\family typewriter
+listings 
+\family default
+type.
+\end_layout
+
+\begin_layout Standard
+A lot of listings parameters can be set through the listings dialog, child
+ document dialog.
+ Global listings settings can be set through 
+\family typewriter
+Document -> Settings -> Text Layout.
 \end_layout
 
 \begin_layout Chapter
