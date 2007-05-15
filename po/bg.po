@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-13 14:36-0500\n"
+"POT-Creation-Date: 2007-05-15 11:39+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -44,7 +44,7 @@ msgstr "Авторски права"
 #: src/frontends/qt4/ui/DelimiterUi.ui:107
 #: src/frontends/qt4/ui/ErrorListUi.ui:62
 #: src/frontends/qt4/ui/ExternalUi.ui:705 src/frontends/qt4/ui/FloatUi.ui:85
-#: src/frontends/qt4/ui/IncludeUi.ui:327 src/frontends/qt4/ui/LogUi.ui:71
+#: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LogUi.ui:71
 #: src/frontends/qt4/ui/ParagraphUi.ui:99 src/frontends/qt4/ui/PrefsUi.ui:96
 #: src/frontends/qt4/ui/RefUi.ui:100 src/frontends/qt4/ui/SearchUi.ui:210
 #: src/frontends/qt4/ui/ShowFileUi.ui:58
@@ -80,7 +80,7 @@ msgstr "Обобщение"
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:702
-#: src/frontends/qt4/ui/IncludeUi.ui:317 src/frontends/qt4/ui/IndexUi.ui:82
+#: src/frontends/qt4/ui/IncludeUi.ui:227 src/frontends/qt4/ui/IndexUi.ui:82
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
 #: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
@@ -200,7 +200,7 @@ msgstr "(&A)Добави"
 # src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:819
+#: src/frontends/qt4/ui/ListingsUi.ui:515
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
 #: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
@@ -222,7 +222,7 @@ msgstr "Достъпни клавиши"
 # src/frontends/xforms/form_preferences.C:1038
 #: src/frontends/qt4/ui/BibtexAddUi.ui:126
 #: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:99
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/IncludeUi.ui:147
+#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/IncludeUi.ui:319
 #: src/frontends/qt4/ui/PrintUi.ui:316
 #, fuzzy
 msgid "&Browse..."
@@ -599,8 +599,8 @@ msgstr "Размер(Z):|#Z"
 #: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
-#: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:78
-#: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:270
+#: src/frontends/qt4/QDocument.cpp:71 src/frontends/qt4/QDocument.cpp:82
+#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:336
 msgid "Default"
 msgstr "Стандартно"
 
@@ -746,8 +746,8 @@ msgstr ""
 # src/frontends/xforms/FormPreferences.C:280
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:47 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:508
+#: src/frontends/qt4/ui/ListingsUi.ui:178 lib/layouts/europecv.layout:144
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
 #: src/frontends/qt4/QPrefs.cpp:1578
 msgid "Language"
 msgstr "Език"
@@ -787,8 +787,6 @@ msgstr "Без превключване"
 # src/frontends/xforms/form_document.C:262
 #: src/frontends/qt4/ui/CharacterUi.ui:224
 #: src/frontends/qt4/ui/CharacterUi.ui:245
-#: src/frontends/qt4/ui/ListingsUi.ui:253
-#: src/frontends/qt4/ui/ListingsUi.ui:430
 #, fuzzy
 msgid "Font size"
 msgstr "Шрифт размер(O):|#O"
@@ -1037,7 +1035,7 @@ msgstr "Запази оформлението като подразбиращо се(S)|S"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/ui/ListingsUi.ui:581
+#: src/frontends/qt4/ui/ERTUi.ui:31
 #, fuzzy
 msgid "Display"
 msgstr "Графика"
@@ -1094,7 +1092,7 @@ msgid "&Edit File..."
 msgstr "Редактирай файл(E)|#E"
 
 # src/lyxfunc.C:3215
-#: src/frontends/qt4/ui/ExternalUi.ui:96 src/frontends/qt4/ui/IncludeUi.ui:144
+#: src/frontends/qt4/ui/ExternalUi.ui:96 src/frontends/qt4/ui/IncludeUi.ui:316
 #, fuzzy
 msgid "Select a file"
 msgstr "Изберете "
@@ -1108,7 +1106,7 @@ msgstr "Име на файл(F):|#F"
 
 # src/frontends/kde/dlg/printdlgdata.C:246
 #: src/frontends/qt4/ui/ExternalUi.ui:109
-#: src/frontends/qt4/ui/GraphicsUi.ui:88 src/frontends/qt4/ui/IncludeUi.ui:55
+#: src/frontends/qt4/ui/GraphicsUi.ui:88 src/frontends/qt4/ui/IncludeUi.ui:249
 #: src/frontends/qt4/ui/PrintUi.ui:296
 #, fuzzy
 msgid "&File:"
@@ -1469,7 +1467,7 @@ msgstr "Изберете "
 
 # src/form1.C:245
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:214
+#: src/frontends/qt4/ui/ListingsUi.ui:349
 #, fuzzy
 msgid "File name of image"
 msgstr "Име на файл(F):|#F"
@@ -1616,76 +1614,89 @@ msgstr "(&F)Файл"
 msgid "Sca&le on Screen (%):"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:65
-msgid "File name to include"
+#: src/frontends/qt4/ui/IncludeUi.ui:36
+msgid "Listing Params"
 msgstr ""
 
-# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
-#: src/frontends/qt4/ui/IncludeUi.ui:82
+# src/ext_l10n.h:191
+#: src/frontends/qt4/ui/IncludeUi.ui:76
 #, fuzzy
-msgid "&Include Type:"
-msgstr "Включи"
+msgid "C&aption:"
+msgstr "Заглавие"
 
-# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
-#: src/frontends/qt4/ui/IncludeUi.ui:93 src/insets/InsetInclude.cpp:322
-msgid "Include"
-msgstr "Включи"
+# src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+# src/insets/insetbib.C:211
+#: src/frontends/qt4/ui/IncludeUi.ui:89
+#, fuzzy
+msgid "La&bel:"
+msgstr "Етикет(L):|#L"
 
-# src/insets/insetinclude.C:314
-#: src/frontends/qt4/ui/IncludeUi.ui:98 src/insets/InsetInclude.cpp:313
-msgid "Input"
-msgstr "Вход"
-
-# src/ext_l10n.h:409
-#: src/frontends/qt4/ui/IncludeUi.ui:103 lib/layouts/manpage.layout:122
-msgid "Verbatim"
+#: src/frontends/qt4/ui/IncludeUi.ui:99
+msgid "Mo&re parameters"
 msgstr ""
 
-# src/ext_l10n.h:274
-#: src/frontends/qt4/ui/IncludeUi.ui:108 src/insets/InsetListings.cpp:222
-#, fuzzy
-msgid "Listings"
-msgstr "Списък"
-
-# src/frontends/xforms/FormPreferences.C:2248
-#: src/frontends/qt4/ui/IncludeUi.ui:154 src/frontends/qt4/ui/IncludeUi.ui:276
-#, fuzzy
-msgid "Load the file"
-msgstr "Последни файлове"
-
-# src/insets/insetinclude.C:59 src/insets/insetinclude.C:60
-#: src/frontends/qt4/ui/IncludeUi.ui:157
-#, fuzzy
-msgid "&Load"
-msgstr "Зареди(L)|#L"
-
-#: src/frontends/qt4/ui/IncludeUi.ui:184
+#: src/frontends/qt4/ui/IncludeUi.ui:173
 msgid "Underline spaces in generated output"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:187
+#: src/frontends/qt4/ui/IncludeUi.ui:176
 msgid "&Mark spaces in output"
 msgstr ""
 
 # src/lyx_cb.C:675
-#: src/frontends/qt4/ui/IncludeUi.ui:202
+#: src/frontends/qt4/ui/IncludeUi.ui:191
 #, fuzzy
 msgid "Show LaTeX preview"
 msgstr "LaTeX увод"
 
 # src/frontends/kde/dlg/printdlgdata.C:246
-#: src/frontends/qt4/ui/IncludeUi.ui:205
+#: src/frontends/qt4/ui/IncludeUi.ui:194
 #, fuzzy
 msgid "&Show preview"
 msgstr "(&F)Файл"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:222
-msgid "Listing Params"
+#: src/frontends/qt4/ui/IncludeUi.ui:259
+msgid "File name to include"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:279
-msgid "&Edit parameters"
+# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
+#: src/frontends/qt4/ui/IncludeUi.ui:266
+#, fuzzy
+msgid "&Include Type:"
+msgstr "Включи"
+
+# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
+#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:322
+msgid "Include"
+msgstr "Включи"
+
+# src/insets/insetinclude.C:314
+#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:313
+msgid "Input"
+msgstr "Вход"
+
+# src/ext_l10n.h:409
+#: src/frontends/qt4/ui/IncludeUi.ui:287 lib/layouts/manpage.layout:122
+msgid "Verbatim"
 msgstr ""
+
+# src/ext_l10n.h:274
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:238
+#, fuzzy
+msgid "Listings"
+msgstr "Списък"
+
+# src/frontends/xforms/FormPreferences.C:2248
+#: src/frontends/qt4/ui/IncludeUi.ui:326
+#, fuzzy
+msgid "Load the file"
+msgstr "Последни файлове"
+
+# src/insets/insetinclude.C:59 src/insets/insetinclude.C:60
+#: src/frontends/qt4/ui/IncludeUi.ui:329
+#, fuzzy
+msgid "&Load"
+msgstr "Зареди(L)|#L"
 
 # src/exporter.C:89
 #: src/frontends/qt4/ui/LaTeXUi.ui:58
@@ -1727,158 +1738,149 @@ msgstr "Вид кавички"
 msgid "Listing"
 msgstr "Списък"
 
+# src/insets/insetbib.C:219
+#: src/frontends/qt4/ui/ListingsUi.ui:35
+#, fuzzy
+msgid "Main Settings"
+msgstr "Библ. перо"
+
+# src/insets/insetbib.C:340
+#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
+#, fuzzy
+msgid "Style"
+msgstr "Стил: "
+
+#: src/frontends/qt4/ui/ListingsUi.ui:59
+msgid "Breaking lines longer than the linewidth"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:62
+msgid "&Break long lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:72
+msgid "Insert a special symbol for a space"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:75
+msgid "&Space as Symbol"
+msgstr ""
+
+# src/form1.C:33
+#: src/frontends/qt4/ui/ListingsUi.ui:88
+#, fuzzy
+msgid "Use extended character table"
+msgstr "Кодировка(H):|#H"
+
+# src/ext_l10n.h:140
+#: src/frontends/qt4/ui/ListingsUi.ui:91
+#, fuzzy
+msgid "&Extended Chars"
+msgstr "Разширени свойства(E)|E"
+
+# src/frontends/xforms/form_document.C:262
+#: src/frontends/qt4/ui/ListingsUi.ui:101
+#, fuzzy
+msgid "Font style:"
+msgstr "Шрифт размер(O):|#O"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:122
+msgid "Choose the Font Style"
+msgstr ""
+
+# src/frontends/xforms/form_document.C:262
+#: src/frontends/qt4/ui/ListingsUi.ui:138
+#: src/frontends/qt4/ui/ListingsUi.ui:336
+#, fuzzy
+msgid "Font size:"
+msgstr "Шрифт размер(O):|#O"
+
+# src/lyxfunc.C:3128
+#: src/frontends/qt4/ui/ListingsUi.ui:159
+#: src/frontends/qt4/ui/ListingsUi.ui:320
+#, fuzzy
+msgid "Choose the Font Size"
+msgstr "Изберете шаблон"
+
 # src/LColor.C:75
-#: src/frontends/qt4/ui/ListingsUi.ui:65
-#: src/frontends/qt4/ui/ListingsUi.ui:120
+#: src/frontends/qt4/ui/ListingsUi.ui:196
 #, fuzzy
 msgid "Placement"
 msgstr "акцент"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:77
-msgid "Inline listing"
-msgstr ""
+# src/LColor.C:75
+#: src/frontends/qt4/ui/ListingsUi.ui:211
+#, fuzzy
+msgid "Placement:"
+msgstr "акцент"
 
 # src/frontends/xforms/FormPreferences.C:252
-#: src/frontends/qt4/ui/ListingsUi.ui:84
+#: src/frontends/qt4/ui/ListingsUi.ui:221
 #, fuzzy
 msgid "Float"
 msgstr "Формати"
 
+#: src/frontends/qt4/ui/ListingsUi.ui:228
+msgid "Inline listing"
+msgstr ""
+
 # src/lyxfont.C:415
-#: src/frontends/qt4/ui/ListingsUi.ui:158
+#: src/frontends/qt4/ui/ListingsUi.ui:238
 #, fuzzy
 msgid "Number style"
 msgstr " Номер "
 
-#: src/frontends/qt4/ui/ListingsUi.ui:178
+# src/LColor.C:84
+#: src/frontends/qt4/ui/ListingsUi.ui:250
+#, fuzzy
+msgid "Last line:"
+msgstr "ред на математика"
+
+# src/ext_l10n.h:242
+#: src/frontends/qt4/ui/ListingsUi.ui:263
+#, fuzzy
+msgid "First line:"
+msgstr "Малко име"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "enable for numbers on the leftside"
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:120
-#: src/frontends/qt4/ui/ListingsUi.ui:181
+#: src/frontends/qt4/ui/ListingsUi.ui:287
 #: src/frontends/qt4/ui/ParagraphUi.ui:285
 #, fuzzy
 msgid "&Left"
 msgstr "Ляв"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:194
+#: src/frontends/qt4/ui/ListingsUi.ui:300
 msgid "enable for numbers on the right side"
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:133
-#: src/frontends/qt4/ui/ListingsUi.ui:197
+#: src/frontends/qt4/ui/ListingsUi.ui:303
 #: src/frontends/qt4/ui/ParagraphUi.ui:292
 #, fuzzy
 msgid "&Right"
 msgstr "Десен"
 
 # src/ext_l10n.h:362
-#: src/frontends/qt4/ui/ListingsUi.ui:217 lib/layouts/ijmpc.layout:161
-#: lib/layouts/ijmpd.layout:158
+#: src/frontends/qt4/ui/ListingsUi.ui:352
 #, fuzzy
-msgid "Step"
+msgid "Step:"
 msgstr "Държава"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:230
-#: src/frontends/qt4/ui/ListingsUi.ui:318
-#: src/frontends/qt4/ui/ListingsUi.ui:354
+#: src/frontends/qt4/ui/ListingsUi.ui:365
+#: src/frontends/qt4/ui/ListingsUi.ui:378
+#: src/frontends/qt4/ui/ListingsUi.ui:391
 msgid "Differenz between two numbered lines"
 msgstr ""
 
-# src/lyxfunc.C:3128
-#: src/frontends/qt4/ui/ListingsUi.ui:266
-#: src/frontends/qt4/ui/ListingsUi.ui:443
-#, fuzzy
-msgid "Choose the Font Size"
-msgstr "Изберете шаблон"
-
-# src/ext_l10n.h:242
-#: src/frontends/qt4/ui/ListingsUi.ui:305
-#, fuzzy
-msgid "First line"
-msgstr "Малко име"
-
-# src/LColor.C:84
-#: src/frontends/qt4/ui/ListingsUi.ui:341
-#, fuzzy
-msgid "Last line"
-msgstr "ред на математика"
-
-# src/insets/insetbib.C:340
-#: src/frontends/qt4/ui/ListingsUi.ui:403
-#: src/frontends/qt4/ui/TabularUi.ui:301
-#, fuzzy
-msgid "Style"
-msgstr "Стил: "
-
-# src/ext_l10n.h:126
-#: src/frontends/qt4/ui/ListingsUi.ui:415
-#, fuzzy
-msgid "Basic style"
-msgstr "Стил TeX|X"
-
-# src/frontends/xforms/form_document.C:262
-#: src/frontends/qt4/ui/ListingsUi.ui:469
-#, fuzzy
-msgid "Font style"
-msgstr "Шрифт размер(O):|#O"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:482
-msgid "Choose the Font Style"
+#: src/frontends/qt4/ui/ListingsUi.ui:408
+msgid "Advanced"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:513
-msgid "Breaking lines longer than the linewidth"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:516
-msgid "&Break long lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:526
-msgid "Insert a special symbol for a space"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:529
-msgid "&Space as Symbol"
-msgstr ""
-
-# src/form1.C:33
-#: src/frontends/qt4/ui/ListingsUi.ui:542
-#, fuzzy
-msgid "Use extended character table"
-msgstr "Кодировка(H):|#H"
-
-# src/ext_l10n.h:140
-#: src/frontends/qt4/ui/ListingsUi.ui:545
-#, fuzzy
-msgid "&Extended Chars"
-msgstr "Разширени свойства(E)|E"
-
-# src/ext_l10n.h:191
-#: src/frontends/qt4/ui/ListingsUi.ui:593
-#, fuzzy
-msgid "&Caption"
-msgstr "Заглавие"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:620
-msgid "A caption for the List of Listings"
-msgstr ""
-
-# src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
-# src/insets/insetbib.C:211
-#: src/frontends/qt4/ui/ListingsUi.ui:645
-#, fuzzy
-msgid "&Label"
-msgstr "Етикет(L):|#L"
-
-# src/ext_l10n.h:191
-#: src/frontends/qt4/ui/ListingsUi.ui:672
-#, fuzzy
-msgid "A Label for the caption"
-msgstr "Заглавие"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:734
+#: src/frontends/qt4/ui/ListingsUi.ui:428
 msgid "More Parameters"
 msgstr ""
 
@@ -1887,7 +1889,7 @@ msgstr ""
 # src/frontends/kde/dlg/indexdlgdata.C:68
 # src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
 # src/frontends/kde/urldlg.C:52
-#: src/frontends/qt4/ui/ListingsUi.ui:809
+#: src/frontends/qt4/ui/ListingsUi.ui:505
 #, fuzzy
 msgid "OK"
 msgstr "&OK"
@@ -2203,8 +2205,8 @@ msgid "L&ine spacing:"
 msgstr "Разстояние"
 
 # src/bufferview_funcs.C:280
-#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1737
-#: src/frontends/qt4/QDocument.cpp:164
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1773
+#: src/frontends/qt4/QDocument.cpp:230
 msgid "Single"
 msgstr "Единично"
 
@@ -2213,8 +2215,8 @@ msgid "1.5"
 msgstr ""
 
 # src/bufferview_funcs.C:286
-#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1743
-#: src/frontends/qt4/QDocument.cpp:168
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1779
+#: src/frontends/qt4/QDocument.cpp:234
 msgid "Double"
 msgstr "Двойно"
 
@@ -2222,7 +2224,7 @@ msgstr "Двойно"
 #: src/frontends/qt4/ui/ParagraphUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:170 src/frontends/qt4/QDocument.cpp:271
+#: src/frontends/qt4/QDocument.cpp:236 src/frontends/qt4/QDocument.cpp:337
 #, fuzzy
 msgid "Custom"
 msgstr "Клиент"
@@ -2608,34 +2610,34 @@ msgid "Te&X encoding:"
 msgstr "TeX кодировка|#T"
 
 # src/ext_l10n.h:362
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:272
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:338
 #, fuzzy
 msgid "US letter"
 msgstr "Държава"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:273
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:339
 msgid "US legal"
 msgstr ""
 
 # src/ext_l10n.h:234
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:274
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:340
 #, fuzzy
 msgid "US executive"
 msgstr "Упражнение"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:275
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:341
 msgid "A3"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:276
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:342
 msgid "A4"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:277
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:343
 msgid "A5"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:280
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:346
 msgid "B5"
 msgstr ""
 
@@ -4047,19 +4049,19 @@ msgid "DefSkip"
 msgstr "Нормално разстояние"
 
 # src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:157
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:223
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Малко разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:158
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:224
 #, fuzzy
 msgid "MedSkip"
 msgstr "Средно разстояние"
 
 # src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:159
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:225
 #, fuzzy
 msgid "BigSkip"
 msgstr "Голямо разстояние"
@@ -4299,7 +4301,7 @@ msgstr "Дефиниция"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:408
+#: src/frontends/qt4/QDocument.cpp:474
 msgid "Example"
 msgstr "Пример"
 
@@ -4584,7 +4586,7 @@ msgstr "Индекс запис"
 #: lib/layouts/aguplus.inc:168 lib/layouts/aguplus.inc:170
 #: lib/layouts/amsdefs.inc:229 lib/layouts/scrclass.inc:223
 #: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:326
-#: src/frontends/qt4/QDocument.cpp:510
+#: src/frontends/qt4/QDocument.cpp:572
 msgid "Bibliography"
 msgstr "Библиография"
 
@@ -5414,7 +5416,7 @@ msgid "Seriate"
 msgstr "Сръбски"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.cpp:524
+#: src/buffer_funcs.cpp:526
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -5769,7 +5771,7 @@ msgid "uncovered on slides  "
 msgstr ""
 
 # src/frontends/xforms/FormTabular.C:133
-#: lib/layouts/beamer.layout:1065 lib/layouts/stdfloats.inc:10
+#: lib/layouts/beamer.layout:1082 lib/layouts/stdfloats.inc:10
 #: lib/ui/stdtoolbars.inc:110
 #, fuzzy
 msgid "Table"
@@ -5778,19 +5780,19 @@ msgstr "Дълга таблица"
 # src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 # src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
 # src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
-#: lib/layouts/beamer.layout:1070 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1087 lib/layouts/stdfloats.inc:15
 #, fuzzy
 msgid "List of Tables"
 msgstr "Списък на таблици"
 
 # src/ext_l10n.h:244
-#: lib/layouts/beamer.layout:1076 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1093 lib/layouts/stdfloats.inc:22
 #, fuzzy
 msgid "Figure"
 msgstr "Фигура"
 
 # src/ext_l10n.h:244
-#: lib/layouts/beamer.layout:1081 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1098 lib/layouts/stdfloats.inc:27
 #, fuzzy
 msgid "List of Figures"
 msgstr "Фигура"
@@ -7569,6 +7571,12 @@ msgstr "Ключови дума"
 #: lib/layouts/ijmpc.layout:92
 msgid "Classification Codes"
 msgstr ""
+
+# src/ext_l10n.h:362
+#: lib/layouts/ijmpc.layout:161 lib/layouts/ijmpd.layout:158
+#, fuzzy
+msgid "Step"
+msgstr "Държава"
 
 # src/ext_l10n.h:371
 #: lib/layouts/ijmpc.layout:165 lib/layouts/ijmpd.layout:162
@@ -12047,7 +12055,7 @@ msgstr "Матем. символи"
 
 # src/bufferview_funcs.C:267
 #: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
-#: src/frontends/qt4/QDocument.cpp:504
+#: src/frontends/qt4/QDocument.cpp:566
 #, fuzzy
 msgid "Fonts"
 msgstr "Шрифт:"
@@ -15468,7 +15476,7 @@ msgstr "Дълбочина"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:436
+#: src/CutAndPaste.cpp:441
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -15478,12 +15486,12 @@ msgid ""
 msgstr ""
 
 # src/frontends/xforms/FormParagraph.C:33
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:446
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Оформление на абзац"
 
-#: src/CutAndPaste.cpp:460
+#: src/CutAndPaste.cpp:465
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -15491,7 +15499,7 @@ msgid ""
 msgstr ""
 
 # src/form1.C:33
-#: src/CutAndPaste.cpp:467
+#: src/CutAndPaste.cpp:472
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Кодировка(H):|#H"
@@ -16923,81 +16931,81 @@ msgstr ""
 "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
 
 # src/LyXAction.C:263
-#: src/Text.cpp:1703
+#: src/Text.cpp:1739
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Смяна на език"
 
 # src/frontends/xforms/form_print.C:112
-#: src/Text.cpp:1709
+#: src/Text.cpp:1745
 #, fuzzy
 msgid "Change: "
 msgstr "Страници:"
 
 # src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
 # src/converter.C:554
-#: src/Text.cpp:1713
+#: src/Text.cpp:1749
 #, fuzzy
 msgid " at "
 msgstr " на "
 
 # src/bufferview_funcs.C:267
-#: src/Text.cpp:1723
+#: src/Text.cpp:1759
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1728
+#: src/Text.cpp:1764
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Дълбочина: "
 
 # src/bufferview_funcs.C:277
-#: src/Text.cpp:1734
+#: src/Text.cpp:1770
 msgid ", Spacing: "
 msgstr ", Отместване: "
 
 # src/bufferview_funcs.C:283
-#: src/Text.cpp:1740 src/frontends/qt4/QDocument.cpp:166
+#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:232
 #, fuzzy
 msgid "OneHalf"
 msgstr "Половин"
 
 # src/bufferview_funcs.C:289
-#: src/Text.cpp:1746
+#: src/Text.cpp:1782
 msgid "Other ("
 msgstr "Друго ("
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1755
+#: src/Text.cpp:1791
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:303
-#: src/Text.cpp:1756
+#: src/Text.cpp:1792
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Абзац"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1757
+#: src/Text.cpp:1793
 #, fuzzy
 msgid ", Id: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:320
-#: src/Text.cpp:1758
+#: src/Text.cpp:1794
 #, fuzzy
 msgid ", Position: "
 msgstr "Допускане"
 
-#: src/Text.cpp:1764
+#: src/Text.cpp:1800
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1766
+#: src/Text.cpp:1802
 msgid ", Boundary: "
 msgstr ""
 
@@ -17184,17 +17192,17 @@ msgid "Could not read template"
 msgstr "Недъзможна е работата с файл: "
 
 # src/ext_l10n.h:371
-#: src/buffer_funcs.cpp:521
+#: src/buffer_funcs.cpp:523
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Подраздел"
 
-#: src/buffer_funcs.cpp:527
+#: src/buffer_funcs.cpp:529
 msgid "\\roman{enumiii}."
 msgstr ""
 
 # src/LColor.C:64
-#: src/buffer_funcs.cpp:530
+#: src/buffer_funcs.cpp:532
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "избор"
@@ -18144,12 +18152,12 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:751
+#: src/frontends/qt4/QDocument.cpp:813
 msgid "Yes"
 msgstr ""
 
 # src/lyxfont.C:407
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:750
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:812
 #, fuzzy
 msgid "No"
 msgstr "Съществително "
@@ -18236,310 +18244,310 @@ msgstr "Няма"
 msgid "Variable"
 msgstr "ред на таблица"
 
-#: src/frontends/qt4/QDocument.cpp:67
+#: src/frontends/qt4/QDocument.cpp:71
 msgid "Computer Modern Roman"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:67
+#: src/frontends/qt4/QDocument.cpp:71
 msgid "Latin Modern Roman"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:68
+#: src/frontends/qt4/QDocument.cpp:72
 msgid "AE (Almost European)"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
-#: src/frontends/qt4/QDocument.cpp:68
+#: src/frontends/qt4/QDocument.cpp:72
 #, fuzzy
 msgid "Times Roman"
 msgstr "Roman"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: src/frontends/qt4/QDocument.cpp:68
+#: src/frontends/qt4/QDocument.cpp:72
 #, fuzzy
 msgid "Palatino"
 msgstr "Залепи"
 
-#: src/frontends/qt4/QDocument.cpp:68
+#: src/frontends/qt4/QDocument.cpp:72
 msgid "Bitstream Charter"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:69
+#: src/frontends/qt4/QDocument.cpp:73
 msgid "New Century Schoolbook"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
-#: src/frontends/qt4/QDocument.cpp:69
+#: src/frontends/qt4/QDocument.cpp:73
 #, fuzzy
 msgid "Bookman"
 msgstr "Roman"
 
-#: src/frontends/qt4/QDocument.cpp:69
+#: src/frontends/qt4/QDocument.cpp:73
 msgid "Utopia"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:108
-#: src/frontends/qt4/QDocument.cpp:69
+#: src/frontends/qt4/QDocument.cpp:73
 #, fuzzy
 msgid "Bera Serif"
 msgstr "Sans Serif"
 
-#: src/frontends/qt4/QDocument.cpp:70
+#: src/frontends/qt4/QDocument.cpp:74
 msgid "Concrete Roman"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:70
+#: src/frontends/qt4/QDocument.cpp:74
 msgid "Zapf Chancery"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:78
+#: src/frontends/qt4/QDocument.cpp:82
 msgid "Computer Modern Sans"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:78
+#: src/frontends/qt4/QDocument.cpp:82
 msgid "Latin Modern Sans"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:83
 msgid "Helvetica"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:83
 msgid "Avant Garde"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:83
 msgid "Bera Sans"
 msgstr ""
 
 # src/ext_l10n.h:209
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:83
 #, fuzzy
 msgid "CM Bright"
 msgstr "Авторски права"
 
-#: src/frontends/qt4/QDocument.cpp:88
+#: src/frontends/qt4/QDocument.cpp:92
 msgid "Computer Modern Typewriter"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:93
 #, fuzzy
 msgid "Latin Modern Typewriter"
 msgstr "Машинопис"
 
 # src/frontends/kde/dlg/printdlgdata.C:73
 # src/frontends/xforms/form_print.C:135
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:93
 #, fuzzy
 msgid "Courier"
 msgstr "Копия"
 
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:93
 msgid "Bera Mono"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:93
 msgid "LuxiMono"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
-#: src/frontends/qt4/QDocument.cpp:90
+#: src/frontends/qt4/QDocument.cpp:94
 #, fuzzy
 msgid "CM Typewriter Light"
 msgstr "Машинопис"
 
 # src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
-#: src/frontends/qt4/QDocument.cpp:160
+#: src/frontends/qt4/QDocument.cpp:226
 msgid "Length"
 msgstr "Дължина"
 
-#: src/frontends/qt4/QDocument.cpp:205 src/frontends/qt4/QDocument.cpp:211
-#: src/frontends/qt4/QDocument.cpp:217
+#: src/frontends/qt4/QDocument.cpp:271 src/frontends/qt4/QDocument.cpp:277
+#: src/frontends/qt4/QDocument.cpp:283
 msgid " (not installed)"
 msgstr ""
 
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: src/frontends/qt4/QDocument.cpp:221 src/frontends/qt4/QDocument.cpp:258
-#: src/frontends/qt4/QDocument.cpp:660
+#: src/frontends/qt4/QDocument.cpp:287 src/frontends/qt4/QDocument.cpp:324
+#: src/frontends/qt4/QDocument.cpp:722
 #, fuzzy
 msgid "default"
 msgstr "Стандартно"
 
-#: src/frontends/qt4/QDocument.cpp:222
+#: src/frontends/qt4/QDocument.cpp:288
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:223
+#: src/frontends/qt4/QDocument.cpp:289
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:224
+#: src/frontends/qt4/QDocument.cpp:290
 msgid "12"
 msgstr ""
 
 # src/frontends/kde/tocdlg.C:57
-#: src/frontends/qt4/QDocument.cpp:259
+#: src/frontends/qt4/QDocument.cpp:325
 #, fuzzy
 msgid "empty"
 msgstr "Дълбочина"
 
 # src/mathed/math_panel.C:128
-#: src/frontends/qt4/QDocument.cpp:260
+#: src/frontends/qt4/QDocument.cpp:326
 #, fuzzy
 msgid "plain"
 msgstr "Разстояние"
 
 # src/buffer.C:329
-#: src/frontends/qt4/QDocument.cpp:261
+#: src/frontends/qt4/QDocument.cpp:327
 #, fuzzy
 msgid "headings"
 msgstr "Грешка при ченете от "
 
-#: src/frontends/qt4/QDocument.cpp:262
+#: src/frontends/qt4/QDocument.cpp:328
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:278
+#: src/frontends/qt4/QDocument.cpp:344
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:279
+#: src/frontends/qt4/QDocument.cpp:345
 msgid "B4"
 msgstr ""
 
 # src/ext_l10n.h:133
-#: src/frontends/qt4/QDocument.cpp:382
+#: src/frontends/qt4/QDocument.cpp:448
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX Протокол(L)|L"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:388
+#: src/frontends/qt4/QDocument.cpp:454
 #, fuzzy
 msgid "``text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:389
+#: src/frontends/qt4/QDocument.cpp:455
 #, fuzzy
 msgid "''text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:390
+#: src/frontends/qt4/QDocument.cpp:456
 #, fuzzy
 msgid ",,text``"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:391
+#: src/frontends/qt4/QDocument.cpp:457
 #, fuzzy
 msgid ",,text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:392
+#: src/frontends/qt4/QDocument.cpp:458
 #, fuzzy
 msgid "<<text>>"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:393
+#: src/frontends/qt4/QDocument.cpp:459
 #, fuzzy
 msgid ">>text<<"
 msgstr "текст"
 
 # src/mathed/formula.C:929
-#: src/frontends/qt4/QDocument.cpp:409
+#: src/frontends/qt4/QDocument.cpp:475
 #, fuzzy
 msgid "Numbered"
 msgstr "Номериране"
 
-#: src/frontends/qt4/QDocument.cpp:410
+#: src/frontends/qt4/QDocument.cpp:476
 msgid "Appears in TOC"
 msgstr ""
 
 # src/ext_l10n.h:175
-#: src/frontends/qt4/QDocument.cpp:430
+#: src/frontends/qt4/QDocument.cpp:496
 #, fuzzy
 msgid "Author-year"
 msgstr "Автор"
 
 # src/ext_l10n.h:423
-#: src/frontends/qt4/QDocument.cpp:431
+#: src/frontends/qt4/QDocument.cpp:497
 #, fuzzy
 msgid "Numerical"
 msgstr "Американски"
 
 # src/frontends/kde/citationdlg.C:35
-#: src/frontends/qt4/QDocument.cpp:473
+#: src/frontends/qt4/QDocument.cpp:539
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Достъпни клавиши"
 
 # src/exporter.C:89
-#: src/frontends/qt4/QDocument.cpp:503 src/frontends/qt4/QDocument.cpp:516
+#: src/frontends/qt4/QDocument.cpp:565 src/frontends/qt4/QDocument.cpp:578
 #, fuzzy
 msgid "Document Class"
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/frontends/qt4/QDocument.cpp:505
+#: src/frontends/qt4/QDocument.cpp:567
 #, fuzzy
 msgid "Text Layout"
 msgstr "Непознато "
 
 # src/frontends/xforms/FormParagraph.C:33
-#: src/frontends/qt4/QDocument.cpp:506
+#: src/frontends/qt4/QDocument.cpp:568
 #, fuzzy
 msgid "Page Layout"
 msgstr "Оформление на абзац"
 
 # src/frontends/xforms/form_document.C:98
-#: src/frontends/qt4/QDocument.cpp:507
+#: src/frontends/qt4/QDocument.cpp:569
 #, fuzzy
 msgid "Page Margins"
 msgstr "Полета"
 
 # src/mathed/formula.C:929
-#: src/frontends/qt4/QDocument.cpp:509
+#: src/frontends/qt4/QDocument.cpp:571
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Номериране"
 
 # src/frontends/xforms/form_preferences.C:926
-#: src/frontends/qt4/QDocument.cpp:511
+#: src/frontends/qt4/QDocument.cpp:573
 #, fuzzy
 msgid "Math Options"
 msgstr "допълнителни опции"
 
 # src/sp_form.C:86
-#: src/frontends/qt4/QDocument.cpp:512
+#: src/frontends/qt4/QDocument.cpp:574
 #, fuzzy
 msgid "Float Placement"
 msgstr "Замести"
 
 # src/frontends/xforms/FormDocument.C:281
-#: src/frontends/qt4/QDocument.cpp:513
+#: src/frontends/qt4/QDocument.cpp:575
 msgid "Bullets"
 msgstr "Точки"
 
 # src/ext_l10n.h:441
-#: src/frontends/qt4/QDocument.cpp:514
+#: src/frontends/qt4/QDocument.cpp:576
 #, fuzzy
 msgid "Branches"
 msgstr "Френски"
 
 # src/lyx_cb.C:675
-#: src/frontends/qt4/QDocument.cpp:515 src/frontends/qt4/QDocument.cpp:527
+#: src/frontends/qt4/QDocument.cpp:577 src/frontends/qt4/QDocument.cpp:589
 msgid "LaTeX Preamble"
 msgstr "LaTeX увод"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: src/frontends/qt4/QDocument.cpp:1306
+#: src/frontends/qt4/QDocument.cpp:1364
 #, fuzzy
 msgid "Document Settings"
 msgstr "Документи"
@@ -18551,13 +18559,13 @@ msgid "TeX Code Settings"
 msgstr "допълнителни опции"
 
 # src/ext_l10n.h:94
-#: src/frontends/qt4/QExternal.cpp:495
+#: src/frontends/qt4/QExternal.cpp:497
 #, fuzzy
 msgid "External Material"
 msgstr "Външен материал(x)...|x"
 
 # src/frontends/xforms/form_tabular.C:453
-#: src/frontends/qt4/QExternal.cpp:555
+#: src/frontends/qt4/QExternal.cpp:557
 #, fuzzy
 msgid "Scale%"
 msgstr "Специален"
@@ -18577,13 +18585,13 @@ msgstr "Графика"
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/frontends/qt4/QInclude.cpp:185
+#: src/frontends/qt4/QInclude.cpp:171
 #, fuzzy
 msgid "Child Document"
 msgstr "Документ"
 
 # src/LColor.C:78
-#: src/frontends/qt4/QListings.cpp:195
+#: src/frontends/qt4/QListings.cpp:186
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "ред на министраница"
@@ -18991,7 +18999,7 @@ msgid "Opened Caption Inset"
 msgstr "Отворен Float Inset"
 
 # src/ext_l10n.h:163
-#: src/insets/InsetCaption.cpp:284
+#: src/insets/InsetCaption.cpp:298
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Адреси"
@@ -19166,7 +19174,7 @@ msgid "Index"
 msgstr "Индекс"
 
 # src/insets/insetfloat.C:150
-#: src/insets/InsetListings.cpp:126
+#: src/insets/InsetListings.cpp:128
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "Отворен Float Inset"
@@ -19339,6 +19347,16 @@ msgstr ""
 #: src/insets/InsetText.cpp:236
 msgid "Opened Text Inset"
 msgstr "Отворен Text Inset"
+
+# src/insets/insettheorem.C:39
+#: src/insets/InsetTheorem.cpp:41
+msgid "theorem"
+msgstr "Теорема"
+
+# src/insets/insettheorem.C:68
+#: src/insets/InsetTheorem.cpp:91
+msgid "Opened Theorem Inset"
+msgstr "Отворен Theorem Inset"
 
 # src/insets/inseturl.C:32
 #: src/insets/InsetUrl.cpp:42
@@ -19558,6 +19576,12 @@ msgstr "1 низ беше заместен."
 msgid " strings have been replaced."
 msgstr " низа бяха заместени."
 
+# src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
+#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr "Макрос: "
+
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -19628,12 +19652,6 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:856
 msgid "entered math text mode (textrm)"
 msgstr ""
-
-# src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
-#: src/mathed/MathMacroTemplate.cpp:109
-#, fuzzy, c-format
-msgid " Macro: %1$s: "
-msgstr "Макрос: "
 
 # src/LColor.C:81
 #: src/mathed/MathMacroTemplate.cpp:241
@@ -19749,6 +19767,27 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Непознато действие"
 
+# src/ext_l10n.h:126
+#, fuzzy
+#~ msgid "Basic style"
+#~ msgstr "Стил TeX|X"
+
+# src/ext_l10n.h:191
+#, fuzzy
+#~ msgid "&Caption"
+#~ msgstr "Заглавие"
+
+# src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+# src/insets/insetbib.C:211
+#, fuzzy
+#~ msgid "&Label"
+#~ msgstr "Етикет(L):|#L"
+
+# src/ext_l10n.h:191
+#, fuzzy
+#~ msgid "A Label for the caption"
+#~ msgstr "Заглавие"
+
 # src/ext_l10n.h:398
 #, fuzzy
 #~ msgid "D&own"
@@ -19798,14 +19837,6 @@ msgstr "Непознато действие"
 #, fuzzy
 #~ msgid "Glo"
 #~ msgstr "(&G)Назад"
-
-# src/insets/insettheorem.C:39
-#~ msgid "theorem"
-#~ msgstr "Теорема"
-
-# src/insets/insettheorem.C:68
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "Отворен Theorem Inset"
 
 # src/frontends/xforms/form_toc.C:40
 #, fuzzy
