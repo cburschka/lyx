@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 269
+\lyxformat 270
 \begin_document
 \begin_header
 \textclass article
@@ -2957,6 +2957,31 @@ natbib
  It supports cite styles which are common in human sciences and law studies,
  footcites, ibidems, and more.
  You'll need to have jurabib version 0.6 at least.
+\end_layout
+
+\begin_layout Subsection
+listings
+\end_layout
+
+\begin_layout Description
+Found: @chk_listings@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/listings/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+listings
+\family default
+\color none
+ is used by LyX to display program listings (source code snippets).
+ It supports many program languages, syntax highlighting, line numbers,
+ etc.
 \end_layout
 
 \begin_layout Subsection
