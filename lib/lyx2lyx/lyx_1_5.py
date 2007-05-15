@@ -1601,6 +1601,62 @@ lstinputlisting{file}[opt]
                                     r'\end_inset']
 
 
+def revert_ext_font_sizes(document):
+    if document.backend != "latex": return
+    if not document.textclass.startswith("ext"): return
+
+    fontsize = get_value(document.header, '\\paperfontsize', 0)
+    if fontsize not in ('10', '11', '12'): return
+    fontsize += 'pt'
+
+    i = find_token(document.header, '\\paperfontsize', 0)
+    document.header[i] = '\\paperfontsize default'
+
+    i = find_token(document.header, '\\options', 0)
+    if i == -1:
+        i = find_token(document.header, '\\textclass', 0) + 1
+        document.header[i:i] = ['\\options %s' % fontsize]
+    else:
+        document.header[i] += ',%s' % fontsize
+
+
+def convert_ext_font_sizes(document):
+    if document.backend != "latex": return
+    if not document.textclass.startswith("ext"): return
+
+    fontsize = get_value(document.header, '\\paperfontsize', 0)
+    if fontsize != 'default': return
+
+    i = find_token(document.header, '\\options', 0)
+    if i == -1: return
+
+    options = get_value(document.header, '\\options', i)
+
+    fontsizes = '10pt', '11pt', '12pt'
+    for fs in fontsizes:
+        if options.find(fs) != -1:
+            break
+    else: # this else will only be attained if the for cycle had no match
+        return
+
+    options = options.split(',')
+    for j, opt in enumerate(options):
+        if opt in fontsizes:
+            fontsize = opt[:-2]
+            del options[j]
+            break
+    else:
+        return
+
+    k = find_token(document.header, '\\paperfontsize', 0)
+    document.header[k] = '\\paperfontsize %s' % fontsize
+
+    if options:
+        document.header[i] = '\\options %s' % ','.join(options)
+    else:
+        del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -1630,9 +1686,13 @@ convert = [[246, []],
            [267, []],
            [268, []],
            [269, []],
-           [270, []]]
+           [270, []],
+           [271, [convert_ext_font_sizes]]
+          ]
 
-revert =  [[269, [revert_beamer_alert, revert_beamer_structure]],
+revert =  [
+           [270, [revert_ext_font_sizes]],
+           [269, [revert_beamer_alert, revert_beamer_structure]],
            [268, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
            [267, [revert_CJK]],
            [266, [revert_utf8plain]],
