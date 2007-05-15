@@ -60,6 +60,9 @@ protected:
 private:
 	/// Reconnects the selection model change signal when TOC changed.
 	void reconnectSelectionModel();
+	/// Disconnects the selection model.
+	//This is a workaround for a problem of signals blocking.
+	void disconnectSelectionModel();
 
 	QToc * form_;
 

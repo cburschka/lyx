@@ -106,7 +106,8 @@ depth calculation.
 int TocWidget::getIndexDepth(QModelIndex const & index, int depth)
 {
 	++depth;
-	return (index.parent() == QModelIndex())? depth : getIndexDepth(index.parent(),depth);
+	return (index.parent() ==
+		QModelIndex())? depth : getIndexDepth(index.parent(),depth);
 }
 
 
@@ -205,12 +206,10 @@ void TocWidget::select(QModelIndex const & index)
 		return;
 	}
 
-	tocTV->selectionModel()->blockSignals(true);
-	tocTV->selectionModel()->clear();
-	tocTV->scrollTo(index);
-	tocTV->selectionModel()->setCurrentIndex(index,
-		QItemSelectionModel::ClearAndSelect);
-	tocTV->selectionModel()->blockSignals(false);
+	disconnectSelectionModel();
+	tocTV->setCurrentIndex(index);
+ 	tocTV->scrollTo(index);
+	reconnectSelectionModel();
 }
 
 
@@ -307,8 +306,21 @@ void TocWidget::setTocModel(size_t type)
 void TocWidget::reconnectSelectionModel()
 {
 	connect(tocTV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
-		this, SLOT(selectionChanged(const QModelIndex &, const QModelIndex &)));
+		SIGNAL(currentChanged(const QModelIndex &,
+		       const QModelIndex &)),
+		this,
+		SLOT(selectionChanged(const QModelIndex &,
+		     const QModelIndex &)));
+}
+
+void TocWidget::disconnectSelectionModel()
+{
+	disconnect(tocTV->selectionModel(),
+		   SIGNAL(currentChanged(const QModelIndex &, 
+			  const QModelIndex &)),
+		   this,
+		   SLOT(selectionChanged(const QModelIndex &,
+			const QModelIndex &)));
 }
 
 } // namespace frontend
