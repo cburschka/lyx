@@ -1,16 +1,20 @@
-﻿Version LyX 1.5beta3-14-05-2007
-- LyX 1.5 beta3 from 14-05-2007
+﻿Version LyX 1.5beta3-15-05-2007
+- LyX 1.5 beta3 from 15-05-2007
   - fix bug, introduced with last version, that all margin notes in
     a document are lost
   - support for Chinese, Japenese and Korean
   - support for the LaTeX-package "listings"
 
+- updated to ImageMagick 6.3.4
+- updated to Phyton 2.5.1
+- updated to MikteX 2.6 (version 2675)
 - fix bug that LyX's menu language setting was ignored when LyX is
   started by double-clicking on a LyX-file
 - when Updating PDFs, the PDF is opened at the last viewed position
   (only works with Acrobat/adobe Reader version <= 7)
 - fix hopefully the case that PDFs couldn't be updated when
   Adobe Reader 8 is used on Windows Vista
+- fix bug that MiKTeX and JabRef weren't correctly uninstalled
 
 
 Version LyX 1.5svn-02-05-2007

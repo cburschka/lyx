@@ -57,10 +57,8 @@ Var AspellBaseReg
 Var AspellMessage
 Var ImageMagickPath
 Var JabRefInstalled
-Var JabRefVersionVar
 Var LatexPath
 Var MiKTeXInstalled
-Var MiKTeXVersionVar
 Var PythonPath
 Var Answer
 Var AppPre

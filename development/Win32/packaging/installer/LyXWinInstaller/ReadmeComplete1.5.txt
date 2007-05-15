@@ -92,5 +92,5 @@ License (GPL). A package with the sourcecode can be found
 in the section "LyxWinInstallerSource" of
 http://developer.berlios.de/project/showfiles.php?group_id=5117
 
-The license files of all used pgrograms can be found in the subdirectory "bin"
+The license files of all used programs can be found in the subdirectory "bin"
 of LyX's installation folder.

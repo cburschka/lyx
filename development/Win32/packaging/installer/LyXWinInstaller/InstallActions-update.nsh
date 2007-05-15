@@ -205,14 +205,12 @@ Function RefreshRegUninst
   ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
-   StrCpy $MiKTeXVersionVar ${MiKTeXDeliveredVersionOld}
   ${endif}
   
   # JabRef
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersionOld}" "OnlyWithLyX"
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
-   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersionOld}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
-   StrCpy $JabRefVersionVar ${JabRefVersionOld}
+   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
   ${endif}
   
   # Aiksaurus

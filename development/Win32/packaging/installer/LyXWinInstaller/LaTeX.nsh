@@ -1,25 +1,44 @@
 Function LaTeXActions
- # tests if MiKTeX is installed
- # reads the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
- 
+ # check if MiKTeX or TeXLive is installed
+
+  # test if MiKTeX is installed
+  # reads the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
   StrCpy $Search "miktex"
   Call LaTeXCheck # sets the path to the latex.exe to $LatexPath # Function from LyXUtils.nsh
-  # check if MiKTeX 2.4 or 2.5 is installed
-  StrCpy $String ""
-  ReadRegStr $String HKLM "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
-  ${if} $String != ""
-   StrCpy $MiKTeXVersion "2.4" # needed later for the configuration of MiKTeX
-   StrCpy $LaTeXName "MiKTeX 2.4"
+  
+  ${if} $LatexPath != ""
+   # check if MiKTeX 2.4, 2.5 or 2.6 is installed
+   ReadRegStr $String HKLM "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
+   ${if} $String != ""
+    StrCpy $MiKTeXVersion "2.4" # needed later for the configuration of MiKTeX
+    StrCpy $LaTeXName "MiKTeX 2.4"
+   ${endif}
+   # check if MiKTeX 2.5 or 2.6 is installed
+   StrCpy $0 0
+   loopA:
+    EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
+    StrCmp $1 "" doneA
+    StrCpy $String $1
+    IntOp $0 $0 + 1
+    Goto loopA
+   doneA:
+   ${if} $String == "2.5"
+    StrCpy $MiKTeXVersion "2.5"
+    StrCpy $LaTeXName "MiKTeX 2.5"
+   ${endif}
+   ${if} $String == "2.6"
+    StrCpy $MiKTeXVersion "2.6"
+    StrCpy $LaTeXName "MiKTeX 2.6"
+   ${endif}
   ${endif}
   
   ${if} $LatexPath == "" # check if MiKTeX is installed only for the current user
-   # check for MiKTeX 2.5
    ReadRegStr $String HKCU "Environment" "Path"
    StrCpy $Search "miktex"
    Call LaTeXCheck # function from LyXUtils.nsh
    ${if} $LatexPath != ""
-    StrCpy $MiKTeXUser "HKCU" # needed later to for a message about MiKTeX's install folder write permissions, see InstallActions-*.nsh
+    StrCpy $MiKTeXUser "HKCU" # needed later to configure MiKTeX
    ${endif}
    # check for MiKTeX 2.4
    StrCpy $String ""
@@ -28,15 +47,29 @@ Function LaTeXActions
     StrCpy $MiKTeXVersion "2.4"
     StrCpy $LaTeXName "MiKTeX 2.4"
    ${endif}
+   # check for MiKTeX 2.5 and 2.6
+   StrCpy $0 0
+   loopB:
+    EnumRegKey $1 HKCU "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
+    StrCmp $1 "" doneB
+    StrCpy $String $1
+    IntOp $0 $0 + 1
+    Goto loopB
+   doneB:
+   ${if} $String == "2.5"
+    StrCpy $MiKTeXVersion "2.5"
+    StrCpy $LaTeXName "MiKTeX 2.5"
+   ${endif}
+   ${if} $String == "2.6"
+    StrCpy $MiKTeXVersion "2.6"
+    StrCpy $LaTeXName "MiKTeX 2.6"
+   ${endif}
   ${endif}
   
   ${if} $LatexPath != ""
    StrCpy $MiKTeXInstalled "yes"
-   ${if} $LaTeXName != "MiKTeX 2.4"
-    StrCpy $LaTeXName "MiKTeX 2.5"
-   ${endif} 
   ${endif}
-
+  
   # test if TeXLive is installed
   # as described at TeXLives' homepage there should be an entry in the PATH
   ${if} $LatexPath == ""
@@ -67,10 +100,53 @@ Function LaTeXActions
   ${if} $LatexPath != ""
   ${andif} $LaTeXName != "MiKTeX 2.4"
   ${andif} $LaTeXName != "MiKTeX 2.5"
+  ${andif} $LaTeXName != "MiKTeX 2.6"
    StrCpy $LaTeXName "TeXLive"
   ${endif}
-  
+
 FunctionEnd
+
+# -------------------------------------------
+
+!if ${INSTALLER_VERSION} == "Complete"
+
+ Function InstallMiKTeX
+  # install MiKTeX if not already installed
+
+  ${if} $LatexPath == ""
+   # launch MiKTeX's installer
+   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
+   ExecWait ${MiKTeXInstall}
+   # test if MiKTeX is installed
+   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
+   StrCpy $Search "miktex"
+   Call LaTeXCheck
+   ${if} $LatexPath == ""
+    StrCpy $MiKTeXUser "HKCU"
+    ReadRegStr $String HKCU "Environment" "Path"
+    StrCpy $Search "miktex"
+    Call LaTeXCheck
+   ${endif}
+   ${if} $LatexPath != ""
+    # set package repository (MiKTeX's primary package repository)
+    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
+    StrCpy $MiKTeXInstalled "yes"
+    StrCpy $MiKTeXVersion ${MiKTeXDeliveredVersion}
+    ${if} $MiKTeXUser != "HKCU"
+     StrCpy $MiKTeXPath "$LatexPath" -11 # delete "\miktex\bin"
+     #MessageBox MB_OK|MB_ICONINFORMATION "$(MiKTeXPathInfo)" # info that MiKTeX's installation folder must have write permissions for all users to work properly
+    ${endif}
+   ${else}
+    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)"
+    SetOutPath $TEMP # to be able to delete the $INSTDIR
+    RMDir /r $INSTDIR
+    Abort
+   ${endif} # endif $LatexPath != ""
+  ${endif}
+
+  FunctionEnd
+
+!endif # endif ${INSTALLER_VERSION} == "Complete"
 
 # ------------------------------
 
@@ -103,9 +179,10 @@ Function ConfigureMiKTeX
    SetOutPath "$String\tex\latex\"      # Should there be a final \ before "?
    File /r "${DVIPostFileDir}"
 
+   # refresh MiKTeX's file name database
+   ExecWait "$LaTeXPath\initexmf --update-fndb"
+    
    ${if} $MiKTeXVersion == "2.4"
-    # refresh MiKTeX's file name database
-    ExecWait "$String\miktex\bin\initexmf --update-fndb"
     # delete MiKTeX 2.4's dvipng executable as it is an old broken version. Then install a working one.
     Delete "$String\miktex\bin\dvipng.exe"
     # Install a new one
@@ -116,21 +193,44 @@ Function ConfigureMiKTeX
     WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MPM\Settings" "" ""
     # Setting package repository (MiKTeX's primary package repository)
     WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MPM" "RemotePackageRepository" "${MiKTeXRepo}"
+   ${endif}
    
-   ${else} # if MiKTeX 2.5
-    # refresh MiKTeX's file name database
-    ExecWait "$LaTeXPath\initexmf --update-fndb"
+   ${if} $MiKTeXVersion == "2.5"
     # enable package installation without asking (t = Yes, f = No)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall" "1" # if only for curent user
-    WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL" "t"
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for curent user
+    ${if} $MiKTeXUser != "HKCU"
+     WriteRegStr SHCTX "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL" "t"
+    ${endif}
     # set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for curent user
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "RepositoryType" "remote" # if only for curent user
-    WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY" "${MiKTeXRepo}"
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for curent user
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for curent user
+    ${if} $MiKTeXUser != "HKCU"
+     WriteRegStr SHCTX "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY" "${MiKTeXRepo}"
+    ${endif}
+   ${endif}
+   
+   ${if} $MiKTeXVersion == "2.6"
+    # enable package installation without asking (t = Yes, f = No)
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for curent user
+    ${if} $MiKTeXUser != "HKCU"
+     WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for curent user
+    ${endif}
+    # set package repository (MiKTeX's primary package repository)
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for curent user
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for curent user
+    ${if} $MiKTeXUser != "HKCU"
+     WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for curent user
+     WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for curent user
+    ${endif}
    ${endif}
    
    # enable MiKTeX's automatic package installation
-   ExecWait '$LaTeXPath\mpm.com --update-fndb'
+   ${if} $MiKTeXVersion == "2.4"
+   ${orif} $MiKTeXVersion == "2.5"
+    ExecWait '$LaTeXPath\mpm.com --update-fndb'
+   ${else} # if MiKTeX 2.6
+    ExecWait '$LaTeXPath\mpm.exe --update-fndb'
+   ${endif}
    # the following feature is planned to be used for a possible CD-version
    # copy LaTeX-packages needed by LyX
    # SetOutPath "$INSTDIR"

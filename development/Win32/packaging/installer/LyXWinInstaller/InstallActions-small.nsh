@@ -86,10 +86,6 @@ Section "-Installation actions" SecInstallation
   FileWrite $R1 '$LaTeXPath'
   FileClose $R1
 
-  # prepare variables for uninstaller
-  StrCpy $MiKTeXVersionVar ${MiKTeXDeliveredVersion}
-  StrCpy $JabRefVersionVar ${JabRefVersion}
-
 SectionEnd
 
 # -------------------------------------------

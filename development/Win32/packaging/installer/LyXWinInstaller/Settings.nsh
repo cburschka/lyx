@@ -3,7 +3,7 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5beta3-14-05-2007"
+!define PRODUCT_VERSION "1.5beta3-15-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -42,8 +42,8 @@ BrandingText "LyXWinInstaller v3.15 - ${INSTALLER_VERSION}"
  !define PRODUCT_VERSION_OLD "LyX 1.5svn-02-05-2007"
  !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
  !define PRODUCT_VERSION_SHORT_OLD "150svn"
- !define JabRefVersionOld "JabRef 2.2"
- !define MiKTeXDeliveredVersionOld "MiKTeX 2.5"
+ !define JabRefVersion "2.2" # could be an older version
+ !define MiKTeXDeliveredVersion "2.5" # could be an older version
 !endif
 
 # definitions for the Small installer
@@ -56,14 +56,14 @@ BrandingText "LyXWinInstaller v3.15 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv48w32.exe"
  !define JabRefInstall "external\JabRef-2.2-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.5.2580.exe"
- !define JabRefVersion "JabRef 2.2"
- !define MiKTeXDeliveredVersion "MiKTeX 2.5"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2675.exe"
+ !define JabRefVersion "2.2"
+ !define MiKTeXDeliveredVersion "2.6"
 !endif
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.3.3"
+!define ImageMagickVersion "6.3.4"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
@@ -82,7 +82,6 @@ BrandingText "LyXWinInstaller v3.15 - ${INSTALLER_VERSION}"
 # the following variable is needed for a possible CD-version
 #!define LaTeXPackagesDir "${PRODUCT_SOURCEDIR}\latex"
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
-!define MiKTeXConfigFolder "MiKTeX\2.5\miktex\config"
 
 #--------------------------------
 # make some of the information above available to NSIS.

@@ -16,7 +16,7 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\external"
 
   # install MiKTeX if not already installed
-  Call MiKTeX
+  Call InstallMiKTeX # function from LaTeX.nsh
 
   # install Ghostscript if not already installed
   Call Ghostscript
@@ -96,48 +96,7 @@ Section "-Installation actions" SecInstallation
   FileWrite $R1 '$LaTeXPath'
   FileClose $R1
 
-  # prepare variables for uninstaller
-  StrCpy $MiKTeXVersionVar ${MiKTeXDeliveredVersion}
-  StrCpy $JabRefVersionVar ${JabRefVersion}
-
 SectionEnd
-
-# -------------------------------------------
-
-Function MiKTeX
-	
-# install MiKTeX if not already installed
-  ${if} $LatexPath == ""
-   # launch MiKTeX's installer
-   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
-   ExecWait ${MiKTeXInstall}
-   # test if MiKTeX is installed
-   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
-   StrCpy $Search "miktex"
-   Call LaTeXCheck
-   ${if} $LatexPath == ""
-    StrCpy $MiKTeXUser "HKCU"
-    ReadRegStr $String HKCU "Environment" "Path"
-    StrCpy $Search "miktex"
-    Call LaTeXCheck
-   ${endif}
-   ${if} $LatexPath != ""
-    # set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
-    StrCpy $MiKTeXInstalled "yes"
-    ${if} $MiKTeXUser != "HKCU"
-     StrCpy $MiKTeXPath "$LatexPath" -11
-     #MessageBox MB_OK|MB_ICONINFORMATION "$(MiKTeXPathInfo)" # info that MiKTeX's installation folder must have write permissions for all users to work properly
-    ${endif}
-   ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)"
-    SetOutPath $TEMP # to be able to delete the $INSTDIR
-    RMDir /r $INSTDIR
-    Abort
-   ${endif} # endif $LatexPath != ""
-  ${endif}
-
-FunctionEnd
 
 # -------------------------------------------
 
