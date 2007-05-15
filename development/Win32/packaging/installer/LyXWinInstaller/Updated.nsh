@@ -14,6 +14,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\images"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\layouts"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
@@ -33,10 +34,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\fr\simplecv.lyx"  
  SetOutPath "$INSTDIR\Resources\images"
  File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
- SetOutPath "$INSTDIR\Resources\layouts"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\simplecv.layout"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdcounters.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"

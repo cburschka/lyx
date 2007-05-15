@@ -103,6 +103,10 @@ Function LaTeXActions
   ${andif} $LaTeXName != "MiKTeX 2.6"
    StrCpy $LaTeXName "TeXLive"
   ${endif}
+  
+  ${if} $LatexPath == ""
+   StrCpy $MissedProg "True"
+  ${endif}
 
 FunctionEnd
 
@@ -237,4 +241,24 @@ Function ConfigureMiKTeX
    # File /r "${LaTeXPackagesDir}" 
   ${endif} # end ${if} $Pointer
   
+  # save MiKTeX's install path to be able to remove LyX's LaTeX-files in the uninstaller
+  FileOpen $R1 "$INSTDIR\Resources\uninstallPaths.dat" w
+  FileWrite $R1 '$LaTeXPath'
+  FileClose $R1
+  
 FunctionEnd
+
+Function UpdateMiKTeX
+ # installs the LaTeX class files that are delivered with LyX
+
+  # ask to update MiKTeX
+  ${if} $MiKTeXInstalled == "yes"
+   MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
+   UpdateNow:
+    StrCpy $0 $LaTeXPath -4 # remove "\bin"
+    ExecWait '"$LaTeXPath\copystart.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
+   UpdateLater:
+  ${endif}
+
+FunctionEnd
+

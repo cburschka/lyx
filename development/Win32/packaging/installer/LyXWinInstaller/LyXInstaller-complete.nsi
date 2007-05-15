@@ -109,6 +109,9 @@ Var UserName
 # Function to configure LyX
 !include "ConfigLyX.nsh"
 
+# Function to configure needed third-party programs
+!include "InstallThirdPartyProgs.nsh"
+
 # Function for page to install Aspell dictionaries
 !include "Aspell.nsh"
 
@@ -246,7 +249,7 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 # the installation section
-!include "InstallActions-complete.nsh"
+!include "InstallActions-complete-small.nsh"
 
 #--------------------------------
 # This hook function is called internally by NSIS on installer startup
@@ -319,7 +322,13 @@ FunctionEnd
 #--------------------------------
 
 Function LaunchProduct
-  Exec ${PRODUCT_BAT}
+  # call the lyx.exe and not the lyx.bat to show the console window. This is
+  # necessary because sometimes LyX's configure run that is started by the
+  # installer fails when MiKTeX was installed together with this installer.
+  # Showing the console gives the user feedback otherwise he would wonder why
+  # LyX won't start for minutes while it is downloading LaTeX-packages in the
+  # background 
+  Exec ${PRODUCT_EXE}  
 FunctionEnd
 
 #--------------------------------

@@ -110,6 +110,9 @@ Var UserName
 # Function to configure LyX
 !include "ConfigLyX.nsh"
 
+# Function to configure needed third-party programs
+!include "InstallThirdPartyProgs.nsh"
+
 # Function for page to install Aspell dictionaries
 !include "Aspell.nsh"
 
@@ -240,7 +243,7 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 # the installation section
-!include "InstallActions-small.nsh"
+!include "InstallActions-complete-small.nsh"
 
 #--------------------------------
 # This hook function is called internally by NSIS on installer startup

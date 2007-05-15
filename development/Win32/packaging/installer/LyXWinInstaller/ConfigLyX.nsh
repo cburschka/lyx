@@ -109,6 +109,33 @@ Function ConfigureLyX
   # this folder is automatically created by LyX when it is first started but we want to start LyX with a specific session file,
   # so we create this folder before LyX starts and copy there the session file
   Call CreateAppPathSub # function from LyXUtils.nsh
+  
+  # delete unnecessary files
+  ${if} $DelPythonFiles == "True"
+   Delete $INSTDIR\bin\python.exe
+   Delete $INSTDIR\bin\python25.dll
+   Delete $INSTDIR\bin\Python-License.txt
+   RMDir /r $INSTDIR\bin\Lib
+   RMDir /r $INSTDIR\bin\DLLs
+  ${endif}
+  RMDir /r $INSTDIR\external
+
+  # create a bat-file to start configure in a console window so that the user see the progress
+  # of the configuration and to have a signal when the configuration is ready to start LyX
+  # this is important when LyX is installed together with MiKTeX or when LyX is installed for the first
+  # time on a computer, because the installation of missing LaTeX-files required by LyX could last minutes
+  # a batch file is needed because simply calling
+  # ExecWait '"$PythonPath\python.exe" "$INSTDIR\Resources\configure.py"'
+  # creates the config files in $PythonPath
+  ${if} $PythonPath == ""
+   StrCpy $PythonPath "$INSTDIR\bin"
+  ${endif}
+  StrCpy $1 $INSTDIR 2 # get drive letter
+  FileOpen $R1 "$INSTDIR\Resources\configLyX.bat" w
+  FileWrite $R1 '$1$\r$\n\
+  		 cd $INSTDIR\Resources\$\r$\n\
+  		 "$PythonPath\python.exe" configure.py'
+  FileClose $R1
 
 FunctionEnd
 

@@ -30,7 +30,6 @@ FunctionEnd
 
 #--------------------------------
 
-
 !if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
 
 Function DownloadDictionary
@@ -106,11 +105,16 @@ FunctionEnd
 
 #--------------------------------
 
-
 !if ${INSTALLER_TYPE} == "NotUpdate" # only for Small and Complete installer
 
 Function InstallAspellDictionary
-	
+ # install Aspell dictionaries
+
+ # we only have a norwegian dictionary available
+ ${if} $LangCode == "nb_NO"
+  StrCpy $LangCode "no_NO" 
+ ${endif}
+
  StrCpy $AspellInstallYes ""
 
  # install the english dictionary if not already installed

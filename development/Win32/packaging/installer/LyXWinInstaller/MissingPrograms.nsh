@@ -1,7 +1,10 @@
 Function MissingPrograms
+  # check if third-party programs are installed
 
   # initialize variable, is later set to True when a program was not found
-  StrCpy $MissedProg "False"
+  ${if} $MissedProg != "True" # is already True when LaTeX is missing
+   StrCpy $MissedProg "False"
+  ${endif}
 
   # test if Ghostscript is installed
   GSloop:
@@ -120,9 +123,9 @@ FunctionEnd
 # ---------------------------------------
 
 Function MissingProgramsPage
+  # generate the page showing the missing programs that will be installed
 
-  # generate the installer page - re-read empty page first
-  StrCpy $0 "2"
+  StrCpy $0 "2" # start value for the dynamical item numbering
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_missing_progs.ini"
   !insertmacro MUI_HEADER_TEXT "$(MissProgHeader)" ""
   
@@ -157,15 +160,15 @@ FunctionEnd
 
 Function MissingProgramsPage_LeaveFunction
 
- # this function is needed for the installer page
+ # this empty function is needed for the installer page
 
 FunctionEnd
 
 # ---------------------------------------
 
 Function EditorCheck
-
   # test if an editor with syntax-highlighting for LaTeX-files is installed
+
   # (check for jEdit, PSPad, WinShell, ConTEXT, Crimson Editor, Vim, TeXnicCenter, LaTeXEditor, WinEdt, LEd, WinTeX)
   StrCpy $EditorPath ""
   StrCpy $0 ""
