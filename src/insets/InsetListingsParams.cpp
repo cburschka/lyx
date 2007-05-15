@@ -398,13 +398,13 @@ void parValidator::validate(std::string const & par) const
 
 
 InsetListingsParams::InsetListingsParams() :
-	inline_(false), status_(InsetCollapsable::Open), params_()
+	inline_(false), params_(), keys_(0), status_(InsetCollapsable::Open)
 {
 }
 
 
 InsetListingsParams::InsetListingsParams(string const & par, bool in, InsetCollapsable::CollapseStatus s)
-	: inline_(in), status_(s)
+	: inline_(in), params_(), keys_(0), status_(s)
 {
 	// this will activate parameter validation.
 	fromEncodedString(par);
