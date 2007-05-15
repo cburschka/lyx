@@ -1089,6 +1089,15 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.enabled(cur.selBegin().idx() == cur.selEnd().idx());
 		break;
 
+	case LFUN_HYPHENATION_POINT_INSERT:
+	case LFUN_LIGATURE_BREAK_INSERT:
+	case LFUN_MENU_SEPARATOR_INSERT:
+	case LFUN_DOTS_INSERT:
+	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
+		// FIXME: These would probably make sense in math-text mode
+		flag.enabled(false);
+		break;
+
 	default:
 		ret = false;
 		break;
