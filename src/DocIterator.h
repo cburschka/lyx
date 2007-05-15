@@ -213,6 +213,9 @@ public:
 	operator<<(std::ostream & os, DocIterator const & cur);
 	///
 	friend bool operator==(DocIterator const &, DocIterator const &);
+	friend bool operator<(DocIterator const &, DocIterator const &);
+	friend bool operator>(DocIterator const &, DocIterator const &);
+	friend bool operator<=(DocIterator const &, DocIterator const &);
 	///
 	friend class StableDocIterator;
 //protected:
