@@ -156,7 +156,6 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	int const toclevel = toc_item->par_it_->layout()->toclevel;
 	if (toclevel != Layout::NOT_IN_TOC
 	    && toclevel >= min_toclevel
-	    && toclevel <= bufparams.tocdepth
 		&& tocstring.empty())
 			tocstring = toc_item->par_it_->asString(*buffer_, true);
 
@@ -205,8 +204,7 @@ void TocBackend::update()
 		/// now the toc entry for the paragraph
 		int const toclevel = pit->layout()->toclevel;
 		if (toclevel != Layout::NOT_IN_TOC
-		    && toclevel >= min_toclevel
-		    && toclevel <= bufparams.tocdepth) {
+		    && toclevel >= min_toclevel) {
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = pit->asString(*buffer_, true);
