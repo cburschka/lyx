@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-15 11:39+0100\n"
+"POT-Creation-Date: 2007-05-15 23:47+0100\n"
 "PO-Revision-Date: 2007-04-30 17:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -3081,7 +3081,7 @@ msgstr "単位(&U):"
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
 #: lib/layouts/amsart.layout:21 lib/layouts/amsbook.layout:22
-#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:29
+#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:36
 #: lib/layouts/broadway.layout:183 lib/layouts/chess.layout:27
 #: lib/layouts/cl2emult.layout:125 lib/layouts/dtk.layout:31
 #: lib/layouts/egs.layout:18 lib/layouts/elsart.layout:49
@@ -3106,7 +3106,7 @@ msgstr "標準"
 msgid "TheoremTemplate"
 msgstr "定理テンプレート"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:925
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:947
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -3120,7 +3120,7 @@ msgid "Proof:"
 msgstr "証明:"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:1003
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:953
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
@@ -3149,7 +3149,7 @@ msgid "Lemma #:"
 msgstr "補題 #:"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:489
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:884
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
@@ -3201,7 +3201,7 @@ msgid "Criterion #:"
 msgstr "基準 #:"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:710
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:941
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -3222,7 +3222,7 @@ msgid "Axiom #:"
 msgstr "公理 #:"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:652
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:911
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
@@ -3237,7 +3237,7 @@ msgid "Definition #:"
 msgstr "定義 #:"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:664
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:923
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
@@ -3349,7 +3349,7 @@ msgstr "ケース #:"
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
-#: lib/layouts/beamer.layout:265 lib/layouts/egs.layout:30
+#: lib/layouts/beamer.layout:139 lib/layouts/egs.layout:30
 #: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
 #: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
@@ -3370,7 +3370,7 @@ msgstr "節"
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
-#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
+#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:180
 #: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
@@ -3402,7 +3402,7 @@ msgstr "小節"
 msgid "Subsubsection"
 msgstr "小々節"
 
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:297
+#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:171
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
@@ -3411,7 +3411,7 @@ msgstr "小々節"
 msgid "Section*"
 msgstr "節*"
 
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:339
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:213
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
@@ -3468,7 +3468,7 @@ msgstr "索引の見出し---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:440
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:835
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
@@ -3518,7 +3518,7 @@ msgstr "MarkBoth"
 
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
-#: lib/layouts/beamer.layout:41 lib/layouts/egs.layout:163
+#: lib/layouts/beamer.layout:49 lib/layouts/egs.layout:163
 #: lib/layouts/manpage.layout:82 lib/layouts/simplecv.layout:77
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:11
@@ -3527,14 +3527,14 @@ msgstr "箇条書き（記号）"
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:59 lib/layouts/egs.layout:145
+#: lib/layouts/beamer.layout:67 lib/layouts/egs.layout:145
 #: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
 msgid "Enumerate"
 msgstr "箇条書き（番号）"
 
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
-#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:77
+#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:85
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
@@ -3555,7 +3555,7 @@ msgstr "箇条書き（リスト）"
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:956
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:716
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
@@ -3576,7 +3576,7 @@ msgid "Title"
 msgstr "表題"
 
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:1009
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:740
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
@@ -3586,7 +3586,7 @@ msgstr "副題"
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:416
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:765
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
@@ -3627,7 +3627,7 @@ msgstr "メール"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:630 lib/layouts/egs.layout:476
+#: lib/layouts/beamer.layout:811 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
 #: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
@@ -3711,7 +3711,7 @@ msgid "Acknowledgements"
 msgstr "謝辞"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:454
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:849
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
@@ -4136,7 +4136,7 @@ msgstr "サイズを調整した図"
 msgid "FitBitmap"
 msgstr ""
 
-#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:55
+#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:63
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
 #: lib/layouts/simplecv.layout:91 lib/layouts/stdlists.inc:25
 msgid "*"
@@ -4172,7 +4172,7 @@ msgstr "ラトビア語"
 msgid "Latin off"
 msgstr "ラトビア語"
 
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:897
+#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:110
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
 #: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
@@ -4187,255 +4187,268 @@ msgstr "部"
 msgid "Part*"
 msgstr "部*"
 
-#: lib/layouts/beamer.layout:92 lib/layouts/egs.layout:196
+#: lib/layouts/beamer.layout:100 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr ""
 
-#: lib/layouts/beamer.layout:100
-msgid "BeginFrame"
-msgstr "スライド開始"
+#: lib/layouts/beamer.layout:124
+msgid "Part "
+msgstr "部 "
 
-#: lib/layouts/beamer.layout:115
-msgid "Frame   "
-msgstr "スライド   "
-
-#: lib/layouts/beamer.layout:141
-msgid "BeginPlainFrame"
-msgstr "白紙スライド開始"
-
-#: lib/layouts/beamer.layout:156
-msgid "Frame (no head/foot/sidebars)  "
-msgstr "スライド（ヘッダ・フッタ・サイドバー無し）  "
-
-#: lib/layouts/beamer.layout:179
-msgid "EndFrame"
-msgstr "スライド終了"
-
-#: lib/layouts/beamer.layout:193
-msgid "________________________________ "
-msgstr "________________________________ "
-
-#: lib/layouts/beamer.layout:207
-msgid "Pause"
-msgstr "一時停止"
-
-#: lib/layouts/beamer.layout:222
-msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-
-#: lib/layouts/beamer.layout:280
+#: lib/layouts/beamer.layout:154
 msgid "Section \\arabic{section}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
+#: lib/layouts/beamer.layout:166 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:321
+#: lib/layouts/beamer.layout:195
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:334
+#: lib/layouts/beamer.layout:208
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:347
+#: lib/layouts/beamer.layout:222
+msgid "BeginFrame"
+msgstr "スライド開始"
+
+#: lib/layouts/beamer.layout:237
+#, fuzzy
+msgid "Frame "
+msgstr "スライド   "
+
+#: lib/layouts/beamer.layout:263
+msgid "BeginPlainFrame"
+msgstr "白紙スライド開始"
+
+#: lib/layouts/beamer.layout:278
+#, fuzzy
+msgid "Frame (no head/foot/sidebars)__"
+msgstr "スライド（ヘッダ・フッタ・サイドバー無し）  "
+
+#: lib/layouts/beamer.layout:301
 msgid "AgainFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:362
-msgid "Again frame with label   "
+#: lib/layouts/beamer.layout:316
+msgid "Again frame with label__"
 msgstr ""
 
-#: lib/layouts/beamer.layout:386
-msgid "AlertBlock"
-msgstr "強調ブロック"
+#: lib/layouts/beamer.layout:340
+msgid "EndFrame"
+msgstr "スライド終了"
 
-#: lib/layouts/beamer.layout:396
-msgid "block with alerted text "
-msgstr "強調テキストを含むブロック"
+#: lib/layouts/beamer.layout:354
+msgid "________________________________ "
+msgstr "________________________________ "
 
-#: lib/layouts/beamer.layout:464
-msgid "Block"
-msgstr "ブロック"
+#: lib/layouts/beamer.layout:369
+msgid "FrameSubtitle"
+msgstr "スライド副題"
 
-#: lib/layouts/beamer.layout:474
-#, fuzzy
-msgid "block "
-msgstr "ブロック"
-
-#: lib/layouts/beamer.layout:499
-#, fuzzy
-msgid "Corollary.  "
-msgstr "系."
-
-#: lib/layouts/beamer.layout:516
+#: lib/layouts/beamer.layout:392
 #, fuzzy
 msgid "Column"
 msgstr "列"
 
-#: lib/layouts/beamer.layout:527
-msgid "start column of width:  "
+#: lib/layouts/beamer.layout:404
+#, fuzzy
+msgid "start column of width: "
 msgstr "列の開始 ー 幅:"
 
-#: lib/layouts/beamer.layout:539
+#: lib/layouts/beamer.layout:416
 msgid "Columns"
 msgstr "列"
 
-#: lib/layouts/beamer.layout:551
+#: lib/layouts/beamer.layout:428
 #, fuzzy
 msgid "columns "
 msgstr "列"
 
-#: lib/layouts/beamer.layout:568
+#: lib/layouts/beamer.layout:445
 msgid "ColumnsCenterAligned"
 msgstr "中央揃え列"
 
-#: lib/layouts/beamer.layout:579
+#: lib/layouts/beamer.layout:456
 msgid "columns (center aligned) "
 msgstr "列（中央揃え）"
 
-#: lib/layouts/beamer.layout:598
+#: lib/layouts/beamer.layout:475
 msgid "ColumnsTopAligned"
 msgstr "上端揃え列"
 
-#: lib/layouts/beamer.layout:609
+#: lib/layouts/beamer.layout:486
 msgid "columns (top aligned) "
 msgstr "列（上端揃え）"
 
-#: lib/layouts/beamer.layout:655
-msgid "Definition.  "
-msgstr "定義.  "
+#: lib/layouts/beamer.layout:506
+msgid "Pause"
+msgstr "一時停止"
 
-#: lib/layouts/beamer.layout:658
+#: lib/layouts/beamer.layout:521
+msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+
+#: lib/layouts/beamer.layout:531
+msgid "Overprint"
+msgstr "重ね刷り"
+
+#: lib/layouts/beamer.layout:541
+msgid "overprint "
+msgstr "重ね刷り"
+
+#: lib/layouts/beamer.layout:557
+msgid "OverlayArea"
+msgstr "オーバーレイ領域"
+
+#: lib/layouts/beamer.layout:567
 #, fuzzy
-msgid "Definitions"
-msgstr "定義"
+msgid "overlayarea"
+msgstr "オーバーレイ領域"
 
-#: lib/layouts/beamer.layout:661
-msgid "Definitions.  "
-msgstr "定義.  "
+#: lib/layouts/beamer.layout:582
+msgid "Uncover"
+msgstr ""
 
-#: lib/layouts/beamer.layout:667
-msgid "Example.  "
-msgstr "例.  "
+#: lib/layouts/beamer.layout:591
+msgid "uncovered on slides  "
+msgstr ""
 
-#: lib/layouts/beamer.layout:675
+#: lib/layouts/beamer.layout:606
 #, fuzzy
-msgid "Examples"
-msgstr "例"
+msgid "Only"
+msgstr "限定表示"
 
-#: lib/layouts/beamer.layout:678
-msgid "Examples.  "
-msgstr "例.  "
+#: lib/layouts/beamer.layout:615
+#, fuzzy
+msgid "only on slides_"
+msgstr "以下のコマのみに表示  "
 
-#: lib/layouts/beamer.layout:681
+#: lib/layouts/beamer.layout:631
+msgid "Block"
+msgstr "ブロック"
+
+#: lib/layouts/beamer.layout:641
+msgid "block ( ERT[{title}] body ): "
+msgstr ""
+
+#: lib/layouts/beamer.layout:656
 msgid "ExampleBlock"
 msgstr "用例ブロック"
 
-#: lib/layouts/beamer.layout:691
-msgid "block showing an example "
-msgstr "例を示すブロック"
+#: lib/layouts/beamer.layout:666
+msgid "block ( ERT[{title}] example text ): "
+msgstr ""
 
-#: lib/layouts/beamer.layout:713
-msgid "Fact.  "
-msgstr "事実.  "
+#: lib/layouts/beamer.layout:685
+msgid "AlertBlock"
+msgstr "強調ブロック"
 
-#: lib/layouts/beamer.layout:716
-msgid "FrameSubtitle"
-msgstr "スライド副題"
+#: lib/layouts/beamer.layout:695
+#, fuzzy
+msgid "block ( ERT[{title}] alert text ): "
+msgstr "強調テキストを含むブロック"
 
-#: lib/layouts/beamer.layout:739 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:788 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 #, fuzzy
 msgid "Institute"
 msgstr "所属機関"
 
-#: lib/layouts/beamer.layout:761 lib/layouts/egs.layout:641
+#: lib/layouts/beamer.layout:859
+msgid "TitleGraphic"
+msgstr "タイトル図"
+
+#: lib/layouts/beamer.layout:894
+#, fuzzy
+msgid "Corollary_"
+msgstr "系"
+
+#: lib/layouts/beamer.layout:914
+#, fuzzy
+msgid "Definition. "
+msgstr "定義.  "
+
+#: lib/layouts/beamer.layout:917
+#, fuzzy
+msgid "Definitions"
+msgstr "定義"
+
+#: lib/layouts/beamer.layout:920
+#, fuzzy
+msgid "Definitions. "
+msgstr "定義.  "
+
+#: lib/layouts/beamer.layout:926
+#, fuzzy
+msgid "Example. "
+msgstr "例.  "
+
+#: lib/layouts/beamer.layout:934
+#, fuzzy
+msgid "Examples"
+msgstr "例"
+
+#: lib/layouts/beamer.layout:937
+#, fuzzy
+msgid "Examples. "
+msgstr "例.  "
+
+#: lib/layouts/beamer.layout:944
+#, fuzzy
+msgid "Fact. "
+msgstr "事実.  "
+
+#: lib/layouts/beamer.layout:950
+#, fuzzy
+msgid "Proof. "
+msgstr "証明.  "
+
+#: lib/layouts/beamer.layout:956
+#, fuzzy
+msgid "Theorem. "
+msgstr "定理.  "
+
+#: lib/layouts/beamer.layout:961
+msgid "Separator"
+msgstr "分離線"
+
+#: lib/layouts/beamer.layout:974
+msgid "___"
+msgstr "___"
+
+#: lib/layouts/beamer.layout:984 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX コード"
 
-#: lib/layouts/beamer.layout:798
+#: lib/layouts/beamer.layout:1021
 msgid "NoteItem"
 msgstr "注釈アイテム"
 
-#: lib/layouts/beamer.layout:809
-msgid "note:  "
+#: lib/layouts/beamer.layout:1032
+#, fuzzy
+msgid "note: "
 msgstr "注釈:  "
 
-#: lib/layouts/beamer.layout:821
-#, fuzzy
-msgid "Only"
-msgstr "限定表示"
-
-#: lib/layouts/beamer.layout:830
-msgid "only on slides  "
-msgstr "以下のコマのみに表示  "
-
-#: lib/layouts/beamer.layout:845
-msgid "Overprint"
-msgstr "重ね刷り"
-
-#: lib/layouts/beamer.layout:855
-msgid "overprint "
-msgstr "重ね刷り"
-
-#: lib/layouts/beamer.layout:871
-msgid "OverlayArea"
-msgstr "オーバーレイ領域"
-
-#: lib/layouts/beamer.layout:881
-msgid "overlayarea "
-msgstr "オーバーレイ領域"
-
-#: lib/layouts/beamer.layout:911
-msgid "Part "
-msgstr "部 "
-
-#: lib/layouts/beamer.layout:928
-msgid "Proof.  "
-msgstr "証明.  "
-
-#: lib/layouts/beamer.layout:932
-msgid "Separator"
-msgstr "分離線"
-
-#: lib/layouts/beamer.layout:945
-msgid "___"
-msgstr "___"
-
-#: lib/layouts/beamer.layout:980
-msgid "TitleGraphic"
-msgstr "タイトル図"
-
-#: lib/layouts/beamer.layout:1006
-msgid "Theorem.  "
-msgstr "定理.  "
-
-#: lib/layouts/beamer.layout:1034
-msgid "Uncover"
-msgstr ""
-
-#: lib/layouts/beamer.layout:1043
-msgid "uncovered on slides  "
-msgstr ""
-
-#: lib/layouts/beamer.layout:1082 lib/layouts/stdfloats.inc:10
+#: lib/layouts/beamer.layout:1068 lib/layouts/stdfloats.inc:10
 #: lib/ui/stdtoolbars.inc:110
 msgid "Table"
 msgstr "表"
 
-#: lib/layouts/beamer.layout:1087 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1073 lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "表一覧"
 
-#: lib/layouts/beamer.layout:1093 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1079 lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "図"
 
-#: lib/layouts/beamer.layout:1098 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1084 lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "図一覧"
 
@@ -13203,7 +13216,7 @@ msgstr "解釈不能"
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1561
+#: src/Text3.cpp:1564
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -13406,19 +13419,32 @@ msgstr ""
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/callback.cpp:411
+#: src/callback.cpp:404
+msgid "Reading not UTF-8 encoded file"
+msgstr ""
+
+#: src/callback.cpp:405
+msgid ""
+"The file is not UTF-8 encoded.\n"
+"It will be read as local 8Bit-encoded.\n"
+"If this does not give the correct result\n"
+"then please change the encoding of the file\n"
+"to UTF-8 with a program other than LyX.\n"
+msgstr ""
+
+#: src/callback.cpp:422
 msgid "Running configure..."
 msgstr "コンフィギュアを実行しています,,,"
 
-#: src/callback.cpp:420
+#: src/callback.cpp:431
 msgid "Reloading configuration..."
 msgstr "コンフィギュレーションを読み込み直しています..."
 
-#: src/callback.cpp:425
+#: src/callback.cpp:436
 msgid "System reconfigured"
 msgstr "システムが再コンフィギュアされました"
 
-#: src/callback.cpp:426
+#: src/callback.cpp:437
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15301,6 +15327,17 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "未知のユーザー"
+
+#, fuzzy
+#~ msgid "block "
+#~ msgstr "ブロック"
+
+#, fuzzy
+#~ msgid "Corollary.  "
+#~ msgstr "系."
+
+#~ msgid "block showing an example "
+#~ msgstr "例を示すブロック"
 
 #, fuzzy
 #~ msgid "Basic style"
