@@ -206,6 +206,12 @@ void TocWidget::select(QModelIndex const & index)
 		return;
 	}
 
+	// FIXME: The TocBackend infrastructure is not ready for LOF and LOT
+	// This is because a proper ParConstIterator is not constructed in
+	// InsetCaption::addToToc()
+	if(!form_->canOutline(typeCO->currentIndex()))
+		return;
+
 	disconnectSelectionModel();
 	tocTV->setCurrentIndex(index);
  	tocTV->scrollTo(index);
