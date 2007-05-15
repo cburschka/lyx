@@ -399,7 +399,18 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 #endif
 
 	// FIXME UNICODE: We don't know the encoding of the file
-	return normalize_kc(from_utf8(tmpstr));
+	docstring file_content = from_utf8(tmpstr);
+	if (file_content.empty()) {
+		Alert::error(_("Reading not UTF-8 encoded file"), 
+					_("The file is not UTF-8 encoded.\n"
+					"It will be read as local 8Bit-encoded.\n"
+					"If this does not give the correct result\n"
+					"then please change the encoding of the file\n"
+					"to UTF-8 with a program other than LyX.\n"));
+		file_content = from_local8bit(tmpstr);
+	}
+	
+	return normalize_kc(file_content);
 }
 
 
