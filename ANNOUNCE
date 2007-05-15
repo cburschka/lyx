@@ -1,20 +1,16 @@
-Public release of LyX version 1.5.0 (beta 2)
+Public release of LyX version 1.5.0 (beta 3)
 ===================================
 
-We are glad to announce the release of LyX 1.5.0 (beta 2).
+We are glad to announce the release of LyX 1.5.0 (beta 3).
 
-Compared with the previous beta release we have fixed several bugs and
-added some graphical improvements:
- * A new math toolbar replaces the old (faithful) math panel.
- * The converter file cache can be now configured in the graphical interface.
- * The TOC dialog is now a dock widget, embedded in the main window.
+Compared with the previous beta release we have fixed several bugs
+and added some improvements, namely a new inset to support code listings.
 
-Apart from the described major changes, several minor improvements of
-the user interface have been made, such as:
+We have enabled the converter file cache by default.
 
- - Syntax highlighting for the user preamble and the LaTeX log file
- - Better parsing of BibTeX databases (in the citation dialog)
- - Support optional arguments for environments  
+Internally we have renamed files to follow a consistent name pattern,
+this will allow an easier navigation of the source code thus simplifying
+bug fixing.
 
 Compared with the latest stable release, this is the culmination of
 one year of hard work, and we sincerely hope you will enjoy the
@@ -55,13 +51,13 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux and the
    Macintosh and modern Windows platforms. 
 
-You can download LyX 1.5.0beta2 here (the .bz2 are compressed with
+You can download LyX 1.5.0beta3 here (the .bz2 are compressed with
 bzip2, which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/devel/lyx-1.5.0beta2.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/devel/lyx-1.5.0beta2.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/devel/lyx-1.5.0beta3.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/devel/lyx-1.5.0beta3.tar.bz2
 
-Note that due to the ammount of changes no patch is provided to upgrade
+Note that due to the amount of changes no patch is provided to upgrade
 from version 1.4.4.
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
@@ -69,7 +65,7 @@ installers) should soon be available at
 	ftp://ftp.lyx.org/pub/lyx/devel/
 
 
-If you find what you think is a bug in LyX 1.5.0beta2, you may either
+If you find what you think is a bug in LyX 1.5.0beta3, you may either
 e-mail the LyX developers' mailing list (lyx-devel @ lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -82,7 +78,7 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.5.0 (beta 2)?
+What's new in version 1.5.0 (beta 3)?
 ----------------------------
 
 * Unicode
@@ -117,14 +113,14 @@ you can move chapters and sections around in the Table of Contents
 dialog. (The outliner has been backported and was released with LyX
 1.4.4.) The TOC dialog is now a dock widget, embedded in the main window.
 
-* Session managment
+* Session management
 
 LyX is now able to remember window size and position and it will
 reopen the documents you worked on last time around. If you've
 selected the feature in the Preferences dialog, it'll even move the
 cursor to the place you were working on last!  Furthermore, toolbars
 can (finally!) be switched on/off in View->Toolbars and moved about in
-the LyX window. The session managment will remember their state.
+the LyX window. The session management will remember their state.
 
 * Source code Viewer
 
@@ -172,7 +168,7 @@ Windows.  The good old XForms frontend went the way of the dodo. It
 was both hated and loved, and certainly shaped the unique look of LyX
 in the past. It was finally killed off, however, by the switch to
 unicode.  The Qt3 frontend was removed.  The work on the GTK frontend
-has been transfered to a branch because its development has
+has been transferred to a branch because its development has
 essentially stalled.
 
 * Change tracking enhancements
@@ -186,25 +182,28 @@ A cache for converted files, such as included figures, was
 implemented. This can speed up LyX's performance considerably when
 displaying documents with many included figures that need conversion
 to a format that can be rendered on screen.  The converter file cache
-is disabled by default, and it can be enabled in the Preference
-Settings dialog, in the Converters section or, if you want to use it,
-add the line
-
- \use_converter_cache true
-
-to your preferences file.
+is enabled by default.
 
 The default maximum age of a cached file is 6 months. You can change
 that with the line
 
  \converter_cache_maxage xxx
 
-where xxx is the maximum age in seconds. 
+where xxx is the maximum age in seconds, in your preferences file. 
 
 * Unified Windows installer
 
 The two windows installers are being merged and bug reports regarding
 both installers are welcome.
+
+* Program listings
+
+The traditional way to insert program listings in LyX involves the use
+of the LyX-Code style. This option works quite well for short snippets but
+does not support in-line code segments or the inclusion of external files.
+
+Using the listings latex package as the backend a new inset was added that
+supports all these three ways of listing computer programs.
 
 * Minor user interface improvements
 
