@@ -13,6 +13,7 @@
 #define BIDI_H
 
 #include "support/types.h"
+#include "Cursor.h"
 #include <vector>
 
 
@@ -65,6 +66,8 @@ private:
 	pos_type end_;
 };
 
+/// Should interpretation of the arrow keys be reversed?
+bool reverseDirectionNeeded(Cursor const & cur);
 
 } // namespace lyx
 

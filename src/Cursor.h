@@ -307,8 +307,6 @@ public:
 	Encoding const * getEncoding() const;
 	/// font at cursor position
 	Font getFont() const;
-	///
-	bool isRTL() const;
 };
 
 

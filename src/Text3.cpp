@@ -433,7 +433,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << BOOST_CURRENT_FUNCTION
 		//       << " LFUN_CHAR_FORWARD[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
-		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
+		if (reverseDirectionNeeded(cur))
 			needsUpdate |= cursorLeft(cur);
 		else
 			needsUpdate |= cursorRight(cur);
@@ -451,7 +451,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD_SELECT:
 		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
-		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
+		if (reverseDirectionNeeded(cur))
 			needsUpdate |= cursorRight(cur);
 		else
 			needsUpdate |= cursorLeft(cur);
@@ -557,7 +557,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT);
-		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
+		if (reverseDirectionNeeded(cur))
 			needsUpdate |= cursorLeftOneWord(cur);
 		else
 			needsUpdate |= cursorRightOneWord(cur);
@@ -568,7 +568,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT);
-		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
+		if (reverseDirectionNeeded(cur))
 			needsUpdate |= cursorRightOneWord(cur);
 		else
 			needsUpdate |= cursorLeftOneWord(cur);
@@ -1434,11 +1434,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_LEFT:
 		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
+		if (reverseDirectionNeeded(cur))
+			++cur.pos();
 		break;
 
 	case LFUN_FINISHED_RIGHT:
 		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
-		++cur.pos();
+		if (!reverseDirectionNeeded(cur))
+			++cur.pos();
 		break;
 
 	case LFUN_FINISHED_UP:

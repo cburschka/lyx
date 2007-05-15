@@ -1339,10 +1339,4 @@ void Cursor::fixIfBroken()
 }
 
 
-bool Cursor::isRTL() const
-{
-	return innerParagraph().isRightToLeftPar(bv().buffer()->params());
-}
-
-
 } // namespace lyx

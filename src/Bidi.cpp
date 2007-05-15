@@ -12,6 +12,7 @@
 
 #include "Bidi.h"
 #include "Buffer.h"
+#include "BufferView.h"
 #include "Font.h"
 #include "Row.h"
 #include "LyXRC.h"
@@ -206,6 +207,20 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 		? level(pos) % 2
 		: par.isRightToLeftPar(buf.params());
 	return rtl != rtl2;
+}
+
+
+bool reverseDirectionNeeded(Cursor const & cur) 
+{
+	/*
+	 * We determine the directions based on the direction of the
+	 * bottom() --- i.e., outermost --- paragraph, because that is
+	 * the only way to achieve consistency of the arrow's movements
+	 * within a paragraph, and thus avoid situations in which the
+	 * cursor gets stuck.
+	 */
+	return cur.bottom().paragraph().isRightToLeftPar(
+			cur.bv().buffer()->params());
 }
 
 

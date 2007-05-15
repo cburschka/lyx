@@ -492,7 +492,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
-		if (cur.isRTL() )
+		if (reverseDirectionNeeded(cur))
 			goto goto_char_backwards;
 
 goto_char_forwards:
@@ -515,7 +515,7 @@ goto_char_forwards:
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
-		if (cur.isRTL())
+		if (reverseDirectionNeeded(cur))
 			goto goto_char_forwards;
 
 goto_char_backwards:
