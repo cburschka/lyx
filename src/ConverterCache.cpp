@@ -123,6 +123,17 @@ void ConverterCache::Impl::readIndex()
 			continue;
 		}
 
+		// Don't add items that are not in the cache anymore
+		// This can happen if two instances of LyX are running
+		// at the same time and update the index file independantly.
+		if (!fs::exists(item.cache_name.toFilesystemEncoding())) {
+			LYXERR(Debug::FILES) << "Not caching file `"
+				<< orig_from
+				<< "' (cached copy does not exist anymore)."
+				<< std::endl;
+			continue;
+		}
+
 		// Delete the cached file if it is too old
 		if (difftime(now, fs::last_write_time(item.cache_name.toFilesystemEncoding())) >
 		    lyxrc.converter_cache_maxage) {
