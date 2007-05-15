@@ -205,6 +205,7 @@ dist_examples_DATA = \
 	examples/iecc12.fen \
 	examples/landslide.lyx \
 	examples/listerrors.lyx \
+	examples/listings.lyx \
 	examples/mathed.lyx \
 	examples/modernCV.lyx \
 	examples/multicol.lyx \

@@ -2418,6 +2418,7 @@ lib_examples_files = Split('''
     iecc12.fen
     landslide.lyx
     listerrors.lyx
+    listings.lyx
     mathed.lyx
     modernCV.lyx
     multicol.lyx
