@@ -1065,8 +1065,8 @@ bool Text::cursorDown(Cursor & cur)
 	// handling when the cursor is at the end of line: Use the new 
 	// x-target only if the old one was before the end of line.
 	if (cur.pos() != pm.rows()[row].endpos() 
-		|| (!cur.isRTL() && x < cur.targetX())
-		|| (cur.isRTL() && x > cur.targetX())) {
+		|| (!reverseDirectionNeeded(cur) && x < cur.targetX())
+		|| (reverseDirectionNeeded(cur) && x > cur.targetX())) {
 
 		x = cur.targetX();
 	}
