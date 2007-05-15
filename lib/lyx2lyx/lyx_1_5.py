@@ -1427,6 +1427,27 @@ lstinline[language=Delphi]{var i = 10;}
 \end_layout
 
 \end_inset
+
+There can be an caption inset in this inset
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+before label
+\begin_inset LatexCommand label
+name "lst:caption"
+
+\end_inset
+
+after label
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 '''
     i = 0
     while True:
@@ -1443,7 +1464,6 @@ lstinline[language=Delphi]{var i = 10;}
         inline = 'false'
         params = ''
         status = 'open'
-        inlinecode = ''
         # first three lines
         for line in range(i + 1, i + 4):
             if document.body[line].startswith('inline'):
@@ -1453,13 +1473,50 @@ lstinline[language=Delphi]{var i = 10;}
             if document.body[line].startswith('status'):
                 status = document.body[line].split()[1].strip()
                 k = line + 1
-        # looking for the oneline code for lstinline
-        for line in range(i + 2, j + 1):
-            if document.body[line].startswith(r'\end_layout'):
-                inlinecode = document.body[line - 1]
+        # caption?
+        caption = ''
+        label = ''
+        cap = find_token(document.body, '\\begin_inset Caption', i)
+        if cap != -1:
+            cap_end = find_end_of_inset(document.body, cap + 1)
+            if cap_end == -1:
+                # this should not happen
                 break
+            # label?
+            lbl = find_token(document.body, '\\begin_inset LatexCommand label', cap + 1)
+            if lbl != -1:
+                lbl_end = find_end_of_inset(document.body, lbl + 1)
+                if lbl_end == -1:
+                    # this should not happen
+                    break
+            else:
+                lbl = cap_end
+                lbl_end = cap_end
+            for line in document.body[lbl : lbl_end + 1]:
+                if line.startswith('name '):
+                    label = line.split()[1].strip('"')
+                    break
+            for line in document.body[cap : lbl ] + document.body[lbl_end + 1 : cap_end + 1]:
+                if not line.startswith('\\'):
+                    caption += line.strip()
+            k = cap_end + 1
+        inlinecode = ''
+        # looking for the oneline code for lstinline
+        inlinecode = document.body[find_end_of_layout(document.body, 
+            find_token(document.body, '\\begin_layout Standard', i + 1) +1 ) - 1]
+        if len(caption) > 0:
+            if len(params) == 0:
+                params = 'caption={%s}' % caption
+            else:
+                params += ',caption={%s}' % caption
+        if len(label) > 0:
+            if len(params) == 0:
+                params = 'label={%s}' % label
+            else:
+                params += ',label={%s}' % label
         if len(params) > 0:
             params = '[%s]' % params
+            params = params.replace('\\', '\\backslash\n')
         if inline == 'true':
             document.body[i:(j+1)] = [r'\begin_inset ERT',
                                       'status %s' % status,
@@ -1526,8 +1583,11 @@ lstinputlisting{file}[opt]
         if j == -1:
             # this should not happen
             break
-        # find command line
-        cmd = document.body[i].split()[2]
+        # find command line lstinputlisting{file}[options]
+        cmd, file, option = '', '', ''
+        if re.match(r'\\(lstinputlisting){([.\w]*)}(.*)', document.body[i].split()[2]):
+            cmd, file, option = re.match(r'\\(lstinputlisting){([.\w]*)}(.*)', document.body[i].split()[2]).groups()            
+        option = option.replace('\\', '\\backslash\n')
         document.body[i : j + 1] = [r'\begin_inset ERT',
                                     'status open',
                                     '',
@@ -1535,7 +1595,7 @@ lstinputlisting{file}[opt]
                                     '',
                                     '',
                                     r'\backslash',
-                                    '%s' % cmd[1:],
+                                    '%s%s{%s}' % (cmd, option, file),
                                     r'\end_layout',
                                     '',
                                     r'\end_inset']
