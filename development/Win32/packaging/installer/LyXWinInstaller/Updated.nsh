@@ -1,6 +1,6 @@
 Function UpdateModifiedFiles
 
- # list with modified files for LyX 1.5svn xx-05-2007
+ # list with modified files for LyX 1.5beta3 16-05-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\pdfclose.exe"
@@ -28,6 +28,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\armenian-article.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\listings.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\TabellenBeispiel.lyx"
  SetOutPath "$INSTDIR\Resources\examples\fr"

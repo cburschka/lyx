@@ -249,9 +249,8 @@ Function ConfigureMiKTeX
 FunctionEnd
 
 Function UpdateMiKTeX
- # installs the LaTeX class files that are delivered with LyX
+ # ask to update MiKTeX
 
-  # ask to update MiKTeX
   ${if} $MiKTeXInstalled == "yes"
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
    UpdateNow:
