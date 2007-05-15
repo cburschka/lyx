@@ -247,8 +247,26 @@ void QListings::update_contents()
 	dialog_->lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	dialog_->placementLE->setValidator(new QRegExpValidator(QRegExp("[tbph]*"), this));
 
-	//
+	// set default values 
 	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
+	dialog_->languageCO->setCurrentIndex(
+		dialog_->languageCO->findText(toqstr("no language")));
+	dialog_->floatCB->setChecked(false);
+	dialog_->placementLE->clear();
+	dialog_->numberLeftCB->setChecked(false);
+	dialog_->numberRightCB->setChecked(false);
+	dialog_->numberStepLE->clear();
+	dialog_->numberFontSizeCO->setCurrentIndex(
+		dialog_->numberFontSizeCO->findText(toqstr("default")));
+	dialog_->firstlineLE->clear();
+	dialog_->lastlineLE->clear();
+	dialog_->fontstyleCO->setCurrentIndex(
+		dialog_->fontstyleCO->findText(toqstr("default")));
+	dialog_->fontsizeCO->setCurrentIndex(
+		dialog_->fontsizeCO->findText(toqstr("default")));
+	dialog_->breaklinesCB->setChecked(false);
+	dialog_->spaceCB->setChecked(false);
+	dialog_->extendedcharsCB->setChecked(false);	
 
 	// set values from param string
 	InsetListingsParams & params = controller().params();

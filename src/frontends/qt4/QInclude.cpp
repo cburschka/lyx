@@ -183,7 +183,6 @@ void QInclude::build_dialog()
 	bcview().addReadOnly(dialog_->visiblespaceCB);
 	bcview().addReadOnly(dialog_->typeCO);
 	bcview().addReadOnly(dialog_->listingsED);
-	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 
 	addCheckedLineEdit(bcview(), dialog_->filenameED, dialog_->filenameLA);
 }
@@ -204,6 +203,10 @@ void QInclude::update_contents()
 	dialog_->previewCB->setChecked(false);
 	dialog_->previewCB->setEnabled(false);
 	dialog_->listingsGB->setEnabled(false);
+	dialog_->captionLE->clear();
+	dialog_->labelLE->clear();
+	dialog_->listingsED->clear();
+	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
 
 	string cmdname = controller().params().getCmdName();
 	if (cmdname != "include" &&
