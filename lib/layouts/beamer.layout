@@ -10,6 +10,7 @@ Input stdcounters.inc
 
 # local counters
 
+# Is this needed? Could probably go -- MV 16/05/2007
 Counter
   Name                 figure
   Name                 lyxframeend{}\section
@@ -401,9 +402,9 @@ Style Column
   Align            Left
   LabelType        Static
   LabelSep         xx
-  LabelString      "start column of width:" 
+  LabelString      "start column (increase depth!), width:" 
   OptionalArgs     1
-  LeftMargin       "start column of width:"
+  LeftMargin       "start column (increase depth!), width:"
 
   # standard font definition
   LabelFont 
