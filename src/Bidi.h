@@ -69,6 +69,9 @@ private:
 /// Should interpretation of the arrow keys be reversed?
 bool reverseDirectionNeeded(Cursor const & cur);
 
+/// Is current paragraph in RTL mode?
+bool isWithinRtlParagraph(Cursor const & cur);
+
 } // namespace lyx
 
 #endif // BIDI_H

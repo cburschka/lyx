@@ -224,4 +224,10 @@ bool reverseDirectionNeeded(Cursor const & cur)
 }
 
 
+bool isWithinRtlParagraph(Cursor const & cur)
+{
+	return cur.innerParagraph().isRightToLeftPar(
+		cur.bv().buffer()->params());
+}
+
 } // namespace lyx

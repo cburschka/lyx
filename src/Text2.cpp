@@ -998,8 +998,8 @@ bool Text::cursorUp(Cursor & cur)
 	// handling when the cursor is at the end of line: Use the new 
 	// x-target only if the old one was before the end of line.
 	if (cur.pos() != pm.rows()[row].endpos() 
-		|| (!reverseDirectionNeeded(cur) && x < cur.targetX())
-		|| (reverseDirectionNeeded(cur) && x > cur.targetX())) {
+		|| (!isWithinRtlParagraph(cur) && x < cur.targetX())
+		|| (isWithinRtlParagraph(cur) && x > cur.targetX())) {
 
 		x = cur.targetX();
 	}
@@ -1065,8 +1065,8 @@ bool Text::cursorDown(Cursor & cur)
 	// handling when the cursor is at the end of line: Use the new 
 	// x-target only if the old one was before the end of line.
 	if (cur.pos() != pm.rows()[row].endpos() 
-		|| (!reverseDirectionNeeded(cur) && x < cur.targetX())
-		|| (reverseDirectionNeeded(cur) && x > cur.targetX())) {
+		|| (!isWithinRtlParagraph(cur) && x < cur.targetX())
+		|| (isWithinRtlParagraph(cur) && x > cur.targetX())) {
 
 		x = cur.targetX();
 	}
