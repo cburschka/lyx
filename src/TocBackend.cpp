@@ -37,8 +37,8 @@ using std::string;
 // TocItem implementation
 
 TocItem::TocItem(ParConstIterator const & par_it, int d,
-		docstring const & s)
-		: par_it_(par_it), depth_(d), str_(s)
+		docstring const & s, bool child)
+		: par_it_(par_it), depth_(d), str_(s), child_(child)
 {
 /*
 	if (!uid_.empty())
@@ -123,14 +123,10 @@ Toc const & TocBackend::toc(std::string const & type) const
 
 void TocBackend::updateItem(ParConstIterator const & par_it)
 {
-	if (toc("tableofcontents").empty()) {
-		// TODO should not happen, 
-		// a call to TocBackend::update() is missing somewhere
-		LYXERR(Debug::INFO)
-				<< "TocBackend.cpp: TocBackend::updateItem"
-				<< "called but the TOC is empty" << std::endl;
+	// TODO should not happen, 
+	// a call to TocBackend::update() is missing somewhere
+	if (toc("tableofcontents").empty())
 		return;
-	}
 
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getTextClass().min_toclevel();
@@ -174,6 +170,9 @@ void TocBackend::update()
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getTextClass().min_toclevel();
 
+	// Is this a child document?
+	bool const child_document = buffer_->getMasterBuffer() != buffer_;
+
 	Toc & toc = tocs_["tableofcontents"];
 	ParConstIterator pit = buffer_->par_iterator_begin();
 	ParConstIterator end = buffer_->par_iterator_end();
@@ -212,8 +211,8 @@ void TocBackend::update()
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = pit->asString(*buffer_, true);
-			toc.push_back(
-				TocItem(pit, toclevel - min_toclevel, tocstring));
+			toc.push_back(TocItem(pit, toclevel - min_toclevel,
+				tocstring, child_document));
 		}
 	}
 }
@@ -242,9 +241,12 @@ TocIterator const TocBackend::item(
 		while (par_it_text.inMathed())
 			par_it_text.backwardPos();
 
-	for (; it != last; --it)
+	for (; it != last; --it) {
+		if (it->child_)
+			continue;
 		if (it->par_it_ <= par_it_text)
 			return it;
+	}
 
 	// We are before the first Toc Item:
 	return last;

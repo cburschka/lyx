@@ -41,7 +41,9 @@ public:
 	///
 	TocItem(ParConstIterator const & par_it = ParConstIterator(),
 		int d = -1,
-		docstring const & s = docstring());
+		docstring const & s = docstring(),
+		bool child = false
+		);
 	///
 	~TocItem() {}
 	///
@@ -67,6 +69,9 @@ protected:
 
 	/// Full item string
 	docstring str_;
+
+	/// Set to true if the item comes from a child document.
+	bool child_;
 };
 
 
