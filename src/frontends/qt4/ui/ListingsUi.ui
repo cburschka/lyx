@@ -270,41 +270,15 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0" colspan="2" >
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label" >
+            <property name="text" >
+             <string>Side: </string>
             </property>
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QCheckBox" name="numberLeftCB" >
-              <property name="toolTip" >
-               <string>enable for numbers on the leftside</string>
-              </property>
-              <property name="text" >
-               <string>&amp;Left</string>
-              </property>
-              <property name="checked" >
-               <bool>false</bool>
-              </property>
-              <property name="autoRepeat" >
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="numberRightCB" >
-              <property name="toolTip" >
-               <string>enable for numbers on the right side</string>
-              </property>
-              <property name="text" >
-               <string>&amp;Right</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QComboBox" name="numberSideCO" />
           </item>
           <item row="2" column="1" >
            <widget class="QComboBox" name="numberFontSizeCO" >
@@ -528,8 +502,7 @@
   <tabstop>floatCB</tabstop>
   <tabstop>placementLE</tabstop>
   <tabstop>languageCO</tabstop>
-  <tabstop>numberLeftCB</tabstop>
-  <tabstop>numberRightCB</tabstop>
+  <tabstop>numberSideCO</tabstop>
   <tabstop>numberStepLE</tabstop>
   <tabstop>numberFontSizeCO</tabstop>
   <tabstop>firstlineLE</tabstop>

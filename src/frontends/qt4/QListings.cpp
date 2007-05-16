@@ -55,6 +55,7 @@ string const allowed_languages =
 string const allowed_fontsizes = "default\ntiny\nscriptsize\nfootnotesize\nsmall\n"
 	"normalsize\nlarge\nLarge";
 string const allowed_fontstyles = "default\nrmfamily\nttfamily\nsffamily";
+string const allowed_sides = "none\nleft\nright";
 
 QListingsDialog::QListingsDialog(QListings * form)
 	: form_(form)
@@ -68,8 +69,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(inlineCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(floatCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(placementLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(numberLeftCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(numberRightCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(numberSideCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
 	connect(numberStepLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(numberFontSizeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
 	connect(firstlineLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -105,8 +105,7 @@ string QListingsDialog::construct_params()
 	bool float_ = floatCB->checkState() == Qt::Checked;
 	string placement = fromqstr(placementLE->text());
 	
-	bool left = numberLeftCB->checkState() == Qt::Checked;
-	bool right = numberRightCB->checkState() == Qt::Checked;
+	string numberSide = fromqstr(numberSideCO->currentText());
 	string stepnumber = fromqstr(numberStepLE->text());
 	string numberfontsize = fromqstr(numberFontSizeCO->currentText());
 	string firstline = fromqstr(firstlineLE->text());
@@ -132,10 +131,8 @@ string QListingsDialog::construct_params()
 		par.addParam("float", "");
 	if (!placement.empty())
 		par.addParam("floatplacement", placement);
-	if (left)
-		par.addParam("numbers", "left");
-	else if (right)
-		par.addParam("numbers", "right");
+	if (numberSide != "none")
+		par.addParam("numbers", numberSide);
 	if (numberfontsize != "default")
 		par.addParam("numberstyle", "\\" + numberfontsize);
 	if (!firstline.empty())
@@ -219,11 +216,18 @@ void QListings::update_contents()
 		getVectorFromString(allowed_fontstyles, "\n");
 	vector<string> const fontsizes = 
 		getVectorFromString(allowed_fontsizes, "\n");
+	vector<string> const sides = 
+		getVectorFromString(allowed_sides, "\n");
 
 	dialog_->languageCO->clear();
 	for (vector<string>::const_iterator it = languages.begin();
 	    it != languages.end(); ++it) {
 		dialog_->languageCO->addItem(toqstr(*it));
+	}
+	dialog_->numberSideCO->clear();
+	for (vector<string>::const_iterator it = sides.begin();
+	    it != sides.end(); ++it) {
+		dialog_->numberSideCO->addItem(toqstr(*it));
 	}
 	dialog_->fontstyleCO->clear();
 	dialog_->fontstyleCO->setEditable(false);
@@ -253,8 +257,8 @@ void QListings::update_contents()
 		dialog_->languageCO->findText(toqstr("no language")));
 	dialog_->floatCB->setChecked(false);
 	dialog_->placementLE->clear();
-	dialog_->numberLeftCB->setChecked(false);
-	dialog_->numberRightCB->setChecked(false);
+	dialog_->numberSideCO->setCurrentIndex(
+		dialog_->numberSideCO->findText(toqstr("none")));
 	dialog_->numberStepLE->clear();
 	dialog_->numberFontSizeCO->setCurrentIndex(
 		dialog_->numberFontSizeCO->findText(toqstr("default")));
@@ -298,10 +302,8 @@ void QListings::update_contents()
 			dialog_->placementLE->setText(toqstr(it->substr(15)));
 			*it = "";
 		} else if (prefixIs(*it, "numbers=")) {
-			if (contains(*it, "left"))
-				dialog_->numberLeftCB->setChecked(true);
-			else if (contains(*it, "right"))
-				dialog_->numberRightCB->setChecked(true);
+			dialog_->numberSideCO->setCurrentIndex(
+				dialog_->numberSideCO->findText(toqstr(it->substr(8))));
 			*it = "";
 		} else if (prefixIs(*it, "stepnumber=")) {
 			dialog_->numberStepLE->setText(toqstr(it->substr(11)));
