@@ -34,6 +34,7 @@
 #include "LyXAction.h"
 #include "Lexer.h"
 #include "Text.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Messages.h"
@@ -888,26 +889,36 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return false;
 
+	bool failed_export = false;
 	try {
 		writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
 	}
-	catch (iconv_codecvt_facet_exception &) {
-		Alert::error(_("Encoding error"),
-			_("Some characters of your document are not "
-			  "representable in the chosen encoding.\n"
-			  "Changing the document encoding to utf8 could help."));
-		return false;
+	catch (iconv_codecvt_facet_exception & e) {
+		lyxerr << "Caught iconv exception: " << e.what() << endl;
+		failed_export = true;
+	}
+	catch (std::exception  const & e) {
+		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
+		failed_export = true;
+	}
+	catch (...) {
+		lyxerr << "Caught some really weird exception..." << endl;
+		LyX::cref().emergencyCleanup();
+		abort();
 	}
 
 	ofs.close();
 	if (ofs.fail()) {
+		failed_export = true;
 		lyxerr << "File '" << fname << "' was not closed properly." << endl;
-		Alert::error(_("Error closing file"),
-			_("The output file could not be closed properly.\n"
-			  " Probably some characters of your document are not "
-			  "representable in the chosen encoding.\n"
-			  "Changing the document encoding to utf8 could help."));
+	}
+
+	if (failed_export) {
+		Alert::error(_("Encoding error"),
+			_("Some characters of your document are probably not "
+			"representable in the chosen encoding.\n"
+			"Changing the document encoding to utf8 could help."));
 		return false;
 	}
 	return true;
