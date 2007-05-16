@@ -292,14 +292,14 @@ void QListings::update_contents()
 					*it = "";
 				}			
 			}
+		} else if (prefixIs(*it, "floatplacement=")) {
+			dialog_->floatCB->setChecked(true);
+			dialog_->placementLE->setText(toqstr(it->substr(15)));
+			*it = "";
 		} else if (prefixIs(*it, "float")) {
+			dialog_->floatCB->setChecked(true);
 			if (prefixIs(*it, "float="))
 				dialog_->placementLE->setText(toqstr(it->substr(6)));
-			else
-				dialog_->floatCB->setChecked(true);
-			*it = "";
-		} else if (prefixIs(*it, "floatplacement=")) {
-			dialog_->placementLE->setText(toqstr(it->substr(15)));
 			*it = "";
 		} else if (prefixIs(*it, "numbers=")) {
 			dialog_->numberSideCO->setCurrentIndex(
