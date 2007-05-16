@@ -61,7 +61,7 @@ InsetListings::InsetListings(BufferParams const & bp, InsetListingsParams const 
 
 
 InsetListings::InsetListings(InsetListings const & in)
-	: InsetERT(in)
+	: InsetERT(in), params_(in.params_)
 {
 	init();
 }
