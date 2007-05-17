@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-15 23:47+0100\n"
+"POT-Creation-Date: 2007-05-17 23:51+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -200,7 +200,7 @@ msgstr "(&A)Добави"
 # src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:515
+#: src/frontends/qt4/ui/ListingsUi.ui:489
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
 #: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
@@ -748,7 +748,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:178 lib/layouts/europecv.layout:144
 #: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
-#: src/frontends/qt4/QPrefs.cpp:1578
+#: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Език"
 
@@ -1467,7 +1467,7 @@ msgstr "Изберете "
 
 # src/form1.C:245
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:349
+#: src/frontends/qt4/ui/ListingsUi.ui:323
 #, fuzzy
 msgid "File name of image"
 msgstr "Име на файл(F):|#F"
@@ -1790,14 +1790,14 @@ msgstr ""
 
 # src/frontends/xforms/form_document.C:262
 #: src/frontends/qt4/ui/ListingsUi.ui:138
-#: src/frontends/qt4/ui/ListingsUi.ui:336
+#: src/frontends/qt4/ui/ListingsUi.ui:310
 #, fuzzy
 msgid "Font size:"
 msgstr "Шрифт размер(O):|#O"
 
 # src/lyxfunc.C:3128
 #: src/frontends/qt4/ui/ListingsUi.ui:159
-#: src/frontends/qt4/ui/ListingsUi.ui:320
+#: src/frontends/qt4/ui/ListingsUi.ui:294
 #, fuzzy
 msgid "Choose the Font Size"
 msgstr "Изберете шаблон"
@@ -1824,11 +1824,11 @@ msgstr "Формати"
 msgid "Inline listing"
 msgstr ""
 
-# src/lyxfont.C:415
+# src/mathed/formula.C:929
 #: src/frontends/qt4/ui/ListingsUi.ui:238
 #, fuzzy
-msgid "Number style"
-msgstr " Номер "
+msgid "Line numbering"
+msgstr "Номериране"
 
 # src/LColor.C:84
 #: src/frontends/qt4/ui/ListingsUi.ui:250
@@ -1842,45 +1842,29 @@ msgstr "ред на математика"
 msgid "First line:"
 msgstr "Малко име"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:284
-msgid "enable for numbers on the leftside"
-msgstr ""
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:120
-#: src/frontends/qt4/ui/ListingsUi.ui:287
-#: src/frontends/qt4/ui/ParagraphUi.ui:285
+# src/layout_forms.C:28
+#: src/frontends/qt4/ui/ListingsUi.ui:276
 #, fuzzy
-msgid "&Left"
-msgstr "Ляв"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:300
-msgid "enable for numbers on the right side"
-msgstr ""
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:133
-#: src/frontends/qt4/ui/ListingsUi.ui:303
-#: src/frontends/qt4/ui/ParagraphUi.ui:292
-#, fuzzy
-msgid "&Right"
-msgstr "Десен"
+msgid "Side: "
+msgstr "Серия(S):|#S"
 
 # src/ext_l10n.h:362
-#: src/frontends/qt4/ui/ListingsUi.ui:352
+#: src/frontends/qt4/ui/ListingsUi.ui:326
 #, fuzzy
 msgid "Step:"
 msgstr "Държава"
 
+#: src/frontends/qt4/ui/ListingsUi.ui:339
+#: src/frontends/qt4/ui/ListingsUi.ui:352
 #: src/frontends/qt4/ui/ListingsUi.ui:365
-#: src/frontends/qt4/ui/ListingsUi.ui:378
-#: src/frontends/qt4/ui/ListingsUi.ui:391
 msgid "Differenz between two numbered lines"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:408
+#: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Advanced"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:428
+#: src/frontends/qt4/ui/ListingsUi.ui:402
 msgid "More Parameters"
 msgstr ""
 
@@ -1889,7 +1873,7 @@ msgstr ""
 # src/frontends/kde/dlg/indexdlgdata.C:68
 # src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
 # src/frontends/kde/urldlg.C:52
-#: src/frontends/qt4/ui/ListingsUi.ui:505
+#: src/frontends/qt4/ui/ListingsUi.ui:479
 #, fuzzy
 msgid "OK"
 msgstr "&OK"
@@ -2239,6 +2223,18 @@ msgstr "Стандартно"
 #: src/frontends/qt4/ui/ParagraphUi.ui:278
 msgid "&Justified"
 msgstr ""
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:120
+#: src/frontends/qt4/ui/ParagraphUi.ui:285
+#, fuzzy
+msgid "&Left"
+msgstr "Ляв"
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:133
+#: src/frontends/qt4/ui/ParagraphUi.ui:292
+#, fuzzy
+msgid "&Right"
+msgstr "Десен"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:107
 #: src/frontends/qt4/ui/ParagraphUi.ui:299
@@ -3339,7 +3335,7 @@ msgstr "Към препратка"
 
 # src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
 # src/insets/insetbib.C:211
-#: src/frontends/qt4/ui/RefUi.ui:253 src/frontends/qt4/QRef.cpp:292
+#: src/frontends/qt4/ui/RefUi.ui:253 src/frontends/qt4/QRef.cpp:293
 #, fuzzy
 msgid "&Go to Label"
 msgstr "Етикет(L):|#L"
@@ -4109,7 +4105,7 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
 #: lib/layouts/amsart.layout:21 lib/layouts/amsbook.layout:22
-#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:36
+#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:37
 #: lib/layouts/broadway.layout:183 lib/layouts/chess.layout:27
 #: lib/layouts/cl2emult.layout:125 lib/layouts/dtk.layout:31
 #: lib/layouts/egs.layout:18 lib/layouts/elsart.layout:49
@@ -4137,7 +4133,7 @@ msgid "TheoremTemplate"
 msgstr "Шаблони"
 
 # src/ext_l10n.h:318
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:947
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:948
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -4154,7 +4150,7 @@ msgstr "Доказателство"
 
 # src/ext_l10n.h:387
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:953
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:954
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
@@ -4188,7 +4184,7 @@ msgid "Lemma #:"
 msgstr "Лема"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:884
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:885
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
@@ -4254,7 +4250,7 @@ msgstr "Цитат"
 
 # src/ext_l10n.h:238
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:941
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:942
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -4278,7 +4274,7 @@ msgstr ""
 
 # src/ext_l10n.h:221
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:911
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:912
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
@@ -4296,7 +4292,7 @@ msgstr "Дефиниция"
 
 # src/ext_l10n.h:232
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:923
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:924
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
@@ -4441,7 +4437,7 @@ msgstr "Смяна на език"
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
-#: lib/layouts/beamer.layout:139 lib/layouts/egs.layout:30
+#: lib/layouts/beamer.layout:140 lib/layouts/egs.layout:30
 #: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
 #: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
@@ -4463,7 +4459,7 @@ msgstr "Раздел"
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
-#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:180
+#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:181
 #: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
@@ -4497,7 +4493,7 @@ msgid "Subsubsection"
 msgstr "Под-подраздел"
 
 # src/ext_l10n.h:345
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:171
+#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:172
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
@@ -4507,7 +4503,7 @@ msgid "Section*"
 msgstr "Раздел*"
 
 # src/ext_l10n.h:372
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:213
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:214
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
@@ -4570,7 +4566,7 @@ msgstr "Индекс запис"
 # src/ext_l10n.h:186
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:835
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:836
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
@@ -4629,7 +4625,7 @@ msgstr "Маркиране вкл."
 # src/LyXAction.C:251
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
-#: lib/layouts/beamer.layout:49 lib/layouts/egs.layout:163
+#: lib/layouts/beamer.layout:50 lib/layouts/egs.layout:163
 #: lib/layouts/manpage.layout:82 lib/layouts/simplecv.layout:77
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:11
@@ -4640,7 +4636,7 @@ msgstr "Вмъкни индекс списък"
 # src/ext_l10n.h:231
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:67 lib/layouts/egs.layout:145
+#: lib/layouts/beamer.layout:68 lib/layouts/egs.layout:145
 #: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
 msgid "Enumerate"
@@ -4648,7 +4644,7 @@ msgstr "Номерация"
 
 # src/ext_l10n.h:223
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
-#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:85
+#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
@@ -4671,7 +4667,7 @@ msgstr "Списък"
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:716
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:717
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
@@ -4693,7 +4689,7 @@ msgstr "Заглавие"
 
 # src/ext_l10n.h:375
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:740
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:741
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
@@ -4704,7 +4700,7 @@ msgstr "Подзаглавие"
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:765
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:766
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
@@ -4751,7 +4747,7 @@ msgstr "Семейство(F):|#F"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:811 lib/layouts/egs.layout:476
+#: lib/layouts/beamer.layout:812 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
 #: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
@@ -4789,7 +4785,7 @@ msgstr ""
 
 # src/ext_l10n.h:265
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefs.cpp:302
+#: src/frontends/qt4/QPrefs.cpp:303
 msgid "LaTeX"
 msgstr ""
 
@@ -4846,7 +4842,7 @@ msgstr ""
 
 # src/ext_l10n.h:329
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:849
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:850
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
@@ -5403,7 +5399,7 @@ msgstr "Фигура"
 msgid "FitBitmap"
 msgstr ""
 
-#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:63
+#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:64
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
 #: lib/layouts/simplecv.layout:91 lib/layouts/stdlists.inc:25
 msgid "*"
@@ -5445,7 +5441,7 @@ msgid "Latin off"
 msgstr "Хърватски"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:110
+#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:111
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
 #: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
@@ -5463,212 +5459,212 @@ msgstr "Залепи"
 msgid "Part*"
 msgstr "Факт*"
 
-#: lib/layouts/beamer.layout:100 lib/layouts/egs.layout:196
+#: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr ""
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/layouts/beamer.layout:124
+#: lib/layouts/beamer.layout:125
 #, fuzzy
 msgid "Part "
 msgstr "Залепи"
 
 # src/ext_l10n.h:373
-#: lib/layouts/beamer.layout:154
+#: lib/layouts/beamer.layout:155
 #, fuzzy
 msgid "Section \\arabic{section}"
 msgstr "Под-подраздел"
 
 # src/LColor.C:64
-#: lib/layouts/beamer.layout:166 lib/layouts/numarticle.inc:17
+#: lib/layouts/beamer.layout:167 lib/layouts/numarticle.inc:17
 #, fuzzy
 msgid "\\Alph{section}"
 msgstr "избор"
 
 # src/ext_l10n.h:373
-#: lib/layouts/beamer.layout:195
+#: lib/layouts/beamer.layout:196
 #, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Под-подраздел"
 
 # src/ext_l10n.h:373
-#: lib/layouts/beamer.layout:208
+#: lib/layouts/beamer.layout:209
 #, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "Под-подраздел"
 
-#: lib/layouts/beamer.layout:222
+#: lib/layouts/beamer.layout:223
 msgid "BeginFrame"
 msgstr ""
 
 # src/lyx.C:87
-#: lib/layouts/beamer.layout:237
+#: lib/layouts/beamer.layout:238
 #, fuzzy
 msgid "Frame "
 msgstr "Параметри(p)|#p"
 
-#: lib/layouts/beamer.layout:263
+#: lib/layouts/beamer.layout:264
 msgid "BeginPlainFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:278
+#: lib/layouts/beamer.layout:279
 msgid "Frame (no head/foot/sidebars)__"
 msgstr ""
 
 # src/LColor.C:82
-#: lib/layouts/beamer.layout:301
+#: lib/layouts/beamer.layout:302
 #, fuzzy
 msgid "AgainFrame"
 msgstr "рамка на математика"
 
-#: lib/layouts/beamer.layout:316
+#: lib/layouts/beamer.layout:317
 msgid "Again frame with label__"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:269
-#: lib/layouts/beamer.layout:340
+#: lib/layouts/beamer.layout:341
 #, fuzzy
 msgid "EndFrame"
 msgstr "Принтер"
 
-#: lib/layouts/beamer.layout:354
+#: lib/layouts/beamer.layout:355
 msgid "________________________________ "
 msgstr ""
 
 # src/ext_l10n.h:375
-#: lib/layouts/beamer.layout:369
+#: lib/layouts/beamer.layout:370
 #, fuzzy
 msgid "FrameSubtitle"
 msgstr "Подзаглавие"
 
 # src/frontends/kde/dlg/tabcreatedlgdata.C:107
 # src/frontends/xforms/form_tabular_create.C:45
-#: lib/layouts/beamer.layout:392
+#: lib/layouts/beamer.layout:393
 #, fuzzy
 msgid "Column"
 msgstr "Колони"
 
-#: lib/layouts/beamer.layout:404
-msgid "start column of width: "
+#: lib/layouts/beamer.layout:405
+msgid "start column (increase depth!), width: "
 msgstr ""
 
 # src/frontends/kde/dlg/tabcreatedlgdata.C:107
 # src/frontends/xforms/form_tabular_create.C:45
-#: lib/layouts/beamer.layout:416
+#: lib/layouts/beamer.layout:417
 #, fuzzy
 msgid "Columns"
 msgstr "Колони"
 
 # src/frontends/kde/dlg/tabcreatedlgdata.C:107
 # src/frontends/xforms/form_tabular_create.C:45
-#: lib/layouts/beamer.layout:428
+#: lib/layouts/beamer.layout:429
 #, fuzzy
 msgid "columns "
 msgstr "Колони"
 
-#: lib/layouts/beamer.layout:445
+#: lib/layouts/beamer.layout:446
 msgid "ColumnsCenterAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:456
+#: lib/layouts/beamer.layout:457
 msgid "columns (center aligned) "
 msgstr ""
 
-#: lib/layouts/beamer.layout:475
+#: lib/layouts/beamer.layout:476
 msgid "ColumnsTopAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:486
+#: lib/layouts/beamer.layout:487
 msgid "columns (top aligned) "
 msgstr ""
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/layouts/beamer.layout:506
+#: lib/layouts/beamer.layout:507
 #, fuzzy
 msgid "Pause"
 msgstr "Залепи"
 
-#: lib/layouts/beamer.layout:521
+#: lib/layouts/beamer.layout:522
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
 # src/form1.C:129 src/sp_form.C:58
-#: lib/layouts/beamer.layout:531
+#: lib/layouts/beamer.layout:532
 #, fuzzy
 msgid "Overprint"
 msgstr "Опции"
 
 # src/frontends/kde/dlg/printdlgdata.C:116
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:542
 #, fuzzy
 msgid "overprint "
 msgstr "(&P)Печат"
 
 # src/frontends/xforms/form_preferences.C:896
-#: lib/layouts/beamer.layout:557
+#: lib/layouts/beamer.layout:558
 #, fuzzy
 msgid "OverlayArea"
 msgstr "обърнато"
 
 # src/frontends/xforms/form_preferences.C:896
-#: lib/layouts/beamer.layout:567
+#: lib/layouts/beamer.layout:568
 #, fuzzy
 msgid "overlayarea"
 msgstr "обърнато"
 
 # src/frontends/kde/dlg/paradlgdata.C:82
-#: lib/layouts/beamer.layout:582
+#: lib/layouts/beamer.layout:583
 #, fuzzy
 msgid "Uncover"
 msgstr "(&R)Въстанови"
 
-#: lib/layouts/beamer.layout:591
+#: lib/layouts/beamer.layout:592
 msgid "uncovered on slides  "
 msgstr ""
 
 # src/lyxfont.C:62
-#: lib/layouts/beamer.layout:606
+#: lib/layouts/beamer.layout:607
 #, fuzzy
 msgid "Only"
 msgstr "Вкл."
 
-#: lib/layouts/beamer.layout:615
+#: lib/layouts/beamer.layout:616
 msgid "only on slides_"
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:94
-#: lib/layouts/beamer.layout:631
+#: lib/layouts/beamer.layout:632
 #, fuzzy
 msgid "Block"
 msgstr "Блок"
 
-#: lib/layouts/beamer.layout:641
+#: lib/layouts/beamer.layout:642
 msgid "block ( ERT[{title}] body ): "
 msgstr ""
 
 # src/ext_l10n.h:232
-#: lib/layouts/beamer.layout:656
+#: lib/layouts/beamer.layout:657
 #, fuzzy
 msgid "ExampleBlock"
 msgstr "Пример"
 
-#: lib/layouts/beamer.layout:666
+#: lib/layouts/beamer.layout:667
 msgid "block ( ERT[{title}] example text ): "
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:94
-#: lib/layouts/beamer.layout:685
+#: lib/layouts/beamer.layout:686
 #, fuzzy
 msgid "AlertBlock"
 msgstr "Блок"
 
-#: lib/layouts/beamer.layout:695
+#: lib/layouts/beamer.layout:696
 msgid "block ( ERT[{title}] alert text ): "
 msgstr ""
 
 # src/LyXAction.C:354
-#: lib/layouts/beamer.layout:788 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:789 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 #, fuzzy
 msgid "Institute"
@@ -5676,102 +5672,102 @@ msgstr "Вмъкни кавички"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: lib/layouts/beamer.layout:859
+#: lib/layouts/beamer.layout:860
 #, fuzzy
 msgid "TitleGraphic"
 msgstr "Графика"
 
 # src/ext_l10n.h:320
-#: lib/layouts/beamer.layout:894
+#: lib/layouts/beamer.layout:895
 #, fuzzy
 msgid "Corollary_"
 msgstr "Допускане"
 
 # src/ext_l10n.h:221
-#: lib/layouts/beamer.layout:914
+#: lib/layouts/beamer.layout:915
 #, fuzzy
 msgid "Definition. "
 msgstr "Дефиниция"
 
 # src/ext_l10n.h:221
-#: lib/layouts/beamer.layout:917
+#: lib/layouts/beamer.layout:918
 #, fuzzy
 msgid "Definitions"
 msgstr "Дефиниция"
 
 # src/ext_l10n.h:221
-#: lib/layouts/beamer.layout:920
+#: lib/layouts/beamer.layout:921
 #, fuzzy
 msgid "Definitions. "
 msgstr "Дефиниция"
 
 # src/ext_l10n.h:232
-#: lib/layouts/beamer.layout:926
+#: lib/layouts/beamer.layout:927
 #, fuzzy
 msgid "Example. "
 msgstr "Пример"
 
 # src/ext_l10n.h:232
-#: lib/layouts/beamer.layout:934
+#: lib/layouts/beamer.layout:935
 #, fuzzy
 msgid "Examples"
 msgstr "Пример"
 
 # src/ext_l10n.h:232
-#: lib/layouts/beamer.layout:937
+#: lib/layouts/beamer.layout:938
 #, fuzzy
 msgid "Examples. "
 msgstr "Пример"
 
 # src/ext_l10n.h:238
-#: lib/layouts/beamer.layout:944
+#: lib/layouts/beamer.layout:945
 #, fuzzy
 msgid "Fact. "
 msgstr "Факт"
 
 # src/ext_l10n.h:318
-#: lib/layouts/beamer.layout:950
+#: lib/layouts/beamer.layout:951
 #, fuzzy
 msgid "Proof. "
 msgstr "Доказателство"
 
 # src/ext_l10n.h:387
-#: lib/layouts/beamer.layout:956
+#: lib/layouts/beamer.layout:957
 #, fuzzy
 msgid "Theorem. "
 msgstr "Теорема"
 
 # src/frontends/xforms/form_document.C:244
-#: lib/layouts/beamer.layout:961
+#: lib/layouts/beamer.layout:962
 #, fuzzy
 msgid "Separator"
 msgstr "Абзац разделяне"
 
-#: lib/layouts/beamer.layout:974
+#: lib/layouts/beamer.layout:975
 msgid "___"
 msgstr ""
 
 # src/ext_l10n.h:279
-#: lib/layouts/beamer.layout:984 lib/layouts/egs.layout:641
+#: lib/layouts/beamer.layout:985 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX Код"
 
 # src/ext_l10n.h:291 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
 # src/insets/insetinfo.C:231
-#: lib/layouts/beamer.layout:1021
+#: lib/layouts/beamer.layout:1022
 #, fuzzy
 msgid "NoteItem"
 msgstr "Бележка"
 
 # src/LColor.C:67
-#: lib/layouts/beamer.layout:1032
+#: lib/layouts/beamer.layout:1033
 #, fuzzy
 msgid "note: "
 msgstr "бележка"
 
 # src/frontends/xforms/FormTabular.C:133
-#: lib/layouts/beamer.layout:1068 lib/layouts/stdfloats.inc:10
+#: lib/layouts/beamer.layout:1069 lib/layouts/stdfloats.inc:10
 #: lib/ui/stdtoolbars.inc:110
 #, fuzzy
 msgid "Table"
@@ -5780,19 +5776,19 @@ msgstr "Дълга таблица"
 # src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 # src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
 # src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
-#: lib/layouts/beamer.layout:1073 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1074 lib/layouts/stdfloats.inc:15
 #, fuzzy
 msgid "List of Tables"
 msgstr "Списък на таблици"
 
 # src/ext_l10n.h:244
-#: lib/layouts/beamer.layout:1079 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1080 lib/layouts/stdfloats.inc:22
 #, fuzzy
 msgid "Figure"
 msgstr "Фигура"
 
 # src/ext_l10n.h:244
-#: lib/layouts/beamer.layout:1084 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1085 lib/layouts/stdfloats.inc:27
 #, fuzzy
 msgid "List of Figures"
 msgstr "Фигура"
@@ -10824,19 +10820,19 @@ msgid "Redo|R"
 msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:835
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:836
 #: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:840
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:841
 #: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:816
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:817
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Залепи"
@@ -14633,66 +14629,66 @@ msgid "intercal"
 msgstr "Принтер"
 
 # src/support/filetools.C:453
-#: src/Buffer.cpp:229
+#: src/Buffer.cpp:230
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Грешка! Не мога да създам временна директория: "
 
 # src/support/filetools.C:453
-#: src/Buffer.cpp:230
+#: src/Buffer.cpp:231
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Грешка! Не мога да създам временна директория: "
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 #, fuzzy
 msgid "Unknown document class"
 msgstr " към избрания документ клас!"
 
-#: src/Buffer.cpp:402
+#: src/Buffer.cpp:403
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/Buffer.cpp:461 src/Text.cpp:293
+#: src/Buffer.cpp:462 src/Text.cpp:293
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Непознато действие"
 
 # src/frontends/xforms/FormError.C:26
-#: src/Buffer.cpp:465 src/Buffer.cpp:472 src/Buffer.cpp:492
+#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
 #, fuzzy
 msgid "Document header error"
 msgstr "LaTeX Грешка"
 
-#: src/Buffer.cpp:471
+#: src/Buffer.cpp:472
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:491
+#: src/Buffer.cpp:492
 msgid "\\begin_document is missing"
 msgstr ""
 
 # src/buffer.C:546
-#: src/Buffer.cpp:502
+#: src/Buffer.cpp:503
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Невъзможност за зареждане на текстклас "
 
-#: src/Buffer.cpp:503
+#: src/Buffer.cpp:504
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/Buffer.cpp:514 src/Buffer.cpp:520 src/BufferView.cpp:899
+#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:899
 #: src/BufferView.cpp:905
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:515 src/BufferView.cpp:900
+#: src/Buffer.cpp:516 src/BufferView.cpp:900
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -14700,7 +14696,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:521 src/BufferView.cpp:906
+#: src/Buffer.cpp:522 src/BufferView.cpp:906
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -14709,13 +14705,13 @@ msgid ""
 msgstr ""
 
 # src/lyx_cb.C:263
-#: src/Buffer.cpp:656 src/Buffer.cpp:665
+#: src/Buffer.cpp:657 src/Buffer.cpp:666
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Документът не може да бъде записан!"
 
 # src/frontends/xforms/FormDocument.C:437
-#: src/Buffer.cpp:657 src/Buffer.cpp:666
+#: src/Buffer.cpp:658 src/Buffer.cpp:667
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " абзаци не могат да бъдат конвертирани"
@@ -14723,13 +14719,13 @@ msgstr " абзаци не могат да бъдат конвертирани"
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/Buffer.cpp:674 src/Buffer.cpp:746
+#: src/Buffer.cpp:675 src/Buffer.cpp:747
 #, fuzzy
 msgid "Document format failure"
 msgstr "Документ"
 
 # src/lyxfunc.C:3185
-#: src/Buffer.cpp:675
+#: src/Buffer.cpp:676
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Неуспех при отварянето"
@@ -14737,12 +14733,12 @@ msgstr "Неуспех при отварянето"
 # src/frontends/xforms/FormDocument.C:439
 # src/frontends/xforms/FormDocument.C:446
 # src/frontends/xforms/FormDocument.C:1108
-#: src/Buffer.cpp:699
+#: src/Buffer.cpp:700
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Грешки при конвертиране!"
 
-#: src/Buffer.cpp:700
+#: src/Buffer.cpp:701
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -14750,12 +14746,12 @@ msgid ""
 msgstr ""
 
 # src/LaTeXLog.C:59 src/LaTeXLog.C:62
-#: src/Buffer.cpp:709
+#: src/Buffer.cpp:710
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Не е намерен LaTeX файл-протокол"
 
-#: src/Buffer.cpp:710
+#: src/Buffer.cpp:711
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -14765,30 +14761,30 @@ msgstr ""
 # src/frontends/xforms/FormDocument.C:439
 # src/frontends/xforms/FormDocument.C:446
 # src/frontends/xforms/FormDocument.C:1108
-#: src/Buffer.cpp:731
+#: src/Buffer.cpp:732
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Грешки при конвертиране!"
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:733
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:747
+#: src/Buffer.cpp:748
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:2252
-#: src/Buffer.cpp:783
+#: src/Buffer.cpp:784
 #, fuzzy
 msgid "Backup failure"
 msgstr "Път за архивни копия"
 
-#: src/Buffer.cpp:784
+#: src/Buffer.cpp:785
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -14796,43 +14792,29 @@ msgid ""
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:132
-#: src/Buffer.cpp:896
+#: src/Buffer.cpp:918
 #, fuzzy
 msgid "Encoding error"
 msgstr "Кодировка"
 
-#: src/Buffer.cpp:897
+#: src/Buffer.cpp:919
 msgid ""
-"Some characters of your document are not representable in the chosen "
-"encoding.\n"
-"Changing the document encoding to utf8 could help."
-msgstr ""
-
-# src/ext_l10n.h:61
-#: src/Buffer.cpp:906
-#, fuzzy
-msgid "Error closing file"
-msgstr "Многоколонно(M)|M"
-
-#: src/Buffer.cpp:907
-msgid ""
-"The output file could not be closed properly.\n"
-" Probably some characters of your document are not representable in the "
+"Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
 # src/buffer.C:3317
-#: src/Buffer.cpp:1186
+#: src/Buffer.cpp:1197
 msgid "Running chktex..."
 msgstr "Стартирам chktex..."
 
-#: src/Buffer.cpp:1199
+#: src/Buffer.cpp:1210
 msgid "chktex failure"
 msgstr ""
 
 # src/lyx_cb.C:296
-#: src/Buffer.cpp:1200
+#: src/Buffer.cpp:1211
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex премина успешно"
@@ -16153,7 +16135,7 @@ msgid "Exiting."
 msgstr "Изход(x)|x"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/LyXFunc.cpp:1115 src/Text3.cpp:1313
+#: src/LyXFunc.cpp:1115 src/Text3.cpp:1314
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
@@ -17033,30 +17015,30 @@ msgid "Math editor mode"
 msgstr "Матем. редактор"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/Text3.cpp:721
+#: src/Text3.cpp:722
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr " към избрания документ клас!"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/Text3.cpp:894
+#: src/Text3.cpp:895
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/Text3.cpp:895
+#: src/Text3.cpp:896
 msgid " not known"
 msgstr " оформление"
 
 # src/form1.C:33
-#: src/Text3.cpp:1418 src/Text3.cpp:1430
+#: src/Text3.cpp:1419 src/Text3.cpp:1431
 #, fuzzy
 msgid "Character set"
 msgstr "Кодировка(H):|#H"
 
 # src/frontends/kde/FormParagraph.C:183
 # src/frontends/xforms/FormParagraph.C:148
-#: src/Text3.cpp:1564
+#: src/Text3.cpp:1565
 msgid "Paragraph layout set"
 msgstr "Оформяне на абзаци"
 
@@ -18125,7 +18107,7 @@ msgid "LyX"
 msgstr "LyX: Печат"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/frontends/qt4/GuiWorkArea.cpp:467
+#: src/frontends/qt4/GuiWorkArea.cpp:477
 #, fuzzy
 msgid "unknown version"
 msgstr "Непознато действие"
@@ -18591,7 +18573,7 @@ msgstr "Опции"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:634
+#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "Графика"
 
@@ -18604,7 +18586,7 @@ msgid "Child Document"
 msgstr "Документ"
 
 # src/LColor.C:78
-#: src/frontends/qt4/QListings.cpp:186
+#: src/frontends/qt4/QListings.cpp:183
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "ред на министраница"
@@ -18643,167 +18625,167 @@ msgid "Paragraph Settings"
 msgstr "Библ. перо"
 
 # src/frontends/xforms/FormPreferences.C:220
-#: src/frontends/qt4/QPrefs.cpp:73
+#: src/frontends/qt4/QPrefs.cpp:74
 #, fuzzy
 msgid "Look and feel"
 msgstr "Изглед"
 
 # src/frontends/xforms/FormPreferences.C:223
-#: src/frontends/qt4/QPrefs.cpp:74
+#: src/frontends/qt4/QPrefs.cpp:75
 #, fuzzy
 msgid "Language settings"
 msgstr "Език"
 
 # src/frontends/xforms/FormPreferences.C:232
-#: src/frontends/qt4/QPrefs.cpp:75
+#: src/frontends/qt4/QPrefs.cpp:76
 msgid "Outputs"
 msgstr "Изход"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: src/frontends/qt4/QPrefs.cpp:173
+#: src/frontends/qt4/QPrefs.cpp:174
 #, fuzzy
 msgid "Plain text"
 msgstr "Залепи"
 
 # src/frontends/xforms/form_preferences.C:354
-#: src/frontends/qt4/QPrefs.cpp:204
+#: src/frontends/qt4/QPrefs.cpp:205
 #, fuzzy
 msgid "Date format"
 msgstr "Формат на датата"
 
 # src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
 # src/frontends/xforms/form_index.C:28
-#: src/frontends/qt4/QPrefs.cpp:231
+#: src/frontends/qt4/QPrefs.cpp:232
 #, fuzzy
 msgid "Keyboard"
 msgstr "Ключова дума"
 
 # src/frontends/xforms/FormPreferences.C:238
-#: src/frontends/qt4/QPrefs.cpp:355
+#: src/frontends/qt4/QPrefs.cpp:356
 #, fuzzy
 msgid "Screen fonts"
 msgstr "Екранни шрифтове"
 
 # src/frontends/xforms/FormPreferences.C:244
-#: src/frontends/qt4/QPrefs.cpp:513
+#: src/frontends/qt4/QPrefs.cpp:514
 msgid "Colors"
 msgstr "Цветове"
 
 # src/frontends/xforms/FormPreferences.C:261
-#: src/frontends/qt4/QPrefs.cpp:608 src/frontends/qt4/QPrefs.cpp:707
+#: src/frontends/qt4/QPrefs.cpp:609 src/frontends/qt4/QPrefs.cpp:708
 msgid "Paths"
 msgstr "Пътища"
 
 # src/lyxfunc.C:3291
-#: src/frontends/qt4/QPrefs.cpp:758
+#: src/frontends/qt4/QPrefs.cpp:759
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "Изберете документ за вмъкване"
 
 # src/support/filetools.C:453
-#: src/frontends/qt4/QPrefs.cpp:768
+#: src/frontends/qt4/QPrefs.cpp:769
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "Грешка! Не мога да създам временна директория: "
 
 # src/lyxfunc.C:3291
-#: src/frontends/qt4/QPrefs.cpp:778
+#: src/frontends/qt4/QPrefs.cpp:779
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "Изберете документ за вмъкване"
 
 # src/lyxfunc.C:3291
-#: src/frontends/qt4/QPrefs.cpp:788
+#: src/frontends/qt4/QPrefs.cpp:789
 #, fuzzy
 msgid "Select a document directory"
 msgstr "Изберете документ за вмъкване"
 
-#: src/frontends/qt4/QPrefs.cpp:798
+#: src/frontends/qt4/QPrefs.cpp:799
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
 # src/spellchecker.C:717
-#: src/frontends/qt4/QPrefs.cpp:811 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:812 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "Правопис"
 
 # src/frontends/xforms/FormTabular.C:131
-#: src/frontends/qt4/QPrefs.cpp:833
+#: src/frontends/qt4/QPrefs.cpp:834
 #, fuzzy
 msgid "ispell"
 msgstr "Клетка"
 
 # src/frontends/xforms/FormTabular.C:131
-#: src/frontends/qt4/QPrefs.cpp:834
+#: src/frontends/qt4/QPrefs.cpp:835
 #, fuzzy
 msgid "aspell"
 msgstr "Клетка"
 
 # src/frontends/xforms/FormTabular.C:131
-#: src/frontends/qt4/QPrefs.cpp:835
+#: src/frontends/qt4/QPrefs.cpp:836
 #, fuzzy
 msgid "hspell"
 msgstr "Клетка"
 
-#: src/frontends/qt4/QPrefs.cpp:837
+#: src/frontends/qt4/QPrefs.cpp:838
 msgid "pspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:840
+#: src/frontends/qt4/QPrefs.cpp:841
 msgid "aspell (library)"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:226
 # src/frontends/xforms/FormPreferences.C:255
-#: src/frontends/qt4/QPrefs.cpp:921
+#: src/frontends/qt4/QPrefs.cpp:922
 msgid "Converters"
 msgstr "Конвертори"
 
 # src/frontends/kde/dlg/printdlgdata.C:73
 # src/frontends/xforms/form_print.C:135
-#: src/frontends/qt4/QPrefs.cpp:1111
+#: src/frontends/qt4/QPrefs.cpp:1120
 #, fuzzy
 msgid "Copiers"
 msgstr "Копия"
 
 # src/frontends/xforms/FormPreferences.C:252
-#: src/frontends/qt4/QPrefs.cpp:1364
+#: src/frontends/qt4/QPrefs.cpp:1373
 #, fuzzy
 msgid "File formats"
 msgstr "Формати"
 
 # src/frontends/xforms/FormPreferences.C:252
-#: src/frontends/qt4/QPrefs.cpp:1556
+#: src/frontends/qt4/QPrefs.cpp:1565
 #, fuzzy
 msgid "Format in use"
 msgstr "Формати"
 
 # src/frontends/xforms/FormPreferences.C:1407
-#: src/frontends/qt4/QPrefs.cpp:1557
+#: src/frontends/qt4/QPrefs.cpp:1566
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Не може да се премахне формат, който се използва от конвертор. Първо "
 "премахнете конвертора."
 
 # src/frontends/xforms/FormPreferences.C:269
-#: src/frontends/qt4/QPrefs.cpp:1658
+#: src/frontends/qt4/QPrefs.cpp:1667
 msgid "Printer"
 msgstr "Принтер"
 
 # src/LyXAction.C:388
-#: src/frontends/qt4/QPrefs.cpp:1756 src/frontends/qt4/QPrefs.cpp:1950
+#: src/frontends/qt4/QPrefs.cpp:1765 src/frontends/qt4/QPrefs.cpp:1959
 #, fuzzy
 msgid "User interface"
 msgstr "Вмъкни таблица"
 
 # src/frontends/xforms/form_paragraph.C:48
-#: src/frontends/qt4/QPrefs.cpp:1874
+#: src/frontends/qt4/QPrefs.cpp:1883
 #, fuzzy
 msgid "Identity"
 msgstr "Отместване"
 
 # src/frontends/xforms/FormPreferences.C:68
-#: src/frontends/qt4/QPrefs.cpp:2016
+#: src/frontends/qt4/QPrefs.cpp:2025
 msgid "Preferences"
 msgstr "Настройки"
 
@@ -18816,26 +18798,26 @@ msgid "Print Document"
 msgstr "Документ"
 
 # src/frontends/kde/FormRef.C:249
-#: src/frontends/qt4/QRef.cpp:188
+#: src/frontends/qt4/QRef.cpp:189
 #, fuzzy
 msgid "Cross-reference"
 msgstr "LyX: Препратка"
 
 # src/frontends/kde/FormRef.C:103
-#: src/frontends/qt4/QRef.cpp:284
+#: src/frontends/qt4/QRef.cpp:285
 #, fuzzy
 msgid "&Go Back"
 msgstr "(&G)Назад"
 
 # src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:214
-#: src/frontends/qt4/QRef.cpp:286
+#: src/frontends/qt4/QRef.cpp:287
 #, fuzzy
 msgid "Jump back"
 msgstr "Обратно"
 
 # src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:105
 # src/frontends/xforms/FormRef.C:222 src/frontends/xforms/FormRef.C:245
-#: src/frontends/qt4/QRef.cpp:294
+#: src/frontends/qt4/QRef.cpp:295
 #, fuzzy
 msgid "Jump to label"
 msgstr "Към препратка"
@@ -19779,6 +19761,16 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Непознато действие"
+
+# src/lyxfont.C:415
+#, fuzzy
+#~ msgid "Number style"
+#~ msgstr " Номер "
+
+# src/ext_l10n.h:61
+#, fuzzy
+#~ msgid "Error closing file"
+#~ msgstr "Многоколонно(M)|M"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:94
 #, fuzzy
