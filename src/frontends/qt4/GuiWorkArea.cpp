@@ -417,8 +417,9 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)
 	if(e->isAutoRepeat() && QCoreApplication::hasPendingEvents()) {
-		LYXERR(Debug::KEY)	<< BOOST_CURRENT_FUNCTION << endl
-							<< "key ignored" << endl;
+		LYXERR(Debug::KEY)	
+			<< BOOST_CURRENT_FUNCTION << endl
+			<< "key ignored" << endl;
 		e->ignore();
 		return;
 	}
