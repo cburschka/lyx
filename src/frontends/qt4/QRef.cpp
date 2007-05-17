@@ -51,6 +51,7 @@ QRefDialog::QRefDialog(QRef * form)
 	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reset_dialog()));
+	connect(this, SIGNAL(rejected()), this, SLOT(reset_dialog()));
 
 	connect(typeCO, SIGNAL(activated(int)), 
 		this, SLOT(changed_adaptor()));
