@@ -437,29 +437,29 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
-	// if there is no selection just set the current_font
-	if (!cur.selection()) {
-		// Determine basis font
-		Font layoutfont;
-		pit_type pit = cur.pit();
-		if (cur.pos() < pars_[pit].beginOfBody())
-			layoutfont = getLabelFont(cur.buffer(), pars_[pit]);
-		else
-			layoutfont = getLayoutFont(cur.buffer(), pit);
+	// Set the current_font
+	// Determine basis font
+	Font layoutfont;
+	pit_type pit = cur.pit();
+	if (cur.pos() < pars_[pit].beginOfBody())
+		layoutfont = getLabelFont(cur.buffer(), pars_[pit]);
+	else
+		layoutfont = getLayoutFont(cur.buffer(), pit);
 
-		// Update current font
-		real_current_font.update(font,
-					 cur.buffer().params().language,
-					 toggleall);
+	// Update current font
+	real_current_font.update(font,
+					cur.buffer().params().language,
+					toggleall);
 
-		// Reduce to implicit settings
-		current_font = real_current_font;
-		current_font.reduce(layoutfont);
-		// And resolve it completely
-		real_current_font.realize(layoutfont);
+	// Reduce to implicit settings
+	current_font = real_current_font;
+	current_font.reduce(layoutfont);
+	// And resolve it completely
+	real_current_font.realize(layoutfont);
 
+	// if there is no selection that's all we need to do 
+	if (!cur.selection())
 		return;
-	}
 
 	// Ok, we have a selection.
 	recordUndoSelection(cur);
