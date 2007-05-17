@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-17 23:51+0100\n"
+"POT-Creation-Date: 2007-05-18 00:09+0100\n"
 "PO-Revision-Date: 2007-04-30 17:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -156,7 +156,7 @@ msgstr "追加(&A)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:489
+#: src/frontends/qt4/ui/ListingsUi.ui:534
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
 #: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
@@ -565,7 +565,7 @@ msgstr "フォントの太さ"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:178 lib/layouts/europecv.layout:144
+#: src/frontends/qt4/ui/ListingsUi.ui:105 lib/layouts/europecv.layout:144
 #: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
@@ -1112,7 +1112,7 @@ msgid "Select an image file"
 msgstr "図表ファイルを選んでください"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:323
+#: src/frontends/qt4/ui/ListingsUi.ui:165
 msgid "File name of image"
 msgstr "図のファイル名"
 
@@ -1330,118 +1330,124 @@ msgstr "箇条書き（リスト）"
 msgid "Main Settings"
 msgstr "ブランチの設定"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
-#, fuzzy
-msgid "Style"
-msgstr "様式"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:59
-msgid "Breaking lines longer than the linewidth"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:62
-#, fuzzy
-msgid "&Break long lines"
-msgstr "長い表(longtable)を使う(&U)"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:72
-msgid "Insert a special symbol for a space"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:75
-msgid "&Space as Symbol"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:88
-#, fuzzy
-msgid "Use extended character table"
-msgstr "定義されていない文字スタイルです"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:91
-#, fuzzy
-msgid "&Extended Chars"
-msgstr "拡張機能(E)|E"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:101
-#, fuzzy
-msgid "Font style:"
-msgstr "フォントの大きさ"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:122
-msgid "Choose the Font Style"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:138
-#: src/frontends/qt4/ui/ListingsUi.ui:310
-#, fuzzy
-msgid "Font size:"
-msgstr "フォントの大きさ"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:159
-#: src/frontends/qt4/ui/ListingsUi.ui:294
-#, fuzzy
-msgid "Choose the Font Size"
-msgstr "スタイルファイルを選択"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:196
+#: src/frontends/qt4/ui/ListingsUi.ui:63
 #, fuzzy
 msgid "Placement"
 msgstr "配置(&P)"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:211
+#: src/frontends/qt4/ui/ListingsUi.ui:78
 #, fuzzy
 msgid "Placement:"
 msgstr "配置(&P)"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:221
+#: src/frontends/qt4/ui/ListingsUi.ui:88
 #, fuzzy
 msgid "Float"
 msgstr "フロート(A)|A"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:228
+#: src/frontends/qt4/ui/ListingsUi.ui:95
 msgid "Inline listing"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:238
+#: src/frontends/qt4/ui/ListingsUi.ui:133
 #, fuzzy
 msgid "Line numbering"
 msgstr "連番(&N)"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:250
-#, fuzzy
-msgid "Last line:"
-msgstr "数式行"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:263
-#, fuzzy
-msgid "First line:"
-msgstr "名"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:276
+#: src/frontends/qt4/ui/ListingsUi.ui:145
 #, fuzzy
 msgid "Side: "
 msgstr "スライド"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:326
+#: src/frontends/qt4/ui/ListingsUi.ui:152
+#: src/frontends/qt4/ui/ListingsUi.ui:249
+#: src/frontends/qt4/ui/ListingsUi.ui:262
+msgid "Differenz between two numbered lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:168
 #, fuzzy
 msgid "Step:"
 msgstr "州:"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:339
-#: src/frontends/qt4/ui/ListingsUi.ui:352
-#: src/frontends/qt4/ui/ListingsUi.ui:365
-msgid "Differenz between two numbered lines"
+#: src/frontends/qt4/ui/ListingsUi.ui:181
+#: src/frontends/qt4/ui/ListingsUi.ui:384
+#, fuzzy
+msgid "Font size:"
+msgstr "フォントの大きさ"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:202
+#: src/frontends/qt4/ui/ListingsUi.ui:405
+#, fuzzy
+msgid "Choose the Font Size"
+msgstr "スタイルファイルを選択"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:224
+#, fuzzy
+msgid "Range"
+msgstr "変更:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:236
+#, fuzzy
+msgid "First line:"
+msgstr "名"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:275
+#, fuzzy
+msgid "Last line:"
+msgstr "数式行"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:293
+#: src/frontends/qt4/ui/TabularUi.ui:301
+#, fuzzy
+msgid "Style"
+msgstr "様式"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:305
+msgid "Breaking lines longer than the linewidth"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:382
+#: src/frontends/qt4/ui/ListingsUi.ui:308
+#, fuzzy
+msgid "&Break long lines"
+msgstr "長い表(longtable)を使う(&U)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:318
+msgid "Insert a special symbol for a space"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:321
+msgid "&Space as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:334
+#, fuzzy
+msgid "Use extended character table"
+msgstr "定義されていない文字スタイルです"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:337
+#, fuzzy
+msgid "&Extended Chars"
+msgstr "拡張機能(E)|E"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:347
+#, fuzzy
+msgid "Font style:"
+msgstr "フォントの大きさ"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:368
+msgid "Choose the Font Style"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "Advanced"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:402
+#: src/frontends/qt4/ui/ListingsUi.ui:447
 msgid "More Parameters"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:479
+#: src/frontends/qt4/ui/ListingsUi.ui:524
 #, fuzzy
 msgid "OK"
 msgstr "&OK"
@@ -13859,7 +13865,7 @@ msgstr "一つの単語がチェックされました。"
 msgid "Spelling check completed"
 msgstr "スペルチェックが完了しました。"
 
-#: src/frontends/controllers/ControlToc.cpp:135 src/insets/InsetTOC.cpp:46
+#: src/frontends/controllers/ControlToc.cpp:137 src/insets/InsetTOC.cpp:46
 msgid "Table of Contents"
 msgstr "目次"
 

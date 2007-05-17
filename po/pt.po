@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-17 23:51+0100\n"
+"POT-Creation-Date: 2007-05-18 00:09+0100\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -177,7 +177,7 @@ msgstr "Acrescentar|#t"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:489
+#: src/frontends/qt4/ui/ListingsUi.ui:534
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
 #: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
@@ -651,7 +651,7 @@ msgstr "Tamanho da fonte:|#O"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:178 lib/layouts/europecv.layout:144
+#: src/frontends/qt4/ui/ListingsUi.ui:105 lib/layouts/europecv.layout:144
 #: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
@@ -1278,7 +1278,7 @@ msgid "Select an image file"
 msgstr "Selecionar a próxima linha"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:323
+#: src/frontends/qt4/ui/ListingsUi.ui:165
 #, fuzzy
 msgid "File name of image"
 msgstr "Selecione um documento para inserir"
@@ -1516,118 +1516,124 @@ msgstr "Linhas"
 msgid "Main Settings"
 msgstr "Item bibliográfico"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
-#, fuzzy
-msgid "Style"
-msgstr "Estilo"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:59
-msgid "Breaking lines longer than the linewidth"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:62
-msgid "&Break long lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:72
-msgid "Insert a special symbol for a space"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:75
-msgid "&Space as Symbol"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:88
-#, fuzzy
-msgid "Use extended character table"
-msgstr "Conjunto de caracteres:|#C"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:91
-msgid "&Extended Chars"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:101
-#, fuzzy
-msgid "Font style:"
-msgstr "Tamanho da fonte:|#O"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:122
-msgid "Choose the Font Style"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:138
-#: src/frontends/qt4/ui/ListingsUi.ui:310
-#, fuzzy
-msgid "Font size:"
-msgstr "Tamanho da fonte:|#O"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:159
-#: src/frontends/qt4/ui/ListingsUi.ui:294
-#, fuzzy
-msgid "Choose the Font Size"
-msgstr "Escolher modelo"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:196
+#: src/frontends/qt4/ui/ListingsUi.ui:63
 #, fuzzy
 msgid "Placement"
 msgstr "Lugar do Flutuante:|#L"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:211
+#: src/frontends/qt4/ui/ListingsUi.ui:78
 #, fuzzy
 msgid "Placement:"
 msgstr "Lugar do Flutuante:|#L"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:221
+#: src/frontends/qt4/ui/ListingsUi.ui:88
 #, fuzzy
 msgid "Float"
 msgstr "Flutuanteflt|#F"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:228
+#: src/frontends/qt4/ui/ListingsUi.ui:95
 msgid "Inline listing"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:238
+#: src/frontends/qt4/ui/ListingsUi.ui:133
 #, fuzzy
 msgid "Line numbering"
 msgstr "Número"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:250
+#: src/frontends/qt4/ui/ListingsUi.ui:145
 #, fuzzy
-msgid "Last line:"
-msgstr "Painel Matemático"
+msgid "Side: "
+msgstr "lados"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:263
+#: src/frontends/qt4/ui/ListingsUi.ui:152
+#: src/frontends/qt4/ui/ListingsUi.ui:249
+#: src/frontends/qt4/ui/ListingsUi.ui:262
+msgid "Differenz between two numbered lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:168
+#, fuzzy
+msgid "Step:"
+msgstr "Salvar"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:181
+#: src/frontends/qt4/ui/ListingsUi.ui:384
+#, fuzzy
+msgid "Font size:"
+msgstr "Tamanho da fonte:|#O"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:202
+#: src/frontends/qt4/ui/ListingsUi.ui:405
+#, fuzzy
+msgid "Choose the Font Size"
+msgstr "Escolher modelo"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:224
+#, fuzzy
+msgid "Range"
+msgstr "Simples|#S"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:236
 #, fuzzy
 msgid "First line:"
 msgstr ""
 "Primeiro\n"
 "cabeçalho"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:276
+#: src/frontends/qt4/ui/ListingsUi.ui:275
 #, fuzzy
-msgid "Side: "
-msgstr "lados"
+msgid "Last line:"
+msgstr "Painel Matemático"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:326
+#: src/frontends/qt4/ui/ListingsUi.ui:293
+#: src/frontends/qt4/ui/TabularUi.ui:301
 #, fuzzy
-msgid "Step:"
-msgstr "Salvar"
+msgid "Style"
+msgstr "Estilo"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:339
-#: src/frontends/qt4/ui/ListingsUi.ui:352
-#: src/frontends/qt4/ui/ListingsUi.ui:365
-msgid "Differenz between two numbered lines"
+#: src/frontends/qt4/ui/ListingsUi.ui:305
+msgid "Breaking lines longer than the linewidth"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:382
+#: src/frontends/qt4/ui/ListingsUi.ui:308
+msgid "&Break long lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:318
+msgid "Insert a special symbol for a space"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:321
+msgid "&Space as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:334
+#, fuzzy
+msgid "Use extended character table"
+msgstr "Conjunto de caracteres:|#C"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:337
+msgid "&Extended Chars"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:347
+#, fuzzy
+msgid "Font style:"
+msgstr "Tamanho da fonte:|#O"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:368
+msgid "Choose the Font Style"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "Advanced"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:402
+#: src/frontends/qt4/ui/ListingsUi.ui:447
 msgid "More Parameters"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:479
+#: src/frontends/qt4/ui/ListingsUi.ui:524
 #, fuzzy
 msgid "OK"
 msgstr "OK"
@@ -15342,7 +15348,7 @@ msgstr "Um erro foi detectado."
 msgid "Spelling check completed"
 msgstr "Verificação ortográfica completada!"
 
-#: src/frontends/controllers/ControlToc.cpp:135 src/insets/InsetTOC.cpp:46
+#: src/frontends/controllers/ControlToc.cpp:137 src/insets/InsetTOC.cpp:46
 msgid "Table of Contents"
 msgstr "Índice"
 
