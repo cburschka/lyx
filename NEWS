@@ -61,14 +61,14 @@ you can move chapters and sections around in the Table of Contents
 dialog. (The outliner has been backported and was released with LyX
 1.4.4.)
 
-* Session managment
+* Session management
 
 LyX is now able to remember window size and position and it will
 reopen the documents you worked on last time around. If you've
 selected the feature in the Preferences dialog, it'll even move the
 cursor to the place you were working on last!  Furthermore, toolbars
 can (finally!) be switched on/off in View->Toolbars and moved about in
-the LyX window. The session managment will remember their state.
+the LyX window. The session management will remember their state.
 
 * Source code Viewer
 
@@ -108,7 +108,7 @@ Windows.  The good old XForms frontend went the way of the dodo. It
 was both hated and loved, and certainly shaped the unique look of LyX
 in the past. It was finally killed off, however, by the switch to
 unicode.  The Qt3 frontend was removed.  The work on the GTK frontend
-has been transfered to a branch because its development has
+has been transferred to a branch because its development has
 essentially stalled.
 
 * Change tracking enhancements
@@ -290,7 +290,7 @@ What's new in version 1.4.4?
 - Fix crash when exiting empty superscript in math editor (bugs 2908
   and 2933).
 
-- Fix an undo crash crash with nested font changes in math (bug 3019).
+- Fix an undo crash with nested font changes in math (bug 3019).
 
 - Clear label when a formula is unnumbered (bug 2556).
 
