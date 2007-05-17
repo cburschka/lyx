@@ -347,7 +347,7 @@ def checkConverterEntries():
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
     #
     checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
-        rc_entry = [ r'\converter latex      wordhtml   "%%"	""' ])
+        rc_entry = [ r'\converter latex      wordhtml   "%%"	"originaldir,needaux"' ])
     #
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
