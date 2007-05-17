@@ -244,6 +244,7 @@ namespace {
 
 void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 {
+	recordUndo(cur);
 	cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
 	cur.posRight();
