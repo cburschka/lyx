@@ -717,8 +717,12 @@ void Text::setCurrentFont(Cursor & cur)
 	pos_type pos = cur.pos();
 	Paragraph & par = cur.paragraph();
 
-	if (cur.boundary() && pos > 0)
+	if (cur.boundary() && pos > 0 && pos < cur.lastpos()) {
 		--pos;
+		// We may have just moved to the previous row --- 
+		// we're going to be needing its bidi tables!
+		bidi.computeTables(par, cur.buffer(), cur.textRow());
+	}
 
 	if (pos > 0) {
 		if (pos == cur.lastpos())
@@ -904,9 +908,18 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 		return false;
 	if (cur.pos() == cur.lastpos())
 		return false;
-	Inset * inset = cur.nextInset();
+	Inset * inset = front ? cur.nextInset() : cur.prevInset();
 	if (!isHighlyEditableInset(inset))
 		return false;
+	/*
+	 * Apparently, when entering an inset we are expected to be positioned
+	 * *before* it in the containing paragraph, regardless of the direction
+	 * from which we are entering. Otherwise, cursor placement goes awry,
+	 * and when we exit from the beginning, we'll be placed *after* the
+	 * inset.
+	 */ 
+	if (!front)
+		--cur.pos();
 	inset->edit(cur, front);
 	return true;
 }
@@ -917,27 +930,35 @@ bool Text::cursorLeft(Cursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
-	if (!cur.boundary() && cur.pos() > 0 &&
-	    cur.textRow().pos() == cur.pos() &&
-	    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
-	    !cur.paragraph().isNewline(cur.pos()-1)) {
-		return setCursor(cur, cur.pit(), cur.pos(), true, true);
-	}
-	if (cur.pos() != 0) {
-		bool updateNeeded = setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
+	if (cur.pos() > 0) {
+		if (cur.boundary())
+			return setCursor(cur, cur.pit(), cur.pos(), true, false);
+
+		bool updateNeeded = false;
+		// If checkAndActivateInset returns true, that means that
+		// the cursor was placed inside it, so we're done
 		if (!checkAndActivateInset(cur, false)) {
-			/** FIXME: What's this cause purpose???
-			bool boundary = cur.boundary();
-			if (false && !boundary &&
-			    bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
-				updateNeeded |=
-					setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
-			*/
+			if (!cur.boundary() && 
+			    cur.textRow().pos() == cur.pos() 
+			    // FIXME: the following two conditions are copied
+			    // from cursorRight; however, isLineSeparator()
+			    // is definitely wrong here, isNewline I'm not sure
+			    // about. I'm leaving them as comments for now,
+			    // until we understand why they should or shouldn't
+			    // be here.
+			    /*&& 
+			    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
+			    !cur.paragraph().isNewline(cur.pos() - 1)*/) {
+				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(), 
+										  true, true);
+			}
+			updateNeeded |= setCursor(cur, cur.pit(),cur.pos() - 1, 
+									  true, false);
 		}
 		return updateNeeded;
 	}
 
-	if (cur.pit() != 0) {
+	if (cur.pit() > 0) {
 		// Steps into the paragraph above
 		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size());
 	}
@@ -956,6 +977,8 @@ bool Text::cursorRight(Cursor & cur)
 					 true, false);
 
 		bool updateNeeded = false;
+		// If checkAndActivateInset returns true, that means that 
+		// the cursor was placed inside it, so we're done
 		if (!checkAndActivateInset(cur, true)) {
 			if (cur.textRow().endpos() == cur.pos() + 1 &&
 			    cur.textRow().endpos() != cur.lastpos() &&
@@ -964,9 +987,6 @@ bool Text::cursorRight(Cursor & cur)
 				cur.boundary(true);
 			}
 			updateNeeded |= setCursor(cur, cur.pit(), cur.pos() + 1, true, cur.boundary());
-			if (false && bidi.isBoundary(cur.buffer(), cur.paragraph(),
-						     cur.pos()))
-				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(), true, true);
 		}
 		return updateNeeded;
 	}
