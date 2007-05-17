@@ -142,6 +142,13 @@ unsigned int convert<unsigned int>(string const s)
 
 
 template<>
+unsigned long convert<unsigned long>(string const s)
+{
+	return strtoul(s.c_str(), 0, 10);
+}
+
+
+template<>
 double convert<double>(string const s)
 {
 	return strtod(s.c_str(), 0);

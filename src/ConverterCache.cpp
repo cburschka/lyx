@@ -14,10 +14,13 @@
 
 #include "ConverterCache.h"
 
-#include "debug.h"
+#include "Format.h"
+#include "Lexer.h"
 #include "LyXRC.h"
 #include "Mover.h"
+#include "debug.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lyxtime.h"
@@ -84,7 +87,14 @@ public:
  *  nested map to find the cache item quickly by filename and format.
  */
 typedef std::map<string, CacheItem> FormatCacheType;
-typedef std::map<FileName, FormatCacheType> CacheType;
+class FormatCache {
+public:
+	/// Format of the source file
+	string from_format;
+	/// Cache target format -> item to quickly find the item by format
+	FormatCacheType cache;
+};
+typedef std::map<FileName, FormatCache> CacheType;
 
 
 class ConverterCache::Impl {
@@ -104,13 +114,23 @@ void ConverterCache::Impl::readIndex()
 	time_t const now = current_time();
 	FileName const index(addName(cache_dir.absFilename(), "index"));
 	std::ifstream is(index.toFilesystemEncoding().c_str());
-	while (is.good()) {
-		string orig_from;
-		string to_format;
-		time_t timestamp;
-		unsigned long checksum;
-		if (!(is >> orig_from >> to_format >> timestamp >> checksum))
-			return;
+	Lexer lex(0, 0);
+	lex.setStream(is);
+	while (lex.isOK()) {
+		if (!lex.next(true))
+			break;
+		string const orig_from = lex.getString();
+		if (!lex.next())
+			break;
+		string const to_format = lex.getString();
+		if (!lex.next())
+			break;
+		time_t const timestamp =
+			convert<unsigned long>(lex.getString());
+		if (!lex.next())
+			break;
+		unsigned long const checksum =
+			convert<unsigned long>(lex.getString());
 		FileName const orig_from_name(orig_from);
 		CacheItem item(orig_from_name, to_format, timestamp, checksum);
 
@@ -143,7 +163,11 @@ void ConverterCache::Impl::readIndex()
 			continue;
 		}
 
-		cache[orig_from_name][to_format] = item;
+		FormatCache & format_cache = cache[orig_from_name];
+		if (format_cache.from_format.empty())
+			format_cache.from_format =
+				formats.getFormatFromFile(orig_from_name);
+		format_cache.cache[to_format] = item;
 	}
 	is.close();
 }
@@ -160,10 +184,12 @@ void ConverterCache::Impl::writeIndex()
 	CacheType::iterator it1 = cache.begin();
 	CacheType::iterator const end1 = cache.end();
 	for (; it1 != end1; ++it1) {
-		FormatCacheType::iterator it2 = it1->second.begin();
-		FormatCacheType::iterator const end2 = it1->second.end();
+		FormatCacheType const & format_cache = it1->second.cache;
+		FormatCacheType::const_iterator it2 = format_cache.begin();
+		FormatCacheType::const_iterator const end2 = format_cache.end();
 		for (; it2 != end2; ++it2)
-			os << it1->first << ' ' << it2->first << ' '
+			os << Lexer::quoteString(it1->first.absFilename())
+			   << ' ' << it2->first << ' '
 			   << it2->second.timestamp << ' '
 			   << it2->second.checksum << '\n';
 	}
@@ -179,8 +205,9 @@ CacheItem * ConverterCache::Impl::find(FileName const & from,
 	CacheType::iterator const it1 = cache.find(from);
 	if (it1 == cache.end())
 		return 0;
-	FormatCacheType::iterator const it2 = it1->second.find(format);
-	if (it2 == it1->second.end())
+	FormatCacheType & format_cache = it1->second.cache;
+	FormatCacheType::iterator const it2 = format_cache.find(format);
+	if (it2 == format_cache.end())
 		return 0;
 	return &(it2->second);
 }
@@ -265,11 +292,15 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		        	                "Could not copy file."
 		        	             << std::endl;
 	} else {
-		CacheItem new_item = CacheItem(orig_from, to_format, timestamp,
+		CacheItem new_item(orig_from, to_format, timestamp,
 				support::sum(orig_from));
-		if (mover.copy(converted_file, new_item.cache_name, 0600))
-			pimpl_->cache[orig_from][to_format] = new_item;
-		else
+		if (mover.copy(converted_file, new_item.cache_name, 0600)) {
+			FormatCache & format_cache = pimpl_->cache[orig_from];
+			if (format_cache.from_format.empty())
+				format_cache.from_format =
+					formats.getFormatFromFile(orig_from);
+			format_cache.cache[to_format] = new_item;
+		} else
 			LYXERR(Debug::FILES) << "ConverterCache::add("
 			                     << orig_from << "):\n"
 		        	                "Could not copy file."
@@ -289,13 +320,53 @@ void ConverterCache::remove(FileName const & orig_from,
 	CacheType::iterator const it1 = pimpl_->cache.find(orig_from);
 	if (it1 == pimpl_->cache.end())
 		return;
-	FormatCacheType::iterator const it2 = it1->second.find(to_format);
-	if (it2 == it1->second.end())
+	FormatCacheType & format_cache = it1->second.cache;
+	FormatCacheType::iterator const it2 = format_cache.find(to_format);
+	if (it2 == format_cache.end())
 		return;
 
-	it1->second.erase(it2);
-	if (it1->second.empty())
+	format_cache.erase(it2);
+	if (format_cache.empty())
 		pimpl_->cache.erase(it1);
+}
+
+
+void ConverterCache::remove_all(string const & from_format,
+		string const & to_format) const
+{
+	if (!lyxrc.use_converter_cache)
+		return;
+	CacheType::iterator it1 = pimpl_->cache.begin();
+	while (it1 != pimpl_->cache.end()) {
+		if (it1->second.from_format != from_format) {
+			++it1;
+			continue;
+		}
+		FormatCacheType & format_cache = it1->second.cache;
+		FormatCacheType::iterator it2 = format_cache.begin();
+		while (it2 != format_cache.end()) {
+			if (it2->first == to_format) {
+				LYXERR(Debug::FILES)
+					<< "Removing file cache item "
+					<< it1->first
+					<< ' ' << to_format << std::endl;
+				support::unlink(it2->second.cache_name);
+				format_cache.erase(it2);
+				// Have to start over again since items in a
+				// map are not ordered
+				it2 = format_cache.begin();
+			} else
+				++it2;
+		}
+		if (format_cache.empty()) {
+			pimpl_->cache.erase(it1);
+			// Have to start over again since items in a map are
+			// not ordered
+			it1 = pimpl_->cache.begin();
+		} else
+			++it1;
+	}
+	pimpl_->writeIndex();
 }
 
 

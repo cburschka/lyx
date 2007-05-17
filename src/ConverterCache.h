@@ -69,6 +69,10 @@ public:
 	void remove(support::FileName const & orig_from,
 	            std::string const & to_format) const;
 
+	/// Remove all cached \p from_format -> \p to_format conversions
+	void remove_all(std::string const & from_format,
+	                std::string const & to_format) const;
+
 	/**
 	 * Returns \c true if \c orig_from converted to \c to_format is in
 	 * the cache and up to date.

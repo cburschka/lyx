@@ -16,6 +16,7 @@
 #include "qt_helpers.h"
 #include "GuiApplication.h"
 
+#include "ConverterCache.h"
 #include "Session.h"
 #include "debug.h"
 #include "Color.h"
@@ -1080,6 +1081,10 @@ void PrefConverters::update_converter()
 	}
 
 	updateGui();
+
+	// Remove all files created by this converter from the cache, since
+	// the modified converter might create different files.
+	ConverterCache::get().remove_all(from.name(), to.name());
 }
 
 
@@ -1090,6 +1095,10 @@ void PrefConverters::remove_converter()
 	form_->converters().erase(from.name(), to.name());
 
 	updateGui();
+
+	// Remove all files created by this converter from the cache, since
+	// a possible new converter might create different files.
+	ConverterCache::get().remove_all(from.name(), to.name());
 }
 
 
