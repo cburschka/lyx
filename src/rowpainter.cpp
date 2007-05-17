@@ -818,10 +818,13 @@ void RowPainter::paintText()
 			x_ += 2;
 			++vpos;
 		} else if (par_.isSeparator(pos)) {
+			Font orig_font = text_.getFont(*bv_.buffer(), par_, pos);
+			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)
 				x_ += separator_;
 			++vpos;
+			paintForeignMark(orig_x, orig_font);
 		} else {
 			paintFromPos(vpos);
 		}
