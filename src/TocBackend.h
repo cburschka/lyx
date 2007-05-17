@@ -41,8 +41,7 @@ public:
 	///
 	TocItem(ParConstIterator const & par_it = ParConstIterator(),
 		int d = -1,
-		docstring const & s = docstring(),
-		bool child = false
+		docstring const & s = docstring()
 		);
 	///
 	~TocItem() {}
@@ -69,9 +68,6 @@ protected:
 
 	/// Full item string
 	docstring str_;
-
-	/// Set to true if the item comes from a child document.
-	bool child_;
 };
 
 
@@ -110,7 +106,10 @@ public:
 	///
 	Toc const & toc(std::string const & type) const;
 	/// Return the first Toc Item before the cursor
-	TocIterator const item(std::string const & type, ParConstIterator const &) const;
+	TocIterator const item(
+		std::string const & type, ///< Type of Toc.
+		ParConstIterator const & ///< The cursor location in the document.
+		) const;
 
 	void writePlaintextTocList(std::string const & type, odocstream & os) const;
 

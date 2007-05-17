@@ -42,7 +42,7 @@ ControlToc::ControlToc(Dialog & d)
 
 TocList const & ControlToc::tocs() const
 {
-	return kernel().buffer().tocBackend().tocs();
+	return kernel().buffer().getMasterBuffer()->tocBackend().tocs();
 }
 
 
@@ -53,7 +53,8 @@ bool ControlToc::initialiseParams(string const & data)
 
 	types_.clear();
 	type_names_.clear();
-	TocList const & tocs = kernel().buffer().tocBackend().tocs();
+	TocList const & tocs = kernel().buffer().getMasterBuffer()->
+		tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator end = tocs.end();
 	for (; it != end; ++it) {
@@ -116,7 +117,7 @@ void ControlToc::outlineOut()
 
 void ControlToc::updateBackend()
 {
-	kernel().buffer().tocBackend().update();
+	kernel().buffer().getMasterBuffer()->tocBackend().update();
 	kernel().buffer().structureChanged();
 }
 
@@ -125,7 +126,8 @@ TocIterator const ControlToc::getCurrentTocItem(size_t type) const
 {
 	BOOST_ASSERT(kernel().bufferview());
 	ParConstIterator it(kernel().bufferview()->cursor());
-	return kernel().buffer().tocBackend().item(types_[type], it);
+	Buffer const * master = kernel().buffer().getMasterBuffer();
+	return master->tocBackend().item(types_[type], it);
 }
 
 

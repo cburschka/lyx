@@ -37,8 +37,8 @@ using std::string;
 // TocItem implementation
 
 TocItem::TocItem(ParConstIterator const & par_it, int d,
-		docstring const & s, bool child)
-		: par_it_(par_it), depth_(d), str_(s), child_(child)
+		docstring const & s)
+		: par_it_(par_it), depth_(d), str_(s)
 {
 /*
 	if (!uid_.empty())
@@ -170,9 +170,6 @@ void TocBackend::update()
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getTextClass().min_toclevel();
 
-	// Is this a child document?
-	bool const child_document = buffer_->getMasterBuffer() != buffer_;
-
 	Toc & toc = tocs_["tableofcontents"];
 	ParConstIterator pit = buffer_->par_iterator_begin();
 	ParConstIterator end = buffer_->par_iterator_end();
@@ -212,14 +209,14 @@ void TocBackend::update()
 			if (tocstring.empty())
 				tocstring = pit->asString(*buffer_, true);
 			toc.push_back(TocItem(pit, toclevel - min_toclevel,
-				tocstring, child_document));
+				tocstring));
 		}
 	}
 }
 
 
-TocIterator const TocBackend::item(
-	std::string const & type, ParConstIterator const & par_it) const
+TocIterator const TocBackend::item(std::string const & type,
+		ParConstIterator const & par_it) const
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
@@ -242,7 +239,10 @@ TocIterator const TocBackend::item(
 			par_it_text.backwardPos();
 
 	for (; it != last; --it) {
-		if (it->child_)
+		// We verify that we don't compare contents of two
+		// different document. This happens when you
+		// have parent and child documents.
+		if (&it->par_it_[0].inset() != &par_it_text[0].inset())
 			continue;
 		if (it->par_it_ <= par_it_text)
 			return it;

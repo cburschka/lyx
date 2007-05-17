@@ -196,7 +196,7 @@ void LyXView::connectBuffer(Buffer & buf)
 			boost::bind(&WorkArea::redraw, work_area_));
 
 	bufferStructureChangedConnection_ =
-		buf.structureChanged.connect(
+		buf.getMasterBuffer()->structureChanged.connect(
 			boost::bind(&LyXView::updateToc, this));
 
 	errorsConnection_ =
