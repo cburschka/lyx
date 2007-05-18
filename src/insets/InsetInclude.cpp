@@ -62,6 +62,7 @@ using support::copy;
 using support::DocFileName;
 using support::FileName;
 using support::getFileContents;
+using support::getVectorFromString;
 using support::isFileReadable;
 using support::isLyXFilename;
 using support::latex_path;
@@ -70,6 +71,7 @@ using support::makeDisplayPath;
 using support::makeRelPath;
 using support::onlyFilename;
 using support::onlyPath;
+using support::prefixIs;
 using support::subst;
 using support::sum;
 
@@ -79,6 +81,7 @@ using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+using std::vector;
 
 namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
@@ -90,6 +93,12 @@ docstring const uniqueID()
 {
 	static unsigned int seed = 1000;
 	return "file" + convert<docstring>(++seed);
+}
+
+
+bool isListings(InsetCommandParams const & params)
+{
+	return params.getCmdName() == "lstinputlisting";
 }
 
 } // namespace anon
@@ -129,6 +138,17 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p("include");
 		InsetIncludeMailer::string2params(to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
+			if (isListings(p)){
+				InsetListingsParams par_old(params().getOptions());
+				InsetListingsParams par_new(p.getOptions());
+				if (par_old.getParamValue("label") !=
+				    par_new.getParamValue("label")
+				    && !par_new.getParamValue("label").empty())
+					cur.bv().buffer()->changeRefsIfUnique(
+						from_utf8(par_old.getParamValue("label")),
+						from_utf8(par_new.getParamValue("label")),
+						Inset::REF_CODE);
+			}
 			set(p, cur.buffer());
 			cur.buffer().updateBibfilesCache();
 		} else
@@ -206,12 +226,6 @@ bool isVerbatim(InsetCommandParams const & params)
 	string const command_name = params.getCmdName();
 	return command_name == "verbatiminput" ||
 		command_name == "verbatiminput*";
-}
-
-
-bool isListings(InsetCommandParams const & params)
-{
-	return params.getCmdName() == "lstinputlisting";
 }
 
 
@@ -630,7 +644,13 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 void InsetInclude::getLabelList(Buffer const & buffer,
 				std::vector<docstring> & list) const
 {
-	if (loadIfNeeded(buffer, params_)) {
+	if (isListings(params_)) {
+		InsetListingsParams params(params_.getOptions());
+		string label = params.getParamValue("label");
+		if (!label.empty())
+			list.push_back(from_utf8(label));
+	}
+	else if (loadIfNeeded(buffer, params_)) {
 		string const included_file = includedFilename(buffer, params_).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 		tmp->setParentName("");

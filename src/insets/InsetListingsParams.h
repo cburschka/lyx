@@ -66,6 +66,9 @@ public:
 	///
 	void setInline(bool i) { inline_ = i; }
 
+	/// get value of option \c param
+	std::string getParamValue(std::string const & param) const;
+
 	///
 	void clear() { params_.clear(); }
 

@@ -28,6 +28,9 @@ using std::string;
 using std::exception;
 using lyx::support::trim;
 using lyx::support::isStrInt;
+using lyx::support::prefixIs;
+using lyx::support::suffixIs;
+using lyx::support::getVectorFromString;
 
 namespace lyx
 {
@@ -556,6 +559,25 @@ void InsetListingsParams::fromEncodedString(string const & in)
 	setParams(in);
 }
 
+
+string InsetListingsParams::getParamValue(string const & param) const
+{
+	// is this parameter defined?
+	if (find(keys_.begin(), keys_.end(), param) == keys_.end())
+		return string();
+	// if so, search for it
+	vector<string> pars = getVectorFromString(separatedParams(), "\n");
+	for (vector<string>::iterator it = pars.begin(); it != pars.end(); ++it)
+		if (prefixIs(*it, param + "=")) {
+			string par = it->substr(param.size() + 1);
+			if (prefixIs(par, "{") && suffixIs(par, "}"))
+				return par.substr(1, par.size() - 2);
+			else
+				return par;
+		}
+	// if param= is not found, should be something like float, return ""
+	return string();
+}
 
 
 } // namespace lyx
