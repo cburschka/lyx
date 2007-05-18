@@ -34,6 +34,10 @@ protected Q_SLOTS:
 	/// AFAIK, QValidator only works for QLineEdit so 
 	/// I have to validate listingsED (QTextEdit) manually.
 	void validate_listings_params();
+	/// turn off inline when float is clicked
+	void on_floatCB_stateChanged(int state);
+	/// turn off float when inline is clicked
+	void on_inlineCB_stateChanged(int state);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

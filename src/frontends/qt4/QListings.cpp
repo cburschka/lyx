@@ -103,7 +103,7 @@ string QListingsDialog::construct_params()
 	string language = fromqstr(languageCO->currentText());
 	
 	bool float_ = floatCB->checkState() == Qt::Checked;
-	string placement = fromqstr(placementLE->text());
+	string placement = placementLE->isEnabled() ? fromqstr(placementLE->text()) : string();
 	
 	string numberSide = fromqstr(numberSideCO->currentText());
 	string stepnumber = fromqstr(numberStepLE->text());
@@ -168,6 +168,25 @@ void QListingsDialog::validate_listings_params()
 		isOK = false;
 		listingsTB->setPlainText(e.what());
 		okPB->setEnabled(false);
+	}
+}
+
+
+void QListingsDialog::on_floatCB_stateChanged(int state)
+{
+	if (state == Qt::Checked) {
+		inlineCB->setChecked(false);
+		placementLE->setEnabled(true);
+	} else
+		placementLE->setEnabled(false);
+}
+
+
+void QListingsDialog::on_inlineCB_stateChanged(int state)
+{
+	if (state == Qt::Checked) {
+		floatCB->setChecked(false);
+		placementLE->setEnabled(false);
 	}
 }
 
@@ -274,10 +293,11 @@ void QListings::update_contents()
 
 	// set values from param string
 	InsetListingsParams & params = controller().params();
-	if (params.isInline())
-		dialog_->inlineCB->setChecked(true);
-	else
-		dialog_->inlineCB->setChecked(false);
+	dialog_->inlineCB->setChecked(params.isInline());
+	if (params.isInline()) {
+		dialog_->floatCB->setChecked(false);
+		dialog_->placementLE->setEnabled(false);
+	}
 	// break other parameters and set values
 	vector<string> pars = getVectorFromString(params.separatedParams(), "\n");
 	// process each of them
@@ -294,10 +314,14 @@ void QListings::update_contents()
 			}
 		} else if (prefixIs(*it, "floatplacement=")) {
 			dialog_->floatCB->setChecked(true);
+			dialog_->placementLE->setEnabled(true);
 			dialog_->placementLE->setText(toqstr(it->substr(15)));
+			dialog_->inlineCB->setChecked(false);
 			*it = "";
 		} else if (prefixIs(*it, "float")) {
 			dialog_->floatCB->setChecked(true);
+			dialog_->inlineCB->setChecked(false);
+			dialog_->placementLE->setEnabled(true);
 			if (prefixIs(*it, "float="))
 				dialog_->placementLE->setText(toqstr(it->substr(6)));
 			*it = "";
