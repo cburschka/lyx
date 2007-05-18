@@ -214,6 +214,16 @@ the user interface have been made, such as:
  - Better parsing of BibTeX databases (in the citation dialog) 
  - Support optional argument for environments 
 
+* Enhanced clipboard/selection handling
+ 
+Clipboard has been tuned to work better with other applications. Parallel
+to clipboard usages, the *nix way of using middle-button to paste 
+selected text is enhanced, and is also available under windows (but
+within lyx only). Selection of lyx text is now persistent in that
+you can paste the selected text using middle button multiple times,
+even after the selection has been cleared.
+
+
 * Under the hood
 
 As usual, one big task has been the ongoing code cleanup of the LyX
