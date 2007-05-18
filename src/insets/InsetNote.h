@@ -53,6 +53,8 @@ public:
 	Inset::Code lyxCode() const { return Inset::NOTE_CODE; }
 	///
 	docstring name() const { return from_ascii("Note"); }
+	/// framed and shaded notes are displayed
+	virtual DisplayType display() const;
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

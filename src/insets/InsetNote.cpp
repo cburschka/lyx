@@ -150,6 +150,18 @@ docstring const InsetNote::editMessage() const
 }
 
 
+Inset::DisplayType InsetNote::display() const
+{
+	switch (params_.type) {
+	case InsetNoteParams::Framed:
+	case InsetNoteParams::Shaded:
+		return AlignLeft;
+	default:
+		return Inline;
+	}
+}
+
+
 void InsetNote::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
@@ -353,8 +365,10 @@ void InsetNote::validate(LaTeXFeatures & features) const
 		features.require("color");
 		features.require("framed");
 	}
-	if (params_.type == InsetNoteParams::Framed)
+	if (params_.type == InsetNoteParams::Framed) {
+		features.require("color");
 		features.require("framed");
+	}
 	InsetText::validate(features);
 }
 
