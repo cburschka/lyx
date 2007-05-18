@@ -61,6 +61,9 @@ public:
 	bool isInline() const { return inline_; }
 
 	///
+	bool isFloat() const;
+
+	///
 	InsetCollapsable::CollapseStatus status() const { return status_; }
 
 	///

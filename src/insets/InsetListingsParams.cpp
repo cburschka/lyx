@@ -560,6 +560,12 @@ void InsetListingsParams::fromEncodedString(string const & in)
 }
 
 
+bool InsetListingsParams::isFloat() const
+{
+	return find(keys_.begin(), keys_.end(), "float") != keys_.end();
+}
+
+
 string InsetListingsParams::getParamValue(string const & param) const
 {
 	// is this parameter defined?

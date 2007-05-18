@@ -81,7 +81,7 @@ InsetListings::~InsetListings()
 
 Inset::DisplayType InsetListings::display() const
 {
-	return params().isInline() ? Inline : AlignLeft;
+	return params().isInline() || params().isFloat() ? Inline : AlignLeft;
 }
 
 
