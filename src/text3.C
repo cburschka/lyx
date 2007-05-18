@@ -244,6 +244,7 @@ namespace {
 
 void specialChar(LCursor & cur, InsetSpecialChar::Kind kind)
 {
+	recordUndo(cur);
 	lyx::cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
 	cur.posRight();
