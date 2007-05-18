@@ -1337,6 +1337,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_BIGDELIM: {
 		cur.insert(new InsetMathHull(hullSimple));
 		cur.dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+		BOOST_ASSERT(cur.inMathed());
 		cur.dispatch(cmd);
 		break;
 	}
