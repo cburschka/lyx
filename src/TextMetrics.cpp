@@ -669,6 +669,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		if (bufparams.paragraph_separation
 		    == BufferParams::PARSEP_SKIP
 			&& par.ownerCode() != Inset::ERT_CODE
+			&& par.ownerCode() != Inset::LISTINGS_CODE
 			&& pit > 0
 			&& ((layout->isParagraph() && par.getDepth() == 0)
 			    || (pars[pit - 1].layout()->isParagraph()

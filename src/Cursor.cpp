@@ -249,8 +249,9 @@ namespace {
 	{
 		odocstringstream ods;
 		ods << '\n';
-		// only add blank line if we're not in an ERT inset
-		if (par.ownerCode() != Inset::ERT_CODE)
+		// only add blank line if we're not in an ERT or Listings inset
+		if (par.ownerCode() != Inset::ERT_CODE 
+		    && par.ownerCode() != Inset::LISTINGS_CODE)
 			ods << '\n';
 		return ods.str();
 	}
