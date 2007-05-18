@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 270
+#LyX 1.5.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 271
 \begin_document
 \begin_header
 \textclass scrbook
@@ -203,8 +203,9 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "Bo Peng" 
 \author "usti" 
+\author "muso" 
+\author "Bo Peng" 
 \author "Uwe Stöhr" 
 \end_header
 
@@ -596,7 +597,7 @@ name "sec:Figure-Floats"
 
 
 \begin_inset LatexCommand index
-name "Floats ! Figure Floats"
+name "Floats ! Figures"
 
 \end_inset
 
@@ -17551,7 +17552,7 @@ Float
 \begin_layout Subsection
 Algorithm Floats
 \begin_inset LatexCommand index
-name "Floats ! Algorithm Floats"
+name "Floats ! Algorithms"
 
 \end_inset
 
@@ -17917,7 +17918,8 @@ Float
 \family default
  if the LaTeX-package 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
 
 \begin_inset LatexCommand index
@@ -17976,12 +17978,14 @@ ng text.
 \begin_layout Standard
 The LaTeX-package 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
  also supports table wrap floats, but they are not yet supported by LyX.
  If you need this, read the documentation of 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
  
 \begin_inset LatexCommand cite
@@ -20961,7 +20965,7 @@ name "sec:Listings-of-Floats"
 
 
 \begin_inset LatexCommand index
-name "Floats ! Listings"
+name "Floats ! Float Lists"
 
 \end_inset
 
@@ -22242,13 +22246,17 @@ chapter.footnote
 \series default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
 
 \backslash
-numberwithin{footnote}{part}
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+arabic{footnote}}
 \end_layout
 
 \end_inset
@@ -23641,116 +23649,8 @@ fi
 
 \end_layout
 
-\begin_layout Chapter
-Program Listings
-\end_layout
-
-\begin_layout Standard
-The 
-\family typewriter
-listings 
-\family default
-latex package provides a powerful and flexible way to insert program source
- code into your document.
-\end_layout
-
-\begin_layout Standard
-There are three types of listings, in listings package terms:
-\end_layout
-
-\begin_layout Description
-lstinline short piece of program code like 
-\begin_inset listings
-inline false
-status open
-
 \begin_layout Standard
 
-\color foreground
-int a=5;
-\end_layout
-
-\end_inset
-
- .
- To insert this listing, choose 
-\family typewriter
-Insert->Program Listing
-\family default
- and choose 
-\family typewriter
-inline listing 
-\family default
-from the 
-\family typewriter
-placement 
-\family default
-section.
-\end_layout
-
-\begin_layout Description
-lstlisting long program listing in its own paragraphs and decorations, For
- example, 
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Standard
-
-\color foreground
-def func(param):
-\end_layout
-
-\begin_layout Standard
-    'this is a python function'
-\end_layout
-
-\begin_layout Standard
-    pass
-\end_layout
-
-\end_inset
-
-To insert this listing, choose 
-\family typewriter
-Insert->Program Listing
-\family default
-.
-\end_layout
-
-\begin_layout Description
-lstinputlisting read program listing from a file.
- Parameters can be given to list only given lines.
- For example, the following listings list line 10 - 15 of this lyx file.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[firstline=10,lastline=15,language=TeX,breaklines=true,caption={Line 10 - 15 of this lyx file}]
-preview false
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To insert this listing, choose 
-\family typewriter
-Insert-> File->Child Document
-\family default
-, and choose 
-\family typewriter
-listings 
-\family default
-type.
-\end_layout
-
-\begin_layout Standard
-A lot of listings parameters can be set through the listings dialog, child
- document dialog.
- Global listings settings can be set through 
-\family typewriter
-Document -> Settings -> Text Layout.
 \end_layout
 
 \begin_layout Chapter
@@ -27562,6 +27462,12 @@ Customization
 
 \begin_layout Section
 Child Documents
+\begin_inset LatexCommand label
+name "sec:Child-Documents"
+
+\end_inset
+
+
 \begin_inset LatexCommand index
 name "External Stuff ! Child Documents"
 
@@ -27871,6 +27777,17 @@ Note:
 
 \end_layout
 
+\begin_layout Description
+Listings This type is described in chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:Program-Code-Listings"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Greyedout
 status open
@@ -27887,6 +27804,566 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter
+Program Code Listings
+\begin_inset LatexCommand label
+name "cha:Program-Code-Listings"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Listings"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Program Code"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Floats ! Listings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To include and typeset program code you can use the 
+\family sans
+Listings
+\family default
+ inset that can be inserted via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Program Listing
+\family default
+.
+ The LaTeX-package 
+\series bold
+listings
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! listings"
+
+\end_inset
+
+ provides a powerful and flexible way to insert program source code to your
+ document.
+\end_layout
+
+\begin_layout Standard
+When right-clicking on a listings inset a dialog pops up where you can set
+ the listings format.
+\end_layout
+
+\begin_layout Standard
+The default listing inset will appear in the output as own paragraph.
+ The placement option 
+\family sans
+Inline\InsetSpace ~
+listing
+\family default
+ prints the listing inline like this: 
+\begin_inset listings
+lstparams "language=C++"
+inline true
+status open
+
+\begin_layout Standard
+
+\color foreground
+int a=5;
+\end_layout
+
+\end_inset
+
+
+\newline
+The option 
+\family sans
+Float
+\family default
+ creates a listings float where you can specify the placement options 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+h
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+t
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+b
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+p
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ corresponding to the float placement options described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Float-Placement"
+
+\end_inset
+
+.
+ The placement options can be mixed and are inserted without any separation,
+ e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+htbp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The option 
+\begin_inset Quotes eld
+\end_inset
+
+h
+\begin_inset Quotes erd
+\end_inset
+
+ has sometimes no effect, but you don't need to use the 
+\family sans
+Float
+\family default
+ option in this case as also non-float listings can have captions and be
+ referenced.
+\end_layout
+
+\begin_layout Standard
+To reference non-inline listings, you can't insert the caption via LyX's
+ Insert menu.
+ The caption is inserted in the 
+\family sans
+Advanced
+\family default
+ tab of the listings dialog using the option
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+caption=YourCaptionText
+\end_layout
+
+\begin_layout Standard
+The label is inserted to the caption text using the LaTeX-command 
+\series bold
+
+\backslash
+label
+\series default
+.
+ In Listing\InsetSpace ~
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ref{lst:Example-listing}
+\end_layout
+
+\end_inset
+
+ the caption and label is inserted with the option
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+caption=
+\backslash
+label{lst:Example-listing}Example listing float
+\end_layout
+
+\begin_layout Standard
+To reference the label, this ERT command was inserted to the position where
+ the reference should appear:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+ref{lst:Example-listing}
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,float,floatplacement=h,caption=\label{lst:Example-listing}Example listing float"
+inline false
+status open
+
+\begin_layout Standard
+
+\color foreground
+# Example listing float
+\end_layout
+
+\begin_layout Standard
+
+\color foreground
+def func(param):
+\end_layout
+
+\begin_layout Standard
+    'this is a python function'
+\end_layout
+
+\begin_layout Standard
+    pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When you have set a programming language in the listings dialog, the keywords
+ of this language will be recognized and specially typeset in the output.
+ In the example listings the Python keyword 
+\begin_inset Quotes eld
+\end_inset
+
+def
+\begin_inset Quotes erd
+\end_inset
+
+ is recognized and printed bold in the output.
+\end_layout
+
+\begin_layout Standard
+In section 
+\family sans
+Line\InsetSpace ~
+numbering
+\family default
+ of the listings dialog you can specify the line numbering style.
+ You can insert a number to specify which lines are numbered to the field
+ 
+\family sans
+Step
+\family default
+.
+ When you insert e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+3
+\begin_inset Quotes erd
+\end_inset
+
+, only every 3rd line will be numbered.
+\end_layout
+
+\begin_layout Standard
+You can furthermore specify a range of lines, only these will then appear
+ in the output.
+ The option 
+\family sans
+Extended\InsetSpace ~
+chars
+\family default
+ should be used when you use national characters like the German umlauts
+ in the listing.
+\newline
+Here is an example listing with left line numbering, step
+ 
+\begin_inset Quotes eld
+\end_inset
+
+3
+\begin_inset Quotes erd
+\end_inset
+
+, language 
+\begin_inset Quotes eld
+\end_inset
+
+Python
+\begin_inset Quotes erd
+\end_inset
+
+, option 
+\begin_inset Quotes eld
+\end_inset
+
+Extended\InsetSpace ~
+chars
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Space\InsetSpace ~
+as\InsetSpace ~
+Symbol
+\begin_inset Quotes erd
+\end_inset
+
+, range lines 3\InsetSpace \thinspace{}
+-\InsetSpace \thinspace{}
+8:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,firstline=3,lastline=8,stepnumber=3,showspaces=true,extendedchars=true"
+inline false
+status open
+
+\begin_layout Standard
+def func(param):
+\end_layout
+
+\begin_layout Standard
+    'this is a python function'
+\end_layout
+
+\begin_layout Standard
+    pass
+\end_layout
+
+\begin_layout Standard
+def func(param):
+\end_layout
+
+\begin_layout Standard
+'This is a German word: Tschüß'
+\end_layout
+
+\begin_layout Standard
+pass
+\end_layout
+
+\begin_layout Standard
+def func(param):
+\end_layout
+
+\begin_layout Standard
+'this is a python function'
+\end_layout
+
+\begin_layout Standard
+pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ The line numbering is shifted by a line by every previous listing.
+ That's the reason why the lines 2 and 5 are numbered in the above listing
+ and not the lines 3 and 6.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is also possible to print lines from a file as listing.
+ To do this, use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+Child Document
+\family default
+ and choose the type 
+\family sans
+Listings
+\family default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+The other child document types are described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Child-Documents"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ In the child document dialog you can specify the listing parameters in
+ a text box.
+ To show a list of all available parameters, type in a question mark 
+\begin_inset Quotes eld
+\end_inset
+
+?
+\begin_inset Quotes erd
+\end_inset
+
+ in the text box.
+ 
+\end_layout
+
+\begin_layout Standard
+To reference child document listings, write a label text into the corresponding
+ field of the child document dialog.
+ To reference the label use the ERT command 
+\series bold
+
+\backslash
+ref
+\series default
+ as described above.
+\end_layout
+
+\begin_layout Standard
+Listing\InsetSpace ~
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ref{lst:file-listing}
+\end_layout
+
+\end_inset
+
+ is an example for a listing of a file, there the lines 10\InsetSpace \thinspace{}
+-\InsetSpace \thinspace{}
+15 of this LyX
+ file are listed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[firstline=10,lastline=15,language=TeX,breaklines=true,caption={Lines 10 - 15 of this LyX file},label={lst:file-listing}]
+preview false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Global listings settings can be set in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Text Layout
+\family default
+ dialog.
+ To get there a list of available options, type in a question mark 
+\begin_inset Quotes eld
+\end_inset
+
+?
+\begin_inset Quotes erd
+\end_inset
+
+ in the 
+\family sans
+Listings\InsetSpace ~
+settings
+\family default
+ field.
+\end_layout
+
+\begin_layout Standard
+For more information about the 
+\series bold
+listings
+\series default
+ package, we refer to its documentation 
+\begin_inset LatexCommand cite
+key "listings"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -29485,6 +29962,50 @@ name "LaTeX-packages ! koma-script"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
+key "listings"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listings.pdf}
+{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+listings
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! listings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
 key "marginnote"
 
 \end_inset
@@ -29647,7 +30168,7 @@ status collapsed
 \family sans
 LyX 1.5
 \family default
-.
+.0.
 \end_layout
 
 \begin_layout Standard
