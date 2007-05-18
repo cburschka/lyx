@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Bo Peng
- * \author JÃ¼rgen SpitzmÃ¼ller
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -63,6 +63,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	setupUi(this);
 	
 	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
 	
 	connect(languageCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
@@ -161,7 +162,8 @@ void QListingsDialog::validate_listings_params()
 		InsetListingsParams par(construct_params());
 		if (!isOK) {
 			isOK = true;
-			listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
+			listingsTB->setPlainText(
+				"Input listings parameters on the right. Enter ? for a list of parameters.");
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
@@ -209,14 +211,15 @@ void QListings::build_dialog()
 	dialog_.reset(new QListingsDialog(this));
 	
 	bcview().setOK(dialog_->okPB);
+	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
-	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
+	dialog_->listingsTB->setPlainText(
+		"Input listings parameters on the right. Enter ? for a list of parameters.");
 
 	update_contents();
 }
 
 
-/// not used right now.
 void QListings::apply()
 {
 	InsetListingsParams & params = controller().params();

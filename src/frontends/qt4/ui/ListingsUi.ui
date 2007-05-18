@@ -18,21 +18,74 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>291</width>
+         <height>27</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
     <widget class="QTabWidget" name="listingsTW" >
      <property name="currentIndex" >
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
-       <string>Main Settings</string>
+       <string>&amp;Main Settings</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -85,14 +138,14 @@
               <item row="1" column="0" colspan="2" >
                <widget class="QCheckBox" name="floatCB" >
                 <property name="text" >
-                 <string>Float</string>
+                 <string>&amp;Float</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="0" colspan="2" >
                <widget class="QCheckBox" name="inlineCB" >
                 <property name="text" >
-                 <string>Inline listing</string>
+                 <string>&amp;Inline listing</string>
                 </property>
                </widget>
               </item>
@@ -142,7 +195,10 @@
               <item row="0" column="0" >
                <widget class="QLabel" name="label" >
                 <property name="text" >
-                 <string>Side: </string>
+                 <string>&amp;Side: </string>
+                </property>
+                <property name="buddy" >
+                 <cstring>numberSideCO</cstring>
                 </property>
                </widget>
               </item>
@@ -165,7 +221,7 @@
                  <string>File name of image</string>
                 </property>
                 <property name="text" >
-                 <string>Step:</string>
+                 <string>S&amp;tep:</string>
                 </property>
                 <property name="wordWrap" >
                  <bool>false</bool>
@@ -178,7 +234,7 @@
               <item row="2" column="0" >
                <widget class="QLabel" name="numberfontsizeL" >
                 <property name="text" >
-                 <string>Font size:</string>
+                 <string>Font si&amp;ze:</string>
                 </property>
                 <property name="wordWrap" >
                  <bool>false</bool>
@@ -233,7 +289,7 @@
               <item row="0" column="0" >
                <widget class="QLabel" name="numberfontsizeL_3" >
                 <property name="text" >
-                 <string>First line:</string>
+                 <string>Fi&amp;rst line:</string>
                 </property>
                 <property name="wordWrap" >
                  <bool>false</bool>
@@ -272,7 +328,7 @@
               <item row="1" column="0" >
                <widget class="QLabel" name="numberfontsizeL_2" >
                 <property name="text" >
-                 <string>Last line:</string>
+                 <string>&amp;Last line:</string>
                 </property>
                 <property name="wordWrap" >
                  <bool>false</bool>
@@ -318,7 +374,7 @@
                <string>Insert a special symbol for a space</string>
               </property>
               <property name="text" >
-               <string>&amp;Space as Symbol</string>
+               <string>S&amp;pace as Symbol</string>
               </property>
               <property name="shortcut" >
                <number>276824147</number>
@@ -344,7 +400,7 @@
             <item row="1" column="0" >
              <widget class="QLabel" name="fontstyle_label_3" >
               <property name="text" >
-               <string>Font style:</string>
+               <string>Font st&amp;yle:</string>
               </property>
               <property name="wordWrap" >
                <bool>false</bool>
@@ -381,7 +437,7 @@
             <item row="0" column="0" >
              <widget class="QLabel" name="fontsize_label_3" >
               <property name="text" >
-               <string>Font size:</string>
+               <string>F&amp;ont size:</string>
               </property>
               <property name="wordWrap" >
                <bool>false</bool>
@@ -424,7 +480,7 @@
      </widget>
      <widget class="QWidget" name="tab_2" >
       <attribute name="title" >
-       <string>Advanced</string>
+       <string>Ad&amp;vanced</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
@@ -444,7 +500,7 @@
           </sizepolicy>
          </property>
          <property name="title" >
-          <string>More Parameters</string>
+          <string>More &amp;Parameters</string>
          </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
@@ -494,53 +550,11 @@
      </widget>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>101</width>
-         <height>27</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>OK</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>Cancel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>okPB</tabstop>
+  <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
   <tabstop>listingsTW</tabstop>
   <tabstop>inlineCB</tabstop>
@@ -557,8 +571,8 @@
   <tabstop>breaklinesCB</tabstop>
   <tabstop>spaceCB</tabstop>
   <tabstop>extendedcharsCB</tabstop>
-  <tabstop>listingsTB</tabstop>
   <tabstop>listingsED</tabstop>
+  <tabstop>listingsTB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>
