@@ -10,6 +10,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\encodings"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"

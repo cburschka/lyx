@@ -25,10 +25,10 @@
 ###
 # General textclass parameters
 ###
+Format 4
 Columns         1
 Sides           1
-MaxCounter      Counter_EnumI
-ProvidesUrl     1
+Provides url     1
 DefaultStyle        Standard
 
 DefaultFont
@@ -144,7 +144,8 @@ Style Slide
   ParSep        0.7
   Align         Center
   AlignPossible     Center
-  LabelType     Counter_Subsection
+  LabelType     Counter
+  LabelCounter subsection
   LabelString       "    "
   OptionalArgs      1
 
@@ -228,13 +229,15 @@ End
 Style Section
   CopyStyle     Slide
   LatexName     lyxend\section
-  LabelType     Counter_Section
-  LabelString       ""
+  LabelType     Counter
+  LabelCounter section
+  LabelString       "\arabic{section}"
 
   Font
     Size        Larger
     Color       Blue
   EndFont
+  LabelStringAppendix "\Alph{section}"
 End
 
 ###
@@ -253,7 +256,7 @@ Style Itemize
   ParSep        0.3
   Align         Block
   AlignPossible     Block, Left
-  LabelType     Static
+  LabelType     Itemize
   LabelString       *
 End
 
@@ -279,7 +282,7 @@ Style Enumerate
   ParSep        0.3
   Align         Block
   AlignPossible     Block, Left
-  LabelType     Counter_EnumI
+  LabelType     Enumerate
 End
 
 Style EnumerateType1
@@ -292,7 +295,7 @@ End
 ###
 Style Bibliography
   Margin        First_Dynamic
-  LatexType     Item_Environment
+  LatexType     Bib_Environment
   LatexName     thebibliography
   NextNoIndent      1
   LeftMargin        MM
@@ -370,24 +373,6 @@ End
 ###
 # Caption style definition
 ###
-Style Caption
-  Margin        First_Dynamic
-  LatexType     Command
-  LatexName     caption
-  NeedProtect       1
-  LabelSep      xx
-  ParSkip       0.4
-  TopSep        0.5
-  Align         Center
-  AlignPossible     Center
-  LabelType     Sensitive
-  LabelString   Caption
-  OptionalArgs      1
-
-  LabelFont
-    Series      Bold
-  EndFont
-End
 
 ###
 # Floats definitions
