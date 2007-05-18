@@ -120,13 +120,10 @@ def languages_l10n(input_files, output, base):
     '''Generate pot file from lib/language'''
     output = open(output, 'w')
     # assuming only one language file
+    reg = re.compile('[\w-]+\s+[\w"]+\s+"([\w \-\(\)]+)"\s+(true|false)\s+[\w-]+\s+\w+\s+"[^"]*"')
     input = open(input_files[0])
     for lineno, line in enumerate(input.readlines()):
         if line[0] == '#':
-            continue
-        items = line.split()
-        # empty lines?
-        if len(items) < 3:
             continue
         # From:
         #   afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
@@ -134,8 +131,13 @@ def languages_l10n(input_files, output, base):
         #   #: lib/languages:2
         #   msgid "Afrikaans"
         #   msgstr ""
-        # I do not care extra "s like "af_ZA"
-        print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % (relativePath(input_files[0], base), lineno+1, items[2].strip('"'))
+        if reg.match(line):
+            print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                (relativePath(input_files[0], base), lineno+1, reg.match(line).groups()[0])
+        else:
+            print "Error: Unable to handle line:"
+            print line
+            sys.exit(1)
     input.close()
     output.close()
 
