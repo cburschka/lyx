@@ -1,3 +1,8 @@
+2007-05-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C (getStatus): disallow insertion of special char 
+	inset (bug 3590).
+
 2007-04-10  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* math_biginset.C (draw): don't remove backslash delimiter.

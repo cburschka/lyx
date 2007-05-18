@@ -45,7 +45,12 @@ What's new
 * USER INTERFACE:
 
 - fix bug where moving the last section up in the toc dialog eats the
-  last paragraph (bug 3303)
+  last paragraph (bug 3303).
+
+- fix crash when using "all-insets-toggle" lfun on a file with 
+  math insets (bug 3358).
+
+- fix crash when undoing ctrl-<minus> in mathed (bug 3590).
 
 - Handle undo correctly when inserting a plain text file (bug 3204).
 

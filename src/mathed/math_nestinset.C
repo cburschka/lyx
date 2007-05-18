@@ -1012,6 +1012,15 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		flag.enabled(true);
 		break;
 
+	case LFUN_HYPHENATION:
+	case LFUN_LIGATURE_BREAK:
+	case LFUN_MENU_SEPARATOR:
+	case LFUN_LDOTS:
+	case LFUN_END_OF_SENTENCE:
+		// FIXME: These would probably make sense in math-text mode
+		flag.enabled(false);
+		break;
+
 	case LFUN_FRAK:
 		flag.enabled(currentMode() != TEXT_MODE);
 		break;
