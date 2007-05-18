@@ -44,7 +44,7 @@ public:
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 
-	bool display() const { return true; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	void validate(LaTeXFeatures & features) const;
 private:

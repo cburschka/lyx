@@ -32,7 +32,7 @@ public:
 	///
 	void read(Buffer const & buf, Lexer & lex);
 	///
-	virtual bool display() const;
+	virtual DisplayType display() const;
 	///
 	virtual bool neverIndent(Buffer const &) const { return true; }
 	///
@@ -109,9 +109,9 @@ private:
 
 
 inline
-bool InsetCaption::display() const
+Inset::DisplayType InsetCaption::display() const
 {
-	return true;
+	return AlignCenter;
 }
 
 

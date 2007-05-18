@@ -729,9 +729,10 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 		button_.draw(pi, x, y);
 }
 
-bool InsetInclude::display() const
+
+Inset::DisplayType InsetInclude::display() const
 {
-	return type(params_) != INPUT;
+	return type(params_) == INPUT ? Inline : AlignCenter;
 }
 
 

@@ -36,7 +36,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	bool display() const { return false; }
+	DisplayType display() const { return Inline; }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;

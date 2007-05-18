@@ -33,7 +33,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::LISTINGS_CODE; }
 	/// lstinline is inlined, normal listing is displayed
-	virtual bool display() const;
+	virtual DisplayType display() const;
 	///
 	docstring name() const { return from_ascii("Listings"); }
 	///

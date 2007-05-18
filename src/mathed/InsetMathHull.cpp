@@ -471,9 +471,9 @@ bool InsetMathHull::ams() const
 }
 
 
-bool InsetMathHull::display() const
+Inset::DisplayType InsetMathHull::display() const
 {
-	return type_ != hullSimple && type_ != hullNone;
+	return (type_ != hullSimple && type_ != hullNone) ? AlignCenter : Inline;
 }
 
 

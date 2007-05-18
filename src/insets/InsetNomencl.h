@@ -67,7 +67,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	bool display() const { return true; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 private:

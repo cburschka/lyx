@@ -323,10 +323,17 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		// would trigger the assert in Paragraph::getInset().
 		//inset = par.size() ? par.getInset(row.pos()) : 0;
 		if (!par.empty()
-		    && par.isInset(row.pos())
-		    && par.getInset(row.pos())->display())
+		    && par.isInset(row.pos()))
 		{
-			align = LYX_ALIGN_CENTER;
+		    switch(par.getInset(row.pos())->display()) {
+			case Inset::AlignLeft:
+				align = LYX_ALIGN_BLOCK;
+				break;
+			case Inset::AlignCenter:
+				align = LYX_ALIGN_CENTER;
+				break;
+			// other types unchanged (use align)
+			}
 		}
 
 		switch (align) {

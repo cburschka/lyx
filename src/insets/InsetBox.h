@@ -76,7 +76,7 @@ public:
 	/// show the Box dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
-	bool display() const { return false; }
+	DisplayType display() const { return Inline; }
 	///
 	bool forceDefaultParagraphs(idx_type) const;
 	///

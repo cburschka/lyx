@@ -79,9 +79,9 @@ InsetListings::~InsetListings()
 }
 
 
-bool InsetListings::display() const
+Inset::DisplayType InsetListings::display() const
 {
-	return !params().isInline();
+	return params().isInline() ? Inline : AlignLeft;
 }
 
 

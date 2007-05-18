@@ -46,7 +46,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	bool display() const { return true; }
+	DisplayType display() const { return AlignCenter; }
 	/// How much?
 	VSpace const & space() const { return space_; }
 

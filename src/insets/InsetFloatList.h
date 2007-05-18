@@ -33,7 +33,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	bool display() const { return true; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

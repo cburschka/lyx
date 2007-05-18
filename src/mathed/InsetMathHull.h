@@ -200,7 +200,7 @@ public:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
-	bool display() const;
+	DisplayType display() const;
 	///
 	Code lyxCode() const;
 

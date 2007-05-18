@@ -30,7 +30,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	bool display() const { return true; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	int plaintext(Buffer const &, odocstream &,
 	              OutputParams const &) const;

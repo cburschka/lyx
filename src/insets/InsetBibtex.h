@@ -34,7 +34,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
-	bool display() const { return true; }
+	DisplayType display() const { return AlignCenter; }
 	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///

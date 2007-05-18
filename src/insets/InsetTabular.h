@@ -697,7 +697,7 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	bool display() const { return tabular.isLongTabular(); }
+	DisplayType display() const { return tabular.isLongTabular() ? AlignCenter : Inline; }
 	///
 	int latex(Buffer const &, odocstream &,
 	          OutputParams const &) const;

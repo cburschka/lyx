@@ -377,8 +377,16 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
 	virtual bool isSpace() const { return false; }
+
+	enum DisplayType {
+		Inline = 0,
+		AlignLeft,
+		AlignCenter,
+		AlignRight
+	};
+	
 	/// should we have a non-filled line before this inset?
-	virtual bool display() const { return false; }
+	virtual DisplayType display() const { return Inline; }
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
 	/// should paragraph indendation be ommitted in any case?

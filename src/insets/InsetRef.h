@@ -45,7 +45,7 @@ public:
 	///
 	Code lyxCode() const { return REF_CODE; }
 	///
-	bool display() const { return false; }
+	DisplayType display() const { return Inline; }
 	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///

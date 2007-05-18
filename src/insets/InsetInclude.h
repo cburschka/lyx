@@ -41,7 +41,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual bool display() const;
+	virtual DisplayType display() const;
 
 	/// get the parameters
 	InsetCommandParams const & params() const;
