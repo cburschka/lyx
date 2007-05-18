@@ -1,4 +1,4 @@
-#LyX 1.5.0beta3 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 271
 \begin_document
 \begin_header
@@ -203,9 +203,9 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
+\author "Bo Peng" 
 \author "usti" 
 \author "muso" 
-\author "Bo Peng" 
 \author "Uwe Stöhr" 
 \end_header
 
@@ -27865,7 +27865,7 @@ When right-clicking on a listings inset a dialog pops up where you can set
 \end_layout
 
 \begin_layout Standard
-The default listing inset will appear in the output as own paragraph.
+By default, a listings inset starts a new paragraph in the output.
  The placement option 
 \family sans
 Inline\InsetSpace ~
@@ -27980,76 +27980,47 @@ Float
 \end_layout
 
 \begin_layout Standard
-To reference non-inline listings, you can't insert the caption via LyX's
- Insert menu.
- The caption is inserted in the 
+You can add caption and label to a listings inset by 
 \family sans
-Advanced
+Insert\SpecialChar \menuseparator
+Caption 
 \family default
- tab of the listings dialog using the option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-caption=YourCaptionText
-\end_layout
-
-\begin_layout Standard
-The label is inserted to the caption text using the LaTeX-command 
-\series bold
-
-\backslash
-label
-\series default
+and 
+\family sans
+Insert\SpecialChar \menuseparator
+Label
+\family default
+ inside the caption.
+ The label can be referred by 
+\family sans
+Insert\SpecialChar \menuseparator
+Cross-Reference
+\family default
 .
- In Listing\InsetSpace ~
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-ref{lst:Example-listing}
-\end_layout
-
-\end_inset
-
- the caption and label is inserted with the option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-caption=
-\backslash
-label{lst:Example-listing}Example listing float
-\end_layout
-
-\begin_layout Standard
-To reference the label, this ERT command was inserted to the position where
- the reference should appear:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-ref{lst:Example-listing}
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Python,float,floatplacement=h,caption=\label{lst:Example-listing}Example listing float"
+lstparams "language=Python,float,floatplacement=h"
 inline false
 status open
 
 \begin_layout Standard
 
 \color foreground
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "lst:Example-Listing"
+
+\end_inset
+
+Example Listing float
+\end_layout
+
+\end_inset
+
 # Example listing float
 \end_layout
 
@@ -28282,13 +28253,10 @@ reference "sec:Child-Documents"
 \begin_layout Standard
 To reference child document listings, write a label text into the corresponding
  field of the child document dialog.
- To reference the label use the ERT command 
-\series bold
-
-\backslash
-ref
-\series default
- as described above.
+ To reference the label use 
+\family sans
+Insert\SpecialChar \menuseparator
+Cross-Reference.
 \end_layout
 
 \begin_layout Standard
