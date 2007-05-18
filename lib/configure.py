@@ -309,7 +309,8 @@ def checkFormatEntries(dtl_tools):
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
 \Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
-\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"document,vector"
+\Format sxw        sxw    "OpenOffice.Org (sxw)"  ""  ""	""	"document,vector"
+\Format odt        odt    "Open Document"         O   ""	""	"document,vector"
 \Format wmf        wmf    "Windows Meta File"     "" ""	""	"vector"
 \Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" ""        ""	"document"
@@ -352,8 +353,15 @@ def checkConverterEntries():
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
     #
-    checkProg('a LaTeX -> OpenOffice.org converter', ['oolatex $$i', 'oolatex.sh $$i'],
-        rc_entry = [ r'\converter latex      sxw        "%%"	"latex"' ])
+    checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
+        rc_entry = [ r'\converter odt        latex      "%%"	""' ])
+    #
+    checkProg('a LaTeX -> Open Document converter', ['oolatex $$i', 'oolatex.sh $$i'],
+        rc_entry = [ r'\converter latex      odt        "%%"	"latex"' ])
+    #
+    #FIXME Looking for the commands needed to make oolatex output sxw instad of odt...
+    #checkProg('a LaTeX -> OpenOffice.org (sxw) converter', ['oolatex $$i', 'oolatex.sh $$i'],
+    #    rc_entry = [ r'\converter latex      odt        "%%"	"latex"' ])
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
         rc_entry = [ r'\converter latex      rtf        "%%"	"needaux"' ])
