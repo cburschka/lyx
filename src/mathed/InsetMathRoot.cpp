@@ -61,14 +61,15 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, x + w + 8, y);
 	int const a = dim_.ascent();
 	int const d = dim_.descent();
-	int xp[5];
-	int yp[5];
-	xp[0] = x + dim_.width();  yp[0] = y - a + 1;
-	xp[1] = x + w + 4;         yp[1] = y - a + 1;
-	xp[2] = x + w;             yp[2] = y + d;
-	xp[3] = x + w - 2;         yp[3] = y + (d - a)/2 + 2;
-	xp[4] = x + w - 5;         yp[4] = y + (d - a)/2 + 4;
-	pi.pain.lines(xp, yp, 5, Color::math);
+	int xp[4];
+	int yp[4];
+	pi.pain.line(x + dim_.width(), y - a + 1,
+							 x + w + 4, y - a + 1, Color::math);
+	xp[0] = x + w + 4;         yp[0] = y - a + 1;
+	xp[1] = x + w;             yp[1] = y + d;
+	xp[2] = x + w - 2;         yp[2] = y + (d - a)/2 + 2;
+	xp[3] = x + w - 5;         yp[3] = y + (d - a)/2 + 4;
+	pi.pain.lines(xp, yp, 4, Color::math);
 	drawMarkers(pi, x, y);
 }
 

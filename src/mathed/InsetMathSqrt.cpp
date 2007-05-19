@@ -53,13 +53,14 @@ void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x + 10, y);
 	int const a = dim_.ascent();
 	int const d = dim_.descent();
-	int xp[4];
-	int yp[4];
-	xp[0] = x + dim_.width(); yp[0] = y - a + 1;
-	xp[1] = x + 8;            yp[1] = y - a + 1;
-	xp[2] = x + 5;            yp[2] = y + d - 1;
-	xp[3] = x;                yp[3] = y + (d - a)/2;
-	pi.pain.lines(xp, yp, 4, Color::math);
+	int xp[3];
+	int yp[3];
+	pi.pain.line(x + dim_.width(), y - a + 1,
+							 x + 8, y - a + 1, Color::math);
+	xp[0] = x + 8;            yp[0] = y - a + 1;
+	xp[1] = x + 5;            yp[1] = y + d - 1;
+	xp[2] = x;                yp[2] = y + (d - a)/2;
+	pi.pain.lines(xp, yp, 3, Color::math);
 	drawMarkers(pi, x, y);
 }
 
