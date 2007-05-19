@@ -1,4 +1,4 @@
-#LyX 1.5.0beta3 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 271
 \begin_document
 \begin_header
@@ -28021,7 +28021,9 @@ Nota:
 \begin_layout Description
 
 \lang english
-Listings This type is described in chapter\InsetSpace ~
+Listings This type is described in chapter
+\lang spanish
+\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "cha:Program-Code-Listings"
@@ -28120,13 +28122,15 @@ When right-clicking on a listings inset a dialog pops up where you can set
 \begin_layout Standard
 
 \lang english
-The default listing inset will appear in the output as own paragraph.
+By default, a listing starts a new paragraph in the output.
  The placement option 
 \family sans
 Inline\InsetSpace ~
 listing
 \family default
- prints the listing inline like this: 
+ prints the listing inline like this:
+\lang spanish
+ 
 \begin_inset listings
 lstparams "language=C++"
 inline true
@@ -28142,12 +28146,16 @@ int a=5;
 \end_inset
 
 
+\lang english
+
 \newline
 The option 
 \family sans
 Float
 \family default
- creates a listings float where you can specify the placement options 
+ creates a listings float where you can specify the placement options
+\lang spanish
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28183,7 +28191,7 @@ b
 \begin_inset Quotes erd
 \end_inset
 
-, and 
+, y 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28195,17 +28203,25 @@ p
 \begin_inset Quotes erd
 \end_inset
 
- corresponding to the float placement options described in section\InsetSpace ~
+
+\lang english
+ corresponding to the float placement options described in section
+\lang spanish
+\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Float-Placement"
 
 \end_inset
 
+
+\lang english
 .
  The placement options can be mixed and are inserted without any separation,
  e.\InsetSpace \thinspace{}
 g.\InsetSpace ~
+
+\lang spanish
 
 \begin_inset Quotes eld
 \end_inset
@@ -28219,7 +28235,11 @@ htbp
 \end_inset
 
 .
- The option 
+ 
+\lang english
+The option
+\lang spanish
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28227,7 +28247,9 @@ h
 \begin_inset Quotes erd
 \end_inset
 
- has sometimes no effect, but you don't need to use the 
+ 
+\lang english
+has sometimes no effect, but you don't need to use the 
 \family sans
 Float
 \family default
@@ -28238,77 +28260,29 @@ Float
 \begin_layout Standard
 
 \lang english
-To reference non-inline listings, you can't insert the caption via LyX's
- Insert menu.
- The caption is inserted in the 
+You can add captions to listings with the menu 
 \family sans
-Advanced
+Insert\SpecialChar \menuseparator
+Caption
 \family default
- tab of the listings dialog using the option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-caption=YourCaptionText
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The label is inserted to the caption text using the LaTeX-command 
-\series bold
-
-\backslash
-label
-\series default
 .
- In Listing\InsetSpace ~
+ Listings can be referenced like floats: Listing
+\lang spanish
+\InsetSpace ~
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-ref{lst:Example-listing}
-\end_layout
+\begin_inset LatexCommand ref
+reference "lst:Example-Listing"
 
 \end_inset
 
- the caption and label is inserted with the option
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-\lang english
-caption=
-\backslash
-label{lst:Example-listing}Example listing float
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-To reference the label, this ERT command was inserted to the position where
- the reference should appear:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-
-\backslash
-ref{lst:Example-listing}
-\end_layout
-
-\begin_layout Standard
 \begin_inset listings
-lstparams "language=Python,float,floatplacement=h,caption=\label{lst:Example-listing}Example listing float"
+lstparams "language=Python"
 inline false
 status open
 
@@ -28316,6 +28290,21 @@ status open
 
 \color foreground
 \lang english
+\begin_inset Caption
+
+\begin_layout Standard
+
+\lang english
+\begin_inset LatexCommand label
+name "lst:Example-Listing"
+
+\end_inset
+
+Example Listing float
+\end_layout
+
+\end_inset
+
 # Example listing float
 \end_layout
 
@@ -28416,7 +28405,7 @@ Python
 \begin_inset Quotes erd
 \end_inset
 
-, option 
+, options 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28580,7 +28569,6 @@ reference "sec:Documento-Hijo"
 \end_inset
 
  in the text box.
- 
 \end_layout
 
 \begin_layout Standard
@@ -28588,33 +28576,29 @@ reference "sec:Documento-Hijo"
 \lang english
 To reference child document listings, write a label text into the corresponding
  field of the child document dialog.
- To reference the label use the ERT command 
-\series bold
-
-\backslash
-ref
-\series default
- as described above.
+ The label can then be referenced using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Cross-Reference
+\family default
+.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Listing\InsetSpace ~
+Listing
+\lang spanish
+\InsetSpace ~
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-ref{lst:file-listing}
-\end_layout
+\begin_inset LatexCommand ref
+reference "lst:file-listing"
 
 \end_inset
 
- is an example for a listing of a file, there the lines 10\InsetSpace \thinspace{}
+
+\lang english
+ is an example for a listing of a file; there the lines 10\InsetSpace \thinspace{}
 -\InsetSpace \thinspace{}
 15 of this LyX
  file are listed.

@@ -203,8 +203,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "Bo Peng" 
 \author "usti" 
+\author "Bo Peng" 
 \author "muso" 
 \author "Uwe Stöhr" 
 \end_header
@@ -27865,7 +27865,7 @@ When right-clicking on a listings inset a dialog pops up where you can set
 \end_layout
 
 \begin_layout Standard
-By default, a listings inset starts a new paragraph in the output.
+By default, a listing starts a new paragraph in the output.
  The placement option 
 \family sans
 Inline\InsetSpace ~
@@ -27980,28 +27980,25 @@ Float
 \end_layout
 
 \begin_layout Standard
-You can add caption and label to a listings inset by 
+You can add captions to listings with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Caption 
-\family default
-and 
-\family sans
-Insert\SpecialChar \menuseparator
-Label
-\family default
- inside the caption.
- The label can be referred by 
-\family sans
-Insert\SpecialChar \menuseparator
-Cross-Reference
+Caption
 \family default
 .
+ Listings can be referenced like floats: Listing\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "lst:Example-Listing"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Python,float,floatplacement=h"
+lstparams "language=Python"
 inline false
 status open
 
@@ -28110,7 +28107,7 @@ Python
 \begin_inset Quotes erd
 \end_inset
 
-, option 
+, options 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28247,34 +28244,28 @@ reference "sec:Child-Documents"
 \end_inset
 
  in the text box.
- 
 \end_layout
 
 \begin_layout Standard
 To reference child document listings, write a label text into the corresponding
  field of the child document dialog.
- To reference the label use 
+ The label can then be referenced using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Cross-Reference.
+Cross-Reference
+\family default
+.
 \end_layout
 
 \begin_layout Standard
 Listing\InsetSpace ~
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-ref{lst:file-listing}
-\end_layout
+\begin_inset LatexCommand ref
+reference "lst:file-listing"
 
 \end_inset
 
- is an example for a listing of a file, there the lines 10\InsetSpace \thinspace{}
+ is an example for a listing of a file; there the lines 10\InsetSpace \thinspace{}
 -\InsetSpace \thinspace{}
 15 of this LyX
  file are listed.
