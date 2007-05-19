@@ -273,7 +273,7 @@ void Inset::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 void Inset::metricsMarkers(Dimension & dim, int framesize) const
 {
 	dim.wid += 2 * framesize;
-	dim.asc += framesize;
+	dim.des += framesize;
 }
 
 
