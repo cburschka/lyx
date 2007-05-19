@@ -124,9 +124,9 @@ dist_glexamples_DATA = \
 
 heexamplesdir = $(pkgdatadir)/examples/he
 dist_heexamples_DATA = \
+	examples/he/example_lyxified.lyx \
 	examples/he/example_raw.lyx \
-	examples/he/he_example_lyxified.lyx \
-	examples/he/he_example_raw.lyx
+	examples/he/splash.lyx
 
 huexamplesdir = $(pkgdatadir)/examples/hu
 dist_huexamples_DATA = \

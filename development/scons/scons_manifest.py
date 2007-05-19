@@ -2487,9 +2487,9 @@ lib_examples_eu_files = Split('''
 
 
 lib_examples_he_files = Split('''
+    example_lyxified.lyx
     example_raw.lyx
-    he_example_lyxified.lyx
-    he_example_raw.lyx
+    splash.lyx
 ''')
 
 
