@@ -2592,11 +2592,15 @@ bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
 }
 
 
-bool Paragraph::checkBiblio(bool track_changes)
+int Paragraph::checkBiblio(bool track_changes)
 {
+	//FIXME From JS:
+	//This is getting more and more a mess. ...We really should clean 
+	//up this bibitem issue for 1.6. See also bug 2743.
+
 	// Add bibitem insets if necessary
 	if (layout()->labeltype != LABEL_BIBLIO)
-		return false;
+		return 0;
 
 	bool hasbibitem = !insetlist.empty()
 		// Insist on it being in pos 0
@@ -2606,33 +2610,52 @@ bool Paragraph::checkBiblio(bool track_changes)
 	docstring oldkey;
 	docstring oldlabel;
 
-	// remove bibitems in pos != 0
-	// restore them later in pos 0 if necessary
+	// remove a bibitem in pos != 0
+	// restore it later in pos 0 if necessary
 	// (e.g. if a user inserts contents _before_ the item)
-	InsetList::const_iterator it = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
+	// we're assuming there's only one of these, which there
+	// should be.
+	int erasedInsetPosition = -1;
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
 		if (it->inset->lyxCode() == Inset::BIBITEM_CODE
 		    && it->pos > 0) {
 			InsetBibitem * olditem = static_cast<InsetBibitem *>(it->inset);
 			oldkey = olditem->getParam("key");
 			oldlabel = olditem->getParam("label");
-			eraseChar(it->pos, track_changes);
+			erasedInsetPosition = it->pos;
+			eraseChar(erasedInsetPosition, track_changes);
+			break;
 	}
 
-	if (hasbibitem)
-		return false;
-
+	//There was an InsetBibitem at the beginning, and we didn't
+	//have to erase one.
+	if (hasbibitem && erasedInsetPosition < 0)
+			return 0;
+	
+	//There was an InsetBibitem at the beginning and we did have to 
+	//erase one. So we give its properties to the beginning inset.
+	if (hasbibitem) {
+		InsetBibitem * inset = 
+			static_cast<InsetBibitem *>(insetlist.begin()->inset);
+		if (!oldkey.empty())
+			inset->setParam("key", oldkey);
+		inset->setParam("label", oldlabel);
+		return -erasedInsetPosition;
+	}
+	
+	//There was no inset at the beginning, so we need to create one with
+	//the key and label of the one we erased.
 	InsetBibitem * inset(new InsetBibitem(InsetCommandParams("bibitem")));
 	// restore values of previously deleted item in this par.
 	if (!oldkey.empty())
 		inset->setParam("key", oldkey);
-	if (!oldlabel.empty())
-		inset->setParam("label", oldlabel);
+	inset->setParam("label", oldlabel);
 	insertInset(0, static_cast<Inset *>(inset),
 		    Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
 
-	return true;
+	return 1;
 }
 
 } // namespace lyx

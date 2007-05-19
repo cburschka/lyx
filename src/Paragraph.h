@@ -359,9 +359,14 @@ public:
 	///
 	bool hfillExpansion(Row const & row, pos_type pos) const;
 
-	/// Check if we are in a Biblio environment.
-	/// \retval true if the cursor needs to be moved right.
-	bool checkBiblio(bool track_changes);
+	/// Check if we are in a Biblio environment and insert or
+	/// delete InsetBibitems as necessary.
+	/// \retval int 1, if we had to add an inset, in which case
+	/// the cursor will need to move cursor forward; -pos, if we deleted
+	/// an inset, in which case pos is the position from which the inset
+	/// was deleted, and the cursor will need to be moved back one if it
+	/// was previously past that position. Return 0 otherwise.
+	int checkBiblio(bool track_changes);
 
 public:
 	///

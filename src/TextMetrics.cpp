@@ -190,10 +190,20 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
-	// FIXME: this has nothing to do here and is the reason why text_ is not
-	// const.
-	if (par.checkBiblio(buffer.params().trackChanges))
+	// FIXME This check ought to be done somewhere else. It is the reason 
+	// why text_ is not	const. But then, where else to do it?
+	// Well, how can you end up with either (a) a biblio environment that
+	// has no InsetBibitem or (b) a biblio environment with more than one
+	// InsetBibitem? I think the answer is: when paragraphs are merged;
+	// when layout is set; when material is pasted.
+	int const moveCursor = par.checkBiblio(buffer.params().trackChanges);
+	if (moveCursor > 0)
 		const_cast<Cursor &>(bv_->cursor()).posRight();
+	else if (moveCursor < 0) {
+		Cursor & cursor = const_cast<Cursor &>(bv_->cursor());
+		if (cursor.pos() >= -moveCursor)
+			cursor.posLeft();
+	}
 
 	// Optimisation: this is used in the next two loops
 	// so better to calculate that once here.
