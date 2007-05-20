@@ -1,12 +1,27 @@
 program PDFViewWin;
+// this program opens and closes PDF-files with Acrobat or Adobe Reader
+// author: Uwe Stöhr
+
+{The problematic is the following:
+ A PDF-file should be modified while it is opened with Acrobat.
+ This is not possible because Acrobat understands itself as editor, not as
+ reader and therefore opens PDFs always with write access, so that other
+ programs cannot modifiy them.
+ The idea to solve the problem is the following:
+ The file that should be shown in Acrobat is copied and then renamed -
+ the suffix "-preview" is attached. The renamed copy is opened by Acrobat
+ while the unrenamed version can be modified. When the modified version should
+ be displayed, the eventually opened renamed version is closed in Acrobat and
+ the modified version is copied, renamed and opened in Acrobat.}
 
 {$APPTYPE CONSOLE}
 
 uses
-  Windows,SysUtils,ShellApi,Forms;
+  Windows, SysUtils, ShellApi;
 
 var Input,InputNew : string;
     FileTest : boolean;
+    hConsole : THandle;
 
     
 function ExecWait(const CommandLine: string;
@@ -39,22 +54,31 @@ begin
 end; // end function
 
 
-function RenameFile(const OldName, NewName: string): boolean;
-//renames files
+function RenameFile(const OldName,NewName: string; hConsole: THandle): boolean;
+//renames files, taken from
+//http://www.dsdt.info/tipps/?id=128&search=RenameFile
 var
   sh: TSHFileOpStruct;
 begin
-  sh.Wnd := Application.Handle;
-  sh.wFunc := fo_Rename;
+  sh.Wnd:= hConsole;
+  sh.wFunc:= fo_Rename;
   //terminate with null byte to set list ending
-  sh.pFrom := PChar(OldName + #0);
-  sh.pTo := PChar(NewName + #0);
-  sh.fFlags := fof_Silent or fof_MultiDestFiles;
-  Result:=ShFileOperation(sh)=0;
+  sh.pFrom:= PChar(OldName + #0);
+  sh.pTo:= PChar(NewName + #0);
+  sh.fFlags:= fof_Silent or fof_MultiDestFiles;
+  Result:= ShFileOperation(sh)=0;
 end; //end function
 
 
 begin //begin program 
+
+ //Read path to this application
+ Input:= ParamStr(0);
+
+ //get handle of this console window
+ hConsole := FindWindow(nil,Pchar(Input));
+ // hide the window of this console application
+ ShowWindow(hConsole,SW_HIDE);
 
  //Read given filename
  Input:= ParamStr(1);
@@ -71,7 +95,7 @@ begin //begin program
   DeleteFile(InputNew);
  end;
  //rename file
- RenameFile(Input,InputNew);
+ RenameFile(Input,InputNew,hConsole);
  ExecWait('pdfopen --file "'+InputNew+'" --back');
 
 end. //end program 
