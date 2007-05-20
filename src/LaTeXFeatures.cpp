@@ -480,7 +480,7 @@ string const LaTeXFeatures::getPackages() const
 				 << "]{graphicx}\n";
 	}
 	// shadecolor for shaded
-	if (mustProvide("framed")) {
+	if (mustProvide("framed") && mustProvide("color")) {
 		RGBColor c = RGBColor(lcolor.getX11Name(Color::shadedbg));
 		packages << "\\definecolor{shadecolor}{rgb}{" 
 			<< c.r/255 << ',' << c.g/255 << ',' << c.b/255 << "}\n";

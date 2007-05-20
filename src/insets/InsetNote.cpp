@@ -365,10 +365,8 @@ void InsetNote::validate(LaTeXFeatures & features) const
 		features.require("color");
 		features.require("framed");
 	}
-	if (params_.type == InsetNoteParams::Framed) {
-		features.require("color");
+	if (params_.type == InsetNoteParams::Framed)
 		features.require("framed");
-	}
 	InsetText::validate(features);
 }
 
