@@ -12,6 +12,8 @@ program lyxLauncher;
 uses
   Windows, SysUtils, ShellApi, Dialogs;
 
+{$R *.res}
+
 var Path,FileName : string;
     hConsole : THandle;
 
@@ -25,7 +27,7 @@ begin
 
  // if a filename is given, convert it to a PChar; needed for the ShellExecute
  if FileName <> '' then
-  Params:= PChar(FileName)
+  Params:= PChar('"' + FileName + '"')
  else
   Params:= nil;
 

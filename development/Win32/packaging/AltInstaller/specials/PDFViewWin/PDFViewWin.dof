@@ -95,7 +95,7 @@ UnitOutputDir=
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
-Packages=
+Packages=vcl;rtl;vclx;vcldb;dbrtl;bdertl;vclshlctrls;vclactnband;adortl;vcldbx;VclSmp;visualclx;visualdbclx;dbexpress;vclie;xmlrtl;inetdbbde;inet;inetdbxpress;teeui;teedb;tee;Rave50CLX;Rave50VCL;IntrawebDB_50_70;Intraweb_50_70;indy;ibxpress;dsnap;soaprtl;dbxcds;inetdb
 Conditionals=
 DebugSourceDirs=
 UsePackages=0
@@ -110,7 +110,7 @@ ActiveLang=
 ProjectLang=
 RootDir=
 [Version Info]
-IncludeVerInfo=0
+IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=1
 MinorVer=0
@@ -124,13 +124,16 @@ DLL=0
 Locale=1031
 CodePage=1252
 [Version Info Keys]
-CompanyName=
-FileDescription=
+CompanyName=LyX Team
+FileDescription=PDF viewing program for LyX
 FileVersion=1.0.0.0
 InternalName=
-LegalCopyright=
+LegalCopyright=Uwe Stöhr
 LegalTrademarks=
-OriginalFilename=
+OriginalFilename=PDFViewWin.exe
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;

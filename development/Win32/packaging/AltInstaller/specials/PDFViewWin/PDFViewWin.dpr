@@ -19,6 +19,8 @@ program PDFViewWin;
 uses
   Windows, SysUtils, ShellApi;
 
+{$R *.res}
+
 var Input,InputNew : string;
     FileTest : boolean;
     hConsole : THandle;
