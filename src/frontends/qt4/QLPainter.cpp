@@ -114,8 +114,10 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 	if (!isDrawingEnabled())
 		return;
 	
-	// Must use new as np is not known at compile time.
-	boost::scoped_array<QPoint> points(new QPoint[np]);
+	// double the size if needed
+	static QVector<QPoint> points(32);
+	if (np > points.size())
+		points.resize(2 * np);
 	
 	bool antialias = false;
 	for (int i = 0; i < np; ++i) {
@@ -127,7 +129,7 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
  	setQPainterPen(col, ls, lw);
 	bool const text_is_antialiased = renderHints() & TextAntialiasing;
 	setRenderHint(Antialiasing, antialias && text_is_antialiased);
-	drawPolyline(points.get(), np);
+	drawPolyline(points.data(), np);
 	setRenderHint(Antialiasing, false);
 }
 
