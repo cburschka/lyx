@@ -91,7 +91,8 @@ void QIncludeDialog::validate_listings_params()
 		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
 		if (!isOK) {
 			isOK = true;
-			listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
+			listingsTB->setPlainText(
+				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
@@ -206,7 +207,8 @@ void QInclude::update_contents()
 	dialog_->captionLE->clear();
 	dialog_->labelLE->clear();
 	dialog_->listingsED->clear();
-	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
+	dialog_->listingsTB->setPlainText(
+		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 
 	string cmdname = controller().params().getCmdName();
 	if (cmdname != "include" &&
@@ -246,6 +248,7 @@ void QInclude::update_contents()
 				if (cap[0] == '{' && cap[cap.size()-1] == '}')
 					dialog_->captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
 				else
+					// FIXME: make this translatable!
 					throw invalidParam("caption parameter is not quoted with braces");
 				*it = "";
 			} else if (prefixIs(*it, "label=")) {
@@ -253,6 +256,7 @@ void QInclude::update_contents()
 				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}')
 					dialog_->labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
 				else
+					// FIXME: make this translatable!
 					throw invalidParam("label parameter is not quoted with braces");
 				*it = "";
 			}

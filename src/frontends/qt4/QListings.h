@@ -38,6 +38,8 @@ protected Q_SLOTS:
 	void on_floatCB_stateChanged(int state);
 	/// turn off float when inline is clicked
 	void on_inlineCB_stateChanged(int state);
+	/// turn off numbering options when none is selected
+	void on_numberSideCO_currentIndexChanged(int);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

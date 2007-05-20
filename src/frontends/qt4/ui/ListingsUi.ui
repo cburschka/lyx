@@ -258,7 +258,7 @@
                  <string>Choose the Font Size</string>
                 </property>
                 <property name="editable" >
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="autoCompletion" >
                  <bool>true</bool>
@@ -269,7 +269,23 @@
                </widget>
               </item>
               <item row="0" column="1" >
-               <widget class="QComboBox" name="numberSideCO" />
+               <widget class="QComboBox" name="numberSideCO" >
+                <item>
+                 <property name="text" >
+                  <string>None</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text" >
+                  <string>Left</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text" >
+                  <string>Right</string>
+                 </property>
+                </item>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -424,7 +440,7 @@
                <string>Choose the Font Style</string>
               </property>
               <property name="editable" >
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="autoCompletion" >
                <bool>true</bool>
@@ -461,7 +477,7 @@
                <string>Choose the Font Size</string>
               </property>
               <property name="editable" >
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="autoCompletion" >
                <bool>true</bool>

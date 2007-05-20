@@ -214,7 +214,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(validate_listings_params()));
-	textLayoutModule->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+	textLayoutModule->listingsTB->setPlainText(
+		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
@@ -616,7 +617,8 @@ void QDocumentDialog::validate_listings_params()
 		if (!isOK) {
 			isOK = true;
 			// listingsTB->setTextColor("black");
-			textLayoutModule->listingsTB->setPlainText("Input listings parameters below. Enter ? for a list of parameters.");
+			textLayoutModule->listingsTB->setPlainText(
+				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {

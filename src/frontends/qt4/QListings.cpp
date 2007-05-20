@@ -30,6 +30,7 @@
 
 using std::string;
 using std::vector;
+using lyx::support::findToken;
 using lyx::support::getVectorFromString;
 using lyx::support::getStringFromVector;
 using lyx::support::prefixIs;
@@ -45,17 +46,37 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////////
 
 
-string const allowed_languages = 
-	"no language\nBAP\nACSL\nAda\nALGOL\nC\nC++\nCaml\nClean\nCobol\n"
-	"Comal 80\ncsh\nDelphi\nEiffel\nElan\nEuphoria\nFortran\nHaskell\n"
-	"HTML\nIDL\nJava\nLisp\nLogo\nmake\nMathematica\nMatlab\nMercury\n"
-	"Miranda\nML\nModula-2\nOberon-2\nOCL\nPascal\nPerl\nPHP\nPL/I\nPOV\n"
-	"Python\nProlog\nR\nS\nSAS\nSHELXL\nSimula\ntcl\nSQL\nTeX\nVBScript\n"
-	"VHDL\nXML";
-string const allowed_fontsizes = "default\ntiny\nscriptsize\nfootnotesize\nsmall\n"
-	"normalsize\nlarge\nLarge";
-string const allowed_fontstyles = "default\nrmfamily\nttfamily\nsffamily";
-string const allowed_sides = "none\nleft\nright";
+char const * languages[] =
+{ "no language", "BAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
+  "Comal 80", "csh", "Delphi", "Eiffel", "Elan", "Euphoria", "Fortran", "Haskell",
+  "HTML", "IDL", "Java", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
+  "Miranda", "ML", "Modula-2", "Oberon-2", "OCL", "Pascal", "Perl", "PHP", "PL/I", "POV",
+  "Python", "Prolog", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
+  "VHDL", "XML", "" };
+
+char const * languages_gui[] =
+{ N_("No language"), "BAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
+  "Comal 80", "csh", "Delphi", "Eiffel", "Elan", "Euphoria", "Fortran", "Haskell",
+  "HTML", "IDL", "Java", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
+  "Miranda", "ML", "Modula-2", "Oberon-2", "OCL", "Pascal", "Perl", "PHP", "PL/I", "POV",
+  "Python", "Prolog", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
+  "VHDL", "XML", "" };
+
+char const * font_sizes[] =
+{ "default", "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
+  "Large", "" };
+
+char const * font_sizes_gui[] =
+{ N_("Default"), N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"),
+  N_("Large"), N_("Larger"), "" };
+
+char const * font_styles[] =
+{ "default", "rmfamily", "ttfamily", "sffamily", "" };
+
+char const * font_styles_gui[] =
+{ N_("Default"), N_("Roman"), N_("Typewriter"), N_("Sans Serif"), "" };
+
+
 
 QListingsDialog::QListingsDialog(QListings * form)
 	: form_(form)
@@ -83,6 +104,24 @@ QListingsDialog::QListingsDialog(QListings * form)
 	
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
+
+	for (int n = 0; languages[n][0]; ++n)
+		languageCO->addItem(languages_gui[n]);
+
+	for (int n = 0; font_styles[n][0]; ++n)
+		fontstyleCO->addItem(font_styles_gui[n]);
+
+	for (int n = 0; font_sizes[n][0]; ++n) {
+		QString font = toqstr(font_sizes_gui[n]);
+		fontsizeCO->addItem(font);
+		numberFontSizeCO->addItem(font);
+	}
+
+	// set validators
+	numberStepLE->setValidator(new QIntValidator(0, 1000000, this));
+	firstlineLE->setValidator(new QIntValidator(0, 1000000, this));
+	lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
+	placementLE->setValidator(new QRegExpValidator(QRegExp("[tbph]*"), this));
 }
 
 
@@ -101,27 +140,43 @@ void QListingsDialog::change_adaptor()
 
 string QListingsDialog::construct_params()
 {
-	string language = fromqstr(languageCO->currentText());
+	string language = languages[languageCO->currentIndex()];
 	
-	bool float_ = floatCB->checkState() == Qt::Checked;
-	string placement = placementLE->isEnabled() ? fromqstr(placementLE->text()) : string();
-	
-	string numberSide = fromqstr(numberSideCO->currentText());
+	bool float_ = floatCB->isChecked();
+	string placement;
+	if (placementLE->isEnabled())
+		placement = fromqstr(placementLE->text());
+
+	string numberSide;
+	switch (numberSideCO->currentIndex()) {
+	case 0:
+		numberSide = "none";
+		break;
+	case 1:
+		numberSide = "left";
+		break;
+	case 2:
+		numberSide = "right";
+		break;
+	default:
+		numberSide = "none";
+		break;
+	}
 	string stepnumber = fromqstr(numberStepLE->text());
-	string numberfontsize = fromqstr(numberFontSizeCO->currentText());
+	string numberfontsize = font_sizes[numberFontSizeCO->currentIndex()];
 	string firstline = fromqstr(firstlineLE->text());
 	string lastline = fromqstr(lastlineLE->text());
 	
-	string fontsize = fromqstr(fontsizeCO->currentText());
-	string fontstyle = fromqstr(fontstyleCO->currentText());
+	string fontsize = font_sizes[fontsizeCO->currentIndex()];
+	string fontstyle = font_styles[fontstyleCO->currentIndex()];
 	string basicstyle;
 	if (fontsize != "default")
 		basicstyle = "\\" + fontsize;
 	if (fontstyle != "default")
 		basicstyle += "\\" + fontstyle;
-	bool breakline = breaklinesCB->checkState() == Qt::Checked;
-	bool space = spaceCB->checkState() == Qt::Checked;
-	bool extendedchars = extendedcharsCB->checkState() == Qt::Checked;
+	bool breakline = breaklinesCB->isChecked();
+	bool space = spaceCB->isChecked();
+	bool extendedchars = extendedcharsCB->isChecked();
 	string extra = fromqstr(listingsED->toPlainText());
 
 	// compose a string
@@ -134,14 +189,14 @@ string QListingsDialog::construct_params()
 		par.addParam("floatplacement", placement);
 	if (numberSide != "none")
 		par.addParam("numbers", numberSide);
-	if (numberfontsize != "default")
+	if (numberfontsize != "default" && numberSide != "none")
 		par.addParam("numberstyle", "\\" + numberfontsize);
+	if (!stepnumber.empty() && numberSide != "none")
+		par.addParam("stepnumber", stepnumber);
 	if (!firstline.empty())
 		par.addParam("firstline", firstline);
 	if (!lastline.empty())
 		par.addParam("lastline", lastline);
-	if (!stepnumber.empty())
-		par.addParam("stepnumber", stepnumber);
 	if (!basicstyle.empty())
 		par.addParam("basicstyle", basicstyle);
 	if (breakline)
@@ -163,7 +218,7 @@ void QListingsDialog::validate_listings_params()
 		if (!isOK) {
 			isOK = true;
 			listingsTB->setPlainText(
-				"Input listings parameters on the right. Enter ? for a list of parameters.");
+				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
@@ -192,6 +247,14 @@ void QListingsDialog::on_inlineCB_stateChanged(int state)
 	}
 }
 
+
+void QListingsDialog::on_numberSideCO_currentIndexChanged(int index)
+{
+	numberStepLE->setEnabled(index > 0);
+	numberFontSizeCO->setEnabled(index > 0);
+}
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // QListings
@@ -214,7 +277,7 @@ void QListings::build_dialog()
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
 	dialog_->listingsTB->setPlainText(
-		"Input listings parameters on the right. Enter ? for a list of parameters.");
+		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 
 	update_contents();
 }
@@ -231,68 +294,22 @@ void QListings::apply()
 
 void QListings::update_contents()
 {
-	// first prepare all choices
-	vector<string> const languages = 
-		getVectorFromString(allowed_languages, "\n");
-	vector<string> const fontstyles = 
-		getVectorFromString(allowed_fontstyles, "\n");
-	vector<string> const fontsizes = 
-		getVectorFromString(allowed_fontsizes, "\n");
-	vector<string> const sides = 
-		getVectorFromString(allowed_sides, "\n");
-
-	dialog_->languageCO->clear();
-	for (vector<string>::const_iterator it = languages.begin();
-	    it != languages.end(); ++it) {
-		dialog_->languageCO->addItem(toqstr(*it));
-	}
-	dialog_->numberSideCO->clear();
-	for (vector<string>::const_iterator it = sides.begin();
-	    it != sides.end(); ++it) {
-		dialog_->numberSideCO->addItem(toqstr(*it));
-	}
-	dialog_->fontstyleCO->clear();
-	dialog_->fontstyleCO->setEditable(false);
-	for (vector<string>::const_iterator it = fontstyles.begin();
-	    it != fontstyles.end(); ++it) {
-		dialog_->fontstyleCO->addItem(toqstr(*it));
-	}
-	dialog_->fontsizeCO->clear();
-	dialog_->fontsizeCO->setEditable(false);
-	dialog_->numberFontSizeCO->clear();
-	dialog_->numberFontSizeCO->setEditable(false);
-	for (vector<string>::const_iterator it = fontsizes.begin();
-	    it != fontsizes.end(); ++it) {
-		dialog_->fontsizeCO->addItem(toqstr(*it));
-		dialog_->numberFontSizeCO->addItem(toqstr(*it));
-	}
-
-	// set validators
-	dialog_->numberStepLE->setValidator(new QIntValidator(0, 1000000, this));
-	dialog_->firstlineLE->setValidator(new QIntValidator(0, 1000000, this));
-	dialog_->lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
-	dialog_->placementLE->setValidator(new QRegExpValidator(QRegExp("[tbph]*"), this));
-
 	// set default values 
-	dialog_->listingsTB->setPlainText("Input listings parameters on the right. Enter ? for a list of parameters.");
-	dialog_->languageCO->setCurrentIndex(
-		dialog_->languageCO->findText(toqstr("no language")));
+	dialog_->listingsTB->setPlainText(
+		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+	dialog_->languageCO->setCurrentIndex(findToken(languages, "no language"));
 	dialog_->floatCB->setChecked(false);
 	dialog_->placementLE->clear();
-	dialog_->numberSideCO->setCurrentIndex(
-		dialog_->numberSideCO->findText(toqstr("none")));
+	dialog_->numberSideCO->setCurrentIndex(0);
 	dialog_->numberStepLE->clear();
-	dialog_->numberFontSizeCO->setCurrentIndex(
-		dialog_->numberFontSizeCO->findText(toqstr("default")));
+	dialog_->numberFontSizeCO->setCurrentIndex(findToken(font_sizes, "default"));
 	dialog_->firstlineLE->clear();
 	dialog_->lastlineLE->clear();
-	dialog_->fontstyleCO->setCurrentIndex(
-		dialog_->fontstyleCO->findText(toqstr("default")));
-	dialog_->fontsizeCO->setCurrentIndex(
-		dialog_->fontsizeCO->findText(toqstr("default")));
+	dialog_->fontstyleCO->setCurrentIndex(findToken(font_styles, "default"));
+	dialog_->fontsizeCO->setCurrentIndex(findToken(font_sizes, "default"));
 	dialog_->breaklinesCB->setChecked(false);
 	dialog_->spaceCB->setChecked(false);
-	dialog_->extendedcharsCB->setChecked(false);	
+	dialog_->extendedcharsCB->setChecked(false);
 
 	// set values from param string
 	InsetListingsParams & params = controller().params();
@@ -307,14 +324,9 @@ void QListings::update_contents()
 	for (vector<string>::iterator it = pars.begin();
 	    it != pars.end(); ++it) {
 		if (prefixIs(*it, "language=")) {
-			for (vector<string>::const_iterator st = languages.begin();
-			    st != languages.end(); ++st) {
-				if (*it == "language=" + *st) {
-					dialog_->languageCO->setCurrentIndex(
-						dialog_->languageCO->findText(toqstr(*st)));
-					*it = "";
-				}			
-			}
+			int n = findToken(languages, it->substr(9));
+			dialog_->languageCO->setCurrentIndex(n);
+			*it = "";
 		} else if (prefixIs(*it, "floatplacement=")) {
 			dialog_->floatCB->setChecked(true);
 			dialog_->placementLE->setEnabled(true);
@@ -329,21 +341,21 @@ void QListings::update_contents()
 				dialog_->placementLE->setText(toqstr(it->substr(6)));
 			*it = "";
 		} else if (prefixIs(*it, "numbers=")) {
-			dialog_->numberSideCO->setCurrentIndex(
-				dialog_->numberSideCO->findText(toqstr(it->substr(8))));
+			string s = it->substr(8);
+			int n = 0;
+			if (s == "left")
+				n = 1;
+			else if (s == "right")
+				n = 2;
+			dialog_->numberSideCO->setCurrentIndex(n);
 			*it = "";
 		} else if (prefixIs(*it, "stepnumber=")) {
 			dialog_->numberStepLE->setText(toqstr(it->substr(11)));
 			*it = "";
 		} else if (prefixIs(*it, "numberstyle=")) {
-			for (vector<string>::const_iterator st = fontsizes.begin();
-			    st != fontsizes.end(); ++st) {
-				if (*it == "numberstyle=\\" + *st) {
-					dialog_->numberFontSizeCO->setCurrentIndex(
-						dialog_->numberFontSizeCO->findText(toqstr(*st)));
-					*it = "";
-				}			
-			}
+			int n = findToken(font_sizes, it->substr(13));
+			dialog_->numberFontSizeCO->setCurrentIndex(n);
+			*it = "";
 		} else if (prefixIs(*it, "firstline=")) {
 			dialog_->firstlineLE->setText(toqstr(it->substr(10)));
 			*it = "";
@@ -353,25 +365,27 @@ void QListings::update_contents()
 		} else if (prefixIs(*it, "basicstyle=")) {
 			string style;
 			string size;
-			for (vector<string>::const_iterator st = fontstyles.begin();
-			    st != fontstyles.end(); ++st)
-				if (contains(*it, "\\" + *st)) {
-					style = "\\" + *st;
+			for (int n = 0; font_styles[n][0]; ++n) {
+				string const s = font_styles[n];
+				if (contains(*it, "\\" + s)) {
+					style = "\\" + s;
 					break;
 				}
-			for (vector<string>::const_iterator st = fontsizes.begin();
-			    st != fontsizes.end(); ++st)
-				if (contains(*it, "\\" + *st)) {
-					size = "\\" + *st;
+			}
+			for (int n = 0; font_sizes[n][0]; ++n) {
+				string const s = font_sizes[n];
+				if (contains(*it, "\\" + s)) {
+					size = "\\" + s;
 					break;
 				}
+			}
 			if (it->substr(11) == style + size || it->substr(11) == size + style) {
 				if (!style.empty())
 					dialog_->fontstyleCO->setCurrentIndex(
-						dialog_->fontstyleCO->findText(toqstr(style.substr(1))));
+						findToken(font_styles, style.substr(1)));
 				if (!size.empty())
 					dialog_->fontsizeCO->setCurrentIndex(
-						dialog_->fontsizeCO->findText(toqstr(size.substr(1))));
+						findToken(font_sizes, size.substr(1)));
 				*it = "";
 			}
 		} else if (prefixIs(*it, "breaklines=")) {
@@ -385,6 +399,9 @@ void QListings::update_contents()
 			*it = "";
 		}
 	}
+
+	dialog_->numberStepLE->setEnabled(dialog_->numberSideCO->currentIndex() > 0);
+	dialog_->numberFontSizeCO->setEnabled(dialog_->numberSideCO->currentIndex() > 0);
 	// parameters that can be handled by widgets are cleared
 	// the rest is put to the extra edit box.
 	string extra = getStringFromVector(pars);
