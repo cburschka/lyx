@@ -19,6 +19,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "MetricsInfo.h"
 #include "Cursor.h"
 #include "support/lstrings.h"
 
@@ -38,18 +39,13 @@ using std::string;
 void InsetListings::init()
 {
 	setButtonLabel();
-	// FIXME: define Color::listing?
 	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(Color::foreground);
+	font.setColor(Color::none);
 	setLabelFont(font);
-	// FIXME: english_language?
-	text_.current_font.setLanguage(english_language);
-	text_.real_current_font.setLanguage(english_language);
-	// FIXME: why I can not make text of source code black with the following two lines?
-	text_.current_font.setColor(Color::foreground);
-	text_.real_current_font.setColor(Color::foreground);
+	text_.current_font.setLanguage(latex_language);
+	text_.real_current_font.setLanguage(latex_language);
 }
 
 
@@ -119,7 +115,7 @@ void InsetListings::read(Buffer const & buf, Lexer & lex)
 			break;
 		}
 	}
-	InsetCollapsable::read(buf, lex);
+	InsetERT::read(buf, lex);
 }
 
 
@@ -239,6 +235,29 @@ void InsetListings::setButtonLabel()
 }
 
 
+bool InsetListings::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	Font tmpfont = mi.base.font;
+	getDrawFont(mi.base.font);
+	mi.base.font.realize(tmpfont);
+	InsetCollapsable::metrics(mi, dim);
+	mi.base.font = tmpfont;
+	bool const changed = dim_ != dim;
+	dim_ = dim;
+	return changed;
+}
+
+
+void InsetListings::draw(PainterInfo & pi, int x, int y) const
+{
+	Font tmpfont = pi.base.font;
+	getDrawFont(pi.base.font);
+	pi.base.font.realize(tmpfont);
+	InsetCollapsable::draw(pi, x, y);
+	pi.base.font = tmpfont;
+}
+
+
 void InsetListings::validate(LaTeXFeatures & features) const
 {
 	features.require("listings");
@@ -255,8 +274,9 @@ bool InsetListings::showInsetDialog(BufferView * bv) const
 
 void InsetListings::getDrawFont(Font & font) const
 {
-	font = Font(Font::ALL_INHERIT, english_language);
+	font = Font(Font::ALL_INHERIT, latex_language);
 	font.setFamily(Font::TYPEWRITER_FAMILY);
+	// FIXME: define Color::listing?
 	font.setColor(Color::foreground);
 }
 
