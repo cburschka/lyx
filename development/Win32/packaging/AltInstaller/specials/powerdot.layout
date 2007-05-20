@@ -1,8 +1,9 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[powerdot.cls,enumitem.sty,genmisc.sty,listings.sty,xkeyval.sty]{powerdot presentation}
-# PowerDot textclass definition file. 
-# Created (29.Aug.05): Mael Hill�reau
-# Last modified: 17.Sep.05
+#  \DeclareLaTeXClass[powerdot,enumitem.sty,rotate-textures.sty,listings.sty,xkeyval.sty]{presentation (powerdot)}
+# PowerDot textclass definition file.
+# The rotate-textures.sty is part of the genmisc-package that is required by powerdot.
+# Created (29.Aug.05): Mael Hilléreau
+# Last modified: 20-May-06 by Uwe Stöhr
 #
 # ----------------------------------------------------------
 # Copyright (C) 2005 Hendri Adriaens and Christopher Ellison
