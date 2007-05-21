@@ -51,6 +51,7 @@ Style Itemize
   Margin           Static
   LatexType        Item_Environment
   LatexName        itemize
+  OptionalArgs     1
   NextNoIndent     1
   LeftMargin       MMN
   LabelSep         xx
@@ -69,6 +70,7 @@ Style Enumerate
   Margin           Static
   LatexType        Item_Environment
   LatexName        enumerate
+  OptionalArgs     2
   NextNoIndent     1
   LeftMargin       MMN
   LabelSep         xx
@@ -87,6 +89,7 @@ Style Description
   Margin           First_Dynamic
   LatexType        Item_environment
   LatexName        description
+  OptionalArgs     2
   NextNoIndent     1
   LeftMargin       MM
   LabelSep         xxx
@@ -112,6 +115,7 @@ Style Part
   Margin           Dynamic
   LatexType        Command
   LatexName        part
+  OptionalArgs     1
   NeedProtect      1
   NextNoIndent     1
   Labelsep         xxx
@@ -224,6 +228,7 @@ Style BeginFrame
   KeepEmpty        1
   LatexType        Command
   LatexName        lyxframeend{}\lyxframe
+  OptionalArgs     1
   Margin           First_Dynamic
   NextNoIndent     1
   ParSkip          0
@@ -303,6 +308,7 @@ Style AgainFrame
   KeepEmpty         0
   LatexType         Command
   LatexName         lyxframeend{}\lyxagainframe
+  OptionalArgs      2
   Margin            First_Dynamic
   NextNoIndent      1
   ParSkip           0
@@ -509,6 +515,7 @@ Style Pause
   LatexType         Command
   LatexName         pause
   Margin            First_Dynamic
+  OptionalArgs      1
   NextNoIndent      1
   ParSkip           0
   TopSep            0
