@@ -620,12 +620,14 @@ void QDocumentDialog::validate_listings_params()
 			textLayoutModule->listingsTB->setPlainText(
 				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 			okPB->setEnabled(true);
+			applyPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
 		isOK = false;
 		// listingsTB->setTextColor("red");
 		textLayoutModule->listingsTB->setPlainText(e.what());
 		okPB->setEnabled(false);
+		applyPB->setEnabled(false);
 	}
 }
 
