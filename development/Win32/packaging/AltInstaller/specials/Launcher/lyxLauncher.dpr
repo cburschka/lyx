@@ -23,17 +23,23 @@ procedure StartLyX(hConsole: THandle; FileName,Path: string);
 
 var Params : PChar;
     hLyX : THandle;
+    Folder : string;
 begin
 
- // if a filename is given, convert it to a PChar; needed for the ShellExecute
+ // if a filename is given, quote it to avoid the path with spaces problem
  if FileName <> '' then
   Params:= PChar('"' + FileName + '"')
  else
   Params:= nil;
 
+ // get folder of the lyx.exe
+ Folder:= StringReplace(Path,'\lyx.exe','',[rfIgnoreCase]);
+ // quote path to avoid the path with spaces problem
+ Folder:= '"' + Folder + '"';
+ 
  // start LyX
- hLyX:= ShellExecute(hConsole,PChar('open'),
-                     PChar(Path),Params,nil,SW_SHOWNORMAL);
+ hLyX:= ShellExecute(hConsole,PChar('open'),PChar(Path),
+                     Params,PChar(Folder),SW_SHOWNORMAL);
  if hLyX = ERROR_FILE_NOT_FOUND  then
  begin
   MessageDLG('The file'#13#10 + Path + #13#10
