@@ -43,7 +43,7 @@ BrandingText "LyXWinInstaller v3.16 - ${INSTALLER_VERSION}"
  !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
  !define PRODUCT_VERSION_SHORT_OLD "150svn"
  !define JabRefVersion "2.2" # could be an older version
- !define MiKTeXDeliveredVersion "2.5" # could be an older version
+ !define MiKTeXDeliveredVersion "2.6" # could be an older version
 !endif
 
 # definitions for the Small installer
@@ -56,7 +56,7 @@ BrandingText "LyXWinInstaller v3.16 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv48w32.exe"
  !define JabRefInstall "external\JabRef-2.2-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2675.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2693.exe"
  !define JabRefVersion "2.2"
  !define MiKTeXDeliveredVersion "2.6"
 !endif
