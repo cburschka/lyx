@@ -363,7 +363,12 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 	if (!isLyXFilename(included_file))
 		return 0;
 
-	return theBufferList().getBuffer(included_file);
+	Buffer * childBuffer = theBufferList().getBuffer(included_file);
+	
+	//FIXME RECURSIVE INCLUDES
+	if (childBuffer == & buffer)
+		return 0;
+	else return childBuffer;
 }
 
 
@@ -405,6 +410,18 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		return 0;
 
 	FileName const included_file(includedFilename(buffer, params_));
+	
+	//Check we're not trying to include ourselves.
+	//FIXME RECURSIVE INCLUDE
+	//This isn't sufficient, as the inclusion could be downstream.
+	//But it'll have to do for now.
+	if (buffer.fileName() == included_file.toFilesystemEncoding()) {
+		Alert::error(_("Recursive input"), 
+		               bformat(_("Attempted to include file %1$s in itself! "
+		               "Ignoring inclusion."), from_utf8(incfile)));
+		return 0;
+	}
+
 	Buffer const * const m_buffer = buffer.getMasterBuffer();
 
 	// if incfile is relative, make it relative to the master
@@ -560,6 +577,17 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 
 	string const included_file = includedFilename(buffer, params_).absFilename();
 
+	//Check we're not trying to include ourselves.
+	//FIXME RECURSIVE INCLUDE
+	//This isn't sufficient, as the inclusion could be downstream.
+	//But it'll have to do for now.
+	if (buffer.fileName() == included_file) {
+		Alert::error(_("Recursive input"), 
+		               bformat(_("Attempted to include file %1$s in itself! "
+		               "Ignoring inclusion."), from_utf8(incfile)));
+		return 0;
+	}
+
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".sgml");
 	DocFileName writefile(changeExtension(included_file, ".sgml"));
@@ -629,7 +657,11 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (loadIfNeeded(buffer, params_)) {
 		// a file got loaded
 		Buffer * const tmp = theBufferList().getBuffer(included_file);
-		if (tmp) {
+		// make sure the buffer isn't us
+		// FIXME RECURSIVE INCLUDES
+		// This is not sufficient, as recursive includes could be
+		// more than a file away. But it will do for now.
+		if (tmp && tmp != & buffer) {
 			// We must temporarily change features.buffer,
 			// otherwise it would always be the master buffer,
 			// and nested includes would not work.
