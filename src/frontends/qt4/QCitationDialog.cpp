@@ -258,22 +258,24 @@ void QCitationDialog::fillStyles()
 bool QCitationDialog::isSelected(const QModelIndex & idx)
 {
 	QString const str = idx.data().toString();
-	return !form_->selected()->stringList().filter(str).isEmpty();
+	return form_->selected()->stringList().contains(str);
 }
 
 
 void QCitationDialog::setButtons()
 {
 	int const arows = availableLV->model()->rowCount();
-	addPB->setEnabled(arows>0 && !isSelected(availableLV->currentIndex()));
+	addPB->setEnabled(arows > 0 && 
+		availableLV->currentIndex().isValid() &&
+		!isSelected(availableLV->currentIndex()));
 
 	int const srows = selectedLV->model()->rowCount();
 	int const sel_nr = selectedLV->currentIndex().row();
 	deletePB->setEnabled(sel_nr >= 0);
 	upPB->setEnabled(sel_nr > 0);
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
-	applyPB->setEnabled(srows>0);
-	okPB->setEnabled(srows>0);
+	applyPB->setEnabled(srows > 0);
+	okPB->setEnabled(srows > 0);
 }
 
 
