@@ -6,7 +6,7 @@ spotlightdir = $(bundledir)/Library/Spotlight/LyX-Metadata.mdimporter/Contents
 dist_spotlight_DATA = Info.plist 
 
 spotlightbindir = $(spotlightdir)/MacOS
-spotlightbin_DATA = LyX-Metadata
+dist_spotlightbin_DATA = LyX-Metadata
 
 spotlightdatadir = $(spotlightdir)/Resources
 dist_spotlightdata_DATA = schema.xml
