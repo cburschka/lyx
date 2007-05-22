@@ -59,9 +59,22 @@ public:
 	///
 	Font getLabelFont(Buffer const & buffer,
 		Paragraph const & par) const;
-	///
+	/** Set font of character at position \p pos in paragraph \p pit.
+	 *  Must not be called if \p pos denotes an inset with text contents,
+	 *  and the inset is not allowed inside a font change (see below).
+	 */
 	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
 		Font const & font);
+
+	/** Needed to propagate font changes to all text cells of insets
+	 *  that are not allowed inside a font change (bug 1973).
+	 *  Must not be called if \p pos denotes an ordinary character or an
+	 *  inset that is alowed inside a font change.
+	 *  FIXME: This should be removed, see documentation of noFontChange
+	 *  in insetbase.h
+	 */
+	void setInsetFont(Buffer const & buffer, pit_type pit, pos_type pos,
+		Font const & font, bool toggleall = false);
 
 	/// what you expect when pressing \<enter\> at cursor position
 	void breakParagraph(Cursor & cur, bool keep_layout = false);
@@ -89,6 +102,10 @@ public:
 	/// Set font over selection paragraphs and rebreak.
 	/// FIXME: replace Cursor with DocIterator.
 	void setFont(Cursor & cur, Font const &, bool toggleall = false);
+	/// Set font from \p begin to \p end and rebreak.
+	void setFont(Buffer const & buffer, DocIterator const & begin,
+		DocIterator const & end, Font const &,
+		bool toggleall = false);
 
 	///
 	void toggleFree(Cursor & cur, Font const &, bool toggleall = false);

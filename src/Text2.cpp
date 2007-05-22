@@ -270,6 +270,9 @@ Font Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt)
 {
+	BOOST_ASSERT(!pars_[pit].isInset(pos) ||
+	             !pars_[pit].getInset(pos)->noFontChange());
+
 	Font font = fnt;
 	Layout_ptr const & layout = pars_[pit].layout();
 
@@ -304,6 +307,36 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 	font.reduce(layoutfont);
 
 	pars_[pit].setFont(pos, font);
+}
+
+
+void Text::setInsetFont(Buffer const & buffer, pit_type pit,
+		pos_type pos, Font const & font, bool toggleall)
+{
+	BOOST_ASSERT(pars_[pit].isInset(pos) &&
+	             pars_[pit].getInset(pos)->noFontChange());
+
+	Inset * const inset = pars_[pit].getInset(pos);
+	DocIterator dit = doc_iterator_begin(*inset);
+	// start of the last cell
+	DocIterator end = dit;
+	end.idx() = end.lastidx();
+
+	while (true) {
+		Text * text = dit.text();
+		Inset * cell = dit.realInset();
+		if (text && cell) {
+			DocIterator cellbegin = doc_iterator_begin(*cell);
+			// last position of the cell
+			DocIterator cellend = cellbegin;
+			cellend.pit() = cellend.lastpit();
+			cellend.pos() = cellend.lastpos();
+			text->setFont(buffer, cellbegin, cellend, font, toggleall);
+		}
+		if (dit == end)
+			break;
+		dit.forwardIdx();
+	}
 }
 
 
@@ -433,7 +466,6 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 }
 
 
-// set font over selection
 void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -464,20 +496,36 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	// Ok, we have a selection.
 	recordUndoSelection(cur);
 
-	DocIterator dit = cur.selectionBegin();
-	DocIterator ditend = cur.selectionEnd();
+	setFont(cur.buffer(), cur.selectionBegin(), cur.selectionEnd(), font,
+	        toggleall);
+}
 
-	BufferParams const & params = cur.buffer().params();
 
+void Text::setFont(Buffer const & buffer, DocIterator const & begin,
+		DocIterator const & end, Font const & font,
+		bool toggleall)
+{
 	// Don't use forwardChar here as ditend might have
 	// pos() == lastpos() and forwardChar would miss it.
 	// Can't use forwardPos either as this descends into
 	// nested insets.
-	for (; dit != ditend; dit.forwardPosNoDescend()) {
+	Language const * language = buffer.params().language;
+	for (DocIterator dit = begin; dit != end; dit.forwardPosNoDescend()) {
 		if (dit.pos() != dit.lastpos()) {
-			Font f = getFont(cur.buffer(), dit.paragraph(), dit.pos());
-			f.update(font, params.language, toggleall);
-			setCharFont(cur.buffer(), dit.pit(), dit.pos(), f);
+			pit_type const pit = dit.pit();
+			pos_type const pos = dit.pos();
+			if (pars_[pit].isInset(pos) &&
+			    pars_[pit].getInset(pos)->noFontChange())
+				// We need to propagate the font change to all
+				// text cells of the inset (bug 1973).
+				// FIXME: This should change, see documentation
+				// of noFontChange in insetbase.h
+				setInsetFont(buffer, pit, pos, font, toggleall);
+			else {
+				Font f = getFont(buffer, dit.paragraph(), pos);
+				f.update(font, language, toggleall);
+				setCharFont(buffer, pit, pos, f);
+			}
 		}
 	}
 }

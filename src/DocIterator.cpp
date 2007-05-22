@@ -432,6 +432,19 @@ void DocIterator::forwardPar()
 }
 
 
+void DocIterator::forwardIdx()
+{
+	CursorSlice & tip = top();
+
+	//prevent endless loops
+	BOOST_ASSERT(tip.idx() < lastidx());
+
+	++tip.idx();
+	tip.pit() = 0;
+	tip.pos() = 0;
+}
+
+
 void DocIterator::forwardChar()
 {
 	forwardPos();
