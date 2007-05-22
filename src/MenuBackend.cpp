@@ -734,7 +734,18 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 					   FuncRequest(ccit->action())));
 		}
 		string const & floatName = floatlist.getType(cit->first).listName();
-		MenuItem item(MenuItem::Submenu, _(floatName));
+		docstring label;
+		if (!floatName.empty())
+			label = _(floatName);
+		// BUG3633: listings is not a proper float so its name
+		// is not shown in floatlist.
+		else if (cit->first == "listing")
+			label = _("List of listings");
+		// this should not happen now, but if something else like
+		// listings is added later, this can avoid an empty menu name.
+		else
+			label = _("Other floats");
+		MenuItem item(MenuItem::Submenu, label);
 		item.submenu(menu.release());
 		tomenu.add(item);
 	}
