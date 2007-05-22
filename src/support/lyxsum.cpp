@@ -17,12 +17,14 @@
 #include "support/FileName.h"
 
 #include <boost/crc.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <algorithm>
 
 using std::endl;
 using std::string;
 
+namespace fs = boost::filesystem;
 
 // OK, this is ugly, but it is the only workaround I found to compile
 // with gcc (any version) on a system which uses a non-GNU toolchain.
@@ -126,8 +128,13 @@ unsigned long sum(FileName const & file)
 	LYXERR(Debug::FILES) << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
 
-	ifstream ifs(file.toFilesystemEncoding().c_str());
-	if (!ifs) return 0;
+	string filename = file.toFilesystemEncoding();
+	// a directory may be passed here so we need to test it. (bug 3622)
+	if (fs::is_directory(filename))
+		return 0;
+	ifstream ifs(filename.c_str());
+	if (!ifs)
+		return 0;
 
 	istreambuf_iterator<char> beg(ifs);
 	istreambuf_iterator<char> end;
@@ -145,8 +152,13 @@ unsigned long sum(FileName const & file)
 		<< "lyx::sum() using istream_iterator (slow as a snail)"
 		<< endl;
 
-	ifstream ifs(file.toFilesystemEncoding().c_str());
-	if (!ifs) return 0;
+	string filename = file.toFilesystemEncoding();
+	// a directory may be passed here so we need to test it. (bug 3622)
+	if (fs::is_directory(filename))
+		return 0;
+	ifstream ifs(filename.c_str());
+	if (!ifs)
+		return 0;
 
 	ifs.unsetf(ios::skipws);
 	istream_iterator<char> beg(ifs);
