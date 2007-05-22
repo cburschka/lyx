@@ -34,6 +34,7 @@ using lyx::support::findToken;
 using lyx::support::getVectorFromString;
 using lyx::support::getStringFromVector;
 using lyx::support::prefixIs;
+using lyx::support::suffixIs;
 using lyx::support::contains;
 
 namespace lyx {
@@ -47,19 +48,19 @@ namespace frontend {
 
 
 char const * languages[] =
-{ "no language", "BAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
+{ "no language", "ABAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
   "Comal 80", "csh", "Delphi", "Eiffel", "Elan", "Euphoria", "Fortran", "Haskell",
   "HTML", "IDL", "Java", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
   "Miranda", "ML", "Modula-2", "Oberon-2", "OCL", "Pascal", "Perl", "PHP", "PL/I", "POV",
-  "Python", "Prolog", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
+  "Prolog", "Python", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
   "VHDL", "XML", "" };
 
 char const * languages_gui[] =
-{ N_("No language"), "BAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
+{ N_("No language"), "ABAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
   "Comal 80", "csh", "Delphi", "Eiffel", "Elan", "Euphoria", "Fortran", "Haskell",
   "HTML", "IDL", "Java", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
   "Miranda", "ML", "Modula-2", "Oberon-2", "OCL", "Pascal", "Perl", "PHP", "PL/I", "POV",
-  "Python", "Prolog", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
+  "Prolog", "Python", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
   "VHDL", "XML", "" };
 
 char const * font_sizes[] =
@@ -181,7 +182,7 @@ string QListingsDialog::construct_params()
 
 	// compose a string
 	InsetListingsParams par;
-	if (language != "no language")
+	if (language != "no language" && !contains(extra, "language="))
 		par.addParam("language", language);
 	if (float_)
 		par.addParam("float", "");
@@ -294,6 +295,19 @@ void QListings::apply()
 }
 
 
+namespace {
+
+string plainParam(std::string const & par)
+{
+	// remove enclosing braces
+	if (prefixIs(par, "{") && suffixIs(par, "}"))
+		return par.substr(1, par.size() - 2);
+	return par;
+}
+
+} //namespace anon
+
+
 void QListings::update_contents()
 {
 	// set default values 
@@ -326,13 +340,20 @@ void QListings::update_contents()
 	for (vector<string>::iterator it = pars.begin();
 	    it != pars.end(); ++it) {
 		if (prefixIs(*it, "language=")) {
-			int n = findToken(languages, it->substr(9));
-			dialog_->languageCO->setCurrentIndex(n);
-			*it = "";
+			int n = findToken(languages, plainParam(it->substr(9)));
+			if (n >= 0) {
+				dialog_->languageCO->setEnabled(true);
+				dialog_->languageCO->setCurrentIndex(n);
+				*it = "";
+			}
+			else
+				// a known language that is not in the gui
+				dialog_->languageCO->setEnabled(false);
 		} else if (prefixIs(*it, "floatplacement=")) {
 			dialog_->floatCB->setChecked(true);
 			dialog_->placementLE->setEnabled(true);
-			dialog_->placementLE->setText(toqstr(it->substr(15)));
+			dialog_->placementLE->setText(
+				toqstr(plainParam(it->substr(15))));
 			dialog_->inlineCB->setChecked(false);
 			*it = "";
 		} else if (prefixIs(*it, "float")) {
@@ -340,10 +361,11 @@ void QListings::update_contents()
 			dialog_->inlineCB->setChecked(false);
 			dialog_->placementLE->setEnabled(true);
 			if (prefixIs(*it, "float="))
-				dialog_->placementLE->setText(toqstr(it->substr(6)));
+				dialog_->placementLE->setText(
+					toqstr(plainParam(it->substr(6))));
 			*it = "";
 		} else if (prefixIs(*it, "numbers=")) {
-			string s = it->substr(8);
+			string s = plainParam(it->substr(8));
 			int n = 0;
 			if (s == "left")
 				n = 1;
@@ -352,17 +374,22 @@ void QListings::update_contents()
 			dialog_->numberSideCO->setCurrentIndex(n);
 			*it = "";
 		} else if (prefixIs(*it, "stepnumber=")) {
-			dialog_->numberStepLE->setText(toqstr(it->substr(11)));
+			dialog_->numberStepLE->setText(
+				toqstr(plainParam(it->substr(11))));
 			*it = "";
 		} else if (prefixIs(*it, "numberstyle=")) {
-			int n = findToken(font_sizes, it->substr(13));
-			dialog_->numberFontSizeCO->setCurrentIndex(n);
+			string par = plainParam(it->substr(12));
+			int n = findToken(font_sizes, par.substr(1));
+			if (n >= 0)
+				dialog_->numberFontSizeCO->setCurrentIndex(n);
 			*it = "";
 		} else if (prefixIs(*it, "firstline=")) {
-			dialog_->firstlineLE->setText(toqstr(it->substr(10)));
+			dialog_->firstlineLE->setText(
+				toqstr(plainParam(it->substr(10))));
 			*it = "";
 		} else if (prefixIs(*it, "lastline=")) {
-			dialog_->lastlineLE->setText(toqstr(it->substr(9)));
+			dialog_->lastlineLE->setText(
+				toqstr(plainParam(it->substr(9))));
 			*it = "";
 		} else if (prefixIs(*it, "basicstyle=")) {
 			string style;
@@ -381,13 +408,18 @@ void QListings::update_contents()
 					break;
 				}
 			}
-			if (it->substr(11) == style + size || it->substr(11) == size + style) {
-				if (!style.empty())
-					dialog_->fontstyleCO->setCurrentIndex(
-						findToken(font_styles, style.substr(1)));
-				if (!size.empty())
-					dialog_->fontsizeCO->setCurrentIndex(
-						findToken(font_sizes, size.substr(1)));
+			if (plainParam(it->substr(11)) == style + size 
+			    || plainParam(it->substr(11)) == size + style) {
+				if (!style.empty()) {
+					int n = findToken(font_styles, style.substr(1));
+					if (n >= 0)
+						dialog_->fontstyleCO->setCurrentIndex(n);
+				}
+				if (!size.empty()) {
+					int n = findToken(font_sizes, size.substr(1));
+					if (n >= 0)
+						dialog_->fontsizeCO->setCurrentIndex(n);
+				}
 				*it = "";
 			}
 		} else if (prefixIs(*it, "breaklines=")) {

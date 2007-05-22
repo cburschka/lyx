@@ -79,17 +79,35 @@ struct listings_param_info {
 };
 
 
-char const * allowed_languages = 
-	"no language\nBAP\nACSL\nAda\nALGOL\nC\nC++\nCaml\nClean\nCobol\n"
-	"Comal 80\ncsh\nDelphi\nEiffel\nElan\nEuphoria\nFortran\nHaskell\n"
-	"HTML\nIDL\nJava\nLisp\nLogo\nmake\nMathematica\nMatlab\nMercury\n"
-	"Miranda\nML\nModula-2\nOberon-2\nOCL\nPascal\nPerl\nPHP\nPL/I\nPOV\n"
-	"Python\nProlog\nR\nS\nSAS\nSHELXL\nSimula\ntcl\nSQL\nTeX\nVBScript\n"
-	"VHDL\nXML";
 
-char const * style_hint = "Use \\footnotessize, \\small, \\itshape, \\ttfamily or something like that";
+/// languages and language/dialect combinations
+char const * allowed_languages = 
+	"no language\nABAP\n[R/2 4.3]ABAP\n[R/2 5.0]ABAP\n[R/3 3.1]ABAP\n"
+	"[R/3 4.6C]ABAP\n[R/3 6.10]ABAP\nACSL\nAda\n[2005]Ada\n[83]Ada\n"
+	"[95]Ada\nALGOL\n[60]ALGOL\n[68]ALGOL\nAssembler\n"
+	"[Motorola68k]Assembler\n[x86masm]Assembler\nAwk\n[gnu]Awk\n[POSIX]Awk\n"
+	"bash\nBasic\n[Visual]Basic\nC\n[ANSI]C\n[Handel]C\n[Objective]C\n"
+	"[Sharp]C\nC++\n[ANSI]C++\n[GNU]C++\n[ISO]C++\n[Visual]C++\nCaml\n"
+	"[light]Caml\n[Objective]Caml\nClean\nCobol\n[1974]Cobol\n[1985]Cobol\n"
+	"[ibm]Cobol\nComal 80\ncommand.com\n[WinXP]command.com\nComsol\ncsh\n"
+	"Delphi\nEiffel\nElan\nEuphoria\nFortran\n[77]Fortran\n[90]Fortran\n"
+	"[95]Fortran\nGCL\nGnuplot\nHaskell\nHTML\nIDL\n[CORBA]IDL\ninform\n"
+	"Java\n[AspectJ]Java\nJVMIS\nksh\nLingo\nLisp\n[Auto]Lisp\nLogo\n"
+	"make\n[gnu]make\nMathematica\n[1.0]Mathematica\n[3.0]Mathematica\n"
+	"[5.2]Mathematica\nMatlab\nMercury\nMetaPost\nMiranda\nMizar\nML\n"
+	"Modula-2\nMuPAD\nNASTRAN\nOberon-2\nOCL\n[decorative]OCL\n[OMG]OCL\n"
+	"Octave\nOz\nPascal\n[Borland6]Pascal\n[Standard]Pascal\n[XSC]Pascal\n"
+	"Perl\nPHP\nPL/I\nPlasm\nPostScript\nPOV\nProlog\nPromela\nPSTricks\n"
+	"Python\nR\nReduce\nRexx\nRSL\nRuby\nS\n[PLUS]S\nSAS\nScilab\nsh\n"
+	"SHELXL\nSimula\n[67]Simula\n[CII]Simula\n[DEC]Simula\n[IBM]Simula\n"
+	"SPARQL\nSQL\ntcl\n[tk]tcl\nTeX\n[AlLaTeX]TeX\n[common]TeX\n[LaTeX]TeX\n"
+	"[plain]TeX\n[primitive]TeX\nVBScript\nVerilog\nVHDL\n[AMS]VHDL\nVRML\n"
+	"[97]VRML\nXML\nXSLT";
+
+char const * style_hint = "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that";
 char const * frame_hint = "none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL";
-char const * frameround_hint = "The foru letters (t or f) attached to top right, bottom right, bottom left and top left corner.";
+char const * frameround_hint = 
+	"Enter four letters (either t = round or f = square) for top right, bottom right, bottom left and top left corner.";
 char const * color_hint = "Enter something like \\color{white}";
 
 /// options copied from page 26 of listings manual
@@ -301,50 +319,69 @@ parValidator::parValidator(string const & n)
 
 void parValidator::validate(std::string const & par) const
 {
+	bool unclosed = false;
+	string par2 = par;
+	// braces are allowed
+	if (prefixIs(par, "{") && suffixIs(par, "}"))
+		par2 = par.substr(1, par.size() - 2);
+	else if (prefixIs(par, "{")) {
+		par2 = par.substr(1);
+		unclosed = true;
+	}
+	
+		
 	switch (info->type) {
 	case ALL:
-		if (par.empty() && !info->onoff) {
+		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
-				throw invalidParam("An value is expected");
+				throw invalidParam("A value is expected");
 		}
+		if (unclosed)
+				throw invalidParam("Unbalanced braces!");
 		return;
 	case TRUEFALSE: {
-		if (par.empty() && !info->onoff) {
+		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
 				throw invalidParam("Please specify true or false");
 		}
-		if (par != "true" && par != "false")
+		if (par2 != "true" && par2 != "false")
 			throw invalidParam("Only true or false is allowed for parameter" + name);
+		if (unclosed)
+				throw invalidParam("Unbalanced braces!");
 		return;
 	}
 	case INTEGER: {
-		if (!isStrInt(par)) {
+		if (!isStrInt(par2)) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
 				throw invalidParam("Please specify an integer value");
 		}
-		if (convert<int>(par) == 0 && par[0] != '0')
+		if (convert<int>(par2) == 0 && par2[0] != '0')
 			throw invalidParam("An integer is expected for parameter " + name);
+		if (unclosed)
+				throw invalidParam("Unbalanced braces!");
 		return;
 	}
 	case LENGTH: {
-		if (par.empty() && !info->onoff) {
+		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
 				throw invalidParam("Please specify a latex length expression");
 		}
-		if (!isValidLength(par))
+		if (!isValidLength(par2))
 			throw invalidParam("Invalid latex length expression for parameter " + name);
+		if (unclosed)
+				throw invalidParam("Unbalanced braces!");
 		return;
 	}
 	case ONEOF: {
-		if (par.empty() && !info->onoff) {
+		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
@@ -364,13 +401,16 @@ void parValidator::validate(std::string const & par) const
 			lists.push_back(v);
 
 		// good, find the string
-		if (std::find(lists.begin(), lists.end(), par) != lists.end())
+		if (std::find(lists.begin(), lists.end(), par2) != lists.end()) {
+			if (unclosed)
+				throw invalidParam("Unbalanced braces!");
 			return;
+		}
 		// otherwise, produce a meaningful error message.
 		string matching_names;
 		for (vector<string>::iterator it = lists.begin(); 
 			it != lists.end(); ++it) {
-			if (it->size() >= par.size() && it->substr(0, par.size()) == par) {
+			if (it->size() >= par2.size() && it->substr(0, par2.size()) == par2) {
 				if (matching_names.empty())
 					matching_names += *it;
 				else
@@ -384,16 +424,18 @@ void parValidator::validate(std::string const & par) const
 		return;
 	}
 	case SUBSETOF: {
-		if (par.empty() && !info->onoff) {
+		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
 				throw invalidParam(info->hint);
 			else
 				throw invalidParam("Please specify one or more of " + string(info->info));
 		}
-		for (size_t i = 0; i < par.size(); ++i)
-			if (string(info->info).find(par[i], 0) == string::npos)
+		for (size_t i = 0; i < par2.size(); ++i)
+			if (string(info->info).find(par2[i], 0) == string::npos)
 				throw invalidParam("Parameter " + name + 
 					" should be composed of one or more of " + info->info);
+		if (unclosed)
+				throw invalidParam("Unbalanced braces!");
 		return;
 	}
 	}
