@@ -2,9 +2,14 @@ What's new in version 1.5.0 (beta 3)?
 ---------------------------- 
 
 Compared with the previous beta release we have fixed several bugs
-and added some improvements, namely a new inset to support code listings.
+and added some improvements:
 
-We have enabled the converter file cache by default.
+ * A new inset to support code listings.
+ * We have enabled the converter file cache by default.
+ * The languages Armenian, Chinese, Japanese, and Korean are now supported in
+   the user interface.
+   Note that from now on, former encoding settings for these languages
+   done via ERT or the document preamble will lead to LaTeX-errors!
 
 Internally we have renamed files to follow a consistent name pattern,
 this will allow an easier navigation of the source code thus simplifying
