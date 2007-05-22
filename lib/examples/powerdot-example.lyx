@@ -1,0 +1,631 @@
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 271
+\begin_document
+\begin_header
+\textclass powerdot
+\begin_preamble
+\usepackage{listings}
+\pdsetup{%
+  lf=left footer,
+  rf=right footer
+}
+\end_preamble
+\options nopsheader,style=fyma,display=slidesnotes
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize size=10
+\spacing single
+\papersize letterpaper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation landscape
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "usti" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A LyX sample
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ You must not use the view PDF button to preview this file! For viewing
+ and exporting this as PDF use in the menus the method PDF (ps2pdf) or PDF
+ (dvipdfm).
+ For more informations, please read the 
+\series bold
+powerdot
+\series default
+ manual.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Depending on your LaTeX-system you might have to add the option 
+\begin_inset Quotes fld
+\end_inset
+
+dvips
+\begin_inset Quotes frd
+\end_inset
+
+ to the document class options to get proper DVI output.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Mael Hilléreau 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Hendri Adriaens 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Christopher Ellison
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Slide
+My first slide
+\end_layout
+
+\begin_layout Standard
+We use a 
+\family typewriter
+Slide
+\family default
+ style (magenta color, see above this text into LyX window) for the title
+ of each slide of a section or document.
+\end_layout
+
+\begin_layout WideSlide
+My wide slide
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "toc"
+
+\end_inset
+
+But we may also use wide slides (green color, see above this text into LyX
+ window).
+\end_layout
+
+\begin_layout Standard
+Let's have a look at the TOC:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+This is the first section
+\end_layout
+
+\begin_layout Slide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+toc=This slide has...
+\end_layout
+
+\end_inset
+
+This slide has a very very long title
+\end_layout
+
+\begin_layout Standard
+This slide's title is different in the TOC, see slide 
+\begin_inset LatexCommand pageref
+reference "toc"
+
+\end_inset
+
+ or at the left of all slides in this section.
+\end_layout
+
+\begin_layout Note
+Important note!
+\end_layout
+
+\begin_layout Standard
+Don't forget to use 
+\family typewriter
+Insert
+\family default
+\SpecialChar \menuseparator
+
+\family typewriter
+Short title
+\family default
+ in order to specify slide options.
+\end_layout
+
+\begin_layout Slide
+Using 
+\family typewriter
+
+\backslash
+pause
+\end_layout
+
+\begin_layout Standard
+Let's make a pause! 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar \ldots{}
+ and then continue.
+\end_layout
+
+\begin_layout Section
+Second section
+\end_layout
+
+\begin_layout Slide
+Using 
+\family typewriter
+enumerate
+\end_layout
+
+\begin_layout Standard
+Let's enumerate things:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+The first thing;
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+The second thing;
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+The third thing;
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+The final thing!
+\end_layout
+
+\begin_layout Slide
+Using 
+\family typewriter
+itemize
+\end_layout
+
+\begin_layout Standard
+We may also make some items and nest them:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ItemizeType1
+<2> The first;
+\end_layout
+
+\begin_layout ItemizeType1
+<3> The second;
+\end_layout
+
+\begin_deeper
+\begin_layout ItemizeType1
+<4> One,
+\end_layout
+
+\begin_layout ItemizeType1
+<5> Two,
+\end_layout
+
+\begin_layout ItemizeType1
+<6> Three,
+\end_layout
+
+\end_deeper
+\begin_layout ItemizeType1
+<7> The last one.
+\end_layout
+
+\begin_layout EmptySlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+toc=,randomdots
+\end_layout
+
+\end_inset
+
+The empty slide!
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+This slide is empty\SpecialChar \ldots{}
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+It uses 
+\family typewriter
+EmptySlide
+\family default
+ style for its title (see cyan color into LyX window).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+You may also have noticed the use of 
+\family typewriter
+randomdots
+\family default
+ slide option which
+\newline
+allows displaying those multicolor dots into the slide
+ background.
+\end_layout
+
+\begin_layout Slide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+method=direct
+\end_layout
+
+\end_inset
+
+Example of LaTeX source code
+\end_layout
+
+\begin_layout Standard
+Let's now use the 
+\family typewriter
+listings
+\family default
+ package in order to typeset some source code.
+ Here's the 
+\family typewriter
+
+\backslash
+HelloWorld
+\family default
+ LaTeX command:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+lstset{language=[LaTeX]TeX}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+HelloWorld}{Hello World!}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that this slide uses the 
+\family typewriter
+method=direct
+\family default
+ option (see its short title options box above into LyX window).
+\end_layout
+
+\begin_layout Slide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+method=file
+\end_layout
+
+\end_inset
+
+Verbatim material with overlays
+\end_layout
+
+\begin_layout Standard
+Here's 
+\family typewriter
+HelloWorld()
+\family default
+ C function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C"
+inline false
+status open
+
+\begin_layout Standard
+
+void HelloWorld() {
+\end_layout
+
+\begin_layout Standard
+
+printf("Hello World!
+\backslash
+n");
+\end_layout
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+ Unlike the previous one, this slide must use 
+\family typewriter
+method=file
+\family default
+ as it employs two overlays.
+\end_layout
+
+\begin_layout Slide
+The end.
+\end_layout
+
+\begin_layout Standard
+Don't forget to put an 
+\family typewriter
+EndSlide
+\family default
+ style at the end of the document (see the black symbol below into LyX window).
+\end_layout
+
+\begin_layout Standard
+Have fun!
+\end_layout
+
+\begin_layout EndSlide
+
+\end_layout
+
+\end_body
+\end_document

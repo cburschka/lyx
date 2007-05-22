@@ -210,6 +210,7 @@ dist_examples_DATA = \
 	examples/modernCV.lyx \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
+	examples/powerdot-example.lyx \
 	examples/script_form.lyx \
 	examples/simplecv.lyx \
 	examples/splash.lyx
@@ -956,6 +957,7 @@ dist_layouts_DATA =\
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
 	layouts/paper.layout \
+	layouts/powerdot.layout \
 	layouts/report.layout \
 	layouts/revtex.layout \
 	layouts/revtex4.layout \

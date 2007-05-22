@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 270
+\lyxformat 271
 \begin_document
 \begin_header
 \textclass article
@@ -33,6 +33,7 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "usti" 
 \author "Jürgen Spitzmüller" 
 \author "Jean-Marc Lasgouttes" 
 \end_header
@@ -1969,6 +1970,24 @@ article
  class.
  It provides similar functionality, but you might prefer this layout with
  sans serif sections, headings, and more.
+\end_layout
+
+\begin_layout Subsection
+powerdot
+\end_layout
+
+\begin_layout Description
+Found: @chk_powerdot@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/powerdot
+\end_layout
+
+\begin_layout Description
+Notes: A LaTeX class for producing presentations and slides.
 \end_layout
 
 \begin_layout Subsection

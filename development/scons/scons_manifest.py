@@ -2423,6 +2423,7 @@ lib_examples_files = Split('''
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
+    powerdot-example.lyx
     script_form.lyx
     simplecv.lyx
     splash.lyx
@@ -2646,6 +2647,7 @@ lib_layouts_files = Split('''
     mwbk.layout
     mwrep.layout
     paper.layout
+    powerdot.layout
     report.layout
     revtex.layout
     revtex4.layout
