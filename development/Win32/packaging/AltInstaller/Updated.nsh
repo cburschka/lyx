@@ -28,11 +28,18 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\he\example_lyxified.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\he\example_raw.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\he\splash.lyx"
+ SetOutPath "$INSTDIR\Resources\images"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\toolbar-toggle_table.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\toolbar-toggle_math_panels.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\toolbar-toggle_math.xpm"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-insert.xpm"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout" 
  SetOutPath "$INSTDIR\Resources\ui"
- File "${PRODUCT_SOURCEDIR}\Resources\ui\default.ui
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\default.ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
