@@ -330,7 +330,7 @@ void QListingsDialog::validate_listings_params()
 		}
 	} catch (invalidParam & e) {
 		isOK = false;
-		listingsTB->setPlainText(e.what());
+		listingsTB->setPlainText(toqstr(e.what()));
 		okPB->setEnabled(false);
 		applyPB->setEnabled(false);
 	}

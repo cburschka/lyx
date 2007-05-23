@@ -248,16 +248,14 @@ void QInclude::update_contents()
 				if (cap[0] == '{' && cap[cap.size()-1] == '}')
 					dialog_->captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
 				else
-					// FIXME: make this translatable!
-					throw invalidParam("caption parameter is not quoted with braces");
+					throw invalidParam(_("caption parameter is not quoted with braces"));
 				*it = "";
 			} else if (prefixIs(*it, "label=")) {
 				string lbl = it->substr(6);
 				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}')
 					dialog_->labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
 				else
-					// FIXME: make this translatable!
-					throw invalidParam("label parameter is not quoted with braces");
+					throw invalidParam(_("label parameter is not quoted with braces"));
 				*it = "";
 			}
 		}

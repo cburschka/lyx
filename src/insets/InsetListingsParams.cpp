@@ -26,6 +26,7 @@ using std::vector;
 using std::ostream;
 using std::string;
 using std::exception;
+using lyx::support::bformat;
 using lyx::support::trim;
 using lyx::support::isStrInt;
 using lyx::support::prefixIs;
@@ -39,7 +40,7 @@ enum param_type {
 	ALL,  // accept all
 	TRUEFALSE, // accept 'true' or 'false'
 	INTEGER, // accept an integer
-	LENGTH,  // accept an latex length
+	LENGTH,  // accept a latex length
 	ONEOF,  // accept one of a few values
 	SUBSETOF, // accept a string composed of given characters
 };
@@ -52,7 +53,7 @@ struct listings_param_info {
 	char const * name;
 	/// default value
 	char const * value;
-	// for option with value "true", "false", 
+	// for option with value "true", "false",
 	// if onoff is true,
 	//   "true":  option
 	//   "false": 
@@ -62,7 +63,6 @@ struct listings_param_info {
 	//   "false": option=false
 	bool onoff;
 	/// validator type
-	param_type type;
 	// ALL:
 	// TRUEFALSE:
 	// INTEGER:
@@ -73,8 +73,10 @@ struct listings_param_info {
 	// SUBSETOF
 	//     info is a string from which par is composed of
 	//     (e.g. floatplacement can be one or more of tbph)
+	param_type type;
+	/// parameter info, meaning depending on parameter type
 	char const * info;
-	//
+	/// a help message that is displayed in the gui
 	char const * hint;
 };
 
@@ -104,11 +106,11 @@ char const * allowed_languages =
 	"[plain]TeX\n[primitive]TeX\nVBScript\nVerilog\nVHDL\n[AMS]VHDL\nVRML\n"
 	"[97]VRML\nXML\nXSLT";
 
-char const * style_hint = "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that";
-char const * frame_hint = "none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL";
-char const * frameround_hint = 
-	"Enter four letters (either t = round or f = square) for top right, bottom right, bottom left and top left corner.";
-char const * color_hint = "Enter something like \\color{white}";
+char const * style_hint = N_("Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that");
+char const * frame_hint = N_("none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL");
+char const * frameround_hint =
+	N_("Enter four letters (either t = round or f = square) for top right, bottom right, bottom left and top left corner.");
+char const * color_hint = N_("Enter something like \\color{white}");
 
 /// options copied from page 26 of listings manual
 // FIXME: add default parameters ... (which is not used now)
@@ -123,7 +125,7 @@ listings_param_info const listings_param_table[] = {
 	{ "firstline", "", false, INTEGER, "", "" },
 	{ "lastline", "", false, INTEGER, "", "" },
 	{ "showlines", "", false, TRUEFALSE, "", "" },
-	{ "emptylines", "", false, ALL, "", "Expect a number with an optional * before it" },
+	{ "emptylines", "", false, ALL, "", N_("Expect a number with an optional * before it") },
 	{ "gobble", "", false, INTEGER, "", "" },
 	{ "style", "", false, ALL, "", "" },
 	{ "language", "", false, ONEOF, allowed_languages, "" },
@@ -165,16 +167,16 @@ listings_param_info const listings_param_table[] = {
 	{ "numberstyle", "", false, ALL, "", style_hint },
 	{ "numbersep", "", false, LENGTH, "", "" },
 	{ "numberblanklines", "", false, ALL, "", "" },
-	{ "firstnumber", "", false, ALL, "", "auto, last or a number" },
+	{ "firstnumber", "", false, ALL, "", N_("auto, last or a number") },
 	{ "name", "", false, ALL, "", "" },
 	{ "thelstnumber", "", false, ALL, "", "" },
 	{ "title", "", false, ALL, "", "" },
 	// this option is not handled in the parameter box
-	{ "caption", "", false, ALL, "", "This parameter should not be entered here. "
-		"Please use caption editbox (Include dialog) or insert->caption (listings inset)" },
+	{ "caption", "", false, ALL, "", N_("This parameter should not be entered here. "
+		"Please use caption editbox (Include dialog) or insert->caption (listings inset)") },
 	// this option is not handled in the parameter box
-	{ "label", "", false, ALL, "", "This parameter should not be entered here."
-		"Please use label editbox (Include dialog) or insert->caption (listings inset)"},
+	{ "label", "", false, ALL, "", N_("This parameter should not be entered here. "
+		"Please use label editbox (Include dialog) or insert->caption (listings inset)") },
 	{ "nolol", "", false, TRUEFALSE, "", "" },
 	{ "captionpos", "", false, SUBSETOF, "tb", "" },
 	{ "abovecaptionskip", "", false, LENGTH, "", "" },
@@ -277,7 +279,7 @@ parValidator::parValidator(string const & n)
 	: name(n), info(0)
 {
 	if (name.empty())
-		throw invalidParam("Invalid (empty) listings param name.");
+		throw invalidParam(_("Invalid (empty) listings param name."));
 	else if (name == "?") {
 		string pars;
 		size_t idx = 0;
@@ -287,7 +289,8 @@ parValidator::parValidator(string const & n)
 			pars += listings_param_table[idx].name;
 			++idx;
 		}
-		throw invalidParam("Available listings parameters are " + pars);
+		throw invalidParam(bformat(
+			_("Available listings parameters are %1$s"), from_utf8(pars)));
 	}
 	// locate name in parameter table
 	size_t idx = 0;
@@ -302,7 +305,7 @@ parValidator::parValidator(string const & n)
 	string matching_names;
 	for (size_t i = 0; i < idx; ++i) {
 		string n(listings_param_table[i].name);
-		if (n.size() >= name.size() && n.substr(0, name.size()) == name) {
+		if (prefixIs(n, name)) {
 			if (matching_names.empty())
 				matching_names += n;
 			else
@@ -310,10 +313,11 @@ parValidator::parValidator(string const & n)
 		}
 	}
 	if (matching_names.empty())
-		throw invalidParam("Unknown listings param name: " + name);
+		throw invalidParam(bformat(_("Unknown listings param name: %1$s"),
+						    from_utf8(name)));
 	else
-		throw invalidParam("Parameters starting with '" + name + 
-			"': " + matching_names);
+		throw invalidParam(bformat(_("Parameters starting with '%1$s': %2$s"),
+						    from_utf8(name), from_utf8(matching_names)));
 }
 
 
@@ -334,58 +338,62 @@ void parValidator::validate(std::string const & par) const
 	case ALL:
 		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
-				throw invalidParam(info->hint);
+				throw invalidParam(from_utf8(info->hint));
 			else
-				throw invalidParam("A value is expected");
+				throw invalidParam(_("A value is expected"));
 		}
 		if (unclosed)
-				throw invalidParam("Unbalanced braces!");
+				throw invalidParam(_("Unbalanced braces!"));
 		return;
 	case TRUEFALSE: {
 		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
-				throw invalidParam(info->hint);
+				throw invalidParam(from_utf8(info->hint));
 			else
-				throw invalidParam("Please specify true or false");
+				throw invalidParam(_("Please specify true or false"));
 		}
 		if (par2 != "true" && par2 != "false")
-			throw invalidParam("Only true or false is allowed for parameter" + name);
+			throw invalidParam(bformat(_("Only true or false is allowed for parameter %1$s"),
+						   from_utf8(name)));
 		if (unclosed)
-				throw invalidParam("Unbalanced braces!");
+				throw invalidParam(_("Unbalanced braces!"));
 		return;
 	}
 	case INTEGER: {
 		if (!isStrInt(par2)) {
 			if (info->hint != "")
-				throw invalidParam(info->hint);
+				throw invalidParam(from_utf8(info->hint));
 			else
-				throw invalidParam("Please specify an integer value");
+				throw invalidParam(_("Please specify an integer value"));
 		}
 		if (convert<int>(par2) == 0 && par2[0] != '0')
-			throw invalidParam("An integer is expected for parameter " + name);
+			throw invalidParam(bformat(_("An integer is expected for parameter %1$s"),
+						   from_utf8(name)));
 		if (unclosed)
-				throw invalidParam("Unbalanced braces!");
+				throw invalidParam(_("Unbalanced braces!"));
 		return;
 	}
 	case LENGTH: {
 		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
-				throw invalidParam(info->hint);
+				throw invalidParam(from_utf8(info->hint));
 			else
-				throw invalidParam("Please specify a latex length expression");
+				throw invalidParam(_("Please specify a latex length expression"));
 		}
 		if (!isValidLength(par2))
-			throw invalidParam("Invalid latex length expression for parameter " + name);
+			throw invalidParam(bformat(_("Invalid latex length expression for parameter %1$s"),
+						   from_utf8(name)));
 		if (unclosed)
-				throw invalidParam("Unbalanced braces!");
+				throw invalidParam(_("Unbalanced braces!"));
 		return;
 	}
 	case ONEOF: {
 		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
-				throw invalidParam(info->hint);
+				throw invalidParam(from_utf8(info->hint));
 			else
-				throw invalidParam("Please specify one of " + string(info->info));
+				throw invalidParam(bformat(_("Please specify one of %1$s"),
+							   from_utf8(string(info->info))));
 		}
 		// break value to allowed strings
 		vector<string> lists;
@@ -403,7 +411,7 @@ void parValidator::validate(std::string const & par) const
 		// good, find the string
 		if (std::find(lists.begin(), lists.end(), par2) != lists.end()) {
 			if (unclosed)
-				throw invalidParam("Unbalanced braces!");
+				throw invalidParam(_("Unbalanced braces!"));
 			return;
 		}
 		// otherwise, produce a meaningful error message.
@@ -418,24 +426,28 @@ void parValidator::validate(std::string const & par) const
 			}
 		}
 		if (matching_names.empty())
-			throw invalidParam("Try one of " + string(info->info));
+			throw invalidParam(bformat(_("Try one of %1$s"),
+						   from_utf8(string(info->info))));
 		else
-			throw invalidParam("I guess you mean " + matching_names);
+			throw invalidParam(bformat(_("I guess you mean %1$s"),
+						   from_utf8(matching_names)));
 		return;
 	}
 	case SUBSETOF: {
 		if (par2.empty() && !info->onoff) {
 			if (info->hint != "")
-				throw invalidParam(info->hint);
+				throw invalidParam(from_utf8(info->hint));
 			else
-				throw invalidParam("Please specify one or more of " + string(info->info));
+				throw invalidParam(bformat(_("Please specify one or more of '%1$s'"),
+							   from_utf8(string(info->info))));
 		}
 		for (size_t i = 0; i < par2.size(); ++i)
 			if (string(info->info).find(par2[i], 0) == string::npos)
-				throw invalidParam("Parameter " + name + 
-					" should be composed of one or more of " + info->info);
+				throw invalidParam(
+					bformat(_("Parameter %1$s should be composed of one or more of %2$s"),
+						from_utf8(name), from_utf8(info->info)));
 		if (unclosed)
-				throw invalidParam("Unbalanced braces!");
+				throw invalidParam(_("Unbalanced braces!"));
 		return;
 	}
 	}
@@ -484,10 +496,11 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 	if (key.empty())
 		return;
 	// exception may be thown.
-	parValidator(key.c_str()).validate(value);
+	parValidator(key).validate(value);
 	// duplicate parameters!
 	if (find(keys_.begin(), keys_.end(), key) != keys_.end())
-		throw invalidParam("Parameter " + key + " has already been defined");	
+		throw invalidParam(bformat(_("Parameter %1$s has already been defined"),
+					  from_utf8(key)));
 	else
 		keys_.push_back(key);
 	if (!params_.empty())

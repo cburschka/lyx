@@ -93,8 +93,8 @@ private:
 
 class invalidParam : public std::exception {
 public:
-	invalidParam(std::string const & details) :
-		details_(details)
+	invalidParam(docstring const & details)
+					: details_(to_utf8(details))
 	{}
 
 	virtual const char * what() const throw() {

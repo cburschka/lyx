@@ -149,7 +149,7 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 				if (!param_string.empty())
 					os << ',';
 			}
-			os << from_ascii(param_string) << "]\n";
+			os << from_utf8(param_string) << "]\n";
 		}
 		lines += 4;
 	}
