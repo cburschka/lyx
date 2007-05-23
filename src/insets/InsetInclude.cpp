@@ -416,7 +416,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	//FIXME RECURSIVE INCLUDE
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
-	if (buffer.fileName() == included_file.toFilesystemEncoding()) {
+	if (!isListings(params_) && buffer.fileName() == included_file.toFilesystemEncoding()) {
 		Alert::error(_("Recursive input"), 
 		               bformat(_("Attempted to include file %1$s in itself! "
 		               "Ignoring inclusion."), from_utf8(incfile)));
