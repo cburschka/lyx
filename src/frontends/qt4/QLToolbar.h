@@ -69,6 +69,7 @@ public:
 	void add(ToolbarItem const & item);
 	void hide(bool);
 	void show(bool);
+	bool isVisible() const;
 	void saveInfo(ToolbarSection::ToolbarInfo & info);
 	void update();
 	LayoutBox * layout() const { return layout_.get(); }

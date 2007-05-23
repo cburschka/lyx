@@ -75,6 +75,10 @@ ToolbarSet
 		Item "Insert math" "math-mode"
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
+		Separator
+		Item "Toggle Table of Contents" "dialog-toggle toc"
+		Item "Toggle Math Toolbar" "toolbar-toggle math"
+		Item "Toggle Table Toolbar" "toolbar-toggle table"
 	End
 	
 	Toolbar "extra" "Extra"
@@ -103,7 +107,6 @@ ToolbarSet
 		Separator
 		Item "Text style" "dialog-show character"
 		Item "Paragraph settings" "layout-paragraph"
-		Item "Table of contents" "dialog-toggle toc"
 		Item "Thesaurus" "thesaurus-entry"
 	End
 	
@@ -156,6 +159,8 @@ ToolbarSet
 		Item "Add column" "tabular-feature append-column"
 		Item "Delete row" "tabular-feature delete-row"
 		Item "Delete column" "tabular-feature delete-column"
+		Separator
+		Item "Toggle Math Panels" "toolbar-toggle math_panels"
 	End
 	
 	Toolbar "minibuffer" "Command Buffer"
@@ -521,29 +526,29 @@ ToolbarSet
 	End
 	
 	Toolbar "latex_varsz" "Big Operators"
-		Item "sum" "math-insert \sum"
-		Item "int" "math-insert \int"
 		Item "intop" "math-insert \intop"
-		Item "iint" "math-insert \iint"
+		Item "int" "math-insert \int"
 		Item "iintop" "math-insert \iintop"
-		Item "iiint" "math-insert \iiint"
+		Item "iint" "math-insert \iint"
 		Item "iiintop" "math-insert \iiintop"
-		Item "iiiint" "math-insert \iiiint"
+		Item "iiint" "math-insert \iiint"
 		Item "iiiintop" "math-insert \iiiintop"
-		Item "dotsint" "math-insert \dotsint"
+		Item "iiiint" "math-insert \iiiint"
 		Item "dotsintop" "math-insert \dotsintop"
-		Item "oint" "math-insert \oint"
+		Item "dotsint" "math-insert \dotsint"
 		Item "ointop" "math-insert \ointop"
-		Item "oiint" "math-insert \oiint"
+		Item "oint" "math-insert \oint"
 		Item "oiintop" "math-insert \oiintop"
-		Item "ointctrclockwise" "math-insert \ointctrclockwise"
+		Item "oiint" "math-insert \oiint"
 		Item "ointctrclockwiseop" "math-insert \ointctrclockwiseop"
-		Item "ointclockwise" "math-insert \ointclockwise"
+		Item "ointctrclockwise" "math-insert \ointctrclockwise"
 		Item "ointclockwiseop" "math-insert \ointclockwiseop"
-		Item "sqint" "math-insert \sqint"
+		Item "ointclockwise" "math-insert \ointclockwise"
 		Item "sqintop" "math-insert \sqintop"
-		Item "sqiint" "math-insert \sqiint"
+		Item "sqint" "math-insert \sqint"
 		Item "sqiintop" "math-insert \sqiintop"
+		Item "sqiint" "math-insert \sqiint"
+		Item "sum" "math-insert \sum"
 		Item "prod" "math-insert \prod"
 		Item "coprod" "math-insert \coprod"
 		Item "bigsqcup" "math-insert \bigsqcup"

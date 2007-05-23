@@ -298,6 +298,12 @@ void QLToolbar::show(bool)
 }
 
 
+bool QLToolbar::isVisible() const
+{
+	return QToolBar::isVisible();
+}
+
+
 void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 {
 	// if tbinfo.state == auto *do not* set on/off

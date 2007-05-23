@@ -364,6 +364,8 @@ Menuset
 		Separator
 		Item "Delimiters|r" "dialog-show mathdelimiter"
 		Item "Matrix|x" "dialog-show mathmatrix"
+		Separator
+		Item "Toggle Math Panels" "toolbar-toggle math_panels"
 	End
 
 	Menu "insert_float"

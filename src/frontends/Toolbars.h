@@ -70,6 +70,8 @@ public:
 	*/
 	virtual void saveInfo(ToolbarSection::ToolbarInfo & tbinfo) = 0;
 
+	/// whether toolbar is visible
+	virtual bool isVisible() const = 0;
 	/// Refresh the contents of the bar.
 	virtual void update() = 0;
 	/// Accessor to the layout combox, if any.
@@ -90,12 +92,15 @@ public:
 
 	/// get toolbar state (on/off/auto)
 	ToolbarInfo::Flags getToolbarState(std::string const & name);
-	
+
 	/// toggle the state of toolbars (on/off/auto)
 	void toggleToolbarState(std::string const & name);
 
 	/// Update the state of the toolbars.
 	void update(bool in_math, bool in_table, bool review);
+
+	/// Is the Toolbar currently visible?
+	bool visible(std::string const & name) const;
 
 	/// save toolbar information
 	void saveToolbarInfo();

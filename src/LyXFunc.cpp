@@ -623,6 +623,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_TOOLBAR_TOGGLE: {
+		bool const current = lyx_view_->getToolbars().visible(cmd.getArg(0));
+		flag.setOnOff(current);
+		break;
+	}
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
 	case LFUN_COMMAND_SEQUENCE: {
@@ -1751,6 +1756,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_TOOLBAR_TOGGLE_STATE:
 			lyx_view_->toggleToolbarState(argument);
 			break;
+
+		case LFUN_TOOLBAR_TOGGLE: {
+			BOOST_ASSERT(lyx_view_);
+			string const name = to_utf8(cmd.argument());
+			bool const current = lyx_view_->getToolbars().visible(name);
+			lyx_view_->getToolbars().display(name, !current);
+			break;
+		}
 
 		default: {
 			BOOST_ASSERT(lyx_view_);

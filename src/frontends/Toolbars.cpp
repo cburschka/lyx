@@ -151,14 +151,13 @@ void Toolbars::display(string const & name, bool show)
 	for (; cit != end; ++cit) {
 		if (cit->name == name) {
 			unsigned int flags = cit->flags;
+			TurnOffFlag(ON);
+			TurnOffFlag(OFF);
 			TurnOffFlag(AUTO);
-			if (show) {
+			if (show)
 				TurnOnFlag(ON);
+			else
 				TurnOnFlag(OFF);
-			} else {
-				TurnOnFlag(OFF);
-				TurnOnFlag(ON);
-			}
 			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
 			displayToolbar(*cit, show);
 			return;
@@ -245,6 +244,16 @@ void Toolbars::update(bool in_math, bool in_table, bool review)
 		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::REVIEW))
 			displayToolbar(*cit, review);
 	}
+}
+
+
+bool Toolbars::visible(string const & name) const
+{
+	std::map<string, ToolbarPtr>::const_iterator it =
+		toolbars_.find(name);
+	if (it == toolbars_.end())
+		return false;
+	return it->second.get()->isVisible();
 }
 
 
