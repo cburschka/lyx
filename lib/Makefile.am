@@ -344,6 +344,9 @@ dist_images_DATA = \
 	images/tabular-feature_valign-top.xpm \
 	images/tabular-insert.xpm \
 	images/thesaurus-entry.xpm \
+	images/toolbar-toggle_math.xpm \
+	images/toolbar-toggle_math_panels.xpm \
+	images/toolbar-toggle_table.xpm \
 	images/undo.xpm \
 	images/unknown.xpm \
 	images/up.xpm \

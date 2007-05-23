@@ -1642,6 +1642,9 @@ lib_images_files = Split('''
     tabular-feature_valign-top.xpm
     tabular-insert.xpm
     thesaurus-entry.xpm
+    toolbar-toggle_math.xpm
+    toolbar-toggle_math_panels.xpm
+    toolbar-toggle_table.xpm
     undo.xpm
     unknown.xpm
     up.xpm
