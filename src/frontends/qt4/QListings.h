@@ -40,6 +40,8 @@ protected Q_SLOTS:
 	void on_inlineCB_stateChanged(int state);
 	/// turn off numbering options when none is selected
 	void on_numberSideCO_currentIndexChanged(int);
+	/// show dialect when language is chosen
+	void on_languageCO_currentIndexChanged(int);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

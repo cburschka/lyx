@@ -48,20 +48,104 @@ namespace frontend {
 
 
 char const * languages[] =
-{ "no language", "ABAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
-  "Comal 80", "csh", "Delphi", "Eiffel", "Elan", "Euphoria", "Fortran", "Haskell",
-  "HTML", "IDL", "Java", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
-  "Miranda", "ML", "Modula-2", "Oberon-2", "OCL", "Pascal", "Perl", "PHP", "PL/I", "POV",
-  "Prolog", "Python", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
-  "VHDL", "XML", "" };
+{ "no language", "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic", "C",
+  "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
+  "Eiffel", "Elan", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
+  "Java", "JVMIS", "ksh", "Lingo", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
+  "MetaPost", "Miranda", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave",
+  "Oz", "Pascal", "Perl", "PHP", "PL/I", "Plasm", "PostScript", "POV", "Prolog", "Promela",
+  "PSTricks", "Python", "R", "Reduce", "Rexx", "RSL", "Ruby", "S", "SAS", "Scilab", "sh",
+  "SHELXL", "Simula", "tcl", "SPARQL", "SQL", "tcl", "TeX", "VBScript", "Verilog", "VHDL",
+  "VRML", "XML", "XSLT", "" };
+
 
 char const * languages_gui[] =
-{ N_("No language"), "ABAP", "ACSL", "Ada", "ALGOL", "C", "C++", "Caml", "Clean", "Cobol",
-  "Comal 80", "csh", "Delphi", "Eiffel", "Elan", "Euphoria", "Fortran", "Haskell",
-  "HTML", "IDL", "Java", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
-  "Miranda", "ML", "Modula-2", "Oberon-2", "OCL", "Pascal", "Perl", "PHP", "PL/I", "POV",
-  "Prolog", "Python", "R", "S", "SAS", "SHELXL", "Simula", "tcl", "SQL", "TeX", "VBScript",
-  "VHDL", "XML", "" };
+{ N_("No language"), "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic",
+  "C", "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
+  "Eiffel", "Elan", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
+  "Java", "JVMIS", "ksh", "Lingo", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
+  "MetaPost", "Miranda", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave",
+  "Oz", "Pascal", "Perl", "PHP", "PL/I", "Plasm", "PostScript", "POV", "Prolog", "Promela",
+  "PSTricks", "Python", "R", "Reduce", "Rexx", "RSL", "Ruby", "S", "SAS", "Scilab", "sh",
+  "SHELXL", "Simula", "tcl", "SPARQL", "SQL", "tcl", "TeX", "VBScript", "Verilog", "VHDL",
+  "VRML", "XML", "XSLT", "" };
+
+
+struct dialect_info {
+	/// the dialect
+	char const * dialect;
+	/// the associated language
+	char const * language;
+	/// representation of the dialect in the gui
+	char const * gui;
+	/// is this the default dialect?
+	bool is_default;
+};
+
+
+dialect_info const dialects[] = {
+	{ "R/2 4.3", "ABAP", "R/2 4.3", false },
+	{ "R/2 5.0", "ABAP", "R/2 5.0", false },
+	{ "R/3 3.1", "ABAP", "R/3 3.1", false },
+	{ "R/3 4.6C", "ABAP", "R/3 4.6C", false },
+	{ "R/3 6.10", "ABAP", "R/3 6.10", true },
+	{ "2005", "Ada", "2005", true },
+	{ "83", "Ada", "83", false },
+	{ "95", "Ada", "95", false },
+	{ "60", "Algol", "60", false },
+	{ "68", "Algol", "68", true },
+	{ "Motorola68k", "Assembler", "Motorola 68xxx", false },
+	{ "x86masm", "Assembler", "x86 (MASM)", false },
+	{ "gnu", "Awk", "gnu", true },
+	{ "POSIX", "Awk", "POSIX", false },
+	{ "Visual", "Basic", "Visual", false },
+	{ "ANSI", "C", "ANSI", true },
+	{ "Handel", "C", "Handel", false },
+	{ "Objective", "C", "Objective", false },
+	{ "Sharp", "C", "Sharp", false },
+	{ "ANSI", "C++", "ANSI", false },
+	{ "GNU", "C++", "GNU", false },
+	{ "ISO", "C++", "ISO", true },
+	{ "Visual", "C++", "Visual", false },
+	{ "light", "Caml", "light", true },
+	{ "Objective", "Caml", "Objective", false },
+	{ "1974", "Cobol", "1974", false },
+	{ "1985", "Cobol", "1985", true },
+	{ "ibm", "Cobol", "IBM", false },
+	{ "WinXP", "command.com", "Windows XP", true },
+	{ "77", "Fortran", "77", false },
+	{ "90", "Fortran", "90", false },
+	{ "95", "Fortran", "95", true },
+	{ "CORBA", "IDL", "CORBA", false },
+	{ "AspectJ", "Java", "Aspect J", false },
+	{ "Auto", "Lisp", "Auto", false },
+	{ "gnu", "make", "gnu", false },
+	{ "1.0", "Mathematica", "1.0", false },
+	{ "3.0", "Mathematica", "3.0", false },
+	{ "5.2", "Mathematica", "5.2", true },
+	{ "decorative", "OCL", "decorative", false },
+	{ "OMG", "OCL", "OMG", true },
+	{ "Borland6", "Pascal", "Borland 6", false },
+	{ "Standard", "Pascal", "Standard", true },
+	{ "XSC", "Pascal", "XSC", false },
+	{ "PLUS", "S", "PLUS", false },
+	{ "67", "Simula", "67", true },
+	{ "CII", "Simula", "CII", false },
+	{ "DEC", "Simula", "DEC", false },
+	{ "IBM", "Simula", "IBM", false },
+	{ "tk", "tcl", "tk", false },
+	{ "AlLaTeX", "TeX", "AlLaTeX", false },
+	{ "common", "TeX", N_("common"), false },
+	{ "LaTeX", "TeX", "LaTeX", false },
+	{ "plain", "TeX", N_("plain"), true },
+	{ "primitive", "TeX", N_("primitive"), false },
+	{ "AMS", "VHDL", "AMS", false },
+	{ "97", "VRML", "97", true }
+};
+
+
+size_t const nr_dialects = sizeof(dialects) / sizeof(dialect_info);
+
 
 char const * font_sizes[] =
 { "default", "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
@@ -89,6 +173,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
 	
 	connect(languageCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
+	connect(dialectCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
 	connect(inlineCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(floatCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(placementLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -101,6 +186,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(fontstyleCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
 	connect(breaklinesCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(spaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(spaceInStringCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(extendedcharsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
@@ -142,6 +228,18 @@ void QListingsDialog::change_adaptor()
 string QListingsDialog::construct_params()
 {
 	string language = languages[languageCO->currentIndex()];
+	string dialect;
+	string const dialect_gui = fromqstr(dialectCO->currentText());
+	if (dialectCO->currentIndex() > 0) {
+		for (size_t i = 0; i < nr_dialects; ++i) {
+			if (dialect_gui == dialects[i].gui
+			&& dialects[i].language == language
+			&& !dialects[i].is_default) {
+				dialect = dialects[i].dialect;
+				break;
+			}
+		}
+	}
 	
 	bool float_ = floatCB->isChecked();
 	string placement;
@@ -177,13 +275,18 @@ string QListingsDialog::construct_params()
 		basicstyle += "\\" + fontstyle;
 	bool breakline = breaklinesCB->isChecked();
 	bool space = spaceCB->isChecked();
+	bool spaceInString = spaceInStringCB->isChecked();
 	bool extendedchars = extendedcharsCB->isChecked();
 	string extra = fromqstr(listingsED->toPlainText());
 
 	// compose a string
 	InsetListingsParams par;
-	if (language != "no language" && !contains(extra, "language="))
-		par.addParam("language", language);
+	if (language != "no language" && !contains(extra, "language=")) {
+		if (dialect.empty())
+			par.addParam("language", language);
+		else
+			par.addParam("language", "{[" + dialect + "]" + language + "}");
+	}
 	if (float_)
 		par.addParam("float", "");
 	if (!placement.empty())
@@ -204,6 +307,8 @@ string QListingsDialog::construct_params()
 		par.addParam("breaklines", "true");
 	if (space)
 		par.addParam("showspaces", "true");
+	if (!spaceInString)
+		par.addParam("showstringspaces", "false");
 	if (extendedchars)
 		par.addParam("extendedchars", "true");
 	par.addParams(extra);
@@ -255,6 +360,27 @@ void QListingsDialog::on_numberSideCO_currentIndexChanged(int index)
 {
 	numberStepLE->setEnabled(index > 0);
 	numberFontSizeCO->setEnabled(index > 0);
+}
+
+
+void QListingsDialog::on_languageCO_currentIndexChanged(int index)
+{
+	dialectCO->clear();
+	// 0 is "no dialect"
+	int default_dialect = 0;
+	dialectCO->addItem(qt_("No dialect"));
+	string const language = languages[index];
+
+	for (size_t i = 0; i < nr_dialects; ++i) {
+		if (language == dialects[i].language) {
+			dialectCO->addItem(dialects[i].gui);
+			if (dialects[i].is_default)
+				default_dialect =
+					dialectCO->findText(dialects[i].gui);
+		}
+	}
+	dialectCO->setCurrentIndex(default_dialect);
+	dialectCO->setEnabled(dialectCO->count() > 1);
 }
 
 
@@ -314,6 +440,7 @@ void QListings::update_contents()
 	dialog_->listingsTB->setPlainText(
 		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	dialog_->languageCO->setCurrentIndex(findToken(languages, "no language"));
+	dialog_->dialectCO->setCurrentIndex(0);
 	dialog_->floatCB->setChecked(false);
 	dialog_->placementLE->clear();
 	dialog_->numberSideCO->setCurrentIndex(0);
@@ -325,6 +452,7 @@ void QListings::update_contents()
 	dialog_->fontsizeCO->setCurrentIndex(findToken(font_sizes, "default"));
 	dialog_->breaklinesCB->setChecked(false);
 	dialog_->spaceCB->setChecked(false);
+	dialog_->spaceInStringCB->setChecked(true);
 	dialog_->extendedcharsCB->setChecked(false);
 
 	// set values from param string
@@ -340,15 +468,43 @@ void QListings::update_contents()
 	for (vector<string>::iterator it = pars.begin();
 	    it != pars.end(); ++it) {
 		if (prefixIs(*it, "language=")) {
-			int n = findToken(languages, plainParam(it->substr(9)));
+			string arg = plainParam(it->substr(9));
+			// has dialect?
+			string language;
+			string dialect;
+			bool in_gui = false;
+			if (prefixIs(arg, "[") && contains(arg, "]")) {
+				string::size_type end_dialect = arg.find("]");
+				dialect = arg.substr(1, end_dialect - 1);
+				language = arg.substr(end_dialect + 1);
+			} else
+				language = arg;
+			int n = findToken(languages, language);
 			if (n >= 0) {
-				dialog_->languageCO->setEnabled(true);
 				dialog_->languageCO->setCurrentIndex(n);
-				*it = "";
+				in_gui = true;
 			}
-			else
-				// a known language that is not in the gui
-				dialog_->languageCO->setEnabled(false);
+			// on_languageCO_currentIndexChanged should have set dialects
+			if (!dialect.empty()) {
+				string dialect_gui;
+				for (size_t i = 0; i < nr_dialects; ++i) {
+					if (dialect == dialects[i].dialect
+					    && dialects[i].language == language) {
+						dialect_gui = dialects[i].gui;
+						break;
+					}
+				}
+				n = dialog_->dialectCO->findText(toqstr(dialect_gui));
+				if (n >= 0)
+					dialog_->dialectCO->setCurrentIndex(n);
+				else
+					in_gui = false;
+			}
+			if (in_gui)
+				*it = "";
+			dialog_->languageCO->setEnabled(in_gui);
+			dialog_->dialectCO->setEnabled(
+				in_gui && dialog_->dialectCO->count() > 1);
 		} else if (prefixIs(*it, "floatplacement=")) {
 			dialog_->floatCB->setChecked(true);
 			dialog_->placementLE->setEnabled(true);
@@ -408,7 +564,7 @@ void QListings::update_contents()
 					break;
 				}
 			}
-			if (plainParam(it->substr(11)) == style + size 
+			if (plainParam(it->substr(11)) == style + size
 			    || plainParam(it->substr(11)) == size + style) {
 				if (!style.empty()) {
 					int n = findToken(font_styles, style.substr(1));
@@ -427,6 +583,9 @@ void QListings::update_contents()
 			*it = "";
 		} else if (prefixIs(*it, "showspaces=")) {
 			dialog_->spaceCB->setChecked(contains(*it, "true"));
+			*it = "";
+		} else if (prefixIs(*it, "showstringspaces=")) {
+			dialog_->spaceInStringCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "extendedchars=")) {
 			dialog_->extendedcharsCB->setChecked(contains(*it, "true"));
