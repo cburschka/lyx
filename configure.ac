@@ -391,7 +391,7 @@ int mkstemp(char*);
 ])
 
 ### Finish the work.
-AC_CONFIG_FILES([Makefile  m4/Makefile \
+AC_CONFIG_FILES([Makefile
        boost/Makefile \
        boost/libs/Makefile \
        boost/libs/filesystem/Makefile \
@@ -407,11 +407,12 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        development/MacOSX/Makefile \
        development/MacOSX/spotlight/Makefile \
        development/lyx.spec \
+       intl/Makefile \
        lib/Makefile \
        lib/doc/Makefile \
        lib/lyx2lyx/lyx2lyx_version.py \
        lib/lyx2lyx/Makefile \
-       intl/Makefile \
+       m4/Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \
        sourcedoc/Makefile \
