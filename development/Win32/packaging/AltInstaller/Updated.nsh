@@ -9,6 +9,7 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
@@ -19,11 +20,19 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\TOC.lyx"
  SetOutPath "$INSTDIR\Resources\doc\he"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\he\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\he\TOC.lyx"
+ SetOutPath "$INSTDIR\Resources\examples"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\powerdot-example.lyx"
  SetOutPath "$INSTDIR\Resources\examples\he"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\he\example_lyxified.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\he\example_raw.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\he\splash.lyx"
+ SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout" 
+ SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\default.ui
 
 FunctionEnd
 
