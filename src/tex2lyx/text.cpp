@@ -2154,7 +2154,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// therefore path is only used for testing
 			// FIXME UNICODE encoding of filename and path may be
 			// wrong (makeAbsPath expects utf8)
-			if (t.cs() == "include" &&
+			if ((t.cs() == "include" || t.cs() == "input") &&
 			    !fs::exists(makeAbsPath(filename, path).toFilesystemEncoding())) {
 				// The file extension is probably missing.
 				// Now try to find it out.
