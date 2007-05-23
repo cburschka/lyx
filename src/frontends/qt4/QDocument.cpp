@@ -625,7 +625,7 @@ void QDocumentDialog::validate_listings_params()
 	} catch (invalidParam & e) {
 		isOK = false;
 		// listingsTB->setTextColor("red");
-		textLayoutModule->listingsTB->setPlainText(e.what());
+		textLayoutModule->listingsTB->setPlainText(toqstr(e.what()));
 		okPB->setEnabled(false);
 		applyPB->setEnabled(false);
 	}
