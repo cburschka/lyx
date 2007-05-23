@@ -201,7 +201,8 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		InsetGraphicsMailer(*this).showDialog(&cur.bv());
+		if (!cur.selection())
+			InsetGraphicsMailer(*this).showDialog(&cur.bv());
 		break;
 
 	default:

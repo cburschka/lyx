@@ -239,11 +239,11 @@ void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 	setInlined();
 	switch (cmd.action) {
 	
-	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3)
 				params_.show_label = !params_.show_label;
 			else
-				InsetText::doDispatch(cur, cmd);
+				InsetCollapsable::doDispatch(cur, cmd);
 			break;
 
 	case LFUN_INSET_TOGGLE:

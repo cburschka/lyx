@@ -161,7 +161,8 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		InsetIncludeMailer(*this).showDialog(&cur.bv());
+		if (!cur.selection()) 
+			InsetIncludeMailer(*this).showDialog(&cur.bv());
 		break;
 
 	default:

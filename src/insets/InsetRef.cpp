@@ -45,21 +45,17 @@ InsetRef::InsetRef(InsetRef const & ir)
 void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
-	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_RELEASE:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
-			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getParam("reference")));
-		else {
-			InsetCommandMailer("ref", *this).showDialog(&cur.bv());
-			cur.undispatched();
-		}
-		return;
-
-	case LFUN_MOUSE_RELEASE:
-		return;
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, 
+						  getParam("reference")));
+		else 
+			InsetCommand::doDispatch(cur, cmd);
+		break;
 
 	default:
-		return InsetCommand::doDispatch(cur, cmd);
+		InsetCommand::doDispatch(cur, cmd);
 	}
 }
 

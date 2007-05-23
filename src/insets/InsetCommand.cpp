@@ -133,7 +133,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE: {
-		if (!mailer_name_.empty())
+		if (!mailer_name_.empty() && !cur.selection())
 			InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
 		break;
 	}
