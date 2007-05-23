@@ -492,22 +492,10 @@ HelloWorld
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset listings
+lstparams "language={[LaTeX]TeX}"
+inline false
 status open
-
-\begin_layout Standard
-
-
-\backslash
-lstset{language=[LaTeX]TeX}
-\end_layout
-
-\begin_layout Standard
-
-
-\backslash
-begin{lstlisting}
-\end_layout
 
 \begin_layout Standard
 
@@ -516,13 +504,6 @@ begin{lstlisting}
 newcommand{
 \backslash
 HelloWorld}{Hello World!}
-\end_layout
-
-\begin_layout Standard
-
-
-\backslash
-end{lstlisting}
 \end_layout
 
 \end_inset
