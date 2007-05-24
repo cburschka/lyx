@@ -84,7 +84,7 @@ Version LyX 1.5svn-09-04-2007
   - reworked BibTeX file parser
   - reworked graphics, glossary, and  math delimiter dialog
   - new Spanish translation of the Extended manual
-  - many other bugfixes
+  - many other bug fixes
 
 - updated Readme files
 - NSIS 2.25 is now required to compile the installer
@@ -95,7 +95,7 @@ Version LyX 1.5svn-30-03-2007
 - LyX 1.5svn from 30-03-2007
   - improved TOC dialog
   - fixes for RTL languages
-  - antialiased symbols in math
+  - anti-aliased symbols in math
   - new chapter in EmbeddedObjects manual
   - revised German Userguide
   - new syntax highlighting for document(LaTeX)-preamble
@@ -120,7 +120,7 @@ Version LyX 1.5beta1-19-02-2007
   - better export to plain text
 
 - updated readme files
-- when viewing documents as PDF, Acrobat/Adober Reader is opened with full size
+- when viewing documents as PDF, Acrobat/Adobe Reader is opened with full size
 - update to ImageMagick 6.3.2-7: fix bug of wrong display size of PDF and EPS images
                                  within LyX
 
@@ -134,7 +134,7 @@ Version LyX 1.5alpha-05-02-2007
 
 - updated to ImageMagick 6.3.2-3
 
-- installer bugfix introduced in the last releases (01-02-2007 and 04-02-2007):
+- installer bug fix introduced in the last releases (01-02-2007 and 04-02-2007):
   deliver correct python25.dll and python.exe
 - hopefully correct fix to the bug that other PDF viewers than Acrobat/Adobe Reader
   and GSView weren't recognized
@@ -144,7 +144,7 @@ Version LyX 1.5alpha-04-02-2007
 
 - LyX 1.5alpha from 04-02-2007
 
-- installer bugfixes introduced in the last release from 01-02-2007
+- installer bug fixes introduced in the last release from 01-02-2007
 - updated to MiKTeX 2.5.2580
 - fix bug that other PDF viewers then Acrobat/Adobe Reader and GSView weren't recognized
 
@@ -152,15 +152,15 @@ Thanks to Allesandro Garberi:
 - updated Italian translation of the installer
 
 This is now fixed in the included MiKTeX version!:
-- LyX's package and class database is incomplete when you don't have an open internet
+- LyX's package and class database is incomplete when you don't have an open Internet
   connection while LyX is first started. (This is a bug in MiKTeX.)
-  Workaround: open an internet connection and reconfigure LyX
+  Workaround: open an Internet connection and reconfigure LyX
 
 
 Version LyX 1.5svn-01-02-2007
 
 - LyX 1.5svn from 01-02-2007:
-  - you can now enter special charactes directly to the document ( "µ", "€", etc.)
+  - you can now enter special characters directly to the document ( "µ", "€", etc.)
   - tooltips for menu buttons now appear
   - missing math characters are now displayed
   - nearly all known crashes are fixed
@@ -195,9 +195,9 @@ Thanks to Edwin Leuven:
 - updated Dutch translation of the installer
 
 Known problem:
-- LyX's package and class database is incomplete when you don't have an open internet
+- LyX's package and class database is incomplete when you don't have an open Internet
   connection while LyX is first started. (This is a bug in MiKTeX.)
-  Workaround: open an internet connection and reconfigure LyX
+  Workaround: open an Internet connection and reconfigure LyX
 
 
 Version LyX 1.5svn-15-01-2007
@@ -214,9 +214,9 @@ Version LyX 1.5svn-15-01-2007
 - updated Galician translation of the installer
 
 Known LyX problem:
-- LyX's package and class database is incomplete when you don't have an open internet
+- LyX's package and class database is incomplete when you don't have an open Internet
   connection while LyX is first started. (This is a bug in MiKTeX.)
-  Workaround: open an internet connection and reconfigure LyX
+  Workaround: open an Internet connection and reconfigure LyX
 
 
 Version LyX 1.5svn-07-01-2007
@@ -226,7 +226,7 @@ Version LyX 1.5svn-07-01-2007
   - LyX is now also translated into Galician
   - you can now copy and paste stuff from other programs to LyX with "Strg-v"
     like for all other Windows programs
-  - lots of bugfixes: e.g. TOC dialog, spellchecker, change tracking, LaTeX-error dialog
+  - lots of bug fixes: e.g. TOC dialog, spellchecker, change tracking, LaTeX-error dialog
 
 - updated Readme files for the installer sourcecode:
   - mention the required NSIS-package "InetLoad"
