@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 271
 \begin_document
 \begin_header
 \textclass book
@@ -39,6 +39,7 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "Richard Heck" 
 \author "Jean-Marc Lasgouttes" 
 \author "usti" 
 \end_header
@@ -1698,178 +1699,44 @@ s.
 \end_layout
 
 \begin_layout Section
-Converters, Formats, Viewers, Editors and Copiers
+Converters, Formats, and Copiers
 \end_layout
 
 \begin_layout Standard
 LyX has a powerful mechanism to convert to and from any file format using
  external programs.
- Define a pair of formats, e.g.
  
-\family typewriter
-LaTeX
-\family default
- and 
-\family typewriter
-PDF
-\family default
-.
- Now define a converter from one format to the other.
- In our example, two possible mechanisms exist.
 \end_layout
 
-\begin_layout Enumerate
-A direct conversion, from LaTeX to PDF using pdflatex
-\end_layout
-
-\begin_layout Enumerate
-A more convoluted route using intermediate formats and converters: LaTeX
- to DVI (using latex) to PostScript® (using dvips) to PDF (using ps2pdf).
+\begin_layout Subsection
+Formats
 \end_layout
 
 \begin_layout Standard
-LyX will always choose the shortest possible route, so you must specify
- two different Format names for 
-\family typewriter
-.pdf
-\family default
- files to be able to use either.
- Both are included by default in the 
+The first step is to define your file formats, e.g.
+ PDF, if they are not already defined.
+ To do so, open the 
 \family sans
-Preferences
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references:Converters
 \family default
  dialog.
- Have a look and then invent your own!
-\end_layout
-
-\begin_layout Standard
-Moreover, each Format can have a Viewer associated with it.
- For example, you might want to use 
-\family typewriter
-ghostview
-\family default
- to examine PostScript® files, or 
-\family typewriter
-xdvi
-\family default
- to preview the LaTeX output.
- You can alter the viewer to use (and what options to pass to it) via the
+ Enter a new format name; a new GUI name (used in, e.g., the View and Export
+ menus); and a file extension.
+ These are required.
  
-\family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Conversion
-\family default
- dialog.
- For example, to change the 
-\family typewriter
-dvi
-\family default
- viewer, select the 
-\family typewriter
-DVI
-\family default
- format in the dialog, change the viewer to be 
-\family typewriter
-kdvi
-\family default
- (or whatever), and hit 
-\family sans
-\bar under
-M
-\bar default
-odify
-\family default
-.
 \end_layout
 
 \begin_layout Standard
-If the operating system has a default viewer associated to a format it is
- used instead of the one you can define via the 
-\family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Conversion
-\family default
- dialog.
- This does currently only work in the Windows® and Mac OS X ports of LyX,
- but it is planned to implement this feature on all other ports that can
- support it, too.
-\end_layout
-
-\begin_layout Standard
-Editors are like viewers: Each Format can have an Editor associated to it,
- and they can be altered via the 
-\family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Conversion
-\family default
- dialog.
- LyX uses them whenever an included file
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-This can be an included 
-\family typewriter
-.tex
-\family default
- file, a verbatim included text file, external material or an included graphics
- file.
-\end_layout
-
-\end_inset
-
- needs to be edited.
-\end_layout
-
-\begin_layout Standard
-Finally, each Format can have a Copier associated to it.
- Since all conversions from one Format to another take place in a temporary
- directory, it is sometimes necessary to modify a file before copying it
- to the temporary directory
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-For example, the file may reference other files with relative filenames,
- which will become invalid in the temporary directory
-\end_layout
-
-\end_inset
-
-.
- This is done by the Copier: It copies a file to (or from) the temporary
- directory and may modify it in the process.
-\end_layout
-
-\begin_layout Standard
-Sometimes LyX needs to know a bit more about the properties of a format.
- These bits can be specified with flags.
- Currently there are two of them:
-\end_layout
-
-\begin_layout Standard
-The 
+There are also two flags that can be set using the checkboxes in the dialog.
+ The 
 \family typewriter
 document
 \family default
@@ -1895,19 +1762,19 @@ V
 \bar default
 iew
 \family default
- menu if it has a viewer associated to it.
- Pure image formats (e.g.\InsetSpace ~
+ menu if it has a viewer associated with it.
+ (See below.) Pure image formats (e.g.\InsetSpace ~
 
 \family typewriter
 png
 \family default
-) do not have this flag set, formats that can both represent images and
- documents (e.g.\InsetSpace ~
+) should not have this flag set; formats that can both represent vector
+ graphics and documents (e.g.\InsetSpace ~
 
 \family typewriter
 pdf
 \family default
-) do have it set.
+) should have it set.
 \end_layout
 
 \begin_layout Standard
@@ -1951,7 +1818,7 @@ png
 \family typewriter
 jpg
 \family default
- format it is converted to 
+ format, it is converted to 
 \family typewriter
 pdf
 \family default
@@ -1964,6 +1831,302 @@ vector
 png
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+A Format can have a Viewer associated with it.
+ For example, you might want to use 
+\family typewriter
+ghostview
+\family default
+ to look at PostScript® files, or 
+\family typewriter
+xdvi
+\family default
+ to preview the LaTeX output.
+ You can enter the program to use as a viewer (and what options to pass
+ to it) in the Viewer field.
+ You can also modify the viewer associated with a pre-defined format simply
+ by changing what you find in this field, clicking the 
+\family sans
+Modify
+\family default
+ button, and then (if you're sure you want to do this) clicking the 
+\family sans
+Apply
+\family default
+ or 
+\family sans
+Save
+\family default
+ button.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Changes to the formats are kept in the 
+\family typewriter
+preferences
+\family default
+ file in you local LyX directory (for example, 
+\family typewriter
+$HOME/.lyx/
+\family default
+).
+ If you want to restore the defaults, edit this file and delete the lines
+ in the Formats and Converters sections.
+\end_layout
+
+\end_inset
+
+ For example, to change the 
+\family typewriter
+dvi
+\family default
+ viewer, select the 
+\family typewriter
+DVI
+\family default
+ format in the dialog, change the viewer to be 
+\family typewriter
+kdvi
+\family default
+ (or whatever), and hit 
+\family sans
+\bar under
+M
+\bar default
+odify
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+If the operating system has a default viewer associated to a format, this
+ viewer is used instead of the one defined here in the Windows® and OS X
+ versions of LyX.
+ (It is planned to implement this feature on other platforms.)
+\end_layout
+
+\begin_layout Standard
+Editors are like viewers: Each Format can have an Editor associated to it,
+ entered in the Editor field, and the editor associated with a format can
+ be altered via the 
+\family sans
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references:Converters
+\family default
+ dialog.
+ LyX will launch the associated editor whenever an included file
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+This can be an included 
+\family typewriter
+.tex
+\family default
+ file, a verbatim included text file, external material or an included graphics
+ file.
+\end_layout
+
+\end_inset
+
+ needs to be edited.
+\end_layout
+
+\begin_layout Subsection
+Copiers
+\end_layout
+
+\begin_layout Standard
+Each Format can have a Copier associated with it.
+ These are defined in the 
+\family sans
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references:Copiers
+\family default
+ dialog.
+ Since all conversions from one Format to another take place in a temporary
+ directory, it is sometimes necessary to modify a file before copying it
+ to the temporary directory in order that the conversion may be performed.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+For example, the file may refer to other files---images, for example---using
+ relative filenames, and these may become invalid when the file is copied
+ to the temporary directory.
+\end_layout
+
+\end_inset
+
+ This is done by the Copier: It copies a file to (or from) the temporary
+ directory and may modify it in the process.
+\end_layout
+
+\begin_layout Subsection
+Converters
+\end_layout
+
+\begin_layout Standard
+To define a converter from one format to another---e.g., LaTeX to PDF---select
+ the Converters panel.
+ Choose the `From' and `To' formats, and then enter the program to be used
+ in the conversion in the Converter field.
+ 
+\end_layout
+
+\begin_layout Standard
+You do not have to define converters between all the Formats between which
+ you want to convert.
+ For example, you will note that there is no `LyX to PostScript®' converter,
+ but LyX will export PostScript®.
+ It does so by first creating a LaTeX file (no converter needs to be defined
+ for this) which it then converts to DVI using the `LaTeX to DVI' converter,
+ and then it converts the resulting DVI file to PostScript®.
+ LyX finds such `chains' of converters automatically, and it will always
+ choose the shortest chain possible.
+ You can, though, still define multiple conversion methods between file
+ formats.
+ For example, the standard LyX configuration provides three ways to convert
+ LaTeX to PDF: Directly, using pdflatex; via (DVI and) PostScript®, using
+ ps2pdf; or via DVI, using dvipdfm.
+ To define such alternate chains, you must define multiple target `file
+ formats'.
+ In the standard configuration, for example, formats named `pdf', `pdf2',
+ and `pdf3' are defined, all of which share the extension `pdf'.
+ 
+\end_layout
+
+\begin_layout Standard
+Several variables can be used in the definition of converters:
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$s The LyX system directory (e.g., 
+\family typewriter
+/usr/share/lyx
+\family default
+).
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$i The input file
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$o The output file
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$b The base filename of the input file
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$p The path to the input file
+\end_layout
+
+\begin_layout Standard
+In the `Extra Flag' field you can enter as many of the following flags as
+ you wish, separated by commas:
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+latex This converter runs some form of LaTeX.
+ (This will make LyX's LaTeX error logs available.) 
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+needaux Needs the LaTeX .aux file for the conversion.
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+xml Output is XML.
+\end_layout
+
+\begin_layout Standard
+The following three variables are not really flags at all but take an argument
+ in the 
+\family sans
+key\InsetSpace ~
+= value
+\family default
+ format.
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+parselog If set, the converter's standard error will be redirected to a
+ file 
+\family typewriter
+infile.out
+\family default
+, and the script given as argument will be run as: 
+\family typewriter
+script <infile.out >infile.log
+\family default
+.
+ The argument may contain $$s.
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+resultdir The name of the directory in which the 
+\emph on
+converter
+\emph default
+ will dump the generated files.
+ LyX will not create this directory, and it does not copy anything into
+ it, though it will copy this directory to the destination.
+ The argument may contain $$b, which will be replaced by the basename of
+ the input and output files, respectively, when the directory is copied.
+\newline
+Note
+ that resultdir and usetempdir make no sense together.
+ The latter will be ignored if the former is given.
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+resultfile Determines the output filename and may, again, contain $$b.
+ Sensible only with resultdir, and optional even then; if not given, it
+ defaults to `index'.
+ 
+\end_layout
+
+\begin_layout Standard
+None of these last three are presently used in any of the converters that
+ are installed with LyX.
+ But see section 
+\begin_inset LatexCommand ref
+reference "sub:LyX-and-Literate"
+
+\end_inset
+
+ of the Extended Features guide for some examples of how you might use parselog.
 \end_layout
 
 \begin_layout Section

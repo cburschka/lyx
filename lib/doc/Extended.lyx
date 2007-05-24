@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 256
+\lyxformat 271
 \begin_document
 \begin_header
 \textclass book
@@ -36,7 +36,8 @@
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "Richard Heck" 
 \author "usti" 
 \end_header
 
@@ -135,9 +136,9 @@ Overextended Manual
 \begin_layout Standard
 If you haven't read the 
 \emph on
-Introduction 
+Introduction
 \emph default
-yet, you are definitely in the wrong manual.
+ yet, you are definitely in the wrong manual.
  The 
 \emph on
 Introduction
@@ -163,12 +164,8 @@ In this document, many sections are independent articles contributed by
 
 \begin_layout Standard
 Since all the topics in this manual depend heavily on LyX's interaction
- with LaTeX, this first chapter covers
-\emph on
- 
-\emph default
-the inner workings of LyX and how to direct LyX to generate exactly the
- LaTeX code you want.
+ with LaTeX, this first chapter covers the inner workings of LyX and how
+ to direct LyX to generate exactly the LaTeX code you want.
  It is obviously for more seasoned LyX users.
 \end_layout
 
@@ -904,9 +901,9 @@ If you already know LaTeX, there is no need to explain here what the preamble
 \begin_layout Standard
 The LaTeX preamble comes at the very beginning of a document, 
 \emph on
-before 
+before
 \emph default
-the text.
+ the text.
  It serves to:
 \end_layout
 
@@ -932,11 +929,7 @@ Customization Manual
 declare the usage of packages.
  LaTeX packages provide special commands, which are only available within
  a document when the package has been declared in the preamble.
- For example, the
-\family typewriter
- 
-\family default
-package 
+ For example, the package 
 \family typewriter
 indentfirst
 \family default
@@ -964,9 +957,9 @@ declare user defined commands [with
 \family typewriter
 
 \backslash
-newcommand 
+newcommand
 \family default
-or 
+ or 
 \family typewriter
 
 \backslash
@@ -1213,9 +1206,9 @@ labels.sty
 \begin_layout Standard
 First, make sure you're using the 
 \family sans
-article 
+article
 \family default
-document class.
+ document class.
  Next, you need to put the following in your preamble:
 \end_layout
 
@@ -1453,9 +1446,8 @@ open
 \end_layout
 
 \begin_layout Standard
-Some folks also like to look at the log file directly, accessible from
+Some folks also like to look at the log file directly, accessible from 
 \family sans
- 
 \bar under
 D
 \bar default
@@ -2144,9 +2136,9 @@ ocument\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-ettings 
+ettings
 \family default
-and select the 
+ and select the 
 \family sans
 Bibliography
 \family default
@@ -2321,9 +2313,9 @@ ocument\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-ettings 
+ettings
 \family default
-and select the 
+ and select the 
 \family sans
 Bibliography
 \family default
@@ -2480,9 +2472,9 @@ ocument\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-ettings 
+ettings
 \family default
-and select the 
+ and select the 
 \family sans
 Bibliography
 \family default
@@ -2547,13 +2539,15 @@ status collapsed
 \bar no
 \noun off
 \color none
-In the 
-\family sans
+In the
+\family default
 \series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\family sans
+\size default
 \noun default
 Outputs\SpecialChar \menuseparator
 LaT\SpecialChar \textcompwordmark{}
@@ -2566,13 +2560,15 @@ eX
 \bar no
 \noun off
  section of the preferences dialog, however, you can customize the index
- command, if you prefer an alternative program like 
-\family typewriter
+ command, if you prefer an alternative program like
+\family default
 \series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\family typewriter
+\size default
 \noun default
 xindy
 \family roman
@@ -2674,9 +2670,7 @@ Glossaries
 \begin_layout Standard
 by 
 \noun on
-Özgür U\i \~{g}
-ra\i \c{s}
- Baran
+Özgür Ug̃raş Baran
 \end_layout
 
 \begin_layout Standard
@@ -2789,9 +2783,9 @@ a
 \family default
  and 
 \family typewriter
-sigma 
+sigma
 \family default
-correspondingly.
+ correspondingly.
  Then, these entries will be effective in the sort ordering and 
 \begin_inset Formula $a$
 \end_inset
@@ -3149,8 +3143,6 @@ in\InsetSpace ~
 output
 \family default
  checkbox typesets a mark to unambiguously define the presence of a space.
-
-\emph on
  
 \end_layout
 
@@ -3854,11 +3846,7 @@ How to use it
 \begin_layout Standard
 Select which bullet depth you want to change then select the bullet shape
  and size.
-
-\family sans
- 
-\family default
-Any changes will not be visible in LyX, but are visible when viewing the
+ Any changes will not be visible in LyX, but are visible when viewing the
  document using xdvi or ghostview.
 \end_layout
 
@@ -4436,15 +4424,7 @@ target "http://www.edpsciences.fr/aa/"
 
 \end_inset
 
-)
-\emph on
- 
-\emph default
-using
-\emph on
- 
-\emph default
-Version 5.01 of the document class 
+) using Version 5.01 of the document class 
 \family typewriter
 aa.cls
 \family default
@@ -4653,9 +4633,9 @@ nsert\SpecialChar \menuseparator
 F
 \bar default
 ootnote.
- 
+
 \family default
-LyX will automagically use the term 
+ LyX will automagically use the term 
 \family typewriter
 
 \backslash
@@ -4905,9 +4885,9 @@ Figure and Table Floats
 \begin_layout Standard
 LyX provides support for the necessary float environments 
 \family sans
-figure, figure*, table 
+figure, figure*, table
 \family default
-and 
+ and 
 \family sans
 table*
 \family default
@@ -4934,11 +4914,7 @@ Settings.
 \end_layout
 
 \begin_layout Standard
-There is
-\family sans
- 
-\family default
-only one special thing: the figures with caption besides the figure.
+There is only one special thing: the figures with caption besides the figure.
  To create such a figure, you have to do the following:
 \end_layout
 
@@ -4956,9 +4932,8 @@ a
 t\SpecialChar \menuseparator
 Figure
 \family default
-, then right click in the figure and select
+, then right click in the figure and select 
 \family sans
- 
 \bar under
 S
 \bar default
@@ -5034,7 +5009,9 @@ Position the cursor behind the caption text, switch to LaTeX mode and insert
  the closing brace: 
 \family sans
 M-c\InsetSpace ~
-t 
+t
+\family default
+ 
 \family typewriter
 }
 \family default
@@ -5168,7 +5145,10 @@ I strongly suggest that you start with the AASTeX template file.
 F
 \bar default
 ile\SpecialChar \menuseparator
-New from 
+New from
+\family default
+ 
+\family sans
 \bar under
 T
 \bar default
@@ -5436,9 +5416,9 @@ subsubsection
 \backslash
 paragraph
 \family default
- (2.7),
+ (2.7), 
 \family typewriter
- 
+
 \backslash
 facility
 \family default
@@ -5479,9 +5459,9 @@ begin{thebibliography}
 bibitem
 \family default
  (2.13.2), all the cite commands and their variations (2.13.2), the generic
- graphicx figure commands (2.14.1),
+ graphicx figure commands (2.14.1), 
 \family typewriter
- 
+
 \backslash
 begin{table}
 \family default
@@ -5907,15 +5887,15 @@ tablenotetext
 \backslash
 objectname
 \family default
-,
+, 
 \family typewriter
- 
+
 \backslash
 dataset
 \family default
-,
+, 
 \family typewriter
- 
+
 \backslash
 url
 \family default
@@ -6144,9 +6124,9 @@ e.\InsetSpace \thinspace{}
 g.\InsetSpace ~
 
 \emph default
-type
+type 
 \family typewriter
- Ressler(1992)
+Ressler(1992)
 \family default
 , not 
 \family typewriter
@@ -6322,7 +6302,10 @@ As usual, the easiest way to write a paper is to start with a template.
 F
 \bar default
 ile\SpecialChar \menuseparator
-New from 
+New from
+\family default
+ 
+\family sans
 \bar under
 T
 \bar default
@@ -6898,7 +6881,10 @@ The easiest way to write a paper is to start with the Kluwer template file.
  Click on 
 \family sans
 File\SpecialChar \menuseparator
-New from 
+New from
+\family default
+ 
+\family sans
 \bar under
 T
 \bar default
@@ -7200,9 +7186,9 @@ Overview
 \end_layout
 
 \begin_layout Standard
-The LyX document classes
+The LyX document classes 
 \emph on
- article (koma-script)
+article (koma-script)
 \emph default
 , 
 \emph on
@@ -7286,9 +7272,9 @@ letter (koma-script)
 Headings, labels of the description environment, and a number of elements
  of the 
 \emph on
-letter (koma-script) 
+letter (koma-script)
 \emph default
-document class are set in a bold sans serif font.
+ document class are set in a bold sans serif font.
 \begin_inset Foot
 status collapsed
 
@@ -7298,8 +7284,9 @@ There is a big difference between the bold sans serif old cm fonts and new
  In comparison, the ec bold sans serif fonts look a bit thin.
  Here the LaTeX package 
 \family typewriter
-cmsd.sty by 
+cmsd.sty by
 \family default
+ 
 \shape smallcaps
 Walter Schmidt
 \shape default
@@ -7526,11 +7513,11 @@ Section*
 , resp., additionally inserting an entry in the table of contents.
  
 \family sans
-Addpart 
+Addpart
 \family default
-and
+ and 
 \family sans
- Addchap
+Addchap
 \family default
  are not contained in 
 \emph on
@@ -7557,9 +7544,9 @@ Addchap
 Addsec
 \family default
 , resp., additionally clearing running heads.
-
+ 
 \family sans
- Addchap*
+Addchap*
 \family default
  is not contained in 
 \emph on
@@ -7612,10 +7599,10 @@ Captionabove
 \family default
  and 
 \family sans
-Captionbelow 
+Captionbelow
 \family default
-are special captions which respect the different space settings needed for
- captions placed above or below an element (if you follow strict typographic
+ are special captions which respect the different space settings needed
+ for captions placed above or below an element (if you follow strict typographic
  rules, you might want to place table captions always above the table).
  You can also use the class option 
 \family typewriter
@@ -8111,9 +8098,9 @@ scrguide
 \begin_layout Standard
 The types 
 \family sans
-Letter 
+Letter
 \family default
-and 
+ and 
 \family sans
 Opening
 \family default
@@ -8222,9 +8209,9 @@ Signature
 \family sans
 Address
 \family default
-,
+, 
 \family sans
- Telephone
+Telephone
 \family default
 , 
 \family sans
@@ -8801,9 +8788,9 @@ ayout\SpecialChar \menuseparator
 D
 \bar default
 ocument\SpecialChar \menuseparator
-Extra Options 
+Extra Options
 \family default
-field.
+ field.
 \end_layout
 
 \end_inset
@@ -9035,9 +9022,9 @@ Journal of Geodesy
 \emph default
 : 
 \family typewriter
-svjog.layout 
+svjog.layout
 \family default
---- Martin Vermeer
+ --- Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -9230,9 +9217,9 @@ Journal of Geophysical Research
 \emph default
 : 
 \family typewriter
-jgrga.layout 
+jgrga.layout
 \family default
---- Martin Vermeer
+ --- Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -9462,9 +9449,9 @@ reference "sec:foiltex"
 .
  The 
 \family sans
-foils 
+foils
 \family default
-class [
+ class [
 \begin_inset Quotes eld
 \end_inset
 
@@ -9683,9 +9670,9 @@ slides.lyx
 
  to automatically set up a document to use the 
 \family sans
-slides 
+slides
 \family default
-class [using 
+ class [using 
 \family sans
 \bar under
 F
@@ -9716,9 +9703,9 @@ Supported Environments
 \begin_layout Standard
 The first thing you'll notice when you start up a new 
 \family sans
-slides 
+slides
 \family default
-document is the font size and type: it's the equivalent of the size 
+ document is the font size and type: it's the equivalent of the size 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10129,9 +10116,9 @@ Making a Presentation with
 \family sans
 Slide
 \family default
-,
+, 
 \family sans
- Overlay
+Overlay
 \family default
  and 
 \family sans
@@ -10238,9 +10225,9 @@ Note
 \family default
  environments work the same way as the 
 \family sans
-Slide 
+Slide
 \family default
-environment.
+ environment.
  They both create an 
 \begin_inset Quotes eld
 \end_inset
@@ -11270,9 +11257,9 @@ Slide
 \family sans
 Overlay
 \family default
- --
+ -- 
 \family sans
- Note
+Note
 \family default
  triplet.
  The 
@@ -11487,9 +11474,9 @@ reference "sec:slitex"
 .
  If your machine doesn't have the 
 \family sans
-foils 
+foils
 \family default
-class [
+ class [
 \begin_inset Quotes eld
 \end_inset
 
@@ -12444,9 +12431,9 @@ reference "sec:bullet"
 \begin_layout Standard
 The two new list styles, 
 \family sans
-TickList 
+TickList
 \family default
-and 
+ and 
 \family sans
 CrossList
 \family default
@@ -12527,9 +12514,9 @@ Confidential.
 \end_layout
 
 \begin_layout Standard
-The remaining page corners can be filled by
+The remaining page corners can be filled by 
 \family sans
- Right\InsetSpace ~
+Right\InsetSpace ~
 Footer
 \family default
  (which defaults to page numbers), 
@@ -12660,9 +12647,9 @@ The spacings around floats can be adjusted by setting these lengths:
 \family typewriter
 
 \backslash
-abovefloatskip 
+abovefloatskip
 \family default
-Separation between the text and the top of the float
+ Separation between the text and the top of the float
 \end_layout
 
 \begin_layout List
@@ -12671,9 +12658,9 @@ Separation between the text and the top of the float
 \family typewriter
 
 \backslash
-abovecaptionskip 
+abovecaptionskip
 \family default
-Separation between the float and the caption
+ Separation between the float and the caption
 \end_layout
 
 \begin_layout List
@@ -12682,9 +12669,9 @@ Separation between the float and the caption
 \family typewriter
 
 \backslash
-belowcaptionskip 
+belowcaptionskip
 \family default
-Separation between the caption and the following text
+ Separation between the caption and the following text
 \end_layout
 
 \begin_layout List
@@ -12794,9 +12781,9 @@ Abstract
 
 \begin_layout Standard
 The last length related command affects all the list environments.
- If you place
+ If you place 
 \family typewriter
- 
+
 \backslash
 zerolistvertdimens
 \family default
@@ -13363,9 +13350,9 @@ M-z S at
 Subtitle for 
 \family sans
 ACT.
- 
+
 \family default
-It is just centered text.
+ It is just centered text.
 \end_layout
 
 \begin_layout Itemize
@@ -13839,9 +13826,9 @@ Tomasz Luczak
 \end_layout
 
 \begin_layout Standard
-The LyX document classes
+The LyX document classes 
 \emph on
- article (mwart)
+article (mwart)
 \emph default
 , 
 \emph on
@@ -14302,17 +14289,17 @@ without pagina).
 \family typewriter
 
 \backslash
-aliaspagestyle{title}{empty} 
+aliaspagestyle{title}{empty}
 \family default
-in the preamble.
+ in the preamble.
 \end_layout
 
 \begin_layout Description
 Article: With the class option 
 \emph on
-article 
+article
 \emph default
-(to be inserted in 
+ (to be inserted in 
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
@@ -15202,9 +15189,9 @@ xport\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-ustom 
+ustom
 \family default
-dialog; LyX will automatically convert the file to this point, then feed
+ dialog; LyX will automatically convert the file to this point, then feed
  it to your custom converter.
  The possible values are all formats that LyX can produce from its own documents.
  
@@ -15228,9 +15215,9 @@ $$FName
 \begin_layout Standard
 While it is not possible to save this command using the 
 \family sans
-Preferences 
+Preferences
 \family default
-dialog, you can manually edit your 
+ dialog, you can manually edit your 
 \family typewriter
 .lyx/preferences
 \family default
@@ -15328,11 +15315,7 @@ S
 ettings
 \family default
  dialog.
-
-\family sans
- 
-\family default
-Then you will find that there are fewer paragraph environments than for
+ Then you will find that there are fewer paragraph environments than for
  most other classes.
  You can see them on the pull down box on the left of the tool bar.
  How to use them is described in section\InsetSpace ~
@@ -15380,9 +15363,8 @@ You can print and save these documents in the normal way.
  To use the other features of the SGML package you need to save your document
  as LinuxDoc; this is a version in which the document is translated into
  the basic sgml tags.
- Use
+ Use 
 \family sans
- 
 \bar under
 F
 \bar default
@@ -15464,8 +15446,10 @@ Here is a list of all the tags you will find listed on the layout bar in
 
 \family sans
 Standard:
+\family default
+ 
 \family roman
- works as described in [cross reference]
+works as described in [cross reference]
 \end_layout
 
 \begin_layout Itemize
@@ -15514,9 +15498,14 @@ User's Guide
 \begin_layout Itemize
 
 \family sans
-Itemize: 
+Itemize:
+\family default
+ 
 \family roman
-Again much the same as in the other classes: see the 
+Again much the same as in the other classes: see the
+\family default
+ 
+\family roman
 \emph on
 User's Guide
 \emph default
@@ -15542,17 +15531,19 @@ User's Guide
 \begin_layout Itemize
 
 \family sans
-Verbatim: 
+Verbatim:
 \family default
-As usual.
+ As usual.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 Code: similar to the LyX-Code
+\family default
+ 
 \family roman
- environment
+environment
 \end_layout
 
 \begin_layout Itemize
@@ -15592,9 +15583,9 @@ status collapsed
 
 \emph on
 Author's note.
- 
+
 \emph default
-This needs checking ---
+ This needs checking ---
 \emph on
 pe.
 \end_layout
@@ -15616,9 +15607,9 @@ status collapsed
 \begin_layout Standard
 
 \emph on
-Author's note: 
+Author's note:
 \emph default
-I have not yet checked this ---
+ I have not yet checked this ---
 \emph on
 pe.
 \end_layout
@@ -15635,9 +15626,9 @@ Other document features
 \begin_layout Standard
 You can also use the 
 \family sans
-Layout 
+Layout
 \family default
-menu to set fonts or to emphasis words.
+ menu to set fonts or to emphasis words.
  You can also use the table of contents as usual; see the corresponding
  section of the 
 \emph on
@@ -15654,11 +15645,11 @@ status collapsed
 \begin_layout Standard
 
 \emph on
-Author's note: 
+Author's note:
 \emph default
-Again still checking to see whether this is my system
+ Again still checking to see whether this is my system 
 \emph on
- ---pe.
+---pe.
 \end_layout
 
 \end_inset
@@ -15671,9 +15662,9 @@ Cross references and HTML
 \end_layout
 
 \begin_layout Standard
-On the
+On the 
 \family sans
- Insert
+Insert
 \family default
  menu you will find two new options relating to the inclusion of URL addresses.
  If you use either option you will find some highlighted TeX code inserted
@@ -15733,9 +15724,9 @@ target "mailto:me@my.address"
 \family default
 Then y
 \family roman
-ou 
+ou
 \family default
-insert some description between the second and third blocks.
+ insert some description between the second and third blocks.
  The differences are:
 \end_layout
 
@@ -15743,15 +15734,19 @@ insert some description between the second and third blocks.
 
 \family sans
 URL:
+\family default
+ 
 \family roman
- both the HTML tag and the description will appear in the document
+both the HTML tag and the description will appear in the document
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 HTML\InsetSpace ~
-URL: 
+URL:
+\family default
+ 
 \family roman
 only the description appears in the printed version
 \end_layout
@@ -15784,13 +15779,13 @@ Linux Documentation Project Howto
 \family sans
 \emph default
 .
- 
+
 \family default
-To do the document translation you need to get and install the 
+ To do the document translation you need to get and install the 
 \family typewriter
-sgml-tools-1.0.x.tar.gz 
+sgml-tools-1.0.x.tar.gz
 \family default
-(with 
+ (with 
 \begin_inset Formula $x\geq3$
 \end_inset
 
@@ -15885,7 +15880,9 @@ E
 \bar default
 xport\SpecialChar \menuseparator
 as\InsetSpace ~
-LinuxDoc 
+LinuxDoc
+\family default
+ 
 \family roman
 option.
 \end_layout
@@ -16595,9 +16592,9 @@ Inter-word spacing (
 \family typewriter
 
 \backslash
- 
-\family default
 
+\family default
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -17419,6 +17416,11 @@ Starting from there you can reach many other interesting links and even
 \end_layout
 
 \begin_layout Subsection
+\begin_inset LatexCommand label
+name "sub:LyX-and-Literate"
+
+\end_inset
+
 LyX and Literate Programming
 \end_layout
 
@@ -17648,9 +17650,9 @@ rence:
 For an example of this usage and the resulting cross-reference output, look
  at the Literate python program in 
 \emph on
-LIBDIR/examples/listerrors.lyx 
+LIBDIR/examples/listerrors.lyx
 \emph default
-which should make this all clear.
+ which should make this all clear.
 \end_layout
 
 \begin_layout Paragraph
@@ -17692,9 +17694,9 @@ pdate\SpecialChar \menuseparator
 \bar under
 D
 \bar default
-VI 
+VI
 \family default
-menu option is chosen, a LaTeX file is generated.
+ menu option is chosen, a LaTeX file is generated.
  
 \end_layout
 
@@ -17712,9 +17714,9 @@ literate
  format (defined in the Preferences panel), otherwise the file will have
  the usual 
 \family typewriter
-.tex 
+.tex
 \family default
-extension.
+ extension.
 \end_layout
 
 \end_deeper
@@ -17791,9 +17793,9 @@ Generating the code
 \begin_layout Standard
 When the build menu option is chosen or the corresponding button in the
  toolbar is pressed, a LaTeX file is generated just like step 1 above.
- Next, LyX invokes the
+ Next, LyX invokes the 
 \family typewriter
- Noweb->Program
+Noweb->Program
 \family default
  converter.
  Typically, this converter (like any other converter), has two parts:
@@ -17916,13 +17918,13 @@ listerrors
 \begin_layout Standard
 The converter code looks in 
 \emph on
-MYLYXDIR/scripts 
+MYLYXDIR/scripts
 \emph default
-first, then in
+ first, then in 
 \emph on
- LIBDIR/scripts 
+LIBDIR/scripts
 \emph default
-then on the path for the 
+ then on the path for the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18008,9 +18010,9 @@ fi
 \begin_layout Standard
 Look in 
 \emph on
-LIBDIR/examples/listerrors.lyx 
+LIBDIR/examples/listerrors.lyx
 \emph default
-or in 
+ or in 
 \emph on
 LIBDIR/examples/Literate.lyx
 \emph default
@@ -18026,9 +18028,9 @@ listerrors
  in 
 \emph on
 LIBDIR/examples/noweb2lyx.lyx.
- 
+
 \emph default
-Interestingly, these three files show off the language-indepence of the
+ Interestingly, these three files show off the language-indepence of the
  LyX literate programming support since they are written in Python, C and
  Perl respectively.
 \end_layout
@@ -18202,9 +18204,8 @@ When debugging code with ddd/gdb, it is possible to invoke a text editor
  at the current execution position with a single key stroke.
  The default ddd configuration for that is shift-ctrl-V.
  It happens that you can define the editor command line invocation in ddd
- by accessing the
+ by accessing the 
 \family sans
- 
 \bar under
 E
 \bar default
@@ -18218,9 +18219,9 @@ references\SpecialChar \menuseparator
 \bar under
 H
 \bar default
-elpers 
+elpers
 \family default
-dialog and changing the "Edit Sources" entry.
+ dialog and changing the "Edit Sources" entry.
 \end_layout
 
 \begin_layout Standard
