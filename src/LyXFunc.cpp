@@ -1413,18 +1413,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			FileName const filename =
 				makeAbsPath(argument, lyx_view_->buffer()->filePath());
-			setMessage(bformat(_("Opening child document %1$s..."),
-			                   makeDisplayPath(filename.absFilename())));
 			view()->saveBookmark(false);
 			string const parentfilename = lyx_view_->buffer()->fileName();
 			if (theBufferList().exists(filename.absFilename()))
 				lyx_view_->setBuffer(theBufferList().getBuffer(filename.absFilename()));
 			else
-				lyx_view_->loadLyXFile(filename);
-			// Set the parent name of the child document.
-			// This makes insertion of citations and references in the child work,
-			// when the target is in the parent or another child document.
-			lyx_view_->buffer()->setParentName(parentfilename);
+				if (lyx_view_->loadLyXFile(filename)) {
+					// Set the parent name of the child document.
+					// This makes insertion of citations and references in the child work,
+					// when the target is in the parent or another child document.
+					lyx_view_->buffer()->setParentName(parentfilename);
+					setMessage(bformat(_("Opening child document %1$s..."),
+			                         makeDisplayPath(filename.absFilename())));
+				} else
+					setMessage(_("Document not loaded."));
 			break;
 		}
 

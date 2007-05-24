@@ -230,6 +230,13 @@ bool isVerbatim(InsetCommandParams const & params)
 }
 
 
+bool isInputOrInclude(InsetCommandParams const & params) 
+{
+	Types const t = type(params);
+	return (t == INPUT) or (t == INCLUDE);
+}
+
+
 string const masterFilename(Buffer const & buffer)
 {
 	return buffer.getMasterBuffer()->fileName();
@@ -393,12 +400,14 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 		if (!fs::exists(included_file.toFilesystemEncoding()))
 			return false;
 		buf = theBufferList().newBuffer(included_file.absFilename());
-		if (!loadLyXFile(buf, included_file))
+		if (!loadLyXFile(buf, included_file)) {
+			//close the buffer we just opened
+			theBufferList().close(buf, false);
 			return false;
+		}
 	}
-	if (buf)
-		buf->setParentName(parentFilename(buffer));
-	return buf != 0;
+	buf->setParentName(parentFilename(buffer));
+	return true;
 }
 
 
@@ -420,7 +429,9 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	//FIXME RECURSIVE INCLUDE
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
-	if (!isListings(params_) && buffer.fileName() == included_file.toFilesystemEncoding()) {
+	if (isInputOrInclude(params_) &&
+		buffer.fileName() == included_file.toFilesystemEncoding()) 
+	{
 		Alert::error(_("Recursive input"), 
 		               bformat(_("Attempted to include file %1$s in itself! "
 		               "Ignoring inclusion."), from_utf8(incfile)));
@@ -439,8 +450,9 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".tex");
-	string const mangled = DocFileName(changeExtension(included_file.absFilename(),
-							".tex")).mangledFilename();
+	string const mangled = 
+		DocFileName(changeExtension(included_file.absFilename(),".tex")).
+			mangledFilename();
 	FileName const writefile(makeAbsPath(mangled, m_buffer->temppath()));
 
 	if (!runparams.nice)
@@ -451,8 +463,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 	if (runparams.inComment || runparams.dryrun)
 		// Don't try to load or copy the file
-		;
-	else if (loadIfNeeded(buffer, params_)) {
+		return true;
+	//if it's a LyX file and we're including or inputting it...
+	else if (isInputOrInclude(params_) && 
+	         isLyXFilename(included_file.absFilename())) {
+		//try to load it so we can write the associated latex
+		if (!loadIfNeeded(buffer, params_))
+			return false;
+			
 		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
