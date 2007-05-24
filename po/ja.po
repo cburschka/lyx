@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-18 00:09+0100\n"
+"POT-Creation-Date: 2007-05-24 18:49+0200\n"
 "PO-Revision-Date: 2007-04-30 17:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -65,6 +65,7 @@ msgstr "ダミー(&D)"
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:702
 #: src/frontends/qt4/ui/IncludeUi.ui:227 src/frontends/qt4/ui/IndexUi.ui:82
+#: src/frontends/qt4/ui/ListingsUi.ui:577
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
 #: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
@@ -77,9 +78,10 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:735 src/LyXFunc.cpp:908
-#: src/LyXFunc.cpp:1074 src/LyXFunc.cpp:2039 src/LyXVC.cpp:175
+#: src/frontends/qt4/ui/DocumentUi.ui:152
+#: src/frontends/qt4/ui/ListingsUi.ui:597 src/BufferList.cpp:114
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:740 src/LyXFunc.cpp:913
+#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
@@ -156,9 +158,8 @@ msgstr "追加(&A)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:534
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "取消"
 
@@ -241,8 +242,9 @@ msgstr "スタイル(&Y)"
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "インナーボックス -- 固定幅と改行のために必要"
 
-#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/TabularUi.ui:702
-#: src/frontends/qt4/ui/TabularUi.ui:721 src/frontends/qt4/ui/TabularUi.ui:769
+#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/ListingsUi.ui:323
+#: src/frontends/qt4/ui/TabularUi.ui:702 src/frontends/qt4/ui/TabularUi.ui:721
+#: src/frontends/qt4/ui/TabularUi.ui:769
 #: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.cpp:100
 #: src/frontends/qt4/QBox.cpp:268 src/frontends/qt4/QBox.cpp:384
 msgid "None"
@@ -301,8 +303,9 @@ msgstr "縦揃え"
 msgid "Horizontal alignment of the content inside the box"
 msgstr "ボックスの中身の水平揃え"
 
-#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/TabularUi.ui:145
-#: src/frontends/qt4/ui/WrapUi.ui:58 src/frontends/qt4/QTabular.cpp:741
+#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:328
+#: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
+#: src/frontends/qt4/QTabular.cpp:741
 msgid "Left"
 msgstr "左揃え"
 
@@ -313,8 +316,9 @@ msgstr "左揃え"
 msgid "Center"
 msgstr "中央揃え"
 
-#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/TabularUi.ui:155
-#: src/frontends/qt4/ui/WrapUi.ui:63 src/frontends/qt4/QTabular.cpp:743
+#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:333
+#: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
+#: src/frontends/qt4/QTabular.cpp:743
 msgid "Right"
 msgstr "右揃え"
 
@@ -378,6 +382,7 @@ msgstr "復元(&R)"
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/ListingsUi.ui:587
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
@@ -444,47 +449,55 @@ msgstr "大きさ(&Z):"
 #: src/frontends/qt4/ui/ParagraphUi.ui:214
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
-#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
+#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:71 src/frontends/qt4/QDocument.cpp:82
-#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:336
+#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:337
+#: src/frontends/qt4/QListings.cpp:155 src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "既定値"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:960
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "最小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:964
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "極小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:968
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:972
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "やや小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:976
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "ふつう"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:980
+#: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "やや大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:984
+#: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "大"
 
@@ -565,8 +578,8 @@ msgstr "フォントの太さ"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:105 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
+#: src/frontends/qt4/ui/ListingsUi.ui:258 lib/layouts/europecv.layout:144
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:571
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "言語"
@@ -578,6 +591,7 @@ msgstr "フォントの色"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
 #: src/frontends/qt4/ui/LanguageUi.ui:36
+#: src/frontends/qt4/ui/ListingsUi.ui:287
 msgid "&Language:"
 msgstr "言語(&L):"
 
@@ -1112,7 +1126,7 @@ msgid "Select an image file"
 msgstr "図表ファイルを選んでください"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:165
+#: src/frontends/qt4/ui/ListingsUi.ui:378
 msgid "File name of image"
 msgstr "図のファイル名"
 
@@ -1228,8 +1242,9 @@ msgid "Sca&le on Screen (%):"
 msgstr "スクリーン上の縮尺(&L) (%):"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
-msgid "Listing Params"
-msgstr ""
+#, fuzzy
+msgid "Listing Parameters"
+msgstr "引数がありません"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:76
 #, fuzzy
@@ -1271,11 +1286,11 @@ msgstr "取り込むファイル名"
 msgid "&Include Type:"
 msgstr "取り込みの種類(I):"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:322
+#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:337
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:313
+#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:328
 msgid "Input"
 msgstr "Input"
 
@@ -1283,7 +1298,7 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:238
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:234
 #, fuzzy
 msgid "Listings"
 msgstr "箇条書き（リスト）"
@@ -1327,130 +1342,185 @@ msgstr "箇条書き（リスト）"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 #, fuzzy
-msgid "Main Settings"
+msgid "&Main Settings"
 msgstr "ブランチの設定"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:63
-#, fuzzy
-msgid "Placement"
-msgstr "配置(&P)"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:78
-#, fuzzy
-msgid "Placement:"
-msgstr "配置(&P)"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:88
-#, fuzzy
-msgid "Float"
-msgstr "フロート(A)|A"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:95
-msgid "Inline listing"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:133
-#, fuzzy
-msgid "Line numbering"
-msgstr "連番(&N)"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:145
-#, fuzzy
-msgid "Side: "
-msgstr "スライド"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:249
-#: src/frontends/qt4/ui/ListingsUi.ui:262
-msgid "Differenz between two numbered lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:168
-#, fuzzy
-msgid "Step:"
-msgstr "州:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:181
-#: src/frontends/qt4/ui/ListingsUi.ui:384
-#, fuzzy
-msgid "Font size:"
-msgstr "フォントの大きさ"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:202
-#: src/frontends/qt4/ui/ListingsUi.ui:405
-#, fuzzy
-msgid "Choose the Font Size"
-msgstr "スタイルファイルを選択"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:224
-#, fuzzy
-msgid "Range"
-msgstr "変更:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:236
-#, fuzzy
-msgid "First line:"
-msgstr "名"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:275
-#, fuzzy
-msgid "Last line:"
-msgstr "数式行"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:293
-#: src/frontends/qt4/ui/TabularUi.ui:301
+#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
 #, fuzzy
 msgid "Style"
 msgstr "様式"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:305
-msgid "Breaking lines longer than the linewidth"
+#: src/frontends/qt4/ui/ListingsUi.ui:67
+msgid "The content's base font size"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:308
+#: src/frontends/qt4/ui/ListingsUi.ui:83
 #, fuzzy
-msgid "&Break long lines"
-msgstr "長い表(longtable)を使う(&U)"
+msgid "F&ont size:"
+msgstr "フォントの大きさ"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:318
-msgid "Insert a special symbol for a space"
+#: src/frontends/qt4/ui/ListingsUi.ui:104
+msgid "The content's base font style"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:321
-msgid "&Space as Symbol"
-msgstr ""
+#: src/frontends/qt4/ui/ListingsUi.ui:120
+#, fuzzy
+msgid "Font st&yle:"
+msgstr "フォントの大きさ"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:334
+#: src/frontends/qt4/ui/ListingsUi.ui:136
 #, fuzzy
 msgid "Use extended character table"
 msgstr "定義されていない文字スタイルです"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:337
+#: src/frontends/qt4/ui/ListingsUi.ui:139
 #, fuzzy
 msgid "&Extended Chars"
 msgstr "拡張機能(E)|E"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:347
+#: src/frontends/qt4/ui/ListingsUi.ui:149
+msgid "Make spaces in strings visible by a special symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:152
+msgid "S&pace in string as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:162
+msgid "Make spaces visible by a special symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:165
+msgid "S&pace as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:175
+msgid "Break lines longer than the linewidth"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:178
 #, fuzzy
-msgid "Font style:"
+msgid "&Break long lines"
+msgstr "長い表(longtable)を使う(&U)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:191
+#, fuzzy
+msgid "Range"
+msgstr "変更:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:203
+#, fuzzy
+msgid "&Last line:"
+msgstr "数式行"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:216
+msgid "The last line to be printed"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:229
+msgid "The first line to be printed"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:242
+#, fuzzy
+msgid "Fi&rst line:"
+msgstr "名"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:270
+msgid "Select the dialect of the programming language, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:277
+#, fuzzy
+msgid "&Dialect:"
+msgstr "ファイル(&F)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:297
+msgid "Select the programming language"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:307
+#, fuzzy
+msgid "Line numbering"
+msgstr "連番(&N)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:319
+msgid "On which side should line numbers be printed?"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:349
+#, fuzzy
+msgid "Choose the font size for line numbers"
+msgstr "スタイルファイルを選択"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:365
+#, fuzzy
+msgid "Font si&ze:"
 msgstr "フォントの大きさ"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:368
-msgid "Choose the Font Style"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:427
-msgid "Advanced"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:447
-msgid "More Parameters"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:524
+#: src/frontends/qt4/ui/ListingsUi.ui:381
 #, fuzzy
-msgid "OK"
-msgstr "&OK"
+msgid "S&tep:"
+msgstr "州:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:394
+msgid "Difference between two numbered lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:410
+#, fuzzy
+msgid "&Side: "
+msgstr "スライド"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:423
+#, fuzzy
+msgid "Placement"
+msgstr "配置(&P)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:435
+msgid "Specify placement (htbp) for floating listings"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:442
+#, fuzzy
+msgid "Check for floating listings"
+msgstr "その他のフォント設定"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:445
+#, fuzzy
+msgid "&Float"
+msgstr "フロート(A)|A"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:452
+msgid "Check for inline listings"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:455
+#, fuzzy
+msgid "&Inline listing"
+msgstr "行内(&I)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:462
+#, fuzzy
+msgid "Placement:"
+msgstr "配置(&P)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:476
+#, fuzzy
+msgid "Ad&vanced"
+msgstr "取消(&C)"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:496
+msgid "More &Parameters"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:520
+msgid "Feedback window"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:539
+msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -1681,7 +1751,7 @@ msgid "L&ine spacing:"
 msgstr "行間(&I):"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1773
-#: src/frontends/qt4/QDocument.cpp:230
+#: src/frontends/qt4/QDocument.cpp:231
 #, fuzzy
 msgid "Single"
 msgstr "なし"
@@ -1692,7 +1762,7 @@ msgid "1.5"
 msgstr "半行"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1779
-#: src/frontends/qt4/QDocument.cpp:234
+#: src/frontends/qt4/QDocument.cpp:235
 #, fuzzy
 msgid "Double"
 msgstr "一行"
@@ -1700,7 +1770,7 @@ msgstr "一行"
 #: src/frontends/qt4/ui/ParagraphUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:236 src/frontends/qt4/QDocument.cpp:337
+#: src/frontends/qt4/QDocument.cpp:237 src/frontends/qt4/QDocument.cpp:338
 msgid "Custom"
 msgstr "任意設定"
 
@@ -1977,31 +2047,31 @@ msgstr "既定の用紙寸法(&Z):"
 msgid "Te&X encoding:"
 msgstr "Te&Xエンコーディング:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:338
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:339
 msgid "US letter"
 msgstr "US レター"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:340
 msgid "US legal"
 msgstr "US リーガル"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:341
 msgid "US executive"
 msgstr "US エグゼクティブ"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:342
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:342
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:343
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:343
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:344
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:346
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:347
 msgid "B5"
 msgstr "B5"
 
@@ -2358,7 +2428,7 @@ msgid "&Maximum last files:"
 msgstr "最近のファイルの最大値(&M):"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:734
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:739
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -3034,15 +3104,15 @@ msgstr "サポートされているスペースタイプ"
 msgid "DefSkip"
 msgstr "任意のスキップ"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:223
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:224
 msgid "SmallSkip"
 msgstr "小スキップ"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:224
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:225
 msgid "MedSkip"
 msgstr "中スキップ"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:225
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:226
 msgid "BigSkip"
 msgstr "大スキップ"
 
@@ -3091,15 +3161,16 @@ msgstr "単位(&U):"
 #: lib/layouts/kluwer.layout:33 lib/layouts/llncs.layout:23
 #: lib/layouts/ltugboat.layout:30 lib/layouts/manpage.layout:17
 #: lib/layouts/memoir.layout:26 lib/layouts/moderncv.layout:16
-#: lib/layouts/paper.layout:14 lib/layouts/revtex.layout:22
-#: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
-#: lib/layouts/scrlttr2.layout:7 lib/layouts/siamltex.layout:19
-#: lib/layouts/simplecv.layout:15 lib/layouts/slides.layout:60
-#: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
-#: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+#: lib/layouts/paper.layout:14 lib/layouts/powerdot.layout:106
+#: lib/layouts/revtex.layout:22 lib/layouts/revtex4.layout:26
+#: lib/layouts/scrlettr.layout:7 lib/layouts/scrlttr2.layout:7
+#: lib/layouts/siamltex.layout:19 lib/layouts/simplecv.layout:15
+#: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
+#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
+#: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:55
+#: src/frontends/qt4/BulletsModule.cpp:46 src/insets/InsetRef.cpp:147
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard"
 msgstr "標準"
 
@@ -3107,7 +3178,7 @@ msgstr "標準"
 msgid "TheoremTemplate"
 msgstr "定理テンプレート"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:948
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:955
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -3121,7 +3192,7 @@ msgid "Proof:"
 msgstr "証明:"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:954
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:961
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
@@ -3150,7 +3221,7 @@ msgid "Lemma #:"
 msgstr "補題 #:"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:885
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:892
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
@@ -3202,7 +3273,7 @@ msgid "Criterion #:"
 msgstr "基準 #:"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:942
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:949
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -3223,7 +3294,7 @@ msgid "Axiom #:"
 msgstr "公理 #:"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:912
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:919
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
@@ -3238,12 +3309,12 @@ msgid "Definition #:"
 msgstr "定義 #:"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:924
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:931
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:474
+#: src/frontends/qt4/QDocument.cpp:475
 msgid "Example"
 msgstr "例"
 
@@ -3313,9 +3384,10 @@ msgstr "主張 #:"
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
 #: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
-#: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
-#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:66
+#: lib/layouts/powerdot.layout:195 lib/layouts/slides.layout:167
+#: lib/layouts/amsmaths-plain.inc:193 lib/layouts/amsmaths-seq.inc:160
+#: lib/layouts/amsmaths.inc:418 lib/layouts/svjour.inc:422
+#: src/insets/InsetNote.cpp:66
 msgid "Note"
 msgstr "注"
 
@@ -3350,20 +3422,21 @@ msgstr "ケース #:"
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
-#: lib/layouts/beamer.layout:140 lib/layouts/egs.layout:30
+#: lib/layouts/beamer.layout:144 lib/layouts/egs.layout:30
 #: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
 #: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:51
 #: lib/layouts/moderncv.layout:29 lib/layouts/paper.layout:44
-#: lib/layouts/revtex.layout:38 lib/layouts/revtex4.layout:44
-#: lib/layouts/siamltex.layout:41 lib/layouts/simplecv.layout:27
-#: lib/layouts/spie.layout:19 lib/layouts/agu_stdsections.inc:30
-#: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:28
-#: lib/layouts/numarticle.inc:13 lib/layouts/numreport.inc:21
-#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:61
-#: lib/layouts/stdsections.inc:51 lib/layouts/svjour.inc:52
+#: lib/layouts/powerdot.layout:212 lib/layouts/revtex.layout:38
+#: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
+#: lib/layouts/simplecv.layout:27 lib/layouts/spie.layout:19
+#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
+#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:13
+#: lib/layouts/numreport.inc:21 lib/layouts/numrevtex.inc:6
+#: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
+#: lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "節"
 
@@ -3371,7 +3444,7 @@ msgstr "節"
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
-#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:181
+#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:185
 #: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
@@ -3403,7 +3476,7 @@ msgstr "小節"
 msgid "Subsubsection"
 msgstr "小々節"
 
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:172
+#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:176
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
@@ -3412,7 +3485,7 @@ msgstr "小々節"
 msgid "Section*"
 msgstr "節*"
 
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:214
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:218
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
@@ -3469,7 +3542,7 @@ msgstr "索引の見出し---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:836
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:843
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
@@ -3478,14 +3551,14 @@ msgstr "索引の見出し---"
 #: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:193
 #: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
-#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
-#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
-#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:183 lib/layouts/simplecv.layout:140
-#: lib/layouts/aguplus.inc:168 lib/layouts/aguplus.inc:170
-#: lib/layouts/amsdefs.inc:229 lib/layouts/scrclass.inc:223
-#: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:326
-#: src/frontends/qt4/QDocument.cpp:572
+#: lib/layouts/powerdot.layout:279 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
+#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:183
+#: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
+#: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
+#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:573
 msgid "Bibliography"
 msgstr "参考文献"
 
@@ -3520,28 +3593,29 @@ msgstr "MarkBoth"
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
 #: lib/layouts/beamer.layout:50 lib/layouts/egs.layout:163
-#: lib/layouts/manpage.layout:82 lib/layouts/simplecv.layout:77
-#: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:11
+#: lib/layouts/manpage.layout:82 lib/layouts/powerdot.layout:229
+#: lib/layouts/simplecv.layout:77 lib/layouts/agu_stdlists.inc:13
+#: lib/layouts/db_stdlists.inc:12 lib/layouts/stdlists.inc:11
 msgid "Itemize"
 msgstr "箇条書き（記号）"
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:68 lib/layouts/egs.layout:145
-#: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
+#: lib/layouts/beamer.layout:69 lib/layouts/egs.layout:145
+#: lib/layouts/manpage.layout:65 lib/layouts/powerdot.layout:254
+#: lib/layouts/agu_stdlists.inc:21 lib/layouts/db_stdlists.inc:19
+#: lib/layouts/stdlists.inc:29
 msgid "Enumerate"
 msgstr "箇条書き（番号）"
 
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
-#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:86
+#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:88
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.inc:85
+#: lib/ui/stdtoolbars.inc:89
 msgid "Description"
 msgstr "箇条書き（見出し語）"
 
@@ -3549,14 +3623,14 @@ msgstr "箇条書き（見出し語）"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.inc:84
+#: lib/ui/stdtoolbars.inc:88
 msgid "List"
 msgstr "箇条書き（リスト）"
 
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:717
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:724
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
@@ -3566,18 +3640,18 @@ msgstr "箇条書き（リスト）"
 #: lib/layouts/isprs.layout:94 lib/layouts/kluwer.layout:104
 #: lib/layouts/latex8.layout:33 lib/layouts/llncs.layout:99
 #: lib/layouts/ltugboat.layout:134 lib/layouts/paper.layout:112
-#: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
-#: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:271
-#: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
-#: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:60 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:146 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:129
+#: lib/layouts/powerdot.layout:36 lib/layouts/revtex.layout:90
+#: lib/layouts/revtex4.layout:107 lib/layouts/scrlettr.layout:193
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:109
+#: lib/layouts/simplecv.layout:119 lib/layouts/svprobth.layout:35
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:60
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:146
+#: lib/layouts/stdtitle.inc:12 lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "表題"
 
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:741
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:748
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
@@ -3587,7 +3661,7 @@ msgstr "副題"
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:766
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:773
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
@@ -3595,11 +3669,12 @@ msgstr "副題"
 #: lib/layouts/ijmpd.layout:44 lib/layouts/isprs.layout:76
 #: lib/layouts/kluwer.layout:160 lib/layouts/llncs.layout:176
 #: lib/layouts/ltugboat.layout:154 lib/layouts/paper.layout:123
-#: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
-#: lib/layouts/siamltex.layout:126 lib/layouts/svprobth.layout:52
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:81
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:154
-#: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:182
+#: lib/layouts/powerdot.layout:60 lib/layouts/revtex.layout:98
+#: lib/layouts/revtex4.layout:115 lib/layouts/siamltex.layout:126
+#: lib/layouts/svprobth.layout:52 lib/layouts/agu_stdtitle.inc:167
+#: lib/layouts/amsdefs.inc:81 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/scrclass.inc:154 lib/layouts/stdtitle.inc:31
+#: lib/layouts/svjour.inc:182
 msgid "Author"
 msgstr "著者"
 
@@ -3628,15 +3703,16 @@ msgstr "メール"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:812 lib/layouts/egs.layout:476
+#: lib/layouts/beamer.layout:819 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
-#: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
-#: lib/layouts/scrlettr.layout:165 lib/layouts/scrlttr2.layout:239
-#: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:315
+#: lib/layouts/powerdot.layout:83 lib/layouts/revtex.layout:106
+#: lib/layouts/revtex4.layout:123 lib/layouts/scrlettr.layout:165
+#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:137
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:101
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:161
+#: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
+#: lib/ui/stdmenus.inc:315
 msgid "Date"
 msgstr "日付"
 
@@ -3675,7 +3751,7 @@ msgid "Email"
 msgstr "電子メール"
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.cpp:148
+#: lib/ui/stdtoolbars.inc:110 src/frontends/qt4/QThesaurus.cpp:148
 msgid "Thesaurus"
 msgstr "類義語辞典"
 
@@ -3712,7 +3788,7 @@ msgid "Acknowledgements"
 msgstr "謝辞"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:850
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:857
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
@@ -3848,9 +3924,9 @@ msgid "Criterion."
 msgstr "基準."
 
 #: lib/layouts/amsart-plain.layout:61 lib/layouts/amsart-seq.layout:173
-#: lib/layouts/elsart.layout:346 lib/layouts/amsmaths-plain.inc:93
-#: lib/layouts/amsmaths-seq.inc:80 lib/layouts/amsmaths.inc:202
-#: lib/layouts/stdfloats.inc:34
+#: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:385
+#: lib/layouts/amsmaths-plain.inc:93 lib/layouts/amsmaths-seq.inc:80
+#: lib/layouts/amsmaths.inc:202 lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "アルゴリズム"
 
@@ -4034,7 +4110,7 @@ msgid "Conclusion \\arabic{conclusion}."
 msgstr "結論 \\arabic{conclusion}."
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
-#: lib/layouts/numarticle.inc:16
+#: lib/layouts/powerdot.layout:217 lib/layouts/numarticle.inc:16
 msgid "\\arabic{section}"
 msgstr "\\arabic{section}"
 
@@ -4137,9 +4213,10 @@ msgstr "サイズを調整した図"
 msgid "FitBitmap"
 msgstr ""
 
-#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:64
+#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:65
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
-#: lib/layouts/simplecv.layout:91 lib/layouts/stdlists.inc:25
+#: lib/layouts/powerdot.layout:243 lib/layouts/simplecv.layout:91
+#: lib/layouts/stdlists.inc:25
 msgid "*"
 msgstr "*"
 
@@ -4149,7 +4226,7 @@ msgid "Seriate"
 msgstr "続き"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.cpp:526
+#: src/buffer_funcs.cpp:530
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -4173,7 +4250,7 @@ msgstr "ラトビア語"
 msgid "Latin off"
 msgstr "ラトビア語"
 
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:111
+#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
 #: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
@@ -4188,268 +4265,272 @@ msgstr "部"
 msgid "Part*"
 msgstr "部*"
 
-#: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:196
+#: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr ""
 
-#: lib/layouts/beamer.layout:125
+#: lib/layouts/beamer.layout:129
 msgid "Part "
 msgstr "部 "
 
-#: lib/layouts/beamer.layout:155
+#: lib/layouts/beamer.layout:159
 msgid "Section \\arabic{section}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:167 lib/layouts/numarticle.inc:17
+#: lib/layouts/beamer.layout:171 lib/layouts/powerdot.layout:223
+#: lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:196
+#: lib/layouts/beamer.layout:200
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:209
+#: lib/layouts/beamer.layout:213
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr ""
 
-#: lib/layouts/beamer.layout:223
+#: lib/layouts/beamer.layout:227
 msgid "BeginFrame"
 msgstr "スライド開始"
 
-#: lib/layouts/beamer.layout:238
+#: lib/layouts/beamer.layout:243
 #, fuzzy
 msgid "Frame "
 msgstr "スライド   "
 
-#: lib/layouts/beamer.layout:264
+#: lib/layouts/beamer.layout:269
 msgid "BeginPlainFrame"
 msgstr "白紙スライド開始"
 
-#: lib/layouts/beamer.layout:279
+#: lib/layouts/beamer.layout:284
 #, fuzzy
 msgid "Frame (no head/foot/sidebars)__"
 msgstr "スライド（ヘッダ・フッタ・サイドバー無し）  "
 
-#: lib/layouts/beamer.layout:302
+#: lib/layouts/beamer.layout:307
 msgid "AgainFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:317
+#: lib/layouts/beamer.layout:323
 msgid "Again frame with label__"
 msgstr ""
 
-#: lib/layouts/beamer.layout:341
+#: lib/layouts/beamer.layout:347
 msgid "EndFrame"
 msgstr "スライド終了"
 
-#: lib/layouts/beamer.layout:355
+#: lib/layouts/beamer.layout:361
 msgid "________________________________ "
 msgstr "________________________________ "
 
-#: lib/layouts/beamer.layout:370
+#: lib/layouts/beamer.layout:376
 msgid "FrameSubtitle"
 msgstr "スライド副題"
 
-#: lib/layouts/beamer.layout:393
+#: lib/layouts/beamer.layout:399
 #, fuzzy
 msgid "Column"
 msgstr "列"
 
-#: lib/layouts/beamer.layout:405
+#: lib/layouts/beamer.layout:411
 #, fuzzy
 msgid "start column (increase depth!), width: "
 msgstr "列の開始 ー 幅:"
 
-#: lib/layouts/beamer.layout:417
+#: lib/layouts/beamer.layout:423
 msgid "Columns"
 msgstr "列"
 
-#: lib/layouts/beamer.layout:429
+#: lib/layouts/beamer.layout:435
 #, fuzzy
 msgid "columns "
 msgstr "列"
 
-#: lib/layouts/beamer.layout:446
+#: lib/layouts/beamer.layout:452
 msgid "ColumnsCenterAligned"
 msgstr "中央揃え列"
 
-#: lib/layouts/beamer.layout:457
+#: lib/layouts/beamer.layout:463
 msgid "columns (center aligned) "
 msgstr "列（中央揃え）"
 
-#: lib/layouts/beamer.layout:476
+#: lib/layouts/beamer.layout:482
 msgid "ColumnsTopAligned"
 msgstr "上端揃え列"
 
-#: lib/layouts/beamer.layout:487
+#: lib/layouts/beamer.layout:493
 msgid "columns (top aligned) "
 msgstr "列（上端揃え）"
 
-#: lib/layouts/beamer.layout:507
+#: lib/layouts/beamer.layout:513
 msgid "Pause"
 msgstr "一時停止"
 
-#: lib/layouts/beamer.layout:522
+#: lib/layouts/beamer.layout:529
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:532
+#: lib/layouts/beamer.layout:539
 msgid "Overprint"
 msgstr "重ね刷り"
 
-#: lib/layouts/beamer.layout:542
+#: lib/layouts/beamer.layout:549
 msgid "overprint "
 msgstr "重ね刷り"
 
-#: lib/layouts/beamer.layout:558
+#: lib/layouts/beamer.layout:565
 msgid "OverlayArea"
 msgstr "オーバーレイ領域"
 
-#: lib/layouts/beamer.layout:568
+#: lib/layouts/beamer.layout:575
 #, fuzzy
 msgid "overlayarea"
 msgstr "オーバーレイ領域"
 
-#: lib/layouts/beamer.layout:583
+#: lib/layouts/beamer.layout:590
 msgid "Uncover"
 msgstr ""
 
-#: lib/layouts/beamer.layout:592
+#: lib/layouts/beamer.layout:599
 msgid "uncovered on slides  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:607
+#: lib/layouts/beamer.layout:614
 #, fuzzy
 msgid "Only"
 msgstr "限定表示"
 
-#: lib/layouts/beamer.layout:616
+#: lib/layouts/beamer.layout:623
 #, fuzzy
 msgid "only on slides_"
 msgstr "以下のコマのみに表示  "
 
-#: lib/layouts/beamer.layout:632
+#: lib/layouts/beamer.layout:639
 msgid "Block"
 msgstr "ブロック"
 
-#: lib/layouts/beamer.layout:642
+#: lib/layouts/beamer.layout:649
 msgid "block ( ERT[{title}] body ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:657
+#: lib/layouts/beamer.layout:664
 msgid "ExampleBlock"
 msgstr "用例ブロック"
 
-#: lib/layouts/beamer.layout:667
+#: lib/layouts/beamer.layout:674
 msgid "block ( ERT[{title}] example text ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:686
+#: lib/layouts/beamer.layout:693
 msgid "AlertBlock"
 msgstr "強調ブロック"
 
-#: lib/layouts/beamer.layout:696
+#: lib/layouts/beamer.layout:703
 #, fuzzy
 msgid "block ( ERT[{title}] alert text ): "
 msgstr "強調テキストを含むブロック"
 
-#: lib/layouts/beamer.layout:789 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:796 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 #, fuzzy
 msgid "Institute"
 msgstr "所属機関"
 
-#: lib/layouts/beamer.layout:860
+#: lib/layouts/beamer.layout:867
 msgid "TitleGraphic"
 msgstr "タイトル図"
 
-#: lib/layouts/beamer.layout:895
+#: lib/layouts/beamer.layout:902
 #, fuzzy
 msgid "Corollary_"
 msgstr "系"
 
-#: lib/layouts/beamer.layout:915
+#: lib/layouts/beamer.layout:922
 #, fuzzy
 msgid "Definition. "
 msgstr "定義.  "
 
-#: lib/layouts/beamer.layout:918
+#: lib/layouts/beamer.layout:925
 #, fuzzy
 msgid "Definitions"
 msgstr "定義"
 
-#: lib/layouts/beamer.layout:921
+#: lib/layouts/beamer.layout:928
 #, fuzzy
 msgid "Definitions. "
 msgstr "定義.  "
 
-#: lib/layouts/beamer.layout:927
+#: lib/layouts/beamer.layout:934
 #, fuzzy
 msgid "Example. "
 msgstr "例.  "
 
-#: lib/layouts/beamer.layout:935
+#: lib/layouts/beamer.layout:942
 #, fuzzy
 msgid "Examples"
 msgstr "例"
 
-#: lib/layouts/beamer.layout:938
+#: lib/layouts/beamer.layout:945
 #, fuzzy
 msgid "Examples. "
 msgstr "例.  "
 
-#: lib/layouts/beamer.layout:945
+#: lib/layouts/beamer.layout:952
 #, fuzzy
 msgid "Fact. "
 msgstr "事実.  "
 
-#: lib/layouts/beamer.layout:951
+#: lib/layouts/beamer.layout:958
 #, fuzzy
 msgid "Proof. "
 msgstr "証明.  "
 
-#: lib/layouts/beamer.layout:957
+#: lib/layouts/beamer.layout:964
 #, fuzzy
 msgid "Theorem. "
 msgstr "定理.  "
 
-#: lib/layouts/beamer.layout:962
+#: lib/layouts/beamer.layout:969
 msgid "Separator"
 msgstr "分離線"
 
-#: lib/layouts/beamer.layout:975
+#: lib/layouts/beamer.layout:982
 msgid "___"
 msgstr "___"
 
-#: lib/layouts/beamer.layout:985 lib/layouts/egs.layout:641
+#: lib/layouts/beamer.layout:992 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX コード"
 
-#: lib/layouts/beamer.layout:1022
+#: lib/layouts/beamer.layout:1029
 msgid "NoteItem"
 msgstr "注釈アイテム"
 
-#: lib/layouts/beamer.layout:1033
+#: lib/layouts/beamer.layout:1040
 #, fuzzy
 msgid "note: "
 msgstr "注釈:  "
 
-#: lib/layouts/beamer.layout:1069 lib/layouts/stdfloats.inc:10
-#: lib/ui/stdtoolbars.inc:110
+#: lib/layouts/beamer.layout:1076 lib/layouts/powerdot.layout:365
+#: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
 msgid "Table"
 msgstr "表"
 
-#: lib/layouts/beamer.layout:1074 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1081 lib/layouts/powerdot.layout:369
+#: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "表一覧"
 
-#: lib/layouts/beamer.layout:1080 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1087 lib/layouts/powerdot.layout:375
+#: lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "図"
 
-#: lib/layouts/beamer.layout:1085 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1092 lib/layouts/powerdot.layout:379
+#: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "図一覧"
 
@@ -4721,13 +4802,13 @@ msgstr ""
 msgid "Subparagraph"
 msgstr "小段落"
 
-#: lib/layouts/egs.layout:94 lib/layouts/db_stdlayouts.inc:18
-#: lib/layouts/stdlayouts.inc:11
+#: lib/layouts/egs.layout:94 lib/layouts/powerdot.layout:300
+#: lib/layouts/db_stdlayouts.inc:18 lib/layouts/stdlayouts.inc:11
 msgid "Quotation"
 msgstr "引用(Quotation)"
 
 #: lib/layouts/egs.layout:112 lib/layouts/manpage.layout:29
-#: lib/layouts/stdlayouts.inc:29
+#: lib/layouts/powerdot.layout:320 lib/layouts/stdlayouts.inc:29
 msgid "Quote"
 msgstr "引用(Quote)"
 
@@ -4735,7 +4816,8 @@ msgstr "引用(Quote)"
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
-#: lib/layouts/egs.layout:203 lib/layouts/stdlayouts.inc:45
+#: lib/layouts/egs.layout:203 lib/layouts/powerdot.layout:338
+#: lib/layouts/stdlayouts.inc:45
 msgid "Verse"
 msgstr "詩句"
 
@@ -6099,6 +6181,57 @@ msgstr "副題"
 msgid "Institution"
 msgstr "所属機関"
 
+#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:67
+#: lib/layouts/slides.layout:88
+msgid "Slide"
+msgstr "スライド"
+
+#: lib/layouts/powerdot.layout:132
+msgid "    "
+msgstr ""
+
+#: lib/layouts/powerdot.layout:142
+#, fuzzy
+msgid "EndSlide"
+msgstr "スライド"
+
+#: lib/layouts/powerdot.layout:154
+msgid "~=~"
+msgstr ""
+
+#: lib/layouts/powerdot.layout:167
+#, fuzzy
+msgid "WideSlide"
+msgstr "スライド"
+
+#: lib/layouts/powerdot.layout:179
+#, fuzzy
+msgid "EmptySlide"
+msgstr "スライド"
+
+#: lib/layouts/powerdot.layout:183
+msgid "Empty slide:"
+msgstr ""
+
+#: lib/layouts/powerdot.layout:199
+#, fuzzy
+msgid "Note:"
+msgstr "注"
+
+#: lib/layouts/powerdot.layout:246
+#, fuzzy
+msgid "ItemizeType1"
+msgstr "箇条書き（記号）"
+
+#: lib/layouts/powerdot.layout:271
+#, fuzzy
+msgid "EnumerateType1"
+msgstr "箇条書き（番号）"
+
+#: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
+msgid "List of Algorithms"
+msgstr "アルゴリズム一覧"
+
 #: lib/layouts/revtex4.layout:94
 msgid "Preprint"
 msgstr "前刷り"
@@ -6333,10 +6466,6 @@ msgstr "縦向きスライド"
 #: lib/layouts/seminar.layout:63
 msgid "Portrait Slide"
 msgstr "縦向きスライド"
-
-#: lib/layouts/seminar.layout:67 lib/layouts/slides.layout:88
-msgid "Slide"
-msgstr "スライド"
 
 #: lib/layouts/seminar.layout:72
 msgid "Slide*"
@@ -7039,10 +7168,6 @@ msgstr ""
 msgid "Dictum"
 msgstr ""
 
-#: lib/layouts/stdfloats.inc:39
-msgid "List of Algorithms"
-msgstr "アルゴリズム一覧"
-
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
 msgstr ""
@@ -7080,9 +7205,13 @@ msgstr "アラビア語"
 msgid "Armenian"
 msgstr "アメリカ英語"
 
-#: lib/languages:6 lib/languages:7
+#: lib/languages:6
 msgid "Austrian"
 msgstr "オーストリア語"
+
+#: lib/languages:7
+msgid "Austrian (new spelling)"
+msgstr "オーストリア語（新綴方）"
 
 #: lib/languages:8
 msgid "Bahasa"
@@ -7096,9 +7225,9 @@ msgstr "ベラルーシ語"
 msgid "Basque"
 msgstr "バスク語"
 
-#: lib/languages:11 lib/languages:53
-msgid "Portuguese"
-msgstr "ポルトガル語"
+#: lib/languages:11
+msgid "Portuguese (Brazil)"
+msgstr "ポルトガル語(ブラジル)"
 
 #: lib/languages:12
 msgid "Breton"
@@ -7116,18 +7245,21 @@ msgstr "ブルガリア語"
 msgid "Canadian"
 msgstr "カナダ語"
 
-#: lib/languages:16 lib/languages:30
-msgid "French"
-msgstr "フランス語"
+#: lib/languages:16
+msgid "French Canadian"
+msgstr "カナダフランス語"
 
 #: lib/languages:17
 msgid "Catalan"
 msgstr "カタロニア語"
 
-#: lib/languages:18 lib/languages:19
-#, fuzzy
-msgid "Chinese"
-msgstr "部数"
+#: lib/languages:18
+msgid "Chinese (simplified)"
+msgstr ""
+
+#: lib/languages:19
+msgid "Chinese (traditional)"
+msgstr ""
 
 #: lib/languages:20
 msgid "Croatian"
@@ -7161,15 +7293,23 @@ msgstr "エストニア語"
 msgid "Finnish"
 msgstr "フィンランド語"
 
+#: lib/languages:30
+msgid "French"
+msgstr "フランス語"
+
 #: lib/languages:31
 msgid "Galician"
 msgstr "ガリシア語"
 
-#: lib/languages:34 lib/languages:35
+#: lib/languages:34
 msgid "German"
 msgstr "ドイツ語"
 
-#: lib/languages:36 lib/ui/stdtoolbars.inc:431
+#: lib/languages:35
+msgid "German (new spelling)"
+msgstr "ドイツ語（新綴方）"
+
+#: lib/languages:36 lib/ui/stdtoolbars.inc:436
 msgid "Greek"
 msgstr "ギリシャ文字"
 
@@ -7225,6 +7365,10 @@ msgstr "ノルウェー語（ニーノシュク）"
 msgid "Polish"
 msgstr "ポーランド語"
 
+#: lib/languages:53
+msgid "Portuguese"
+msgstr "ポルトガル語"
+
 #: lib/languages:54
 msgid "Romanian"
 msgstr "ルーマニア語"
@@ -7275,8 +7419,8 @@ msgstr "ウクライナ語"
 
 #: lib/languages:66
 #, fuzzy
-msgid "Upper"
-msgstr "大文字(U)|U"
+msgid "Upper Sorbian"
+msgstr "セルビア語"
 
 #: lib/languages:67
 msgid "Welsh"
@@ -7430,7 +7574,7 @@ msgstr "表(T)|T"
 msgid "Math|M"
 msgstr "数式(M)|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:458
 msgid "Spellchecker...|S"
 msgstr "スペルチェック(S)...|S"
 
@@ -7438,11 +7582,11 @@ msgstr "スペルチェック(S)...|S"
 msgid "Thesaurus..."
 msgstr "類語辞典..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:458
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:460
 msgid "Count Words|W"
 msgstr "単語数(W)|W"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:459
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:461
 msgid "Check TeX|h"
 msgstr "TeX構文チェック(H)|H"
 
@@ -7450,11 +7594,11 @@ msgstr "TeX構文チェック(H)|H"
 msgid "Change Tracking|g"
 msgstr "トラッキングを変更(G)|G"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:468
 msgid "Preferences...|P"
 msgstr "設定(P)...|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:467
 msgid "Reconfigure|R"
 msgstr "再コンフィギュア(R)|R"
 
@@ -7923,40 +8067,40 @@ msgstr "テキストUpright体"
 msgid "Floatflt Figure"
 msgstr "Floatfltの図"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "目次(C)|C"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:380
 msgid "Index List|I"
 msgstr "索引リスト(I)|I"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "Nomenclature|N"
 msgstr "覚え書き(N)|N"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:382
 msgid "BibTeX Bibliography...|B"
 msgstr "BibTeX参考文献...|B"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:384
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:386
 msgid "LyX Document...|X"
 msgstr "LyX文書...|X"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:385
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:387
 msgid "Plain Text...|T"
 msgstr "平文(T)...|T"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:386
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:388
 msgid "Plain Text, Join Lines...|J"
 msgstr "平文(行を連結して)(J)...|J"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:420
 msgid "Track Changes|T"
 msgstr "変更をトラックする(T)...|T"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:421
 msgid "Merge Changes...|M"
 msgstr "変更をマージする(M)...|M"
 
@@ -7968,7 +8112,7 @@ msgstr "全ての変更を受け入れる(A)|A"
 msgid "Reject All Changes|R"
 msgstr "全ての変更をリセットする(R)|R"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:424
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:426
 msgid "Show Changes in Output|S"
 msgstr "出力に変更を表示する(S)|S"
 
@@ -8012,7 +8156,7 @@ msgstr "環境の入れ子を深くする(I)|I"
 msgid "Start Appendix Here|S"
 msgstr "ここから付録を開始(S)|S"
 
-#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:408
+#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:410
 msgid "Build Program|B"
 msgstr "プログラムを作成(B)|B"
 
@@ -8020,7 +8164,7 @@ msgstr "プログラムを作成(B)|B"
 msgid "Update|U"
 msgstr "更新(U)|U"
 
-#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:409
+#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "LaTeXログ|L"
 
@@ -8028,35 +8172,35 @@ msgstr "LaTeXログ|L"
 msgid "TeX Information|X"
 msgstr "TeX情報|X"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:432
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:434
 msgid "Next Note|N"
 msgstr "次のノート(N)|N"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:435
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:437
 msgid "Go to Label|L"
 msgstr "ラベルへ移動(L)|L"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:431
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:433
 msgid "Bookmarks|B"
 msgstr "ブックマーク(B)|B"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:441
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:443
 msgid "Save Bookmark 1|S"
 msgstr "ブックマーク1を保存(S)|S"
 
-#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:442
+#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:444
 msgid "Save Bookmark 2"
 msgstr "ブックマーク2を保存"
 
-#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:443
+#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:445
 msgid "Save Bookmark 3"
 msgstr "ブックマーク3を保存"
 
-#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:444
+#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:446
 msgid "Save Bookmark 4"
 msgstr "ブックマーク4を保存"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:445
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:447
 msgid "Save Bookmark 5"
 msgstr "ブックマーク5を保存"
 
@@ -8080,43 +8224,43 @@ msgstr "ブックマーク4に移動|4"
 msgid "Go to Bookmark 5|5"
 msgstr "ブックマーク5に移動|5"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:473
+#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:475
 msgid "Introduction|I"
 msgstr "LyXの紹介(I)|I"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:476
 msgid "Tutorial|T"
 msgstr "チュートリアル(T)|T"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:475
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:477
 msgid "User's Guide|U"
 msgstr "ユーザーズガイド(U)|U"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:476
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:478
 msgid "Extended Features|E"
 msgstr "拡張機能(E)|E"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:477
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:479
 msgid "Embedded Objects|m"
 msgstr "埋め込みオブジェクト(M)|M"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:478
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:480
 msgid "Customization|C"
 msgstr "カスタマイズ(C)|C"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:479
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:481
 msgid "FAQ|F"
 msgstr "良くある質問(F)|F"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:480
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:482
 msgid "Table of Contents|a"
 msgstr "目次(A)|A"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:481
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:483
 msgid "LaTeX Configuration|L"
 msgstr "LaTeXの設定|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:483
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:485
 msgid "About LyX|X"
 msgstr "LyXについて|X"
 
@@ -8489,7 +8633,7 @@ msgstr "短い表題(S)|S"
 msgid "TeX Code|X"
 msgstr "TeXコード|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:325
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:343
 #, fuzzy
 msgid "Program Listing"
 msgstr "プログラム初期化"
@@ -8569,83 +8713,88 @@ msgstr "数式デリミタ(R)|R"
 msgid "Matrix|x"
 msgstr "数式行列(X)|X"
 
-#: lib/ui/stdmenus.inc:372
+#: lib/ui/stdmenus.inc:368 lib/ui/stdtoolbars.inc:163
+#, fuzzy
+msgid "Toggle Math Panels"
+msgstr "数式パネル"
+
+#: lib/ui/stdmenus.inc:374
 msgid "Text Wrap Float|W"
 msgstr "テキストラップフロート(W)|W"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:390
 msgid "External Material...|M"
 msgstr "外部マテリアル(M)...|M"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:391
 msgid "Child Document...|d"
 msgstr "子文書(D)...|D"
 
-#: lib/ui/stdmenus.inc:393
+#: lib/ui/stdmenus.inc:395
 msgid "LyX Note|N"
 msgstr "LyXノート(N)|N"
 
-#: lib/ui/stdmenus.inc:394
+#: lib/ui/stdmenus.inc:396
 msgid "Comment|C"
 msgstr "コメント(C)|C"
 
-#: lib/ui/stdmenus.inc:395
+#: lib/ui/stdmenus.inc:397
 msgid "Greyed Out|G"
 msgstr "淡色化(G)|G"
 
-#: lib/ui/stdmenus.inc:407
+#: lib/ui/stdmenus.inc:409
 msgid "Change Tracking|C"
 msgstr "トラッキングを変更(C)|C"
 
-#: lib/ui/stdmenus.inc:410
+#: lib/ui/stdmenus.inc:412
 msgid "Table of Contents|T"
 msgstr "目次(T)|T"
 
-#: lib/ui/stdmenus.inc:411
+#: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "ここから付録を開始(A)|A"
 
-#: lib/ui/stdmenus.inc:413
+#: lib/ui/stdmenus.inc:415
 msgid "Compressed|o"
 msgstr "圧縮(O)|O"
 
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/stdmenus.inc:416
 msgid "Settings...|S"
 msgstr "設定(S)...|S"
 
-#: lib/ui/stdmenus.inc:420
+#: lib/ui/stdmenus.inc:422
 msgid "Accept Change|A"
 msgstr "変更を確定(A)|A"
 
-#: lib/ui/stdmenus.inc:421
+#: lib/ui/stdmenus.inc:423
 msgid "Reject Change|R"
 msgstr "変更を破棄(R)|R"
 
-#: lib/ui/stdmenus.inc:422
+#: lib/ui/stdmenus.inc:424
 msgid "Accept All Changes|c"
 msgstr "全ての変更を確定する(C)|C"
 
-#: lib/ui/stdmenus.inc:423
+#: lib/ui/stdmenus.inc:425
 msgid "Reject All Changes|e"
 msgstr "全ての変更を破棄する(E)|E"
 
-#: lib/ui/stdmenus.inc:433
+#: lib/ui/stdmenus.inc:435
 msgid "Next Change|C"
 msgstr "次の変更(C)|C"
 
-#: lib/ui/stdmenus.inc:434
+#: lib/ui/stdmenus.inc:436
 msgid "Next Cross-Reference|R"
 msgstr "次の内部参照(R)|R"
 
-#: lib/ui/stdmenus.inc:446
+#: lib/ui/stdmenus.inc:448
 msgid "Clear Bookmarks|C"
 msgstr "ブックマーク消去(C)|C"
 
-#: lib/ui/stdmenus.inc:457
+#: lib/ui/stdmenus.inc:459
 msgid "Thesaurus...|T"
 msgstr "類語辞典(T)...|T"
 
-#: lib/ui/stdmenus.inc:460
+#: lib/ui/stdmenus.inc:462
 msgid "TeX Information|I"
 msgstr "TeX情報(I)|I"
 
@@ -8701,2472 +8850,2483 @@ msgstr "数式を挿入"
 msgid "Insert graphics"
 msgstr "図を挿入"
 
+#: lib/ui/stdtoolbars.inc:79
+#, fuzzy
+msgid "Toggle Table of Contents"
+msgstr "目次"
+
 #: lib/ui/stdtoolbars.inc:80
+#, fuzzy
+msgid "Toggle Math Toolbar"
+msgstr "全てをトグル(&T)"
+
+#: lib/ui/stdtoolbars.inc:81
+#, fuzzy
+msgid "Toggle Table Toolbar"
+msgstr "全てをトグル(&T)"
+
+#: lib/ui/stdtoolbars.inc:84
 msgid "Extra"
 msgstr "追加"
 
-#: lib/ui/stdtoolbars.inc:82
+#: lib/ui/stdtoolbars.inc:86
 msgid "Numbered list"
 msgstr "番号付きリスト"
 
-#: lib/ui/stdtoolbars.inc:83
+#: lib/ui/stdtoolbars.inc:87
 msgid "Itemized list"
 msgstr "ブリット付きリスト"
 
-#: lib/ui/stdtoolbars.inc:86
+#: lib/ui/stdtoolbars.inc:90
 msgid "Increase depth"
 msgstr "深度を深く"
 
-#: lib/ui/stdtoolbars.inc:87
+#: lib/ui/stdtoolbars.inc:91
 msgid "Decrease depth"
 msgstr "深度を浅く"
 
-#: lib/ui/stdtoolbars.inc:89
+#: lib/ui/stdtoolbars.inc:93
 msgid "Insert figure float"
 msgstr "図フロートの挿入"
 
-#: lib/ui/stdtoolbars.inc:90
+#: lib/ui/stdtoolbars.inc:94
 msgid "Insert table float"
 msgstr "表フロートの挿入"
 
-#: lib/ui/stdtoolbars.inc:91
+#: lib/ui/stdtoolbars.inc:95
 msgid "Insert label"
 msgstr "ラベルを挿入"
 
-#: lib/ui/stdtoolbars.inc:92
+#: lib/ui/stdtoolbars.inc:96
 msgid "Insert cross-reference"
 msgstr "内部参照を挿入"
 
-#: lib/ui/stdtoolbars.inc:93
+#: lib/ui/stdtoolbars.inc:97
 msgid "Insert citation"
 msgstr "参考文献を挿入"
 
-#: lib/ui/stdtoolbars.inc:94
+#: lib/ui/stdtoolbars.inc:98
 msgid "Insert index entry"
 msgstr "索引項目を挿入"
 
-#: lib/ui/stdtoolbars.inc:95
+#: lib/ui/stdtoolbars.inc:99
 #, fuzzy
 msgid "Insert nomenclature entry"
 msgstr "索引項目を挿入"
 
-#: lib/ui/stdtoolbars.inc:97
+#: lib/ui/stdtoolbars.inc:101
 msgid "Insert footnote"
 msgstr "脚注を挿入"
 
-#: lib/ui/stdtoolbars.inc:98
+#: lib/ui/stdtoolbars.inc:102
 msgid "Insert margin note"
 msgstr "傍注を挿入"
 
-#: lib/ui/stdtoolbars.inc:99 lib/ui/stdtoolbars.inc:177
+#: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:182
 msgid "Insert note"
 msgstr "ノートを挿入"
 
-#: lib/ui/stdtoolbars.inc:100
+#: lib/ui/stdtoolbars.inc:104
 msgid "Insert URL"
 msgstr "URLを挿入"
 
-#: lib/ui/stdtoolbars.inc:101
+#: lib/ui/stdtoolbars.inc:105
 msgid "Insert TeX code"
 msgstr "TeXコードを挿入"
 
-#: lib/ui/stdtoolbars.inc:102
+#: lib/ui/stdtoolbars.inc:106
 msgid "Include file"
 msgstr "ファイルを取り込む"
 
-#: lib/ui/stdtoolbars.inc:104
+#: lib/ui/stdtoolbars.inc:108
 msgid "Text style"
 msgstr "本文スタイル"
 
-#: lib/ui/stdtoolbars.inc:105
+#: lib/ui/stdtoolbars.inc:109
 msgid "Paragraph settings"
 msgstr "段落の設定"
 
-#: lib/ui/stdtoolbars.inc:106
-msgid "Table of contents"
-msgstr "目次"
-
-#: lib/ui/stdtoolbars.inc:111 lib/ui/stdtoolbars.inc:155
+#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
 msgid "Add row"
 msgstr "行を追加"
 
-#: lib/ui/stdtoolbars.inc:112 lib/ui/stdtoolbars.inc:156
+#: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
 msgid "Add column"
 msgstr "列を追加"
 
-#: lib/ui/stdtoolbars.inc:113 lib/ui/stdtoolbars.inc:157
+#: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
 msgid "Delete row"
 msgstr "行を削除"
 
-#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
+#: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
 msgid "Delete column"
 msgstr "列を削除"
 
-#: lib/ui/stdtoolbars.inc:116
+#: lib/ui/stdtoolbars.inc:119
 msgid "Set top line"
 msgstr "上罫線を描画"
 
-#: lib/ui/stdtoolbars.inc:117
+#: lib/ui/stdtoolbars.inc:120
 msgid "Set bottom line"
 msgstr "下罫線を描画"
 
-#: lib/ui/stdtoolbars.inc:118
+#: lib/ui/stdtoolbars.inc:121
 msgid "Set left line"
 msgstr "左罫線を描画"
 
-#: lib/ui/stdtoolbars.inc:119
+#: lib/ui/stdtoolbars.inc:122
 msgid "Set right line"
 msgstr "右罫線を描画"
 
-#: lib/ui/stdtoolbars.inc:120
+#: lib/ui/stdtoolbars.inc:123
 msgid "Set all lines"
 msgstr "全ての罫線を描画"
 
-#: lib/ui/stdtoolbars.inc:121
+#: lib/ui/stdtoolbars.inc:124
 msgid "Unset all lines"
 msgstr "全ての罫線を消去"
 
-#: lib/ui/stdtoolbars.inc:123
+#: lib/ui/stdtoolbars.inc:126
 msgid "Align left"
 msgstr "左に揃える"
 
-#: lib/ui/stdtoolbars.inc:124
+#: lib/ui/stdtoolbars.inc:127
 msgid "Align center"
 msgstr "中央に揃える"
 
-#: lib/ui/stdtoolbars.inc:125
+#: lib/ui/stdtoolbars.inc:128
 msgid "Align right"
 msgstr "右に揃える"
 
-#: lib/ui/stdtoolbars.inc:127
+#: lib/ui/stdtoolbars.inc:130
 msgid "Align top"
 msgstr "上に揃える"
 
-#: lib/ui/stdtoolbars.inc:128
+#: lib/ui/stdtoolbars.inc:131
 msgid "Align middle"
 msgstr "真ん中に揃える"
 
-#: lib/ui/stdtoolbars.inc:129
+#: lib/ui/stdtoolbars.inc:132
 msgid "Align bottom"
 msgstr "下に揃える"
 
-#: lib/ui/stdtoolbars.inc:131
+#: lib/ui/stdtoolbars.inc:134
 msgid "Rotate cell"
 msgstr "セルを回転"
 
-#: lib/ui/stdtoolbars.inc:132
+#: lib/ui/stdtoolbars.inc:135
 msgid "Rotate table"
 msgstr "表を回転"
 
-#: lib/ui/stdtoolbars.inc:133
+#: lib/ui/stdtoolbars.inc:136
 msgid "Set multi-column"
 msgstr "連結列にする"
 
-#: lib/ui/stdtoolbars.inc:136
+#: lib/ui/stdtoolbars.inc:139
 msgid "Math"
 msgstr "数式"
 
-#: lib/ui/stdtoolbars.inc:137
+#: lib/ui/stdtoolbars.inc:140
 msgid "Set display mode"
 msgstr "表示モードを設定"
 
-#: lib/ui/stdtoolbars.inc:139
+#: lib/ui/stdtoolbars.inc:142
 msgid "Subscript"
 msgstr "下付き文字"
 
-#: lib/ui/stdtoolbars.inc:140
+#: lib/ui/stdtoolbars.inc:143
 msgid "Superscript"
 msgstr "上付き文字"
 
-#: lib/ui/stdtoolbars.inc:141
+#: lib/ui/stdtoolbars.inc:144
 msgid "Insert square root"
 msgstr "ルートを挿入"
 
-#: lib/ui/stdtoolbars.inc:142
+#: lib/ui/stdtoolbars.inc:145
 msgid "Insert root"
 msgstr "ルートを挿入"
 
-#: lib/ui/stdtoolbars.inc:143
+#: lib/ui/stdtoolbars.inc:146
 msgid "Insert standard fraction"
 msgstr "標準分数を挿入"
 
-#: lib/ui/stdtoolbars.inc:144
+#: lib/ui/stdtoolbars.inc:147
 msgid "Insert sum"
 msgstr "和記号を挿入"
 
-#: lib/ui/stdtoolbars.inc:145
+#: lib/ui/stdtoolbars.inc:148
 msgid "Insert integral"
 msgstr "積分記号を挿入"
 
-#: lib/ui/stdtoolbars.inc:146
+#: lib/ui/stdtoolbars.inc:149
 msgid "Insert product"
 msgstr "積記号を挿入"
 
-#: lib/ui/stdtoolbars.inc:148
+#: lib/ui/stdtoolbars.inc:151
 msgid "Insert ( )"
 msgstr "( ) を挿入"
 
-#: lib/ui/stdtoolbars.inc:149
+#: lib/ui/stdtoolbars.inc:152
 msgid "Insert [ ]"
 msgstr "[ ] を挿入"
 
-#: lib/ui/stdtoolbars.inc:150
+#: lib/ui/stdtoolbars.inc:153
 msgid "Insert { }"
 msgstr "{ } を挿入"
 
-#: lib/ui/stdtoolbars.inc:151
+#: lib/ui/stdtoolbars.inc:154
 msgid "Insert delimiters"
 msgstr "デリミタを挿入"
 
-#: lib/ui/stdtoolbars.inc:153
+#: lib/ui/stdtoolbars.inc:156
 msgid "Insert matrix"
 msgstr "行列を挿入"
 
-#: lib/ui/stdtoolbars.inc:154
+#: lib/ui/stdtoolbars.inc:157
 msgid "Insert cases environment"
 msgstr "Cases環境を挿入"
 
-#: lib/ui/stdtoolbars.inc:161
+#: lib/ui/stdtoolbars.inc:166
 msgid "Command Buffer"
 msgstr "コマンドバッファ"
 
-#: lib/ui/stdtoolbars.inc:165
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Review"
 msgstr "レビュー"
 
-#: lib/ui/stdtoolbars.inc:166
+#: lib/ui/stdtoolbars.inc:171
 msgid "Track changes"
 msgstr "変更をトラックする"
 
-#: lib/ui/stdtoolbars.inc:167
+#: lib/ui/stdtoolbars.inc:172
 #, fuzzy
 msgid "Show changes in output"
 msgstr "出力に変更を表示する"
 
-#: lib/ui/stdtoolbars.inc:169
+#: lib/ui/stdtoolbars.inc:174
 msgid "Next change"
 msgstr "次の変更"
 
-#: lib/ui/stdtoolbars.inc:170
+#: lib/ui/stdtoolbars.inc:175
 msgid "Accept change"
 msgstr "変更を承認"
 
-#: lib/ui/stdtoolbars.inc:171
+#: lib/ui/stdtoolbars.inc:176
 msgid "Reject change"
 msgstr "変更を破棄"
 
-#: lib/ui/stdtoolbars.inc:173
+#: lib/ui/stdtoolbars.inc:178
 #, fuzzy
 msgid "Merge changes"
 msgstr "変更を統合"
 
-#: lib/ui/stdtoolbars.inc:174
+#: lib/ui/stdtoolbars.inc:179
 msgid "Accept all changes"
 msgstr "全ての変更を承認"
 
-#: lib/ui/stdtoolbars.inc:175
+#: lib/ui/stdtoolbars.inc:180
 msgid "Reject all changes"
 msgstr "全ての変更を破棄"
 
-#: lib/ui/stdtoolbars.inc:178
+#: lib/ui/stdtoolbars.inc:183
 msgid "Next note"
 msgstr "次のノート"
 
-#: lib/ui/stdtoolbars.inc:181
+#: lib/ui/stdtoolbars.inc:186
 msgid "View/Update"
 msgstr "表示/更新"
 
-#: lib/ui/stdtoolbars.inc:182
+#: lib/ui/stdtoolbars.inc:187
 msgid "View DVI"
 msgstr "DVIを表示"
 
-#: lib/ui/stdtoolbars.inc:183
+#: lib/ui/stdtoolbars.inc:188
 msgid "Update DVI"
 msgstr "DVIを更新"
 
-#: lib/ui/stdtoolbars.inc:184
+#: lib/ui/stdtoolbars.inc:189
 msgid "View PDF (pdflatex)"
 msgstr "PDF (pdflatex)を表示"
 
-#: lib/ui/stdtoolbars.inc:185
+#: lib/ui/stdtoolbars.inc:190
 msgid "Update PDF (pdflatex)"
 msgstr "PDF (pdflatex)を更新"
 
-#: lib/ui/stdtoolbars.inc:186
+#: lib/ui/stdtoolbars.inc:191
 msgid "View PostScript"
 msgstr "PostScriptを表示"
 
-#: lib/ui/stdtoolbars.inc:187
+#: lib/ui/stdtoolbars.inc:192
 msgid "Update PostScript"
 msgstr "PostScriptを更新"
 
-#: lib/ui/stdtoolbars.inc:190
+#: lib/ui/stdtoolbars.inc:195
 #, fuzzy
 msgid "Math Panels"
 msgstr "数式パネル"
 
-#: lib/ui/stdtoolbars.inc:191
+#: lib/ui/stdtoolbars.inc:196
 #, fuzzy
 msgid "Math Spacings"
 msgstr "スペース"
 
-#: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
+#: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:262
 #, fuzzy
 msgid "Roots"
 msgstr "ルート"
 
-#: lib/ui/stdtoolbars.inc:193 lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:267
 #, fuzzy
 msgid "Styles"
 msgstr "スタイル"
 
-#: lib/ui/stdtoolbars.inc:194 lib/ui/stdtoolbars.inc:269
+#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:274
 msgid "Fractions"
 msgstr "函数"
 
-#: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
-#: src/frontends/qt4/QDocument.cpp:566
+#: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:283
+#: src/frontends/qt4/QDocument.cpp:567
 msgid "Fonts"
 msgstr "フォント"
 
-#: lib/ui/stdtoolbars.inc:196 lib/ui/stdtoolbars.inc:212
+#: lib/ui/stdtoolbars.inc:201 lib/ui/stdtoolbars.inc:217
 msgid "Functions"
 msgstr "函数"
 
-#: lib/ui/stdtoolbars.inc:213
+#: lib/ui/stdtoolbars.inc:218
 msgid "arccos"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:214
+#: lib/ui/stdtoolbars.inc:219
 msgid "arcsin"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:215
+#: lib/ui/stdtoolbars.inc:220
 msgid "arctan"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:216
+#: lib/ui/stdtoolbars.inc:221
 msgid "arg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:217
+#: lib/ui/stdtoolbars.inc:222
 msgid "bmod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:218
+#: lib/ui/stdtoolbars.inc:223
 msgid "cos"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:219
+#: lib/ui/stdtoolbars.inc:224
 msgid "cosh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:220
+#: lib/ui/stdtoolbars.inc:225
 msgid "cot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:221
+#: lib/ui/stdtoolbars.inc:226
 msgid "coth"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:222
+#: lib/ui/stdtoolbars.inc:227
 msgid "csc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:223
+#: lib/ui/stdtoolbars.inc:228
 msgid "deg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:224
+#: lib/ui/stdtoolbars.inc:229
 msgid "det"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:225
+#: lib/ui/stdtoolbars.inc:230
 msgid "dim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:226
+#: lib/ui/stdtoolbars.inc:231
 msgid "exp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:227
+#: lib/ui/stdtoolbars.inc:232
 msgid "gcd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:228
+#: lib/ui/stdtoolbars.inc:233
 msgid "hom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:229
+#: lib/ui/stdtoolbars.inc:234
 msgid "inf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:230
+#: lib/ui/stdtoolbars.inc:235
 msgid "ker"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:231
+#: lib/ui/stdtoolbars.inc:236
 msgid "lg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:232
+#: lib/ui/stdtoolbars.inc:237
 msgid "lim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:233
+#: lib/ui/stdtoolbars.inc:238
 msgid "liminf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:234
+#: lib/ui/stdtoolbars.inc:239
 msgid "limsup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:235
+#: lib/ui/stdtoolbars.inc:240
 msgid "ln"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:236
+#: lib/ui/stdtoolbars.inc:241
 msgid "log"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:237
+#: lib/ui/stdtoolbars.inc:242
 msgid "max"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:238
+#: lib/ui/stdtoolbars.inc:243
 msgid "min"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:239
+#: lib/ui/stdtoolbars.inc:244
 msgid "sec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:245
 msgid "sin"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:241
+#: lib/ui/stdtoolbars.inc:246
 msgid "sinh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:242
+#: lib/ui/stdtoolbars.inc:247
 msgid "sup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:243
+#: lib/ui/stdtoolbars.inc:248
 msgid "tan"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:249
 msgid "tanh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:245
+#: lib/ui/stdtoolbars.inc:250
 msgid "Pr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:248
+#: lib/ui/stdtoolbars.inc:253
 #, fuzzy
 msgid "Spacings"
 msgstr "スペース"
 
-#: lib/ui/stdtoolbars.inc:249
+#: lib/ui/stdtoolbars.inc:254
 #, fuzzy
 msgid "Thin space\t\\,"
 msgstr "小空白\t\\\\,"
 
-#: lib/ui/stdtoolbars.inc:250
+#: lib/ui/stdtoolbars.inc:255
 #, fuzzy
 msgid "Medium space\t\\:"
 msgstr "中空白\t\\\\:"
 
-#: lib/ui/stdtoolbars.inc:251
+#: lib/ui/stdtoolbars.inc:256
 #, fuzzy
 msgid "Thick space\t\\;"
 msgstr "大空白\t\\\\;"
 
-#: lib/ui/stdtoolbars.inc:252
+#: lib/ui/stdtoolbars.inc:257
 #, fuzzy
 msgid "Quadratin space\t\\quad"
 msgstr "4分の1空白\t\\\\quad"
 
-#: lib/ui/stdtoolbars.inc:253
+#: lib/ui/stdtoolbars.inc:258
 #, fuzzy
 msgid "Double quadratin space\t\\qquad"
 msgstr "4分の2空白\t\\\\qquad"
 
-#: lib/ui/stdtoolbars.inc:254
+#: lib/ui/stdtoolbars.inc:259
 #, fuzzy
 msgid "Negative space\t\\!"
 msgstr "負の空白\t\\\\!"
 
-#: lib/ui/stdtoolbars.inc:258
+#: lib/ui/stdtoolbars.inc:263
 #, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "平方根\t\\\\sqrt"
 
-#: lib/ui/stdtoolbars.inc:259
+#: lib/ui/stdtoolbars.inc:264
 #, fuzzy
 msgid "Other root\t\\root"
 msgstr "その他のルート\t\\\\root"
 
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:268
 #, fuzzy
 msgid "Display style\t\\displaystyle"
 msgstr "別行立てスタイル\t\\\\displaystyle"
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:269
 #, fuzzy
 msgid "Normal text style\t\\textstyle"
 msgstr "標準テキストスタイル\t\\\\textstyle"
 
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:270
 #, fuzzy
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Script(小)スタイル\t\\\\scriptstyle"
 
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:271
 #, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Scriptscript(微小)スタイル\t\\\\scriptscriptstyle"
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:275
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "標準\t\\\\frac"
 
-#: lib/ui/stdtoolbars.inc:271
+#: lib/ui/stdtoolbars.inc:276
 #, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "挿入枠はもうありません"
 
-#: lib/ui/stdtoolbars.inc:272
+#: lib/ui/stdtoolbars.inc:277
 msgid "Nice\t\\nicefrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:278
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:279
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:275
+#: lib/ui/stdtoolbars.inc:280
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:284
 #, fuzzy
 msgid "Roman\t\\mathrm"
 msgstr "ローマン体\t\\\\mathrm"
 
-#: lib/ui/stdtoolbars.inc:280
+#: lib/ui/stdtoolbars.inc:285
 #, fuzzy
 msgid "Bold\t\\mathbf"
 msgstr "ボールド体\t\\\\mathbf"
 
-#: lib/ui/stdtoolbars.inc:281
+#: lib/ui/stdtoolbars.inc:286
 #, fuzzy
 msgid "Bold symbol\t\\boldsymbol"
 msgstr "ボールドシンボル\t\\\\boldsymbol"
 
-#: lib/ui/stdtoolbars.inc:282
+#: lib/ui/stdtoolbars.inc:287
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "サンセリフ体\t\\\\mathsf"
 
-#: lib/ui/stdtoolbars.inc:283
+#: lib/ui/stdtoolbars.inc:288
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "イタリック体\t\\\\mathit"
 
-#: lib/ui/stdtoolbars.inc:284
+#: lib/ui/stdtoolbars.inc:289
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "タイプライター体\t\\\\mathtt"
 
-#: lib/ui/stdtoolbars.inc:285
+#: lib/ui/stdtoolbars.inc:290
 #, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "ブラックボード体\t\\\\mathbb"
 
-#: lib/ui/stdtoolbars.inc:286
+#: lib/ui/stdtoolbars.inc:291
 #, fuzzy
 msgid "Fraktur\t\\mathfrak"
 msgstr "フラクツール体\t\\\\mathfrak"
 
-#: lib/ui/stdtoolbars.inc:287
+#: lib/ui/stdtoolbars.inc:292
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "カリグラフィック体\t\\\\mathcal"
 
-#: lib/ui/stdtoolbars.inc:288
+#: lib/ui/stdtoolbars.inc:293
 #, fuzzy
 msgid "Normal text mode\t\\textrm"
 msgstr "標準テキストモード\t\\\\textrm"
 
-#: lib/ui/stdtoolbars.inc:291
+#: lib/ui/stdtoolbars.inc:296
 #, fuzzy
 msgid "Dots"
 msgstr "小点"
 
-#: lib/ui/stdtoolbars.inc:292
+#: lib/ui/stdtoolbars.inc:297
 msgid "ldots"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:293
+#: lib/ui/stdtoolbars.inc:298
 msgid "cdots"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:294
+#: lib/ui/stdtoolbars.inc:299
 msgid "vdots"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:300
 msgid "ddots"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:303
 #, fuzzy
 msgid "Frame Decorations"
 msgstr "上下装飾"
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:304
 msgid "hat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:300
+#: lib/ui/stdtoolbars.inc:305
 msgid "tilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:301
+#: lib/ui/stdtoolbars.inc:306
 msgid "bar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:307
 msgid "grave"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:303
+#: lib/ui/stdtoolbars.inc:308
 msgid "dot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:309
 msgid "check"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:310
 msgid "widehat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:311
 msgid "widetilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:307
+#: lib/ui/stdtoolbars.inc:312
 msgid "vec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:308
+#: lib/ui/stdtoolbars.inc:313
 msgid "acute"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:309
+#: lib/ui/stdtoolbars.inc:314
 msgid "ddot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:310
+#: lib/ui/stdtoolbars.inc:315
 msgid "breve"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:311
+#: lib/ui/stdtoolbars.inc:316
 msgid "overline"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:312
+#: lib/ui/stdtoolbars.inc:317
 msgid "overbrace"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:313
+#: lib/ui/stdtoolbars.inc:318
 msgid "overleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:319
 msgid "overrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:320
 msgid "overleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:321
 msgid "overset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:322
 msgid "underline"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:323
 msgid "underbrace"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:324
 msgid "underleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:325
 msgid "underrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:326
 msgid "underleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:327
 msgid "underset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:330
 msgid "Arrows"
 msgstr "矢印"
 
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:331
 msgid "leftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:327
+#: lib/ui/stdtoolbars.inc:332
 msgid "rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:328
+#: lib/ui/stdtoolbars.inc:333
 msgid "downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:334
 msgid "uparrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:330
+#: lib/ui/stdtoolbars.inc:335
 msgid "updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:331
+#: lib/ui/stdtoolbars.inc:336
 msgid "leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:337
 msgid "Leftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:338
 msgid "Rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:339
 msgid "Downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:340
 msgid "Uparrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:341
 msgid "Updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:342
 msgid "Leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:343
 msgid "Longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:339
+#: lib/ui/stdtoolbars.inc:344
 msgid "Longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:340
+#: lib/ui/stdtoolbars.inc:345
 msgid "Longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:341
+#: lib/ui/stdtoolbars.inc:346
 msgid "longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:342
+#: lib/ui/stdtoolbars.inc:347
 msgid "longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:343
+#: lib/ui/stdtoolbars.inc:348
 msgid "longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:344
+#: lib/ui/stdtoolbars.inc:349
 msgid "leftharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:345
+#: lib/ui/stdtoolbars.inc:350
 msgid "rightharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:346
+#: lib/ui/stdtoolbars.inc:351
 msgid "mapsto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:347
+#: lib/ui/stdtoolbars.inc:352
 msgid "longmapsto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:353
 msgid "nwarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:354
 msgid "nearrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:355
 msgid "leftharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:356
 msgid "rightharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:357
 msgid "hookleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:358
 msgid "hookrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:354
+#: lib/ui/stdtoolbars.inc:359
 msgid "swarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:355
+#: lib/ui/stdtoolbars.inc:360
 msgid "searrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:356 lib/ui/stdtoolbars.inc:626
+#: lib/ui/stdtoolbars.inc:361 lib/ui/stdtoolbars.inc:631
 msgid "rightleftharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:364
 msgid "Operators"
 msgstr "演算子"
 
-#: lib/ui/stdtoolbars.inc:360
+#: lib/ui/stdtoolbars.inc:365
 msgid "pm"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:361
+#: lib/ui/stdtoolbars.inc:366
 msgid "cap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:362
+#: lib/ui/stdtoolbars.inc:367
 msgid "diamond"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:363
+#: lib/ui/stdtoolbars.inc:368
 msgid "oplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:364
+#: lib/ui/stdtoolbars.inc:369
 msgid "mp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:365
+#: lib/ui/stdtoolbars.inc:370
 msgid "cup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:371
 msgid "bigtriangleup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:372
 msgid "ominus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:373
 msgid "times"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:374
 msgid "uplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:375
 msgid "bigtriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:376
 msgid "otimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:377
 msgid "div"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:378
 msgid "sqcap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:379
 msgid "triangleright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:380
 msgid "oslash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:376
+#: lib/ui/stdtoolbars.inc:381
 msgid "cdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:377
+#: lib/ui/stdtoolbars.inc:382
 msgid "sqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:378
+#: lib/ui/stdtoolbars.inc:383
 msgid "triangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:379
+#: lib/ui/stdtoolbars.inc:384
 msgid "odot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:380
+#: lib/ui/stdtoolbars.inc:385
 msgid "star"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:381
+#: lib/ui/stdtoolbars.inc:386
 msgid "vee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:382
+#: lib/ui/stdtoolbars.inc:387
 msgid "amalg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:383
+#: lib/ui/stdtoolbars.inc:388
 msgid "bigcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:384
+#: lib/ui/stdtoolbars.inc:389
 msgid "setminus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:385
+#: lib/ui/stdtoolbars.inc:390
 msgid "wedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:386
+#: lib/ui/stdtoolbars.inc:391
 msgid "dagger"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:387
+#: lib/ui/stdtoolbars.inc:392
 msgid "circ"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:388
+#: lib/ui/stdtoolbars.inc:393
 msgid "bullet"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:389
+#: lib/ui/stdtoolbars.inc:394
 msgid "wr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:395
 msgid "ddagger"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:393
+#: lib/ui/stdtoolbars.inc:398
 msgid "Relations"
 msgstr "関係子"
 
-#: lib/ui/stdtoolbars.inc:394
+#: lib/ui/stdtoolbars.inc:399
 msgid "leq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:395
+#: lib/ui/stdtoolbars.inc:400
 msgid "geq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:396
+#: lib/ui/stdtoolbars.inc:401
 msgid "equiv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:397
+#: lib/ui/stdtoolbars.inc:402
 msgid "models"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:398
+#: lib/ui/stdtoolbars.inc:403
 msgid "prec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:399
+#: lib/ui/stdtoolbars.inc:404
 msgid "succ"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:400
+#: lib/ui/stdtoolbars.inc:405
 msgid "sim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:401
+#: lib/ui/stdtoolbars.inc:406
 msgid "perp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:402
+#: lib/ui/stdtoolbars.inc:407
 msgid "preceq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:403
+#: lib/ui/stdtoolbars.inc:408
 msgid "succeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:404
+#: lib/ui/stdtoolbars.inc:409
 msgid "simeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:405
+#: lib/ui/stdtoolbars.inc:410
 msgid "mid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:406
+#: lib/ui/stdtoolbars.inc:411
 msgid "ll"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:407
+#: lib/ui/stdtoolbars.inc:412
 msgid "gg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:408
+#: lib/ui/stdtoolbars.inc:413
 msgid "asymp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:409
+#: lib/ui/stdtoolbars.inc:414
 msgid "parallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:410
+#: lib/ui/stdtoolbars.inc:415
 msgid "subset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:411
+#: lib/ui/stdtoolbars.inc:416
 msgid "supset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:412
+#: lib/ui/stdtoolbars.inc:417
 msgid "approx"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:418
 msgid "smile"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:419
 msgid "subseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:420
 msgid "supseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:421
 msgid "cong"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:422
 msgid "frown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:423
 msgid "sqsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:424
 msgid "sqsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:425
 msgid "doteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:426
 msgid "neq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:422 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:427 src/lengthcommon.cpp:38
 msgid "in"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:423
+#: lib/ui/stdtoolbars.inc:428
 msgid "ni"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:429
 msgid "propto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:430
 msgid "notin"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:426
+#: lib/ui/stdtoolbars.inc:431
 msgid "vdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:432
 msgid "dashv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:433
 msgid "bowtie"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:437
 msgid "alpha"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:433
+#: lib/ui/stdtoolbars.inc:438
 msgid "beta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:434
+#: lib/ui/stdtoolbars.inc:439
 msgid "gamma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:435
+#: lib/ui/stdtoolbars.inc:440
 msgid "delta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:436
+#: lib/ui/stdtoolbars.inc:441
 msgid "epsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:437
+#: lib/ui/stdtoolbars.inc:442
 msgid "varepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:438
+#: lib/ui/stdtoolbars.inc:443
 msgid "zeta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:439
+#: lib/ui/stdtoolbars.inc:444
 msgid "eta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:445
 msgid "theta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:446
 msgid "vartheta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:442
+#: lib/ui/stdtoolbars.inc:447
 msgid "iota"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:448
 msgid "kappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:449
 msgid "lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:445 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:450 src/lengthcommon.cpp:38
 msgid "mu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:451
 msgid "nu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:452
 msgid "xi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:453
 msgid "pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:449
+#: lib/ui/stdtoolbars.inc:454
 msgid "varpi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:450
+#: lib/ui/stdtoolbars.inc:455
 msgid "rho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:451
+#: lib/ui/stdtoolbars.inc:456
 msgid "sigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:452
+#: lib/ui/stdtoolbars.inc:457
 msgid "varsigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:453
+#: lib/ui/stdtoolbars.inc:458
 msgid "tau"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:454
+#: lib/ui/stdtoolbars.inc:459
 msgid "upsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:455
+#: lib/ui/stdtoolbars.inc:460
 msgid "phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:456
+#: lib/ui/stdtoolbars.inc:461
 msgid "varphi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:457
+#: lib/ui/stdtoolbars.inc:462
 msgid "chi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:458
+#: lib/ui/stdtoolbars.inc:463
 msgid "psi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:459
+#: lib/ui/stdtoolbars.inc:464
 msgid "omega"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:460
+#: lib/ui/stdtoolbars.inc:465
 msgid "Gamma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:461
+#: lib/ui/stdtoolbars.inc:466
 msgid "Delta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:462
+#: lib/ui/stdtoolbars.inc:467
 msgid "Theta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:468
 msgid "Lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:469
 msgid "Xi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:470
 msgid "Pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:471
 msgid "Sigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:472
 msgid "Upsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:473
 msgid "Phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:469
+#: lib/ui/stdtoolbars.inc:474
 msgid "Psi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:470
+#: lib/ui/stdtoolbars.inc:475
 msgid "Omega"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:473
+#: lib/ui/stdtoolbars.inc:478
 msgid "Miscellaneous"
 msgstr "その他"
 
-#: lib/ui/stdtoolbars.inc:474
+#: lib/ui/stdtoolbars.inc:479
 msgid "nabla"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:475
+#: lib/ui/stdtoolbars.inc:480
 msgid "partial"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:476
+#: lib/ui/stdtoolbars.inc:481
 msgid "infty"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:477
+#: lib/ui/stdtoolbars.inc:482
 msgid "prime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:478
+#: lib/ui/stdtoolbars.inc:483
 msgid "ell"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:479
+#: lib/ui/stdtoolbars.inc:484
 msgid "emptyset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:480
+#: lib/ui/stdtoolbars.inc:485
 msgid "exists"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:481
+#: lib/ui/stdtoolbars.inc:486
 msgid "forall"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:482
+#: lib/ui/stdtoolbars.inc:487
 msgid "imath"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:483
+#: lib/ui/stdtoolbars.inc:488
 msgid "jmath"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:484
+#: lib/ui/stdtoolbars.inc:489
 msgid "Re"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:485
+#: lib/ui/stdtoolbars.inc:490
 msgid "Im"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:486
+#: lib/ui/stdtoolbars.inc:491
 msgid "aleph"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:487
+#: lib/ui/stdtoolbars.inc:492
 msgid "wp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:488 lib/ui/stdtoolbars.inc:570
+#: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
 msgid "hbar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:489 lib/ui/stdtoolbars.inc:577
+#: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
 msgid "angle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:490
+#: lib/ui/stdtoolbars.inc:495
 msgid "top"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:491
+#: lib/ui/stdtoolbars.inc:496
 msgid "bot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:492
+#: lib/ui/stdtoolbars.inc:497
 msgid "Vert"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:493
+#: lib/ui/stdtoolbars.inc:498
 msgid "neg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:494
+#: lib/ui/stdtoolbars.inc:499
 msgid "flat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:495
+#: lib/ui/stdtoolbars.inc:500
 msgid "natural"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:496
+#: lib/ui/stdtoolbars.inc:501
 msgid "sharp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:497
+#: lib/ui/stdtoolbars.inc:502
 msgid "surd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:498
+#: lib/ui/stdtoolbars.inc:503
 msgid "triangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:499
+#: lib/ui/stdtoolbars.inc:504
 msgid "diamondsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:500
+#: lib/ui/stdtoolbars.inc:505
 msgid "heartsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:501
+#: lib/ui/stdtoolbars.inc:506
 msgid "clubsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:502
+#: lib/ui/stdtoolbars.inc:507
 msgid "spadesuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:503
+#: lib/ui/stdtoolbars.inc:508
 msgid "textrm \\AA"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:504
+#: lib/ui/stdtoolbars.inc:509
 #, fuzzy
 msgid "textrm \\O"
 msgstr "本文"
 
-#: lib/ui/stdtoolbars.inc:505
+#: lib/ui/stdtoolbars.inc:510
 msgid "mathcircumflex"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:511
 msgid "_"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:512
 msgid "mathrm T"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:513
 msgid "mathbb N"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:514
 msgid "mathbb Z"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:515
 msgid "mathbb Q"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:516
 msgid "mathbb R"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:517
 msgid "mathbb C"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:518
 msgid "mathbb H"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:519
 msgid "mathcal F"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:520
 msgid "mathcal L"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:521
 msgid "mathcal H"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:522
 msgid "mathcal O"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:523
 msgid "phantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:524
 msgid "vphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:520
+#: lib/ui/stdtoolbars.inc:525
 msgid "hphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:523
+#: lib/ui/stdtoolbars.inc:528
 msgid "Big Operators"
 msgstr "大演算子"
 
-#: lib/ui/stdtoolbars.inc:524
-msgid "sum"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:525
-msgid "int"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:526
+#: lib/ui/stdtoolbars.inc:529
 msgid "intop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:527
-msgid "iint"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:528
-msgid "iintop"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:529
-msgid "iiint"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:530
-msgid "iiintop"
+msgid "int"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:531
-msgid "iiiint"
+msgid "iintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:532
-msgid "iiiintop"
+msgid "iint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:533
-msgid "dotsint"
+msgid "iiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:534
-msgid "dotsintop"
+msgid "iiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:535
-msgid "oint"
+msgid "iiiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:536
-msgid "ointop"
+msgid "iiiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:537
-msgid "oiint"
+msgid "dotsintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:538
-msgid "oiintop"
+msgid "dotsint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:539
-msgid "ointctrclockwise"
+msgid "ointop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:540
-msgid "ointctrclockwiseop"
+msgid "oint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:541
-msgid "ointclockwise"
+msgid "oiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:542
-msgid "ointclockwiseop"
+msgid "oiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:543
-msgid "sqint"
+msgid "ointctrclockwiseop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:544
-msgid "sqintop"
+msgid "ointctrclockwise"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:545
-msgid "sqiint"
+msgid "ointclockwiseop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:546
-msgid "sqiintop"
+msgid "ointclockwise"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:547
-msgid "prod"
+msgid "sqintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:548
-msgid "coprod"
+msgid "sqint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:549
-msgid "bigsqcup"
+msgid "sqiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:550
-msgid "bigotimes"
+msgid "sqiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:551
-msgid "bigodot"
+msgid "sum"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
-msgid "bigoplus"
+msgid "prod"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:553
-msgid "bigcap"
+msgid "coprod"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:554
-msgid "bigcup"
+msgid "bigsqcup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:555
-msgid "biguplus"
+msgid "bigotimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:556
-msgid "bigvee"
+msgid "bigodot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:557
-msgid "bigwedge"
+msgid "bigoplus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:558
+msgid "bigcap"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:559
+msgid "bigcup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:560
-msgid "AMS Miscellaneous"
-msgstr "AMS その他"
+msgid "biguplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:561
-msgid "digamma"
+msgid "bigvee"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:562
-msgid "varkappa"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:563
-msgid "beth"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:564
-msgid "daleth"
+msgid "bigwedge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:565
-msgid "gimel"
-msgstr ""
+msgid "AMS Miscellaneous"
+msgstr "AMS その他"
 
 #: lib/ui/stdtoolbars.inc:566
-msgid "ulcorner"
+msgid "digamma"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:567
-msgid "urcorner"
+msgid "varkappa"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:568
-msgid "llcorner"
+msgid "beth"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:569
-msgid "lrcorner"
+msgid "daleth"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:570
+msgid "gimel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:571
-msgid "hslash"
+msgid "ulcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:572
-msgid "vartriangle"
+msgid "urcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:573
-msgid "triangledown"
+msgid "llcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:574
-msgid "square"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:575
-msgid "lozenge"
+msgid "lrcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:576
-msgid "circledS"
+msgid "hslash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:577
+msgid "vartriangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:578
-msgid "measuredangle"
+msgid "triangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:579
-msgid "nexists"
+msgid "square"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:580
-msgid "mho"
+msgid "lozenge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:581
-msgid "Finv"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:582
-msgid "Game"
+msgid "circledS"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:583
-msgid "Bbbk"
+msgid "measuredangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:584
-msgid "backprime"
+msgid "nexists"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:585
-msgid "varnothing"
+msgid "mho"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:586
-msgid "blacktriangle"
+msgid "Finv"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:587
-msgid "blacktriangledown"
+msgid "Game"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:588
-msgid "blacksquare"
+msgid "Bbbk"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:589
-msgid "blacklozenge"
+msgid "backprime"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:590
-msgid "bigstar"
+msgid "varnothing"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:591
-msgid "sphericalangle"
+msgid "blacktriangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:592
-msgid "complement"
+msgid "blacktriangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:593
-msgid "eth"
+msgid "blacksquare"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:594
-msgid "diagup"
+msgid "blacklozenge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:595
-msgid "diagdown"
+msgid "bigstar"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:596
+msgid "sphericalangle"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:597
+msgid "complement"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:598
-msgid "AMS Arrows"
-msgstr "AMS矢印"
+msgid "eth"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:599
-msgid "dashleftarrow"
+msgid "diagup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:600
-msgid "dashrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:601
-msgid "leftleftarrows"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:602
-msgid "leftrightarrows"
+msgid "diagdown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:603
-msgid "rightrightarrows"
-msgstr ""
+msgid "AMS Arrows"
+msgstr "AMS矢印"
 
 #: lib/ui/stdtoolbars.inc:604
-msgid "rightleftarrows"
+msgid "dashleftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:605
-msgid "Lleftarrow"
+msgid "dashrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:606
-msgid "Rrightarrow"
+msgid "leftleftarrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:607
-msgid "twoheadleftarrow"
+msgid "leftrightarrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:608
-msgid "twoheadrightarrow"
+msgid "rightrightarrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:609
-msgid "leftarrowtail"
+msgid "rightleftarrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:610
-msgid "rightarrowtail"
+msgid "Lleftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:611
-msgid "looparrowleft"
+msgid "Rrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:612
-msgid "looparrowright"
+msgid "twoheadleftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:613
-msgid "curvearrowleft"
+msgid "twoheadrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:614
-msgid "curvearrowright"
+msgid "leftarrowtail"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:615
-msgid "circlearrowleft"
+msgid "rightarrowtail"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:616
-msgid "circlearrowright"
+msgid "looparrowleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:617
-msgid "Lsh"
+msgid "looparrowright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:618
-msgid "Rsh"
+msgid "curvearrowleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:619
-msgid "upuparrows"
+msgid "curvearrowright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:620
-msgid "downdownarrows"
+msgid "circlearrowleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:621
-msgid "upharpoonleft"
+msgid "circlearrowright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:622
-msgid "upharpoonright"
+msgid "Lsh"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:623
-msgid "downharpoonleft"
+msgid "Rsh"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:624
-msgid "downharpoonright"
+msgid "upuparrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:625
-msgid "leftrightharpoons"
+msgid "downdownarrows"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:626
+msgid "upharpoonleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:627
-msgid "rightsquigarrow"
+msgid "upharpoonright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:628
-msgid "leftrightsquigarrow"
+msgid "downharpoonleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:629
-msgid "nleftarrow"
+msgid "downharpoonright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:630
-msgid "nrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:631
-msgid "nleftrightarrow"
+msgid "leftrightharpoons"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:632
-msgid "nLeftarrow"
+msgid "rightsquigarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:633
-msgid "nRightarrow"
+msgid "leftrightsquigarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:634
-msgid "nLeftrightarrow"
+msgid "nleftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:635
-msgid "multimap"
+msgid "nrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:636
+msgid "nleftrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:637
+msgid "nLeftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:638
-msgid "AMS Relations"
-msgstr "AMS関係子"
+msgid "nRightarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:639
-msgid "leqq"
+msgid "nLeftrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:640
-msgid "geqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:641
-msgid "leqslant"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:642
-msgid "geqslant"
+msgid "multimap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:643
-msgid "eqslantless"
-msgstr ""
+msgid "AMS Relations"
+msgstr "AMS関係子"
 
 #: lib/ui/stdtoolbars.inc:644
-msgid "eqslantgtr"
+msgid "leqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:645
-msgid "lesssim"
+msgid "geqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:646
-msgid "gtrsim"
+msgid "leqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:647
-msgid "lessapprox"
+msgid "geqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:648
-msgid "gtrapprox"
+msgid "eqslantless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:649
-msgid "approxeq"
+msgid "eqslantgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:650
-msgid "triangleq"
+msgid "lesssim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:651
-msgid "lessdot"
+msgid "gtrsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:652
-msgid "gtrdot"
+msgid "lessapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:653
-msgid "lll"
+msgid "gtrapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:654
-msgid "ggg"
+msgid "approxeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:655
-msgid "lessgtr"
+msgid "triangleq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:656
-msgid "gtrless"
+msgid "lessdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:657
-msgid "lesseqgtr"
+msgid "gtrdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:658
-msgid "gtreqless"
+msgid "lll"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:659
-msgid "lesseqqgtr"
+msgid "ggg"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:660
-msgid "gtreqqless"
+msgid "lessgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:661
-msgid "eqcirc"
+msgid "gtrless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:662
-msgid "circeq"
+msgid "lesseqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:663
-msgid "thicksim"
+msgid "gtreqless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:664
-msgid "thickapprox"
+msgid "lesseqqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:665
-msgid "backsim"
+msgid "gtreqqless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:666
-msgid "backsimeq"
+msgid "eqcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:667
-msgid "subseteqq"
+msgid "circeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:668
-msgid "supseteqq"
+msgid "thicksim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:669
-msgid "Subset"
+msgid "thickapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:670
-msgid "Supset"
+msgid "backsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:671
-msgid "sqsubset"
+msgid "backsimeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:672
-msgid "sqsupset"
+msgid "subseteqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:673
-msgid "preccurlyeq"
+msgid "supseteqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:674
-msgid "succcurlyeq"
+msgid "Subset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:675
-msgid "curlyeqprec"
+msgid "Supset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:676
-msgid "curlyeqsucc"
+msgid "sqsubset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:677
-msgid "precsim"
+msgid "sqsupset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:678
-msgid "succsim"
+msgid "preccurlyeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:679
-msgid "precapprox"
+msgid "succcurlyeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:680
-msgid "succapprox"
+msgid "curlyeqprec"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:681
-msgid "vartriangleleft"
+msgid "curlyeqsucc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:682
-msgid "vartriangleright"
+msgid "precsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:683
-msgid "trianglelefteq"
+msgid "succsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:684
-msgid "trianglerighteq"
+msgid "precapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:685
-msgid "bumpeq"
+msgid "succapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:686
-msgid "Bumpeq"
+msgid "vartriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:687
-msgid "doteqdot"
+msgid "vartriangleright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:688
-msgid "risingdotseq"
+msgid "trianglelefteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:689
-msgid "fallingdotseq"
+msgid "trianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:690
-msgid "vDash"
+msgid "bumpeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:691
-msgid "Vvdash"
+msgid "Bumpeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:692
-msgid "Vdash"
+msgid "doteqdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:693
-msgid "shortmid"
+msgid "risingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:694
-msgid "shortparallel"
+msgid "fallingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:695
-msgid "smallsmile"
+msgid "vDash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:696
-msgid "smallfrown"
+msgid "Vvdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:697
-msgid "blacktriangleleft"
+msgid "Vdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:698
-msgid "blacktriangleright"
+msgid "shortmid"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:699
-msgid "because"
+msgid "shortparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:700
-msgid "therefore"
+msgid "smallsmile"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:701
-msgid "backepsilon"
+msgid "smallfrown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:702
-msgid "varpropto"
+msgid "blacktriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:703
-msgid "between"
+msgid "blacktriangleright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:704
-msgid "pitchfork"
+msgid "because"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:705
+msgid "therefore"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:706
+msgid "backepsilon"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:707
-msgid "AMS Negative Relations"
-msgstr "AMS否定関係子"
+msgid "varpropto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:708
-msgid "nless"
+msgid "between"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:709
-msgid "ngtr"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:710
-msgid "nleq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:711
-msgid "ngeq"
+msgid "pitchfork"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:712
-msgid "nleqslant"
-msgstr ""
+msgid "AMS Negative Relations"
+msgstr "AMS否定関係子"
 
 #: lib/ui/stdtoolbars.inc:713
-msgid "ngeqslant"
+msgid "nless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:714
-msgid "nleqq"
+msgid "ngtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:715
-msgid "ngeqq"
+msgid "nleq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:716
-msgid "lneq"
+msgid "ngeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:717
-msgid "gneq"
+msgid "nleqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:718
-msgid "lneqq"
+msgid "ngeqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:719
-msgid "gneqq"
+msgid "nleqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:720
-msgid "lvertneqq"
+msgid "ngeqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:721
-msgid "gvertneqq"
+msgid "lneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
-msgid "lnsim"
+msgid "gneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:723
-msgid "gnsim"
+msgid "lneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:724
-msgid "lnapprox"
+msgid "gneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:725
-msgid "gnapprox"
+msgid "lvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:726
-msgid "nprec"
+msgid "gvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:727
-msgid "nsucc"
+msgid "lnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:728
-msgid "npreceq"
+msgid "gnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:729
-msgid "nsucceq"
+msgid "lnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:730
-msgid "precnsim"
+msgid "gnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:731
-msgid "succnsim"
+msgid "nprec"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:732
-msgid "precnapprox"
+msgid "nsucc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:733
-msgid "succnapprox"
+msgid "npreceq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:734
-msgid "subsetneq"
+msgid "nsucceq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:735
-msgid "supsetneq"
+msgid "precnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:736
-msgid "subsetneqq"
+msgid "succnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:737
-msgid "supsetneqq"
+msgid "precnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:738
-msgid "nsubseteq"
+msgid "succnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:739
-msgid "nsupseteq"
+msgid "subsetneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:740
-msgid "nsupseteqq"
+msgid "supsetneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:741
-msgid "nvdash"
+msgid "subsetneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:742
-msgid "nvDash"
+msgid "supsetneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:743
-msgid "nVDash"
+msgid "nsubseteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:744
-msgid "varsubsetneq"
+msgid "nsupseteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:745
-msgid "varsupsetneq"
+msgid "nsupseteqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:746
-msgid "varsubsetneqq"
+msgid "nvdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:747
-msgid "varsupsetneqq"
+msgid "nvDash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:748
-msgid "ntriangleleft"
+msgid "nVDash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:749
-msgid "ntriangleright"
+msgid "varsubsetneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:750
-msgid "ntrianglelefteq"
+msgid "varsupsetneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:751
-msgid "ntrianglerighteq"
+msgid "varsubsetneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:752
-msgid "ncong"
+msgid "varsupsetneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:753
-msgid "nsim"
+msgid "ntriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:754
-msgid "nmid"
+msgid "ntriangleright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:755
-msgid "nshortmid"
+msgid "ntrianglelefteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:756
-msgid "nparallel"
+msgid "ntrianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:757
-msgid "nshortparallel"
+msgid "ncong"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:758
+msgid "nsim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:759
+msgid "nmid"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:760
-msgid "AMS Operators"
-msgstr "AMS演算子"
+msgid "nshortmid"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:761
-msgid "dotplus"
+msgid "nparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:762
-msgid "smallsetminus"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:763
-msgid "Cap"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:764
-msgid "Cup"
+msgid "nshortparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:765
-msgid "barwedge"
-msgstr ""
+msgid "AMS Operators"
+msgstr "AMS演算子"
 
 #: lib/ui/stdtoolbars.inc:766
-msgid "veebar"
+msgid "dotplus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:767
-msgid "doublebarwedge"
+msgid "smallsetminus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:768
-msgid "boxminus"
+msgid "Cap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:769
-msgid "boxtimes"
+msgid "Cup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:770
-msgid "boxdot"
+msgid "barwedge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:771
-msgid "boxplus"
+msgid "veebar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:772
-msgid "divideontimes"
+msgid "doublebarwedge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:773
-msgid "ltimes"
+msgid "boxminus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:774
-msgid "rtimes"
+msgid "boxtimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:775
-msgid "leftthreetimes"
+msgid "boxdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:776
-msgid "rightthreetimes"
+msgid "boxplus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:777
-msgid "curlywedge"
+msgid "divideontimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:778
-msgid "curlyvee"
+msgid "ltimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:779
-msgid "circleddash"
+msgid "rtimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:780
-msgid "circledast"
+msgid "leftthreetimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:781
-msgid "circledcirc"
+msgid "rightthreetimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:782
-msgid "centerdot"
+msgid "curlywedge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:783
+msgid "curlyvee"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:784
+msgid "circleddash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:785
+msgid "circledast"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:786
+msgid "circledcirc"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:787
+msgid "centerdot"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:788
 msgid "intercal"
 msgstr ""
 
@@ -11350,7 +11510,7 @@ msgstr ""
 "\n"
 "文書を保存しますか，それとも変更を廃棄しますか？"
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:733
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:738
 msgid "Save changed document?"
 msgstr "変更した文書を保存しますか？"
 
@@ -11410,11 +11570,11 @@ msgstr ""
 "\n"
 "ファイルに保存されている版に戻しますか？"
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:907
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:912
 msgid "Revert to saved document?"
 msgstr "保存されている文書に復帰しますか？"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:908 src/LyXVC.cpp:175
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 msgid "&Revert"
 msgstr "元に戻す(&R)"
 
@@ -11495,8 +11655,8 @@ msgstr "単語数の勘定"
 msgid "Select LyX document to insert"
 msgstr "挿入するLyX文書を選択して下さい"
 
-#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1878 src/LyXFunc.cpp:1917
-#: src/LyXFunc.cpp:1990 src/callback.cpp:136
+#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1891 src/LyXFunc.cpp:1930
+#: src/LyXFunc.cpp:2003 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11505,17 +11665,17 @@ msgstr "挿入するLyX文書を選択して下さい"
 msgid "Documents|#o#O"
 msgstr "文書(O)|#o#O"
 
-#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1918 src/LyXFunc.cpp:1991
+#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1931 src/LyXFunc.cpp:2004
 msgid "Examples|#E#e"
 msgstr "用例(E)|#E#e"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1883 src/LyXFunc.cpp:1922
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1896 src/LyXFunc.cpp:1935
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX文書 (*.lyx)"
 
-#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1932 src/LyXFunc.cpp:2012
-#: src/LyXFunc.cpp:2026 src/LyXFunc.cpp:2042
+#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1945 src/LyXFunc.cpp:2025
+#: src/LyXFunc.cpp:2039 src/LyXFunc.cpp:2055
 msgid "Canceled."
 msgstr "取り消されました"
 
@@ -11603,7 +11763,7 @@ msgstr "LaTeXテキスト"
 msgid "previewed snippet"
 msgstr "プレビューの断片"
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:311
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:323
 msgid "note"
 msgstr "覚え書き"
 
@@ -11872,7 +12032,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "定義されていない文字スタイルです"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1070
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -11883,11 +12043,11 @@ msgstr ""
 "\n"
 "そのファイルに上書きしますか？"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1073
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
 msgid "Over-write file?"
 msgstr "ファイルを上書きしますか？"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1074 src/LyXFunc.cpp:2039
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052
 #: src/callback.cpp:170
 msgid "&Over-write"
 msgstr "上書き(&O)"
@@ -11942,16 +12102,19 @@ msgstr "文書は%1$sとしてエクスポートされました。"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:870
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "ローマン体"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:874
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "サンセリフ体"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:878
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "タイプライタ体"
 
@@ -12344,7 +12507,7 @@ msgstr "何もしません"
 msgid "Unknown action"
 msgstr "未知の動作です。"
 
-#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:717
+#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:722
 msgid "Command disabled"
 msgstr "コマンドは無効です"
 
@@ -12352,15 +12515,15 @@ msgstr "コマンドは無効です"
 msgid "Command not allowed without any document open"
 msgstr "文書が一つも開かれていないときには、このコマンドは使うことができません"
 
-#: src/LyXFunc.cpp:703
+#: src/LyXFunc.cpp:708
 msgid "Document is read-only"
 msgstr "文書が読込専用です"
 
-#: src/LyXFunc.cpp:711
+#: src/LyXFunc.cpp:716
 msgid "This portion of the document is deleted."
 msgstr "文書のこの部分は削除されました。"
 
-#: src/LyXFunc.cpp:730
+#: src/LyXFunc.cpp:735
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12371,7 +12534,7 @@ msgstr ""
 "\n"
 "この文書を保存しますか？"
 
-#: src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:753
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12380,11 +12543,11 @@ msgstr ""
 "文書「%1$s」を印刷することができませんでした。\n"
 "プリンタが正しくセットアップされていることを確認してください。"
 
-#: src/LyXFunc.cpp:751
+#: src/LyXFunc.cpp:756
 msgid "Print document failed"
 msgstr "文書の印刷に失敗しました"
 
-#: src/LyXFunc.cpp:770
+#: src/LyXFunc.cpp:775
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12393,20 +12556,20 @@ msgstr ""
 "文書を文書クラス「%1$s」に\n"
 "変換することができませんでした。"
 
-#: src/LyXFunc.cpp:773
+#: src/LyXFunc.cpp:778
 msgid "Could not change class"
 msgstr "クラスを変更することができませんでした"
 
-#: src/LyXFunc.cpp:885
+#: src/LyXFunc.cpp:890
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "文書を保存中です: %1$s..."
 
-#: src/LyXFunc.cpp:889
+#: src/LyXFunc.cpp:894
 msgid " done."
 msgstr "終わりました。"
 
-#: src/LyXFunc.cpp:905
+#: src/LyXFunc.cpp:910
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -12415,81 +12578,81 @@ msgstr ""
 "全ての変更点は失われます。文書「%1$s」を，本当に保存されている版に戻します"
 "か？"
 
-#: src/LyXFunc.cpp:1097
+#: src/LyXFunc.cpp:1102
 msgid "Exiting."
 msgstr "終了しまっせ。"
 
-#: src/LyXFunc.cpp:1115 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
 msgid "Missing argument"
 msgstr "引数がありません"
 
-#: src/LyXFunc.cpp:1124
+#: src/LyXFunc.cpp:1129
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "ヘルプファイルを開いています: %1$s..."
 
-#: src/LyXFunc.cpp:1411
+#: src/LyXFunc.cpp:1416
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "子文書%1$sを開いています..."
 
-#: src/LyXFunc.cpp:1498
+#: src/LyXFunc.cpp:1503
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "文法: set-color <lyx名> <x11名>"
 
-#: src/LyXFunc.cpp:1509
+#: src/LyXFunc.cpp:1514
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\"は失敗しました。───色が未定義か、再定義されていない可能性が"
 "あります。"
 
-#: src/LyXFunc.cpp:1623
+#: src/LyXFunc.cpp:1628
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文書既定値を%1$sに保存しました"
 
-#: src/LyXFunc.cpp:1626
+#: src/LyXFunc.cpp:1631
 msgid "Unable to save document defaults"
 msgstr "文書デフォルトを保存することができませんでした"
 
-#: src/LyXFunc.cpp:1682
+#: src/LyXFunc.cpp:1687
 msgid "Converting document to new document class..."
 msgstr "文書を新しい文書クラスに変換しています..."
 
-#: src/LyXFunc.cpp:1876
+#: src/LyXFunc.cpp:1889
 msgid "Select template file"
 msgstr "テンプレートファイルを選んでください"
 
-#: src/LyXFunc.cpp:1879 src/callback.cpp:137
+#: src/LyXFunc.cpp:1892 src/callback.cpp:137
 msgid "Templates|#T#t"
 msgstr "テンプレート(T)|#T#t"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1928
 msgid "Select document to open"
 msgstr "開く文書を選んでください"
 
-#: src/LyXFunc.cpp:1954
+#: src/LyXFunc.cpp:1967
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "文書%1$sを開いています..."
 
-#: src/LyXFunc.cpp:1958
+#: src/LyXFunc.cpp:1971
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文書 %1$s を開きました。"
 
-#: src/LyXFunc.cpp:1960
+#: src/LyXFunc.cpp:1973
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "文書 %1$s を開くことができませんでした。"
 
-#: src/LyXFunc.cpp:1985
+#: src/LyXFunc.cpp:1998
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "インポートするファイルとして %1$s を選択します"
 
-#: src/LyXFunc.cpp:2036 src/callback.cpp:167
+#: src/LyXFunc.cpp:2049 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12500,11 +12663,11 @@ msgstr ""
 "\n"
 "文書を上書きしますか？"
 
-#: src/LyXFunc.cpp:2038 src/callback.cpp:169
+#: src/LyXFunc.cpp:2051 src/callback.cpp:169
 msgid "Over-write document?"
 msgstr "文書を上書きしますか？"
 
-#: src/LyXFunc.cpp:2109
+#: src/LyXFunc.cpp:2122
 msgid "Welcome to LyX!"
 msgstr "LyXへようこそ！"
 
@@ -13047,11 +13210,21 @@ msgstr "平文(行を連結して)"
 msgid "Master Document"
 msgstr "マスター文書"
 
-#: src/MenuBackend.cpp:746
+#: src/MenuBackend.cpp:743
+#, fuzzy
+msgid "List of listings"
+msgstr "図一覧"
+
+#: src/MenuBackend.cpp:747
+#, fuzzy
+msgid "Other floats"
+msgstr "その他のフォント設定"
+
+#: src/MenuBackend.cpp:757
 msgid "No Table of contents"
 msgstr "目次がありません"
 
-#: src/MenuBackend.cpp:791
+#: src/MenuBackend.cpp:802
 msgid " (auto)"
 msgstr " (自動)"
 
@@ -13137,7 +13310,7 @@ msgstr ", 深度: %1$d"
 msgid ", Spacing: "
 msgstr ", 行間: "
 
-#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:232
+#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:233
 msgid "OneHalf"
 msgstr "半行"
 
@@ -13169,16 +13342,16 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ", 境界: "
 
-#: src/Text2.cpp:540
+#: src/Text2.cpp:588
 #, fuzzy
 msgid "No font change defined."
 msgstr "次の変更に行く"
 
-#: src/Text2.cpp:581
+#: src/Text2.cpp:629
 msgid "Nothing to index!"
 msgstr "索引にするものがありません！"
 
-#: src/Text2.cpp:583
+#: src/Text2.cpp:631
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
@@ -13198,11 +13371,11 @@ msgstr "割り付け"
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1419 src/Text3.cpp:1431
+#: src/Text3.cpp:1420 src/Text3.cpp:1432
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1565
+#: src/Text3.cpp:1566
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -13319,15 +13492,15 @@ msgstr ""
 msgid "Could not read template"
 msgstr "テンプレートを読めませんでした。"
 
-#: src/buffer_funcs.cpp:523
+#: src/buffer_funcs.cpp:527
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:529
+#: src/buffer_funcs.cpp:533
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:532
+#: src/buffer_funcs.cpp:536
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -14061,11 +14234,11 @@ msgid "Activated"
 msgstr "有効化"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:813
+#: src/frontends/qt4/QDocument.cpp:817
 msgid "Yes"
 msgstr "はい"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:812
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:816
 msgid "No"
 msgstr "いいえ"
 
@@ -14229,147 +14402,155 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:226
+#: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:327 src/frontends/qt4/QListings.cpp:409
+#: src/frontends/qt4/QListings.cpp:441
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:227
 msgid "Length"
 msgstr "長さ"
 
-#: src/frontends/qt4/QDocument.cpp:271 src/frontends/qt4/QDocument.cpp:277
-#: src/frontends/qt4/QDocument.cpp:283
+#: src/frontends/qt4/QDocument.cpp:272 src/frontends/qt4/QDocument.cpp:278
+#: src/frontends/qt4/QDocument.cpp:284
 msgid " (not installed)"
 msgstr "（インストールされていません）"
 
-#: src/frontends/qt4/QDocument.cpp:287 src/frontends/qt4/QDocument.cpp:324
-#: src/frontends/qt4/QDocument.cpp:722
+#: src/frontends/qt4/QDocument.cpp:288 src/frontends/qt4/QDocument.cpp:325
+#: src/frontends/qt4/QDocument.cpp:726
 msgid "default"
 msgstr "既定値"
 
-#: src/frontends/qt4/QDocument.cpp:288
+#: src/frontends/qt4/QDocument.cpp:289
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocument.cpp:289
+#: src/frontends/qt4/QDocument.cpp:290
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocument.cpp:290
+#: src/frontends/qt4/QDocument.cpp:291
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocument.cpp:325
+#: src/frontends/qt4/QDocument.cpp:326
 msgid "empty"
 msgstr "空"
 
-#: src/frontends/qt4/QDocument.cpp:326
+#: src/frontends/qt4/QDocument.cpp:327 src/frontends/qt4/QListings.cpp:140
 msgid "plain"
 msgstr "プレーン（plain）"
 
-#: src/frontends/qt4/QDocument.cpp:327
+#: src/frontends/qt4/QDocument.cpp:328
 msgid "headings"
 msgstr "設定（headings）"
 
-#: src/frontends/qt4/QDocument.cpp:328
+#: src/frontends/qt4/QDocument.cpp:329
 msgid "fancy"
 msgstr "装飾的（fancy）"
 
-#: src/frontends/qt4/QDocument.cpp:344
+#: src/frontends/qt4/QDocument.cpp:345
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocument.cpp:345
+#: src/frontends/qt4/QDocument.cpp:346
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocument.cpp:448
+#: src/frontends/qt4/QDocument.cpp:449
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX既定値"
 
-#: src/frontends/qt4/QDocument.cpp:454
+#: src/frontends/qt4/QDocument.cpp:455
 msgid "``text''"
 msgstr "``テキスト''"
 
-#: src/frontends/qt4/QDocument.cpp:455
+#: src/frontends/qt4/QDocument.cpp:456
 msgid "''text''"
 msgstr "''テキスト''"
 
-#: src/frontends/qt4/QDocument.cpp:456
+#: src/frontends/qt4/QDocument.cpp:457
 msgid ",,text``"
 msgstr ",,テキスト``"
 
-#: src/frontends/qt4/QDocument.cpp:457
+#: src/frontends/qt4/QDocument.cpp:458
 msgid ",,text''"
 msgstr ",,テキスト''"
 
-#: src/frontends/qt4/QDocument.cpp:458
+#: src/frontends/qt4/QDocument.cpp:459
 msgid "<<text>>"
 msgstr "<<テキスト>>"
 
-#: src/frontends/qt4/QDocument.cpp:459
+#: src/frontends/qt4/QDocument.cpp:460
 msgid ">>text<<"
 msgstr ">>テキスト<<"
 
-#: src/frontends/qt4/QDocument.cpp:475
+#: src/frontends/qt4/QDocument.cpp:476
 msgid "Numbered"
 msgstr "連番を振る"
 
-#: src/frontends/qt4/QDocument.cpp:476
+#: src/frontends/qt4/QDocument.cpp:477
 msgid "Appears in TOC"
 msgstr "目次に載せる"
 
-#: src/frontends/qt4/QDocument.cpp:496
+#: src/frontends/qt4/QDocument.cpp:497
 msgid "Author-year"
 msgstr "著者‐年"
 
-#: src/frontends/qt4/QDocument.cpp:497
+#: src/frontends/qt4/QDocument.cpp:498
 msgid "Numerical"
 msgstr "連番"
 
-#: src/frontends/qt4/QDocument.cpp:539
+#: src/frontends/qt4/QDocument.cpp:540
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "利用不能: %1$s"
 
-#: src/frontends/qt4/QDocument.cpp:565 src/frontends/qt4/QDocument.cpp:578
+#: src/frontends/qt4/QDocument.cpp:566 src/frontends/qt4/QDocument.cpp:579
 msgid "Document Class"
 msgstr "文書クラス"
 
-#: src/frontends/qt4/QDocument.cpp:567
+#: src/frontends/qt4/QDocument.cpp:568
 msgid "Text Layout"
 msgstr "本文レイアウト"
 
-#: src/frontends/qt4/QDocument.cpp:568
+#: src/frontends/qt4/QDocument.cpp:569
 msgid "Page Layout"
 msgstr "ページレイアウト"
 
-#: src/frontends/qt4/QDocument.cpp:569
+#: src/frontends/qt4/QDocument.cpp:570
 msgid "Page Margins"
 msgstr "ページ余白"
 
-#: src/frontends/qt4/QDocument.cpp:571
+#: src/frontends/qt4/QDocument.cpp:572
 msgid "Numbering & TOC"
 msgstr "連番と目次"
 
-#: src/frontends/qt4/QDocument.cpp:573
+#: src/frontends/qt4/QDocument.cpp:574
 msgid "Math Options"
 msgstr "数学オプション"
 
-#: src/frontends/qt4/QDocument.cpp:574
+#: src/frontends/qt4/QDocument.cpp:575
 msgid "Float Placement"
 msgstr "フロートの配置"
 
-#: src/frontends/qt4/QDocument.cpp:575
+#: src/frontends/qt4/QDocument.cpp:576
 msgid "Bullets"
 msgstr "ブリット"
 
-#: src/frontends/qt4/QDocument.cpp:576
+#: src/frontends/qt4/QDocument.cpp:577
 msgid "Branches"
 msgstr "ブランチ"
 
-#: src/frontends/qt4/QDocument.cpp:577 src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:578 src/frontends/qt4/QDocument.cpp:590
 msgid "LaTeX Preamble"
 msgstr "LaTeX プリアンブル"
 
-#: src/frontends/qt4/QDocument.cpp:1364
+#: src/frontends/qt4/QDocument.cpp:1368
 msgid "Document Settings"
 msgstr "文書の設定"
 
@@ -14393,11 +14574,38 @@ msgstr "フロートの設定"
 msgid "Graphics"
 msgstr "図"
 
-#: src/frontends/qt4/QInclude.cpp:171
+#: src/frontends/qt4/QInclude.cpp:172
 msgid "Child Document"
 msgstr "子文書"
 
-#: src/frontends/qt4/QListings.cpp:183
+#: src/frontends/qt4/QInclude.cpp:251
+msgid "caption parameter is not quoted with braces"
+msgstr ""
+
+#: src/frontends/qt4/QInclude.cpp:258
+msgid "label parameter is not quoted with braces"
+msgstr ""
+
+#: src/frontends/qt4/QListings.cpp:63
+#, fuzzy
+msgid "No language"
+msgstr "言語"
+
+#: src/frontends/qt4/QListings.cpp:138
+#, fuzzy
+msgid "common"
+msgstr "コメント"
+
+#: src/frontends/qt4/QListings.cpp:141
+msgid "primitive"
+msgstr ""
+
+#: src/frontends/qt4/QListings.cpp:371
+#, fuzzy
+msgid "No dialect"
+msgstr "図表がありません"
+
+#: src/frontends/qt4/QListings.cpp:396
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "段落の設定"
@@ -14738,7 +14946,7 @@ msgstr "ERT"
 msgid "Opened Environment Inset: "
 msgstr "展開された環境挿入枠: "
 
-#: src/insets/InsetExternal.cpp:576
+#: src/insets/InsetExternal.cpp:577
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "外部テンプレート %1$s はインストールされていません"
@@ -14781,7 +14989,7 @@ msgstr "展開された脚注挿入枠です"
 msgid "footnote"
 msgstr "脚注"
 
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:461
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:497
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14792,12 +15000,12 @@ msgstr ""
 "%1$s\n"
 "を作業ディレクトリにコピーすることができませんでした。"
 
-#: src/insets/InsetGraphics.cpp:709
+#: src/insets/InsetGraphics.cpp:710
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "%1$s は，変換する必要がまったくありません"
 
-#: src/insets/InsetGraphics.cpp:821
+#: src/insets/InsetGraphics.cpp:822
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "画像ファイル: %1$s"
@@ -14806,15 +15014,29 @@ msgstr "画像ファイル: %1$s"
 msgid "Horizontal Fill"
 msgstr "水平フィル"
 
-#: src/insets/InsetInclude.cpp:316
+#: src/insets/InsetInclude.cpp:331
 msgid "Verbatim Input"
 msgstr "Verbatim Input"
 
-#: src/insets/InsetInclude.cpp:319
+#: src/insets/InsetInclude.cpp:334
 msgid "Verbatim Input*"
 msgstr "Verbatim Input*"
 
-#: src/insets/InsetInclude.cpp:424
+#: src/insets/InsetInclude.cpp:341
+#, fuzzy
+msgid "Program Listing "
+msgstr "プログラム初期化"
+
+#: src/insets/InsetInclude.cpp:424 src/insets/InsetInclude.cpp:590
+msgid "Recursive input"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:425 src/insets/InsetInclude.cpp:591
+#, c-format
+msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:460
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -14825,7 +15047,7 @@ msgstr ""
 "インクルードしたファイル「%1$s」は\n"
 "テキストクラス「%2$s」を使っています。"
 
-#: src/insets/InsetInclude.cpp:430
+#: src/insets/InsetInclude.cpp:466
 msgid "Different textclasses"
 msgstr "違うテキストクラスです"
 
@@ -14837,10 +15059,140 @@ msgstr "索引語"
 msgid "Index"
 msgstr "索引"
 
-#: src/insets/InsetListings.cpp:128
+#: src/insets/InsetListings.cpp:124
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "展開されたキャプション挿入枠"
+
+#: src/insets/InsetListingsParams.cpp:109
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:110
+msgid ""
+"none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
+"trblTRBL"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:112
+msgid ""
+"Enter four letters (either t = round or f = square) for top right, bottom "
+"right, bottom left and top left corner."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:113
+msgid "Enter something like \\color{white}"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:128
+msgid "Expect a number with an optional * before it"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:170
+msgid "auto, last or a number"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:175
+msgid ""
+"This parameter should not be entered here. Please use caption editbox "
+"(Include dialog) or insert->caption (listings inset)"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:178
+msgid ""
+"This parameter should not be entered here. Please use label editbox (Include "
+"dialog) or insert->caption (listings inset)"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:282
+msgid "Invalid (empty) listings param name."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:293
+#, c-format
+msgid "Available listings parameters are %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:316
+#, fuzzy, c-format
+msgid "Unknown listings param name: %1$s"
+msgstr "不明なパラメーター名: "
+
+#: src/insets/InsetListingsParams.cpp:319
+#, c-format
+msgid "Parameters starting with '%1$s': %2$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:343
+msgid "A value is expected"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:346
+#: src/insets/InsetListingsParams.cpp:359
+#: src/insets/InsetListingsParams.cpp:373
+#: src/insets/InsetListingsParams.cpp:387
+#: src/insets/InsetListingsParams.cpp:414
+#: src/insets/InsetListingsParams.cpp:450
+msgid "Unbalanced braces!"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:353
+msgid "Please specify true or false"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:356
+#, c-format
+msgid "Only true or false is allowed for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:367
+msgid "Please specify an integer value"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:370
+#, c-format
+msgid "An integer is expected for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:381
+msgid "Please specify a latex length expression"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:384
+#, c-format
+msgid "Invalid latex length expression for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:395
+#, c-format
+msgid "Please specify one of %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:429
+#, c-format
+msgid "Try one of %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:432
+#, c-format
+msgid "I guess you mean %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:441
+#, c-format
+msgid "Please specify one or more of '%1$s'"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:447
+#, c-format
+msgid "Parameter %1$s should be composed of one or more of %2$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:502
+#, c-format
+msgid "Parameter %1$s has already been defined"
+msgstr ""
 
 #: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
 #: src/insets/InsetMarginal.cpp:70
@@ -14899,47 +15251,47 @@ msgstr "ページ消去"
 msgid "Clear Double Page"
 msgstr "両ページ消去"
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "参照："
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "数式"
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "数式参照: "
 
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "頁数"
 
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "頁："
 
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "本文頁数"
 
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "本文頁："
 
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "標準＋原文ページ"
 
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "参照＋本文："
 
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "装飾参照"
 
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "フォーマット参照: "
@@ -14965,14 +15317,6 @@ msgstr "連結列を垂直方向に設定することはできません。"
 msgid "Opened Text Inset"
 msgstr "展開されたテキスト挿入枠"
 
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "定理"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "展開された定理挿入枠"
-
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
 msgstr "URL: "
@@ -14981,7 +15325,7 @@ msgstr "URL: "
 msgid "HtmlUrl: "
 msgstr "HTMLのURL: "
 
-#: src/insets/InsetVSpace.cpp:110
+#: src/insets/InsetVSpace.cpp:111
 msgid "Vertical Space"
 msgstr "縦方向の空白"
 
@@ -15133,11 +15477,6 @@ msgstr "文字列が置換されました。"
 msgid " strings have been replaced."
 msgstr " 個の文字列が置換されました。"
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " マクロ: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -15200,6 +15539,11 @@ msgstr "新しい数式テキスト環境を作成する ($...$)"
 #: src/mathed/InsetMathNest.cpp:856
 msgid "entered math text mode (textrm)"
 msgstr "挿入された数式テキストモード (textrm)"
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " マクロ: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
@@ -15315,6 +15659,27 @@ msgid "Unknown user"
 msgstr "未知のユーザー"
 
 #, fuzzy
+#~ msgid "OK"
+#~ msgstr "&OK"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "部数"
+
+#, fuzzy
+#~ msgid "Upper"
+#~ msgstr "大文字(U)|U"
+
+#~ msgid "Table of contents"
+#~ msgstr "目次"
+
+#~ msgid "theorem"
+#~ msgstr "定理"
+
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "展開された定理挿入枠"
+
+#, fuzzy
 #~ msgid "Number style"
 #~ msgstr "番号付きリスト"
 
@@ -15379,22 +15744,6 @@ msgstr "未知のユーザー"
 #, fuzzy
 #~ msgid "SubSection"
 #~ msgstr "小節"
-
-#~ msgid "Austrian (new spelling)"
-#~ msgstr "オーストリア語（新綴方）"
-
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "ポルトガル語(ブラジル)"
-
-#~ msgid "French Canadian"
-#~ msgstr "カナダフランス語"
-
-#~ msgid "German (new spelling)"
-#~ msgstr "ドイツ語（新綴方）"
-
-#, fuzzy
-#~ msgid "Upper Sorbian"
-#~ msgstr "セルビア語"
 
 #~ msgid ""
 #~ "No font change defined. Use Character under the Layout menu to define "

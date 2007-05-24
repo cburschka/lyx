@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-18 00:09+0100\n"
+"POT-Creation-Date: 2007-05-24 18:49+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -67,6 +67,7 @@ msgstr "Povzetek"
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:702
 #: src/frontends/qt4/ui/IncludeUi.ui:227 src/frontends/qt4/ui/IndexUi.ui:82
+#: src/frontends/qt4/ui/ListingsUi.ui:577
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
 #: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
@@ -79,9 +80,10 @@ msgstr "&V redu"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:735 src/LyXFunc.cpp:908
-#: src/LyXFunc.cpp:1074 src/LyXFunc.cpp:2039 src/LyXVC.cpp:175
+#: src/frontends/qt4/ui/DocumentUi.ui:152
+#: src/frontends/qt4/ui/ListingsUi.ui:597 src/BufferList.cpp:114
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:740 src/LyXFunc.cpp:913
+#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
@@ -169,9 +171,8 @@ msgstr "&Dodaj"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:534
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Preklièi"
 
@@ -261,8 +262,9 @@ msgstr "S&log"
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr ""
 
-#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/TabularUi.ui:702
-#: src/frontends/qt4/ui/TabularUi.ui:721 src/frontends/qt4/ui/TabularUi.ui:769
+#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/ListingsUi.ui:323
+#: src/frontends/qt4/ui/TabularUi.ui:702 src/frontends/qt4/ui/TabularUi.ui:721
+#: src/frontends/qt4/ui/TabularUi.ui:769
 #: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.cpp:100
 #: src/frontends/qt4/QBox.cpp:268 src/frontends/qt4/QBox.cpp:384
 msgid "None"
@@ -325,8 +327,9 @@ msgstr "Poravnava"
 msgid "Horizontal alignment of the content inside the box"
 msgstr "Vodoravna poravnava v stolpcu"
 
-#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/TabularUi.ui:145
-#: src/frontends/qt4/ui/WrapUi.ui:58 src/frontends/qt4/QTabular.cpp:741
+#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:328
+#: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
+#: src/frontends/qt4/QTabular.cpp:741
 msgid "Left"
 msgstr "Levo"
 
@@ -337,8 +340,9 @@ msgstr "Levo"
 msgid "Center"
 msgstr "Sredina"
 
-#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/TabularUi.ui:155
-#: src/frontends/qt4/ui/WrapUi.ui:63 src/frontends/qt4/QTabular.cpp:743
+#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:333
+#: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
+#: src/frontends/qt4/QTabular.cpp:743
 msgid "Right"
 msgstr "Desno"
 
@@ -407,6 +411,7 @@ msgstr "&Obnovi"
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/ListingsUi.ui:587
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
@@ -481,47 +486,55 @@ msgstr "Ve&likost:"
 #: src/frontends/qt4/ui/ParagraphUi.ui:214
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
-#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
+#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:71 src/frontends/qt4/QDocument.cpp:82
-#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:336
+#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:337
+#: src/frontends/qt4/QListings.cpp:155 src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "privzeta"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:960
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "drobna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:964
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "najmanj¹a"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:968
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "manj¹a"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:972
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "majhna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:976
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "navadna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:980
+#: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "velika"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:984
+#: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "veèja"
 
@@ -608,8 +621,8 @@ msgstr "Vrste pisav"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:105 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
+#: src/frontends/qt4/ui/ListingsUi.ui:258 lib/layouts/europecv.layout:144
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:571
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Jezik"
@@ -621,6 +634,7 @@ msgstr "Barva pisave"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
 #: src/frontends/qt4/ui/LanguageUi.ui:36
+#: src/frontends/qt4/ui/ListingsUi.ui:287
 msgid "&Language:"
 msgstr "&Jezik:"
 
@@ -1193,7 +1207,7 @@ msgid "Select an image file"
 msgstr "Izberite ime datoteke s sliko"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:165
+#: src/frontends/qt4/ui/ListingsUi.ui:378
 msgid "File name of image"
 msgstr "Ime datoteke s sliko"
 
@@ -1314,8 +1328,9 @@ msgid "Sca&le on Screen (%):"
 msgstr "&brez serifov:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
-msgid "Listing Params"
-msgstr ""
+#, fuzzy
+msgid "Listing Parameters"
+msgstr "Manjkajoèi argument"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:76
 #, fuzzy
@@ -1355,11 +1370,11 @@ msgstr "Ime datoteke za za vkljuèitev"
 msgid "&Include Type:"
 msgstr "&Vrsta vkljuèitve:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:322
+#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:337
 msgid "Include"
 msgstr "Vkljuèi"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:313
+#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:328
 msgid "Input"
 msgstr "Vhod"
 
@@ -1367,7 +1382,7 @@ msgstr "Vhod"
 msgid "Verbatim"
 msgstr "Dobesedno"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:238
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:234
 #, fuzzy
 msgid "Listings"
 msgstr "Seznam"
@@ -1414,128 +1429,183 @@ msgstr "Seznam"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 #, fuzzy
-msgid "Main Settings"
+msgid "&Main Settings"
 msgstr "Postavka literature"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:63
-#, fuzzy
-msgid "Placement"
-msgstr "&Postavitev:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:78
-#, fuzzy
-msgid "Placement:"
-msgstr "&Postavitev:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:88
-#, fuzzy
-msgid "Float"
-msgstr "Plovke|P"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:95
-msgid "Inline listing"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:133
-#, fuzzy
-msgid "Line numbering"
-msgstr "©tevilèenje"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:145
-#, fuzzy
-msgid "Side: "
-msgstr "Prosojnica"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:249
-#: src/frontends/qt4/ui/ListingsUi.ui:262
-msgid "Differenz between two numbered lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:168
-#, fuzzy
-msgid "Step:"
-msgstr "Dr¾ava"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:181
-#: src/frontends/qt4/ui/ListingsUi.ui:384
-#, fuzzy
-msgid "Font size:"
-msgstr "Velikost pisave"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:202
-#: src/frontends/qt4/ui/ListingsUi.ui:405
-#, fuzzy
-msgid "Choose the Font Size"
-msgstr "Izberi slogovno datoteko"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:224
-#, fuzzy
-msgid "Range"
-msgstr "Enojni"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:236
-#, fuzzy
-msgid "First line:"
-msgstr "PrvoIme"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:275
-#, fuzzy
-msgid "Last line:"
-msgstr "matematièna vrstica"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:293
-#: src/frontends/qt4/ui/TabularUi.ui:301
+#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
 msgstr "Slog"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:305
-msgid "Breaking lines longer than the linewidth"
+#: src/frontends/qt4/ui/ListingsUi.ui:67
+msgid "The content's base font size"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:308
+#: src/frontends/qt4/ui/ListingsUi.ui:83
 #, fuzzy
-msgid "&Break long lines"
-msgstr "&Uporabi dolgo tabelo"
+msgid "F&ont size:"
+msgstr "Velikost pisave"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:318
-msgid "Insert a special symbol for a space"
+#: src/frontends/qt4/ui/ListingsUi.ui:104
+msgid "The content's base font style"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:321
-msgid "&Space as Symbol"
-msgstr ""
+#: src/frontends/qt4/ui/ListingsUi.ui:120
+#, fuzzy
+msgid "Font st&yle:"
+msgstr "Velikost pisave"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:334
+#: src/frontends/qt4/ui/ListingsUi.ui:136
 msgid "Use extended character table"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:337
+#: src/frontends/qt4/ui/ListingsUi.ui:139
 #, fuzzy
 msgid "&Extended Chars"
 msgstr "Dodatne lastnosti|l"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:347
+#: src/frontends/qt4/ui/ListingsUi.ui:149
+msgid "Make spaces in strings visible by a special symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:152
+msgid "S&pace in string as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:162
+msgid "Make spaces visible by a special symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:165
+msgid "S&pace as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:175
+msgid "Break lines longer than the linewidth"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:178
 #, fuzzy
-msgid "Font style:"
+msgid "&Break long lines"
+msgstr "&Uporabi dolgo tabelo"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:191
+#, fuzzy
+msgid "Range"
+msgstr "Enojni"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:203
+#, fuzzy
+msgid "&Last line:"
+msgstr "matematièna vrstica"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:216
+msgid "The last line to be printed"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:229
+msgid "The first line to be printed"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:242
+#, fuzzy
+msgid "Fi&rst line:"
+msgstr "PrvoIme"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:270
+msgid "Select the dialect of the programming language, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:277
+#, fuzzy
+msgid "&Dialect:"
+msgstr "&Datoteka:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:297
+msgid "Select the programming language"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:307
+#, fuzzy
+msgid "Line numbering"
+msgstr "©tevilèenje"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:319
+msgid "On which side should line numbers be printed?"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:349
+#, fuzzy
+msgid "Choose the font size for line numbers"
+msgstr "Izberi slogovno datoteko"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:365
+#, fuzzy
+msgid "Font si&ze:"
 msgstr "Velikost pisave"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:368
-msgid "Choose the Font Style"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:427
-msgid "Advanced"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:447
-msgid "More Parameters"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:524
+#: src/frontends/qt4/ui/ListingsUi.ui:381
 #, fuzzy
-msgid "OK"
-msgstr "&V redu"
+msgid "S&tep:"
+msgstr "Dr¾ava"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:394
+msgid "Difference between two numbered lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:410
+#, fuzzy
+msgid "&Side: "
+msgstr "Prosojnica"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:423
+#, fuzzy
+msgid "Placement"
+msgstr "&Postavitev:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:435
+msgid "Specify placement (htbp) for floating listings"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:442
+#, fuzzy
+msgid "Check for floating listings"
+msgstr "Druge nastavitve pisav"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:445
+#, fuzzy
+msgid "&Float"
+msgstr "Plovke|P"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:452
+msgid "Check for inline listings"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:455
+#, fuzzy
+msgid "&Inline listing"
+msgstr "&Vkljuèeno"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:462
+#, fuzzy
+msgid "Placement:"
+msgstr "&Postavitev:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:476
+#, fuzzy
+msgid "Ad&vanced"
+msgstr "&Preklièi"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:496
+msgid "More &Parameters"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:520
+msgid "Feedback window"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:539
+msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -1783,7 +1853,7 @@ msgid "L&ine spacing:"
 msgstr "Presledki med &vrsticami:"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1773
-#: src/frontends/qt4/QDocument.cpp:230
+#: src/frontends/qt4/QDocument.cpp:231
 msgid "Single"
 msgstr "Enojni"
 
@@ -1792,14 +1862,14 @@ msgid "1.5"
 msgstr "1,5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1779
-#: src/frontends/qt4/QDocument.cpp:234
+#: src/frontends/qt4/QDocument.cpp:235
 msgid "Double"
 msgstr "Dvojni"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:236 src/frontends/qt4/QDocument.cpp:337
+#: src/frontends/qt4/QDocument.cpp:237 src/frontends/qt4/QDocument.cpp:338
 msgid "Custom"
 msgstr "Po meri"
 
@@ -2086,31 +2156,31 @@ msgstr "Privzeta veliko&st papirja:"
 msgid "Te&X encoding:"
 msgstr "Kodiranje v TeXu:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:338
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:339
 msgid "US letter"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:340
 msgid "US legal"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:341
 msgid "US executive"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:342
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:342
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:343
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:343
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:344
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:346
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:347
 msgid "B5"
 msgstr "B5"
 
@@ -2476,7 +2546,7 @@ msgid "&Maximum last files:"
 msgstr "&Najveè zadnjih datotek:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:734
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:739
 msgid "&Save"
 msgstr "&Shrani"
 
@@ -3203,15 +3273,15 @@ msgstr ""
 msgid "DefSkip"
 msgstr "Privzeti razmak"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:223
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:224
 msgid "SmallSkip"
 msgstr "Mali razmak"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:224
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:225
 msgid "MedSkip"
 msgstr "Srednji razmak"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:225
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:226
 msgid "BigSkip"
 msgstr "Velik razmak"
 
@@ -3259,15 +3329,16 @@ msgstr "&Enote:"
 #: lib/layouts/kluwer.layout:33 lib/layouts/llncs.layout:23
 #: lib/layouts/ltugboat.layout:30 lib/layouts/manpage.layout:17
 #: lib/layouts/memoir.layout:26 lib/layouts/moderncv.layout:16
-#: lib/layouts/paper.layout:14 lib/layouts/revtex.layout:22
-#: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
-#: lib/layouts/scrlttr2.layout:7 lib/layouts/siamltex.layout:19
-#: lib/layouts/simplecv.layout:15 lib/layouts/slides.layout:60
-#: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
-#: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+#: lib/layouts/paper.layout:14 lib/layouts/powerdot.layout:106
+#: lib/layouts/revtex.layout:22 lib/layouts/revtex4.layout:26
+#: lib/layouts/scrlettr.layout:7 lib/layouts/scrlttr2.layout:7
+#: lib/layouts/siamltex.layout:19 lib/layouts/simplecv.layout:15
+#: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
+#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
+#: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:55
+#: src/frontends/qt4/BulletsModule.cpp:46 src/insets/InsetRef.cpp:147
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard"
 msgstr "Standardno"
 
@@ -3275,7 +3346,7 @@ msgstr "Standardno"
 msgid "TheoremTemplate"
 msgstr "VzorecIzreka"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:948
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:955
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -3290,7 +3361,7 @@ msgid "Proof:"
 msgstr "Dokaz"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:954
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:961
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
@@ -3321,7 +3392,7 @@ msgid "Lemma #:"
 msgstr "Lema"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:885
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:892
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
@@ -3377,7 +3448,7 @@ msgid "Criterion #:"
 msgstr "Kriterij"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:942
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:949
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -3400,7 +3471,7 @@ msgid "Axiom #:"
 msgstr "Aksiom"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:912
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:919
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
@@ -3416,12 +3487,12 @@ msgid "Definition #:"
 msgstr "Definicija"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:924
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:931
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:474
+#: src/frontends/qt4/QDocument.cpp:475
 msgid "Example"
 msgstr "Zgled"
 
@@ -3497,9 +3568,10 @@ msgstr "Trditev"
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
 #: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
-#: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
-#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:66
+#: lib/layouts/powerdot.layout:195 lib/layouts/slides.layout:167
+#: lib/layouts/amsmaths-plain.inc:193 lib/layouts/amsmaths-seq.inc:160
+#: lib/layouts/amsmaths.inc:418 lib/layouts/svjour.inc:422
+#: src/insets/InsetNote.cpp:66
 msgid "Note"
 msgstr "Opomba"
 
@@ -3537,20 +3609,21 @@ msgstr "Primer"
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
-#: lib/layouts/beamer.layout:140 lib/layouts/egs.layout:30
+#: lib/layouts/beamer.layout:144 lib/layouts/egs.layout:30
 #: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
 #: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:51
 #: lib/layouts/moderncv.layout:29 lib/layouts/paper.layout:44
-#: lib/layouts/revtex.layout:38 lib/layouts/revtex4.layout:44
-#: lib/layouts/siamltex.layout:41 lib/layouts/simplecv.layout:27
-#: lib/layouts/spie.layout:19 lib/layouts/agu_stdsections.inc:30
-#: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:28
-#: lib/layouts/numarticle.inc:13 lib/layouts/numreport.inc:21
-#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:61
-#: lib/layouts/stdsections.inc:51 lib/layouts/svjour.inc:52
+#: lib/layouts/powerdot.layout:212 lib/layouts/revtex.layout:38
+#: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
+#: lib/layouts/simplecv.layout:27 lib/layouts/spie.layout:19
+#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
+#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:13
+#: lib/layouts/numreport.inc:21 lib/layouts/numrevtex.inc:6
+#: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
+#: lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "Razdelek"
 
@@ -3558,7 +3631,7 @@ msgstr "Razdelek"
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
-#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:181
+#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:185
 #: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
@@ -3590,7 +3663,7 @@ msgstr "Podrazdelek"
 msgid "Subsubsection"
 msgstr "Podpodrazdelek"
 
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:172
+#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:176
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
@@ -3599,7 +3672,7 @@ msgstr "Podpodrazdelek"
 msgid "Section*"
 msgstr "Razdelek*"
 
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:214
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:218
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
@@ -3658,7 +3731,7 @@ msgstr "Vnos v stvarno kazalo"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:836
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:843
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
@@ -3667,14 +3740,14 @@ msgstr "Vnos v stvarno kazalo"
 #: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:193
 #: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
-#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
-#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
-#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:183 lib/layouts/simplecv.layout:140
-#: lib/layouts/aguplus.inc:168 lib/layouts/aguplus.inc:170
-#: lib/layouts/amsdefs.inc:229 lib/layouts/scrclass.inc:223
-#: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:326
-#: src/frontends/qt4/QDocument.cpp:572
+#: lib/layouts/powerdot.layout:279 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
+#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:183
+#: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
+#: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
+#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:573
 msgid "Bibliography"
 msgstr "Literatura"
 
@@ -3710,28 +3783,29 @@ msgstr "OznaèiOboje"
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
 #: lib/layouts/beamer.layout:50 lib/layouts/egs.layout:163
-#: lib/layouts/manpage.layout:82 lib/layouts/simplecv.layout:77
-#: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:11
+#: lib/layouts/manpage.layout:82 lib/layouts/powerdot.layout:229
+#: lib/layouts/simplecv.layout:77 lib/layouts/agu_stdlists.inc:13
+#: lib/layouts/db_stdlists.inc:12 lib/layouts/stdlists.inc:11
 msgid "Itemize"
 msgstr "Alineje"
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:68 lib/layouts/egs.layout:145
-#: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
+#: lib/layouts/beamer.layout:69 lib/layouts/egs.layout:145
+#: lib/layouts/manpage.layout:65 lib/layouts/powerdot.layout:254
+#: lib/layouts/agu_stdlists.inc:21 lib/layouts/db_stdlists.inc:19
+#: lib/layouts/stdlists.inc:29
 msgid "Enumerate"
 msgstr "O¹tevilèi"
 
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
-#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:86
+#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:88
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.inc:85
+#: lib/ui/stdtoolbars.inc:89
 msgid "Description"
 msgstr "Opis"
 
@@ -3739,14 +3813,14 @@ msgstr "Opis"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.inc:84
+#: lib/ui/stdtoolbars.inc:88
 msgid "List"
 msgstr "Seznam"
 
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:717
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:724
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
@@ -3756,18 +3830,18 @@ msgstr "Seznam"
 #: lib/layouts/isprs.layout:94 lib/layouts/kluwer.layout:104
 #: lib/layouts/latex8.layout:33 lib/layouts/llncs.layout:99
 #: lib/layouts/ltugboat.layout:134 lib/layouts/paper.layout:112
-#: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
-#: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:271
-#: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
-#: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:60 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:146 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:129
+#: lib/layouts/powerdot.layout:36 lib/layouts/revtex.layout:90
+#: lib/layouts/revtex4.layout:107 lib/layouts/scrlettr.layout:193
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:109
+#: lib/layouts/simplecv.layout:119 lib/layouts/svprobth.layout:35
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:60
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:146
+#: lib/layouts/stdtitle.inc:12 lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "Naslov"
 
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:741
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:748
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
@@ -3777,7 +3851,7 @@ msgstr "Podnaslov"
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:766
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:773
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
@@ -3785,11 +3859,12 @@ msgstr "Podnaslov"
 #: lib/layouts/ijmpd.layout:44 lib/layouts/isprs.layout:76
 #: lib/layouts/kluwer.layout:160 lib/layouts/llncs.layout:176
 #: lib/layouts/ltugboat.layout:154 lib/layouts/paper.layout:123
-#: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
-#: lib/layouts/siamltex.layout:126 lib/layouts/svprobth.layout:52
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:81
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:154
-#: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:182
+#: lib/layouts/powerdot.layout:60 lib/layouts/revtex.layout:98
+#: lib/layouts/revtex4.layout:115 lib/layouts/siamltex.layout:126
+#: lib/layouts/svprobth.layout:52 lib/layouts/agu_stdtitle.inc:167
+#: lib/layouts/amsdefs.inc:81 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/scrclass.inc:154 lib/layouts/stdtitle.inc:31
+#: lib/layouts/svjour.inc:182
 msgid "Author"
 msgstr "Avtor"
 
@@ -3818,15 +3893,16 @@ msgstr "Po¹ta"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:812 lib/layouts/egs.layout:476
+#: lib/layouts/beamer.layout:819 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
-#: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
-#: lib/layouts/scrlettr.layout:165 lib/layouts/scrlttr2.layout:239
-#: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:315
+#: lib/layouts/powerdot.layout:83 lib/layouts/revtex.layout:106
+#: lib/layouts/revtex4.layout:123 lib/layouts/scrlettr.layout:165
+#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:137
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:101
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:161
+#: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
+#: lib/ui/stdmenus.inc:315
 msgid "Date"
 msgstr "Datum"
 
@@ -3867,7 +3943,7 @@ msgid "Email"
 msgstr "Enaslov"
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.cpp:148
+#: lib/ui/stdtoolbars.inc:110 src/frontends/qt4/QThesaurus.cpp:148
 msgid "Thesaurus"
 msgstr "Tezaver"
 
@@ -3904,7 +3980,7 @@ msgid "Acknowledgements"
 msgstr "Priznanja"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:850
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:857
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
@@ -4060,9 +4136,9 @@ msgid "Criterion."
 msgstr "Kriterij"
 
 #: lib/layouts/amsart-plain.layout:61 lib/layouts/amsart-seq.layout:173
-#: lib/layouts/elsart.layout:346 lib/layouts/amsmaths-plain.inc:93
-#: lib/layouts/amsmaths-seq.inc:80 lib/layouts/amsmaths.inc:202
-#: lib/layouts/stdfloats.inc:34
+#: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:385
+#: lib/layouts/amsmaths-plain.inc:93 lib/layouts/amsmaths-seq.inc:80
+#: lib/layouts/amsmaths.inc:202 lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "Algoritem"
 
@@ -4262,7 +4338,7 @@ msgid "Conclusion \\arabic{conclusion}."
 msgstr ""
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
-#: lib/layouts/numarticle.inc:16
+#: lib/layouts/powerdot.layout:217 lib/layouts/numarticle.inc:16
 #, fuzzy
 msgid "\\arabic{section}"
 msgstr "Podrazdelek"
@@ -4364,9 +4440,10 @@ msgstr "PrilagodiSliko"
 msgid "FitBitmap"
 msgstr "PrilagodiBitnoSliko"
 
-#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:64
+#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:65
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
-#: lib/layouts/simplecv.layout:91 lib/layouts/stdlists.inc:25
+#: lib/layouts/powerdot.layout:243 lib/layouts/simplecv.layout:91
+#: lib/layouts/stdlists.inc:25
 msgid "*"
 msgstr "*"
 
@@ -4375,7 +4452,7 @@ msgid "Seriate"
 msgstr "Uredi v zaporedja"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.cpp:526
+#: src/buffer_funcs.cpp:530
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -4399,7 +4476,7 @@ msgstr "Lokacija"
 msgid "Latin off"
 msgstr "Lokacija"
 
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:111
+#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
 #: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
@@ -4414,282 +4491,286 @@ msgstr "Del"
 msgid "Part*"
 msgstr "Del*"
 
-#: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:196
+#: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr ""
 
-#: lib/layouts/beamer.layout:125
+#: lib/layouts/beamer.layout:129
 #, fuzzy
 msgid "Part "
 msgstr "Del"
 
-#: lib/layouts/beamer.layout:155
+#: lib/layouts/beamer.layout:159
 #, fuzzy
 msgid "Section \\arabic{section}"
 msgstr "Podrazdelek"
 
-#: lib/layouts/beamer.layout:167 lib/layouts/numarticle.inc:17
+#: lib/layouts/beamer.layout:171 lib/layouts/powerdot.layout:223
+#: lib/layouts/numarticle.inc:17
 #, fuzzy
 msgid "\\Alph{section}"
 msgstr "izbor"
 
-#: lib/layouts/beamer.layout:196
+#: lib/layouts/beamer.layout:200
 #, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Podpodrazdelek"
 
-#: lib/layouts/beamer.layout:209
+#: lib/layouts/beamer.layout:213
 #, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "Podpodrazdelek"
 
-#: lib/layouts/beamer.layout:223
+#: lib/layouts/beamer.layout:227
 msgid "BeginFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:238
+#: lib/layouts/beamer.layout:243
 #, fuzzy
 msgid "Frame "
 msgstr "Parametri"
 
-#: lib/layouts/beamer.layout:264
+#: lib/layouts/beamer.layout:269
 msgid "BeginPlainFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:279
+#: lib/layouts/beamer.layout:284
 msgid "Frame (no head/foot/sidebars)__"
 msgstr ""
 
-#: lib/layouts/beamer.layout:302
+#: lib/layouts/beamer.layout:307
 #, fuzzy
 msgid "AgainFrame"
 msgstr "matematièni okvir"
 
-#: lib/layouts/beamer.layout:317
+#: lib/layouts/beamer.layout:323
 msgid "Again frame with label__"
 msgstr ""
 
-#: lib/layouts/beamer.layout:341
+#: lib/layouts/beamer.layout:347
 #, fuzzy
 msgid "EndFrame"
 msgstr "Ime &tiskalnika:"
 
-#: lib/layouts/beamer.layout:355
+#: lib/layouts/beamer.layout:361
 msgid "________________________________ "
 msgstr ""
 
-#: lib/layouts/beamer.layout:370
+#: lib/layouts/beamer.layout:376
 #, fuzzy
 msgid "FrameSubtitle"
 msgstr "Podnaslov"
 
-#: lib/layouts/beamer.layout:393
+#: lib/layouts/beamer.layout:399
 #, fuzzy
 msgid "Column"
 msgstr "Stolpci"
 
-#: lib/layouts/beamer.layout:405
+#: lib/layouts/beamer.layout:411
 msgid "start column (increase depth!), width: "
 msgstr ""
 
-#: lib/layouts/beamer.layout:417
+#: lib/layouts/beamer.layout:423
 msgid "Columns"
 msgstr "Stolpci"
 
-#: lib/layouts/beamer.layout:429
+#: lib/layouts/beamer.layout:435
 #, fuzzy
 msgid "columns "
 msgstr "Stolpci"
 
-#: lib/layouts/beamer.layout:446
+#: lib/layouts/beamer.layout:452
 msgid "ColumnsCenterAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:457
+#: lib/layouts/beamer.layout:463
 msgid "columns (center aligned) "
 msgstr ""
 
-#: lib/layouts/beamer.layout:476
+#: lib/layouts/beamer.layout:482
 msgid "ColumnsTopAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:487
+#: lib/layouts/beamer.layout:493
 msgid "columns (top aligned) "
 msgstr ""
 
-#: lib/layouts/beamer.layout:507
+#: lib/layouts/beamer.layout:513
 #, fuzzy
 msgid "Pause"
 msgstr "Prilepi"
 
-#: lib/layouts/beamer.layout:522
+#: lib/layouts/beamer.layout:529
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
-#: lib/layouts/beamer.layout:532
+#: lib/layouts/beamer.layout:539
 #, fuzzy
 msgid "Overprint"
 msgstr "Posebni odtis"
 
-#: lib/layouts/beamer.layout:542
+#: lib/layouts/beamer.layout:549
 #, fuzzy
 msgid "overprint "
 msgstr "Vnaprej¹nja_objava"
 
-#: lib/layouts/beamer.layout:558
+#: lib/layouts/beamer.layout:565
 #, fuzzy
 msgid "OverlayArea"
 msgstr "Prekrivanje"
 
-#: lib/layouts/beamer.layout:568
+#: lib/layouts/beamer.layout:575
 #, fuzzy
 msgid "overlayarea"
 msgstr "Prekrivanje"
 
-#: lib/layouts/beamer.layout:583
+#: lib/layouts/beamer.layout:590
 #, fuzzy
 msgid "Uncover"
 msgstr "&Odstrani"
 
-#: lib/layouts/beamer.layout:592
+#: lib/layouts/beamer.layout:599
 msgid "uncovered on slides  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:607
+#: lib/layouts/beamer.layout:614
 #, fuzzy
 msgid "Only"
 msgstr "vkljuèeno"
 
-#: lib/layouts/beamer.layout:616
+#: lib/layouts/beamer.layout:623
 msgid "only on slides_"
 msgstr ""
 
-#: lib/layouts/beamer.layout:632
+#: lib/layouts/beamer.layout:639
 msgid "Block"
 msgstr "Blok"
 
-#: lib/layouts/beamer.layout:642
+#: lib/layouts/beamer.layout:649
 msgid "block ( ERT[{title}] body ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:657
+#: lib/layouts/beamer.layout:664
 #, fuzzy
 msgid "ExampleBlock"
 msgstr "Zgled"
 
-#: lib/layouts/beamer.layout:667
+#: lib/layouts/beamer.layout:674
 msgid "block ( ERT[{title}] example text ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:686
+#: lib/layouts/beamer.layout:693
 #, fuzzy
 msgid "AlertBlock"
 msgstr "Blok"
 
-#: lib/layouts/beamer.layout:696
+#: lib/layouts/beamer.layout:703
 msgid "block ( ERT[{title}] alert text ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:789 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:796 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 msgid "Institute"
 msgstr "In¹titut"
 
-#: lib/layouts/beamer.layout:860
+#: lib/layouts/beamer.layout:867
 #, fuzzy
 msgid "TitleGraphic"
 msgstr "Grafika"
 
-#: lib/layouts/beamer.layout:895
+#: lib/layouts/beamer.layout:902
 #, fuzzy
 msgid "Corollary_"
 msgstr "Korolar"
 
-#: lib/layouts/beamer.layout:915
+#: lib/layouts/beamer.layout:922
 #, fuzzy
 msgid "Definition. "
 msgstr "Definicija"
 
-#: lib/layouts/beamer.layout:918
+#: lib/layouts/beamer.layout:925
 #, fuzzy
 msgid "Definitions"
 msgstr "Definicija"
 
-#: lib/layouts/beamer.layout:921
+#: lib/layouts/beamer.layout:928
 #, fuzzy
 msgid "Definitions. "
 msgstr "Definicija"
 
-#: lib/layouts/beamer.layout:927
+#: lib/layouts/beamer.layout:934
 #, fuzzy
 msgid "Example. "
 msgstr "Zgled"
 
-#: lib/layouts/beamer.layout:935
+#: lib/layouts/beamer.layout:942
 #, fuzzy
 msgid "Examples"
 msgstr "Zgled"
 
-#: lib/layouts/beamer.layout:938
+#: lib/layouts/beamer.layout:945
 #, fuzzy
 msgid "Examples. "
 msgstr "Zgled"
 
-#: lib/layouts/beamer.layout:945
+#: lib/layouts/beamer.layout:952
 #, fuzzy
 msgid "Fact. "
 msgstr "Dejstvo"
 
-#: lib/layouts/beamer.layout:951
+#: lib/layouts/beamer.layout:958
 #, fuzzy
 msgid "Proof. "
 msgstr "Dokaz"
 
-#: lib/layouts/beamer.layout:957
+#: lib/layouts/beamer.layout:964
 #, fuzzy
 msgid "Theorem. "
 msgstr "Izrek"
 
-#: lib/layouts/beamer.layout:962
+#: lib/layouts/beamer.layout:969
 #, fuzzy
 msgid "Separator"
 msgstr "Separacija"
 
-#: lib/layouts/beamer.layout:975
+#: lib/layouts/beamer.layout:982
 msgid "___"
 msgstr ""
 
-#: lib/layouts/beamer.layout:985 lib/layouts/egs.layout:641
+#: lib/layouts/beamer.layout:992 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "Koda-LyXa"
 
-#: lib/layouts/beamer.layout:1022
+#: lib/layouts/beamer.layout:1029
 #, fuzzy
 msgid "NoteItem"
 msgstr "Nova postavka"
 
-#: lib/layouts/beamer.layout:1033
+#: lib/layouts/beamer.layout:1040
 #, fuzzy
 msgid "note: "
 msgstr "opomba"
 
-#: lib/layouts/beamer.layout:1069 lib/layouts/stdfloats.inc:10
-#: lib/ui/stdtoolbars.inc:110
+#: lib/layouts/beamer.layout:1076 lib/layouts/powerdot.layout:365
+#: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
 msgid "Table"
 msgstr "Tabela"
 
-#: lib/layouts/beamer.layout:1074 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1081 lib/layouts/powerdot.layout:369
+#: lib/layouts/stdfloats.inc:15
 #, fuzzy
 msgid "List of Tables"
 msgstr "Seznam tabel"
 
-#: lib/layouts/beamer.layout:1080 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1087 lib/layouts/powerdot.layout:375
+#: lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "Slika"
 
-#: lib/layouts/beamer.layout:1085 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1092 lib/layouts/powerdot.layout:379
+#: lib/layouts/stdfloats.inc:27
 #, fuzzy
 msgid "List of Figures"
 msgstr "Seznam tabel"
@@ -4984,13 +5065,13 @@ msgstr "Datum"
 msgid "Subparagraph"
 msgstr "Pododstavek"
 
-#: lib/layouts/egs.layout:94 lib/layouts/db_stdlayouts.inc:18
-#: lib/layouts/stdlayouts.inc:11
+#: lib/layouts/egs.layout:94 lib/layouts/powerdot.layout:300
+#: lib/layouts/db_stdlayouts.inc:18 lib/layouts/stdlayouts.inc:11
 msgid "Quotation"
 msgstr "Navedek"
 
 #: lib/layouts/egs.layout:112 lib/layouts/manpage.layout:29
-#: lib/layouts/stdlayouts.inc:29
+#: lib/layouts/powerdot.layout:320 lib/layouts/stdlayouts.inc:29
 msgid "Quote"
 msgstr "Narekovaj"
 
@@ -4998,7 +5079,8 @@ msgstr "Narekovaj"
 msgid "00.00.0000"
 msgstr ""
 
-#: lib/layouts/egs.layout:203 lib/layouts/stdlayouts.inc:45
+#: lib/layouts/egs.layout:203 lib/layouts/powerdot.layout:338
+#: lib/layouts/stdlayouts.inc:45
 msgid "Verse"
 msgstr "Verz"
 
@@ -6531,6 +6613,59 @@ msgstr "PodNaslov"
 msgid "Institution"
 msgstr "Ustanova"
 
+#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:67
+#: lib/layouts/slides.layout:88
+msgid "Slide"
+msgstr "Prosojnica"
+
+#: lib/layouts/powerdot.layout:132
+msgid "    "
+msgstr ""
+
+#: lib/layouts/powerdot.layout:142
+#, fuzzy
+msgid "EndSlide"
+msgstr "Prosojnica"
+
+#: lib/layouts/powerdot.layout:154
+msgid "~=~"
+msgstr ""
+
+#: lib/layouts/powerdot.layout:167
+#, fuzzy
+msgid "WideSlide"
+msgstr "Prosojnica"
+
+#: lib/layouts/powerdot.layout:179
+#, fuzzy
+msgid "EmptySlide"
+msgstr "Prosojnica"
+
+#: lib/layouts/powerdot.layout:183
+#, fuzzy
+msgid "Empty slide:"
+msgstr "Globina"
+
+#: lib/layouts/powerdot.layout:199
+#, fuzzy
+msgid "Note:"
+msgstr "Opomba"
+
+#: lib/layouts/powerdot.layout:246
+#, fuzzy
+msgid "ItemizeType1"
+msgstr "Alineje"
+
+#: lib/layouts/powerdot.layout:271
+#, fuzzy
+msgid "EnumerateType1"
+msgstr "O¹tevilèi"
+
+#: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
+#, fuzzy
+msgid "List of Algorithms"
+msgstr "Algoritem"
+
 #: lib/layouts/revtex4.layout:94
 msgid "Preprint"
 msgstr "Vnaprej¹nja_objava"
@@ -6791,10 +6926,6 @@ msgstr "PokonènaProsojnica"
 #, fuzzy
 msgid "Portrait Slide"
 msgstr "PokonènaProsojnica"
-
-#: lib/layouts/seminar.layout:67 lib/layouts/slides.layout:88
-msgid "Slide"
-msgstr "Prosojnica"
 
 #: lib/layouts/seminar.layout:72
 msgid "Slide*"
@@ -7570,11 +7701,6 @@ msgstr "PojasniloSpodaj"
 msgid "Dictum"
 msgstr "Izjava"
 
-#: lib/layouts/stdfloats.inc:39
-#, fuzzy
-msgid "List of Algorithms"
-msgstr "Algoritem"
-
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
 msgstr "Opomba v glavi"
@@ -7614,9 +7740,13 @@ msgstr "arabsko"
 msgid "Armenian"
 msgstr "ameri¹ko"
 
-#: lib/languages:6 lib/languages:7
+#: lib/languages:6
 msgid "Austrian"
 msgstr "avstrijsko"
+
+#: lib/languages:7
+msgid "Austrian (new spelling)"
+msgstr ""
 
 #: lib/languages:8
 msgid "Bahasa"
@@ -7630,9 +7760,9 @@ msgstr "belorusko"
 msgid "Basque"
 msgstr "baskovsko"
 
-#: lib/languages:11 lib/languages:53
+#: lib/languages:11
 #, fuzzy
-msgid "Portuguese"
+msgid "Portuguese (Brazil)"
 msgstr "portugalsko"
 
 #: lib/languages:12
@@ -7651,18 +7781,22 @@ msgstr "bolgarsko"
 msgid "Canadian"
 msgstr "kanadsko"
 
-#: lib/languages:16 lib/languages:30
-msgid "French"
-msgstr "francosko"
+#: lib/languages:16
+#, fuzzy
+msgid "French Canadian"
+msgstr "kanadsko"
 
 #: lib/languages:17
 msgid "Catalan"
 msgstr "katalonsko"
 
-#: lib/languages:18 lib/languages:19
-#, fuzzy
-msgid "Chinese"
-msgstr "Izvodi"
+#: lib/languages:18
+msgid "Chinese (simplified)"
+msgstr ""
+
+#: lib/languages:19
+msgid "Chinese (traditional)"
+msgstr ""
 
 #: lib/languages:20
 msgid "Croatian"
@@ -7696,15 +7830,23 @@ msgstr "estonsko"
 msgid "Finnish"
 msgstr "finsko"
 
+#: lib/languages:30
+msgid "French"
+msgstr "francosko"
+
 #: lib/languages:31
 msgid "Galician"
 msgstr "galsko"
 
-#: lib/languages:34 lib/languages:35
+#: lib/languages:34
 msgid "German"
 msgstr "nem¹ko"
 
-#: lib/languages:36 lib/ui/stdtoolbars.inc:431
+#: lib/languages:35
+msgid "German (new spelling)"
+msgstr ""
+
+#: lib/languages:36 lib/ui/stdtoolbars.inc:436
 msgid "Greek"
 msgstr "gr¹ko"
 
@@ -7762,6 +7904,11 @@ msgstr "njorsk"
 msgid "Polish"
 msgstr "poljsko"
 
+#: lib/languages:53
+#, fuzzy
+msgid "Portuguese"
+msgstr "portugalsko"
+
 #: lib/languages:54
 msgid "Romanian"
 msgstr "romunsko"
@@ -7812,8 +7959,8 @@ msgstr "ukrajinsko"
 
 #: lib/languages:66
 #, fuzzy
-msgid "Upper"
-msgstr "Osve¾i|O"
+msgid "Upper Sorbian"
+msgstr "srbsko"
 
 #: lib/languages:67
 msgid "Welsh"
@@ -7967,7 +8114,7 @@ msgstr "Tabela|T"
 msgid "Math|M"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:458
 msgid "Spellchecker...|S"
 msgstr "Èrkovalnik...|r"
 
@@ -7975,12 +8122,12 @@ msgstr "Èrkovalnik...|r"
 msgid "Thesaurus..."
 msgstr "Tezaver..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:458
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:460
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Trenutna beseda"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:459
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:461
 msgid "Check TeX|h"
 msgstr "Preveri TeX|T"
 
@@ -7989,11 +8136,11 @@ msgstr "Preveri TeX|T"
 msgid "Change Tracking|g"
 msgstr "Jezik"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:468
 msgid "Preferences...|P"
 msgstr "Izbire...|I"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:467
 msgid "Reconfigure|R"
 msgstr "Vnovièno ukroji|V"
 
@@ -8509,44 +8656,44 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "PrilagodiSliko"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Vsebinsko kazalo|V"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:380
 msgid "Index List|I"
 msgstr "Stvarno kazalo|v"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "Nomenclature|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:382
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Literatura"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:384
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:386
 msgid "LyX Document...|X"
 msgstr "Dokument v LyXu...|X"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:385
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:387
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Umesti"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:386
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:388
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Ascii kot vrstice...|v"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:420
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:421
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Zapi¹i spremembe...|Z"
@@ -8559,7 +8706,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:424
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:426
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "©irina slike na izhodu"
@@ -8604,7 +8751,7 @@ msgstr "Poveèaj globino okolja|v"
 msgid "Start Appendix Here|S"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:408
+#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:410
 msgid "Build Program|B"
 msgstr "Zgradi program|Z"
 
@@ -8612,7 +8759,7 @@ msgstr "Zgradi program|Z"
 msgid "Update|U"
 msgstr "Osve¾i|O"
 
-#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:409
+#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Dnevnik LaTeXa"
@@ -8621,38 +8768,38 @@ msgstr "Dnevnik LaTeXa"
 msgid "TeX Information|X"
 msgstr "Podatki za TeX|X"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:432
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:434
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:435
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:437
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Naj&dalj¹a oznaka"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:431
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:433
 msgid "Bookmarks|B"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:441
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:443
 msgid "Save Bookmark 1|S"
 msgstr "Shrani zaznamek 1|S"
 
-#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:442
+#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:444
 msgid "Save Bookmark 2"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:443
+#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:445
 msgid "Save Bookmark 3"
 msgstr "Shrani zaznamek 3"
 
-#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:444
+#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:446
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:445
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:447
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Shrani zaznamek 2"
@@ -8682,43 +8829,43 @@ msgstr "Pojdi na zaznamek 3|3"
 msgid "Go to Bookmark 5|5"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:473
+#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:475
 msgid "Introduction|I"
 msgstr "Uvod|U"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:476
 msgid "Tutorial|T"
 msgstr "Uèbenik|b"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:475
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:477
 msgid "User's Guide|U"
 msgstr "Uporabni¹ki vodnik|v"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:476
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:478
 msgid "Extended Features|E"
 msgstr "Dodatne lastnosti|l"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:477
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:479
 msgid "Embedded Objects|m"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:478
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:480
 msgid "Customization|C"
 msgstr "Prilagoditev|P"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:479
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:481
 msgid "FAQ|F"
 msgstr "Pogosta vpra¹anja|v"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:480
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:482
 msgid "Table of Contents|a"
 msgstr "Vsebinsko kazalo|k"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:481
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:483
 msgid "LaTeX Configuration|L"
 msgstr "Prikrojitev LaTeXa|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:483
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:485
 msgid "About LyX|X"
 msgstr "O LyXu|X"
 
@@ -9161,7 +9308,7 @@ msgstr "Kratek naslov"
 msgid "TeX Code|X"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:325
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:343
 #, fuzzy
 msgid "Program Listing"
 msgstr "Inicializacija programa"
@@ -9253,98 +9400,103 @@ msgstr "Matematièna loèila"
 msgid "Matrix|x"
 msgstr "Matematièna matrika"
 
-#: lib/ui/stdmenus.inc:372
+#: lib/ui/stdmenus.inc:368 lib/ui/stdtoolbars.inc:163
+#, fuzzy
+msgid "Toggle Math Panels"
+msgstr "Matematièna plo¹èa"
+
+#: lib/ui/stdmenus.inc:374
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:390
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Zunanji material...|Z"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:391
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Spis...|S"
 
-#: lib/ui/stdmenus.inc:393
+#: lib/ui/stdmenus.inc:395
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/stdmenus.inc:394
+#: lib/ui/stdmenus.inc:396
 #, fuzzy
 msgid "Comment|C"
 msgstr "Komentar"
 
-#: lib/ui/stdmenus.inc:395
+#: lib/ui/stdmenus.inc:397
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:407
+#: lib/ui/stdmenus.inc:409
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Jezik"
 
-#: lib/ui/stdmenus.inc:410
+#: lib/ui/stdmenus.inc:412
 msgid "Table of Contents|T"
 msgstr "Vsebinsko kazalo|V"
 
-#: lib/ui/stdmenus.inc:411
+#: lib/ui/stdmenus.inc:413
 #, fuzzy
 msgid "Start Appendix Here|A"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/stdmenus.inc:413
+#: lib/ui/stdmenus.inc:415
 msgid "Compressed|o"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/stdmenus.inc:416
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Nastavitve"
 
-#: lib/ui/stdmenus.inc:420
+#: lib/ui/stdmenus.inc:422
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdmenus.inc:421
+#: lib/ui/stdmenus.inc:423
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdmenus.inc:422
+#: lib/ui/stdmenus.inc:424
 msgid "Accept All Changes|c"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:423
+#: lib/ui/stdmenus.inc:425
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdmenus.inc:433
+#: lib/ui/stdmenus.inc:435
 #, fuzzy
 msgid "Next Change|C"
 msgstr " (Spremenjeno)"
 
-#: lib/ui/stdmenus.inc:434
+#: lib/ui/stdmenus.inc:436
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Sklic"
 
-#: lib/ui/stdmenus.inc:446
+#: lib/ui/stdmenus.inc:448
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/stdmenus.inc:457
+#: lib/ui/stdmenus.inc:459
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Tezaver..."
 
-#: lib/ui/stdmenus.inc:460
+#: lib/ui/stdmenus.inc:462
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Podatki za TeX|X"
@@ -9411,2728 +9563,2739 @@ msgstr "Vstavi matriko"
 msgid "Insert graphics"
 msgstr "Vstavi dodatek"
 
+#: lib/ui/stdtoolbars.inc:79
+#, fuzzy
+msgid "Toggle Table of Contents"
+msgstr "Vsebinsko kazalo"
+
 #: lib/ui/stdtoolbars.inc:80
+#, fuzzy
+msgid "Toggle Math Toolbar"
+msgstr "&Spremeni vse"
+
+#: lib/ui/stdtoolbars.inc:81
+#, fuzzy
+msgid "Toggle Table Toolbar"
+msgstr "&Spremeni vse"
+
+#: lib/ui/stdtoolbars.inc:84
 #, fuzzy
 msgid "Extra"
 msgstr "Dodatno"
 
-#: lib/ui/stdtoolbars.inc:82
+#: lib/ui/stdtoolbars.inc:86
 #, fuzzy
 msgid "Numbered list"
 msgstr "©tevilka"
 
-#: lib/ui/stdtoolbars.inc:83
+#: lib/ui/stdtoolbars.inc:87
 #, fuzzy
 msgid "Itemized list"
 msgstr "Alineje"
 
-#: lib/ui/stdtoolbars.inc:86
+#: lib/ui/stdtoolbars.inc:90
 #, fuzzy
 msgid "Increase depth"
 msgstr "Poveèaj"
 
-#: lib/ui/stdtoolbars.inc:87
+#: lib/ui/stdtoolbars.inc:91
 #, fuzzy
 msgid "Decrease depth"
 msgstr "Zmanj¹aj"
 
-#: lib/ui/stdtoolbars.inc:89
+#: lib/ui/stdtoolbars.inc:93
 #, fuzzy
 msgid "Insert figure float"
 msgstr "Vstavi stvarno kazalo"
 
-#: lib/ui/stdtoolbars.inc:90
+#: lib/ui/stdtoolbars.inc:94
 #, fuzzy
 msgid "Insert table float"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdtoolbars.inc:91
+#: lib/ui/stdtoolbars.inc:95
 #, fuzzy
 msgid "Insert label"
 msgstr "Vstavi oznako"
 
-#: lib/ui/stdtoolbars.inc:92
+#: lib/ui/stdtoolbars.inc:96
 #, fuzzy
 msgid "Insert cross-reference"
 msgstr "Vstavi navzkri¾no referenco"
 
-#: lib/ui/stdtoolbars.inc:93
+#: lib/ui/stdtoolbars.inc:97
 msgid "Insert citation"
 msgstr "Vnesi citat"
 
-#: lib/ui/stdtoolbars.inc:94
+#: lib/ui/stdtoolbars.inc:98
 #, fuzzy
 msgid "Insert index entry"
 msgstr "Vstavi postavko stvarnega kazala"
 
-#: lib/ui/stdtoolbars.inc:95
+#: lib/ui/stdtoolbars.inc:99
 #, fuzzy
 msgid "Insert nomenclature entry"
 msgstr "Vstavi postavko stvarnega kazala"
 
-#: lib/ui/stdtoolbars.inc:97
+#: lib/ui/stdtoolbars.inc:101
 #, fuzzy
 msgid "Insert footnote"
 msgstr "Vstavi opombo pod èrto"
 
-#: lib/ui/stdtoolbars.inc:98
+#: lib/ui/stdtoolbars.inc:102
 #, fuzzy
 msgid "Insert margin note"
 msgstr "Vstavi opombo ob robu"
 
-#: lib/ui/stdtoolbars.inc:99 lib/ui/stdtoolbars.inc:177
+#: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:182
 #, fuzzy
 msgid "Insert note"
 msgstr "Vstavi narekovaj"
 
-#: lib/ui/stdtoolbars.inc:100
+#: lib/ui/stdtoolbars.inc:104
 msgid "Insert URL"
 msgstr "Vstavi URL"
 
-#: lib/ui/stdtoolbars.inc:101
+#: lib/ui/stdtoolbars.inc:105
 #, fuzzy
 msgid "Insert TeX code"
 msgstr "Vstavi bibtex"
 
-#: lib/ui/stdtoolbars.inc:102
+#: lib/ui/stdtoolbars.inc:106
 msgid "Include file"
 msgstr "Vkljuèi datoteko"
 
-#: lib/ui/stdtoolbars.inc:104
+#: lib/ui/stdtoolbars.inc:108
 #, fuzzy
 msgid "Text style"
 msgstr "Slogi za LaTeX"
 
-#: lib/ui/stdtoolbars.inc:105
+#: lib/ui/stdtoolbars.inc:109
 #, fuzzy
 msgid "Paragraph settings"
 msgstr "Nastavitve tiskalnika"
 
-#: lib/ui/stdtoolbars.inc:106
-msgid "Table of contents"
-msgstr "Vsebinsko kazalo"
-
-#: lib/ui/stdtoolbars.inc:111 lib/ui/stdtoolbars.inc:155
+#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
 #, fuzzy
 msgid "Add row"
 msgstr "Dodaj vrsto|D"
 
-#: lib/ui/stdtoolbars.inc:112 lib/ui/stdtoolbars.inc:156
+#: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
 #, fuzzy
 msgid "Add column"
 msgstr "Dodaj stolpec|o"
 
-#: lib/ui/stdtoolbars.inc:113 lib/ui/stdtoolbars.inc:157
+#: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
 #, fuzzy
 msgid "Delete row"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
+#: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
 #, fuzzy
 msgid "Delete column"
 msgstr "Odstrani stolpec|r"
 
-#: lib/ui/stdtoolbars.inc:116
+#: lib/ui/stdtoolbars.inc:119
 #, fuzzy
 msgid "Set top line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.inc:117
+#: lib/ui/stdtoolbars.inc:120
 #, fuzzy
 msgid "Set bottom line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.inc:118
+#: lib/ui/stdtoolbars.inc:121
 #, fuzzy
 msgid "Set left line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.inc:119
+#: lib/ui/stdtoolbars.inc:122
 #, fuzzy
 msgid "Set right line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.inc:120
+#: lib/ui/stdtoolbars.inc:123
 #, fuzzy
 msgid "Set all lines"
 msgstr "Nastavi vse meje"
 
-#: lib/ui/stdtoolbars.inc:121
+#: lib/ui/stdtoolbars.inc:124
 #, fuzzy
 msgid "Unset all lines"
 msgstr "Iznièi vse meje"
 
-#: lib/ui/stdtoolbars.inc:123
+#: lib/ui/stdtoolbars.inc:126
 #, fuzzy
 msgid "Align left"
 msgstr "Poravnaj levo|e"
 
-#: lib/ui/stdtoolbars.inc:124
+#: lib/ui/stdtoolbars.inc:127
 #, fuzzy
 msgid "Align center"
 msgstr "Usredini|U"
 
-#: lib/ui/stdtoolbars.inc:125
+#: lib/ui/stdtoolbars.inc:128
 #, fuzzy
 msgid "Align right"
 msgstr "Poravnaj desno|d"
 
-#: lib/ui/stdtoolbars.inc:127
+#: lib/ui/stdtoolbars.inc:130
 #, fuzzy
 msgid "Align top"
 msgstr "Èrta zgoraj|z"
 
-#: lib/ui/stdtoolbars.inc:128
+#: lib/ui/stdtoolbars.inc:131
 #, fuzzy
 msgid "Align middle"
 msgstr "Poravnava"
 
-#: lib/ui/stdtoolbars.inc:129
+#: lib/ui/stdtoolbars.inc:132
 #, fuzzy
 msgid "Align bottom"
 msgstr "Èrta spodaj|s"
 
-#: lib/ui/stdtoolbars.inc:131
+#: lib/ui/stdtoolbars.inc:134
 #, fuzzy
 msgid "Rotate cell"
 msgstr "Zavrti &celico"
 
-#: lib/ui/stdtoolbars.inc:132
+#: lib/ui/stdtoolbars.inc:135
 #, fuzzy
 msgid "Rotate table"
 msgstr "&Zavrti tabelo"
 
-#: lib/ui/stdtoolbars.inc:133
+#: lib/ui/stdtoolbars.inc:136
 #, fuzzy
 msgid "Set multi-column"
 msgstr "Poseben veèstolpec"
 
-#: lib/ui/stdtoolbars.inc:136
+#: lib/ui/stdtoolbars.inc:139
 #, fuzzy
 msgid "Math"
 msgstr "Poti"
 
-#: lib/ui/stdtoolbars.inc:137
+#: lib/ui/stdtoolbars.inc:140
 #, fuzzy
 msgid "Set display mode"
 msgstr "Preklopi med naèinom prikaza"
 
-#: lib/ui/stdtoolbars.inc:139
+#: lib/ui/stdtoolbars.inc:142
 msgid "Subscript"
 msgstr "Indeks"
 
-#: lib/ui/stdtoolbars.inc:140
+#: lib/ui/stdtoolbars.inc:143
 msgid "Superscript"
 msgstr "Eksponent"
 
-#: lib/ui/stdtoolbars.inc:141
+#: lib/ui/stdtoolbars.inc:144
 #, fuzzy
 msgid "Insert square root"
 msgstr "Vstavi koren"
 
-#: lib/ui/stdtoolbars.inc:142
+#: lib/ui/stdtoolbars.inc:145
 msgid "Insert root"
 msgstr "Vstavi koren"
 
-#: lib/ui/stdtoolbars.inc:143
+#: lib/ui/stdtoolbars.inc:146
 #, fuzzy
 msgid "Insert standard fraction"
 msgstr "Vnesi ulomek"
 
-#: lib/ui/stdtoolbars.inc:144
+#: lib/ui/stdtoolbars.inc:147
 #, fuzzy
 msgid "Insert sum"
 msgstr "Vstavi narekovaj"
 
-#: lib/ui/stdtoolbars.inc:145
+#: lib/ui/stdtoolbars.inc:148
 #, fuzzy
 msgid "Insert integral"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdtoolbars.inc:146
+#: lib/ui/stdtoolbars.inc:149
 #, fuzzy
 msgid "Insert product"
 msgstr "Vstavi koren"
 
-#: lib/ui/stdtoolbars.inc:148
+#: lib/ui/stdtoolbars.inc:151
 #, fuzzy
 msgid "Insert ( )"
 msgstr "&Vstavi"
 
-#: lib/ui/stdtoolbars.inc:149
+#: lib/ui/stdtoolbars.inc:152
 #, fuzzy
 msgid "Insert [ ]"
 msgstr "&Vstavi"
 
-#: lib/ui/stdtoolbars.inc:150
+#: lib/ui/stdtoolbars.inc:153
 #, fuzzy
 msgid "Insert { }"
 msgstr "&Vstavi"
 
-#: lib/ui/stdtoolbars.inc:151
+#: lib/ui/stdtoolbars.inc:154
 #, fuzzy
 msgid "Insert delimiters"
 msgstr "Vstavi loèila"
 
-#: lib/ui/stdtoolbars.inc:153
+#: lib/ui/stdtoolbars.inc:156
 msgid "Insert matrix"
 msgstr "Vstavi matriko"
 
-#: lib/ui/stdtoolbars.inc:154
+#: lib/ui/stdtoolbars.inc:157
 #, fuzzy
 msgid "Insert cases environment"
 msgstr "Okolje Cases|C"
 
-#: lib/ui/stdtoolbars.inc:161
+#: lib/ui/stdtoolbars.inc:166
 #, fuzzy
 msgid "Command Buffer"
 msgstr "&Konec ukaza:"
 
-#: lib/ui/stdtoolbars.inc:165
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Review"
 msgstr "Predogled|#P"
 
-#: lib/ui/stdtoolbars.inc:166
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Track changes"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/stdtoolbars.inc:167
+#: lib/ui/stdtoolbars.inc:172
 #, fuzzy
 msgid "Show changes in output"
 msgstr "©irina slike na izhodu"
 
-#: lib/ui/stdtoolbars.inc:169
+#: lib/ui/stdtoolbars.inc:174
 #, fuzzy
 msgid "Next change"
 msgstr " (Spremenjeno)"
 
-#: lib/ui/stdtoolbars.inc:170
+#: lib/ui/stdtoolbars.inc:175
 #, fuzzy
 msgid "Accept change"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdtoolbars.inc:171
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
 msgid "Reject change"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdtoolbars.inc:173
+#: lib/ui/stdtoolbars.inc:178
 #, fuzzy
 msgid "Merge changes"
 msgstr "Zdru¾i celice"
 
-#: lib/ui/stdtoolbars.inc:174
+#: lib/ui/stdtoolbars.inc:179
 #, fuzzy
 msgid "Accept all changes"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdtoolbars.inc:175
+#: lib/ui/stdtoolbars.inc:180
 #, fuzzy
 msgid "Reject all changes"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdtoolbars.inc:178
+#: lib/ui/stdtoolbars.inc:183
 #, fuzzy
 msgid "Next note"
 msgstr "Opomba|O"
 
-#: lib/ui/stdtoolbars.inc:181
+#: lib/ui/stdtoolbars.inc:186
 #, fuzzy
 msgid "View/Update"
 msgstr "®elite shraniti spis?"
 
-#: lib/ui/stdtoolbars.inc:182
+#: lib/ui/stdtoolbars.inc:187
 #, fuzzy
 msgid "View DVI"
 msgstr "Ogled|O"
 
-#: lib/ui/stdtoolbars.inc:183
+#: lib/ui/stdtoolbars.inc:188
 #, fuzzy
 msgid "Update DVI"
 msgstr "&Osve¾i"
 
-#: lib/ui/stdtoolbars.inc:184
+#: lib/ui/stdtoolbars.inc:189
 msgid "View PDF (pdflatex)"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:185
+#: lib/ui/stdtoolbars.inc:190
 msgid "Update PDF (pdflatex)"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:186
+#: lib/ui/stdtoolbars.inc:191
 #, fuzzy
 msgid "View PostScript"
 msgstr "&Gonilnik za postscript:"
 
-#: lib/ui/stdtoolbars.inc:187
+#: lib/ui/stdtoolbars.inc:192
 #, fuzzy
 msgid "Update PostScript"
 msgstr "&Gonilnik za postscript:"
 
-#: lib/ui/stdtoolbars.inc:190
+#: lib/ui/stdtoolbars.inc:195
 #, fuzzy
 msgid "Math Panels"
 msgstr "Matematièna plo¹èa"
 
-#: lib/ui/stdtoolbars.inc:191
+#: lib/ui/stdtoolbars.inc:196
 #, fuzzy
 msgid "Math Spacings"
 msgstr "Matematièni presledki"
 
-#: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
+#: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:262
 #, fuzzy
 msgid "Roots"
 msgstr "Noga"
 
-#: lib/ui/stdtoolbars.inc:193 lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:267
 #, fuzzy
 msgid "Styles"
 msgstr "Slog"
 
-#: lib/ui/stdtoolbars.inc:194 lib/ui/stdtoolbars.inc:269
+#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:274
 #, fuzzy
 msgid "Fractions"
 msgstr "LyX: Matematièna plo¹èa"
 
-#: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
-#: src/frontends/qt4/QDocument.cpp:566
+#: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:283
+#: src/frontends/qt4/QDocument.cpp:567
 #, fuzzy
 msgid "Fonts"
 msgstr "Pisava: "
 
-#: lib/ui/stdtoolbars.inc:196 lib/ui/stdtoolbars.inc:212
+#: lib/ui/stdtoolbars.inc:201 lib/ui/stdtoolbars.inc:217
 #, fuzzy
 msgid "Functions"
 msgstr "&Funkcije"
 
-#: lib/ui/stdtoolbars.inc:213
-msgid "arccos"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:214
-#, fuzzy
-msgid "arcsin"
-msgstr "Robovi"
-
-#: lib/ui/stdtoolbars.inc:215
-#, fuzzy
-msgid "arctan"
-msgstr "katalonsko"
-
-#: lib/ui/stdtoolbars.inc:216
-#, fuzzy
-msgid "arg"
-msgstr "velika"
-
-#: lib/ui/stdtoolbars.inc:217
-msgid "bmod"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:218
-msgid "cos"
+msgid "arccos"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:219
 #, fuzzy
-msgid "cosh"
-msgstr "¹kotsko"
+msgid "arcsin"
+msgstr "Robovi"
 
 #: lib/ui/stdtoolbars.inc:220
 #, fuzzy
-msgid "cot"
-msgstr "&Vrh"
+msgid "arctan"
+msgstr "katalonsko"
 
 #: lib/ui/stdtoolbars.inc:221
 #, fuzzy
-msgid "coth"
-msgstr "¹kotsko"
+msgid "arg"
+msgstr "velika"
 
 #: lib/ui/stdtoolbars.inc:222
-#, fuzzy
-msgid "csc"
-msgstr "cc"
+msgid "bmod"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:223
-msgid "deg"
+msgid "cos"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:224
 #, fuzzy
+msgid "cosh"
+msgstr "¹kotsko"
+
+#: lib/ui/stdtoolbars.inc:225
+#, fuzzy
+msgid "cot"
+msgstr "&Vrh"
+
+#: lib/ui/stdtoolbars.inc:226
+#, fuzzy
+msgid "coth"
+msgstr "¹kotsko"
+
+#: lib/ui/stdtoolbars.inc:227
+#, fuzzy
+msgid "csc"
+msgstr "cc"
+
+#: lib/ui/stdtoolbars.inc:228
+msgid "deg"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:229
+#, fuzzy
 msgid "det"
 msgstr "privzeta"
 
-#: lib/ui/stdtoolbars.inc:225
+#: lib/ui/stdtoolbars.inc:230
 #, fuzzy
 msgid "dim"
 msgstr "navadna"
 
-#: lib/ui/stdtoolbars.inc:226
+#: lib/ui/stdtoolbars.inc:231
 #, fuzzy
 msgid "exp"
 msgstr "besedilo"
 
-#: lib/ui/stdtoolbars.inc:227
+#: lib/ui/stdtoolbars.inc:232
 msgid "gcd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:228
+#: lib/ui/stdtoolbars.inc:233
 #, fuzzy
 msgid "hom"
 msgstr "Izrek"
 
-#: lib/ui/stdtoolbars.inc:229
+#: lib/ui/stdtoolbars.inc:234
 #, fuzzy
 msgid "inf"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:230
+#: lib/ui/stdtoolbars.inc:235
 #, fuzzy
 msgid "ker"
 msgstr "Govorec"
 
-#: lib/ui/stdtoolbars.inc:231
+#: lib/ui/stdtoolbars.inc:236
 msgid "lg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:232
+#: lib/ui/stdtoolbars.inc:237
 #, fuzzy
 msgid "lim"
 msgstr "Trditev"
 
-#: lib/ui/stdtoolbars.inc:233
+#: lib/ui/stdtoolbars.inc:238
 msgid "liminf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:234
+#: lib/ui/stdtoolbars.inc:239
 msgid "limsup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:235
+#: lib/ui/stdtoolbars.inc:240
 msgid "ln"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:236
+#: lib/ui/stdtoolbars.inc:241
 #, fuzzy
 msgid "log"
 msgstr "&Globalni"
 
-#: lib/ui/stdtoolbars.inc:237
+#: lib/ui/stdtoolbars.inc:242
 #, fuzzy
 msgid "max"
 msgstr "Faks"
 
-#: lib/ui/stdtoolbars.inc:238
+#: lib/ui/stdtoolbars.inc:243
 #, fuzzy
 msgid "min"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:239
+#: lib/ui/stdtoolbars.inc:244
 #, fuzzy
 msgid "sec"
 msgstr "DodajRazd"
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:245
 #, fuzzy
 msgid "sin"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:241
+#: lib/ui/stdtoolbars.inc:246
 #, fuzzy
 msgid "sinh"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:242
+#: lib/ui/stdtoolbars.inc:247
 msgid "sup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:243
+#: lib/ui/stdtoolbars.inc:248
 #, fuzzy
 msgid "tan"
 msgstr "De¾ela"
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:249
 #, fuzzy
 msgid "tanh"
 msgstr "Pot za varnostne kopije:|#P"
 
-#: lib/ui/stdtoolbars.inc:245
+#: lib/ui/stdtoolbars.inc:250
 #, fuzzy
 msgid "Pr"
 msgstr "Prepi¹i"
 
-#: lib/ui/stdtoolbars.inc:248
+#: lib/ui/stdtoolbars.inc:253
 #, fuzzy
 msgid "Spacings"
 msgstr "&Razmiki"
 
-#: lib/ui/stdtoolbars.inc:249
+#: lib/ui/stdtoolbars.inc:254
 #, fuzzy
 msgid "Thin space\t\\,"
 msgstr "navadna"
 
-#: lib/ui/stdtoolbars.inc:250
+#: lib/ui/stdtoolbars.inc:255
 #, fuzzy
 msgid "Medium space\t\\:"
 msgstr "navadna"
 
-#: lib/ui/stdtoolbars.inc:251
+#: lib/ui/stdtoolbars.inc:256
 #, fuzzy
 msgid "Thick space\t\\;"
 msgstr "navadna"
 
-#: lib/ui/stdtoolbars.inc:252
+#: lib/ui/stdtoolbars.inc:257
 msgid "Quadratin space\t\\quad"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:253
+#: lib/ui/stdtoolbars.inc:258
 msgid "Double quadratin space\t\\qquad"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:254
+#: lib/ui/stdtoolbars.inc:259
 #, fuzzy
 msgid "Negative space\t\\!"
 msgstr "navadna"
 
-#: lib/ui/stdtoolbars.inc:258
+#: lib/ui/stdtoolbars.inc:263
 #, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "Kvadratni koren\t\\sqrt"
 
-#: lib/ui/stdtoolbars.inc:259
+#: lib/ui/stdtoolbars.inc:264
 #, fuzzy
 msgid "Other root\t\\root"
 msgstr "Drugi koren\t\\root"
 
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:268
 msgid "Display style\t\\displaystyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:269
 msgid "Normal text style\t\\textstyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:270
 msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:271
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:275
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Standardno"
 
-#: lib/ui/stdtoolbars.inc:271
+#: lib/ui/stdtoolbars.inc:276
 #, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "Ni veè opomb"
 
-#: lib/ui/stdtoolbars.inc:272
+#: lib/ui/stdtoolbars.inc:277
 msgid "Nice\t\\nicefrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:278
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:279
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:275
+#: lib/ui/stdtoolbars.inc:280
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:284
 msgid "Roman\t\\mathrm"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:280
+#: lib/ui/stdtoolbars.inc:285
 msgid "Bold\t\\mathbf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:281
-msgid "Bold symbol\t\\boldsymbol"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:282
-#, fuzzy
-msgid "Sans serif\t\\mathsf"
-msgstr "brez serifov"
-
-#: lib/ui/stdtoolbars.inc:283
-#, fuzzy
-msgid "Italic\t\\mathit"
-msgstr "le¾eèa"
-
-#: lib/ui/stdtoolbars.inc:284
-#, fuzzy
-msgid "Typewriter\t\\mathtt"
-msgstr "pisalni stroj"
-
-#: lib/ui/stdtoolbars.inc:285
-msgid "Blackboard\t\\mathbb"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:286
-msgid "Fraktur\t\\mathfrak"
+msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:287
 #, fuzzy
-msgid "Calligraphic\t\\mathcal"
-msgstr "Matematièna kaligrafska dru¾ina"
+msgid "Sans serif\t\\mathsf"
+msgstr "brez serifov"
 
 #: lib/ui/stdtoolbars.inc:288
-msgid "Normal text mode\t\\textrm"
+#, fuzzy
+msgid "Italic\t\\mathit"
+msgstr "le¾eèa"
+
+#: lib/ui/stdtoolbars.inc:289
+#, fuzzy
+msgid "Typewriter\t\\mathtt"
+msgstr "pisalni stroj"
+
+#: lib/ui/stdtoolbars.inc:290
+msgid "Blackboard\t\\mathbb"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:291
+msgid "Fraktur\t\\mathfrak"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:292
+#, fuzzy
+msgid "Calligraphic\t\\mathcal"
+msgstr "Matematièna kaligrafska dru¾ina"
+
+#: lib/ui/stdtoolbars.inc:293
+msgid "Normal text mode\t\\textrm"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:296
 msgid "Dots"
 msgstr "Pike"
 
-#: lib/ui/stdtoolbars.inc:292
+#: lib/ui/stdtoolbars.inc:297
 #, fuzzy
 msgid "ldots"
 msgstr "Pike"
 
-#: lib/ui/stdtoolbars.inc:293
+#: lib/ui/stdtoolbars.inc:298
 #, fuzzy
 msgid "cdots"
 msgstr "Pike"
 
-#: lib/ui/stdtoolbars.inc:294
+#: lib/ui/stdtoolbars.inc:299
 #, fuzzy
 msgid "vdots"
 msgstr "Pike"
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:300
 #, fuzzy
 msgid "ddots"
 msgstr "Pike"
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:303
 #, fuzzy
 msgid "Frame Decorations"
 msgstr "Okraski okvirja"
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:304
 #, fuzzy
 msgid "hat"
 msgstr "Poglavje"
 
-#: lib/ui/stdtoolbars.inc:300
+#: lib/ui/stdtoolbars.inc:305
 #, fuzzy
 msgid "tilde"
 msgstr "Datoteka"
 
-#: lib/ui/stdtoolbars.inc:301
+#: lib/ui/stdtoolbars.inc:306
 msgid "bar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:307
 #, fuzzy
 msgid "grave"
 msgstr "zelena"
 
-#: lib/ui/stdtoolbars.inc:303
+#: lib/ui/stdtoolbars.inc:308
 #, fuzzy
 msgid "dot"
 msgstr "&Vrh"
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:309
 msgid "check"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:310
 msgid "widehat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:311
 msgid "widetilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:307
-msgid "vec"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:308
-#, fuzzy
-msgid "acute"
-msgstr "Datum"
-
-#: lib/ui/stdtoolbars.inc:309
-#, fuzzy
-msgid "ddot"
-msgstr "Dodaj"
-
-#: lib/ui/stdtoolbars.inc:310
-#, fuzzy
-msgid "breve"
-msgstr "Predogled|#P"
-
-#: lib/ui/stdtoolbars.inc:311
-#, fuzzy
-msgid "overline"
-msgstr "slovensko"
-
 #: lib/ui/stdtoolbars.inc:312
-msgid "overbrace"
+msgid "vec"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:313
 #, fuzzy
+msgid "acute"
+msgstr "Datum"
+
+#: lib/ui/stdtoolbars.inc:314
+#, fuzzy
+msgid "ddot"
+msgstr "Dodaj"
+
+#: lib/ui/stdtoolbars.inc:315
+#, fuzzy
+msgid "breve"
+msgstr "Predogled|#P"
+
+#: lib/ui/stdtoolbars.inc:316
+#, fuzzy
+msgid "overline"
+msgstr "slovensko"
+
+#: lib/ui/stdtoolbars.inc:317
+msgid "overbrace"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:318
+#, fuzzy
 msgid "overleftarrow"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:319
 msgid "overrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:320
 msgid "overleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:321
 #, fuzzy
 msgid "overset"
 msgstr "Resetiraj"
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:322
 #, fuzzy
 msgid "underline"
 msgstr "podèrtaj "
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:323
 msgid "underbrace"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:324
 msgid "underleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:325
 msgid "underrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:326
 msgid "underleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:327
 #, fuzzy
 msgid "underset"
 msgstr "Verz"
 
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:330
 msgid "Arrows"
 msgstr "Pu¹èice"
 
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:331
 #, fuzzy
 msgid "leftarrow"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/stdtoolbars.inc:327
+#: lib/ui/stdtoolbars.inc:332
 msgid "rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:328
+#: lib/ui/stdtoolbars.inc:333
 msgid "downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:334
 #, fuzzy
 msgid "uparrow"
 msgstr "Pu¹èica"
 
-#: lib/ui/stdtoolbars.inc:330
+#: lib/ui/stdtoolbars.inc:335
 msgid "updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:331
+#: lib/ui/stdtoolbars.inc:336
 msgid "leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:337
 #, fuzzy
 msgid "Leftarrow"
 msgstr "Levo"
 
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:338
 #, fuzzy
 msgid "Rightarrow"
 msgstr "DesnaGlava"
 
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:339
 msgid "Downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:340
 #, fuzzy
 msgid "Uparrow"
 msgstr "Pu¹èica"
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:341
 msgid "Updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:342
 msgid "Leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:343
 msgid "Longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:339
+#: lib/ui/stdtoolbars.inc:344
 msgid "Longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:340
+#: lib/ui/stdtoolbars.inc:345
 msgid "Longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:341
+#: lib/ui/stdtoolbars.inc:346
 msgid "longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:342
+#: lib/ui/stdtoolbars.inc:347
 msgid "longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:343
+#: lib/ui/stdtoolbars.inc:348
 msgid "longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:344
+#: lib/ui/stdtoolbars.inc:349
 msgid "leftharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:345
+#: lib/ui/stdtoolbars.inc:350
 msgid "rightharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:346
+#: lib/ui/stdtoolbars.inc:351
 #, fuzzy
 msgid "mapsto"
 msgstr "Pojasnilo"
 
-#: lib/ui/stdtoolbars.inc:347
+#: lib/ui/stdtoolbars.inc:352
 msgid "longmapsto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:353
 #, fuzzy
 msgid "nwarrow"
 msgstr "Pu¹èica"
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:354
 #, fuzzy
 msgid "nearrow"
 msgstr "Pu¹èica"
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:355
 msgid "leftharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:356
 msgid "rightharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:357
 msgid "hookleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:358
 msgid "hookrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:354
+#: lib/ui/stdtoolbars.inc:359
 #, fuzzy
 msgid "swarrow"
 msgstr "Pu¹èica"
 
-#: lib/ui/stdtoolbars.inc:355
+#: lib/ui/stdtoolbars.inc:360
 #, fuzzy
 msgid "searrow"
 msgstr "Pu¹èica"
 
-#: lib/ui/stdtoolbars.inc:356 lib/ui/stdtoolbars.inc:626
+#: lib/ui/stdtoolbars.inc:361 lib/ui/stdtoolbars.inc:631
 msgid "rightleftharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:364
 msgid "Operators"
 msgstr "Operatorji"
 
-#: lib/ui/stdtoolbars.inc:360
+#: lib/ui/stdtoolbars.inc:365
 msgid "pm"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:361
+#: lib/ui/stdtoolbars.inc:366
 #, fuzzy
 msgid "cap"
 msgstr "Odlomek"
 
-#: lib/ui/stdtoolbars.inc:362
+#: lib/ui/stdtoolbars.inc:367
 #, fuzzy
 msgid "diamond"
 msgstr "De¾ela"
 
-#: lib/ui/stdtoolbars.inc:363
+#: lib/ui/stdtoolbars.inc:368
 #, fuzzy
 msgid "oplus"
 msgstr "Stolpci"
 
-#: lib/ui/stdtoolbars.inc:364
+#: lib/ui/stdtoolbars.inc:369
 #, fuzzy
 msgid "mp"
 msgstr "Poudari "
 
-#: lib/ui/stdtoolbars.inc:365
+#: lib/ui/stdtoolbars.inc:370
 msgid "cup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:371
 msgid "bigtriangleup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:372
 #, fuzzy
 msgid "ominus"
 msgstr "minut"
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:373
 msgid "times"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:374
 #, fuzzy
 msgid "uplus"
 msgstr "Izhod"
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:375
 msgid "bigtriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:376
 #, fuzzy
 msgid "otimes"
 msgstr "Izvodi"
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:377
 msgid "div"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:378
 #, fuzzy
 msgid "sqcap"
 msgstr "Odlomek"
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:379
 #, fuzzy
 msgid "triangleright"
 msgstr "Copyright"
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:380
 #, fuzzy
 msgid "oslash"
 msgstr "poljsko"
 
-#: lib/ui/stdtoolbars.inc:376
+#: lib/ui/stdtoolbars.inc:381
 msgid "cdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:377
+#: lib/ui/stdtoolbars.inc:382
 msgid "sqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:378
-msgid "triangleleft"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:379
-#, fuzzy
-msgid "odot"
-msgstr "Noga"
-
-#: lib/ui/stdtoolbars.inc:380
-msgid "star"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:381
-#, fuzzy
-msgid "vee"
-msgstr "slovensko"
-
-#: lib/ui/stdtoolbars.inc:382
-#, fuzzy
-msgid "amalg"
-msgstr "Enaslov"
-
 #: lib/ui/stdtoolbars.inc:383
-msgid "bigcirc"
+msgid "triangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:384
 #, fuzzy
-msgid "setminus"
-msgstr "minut"
+msgid "odot"
+msgstr "Noga"
 
 #: lib/ui/stdtoolbars.inc:385
-msgid "wedge"
+msgid "star"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:386
 #, fuzzy
+msgid "vee"
+msgstr "slovensko"
+
+#: lib/ui/stdtoolbars.inc:387
+#, fuzzy
+msgid "amalg"
+msgstr "Enaslov"
+
+#: lib/ui/stdtoolbars.inc:388
+msgid "bigcirc"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:389
+#, fuzzy
+msgid "setminus"
+msgstr "minut"
+
+#: lib/ui/stdtoolbars.inc:390
+msgid "wedge"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:391
+#, fuzzy
 msgid "dagger"
 msgstr "veèja"
 
-#: lib/ui/stdtoolbars.inc:387
+#: lib/ui/stdtoolbars.inc:392
 #, fuzzy
 msgid "circ"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:388
+#: lib/ui/stdtoolbars.inc:393
 #, fuzzy
 msgid "bullet"
 msgstr "Pike"
 
-#: lib/ui/stdtoolbars.inc:389
+#: lib/ui/stdtoolbars.inc:394
 #, fuzzy
 msgid "wr"
 msgstr "Odlomek"
 
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:395
 #, fuzzy
 msgid "ddagger"
 msgstr "veèja"
 
-#: lib/ui/stdtoolbars.inc:393
+#: lib/ui/stdtoolbars.inc:398
 msgid "Relations"
 msgstr "Relacije"
 
-#: lib/ui/stdtoolbars.inc:394
+#: lib/ui/stdtoolbars.inc:399
 msgid "leq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:395
+#: lib/ui/stdtoolbars.inc:400
 msgid "geq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:396
-msgid "equiv"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:397
-#, fuzzy
-msgid "models"
-msgstr "Koda"
-
-#: lib/ui/stdtoolbars.inc:398
-#, fuzzy
-msgid "prec"
-msgstr "Za¹èiten presledek|Z"
-
-#: lib/ui/stdtoolbars.inc:399
-#, fuzzy
-msgid "succ"
-msgstr "cc"
-
-#: lib/ui/stdtoolbars.inc:400
-msgid "sim"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:401
-msgid "perp"
+msgid "equiv"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:402
 #, fuzzy
-msgid "preceq"
-msgstr "Za¹èiten presledek|Z"
+msgid "models"
+msgstr "Koda"
 
 #: lib/ui/stdtoolbars.inc:403
-msgid "succeq"
-msgstr ""
+#, fuzzy
+msgid "prec"
+msgstr "Za¹èiten presledek|Z"
 
 #: lib/ui/stdtoolbars.inc:404
-msgid "simeq"
-msgstr ""
+#, fuzzy
+msgid "succ"
+msgstr "cc"
 
 #: lib/ui/stdtoolbars.inc:405
-msgid "mid"
+msgid "sim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:406
+msgid "perp"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:407
+#, fuzzy
+msgid "preceq"
+msgstr "Za¹èiten presledek|Z"
+
+#: lib/ui/stdtoolbars.inc:408
+msgid "succeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:409
+msgid "simeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:410
+msgid "mid"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:411
 #, fuzzy
 msgid "ll"
 msgstr "Uporabi"
 
-#: lib/ui/stdtoolbars.inc:407
+#: lib/ui/stdtoolbars.inc:412
 msgid "gg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:408
+#: lib/ui/stdtoolbars.inc:413
 msgid "asymp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:409
+#: lib/ui/stdtoolbars.inc:414
 #, fuzzy
 msgid "parallel"
 msgstr "Oznaèevanje"
 
-#: lib/ui/stdtoolbars.inc:410
+#: lib/ui/stdtoolbars.inc:415
 #, fuzzy
 msgid "subset"
 msgstr "Podpodrazdelek"
 
-#: lib/ui/stdtoolbars.inc:411
+#: lib/ui/stdtoolbars.inc:416
 msgid "supset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:412
+#: lib/ui/stdtoolbars.inc:417
 #, fuzzy
 msgid "approx"
 msgstr "Del"
 
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:418
 #, fuzzy
 msgid "smile"
 msgstr "Datoteka"
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:419
 msgid "subseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:420
 msgid "supseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:421
 #, fuzzy
 msgid "cong"
 msgstr "Kraj"
 
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:422
 #, fuzzy
 msgid "frown"
 msgstr "Kraj"
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:423
 msgid "sqsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:424
 msgid "sqsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:425
 #, fuzzy
 msgid "doteq"
 msgstr "opomba"
 
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:426
 msgid "neq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:422 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:427 src/lengthcommon.cpp:38
 #, fuzzy
 msgid "in"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:423
+#: lib/ui/stdtoolbars.inc:428
 msgid "ni"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:429
 #, fuzzy
 msgid "propto"
 msgstr "&Vrh"
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:430
 #, fuzzy
 msgid "notin"
 msgstr "opomba"
 
-#: lib/ui/stdtoolbars.inc:426
+#: lib/ui/stdtoolbars.inc:431
 msgid "vdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:432
 msgid "dashv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:433
 #, fuzzy
 msgid "bowtie"
 msgstr "opomba"
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:437
 msgid "alpha"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:433
-msgid "beta"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:434
-#, fuzzy
-msgid "gamma"
-msgstr "Lema"
-
-#: lib/ui/stdtoolbars.inc:435
-#, fuzzy
-msgid "delta"
-msgstr "privzeta"
-
-#: lib/ui/stdtoolbars.inc:436
-#, fuzzy
-msgid "epsilon"
-msgstr "Razlièica"
-
-#: lib/ui/stdtoolbars.inc:437
-msgid "varepsilon"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:438
-msgid "zeta"
+msgid "beta"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:439
 #, fuzzy
+msgid "gamma"
+msgstr "Lema"
+
+#: lib/ui/stdtoolbars.inc:440
+#, fuzzy
+msgid "delta"
+msgstr "privzeta"
+
+#: lib/ui/stdtoolbars.inc:441
+#, fuzzy
+msgid "epsilon"
+msgstr "Razlièica"
+
+#: lib/ui/stdtoolbars.inc:442
+msgid "varepsilon"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:443
+msgid "zeta"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:444
+#, fuzzy
 msgid "eta"
 msgstr "vijolièna"
 
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:445
 #, fuzzy
 msgid "theta"
 msgstr "besedilo"
 
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:446
 #, fuzzy
 msgid "vartheta"
 msgstr "Vmesno"
 
-#: lib/ui/stdtoolbars.inc:442
+#: lib/ui/stdtoolbars.inc:447
 #, fuzzy
 msgid "iota"
 msgstr "Dr¾ava"
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:448
 msgid "kappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:449
 msgid "lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:445 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:450 src/lengthcommon.cpp:38
 msgid "mu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:451
 msgid "nu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:452
 #, fuzzy
 msgid "xi"
 msgstr "x"
 
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:453
 msgid "pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:449
+#: lib/ui/stdtoolbars.inc:454
 msgid "varpi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:450
+#: lib/ui/stdtoolbars.inc:455
 msgid "rho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:451
+#: lib/ui/stdtoolbars.inc:456
 msgid "sigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:452
-msgid "varsigma"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:453
-#, fuzzy
-msgid "tau"
-msgstr "Mesto"
-
-#: lib/ui/stdtoolbars.inc:454
-#, fuzzy
-msgid "upsilon"
-msgstr "Vpra¹anje"
-
-#: lib/ui/stdtoolbars.inc:455
-msgid "phi"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:456
-msgid "varphi"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:457
-msgid "chi"
+msgid "varsigma"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:458
 #, fuzzy
+msgid "tau"
+msgstr "Mesto"
+
+#: lib/ui/stdtoolbars.inc:459
+#, fuzzy
+msgid "upsilon"
+msgstr "Vpra¹anje"
+
+#: lib/ui/stdtoolbars.inc:460
+msgid "phi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:461
+msgid "varphi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:462
+msgid "chi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:463
+#, fuzzy
 msgid "psi"
 msgstr "ps"
 
-#: lib/ui/stdtoolbars.inc:459
+#: lib/ui/stdtoolbars.inc:464
 #, fuzzy
 msgid "omega"
 msgstr "pokonèna"
 
-#: lib/ui/stdtoolbars.inc:460
+#: lib/ui/stdtoolbars.inc:465
 #, fuzzy
 msgid "Gamma"
 msgstr "Lema"
 
-#: lib/ui/stdtoolbars.inc:461
+#: lib/ui/stdtoolbars.inc:466
 #, fuzzy
 msgid "Delta"
 msgstr "&Zbri¹i"
 
-#: lib/ui/stdtoolbars.inc:462
+#: lib/ui/stdtoolbars.inc:467
 #, fuzzy
 msgid "Theta"
 msgstr "tajsko"
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:468
 #, fuzzy
 msgid "Lambda"
 msgstr "De¾ela"
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:469
 msgid "Xi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:470
 msgid "Pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:471
 #, fuzzy
 msgid "Sigma"
 msgstr "majhna"
 
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:472
 msgid "Upsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:473
 msgid "Phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:469
+#: lib/ui/stdtoolbars.inc:474
 msgid "Psi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:470
+#: lib/ui/stdtoolbars.inc:475
 msgid "Omega"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:473
+#: lib/ui/stdtoolbars.inc:478
 msgid "Miscellaneous"
 msgstr "Razno"
 
-#: lib/ui/stdtoolbars.inc:474
+#: lib/ui/stdtoolbars.inc:479
 #, fuzzy
 msgid "nabla"
 msgstr "&Dolga tabela"
 
-#: lib/ui/stdtoolbars.inc:475
+#: lib/ui/stdtoolbars.inc:480
 #, fuzzy
 msgid "partial"
 msgstr "Oznaèevanje"
 
-#: lib/ui/stdtoolbars.inc:476
+#: lib/ui/stdtoolbars.inc:481
 #, fuzzy
 msgid "infty"
 msgstr "drobna"
 
-#: lib/ui/stdtoolbars.inc:477
+#: lib/ui/stdtoolbars.inc:482
 msgid "prime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:478
+#: lib/ui/stdtoolbars.inc:483
 #, fuzzy
 msgid "ell"
 msgstr "hspell"
 
-#: lib/ui/stdtoolbars.inc:479
+#: lib/ui/stdtoolbars.inc:484
 #, fuzzy
 msgid "emptyset"
 msgstr "Globina"
 
-#: lib/ui/stdtoolbars.inc:480
+#: lib/ui/stdtoolbars.inc:485
 #, fuzzy
 msgid "exists"
 msgstr "Zasluge"
 
-#: lib/ui/stdtoolbars.inc:481
+#: lib/ui/stdtoolbars.inc:486
 #, fuzzy
 msgid "forall"
 msgstr "navadna"
 
-#: lib/ui/stdtoolbars.inc:482
+#: lib/ui/stdtoolbars.inc:487
 #, fuzzy
 msgid "imath"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:483
+#: lib/ui/stdtoolbars.inc:488
 #, fuzzy
 msgid "jmath"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:484
+#: lib/ui/stdtoolbars.inc:489
 #, fuzzy
 msgid "Re"
 msgstr "Ponovi"
 
-#: lib/ui/stdtoolbars.inc:485
+#: lib/ui/stdtoolbars.inc:490
 #, fuzzy
 msgid "Im"
 msgstr "Alineje"
 
-#: lib/ui/stdtoolbars.inc:486
+#: lib/ui/stdtoolbars.inc:491
 #, fuzzy
 msgid "aleph"
 msgstr ", globina: "
 
-#: lib/ui/stdtoolbars.inc:487
+#: lib/ui/stdtoolbars.inc:492
 #, fuzzy
 msgid "wp"
 msgstr "Odlomek"
 
-#: lib/ui/stdtoolbars.inc:488 lib/ui/stdtoolbars.inc:570
+#: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
 #, fuzzy
 msgid "hbar"
 msgstr "globinska ¹katla"
 
-#: lib/ui/stdtoolbars.inc:489 lib/ui/stdtoolbars.inc:577
+#: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
 #, fuzzy
 msgid "angle"
 msgstr "Enojni"
 
-#: lib/ui/stdtoolbars.inc:490
+#: lib/ui/stdtoolbars.inc:495
 #, fuzzy
 msgid "top"
 msgstr "&Vrh"
 
-#: lib/ui/stdtoolbars.inc:491
+#: lib/ui/stdtoolbars.inc:496
 #, fuzzy
 msgid "bot"
 msgstr "&Vrh"
 
-#: lib/ui/stdtoolbars.inc:492
+#: lib/ui/stdtoolbars.inc:497
 #, fuzzy
 msgid "Vert"
 msgstr "Verz"
 
-#: lib/ui/stdtoolbars.inc:493
+#: lib/ui/stdtoolbars.inc:498
 msgid "neg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:494
+#: lib/ui/stdtoolbars.inc:499
 #, fuzzy
 msgid "flat"
 msgstr "Noga"
 
-#: lib/ui/stdtoolbars.inc:495
+#: lib/ui/stdtoolbars.inc:500
 #, fuzzy
 msgid "natural"
 msgstr "Podpis"
 
-#: lib/ui/stdtoolbars.inc:496
+#: lib/ui/stdtoolbars.inc:501
 msgid "sharp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:497
+#: lib/ui/stdtoolbars.inc:502
 msgid "surd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:498
+#: lib/ui/stdtoolbars.inc:503
 #, fuzzy
 msgid "triangle"
 msgstr "Enojni"
 
-#: lib/ui/stdtoolbars.inc:499
+#: lib/ui/stdtoolbars.inc:504
 msgid "diamondsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:500
+#: lib/ui/stdtoolbars.inc:505
 #, fuzzy
 msgid "heartsuit"
 msgstr "podeduj"
 
-#: lib/ui/stdtoolbars.inc:501
+#: lib/ui/stdtoolbars.inc:506
 msgid "clubsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:502
+#: lib/ui/stdtoolbars.inc:507
 msgid "spadesuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:503
+#: lib/ui/stdtoolbars.inc:508
 msgid "textrm \\AA"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:504
+#: lib/ui/stdtoolbars.inc:509
 #, fuzzy
 msgid "textrm \\O"
 msgstr "besedilo"
 
-#: lib/ui/stdtoolbars.inc:505
+#: lib/ui/stdtoolbars.inc:510
 msgid "mathcircumflex"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:511
 msgid "_"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:512
 #, fuzzy
 msgid "mathrm T"
 msgstr "matematièni okvir"
 
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:513
 #, fuzzy
 msgid "mathbb N"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:514
 #, fuzzy
 msgid "mathbb Z"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:515
 #, fuzzy
 msgid "mathbb Q"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:516
 #, fuzzy
 msgid "mathbb R"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:517
 #, fuzzy
 msgid "mathbb C"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:518
 #, fuzzy
 msgid "mathbb H"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:519
 #, fuzzy
 msgid "mathcal F"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:520
 #, fuzzy
 msgid "mathcal L"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:521
 #, fuzzy
 msgid "mathcal H"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:522
 #, fuzzy
 msgid "mathcal O"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:523
 #, fuzzy
 msgid "phantom"
 msgstr "esperanto"
 
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:524
 msgid "vphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:520
+#: lib/ui/stdtoolbars.inc:525
 msgid "hphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:523
+#: lib/ui/stdtoolbars.inc:528
 #, fuzzy
 msgid "Big Operators"
 msgstr "Veliki operatorji"
 
-#: lib/ui/stdtoolbars.inc:524
-msgid "sum"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:525
-#, fuzzy
-msgid "int"
-msgstr "drobne"
-
-#: lib/ui/stdtoolbars.inc:526
+#: lib/ui/stdtoolbars.inc:529
 #, fuzzy
 msgid "intop"
 msgstr "Èrta zgoraj|z"
 
-#: lib/ui/stdtoolbars.inc:527
+#: lib/ui/stdtoolbars.inc:530
 #, fuzzy
-msgid "iint"
+msgid "int"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:528
+#: lib/ui/stdtoolbars.inc:531
 #, fuzzy
 msgid "iintop"
 msgstr "Èrta zgoraj|z"
 
-#: lib/ui/stdtoolbars.inc:529
-msgid "iiint"
-msgstr ""
+#: lib/ui/stdtoolbars.inc:532
+#, fuzzy
+msgid "iint"
+msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:530
+#: lib/ui/stdtoolbars.inc:533
 #, fuzzy
 msgid "iiintop"
 msgstr "Èrta zgoraj|z"
 
-#: lib/ui/stdtoolbars.inc:531
-msgid "iiiint"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:532
-msgid "iiiintop"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:533
-msgid "dotsint"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:534
-msgid "dotsintop"
+msgid "iiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:535
-#, fuzzy
-msgid "oint"
-msgstr "drobne"
+msgid "iiiintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:536
+msgid "iiiint"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:537
+msgid "dotsintop"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:538
+msgid "dotsint"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:539
 #, fuzzy
 msgid "ointop"
 msgstr "Raèun"
 
-#: lib/ui/stdtoolbars.inc:537
+#: lib/ui/stdtoolbars.inc:540
 #, fuzzy
-msgid "oiint"
-msgstr "Pisava: "
+msgid "oint"
+msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:538
+#: lib/ui/stdtoolbars.inc:541
 #, fuzzy
 msgid "oiintop"
 msgstr "Raèun"
 
-#: lib/ui/stdtoolbars.inc:539
-msgid "ointctrclockwise"
-msgstr ""
+#: lib/ui/stdtoolbars.inc:542
+#, fuzzy
+msgid "oiint"
+msgstr "Pisava: "
 
-#: lib/ui/stdtoolbars.inc:540
+#: lib/ui/stdtoolbars.inc:543
 msgid "ointctrclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:541
-msgid "ointclockwise"
+#: lib/ui/stdtoolbars.inc:544
+msgid "ointctrclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:542
+#: lib/ui/stdtoolbars.inc:545
 msgid "ointclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:543
-msgid "sqint"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:544
-#, fuzzy
-msgid "sqintop"
-msgstr "Èrta zgoraj|z"
-
-#: lib/ui/stdtoolbars.inc:545
-msgid "sqiint"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:546
-msgid "sqiintop"
+msgid "ointclockwise"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:547
 #, fuzzy
-msgid "prod"
-msgstr "Za¹èiten presledek|Z"
+msgid "sqintop"
+msgstr "Èrta zgoraj|z"
 
 #: lib/ui/stdtoolbars.inc:548
-msgid "coprod"
+msgid "sqint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:549
-msgid "bigsqcup"
+msgid "sqiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:550
-msgid "bigotimes"
+msgid "sqiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:551
-msgid "bigodot"
+msgid "sum"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
-msgid "bigoplus"
-msgstr ""
+#, fuzzy
+msgid "prod"
+msgstr "Za¹èiten presledek|Z"
 
 #: lib/ui/stdtoolbars.inc:553
-msgid "bigcap"
+msgid "coprod"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:554
-msgid "bigcup"
+msgid "bigsqcup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:555
-msgid "biguplus"
+msgid "bigotimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:556
-msgid "bigvee"
+msgid "bigodot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:557
-msgid "bigwedge"
+msgid "bigoplus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:558
+msgid "bigcap"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:559
+msgid "bigcup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:560
-msgid "AMS Miscellaneous"
-msgstr "Razno AMS"
+msgid "biguplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:561
-msgid "digamma"
+msgid "bigvee"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:562
-msgid "varkappa"
+msgid "bigwedge"
 msgstr ""
-
-#: lib/ui/stdtoolbars.inc:563
-#, fuzzy
-msgid "beth"
-msgstr ", globina: "
-
-#: lib/ui/stdtoolbars.inc:564
-#, fuzzy
-msgid "daleth"
-msgstr "privzeta"
 
 #: lib/ui/stdtoolbars.inc:565
-msgid "gimel"
-msgstr ""
+msgid "AMS Miscellaneous"
+msgstr "Razno AMS"
 
 #: lib/ui/stdtoolbars.inc:566
-msgid "ulcorner"
+msgid "digamma"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:567
-msgid "urcorner"
+msgid "varkappa"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:568
 #, fuzzy
-msgid "llcorner"
-msgstr "Vse meje"
+msgid "beth"
+msgstr ", globina: "
 
 #: lib/ui/stdtoolbars.inc:569
-msgid "lrcorner"
+#, fuzzy
+msgid "daleth"
+msgstr "privzeta"
+
+#: lib/ui/stdtoolbars.inc:570
+msgid "gimel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:571
-msgid "hslash"
+msgid "ulcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:572
+msgid "urcorner"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:573
+#, fuzzy
+msgid "llcorner"
+msgstr "Vse meje"
+
+#: lib/ui/stdtoolbars.inc:574
+msgid "lrcorner"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:576
+msgid "hslash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:577
 #, fuzzy
 msgid "vartriangle"
 msgstr "Oznaèevanje"
 
-#: lib/ui/stdtoolbars.inc:573
-msgid "triangledown"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:574
-#, fuzzy
-msgid "square"
-msgstr "baskovsko"
-
-#: lib/ui/stdtoolbars.inc:575
-#, fuzzy
-msgid "lozenge"
-msgstr "slovensko"
-
-#: lib/ui/stdtoolbars.inc:576
-msgid "circledS"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:578
-msgid "measuredangle"
+msgid "triangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:579
 #, fuzzy
+msgid "square"
+msgstr "baskovsko"
+
+#: lib/ui/stdtoolbars.inc:580
+#, fuzzy
+msgid "lozenge"
+msgstr "slovensko"
+
+#: lib/ui/stdtoolbars.inc:581
+msgid "circledS"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:583
+msgid "measuredangle"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:584
+#, fuzzy
 msgid "nexists"
 msgstr "Stvarno kazalo|v"
 
-#: lib/ui/stdtoolbars.inc:580
+#: lib/ui/stdtoolbars.inc:585
 msgid "mho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:581
+#: lib/ui/stdtoolbars.inc:586
 #, fuzzy
 msgid "Finv"
 msgstr "drobne"
 
-#: lib/ui/stdtoolbars.inc:582
+#: lib/ui/stdtoolbars.inc:587
 #, fuzzy
 msgid "Game"
 msgstr "Ime"
 
-#: lib/ui/stdtoolbars.inc:583
+#: lib/ui/stdtoolbars.inc:588
 msgid "Bbbk"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:584
+#: lib/ui/stdtoolbars.inc:589
 msgid "backprime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:585
+#: lib/ui/stdtoolbars.inc:590
 msgid "varnothing"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:586
+#: lib/ui/stdtoolbars.inc:591
 msgid "blacktriangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:587
+#: lib/ui/stdtoolbars.inc:592
 msgid "blacktriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:588
+#: lib/ui/stdtoolbars.inc:593
 #, fuzzy
 msgid "blacksquare"
 msgstr "èrna"
 
-#: lib/ui/stdtoolbars.inc:589
+#: lib/ui/stdtoolbars.inc:594
 msgid "blacklozenge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:590
+#: lib/ui/stdtoolbars.inc:595
 msgid "bigstar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:591
+#: lib/ui/stdtoolbars.inc:596
 msgid "sphericalangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:592
+#: lib/ui/stdtoolbars.inc:597
 #, fuzzy
 msgid "complement"
 msgstr "Komentar"
 
-#: lib/ui/stdtoolbars.inc:593
+#: lib/ui/stdtoolbars.inc:598
 #, fuzzy
 msgid "eth"
 msgstr ", globina: "
 
-#: lib/ui/stdtoolbars.inc:594
+#: lib/ui/stdtoolbars.inc:599
 msgid "diagup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:595
+#: lib/ui/stdtoolbars.inc:600
 msgid "diagdown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:598
+#: lib/ui/stdtoolbars.inc:603
 #, fuzzy
 msgid "AMS Arrows"
 msgstr "Pu¹èice AMS"
 
-#: lib/ui/stdtoolbars.inc:599
+#: lib/ui/stdtoolbars.inc:604
 msgid "dashleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:600
+#: lib/ui/stdtoolbars.inc:605
 msgid "dashrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:601
+#: lib/ui/stdtoolbars.inc:606
 msgid "leftleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:602
+#: lib/ui/stdtoolbars.inc:607
 msgid "leftrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:603
+#: lib/ui/stdtoolbars.inc:608
 msgid "rightrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:604
+#: lib/ui/stdtoolbars.inc:609
 msgid "rightleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:605
+#: lib/ui/stdtoolbars.inc:610
 #, fuzzy
 msgid "Lleftarrow"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/stdtoolbars.inc:606
+#: lib/ui/stdtoolbars.inc:611
 #, fuzzy
 msgid "Rrightarrow"
 msgstr "DesnaGlava"
 
-#: lib/ui/stdtoolbars.inc:607
+#: lib/ui/stdtoolbars.inc:612
 msgid "twoheadleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:608
+#: lib/ui/stdtoolbars.inc:613
 msgid "twoheadrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:609
+#: lib/ui/stdtoolbars.inc:614
 msgid "leftarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:610
+#: lib/ui/stdtoolbars.inc:615
 msgid "rightarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:611
+#: lib/ui/stdtoolbars.inc:616
 msgid "looparrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:612
+#: lib/ui/stdtoolbars.inc:617
 #, fuzzy
 msgid "looparrowright"
 msgstr "Pravice raz¹irjanja"
 
-#: lib/ui/stdtoolbars.inc:613
+#: lib/ui/stdtoolbars.inc:618
 msgid "curvearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:614
+#: lib/ui/stdtoolbars.inc:619
 msgid "curvearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:615
+#: lib/ui/stdtoolbars.inc:620
 msgid "circlearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:616
+#: lib/ui/stdtoolbars.inc:621
 msgid "circlearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:617
+#: lib/ui/stdtoolbars.inc:622
 msgid "Lsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:618
+#: lib/ui/stdtoolbars.inc:623
 msgid "Rsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:619
+#: lib/ui/stdtoolbars.inc:624
 #, fuzzy
 msgid "upuparrows"
 msgstr "Pu¹èice"
 
-#: lib/ui/stdtoolbars.inc:620
+#: lib/ui/stdtoolbars.inc:625
 msgid "downdownarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:621
+#: lib/ui/stdtoolbars.inc:626
 msgid "upharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:622
+#: lib/ui/stdtoolbars.inc:627
 msgid "upharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:623
+#: lib/ui/stdtoolbars.inc:628
 msgid "downharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:624
+#: lib/ui/stdtoolbars.inc:629
 msgid "downharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:625
+#: lib/ui/stdtoolbars.inc:630
 msgid "leftrightharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:627
+#: lib/ui/stdtoolbars.inc:632
 msgid "rightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:628
+#: lib/ui/stdtoolbars.inc:633
 msgid "leftrightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:629
+#: lib/ui/stdtoolbars.inc:634
 #, fuzzy
 msgid "nleftarrow"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/stdtoolbars.inc:630
+#: lib/ui/stdtoolbars.inc:635
 msgid "nrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:631
+#: lib/ui/stdtoolbars.inc:636
 msgid "nleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:632
+#: lib/ui/stdtoolbars.inc:637
 msgid "nLeftarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:633
-#, fuzzy
-msgid "nRightarrow"
-msgstr "DesnaGlava"
-
-#: lib/ui/stdtoolbars.inc:634
-msgid "nLeftrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:635
-msgid "multimap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:638
 #, fuzzy
-msgid "AMS Relations"
-msgstr "Relacije AMS"
+msgid "nRightarrow"
+msgstr "DesnaGlava"
 
 #: lib/ui/stdtoolbars.inc:639
-msgid "leqq"
+msgid "nLeftrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:640
-msgid "geqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:641
-msgid "leqslant"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:642
-msgid "geqslant"
+msgid "multimap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:643
-msgid "eqslantless"
-msgstr ""
+#, fuzzy
+msgid "AMS Relations"
+msgstr "Relacije AMS"
 
 #: lib/ui/stdtoolbars.inc:644
-msgid "eqslantgtr"
+msgid "leqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:645
-msgid "lesssim"
+msgid "geqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:646
-msgid "gtrsim"
+msgid "leqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:647
-msgid "lessapprox"
+msgid "geqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:648
-msgid "gtrapprox"
+msgid "eqslantless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:649
-msgid "approxeq"
+msgid "eqslantgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:650
+msgid "lesssim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:651
+msgid "gtrsim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:652
+msgid "lessapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:653
+msgid "gtrapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:654
+msgid "approxeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:655
 #, fuzzy
 msgid "triangleq"
 msgstr "Enojni"
 
-#: lib/ui/stdtoolbars.inc:651
+#: lib/ui/stdtoolbars.inc:656
 msgid "lessdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:652
+#: lib/ui/stdtoolbars.inc:657
 msgid "gtrdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:653
+#: lib/ui/stdtoolbars.inc:658
 msgid "lll"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:654
+#: lib/ui/stdtoolbars.inc:659
 msgid "ggg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:655
+#: lib/ui/stdtoolbars.inc:660
 msgid "lessgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:656
+#: lib/ui/stdtoolbars.inc:661
 #, fuzzy
 msgid "gtrless"
 msgstr "Parametri"
 
-#: lib/ui/stdtoolbars.inc:657
+#: lib/ui/stdtoolbars.inc:662
 msgid "lesseqgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:658
+#: lib/ui/stdtoolbars.inc:663
 #, fuzzy
 msgid "gtreqless"
 msgstr "Parametri"
 
-#: lib/ui/stdtoolbars.inc:659
-msgid "lesseqqgtr"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:660
-#, fuzzy
-msgid "gtreqqless"
-msgstr "Parametri"
-
-#: lib/ui/stdtoolbars.inc:661
-msgid "eqcirc"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:662
-msgid "circeq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:663
-msgid "thicksim"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:664
-msgid "thickapprox"
+msgid "lesseqqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:665
 #, fuzzy
-msgid "backsim"
-msgstr "èrna"
+msgid "gtreqqless"
+msgstr "Parametri"
 
 #: lib/ui/stdtoolbars.inc:666
-msgid "backsimeq"
+msgid "eqcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:667
-msgid "subseteqq"
+msgid "circeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:668
-msgid "supseteqq"
+msgid "thicksim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:669
+msgid "thickapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:670
+#, fuzzy
+msgid "backsim"
+msgstr "èrna"
+
+#: lib/ui/stdtoolbars.inc:671
+msgid "backsimeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:672
+msgid "subseteqq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:673
+msgid "supseteqq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:674
 #, fuzzy
 msgid "Subset"
 msgstr "Predmet"
 
-#: lib/ui/stdtoolbars.inc:670
+#: lib/ui/stdtoolbars.inc:675
 #, fuzzy
 msgid "Supset"
 msgstr "Podrazdelek"
 
-#: lib/ui/stdtoolbars.inc:671
+#: lib/ui/stdtoolbars.inc:676
 msgid "sqsubset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:672
+#: lib/ui/stdtoolbars.inc:677
 msgid "sqsupset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:673
+#: lib/ui/stdtoolbars.inc:678
 msgid "preccurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:674
+#: lib/ui/stdtoolbars.inc:679
 msgid "succcurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:675
+#: lib/ui/stdtoolbars.inc:680
 msgid "curlyeqprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:676
+#: lib/ui/stdtoolbars.inc:681
 msgid "curlyeqsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:677
+#: lib/ui/stdtoolbars.inc:682
 msgid "precsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:678
+#: lib/ui/stdtoolbars.inc:683
 msgid "succsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:679
+#: lib/ui/stdtoolbars.inc:684
 msgid "precapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:680
+#: lib/ui/stdtoolbars.inc:685
 msgid "succapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:681
+#: lib/ui/stdtoolbars.inc:686
 msgid "vartriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:682
+#: lib/ui/stdtoolbars.inc:687
 #, fuzzy
 msgid "vartriangleright"
 msgstr "Èrta desno|d"
 
-#: lib/ui/stdtoolbars.inc:683
+#: lib/ui/stdtoolbars.inc:688
 msgid "trianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:684
-msgid "trianglerighteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:685
-#, fuzzy
-msgid "bumpeq"
-msgstr "modra"
-
-#: lib/ui/stdtoolbars.inc:686
-#, fuzzy
-msgid "Bumpeq"
-msgstr "modra"
-
-#: lib/ui/stdtoolbars.inc:687
-msgid "doteqdot"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:688
-msgid "risingdotseq"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:689
-msgid "fallingdotseq"
+msgid "trianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:690
 #, fuzzy
-msgid "vDash"
-msgstr "dansko"
+msgid "bumpeq"
+msgstr "modra"
 
 #: lib/ui/stdtoolbars.inc:691
-msgid "Vvdash"
-msgstr ""
+#, fuzzy
+msgid "Bumpeq"
+msgstr "modra"
 
 #: lib/ui/stdtoolbars.inc:692
-msgid "Vdash"
+msgid "doteqdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:693
-msgid "shortmid"
+msgid "risingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:694
-msgid "shortparallel"
+msgid "fallingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:695
 #, fuzzy
-msgid "smallsmile"
-msgstr "Mali razmak"
+msgid "vDash"
+msgstr "dansko"
 
 #: lib/ui/stdtoolbars.inc:696
-msgid "smallfrown"
+msgid "Vvdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:697
-msgid "blacktriangleleft"
+msgid "Vdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:698
-msgid "blacktriangleright"
+msgid "shortmid"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:699
+msgid "shortparallel"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:700
+#, fuzzy
+msgid "smallsmile"
+msgstr "Mali razmak"
+
+#: lib/ui/stdtoolbars.inc:701
+msgid "smallfrown"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:702
+msgid "blacktriangleleft"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:703
+msgid "blacktriangleright"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:704
 #, fuzzy
 msgid "because"
 msgstr "Zmanj¹aj"
 
-#: lib/ui/stdtoolbars.inc:700
+#: lib/ui/stdtoolbars.inc:705
 #, fuzzy
 msgid "therefore"
 msgstr "Besedilo pred:"
 
-#: lib/ui/stdtoolbars.inc:701
+#: lib/ui/stdtoolbars.inc:706
 msgid "backepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:702
+#: lib/ui/stdtoolbars.inc:707
 msgid "varpropto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:703
+#: lib/ui/stdtoolbars.inc:708
 msgid "between"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:704
+#: lib/ui/stdtoolbars.inc:709
 msgid "pitchfork"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:707
+#: lib/ui/stdtoolbars.inc:712
 #, fuzzy
 msgid "AMS Negative Relations"
 msgstr "Negirane relacije AMS"
 
-#: lib/ui/stdtoolbars.inc:708
+#: lib/ui/stdtoolbars.inc:713
 #, fuzzy
 msgid "nless"
 msgstr "NaslovPo¹iljatelja"
 
-#: lib/ui/stdtoolbars.inc:709
+#: lib/ui/stdtoolbars.inc:714
 #, fuzzy
 msgid "ngtr"
 msgstr "Vnos"
 
-#: lib/ui/stdtoolbars.inc:710
+#: lib/ui/stdtoolbars.inc:715
 #, fuzzy
 msgid "nleq"
 msgstr "Enojni"
 
-#: lib/ui/stdtoolbars.inc:711
+#: lib/ui/stdtoolbars.inc:716
 #, fuzzy
 msgid "ngeq"
 msgstr "Enojni"
 
-#: lib/ui/stdtoolbars.inc:712
+#: lib/ui/stdtoolbars.inc:717
 msgid "nleqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:713
+#: lib/ui/stdtoolbars.inc:718
 msgid "ngeqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:714
+#: lib/ui/stdtoolbars.inc:719
 msgid "nleqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:715
+#: lib/ui/stdtoolbars.inc:720
 msgid "ngeqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:716
-msgid "lneq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:717
-#, fuzzy
-msgid "gneq"
-msgstr "Prezri"
-
-#: lib/ui/stdtoolbars.inc:718
-msgid "lneqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:719
-msgid "gneqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:720
-#, fuzzy
-msgid "lvertneqq"
-msgstr "slovensko"
-
 #: lib/ui/stdtoolbars.inc:721
-msgid "gvertneqq"
+msgid "lneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
 #, fuzzy
-msgid "lnsim"
-msgstr "Trditev"
+msgid "gneq"
+msgstr "Prezri"
 
 #: lib/ui/stdtoolbars.inc:723
-msgid "gnsim"
+msgid "lneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:724
-msgid "lnapprox"
+msgid "gneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:725
-msgid "gnapprox"
-msgstr ""
+#, fuzzy
+msgid "lvertneqq"
+msgstr "slovensko"
 
 #: lib/ui/stdtoolbars.inc:726
-msgid "nprec"
+msgid "gvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:727
+#, fuzzy
+msgid "lnsim"
+msgstr "Trditev"
+
+#: lib/ui/stdtoolbars.inc:728
+msgid "gnsim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:729
+msgid "lnapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:730
+msgid "gnapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:731
+msgid "nprec"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:732
 msgid "nsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:728
+#: lib/ui/stdtoolbars.inc:733
 #, fuzzy
 msgid "npreceq"
 msgstr "Za¹èiten presledek|Z"
 
-#: lib/ui/stdtoolbars.inc:729
+#: lib/ui/stdtoolbars.inc:734
 msgid "nsucceq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:730
+#: lib/ui/stdtoolbars.inc:735
 msgid "precnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:731
+#: lib/ui/stdtoolbars.inc:736
 msgid "succnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:732
+#: lib/ui/stdtoolbars.inc:737
 msgid "precnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:733
+#: lib/ui/stdtoolbars.inc:738
 msgid "succnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:734
+#: lib/ui/stdtoolbars.inc:739
 #, fuzzy
 msgid "subsetneq"
 msgstr "Podpodrazdelek"
 
-#: lib/ui/stdtoolbars.inc:735
+#: lib/ui/stdtoolbars.inc:740
 msgid "supsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:736
+#: lib/ui/stdtoolbars.inc:741
 #, fuzzy
 msgid "subsetneqq"
 msgstr "Podpodrazdelek"
 
-#: lib/ui/stdtoolbars.inc:737
+#: lib/ui/stdtoolbars.inc:742
 msgid "supsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:738
+#: lib/ui/stdtoolbars.inc:743
 msgid "nsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:739
+#: lib/ui/stdtoolbars.inc:744
 msgid "nsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:740
+#: lib/ui/stdtoolbars.inc:745
 msgid "nsupseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:741
+#: lib/ui/stdtoolbars.inc:746
 msgid "nvdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:742
+#: lib/ui/stdtoolbars.inc:747
 #, fuzzy
 msgid "nvDash"
 msgstr "dansko"
 
-#: lib/ui/stdtoolbars.inc:743
+#: lib/ui/stdtoolbars.inc:748
 #, fuzzy
 msgid "nVDash"
 msgstr "dansko"
 
-#: lib/ui/stdtoolbars.inc:744
+#: lib/ui/stdtoolbars.inc:749
 msgid "varsubsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:745
+#: lib/ui/stdtoolbars.inc:750
 msgid "varsupsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:746
+#: lib/ui/stdtoolbars.inc:751
 msgid "varsubsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:747
+#: lib/ui/stdtoolbars.inc:752
 msgid "varsupsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:748
+#: lib/ui/stdtoolbars.inc:753
 msgid "ntriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:749
+#: lib/ui/stdtoolbars.inc:754
 #, fuzzy
 msgid "ntriangleright"
 msgstr "Copyright"
 
-#: lib/ui/stdtoolbars.inc:750
+#: lib/ui/stdtoolbars.inc:755
 msgid "ntrianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:751
+#: lib/ui/stdtoolbars.inc:756
 msgid "ntrianglerighteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:752
+#: lib/ui/stdtoolbars.inc:757
 #, fuzzy
 msgid "ncong"
 msgstr "niè"
 
-#: lib/ui/stdtoolbars.inc:753
+#: lib/ui/stdtoolbars.inc:758
 msgid "nsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:754
+#: lib/ui/stdtoolbars.inc:759
 msgid "nmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:755
+#: lib/ui/stdtoolbars.inc:760
 msgid "nshortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:756
+#: lib/ui/stdtoolbars.inc:761
 msgid "nparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:757
+#: lib/ui/stdtoolbars.inc:762
 msgid "nshortparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:760
+#: lib/ui/stdtoolbars.inc:765
 #, fuzzy
 msgid "AMS Operators"
 msgstr "Operatorji AMS"
 
-#: lib/ui/stdtoolbars.inc:761
+#: lib/ui/stdtoolbars.inc:766
 msgid "dotplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:762
+#: lib/ui/stdtoolbars.inc:767
 msgid "smallsetminus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:763
+#: lib/ui/stdtoolbars.inc:768
 #, fuzzy
 msgid "Cap"
 msgstr "Pojasnilo"
 
-#: lib/ui/stdtoolbars.inc:764
+#: lib/ui/stdtoolbars.inc:769
 #, fuzzy
 msgid "Cup"
 msgstr "Izre¾i"
 
-#: lib/ui/stdtoolbars.inc:765
+#: lib/ui/stdtoolbars.inc:770
 #, fuzzy
 msgid "barwedge"
 msgstr "velika"
 
-#: lib/ui/stdtoolbars.inc:766
-msgid "veebar"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:767
-#, fuzzy
-msgid "doublebarwedge"
-msgstr "dvojni"
-
-#: lib/ui/stdtoolbars.inc:768
-#, fuzzy
-msgid "boxminus"
-msgstr "minut"
-
-#: lib/ui/stdtoolbars.inc:769
-msgid "boxtimes"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:770
-#, fuzzy
-msgid "boxdot"
-msgstr "Noga"
-
 #: lib/ui/stdtoolbars.inc:771
-msgid "boxplus"
+msgid "veebar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:772
 #, fuzzy
+msgid "doublebarwedge"
+msgstr "dvojni"
+
+#: lib/ui/stdtoolbars.inc:773
+#, fuzzy
+msgid "boxminus"
+msgstr "minut"
+
+#: lib/ui/stdtoolbars.inc:774
+msgid "boxtimes"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:775
+#, fuzzy
+msgid "boxdot"
+msgstr "Noga"
+
+#: lib/ui/stdtoolbars.inc:776
+msgid "boxplus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:777
+#, fuzzy
 msgid "divideontimes"
 msgstr "VsebinaProsojnice"
 
-#: lib/ui/stdtoolbars.inc:773
+#: lib/ui/stdtoolbars.inc:778
 msgid "ltimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:774
+#: lib/ui/stdtoolbars.inc:779
 #, fuzzy
 msgid "rtimes"
 msgstr "britansko"
 
-#: lib/ui/stdtoolbars.inc:775
+#: lib/ui/stdtoolbars.inc:780
 msgid "leftthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:776
+#: lib/ui/stdtoolbars.inc:781
 msgid "rightthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:777
+#: lib/ui/stdtoolbars.inc:782
 msgid "curlywedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:778
+#: lib/ui/stdtoolbars.inc:783
 msgid "curlyvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:779
+#: lib/ui/stdtoolbars.inc:784
 msgid "circleddash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:780
+#: lib/ui/stdtoolbars.inc:785
 msgid "circledast"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:781
+#: lib/ui/stdtoolbars.inc:786
 msgid "circledcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:782
+#: lib/ui/stdtoolbars.inc:787
 #, fuzzy
 msgid "centerdot"
 msgstr "Sredina"
 
-#: lib/ui/stdtoolbars.inc:783
+#: lib/ui/stdtoolbars.inc:788
 #, fuzzy
 msgid "intercal"
 msgstr "Dobesedno"
@@ -12312,7 +12475,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:733
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:738
 #, fuzzy
 msgid "Save changed document?"
 msgstr "®elite shraniti spis?"
@@ -12366,12 +12529,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:907
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:912
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Vrni se k shranjenemu"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:908 src/LyXVC.cpp:175
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Obnovi|O"
@@ -12458,8 +12621,8 @@ msgstr "Trenutna beseda"
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1878 src/LyXFunc.cpp:1917
-#: src/LyXFunc.cpp:1990 src/callback.cpp:136
+#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1891 src/LyXFunc.cpp:1930
+#: src/LyXFunc.cpp:2003 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12468,18 +12631,18 @@ msgstr "Izberite spis LyXa za vstavitev"
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
-#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1918 src/LyXFunc.cpp:1991
+#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1931 src/LyXFunc.cpp:2004
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1883 src/LyXFunc.cpp:1922
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1896 src/LyXFunc.cpp:1935
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1932 src/LyXFunc.cpp:2012
-#: src/LyXFunc.cpp:2026 src/LyXFunc.cpp:2042
+#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1945 src/LyXFunc.cpp:2025
+#: src/LyXFunc.cpp:2039 src/LyXFunc.cpp:2055
 msgid "Canceled."
 msgstr "Preklicano."
 
@@ -12568,7 +12731,7 @@ msgstr "Besedilo za LaTeX"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:311
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:323
 msgid "note"
 msgstr "opomba"
 
@@ -12866,7 +13029,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr ""
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1070
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12874,12 +13037,12 @@ msgid ""
 "Do you want to over-write that file?"
 msgstr ""
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1073
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
 #, fuzzy
 msgid "Over-write file?"
 msgstr "Poglej datoteko"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1074 src/LyXFunc.cpp:2039
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052
 #: src/callback.cpp:170
 #, fuzzy
 msgid "&Over-write"
@@ -12940,16 +13103,19 @@ msgstr "Dokument izvo¾en kot "
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:870
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "pokonèna"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:874
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "brez serifov"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:878
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "pisalni stroj"
 
@@ -13347,7 +13513,7 @@ msgstr "Nièesar ni moè storiti"
 msgid "Unknown action"
 msgstr "Neznana akcija"
 
-#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:717
+#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:722
 #, fuzzy
 msgid "Command disabled"
 msgstr "ukaz"
@@ -13356,15 +13522,15 @@ msgstr "ukaz"
 msgid "Command not allowed without any document open"
 msgstr "Ukaz ni dovoljen brez odprtega spisa"
 
-#: src/LyXFunc.cpp:703
+#: src/LyXFunc.cpp:708
 msgid "Document is read-only"
 msgstr "Spis je le za branje"
 
-#: src/LyXFunc.cpp:711
+#: src/LyXFunc.cpp:716
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:730
+#: src/LyXFunc.cpp:735
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13372,120 +13538,120 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:753
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:751
+#: src/LyXFunc.cpp:756
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tiskaj na"
 
-#: src/LyXFunc.cpp:770
+#: src/LyXFunc.cpp:775
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Spis uporablja neznani razred besedila \""
 
-#: src/LyXFunc.cpp:773
+#: src/LyXFunc.cpp:778
 msgid "Could not change class"
 msgstr ""
 
-#: src/LyXFunc.cpp:885
+#: src/LyXFunc.cpp:890
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Spis se shranjuje"
 
-#: src/LyXFunc.cpp:889
+#: src/LyXFunc.cpp:894
 msgid " done."
 msgstr " opravljeno."
 
-#: src/LyXFunc.cpp:905
+#: src/LyXFunc.cpp:910
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:1097
+#: src/LyXFunc.cpp:1102
 #, fuzzy
 msgid "Exiting."
 msgstr "Izhod|I"
 
-#: src/LyXFunc.cpp:1115 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
-#: src/LyXFunc.cpp:1124
+#: src/LyXFunc.cpp:1129
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/LyXFunc.cpp:1411
+#: src/LyXFunc.cpp:1416
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/LyXFunc.cpp:1498
+#: src/LyXFunc.cpp:1503
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1509
+#: src/LyXFunc.cpp:1514
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/LyXFunc.cpp:1623
+#: src/LyXFunc.cpp:1628
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Videz spisa"
 
-#: src/LyXFunc.cpp:1626
+#: src/LyXFunc.cpp:1631
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/LyXFunc.cpp:1682
+#: src/LyXFunc.cpp:1687
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/LyXFunc.cpp:1876
+#: src/LyXFunc.cpp:1889
 msgid "Select template file"
 msgstr "Izberite vzorèno datoteko"
 
-#: src/LyXFunc.cpp:1879 src/callback.cpp:137
+#: src/LyXFunc.cpp:1892 src/callback.cpp:137
 msgid "Templates|#T#t"
 msgstr "Vzorci|#V#v"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1928
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/LyXFunc.cpp:1954
+#: src/LyXFunc.cpp:1967
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/LyXFunc.cpp:1958
+#: src/LyXFunc.cpp:1971
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je odprt."
 
-#: src/LyXFunc.cpp:1960
+#: src/LyXFunc.cpp:1973
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/LyXFunc.cpp:1985
+#: src/LyXFunc.cpp:1998
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/LyXFunc.cpp:2036 src/callback.cpp:167
+#: src/LyXFunc.cpp:2049 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13493,12 +13659,12 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:2038 src/callback.cpp:169
+#: src/LyXFunc.cpp:2051 src/callback.cpp:169
 #, fuzzy
 msgid "Over-write document?"
 msgstr "®elite shraniti spis?"
 
-#: src/LyXFunc.cpp:2109
+#: src/LyXFunc.cpp:2122
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
@@ -13950,11 +14116,21 @@ msgstr "Besedilo ASCII kot vrstice"
 msgid "Master Document"
 msgstr "®elite shraniti spis?"
 
-#: src/MenuBackend.cpp:746
+#: src/MenuBackend.cpp:743
+#, fuzzy
+msgid "List of listings"
+msgstr "Seznam tabel"
+
+#: src/MenuBackend.cpp:747
+#, fuzzy
+msgid "Other floats"
+msgstr "Druge nastavitve pisav"
+
+#: src/MenuBackend.cpp:757
 msgid "No Table of contents"
 msgstr "Ni vsebinskega kazala"
 
-#: src/MenuBackend.cpp:791
+#: src/MenuBackend.cpp:802
 msgid " (auto)"
 msgstr ""
 
@@ -14046,7 +14222,7 @@ msgstr ", globina: "
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:232
+#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:233
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
@@ -14082,17 +14258,17 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:540
+#: src/Text2.cpp:588
 #, fuzzy
 msgid "No font change defined."
 msgstr "Pojdi k naslednji napaki"
 
-#: src/Text2.cpp:581
+#: src/Text2.cpp:629
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nièesar ni moè storiti"
 
-#: src/Text2.cpp:583
+#: src/Text2.cpp:631
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
@@ -14114,12 +14290,12 @@ msgstr "Videz "
 msgid " not known"
 msgstr " ni znan"
 
-#: src/Text3.cpp:1419 src/Text3.cpp:1431
+#: src/Text3.cpp:1420 src/Text3.cpp:1432
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/Text3.cpp:1565
+#: src/Text3.cpp:1566
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -14237,15 +14413,15 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/buffer_funcs.cpp:523
+#: src/buffer_funcs.cpp:527
 msgid "\\arabic{enumi}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:529
+#: src/buffer_funcs.cpp:533
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:532
+#: src/buffer_funcs.cpp:536
 msgid "\\Alph{enumiv}."
 msgstr ""
 
@@ -15055,11 +15231,11 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:813
+#: src/frontends/qt4/QDocument.cpp:817
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:812
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:816
 #, fuzzy
 msgid "No"
 msgstr "velike èrke "
@@ -15234,159 +15410,167 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "pisalni stroj"
 
-#: src/frontends/qt4/QDocument.cpp:226
+#: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:327 src/frontends/qt4/QListings.cpp:409
+#: src/frontends/qt4/QListings.cpp:441
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:227
 msgid "Length"
 msgstr "Dol¾ina"
 
-#: src/frontends/qt4/QDocument.cpp:271 src/frontends/qt4/QDocument.cpp:277
-#: src/frontends/qt4/QDocument.cpp:283
+#: src/frontends/qt4/QDocument.cpp:272 src/frontends/qt4/QDocument.cpp:278
+#: src/frontends/qt4/QDocument.cpp:284
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:287 src/frontends/qt4/QDocument.cpp:324
-#: src/frontends/qt4/QDocument.cpp:722
+#: src/frontends/qt4/QDocument.cpp:288 src/frontends/qt4/QDocument.cpp:325
+#: src/frontends/qt4/QDocument.cpp:726
 msgid "default"
 msgstr "privzeta"
 
-#: src/frontends/qt4/QDocument.cpp:288
+#: src/frontends/qt4/QDocument.cpp:289
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocument.cpp:289
+#: src/frontends/qt4/QDocument.cpp:290
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocument.cpp:290
+#: src/frontends/qt4/QDocument.cpp:291
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocument.cpp:325
+#: src/frontends/qt4/QDocument.cpp:326
 #, fuzzy
 msgid "empty"
 msgstr "Globina"
 
-#: src/frontends/qt4/QDocument.cpp:326
+#: src/frontends/qt4/QDocument.cpp:327 src/frontends/qt4/QListings.cpp:140
 #, fuzzy
 msgid "plain"
 msgstr "Dejstvo-navadno"
 
-#: src/frontends/qt4/QDocument.cpp:327
+#: src/frontends/qt4/QDocument.cpp:328
 #, fuzzy
 msgid "headings"
 msgstr "GlavaProsojnice"
 
-#: src/frontends/qt4/QDocument.cpp:328
+#: src/frontends/qt4/QDocument.cpp:329
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:344
+#: src/frontends/qt4/QDocument.cpp:345
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocument.cpp:345
+#: src/frontends/qt4/QDocument.cpp:346
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocument.cpp:448
+#: src/frontends/qt4/QDocument.cpp:449
 #, fuzzy
 msgid "LaTeX default"
 msgstr "Naslov_za_LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:454
+#: src/frontends/qt4/QDocument.cpp:455
 msgid "``text''"
 msgstr "``besedilo''"
 
-#: src/frontends/qt4/QDocument.cpp:455
+#: src/frontends/qt4/QDocument.cpp:456
 msgid "''text''"
 msgstr "''besedilo''"
 
-#: src/frontends/qt4/QDocument.cpp:456
+#: src/frontends/qt4/QDocument.cpp:457
 msgid ",,text``"
 msgstr ",,besedilo``"
 
-#: src/frontends/qt4/QDocument.cpp:457
+#: src/frontends/qt4/QDocument.cpp:458
 msgid ",,text''"
 msgstr ",,besedilo''"
 
-#: src/frontends/qt4/QDocument.cpp:458
+#: src/frontends/qt4/QDocument.cpp:459
 msgid "<<text>>"
 msgstr "<<besedilo>>"
 
-#: src/frontends/qt4/QDocument.cpp:459
+#: src/frontends/qt4/QDocument.cpp:460
 msgid ">>text<<"
 msgstr ">>besedilo<<"
 
-#: src/frontends/qt4/QDocument.cpp:475
+#: src/frontends/qt4/QDocument.cpp:476
 #, fuzzy
 msgid "Numbered"
 msgstr "©tevilèenje"
 
-#: src/frontends/qt4/QDocument.cpp:476
+#: src/frontends/qt4/QDocument.cpp:477
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:496
+#: src/frontends/qt4/QDocument.cpp:497
 msgid "Author-year"
 msgstr "Avtor-leto"
 
-#: src/frontends/qt4/QDocument.cpp:497
+#: src/frontends/qt4/QDocument.cpp:498
 #, fuzzy
 msgid "Numerical"
 msgstr "ameri¹ko"
 
-#: src/frontends/qt4/QDocument.cpp:539
+#: src/frontends/qt4/QDocument.cpp:540
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Dostopni"
 
-#: src/frontends/qt4/QDocument.cpp:565 src/frontends/qt4/QDocument.cpp:578
+#: src/frontends/qt4/QDocument.cpp:566 src/frontends/qt4/QDocument.cpp:579
 #, fuzzy
 msgid "Document Class"
 msgstr "&Razred spisa:"
 
-#: src/frontends/qt4/QDocument.cpp:567
+#: src/frontends/qt4/QDocument.cpp:568
 #, fuzzy
 msgid "Text Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/QDocument.cpp:568
+#: src/frontends/qt4/QDocument.cpp:569
 #, fuzzy
 msgid "Page Layout"
 msgstr "Videz odstavka"
 
-#: src/frontends/qt4/QDocument.cpp:569
+#: src/frontends/qt4/QDocument.cpp:570
 #, fuzzy
 msgid "Page Margins"
 msgstr "Robovi"
 
-#: src/frontends/qt4/QDocument.cpp:571
+#: src/frontends/qt4/QDocument.cpp:572
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "©tevilèenje"
 
-#: src/frontends/qt4/QDocument.cpp:573
+#: src/frontends/qt4/QDocument.cpp:574
 #, fuzzy
 msgid "Math Options"
 msgstr "Izbire za plovke"
 
-#: src/frontends/qt4/QDocument.cpp:574
+#: src/frontends/qt4/QDocument.cpp:575
 #, fuzzy
 msgid "Float Placement"
 msgstr "Postavitev plovk:|#l"
 
-#: src/frontends/qt4/QDocument.cpp:575
+#: src/frontends/qt4/QDocument.cpp:576
 msgid "Bullets"
 msgstr "Pike"
 
-#: src/frontends/qt4/QDocument.cpp:576
+#: src/frontends/qt4/QDocument.cpp:577
 msgid "Branches"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:577 src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:578 src/frontends/qt4/QDocument.cpp:590
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
-#: src/frontends/qt4/QDocument.cpp:1364
+#: src/frontends/qt4/QDocument.cpp:1368
 #, fuzzy
 msgid "Document Settings"
 msgstr "Spisi"
@@ -15412,12 +15596,39 @@ msgstr "Nastavitve plovke"
 msgid "Graphics"
 msgstr "Grafika"
 
-#: src/frontends/qt4/QInclude.cpp:171
+#: src/frontends/qt4/QInclude.cpp:172
 #, fuzzy
 msgid "Child Document"
 msgstr "Spis"
 
-#: src/frontends/qt4/QListings.cpp:183
+#: src/frontends/qt4/QInclude.cpp:251
+msgid "caption parameter is not quoted with braces"
+msgstr ""
+
+#: src/frontends/qt4/QInclude.cpp:258
+msgid "label parameter is not quoted with braces"
+msgstr ""
+
+#: src/frontends/qt4/QListings.cpp:63
+#, fuzzy
+msgid "No language"
+msgstr "jezik"
+
+#: src/frontends/qt4/QListings.cpp:138
+#, fuzzy
+msgid "common"
+msgstr "Komentar"
+
+#: src/frontends/qt4/QListings.cpp:141
+msgid "primitive"
+msgstr ""
+
+#: src/frontends/qt4/QListings.cpp:371
+#, fuzzy
+msgid "No dialect"
+msgstr " (Spremenjeno)"
+
+#: src/frontends/qt4/QListings.cpp:396
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "Nastavitve tiskalnika"
@@ -15794,7 +16005,7 @@ msgstr ""
 msgid "Opened Environment Inset: "
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/InsetExternal.cpp:576
+#: src/insets/InsetExternal.cpp:577
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr ""
@@ -15843,7 +16054,7 @@ msgstr "Odprta zabele¾ka"
 msgid "footnote"
 msgstr "OpombaPodÈrto"
 
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:461
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:497
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15851,12 +16062,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/insets/InsetGraphics.cpp:709
+#: src/insets/InsetGraphics.cpp:710
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:821
+#: src/insets/InsetGraphics.cpp:822
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafièna datoteka|#D"
@@ -15866,16 +16077,30 @@ msgstr "Grafièna datoteka|#D"
 msgid "Horizontal Fill"
 msgstr "Vodoravna poravnava:|#r"
 
-#: src/insets/InsetInclude.cpp:316
+#: src/insets/InsetInclude.cpp:331
 msgid "Verbatim Input"
 msgstr "Dobesedni vhod"
 
-#: src/insets/InsetInclude.cpp:319
+#: src/insets/InsetInclude.cpp:334
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "Dobesedni vhod"
 
-#: src/insets/InsetInclude.cpp:424
+#: src/insets/InsetInclude.cpp:341
+#, fuzzy
+msgid "Program Listing "
+msgstr "Inicializacija programa"
+
+#: src/insets/InsetInclude.cpp:424 src/insets/InsetInclude.cpp:590
+msgid "Recursive input"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:425 src/insets/InsetInclude.cpp:591
+#, c-format
+msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:460
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15883,7 +16108,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:430
+#: src/insets/InsetInclude.cpp:466
 msgid "Different textclasses"
 msgstr ""
 
@@ -15895,10 +16120,140 @@ msgstr "Stv"
 msgid "Index"
 msgstr "Stvarno kazalo"
 
-#: src/insets/InsetListings.cpp:128
+#: src/insets/InsetListings.cpp:124
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "Odprta zabele¾ka"
+
+#: src/insets/InsetListingsParams.cpp:109
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:110
+msgid ""
+"none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
+"trblTRBL"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:112
+msgid ""
+"Enter four letters (either t = round or f = square) for top right, bottom "
+"right, bottom left and top left corner."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:113
+msgid "Enter something like \\color{white}"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:128
+msgid "Expect a number with an optional * before it"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:170
+msgid "auto, last or a number"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:175
+msgid ""
+"This parameter should not be entered here. Please use caption editbox "
+"(Include dialog) or insert->caption (listings inset)"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:178
+msgid ""
+"This parameter should not be entered here. Please use label editbox (Include "
+"dialog) or insert->caption (listings inset)"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:282
+msgid "Invalid (empty) listings param name."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:293
+#, c-format
+msgid "Available listings parameters are %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:316
+#, fuzzy, c-format
+msgid "Unknown listings param name: %1$s"
+msgstr "Manjkajoèi argument"
+
+#: src/insets/InsetListingsParams.cpp:319
+#, c-format
+msgid "Parameters starting with '%1$s': %2$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:343
+msgid "A value is expected"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:346
+#: src/insets/InsetListingsParams.cpp:359
+#: src/insets/InsetListingsParams.cpp:373
+#: src/insets/InsetListingsParams.cpp:387
+#: src/insets/InsetListingsParams.cpp:414
+#: src/insets/InsetListingsParams.cpp:450
+msgid "Unbalanced braces!"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:353
+msgid "Please specify true or false"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:356
+#, c-format
+msgid "Only true or false is allowed for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:367
+msgid "Please specify an integer value"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:370
+#, c-format
+msgid "An integer is expected for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:381
+msgid "Please specify a latex length expression"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:384
+#, c-format
+msgid "Invalid latex length expression for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:395
+#, c-format
+msgid "Please specify one of %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:429
+#, c-format
+msgid "Try one of %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:432
+#, c-format
+msgid "I guess you mean %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:441
+#, c-format
+msgid "Please specify one or more of '%1$s'"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:447
+#, c-format
+msgid "Parameter %1$s should be composed of one or more of %2$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:502
+#, c-format
+msgid "Parameter %1$s has already been defined"
+msgstr ""
 
 #: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
 #: src/insets/InsetMarginal.cpp:70
@@ -15963,54 +16318,54 @@ msgstr "Zbri¹i"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
 #, fuzzy
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
 #, fuzzy
 msgid "Equation"
 msgstr "Navedek"
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
 #, fuzzy
 msgid "EqRef: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page Number"
 msgstr "©tevilka strani"
 
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page: "
 msgstr "Strani:"
 
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Vstavi ¹tevilko strani|#P"
 
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "TextPage: "
 msgstr "StranZBesedilom"
 
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "LepSkl"
 
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormat:"
@@ -16038,16 +16393,6 @@ msgstr ""
 msgid "Opened Text Inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/InsetTheorem.cpp:41
-#, fuzzy
-msgid "theorem"
-msgstr "Izrek"
-
-#: src/insets/InsetTheorem.cpp:91
-#, fuzzy
-msgid "Opened Theorem Inset"
-msgstr "Odprt vstavek"
-
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
 msgstr "Url: "
@@ -16056,7 +16401,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/InsetVSpace.cpp:110
+#: src/insets/InsetVSpace.cpp:111
 #, fuzzy
 msgid "Vertical Space"
 msgstr "Navpièni presledek:|#N"
@@ -16232,11 +16577,6 @@ msgstr "Zamenjan je bil en niz."
 msgid " strings have been replaced."
 msgstr " zamenjanih nizov."
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, fuzzy, c-format
-msgid " Macro: %1$s: "
-msgstr " Makroukaz: %s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -16302,6 +16642,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:856
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr " Makroukaz: %s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 #, fuzzy
@@ -16409,6 +16754,29 @@ msgid "Unknown user"
 msgstr "Neznana beseda:"
 
 #, fuzzy
+#~ msgid "OK"
+#~ msgstr "&V redu"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "Izvodi"
+
+#, fuzzy
+#~ msgid "Upper"
+#~ msgstr "Osve¾i|O"
+
+#~ msgid "Table of contents"
+#~ msgstr "Vsebinsko kazalo"
+
+#, fuzzy
+#~ msgid "theorem"
+#~ msgstr "Izrek"
+
+#, fuzzy
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Odprt vstavek"
+
+#, fuzzy
 #~ msgid "Number style"
 #~ msgstr "©tevilka"
 
@@ -16459,18 +16827,6 @@ msgstr "Neznana beseda:"
 #, fuzzy
 #~ msgid "SubSection"
 #~ msgstr "Podrazdelek"
-
-#, fuzzy
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "portugalsko"
-
-#, fuzzy
-#~ msgid "French Canadian"
-#~ msgstr "kanadsko"
-
-#, fuzzy
-#~ msgid "Upper Sorbian"
-#~ msgstr "srbsko"
 
 #~ msgid ""
 #~ "No font change defined. Use Character under the Layout menu to define "

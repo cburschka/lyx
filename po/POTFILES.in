@@ -108,6 +108,7 @@ src/insets/InsetHFill.cpp
 src/insets/InsetInclude.cpp
 src/insets/InsetIndex.cpp
 src/insets/InsetListings.cpp
+src/insets/InsetListingsParams.cpp
 src/insets/InsetMarginal.cpp
 src/insets/InsetNomencl.cpp
 src/insets/InsetNote.cpp
@@ -117,7 +118,6 @@ src/insets/InsetRef.cpp
 src/insets/InsetTOC.cpp
 src/insets/InsetTabular.cpp
 src/insets/InsetText.cpp
-src/insets/InsetTheorem.cpp
 src/insets/InsetUrl.cpp
 src/insets/InsetVSpace.cpp
 src/insets/InsetWrap.cpp
@@ -125,7 +125,6 @@ src/insets/RenderGraphic.cpp
 src/insets/RenderPreview.cpp
 src/lengthcommon.cpp
 src/lyxfind.cpp
-src/mathed/InsetFormulaMacro.cpp
 src/mathed/InsetMathAMSArray.cpp
 src/mathed/InsetMathCases.cpp
 src/mathed/InsetMathGrid.cpp

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-18 00:09+0100\n"
+"POT-Creation-Date: 2007-05-24 18:49+0200\n"
 "PO-Revision-Date: 2007-03-14 16:08+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -67,6 +67,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:702
 #: src/frontends/qt4/ui/IncludeUi.ui:227 src/frontends/qt4/ui/IndexUi.ui:82
+#: src/frontends/qt4/ui/ListingsUi.ui:577
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
 #: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
@@ -79,9 +80,10 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
-#: src/frontends/qt4/ui/DocumentUi.ui:152 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:735 src/LyXFunc.cpp:908
-#: src/LyXFunc.cpp:1074 src/LyXFunc.cpp:2039 src/LyXVC.cpp:175
+#: src/frontends/qt4/ui/DocumentUi.ui:152
+#: src/frontends/qt4/ui/ListingsUi.ui:597 src/BufferList.cpp:114
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:740 src/LyXFunc.cpp:913
+#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
@@ -158,9 +160,8 @@ msgstr "Hozzáa&dás"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
-#: src/frontends/qt4/ui/ListingsUi.ui:534
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:851 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:264 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -243,8 +244,9 @@ msgstr "Stíl&us"
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "Inner box -- needed for fixed width & line breaks"
 
-#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/TabularUi.ui:702
-#: src/frontends/qt4/ui/TabularUi.ui:721 src/frontends/qt4/ui/TabularUi.ui:769
+#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/ListingsUi.ui:323
+#: src/frontends/qt4/ui/TabularUi.ui:702 src/frontends/qt4/ui/TabularUi.ui:721
+#: src/frontends/qt4/ui/TabularUi.ui:769
 #: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.cpp:100
 #: src/frontends/qt4/QBox.cpp:268 src/frontends/qt4/QBox.cpp:384
 msgid "None"
@@ -302,8 +304,9 @@ msgstr "Igazítás"
 msgid "Horizontal alignment of the content inside the box"
 msgstr "A doboz tartalmának vízszintes igazítása"
 
-#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/TabularUi.ui:145
-#: src/frontends/qt4/ui/WrapUi.ui:58 src/frontends/qt4/QTabular.cpp:741
+#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:328
+#: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
+#: src/frontends/qt4/QTabular.cpp:741
 msgid "Left"
 msgstr "Balra"
 
@@ -314,8 +317,9 @@ msgstr "Balra"
 msgid "Center"
 msgstr "Középre"
 
-#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/TabularUi.ui:155
-#: src/frontends/qt4/ui/WrapUi.ui:63 src/frontends/qt4/QTabular.cpp:743
+#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:333
+#: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
+#: src/frontends/qt4/QTabular.cpp:743
 msgid "Right"
 msgstr "Jobbra"
 
@@ -377,6 +381,7 @@ msgstr "&Visszaállítás"
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/ListingsUi.ui:587
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
@@ -443,47 +448,55 @@ msgstr "&Méret:"
 #: src/frontends/qt4/ui/ParagraphUi.ui:214
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
-#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:81
+#: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:71 src/frontends/qt4/QDocument.cpp:82
-#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:336
+#: src/frontends/qt4/QDocument.cpp:92 src/frontends/qt4/QDocument.cpp:337
+#: src/frontends/qt4/QListings.cpp:155 src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "Alapérték"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:960
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "Legkisebb"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:964
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "Mégkisebb"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:968
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "Kisebb"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:972
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "Kicsi"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:976
+#: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "Normál"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:67
 #: src/frontends/controllers/frontend_helpers.cpp:980
+#: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "Nagy"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:984
+#: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "Nagyobb"
 
@@ -563,8 +576,8 @@ msgstr "Betûtestesség"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:105 lib/layouts/europecv.layout:144
-#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:570
+#: src/frontends/qt4/ui/ListingsUi.ui:258 lib/layouts/europecv.layout:144
+#: lib/layouts/moderncv.layout:129 src/frontends/qt4/QDocument.cpp:571
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Nyelv"
@@ -576,6 +589,7 @@ msgstr "Betûszín"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
 #: src/frontends/qt4/ui/LanguageUi.ui:36
+#: src/frontends/qt4/ui/ListingsUi.ui:287
 msgid "&Language:"
 msgstr "Nye&lv:"
 
@@ -1111,7 +1125,7 @@ msgid "Select an image file"
 msgstr "Válasszon ki egy képfájlt"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:85
-#: src/frontends/qt4/ui/ListingsUi.ui:165
+#: src/frontends/qt4/ui/ListingsUi.ui:378
 msgid "File name of image"
 msgstr "A felhasználandó képfájl neve"
 
@@ -1223,8 +1237,9 @@ msgid "Sca&le on Screen (%):"
 msgstr "Méret a képernyõn (%):"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
-msgid "Listing Params"
-msgstr ""
+#, fuzzy
+msgid "Listing Parameters"
+msgstr "Hiányzó paraméter"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:76
 #, fuzzy
@@ -1264,11 +1279,11 @@ msgstr "A csatolandó fájl neve"
 msgid "&Include Type:"
 msgstr "&Csatolás módja:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:322
+#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:337
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:313
+#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:328
 msgid "Input"
 msgstr "Input"
 
@@ -1276,7 +1291,7 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:238
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:234
 #, fuzzy
 msgid "Listings"
 msgstr "Lista"
@@ -1320,129 +1335,184 @@ msgstr "Lista"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 #, fuzzy
-msgid "Main Settings"
+msgid "&Main Settings"
 msgstr "Változat beállítások"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:63
-#, fuzzy
-msgid "Placement"
-msgstr "&Elhelyezés:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:78
-#, fuzzy
-msgid "Placement:"
-msgstr "&Elhelyezés:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:88
-#, fuzzy
-msgid "Float"
-msgstr "Úsztatás|a"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:95
-msgid "Inline listing"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:133
-#, fuzzy
-msgid "Line numbering"
-msgstr "&Számozás"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:145
-#, fuzzy
-msgid "Side: "
-msgstr "Fólia"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:249
-#: src/frontends/qt4/ui/ListingsUi.ui:262
-msgid "Differenz between two numbered lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:168
-#, fuzzy
-msgid "Step:"
-msgstr "Lépés"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:181
-#: src/frontends/qt4/ui/ListingsUi.ui:384
-#, fuzzy
-msgid "Font size:"
-msgstr "Betûméret"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:202
-#: src/frontends/qt4/ui/ListingsUi.ui:405
-#, fuzzy
-msgid "Choose the Font Size"
-msgstr "Stílusfájl kiválasztása"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:224
-#, fuzzy
-msgid "Range"
-msgstr "Egyszeres"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:236
-#, fuzzy
-msgid "First line:"
-msgstr "Keresztnév"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:275
-#, fuzzy
-msgid "Last line:"
-msgstr "képlet vonal"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:293
-#: src/frontends/qt4/ui/TabularUi.ui:301
+#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
 msgstr "Stílus"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:305
-msgid "Breaking lines longer than the linewidth"
+#: src/frontends/qt4/ui/ListingsUi.ui:67
+msgid "The content's base font size"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:308
+#: src/frontends/qt4/ui/ListingsUi.ui:83
 #, fuzzy
-msgid "&Break long lines"
-msgstr "&Nagy táblázat használata"
+msgid "F&ont size:"
+msgstr "Betûméret"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:318
-msgid "Insert a special symbol for a space"
+#: src/frontends/qt4/ui/ListingsUi.ui:104
+msgid "The content's base font style"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:321
-msgid "&Space as Symbol"
-msgstr ""
+#: src/frontends/qt4/ui/ListingsUi.ui:120
+#, fuzzy
+msgid "Font st&yle:"
+msgstr "Betûméret"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:334
+#: src/frontends/qt4/ui/ListingsUi.ui:136
 #, fuzzy
 msgid "Use extended character table"
 msgstr "Definiálatlan betûstílus"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:337
+#: src/frontends/qt4/ui/ListingsUi.ui:139
 #, fuzzy
 msgid "&Extended Chars"
 msgstr "Haladó szolgáltatások|H"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:347
+#: src/frontends/qt4/ui/ListingsUi.ui:149
+msgid "Make spaces in strings visible by a special symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:152
+msgid "S&pace in string as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:162
+msgid "Make spaces visible by a special symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:165
+msgid "S&pace as Symbol"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:175
+msgid "Break lines longer than the linewidth"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:178
 #, fuzzy
-msgid "Font style:"
+msgid "&Break long lines"
+msgstr "&Nagy táblázat használata"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:191
+#, fuzzy
+msgid "Range"
+msgstr "Egyszeres"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:203
+#, fuzzy
+msgid "&Last line:"
+msgstr "képlet vonal"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:216
+msgid "The last line to be printed"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:229
+msgid "The first line to be printed"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:242
+#, fuzzy
+msgid "Fi&rst line:"
+msgstr "Keresztnév"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:270
+msgid "Select the dialect of the programming language, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:277
+#, fuzzy
+msgid "&Dialect:"
+msgstr "&Fájl:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:297
+msgid "Select the programming language"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:307
+#, fuzzy
+msgid "Line numbering"
+msgstr "&Számozás"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:319
+msgid "On which side should line numbers be printed?"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:349
+#, fuzzy
+msgid "Choose the font size for line numbers"
+msgstr "Stílusfájl kiválasztása"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:365
+#, fuzzy
+msgid "Font si&ze:"
 msgstr "Betûméret"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:368
-msgid "Choose the Font Style"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:427
-msgid "Advanced"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:447
-msgid "More Parameters"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:524
+#: src/frontends/qt4/ui/ListingsUi.ui:381
 #, fuzzy
-msgid "OK"
-msgstr "&OK"
+msgid "S&tep:"
+msgstr "Lépés"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:394
+msgid "Difference between two numbered lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:410
+#, fuzzy
+msgid "&Side: "
+msgstr "Fólia"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:423
+#, fuzzy
+msgid "Placement"
+msgstr "&Elhelyezés:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:435
+msgid "Specify placement (htbp) for floating listings"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:442
+#, fuzzy
+msgid "Check for floating listings"
+msgstr "Egyéb betûbeállítások"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:445
+#, fuzzy
+msgid "&Float"
+msgstr "Úsztatás|a"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:452
+msgid "Check for inline listings"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:455
+#, fuzzy
+msgid "&Inline listing"
+msgstr "&Beszúrt"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:462
+#, fuzzy
+msgid "Placement:"
+msgstr "&Elhelyezés:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:476
+#, fuzzy
+msgid "Ad&vanced"
+msgstr "&Mégsem"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:496
+msgid "More &Parameters"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:520
+msgid "Feedback window"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:539
+msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -1672,7 +1742,7 @@ msgid "L&ine spacing:"
 msgstr "Sor&köz:"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1773
-#: src/frontends/qt4/QDocument.cpp:230
+#: src/frontends/qt4/QDocument.cpp:231
 msgid "Single"
 msgstr "Egyszeres"
 
@@ -1681,14 +1751,14 @@ msgid "1.5"
 msgstr "Másfélszeres"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1779
-#: src/frontends/qt4/QDocument.cpp:234
+#: src/frontends/qt4/QDocument.cpp:235
 msgid "Double"
 msgstr "Kétszeres"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:236 src/frontends/qt4/QDocument.cpp:337
+#: src/frontends/qt4/QDocument.cpp:237 src/frontends/qt4/QDocument.cpp:338
 msgid "Custom"
 msgstr "Egyéb"
 
@@ -1969,31 +2039,31 @@ msgstr "Alap &papírméret:"
 msgid "Te&X encoding:"
 msgstr "Te&X kódolás:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:338
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:339
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:340
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:341
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:342
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:342
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:343
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:343
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:344
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:346
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:347
 msgid "B5"
 msgstr "B5"
 
@@ -2348,7 +2418,7 @@ msgid "&Maximum last files:"
 msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:734
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:739
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -3023,15 +3093,15 @@ msgstr "Támogatott kitöltési típusok"
 msgid "DefSkip"
 msgstr "Alap kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:223
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:224
 msgid "SmallSkip"
 msgstr "Kis kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:224
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:225
 msgid "MedSkip"
 msgstr "Közepes kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:225
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:226
 msgid "BigSkip"
 msgstr "Nagy kihagyás"
 
@@ -3080,15 +3150,16 @@ msgstr "&Mértékegység:"
 #: lib/layouts/kluwer.layout:33 lib/layouts/llncs.layout:23
 #: lib/layouts/ltugboat.layout:30 lib/layouts/manpage.layout:17
 #: lib/layouts/memoir.layout:26 lib/layouts/moderncv.layout:16
-#: lib/layouts/paper.layout:14 lib/layouts/revtex.layout:22
-#: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
-#: lib/layouts/scrlttr2.layout:7 lib/layouts/siamltex.layout:19
-#: lib/layouts/simplecv.layout:15 lib/layouts/slides.layout:60
-#: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
-#: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+#: lib/layouts/paper.layout:14 lib/layouts/powerdot.layout:106
+#: lib/layouts/revtex.layout:22 lib/layouts/revtex4.layout:26
+#: lib/layouts/scrlettr.layout:7 lib/layouts/scrlttr2.layout:7
+#: lib/layouts/siamltex.layout:19 lib/layouts/simplecv.layout:15
+#: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
+#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
+#: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:55
+#: src/frontends/qt4/BulletsModule.cpp:46 src/insets/InsetRef.cpp:147
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard"
 msgstr "Normál szöveg"
 
@@ -3096,7 +3167,7 @@ msgstr "Normál szöveg"
 msgid "TheoremTemplate"
 msgstr "Tétel-sablon"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:948
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:955
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -3110,7 +3181,7 @@ msgid "Proof:"
 msgstr "Bizonyítás:"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:954
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:961
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
@@ -3139,7 +3210,7 @@ msgid "Lemma #:"
 msgstr "Segédtétel #:"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:885
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:892
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
@@ -3191,7 +3262,7 @@ msgid "Criterion #:"
 msgstr "Kritérium #:"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:942
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:949
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -3212,7 +3283,7 @@ msgid "Axiom #:"
 msgstr "Axióma #:"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:912
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:919
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
@@ -3227,12 +3298,12 @@ msgid "Definition #:"
 msgstr "Definíció #:"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:924
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:931
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:474
+#: src/frontends/qt4/QDocument.cpp:475
 msgid "Example"
 msgstr "Példa"
 
@@ -3302,9 +3373,10 @@ msgstr "Követelés #:"
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
 #: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
-#: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
-#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:66
+#: lib/layouts/powerdot.layout:195 lib/layouts/slides.layout:167
+#: lib/layouts/amsmaths-plain.inc:193 lib/layouts/amsmaths-seq.inc:160
+#: lib/layouts/amsmaths.inc:418 lib/layouts/svjour.inc:422
+#: src/insets/InsetNote.cpp:66
 msgid "Note"
 msgstr "Megjegyzés"
 
@@ -3339,20 +3411,21 @@ msgstr "Eset #:"
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
-#: lib/layouts/beamer.layout:140 lib/layouts/egs.layout:30
+#: lib/layouts/beamer.layout:144 lib/layouts/egs.layout:30
 #: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
 #: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:51
 #: lib/layouts/moderncv.layout:29 lib/layouts/paper.layout:44
-#: lib/layouts/revtex.layout:38 lib/layouts/revtex4.layout:44
-#: lib/layouts/siamltex.layout:41 lib/layouts/simplecv.layout:27
-#: lib/layouts/spie.layout:19 lib/layouts/agu_stdsections.inc:30
-#: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:28
-#: lib/layouts/numarticle.inc:13 lib/layouts/numreport.inc:21
-#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:61
-#: lib/layouts/stdsections.inc:51 lib/layouts/svjour.inc:52
+#: lib/layouts/powerdot.layout:212 lib/layouts/revtex.layout:38
+#: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
+#: lib/layouts/simplecv.layout:27 lib/layouts/spie.layout:19
+#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
+#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:13
+#: lib/layouts/numreport.inc:21 lib/layouts/numrevtex.inc:6
+#: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
+#: lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "Szakasz"
 
@@ -3360,7 +3433,7 @@ msgstr "Szakasz"
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
-#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:181
+#: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:185
 #: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
@@ -3392,7 +3465,7 @@ msgstr "Alszakasz"
 msgid "Subsubsection"
 msgstr "Alalszakasz"
 
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:172
+#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:176
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
@@ -3401,7 +3474,7 @@ msgstr "Alalszakasz"
 msgid "Section*"
 msgstr "Szakasz*"
 
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:214
+#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:218
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
@@ -3458,7 +3531,7 @@ msgstr "Tárgyszavak---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:836
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:843
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
@@ -3467,14 +3540,14 @@ msgstr "Tárgyszavak---"
 #: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:193
 #: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
-#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
-#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
-#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:183 lib/layouts/simplecv.layout:140
-#: lib/layouts/aguplus.inc:168 lib/layouts/aguplus.inc:170
-#: lib/layouts/amsdefs.inc:229 lib/layouts/scrclass.inc:223
-#: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:326
-#: src/frontends/qt4/QDocument.cpp:572
+#: lib/layouts/powerdot.layout:279 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
+#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:183
+#: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
+#: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
+#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:573
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
@@ -3509,28 +3582,29 @@ msgstr "Mindkettõ jelölése"
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
 #: lib/layouts/beamer.layout:50 lib/layouts/egs.layout:163
-#: lib/layouts/manpage.layout:82 lib/layouts/simplecv.layout:77
-#: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:11
+#: lib/layouts/manpage.layout:82 lib/layouts/powerdot.layout:229
+#: lib/layouts/simplecv.layout:77 lib/layouts/agu_stdlists.inc:13
+#: lib/layouts/db_stdlists.inc:12 lib/layouts/stdlists.inc:11
 msgid "Itemize"
 msgstr "Felsorolás"
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:68 lib/layouts/egs.layout:145
-#: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
+#: lib/layouts/beamer.layout:69 lib/layouts/egs.layout:145
+#: lib/layouts/manpage.layout:65 lib/layouts/powerdot.layout:254
+#: lib/layouts/agu_stdlists.inc:21 lib/layouts/db_stdlists.inc:19
+#: lib/layouts/stdlists.inc:29
 msgid "Enumerate"
 msgstr "Számozott felsorolás"
 
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
-#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:86
+#: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:88
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.inc:85
+#: lib/ui/stdtoolbars.inc:89
 msgid "Description"
 msgstr "Leírás"
 
@@ -3538,14 +3612,14 @@ msgstr "Leírás"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.inc:84
+#: lib/ui/stdtoolbars.inc:88
 msgid "List"
 msgstr "Lista"
 
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:717
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:724
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
@@ -3555,18 +3629,18 @@ msgstr "Lista"
 #: lib/layouts/isprs.layout:94 lib/layouts/kluwer.layout:104
 #: lib/layouts/latex8.layout:33 lib/layouts/llncs.layout:99
 #: lib/layouts/ltugboat.layout:134 lib/layouts/paper.layout:112
-#: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
-#: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:271
-#: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
-#: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:60 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:146 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:129
+#: lib/layouts/powerdot.layout:36 lib/layouts/revtex.layout:90
+#: lib/layouts/revtex4.layout:107 lib/layouts/scrlettr.layout:193
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:109
+#: lib/layouts/simplecv.layout:119 lib/layouts/svprobth.layout:35
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:60
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:146
+#: lib/layouts/stdtitle.inc:12 lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "Cím"
 
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:741
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:748
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
@@ -3576,7 +3650,7 @@ msgstr "Felirat"
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:766
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:773
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
@@ -3584,11 +3658,12 @@ msgstr "Felirat"
 #: lib/layouts/ijmpd.layout:44 lib/layouts/isprs.layout:76
 #: lib/layouts/kluwer.layout:160 lib/layouts/llncs.layout:176
 #: lib/layouts/ltugboat.layout:154 lib/layouts/paper.layout:123
-#: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
-#: lib/layouts/siamltex.layout:126 lib/layouts/svprobth.layout:52
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:81
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:154
-#: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:182
+#: lib/layouts/powerdot.layout:60 lib/layouts/revtex.layout:98
+#: lib/layouts/revtex4.layout:115 lib/layouts/siamltex.layout:126
+#: lib/layouts/svprobth.layout:52 lib/layouts/agu_stdtitle.inc:167
+#: lib/layouts/amsdefs.inc:81 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/scrclass.inc:154 lib/layouts/stdtitle.inc:31
+#: lib/layouts/svjour.inc:182
 msgid "Author"
 msgstr "Szerzõ"
 
@@ -3617,15 +3692,16 @@ msgstr "Levél"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:812 lib/layouts/egs.layout:476
+#: lib/layouts/beamer.layout:819 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
-#: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
-#: lib/layouts/scrlettr.layout:165 lib/layouts/scrlttr2.layout:239
-#: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:315
+#: lib/layouts/powerdot.layout:83 lib/layouts/revtex.layout:106
+#: lib/layouts/revtex4.layout:123 lib/layouts/scrlettr.layout:165
+#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:137
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:101
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:161
+#: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
+#: lib/ui/stdmenus.inc:315
 msgid "Date"
 msgstr "Dátum"
 
@@ -3664,7 +3740,7 @@ msgid "Email"
 msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:107 src/frontends/qt4/QThesaurus.cpp:148
+#: lib/ui/stdtoolbars.inc:110 src/frontends/qt4/QThesaurus.cpp:148
 msgid "Thesaurus"
 msgstr "Szótár"
 
@@ -3701,7 +3777,7 @@ msgid "Acknowledgements"
 msgstr "Köszönetnyilvánítások"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:850
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:857
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
@@ -3837,9 +3913,9 @@ msgid "Criterion."
 msgstr "Kritérium."
 
 #: lib/layouts/amsart-plain.layout:61 lib/layouts/amsart-seq.layout:173
-#: lib/layouts/elsart.layout:346 lib/layouts/amsmaths-plain.inc:93
-#: lib/layouts/amsmaths-seq.inc:80 lib/layouts/amsmaths.inc:202
-#: lib/layouts/stdfloats.inc:34
+#: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:385
+#: lib/layouts/amsmaths-plain.inc:93 lib/layouts/amsmaths-seq.inc:80
+#: lib/layouts/amsmaths.inc:202 lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "Algoritmus"
 
@@ -4023,7 +4099,7 @@ msgid "Conclusion \\arabic{conclusion}."
 msgstr "\\arabic{conclusion}. következtetés"
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
-#: lib/layouts/numarticle.inc:16
+#: lib/layouts/powerdot.layout:217 lib/layouts/numarticle.inc:16
 msgid "\\arabic{section}"
 msgstr "\\arabic{section}."
 
@@ -4118,9 +4194,10 @@ msgstr "FitFigure"
 msgid "FitBitmap"
 msgstr "FitBitmap"
 
-#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:64
+#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:65
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
-#: lib/layouts/simplecv.layout:91 lib/layouts/stdlists.inc:25
+#: lib/layouts/powerdot.layout:243 lib/layouts/simplecv.layout:91
+#: lib/layouts/stdlists.inc:25
 msgid "*"
 msgstr "*"
 
@@ -4129,7 +4206,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.cpp:526
+#: src/buffer_funcs.cpp:530
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -4153,7 +4230,7 @@ msgstr "Lett"
 msgid "Latin off"
 msgstr "Lett"
 
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:111
+#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
 #: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
@@ -4168,263 +4245,267 @@ msgstr "Rész"
 msgid "Part*"
 msgstr "Rész*"
 
-#: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:196
+#: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr "MM"
 
-#: lib/layouts/beamer.layout:125
+#: lib/layouts/beamer.layout:129
 msgid "Part "
 msgstr "Rész"
 
-#: lib/layouts/beamer.layout:155
+#: lib/layouts/beamer.layout:159
 msgid "Section \\arabic{section}"
 msgstr "\\arabic{section}. szakasz"
 
-#: lib/layouts/beamer.layout:167 lib/layouts/numarticle.inc:17
+#: lib/layouts/beamer.layout:171 lib/layouts/powerdot.layout:223
+#: lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}."
 
-#: lib/layouts/beamer.layout:196
+#: lib/layouts/beamer.layout:200
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection} alszakasz"
 
-#: lib/layouts/beamer.layout:209
+#: lib/layouts/beamer.layout:213
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
-#: lib/layouts/beamer.layout:223
+#: lib/layouts/beamer.layout:227
 msgid "BeginFrame"
 msgstr "Frame kezdés"
 
-#: lib/layouts/beamer.layout:238
+#: lib/layouts/beamer.layout:243
 #, fuzzy
 msgid "Frame "
 msgstr "Frame   "
 
-#: lib/layouts/beamer.layout:264
+#: lib/layouts/beamer.layout:269
 msgid "BeginPlainFrame"
 msgstr "Síma keret kezdés"
 
-#: lib/layouts/beamer.layout:279
+#: lib/layouts/beamer.layout:284
 #, fuzzy
 msgid "Frame (no head/foot/sidebars)__"
 msgstr "Keret (nincs fej/láb/oldal szöveg)"
 
-#: lib/layouts/beamer.layout:302
+#: lib/layouts/beamer.layout:307
 msgid "AgainFrame"
 msgstr "Frame folytatása"
 
-#: lib/layouts/beamer.layout:317
+#: lib/layouts/beamer.layout:323
 #, fuzzy
 msgid "Again frame with label__"
 msgstr "Frame folytatása címkével"
 
-#: lib/layouts/beamer.layout:341
+#: lib/layouts/beamer.layout:347
 msgid "EndFrame"
 msgstr "Záró-Frame"
 
-#: lib/layouts/beamer.layout:355
+#: lib/layouts/beamer.layout:361
 msgid "________________________________ "
 msgstr "________________________________ "
 
-#: lib/layouts/beamer.layout:370
+#: lib/layouts/beamer.layout:376
 msgid "FrameSubtitle"
 msgstr "Frame alcím"
 
-#: lib/layouts/beamer.layout:393
+#: lib/layouts/beamer.layout:399
 msgid "Column"
 msgstr "Oszlop"
 
-#: lib/layouts/beamer.layout:405
+#: lib/layouts/beamer.layout:411
 #, fuzzy
 msgid "start column (increase depth!), width: "
 msgstr "Hasábkezdés, hosszmegadással:"
 
-#: lib/layouts/beamer.layout:417
+#: lib/layouts/beamer.layout:423
 msgid "Columns"
 msgstr "Hasábok"
 
-#: lib/layouts/beamer.layout:429
+#: lib/layouts/beamer.layout:435
 msgid "columns "
 msgstr "hasábok"
 
-#: lib/layouts/beamer.layout:446
+#: lib/layouts/beamer.layout:452
 msgid "ColumnsCenterAligned"
 msgstr "Hasábok középre igazítva"
 
-#: lib/layouts/beamer.layout:457
+#: lib/layouts/beamer.layout:463
 msgid "columns (center aligned) "
 msgstr "hasábok (középre igazítva)"
 
-#: lib/layouts/beamer.layout:476
+#: lib/layouts/beamer.layout:482
 msgid "ColumnsTopAligned"
 msgstr "Hasábok felülre igazítva"
 
-#: lib/layouts/beamer.layout:487
+#: lib/layouts/beamer.layout:493
 msgid "columns (top aligned) "
 msgstr "hasábok (felülre igazítva)"
 
-#: lib/layouts/beamer.layout:507
+#: lib/layouts/beamer.layout:513
 msgid "Pause"
 msgstr "Pause"
 
-#: lib/layouts/beamer.layout:522
+#: lib/layouts/beamer.layout:529
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:532
+#: lib/layouts/beamer.layout:539
 msgid "Overprint"
 msgstr "Felülnyomás"
 
-#: lib/layouts/beamer.layout:542
+#: lib/layouts/beamer.layout:549
 msgid "overprint "
 msgstr "felülnyomás"
 
-#: lib/layouts/beamer.layout:558
+#: lib/layouts/beamer.layout:565
 msgid "OverlayArea"
 msgstr "Átfedési terület"
 
-#: lib/layouts/beamer.layout:568
+#: lib/layouts/beamer.layout:575
 #, fuzzy
 msgid "overlayarea"
 msgstr "átfedési terület"
 
-#: lib/layouts/beamer.layout:583
+#: lib/layouts/beamer.layout:590
 msgid "Uncover"
 msgstr "Felfed"
 
-#: lib/layouts/beamer.layout:592
+#: lib/layouts/beamer.layout:599
 msgid "uncovered on slides  "
 msgstr "Felfedés fólián  "
 
-#: lib/layouts/beamer.layout:607
+#: lib/layouts/beamer.layout:614
 msgid "Only"
 msgstr "Csak"
 
-#: lib/layouts/beamer.layout:616
+#: lib/layouts/beamer.layout:623
 #, fuzzy
 msgid "only on slides_"
 msgstr "Csak a köv fólián: "
 
-#: lib/layouts/beamer.layout:632
+#: lib/layouts/beamer.layout:639
 msgid "Block"
 msgstr "Sorkizárt"
 
-#: lib/layouts/beamer.layout:642
+#: lib/layouts/beamer.layout:649
 msgid "block ( ERT[{title}] body ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:657
+#: lib/layouts/beamer.layout:664
 msgid "ExampleBlock"
 msgstr "Példa-blokk"
 
-#: lib/layouts/beamer.layout:667
+#: lib/layouts/beamer.layout:674
 msgid "block ( ERT[{title}] example text ): "
 msgstr ""
 
-#: lib/layouts/beamer.layout:686
+#: lib/layouts/beamer.layout:693
 msgid "AlertBlock"
 msgstr "Figyelem blokk"
 
-#: lib/layouts/beamer.layout:696
+#: lib/layouts/beamer.layout:703
 #, fuzzy
 msgid "block ( ERT[{title}] alert text ): "
 msgstr "Figyelmeztetõ szövegblokk"
 
-#: lib/layouts/beamer.layout:789 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:796 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 msgid "Institute"
 msgstr "Intézet"
 
-#: lib/layouts/beamer.layout:860
+#: lib/layouts/beamer.layout:867
 msgid "TitleGraphic"
 msgstr "Cím grafika"
 
-#: lib/layouts/beamer.layout:895
+#: lib/layouts/beamer.layout:902
 #, fuzzy
 msgid "Corollary_"
 msgstr "Következmény"
 
-#: lib/layouts/beamer.layout:915
+#: lib/layouts/beamer.layout:922
 #, fuzzy
 msgid "Definition. "
 msgstr "Definíció."
 
-#: lib/layouts/beamer.layout:918
+#: lib/layouts/beamer.layout:925
 msgid "Definitions"
 msgstr "Definíciók"
 
-#: lib/layouts/beamer.layout:921
+#: lib/layouts/beamer.layout:928
 #, fuzzy
 msgid "Definitions. "
 msgstr "Definíciók."
 
-#: lib/layouts/beamer.layout:927
+#: lib/layouts/beamer.layout:934
 #, fuzzy
 msgid "Example. "
 msgstr "Példa."
 
-#: lib/layouts/beamer.layout:935
+#: lib/layouts/beamer.layout:942
 msgid "Examples"
 msgstr "Példák"
 
-#: lib/layouts/beamer.layout:938
+#: lib/layouts/beamer.layout:945
 #, fuzzy
 msgid "Examples. "
 msgstr "Példák."
 
-#: lib/layouts/beamer.layout:945
+#: lib/layouts/beamer.layout:952
 #, fuzzy
 msgid "Fact. "
 msgstr "Tény."
 
-#: lib/layouts/beamer.layout:951
+#: lib/layouts/beamer.layout:958
 #, fuzzy
 msgid "Proof. "
 msgstr "Bizonyítás  "
 
-#: lib/layouts/beamer.layout:957
+#: lib/layouts/beamer.layout:964
 #, fuzzy
 msgid "Theorem. "
 msgstr "Tétel."
 
-#: lib/layouts/beamer.layout:962
+#: lib/layouts/beamer.layout:969
 msgid "Separator"
 msgstr "Elválasztó"
 
-#: lib/layouts/beamer.layout:975
+#: lib/layouts/beamer.layout:982
 msgid "___"
 msgstr "___"
 
-#: lib/layouts/beamer.layout:985 lib/layouts/egs.layout:641
+#: lib/layouts/beamer.layout:992 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX-kód"
 
-#: lib/layouts/beamer.layout:1022
+#: lib/layouts/beamer.layout:1029
 msgid "NoteItem"
 msgstr "Megjegyzés elem"
 
-#: lib/layouts/beamer.layout:1033
+#: lib/layouts/beamer.layout:1040
 #, fuzzy
 msgid "note: "
 msgstr "megjegyzés:"
 
-#: lib/layouts/beamer.layout:1069 lib/layouts/stdfloats.inc:10
-#: lib/ui/stdtoolbars.inc:110
+#: lib/layouts/beamer.layout:1076 lib/layouts/powerdot.layout:365
+#: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
 msgid "Table"
 msgstr "Táblázat"
 
-#: lib/layouts/beamer.layout:1074 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1081 lib/layouts/powerdot.layout:369
+#: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "Táblázatok listája"
 
-#: lib/layouts/beamer.layout:1080 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1087 lib/layouts/powerdot.layout:375
+#: lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "Ábra"
 
-#: lib/layouts/beamer.layout:1085 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1092 lib/layouts/powerdot.layout:379
+#: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "Ábrák listája"
 
@@ -4696,13 +4777,13 @@ msgstr "Dátum:"
 msgid "Subparagraph"
 msgstr "Albekezdés"
 
-#: lib/layouts/egs.layout:94 lib/layouts/db_stdlayouts.inc:18
-#: lib/layouts/stdlayouts.inc:11
+#: lib/layouts/egs.layout:94 lib/layouts/powerdot.layout:300
+#: lib/layouts/db_stdlayouts.inc:18 lib/layouts/stdlayouts.inc:11
 msgid "Quotation"
 msgstr "Idézet (hosszú)"
 
 #: lib/layouts/egs.layout:112 lib/layouts/manpage.layout:29
-#: lib/layouts/stdlayouts.inc:29
+#: lib/layouts/powerdot.layout:320 lib/layouts/stdlayouts.inc:29
 msgid "Quote"
 msgstr "Idézet"
 
@@ -4710,7 +4791,8 @@ msgstr "Idézet"
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
-#: lib/layouts/egs.layout:203 lib/layouts/stdlayouts.inc:45
+#: lib/layouts/egs.layout:203 lib/layouts/powerdot.layout:338
+#: lib/layouts/stdlayouts.inc:45
 msgid "Verse"
 msgstr "Vers"
 
@@ -6111,6 +6193,58 @@ msgstr "Alcím"
 msgid "Institution"
 msgstr "Intézet"
 
+#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:67
+#: lib/layouts/slides.layout:88
+msgid "Slide"
+msgstr "Fólia"
+
+#: lib/layouts/powerdot.layout:132
+msgid "    "
+msgstr ""
+
+#: lib/layouts/powerdot.layout:142
+#, fuzzy
+msgid "EndSlide"
+msgstr "Fólia"
+
+#: lib/layouts/powerdot.layout:154
+msgid "~=~"
+msgstr ""
+
+#: lib/layouts/powerdot.layout:167
+#, fuzzy
+msgid "WideSlide"
+msgstr "Fólia"
+
+#: lib/layouts/powerdot.layout:179
+#, fuzzy
+msgid "EmptySlide"
+msgstr "Fólia"
+
+#: lib/layouts/powerdot.layout:183
+#, fuzzy
+msgid "Empty slide:"
+msgstr "Üres"
+
+#: lib/layouts/powerdot.layout:199
+#, fuzzy
+msgid "Note:"
+msgstr "Megjegyzés"
+
+#: lib/layouts/powerdot.layout:246
+#, fuzzy
+msgid "ItemizeType1"
+msgstr "Felsorolás"
+
+#: lib/layouts/powerdot.layout:271
+#, fuzzy
+msgid "EnumerateType1"
+msgstr "Számozott felsorolás"
+
+#: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
+msgid "List of Algorithms"
+msgstr "Algoritmusok listája"
+
 #: lib/layouts/revtex4.layout:94
 msgid "Preprint"
 msgstr "Elõnyomat"
@@ -6344,10 +6478,6 @@ msgstr "Állófólia"
 #: lib/layouts/seminar.layout:63
 msgid "Portrait Slide"
 msgstr "Állófólia"
-
-#: lib/layouts/seminar.layout:67 lib/layouts/slides.layout:88
-msgid "Slide"
-msgstr "Fólia"
 
 #: lib/layouts/seminar.layout:72
 msgid "Slide*"
@@ -7050,10 +7180,6 @@ msgstr "Felirat alatta"
 msgid "Dictum"
 msgstr "Szólás"
 
-#: lib/layouts/stdfloats.inc:39
-msgid "List of Algorithms"
-msgstr "Algoritmusok listája"
-
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
 msgstr "Üzenet a szerkesztõnek"
@@ -7091,9 +7217,13 @@ msgstr "Arab"
 msgid "Armenian"
 msgstr "Amerikai"
 
-#: lib/languages:6 lib/languages:7
+#: lib/languages:6
 msgid "Austrian"
 msgstr "Osztrák"
+
+#: lib/languages:7
+msgid "Austrian (new spelling)"
+msgstr "Osztrák (Új írásmód)"
 
 #: lib/languages:8
 msgid "Bahasa"
@@ -7107,9 +7237,9 @@ msgstr "Belarusian"
 msgid "Basque"
 msgstr "Baszk"
 
-#: lib/languages:11 lib/languages:53
-msgid "Portuguese"
-msgstr "Portugál"
+#: lib/languages:11
+msgid "Portuguese (Brazil)"
+msgstr "Portugál (Brazil)"
 
 #: lib/languages:12
 msgid "Breton"
@@ -7127,18 +7257,21 @@ msgstr "Bolgár"
 msgid "Canadian"
 msgstr "Kanadai"
 
-#: lib/languages:16 lib/languages:30
-msgid "French"
-msgstr "Francia"
+#: lib/languages:16
+msgid "French Canadian"
+msgstr "Francia-kanadai"
 
 #: lib/languages:17
 msgid "Catalan"
 msgstr "Katalán"
 
-#: lib/languages:18 lib/languages:19
-#, fuzzy
-msgid "Chinese"
-msgstr "Példányok"
+#: lib/languages:18
+msgid "Chinese (simplified)"
+msgstr ""
+
+#: lib/languages:19
+msgid "Chinese (traditional)"
+msgstr ""
 
 #: lib/languages:20
 msgid "Croatian"
@@ -7172,15 +7305,23 @@ msgstr "Észt"
 msgid "Finnish"
 msgstr "Finn"
 
+#: lib/languages:30
+msgid "French"
+msgstr "Francia"
+
 #: lib/languages:31
 msgid "Galician"
 msgstr "Galician"
 
-#: lib/languages:34 lib/languages:35
+#: lib/languages:34
 msgid "German"
 msgstr "Német"
 
-#: lib/languages:36 lib/ui/stdtoolbars.inc:431
+#: lib/languages:35
+msgid "German (new spelling)"
+msgstr "Német (Új írásmód)"
+
+#: lib/languages:36 lib/ui/stdtoolbars.inc:436
 msgid "Greek"
 msgstr "Görög"
 
@@ -7236,6 +7377,10 @@ msgstr "Nynorsk"
 msgid "Polish"
 msgstr "Lengyel"
 
+#: lib/languages:53
+msgid "Portuguese"
+msgstr "Portugál"
+
 #: lib/languages:54
 msgid "Romanian"
 msgstr "Román"
@@ -7286,8 +7431,8 @@ msgstr "Ukrán"
 
 #: lib/languages:66
 #, fuzzy
-msgid "Upper"
-msgstr "Nagybetû|N"
+msgid "Upper Sorbian"
+msgstr "Szerb"
 
 #: lib/languages:67
 msgid "Welsh"
@@ -7441,7 +7586,7 @@ msgstr "Táblázat|T"
 msgid "Math|M"
 msgstr "Képlet|p"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:458
 msgid "Spellchecker...|S"
 msgstr "Helyesírás-ellenõrzõ...|H"
 
@@ -7449,11 +7594,11 @@ msgstr "Helyesírás-ellenõrzõ...|H"
 msgid "Thesaurus..."
 msgstr "Szinonímák..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:458
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:460
 msgid "Count Words|W"
 msgstr "Szavak megszámolása|S"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:459
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:461
 msgid "Check TeX|h"
 msgstr "TeX ellenõrzés|n"
 
@@ -7461,11 +7606,11 @@ msgstr "TeX ellenõrzés|n"
 msgid "Change Tracking|g"
 msgstr "Változások követése|k"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:468
 msgid "Preferences...|P"
 msgstr "Beállítások...|B"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:467
 msgid "Reconfigure|R"
 msgstr "Újrakonfigurálás|r"
 
@@ -7934,40 +8079,40 @@ msgstr "Szöveg álló alak"
 msgid "Floatflt Figure"
 msgstr "Floatflt ábra"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Tartalomjegyzék|T"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:380
 msgid "Index List|I"
 msgstr "Tárgymutatólista|l"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "Nomenclature|N"
 msgstr "Megjegyzés|z"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:382
 msgid "BibTeX Bibliography...|B"
 msgstr "BibTeX irodalomjegyzék...|B"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:384
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:386
 msgid "LyX Document...|X"
 msgstr "LyX dokumentum...|X"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:385
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:387
 msgid "Plain Text...|T"
 msgstr "Síma szöveg...|m"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:386
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:388
 msgid "Plain Text, Join Lines...|J"
 msgstr "Sima szöveg, sorok befûzése...|b"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:420
 msgid "Track Changes|T"
 msgstr "Változások követése|V"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:421
 msgid "Merge Changes...|M"
 msgstr "Változások elfogadása...|s"
 
@@ -7979,7 +8124,7 @@ msgstr "Minden változás elfogadása|f"
 msgid "Reject All Changes|R"
 msgstr "Minden változás elvetése|M"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:424
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:426
 msgid "Show Changes in Output|S"
 msgstr "Változások mutatása a kimenetben|k"
 
@@ -8023,7 +8168,7 @@ msgstr "Környezeti mélység növelése|n"
 msgid "Start Appendix Here|S"
 msgstr "Innentõl függelék|f"
 
-#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:408
+#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:410
 msgid "Build Program|B"
 msgstr "Program fordítása|r"
 
@@ -8031,7 +8176,7 @@ msgstr "Program fordítása|r"
 msgid "Update|U"
 msgstr "Frissítés|i"
 
-#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:409
+#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "LaTeX napló|X"
 
@@ -8039,35 +8184,35 @@ msgstr "LaTeX napló|X"
 msgid "TeX Information|X"
 msgstr "TeX információ|X"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:432
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:434
 msgid "Next Note|N"
 msgstr "Következõ megjegyzés|z"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:435
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:437
 msgid "Go to Label|L"
 msgstr "Címkére ugrás|C"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:431
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:433
 msgid "Bookmarks|B"
 msgstr "Könyvjelzõk|K"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:441
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:443
 msgid "Save Bookmark 1|S"
 msgstr "1. könyvjelzõ mentése|s"
 
-#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:442
+#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:444
 msgid "Save Bookmark 2"
 msgstr "2. könyvjelzõ mentése"
 
-#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:443
+#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:445
 msgid "Save Bookmark 3"
 msgstr "3. könyvjelzõ mentése"
 
-#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:444
+#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:446
 msgid "Save Bookmark 4"
 msgstr "4. könyvjelzõ mentése"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:445
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:447
 msgid "Save Bookmark 5"
 msgstr "5. könyvjelzõ mentése"
 
@@ -8091,43 +8236,43 @@ msgstr "Ugrás 4. könyvjelzõre|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Ugrás 5. könyvjelzõre|5"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:473
+#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:475
 msgid "Introduction|I"
 msgstr "Bevezetés|B"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:476
 msgid "Tutorial|T"
 msgstr "Tankönyv|T"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:475
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:477
 msgid "User's Guide|U"
 msgstr "Felhasználói kézikönyv|F"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:476
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:478
 msgid "Extended Features|E"
 msgstr "Haladó szolgáltatások|H"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:477
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:479
 msgid "Embedded Objects|m"
 msgstr "Beágyazott objektumok|m"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:478
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:480
 msgid "Customization|C"
 msgstr "Testreszabás|e"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:479
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:481
 msgid "FAQ|F"
 msgstr "GYIK|G"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:480
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:482
 msgid "Table of Contents|a"
 msgstr "Tartalomjegyzék|a"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:481
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:483
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX információ|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:483
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:485
 msgid "About LyX|X"
 msgstr "LyX névjegy|X"
 
@@ -8495,7 +8640,7 @@ msgstr "Rövid cím|v"
 msgid "TeX Code|X"
 msgstr "TeX kód|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:325
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:343
 #, fuzzy
 msgid "Program Listing"
 msgstr "Program initialisation"
@@ -8574,83 +8719,88 @@ msgstr "Képlet határolók"
 msgid "Matrix|x"
 msgstr "Mátrix"
 
-#: lib/ui/stdmenus.inc:372
+#: lib/ui/stdmenus.inc:368 lib/ui/stdtoolbars.inc:163
+#, fuzzy
+msgid "Toggle Math Panels"
+msgstr "Képletszerkesztõ"
+
+#: lib/ui/stdmenus.inc:374
 msgid "Text Wrap Float|W"
 msgstr "Körbefuttatás úsztatása|u"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:390
 msgid "External Material...|M"
 msgstr "Külsõ anyag...|K"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:391
 msgid "Child Document...|d"
 msgstr "Aldokumentum...|d"
 
-#: lib/ui/stdmenus.inc:393
+#: lib/ui/stdmenus.inc:395
 msgid "LyX Note|N"
 msgstr "LyX megjegyzés|z"
 
-#: lib/ui/stdmenus.inc:394
+#: lib/ui/stdmenus.inc:396
 msgid "Comment|C"
 msgstr "Megjegyzés|M"
 
-#: lib/ui/stdmenus.inc:395
+#: lib/ui/stdmenus.inc:397
 msgid "Greyed Out|G"
 msgstr "Kiszürkített|K"
 
-#: lib/ui/stdmenus.inc:407
+#: lib/ui/stdmenus.inc:409
 msgid "Change Tracking|C"
 msgstr "Változások követése|l"
 
-#: lib/ui/stdmenus.inc:410
+#: lib/ui/stdmenus.inc:412
 msgid "Table of Contents|T"
 msgstr "Tartalomjegyzék|T"
 
-#: lib/ui/stdmenus.inc:411
+#: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Kezd itt a függeléket|f"
 
-#: lib/ui/stdmenus.inc:413
+#: lib/ui/stdmenus.inc:415
 msgid "Compressed|o"
 msgstr "Tömörített|m"
 
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/stdmenus.inc:416
 msgid "Settings...|S"
 msgstr "Beállítások...|B"
 
-#: lib/ui/stdmenus.inc:420
+#: lib/ui/stdmenus.inc:422
 msgid "Accept Change|A"
 msgstr "Elfogadás|a"
 
-#: lib/ui/stdmenus.inc:421
+#: lib/ui/stdmenus.inc:423
 msgid "Reject Change|R"
 msgstr "Visszautasítás|i"
 
-#: lib/ui/stdmenus.inc:422
+#: lib/ui/stdmenus.inc:424
 msgid "Accept All Changes|c"
 msgstr "Minden változás elfogadása|f"
 
-#: lib/ui/stdmenus.inc:423
+#: lib/ui/stdmenus.inc:425
 msgid "Reject All Changes|e"
 msgstr "Minden változás elvetése|M"
 
-#: lib/ui/stdmenus.inc:433
+#: lib/ui/stdmenus.inc:435
 msgid "Next Change|C"
 msgstr "Következõ változás|v"
 
-#: lib/ui/stdmenus.inc:434
+#: lib/ui/stdmenus.inc:436
 msgid "Next Cross-Reference|R"
 msgstr "Következõ kereszthivatkozás|e"
 
-#: lib/ui/stdmenus.inc:446
+#: lib/ui/stdmenus.inc:448
 msgid "Clear Bookmarks|C"
 msgstr "Könyvjelzõk törlése|K"
 
-#: lib/ui/stdmenus.inc:457
+#: lib/ui/stdmenus.inc:459
 msgid "Thesaurus...|T"
 msgstr "Szinonímák...|o"
 
-#: lib/ui/stdmenus.inc:460
+#: lib/ui/stdmenus.inc:462
 msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
@@ -8706,2685 +8856,2696 @@ msgstr "Képlet beszúrása"
 msgid "Insert graphics"
 msgstr "Grafika beszúrása"
 
+#: lib/ui/stdtoolbars.inc:79
+#, fuzzy
+msgid "Toggle Table of Contents"
+msgstr "Tartalomjegyzék"
+
 #: lib/ui/stdtoolbars.inc:80
+#, fuzzy
+msgid "Toggle Math Toolbar"
+msgstr "Minde&t állítsa"
+
+#: lib/ui/stdtoolbars.inc:81
+#, fuzzy
+msgid "Toggle Table Toolbar"
+msgstr "Minde&t állítsa"
+
+#: lib/ui/stdtoolbars.inc:84
 msgid "Extra"
 msgstr "Extra"
 
-#: lib/ui/stdtoolbars.inc:82
+#: lib/ui/stdtoolbars.inc:86
 msgid "Numbered list"
 msgstr "Számozott lista"
 
-#: lib/ui/stdtoolbars.inc:83
+#: lib/ui/stdtoolbars.inc:87
 msgid "Itemized list"
 msgstr "Felsorolás"
 
-#: lib/ui/stdtoolbars.inc:86
+#: lib/ui/stdtoolbars.inc:90
 msgid "Increase depth"
 msgstr "Környezeti mélység növelése"
 
-#: lib/ui/stdtoolbars.inc:87
+#: lib/ui/stdtoolbars.inc:91
 msgid "Decrease depth"
 msgstr "Környezeti mélység csökkentése"
 
-#: lib/ui/stdtoolbars.inc:89
+#: lib/ui/stdtoolbars.inc:93
 msgid "Insert figure float"
 msgstr "Úsztatott ábra beszúrása"
 
-#: lib/ui/stdtoolbars.inc:90
+#: lib/ui/stdtoolbars.inc:94
 msgid "Insert table float"
 msgstr "Úsztatott táblázat beszúrása"
 
-#: lib/ui/stdtoolbars.inc:91
+#: lib/ui/stdtoolbars.inc:95
 msgid "Insert label"
 msgstr "Címke beszúrása"
 
-#: lib/ui/stdtoolbars.inc:92
+#: lib/ui/stdtoolbars.inc:96
 msgid "Insert cross-reference"
 msgstr "Kereszthivatkozás beszúrása"
 
-#: lib/ui/stdtoolbars.inc:93
+#: lib/ui/stdtoolbars.inc:97
 msgid "Insert citation"
 msgstr "Idézet beszúrása"
 
-#: lib/ui/stdtoolbars.inc:94
+#: lib/ui/stdtoolbars.inc:98
 msgid "Insert index entry"
 msgstr "Tárgymutató-bejegyzés beszúrása"
 
-#: lib/ui/stdtoolbars.inc:95
+#: lib/ui/stdtoolbars.inc:99
 #, fuzzy
 msgid "Insert nomenclature entry"
 msgstr "Tárgymutató-bejegyzés beszúrása"
 
-#: lib/ui/stdtoolbars.inc:97
+#: lib/ui/stdtoolbars.inc:101
 msgid "Insert footnote"
 msgstr "Lábjegyzet beszúrása"
 
-#: lib/ui/stdtoolbars.inc:98
+#: lib/ui/stdtoolbars.inc:102
 msgid "Insert margin note"
 msgstr "Széljegyzet beszúrása"
 
-#: lib/ui/stdtoolbars.inc:99 lib/ui/stdtoolbars.inc:177
+#: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:182
 msgid "Insert note"
 msgstr "Megjegyzés beszúrása"
 
-#: lib/ui/stdtoolbars.inc:100
+#: lib/ui/stdtoolbars.inc:104
 msgid "Insert URL"
 msgstr "URL beszúrása"
 
-#: lib/ui/stdtoolbars.inc:101
+#: lib/ui/stdtoolbars.inc:105
 msgid "Insert TeX code"
 msgstr "TeX kód beszúrása"
 
-#: lib/ui/stdtoolbars.inc:102
+#: lib/ui/stdtoolbars.inc:106
 msgid "Include file"
 msgstr "Fájl csatolása"
 
-#: lib/ui/stdtoolbars.inc:104
+#: lib/ui/stdtoolbars.inc:108
 msgid "Text style"
 msgstr "Szöveg stílus"
 
-#: lib/ui/stdtoolbars.inc:105
+#: lib/ui/stdtoolbars.inc:109
 msgid "Paragraph settings"
 msgstr "Bekezdés beállításai"
 
-#: lib/ui/stdtoolbars.inc:106
-msgid "Table of contents"
-msgstr "Tartalomjegyzék"
-
-#: lib/ui/stdtoolbars.inc:111 lib/ui/stdtoolbars.inc:155
+#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
 msgid "Add row"
 msgstr "Sor hozzáadása"
 
-#: lib/ui/stdtoolbars.inc:112 lib/ui/stdtoolbars.inc:156
+#: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
 msgid "Add column"
 msgstr "Oszlop hozzáadása"
 
-#: lib/ui/stdtoolbars.inc:113 lib/ui/stdtoolbars.inc:157
+#: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
 msgid "Delete row"
 msgstr "Sor törlése"
 
-#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
+#: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
 msgid "Delete column"
 msgstr "Oszlop törlése"
 
-#: lib/ui/stdtoolbars.inc:116
+#: lib/ui/stdtoolbars.inc:119
 msgid "Set top line"
 msgstr "Felsõ szegély be"
 
-#: lib/ui/stdtoolbars.inc:117
+#: lib/ui/stdtoolbars.inc:120
 msgid "Set bottom line"
 msgstr "Alsó szegély be"
 
-#: lib/ui/stdtoolbars.inc:118
+#: lib/ui/stdtoolbars.inc:121
 msgid "Set left line"
 msgstr "Bal szegély be"
 
-#: lib/ui/stdtoolbars.inc:119
+#: lib/ui/stdtoolbars.inc:122
 msgid "Set right line"
 msgstr "Jobb szegély be"
 
-#: lib/ui/stdtoolbars.inc:120
+#: lib/ui/stdtoolbars.inc:123
 msgid "Set all lines"
 msgstr "Minden szegély megjelenik"
 
-#: lib/ui/stdtoolbars.inc:121
+#: lib/ui/stdtoolbars.inc:124
 msgid "Unset all lines"
 msgstr "Minden szegély eltûnik"
 
-#: lib/ui/stdtoolbars.inc:123
+#: lib/ui/stdtoolbars.inc:126
 msgid "Align left"
 msgstr "Balra igazít"
 
-#: lib/ui/stdtoolbars.inc:124
+#: lib/ui/stdtoolbars.inc:127
 msgid "Align center"
 msgstr "Középre igazít"
 
-#: lib/ui/stdtoolbars.inc:125
+#: lib/ui/stdtoolbars.inc:128
 msgid "Align right"
 msgstr "Jobbra igazít"
 
-#: lib/ui/stdtoolbars.inc:127
+#: lib/ui/stdtoolbars.inc:130
 msgid "Align top"
 msgstr "Igazítás fel"
 
-#: lib/ui/stdtoolbars.inc:128
+#: lib/ui/stdtoolbars.inc:131
 msgid "Align middle"
 msgstr "Igazítás középre"
 
-#: lib/ui/stdtoolbars.inc:129
+#: lib/ui/stdtoolbars.inc:132
 msgid "Align bottom"
 msgstr "Igazítás le"
 
-#: lib/ui/stdtoolbars.inc:131
+#: lib/ui/stdtoolbars.inc:134
 msgid "Rotate cell"
 msgstr "Cella forgatása"
 
-#: lib/ui/stdtoolbars.inc:132
+#: lib/ui/stdtoolbars.inc:135
 msgid "Rotate table"
 msgstr "Táblázat forgatása"
 
-#: lib/ui/stdtoolbars.inc:133
+#: lib/ui/stdtoolbars.inc:136
 msgid "Set multi-column"
 msgstr "Cellák egyesítése"
 
-#: lib/ui/stdtoolbars.inc:136
+#: lib/ui/stdtoolbars.inc:139
 msgid "Math"
 msgstr "Képlet"
 
-#: lib/ui/stdtoolbars.inc:137
+#: lib/ui/stdtoolbars.inc:140
 msgid "Set display mode"
 msgstr "Megjelenítés módjának váltása"
 
-#: lib/ui/stdtoolbars.inc:139
+#: lib/ui/stdtoolbars.inc:142
 msgid "Subscript"
 msgstr "Alsó index"
 
-#: lib/ui/stdtoolbars.inc:140
+#: lib/ui/stdtoolbars.inc:143
 msgid "Superscript"
 msgstr "Felsõ index"
 
-#: lib/ui/stdtoolbars.inc:141
+#: lib/ui/stdtoolbars.inc:144
 msgid "Insert square root"
 msgstr "Négyzetgyök-jel beszúrása"
 
-#: lib/ui/stdtoolbars.inc:142
+#: lib/ui/stdtoolbars.inc:145
 msgid "Insert root"
 msgstr "Általános gyökjel beszúrása"
 
-#: lib/ui/stdtoolbars.inc:143
+#: lib/ui/stdtoolbars.inc:146
 #, fuzzy
 msgid "Insert standard fraction"
 msgstr "Törtjel beszúrása"
 
-#: lib/ui/stdtoolbars.inc:144
+#: lib/ui/stdtoolbars.inc:147
 msgid "Insert sum"
 msgstr "Szumma beszúrása"
 
-#: lib/ui/stdtoolbars.inc:145
+#: lib/ui/stdtoolbars.inc:148
 msgid "Insert integral"
 msgstr "Integrál beszúrása"
 
-#: lib/ui/stdtoolbars.inc:146
+#: lib/ui/stdtoolbars.inc:149
 msgid "Insert product"
 msgstr "Szorzat beszúrása"
 
-#: lib/ui/stdtoolbars.inc:148
+#: lib/ui/stdtoolbars.inc:151
 msgid "Insert ( )"
 msgstr "() beszúrása"
 
-#: lib/ui/stdtoolbars.inc:149
+#: lib/ui/stdtoolbars.inc:152
 msgid "Insert [ ]"
 msgstr "[] beszúrása"
 
-#: lib/ui/stdtoolbars.inc:150
+#: lib/ui/stdtoolbars.inc:153
 msgid "Insert { }"
 msgstr "{} beszúrása"
 
-#: lib/ui/stdtoolbars.inc:151
+#: lib/ui/stdtoolbars.inc:154
 #, fuzzy
 msgid "Insert delimiters"
 msgstr "Határoló beszúrása"
 
-#: lib/ui/stdtoolbars.inc:153
+#: lib/ui/stdtoolbars.inc:156
 msgid "Insert matrix"
 msgstr "Mátrix beszúrása"
 
-#: lib/ui/stdtoolbars.inc:154
+#: lib/ui/stdtoolbars.inc:157
 msgid "Insert cases environment"
 msgstr "Esetek környezet beszúrása"
 
-#: lib/ui/stdtoolbars.inc:161
+#: lib/ui/stdtoolbars.inc:166
 msgid "Command Buffer"
 msgstr "Parancs puffer"
 
-#: lib/ui/stdtoolbars.inc:165
+#: lib/ui/stdtoolbars.inc:170
 msgid "Review"
 msgstr "Korrektúra"
 
-#: lib/ui/stdtoolbars.inc:166
+#: lib/ui/stdtoolbars.inc:171
 msgid "Track changes"
 msgstr "Változások követése"
 
-#: lib/ui/stdtoolbars.inc:167
+#: lib/ui/stdtoolbars.inc:172
 msgid "Show changes in output"
 msgstr "Változások mutatása a kimenetben"
 
-#: lib/ui/stdtoolbars.inc:169
+#: lib/ui/stdtoolbars.inc:174
 msgid "Next change"
 msgstr "Következõ változás"
 
-#: lib/ui/stdtoolbars.inc:170
+#: lib/ui/stdtoolbars.inc:175
 msgid "Accept change"
 msgstr "Elfogadás"
 
-#: lib/ui/stdtoolbars.inc:171
+#: lib/ui/stdtoolbars.inc:176
 msgid "Reject change"
 msgstr "Visszautasítás"
 
-#: lib/ui/stdtoolbars.inc:173
+#: lib/ui/stdtoolbars.inc:178
 msgid "Merge changes"
 msgstr "Változások elfogadása"
 
-#: lib/ui/stdtoolbars.inc:174
+#: lib/ui/stdtoolbars.inc:179
 msgid "Accept all changes"
 msgstr "Minden változás elfogadása"
 
-#: lib/ui/stdtoolbars.inc:175
+#: lib/ui/stdtoolbars.inc:180
 msgid "Reject all changes"
 msgstr "Minden változás elvetése"
 
-#: lib/ui/stdtoolbars.inc:178
+#: lib/ui/stdtoolbars.inc:183
 msgid "Next note"
 msgstr "Következõ megjegyzés"
 
-#: lib/ui/stdtoolbars.inc:181
+#: lib/ui/stdtoolbars.inc:186
 msgid "View/Update"
 msgstr "Nézet/Frissítés"
 
-#: lib/ui/stdtoolbars.inc:182
+#: lib/ui/stdtoolbars.inc:187
 msgid "View DVI"
 msgstr "DVI nézete"
 
-#: lib/ui/stdtoolbars.inc:183
+#: lib/ui/stdtoolbars.inc:188
 msgid "Update DVI"
 msgstr "DVI frissítése"
 
-#: lib/ui/stdtoolbars.inc:184
+#: lib/ui/stdtoolbars.inc:189
 msgid "View PDF (pdflatex)"
 msgstr "PDF (pdflatex) nézete"
 
-#: lib/ui/stdtoolbars.inc:185
+#: lib/ui/stdtoolbars.inc:190
 msgid "Update PDF (pdflatex)"
 msgstr "PDF (pdflatex) frissítése"
 
-#: lib/ui/stdtoolbars.inc:186
+#: lib/ui/stdtoolbars.inc:191
 msgid "View PostScript"
 msgstr "PostScript nézete"
 
-#: lib/ui/stdtoolbars.inc:187
+#: lib/ui/stdtoolbars.inc:192
 msgid "Update PostScript"
 msgstr "PostScript frissítése"
 
-#: lib/ui/stdtoolbars.inc:190
+#: lib/ui/stdtoolbars.inc:195
 #, fuzzy
 msgid "Math Panels"
 msgstr "Képletszerkesztõ"
 
-#: lib/ui/stdtoolbars.inc:191
+#: lib/ui/stdtoolbars.inc:196
 #, fuzzy
 msgid "Math Spacings"
 msgstr "LyX: Képlet közök"
 
-#: lib/ui/stdtoolbars.inc:192 lib/ui/stdtoolbars.inc:257
+#: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:262
 #, fuzzy
 msgid "Roots"
 msgstr "lábjegyzet"
 
-#: lib/ui/stdtoolbars.inc:193 lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:267
 #, fuzzy
 msgid "Styles"
 msgstr "Stílus"
 
-#: lib/ui/stdtoolbars.inc:194 lib/ui/stdtoolbars.inc:269
+#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:274
 #, fuzzy
 msgid "Fractions"
 msgstr "LyX: Törtek"
 
-#: lib/ui/stdtoolbars.inc:195 lib/ui/stdtoolbars.inc:278
-#: src/frontends/qt4/QDocument.cpp:566
+#: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:283
+#: src/frontends/qt4/QDocument.cpp:567
 msgid "Fonts"
 msgstr "Betûkészletek"
 
-#: lib/ui/stdtoolbars.inc:196 lib/ui/stdtoolbars.inc:212
+#: lib/ui/stdtoolbars.inc:201 lib/ui/stdtoolbars.inc:217
 #, fuzzy
 msgid "Functions"
 msgstr "&Függvények"
 
-#: lib/ui/stdtoolbars.inc:213
-msgid "arccos"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:214
-#, fuzzy
-msgid "arcsin"
-msgstr "széljegyzet"
-
-#: lib/ui/stdtoolbars.inc:215
-#, fuzzy
-msgid "arctan"
-msgstr "Katalán"
-
-#: lib/ui/stdtoolbars.inc:216
-#, fuzzy
-msgid "arg"
-msgstr "Nagy"
-
-#: lib/ui/stdtoolbars.inc:217
-msgid "bmod"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:218
-msgid "cos"
+msgid "arccos"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:219
 #, fuzzy
-msgid "cosh"
-msgstr "Skót"
+msgid "arcsin"
+msgstr "széljegyzet"
 
 #: lib/ui/stdtoolbars.inc:220
 #, fuzzy
-msgid "cot"
-msgstr "rövid cím"
+msgid "arctan"
+msgstr "Katalán"
 
 #: lib/ui/stdtoolbars.inc:221
 #, fuzzy
-msgid "coth"
-msgstr "Skót"
+msgid "arg"
+msgstr "Nagy"
 
 #: lib/ui/stdtoolbars.inc:222
-#, fuzzy
-msgid "csc"
-msgstr "cc"
+msgid "bmod"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:223
-msgid "deg"
+msgid "cos"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:224
 #, fuzzy
+msgid "cosh"
+msgstr "Skót"
+
+#: lib/ui/stdtoolbars.inc:225
+#, fuzzy
+msgid "cot"
+msgstr "rövid cím"
+
+#: lib/ui/stdtoolbars.inc:226
+#, fuzzy
+msgid "coth"
+msgstr "Skót"
+
+#: lib/ui/stdtoolbars.inc:227
+#, fuzzy
+msgid "csc"
+msgstr "cc"
+
+#: lib/ui/stdtoolbars.inc:228
+msgid "deg"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:229
+#, fuzzy
 msgid "det"
 msgstr "alapérték"
 
-#: lib/ui/stdtoolbars.inc:225
+#: lib/ui/stdtoolbars.inc:230
 #, fuzzy
 msgid "dim"
 msgstr "Normál"
 
-#: lib/ui/stdtoolbars.inc:226
+#: lib/ui/stdtoolbars.inc:231
 #, fuzzy
 msgid "exp"
 msgstr "ex"
 
-#: lib/ui/stdtoolbars.inc:227
+#: lib/ui/stdtoolbars.inc:232
 msgid "gcd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:228
+#: lib/ui/stdtoolbars.inc:233
 #, fuzzy
 msgid "hom"
 msgstr "tétel"
 
-#: lib/ui/stdtoolbars.inc:229
+#: lib/ui/stdtoolbars.inc:234
 #, fuzzy
 msgid "inf"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:230
+#: lib/ui/stdtoolbars.inc:235
 #, fuzzy
 msgid "ker"
 msgstr "Beszélõ"
 
-#: lib/ui/stdtoolbars.inc:231
+#: lib/ui/stdtoolbars.inc:236
 msgid "lg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:232
+#: lib/ui/stdtoolbars.inc:237
 #, fuzzy
 msgid "lim"
 msgstr "Követelés"
 
-#: lib/ui/stdtoolbars.inc:233
+#: lib/ui/stdtoolbars.inc:238
 msgid "liminf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:234
+#: lib/ui/stdtoolbars.inc:239
 msgid "limsup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:235
+#: lib/ui/stdtoolbars.inc:240
 msgid "ln"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:236
+#: lib/ui/stdtoolbars.inc:241
 #, fuzzy
 msgid "log"
 msgstr "Szó"
 
-#: lib/ui/stdtoolbars.inc:237
+#: lib/ui/stdtoolbars.inc:242
 #, fuzzy
 msgid "max"
 msgstr "Fax"
 
-#: lib/ui/stdtoolbars.inc:238
+#: lib/ui/stdtoolbars.inc:243
 #, fuzzy
 msgid "min"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:239
+#: lib/ui/stdtoolbars.inc:244
 #, fuzzy
 msgid "sec"
 msgstr "Szakasz hozzáadása"
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:245
 #, fuzzy
 msgid "sin"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:241
+#: lib/ui/stdtoolbars.inc:246
 #, fuzzy
 msgid "sinh"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:242
+#: lib/ui/stdtoolbars.inc:247
 #, fuzzy
 msgid "sup"
 msgstr "sp"
 
-#: lib/ui/stdtoolbars.inc:243
+#: lib/ui/stdtoolbars.inc:248
 #, fuzzy
 msgid "tan"
 msgstr "és"
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:249
 #, fuzzy
 msgid "tanh"
 msgstr "változat"
 
-#: lib/ui/stdtoolbars.inc:245
+#: lib/ui/stdtoolbars.inc:250
 #, fuzzy
 msgid "Pr"
 msgstr "Prop"
 
-#: lib/ui/stdtoolbars.inc:248
+#: lib/ui/stdtoolbars.inc:253
 #, fuzzy
 msgid "Spacings"
 msgstr "&Mérete:"
 
-#: lib/ui/stdtoolbars.inc:249
+#: lib/ui/stdtoolbars.inc:254
 #, fuzzy
 msgid "Thin space\t\\,"
 msgstr "Keskeny köz\t\\,"
 
-#: lib/ui/stdtoolbars.inc:250
+#: lib/ui/stdtoolbars.inc:255
 #, fuzzy
 msgid "Medium space\t\\:"
 msgstr "Normál köz\t\\:"
 
-#: lib/ui/stdtoolbars.inc:251
+#: lib/ui/stdtoolbars.inc:256
 #, fuzzy
 msgid "Thick space\t\\;"
 msgstr "Vastag köz\t\\;"
 
-#: lib/ui/stdtoolbars.inc:252
+#: lib/ui/stdtoolbars.inc:257
 #, fuzzy
 msgid "Quadratin space\t\\quad"
 msgstr "Négyzetes köz\t\\quad"
 
-#: lib/ui/stdtoolbars.inc:253
+#: lib/ui/stdtoolbars.inc:258
 #, fuzzy
 msgid "Double quadratin space\t\\qquad"
 msgstr "Duplán négyzetes köz\t\\qquad"
 
-#: lib/ui/stdtoolbars.inc:254
+#: lib/ui/stdtoolbars.inc:259
 #, fuzzy
 msgid "Negative space\t\\!"
 msgstr "Negatív köz\t\\!"
 
-#: lib/ui/stdtoolbars.inc:258
+#: lib/ui/stdtoolbars.inc:263
 #, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "Négyzetgyök\t\\sqrt"
 
-#: lib/ui/stdtoolbars.inc:259
+#: lib/ui/stdtoolbars.inc:264
 #, fuzzy
 msgid "Other root\t\\root"
 msgstr "Egyéb gyök\t\\root"
 
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:268
 #, fuzzy
 msgid "Display style\t\\displaystyle"
 msgstr "Képernyõ stílus\t\\displaystyle"
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:269
 #, fuzzy
 msgid "Normal text style\t\\textstyle"
 msgstr "Normál szöveg stílus\t\\textstyle"
 
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:270
 #, fuzzy
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Kézírás stílus (kicsi)\t\\scriptstyle"
 
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:271
 #, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Kézírás stílus (kisebb) \t\\scriptscriptstyle"
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:275
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Normál\t\\frac"
 
-#: lib/ui/stdtoolbars.inc:271
+#: lib/ui/stdtoolbars.inc:276
 #, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "Nincs vonal\t\\atop"
 
-#: lib/ui/stdtoolbars.inc:272
+#: lib/ui/stdtoolbars.inc:277
 #, fuzzy
 msgid "Nice\t\\nicefrac"
 msgstr "Ferde\t\\nicefrac"
 
-#: lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:278
 #, fuzzy
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr "Szöveg tört (amsmath)\t\\tfrac"
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:279
 #, fuzzy
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr "Megjelenített tört (amsmath)\t\\dfrac"
 
-#: lib/ui/stdtoolbars.inc:275
+#: lib/ui/stdtoolbars.inc:280
 #, fuzzy
 msgid "Binomial\t\\choose"
 msgstr "Binominális\t\\choose"
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:284
 #, fuzzy
 msgid "Roman\t\\mathrm"
 msgstr "Roman\t\\mathrm"
 
-#: lib/ui/stdtoolbars.inc:280
+#: lib/ui/stdtoolbars.inc:285
 #, fuzzy
 msgid "Bold\t\\mathbf"
 msgstr "Félkövér\t\\mathbf"
 
-#: lib/ui/stdtoolbars.inc:281
+#: lib/ui/stdtoolbars.inc:286
 #, fuzzy
 msgid "Bold symbol\t\\boldsymbol"
 msgstr "Félkövér szimbólum\t\\boldsymbol"
 
-#: lib/ui/stdtoolbars.inc:282
+#: lib/ui/stdtoolbars.inc:287
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans Serif\t\\mathsf"
 
-#: lib/ui/stdtoolbars.inc:283
+#: lib/ui/stdtoolbars.inc:288
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Dõlt\t\\mathit"
 
-#: lib/ui/stdtoolbars.inc:284
+#: lib/ui/stdtoolbars.inc:289
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Írógép\t\\mathtt"
 
-#: lib/ui/stdtoolbars.inc:285
+#: lib/ui/stdtoolbars.inc:290
 #, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "Körvonalas nagybetû\t\\mathbb"
 
-#: lib/ui/stdtoolbars.inc:286
+#: lib/ui/stdtoolbars.inc:291
 #, fuzzy
 msgid "Fraktur\t\\mathfrak"
 msgstr "Fraktúr\t\\mathfrak"
 
-#: lib/ui/stdtoolbars.inc:287
+#: lib/ui/stdtoolbars.inc:292
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kalligrafikus\t\\mathcal"
 
-#: lib/ui/stdtoolbars.inc:288
+#: lib/ui/stdtoolbars.inc:293
 #, fuzzy
 msgid "Normal text mode\t\\textrm"
 msgstr "Normál szöveg mód\t\\textrm"
 
-#: lib/ui/stdtoolbars.inc:291
+#: lib/ui/stdtoolbars.inc:296
 msgid "Dots"
 msgstr "Pontok"
 
-#: lib/ui/stdtoolbars.inc:292
+#: lib/ui/stdtoolbars.inc:297
 #, fuzzy
 msgid "ldots"
 msgstr "Pontok"
 
-#: lib/ui/stdtoolbars.inc:293
+#: lib/ui/stdtoolbars.inc:298
 #, fuzzy
 msgid "cdots"
 msgstr "Pontok"
 
-#: lib/ui/stdtoolbars.inc:294
+#: lib/ui/stdtoolbars.inc:299
 #, fuzzy
 msgid "vdots"
 msgstr "Pontok"
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:300
 #, fuzzy
 msgid "ddots"
 msgstr "Pontok"
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:303
 #, fuzzy
 msgid "Frame Decorations"
 msgstr "Keret díszítõelemek"
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:304
 #, fuzzy
 msgid "hat"
 msgstr "Fejezet"
 
-#: lib/ui/stdtoolbars.inc:300
+#: lib/ui/stdtoolbars.inc:305
 #, fuzzy
 msgid "tilde"
 msgstr "Fájl"
 
-#: lib/ui/stdtoolbars.inc:301
+#: lib/ui/stdtoolbars.inc:306
 msgid "bar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:307
 #, fuzzy
 msgid "grave"
 msgstr "zöld"
 
-#: lib/ui/stdtoolbars.inc:303
+#: lib/ui/stdtoolbars.inc:308
 #, fuzzy
 msgid "dot"
 msgstr "rövid cím"
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:309
 msgid "check"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:310
 msgid "widehat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:311
 msgid "widetilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:307
-msgid "vec"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:308
-#, fuzzy
-msgid "acute"
-msgstr "Dátum"
-
-#: lib/ui/stdtoolbars.inc:309
-#, fuzzy
-msgid "ddot"
-msgstr "dd"
-
-#: lib/ui/stdtoolbars.inc:310
-#, fuzzy
-msgid "breve"
-msgstr "Elõnézet"
-
-#: lib/ui/stdtoolbars.inc:311
-#, fuzzy
-msgid "overline"
-msgstr "Szlovén"
-
 #: lib/ui/stdtoolbars.inc:312
-msgid "overbrace"
+msgid "vec"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:313
 #, fuzzy
+msgid "acute"
+msgstr "Dátum"
+
+#: lib/ui/stdtoolbars.inc:314
+#, fuzzy
+msgid "ddot"
+msgstr "dd"
+
+#: lib/ui/stdtoolbars.inc:315
+#, fuzzy
+msgid "breve"
+msgstr "Elõnézet"
+
+#: lib/ui/stdtoolbars.inc:316
+#, fuzzy
+msgid "overline"
+msgstr "Szlovén"
+
+#: lib/ui/stdtoolbars.inc:317
+msgid "overbrace"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:318
+#, fuzzy
 msgid "overleftarrow"
 msgstr "Sor törlése"
 
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:319
 msgid "overrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:320
 msgid "overleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:321
 #, fuzzy
 msgid "overset"
 msgstr "Alapértékre állít"
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:322
 #, fuzzy
 msgid "underline"
 msgstr "Aláhúzás %1$s, "
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:323
 #, fuzzy
 msgid "underbrace"
 msgstr "Aláhúzás"
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:324
 msgid "underleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:325
 msgid "underrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:326
 msgid "underleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:327
 #, fuzzy
 msgid "underset"
 msgstr "Vers"
 
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:330
 msgid "Arrows"
 msgstr "Nyilak"
 
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:331
 #, fuzzy
 msgid "leftarrow"
 msgstr "Sor törlése"
 
-#: lib/ui/stdtoolbars.inc:327
+#: lib/ui/stdtoolbars.inc:332
 msgid "rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:328
+#: lib/ui/stdtoolbars.inc:333
 msgid "downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:334
 #, fuzzy
 msgid "uparrow"
 msgstr "Nyíl"
 
-#: lib/ui/stdtoolbars.inc:330
+#: lib/ui/stdtoolbars.inc:335
 msgid "updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:331
+#: lib/ui/stdtoolbars.inc:336
 msgid "leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:337
 #, fuzzy
 msgid "Leftarrow"
 msgstr "Balra"
 
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:338
 #, fuzzy
 msgid "Rightarrow"
 msgstr "Jobb fejléc"
 
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:339
 msgid "Downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:340
 #, fuzzy
 msgid "Uparrow"
 msgstr "Nyíl"
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:341
 msgid "Updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:342
 msgid "Leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:343
 msgid "Longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:339
+#: lib/ui/stdtoolbars.inc:344
 msgid "Longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:340
+#: lib/ui/stdtoolbars.inc:345
 msgid "Longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:341
+#: lib/ui/stdtoolbars.inc:346
 msgid "longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:342
+#: lib/ui/stdtoolbars.inc:347
 msgid "longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:343
+#: lib/ui/stdtoolbars.inc:348
 msgid "longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:344
+#: lib/ui/stdtoolbars.inc:349
 msgid "leftharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:345
+#: lib/ui/stdtoolbars.inc:350
 msgid "rightharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:346
+#: lib/ui/stdtoolbars.inc:351
 #, fuzzy
 msgid "mapsto"
 msgstr "Felirat"
 
-#: lib/ui/stdtoolbars.inc:347
+#: lib/ui/stdtoolbars.inc:352
 msgid "longmapsto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:353
 #, fuzzy
 msgid "nwarrow"
 msgstr "Nyíl"
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:354
 #, fuzzy
 msgid "nearrow"
 msgstr "Nyíl"
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:355
 msgid "leftharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:356
 msgid "rightharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:357
 msgid "hookleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:358
 msgid "hookrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:354
+#: lib/ui/stdtoolbars.inc:359
 #, fuzzy
 msgid "swarrow"
 msgstr "Nyíl"
 
-#: lib/ui/stdtoolbars.inc:355
+#: lib/ui/stdtoolbars.inc:360
 #, fuzzy
 msgid "searrow"
 msgstr "Nyíl"
 
-#: lib/ui/stdtoolbars.inc:356 lib/ui/stdtoolbars.inc:626
+#: lib/ui/stdtoolbars.inc:361 lib/ui/stdtoolbars.inc:631
 msgid "rightleftharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:364
 msgid "Operators"
 msgstr "Mûveleti jelek"
 
-#: lib/ui/stdtoolbars.inc:360
+#: lib/ui/stdtoolbars.inc:365
 msgid "pm"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:361
+#: lib/ui/stdtoolbars.inc:366
 #, fuzzy
 msgid "cap"
 msgstr "Töredék"
 
-#: lib/ui/stdtoolbars.inc:362
+#: lib/ui/stdtoolbars.inc:367
 #, fuzzy
 msgid "diamond"
 msgstr "és"
 
-#: lib/ui/stdtoolbars.inc:363
+#: lib/ui/stdtoolbars.inc:368
 #, fuzzy
 msgid "oplus"
 msgstr "Hasábok"
 
-#: lib/ui/stdtoolbars.inc:364
+#: lib/ui/stdtoolbars.inc:369
 #, fuzzy
 msgid "mp"
 msgstr "Kiemelés (dõlt)"
 
-#: lib/ui/stdtoolbars.inc:365
+#: lib/ui/stdtoolbars.inc:370
 msgid "cup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:371
 msgid "bigtriangleup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:372
 #, fuzzy
 msgid "ominus"
 msgstr "percben"
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:373
 msgid "times"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:374
 #, fuzzy
 msgid "uplus"
 msgstr "Kimenetek"
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:375
 msgid "bigtriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:376
 #, fuzzy
 msgid "otimes"
 msgstr "Példányok"
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:377
 msgid "div"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:378
 #, fuzzy
 msgid "sqcap"
 msgstr "Töredék"
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:379
 #, fuzzy
 msgid "triangleright"
 msgstr "Teljes magasság"
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:380
 #, fuzzy
 msgid "oslash"
 msgstr "Lengyel"
 
-#: lib/ui/stdtoolbars.inc:376
+#: lib/ui/stdtoolbars.inc:381
 msgid "cdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:377
+#: lib/ui/stdtoolbars.inc:382
 msgid "sqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:378
-msgid "triangleleft"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:379
-#, fuzzy
-msgid "odot"
-msgstr "lábjegyzet"
-
-#: lib/ui/stdtoolbars.inc:380
-msgid "star"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:381
-#, fuzzy
-msgid "vee"
-msgstr "Szlovén"
-
-#: lib/ui/stdtoolbars.inc:382
-#, fuzzy
-msgid "amalg"
-msgstr "E-mail"
-
 #: lib/ui/stdtoolbars.inc:383
-msgid "bigcirc"
+msgid "triangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:384
 #, fuzzy
-msgid "setminus"
-msgstr "percben"
+msgid "odot"
+msgstr "lábjegyzet"
 
 #: lib/ui/stdtoolbars.inc:385
-msgid "wedge"
+msgid "star"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:386
 #, fuzzy
+msgid "vee"
+msgstr "Szlovén"
+
+#: lib/ui/stdtoolbars.inc:387
+#, fuzzy
+msgid "amalg"
+msgstr "E-mail"
+
+#: lib/ui/stdtoolbars.inc:388
+msgid "bigcirc"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:389
+#, fuzzy
+msgid "setminus"
+msgstr "percben"
+
+#: lib/ui/stdtoolbars.inc:390
+msgid "wedge"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:391
+#, fuzzy
 msgid "dagger"
 msgstr "Nagyobb"
 
-#: lib/ui/stdtoolbars.inc:387
+#: lib/ui/stdtoolbars.inc:392
 #, fuzzy
 msgid "circ"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:388
+#: lib/ui/stdtoolbars.inc:393
 #, fuzzy
 msgid "bullet"
 msgstr "Felsorolásjelek"
 
-#: lib/ui/stdtoolbars.inc:389
+#: lib/ui/stdtoolbars.inc:394
 #, fuzzy
 msgid "wr"
 msgstr "körbefuttatás"
 
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:395
 #, fuzzy
 msgid "ddagger"
 msgstr "Nagyobb"
 
-#: lib/ui/stdtoolbars.inc:393
+#: lib/ui/stdtoolbars.inc:398
 msgid "Relations"
 msgstr "Relációs jelek"
 
-#: lib/ui/stdtoolbars.inc:394
+#: lib/ui/stdtoolbars.inc:399
 msgid "leq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:395
+#: lib/ui/stdtoolbars.inc:400
 msgid "geq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:396
-msgid "equiv"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:397
-#, fuzzy
-msgid "models"
-msgstr "Kód"
-
-#: lib/ui/stdtoolbars.inc:398
-#, fuzzy
-msgid "prec"
-msgstr "pc"
-
-#: lib/ui/stdtoolbars.inc:399
-#, fuzzy
-msgid "succ"
-msgstr "cc"
-
-#: lib/ui/stdtoolbars.inc:400
-msgid "sim"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:401
-msgid "perp"
+msgid "equiv"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:402
 #, fuzzy
-msgid "preceq"
-msgstr "védett"
+msgid "models"
+msgstr "Kód"
 
 #: lib/ui/stdtoolbars.inc:403
-msgid "succeq"
-msgstr ""
+#, fuzzy
+msgid "prec"
+msgstr "pc"
 
 #: lib/ui/stdtoolbars.inc:404
-msgid "simeq"
-msgstr ""
+#, fuzzy
+msgid "succ"
+msgstr "cc"
 
 #: lib/ui/stdtoolbars.inc:405
-msgid "mid"
+msgid "sim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:406
+msgid "perp"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:407
+#, fuzzy
+msgid "preceq"
+msgstr "védett"
+
+#: lib/ui/stdtoolbars.inc:408
+msgid "succeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:409
+msgid "simeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:410
+msgid "mid"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:411
 #, fuzzy
 msgid "ll"
 msgstr "&Mind"
 
-#: lib/ui/stdtoolbars.inc:407
+#: lib/ui/stdtoolbars.inc:412
 msgid "gg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:408
+#: lib/ui/stdtoolbars.inc:413
 msgid "asymp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:409
+#: lib/ui/stdtoolbars.inc:414
 #, fuzzy
 msgid "parallel"
 msgstr "Változó méret"
 
-#: lib/ui/stdtoolbars.inc:410
+#: lib/ui/stdtoolbars.inc:415
 #, fuzzy
 msgid "subset"
 msgstr "Alalszakasz"
 
-#: lib/ui/stdtoolbars.inc:411
+#: lib/ui/stdtoolbars.inc:416
 msgid "supset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:412
+#: lib/ui/stdtoolbars.inc:417
 #, fuzzy
 msgid "approx"
 msgstr "Parbox"
 
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:418
 #, fuzzy
 msgid "smile"
 msgstr "Fájl"
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:419
 msgid "subseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:420
 msgid "supseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:421
 #, fuzzy
 msgid "cong"
 msgstr "be"
 
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:422
 #, fuzzy
 msgid "frown"
 msgstr "Város"
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:423
 msgid "sqsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:424
 msgid "sqsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:425
 #, fuzzy
 msgid "doteq"
 msgstr "megjegyzés"
 
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:426
 msgid "neq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:422 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:427 src/lengthcommon.cpp:38
 msgid "in"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:423
+#: lib/ui/stdtoolbars.inc:428
 msgid "ni"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:429
 #, fuzzy
 msgid "propto"
 msgstr "rövid cím"
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:430
 #, fuzzy
 msgid "notin"
 msgstr "megjegyzés"
 
-#: lib/ui/stdtoolbars.inc:426
+#: lib/ui/stdtoolbars.inc:431
 msgid "vdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:432
 msgid "dashv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:433
 #, fuzzy
 msgid "bowtie"
 msgstr "megjegyzés"
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:437
 msgid "alpha"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:433
-msgid "beta"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:434
-#, fuzzy
-msgid "gamma"
-msgstr "Segédtétel"
-
-#: lib/ui/stdtoolbars.inc:435
-#, fuzzy
-msgid "delta"
-msgstr "alapérték"
-
-#: lib/ui/stdtoolbars.inc:436
-#, fuzzy
-msgid "epsilon"
-msgstr "Verzió"
-
-#: lib/ui/stdtoolbars.inc:437
-msgid "varepsilon"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:438
-msgid "zeta"
+msgid "beta"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:439
 #, fuzzy
+msgid "gamma"
+msgstr "Segédtétel"
+
+#: lib/ui/stdtoolbars.inc:440
+#, fuzzy
+msgid "delta"
+msgstr "alapérték"
+
+#: lib/ui/stdtoolbars.inc:441
+#, fuzzy
+msgid "epsilon"
+msgstr "Verzió"
+
+#: lib/ui/stdtoolbars.inc:442
+msgid "varepsilon"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:443
+msgid "zeta"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:444
+#, fuzzy
 msgid "eta"
 msgstr "Bíbor"
 
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:445
 #, fuzzy
 msgid "theta"
 msgstr "szöveg"
 
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:446
 #, fuzzy
 msgid "vartheta"
 msgstr "Közbevetett"
 
-#: lib/ui/stdtoolbars.inc:442
+#: lib/ui/stdtoolbars.inc:447
 #, fuzzy
 msgid "iota"
 msgstr "Elforgatás"
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:448
 msgid "kappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:449
 msgid "lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:445 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:450 src/lengthcommon.cpp:38
 msgid "mu"
 msgstr "mu"
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:451
 msgid "nu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:452
 #, fuzzy
 msgid "xi"
 msgstr "x"
 
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:453
 msgid "pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:449
+#: lib/ui/stdtoolbars.inc:454
 msgid "varpi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:450
+#: lib/ui/stdtoolbars.inc:455
 msgid "rho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:451
+#: lib/ui/stdtoolbars.inc:456
 msgid "sigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:452
-msgid "varsigma"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:453
-#, fuzzy
-msgid "tau"
-msgstr "Státusz"
-
-#: lib/ui/stdtoolbars.inc:454
-#, fuzzy
-msgid "upsilon"
-msgstr "Kérdés"
-
-#: lib/ui/stdtoolbars.inc:455
-msgid "phi"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:456
-msgid "varphi"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:457
-msgid "chi"
+msgid "varsigma"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:458
 #, fuzzy
+msgid "tau"
+msgstr "Státusz"
+
+#: lib/ui/stdtoolbars.inc:459
+#, fuzzy
+msgid "upsilon"
+msgstr "Kérdés"
+
+#: lib/ui/stdtoolbars.inc:460
+msgid "phi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:461
+msgid "varphi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:462
+msgid "chi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:463
+#, fuzzy
 msgid "psi"
 msgstr "ui"
 
-#: lib/ui/stdtoolbars.inc:459
+#: lib/ui/stdtoolbars.inc:464
 #, fuzzy
 msgid "omega"
 msgstr "Roman"
 
-#: lib/ui/stdtoolbars.inc:460
+#: lib/ui/stdtoolbars.inc:465
 #, fuzzy
 msgid "Gamma"
 msgstr "Segédtétel"
 
-#: lib/ui/stdtoolbars.inc:461
+#: lib/ui/stdtoolbars.inc:466
 #, fuzzy
 msgid "Delta"
 msgstr "&Törlés"
 
-#: lib/ui/stdtoolbars.inc:462
+#: lib/ui/stdtoolbars.inc:467
 #, fuzzy
 msgid "Theta"
 msgstr "Thaiföldi"
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:468
 #, fuzzy
 msgid "Lambda"
 msgstr "Ország"
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:469
 msgid "Xi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:470
 msgid "Pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:471
 #, fuzzy
 msgid "Sigma"
 msgstr "Kicsi"
 
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:472
 msgid "Upsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:473
 msgid "Phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:469
+#: lib/ui/stdtoolbars.inc:474
 msgid "Psi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:470
+#: lib/ui/stdtoolbars.inc:475
 msgid "Omega"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:473
+#: lib/ui/stdtoolbars.inc:478
 msgid "Miscellaneous"
 msgstr "Egyéb jelek"
 
-#: lib/ui/stdtoolbars.inc:474
+#: lib/ui/stdtoolbars.inc:479
 #, fuzzy
 msgid "nabla"
 msgstr "N&agy táblázat"
 
-#: lib/ui/stdtoolbars.inc:475
+#: lib/ui/stdtoolbars.inc:480
 #, fuzzy
 msgid "partial"
 msgstr "Változó méret"
 
-#: lib/ui/stdtoolbars.inc:476
+#: lib/ui/stdtoolbars.inc:481
 #, fuzzy
 msgid "infty"
 msgstr "Legkisebb"
 
-#: lib/ui/stdtoolbars.inc:477
+#: lib/ui/stdtoolbars.inc:482
 msgid "prime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:478
+#: lib/ui/stdtoolbars.inc:483
 #, fuzzy
 msgid "ell"
 msgstr "hspell"
 
-#: lib/ui/stdtoolbars.inc:479
+#: lib/ui/stdtoolbars.inc:484
 #, fuzzy
 msgid "emptyset"
 msgstr "Üres"
 
-#: lib/ui/stdtoolbars.inc:480
+#: lib/ui/stdtoolbars.inc:485
 #, fuzzy
 msgid "exists"
 msgstr "Stáblista"
 
-#: lib/ui/stdtoolbars.inc:481
+#: lib/ui/stdtoolbars.inc:486
 #, fuzzy
 msgid "forall"
 msgstr "Normál"
 
-#: lib/ui/stdtoolbars.inc:482
+#: lib/ui/stdtoolbars.inc:487
 #, fuzzy
 msgid "imath"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:483
+#: lib/ui/stdtoolbars.inc:488
 #, fuzzy
 msgid "jmath"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:484
+#: lib/ui/stdtoolbars.inc:489
 #, fuzzy
 msgid "Re"
 msgstr "Vörös"
 
-#: lib/ui/stdtoolbars.inc:485
+#: lib/ui/stdtoolbars.inc:490
 #, fuzzy
 msgid "Im"
 msgstr "Felsorolás"
 
-#: lib/ui/stdtoolbars.inc:486
+#: lib/ui/stdtoolbars.inc:491
 #, fuzzy
 msgid "aleph"
 msgstr "Mélység"
 
-#: lib/ui/stdtoolbars.inc:487
+#: lib/ui/stdtoolbars.inc:492
 #, fuzzy
 msgid "wp"
 msgstr "körbefuttatás"
 
-#: lib/ui/stdtoolbars.inc:488 lib/ui/stdtoolbars.inc:570
+#: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
 #, fuzzy
 msgid "hbar"
 msgstr "mélységjelölõ"
 
-#: lib/ui/stdtoolbars.inc:489 lib/ui/stdtoolbars.inc:577
+#: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
 #, fuzzy
 msgid "angle"
 msgstr "Egyszeres"
 
-#: lib/ui/stdtoolbars.inc:490
+#: lib/ui/stdtoolbars.inc:495
 #, fuzzy
 msgid "top"
 msgstr "Utopia"
 
-#: lib/ui/stdtoolbars.inc:491
+#: lib/ui/stdtoolbars.inc:496
 #, fuzzy
 msgid "bot"
 msgstr "rövid cím"
 
-#: lib/ui/stdtoolbars.inc:492
+#: lib/ui/stdtoolbars.inc:497
 #, fuzzy
 msgid "Vert"
 msgstr "Vers"
 
-#: lib/ui/stdtoolbars.inc:493
+#: lib/ui/stdtoolbars.inc:498
 msgid "neg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:494
+#: lib/ui/stdtoolbars.inc:499
 #, fuzzy
 msgid "flat"
 msgstr "úsztatás"
 
-#: lib/ui/stdtoolbars.inc:495
+#: lib/ui/stdtoolbars.inc:500
 #, fuzzy
 msgid "natural"
 msgstr "Aláírás"
 
-#: lib/ui/stdtoolbars.inc:496
+#: lib/ui/stdtoolbars.inc:501
 msgid "sharp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:497
+#: lib/ui/stdtoolbars.inc:502
 msgid "surd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:498
+#: lib/ui/stdtoolbars.inc:503
 #, fuzzy
 msgid "triangle"
 msgstr "Egyszeres"
 
-#: lib/ui/stdtoolbars.inc:499
+#: lib/ui/stdtoolbars.inc:504
 msgid "diamondsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:500
+#: lib/ui/stdtoolbars.inc:505
 #, fuzzy
 msgid "heartsuit"
 msgstr "örökölt"
 
-#: lib/ui/stdtoolbars.inc:501
+#: lib/ui/stdtoolbars.inc:506
 msgid "clubsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:502
+#: lib/ui/stdtoolbars.inc:507
 msgid "spadesuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:503
+#: lib/ui/stdtoolbars.inc:508
 msgid "textrm \\AA"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:504
+#: lib/ui/stdtoolbars.inc:509
 #, fuzzy
 msgid "textrm \\O"
 msgstr "szöveg"
 
-#: lib/ui/stdtoolbars.inc:505
+#: lib/ui/stdtoolbars.inc:510
 msgid "mathcircumflex"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:511
 #, fuzzy
 msgid "_"
 msgstr "_/"
 
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:512
 #, fuzzy
 msgid "mathrm T"
 msgstr "képlet kerete"
 
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:513
 #, fuzzy
 msgid "mathbb N"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:514
 #, fuzzy
 msgid "mathbb Z"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:515
 #, fuzzy
 msgid "mathbb Q"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:516
 #, fuzzy
 msgid "mathbb R"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:517
 #, fuzzy
 msgid "mathbb C"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:518
 #, fuzzy
 msgid "mathbb H"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:519
 #, fuzzy
 msgid "mathcal F"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:520
 #, fuzzy
 msgid "mathcal L"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:521
 #, fuzzy
 msgid "mathcal H"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:522
 #, fuzzy
 msgid "mathcal O"
 msgstr "képlet"
 
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:523
 #, fuzzy
 msgid "phantom"
 msgstr "Eszperantó"
 
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:524
 msgid "vphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:520
+#: lib/ui/stdtoolbars.inc:525
 msgid "hphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:523
+#: lib/ui/stdtoolbars.inc:528
 #, fuzzy
 msgid "Big Operators"
 msgstr "Globális mûveletek"
 
-#: lib/ui/stdtoolbars.inc:524
-msgid "sum"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:525
-#, fuzzy
-msgid "int"
-msgstr "in"
-
-#: lib/ui/stdtoolbars.inc:526
+#: lib/ui/stdtoolbars.inc:529
 #, fuzzy
 msgid "intop"
 msgstr "Igazítás fel"
 
-#: lib/ui/stdtoolbars.inc:527
+#: lib/ui/stdtoolbars.inc:530
 #, fuzzy
-msgid "iint"
+msgid "int"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:528
+#: lib/ui/stdtoolbars.inc:531
 #, fuzzy
 msgid "iintop"
 msgstr "Igazítás fel"
 
-#: lib/ui/stdtoolbars.inc:529
-msgid "iiint"
-msgstr ""
+#: lib/ui/stdtoolbars.inc:532
+#, fuzzy
+msgid "iint"
+msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:530
+#: lib/ui/stdtoolbars.inc:533
 #, fuzzy
 msgid "iiintop"
 msgstr "Igazítás fel"
 
-#: lib/ui/stdtoolbars.inc:531
-msgid "iiiint"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:532
-msgid "iiiintop"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:533
-msgid "dotsint"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:534
-msgid "dotsintop"
+msgid "iiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:535
-#, fuzzy
-msgid "oint"
-msgstr "in"
+msgid "iiiintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:536
+msgid "iiiint"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:537
+msgid "dotsintop"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:538
+msgid "dotsint"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:539
 #, fuzzy
 msgid "ointop"
 msgstr "Számla"
 
-#: lib/ui/stdtoolbars.inc:537
+#: lib/ui/stdtoolbars.inc:540
 #, fuzzy
-msgid "oiint"
-msgstr "Betûkészletek"
+msgid "oint"
+msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:538
+#: lib/ui/stdtoolbars.inc:541
 #, fuzzy
 msgid "oiintop"
 msgstr "Számla"
 
-#: lib/ui/stdtoolbars.inc:539
-msgid "ointctrclockwise"
-msgstr ""
+#: lib/ui/stdtoolbars.inc:542
+#, fuzzy
+msgid "oiint"
+msgstr "Betûkészletek"
 
-#: lib/ui/stdtoolbars.inc:540
+#: lib/ui/stdtoolbars.inc:543
 msgid "ointctrclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:541
-msgid "ointclockwise"
+#: lib/ui/stdtoolbars.inc:544
+msgid "ointctrclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:542
+#: lib/ui/stdtoolbars.inc:545
 msgid "ointclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:543
-msgid "sqint"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:544
-#, fuzzy
-msgid "sqintop"
-msgstr "Igazítás fel"
-
-#: lib/ui/stdtoolbars.inc:545
-msgid "sqiint"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:546
-msgid "sqiintop"
+msgid "ointclockwise"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:547
 #, fuzzy
-msgid "prod"
-msgstr "védett"
+msgid "sqintop"
+msgstr "Igazítás fel"
 
 #: lib/ui/stdtoolbars.inc:548
-msgid "coprod"
+msgid "sqint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:549
-msgid "bigsqcup"
+msgid "sqiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:550
-msgid "bigotimes"
+msgid "sqiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:551
-msgid "bigodot"
+msgid "sum"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
-msgid "bigoplus"
-msgstr ""
+#, fuzzy
+msgid "prod"
+msgstr "védett"
 
 #: lib/ui/stdtoolbars.inc:553
-msgid "bigcap"
+msgid "coprod"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:554
-msgid "bigcup"
+msgid "bigsqcup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:555
-msgid "biguplus"
+msgid "bigotimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:556
-msgid "bigvee"
+msgid "bigodot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:557
-msgid "bigwedge"
+msgid "bigoplus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:558
+msgid "bigcap"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:559
+msgid "bigcup"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:560
-msgid "AMS Miscellaneous"
-msgstr "AMS egyéb jelek"
+msgid "biguplus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:561
-msgid "digamma"
+msgid "bigvee"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:562
-msgid "varkappa"
+msgid "bigwedge"
 msgstr ""
-
-#: lib/ui/stdtoolbars.inc:563
-#, fuzzy
-msgid "beth"
-msgstr "Mélység"
-
-#: lib/ui/stdtoolbars.inc:564
-#, fuzzy
-msgid "daleth"
-msgstr "alapérték"
 
 #: lib/ui/stdtoolbars.inc:565
-msgid "gimel"
-msgstr ""
+msgid "AMS Miscellaneous"
+msgstr "AMS egyéb jelek"
 
 #: lib/ui/stdtoolbars.inc:566
-msgid "ulcorner"
+msgid "digamma"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:567
-msgid "urcorner"
+msgid "varkappa"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:568
 #, fuzzy
-msgid "llcorner"
-msgstr "Minden szegély"
+msgid "beth"
+msgstr "Mélység"
 
 #: lib/ui/stdtoolbars.inc:569
-msgid "lrcorner"
+#, fuzzy
+msgid "daleth"
+msgstr "alapérték"
+
+#: lib/ui/stdtoolbars.inc:570
+msgid "gimel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:571
-msgid "hslash"
+msgid "ulcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:572
+msgid "urcorner"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:573
+#, fuzzy
+msgid "llcorner"
+msgstr "Minden szegély"
+
+#: lib/ui/stdtoolbars.inc:574
+msgid "lrcorner"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:576
+msgid "hslash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:577
 #, fuzzy
 msgid "vartriangle"
 msgstr "Változó méret"
 
-#: lib/ui/stdtoolbars.inc:573
-msgid "triangledown"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:574
-#, fuzzy
-msgid "square"
-msgstr "Baszk"
-
-#: lib/ui/stdtoolbars.inc:575
-#, fuzzy
-msgid "lozenge"
-msgstr "Szlovén"
-
-#: lib/ui/stdtoolbars.inc:576
-msgid "circledS"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:578
-msgid "measuredangle"
+msgid "triangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:579
 #, fuzzy
+msgid "square"
+msgstr "Baszk"
+
+#: lib/ui/stdtoolbars.inc:580
+#, fuzzy
+msgid "lozenge"
+msgstr "Szlovén"
+
+#: lib/ui/stdtoolbars.inc:581
+msgid "circledS"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:583
+msgid "measuredangle"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:584
+#, fuzzy
 msgid "nexists"
 msgstr "Tárgymutatólista|l"
 
-#: lib/ui/stdtoolbars.inc:580
+#: lib/ui/stdtoolbars.inc:585
 msgid "mho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:581
+#: lib/ui/stdtoolbars.inc:586
 #, fuzzy
 msgid "Finv"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:582
+#: lib/ui/stdtoolbars.inc:587
 #, fuzzy
 msgid "Game"
 msgstr "Név"
 
-#: lib/ui/stdtoolbars.inc:583
+#: lib/ui/stdtoolbars.inc:588
 msgid "Bbbk"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:584
+#: lib/ui/stdtoolbars.inc:589
 msgid "backprime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:585
+#: lib/ui/stdtoolbars.inc:590
 msgid "varnothing"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:586
+#: lib/ui/stdtoolbars.inc:591
 msgid "blacktriangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:587
+#: lib/ui/stdtoolbars.inc:592
 msgid "blacktriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:588
+#: lib/ui/stdtoolbars.inc:593
 #, fuzzy
 msgid "blacksquare"
 msgstr "fekete"
 
-#: lib/ui/stdtoolbars.inc:589
+#: lib/ui/stdtoolbars.inc:594
 msgid "blacklozenge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:590
+#: lib/ui/stdtoolbars.inc:595
 msgid "bigstar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:591
+#: lib/ui/stdtoolbars.inc:596
 msgid "sphericalangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:592
+#: lib/ui/stdtoolbars.inc:597
 #, fuzzy
 msgid "complement"
 msgstr "megjegyzés"
 
-#: lib/ui/stdtoolbars.inc:593
+#: lib/ui/stdtoolbars.inc:598
 #, fuzzy
 msgid "eth"
 msgstr "Mélység"
 
-#: lib/ui/stdtoolbars.inc:594
+#: lib/ui/stdtoolbars.inc:599
 msgid "diagup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:595
+#: lib/ui/stdtoolbars.inc:600
 msgid "diagdown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:598
+#: lib/ui/stdtoolbars.inc:603
 #, fuzzy
 msgid "AMS Arrows"
 msgstr "AMS nyilak"
 
-#: lib/ui/stdtoolbars.inc:599
+#: lib/ui/stdtoolbars.inc:604
 msgid "dashleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:600
+#: lib/ui/stdtoolbars.inc:605
 msgid "dashrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:601
+#: lib/ui/stdtoolbars.inc:606
 msgid "leftleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:602
+#: lib/ui/stdtoolbars.inc:607
 msgid "leftrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:603
+#: lib/ui/stdtoolbars.inc:608
 msgid "rightrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:604
+#: lib/ui/stdtoolbars.inc:609
 msgid "rightleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:605
+#: lib/ui/stdtoolbars.inc:610
 #, fuzzy
 msgid "Lleftarrow"
 msgstr "Sor törlése"
 
-#: lib/ui/stdtoolbars.inc:606
+#: lib/ui/stdtoolbars.inc:611
 #, fuzzy
 msgid "Rrightarrow"
 msgstr "Jobb fejléc"
 
-#: lib/ui/stdtoolbars.inc:607
+#: lib/ui/stdtoolbars.inc:612
 msgid "twoheadleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:608
+#: lib/ui/stdtoolbars.inc:613
 msgid "twoheadrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:609
+#: lib/ui/stdtoolbars.inc:614
 msgid "leftarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:610
+#: lib/ui/stdtoolbars.inc:615
 msgid "rightarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:611
+#: lib/ui/stdtoolbars.inc:616
 msgid "looparrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:612
+#: lib/ui/stdtoolbars.inc:617
 #, fuzzy
 msgid "looparrowright"
 msgstr "Copyright"
 
-#: lib/ui/stdtoolbars.inc:613
+#: lib/ui/stdtoolbars.inc:618
 msgid "curvearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:614
+#: lib/ui/stdtoolbars.inc:619
 msgid "curvearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:615
+#: lib/ui/stdtoolbars.inc:620
 msgid "circlearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:616
+#: lib/ui/stdtoolbars.inc:621
 msgid "circlearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:617
+#: lib/ui/stdtoolbars.inc:622
 msgid "Lsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:618
+#: lib/ui/stdtoolbars.inc:623
 msgid "Rsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:619
+#: lib/ui/stdtoolbars.inc:624
 #, fuzzy
 msgid "upuparrows"
 msgstr "Nyilak"
 
-#: lib/ui/stdtoolbars.inc:620
+#: lib/ui/stdtoolbars.inc:625
 msgid "downdownarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:621
+#: lib/ui/stdtoolbars.inc:626
 msgid "upharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:622
+#: lib/ui/stdtoolbars.inc:627
 msgid "upharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:623
+#: lib/ui/stdtoolbars.inc:628
 msgid "downharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:624
+#: lib/ui/stdtoolbars.inc:629
 msgid "downharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:625
+#: lib/ui/stdtoolbars.inc:630
 msgid "leftrightharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:627
+#: lib/ui/stdtoolbars.inc:632
 msgid "rightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:628
+#: lib/ui/stdtoolbars.inc:633
 msgid "leftrightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:629
+#: lib/ui/stdtoolbars.inc:634
 #, fuzzy
 msgid "nleftarrow"
 msgstr "Sor törlése"
 
-#: lib/ui/stdtoolbars.inc:630
+#: lib/ui/stdtoolbars.inc:635
 msgid "nrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:631
+#: lib/ui/stdtoolbars.inc:636
 msgid "nleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:632
+#: lib/ui/stdtoolbars.inc:637
 msgid "nLeftarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:633
-#, fuzzy
-msgid "nRightarrow"
-msgstr "Jobb fejléc"
-
-#: lib/ui/stdtoolbars.inc:634
-msgid "nLeftrightarrow"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:635
-msgid "multimap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:638
 #, fuzzy
-msgid "AMS Relations"
-msgstr "AMS relációs jelek"
+msgid "nRightarrow"
+msgstr "Jobb fejléc"
 
 #: lib/ui/stdtoolbars.inc:639
-msgid "leqq"
+msgid "nLeftrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:640
-msgid "geqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:641
-msgid "leqslant"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:642
-msgid "geqslant"
+msgid "multimap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:643
-msgid "eqslantless"
-msgstr ""
+#, fuzzy
+msgid "AMS Relations"
+msgstr "AMS relációs jelek"
 
 #: lib/ui/stdtoolbars.inc:644
-msgid "eqslantgtr"
+msgid "leqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:645
-msgid "lesssim"
+msgid "geqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:646
-msgid "gtrsim"
+msgid "leqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:647
-msgid "lessapprox"
+msgid "geqslant"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:648
-msgid "gtrapprox"
+msgid "eqslantless"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:649
-msgid "approxeq"
+msgid "eqslantgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:650
+msgid "lesssim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:651
+msgid "gtrsim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:652
+msgid "lessapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:653
+msgid "gtrapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:654
+msgid "approxeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:655
 #, fuzzy
 msgid "triangleq"
 msgstr "Egyszeres"
 
-#: lib/ui/stdtoolbars.inc:651
+#: lib/ui/stdtoolbars.inc:656
 msgid "lessdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:652
+#: lib/ui/stdtoolbars.inc:657
 msgid "gtrdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:653
+#: lib/ui/stdtoolbars.inc:658
 msgid "lll"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:654
+#: lib/ui/stdtoolbars.inc:659
 msgid "ggg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:655
+#: lib/ui/stdtoolbars.inc:660
 msgid "lessgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:656
+#: lib/ui/stdtoolbars.inc:661
 #, fuzzy
 msgid "gtrless"
 msgstr "Nincs keret"
 
-#: lib/ui/stdtoolbars.inc:657
+#: lib/ui/stdtoolbars.inc:662
 msgid "lesseqgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:658
+#: lib/ui/stdtoolbars.inc:663
 #, fuzzy
 msgid "gtreqless"
 msgstr "Nincs keret"
 
-#: lib/ui/stdtoolbars.inc:659
-msgid "lesseqqgtr"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:660
-#, fuzzy
-msgid "gtreqqless"
-msgstr "Nincs keret"
-
-#: lib/ui/stdtoolbars.inc:661
-msgid "eqcirc"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:662
-msgid "circeq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:663
-msgid "thicksim"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:664
-msgid "thickapprox"
+msgid "lesseqqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:665
 #, fuzzy
-msgid "backsim"
-msgstr "fekete"
+msgid "gtreqqless"
+msgstr "Nincs keret"
 
 #: lib/ui/stdtoolbars.inc:666
-msgid "backsimeq"
+msgid "eqcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:667
-msgid "subseteqq"
+msgid "circeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:668
-msgid "supseteqq"
+msgid "thicksim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:669
+msgid "thickapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:670
+#, fuzzy
+msgid "backsim"
+msgstr "fekete"
+
+#: lib/ui/stdtoolbars.inc:671
+msgid "backsimeq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:672
+msgid "subseteqq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:673
+msgid "supseteqq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:674
 #, fuzzy
 msgid "Subset"
 msgstr "Tárgy"
 
-#: lib/ui/stdtoolbars.inc:670
+#: lib/ui/stdtoolbars.inc:675
 #, fuzzy
 msgid "Supset"
 msgstr "Alszakasz"
 
-#: lib/ui/stdtoolbars.inc:671
+#: lib/ui/stdtoolbars.inc:676
 msgid "sqsubset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:672
+#: lib/ui/stdtoolbars.inc:677
 msgid "sqsupset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:673
+#: lib/ui/stdtoolbars.inc:678
 msgid "preccurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:674
+#: lib/ui/stdtoolbars.inc:679
 msgid "succcurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:675
+#: lib/ui/stdtoolbars.inc:680
 msgid "curlyeqprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:676
+#: lib/ui/stdtoolbars.inc:681
 msgid "curlyeqsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:677
+#: lib/ui/stdtoolbars.inc:682
 msgid "precsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:678
+#: lib/ui/stdtoolbars.inc:683
 msgid "succsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:679
+#: lib/ui/stdtoolbars.inc:684
 msgid "precapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:680
+#: lib/ui/stdtoolbars.inc:685
 msgid "succapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:681
+#: lib/ui/stdtoolbars.inc:686
 msgid "vartriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:682
+#: lib/ui/stdtoolbars.inc:687
 #, fuzzy
 msgid "vartriangleright"
 msgstr "Alapvonal jobb"
 
-#: lib/ui/stdtoolbars.inc:683
+#: lib/ui/stdtoolbars.inc:688
 msgid "trianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:684
-msgid "trianglerighteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:685
-#, fuzzy
-msgid "bumpeq"
-msgstr "kék"
-
-#: lib/ui/stdtoolbars.inc:686
-#, fuzzy
-msgid "Bumpeq"
-msgstr "Kék"
-
-#: lib/ui/stdtoolbars.inc:687
-msgid "doteqdot"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:688
-msgid "risingdotseq"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:689
-msgid "fallingdotseq"
+msgid "trianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:690
 #, fuzzy
-msgid "vDash"
-msgstr "Dán"
+msgid "bumpeq"
+msgstr "kék"
 
 #: lib/ui/stdtoolbars.inc:691
-msgid "Vvdash"
-msgstr ""
+#, fuzzy
+msgid "Bumpeq"
+msgstr "Kék"
 
 #: lib/ui/stdtoolbars.inc:692
-msgid "Vdash"
+msgid "doteqdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:693
-msgid "shortmid"
+msgid "risingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:694
-msgid "shortparallel"
+msgid "fallingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:695
 #, fuzzy
-msgid "smallsmile"
-msgstr "Kis kihagyás"
+msgid "vDash"
+msgstr "Dán"
 
 #: lib/ui/stdtoolbars.inc:696
-msgid "smallfrown"
+msgid "Vvdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:697
-msgid "blacktriangleleft"
+msgid "Vdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:698
-msgid "blacktriangleright"
+msgid "shortmid"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:699
+msgid "shortparallel"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:700
+#, fuzzy
+msgid "smallsmile"
+msgstr "Kis kihagyás"
+
+#: lib/ui/stdtoolbars.inc:701
+msgid "smallfrown"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:702
+msgid "blacktriangleleft"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:703
+msgid "blacktriangleright"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:704
 #, fuzzy
 msgid "because"
 msgstr "Csökkent"
 
-#: lib/ui/stdtoolbars.inc:700
+#: lib/ui/stdtoolbars.inc:705
 #, fuzzy
 msgid "therefore"
 msgstr "tétel"
 
-#: lib/ui/stdtoolbars.inc:701
+#: lib/ui/stdtoolbars.inc:706
 msgid "backepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:702
+#: lib/ui/stdtoolbars.inc:707
 msgid "varpropto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:703
+#: lib/ui/stdtoolbars.inc:708
 msgid "between"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:704
+#: lib/ui/stdtoolbars.inc:709
 msgid "pitchfork"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:707
+#: lib/ui/stdtoolbars.inc:712
 #, fuzzy
 msgid "AMS Negative Relations"
 msgstr "AMS invertált relációk"
 
-#: lib/ui/stdtoolbars.inc:708
+#: lib/ui/stdtoolbars.inc:713
 #, fuzzy
 msgid "nless"
 msgstr "Értelmetlen!"
 
-#: lib/ui/stdtoolbars.inc:709
+#: lib/ui/stdtoolbars.inc:714
 #, fuzzy
 msgid "ngtr"
 msgstr "Bejegyzés"
 
-#: lib/ui/stdtoolbars.inc:710
+#: lib/ui/stdtoolbars.inc:715
 #, fuzzy
 msgid "nleq"
 msgstr "Egyszeres"
 
-#: lib/ui/stdtoolbars.inc:711
+#: lib/ui/stdtoolbars.inc:716
 #, fuzzy
 msgid "ngeq"
 msgstr "Egyszeres"
 
-#: lib/ui/stdtoolbars.inc:712
+#: lib/ui/stdtoolbars.inc:717
 msgid "nleqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:713
+#: lib/ui/stdtoolbars.inc:718
 msgid "ngeqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:714
+#: lib/ui/stdtoolbars.inc:719
 msgid "nleqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:715
+#: lib/ui/stdtoolbars.inc:720
 msgid "ngeqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:716
-msgid "lneq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:717
-#, fuzzy
-msgid "gneq"
-msgstr "Mellõz"
-
-#: lib/ui/stdtoolbars.inc:718
-msgid "lneqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:719
-msgid "gneqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:720
-#, fuzzy
-msgid "lvertneqq"
-msgstr "Szlovén"
-
 #: lib/ui/stdtoolbars.inc:721
-msgid "gvertneqq"
+msgid "lneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
 #, fuzzy
-msgid "lnsim"
-msgstr "Követelés"
+msgid "gneq"
+msgstr "Mellõz"
 
 #: lib/ui/stdtoolbars.inc:723
-msgid "gnsim"
+msgid "lneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:724
-msgid "lnapprox"
+msgid "gneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:725
-msgid "gnapprox"
-msgstr ""
+#, fuzzy
+msgid "lvertneqq"
+msgstr "Szlovén"
 
 #: lib/ui/stdtoolbars.inc:726
-msgid "nprec"
+msgid "gvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:727
+#, fuzzy
+msgid "lnsim"
+msgstr "Követelés"
+
+#: lib/ui/stdtoolbars.inc:728
+msgid "gnsim"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:729
+msgid "lnapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:730
+msgid "gnapprox"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:731
+msgid "nprec"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:732
 msgid "nsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:728
+#: lib/ui/stdtoolbars.inc:733
 #, fuzzy
 msgid "npreceq"
 msgstr "védett"
 
-#: lib/ui/stdtoolbars.inc:729
+#: lib/ui/stdtoolbars.inc:734
 msgid "nsucceq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:730
+#: lib/ui/stdtoolbars.inc:735
 msgid "precnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:731
+#: lib/ui/stdtoolbars.inc:736
 msgid "succnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:732
+#: lib/ui/stdtoolbars.inc:737
 msgid "precnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:733
+#: lib/ui/stdtoolbars.inc:738
 msgid "succnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:734
+#: lib/ui/stdtoolbars.inc:739
 #, fuzzy
 msgid "subsetneq"
 msgstr "Alalszakasz"
 
-#: lib/ui/stdtoolbars.inc:735
+#: lib/ui/stdtoolbars.inc:740
 msgid "supsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:736
+#: lib/ui/stdtoolbars.inc:741
 #, fuzzy
 msgid "subsetneqq"
 msgstr "Alalszakasz"
 
-#: lib/ui/stdtoolbars.inc:737
+#: lib/ui/stdtoolbars.inc:742
 msgid "supsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:738
+#: lib/ui/stdtoolbars.inc:743
 msgid "nsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:739
+#: lib/ui/stdtoolbars.inc:744
 msgid "nsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:740
+#: lib/ui/stdtoolbars.inc:745
 msgid "nsupseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:741
+#: lib/ui/stdtoolbars.inc:746
 msgid "nvdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:742
+#: lib/ui/stdtoolbars.inc:747
 #, fuzzy
 msgid "nvDash"
 msgstr "Dán"
 
-#: lib/ui/stdtoolbars.inc:743
+#: lib/ui/stdtoolbars.inc:748
 #, fuzzy
 msgid "nVDash"
 msgstr "Dán"
 
-#: lib/ui/stdtoolbars.inc:744
+#: lib/ui/stdtoolbars.inc:749
 msgid "varsubsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:745
+#: lib/ui/stdtoolbars.inc:750
 msgid "varsupsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:746
+#: lib/ui/stdtoolbars.inc:751
 msgid "varsubsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:747
+#: lib/ui/stdtoolbars.inc:752
 msgid "varsupsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:748
+#: lib/ui/stdtoolbars.inc:753
 msgid "ntriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:749
+#: lib/ui/stdtoolbars.inc:754
 #, fuzzy
 msgid "ntriangleright"
 msgstr "Teljes magasság"
 
-#: lib/ui/stdtoolbars.inc:750
+#: lib/ui/stdtoolbars.inc:755
 msgid "ntrianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:751
+#: lib/ui/stdtoolbars.inc:756
 msgid "ntrianglerighteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:752
+#: lib/ui/stdtoolbars.inc:757
 #, fuzzy
 msgid "ncong"
 msgstr "színtelen"
 
-#: lib/ui/stdtoolbars.inc:753
+#: lib/ui/stdtoolbars.inc:758
 msgid "nsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:754
+#: lib/ui/stdtoolbars.inc:759
 msgid "nmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:755
+#: lib/ui/stdtoolbars.inc:760
 msgid "nshortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:756
+#: lib/ui/stdtoolbars.inc:761
 msgid "nparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:757
+#: lib/ui/stdtoolbars.inc:762
 msgid "nshortparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:760
+#: lib/ui/stdtoolbars.inc:765
 #, fuzzy
 msgid "AMS Operators"
 msgstr "AMS mûveleti jelek"
 
-#: lib/ui/stdtoolbars.inc:761
-msgid "dotplus"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:762
-#, fuzzy
-msgid "smallsetminus"
-msgstr "Kis-méretû ikonok"
-
-#: lib/ui/stdtoolbars.inc:763
-#, fuzzy
-msgid "Cap"
-msgstr "Felirat"
-
-#: lib/ui/stdtoolbars.inc:764
-#, fuzzy
-msgid "Cup"
-msgstr "Kivágás"
-
-#: lib/ui/stdtoolbars.inc:765
-#, fuzzy
-msgid "barwedge"
-msgstr "Nagy"
-
 #: lib/ui/stdtoolbars.inc:766
-msgid "veebar"
+msgid "dotplus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:767
 #, fuzzy
-msgid "doublebarwedge"
-msgstr "kétszeres"
+msgid "smallsetminus"
+msgstr "Kis-méretû ikonok"
 
 #: lib/ui/stdtoolbars.inc:768
 #, fuzzy
-msgid "boxminus"
-msgstr "percben"
+msgid "Cap"
+msgstr "Felirat"
 
 #: lib/ui/stdtoolbars.inc:769
-msgid "boxtimes"
-msgstr ""
+#, fuzzy
+msgid "Cup"
+msgstr "Kivágás"
 
 #: lib/ui/stdtoolbars.inc:770
 #, fuzzy
-msgid "boxdot"
-msgstr "lábjegyzet"
+msgid "barwedge"
+msgstr "Nagy"
 
 #: lib/ui/stdtoolbars.inc:771
-msgid "boxplus"
+msgid "veebar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:772
 #, fuzzy
+msgid "doublebarwedge"
+msgstr "kétszeres"
+
+#: lib/ui/stdtoolbars.inc:773
+#, fuzzy
+msgid "boxminus"
+msgstr "percben"
+
+#: lib/ui/stdtoolbars.inc:774
+msgid "boxtimes"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:775
+#, fuzzy
+msgid "boxdot"
+msgstr "lábjegyzet"
+
+#: lib/ui/stdtoolbars.inc:776
+msgid "boxplus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:777
+#, fuzzy
 msgid "divideontimes"
 msgstr "Fólialista"
 
-#: lib/ui/stdtoolbars.inc:773
+#: lib/ui/stdtoolbars.inc:778
 msgid "ltimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:774
+#: lib/ui/stdtoolbars.inc:779
 #, fuzzy
 msgid "rtimes"
 msgstr "Angol (UK)"
 
-#: lib/ui/stdtoolbars.inc:775
+#: lib/ui/stdtoolbars.inc:780
 msgid "leftthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:776
+#: lib/ui/stdtoolbars.inc:781
 msgid "rightthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:777
+#: lib/ui/stdtoolbars.inc:782
 msgid "curlywedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:778
+#: lib/ui/stdtoolbars.inc:783
 msgid "curlyvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:779
+#: lib/ui/stdtoolbars.inc:784
 msgid "circleddash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:780
+#: lib/ui/stdtoolbars.inc:785
 msgid "circledast"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:781
+#: lib/ui/stdtoolbars.inc:786
 msgid "circledcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:782
+#: lib/ui/stdtoolbars.inc:787
 #, fuzzy
 msgid "centerdot"
 msgstr "Középre"
 
-#: lib/ui/stdtoolbars.inc:783
+#: lib/ui/stdtoolbars.inc:788
 #, fuzzy
 msgid "intercal"
 msgstr "Betûszerinti"
@@ -11571,7 +11732,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy elveti a módosításokat?"
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:733
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:738
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
@@ -11626,11 +11787,11 @@ msgstr ""
 "\n"
 "Vissza akar térni egy mentett változathoz?"
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:907
+#: src/BufferView.cpp:237 src/LyXFunc.cpp:912
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:908 src/LyXVC.cpp:175
+#: src/BufferView.cpp:238 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 msgid "&Revert"
 msgstr "&Visszatér"
 
@@ -11711,8 +11872,8 @@ msgstr "Szavak megszámolása"
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1878 src/LyXFunc.cpp:1917
-#: src/LyXFunc.cpp:1990 src/callback.cpp:136
+#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1891 src/LyXFunc.cpp:1930
+#: src/LyXFunc.cpp:2003 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11721,17 +11882,17 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1918 src/LyXFunc.cpp:1991
+#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1931 src/LyXFunc.cpp:2004
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1883 src/LyXFunc.cpp:1922
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1896 src/LyXFunc.cpp:1935
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1932 src/LyXFunc.cpp:2012
-#: src/LyXFunc.cpp:2026 src/LyXFunc.cpp:2042
+#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1945 src/LyXFunc.cpp:2025
+#: src/LyXFunc.cpp:2039 src/LyXFunc.cpp:2055
 msgid "Canceled."
 msgstr "Törölve."
 
@@ -11819,7 +11980,7 @@ msgstr "LaTeX szöveg"
 msgid "previewed snippet"
 msgstr "elõnézet rész"
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:311
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:323
 msgid "note"
 msgstr "megjegyzés"
 
@@ -12089,7 +12250,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "Definiálatlan betûstílus"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1070
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12100,11 +12261,11 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1073
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
 msgid "Over-write file?"
 msgstr "Felülírjam a fájlt?"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1074 src/LyXFunc.cpp:2039
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052
 #: src/callback.cpp:170
 msgid "&Over-write"
 msgstr "&Kicserél"
@@ -12159,16 +12320,19 @@ msgstr "A dokumentumot exportáltam, mint %1$s"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:870
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:874
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:878
+#: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "Írógép"
 
@@ -12558,7 +12722,7 @@ msgstr "Nincs mit tenni"
 msgid "Unknown action"
 msgstr "Ismeretlen mûvelet"
 
-#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:717
+#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:722
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
@@ -12566,15 +12730,15 @@ msgstr "Letiltott parancs"
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/LyXFunc.cpp:703
+#: src/LyXFunc.cpp:708
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/LyXFunc.cpp:711
+#: src/LyXFunc.cpp:716
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/LyXFunc.cpp:730
+#: src/LyXFunc.cpp:735
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12585,7 +12749,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:753
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12594,11 +12758,11 @@ msgstr ""
 "A %1$s dokumentum nem nyomtatható.\n"
 "Kérem ellenõrizze a nyomtató beállításait."
 
-#: src/LyXFunc.cpp:751
+#: src/LyXFunc.cpp:756
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
-#: src/LyXFunc.cpp:770
+#: src/LyXFunc.cpp:775
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12607,20 +12771,20 @@ msgstr ""
 "A dokumentumot nem lehet\n"
 " %1$s osztály formátumba átalakítani."
 
-#: src/LyXFunc.cpp:773
+#: src/LyXFunc.cpp:778
 msgid "Could not change class"
 msgstr "Osztály nem változtatható meg"
 
-#: src/LyXFunc.cpp:885
+#: src/LyXFunc.cpp:890
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése: %1$s..."
 
-#: src/LyXFunc.cpp:889
+#: src/LyXFunc.cpp:894
 msgid " done."
 msgstr " kész."
 
-#: src/LyXFunc.cpp:905
+#: src/LyXFunc.cpp:910
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -12629,81 +12793,81 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/LyXFunc.cpp:1097
+#: src/LyXFunc.cpp:1102
 msgid "Exiting."
 msgstr "Kilépés."
 
-#: src/LyXFunc.cpp:1115 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/LyXFunc.cpp:1124
+#: src/LyXFunc.cpp:1129
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1411
+#: src/LyXFunc.cpp:1416
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Aldokumentum megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1498
+#: src/LyXFunc.cpp:1503
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Szintaxis: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1509
+#: src/LyXFunc.cpp:1514
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/LyXFunc.cpp:1623
+#: src/LyXFunc.cpp:1628
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentum alapértékek mentése %1$s-ban."
 
-#: src/LyXFunc.cpp:1626
+#: src/LyXFunc.cpp:1631
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/LyXFunc.cpp:1682
+#: src/LyXFunc.cpp:1687
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
-#: src/LyXFunc.cpp:1876
+#: src/LyXFunc.cpp:1889
 msgid "Select template file"
 msgstr "Sablon kiválasztása"
 
-#: src/LyXFunc.cpp:1879 src/callback.cpp:137
+#: src/LyXFunc.cpp:1892 src/callback.cpp:137
 msgid "Templates|#T#t"
 msgstr "Sablonok|#a#A"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1928
 msgid "Select document to open"
 msgstr "Megnyitandó dokumentum kiválasztása"
 
-#: src/LyXFunc.cpp:1954
+#: src/LyXFunc.cpp:1967
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1958
+#: src/LyXFunc.cpp:1971
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentum megnyitva."
 
-#: src/LyXFunc.cpp:1960
+#: src/LyXFunc.cpp:1973
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentum nem nyitható meg %1$s"
 
-#: src/LyXFunc.cpp:1985
+#: src/LyXFunc.cpp:1998
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
-#: src/LyXFunc.cpp:2036 src/callback.cpp:167
+#: src/LyXFunc.cpp:2049 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12714,11 +12878,11 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/LyXFunc.cpp:2038 src/callback.cpp:169
+#: src/LyXFunc.cpp:2051 src/callback.cpp:169
 msgid "Over-write document?"
 msgstr "Felülírjam a dokumentumot?"
 
-#: src/LyXFunc.cpp:2109
+#: src/LyXFunc.cpp:2122
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
@@ -13258,11 +13422,21 @@ msgstr "Sima szöveg, sorok befûzése"
 msgid "Master Document"
 msgstr "Fõdokumentum"
 
-#: src/MenuBackend.cpp:746
+#: src/MenuBackend.cpp:743
+#, fuzzy
+msgid "List of listings"
+msgstr "Ábrák listája"
+
+#: src/MenuBackend.cpp:747
+#, fuzzy
+msgid "Other floats"
+msgstr "Egyéb betûbeállítások"
+
+#: src/MenuBackend.cpp:757
 msgid "No Table of contents"
 msgstr "Nincs tartalomjegyzék"
 
-#: src/MenuBackend.cpp:791
+#: src/MenuBackend.cpp:802
 msgid " (auto)"
 msgstr " (automatikus)"
 
@@ -13346,7 +13520,7 @@ msgstr ", Mélység: %1$d"
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:232
+#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:233
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -13378,16 +13552,16 @@ msgstr ", Betû: 0x"
 msgid ", Boundary: "
 msgstr ", Határ: "
 
-#: src/Text2.cpp:540
+#: src/Text2.cpp:588
 #, fuzzy
 msgid "No font change defined."
 msgstr "Menj a következõ változásra"
 
-#: src/Text2.cpp:581
+#: src/Text2.cpp:629
 msgid "Nothing to index!"
 msgstr "Nincs mit a szójegyzékbe rakni!"
 
-#: src/Text2.cpp:583
+#: src/Text2.cpp:631
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
@@ -13407,11 +13581,11 @@ msgstr "Elrendezés "
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/Text3.cpp:1419 src/Text3.cpp:1431
+#: src/Text3.cpp:1420 src/Text3.cpp:1432
 msgid "Character set"
 msgstr "Betûkészlet"
 
-#: src/Text3.cpp:1565
+#: src/Text3.cpp:1566
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
@@ -13528,15 +13702,15 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Sablon nem olvasható"
 
-#: src/buffer_funcs.cpp:523
+#: src/buffer_funcs.cpp:527
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:529
+#: src/buffer_funcs.cpp:533
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:532
+#: src/buffer_funcs.cpp:536
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -14268,11 +14442,11 @@ msgid "Activated"
 msgstr "Aktivált"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:813
+#: src/frontends/qt4/QDocument.cpp:817
 msgid "Yes"
 msgstr "Igen"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:812
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:816
 msgid "No"
 msgstr "Nem"
 
@@ -14435,146 +14609,154 @@ msgstr "LuxiMono"
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/frontends/qt4/QDocument.cpp:226
+#: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:327 src/frontends/qt4/QListings.cpp:409
+#: src/frontends/qt4/QListings.cpp:441
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:227
 msgid "Length"
 msgstr "Hossza"
 
-#: src/frontends/qt4/QDocument.cpp:271 src/frontends/qt4/QDocument.cpp:277
-#: src/frontends/qt4/QDocument.cpp:283
+#: src/frontends/qt4/QDocument.cpp:272 src/frontends/qt4/QDocument.cpp:278
+#: src/frontends/qt4/QDocument.cpp:284
 msgid " (not installed)"
 msgstr " (nincs telepítve)"
 
-#: src/frontends/qt4/QDocument.cpp:287 src/frontends/qt4/QDocument.cpp:324
-#: src/frontends/qt4/QDocument.cpp:722
+#: src/frontends/qt4/QDocument.cpp:288 src/frontends/qt4/QDocument.cpp:325
+#: src/frontends/qt4/QDocument.cpp:726
 msgid "default"
 msgstr "alapérték"
 
-#: src/frontends/qt4/QDocument.cpp:288
+#: src/frontends/qt4/QDocument.cpp:289
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocument.cpp:289
+#: src/frontends/qt4/QDocument.cpp:290
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocument.cpp:290
+#: src/frontends/qt4/QDocument.cpp:291
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocument.cpp:325
+#: src/frontends/qt4/QDocument.cpp:326
 msgid "empty"
 msgstr "Üres"
 
-#: src/frontends/qt4/QDocument.cpp:326
+#: src/frontends/qt4/QDocument.cpp:327 src/frontends/qt4/QListings.cpp:140
 msgid "plain"
 msgstr "sima"
 
-#: src/frontends/qt4/QDocument.cpp:327
+#: src/frontends/qt4/QDocument.cpp:328
 msgid "headings"
 msgstr "címek"
 
-#: src/frontends/qt4/QDocument.cpp:328
+#: src/frontends/qt4/QDocument.cpp:329
 msgid "fancy"
 msgstr "egyéb (fancy)"
 
-#: src/frontends/qt4/QDocument.cpp:344
+#: src/frontends/qt4/QDocument.cpp:345
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocument.cpp:345
+#: src/frontends/qt4/QDocument.cpp:346
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocument.cpp:448
+#: src/frontends/qt4/QDocument.cpp:449
 msgid "LaTeX default"
 msgstr "LaTeX alapértékek"
 
-#: src/frontends/qt4/QDocument.cpp:454
+#: src/frontends/qt4/QDocument.cpp:455
 msgid "``text''"
 msgstr "``szöveg''"
 
-#: src/frontends/qt4/QDocument.cpp:455
+#: src/frontends/qt4/QDocument.cpp:456
 msgid "''text''"
 msgstr "''szöveg''"
 
-#: src/frontends/qt4/QDocument.cpp:456
+#: src/frontends/qt4/QDocument.cpp:457
 msgid ",,text``"
 msgstr ",,szöveg``"
 
-#: src/frontends/qt4/QDocument.cpp:457
+#: src/frontends/qt4/QDocument.cpp:458
 msgid ",,text''"
 msgstr ",,szöveg''"
 
-#: src/frontends/qt4/QDocument.cpp:458
+#: src/frontends/qt4/QDocument.cpp:459
 msgid "<<text>>"
 msgstr "<<szöveg>>"
 
-#: src/frontends/qt4/QDocument.cpp:459
+#: src/frontends/qt4/QDocument.cpp:460
 msgid ">>text<<"
 msgstr ">>szöveg<<"
 
-#: src/frontends/qt4/QDocument.cpp:475
+#: src/frontends/qt4/QDocument.cpp:476
 msgid "Numbered"
 msgstr "Számozás"
 
-#: src/frontends/qt4/QDocument.cpp:476
+#: src/frontends/qt4/QDocument.cpp:477
 msgid "Appears in TOC"
 msgstr "Megjelenik"
 
-#: src/frontends/qt4/QDocument.cpp:496
+#: src/frontends/qt4/QDocument.cpp:497
 msgid "Author-year"
 msgstr "Szerzõ-Év"
 
-#: src/frontends/qt4/QDocument.cpp:497
+#: src/frontends/qt4/QDocument.cpp:498
 msgid "Numerical"
 msgstr "Numerikus"
 
-#: src/frontends/qt4/QDocument.cpp:539
+#: src/frontends/qt4/QDocument.cpp:540
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Elérhetetlen: %1$s"
 
-#: src/frontends/qt4/QDocument.cpp:565 src/frontends/qt4/QDocument.cpp:578
+#: src/frontends/qt4/QDocument.cpp:566 src/frontends/qt4/QDocument.cpp:579
 msgid "Document Class"
 msgstr "Dokumentumosztály"
 
-#: src/frontends/qt4/QDocument.cpp:567
+#: src/frontends/qt4/QDocument.cpp:568
 msgid "Text Layout"
 msgstr "Szöveg formátum"
 
-#: src/frontends/qt4/QDocument.cpp:568
+#: src/frontends/qt4/QDocument.cpp:569
 msgid "Page Layout"
 msgstr "Oldal formátum"
 
-#: src/frontends/qt4/QDocument.cpp:569
+#: src/frontends/qt4/QDocument.cpp:570
 msgid "Page Margins"
 msgstr "Oldal margók"
 
-#: src/frontends/qt4/QDocument.cpp:571
+#: src/frontends/qt4/QDocument.cpp:572
 msgid "Numbering & TOC"
 msgstr "Számozás és tartalomjegyzék"
 
-#: src/frontends/qt4/QDocument.cpp:573
+#: src/frontends/qt4/QDocument.cpp:574
 msgid "Math Options"
 msgstr "Képlet beállítások"
 
-#: src/frontends/qt4/QDocument.cpp:574
+#: src/frontends/qt4/QDocument.cpp:575
 msgid "Float Placement"
 msgstr "Úsztatás elhelyezés"
 
-#: src/frontends/qt4/QDocument.cpp:575
+#: src/frontends/qt4/QDocument.cpp:576
 msgid "Bullets"
 msgstr "Felsorolásjelek"
 
-#: src/frontends/qt4/QDocument.cpp:576
+#: src/frontends/qt4/QDocument.cpp:577
 msgid "Branches"
 msgstr "Változatok"
 
-#: src/frontends/qt4/QDocument.cpp:577 src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:578 src/frontends/qt4/QDocument.cpp:590
 msgid "LaTeX Preamble"
 msgstr "LaTeX preambulum"
 
-#: src/frontends/qt4/QDocument.cpp:1364
+#: src/frontends/qt4/QDocument.cpp:1368
 msgid "Document Settings"
 msgstr "Dokumentumbeállítások"
 
@@ -14598,11 +14780,38 @@ msgstr "Úsztatási beállítások"
 msgid "Graphics"
 msgstr "Grafika"
 
-#: src/frontends/qt4/QInclude.cpp:171
+#: src/frontends/qt4/QInclude.cpp:172
 msgid "Child Document"
 msgstr "Aldokumentum"
 
-#: src/frontends/qt4/QListings.cpp:183
+#: src/frontends/qt4/QInclude.cpp:251
+msgid "caption parameter is not quoted with braces"
+msgstr ""
+
+#: src/frontends/qt4/QInclude.cpp:258
+msgid "label parameter is not quoted with braces"
+msgstr ""
+
+#: src/frontends/qt4/QListings.cpp:63
+#, fuzzy
+msgid "No language"
+msgstr "nyelv"
+
+#: src/frontends/qt4/QListings.cpp:138
+#, fuzzy
+msgid "common"
+msgstr "megjegyzés"
+
+#: src/frontends/qt4/QListings.cpp:141
+msgid "primitive"
+msgstr ""
+
+#: src/frontends/qt4/QListings.cpp:371
+#, fuzzy
+msgid "No dialect"
+msgstr "Nincs kép"
+
+#: src/frontends/qt4/QListings.cpp:396
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "Bekezdés beállításai"
@@ -14946,7 +15155,7 @@ msgstr "ERT"
 msgid "Opened Environment Inset: "
 msgstr "Környezet betét kinyitva: "
 
-#: src/insets/InsetExternal.cpp:576
+#: src/insets/InsetExternal.cpp:577
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "A %1$s külsõ sablon nincs telepítve"
@@ -14989,7 +15198,7 @@ msgstr "Lábjegyzetbetét kinyitva"
 msgid "footnote"
 msgstr "lábjegyzet"
 
-#: src/insets/InsetGraphics.cpp:472 src/insets/InsetInclude.cpp:461
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:497
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14999,12 +15208,12 @@ msgstr ""
 "A %1$s fájl\n"
 "nem másolható az ideiglenes könyvtárba."
 
-#: src/insets/InsetGraphics.cpp:709
+#: src/insets/InsetGraphics.cpp:710
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Nincs szükség %1$s átalakítására"
 
-#: src/insets/InsetGraphics.cpp:821
+#: src/insets/InsetGraphics.cpp:822
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Képfájl: %1$s"
@@ -15013,15 +15222,29 @@ msgstr "Képfájl: %1$s"
 msgid "Horizontal Fill"
 msgstr "Vízszintes kitöltés"
 
-#: src/insets/InsetInclude.cpp:316
+#: src/insets/InsetInclude.cpp:331
 msgid "Verbatim Input"
 msgstr "Szó szerinti bevitel"
 
-#: src/insets/InsetInclude.cpp:319
+#: src/insets/InsetInclude.cpp:334
 msgid "Verbatim Input*"
 msgstr "Szó szerinti bevitel*"
 
-#: src/insets/InsetInclude.cpp:424
+#: src/insets/InsetInclude.cpp:341
+#, fuzzy
+msgid "Program Listing "
+msgstr "Program initialisation"
+
+#: src/insets/InsetInclude.cpp:424 src/insets/InsetInclude.cpp:590
+msgid "Recursive input"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:425 src/insets/InsetInclude.cpp:591
+#, c-format
+msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:460
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15032,7 +15255,7 @@ msgstr ""
 "a `%2$s' szövegosztályt használja,\n"
 "a szülõdokumentum viszont a `%3$s' szövegosztályt."
 
-#: src/insets/InsetInclude.cpp:430
+#: src/insets/InsetInclude.cpp:466
 msgid "Different textclasses"
 msgstr "Különbözõ szövegosztályok"
 
@@ -15044,10 +15267,140 @@ msgstr "Tárgyszó"
 msgid "Index"
 msgstr "Tárgymutató"
 
-#: src/insets/InsetListings.cpp:128
+#: src/insets/InsetListings.cpp:124
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "Címbetét kinyitva"
+
+#: src/insets/InsetListingsParams.cpp:109
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:110
+msgid ""
+"none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
+"trblTRBL"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:112
+msgid ""
+"Enter four letters (either t = round or f = square) for top right, bottom "
+"right, bottom left and top left corner."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:113
+msgid "Enter something like \\color{white}"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:128
+msgid "Expect a number with an optional * before it"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:170
+msgid "auto, last or a number"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:175
+msgid ""
+"This parameter should not be entered here. Please use caption editbox "
+"(Include dialog) or insert->caption (listings inset)"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:178
+msgid ""
+"This parameter should not be entered here. Please use label editbox (Include "
+"dialog) or insert->caption (listings inset)"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:282
+msgid "Invalid (empty) listings param name."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:293
+#, c-format
+msgid "Available listings parameters are %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:316
+#, fuzzy, c-format
+msgid "Unknown listings param name: %1$s"
+msgstr "Ismeretlen térköz paraméter: "
+
+#: src/insets/InsetListingsParams.cpp:319
+#, c-format
+msgid "Parameters starting with '%1$s': %2$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:343
+msgid "A value is expected"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:346
+#: src/insets/InsetListingsParams.cpp:359
+#: src/insets/InsetListingsParams.cpp:373
+#: src/insets/InsetListingsParams.cpp:387
+#: src/insets/InsetListingsParams.cpp:414
+#: src/insets/InsetListingsParams.cpp:450
+msgid "Unbalanced braces!"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:353
+msgid "Please specify true or false"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:356
+#, c-format
+msgid "Only true or false is allowed for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:367
+msgid "Please specify an integer value"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:370
+#, c-format
+msgid "An integer is expected for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:381
+msgid "Please specify a latex length expression"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:384
+#, c-format
+msgid "Invalid latex length expression for parameter %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:395
+#, c-format
+msgid "Please specify one of %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:429
+#, c-format
+msgid "Try one of %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:432
+#, c-format
+msgid "I guess you mean %1$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:441
+#, c-format
+msgid "Please specify one or more of '%1$s'"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:447
+#, c-format
+msgid "Parameter %1$s should be composed of one or more of %2$s"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:502
+#, c-format
+msgid "Parameter %1$s has already been defined"
+msgstr ""
 
 #: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
 #: src/insets/InsetMarginal.cpp:70
@@ -15104,47 +15457,47 @@ msgstr "Üres oldal"
 msgid "Clear Double Page"
 msgstr "Üres dupla oldal"
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "Hiv:"
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "Egyenlet"
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "Képl.Hiv:"
 
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "Oldalszám"
 
-#: src/insets/InsetRef.cpp:153 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "Oldal: "
 
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "Szöveges oldalszám"
 
-#: src/insets/InsetRef.cpp:154 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "Szövegoldal:"
 
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "Szokásos+szöveges oldal"
 
-#: src/insets/InsetRef.cpp:155 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "Hiv+szöveg:"
 
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#: src/insets/InsetRef.cpp:156 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormátum:"
@@ -15170,14 +15523,6 @@ msgstr "Függõlegesen nem lehet cellát egyesíteni!"
 msgid "Opened Text Inset"
 msgstr "Szövegbetét kinyitva"
 
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "tétel"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "Tételbetét kinyitva"
-
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
 msgstr "Url: "
@@ -15186,7 +15531,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/InsetVSpace.cpp:110
+#: src/insets/InsetVSpace.cpp:111
 msgid "Vertical Space"
 msgstr "Függõleges kitöltés"
 
@@ -15338,11 +15683,6 @@ msgstr "Szöveget kicseréltem."
 msgid " strings have been replaced."
 msgstr " szöveget cseréltem ki."
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makró: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -15405,6 +15745,11 @@ msgstr "Új képlet környezet létrehozása ($...$)"
 #: src/mathed/InsetMathNest.cpp:856
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Makró: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
@@ -15520,6 +15865,27 @@ msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
 
 #, fuzzy
+#~ msgid "OK"
+#~ msgstr "&OK"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "Példányok"
+
+#, fuzzy
+#~ msgid "Upper"
+#~ msgstr "Nagybetû|N"
+
+#~ msgid "Table of contents"
+#~ msgstr "Tartalomjegyzék"
+
+#~ msgid "theorem"
+#~ msgstr "tétel"
+
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Tételbetét kinyitva"
+
+#, fuzzy
 #~ msgid "Number style"
 #~ msgstr "Számozott lista"
 
@@ -15581,22 +15947,6 @@ msgstr "Ismeretlen felhasználó"
 #, fuzzy
 #~ msgid "SubSection"
 #~ msgstr "Alszakasz"
-
-#~ msgid "Austrian (new spelling)"
-#~ msgstr "Osztrák (Új írásmód)"
-
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "Portugál (Brazil)"
-
-#~ msgid "French Canadian"
-#~ msgstr "Francia-kanadai"
-
-#~ msgid "German (new spelling)"
-#~ msgstr "Német (Új írásmód)"
-
-#, fuzzy
-#~ msgid "Upper Sorbian"
-#~ msgstr "Szerb"
 
 #~ msgid ""
 #~ "No font change defined. Use Character under the Layout menu to define "
