@@ -44,11 +44,11 @@ set(tex2lyx_headers
 include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx)
 
 if(MSVC)
-	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
+	SET_SOURCE_FILES_PROPERTIES(${tex2lyx_sources} ${LINKED_FILES}
 	 	PROPERTIES COMPILE_FLAGS 
 		"/DFONT_H /FI${TOP_SRC_DIR}/src/tex2lyx/Font.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 else(MSVC)
-	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/Layout.cpp ${TOP_SRC_DIR}/src/TextClass.cpp
+	SET_SOURCE_FILES_PROPERTIES(${tex2lyx_sources} ${LINKED_FILES}
 	 	PROPERTIES COMPILE_FLAGS 
 		"-DFONT_H -include ${TOP_SRC_DIR}/src/tex2lyx/Font.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 endif(MSVC)
