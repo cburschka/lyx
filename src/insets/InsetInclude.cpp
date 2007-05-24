@@ -463,7 +463,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 	if (runparams.inComment || runparams.dryrun)
 		// Don't try to load or copy the file
-		return true;
+		;
 	//if it's a LyX file and we're including or inputting it...
 	else if (isInputOrInclude(params_) && 
 	         isLyXFilename(included_file.absFilename())) {
