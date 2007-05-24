@@ -1424,9 +1424,44 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			eat_whitespace(p, os, context, false);
 			string name = p.get_token().cs();
-			while (p.next_token().cat() != catBegin)
-				name += p.get_token().asString();
-			handle_ert(os, "\\def\\" + name + '{' + p.verbatim_item() + '}', context);
+			eat_whitespace(p, os, context, false);
+			
+			// parameter text			
+			bool simple = true;
+			string paramtext;
+			int arity = 0;
+			while (p.next_token().cat() != catBegin) {
+				if (p.next_token().cat() == catParameter) {
+					// # found
+					p.get_token();
+					paramtext += "#";
+					
+					// followed by number?
+					if (p.next_token().cat() == catOther) {
+						char c = p.getChar();
+						paramtext += c;
+						// number = current arity + 1?
+						if (c == arity + '0' + 1)
+							++arity;
+						else
+							simple = false;
+					} else
+						paramtext += p.get_token().asString();
+				} else {
+					paramtext += p.get_token().asString();
+					simple = false;
+				}
+			}
+			
+			// only output simple (i.e. compatible) macro as FormulaMacros
+			string ert = "\\def\\" + name + ' ' + paramtext + '{' + p.verbatim_item() + '}';
+			if (simple) {
+				context.check_layout(os);
+				begin_inset(os, "FormulaMacro");
+				os << "\n" << ert;
+				end_inset(os);
+			} else
+				handle_ert(os, ert, context);
 		}
 
 		else if (t.cs() == "noindent") {
@@ -2269,7 +2304,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const ert = name + '{' + command + '}' +
 					   opt1 + opt2 +
 					   '{' + p.verbatim_item() + '}';
-			handle_ert(os, ert, context);
+			
+			if (opt2.empty()) {
+				context.check_layout(os);
+				begin_inset(os, "FormulaMacro");
+				os << "\n" << ert;
+				end_inset(os);
+			} else
+				// we cannot handle optional argument, so only output ERT
+				handle_ert(os, ert, context);
 		}
 
 		else if (t.cs() == "vspace") {
