@@ -16,6 +16,7 @@
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
+#include "Counters.h"
 
 #include "support/FileName.h"
 
@@ -99,6 +100,9 @@ public:
 	void updateLabels(Buffer const & buffer) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	/// if this inset contains lstinputlisting and has a caption, 
+	/// update internal counter and passed counter
+	void updateCounter(Counters & counters);
 protected:
 	InsetInclude(InsetInclude const &);
 	///
@@ -133,6 +137,7 @@ private:
 	/// cache
 	mutable bool set_label_;
 	mutable RenderButton button_;
+	int counter_;
 };
 
 

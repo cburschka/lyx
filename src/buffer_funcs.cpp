@@ -419,6 +419,10 @@ void setCaptions(Paragraph & par, TextClass const & textclass)
 		}
 		else if (inset.lyxCode() == Inset::LISTINGS_CODE)
 			setCaptionLabels(inset, "listing", from_ascii("Listing"), counters);
+		else if (inset.lyxCode() == Inset::INCLUDE_CODE)
+			// if this include inset contains lstinputlisting, and has a caption
+			// it will increase the 'listing' counter by one
+			static_cast<InsetInclude &>(inset).updateCounter(counters);
 	}
 }
 

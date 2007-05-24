@@ -107,7 +107,7 @@ bool isListings(InsetCommandParams const & params)
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: params_(p), include_label(uniqueID()),
 	  preview_(new RenderMonitoredPreview(this)),
-	  set_label_(false)
+	  set_label_(false), counter_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
@@ -118,7 +118,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  params_(other.params_),
 	  include_label(other.include_label),
 	  preview_(new RenderMonitoredPreview(this)),
-	  set_label_(false)
+	  set_label_(false), counter_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
@@ -336,9 +336,13 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 		case INCLUDE:
 			temp += buf.B_("Include");
 			break;
-		case LISTINGS:
-			temp += buf.B_("Program Listing");
+		case LISTINGS: {
+			if (counter_ > 0)
+				temp += buf.B_("Program Listing ") + convert<docstring>(counter_);
+			else
+				temp += buf.B_("Program Listing");
 			break;
+		}
 	}
 
 	temp += ": ";
@@ -879,6 +883,21 @@ void InsetInclude::updateLabels(Buffer const & buffer) const
 		return;
 
 	lyx::updateLabels(*childbuffer, true);
+}
+
+
+void InsetInclude::updateCounter(Counters & counters)
+{
+	if (!isListings(params_))
+		return;
+
+	InsetListingsParams const par = params_.getOptions();
+	if (par.getParamValue("caption").empty())
+		counter_ = 0;
+	else {
+		counters.step(from_ascii("listing"));
+		counter_ = counters.value(from_ascii("listing"));
+	}
 }
 
 
