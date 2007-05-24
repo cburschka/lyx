@@ -103,16 +103,15 @@ void copy_file(path const & source, path const & target, bool noclobber)
 				fs::lookup_errno(errno)));
 	}
 
-        struct stat source_stat;
-        int const ret = ::fstat(infile, &source_stat);
-        if (ret == -1) {
+		struct stat source_stat;
+		int const ret = ::fstat(infile, &source_stat);
+		if (ret == -1) {
 		int err = errno;
-                ::close(infile);
-		boost::throw_exception(
-			filesystem_path_error(
-                                "boost::filesystem::copy_file",
-                                source, target,
-                                fs::lookup_errno(err)));
+		::close(infile);
+		boost::throw_exception(filesystem_path_error(
+                           "boost::filesystem::copy_file",
+                           source, target,
+                           fs::lookup_errno(err)));
 	}
 
 	int const flags = O_WRONLY | O_CREAT | (noclobber ? O_EXCL : O_TRUNC);
