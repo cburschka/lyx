@@ -348,7 +348,7 @@ def checkConverterEntries():
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
     #
     checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
-        rc_entry = [ r'\converter latex      wordhtml   "%%"	"originaldir,needaux"' ])
+        rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
     #
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
@@ -431,7 +431,7 @@ def checkConverterEntries():
     #
     checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
         'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
-        rc_entry = [ r'\converter latex      html       "%%"	"originaldir,needaux"' ])
+        rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
     #
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
