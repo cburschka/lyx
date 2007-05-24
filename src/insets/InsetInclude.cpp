@@ -233,7 +233,7 @@ bool isVerbatim(InsetCommandParams const & params)
 bool isInputOrInclude(InsetCommandParams const & params) 
 {
 	Types const t = type(params);
-	return (t == INPUT) or (t == INCLUDE);
+	return (t == INPUT) || (t == INCLUDE);
 }
 
 
