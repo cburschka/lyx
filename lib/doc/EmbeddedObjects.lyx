@@ -22246,7 +22246,7 @@ chapter.footnote
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27681,7 +27681,7 @@ Input
 \family default
 : 
 \begin_inset Include \input{DummyDocument2.lyx}
-preview true
+preview false
 
 \end_inset
 
@@ -27873,7 +27873,7 @@ listing
 \family default
  prints the listing inline like this: 
 \begin_inset listings
-lstparams "language=C++"
+lstparams "language={C++}"
 inline true
 status open
 
@@ -28132,7 +28132,7 @@ Symbol
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Python,numbers=left,firstline=3,lastline=8,stepnumber=3,showspaces=true,extendedchars=true"
+lstparams "extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3"
 inline false
 status open
 
@@ -28280,7 +28280,7 @@ reference "lst:file-listing"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[firstline=10,lastline=15,language=TeX,breaklines=true,caption={Lines 10 - 15 of this LyX file},label={lst:file-listing}]
+\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[breaklines=true,caption={Lines 10 - 15 of this LyX file},firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15]
 preview false
 
 \end_inset

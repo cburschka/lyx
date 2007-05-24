@@ -204,8 +204,9 @@
 \tracking_changes false
 \output_changes false
 \author "usti" 
-\author "IG,,," 
 \author "IG" 
+\author "IG,,," 
+\author "Ignacio García" 
 \author "Uwe Stöhr" 
 \end_header
 
@@ -836,7 +837,7 @@ reference "sec:Referencias-a-Flotantes"
 \end_layout
 
 \begin_layout Standard
-Normalmente solo se inserta una imagen en un flotante, pero es posible que
+Normalmente sólo se inserta una imagen en un flotante, pero es posible que
  en alguna ocasión queramos poner dos imágenes cada una con su subtítulo.
  Esto es posible mediante la solapa 
 \family sans
@@ -1255,8 +1256,13 @@ Insertar\SpecialChar \menuseparator
 Tabla
 \family default
 .
- Aparece un diálogo en el que se pide el número de filas y columnas.
- Por defecto, la tabla tiene líneas que enmarcan cada celda y la primera
+ El botón ofrece una selección gráfica: moviendo el puntero se puede definir
+ el número de filas y de columnas de la tabla.
+ Si usas el menú aparece un diálogo en el que se pide el número de filas
+ y columnas.
+ 
+\newline
+Por defecto, la tabla tiene líneas que enmarcan cada celda y la primera
  fila aparece separada por una línea doble: la línea inferior de la primera
  fila y la línea superior de la segunda fila.
  Ejemplo de tabla:
@@ -1823,11 +1829,9 @@ status open
 
 \series bold
 Nota:
-\lang english
- 
 \series default
-For the output the vertical alignment of the first cell in a row is used
- for all following cells in the row.
+ En la salida se emplea la alineación vertical de la primera celda de una
+ fila para todas las celdas restantes de la fila.
 \end_layout
 
 \end_inset
@@ -4588,7 +4592,8 @@ name "Tablas Largas ! Notas al pie"
 
 \begin_layout Standard
 Se pueden insertar notas al pie en cada celda de una tabla larga.
- Salen abajo en la página donde esté la celda con la nota.
+ Las notas se muestran en la parte inferior de la página en la que esté
+ la celda con la nota.
  La tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -9984,15 +9989,11 @@ reference "tab:Tabla-con-múltiples"
  En el diálogo que surge establece una anchura de 2.5\InsetSpace \thinspace{}
 cm y escoge centro en
  alineación vertical y horizontal.
- 
-\lang english
-The 
-\lang spanish
-alineación vertical
-\lang english
- is used for all cells of the row.
 
+\lang english
+ 
 \lang spanish
+La alineación vertical se utiliza para todas las celdas de la fila.
  Como nuestro texto es menor de 2.5\InsetSpace \thinspace{}
 cm, sólo aparece una línea.
  Para poner dos añadimos un salto de línea con el comando en ERT
@@ -10008,6 +10009,14 @@ linebreak
 
 \begin_layout Standard
 Si el texto es más ancho que la celda será automáticamente dividido en líneas.
+\end_layout
+
+\begin_layout Standard
+Para centrar verticalmente el texto en las otras dos celdas de la primera
+ fila, haz clic-derecha en la segunda celda, ajusta una anchura de 0.5\InsetSpace \thinspace{}
+cm
+ y marca alineaciones centrales.
+ Haz lo mismo con la tercera celda de la fila.
 \end_layout
 
 \begin_layout Standard
@@ -17537,7 +17546,7 @@ Los flotantes hacen posible composiciones de alta calidad.
  Imágenes y tablas se pueden distribuir equitativamente en las páginas para
  impedir espacios en blanco y páginas sin texto.
  Como el flotante destruye a menudo el contexto entre texto e imagen/tabla,
- cada flotante puede estar referido en el texto.
+ cada flotante puede ser referenciado en el texto.
  Por lo tanto los flotantes están numerados.
  Las referencias se describen en la sección\InsetSpace ~
 
@@ -17558,11 +17567,40 @@ Flotante
 .
  En el documento se inserta un cuadro con etiqueta en el entorno 
 \family sans
-Encabezado.
+Encabezado
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+El entorno 
+\family sans
+Encabezado
+\family default
+ se describe en 
+\emph on
+Guía\InsetSpace ~
+del\InsetSpace ~
+Usuario
+\emph default
+ de LyX.
+\end_layout
+
+\end_inset
+
+.
 
 \family default
+ Cada etiqueta acaba con el carácter 
+\begin_inset Quotes eld
+\end_inset
+
+#
+\begin_inset Quotes erd
+\end_inset
+
+ como receptáculo para el número de flotante en la salida.
  La etiqueta será traducida automáticamente al lenguaje del documento.
- Tras la etiqueta se puede insertar el texto de encabezado.
+ Tras la etiqueta se puede insertar el texto del encabezado.
  La imagen o tabla se inserta encima o debajo del encabezado en un párrafo
  separado dentro del flotante.
  Más sobre colocación de encabezados se describe en la sección\InsetSpace ~
@@ -17574,7 +17612,7 @@ reference "sec:Colocación-de-Encabezados"
 
 .
  Para mantener legible el documento LyX, puedes abrir y cerrar el cuadro
- del flotante haciendo cilc-izquierda sobre él.
+ del flotante haciendo clic-izquierdo sobre él.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
@@ -17630,7 +17668,7 @@ Texto
 \begin_layout Subsection
 Algoritmos Flotantes
 \begin_inset LatexCommand index
-name "Flotantes ! Algoritmos Flotantes"
+name "Flotantes ! Algoritmos"
 
 \end_inset
 
@@ -18005,7 +18043,7 @@ Configuración de LaTeX
 
 \end_inset
 
- La anchura y posición del flotante se ajusta con cilc-derecha sobre el
+ La anchura y posición del flotante se ajusta con clic-derecha sobre el
  cuadro del flotante.
  La figura\InsetSpace ~
 
@@ -18130,7 +18168,7 @@ Los flotantes adosados no están permitidos en cabeceras de sección o tablas.
 \end_layout
 
 \begin_layout Section
-Numeración de flotantes
+Numeración de Flotantes
 \begin_inset LatexCommand label
 name "sec:Numeración-de-flotantes"
 
@@ -18368,7 +18406,7 @@ Se recomienda poner un espacio protegido entre el nombre de la referencia
 \end_layout
 
 \begin_layout Standard
-En cualquier momento puedes cambiar etiquetas haciendo cilc sobre el cuadro.
+En cualquier momento puedes cambiar etiquetas pulsando sobre el cuadro.
  Las referencias a las etiquetas cambiadas cambian automáticamente su enlace
  al texto de la etiqueta nueva, no te ocupes por eso.
 \end_layout
@@ -18387,7 +18425,7 @@ etiqueta
 Volver
 \family default
 , con el que se puede retornar a la referencia.
- cilc-derecha sobre el cuadro de la referencia también lleva el cursor hasta
+ Clic-derecho sobre el cuadro de la referencia también lleva el cursor hasta
  la etiqueta pero sin opción de volver.
 \end_layout
 
@@ -18521,7 +18559,8 @@ prettyref
 \end_layout
 
 \begin_layout Standard
-Ten en cuenta que el estilo <página> no imprime el número si la etiqueta
+Ten en cuenta que el estilo <página>\InsetSpace \thinspace{}
+ no imprime el número si la etiqueta
  está en la misma página, en la anterior o en la siguiente.
  En su lugar verás p.\InsetSpace \thinspace{}
 e.\InsetSpace ~
@@ -18858,11 +18897,7 @@ status open
 \series bold
 Nota:
 \series default
- 
-\series bold
-hypcap
-\series default
- no afecta a las referencias a subfiguras.
+ La colocación de referencias no afecta a las referencias a subfiguras.
 \end_layout
 
 \end_inset
@@ -18887,8 +18922,9 @@ name "Flotantes ! Colocación"
 \end_layout
 
 \begin_layout Standard
-cilc-derecha sobre un cuadro de flotante abre un diálogo en el que pueden
- cambiarse las opciones de LaTeX para situar los flotantes.
+Pulsando con el botón derecho del ratón sobre un cuadro de flotante se abre
+ un diálogo en el que pueden cambiarse las opciones de LaTeX para situar
+ los flotantes.
 \newline
 La opción 
 \family sans
@@ -19556,11 +19592,7 @@ Figura #
 \begin_inset Quotes erd
 \end_inset
 
- 
-\lang english
-is the actual reference number
-\lang spanish
-.
+ es el número real de referencia.
  Por defecto la etiqueta y el número usan la misma fuente que el texto del
  encabezado y el signo dos puntos sigue al número para separar la etiqueta
  del texto.
@@ -21158,7 +21190,7 @@ name "sec:Lista-de-Flotantes"
 
 
 \begin_inset LatexCommand index
-name "Flotantes ! Lista Flotantes"
+name "Flotantes ! Lista de"
 
 \end_inset
 
@@ -21562,7 +21594,7 @@ Nota\InsetSpace ~
 LyX
 \family default
 .
- Puedes cambiar entre los cinco tipos de nota con cilc-derecha sobre el
+ Puedes cambiar entre los cinco tipos de nota con clic-derecho sobre el
  recuadro.
  
 \family roman
@@ -21926,7 +21958,7 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
 \begin_layout Section
-Notas al pie
+Notas al Pie
 \begin_inset LatexCommand label
 name "sec:Notas-al-pie"
 
@@ -22076,6 +22108,43 @@ reference "pie:Esto-es-una"
 \end_inset
 
 .
+\newline
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Nota:
+\series default
+ LyX no suministra prefijos para etiquetas en notas al pie, así que has
+ de insertar un prefijo, p.\InsetSpace \thinspace{}
+e.\InsetSpace ~
+
+\family sans
+
+\begin_inset Quotes eld
+\end_inset
+
+pie:
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ manualmente cuando quieras usar el estilo 
+\family sans
+Referencia\InsetSpace ~
+con\InsetSpace ~
+formato
+\family default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22762,7 +22831,7 @@ reference "fig:Notas-al-final----notas-al-pie"
 \end_inset
 
 .
- Para usar notas finales en vez de notas al pie , carga el paquete LaTeX
+ Para usar notas finales en vez de notas al pie, carga el paquete LaTeX
  
 \series bold
 endnotes
@@ -22956,7 +23025,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-Para crear solo una marca para una nota final, usa el comando 
+Para crear sólo una marca para una nota final, usa el comando 
 \series bold
 
 \backslash
@@ -23032,7 +23101,7 @@ Nota\InsetSpace ~
 al\InsetSpace ~
 margen
 \family default
- o el botón 
+ o con el botón 
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.xpm
 	scale 85
@@ -23040,7 +23109,7 @@ margen
 \end_inset
 
 .
- Aparece un cuadro gris con la etiqueta en rojo 
+ Aparece un cuadro gris con la etiqueta 
 \family roman
 \series medium
 
@@ -23051,7 +23120,7 @@ margen
 \begin_inset Quotes erd
 \end_inset
 
- en el que puedes escribir el texto de la nota.
+ en color rojo y un marco en el que puedes escribir el texto de la nota.
 \end_layout
 
 \begin_layout Standard
@@ -23073,7 +23142,7 @@ Esto es una nota al margen.
 
 \begin_layout Standard
 Estas notas salen en el margen derecho en documentos a una cara.
- En documentos a doble cara se muestran en el margen externo ---izquierdo
+ En documentos a doble cara se muestran en el margen externo ---margen izquierdo
  en páginas pares, derecho en páginas impares---.
  El texto de las notas se ajusta a la parte opuesta al margen ---se ajusta
  a la derecha si la nota aparece en el margen izquierdo---.
@@ -27739,7 +27808,7 @@ Aquí hay un archivo insertado con el método
 \family sans
 Incluir
 \family default
-:
+: 
 \begin_inset Include \include{DocumentoPostizo1.lyx}
 preview false
 
@@ -27830,7 +27899,7 @@ capítulo5.lyx
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -27903,7 +27972,7 @@ Entrada
 
 \begin_layout Standard
 \begin_inset Include \input{DocumentoPostizo2.lyx}
-preview true
+preview false
 
 \end_inset
 
@@ -28019,14 +28088,10 @@ Nota:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Listings This type is described in chapter
-\lang spanish
-\InsetSpace ~
+Listings Este tipo se describe en el capítulo\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cha:Program-Code-Listings"
+reference "cha:Listings-código"
 
 \end_inset
 
@@ -28052,11 +28117,16 @@ Nota:
 \end_layout
 
 \begin_layout Chapter
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-Program Code Listings
+Listings
+\begin_inset Quotes erd
+\end_inset
+
+ Código de Programa
 \begin_inset LatexCommand label
-name "cha:Program-Code-Listings"
+name "cha:Listings-código"
 
 \end_inset
 
@@ -28068,7 +28138,7 @@ name "Listings"
 
 
 \begin_inset LatexCommand index
-name "Program Code"
+name "Código de programa"
 
 \end_inset
 
@@ -28082,21 +28152,19 @@ name "Flotantes ! Listings"
 \end_layout
 
 \begin_layout Standard
+Para incluir y tipografiar código de programación puedes usar la opción
+ de menú disponible en 
+\family sans
+Insertar\SpecialChar \menuseparator
+Program
+\family default
+\InsetSpace ~
 
-\lang english
-To include and typeset program code you can use the 
 \family sans
-Listings
-\family default
- inset that can be inserted via the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Program Listing
-\family default
-.
- The LaTeX-package
-\lang spanish
+Listings.
  
+\family default
+El paquete LaTeX 
 \series bold
 listings
 \series default
@@ -28106,33 +28174,40 @@ name "LaTeX-paquetes ! listings"
 
 \end_inset
 
- 
-\lang english
-provides a powerful and flexible way to insert program source code to your
- document.
+ provee un mecanismo potente y flexible para insertar código fuente en tu
+ documento.
 \end_layout
 
 \begin_layout Standard
+Al hacer clic-derecho sobre un recuadro de 
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-When right-clicking on a listings inset a dialog pops up where you can set
- the listings format.
+listings
+\begin_inset Quotes erd
+\end_inset
+
+ surge un cuadro de diálogo en el que puedes establecer el formato del mismo.
 \end_layout
 
 \begin_layout Standard
+Por defecto, al insertar 
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-By default, a listing starts a new paragraph in the output.
- The placement option 
+listings
+\begin_inset Quotes erd
+\end_inset
+
+ se inicia un párrafo nuevo en la salida.
+ La opción de colocación 
 \family sans
 Inline\InsetSpace ~
-listing
+listings
 \family default
- prints the listing inline like this:
-\lang spanish
- 
+ lo imprime en la línea, como este ejemplo: 
 \begin_inset listings
-lstparams "language=C++"
+lstparams "language={C++}"
 inline true
 status open
 
@@ -28144,82 +28219,99 @@ int a=5;
 \end_inset
 
 
-\lang english
+\family sans
 
 \newline
-The option 
+
+\family default
+La opción 
 \family sans
 Float
 \family default
- creates a listings float where you can specify the placement options
-\lang spanish
- 
+ crea un 
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
 
+\family default
+listing
 \family sans
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ flotante cuya colocación se puede especificar mediante las opciones 
+\family sans
+
+\begin_inset Quotes eld
+\end_inset
+
 h
-\family default
-
 \begin_inset Quotes erd
 \end_inset
 
+
+\family default
 , 
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
-
-\family sans
 t
-\family default
-
 \begin_inset Quotes erd
 \end_inset
 
+
+\family default
 , 
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
-
-\family sans
 b
-\family default
-
 \begin_inset Quotes erd
 \end_inset
 
-, y 
+
+\family default
+ y 
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
-
-\family sans
 p
-\family default
-
 \begin_inset Quotes erd
 \end_inset
 
 
-\lang english
- corresponding to the float placement options described in section
-\lang spanish
+\family default
+, correspondientes a las opciones de colocación de flotantes descritas en
+ la sección
+\family sans
 \InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:Float-Placement"
+reference "sec:Colocación-de-Flotantes"
 
 \end_inset
 
 
-\lang english
+\family default
 .
- The placement options can be mixed and are inserted without any separation,
- e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
+ Las opciones de colocación se pueden mezclar y se escriben sin separación,
+ p.
+\family sans
+\InsetSpace \thinspace{}
 
-\lang spanish
+\family default
+e.\InsetSpace ~
 
 \begin_inset Quotes eld
 \end_inset
@@ -28233,11 +28325,9 @@ htbp
 \end_inset
 
 .
- 
-\lang english
-The option
-\lang spanish
- 
+ La opción 
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -28245,40 +28335,62 @@ h
 \begin_inset Quotes erd
 \end_inset
 
- 
-\lang english
-has sometimes no effect, but you don't need to use the 
+
+\family default
+ a veces no tiene efecto, pero no necesitas usar la opción 
 \family sans
 Float
 \family default
- option in this case as also non-float listings can have captions and be
- referenced.
+ en ese caso puesto que los
+\family sans
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family default
+listings
+\family sans
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ no flotantes también pueden tener encabezados y ser referenciados.
 \end_layout
 
 \begin_layout Standard
+Los encabezados se pueden añadir a un 
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-You can add captions to listings with the menu 
+listing
+\begin_inset Quotes erd
+\end_inset
+
+ con el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Caption
+Insertar\SpecialChar \menuseparator
+Encabezado
 \family default
 .
- Listings can be referenced like floats: Listing
-\lang spanish
-\InsetSpace ~
+ Los 
+\begin_inset Quotes eld
+\end_inset
+
+listings
+\begin_inset Quotes erd
+\end_inset
+
+ se pueden referenciar como los flotantes: Listing\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "lst:Example-Listing"
+reference "lst:Ejemplo-Listing"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 \begin_inset listings
 lstparams "language=Python"
 inline false
@@ -28289,14 +28401,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-
-\lang english
 \begin_inset LatexCommand label
-name "lst:Example-Listing"
+name "lst:Ejemplo-Listing"
 
 \end_inset
 
-Example Listing float
+Ejemplo de Listing flotante
 \end_layout
 
 \end_inset
@@ -28325,11 +28435,18 @@ def func(param):
 \end_layout
 
 \begin_layout Standard
+Una vez que has escogido un lenguaje de programación en el cuadro de diálogo
+ 
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-When you have set a programming language in the listings dialog, the keywords
- of this language will be recognized and specially typeset in the output.
- In the example listings the Python keyword 
+listing
+\begin_inset Quotes erd
+\end_inset
+
+, las palabras clave de ese lenguaje serán reconocidas y tipografiadas de
+ manera especial en la salida.
+ En el ejemplo, la clave de Python 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28337,26 +28454,22 @@ def
 \begin_inset Quotes erd
 \end_inset
 
- is recognized and printed bold in the output.
+ es reconocida y se imprimirá en negrita.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In section 
+En la sección 
 \family sans
 Line\InsetSpace ~
 numbering
 \family default
- of the listings dialog you can specify the line numbering style.
- You can insert a number to specify which lines are numbered to the field
- 
+ del diálogo puedes elegir el estilo de numeración de las líneas.
+ En el campo 
 \family sans
-Step
+Step 
 \family default
-.
- When you insert e.g.
- 
+puedes insertar un número para determinar qué líneas se numeran.
+ Por ejemplo, si pones 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28364,24 +28477,23 @@ Step
 \begin_inset Quotes erd
 \end_inset
 
-, only every 3rd line will be numbered.
+, se numera sólo una de cada tres líneas.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can furthermore specify a range of lines, only these will then appear
- in the output.
- The option 
+Además, puedes especificar un rango de líneas para que sólo éstas aparezcan
+ en la salida.
+ La opción 
 \family sans
 Extended\InsetSpace ~
 chars
 \family default
- should be used when you use national characters like the German umlauts
- in the listing.
+ debería emplearse si se usan en el código caracteres nacionales como la
+ diéresis alemana.
 \newline
-Here is an example listing with left line numbering, step
- 
+A continuación hay un ejemplo con numeración de líneas
+ a la izquierda, paso 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28389,7 +28501,7 @@ Here is an example listing with left line numbering, step
 \begin_inset Quotes erd
 \end_inset
 
-, language 
+, lenguaje 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28397,33 +28509,25 @@ Python
 \begin_inset Quotes erd
 \end_inset
 
-, options 
+, opciones de estilo 
 \begin_inset Quotes eld
 \end_inset
 
-Extended\InsetSpace ~
-chars
+Caracteres extendidos
 \begin_inset Quotes erd
 \end_inset
 
- and 
+ y 
 \begin_inset Quotes eld
 \end_inset
 
-Space\InsetSpace ~
-as\InsetSpace ~
-Symbol
+Espacio como símbolo
 \begin_inset Quotes erd
 \end_inset
 
-, range lines 3\InsetSpace \thinspace{}
--\InsetSpace \thinspace{}
-8:
-\end_layout
-
-\begin_layout Standard
+, rango de líneas 3-8:
 \begin_inset listings
-lstparams "language=Python,numbers=left,firstline=3,lastline=8,stepnumber=3,showspaces=true,extendedchars=true"
+lstparams "extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3"
 inline false
 status open
 
@@ -28478,20 +28582,17 @@ pass
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- The line numbering is shifted by a line by every previous listing.
- That's the reason why the lines 2 and 5 are numbered in the above listing
- and not the lines 3 and 6.
+ La numeración de líneas cambia en una línea por cada listing previo.
+ Por esto en el ejemplo de arriba se numeran las líneas 2 y 5 y no las líneas
+ 3 y 6.
 \end_layout
 
 \end_inset
@@ -28507,16 +28608,23 @@ Note:
 \end_layout
 
 \begin_layout Standard
+También es posible imprimir como 
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-It is also possible to print lines from a file as listing.
- To do this, use the menu 
+listings
+\begin_inset Quotes erd
+\end_inset
+
+ líneas de un archivo.
+ Para hacer esto, usa el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
-Child Document
+Insertar\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
+Documento\InsetSpace ~
+hijo 
 \family default
- and choose the type 
+y elige el tipo 
 \family sans
 Listings
 \family default
@@ -28525,11 +28633,7 @@ Listings
 status collapsed
 
 \begin_layout Standard
-
-\lang english
-The other child document types are described in section
-\lang spanish
-\InsetSpace ~
+Los restantes tipos de documento hijo se describen en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Documento-Hijo"
@@ -28541,9 +28645,17 @@ reference "sec:Documento-Hijo"
 
 \end_inset
 
- In the child document dialog you can specify the listing parameters in
- a text box.
- To show a list of all available parameters, type in a question mark 
+ En el diálogo de documento hijo puedes especificar los parámetros de 
+\begin_inset Quotes eld
+\end_inset
+
+listing
+\begin_inset Quotes erd
+\end_inset
+
+ en el cuadro de texto.
+ Para ver una lista de los parámetros disponibles teclea una interrogación
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28551,54 +28663,47 @@ reference "sec:Documento-Hijo"
 \begin_inset Quotes erd
 \end_inset
 
- in the text box.
+ en el cuadro.
 \end_layout
 
 \begin_layout Standard
+Para referenciar un documento hijo 
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-To reference child document listings, write a label text into the corresponding
- field of the child document dialog.
- The label can then be referenced using the menu 
+listings
+\begin_inset Quotes erd
+\end_inset
+
+, escribe el texto de la etiqueta en el campo correspondiente del diálogo
+ de documento hijo.
+ Después se puede referenciar la etiqueta con el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Cross-Reference
-\family default
-.
+Insertar\SpecialChar \menuseparator
+Referencia cruzada.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Listing
-\lang spanish
-\InsetSpace ~
+A continuación hay un ejemplo, Listings\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "lst:file-listing"
 
 \end_inset
 
-
-\lang english
- is an example for a listing of a file; there the lines 10\InsetSpace \thinspace{}
+, de inserción de líneas de un archivo; en él se incluye el rango de las
+ líneas 10\InsetSpace \thinspace{}
 -\InsetSpace \thinspace{}
-15 of this LyX
- file are listed.
+15 de este archivo LyX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[firstline=10,lastline=15,language=TeX,breaklines=true,caption={Lines 10 - 15 of this LyX file},label={lst:file-listing}]
+\begin_inset Include \lstinputlisting{EmbeddedObjects.lyx}[breaklines=true,caption={Líneas  10 - 15 de este archivo LyX},firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15]
 preview false
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -28606,16 +28711,25 @@ preview false
 \end_layout
 
 \begin_layout Standard
+Las preferencias globales (
+\begin_inset Quotes eld
+\end_inset
 
-\lang english
-Global listings settings can be set in the 
+Listings settings
+\begin_inset Quotes erd
+\end_inset
+
+) se pueden establecer en el diálogo 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Text Layout
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Diseño\InsetSpace ~
+del\InsetSpace ~
+texto.
+ 
 \family default
- dialog.
- To get there a list of available options, type in a question mark 
+Para ver ahí una lista de las opciones disponibles, escribe una interrogación
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28623,24 +28737,16 @@ Text Layout
 \begin_inset Quotes erd
 \end_inset
 
- in the 
-\family sans
-Listings\InsetSpace ~
-settings
-\family default
- field.
+ en el campo de texto.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more information about the 
+Para más información sobre el paquete 
 \series bold
 listings
 \series default
- package, we refer to its documentation
-\lang spanish
- 
+, consulta su documentación\InsetSpace ~
+
 \begin_inset LatexCommand cite
 key "listings"
 
@@ -29896,44 +30002,6 @@ name "LaTeX-paquetes ! caption"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "caption-de"
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/anleitung.pdf}
-{
-\end_layout
-
-\end_inset
-
-Documentación
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- del paquete LaTeX 
-\series bold
-caption 
-\series default
-(en alemán)
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
 key "endfloat"
 
 \end_inset
@@ -30199,50 +30267,6 @@ name "LaTeX-paquetes ! koma-script"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "koma-script-de"
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.p
-df}{
-\end_layout
-
-\end_inset
-
-Documentación
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- del paquete LaTeX 
-\series bold
-koma-script
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-paquetes ! koma-script"
-
-\end_inset
-
- (en alemán)
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
 key "listings"
 
 \end_inset
@@ -30261,7 +30285,7 @@ href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listings.p
 
 \end_inset
 
-Documentation
+Documentación
 \begin_inset ERT
 status collapsed
 
