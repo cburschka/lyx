@@ -20,18 +20,23 @@
 #include <boost/assert.hpp>
 
 #include "support/lstrings.h"
+#include "support/textutils.h"
 #include "support/convert.h"
 
+using std::map;
 using std::vector;
 using std::ostream;
 using std::string;
 using std::exception;
 using lyx::support::bformat;
 using lyx::support::trim;
+using lyx::support::subst;
 using lyx::support::isStrInt;
 using lyx::support::prefixIs;
 using lyx::support::suffixIs;
 using lyx::support::getVectorFromString;
+using lyx::isAlphaASCII;
+using lyx::isDigit;
 
 namespace lyx
 {
@@ -455,13 +460,13 @@ void parValidator::validate(std::string const & par) const
 
 
 InsetListingsParams::InsetListingsParams() :
-	inline_(false), params_(), keys_(0), status_(InsetCollapsable::Open)
+	inline_(false), params_(), status_(InsetCollapsable::Open)
 {
 }
 
 
 InsetListingsParams::InsetListingsParams(string const & par, bool in, InsetCollapsable::CollapseStatus s)
-	: inline_(in), params_(), keys_(0), status_(s)
+	: inline_(in), params_(), status_(s)
 {
 	// this will activate parameter validation.
 	fromEncodedString(par);
@@ -491,6 +496,22 @@ void InsetListingsParams::read(Lexer & lex)
 }
 
 
+string InsetListingsParams::params(string sep) const
+{
+	string par;
+	for (map<string, string>::const_iterator it = params_.begin();
+		it != params_.end(); ++it) {
+		if (!par.empty())
+			par += sep;
+		if (it->second.empty())
+			par += it->first;
+		else
+			par += it->first + '=' + it->second;
+	}
+	return par;
+}
+
+
 void InsetListingsParams::addParam(string const & key, string const & value)
 {	
 	if (key.empty())
@@ -498,25 +519,33 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 	// exception may be thown.
 	parValidator(key).validate(value);
 	// duplicate parameters!
-	if (find(keys_.begin(), keys_.end(), key) != keys_.end())
+	if (params_.find(key) != params_.end())
 		throw invalidParam(bformat(_("Parameter %1$s has already been defined"),
 					  from_utf8(key)));
-	else
-		keys_.push_back(key);
-	if (!params_.empty())
-		params_ += ',';
-	if (value.empty())
-		params_ += key;
+	// check onoff flag
+	size_t idx = 0;
+	while (listings_param_table[idx].name != key)
+		++idx;
+	BOOST_ASSERT(listings_param_table[idx].name == key);
+	// onoff parameter with value false
+	if (listings_param_table[idx].onoff && (value == "false" || value == "{false}"))
+		params_[key] = string();
+	// if the parameter is surrounded with {}, good
+	else if (prefixIs(value, "{") && suffixIs(value, "}"))
+		params_[key] = value;
+	// otherwise, check if {} is needed. Add {} to all values with 
+	// non-ascii/number characters, just to be safe
 	else {
-		// check onoff flag
-		size_t idx = 0;
-		while (listings_param_table[idx].name != key)
-			++idx;
-		BOOST_ASSERT(listings_param_table[idx].name == key);
-		if (listings_param_table[idx].onoff && value == "false")
-			params_ += key;
+		bool has_special_char = false;
+		for (size_t i = 0; i < value.size(); ++i)
+			if (!isAlphaASCII(value[i]) && !isDigit(value[i])) {
+				has_special_char = true;
+				break;
+			}
+		if (has_special_char)
+			params_[key] = "{" + value + "}";
 		else
-			params_ += key + '=' + value;
+			params_[key] = value;
 	}
 }
 
@@ -546,7 +575,7 @@ void InsetListingsParams::addParams(string const & par)
 			continue;
 		} else if (par[i] == '{' && par[i - 1] == '=')
 			braces ++;
-		else if (par[i] == '}' && (i == par.size() - 1 || par[i + 1] == ','))
+		else if (par[i] == '}' && (i == par.size() - 1 || par[i + 1] == ',' || par[i + 1] == '\n'))
 			braces --;
 		
 		if (isValue)
@@ -562,7 +591,6 @@ void InsetListingsParams::addParams(string const & par)
 void InsetListingsParams::setParams(string const & par)
 {
 	params_.clear();
-	keys_.clear();
 	addParams(par);
 }
 
@@ -570,74 +598,49 @@ void InsetListingsParams::setParams(string const & par)
 string InsetListingsParams::encodedString() const
 {
 	// Encode string!
-	// FIXME:
-	// '"' should be handled differently because it will 
-	// terminate a lyx token. Right now, it is silently ignored. 
-	string par;
-	for (size_t i = 0; i < params_.size(); ++i) {
-		BOOST_ASSERT(params_[i] != '\n');
-		if (params_[i] != '"')
-			par += params_[i];
-	}
-	return par;
+	// '"' is handled differently because it will 
+	// terminate a lyx token.
+	string par = params();
+	// '"' is now &quot;  ==> '"' is now &amp;quot;
+	par = subst(par, "&", "&amp;");
+	// '"' is now &amp;quot; ==> '&quot;' is now &amp;quot;
+	par = subst(par, "\"", "&quot;");
+	return par;	
 }
 
 
 string InsetListingsParams::separatedParams(bool keepComma) const
 {
-	// , might be used as regular parameter option so 
-	// the prcess might be more complicated than what I am doing here
-	string opt;
-	int braces = 0;
-	for (size_t i = 0; i < params_.size(); ++i)
-		if (params_[i] == ',' && braces == 0) {
-			if (keepComma)
-				opt += ",\n";
-			else
-				opt += "\n";
-		} else if (params_[i] == '{' && params_[i - 1] == '=') {
-			braces ++;
-			opt += params_[i];
-		} else if (params_[i] == '}' && (i == params_.size() -1 || params_[i + 1] == ',')) {
-			braces --;
-			opt += params_[i];
-		} else
-			opt += params_[i];
-	return opt;
+	if (keepComma)
+		return params(",\n");
+	else
+		return params("\n");
 }
 
 
 void InsetListingsParams::fromEncodedString(string const & in)
 {
-	// Decode string! 
-	// Do nothing because " was silently ignored.
-	setParams(in);
+	// Decode string! Reversal of encodedString
+	string par = in;
+	// '&quot;' is now &amp;quot; ==> '"' is now &amp;quot;
+	par = subst(par, "&quot;", "\"");
+	//  '"' is now &amp;quot; ==> '"' is now &quot;
+	par = subst(par, "&amp;", "&");
+	setParams(par);
 }
 
 
 bool InsetListingsParams::isFloat() const
 {
-	return find(keys_.begin(), keys_.end(), "float") != keys_.end();
+	return params_.find("float") != params_.end();
 }
 
 
 string InsetListingsParams::getParamValue(string const & param) const
 {
 	// is this parameter defined?
-	if (find(keys_.begin(), keys_.end(), param) == keys_.end())
-		return string();
-	// if so, search for it
-	vector<string> pars = getVectorFromString(separatedParams(), "\n");
-	for (vector<string>::iterator it = pars.begin(); it != pars.end(); ++it)
-		if (prefixIs(*it, param + "=")) {
-			string par = it->substr(param.size() + 1);
-			if (prefixIs(par, "{") && suffixIs(par, "}"))
-				return par.substr(1, par.size() - 2);
-			else
-				return par;
-		}
-	// if param= is not found, should be something like float, return ""
-	return string();
+	map<string, string>::const_iterator it = params_.find(param);
+	return (it == params_.end()) ? string() : it->second;
 }
 
 

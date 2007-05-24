@@ -12,7 +12,7 @@
 #ifndef INSETLISTINGSPARAMS_H
 #define INSETLISTINGSPARAMS_H
 
-#include <vector>
+#include <map>
 #include <exception>
 #include "Lexer.h"
 #include "InsetCollapsable.h"
@@ -35,7 +35,7 @@ public:
 	void read(Lexer &);
 
 	/// valid parameter string
-	std::string params() const { return params_; }
+	std::string params(std::string sep=",") const;
 	
 	/// add key=value to params_
 	void addParam(std::string const & key, std::string const & value);
@@ -79,12 +79,8 @@ private:
 	/// inline or normal listings
 	bool inline_;
 
-	/// listing parameters, this will always be a *valid* string
-	/// that can be passed to listing packages.
-	std::string params_;
-
-	/// keys defined in params_ 
-	std::vector<std::string> keys_;
+	/// key-value pairs of the parameters 
+	std::map<std::string, std::string> params_;
 
 	/// collapsable status
 	InsetCollapsable::CollapseStatus status_;

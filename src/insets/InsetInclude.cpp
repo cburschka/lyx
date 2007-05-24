@@ -551,7 +551,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		// opt is set in QInclude dialog and should have passed validation.
 		InsetListingsParams params(opt);
 		if (!params.params().empty())
-			os << "[" << from_utf8(params.encodedString()) << "]";
+			os << "[" << from_utf8(params.params()) << "]";
 		os << '{'  << from_utf8(incfile) << '}';
 	} else {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
