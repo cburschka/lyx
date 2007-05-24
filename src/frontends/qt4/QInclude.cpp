@@ -276,10 +276,8 @@ void QInclude::apply()
 	int const item = dialog_->typeCO->currentIndex();
 	if (item == 0) {
 		params.setCmdName("include");
-		params.setOptions(string());
 	} else if (item == 1) {
 		params.setCmdName("input");
-		params.setOptions(string());
 	} else if (item == 3) {
 		params.setCmdName("lstinputlisting");
 		// the parameter string should have passed validation
@@ -296,7 +294,6 @@ void QInclude::apply()
 			params.setCmdName("verbatiminput*");
 		else
 			params.setCmdName("verbatiminput");
-		params.setOptions(string());
 	}
 	controller().setParams(params);
 }
