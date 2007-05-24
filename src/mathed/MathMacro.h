@@ -72,8 +72,6 @@ private:
 	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	void updateExpansion() const;
-	///
-	void expand() const;
 
 	/// name of macro
 	docstring name_;
@@ -81,6 +79,10 @@ private:
 	mutable MathData tmpl_;
 	/// the macro substituted with our args
 	mutable MathData expanded_;
+	///
+	mutable MacroData macroBackup_;
+	///
+	mutable bool editing_;
 };
 
 

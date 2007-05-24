@@ -49,6 +49,16 @@ public:
 	///
 	void unlock() const { --lockCount_; BOOST_ASSERT(lockCount_ >= 0); } 	
 
+	///
+	bool operator==(MacroData const & x) const {
+		return def_ == x.def_ &&
+			numargs_ == x.numargs_ &&
+			disp_ == x.disp_ &&
+			requires_ == x.requires_;
+	}
+	///
+	bool operator!=(MacroData const & x) const { return !operator==(x); }
+	
 private:
 	///
 	docstring def_;

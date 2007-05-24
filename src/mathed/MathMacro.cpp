@@ -38,8 +38,8 @@ using std::vector;
 class MathMacroArgumentValue : public InsetMath {
 public:
 	///
-	MathMacroArgumentValue(MathData const * value, docstring const & macroName) 
-		: value_(value), macroName_(macroName) {}
+	MathMacroArgumentValue(MathMacro const & mathMacro, size_t idx) 
+		: mathMacro_(mathMacro), idx_(idx) {}
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -47,8 +47,8 @@ public:
 	
 private:
 	std::auto_ptr<Inset> doClone() const;
-	MathData const * value_;
-	docstring macroName_;
+	MathMacro const & mathMacro_;
+	size_t idx_;
 };
 
 
@@ -61,9 +61,10 @@ auto_ptr<Inset> MathMacroArgumentValue::doClone() const
 bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const 
 {
 	// unlock outer macro in arguments, and lock it again later
-	MacroTable::globalMacros().get(macroName_).unlock();
-	value_->metrics(mi, dim);
-	MacroTable::globalMacros().get(macroName_).lock();
+	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
+	macro.unlock();
+	mathMacro_.cell(idx_).metrics(mi, dim);
+	macro.lock();
 	metricsMarkers2(dim);
 	if (dim_ == dim)
 		return false;
@@ -75,20 +76,24 @@ bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathMacroArgumentValue::draw(PainterInfo & pi, int x, int y) const 
 {
 	// unlock outer macro in arguments, and lock it again later
-	MacroTable::globalMacros().get(macroName_).unlock();
-	value_->draw(pi, x, y);
-	MacroTable::globalMacros().get(macroName_).lock();
+	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
+	macro.unlock();
+	mathMacro_.cell(idx_).draw(pi, x, y);
+	macro.lock();
 }
 
 
 MathMacro::MathMacro(docstring const & name, int numargs)
-	: InsetMathNest(numargs), name_(name)
+	: InsetMathNest(numargs), name_(name), editing_(false)
 {}
 
 
 auto_ptr<Inset> MathMacro::doClone() const
 {
-	return auto_ptr<Inset>(new MathMacro(*this));
+	MathMacro * x = new MathMacro(*this);
+	x->expanded_ = MathData();
+	x->macroBackup_ = MacroData();
+	return auto_ptr<Inset>(x);
 }
 
 
@@ -113,12 +118,13 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
 	} else {
 		MacroData const & macro = MacroTable::globalMacros().get(name());
+		
+		if (macroBackup_ != macro)
+			updateExpansion();
+		
 		if (macro.locked()) {
 			mathed_string_dim(mi.base.font, "Self reference: " + name(), dim);
-			expanded_ = MathData();
 		} else if (editing(mi.base.bv)) {
-			// FIXME UNICODE
-			asArray(macro.def(), tmpl_);
 			Font font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			tmpl_.metrics(mi, dim);
@@ -132,17 +138,12 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 				dim.wid  = max(dim.wid, c.width() + ww);
 				dim.des += c.height() + 10;
 			}
+			editing_ = true;
 		} else {
-			// create MathMacroArgumentValue object pointing to the cells of the macro
-			MacroData const & macro = MacroTable::globalMacros().get(name());
-			vector<MathData> values(nargs());
-			for (size_t i = 0; i != nargs(); ++i) 
-				values[i].insert(0, MathAtom(new MathMacroArgumentValue(&cells_[i], name())));
-			macro.expand(values, expanded_);
-			
-			MacroTable::globalMacros().get(name()).lock();
+			macro.lock();
 			expanded_.metrics(mi, dim);
-			MacroTable::globalMacros().get(name()).unlock();
+			macro.unlock();
+			editing_ = false;
 		}
 	}
 	metricsMarkers2(dim);
@@ -160,10 +161,15 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		drawStrRed(pi, x, y, "Unknown: " + name());
 	} else {
 		MacroData const & macro = MacroTable::globalMacros().get(name());
+		
+		// warm up cache
+		for (size_t i = 0; i < nargs(); ++i)
+			cell(i).setXY(*pi.base.bv, x, y);
+		
 		if (macro.locked()) {
 			// FIXME UNICODE
 			drawStrRed(pi, x, y, "Self reference: " + name());
-		} else if (editing(pi.base.bv)) {
+		} else if (editing_) {
 			Font font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			int h = y - dim_.ascent() + 2 + tmpl_.ascent();
@@ -184,10 +190,14 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 				h += max(c.descent(), ldim.des) + 5;
 			}
 		} else {
-			MacroTable::globalMacros().get(name()).lock();
+			macro.lock();
 			expanded_.draw(pi, x, y);
-			MacroTable::globalMacros().get(name()).unlock();
+			macro.unlock();
 		}
+		
+		// edit mode changed?	
+		if (editing_ != editing(pi.base.bv) || macroBackup_ != macro)
+			pi.base.bv->cursor().updateFlags(Update::Force);
 	}
 	drawMarkers2(pi, x, y);
 }
@@ -274,7 +284,15 @@ void MathMacro::octave(OctaveStream & os) const
 
 void MathMacro::updateExpansion() const
 {
-	//expanded_.substitute(*this);
+	MacroData const & macro = MacroTable::globalMacros().get(name());
+	
+	// create MathMacroArgumentValue object pointing to the cells of the macro
+	vector<MathData> values(nargs());
+	for (size_t i = 0; i != nargs(); ++i) 
+				values[i].insert(0, MathAtom(new MathMacroArgumentValue(*this, i)));
+	macro.expand(values, expanded_);
+	asArray(macro.def(), tmpl_);
+	macroBackup_ = macro;
 }
 
 
