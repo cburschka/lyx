@@ -891,7 +891,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	params.quotes_language = lga;
 
 	int const pos = langModule->languageCO->currentIndex();
-	params.language = languages.getLanguage(lang_[pos]);
+	params.language = lyx::languages.getLanguage(lang_[pos]);
 
 	// numbering
 	if (params.getTextClass().hasTocLevels()) {

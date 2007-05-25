@@ -208,7 +208,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	numberStepLE->setValidator(new QIntValidator(0, 1000000, this));
 	firstlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
-	placementLE->setValidator(new QRegExpValidator(QRegExp("[\*tbph]*"), this));
+	placementLE->setValidator(new QRegExpValidator(QRegExp("[\\*tbph]*"), this));
 }
 
 
