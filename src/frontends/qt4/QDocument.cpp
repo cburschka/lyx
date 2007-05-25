@@ -956,7 +956,8 @@ void QDocumentDialog::apply(BufferParams & params)
 		params.columns = 1;
 
 	// text should have passed validation
-	params.listings_params = InsetListingsParams(fromqstr(textLayoutModule->listingsED->toPlainText())).params();
+	params.listings_params =
+		InsetListingsParams(fromqstr(textLayoutModule->listingsED->toPlainText())).params();
 
 	if (textLayoutModule->indentRB->isChecked())
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
@@ -1262,7 +1263,8 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 		params.columns == 2);
 	
 	// break listings_params to multiple lines
-	string lstparams = InsetListingsParams(params.listings_params).separatedParams();
+	string lstparams =
+		InsetListingsParams(params.listings_params).separatedParams();
 	textLayoutModule->listingsED->setPlainText(toqstr(lstparams));
 
 	if (!params.options.empty()) {
