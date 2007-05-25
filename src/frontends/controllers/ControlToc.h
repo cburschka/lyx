@@ -44,6 +44,9 @@ public:
 	std::vector<docstring> const & typeNames() const
 	{ return type_names_; }
 
+	/// Return the guiname from a given cmdName of the TOC param
+	docstring const getGuiName(std::string const & type) const;
+
 	///
 	int selectedType() { return selected_type_; }
 
@@ -64,9 +67,6 @@ public:
 	void updateBackend();
 
 private:
-	/// Return the guiname from a given cmdName of the TOC param
-	docstring const getGuiName(std::string const & type) const;
-
 	std::vector<std::string> types_;
 	std::vector<docstring> type_names_;
 	int selected_type_;

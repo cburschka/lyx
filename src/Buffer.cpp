@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik BjÃ¸nnes
+ * \author Lars Gullik Bjønnes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -1739,7 +1739,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	runparams.dryrun = true;
 
 	if (full_source) {
-		os << "% Preview source code\n\n";
+		os << "% " << _("Preview source code") << "\n\n";
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
 		else {
@@ -1749,10 +1749,15 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
 		if (par_begin + 1 == par_end)
-			os << "% Preview source code for paragraph " << par_begin << "\n\n";
+			os << "% "
+			   << bformat(_("Preview source code for paragraph %1$s"), par_begin)
+			   << "\n\n";
 		else
-			os << "% Preview source code from paragraph " << par_begin
-			   << " to " << par_end - 1 << "\n\n";
+			os << "% "
+			   << bformat(_("Preview source code from paragraph %1$s to %2$s"),
+					convert<docstring>(par_begin),
+					convert<docstring>(par_end - 1))
+			   << "\n\n";
 		// output paragraphs
 		if (isLatex()) {
 			texrow().reset();
