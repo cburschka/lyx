@@ -1299,43 +1299,9 @@ Font Cursor::getFont() const
 
 void Cursor::fixIfBroken()
 {
-	// find out last good level
-	Cursor copy = *this;
-	size_t newdepth = depth();
-	while (!copy.empty()) {
-		if (copy.idx() > copy.lastidx()) {
-			lyxerr << "wrong idx " << copy.idx()
-			       << ", max is " << copy.lastidx()
-			       << " at level " << copy.depth()
-			       << ". Trying to correct this."  << endl;
-			lyxerr << "old: " << *this << endl;
-			newdepth = copy.depth() - 1;
-		}
-		else if (copy.pit() > copy.lastpit()) {
-			lyxerr << "wrong pit " << copy.pit()
-			       << ", max is " << copy.lastpit()
-			       << " at level " << copy.depth()
-			       << ". Trying to correct this."  << endl;
-			lyxerr << "old: " << *this << endl;
-			newdepth = copy.depth() - 1;
-		}
-		else if (copy.pos() > copy.lastpos()) {
-			lyxerr << "wrong pos " << copy.pos()
-			       << ", max is " << copy.lastpos()
-			       << " at level " << copy.depth()
-			       << ". Trying to correct this."  << endl;
-			lyxerr << "old: " << *this << endl;
-			newdepth = copy.depth() - 1;
-		}
-		copy.pop();
-	}
-	// shrink cursor to a size where everything is valid, possibly
-	// leaving insets
-	while (depth() > newdepth) {
-		pop();
-		lyxerr << "correcting cursor to level " << depth() << endl;
-		lyxerr << "new: " << *this << endl;
-		clearSelection();
+	if (DocIterator::fixIfBroken()) {
+			clearSelection();
+			resetAnchor();
 	}
 }
 

@@ -20,6 +20,9 @@
 #include "support/types.h"
 #include "insets/Inset.h"
 
+#include <boost/signal.hpp>
+#include <boost/signals/trackable.hpp>
+
 #include <cstddef>
 #include <iosfwd>
 
@@ -38,8 +41,14 @@ class Paragraph;
 // that of MathData and Text should vanish. They are conceptually the
 // same (now...)
 
-class CursorSlice {
+class CursorSlice : public boost::signals::trackable {
 public:
+	/// Those needs inset_ access.
+	///@{
+	friend class DocIterator;
+	friend class StableDocIterator;
+	///@}
+
 	/// type for cell number in inset
 	typedef size_t idx_type;
 	/// type for row indices
@@ -50,7 +59,13 @@ public:
 	///
 	CursorSlice();
 	///
+	CursorSlice(CursorSlice const &);
+	///
 	explicit CursorSlice(Inset &);
+	///
+	CursorSlice & operator=(CursorSlice const &);
+	///
+	bool isValid() const;
 
 	/// the current inset
 	Inset & inset() const { return *inset_; }
@@ -113,10 +128,13 @@ public:
 
 	/// write some debug information to \p os
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
-public:
+private:
+	///
+	void invalidate();
+
 	/// pointer to 'owning' inset. This is some kind of cache.
 	Inset * inset_;
-private:
+
 	/*!
 	 * Cell index of a position in this inset.
 	 * This is the primary cell information also for grid like insets,

@@ -215,6 +215,10 @@ void BufferView::setBuffer(Buffer * b)
 			cursor_.setSelection();
 			// do not set selection to the new buffer because we
 			// only paste recent selection.
+
+			// Make sure that the restored cursor is not broken. This can happen for
+			// example if this Buffer has been modified by another view.
+			cursor_.fixIfBroken();
 		}
 	}
 

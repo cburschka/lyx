@@ -558,6 +558,58 @@ void DocIterator::updateInsets(Inset * inset)
 }
 
 
+bool DocIterator::fixIfBroken()
+{
+	bool fixed = false;
+	
+	for (size_t i = slices_.size() - 1; i != 0; --i)
+		if (!slices_[i].isValid()) {
+			pop_back();
+			fixed = true;
+		}
+
+	// The top level CursorSlice should always be valid. 
+	BOOST_ASSERT(slices_[0].isValid());
+
+	if (idx() > lastidx()) {
+		lyxerr << "wrong idx " << idx()
+			<< ", max is " << lastidx()
+			<< " at level " << depth()
+			<< ". Trying to correct this."  << endl;
+		lyxerr << "old: " << *this << endl;
+		for (size_t i = idx(); i != lastidx(); --i)
+			pop_back();
+		idx() = lastidx();
+		pit() = lastpit();
+		pos() = lastpos();
+		fixed = true;
+	}
+	else if (pit() > lastpit()) {
+		lyxerr << "wrong pit " << pit()
+			<< ", max is " << lastpit()
+			<< " at level " << depth()
+			<< ". Trying to correct this."  << endl;
+		lyxerr << "old: " << *this << endl;
+		pit() = lastpit();
+		pos() = 0;
+		fixed = true;
+	}
+	else if (pos() > lastpos()) {
+		lyxerr << "wrong pos " << pos()
+			<< ", max is " << lastpos()
+			<< " at level " << depth()
+			<< ". Trying to correct this."  << endl;
+		lyxerr << "old: " << *this << endl;
+		pos() = lastpos();
+		fixed = true;
+	}
+	if (fixed) {
+		lyxerr << "new: " << *this << endl;
+	}
+	return fixed;
+}
+
+
 std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.depth(); i != n; ++i)
@@ -608,14 +660,17 @@ DocIterator StableDocIterator::asDocIterator(Inset * inset) const
 		if (inset == 0) {
 			// FIXME
 			lyxerr << BOOST_CURRENT_FUNCTION
-			       << " Should not happen, but does e.g. after C-n C-l C-z S-C-z"
+			       << " Should not happen, but does e.g. after C-n C-l C-z S-C-z\n"
+				   << " or when a Buffer has been concurently edited by two views"
 				<< '\n' << "dit: " << dit << '\n'
 				<< " lastpos: " << dit.lastpos() << endl;
-			//break;
-			BOOST_ASSERT(false);
+			dit.fixIfBroken();
+			break;
 		}
 		dit.push_back(data_[i]);
 		dit.top().inset_ = inset;
+		if (dit.fixIfBroken())
+			break;
 		if (i + 1 != n)
 			inset = dit.nextInset();
 	}

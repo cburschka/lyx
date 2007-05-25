@@ -20,6 +20,8 @@
 
 #include "support/docstream.h"
 
+#include <boost/signal.hpp>
+
 #include <memory>
 #include <vector>
 
@@ -54,7 +56,7 @@ namespace graphics { class PreviewLoader; }
 // everything storing large quantities of insets. Mathed e.g. would
 // suffer.
 
-class Inset {
+class Inset : public boost::noncopyable {
 public:
 	///
 	typedef ptrdiff_t  difference_type;
@@ -70,7 +72,7 @@ public:
 	typedef size_t     col_type;
 
 	/// virtual base class destructor
-	virtual ~Inset() {}
+	virtual ~Inset() { destroyed();}
 	/// replicate ourselves
 	std::auto_ptr<Inset> clone() const;
 
@@ -473,9 +475,14 @@ public:
 	//
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
+	/// This signal is emitted when the inset is destroyed.
+	boost::signal<void()> destroyed;
+
 protected:
 	Inset();
 	Inset(Inset const & i);
+	///
+	Inset & operator=(Inset const &);
 	/** The real dispatcher.
 	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.

@@ -227,6 +227,9 @@ public:
 	void pop_back() { slices_.pop_back(); }
 	/// recompute the inset parts of the cursor from the document data
 	void updateInsets(Inset * inset);
+	/// fix DocIterator in circumstances that should never happen.
+	/// \return true if the DocIterator was fixed.
+	bool fixIfBroken();
 
 private:
 	/**

@@ -14,14 +14,18 @@
 #include <config.h>
 
 #include "CursorSlice.h"
+
 #include "debug.h"
 #include "Text.h"
 #include "Paragraph.h"
+
+#include "insets/Inset.h"
 
 #include "mathed/InsetMath.h"
 #include "mathed/MathData.h"
 
 #include <boost/assert.hpp>
+#include <boost/bind.hpp>
 
 
 namespace lyx {
@@ -38,6 +42,41 @@ CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
 	BOOST_ASSERT(inset_);
+	inset_->destroyed.connect(
+			boost::bind(&CursorSlice::invalidate, this));
+}
+
+
+CursorSlice::CursorSlice(CursorSlice const & cs)
+{
+	operator=(cs);
+}
+
+
+CursorSlice & CursorSlice::operator=(CursorSlice const & cs)
+{
+	inset_ = cs.inset_;
+	idx_ = cs.idx_;
+	pit_ = cs.pit_;
+	pos_ = cs.pos_;
+	if (inset_) {
+		BOOST_ASSERT(inset_);
+		inset_->destroyed.connect(
+			boost::bind(&CursorSlice::invalidate, this));
+	}
+	return *this;
+}
+
+
+void CursorSlice::invalidate()
+{
+	inset_ = 0;
+}
+
+
+bool CursorSlice::isValid() const
+{
+	return inset_ != 0;
 }
 
 
@@ -82,7 +121,7 @@ CursorSlice::col_type CursorSlice::col() const
 
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
-	return p.inset_ == q.inset_
+	return &p.inset() == &q.inset()
 	       && p.idx() == q.idx()
 	       && p.pit() == q.pit()
 	       && p.pos() == q.pos();
@@ -91,7 +130,7 @@ bool operator==(CursorSlice const & p, CursorSlice const & q)
 
 bool operator!=(CursorSlice const & p, CursorSlice const & q)
 {
-	return p.inset_ != q.inset_
+	return &p.inset() != &q.inset()
 	       || p.idx() != q.idx()
 	       || p.pit() != q.pit()
 	       || p.pos() != q.pos();
