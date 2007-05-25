@@ -51,6 +51,7 @@ Var LaTeXName
 Var MiKTeXVersion
 Var MiKTeXUser
 Var State
+Var SVGPath
 # Variables used by all installer versions
 Var AspellInstallYes
 Var AspellBaseReg
@@ -90,6 +91,8 @@ Var UserName
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
+!include "TextFunc.nsh"
+!insertmacro LineFind
 
 # Set of various macros and functions
 !include "LyXUtils.nsh"

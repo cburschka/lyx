@@ -1,3 +1,17 @@
+# This script contains the following functions:
+#
+# - MissingPrograms, (check if third-party programs are installed), uses:
+#    EditorCheck
+#    FileCheck
+#
+# - MissingProgramsPage,
+#    (generate the page showing the missing programs that will be installed)
+#
+# - EditorCheck,
+#    (test if an editor with syntax-highlighting for LaTeX-files is installed)
+#
+#--------------------------
+
 Function MissingPrograms
   # check if third-party programs are installed
 
@@ -117,6 +131,9 @@ Function MissingPrograms
   ${if} $BibTeXEditorPath == ""
    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.2" "UninstallString"
   ${endif}
+  
+  # test if Inkscape is installed
+  ReadRegStr $SVGPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
 
 FunctionEnd
 

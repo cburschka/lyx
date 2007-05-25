@@ -24,6 +24,9 @@ Function ConfigureLyX
   ${if} $ImageEditorPath != ""
     StrCpy $PathPrefix "$PathPrefix;$ImageEditorPath"
   ${endif}
+  ${if} $SVGPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$SVGPath"
+  ${endif}
   
   # Set a path prefix in lyxrc.dist
   ClearErrors
@@ -48,20 +51,29 @@ Function ConfigureLyX
   IfErrors 0 +2
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
 
-  # set the preferences file
-  # (having one preferences file that is modified to fit the needs is possible but not easy to maintain
-  # therefore simply delete the file that shouldn't be used)
-  # if not Acrobat or Adobe Reader is used
-  ${if} $Acrobat == "None" # no special PDF viewer is used
-   Rename "$INSTDIR\Resources\preferencesGSview" "$INSTDIR\Resources\preferences"
-   Delete "$INSTDIR\Resources\preferencesAcro"
-  ${endif}
+  # set up the preferences file
   # if Acrobat or Adobe Reader is used
   ${if} $Acrobat == "Yes" # used for Acrobat / Adobe Reader
-   Rename "$INSTDIR\Resources\preferencesAcro" "$INSTDIR\Resources\preferences"
-   Delete "$INSTDIR\Resources\preferencesGSview"
+    # writes settings to the preferences file
+    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "75" "AcroPref"
+    # ${LineFind} macro from TextFunc.nsh # calls Function AcroPref
   ${endif}
-
+  
+  # if a SVG to PDF converter ws found (e.g. Inkscape) define it in the preferences
+  ${if} $SVGPath != ""
+   ${if} $Acrobat == "Yes"
+    # writes settings to the preferences file
+    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "78" "SVGPref1"
+    # deletes lines from the preferences file
+    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "87:90" "SVGPref2"
+   ${else}
+    # writes settings to the preferences file but 3 lines earlier because the
+    #3 PDF lines are in this case not here
+    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "75" "SVGPref1"
+    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "84:87" "SVGPref2"
+   ${endif}
+  ${endif} 
+  
   # register LyX
   ${if} $CreateFileAssociations == "true"
    WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
@@ -137,5 +149,43 @@ Function ConfigureLyX
   		 "$PythonPath\python.exe" configure.py'
   FileClose $R1
 
+FunctionEnd
+
+# --------------------------------
+
+Function AcroPref
+ # writes PDF settings  to the preferences file
+
+  FileWrite $R4 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "PDFViewWin" "" "document,vector"$\r$\n\
+		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "PDFViewWin" "" "document,vector"$\r$\n\
+	 	 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "PDFViewWin" "" "document,vector"$\r$\n'
+  Push $0
+  
+FunctionEnd
+
+# --------------------------------
+
+Function SVGPref1
+ # writes SVG settings to the preferences file
+  
+  FileWrite $R4 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
+		 $\r$\n\
+		 #$\r$\n\
+		 # CONVERTERS SECTION ##########################$\r$\n\
+		 #$\r$\n\
+		 $\r$\n\
+		 \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
+                 \converter "svg" "pdf" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""$\r$\n\
+		 \converter "svg" "pdf2" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""'
+  Push $0
+  
+FunctionEnd
+
+Function SVGPref2
+ # deletes lines from the preferences file
+  
+  StrCpy $0 SkipWrite
+  Push $0
+  
 FunctionEnd
 
