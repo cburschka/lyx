@@ -208,7 +208,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	numberStepLE->setValidator(new QIntValidator(0, 1000000, this));
 	firstlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
-	placementLE->setValidator(new QRegExpValidator(QRegExp("[tbph]*"), this));
+	placementLE->setValidator(new QRegExpValidator(QRegExp("[\*tbph]*"), this));
 }
 
 
@@ -287,10 +287,11 @@ string QListingsDialog::construct_params()
 		else
 			par.addParam("language", "{[" + dialect + "]" + language + "}");
 	}
+	// this dialog uses float=placement instead of float,floatplacement=placement
+	// because float accepts *tbph and floatplacement accepts bph.
+	// our placement textedit is actually for the float parameter
 	if (float_)
-		par.addParam("float", "");
-	if (!placement.empty())
-		par.addParam("floatplacement", placement);
+		par.addParam("float", placement);
 	if (numberSide != "none")
 		par.addParam("numbers", numberSide);
 	if (numberfontsize != "default" && numberSide != "none")
@@ -505,13 +506,6 @@ void QListings::update_contents()
 			dialog_->languageCO->setEnabled(in_gui);
 			dialog_->dialectCO->setEnabled(
 				in_gui && dialog_->dialectCO->count() > 1);
-		} else if (prefixIs(*it, "floatplacement=")) {
-			dialog_->floatCB->setChecked(true);
-			dialog_->placementLE->setEnabled(true);
-			dialog_->placementLE->setText(
-				toqstr(plainParam(it->substr(15))));
-			dialog_->inlineCB->setChecked(false);
-			*it = "";
 		} else if (prefixIs(*it, "float")) {
 			dialog_->floatCB->setChecked(true);
 			dialog_->inlineCB->setChecked(false);

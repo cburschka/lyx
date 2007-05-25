@@ -77,7 +77,7 @@ struct listings_param_info {
 	//     info is a \n separated string with allowed values
 	// SUBSETOF
 	//     info is a string from which par is composed of
-	//     (e.g. floatplacement can be one or more of tbph)
+	//     (e.g. floatplacement can be one or more of *tbph)
 	param_type type;
 	/// parameter info, meaning depending on parameter type
 	char const * info;
@@ -120,8 +120,8 @@ char const * color_hint = N_("Enter something like \\color{white}");
 /// options copied from page 26 of listings manual
 // FIXME: add default parameters ... (which is not used now)
 listings_param_info const listings_param_table[] = {
-	{ "float", "false", true,  SUBSETOF, "tbph", "" },
-	{ "floatplacement", "tbp", false, SUBSETOF, "tbph", "" },
+	{ "float", "false", true,  SUBSETOF, "*tbph", "" },
+	{ "floatplacement", "tbp", false, SUBSETOF, "tbp", "" },
 	{ "aboveskip", "\\medskipamount", false, LENGTH, "", "" },
 	{ "belowskip", "\\medskipamount", false, LENGTH, "", "" },
 	{ "lineskip", "", false, LENGTH, "", "" },
