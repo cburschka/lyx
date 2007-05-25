@@ -496,7 +496,7 @@ void InsetListingsParams::read(Lexer & lex)
 }
 
 
-string InsetListingsParams::params(string sep) const
+string InsetListingsParams::params(string const & sep) const
 {
 	string par;
 	for (map<string, string>::const_iterator it = params_.begin();

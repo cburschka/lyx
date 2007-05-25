@@ -35,7 +35,7 @@ public:
 	void read(Lexer &);
 
 	/// valid parameter string
-	std::string params(std::string sep=",") const;
+	std::string params(std::string const & sep=",") const;
 	
 	/// add key=value to params_
 	void addParam(std::string const & key, std::string const & value);
