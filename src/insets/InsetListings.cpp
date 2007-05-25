@@ -28,6 +28,8 @@
 namespace lyx {
 
 using support::token;
+using support::contains;
+using support::subst;
 
 using std::auto_ptr;
 using std::istringstream;
@@ -35,6 +37,7 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 
+char const lstinline_delimiters[] = "!@#$^&*()-_=+|;:'\"~`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
 void InsetListings::init()
 {
@@ -133,11 +136,46 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 	// of the listings package (see page 25 of the manual)
 	int lines = 0;
 	bool lstinline = params().isInline();
+	// get the paragraphs. We can not output them directly to given odocstream
+	// because we can not yet determine the delimiter character of \lstinline
+	docstring code;
+	ParagraphList::const_iterator par = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
+
+	while (par != end) {
+		pos_type siz = par->size();
+		bool captionline = false;
+		for (pos_type i = 0; i < siz; ++i) {
+			if (i == 0 && par->isInset(i) && i + 1 == siz)
+				captionline = true;
+			// ignore all struck out text and (caption) insets
+			if (par->isDeleted(i) || par->isInset(i))
+				continue;
+			code += par->getChar(i);
+		}
+		++par;
+		// for the inline case, if there are multiple paragraphs
+		// they are simply joined. Otherwise, expect latex errors.
+		if (par != end && !lstinline && !captionline) {
+			code += "\n";
+			++lines;
+		}
+	}
+	char const * delimiter;
 	if (lstinline) {
+		for (delimiter = lstinline_delimiters; delimiter != '\0'; ++delimiter)
+			if (!contains(code, *delimiter))
+				break;
+		// this code piece contains all possible special character? !!!
+		// Replace ! with a warning message and use ! as delimiter.
+		if (*delimiter == '\0') {
+			code = subst(code, from_ascii("!"), from_ascii(" WARNING: no lstline delimiter can be used "));
+			delimiter = lstinline_delimiters;
+		}
 		if (param_string.empty())
-			os << "\\lstinline{";
+			os << "\\lstinline" << *delimiter;
 		else
-			os << "\\lstinline[" << from_ascii(param_string) << "]{";
+			os << "\\lstinline[" << from_ascii(param_string) << "]" << *delimiter;
 	} else {
 		docstring const caption = getCaption(buf, runparams);
 		if (param_string.empty() && caption.empty())
@@ -153,30 +191,9 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 		}
 		lines += 4;
 	}
-	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
-
-	while (par != end) {
-		pos_type siz = par->size();
-		bool captionline = false;
-		for (pos_type i = 0; i < siz; ++i) {
-			if (i == 0 && par->isInset(i) && i + 1 == siz)
-				captionline = true;
-			// ignore all struck out text and (caption) insets
-			if (par->isDeleted(i) || par->isInset(i))
-				continue;
-			os.put(par->getChar(i));
-		}
-		++par;
-		// for the inline case, if there are multiple paragraphs
-		// they are simply joined. Otherwise, expect latex errors.
-		if (par != end && !lstinline && !captionline) {
-			os << "\n";
-			++lines;
-		}
-	}
+	os << code;
 	if (lstinline)
-		os << "}";		
+		os << *delimiter;		
 	else {
 		os << "\n\\end{lstlisting}\n\\endgroup\n";
 		lines += 3;
