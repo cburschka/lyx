@@ -462,12 +462,12 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	LYXERR(Debug::LATEX) << "exportfile:" << exportfile << endl;
 	LYXERR(Debug::LATEX) << "writefile:" << writefile << endl;
 
-	if (runparams.inComment || runparams.dryrun)
-		// Don't try to load or copy the file
-		;
-	//if it's a LyX file and we're including or inputting it...
-	else if (isInputOrInclude(params_) && 
+	if (runparams.inComment || runparams.dryrun) {
+		//Don't try to load or copy the file if we're
+		//in a comment or doing a dryrun
+	} else if (isInputOrInclude(params_) && 
 	         isLyXFilename(included_file.absFilename())) {
+		//if it's a LyX file and we're inputting or including,
 		//try to load it so we can write the associated latex
 		if (!loadIfNeeded(buffer, params_))
 			return false;
@@ -503,9 +503,10 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 				   runparams, false);
 		runparams.encoding = oldEnc;
 	} else {
-		// Copy the file to the temp dir, so that .aux files etc.
-		// are not created in the original dir. Files included by
-		// this file will be found via input@path, see ../Buffer.cpp.
+		// In this case, it's not a LyX file, so we copy the file
+		// to the temp dir, so that .aux files etc. are not created 
+		// in the original dir. Files included by this file will be 
+		// found via input@path, see ../Buffer.cpp.
 		unsigned long const checksum_in  = sum(included_file);
 		unsigned long const checksum_out = sum(writefile);
 
