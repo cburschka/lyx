@@ -910,7 +910,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			docstring text = bformat(_("Any changes will be lost. Are you sure "
 							     "you want to revert to the saved version of the document %1$s?"), file);
 			int const ret = Alert::prompt(_("Revert to saved document?"),
-				text, 0, 1, _("&Revert"), _("&Cancel"));
+				text, 1, 1, _("&Revert"), _("&Cancel"));
 
 			if (ret == 0)
 				reloadBuffer();
