@@ -20,6 +20,8 @@
 #include "Gui.h"
 
 #include "Buffer.h"
+//FIXME Bug 3701
+//#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
@@ -129,7 +131,8 @@ void LyXView::setBuffer(Buffer * b)
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
-	if (!b)
+	//FIXME Bug 3701
+	if (!b) // && theBufferList().empty()
 		getDialogs().hideBufferDependent();
 
 	work_area_->bufferView().setBuffer(b);
@@ -163,10 +166,12 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 	busy(true);
 
 	BOOST_ASSERT(work_area_);
-	if (work_area_->bufferView().buffer())
+	bool const hadBuffer = work_area_->bufferView().buffer();
+	if (hadBuffer)
 		disconnectBuffer();
 
-	bool loaded = work_area_->bufferView().loadLyXFile(filename, tolastfiles);
+	bool const loaded = 
+		work_area_->bufferView().loadLyXFile(filename, tolastfiles);
 
 	updateToc();
 	updateMenubar();
@@ -177,7 +182,9 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 	if (loaded) {
 		connectBuffer(*work_area_->bufferView().buffer());
 		showErrorList("Parse");
-	}
+	} else if (hadBuffer)
+		//Need to reconnect the buffer if the load failed
+		connectBuffer(*work_area_->bufferView().buffer());
 	updateStatusBar();
 	busy(false);
 	work_area_->redraw();
