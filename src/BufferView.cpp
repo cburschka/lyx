@@ -183,14 +183,20 @@ void BufferView::setBuffer(Buffer * b)
 		return;
 	}
 
+	//FIXME Fix for bug 3440 is here.
 	// If we are closing current buffer, switch to the first in
 	// buffer list.
 	if (!b) {
 		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
 				    << " No Buffer!" << endl;
 		// We are closing the buffer, use the first buffer as current
+		//FIXME 3440
+		// if (last_buffer_) buffer_ = last_buffer_;
+		// also check that this is in theBufferList()?
 		buffer_ = theBufferList().first();
 	} else {
+		//FIXME 3440
+		// last_buffer = buffer_;
 		// Set current buffer
 		buffer_ = b;
 	}
@@ -200,9 +206,11 @@ void BufferView::setBuffer(Buffer * b)
 	anchor_ref_ = 0;
 	offset_ref_ = 0;
 
-	if (buffer_) {
+	if (!buffer_)
+		return;
+	
 		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
-				    << "Buffer addr: " << buffer_ << endl;
+		                    << "Buffer addr: " << buffer_ << endl;
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
 		buffer_->text().setCurrentFont(cursor_);
@@ -220,12 +228,8 @@ void BufferView::setBuffer(Buffer * b)
 			// example if this Buffer has been modified by another view.
 			cursor_.fixIfBroken();
 		}
-	}
-
-	if (buffer_)
 		updateMetrics(false);    
-
-	if (buffer_ && graphics::Previews::status() != LyXRC::PREVIEW_OFF)
+	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
