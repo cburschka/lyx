@@ -10,36 +10,38 @@
 
 #include <config.h>
 
-#include "Lexer.h"
 #include "InsetListingsParams.h"
 
 #include "gettext.h"
 #include "Length.h"
-
-#include <sstream>
-#include <boost/assert.hpp>
+#include "Lexer.h"
 
 #include "support/lstrings.h"
 #include "support/textutils.h"
 #include "support/convert.h"
+
+#include <boost/assert.hpp>
+
+#include <sstream>
 
 using std::map;
 using std::vector;
 using std::ostream;
 using std::string;
 using std::exception;
-using lyx::support::bformat;
-using lyx::support::trim;
-using lyx::support::subst;
-using lyx::support::isStrInt;
-using lyx::support::prefixIs;
-using lyx::support::suffixIs;
-using lyx::support::getVectorFromString;
-using lyx::isAlphaASCII;
-using lyx::isDigit;
 
 namespace lyx
 {
+
+using support::bformat;
+using support::trim;
+using support::subst;
+using support::isStrInt;
+using support::prefixIs;
+using support::suffixIs;
+using support::getVectorFromString;
+
+namespace {
 
 enum param_type {
 	ALL,  // accept all
@@ -55,9 +57,9 @@ enum param_type {
  */
 struct listings_param_info {
 	/// name of the parameter
-	char const * name;
+	string name;
 	/// default value
-	char const * value;
+	string value;
 	// for option with value "true", "false",
 	// if onoff is true,
 	//   "true":  option
@@ -80,11 +82,10 @@ struct listings_param_info {
 	//     (e.g. floatplacement can be one or more of *tbph)
 	param_type type;
 	/// parameter info, meaning depending on parameter type
-	char const * info;
+	string info;
 	/// a help message that is displayed in the gui
-	char const * hint;
+	docstring hint;
 };
-
 
 
 /// languages and language/dialect combinations
@@ -111,154 +112,155 @@ char const * allowed_languages =
 	"[plain]TeX\n[primitive]TeX\nVBScript\nVerilog\nVHDL\n[AMS]VHDL\nVRML\n"
 	"[97]VRML\nXML\nXSLT";
 
-char const * style_hint = N_("Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that");
-char const * frame_hint = N_("none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL");
-char const * frameround_hint =
-	N_("Enter four letters (either t = round or f = square) for top right, bottom right, bottom left and top left corner.");
-char const * color_hint = N_("Enter something like \\color{white}");
+docstring empty_hint;
+docstring style_hint = _("Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that");
+docstring frame_hint = _("none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL");
+docstring frameround_hint =	_("Enter four letters (either t = round or f = square) for top right, bottom right, bottom left and top left corner.");
+docstring color_hint = _("Enter something like \\color{white}");
+
 
 /// options copied from page 26 of listings manual
 // FIXME: add default parameters ... (which is not used now)
 listings_param_info const listings_param_table[] = {
-	{ "float", "false", true,  SUBSETOF, "*tbph", "" },
-	{ "floatplacement", "tbp", false, SUBSETOF, "tbp", "" },
-	{ "aboveskip", "\\medskipamount", false, LENGTH, "", "" },
-	{ "belowskip", "\\medskipamount", false, LENGTH, "", "" },
-	{ "lineskip", "", false, LENGTH, "", "" },
-	{ "boxpos", "", false, SUBSETOF, "bct", "" },
-	{ "print", "", false, TRUEFALSE, "", "" },
-	{ "firstline", "", false, INTEGER, "", "" },
-	{ "lastline", "", false, INTEGER, "", "" },
-	{ "showlines", "", false, TRUEFALSE, "", "" },
-	{ "emptylines", "", false, ALL, "", N_("Expect a number with an optional * before it") },
-	{ "gobble", "", false, INTEGER, "", "" },
-	{ "style", "", false, ALL, "", "" },
-	{ "language", "", false, ONEOF, allowed_languages, "" },
-	{ "alsolanguage", "", false, ONEOF, allowed_languages, "" },
-	{ "defaultdialect", "", false, ONEOF, allowed_languages, "" },
-	{ "printpod", "", false, TRUEFALSE, "", "" },
-	{ "usekeywordsintag", "", false, TRUEFALSE, "", "" },
+	{ "float", "false", true,  SUBSETOF, "*tbph", empty_hint},
+	{ "floatplacement", "tbp", false, SUBSETOF, "tbp", empty_hint},
+	{ "aboveskip", "\\medskipamount", false, LENGTH, "", empty_hint},
+	{ "belowskip", "\\medskipamount", false, LENGTH, "", empty_hint},
+	{ "lineskip", "", false, LENGTH, "", empty_hint},
+	{ "boxpos", "", false, SUBSETOF, "bct", empty_hint},
+	{ "print", "", false, TRUEFALSE, "", empty_hint},
+	{ "firstline", "", false, INTEGER, "", empty_hint},
+	{ "lastline", "", false, INTEGER, "", empty_hint},
+	{ "showlines", "", false, TRUEFALSE, "", empty_hint},
+	{ "emptylines", "", false, ALL, "", from_ascii("Expect a number with an optional * before it") },
+	{ "gobble", "", false, INTEGER, "", empty_hint},
+	{ "style", "", false, ALL, "", empty_hint},
+	{ "language", "", false, ONEOF, allowed_languages, empty_hint},
+	{ "alsolanguage", "", false, ONEOF, allowed_languages, empty_hint},
+	{ "defaultdialect", "", false, ONEOF, allowed_languages, empty_hint},
+	{ "printpod", "", false, TRUEFALSE, "", empty_hint},
+	{ "usekeywordsintag", "", false, TRUEFALSE, "", empty_hint},
 	{ "tagstyle", "", false, ALL, "", style_hint },
 	{ "markfirstintag", "", false, ALL, "", style_hint },
-	{ "makemacrouse", "", false, TRUEFALSE, "", "" },
+	{ "makemacrouse", "", false, TRUEFALSE, "", empty_hint},
 	{ "basicstyle", "", false, ALL, "", style_hint },
 	{ "identifierstyle", "", false, ALL, "", style_hint },
 	{ "commentstyle", "", false, ALL, "", style_hint },
 	{ "stringstyle", "", false, ALL, "", style_hint },
 	{ "keywordstyle", "", false, ALL, "", style_hint },
 	{ "ndkeywordstyle", "", false, ALL, "", style_hint },
-	{ "classoffset", "", false, INTEGER, "", "" },
+	{ "classoffset", "", false, INTEGER, "", empty_hint},
 	{ "texcsstyle", "", false, ALL, "", style_hint },
 	{ "directivestyle", "", false, ALL, "", style_hint },
-	{ "emph", "", false, ALL, "", "" },
-	{ "moreemph", "", false, ALL, "", "" },
-	{ "deleteemph", "", false, ALL, "", "" },
-	{ "emphstyle", "", false, ALL, "", "" },
-	{ "delim", "", false, ALL, "", "" },
-	{ "moredelim", "", false, ALL, "", "" },
-	{ "deletedelim", "", false, ALL, "", "" },
-	{ "extendedchars", "", false, TRUEFALSE, "", "" },
-	{ "inputencoding", "", false, ALL, "", "" },
-	{ "upquote", "", false, TRUEFALSE, "", "" },
-	{ "tabsize", "", false, INTEGER, "", "" },
-	{ "showtabs", "", false, ALL, "", "" },
-	{ "tab", "", false, ALL, "", "" },
-	{ "showspaces", "", false, TRUEFALSE, "", "" },
-	{ "showstringspaces", "", false, TRUEFALSE, "", "" },
-	{ "formfeed", "", false, ALL, "", "" },
-	{ "numbers", "", false, ONEOF, "none\nleft\nright", "" },
-	{ "stepnumber", "", false, INTEGER, "", "" },
-	{ "numberfirstline", "", false, TRUEFALSE, "", "" },
+	{ "emph", "", false, ALL, "", empty_hint},
+	{ "moreemph", "", false, ALL, "", empty_hint},
+	{ "deleteemph", "", false, ALL, "", empty_hint},
+	{ "emphstyle", "", false, ALL, "", empty_hint},
+	{ "delim", "", false, ALL, "", empty_hint},
+	{ "moredelim", "", false, ALL, "", empty_hint},
+	{ "deletedelim", "", false, ALL, "", empty_hint},
+	{ "extendedchars", "", false, TRUEFALSE, "", empty_hint},
+	{ "inputencoding", "", false, ALL, "", empty_hint},
+	{ "upquote", "", false, TRUEFALSE, "", empty_hint},
+	{ "tabsize", "", false, INTEGER, "", empty_hint},
+	{ "showtabs", "", false, ALL, "", empty_hint},
+	{ "tab", "", false, ALL, "", empty_hint},
+	{ "showspaces", "", false, TRUEFALSE, "", empty_hint},
+	{ "showstringspaces", "", false, TRUEFALSE, "", empty_hint},
+	{ "formfeed", "", false, ALL, "", empty_hint},
+	{ "numbers", "", false, ONEOF, "none\nleft\nright", empty_hint},
+	{ "stepnumber", "", false, INTEGER, "", empty_hint},
+	{ "numberfirstline", "", false, TRUEFALSE, "", empty_hint},
 	{ "numberstyle", "", false, ALL, "", style_hint },
-	{ "numbersep", "", false, LENGTH, "", "" },
-	{ "numberblanklines", "", false, ALL, "", "" },
-	{ "firstnumber", "", false, ALL, "", N_("auto, last or a number") },
-	{ "name", "", false, ALL, "", "" },
-	{ "thelstnumber", "", false, ALL, "", "" },
-	{ "title", "", false, ALL, "", "" },
+	{ "numbersep", "", false, LENGTH, "", empty_hint},
+	{ "numberblanklines", "", false, ALL, "", empty_hint},
+	{ "firstnumber", "", false, ALL, "", _("auto, last or a number") },
+	{ "name", "", false, ALL, "", empty_hint},
+	{ "thelstnumber", "", false, ALL, "", empty_hint},
+	{ "title", "", false, ALL, "", empty_hint},
 	// this option is not handled in the parameter box
-	{ "caption", "", false, ALL, "", N_("This parameter should not be entered here. "
+	{ "caption", "", false, ALL, "", _("This parameter should not be entered here. "
 		"Please use caption editbox (Include dialog) or insert->caption (listings inset)") },
 	// this option is not handled in the parameter box
-	{ "label", "", false, ALL, "", N_("This parameter should not be entered here. "
+	{ "label", "", false, ALL, "", _("This parameter should not be entered here. "
 		"Please use label editbox (Include dialog) or insert->caption (listings inset)") },
-	{ "nolol", "", false, TRUEFALSE, "", "" },
-	{ "captionpos", "", false, SUBSETOF, "tb", "" },
-	{ "abovecaptionskip", "", false, LENGTH, "", "" },
-	{ "belowcaptionskip", "", false, LENGTH, "", "" },
-	{ "linewidth", "", false, LENGTH, "", "" },
-	{ "xleftmargin", "", false, LENGTH, "", "" },
-	{ "xrightmargin", "", false, LENGTH, "", "" },
-	{ "resetmargins", "", false, TRUEFALSE, "", "" },
-	{ "breaklines", "", false, TRUEFALSE, "", "" },
-	{ "prebreak", "", false, ALL, "", "" },
-	{ "postbreak", "", false, ALL, "", "" },
-	{ "breakindent", "", false, LENGTH, "", "" },
-	{ "breakautoindent", "", false, TRUEFALSE, "", "" },
+	{ "nolol", "", false, TRUEFALSE, "", empty_hint},
+	{ "captionpos", "", false, SUBSETOF, "tb", empty_hint},
+	{ "abovecaptionskip", "", false, LENGTH, "", empty_hint},
+	{ "belowcaptionskip", "", false, LENGTH, "", empty_hint},
+	{ "linewidth", "", false, LENGTH, "", empty_hint},
+	{ "xleftmargin", "", false, LENGTH, "", empty_hint},
+	{ "xrightmargin", "", false, LENGTH, "", empty_hint},
+	{ "resetmargins", "", false, TRUEFALSE, "", empty_hint},
+	{ "breaklines", "", false, TRUEFALSE, "", empty_hint},
+	{ "prebreak", "", false, ALL, "", empty_hint},
+	{ "postbreak", "", false, ALL, "", empty_hint},
+	{ "breakindent", "", false, LENGTH, "", empty_hint},
+	{ "breakautoindent", "", false, TRUEFALSE, "", empty_hint},
 	{ "frame", "", false, ALL, "", frame_hint },
 	{ "frameround", "", false, SUBSETOF, "tf", frameround_hint },
-	{ "framesep", "", false, LENGTH, "", "" },
-	{ "rulesep", "", false, LENGTH, "", "" },
-	{ "framerule", "", false, LENGTH, "", "" },
-	{ "framexleftmargin", "", false, LENGTH, "", "" },
-	{ "framexrightmargin", "", false, LENGTH, "", "" },
-	{ "framextopmargin", "", false, LENGTH, "", "" },
-	{ "framexbottommargin", "", false, LENGTH, "", "" },
+	{ "framesep", "", false, LENGTH, "", empty_hint},
+	{ "rulesep", "", false, LENGTH, "", empty_hint},
+	{ "framerule", "", false, LENGTH, "", empty_hint},
+	{ "framexleftmargin", "", false, LENGTH, "", empty_hint},
+	{ "framexrightmargin", "", false, LENGTH, "", empty_hint},
+	{ "framextopmargin", "", false, LENGTH, "", empty_hint},
+	{ "framexbottommargin", "", false, LENGTH, "", empty_hint},
 	{ "backgroundcolor", "", false, ALL, "", color_hint },
 	{ "rulecolor", "", false, ALL, "", color_hint },
 	{ "fillcolor", "", false, ALL, "", color_hint },
 	{ "rulesepcolor", "", false, ALL, "", color_hint },
-	{ "frameshape", "", false, ALL, "", "" },
-	{ "index", "", false, ALL, "", "" },
-	{ "moreindex", "", false, ALL, "", "" },
-	{ "deleteindex", "", false, ALL, "", "" },
-	{ "indexstyle", "", false, ALL, "", "" },
-	{ "columns", "", false, ALL, "", "" },
-	{ "flexiblecolumns", "", false, ALL, "", "" },
-	{ "keepspaces", "", false, TRUEFALSE, "", "" },
-	{ "basewidth", "", false, LENGTH, "", "" },
-	{ "fontadjust", "", true, TRUEFALSE, "", "" },
-	{ "texcl", "", false, TRUEFALSE, "", "" },
-	{ "mathescape", "", false, TRUEFALSE, "", "" },
-	{ "escapechar", "", false, ALL, "", "" },
-	{ "escapeinside", "", false, ALL, "", "" },
-	{ "escepeinside", "", false, ALL, "", "" },
-	{ "escepebegin", "", false, ALL, "", "" },
-	{ "escepeend", "", false, ALL, "", "" },
-	{ "fancyvrb", "", false, TRUEFALSE, "", "" },
-	{ "fvcmdparams", "", false, ALL, "", "" },
-	{ "morefvcmdparams", "", false, ALL, "", "" },
-	{ "keywordsprefix", "", false, ALL, "", "" },
-	{ "keywords", "", false, ALL, "", "" },
-	{ "morekeywords", "", false, ALL, "", "" },
-	{ "deletekeywords", "", false, ALL, "", "" },
-	{ "ndkeywords", "", false, ALL, "", "" },
-	{ "morendkeywords", "", false, ALL, "", "" },
-	{ "deletendkeywords", "", false, ALL, "", "" },
-	{ "texcs", "", false, ALL, "", "" },
-	{ "moretexcs", "", false, ALL, "", "" },
-	{ "deletetexcs", "", false, ALL, "", "" },
-	{ "directives", "", false, ALL, "", "" },
-	{ "moredirectives", "", false, ALL, "", "" },
-	{ "deletedirectives", "", false, ALL, "", "" },
-	{ "sensitive", "", false, ALL, "", "" },
-	{ "alsoletter", "", false, ALL, "", "" },
-	{ "alsodigit", "", false, ALL, "", "" },
-	{ "alsoother", "", false, ALL, "", "" },
-	{ "otherkeywords", "", false, ALL, "", "" },
-	{ "tag", "", false, ALL, "", "" },
-	{ "string", "", false, ALL, "", "" },
-	{ "morestring", "", false, ALL, "", "" },
-	{ "deletestring", "", false, ALL, "", "" },
-	{ "comment", "", false, ALL, "", "" },
-	{ "morecomment", "", false, ALL, "", "" },
-	{ "deletecomment", "", false, ALL, "", "" },
-	{ "keywordcomment", "", false, ALL, "", "" },
-	{ "morekeywordcomment", "", false, ALL, "", "" },
-	{ "deletekeywordcomment", "", false, ALL, "", "" },
-	{ "keywordcommentsemicolon", "", false, ALL, "", "" },
-	{ "podcomment", "", false, ALL, "", "" },
-	{ "", "", false, ALL, "", ""}
+	{ "frameshape", "", false, ALL, "", empty_hint},
+	{ "index", "", false, ALL, "", empty_hint},
+	{ "moreindex", "", false, ALL, "", empty_hint},
+	{ "deleteindex", "", false, ALL, "", empty_hint},
+	{ "indexstyle", "", false, ALL, "", empty_hint},
+	{ "columns", "", false, ALL, "", empty_hint},
+	{ "flexiblecolumns", "", false, ALL, "", empty_hint},
+	{ "keepspaces", "", false, TRUEFALSE, "", empty_hint},
+	{ "basewidth", "", false, LENGTH, "", empty_hint},
+	{ "fontadjust", "", true, TRUEFALSE, "", empty_hint},
+	{ "texcl", "", false, TRUEFALSE, "", empty_hint},
+	{ "mathescape", "", false, TRUEFALSE, "", empty_hint},
+	{ "escapechar", "", false, ALL, "", empty_hint},
+	{ "escapeinside", "", false, ALL, "", empty_hint},
+	{ "escepeinside", "", false, ALL, "", empty_hint},
+	{ "escepebegin", "", false, ALL, "", empty_hint},
+	{ "escepeend", "", false, ALL, "", empty_hint},
+	{ "fancyvrb", "", false, TRUEFALSE, "", empty_hint},
+	{ "fvcmdparams", "", false, ALL, "", empty_hint},
+	{ "morefvcmdparams", "", false, ALL, "", empty_hint},
+	{ "keywordsprefix", "", false, ALL, "", empty_hint},
+	{ "keywords", "", false, ALL, "", empty_hint},
+	{ "morekeywords", "", false, ALL, "", empty_hint},
+	{ "deletekeywords", "", false, ALL, "", empty_hint},
+	{ "ndkeywords", "", false, ALL, "", empty_hint},
+	{ "morendkeywords", "", false, ALL, "", empty_hint},
+	{ "deletendkeywords", "", false, ALL, "", empty_hint},
+	{ "texcs", "", false, ALL, "", empty_hint},
+	{ "moretexcs", "", false, ALL, "", empty_hint},
+	{ "deletetexcs", "", false, ALL, "", empty_hint},
+	{ "directives", "", false, ALL, "", empty_hint},
+	{ "moredirectives", "", false, ALL, "", empty_hint},
+	{ "deletedirectives", "", false, ALL, "", empty_hint},
+	{ "sensitive", "", false, ALL, "", empty_hint},
+	{ "alsoletter", "", false, ALL, "", empty_hint},
+	{ "alsodigit", "", false, ALL, "", empty_hint},
+	{ "alsoother", "", false, ALL, "", empty_hint},
+	{ "otherkeywords", "", false, ALL, "", empty_hint},
+	{ "tag", "", false, ALL, "", empty_hint},
+	{ "string", "", false, ALL, "", empty_hint},
+	{ "morestring", "", false, ALL, "", empty_hint},
+	{ "deletestring", "", false, ALL, "", empty_hint},
+	{ "comment", "", false, ALL, "", empty_hint},
+	{ "morecomment", "", false, ALL, "", empty_hint},
+	{ "deletecomment", "", false, ALL, "", empty_hint},
+	{ "keywordcomment", "", false, ALL, "", empty_hint},
+	{ "morekeywordcomment", "", false, ALL, "", empty_hint},
+	{ "deletekeywordcomment", "", false, ALL, "", empty_hint},
+	{ "keywordcommentsemicolon", "", false, ALL, "", empty_hint},
+	{ "podcomment", "", false, ALL, "", empty_hint},
+	{ "", "", false, ALL, "", empty_hint}
 };
 
 
@@ -302,7 +304,7 @@ parValidator::parValidator(string const & n)
 	while (listings_param_table[idx].name != name && listings_param_table[idx].name != string())
 		++idx;
 	// found the name
-	if (listings_param_table[idx].name != "") {
+	if (!listings_param_table[idx].name.empty()) {
 		info = &listings_param_table[idx];
 		return;
 	}
@@ -342,8 +344,8 @@ void parValidator::validate(std::string const & par) const
 	switch (info->type) {
 	case ALL:
 		if (par2.empty() && !info->onoff) {
-			if (info->hint != "")
-				throw invalidParam(from_utf8(info->hint));
+			if (!info->hint.empty())
+				throw invalidParam(info->hint);
 			else
 				throw invalidParam(_("A value is expected"));
 		}
@@ -352,8 +354,8 @@ void parValidator::validate(std::string const & par) const
 		return;
 	case TRUEFALSE: {
 		if (par2.empty() && !info->onoff) {
-			if (info->hint != "")
-				throw invalidParam(from_utf8(info->hint));
+			if (!info->hint.empty())
+				throw invalidParam(info->hint);
 			else
 				throw invalidParam(_("Please specify true or false"));
 		}
@@ -366,8 +368,8 @@ void parValidator::validate(std::string const & par) const
 	}
 	case INTEGER: {
 		if (!isStrInt(par2)) {
-			if (info->hint != "")
-				throw invalidParam(from_utf8(info->hint));
+			if (!info->hint.empty())
+				throw invalidParam(info->hint);
 			else
 				throw invalidParam(_("Please specify an integer value"));
 		}
@@ -380,8 +382,8 @@ void parValidator::validate(std::string const & par) const
 	}
 	case LENGTH: {
 		if (par2.empty() && !info->onoff) {
-			if (info->hint != "")
-				throw invalidParam(from_utf8(info->hint));
+			if (!info->hint.empty())
+				throw invalidParam(info->hint);
 			else
 				throw invalidParam(_("Please specify a latex length expression"));
 		}
@@ -394,8 +396,8 @@ void parValidator::validate(std::string const & par) const
 	}
 	case ONEOF: {
 		if (par2.empty() && !info->onoff) {
-			if (info->hint != "")
-				throw invalidParam(from_utf8(info->hint));
+			if (!info->hint.empty())
+				throw invalidParam(info->hint);
 			else
 				throw invalidParam(bformat(_("Please specify one of %1$s"),
 							   from_utf8(string(info->info))));
@@ -440,8 +442,8 @@ void parValidator::validate(std::string const & par) const
 	}
 	case SUBSETOF: {
 		if (par2.empty() && !info->onoff) {
-			if (info->hint != "")
-				throw invalidParam(from_utf8(info->hint));
+			if (!info->hint.empty())
+				throw invalidParam(info->hint);
 			else
 				throw invalidParam(bformat(_("Please specify one or more of '%1$s'"),
 							   from_utf8(string(info->info))));
@@ -458,6 +460,7 @@ void parValidator::validate(std::string const & par) const
 	}
 }
 
+} // namespace anon.
 
 InsetListingsParams::InsetListingsParams() :
 	inline_(false), params_(), status_(InsetCollapsable::Open)
