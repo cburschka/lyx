@@ -380,7 +380,8 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 	//FIXME RECURSIVE INCLUDES
 	if (childBuffer == & buffer)
 		return 0;
-	else return childBuffer;
+	else
+		return childBuffer;
 }
 
 
