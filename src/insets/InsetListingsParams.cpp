@@ -112,18 +112,18 @@ char const * allowed_languages =
 	"[plain]TeX\n[primitive]TeX\nVBScript\nVerilog\nVHDL\n[AMS]VHDL\nVRML\n"
 	"[97]VRML\nXML\nXSLT";
 
-docstring empty_hint;
-docstring style_hint = _("Use \\footnotesize, \\small, \\itshape, "
+docstring const empty_hint;
+docstring const style_hint = _("Use \\footnotesize, \\small, \\itshape, "
                          "\\ttfamily or something like that");
 
-docstring frame_hint = _("none, leftline, topline, bottomline, lines, "
+docstring const frame_hint = _("none, leftline, topline, bottomline, lines, "
                          "single, shadowbox or subset of trblTRBL");
 
-docstring frameround_hint = _("Enter four letters (either t = round "
+docstring const frameround_hint = _("Enter four letters (either t = round "
                               "or f = square) for top right, bottom "
                               "right, bottom left and top left corner.");
 
-docstring color_hint = _("Enter something like \\color{white}");
+docstring const color_hint = _("Enter something like \\color{white}");
 
 
 /// options copied from page 26 of listings manual
