@@ -37,7 +37,7 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 
-char const lstinline_delimiters[] = "!@#$^&*()-_=+|;:'\"~`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
+char const lstinline_delimiters[] = "!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
 void InsetListings::init()
 {
