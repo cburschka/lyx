@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-24 18:49+0200\n"
+"POT-Creation-Date: 2007-05-26 15:25+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -157,7 +157,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:597 src/BufferList.cpp:114
 #: src/BufferList.cpp:222 src/LyXFunc.cpp:740 src/LyXFunc.cpp:913
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052 src/LyXVC.cpp:175
+#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2054 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
@@ -237,7 +237,7 @@ msgstr "&Hinzufügen"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:268 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -1349,11 +1349,11 @@ msgstr "Name der einzubindenden Datei"
 msgid "&Include Type:"
 msgstr "&Art der Einbindung:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:337
+#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:344
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:328
+#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:335
 msgid "Input"
 msgstr "Input"
 
@@ -1361,7 +1361,7 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:234
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
 #, fuzzy
 msgid "Listings"
 msgstr "Liste"
@@ -8668,7 +8668,7 @@ msgstr "Kurztitel|K"
 msgid "TeX Code|X"
 msgstr "TeX-Code|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:343
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:350
 #, fuzzy
 msgid "Program Listing"
 msgstr "Initialisierung des Programms"
@@ -8779,15 +8779,16 @@ msgid "Change Tracking|C"
 msgstr "Änderungsverfolgung|v"
 
 #: lib/ui/stdmenus.inc:412
-msgid "Table of Contents|T"
-msgstr "Inhaltsverzeichnis|I"
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Anhang hier beginnen|A"
 
 #: lib/ui/stdmenus.inc:415
-msgid "Compressed|o"
+#, fuzzy
+msgid "Compressed|m"
 msgstr "Komprimiert|K"
 
 #: lib/ui/stdmenus.inc:416
@@ -8850,11 +8851,11 @@ msgstr "Dokument drucken"
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:763
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:767
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:773
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:777
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -11347,28 +11348,28 @@ msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s unbekannt ist."
 
-#: src/Buffer.cpp:462 src/Text.cpp:293
+#: src/Buffer.cpp:463 src/Text.cpp:293
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Unbekanntes Token: %1$s %2$s\n"
 
-#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
+#: src/Buffer.cpp:467 src/Buffer.cpp:474 src/Buffer.cpp:494
 msgid "Document header error"
 msgstr "Fehler im Dokumentkopf"
 
-#: src/Buffer.cpp:472
+#: src/Buffer.cpp:473
 msgid "\\begin_header is missing"
 msgstr "\\begin_header fehlt"
 
-#: src/Buffer.cpp:492
+#: src/Buffer.cpp:493
 msgid "\\begin_document is missing"
 msgstr "\\begin_document fehlt"
 
-#: src/Buffer.cpp:503
+#: src/Buffer.cpp:504
 msgid "Can't load document class"
 msgstr "Die Dokumentklasse kann nicht geladen werden"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:505
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
@@ -11376,12 +11377,12 @@ msgstr ""
 "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s nicht geladen "
 "werden konnte."
 
-#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:899
-#: src/BufferView.cpp:905
+#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:903
+#: src/BufferView.cpp:909
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:516 src/BufferView.cpp:900
+#: src/Buffer.cpp:517 src/BufferView.cpp:904
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11389,7 +11390,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:522 src/BufferView.cpp:906
+#: src/Buffer.cpp:523 src/BufferView.cpp:910
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11397,29 +11398,29 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:657 src/Buffer.cpp:666
+#: src/Buffer.cpp:658 src/Buffer.cpp:667
 msgid "Document could not be read"
 msgstr "Das Dokument konnte nicht gelesen werden"
 
-#: src/Buffer.cpp:658 src/Buffer.cpp:667
+#: src/Buffer.cpp:659 src/Buffer.cpp:668
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s konnte nicht gelesen werden."
 
-#: src/Buffer.cpp:675 src/Buffer.cpp:747
+#: src/Buffer.cpp:676 src/Buffer.cpp:748
 msgid "Document format failure"
 msgstr "Dokumentenformat-Fehler"
 
-#: src/Buffer.cpp:676
+#: src/Buffer.cpp:677
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s ist kein LyX-Dokument."
 
-#: src/Buffer.cpp:700
+#: src/Buffer.cpp:701
 msgid "Conversion failed"
 msgstr "Die Konvertierung ist fehlgeschlagen"
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:702
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -11428,11 +11429,11 @@ msgstr ""
 "%1$s stammt von einer anderen LyX-Version, aber eine temporäre Datei für die "
 "Konvertierung konnte nicht erzeugt werden."
 
-#: src/Buffer.cpp:710
+#: src/Buffer.cpp:711
 msgid "Conversion script not found"
 msgstr "Das Konvertierungsskript wurde nicht gefunden"
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:712
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -11441,11 +11442,11 @@ msgstr ""
 "%1$s stammt von einer anderen LyX-Version, aber das Konvertierungsskript "
 "lyx2lyx konnte nicht gefunden werden."
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:733
 msgid "Conversion script failed"
 msgstr "Das Konvertierungsskript ist fehlgeschlagen"
 
-#: src/Buffer.cpp:733
+#: src/Buffer.cpp:734
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -11454,16 +11455,16 @@ msgstr ""
 "%1$s stammt von einer anderen LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:748
+#: src/Buffer.cpp:749
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s endete unerwartet, daher ist es vermutlich beschädigt."
 
-#: src/Buffer.cpp:784
+#: src/Buffer.cpp:785
 msgid "Backup failure"
 msgstr "Die Sicherung ist fehlgeschlagen"
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:786
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -11472,11 +11473,11 @@ msgstr ""
 "Die Sicherungskopie %1$s kann nicht erstellt werden.\n"
 "Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
-#: src/Buffer.cpp:918
+#: src/Buffer.cpp:919
 msgid "Encoding error"
 msgstr "Kodierungsfehler"
 
-#: src/Buffer.cpp:919
+#: src/Buffer.cpp:920
 #, fuzzy
 msgid ""
 "Some characters of your document are probably not representable in the "
@@ -11487,17 +11488,32 @@ msgstr ""
 "darstellbar.\n"
 "Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
 
-#: src/Buffer.cpp:1197
+#: src/Buffer.cpp:1198
 msgid "Running chktex..."
 msgstr "ChkTeX wird ausgeführt..."
 
-#: src/Buffer.cpp:1210
+#: src/Buffer.cpp:1211
 msgid "chktex failure"
 msgstr "ChkTeX ist fehlgeschlagen"
 
-#: src/Buffer.cpp:1211
+#: src/Buffer.cpp:1212
 msgid "Could not run chktex successfully."
 msgstr "Chktex konnte nicht erfolgreich ausgeführt werden."
+
+#: src/Buffer.cpp:1743
+#, fuzzy
+msgid "Preview source code"
+msgstr "Vorschau bereit"
+
+#: src/Buffer.cpp:1754
+#, c-format
+msgid "Preview source code for paragraph %1$s"
+msgstr ""
+
+#: src/Buffer.cpp:1758
+#, c-format
+msgid "Preview source code from paragraph %1$s to %2$s"
+msgstr ""
 
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
@@ -11561,7 +11577,7 @@ msgstr "Die Dokumentklasse ist nicht verfügbar"
 msgid "LyX will not be able to produce output."
 msgstr "LyX wird keine Ausgabe erzeugen können."
 
-#: src/BufferView.cpp:234
+#: src/BufferView.cpp:238
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -11572,19 +11588,19 @@ msgstr ""
 "\n"
 "Möchten Sie zu der gespeicherten Version zurückkehren?"
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:912
+#: src/BufferView.cpp:241 src/LyXFunc.cpp:912
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument wieder herstellen?"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
+#: src/BufferView.cpp:242 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 msgid "&Revert"
 msgstr "&Wieder herstellen"
 
-#: src/BufferView.cpp:238
+#: src/BufferView.cpp:242
 msgid "&Switch to document"
 msgstr "Zum Dokument &wechseln"
 
-#: src/BufferView.cpp:260
+#: src/BufferView.cpp:264
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -11595,70 +11611,70 @@ msgstr ""
 "\n"
 "Möchten Sie ein neues Dokument erzeugen?"
 
-#: src/BufferView.cpp:263
+#: src/BufferView.cpp:267
 msgid "Create new document?"
 msgstr "Möchten Sie ein neues Dokument erstellen?"
 
-#: src/BufferView.cpp:264
+#: src/BufferView.cpp:268
 msgid "&Create"
 msgstr "&Erstellen"
 
-#: src/BufferView.cpp:570
+#: src/BufferView.cpp:574
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:766
+#: src/BufferView.cpp:770
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:776
+#: src/BufferView.cpp:780
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:953
+#: src/BufferView.cpp:957
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:960
+#: src/BufferView.cpp:964
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:967
+#: src/BufferView.cpp:971
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:970
+#: src/BufferView.cpp:974
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1016
+#: src/BufferView.cpp:1020
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView.cpp:1019
+#: src/BufferView.cpp:1023
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView.cpp:1024
+#: src/BufferView.cpp:1028
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView.cpp:1026
+#: src/BufferView.cpp:1030
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:1033
 msgid "Count words"
 msgstr "Wörter zählen"
 
-#: src/BufferView.cpp:1608
+#: src/BufferView.cpp:1612
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1891 src/LyXFunc.cpp:1930
-#: src/LyXFunc.cpp:2003 src/callback.cpp:136
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11667,31 +11683,31 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1931 src/LyXFunc.cpp:2004
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1896 src/LyXFunc.cpp:1935
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1945 src/LyXFunc.cpp:2025
-#: src/LyXFunc.cpp:2039 src/LyXFunc.cpp:2055
+#: src/BufferView.cpp:1631 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1642
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:1649
+#: src/BufferView.cpp:1653
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:1651
+#: src/BufferView.cpp:1655
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
@@ -12056,7 +12072,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Datei überschreiben?"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2054
 #: src/callback.cpp:170
 msgid "&Over-write"
 msgstr "&Überschreiben"
@@ -12609,68 +12625,73 @@ msgstr "Fehlendes Argument"
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/LyXFunc.cpp:1416
+#: src/LyXFunc.cpp:1426
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/LyXFunc.cpp:1503
+#: src/LyXFunc.cpp:1429
+#, fuzzy
+msgid "Document not loaded."
+msgstr "Das Dokument wurde nicht gespeichert"
+
+#: src/LyXFunc.cpp:1505
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1514
+#: src/LyXFunc.cpp:1516
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen - die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/LyXFunc.cpp:1628
+#: src/LyXFunc.cpp:1630
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/LyXFunc.cpp:1631
+#: src/LyXFunc.cpp:1633
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/LyXFunc.cpp:1687
+#: src/LyXFunc.cpp:1689
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/LyXFunc.cpp:1889
+#: src/LyXFunc.cpp:1891
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/LyXFunc.cpp:1892 src/callback.cpp:137
+#: src/LyXFunc.cpp:1894 src/callback.cpp:137
 msgid "Templates|#T#t"
 msgstr "Vorlagen|#V"
 
-#: src/LyXFunc.cpp:1928
+#: src/LyXFunc.cpp:1930
 msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
-#: src/LyXFunc.cpp:1967
+#: src/LyXFunc.cpp:1969
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/LyXFunc.cpp:1971
+#: src/LyXFunc.cpp:1973
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/LyXFunc.cpp:1973
+#: src/LyXFunc.cpp:1975
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/LyXFunc.cpp:1998
+#: src/LyXFunc.cpp:2000
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/LyXFunc.cpp:2049 src/callback.cpp:167
+#: src/LyXFunc.cpp:2051 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12681,11 +12702,11 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument überschreiben?"
 
-#: src/LyXFunc.cpp:2051 src/callback.cpp:169
+#: src/LyXFunc.cpp:2053 src/callback.cpp:169
 msgid "Over-write document?"
 msgstr "Dokument überschreiben?"
 
-#: src/LyXFunc.cpp:2122
+#: src/LyXFunc.cpp:2124
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
@@ -13790,7 +13811,7 @@ msgstr " (geändert)"
 msgid " (read only)"
 msgstr " (schreibgeschützt)"
 
-#: src/frontends/WorkArea.cpp:242
+#: src/frontends/WorkArea.cpp:244
 msgid "Formatting document..."
 msgstr "Formatieren des Dokuments..."
 
@@ -14260,7 +14281,7 @@ msgstr "Große Symbole"
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:477
+#: src/frontends/qt4/GuiWorkArea.cpp:468
 msgid "unknown version"
 msgstr "unbekannte Version"
 
@@ -14458,8 +14479,8 @@ msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
 #: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
-#: src/frontends/qt4/QListings.cpp:327 src/frontends/qt4/QListings.cpp:409
-#: src/frontends/qt4/QListings.cpp:441
+#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
+#: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -14603,7 +14624,7 @@ msgstr "Zweige"
 msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
-#: src/frontends/qt4/QDocument.cpp:1368
+#: src/frontends/qt4/QDocument.cpp:1370
 msgid "Document Settings"
 msgstr "Dokument-Einstellungen"
 
@@ -14654,12 +14675,12 @@ msgstr "Kommentar"
 msgid "primitive"
 msgstr "prime"
 
-#: src/frontends/qt4/QListings.cpp:371
+#: src/frontends/qt4/QListings.cpp:372
 #, fuzzy
 msgid "No dialect"
 msgstr "Kein Bild"
 
-#: src/frontends/qt4/QListings.cpp:396
+#: src/frontends/qt4/QListings.cpp:397
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "Absatz-Einstellungen"
@@ -14888,7 +14909,7 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/insets/Inset.cpp:260
+#: src/insets/Inset.cpp:268
 msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
@@ -15048,7 +15069,7 @@ msgstr "Fußnoten-Einfügung geöffnet"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:497
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:516
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15073,29 +15094,29 @@ msgstr "Grafikdatei: %1$s"
 msgid "Horizontal Fill"
 msgstr "Variabler horiz. Abstand"
 
-#: src/insets/InsetInclude.cpp:331
+#: src/insets/InsetInclude.cpp:338
 msgid "Verbatim Input"
 msgstr "Unformatiert"
 
-#: src/insets/InsetInclude.cpp:334
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:348
 #, fuzzy
 msgid "Program Listing "
 msgstr "Initialisierung des Programms"
 
-#: src/insets/InsetInclude.cpp:424 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:609
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:425 src/insets/InsetInclude.cpp:591
+#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:610
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:460
+#: src/insets/InsetInclude.cpp:479
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15106,7 +15127,7 @@ msgstr ""
 "hat die Textklasse `%2$s'\n"
 "während die Hauptdatei die Textklasse `%3$s' hat."
 
-#: src/insets/InsetInclude.cpp:466
+#: src/insets/InsetInclude.cpp:485
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
@@ -15118,137 +15139,137 @@ msgstr "Stichwort"
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
-#: src/insets/InsetListings.cpp:124
+#: src/insets/InsetListings.cpp:127
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "Legenden-Einfügung geöffnet"
 
-#: src/insets/InsetListingsParams.cpp:109
+#: src/insets/InsetListingsParams.cpp:114
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:110
+#: src/insets/InsetListingsParams.cpp:115
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:112
+#: src/insets/InsetListingsParams.cpp:117
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:113
+#: src/insets/InsetListingsParams.cpp:118
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:128
+#: src/insets/InsetListingsParams.cpp:133
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:170
+#: src/insets/InsetListingsParams.cpp:175
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:175
+#: src/insets/InsetListingsParams.cpp:180
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
 "(Include dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:178
+#: src/insets/InsetListingsParams.cpp:183
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
 "dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:282
+#: src/insets/InsetListingsParams.cpp:287
 msgid "Invalid (empty) listings param name."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:293
+#: src/insets/InsetListingsParams.cpp:298
 #, c-format
 msgid "Available listings parameters are %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:316
+#: src/insets/InsetListingsParams.cpp:321
 #, fuzzy, c-format
 msgid "Unknown listings param name: %1$s"
 msgstr "Unbekannter Argumentname: "
 
-#: src/insets/InsetListingsParams.cpp:319
+#: src/insets/InsetListingsParams.cpp:324
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:343
+#: src/insets/InsetListingsParams.cpp:348
 msgid "A value is expected"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:346
-#: src/insets/InsetListingsParams.cpp:359
-#: src/insets/InsetListingsParams.cpp:373
-#: src/insets/InsetListingsParams.cpp:387
-#: src/insets/InsetListingsParams.cpp:414
-#: src/insets/InsetListingsParams.cpp:450
+#: src/insets/InsetListingsParams.cpp:351
+#: src/insets/InsetListingsParams.cpp:364
+#: src/insets/InsetListingsParams.cpp:378
+#: src/insets/InsetListingsParams.cpp:392
+#: src/insets/InsetListingsParams.cpp:419
+#: src/insets/InsetListingsParams.cpp:455
 msgid "Unbalanced braces!"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:353
+#: src/insets/InsetListingsParams.cpp:358
 msgid "Please specify true or false"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:356
+#: src/insets/InsetListingsParams.cpp:361
 #, c-format
 msgid "Only true or false is allowed for parameter %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:367
+#: src/insets/InsetListingsParams.cpp:372
 msgid "Please specify an integer value"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:370
+#: src/insets/InsetListingsParams.cpp:375
 #, c-format
 msgid "An integer is expected for parameter %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:381
+#: src/insets/InsetListingsParams.cpp:386
 msgid "Please specify a latex length expression"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:384
+#: src/insets/InsetListingsParams.cpp:389
 #, c-format
 msgid "Invalid latex length expression for parameter %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:395
+#: src/insets/InsetListingsParams.cpp:400
 #, c-format
 msgid "Please specify one of %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:429
+#: src/insets/InsetListingsParams.cpp:434
 #, c-format
 msgid "Try one of %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:432
+#: src/insets/InsetListingsParams.cpp:437
 #, c-format
 msgid "I guess you mean %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:441
+#: src/insets/InsetListingsParams.cpp:446
 #, c-format
 msgid "Please specify one or more of '%1$s'"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:447
+#: src/insets/InsetListingsParams.cpp:452
 #, c-format
 msgid "Parameter %1$s should be composed of one or more of %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:502
+#: src/insets/InsetListingsParams.cpp:523
 #, c-format
 msgid "Parameter %1$s has already been defined"
 msgstr ""
@@ -15711,6 +15732,9 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Table of Contents|T"
+#~ msgstr "Inhaltsverzeichnis|I"
 
 #, fuzzy
 #~ msgid "OK"

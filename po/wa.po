@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-24 18:49+0200\n"
+"POT-Creation-Date: 2007-05-26 15:25+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -90,7 +90,7 @@ msgstr "I va"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:597 src/BufferList.cpp:114
 #: src/BufferList.cpp:222 src/LyXFunc.cpp:740 src/LyXFunc.cpp:913
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052 src/LyXVC.cpp:175
+#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2054 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 #, fuzzy
@@ -180,7 +180,7 @@ msgstr "Radjouter a|#R#t"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:268 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Rinoncî"
 
@@ -1450,11 +1450,11 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "&Include Type:"
 msgstr "Prinde avou"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:337
+#: src/frontends/qt4/ui/IncludeUi.ui:277 src/insets/InsetInclude.cpp:344
 msgid "Include"
 msgstr "Prinde avou"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:328
+#: src/frontends/qt4/ui/IncludeUi.ui:282 src/insets/InsetInclude.cpp:335
 msgid "Input"
 msgstr "Intreye"
 
@@ -1462,7 +1462,7 @@ msgstr "Intreye"
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:234
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
 #, fuzzy
 msgid "Listings"
 msgstr "Royes"
@@ -9739,7 +9739,7 @@ msgstr "Fitchî"
 msgid "TeX Code|X"
 msgstr "LaTeX|#T"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:343
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:350
 #, fuzzy
 msgid "Program Listing"
 msgstr "LyX VC: discrîjhaedje po cmincî"
@@ -9871,16 +9871,15 @@ msgid "Change Tracking|C"
 msgstr "Lingaedje"
 
 #: lib/ui/stdmenus.inc:412
-#, fuzzy
-msgid "Table of Contents|T"
-msgstr "Ådvins"
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:415
-msgid "Compressed|o"
+msgid "Compressed|m"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:416
@@ -9957,11 +9956,11 @@ msgstr "Abaguer on documint"
 msgid "Check spelling"
 msgstr "Waitî TeX"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:763
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:767
 msgid "Undo"
 msgstr "Disfé"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:773
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:777
 msgid "Redo"
 msgstr "Rifé"
 
@@ -12730,41 +12729,41 @@ msgstr "dins li classe ki vos avîz tchwezi"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:462 src/Text.cpp:293
+#: src/Buffer.cpp:463 src/Text.cpp:293
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
+#: src/Buffer.cpp:467 src/Buffer.cpp:474 src/Buffer.cpp:494
 #, fuzzy
 msgid "Document header error"
 msgstr "Aroke dins LaTeX"
 
-#: src/Buffer.cpp:472
+#: src/Buffer.cpp:473
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:492
+#: src/Buffer.cpp:493
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:503
+#: src/Buffer.cpp:504
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Dji n' parvén nén a tcherdjî cisse sôrte di documint"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:505
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:899
-#: src/BufferView.cpp:905
+#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:903
+#: src/BufferView.cpp:909
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:516 src/BufferView.cpp:900
+#: src/Buffer.cpp:517 src/BufferView.cpp:904
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -12772,7 +12771,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:522 src/BufferView.cpp:906
+#: src/Buffer.cpp:523 src/BufferView.cpp:910
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12780,103 +12779,118 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:657 src/Buffer.cpp:666
+#: src/Buffer.cpp:658 src/Buffer.cpp:667
 #, fuzzy
 msgid "Document could not be read"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/Buffer.cpp:658 src/Buffer.cpp:667
+#: src/Buffer.cpp:659 src/Buffer.cpp:668
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " hagnons n' ont nén stî ratoûrnés"
 
-#: src/Buffer.cpp:675 src/Buffer.cpp:747
+#: src/Buffer.cpp:676 src/Buffer.cpp:748
 #, fuzzy
 msgid "Document format failure"
 msgstr "Documint"
 
-#: src/Buffer.cpp:676
+#: src/Buffer.cpp:677
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:700
+#: src/Buffer.cpp:701
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:702
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:710
+#: src/Buffer.cpp:711
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Nol advertixhmint d' oyu."
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:712
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:733
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:733
+#: src/Buffer.cpp:734
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:748
+#: src/Buffer.cpp:749
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:784
+#: src/Buffer.cpp:785
 #, fuzzy
 msgid "Backup failure"
 msgstr "Prémetu"
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:786
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:918
+#: src/Buffer.cpp:919
 #, fuzzy
 msgid "Encoding error"
 msgstr "Ecôdaedje:|#E"
 
-#: src/Buffer.cpp:919
+#: src/Buffer.cpp:920
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1197
+#: src/Buffer.cpp:1198
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/Buffer.cpp:1210
+#: src/Buffer.cpp:1211
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1211
+#: src/Buffer.cpp:1212
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
+
+#: src/Buffer.cpp:1743
+#, fuzzy
+msgid "Preview source code"
+msgstr "Comincî pal difén|#R"
+
+#: src/Buffer.cpp:1754
+#, c-format
+msgid "Preview source code for paragraph %1$s"
+msgstr ""
+
+#: src/Buffer.cpp:1758
+#, c-format
+msgid "Preview source code from paragraph %1$s to %2$s"
+msgstr ""
 
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
@@ -12932,7 +12946,7 @@ msgstr "L'adjinçmint do documint est metu"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/BufferView.cpp:234
+#: src/BufferView.cpp:238
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -12940,22 +12954,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:912
+#: src/BufferView.cpp:241 src/LyXFunc.cpp:912
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
+#: src/BufferView.cpp:242 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Schaper"
 
-#: src/BufferView.cpp:238
+#: src/BufferView.cpp:242
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Tchwezi djusk' al difén do documint"
 
-#: src/BufferView.cpp:260
+#: src/BufferView.cpp:264
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -12963,78 +12977,78 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.cpp:263
+#: src/BufferView.cpp:267
 #, fuzzy
 msgid "Create new document?"
 msgstr "Fåt-i fé on novea documint avou li minme no?"
 
-#: src/BufferView.cpp:264
+#: src/BufferView.cpp:268
 #, fuzzy
 msgid "&Create"
 msgstr "LaTeX "
 
-#: src/BufferView.cpp:570
+#: src/BufferView.cpp:574
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Dizo|#o#B"
 
-#: src/BufferView.cpp:766
+#: src/BufferView.cpp:770
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nole informåcion po disfé"
 
-#: src/BufferView.cpp:776
+#: src/BufferView.cpp:780
 msgid "No further redo information"
 msgstr " Nole informåcion po Rifé"
 
-#: src/BufferView.cpp:953
+#: src/BufferView.cpp:957
 msgid "Mark off"
 msgstr "Li rmårke est dismetuwe"
 
-#: src/BufferView.cpp:960
+#: src/BufferView.cpp:964
 msgid "Mark on"
 msgstr "Li rmårke est metuwe"
 
-#: src/BufferView.cpp:967
+#: src/BufferView.cpp:971
 msgid "Mark removed"
 msgstr "Li rmårke est waesteye"
 
-#: src/BufferView.cpp:970
+#: src/BufferView.cpp:974
 msgid "Mark set"
 msgstr "Li rmårke e-st apontieye"
 
-#: src/BufferView.cpp:1016
+#: src/BufferView.cpp:1020
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.cpp:1019
+#: src/BufferView.cpp:1023
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/BufferView.cpp:1024
+#: src/BufferView.cpp:1028
 #, fuzzy
 msgid "One word in selection."
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.cpp:1026
+#: src/BufferView.cpp:1030
 #, fuzzy
 msgid "One word in document."
 msgstr "Dji drove li documint efant"
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:1033
 #, fuzzy
 msgid "Count words"
 msgstr "Rawete:"
 
-#: src/BufferView.cpp:1608
+#: src/BufferView.cpp:1612
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1891 src/LyXFunc.cpp:1930
-#: src/LyXFunc.cpp:2003 src/callback.cpp:136
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -13044,33 +13058,33 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "Documents|#o#O"
 msgstr "Documints"
 
-#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1931 src/LyXFunc.cpp:2004
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Egzimpes"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1896 src/LyXFunc.cpp:1935
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documint"
 
-#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1945 src/LyXFunc.cpp:2025
-#: src/LyXFunc.cpp:2039 src/LyXFunc.cpp:2055
+#: src/BufferView.cpp:1631 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Vos avoz rnoncî"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1642
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.cpp:1649
+#: src/BufferView.cpp:1653
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.cpp:1651
+#: src/BufferView.cpp:1655
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
@@ -13474,7 +13488,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Machine a scrîre"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2052
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2054
 #: src/callback.cpp:170
 #, fuzzy
 msgid "&Over-write"
@@ -14010,70 +14024,75 @@ msgstr "I manke èn årgumint"
 msgid "Opening help file %1$s..."
 msgstr "Drovi li fitchî d' aidance"
 
-#: src/LyXFunc.cpp:1416
+#: src/LyXFunc.cpp:1426
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Dji drove li documint"
 
-#: src/LyXFunc.cpp:1503
+#: src/LyXFunc.cpp:1429
+#, fuzzy
+msgid "Document not loaded."
+msgstr "L'adjinçmint do documint est metu"
+
+#: src/LyXFunc.cpp:1505
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1514
+#: src/LyXFunc.cpp:1516
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/LyXFunc.cpp:1628
+#: src/LyXFunc.cpp:1630
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/LyXFunc.cpp:1631
+#: src/LyXFunc.cpp:1633
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Ké papî"
 
-#: src/LyXFunc.cpp:1687
+#: src/LyXFunc.cpp:1689
 msgid "Converting document to new document class..."
 msgstr "Dji ratoûne li documint dins si novele classe..."
 
-#: src/LyXFunc.cpp:1889
+#: src/LyXFunc.cpp:1891
 #, fuzzy
 msgid "Select template file"
 msgstr "Tchwezi li roye shûvante"
 
-#: src/LyXFunc.cpp:1892 src/callback.cpp:137
+#: src/LyXFunc.cpp:1894 src/callback.cpp:137
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modeles"
 
-#: src/LyXFunc.cpp:1928
+#: src/LyXFunc.cpp:1930
 #, fuzzy
 msgid "Select document to open"
 msgstr "Tchwezixhoz on documint po drovi"
 
-#: src/LyXFunc.cpp:1967
+#: src/LyXFunc.cpp:1969
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Dji drove li documint"
 
-#: src/LyXFunc.cpp:1971
+#: src/LyXFunc.cpp:1973
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "I gn a nou documint di drovu!%t"
 
-#: src/LyXFunc.cpp:1973
+#: src/LyXFunc.cpp:1975
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/LyXFunc.cpp:1998
+#: src/LyXFunc.cpp:2000
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/LyXFunc.cpp:2049 src/callback.cpp:167
+#: src/LyXFunc.cpp:2051 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14081,12 +14100,12 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:2051 src/callback.cpp:169
+#: src/LyXFunc.cpp:2053 src/callback.cpp:169
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Schaper li documint?"
 
-#: src/LyXFunc.cpp:2122
+#: src/LyXFunc.cpp:2124
 msgid "Welcome to LyX!"
 msgstr "Wilicome dins LyX !"
 
@@ -15096,7 +15115,7 @@ msgstr "(Candjî)"
 msgid " (read only)"
 msgstr "(rén ki lere)"
 
-#: src/frontends/WorkArea.cpp:242
+#: src/frontends/WorkArea.cpp:244
 msgid "Formatting document..."
 msgstr "Metaedje è pådje do documint..."
 
@@ -15647,7 +15666,7 @@ msgstr ""
 msgid "LyX"
 msgstr "Rexhe"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:477
+#: src/frontends/qt4/GuiWorkArea.cpp:468
 #, fuzzy
 msgid "unknown version"
 msgstr "Bouye nén cnoxhuwe"
@@ -15868,8 +15887,8 @@ msgstr "Machine a scrîre"
 
 #: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
 #: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
-#: src/frontends/qt4/QListings.cpp:327 src/frontends/qt4/QListings.cpp:409
-#: src/frontends/qt4/QListings.cpp:441
+#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
+#: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -16038,7 +16057,7 @@ msgstr "Intreye bibiografike"
 msgid "LaTeX Preamble"
 msgstr "Adrovaedje LaTeX"
 
-#: src/frontends/qt4/QDocument.cpp:1368
+#: src/frontends/qt4/QDocument.cpp:1370
 #, fuzzy
 msgid "Document Settings"
 msgstr "Documints"
@@ -16095,12 +16114,12 @@ msgstr "Rawete:"
 msgid "primitive"
 msgstr ""
 
-#: src/frontends/qt4/QListings.cpp:371
+#: src/frontends/qt4/QListings.cpp:372
 #, fuzzy
 msgid "No dialect"
 msgstr "(Candjî)"
 
-#: src/frontends/qt4/QListings.cpp:396
+#: src/frontends/qt4/QListings.cpp:397
 #, fuzzy
 msgid "Program Listings Settings"
 msgstr "Minipådje|#M"
@@ -16362,7 +16381,7 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "Rexhe"
 
-#: src/insets/Inset.cpp:260
+#: src/insets/Inset.cpp:268
 msgid "Opened inset"
 msgstr "inset drovu"
 
@@ -16544,7 +16563,7 @@ msgstr "inset drovu"
 msgid "footnote"
 msgstr "Sititchî ene pînote"
 
-#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:497
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:516
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -16567,29 +16586,29 @@ msgstr "Fitchî|#F"
 msgid "Horizontal Fill"
 msgstr "Aroymint di coûtchî|#c"
 
-#: src/insets/InsetInclude.cpp:331
+#: src/insets/InsetInclude.cpp:338
 msgid "Verbatim Input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:334
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input*"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:348
 #, fuzzy
 msgid "Program Listing "
 msgstr "LyX VC: discrîjhaedje po cmincî"
 
-#: src/insets/InsetInclude.cpp:424 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:609
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:425 src/insets/InsetInclude.cpp:591
+#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:610
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:460
+#: src/insets/InsetInclude.cpp:479
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -16597,7 +16616,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:466
+#: src/insets/InsetInclude.cpp:485
 msgid "Different textclasses"
 msgstr ""
 
@@ -16610,137 +16629,137 @@ msgstr "Index"
 msgid "Index"
 msgstr "Index"
 
-#: src/insets/InsetListings.cpp:124
+#: src/insets/InsetListings.cpp:127
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetListingsParams.cpp:109
+#: src/insets/InsetListingsParams.cpp:114
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:110
+#: src/insets/InsetListingsParams.cpp:115
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:112
+#: src/insets/InsetListingsParams.cpp:117
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:113
+#: src/insets/InsetListingsParams.cpp:118
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:128
+#: src/insets/InsetListingsParams.cpp:133
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:170
+#: src/insets/InsetListingsParams.cpp:175
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:175
+#: src/insets/InsetListingsParams.cpp:180
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
 "(Include dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:178
+#: src/insets/InsetListingsParams.cpp:183
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
 "dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:282
+#: src/insets/InsetListingsParams.cpp:287
 msgid "Invalid (empty) listings param name."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:293
+#: src/insets/InsetListingsParams.cpp:298
 #, c-format
 msgid "Available listings parameters are %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:316
+#: src/insets/InsetListingsParams.cpp:321
 #, fuzzy, c-format
 msgid "Unknown listings param name: %1$s"
 msgstr "I manke èn årgumint"
 
-#: src/insets/InsetListingsParams.cpp:319
+#: src/insets/InsetListingsParams.cpp:324
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:343
+#: src/insets/InsetListingsParams.cpp:348
 msgid "A value is expected"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:346
-#: src/insets/InsetListingsParams.cpp:359
-#: src/insets/InsetListingsParams.cpp:373
-#: src/insets/InsetListingsParams.cpp:387
-#: src/insets/InsetListingsParams.cpp:414
-#: src/insets/InsetListingsParams.cpp:450
+#: src/insets/InsetListingsParams.cpp:351
+#: src/insets/InsetListingsParams.cpp:364
+#: src/insets/InsetListingsParams.cpp:378
+#: src/insets/InsetListingsParams.cpp:392
+#: src/insets/InsetListingsParams.cpp:419
+#: src/insets/InsetListingsParams.cpp:455
 msgid "Unbalanced braces!"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:353
+#: src/insets/InsetListingsParams.cpp:358
 msgid "Please specify true or false"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:356
+#: src/insets/InsetListingsParams.cpp:361
 #, c-format
 msgid "Only true or false is allowed for parameter %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:367
+#: src/insets/InsetListingsParams.cpp:372
 msgid "Please specify an integer value"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:370
+#: src/insets/InsetListingsParams.cpp:375
 #, c-format
 msgid "An integer is expected for parameter %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:381
+#: src/insets/InsetListingsParams.cpp:386
 msgid "Please specify a latex length expression"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:384
+#: src/insets/InsetListingsParams.cpp:389
 #, c-format
 msgid "Invalid latex length expression for parameter %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:395
+#: src/insets/InsetListingsParams.cpp:400
 #, c-format
 msgid "Please specify one of %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:429
+#: src/insets/InsetListingsParams.cpp:434
 #, c-format
 msgid "Try one of %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:432
+#: src/insets/InsetListingsParams.cpp:437
 #, c-format
 msgid "I guess you mean %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:441
+#: src/insets/InsetListingsParams.cpp:446
 #, c-format
 msgid "Please specify one or more of '%1$s'"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:447
+#: src/insets/InsetListingsParams.cpp:452
 #, c-format
 msgid "Parameter %1$s should be composed of one or more of %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:502
+#: src/insets/InsetListingsParams.cpp:523
 #, c-format
 msgid "Parameter %1$s has already been defined"
 msgstr ""
@@ -17249,6 +17268,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Table of Contents|T"
+#~ msgstr "Ådvins"
 
 #, fuzzy
 #~ msgid "OK"
