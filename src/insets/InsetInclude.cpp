@@ -431,7 +431,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
 	if (isInputOrInclude(params_) &&
-		buffer.fileName() == included_file.toFilesystemEncoding()) 
+		buffer.fileName() == included_file.absFilename()) 
 	{
 		Alert::error(_("Recursive input"), 
 		               bformat(_("Attempted to include file %1$s in itself! "
