@@ -409,10 +409,10 @@ Menuset
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
-		Item "Table of Contents|T" "dialog-toggle toc"
+		Item "Outline|O" "dialog-toggle toc"
 		Item "Start Appendix Here|A" "appendix"
 		Separator
-		Item "Compressed|o" "buffer-toggle-compression"
+		Item "Compressed|m" "buffer-toggle-compression"
 		Item "Settings...|S" "dialog-show document"
 	End
 
