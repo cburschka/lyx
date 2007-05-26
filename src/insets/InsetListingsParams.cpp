@@ -113,9 +113,16 @@ char const * allowed_languages =
 	"[97]VRML\nXML\nXSLT";
 
 docstring empty_hint;
-docstring style_hint = _("Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that");
-docstring frame_hint = _("none, leftline, topline, bottomline, lines, single, shadowbox or subset of trblTRBL");
-docstring frameround_hint =	_("Enter four letters (either t = round or f = square) for top right, bottom right, bottom left and top left corner.");
+docstring style_hint = _("Use \\footnotesize, \\small, \\itshape, "
+                         "\\ttfamily or something like that");
+
+docstring frame_hint = _("none, leftline, topline, bottomline, lines, "
+                         "single, shadowbox or subset of trblTRBL");
+
+docstring frameround_hint = _("Enter four letters (either t = round "
+                              "or f = square) for top right, bottom "
+                              "right, bottom left and top left corner.");
+
 docstring color_hint = _("Enter something like \\color{white}");
 
 
@@ -132,7 +139,7 @@ listings_param_info const listings_param_table[] = {
 	{ "firstline", "", false, INTEGER, "", empty_hint},
 	{ "lastline", "", false, INTEGER, "", empty_hint},
 	{ "showlines", "", false, TRUEFALSE, "", empty_hint},
-	{ "emptylines", "", false, ALL, "", from_ascii("Expect a number with an optional * before it") },
+	{ "emptylines", "", false, ALL, "", _("Expect a number with an optional * before it")},
 	{ "gobble", "", false, INTEGER, "", empty_hint},
 	{ "style", "", false, ALL, "", empty_hint},
 	{ "language", "", false, ONEOF, allowed_languages, empty_hint},
