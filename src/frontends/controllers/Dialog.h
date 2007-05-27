@@ -73,7 +73,7 @@ public:
 	void redraw();
 	//@}
 
-	/** Check wether we may apply our data.
+	/** Check whether we may apply our data.
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.
 	 */
@@ -164,7 +164,7 @@ public:
 	/** The lfun that is sent for applying the data.
 	 *
 	 * This method is used by the default implementation of canApply()
-	 * for buffer dependant dialogs that send one lfun when applying the
+	 * for buffer dependent dialogs that send one lfun when applying the
 	 * data.
 	 * It should be used in dispatchParams(), too for consistency reasons.
 	 *  \returns the lfun that is sent for applying the data.
