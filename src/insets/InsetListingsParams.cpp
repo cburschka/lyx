@@ -53,48 +53,55 @@ enum param_type {
 };
 
 
-/** Information about each parameter
- */
+/// Listings package parameter information.
+// FIXME: make this class visible outside of this file so that
+// FIXME: it can be used directly in the frontend and in the LyX format
+// FIXME: parsing.
 class ListingsParam {
 public:
-	///
-	ListingsParam(): onoff_(false), type_(ALL) {}
-	///
-	ListingsParam(string v, bool o, param_type t, string i, docstring h)
+	/// Default ctor for STL containers.
+	ListingsParam(): onoff_(false), type_(ALL)
+	{}
+	/// Main ctor.
+	ListingsParam(string const & v, bool o, param_type t,
+		string const & i, docstring const & h)
 		: value_(v), onoff_(o), type_(t), info_(i), hint_(h)
 	{}
-	///
+	/// Validate a paramater.
+	/// \retval an empty string if \c par is valid.
+	/// \retval otherwise an explanation WRT to \c par invalidity.
 	docstring validate(string const & par) const;
 private:
 	/// default value
 	string value_;
 public:
-	// for option with value "true", "false",
-	// if onoff is true,
-	//   "true":  option
-	//   "false": 
-	//   "other": option="other"
-	// onoff is false,
-	//   "true":  option=true
-	//   "false": option=false
-	// this is public because of InsetListingParam::addParam()
+	/// for option with value "true", "false".
+	/// if onoff is true,
+	///   "true":  option
+	///   "false": 
+	///   "other": option="other"
+	/// onoff is false,
+	///   "true":  option=true
+	///   "false": option=false
+	// FIXME: this is public because of InsetListingParam::addParam()
 	bool onoff_;
 private:
-	/// validator type
-	// ALL:
-	// TRUEFALSE:
-	// INTEGER:
-	// LENGTH:
-	//     info is ignored.
-	// ONEOF
-	//     info is a \n separated string with allowed values
-	// SUBSETOF
-	//     info is a string from which par is composed of
-	//     (e.g. floatplacement can be one or more of *tbph)
+	/// validator type.
+	/// ALL:
+	/// TRUEFALSE:
+	/// INTEGER:
+	/// LENGTH:
+	///     info is ignored.
+	/// ONEOF
+	///     info is a \n separated string with allowed values
+	/// SUBSETOF
+	///     info is a string from which par is composed of
+	///     (e.g. floatplacement can be one or more of *tbph)
 	param_type type_;
-	/// parameter info, meaning depending on parameter type
+	/// information which meaning depends on parameter type.
+	/// \sa type_
 	string info_;
-	/// a help message that is displayed in the gui
+	/// a help message that is displayed in the gui.
 	docstring hint_;
 };
 
@@ -251,17 +258,24 @@ char const * allowed_languages =
 	"[97]VRML\nXML\nXSLT";
 
 
+/// ListingsParam Validator.
+/// This class is aimed to be a singleton which is instantiated in 
+/// \c InsetListingsParams::addParam().
+// FIXME: transfer this validator to the frontend.
+// FIXME: avoid the use of exception.
 class ParValidator
 {
 public:
 	ParValidator();
 
-	///
+	/// \return the associated \c ListingsParam.
+	/// \warning an \c invalidParamexception will be thrown
+	///          if the key is not found.
 	ListingsParam const & param(string const & key) const;
 
-	/// validate given parameter
-	/// invalidParam will be thrown if invalid 
-	/// parameter is found.
+	/// validate a parameter for a given key.
+	/// \warning an \c invalidParam exception will be thrown if
+	/// \c par is an invalid parameter.
 	ListingsParam const & validate(string const & key, string const & par) const;
 
 private:
@@ -618,13 +632,14 @@ ListingsParam const & ParValidator::param(string const & name) const
 
 } // namespace anon.
 
-InsetListingsParams::InsetListingsParams() :
-	inline_(false), params_(), status_(InsetCollapsable::Open)
+InsetListingsParams::InsetListingsParams()
+	: inline_(false), params_(), status_(InsetCollapsable::Open)
 {
 }
 
 
-InsetListingsParams::InsetListingsParams(string const & par, bool in, InsetCollapsable::CollapseStatus s)
+InsetListingsParams::InsetListingsParams(string const & par, bool in,
+		InsetCollapsable::CollapseStatus s)
 	: inline_(in), params_(), status_(s)
 {
 	// this will activate parameter validation.
@@ -733,7 +748,8 @@ void InsetListingsParams::addParams(string const & par)
 			continue;
 		} else if (par[i] == '{' && par[i - 1] == '=')
 			braces ++;
-		else if (par[i] == '}' && (i == par.size() - 1 || par[i + 1] == ',' || par[i + 1] == '\n'))
+		else if (par[i] == '}' 
+			&& (i == par.size() - 1 || par[i + 1] == ',' || par[i + 1] == '\n'))
 			braces --;
 		
 		if (isValue)
