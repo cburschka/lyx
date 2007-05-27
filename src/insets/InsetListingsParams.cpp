@@ -55,11 +55,20 @@ enum param_type {
 
 /** Information about each parameter
  */
-struct listings_param_info {
-	/// name of the parameter
-	string name;
+class ListingsParam {
+public:
+	///
+	ListingsParam(): onoff_(false), type_(ALL) {}
+	///
+	ListingsParam(string v, bool o, param_type t, string i, docstring h)
+		: value_(v), onoff_(o), type_(t), info_(i), hint_(h)
+	{}
+	///
+	docstring validate(string const & par) const;
+private:
 	/// default value
-	string value;
+	string value_;
+public:
 	// for option with value "true", "false",
 	// if onoff is true,
 	//   "true":  option
@@ -68,7 +77,9 @@ struct listings_param_info {
 	// onoff is false,
 	//   "true":  option=true
 	//   "false": option=false
-	bool onoff;
+	// this is public because of InsetListingParam::addParam()
+	bool onoff_;
+private:
 	/// validator type
 	// ALL:
 	// TRUEFALSE:
@@ -80,12 +91,139 @@ struct listings_param_info {
 	// SUBSETOF
 	//     info is a string from which par is composed of
 	//     (e.g. floatplacement can be one or more of *tbph)
-	param_type type;
+	param_type type_;
 	/// parameter info, meaning depending on parameter type
-	string info;
+	string info_;
 	/// a help message that is displayed in the gui
-	docstring hint;
+	docstring hint_;
 };
+
+
+docstring ListingsParam::validate(string const & par) const
+{
+	bool unclosed = false;
+	string par2 = par;
+	// braces are allowed
+	if (prefixIs(par, "{") && suffixIs(par, "}"))
+		par2 = par.substr(1, par.size() - 2);
+	else if (prefixIs(par, "{")) {
+		par2 = par.substr(1);
+		unclosed = true;
+	}
+		
+	switch (type_) {
+
+	case ALL:
+		if (par2.empty() && !onoff_) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return _("A value is expected.");
+		}
+		if (unclosed)
+				return _("Unbalanced braces!");
+		return docstring();
+
+	case TRUEFALSE:
+		if (par2.empty() && !onoff_) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return _("Please specify true or false.");
+		}
+		if (par2 != "true" && par2 != "false")
+			return _("Only true or false is allowed.");
+		if (unclosed)
+			return _("Unbalanced braces!");
+		return docstring();
+
+	case INTEGER:
+		if (!isStrInt(par2)) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return _("Please specify an integer value.");
+		}
+		if (convert<int>(par2) == 0 && par2[0] != '0')
+			return _("An integer is expected.");
+		if (unclosed)
+			return _("Unbalanced braces!");
+		return docstring();
+
+	case LENGTH:
+		if (par2.empty() && !onoff_) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return _("Please specify a latex length expression.");
+		}
+		if (!isValidLength(par2))
+			return _("Invalid latex length expression.");
+		if (unclosed)
+			return _("Unbalanced braces!");
+		return docstring();
+
+	case ONEOF: {
+		if (par2.empty() && !onoff_) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return bformat(_("Please specify one of %1$s."),
+							   from_utf8(info_));
+		}
+		// break value to allowed strings
+		vector<string> lists;
+		string v;
+		for (size_t i = 0; i != info_.size(); ++i) {
+			if (info_[i] == '\n') {
+				lists.push_back(v);
+				v = string();
+			} else
+				v += info_[i];
+		}
+		if (!v.empty())
+			lists.push_back(v);
+
+		// good, find the string
+		if (std::find(lists.begin(), lists.end(), par2) != lists.end()) {
+			if (unclosed)
+				return _("Unbalanced braces!");
+			return docstring();
+		}
+		// otherwise, produce a meaningful error message.
+		string matching_names;
+		for (vector<string>::iterator it = lists.begin(); 
+			it != lists.end(); ++it) {
+			if (it->size() >= par2.size() && it->substr(0, par2.size()) == par2) {
+				if (matching_names.empty())
+					matching_names += *it;
+				else
+					matching_names += ", " + *it;
+			}
+		}
+		if (matching_names.empty())
+			return bformat(_("Try one of %1$s."), from_utf8(info_));
+		else
+			return bformat(_("I guess you mean %1$s."), from_utf8(matching_names));
+		return docstring();
+	}
+	case SUBSETOF:
+		if (par2.empty() && !onoff_) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return bformat(_("Please specify one or more of '%1$s'."),
+							   from_utf8(info_));
+		}
+		for (size_t i = 0; i < par2.size(); ++i)
+			if (info_.find(par2[i], 0) == string::npos)
+				return bformat(_("Should be composed of one or more of %1$s."),
+						from_utf8(info_));
+		if (unclosed)
+			return _("Unbalanced braces!");
+		return docstring();
+	}
+}
 
 
 /// languages and language/dialect combinations
@@ -112,218 +250,362 @@ char const * allowed_languages =
 	"[plain]TeX\n[primitive]TeX\nVBScript\nVerilog\nVHDL\n[AMS]VHDL\nVRML\n"
 	"[97]VRML\nXML\nXSLT";
 
-docstring const empty_hint;
-docstring const style_hint = _("Use \\footnotesize, \\small, \\itshape, "
-                         "\\ttfamily or something like that");
 
-docstring const frame_hint = _("none, leftline, topline, bottomline, lines, "
-                         "single, shadowbox or subset of trblTRBL");
-
-docstring const frameround_hint = _("Enter four letters (either t = round "
-                              "or f = square) for top right, bottom "
-                              "right, bottom left and top left corner.");
-
-docstring const color_hint = _("Enter something like \\color{white}");
-
-
-/// options copied from page 26 of listings manual
-// FIXME: add default parameters ... (which is not used now)
-listings_param_info const listings_param_table[] = {
-	{ "float", "false", true,  SUBSETOF, "*tbph", empty_hint},
-	{ "floatplacement", "tbp", false, SUBSETOF, "tbp", empty_hint},
-	{ "aboveskip", "\\medskipamount", false, LENGTH, "", empty_hint},
-	{ "belowskip", "\\medskipamount", false, LENGTH, "", empty_hint},
-	{ "lineskip", "", false, LENGTH, "", empty_hint},
-	{ "boxpos", "", false, SUBSETOF, "bct", empty_hint},
-	{ "print", "", false, TRUEFALSE, "", empty_hint},
-	{ "firstline", "", false, INTEGER, "", empty_hint},
-	{ "lastline", "", false, INTEGER, "", empty_hint},
-	{ "showlines", "", false, TRUEFALSE, "", empty_hint},
-	{ "emptylines", "", false, ALL, "", _("Expect a number with an optional * before it")},
-	{ "gobble", "", false, INTEGER, "", empty_hint},
-	{ "style", "", false, ALL, "", empty_hint},
-	{ "language", "", false, ONEOF, allowed_languages, empty_hint},
-	{ "alsolanguage", "", false, ONEOF, allowed_languages, empty_hint},
-	{ "defaultdialect", "", false, ONEOF, allowed_languages, empty_hint},
-	{ "printpod", "", false, TRUEFALSE, "", empty_hint},
-	{ "usekeywordsintag", "", false, TRUEFALSE, "", empty_hint},
-	{ "tagstyle", "", false, ALL, "", style_hint },
-	{ "markfirstintag", "", false, ALL, "", style_hint },
-	{ "makemacrouse", "", false, TRUEFALSE, "", empty_hint},
-	{ "basicstyle", "", false, ALL, "", style_hint },
-	{ "identifierstyle", "", false, ALL, "", style_hint },
-	{ "commentstyle", "", false, ALL, "", style_hint },
-	{ "stringstyle", "", false, ALL, "", style_hint },
-	{ "keywordstyle", "", false, ALL, "", style_hint },
-	{ "ndkeywordstyle", "", false, ALL, "", style_hint },
-	{ "classoffset", "", false, INTEGER, "", empty_hint},
-	{ "texcsstyle", "", false, ALL, "", style_hint },
-	{ "directivestyle", "", false, ALL, "", style_hint },
-	{ "emph", "", false, ALL, "", empty_hint},
-	{ "moreemph", "", false, ALL, "", empty_hint},
-	{ "deleteemph", "", false, ALL, "", empty_hint},
-	{ "emphstyle", "", false, ALL, "", empty_hint},
-	{ "delim", "", false, ALL, "", empty_hint},
-	{ "moredelim", "", false, ALL, "", empty_hint},
-	{ "deletedelim", "", false, ALL, "", empty_hint},
-	{ "extendedchars", "", false, TRUEFALSE, "", empty_hint},
-	{ "inputencoding", "", false, ALL, "", empty_hint},
-	{ "upquote", "", false, TRUEFALSE, "", empty_hint},
-	{ "tabsize", "", false, INTEGER, "", empty_hint},
-	{ "showtabs", "", false, ALL, "", empty_hint},
-	{ "tab", "", false, ALL, "", empty_hint},
-	{ "showspaces", "", false, TRUEFALSE, "", empty_hint},
-	{ "showstringspaces", "", false, TRUEFALSE, "", empty_hint},
-	{ "formfeed", "", false, ALL, "", empty_hint},
-	{ "numbers", "", false, ONEOF, "none\nleft\nright", empty_hint},
-	{ "stepnumber", "", false, INTEGER, "", empty_hint},
-	{ "numberfirstline", "", false, TRUEFALSE, "", empty_hint},
-	{ "numberstyle", "", false, ALL, "", style_hint },
-	{ "numbersep", "", false, LENGTH, "", empty_hint},
-	{ "numberblanklines", "", false, ALL, "", empty_hint},
-	{ "firstnumber", "", false, ALL, "", _("auto, last or a number") },
-	{ "name", "", false, ALL, "", empty_hint},
-	{ "thelstnumber", "", false, ALL, "", empty_hint},
-	{ "title", "", false, ALL, "", empty_hint},
-	// this option is not handled in the parameter box
-	{ "caption", "", false, ALL, "", _("This parameter should not be entered here. "
-		"Please use caption editbox (Include dialog) or insert->caption (listings inset)") },
-	// this option is not handled in the parameter box
-	{ "label", "", false, ALL, "", _("This parameter should not be entered here. "
-		"Please use label editbox (Include dialog) or insert->caption (listings inset)") },
-	{ "nolol", "", false, TRUEFALSE, "", empty_hint},
-	{ "captionpos", "", false, SUBSETOF, "tb", empty_hint},
-	{ "abovecaptionskip", "", false, LENGTH, "", empty_hint},
-	{ "belowcaptionskip", "", false, LENGTH, "", empty_hint},
-	{ "linewidth", "", false, LENGTH, "", empty_hint},
-	{ "xleftmargin", "", false, LENGTH, "", empty_hint},
-	{ "xrightmargin", "", false, LENGTH, "", empty_hint},
-	{ "resetmargins", "", false, TRUEFALSE, "", empty_hint},
-	{ "breaklines", "", false, TRUEFALSE, "", empty_hint},
-	{ "prebreak", "", false, ALL, "", empty_hint},
-	{ "postbreak", "", false, ALL, "", empty_hint},
-	{ "breakindent", "", false, LENGTH, "", empty_hint},
-	{ "breakautoindent", "", false, TRUEFALSE, "", empty_hint},
-	{ "frame", "", false, ALL, "", frame_hint },
-	{ "frameround", "", false, SUBSETOF, "tf", frameround_hint },
-	{ "framesep", "", false, LENGTH, "", empty_hint},
-	{ "rulesep", "", false, LENGTH, "", empty_hint},
-	{ "framerule", "", false, LENGTH, "", empty_hint},
-	{ "framexleftmargin", "", false, LENGTH, "", empty_hint},
-	{ "framexrightmargin", "", false, LENGTH, "", empty_hint},
-	{ "framextopmargin", "", false, LENGTH, "", empty_hint},
-	{ "framexbottommargin", "", false, LENGTH, "", empty_hint},
-	{ "backgroundcolor", "", false, ALL, "", color_hint },
-	{ "rulecolor", "", false, ALL, "", color_hint },
-	{ "fillcolor", "", false, ALL, "", color_hint },
-	{ "rulesepcolor", "", false, ALL, "", color_hint },
-	{ "frameshape", "", false, ALL, "", empty_hint},
-	{ "index", "", false, ALL, "", empty_hint},
-	{ "moreindex", "", false, ALL, "", empty_hint},
-	{ "deleteindex", "", false, ALL, "", empty_hint},
-	{ "indexstyle", "", false, ALL, "", empty_hint},
-	{ "columns", "", false, ALL, "", empty_hint},
-	{ "flexiblecolumns", "", false, ALL, "", empty_hint},
-	{ "keepspaces", "", false, TRUEFALSE, "", empty_hint},
-	{ "basewidth", "", false, LENGTH, "", empty_hint},
-	{ "fontadjust", "", true, TRUEFALSE, "", empty_hint},
-	{ "texcl", "", false, TRUEFALSE, "", empty_hint},
-	{ "mathescape", "", false, TRUEFALSE, "", empty_hint},
-	{ "escapechar", "", false, ALL, "", empty_hint},
-	{ "escapeinside", "", false, ALL, "", empty_hint},
-	{ "escepeinside", "", false, ALL, "", empty_hint},
-	{ "escepebegin", "", false, ALL, "", empty_hint},
-	{ "escepeend", "", false, ALL, "", empty_hint},
-	{ "fancyvrb", "", false, TRUEFALSE, "", empty_hint},
-	{ "fvcmdparams", "", false, ALL, "", empty_hint},
-	{ "morefvcmdparams", "", false, ALL, "", empty_hint},
-	{ "keywordsprefix", "", false, ALL, "", empty_hint},
-	{ "keywords", "", false, ALL, "", empty_hint},
-	{ "morekeywords", "", false, ALL, "", empty_hint},
-	{ "deletekeywords", "", false, ALL, "", empty_hint},
-	{ "ndkeywords", "", false, ALL, "", empty_hint},
-	{ "morendkeywords", "", false, ALL, "", empty_hint},
-	{ "deletendkeywords", "", false, ALL, "", empty_hint},
-	{ "texcs", "", false, ALL, "", empty_hint},
-	{ "moretexcs", "", false, ALL, "", empty_hint},
-	{ "deletetexcs", "", false, ALL, "", empty_hint},
-	{ "directives", "", false, ALL, "", empty_hint},
-	{ "moredirectives", "", false, ALL, "", empty_hint},
-	{ "deletedirectives", "", false, ALL, "", empty_hint},
-	{ "sensitive", "", false, ALL, "", empty_hint},
-	{ "alsoletter", "", false, ALL, "", empty_hint},
-	{ "alsodigit", "", false, ALL, "", empty_hint},
-	{ "alsoother", "", false, ALL, "", empty_hint},
-	{ "otherkeywords", "", false, ALL, "", empty_hint},
-	{ "tag", "", false, ALL, "", empty_hint},
-	{ "string", "", false, ALL, "", empty_hint},
-	{ "morestring", "", false, ALL, "", empty_hint},
-	{ "deletestring", "", false, ALL, "", empty_hint},
-	{ "comment", "", false, ALL, "", empty_hint},
-	{ "morecomment", "", false, ALL, "", empty_hint},
-	{ "deletecomment", "", false, ALL, "", empty_hint},
-	{ "keywordcomment", "", false, ALL, "", empty_hint},
-	{ "morekeywordcomment", "", false, ALL, "", empty_hint},
-	{ "deletekeywordcomment", "", false, ALL, "", empty_hint},
-	{ "keywordcommentsemicolon", "", false, ALL, "", empty_hint},
-	{ "podcomment", "", false, ALL, "", empty_hint},
-	{ "", "", false, ALL, "", empty_hint}
-};
-
-
-class parValidator
+class ParValidator
 {
 public:
-	parValidator(string const & name);
+	ParValidator();
+
+	///
+	ListingsParam const & param(string const & key) const;
 
 	/// validate given parameter
 	/// invalidParam will be thrown if invalid 
 	/// parameter is found.
-	void validate(std::string const & par) const;
+	ListingsParam const & validate(string const & key, string const & par) const;
 
 private:
-	/// parameter name
-	string const & name;
+	/// key is the name of the parameter
+	typedef	map<string, ListingsParam> ListingsParams;
+	ListingsParams all_params_;
 	///
-	listings_param_info const * info;
+	string all_param_names_;
 };
 
 
-parValidator::parValidator(string const & n)
-	: name(n), info(0)
+ParValidator::ParValidator()
+{
+	docstring const empty_hint;
+	docstring const style_hint = _("Use \\footnotesize, \\small, \\itshape, "
+		"\\ttfamily or something like that");
+	docstring const frame_hint = _("none, leftline, topline, bottomline, lines, "
+		"single, shadowbox or subset of trblTRBL");
+	docstring const frameround_hint = _("Enter four letters (either t = round "
+		"or f = square) for top right, bottom "
+		"right, bottom left and top left corner.");
+	docstring const color_hint = _("Enter something like \\color{white}");
+
+	/// options copied from page 26 of listings manual
+	// FIXME: add default parameters ... (which is not used now)
+	all_params_["float"] = 
+		ListingsParam("false", true, SUBSETOF, "*tbph", empty_hint);
+	all_params_["floatplacement"] = 
+		ListingsParam("tbp", false, SUBSETOF, "tbp", empty_hint);
+	all_params_["aboveskip"] = 
+		ListingsParam("\\medskipamount", false, LENGTH, "", empty_hint);
+	all_params_["belowskip"] = 
+		ListingsParam("\\medskipamount", false, LENGTH, "", empty_hint);
+	all_params_["lineskip"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["boxpos"] = 
+		ListingsParam("", false, SUBSETOF, "bct", empty_hint);
+	all_params_["print"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["firstline"] = 
+		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["lastline"] = 
+		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["showlines"] =
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["emptylines"] = 
+		ListingsParam("", false, ALL, "", _(
+		"Expect a number with an optional * before it"));
+	all_params_["gobble"] = 
+		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["style"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["language"] = 
+		ListingsParam("", false, ONEOF, allowed_languages, empty_hint);
+	all_params_["alsolanguage"] = 
+		ListingsParam("", false, ONEOF, allowed_languages, empty_hint);
+	all_params_["defaultdialect"] = 
+		ListingsParam("", false, ONEOF, allowed_languages, empty_hint);
+	all_params_["printpod"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["usekeywordsintag"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["tagstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["markfirstintag"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["makemacrouse"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["basicstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["identifierstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["commentstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["stringstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["keywordstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["ndkeywordstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["classoffset"] = 
+		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["texcsstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["directivestyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["emph"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["moreemph"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deleteemph"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["emphstyle"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["delim"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["moredelim"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletedelim"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["extendedchars"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["inputencoding"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["upquote"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["tabsize"] = 
+		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["showtabs"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["tab"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["showspaces"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["showstringspaces"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["formfeed"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["numbers"] = 
+		ListingsParam("", false, ONEOF, "none\nleft\nright", empty_hint);
+	all_params_["stepnumber"] = 
+		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["numberfirstline"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["numberstyle"] = 
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["numbersep"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["numberblanklines"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["firstnumber"] = 
+		ListingsParam("", false, ALL, "", _("auto, last or a number"));
+	all_params_["name"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["thelstnumber"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["title"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	// this option is not handled in the parameter box
+	all_params_["caption"] = 
+		ListingsParam("", false, ALL, "", _(
+		"This parameter should not be entered here. Please use caption "
+		"editbox (Include dialog) or insert->caption (listings inset)"));
+	// this option is not handled in the parameter box
+	all_params_["label"] = 
+		ListingsParam("", false, ALL, "",_(
+		"This parameter should not be entered here. Please use label "
+		"editbox (Include dialog) or insert->caption (listings inset)"));
+	all_params_["nolol"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["captionpos"] = 
+		ListingsParam("", false, SUBSETOF, "tb", empty_hint);
+	all_params_["abovecaptionskip"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["belowcaptionskip"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["linewidth"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["xleftmargin"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["xrightmargin"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["resetmargins"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["breaklines"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["prebreak"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["postbreak"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["breakindent"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["breakautoindent"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["frame"] = 
+		ListingsParam("", false, ALL, "", frame_hint);
+	all_params_["frameround"] = 
+		ListingsParam("", false, SUBSETOF, "tf", frameround_hint);
+	all_params_["framesep"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["rulesep"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["framerule"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["framexleftmargin"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["framexrightmargin"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["framextopmargin"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["framexbottommargin"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["backgroundcolor"] = 
+		ListingsParam("", false, ALL, "", color_hint );
+	all_params_["rulecolor"] = 
+		ListingsParam("", false, ALL, "", color_hint );
+	all_params_["fillcolor"] = 
+		ListingsParam("", false, ALL, "", color_hint );
+	all_params_["rulesepcolor"] = 
+		ListingsParam("", false, ALL, "", color_hint );
+	all_params_["frameshape"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["index"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["moreindex"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deleteindex"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["indexstyle"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["columns"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["flexiblecolumns"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["keepspaces"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["basewidth"] = 
+		ListingsParam("", false, LENGTH, "", empty_hint);
+	all_params_["fontadjust"] = 
+		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+	all_params_["texcl"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["mathescape"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["escapechar"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["escapeinside"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["escepeinside"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["escepebegin"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["escepeend"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["fancyvrb"] = 
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["fvcmdparams"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morefvcmdparams"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["keywordsprefix"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["keywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morekeywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletekeywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["ndkeywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morendkeywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletendkeywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["texcs"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["moretexcs"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletetexcs"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["directives"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["moredirectives"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletedirectives"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["sensitive"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["alsoletter"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["alsodigit"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["alsoother"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["otherkeywords"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["tag"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["string"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morestring"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletestring"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["comment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morecomment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletecomment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["keywordcomment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morekeywordcomment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletekeywordcomment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["keywordcommentsemicolon"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["podcomment"] = 
+		ListingsParam("", false, ALL, "", empty_hint);
+
+	ListingsParams::const_iterator it = all_params_.begin();
+	ListingsParams::const_iterator end = all_params_.end();
+	for (; it != end; ++it) {
+		if (!all_param_names_.empty())
+			all_param_names_ += ", ";
+		all_param_names_ += it->first;
+	}
+}
+
+
+ListingsParam const & ParValidator::validate(string const & key,
+		string const & par) const
+{
+	ListingsParam const & lparam = param(key);
+	docstring s = lparam.validate(par);
+	if (!s.empty())
+		throw invalidParam(bformat(_("Parameter %1$s: "), from_utf8(key)) + s);
+	return lparam;
+}
+
+
+ListingsParam const & ParValidator::param(string const & name) const
 {
 	if (name.empty())
 		throw invalidParam(_("Invalid (empty) listings param name."));
-	else if (name == "?") {
-		string pars;
-		size_t idx = 0;
-		while (listings_param_table[idx].name != string()) {
-			if (!pars.empty())
-				pars += ", ";
-			pars += listings_param_table[idx].name;
-			++idx;
-		}
+
+	if (name == "?")
 		throw invalidParam(bformat(
-			_("Available listings parameters are %1$s"), from_utf8(pars)));
-	}
+			_("Available listings parameters are %1$s"), from_ascii(all_param_names_)));
+
 	// locate name in parameter table
-	size_t idx = 0;
-	while (listings_param_table[idx].name != name && listings_param_table[idx].name != string())
-		++idx;
-	// found the name
-	if (!listings_param_table[idx].name.empty()) {
-		info = &listings_param_table[idx];
-		return;
-	}
+	ListingsParams::const_iterator it = all_params_.find(name);
+	if (it != all_params_.end())
+		return it->second;
+
 	// otherwise, produce a meaningful error message.
 	string matching_names;
-	for (size_t i = 0; i < idx; ++i) {
-		string n(listings_param_table[i].name);
-		if (prefixIs(n, name)) {
-			if (matching_names.empty())
-				matching_names += n;
-			else
-				matching_names += ", " + n;
+	ListingsParams::const_iterator end = all_params_.end();
+	for (it = all_params_.begin(); it != end; ++it) {
+		if (prefixIs(it->first, name)) {
+			if (!matching_names.empty())
+				matching_names += ", ";
+			matching_names += it->first;
 		}
 	}
 	if (matching_names.empty())
@@ -332,139 +614,6 @@ parValidator::parValidator(string const & n)
 	else
 		throw invalidParam(bformat(_("Parameters starting with '%1$s': %2$s"),
 						    from_utf8(name), from_utf8(matching_names)));
-}
-
-
-void parValidator::validate(std::string const & par) const
-{
-	bool unclosed = false;
-	string par2 = par;
-	// braces are allowed
-	if (prefixIs(par, "{") && suffixIs(par, "}"))
-		par2 = par.substr(1, par.size() - 2);
-	else if (prefixIs(par, "{")) {
-		par2 = par.substr(1);
-		unclosed = true;
-	}
-	
-		
-	switch (info->type) {
-	case ALL:
-		if (par2.empty() && !info->onoff) {
-			if (!info->hint.empty())
-				throw invalidParam(info->hint);
-			else
-				throw invalidParam(_("A value is expected"));
-		}
-		if (unclosed)
-				throw invalidParam(_("Unbalanced braces!"));
-		return;
-	case TRUEFALSE: {
-		if (par2.empty() && !info->onoff) {
-			if (!info->hint.empty())
-				throw invalidParam(info->hint);
-			else
-				throw invalidParam(_("Please specify true or false"));
-		}
-		if (par2 != "true" && par2 != "false")
-			throw invalidParam(bformat(_("Only true or false is allowed for parameter %1$s"),
-						   from_utf8(name)));
-		if (unclosed)
-				throw invalidParam(_("Unbalanced braces!"));
-		return;
-	}
-	case INTEGER: {
-		if (!isStrInt(par2)) {
-			if (!info->hint.empty())
-				throw invalidParam(info->hint);
-			else
-				throw invalidParam(_("Please specify an integer value"));
-		}
-		if (convert<int>(par2) == 0 && par2[0] != '0')
-			throw invalidParam(bformat(_("An integer is expected for parameter %1$s"),
-						   from_utf8(name)));
-		if (unclosed)
-				throw invalidParam(_("Unbalanced braces!"));
-		return;
-	}
-	case LENGTH: {
-		if (par2.empty() && !info->onoff) {
-			if (!info->hint.empty())
-				throw invalidParam(info->hint);
-			else
-				throw invalidParam(_("Please specify a latex length expression"));
-		}
-		if (!isValidLength(par2))
-			throw invalidParam(bformat(_("Invalid latex length expression for parameter %1$s"),
-						   from_utf8(name)));
-		if (unclosed)
-				throw invalidParam(_("Unbalanced braces!"));
-		return;
-	}
-	case ONEOF: {
-		if (par2.empty() && !info->onoff) {
-			if (!info->hint.empty())
-				throw invalidParam(info->hint);
-			else
-				throw invalidParam(bformat(_("Please specify one of %1$s"),
-							   from_utf8(string(info->info))));
-		}
-		// break value to allowed strings
-		vector<string> lists;
-		string v;
-		for (size_t i = 0; info->info[i] != '\0'; ++i) {
-			if (info->info[i] == '\n') {
-				lists.push_back(v);
-				v = string();
-			} else
-				v += info->info[i];
-		}
-		if (!v.empty())
-			lists.push_back(v);
-
-		// good, find the string
-		if (std::find(lists.begin(), lists.end(), par2) != lists.end()) {
-			if (unclosed)
-				throw invalidParam(_("Unbalanced braces!"));
-			return;
-		}
-		// otherwise, produce a meaningful error message.
-		string matching_names;
-		for (vector<string>::iterator it = lists.begin(); 
-			it != lists.end(); ++it) {
-			if (it->size() >= par2.size() && it->substr(0, par2.size()) == par2) {
-				if (matching_names.empty())
-					matching_names += *it;
-				else
-					matching_names += ", " + *it;
-			}
-		}
-		if (matching_names.empty())
-			throw invalidParam(bformat(_("Try one of %1$s"),
-						   from_utf8(string(info->info))));
-		else
-			throw invalidParam(bformat(_("I guess you mean %1$s"),
-						   from_utf8(matching_names)));
-		return;
-	}
-	case SUBSETOF: {
-		if (par2.empty() && !info->onoff) {
-			if (!info->hint.empty())
-				throw invalidParam(info->hint);
-			else
-				throw invalidParam(bformat(_("Please specify one or more of '%1$s'"),
-							   from_utf8(string(info->info))));
-		}
-		for (size_t i = 0; i < par2.size(); ++i)
-			if (string(info->info).find(par2[i], 0) == string::npos)
-				throw invalidParam(
-					bformat(_("Parameter %1$s should be composed of one or more of %2$s"),
-						from_utf8(name), from_utf8(info->info)));
-		if (unclosed)
-				throw invalidParam(_("Unbalanced braces!"));
-		return;
-	}
-	}
 }
 
 } // namespace anon.
@@ -526,19 +675,18 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 {	
 	if (key.empty())
 		return;
+
+	static ParValidator par_validator;
+
 	// exception may be thown.
-	parValidator(key).validate(value);
+	ListingsParam const & lparam = par_validator.validate(key, value);
 	// duplicate parameters!
 	if (params_.find(key) != params_.end())
 		throw invalidParam(bformat(_("Parameter %1$s has already been defined"),
 					  from_utf8(key)));
 	// check onoff flag
-	size_t idx = 0;
-	while (listings_param_table[idx].name != key)
-		++idx;
-	BOOST_ASSERT(listings_param_table[idx].name == key);
 	// onoff parameter with value false
-	if (listings_param_table[idx].onoff && (value == "false" || value == "{false}"))
+	if (lparam.onoff_ && (value == "false" || value == "{false}"))
 		params_[key] = string();
 	// if the parameter is surrounded with {}, good
 	else if (prefixIs(value, "{") && suffixIs(value, "}"))
