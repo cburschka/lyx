@@ -954,7 +954,9 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 {
 	if (cur.selection())
 		return false;
-	if (cur.pos() == cur.lastpos())
+	if (front && cur.pos() == cur.lastpos())
+		return false;
+	if (!front && cur.pos() == 0)
 		return false;
 	Inset * inset = front ? cur.nextInset() : cur.prevInset();
 	if (!isHighlyEditableInset(inset))
