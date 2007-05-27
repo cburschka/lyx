@@ -2384,6 +2384,11 @@ lib_doc_de_files = Split('''
 ''')
 
 
+lib_doc_de_clipart_files = Split('''
+    FussnoteQt4.png
+''')
+
+
 lib_examples_files = Split('''
     CV-image.eps
     CV-image.png

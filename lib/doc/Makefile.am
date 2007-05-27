@@ -42,6 +42,10 @@ dist_dedoc_DATA = \
 	de/Tutorial.lyx \
 	de/UserGuide.lyx
 
+declipartdocdir = $(pkgdatadir)/doc/de/clipart
+dist_declipartdoc_DATA = \
+	de/clipart/FussnoteQt4.png
+
 esdocdir = $(pkgdatadir)/doc/es
 dist_esdoc_DATA = \
         es/DocumentoPostizo1.lyx \

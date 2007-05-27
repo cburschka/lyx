@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 269
+\lyxformat 271
 \begin_document
 \begin_header
 \textclass scrbook
@@ -184,7 +184,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 9.
+letzte Änderung: 23.
  Mai 2007
 \end_layout
 
@@ -15770,13 +15770,16 @@ Fußnote
 
 \end_inset
 
- eine neue Fußnote anlegen, erscheint ein roter Rahmen, der links die Marke
- 
-\emph on
-Fußnote
-\emph default
- trägt.
- Dieser Rahmen ist die Art und Weise, wie LyX Fußnoten darstellt.
+ eine neue Fußnote anlegen, erscheint ein Kästchen wie dieses: 
+\begin_inset Graphics
+	filename clipart/FussnoteQt4.png
+	display none
+	scale 60
+	BoundingBox 0bp 6bp 116bp 39bp
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -17009,7 +17012,7 @@ Gleitobjekt-Platzierung
 \family default
  mehrere Möglichkeiten, wenn Sie 
 \family sans
-Standard-Platzieren\InsetSpace ~
+Standard-Platzierung\InsetSpace \space{}
 verwenden
 \family default
  deaktivieren:
@@ -17034,11 +17037,9 @@ Seite LyX versucht, das Gleitobjekt unten auf der aktuellen Seite
 \begin_layout Description
 Seite\InsetSpace ~
 mit\InsetSpace ~
-Gleitobjekten LyX setzt die 
-\family sans
-Legende
-\family default
--Umgebung auf eine eigene Seite.
+Gleitobjekten Nur wenn mehr als 50\InsetSpace \thinspace{}
+% einer Seite von Gleitobjekten
+ belegt wird, wird eine neue Seite für weitere Gleitobjekte bereitgestellt.
 \end_layout
 
 \begin_layout Description
@@ -17069,7 +17070,7 @@ status collapsed
 
 \end_inset
 
-X-Regeln
+X-Regeln damit können Sie die LaTeX-Regeln ausser Kraft setzen.
 \end_layout
 
 \begin_layout Standard
@@ -17113,6 +17114,8 @@ X-Regeln
 htbp
 \family default
  vor.
+ Wenn es LaTeX nicht gelingt, das Gleitojekt nach Ihren Regeln zu platzieren,
+ wird es in einem neuen Durchlauf auf die nächste Seite gesetzt.
  Und ein letzter Hinweis: 
 \family sans
 Gleitobjekt-Platzierung
@@ -25820,7 +25823,7 @@ nummerierte
  sie ebenso wie für nichtnummerierte Abschnitte eigentlich keine Marken
  benutzen.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 Nun, man 
@@ -26070,9 +26073,11 @@ name "sec:Notizen"
 
 \end_inset
 
-Notizen sind in LyX nur für den Verfasser eines Dokumentes da, um sich,
- wie der Name sagt, Notizen zu machen, und werden nicht gedruckt.
- Es gibt drei Arten, die über 
+Es gibt zwei Kategrien von Notizen: die eine ist in LyX nur für den Verfasser
+ eines Dokumentes da, um sich, wie der Name sagt, Notizen zu machen, und
+ werden nicht gedruckt.
+ Die andere wird gedruckt.
+ Es gibt fünf Arten, die über 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Notiz
@@ -26084,9 +26089,15 @@ Notiz
 
 \end_inset
 
- ausgewählt werden können:
+ ausgewählt werden können und mit einem Rechts-Klick auf das Kästchen geändert
+ werden können:
 \end_layout
 
+\begin_layout Itemize
+Kategorie 1:
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \family sans
@@ -26105,7 +26116,7 @@ X-Notiz:
 \family default
  
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 LyX-Notiz
@@ -26129,7 +26140,7 @@ Kommentar:
 \family default
  
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Standard
 Kommentar
@@ -26146,6 +26157,12 @@ name "Notiz!Kommentar"
 
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+Kategorie 2:
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \family sans
@@ -26153,7 +26170,7 @@ Grauschrift:
 \family default
  wird, wie der Name sagt, als 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 grauer
@@ -26168,6 +26185,63 @@ name "Notiz!Grauschrift"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Eingerahmt:
+\family default
+ wird, wie der Name sagt, als 
+\begin_inset Note Framed
+status open
+
+\begin_layout Standard
+eingerahmter
+\end_layout
+
+\end_inset
+
+Text gedruckt.
+\begin_inset LatexCommand index
+name "Notiz!eingerahmt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Schattiert:
+\family default
+ wird, anders als der Name sagt, als 
+\begin_inset Note Shaded
+status open
+
+\begin_layout Standard
+Text mit farbigem Hintergrund
+\end_layout
+
+\end_inset
+
+ gedruckt.
+\begin_inset LatexCommand index
+name "Notiz ! schattiert"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Weitere Einzelheiten finden Sie im Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+.
 \end_layout
 
 \begin_layout Section
