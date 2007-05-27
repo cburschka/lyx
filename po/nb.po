@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-05-26 15:25+0200\n"
-"PO-Revision-Date: 2007-05-24 15:34+0200\n"
+"PO-Revision-Date: 2007-05-27 22:07+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1170,9 +1170,8 @@ msgid "x:"
 msgstr "x:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:451
-#, fuzzy
 msgid "LaTe&X and LyX options"
-msgstr "LaTeX-opsjoner"
+msgstr "LaTeX og LyX opsjoner"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:463
 #: src/frontends/qt4/ui/GraphicsUi.ui:484
@@ -1221,9 +1220,8 @@ msgid "Sca&le on Screen (%):"
 msgstr "Størrelse på skjermen (%):"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
-#, fuzzy
 msgid "Listing Parameters"
-msgstr "Fler parametre"
+msgstr "«Listing» parametre"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:76
 msgid "C&aption:"
@@ -1310,14 +1308,12 @@ msgid "&Quote Style:"
 msgstr "Siteringsstil:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:16
-#, fuzzy
 msgid "Listing"
-msgstr "Liste"
+msgstr "«Listing»"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
-#, fuzzy
 msgid "&Main Settings"
-msgstr "Hovedinnstillinger"
+msgstr "&Hovedinnstillinger"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
@@ -1328,49 +1324,42 @@ msgid "The content's base font size"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:83
-#, fuzzy
 msgid "F&ont size:"
-msgstr "Fontstørrelse:"
+msgstr "F&ontstørrelse:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:104
 msgid "The content's base font style"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:120
-#, fuzzy
 msgid "Font st&yle:"
-msgstr "Fontstil:"
+msgstr "Fontst&il:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:136
-#, fuzzy
 msgid "Use extended character table"
-msgstr "Udefinert tekststil"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:139
-#, fuzzy
 msgid "&Extended Chars"
-msgstr "Utvidede egenskaper|U"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:149
 msgid "Make spaces in strings visible by a special symbol"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:152
-#, fuzzy
 msgid "S&pace in string as Symbol"
-msgstr "Mellomrom som symbol"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:162
 msgid "Make spaces visible by a special symbol"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:165
-#, fuzzy
 msgid "S&pace as Symbol"
-msgstr "Mellomrom som symbol"
+msgstr "&Mellomrom som symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:175
-#, fuzzy
 msgid "Break lines longer than the linewidth"
 msgstr "Bryt linjer som er lenger enn linjebredden"
 
@@ -1383,9 +1372,8 @@ msgid "Range"
 msgstr "Intervall"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:203
-#, fuzzy
 msgid "&Last line:"
-msgstr "Siste linje:"
+msgstr "&Siste linje:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:216
 msgid "The last line to be printed"
@@ -1396,18 +1384,16 @@ msgid "The first line to be printed"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:242
-#, fuzzy
 msgid "Fi&rst line:"
-msgstr "Første linje:"
+msgstr "Fø&rste linje:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:270
 msgid "Select the dialect of the programming language, if available"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:277
-#, fuzzy
 msgid "&Dialect:"
-msgstr "&Fil:"
+msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Select the programming language"
@@ -1422,29 +1408,24 @@ msgid "On which side should line numbers be printed?"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:349
-#, fuzzy
 msgid "Choose the font size for line numbers"
-msgstr "Velg fontstørrelsen"
+msgstr "Velg fontstørrelse for linjenumre"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:365
-#, fuzzy
 msgid "Font si&ze:"
-msgstr "Fontstørrelse:"
+msgstr "Fontstør&relse:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:381
-#, fuzzy
 msgid "S&tep:"
-msgstr "Steg:"
+msgstr "S&teg:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:394
-#, fuzzy
 msgid "Difference between two numbered lines"
-msgstr "Differensen mellom påfølgende linjenumre"
+msgstr "Differansen mellom påfølgende linjenumre"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:410
-#, fuzzy
 msgid "&Side: "
-msgstr "Side: "
+msgstr "&Side: "
 
 #: src/frontends/qt4/ui/ListingsUi.ui:423
 msgid "Placement"
@@ -1455,37 +1436,32 @@ msgid "Specify placement (htbp) for floating listings"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:442
-#, fuzzy
 msgid "Check for floating listings"
-msgstr "Andre font innstillinger"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:445
-#, fuzzy
 msgid "&Float"
-msgstr "Flytende (Float)"
+msgstr "&Flytende (Float)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:452
 msgid "Check for inline listings"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:455
-#, fuzzy
 msgid "&Inline listing"
-msgstr "&På linje"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:462
 msgid "Placement:"
 msgstr "Plassering:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:476
-#, fuzzy
 msgid "Ad&vanced"
-msgstr "Avansert"
+msgstr "A&vansert"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:496
-#, fuzzy
 msgid "More &Parameters"
-msgstr "Fler parametre"
+msgstr "Fler &parametre"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:520
 msgid "Feedback window"
@@ -1715,9 +1691,8 @@ msgid "&Longest label"
 msgstr "&Lengste listeetikett"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:157
-#, fuzzy
 msgid "Indent &Paragraph"
-msgstr "Rykk inn avsnitt"
+msgstr "Rykk inn &avsnitt"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:203
 msgid "L&ine spacing:"
@@ -1745,57 +1720,48 @@ msgid "Custom"
 msgstr "Brukerdefinert"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:271
-#, fuzzy
 msgid "&Default"
-msgstr "Standard"
+msgstr "&Standard"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:278
-#, fuzzy
 msgid "&Justified"
-msgstr "Justert"
+msgstr "&Justert"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:285
-#, fuzzy
 msgid "&Left"
-msgstr "Venstre"
+msgstr "&Venstre"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:292
-#, fuzzy
 msgid "&Right"
-msgstr "Høyre"
+msgstr "&Høyre"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:299
-#, fuzzy
 msgid "&Center"
-msgstr "Sentrert"
+msgstr "&Sentrert"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:25
 msgid "&Colors"
-msgstr "Farger:"
+msgstr "&Farger"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:54
 msgid "&Alter..."
-msgstr "Modifiser..."
+msgstr "&Modifiser..."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:25
-#, fuzzy
 msgid "Converter File Cache"
-msgstr "Sett inn fil|e"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:45
-#, fuzzy
 msgid "&Enabled"
-msgstr "&Lang tabell"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:65
-#, fuzzy
 msgid "&Maximum Age (in days):"
-msgstr "Max antall tidligere filer"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:83
-#, fuzzy
 msgid "Converter Defi&nitions"
-msgstr "Definisjoner"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:115
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
@@ -1809,19 +1775,16 @@ msgid "&Modify"
 msgstr "Modifiser"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:137
-#, fuzzy
 msgid "Remo&ve"
-msgstr "Fjern"
+msgstr "F&jern"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:175
-#, fuzzy
 msgid "&From format:"
-msgstr "&Format:"
+msgstr "&Fra format:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:207
-#, fuzzy
 msgid "&To format:"
-msgstr "Datoformat:"
+msgstr "&Til format:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:241
 msgid "E&xtra flag:"
@@ -2926,9 +2889,8 @@ msgid "&Indentation"
 msgstr "&Innrykk"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
-#, fuzzy
 msgid "Spacing"
-msgstr "&Avstand:"
+msgstr ""
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:149
 msgid "&Line spacing:"
@@ -2943,9 +2905,8 @@ msgid "Two-&column document"
 msgstr "To &kolonners dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
-#, fuzzy
 msgid "Listings settings"
-msgstr "Språkinnstillinger"
+msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
@@ -4179,24 +4140,20 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
-#, fuzzy
 msgid "LatinOn"
-msgstr "Latvisk"
+msgstr ""
 
 #: lib/layouts/armenian-article.layout:18
-#, fuzzy
 msgid "Latin on"
-msgstr "Sted"
+msgstr ""
 
 #: lib/layouts/armenian-article.layout:25
-#, fuzzy
 msgid "LatinOff"
-msgstr "Latvisk"
+msgstr ""
 
 #: lib/layouts/armenian-article.layout:34
-#, fuzzy
 msgid "Latin off"
-msgstr "Latvisk"
+msgstr ""
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
@@ -4244,9 +4201,8 @@ msgid "BeginFrame"
 msgstr "Begynn ramme"
 
 #: lib/layouts/beamer.layout:243
-#, fuzzy
 msgid "Frame "
-msgstr "Innrammet"
+msgstr ""
 
 #: lib/layouts/beamer.layout:269
 msgid "BeginPlainFrame"
@@ -4329,9 +4285,8 @@ msgid "OverlayArea"
 msgstr ""
 
 #: lib/layouts/beamer.layout:575
-#, fuzzy
 msgid "overlayarea"
-msgstr "Slovensk"
+msgstr ""
 
 #: lib/layouts/beamer.layout:590
 msgid "Uncover"
@@ -4383,52 +4338,44 @@ msgid "TitleGraphic"
 msgstr "Tittelgrafikk"
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "Corollary_"
 msgstr "Korollar"
 
 #: lib/layouts/beamer.layout:922
-#, fuzzy
 msgid "Definition. "
-msgstr "Definisjon.  "
+msgstr "Definisjon. "
 
 #: lib/layouts/beamer.layout:925
 msgid "Definitions"
 msgstr "Definisjoner"
 
 #: lib/layouts/beamer.layout:928
-#, fuzzy
 msgid "Definitions. "
-msgstr "Definisjoner.  "
+msgstr "Definisjoner. "
 
 #: lib/layouts/beamer.layout:934
-#, fuzzy
 msgid "Example. "
-msgstr "Eksempel.  "
+msgstr "Eksempel. "
 
 #: lib/layouts/beamer.layout:942
 msgid "Examples"
 msgstr "Eksempler"
 
 #: lib/layouts/beamer.layout:945
-#, fuzzy
 msgid "Examples. "
-msgstr "Eksempler.  "
+msgstr "Eksempler. "
 
 #: lib/layouts/beamer.layout:952
-#, fuzzy
 msgid "Fact. "
-msgstr "Faktum.  "
+msgstr "Faktum. "
 
 #: lib/layouts/beamer.layout:958
-#, fuzzy
 msgid "Proof. "
-msgstr "Bevis.  "
+msgstr "Bevis. "
 
 #: lib/layouts/beamer.layout:964
-#, fuzzy
 msgid "Theorem. "
-msgstr "Teorem.  "
+msgstr "Teorem. "
 
 #: lib/layouts/beamer.layout:969
 msgid "Separator"
@@ -4448,9 +4395,8 @@ msgid "NoteItem"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1040
-#, fuzzy
 msgid "note: "
-msgstr "notis:  "
+msgstr "notis: "
 
 #: lib/layouts/beamer.layout:1076 lib/layouts/powerdot.layout:365
 #: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
@@ -4944,29 +4890,24 @@ msgid "Key words:"
 msgstr "Nøkkelord:"
 
 #: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:65
-#, fuzzy
 msgid "Item"
-msgstr "Punktliste"
+msgstr ""
 
 #: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:74
-#, fuzzy
 msgid "Item:"
-msgstr "Punktliste"
+msgstr ""
 
 #: lib/layouts/europecv.layout:64
-#, fuzzy
 msgid "BulletedItem"
-msgstr "Bomber"
+msgstr ""
 
 #: lib/layouts/europecv.layout:73
-#, fuzzy
 msgid "Bulleted Item:"
-msgstr "slettet tekst"
+msgstr ""
 
 #: lib/layouts/europecv.layout:80
-#, fuzzy
 msgid "Begin"
-msgstr "Begynn ramme"
+msgstr ""
 
 #: lib/layouts/europecv.layout:90
 msgid "Begin of CV"
@@ -4989,44 +4930,36 @@ msgid "Mother Tongue:"
 msgstr ""
 
 #: lib/layouts/europecv.layout:129
-#, fuzzy
 msgid "LangHeader"
-msgstr "Hode"
+msgstr ""
 
 #: lib/layouts/europecv.layout:137
-#, fuzzy
 msgid "Language Header:"
-msgstr "Venstre hode:"
+msgstr ""
 
 #: lib/layouts/europecv.layout:153 lib/layouts/moderncv.layout:138
-#, fuzzy
 msgid "Language:"
 msgstr "Språk:"
 
 #: lib/layouts/europecv.layout:160
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Språk"
+msgstr "SisteSpråk"
 
 #: lib/layouts/europecv.layout:169
-#, fuzzy
 msgid "Last Language:"
-msgstr "Språk:"
+msgstr "Siste språk:"
 
 #: lib/layouts/europecv.layout:176
-#, fuzzy
 msgid "LangFooter"
-msgstr "Fot:"
+msgstr ""
 
 #: lib/layouts/europecv.layout:184
-#, fuzzy
 msgid "Language Footer:"
-msgstr "Språk:"
+msgstr ""
 
 #: lib/layouts/europecv.layout:191
-#, fuzzy
 msgid "End"
-msgstr "        Slutt)"
+msgstr ""
 
 #: lib/layouts/europecv.layout:201
 msgid "End of CV"
@@ -5556,64 +5489,52 @@ msgid "NameRowG:"
 msgstr ""
 
 #: lib/layouts/g-brief2.layout:212
-#, fuzzy
 msgid "AddressRowA"
-msgstr "Adresse"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:223
-#, fuzzy
 msgid "AddressRowA:"
-msgstr "Adresse:"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:232
-#, fuzzy
 msgid "AddressRowB"
-msgstr "Adresse"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowB:"
-msgstr "Adresse:"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:251
-#, fuzzy
 msgid "AddressRowC"
-msgstr "Adresse"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowC:"
-msgstr "Adresse:"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:270
-#, fuzzy
 msgid "AddressRowD"
-msgstr "Adresse"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowD:"
-msgstr "Adresse:"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:289
-#, fuzzy
 msgid "AddressRowE"
-msgstr "Adresse"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowE:"
-msgstr "Adresse:"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:308
-#, fuzzy
 msgid "AddressRowF"
-msgstr "Adresse"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowF:"
-msgstr "Adresse:"
+msgstr ""
 
 #: lib/layouts/g-brief2.layout:327
 msgid "TelephoneRowA"
@@ -6088,64 +6009,52 @@ msgid "Entry:"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:81
-#, fuzzy
 msgid "ListItem"
-msgstr "Liste"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:90
-#, fuzzy
 msgid "List Item:"
-msgstr "Siste fot:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:97
-#, fuzzy
 msgid "DoubleItem"
-msgstr "Dobbel"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:106
-#, fuzzy
 msgid "Double Item:"
-msgstr "Dobbel"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:113
-#, fuzzy
 msgid "Space"
-msgstr "mellomrom"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:122
-#, fuzzy
 msgid "Space:"
-msgstr "mellomrom"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:145
-#, fuzzy
 msgid "Computer"
-msgstr "Courier"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:154
-#, fuzzy
 msgid "Computer:"
-msgstr "Kopiprogram:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:161
-#, fuzzy
 msgid "EmptySection"
-msgstr "Seksjon"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:170
-#, fuzzy
 msgid "Empty Section"
-msgstr "Seksjon"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:177
-#, fuzzy
 msgid "CloseSection"
-msgstr "merket"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:186
-#, fuzzy
 msgid "Close Section"
-msgstr "merket"
+msgstr ""
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -6165,43 +6074,36 @@ msgid "    "
 msgstr ""
 
 #: lib/layouts/powerdot.layout:142
-#, fuzzy
 msgid "EndSlide"
-msgstr "Lysark"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:154
 msgid "~=~"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:167
-#, fuzzy
 msgid "WideSlide"
-msgstr "Lysark"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:179
-#, fuzzy
 msgid "EmptySlide"
-msgstr "Lysark"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:183
-#, fuzzy
 msgid "Empty slide:"
-msgstr "tom"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:199
-#, fuzzy
 msgid "Note:"
-msgstr "Notis"
+msgstr "Notis:"
 
 #: lib/layouts/powerdot.layout:246
-#, fuzzy
 msgid "ItemizeType1"
-msgstr "Punktliste"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:271
-#, fuzzy
 msgid "EnumerateType1"
-msgstr "Nummerert liste"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
 msgid "List of Algorithms"
@@ -7175,9 +7077,8 @@ msgid "Arabic"
 msgstr "Arabisk"
 
 #: lib/languages:5
-#, fuzzy
 msgid "Armenian"
-msgstr "Amerikansk"
+msgstr "Armensk"
 
 #: lib/languages:6
 msgid "Austrian"
@@ -7392,9 +7293,8 @@ msgid "Ukrainian"
 msgstr "Ukrainsk"
 
 #: lib/languages:66
-#, fuzzy
 msgid "Upper Sorbian"
-msgstr "Serbisk"
+msgstr ""
 
 #: lib/languages:67
 msgid "Welsh"
@@ -8669,19 +8569,16 @@ msgid "Gathered Environment|h"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:365
-#, fuzzy
 msgid "Delimiters|r"
-msgstr "Parenteser og klammer"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:366
-#, fuzzy
 msgid "Matrix|x"
-msgstr "Matte, matrise"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:368 lib/ui/stdtoolbars.inc:163
-#, fuzzy
 msgid "Toggle Math Panels"
-msgstr "Mattepanel"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:374
 msgid "Text Wrap Float|W"
@@ -8720,9 +8617,8 @@ msgid "Start Appendix Here|A"
 msgstr "Begynn appendiks her|a"
 
 #: lib/ui/stdmenus.inc:415
-#, fuzzy
 msgid "Compressed|m"
-msgstr "Komprimert|o"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:416
 msgid "Settings...|S"
@@ -8817,19 +8713,16 @@ msgid "Insert graphics"
 msgstr "Sett inn grafikk"
 
 #: lib/ui/stdtoolbars.inc:79
-#, fuzzy
 msgid "Toggle Table of Contents"
-msgstr "Innholdsfortegnelse"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:80
-#, fuzzy
 msgid "Toggle Math Toolbar"
-msgstr "Flipp alle av/på"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:81
-#, fuzzy
 msgid "Toggle Table Toolbar"
-msgstr "Flipp alle av/på"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Extra"
@@ -9157,9 +9050,8 @@ msgid "arccos"
 msgstr "arccos"
 
 #: lib/ui/stdtoolbars.inc:219
-#, fuzzy
 msgid "arcsin"
-msgstr "arcsin"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:220
 msgid "arctan"
@@ -9286,9 +9178,8 @@ msgid "Pr"
 msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "Spacings"
-msgstr "&Avstand:"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:254
 msgid "Thin space\t\\,"
@@ -9355,9 +9246,8 @@ msgid "Text frac (amsmath)\t\\tfrac"
 msgstr "Tekstbrøk (amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:279
-#, fuzzy
 msgid "Display frac (amsmath)\t\\dfrac"
-msgstr "Tekstbrøk (amsmath)\t\\tfrac"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:280
 msgid "Binomial\t\\choose"
@@ -9376,9 +9266,8 @@ msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:287
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
-msgstr "Sans Serif\t\\\\mathsf"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:288
 msgid "Italic\t\\mathit"
@@ -9617,9 +9506,8 @@ msgid "longmapsto"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:353
-#, fuzzy
 msgid "nwarrow"
-msgstr "NV-pil \\nwarrow"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:354
 msgid "nearrow"
@@ -9754,9 +9642,8 @@ msgid "bigcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:389
-#, fuzzy
 msgid "setminus"
-msgstr "minutt"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "wedge"
@@ -9851,9 +9738,8 @@ msgid "parallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "subset"
-msgstr "UnderUnderSeksjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "supset"
@@ -9880,9 +9766,8 @@ msgid "cong"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:422
-#, fuzzy
 msgid "frown"
-msgstr "By"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:423
 msgid "sqsubseteq"
@@ -9913,9 +9798,8 @@ msgid "propto"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:430
-#, fuzzy
 msgid "notin"
-msgstr "notis"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:431
 msgid "vdash"
@@ -9938,19 +9822,16 @@ msgid "beta"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:439
-#, fuzzy
 msgid "gamma"
-msgstr "Lemma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:440
-#, fuzzy
 msgid "delta"
-msgstr "standard"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:441
-#, fuzzy
 msgid "epsilon"
-msgstr "Versjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:442
 msgid "varepsilon"
@@ -9961,24 +9842,20 @@ msgid "zeta"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:444
-#, fuzzy
 msgid "eta"
-msgstr "Magenta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:445
-#, fuzzy
 msgid "theta"
-msgstr "tekst"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:446
-#, fuzzy
 msgid "vartheta"
-msgstr "Mathematica"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:447
-#, fuzzy
 msgid "iota"
-msgstr "Rotasjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:448
 msgid "kappa"
@@ -9997,9 +9874,8 @@ msgid "nu"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:452
-#, fuzzy
 msgid "xi"
-msgstr "x"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:453
 msgid "pi"
@@ -10022,14 +9898,12 @@ msgid "varsigma"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:458
-#, fuzzy
 msgid "tau"
-msgstr "Status"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:459
-#, fuzzy
 msgid "upsilon"
-msgstr "Spørsmål"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:460
 msgid "phi"
@@ -10048,29 +9922,24 @@ msgid "psi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:464
-#, fuzzy
 msgid "omega"
-msgstr "Roman"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:465
-#, fuzzy
 msgid "Gamma"
-msgstr "Lemma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:466
-#, fuzzy
 msgid "Delta"
-msgstr "Sl&ett"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:467
-#, fuzzy
 msgid "Theta"
-msgstr "Thai"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Lambda"
-msgstr "Land"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "Xi"
@@ -10081,9 +9950,8 @@ msgid "Pi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Sigma"
-msgstr "Liten"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "Upsilon"
@@ -10106,111 +9974,92 @@ msgid "Miscellaneous"
 msgstr "Diverse"
 
 #: lib/ui/stdtoolbars.inc:479
-#, fuzzy
 msgid "nabla"
-msgstr "&Lang tabell"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:480
-#, fuzzy
 msgid "partial"
-msgstr "Variabel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:481
-#, fuzzy
 msgid "infty"
-msgstr "Bitteliten"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:482
 msgid "prime"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:483
-#, fuzzy
 msgid "ell"
-msgstr "hspell"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:484
-#, fuzzy
 msgid "emptyset"
-msgstr "tom"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:485
-#, fuzzy
 msgid "exists"
-msgstr "Kreditteringer"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:486
-#, fuzzy
 msgid "forall"
-msgstr "Normal"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:487
-#, fuzzy
 msgid "imath"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:488
-#, fuzzy
 msgid "jmath"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:489
-#, fuzzy
 msgid "Re"
-msgstr "Rød"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:490
-#, fuzzy
 msgid "Im"
-msgstr "Punktliste"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:491
-#, fuzzy
 msgid "aleph"
-msgstr "Dybde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:492
 msgid "wp"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
-#, fuzzy
 msgid "hbar"
-msgstr "dybdemarkør"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
-#, fuzzy
 msgid "angle"
-msgstr "Enkel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:495
-#, fuzzy
 msgid "top"
-msgstr "Utopia"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:496
-#, fuzzy
 msgid "bot"
-msgstr "alt"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:497
-#, fuzzy
 msgid "Vert"
-msgstr "Vers"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:498
 msgid "neg"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:499
-#, fuzzy
 msgid "flat"
-msgstr "flytende: "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:500
-#, fuzzy
 msgid "natural"
-msgstr "Signatur"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:501
 msgid "sharp"
@@ -10221,18 +10070,16 @@ msgid "surd"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:503
-#, fuzzy
 msgid "triangle"
-msgstr "Enkel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:504
 msgid "diamondsuit"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:505
-#, fuzzy
 msgid "heartsuit"
-msgstr "arv"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:506
 msgid "clubsuit"
@@ -10247,78 +10094,64 @@ msgid "textrm \\AA"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:509
-#, fuzzy
 msgid "textrm \\O"
-msgstr "tekst"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:510
 msgid "mathcircumflex"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:511
-#, fuzzy
 msgid "_"
-msgstr "_/"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:512
-#, fuzzy
 msgid "mathrm T"
-msgstr "matte ramme"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:513
-#, fuzzy
 msgid "mathbb N"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:514
-#, fuzzy
 msgid "mathbb Z"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:515
-#, fuzzy
 msgid "mathbb Q"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:516
-#, fuzzy
 msgid "mathbb R"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:517
-#, fuzzy
 msgid "mathbb C"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:518
-#, fuzzy
 msgid "mathbb H"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:519
-#, fuzzy
 msgid "mathcal F"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:520
-#, fuzzy
 msgid "mathcal L"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:521
-#, fuzzy
 msgid "mathcal H"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:522
-#, fuzzy
 msgid "mathcal O"
-msgstr "matte"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:523
-#, fuzzy
 msgid "phantom"
-msgstr "Esperanto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:524
 msgid "vphantom"
@@ -10333,29 +10166,24 @@ msgid "Big Operators"
 msgstr "Store operatorer"
 
 #: lib/ui/stdtoolbars.inc:529
-#, fuzzy
 msgid "intop"
-msgstr "Toppjuster rad"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:530
-#, fuzzy
 msgid "int"
-msgstr "in"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:531
-#, fuzzy
 msgid "iintop"
-msgstr "Toppjuster rad"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:532
-#, fuzzy
 msgid "iint"
-msgstr "in"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:533
-#, fuzzy
 msgid "iiintop"
-msgstr "Toppjuster rad"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:534
 msgid "iiint"
@@ -10378,24 +10206,20 @@ msgid "dotsint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:539
-#, fuzzy
 msgid "ointop"
-msgstr "Konto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:540
-#, fuzzy
 msgid "oint"
-msgstr "in"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:541
-#, fuzzy
 msgid "oiintop"
-msgstr "Konto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:542
-#, fuzzy
 msgid "oiint"
-msgstr "Fonter"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:543
 msgid "ointctrclockwiseop"
@@ -10414,9 +10238,8 @@ msgid "ointclockwise"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:547
-#, fuzzy
 msgid "sqintop"
-msgstr "Toppjuster rad"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "sqint"
@@ -10435,9 +10258,8 @@ msgid "sum"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
-#, fuzzy
 msgid "prod"
-msgstr "beskyttet"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:553
 msgid "coprod"
@@ -10492,14 +10314,12 @@ msgid "varkappa"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:568
-#, fuzzy
 msgid "beth"
-msgstr "Dybde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:569
-#, fuzzy
 msgid "daleth"
-msgstr "standard"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:570
 msgid "gimel"
@@ -10514,9 +10334,8 @@ msgid "urcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:573
-#, fuzzy
 msgid "llcorner"
-msgstr "Alle"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:574
 msgid "lrcorner"
@@ -10527,23 +10346,20 @@ msgid "hslash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:577
-#, fuzzy
 msgid "vartriangle"
-msgstr "Variabel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:578
 msgid "triangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:579
-#, fuzzy
 msgid "square"
-msgstr "Baskisk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:580
-#, fuzzy
 msgid "lozenge"
-msgstr "Slovensk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:581
 msgid "circledS"
@@ -10554,23 +10370,20 @@ msgid "measuredangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:584
-#, fuzzy
 msgid "nexists"
-msgstr "Register|R"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "mho"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:586
-#, fuzzy
 msgid "Finv"
-msgstr "in"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:587
-#, fuzzy
 msgid "Game"
-msgstr "Navn"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:588
 msgid "Bbbk"
@@ -10593,9 +10406,8 @@ msgid "blacktriangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:593
-#, fuzzy
 msgid "blacksquare"
-msgstr "sort"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:594
 msgid "blacklozenge"
@@ -10610,14 +10422,12 @@ msgid "sphericalangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:597
-#, fuzzy
 msgid "complement"
-msgstr "kommentar"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:598
-#, fuzzy
 msgid "eth"
-msgstr "Dybde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:599
 msgid "diagup"
@@ -10656,14 +10466,12 @@ msgid "rightleftarrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:610
-#, fuzzy
 msgid "Lleftarrow"
-msgstr "Slett rad"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:611
-#, fuzzy
 msgid "Rrightarrow"
-msgstr "Høyre"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:612
 msgid "twoheadleftarrow"
@@ -10686,9 +10494,8 @@ msgid "looparrowleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:617
-#, fuzzy
 msgid "looparrowright"
-msgstr "Copyright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:618
 msgid "curvearrowleft"
@@ -10715,9 +10522,8 @@ msgid "Rsh"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:624
-#, fuzzy
 msgid "upuparrows"
-msgstr "Piler"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:625
 msgid "downdownarrows"
@@ -10752,9 +10558,8 @@ msgid "leftrightsquigarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:634
-#, fuzzy
 msgid "nleftarrow"
-msgstr "Slett rad"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:635
 msgid "nrightarrow"
@@ -10769,9 +10574,8 @@ msgid "nLeftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "nRightarrow"
-msgstr "Høyre"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:639
 msgid "nLeftrightarrow"
@@ -10830,9 +10634,8 @@ msgid "approxeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:655
-#, fuzzy
 msgid "triangleq"
-msgstr "Enkel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:656
 msgid "lessdot"
@@ -10855,27 +10658,24 @@ msgid "lessgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:661
-#, fuzzy
 msgid "gtrless"
-msgstr "Uten ramme"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:662
 msgid "lesseqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:663
-#, fuzzy
 msgid "gtreqless"
-msgstr "Uten ramme"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:664
 msgid "lesseqqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:665
-#, fuzzy
 msgid "gtreqqless"
-msgstr "Uten ramme"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:666
 msgid "eqcirc"
@@ -10894,9 +10694,8 @@ msgid "thickapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:670
-#, fuzzy
 msgid "backsim"
-msgstr "sort"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:671
 msgid "backsimeq"
@@ -10911,14 +10710,12 @@ msgid "supseteqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:674
-#, fuzzy
 msgid "Subset"
-msgstr "Underseksjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:675
-#, fuzzy
 msgid "Supset"
-msgstr "Underseksjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:676
 msgid "sqsubset"
@@ -10965,9 +10762,8 @@ msgid "vartriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:687
-#, fuzzy
 msgid "vartriangleright"
-msgstr "Grunnlinje, høyre ende"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "trianglelefteq"
@@ -10978,14 +10774,12 @@ msgid "trianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:690
-#, fuzzy
 msgid "bumpeq"
-msgstr "blå"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:691
-#, fuzzy
 msgid "Bumpeq"
-msgstr "Blå"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:692
 msgid "doteqdot"
@@ -11000,9 +10794,8 @@ msgid "fallingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:695
-#, fuzzy
 msgid "vDash"
-msgstr "Dansk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:696
 msgid "Vvdash"
@@ -11021,9 +10814,8 @@ msgid "shortparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:700
-#, fuzzy
 msgid "smallsmile"
-msgstr "liten avstand"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:701
 msgid "smallfrown"
@@ -11038,14 +10830,12 @@ msgid "blacktriangleright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:704
-#, fuzzy
 msgid "because"
-msgstr "Minsk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:705
-#, fuzzy
 msgid "therefore"
-msgstr "teorem"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:706
 msgid "backepsilon"
@@ -11068,24 +10858,20 @@ msgid "AMS Negative Relations"
 msgstr "AMS negerte relasjoner"
 
 #: lib/ui/stdtoolbars.inc:713
-#, fuzzy
 msgid "nless"
-msgstr "Meningsløst!"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:714
-#, fuzzy
 msgid "ngtr"
-msgstr "Lengde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:715
-#, fuzzy
 msgid "nleq"
-msgstr "Enkel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:716
-#, fuzzy
 msgid "ngeq"
-msgstr "Enkel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:717
 msgid "nleqslant"
@@ -11108,9 +10894,8 @@ msgid "lneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
-#, fuzzy
 msgid "gneq"
-msgstr "Ignorer"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:723
 msgid "lneqq"
@@ -11121,18 +10906,16 @@ msgid "gneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:725
-#, fuzzy
 msgid "lvertneqq"
-msgstr "Slovensk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:726
 msgid "gvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:727
-#, fuzzy
 msgid "lnsim"
-msgstr "Påstand"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:728
 msgid "gnsim"
@@ -11155,9 +10938,8 @@ msgid "nsucc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:733
-#, fuzzy
 msgid "npreceq"
-msgstr "beskyttet"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:734
 msgid "nsucceq"
@@ -11180,18 +10962,16 @@ msgid "succnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:739
-#, fuzzy
 msgid "subsetneq"
-msgstr "UnderUnderSeksjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:740
 msgid "supsetneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:741
-#, fuzzy
 msgid "subsetneqq"
-msgstr "UnderUnderSeksjon"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:742
 msgid "supsetneqq"
@@ -11214,14 +10994,12 @@ msgid "nvdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:747
-#, fuzzy
 msgid "nvDash"
-msgstr "Dansk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:748
-#, fuzzy
 msgid "nVDash"
-msgstr "Dansk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "varsubsetneq"
@@ -11244,9 +11022,8 @@ msgid "ntriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:754
-#, fuzzy
 msgid "ntriangleright"
-msgstr "Total høyde"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:755
 msgid "ntrianglelefteq"
@@ -11257,9 +11034,8 @@ msgid "ntrianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:757
-#, fuzzy
 msgid "ncong"
-msgstr "ingen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:758
 msgid "nsim"
@@ -11290,47 +11066,40 @@ msgid "dotplus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:767
-#, fuzzy
 msgid "smallsetminus"
-msgstr "Små ikoner"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:768
-#, fuzzy
 msgid "Cap"
-msgstr "Bildetekst"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:769
-#, fuzzy
 msgid "Cup"
-msgstr "Klipp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:770
-#, fuzzy
 msgid "barwedge"
-msgstr "Stor"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:771
 msgid "veebar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:772
-#, fuzzy
 msgid "doublebarwedge"
-msgstr "dobbel"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:773
-#, fuzzy
 msgid "boxminus"
-msgstr "minutt"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:774
 msgid "boxtimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:775
-#, fuzzy
 msgid "boxdot"
-msgstr "fot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:776
 msgid "boxplus"
@@ -11345,9 +11114,8 @@ msgid "ltimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:779
-#, fuzzy
 msgid "rtimes"
-msgstr "Britisk"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:780
 msgid "leftthreetimes"
@@ -11378,14 +11146,12 @@ msgid "circledcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:787
-#, fuzzy
 msgid "centerdot"
-msgstr "Sentrert"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:788
-#, fuzzy
 msgid "intercal"
-msgstr "Skriver"
+msgstr ""
 
 #: src/Buffer.cpp:230
 msgid "Could not remove temporary directory"
@@ -11534,15 +11300,11 @@ msgid "Encoding error"
 msgstr "Feil med tegnkoding"
 
 #: src/Buffer.cpp:920
-#, fuzzy
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Noen tegn i dokumentet ditt kan ikke representeres med den valgte "
-"tegnkodingen.\n"
-"Å forandre tegnkodingen for dokumentet til utf8 burde hjelpe."
 
 #: src/Buffer.cpp:1198
 msgid "Running chktex..."
@@ -11557,9 +11319,8 @@ msgid "Could not run chktex successfully."
 msgstr "Mislyktes med chktex."
 
 #: src/Buffer.cpp:1743
-#, fuzzy
 msgid "Preview source code"
-msgstr "Forhåndsvisning klar"
+msgstr ""
 
 #: src/Buffer.cpp:1754
 #, c-format
@@ -11903,9 +11664,8 @@ msgid "math frame"
 msgstr "matte ramme"
 
 #: src/Color.cpp:301
-#, fuzzy
 msgid "math corners"
-msgstr "matte linje"
+msgstr ""
 
 #: src/Color.cpp:302
 msgid "math line"
@@ -12663,9 +12423,8 @@ msgid "Opening child document %1$s..."
 msgstr "Åpner sub-dokument %1$s...\""
 
 #: src/LyXFunc.cpp:1429
-#, fuzzy
 msgid "Document not loaded."
-msgstr "Dokumentet ble ikke lagret"
+msgstr ""
 
 #: src/LyXFunc.cpp:1505
 msgid "Syntax: set-color <lyx_name> <x11_name>"
@@ -13197,14 +12956,12 @@ msgid "Master Document"
 msgstr "Hoveddokument"
 
 #: src/MenuBackend.cpp:743
-#, fuzzy
 msgid "List of listings"
-msgstr "Liste over figurer"
+msgstr ""
 
 #: src/MenuBackend.cpp:747
-#, fuzzy
 msgid "Other floats"
-msgstr "Andre font innstillinger"
+msgstr ""
 
 #: src/MenuBackend.cpp:757
 msgid "No Table of contents"
@@ -13328,9 +13085,8 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:588
-#, fuzzy
 msgid "No font change defined."
-msgstr "Gå til neste endring"
+msgstr ""
 
 #: src/Text2.cpp:629
 msgid "Nothing to index!"
@@ -14562,28 +14318,24 @@ msgid "label parameter is not quoted with braces"
 msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:63
-#, fuzzy
 msgid "No language"
-msgstr "språk"
+msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:138
-#, fuzzy
 msgid "common"
-msgstr "kommentar"
+msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:141
 msgid "primitive"
 msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:372
-#, fuzzy
 msgid "No dialect"
-msgstr "Intet bilde"
+msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:397
-#, fuzzy
 msgid "Program Listings Settings"
-msgstr "Avsnittinnstillinger"
+msgstr ""
 
 #: src/frontends/qt4/QMathMatrixDialog.cpp:46
 msgid "Math Matrix"
@@ -14891,19 +14643,16 @@ msgid "LaTeX Command: "
 msgstr ""
 
 #: src/insets/InsetCommandParams.cpp:275
-#, fuzzy
 msgid "Unknown inset name: "
-msgstr "Ukjent argument til linjeavstand: "
+msgstr ""
 
 #: src/insets/InsetCommandParams.cpp:299
-#, fuzzy
 msgid "Inset Command: "
-msgstr "Register-kommando:"
+msgstr ""
 
 #: src/insets/InsetCommandParams.cpp:300
-#, fuzzy
 msgid "Unknown parameter name: "
-msgstr "Ukjent argument til linjeavstand: "
+msgstr ""
 
 #: src/insets/InsetCommandParams.cpp:307
 msgid "Missing \\end_inset at this point."
@@ -14998,9 +14747,8 @@ msgid "Verbatim Input*"
 msgstr ""
 
 #: src/insets/InsetInclude.cpp:348
-#, fuzzy
 msgid "Program Listing "
-msgstr "Programlisting"
+msgstr "Programlisting "
 
 #: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:609
 msgid "Recursive input"
@@ -15035,9 +14783,8 @@ msgid "Index"
 msgstr "Register"
 
 #: src/insets/InsetListings.cpp:127
-#, fuzzy
 msgid "Opened Listings Inset"
-msgstr "Åpnet text inset"
+msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:114
 msgid ""
@@ -15090,9 +14837,9 @@ msgid "Available listings parameters are %1$s"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:321
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown listings param name: %1$s"
-msgstr "Ukjent argument til linjeavstand: "
+msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:324
 #, c-format
@@ -15179,9 +14926,8 @@ msgid "Opened Marginal Note Inset"
 msgstr ""
 
 #: src/insets/InsetNomencl.cpp:39
-#, fuzzy
 msgid "Nom"
-msgstr "Nei"
+msgstr ""
 
 #: src/insets/InsetNomencl.cpp:86
 msgid "Nomenclature"
@@ -15268,9 +15014,8 @@ msgid "FormatRef: "
 msgstr ""
 
 #: src/insets/InsetTOC.cpp:47
-#, fuzzy
 msgid "Unknown TOC type"
-msgstr "Ukjent bruker"
+msgstr ""
 
 #: src/insets/InsetTabular.cpp:3143
 msgid "Opened table"
@@ -15612,208 +15357,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Ukjent bruker"
-
-#~ msgid "Table of Contents|T"
-#~ msgstr "Innholdsfortegnelse|n"
-
-#~ msgid "Choose the Font Style"
-#~ msgstr "Velg en font"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#, fuzzy
-#~ msgid "Chinese"
-#~ msgstr "Kopier"
-
-#, fuzzy
-#~ msgid "Upper"
-#~ msgstr "Store bokstaver|o"
-
-#~ msgid "Table of contents"
-#~ msgstr "Innholdsfortegnelse"
-
-#~ msgid "theorem"
-#~ msgstr "teorem"
-
-#, fuzzy
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "Åpnet text inset"
-
-#, fuzzy
-#~ msgid "Number style"
-#~ msgstr "Nummerert liste"
-
-#~ msgid "Error closing file"
-#~ msgstr "Mislyktes med å lukke fil"
-
-#~ msgid ""
-#~ "The output file could not be closed properly.\n"
-#~ " Probably some characters of your document are not representable in the "
-#~ "chosen encoding.\n"
-#~ "Changing the document encoding to utf8 could help."
-#~ msgstr ""
-#~ "Filen kunne ikke lukkes ordentlig.\n"
-#~ " Antagelig er det noen tegn som ikke kan representeres i den valgte "
-#~ "tegnkodingen.\n"
-#~ "Å forandre dokumentets tegnkoding til utf8 kan hjelpe."
-
-#~ msgid "block "
-#~ msgstr "blokk"
-
-#~ msgid "Corollary.  "
-#~ msgstr "Korollar."
-
-#, fuzzy
-#~ msgid "Basic style"
-#~ msgstr "Natbib-&stil:"
-
-#, fuzzy
-#~ msgid "&Caption"
-#~ msgstr "Bildetekst"
-
-#, fuzzy
-#~ msgid "A caption for the List of Listings"
-#~ msgstr "Bildetekst for sub-figuren"
-
-#, fuzzy
-#~ msgid "&Label"
-#~ msgstr "&Merke:"
-
-#, fuzzy
-#~ msgid "A Label for the caption"
-#~ msgstr "Tabelltittel"
-
-#, fuzzy
-#~ msgid "<- P&romote"
-#~ msgstr "<- &Forfremme"
-
-#, fuzzy
-#~ msgid "D&own"
-#~ msgstr "&Ned"
-
-#, fuzzy
-#~ msgid "De&mote ->"
-#~ msgstr "&Degradere ->"
-
-#, fuzzy
-#~ msgid "Upd&ate"
-#~ msgstr "&Oppdater"
-
-#, fuzzy
-#~ msgid "SubSection"
-#~ msgstr "Underseksjon"
-
-#~ msgid ""
-#~ "No font change defined. Use Character under the Layout menu to define "
-#~ "font change."
-#~ msgstr ""
-#~ "Ingen font endring definert. Bruk Tegn under Stil menyen to å definere "
-#~ "font endring."
-
-#~ msgid "Unknown toc list"
-#~ msgstr "Ukjent innholdsliste"
-
-#~ msgid "Glossary Entry"
-#~ msgstr "Oppføring i glossar"
-
-#~ msgid "Glossary|G"
-#~ msgstr "Glossar|G"
-
-#~ msgid "Insert glossary entry"
-#~ msgstr "Sett inn glose for glossaret"
-
-#~ msgid "Glo"
-#~ msgstr "Glose"
-
-#~ msgid "Glossary"
-#~ msgstr "Glossar"
-
-#, fuzzy
-#~ msgid "TeX Code:"
-#~ msgstr "TeX-kode|X"
-
-#~ msgid "Open this panel as a separate window"
-#~ msgstr "Åpne dette panelet som et eget vindu"
-
-#~ msgid "&Detach panel"
-#~ msgstr "&Riv løs panel"
-
-#~ msgid "Select a page of symbols"
-#~ msgstr "Velg symbolsett"
-
-#~ msgid "Insert spacing"
-#~ msgstr "Sett inn mellomrom"
-
-#~ msgid "Set limits style"
-#~ msgstr "Stil for grenseverdier"
-
-#~ msgid "Set math font"
-#~ msgstr "Sett matte-font"
-
-#~ msgid "Insert fraction"
-#~ msgstr "Sett inn brøk"
-
-#~ msgid "Toggle between display and inline mode"
-#~ msgstr "Bytt mellom formel i tekst, og fremhevet formel"
-
-#~ msgid "Show delimiter and bracket dialog"
-#~ msgstr "Parenteser og klammer"
-
-#~ msgid "Math Panel|l"
-#~ msgstr "Mattepanel|l"
-
-#~ msgid "Math Panel|P"
-#~ msgstr "Mattepanel|p"
-
-#~ msgid "Insert table"
-#~ msgstr "Sett inn tabell"
-
-#~ msgid "Show math panel"
-#~ msgstr "Mattepanel"
-
-#~ msgid "LyX: Math Roots"
-#~ msgstr "LyX: Røtter"
-
-#~ msgid "Cube root\t\\root"
-#~ msgstr "Kubikkrot\t\\root"
-
-#~ msgid "LyX: Math Styles"
-#~ msgstr "LyX: Mattestil"
-
-#~ msgid "LyX: Math Fonts"
-#~ msgstr "LyX: Mattefonter"
-
-#~ msgid "The document uses a missing TeX class \"%1$s\".\n"
-#~ msgstr "Dokumentet har en ukjent TeX-klasse \"%1$s\".\n"
-
-#, fuzzy
-#~ msgid "Insert math delimiters"
-#~ msgstr "Sett inn parenterser/klammer"
-
-#~ msgid "E&xtra options"
-#~ msgstr "E&kstra opsjoner"
-
-#~ msgid "Alig&nment:"
-#~ msgstr "&Justering:"
-
-#~ msgid "&From:"
-#~ msgstr "&Fra:"
-
-#~ msgid "&To:[[as in 'From format x to format y']]"
-#~ msgstr "&Til:"
-
-#~ msgid "&Converters"
-#~ msgstr "&Konverterteringer"
-
-#~ msgid "Tell whether this format can contain vector graphics."
-#~ msgstr "Hvorvidt dette formatet kan inneholde vektorgrafikk."
-
-#~ msgid "Class Settings"
-#~ msgstr "Klasseinnstillinger"
-
-#~ msgid "Save Bookmark|S"
-#~ msgstr "Lagre bokmerke|L"
-
-#~ msgid "#*"
-#~ msgstr "#*"
