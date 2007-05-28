@@ -906,61 +906,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	if (inputenc == "auto") {
-		string const doc_encoding =
-			language->encoding()->latexName();
-		Encoding::Package const package =
-			language->encoding()->package();
-
-		// Create a list with all the input encodings used
-		// in the document
-		std::set<string> encodings =
-			features.getEncodingSet(doc_encoding);
-
-		if (!encodings.empty() || package == Encoding::inputenc) {
-			os << "\\usepackage[";
-			std::set<string>::const_iterator it = encodings.begin();
-			std::set<string>::const_iterator const end = encodings.end();
-			if (it != end) {
-				os << from_ascii(*it);
-				++it;
-			}
-			for (; it != end; ++it)
-				os << ',' << from_ascii(*it);
-			if (package == Encoding::inputenc) {
-				if (!encodings.empty())
-					os << ',';
-				os << from_ascii(doc_encoding);
-			}
-			os << "]{inputenc}\n";
-			texrow.newline();
-		}
-		if (package == Encoding::CJK) {
-			os << "\\usepackage{CJK}\n";
-			texrow.newline();
-		}
-	} else if (inputenc != "default") {
-		switch (language->encoding()->package()) {
-		case Encoding::none:
-			break;
-		case Encoding::inputenc:
-			os << "\\usepackage[" << from_ascii(inputenc)
-			   << "]{inputenc}\n";
-			texrow.newline();
-			break;
-		case Encoding::CJK:
-			os << "\\usepackage{CJK}\n";
-			texrow.newline();
-			break;
-		}
-	}
-
-	// The encoding "armscii8" is only available when the package "armtex" is loaded.
-	// armscii8 is used for Armenian.
-	if (language->encoding()->latexName() == "armscii8" || inputenc == "armscii8") {
-		os << "\\usepackage{armtex}\n";
-		texrow.newline();
-	}
+	// handle inputenc etc.
+	os << writeEncodingPreamble(features, texrow);
 
 	if (!listings_params.empty()) {
 		os << "\\usepackage{listings}\n";
@@ -1419,6 +1366,71 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	if (!lyxrc.language_global_options)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
+}
+
+
+docstring const BufferParams::writeEncodingPreamble(LaTeXFeatures & features,
+			      TexRow & texrow) const
+{
+	odocstringstream os;
+
+	if (inputenc == "auto") {
+		string const doc_encoding =
+			language->encoding()->latexName();
+		Encoding::Package const package =
+			language->encoding()->package();
+
+		// Create a list with all the input encodings used
+		// in the document
+		std::set<string> encodings =
+			features.getEncodingSet(doc_encoding);
+
+		if (!encodings.empty() || package == Encoding::inputenc) {
+			os << "\\usepackage[";
+			std::set<string>::const_iterator it = encodings.begin();
+			std::set<string>::const_iterator const end = encodings.end();
+			if (it != end) {
+				os << from_ascii(*it);
+				++it;
+			}
+			for (; it != end; ++it)
+				os << ',' << from_ascii(*it);
+			if (package == Encoding::inputenc) {
+				if (!encodings.empty())
+					os << ',';
+				os << from_ascii(doc_encoding);
+			}
+			os << "]{inputenc}\n";
+			texrow.newline();
+		}
+		if (package == Encoding::CJK) {
+			os << "\\usepackage{CJK}\n";
+			texrow.newline();
+		}
+	} else if (inputenc != "default") {
+		switch (language->encoding()->package()) {
+		case Encoding::none:
+			break;
+		case Encoding::inputenc:
+			os << "\\usepackage[" << from_ascii(inputenc)
+			   << "]{inputenc}\n";
+			texrow.newline();
+			break;
+		case Encoding::CJK:
+			os << "\\usepackage{CJK}\n";
+			texrow.newline();
+			break;
+		}
+	}
+
+	// The encoding "armscii8" is only available when the package "armtex" is loaded.
+	// armscii8 is used for Armenian.
+	if (language->encoding()->latexName() == "armscii8" || inputenc == "armscii8") {
+		os << "\\usepackage{armtex}\n";
+		texrow.newline();
+	}
+
+	return os.str();
 }
 
 

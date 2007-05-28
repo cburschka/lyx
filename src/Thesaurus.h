@@ -17,9 +17,13 @@
 #include <vector>
 #include <map>
 
+#ifdef HAVE_LIBMYTHES
+#include MYTHES_H_LOCATION
+#else
 #ifdef HAVE_LIBAIKSAURUS
 #include AIKSAURUS_H_LOCATION
-#endif
+#endif // HAVE_LIBAIKSAURUS
+#endif // !HAVE_LIBMYTHES
 
 namespace lyx {
 
@@ -42,9 +46,13 @@ public:
 	Meanings lookup(docstring const & text);
 
 private:
+#ifdef HAVE_LIBMYTHES
+	MyThes * thes_;
+#else
 #ifdef HAVE_LIBAIKSAURUS
-	Aiksaurus * aik_;
-#endif
+	Aiksaurus * thes_;
+#endif // HAVE_LIBAIKSAURUS
+#endif // !HAVE_LIBMYTHES
 };
 
 extern Thesaurus thesaurus;

@@ -253,6 +253,9 @@ public:
 	std::string const paperSizeName() const;
 	/// set up if and how babel is called
 	std::string const babelCall(std::string const & lang_opts) const;
+	/// handle inputenc etc.
+	docstring const writeEncodingPreamble(LaTeXFeatures & features,
+					      TexRow & texrow) const;
 	/// set up the document fonts
 	std::string const loadFonts(std::string const & rm,
 				     std::string const & sf, std::string const & tt,

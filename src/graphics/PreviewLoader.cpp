@@ -15,14 +15,19 @@
 #include "GraphicsCache.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Converter.h"
 #include "debug.h"
+#include "Encoding.h"
 #include "Format.h"
 #include "InsetIterator.h"
 #include "Color.h"
+#include "LaTeXFeatures.h"
 #include "LyXRC.h"
+#include "output.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
+#include "TexRow.h"
 
 #include "frontends/Application.h" // hexName
 
@@ -570,10 +575,16 @@ void PreviewLoader::Impl::startLoading()
 	// Output the LaTeX file.
 	FileName const latexfile(filename_base + ".tex");
 
-	// FIXME UNICODE
-	// This creates an utf8 encoded file, but the proper inputenc
-	// command is missing.
-	odocfstream of(latexfile.toFilesystemEncoding().c_str());
+	// we use the encoding of the buffer
+	Encoding const & enc = buffer_.params().encoding();
+	odocfstream of(enc.iconvName());
+	TexRow texrow;
+	OutputParams runparams(&enc);
+	LaTeXFeatures features(buffer_, buffer_.params(), runparams);
+
+	if (!openFileWrite(of, latexfile))
+		return;
+
 	if (!of) {
 		LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()\n"
 					<< "Unable to create LaTeX file\n"
@@ -582,10 +593,18 @@ void PreviewLoader::Impl::startLoading()
 	}
 	of << "\\batchmode\n";
 	dumpPreamble(of);
+	// handle inputenc etc.
+	of << buffer_.params().writeEncodingPreamble(features, texrow);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";
 	of.close();
+	if (of.fail()) {
+		LYXERR(Debug::GRAPHICS)  << "PreviewLoader::startLoading()\n"
+					 << "File was not closed properly."
+					 << endl;
+		return;
+	}
 
 	// The conversion command.
 	ostringstream cs;
