@@ -11334,7 +11334,7 @@ Ejemplo de tabla formal
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11788,16 +11788,6 @@ in % of pixel size
 
 \begin_layout Standard
 92.3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -11805,38 +11795,13 @@ status collapsed
 
 
 \backslash
-bottomrule 
+tabularnewline
+\backslash
+bottomrule%
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 
@@ -11935,13 +11900,13 @@ La última línea de una tabla formal se crea con el comando ERT
 \series bold
 
 \backslash
-bottomrule[ancho]
+tabularnewline
+\backslash
+bottomrule[ancho]%
 \end_layout
 
 \begin_layout Standard
-en la primera celda de la última fila.
- La última fila es solo para este comando y no debería tener ningún otro
- contenido.
+en la última celda de la última fila.
  La anchura predeterminada es la misma que para 
 \series bold
 
@@ -12228,7 +12193,7 @@ Tabla formal especial
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -12721,16 +12686,6 @@ in % of pixel size
 
 \begin_layout Standard
 92.3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -12738,38 +12693,13 @@ status collapsed
 
 
 \backslash
-bottomrule 
+tabularnewline
+\backslash
+bottomrule%
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 

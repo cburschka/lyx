@@ -11420,7 +11420,7 @@ Example booktabs-table
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -11874,16 +11874,6 @@ in % of pixel size
 
 \begin_layout Standard
 92.3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -11891,38 +11881,13 @@ status collapsed
 
 
 \backslash
-bottomrule 
+tabularnewline
+\backslash
+bottomrule%
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 
@@ -12021,12 +11986,13 @@ The last line of a booktabs table is created with the ERT command
 \series bold
 
 \backslash
-bottomrule[width]
+tabularnewline
+\backslash
+bottomrule[width]%
 \end_layout
 
 \begin_layout Standard
-in the first cell of the last row.
- The last row is only for this command and could not have any other content.
+in the last cell of the last row.
  The default for the width is the same as for 
 \series bold
 
@@ -12106,7 +12072,7 @@ cmidrule
 midrule
 \series default
  commands must be inserted as first cell entry of the first cell of a row.
- The lines are created above the row.
+ The lines are created above that row.
 \end_layout
 
 \begin_layout Standard
@@ -12312,7 +12278,7 @@ Special booktabs-table
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -12805,16 +12771,6 @@ in % of pixel size
 
 \begin_layout Standard
 92.3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -12822,38 +12778,13 @@ status collapsed
 
 
 \backslash
-bottomrule 
+tabularnewline
+\backslash
+bottomrule% 
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \end_layout
 
