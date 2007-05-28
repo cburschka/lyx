@@ -259,7 +259,7 @@ bool TextClass::read(FileName const & filename, bool merge)
 
 				if (tmp.empty()) {
 					lexrc.printError("Could not find input"
-					                 "file: " + inc);
+							 "file: " + inc);
 					error = true;
 				} else if (read(tmp, true)) {
 					lexrc.printError("Error reading input"

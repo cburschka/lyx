@@ -422,7 +422,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	if (ConverterCache::get().inCache(filename, to_)) {
 		LYXERR(Debug::GRAPHICS) << "\tNo conversion needed (file in file cache)!"
-		                        << endl;
+					<< endl;
 		file_to_load_ = ConverterCache::get().cacheName(filename, to_);
 		loadImage();
 		return;

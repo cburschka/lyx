@@ -61,7 +61,7 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetLine::latex(Buffer const &, odocstream & os,
-                     OutputParams const & runparams) const
+		     OutputParams const & runparams) const
 {
 	os << "\\lyxline{\\"
 	   << from_ascii(runparams.local_font->latexSize()) << '}';
@@ -70,7 +70,7 @@ int InsetLine::latex(Buffer const &, odocstream & os,
 
 
 int InsetLine::plaintext(Buffer const &, odocstream & os,
-                         OutputParams const &) const
+			 OutputParams const &) const
 {
 	os << "\n-------------------------------------------\n";
 	return PLAINTEXT_NEWLINE;

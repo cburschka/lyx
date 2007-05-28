@@ -38,7 +38,7 @@ public:
 	///
 	bool canApply() const { return true; }
 
-	/// The title displayed by the dialog reflects source type. 
+	/// The title displayed by the dialog reflects source type.
 	docstring const title() const;
 
 	/** get the source code of selected paragraphs, or the whole document

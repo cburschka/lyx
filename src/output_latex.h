@@ -27,8 +27,8 @@ class TexRow;
 
 /// Export up to \p number optarg insets
 int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
-                      odocstream & os, OutputParams const & runparams,
-                      int number);
+		      odocstream & os, OutputParams const & runparams,
+		      int number);
 
 /** Export \p paragraphs of buffer \p buf to LaTeX.
     Don't use a temporary stringstream for \p os if the final output is
@@ -45,8 +45,8 @@ void latexParagraphs(Buffer const & buf,
 /// Switch the encoding of \p os from \p oldEnc to \p newEnc if needed.
 /// \return the number of characters written to \p os.
 int switchEncoding(odocstream & os, BufferParams const & bparams,
-                   bool moving_arg, Encoding const & oldEnc,
-                   Encoding const & newEnc);
+		   bool moving_arg, Encoding const & oldEnc,
+		   Encoding const & newEnc);
 
 } // namespace lyx
 

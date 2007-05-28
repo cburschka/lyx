@@ -279,7 +279,7 @@ QLFontInfo::QLFontInfo(Font const & f)
 	if (f.realShape() != Font::SMALLCAPS_SHAPE) {
 		metrics.reset(new GuiFontMetrics(font));
 	}
-	else {	
+	else {
 		// handle small caps ourselves ...
 		Font smallfont = f;
 		smallfont.decSize().decSize().setShape(Font::UP_SHAPE);

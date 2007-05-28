@@ -250,7 +250,7 @@ namespace {
 		odocstringstream ods;
 		ods << '\n';
 		// only add blank line if we're not in an ERT or Listings inset
-		if (par.ownerCode() != Inset::ERT_CODE 
+		if (par.ownerCode() != Inset::ERT_CODE
 		    && par.ownerCode() != Inset::LISTINGS_CODE)
 			ods << '\n';
 		return ods.str();
@@ -785,7 +785,7 @@ bool Cursor::backspace()
 		// If empty cell, and not part of a big cell
 		if (lastpos() == 0 && inset().nargs() == 1) {
 			popLeft();
-			// Directly delete empty cell: [|[]] => [|] 
+			// Directly delete empty cell: [|[]] => [|]
 			if (inMathed()) {
 				plainErase();
 				resetAnchor();
@@ -844,7 +844,7 @@ bool Cursor::erase()
 		bool one_cell = inset().nargs() == 1;
 		if (one_cell && lastpos() == 0) {
 			popLeft();
-			// Directly delete empty cell: [|[]] => [|] 
+			// Directly delete empty cell: [|[]] => [|]
 			if (inMathed()) {
 				plainErase();
 				resetAnchor();

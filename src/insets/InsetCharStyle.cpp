@@ -238,7 +238,7 @@ void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	setInlined();
 	switch (cmd.action) {
-	
+
 	case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3)
 				params_.show_label = !params_.show_label;
@@ -283,7 +283,7 @@ bool InsetCharStyle::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
-                          OutputParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	if (!undefined()) {
 		// FIXME UNICODE
@@ -300,23 +300,23 @@ int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
-                              OutputParams const & runparams) const
+			      OutputParams const & runparams) const
 {
 	return InsetText::plaintext(buf, os, runparams);
 }
 
 
 int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
-                            OutputParams const & runparams) const
+			    OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator par = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 
 	if (!undefined())
-                // FIXME UNICODE
-                sgml::openTag(os, params_.latexname,
-                              par->getID(buf, runparams) + params_.latexparam);
+		// FIXME UNICODE
+		sgml::openTag(os, params_.latexname,
+			      par->getID(buf, runparams) + params_.latexparam);
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,

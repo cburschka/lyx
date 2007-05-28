@@ -43,7 +43,7 @@ QIndexDialog::QIndexDialog(QIndex * form)
 
 	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	connect( keywordED, SIGNAL(textChanged(const QString &)), 
+	connect( keywordED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 
 	setFocusProxy(keywordED);

@@ -63,30 +63,30 @@ public:
 	 * the cache if it is not already in or not up to date.
 	 */
 	void add(support::FileName const & orig_from, std::string const & to_format,
-	         support::FileName const & converted_file) const;
+		 support::FileName const & converted_file) const;
 
 	/// Remove a file from the cache.
 	void remove(support::FileName const & orig_from,
-	            std::string const & to_format) const;
+		    std::string const & to_format) const;
 
 	/// Remove all cached \p from_format -> \p to_format conversions
 	void remove_all(std::string const & from_format,
-	                std::string const & to_format) const;
+			std::string const & to_format) const;
 
 	/**
 	 * Returns \c true if \c orig_from converted to \c to_format is in
 	 * the cache and up to date.
 	 */
 	bool inCache(support::FileName const & orig_from,
-	             std::string const & to_format) const;
+		     std::string const & to_format) const;
 
 	/// Get the name of the cached file
 	support::FileName const & cacheName(support::FileName const & orig_from,
-	                                    std::string const & to_format) const;
+					    std::string const & to_format) const;
 
 	/// Copy the file from the cache to \p dest
 	bool copy(support::FileName const & orig_from, std::string const & to_format,
-	          support::FileName const & dest) const;
+		  support::FileName const & dest) const;
 
 private:
 	/** Make the c-tor, d-tor private so we can control how many objects

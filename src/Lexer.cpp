@@ -417,7 +417,7 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 			c = cc;
 
 			// skip ','s
-			if (c == ',') 
+			if (c == ',')
 				continue;
 
 			if (c == commentChar) {
@@ -525,7 +525,7 @@ int Lexer::Pimpl::search_kw(char const * const tag) const
 int Lexer::Pimpl::lex()
 {
 	//NOTE: possible bug.
-	if (next() && status == LEX_TOKEN) 
+	if (next() && status == LEX_TOKEN)
 		return search_kw(getString().c_str());
 	return status;
 }
@@ -619,7 +619,7 @@ bool Lexer::Pimpl::nextToken()
 
 bool Lexer::Pimpl::inputAvailable()
 {
-	return is.good(); 
+	return is.good();
 }
 
 
@@ -771,7 +771,7 @@ string const Lexer::getString() const
 docstring const Lexer::getDocString() const
 {
 	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
-	
+
 	if (lastReadOk_)
 		return pimpl_->getDocString();
 

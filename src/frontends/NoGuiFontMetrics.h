@@ -32,33 +32,33 @@ public:
 	virtual int maxAscent() const { return 1; }
 
 	virtual int maxDescent() const { return 1; }
-	
+
 	virtual Dimension const defaultDimension() const { return Dimension(1, 1, 1); }
 
 	virtual int width(char_type) const { return 1; }
 
 	virtual int ascent(char_type) const { return 1; }
-	
+
 	int descent(char_type) const { return 1; }
-	
+
 	virtual int lbearing(char_type) const { return 1; }
-	
+
 	virtual int rbearing(char_type) const { return 1; }
-	
+
 	virtual int width(docstring const & s) const { return s.size(); }
-	
+
 	virtual int signedWidth(docstring const & s) const
 	{
 		if (s.size() && s[0] == '-')
 			return -width(s.substr(1, s.length() - 1));
 		return width(s);
 	}
-	
+
 	virtual Dimension const dimension(char_type) const { return Dimension(1, 1, 1); }
 
 	virtual void rectText(docstring const &,
 		int & /*width*/, int & /*ascent*/, int & /*descent*/) const {}
-	
+
 	virtual void buttonText(docstring const &,
 		int & /*width*/, int & /*ascent*/, int & /*descent*/) const {}
 };

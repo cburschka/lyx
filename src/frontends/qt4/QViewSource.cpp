@@ -84,7 +84,7 @@ LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent)
 
 void LaTeXHighlighter::highlightBlock(QString const & text)
 {
-	// $ $ 
+	// $ $
 	QRegExp exprMath("\\$[^\\$]*\\$");
 	int index = text.indexOf(exprMath);
 	while (index >= 0) {

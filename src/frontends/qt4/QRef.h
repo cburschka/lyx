@@ -101,7 +101,7 @@ private:
 
 	/// went to a reference ?
 	bool at_ref_;
-	
+
 	/// the last reference entered or examined
 	QString last_reference_;
 

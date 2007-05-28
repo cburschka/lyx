@@ -205,15 +205,15 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 	int const w = max_witdh_ - leftMargin() - right_margin;
 	MetricsInfo mi(&bv_, font, w);
 	inset->metrics(mi, dim);
-	if (inset->width() > dim.wid) 
+	if (inset->width() > dim.wid)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw width " << inset->width()
 		       << "> metrics width " << dim.wid << "." << std::endl;
-	if (inset->ascent() > dim.asc) 
+	if (inset->ascent() > dim.asc)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw ascent " << inset->ascent()
 		       << "> metrics ascent " << dim.asc << "." << std::endl;
-	if (inset->descent() > dim.des) 
+	if (inset->descent() > dim.des)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw ascent " << inset->descent()
 		       << "> metrics descent " << dim.des << "." << std::endl;
@@ -337,7 +337,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 		 * Arabic characters, but rather paint them one at a time.
 		 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
 		 */
-		if (hebrew) 
+		if (hebrew)
 			break;
 
 		/* FIXME: these checks are irrelevant, since 'arabic' and
@@ -670,11 +670,11 @@ void RowPainter::paintLast()
 		FontMetrics const & fm = theFontMetrics(bv_.buffer()->params().getFont());
 		int const length = fm.maxAscent() / 2;
 		Color::color col = par_.isInserted(par_.size()) ? Color::addedtext : Color::deletedtext;
-		
+
 		pain_.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
-		           Painter::line_solid, Painter::line_thick);
+			   Painter::line_solid, Painter::line_thick);
 		pain_.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1, yo_ + 2, col,
-		           Painter::line_solid, Painter::line_thick);
+			   Painter::line_solid, Painter::line_thick);
 	}
 
 	// draw an endlabel
@@ -775,7 +775,7 @@ void RowPainter::paintText()
 		// We also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			// Calculate 1/3 height of the buffer's default font
-			FontMetrics const & fm 
+			FontMetrics const & fm
 				= theFontMetrics(bv_.buffer()->params().getFont());
 			int const middle = yo_ - fm.maxAscent() / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
@@ -833,7 +833,7 @@ void RowPainter::paintText()
 	// if we reach the end of a struck out range, paint it
 	if (running_strikeout) {
 		// calculate 1/3 height of the buffer's default font
-		FontMetrics const & fm 
+		FontMetrics const & fm
 			= theFontMetrics(bv_.buffer()->params().getFont());
 		int const middle = yo_ - fm.maxAscent() / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
@@ -887,7 +887,7 @@ bool inNarrowInset(PainterInfo & pi)
 	for (int i = cur.depth() - 1; --i >= 0; ) {
 		Inset * const in = &cur[i].inset();
 		if (in) {
-			InsetText * t = 
+			InsetText * t =
 				const_cast<InsetText *>(in->asTextInset());
 			if (t)
 				return !t->wide();
@@ -928,7 +928,7 @@ void paintPar
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
 		bool in_inset_alone_on_row =
 			innerCursorOnRow(pi, pit, rit, text);
-		bool leftEdgeFixed = 
+		bool leftEdgeFixed =
 			(par.getAlign() == LYX_ALIGN_LEFT ||
 			 par.getAlign() == LYX_ALIGN_BLOCK);
 		bool inNarrowIns = inNarrowInset(pi);
@@ -964,7 +964,7 @@ void paintPar
 			// Clear background of this row
 			// (if paragraph background was not cleared)
 			if (!repaintAll &&
-			    (!(in_inset_alone_on_row && leftEdgeFixed) 
+			    (!(in_inset_alone_on_row && leftEdgeFixed)
 				|| row_has_changed)) {
 				pi.pain.fillRectangle(x, y - rit->ascent(),
 				    rp.maxWidth(), rit->height(),
@@ -990,7 +990,7 @@ void paintPar
 			rp.paintChangeBar();
 			if (rit == rb)
 				rp.paintFirst();
- 			rp.paintText();
+			rp.paintText();
 			if (rit + 1 == re)
 				rp.paintLast();
 		}
@@ -1015,7 +1015,7 @@ void paintText(BufferView & bv,
 	Text & text = buffer.text();
 	bool const select = bv.cursor().selection();
 	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
-	
+
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
 	// Should the whole screen, including insets, be refreshed?
 	// FIXME: We should also distinguish DecorationUpdate to avoid text
@@ -1062,7 +1062,7 @@ void paintTextInset(Text const & text, PainterInfo & pi, int x, int y)
 	// This flag cannot be set from within same inset:
 	bool repaintAll = refreshInside;
 	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
-		ParagraphMetrics const & pmi 
+		ParagraphMetrics const & pmi
 			= pi.base.bv->parMetrics(&text, pit);
 		y += pmi.ascent();
 		paintPar(pi, text, pit, x, y, repaintAll);

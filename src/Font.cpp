@@ -510,21 +510,21 @@ docstring const Font::stateText(BufferParams * params) const
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
 		os << bformat(_("Emphasis %1$s, "),
-		              _(GUIMiscNames[emph()]));
+			      _(GUIMiscNames[emph()]));
 	if (underbar() != INHERIT)
 		os << bformat(_("Underline %1$s, "),
-		              _(GUIMiscNames[underbar()]));
+			      _(GUIMiscNames[underbar()]));
 	if (noun() != INHERIT)
 		os << bformat(_("Noun %1$s, "),
-		              _(GUIMiscNames[noun()]));
+			      _(GUIMiscNames[noun()]));
 	if (bits == inherit)
 		os << _("Default") << ", ";
 	if (!params || (language() != params->language))
 		os << bformat(_("Language: %1$s, "),
-		              _(language()->display()));
+			      _(language()->display()));
 	if (number() != OFF)
 		os << bformat(_("  Number %1$s"),
-		              _(GUIMiscNames[number()]));
+			      _(GUIMiscNames[number()]));
 	return rtrim(os.str(), ", ");
 }
 
@@ -740,9 +740,9 @@ void Font::lyxWriteChanges(Font const & orgfont,
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
 int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
-                                    OutputParams const & runparams,
-                                    Font const & base,
-                                    Font const & prev) const
+				    OutputParams const & runparams,
+				    Font const & base,
+				    Font const & prev) const
 {
 	bool env = false;
 
@@ -752,7 +752,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		if (language()->lang() == "farsi") {
 			os << "\\textFR{";
 			count += 8;
-		} else if (!isRightToLeft() && 
+		} else if (!isRightToLeft() &&
 			    base.language()->lang() == "farsi") {
 			os << "\\textLR{";
 			count += 8;
@@ -788,11 +788,11 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	}
 
 	// When the current language is Hebrew, Arabic, or Farsi
-	// the numbers are written Left-to-Right. ArabTeX package 
+	// the numbers are written Left-to-Right. ArabTeX package
 	// reorders the number automatically but the packages used
 	// for Hebrew and Farsi (Arabi) do not.
-	if (number() == ON && prev.number() != ON 
-		&& (language()->lang() == "hebrew" 
+	if (number() == ON && prev.number() != ON
+		&& (language()->lang() == "hebrew"
 			|| language()->lang() == "farsi")) {
 		os << "{\\beginL ";
 		count += 9;
@@ -864,9 +864,9 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
 int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
-                                  OutputParams const & runparams,
-                                  Font const & base,
-                                  Font const & next) const
+				  OutputParams const & runparams,
+				  Font const & base,
+				  Font const & next) const
 {
 	int count = 0;
 	bool env = false;
@@ -921,11 +921,11 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 	}
 
 	// When the current language is Hebrew, Arabic, or Farsi
-	// the numbers are written Left-to-Right. ArabTeX package 
+	// the numbers are written Left-to-Right. ArabTeX package
 	// reorders the number automatically but the packages used
 	// for Hebrew and Farsi (Arabi) do not.
-	if (number() == ON && next.number() != ON 
-		&& (language()->lang() == "hebrew" 
+	if (number() == ON && next.number() != ON
+		&& (language()->lang() == "hebrew"
 			|| language()->lang() == "farsi")) {
 		os << "\\endL}";
 		count += 6;

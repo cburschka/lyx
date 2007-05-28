@@ -510,20 +510,20 @@ bool Buffer::readDocument(Lexer & lex)
 	if (params().outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
-		                  LaTeXFeatures::isAvailable("xcolor");
-		
+				  LaTeXFeatures::isAvailable("xcolor");
+
 		if (!dvipost && !xcolorsoul) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
-			               _("Changes will not be highlighted in LaTeX output, "
-			                 "because neither dvipost nor xcolor/soul are installed.\n"
-			                 "Please install these packages or redefine "
-			                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+				       _("Changes will not be highlighted in LaTeX output, "
+					 "because neither dvipost nor xcolor/soul are installed.\n"
+					 "Please install these packages or redefine "
+					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		} else if (!xcolorsoul) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
-			               _("Changes will not be highlighted in LaTeX output "
-			                 "when using pdflatex, because xcolor and soul are not installed.\n"
-			                 "Please install both packages or redefine "
-			                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+				       _("Changes will not be highlighted in LaTeX output "
+					 "when using pdflatex, because xcolor and soul are not installed.\n"
+					 "Please install both packages or redefine "
+					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		}
 	}
 
@@ -718,10 +718,10 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		}
 		ostringstream command;
 		command << os::python()
-		        << ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
-		        << " -t " << convert<string>(LYX_FORMAT)
-		        << " -o " << quoteName(tmpfile.toFilesystemEncoding())
-		        << ' ' << quoteName(filename.toFilesystemEncoding());
+			<< ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
+			<< " -t " << convert<string>(LYX_FORMAT)
+			<< " -o " << quoteName(tmpfile.toFilesystemEncoding())
+			<< ' ' << quoteName(filename.toFilesystemEncoding());
 		string const command_str = command.str();
 
 		LYXERR(Debug::INFO) << "Running '"
@@ -776,16 +776,16 @@ bool Buffer::save() const
 		backupName = FileName(fileName() + '~');
 		if (!lyxrc.backupdir_path.empty())
 			backupName = FileName(addName(lyxrc.backupdir_path,
-			                      subst(os::internal_path(backupName.absFilename()), '/', '!')));
+					      subst(os::internal_path(backupName.absFilename()), '/', '!')));
 
 		try {
 			fs::copy_file(encodedFilename, backupName.toFilesystemEncoding(), false);
 			madeBackup = true;
 		} catch (fs::filesystem_error const & fe) {
 			Alert::error(_("Backup failure"),
-			             bformat(_("Cannot create backup file %1$s.\n"
-			                       "Please check whether the directory exists and is writeable."),
-			                     from_utf8(backupName.absFilename())));
+				     bformat(_("Cannot create backup file %1$s.\n"
+					       "Please check whether the directory exists and is writeable."),
+					     from_utf8(backupName.absFilename())));
 			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 		}
 	}
@@ -1000,8 +1000,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	    !params().language->babel().empty()) {
 		// FIXME UNICODE
 		os << from_utf8(subst(lyxrc.language_command_begin,
-		                           "$$lang",
-		                           params().language->babel()))
+					   "$$lang",
+					   params().language->babel()))
 		   << '\n';
 		texrow().newline();
 	}
@@ -1047,8 +1047,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	if (!lyxrc.language_auto_end &&
 	    !params().language->babel().empty()) {
 		os << from_utf8(subst(lyxrc.language_command_end,
-		                           "$$lang",
-		                           params().language->babel()))
+					   "$$lang",
+					   params().language->babel()))
 		   << '\n';
 		texrow().newline();
 	}
@@ -1098,7 +1098,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 	LYXERR(Debug::LATEX) << "makeDocBookFile..." << endl;
 
 	//ofstream ofs;
-        odocfstream ofs;
+	odocfstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
 
@@ -1126,12 +1126,12 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		if (runparams.flavor == OutputParams::XML)
 			os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
-                // FIXME UNICODE
+		// FIXME UNICODE
 		os << "<!DOCTYPE " << from_ascii(top_element) << ' ';
 
-                // FIXME UNICODE
+		// FIXME UNICODE
 		if (! tclass.class_header().empty())
-                        os << from_ascii(tclass.class_header());
+			os << from_ascii(tclass.class_header());
 		else if (runparams.flavor == OutputParams::XML)
 			os << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
 			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
@@ -1152,7 +1152,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
-                        os << "\n [ " << preamble << " ]";
+			os << "\n [ " << preamble << " ]";
 		}
 		os << ">\n\n";
 	}
@@ -1233,9 +1233,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (params().outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
-		                  LaTeXFeatures::isAvailable("xcolor");
-		
-        	if (features.runparams().flavor == OutputParams::LATEX) {
+				  LaTeXFeatures::isAvailable("xcolor");
+
+		if (features.runparams().flavor == OutputParams::LATEX) {
 			if (dvipost) {
 				features.require("ct-dvipost");
 				features.require("dvipost");
@@ -1243,7 +1243,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 				features.require("ct-xcolor-soul");
 				features.require("soul");
 				features.require("xcolor");
-			} else {	
+			} else {
 				features.require("ct-none");
 			}
 		} else if (features.runparams().flavor == OutputParams::PDFLATEX ) {
@@ -1255,7 +1255,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 			} else {
 				features.require("ct-none");
 			}
-        	}
+		}
 	}
 
 	// AMS Style is at document level

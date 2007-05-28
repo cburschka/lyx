@@ -47,7 +47,7 @@ TocModel const & TocModel::operator=(Toc const & toc)
 TocIterator const TocModel::tocIterator(QModelIndex const & index) const
 {
 	TocMap::const_iterator map_it = toc_map_.find(index);
-	BOOST_ASSERT(map_it != toc_map_.end());	
+	BOOST_ASSERT(map_it != toc_map_.end());
 	return map_it->second;
 }
 
@@ -59,7 +59,7 @@ QModelIndex const TocModel::modelIndex(TocIterator const & it) const
 
 	if (map_it == model_map_.end())
 		return QModelIndex();
-	
+
 	return map_it->second;
 }
 
@@ -121,7 +121,7 @@ void TocModel::populate(Toc const & toc)
 
 		++iter;
 	}
-	
+
 	setHeaderData(0, Qt::Horizontal, QVariant("title"), Qt::DisplayRole);
 //	emit headerDataChanged();
 }
@@ -132,7 +132,7 @@ void TocModel::populate(TocIterator & iter,
 						QModelIndex const & parent)
 {
 	int curdepth = iter->depth() + 1;
-	
+
 	int current_row;
 	QModelIndex child_item;
 
@@ -148,7 +148,7 @@ void TocModel::populate(TocIterator & iter,
 			--iter;
 			return;
 		}
-		
+
 		maxdepth_ = max(maxdepth_, iter->depth());
 		mindepth_ = min(mindepth_, iter->depth());
 		current_row = rowCount(parent);

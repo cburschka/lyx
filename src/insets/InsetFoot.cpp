@@ -59,7 +59,7 @@ docstring const InsetFoot::editMessage() const
 
 
 int InsetFoot::latex(Buffer const & buf, odocstream & os,
-                     OutputParams const & runparams_in) const
+		     OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
 	// footnotes in titling commands like \title have moving arguments
@@ -81,7 +81,7 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetFoot::plaintext(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	os << '[' << buf.B_("footnote") << ":\n";
 	InsetText::plaintext(buf, os, runparams);
@@ -92,7 +92,7 @@ int InsetFoot::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetFoot::docbook(Buffer const & buf, odocstream & os,
-                       OutputParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	os << "<footnote>";
 	int const i = InsetText::docbook(buf, os, runparams);

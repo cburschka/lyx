@@ -31,7 +31,7 @@ static docstring convertDelimToLatexName(docstring const & name)
 {
 	if (name.size() == 1) {
 		char_type const c = name[0];
-		if (c == '<' || c == '(' || c == '[' || c == '.' 
+		if (c == '<' || c == '(' || c == '[' || c == '.'
 		    || c == '>' || c == ')' || c == ']' || c == '/' || c == '|')
 			return name;
 	}

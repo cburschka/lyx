@@ -109,13 +109,13 @@ string const doSubstitution(InsetExternalParams const & params,
 		// FIXME UNICODE
 		string relToMasterPath = support::onlyPath(
 				to_utf8(support::makeRelPath(from_utf8(absname),
-		                                             from_utf8(masterpath))));
+							     from_utf8(masterpath))));
 		if (relToMasterPath == "./")
 			relToMasterPath.clear();
 		// FIXME UNICODE
 		string relToParentPath = support::onlyPath(
 				to_utf8(support::makeRelPath(from_utf8(absname),
-				                             from_utf8(parentpath))));
+							     from_utf8(parentpath))));
 		if (relToParentPath == "./")
 			relToParentPath.clear();
 
@@ -178,8 +178,8 @@ string const doSubstitution(InsetExternalParams const & params,
 		string::size_type const send = s.find("\")", spos);
 		string const file_template = s.substr(spos + 12, send - (spos + 12));
 		string const file = doSubstitution(params, buffer,
-		                                   file_template, false,
-		                                   external_in_tmpdir, what);
+						   file_template, false,
+						   external_in_tmpdir, what);
 		string contents;
 
 		FileName const absfile(
@@ -206,8 +206,8 @@ void updateExternal(InsetExternalParams const & params,
 		    string const & format,
 		    Buffer const & buffer,
 		    ExportData & exportdata,
-                    bool external_in_tmpdir,
-                    bool dryrun)
+		    bool external_in_tmpdir,
+		    bool dryrun)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
@@ -317,8 +317,8 @@ void updateExternal(InsetExternalParams const & params,
 	ErrorList el;
 	bool const success =
 		theConverters().convert(&buffer, temp_file, abs_to_file,
-		                   params.filename, from_format, to_format, el,
-		                   Converters::try_default | Converters::try_cache);
+				   params.filename, from_format, to_format, el,
+				   Converters::try_default | Converters::try_cache);
 
 	if (!success)
 		LYXERR(Debug::EXTERNAL)
@@ -362,7 +362,7 @@ int writeExternal(InsetExternalParams const & params,
 
 	if (!dryrun || support::contains(cit->second.product, "$$Contents"))
 		updateExternal(params, format, buffer, exportdata,
-		               external_in_tmpdir, dryrun);
+			       external_in_tmpdir, dryrun);
 
 	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,

@@ -157,7 +157,7 @@ bool ControlParagraph::inInset() const
 
 bool ControlParagraph::canIndent() const
 {
-	return kernel().buffer().params().paragraph_separation == 
+	return kernel().buffer().params().paragraph_separation ==
 		BufferParams::PARSEP_INDENT;
 }
 

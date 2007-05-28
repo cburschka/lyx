@@ -39,7 +39,7 @@ QLogDialog::QLogDialog(QLog * form)
 
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect( updatePB, SIGNAL( clicked() ), 
+	connect( updatePB, SIGNAL( clicked() ),
 		this, SLOT( updateClicked() ) );
 }
 
@@ -90,7 +90,7 @@ void LogHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, warningFormat);
 		index = text.indexOf(exprWarning, index + length);
 	}
-	// ! error 
+	// ! error
 	QRegExp exprError("^!.*$");
 	index = text.indexOf(exprError);
 	while (index >= 0) {

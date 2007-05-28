@@ -82,7 +82,7 @@ public:
 protected:
 	virtual bool
 	do_copy(support::FileName const & from, support::FileName const & to,
-	        std::string const &, unsigned long int mode) const;
+		std::string const &, unsigned long int mode) const;
 
 	virtual bool
 	do_rename(support::FileName const & from, support::FileName const & to,
@@ -131,7 +131,7 @@ public:
 private:
 	virtual bool
 	do_copy(support::FileName const & from, support::FileName const & to,
-	        std::string const & latex, unsigned long int mode) const;
+		std::string const & latex, unsigned long int mode) const;
 
 	virtual bool
 	do_rename(support::FileName const & from, support::FileName const & to,

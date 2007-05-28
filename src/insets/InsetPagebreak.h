@@ -30,13 +30,13 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 
 	void read(Buffer const &, Lexer & lex);
 
@@ -63,7 +63,7 @@ public:
 	InsetClearPage() {}
 
 	docstring insetLabel() const { return _("Clear Page"); }
-	
+
 	std::string getCmdName() const { return "\\clearpage"; }
 
 private:
@@ -79,7 +79,7 @@ public:
 	InsetClearDoublePage() {}
 
 	docstring insetLabel() const { return _("Clear Double Page"); }
-	
+
 	std::string getCmdName() const { return "\\cleardoublepage"; }
 
 private:

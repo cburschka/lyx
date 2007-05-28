@@ -62,7 +62,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p("bibitem");
 		InsetCommandMailer::string2params("bibitem", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
- 			cur.noUpdate();
+			cur.noUpdate();
 			break;
 		}
 		if (p["key"] != params()["key"])
@@ -109,7 +109,7 @@ docstring const InsetBibitem::getScreenLabel(Buffer const &) const
 
 
 int InsetBibitem::plaintext(Buffer const &, odocstream & os,
-                            OutputParams const &) const
+			    OutputParams const &) const
 {
 	odocstringstream oss;
 	oss << '[' << getCounter() << "] ";
@@ -131,22 +131,22 @@ docstring const bibitemWidest(Buffer const & buffer)
 	// FIXME: this font is used unitialized for now but should  be set to
 	// a proportional font. Here is what Georg Baum has to say about it:
 	/*
-	bibitemWidest() is supposed to find the bibitem with the widest label in the 
-	output, because that is needed as an argument of the bibliography 
-	environment to dtermine the correct indentation. To be 100% correct we 
-	would need the metrics of the font that is used in the output, but usually 
+	bibitemWidest() is supposed to find the bibitem with the widest label in the
+	output, because that is needed as an argument of the bibliography
+	environment to dtermine the correct indentation. To be 100% correct we
+	would need the metrics of the font that is used in the output, but usually
 	we don't have access to these.
-	In practice, any proportional font is probably good enough, since we don't 
-	need to know the final with, we only need to know the which label is the 
+	In practice, any proportional font is probably good enough, since we don't
+	need to know the final with, we only need to know the which label is the
 	widest.
-	Unless there is an easy way to get the metrics of the output font I suggest 
+	Unless there is an easy way to get the metrics of the output font I suggest
 	to use a hardcoded font like "Times" or so.
 
-	It is very important that the result of this function is the same both with 
-	and without GUI. After thinking about this it is clear that no Font 
-	metrics should be used here, since these come from the gui. If we can't 
-	easily get the LaTeX font metrics we should make our own poor mans front 
-	metrics replacement, e.g. by hardcoding the metrics of the standard TeX 
+	It is very important that the result of this function is the same both with
+	and without GUI. After thinking about this it is clear that no Font
+	metrics should be used here, since these come from the gui. If we can't
+	easily get the LaTeX font metrics we should make our own poor mans front
+	metrics replacement, e.g. by hardcoding the metrics of the standard TeX
 	font.
 	*/
 	Font font;
@@ -157,16 +157,16 @@ docstring const bibitemWidest(Buffer const & buffer)
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
 			docstring const label = it->bibitem()->getBibLabel();
-            
+
 			// FIXME: we can't be sure using the following that the GUI
-			// version and the command-line version will give the same 
+			// version and the command-line version will give the same
 			// result.
 			//
 			//int const wx = use_gui?
 			//	theFontMetrics(font).width(label): label.size();
 			//
 			// So for now we just use the label size in order to be sure
-			// that GUI and no-GUI gives the same bibitem (even if that is 
+			// that GUI and no-GUI gives the same bibitem (even if that is
 			// potentially the wrong one.
 			int const wx = label.size();
 

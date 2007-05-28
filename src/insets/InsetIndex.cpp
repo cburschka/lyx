@@ -47,7 +47,7 @@ int InsetIndex::docbook(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	os << "<indexterm><primary>"
-           << sgml::escapeString(getParam("name"))
+	   << sgml::escapeString(getParam("name"))
 	   << "</primary></indexterm>";
 	return 0;
 }

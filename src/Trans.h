@@ -149,7 +149,7 @@ private:
 	docstring const & match(char_type c);
 	///
 	void insertException(KmodException & exclist, char_type c,
-	                     docstring const & data, bool = false,
+			     docstring const & data, bool = false,
 			     tex_accent = TEX_NOACCENT);
 	///
 	void freeException(KmodException & exclist);

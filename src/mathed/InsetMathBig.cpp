@@ -85,7 +85,7 @@ void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 	docstring const delim = (delim_ == "\\|") ?  from_ascii("Vert") :
 		(delim_ == "\\\\") ? from_ascii("\\") : support::ltrim(delim_, "\\");
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
-	                 delim);
+			 delim);
 	setPosCache(pi, x, y);
 }
 

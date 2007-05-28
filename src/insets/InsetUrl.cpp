@@ -58,7 +58,7 @@ docstring const InsetUrl::getScreenLabel(Buffer const &) const
 
 
 int InsetUrl::latex(Buffer const &, odocstream & os,
-                    OutputParams const & runparams) const
+		    OutputParams const & runparams) const
 {
 	docstring const & name = getParam("name");
 	if (!name.empty())
@@ -71,7 +71,7 @@ int InsetUrl::latex(Buffer const &, odocstream & os,
 
 
 int InsetUrl::plaintext(Buffer const &, odocstream & os,
-                        OutputParams const &) const
+			OutputParams const &) const
 {
 	odocstringstream oss;
 
@@ -88,11 +88,11 @@ int InsetUrl::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetUrl::docbook(Buffer const &, odocstream & os,
-                      OutputParams const &) const
+		      OutputParams const &) const
 {
-	os << "<ulink url=\"" 
+	os << "<ulink url=\""
 	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
-	   << "\">" 
+	   << "\">"
 	   << getParam("name")
 	   << "</ulink>";
 	return 0;

@@ -224,7 +224,7 @@ std::string const unzippedFileName(std::string const & zipped_file);
   Will overwrite an already existing unzipped file without warning.
  */
 FileName const unzipFile(FileName const & zipped_file,
-                         std::string const & unzipped_file = std::string());
+			 std::string const & unzipped_file = std::string());
 
 /// Returns true is path is absolute
 bool absolutePath(std::string const & path);

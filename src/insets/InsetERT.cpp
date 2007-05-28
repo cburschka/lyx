@@ -169,7 +169,7 @@ int InsetERT::latex(Buffer const &, odocstream & os,
 
 
 int InsetERT::plaintext(Buffer const &, odocstream &,
-                        OutputParams const &) const
+			OutputParams const &) const
 {
 	return 0; // do not output TeX code
 }

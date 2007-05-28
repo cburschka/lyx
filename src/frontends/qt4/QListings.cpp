@@ -167,11 +167,11 @@ QListingsDialog::QListingsDialog(QListings * form)
 	: form_(form)
 {
 	setupUi(this);
-	
+
 	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	
+
 	connect(languageCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
 	connect(dialectCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
 	connect(inlineCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -188,7 +188,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(spaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(spaceInStringCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(extendedcharsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	
+
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
 
@@ -240,7 +240,7 @@ string QListingsDialog::construct_params()
 			}
 		}
 	}
-	
+
 	bool float_ = floatCB->isChecked();
 	string placement;
 	if (placementLE->isEnabled())
@@ -265,7 +265,7 @@ string QListingsDialog::construct_params()
 	string numberfontsize = font_sizes[numberFontSizeCO->currentIndex()];
 	string firstline = fromqstr(firstlineLE->text());
 	string lastline = fromqstr(lastlineLE->text());
-	
+
 	string fontsize = font_sizes[fontsizeCO->currentIndex()];
 	string fontstyle = font_styles[fontstyleCO->currentIndex()];
 	string basicstyle;
@@ -402,7 +402,7 @@ QListings::QListings(Dialog & parent)
 void QListings::build_dialog()
 {
 	dialog_.reset(new QListingsDialog(this));
-	
+
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
@@ -437,7 +437,7 @@ string plainParam(std::string const & par)
 
 void QListings::update_contents()
 {
-	// set default values 
+	// set default values
 	dialog_->listingsTB->setPlainText(
 		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	dialog_->languageCO->setCurrentIndex(findToken(languages, "no language"));

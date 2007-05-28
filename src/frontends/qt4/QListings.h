@@ -31,7 +31,7 @@ public:
 	std::string construct_params();
 protected Q_SLOTS:
 	virtual void change_adaptor();
-	/// AFAIK, QValidator only works for QLineEdit so 
+	/// AFAIK, QValidator only works for QLineEdit so
 	/// I have to validate listingsED (QTextEdit) manually.
 	void validate_listings_params();
 	/// turn off inline when float is clicked

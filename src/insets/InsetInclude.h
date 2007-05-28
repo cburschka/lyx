@@ -83,13 +83,13 @@ public:
 	void read(Buffer const &, Lexer &);
 	///
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -100,7 +100,7 @@ public:
 	void updateLabels(Buffer const & buffer) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	/// if this inset contains lstinputlisting and has a caption, 
+	/// if this inset contains lstinputlisting and has a caption,
 	/// update internal counter and passed counter
 	void updateCounter(Counters & counters);
 protected:

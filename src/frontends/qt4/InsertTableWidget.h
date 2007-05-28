@@ -41,7 +41,7 @@ protected Q_SLOTS:
 	void mouseReleaseEvent(QMouseEvent *);
 	void mousePressEvent(QMouseEvent *);
 	void paintEvent(QPaintEvent *);
-	
+
 private:
 	//! update the geometry
 	void resetGeometry();
@@ -61,7 +61,7 @@ private:
 	//! row of pointer
 	int bottom_;
 	//! column of pointer
-	int right_;	
+	int right_;
 	//! the lyxview we need to dispatch the funcrequest
 	LyXView & lyxView_;
 	//! widget under mouse

@@ -28,7 +28,7 @@ namespace lyx {
 using support::quoteName;
 
 bool Mover::copy(support::FileName const & from, support::FileName const & to,
-                 unsigned long int mode) const
+		 unsigned long int mode) const
 {
 	return do_copy(from, to, to.absFilename(), mode);
 }
@@ -42,7 +42,7 @@ bool Mover::do_copy(support::FileName const & from, support::FileName const & to
 
 
 bool Mover::rename(support::FileName const & from,
-                   support::FileName const & to) const
+		   support::FileName const & to) const
 {
 	return do_rename(from, to, to.absFilename());
 }

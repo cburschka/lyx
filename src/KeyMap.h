@@ -47,8 +47,8 @@ public:
 
 	/**
 	 * print all available keysyms
-	 * @param forgui true if the string should use translations and 
-	 *   special characters. 
+	 * @param forgui true if the string should use translations and
+	 *   special characters.
 	 */
 	docstring const print(bool forgui) const;
 

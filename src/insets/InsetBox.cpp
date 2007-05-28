@@ -259,7 +259,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 int InsetBox::latex(Buffer const & buf, odocstream & os,
-                    OutputParams const & runparams) const
+		    OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 
@@ -396,7 +396,7 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetBox::plaintext(Buffer const & buf, odocstream & os,
-                        OutputParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);
 
@@ -426,7 +426,7 @@ int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetBox::docbook(Buffer const & buf, odocstream & os,
-                      OutputParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	return InsetText::docbook(buf, os, runparams);
 }

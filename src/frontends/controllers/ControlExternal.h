@@ -65,7 +65,7 @@ public:
 	///
 	external::Template getTemplate(int) const;
 	///
-	std::string const 
+	std::string const
 	getTemplateFilters(std::string const & template_name) const;
 	///
 	docstring const browse(docstring const & input_file,

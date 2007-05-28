@@ -146,10 +146,10 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// If we are in an inset which returns forceDefaultParagraphs,
 	// set the paragraphs to default
 	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
-		Layout_ptr const layout = 
+		Layout_ptr const layout =
 			buffer.params().getTextClass().defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
-		for (ParagraphList::iterator par = insertion.begin(); 
+		for (ParagraphList::iterator par = insertion.begin();
 				par != end; ++par)
 			par->layout(layout);
 	}
@@ -198,7 +198,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		}
 
 		tmpbuf->setChange(Change(buffer.params().trackChanges ?
-		                         Change::INSERTED : Change::UNCHANGED));
+					 Change::INSERTED : Change::UNCHANGED));
 	}
 
 	bool const empty = pars[pit].empty();
@@ -335,7 +335,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 
 void putClipboard(ParagraphList const & paragraphs, textclass_type textclass,
-                  docstring const & plaintext)
+		  docstring const & plaintext)
 {
 	// For some strange reason gcc 3.2 and 3.3 do not accept
 	// Buffer buffer(string(), false);
@@ -382,7 +382,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 		// to the buffer language.
 		if (it->ownerCode() == Inset::ERT_CODE || it->ownerCode() == Inset::LISTINGS_CODE) {
 			it->changeLanguage(buf.params(), latex_language,
-			                   buf.getLanguage());
+					   buf.getLanguage());
 		}
 		it->setInsetOwner(0);
 	}
@@ -498,7 +498,7 @@ std::vector<docstring> const availableSelections(Buffer const & buffer)
 			asciiSel += pit->asString(buffer, false);
 			if (asciiSel.size() > 25) {
 				asciiSel.replace(22, docstring::npos,
-				                 from_ascii("..."));
+						 from_ascii("..."));
 				break;
 			}
 		}
@@ -563,7 +563,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		cur.pit() = endpit;
 
 		// sometimes necessary
-		if (doclear 
+		if (doclear
 			&& text->paragraphs()[begpit].stripLeadingSpaces(bp.trackChanges))
 			cur.fixIfBroken();
 
@@ -651,7 +651,7 @@ void copySelectionToStack()
 void copySelection(Cursor & cur, docstring const & plaintext)
 {
 	// In tablemode, because copy and paste actually use special table stack
-	// we do not attemp to get selected paragraphs under cursor. Instead, a 
+	// we do not attemp to get selected paragraphs under cursor. Instead, a
 	// paragraph with the plain text version is generated so that table cells
 	// can be pasted as pure text somewhere else.
 	if (cur.selBegin().idx() != cur.selEnd().idx()) {
@@ -675,7 +675,7 @@ void saveSelection(Cursor & cur)
 	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION << ": `"
 	       << to_utf8(cur.selectionAsString(true)) << "'."
 	       << endl;
-	
+
 	if (cur.selection())
 		copySelectionToStack(cur, selectionBuffer);
 	// tell X whether we now have a valid selection
@@ -784,7 +784,7 @@ void pasteSelection(Cursor & cur, ErrorList & errorList)
 		return;
 	recordUndo(cur);
 	pasteParagraphList(cur, selectionBuffer[0].first,
-	                   selectionBuffer[0].second, errorList);
+			   selectionBuffer[0].second, errorList);
 	cur.setSelection();
 }
 

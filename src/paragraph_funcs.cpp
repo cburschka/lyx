@@ -118,7 +118,7 @@ void breakParagraph(BufferParams const & bparams,
 	// Move over the end-of-par change information
 	tmp->setChange(tmp->size(), par.lookupChange(par.size()));
 	par.setChange(par.size(), Change(bparams.trackChanges ?
-		                           Change::INSERTED : Change::UNCHANGED));
+					   Change::INSERTED : Change::UNCHANGED));
 
 	if (pos) {
 		// Make sure that we keep the language when
@@ -171,7 +171,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 		// Move over the end-of-par change information
 		tmp.setChange(tmp.size(), par.lookupChange(par.size()));
 		par.setChange(par.size(), Change(bparams.trackChanges ?
-		                           Change::INSERTED : Change::UNCHANGED));
+					   Change::INSERTED : Change::UNCHANGED));
 	}
 }
 

@@ -184,7 +184,7 @@ QImage & toGray(QImage & img)
 	int const pixels = img.depth() > 8 ?
 		img.width() * img.height() : img.numColors();
 
-	unsigned int *data = img.depth() > 8 ? 
+	unsigned int *data = img.depth() > 8 ?
 		reinterpret_cast<unsigned int *>(img.bits()) :
 		reinterpret_cast<unsigned int *>(&img.colorTable()[0]);
 

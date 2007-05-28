@@ -88,7 +88,7 @@ void outline(OutlineOp mode,  Cursor & cur)
 		}
 		case Down: {
 			// Go down out of current header:
-   			if (finish != end)
+			if (finish != end)
 				++finish;
 			// Find next same-level header:
 			for (; finish != end; ++finish) {

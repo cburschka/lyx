@@ -29,7 +29,7 @@ public:
 private:
 	///
 	std::string lang_;
-	/// Did we warn about unavailable locale already? 
+	/// Did we warn about unavailable locale already?
 	mutable bool warned_;
 	///
 	typedef std::map<std::string, docstring> TranslationCache;

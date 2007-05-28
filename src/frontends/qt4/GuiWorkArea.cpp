@@ -501,7 +501,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
-	QRect const rc = ev->rect(); 
+	QRect const rc = ev->rect();
 	/*
 	LYXERR(Debug::PAINTING) << "paintEvent begin: x: " << rc.x()
 		<< " y: " << rc.y()
@@ -602,7 +602,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		}
 	}
 
-	// Hide the cursor during the kana-kanji transformation. 
+	// Hide the cursor during the kana-kanji transformation.
 	if (preedit_string.empty())
 		startBlinkingCursor();
 	else
@@ -611,7 +611,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	// last_width : for checking if last preedit string was/wasn't empty.
 	static bool last_width = false;
 	if (!last_width && preedit_string.empty()) {
-		// if last_width is last length of preedit string. 
+		// if last_width is last length of preedit string.
 		e->accept();
 		return;
 	}
@@ -699,7 +699,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		// that we are in selecting mode in the input method.
 		// FIXME: rLength == preedit_length is not a changing condition
 		// FIXME: should be put out of the loop.
-		if (pos >= rStart 
+		if (pos >= rStart
 			&& pos < rStart + rLength
 			&& !(cursor_pos < rLength && rLength == preedit_length))
 			ps = Painter::preedit_selecting;

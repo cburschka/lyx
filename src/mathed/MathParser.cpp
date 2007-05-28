@@ -292,7 +292,7 @@ ostream & operator<<(ostream & os, Token const & t)
 		docstring const & cs = t.cs();
 		// FIXME: For some strange reason, the stream operator instanciate
 		// a new Token before outputting the contents of t.cs().
-		// Because of this the line 
+		// Because of this the line
 		//     os << '\\' << cs;
 		// below becomes recursive.
 		// In order to avoid that we return early:

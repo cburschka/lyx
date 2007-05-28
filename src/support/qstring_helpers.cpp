@@ -26,7 +26,7 @@ QString const toqstr(docstring const & str)
 {
 	// This does not properly convert surrogate pairs
 	QString s;
-	int i = static_cast<int>(str.size()); 
+	int i = static_cast<int>(str.size());
 	s.resize(i);
 	for (; --i >= 0;)
 		s[i] = ucs4_to_qchar(str[i]);

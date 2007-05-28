@@ -51,7 +51,7 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
-	
+
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
@@ -77,10 +77,10 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT(change_adaptor()));
 	connect(Scale, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	
+
 	filename->setValidator(new PathValidator(true, filename));
 	setFocusProxy(filename);
-	
+
 	QDoubleValidator * scaleValidator = new DoubleAutoValidator(Scale);
 	scaleValidator->setBottom(0);
 	scaleValidator->setDecimals(256); //I guess that will do
@@ -110,7 +110,7 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT(change_bb()));
 	connect(getPB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	
+
 	lbX->setValidator(new QDoubleValidator(lbX));
 	lbY->setValidator(new QDoubleValidator(lbY));
 	rtX->setValidator(new QDoubleValidator(rtX));
@@ -203,7 +203,7 @@ void QGraphicsDialog::on_filename_textChanged(const QString & filename)
 
 void QGraphicsDialog::setAutoText() {
 	if (scaleCB->isChecked()) return;
-	if (!Scale->isEnabled() && Scale->text() != "100") 
+	if (!Scale->isEnabled() && Scale->text() != "100")
 		Scale->setText(QString("auto"));
 
 	setAutoTextCB(WidthCB, Width, widthUnit);
@@ -218,24 +218,24 @@ void QGraphicsDialog::on_scaleCB_toggled(bool setScale)
 		Scale->setText("100");
 		Scale->setFocus(Qt::OtherFocusReason);
 	}
-	
+
 	WidthCB->setDisabled(setScale);
 	WidthCB->blockSignals(true);
 	WidthCB->setChecked(false);
 	WidthCB->blockSignals(false);
 	Width->setEnabled(false);
 	widthUnit->setEnabled(false);
-	
+
 	HeightCB->setDisabled(setScale);
 	HeightCB->blockSignals(true);
 	HeightCB->setChecked(false);
 	HeightCB->blockSignals(false);
 	Height->setEnabled(false);
 	heightUnit->setEnabled(false);
-	
+
 	aspectratio->setDisabled(true);
 	aspectratio->setChecked(true);
-	
+
 	setAutoText();
 }
 
@@ -245,18 +245,18 @@ void QGraphicsDialog::on_WidthCB_toggled(bool setWidth)
 	widthUnit->setEnabled(setWidth);
 	if (setWidth)
 		Width->setFocus(Qt::OtherFocusReason);
-	
+
 	bool const setHeight = HeightCB->isChecked();
 	aspectratio->setEnabled(setWidth && setHeight);
 	aspectratio->blockSignals(true);
 	aspectratio->setChecked(!(setWidth && setHeight));
 	aspectratio->blockSignals(false);
-	
+
 	scaleCB->setEnabled(!setWidth && !setHeight);
 	//already will be unchecked, so don't need to do that
-	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled() 
+	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled()
 			&& scaleCB->isChecked()); //should be false, but let's check
-	
+
 	setAutoText();
 }
 
@@ -266,18 +266,18 @@ void QGraphicsDialog::on_HeightCB_toggled(bool setHeight)
 	heightUnit->setEnabled(setHeight);
 	if (setHeight)
 		Height->setFocus(Qt::OtherFocusReason);
-	
+
 	bool const setWidth = WidthCB->isChecked();
 	aspectratio->setEnabled(setWidth && setHeight);
 	aspectratio->blockSignals(true);
 	aspectratio->setChecked(!(setWidth && setHeight));
 	aspectratio->blockSignals(false);
-	
+
 	scaleCB->setEnabled(!setWidth && !setHeight);
 	//already unchecked
-	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled() 
+	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled()
 		&& scaleCB->isChecked()); //should be false
-	
+
 	setAutoText();
 }
 

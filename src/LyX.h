@@ -83,7 +83,7 @@ public:
 	///
 	KeyMap & topLevelKeymap();
 	KeyMap const & topLevelKeymap() const;
-	
+
 	///
 	Converters & converters();
 	Converters & systemConverters();
@@ -157,7 +157,7 @@ private:
 	/// \param enc_name encodings definition file
 	/// \param symbols_name unicode->LaTeX mapping file
 	bool readEncodingsFile(std::string const & enc_name,
-	                       std::string const & symbols_name);
+			       std::string const & symbols_name);
 	/// parsing of non-gui LyX options.
 	void easyParse(int & argc, char * argv[]);
 	/// shows up a parsing error on screen

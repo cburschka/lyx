@@ -48,9 +48,9 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
-			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, 
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO,
 						  getParam("reference")));
-		else 
+		else
 			InsetCommand::doDispatch(cur, cmd);
 		break;
 
@@ -80,7 +80,7 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 
 
 int InsetRef::latex(Buffer const &, odocstream & os,
-                    OutputParams const &) const
+		    OutputParams const &) const
 {
 	// Don't output p_["name"], this is only used in docbook
 	InsetCommandParams p(getCmdName());
@@ -91,7 +91,7 @@ int InsetRef::latex(Buffer const &, odocstream & os,
 
 
 int InsetRef::plaintext(Buffer const &, odocstream & os,
-                        OutputParams const &) const
+			OutputParams const &) const
 {
 	docstring const str = getParam("reference");
 	os << '[' << str << ']';
@@ -100,23 +100,23 @@ int InsetRef::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetRef::docbook(Buffer const & buf, odocstream & os,
-                      OutputParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	docstring const & name = getParam("name");
 	if (name.empty()) {
 		if (runparams.flavor == OutputParams::XML) {
-			os << "<xref linkend=\"" 
-			   << sgml::cleanID(buf, runparams, getParam("reference")) 
+			os << "<xref linkend=\""
+			   << sgml::cleanID(buf, runparams, getParam("reference"))
 			   << "\" />";
 		} else {
-			os << "<xref linkend=\"" 
-			   << sgml::cleanID(buf, runparams, getParam("reference")) 
+			os << "<xref linkend=\""
+			   << sgml::cleanID(buf, runparams, getParam("reference"))
 			   << "\">";
 		}
 	} else {
-		os << "<link linkend=\"" 
+		os << "<link linkend=\""
 		   << sgml::cleanID(buf, runparams, getParam("reference"))
-		   << "\">" 
+		   << "\">"
 		   << getParam("name")
 		   << "</link>";
 	}

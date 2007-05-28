@@ -53,7 +53,7 @@ LyXView & Application::createView(unsigned int width,
 {
 	LyXView & view = gui().createRegisteredView();
 	int view_id = view.id();
-	
+
 	theLyXFunc().setLyXView(&view);
 
 	/*int workArea_id_ =*/ gui().newWorkArea(width, height, view_id);

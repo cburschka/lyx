@@ -55,19 +55,19 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
 	connect(topspaceED, SIGNAL(returnPressed()),
-	        this, SLOT(topspace_changed()));
+		this, SLOT(topspace_changed()));
 	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-	        this, SLOT(topspace_changed()));
+		this, SLOT(topspace_changed()));
 	connect(topspaceCO, SIGNAL(activated(int)), this, SLOT(topspace_changed()));
 	connect(bottomspaceED, SIGNAL(returnPressed()),
-	        this, SLOT(bottomspace_changed()));
+		this, SLOT(bottomspace_changed()));
 	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-	        this, SLOT(bottomspace_changed()));
+		this, SLOT(bottomspace_changed()));
 	connect(bottomspaceCO, SIGNAL(activated(int)), this, SLOT(bottomspace_changed()));
 	connect(interlinespaceED, SIGNAL(returnPressed()),
-	        this, SLOT(interlinespace_changed()));
+		this, SLOT(interlinespace_changed()));
 	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-	        this, SLOT(interlinespace_changed()));
+		this, SLOT(interlinespace_changed()));
 	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
 	connect(booktabsRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
 	connect(borderDefaultRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
@@ -681,14 +681,14 @@ void QTabular::update_contents()
 		dialog_->topspaceCO->setCurrentIndex(1);
 	} else {
 		dialog_->topspaceCO->setCurrentIndex(2);
-		lengthToWidgets(dialog_->topspaceED, 
+		lengthToWidgets(dialog_->topspaceED,
 				dialog_->topspaceUnit,
 				tabular.row_info[row].top_space.asString(),
 				default_unit);
 	}
-	dialog_->topspaceED->setEnabled(!isReadonly 
+	dialog_->topspaceED->setEnabled(!isReadonly
 		&& (dialog_->topspaceCO->currentIndex() == 2));
-	dialog_->topspaceUnit->setEnabled(!isReadonly 
+	dialog_->topspaceUnit->setEnabled(!isReadonly
 		&& (dialog_->topspaceCO->currentIndex() == 2));
 	dialog_->topspaceCO->setEnabled(!isReadonly);
 
@@ -699,14 +699,14 @@ void QTabular::update_contents()
 		dialog_->bottomspaceCO->setCurrentIndex(1);
 	} else {
 		dialog_->bottomspaceCO->setCurrentIndex(2);
-		lengthToWidgets(dialog_->bottomspaceED, 
+		lengthToWidgets(dialog_->bottomspaceED,
 				dialog_->bottomspaceUnit,
 				tabular.row_info[row].bottom_space.asString(),
 				default_unit);
 	}
-	dialog_->bottomspaceED->setEnabled(!isReadonly 
+	dialog_->bottomspaceED->setEnabled(!isReadonly
 		&& (dialog_->bottomspaceCO->currentIndex() == 2));
-	dialog_->bottomspaceUnit->setEnabled(!isReadonly 
+	dialog_->bottomspaceUnit->setEnabled(!isReadonly
 		&& (dialog_->bottomspaceCO->currentIndex() == 2));
 	dialog_->bottomspaceCO->setEnabled(!isReadonly);
 
@@ -717,14 +717,14 @@ void QTabular::update_contents()
 		dialog_->interlinespaceCO->setCurrentIndex(1);
 	} else {
 		dialog_->interlinespaceCO->setCurrentIndex(2);
-		lengthToWidgets(dialog_->interlinespaceED, 
+		lengthToWidgets(dialog_->interlinespaceED,
 				dialog_->interlinespaceUnit,
 				tabular.row_info[row].interline_space.asString(),
 				default_unit);
 	}
-	dialog_->interlinespaceED->setEnabled(!isReadonly 
+	dialog_->interlinespaceED->setEnabled(!isReadonly
 		&& (dialog_->interlinespaceCO->currentIndex() == 2));
-	dialog_->interlinespaceUnit->setEnabled(!isReadonly 
+	dialog_->interlinespaceUnit->setEnabled(!isReadonly
 		&& (dialog_->interlinespaceCO->currentIndex() == 2));
 	dialog_->interlinespaceCO->setEnabled(!isReadonly);
 
@@ -937,7 +937,7 @@ void QTabular::closeGUI()
 			break;
 		case 2:
 			controller().set(Tabular::SET_TOP_SPACE,
-				widgetsToLength(dialog_->topspaceED, 
+				widgetsToLength(dialog_->topspaceED,
 					dialog_->topspaceUnit));
 			break;
 	}
@@ -951,7 +951,7 @@ void QTabular::closeGUI()
 			break;
 		case 2:
 			controller().set(Tabular::SET_BOTTOM_SPACE,
-				widgetsToLength(dialog_->bottomspaceED, 
+				widgetsToLength(dialog_->bottomspaceED,
 					dialog_->bottomspaceUnit));
 			break;
 	}
@@ -965,7 +965,7 @@ void QTabular::closeGUI()
 			break;
 		case 2:
 			controller().set(Tabular::SET_INTERLINE_SPACE,
-				widgetsToLength(dialog_->interlinespaceED, 
+				widgetsToLength(dialog_->interlinespaceED,
 					dialog_->interlinespaceUnit));
 			break;
 	}
@@ -976,4 +976,3 @@ void QTabular::closeGUI()
 } // namespace lyx
 
 #include "QTabular_moc.cpp"
-

@@ -204,7 +204,7 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 {
 	CursorSlice const & bot = dit.bottom();
-	CoordCache::ParPosCache::const_iterator cache_it = 
+	CoordCache::ParPosCache::const_iterator cache_it =
 		bv.coordCache().getParPos().find(bot.text());
 	if (cache_it == bv.coordCache().getParPos().end())
 		return Point(-1, -1);

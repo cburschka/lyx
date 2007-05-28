@@ -288,10 +288,10 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 
 
 bool Converters::convert(Buffer const * buffer,
-                         FileName const & from_file, FileName const & to_file,
-                         FileName const & orig_from,
-                         string const & from_format, string const & to_format,
-                         ErrorList & errorList, int conversionflags)
+			 FileName const & from_file, FileName const & to_file,
+			 FileName const & orig_from,
+			 string const & from_format, string const & to_format,
+			 ErrorList & errorList, int conversionflags)
 {
 	if (from_format == to_format)
 		return move(from_format, from_file, to_file, false);
@@ -401,10 +401,10 @@ bool Converters::convert(Buffer const * buffer,
 			// FIXME UNICODE
 			string const infile2 = (conv.original_dir)
 				? infile.absFilename() : to_utf8(makeRelPath(from_utf8(infile.absFilename()),
-				                                             from_utf8(path)));
+									     from_utf8(path)));
 			string const outfile2 = (conv.original_dir)
 				? outfile.absFilename() : to_utf8(makeRelPath(from_utf8(outfile.absFilename()),
-				                                              from_utf8(path)));
+									      from_utf8(path)));
 
 			string command = conv.command;
 			command = subst(command, token_from, quoteName(infile2));

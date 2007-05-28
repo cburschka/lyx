@@ -26,7 +26,7 @@ using std::string;
 namespace lyx {
 
 using support::FileName;
-	
+
 namespace graphics {
 
 class Loader::Impl : public boost::signals::trackable {

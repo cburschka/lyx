@@ -150,7 +150,7 @@ void BulletsModule::on_customCB_clicked(bool custom)
 			current_font_ = bulletpaneCO->currentIndex();
 		return;
 	}
-		
+
 	// unselect previous item
 	selectItem(current_font_, current_char_, false);
 	current_font_ = -1;

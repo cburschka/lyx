@@ -360,7 +360,7 @@ docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 
 
 int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
-                             OutputParams const &) const
+			     OutputParams const &) const
 {
 	docstring str;
 
@@ -398,11 +398,11 @@ docstring const cleanupWhitespace(docstring const & citelist)
 }
 
 int InsetCitation::docbook(Buffer const &, odocstream & os,
-                           OutputParams const &) const
+			   OutputParams const &) const
 {
 	os << "<citation>"
-           << cleanupWhitespace(getParam("key"))
-           << "</citation>";
+	   << cleanupWhitespace(getParam("key"))
+	   << "</citation>";
 	return 0;
 }
 
@@ -419,7 +419,7 @@ int InsetCitation::textString(Buffer const & buf, odocstream & os,
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
 int InsetCitation::latex(Buffer const & buffer, odocstream & os,
-                         OutputParams const &) const
+			 OutputParams const &) const
 {
 	biblio::CiteEngine cite_engine = buffer.params().getEngine();
 	// FIXME UNICODE

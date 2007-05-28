@@ -80,7 +80,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetPagebreak::latex(Buffer const &, odocstream & os,
-                          OutputParams const &) const
+			  OutputParams const &) const
 {
 	os << from_ascii(getCmdName()) << "{}";
 	return 0;
@@ -88,7 +88,7 @@ int InsetPagebreak::latex(Buffer const &, odocstream & os,
 
 
 int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
-                              OutputParams const &) const
+			      OutputParams const &) const
 {
 	os << '\n';
 	return PLAINTEXT_NEWLINE;
@@ -96,7 +96,7 @@ int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetPagebreak::docbook(Buffer const &, odocstream & os,
-                            OutputParams const &) const
+			    OutputParams const &) const
 {
 	os << '\n';
 	return 0;

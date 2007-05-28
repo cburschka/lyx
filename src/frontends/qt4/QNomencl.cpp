@@ -44,9 +44,9 @@ QNomenclDialog::QNomenclDialog(QNomencl * form)
 	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
 	connect(symbolED, SIGNAL(textChanged(const QString&)),
-	        this, SLOT(change_adaptor()));
+		this, SLOT(change_adaptor()));
 	connect(descriptionTE, SIGNAL(textChanged()),
-	        this, SLOT(change_adaptor()));
+		this, SLOT(change_adaptor()));
 
 	setFocusProxy(descriptionTE);
 }

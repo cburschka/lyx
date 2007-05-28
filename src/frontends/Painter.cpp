@@ -69,7 +69,7 @@ void Painter::rectText(int x, int y,
 }
 
 
-void Painter::buttonText(int x, int y, docstring const & str, 
+void Painter::buttonText(int x, int y, docstring const & str,
 	Font const & font, bool mouseHover)
 {
 	int width;

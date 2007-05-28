@@ -114,7 +114,7 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form, QWidget * parent)
 
 	leftLW->setViewMode(QListView::IconMode);
 	rightLW->setViewMode(QListView::IconMode);
-	
+
 	typedef std::map<char_type, QListWidgetItem *> ListItems;
 	ListItems list_items;
 	// The last element is the empty one.
@@ -164,7 +164,7 @@ void QDelimiterDialog::updateTeXCode(int size)
 		tex_code_ = left_str + ' ' + right_str;
 	else {
 		tex_code_ = bigleft[size] + ' '
-			+ left_str + ' ' 
+			+ left_str + ' '
 			+ bigright[size] + ' '
 			+ right_str;
 	}
@@ -199,10 +199,10 @@ void QDelimiterDialog::on_insertPB_clicked()
 		QString command = '"' + tex_code_ + '"';
 		command.replace(' ', "\" \"");
 		form_->controller().dispatchBigDelim(fromqstr(command));
- 	}
+	}
  }
 
- 
+
 void QDelimiterDialog::on_sizeCO_activated(int index)
 {
 	updateTeXCode(index);

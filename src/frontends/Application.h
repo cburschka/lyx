@@ -38,7 +38,7 @@ initialisation should be done before the instanciation of this class.
 common to all frontends.
 
  Model/View/Controller separation in LyX:
- 
+
  1) The Model: \c Buffer
 
  The Buffer is the in-memory representation of a LyX file format. The
@@ -46,10 +46,10 @@ common to all frontends.
  is represented on screen. There is one unique Buffer per opened LyX
  file.
 
- 
+
  2) The Controller: \c BufferView / \c Painter
 
- The BufferView is a tool used by the view that translates a part of 
+ The BufferView is a tool used by the view that translates a part of
  the Buffer contents into drawing routines. The BufferView asks each
  inset of the Buffer to draw itself onto the screen using the Painter.
  There can be only one Buffer displayed in a BufferView. While there
@@ -60,12 +60,12 @@ common to all frontends.
 
  The \c Painter is just a virtual interface to formalize each kind of
  drawing routines (text, line, rectangle, etc).
- 
+
  The \c BufferView also contains a Cursor which may or may not be
  visible on screen. The cursor is really just a bookmark to remember
  where the next Buffer insertion/deletion is going to take place.
 
- 
+
  3) The View: \c WorkArea (and it's qt4 specialisation GuiWorkArea)
 
  This contains the real screen area where the drawing is done by the
@@ -81,9 +81,9 @@ common to all frontends.
  - select char
  - etc.
 
- 
+
  4) The Window: \c LyXView (and its qt4 specialisation \c GuiView)
- 
+
  This is a full window containing a menubar, toolbars, a tabbar and a
  WorkArea. One LyXView could in theory contain multiple WorkArea
  (ex: with split window) but this number is limited to one only for
@@ -95,7 +95,7 @@ common to all frontends.
  the WorkArea to switch to this another Buffer.
 
  With a TabWidget, each Tab would own its own \c WorkArea. Clicking on a tab
- would switch a WorkArea instead of a Buffer. 
+ would switch a WorkArea instead of a Buffer.
 */
 class Application
 {
@@ -174,11 +174,11 @@ public:
 	LyXView & createView(unsigned int width, unsigned int height,
 		int posx, int posy, int maximized,
 		unsigned int iconSizeXY, const std::string & geometryArg);
-	
-	/// 
+
+	///
 	LyXView const * currentView() const;
 
-	/// 
+	///
 	LyXView * currentView();
 
 	///

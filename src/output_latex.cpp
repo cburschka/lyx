@@ -315,7 +315,7 @@ TeXOnePar(Buffer const & buf,
 				pit->getFontSettings(bparams, i).language()->encoding();
 			if (encoding->package() == Encoding::inputenc &&
 			    switchEncoding(os, bparams, false,
-			                   *(runparams.encoding), *encoding) > 0) {
+					   *(runparams.encoding), *encoding) > 0) {
 				runparams.encoding = encoding;
 				os << '\n';
 				texrow.newline();
@@ -569,7 +569,7 @@ void latexParagraphs(Buffer const & buf,
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
 						runparams, everypar);
 			} else if (layout->isEnvironment() ||
-			           !par->params().leftIndent().zero()) {
+				   !par->params().leftIndent().zero()) {
 				par = TeXEnvironment(buf, paragraphs, par, os,
 						     texrow, runparams);
 			} else {
@@ -599,8 +599,8 @@ void latexParagraphs(Buffer const & buf,
 
 
 int switchEncoding(odocstream & os, BufferParams const & bparams,
-                   bool moving_arg, Encoding const & oldEnc,
-                   Encoding const & newEnc)
+		   bool moving_arg, Encoding const & oldEnc,
+		   Encoding const & newEnc)
 {
 	if ((bparams.inputenc != "auto" || moving_arg)
 		&& bparams.inputenc != "default")

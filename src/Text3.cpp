@@ -334,7 +334,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		std::swap(pars_[pit], pars_[pit + 1]);
 
 		ParIterator begin(cur);
-		// begin.pos() (== cur.pos()) may point beyond the end of the 
+		// begin.pos() (== cur.pos()) may point beyond the end of the
 		// paragraph referenced by begin. This would cause a crash
 		// in updateLabels()
 		begin.pos() = 0;
@@ -353,7 +353,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		std::swap(pars_[pit], pars_[pit - 1]);
 
 		ParIterator end = ParIterator(cur);
-		// end.pos() (== cur.pos()) may point beyond the end of the 
+		// end.pos() (== cur.pos()) may point beyond the end of the
 		// paragraph referenced by end. This would cause a crash
 		// in boost::next()
 		end.pos() = 0;
@@ -734,7 +734,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// FIXME (Abdel 01/02/2006):
 			// What follows would be a partial fix for bug 2154:
 			//   http://bugzilla.lyx.org/show_bug.cgi?id=2154
-			// This automatically put the label inset _after_ a 
+			// This automatically put the label inset _after_ a
 			// numbered section. It should be possible to extend the mechanism
 			// to any kind of LateX environement.
 			// The correct way to fix that bug would be at LateX generation.
@@ -810,7 +810,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHARS_TRANSPOSE:
- 		charsTranspose(cur);
+		charsTranspose(cur);
 		break;
 
 	case LFUN_PASTE:
@@ -926,13 +926,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CLIPBOARD_PASTE:
 		cur.clearSelection();
 		pasteClipboard(cur, bv->buffer()->errorList("Paste"),
-		               cmd.argument() == "paragraph");
+			       cmd.argument() == "paragraph");
 		bv->buffer()->errors("Paste");
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
 		pasteString(cur, theSelection().get(),
-		            cmd.argument() == "paragraph");
+			    cmd.argument() == "paragraph");
 		break;
 
 	case LFUN_UNICODE_INSERT: {
@@ -949,7 +949,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 	}
-		
+
 	case LFUN_QUOTE_INSERT: {
 		Paragraph & par = cur.paragraph();
 		pos_type pos = cur.pos();
@@ -1244,7 +1244,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			pars.push_back(Paragraph());
 			pars.back().setInsetOwner(pars[0].inInset());
 			pars.back().layout(tclass.defaultLayout());
-			
+
 		}
 
 		// reposition the cursor to the caption
@@ -1602,7 +1602,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// update flag treatment.
 	if (singleParUpdate) {
 		// Inserting characters does not change par height
-		ParagraphMetrics const & pms 
+		ParagraphMetrics const & pms
 			= cur.bv().parMetrics(cur.bottom().text(), cur.bottom().pit());
 		if (pms.dim().height()
 		    == olddim.height()) {
@@ -1624,7 +1624,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		//
 		//if (cur.result().update() != Update::FitCursor)
 		//	cur.noUpdate();
-		// 
+		//
 		// But some LFUNs do not set Update::FitCursor when needed, so we
 		// do it for all. This is not very harmfull as FitCursor will provoke
 		// a full redraw only if needed but still, a proper review of all LFUN

@@ -66,7 +66,7 @@ class OutputParams;
 
 //
 // A helper struct for tables
-// 
+//
 class Tabular  {
 public:
 	///
@@ -356,8 +356,8 @@ public:
 	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
 	///
 	void plaintext(Buffer const &, odocstream &,
-	               OutputParams const & runparams, int const depth,
-	               bool onlydata, unsigned char delim) const;
+		       OutputParams const & runparams, int const depth,
+		       bool onlydata, unsigned char delim) const;
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
@@ -644,16 +644,16 @@ public:
 	// helper functions for plain text
 	///
 	bool plaintextTopHLine(odocstream &, row_type row,
-	                       std::vector<unsigned int> const &) const;
+			       std::vector<unsigned int> const &) const;
 	///
 	bool plaintextBottomHLine(odocstream &, row_type row,
-	                          std::vector<unsigned int> const &) const;
+				  std::vector<unsigned int> const &) const;
 	///
 	void plaintextPrintCell(Buffer const &, odocstream &,
-	                        OutputParams const &,
-	                        idx_type cell, row_type row, col_type column,
-	                        std::vector<unsigned int> const &,
-	                        bool onlydata) const;
+				OutputParams const &,
+				idx_type cell, row_type row, col_type column,
+				std::vector<unsigned int> const &,
+				bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(Buffer const & buf, odocstream & os, row_type,
 		       OutputParams const &) const;
@@ -700,13 +700,13 @@ public:
 	DisplayType display() const { return tabular.isLongTabular() ? AlignCenter : Inline; }
 	///
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -816,7 +816,7 @@ private:
 
 	/// test the rotation state of the give cell range.
 	bool oneCellHasRotationState(bool rotated,
-				row_type row_start, row_type row_end, 
+				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
 	///
 	Buffer const * buffer_;

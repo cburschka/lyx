@@ -47,7 +47,7 @@ public:
 	/// is it being drawn?
 	bool locked() const { return lockCount_ != 0; }
 	///
-	void unlock() const { --lockCount_; BOOST_ASSERT(lockCount_ >= 0); } 	
+	void unlock() const { --lockCount_; BOOST_ASSERT(lockCount_ >= 0); }
 
 	///
 	bool operator==(MacroData const & x) const {
@@ -58,7 +58,7 @@ public:
 	}
 	///
 	bool operator!=(MacroData const & x) const { return !operator==(x); }
-	
+
 private:
 	///
 	docstring def_;

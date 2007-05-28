@@ -53,7 +53,7 @@
 #include <direct.h> // _getdrive
 #include <shlobj.h>  // SHGetFolderPath
 #include <windef.h>
-#include <shellapi.h>	
+#include <shellapi.h>
 #include <shlwapi.h>
 
 // Must define SHGFP_TYPE_CURRENT for older versions of MinGW.
@@ -144,7 +144,7 @@ void init(int /* argc */, char * argv[])
 	 * shell scripts failed, for mysterious reasons...
 	 *
 	 * I've chosen for now, therefore, to simply add Ruurd's original
-	 * code as-is. A wrapper program hidecmd.c has been added to 
+	 * code as-is. A wrapper program hidecmd.c has been added to
 	 * development/Win32 which hides the console window of lyx when
 	 * lyx is invoked as a parameter of hidecmd.exe.
 	 */
@@ -407,7 +407,7 @@ void addFontResources()
 {
 	// Windows only: Add BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
-	
+
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current =
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
@@ -420,7 +420,7 @@ void restoreFontResources()
 {
 	// Windows only: Remove BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
-	
+
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current =
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");

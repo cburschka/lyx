@@ -229,7 +229,7 @@ int LaTeX::run(TeXErrors & terr)
 		head.update();
 		// Can't just check if anything has changed because it might
 		// have aborted on error last time... in which cas we need
-		// to re-run latex and collect the error messages 
+		// to re-run latex and collect the error messages
 		// (even if they are the same).
 		if (!fs::exists(output_file.toFilesystemEncoding())) {
 			LYXERR(Debug::DEPEND)
@@ -293,7 +293,7 @@ int LaTeX::run(TeXErrors & terr)
 	// A second latex run is needed.
 	FileName const idxfile(changeExtension(file.absFilename(), ".idx"));
 	rerun = fs::exists(idxfile.toFilesystemEncoding()) &&
-	        fs::is_empty(idxfile.toFilesystemEncoding());
+		fs::is_empty(idxfile.toFilesystemEncoding());
 
 	// run makeindex
 	if (head.haschanged(idxfile)) {
@@ -438,13 +438,13 @@ int LaTeX::startscript()
 
 
 bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
-                         string const & params)
+			 string const & params)
 {
 	LYXERR(Debug::LATEX)
 		<< "idx file has been made, running makeindex on file "
 		<< f << endl;
 	string tmp = lyxrc.index_command + ' ';
-	
+
 	tmp = subst(tmp, "$$lang", runparams.document_language);
 	tmp += quoteName(f);
 	tmp += params;
@@ -965,7 +965,7 @@ void LaTeX::deplog(DepTable & head)
 
 		// Sometimes, filenames are broken across lines.
 		// We care for that and save suspicious lines.
-		// Here we exclude some cases where we are sure 
+		// Here we exclude some cases where we are sure
 		// that there is no continued filename
 		if (!lastline.empty()) {
 			static regex package_info("Package \\w+ Info: .*");
@@ -1035,7 +1035,7 @@ void LaTeX::deplog(DepTable & head)
 				found_file = false;
 		// (6) "Writing nomenclature file file.ext"
 		} else if (regex_match(token, sub, regnomencl) ||
-		           regex_match(token, sub, regoldnomencl))
+			   regex_match(token, sub, regoldnomencl))
 			// check for dot
 			found_file = checkLineBreak(sub.str(1), head);
 		// (7) "\tf@toc=\write<nr>" (for MikTeX)

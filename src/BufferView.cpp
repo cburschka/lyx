@@ -208,9 +208,9 @@ void BufferView::setBuffer(Buffer * b)
 
 	if (!buffer_)
 		return;
-	
+
 		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
-		                    << "Buffer addr: " << buffer_ << endl;
+				    << "Buffer addr: " << buffer_ << endl;
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
 		buffer_->text().setCurrentFont(cursor_);
@@ -228,7 +228,7 @@ void BufferView::setBuffer(Buffer * b)
 			// example if this Buffer has been modified by another view.
 			cursor_.fixIfBroken();
 		}
-		updateMetrics(false);    
+		updateMetrics(false);
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
@@ -384,7 +384,7 @@ bool BufferView::update(Update::flags flags)
 		return true;
 	}
 
-	if (flags == Update::FitCursor 
+	if (flags == Update::FitCursor
 		|| flags == (Update::Decoration | Update::FitCursor)) {
 		bool const fit_cursor = fitCursor();
 		// tell the frontend to update the screen if needed.
@@ -563,7 +563,7 @@ void BufferView::saveBookmark(unsigned int idx)
 {
 	// tenatively save bookmark, id and pos will be used to
 	// acturately locate a bookmark in a 'live' lyx session.
-	// pit and pos will be updated with bottom level pit/pos 
+	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
 	LyX::ref().session().bookmarks().save(
 		FileName(buffer_->fileName()),
@@ -609,7 +609,7 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 		}
 	}
 	// if top_id == 0, or searching through top_id failed
-	// This is the case for a 'restored' bookmark when only bottom 
+	// This is the case for a 'restored' bookmark when only bottom
 	// (document level) pit was saved. Because of this, bookmark
 	// restoration is inaccurate. If a bookmark was within an inset,
 	// it will be restored to the left of the outmost inset that contains
@@ -619,7 +619,7 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 		it.pit() = bottom_pit;
 		it.pos() = min(bottom_pos, it.paragraph().size());
 		setCursor(it);
-		return boost::make_tuple(it.pit(), it.pos(), 
+		return boost::make_tuple(it.pit(), it.pos(),
 					 it.paragraph().id());
 	}
 	// both methods fail
@@ -901,20 +901,20 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		if (buffer_->params().outputChanges) {
 			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 			bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
-			                  LaTeXFeatures::isAvailable("xcolor");
-		
+					  LaTeXFeatures::isAvailable("xcolor");
+
 			if (!dvipost && !xcolorsoul) {
 				Alert::warning(_("Changes not shown in LaTeX output"),
-				               _("Changes will not be highlighted in LaTeX output, "
-				                 "because neither dvipost nor xcolor/soul are installed.\n"
-				                 "Please install these packages or redefine "
-				                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+					       _("Changes will not be highlighted in LaTeX output, "
+						 "because neither dvipost nor xcolor/soul are installed.\n"
+						 "Please install these packages or redefine "
+						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 			} else if (!xcolorsoul) {
 				Alert::warning(_("Changes not shown in LaTeX output"),
-				               _("Changes will not be highlighted in LaTeX output "
-				                 "when using pdflatex, because xcolor and soul are not installed.\n"
-				                 "Please install both packages or redefine "
-				                 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+					       _("Changes will not be highlighted in LaTeX output "
+						 "when using pdflatex, because xcolor and soul are not installed.\n"
+						 "Please install both packages or redefine "
+						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 			}
 		}
 		break;
@@ -1148,7 +1148,7 @@ Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 		Inset * const inset = iit->inset;
 		if (inset->covers(*this, x, y)) {
 			if (!inset->descendable())
-				// No need to go further down if the inset is not 
+				// No need to go further down if the inset is not
 				// descendable.
 				return inset;
 
@@ -1158,7 +1158,7 @@ Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 				Text const * inner_text = inset->getText(i);
 				if (inner_text) {
 					// Try deeper.
-					Inset const * inset_deeper = 
+					Inset const * inset_deeper =
 						getCoveringInset(*inner_text, x, y);
 					if (inset_deeper)
 						return inset_deeper;
@@ -1199,11 +1199,11 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 	// make sure we stay within the screen...
 	cmd.y = min(max(cmd.y, -1), height_);
-	
+
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
-		
+
 		// Get inset under mouse, if there is one.
-		Inset const * covering_inset = 
+		Inset const * covering_inset =
 			getCoveringInset(buffer_->text(), cmd.x, cmd.y);
 		if (covering_inset == last_inset_)
 			// Same inset, no need to do anything...
@@ -1224,9 +1224,9 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 		// not expose the button for redraw. We adjust here the metrics dimension
 		// to enable a full redraw.
 		// FIXME: It is possible to redraw only the area around the button!
-		if (need_redraw 
+		if (need_redraw
 			&& metrics_info_.update_strategy == SingleParUpdate) {
-			// FIXME: It should be possible to redraw only the area around 
+			// FIXME: It should be possible to redraw only the area around
 			// the button by doing this:
 			//
 			//metrics_info_.singlepar = false;
@@ -1252,7 +1252,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 		// This should be changed if it is further utilized.
 		return need_redraw;
 	}
-	
+
 	// Build temporary cursor.
 	Inset * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
 
@@ -1340,7 +1340,7 @@ TextMetrics & BufferView::textMetrics(Text const * t)
 	if (tmc_it == text_metrics_.end()) {
 		tmc_it = text_metrics_.insert(
 			make_pair(t, TextMetrics(this, const_cast<Text *>(t)))).first;
-	}	
+	}
 	return tmc_it->second;
 }
 
@@ -1381,7 +1381,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 	if (need_anchor_change)
 		cur.resetAnchor();
-	
+
 	if (!changed)
 		return false;
 
@@ -1415,8 +1415,8 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 	// position is in the nucleus of the inset, notifyCursorLeaves
 	// will kill the script inset itself. So we check all the
 	// elements of the cursor to make sure that they are correct.
-	// For an example, see bug 2933: 
-  	// http://bugzilla.lyx.org/show_bug.cgi?id=2933
+	// For an example, see bug 2933:
+	// http://bugzilla.lyx.org/show_bug.cgi?id=2933
 	// The code below could maybe be moved to a DocIterator method.
 	//lyxerr << "cur before " << cur <<std::endl;
 	DocIterator dit(cur.inset());
@@ -1489,7 +1489,7 @@ void BufferView::updateMetrics(bool singlepar)
 		anchor_ref_ = int(buftext.paragraphs().size() - 1);
 		offset_ref_ = 0;
 	}
-	
+
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
 	if (singlepar
@@ -1508,7 +1508,7 @@ void BufferView::updateMetrics(bool singlepar)
 	// Rebreak anchor paragraph.
 	if (!singlepar)
 		tm.redoParagraph(pit);
-	
+
 	// Clear out the position cache in case of full screen redraw.
 	if (!singlepar)
 		coord_cache_.clear();
@@ -1586,7 +1586,7 @@ void BufferView::updateMetrics(bool singlepar)
 		<< "size: " << size
 		<< endl;
 
-	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2, 
+	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
 		singlepar? SingleParUpdate: FullScreenUpdate, size);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {

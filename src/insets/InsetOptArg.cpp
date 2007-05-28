@@ -68,21 +68,21 @@ void InsetOptArg::write(Buffer const & buf, ostream & os) const
 
 
 int InsetOptArg::latex(Buffer const &, odocstream &,
-                       OutputParams const &) const
+		       OutputParams const &) const
 {
 	return 0;
 }
 
 
 int InsetOptArg::plaintext(Buffer const &, odocstream &,
-                           OutputParams const &) const
+			   OutputParams const &) const
 {
 	return 0; // do not output optional arguments
 }
 
 
 int InsetOptArg::docbook(Buffer const &, odocstream &,
-                         OutputParams const &) const
+			 OutputParams const &) const
 {
 	return 0;
 }

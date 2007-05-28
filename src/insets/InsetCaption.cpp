@@ -233,7 +233,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 int InsetCaption::latex(Buffer const & buf, odocstream & os,
-                        OutputParams const & runparams_in) const
+			OutputParams const & runparams_in) const
 {
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
@@ -255,7 +255,7 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
-                            OutputParams const & runparams) const
+			    OutputParams const & runparams) const
 {
 	computeFullLabel(buf);
 
@@ -268,7 +268,7 @@ int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetCaption::docbook(Buffer const & buf, odocstream & os,
-                          OutputParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	int ret;
 	os << "<title>";
@@ -279,14 +279,14 @@ int InsetCaption::docbook(Buffer const & buf, odocstream & os,
 
 
 int InsetCaption::getArgument(Buffer const & buf, odocstream & os,
-                        OutputParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	return InsetText::latex(buf, os, runparams);
 }
 
 
 int InsetCaption::getOptArg(Buffer const & buf, odocstream & os,
-                        OutputParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	return latexOptArgInsets(buf, paragraphs()[0], os, runparams, 1);
 }

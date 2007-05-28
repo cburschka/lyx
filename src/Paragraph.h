@@ -115,11 +115,11 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	int startTeXParParams(BufferParams const &, odocstream &, TexRow &, 
+	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
 			      bool) const;
 
 	///
-	int endTeXParParams(BufferParams const &, odocstream &, TexRow &, 
+	int endTeXParParams(BufferParams const &, odocstream &, TexRow &,
 			    bool) const;
 
 
@@ -293,21 +293,21 @@ public:
 					pos_type endpos, Font_size def_size) const;
 	///
 	void insert(pos_type pos, docstring const & str,
-	            Font const & font, Change const & change);
+		    Font const & font, Change const & change);
 	///
 	void insertChar(pos_type pos, value_type c, bool trackChanges);
 	///
 	void insertChar(pos_type pos, value_type c,
-	                Font const &, bool trackChanges);
+			Font const &, bool trackChanges);
 	///
 	void insertChar(pos_type pos, value_type c,
-	                Font const &, Change const & change);
+			Font const &, Change const & change);
 	///
 	void insertInset(pos_type pos, Inset * inset,
-	                 Change const & change);
+			 Change const & change);
 	///
 	void insertInset(pos_type pos, Inset * inset,
-	                 Font const &, Change const & change);
+			 Font const &, Change const & change);
 	///
 	bool insetAllowed(Inset_code code);
 	///
@@ -341,7 +341,7 @@ public:
 	/// returns -1 if inset not found
 	int getPositionOfInset(Inset const * inset) const;
 
-	/// returns true if at least one line break or line separator has been deleted 
+	/// returns true if at least one line break or line separator has been deleted
 	/// at the beginning of the paragraph (either physically or logically)
 	bool stripLeadingSpaces(bool trackChanges);
 

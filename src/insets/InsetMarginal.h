@@ -32,13 +32,13 @@ public:
 	docstring name() const { return from_ascii("Marginal"); }
 	///
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const & runparams) const;
+		      OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const & runparams) const;
+		    OutputParams const & runparams) const;
 	///
 	virtual docstring const editMessage() const;
 protected:

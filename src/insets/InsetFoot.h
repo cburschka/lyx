@@ -31,13 +31,13 @@ public:
 	docstring name() const { return from_ascii("Foot"); }
 	///
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 	///
 	virtual docstring const editMessage() const;
 protected:

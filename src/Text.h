@@ -165,7 +165,7 @@ public:
 	/// just selects the word the cursor is in
 	void selectWord(Cursor & cur, word_location loc);
 
-	/// what type of change operation to make 
+	/// what type of change operation to make
 	enum ChangeOp {
 		ACCEPT,
 		REJECT
@@ -207,7 +207,7 @@ public:
 	/// FIXME: cleanup to use BufferView::getCoveringInset() and
 	/// setCursorFromCoordinates() instead of checkInsetHit().
 	Inset * editXY(Cursor & cur, int x, int y);
-	
+
 	/// Move cursor one line up.
 	/**
 	 * Returns true if an update is needed after the move.

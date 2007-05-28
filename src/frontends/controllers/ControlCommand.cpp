@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 ControlCommand::ControlCommand(Dialog & dialog, string const & command_name,
-                               string const & lfun_name)
+			       string const & lfun_name)
 	: Dialog::Controller(dialog), params_(command_name),
 	  lfun_name_(lfun_name)
 {}

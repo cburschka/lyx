@@ -30,7 +30,7 @@ namespace lyx {
 int support::kill(int pid, int sig)
 {
 #ifdef _WIN32
-	if (pid == (int)GetCurrentProcessId()) 
+	if (pid == (int)GetCurrentProcessId())
 		return -raise(sig);
 	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, TRUE, pid);
 	if (!hProcess) {

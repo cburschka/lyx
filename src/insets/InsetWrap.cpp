@@ -179,7 +179,7 @@ docstring const InsetWrap::editMessage() const
 
 
 int InsetWrap::latex(Buffer const & buf, odocstream & os,
-                     OutputParams const & runparams) const
+		     OutputParams const & runparams) const
 {
 	os << "\\begin{floating" << from_ascii(params_.type) << '}';
 	if (!params_.placement.empty())
@@ -192,7 +192,7 @@ int InsetWrap::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetWrap::plaintext(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	os << '[' << buf.B_("wrap") << ' ' << floatName(params_.type, buf.params()) << ":\n";
 	InsetText::plaintext(buf, os, runparams);
@@ -203,10 +203,10 @@ int InsetWrap::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetWrap::docbook(Buffer const & buf, odocstream & os,
-                       OutputParams const & runparams) const
+		       OutputParams const & runparams) const
 {
-        // FIXME UNICODE
-        os << '<' << from_ascii(params_.type) << '>';
+	// FIXME UNICODE
+	os << '<' << from_ascii(params_.type) << '>';
 	int const i = InsetText::docbook(buf, os, runparams);
 	os << "</" << from_ascii(params_.type) << '>';
 	return i;

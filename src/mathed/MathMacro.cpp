@@ -33,18 +33,18 @@ using std::endl;
 using std::vector;
 
 
-/// This class is the value of a macro argument, technically 
+/// This class is the value of a macro argument, technically
 /// a wrapper of the cells of MathMacro.
 class MathMacroArgumentValue : public InsetMath {
 public:
 	///
-	MathMacroArgumentValue(MathMacro const & mathMacro, size_t idx) 
+	MathMacroArgumentValue(MathMacro const & mathMacro, size_t idx)
 		: mathMacro_(mathMacro), idx_(idx) {}
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	
+
 private:
 	std::auto_ptr<Inset> doClone() const;
 	MathMacro const & mathMacro_;
@@ -52,13 +52,13 @@ private:
 };
 
 
-auto_ptr<Inset> MathMacroArgumentValue::doClone() const 
+auto_ptr<Inset> MathMacroArgumentValue::doClone() const
 {
 	return auto_ptr<Inset>(new MathMacroArgumentValue(*this));
 }
 
 
-bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const 
+bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// unlock outer macro in arguments, and lock it again later
 	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
@@ -73,7 +73,7 @@ bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathMacroArgumentValue::draw(PainterInfo & pi, int x, int y) const 
+void MathMacroArgumentValue::draw(PainterInfo & pi, int x, int y) const
 {
 	// unlock outer macro in arguments, and lock it again later
 	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
@@ -118,10 +118,10 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
 	} else {
 		MacroData const & macro = MacroTable::globalMacros().get(name());
-		
+
 		if (macroBackup_ != macro)
 			updateExpansion();
-		
+
 		if (macro.locked()) {
 			mathed_string_dim(mi.base.font, "Self reference: " + name(), dim);
 		} else if (editing(mi.base.bv)) {
@@ -161,11 +161,11 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		drawStrRed(pi, x, y, "Unknown: " + name());
 	} else {
 		MacroData const & macro = MacroTable::globalMacros().get(name());
-		
+
 		// warm up cache
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
-		
+
 		if (macro.locked()) {
 			// FIXME UNICODE
 			drawStrRed(pi, x, y, "Self reference: " + name());
@@ -194,8 +194,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			expanded_.draw(pi, x, y);
 			macro.unlock();
 		}
-		
-		// edit mode changed?	
+
+		// edit mode changed?
 		if (editing_ != editing(pi.base.bv) || macroBackup_ != macro)
 			pi.base.bv->cursor().updateFlags(Update::Force);
 	}
@@ -240,14 +240,14 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 }
 
 
-bool MathMacro::idxFirst(Cursor & cur) const 
+bool MathMacro::idxFirst(Cursor & cur) const
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::idxFirst(cur);
 }
 
 
-bool MathMacro::idxLast(Cursor & cur) const 
+bool MathMacro::idxLast(Cursor & cur) const
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::idxLast(cur);
@@ -285,10 +285,10 @@ void MathMacro::octave(OctaveStream & os) const
 void MathMacro::updateExpansion() const
 {
 	MacroData const & macro = MacroTable::globalMacros().get(name());
-	
+
 	// create MathMacroArgumentValue object pointing to the cells of the macro
 	vector<MathData> values(nargs());
-	for (size_t i = 0; i != nargs(); ++i) 
+	for (size_t i = 0; i != nargs(); ++i)
 				values[i].insert(0, MathAtom(new MathMacroArgumentValue(*this, i)));
 	macro.expand(values, expanded_);
 	asArray(macro.def(), tmpl_);

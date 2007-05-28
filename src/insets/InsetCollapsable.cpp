@@ -63,7 +63,7 @@ InsetCollapsable::InsetCollapsable
 
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
-	: InsetText(rhs), 	
+	: InsetText(rhs),
 		labelfont_(rhs.labelfont_),
 		button_dim(rhs.button_dim),
 		topx(rhs.topx),
@@ -160,7 +160,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (status() == Open) {
 			InsetText::metrics(mi, textdim_);
 			// This expression should not contain mi.base.texwidth
-			openinlined_ = !hasFixedWidth() 
+			openinlined_ = !hasFixedWidth()
 				&& textdim_.wid < 0.5 * mi.base.bv->workWidth();
 			if (openinlined_) {
 				// Correct for button width, and re-fit
@@ -239,7 +239,7 @@ void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCollapsable::cursorPos(BufferView const & bv, 
+void InsetCollapsable::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	BOOST_ASSERT(status() != Collapsed);

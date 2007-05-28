@@ -726,8 +726,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
 	if (theConverters().convert(&buf, temp_file, to_file, params().filename,
-	                       from, to, el,
-	                       Converters::try_default | Converters::try_cache)) {
+			       from, to, el,
+			       Converters::try_default | Converters::try_cache)) {
 		runparams.exportdata->addExternalFile(tex_format,
 				to_file, output_to_file);
 		runparams.exportdata->addExternalFile("dvi",
@@ -739,7 +739,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 
 int InsetGraphics::latex(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
@@ -751,7 +751,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 		params().filename.relFilename(buf.filePath());
 
 	bool const file_exists = !params().filename.empty() &&
-	                         isFileReadable(params().filename);
+				 isFileReadable(params().filename);
 	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps");
 	// if !message.empty() then there was no existing file
@@ -809,7 +809,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
-                             OutputParams const &) const
+			     OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -820,7 +820,7 @@ int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
 	// FIXME: We have no idea what the encoding of the filename is
 
 	docstring const str = bformat(buf.B_("Graphics file: %1$s"),
-	                              from_utf8(params().filename.absFilename()));
+				      from_utf8(params().filename.absFilename()));
 	os << '<' << str << '>';
 
 	return 2 + str.size();
@@ -830,20 +830,20 @@ int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
 namespace {
 
 int writeImageObject(char * format, odocstream & os, OutputParams const & runparams,
-                     docstring const graphic_label, docstring const attributes)
+		     docstring const graphic_label, docstring const attributes)
 {
 		if (runparams.flavor != OutputParams::XML) {
 			os << "<![ %output.print."
-                           << format
-                           << "; ["
-                           << std::endl;
+			   << format
+			   << "; ["
+			   << std::endl;
 		}
 		os <<"<imageobject><imagedata fileref=\"&"
 		   << graphic_label
-                   << ";."
-                   << format
-                   << "\" "
-                   << attributes;
+		   << ";."
+		   << format
+		   << "\" "
+		   << attributes;
 		if (runparams.flavor == OutputParams::XML) {
 			os <<  " role=\"" << format << "\"/>" ;
 		}

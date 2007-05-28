@@ -22,7 +22,7 @@
 #include <windows.h>
 #include <io.h>
 #include <windef.h>
-#include <shellapi.h>	
+#include <shellapi.h>
 #include <shlwapi.h>
 
 #include <sys/cygwin.h>
@@ -154,7 +154,7 @@ void os::init(int, char *[])
 
 		if (var == "TEMP")
 			temp_seen = true;
-		
+
 		if (GetEnvironmentVariable(var.c_str(), curval, 2) == 0
 				&& GetLastError() == ERROR_ENVVAR_NOT_FOUND) {
 			/* Convert to Windows style where necessary */
@@ -329,7 +329,7 @@ void addFontResources()
 #ifdef X_DISPLAY_MISSING
 	// Windows only: Add BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
-	
+
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current = to_local8bit(from_utf8(convert_path(
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
@@ -345,7 +345,7 @@ void restoreFontResources()
 #ifdef X_DISPLAY_MISSING
 	// Windows only: Remove BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
-	
+
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current = to_local8bit(from_utf8(convert_path(
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),

@@ -1537,7 +1537,7 @@ void PrefFileformats::new_format()
 		flags |= Format::vector;
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-	                     editor, flags);
+			     editor, flags);
 	form_->formats().sort();
 	form_->converters().update(form_->formats());
 

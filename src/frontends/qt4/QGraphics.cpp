@@ -227,7 +227,7 @@ void QGraphics::update_contents()
 	dialog_->displayGB->setChecked(igp.display != graphics::NoDisplay);
 
 	// the output section (width/height)
-	
+
 	dialog_->Scale->setText(toqstr(igp.scale));
 	//igp.scale defaults to 100, so we treat it as empty
 	bool const scaleChecked = !igp.scale.empty() && igp.scale != "100";
@@ -235,32 +235,32 @@ void QGraphics::update_contents()
 	dialog_->scaleCB->setChecked(scaleChecked);
 	dialog_->scaleCB->blockSignals(false);
 	dialog_->Scale->setEnabled(scaleChecked);
-	
-	lengthAutoToWidgets(dialog_->Width, dialog_->widthUnit, igp.width, 
+
+	lengthAutoToWidgets(dialog_->Width, dialog_->widthUnit, igp.width,
 		unitDefault);
-	bool const widthChecked = !dialog_->Width->text().isEmpty() && 
+	bool const widthChecked = !dialog_->Width->text().isEmpty() &&
 		dialog_->Width->text() != "auto";
 	dialog_->WidthCB->blockSignals(true);
 	dialog_->WidthCB->setChecked(widthChecked);
 	dialog_->WidthCB->blockSignals(false);
 	dialog_->Width->setEnabled(widthChecked);
 	dialog_->widthUnit->setEnabled(widthChecked);
-	
-	lengthAutoToWidgets(dialog_->Height, dialog_->heightUnit, igp.height, 
+
+	lengthAutoToWidgets(dialog_->Height, dialog_->heightUnit, igp.height,
 		unitDefault);
-	bool const heightChecked = !dialog_->Height->text().isEmpty() 
+	bool const heightChecked = !dialog_->Height->text().isEmpty()
 		&& dialog_->Height->text() != "auto";
 	dialog_->HeightCB->blockSignals(true);
 	dialog_->HeightCB->setChecked(heightChecked);
 	dialog_->HeightCB->blockSignals(false);
 	dialog_->Height->setEnabled(heightChecked);
 	dialog_->heightUnit->setEnabled(heightChecked);
-	
+
 	dialog_->scaleCB->setEnabled(!widthChecked && !heightChecked);
 	dialog_->WidthCB->setEnabled(!scaleChecked);
 	dialog_->HeightCB->setEnabled(!scaleChecked);
 	dialog_->aspectratio->setEnabled(widthChecked && heightChecked);
-	
+
 	dialog_->setAutoText();
 
 	dialog_->angle->setText(toqstr(igp.rotateAngle));
@@ -343,7 +343,7 @@ void QGraphics::apply()
 
 	if (!dialog_->displayGB->isChecked())
 		igp.display = graphics::NoDisplay;
-	
+
 	//the graphics section
 	if (dialog_->scaleCB->isChecked()	&& !dialog_->Scale->text().isEmpty()) {
 		igp.scale = fromqstr(dialog_->Scale->text());
@@ -352,12 +352,12 @@ void QGraphics::apply()
 		igp.keepAspectRatio = false;
 	} else {
 		igp.scale = string();
-		igp.width = dialog_->WidthCB->isChecked() ? 
+		igp.width = dialog_->WidthCB->isChecked() ?
 			//Note that this works even if dialog_->Width is "auto", since in
 			//that case we get "0pt".
-			Length(widgetsToLength(dialog_->Width, dialog_->widthUnit)): 
+			Length(widgetsToLength(dialog_->Width, dialog_->widthUnit)):
 			Length("0pt");
-		igp.height = dialog_->HeightCB->isChecked() ? 
+		igp.height = dialog_->HeightCB->isChecked() ?
 			Length(widgetsToLength(dialog_->Height, dialog_->heightUnit)) :
 			Length("0pt");
 		igp.keepAspectRatio = dialog_->aspectratio->isEnabled() &&

@@ -30,7 +30,7 @@ public:
 	    'Apply'.
 	 */
 	ControlCommand(Dialog &, std::string const & command_name,
-	               std::string const & lfun_name);
+		       std::string const & lfun_name);
 	///
 	virtual ~ControlCommand() {}
 	///

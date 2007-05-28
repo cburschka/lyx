@@ -309,7 +309,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetNote::plaintext(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams_in) const
+			 OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -329,7 +329,7 @@ int InsetNote::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetNote::docbook(Buffer const & buf, odocstream & os,
-                       OutputParams const & runparams_in) const
+		       OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -349,7 +349,7 @@ int InsetNote::docbook(Buffer const & buf, odocstream & os,
 
 	// Return how many newlines we issued.
 	//return int(count(str.begin(), str.end(), '\n'));
-        return n + 1 + 2;
+	return n + 1 + 2;
 }
 
 

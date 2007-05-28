@@ -78,7 +78,7 @@ public:
 	virtual void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
 
-private:	
+private:
 	/// available keys.
 	QStringListModel available_model_;
 

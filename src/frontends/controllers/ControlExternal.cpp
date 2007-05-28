@@ -150,7 +150,7 @@ ControlExternal::getTemplateFilters(string const & template_name) const
 	external::Template const * const et_ptr =
 		etm.getTemplateByName(template_name);
 
-	if (et_ptr) 
+	if (et_ptr)
 		return et_ptr->fileRegExp;
 
 	return string();
@@ -163,7 +163,7 @@ docstring const ControlExternal::browse(docstring const & input,
 	docstring const title =  _("Select external file");
 
 	docstring const bufpath = lyx::from_utf8(kernel().bufferFilepath());
-	FileFilterList const filter = 
+	FileFilterList const filter =
 		FileFilterList(lyx::from_utf8(getTemplateFilters(lyx::to_utf8(template_name))));
 
 	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),

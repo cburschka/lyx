@@ -30,7 +30,7 @@ public:
 	Inset::Code lyxCode() const { return Inset::HFILL_CODE; }
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;

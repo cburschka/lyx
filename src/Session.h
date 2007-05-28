@@ -182,7 +182,7 @@ public:
 	/// top_id is determined when a bookmark is restored from session; and
 	/// bottom_pit and bottom_pos are determined from top_id when a bookmark
 	/// is save to session. (What a mess! :-)
-	/// 
+	///
 	/// TODO: bottom level pit and pos will be replaced by StableDocIterator
 	class Bookmark {
 	public:
@@ -203,7 +203,7 @@ public:
 			: filename(f), bottom_pit(pit), bottom_pos(pos), top_id(id), top_pos(tpos) {}
 		/// set bookmark top_id, this is because newly loaded bookmark
 		/// may have zero par_id and par_pit can change during editing, see bug 3092
-		void updatePos(pit_type pit, pos_type pos, int id) { 
+		void updatePos(pit_type pit, pos_type pos, int id) {
 			bottom_pit = pit;
 			bottom_pos = pos;
 			top_id = id;
@@ -269,7 +269,7 @@ public:
 			state(ON), location(NOTSET), posx(0), posy(0) { }
 		///
 		ToolbarInfo(int s, int loc, int x=0, int y=0) :
-			state(static_cast<State>(s)), 
+			state(static_cast<State>(s)),
 			location(static_cast<Location>(loc)),
 			posx(x),
 			posy(y)
@@ -301,7 +301,7 @@ public:
 
 		/// y-position of the toolbar
 		int posy;
-		
+
 		/// potentially, icons
 	};
 
@@ -386,7 +386,7 @@ public:
 
 	///
 	LastFilesSection & lastFiles() { return last_files; }
-	
+
 	///
 	LastFilesSection const & lastFiles() const { return last_files; }
 
@@ -395,10 +395,10 @@ public:
 
 	///
 	LastOpenedSection const & lastOpened() const { return last_opened; }
-	
+
 	///
 	LastFilePosSection & lastFilePos() { return last_file_pos; }
-	
+
 	///
 	LastFilePosSection const & lastFilePos() const { return last_file_pos; }
 

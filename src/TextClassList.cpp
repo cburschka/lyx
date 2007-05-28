@@ -103,7 +103,7 @@ bool TextClassList::read()
 
 	if (real_file.empty()) {
 		lyxerr << "TextClassList::Read: unable to find "
-		          "textclass file  `"
+			  "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'. Exiting." << endl;
 		return false;
@@ -122,7 +122,7 @@ bool TextClassList::read()
 
 	if (!lex.isOK()) {
 		lyxerr << "TextClassList::Read: unable to open "
-		          "textclass file  `"
+			  "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
@@ -199,7 +199,7 @@ TextClassList::addTextClass(std::string const & textclass, std::string const & p
 				// returns: whole string, classtype (not used here), first option, description
 				BOOST_ASSERT(sub.size()==4);
 				// now, add the layout to textclass.
-				TextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2), 
+				TextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2),
 					sub.str(3) + " <" + path + ">", true);
 				if (lyxerr.debugging(Debug::TCLASS))
 					tmpl.load(path);
@@ -211,7 +211,7 @@ TextClassList::addTextClass(std::string const & textclass, std::string const & p
 	// If .layout is not in local directory, or an invalid layout is found, return false
 	return make_pair(false, textclass_type(0));
 }
-	
+
 
 // Global variable: textclass table.
 TextClassList textclasslist;

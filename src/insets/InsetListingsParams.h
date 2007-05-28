@@ -36,13 +36,13 @@ public:
 
 	/// valid parameter string
 	std::string params(std::string const & sep=",") const;
-	
+
 	/// add key=value to params_
 	void addParam(std::string const & key, std::string const & value);
 
 	/// add a few parameters
 	void addParams(std::string const & par);
-	
+
 	/// set params_ with par, throw an exception if par is valid
 	void setParams(std::string const & par);
 
@@ -57,7 +57,7 @@ public:
 	/// get parameter from encoded string
 	void fromEncodedString(std::string const & par);
 
-	/// 
+	///
 	bool isInline() const { return inline_; }
 
 	///
@@ -79,7 +79,7 @@ private:
 	/// inline or normal listings
 	bool inline_;
 
-	/// key-value pairs of the parameters 
+	/// key-value pairs of the parameters
 	std::map<std::string, std::string> params_;
 
 	/// collapsable status

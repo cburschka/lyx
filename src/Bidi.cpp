@@ -210,7 +210,7 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 }
 
 
-bool reverseDirectionNeeded(Cursor const & cur) 
+bool reverseDirectionNeeded(Cursor const & cur)
 {
 	/*
 	 * We determine the directions based on the direction of the

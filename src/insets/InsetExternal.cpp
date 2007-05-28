@@ -675,7 +675,7 @@ void InsetExternal::read(Buffer const & buffer, Lexer & lex)
 
 
 int InsetExternal::latex(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	if (params_.draft) {
 		// FIXME UNICODE
@@ -706,37 +706,37 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 
 		if (cit != et.formats.end()) {
 			return external::writeExternal(params_, "PDFLaTeX",
-                                                       buf, os,
-                                                       *(runparams.exportdata),
-                                                       external_in_tmpdir,
-                                                       dryrun);
-                }
+						       buf, os,
+						       *(runparams.exportdata),
+						       external_in_tmpdir,
+						       dryrun);
+		}
 	}
 
 	return external::writeExternal(params_, "LaTeX", buf, os,
-                                       *(runparams.exportdata),
-                                       external_in_tmpdir,
-                                       dryrun);
+				       *(runparams.exportdata),
+				       external_in_tmpdir,
+				       dryrun);
 }
 
 
 int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
-                             OutputParams const & runparams) const
+			     OutputParams const & runparams) const
 {
 	os << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buf, os,
-	                        *(runparams.exportdata), false,
-	                        runparams.dryrun || runparams.inComment);
+				*(runparams.exportdata), false,
+				runparams.dryrun || runparams.inComment);
 	return PLAINTEXT_NEWLINE;
 }
 
 
 int InsetExternal::docbook(Buffer const & buf, odocstream & os,
-                           OutputParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	return external::writeExternal(params_, "DocBook", buf, os,
 				       *(runparams.exportdata), false,
-	                               runparams.dryrun || runparams.inComment);
+				       runparams.dryrun || runparams.inComment);
 }
 
 

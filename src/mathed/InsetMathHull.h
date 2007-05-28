@@ -104,10 +104,10 @@ public:
 	void read(Buffer const &, Lexer & lex);
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void textString(Buffer const &, odocstream &) const;
 

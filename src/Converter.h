@@ -119,10 +119,10 @@ public:
 	};
 	///
 	bool convert(Buffer const * buffer,
-	             support::FileName const & from_file, support::FileName const & to_file,
-	             support::FileName const & orig_from,
-	             std::string const & from_format, std::string const & to_format,
-	             ErrorList & errorList, int conversionflags = none);
+		     support::FileName const & from_file, support::FileName const & to_file,
+		     support::FileName const & orig_from,
+		     std::string const & from_format, std::string const & to_format,
+		     ErrorList & errorList, int conversionflags = none);
 	///
 	void update(Formats const & formats);
 	///

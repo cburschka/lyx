@@ -113,12 +113,12 @@ LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed)
 }
 
 
-DoubleAutoValidator::DoubleAutoValidator(QWidget * parent) : 
+DoubleAutoValidator::DoubleAutoValidator(QWidget * parent) :
 	QDoubleValidator(parent) {}
 
 
 DoubleAutoValidator::DoubleAutoValidator(double bottom,
-	double top, int decimals, QObject * parent) : 
+	double top, int decimals, QObject * parent) :
 	QDoubleValidator(bottom, top, decimals, parent) {}
 
 
@@ -210,4 +210,3 @@ PathValidator * getPathValidator(QLineEdit * ed)
 } // namespace lyx
 
 #include "Validator_moc.cpp"
-

@@ -161,7 +161,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (!cur.selection()) 
+		if (!cur.selection())
 			InsetIncludeMailer(*this).showDialog(&cur.bv());
 		break;
 
@@ -230,7 +230,7 @@ bool isVerbatim(InsetCommandParams const & params)
 }
 
 
-bool isInputOrInclude(InsetCommandParams const & params) 
+bool isInputOrInclude(InsetCommandParams const & params)
 {
 	Types const t = type(params);
 	return (t == INPUT) || (t == INCLUDE);
@@ -321,7 +321,7 @@ void InsetInclude::read(Lexer & lex)
 	}
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point. "
-		               "Read: `$$Token'");
+			       "Read: `$$Token'");
 	}
 }
 
@@ -376,7 +376,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 		return 0;
 
 	Buffer * childBuffer = theBufferList().getBuffer(included_file);
-	
+
 	//FIXME RECURSIVE INCLUDES
 	if (childBuffer == & buffer)
 		return 0;
@@ -416,7 +416,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 
 
 int InsetInclude::latex(Buffer const & buffer, odocstream & os,
-                        OutputParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	string incfile(to_utf8(params_["filename"]));
 
@@ -425,17 +425,17 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		return 0;
 
 	FileName const included_file(includedFilename(buffer, params_));
-	
+
 	//Check we're not trying to include ourselves.
 	//FIXME RECURSIVE INCLUDE
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
 	if (isInputOrInclude(params_) &&
-		buffer.fileName() == included_file.absFilename()) 
+		buffer.fileName() == included_file.absFilename())
 	{
-		Alert::error(_("Recursive input"), 
-		               bformat(_("Attempted to include file %1$s in itself! "
-		               "Ignoring inclusion."), from_utf8(incfile)));
+		Alert::error(_("Recursive input"),
+			       bformat(_("Attempted to include file %1$s in itself! "
+			       "Ignoring inclusion."), from_utf8(incfile)));
 		return 0;
 	}
 
@@ -446,12 +446,12 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	if (!absolutePath(incfile)) {
 		// FIXME UNICODE
 		incfile = to_utf8(makeRelPath(from_utf8(included_file.absFilename()),
-		                              from_utf8(m_buffer->filePath())));
+					      from_utf8(m_buffer->filePath())));
 	}
 
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".tex");
-	string const mangled = 
+	string const mangled =
 		DocFileName(changeExtension(included_file.absFilename(),".tex")).
 			mangledFilename();
 	FileName const writefile(makeAbsPath(mangled, m_buffer->temppath()));
@@ -465,13 +465,13 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	if (runparams.inComment || runparams.dryrun) {
 		//Don't try to load or copy the file if we're
 		//in a comment or doing a dryrun
-	} else if (isInputOrInclude(params_) && 
-	         isLyXFilename(included_file.absFilename())) {
+	} else if (isInputOrInclude(params_) &&
+		 isLyXFilename(included_file.absFilename())) {
 		//if it's a LyX file and we're inputting or including,
 		//try to load it so we can write the associated latex
 		if (!loadIfNeeded(buffer, params_))
 			return false;
-			
+
 		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
@@ -504,8 +504,8 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		runparams.encoding = oldEnc;
 	} else {
 		// In this case, it's not a LyX file, so we copy the file
-		// to the temp dir, so that .aux files etc. are not created 
-		// in the original dir. Files included by this file will be 
+		// to the temp dir, so that .aux files etc. are not created
+		// in the original dir. Files included by this file will be
 		// found via input@path, see ../Buffer.cpp.
 		unsigned long const checksum_in  = sum(included_file);
 		unsigned long const checksum_out = sum(writefile);
@@ -573,7 +573,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 
 int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
-                            OutputParams const &) const
+			    OutputParams const &) const
 {
 	if (isVerbatim(params_) || isListings(params_)) {
 		os << '[' << getScreenLabel(buffer) << '\n';
@@ -592,7 +592,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 
 
 int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
-                          OutputParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	string incfile = to_utf8(params_["filename"]);
 
@@ -607,9 +607,9 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
 	if (buffer.fileName() == included_file) {
-		Alert::error(_("Recursive input"), 
-		               bformat(_("Attempted to include file %1$s in itself! "
-		               "Ignoring inclusion."), from_utf8(incfile)));
+		Alert::error(_("Recursive input"),
+			       bformat(_("Attempted to include file %1$s in itself! "
+			       "Ignoring inclusion."), from_utf8(incfile)));
 		return 0;
 	}
 
@@ -643,7 +643,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 		   << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">";
 	} else
-                os << '&' << include_label << ';';
+		os << '&' << include_label << ';';
 
 	return 0;
 }

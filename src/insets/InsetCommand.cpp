@@ -86,7 +86,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 
 
 int InsetCommand::latex(Buffer const &, odocstream & os,
-                        OutputParams const &) const
+			OutputParams const &) const
 {
 	os << getCommand();
 	return 0;
@@ -94,7 +94,7 @@ int InsetCommand::latex(Buffer const &, odocstream & os,
 
 
 int InsetCommand::plaintext(Buffer const & buf, odocstream & os,
-                            OutputParams const &) const
+			    OutputParams const &) const
 {
 	docstring const str = "[" + buf.B_("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
 	os << str;
@@ -103,7 +103,7 @@ int InsetCommand::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetCommand::docbook(Buffer const &, odocstream &,
-                          OutputParams const &) const
+			  OutputParams const &) const
 {
 	return 0;
 }

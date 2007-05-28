@@ -1427,7 +1427,7 @@ bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 }
 
 
-bool InsetMathNest::script(Cursor & cur, bool up, 
+bool InsetMathNest::script(Cursor & cur, bool up,
 		docstring const & save_selection)
 {
 	// Hack to get \^ and \_ working

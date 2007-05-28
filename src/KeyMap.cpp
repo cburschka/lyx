@@ -253,7 +253,7 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 				it->func.origin = FuncRequest::KEYBOARD;
 				return;
 			} else if (!it->table.get()) {
-				lyxerr << "Error: New binding for '" 
+				lyxerr << "Error: New binding for '"
 				       << to_utf8(seq->print(false))
 				       << "' is overriding old binding..."
 					       << endl;

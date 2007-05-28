@@ -22,7 +22,7 @@
 
 namespace lyx {
 
-namespace support { class FileFilterList; } 
+namespace support { class FileFilterList; }
 
 
 /**

@@ -113,20 +113,20 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 {
 	if (!isDrawingEnabled())
 		return;
-	
+
 	// double the size if needed
 	static QVector<QPoint> points(32);
 	if (np > points.size())
 		points.resize(2 * np);
-	
+
 	bool antialias = false;
 	for (int i = 0; i < np; ++i) {
 		points[i].setX(xp[i]);
 		points[i].setY(yp[i]);
-		if (i != 0) 
+		if (i != 0)
 			antialias |= xp[i-1] != xp[i] && yp[i-1] != yp[i];
 	}
- 	setQPainterPen(col, ls, lw);
+	setQPainterPen(col, ls, lw);
 	bool const text_is_antialiased = renderHints() & TextAntialiasing;
 	setRenderHint(Antialiasing, antialias && text_is_antialiased);
 	drawPolyline(points.data(), np);
@@ -286,4 +286,3 @@ int QLPainter::text(int x, int y, docstring const & s,
 
 } // namespace frontend
 } // namespace lyx
-

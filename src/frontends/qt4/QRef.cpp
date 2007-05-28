@@ -53,25 +53,25 @@ QRefDialog::QRefDialog(QRef * form)
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reset_dialog()));
 	connect(this, SIGNAL(rejected()), this, SLOT(reset_dialog()));
 
-	connect(typeCO, SIGNAL(activated(int)), 
+	connect(typeCO, SIGNAL(activated(int)),
 		this, SLOT(changed_adaptor()));
-	connect(referenceED, SIGNAL(textChanged(const QString &)), 
+	connect(referenceED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
-	connect(nameED, SIGNAL(textChanged(const QString &)), 
+	connect(nameED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
-	connect(refsLW, SIGNAL(itemClicked(QListWidgetItem *)), 
+	connect(refsLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(refHighlighted(QListWidgetItem *)));
 	connect(refsLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(selectionChanged()));
-	connect(refsLW, SIGNAL(itemActivated(QListWidgetItem *)), 
+	connect(refsLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(refSelected(QListWidgetItem *)));
 	connect(sortCB, SIGNAL(clicked(bool)),
 		this, SLOT(sortToggled(bool)));
-	connect(gotoPB, SIGNAL(clicked()), 
+	connect(gotoPB, SIGNAL(clicked()),
 		this, SLOT(gotoClicked()));
-	connect(updatePB, SIGNAL(clicked()), 
+	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(updateClicked()));
-	connect(bufferCO, SIGNAL(activated(int)), 
+	connect(bufferCO, SIGNAL(activated(int)),
 		this, SLOT(updateClicked()));
 
 	setFocusProxy(refsLW);
@@ -98,7 +98,7 @@ void QRefDialog::selectionChanged()
 {
 	if (form_->readOnly())
 		return;
-	
+
 	QList<QListWidgetItem *> selections = refsLW->selectedItems();
 	if (selections.isEmpty())
 		return;
@@ -254,7 +254,7 @@ void QRef::update_contents()
 void QRef::apply()
 {
 	InsetCommandParams & params = controller().params();
-	
+
 	last_reference_ = dialog_->referenceED->text();
 
 	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentIndex()));
@@ -320,7 +320,7 @@ void QRef::redoRefs()
 	dialog_->refsLW->blockSignals(true);
 	dialog_->referenceED->blockSignals(true);
 	dialog_->refsLW->setUpdatesEnabled(false);
-	
+
 	dialog_->refsLW->clear();
 
 	// need this because Qt will send a highlight() here for

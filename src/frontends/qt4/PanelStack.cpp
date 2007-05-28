@@ -43,9 +43,9 @@ PanelStack::PanelStack(QWidget * parent)
 	list_->setColumnCount(1);
 	// Hide the pointless list header
 	list_->header()->hide();
-// 	QStringList HeaderLabels;
-// 	HeaderLabels << QString("Category");
-// 	list_->setHeaderLabels(HeaderLabels);
+//	QStringList HeaderLabels;
+//	HeaderLabels << QString("Category");
+//	list_->setHeaderLabels(HeaderLabels);
 
 	connect(list_, SIGNAL(currentItemChanged (QTreeWidgetItem*, QTreeWidgetItem*)),
 		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));

@@ -39,7 +39,7 @@ namespace lyx {
 
 using support::FileName;
 using support::libFileSearch;
-	
+
 namespace frontend {
 
 TocWidget::TocWidget(QToc * form, QWidget * parent)
@@ -49,7 +49,7 @@ TocWidget::TocWidget(QToc * form, QWidget * parent)
 
 	connect(form, SIGNAL(modelReset()),
 		SLOT(updateGui()));
-	
+
 	FileName icon_path = libFileSearch("images", "promote.xpm");
 	moveOutTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images", "demote.xpm");
@@ -60,7 +60,7 @@ TocWidget::TocWidget(QToc * form, QWidget * parent)
 	moveDownTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images", "reload.xpm");
 	updateTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-		
+
 	// avoid flickering
 	tocTV->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
@@ -123,21 +123,21 @@ void TocWidget::setTreeDepth(int depth)
 {
 	depth_ = depth;
 
-	// expanding and then collapsing is probably better, 
+	// expanding and then collapsing is probably better,
 	// but my qt 4.1.2 doesn't have expandAll()..
-	//tocTV->expandAll(); 
+	//tocTV->expandAll();
 	QModelIndexList indices = tocTV->model()->match(
 		tocTV->model()->index(0,0),
-		Qt::DisplayRole, "*", -1, 
+		Qt::DisplayRole, "*", -1,
 		Qt::MatchWildcard|Qt::MatchRecursive);
-	
+
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {
 		QModelIndex index = indices[i];
-		if (getIndexDepth(index) < depth_) 
-			tocTV->expand(index); 
+		if (getIndexDepth(index) < depth_)
+			tocTV->expand(index);
 		else
-			tocTV->collapse(index); 
+			tocTV->collapse(index);
 	}
 }
 
@@ -208,7 +208,7 @@ void TocWidget::select(QModelIndex const & index)
 
 	disconnectSelectionModel();
 	tocTV->setCurrentIndex(index);
- 	tocTV->scrollTo(index);
+	tocTV->scrollTo(index);
 	reconnectSelectionModel();
 }
 
@@ -295,7 +295,7 @@ void TocWidget::setTocModel(size_t type)
 
 	if (toc_model) {
 		LYXERR(Debug::GUI)
-		<< "form_->tocModel()->rowCount " 
+		<< "form_->tocModel()->rowCount "
 			<< toc_model->rowCount()
 			<< "\nform_->tocModel()->columnCount "
 			<< toc_model->columnCount()
@@ -317,7 +317,7 @@ void TocWidget::reconnectSelectionModel()
 void TocWidget::disconnectSelectionModel()
 {
 	disconnect(tocTV->selectionModel(),
-		   SIGNAL(currentChanged(const QModelIndex &, 
+		   SIGNAL(currentChanged(const QModelIndex &,
 			  const QModelIndex &)),
 		   this,
 		   SLOT(selectionChanged(const QModelIndex &,

@@ -98,7 +98,7 @@ public Q_SLOTS:
 	/// populate a toplevel menu and all its children on demand
 	void updateMenu(QAction *);
 
-	void currentTabChanged (int index); 
+	void currentTabChanged (int index);
 
 	/// slots to change the icon size
 	void smallSizedIcons();

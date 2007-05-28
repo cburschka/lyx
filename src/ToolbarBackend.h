@@ -36,7 +36,7 @@ public:
 		LAYOUTS,
 		/// a special widget to insert tabulars
 		TABLEINSERT,
-		/// 
+		///
 		POPUPMENU,
 		///
 		ICONPALETTE

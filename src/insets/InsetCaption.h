@@ -62,19 +62,19 @@ public:
 	virtual bool wide() const { return false; }
 	///
 	int latex(Buffer const & buf, odocstream & os,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const & buf, odocstream & os,
-	              OutputParams const & runparams) const;
+		      OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const & buf, odocstream & os,
-	            OutputParams const & runparams) const;
+		    OutputParams const & runparams) const;
 	/// return the mandatory argument (LaTeX format) only
 	int getArgument(Buffer const & buf, odocstream & os,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	/// return the optional argument(s) only
 	int getOptArg(Buffer const & buf, odocstream & os,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	void setCount(int c) { counter_ = c; }
 	///

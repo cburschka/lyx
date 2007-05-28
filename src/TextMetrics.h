@@ -71,7 +71,7 @@ public:
 
 
 private:
-	/// 
+	///
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
 
 	/// the minimum space a manual label needs on the screen in pixels
@@ -100,7 +100,7 @@ public:
 
 	/// returns pos in given par at given x coord.
 	pos_type x2pos(pit_type pit, int row, int x) const;
-	
+
 	// FIXME: is there a need for this?
 	//int pos2x(pit_type pit, pos_type pos) const;
 

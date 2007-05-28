@@ -78,7 +78,7 @@ public:
 	/// for option with value "true", "false".
 	/// if onoff is true,
 	///   "true":  option
-	///   "false": 
+	///   "false":
 	///   "other": option="other"
 	/// onoff is false,
 	///   "true":  option=true
@@ -117,7 +117,7 @@ docstring ListingsParam::validate(string const & par) const
 		par2 = par.substr(1);
 		unclosed = true;
 	}
-		
+
 	switch (type_) {
 
 	case ALL:
@@ -199,7 +199,7 @@ docstring ListingsParam::validate(string const & par) const
 		}
 		// otherwise, produce a meaningful error message.
 		string matching_names;
-		for (vector<string>::iterator it = lists.begin(); 
+		for (vector<string>::iterator it = lists.begin();
 			it != lists.end(); ++it) {
 			if (it->size() >= par2.size() && it->substr(0, par2.size()) == par2) {
 				if (matching_names.empty())
@@ -234,7 +234,7 @@ docstring ListingsParam::validate(string const & par) const
 
 
 /// languages and language/dialect combinations
-char const * allowed_languages = 
+char const * allowed_languages =
 	"no language\nABAP\n[R/2 4.3]ABAP\n[R/2 5.0]ABAP\n[R/3 3.1]ABAP\n"
 	"[R/3 4.6C]ABAP\n[R/3 6.10]ABAP\nACSL\nAda\n[2005]Ada\n[83]Ada\n"
 	"[95]Ada\nALGOL\n[60]ALGOL\n[68]ALGOL\nAssembler\n"
@@ -259,7 +259,7 @@ char const * allowed_languages =
 
 
 /// ListingsParam Validator.
-/// This class is aimed to be a singleton which is instantiated in 
+/// This class is aimed to be a singleton which is instantiated in
 /// \c InsetListingsParams::addParam().
 // FIXME: transfer this validator to the frontend.
 // FIXME: avoid the use of exception.
@@ -301,280 +301,280 @@ ParValidator::ParValidator()
 
 	/// options copied from page 26 of listings manual
 	// FIXME: add default parameters ... (which is not used now)
-	all_params_["float"] = 
+	all_params_["float"] =
 		ListingsParam("false", true, SUBSETOF, "*tbph", empty_hint);
-	all_params_["floatplacement"] = 
+	all_params_["floatplacement"] =
 		ListingsParam("tbp", false, SUBSETOF, "tbp", empty_hint);
-	all_params_["aboveskip"] = 
+	all_params_["aboveskip"] =
 		ListingsParam("\\medskipamount", false, LENGTH, "", empty_hint);
-	all_params_["belowskip"] = 
+	all_params_["belowskip"] =
 		ListingsParam("\\medskipamount", false, LENGTH, "", empty_hint);
-	all_params_["lineskip"] = 
+	all_params_["lineskip"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["boxpos"] = 
+	all_params_["boxpos"] =
 		ListingsParam("", false, SUBSETOF, "bct", empty_hint);
-	all_params_["print"] = 
+	all_params_["print"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["firstline"] = 
+	all_params_["firstline"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
-	all_params_["lastline"] = 
+	all_params_["lastline"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_["showlines"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["emptylines"] = 
+	all_params_["emptylines"] =
 		ListingsParam("", false, ALL, "", _(
 		"Expect a number with an optional * before it"));
-	all_params_["gobble"] = 
+	all_params_["gobble"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
-	all_params_["style"] = 
+	all_params_["style"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["language"] = 
+	all_params_["language"] =
 		ListingsParam("", false, ONEOF, allowed_languages, empty_hint);
-	all_params_["alsolanguage"] = 
+	all_params_["alsolanguage"] =
 		ListingsParam("", false, ONEOF, allowed_languages, empty_hint);
-	all_params_["defaultdialect"] = 
+	all_params_["defaultdialect"] =
 		ListingsParam("", false, ONEOF, allowed_languages, empty_hint);
-	all_params_["printpod"] = 
+	all_params_["printpod"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["usekeywordsintag"] = 
+	all_params_["usekeywordsintag"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["tagstyle"] = 
+	all_params_["tagstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["markfirstintag"] = 
+	all_params_["markfirstintag"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["makemacrouse"] = 
+	all_params_["makemacrouse"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["basicstyle"] = 
+	all_params_["basicstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["identifierstyle"] = 
+	all_params_["identifierstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["commentstyle"] = 
+	all_params_["commentstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["stringstyle"] = 
+	all_params_["stringstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["keywordstyle"] = 
+	all_params_["keywordstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["ndkeywordstyle"] = 
+	all_params_["ndkeywordstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["classoffset"] = 
+	all_params_["classoffset"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
-	all_params_["texcsstyle"] = 
+	all_params_["texcsstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["directivestyle"] = 
+	all_params_["directivestyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["emph"] = 
+	all_params_["emph"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["moreemph"] = 
+	all_params_["moreemph"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deleteemph"] = 
+	all_params_["deleteemph"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["emphstyle"] = 
+	all_params_["emphstyle"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["delim"] = 
+	all_params_["delim"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["moredelim"] = 
+	all_params_["moredelim"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletedelim"] = 
+	all_params_["deletedelim"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["extendedchars"] = 
+	all_params_["extendedchars"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["inputencoding"] = 
+	all_params_["inputencoding"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["upquote"] = 
+	all_params_["upquote"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["tabsize"] = 
+	all_params_["tabsize"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
-	all_params_["showtabs"] = 
+	all_params_["showtabs"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["tab"] = 
+	all_params_["tab"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["showspaces"] = 
+	all_params_["showspaces"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["showstringspaces"] = 
+	all_params_["showstringspaces"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["formfeed"] = 
+	all_params_["formfeed"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["numbers"] = 
+	all_params_["numbers"] =
 		ListingsParam("", false, ONEOF, "none\nleft\nright", empty_hint);
-	all_params_["stepnumber"] = 
+	all_params_["stepnumber"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
-	all_params_["numberfirstline"] = 
+	all_params_["numberfirstline"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["numberstyle"] = 
+	all_params_["numberstyle"] =
 		ListingsParam("", false, ALL, "", style_hint);
-	all_params_["numbersep"] = 
+	all_params_["numbersep"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["numberblanklines"] = 
+	all_params_["numberblanklines"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["firstnumber"] = 
+	all_params_["firstnumber"] =
 		ListingsParam("", false, ALL, "", _("auto, last or a number"));
-	all_params_["name"] = 
+	all_params_["name"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["thelstnumber"] = 
+	all_params_["thelstnumber"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["title"] = 
+	all_params_["title"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	// this option is not handled in the parameter box
-	all_params_["caption"] = 
+	all_params_["caption"] =
 		ListingsParam("", false, ALL, "", _(
 		"This parameter should not be entered here. Please use caption "
 		"editbox (Include dialog) or insert->caption (listings inset)"));
 	// this option is not handled in the parameter box
-	all_params_["label"] = 
+	all_params_["label"] =
 		ListingsParam("", false, ALL, "",_(
 		"This parameter should not be entered here. Please use label "
 		"editbox (Include dialog) or insert->caption (listings inset)"));
-	all_params_["nolol"] = 
+	all_params_["nolol"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["captionpos"] = 
+	all_params_["captionpos"] =
 		ListingsParam("", false, SUBSETOF, "tb", empty_hint);
-	all_params_["abovecaptionskip"] = 
+	all_params_["abovecaptionskip"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["belowcaptionskip"] = 
+	all_params_["belowcaptionskip"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["linewidth"] = 
+	all_params_["linewidth"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["xleftmargin"] = 
+	all_params_["xleftmargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["xrightmargin"] = 
+	all_params_["xrightmargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["resetmargins"] = 
+	all_params_["resetmargins"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["breaklines"] = 
+	all_params_["breaklines"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["prebreak"] = 
+	all_params_["prebreak"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["postbreak"] = 
+	all_params_["postbreak"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["breakindent"] = 
+	all_params_["breakindent"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["breakautoindent"] = 
+	all_params_["breakautoindent"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["frame"] = 
+	all_params_["frame"] =
 		ListingsParam("", false, ALL, "", frame_hint);
-	all_params_["frameround"] = 
+	all_params_["frameround"] =
 		ListingsParam("", false, SUBSETOF, "tf", frameround_hint);
-	all_params_["framesep"] = 
+	all_params_["framesep"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["rulesep"] = 
+	all_params_["rulesep"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["framerule"] = 
+	all_params_["framerule"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["framexleftmargin"] = 
+	all_params_["framexleftmargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["framexrightmargin"] = 
+	all_params_["framexrightmargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["framextopmargin"] = 
+	all_params_["framextopmargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["framexbottommargin"] = 
+	all_params_["framexbottommargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["backgroundcolor"] = 
+	all_params_["backgroundcolor"] =
 		ListingsParam("", false, ALL, "", color_hint );
-	all_params_["rulecolor"] = 
+	all_params_["rulecolor"] =
 		ListingsParam("", false, ALL, "", color_hint );
-	all_params_["fillcolor"] = 
+	all_params_["fillcolor"] =
 		ListingsParam("", false, ALL, "", color_hint );
-	all_params_["rulesepcolor"] = 
+	all_params_["rulesepcolor"] =
 		ListingsParam("", false, ALL, "", color_hint );
-	all_params_["frameshape"] = 
+	all_params_["frameshape"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["index"] = 
+	all_params_["index"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["moreindex"] = 
+	all_params_["moreindex"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deleteindex"] = 
+	all_params_["deleteindex"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["indexstyle"] = 
+	all_params_["indexstyle"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["columns"] = 
+	all_params_["columns"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["flexiblecolumns"] = 
+	all_params_["flexiblecolumns"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["keepspaces"] = 
+	all_params_["keepspaces"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["basewidth"] = 
+	all_params_["basewidth"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
-	all_params_["fontadjust"] = 
+	all_params_["fontadjust"] =
 		ListingsParam("", true, TRUEFALSE, "", empty_hint);
-	all_params_["texcl"] = 
+	all_params_["texcl"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["mathescape"] = 
+	all_params_["mathescape"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["escapechar"] = 
+	all_params_["escapechar"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escapeinside"] = 
+	all_params_["escapeinside"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escepeinside"] = 
+	all_params_["escepeinside"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escepebegin"] = 
+	all_params_["escepebegin"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escepeend"] = 
+	all_params_["escepeend"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["fancyvrb"] = 
+	all_params_["fancyvrb"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
-	all_params_["fvcmdparams"] = 
+	all_params_["fvcmdparams"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["morefvcmdparams"] = 
+	all_params_["morefvcmdparams"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["keywordsprefix"] = 
+	all_params_["keywordsprefix"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["keywords"] = 
+	all_params_["keywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["morekeywords"] = 
+	all_params_["morekeywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletekeywords"] = 
+	all_params_["deletekeywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["ndkeywords"] = 
+	all_params_["ndkeywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["morendkeywords"] = 
+	all_params_["morendkeywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletendkeywords"] = 
+	all_params_["deletendkeywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["texcs"] = 
+	all_params_["texcs"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["moretexcs"] = 
+	all_params_["moretexcs"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletetexcs"] = 
+	all_params_["deletetexcs"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["directives"] = 
+	all_params_["directives"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["moredirectives"] = 
+	all_params_["moredirectives"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletedirectives"] = 
+	all_params_["deletedirectives"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["sensitive"] = 
+	all_params_["sensitive"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["alsoletter"] = 
+	all_params_["alsoletter"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["alsodigit"] = 
+	all_params_["alsodigit"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["alsoother"] = 
+	all_params_["alsoother"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["otherkeywords"] = 
+	all_params_["otherkeywords"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["tag"] = 
+	all_params_["tag"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["string"] = 
+	all_params_["string"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["morestring"] = 
+	all_params_["morestring"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletestring"] = 
+	all_params_["deletestring"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["comment"] = 
+	all_params_["comment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["morecomment"] = 
+	all_params_["morecomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletecomment"] = 
+	all_params_["deletecomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["keywordcomment"] = 
+	all_params_["keywordcomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["morekeywordcomment"] = 
+	all_params_["morekeywordcomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["deletekeywordcomment"] = 
+	all_params_["deletekeywordcomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["keywordcommentsemicolon"] = 
+	all_params_["keywordcommentsemicolon"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["podcomment"] = 
+	all_params_["podcomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 
 	ListingsParams::const_iterator it = all_params_.begin();
@@ -687,7 +687,7 @@ string InsetListingsParams::params(string const & sep) const
 
 
 void InsetListingsParams::addParam(string const & key, string const & value)
-{	
+{
 	if (key.empty())
 		return;
 
@@ -706,7 +706,7 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 	// if the parameter is surrounded with {}, good
 	else if (prefixIs(value, "{") && suffixIs(value, "}"))
 		params_[key] = value;
-	// otherwise, check if {} is needed. Add {} to all values with 
+	// otherwise, check if {} is needed. Add {} to all values with
 	// non-ascii/number characters, just to be safe
 	else {
 		bool has_special_char = false;
@@ -748,10 +748,10 @@ void InsetListingsParams::addParams(string const & par)
 			continue;
 		} else if (par[i] == '{' && par[i - 1] == '=')
 			braces ++;
-		else if (par[i] == '}' 
+		else if (par[i] == '}'
 			&& (i == par.size() - 1 || par[i + 1] == ',' || par[i + 1] == '\n'))
 			braces --;
-		
+
 		if (isValue)
 			value += par[i];
 		else
@@ -772,14 +772,14 @@ void InsetListingsParams::setParams(string const & par)
 string InsetListingsParams::encodedString() const
 {
 	// Encode string!
-	// '"' is handled differently because it will 
+	// '"' is handled differently because it will
 	// terminate a lyx token.
 	string par = params();
 	// '"' is now &quot;  ==> '"' is now &amp;quot;
 	par = subst(par, "&", "&amp;");
 	// '"' is now &amp;quot; ==> '&quot;' is now &amp;quot;
 	par = subst(par, "\"", "&quot;");
-	return par;	
+	return par;
 }
 
 

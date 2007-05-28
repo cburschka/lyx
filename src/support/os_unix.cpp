@@ -135,7 +135,7 @@ bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 	(void)mode;
 	LSRolesMask role = kLSRolesAll;
 	FSRef outAppRef;
-	OSStatus status = 
+	OSStatus status =
 		LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator,
 					cfs_ext, role, &outAppRef, NULL);
 	CFRelease(cfs_ext);
@@ -158,11 +158,11 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 #ifdef __APPLE__
 // Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
 	FSRef fileref;
-	OSStatus status = 
+	OSStatus status =
 		FSPathMakeRef((UInt8 *) filename.c_str(), &fileref, NULL);
 	if (status != 0)
 		return false;
-        
+
 	// this is what we would like to do but it seems that the
 	// viewer for PDF is often quicktime...
 	//LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
@@ -183,7 +183,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	inLaunchSpec.asyncRefCon = NULL;
 	status = LSOpenFromRefSpec(&inLaunchSpec, NULL);
 
-	return status != kLSApplicationNotFoundErr;	
+	return status != kLSApplicationNotFoundErr;
 #else
 	// silence compiler warnings
 	(void)filename;

@@ -486,7 +486,7 @@ void expandBookmarks(Menu & tomenu)
 			docstring const label = convert<docstring>(i) + ". "
 				+ makeDisplayPath(bm.bookmark(i).filename.absFilename(), 20)
 				+ char_type('|') + convert<docstring>(i);
-			tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BOOKMARK_GOTO, 
+			tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BOOKMARK_GOTO,
 				convert<docstring>(i))));
 		}
 	}
@@ -792,10 +792,10 @@ void expandToolbars(Menu & tomenu)
 		// frontends are not supposed to turn on/off toolbars, if they cannot
 		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
 		// should reflect the true state of toolbars.
-		// 
-		// menu is displayed as 
+		//
+		// menu is displayed as
 		//       on/off review
-		// and 
+		// and
 		//              review (auto)
 		// in the case of auto.
 		if (cit->flags & ToolbarInfo::AUTO)

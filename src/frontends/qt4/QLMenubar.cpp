@@ -186,27 +186,27 @@ void QLMenubar::macxMenuBarInit()
 		kb_action action;
 		char const * arg;
 		char const * label;
- 		QAction::MenuRole role;
+		QAction::MenuRole role;
 	};
 
 	MacMenuEntry entries[] = {
-		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX", 
+		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX",
 		 QAction::AboutRole},
-		{LFUN_DIALOG_SHOW, "prefs", "Preferences", 
+		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
 		 QAction::PreferencesRole},
-		{LFUN_RECONFIGURE, "", "Reconfigure", 
+		{LFUN_RECONFIGURE, "", "Reconfigure",
 		 QAction::ApplicationSpecificRole},
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(MacMenuEntry);
 
-	// the special menu for MenuBackend. 
+	// the special menu for MenuBackend.
 	Menu special;
 	for (size_t i = 0 ; i < num_entries ; ++i) {
-		FuncRequest const func(entries[i].action, 
+		FuncRequest const func(entries[i].action,
 				       from_utf8(entries[i].arg));
-		special.add(MenuItem(MenuItem::Command, 
-				     from_utf8(entries[i].label), 
+		special.add(MenuItem(MenuItem::Command,
+				     from_utf8(entries[i].label),
 				     func));
 	}
 	menubackend_.specialMenu(special);
@@ -221,7 +221,7 @@ void QLMenubar::macxMenuBarInit()
 	Menu::const_iterator cit = menubackend_.specialMenu().begin();
 	Menu::const_iterator end = menubackend_.specialMenu().end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(*owner_, cit->label(), 
+		Action * action = new Action(*owner_, cit->label(),
 					     cit->func());
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);

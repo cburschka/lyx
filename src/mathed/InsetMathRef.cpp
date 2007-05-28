@@ -152,7 +152,7 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 
 
 int InsetMathRef::docbook(Buffer const & buf, odocstream & os,
-                      OutputParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
 		os << "<xref linkend=\""

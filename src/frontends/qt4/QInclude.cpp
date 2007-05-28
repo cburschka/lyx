@@ -262,7 +262,7 @@ void QInclude::update_contents()
 		// the rest is put to the extra edit box.
 		string extra = getStringFromVector(pars);
 		dialog_->listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
-	}	
+	}
 }
 
 

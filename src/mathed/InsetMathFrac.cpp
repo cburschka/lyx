@@ -79,22 +79,22 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	int m = x + dim_.wid / 2;
 	FracChanger dummy(pi.base);
 	if (kind_ == NICEFRAC) {
-		cell(0).draw(pi, x + 2, 
+		cell(0).draw(pi, x + 2,
 				y - cell(0).descent() - 5);
 		cell(1).draw(pi, x + cell(0).width() + 5,
 				y + cell(1).ascent() / 2);
-		pi.pain.line(x + cell(0).width(), 
-				y + dim_.des - 2, 
-				x + cell(0).width() + 5, 
+		pi.pain.line(x + cell(0).width(),
+				y + dim_.des - 2,
+				x + cell(0).width() + 5,
 				y - dim_.asc + 2, Color::math);
 	} else {
-		cell(0).draw(pi, m - cell(0).width() / 2, 
+		cell(0).draw(pi, m - cell(0).width() / 2,
 				y - cell(0).descent() - 2 - 5);
 		cell(1).draw(pi, m - cell(1).width() / 2,
 				y + cell(1).ascent()  + 2 - 5);
 	}
 	if (kind_ == FRAC || kind_ == OVER)
-		pi.pain.line(x + 1, y - 5, 
+		pi.pain.line(x + 1, y - 5,
 				x + dim_.wid - 2, y - 5, Color::math);
 	drawMarkers(pi, x, y);
 }

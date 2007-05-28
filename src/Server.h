@@ -145,4 +145,4 @@ extern Server & theServer();
 
 } // namespace lyx
 
-#endif // SERVER_H 
+#endif // SERVER_H

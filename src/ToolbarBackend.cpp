@@ -92,7 +92,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		TO_ICONPALETTE,
 		TO_LAST
 	};
-	
+
 	struct keyword_item toolTags[TO_LAST - 1] = {
 		{ "end", TO_ENDTOOLBAR },
 		{ "iconpalette", TO_ICONPALETTE },
@@ -165,7 +165,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				add(ToolbarItem(ToolbarItem::POPUPMENU, name, label));
 			}
 			break;
-			
+
 		case TO_ICONPALETTE:
 			if (lex.next(true)) {
 				string const name = lex.getString();
@@ -174,12 +174,12 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				add(ToolbarItem(ToolbarItem::ICONPALETTE, name, label));
 			}
 			break;
-			
+
 		case TO_LAYOUTS:
 			add(ToolbarItem(ToolbarItem::LAYOUTS,
 				FuncRequest(kb_action(ToolbarItem::LAYOUTS))));
 			break;
-			
+
 		case TO_TABLEINSERT:
 			if (lex.next(true)) {
 				docstring const tooltip = lex.getDocString();
@@ -187,7 +187,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 					FuncRequest(kb_action(ToolbarItem::TABLEINSERT)), tooltip));
 			}
 			break;
-			
+
 		case TO_ENDTOOLBAR:
 			quit = true;
 			break;
@@ -218,7 +218,7 @@ void ToolbarBackend::readToolbars(Lexer & lex)
 		TO_ENDTOOLBARSET,
 		TO_LAST
 	};
-	
+
 	struct keyword_item toolTags[TO_LAST - 1] = {
 		{ "end", TO_ENDTOOLBARSET },
 		{ "toolbar", TO_TOOLBAR }

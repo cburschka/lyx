@@ -79,7 +79,7 @@ void test_RegexMatch()
 
 	try {
 		RegexMatch rm(im, "h.*o", false);
-		
+
 		cout << rm("hello") << endl;
 		cout << rm("hei") << endl;
 	}

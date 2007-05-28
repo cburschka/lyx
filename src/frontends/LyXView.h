@@ -79,7 +79,7 @@ public:
 
 	/// return the current WorkArea (the one that has the focus).
 	frontend::WorkArea const * currentWorkArea() const;
-	/// FIXME: This non-const access is needed because of 
+	/// FIXME: This non-const access is needed because of
 	/// a mis-designed \c ControlSpellchecker.
 	frontend::WorkArea * currentWorkArea();
 

@@ -27,7 +27,7 @@ namespace frontend {
 /// This template class that encapsulates a given Widget inside a
 /// DockWidget and presents a Dialog::View interface
 template<class Controller, class Widget>
-class DockView : public QDockWidget, public Dialog::View 
+class DockView : public QDockWidget, public Dialog::View
 {
 public:
 	DockView(
@@ -49,7 +49,7 @@ public:
 	void apply() {}
 	void hide()	{ QDockWidget::hide(); }
 	void show()	{ QDockWidget::show(); }
-	bool isVisible() const	
+	bool isVisible() const
 	{ return QDockWidget::isVisible(); }
 	void redraw() {}
 	void update()

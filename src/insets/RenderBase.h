@@ -42,7 +42,7 @@ public:
 	/// render state, exact meaning of state is render-specific
 	void setRenderState(int state) { state_ = state; }
 	/// get render state
-	int renderState() const { return state_; } 
+	int renderState() const { return state_; }
 
 	/// equivalent to dynamic_cast
 	virtual RenderButton * asButton() { return 0; }

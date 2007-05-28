@@ -75,13 +75,13 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 		if (e->y() < height() - e->x()) {
 			if (left_.enabled) {
 				setLeft(!left_.set);
-                                // emit signal
+				// emit signal
 				leftSet(left_.set);
 			}
 		} else {
 			if (bottom_.enabled) {
 				setBottom(!bottom_.set);
-                                // emit signal
+				// emit signal
 				bottomSet(bottom_.set);
 			}
 		}
@@ -89,19 +89,19 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 		if (e->y() < height() - e->x()) {
 			if (top_.enabled) {
 				setTop(!top_.set);
-                                // emit signal
+				// emit signal
 				topSet(top_.set);
 			}
 		} else {
 			if (right_.enabled) {
 				setRight(!right_.set);
-                                // emit signal
+				// emit signal
 				rightSet(right_.set);
 			}
 		}
 	}
 	update();
-        // emit signal
+	// emit signal
 	clicked();
 }
 

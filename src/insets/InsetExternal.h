@@ -126,13 +126,13 @@ public:
 
 	/// \returns the number of rows (\n's) of generated code.
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 
 	/// Update needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;

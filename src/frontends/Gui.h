@@ -47,9 +47,9 @@ public:
 	///
 	virtual LyXView& view(int id) const = 0;
 	///
-	std::vector<int> const & viewIds() 
-	{ 
-		return view_ids_; 
+	std::vector<int> const & viewIds()
+	{
+		return view_ids_;
 	}
 
 

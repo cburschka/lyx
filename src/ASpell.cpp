@@ -145,7 +145,7 @@ docstring const ASpell::nextMiss()
 docstring const ASpell::error()
 {
 	char const * err = 0;
-	
+
 	if (spell_error_object && aspell_error_number(spell_error_object) != 0) {
 		err = aspell_error_message(spell_error_object);
 	}

@@ -75,14 +75,14 @@ void LastFilesSection::read(istream & is)
 		getline(is, tmp);
 		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !absolutePath(tmp))
 			continue;
-		
+
 		// read lastfiles
 		FileName const file(tmp);
 		if (fs::exists(file.toFilesystemEncoding()) &&
 		    !fs::is_directory(file.toFilesystemEncoding()) &&
 		    lastfiles.size() < num_lastfiles)
 			lastfiles.push_back(file);
-		else 
+		else
 			LYXERR(Debug::INIT) << "LyX: Warning: Ignore last file: " << tmp << endl;
 	} while (is.good());
 }
@@ -344,7 +344,7 @@ void ToolbarSection::read(istream & is)
 				value >> posx;
 				value >> posy;
 				toolbars.push_back(boost::make_tuple(key, ToolbarInfo(state, location, posx, posy)));
-			} else 
+			} else
 				LYXERR(Debug::INIT) << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
 		} catch (...) {
 			LYXERR(Debug::INIT) << "LyX: Warning: unknown Toolbar info: " << tmp << endl;

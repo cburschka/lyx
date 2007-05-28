@@ -32,7 +32,7 @@ namespace support { class FileName; }
 class Lexer;
 
 /// This contains the runtime configuration of LyX
-class LyXRC //: public noncopyable 
+class LyXRC //: public noncopyable
 // after 1.1.6 I will use a LyXRCStruct here and then this can be made
 // noncopyable again.  For now I want to minimise changes.  ARRae 20001010
 {

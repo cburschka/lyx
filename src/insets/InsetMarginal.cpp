@@ -55,7 +55,7 @@ docstring const InsetMarginal::editMessage() const
 
 
 int InsetMarginal::latex(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	os << "%\n\\marginpar{";
 	int const i = InsetText::latex(buf, os, runparams);
@@ -65,7 +65,7 @@ int InsetMarginal::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetMarginal::plaintext(Buffer const & buf, odocstream & os,
-                             OutputParams const & runparams) const
+			     OutputParams const & runparams) const
 {
 	os << '[' << buf.B_("margin") << ":\n";
 	InsetText::plaintext(buf, os, runparams);
@@ -76,7 +76,7 @@ int InsetMarginal::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetMarginal::docbook(Buffer const & buf, odocstream & os,
-                           OutputParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	os << "<note role=\"margin\">";
 	int const i = InsetText::docbook(buf, os, runparams);

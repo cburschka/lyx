@@ -47,13 +47,13 @@ QSendtoDialog::QSendtoDialog(QSendto * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ),
 		this, SLOT( slotFormatHighlighted(QListWidgetItem *) ) );
-	connect( formatLW, SIGNAL( itemActivated(QListWidgetItem *) ), 
+	connect( formatLW, SIGNAL( itemActivated(QListWidgetItem *) ),
 		this, SLOT( slotFormatSelected(QListWidgetItem *) ) );
-	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ),
 		this, SLOT( changed_adaptor() ) );
-	connect( commandCO, SIGNAL( textChanged(const QString&) ), 
+	connect( commandCO, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( changed_adaptor() ) );
 }
 

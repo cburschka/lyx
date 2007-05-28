@@ -170,7 +170,7 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 	if (hadBuffer)
 		disconnectBuffer();
 
-	bool const loaded = 
+	bool const loaded =
 		work_area_->bufferView().loadLyXFile(filename, tolastfiles);
 
 	updateToc();
@@ -340,7 +340,7 @@ void LyXView::updateToolbars()
 	bool const review =
 		lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
 		lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
-		
+
 	toolbars_->update(math, table, review);
 	// update redaonly status of open dialogs. This could also be in
 	// updateMenubar(), but since updateToolbars() and updateMenubar()

@@ -222,7 +222,7 @@ bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 
 
 int InsetBranch::latex(Buffer const & buf, odocstream & os,
-                       OutputParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?
 		InsetText::latex(buf, os, runparams) : 0;
@@ -230,7 +230,7 @@ int InsetBranch::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
-                           OutputParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	if (!isBranchSelected(buf))
 		return 0;
@@ -244,7 +244,7 @@ int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetBranch::docbook(Buffer const & buf, odocstream & os,
-                         OutputParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?
 		InsetText::docbook(buf, os, runparams) : 0;

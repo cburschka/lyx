@@ -108,7 +108,7 @@ class DoubleAutoValidator : public QDoubleValidator {
 	Q_OBJECT
 	public:
 		DoubleAutoValidator(QWidget * parent);
-		DoubleAutoValidator(double bottom, double top, int decimals, 
+		DoubleAutoValidator(double bottom, double top, int decimals,
 			QObject * parent);
 		QValidator::State validate(QString & input, int & pos) const;
 };
@@ -116,7 +116,7 @@ class DoubleAutoValidator : public QDoubleValidator {
 // Forward declarations
 class LyXRC;
 
-namespace frontend { class KernelDocType; } 
+namespace frontend { class KernelDocType; }
 
 
 /** A class to ascertain whether the data passed to the @c validate()

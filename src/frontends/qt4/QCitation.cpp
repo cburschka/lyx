@@ -63,7 +63,7 @@ QCitation::QCitation(Dialog & parent)
 
 
 void QCitation::apply(int const choice, bool const full, bool const force,
-                      QString before, QString after)
+		      QString before, QString after)
 {
 	if (cited_keys_.isEmpty())
 		return;
@@ -89,7 +89,7 @@ void QCitation::clearSelection()
 	selected_model_.setStringList(cited_keys_);
 }
 
-	
+
 QString QCitation::textBefore()
 {
 	return toqstr(params()["before"]);
@@ -155,7 +155,7 @@ void QCitation::findKey(QString const & str, bool only_keys,
 			Qt::CaseSensitive: Qt::CaseInsensitive;
 	QStringList keys;
 	// If new string (str) contains the last searched one...
-	if (!last_searched_string.isEmpty() && str.size() > 1 
+	if (!last_searched_string.isEmpty() && str.size() > 1
 		&& str.contains(last_searched_string, qtcase))
 		// ... then only search within already found list.
 		keys = available_model_.stringList();

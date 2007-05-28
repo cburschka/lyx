@@ -67,7 +67,7 @@ docstring const InsetEnvironment::editMessage() const
 
 
 int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
-                            OutputParams const & runparams) const
+			    OutputParams const & runparams) const
 {
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexheader);
@@ -81,7 +81,7 @@ int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetEnvironment::plaintext(Buffer const & buf, odocstream & os,
-                                OutputParams const & runparams) const
+				OutputParams const & runparams) const
 {
 	os << '[' << to_utf8(name()) << ":\n";
 	InsetText::plaintext(buf, os, runparams);

@@ -96,7 +96,7 @@ public:
 
 	void clearTabbar()
 	{
-		for (int i = tabbar->count() - 1; i >= 0; --i) 
+		for (int i = tabbar->count() - 1; i >= 0; --i)
 			tabbar->removeTab(i);
 	}
 };
@@ -125,7 +125,7 @@ struct GuiView::GuiViewPrivate
 
 	QMenu* toolBarPopup(GuiView *parent)
 	{
-		// FIXME: translation 
+		// FIXME: translation
 		QMenu* menu = new QMenu(parent);
 		QActionGroup *iconSizeGroup = new QActionGroup(parent);
 
@@ -291,7 +291,7 @@ void GuiView::saveGeometry()
 	// Then also the moveEvent, resizeEvent, and the
 	// code for floatingGeometry_ can be removed;
 	// adjust GuiView::setGeometry()
-	
+
 	QRect normal_geometry;
 	int maximized;
 #ifdef Q_WS_WIN
@@ -305,20 +305,20 @@ void GuiView::saveGeometry()
 	normal_geometry = updateFloatingGeometry();
 
 	QDesktopWidget& dw = *qApp->desktop();
-	QRect desk = dw.availableGeometry(dw.primaryScreen());	
+	QRect desk = dw.availableGeometry(dw.primaryScreen());
 	// Qt bug on Linux: load completely maximized, vert max. save-> frameGeometry().height() is wrong
 	if (isMaximized() && desk.width() <= frameGeometry().width() && desk.height() <= frameGeometry().height()) {
 		maximized = CompletelyMaximized;
 		// maximizing does not work when the window is allready hor. or vert. maximized
 		// Tested only on KDE
-		int dh = frameGeometry().height() - height(); 
-		if (desk.height() <= normal_geometry.height() + dh) 
+		int dh = frameGeometry().height() - height();
+		if (desk.height() <= normal_geometry.height() + dh)
 			normal_geometry.setHeight(normal_geometry.height() - 1);
 		int dw = frameGeometry().width() - width();
-		if (desk.width() <= normal_geometry.width() + dw) 
+		if (desk.width() <= normal_geometry.width() + dw)
 			normal_geometry.setWidth(normal_geometry.width() - 1);
 	} else if (desk.height() <= frameGeometry().height()) {
-		maximized = VerticallyMaximized;		
+		maximized = VerticallyMaximized;
 	} else if (desk.width() <= frameGeometry().width()) {
 		maximized = HorizontallyMaximized;
 	} else {
@@ -339,7 +339,7 @@ void GuiView::saveGeometry()
 	}
 	getToolbars().saveToolbarInfo();
 }
-						  
+
 
 void GuiView::setGeometry(unsigned int width,
 			  unsigned int height,
@@ -360,7 +360,7 @@ void GuiView::setGeometry(unsigned int width,
 	if (width != 0 && height != 0) {
 		if (posx != -1 && posy != -1) {
 			// if there are startup positioning problems:
-			// http://doc.trolltech.com/4.2/qdesktopwidget.html 
+			// http://doc.trolltech.com/4.2/qdesktopwidget.html
 			QDesktopWidget& dw = *qApp->desktop();
 			if (dw.isVirtualDesktop()) {
 				if(!dw.geometry().contains(posx, posy)) {
@@ -391,11 +391,11 @@ void GuiView::setGeometry(unsigned int width,
 			} else {
 #ifndef Q_WS_WIN
 				// TODO How to set by the window manager?
-				//      setWindowState(Qt::WindowVerticallyMaximized); 
+				//      setWindowState(Qt::WindowVerticallyMaximized);
 				//      is not possible
 				QDesktopWidget& dw = *qApp->desktop();
 				QRect desk = dw.availableGeometry(dw.primaryScreen());
-				if (maximized == VerticallyMaximized) 
+				if (maximized == VerticallyMaximized)
 					resize(width, desk.height());
 				if (maximized == HorizontallyMaximized)
 					resize(desk.width(), height);
@@ -432,7 +432,7 @@ void GuiView::setGeometry(unsigned int width,
 	// we compensate the drift when storing the position
 	d.posx_offset = 0;
 	d.posy_offset = 0;
-	if (width != 0 && height != 0) 
+	if (width != 0 && height != 0)
 		if (posx != -1 && posy != -1) {
 #ifdef Q_WS_WIN
 			d.posx_offset = posx - normalGeometry().x();
@@ -546,9 +546,9 @@ void GuiView::updateTab()
 		cur_title = view()->buffer()->fileName();
 	}
 
-	// avoid unnecessary tabbar rebuild: 
+	// avoid unnecessary tabbar rebuild:
 	// check if something has changed
-	if (d.tabnames == names && d.cur_title == cur_title) 
+	if (d.tabnames == names && d.cur_title == cur_title)
 		return;
 	d.tabnames = names;
 	d.cur_title = cur_title;
@@ -564,7 +564,7 @@ void GuiView::updateTab()
 	// rebuild tabbar and function map from scratch
 	if (names.size() > 1) {
 		for(size_t i = 0; i < names.size(); i++) {
-			tabbar.addTab(toqstr(makeDisplayPath(names[i], 30))); 
+			tabbar.addTab(toqstr(makeDisplayPath(names[i], 30)));
 			// set current tab
 			if (names[i] == cur_title)
 				tabbar.setCurrentIndex(i);

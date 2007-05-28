@@ -123,10 +123,10 @@ bool MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 		+ theFontMetrics(mi.base.font).width(dp);
 	dim.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 7;
 	dim.des = std::max(cell(0).descent(), cell(1).descent()) + 7;
-	
+
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();
-	
+
 	if (dim_ == dim)
 		return false;
 	dim_ = dim;
@@ -139,7 +139,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	bool lockMacro = MacroTable::globalMacros().has(name_);
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).lock();
-	
+
 	setPosCache(p, x, y);
 
 	// label
@@ -180,7 +180,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	cell(1).draw(pi, x + 8 + w0, y + 1);
 	pi.pain.rectangle(x + w0 + 6, y - dim_.ascent() + 3,
 		w1 + 4, dim_.height() - 6, Color::mathline);
-	
+
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();
 }
@@ -236,7 +236,7 @@ void MathMacroTemplate::write(WriteStream & os) const
 
 
 int MathMacroTemplate::plaintext(Buffer const & buf, odocstream & os,
-                                 OutputParams const &) const
+				 OutputParams const &) const
 {
 	static docstring const str = '[' + buf.B_("math macro") + ']';
 

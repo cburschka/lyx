@@ -123,7 +123,7 @@ Toc const & TocBackend::toc(std::string const & type) const
 
 void TocBackend::updateItem(ParConstIterator const & par_it)
 {
-	// TODO should not happen, 
+	// TODO should not happen,
 	// a call to TocBackend::update() is missing somewhere
 	if (toc("tableofcontents").empty())
 		return;
@@ -144,7 +144,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 		if (inset.lyxCode() == Inset::OPTARG_CODE) {
 			if (!tocstring.empty())
 				break;
-			Paragraph const & par = 
+			Paragraph const & par =
 				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 			if (!toc_item->par_it_->getLabelstring().empty())
 				tocstring = toc_item->par_it_->getLabelstring() + ' ';
@@ -189,7 +189,7 @@ void TocBackend::update()
 			case Inset::OPTARG_CODE: {
 				if (!tocstring.empty())
 					break;
-				Paragraph const & par = 
+				Paragraph const & par =
 					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 				if (!pit->getLabelstring().empty())
 					tocstring = pit->getLabelstring() + ' ';

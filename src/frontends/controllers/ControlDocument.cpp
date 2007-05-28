@@ -125,7 +125,7 @@ void ControlDocument::dispatchParams()
 
 	// Apply the BufferParams.
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_PARAMS_APPLY);
-	
+
 	// redo the numbering if necessary
 	if (new_secnumdepth != old_secnumdepth)
 		updateLabels(kernel().buffer());
@@ -185,13 +185,13 @@ void ControlDocument::saveAsDefault() const
 
 bool const ControlDocument::isFontAvailable(std::string const & font) const
 {
-	if (font == "default" || font == "cmr" 
+	if (font == "default" || font == "cmr"
 	    || font == "cmss" || font == "cmtt")
 		// these are standard
 		return true;
 	else if (font == "lmodern" || font == "lmss" || font == "lmtt")
 		return LaTeXFeatures::isAvailable("lmodern");
-	else if (font == "times" || font == "palatino" 
+	else if (font == "times" || font == "palatino"
 		 || font == "helvet" || font == "courier")
 		return LaTeXFeatures::isAvailable("psnfss");
 	else if (font == "cmbr" || font == "cmtl")
@@ -199,7 +199,7 @@ bool const ControlDocument::isFontAvailable(std::string const & font) const
 	else if (font == "utopia")
 		return LaTeXFeatures::isAvailable("utopia")
 			|| LaTeXFeatures::isAvailable("fourier");
-	else if (font == "beraserif" || font == "berasans" 
+	else if (font == "beraserif" || font == "berasans"
 		|| font == "beramono")
 		return LaTeXFeatures::isAvailable("bera");
 	else

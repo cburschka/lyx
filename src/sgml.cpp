@@ -181,7 +181,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 
 void sgml::openTag(odocstream & os, string const & name, string const & attribute)
 {
-        // FIXME UNICODE
+	// FIXME UNICODE
 	// This should be fixed in layout files later.
 	string param = subst(attribute, "<", "\"");
 	param = subst(param, ">", "\"");

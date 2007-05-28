@@ -25,7 +25,7 @@
 
 namespace lyx {
 namespace frontend {
-	
+
 class QParagraph;
 
 class QParagraphDialog : public QDialog, public Ui::QParagraphUi {

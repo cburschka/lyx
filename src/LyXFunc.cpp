@@ -272,7 +272,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
 		if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos || bm.top_id != new_id )
 			const_cast<BookmarksSection::Bookmark &>(bm).updatePos(new_pit, new_pos, new_id);
-	} 
+	}
 }
 
 
@@ -893,7 +893,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				menuWrite(lyx_view_->buffer());
 				lyx_view_->message(str + _(" done."));
 			} else {
- 				writeAs(lyx_view_->buffer());
+				writeAs(lyx_view_->buffer());
 			}
 			updateFlags = Update::None;
 			break;
@@ -1424,7 +1424,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					// when the target is in the parent or another child document.
 					lyx_view_->buffer()->setParentName(parentfilename);
 					setMessage(bformat(_("Opening child document %1$s..."),
-			                         makeDisplayPath(filename.absFilename())));
+						 makeDisplayPath(filename.absFilename())));
 				} else
 					setMessage(_("Document not loaded."));
 			break;
@@ -1483,8 +1483,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_PREFERENCES_SAVE: {
 			lyxrc.write(makeAbsPath("preferences",
-			                        package().user_support().absFilename()),
-			            false);
+						package().user_support().absFilename()),
+				    false);
 			break;
 		}
 
@@ -1628,7 +1628,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			if (defaults.writeFile(FileName(defaults.fileName())))
 				setMessage(bformat(_("Document defaults saved in %1$s"),
-				                   makeDisplayPath(fname)));
+						   makeDisplayPath(fname)));
 			else
 				setErrorMessage(from_ascii(N_("Unable to save document defaults")));
 			break;

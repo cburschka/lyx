@@ -62,7 +62,7 @@ class CacheItem {
 public:
 	CacheItem() {}
 	CacheItem(FileName const & orig_from, string const & to_format,
-	          time_t t, unsigned long c)
+		  time_t t, unsigned long c)
 		: timestamp(t), checksum(c)
 	{
 		std::ostringstream os;
@@ -70,9 +70,9 @@ public:
 		   << '-' << to_format;
 		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
 		LYXERR(Debug::FILES) << "Add file cache item " << orig_from
-		                     << ' ' << to_format << ' ' << cache_name
-		                     << ' ' << timestamp << ' ' << checksum
-		                     << '.' << std::endl;
+				     << ' ' << to_format << ' ' << cache_name
+				     << ' ' << timestamp << ' ' << checksum
+				     << '.' << std::endl;
 	}
 	~CacheItem() {}
 	FileName cache_name;
@@ -258,8 +258,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	    converted_file.empty())
 		return;
 	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-	                     << ' ' << to_format << ' ' << converted_file
-	                     << std::endl;
+			     << ' ' << to_format << ' ' << converted_file
+			     << std::endl;
 
 	// Is the file in the cache already?
 	CacheItem * item = pimpl_->find(orig_from, to_format);
@@ -268,12 +268,12 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	Mover const & mover = getMover(to_format);
 	if (item) {
 		LYXERR(Debug::FILES) << "ConverterCache::add(" << orig_from << "):\n"
-		                        "The file is already in the cache."
-		                     << std::endl;
+					"The file is already in the cache."
+				     << std::endl;
 		// First test for timestamp
 		if (timestamp == item->timestamp) {
 			LYXERR(Debug::FILES) << "Same timestamp."
-			                     << std::endl;
+					     << std::endl;
 			return;
 		} else {
 			// Maybe the contents is still the same?
@@ -281,16 +281,16 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			unsigned long const checksum = support::sum(orig_from);
 			if (checksum == item->checksum) {
 				LYXERR(Debug::FILES) << "Same checksum."
-				                     << std::endl;
+						     << std::endl;
 				return;
 			}
 			item->checksum = checksum;
 		}
 		if (!mover.copy(converted_file, item->cache_name, 0600))
 			LYXERR(Debug::FILES) << "ConverterCache::add("
-			                     << orig_from << "):\n"
-		        	                "Could not copy file."
-		        	             << std::endl;
+					     << orig_from << "):\n"
+						"Could not copy file."
+					     << std::endl;
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
 				support::sum(orig_from));
@@ -302,9 +302,9 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			format_cache.cache[to_format] = new_item;
 		} else
 			LYXERR(Debug::FILES) << "ConverterCache::add("
-			                     << orig_from << "):\n"
-		        	                "Could not copy file."
-		                	     << std::endl;
+					     << orig_from << "):\n"
+						"Could not copy file."
+				     << std::endl;
 	}
 }
 
@@ -315,7 +315,7 @@ void ConverterCache::remove(FileName const & orig_from,
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return;
 	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-	                     << ' ' << to_format << std::endl;
+			     << ' ' << to_format << std::endl;
 
 	CacheType::iterator const it1 = pimpl_->cache.find(orig_from);
 	if (it1 == pimpl_->cache.end())
@@ -376,7 +376,7 @@ bool ConverterCache::inCache(FileName const & orig_from,
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return false;
 	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-	                     << ' ' << to_format << std::endl;
+			     << ' ' << to_format << std::endl;
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	if (!item) {
@@ -402,7 +402,7 @@ FileName const & ConverterCache::cacheName(FileName const & orig_from,
 		string const & to_format) const
 {
 	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-	                     << ' ' << to_format << std::endl;
+			     << ' ' << to_format << std::endl;
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);
@@ -416,7 +416,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 	if (!lyxrc.use_converter_cache || orig_from.empty() || dest.empty())
 		return false;
 	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-	                     << ' ' << to_format << ' ' << dest << std::endl;
+			     << ' ' << to_format << ' ' << dest << std::endl;
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);

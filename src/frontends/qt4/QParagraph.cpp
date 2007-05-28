@@ -56,12 +56,12 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	connect(alignRightRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(alignCenterRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(linespacing, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(linespacing, SIGNAL(activated(int)), 
+	connect(linespacing, SIGNAL(activated(int)),
 		this, SLOT(enableLinespacingValue(int)));
-	connect(linespacingValue, SIGNAL(textChanged(const QString &)), 
+	connect(linespacingValue, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(indentCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(labelWidth, SIGNAL(textChanged(const QString &)), 
+	connect(labelWidth, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
@@ -138,14 +138,14 @@ void QParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
 		}
 	}
 
-	lyxerr << BOOST_CURRENT_FUNCTION << "Unknown alignment " 
+	lyxerr << BOOST_CURRENT_FUNCTION << "Unknown alignment "
 		<< align << std::endl;
 }
 
 
 LyXAlignment QParagraphDialog::getAlignmentFromDialog()
 {
-	if (alignDefaultCB->isChecked()) 
+	if (alignDefaultCB->isChecked())
 		return LYX_ALIGN_LAYOUT;
 	LyXAlignment alignment = LYX_ALIGN_NONE;
 	QPRadioMap::const_iterator it = radioMap.begin();
@@ -245,7 +245,7 @@ void QParagraph::update_contents()
 	// alignment
 	LyXAlignment newAlignment = params.align();
 	LyXAlignment defaultAlignment = controller().alignDefault();
-	bool alignmentIsDefault = 
+	bool alignmentIsDefault =
 		newAlignment == LYX_ALIGN_LAYOUT || newAlignment == defaultAlignment;
 	dialog_->alignDefaultCB->blockSignals(true);
 	dialog_->alignDefaultCB->setChecked(alignmentIsDefault);

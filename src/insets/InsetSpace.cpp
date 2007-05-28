@@ -58,11 +58,11 @@ bool InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	switch (kind_) {
 		case THIN:
 		case NEGTHIN:
-                    dim.wid = fm.width(char_type('x')) / 3;
+		    dim.wid = fm.width(char_type('x')) / 3;
 			break;
 		case PROTECTED:
 		case NORMAL:
-                    dim.wid = fm.width(char_type('x'));
+		    dim.wid = fm.width(char_type('x'));
 			break;
 		case QUAD:
 			dim.wid = 20;
@@ -167,7 +167,7 @@ void InsetSpace::read(Buffer const &, Lexer & lex)
 
 
 int InsetSpace::latex(Buffer const &, odocstream & os,
-                      OutputParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -200,7 +200,7 @@ int InsetSpace::latex(Buffer const &, odocstream & os,
 
 
 int InsetSpace::plaintext(Buffer const &, odocstream & os,
-                          OutputParams const &) const
+			  OutputParams const &) const
 {
 	os << ' ';
 	return 1;
@@ -208,7 +208,7 @@ int InsetSpace::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetSpace::docbook(Buffer const &, odocstream & os,
-                        OutputParams const &) const
+			OutputParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:

@@ -41,7 +41,7 @@ QToc::QToc(Dialog & dialog, QObject * parent)
 
 bool QToc::canOutline(int type) const
 {
-	if (type < 0) 
+	if (type < 0)
 		return false;
 
 	return ControlToc::canOutline(type);
@@ -93,7 +93,7 @@ QModelIndex const QToc::getCurrentIndex(int type) const
 
 void QToc::goTo(int type, QModelIndex const & index)
 {
-	if (type < 0 || !index.isValid() 
+	if (type < 0 || !index.isValid()
 		|| index.model() != toc_models_[type]) {
 		LYXERR(Debug::GUI)
 			<< "QToc::goTo(): QModelIndex is invalid!"
@@ -104,7 +104,7 @@ void QToc::goTo(int type, QModelIndex const & index)
 	BOOST_ASSERT(type >= 0 && type < int(toc_models_.size()));
 
 	TocIterator const it = toc_models_[type]->tocIterator(index);
-	
+
 	LYXERR(Debug::GUI) << "QToc::goTo " << to_utf8(it->str()) << endl;
 
 	ControlToc::goTo(*it);

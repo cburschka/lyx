@@ -1534,11 +1534,11 @@ void Tabular::read(Buffer const & buf, Lexer & lex)
 		getTokenValue(line, "topline", row_info[i].top_line);
 		getTokenValue(line, "bottomline", row_info[i].bottom_line);
 		getTokenValue(line, "topspace", row_info[i].top_space,
-		              row_info[i].top_space_default);
+			      row_info[i].top_space_default);
 		getTokenValue(line, "bottomspace", row_info[i].bottom_space,
-		              row_info[i].bottom_space_default);
+			      row_info[i].bottom_space_default);
 		getTokenValue(line, "interlinespace", row_info[i].interline_space,
-		              row_info[i].interline_space_default);
+			      row_info[i].interline_space_default);
 		getTokenValue(line, "endfirsthead", row_info[i].endfirsthead);
 		getTokenValue(line, "endhead", row_info[i].endhead);
 		getTokenValue(line, "endfoot", row_info[i].endfoot);
@@ -2270,7 +2270,7 @@ int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 		}
 		++ret;
 	}
-	
+
 	for (col_type j = 0; j < columns_; ++j) {
 		if (isPartOfMultiColumn(i, j))
 			continue;
@@ -2577,7 +2577,7 @@ int Tabular::docbook(Buffer const & buf, odocstream & os,
 
 
 bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
-                                   vector<unsigned int> const & clen) const
+				   vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
 	idx_type const n = numberOfCellsInRow(fcell) + fcell;
@@ -2625,7 +2625,7 @@ bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
 
 
 bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
-                                      vector<unsigned int> const & clen) const
+				      vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
 	idx_type const n = numberOfCellsInRow(fcell) + fcell;
@@ -2724,8 +2724,8 @@ void Tabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
 
 
 void Tabular::plaintext(Buffer const & buf, odocstream & os,
-                           OutputParams const & runparams, int const depth,
-                           bool onlydata, unsigned char delim) const
+			   OutputParams const & runparams, int const depth,
+			   bool onlydata, unsigned char delim) const
 {
 	// first calculate the width of the single columns
 	vector<unsigned int> clen(columns_);
@@ -2771,7 +2771,7 @@ void Tabular::plaintext(Buffer const & buf, odocstream & os,
 			if (onlydata && j > 0)
 				os << delim;
 			plaintextPrintCell(buf, os, runparams,
-			                   cell, i, j, clen, onlydata);
+					   cell, i, j, clen, onlydata);
 			++cell;
 		}
 		os << endl;
@@ -3183,8 +3183,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS:
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 
-		if (cmd.button() == mouse_button::button1 
-		    || (cmd.button() == mouse_button::button3 
+		if (cmd.button() == mouse_button::button1
+		    || (cmd.button() == mouse_button::button3
 			&& (&bvcur.selBegin().inset() != this || !tablemode(bvcur)))) {
 			if (!bvcur.selection() && !cur.bv().mouseSetCursor(cur))
 				cur.noUpdate();
@@ -3204,7 +3204,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cmd = FuncRequest(LFUN_PASTE, "0");
 			} else {
 				cmd = FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
-				                  "paragraph");
+						  "paragraph");
 			}
 			doDispatch(cur, cmd);
 		}
@@ -3661,12 +3661,12 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::TOGGLE_ROTATE_CELL:
 		case Tabular::SET_ROTATE_CELL:
-			status.setOnOff(!oneCellHasRotationState(false, 
+			status.setOnOff(!oneCellHasRotationState(false,
 				sel_row_start, sel_row_end, sel_col_start, sel_col_end));
 			break;
 
 		case Tabular::UNSET_ROTATE_CELL:
-			status.setOnOff(!oneCellHasRotationState(true, 
+			status.setOnOff(!oneCellHasRotationState(true,
 				sel_row_start, sel_row_end, sel_col_start, sel_col_end));
 			break;
 
@@ -3791,14 +3791,14 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 int InsetTabular::latex(Buffer const & buf, odocstream & os,
-                        OutputParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	return tabular.latex(buf, os, runparams);
 }
 
 
 int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
-                            OutputParams const & runparams) const
+			    OutputParams const & runparams) const
 {
 	os << '\n'; // output table on a new line
 	int const dp = runparams.linelen > 0 ? runparams.depth : 0;
@@ -3808,7 +3808,7 @@ int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetTabular::docbook(Buffer const & buf, odocstream & os,
-                          OutputParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	int ret = 0;
 	Inset * master = 0;
@@ -4053,7 +4053,7 @@ bool InsetTabular::tabularFeatures(Cursor & cur, string const & what)
 
 		if (tmp == what.substr(0, tmp.length())) {
 			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
-			//tabularFeatures[i].feature.length())) 
+			//tabularFeatures[i].feature.length()))
 			action = tabularFeature[i].action;
 			break;
 		}
@@ -4087,12 +4087,12 @@ static void checkLongtableSpecial(Tabular::ltType & ltt,
 }
 
 bool InsetTabular::oneCellHasRotationState(bool rotated,
-		row_type row_start, row_type row_end, 
+		row_type row_start, row_type row_end,
 		col_type col_start, col_type col_end) const {
 
 	for (row_type i = row_start; i <= row_end; ++i) {
 		for (col_type j = col_start; j <= col_end; ++j) {
-			if (tabular.getRotateCell(tabular.getCellNumber(i, j)) 
+			if (tabular.getRotateCell(tabular.getCellNumber(i, j))
 				== rotated) {
 				return true;
 			}
@@ -4382,10 +4382,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		{
 		bool oneNotRotated = oneCellHasRotationState(false,
 			sel_row_start, sel_row_end, sel_col_start, sel_col_end);
-		
+
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setRotateCell(tabular.getCellNumber(i, j), 
+				tabular.setRotateCell(tabular.getCellNumber(i, j),
 									  oneNotRotated);
 		}
 		break;
@@ -4595,7 +4595,7 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 			tabular.setCellInset(r2, c2, inset);
 			// FIXME: change tracking (MG)
 			inset->setChange(Change(cur.buffer().params().trackChanges ?
-			                        Change::INSERTED : Change::UNCHANGED));
+						Change::INSERTED : Change::UNCHANGED));
 			cur.pos() = 0;
 		}
 	}
@@ -4764,7 +4764,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				Paragraph & par = inset->text_.getPar(0);
 				Font const font = inset->text_.getFont(buffer, par, 0);
 				inset->setText(buf.substr(op, p - op), font,
-				               buffer.params().trackChanges);
+					       buffer.params().trackChanges);
 				++cols;
 				++cell;
 			}
@@ -4776,7 +4776,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				Paragraph & par = inset->text_.getPar(0);
 				Font const font = inset->text_.getFont(buffer, par, 0);
 				inset->setText(buf.substr(op, p - op), font,
-				               buffer.params().trackChanges);
+					       buffer.params().trackChanges);
 			}
 			cols = ocol;
 			++row;

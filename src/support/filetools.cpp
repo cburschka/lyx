@@ -245,7 +245,7 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 // Returns the real name of file name in directory path, with optional
 // extension ext.
 FileName const fileSearch(string const & path, string const & name,
-                          string const & ext, search_mode mode)
+			  string const & ext, search_mode mode)
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
@@ -327,7 +327,7 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 						 token(l, '_', 0) + '_' + name,
 						 ext);
 		if (!tmpold.empty()) {
-			lyxerr << "i18nLibFileSearch: File `" << tmpold 
+			lyxerr << "i18nLibFileSearch: File `" << tmpold
 			       << "' has been found by the old method" <<endl;
 			return tmpold;
 		}
@@ -356,7 +356,7 @@ string const libScriptSearch(string const & command_in, quote_style style)
 		(command.size() - start_script) : pos2 - start_script;
 
 	// Does this script file exist?
-	string const script = 
+	string const script =
 		libFileSearch(".", command.substr(start_script, size_script)).absFilename();
 
 	if (script.empty()) {
@@ -999,7 +999,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 	// If file is from LyXDir, display it as if it were relative.
 	string const system = package().system_support().absFilename();
 	if (prefixIs(str, system) && str != system)
-		return from_utf8("[" + str.erase(0, system.length()) + "]");	
+		return from_utf8("[" + str.erase(0, system.length()) + "]");
 
 	// replace /home/blah with ~/
 	string const home = package().home_dir().absFilename();
@@ -1145,7 +1145,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 		 << '\'' << endl;
 	if (c.first != -1)
 		return FileName(os::internal_path(rtrim(to_utf8(from_filesystem8bit(c.second)),
-		                                        "\n\r")));
+							"\n\r")));
 	else
 		return FileName();
 }

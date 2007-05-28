@@ -279,7 +279,7 @@ docstring const InsetFloat::editMessage() const
 
 
 int InsetFloat::latex(Buffer const & buf, odocstream & os,
-                      OutputParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	FloatList const & floats = buf.params().getTextClass().floats();
 	string tmptype = (params_.wide ? params_.type + "*" : params_.type);
@@ -328,7 +328,7 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetFloat::plaintext(Buffer const & buf, odocstream & os,
-                          OutputParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	os << '[' << buf.B_("float") << ' ' << floatName(params_.type, buf.params()) << ":\n";
 	InsetText::plaintext(buf, os, runparams);
@@ -339,10 +339,10 @@ int InsetFloat::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetFloat::docbook(Buffer const & buf, odocstream & os,
-                        OutputParams const & runparams) const
+			OutputParams const & runparams) const
 {
-        // FIXME UNICODE
-        os << '<' << from_ascii(params_.type) << '>';
+	// FIXME UNICODE
+	os << '<' << from_ascii(params_.type) << '>';
 	int const i = InsetText::docbook(buf, os, runparams);
 	os << "</" << from_ascii(params_.type) << '>';
 

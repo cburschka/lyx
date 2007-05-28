@@ -257,13 +257,13 @@ static void build_conversion_command(string const & command, ostream & script)
 	// If this occurs, move ${outfile}.0 to ${outfile}
 	// and delete ${outfile}.? (ignore errors)
 	script << "if not os.path.isfile(outfile):\n"
-	          "  if os.path.isfile(outfile + '.0'):\n"
-	          "    os.rename(outfile + '.0', outfile)\n"
-	          "    import glob\n"
-	          "    for file in glob.glob(outfile + '.?'):\n"
-	          "      unlinkNoThrow(file)\n"
-	          "  else:\n"
-	          "    sys.exit(1)\n\n";
+		  "  if os.path.isfile(outfile + '.0'):\n"
+		  "    os.rename(outfile + '.0', outfile)\n"
+		  "    import glob\n"
+		  "    for file in glob.glob(outfile + '.?'):\n"
+		  "      unlinkNoThrow(file)\n"
+		  "  else:\n"
+		  "    sys.exit(1)\n\n";
 
 	// Delete the infile
 	script << "unlinkNoThrow(infile)\n\n";
@@ -281,23 +281,23 @@ static void build_script(FileName const & from_file,
 	typedef Converters::EdgePath EdgePath;
 
 	script << "#!/usr/bin/env python\n"
-	          "# -*- coding: utf-8 -*-\n"
-	          "import os, shutil, sys, locale\n\n"
-	          "def unlinkNoThrow(file):\n"
-	          "  ''' remove a file, do not throw if an error occurs '''\n"
-	          "  try:\n"
-	          "    os.unlink(file)\n"
-	          "  except:\n"
-	          "    pass\n\n"
-	          "def utf8ToDefaultEncoding(file):\n"
-	          "  ''' if possible, convert to the default encoding '''\n"
-	          "  try:\n"
-	          "    language, output_encoding = locale.getdefaultlocale()\n"
-	          "    if output_encoding == None:\n"
-	          "      output_encoding = 'latin1'\n"
-	          "    return unicode(file, 'utf8').encode(output_encoding)\n"
-	          "  except:\n"
-	          "    return file\n\n";
+		  "# -*- coding: utf-8 -*-\n"
+		  "import os, shutil, sys, locale\n\n"
+		  "def unlinkNoThrow(file):\n"
+		  "  ''' remove a file, do not throw if an error occurs '''\n"
+		  "  try:\n"
+		  "    os.unlink(file)\n"
+		  "  except:\n"
+		  "    pass\n\n"
+		  "def utf8ToDefaultEncoding(file):\n"
+		  "  ''' if possible, convert to the default encoding '''\n"
+		  "  try:\n"
+		  "    language, output_encoding = locale.getdefaultlocale()\n"
+		  "    if output_encoding == None:\n"
+		  "      output_encoding = 'latin1'\n"
+		  "    return unicode(file, 'utf8').encode(output_encoding)\n"
+		  "  except:\n"
+		  "    return file\n\n";
 
 	// we do not use ChangeExtension because this is a basename
 	// which may nevertheless contain a '.'
@@ -323,8 +323,8 @@ static void build_script(FileName const & from_file,
 	script << "infile = utf8ToDefaultEncoding("
 			<< quoteName(from_file.absFilename(), quote_python)
 			<< ")\n"
-	          "outfile = " << quoteName(outfile, quote_python) << "\n"
-	          "shutil.copy(infile, outfile)\n";
+		  "outfile = " << quoteName(outfile, quote_python) << "\n"
+		  "shutil.copy(infile, outfile)\n";
 
 	// Some converters (e.g. lilypond) can only output files to the
 	// current directory, so we need to change the current directory.
@@ -344,7 +344,7 @@ static void build_script(FileName const & from_file,
 		ostringstream os;
 		os << support::os::python() << ' '
 		   << libScriptSearch("$$s/scripts/convertDefault.py",
-		                      quote_python) << ' ';
+				      quote_python) << ' ';
 		if (!from_format.empty())
 			os << from_format << ':';
 		// The extra " quotes around infile and outfile are needed
@@ -380,8 +380,8 @@ static void build_script(FileName const & from_file,
 
 		// Store these names in the python script
 		script << "infile = "      << quoteName(infile, quote_python) << "\n"
-		          "infile_base = " << quoteName(infile_base, quote_python) << "\n"
-		          "outfile = "     << quoteName(outfile, quote_python) << '\n';
+			  "infile_base = " << quoteName(infile_base, quote_python) << "\n"
+			  "outfile = "     << quoteName(outfile, quote_python) << '\n';
 
 		// See comment about extra " quotes above (although that
 		// applies only for the first loop run here).

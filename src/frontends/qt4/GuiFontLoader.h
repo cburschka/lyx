@@ -40,12 +40,12 @@ public:
 
 
 /// Hold info about a particular font
-class GuiFontLoader : public FontLoader 
+class GuiFontLoader : public FontLoader
 {
 public:
 	///
 	GuiFontLoader();
-	
+
 	/// Destructor
 	virtual ~GuiFontLoader() {}
 

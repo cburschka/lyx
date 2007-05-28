@@ -35,7 +35,7 @@ ControlMath::ControlMath(Dialog & dialog)
 	: Dialog::Controller(dialog)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
-	// in "lib/symbols". Unfortunately, some of those are already 
+	// in "lib/symbols". Unfortunately, some of those are already
 	// defined with non-unicode ids for use within mathed.
 	// FIXME 2: We should fill-in this map with the parsed "symbols"
 	// file done in MathFactory.cpp.
@@ -139,11 +139,11 @@ MathSymbol const & ControlMath::mathSymbol(string tex_name) const
 {
 	map<string, MathSymbol>::const_iterator it =
 		math_symbols_.find(tex_name);
-	
+
 	static MathSymbol unknown_symbol;
 	if (it == math_symbols_.end())
 		return unknown_symbol;
-	
+
 	return it->second;
 }
 
@@ -152,11 +152,11 @@ std::string const & ControlMath::texName(char_type math_symbol) const
 {
 	map<char_type, string>::const_iterator it =
 		tex_names_.find(math_symbol);
-	
+
 	static string empty_string;
 	if (it == tex_names_.end())
 		return empty_string;
-	
+
 	return it->second;
 }
 
@@ -196,10 +196,10 @@ char const * latex_arrow[] = {
 	"Downarrow", "Uparrow", "Updownarrow", "Leftrightarrow",
 	"Longleftrightarrow", "Longleftarrow", "Longrightarrow",
 	"longleftrightarrow", "longleftarrow", "longrightarrow",
-	"leftharpoondown", "rightharpoondown", 
+	"leftharpoondown", "rightharpoondown",
 	"mapsto", "longmapsto",
 	"nwarrow", "nearrow",
-	"leftharpoonup", "rightharpoonup", 	
+	"leftharpoonup", "rightharpoonup",
 	"hookleftarrow", "hookrightarrow",
 	"swarrow", "searrow",
 	"rightleftharpoons",
@@ -295,7 +295,7 @@ char const * latex_ams_misc[] = {
 int const nr_latex_ams_misc = sizeof(latex_ams_misc) / sizeof(char const *);
 
 char const * latex_ams_arrows[] = {
-	"dashleftarrow", "dashrightarrow", 
+	"dashleftarrow", "dashrightarrow",
 	"leftleftarrows", "leftrightarrows",
 	"rightrightarrows", "rightleftarrows",
 	"Lleftarrow", "Rrightarrow",
@@ -322,7 +322,7 @@ char const * latex_ams_rel[] = {
 	"leqq", "geqq",
 	"leqslant", "geqslant",
 	"eqslantless", "eqslantgtr",
-	"lesssim", "gtrsim", 
+	"lesssim", "gtrsim",
 	"lessapprox", "gtrapprox",
 	"approxeq", "triangleq",
 	"lessdot", "gtrdot",
@@ -334,21 +334,21 @@ char const * latex_ams_rel[] = {
 	"thicksim", "thickapprox",
 	"backsim", "backsimeq",
 	"subseteqq", "supseteqq",
-	"Subset", "Supset", 
+	"Subset", "Supset",
 	"sqsubset", "sqsupset",
-	"preccurlyeq", "succcurlyeq", 
-	"curlyeqprec", "curlyeqsucc", 
-	"precsim", "succsim", 
-	"precapprox", "succapprox", 
-	"vartriangleleft", "vartriangleright", 
+	"preccurlyeq", "succcurlyeq",
+	"curlyeqprec", "curlyeqsucc",
+	"precsim", "succsim",
+	"precapprox", "succapprox",
+	"vartriangleleft", "vartriangleright",
 	"trianglelefteq", "trianglerighteq",
-	"bumpeq", "Bumpeq", 
+	"bumpeq", "Bumpeq",
 	"doteqdot", "risingdotseq", "fallingdotseq",
 	"vDash", "Vvdash", "Vdash",
-	"shortmid", "shortparallel",	
+	"shortmid", "shortparallel",
 	"smallsmile", "smallfrown",
 	"blacktriangleleft", "blacktriangleright",
-	"because", "therefore", 
+	"because", "therefore",
 	"backepsilon",
 	"varpropto",
 	"between",

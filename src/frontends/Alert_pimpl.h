@@ -31,4 +31,3 @@ void information_pimpl(docstring const & title, docstring const & warning);
 std::pair<bool, docstring> const askForText_pimpl(docstring const & msg, docstring const & dflt);
 
 } // namespace lyx
-

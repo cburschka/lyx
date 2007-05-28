@@ -157,7 +157,7 @@ bool RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		msgFont.setFamily(Font::SANS_FAMILY);
 
 		// FIXME UNICODE
-		docstring const justname = 
+		docstring const justname =
 			from_utf8(onlyFilename(params_.filename.absFilename()));
 		if (!justname.empty()) {
 			msgFont.setSize(Font::SIZE_FOOTNOTE);

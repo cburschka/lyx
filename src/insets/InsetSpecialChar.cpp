@@ -57,7 +57,7 @@ bool InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		case MENU_SEPARATOR:      s = " x ";   break;
 		case HYPHENATION:      s = "-";   break;
 	}
-        docstring ds(s.begin(), s.end());
+	docstring ds(s.begin(), s.end());
 	dim.wid = fm.width(ds);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
@@ -93,8 +93,8 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case LDOTS:
 	{
 		font.setColor(Color::special);
-                string ell = ". . . ";
-                docstring dell(ell.begin(), ell.end());
+		string ell = ". . . ";
+		docstring dell(ell.begin(), ell.end());
 		pi.pain.text(x, y, dell, font);
 		break;
 	}
@@ -104,7 +104,7 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 			theFontMetrics(font);
 
 		// A triangle the width and height of an 'x'
-                int w = fm.width(char_type('x'));
+		int w = fm.width(char_type('x'));
 		int ox = fm.width(char_type(' ')) + x;
 		int h = fm.ascent(char_type('x'));
 		int xp[4], yp[4];
@@ -192,7 +192,7 @@ int InsetSpecialChar::latex(Buffer const &, odocstream & os,
 
 
 int InsetSpecialChar::plaintext(Buffer const &, odocstream & os,
-                                OutputParams const &) const
+				OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -213,7 +213,7 @@ int InsetSpecialChar::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetSpecialChar::docbook(Buffer const &, odocstream & os,
-                              OutputParams const &) const
+			      OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:

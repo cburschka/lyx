@@ -561,14 +561,14 @@ void DocIterator::updateInsets(Inset * inset)
 bool DocIterator::fixIfBroken()
 {
 	bool fixed = false;
-	
+
 	for (size_t i = slices_.size() - 1; i != 0; --i)
 		if (!slices_[i].isValid()) {
 			pop_back();
 			fixed = true;
 		}
 
-	// The top level CursorSlice should always be valid. 
+	// The top level CursorSlice should always be valid.
 	BOOST_ASSERT(slices_[0].isValid());
 
 	if (idx() > lastidx()) {

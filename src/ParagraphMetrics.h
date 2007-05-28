@@ -68,7 +68,7 @@ public:
 	/// The painter and others use this
 	RowList const & rows() const { return rows_; }
 	/// The painter and others use this
-	std::vector<bool> const & rowChangeStatus() const 
+	std::vector<bool> const & rowChangeStatus() const
 	{ return row_change_status_; }
 	///
 	void updateRowChangeStatus();

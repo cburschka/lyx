@@ -79,12 +79,12 @@ char const * const tex_fonts_sans[] = {"default", "cmss", "lmss", "helvet", "ava
 };
 
 
-char const * tex_fonts_sans_gui[] = { N_("Default"), N_("Computer Modern Sans"), N_("Latin Modern Sans"), 
+char const * tex_fonts_sans_gui[] = { N_("Default"), N_("Computer Modern Sans"), N_("Latin Modern Sans"),
 			    N_("Helvetica"), N_("Avant Garde"), N_("Bera Sans"), N_("CM Bright"), ""
 };
 
 
-char const * const tex_fonts_monospaced[] = {"default", "cmtt", "lmtt", "courier", "beramono", 
+char const * const tex_fonts_monospaced[] = {"default", "cmtt", "lmtt", "courier", "beramono",
 			    "luximono", "cmtl", ""
 };
 
@@ -117,13 +117,13 @@ void PreambleModule::update(BufferParams const & params, BufferId id)
 {
 	QString preamble = toqstr(params.preamble);
 	// Nothing to do if the params and preamble are unchanged.
-	if (id == current_id_ 
+	if (id == current_id_
 		&& preamble == preambleTE->document()->toPlainText())
 		return;
 
 	QTextCursor cur = preambleTE->textCursor();
 	// Save the coords before switching to the new one.
-	preamble_coords_[current_id_] = 
+	preamble_coords_[current_id_] =
 		make_pair(cur.position(), preambleTE->verticalScrollBar()->value());
 
 	// Save the params address for further use.
@@ -153,7 +153,7 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 {
 	// Save the coords before closing.
 	QTextCursor cur = preambleTE->textCursor();
-	preamble_coords_[current_id_] = 
+	preamble_coords_[current_id_] =
 		make_pair(cur.position(), preambleTE->verticalScrollBar()->value());
 	e->accept();
 }
@@ -741,7 +741,7 @@ void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 void QDocumentDialog::romanChanged(int item)
 {
 	string const font = tex_fonts_roman[item];
-	
+
 	fontModule->fontScCB->setEnabled(
 		form_->controller().providesSC(font));
 	fontModule->fontOsfCB->setEnabled(
@@ -820,7 +820,7 @@ void QDocumentDialog::updateNumbering()
 	QTreeWidgetItem * item = 0;
 	for ( ; cit != end ; ++cit) {
 		int const toclevel = (*cit)->toclevel;
-		if (toclevel != Layout::NOT_IN_TOC 
+		if (toclevel != Layout::NOT_IN_TOC
 		    && (*cit)->labeltype == LABEL_COUNTER) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);
 			item->setText(0, qt_((*cit)->name()));
@@ -1261,7 +1261,7 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 
 	textLayoutModule->twoColumnCB->setChecked(
 		params.columns == 2);
-	
+
 	// break listings_params to multiple lines
 	string lstparams =
 		InsetListingsParams(params.listings_params).separatedParams();

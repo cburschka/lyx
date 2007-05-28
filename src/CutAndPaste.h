@@ -56,7 +56,7 @@ void replaceSelection(Cursor & cur);
  *                they get merged.
  * \param realcut If this is true: Push the selection to the cut buffer and
  *                system clipboard. Set this to false to only delete the
- *                selection. 
+ *                selection.
  */
 void cutSelection(Cursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
@@ -97,7 +97,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
  *  It changes layouts and character styles.
  */
 void switchBetweenClasses(textclass_type c1, textclass_type c2,
-                          InsetText & in, ErrorList &);
+			  InsetText & in, ErrorList &);
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.

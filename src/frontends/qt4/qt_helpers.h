@@ -39,22 +39,22 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo);
 
 //FIXME It would be nice if defaultUnit were a default argument
 /// method to set widgets from a Length
-void lengthToWidgets(QLineEdit * input, LengthCombo * combo, 
+void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	Length const & len, Length::UNIT default_unit);
 /// method to set widgets from a string
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	std::string const & len, Length::UNIT default_unit);
 /// method to set widgets from a Length with optional "auto" if zero
-void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo, 
+void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
 	Length const & len, Length::UNIT defaultUnit);
 
 //FIXME setAutoTextCB should really take an argument, as indicated, that
 //determines what text is to be written for "auto". But making
 //that work involves more extensive revisions than we now want
 //to make, since "auto" also appears in update_contents() (see
-//QGraphics.cpp). 
+//QGraphics.cpp).
 //The right way to do this, I think, would be to define a class
-//checkedLengthSet (and a partnering labeledLengthSete) that encapsulated 
+//checkedLengthSet (and a partnering labeledLengthSete) that encapsulated
 //the checkbox, line edit, and length combo together, and then made e.g.
 //lengthToWidgets, widgetsToLength, etc, all public methods of that class.
 //Perhaps even the validator could be exposed through it.
@@ -63,7 +63,7 @@ void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
  * checkbox is unchecked and clearing the line edit if it previously
  * said "text".
 */
-void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit, 
+void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 	LengthCombo * lengthCombo/*, string text = "auto"*/);
 
 

@@ -219,7 +219,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo.items.end();
-		for (; it != end; ++it) 
+		for (; it != end; ++it)
 			if (!getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,
 					getIcon(it->func_),
@@ -313,7 +313,7 @@ void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 		else
 			tbinfo.state = ToolbarSection::ToolbarInfo::OFF;
 	}
-	//	
+	//
 	// no need to save it here.
 	Qt::ToolBarArea loc = owner_.toolBarArea(this);
 
@@ -327,8 +327,8 @@ void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 		tbinfo.location = ToolbarSection::ToolbarInfo::LEFT;
 	else
 		tbinfo.location = ToolbarSection::ToolbarInfo::NOTSET;
-	
-	// save toolbar position. They are not used to restore toolbar position 
+
+	// save toolbar position. They are not used to restore toolbar position
 	// now because move(x,y) does not work for toolbar.
 	tbinfo.posx = pos().x();
 	tbinfo.posy = pos().y();

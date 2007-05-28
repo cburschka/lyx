@@ -49,7 +49,7 @@ bool RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 	font.decSize();
 	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
-	
+
 	if (editable_)
 		fm.buttonText(text_, dim.wid, dim.asc, dim.des);
 	else

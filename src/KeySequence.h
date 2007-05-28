@@ -63,8 +63,8 @@ public:
 
 	/**
 	 * Return the current sequence as a string.
-	 * @param forgui true if the string should use translations and 
-	 *   special characters. 
+	 * @param forgui true if the string should use translations and
+	 *   special characters.
 	 * @see parse()
 	 */
 	docstring const print(bool forgui) const;
@@ -72,8 +72,8 @@ public:
 	/**
 	 * Return the current sequence and available options as
 	 * a string. No options are added if no curmap kb map exists.
-	 * @param forgui true if the string should use translations and 
-	 *   special characters. 
+	 * @param forgui true if the string should use translations and
+	 *   special characters.
 	 */
 	docstring const printOptions(bool forgui) const;
 

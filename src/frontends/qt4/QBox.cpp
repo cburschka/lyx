@@ -161,7 +161,7 @@ void QBox::build_dialog()
 	// add the special units to the height choice
 	// width needs different handling
 	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
-	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i) 
+	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i)
 		dialog_->heightUnitsLC->addItem(toqstr(gui_names_spec_[i]));
 
 	bcview().addReadOnly(dialog_->typeCO);
@@ -393,4 +393,3 @@ void QBox::setInnerType(bool frameless, int i)
 
 
 #include "QBox_moc.cpp"
-

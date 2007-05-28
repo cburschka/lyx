@@ -474,11 +474,11 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		if (!getTextClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
-					         "%1$s.layout,\n"
-					         "is not usable. This is probably because a LaTeX\n"
-					         "class or style file required by it is not\n"
-					         "available. See the Customization documentation\n"
-					         "for more information.\n"), from_utf8(classname));
+						 "%1$s.layout,\n"
+						 "is not usable. This is probably because a LaTeX\n"
+						 "class or style file required by it is not\n"
+						 "available. See the Customization documentation\n"
+						 "for more information.\n"), from_utf8(classname));
 			frontend::Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
 		}
@@ -748,7 +748,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\papersides " << sides
 	   << "\n\\paperpagestyle " << pagestyle << '\n';
 	if (!listings_params.empty())
-		os << "\\listings_params \"" << 
+		os << "\\listings_params \"" <<
 			InsetListingsParams(listings_params).encodedString() << "\"\n";
 	for (int i = 0; i < 4; ++i) {
 		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
@@ -794,7 +794,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	// custom, A3, B3 and B4 paper sizes need geometry
-	bool nonstandard_papersize = papersize == PAPER_B3 
+	bool nonstandard_papersize = papersize == PAPER_B3
 		|| papersize == PAPER_B4
 		|| papersize == PAPER_A3
 		|| papersize == PAPER_CUSTOM;

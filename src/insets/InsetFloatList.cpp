@@ -80,7 +80,7 @@ void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 	if (lex.eatLine()) {
 		setParam("type", lex.getDocString());
 		LYXERR(Debug::INSETS) << "FloatList::float_type: "
-		                      << to_ascii(getParam("type")) << endl;
+				      << to_ascii(getParam("type")) << endl;
 		if (!floats.typeExist(to_ascii(getParam("type"))))
 			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
 	} else
@@ -99,7 +99,7 @@ void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 
 
 int InsetFloatList::latex(Buffer const & buf, odocstream & os,
-                          OutputParams const &) const
+			  OutputParams const &) const
 {
 	FloatList const & floats = buf.params().getTextClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
@@ -129,7 +129,7 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
-                              OutputParams const &) const
+			      OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

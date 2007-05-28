@@ -340,7 +340,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	// background of mathed under focus is not painted because
 	// selection at the top level of nested inset is difficult to handle.
 	if (!editing(pi.base.bv))
-		pi.pain.fillRectangle(x + 1, y - ascent() + 1, width() - 2, 
+		pi.pain.fillRectangle(x + 1, y - ascent() + 1, width() - 2,
 				ascent() + descent() - 1, Color::mathbg);
 
 	if (use_preview_) {
@@ -1328,7 +1328,7 @@ void InsetMathHull::edit(Cursor & cur, bool left)
 	left ? idxFirst(cur) : idxLast(cur);
 	// The inset formula dimension is not necessarily the same as the
 	// one of the instant preview image, so we have to indicate to the
-	// BufferView that a metrics update is needed. 
+	// BufferView that a metrics update is needed.
 	cur.updateFlags(Update::Force);
 }
 
@@ -1446,7 +1446,7 @@ void InsetMathHull::read(Buffer const &, Lexer & lex)
 
 
 int InsetMathHull::plaintext(Buffer const &, odocstream & os,
-                             OutputParams const &) const
+			     OutputParams const &) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -1471,7 +1471,7 @@ int InsetMathHull::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
-                           OutputParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	MathStream ms(os);
 	int res = 0;

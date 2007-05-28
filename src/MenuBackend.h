@@ -111,7 +111,7 @@ public:
 	/// returns the status of the lfun associated with this entry
 	void status(FuncStatus const & status) { status_ = status; }
 	/**
-	 * returns the binding associated to this action. 	 
+	 * returns the binding associated to this action.
 	 * Use the native UI format when \c forgui is true.
 	 */
 	docstring const binding(bool forgui) const;

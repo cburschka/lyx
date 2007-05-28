@@ -858,7 +858,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	bool endsBeforeEndOfPar = (endPos < pars_[endPit].size());
 
 	// first, accept/reject changes within each individual paragraph (do not consider end-of-par)
- 	
+
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
 		pos_type parSize = pars_[pit].size();
 
@@ -872,7 +872,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 			continue;
 
 		// do not consider last paragraph if the cursor ends at pos 0
-		if (pit == endPit && endPos == 0) 
+		if (pit == endPit && endPos == 0)
 			break; // last iteration anyway
 
 		pos_type left  = (pit == begPit ? begPos : 0);
@@ -884,9 +884,9 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 			pars_[pit].rejectChanges(cur.buffer().params(), left, right);
 		}
 	}
-	
+
 	// next, accept/reject imaginary end-of-par characters
- 
+
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
 		pos_type pos = pars_[pit].size();
 
@@ -933,7 +933,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer().params().trackChanges);
 
-	// 
+	//
 
 	finishUndo();
 	cur.clearSelection();
@@ -945,12 +945,12 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 void Text::acceptChanges(BufferParams const & bparams)
 {
- 	pit_type pars_size = static_cast<pit_type>(pars_.size());
+	pit_type pars_size = static_cast<pit_type>(pars_.size());
 
 	// first, accept changes within each individual paragraph
 	// (do not consider end-of-par)
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars_[pit].empty())   // prevent assertion failure 
+		if (!pars_[pit].empty())   // prevent assertion failure
 			pars_[pit].acceptChanges(bparams, 0, pars_[pit].size());
 	}
 
@@ -983,9 +983,9 @@ void Text::rejectChanges(BufferParams const & bparams)
 	pit_type pars_size = static_cast<pit_type>(pars_.size());
 
 	// first, reject changes within each individual paragraph
-	// (do not consider end-of-par) 	
+	// (do not consider end-of-par)
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars_[pit].empty())   // prevent assertion failure 
+		if (!pars_[pit].empty())   // prevent assertion failure
 			pars_[pit].rejectChanges(bparams, 0, pars_[pit].size());
 	}
 
@@ -1102,7 +1102,7 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 		pos_type pos = (pit == begPit ? begPos : 0);
 		right = (pit == endPit ? endPos : parSize);
 
-		// process sequences of modified characters; in change 
+		// process sequences of modified characters; in change
 		// tracking mode, this approach results in much better
 		// usability than changing case on a char-by-char basis
 		docstring changes;
@@ -1240,7 +1240,7 @@ bool Text::erase(Cursor & cur)
 		cur.text()->setCursor(cur.top(), cur.pit(), cur.pos());
 		checkBufferStructure(cur.buffer(), cur);
 	}
-	
+
 	return needsUpdate;
 }
 
@@ -1263,14 +1263,14 @@ bool Text::backspacePos0(Cursor & cur)
 	Paragraph const & prevpar = prevcur.paragraph();
 
 	// is it an empty paragraph?
-	if (cur.lastpos() == 0 
+	if (cur.lastpos() == 0
 	    || (cur.lastpos() == 1 && par.isSeparator(0))) {
 		recordUndo(cur, Undo::ATOMIC, prevcur.pit(), cur.pit());
 		plist.erase(boost::next(plist.begin(), cur.pit()));
 		needsUpdate = true;
 	}
 	// is previous par empty?
-	else if (prevcur.lastpos() == 0 
+	else if (prevcur.lastpos() == 0
 		 || (prevcur.lastpos() == 1 && prevpar.isSeparator(0))) {
 		recordUndo(cur, Undo::ATOMIC, prevcur.pit(), cur.pit());
 		plist.erase(boost::next(plist.begin(), prevcur.pit()));
@@ -1853,7 +1853,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 	// types of insets and take our abbreviation from them.
 	if (name.empty()) {
 		Inset::Code const codes[] = {
-			Inset::FLOAT_CODE, 
+			Inset::FLOAT_CODE,
 			Inset::WRAP_CODE,
 			Inset::FOOT_CODE
 		};
@@ -1865,7 +1865,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 			}
 		}
 	}
-	
+
 	// Create a correct prefix for prettyref
 	if (name == "theorem")
 		name = from_ascii("thm");
@@ -1873,7 +1873,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 		name = from_ascii("fn");
 	else if (name == "listing")
 		name = from_ascii("lst");
-		
+
 	if (!name.empty())
 		text = name.substr(0, 3) + ':' + text;
 
@@ -1916,7 +1916,7 @@ void Text::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
 
 	bool bound = false;
 	int xx = x;
-	pos_type const pos = row.pos() 
+	pos_type const pos = row.pos()
 		+ tm.getColumnNearX(pit, row, xx, bound);
 
 	LYXERR(Debug::DEBUG)
@@ -1943,7 +1943,7 @@ void Text::charsTranspose(Cursor & cur)
 
 	Paragraph & par = cur.paragraph();
 
-	// Get the positions of the characters to be transposed. 
+	// Get the positions of the characters to be transposed.
 	pos_type pos1 = pos - 1;
 	pos_type pos2 = pos;
 
@@ -1966,7 +1966,7 @@ void Text::charsTranspose(Cursor & cur)
 	char_type char1 = par.getChar(pos1);
 	Font const font1 =
 		par.getFontSettings(cur.buffer().params(), pos1);
-	
+
 	char_type char2 = par.getChar(pos2);
 	Font const font2 =
 		par.getFontSettings(cur.buffer().params(), pos2);

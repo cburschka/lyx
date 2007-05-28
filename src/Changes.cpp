@@ -37,7 +37,7 @@ using std::max;
  * When merging two adjacent changes, the changetime is not considered,
  * only the equality of the change type and author is checked (in method
  * isSimilarTo(...)). If two changes are in fact merged (in method merge()),
- * the later change time is preserved. 
+ * the later change time is preserved.
  */
 
 bool Change::isSimilarTo(Change const & change)
@@ -64,7 +64,7 @@ bool operator==(Change const & l, Change const & r)
 	if (l.type == Change::UNCHANGED) {
 		return true;
 	}
-	
+
 	return l.author == r.author &&
 	       l.changetime == r.changetime;
 }
@@ -222,7 +222,7 @@ void Changes::insert(Change const & change, lyx::pos_type pos)
 Change const & Changes::lookup(pos_type const pos) const
 {
 	static Change const noChange = Change(Change::UNCHANGED);
-		
+
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator const end = table_.end();
 
@@ -282,7 +282,7 @@ void Changes::merge()
 
 			(it + 1)->range.start = it->range.start;
 			(it + 1)->change.changetime = max(it->change.changetime,
-			                                  (it + 1)->change.changetime);
+							  (it + 1)->change.changetime);
 			table_.erase(it);
 			// start again
 			it = table_.begin();
@@ -314,7 +314,7 @@ int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
 	if (change.type == Change::DELETED) {
 		docstring str = "\\lyxdeleted{" +
 			bparams.authors().get(change.author).name() + "}{" +
-			chgTime + "}{"; 
+			chgTime + "}{";
 		os << str;
 		column += str.size();
 	} else if (change.type == Change::INSERTED) {

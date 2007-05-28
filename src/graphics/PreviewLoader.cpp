@@ -761,4 +761,3 @@ void PreviewLoader::Impl::dumpData(odocstream & os,
 
 } // namespace graphics
 } // namespace lyx
-

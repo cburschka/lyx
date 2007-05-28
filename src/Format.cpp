@@ -97,7 +97,7 @@ bool operator<(Format const & a, Format const & b)
 
 Format::Format(string const & n, string const & e, string const & p,
 	       string const & s, string const & v, string const & ed,
-               int flags)
+	       int flags)
 	: name_(n), extension_(e), prettyname_(p), shortcut_(s), viewer_(v),
 	  editor_(ed), flags_(flags)
 {}
@@ -220,15 +220,15 @@ void Formats::add(string const & name)
 
 void Formats::add(string const & name, string const & extension,
 		  string const & prettyname, string const & shortcut,
-                  string const & viewer, string const & editor,
-                  int flags)
+		  string const & viewer, string const & editor,
+		  int flags)
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			FormatNamesEqual(name));
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extension, prettyname,
-		                            shortcut, viewer, editor, flags));
+					    shortcut, viewer, editor, flags));
 	else
 		*it = Format(name, extension, prettyname, shortcut, viewer,
 			     editor, flags);

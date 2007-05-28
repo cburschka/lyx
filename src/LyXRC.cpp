@@ -1086,7 +1086,7 @@ int LyXRC::read(Lexer & lexrc)
 				}
 			} else {
 				formats.add(format, extension, prettyname,
-				            shortcut, viewer, editor, flgs);
+					    shortcut, viewer, editor, flgs);
 			}
 			break;
 		}

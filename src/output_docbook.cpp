@@ -319,7 +319,7 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 		const_cast<OutputParams&>(runparams).par_begin = 0;
 		const_cast<OutputParams&>(runparams).par_end = 0;
 	}
-	
+
 	while (par != pend) {
 		Layout_ptr const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;

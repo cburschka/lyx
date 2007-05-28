@@ -64,7 +64,7 @@ docstring const GuiClipboard::getAsText() const
 	QString const str = qApp->clipboard()->text(QClipboard::Clipboard)
 				.normalized(QString::NormalizationForm_KC);
 	LYXERR(Debug::ACTION) << "GuiClipboard::getAsText(): `"
-	                      << fromqstr(str) << "'" << endl;
+			      << fromqstr(str) << "'" << endl;
 	if (str.isNull())
 		return docstring();
 
@@ -75,7 +75,7 @@ docstring const GuiClipboard::getAsText() const
 void GuiClipboard::put(string const & lyx, docstring const & text)
 {
 	LYXERR(Debug::ACTION) << "GuiClipboard::put(`" << lyx << "' `"
-	                      << to_utf8(text) << "')" << endl;
+			      << to_utf8(text) << "')" << endl;
 	// We don't convert the encoding of lyx since the encoding of the
 	// clipboard contents is specified in the data itself
 	QMimeData * data = new QMimeData;

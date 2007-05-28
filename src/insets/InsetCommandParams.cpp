@@ -364,7 +364,7 @@ std::string const InsetCommandParams::getOptions() const
 		if (info_->optional[i])
 			return to_utf8(params_[i]);
 	lyxerr << "Programming error: get nonexisting option in "
-	       << name_ << " inset." << endl;; 
+	       << name_ << " inset." << endl;;
 	return string();
 }
 
@@ -381,7 +381,7 @@ std::string const InsetCommandParams::getSecOptions() const
 		}
 	// Happens in InsetCitation
 	lyxerr << "Programming error: get nonexisting second option in "
-	       << name_ << " inset." << endl;; 
+	       << name_ << " inset." << endl;;
 	return string();
 }
 
@@ -404,7 +404,7 @@ void InsetCommandParams::setOptions(std::string const & o)
 			return;
 		}
 	lyxerr << "Programming error: set nonexisting option in "
-	       << name_ << " inset." << endl;; 
+	       << name_ << " inset." << endl;;
 }
 
 
@@ -422,7 +422,7 @@ void InsetCommandParams::setSecOptions(std::string const & s)
 		}
 	// Happens in InsetCitation
 	lyxerr << "Programming error: set nonexisting second option in "
-	       << name_ << " inset." << endl;; 
+	       << name_ << " inset." << endl;;
 }
 
 

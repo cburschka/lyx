@@ -159,7 +159,7 @@ public:
 	int sshift() const { return sshift_; }
 	/// superscript kerning
 	int kerning() const { return kerning_; }
-	/// 
+	///
 	void swap(MathData & ar) { base_type::swap(ar); }
 
 protected:

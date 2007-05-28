@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /**
  * \file debug.h
- * 
+ *
  * FIXME: It would be nice if, in lyx::use_gui mode, instead of
  * outputting to the console, we would pipe all messages onto a file
  * and visualise the contents dynamically in a Qt window if needed.

@@ -1025,7 +1025,7 @@ void fix_relative_filename(string & name)
 	// FIXME UNICODE encoding of name may be wrong (makeAbsPath expects
 	// utf8)
 	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFilename()),
-			           from_utf8(getParentFilePath())));
+				   from_utf8(getParentFilePath())));
 }
 
 
@@ -1193,7 +1193,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			check_space(p, os, context);
 
 		else if (t.character() == '[' && noweb_mode &&
-		         p.next_token().character() == '[') {
+			 p.next_token().character() == '[') {
 			// These can contain underscores
 			p.putback();
 			string const s = p.getFullOpt() + ']';
@@ -1425,8 +1425,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 			string name = p.get_token().cs();
 			eat_whitespace(p, os, context, false);
-			
-			// parameter text			
+
+			// parameter text
 			bool simple = true;
 			string paramtext;
 			int arity = 0;
@@ -1435,7 +1435,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					// # found
 					p.get_token();
 					paramtext += "#";
-					
+
 					// followed by number?
 					if (p.next_token().cat() == catOther) {
 						char c = p.getChar();
@@ -1452,7 +1452,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					simple = false;
 				}
 			}
-			
+
 			// only output simple (i.e. compatible) macro as FormulaMacros
 			string ert = "\\def\\" + name + ' ' + paramtext + '{' + p.verbatim_item() + '}';
 			if (simple) {
@@ -2155,7 +2155,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "i" || t.cs() == "j" || t.cs() == "l" ||
-		         t.cs() == "L") {
+			 t.cs() == "L") {
 			context.check_layout(os);
 			os << "\\i \\" << t.cs() << "{}\n";
 			skip_braces(p); // eat {}
@@ -2304,7 +2304,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const ert = name + '{' + command + '}' +
 					   opt1 + opt2 +
 					   '{' + p.verbatim_item() + '}';
-			
+
 			if (opt2.empty()) {
 				context.check_layout(os);
 				begin_inset(os, "FormulaMacro");

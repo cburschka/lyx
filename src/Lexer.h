@@ -37,10 +37,10 @@ struct keyword_item {
 };
 
 /** Generalized simple lexical analizer.
-	Use the method isOK() to check if there is still data available 
+	Use the method isOK() to check if there is still data available
 	for lexing. Use one of the the operators void* or ! to test if
 	the last reading operation was successful.
-	
+
 	Example:
 
 	int readParam(LyxLex &lex) {
@@ -51,7 +51,7 @@ struct keyword_item {
 			if (lex) param = p; // only use the input if reading was successful
 		}
 		return param;
-	} 
+	}
 
     @see LyXRC.cpp for an example of usage.
   */
@@ -76,11 +76,11 @@ public:
 
 	/// stream is open and end of stream is not reached
 	/// FIXME: test also if pushTok is not empty
-	/// FIXME: the method should be renamed to something like 
+	/// FIXME: the method should be renamed to something like
 	///        dataAvailable(), in order to reflect the real behavior
 	bool isOK() const;
 	/// FIXME: The next two operators should be replaced by one method
-	///        called e.g. lastReadOk(), in order to reflect the real 
+	///        called e.g. lastReadOk(), in order to reflect the real
 	///        behavior
 	/// last read operation was successful.
 	operator void const *() const;

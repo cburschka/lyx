@@ -110,7 +110,7 @@ bool operator==(Length const & l1, Length const & l2);
 ///
 bool operator!=(Length const & l1, Length const & l2);
 /** Test whether \p data represents a valid length.
- * 
+ *
  * \returns whether \p data is a valid length
  * \param data Length in LyX format. Since the only difference between LyX
  * and LaTeX format is the representation of length variables as units (e.g.

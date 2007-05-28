@@ -182,7 +182,7 @@ void QExternalDialog::bbChanged()
 void QExternalDialog::browseClicked()
 {
 	int const choice =  externalCO->currentIndex();
-	docstring const template_name = 
+	docstring const template_name =
 		from_utf8(form_->controller().getTemplate(choice).lyxName);
 	docstring const str =
 		form_->controller().browse(qstring_to_ucs4(fileED->text()),

@@ -115,7 +115,7 @@ void IconPalette::hideEvent(QHideEvent * event )
 void IconPalette::updateParent()
 {
 	bool enable = false;
-	for (int i = 0; i < actions_.size(); ++i)	
+	for (int i = 0; i < actions_.size(); ++i)
 		if (actions_.at(i)->isEnabled()) {
 			enable = true;
 			break;
@@ -169,7 +169,7 @@ void ButtonMenu::add(QAction * action)
 void ButtonMenu::updateParent()
 {
 	bool enable = false;
-	for (int i = 0; i < actions_.size(); ++i)	
+	for (int i = 0; i < actions_.size(); ++i)
 		if (actions_.at(i)->isEnabled()) {
 			enable = true;
 			break;

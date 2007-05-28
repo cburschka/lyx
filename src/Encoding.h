@@ -38,7 +38,7 @@ public:
 	Encoding() {}
 	///
 	Encoding(std::string const & n, std::string const & l,
-	         std::string const & i, bool f, Package p);
+		 std::string const & i, bool f, Package p);
 	///
 	void init() const;
 	///
@@ -108,7 +108,7 @@ public:
 	/// \param encfile encodings definition file
 	/// \param symbolsfile unicode->LaTeX mapping file
 	void read(support::FileName const & encfile,
-	          support::FileName const & symbolsfile);
+		  support::FileName const & symbolsfile);
 	/// Get encoding from LyX name \p name
 	Encoding const * getFromLyXName(std::string const & name) const;
 	/// Get encoding from LaTeX name \p name

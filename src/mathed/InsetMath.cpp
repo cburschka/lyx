@@ -84,7 +84,7 @@ void InsetMath::write(WriteStream & os) const
 
 
 int InsetMath::plaintext(Buffer const &, odocstream &,
-                         OutputParams const &) const
+			 OutputParams const &) const
 {
 	// all math plain text output shall take place in InsetMathHull
 	BOOST_ASSERT(false);
@@ -128,8 +128,8 @@ void InsetMath::mathematica(MathematicaStream & os) const
 
 void InsetMath::mathmlize(MathStream & os) const
 {
-        NormalStream ns(os.os());
-        normalize(ns);
+	NormalStream ns(os.os());
+	normalize(ns);
 }
 
 

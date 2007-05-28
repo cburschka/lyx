@@ -204,7 +204,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetVSpace::latex(Buffer const & buf, odocstream & os,
-                       OutputParams const &) const
+		       OutputParams const &) const
 {
 	os << from_ascii(space_.asLatexCommand(buf.params())) << '\n';
 	return 1;
@@ -212,7 +212,7 @@ int InsetVSpace::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetVSpace::plaintext(Buffer const &, odocstream & os,
-                           OutputParams const &) const
+			   OutputParams const &) const
 {
 	os << "\n\n";
 	return PLAINTEXT_NEWLINE;
@@ -220,7 +220,7 @@ int InsetVSpace::plaintext(Buffer const &, odocstream & os,
 
 
 int InsetVSpace::docbook(Buffer const &, odocstream & os,
-                         OutputParams const &) const
+			 OutputParams const &) const
 {
 	os << '\n';
 	return 1;

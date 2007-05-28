@@ -94,7 +94,7 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	Length const & len, Length::UNIT defaultUnit) 
+	Length const & len, Length::UNIT defaultUnit)
 {
 	combo->setCurrentItem(Length(len).unit());
 	input->setText(toqstr(convert<string>(Length(len).value())));
@@ -118,10 +118,10 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 }
 
 
-void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo, 
+void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
 	Length const & len, Length::UNIT defaultUnit)
 {
-	if (len.value() == 0) 
+	if (len.value() == 0)
 		lengthToWidgets(input, combo, "auto", defaultUnit);
 	else
 		lengthToWidgets(input, combo, len, defaultUnit);
@@ -130,15 +130,15 @@ void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
 
 //NOTE "CB" here because we probably will want one of these
 //for labeled sets, as well.
-void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit, 
-	LengthCombo * lengthCombo) 
+void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
+	LengthCombo * lengthCombo)
 {
-	if (!checkBox->isChecked()) 
+	if (!checkBox->isChecked())
 		lengthToWidgets(lineEdit, lengthCombo,
-		                "auto", lengthCombo->currentLengthItem());
+				"auto", lengthCombo->currentLengthItem());
 	else if (lineEdit->text() == "auto")
 		lengthToWidgets(lineEdit, lengthCombo, string(),
-		                lengthCombo->currentLengthItem());
+				lengthCombo->currentLengthItem());
 }
 
 

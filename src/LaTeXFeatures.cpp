@@ -489,7 +489,7 @@ string const LaTeXFeatures::getPackages() const
 	// shadecolor for shaded
 	if (mustProvide("framed") && mustProvide("color")) {
 		RGBColor c = RGBColor(lcolor.getX11Name(Color::shadedbg));
-		packages << "\\definecolor{shadecolor}{rgb}{" 
+		packages << "\\definecolor{shadecolor}{rgb}{"
 			<< c.r/255 << ',' << c.g/255 << ',' << c.b/255 << "}\n";
 	}
 
@@ -523,13 +523,13 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// amssymb.sty
-	if (mustProvide("amssymb") 
+	if (mustProvide("amssymb")
 	    || params_.use_amsmath == BufferParams::package_on)
 		packages << "\\usepackage{amssymb}\n";
 
 	// esint must be after amsmath and wasysym, since it will redeclare
 	// inconsistent integral symbols
-	if (mustProvide("esint") 
+	if (mustProvide("esint")
 	    && params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
 
@@ -568,15 +568,15 @@ string const LaTeXFeatures::getPackages() const
 		// but don't use the compatibility option since it is
 		// incompatible to other packages.
 		packages << "\\usepackage{nomencl}\n"
-	                    "% the following is useful when we have the old nomencl.sty package\n"
-	                    "\\providecommand{\\printnomenclature}{\\printglossary}\n"
-	                    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
-		            "\\makenomenclature\n";
+			    "% the following is useful when we have the old nomencl.sty package\n"
+			    "\\providecommand{\\printnomenclature}{\\printglossary}\n"
+			    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
+			    "\\makenomenclature\n";
 	}
 
 	if (mustProvide("listings"))
 		packages << "\\usepackage{listings}\n";
- 
+
 	return packages.str();
 }
 
@@ -653,11 +653,11 @@ string const LaTeXFeatures::getMacros() const
 	}
 	if (mustProvide("ct-xcolor-soul")) {
 		RGBColor cadd = RGBColor(lcolor.getX11Name(Color::addedtext));
-		macros << "\\providecolor{lyxadded}{rgb}{" 
+		macros << "\\providecolor{lyxadded}{rgb}{"
 		       << cadd.r/255 << ',' << cadd.g/255 << ',' << cadd.b/255 << "}\n";
 
 		RGBColor cdel = RGBColor(lcolor.getX11Name(Color::deletedtext));
-		macros << "\\providecolor{lyxdeleted}{rgb}{" 
+		macros << "\\providecolor{lyxdeleted}{rgb}{"
 		       << cdel.r/255 << ',' << cdel.g/255 << ',' << cdel.b/255 << "}\n";
 
 		macros << "\\newcommand{\\lyxadded}[3]{\\color{lyxadded}{#3}}\n"

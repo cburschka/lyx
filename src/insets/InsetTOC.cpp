@@ -57,7 +57,7 @@ Inset::Code InsetTOC::lyxCode() const
 
 
 int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
-                        OutputParams const &) const
+			OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
@@ -68,7 +68,7 @@ int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 
 
 int InsetTOC::docbook(Buffer const &, odocstream & os,
-                      OutputParams const &) const
+		      OutputParams const &) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";

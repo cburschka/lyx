@@ -149,7 +149,7 @@ char_type QKeySymbol::getUCSEncoded() const
 				<< text_[i].unicode() << endl;
 		}
 	}
-	
+
 	// Only one UCS4 character at the end.
 	docstring ucs4_text = qstring_to_ucs4(text_);
 	return ucs4_text[0];
@@ -166,10 +166,10 @@ docstring const QKeySymbol::print(key_modifier::state mod, bool forgui) const
 		tmpkey += Qt::CTRL;
 	if (mod & key_modifier::alt)
 		tmpkey += Qt::ALT;
-	
+
 	QKeySequence seq(tmpkey);
 
-	return qstring_to_ucs4(seq.toString(forgui ? QKeySequence::NativeText 
+	return qstring_to_ucs4(seq.toString(forgui ? QKeySequence::NativeText
 					    : QKeySequence::PortableText));
 }
 

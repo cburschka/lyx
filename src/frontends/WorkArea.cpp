@@ -138,7 +138,7 @@ void WorkArea::redraw()
 		return;
 	}
 
-	// No need to do anything if this is the current view. The BufferView 
+	// No need to do anything if this is the current view. The BufferView
 	// metrics are already up to date.
 	if (&lyx_view_ != theApp()->currentView()) {
 		// FIXME: it would be nice to optimize for the off-screen case.
@@ -208,7 +208,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.
-	if (!(cmd.action == LFUN_MOUSE_MOTION 
+	if (!(cmd.action == LFUN_MOUSE_MOTION
 		&& cmd.button() == mouse_button::none))
 		stopBlinkingCursor();
 
@@ -216,7 +216,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 
 	if (needRedraw)
 		redraw();
-	
+
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
 		lyx_view_.updateLayoutChoice();
@@ -225,7 +225,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 	}
 
 	// GUI tweaks except with mouse motion with no button pressed.
-	if (!(cmd.action == LFUN_MOUSE_MOTION 
+	if (!(cmd.action == LFUN_MOUSE_MOTION
 		&& cmd.button() == mouse_button::none)) {
 		// Slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
@@ -251,7 +251,7 @@ void WorkArea::resizeBufferView()
 
 void WorkArea::updateScrollbar()
 {
-	buffer_view_->updateScrollbar(); 
+	buffer_view_->updateScrollbar();
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
 	setScrollbarParams(scroll_.height, scroll_.position,
 		scroll_.lineScrollHeight);

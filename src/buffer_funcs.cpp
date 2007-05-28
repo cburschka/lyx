@@ -377,7 +377,7 @@ void setCaptionLabels(Inset & inset, string const & type,
 			setCaptionLabels(icap, type, label, counters);
 			if (icap.lyxCode() == Inset::CAPTION_CODE) {
 				// We found a caption!
-				counters.step(counter); 
+				counters.step(counter);
 				int number = counters.value(counter);
 				InsetCaption & ic = static_cast<InsetCaption &>(icap);
 				ic.setType(type);
@@ -400,7 +400,7 @@ void setCaptions(Paragraph & par, TextClass const & textclass)
 	InsetList::iterator end = par.insetlist.end();
 	for (; it != end; ++it) {
 		Inset & inset = *it->inset;
-		if (inset.lyxCode() == Inset::FLOAT_CODE 
+		if (inset.lyxCode() == Inset::FLOAT_CODE
 			|| inset.lyxCode() == Inset::WRAP_CODE) {
 			docstring const name = inset.name();
 			if (name.empty())

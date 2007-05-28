@@ -72,7 +72,7 @@ struct ScrollbarParameters
  * is a sliding window of the entire document rendering.
  * It is the official interface between the LyX core and
  * the frontend WorkArea.
- * 
+ *
  * \sa WorkArea
  * \sa Buffer
  * \sa CoordCache

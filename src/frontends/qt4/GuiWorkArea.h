@@ -165,7 +165,7 @@ private:
 	///
 	double_click dc_event_;
 
-	///	
+	///
 	CursorWidget * cursor_;
 	///
 	void updateScreen();

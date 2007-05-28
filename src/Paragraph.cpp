@@ -176,21 +176,21 @@ public:
 	/// Output the surrogate pair formed by \p c and \p next to \p os.
 	/// \return the number of characters written.
 	int latexSurrogatePair(odocstream & os, value_type c, value_type next,
-	                       Encoding const &);
+			       Encoding const &);
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
 	/// \return whether a surrogate pair was output.
 	bool simpleTeXBlanks(Encoding const &,
-	                     odocstream &, TexRow & texrow,
+			     odocstream &, TexRow & texrow,
 			     pos_type & i,
 			     unsigned int & column,
 			     Font const & font,
 			     Layout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
-	                           odocstream &,
-	                           TexRow & texrow, OutputParams const &,
-	                           Font & running_font,
+				   odocstream &,
+				   TexRow & texrow, OutputParams const &,
+				   Font & running_font,
 				   Font & basefont,
 				   Font const & outerfont,
 				   bool & open_font,
@@ -445,7 +445,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 
 	// Update the font table.
 	FontTable search_font(pos, Font());
-	for (FontList::iterator it 
+	for (FontList::iterator it
 	      = lower_bound(fontlist.begin(), fontlist.end(), search_font, matchFT());
 	     it != fontlist.end(); ++it)
 	{
@@ -458,7 +458,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 
 
 void Paragraph::Pimpl::insertInset(pos_type pos, Inset * inset,
-                                   Change const & change)
+				   Change const & change)
 {
 	BOOST_ASSERT(inset);
 	BOOST_ASSERT(pos >= 0 && pos <= size());
@@ -480,7 +480,7 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 	if (trackChanges) {
 		Change change = changes_.lookup(pos);
 
-		// set the character to DELETED if 
+		// set the character to DELETED if
 		//  a) it was previously unchanged or
 		//  b) it was inserted by a co-author
 
@@ -580,8 +580,8 @@ int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
 
 
 bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
-                                       odocstream & os, TexRow & texrow,
-                                       pos_type & i,
+				       odocstream & os, TexRow & texrow,
+				       pos_type & i,
 				       unsigned int & column,
 				       Font const & font,
 				       Layout const & style)
@@ -1204,7 +1204,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 
 
 void Paragraph::insert(pos_type start, docstring const & str,
-                       Font const & font, Change const & change)
+		       Font const & font, Change const & change)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
 		insertChar(start + i, str[i], font, change);
@@ -1212,24 +1212,24 @@ void Paragraph::insert(pos_type start, docstring const & str,
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-                           bool trackChanges)
+			   bool trackChanges)
 {
 	pimpl_->insertChar(pos, c, Change(trackChanges ?
-	                   Change::INSERTED : Change::UNCHANGED));
+			   Change::INSERTED : Change::UNCHANGED));
 }
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-                           Font const & font, bool trackChanges)
+			   Font const & font, bool trackChanges)
 {
 	pimpl_->insertChar(pos, c, Change(trackChanges ?
-	                   Change::INSERTED : Change::UNCHANGED));
+			   Change::INSERTED : Change::UNCHANGED));
 	setFont(pos, font);
 }
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-                           Font const & font, Change const & change)
+			   Font const & font, Change const & change)
 {
 	pimpl_->insertChar(pos, c, change);
 	setFont(pos, font);
@@ -1237,14 +1237,14 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 
 
 void Paragraph::insertInset(pos_type pos, Inset * inset,
-                            Change const & change)
+			    Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 }
 
 
 void Paragraph::insertInset(pos_type pos, Inset * inset,
-                            Font const & font, Change const & change)
+			    Font const & font, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 	setFont(pos, font);
@@ -1765,7 +1765,7 @@ void adjust_row_column(string const & str, TexRow & texrow, int & column)
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
-                                 odocstream & os, TexRow & texrow, 
+				 odocstream & os, TexRow & texrow,
 				 bool moving_arg) const
 {
 	int column = 0;
@@ -1829,8 +1829,8 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 
 
 // This could go to ParagraphParameters if we want to
-int Paragraph::endTeXParParams(BufferParams const & bparams,  
-                               odocstream & os, TexRow & texrow,
+int Paragraph::endTeXParParams(BufferParams const & bparams,
+			       odocstream & os, TexRow & texrow,
 			       bool moving_arg) const
 {
 	int column = 0;
@@ -1982,7 +1982,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			}
 
 			if (!asdefault)
-				column += startTeXParParams(bparams, os, 
+				column += startTeXParParams(bparams, os,
 							    texrow,
 							    runparams.moving_arg);
 		}
@@ -2009,7 +2009,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		}
 
 		++column;
-		
+
 		value_type const c = getChar(i);
 
 		// Fully instantiated font
@@ -2047,8 +2047,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			i != body_pos - 1)
 		{
 			column += font.latexWriteStartChanges(os, bparams,
-			                                      runparams, basefont,
-			                                      last_font);
+							      runparams, basefont,
+							      last_font);
 			running_font = font;
 			open_font = true;
 		}
@@ -2114,7 +2114,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	}
 
 	if (!asdefault) {
-		column += endTeXParParams(bparams, os, texrow, 
+		column += endTeXParParams(bparams, os, texrow,
 					  runparams.moving_arg);
 	}
 
@@ -2220,7 +2220,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 			if (c == ' ')
 				break;
 			os << sgml::escapeChar(c);
- 		}
+		}
 	}
 	return i;
 }
@@ -2280,9 +2280,9 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			value_type c = getChar(i);
 
 			if (style->pass_thru)
-                                os.put(c);
+				os.put(c);
 			else
-                                os << sgml::escapeChar(c);
+				os << sgml::escapeChar(c);
 		}
 		font_old = font;
 	}
@@ -2595,7 +2595,7 @@ bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
 int Paragraph::checkBiblio(bool track_changes)
 {
 	//FIXME From JS:
-	//This is getting more and more a mess. ...We really should clean 
+	//This is getting more and more a mess. ...We really should clean
 	//up this bibitem issue for 1.6. See also bug 2743.
 
 	// Add bibitem insets if necessary
@@ -2633,18 +2633,18 @@ int Paragraph::checkBiblio(bool track_changes)
 	//have to erase one.
 	if (hasbibitem && erasedInsetPosition < 0)
 			return 0;
-	
-	//There was an InsetBibitem at the beginning and we did have to 
+
+	//There was an InsetBibitem at the beginning and we did have to
 	//erase one. So we give its properties to the beginning inset.
 	if (hasbibitem) {
-		InsetBibitem * inset = 
+		InsetBibitem * inset =
 			static_cast<InsetBibitem *>(insetlist.begin()->inset);
 		if (!oldkey.empty())
 			inset->setParam("key", oldkey);
 		inset->setParam("label", oldlabel);
 		return -erasedInsetPosition;
 	}
-	
+
 	//There was no inset at the beginning, so we need to create one with
 	//the key and label of the one we erased.
 	InsetBibitem * inset(new InsetBibitem(InsetCommandParams("bibitem")));

@@ -46,7 +46,7 @@ void Toolbars::initFlags(ToolbarInfo & tbinfo)
 
 	unsigned int flags = static_cast<unsigned int>(tbinfo.flags);
 
-	// Remove default.ui positions. Only when a valid postion is stored 
+	// Remove default.ui positions. Only when a valid postion is stored
 	// in the session file the default.ui value will be overwritten
 	unsigned int save = flags;
 	TurnOffFlag(TOP);
@@ -86,16 +86,16 @@ void Toolbars::initFlags(ToolbarInfo & tbinfo)
 	}
 	/*
 	std::cout << "State " << info.state << " FLAGS: " << flags
-		<< " ON:" << (flags & ToolbarBackend::ON) 
+		<< " ON:" << (flags & ToolbarBackend::ON)
 		<< " OFF:" << (flags & ToolbarBackend::OFF)
-		<< " L:" << (flags & ToolbarBackend::LEFT) 
-		<< " R:" << (flags & ToolbarBackend::RIGHT) 
-		<< " T:" << (flags & ToolbarBackend::TOP) 
-		<< " B:" << (flags & ToolbarBackend::BOTTOM) 
-		<< " MA:" << (flags & ToolbarBackend::MATH) 
-		<< " RE:" << (flags & ToolbarBackend::REVIEW) 
-		<< " TB:" << (flags & ToolbarBackend::TABLE) 
-		<< " AU:" << (flags & ToolbarBackend::AUTO) 
+		<< " L:" << (flags & ToolbarBackend::LEFT)
+		<< " R:" << (flags & ToolbarBackend::RIGHT)
+		<< " T:" << (flags & ToolbarBackend::TOP)
+		<< " B:" << (flags & ToolbarBackend::BOTTOM)
+		<< " MA:" << (flags & ToolbarBackend::MATH)
+		<< " RE:" << (flags & ToolbarBackend::REVIEW)
+		<< " TB:" << (flags & ToolbarBackend::TABLE)
+		<< " AU:" << (flags & ToolbarBackend::AUTO)
 		<< std::endl;
 	*/
 	// now set the flags
@@ -170,7 +170,7 @@ void Toolbars::display(string const & name, bool show)
 
 
 ToolbarInfo::Flags Toolbars::getToolbarState(string const & name)
-{	
+{
 	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
 

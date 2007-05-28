@@ -33,10 +33,10 @@ public:
 	DisplayType display() const { return AlignCenter; }
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 private:
 	virtual std::auto_ptr<Inset> doClone() const;
 };

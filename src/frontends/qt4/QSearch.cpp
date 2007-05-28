@@ -173,4 +173,3 @@ void QSearch::replace(docstring const & findstr, docstring const & replacestr,
 
 
 #include "QSearch_moc.cpp"
-

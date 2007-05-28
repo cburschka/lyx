@@ -46,7 +46,7 @@ public:
 	void write(WriteStream & os) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 
 	/// Number of arguments
 	int numargs() const;

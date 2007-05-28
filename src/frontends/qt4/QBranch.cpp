@@ -40,7 +40,7 @@ QBranchDialog::QBranchDialog(QBranch * form)
 		form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect(branchCO, SIGNAL( activated(int) ), 
+	connect(branchCO, SIGNAL( activated(int) ),
 		this, SLOT( change_adaptor() ) );
 }
 

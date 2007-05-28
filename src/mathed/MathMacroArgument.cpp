@@ -32,7 +32,7 @@ MathMacroArgument::MathMacroArgument(size_t n)
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << endl;
 	}
-	// The profiler tells us not to use 
+	// The profiler tells us not to use
 	// str_ = '#' + convert<docstring>(n);
 	// so we do the conversion of n to ASCII manually.
 	// This works because 1 <= n <= 9.

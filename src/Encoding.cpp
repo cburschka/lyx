@@ -131,7 +131,7 @@ char_type const max_ucs4 = 0x110000;
 
 
 Encoding::Encoding(string const & n, string const & l, string const & i,
-                   bool f, Encoding::Package p)
+		   bool f, Encoding::Package p)
 	: Name_(n), LatexName_(l), iconvName_(i), fixedwidth_(f), package_(p)
 {
 	if (n == "ascii") {
@@ -241,10 +241,10 @@ bool Encodings::isComposeChar_hebrew(char_type c)
 bool Encodings::is_arabic_special(char_type c)
 {
 	return (c >= 0x0621 && c <= 0x0625) ||
-	        c == 0x0627 || c == 0x0629  ||
-	        c == 0x062f || c == 0x0648  ||
+		c == 0x0627 || c == 0x0629  ||
+		c == 0x062f || c == 0x0648  ||
 	       (c >= 0x0630 && c <= 0x0632) ||
-	        c == 0x0649;
+		c == 0x0649;
 }
 
 
@@ -356,8 +356,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				info.force = true;
 			else
 				lyxerr << "Ignoring unknown flag `" << flag
-				       << "' for symbol `0x" 
-				       << std::hex << symbol << std::dec 
+				       << "' for symbol `0x"
+				       << std::hex << symbol << std::dec
 				       << "'." << endl;
 		}
 
@@ -405,7 +405,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				fixedwidth = false;
 			else
 				lex.printError("Encodings::read: "
-				               "Unknown width: `$$Token'");
+					       "Unknown width: `$$Token'");
 			lex.next();
 			string const p = lex.getString();
 			Encoding::Package package;
@@ -417,11 +417,11 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				package = Encoding::CJK;
 			else
 				lex.printError("Encodings::read: "
-				               "Unknown package: `$$Token'");
+					       "Unknown package: `$$Token'");
 			LYXERR(Debug::INFO) << "Reading encoding " << name << endl;
 			encodinglist[name] = Encoding(name, latexname,
-			                              iconvname, fixedwidth,
-			                              package);
+						      iconvname, fixedwidth,
+						      package);
 			if (lex.lex() != et_end)
 				lex.printError("Encodings::read: "
 					       "missing end");

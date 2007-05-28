@@ -47,7 +47,7 @@ public:
 			in_cd_ = iconv_open(ucs4_codeset, encoding.c_str());
 			if (in_cd_ == (iconv_t)(-1)) {
 				fprintf(stderr, "Error %d returned from iconv_open(in_cd_): %s\n",
-				        errno, strerror(errno));
+					errno, strerror(errno));
 				fflush(stderr);
 				throw lyx::iconv_codecvt_facet_exception();
 			}
@@ -57,7 +57,7 @@ public:
 			out_cd_ = iconv_open(encoding.c_str(), ucs4_codeset);
 			if (out_cd_ == (iconv_t)(-1)) {
 				fprintf(stderr, "Error %d returned from iconv_open(out_cd_): %s\n",
-				        errno, strerror(errno));
+					errno, strerror(errno));
 				fflush(stderr);
 				throw lyx::iconv_codecvt_facet_exception();
 			}
@@ -70,13 +70,13 @@ protected:
 		if (in_cd_ != (iconv_t)(-1))
 			if (iconv_close(in_cd_) == -1) {
 				fprintf(stderr, "Error %d returned from iconv_close(in_cd_): %s\n",
-				        errno, strerror(errno));
+					errno, strerror(errno));
 				fflush(stderr);
 			}
 		if (out_cd_ != (iconv_t)(-1))
 			if (iconv_close(out_cd_) == -1) {
 				fprintf(stderr, "Error %d returned from iconv_close(out_cd_): %s\n",
-				        errno, strerror(errno));
+					errno, strerror(errno));
 				fflush(stderr);
 			}
 	}
@@ -94,9 +94,9 @@ protected:
 				&inbytesleft, &to_next, &outbytesleft);
 		if (retval == base::error) {
 			fprintf(stderr,
-			        "Error %d returned from iconv when converting from %s to %s: %s\n",
-			        errno, ucs4_codeset, encoding_.c_str(),
-			        strerror(errno));
+				"Error %d returned from iconv when converting from %s to %s: %s\n",
+				errno, ucs4_codeset, encoding_.c_str(),
+				strerror(errno));
 			fputs("Converted input:", stderr);
 			for (intern_type const * i = from; i < from_next; ++i) {
 				unsigned int const c = *i;
@@ -144,9 +144,9 @@ protected:
 				&outbytesleft);
 		if (retval == base::error) {
 			fprintf(stderr,
-			        "Error %d returned from iconv when converting from %s to %s: %s\n",
-			        errno, encoding_.c_str(), ucs4_codeset,
-			        strerror(errno));
+				"Error %d returned from iconv when converting from %s to %s: %s\n",
+				errno, encoding_.c_str(), ucs4_codeset,
+				strerror(errno));
 			fputs("Converted input:", stderr);
 			for (extern_type const * i = from; i < from_next; ++i) {
 				// extern_type may be signed, avoid output of
@@ -262,9 +262,9 @@ idocfstream::idocfstream(string const & encoding) : base()
 	imbue(locale);
 }
 
-	
+
 idocfstream::idocfstream(const char* s, std::ios_base::openmode mode,
-                         string const & encoding)
+			 string const & encoding)
 	: base()
 {
 	// We must imbue the stream before openening the file
@@ -284,7 +284,7 @@ odocfstream::odocfstream(string const & encoding) : base()
 
 
 odocfstream::odocfstream(const char* s, std::ios_base::openmode mode,
-                         string const & encoding)
+			 string const & encoding)
 	: base()
 {
 	// We must imbue the stream before openening the file

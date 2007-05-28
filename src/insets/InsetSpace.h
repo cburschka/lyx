@@ -65,13 +65,13 @@ public:
 	void read(Buffer const &, Lexer & lex);
 	///
 	int latex(Buffer const &, odocstream &,
-	          OutputParams const &) const;
+		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-	            OutputParams const &) const;
+		    OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;

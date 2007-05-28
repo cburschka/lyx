@@ -395,7 +395,7 @@ private:
 	    \return \c false if method fails.
 	*/
 	ReadStatus readFile(Lexer &, support::FileName const & filename,
-	                    bool fromString = false);
+			    bool fromString = false);
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

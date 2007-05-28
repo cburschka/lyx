@@ -32,7 +32,7 @@ using boost::shared_ptr;
 namespace
 {
 	template<class T>
-	void updateIds(std::map<int, T*> const & stdmap, std::vector<int> & ids) 
+	void updateIds(std::map<int, T*> const & stdmap, std::vector<int> & ids)
 	{
 		ids.clear();
 		typename std::map<int, T*>::const_iterator it;
@@ -103,7 +103,7 @@ bool GuiImplementation::closeAllViews()
 		// TODO: return false when close event was ignored
 		//       e.g. quitWriteAll()->'Cancel'
 		//       maybe we need something like 'bool closeView()'
-		it->second->close(); 
+		it->second->close();
 		// unregisterd by the CloseEvent
 	}
 

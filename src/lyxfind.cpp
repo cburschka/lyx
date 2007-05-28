@@ -134,7 +134,7 @@ bool searchAllowed(BufferView * bv, docstring const & str)
 {
 	if (str.empty()) {
 		frontend::Alert::error(_("Search error"),
-		                            _("Search string is empty"));
+					    _("Search string is empty"));
 		return false;
 	}
 	return bv->buffer();
@@ -184,8 +184,8 @@ int replaceAll(BufferView * bv,
 		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,
 							    buf.params().trackChanges);
 		cur.paragraph().insert(pos, replacestr, font,
-		                       Change(buf.params().trackChanges ?
-		                              Change::INSERTED : Change::UNCHANGED));
+				       Change(buf.params().trackChanges ?
+					      Change::INSERTED : Change::UNCHANGED));
 		for (int i = 0; i < rsize + striked; ++i)
 			cur.forwardChar();
 		++num;
@@ -357,7 +357,7 @@ bool findNextChange(BufferView * bv)
 	}
 
 	// avoid crash (assertion violation) if the imaginary end-of-par
-	// character of the last paragraph of the document is marked as changed 
+	// character of the last paragraph of the document is marked as changed
 	if (cur == et) {
 		cur = ok;
 	}

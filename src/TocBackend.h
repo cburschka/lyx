@@ -58,7 +58,7 @@ public:
 
 	/// the action corresponding to the goTo above
 	FuncRequest action() const;
-	
+
 protected:
 	/// Current position of item.
 	ParConstIterator par_it_;
@@ -114,7 +114,7 @@ public:
 	void writePlaintextTocList(std::string const & type, odocstream & os) const;
 
 private:
-	/// 
+	///
 	TocList tocs_;
 	///
 	Buffer const * buffer_;

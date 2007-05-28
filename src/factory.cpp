@@ -264,7 +264,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				InsetCollapsable::CollapseStatus st;
 				InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
 				return new InsetERT(params, st);
-			
+
 			} else if (name == "listings") {
 				InsetListingsParams par;
 				InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);

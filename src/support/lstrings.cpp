@@ -714,7 +714,7 @@ string const rsplit(string const & a, string & piece, char delim)
 docstring const escape(docstring const & lab)
 {
 	char_type hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
-	                           '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+				   '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	docstring enc;
 	for (docstring::size_type i = 0; i < lab.length(); ++i) {
 		char_type c = lab[i];
@@ -779,14 +779,14 @@ getVectorFromStringT(String const & str, String const & delim)
 
 
 vector<string> const getVectorFromString(string const & str,
-                                         string const & delim)
+					 string const & delim)
 {
 	return getVectorFromStringT<string>(str, delim);
 }
 
 
 vector<docstring> const getVectorFromString(docstring const & str,
-                                            docstring const & delim)
+					    docstring const & delim)
 {
 	return getVectorFromStringT<docstring>(str, delim);
 }

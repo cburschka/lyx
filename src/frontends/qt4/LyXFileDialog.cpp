@@ -85,4 +85,3 @@ void LyXFileDialog::buttonClicked()
 } // namespace lyx
 
 #include "LyXFileDialog_moc.cpp"
-

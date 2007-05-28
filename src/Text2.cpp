@@ -271,7 +271,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt)
 {
 	BOOST_ASSERT(!pars_[pit].isInset(pos) ||
-	             !pars_[pit].getInset(pos)->noFontChange());
+		     !pars_[pit].getInset(pos)->noFontChange());
 
 	Font font = fnt;
 	Layout_ptr const & layout = pars_[pit].layout();
@@ -314,7 +314,7 @@ void Text::setInsetFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(pars_[pit].isInset(pos) &&
-	             pars_[pit].getInset(pos)->noFontChange());
+		     pars_[pit].getInset(pos)->noFontChange());
 
 	Inset * const inset = pars_[pit].getInset(pos);
 	DocIterator dit = doc_iterator_begin(*inset);
@@ -489,7 +489,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	// And resolve it completely
 	real_current_font.realize(layoutfont);
 
-	// if there is no selection that's all we need to do 
+	// if there is no selection that's all we need to do
 	if (!cur.selection())
 		return;
 
@@ -497,7 +497,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	recordUndoSelection(cur);
 
 	setFont(cur.buffer(), cur.selectionBegin(), cur.selectionEnd(), font,
-	        toggleall);
+		toggleall);
 }
 
 
@@ -674,9 +674,9 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
-	cur.paragraph().insertInset(cur.pos(), inset, 
+	cur.paragraph().insertInset(cur.pos(), inset,
 				    Change(cur.buffer().params().trackChanges ?
-				    	   Change::INSERTED : Change::UNCHANGED));
+					   Change::INSERTED : Change::UNCHANGED));
 }
 
 
@@ -767,7 +767,7 @@ void Text::setCurrentFont(Cursor & cur)
 
 	if (cur.boundary() && pos > 0 && pos < cur.lastpos()) {
 		--pos;
-		// We may have just moved to the previous row --- 
+		// We may have just moved to the previous row ---
 		// we're going to be needing its bidi tables!
 		bidi.computeTables(par, cur.buffer(), cur.textRow());
 	}
@@ -967,7 +967,7 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 	 * from which we are entering. Otherwise, cursor placement goes awry,
 	 * and when we exit from the beginning, we'll be placed *after* the
 	 * inset.
-	 */ 
+	 */
 	if (!front)
 		--cur.pos();
 	inset->edit(cur, front);
@@ -988,21 +988,21 @@ bool Text::cursorLeft(Cursor & cur)
 		// If checkAndActivateInset returns true, that means that
 		// the cursor was placed inside it, so we're done
 		if (!checkAndActivateInset(cur, false)) {
-			if (!cur.boundary() && 
-			    cur.textRow().pos() == cur.pos() 
+			if (!cur.boundary() &&
+			    cur.textRow().pos() == cur.pos()
 			    // FIXME: the following two conditions are copied
 			    // from cursorRight; however, isLineSeparator()
 			    // is definitely wrong here, isNewline I'm not sure
 			    // about. I'm leaving them as comments for now,
 			    // until we understand why they should or shouldn't
 			    // be here.
-			    /*&& 
+			    /*&&
 			    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
 			    !cur.paragraph().isNewline(cur.pos() - 1)*/) {
-				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(), 
+				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(),
 										  true, true);
 			}
-			updateNeeded |= setCursor(cur, cur.pit(),cur.pos() - 1, 
+			updateNeeded |= setCursor(cur, cur.pit(),cur.pos() - 1,
 									  true, false);
 		}
 		return updateNeeded;
@@ -1027,7 +1027,7 @@ bool Text::cursorRight(Cursor & cur)
 					 true, false);
 
 		bool updateNeeded = false;
-		// If checkAndActivateInset returns true, that means that 
+		// If checkAndActivateInset returns true, that means that
 		// the cursor was placed inside it, so we're done
 		if (!checkAndActivateInset(cur, true)) {
 			if (cur.textRow().endpos() == cur.pos() + 1 &&
@@ -1065,9 +1065,9 @@ bool Text::cursorUp(Cursor & cur)
 	cur.setTargetX();
 	// We want to keep the x-target on subsequent up movements
 	// that cross beyond the end of short lines. Thus a special
-	// handling when the cursor is at the end of line: Use the new 
+	// handling when the cursor is at the end of line: Use the new
 	// x-target only if the old one was before the end of line.
-	if (cur.pos() != pm.rows()[row].endpos() 
+	if (cur.pos() != pm.rows()[row].endpos()
 		|| (!isWithinRtlParagraph(cur) && x < cur.targetX())
 		|| (isWithinRtlParagraph(cur) && x > cur.targetX())) {
 
@@ -1132,9 +1132,9 @@ bool Text::cursorDown(Cursor & cur)
 	cur.setTargetX();
 	// We want to keep the x-target on subsequent down movements
 	// that cross beyond the end of short lines. Thus a special
-	// handling when the cursor is at the end of line: Use the new 
+	// handling when the cursor is at the end of line: Use the new
 	// x-target only if the old one was before the end of line.
-	if (cur.pos() != pm.rows()[row].endpos() 
+	if (cur.pos() != pm.rows()[row].endpos()
 		|| (!isWithinRtlParagraph(cur) && x < cur.targetX())
 		|| (isWithinRtlParagraph(cur) && x > cur.targetX())) {
 
@@ -1156,7 +1156,7 @@ bool Text::cursorDown(Cursor & cur)
 		Cursor dummy = cur;
 		if (dummy == old)
 			++dummy.pos();
-		
+
 		bool const changed = cur.bv().checkDepm(dummy, old);
 
 		// Make sure that cur gets back whatever happened to dummy(Lgb)
@@ -1350,7 +1350,7 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 		}
 
 		// don't delete anything if this is the only remaining paragraph within the given range
-		// note: Text::acceptOrRejectChanges() sets the cursor to 'first' after calling DEPM 
+		// note: Text::acceptOrRejectChanges() sets the cursor to 'first' after calling DEPM
 		if (first == last)
 			continue;
 

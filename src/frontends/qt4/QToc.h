@@ -40,7 +40,7 @@ public:
 	void update();
 	///
 	bool canOutline(int type) const;
-	
+
 	QStandardItemModel * tocModel(int type);
 	///
 	QModelIndex const getCurrentIndex(int type) const;

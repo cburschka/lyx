@@ -204,7 +204,7 @@ docstring const InsetQuotes::dispString(Language const * loclang) const
 #endif
 	else
 		retdisp = lyx::from_ascii(disp);
-	
+
 	// in french, spaces are added inside double quotes
 	if (times_ == DoubleQ && prefixIs(loclang->code(), "fr")) {
 		if (side_ == LeftQ)
@@ -292,7 +292,7 @@ void InsetQuotes::read(Buffer const &, Lexer & lex)
 
 
 int InsetQuotes::latex(Buffer const &, odocstream & os,
-                       OutputParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
@@ -325,7 +325,7 @@ int InsetQuotes::latex(Buffer const &, odocstream & os,
 
 
 int InsetQuotes::plaintext(Buffer const & buf, odocstream & os,
-                           OutputParams const &) const
+			   OutputParams const &) const
 {
 	docstring const str = dispString(buf.params().language);
 	os << str;
@@ -334,7 +334,7 @@ int InsetQuotes::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetQuotes::docbook(Buffer const &, odocstream & os,
-                         OutputParams const &) const
+			 OutputParams const &) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)

@@ -53,7 +53,7 @@ private:
 	/// Multiple views container.
 	/**
 	* Warning: This must not be a smart pointer as the destruction of the
-	* object is handled by Qt when the view is closed 
+	* object is handled by Qt when the view is closed
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
 	std::map<int, GuiView *> views_;

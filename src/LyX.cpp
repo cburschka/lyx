@@ -108,7 +108,7 @@ using std::system;
 
 
 /// are we using the GUI at all?
-/** 
+/**
 * We default to true and this is changed to false when the export feature is used.
 */
 bool use_gui = true;
@@ -148,7 +148,7 @@ void reconfigureUserLyXDir()
 
 
 /// The main application class private implementation.
-struct LyX::Singletons 
+struct LyX::Singletons
 {
 	Singletons()
 	{
@@ -183,10 +183,10 @@ struct LyX::Singletons
 
 	// The system converters copy after reading lyxrc.defaults.
 	Converters system_converters_;
-	
+
 	///
 	Movers movers_;
-	
+
 	///
 	Movers system_movers_;
 };
@@ -269,14 +269,14 @@ LyXFunc const & LyX::lyxFunc() const
 Server & LyX::server()
 {
 	BOOST_ASSERT(pimpl_->lyx_server_.get());
-	return *pimpl_->lyx_server_.get(); 
+	return *pimpl_->lyx_server_.get();
 }
 
 
-Server const & LyX::server() const 
+Server const & LyX::server() const
 {
 	BOOST_ASSERT(pimpl_->lyx_server_.get());
-	return *pimpl_->lyx_server_.get(); 
+	return *pimpl_->lyx_server_.get();
 }
 
 
@@ -341,7 +341,7 @@ Messages & LyX::getMessages(std::string const & language)
 	if (it != pimpl_->messages_.end())
 		return it->second;
 
-	std::pair<map<string, Messages>::iterator, bool> result = 
+	std::pair<map<string, Messages>::iterator, bool> result =
 			pimpl_->messages_.insert(std::make_pair(language, Messages(language)));
 
 	BOOST_ASSERT(result.second);
@@ -387,8 +387,8 @@ int LyX::exec(int & argc, char * argv[])
 	easyParse(argc, argv);
 
 	try { support::init_package(to_utf8(from_local8bit(argv[0])),
-	                      cl_system_support, cl_user_support,
-	                      support::top_build_dir_is_one_level_up);
+			      cl_system_support, cl_user_support,
+			      support::top_build_dir_is_one_level_up);
 	} catch (support::ExceptionMessage const & message) {
 		if (message.type_ == support::ErrorException) {
 			Alert::error(message.title_, message.details_);
@@ -421,7 +421,7 @@ int LyX::exec(int & argc, char * argv[])
 			Buffer * buf = *I;
 			bool success = false;
 			buf->dispatch(batch_command, &success);
-			final_success |= success;			
+			final_success |= success;
 		}
 		prepareExit();
 		return !final_success;
@@ -456,12 +456,12 @@ int LyX::exec(int & argc, char * argv[])
 	// Note: socket callback must be registered after init(argc, argv)
 	// such that package().temp_dir() is properly initialized.
 	pimpl_->lyx_server_.reset(new Server(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
-	pimpl_->lyx_socket_.reset(new ServerSocket(&pimpl_->lyxfunc_, 
+	pimpl_->lyx_socket_.reset(new ServerSocket(&pimpl_->lyxfunc_,
 			FileName(package().temp_dir().absFilename() + "/lyxsocket")));
 
 	// Start the real execution loop.
 	exit_status = pimpl_->application_->exec();
-	
+
 	prepareExit();
 
 	// Restore original font resources after Application is destroyed.
@@ -680,7 +680,7 @@ LyXView * LyX::newLyXView()
 			posy = convert<int>(val);
 	}
 
-	if (!geometryArg.empty()) 
+	if (!geometryArg.empty())
 	{
 		width = 0;
 		height = 0;
@@ -808,7 +808,7 @@ void LyX::initGuiFont()
 		lyxrc.sans_font_name = pimpl_->application_->sansFontName();
 
 	if (lyxrc.typewriter_font_name.empty())
-		lyxrc.typewriter_font_name 
+		lyxrc.typewriter_font_name
 			= pimpl_->application_->typewriterFontName();
 }
 
@@ -936,8 +936,8 @@ bool LyX::init()
 	}
 
 	LYXERR(Debug::INIT) << "LyX tmp dir: `"
-	                    << package().temp_dir().absFilename()
-	                    << '\'' << endl;
+			    << package().temp_dir().absFilename()
+			    << '\'' << endl;
 
 	LYXERR(Debug::INIT) << "Reading session information '.lyx/session'..." << endl;
 	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
@@ -1170,7 +1170,7 @@ bool LyX::readUIFile(string const & name, bool include)
 
 	LYXERR(Debug::INIT) << "About to read " << name << "..." << endl;
 
-	
+
 	FileName ui_path;
 	if (include) {
 		ui_path = libFileSearch("ui", name, "inc");
@@ -1180,7 +1180,7 @@ bool LyX::readUIFile(string const & name, bool include)
 	}
 	else
 		ui_path = libFileSearch("ui", name, "ui");
-	
+
 	if (ui_path.empty()) {
 		LYXERR(Debug::INIT) << "Could not find " << name << endl;
 		showFileError(name);
@@ -1250,10 +1250,10 @@ bool LyX::readLanguagesFile(string const & name)
 
 // Read the encodings file `name'
 bool LyX::readEncodingsFile(string const & enc_name,
-                            string const & symbols_name)
+			    string const & symbols_name)
 {
 	LYXERR(Debug::INIT) << "About to read " << enc_name << " and "
-	                    << symbols_name << "..." << endl;
+			    << symbols_name << "..." << endl;
 
 	FileName const symbols_path = libFileSearch(string(), symbols_name);
 	if (symbols_path.empty()) {

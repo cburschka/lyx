@@ -124,7 +124,7 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 	docstring const startsWith = from_utf8(
 		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
 	result.second = from_utf8(internal_path(fromqstr(
-		QFileDialog::getOpenFileName(qApp->focusWidget(), 
+		QFileDialog::getOpenFileName(qApp->focusWidget(),
 		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);

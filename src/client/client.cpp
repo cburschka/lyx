@@ -635,4 +635,3 @@ void assertion_failed(char const* a, char const* b, char const* c, long d)
 }
 
 } // namespace boost
-

@@ -126,7 +126,7 @@ bool QCitationDialog::isVisible() const
 {
 	return QDialog::isVisible();
 }
- 
+
 
 void QCitationDialog::on_okPB_clicked()
 {
@@ -159,7 +159,7 @@ void QCitationDialog::on_restorePB_clicked()
 void QCitationDialog::update()
 {
 	if (selectedLV->selectionModel()->selectedIndexes().isEmpty()) {
-		if (availableLV->selectionModel()->selectedIndexes().isEmpty() 
+		if (availableLV->selectionModel()->selectedIndexes().isEmpty()
 			&& availableLV->model()->rowCount() > 0)
 				availableLV->setCurrentIndex(availableLV->model()->index(0,0));
 		updateInfo(availableLV->currentIndex());
@@ -239,7 +239,7 @@ void QCitationDialog::fillStyles()
 
 	QStringList sty = form_->citationStyles(curr);
 
-	bool const basic_engine = 
+	bool const basic_engine =
 		(form_->getEngine() == biblio::ENGINE_BASIC);
 
 	citationStyleCO->setEnabled(!sty.isEmpty() && !basic_engine);
@@ -265,7 +265,7 @@ bool QCitationDialog::isSelected(const QModelIndex & idx)
 void QCitationDialog::setButtons()
 {
 	int const arows = availableLV->model()->rowCount();
-	addPB->setEnabled(arows > 0 && 
+	addPB->setEnabled(arows > 0 &&
 		availableLV->currentIndex().isValid() &&
 		!isSelected(availableLV->currentIndex()));
 
@@ -317,7 +317,7 @@ void QCitationDialog::availableChanged(const QModelIndex & idx, const QModelInde
 {
 	if (!idx.isValid())
 		return;
-		
+
 	selectedLV->selectionModel()->reset();
 	update();
 }
@@ -355,10 +355,10 @@ void QCitationDialog::on_deletePB_clicked()
 {
 	QModelIndex idx = selectedLV->currentIndex();
 	int nrows = selectedLV->model()->rowCount();
-	
+
 	form_->deleteKey(idx);
 
-	if (idx.row() == nrows - 1)	
+	if (idx.row() == nrows - 1)
 		idx = idx.sibling(idx.row() - 1, idx.column());
 
 	if (nrows>1)

@@ -169,11 +169,11 @@ private:
 
 	///
 	bool runMakeIndex(std::string const &, OutputParams const &,
-	                  std::string const & = std::string());
+			  std::string const & = std::string());
 
 	///
 	bool runMakeIndexNomencl(support::FileName const &, OutputParams const &,
-	                         std::string const &, std::string const &);
+				 std::string const &, std::string const &);
 
 	///
 	std::vector<Aux_Info> const scanAuxFiles(support::FileName const &);

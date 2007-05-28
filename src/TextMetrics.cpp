@@ -147,7 +147,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 
 	//lyxerr << "Text::metrics: width: " << mi.base.textwidth
 	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
-	
+
 	bool changed = false;
 
 	unsigned int h = 0;
@@ -190,7 +190,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
-	// FIXME This check ought to be done somewhere else. It is the reason 
+	// FIXME This check ought to be done somewhere else. It is the reason
 	// why text_ is not	const. But then, where else to do it?
 	// Well, how can you end up with either (a) a biblio environment that
 	// has no InsetBibitem or (b) a biblio environment with more than one
@@ -419,7 +419,7 @@ int TextMetrics::labelFill(Paragraph const & par, Row const & row) const
 	if (label.empty())
 		return 0;
 
-	FontMetrics const & fm 
+	FontMetrics const & fm
 		= theFontMetrics(text_->getLabelFont(buffer, par));
 
 	return max(0, fm.width(label) - w);
@@ -782,8 +782,8 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	maxasc  += int(layoutasc  * 2 / (2 + pars[pit].getDepth()));
 	maxdesc += int(layoutdesc * 2 / (2 + pars[pit].getDepth()));
 
-	// FIXME: the correct way is to do the following is to move the 
-	// following code in another method specially tailored for the 
+	// FIXME: the correct way is to do the following is to move the
+	// following code in another method specially tailored for the
 	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
 	if (main_text_) {
@@ -837,7 +837,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
-	frontend::FontMetrics const & fm 
+	frontend::FontMetrics const & fm
 		= theFontMetrics(text_->getLabelFont(buffer, par));
 
 	while (vc < end && tmpx <= x) {

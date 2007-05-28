@@ -326,7 +326,7 @@ docstring Counters::counterLabel(docstring const & format)
 		docstring const numbertype(label, i + 1, j - i - 1);
 		docstring const counter(label, j + 1, k - j - 1);
 		docstring const rep = labelItem(counter, numbertype);
-		label = docstring(label, 0, i) + rep 
+		label = docstring(label, 0, i) + rep
 			+ docstring(label, k + 1, docstring::npos);
 		//lyxerr << "  : " << " (" << counter  << ","
 		//	<< numbertype << ") -> " << label << endl;

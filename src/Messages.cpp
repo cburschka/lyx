@@ -166,7 +166,7 @@ docstring const Messages::get(string const & m) const
 #endif
 	setlocale(LC_CTYPE, oldCTYPE.c_str());
 
-	std::pair<TranslationCache::iterator, bool> result = 
+	std::pair<TranslationCache::iterator, bool> result =
 		cache_.insert(std::make_pair(m, translated));
 
 	BOOST_ASSERT(result.second);
