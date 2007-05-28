@@ -1429,6 +1429,7 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 	//lyxerr << "5 cur after" << dit <<std::endl;
 
 	cursor_.setCursor(dit);
+	cursor_.boundary(cur.boundary());
 	cursor_.clearSelection();
 	finishUndo();
 	return update;
