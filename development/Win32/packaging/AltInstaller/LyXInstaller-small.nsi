@@ -179,6 +179,7 @@ Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 # Languages
 
 !insertmacro MUI_LANGUAGE "English" # first language is the default language
+!insertmacro MUI_LANGUAGE "Czech"
 !insertmacro MUI_LANGUAGE "Danish"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "French"
@@ -195,6 +196,7 @@ Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 !insertmacro MUI_LANGUAGE "Turkish"
 
 !include "lyx_languages\english.nsh"
+!include "lyx_languages\czech.nsh"
 !include "lyx_languages\danish.nsh"
 !include "lyx_languages\dutch.nsh"
 !include "lyx_languages\french.nsh"

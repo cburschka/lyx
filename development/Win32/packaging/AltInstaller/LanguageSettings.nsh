@@ -31,6 +31,7 @@
 #  ${if} ${LangISOCode} = 1028
 #   StrCpy ${LangCdeSys} "zh"
 #   StrCpy ${LangNmeSys} "Chinese"
+#   StrCpy ${LangSysEnc} "936"
 #  ${endif}
 
   ${if} ${LangISOCode} = 1029
@@ -89,6 +90,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1037
+   StrCpy ${LangNme} "Hebrew"
    StrCpy ${LangCdeSys} "he"
    StrCpy ${LangNmeSys} "Hebrew"
    StrCpy ${LangSysEnc} "1255"
@@ -114,16 +116,19 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1041
-#   StrCpy ${LangCdeSys} "ja"
-#   StrCpy ${LangNmeSys} "Japanese"
-#  ${endif}
+  # currently no dictionary available
+  ${if} ${LangISOCode} = 1041
+   StrCpy ${LangNme} "Japanese"
+   StrCpy ${LangCdeSys} "ja"
+   StrCpy ${LangNmeSys} "Japanese"
+   StrCpy ${LangSysEnc} "932"
+  ${endif}
 
 # currently no dictionary available
 #  ${if} ${LangISOCode} = 1042
 #   StrCpy ${LangCdeSys} "ko"
 #   StrCpy ${LangNmeSys} "Korean"
+#   StrCpy ${LangSysEnc} "949"
 #  ${endif}
 
   ${if} ${LangISOCode} = 1043
@@ -271,6 +276,7 @@
 #  ${if} ${LangISOCode} = 2052
 #   StrCpy ${LangCdeSys} "zh"
 #   StrCpy ${LangNmeSys} "Chinese"
+#   StrCpy ${LangSysEnc} "936"
 #  ${endif}
 
   ${if} ${LangISOCode} = 2055
@@ -423,7 +429,8 @@
 
 #------------------------------------------
 
-# Setting LyX's menu language
+# To set later LyX's menu language
+# therefore here are only declared the languages LyX is translated to
 
 !macro GetLangCode LangCde Name LangEnc
 
@@ -467,9 +474,19 @@
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
+  ${if} ${Name} == "Hebrew"
+   StrCpy ${LangCde} "he_IL"
+   StrCpy ${LangEnc} "cp-1255"
+  ${endif}
+  
   ${if} ${Name} == "Italiano"
    StrCpy ${LangCde} "it_IT"
    StrCpy ${LangEnc} "cp-1252"
+  ${endif}
+  
+  ${if} ${Name} == "Japanese"
+   StrCpy ${LangCde} "ja_JP"
+   StrCpy ${LangEnc} "cp-932"
   ${endif}
 
   ${if} ${Name} == "Magyar"
@@ -536,7 +553,7 @@ Function SelectMenuLanguage
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_ui_language.ini"
 
   ${if} $LangName == ""
-   # translate NSIS's language code to the language name ; macro from lyx_utils.nsh
+   # translate NSIS's language code to the language name
    !insertmacro TranslateLangCode $LangName $LangNameSys $LangCodeSys $Language $LangSysEncoding
   ${endif}
 
