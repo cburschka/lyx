@@ -594,7 +594,7 @@ void PreviewLoader::Impl::startLoading()
 	of << "\\batchmode\n";
 	dumpPreamble(of);
 	// handle inputenc etc.
-	of << buffer_.params().writeEncodingPreamble(features, texrow);
+	buffer_.params().writeEncodingPreamble(of, features, texrow);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";

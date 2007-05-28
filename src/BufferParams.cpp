@@ -907,7 +907,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	// handle inputenc etc.
-	os << writeEncodingPreamble(features, texrow);
+	writeEncodingPreamble(os, features, texrow);
 
 	if (!listings_params.empty()) {
 		os << "\\usepackage{listings}\n";
@@ -1369,11 +1369,9 @@ string const BufferParams::babelCall(string const & lang_opts) const
 }
 
 
-docstring const BufferParams::writeEncodingPreamble(LaTeXFeatures & features,
-			      TexRow & texrow) const
+void BufferParams::writeEncodingPreamble(odocstream & os,
+		LaTeXFeatures & features, TexRow & texrow) const
 {
-	odocstringstream os;
-
 	if (inputenc == "auto") {
 		string const doc_encoding =
 			language->encoding()->latexName();
@@ -1429,8 +1427,6 @@ docstring const BufferParams::writeEncodingPreamble(LaTeXFeatures & features,
 		os << "\\usepackage{armtex}\n";
 		texrow.newline();
 	}
-
-	return os.str();
 }
 
 

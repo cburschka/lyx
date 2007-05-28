@@ -254,7 +254,7 @@ public:
 	/// set up if and how babel is called
 	std::string const babelCall(std::string const & lang_opts) const;
 	/// handle inputenc etc.
-	docstring const writeEncodingPreamble(LaTeXFeatures & features,
+	void writeEncodingPreamble(odocstream & os, LaTeXFeatures & features,
 					      TexRow & texrow) const;
 	/// set up the document fonts
 	std::string const loadFonts(std::string const & rm,
