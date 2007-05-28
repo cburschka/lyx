@@ -243,8 +243,14 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		QViewSource * qvs = new QViewSource(*dialog);
 		dialog->setController(qvs);
 		GuiView & gui_view = static_cast<GuiView &>(lyxview_);
+#ifdef Q_WS_MACX
+		// Mac uses a drawer that should be on the right.
+		dialog->setView(new DockView<QViewSource, QViewSourceDialog>(
+			*dialog, qvs, &gui_view, _("LaTeX Source")));
+#else
 		dialog->setView(new DockView<QViewSource, QViewSourceDialog>(
 			*dialog, qvs, &gui_view, _("LaTeX Source"), Qt::BottomDockWidgetArea));
+#endif
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "mathdelimiter") {
 		dialog->setController(new ControlMath(*dialog));
