@@ -388,6 +388,7 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 namespace {
 
 char const * simplefeatures[] = {
+// note that the package order here will be the same in the LaTeX-output
 	"array",
 	"verbatim",
 	"longtable",
@@ -410,6 +411,8 @@ char const * simplefeatures[] = {
 	"soul",
 	"textcomp",
 	"xcolor",
+	"wasysym",
+	"pmboxdraw",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

@@ -963,13 +963,18 @@
 0x20a3 "\\textfrenchfranc"        "textcomp" "" # FRENCH FRANC SIGN
 0x20a4 "\\textlira"               "textcomp" "" # LIRA SIGN
 0x20a6 "\\textnaira"              "textcomp" "" # NAIRA SIGN
+#0x20a7 ""                         "" "" # PESETA SIGN
 0x20a9 "\\textwon"                "textcomp" "" # WON SIGN
+#0x20aa ""                         "" "" # NEW SHEQEL SIGN
 0x20ab "\\textdong"               "textcomp" "" # DONG SIGN
 0x20ac "\\texteuro"               "textcomp" "" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "" # PESO SIGN
 0x20b2 "\\textguarani"            "textcomp" "" # GUARANI SIGN
 # letterlike symbols
 0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
+# following macro for the CARE OF character taken from tugboat
+0x2105 "\\lyxcareof" "\\newcommand{\\lyxcareof}{\\leavevmode\\hbox{\\raise.75ex\\hbox{c}\\kern-.15em/\\kern-.125em\\smash{\\lower.3ex\\hbox{o}}}\\ignorespaces}" ""
+0x2113 "\\ensuremath{\\ell}"                  "" "" # SCRIPT SMALL L
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
 0x211e "\\textrecipe"             "textcomp" "" # PRESCRIPTION TAKE
@@ -983,20 +988,155 @@
 0x2191 "\\textuparrow"            "textcomp" "" # UPWARDS ARROW
 0x2192 "\\textrightarrow"         "textcomp" "" # RIGHTWARDS ARROW
 0x2193 "\\textdownarrow"          "textcomp" "" # DOWNWARDS ARROW
+0x2194 "\\ensuremath{\\leftrightarrow}" "" "" # LEFT RIGHT ARROW
+0x2195 "\\ensuremath{\\updownarrow}" "" "" # UP DOWN ARROW
 # math symbols
+# besides textcomp only those used in Windows standard fonts
+0x2202 "\\ensuremath{\\partial}"  "" "" # PARTIAL DIFFERENTIAL
+0x2206 "\\ensuremath{\\Delta}"    "" "" # INCREMENT
+0x220f "\\ensuremath{\\prod}"     "" "" # N-ARY PRODUCT
+0x2211 "\\ensuremath{\\sum}"      "" "" # N-ARY SUMMATION
 0x2212 "\\textminus"              "textcomp" "" # MINUS SIGN
+0x2215 "\\ensuremath{\\slash}"    "" "" # DIVISION SLASH
 0x2217 "\\textasteriskcentered"   "textcomp" "" # ASTERISK OPERATOR
+0x2219 "\\ensuremath{\\centerdot}" "amssymb" "" # BULLET OPERATOR
 0x221a "\\textsurd"               "textcomp" "" # SQUARE ROOT
+0x221e "\\ensuremath{\\infty}"    "" "" # INFINITY
+#0x221f ""                         "" "" # RIGHT ANGLE
+0x2229 "\\ensuremath{\\bigcap}"   "" "" # INTERSECTION
+0x222b "\\ensuremath{\\int}"      "" "" # INTEGRAL
+0x2248 "\\ensuremath{\\approx}"   "" "" # ALMOST EQUAL TO
+0x2260 "\\ensuremath{\\neq}"      "" "" # NOT EQUAL TO
+0x2261 "\\ensuremath{\\equiv}"    "" "" # IDENTICAL TO
+0x2264 "\\ensuremath{\\le}"       "" "" # LESS-THAN OR EQUAL TO
+0x2265 "\\ensuremath{\\ge}"       "" "" # GREATER-THAN OR EQUAL TO
+# miscellaneous technical
+#0x2302 ""                         "" "" # HOUSE
+0x2310 "\\ensuremath{\\invneg}"   "wasysym" "" # REVERSED NOT SIGN
+#0x2320 ""                         "" "" # TOP HALF INTEGRAL
+#0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
 # control pictures
 0x2422 "\\textblank"              "textcomp" "" # BLANK SYMBOL
 0x2423 "\\textvisiblespace"       "textcomp" "" # OPEN BOX
+# box drawing
+0x2500 "\\textSFx"                "pmboxdraw" "" # BOX DRAWINGS LIGHT HORIZONTAL
+0x2502 "\\textSFxi"               "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL
+0x250c "\\textSFi"                "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN AND RIGHT
+0x2510 "\\textSFiii"              "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN AND LEFT
+0x2514 "\\textSFii"               "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND RIGHT
+0x2518 "\\textSFiv"               "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND LEFT
+0x251c "\\textSFviii"             "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL AND RIGHT
+0x2524 "\\textSFix"               "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL AND LEFT
+0x252c "\\textSFvi"               "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN AND HORIZONTAL
+0x2534 "\\textSFvii"              "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND HORIZONTAL
+0x253c "\\textSFv"                "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL
+0x2550 "\\textSFxliii"            "pmboxdraw" "" # BOX DRAWINGS DOUBLE HORIZONTAL
+0x2551 "\\textSFxxiv"             "pmboxdraw" "" # BOX DRAWINGS DOUBLE VERTICAL
+0x2552 "\\textSFli"               "pmboxdraw" "" # BOX DRAWINGS DOWN SINGLE AND RIGHT DOUBLE
+0x2553 "\\textSFlii"              "pmboxdraw" "" # BOX DRAWINGS DOWN DOUBLE AND RIGHT SINGLE
+0x2554 "\\textSFxxxix"            "pmboxdraw" "" # BOX DRAWINGS DOUBLE DOWN AND RIGHT
+0x2555 "\\textSFxxii"             "pmboxdraw" "" # BOX DRAWINGS DOWN SINGLE AND LEFT DOUBLE
+0x2556 "\\textSFxxi"              "pmboxdraw" "" # BOX DRAWINGS DOWN DOUBLE AND LEFT SINGLE
+0x2557 "\\textSFxxv"              "pmboxdraw" "" # BOX DRAWINGS DOUBLE DOWN AND LEFT
+0x2558 "\\textSFl"                "pmboxdraw" "" # BOX DRAWINGS UP SINGLE AND RIGHT DOUBLE
+0x2559 "\\textSFxlix"             "pmboxdraw" "" # BOX DRAWINGS UP DOUBLE AND RIGHT SINGLE
+0x255a "\\textSFxxxviii"          "pmboxdraw" "" # BOX DRAWINGS DOUBLE UP AND RIGHT
+0x255b "\\textSFxxviii"           "pmboxdraw" "" # BOX DRAWINGS UP SINGLE AND LEFT DOUBLE
+0x255c "\\textSFxxvii"            "pmboxdraw" "" # BOX DRAWINGS UP DOUBLE AND LEFT SINGLE
+0x255d "\\textSFxxvi"             "pmboxdraw" "" # BOX DRAWINGS DOUBLE UP AND LEFT
+0x255e "\\textSFxxxvi"            "pmboxdraw" "" # BOX DRAWINGS VERTICAL SINGLE AND RIGHT DOUBLE
+0x255f "\\textSFxxxvii"           "pmboxdraw" "" # BOX DRAWINGS VERTICAL DOUBLE AND RIGHT SINGLE
+0x2560 "\\textSFxlii"             "pmboxdraw" "" # BOX DRAWINGS DOUBLE VERTICAL AND RIGHT
+0x2561 "\\textSFxix"              "pmboxdraw" "" # BOX DRAWINGS VERTICAL SINGLE AND LEFT DOUBLE
+0x2562 "\\textSFxx"               "pmboxdraw" "" # BOX DRAWINGS VERTICAL DOUBLE AND LEFT SINGLE
+0x2563 "\\textSFxxiii"            "pmboxdraw" "" # BOX DRAWINGS DOUBLE VERTICAL AND LEFT
+0x2564 "\\textSFxlvii"            "pmboxdraw" "" # BOX DRAWINGS DOWN SINGLE AND HORIZONTAL DOUBLE
+0x2565 "\\textSFxlviii"           "pmboxdraw" "" # BOX DRAWINGS DOWN DOUBLE AND HORIZONTAL SINGLE
+0x2566 "\\textSFxli"              "pmboxdraw" "" # BOX DRAWINGS DOUBLE DOWN AND HORIZONTAL
+0x2567 "\\textSFxlv"              "pmboxdraw" "" # BOX DRAWINGS UP SINGLE AND HORIZONTAL DOUBLE
+0x2568 "\\textSFxlvi"             "pmboxdraw" "" # BOX DRAWINGS UP DOUBLE AND HORIZONTAL SINGLE
+0x2569 "\\textSFxl"               "pmboxdraw" "" # BOX DRAWINGS DOUBLE UP AND HORIZONTAL
+0x256a "\\textSFliv"              "pmboxdraw" "" # BOX DRAWINGS VERTICAL SINGLE AND HORIZONTAL DOUBLE
+0x256b "\\textSFliii"             "pmboxdraw" "" # BOX DRAWINGS VERTICAL DOUBLE AND HORIZONTAL SINGLE
+0x256c "\\textSFxliv"             "pmboxdraw" "" # BOX DRAWINGS DOUBLE VERTICAL AND HORIZONTAL
+# block elements
+0x2580 "\\textupblock"            "pmboxdraw" "" # UPPER HALF BLOCK
+0x2584 "\\textdnblock"            "pmboxdraw" "" # LOWER HALF BLOCK
+0x2588 "\\textblock"              "pmboxdraw" "" # FULL BLOCK
+0x258c "\\textlfblock"            "pmboxdraw" "" # LEFT HALF BLOCK
+0x2590 "\\textrtblock"            "pmboxdraw" "" # RIGHT HALF BLOCK
+0x2591 "\\textltshade"            "pmboxdraw" "" # LIGHT SHADE
+0x2592 "\\textshade"              "pmboxdraw" "" # MEDIUM SHADE
+0x2593 "\\textdkshade"            "pmboxdraw" "" # DARK SHADE
 # geometric shapes
+0x25a0 "\\ensuremath{\\blacksquare}" "amssymb" "" # BLACK SQUARE
+0x25a1 "\\ensuremath{\\square}"   "amssymb" "" # WHITE SQUARE
+#0x25aa ""                         "" "" # BLACK SMALL SQUARE
+#0x25ab ""                         "" "" # WHITE SMALL SQUARE
+#0x25ac ""                         "" "" # BLACK RECTANGLE
+0x25b2 "\\UParrow"                "wasysym" "" # BLACK UP-POINTING TRIANGLE
+0x25ba "\\RIGHTarrow"             "wasysym" "" # BLACK RIGHT-POINTING POINTER
+0x25bc "\\DOWNarrow"              "wasysym" "" # BLACK DOWN-POINTING TRIANGLE
+0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
+0x25ca "\\ensuremath{\\lozenge}"  "amssymb" "" # LOZENGE
+0x25cb "\\Circle"                 "wasysym" "" # CIRCLE
+0x25cf "\\CIRCLE"                 "wasysym" "" # BLACK CIRCLE
+0x25d0 "\\LEFTcircle"             "wasysym" "" # CIRCLE WITH LEFT HALF BLACK
+0x25d1 "\\RIGHTcircle"            "wasysym" "" # CIRCLE WITH RIGHT HALF BLACK
+0x25d6 "\\LEFTCIRCLE"             "wasysym" "" # LEFT HALF BLACK CIRCLE
+0x25d7 "\\RIGHTCIRCLE"            "wasysym" "" # RIGHT HALF BLACK CIRCLE
+#0x25d8 ""                         "" "" # INVERSE BULLET
+#0x25d9 ""                         "" "" # INVERSE WHITE CIRCLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
 0x25ef "\\textbigcircle"          "textcomp" "" # LARGE CIRCLE
 # miscellaneous symbols
-0x266a "\\textmusicalnote"        "textcomp" "" # EIGHT NOTE
+0x2610 "\\Square"                 "wasysym" "" # BALLOT BOX
+0x2611 "\\CheckedBox"             "wasysym" "" # BALLOT BOX WITH CHECK
+0x2612 "\\XBox"                   "wasysym" "" # BALLOT BOX WITH X
+0x2639 "\\frownie"                "wasysym" "" # WHITE FROWNING FACE
+0x263a "\\smiley"                 "wasysym" "" # WHITE SMILING FACE
+0x263b "\\blacksmiley"            "wasysym" "" # BLACK SMILING FACE
+0x263c "\\sun"                    "wasysym" "" # WHITE SUN WITH RAYS
+0x263d "\\rightmoon"              "wasysym" "" # FIRST QUARTER MOON
+0x263e "\\leftmoon"               "wasysym" "" # LAST QUARTER MOON
+0x263f "\\mercury"                "wasysym" "" # MERCURY
+0x2640 "\\female"                 "wasysym" "" # FEMALE SIGN
+0x2641 "\\earth"                  "wasysym" "" # EARTH
+0x2642 "\\male"                   "wasysym" "" # MALE SIGN
+0x2643 "\\jupiter"                "wasysym" "" # JUPITER
+0x2644 "\\saturn"                 "wasysym" "" # SATURN
+0x2645 "\\uranus"                 "wasysym" "" # URANUS
+0x2646 "\\neptune"                "wasysym" "" # NEPTUNE
+0x2647 "\\pluto"                  "wasysym" "" # PLUTO
+0x2648 "\\aries"                  "wasysym" "" # ARIES
+0x2649 "\\taurus"                 "wasysym" "" # TAURUS
+0x264a "\\gemini"                 "wasysym" "" # GEMINI
+0x264b "\\cancer"                 "wasysym" "" # CANCER
+0x264c "\\leo"                    "wasysym" "" # LEO
+0x264d "\\virgo"                  "wasysym" "" # VIRGO
+0x264e "\\libra"                  "wasysym" "" # LIBRA
+0x264f "\\scorpio"                "wasysym" "" # SCORPIO
+0x2650 "\\sagittarius"            "wasysym" "" # SAGITTARIUS
+0x2651 "\\capricornus"            "wasysym" "" # CAPRICORNUS
+0x2652 "\\aquarius"               "wasysym" "" # AQUARIUS
+0x2653 "\\pisces"                 "wasysym" "" # PISCES
+0x2660 "\\ensuremath{\\spadesuit}" "" "" # BLACK SPADE SUIT
+0x2661 "\\ensuremath{\\heartsuit}" "" "" # WHITE HEART SUIT
+0x2662 "\\ensuremath{\\diamondsuit}" "" "" # WHITE DIAMOND SUIT
+0x2663 "\\ensuremath{\\clubsuit}" "" "" # BLACK CLUB SUIT
+#0x2664 ""                         "" "" # WHITE SPADE SUIT
+#0x2665 ""                         "" "" # BLACK HEART SUIT
+#0x2666 ""                         "" "" # BLACK DIAMOND SUIT
+#0x2667 ""                         "" "" # WHITE CLUB SUIT
+0x2669 "\\quarternote"            "wasysym" "" # QUARTER NOTE
+0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
+0x266b "\\twonotes"               "wasysym" "" # BEAMED EIGHTH NOTES
 0x26ad "\\textmarried"            "textcomp" "" # MARRIAGE SYMBOL
 0x26ae "\\textdivorced"           "textcomp" "" # DIVORCE SYMBOL
+# dingbats
+0x2713 "\\checked"                "wasysym" "" # CHECK MARK
+0x2720 "\\ensuremath{\\maltese}"  "amssymb" "" # MALTESE CROSS
+0x2721 "\\davidsstar"             "wasysym" "" # STAR OF DAVID
 # miscellaneous mathematical symbols-A
 0x27e8 "\\textlangle"             "textcomp" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" # MATHEMATICAL RIGHT ANGLE BRACKET
