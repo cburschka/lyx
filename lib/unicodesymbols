@@ -943,6 +943,7 @@
 0x2020 "\\dag"                    "" "" # DAGGER
 0x2021 "\\ddag"                   "" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" # BULLET
+0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET
 0x2026 "\\ldots"                  "" "" # HORIZONTAL ELLIPSIS
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
@@ -972,8 +973,8 @@
 0x20b2 "\\textguarani"            "textcomp" "" # GUARANI SIGN
 # letterlike symbols
 0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
-# following macro for the CARE OF character taken from tugboat
-0x2105 "\\lyxcareof" "\\newcommand{\\lyxcareof}{\\leavevmode\\hbox{\\raise.75ex\\hbox{c}\\kern-.15em/\\kern-.125em\\smash{\\lower.3ex\\hbox{o}}}\\ignorespaces}" ""
+# use the following macro for the character CARE OF
+0x2105 "\\lyxcareof" "\\newcommand*\\lyxcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
 0x2113 "\\ensuremath{\\ell}"                  "" "" # SCRIPT SMALL L
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
@@ -983,6 +984,7 @@
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" # INVERTED OHM SIGN
 0x212e "\\textestimated"          "textcomp" "" # ESTIMATED SYMBOL
+0x2139 "\\Info"                   "marvosym" "" # INFORMATION SOURCE
 # arrows
 0x2190 "\\textleftarrow"          "textcomp" "" # LEFTWARDS ARROW
 0x2191 "\\textuparrow"            "textcomp" "" # UPWARDS ARROW
@@ -990,6 +992,8 @@
 0x2193 "\\textdownarrow"          "textcomp" "" # DOWNWARDS ARROW
 0x2194 "\\ensuremath{\\leftrightarrow}" "" "" # LEFT RIGHT ARROW
 0x2195 "\\ensuremath{\\updownarrow}" "" "" # UP DOWN ARROW
+0x212a "K"                        "" "" # KELVIN SIGN
+0x212b "\\AA"                     "" "" # ANGSTROM SIGN
 # math symbols
 # besides textcomp only those used in Windows standard fonts
 0x2202 "\\ensuremath{\\partial}"  "" "" # PARTIAL DIFFERENTIAL
@@ -1013,8 +1017,10 @@
 # miscellaneous technical
 #0x2302 ""                         "" "" # HOUSE
 0x2310 "\\ensuremath{\\invneg}"   "wasysym" "" # REVERSED NOT SIGN
+0x231a "\\Clocklogo"              "marvosym" "" # WATCH
 #0x2320 ""                         "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
+0x2328 "\\Keyboard"               "marvosym" "" # KEYBOARD
 # control pictures
 0x2422 "\\textblank"              "textcomp" "" # BLANK SYMBOL
 0x2423 "\\textvisiblespace"       "textcomp" "" # OPEN BOX
@@ -1069,15 +1075,31 @@
 0x2592 "\\textshade"              "pmboxdraw" "" # MEDIUM SHADE
 0x2593 "\\textdkshade"            "pmboxdraw" "" # DARK SHADE
 # geometric shapes
-0x25a0 "\\ensuremath{\\blacksquare}" "amssymb" "" # BLACK SQUARE
-0x25a1 "\\ensuremath{\\square}"   "amssymb" "" # WHITE SQUARE
-#0x25aa ""                         "" "" # BLACK SMALL SQUARE
-#0x25ab ""                         "" "" # WHITE SMALL SQUARE
+0x25a0 "\\textifsymbol[ifgeo]{80}" "ifsym" "" # BLACK SQUARE
+0x25a1 "\\textifsymbol[ifgeo]{32}" "ifsym" "" # WHITE SQUARE
+0x25aa "\\textifsymbol[ifgeo]{112}" "ifsym" "" # BLACK SMALL SQUARE
+0x25ab "\\textifsymbol[ifgeo]{64}" "ifsym" "" # WHITE SMALL SQUARE
 #0x25ac ""                         "" "" # BLACK RECTANGLE
-0x25b2 "\\UParrow"                "wasysym" "" # BLACK UP-POINTING TRIANGLE
+0x25b2 "\\textifsymbol[ifgeo]{97}" "ifsym" "" # BLACK UP-POINTING TRIANGLE
+0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "" # WHITE UP-POINTING TRIANGLE
+0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "" # BLACK UP-POINTING SMALL TRIANGLE
+0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "" # WHITE UP-POINTING SMALL TRIANGLE
+0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "" # BLACK RIGHT-POINTING TRIANGLE
+0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "" # WHITE RIGHT-POINTING TRIANGLE
+0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # BLACK RIGHT-POINTING SMALL TRIANGLE
+0x25b9 "\\textifsymbol[ifgeo]{68}" "ifsym" "" # WHITE RIGHT-POINTING SMALL TRIANGLE
 0x25ba "\\RIGHTarrow"             "wasysym" "" # BLACK RIGHT-POINTING POINTER
-0x25bc "\\DOWNarrow"              "wasysym" "" # BLACK DOWN-POINTING TRIANGLE
+0x25bc "\\textifsymbol[ifgeo]{99}" "ifsym" "" # BLACK DOWN-POINTING TRIANGLE
+0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "" # WHITE DOWN-POINTING TRIANGLE
+0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "" # BLACK DOWN-POINTING SMALL TRIANGLE
+0x25bf "\\textifsymbol[ifgeo]{67}" "ifsym" "" # WHITE DOWN-POINTING SMALL TRIANGLE
+0x25c0 "\\textifsymbol[ifgeo]{98}" "ifsym" "" # BLACK LEFT-POINTING TRIANGLE
+0x25c1 "\\textifsymbol[ifgeo]{50}" "ifsym" "" # WHITE LEFT-POINTING TRIANGLE
+0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "" # BLACK LEFT-POINTING SMALL TRIANGLE
+0x25c3 "\\textifsymbol[ifgeo]{66}" "ifsym" "" # WHITE LEFT-POINTING SMALL TRIANGLE
 0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
+0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" # BLACK DIAMOND
+0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" # WHITE DIAMOND
 0x25ca "\\ensuremath{\\lozenge}"  "amssymb" "" # LOZENGE
 0x25cb "\\Circle"                 "wasysym" "" # CIRCLE
 0x25cf "\\CIRCLE"                 "wasysym" "" # BLACK CIRCLE
@@ -1089,10 +1111,23 @@
 #0x25d9 ""                         "" "" # INVERSE WHITE CIRCLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
 0x25ef "\\textbigcircle"          "textcomp" "" # LARGE CIRCLE
+0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "" # WHITE MEDIUM SQUARE
+0x25fc "\\textifsymbol[ifgeo]{96}" "ifsym" "" # BLACK MEDIUM SQUARE
 # miscellaneous symbols
+0x2605 "\\FiveStar"               "bbding" "" # BLACK STAR
+0x2606 "\\FiveStarOpen"           "bbding" "" # WHITE STAR
+0x260e "\\Telefon"                "marvosym" "" # BLACK TELEPHON
 0x2610 "\\Square"                 "wasysym" "" # BALLOT BOX
 0x2611 "\\CheckedBox"             "wasysym" "" # BALLOT BOX WITH CHECK
 0x2612 "\\XBox"                   "wasysym" "" # BALLOT BOX WITH X
+0x261a "\\HandCuffLeft"           "bbding" "" # BLACK LEFT POINTING INDEX
+0x261b "\\HandCuffRight"          "bbding" "" # BLACK RIGHT POINTING INDEX
+0x261c "\\HandLeft"               "bbding" "" # WHITE LEFT POINTING INDEX
+0x261e "\\HandRight"              "bbding" "" # WHITE RIGHT POINTING INDEX
+0x2622 "\\Radioactivity"          "marvosym" "" # RADIOACTIVE SIGN
+0x2623 "\\Biohazard"              "marvosym" "" # BIOHAZARD SIGN
+0x2625 "\\Ankh"                   "marvosym" "" # ANKH
+0x262f "\\Yinyang"                "marvosym" "" # YIN YANG
 0x2639 "\\frownie"                "wasysym" "" # WHITE FROWNING FACE
 0x263a "\\smiley"                 "wasysym" "" # WHITE SMILING FACE
 0x263b "\\blacksmiley"            "wasysym" "" # BLACK SMILING FACE
@@ -1124,19 +1159,117 @@
 0x2661 "\\ensuremath{\\heartsuit}" "" "" # WHITE HEART SUIT
 0x2662 "\\ensuremath{\\diamondsuit}" "" "" # WHITE DIAMOND SUIT
 0x2663 "\\ensuremath{\\clubsuit}" "" "" # BLACK CLUB SUIT
-#0x2664 ""                         "" "" # WHITE SPADE SUIT
-#0x2665 ""                         "" "" # BLACK HEART SUIT
-#0x2666 ""                         "" "" # BLACK DIAMOND SUIT
-#0x2667 ""                         "" "" # WHITE CLUB SUIT
+0x2664 "\\ensuremath{\\varspadesuit}" "txfonts" "" # WHITE SPADE SUIT
+0x2665 "\\ensuremath{\\varheartsuit}" "txfonts" "" # BLACK HEART SUIT
+0x2666 "\\ensuremath{\\vardiamondsuit}" "txfonts" "" # BLACK DIAMOND SUIT
+0x2667 "\\ensuremath{\\varclubsuit}" "txfonts" "" # WHITE CLUB SUIT
 0x2669 "\\quarternote"            "wasysym" "" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
 0x266b "\\twonotes"               "wasysym" "" # BEAMED EIGHTH NOTES
+0x26a2 "\\FemaleFemale"           "marvosym" "" # DOUBLED FEMALE SIGN
+0x26a3 "\\MaleMale"               "marvosym" "" # DOUBLED MALE SIGN
+0x26a4 "\\FemaleMale"             "marvosym" "" # INTERLOCKED FEMALE AND MALE SIGN
+0x26a5 "\\Hermaphrodite"          "marvosym" "" # MALE AND FEMALE SIGN
 0x26ad "\\textmarried"            "textcomp" "" # MARRIAGE SYMBOL
 0x26ae "\\textdivorced"           "textcomp" "" # DIVORCE SYMBOL
 # dingbats
-0x2713 "\\checked"                "wasysym" "" # CHECK MARK
-0x2720 "\\ensuremath{\\maltese}"  "amssymb" "" # MALTESE CROSS
-0x2721 "\\davidsstar"             "wasysym" "" # STAR OF DAVID
+0x2701 "\\ScissorRightBrokenBottom" "bbding" "" # UPPER BLADE SCISSORS
+0x2702 "\\ScissorRight"           "bbding" "" # BLACK SCISSORS
+0x2703 "\\ScissorRightBrokenTop"  "bbding" "" # LOWER BLADE SCISSORS
+0x2704 "\\ScissorHollowRight"     "bbding" "" # WHITE SCISSORS
+0x2709 "\\Letter"                 "marvosym" "" # ENVELOPE
+0x270d "\\HandPencilLeft"         "bbding" "" # WRITING HAND
+0x270e "\\PencilRightDown"        "bbding" "" # LOWER RIGHT PENCIL
+0x270f "\\PencilRight"            "bbding" "" # PENCIL
+0x2710 "\\PencilRightUp"          "bbding" "" # UPPER RIGHT PENCIL
+0x2711 "\\NibRight"               "bbding" "" # WHITE NIB
+0x2712 "\\NibSolidRight"          "bbding" "" # BLACK NIB
+0x2713 "\\Checkmark"              "bbding" "" # CHECK MARK
+0x2714 "\\CheckmarkBold"          "bbding" "" # HEAVY CHECK MARK
+0x2715 "\\XSolid"                 "bbding" "" # MULTIPLICATION X
+0x2716 "\\XSolidBold"             "bbding" "" # HEAVY MULTIPLICATION X
+0x2717 "\\XSolidBrush"            "bbding" "" # BALLOT X
+0x2719 "\\PlusOutline"            "bbding" "" # OUTLINED GREEK CROSS
+0x271a "\\Plus"                   "bbding" "" # HEAVY GREEK CROSS
+0x271b "\\PlusThinCenterOpen"     "bbding" "" # OPEN CENTRE CROSS
+0x271c "\\PlusCenterOpen"         "bbding" "" # HEAVY OPEN CENTRE CROSS
+0x271d "\\Cross"                  "bbding" "" # LATIN CROSS
+0x271e "\\CrossOpenShadow"        "bbding" "" # SHADOWED WHITE LATIN CROSS
+0x271f "\\CrossOutline"           "bbding" "" # OUTLINED LATIN CROSS
+0x2720 "\\CrossMaltese"           "bbding" "" # MALTESE CROSS
+0x2721 "\\DavidStar"              "bbding" "" # STAR OF DAVID
+0x2722 "\\FourAsterisk"           "bbding" "" # too lazy to add the follwing unicode names
+0x2723 "\\JackStar"               "bbding" "" # 
+0x2724 "\\JackStarBold"           "bbding" "" # 
+#0x2725 ""                         "" "" # 
+0x2726 "\\FourStar"               "bbding" "" # 
+0x2727 "\\FourStarOpen"           "bbding" "" # 
+#0x2728 ""                         "" "" # 
+#0x2729 ""                         "" "" # 
+0x272a "\\FiveStarOpenCircled"    "bbding" "" # 
+0x272b "\\FiveStarCenterOpen"     "bbding" "" # 
+0x272c "\\FiveStarOpenDotted"     "bbding" "" # 
+0x272d "\\FiveStarOutline"        "bbding" "" # 
+0x272e "\\FiveStarOutlineHeavy"   "bbding" "" # 
+0x272f "\\FiveStarConvex"         "bbding" "" # 
+0x2730 "\\FiveStarShadow"         "bbding" "" # 
+0x2731 "\\AsteriskBold"           "bbding" "" # 
+0x2732 "\\AsteriskCenterOpen"     "bbding" "" # 
+#0x2733 ""                         "" "" # 
+0x2734 "\\EightStarTaper"         "bbding" "" # 
+0x2735 "\\EightStarConvex"        "bbding" "" # 
+0x2736 "\\SixStar"                "bbding" "" # 
+0x2737 "\\EightStar"              "bbding" "" # 
+0x2738 "\\EightStarBold"          "bbding" "" # 
+0x2739 "\\TwelweStar"             "bbding" "" # 
+0x273a "\\SixteenStarLight"       "bbding" "" # 
+0x273b "\\SixFlowerPetalRemoved"  "bbding" "" # 
+0x273c "\\SixFlowerOpenCenter"    "bbding" "" #
+0x273d "\\Asterisk"               "bbding" "" # 
+0x273e "\\SixFlowerAlternate"     "bbding" "" # 
+0x273f "\\FiveFlowerPetal"        "bbding" "" # 
+0x2740 "\\FiveFlowerOpen"         "bbding" "" # 
+0x2741 "\\EightFlowerPetal"       "bbding" "" # 
+#0x2742 ""                         "" "" #  
+0x2743 "\\SixFlowerAltPetal"      "bbding" "" # 
+0x2744 "\\SnowflakeChevron"       "bbding" "" # 
+0x2745 "\\Snowflake"              "bbding" "" # 
+0x2746 "\\SnowflakeChevronBold"   "bbding" "" # 
+0x2747 "\\Sparkle"                "bbding" "" # 
+0x2748 "\\SparkleBold"            "bbding" "" # 
+0x2749 "\\AsteriskRoundedEnds"    "bbding" "" # 
+0x274a "\\EightFlowerPetalRemoved" "bbding" "" # 
+0x274b "\\EightAsterisk"          "bbding" "" # 
+0x2776 "\\ding{182}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT ONE
+0x2777 "\\ding{183}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT TWO
+0x2778 "\\ding{184}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT THREE
+0x2779 "\\ding{185}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT FOUR
+0x277a "\\ding{186}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT FIVE
+0x277b "\\ding{187}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT SIX
+0x277c "\\ding{188}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT SEVEN
+0x277d "\\ding{189}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT EIGHT
+0x277e "\\ding{190}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT NINE
+0x277f "\\ding{191}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED DIGIT TEN
+0x2780 "\\ding{192}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF DIGIT ONE
+0x2781 "\\ding{193}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF TWO
+0x2782 "\\ding{194}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF THREE
+0x2783 "\\ding{195}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF FOUR
+0x2784 "\\ding{196}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF FIVE
+0x2785 "\\ding{197}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF SIX
+0x2786 "\\ding{198}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF SEVEN
+0x2787 "\\ding{199}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF EIGHT
+0x2788 "\\ding{200}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF NINE
+0x2789 "\\ding{201}"              "pifont" "" # DINGBAT CIRCLED SANS-SERIF TEN
+0x278a "\\ding{202}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ONE
+0x278b "\\ding{203}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF TWO
+0x278c "\\ding{204}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF THREE
+0x278d "\\ding{205}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF FOUR
+0x278e "\\ding{206}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF FIVE
+0x278f "\\ding{207}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF SIX
+0x2790 "\\ding{208}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF SEVEN
+0x2791 "\\ding{209}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF EIGHT
+0x2792 "\\ding{210}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF NINE
+0x2793 "\\ding{211}"              "pifont" "" # DINGBAT NEGATIVE CIRCLED SANS-SERIF TEN
 # miscellaneous mathematical symbols-A
 0x27e8 "\\textlangle"             "textcomp" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" # MATHEMATICAL RIGHT ANGLE BRACKET

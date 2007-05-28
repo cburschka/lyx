@@ -413,6 +413,10 @@ char const * simplefeatures[] = {
 	"xcolor",
 	"wasysym",
 	"pmboxdraw",
+	"bbding",
+	"ifsym",
+	"marvosym",
+	"txfonts",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
