@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-26 15:25+0200\n"
+"POT-Creation-Date: 2007-05-28 19:02+0200\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -182,7 +182,7 @@ msgstr "&Toevoegen"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:268 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:272 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -9730,11 +9730,11 @@ msgstr "Document importeren"
 msgid "Check spelling"
 msgstr "Controleren TeX"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:767
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:771
 msgid "Undo"
 msgstr "Herstellen"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:777
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:781
 msgid "Redo"
 msgstr "Opnieuw"
 
@@ -12555,12 +12555,12 @@ msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:903
-#: src/BufferView.cpp:909
+#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:907
+#: src/BufferView.cpp:913
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:517 src/BufferView.cpp:904
+#: src/Buffer.cpp:517 src/BufferView.cpp:908
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -12568,7 +12568,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:910
+#: src/Buffer.cpp:523 src/BufferView.cpp:914
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12743,7 +12743,7 @@ msgstr "opmaakblad document ingesteld"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/BufferView.cpp:238
+#: src/BufferView.cpp:242
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -12751,22 +12751,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.cpp:241 src/LyXFunc.cpp:912
+#: src/BufferView.cpp:245 src/LyXFunc.cpp:912
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Terug naar opgeslagen versie"
 
-#: src/BufferView.cpp:242 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
+#: src/BufferView.cpp:246 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Registreren"
 
-#: src/BufferView.cpp:242
+#: src/BufferView.cpp:246
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Selecteren tot einde document"
 
-#: src/BufferView.cpp:264
+#: src/BufferView.cpp:268
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -12774,77 +12774,77 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.cpp:267
+#: src/BufferView.cpp:271
 #, fuzzy
 msgid "Create new document?"
 msgstr "Nieuw document onder deze naam aanmaken?"
 
-#: src/BufferView.cpp:268
+#: src/BufferView.cpp:272
 #, fuzzy
 msgid "&Create"
 msgstr "latex"
 
-#: src/BufferView.cpp:574
+#: src/BufferView.cpp:578
 #, fuzzy
 msgid "Save bookmark"
 msgstr "b Onder|#B"
 
-#: src/BufferView.cpp:770
+#: src/BufferView.cpp:774
 #, fuzzy
 msgid "No further undo information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/BufferView.cpp:780
+#: src/BufferView.cpp:784
 msgid "No further redo information"
 msgstr "Geen verdere Herhaal mogelijk"
 
-#: src/BufferView.cpp:957
+#: src/BufferView.cpp:961
 msgid "Mark off"
 msgstr "Merkteken uitgeschakeld"
 
-#: src/BufferView.cpp:964
+#: src/BufferView.cpp:968
 msgid "Mark on"
 msgstr "Merkteken ingechakeld"
 
-#: src/BufferView.cpp:971
+#: src/BufferView.cpp:975
 msgid "Mark removed"
 msgstr "Merkteken verwijderd"
 
-#: src/BufferView.cpp:974
+#: src/BufferView.cpp:978
 msgid "Mark set"
 msgstr "Merkteken geplaatst"
 
-#: src/BufferView.cpp:1020
+#: src/BufferView.cpp:1024
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Een woord gecontroleerd."
 
-#: src/BufferView.cpp:1023
+#: src/BufferView.cpp:1027
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Een woord gecontroleerd."
 
-#: src/BufferView.cpp:1028
+#: src/BufferView.cpp:1032
 #, fuzzy
 msgid "One word in selection."
 msgstr "Een woord gecontroleerd."
 
-#: src/BufferView.cpp:1030
+#: src/BufferView.cpp:1034
 #, fuzzy
 msgid "One word in document."
 msgstr "Document invoegen "
 
-#: src/BufferView.cpp:1033
+#: src/BufferView.cpp:1037
 #, fuzzy
 msgid "Count words"
 msgstr "Huidige woord"
 
-#: src/BufferView.cpp:1612
+#: src/BufferView.cpp:1616
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12854,32 +12854,32 @@ msgstr "Kies document ter invoeging"
 msgid "Documents|#o#O"
 msgstr "Documenten|#o#O"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Voorbeelden|#E#e"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Documenten (*.lyx)"
 
-#: src/BufferView.cpp:1631 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Afgebroken."
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1646
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Document %1$s invoegen..."
 
-#: src/BufferView.cpp:1653
+#: src/BufferView.cpp:1657
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s ingevoegd."
 
-#: src/BufferView.cpp:1655
+#: src/BufferView.cpp:1659
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kon document %1$s niet invoegen"
@@ -14878,12 +14878,12 @@ msgstr "Externe toepassingen"
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/frontends/LyXView.cpp:425
+#: src/frontends/LyXView.cpp:432
 msgid " (changed)"
 msgstr " (veranderd)"
 
 # was eerst: tegen schrijven beveiligd
-#: src/frontends/LyXView.cpp:429
+#: src/frontends/LyXView.cpp:436
 msgid " (read only)"
 msgstr " (alleen lezen)"
 
@@ -15377,12 +15377,12 @@ msgstr "Inspringen"
 msgid "Label"
 msgstr "&Label"
 
-#: src/frontends/qt4/Dialogs.cpp:247
+#: src/frontends/qt4/Dialogs.cpp:249 src/frontends/qt4/Dialogs.cpp:252
 #, fuzzy
 msgid "LaTeX Source"
 msgstr "Zichtbare spatie|#s"
 
-#: src/frontends/qt4/Dialogs.cpp:309
+#: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
 msgid "Toc"
 msgstr "t Boven|#T"
@@ -16277,7 +16277,7 @@ msgstr "Voetnoot Inzet geopend"
 msgid "footnote"
 msgstr "voetnoot"
 
-#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:516
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:517
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -16314,11 +16314,11 @@ msgstr "Verbatim-input"
 msgid "Program Listing "
 msgstr "(geen oorspronkelijke omschrijving)"
 
-#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:609
+#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:610
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:610
+#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -16349,132 +16349,134 @@ msgstr "Trefwoord"
 msgid "Opened Listings Inset"
 msgstr "Voetnoot Inzet geopend"
 
-#: src/insets/InsetListingsParams.cpp:114
+#: src/insets/InsetListingsParams.cpp:128
+msgid "A value is expected."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:131
+#: src/insets/InsetListingsParams.cpp:144
+#: src/insets/InsetListingsParams.cpp:157
+#: src/insets/InsetListingsParams.cpp:170
+#: src/insets/InsetListingsParams.cpp:197
+#: src/insets/InsetListingsParams.cpp:230
+msgid "Unbalanced braces!"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:139
+msgid "Please specify true or false."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:142
+msgid "Only true or false is allowed."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:152
+msgid "Please specify an integer value."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:155
+msgid "An integer is expected."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:165
+msgid "Please specify a latex length expression."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:168
+msgid "Invalid latex length expression."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:178
+#, c-format
+msgid "Please specify one of %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:212
+#, c-format
+msgid "Try one of %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:214
+#, c-format
+msgid "I guess you mean %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:222
+#, c-format
+msgid "Please specify one or more of '%1$s'."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:227
+#, c-format
+msgid "Should be composed of one or more of %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:293
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:115
+#: src/insets/InsetListingsParams.cpp:295
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:117
+#: src/insets/InsetListingsParams.cpp:297
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:118
+#: src/insets/InsetListingsParams.cpp:300
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:133
+#: src/insets/InsetListingsParams.cpp:326
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:175
+#: src/insets/InsetListingsParams.cpp:410
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:180
+#: src/insets/InsetListingsParams.cpp:420
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
 "(Include dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:183
+#: src/insets/InsetListingsParams.cpp:425
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
 "dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:287
+#: src/insets/InsetListingsParams.cpp:596
+#, fuzzy, c-format
+msgid "Parameter %1$s: "
+msgstr " Macro: %s: "
+
+#: src/insets/InsetListingsParams.cpp:604
 msgid "Invalid (empty) listings param name."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:298
+#: src/insets/InsetListingsParams.cpp:608
 #, c-format
 msgid "Available listings parameters are %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:321
+#: src/insets/InsetListingsParams.cpp:626
 #, fuzzy, c-format
 msgid "Unknown listings param name: %1$s"
 msgstr "Onbekend spatiëringsargument: "
 
-#: src/insets/InsetListingsParams.cpp:324
+#: src/insets/InsetListingsParams.cpp:629
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:348
-msgid "A value is expected"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:351
-#: src/insets/InsetListingsParams.cpp:364
-#: src/insets/InsetListingsParams.cpp:378
-#: src/insets/InsetListingsParams.cpp:392
-#: src/insets/InsetListingsParams.cpp:419
-#: src/insets/InsetListingsParams.cpp:455
-msgid "Unbalanced braces!"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:358
-msgid "Please specify true or false"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:361
-#, c-format
-msgid "Only true or false is allowed for parameter %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:372
-msgid "Please specify an integer value"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:375
-#, c-format
-msgid "An integer is expected for parameter %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:386
-msgid "Please specify a latex length expression"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:389
-#, c-format
-msgid "Invalid latex length expression for parameter %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:400
-#, c-format
-msgid "Please specify one of %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:434
-#, c-format
-msgid "Try one of %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:437
-#, c-format
-msgid "I guess you mean %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:446
-#, c-format
-msgid "Please specify one or more of '%1$s'"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:452
-#, c-format
-msgid "Parameter %1$s should be composed of one or more of %2$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:523
+#: src/insets/InsetListingsParams.cpp:700
 #, c-format
 msgid "Parameter %1$s has already been defined"
 msgstr ""
