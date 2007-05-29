@@ -35,10 +35,14 @@ public:
 		Controller * form, ///< Associated model/controller
 		QMainWindow * parent, ///< the main window where to dock.
 		docstring const & title, ///< Window title (shown in the top title bar).
-		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea
+		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
+		Qt::WindowFlags flags = 0
 		)
-		: QDockWidget(toqstr(title), parent), Dialog::View(dialog, title)
+		: QDockWidget(toqstr(title), parent, flags), 
+			Dialog::View(dialog, title)
 	{
+		if (flags & Qt::Drawer)
+			setFeatures(QDockWidget::NoDockWidgetFeatures);
 		widget_.reset(new Widget(form));
 		setWidget(widget_.get());
 		parent->addDockWidget(area, this);
