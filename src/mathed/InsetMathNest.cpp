@@ -476,15 +476,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_FINISHED_UP:
-		cur.bv().cursor() = cur;
-		break;
-
-	case LFUN_FINISHED_DOWN:
-		++cur.pos();
-		cur.bv().cursor() = cur;
-		break;
-
 	case LFUN_CHAR_FORWARD:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_CHAR_FORWARD_SELECT:
@@ -542,10 +533,8 @@ goto_char_backwards:
 			break;
 		}
 		cur.selHandle(cmd.action == LFUN_UP_SELECT);
-		if (!cur.up()) {
-			cmd = FuncRequest(LFUN_FINISHED_UP);
+		if (!cur.upDownInMath(true))
 			cur.undispatched();
-		}
 		// fixes bug 1598. Please check!
 		cur.normalize();
 		break;
@@ -558,10 +547,8 @@ goto_char_backwards:
 			break;
 		}
 		cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
-		if (!cur.down()) {
-			cmd = FuncRequest(LFUN_FINISHED_DOWN);
+		if (!cur.upDownInMath(false))
 			cur.undispatched();
-		}
 		// fixes bug 1598. Please check!
 		cur.normalize();
 		break;

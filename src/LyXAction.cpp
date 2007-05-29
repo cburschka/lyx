@@ -354,8 +354,6 @@ void LyXAction::init()
 		{ LFUN_WORDS_COUNT, "words-count", ReadOnly },
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly },
 		{ LFUN_FINISHED_LEFT, "", ReadOnly },
-		{ LFUN_FINISHED_UP, "", ReadOnly },
-		{ LFUN_FINISHED_DOWN, "", ReadOnly },
 		{ LFUN_MOUSE_PRESS, "", ReadOnly },
 		{ LFUN_MOUSE_MOTION, "", ReadOnly | SingleParUpdate },
 		{ LFUN_MOUSE_RELEASE, "", ReadOnly },

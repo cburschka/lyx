@@ -3336,7 +3336,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 		if (sl == cur.top()) {
-			cmd = FuncRequest(LFUN_FINISHED_UP);
+			cmd = FuncRequest(LFUN_UP);
 			cur.undispatched();
 		}
 		break;

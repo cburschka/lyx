@@ -121,16 +121,21 @@ public:
 	/// insert a string
 	void insert(docstring const & str);
 
-	/// in pixels from left of screen
+	/// FIXME: rename to something sensible showing difference to x_target()
+	/// in pixels from left of screen, set to current position if unset
 	int targetX() const;
-	/// write acess to target x position of cursor
-	int & x_target();
-	/// return target x position of cursor
+	/// set the targetX to x
+	void setTargetX(int x);
+	/// return targetX or -1 if unset
 	int x_target() const;
-	/// set targetX in current position
+	/// set targetX to current position
 	void setTargetX();
-	/// clear target x position of cursor
+	/// clear targetX, i.e. set it to -1
 	void clearTargetX();
+	/// set offset to actual position - targetX
+	void updateTextTargetOffset();
+	/// distance between actual and targeted position during last up/down in text
+	int textTargetOffset() const;
 
 	/// access to normalized selection anchor
 	CursorSlice anchor() const;
@@ -186,11 +191,10 @@ public:
 //private:
 	/// the anchor position
 	DocIterator anchor_;
-
+	
 	///
 	DispatchResult disp_;
-
-
+	
 private:
 	/**
 	 * The target x position of the cursor. This is used for when
@@ -205,6 +209,8 @@ private:
 	 * shorter than x()
 	 */
 	int x_target_;
+	/// if a x_target cannot be hit exactly in a text, put the difference here
+	int textTargetOffset_;
 	/// do we have a selection?
 	bool selection_;
 	/// are we on the way to get one?
@@ -214,7 +220,13 @@ private:
 	// of a big inset spanning a whole row and computing coordinates for
 	// displaying the cursor.
 	bool logicalpos_;
-
+	/// x position before dispatch started
+	int beforeDispX_;
+	/// y position before dispatch started
+	int beforeDispY_;
+	/// position before dispatch started
+	size_t beforeDispDepth_;
+		
 private:
 
 	//
@@ -243,10 +255,14 @@ public:
 	bool erase();
 	/// return false for empty math insets
 	bool backspace();
-	/// called for LFUN_UP etc
+	/// move the cursor up by sending an internal LFUN_UP
 	bool up();
-	/// called for LFUN_DOWN etc
+	/// move the cursor up by sending an internal LFUN_DOWN
 	bool down();
+	/// move up/down in a text inset, called for LFUN_UP/DOWN
+	bool upDownInText(bool up);
+	/// move up/down in math or any non text inset, call for LFUN_UP/DOWN
+	bool upDownInMath(bool up);
 	///
 	void plainErase();
 	///
@@ -293,9 +309,6 @@ public:
 	void errorMessage(docstring const & msg) const;
 	///
 	docstring getPossibleLabel();
-
-	/// moves position somehow up or down
-	bool goUpDown(bool up);
 
 	/// the name of the macro we are currently inputting
 	docstring macroName();

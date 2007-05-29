@@ -64,6 +64,8 @@ public:
 	///
 	bool canTrackChanges() const { return true; }
 	///
+	InsetText * asTextInset() { return this; }
+	///
 	InsetText const * asTextInset() const { return this; }
 	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;

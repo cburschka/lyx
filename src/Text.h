@@ -208,18 +208,6 @@ public:
 	/// setCursorFromCoordinates() instead of checkInsetHit().
 	Inset * editXY(Cursor & cur, int x, int y);
 
-	/// Move cursor one line up.
-	/**
-	 * Returns true if an update is needed after the move.
-	 */
-	/// FIXME: move to TextMetrics.
-	bool cursorUp(Cursor & cur);
-	/// Move cursor one line down.
-	/**
-	 * Returns true if an update is needed after the move.
-	 */
-	/// FIXME: move to TextMetrics.
-	bool cursorDown(Cursor & cur);
 	/// Move cursor one position left
 	/**
 	 * Returns true if an update is needed after the move.

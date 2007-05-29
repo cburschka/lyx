@@ -6,12 +6,14 @@
  * \author Alejandro Aguilar Sierra
  * \author Alfredo Braunstein
  * \author André Pönitz
+ * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>
 
+#include "Bidi.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "Buffer.h"
@@ -262,7 +264,7 @@ namespace {
 // be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
-	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1),
+	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1), textTargetOffset_(0),
 	  selection_(false), mark_(false), logicalpos_(false)
 {}
 
@@ -296,7 +298,11 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	fixIfBroken();
 	FuncRequest cmd = cmd0;
 	Cursor safe = *this;
-
+	
+	// store some values to be used inside of the handlers
+	getPos(beforeDispX_, beforeDispY_);
+	beforeDispDepth_ = depth();
+	
 	for (; depth(); pop()) {
 		LYXERR(Debug::DEBUG) << "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this << endl;
@@ -526,9 +532,10 @@ void Cursor::clearSelection()
 }
 
 
-int & Cursor::x_target()
+void Cursor::setTargetX(int x)
 {
-	return x_target_;
+	x_target_ = x;
+	textTargetOffset_ = 0;
 }
 
 
@@ -541,8 +548,17 @@ int Cursor::x_target() const
 void Cursor::clearTargetX()
 {
 	x_target_ = -1;
+	textTargetOffset_ = 0;
 }
 
+
+void Cursor::updateTextTargetOffset()
+{
+	int x;
+	int y;
+	getPos(x, y);
+	textTargetOffset_ = x - x_target_;
+}
 
 
 void Cursor::info(odocstream & os) const
@@ -662,7 +678,7 @@ bool Cursor::openable(MathAtom const & t) const
 
 void Cursor::setScreenPos(int x, int y)
 {
-	x_target() = x;
+	setTargetX(x);
 	bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
 }
 
@@ -876,11 +892,13 @@ bool Cursor::up()
 {
 	macroModeClose();
 	DocIterator save = *this;
-	if (goUpDown(true))
+	FuncRequest cmd(selection() ? LFUN_UP_SELECT : LFUN_UP, docstring());
+	this->dispatch(cmd);
+	if (disp_.dispatched())
 		return true;
 	setCursor(save);
 	autocorrect() = false;
-	return selection();
+	return false;
 }
 
 
@@ -888,11 +906,13 @@ bool Cursor::down()
 {
 	macroModeClose();
 	DocIterator save = *this;
-	if (goUpDown(false))
+	FuncRequest cmd(selection() ? LFUN_DOWN_SELECT : LFUN_DOWN, docstring());
+	this->dispatch(cmd);
+	if (disp_.dispatched())
 		return true;
 	setCursor(save);
 	autocorrect() = false;
-	return selection();
+	return false;
 }
 
 
@@ -951,17 +971,25 @@ int Cursor::targetX() const
 }
 
 
+int Cursor::textTargetOffset() const
+{
+	return textTargetOffset_;
+}
+
+
 void Cursor::setTargetX()
 {
 	int x;
 	int y;
 	getPos(x, y);
-	x_target_ = x;
+	setTargetX(x);
 }
 
 
 bool Cursor::inMacroMode() const
 {
+	if (!inMathed())
+		return false;
 	if (pos() == 0)
 		return false;
 	InsetMathUnknown const * p = prevAtom()->asUnknownInset();
@@ -1027,26 +1055,52 @@ void Cursor::normalize()
 }
 
 
-bool Cursor::goUpDown(bool up)
+bool Cursor::upDownInMath(bool up)
 {
 	// Be warned: The 'logic' implemented in this function is highly
 	// fragile. A distance of one pixel or a '<' vs '<=' _really
 	// matters. So fiddle around with it only if you think you know
 	// what you are doing!
-
 	int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
+	xo = beforeDispX_;
 
 	// check if we had something else in mind, if not, this is the future
 	// target
-	if (x_target() == -1)
-		x_target() = xo;
-	else
-		xo = x_target();
+	if (x_target_ == -1)
+		setTargetX(xo);
+	else if (inset().asTextInset() && xo - textTargetOffset() != x_target()) {
+		// In text mode inside the line (not left or right) possibly set a new target_x,
+		// but only if we are somewhere else than the previous target-offset.
+		
+		// We want to keep the x-target on subsequent up/down movements
+		// that cross beyond the end of short lines. Thus a special
+		// handling when the cursor is at the end of line: Use the new 
+		// x-target only if the old one was before the end of line
+		// or the old one was after the beginning of the line
+		bool inRTL = isWithinRtlParagraph(*this);
+		bool left;
+		bool right;
+		if (inRTL) {
+			left = pos() == textRow().endpos();
+			right = pos() == textRow().pos();
+		} else {
+			left = pos() == textRow().pos();
+			right = pos() == textRow().endpos();
+		}
+		if ((!left && !right) ||
+				(left && !right && xo < x_target_) || 
+				(!left && right && x_target_ < xo))
+			setTargetX(xo);
+		else
+			xo = targetX();
+	} else 
+		xo = targetX();
 
 	// try neigbouring script insets
-	if (!selection()) {
+	Cursor old = *this;
+	if (inMathed() && !selection()) {
 		// try left
 		if (pos() != 0) {
 			InsetMathScript const * p = prevAtom()->asScriptInset();
@@ -1055,10 +1109,19 @@ bool Cursor::goUpDown(bool up)
 				push(*const_cast<InsetMathScript*>(p));
 				idx() = p->idxOfScript(up);
 				pos() = lastpos();
-				return true;
+				
+				// we went in the right direction? Otherwise don't jump into the script
+				int x;
+				int y;
+				getPos(x, y);
+				if ((!up && y <= beforeDispY_) ||
+						(up && y >= beforeDispY_))
+					operator=(old);
+				else
+					return true;
 			}
 		}
-
+		
 		// try right
 		if (pos() != lastpos()) {
 			InsetMathScript const * p = nextAtom()->asScriptInset();
@@ -1066,60 +1129,157 @@ bool Cursor::goUpDown(bool up)
 				push(*const_cast<InsetMathScript*>(p));
 				idx() = p->idxOfScript(up);
 				pos() = 0;
-				return true;
+				
+				// we went in the right direction? Otherwise don't jump into the script
+				int x;
+				int y;
+				getPos(x, y);
+				if ((!up && y <= beforeDispY_) ||
+						(up && y >= beforeDispY_))
+					operator=(old);
+				else
+					return true;
 			}
 		}
 	}
-
-// FIXME: Switch this on for more robust movement
-#if 0
-
-	return bruteFind3(*this, xo, yo, up);
-
-#else
-	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);
-	//if (up)
-	//	yhigh = yo - 4;
-	//else
-	//	ylow = yo + 4;
-	//if (bruteFind(*this, xo, yo, xlow, xhigh, ylow, yhigh)) {
-	//	lyxerr << "updown: handled by brute find in the same cell" << endl;
-	//	return true;
-	//}
-
-	// try to find an inset that knows better then we
-	while (true) {
-		//lyxerr << "updown: We are in " << &inset() << " idx: " << idx() << endl;
-		// ask inset first
-		if (inset().idxUpDown(*this, up)) {
-			//lyxerr << "idxUpDown triggered" << endl;
-			// try to find best position within this inset
-			if (!selection())
-				setCursor(bruteFind2(*this, xo, yo));
-			return true;
-		}
-
-		// no such inset found, just take something "above"
-		if (!popLeft()) {
-			//lyxerr << "updown: popleft failed (strange case)" << endl;
-			int ylow  = up ? 0 : yo + 1;
-			int yhigh = up ? yo - 1 : bv().workHeight();
-			return bruteFind(*this, xo, yo, 0, bv().workWidth(), ylow, yhigh);
-		}
-
-		// any improvement so far?
+		
+	// try to find an inset that knows better then we,
+	if (inset().idxUpDown(*this, up)) {
+		//lyxerr << "idxUpDown triggered" << endl;
+		// try to find best position within this inset
+		if (!selection())
+			setCursor(bruteFind2(*this, xo, yo));
+		return true;
+	}
+	
+	// any improvement going just out of inset?
+	if (popLeft() && inMathed()) {
 		//lyxerr << "updown: popLeft succeeded" << endl;
 		int xnew;
 		int ynew;
 		getPos(xnew, ynew);
-		if (up ? ynew < yo : ynew > yo)
+		if (up ? ynew < beforeDispY_ : ynew > beforeDispY_)
 			return true;
 	}
-
-	// we should not come here.
-	BOOST_ASSERT(false);
-#endif
+	
+	// no success, we are probably at the document top or bottom
+	operator=(old);
+	return false;
 }
+
+
+bool Cursor::upDownInText(bool up) 
+{
+	BOOST_ASSERT(text());
+
+	// where are we?
+	int xo = 0;
+	int yo = 0;
+	getPos(xo, yo);
+	xo = beforeDispX_;
+	
+	// update the targetX - this is here before the "return false"
+	// to set a new target which can be used by InsetTexts above
+	// if we cannot move up/down inside this inset anymore
+	if (x_target_ == -1)
+		setTargetX(xo);
+	else if (xo - textTargetOffset() != x_target() && depth() == beforeDispDepth_) {
+		// In text mode inside the line (not left or right) possibly set a new target_x,
+		// but only if we are somewhere else than the previous target-offset.
+		
+		// We want to keep the x-target on subsequent up/down movements
+		// that cross beyond the end of short lines. Thus a special
+		// handling when the cursor is at the end of line: Use the new 
+		// x-target only if the old one was before the end of line
+		// or the old one was after the beginning of the line
+		bool inRTL = isWithinRtlParagraph(*this);
+		bool left;
+		bool right;
+		if (inRTL) {
+			left = pos() == textRow().endpos();
+			right = pos() == textRow().pos();
+		} else {
+			left = pos() == textRow().pos();
+			right = pos() == textRow().endpos();
+		}
+		if ((!left && !right) ||
+				(left && !right && xo < x_target_) || 
+				(!left && right && x_target_ < xo))
+			setTargetX(xo);
+		else
+			xo = targetX();
+	} else 
+		xo = targetX();
+		
+	// first get the current line
+	TextMetrics const & tm = bv_->textMetrics(text());
+	ParagraphMetrics const & pm = tm.parMetrics(pit());
+	int row;
+	if (pos() && boundary())
+		row = pm.pos2row(pos() - 1);
+	else
+		row = pm.pos2row(pos());
+		
+	// are we not at the start or end?
+	if (up) {
+		if (pit() == 0 && row == 0)
+			return false;
+	} else {
+		if (pit() + 1 >= int(text()->paragraphs().size()) && 
+				row + 1 >= int(pm.rows().size()))
+			return false;
+	}	
+	
+	// with and without selection are handled differently
+	if (!selection()) {
+		int yo = bv_funcs::getPos(bv(), *this, boundary()).y_;
+		Cursor old = *this;
+		// To next/previous row
+		if (up)
+			text()->editXY(*this, xo, yo - textRow().ascent() - 1);
+		else
+			text()->editXY(*this, xo, yo + textRow().descent() + 1);
+		clearSelection();
+		
+		// This happens when you move out of an inset.
+		// And to give the DEPM the possibility of doing
+		// something we must provide it with two different
+		// cursors. (Lgb)
+		Cursor dummy = *this;
+		if (dummy == old)
+			++dummy.pos();
+		
+		bool const changed = bv().checkDepm(dummy, old);
+		
+		// Make sure that cur gets back whatever happened to dummy(Lgb)
+		if (changed)
+			operator=(dummy);
+	} else {
+		// if there is a selection, we stay out of any inset, and just jump to the right position:
+		Cursor old = *this;
+		if (up) {
+			if (row > 0) {
+				top().pos() = std::min(tm.x2pos(pit(), row - 1, xo), top().lastpos());
+			} else if (pit() > 0) {
+				--pit();
+				ParagraphMetrics const & pmcur = bv_->parMetrics(text(), pit());
+				top().pos() = std::min(tm.x2pos(pit(), pmcur.rows().size() - 1, xo), top().lastpos());
+			}
+		} else {
+			if (row + 1 < int(pm.rows().size())) {
+				top().pos() = std::min(tm.x2pos(pit(), row + 1, xo), top().lastpos());
+			} else if (pit() + 1 < int(text()->paragraphs().size())) {
+				++pit();
+				top().pos() = std::min(tm.x2pos(pit(), 0, xo), top().lastpos());
+			}
+		}
+		
+		bv().checkDepm(*this, old);
+	}
+	
+	updateTextTargetOffset();
+	return true;
+}	
 
 
 void Cursor::handleFont(string const & font)

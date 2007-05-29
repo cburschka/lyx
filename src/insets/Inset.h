@@ -80,7 +80,11 @@ public:
 	virtual InsetMath * asInsetMath() { return 0; }
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
-
+	/// is this inset based on the TextInset class?
+	virtual InsetText * asTextInset() { return 0; }
+	/// is this inset based on the TextInset class?
+	virtual InsetText const * asTextInset() const { return 0; }
+	
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);
 	/**
@@ -244,8 +248,6 @@ public:
 	virtual bool descendable() const { return false; }
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }
-	/// is this inset based on the TextInset class?
-	virtual InsetText const * asTextInset() const { return 0; }
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 

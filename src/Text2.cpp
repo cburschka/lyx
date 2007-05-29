@@ -760,12 +760,21 @@ void Text::setCurrentFont(Cursor & cur)
 	pos_type pos = cur.pos();
 	Paragraph & par = cur.paragraph();
 
-	if (cur.boundary() && pos > 0 && pos < cur.lastpos()) {
+	// ignore empty paragraph
+	if (par.empty())
+		return;
+	
+	// if on boundary or at paragraph end, set font of previous char
+	if ((pos > 0 && cur.boundary()) || pos == cur.lastpos())
 		--pos;
-		// We may have just moved to the previous row ---
-		// we're going to be needing its bidi tables!
+	
+	// we changed the line and the bidi tables are outdated?
+	if (!bidi.inRange(pos))
 		bidi.computeTables(par, cur.buffer(), cur.textRow());
-	}
+
+	// now in range?
+	if (!bidi.inRange(pos))
+		return;
 
 	if (pos > 0) {
 		if (pos == cur.lastpos())
@@ -911,7 +920,7 @@ Inset * Text::editXY(Cursor & cur, int x, int y)
 	cur.pit() = pit;
 	cur.pos() = pos;
 	cur.boundary(bound);
-	cur.x_target() = x;
+	cur.setTargetX(x);
 
 	// try to descend into nested insets
 	Inset * inset = checkInsetHit(cur.bv(), x, y);
@@ -933,8 +942,10 @@ Inset * Text::editXY(Cursor & cur, int x, int y)
 
 	// Make sure the cursor points to the position before
 	// this inset.
-	if (inset == insetBefore)
+	if (inset == insetBefore) {
 		--cur.pos();
+		cur.boundary(false);
+	}
 
 	// Try to descend recursively inside the inset.
 	inset = inset->editXY(cur, x, y);
@@ -975,38 +986,38 @@ bool Text::cursorLeft(Cursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
+	// not at paragraph start?
 	if (cur.pos() > 0) {
-		if (cur.boundary())
-			return setCursor(cur, cur.pit(), cur.pos(), true, false);
-
-		bool updateNeeded = false;
-		// If checkAndActivateInset returns true, that means that
-		// the cursor was placed inside it, so we're done
-		if (!checkAndActivateInset(cur, false)) {
-			if (!cur.boundary() &&
-			    cur.textRow().pos() == cur.pos()
-			    // FIXME: the following two conditions are copied
-			    // from cursorRight; however, isLineSeparator()
-			    // is definitely wrong here, isNewline I'm not sure
-			    // about. I'm leaving them as comments for now,
-			    // until we understand why they should or shouldn't
-			    // be here.
-			    /*&&
-			    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
-			    !cur.paragraph().isNewline(cur.pos() - 1)*/) {
-				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(),
-										  true, true);
-			}
-			updateNeeded |= setCursor(cur, cur.pit(),cur.pos() - 1,
-									  true, false);
+		// if on right side of boundary (i.e. not at paragraph end, but line end)
+		// -> skip it, i.e. set boundary to true, i.e. go only logically left
+		// there are some exceptions to ignore this: lineseps, newlines, spaces
+#ifdef DEBUG
+		bool bound = cur.boundary();
+		int rowpos = cur.textRow().pos();
+		int pos = cur.pos();
+		bool sep = cur.paragraph().isSeparator(cur.pos() - 1);
+		bool newline = cur.paragraph().isNewline(cur.pos() - 1);
+		bool linesep = cur.paragraph().isLineSeparator(cur.pos() - 1);
+#endif
+		if (!cur.boundary() &&
+				cur.textRow().pos() == cur.pos() &&
+				!cur.paragraph().isLineSeparator(cur.pos() - 1) &&
+				!cur.paragraph().isNewline(cur.pos() - 1) &&
+				!cur.paragraph().isSeparator(cur.pos() - 1)) {
+			return setCursor(cur, cur.pit(), cur.pos(), true, true);
 		}
-		return updateNeeded;
+		
+		// go left and try to enter inset
+		if (checkAndActivateInset(cur, false))
+			return false;
+		
+		// normal character left
+		return setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
 	}
 
-	if (cur.pit() > 0) {
-		// Steps into the paragraph above
+	// move to the previous paragraph or do nothing
+	if (cur.pit() > 0)
 		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size());
-	}
 	return false;
 }
 
@@ -1016,165 +1027,47 @@ bool Text::cursorRight(Cursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
+	// not at paragraph end?
 	if (cur.pos() != cur.lastpos()) {
+		// if left of boundary -> just jump to right side 
 		if (cur.boundary())
-			return setCursor(cur, cur.pit(), cur.pos(),
-					 true, false);
+			return setCursor(cur, cur.pit(), cur.pos(), true, false);
 
-		bool updateNeeded = false;
-		// If checkAndActivateInset returns true, that means that
-		// the cursor was placed inside it, so we're done
-		if (!checkAndActivateInset(cur, true)) {
-			if (cur.textRow().endpos() == cur.pos() + 1 &&
-			    cur.textRow().endpos() != cur.lastpos() &&
-			    !cur.paragraph().isLineSeparator(cur.pos()) &&
-			    !cur.paragraph().isNewline(cur.pos())) {
-				cur.boundary(true);
-			}
-			updateNeeded |= setCursor(cur, cur.pit(), cur.pos() + 1, true, cur.boundary());
+		// in front of editable inset, i.e. jump into it?
+		if (checkAndActivateInset(cur, true))
+			return false;
+		
+		// next position is left of boundary, 
+		// but go to next line for special cases like space, newline, linesep
+#ifdef DEBUG
+		int endpos = cur.textRow().endpos();
+		int lastpos = cur.lastpos();
+		int pos = cur.pos();
+		bool linesep = cur.paragraph().isLineSeparator(cur.pos());
+		bool newline = cur.paragraph().isNewline(cur.pos());
+		bool sep = cur.paragraph().isSeparator(cur.pos());
+		if (cur.pos() != cur.lastpos()) {
+			bool linesep2 = cur.paragraph().isLineSeparator(cur.pos()+1);
+			bool newline2 = cur.paragraph().isNewline(cur.pos()+1);
+			bool sep2 = cur.paragraph().isSeparator(cur.pos()+1);
 		}
-		return updateNeeded;
+#endif
+		if (cur.textRow().endpos() == cur.pos() + 1 &&
+		    cur.textRow().endpos() != cur.lastpos() &&
+				!cur.paragraph().isNewline(cur.pos()) &&
+				!cur.paragraph().isLineSeparator(cur.pos()) &&
+				!cur.paragraph().isSeparator(cur.pos())) {
+			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
+		}
+		
+		// move right
+		return setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
 	}
 
+	// move to next paragraph
 	if (cur.pit() != cur.lastpit())
 		return setCursor(cur, cur.pit() + 1, 0);
 	return false;
-}
-
-
-bool Text::cursorUp(Cursor & cur)
-{
-	// Tell BufferView to test for FitCursor in any case!
-	cur.updateFlags(Update::FitCursor);
-
-	TextMetrics const & tm = cur.bv().textMetrics(this);
-	ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
-
-	int row;
-	if (cur.pos() && cur.boundary())
-		row = pm.pos2row(cur.pos()-1);
-	else
-		row = pm.pos2row(cur.pos());
-
-	int x = cur.targetX();
-	cur.setTargetX();
-	// We want to keep the x-target on subsequent up movements
-	// that cross beyond the end of short lines. Thus a special
-	// handling when the cursor is at the end of line: Use the new
-	// x-target only if the old one was before the end of line.
-	if (cur.pos() != pm.rows()[row].endpos()
-		|| (!isWithinRtlParagraph(cur) && x < cur.targetX())
-		|| (isWithinRtlParagraph(cur) && x > cur.targetX())) {
-
-		x = cur.targetX();
-	}
-
-	if (!cur.selection()) {
-		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
-		Cursor old = cur;
-		// Go to middle of previous row. 16 found to work OK;
-		// 12 = top/bottom margin of display math
-		int const margin = 3 * InsetMathHull::displayMargin() / 2;
-		editXY(cur, x, y - pm.rows()[row].ascent() - margin);
-		cur.clearSelection();
-
-		// This happens when you move out of an inset.
-		// And to give the DEPM the possibility of doing
-		// something we must provide it with two different
-		// cursors. (Lgb)
-		Cursor dummy = cur;
-		if (dummy == old)
-			++dummy.pos();
-
-		cur.bv().checkDepm(dummy, old);
-		return false;
-	}
-
-	bool updateNeeded = false;
-
-	if (row > 0) {
-		updateNeeded |= setCursor(cur, cur.pit(),
-			tm.x2pos(cur.pit(), row - 1, x));
-	} else if (cur.pit() > 0) {
-		--cur.pit();
-		//cannot use 'par' now
-		ParagraphMetrics const & pmcur = cur.bv().parMetrics(this, cur.pit());
-		updateNeeded |= setCursor(cur, cur.pit(),
-			tm.x2pos(cur.pit(), pmcur.rows().size() - 1, x));
-	}
-
-	cur.x_target() = x;
-
-	return updateNeeded;
-}
-
-
-bool Text::cursorDown(Cursor & cur)
-{
-	// Tell BufferView to test for FitCursor in any case!
-	cur.updateFlags(Update::FitCursor);
-
-	TextMetrics const & tm = cur.bv().textMetrics(this);
-	ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
-
-	int row;
-	if (cur.pos() && cur.boundary())
-		row = pm.pos2row(cur.pos()-1);
-	else
-		row = pm.pos2row(cur.pos());
-
-	int x = cur.targetX();
-	cur.setTargetX();
-	// We want to keep the x-target on subsequent down movements
-	// that cross beyond the end of short lines. Thus a special
-	// handling when the cursor is at the end of line: Use the new
-	// x-target only if the old one was before the end of line.
-	if (cur.pos() != pm.rows()[row].endpos()
-		|| (!isWithinRtlParagraph(cur) && x < cur.targetX())
-		|| (isWithinRtlParagraph(cur) && x > cur.targetX())) {
-
-		x = cur.targetX();
-	}
-
-	if (!cur.selection()) {
-		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
-		Cursor old = cur;
-		// To middle of next row
-		int const margin = 3 * InsetMathHull::displayMargin() / 2;
-		editXY(cur, x, y + pm.rows()[row].descent() + margin);
-		cur.clearSelection();
-
-		// This happens when you move out of an inset.
-		// And to give the DEPM the possibility of doing
-		// something we must provide it with two different
-		// cursors. (Lgb)
-		Cursor dummy = cur;
-		if (dummy == old)
-			++dummy.pos();
-
-		bool const changed = cur.bv().checkDepm(dummy, old);
-
-		// Make sure that cur gets back whatever happened to dummy(Lgb)
-		if (changed)
-			cur = dummy;
-
-		return false;
-	}
-
-	bool updateNeeded = false;
-
-	if (row + 1 < int(pm.rows().size())) {
-		updateNeeded |= setCursor(cur, cur.pit(),
-			tm.x2pos(cur.pit(), row + 1, x));
-	} else if (cur.pit() + 1 < int(paragraphs().size())) {
-		++cur.pit();
-		updateNeeded |= setCursor(cur, cur.pit(),
-			tm.x2pos(cur.pit(), 0, x));
-	}
-
-	cur.x_target() = x;
-
-	return updateNeeded;
 }
 
 

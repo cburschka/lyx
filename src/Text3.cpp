@@ -470,14 +470,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_UP_SELECT:
 		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_UP_SELECT);
-
-		needsUpdate |= cursorUp(cur);
+		needsUpdate |= cur.upDownInText(true);
 
 		if (!needsUpdate && oldTopSlice == cur.top()
-			  && cur.boundary() == oldBoundary) {
+			  && cur.boundary() == oldBoundary)
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_UP);
-		}
 		if (cur.selection())
 			saveSelection(cur);
 		break;
@@ -486,14 +483,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_DOWN_SELECT:
 		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
-		needsUpdate |= cursorDown(cur);
+		needsUpdate |= cur.upDownInText(false);
 
 		if (!needsUpdate && oldTopSlice == cur.top() &&
 		    cur.boundary() == oldBoundary)
-		{
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_DOWN);
-		}
 		if (cur.selection())
 			saveSelection(cur);
 		break;
@@ -517,10 +511,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_UP_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_SCREEN_UP_SELECT);
-		if (cur.pit() == 0 && cur.textRow().pos() == 0) {
+		if (cur.pit() == 0 && cur.textRow().pos() == 0)
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_UP);
-		} else {
+		else {
 			cursorPrevious(cur);
 		}
 		if (cur.selection())
@@ -531,10 +524,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_SCREEN_DOWN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_SCREEN_DOWN_SELECT);
 		if (cur.pit() == cur.lastpit()
-			  && cur.textRow().endpos() == cur.lastpos()) {
+			  && cur.textRow().endpos() == cur.lastpos())
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_DOWN);
-		} else {
+		else {
 			cursorNext(cur);
 		}
 		if (cur.selection())
@@ -1071,7 +1063,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			int const y = std::max(0, std::min(wh - 1, cmd.y));
 
 			setCursorFromCoordinates(cur, cmd.x, y);
-			cur.x_target() = cmd.x;
+			cur.setTargetX(cmd.x);
 			if (cmd.y >= wh)
 				lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
 			else if (cmd.y < 0)
@@ -1444,16 +1436,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
 		if (!reverseDirectionNeeded(cur))
 			++cur.pos();
-		break;
-
-	case LFUN_FINISHED_UP:
-		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_UP:\n" << cur << endl;
-		cursorUp(cur);
-		break;
-
-	case LFUN_FINISHED_DOWN:
-		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_DOWN:\n" << cur << endl;
-		cursorDown(cur);
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH: {
