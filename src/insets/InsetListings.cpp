@@ -124,7 +124,7 @@ void InsetListings::read(Buffer const & buf, Lexer & lex)
 
 docstring const InsetListings::editMessage() const
 {
-	return _("Opened Listings Inset");
+	return _("Opened Listing Inset");
 }
 
 
@@ -248,7 +248,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetListings::setButtonLabel()
 {
 	// FIXME UNICODE
-	setLabel(isOpen() ?  _("Listings") : getNewLabel(_("Listings")));
+	setLabel(isOpen() ?  _("Listing") : getNewLabel(_("Listing")));
 }
 
 

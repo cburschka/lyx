@@ -92,7 +92,7 @@ void QIncludeDialog::validate_listings_params()
 		if (!isOK) {
 			isOK = true;
 			listingsTB->setPlainText(
-				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+				qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 			okPB->setEnabled(true);
 		}
 	} catch (invalidParam & e) {
@@ -208,7 +208,7 @@ void QInclude::update_contents()
 	dialog_->labelLE->clear();
 	dialog_->listingsED->clear();
 	dialog_->listingsTB->setPlainText(
-		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 
 	string cmdname = controller().params().getCmdName();
 	if (cmdname != "include" &&

@@ -418,12 +418,12 @@ ParValidator::ParValidator()
 	all_params_["caption"] =
 		ListingsParam("", false, ALL, "", _(
 		"This parameter should not be entered here. Please use caption "
-		"editbox (Include dialog) or insert->caption (listings inset)"));
+		"editbox (Include dialog) or insert->caption (listing inset)"));
 	// this option is not handled in the parameter box
 	all_params_["label"] =
 		ListingsParam("", false, ALL, "",_(
 		"This parameter should not be entered here. Please use label "
-		"editbox (Include dialog) or insert->caption (listings inset)"));
+		"editbox (Include dialog) or insert->caption (listing inset)"));
 	all_params_["nolol"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_["captionpos"] =
@@ -601,11 +601,11 @@ ListingsParam const & ParValidator::validate(string const & key,
 ListingsParam const & ParValidator::param(string const & name) const
 {
 	if (name.empty())
-		throw invalidParam(_("Invalid (empty) listings param name."));
+		throw invalidParam(_("Invalid (empty) listing parameter name."));
 
 	if (name == "?")
 		throw invalidParam(bformat(
-			_("Available listings parameters are %1$s"), from_ascii(all_param_names_)));
+			_("Available listing parameters are %1$s"), from_ascii(all_param_names_)));
 
 	// locate name in parameter table
 	ListingsParams::const_iterator it = all_params_.find(name);
@@ -623,7 +623,7 @@ ListingsParam const & ParValidator::param(string const & name) const
 		}
 	}
 	if (matching_names.empty())
-		throw invalidParam(bformat(_("Unknown listings param name: %1$s"),
+		throw invalidParam(bformat(_("Unknown listing parameter name: %1$s"),
 						    from_utf8(name)));
 	else
 		throw invalidParam(bformat(_("Parameters starting with '%1$s': %2$s"),

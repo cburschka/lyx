@@ -325,7 +325,7 @@ void QListingsDialog::validate_listings_params()
 		if (!isOK) {
 			isOK = true;
 			listingsTB->setPlainText(
-				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+				qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 			okPB->setEnabled(true);
 			applyPB->setEnabled(true);
 		}
@@ -394,7 +394,7 @@ void QListingsDialog::on_languageCO_currentIndexChanged(int index)
 typedef QController<ControlListings, QView<QListingsDialog> > listings_wrap_base_class;
 
 QListings::QListings(Dialog & parent)
-	: listings_wrap_base_class(parent, _("Program Listings Settings"))
+	: listings_wrap_base_class(parent, _("Program Listing Settings"))
 {
 }
 
@@ -407,7 +407,7 @@ void QListings::build_dialog()
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
 	dialog_->listingsTB->setPlainText(
-		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 
 	update_contents();
 }
@@ -439,7 +439,7 @@ void QListings::update_contents()
 {
 	// set default values
 	dialog_->listingsTB->setPlainText(
-		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 	dialog_->languageCO->setCurrentIndex(findToken(languages, "no language"));
 	dialog_->dialectCO->setCurrentIndex(0);
 	dialog_->floatCB->setChecked(false);
