@@ -27,7 +27,7 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- update Hungarian and Italian localizations of the interface.
+- Update Hungarian and Italian localizations of the interface.
 
 
 ** Bug fixes:
@@ -37,22 +37,24 @@ What's new
 
 - Don't skip lines after noweb chunks in tex2lyx (bug 3052)
 
-- fix bug when entering relative length (like page%) as margin
+- Fix bug when entering relative length (like page%) as margin
   settings (bug 3416).
 
 - Fix Date external template in windows (bug 3241)
 
 * USER INTERFACE:
 
-- fix bug where moving the last section up in the toc dialog eats the
+- Fix bug where moving the last section up in the toc dialog eats the
   last paragraph (bug 3303).
 
-- fix crash when using "all-insets-toggle" lfun on a file with 
+- Fix crash when using "all-insets-toggle" lfun on a file with 
   math insets (bug 3358).
 
-- fix crash when undoing ctrl-<minus> in mathed (bug 3590).
+- Fix crash when undoing ctrl-<minus> in mathed (bug 3590).
 
 - Handle undo correctly when inserting a plain text file (bug 3204).
+
+- Fix misplaced cursor when clicking at the end of a line (bug 3310).
 
 - Make it possible to reset itemize bullets to their original state
   (bug 3312).
@@ -92,6 +94,6 @@ What's new
 
 * MISCELLANEOUS
 
-- make LyX/Mac recognize correctly newer versions of teTeX.
+- Make LyX/Mac recognize correctly newer versions of teTeX.
 
 - Fix that Slovak userguide couldn't be typeset.

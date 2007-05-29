@@ -354,6 +354,7 @@ void BufferView::mouseSetCursor(LCursor & cur)
 	//lyxerr << "5 cur after" << dit <<std::endl;
 
 	cursor().setCursor(dit);
+	cursor().boundary(cur.boundary());
 	cursor().clearSelection();
 	cursor().setTargetX();
 	finishUndo();

@@ -1,3 +1,8 @@
+2007-05-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView.C (mouseSetCursor): do not forget to set boundary
+	(bug 3310). Fix by Stefan Schimanski.
+
 2007-05-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text3.C  (specialChar): add missing recordUndo.
