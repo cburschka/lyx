@@ -270,9 +270,6 @@ Font Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt)
 {
-	BOOST_ASSERT(!pars_[pit].isInset(pos) ||
-		     !pars_[pit].getInset(pos)->noFontChange());
-
 	Font font = fnt;
 	Layout_ptr const & layout = pars_[pit].layout();
 
@@ -519,13 +516,11 @@ void Text::setFont(Buffer const & buffer, DocIterator const & begin,
 				// We need to propagate the font change to all
 				// text cells of the inset (bug 1973).
 				// FIXME: This should change, see documentation
-				// of noFontChange in insetbase.h
+				// of noFontChange in Inset.h
 				setInsetFont(buffer, pit, pos, font, toggleall);
-			else {
-				Font f = getFont(buffer, dit.paragraph(), pos);
-				f.update(font, language, toggleall);
-				setCharFont(buffer, pit, pos, f);
-			}
+			Font f = getFont(buffer, dit.paragraph(), pos);
+			f.update(font, language, toggleall);
+			setCharFont(buffer, pit, pos, f);
 		}
 	}
 }
