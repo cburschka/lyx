@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -8253,7 +8253,7 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Floatflt Figür"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Ýçindekiler|Ý"
 
@@ -8355,6 +8355,10 @@ msgstr "Güncelle|G"
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "LaTeX Kütüðü|K"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8944,10 +8948,6 @@ msgstr ""
 msgid "Change Tracking|C"
 msgstr "Dil deðiþtir"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Burada Ek Baþlat|E"
@@ -9054,8 +9054,8 @@ msgstr "Grafik ekle"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "icindekiler"
+msgid "Toggle Outline"
+msgstr "Ad stilini deðiþtir"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -12042,11 +12042,11 @@ msgstr "Belgede bir sözcük var."
 msgid "Count words"
 msgstr "Sözcükleri say"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Eklenecek LyX belgesini seçin"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12056,31 +12056,31 @@ msgstr "Eklenecek LyX belgesini seçin"
 msgid "Documents|#o#O"
 msgstr "Belgeler|#b#B"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Örnekler|#ö#Ö"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Belgeleri (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Vazgeçildi."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Belge %1$s eklendi."
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Belge %1$s eklenemedi"
@@ -14444,8 +14444,8 @@ msgstr "LaTeX hatasý"
 
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "Üst"
+msgid "Outline"
+msgstr "Dýþ"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -15923,6 +15923,14 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Bilinmeyen kullanýcý"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "icindekiler"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "Üst"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Ýçindekiler|Ý"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2007-04-30 17:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -8067,7 +8067,7 @@ msgstr "テキストUpright体"
 msgid "Floatflt Figure"
 msgstr "Floatfltの図"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "目次(C)|C"
 
@@ -8167,6 +8167,10 @@ msgstr "更新(U)|U"
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "LaTeXログ|L"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8746,10 +8750,6 @@ msgstr "淡色化(G)|G"
 msgid "Change Tracking|C"
 msgstr "トラッキングを変更(C)|C"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "ここから付録を開始(A)|A"
@@ -8853,8 +8853,8 @@ msgstr "図を挿入"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "目次"
+msgid "Toggle Outline"
+msgstr "Nounスタイルを切替"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -11667,11 +11667,11 @@ msgstr "文書に含まれる単語数は 1 語です。"
 msgid "Count words"
 msgstr "単語数の勘定"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "挿入するLyX文書を選択して下さい"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11681,31 +11681,31 @@ msgstr "挿入するLyX文書を選択して下さい"
 msgid "Documents|#o#O"
 msgstr "文書(O)|#o#O"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "用例(E)|#E#e"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX文書 (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "取り消されました"
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "文書「%1$s」を挿入しています..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文書「%1$s」が挿入されました。"
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "文書「%1$s」を挿入することができませんでした"
@@ -14203,8 +14203,9 @@ msgid "LaTeX Source"
 msgstr "LaTeXソース"
 
 #: src/frontends/qt4/Dialogs.cpp:315
-msgid "Toc"
-msgstr ""
+#, fuzzy
+msgid "Outline"
+msgstr "外側"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -15680,6 +15681,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "未知のユーザー"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "目次"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "目次(T)|T"

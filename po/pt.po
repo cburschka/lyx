@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -9129,7 +9129,7 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Figura"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "Índice"
@@ -9247,6 +9247,10 @@ msgstr "Atualizar|#A"
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Arquivo de registro do LaTex"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 #, fuzzy
@@ -9924,10 +9928,6 @@ msgstr ""
 msgid "Change Tracking|C"
 msgstr "Linguagem"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr ""
@@ -10050,8 +10050,8 @@ msgstr "Inserir etiqueta"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Índice"
+msgid "Toggle Outline"
+msgstr "Alternar para Caixa Alta"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -13096,12 +13096,12 @@ msgstr "Abrindo o documento filho"
 msgid "Count words"
 msgstr "Contar:"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Selecione um documento para inserir"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -13112,33 +13112,33 @@ msgstr "Selecione um documento para inserir"
 msgid "Documents|#o#O"
 msgstr "Documentos"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exemplos"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documento"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Cancelado."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Inserindo o documento"
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento renomeado para '"
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não posso inserir o documento"
@@ -15708,8 +15708,8 @@ msgstr "Erro do LaTeX"
 
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "Acima|T"
+msgid "Outline"
+msgstr "Outro...|#O"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 #, fuzzy
@@ -17344,6 +17344,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Ação desconhecida"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Índice"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "Acima|T"
 
 #, fuzzy
 #~ msgid "Table of Contents|T"

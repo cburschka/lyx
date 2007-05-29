@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -8536,7 +8536,7 @@ msgstr "Opretstående tekstform"
 msgid "Floatflt Figure"
 msgstr "Floatflt-figur"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Indholdsfortegnelse|I"
 
@@ -8643,6 +8643,10 @@ msgstr "Opdatér|O"
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "LaTeX-log|a"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -9288,10 +9292,6 @@ msgstr "Grånet|G"
 msgid "Change Tracking|C"
 msgstr "Skift sporing|k"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Start appendiks her|p"
@@ -9405,8 +9405,8 @@ msgstr "Indsæt grafik"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Indholdsfortegnelse"
+msgid "Toggle Outline"
+msgstr "Kapitæler til/fra"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -12444,11 +12444,11 @@ msgstr "Åbn dokument"
 msgid "Count words"
 msgstr "Nuværende ord"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12458,31 +12458,31 @@ msgstr "Vælg LyX-dokument at indsætte"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Annulleret."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Indsætter dokumentet %1$s..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet %1$s blev indsat."
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke indsætte dokumentet %1$s"
@@ -15035,8 +15035,8 @@ msgstr "Synlige mellemrum|#S"
 
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "Emne"
+msgid "Outline"
+msgstr "Ydre"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -16547,6 +16547,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Ukendt indstik"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Indholdsfortegnelse"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "Emne"
 
 #, fuzzy
 #~ msgid "Table of Contents|T"

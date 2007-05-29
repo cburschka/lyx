@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -8656,7 +8656,7 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "PrilagodiSliko"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Vsebinsko kazalo|V"
 
@@ -8763,6 +8763,10 @@ msgstr "Osve¾i|O"
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Dnevnik LaTeXa"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -9439,10 +9443,6 @@ msgstr ""
 msgid "Change Tracking|C"
 msgstr "Jezik"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 #, fuzzy
 msgid "Start Appendix Here|A"
@@ -9565,8 +9565,8 @@ msgstr "Vstavi dodatek"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Vsebinsko kazalo"
+msgid "Toggle Outline"
+msgstr "Spremeni slog velikih èrk"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -12632,11 +12632,11 @@ msgstr "Vstavlja se spis "
 msgid "Count words"
 msgstr "Trenutna beseda"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12646,32 +12646,32 @@ msgstr "Izberite spis LyXa za vstavitev"
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
@@ -15192,8 +15192,8 @@ msgstr "Vidni presledek|#s"
 
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "Tema"
+msgid "Outline"
+msgstr "Zunanji"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 #, fuzzy
@@ -16774,6 +16774,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Neznana beseda:"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Vsebinsko kazalo"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "Tema"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Vsebinsko kazalo|V"

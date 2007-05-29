@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -10673,7 +10673,7 @@ msgid "Floatflt Figure"
 msgstr "Фигура"
 
 # src/ext_l10n.h:110
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Съдържание(C)|C"
 
@@ -10805,6 +10805,10 @@ msgstr "Актуализирай(U)|U"
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "LaTeX Протокол(L)|L"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 # src/ext_l10n.h:146
 #: lib/ui/classic.ui:361
@@ -11604,10 +11608,6 @@ msgstr ""
 msgid "Change Tracking|C"
 msgstr "Смяна на език"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr ""
@@ -11749,14 +11749,11 @@ msgstr "Вмъкни приложение"
 msgid "Insert graphics"
 msgstr "Вмънки графика"
 
-# src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
-# src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
-# src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
-# src/insets/insettoc.C:22
+# src/LyXAction.C:215
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Съдържание"
+msgid "Toggle Outline"
+msgstr "Превключи стил съществително"
 
 # src/LyXAction.C:208
 #: lib/ui/stdtoolbars.inc:80
@@ -15195,13 +15192,13 @@ msgid "Count words"
 msgstr "Ключови дума"
 
 # src/lyxfunc.C:3291
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -15213,13 +15210,13 @@ msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
 # src/ext_l10n.h:116
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
@@ -15227,25 +15224,25 @@ msgstr "LyX документ(X)...|X"
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вмъквам документ"
 
 # src/exporter.C:89
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/lyxfunc.C:3317
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неуспех при вмъкването"
@@ -18295,11 +18292,11 @@ msgstr "Етикет(L):|#L"
 msgid "LaTeX Source"
 msgstr "LaTeX Грешка"
 
-# src/frontends/kde/dlg/paraextradlgdata.C:142
+# src/bufferview_funcs.C:289
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "(&T)Отгоре"
+msgid "Outline"
+msgstr "Друго ("
 
 # src/lyxfunc.C:1132
 #: src/frontends/qt4/FileDialog.cpp:162
@@ -20157,6 +20154,19 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Непознато действие"
+
+# src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
+# src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
+# src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
+# src/insets/insettoc.C:22
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Съдържание"
+
+# src/frontends/kde/dlg/paraextradlgdata.C:142
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "(&T)Отгоре"
 
 # src/ext_l10n.h:144
 #, fuzzy

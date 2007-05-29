@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -8094,7 +8094,7 @@ msgstr "Testua, zutikako forma"
 msgid "Floatflt Figure"
 msgstr "Floatflt irudia"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Gaien aurkibidea|G"
 
@@ -8196,6 +8196,10 @@ msgstr "Eguneratu|E"
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "LaTeX egunkaria|L"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8817,10 +8821,6 @@ msgstr "Grisa|G"
 msgid "Change Tracking|C"
 msgstr "Aldaketen aztarna|A"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Hasi eranskina hemen|e"
@@ -8926,8 +8926,8 @@ msgstr "Txertatu irudiak"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Gaien aurkibidea"
+msgid "Toggle Outline"
+msgstr "Txandakatu izen-estiloa"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -11958,11 +11958,11 @@ msgstr "Hitz bat dokumentuan."
 msgid "Count words"
 msgstr "Zenbatu hitzak"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11972,31 +11972,31 @@ msgstr "Hautatu LyX dokumentua txertatzeko"
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
@@ -14505,8 +14505,9 @@ msgid "LaTeX Source"
 msgstr "Ikusi iturburua|t"
 
 #: src/frontends/qt4/Dialogs.cpp:315
-msgid "Toc"
-msgstr "Gaia"
+#, fuzzy
+msgid "Outline"
+msgstr "Kanpokoa"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -15994,6 +15995,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Gaien aurkibidea"
+
+#~ msgid "Toc"
+#~ msgstr "Gaia"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Gaien aurkibidea|G"

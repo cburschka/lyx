@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -8652,7 +8652,7 @@ msgstr "Tekstin pysty kirjasinmuoto"
 msgid "Floatflt Figure"
 msgstr "Kelluva kuva (floatflt)"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Sis‰llysluettelo|S"
 
@@ -8758,6 +8758,10 @@ msgstr "P‰ivit‰|v"
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "LaTeX-lokitiedosto"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -9434,10 +9438,6 @@ msgstr ""
 msgid "Change Tracking|C"
 msgstr "Vaihda kieli"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 #, fuzzy
 msgid "Start Appendix Here|A"
@@ -9560,8 +9560,8 @@ msgstr "Lis‰‰ kuva"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Sis‰llysluettelo"
+msgid "Toggle Outline"
+msgstr "Nimityyli pois/p‰‰lle"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -12641,11 +12641,11 @@ msgstr "Lis‰t‰‰n asiakirja "
 msgid "Count words"
 msgstr "Nykyinen sana"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Valitse lis‰tt‰v‰ LyX-asiakirja"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12655,32 +12655,32 @@ msgstr "Valitse lis‰tt‰v‰ LyX-asiakirja"
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lis‰t‰‰n asiakirja %1$s..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lis‰tty."
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lis‰t‰"
@@ -15230,8 +15230,8 @@ msgstr "N‰kyv‰ v‰li|#v"
 
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "Aihe"
+msgid "Outline"
+msgstr "Ulko"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -16785,6 +16785,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Tuntematon sana:"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Sis‰llysluettelo"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "Aihe"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Sis‰llysluettelo|S"

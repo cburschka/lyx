@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2007-03-14 16:08+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -8079,7 +8079,7 @@ msgstr "Szöveg álló alak"
 msgid "Floatflt Figure"
 msgstr "Floatflt ábra"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Tartalomjegyzék|T"
 
@@ -8179,6 +8179,10 @@ msgstr "Frissítés|i"
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "LaTeX napló|X"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8752,10 +8756,6 @@ msgstr "Kiszürkített|K"
 msgid "Change Tracking|C"
 msgstr "Változások követése|l"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Kezd itt a függeléket|f"
@@ -8859,8 +8859,8 @@ msgstr "Grafika beszúrása"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Tartalomjegyzék"
+msgid "Toggle Outline"
+msgstr "Kiskapitális stílus váltása"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -11884,11 +11884,11 @@ msgstr "Egy szó van a dokumentumban."
 msgid "Count words"
 msgstr "Szavak megszámolása"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11898,31 +11898,31 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Törölve."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
@@ -14411,8 +14411,9 @@ msgid "LaTeX Source"
 msgstr "Mutassa a dokumentum forrását|u"
 
 #: src/frontends/qt4/Dialogs.cpp:315
-msgid "Toc"
-msgstr "Tartalomjegyzék"
+#, fuzzy
+msgid "Outline"
+msgstr "Külsõ"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -15886,6 +15887,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Tartalomjegyzék"
+
+#~ msgid "Toc"
+#~ msgstr "Tartalomjegyzék"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Tartalomjegyzék|T"

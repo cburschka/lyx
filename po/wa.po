@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -9078,7 +9078,7 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Imådje"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "Ådvins"
@@ -9195,6 +9195,10 @@ msgstr "Metaedje a djoû|#û#U"
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Fitchî des messaedjes LaTeX"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 #, fuzzy
@@ -9870,10 +9874,6 @@ msgstr ""
 msgid "Change Tracking|C"
 msgstr "Lingaedje"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr ""
@@ -9996,8 +9996,8 @@ msgstr "Sititchî ene etikete"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Ådvins"
+msgid "Toggle Outline"
+msgstr "Mete/Ni nén mete des ptitès grandès letes"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -13042,12 +13042,12 @@ msgstr "Dji drove li documint efant"
 msgid "Count words"
 msgstr "Rawete:"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -13058,33 +13058,33 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "Documents|#o#O"
 msgstr "Documints"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Egzimpes"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documint"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Vos avoz rnoncî"
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
@@ -15641,8 +15641,8 @@ msgstr "Aroke dins LaTeX"
 
 #: src/frontends/qt4/Dialogs.cpp:315
 #, fuzzy
-msgid "Toc"
-msgstr "Dizeu|#u#T"
+msgid "Outline"
+msgstr "Ôte...|#Ô#O"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 #, fuzzy
@@ -17270,6 +17270,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Ådvins"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "Dizeu|#u#T"
 
 #, fuzzy
 #~ msgid "Table of Contents|T"

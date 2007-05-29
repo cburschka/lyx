@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-28 19:02+0200\n"
+"POT-Creation-Date: 2007-05-29 10:08+0200\n"
 "PO-Revision-Date: 2007-04-20 14:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -8013,7 +8013,7 @@ msgstr "Text. øez stojatý"
 msgid "Floatflt Figure"
 msgstr "Plovoucí obrázek (Floatflt)"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "Obsah|O"
 
@@ -8113,6 +8113,10 @@ msgstr "Aktualizovat|A"
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "Log LaTeX-u|L"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8685,10 +8689,6 @@ msgstr "Za¹edlé|e"
 msgid "Change Tracking|C"
 msgstr "Zmìnit revize|r"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Outline|O"
-msgstr ""
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Zaèít dodatky zde|d"
@@ -8792,8 +8792,8 @@ msgstr "Vlo¾it obrázek"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Obsah"
+msgid "Toggle Outline"
+msgstr "Pøepnout Jméno"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -11808,11 +11808,11 @@ msgstr "Jedno slovo v dokumentu."
 msgid "Count words"
 msgstr "Spoèítat slova"
 
-#: src/BufferView.cpp:1616
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
-#: src/BufferView.cpp:1618 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11822,31 +11822,31 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/BufferView.cpp:1635 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkládání dokumentu %1$s..."
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s vlo¾en."
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1660
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
@@ -14324,8 +14324,9 @@ msgid "LaTeX Source"
 msgstr "Zdrojový text pro LaTeX"
 
 #: src/frontends/qt4/Dialogs.cpp:315
-msgid "Toc"
-msgstr "Obsah"
+#, fuzzy
+msgid "Outline"
+msgstr "Vnìj¹í"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -15795,6 +15796,13 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "Obsah"
+
+#~ msgid "Toc"
+#~ msgstr "Obsah"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Obsah|O"
