@@ -23,7 +23,7 @@ well.
 
 1. Qt/Mac Opensource Edition, version 4. This library is GPL-
 licensed and can be downloaded from
-<http://www.trolltech.com/download/qt/mac.html>. To compile it,
+<http://trolltech.com/developer/downloads/qt/mac/>. To compile it,
 create a directory where you want to install QT4. In the following, 
 the full path to this directory is called /path/to/QT4
 Decompress Qt/Mac in a convenient directory, cd to the top of the
@@ -37,17 +37,16 @@ Qt source hierarcy, and enter:
 
 2. [Needed only for developmental builds:] automake, version 1.5
 or higher (check with automake --version). Probably the easiest
-way to get this is to use DarwinPorts (from
-http://darwinports.opendarwin.org/getdp/) and install automake
-using
+way to get this is to use MacPorts (from http://www.macports.org/)
+and install automake using
 
      sudo port install automake
 
 3. [Needed only for developmental builds:] gettext version >= 0.12
 (check with gettext --version). If the installed version is
 insufficient the easiest way to obtain a later version is to use
-DarwinPorts (from http://darwinports.opendarwin.org/getdp/) and
-install gettext using:
+MacPorts (from http://www.macports.org/) and install gettext
+using:
 
      sudo port install gettext
 
