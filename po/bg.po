@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-29 10:08+0200\n"
+"POT-Creation-Date: 2007-05-29 23:41+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -191,7 +191,7 @@ msgstr "База данни:"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:116
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:85
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 msgid "&Add"
 msgstr "(&A)Добави"
@@ -554,7 +554,7 @@ msgstr "Текст след цитат"
 
 # src/frontends/kde/dlg/paradlgdata.C:82
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 #, fuzzy
 msgid "&Remove"
@@ -1697,9 +1697,10 @@ msgid "Verbatim"
 msgstr ""
 
 # src/ext_l10n.h:274
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/frontends/qt4/ui/ListingsUi.ui:16
+#: src/insets/InsetListings.cpp:251
 #, fuzzy
-msgid "Listings"
+msgid "Listing"
 msgstr "Списък"
 
 # src/frontends/xforms/FormPreferences.C:2248
@@ -1747,12 +1748,6 @@ msgstr "Кодировка"
 #, fuzzy
 msgid "&Quote Style:"
 msgstr "Вид кавички"
-
-# src/ext_l10n.h:274
-#: src/frontends/qt4/ui/ListingsUi.ui:16
-#, fuzzy
-msgid "Listing"
-msgstr "Списък"
 
 # src/insets/insetbib.C:219
 #: src/frontends/qt4/ui/ListingsUi.ui:35
@@ -1956,7 +1951,7 @@ msgid "Feedback window"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:539
-msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
@@ -2335,31 +2330,40 @@ msgstr "Цветове"
 msgid "&Alter..."
 msgstr "други..."
 
-# src/ext_l10n.h:93
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
-#, fuzzy
-msgid "Converter File Cache"
-msgstr "Вмъкни файл(t)|t"
-
-# src/frontends/xforms/FormTabular.C:133
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
-#, fuzzy
-msgid "&Enabled"
-msgstr "Дълга таблица"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
-msgid "&Maximum Age (in days):"
-msgstr ""
-
 # src/ext_l10n.h:221
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 #, fuzzy
 msgid "Converter Defi&nitions"
 msgstr "Дефиниция"
 
+# src/frontends/xforms/FormPreferences.C:226
+# src/frontends/xforms/FormPreferences.C:255
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+#, fuzzy
+msgid "C&onverter:"
+msgstr "Конвертори"
+
+# src/lyx.C:90
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+#, fuzzy
+msgid "E&xtra flag:"
+msgstr "Редактирай файл(E)|#E"
+
+# src/frontends/xforms/FormPreferences.C:252
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
+#, fuzzy
+msgid "&From format:"
+msgstr "Формати"
+
+# src/frontends/xforms/form_preferences.C:354
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
+#, fuzzy
+msgid "&To format:"
+msgstr "Формат на датата"
+
 # src/frontends/xforms/FormPreferences.C:1016
 # src/frontends/xforms/FormPreferences.C:1288
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 #, fuzzy
 msgid "A&dd"
@@ -2374,62 +2378,53 @@ msgstr "Добави"
 # src/frontends/xforms/FormPreferences.C:1438
 # src/frontends/xforms/FormPreferences.C:1440
 # src/frontends/xforms/form_preferences.C:504
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 #, fuzzy
 msgid "&Modify"
 msgstr "Промени(M)|#M"
 
 # src/frontends/kde/dlg/paradlgdata.C:82
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
 #, fuzzy
 msgid "Remo&ve"
 msgstr "(&R)Въстанови"
 
-# src/frontends/xforms/FormPreferences.C:252
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+# src/ext_l10n.h:93
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
 #, fuzzy
-msgid "&From format:"
-msgstr "Формати"
+msgid "Converter File Cache"
+msgstr "Вмъкни файл(t)|t"
 
-# src/frontends/xforms/form_preferences.C:354
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
+# src/frontends/xforms/FormTabular.C:133
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
 #, fuzzy
-msgid "&To format:"
-msgstr "Формат на датата"
+msgid "&Enabled"
+msgstr "Дълга таблица"
 
-# src/lyx.C:90
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
-#, fuzzy
-msgid "E&xtra flag:"
-msgstr "Редактирай файл(E)|#E"
-
-# src/frontends/xforms/FormPreferences.C:226
-# src/frontends/xforms/FormPreferences.C:255
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
-#, fuzzy
-msgid "C&onverter:"
-msgstr "Конвертори"
-
-# src/frontends/kde/dlg/printdlgdata.C:73
-# src/frontends/xforms/form_print.C:135
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
-#, fuzzy
-msgid "C&opiers"
-msgstr "Копия"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+msgid "&Maximum Age (in days):"
+msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:252
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 #, fuzzy
 msgid "&Format:"
 msgstr "Формати"
 
 # src/frontends/kde/dlg/printdlgdata.C:73
 # src/frontends/xforms/form_print.C:135
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:57
 #, fuzzy
 msgid "&Copier:"
+msgstr "Копия"
+
+# src/frontends/kde/dlg/printdlgdata.C:73
+# src/frontends/xforms/form_print.C:135
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:67
+#, fuzzy
+msgid "C&opiers"
 msgstr "Копия"
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
@@ -3972,7 +3967,7 @@ msgstr "Запазване на документа?"
 # src/frontends/xforms/FormPreferences.C:223
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
 #, fuzzy
-msgid "Listings settings"
+msgid "Listing settings"
 msgstr "Език"
 
 # src/frontends/kde/indexdlg.C:27 src/frontends/kde/indexdlg.C:28
@@ -10990,19 +10985,19 @@ msgid "Redo|R"
 msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:836
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:828
 #: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:841
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:833
 #: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:817
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:809
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Залепи"
@@ -16333,7 +16328,7 @@ msgid "Exiting."
 msgstr "Изход(x)|x"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1306
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
@@ -17208,53 +17203,53 @@ msgid ", Boundary: "
 msgstr ""
 
 # src/LyXAction.C:190
-#: src/Text2.cpp:588
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "No font change defined."
 msgstr "Към следваща грешка"
 
 # src/text2.C:456
-#: src/Text2.cpp:629
+#: src/Text2.cpp:624
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Няма нищо за правене"
 
 # src/insets/insettext.C:970
-#: src/Text2.cpp:631
+#: src/Text2.cpp:626
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Невъзможност за включване на повече от един абзац!"
 
 # src/lyxfunc.C:2565 src/mathed/formula.C:486
-#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1338
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Матем. редактор"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/Text3.cpp:722
+#: src/Text3.cpp:714
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr " към избрания документ клас!"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/Text3.cpp:895
+#: src/Text3.cpp:887
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/Text3.cpp:896
+#: src/Text3.cpp:888
 msgid " not known"
 msgstr " оформление"
 
 # src/form1.C:33
-#: src/Text3.cpp:1420 src/Text3.cpp:1432
+#: src/Text3.cpp:1412 src/Text3.cpp:1424
 #, fuzzy
 msgid "Character set"
 msgstr "Кодировка(H):|#H"
 
 # src/frontends/kde/FormParagraph.C:183
 # src/frontends/xforms/FormParagraph.C:148
-#: src/Text3.cpp:1566
+#: src/Text3.cpp:1548
 msgid "Paragraph layout set"
 msgstr "Оформяне на абзаци"
 
@@ -18287,13 +18282,13 @@ msgid "Label"
 msgstr "Етикет(L):|#L"
 
 # src/frontends/xforms/FormError.C:26
-#: src/frontends/qt4/Dialogs.cpp:249 src/frontends/qt4/Dialogs.cpp:252
+#: src/frontends/qt4/Dialogs.cpp:247
 #, fuzzy
 msgid "LaTeX Source"
 msgstr "LaTeX Грешка"
 
 # src/bufferview_funcs.C:289
-#: src/frontends/qt4/Dialogs.cpp:315
+#: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
 #, fuzzy
 msgid "Outline"
 msgstr "Друго ("
@@ -18569,9 +18564,6 @@ msgid "CM Typewriter Light"
 msgstr "Машинопис"
 
 #: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
-#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
-#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
-#: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -18801,6 +18793,13 @@ msgstr "Опции"
 msgid "Graphics"
 msgstr "Графика"
 
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
+#: src/frontends/qt4/QListings.cpp:442
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
@@ -18842,7 +18841,7 @@ msgstr "Без промяна"
 # src/LColor.C:78
 #: src/frontends/qt4/QListings.cpp:397
 #, fuzzy
-msgid "Program Listings Settings"
+msgid "Program Listing Settings"
 msgstr "ред на министраница"
 
 # src/mathed/math_panel.C:134
@@ -19440,7 +19439,7 @@ msgstr "Индекс"
 # src/insets/insetfloat.C:150
 #: src/insets/InsetListings.cpp:127
 #, fuzzy
-msgid "Opened Listings Inset"
+msgid "Opened Listing Inset"
 msgstr "Отворен Float Inset"
 
 #: src/insets/InsetListingsParams.cpp:128
@@ -19537,13 +19536,13 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:420
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
-"(Include dialog) or insert->caption (listings inset)"
+"(Include dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:425
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
-"dialog) or insert->caption (listings inset)"
+"dialog) or insert->caption (listing inset)"
 msgstr ""
 
 # src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
@@ -19553,18 +19552,19 @@ msgid "Parameter %1$s: "
 msgstr "Макрос: "
 
 #: src/insets/InsetListingsParams.cpp:604
-msgid "Invalid (empty) listings param name."
+msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
+# src/frontends/xforms/FormDocument.C:440
 #: src/insets/InsetListingsParams.cpp:608
-#, c-format
-msgid "Available listings parameters are %1$s"
-msgstr ""
+#, fuzzy, c-format
+msgid "Available listing parameters are %1$s"
+msgstr " към избрания документ клас!"
 
 # src/frontends/xforms/FormDocument.C:440
 #: src/insets/InsetListingsParams.cpp:626
 #, fuzzy, c-format
-msgid "Unknown listings param name: %1$s"
+msgid "Unknown listing parameter name: %1$s"
 msgstr " към избрания документ клас!"
 
 #: src/insets/InsetListingsParams.cpp:629
@@ -19964,7 +19964,7 @@ msgstr "1 низ беше заместен."
 msgid " strings have been replaced."
 msgstr " низа бяха заместени."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20001,37 +20001,37 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
 # src/mathed/formula.C:929
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 #, fuzzy
 msgid "No number"
 msgstr "Номериране"
 
 # src/mathed/formula.C:929
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 #, fuzzy
 msgid "Number"
 msgstr "Номериране"
 
-#: src/mathed/InsetMathHull.cpp:1222
+#: src/mathed/InsetMathHull.cpp:1220
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1232
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1242
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:853
+#: src/mathed/InsetMathNest.cpp:840
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:856
+#: src/mathed/InsetMathNest.cpp:843
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -20154,6 +20154,11 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Непознато действие"
+
+# src/ext_l10n.h:274
+#, fuzzy
+#~ msgid "Listings"
+#~ msgstr "Списък"
 
 # src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
 # src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168

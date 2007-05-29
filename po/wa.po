@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-29 10:08+0200\n"
+"POT-Creation-Date: 2007-05-29 23:41+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -171,7 +171,7 @@ msgstr "Båze di doneyes:"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:116
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:85
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 #, fuzzy
 msgid "&Add"
@@ -476,7 +476,7 @@ msgid "Remove the selected branch"
 msgstr "Sititchî on s' apinse"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 #, fuzzy
 msgid "&Remove"
@@ -1462,9 +1462,10 @@ msgstr "Intreye"
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/frontends/qt4/ui/ListingsUi.ui:16
+#: src/insets/InsetListings.cpp:251
 #, fuzzy
-msgid "Listings"
+msgid "Listing"
 msgstr "Royes"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:326
@@ -1505,11 +1506,6 @@ msgstr "Ecôdaedje:|#E"
 #, fuzzy
 msgid "&Quote Style:"
 msgstr "Li sôrt di distis est metuwe"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:16
-#, fuzzy
-msgid "Listing"
-msgstr "Royes"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 #, fuzzy
@@ -1687,7 +1683,7 @@ msgid "Feedback window"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:539
-msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
@@ -2018,74 +2014,74 @@ msgstr "Ôte..."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 #, fuzzy
-msgid "Converter File Cache"
-msgstr "Sititchî ene imådje"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
-#, fuzzy
-msgid "&Enabled"
-msgstr "Grand tåvlea"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
-msgid "&Maximum Age (in days):"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
-#, fuzzy
 msgid "Converter Defi&nitions"
 msgstr "Po:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+#, fuzzy
+msgid "C&onverter:"
+msgstr "Å mitan|#n"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+#, fuzzy
+msgid "E&xtra flag:"
+msgstr "Fitchî EPS|#E"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
+#, fuzzy
+msgid "&From format:"
+msgstr "Floatflt xxx|#F"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
+#, fuzzy
+msgid "&To format:"
+msgstr "Metaedje a djoû|#û#U"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 #, fuzzy
 msgid "A&dd"
 msgstr "Radjouter a|#R#t"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 #, fuzzy
 msgid "&Modify"
 msgstr "Mîtrin|#M"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
 #, fuzzy
 msgid "Remo&ve"
 msgstr "Comincî pal difén|#R"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
 #, fuzzy
-msgid "&From format:"
-msgstr "Floatflt xxx|#F"
+msgid "Converter File Cache"
+msgstr "Sititchî ene imådje"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
 #, fuzzy
-msgid "&To format:"
-msgstr "Metaedje a djoû|#û#U"
+msgid "&Enabled"
+msgstr "Grand tåvlea"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
-#, fuzzy
-msgid "E&xtra flag:"
-msgstr "Fitchî EPS|#E"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+msgid "&Maximum Age (in days):"
+msgstr ""
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
-#, fuzzy
-msgid "C&onverter:"
-msgstr "Å mitan|#n"
-
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
-#, fuzzy
-msgid "C&opiers"
-msgstr "Copyî"
-
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 #, fuzzy
 msgid "&Format:"
 msgstr "Floatflt xxx|#F"
 
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:57
 #, fuzzy
 msgid "&Copier:"
+msgstr "Copyî"
+
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:67
+#, fuzzy
+msgid "C&opiers"
 msgstr "Copyî"
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
@@ -3374,7 +3370,7 @@ msgstr "Schaper li documint?"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
 #, fuzzy
-msgid "Listings settings"
+msgid "Listing settings"
 msgstr "Minipådje|#M"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
@@ -9356,17 +9352,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Rifé"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:836
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:828
 #: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Côper"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:841
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:833
 #: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Copyî"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:817
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:809
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Aclaper"
@@ -14015,7 +14011,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Moussî foû"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1306
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
@@ -14700,44 +14696,44 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:588
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "No font change defined."
 msgstr "Potchî a l' aroke shûvante"
 
-#: src/Text2.cpp:629
+#: src/Text2.cpp:624
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Rén a fé"
 
-#: src/Text2.cpp:631
+#: src/Text2.cpp:626
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
 
-#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1338
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Môde aspougneu matematike"
 
-#: src/Text3.cpp:722
+#: src/Text3.cpp:714
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "I manke èn årgumint"
 
-#: src/Text3.cpp:895
+#: src/Text3.cpp:887
 msgid "Layout "
 msgstr "Adjinçmint "
 
-#: src/Text3.cpp:896
+#: src/Text3.cpp:888
 msgid " not known"
 msgstr " nén cnoxhu"
 
-#: src/Text3.cpp:1420 src/Text3.cpp:1432
+#: src/Text3.cpp:1412 src/Text3.cpp:1424
 #, fuzzy
 msgid "Character set"
 msgstr "Tåve di caracteres:|#å#a"
 
-#: src/Text3.cpp:1566
+#: src/Text3.cpp:1548
 msgid "Paragraph layout set"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
@@ -15634,12 +15630,12 @@ msgstr "Ritrait"
 msgid "Label"
 msgstr "Li tåvlea est stitchî"
 
-#: src/frontends/qt4/Dialogs.cpp:249 src/frontends/qt4/Dialogs.cpp:252
+#: src/frontends/qt4/Dialogs.cpp:247
 #, fuzzy
 msgid "LaTeX Source"
 msgstr "Aroke dins LaTeX"
 
-#: src/frontends/qt4/Dialogs.cpp:315
+#: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
 #, fuzzy
 msgid "Outline"
 msgstr "Ôte...|#Ô#O"
@@ -15886,9 +15882,6 @@ msgid "CM Typewriter Light"
 msgstr "Machine a scrîre"
 
 #: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
-#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
-#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
-#: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -16087,6 +16080,13 @@ msgstr "Tchûzes"
 msgid "Graphics"
 msgstr "Fitchî|#F"
 
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
+#: src/frontends/qt4/QListings.cpp:442
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
 #: src/frontends/qt4/QInclude.cpp:172
 #, fuzzy
 msgid "Child Document"
@@ -16121,7 +16121,7 @@ msgstr "(Candjî)"
 
 #: src/frontends/qt4/QListings.cpp:397
 #, fuzzy
-msgid "Program Listings Settings"
+msgid "Program Listing Settings"
 msgstr "Minipådje|#M"
 
 #: src/frontends/qt4/QMathMatrixDialog.cpp:46
@@ -16631,7 +16631,7 @@ msgstr "Index"
 
 #: src/insets/InsetListings.cpp:127
 #, fuzzy
-msgid "Opened Listings Inset"
+msgid "Opened Listing Inset"
 msgstr "inset drovu"
 
 #: src/insets/InsetListingsParams.cpp:128
@@ -16728,13 +16728,13 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:420
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
-"(Include dialog) or insert->caption (listings inset)"
+"(Include dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:425
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
-"dialog) or insert->caption (listings inset)"
+"dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:596
@@ -16743,17 +16743,17 @@ msgid "Parameter %1$s: "
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:604
-msgid "Invalid (empty) listings param name."
+msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:608
-#, c-format
-msgid "Available listings parameters are %1$s"
-msgstr ""
+#, fuzzy, c-format
+msgid "Available listing parameters are %1$s"
+msgstr "I manke èn årgumint"
 
 #: src/insets/InsetListingsParams.cpp:626
 #, fuzzy, c-format
-msgid "Unknown listings param name: %1$s"
+msgid "Unknown listing parameter name: %1$s"
 msgstr "I manke èn årgumint"
 
 #: src/insets/InsetListingsParams.cpp:629
@@ -17095,7 +17095,7 @@ msgstr "Li sistinme est rapontyî"
 msgid " strings have been replaced."
 msgstr "Li sistinme est rapontyî"
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -17129,36 +17129,36 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 #, fuzzy
 msgid "No number"
 msgstr "Nombe"
 
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 #, fuzzy
 msgid "Number"
 msgstr "Nombe"
 
-#: src/mathed/InsetMathHull.cpp:1222
+#: src/mathed/InsetMathHull.cpp:1220
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1232
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1242
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:853
+#: src/mathed/InsetMathNest.cpp:840
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:856
+#: src/mathed/InsetMathNest.cpp:843
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -17270,6 +17270,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Listings"
+#~ msgstr "Royes"
 
 #, fuzzy
 #~ msgid "Toggle Table of Contents"

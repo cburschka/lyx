@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-novo\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-29 10:08+0200\n"
+"POT-Creation-Date: 2007-05-29 23:41+0200\n"
 "PO-Revision-Date: 2007-03-19 13:36+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -155,7 +155,7 @@ msgstr "LyX: Engadir banco de dados BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:116
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:85
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 msgid "&Add"
 msgstr "&Engadir"
@@ -415,7 +415,7 @@ msgid "Remove the selected branch"
 msgstr "Eliminar a pola escollida"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 msgid "&Remove"
 msgstr "&Eliminar"
@@ -1291,9 +1291,10 @@ msgstr "Entrada"
 msgid "Verbatim"
 msgstr "Literal"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/frontends/qt4/ui/ListingsUi.ui:16
+#: src/insets/InsetListings.cpp:251
 #, fuzzy
-msgid "Listings"
+msgid "Listing"
 msgstr "Lista"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:326
@@ -1327,11 +1328,6 @@ msgstr "&Codificación:"
 #: src/frontends/qt4/ui/LanguageUi.ui:141
 msgid "&Quote Style:"
 msgstr "&Estilo de cita:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:16
-#, fuzzy
-msgid "Listing"
-msgstr "Lista"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 #, fuzzy
@@ -1511,7 +1507,7 @@ msgid "Feedback window"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:539
-msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
@@ -1799,69 +1795,69 @@ msgstr "&Mudar..."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 #, fuzzy
-msgid "Converter File Cache"
-msgstr "Inserir ficheiro|t"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
-#, fuzzy
-msgid "&Enabled"
-msgstr "Táboa &longa"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
-#, fuzzy
-msgid "&Maximum Age (in days):"
-msgstr "Documentos &recentes:"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
-#, fuzzy
 msgid "Converter Defi&nitions"
 msgstr "Definicións"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:61
-msgid "A&dd"
-msgstr "Enga&dir"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+msgid "C&onverter:"
+msgstr "&Conversor:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
-msgid "&Modify"
-msgstr "&Modificar"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+msgid "E&xtra flag:"
+msgstr "Opción e&xtra:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
-#, fuzzy
-msgid "Remo&ve"
-msgstr "&Eliminar"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
 #, fuzzy
 msgid "&From format:"
 msgstr "&Formato:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
 #, fuzzy
 msgid "&To format:"
 msgstr "Formato de &data:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
-msgid "E&xtra flag:"
-msgstr "Opción e&xtra:"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:61
+msgid "A&dd"
+msgstr "Enga&dir"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
-msgid "C&onverter:"
-msgstr "&Conversor:"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:92
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
+msgid "&Modify"
+msgstr "&Modificar"
 
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
-msgid "C&opiers"
-msgstr "C&opiadoras"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
+#, fuzzy
+msgid "Remo&ve"
+msgstr "&Eliminar"
 
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
+#, fuzzy
+msgid "Converter File Cache"
+msgstr "Inserir ficheiro|t"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
+#, fuzzy
+msgid "&Enabled"
+msgstr "Táboa &longa"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+#, fuzzy
+msgid "&Maximum Age (in days):"
+msgstr "Documentos &recentes:"
+
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 msgid "&Format:"
 msgstr "&Formato:"
 
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:57
 msgid "&Copier:"
 msgstr "&Copiadora:"
+
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:67
+msgid "C&opiers"
+msgstr "C&opiadoras"
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
 msgid ""
@@ -2970,7 +2966,7 @@ msgstr "Documento a &duas colunas"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
 #, fuzzy
-msgid "Listings settings"
+msgid "Listing settings"
 msgstr "Configuración do idioma"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
@@ -8318,17 +8314,17 @@ msgstr "Fechar xanela|h"
 msgid "Redo|R"
 msgstr "Refacer|R"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:836
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:828
 #: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Cortar"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:841
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:833
 #: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Copiar"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:817
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:809
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Colar"
@@ -12814,7 +12810,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Saindo."
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1306
 msgid "Missing argument"
 msgstr "Falta argumento"
 
@@ -13589,40 +13585,40 @@ msgstr "Car:0x"
 msgid ", Boundary: "
 msgstr ", Fronteira: "
 
-#: src/Text2.cpp:588
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "No font change defined."
 msgstr "Ir á próxima mudanza"
 
-#: src/Text2.cpp:629
+#: src/Text2.cpp:624
 msgid "Nothing to index!"
 msgstr "Nada que indexar!"
 
-#: src/Text2.cpp:631
+#: src/Text2.cpp:626
 msgid "Cannot index more than one paragraph!"
 msgstr "Non se pode indexar máis dun parágrafo!"
 
-#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1338
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Modo do editor matemático"
 
-#: src/Text3.cpp:722
+#: src/Text3.cpp:714
 msgid "Unknown spacing argument: "
 msgstr "Argumento de espazado descoñecido: "
 
-#: src/Text3.cpp:895
+#: src/Text3.cpp:887
 msgid "Layout "
 msgstr "Estilo "
 
-#: src/Text3.cpp:896
+#: src/Text3.cpp:888
 msgid " not known"
 msgstr " descoñecido"
 
-#: src/Text3.cpp:1420 src/Text3.cpp:1432
+#: src/Text3.cpp:1412 src/Text3.cpp:1424
 msgid "Character set"
 msgstr "Conxunto de caracteres"
 
-#: src/Text3.cpp:1566
+#: src/Text3.cpp:1548
 msgid "Paragraph layout set"
 msgstr "Estilo de parágrafo"
 
@@ -14423,12 +14419,12 @@ msgstr "Entrada de índice"
 msgid "Label"
 msgstr "Etiqueta"
 
-#: src/frontends/qt4/Dialogs.cpp:249 src/frontends/qt4/Dialogs.cpp:252
+#: src/frontends/qt4/Dialogs.cpp:247
 #, fuzzy
 msgid "LaTeX Source"
 msgstr "Mostrar código fonte|M"
 
-#: src/frontends/qt4/Dialogs.cpp:315
+#: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
 #, fuzzy
 msgid "Outline"
 msgstr "Exterior"
@@ -14650,9 +14646,6 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
-#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
-#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
-#: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -14820,6 +14813,13 @@ msgstr "Configuración do flutuante"
 msgid "Graphics"
 msgstr "Gráficos"
 
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
+#: src/frontends/qt4/QListings.cpp:442
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
 #: src/frontends/qt4/QInclude.cpp:172
 msgid "Child Document"
 msgstr "Documento fillo"
@@ -14853,7 +14853,7 @@ msgstr "Sen imaxes"
 
 #: src/frontends/qt4/QListings.cpp:397
 #, fuzzy
-msgid "Program Listings Settings"
+msgid "Program Listing Settings"
 msgstr "Configuración do parágrafo"
 
 #: src/frontends/qt4/QMathMatrixDialog.cpp:46
@@ -15311,7 +15311,7 @@ msgstr "Índice"
 
 #: src/insets/InsetListings.cpp:127
 #, fuzzy
-msgid "Opened Listings Inset"
+msgid "Opened Listing Inset"
 msgstr "Recadro de lexenda aberto"
 
 #: src/insets/InsetListingsParams.cpp:128
@@ -15408,13 +15408,13 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:420
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
-"(Include dialog) or insert->caption (listings inset)"
+"(Include dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:425
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
-"dialog) or insert->caption (listings inset)"
+"dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:596
@@ -15423,17 +15423,17 @@ msgid "Parameter %1$s: "
 msgstr " Macro: %1$s: "
 
 #: src/insets/InsetListingsParams.cpp:604
-msgid "Invalid (empty) listings param name."
+msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:608
-#, c-format
-msgid "Available listings parameters are %1$s"
-msgstr ""
+#, fuzzy, c-format
+msgid "Available listing parameters are %1$s"
+msgstr "Argumento de espazado descoñecido: "
 
 #: src/insets/InsetListingsParams.cpp:626
 #, fuzzy, c-format
-msgid "Unknown listings param name: %1$s"
+msgid "Unknown listing parameter name: %1$s"
 msgstr "Argumento de espazado descoñecido: "
 
 #: src/insets/InsetListingsParams.cpp:629
@@ -15726,7 +15726,7 @@ msgstr "Cadea susbtituida."
 msgid " strings have been replaced."
 msgstr " cadeas foron substituidas."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -15758,34 +15758,34 @@ msgstr "Nengunha vline a eliminar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica de táboa descoñecida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 msgid "No number"
 msgstr "Nengun número"
 
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1222
+#: src/mathed/InsetMathHull.cpp:1220
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Non é posíbel trocar o número de filas en '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1232
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Non é posíbel trocar o número de colunas en '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1242
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Non é posíbel engadir liñas de cuadrícula horizontal en '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:853
+#: src/mathed/InsetMathNest.cpp:840
 msgid "create new math text environment ($...$)"
 msgstr "cria un novo entorno de texto matemático ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:856
+#: src/mathed/InsetMathNest.cpp:843
 msgid "entered math text mode (textrm)"
 msgstr "introducido modo de texto matemático (textrm)"
 
@@ -15908,6 +15908,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Usuário descoñecido"
+
+#, fuzzy
+#~ msgid "Listings"
+#~ msgstr "Lista"
 
 #, fuzzy
 #~ msgid "Toggle Table of Contents"

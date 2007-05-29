@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-29 10:08+0200\n"
+"POT-Creation-Date: 2007-05-29 23:41+0200\n"
 "PO-Revision-Date: 2007-04-20 14:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "LyX: Pøidat databázi BibTex-u"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:116
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:85
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 msgid "&Add"
 msgstr "&Pøidat"
@@ -411,7 +411,7 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 msgid "&Remove"
 msgstr "&Smazat"
@@ -1287,9 +1287,10 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/frontends/qt4/ui/ListingsUi.ui:16
+#: src/insets/InsetListings.cpp:251
 #, fuzzy
-msgid "Listings"
+msgid "Listing"
 msgstr "Seznam"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:326
@@ -1323,11 +1324,6 @@ msgstr "&Kódování:"
 #: src/frontends/qt4/ui/LanguageUi.ui:141
 msgid "&Quote Style:"
 msgstr "&Typ uvozovek:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:16
-#, fuzzy
-msgid "Listing"
-msgstr "Seznam"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 #, fuzzy
@@ -1507,7 +1503,7 @@ msgid "Feedback window"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:539
-msgid "Input listings parameters here. Enter ? for a list of parameters."
+msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:58
@@ -1786,63 +1782,63 @@ msgid "&Alter..."
 msgstr "Z&mìnit..."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:25
-msgid "Converter File Cache"
-msgstr "Vyrovnávací pamì» pro konvertor souborù"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
-msgid "&Enabled"
-msgstr "&Zapnuto"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
-msgid "&Maximum Age (in days):"
-msgstr "®ivo&tnost (ve dnech):"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
 msgid "Converter Defi&nitions"
 msgstr "Definice &konvertoru"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+msgid "C&onverter:"
+msgstr "K&onvertor:"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+msgid "E&xtra flag:"
+msgstr "Pøíznak naví&c:"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
+msgid "&From format:"
+msgstr "&Z formátu:"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
+msgid "&To format:"
+msgstr "D&o formátu:"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 msgid "A&dd"
 msgstr "Pøi&dat"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 msgid "&Modify"
 msgstr "Z&mìnit"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
 msgid "Remo&ve"
 msgstr "&Smazat"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
-msgid "&From format:"
-msgstr "&Z formátu:"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
+msgid "Converter File Cache"
+msgstr "Vyrovnávací pamì» pro konvertor souborù"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
-msgid "&To format:"
-msgstr "D&o formátu:"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
+msgid "&Enabled"
+msgstr "&Zapnuto"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
-msgid "E&xtra flag:"
-msgstr "Pøíznak naví&c:"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+msgid "&Maximum Age (in days):"
+msgstr "®ivo&tnost (ve dnech):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
-msgid "C&onverter:"
-msgstr "K&onvertor:"
-
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
-msgid "C&opiers"
-msgstr "K&op. skripty"
-
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 msgid "&Format:"
 msgstr "&Formát:"
 
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:57
 msgid "&Copier:"
 msgstr "S&kript:"
+
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:67
+msgid "C&opiers"
+msgstr "K&op. skripty"
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
 msgid ""
@@ -2946,7 +2942,7 @@ msgstr "&Dvousloupcový dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
 #, fuzzy
-msgid "Listings settings"
+msgid "Listing settings"
 msgstr "Jazyková nastavení"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
@@ -8254,17 +8250,17 @@ msgstr "Zavøít okno|a"
 msgid "Redo|R"
 msgstr "Znovu zmìnu|n"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:836
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:828
 #: src/mathed/InsetMathNest.cpp:447
 msgid "Cut"
 msgstr "Vystøihnout"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:841
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:833
 #: src/mathed/InsetMathNest.cpp:455
 msgid "Copy"
 msgstr "Zkopírovat"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:817
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:809
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
 msgid "Paste"
 msgstr "Vlo¾it"
@@ -12733,7 +12729,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Ukonèování."
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1314
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1306
 msgid "Missing argument"
 msgstr "Chybí argument"
 
@@ -13488,40 +13484,40 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
-#: src/Text2.cpp:588
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "No font change defined."
 msgstr "Pøechod na dal¹í zmìnu"
 
-#: src/Text2.cpp:629
+#: src/Text2.cpp:624
 msgid "Nothing to index!"
 msgstr "Nic k indexaci !"
 
-#: src/Text2.cpp:631
+#: src/Text2.cpp:626
 msgid "Cannot index more than one paragraph!"
 msgstr "Nelze indexovat víc ne¾ jeden odstavec !"
 
-#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1338
+#: src/Text3.cpp:185 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Mód matematického editoru"
 
-#: src/Text3.cpp:722
+#: src/Text3.cpp:714
 msgid "Unknown spacing argument: "
 msgstr "Neznámý argument mezery: "
 
-#: src/Text3.cpp:895
+#: src/Text3.cpp:887
 msgid "Layout "
 msgstr "Rozvr¾ení "
 
-#: src/Text3.cpp:896
+#: src/Text3.cpp:888
 msgid " not known"
 msgstr " neznámý"
 
-#: src/Text3.cpp:1420 src/Text3.cpp:1432
+#: src/Text3.cpp:1412 src/Text3.cpp:1424
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1566
+#: src/Text3.cpp:1548
 msgid "Paragraph layout set"
 msgstr "Nastavení rozvr¾ení odstavce"
 
@@ -14319,11 +14315,11 @@ msgstr "Heslo rejstøíku"
 msgid "Label"
 msgstr "Znaèka"
 
-#: src/frontends/qt4/Dialogs.cpp:249 src/frontends/qt4/Dialogs.cpp:252
+#: src/frontends/qt4/Dialogs.cpp:247
 msgid "LaTeX Source"
 msgstr "Zdrojový text pro LaTeX"
 
-#: src/frontends/qt4/Dialogs.cpp:315
+#: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
 #, fuzzy
 msgid "Outline"
 msgstr "Vnìj¹í"
@@ -14546,9 +14542,6 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:218 src/frontends/qt4/QDocument.cpp:621
-#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
-#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
-#: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -14716,6 +14709,13 @@ msgstr "Nastavení plovoucích objektù"
 msgid "Graphics"
 msgstr "Obrázek"
 
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
+#: src/frontends/qt4/QListings.cpp:442
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
+msgstr ""
+
 #: src/frontends/qt4/QInclude.cpp:172
 msgid "Child Document"
 msgstr "Dokument potomka"
@@ -14749,7 +14749,7 @@ msgstr "®ádný obrázek"
 
 #: src/frontends/qt4/QListings.cpp:397
 #, fuzzy
-msgid "Program Listings Settings"
+msgid "Program Listing Settings"
 msgstr "Nastavení odstavce"
 
 #: src/frontends/qt4/QMathMatrixDialog.cpp:46
@@ -15203,7 +15203,7 @@ msgstr "Index"
 
 #: src/insets/InsetListings.cpp:127
 #, fuzzy
-msgid "Opened Listings Inset"
+msgid "Opened Listing Inset"
 msgstr "Popisek - otevøená vlo¾ka"
 
 #: src/insets/InsetListingsParams.cpp:128
@@ -15300,13 +15300,13 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:420
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
-"(Include dialog) or insert->caption (listings inset)"
+"(Include dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:425
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
-"dialog) or insert->caption (listings inset)"
+"dialog) or insert->caption (listing inset)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:596
@@ -15315,17 +15315,17 @@ msgid "Parameter %1$s: "
 msgstr " Makro: %1$s: "
 
 #: src/insets/InsetListingsParams.cpp:604
-msgid "Invalid (empty) listings param name."
+msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:608
-#, c-format
-msgid "Available listings parameters are %1$s"
-msgstr ""
+#, fuzzy, c-format
+msgid "Available listing parameters are %1$s"
+msgstr "Neznámý argument mezery: "
 
 #: src/insets/InsetListingsParams.cpp:626
 #, fuzzy, c-format
-msgid "Unknown listings param name: %1$s"
+msgid "Unknown listing parameter name: %1$s"
 msgstr "Neznámý argument mezery: "
 
 #: src/insets/InsetListingsParams.cpp:629
@@ -15619,7 +15619,7 @@ msgstr "Øetìzec byl nahrazen."
 msgid " strings have been replaced."
 msgstr " øetìzcù bylo nahrazeno."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1249
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -15651,34 +15651,34 @@ msgstr "®ádná vertikální linka (vline) ke smazání"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 msgid "No number"
 msgstr "®ádné èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1088 src/mathed/InsetMathHull.cpp:1097
+#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1222
+#: src/mathed/InsetMathHull.cpp:1220
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nelze zmìnit poèet øádkù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1232
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1242
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:853
+#: src/mathed/InsetMathNest.cpp:840
 msgid "create new math text environment ($...$)"
 msgstr "vytvoøit textové prostøedí uvnitø matematického ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:856
+#: src/mathed/InsetMathNest.cpp:843
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostøedí uvnitø matem. (textrm)"
 
@@ -15796,6 +15796,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#, fuzzy
+#~ msgid "Listings"
+#~ msgstr "Seznam"
 
 #, fuzzy
 #~ msgid "Toggle Table of Contents"
