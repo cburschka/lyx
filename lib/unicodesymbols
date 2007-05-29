@@ -1006,7 +1006,8 @@
 0x2219 "\\ensuremath{\\centerdot}" "amssymb" "" # BULLET OPERATOR
 0x221a "\\textsurd"               "textcomp" "" # SQUARE ROOT
 0x221e "\\ensuremath{\\infty}"    "" "" # INFINITY
-#0x221f ""                         "" "" # RIGHT ANGLE
+# use the following macro for the character RIGHT ANGLE
+0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" ""
 0x2229 "\\ensuremath{\\bigcap}"   "" "" # INTERSECTION
 0x222b "\\ensuremath{\\int}"      "" "" # INTEGRAL
 0x2248 "\\ensuremath{\\approx}"   "" "" # ALMOST EQUAL TO
