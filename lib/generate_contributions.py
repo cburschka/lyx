@@ -1337,6 +1337,14 @@ contributers = [
                  "28 February 2005",
                  u"Gtk frontend"),
 
+     contributer(u"Koji Yokota",
+                 "yokota () res ! otaru-uc ! ac ! jp",
+                 "GPL",
+                 "Re: [PATCH] po/ja.po: Japanese message file for 1.5.0 (merged from",
+                 "m=118033214223720",
+                 "28 May 2007",
+                 u"Japanese translation"),
+
      contributer(u"Abdelrazak Younes",
                  "younes.a () free ! fr",
                  "GPL",
