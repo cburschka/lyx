@@ -57,10 +57,13 @@ Building with Xcode/Mac:
 TIPS: - Xcode prefers UTF8 when opening source files, though LyX usually uses
         Latin1. To fix that select all source files in Xcode and click "Get Info"
         in the context menu. Change the encoding to Latin1.
-      - You can run and debug LyX from Xcode. For that select the lyx-qt4 executable
-        in Xcode, click on "Get Info" in the context menu and add 
-        "-sysdir a_valid_LyX_resource_directory" pointing e.g. to a valid 
-        Contents/Resources of a LyX.app directory.
+      - You can run and debug LyX from Xcode. For LyX to find its resources, there
+        are two possibilities:
+	a) Put a resource directory, e.g. a link to the lib directory of the 
+	   source tree, at .../trunk/../build/bin/Resources
+	b) Select the lyx-qt4 executable in Xcode, click on "Get Info" in the 
+	   context menu and add "-sysdir a_valid_LyX_resource_directory" 
+	   pointing e.g. to a valid Contents/Resources of a LyX.app directory.
       - LyX on Mac doesn't look for fonts in the resource directory if the
         executable is not in an .app bundle. Instead you have to create a
         symbolic link to the fonts directory in the place where the executable
