@@ -73,7 +73,7 @@
 #   specify              -> angeben
 #   switch               -> Option / wechseln
 #   template             -> Vorlage
-#   toggle               -> umschalten
+#   toggle               -> umschalten / an/aus
 #   tooltip              -> Kurzinfo
 #   type                 -> Art
 #   view(er)             -> ansehen / Ansicht / Betrachter
@@ -1307,23 +1307,20 @@ msgid "Sca&le on Screen (%):"
 msgstr "&Skalierung auf Bildschirm (%):"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
-#, fuzzy
 msgid "Listing Parameters"
-msgstr "Fehlendes Argument"
+msgstr "Listing-Parameter"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:76
-#, fuzzy
 msgid "C&aption:"
-msgstr "&Legende:"
+msgstr "Le&gende:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:89
-#, fuzzy
 msgid "La&bel:"
 msgstr "&Marke:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
 msgid "Mo&re parameters"
-msgstr ""
+msgstr "&Weitere Parameter"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:173
 msgid "Underline spaces in generated output"
@@ -4282,24 +4279,20 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
-#, fuzzy
 msgid "LatinOn"
-msgstr "Lettisch"
+msgstr "Latein an"
 
 #: lib/layouts/armenian-article.layout:18
-#, fuzzy
 msgid "Latin on"
-msgstr "Adresszusatz"
+msgstr "Latein an"
 
 #: lib/layouts/armenian-article.layout:25
-#, fuzzy
 msgid "LatinOff"
-msgstr "Lettisch"
+msgstr "Latein aus"
 
 #: lib/layouts/armenian-article.layout:34
-#, fuzzy
 msgid "Latin off"
-msgstr "Lettisch"
+msgstr "Latein aus"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
@@ -4347,9 +4340,8 @@ msgid "BeginFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:243
-#, fuzzy
 msgid "Frame "
-msgstr "Eingerahmt"
+msgstr "Rahmen "
 
 #: lib/layouts/beamer.layout:269
 msgid "BeginPlainFrame"
@@ -4492,47 +4484,40 @@ msgid "Corollary_"
 msgstr "Korollar"
 
 #: lib/layouts/beamer.layout:922
-#, fuzzy
 msgid "Definition. "
-msgstr "Definition.  "
+msgstr "Definition. "
 
 #: lib/layouts/beamer.layout:925
 msgid "Definitions"
 msgstr "Definitionen"
 
 #: lib/layouts/beamer.layout:928
-#, fuzzy
 msgid "Definitions. "
-msgstr "Definitionen.  "
+msgstr "Definitionen. "
 
 #: lib/layouts/beamer.layout:934
-#, fuzzy
 msgid "Example. "
-msgstr "Beispiel.  "
+msgstr "Beispiel. "
 
 #: lib/layouts/beamer.layout:942
 msgid "Examples"
 msgstr "Beispiele"
 
 #: lib/layouts/beamer.layout:945
-#, fuzzy
 msgid "Examples. "
-msgstr "Beispiele.  "
+msgstr "Beispiele. "
 
 #: lib/layouts/beamer.layout:952
-#, fuzzy
 msgid "Fact. "
-msgstr "Fakt.  "
+msgstr "Fakt. "
 
 #: lib/layouts/beamer.layout:958
-#, fuzzy
 msgid "Proof. "
-msgstr "Beweis.  "
+msgstr "Beweis. "
 
 #: lib/layouts/beamer.layout:964
-#, fuzzy
 msgid "Theorem. "
-msgstr "Theorem.  "
+msgstr "Theorem. "
 
 #: lib/layouts/beamer.layout:969
 msgid "Separator"
@@ -4552,9 +4537,8 @@ msgid "NoteItem"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1040
-#, fuzzy
 msgid "note: "
-msgstr "Notiz:  "
+msgstr "Notiz: "
 
 #: lib/layouts/beamer.layout:1076 lib/layouts/powerdot.layout:365
 #: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
@@ -6256,9 +6240,8 @@ msgid "Empty slide:"
 msgstr "emptyset"
 
 #: lib/layouts/powerdot.layout:199
-#, fuzzy
 msgid "Note:"
-msgstr "Notiz"
+msgstr "Notiz:"
 
 #: lib/layouts/powerdot.layout:246
 #, fuzzy
@@ -7242,9 +7225,8 @@ msgid "Arabic"
 msgstr "Arabisch"
 
 #: lib/languages:5
-#, fuzzy
 msgid "Armenian"
-msgstr "Amerikanisch"
+msgstr "Armenisch"
 
 #: lib/languages:6
 msgid "Austrian"
@@ -7296,11 +7278,11 @@ msgstr "Katalanisch"
 
 #: lib/languages:18
 msgid "Chinese (simplified)"
-msgstr ""
+msgstr "Chinesisch (vereinfacht)"
 
 #: lib/languages:19
 msgid "Chinese (traditional)"
-msgstr ""
+msgstr "Chinesisch (traditionell)"
 
 #: lib/languages:20
 msgid "Croatian"
@@ -7368,7 +7350,7 @@ msgstr "Italienisch"
 
 #: lib/languages:41
 msgid "Japanese"
-msgstr ""
+msgstr "Japanisch"
 
 #: lib/languages:42
 msgid "Kazakh"
@@ -7376,7 +7358,7 @@ msgstr "Kasachisch"
 
 #: lib/languages:44
 msgid "Korean"
-msgstr ""
+msgstr "Koreanisch"
 
 #: lib/languages:46
 msgid "Lithuanian"
@@ -8669,9 +8651,8 @@ msgid "TeX Code|X"
 msgstr "TeX-Code|X"
 
 #: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:350
-#, fuzzy
 msgid "Program Listing"
-msgstr "Initialisierung des Programms"
+msgstr "Programmlisting"
 
 #: lib/ui/stdmenus.inc:321
 msgid "Ordinary Quote|Q"
@@ -8746,9 +8727,8 @@ msgid "Matrix|x"
 msgstr "Matrix|x"
 
 #: lib/ui/stdmenus.inc:368 lib/ui/stdtoolbars.inc:163
-#, fuzzy
 msgid "Toggle Math Panels"
-msgstr "Mathe-Kontrollflächen"
+msgstr "Mathe-Kontrollflächen an/aus"
 
 #: lib/ui/stdmenus.inc:374
 msgid "Text Wrap Float|W"
@@ -8780,14 +8760,13 @@ msgstr "Änderungsverfolgung|v"
 
 #: lib/ui/stdmenus.inc:412
 msgid "Outline|O"
-msgstr ""
+msgstr "Gliederung|G"
 
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "Anhang hier beginnen|A"
 
 #: lib/ui/stdmenus.inc:415
-#, fuzzy
 msgid "Compressed|m"
 msgstr "Komprimiert|K"
 
@@ -8884,19 +8863,16 @@ msgid "Insert graphics"
 msgstr "Grafik einfügen"
 
 #: lib/ui/stdtoolbars.inc:79
-#, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "Inhaltsverzeichnis"
+msgid "Toggle Outline"
+msgstr "Gliederung an/aus"
 
 #: lib/ui/stdtoolbars.inc:80
-#, fuzzy
 msgid "Toggle Math Toolbar"
-msgstr "Alle &umschalten"
+msgstr "Mathe-Werkzeugleiste an/aus"
 
 #: lib/ui/stdtoolbars.inc:81
-#, fuzzy
 msgid "Toggle Table Toolbar"
-msgstr "Alle &umschalten"
+msgstr "Tabellen-Werkzeugleiste an/aus"
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Extra"
@@ -11854,9 +11830,8 @@ msgid "math frame"
 msgstr "Mathe (Rahmen)"
 
 #: src/Color.cpp:301
-#, fuzzy
 msgid "math corners"
-msgstr "Mathe (Linie)"
+msgstr "Mathe (Ecken)"
 
 #: src/Color.cpp:302
 msgid "math line"
@@ -12631,9 +12606,8 @@ msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
 #: src/LyXFunc.cpp:1429
-#, fuzzy
 msgid "Document not loaded."
-msgstr "Das Dokument wurde nicht gespeichert"
+msgstr "Dokument nicht geladen."
 
 #: src/LyXFunc.cpp:1505
 msgid "Syntax: set-color <lyx_name> <x11_name>"
@@ -13284,14 +13258,12 @@ msgid "Master Document"
 msgstr "Hauptdokument"
 
 #: src/MenuBackend.cpp:743
-#, fuzzy
 msgid "List of listings"
-msgstr "Abbildungsverzeichnis"
+msgstr "Listingsverzeichnis"
 
 #: src/MenuBackend.cpp:747
-#, fuzzy
 msgid "Other floats"
-msgstr "Andere Schrift-Einstellungen"
+msgstr "Andere Gleitobjekte"
 
 #: src/MenuBackend.cpp:757
 msgid "No Table of contents"
@@ -14661,9 +14633,8 @@ msgid "label parameter is not quoted with braces"
 msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:63
-#, fuzzy
 msgid "No language"
-msgstr "Sprache"
+msgstr "Keine Sprache"
 
 #: src/frontends/qt4/QListings.cpp:138
 #, fuzzy
@@ -15140,9 +15111,8 @@ msgid "Index"
 msgstr "Stichwortverzeichnis"
 
 #: src/insets/InsetListings.cpp:127
-#, fuzzy
 msgid "Opened Listings Inset"
-msgstr "Legenden-Einfügung geöffnet"
+msgstr "Listings-Einfügung geöffnet"
 
 #: src/insets/InsetListingsParams.cpp:128
 msgid "A value is expected."
@@ -15248,9 +15218,9 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:596
-#, fuzzy, c-format
+#, c-format
 msgid "Parameter %1$s: "
-msgstr " Makro: %1$s: "
+msgstr "Parameter: %1$s: "
 
 #: src/insets/InsetListingsParams.cpp:604
 msgid "Invalid (empty) listings param name."
@@ -15735,31 +15705,17 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
-#~ msgid "Table of Contents|T"
-#~ msgstr "Inhaltsverzeichnis|I"
-
 #, fuzzy
 #~ msgid "OK"
 #~ msgstr "&OK"
 
 #, fuzzy
-#~ msgid "Chinese"
-#~ msgstr "Kopien"
-
-#, fuzzy
 #~ msgid "Upper"
 #~ msgstr "perp"
-
-#~ msgid "Table of contents"
-#~ msgstr "Inhaltsverzeichnis"
 
 #, fuzzy
 #~ msgid "theorem"
 #~ msgstr "Theorem"
-
-#, fuzzy
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "Notiz-Einfügung geöffnet"
 
 #, fuzzy
 #~ msgid "Number style"
@@ -15791,25 +15747,5 @@ msgstr "Unbekannter Benutzer"
 #~ msgstr "Legende"
 
 #, fuzzy
-#~ msgid "A caption for the List of Listings"
-#~ msgstr "Die Legende der Teilabbildung"
-
-#, fuzzy
 #~ msgid "&Label"
 #~ msgstr "&Marke:"
-
-#, fuzzy
-#~ msgid "A Label for the caption"
-#~ msgstr "Tabellenlegende"
-
-#~ msgid "<- P&romote"
-#~ msgstr "<- Ebene h&öher"
-
-#~ msgid "D&own"
-#~ msgstr "&Ab"
-
-#~ msgid "De&mote ->"
-#~ msgstr "Ebene &tiefer ->"
-
-#~ msgid "Upd&ate"
-#~ msgstr "A&ktualisieren"
