@@ -116,6 +116,7 @@
 
 #cmakedefine USE_POSIX_PACKAGING 1
 #cmakedefine USE_WINDOWS_PACKAGING 1
+#cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
 #ifdef _MSC_VER

@@ -21,6 +21,8 @@ set(VERSION_INFO "CMake Build")
 
 if(WIN32)
 	set(USE_WINDOWS_PACKAGING 1)
+elseif(APPLE)
+	set(USE_MACOSX_PACKAGING 1)
 else(WIN32)
 	set(USE_POSIX_PACKAGING 1)
 endif(WIN32)
