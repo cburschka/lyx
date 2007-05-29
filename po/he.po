@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-25 19:14+0000\n"
+"POT-Creation-Date: 2007-05-29 22:39+0200\n"
 "PO-Revision-Date: 2007-05-23 10:14+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -160,7 +160,7 @@ msgstr "LyX: הוסף מסד נתונים של BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:116
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:54
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:85
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
 msgid "&Add"
 msgstr "הוסף"
@@ -168,7 +168,7 @@ msgstr "הוסף"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:264 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:272 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -430,7 +430,7 @@ msgid "Remove the selected branch"
 msgstr "הסר את הענף המסומן"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:68
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
 msgid "&Remove"
 msgstr "הסר"
@@ -1337,7 +1337,7 @@ msgstr "קלט"
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:234
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetListings.cpp:251
 #, fuzzy
 msgid "Listings"
 msgstr "רשימה"
@@ -1847,71 +1847,71 @@ msgstr "שנה..."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 #, fuzzy
-msgid "Converter File Cache"
-msgstr "הוסף קובץ"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:45
-#, fuzzy
-msgid "&Enabled"
-msgstr "טבלה"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:65
-#, fuzzy
-msgid "&Maximum Age (in days):"
-msgstr "מוריד קבצים מ-"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:83
-#, fuzzy
 msgid "Converter Defi&nitions"
 msgstr "הגדרה"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:115
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+msgid "C&onverter:"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+msgid "E&xtra flag:"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
+#, fuzzy
+msgid "&From format:"
+msgstr "מבנה לא תקין"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
+#, fuzzy
+msgid "&To format:"
+msgstr "מבנה לא תקין"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 #, fuzzy
 msgid "A&dd"
 msgstr "הו_סף..."
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:61
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 #, fuzzy
 msgid "&Modify"
 msgstr "_ערוך"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:137
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
 #, fuzzy
 msgid "Remo&ve"
 msgstr "הסר"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
 #, fuzzy
-msgid "&From format:"
-msgstr "מבנה לא תקין"
+msgid "Converter File Cache"
+msgstr "הוסף קובץ"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:207
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
 #, fuzzy
-msgid "&To format:"
-msgstr "מבנה לא תקין"
+msgid "&Enabled"
+msgstr "טבלה"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:241
-msgid "E&xtra flag:"
-msgstr ""
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+#, fuzzy
+msgid "&Maximum Age (in days):"
+msgstr "מוריד קבצים מ-"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:264
-msgid "C&onverter:"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:25
-msgid "C&opiers"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:100 src/frontends/qt4/ui/RefUi.ui:132
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 #, fuzzy
 msgid "&Format:"
 msgstr "מבנה לא תקין"
 
-#: src/frontends/qt4/ui/PrefCopiersUi.ui:113
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:57
 msgid "&Copier:"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCopiersUi.ui:67
+msgid "C&opiers"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
@@ -8434,7 +8434,7 @@ msgstr "נקה את חלון הכתב"
 msgid "Floatflt Figure"
 msgstr "איור צף"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:360 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
 msgstr "תוכן עניינים"
 
@@ -8540,6 +8540,10 @@ msgstr "עדכן"
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:411
 msgid "LaTeX Log|L"
 msgstr "תיעוד LaTeX"
+
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
+msgid "Outline|O"
+msgstr ""
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -9152,16 +9156,13 @@ msgstr "הת_רחק"
 msgid "Change Tracking|C"
 msgstr "מעקב אחר שינויים"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Table of Contents|T"
-msgstr "תוכן עניינים"
-
 #: lib/ui/stdmenus.inc:413
 msgid "Start Appendix Here|A"
 msgstr "התחל נספח פה"
 
 #: lib/ui/stdmenus.inc:415
-msgid "Compressed|o"
+#, fuzzy
+msgid "Compressed|m"
 msgstr "דחוס"
 
 #: lib/ui/stdmenus.inc:416
@@ -9224,11 +9225,11 @@ msgstr "הדפס מסמך"
 msgid "Check spelling"
 msgstr "בדיקת איות"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:763
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:771
 msgid "Undo"
 msgstr "בטל"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:773
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:781
 msgid "Redo"
 msgstr "בצע שוב"
 
@@ -9258,8 +9259,8 @@ msgstr "הכנס תמונה"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
-msgid "Toggle Table of Contents"
-msgstr "תוכן עניינים"
+msgid "Toggle Outline"
+msgstr "הפעל Noun"
 
 #: lib/ui/stdtoolbars.inc:80
 #, fuzzy
@@ -11896,12 +11897,12 @@ msgid ""
 msgstr ""
 "משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
 
-#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:899
-#: src/BufferView.cpp:905
+#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:907
+#: src/BufferView.cpp:913
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:517 src/BufferView.cpp:900
+#: src/Buffer.cpp:517 src/BufferView.cpp:908
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11909,7 +11910,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:906
+#: src/Buffer.cpp:523 src/BufferView.cpp:914
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12087,7 +12088,7 @@ msgstr "מחלקת מסמך לא זמינה"
 msgid "LyX will not be able to produce output."
 msgstr "LyX לא יוכל לייצר פלט"
 
-#: src/BufferView.cpp:234
+#: src/BufferView.cpp:242
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -12098,20 +12099,20 @@ msgstr ""
 "\n"
 "האם אתה רוצה חזור לגרסה השמורה?"
 
-#: src/BufferView.cpp:237 src/LyXFunc.cpp:912
+#: src/BufferView.cpp:245 src/LyXFunc.cpp:912
 msgid "Revert to saved document?"
 msgstr "חזור למסמך השמור?"
 
-#: src/BufferView.cpp:238 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
+#: src/BufferView.cpp:246 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
 msgid "&Revert"
 msgstr "חזור"
 
-#: src/BufferView.cpp:238
+#: src/BufferView.cpp:246
 #, fuzzy
 msgid "&Switch to document"
 msgstr "עבור למצב הבדלים"
 
-#: src/BufferView.cpp:260
+#: src/BufferView.cpp:268
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -12119,78 +12120,78 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.cpp:263
+#: src/BufferView.cpp:271
 msgid "Create new document?"
 msgstr "ליצור מסמך חדש?"
 
-#: src/BufferView.cpp:264
+#: src/BufferView.cpp:272
 #, fuzzy
 msgid "&Create"
 msgstr "צור מערכת קבצים iso %s"
 
-#: src/BufferView.cpp:570
+#: src/BufferView.cpp:578
 msgid "Save bookmark"
 msgstr "שמור סמנייה"
 
-#: src/BufferView.cpp:766
+#: src/BufferView.cpp:774
 #, fuzzy
 msgid "No further undo information"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/BufferView.cpp:776
+#: src/BufferView.cpp:784
 #, fuzzy
 msgid "No further redo information"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/BufferView.cpp:953
+#: src/BufferView.cpp:961
 #, fuzzy
 msgid "Mark off"
 msgstr "צלמית (כבוי)"
 
-#: src/BufferView.cpp:960
+#: src/BufferView.cpp:968
 #, fuzzy
 msgid "Mark on"
 msgstr "Position of mark on the ruler"
 
-#: src/BufferView.cpp:967
+#: src/BufferView.cpp:975
 #, fuzzy
 msgid "Mark removed"
 msgstr "הקבוצה לא נמחקה"
 
-#: src/BufferView.cpp:970
+#: src/BufferView.cpp:978
 #, fuzzy
 msgid "Mark set"
 msgstr "הגדר קבוצה"
 
-#: src/BufferView.cpp:1016
+#: src/BufferView.cpp:1024
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Color of the selection box"
 
-#: src/BufferView.cpp:1019
+#: src/BufferView.cpp:1027
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "מסמך Applixware Words"
 
-#: src/BufferView.cpp:1024
+#: src/BufferView.cpp:1032
 msgid "One word in selection."
 msgstr ""
 
-#: src/BufferView.cpp:1026
+#: src/BufferView.cpp:1034
 #, fuzzy
 msgid "One word in document."
 msgstr "The current page in the document"
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:1037
 #, fuzzy
 msgid "Count words"
 msgstr "מילים שלמות"
 
-#: src/BufferView.cpp:1608
+#: src/BufferView.cpp:1617
 msgid "Select LyX document to insert"
 msgstr ""
 
-#: src/BufferView.cpp:1610 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
 #: src/LyXFunc.cpp:2005 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12201,32 +12202,32 @@ msgstr ""
 msgid "Documents|#o#O"
 msgstr "מסמכים|מ"
 
-#: src/BufferView.cpp:1611 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/BufferView.cpp:1627 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
 #: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
 #, fuzzy
 msgid "Canceled."
 msgstr "בוטל"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1647
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "מסמך חדש"
 
-#: src/BufferView.cpp:1649
+#: src/BufferView.cpp:1658
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "מסמך חדש"
 
-#: src/BufferView.cpp:1651
+#: src/BufferView.cpp:1660
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Help document %s/%s not found"
@@ -13818,17 +13819,17 @@ msgstr "*** [%s] 0x%x הלקת ***"
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:588
+#: src/Text2.cpp:583
 #, fuzzy
 msgid "No font change defined."
 msgstr "לך לשינוי הבא"
 
-#: src/Text2.cpp:629
+#: src/Text2.cpp:624
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "ב ךרוצ ןיא\n"
 
-#: src/Text2.cpp:631
+#: src/Text2.cpp:626
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
@@ -14235,17 +14236,17 @@ msgstr ""
 msgid "RowPainter profiling"
 msgstr "Profiling alarm clock"
 
-#: src/frontends/LyXView.cpp:425
+#: src/frontends/LyXView.cpp:432
 #, fuzzy
 msgid " (changed)"
 msgstr "סיסמה שונתה"
 
-#: src/frontends/LyXView.cpp:429
+#: src/frontends/LyXView.cpp:436
 #, fuzzy
 msgid " (read only)"
 msgstr "property is read only"
 
-#: src/frontends/WorkArea.cpp:242
+#: src/frontends/WorkArea.cpp:244
 msgid "Formatting document..."
 msgstr "מעצב מסמך"
 
@@ -14716,10 +14717,10 @@ msgstr "Label"
 msgid "LaTeX Source"
 msgstr "IO Error"
 
-#: src/frontends/qt4/Dialogs.cpp:309
+#: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
 #, fuzzy
-msgid "Toc"
-msgstr "תוסף פרוטוקול TOC"
+msgid "Outline"
+msgstr "קו תחתי"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 #, fuzzy
@@ -15406,7 +15407,7 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/insets/Inset.cpp:260
+#: src/insets/Inset.cpp:268
 #, fuzzy
 msgid "Opened inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
@@ -15576,7 +15577,7 @@ msgstr "ערכת הכלים הנוספת של Andrew"
 msgid "footnote"
 msgstr "הערת תחתית"
 
-#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:515
+#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:517
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15614,16 +15615,16 @@ msgstr "קלט נדרש"
 msgid "Program Listing "
 msgstr "אתחול תוכנית"
 
-#: src/insets/InsetInclude.cpp:435 src/insets/InsetInclude.cpp:608
+#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:610
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:609
+#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:478
+#: src/insets/InsetInclude.cpp:479
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15631,7 +15632,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:484
+#: src/insets/InsetInclude.cpp:485
 #, fuzzy
 msgid "Different textclasses"
 msgstr "חלקים שונים נמצאו"
@@ -15645,137 +15646,139 @@ msgstr ""
 msgid "Index"
 msgstr "מפתח"
 
-#: src/insets/InsetListings.cpp:124
+#: src/insets/InsetListings.cpp:127
 #, fuzzy
 msgid "Opened Listings Inset"
 msgstr "פתח את תוספת הטקסט של הכותרת"
 
-#: src/insets/InsetListingsParams.cpp:114
+#: src/insets/InsetListingsParams.cpp:128
+msgid "A value is expected."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:131
+#: src/insets/InsetListingsParams.cpp:144
+#: src/insets/InsetListingsParams.cpp:157
+#: src/insets/InsetListingsParams.cpp:170
+#: src/insets/InsetListingsParams.cpp:197
+#: src/insets/InsetListingsParams.cpp:230
+msgid "Unbalanced braces!"
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:139
+msgid "Please specify true or false."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:142
+msgid "Only true or false is allowed."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:152
+msgid "Please specify an integer value."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:155
+msgid "An integer is expected."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:165
+msgid "Please specify a latex length expression."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:168
+msgid "Invalid latex length expression."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:178
+#, c-format
+msgid "Please specify one of %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:212
+#, c-format
+msgid "Try one of %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:214
+#, c-format
+msgid "I guess you mean %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:222
+#, c-format
+msgid "Please specify one or more of '%1$s'."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:227
+#, c-format
+msgid "Should be composed of one or more of %1$s."
+msgstr ""
+
+#: src/insets/InsetListingsParams.cpp:293
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:115
+#: src/insets/InsetListingsParams.cpp:295
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:117
+#: src/insets/InsetListingsParams.cpp:297
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:118
+#: src/insets/InsetListingsParams.cpp:300
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:133
+#: src/insets/InsetListingsParams.cpp:326
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:175
+#: src/insets/InsetListingsParams.cpp:410
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:180
+#: src/insets/InsetListingsParams.cpp:420
 msgid ""
 "This parameter should not be entered here. Please use caption editbox "
 "(Include dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:183
+#: src/insets/InsetListingsParams.cpp:425
 msgid ""
 "This parameter should not be entered here. Please use label editbox (Include "
 "dialog) or insert->caption (listings inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:287
+#: src/insets/InsetListingsParams.cpp:596
+#, fuzzy, c-format
+msgid "Parameter %1$s: "
+msgstr "Macro"
+
+#: src/insets/InsetListingsParams.cpp:604
 msgid "Invalid (empty) listings param name."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:298
+#: src/insets/InsetListingsParams.cpp:608
 #, c-format
 msgid "Available listings parameters are %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:321
+#: src/insets/InsetListingsParams.cpp:626
 #, fuzzy, c-format
 msgid "Unknown listings param name: %1$s"
 msgstr "Invalid argument value"
 
-#: src/insets/InsetListingsParams.cpp:324
+#: src/insets/InsetListingsParams.cpp:629
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:348
-msgid "A value is expected"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:351
-#: src/insets/InsetListingsParams.cpp:364
-#: src/insets/InsetListingsParams.cpp:378
-#: src/insets/InsetListingsParams.cpp:392
-#: src/insets/InsetListingsParams.cpp:419
-#: src/insets/InsetListingsParams.cpp:455
-msgid "Unbalanced braces!"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:358
-msgid "Please specify true or false"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:361
-#, c-format
-msgid "Only true or false is allowed for parameter %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:372
-msgid "Please specify an integer value"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:375
-#, c-format
-msgid "An integer is expected for parameter %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:386
-msgid "Please specify a latex length expression"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:389
-#, c-format
-msgid "Invalid latex length expression for parameter %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:400
-#, c-format
-msgid "Please specify one of %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:434
-#, c-format
-msgid "Try one of %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:437
-#, c-format
-msgid "I guess you mean %1$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:446
-#, c-format
-msgid "Please specify one or more of '%1$s'"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:452
-#, c-format
-msgid "Parameter %1$s should be composed of one or more of %2$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:523
+#: src/insets/InsetListingsParams.cpp:700
 #, c-format
 msgid "Parameter %1$s has already been defined"
 msgstr ""
@@ -16268,6 +16271,17 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "%s: שורה %d: משתמש לא מוכר %s\n"
+
+#~ msgid "Table of Contents|T"
+#~ msgstr "תוכן עניינים"
+
+#, fuzzy
+#~ msgid "Toggle Table of Contents"
+#~ msgstr "תוכן עניינים"
+
+#, fuzzy
+#~ msgid "Toc"
+#~ msgstr "תוסף פרוטוקול TOC"
 
 #~ msgid "Table of contents"
 #~ msgstr "תוכן עניינים"
