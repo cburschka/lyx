@@ -312,7 +312,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		QToc * qtoc = new QToc(*dialog, &gui_view);
 		dialog->setController(qtoc);
 		dialog->setView(new DockView<QToc, TocWidget>(
-			*dialog, qtoc, &gui_view, _("Toc")));
+			*dialog, qtoc, &gui_view, _("Outline")));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name, name));

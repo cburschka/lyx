@@ -76,7 +76,7 @@ ToolbarSet
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
 		Separator
-		Item "Toggle Table of Contents" "dialog-toggle toc"
+		Item "Toggle Outline" "dialog-toggle toc"
 		Item "Toggle Math Toolbar" "toolbar-toggle math"
 		Item "Toggle Table Toolbar" "toolbar-toggle table"
 	End
