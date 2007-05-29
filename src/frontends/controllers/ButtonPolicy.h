@@ -29,16 +29,16 @@ namespace frontend {
     dialogs. Only the policy is implemented here.  Separate ButtonController
     classes are needed for each GUI implementation.
 
-		Policy		| ReadOnly | Apply Button | Repeated Apply
+		Policy                    | ReadOnly | Apply Button | Repeated Apply
     ========================================================================
-    OkCancel			|	N  |	N	  |	-
-    OkCancelReadOnly		|	Y  |	N	  |	-
-    OkApplyCancel		|	N  |	Y	  |	Y
-    OkApplyCancelReadOnly	|	Y  |	Y	  |	Y
-    NoRepeatedApply		|	N  |	Y	  |	N
-    NoRepeatedApplyReadOnly	|	Y  |	Y	  |	N
-    Preferences			|	N  |	Y	  | No (Ok-Close)
-    Ignorant			|      N/A |	N/A	  |    N/A
+    OkCancel                  |     N    |      N        |      -
+    OkCancelReadOnly          |     Y    |      N        |      -
+    OkApplyCancel             |     N    |      Y        |      Y
+    OkApplyCancelReadOnly     |     Y    |      Y        |      Y
+    NoRepeatedApply           |     N    |      Y        |      N
+    NoRepeatedApplyReadOnly   |     Y    |      Y        |      N
+    Preferences               |     N    |      Y        | No (Ok-Close)
+    Ignorant                  |    N/A   |     N/A       |     N/A
     ========================================================================
 
     Policy
