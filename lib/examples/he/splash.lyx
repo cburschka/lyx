@@ -30,7 +30,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
-\quotes_language german
+\quotes_language polish
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -38,6 +38,7 @@
 \output_changes false
 \author "usti" 
 \author "ran" 
+\author "E" 
 \author "Ran Rutenberg" ran.rutenberg@gmail.com
 \end_header
 
@@ -73,8 +74,8 @@ LyX
 \lang english
 ---
 \lang hebrew
- השתמש בהם.
- אתה יכול להתחיל בקריאת הקובץ 
+ מומלץ להשתמש בהם.
+ כדאי להתחיל בקריאת הקובץ 
 \family sans
 ע
 \bar under
@@ -87,7 +88,7 @@ LyX
 מבוא
 \family default
 , המהווה הקדמה קצרה לתיעוד.
- לאחר מכן, תוכל להמשיך בקריאת 
+ לאחר מכן, ניתן להמשיך בקריאת 
 \family sans
 ע
 \bar under
@@ -110,13 +111,9 @@ LyX
 \begin_layout Enumerate
 אנחנו מתייחסים אל 
 \lang english
-'' LyX
+LyX
 \lang hebrew
-מעבד מסמכים
-\lang english
-``
-\lang hebrew
-.
+ כאל "מעבד מסמכים".
  הוא מתוכנן להיות שונה ממעבד תמלילים רגיל כך שמלאכת כתיבת המסמכים תהיה קלה
  יותר.
  מסמכי העזרה והתיעוד יבהירו לך סוגיה זו
@@ -191,23 +188,19 @@ LaTeX
 \lang english
 LaTeX
 \lang hebrew
- מנוסים יכולים לפיכך לקרוא את 
+ מנוסים יכולים לפיכך לקרוא את "השיעור המודרך" ברפרוף ולהעמיק בחלק 
+\begin_inset Quotes prd
+\end_inset
+
+
 \lang english
-''
-\lang hebrew
-השיעור המודרך
-\lang english
-``
-\lang hebrew
- ברפרוף ולהעמיק בחלק 
-\lang english
-LyX''
+LyX
 \lang hebrew
  למשתמשי 
 \lang english
-``LaTeX
+LaTeX
 \lang hebrew
- )כל השאר אל תדאגו! לא צריך לדעת 
+" )כל השאר אל תדאגו! לא צריך לדעת 
 \lang english
 LaTeX
 \lang hebrew
