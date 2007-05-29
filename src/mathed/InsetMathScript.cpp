@@ -484,7 +484,7 @@ bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 	}
 
 	// Are we 'up'?
-	if (has(up) && cur.idx() == idxOfScript(true)) {
+	if (cur.idx() == idxOfScript(true)) {
 		// can't go further up
 		if (up)
 			return false;
@@ -495,7 +495,7 @@ bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 	}
 
 	// Are we 'down'?
-	if (has(up) && cur.idx() == idxOfScript(false)) {
+	if (cur.idx() == idxOfScript(false)) {
 		// can't go further down
 		if (!up)
 			return false;
