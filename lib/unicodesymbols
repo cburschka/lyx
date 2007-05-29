@@ -48,7 +48,7 @@
 0x00b3 "\\textthreesuperior"      "textcomp" "force" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force" # µ MICRO SIGN
-0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN ; not equal to \textpilcrow
+0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "" # MIDDLE DOT
 0x00b8 "\\c\\ "                   "" "" # CEDILLA (command from latin1.def)
 0x00b9 "\\textonesuperior"        "textcomp" "force" # ¹ SUPERSCRIPT ONE
@@ -932,33 +932,48 @@
 0x1ef8 "\\~{Y}"                   "" "" # LATIN CAPITAL LETTER Y WITH TILDE
 0x1ef9 "\\~{y}"                   "" "" # LATIN SMALL LETTER Y WITH TILDE
 # general punctuation
+0x2010 "-"                        "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
+0x2012 "-"                        "" "" # FIGURE DASH
 0x2013 "--"                       "" "" # EN DASH
 0x2014 "---"                      "" "" # EM DASH
+#0x2015 ""                         "" "" # HORIZONTAL BAR
 0x2016 "\\textbardbl"             "textcomp" "" # DOUBLE VERTICAL LINE
+#0x2017 ""                         "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
+0x201a ","                        "" "" # SINGLE LOW-9 QUOTATION MARK
+#0x201b ""                         "" "" # SINGLE HIGH-REVERSED-9 QUOTATION MARK
 0x201c "\\textquotedblleft"       "" "" # LEFT DOUBLE QUOTATION MARK
 0x201d "\\textquotedblright"      "" "" # RIGHT DOUBLE QUOTATION MARK
 0x201e ",,"                       "" "" # DOUBLE LOW-9 QUOTATION MARK
+#0x201f ""                         "" "" # DOUBLE LOW-REVERSED-9 QUOTATION MARK
 0x2020 "\\dag"                    "" "" # DAGGER
 0x2021 "\\ddag"                   "" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" # BULLET
-0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET
+0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET # ≈ 0x25b8
+0x2024 "."                        "" "" # ONE DOT LEADER # ≈ FULL STOP
+0x2025 ".\\,."                    "" "" # TWO DOT LEADER
 0x2026 "\\ldots"                  "" "" # HORIZONTAL ELLIPSIS
+#0x2027 ""                         "" "" # HYPHENATION POINT
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "" # PRIME
 0x2033 "\\textacutedbl"           "textcomp" "" # DOUBLE PRIME
+#0x2034 ""                         "" "" # TRIPLE PRIME
 0x2035 "\\textasciigrave"         "textcomp" "" # REVERSED PRIME
 0x2036 "\\textgravedbl"           "textcomp" "" # REVERSED DOUBLE PRIME
+#0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
+0x2038 "\\^{}"                    "" "" # CARET
 0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
+0x203c "!!"                       "" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "" # RIGHT SQUARE BRACKET WITH QUILL
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
+0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
 # currency symbols
 0x20a1 "\\textcolonmonetary"      "textcomp" "" # COLON SIGN
 0x20a3 "\\textfrenchfranc"        "textcomp" "" # FRENCH FRANC SIGN
