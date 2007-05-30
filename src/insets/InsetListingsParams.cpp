@@ -162,10 +162,10 @@ docstring ListingsParam::validate(string const & par) const
 			if (!hint_.empty())
 				return hint_;
 			else
-				return _("Please specify a latex length expression.");
+				return _("Please specify a LaTeX length expression.");
 		}
 		if (!isValidLength(par2))
-			return _("Invalid latex length expression.");
+			return _("Invalid LaTeX length expression.");
 		if (unclosed)
 			return _("Unbalanced braces!");
 		return docstring();
