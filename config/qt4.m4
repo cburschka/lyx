@@ -152,7 +152,7 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 	  export PKG_CONFIG_PATH
 	fi
 	PKG_CHECK_MODULES(QT4_CORE, QtCore,,[:])
-	if test "$pkg_failed" == "no" ; then
+	if test "$pkg_failed" = "no" ; then
 		QT4_CORE_INCLUDES=$QT4_CORE_CFLAGS
 		AC_SUBST(QT4_CORE_INCLUDES)
 		QT4_CORE_LDFLAGS=`$PKG_CONFIG --libs-only-L QtCore`
@@ -161,7 +161,7 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 		AC_SUBST(QT4_CORE_LIB)
 	fi
 	PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui,,[:])
-	if test "$pkg_failed" == "no" ; then
+	if test "$pkg_failed" = "no" ; then
 		QT4_INCLUDES=$QT4_FRONTEND_CFLAGS
 		dnl QT4_LDFLAGS=$QT4_FRONTEND_LIBS
 		QT4_LDFLAGS=`$PKG_CONFIG --libs-only-L QtCore QtGui`
