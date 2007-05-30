@@ -245,12 +245,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 	// Make sure that if a par ends in newline, there is one more row
 	// under it
-	// FIXME this is a dirty trick. Now the _same_ position in the
-	// paragraph occurs in _two_ different rows, and has two different
-	// display positions, leading to weird behaviour when moving up/down.
 	if (z > 0 && par.isNewline(z - 1)) {
-		Row row(z - 1);
-		row.endpos(z - 1);
+		Row row(z);
+		row.endpos(z);
 		setRowWidth(right_margin, pit, row);
 		setHeightOfRow(pit, row);
 		pm.rows().push_back(row);
@@ -332,7 +329,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		// The test on par.size() is to catch zero-size pars, which
 		// would trigger the assert in Paragraph::getInset().
 		//inset = par.size() ? par.getInset(row.pos()) : 0;
-		if (!par.empty()
+		if (row.pos() < par.size()
 		    && par.isInset(row.pos()))
 		{
 		    switch(par.getInset(row.pos())->display()) {
@@ -790,7 +787,8 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars.size()) &&
-		    row.endpos() == par.size())
+		    row.endpos() == par.size() &&
+				!(row.endpos() > 0 && par.isNewline(row.endpos() - 1)))
 			maxdesc += 20;
 	}
 
