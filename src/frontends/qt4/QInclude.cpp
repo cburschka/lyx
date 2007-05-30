@@ -133,6 +133,7 @@ void QIncludeDialog::typeChanged(int v)
 			visiblespaceCB->setEnabled(false);
 			visiblespaceCB->setChecked(false);
 			previewCB->setEnabled(false);
+			previewCB->setChecked(false);
 			listingsGB->setEnabled(true);
 			break;
 		//case Verbatim
@@ -143,6 +144,10 @@ void QIncludeDialog::typeChanged(int v)
 			listingsGB->setEnabled(false);
 			break;
 	}
+	//see this thread 
+	//  http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg118471.html
+	//for the reason this is here.
+	okPB->setDefault(true);
 }
 
 
