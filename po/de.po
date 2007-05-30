@@ -2997,9 +2997,8 @@ msgid "&Indentation"
 msgstr "&Einrückung"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
-#, fuzzy
 msgid "Spacing"
-msgstr "Abstände"
+msgstr "Abstand"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:149
 msgid "&Line spacing:"
@@ -3011,7 +3010,7 @@ msgstr "Den Text in zwei Spalten formatieren"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:194
 msgid "Two-&column document"
-msgstr "&Zweispaltiges Dokument"
+msgstr "Z&weispaltiges Dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
 msgid "Listing settings"
@@ -4349,9 +4348,8 @@ msgid "Column"
 msgstr "Spalte"
 
 #: lib/layouts/beamer.layout:411
-#, fuzzy
 msgid "start column (increase depth!), width: "
-msgstr "Starte Spalte mit Breite:  "
+msgstr "Starte Spalte (erhöhe Tiefe!), Breite: "
 
 #: lib/layouts/beamer.layout:423
 msgid "Columns"
@@ -4398,9 +4396,8 @@ msgid "OverlayArea"
 msgstr ""
 
 #: lib/layouts/beamer.layout:575
-#, fuzzy
 msgid "overlayarea"
-msgstr "Overlay"
+msgstr ""
 
 #: lib/layouts/beamer.layout:590
 msgid "Uncover"
@@ -4452,9 +4449,8 @@ msgid "TitleGraphic"
 msgstr ""
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "Corollary_"
-msgstr "Korollar"
+msgstr ""
 
 #: lib/layouts/beamer.layout:922
 msgid "Definition. "
@@ -6186,45 +6182,39 @@ msgstr "Folie"
 
 #: lib/layouts/powerdot.layout:132
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: lib/layouts/powerdot.layout:142
-#, fuzzy
 msgid "EndSlide"
-msgstr "Folie"
+msgstr "Endfolie"
 
 #: lib/layouts/powerdot.layout:154
 msgid "~=~"
-msgstr ""
+msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:167
-#, fuzzy
 msgid "WideSlide"
-msgstr "Folie"
+msgstr "Breite Folie"
 
 #: lib/layouts/powerdot.layout:179
-#, fuzzy
 msgid "EmptySlide"
-msgstr "Folie"
+msgstr "Leere Folie"
 
 #: lib/layouts/powerdot.layout:183
-#, fuzzy
 msgid "Empty slide:"
-msgstr "emptyset"
+msgstr "Leere Folie:"
 
 #: lib/layouts/powerdot.layout:199
 msgid "Note:"
 msgstr "Notiz:"
 
 #: lib/layouts/powerdot.layout:246
-#, fuzzy
 msgid "ItemizeType1"
-msgstr "Auflistung"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:271
-#, fuzzy
 msgid "EnumerateType1"
-msgstr "Aufzählung"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
 msgid "List of Algorithms"
@@ -11427,13 +11417,12 @@ msgid "Encoding error"
 msgstr "Kodierungsfehler"
 
 #: src/Buffer.cpp:920
-#, fuzzy
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Einige Zeichen Ihres Dokuments sind mit der gewählten Kodierung nicht "
+"Einige Zeichen Ihres Dokuments sind mit der gewählten Kodierung wahrscheinlich nicht "
 "darstellbar.\n"
 "Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
 
@@ -11450,19 +11439,18 @@ msgid "Could not run chktex successfully."
 msgstr "Chktex konnte nicht erfolgreich ausgeführt werden."
 
 #: src/Buffer.cpp:1743
-#, fuzzy
 msgid "Preview source code"
-msgstr "Vorschau bereit"
+msgstr "Quellcode vorschauen"
 
 #: src/Buffer.cpp:1754
 #, c-format
 msgid "Preview source code for paragraph %1$s"
-msgstr ""
+msgstr "Quellcode für Absatz %1$s vorschauen"
 
 #: src/Buffer.cpp:1758
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
-msgstr ""
+msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
@@ -14203,9 +14191,8 @@ msgid "LaTeX Source"
 msgstr "LaTeX-Quelle"
 
 #: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
-#, fuzzy
 msgid "Outline"
-msgstr "Gliederung|G"
+msgstr "Gliederung"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -15048,18 +15035,17 @@ msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
 #: src/insets/InsetInclude.cpp:348
-#, fuzzy
 msgid "Program Listing "
-msgstr "Initialisierung des Programms"
+msgstr "Programmlisting "
 
 #: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:610
 msgid "Recursive input"
-msgstr ""
+msgstr "Rekursive Eingabe"
 
 #: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
-msgstr ""
+msgstr "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die Einbettung wird ignoriert."
 
 #: src/insets/InsetInclude.cpp:479
 #, c-format
@@ -15085,13 +15071,12 @@ msgid "Index"
 msgstr "Stichwortverzeichnis"
 
 #: src/insets/InsetListings.cpp:127
-#, fuzzy
 msgid "Opened Listing Inset"
-msgstr "Listings-Einfügung geöffnet"
+msgstr "Listing-Einfügung geöffnet"
 
 #: src/insets/InsetListingsParams.cpp:128
 msgid "A value is expected."
-msgstr ""
+msgstr "Ein Wert wird erwartet."
 
 #: src/insets/InsetListingsParams.cpp:131
 #: src/insets/InsetListingsParams.cpp:144
@@ -15100,51 +15085,51 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:197
 #: src/insets/InsetListingsParams.cpp:230
 msgid "Unbalanced braces!"
-msgstr ""
+msgstr "Nicht ausgeglichene Klammern!"
 
 #: src/insets/InsetListingsParams.cpp:139
 msgid "Please specify true or false."
-msgstr ""
+msgstr "Bitte spezifizieren Sie 'true' oder 'false'."
 
 #: src/insets/InsetListingsParams.cpp:142
 msgid "Only true or false is allowed."
-msgstr ""
+msgstr "Nur 'true' und 'false' sind erlaubt."
 
 #: src/insets/InsetListingsParams.cpp:152
 msgid "Please specify an integer value."
-msgstr ""
+msgstr "Bitte spezifizieren Sie einen ganzzahligen Wert."
 
 #: src/insets/InsetListingsParams.cpp:155
 msgid "An integer is expected."
-msgstr ""
+msgstr "Eine Ganzzahl wird erwartet."
 
 #: src/insets/InsetListingsParams.cpp:165
-msgid "Please specify a latex length expression."
-msgstr ""
+msgid "Please specify a LaTeX length expression."
+msgstr "Bitte spezifizieren Sie einen LaTeX-Längen-Ausdruck."
 
 #: src/insets/InsetListingsParams.cpp:168
-msgid "Invalid latex length expression."
-msgstr ""
+msgid "Invalid LaTeX length expression."
+msgstr "Ungültiger LaTeX-Längen-Ausdruck."
 
 #: src/insets/InsetListingsParams.cpp:178
 #, c-format
 msgid "Please specify one of %1$s."
-msgstr ""
+msgstr "Bitte spezifizieren Sie eines von %1$s."
 
 #: src/insets/InsetListingsParams.cpp:212
 #, c-format
 msgid "Try one of %1$s."
-msgstr ""
+msgstr "Versuchen Sie eines von %1$s."
 
 #: src/insets/InsetListingsParams.cpp:214
 #, c-format
 msgid "I guess you mean %1$s."
-msgstr ""
+msgstr "Ich vermute, Sie meinen %1$s."
 
 #: src/insets/InsetListingsParams.cpp:222
 #, c-format
 msgid "Please specify one or more of '%1$s'."
-msgstr ""
+msgstr "Bitte spezifizieren Sie eines oder mehrere von '%1$s'."
 
 #: src/insets/InsetListingsParams.cpp:227
 #, c-format
@@ -15178,7 +15163,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:410
 msgid "auto, last or a number"
-msgstr ""
+msgstr "'auto', 'last', oder eine Zahl"
 
 #: src/insets/InsetListingsParams.cpp:420
 msgid ""
@@ -15202,14 +15187,14 @@ msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:608
-#, fuzzy, c-format
+#, c-format
 msgid "Available listing parameters are %1$s"
-msgstr "Unbekannter Argumentname: "
+msgstr "Verfügbare Listing-Parameter sind %1$s"
 
 #: src/insets/InsetListingsParams.cpp:626
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown listing parameter name: %1$s"
-msgstr "Unbekannter Argumentname: "
+msgstr "Unbekannter Listing-Parametername: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:629
 #, c-format
