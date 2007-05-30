@@ -1360,9 +1360,8 @@ msgstr "Unformatiert"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:292 src/frontends/qt4/ui/ListingsUi.ui:16
 #: src/insets/InsetListings.cpp:251
-#, fuzzy
 msgid "Listing"
-msgstr "Liste"
+msgstr "Listing"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:326
 msgid "Load the file"
@@ -1397,9 +1396,8 @@ msgid "&Quote Style:"
 msgstr "&Stil der Anführungszeichen:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
-#, fuzzy
 msgid "&Main Settings"
-msgstr "Zweig-Einstellungen"
+msgstr "&Haupteinstellungen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
@@ -1407,175 +1405,155 @@ msgstr "Stil"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:67
 msgid "The content's base font size"
-msgstr ""
+msgstr "Die Basis-Schriftgröße des Inhalts"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:83
-#, fuzzy
 msgid "F&ont size:"
-msgstr "Schriftgröße"
+msgstr "S&chriftgröße:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:104
 msgid "The content's base font style"
-msgstr ""
+msgstr "Der Basis-Schriftstil des Inhalts"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:120
-#, fuzzy
 msgid "Font st&yle:"
-msgstr "Schriftgröße"
+msgstr "Schri&ftstil:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:136
-#, fuzzy
 msgid "Use extended character table"
-msgstr "Undefinierter Zeichenstil"
+msgstr "Erweiterte Zeichentabelle verwenden"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:139
-#, fuzzy
 msgid "&Extended Chars"
-msgstr "Handbuchergänzungen|H"
+msgstr "Erweiterte &Zeichen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:149
 msgid "Make spaces in strings visible by a special symbol"
-msgstr ""
+msgstr "Leerzeichen in Zeichenketten durch ein Spezialsymbol sichtbar machen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:152
 msgid "S&pace in string as Symbol"
-msgstr ""
+msgstr "Leerzeichen in Zeichenkette als S&ymbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:162
 msgid "Make spaces visible by a special symbol"
-msgstr ""
+msgstr "Leerzeichen durch ein Spezialsymbol sichtbar machen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:165
 msgid "S&pace as Symbol"
-msgstr ""
+msgstr "&Leerzeichen als Symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:175
 msgid "Break lines longer than the linewidth"
-msgstr ""
+msgstr "Zeilen umbrechen, die länger als die Zeilenbreite sind"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:178
-#, fuzzy
 msgid "&Break long lines"
-msgstr "&Lange Tabelle verwenden"
+msgstr "Lange Zeilen &umbrechen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:191
-#, fuzzy
 msgid "Range"
-msgstr "angle"
+msgstr "Bereich"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:203
-#, fuzzy
 msgid "&Last line:"
-msgstr "Mathe (Linie)"
+msgstr "Le&tzte Zeile:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:216
 msgid "The last line to be printed"
-msgstr ""
+msgstr "Die letzte zu druckende Zeile"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:229
 msgid "The first line to be printed"
-msgstr ""
+msgstr "Die erste zu druckende Zeile"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:242
-#, fuzzy
 msgid "Fi&rst line:"
-msgstr "Vorname"
+msgstr "E&rste Zeile:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:270
 msgid "Select the dialect of the programming language, if available"
-msgstr ""
+msgstr "Wählen Sie den Dialekt der Programmiersprache, falls vorhanden"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:277
-#, fuzzy
 msgid "&Dialect:"
-msgstr "&Datei:"
+msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Select the programming language"
-msgstr ""
+msgstr "Wählen Sie die Programmiersprache"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
-#, fuzzy
 msgid "Line numbering"
-msgstr "&Nummerierung"
+msgstr "Zeilennummerierung"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:319
 msgid "On which side should line numbers be printed?"
-msgstr ""
+msgstr "Auf welcher Seite sollen die Zeilennummern gedruckt werden?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:349
-#, fuzzy
 msgid "Choose the font size for line numbers"
-msgstr "Wählen Sie eine Stil-Datei"
+msgstr "Wählen Sie die Schriftgröße für Zeilennummern"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:365
-#, fuzzy
 msgid "Font si&ze:"
-msgstr "Schriftgröße"
+msgstr "Schrift&größe:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:381
-#, fuzzy
 msgid "S&tep:"
-msgstr "Schritt"
+msgstr "Schr&itt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:394
 msgid "Difference between two numbered lines"
-msgstr ""
+msgstr "Abstand zwischen zwei nummerierten Zeilen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:410
-#, fuzzy
 msgid "&Side: "
-msgstr "Folie"
+msgstr "&Seite: "
 
 #: src/frontends/qt4/ui/ListingsUi.ui:423
-#, fuzzy
 msgid "Placement"
-msgstr "&Platzierung:"
+msgstr "Platzierung"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:435
 msgid "Specify placement (htbp) for floating listings"
-msgstr ""
+msgstr "Spezifizieren Sie die Platzierung (htbp) für gleitende Listings"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:442
-#, fuzzy
 msgid "Check for floating listings"
-msgstr "Andere Schrift-Einstellungen"
+msgstr "Auswählen für gleitende Listings"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:445
-#, fuzzy
 msgid "&Float"
-msgstr "Gleitobjekt|o"
+msgstr "Gleitob&jekt"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:452
 msgid "Check for inline listings"
-msgstr ""
+msgstr "Auswählen für eingebettete Listings"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:455
-#, fuzzy
 msgid "&Inline listing"
-msgstr "&Eingebettet"
+msgstr "&Eingebettetes Listing"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:462
-#, fuzzy
 msgid "Placement:"
-msgstr "&Platzierung:"
+msgstr "Platzierung:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:476
-#, fuzzy
 msgid "Ad&vanced"
-msgstr "&Abbrechen"
+msgstr "Er&weitert"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:496
 msgid "More &Parameters"
-msgstr ""
+msgstr "Weitere &Parameter"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:520
 msgid "Feedback window"
-msgstr ""
+msgstr "Feedback-Fenster"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr ""
+msgstr "Geben Sie Listing-Parameter hier ein. Geben Sie '?' für eine Liste gültiger Parameter ein."
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -3036,9 +3014,8 @@ msgid "Two-&column document"
 msgstr "&Zweispaltiges Dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
-#, fuzzy
 msgid "Listing settings"
-msgstr "Spracheinstellungen"
+msgstr "Listing-Einstellungen"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
@@ -14619,7 +14596,7 @@ msgstr "Grafik"
 #: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
-msgstr ""
+msgstr "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste gültiger Parameter ein."
 
 #: src/frontends/qt4/QInclude.cpp:172
 msgid "Child Document"
@@ -14638,24 +14615,20 @@ msgid "No language"
 msgstr "Keine Sprache"
 
 #: src/frontends/qt4/QListings.cpp:138
-#, fuzzy
 msgid "common"
-msgstr "Kommentar"
+msgstr "gemeinsam"
 
 #: src/frontends/qt4/QListings.cpp:141
-#, fuzzy
 msgid "primitive"
-msgstr "prime"
+msgstr "primitiv"
 
 #: src/frontends/qt4/QListings.cpp:372
-#, fuzzy
 msgid "No dialect"
-msgstr "Kein Bild"
+msgstr "Kein Dialekt"
 
 #: src/frontends/qt4/QListings.cpp:397
-#, fuzzy
 msgid "Program Listing Settings"
-msgstr "Absatz-Einstellungen"
+msgstr "Programmlisting-Einstellungen"
 
 #: src/frontends/qt4/QMathMatrixDialog.cpp:46
 msgid "Math Matrix"
@@ -15706,55 +15679,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#, fuzzy
-#~ msgid "Listings"
-#~ msgstr "Liste"
-
-#~ msgid "Toc"
-#~ msgstr "Inhaltsverzeichnis"
-
-#, fuzzy
-#~ msgid "OK"
-#~ msgstr "&OK"
-
-#, fuzzy
-#~ msgid "Upper"
-#~ msgstr "perp"
-
-#, fuzzy
-#~ msgid "theorem"
-#~ msgstr "Theorem"
-
-#, fuzzy
-#~ msgid "Number style"
-#~ msgstr "Aufzählung"
-
-#~ msgid "Error closing file"
-#~ msgstr "Fehler beim Schließen der Datei"
-
-#~ msgid ""
-#~ "The output file could not be closed properly.\n"
-#~ " Probably some characters of your document are not representable in the "
-#~ "chosen encoding.\n"
-#~ "Changing the document encoding to utf8 could help."
-#~ msgstr ""
-#~ "Die Ausgabedatei konnte nicht richtig geschlossen werden.\n"
-#~ " Wahrscheinlich sind einige Zeichen Ihres Dokuments mit der gewählten "
-#~ "Kodierung nicht darstellbar.\n"
-#~ "Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
-
-#~ msgid "Corollary.  "
-#~ msgstr "Korollar.  "
-
-#, fuzzy
-#~ msgid "Basic style"
-#~ msgstr "BibTeX-Stile"
-
-#, fuzzy
-#~ msgid "&Caption"
-#~ msgstr "Legende"
-
-#, fuzzy
-#~ msgid "&Label"
-#~ msgstr "&Marke:"
