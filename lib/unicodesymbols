@@ -936,16 +936,17 @@
 0x2012 "-"                        "" "" # FIGURE DASH
 0x2013 "--"                       "" "" # EN DASH
 0x2014 "---"                      "" "" # EM DASH
-#0x2015 ""                         "" "" # HORIZONTAL BAR
+# use the following macro for the character HORIZONTAL BAR
+0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
 0x2016 "\\textbardbl"             "textcomp" "" # DOUBLE VERTICAL LINE
 #0x2017 ""                         "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
-0x201a ","                        "" "" # SINGLE LOW-9 QUOTATION MARK
+0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
 #0x201b ""                         "" "" # SINGLE HIGH-REVERSED-9 QUOTATION MARK
 0x201c "\\textquotedblleft"       "" "" # LEFT DOUBLE QUOTATION MARK
 0x201d "\\textquotedblright"      "" "" # RIGHT DOUBLE QUOTATION MARK
-0x201e ",,"                       "" "" # DOUBLE LOW-9 QUOTATION MARK
+0x201e "\\quotedblbase"           "" "" # DOUBLE LOW-9 QUOTATION MARK
 #0x201f ""                         "" "" # DOUBLE LOW-REVERSED-9 QUOTATION MARK
 0x2020 "\\dag"                    "" "" # DAGGER
 0x2021 "\\ddag"                   "" "" # DOUBLE DAGGER
@@ -969,7 +970,8 @@
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
 0x203c "!!"                       "" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
-#0x203e ""                         "" "" # OVERLINE
+# use the following macro for the character OVERLINE
+0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" ""
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "" # RIGHT SQUARE BRACKET WITH QUILL
@@ -993,7 +995,7 @@
 # letterlike symbols
 0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
 # use the following macro for the character CARE OF
-0x2105 "\\lyxcareof" "\\newcommand*\\lyxcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
+0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
 0x2113 "\\ensuremath{\\ell}"                  "" "" # SCRIPT SMALL L
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
