@@ -467,30 +467,28 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_UP:
-	case LFUN_UP_SELECT:
+	case LFUN_UP_SELECT: {
 		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_UP_SELECT);
-		needsUpdate |= cur.upDownInText(true);
-
-		if (!needsUpdate && oldTopSlice == cur.top()
-			  && cur.boundary() == oldBoundary)
+		bool const successful = cur.upDownInText(true, needsUpdate);
+		if (!successful)
 			cur.undispatched();
 		if (cur.selection())
 			saveSelection(cur);
 		break;
+	}
 
 	case LFUN_DOWN:
-	case LFUN_DOWN_SELECT:
+	case LFUN_DOWN_SELECT: {
 		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
-		needsUpdate |= cur.upDownInText(false);
-
-		if (!needsUpdate && oldTopSlice == cur.top() &&
-		    cur.boundary() == oldBoundary)
+		bool const successful = cur.upDownInText(false, needsUpdate);
+		if (!successful)
 			cur.undispatched();
 		if (cur.selection())
 			saveSelection(cur);
 		break;
+	}
 
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_UP_SELECT:

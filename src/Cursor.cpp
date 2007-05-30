@@ -1168,7 +1168,7 @@ bool Cursor::upDownInMath(bool up)
 }
 
 
-bool Cursor::upDownInText(bool up) 
+bool Cursor::upDownInText(bool up, bool & updateNeeded) 
 {
 	BOOST_ASSERT(text());
 
@@ -1248,12 +1248,11 @@ bool Cursor::upDownInText(bool up)
 		Cursor dummy = *this;
 		if (dummy == old)
 			++dummy.pos();
-		
-		bool const changed = bv().checkDepm(dummy, old);
-		
-		// Make sure that cur gets back whatever happened to dummy(Lgb)
-		if (changed)
+		if (bv().checkDepm(dummy, old)) {
+			updateNeeded = true;
+			// Make sure that cur gets back whatever happened to dummy(Lgb)
 			operator=(dummy);
+		}
 	} else {
 		// if there is a selection, we stay out of any inset, and just jump to the right position:
 		Cursor old = *this;
@@ -1274,7 +1273,7 @@ bool Cursor::upDownInText(bool up)
 			}
 		}
 		
-		bv().checkDepm(*this, old);
+		updateNeeded |= bv().checkDepm(*this, old);
 	}
 	
 	updateTextTargetOffset();

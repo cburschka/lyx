@@ -256,12 +256,17 @@ public:
 	/// return false for empty math insets
 	bool backspace();
 	/// move the cursor up by sending an internal LFUN_UP
+	/// return true if fullscreen update is needed
 	bool up();
-	/// move the cursor up by sending an internal LFUN_DOWN
+	/// move the cursor up by sending an internal LFUN_DOWN,
+	/// return true if fullscreen update is needed
 	bool down();
-	/// move up/down in a text inset, called for LFUN_UP/DOWN
-	bool upDownInText(bool up);
+	/// move up/down in a text inset, called for LFUN_UP/DOWN,
+	/// return true if successful, updateNeeded set to true if fullscreen
+	/// update is needed, otherwise it's not touched
+	bool upDownInText(bool up, bool & updateNeeded);
 	/// move up/down in math or any non text inset, call for LFUN_UP/DOWN
+	/// return true if successful
 	bool upDownInMath(bool up);
 	///
 	void plainErase();
