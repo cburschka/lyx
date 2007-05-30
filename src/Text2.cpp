@@ -992,6 +992,7 @@ bool Text::cursorLeft(Cursor & cur)
 		// -> skip it, i.e. set boundary to true, i.e. go only logically left
 		// there are some exceptions to ignore this: lineseps, newlines, spaces
 #if 0
+		// some effectless debug code to see the values in the debugger
 		bool bound = cur.boundary();
 		int rowpos = cur.textRow().pos();
 		int pos = cur.pos();
@@ -1040,6 +1041,7 @@ bool Text::cursorRight(Cursor & cur)
 		// next position is left of boundary, 
 		// but go to next line for special cases like space, newline, linesep
 #if 0
+		// some effectless debug code to see the values in the debugger
 		int endpos = cur.textRow().endpos();
 		int lastpos = cur.lastpos();
 		int pos = cur.pos();
