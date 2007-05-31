@@ -53,6 +53,12 @@ int GuiFontMetrics::maxDescent() const
 
 int GuiFontMetrics::lbearing(char_type c) const
 {
+	if (!is_utf16(c))
+		// FIXME: QFontMetrics::leftBearingdoes not support the
+		//        full unicode range. Once it does, we could use:
+		//return metrics_.leftBearing(toqstr(docstring(1,c)));
+		return 0;
+
 	return metrics_.leftBearing(ucs4_to_qchar(c));
 }
 
@@ -61,48 +67,46 @@ int GuiFontMetrics::rbearing(char_type c) const
 {
 	if (!rbearing_cache_.contains(c)) {
 		// Qt rbearing is from the right edge of the char's width().
-		QChar sc = ucs4_to_qchar(c);
-		int rb = metrics_.width(sc) - metrics_.rightBearing(sc);
+		int rb;
+		if (is_utf16(c)) {
+			QChar sc = ucs4_to_qchar(c);
+			rb = width(c) - metrics_.rightBearing(sc);
+		} else
+			// FIXME: QFontMetrics::leftBearingdoes not support the
+			//        full unicode range. Once it does, we could use:
+			// metrics_.rightBearing(toqstr(docstring(1,c)));
+			rb = width(c);
+
 		rbearing_cache_.insert(c, rb);
 	}
 	return rbearing_cache_.value(c);
 }
 
 
-int GuiFontMetrics::smallcapsWidth(QString const & s) const
+int GuiFontMetrics::smallcapsWidth(char_type c) const
 {
-	int w = 0;
-	int const ls = s.size();
-
-	for (int i = 0; i < ls; ++i) {
-		QChar const & c = s[i];
-		QChar const uc = c.toUpper();
-		if (c != uc)
-			w += smallcaps_metrics_.width(uc);
+	// FIXME: Optimisation probably needed: we don't use the width cache.
+	if (is_utf16(c)) {
+		QChar const qc = ucs4_to_qchar(c);
+		QChar const uc = qc.toUpper();
+		if (qc != uc)
+			return smallcaps_metrics_.width(uc);
 		else
-			w += metrics_.width(c);
+			return metrics_.width(qc);
+	} else {
+		QString const s = toqstr(docstring(1,c));
+		QString const us = s.toUpper();
+		if (s != us)
+			return smallcaps_metrics_.width(us);
+		else
+			return metrics_.width(s);
 	}
-	return w;
 }
 
 
 int GuiFontMetrics::width(docstring const & s) const
 {
 	size_t ls = s.size();
-	if (ls == 0)
-		return 0;
-
-	if (ls == 1 && !smallcaps_shape_) {
-		return width(s[0]);
-	}
-
-	if (smallcaps_shape_)
-		// Caution: The following ucs4 to QString conversions work
-		// for symbol fonts only because they are no real conversions
-		// but simple casts in reality. See comment in QLPainter::text()
-		// for more explanation.
-		return smallcapsWidth(toqstr(s));
-
 	int w = 0;
 	for (unsigned int i = 0; i < ls; ++i)
 		w += width(s[i]);
@@ -113,19 +117,7 @@ int GuiFontMetrics::width(docstring const & s) const
 
 int GuiFontMetrics::width(QString const & ucs2) const
 {
-	int const ls = ucs2.size();
-	if (ls == 1 && !smallcaps_shape_) {
-		return width(ucs2[0].unicode());
-	}
-
-	if (smallcaps_shape_)
-		return smallcapsWidth(ucs2);
-
-	int w = 0;
-	for (int i = 0; i < ls; ++i)
-		w += width(ucs2[i].unicode());
-
-	return w;
+	return width(qstring_to_ucs4(ucs2));
 }
 
 
@@ -176,7 +168,12 @@ Dimension const GuiFontMetrics::dimension(char_type c) const
 
 void GuiFontMetrics::fillMetricsCache(char_type c) const
 {
-	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
+	QRect r;
+	if (is_utf16(c))
+		r = metrics_.boundingRect(ucs4_to_qchar(c));
+	else
+		r = metrics_.boundingRect(toqstr(docstring(1,c)));
+
 	AscendDescend ad = { -r.top(), r.bottom() + 1};
 	// We could as well compute the width but this is not really
 	// needed for now as it is done directly in width() below.
@@ -187,10 +184,13 @@ void GuiFontMetrics::fillMetricsCache(char_type c) const
 int GuiFontMetrics::width(char_type c) const
 {
 	if (smallcaps_shape_)
-		return smallcapsWidth(ucs4_to_qchar(c));
+		return smallcapsWidth(c);
 
 	if (!width_cache_.contains(c)) {
-		width_cache_.insert(c, metrics_.width(ucs4_to_qchar(c)));
+		if (is_utf16(c))
+			width_cache_.insert(c, metrics_.width(ucs4_to_qchar(c)));
+		else
+			width_cache_.insert(c, metrics_.width(toqstr(docstring(1,c))));
 	}
 
 	return width_cache_.value(c);

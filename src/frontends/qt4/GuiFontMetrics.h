@@ -56,7 +56,7 @@ public:
 	int width(QString const & str) const;
 
 private:
-	int smallcapsWidth(QString const & s) const;
+	int smallcapsWidth(char_type c) const;
 
 	/// Metrics on the font
 	QFontMetrics metrics_;
