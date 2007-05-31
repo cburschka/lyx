@@ -6,6 +6,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\LyXLauncher.exe"
  File "${PRODUCT_SOURCEDIR}\bin\PDFViewWin.exe"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\zlib1.dll"
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
