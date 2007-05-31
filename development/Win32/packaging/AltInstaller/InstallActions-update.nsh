@@ -178,6 +178,10 @@ Function InstDirChange
    StrCpy $FileName "session"
    Call CheckAppPathPreferences # function from LyXUtils.nsh
    
+   # set the new path to the lyx.bat file
+   # following macro from TextFunc.nsh # calls Function ReplaceLineContent from LyXUtils.nsh
+   ${LineFind} "$INSTDIR\bin\lyx.bat" "" "1:-1" "ReplaceLineContent" 
+   
    # set new path to ImageMagick
    ReadRegStr $ImageMagickPath SHCTX "SOFTWARE\Classes\Applications" "AutoRun"
    ${if} $ImageMagickPath != ""
