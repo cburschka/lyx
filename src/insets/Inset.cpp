@@ -121,19 +121,6 @@ Inset::Inset()
 {}
 
 
-Inset::Inset(Inset const & inset)
-	: dim_(inset.dim_), background_color_(inset.background_color_)
-{}
-
-
-Inset & Inset::operator=(Inset const & inset)
-{
-	dim_ = inset.dim_;
-	background_color_ = inset.background_color_;
-	return *this;
-}
-
-
 std::auto_ptr<Inset> Inset::clone() const
 {
 	std::auto_ptr<Inset> b = doClone();

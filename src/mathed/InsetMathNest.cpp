@@ -78,6 +78,20 @@ InsetMathNest::InsetMathNest(idx_type nargs)
 {}
 
 
+InsetMathNest::InsetMathNest(InsetMathNest const & inset)
+	: InsetMath(inset), cells_(inset.cells_), lock_(inset.lock_)
+{}
+
+
+InsetMathNest & InsetMathNest::operator=(InsetMathNest const & inset)
+{
+	cells_ = inset.cells_;
+	lock_ = inset.lock_;
+	InsetMath::operator=(inset);
+	return *this;
+}
+
+
 InsetMath::idx_type InsetMathNest::nargs() const
 {
 	return cells_.size();

@@ -63,6 +63,8 @@ public:
 	///
 	explicit CursorSlice(Inset &);
 	///
+	virtual ~CursorSlice();
+	///
 	CursorSlice & operator=(CursorSlice const &);
 	///
 	bool isValid() const;
@@ -156,6 +158,8 @@ private:
 	bool pit_valid_;
 	/// position in this cell
 	pos_type pos_;
+	/// connection to referred \c inset_ destruction signal.
+	boost::signals::connection inset_connection_;
 };
 
 /// test for equality

@@ -27,6 +27,8 @@ class InsetMathNest : public InsetMath {
 public:
 	/// nestinsets have a fixed size to start with
 	explicit InsetMathNest(idx_type ncells);
+	///
+	virtual ~InsetMathNest() { destroyed(); }
 
 	/// the size is usually some sort of convex hull of the cells
 	/// hides inset::metrics() intentionally!
@@ -104,7 +106,15 @@ public:
 	int latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const;
 
+	/// This signal is emitted when the inset is destroyed.
+	boost::signal<void()> * destroyedSignal() { return &destroyed; }
+
 protected:
+	///
+	InsetMathNest(InsetMathNest const & inset);
+	///
+	InsetMathNest & operator=(InsetMathNest const &);
+
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
@@ -146,6 +156,10 @@ protected:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
+
+private:
+	/// This signal is emitted when the inset is destroyed.
+	boost::signal<void()> destroyed;
 };
 
 

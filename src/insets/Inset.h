@@ -56,7 +56,7 @@ namespace graphics { class PreviewLoader; }
 // everything storing large quantities of insets. Mathed e.g. would
 // suffer.
 
-class Inset : public boost::noncopyable {
+class Inset {
 public:
 	///
 	typedef ptrdiff_t  difference_type;
@@ -72,7 +72,7 @@ public:
 	typedef size_t     col_type;
 
 	/// virtual base class destructor
-	virtual ~Inset() { destroyed();}
+	virtual ~Inset() {}
 	/// replicate ourselves
 	std::auto_ptr<Inset> clone() const;
 
@@ -477,14 +477,15 @@ public:
 	//
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
-	/// This signal is emitted when the inset is destroyed.
-	boost::signal<void()> destroyed;
+	/// Signal for inset destruction.
+	/** This signal is emitted at the inset destruction for insets that
+	*   support this.
+	*/
+	virtual boost::signal<void()> * destroyedSignal() { return 0; }
 
 protected:
 	Inset();
-	Inset(Inset const & i);
-	///
-	Inset & operator=(Inset const &);
+
 	/** The real dispatcher.
 	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.

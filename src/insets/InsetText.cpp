@@ -51,6 +51,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
+#include <boost/signal.hpp>
 
 #include <sstream>
 

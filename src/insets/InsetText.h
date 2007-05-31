@@ -42,6 +42,8 @@ public:
 	explicit InsetText(BufferParams const &);
 	///
 	InsetText();
+	///
+	virtual ~InsetText() { destroyed(); }
 
 	/// empty inset to empty par
 	void clear();
@@ -138,6 +140,8 @@ public:
 	virtual bool wide() const { return wide_inset_; }
 	///
 	void setWide(bool wide_inset) { wide_inset_ = wide_inset; }
+	///
+	boost::signal<void()> * destroyedSignal() { return &destroyed; }
 
 protected:
 	///
@@ -159,6 +163,9 @@ private:
 	mutable pit_type old_pit;
 	///
 	bool wide_inset_;
+	/// This signal is emitted when the inset is destroyed.
+	boost::signal<void()> destroyed;
+
 public:
 	///
 	mutable Text text_;
