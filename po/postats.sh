@@ -202,6 +202,8 @@ cat <<EOF
 	'he' => 'Hebrew',
 	'hu' => 'Hungarian',
 	'it' => 'Italian',
+	'ja' => 'Japanese',
+	'ko' => 'Korean',
 	'nl' => 'Dutch',
 	'nn' => 'Nynorsk',
 	'nb' => 'Norwegian',
@@ -230,7 +232,7 @@ usort (\$podata, "cmp");
 
 <p>
 	The following table details the current state of the translations of the
-	LyX GUI for the LyX stable branch (currently $lyx_version).
+	LyX GUI for the LyX development branch (currently $lyx_version).
 	Unfortunately, only a few languages are well-supported. The LyX team may,
 	therefore, decide to exclude some of the translations from a formal
 	release in order not to confuse the user with a strongly mixed-language
