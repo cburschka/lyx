@@ -497,6 +497,14 @@ contributers = [
                  "25 February 2005",
                  u"New graphics handling scheme and more"),
 
+     contributer(u"Dov Feldstern",
+                 "dfeldstern () fastimap ! com",
+                 "GPL",
+                 "Re: Farsi support re-submission plus a little more",
+                 "m=118064913824836",
+                 "31 May 2007",
+                 u"RTL/BiDi-related fixes"),
+
      contributer(u"Ronald Florence",
                  "ron () 18james ! com",
                  "GPL",
