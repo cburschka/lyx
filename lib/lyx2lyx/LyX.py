@@ -26,8 +26,11 @@ import sys
 import re
 import time
 
-import lyx2lyx_version
-version_lyx2lyx = lyx2lyx_version.version
+try:
+    import lyx2lyx_version
+    version_lyx2lyx = lyx2lyx_version.version
+except: # we are running from build directory so assume the last version
+    version_lyx2lyx = '1.5.0svn'
 
 default_debug_level = 2
 
