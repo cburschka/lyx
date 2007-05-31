@@ -15,7 +15,7 @@ case AC_PACKAGE_VERSION in
          AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
          LYX_DATE="not released yet"
          echo "WARNING: This is a development version. Expect bugs.";;
-  *pre*|*alpha*|*beta*) lyx_prerelease=yes
+  *pre*|*alpha*|*beta*|*rc*) lyx_prerelease=yes
         echo "WARNING: This is a prerelease. Be careful and backup your documents.";;
 esac
 AC_SUBST(lyx_devel_version)])
