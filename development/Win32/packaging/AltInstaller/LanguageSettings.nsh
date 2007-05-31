@@ -124,12 +124,13 @@
    StrCpy ${LangSysEnc} "932"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1042
-#   StrCpy ${LangCdeSys} "ko"
-#   StrCpy ${LangNmeSys} "Korean"
-#   StrCpy ${LangSysEnc} "949"
-#  ${endif}
+  # currently no dictionary available
+  ${if} ${LangISOCode} = 1042
+   StrCpy ${LangNme} "Korean"
+   StrCpy ${LangCdeSys} "ko"
+   StrCpy ${LangNmeSys} "Korean"
+   StrCpy ${LangSysEnc} "949"
+  ${endif}
 
   ${if} ${LangISOCode} = 1043
    StrCpy ${LangNme} "Nederlands"
@@ -438,7 +439,7 @@
    StrCpy ${LangCde} "cs_CZ"
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
- 
+
   ${if} ${Name} == "Dansk"
    StrCpy ${LangCde} "da_DK"
    StrCpy ${LangEnc} "cp-1252"
@@ -478,15 +479,20 @@
    StrCpy ${LangCde} "he_IL"
    StrCpy ${LangEnc} "cp-1255"
   ${endif}
-  
+
   ${if} ${Name} == "Italiano"
    StrCpy ${LangCde} "it_IT"
    StrCpy ${LangEnc} "cp-1252"
   ${endif}
-  
+
   ${if} ${Name} == "Japanese"
    StrCpy ${LangCde} "ja_JP"
    StrCpy ${LangEnc} "cp-932"
+  ${endif}
+
+  ${if} ${Name} == "Korean"
+   StrCpy ${LangCde} "ko" # no country code, see the definition in the file "SVN ~/lib/languages"
+   StrCpy ${LangEnc} "cp-949"
   ${endif}
 
   ${if} ${Name} == "Magyar"

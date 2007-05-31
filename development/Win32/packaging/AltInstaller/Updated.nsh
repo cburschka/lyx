@@ -3,10 +3,13 @@ Function UpdateModifiedFiles
  # list with modified files for LyX 1.5pre1 xx-05-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\LyXLauncher.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\PDFViewWin.exe"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\bind"
@@ -44,7 +47,9 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-insert.xpm"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout" 
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout"
+ SetOutPath "$INSTDIR\Resources\lyx2lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\default.ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
