@@ -1393,6 +1393,7 @@ po_extra_files = Split('''
     insert-header.sin
     it.po
     ja.po
+    ko.po
     lyx_pot.py
     nb.po
     nl.po
