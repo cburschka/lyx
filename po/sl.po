@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-29 23:41+0200\n"
+"POT-Creation-Date: 2007-06-01 00:31+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -1848,7 +1848,7 @@ msgstr "en odstavek"
 msgid "L&ine spacing:"
 msgstr "Presledki med &vrsticami:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1773
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1774
 #: src/frontends/qt4/QDocument.cpp:231
 msgid "Single"
 msgstr "Enojni"
@@ -1857,7 +1857,7 @@ msgstr "Enojni"
 msgid "1.5"
 msgstr "1,5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1779
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1780
 #: src/frontends/qt4/QDocument.cpp:235
 msgid "Double"
 msgstr "Dvojni"
@@ -3751,7 +3751,7 @@ msgstr "Literatura"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:524
+#: src/rowpainter.cpp:532
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -7823,142 +7823,147 @@ msgid "Estonian"
 msgstr "estonsko"
 
 #: lib/languages:28
+#, fuzzy
+msgid "Farsi"
+msgstr "Robovi"
+
+#: lib/languages:29
 msgid "Finnish"
 msgstr "finsko"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "French"
 msgstr "francosko"
 
-#: lib/languages:31
+#: lib/languages:32
 msgid "Galician"
 msgstr "galsko"
 
-#: lib/languages:34
+#: lib/languages:33
 msgid "German"
 msgstr "nem¹ko"
 
-#: lib/languages:35
+#: lib/languages:34
 msgid "German (new spelling)"
 msgstr ""
 
-#: lib/languages:36 lib/ui/stdtoolbars.inc:436
+#: lib/languages:35 lib/ui/stdtoolbars.inc:436
 msgid "Greek"
 msgstr "gr¹ko"
 
-#: lib/languages:37
+#: lib/languages:36
 msgid "Hebrew"
 msgstr "hebrejsko"
 
-#: lib/languages:39
+#: lib/languages:38
 msgid "Irish"
 msgstr "irsko"
 
-#: lib/languages:40
+#: lib/languages:39
 msgid "Italian"
 msgstr "italijansko"
 
-#: lib/languages:41
+#: lib/languages:40
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:41
 msgid "Kazakh"
 msgstr "kaza¹ko"
 
-#: lib/languages:44
+#: lib/languages:43
 msgid "Korean"
 msgstr ""
 
-#: lib/languages:46
+#: lib/languages:45
 msgid "Lithuanian"
 msgstr ""
 
-#: lib/languages:47
+#: lib/languages:46
 #, fuzzy
 msgid "Latvian"
 msgstr "Lokacija"
 
-#: lib/languages:48
+#: lib/languages:47
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:49
+#: lib/languages:48
 msgid "Magyar"
 msgstr "mad¾arsko"
 
-#: lib/languages:50
+#: lib/languages:49
 msgid "Norsk"
 msgstr "njorsk"
 
-#: lib/languages:51
+#: lib/languages:50
 #, fuzzy
 msgid "Nynorsk"
 msgstr "njorsk"
 
-#: lib/languages:52
+#: lib/languages:51
 msgid "Polish"
 msgstr "poljsko"
 
-#: lib/languages:53
+#: lib/languages:52
 #, fuzzy
 msgid "Portuguese"
 msgstr "portugalsko"
 
-#: lib/languages:54
+#: lib/languages:53
 msgid "Romanian"
 msgstr "romunsko"
 
-#: lib/languages:55
+#: lib/languages:54
 msgid "Russian"
 msgstr "rusko"
 
-#: lib/languages:56
+#: lib/languages:55
 msgid "Scottish"
 msgstr "¹kotsko"
 
-#: lib/languages:57
+#: lib/languages:56
 msgid "Serbian"
 msgstr "srbsko"
 
-#: lib/languages:58
+#: lib/languages:57
 msgid "Serbo-Croatian"
 msgstr "srbo-hrva¹ko"
 
-#: lib/languages:59
+#: lib/languages:58
 msgid "Spanish"
 msgstr "¹pansko"
 
-#: lib/languages:60
+#: lib/languages:59
 msgid "Slovak"
 msgstr "slova¹ko"
 
-#: lib/languages:61
+#: lib/languages:60
 msgid "Slovene"
 msgstr "slovensko"
 
-#: lib/languages:62
+#: lib/languages:61
 msgid "Swedish"
 msgstr "¹vedsko"
 
-#: lib/languages:63
+#: lib/languages:62
 msgid "Thai"
 msgstr "tajsko"
 
-#: lib/languages:64
+#: lib/languages:63
 msgid "Turkish"
 msgstr "tur¹ko"
 
-#: lib/languages:65
+#: lib/languages:64
 msgid "Ukrainian"
 msgstr "ukrajinsko"
 
-#: lib/languages:66
+#: lib/languages:65
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "srbsko"
 
-#: lib/languages:67
+#: lib/languages:66
 msgid "Welsh"
 msgstr "vel¹ko"
 
@@ -8916,18 +8921,18 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Ponovi|o"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:828
-#: src/mathed/InsetMathNest.cpp:447
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:826
+#: src/mathed/InsetMathNest.cpp:461
 msgid "Cut"
 msgstr "Izre¾i"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:833
-#: src/mathed/InsetMathNest.cpp:455
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:831
+#: src/mathed/InsetMathNest.cpp:469
 msgid "Copy"
 msgstr "Prepi¹i"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:809
-#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:807
+#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:440
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -9558,6 +9563,10 @@ msgstr "Vstavi matriko"
 #, fuzzy
 msgid "Insert graphics"
 msgstr "Vstavi dodatek"
+
+#: lib/ui/stdtoolbars.inc:77
+msgid "Insert table"
+msgstr "Vstavi tabelo"
 
 #: lib/ui/stdtoolbars.inc:79
 #, fuzzy
@@ -13593,7 +13602,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Izhod|I"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1306
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1304
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -14114,7 +14123,9 @@ msgstr "Izberi do konca spisa"
 
 #: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
 #: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
-msgid "No Documents Open!"
+#: src/MenuBackend.cpp:813
+#, fuzzy
+msgid "No Document Open!"
 msgstr "Ni odprtih spisov!"
 
 #: src/MenuBackend.cpp:540
@@ -14150,7 +14161,12 @@ msgstr "Ni vsebinskega kazala"
 msgid " (auto)"
 msgstr ""
 
-#: src/Paragraph.cpp:1581 src/frontends/qt4/QParagraph.cpp:237
+#: src/MenuBackend.cpp:821
+#, fuzzy
+msgid "No Branch in Document!"
+msgstr "Spis"
+
+#: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Brez pomena s tem videzom!"
 
@@ -14196,7 +14212,7 @@ msgstr ""
 msgid "Unknown token"
 msgstr "Neznana akcija"
 
-#: src/Text.cpp:726
+#: src/Text.cpp:727
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -14204,73 +14220,73 @@ msgid ""
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/Text.cpp:737
+#: src/Text.cpp:738
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/Text.cpp:1739
+#: src/Text.cpp:1740
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Jezik"
 
-#: src/Text.cpp:1745
+#: src/Text.cpp:1746
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/Text.cpp:1749
+#: src/Text.cpp:1750
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/Text.cpp:1759
+#: src/Text.cpp:1760
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/Text.cpp:1764
+#: src/Text.cpp:1765
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/Text.cpp:1770
+#: src/Text.cpp:1771
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:233
+#: src/Text.cpp:1777 src/frontends/qt4/QDocument.cpp:233
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
 
-#: src/Text.cpp:1782
+#: src/Text.cpp:1783
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1792
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/Text.cpp:1792
+#: src/Text.cpp:1793
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/Text.cpp:1793
+#: src/Text.cpp:1794
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1794
+#: src/Text.cpp:1795
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1801
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1802
+#: src/Text.cpp:1803
 msgid ", Boundary: "
 msgstr ""
 
@@ -14293,25 +14309,25 @@ msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/Text3.cpp:714
+#: src/Text3.cpp:712
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/Text3.cpp:887
+#: src/Text3.cpp:885
 msgid "Layout "
 msgstr "Videz "
 
-#: src/Text3.cpp:888
+#: src/Text3.cpp:886
 msgid " not known"
 msgstr " ni znan"
 
-#: src/Text3.cpp:1412 src/Text3.cpp:1424
+#: src/Text3.cpp:1410 src/Text3.cpp:1422
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/Text3.cpp:1548
+#: src/Text3.cpp:1546
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -15609,23 +15625,23 @@ msgstr "Nastavitve plovke"
 msgid "Graphics"
 msgstr "Grafika"
 
-#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:216
 #: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
 #: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:172
+#: src/frontends/qt4/QInclude.cpp:177
 #, fuzzy
 msgid "Child Document"
 msgstr "Spis"
 
-#: src/frontends/qt4/QInclude.cpp:251
+#: src/frontends/qt4/QInclude.cpp:256
 msgid "caption parameter is not quoted with braces"
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:258
+#: src/frontends/qt4/QInclude.cpp:263
 msgid "label parameter is not quoted with braces"
 msgstr ""
 
@@ -15894,7 +15910,7 @@ msgstr "V imenu datoteke ne sme biti teh znakov:"
 msgid "LyX: %1$s"
 msgstr "LyX: Url"
 
-#: src/insets/Inset.cpp:268
+#: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Odprt vstavek"
 
@@ -16145,136 +16161,133 @@ msgstr "Stvarno kazalo"
 msgid "Opened Listing Inset"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/InsetListingsParams.cpp:128
+#: src/insets/InsetListingsParams.cpp:129
 msgid "A value is expected."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:131
-#: src/insets/InsetListingsParams.cpp:144
-#: src/insets/InsetListingsParams.cpp:157
-#: src/insets/InsetListingsParams.cpp:170
-#: src/insets/InsetListingsParams.cpp:197
-#: src/insets/InsetListingsParams.cpp:230
+#: src/insets/InsetListingsParams.cpp:132
+#: src/insets/InsetListingsParams.cpp:145
+#: src/insets/InsetListingsParams.cpp:158
+#: src/insets/InsetListingsParams.cpp:171
+#: src/insets/InsetListingsParams.cpp:198
+#: src/insets/InsetListingsParams.cpp:231
 msgid "Unbalanced braces!"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:139
+#: src/insets/InsetListingsParams.cpp:140
 msgid "Please specify true or false."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:142
+#: src/insets/InsetListingsParams.cpp:143
 msgid "Only true or false is allowed."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:152
+#: src/insets/InsetListingsParams.cpp:153
 msgid "Please specify an integer value."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:155
+#: src/insets/InsetListingsParams.cpp:156
 msgid "An integer is expected."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:165
-msgid "Please specify a latex length expression."
+#: src/insets/InsetListingsParams.cpp:166
+msgid "Please specify a LaTeX length expression."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:168
-msgid "Invalid latex length expression."
+#: src/insets/InsetListingsParams.cpp:169
+msgid "Invalid LaTeX length expression."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:178
+#: src/insets/InsetListingsParams.cpp:179
 #, c-format
 msgid "Please specify one of %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:212
+#: src/insets/InsetListingsParams.cpp:213
 #, c-format
 msgid "Try one of %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:214
+#: src/insets/InsetListingsParams.cpp:215
 #, c-format
 msgid "I guess you mean %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:222
+#: src/insets/InsetListingsParams.cpp:223
 #, c-format
 msgid "Please specify one or more of '%1$s'."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:227
+#: src/insets/InsetListingsParams.cpp:228
 #, c-format
 msgid "Should be composed of one or more of %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:293
+#: src/insets/InsetListingsParams.cpp:294
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:295
+#: src/insets/InsetListingsParams.cpp:296
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:297
+#: src/insets/InsetListingsParams.cpp:298
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:300
+#: src/insets/InsetListingsParams.cpp:301
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:326
+#: src/insets/InsetListingsParams.cpp:327
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:410
+#: src/insets/InsetListingsParams.cpp:411
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:420
+#: src/insets/InsetListingsParams.cpp:421
 msgid ""
-"This parameter should not be entered here. Please use caption editbox "
-"(Include dialog) or insert->caption (listing inset)"
+"This parameter should not be entered here. Please use the caption edit box "
+"(when using the include dialog) or menu Insert->Caption (when defining a "
+"listing inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:425
+#: src/insets/InsetListingsParams.cpp:427
 msgid ""
-"This parameter should not be entered here. Please use label editbox (Include "
-"dialog) or insert->caption (listing inset)"
+"This parameter should not be entered here. Please use the label edit box "
+"(when using the include dialog) or menu Insert->Label (when defining a "
+"listing inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:596
+#: src/insets/InsetListingsParams.cpp:599
 #, fuzzy, c-format
 msgid "Parameter %1$s: "
 msgstr " Makroukaz: %s: "
 
-#: src/insets/InsetListingsParams.cpp:604
+#: src/insets/InsetListingsParams.cpp:607
 msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:608
+#: src/insets/InsetListingsParams.cpp:611
 #, fuzzy, c-format
 msgid "Available listing parameters are %1$s"
 msgstr "Manjkajoèi argument"
 
-#: src/insets/InsetListingsParams.cpp:626
+#: src/insets/InsetListingsParams.cpp:629
 #, fuzzy, c-format
 msgid "Unknown listing parameter name: %1$s"
 msgstr "Manjkajoèi argument"
 
-#: src/insets/InsetListingsParams.cpp:629
+#: src/insets/InsetListingsParams.cpp:632
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:700
-#, c-format
-msgid "Parameter %1$s has already been defined"
 msgstr ""
 
 #: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
@@ -16397,20 +16410,20 @@ msgstr "F&ormat:"
 msgid "Unknown TOC type"
 msgstr "Neznana akcija"
 
-#: src/insets/InsetTabular.cpp:3143
+#: src/insets/InsetTabular.cpp:3148
 #, fuzzy
 msgid "Opened table"
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/insets/InsetTabular.cpp:4313
+#: src/insets/InsetTabular.cpp:4318
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4314
+#: src/insets/InsetTabular.cpp:4319
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/InsetText.cpp:236
+#: src/insets/InsetText.cpp:237
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Odprt vstavek"
@@ -16657,11 +16670,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:840
+#: src/mathed/InsetMathNest.cpp:854
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:843
+#: src/mathed/InsetMathNest.cpp:857
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16923,9 +16936,6 @@ msgstr "Neznana beseda:"
 #, fuzzy
 #~ msgid "Math Panel|P"
 #~ msgstr "Matematièna plo¹èa|l"
-
-#~ msgid "Insert table"
-#~ msgstr "Vstavi tabelo"
 
 #, fuzzy
 #~ msgid "Show math panel"
