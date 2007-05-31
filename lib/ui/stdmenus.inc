@@ -293,7 +293,7 @@ Menuset
 		Submenu "List / TOC|i" "insert_toc"
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
-		OptSubmenu "Branch|B" "insert_branches"
+		Submenu "Branch|B" "insert_branches"
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator

@@ -460,7 +460,7 @@ void expandDocuments(Menu & tomenu)
 	Strings const names = theBufferList().getFileNames();
 
 	if (names.empty()) {
-		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
+		tomenu.add(MenuItem(MenuItem::Command, _("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -497,7 +497,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 {
 	if (!buf && kind != MenuItem::ImportFormats) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    _("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -569,7 +569,7 @@ void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 {
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    _("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -591,7 +591,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 {
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    _("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -614,7 +614,7 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 {
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    _("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -700,7 +700,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    _("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -808,10 +808,20 @@ void expandToolbars(Menu & tomenu)
 
 void expandBranches(Menu & tomenu, Buffer const * buf)
 {
-	if (!buf)
+	if (!buf) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Document Open!"),
+				    FuncRequest(LFUN_NOACTION)));
 		return;
+	}
 
 	BufferParams const & params = buf->getMasterBuffer()->params();
+	if (params.branchlist().empty()) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Branch in Document!"),
+				    FuncRequest(LFUN_NOACTION)));
+		return;
+	}
 
 	BranchList::const_iterator cit = params.branchlist().begin();
 	BranchList::const_iterator end = params.branchlist().end();
