@@ -1233,6 +1233,14 @@ contributers = [
                  "23 February 2005",
                  u"turkish kbmaps"),
 
+     contributer(u"Mostafa Vahedi",
+                 "vahedi58 () yahoo ! com",
+                 "GPL",
+                 "Re: improving Arabic-like language support",
+                 "m=117769964731842",
+                 "27 April 2007",
+                 u"Farsi support and translations"),
+
      contributer(u"Marko Vendelin",
                  "markov () ioc ! ee",
                  "GPL",
