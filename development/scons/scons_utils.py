@@ -432,9 +432,26 @@ int main()
     return ret
 
 
+def checkDeclaration(conf, func, headers):
+    ''' check if a function is declared in given headers '''
+    check_decl = '''
+#include <%%s>
+int main()
+{
+#ifndef %s
+    char *p = (char *) %s;
+#endif
+}
+''' % (func, func)
+    conf.Message('Checking for the declaration of function %s... ' % func)
+    ret = True in [conf.TryLink(check_decl % header, '.c') for header in headers]
+    conf.Result(ret)
+    return ret
+
+    
 def createConfigFile(conf, config_file,
     config_pre = '', config_post = '',
-    headers = [], functions = [], types = [], libs = [],
+    headers = [], functions = [], declarations = [], types = [], libs = [],
     custom_tests = [], extra_items = []):
     ''' create a configuration file, with options
         config_file: which file to create
@@ -444,6 +461,8 @@ def createConfigFile(conf, config_file,
             ('file', 'HAVE_FILE', 'c'/'c++')
         functions: functions to check, in the form of a list of
             ('func', 'HAVE_func', 'include lines'/None)
+        declarations: function declarations to check, in the form of a list of
+            ('func', 'HAVE_DECL_func', header_files)
         types: types to check, in the form of a list of
             ('type', 'HAVE_TYPE', 'includelines'/None)
         libs: libraries to check, in the form of a list of
@@ -492,6 +511,14 @@ def createConfigFile(conf, config_file,
         else:
             result[func[1]] = 0
             cont += configString('/* #undef %s */' % func[1], desc = description)
+    for decl in declarations:
+        description = "Define to 1 if you have the declaration of `%s', and to 0 if you don't." % decl[0]
+        if conf.CheckDeclaration(decl[0], decl[2]):
+            result[decl[1]] = 1
+            cont += configString('#define %s 1' % decl[1], desc = description)
+        else:
+            result[decl[1]] = 0
+            cont += configString('/* #undef %s */' % decl[1], desc = description)
     # types
     for t in types:
         description = "Define to 1 if you have the `%s' type." % t[0]

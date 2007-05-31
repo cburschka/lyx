@@ -603,6 +603,7 @@ conf = Configure(env,
         'CheckLC_MESSAGES' : utils.checkLC_MESSAGES,
         'CheckIconvConst' : utils.checkIconvConst,
         'CheckSizeOfWChar' : utils.checkSizeOfWChar,
+        'CheckDeclaration' : utils.checkDeclaration,
     }
 )
 
@@ -932,6 +933,9 @@ return std::count(a, a+5, 'l');
         ('putenv', 'HAVE_PUTENV', None),
         ('fcntl', 'HAVE_FCNTL', None),
         ('mkfifo', 'HAVE_MKFIFO', None),
+    ],
+    declarations = [
+        ('mkstemp', 'HAVE_DECL_MKSTEMP', ['unistd.h', 'stdlib.h']),
     ],
     types = [
         ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
