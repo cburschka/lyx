@@ -2282,8 +2282,13 @@ int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 			&& !par.empty()
 			&& getPWidth(cell).zero();
 
-		if (rtl)
-			os << "\\R{";
+		if (rtl) {
+			if (par.getParLanguage(buf.params())->lang() ==
+			"farsi")
+				os << "\\textFR{";
+			else
+				os << "\\R{";
+		}
 		ret += inset->latex(buf, os, runparams);
 		if (rtl)
 			os << '}';

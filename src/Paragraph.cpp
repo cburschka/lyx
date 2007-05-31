@@ -737,7 +737,10 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		     || inset->lyxCode() == Inset::MATH_CODE
 		     || inset->lyxCode() == Inset::URL_CODE)
 		    && running_font.isRightToLeft()) {
-			os << "\\L{";
+		    	if (running_font.language()->lang() == "farsi")
+				os << "\\beginL{}";
+			else
+				os << "\\L{";
 			close = true;
 		}
 
@@ -759,8 +762,12 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 
 		int tmp = inset->latex(buf, os, runparams);
 
-		if (close)
-			os << '}';
+		if (close) {
+		    	if (running_font.language()->lang() == "farsi")
+				os << "\\endL{}";
+			else
+				os << '}';
+		}
 
 		if (tmp) {
 			for (int j = 0; j < tmp; ++j) {

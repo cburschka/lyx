@@ -311,6 +311,10 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 
 	if (arabic) {
 		char_type c = str[0];
+		if (c == '(')
+			c = ')';
+		else if (c == ')')
+			c = '(';
 		str[0] = par_.transformChar(c, pos);
 	}
 
@@ -355,6 +359,10 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 		*/
 
 		if (arabic) {
+			if (c == '(')
+				c = ')';
+			else if (c == ')')
+				c = '(';
 			c = par_.transformChar(c, pos);
 			/* see comment in hebrew, explaining why we break */
 			break;
@@ -414,7 +422,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	// special case languages
 	std::string const & lang = orig_font.language()->lang();
 	bool const hebrew = lang == "hebrew";
-	bool const arabic = lang == "arabic";
+	bool const arabic = lang == "arabic" || lang == "farsi";	
 
 	// draw as many chars as we can
 	if ((!hebrew && !arabic)

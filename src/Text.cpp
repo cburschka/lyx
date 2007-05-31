@@ -367,7 +367,8 @@ int Text::singleWidth(Paragraph const & par,
 	if (isPrintable(c)) {
 		Language const * language = font.language();
 		if (language->rightToLeft()) {
-			if (language->lang() == "arabic") {
+			if (language->lang() == "arabic" ||
+			    language->lang() == "farsi") {
 				if (Encodings::isComposeChar_arabic(c))
 					return 0;
 				c = par.transformChar(c, pos);
