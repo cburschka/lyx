@@ -30,8 +30,6 @@ finnish     finnish	"Finnish"	false  iso8859-15 fi_FI	 ""
 # We redefine \og and \fg (guillemets) for older french language definitions
 french      french 	"French"	false  iso8859-15 fr_FR	 "\addto\extrasfrench{\providecommand{\og}{\leavevmode\flqq~}\providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}}"
 galician    galician	"Galician"	false  iso8859-15 gl_ES	 ""
-# There are two Galicia's one in Spain one in E.Europe. Because of
-# the font encoding I am assuming this is the one in Spain. (Garst)
 german      german	"German"	false  iso8859-15 de_DE	 ""
 ngerman     ngerman	"German (new spelling)" false  iso8859-15 de_DE	 ""
 greek       greek	"Greek"		false  iso8859-7  el_GR	 ""
