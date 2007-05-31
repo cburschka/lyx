@@ -38,6 +38,7 @@ def ui_l10n(input_files, output, base):
     Popupmenu = re.compile(r'^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"')
     Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"')
     Item = re.compile(r'[^#]*Item\s+"([^"]*)"')
+    TableInsert = re.compile(r'[^#]*TableInsert\s+"([^"]*)"')
     for src in input_files:
         input = open(src)
         for lineno, line in enumerate(input.readlines()):
@@ -50,6 +51,8 @@ def ui_l10n(input_files, output, base):
                 (string,) = Toolbar.match(line).groups()
             elif Item.match(line):
                 (string,) = Item.match(line).groups()
+            elif TableInsert.match(line):
+                (string,) = TableInsert.match(line).groups()
             else:
                 continue
             string = string.replace('"', '')
