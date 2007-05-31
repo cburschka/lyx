@@ -35,6 +35,7 @@ namespace lyx
 
 using support::bformat;
 using support::trim;
+using support::rtrim;
 using support::subst;
 using support::isStrInt;
 using support::prefixIs;
@@ -679,10 +680,11 @@ string InsetListingsParams::params(string const & sep) const
 		it != params_.end(); ++it) {
 		if (!par.empty())
 			par += sep;
+		// key=value,key=value1 is stored in params_ as key=value,key_=value1. 
 		if (it->second.empty())
-			par += it->first;
+			par += rtrim(it->first, "_");
 		else
-			par += it->first + '=' + it->second;
+			par += rtrim(it->first, "_") + '=' + it->second;
 	}
 	return par;
 }
@@ -698,16 +700,18 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 	// exception may be thown.
 	ListingsParam const & lparam = par_validator.validate(key, value);
 	// duplicate parameters!
+	string keyname = key;
 	if (params_.find(key) != params_.end())
-		throw invalidParam(bformat(_("Parameter %1$s has already been defined"),
-					  from_utf8(key)));
+		// key=value,key=value1 is allowed in listings
+		// use key_, key__, key___ etc to avoid name conflict
+		while (params_.find(keyname += '_') != params_.end());
 	// check onoff flag
 	// onoff parameter with value false
 	if (lparam.onoff_ && (value == "false" || value == "{false}"))
-		params_[key] = string();
+		params_[keyname] = string();
 	// if the parameter is surrounded with {}, good
 	else if (prefixIs(value, "{") && suffixIs(value, "}"))
-		params_[key] = value;
+		params_[keyname] = value;
 	// otherwise, check if {} is needed. Add {} to all values with
 	// non-ascii/number characters, just to be safe
 	else {
@@ -718,9 +722,9 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 				break;
 			}
 		if (has_special_char)
-			params_[key] = "{" + value + "}";
+			params_[keyname] = "{" + value + "}";
 		else
-			params_[key] = value;
+			params_[keyname] = value;
 	}
 }
 
