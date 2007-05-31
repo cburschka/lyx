@@ -25,6 +25,13 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+// Caution: When using ucs4_to_qchar() in these methods, this is no
+// real conversion but a simple cast in reality. This is the reason
+// why this works well for symbol fonts used in mathed too, even though
+// these are not real ucs4 characters. These are codepoints in the
+// modern fonts used, nothing unicode related.
+// See comment in QLPainter::text() for more explanation.
+
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
