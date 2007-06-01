@@ -267,19 +267,19 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(change_adaptor()));
 
 	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
-		QString font = toqstr(tex_fonts_roman_gui[n]);
+		QString font = qt_(tex_fonts_roman_gui[n]);
 		if (!form_->controller().isFontAvailable(tex_fonts_roman[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsRomanCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
-		QString font = toqstr(tex_fonts_sans_gui[n]);
+		QString font = qt_(tex_fonts_sans_gui[n]);
 		if (!form_->controller().isFontAvailable(tex_fonts_sans[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsSansCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
-		QString font = toqstr(tex_fonts_monospaced_gui[n]);
+		QString font = qt_(tex_fonts_monospaced_gui[n]);
 		if (!form_->controller().isFontAvailable(tex_fonts_monospaced[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsTypewriterCO->addItem(font);

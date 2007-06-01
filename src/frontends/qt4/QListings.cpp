@@ -135,10 +135,10 @@ dialect_info const dialects[] = {
 	{ "IBM", "Simula", "IBM", false },
 	{ "tk", "tcl", "tk", false },
 	{ "AlLaTeX", "TeX", "AlLaTeX", false },
-	{ "common", "TeX", N_("common"), false },
+	{ "common", "TeX", "common", false },
 	{ "LaTeX", "TeX", "LaTeX", false },
-	{ "plain", "TeX", N_("plain"), true },
-	{ "primitive", "TeX", N_("primitive"), false },
+	{ "plain", "TeX", "plain", true },
+	{ "primitive", "TeX", "primitive", false },
 	{ "AMS", "VHDL", "AMS", false },
 	{ "97", "VRML", "97", true }
 };
@@ -193,13 +193,13 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
 
 	for (int n = 0; languages[n][0]; ++n)
-		languageCO->addItem(languages_gui[n]);
+		languageCO->addItem(qt_(languages_gui[n]));
 
 	for (int n = 0; font_styles[n][0]; ++n)
-		fontstyleCO->addItem(font_styles_gui[n]);
+		fontstyleCO->addItem(qt_(font_styles_gui[n]));
 
 	for (int n = 0; font_sizes[n][0]; ++n) {
-		QString font = toqstr(font_sizes_gui[n]);
+		QString font = qt_(font_sizes_gui[n]);
 		fontsizeCO->addItem(font);
 		numberFontSizeCO->addItem(font);
 	}
@@ -331,7 +331,7 @@ void QListingsDialog::validate_listings_params()
 		}
 	} catch (invalidParam & e) {
 		isOK = false;
-		listingsTB->setPlainText(toqstr(e.what()));
+		listingsTB->setPlainText(qt_(e.what()));
 		okPB->setEnabled(false);
 		applyPB->setEnabled(false);
 	}
@@ -374,10 +374,10 @@ void QListingsDialog::on_languageCO_currentIndexChanged(int index)
 
 	for (size_t i = 0; i < nr_dialects; ++i) {
 		if (language == dialects[i].language) {
-			dialectCO->addItem(dialects[i].gui);
+			dialectCO->addItem(qt_(dialects[i].gui));
 			if (dialects[i].is_default)
 				default_dialect =
-					dialectCO->findText(dialects[i].gui);
+					dialectCO->findText(qt_(dialects[i].gui));
 		}
 	}
 	dialectCO->setCurrentIndex(default_dialect);
@@ -495,7 +495,7 @@ void QListings::update_contents()
 						break;
 					}
 				}
-				n = dialog_->dialectCO->findText(toqstr(dialect_gui));
+				n = dialog_->dialectCO->findText(qt_(dialect_gui));
 				if (n >= 0)
 					dialog_->dialectCO->setCurrentIndex(n);
 				else
