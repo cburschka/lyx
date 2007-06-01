@@ -136,7 +136,7 @@
              <string>Use extended character table</string>
             </property>
             <property name="text" >
-             <string>&amp;Extended Chars</string>
+             <string>&amp;Extended character table</string>
             </property>
             <property name="shortcut" >
              <number>276824133</number>
@@ -149,7 +149,7 @@
              <string>Make spaces in strings visible by a special symbol</string>
             </property>
             <property name="text" >
-             <string>S&amp;pace in string as Symbol</string>
+             <string>Space i&amp;n string as symbol</string>
             </property>
             <property name="shortcut" >
              <number>276824147</number>
@@ -162,7 +162,7 @@
              <string>Make spaces visible by a special symbol</string>
             </property>
             <property name="text" >
-             <string>S&amp;pace as Symbol</string>
+             <string>S&amp;pace as symbol</string>
             </property>
             <property name="shortcut" >
              <number>276824147</number>
@@ -206,7 +206,7 @@
              <bool>false</bool>
             </property>
             <property name="buddy" >
-             <cstring>numberFontSizeCO</cstring>
+             <cstring>lastlineLE</cstring>
             </property>
            </widget>
           </item>
@@ -245,7 +245,7 @@
              <bool>false</bool>
             </property>
             <property name="buddy" >
-             <cstring>numberFontSizeCO</cstring>
+             <cstring>firstlineLE</cstring>
             </property>
            </widget>
           </item>
@@ -284,7 +284,7 @@
           <item row="0" column="0" >
            <widget class="QLabel" name="languageLBL" >
             <property name="text" >
-             <string>&amp;Language:</string>
+             <string>Lan&amp;guage:</string>
             </property>
             <property name="buddy" >
              <cstring>languageCO</cstring>
@@ -375,7 +375,7 @@
           <item row="1" column="0" >
            <widget class="QLabel" name="stepnumberL" >
             <property name="toolTip" >
-             <string>File name of image</string>
+             <string/>
             </property>
             <property name="text" >
              <string>S&amp;tep:</string>
@@ -407,7 +407,7 @@
           <item row="0" column="0" >
            <widget class="QLabel" name="label" >
             <property name="text" >
-             <string>&amp;Side: </string>
+             <string>&amp;Side:</string>
             </property>
             <property name="buddy" >
              <cstring>numberSideCO</cstring>
@@ -459,10 +459,13 @@
           <item row="2" column="0" >
            <widget class="QLabel" name="captionL_5" >
             <property name="text" >
-             <string>Placement:</string>
+             <string>&amp;Placement:</string>
             </property>
             <property name="wordWrap" >
              <bool>false</bool>
+            </property>
+            <property name="buddy" >
+             <cstring>placementLE</cstring>
             </property>
            </widget>
           </item>
@@ -493,7 +496,7 @@
           </sizepolicy>
          </property>
          <property name="title" >
-          <string>More &amp;Parameters</string>
+          <string>More Parameters</string>
          </property>
          <layout class="QGridLayout" >
           <property name="margin" >
