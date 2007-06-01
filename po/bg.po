@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-05-29 23:41+0200\n"
+"POT-Creation-Date: 2007-06-01 09:18+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -2265,7 +2265,7 @@ msgid "L&ine spacing:"
 msgstr "Разстояние"
 
 # src/bufferview_funcs.C:280
-#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1773
+#: src/frontends/qt4/ui/ParagraphUi.ui:219 src/Text.cpp:1774
 #: src/frontends/qt4/QDocument.cpp:231
 msgid "Single"
 msgstr "Единично"
@@ -2275,7 +2275,7 @@ msgid "1.5"
 msgstr ""
 
 # src/bufferview_funcs.C:286
-#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1779
+#: src/frontends/qt4/ui/ParagraphUi.ui:229 src/Text.cpp:1780
 #: src/frontends/qt4/QDocument.cpp:235
 msgid "Double"
 msgstr "Двойно"
@@ -4670,7 +4670,7 @@ msgstr "Библиография"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:524
+#: src/rowpainter.cpp:532
 msgid "Appendix"
 msgstr "Приложение"
 
@@ -9610,175 +9610,181 @@ msgstr "Есперанто"
 msgid "Estonian"
 msgstr "Естонски"
 
-# src/ext_l10n.h:440
+# src/frontends/xforms/form_document.C:98
 #: lib/languages:28
+#, fuzzy
+msgid "Farsi"
+msgstr "Полета"
+
+# src/ext_l10n.h:440
+#: lib/languages:29
 msgid "Finnish"
 msgstr "Финландски"
 
 # src/ext_l10n.h:441
-#: lib/languages:30
+#: lib/languages:31
 msgid "French"
 msgstr "Френски"
 
 # src/ext_l10n.h:443
-#: lib/languages:31
+#: lib/languages:32
 msgid "Galician"
 msgstr "Галски?"
 
 # src/ext_l10n.h:444
-#: lib/languages:34
+#: lib/languages:33
 msgid "German"
 msgstr "Немски"
 
-#: lib/languages:35
+#: lib/languages:34
 msgid "German (new spelling)"
 msgstr ""
 
 # src/ext_l10n.h:446 src/mathed/math_forms.C:26
-#: lib/languages:36 lib/ui/stdtoolbars.inc:436
+#: lib/languages:35 lib/ui/stdtoolbars.inc:436
 msgid "Greek"
 msgstr "Гръцки"
 
 # src/ext_l10n.h:447
-#: lib/languages:37
+#: lib/languages:36
 msgid "Hebrew"
 msgstr "Иврит"
 
 # src/ext_l10n.h:448
-#: lib/languages:39
+#: lib/languages:38
 msgid "Irish"
 msgstr "Ирландски"
 
 # src/ext_l10n.h:449
-#: lib/languages:40
+#: lib/languages:39
 msgid "Italian"
 msgstr "Италиански"
 
-#: lib/languages:41
+#: lib/languages:40
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:41
 msgid "Kazakh"
 msgstr ""
 
-#: lib/languages:44
+#: lib/languages:43
 msgid "Korean"
 msgstr ""
 
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: lib/languages:46
+#: lib/languages:45
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Ширина"
 
 # src/ext_l10n.h:433
-#: lib/languages:47
+#: lib/languages:46
 #, fuzzy
 msgid "Latvian"
 msgstr "Хърватски"
 
-#: lib/languages:48
+#: lib/languages:47
 msgid "Icelandic"
 msgstr ""
 
 # src/ext_l10n.h:451
-#: lib/languages:49
+#: lib/languages:48
 msgid "Magyar"
 msgstr "Унгарски"
 
 # src/ext_l10n.h:452
-#: lib/languages:50
+#: lib/languages:49
 msgid "Norsk"
 msgstr "???"
 
 # src/ext_l10n.h:452
-#: lib/languages:51
+#: lib/languages:50
 #, fuzzy
 msgid "Nynorsk"
 msgstr "???"
 
 # src/ext_l10n.h:453
-#: lib/languages:52
+#: lib/languages:51
 msgid "Polish"
 msgstr "Полски"
 
 # src/ext_l10n.h:454
-#: lib/languages:53
+#: lib/languages:52
 #, fuzzy
 msgid "Portuguese"
 msgstr "Португалски"
 
 # src/ext_l10n.h:455
-#: lib/languages:54
+#: lib/languages:53
 msgid "Romanian"
 msgstr "Румънски"
 
 # src/ext_l10n.h:456
-#: lib/languages:55
+#: lib/languages:54
 msgid "Russian"
 msgstr "Руски"
 
 # src/ext_l10n.h:457
-#: lib/languages:56
+#: lib/languages:55
 msgid "Scottish"
 msgstr "Шотландски"
 
 # src/ext_l10n.h:458
-#: lib/languages:57
+#: lib/languages:56
 msgid "Serbian"
 msgstr "Сръбски"
 
 # src/ext_l10n.h:459
-#: lib/languages:58
+#: lib/languages:57
 msgid "Serbo-Croatian"
 msgstr "Сърбо-хърватски"
 
 # src/ext_l10n.h:460
-#: lib/languages:59
+#: lib/languages:58
 msgid "Spanish"
 msgstr "Испански"
 
 # src/ext_l10n.h:461
-#: lib/languages:60
+#: lib/languages:59
 msgid "Slovak"
 msgstr "Словашки"
 
 # src/ext_l10n.h:462
-#: lib/languages:61
+#: lib/languages:60
 msgid "Slovene"
 msgstr "Словенски"
 
 # src/ext_l10n.h:463
-#: lib/languages:62
+#: lib/languages:61
 msgid "Swedish"
 msgstr "Шведски"
 
 # src/ext_l10n.h:464
-#: lib/languages:63
+#: lib/languages:62
 msgid "Thai"
 msgstr ""
 
 # src/ext_l10n.h:465
-#: lib/languages:64
+#: lib/languages:63
 msgid "Turkish"
 msgstr "Турски"
 
 # src/ext_l10n.h:466
-#: lib/languages:65
+#: lib/languages:64
 msgid "Ukrainian"
 msgstr "Украински"
 
 # src/ext_l10n.h:458
-#: lib/languages:66
+#: lib/languages:65
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Сръбски"
 
 # src/ext_l10n.h:468
-#: lib/languages:67
+#: lib/languages:66
 msgid "Welsh"
 msgstr "Уелски"
 
@@ -10985,20 +10991,20 @@ msgid "Redo|R"
 msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:828
-#: src/mathed/InsetMathNest.cpp:447
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:826
+#: src/mathed/InsetMathNest.cpp:461
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:833
-#: src/mathed/InsetMathNest.cpp:455
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:831
+#: src/mathed/InsetMathNest.cpp:469
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:809
-#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:426
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:807
+#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:440
 msgid "Paste"
 msgstr "Залепи"
 
@@ -11743,6 +11749,12 @@ msgstr "Вмъкни приложение"
 #, fuzzy
 msgid "Insert graphics"
 msgstr "Вмънки графика"
+
+# src/LyXAction.C:388
+#: lib/ui/stdtoolbars.inc:77
+#, fuzzy
+msgid "Insert table"
+msgstr "Вмъкни таблица"
 
 # src/LyXAction.C:215
 #: lib/ui/stdtoolbars.inc:79
@@ -16328,7 +16340,7 @@ msgid "Exiting."
 msgstr "Изход(x)|x"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1306
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1304
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
@@ -17010,7 +17022,9 @@ msgstr "Маркирай до края на документа"
 # src/MenuBackend.C:263
 #: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
 #: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
-msgid "No Documents Open!"
+#: src/MenuBackend.cpp:813
+#, fuzzy
+msgid "No Document Open!"
 msgstr "Няма отворени документи!"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
@@ -17056,8 +17070,16 @@ msgstr "Няма съдържание%i"
 msgid " (auto)"
 msgstr "Стандартно"
 
+# src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
+# src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
+# src/lyxfunc.C:3313
+#: src/MenuBackend.cpp:821
+#, fuzzy
+msgid "No Branch in Document!"
+msgstr "Документ"
+
 # src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
-#: src/Paragraph.cpp:1581 src/frontends/qt4/QParagraph.cpp:237
+#: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Неизползваем с това оформление!"
 
@@ -17107,7 +17129,7 @@ msgid "Unknown token"
 msgstr "Непознато действие"
 
 # src/text.C:2003
-#: src/Text.cpp:726
+#: src/Text.cpp:727
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -17117,88 +17139,88 @@ msgstr ""
 "Sie das Tutorium."
 
 # src/text.C:2005
-#: src/Text.cpp:737
+#: src/Text.cpp:738
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
 
 # src/LyXAction.C:263
-#: src/Text.cpp:1739
+#: src/Text.cpp:1740
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Смяна на език"
 
 # src/frontends/xforms/form_print.C:112
-#: src/Text.cpp:1745
+#: src/Text.cpp:1746
 #, fuzzy
 msgid "Change: "
 msgstr "Страници:"
 
 # src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
 # src/converter.C:554
-#: src/Text.cpp:1749
+#: src/Text.cpp:1750
 #, fuzzy
 msgid " at "
 msgstr " на "
 
 # src/bufferview_funcs.C:267
-#: src/Text.cpp:1759
+#: src/Text.cpp:1760
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1764
+#: src/Text.cpp:1765
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Дълбочина: "
 
 # src/bufferview_funcs.C:277
-#: src/Text.cpp:1770
+#: src/Text.cpp:1771
 msgid ", Spacing: "
 msgstr ", Отместване: "
 
 # src/bufferview_funcs.C:283
-#: src/Text.cpp:1776 src/frontends/qt4/QDocument.cpp:233
+#: src/Text.cpp:1777 src/frontends/qt4/QDocument.cpp:233
 #, fuzzy
 msgid "OneHalf"
 msgstr "Половин"
 
 # src/bufferview_funcs.C:289
-#: src/Text.cpp:1782
+#: src/Text.cpp:1783
 msgid "Other ("
 msgstr "Друго ("
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1791
+#: src/Text.cpp:1792
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:303
-#: src/Text.cpp:1792
+#: src/Text.cpp:1793
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Абзац"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1793
+#: src/Text.cpp:1794
 #, fuzzy
 msgid ", Id: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:320
-#: src/Text.cpp:1794
+#: src/Text.cpp:1795
 #, fuzzy
 msgid ", Position: "
 msgstr "Допускане"
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1801
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1802
+#: src/Text.cpp:1803
 msgid ", Boundary: "
 msgstr ""
 
@@ -17226,30 +17248,30 @@ msgid "Math editor mode"
 msgstr "Матем. редактор"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/Text3.cpp:714
+#: src/Text3.cpp:712
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr " към избрания документ клас!"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/Text3.cpp:887
+#: src/Text3.cpp:885
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/Text3.cpp:888
+#: src/Text3.cpp:886
 msgid " not known"
 msgstr " оформление"
 
 # src/form1.C:33
-#: src/Text3.cpp:1412 src/Text3.cpp:1424
+#: src/Text3.cpp:1410 src/Text3.cpp:1422
 #, fuzzy
 msgid "Character set"
 msgstr "Кодировка(H):|#H"
 
 # src/frontends/kde/FormParagraph.C:183
 # src/frontends/xforms/FormParagraph.C:148
-#: src/Text3.cpp:1548
+#: src/Text3.cpp:1546
 msgid "Paragraph layout set"
 msgstr "Оформяне на абзаци"
 
@@ -18793,7 +18815,7 @@ msgstr "Опции"
 msgid "Graphics"
 msgstr "Графика"
 
-#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:211
+#: src/frontends/qt4/QInclude.cpp:95 src/frontends/qt4/QInclude.cpp:216
 #: src/frontends/qt4/QListings.cpp:328 src/frontends/qt4/QListings.cpp:410
 #: src/frontends/qt4/QListings.cpp:442
 msgid ""
@@ -18803,16 +18825,16 @@ msgstr ""
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/frontends/qt4/QInclude.cpp:172
+#: src/frontends/qt4/QInclude.cpp:177
 #, fuzzy
 msgid "Child Document"
 msgstr "Документ"
 
-#: src/frontends/qt4/QInclude.cpp:251
+#: src/frontends/qt4/QInclude.cpp:256
 msgid "caption parameter is not quoted with braces"
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:258
+#: src/frontends/qt4/QInclude.cpp:263
 msgid "label parameter is not quoted with braces"
 msgstr ""
 
@@ -19149,7 +19171,7 @@ msgid "LyX: %1$s"
 msgstr "LyX: Печат"
 
 # src/insets/inset.C:75
-#: src/insets/Inset.cpp:268
+#: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Отворен inset"
 
@@ -19442,139 +19464,136 @@ msgstr "Индекс"
 msgid "Opened Listing Inset"
 msgstr "Отворен Float Inset"
 
-#: src/insets/InsetListingsParams.cpp:128
+#: src/insets/InsetListingsParams.cpp:129
 msgid "A value is expected."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:131
-#: src/insets/InsetListingsParams.cpp:144
-#: src/insets/InsetListingsParams.cpp:157
-#: src/insets/InsetListingsParams.cpp:170
-#: src/insets/InsetListingsParams.cpp:197
-#: src/insets/InsetListingsParams.cpp:230
+#: src/insets/InsetListingsParams.cpp:132
+#: src/insets/InsetListingsParams.cpp:145
+#: src/insets/InsetListingsParams.cpp:158
+#: src/insets/InsetListingsParams.cpp:171
+#: src/insets/InsetListingsParams.cpp:198
+#: src/insets/InsetListingsParams.cpp:231
 msgid "Unbalanced braces!"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:139
+#: src/insets/InsetListingsParams.cpp:140
 msgid "Please specify true or false."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:142
+#: src/insets/InsetListingsParams.cpp:143
 msgid "Only true or false is allowed."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:152
+#: src/insets/InsetListingsParams.cpp:153
 msgid "Please specify an integer value."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:155
+#: src/insets/InsetListingsParams.cpp:156
 msgid "An integer is expected."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:165
-msgid "Please specify a latex length expression."
+#: src/insets/InsetListingsParams.cpp:166
+msgid "Please specify a LaTeX length expression."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:168
-msgid "Invalid latex length expression."
+#: src/insets/InsetListingsParams.cpp:169
+msgid "Invalid LaTeX length expression."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:178
+#: src/insets/InsetListingsParams.cpp:179
 #, c-format
 msgid "Please specify one of %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:212
+#: src/insets/InsetListingsParams.cpp:213
 #, c-format
 msgid "Try one of %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:214
+#: src/insets/InsetListingsParams.cpp:215
 #, c-format
 msgid "I guess you mean %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:222
+#: src/insets/InsetListingsParams.cpp:223
 #, c-format
 msgid "Please specify one or more of '%1$s'."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:227
+#: src/insets/InsetListingsParams.cpp:228
 #, c-format
 msgid "Should be composed of one or more of %1$s."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:293
+#: src/insets/InsetListingsParams.cpp:294
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:295
+#: src/insets/InsetListingsParams.cpp:296
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:297
+#: src/insets/InsetListingsParams.cpp:298
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:300
+#: src/insets/InsetListingsParams.cpp:301
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:326
+#: src/insets/InsetListingsParams.cpp:327
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:410
+#: src/insets/InsetListingsParams.cpp:411
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:420
+#: src/insets/InsetListingsParams.cpp:421
 msgid ""
-"This parameter should not be entered here. Please use caption editbox "
-"(Include dialog) or insert->caption (listing inset)"
+"This parameter should not be entered here. Please use the caption edit box "
+"(when using the include dialog) or menu Insert->Caption (when defining a "
+"listing inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:425
+#: src/insets/InsetListingsParams.cpp:427
 msgid ""
-"This parameter should not be entered here. Please use label editbox (Include "
-"dialog) or insert->caption (listing inset)"
+"This parameter should not be entered here. Please use the label edit box "
+"(when using the include dialog) or menu Insert->Label (when defining a "
+"listing inset)"
 msgstr ""
 
 # src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
-#: src/insets/InsetListingsParams.cpp:596
+#: src/insets/InsetListingsParams.cpp:599
 #, fuzzy, c-format
 msgid "Parameter %1$s: "
 msgstr "Макрос: "
 
-#: src/insets/InsetListingsParams.cpp:604
+#: src/insets/InsetListingsParams.cpp:607
 msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/insets/InsetListingsParams.cpp:608
+#: src/insets/InsetListingsParams.cpp:611
 #, fuzzy, c-format
 msgid "Available listing parameters are %1$s"
 msgstr " към избрания документ клас!"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/insets/InsetListingsParams.cpp:626
+#: src/insets/InsetListingsParams.cpp:629
 #, fuzzy, c-format
 msgid "Unknown listing parameter name: %1$s"
 msgstr " към избрания документ клас!"
 
-#: src/insets/InsetListingsParams.cpp:629
+#: src/insets/InsetListingsParams.cpp:632
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:700
-#, c-format
-msgid "Parameter %1$s has already been defined"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:98
@@ -19726,23 +19745,23 @@ msgid "Unknown TOC type"
 msgstr "Непознато действие"
 
 # src/LyXAction.C:240
-#: src/insets/InsetTabular.cpp:3143
+#: src/insets/InsetTabular.cpp:3148
 #, fuzzy
 msgid "Opened table"
 msgstr "Отвори помощен файл"
 
 # src/ext_l10n.h:61
-#: src/insets/InsetTabular.cpp:4313
+#: src/insets/InsetTabular.cpp:4318
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Многоколонно(M)|M"
 
-#: src/insets/InsetTabular.cpp:4314
+#: src/insets/InsetTabular.cpp:4319
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 # src/insets/insettext.C:478
-#: src/insets/InsetText.cpp:236
+#: src/insets/InsetText.cpp:237
 msgid "Opened Text Inset"
 msgstr "Отворен Text Inset"
 
@@ -20027,11 +20046,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:840
+#: src/mathed/InsetMathNest.cpp:854
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:843
+#: src/mathed/InsetMathNest.cpp:857
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -20319,11 +20338,6 @@ msgstr "Непознато действие"
 #, fuzzy
 #~ msgid "Math Panel|P"
 #~ msgstr "Математически Символи(l)|l"
-
-# src/LyXAction.C:388
-#, fuzzy
-#~ msgid "Insert table"
-#~ msgstr "Вмъкни таблица"
 
 # src/mathed/math_panel.C:383
 #, fuzzy
