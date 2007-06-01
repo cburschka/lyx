@@ -54,12 +54,18 @@ using lyx::support::getVectorFromString;
 
 using std::distance;
 using std::make_pair;
+using std::pair;
 using std::vector;
 using std::string;
 
 
 char const * const tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
 		      "ln", "oztex", "textures", "none", ""
+};
+
+
+char const * const tex_graphics_gui[] = {N_("Default"), "Dvips", "DVItoPS", "EmTeX",
+		      "LN", "OzTeX", "Textures", N_("None"), ""
 };
 
 
@@ -93,6 +99,10 @@ char const * tex_fonts_monospaced_gui[] = { N_("Default"), N_("Computer Modern T
 			    N_("Latin Modern Typewriter"), N_("Courier"), N_("Bera Mono"), N_("LuxiMono"),
 			    N_("CM Typewriter Light"), ""
 };
+
+
+vector<pair<string, lyx::docstring> > pagestyles;
+
 
 namespace lyx {
 namespace frontend {
@@ -285,7 +295,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		fontModule->fontsTypewriterCO->addItem(font);
 	}
 
-	fontModule->fontsizeCO->addItem(qt_("default"));
+	fontModule->fontsizeCO->addItem(qt_("Default"));
 	fontModule->fontsizeCO->addItem(qt_("10"));
 	fontModule->fontsizeCO->addItem(qt_("11"));
 	fontModule->fontsizeCO->addItem(qt_("12"));
@@ -322,7 +332,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 
-	pageLayoutModule->pagestyleCO->addItem(qt_("default"));
+	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("headings"));
@@ -527,7 +537,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(classChanged()));
 	// packages
 	for (int n = 0; tex_graphics[n][0]; ++n) {
-		QString enc = tex_graphics[n];
+		QString enc = qt_(tex_graphics_gui[n]);
 		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex
@@ -723,7 +733,7 @@ void QDocumentDialog::setCustomMargins(bool custom)
 void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 {
 	fontModule->fontsizeCO->clear();
-	fontModule->fontsizeCO->addItem(qt_("default"));
+	fontModule->fontsizeCO->addItem(qt_("Default"));
 
 	for (int n = 0; !token(items,'|',n).empty(); ++n)
 		fontModule->fontsizeCO->
@@ -769,19 +779,31 @@ void QDocumentDialog::ttChanged(int item)
 
 void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 {
+	pagestyles.clear();
 	pageLayoutModule->pagestyleCO->clear();
-	pageLayoutModule->pagestyleCO->addItem("default");
+	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 
-	for (int n=0; !token(items,'|',n).empty(); ++n)
-		pageLayoutModule->pagestyleCO->
-			addItem(toqstr(token(items,'|',n)));
-
-	for (int n = 0; n<pageLayoutModule->pagestyleCO->count(); ++n) {
-		if (fromqstr(pageLayoutModule->pagestyleCO->itemText(n))==sel) {
-			pageLayoutModule->pagestyleCO->setCurrentIndex(n);
-			break;
-		}
+	for (int n = 0; !token(items,'|',n).empty(); ++n) {
+		string style = token(items, '|', n);
+		docstring style_gui = _(style);
+		pagestyles.push_back(pair<string, docstring>(style, style_gui));
+		pageLayoutModule->pagestyleCO->addItem(toqstr(style_gui));
 	}
+
+	if (sel == "default") {
+		pageLayoutModule->pagestyleCO->setCurrentIndex(0);
+		return;
+	}
+
+	int n = 0;
+
+	for (size_t i = 0; i < pagestyles.size(); ++i)
+		if (pagestyles[i].first == sel)
+			n = pageLayoutModule->pagestyleCO->findText(
+					toqstr(pagestyles[i].second));
+
+	if (n > 0)
+		pageLayoutModule->pagestyleCO->setCurrentIndex(n);
 }
 
 
@@ -907,7 +929,7 @@ void QDocumentDialog::apply(BufferParams & params)
 
 	// packages
 	params.graphicsDriver =
-		fromqstr(latexModule->psdriverCO->currentText());
+		tex_graphics[latexModule->psdriverCO->currentIndex()];
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;
@@ -931,8 +953,15 @@ void QDocumentDialog::apply(BufferParams & params)
 	params.textclass =
 		latexModule->classCO->currentIndex();
 
-	params.pagestyle =
-		fromqstr(pageLayoutModule->pagestyleCO->currentText());
+	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
+		params.pagestyle = "default";
+	else {
+		docstring style_gui =
+			qstring_to_ucs4(pageLayoutModule->pagestyleCO->currentText());
+		for (size_t i = 0; i < pagestyles.size(); ++i)
+			if (pagestyles[i].second == style_gui)
+				params.pagestyle = pagestyles[i].first;
+	}
 
 	switch (textLayoutModule->lspacingCO->currentIndex()) {
 	case 0:
@@ -1185,15 +1214,9 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 	bulletsModule->init();
 
 	// packages
-	QString text = toqstr(params.graphicsDriver);
-	int nitem = latexModule->psdriverCO->count();
-	for (int n = 0; n < nitem ; ++n) {
-		QString enc = tex_graphics[n];
-		if (enc == text) {
-			latexModule->psdriverCO->setCurrentIndex(n);
-		}
-	}
-
+	int nitem = findToken(tex_graphics, params.graphicsDriver);
+	if (nitem >= 0)
+		latexModule->psdriverCO->setCurrentIndex(nitem);
 
 	mathsModule->amsCB->setChecked(
 		params.use_amsmath == BufferParams::package_on);
