@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "qstring_helpers.h"
+#include "unicode.h"
 
 #include <QVector>
 
@@ -24,12 +25,25 @@ using std::string;
 // We use QString::fromUcs4 in Qt 4.2 and higher
 QString const toqstr(docstring const & str)
 {
-	// This does not properly convert surrogate pairs
 	QString s;
 	int i = static_cast<int>(str.size());
 	s.resize(i);
-	for (; --i >= 0;)
-		s[i] = ucs4_to_qchar(str[i]);
+	for (; --i >= 0;) {
+		char_type const c = str[i];
+		if (is_utf16(c))
+			// Use a simple cast in the common case for speed
+			// reasons
+			s[i] = static_cast<unsigned short>(c);
+		else {
+			// A simple cast is not possible, so we need to use
+			// the full blown conversion.
+			std::vector<unsigned short> const utf16 =
+				ucs4_to_utf16(str.data(), str.size());
+			// Enable the compiler to do NRVO
+			s = QString::fromUtf16(&utf16[0], utf16.size());
+			break;
+		}
+	}
 	return s;
 }
 #endif
@@ -41,11 +55,25 @@ docstring const qstring_to_ucs4(QString const & qstr)
 	QVector<uint> const ucs4 = qstr.toUcs4();
 	return docstring(ucs4.begin(), ucs4.end());
 #else
-	// This does not properly convert surrogate pairs
 	int const ls = qstr.size();
 	docstring ucs4;
-	for (int i = 0; i < ls; ++i)
-		ucs4 += qchar_to_ucs4(qstr[i].unicode());
+	for (int i = 0; i < ls; ++i) {
+		char_type const c = static_cast<char_type>(qstr[i].unicode());
+		if (is_utf16(c))
+			// Use a simple cast in the common case for speed
+			// reasons
+			ucs4 += c;
+		else {
+			// A simple cast is not possible, so we need to use
+			// the full blown conversion.
+			std::vector<char_type> const v = utf16_to_ucs4(
+				reinterpret_cast<unsigned short const *>(qstr.utf16()),
+				qstr.size());
+			// Enable the compiler to do NRVO
+			ucs4 = docstring(v.begin(), v.end());
+			break;
+		}
+	}
 	return ucs4;
 #endif
 }

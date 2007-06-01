@@ -76,10 +76,6 @@ inline char_type const qchar_to_ucs4(QChar const & qchar)
  */
 inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
-	// FIXME: The following cast is not a real conversion but it work
-	// for the ucs2 subrange of unicode. Instead of an assertion we should
-	// return some special characters that indicates that its display is
-	// not supported.
 	BOOST_ASSERT(is_utf16(ucs4));
 	return QChar(static_cast<unsigned short>(ucs4));
 }
