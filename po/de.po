@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-01 00:31+0100\n"
+"POT-Creation-Date: 2007-06-01 09:18+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -3063,7 +3063,7 @@ msgstr "Aktualisieren Sie den Navigationsbaum"
 #: src/frontends/qt4/ui/TocUi.ui:147 src/frontends/qt4/ui/TocUi.ui:166
 #: src/frontends/qt4/ui/TocUi.ui:185
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:125
 msgid "Decrease nesting depth of selected item"
@@ -4492,7 +4492,7 @@ msgstr "Theorem. "
 
 #: lib/layouts/beamer.layout:969
 msgid "Separator"
-msgstr ""
+msgstr "Trenner"
 
 #: lib/layouts/beamer.layout:982
 msgid "___"
@@ -5036,11 +5036,11 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:113
 msgid "MotherTongue"
-msgstr ""
+msgstr "Muttersprache"
 
 #: lib/layouts/europecv.layout:122
 msgid "Mother Tongue:"
-msgstr ""
+msgstr "Muttersprache:"
 
 #: lib/layouts/europecv.layout:129
 msgid "LangHeader"
@@ -5072,11 +5072,11 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:191
 msgid "End"
-msgstr ""
+msgstr "Ende"
 
 #: lib/layouts/europecv.layout:201
 msgid "End of CV"
-msgstr ""
+msgstr "Ende des CV"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -7278,9 +7278,8 @@ msgid "Estonian"
 msgstr "Estnisch"
 
 #: lib/languages:28
-#, fuzzy
 msgid "Farsi"
-msgstr "arcsin"
+msgstr "Farsi"
 
 #: lib/languages:29
 msgid "Finnish"
@@ -8606,7 +8605,7 @@ msgstr "Legende"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Index Entry|d"
-msgstr "Stichwort|w"
+msgstr "Stichwort|h"
 
 #: lib/ui/stdmenus.inc:305
 msgid "Nomenclature Entry...|y"
@@ -8833,7 +8832,6 @@ msgid "Insert graphics"
 msgstr "Grafik einfügen"
 
 #: lib/ui/stdtoolbars.inc:77
-#, fuzzy
 msgid "Insert table"
 msgstr "Tabelle einfügen"
 
@@ -11331,7 +11329,7 @@ msgstr ""
 #: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:907
 #: src/BufferView.cpp:913
 msgid "Changes not shown in LaTeX output"
-msgstr ""
+msgstr "Änderungen nicht in der LaTeX-Ausgabe angezeigt"
 
 #: src/Buffer.cpp:517 src/BufferView.cpp:908
 msgid ""
@@ -11340,6 +11338,10 @@ msgid ""
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
+"Änderungen werden in der LaTeX-Ausgabe nicht hervorgehoben, da weder dvipost "
+"noch xcolor/soul installiert sind.\n"
+"Bitte installieren Sie diese Pakete oder definieren Sie \\lyxadded und "
+"\\lyxdeleted in der LaTeX-Präambel neu."
 
 #: src/Buffer.cpp:523 src/BufferView.cpp:914
 msgid ""
@@ -11348,6 +11350,10 @@ msgid ""
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
+"Änderungen werden in der LaTeX-Ausgabe mit pdflatex nicht "
+"hervorgehoben, da xcolor und soul nicht installiert sind.\n"
+"Bitte installieren Sie beide Pakete oder definieren Sie \\lyxadded und "
+"\\lyxdeleted in the LaTeX-Präambel neu"
 
 #: src/Buffer.cpp:658 src/Buffer.cpp:667
 msgid "Document could not be read"
@@ -13216,9 +13222,8 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 #: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
 #: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
 #: src/MenuBackend.cpp:813
-#, fuzzy
 msgid "No Document Open!"
-msgstr "Keine Dokumente geöffnet!"
+msgstr "Kein Dokument geöffnet!"
 
 #: src/MenuBackend.cpp:540
 msgid "Plain Text"
@@ -13249,9 +13254,8 @@ msgid " (auto)"
 msgstr " (automatisch)"
 
 #: src/MenuBackend.cpp:821
-#, fuzzy
 msgid "No Branch in Document!"
-msgstr "Dokument drucken"
+msgstr "Kein Zweig im Dokument!"
 
 #: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
@@ -13605,7 +13609,7 @@ msgstr "Die Datei konnte nicht geöffnet werden"
 
 #: src/callback.cpp:404
 msgid "Reading not UTF-8 encoded file"
-msgstr ""
+msgstr "Lese nicht UTF-8-kodierte Datei"
 
 #: src/callback.cpp:405
 msgid ""
@@ -13615,6 +13619,11 @@ msgid ""
 "then please change the encoding of the file\n"
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
+"Die Datei ist nicht UTF-8-kodiert.\n"
+"Sie wird als lokal-8bit-kodiert gelesen.\n"
+"Wenn dies nicht das korrekte Ergebnis ergibt,\n"
+"ändern Sie bitte die Kodierung der Datei\n"
+"nach UTF-8 mit einem anderen Programm .\n"
 
 #: src/callback.cpp:422
 msgid "Running configure..."
@@ -14433,6 +14442,8 @@ msgstr "CM Typewriter Light"
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
+"Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
+"gültiger Parameter ein."
 
 #: src/frontends/qt4/QDocument.cpp:227
 msgid "Length"
@@ -14612,11 +14623,11 @@ msgstr "Unterdokument"
 
 #: src/frontends/qt4/QInclude.cpp:256
 msgid "caption parameter is not quoted with braces"
-msgstr ""
+msgstr "Der Legenden-Parameter ist nicht durch Klammern begrenzt"
 
 #: src/frontends/qt4/QInclude.cpp:263
 msgid "label parameter is not quoted with braces"
-msgstr ""
+msgstr "Der Marken-Parameter ist nicht durch Klammern begrenzt"
 
 #: src/frontends/qt4/QListings.cpp:63
 msgid "No language"
@@ -15157,36 +15168,42 @@ msgstr "Bitte spezifizieren Sie eines oder mehrere von '%1$s'."
 #: src/insets/InsetListingsParams.cpp:228
 #, c-format
 msgid "Should be composed of one or more of %1$s."
-msgstr ""
+msgstr "Es sollte aus einem oder mehreren aus %1$s bestehen."
 
 #: src/insets/InsetListingsParams.cpp:294
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
+"Verwenden Sie \\footnotesize, \\small, \\itshape, \\ttfamily oder etwas "
+"ähnliches"
 
 #: src/insets/InsetListingsParams.cpp:296
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
+"none, leftline, topline, bottomline, lines, single, shadowbox oder eine "
+"Teilmenge von trblTRBL"
 
 #: src/insets/InsetListingsParams.cpp:298
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
+"Geben Sie vier Buchstaben (entweder t = rund oder f = eckig) für die Ecken "
+"oben rechts, unten rechts, unten left und oben links ein."
 
 #: src/insets/InsetListingsParams.cpp:301
 msgid "Enter something like \\color{white}"
-msgstr ""
+msgstr "Geben Sie etwas wie \\color{white} ein"
 
 #: src/insets/InsetListingsParams.cpp:327
 msgid "Expect a number with an optional * before it"
-msgstr ""
+msgstr "Erwarte eine Zahl mit einem vorangestellten, optionalen *"
 
 #: src/insets/InsetListingsParams.cpp:411
 msgid "auto, last or a number"
-msgstr "'auto', 'last', oder eine Zahl"
+msgstr "'auto', 'last' oder eine Zahl"
 
 #: src/insets/InsetListingsParams.cpp:421
 msgid ""
@@ -15194,6 +15211,9 @@ msgid ""
 "(when using the include dialog) or menu Insert->Caption (when defining a "
 "listing inset)"
 msgstr ""
+"Dieser Parameter sollte hier nicht eingegeben werden. Bitte verwenden Sie die "
+"Legenden-Editierbox (wenn Sie den Unterdokument-Dialog nutzen) oder das Menü Einfügen->Legende (wenn Sie eine Listing-"
+"Einfügung definieren)"
 
 #: src/insets/InsetListingsParams.cpp:427
 msgid ""
@@ -15201,6 +15221,9 @@ msgid ""
 "(when using the include dialog) or menu Insert->Label (when defining a "
 "listing inset)"
 msgstr ""
+"Dieser Parameter sollte hier nicht eingegeben werden. Bitte verwenden Sie "
+"die Marken-Editierbox (wenn Sie den Unterdokument-Dialog nutzen) oder das Menü Einfügen->Marke (wenn Sie eine "
+"Listing-Einfügung definieren)"
 
 #: src/insets/InsetListingsParams.cpp:599
 #, c-format
@@ -15209,7 +15232,7 @@ msgstr "Parameter: %1$s: "
 
 #: src/insets/InsetListingsParams.cpp:607
 msgid "Invalid (empty) listing parameter name."
-msgstr ""
+msgstr "Ungültiger (leerer) Listing-Parametername."
 
 #: src/insets/InsetListingsParams.cpp:611
 #, c-format
@@ -15224,7 +15247,7 @@ msgstr "Unbekannter Listing-Parametername: %1$s"
 #: src/insets/InsetListingsParams.cpp:632
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
-msgstr ""
+msgstr "Parameter, die mit '%1$s' beginnen: %2$s"
 
 #: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
 #: src/insets/InsetMarginal.cpp:70
