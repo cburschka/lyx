@@ -48,6 +48,11 @@
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
+#ifdef Q_WS_X11
+#include <QX11Info>
+extern "C" int XEventsQueued(Display *display, int mode);
+#endif
+
 #ifdef Q_WS_WIN
 int const CursorWidth = 2;
 #else
@@ -234,6 +239,7 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 void GuiWorkArea::adjustViewWithScrollBar(int)
 {
 	scrollBufferView(verticalScrollBar()->sliderPosition());
+	QApplication::syncX();
 }
 
 
@@ -414,6 +420,19 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 {
+	// do nothing if there are other events
+	// (the auto repeated events come too fast)
+	// \todo FIXME: remove hard coded Qt keysprocess the key binding
+#ifdef Q_WS_X11
+	if (XEventsQueued(QX11Info::display(), 0) > 1	&& e->isAutoRepeat() 
+			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
+		LYXERR(Debug::KEY)	
+			<< BOOST_CURRENT_FUNCTION << endl
+			<< "sysstem is busy: scroll key event ignored" << endl;
+		e->ignore();
+		return;
+	}
+#endif
 
 	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 		<< " count=" << e->count()
