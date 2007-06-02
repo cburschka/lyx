@@ -48,14 +48,16 @@ public:
 
 	/// \return true if the dialog is visible.
 	bool isVisible() const;
+	
+	///
+	bool eventFilter(QObject *, QEvent *);
 
 protected:
 	void closeEvent (QCloseEvent * e);
-	void keyPressEvent (QKeyEvent * event);
 	void findText(QString const & text);
 
 protected Q_SLOTS:
-
+	void cleanUp();
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();
@@ -70,7 +72,7 @@ protected Q_SLOTS:
 	void on_selectedLV_clicked(const QModelIndex &);
 	void selectedChanged(const QModelIndex &, const QModelIndex &);
 	void on_availableLV_clicked(const QModelIndex &);
-	void on_availableLV_activated(const QModelIndex &);
+	void on_availableLV_doubleClicked(const QModelIndex &);
 	void on_availableLV_entered(const QModelIndex &);
 	void availableChanged(const QModelIndex &, const QModelIndex &);
 	virtual void changed();
@@ -88,13 +90,12 @@ private:
 
 	/// set the styles combo
 	void updateStyle();
-
+	
 	/// last used citation style
 	int style_;
-
+	
 	QCitation * form_;
 };
-
 
 } // namespace frontend
 } // namespace lyx

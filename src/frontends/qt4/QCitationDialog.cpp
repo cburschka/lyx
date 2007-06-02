@@ -65,6 +65,9 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 	connect(selectedLV->selectionModel(),
 		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
 		this, SLOT(selectedChanged(const QModelIndex &, const QModelIndex &)));
+	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
+	availableLV->installEventFilter(this);
+	selectedLV->installEventFilter(this);
 }
 
 
@@ -73,15 +76,65 @@ QCitationDialog::~QCitationDialog()
 }
 
 
-void QCitationDialog::keyPressEvent(QKeyEvent * event)
+bool QCitationDialog::eventFilter(QObject * obj, QEvent * event) 
 {
-	if (event->key() == Qt::Key_Escape) {
-		form_->clearSelection();
-		form_->clearParams();
-		event->accept();
-		close();
-	} else
-		event->ignore();
+	if (obj == availableLV) {
+		if (event->type() != QEvent::KeyPress)
+			return QObject::eventFilter(obj, event);
+		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
+		int const keyPressed = keyEvent->key();
+		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
+		//Enter key without modifier will add current item.
+		//Ctrl-Enter will add it and close the dialog.
+		//This is designed to work both with the main enter key
+		//and the one on the numeric keypad.
+		if ((keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) &&
+				//We want one or both of Control and Keypad, and nothing else
+				//(KeypadModifier is what you get if you use the Enter key on the
+				//numeric keypad.)
+				(!keyModifiers || 
+				 (keyModifiers == Qt::ControlModifier) ||
+				 (keyModifiers == Qt::KeypadModifier)  ||
+				 (keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier))
+				)
+			) {
+				if (addPB->isEnabled())
+					on_addPB_clicked();
+				if (keyModifiers & Qt::ControlModifier)
+					on_okPB_clicked();
+				event->accept();
+				return true;
+		} 
+	} else if (obj == selectedLV) {
+		//Delete or backspace key will delete current item
+		//...with control modifier will clear the list
+		if (event->type() != QEvent::KeyPress)
+			return QObject::eventFilter(obj, event);
+		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
+		int const keyPressed = keyEvent->key();
+		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
+		if (keyPressed == Qt::Key_Delete || keyPressed == Qt::Key_Backspace) {
+			if (keyModifiers == Qt::NoModifier && deletePB->isEnabled())
+				on_deletePB_clicked();
+			else if (keyModifiers == Qt::ControlModifier) {
+				form_->clearSelection();
+				update();
+			} else
+				//ignore it otherwise
+				return QObject::eventFilter(obj, event);
+			event->accept();
+			return true;
+		}
+	}
+	return QObject::eventFilter(obj, event);
+}
+
+
+void QCitationDialog::cleanUp() 
+{
+	form_->clearSelection();
+	form_->clearParams();
+	close();
 }
 
 
@@ -323,15 +376,13 @@ void QCitationDialog::availableChanged(const QModelIndex & idx, const QModelInde
 }
 
 
-void QCitationDialog::on_availableLV_activated(const QModelIndex & idx)
+void QCitationDialog::on_availableLV_doubleClicked(const QModelIndex & idx)
 {
 	if (isSelected(idx))
 		return;
 
 	selectedLV->selectionModel()->reset();
 	on_addPB_clicked();
-	if (selectedLV->model()->rowCount() == 1)
-		on_okPB_clicked();
 }
 
 
@@ -340,10 +391,27 @@ void QCitationDialog::on_availableLV_entered(const QModelIndex &)
 }
 
 
+namespace {
+//helper function for next two
+QModelIndex getSelectedIndex(QListView * lv) {
+	//Encourage compiler to use NRVO
+	QModelIndex retval = QModelIndex();
+	QModelIndexList selIdx = 
+		lv->selectionModel()->selectedIndexes();
+	if (!selIdx.empty())
+		retval = selIdx.first();
+	return retval;
+}
+}//anonymous namespace
+
+
 void QCitationDialog::on_addPB_clicked()
 {
+	QModelIndex const idxToAdd = getSelectedIndex(availableLV);
+	if (!idxToAdd.isValid())
+		return;
 	QModelIndex idx = selectedLV->currentIndex();
-	form_->addKey(availableLV->currentIndex());
+	form_->addKey(idxToAdd);
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
 	selectedLV->selectionModel()->reset();
@@ -353,7 +421,9 @@ void QCitationDialog::on_addPB_clicked()
 
 void QCitationDialog::on_deletePB_clicked()
 {
-	QModelIndex idx = selectedLV->currentIndex();
+	QModelIndex idx = getSelectedIndex(selectedLV);
+	if (!idx.isValid())
+		return;
 	int nrows = selectedLV->model()->rowCount();
 
 	form_->deleteKey(idx);
