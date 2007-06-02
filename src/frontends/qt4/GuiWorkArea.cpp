@@ -422,7 +422,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 {
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)
-	// \todo FIXME: remove hard coded Qt keysprocess the key binding
+	// \todo FIXME: remove hard coded Qt keys, process the key binding
 #ifdef Q_WS_X11
 	if (XEventsQueued(QX11Info::display(), 0) > 1	&& e->isAutoRepeat() 
 			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
