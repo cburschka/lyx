@@ -3212,6 +3212,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 						  "paragraph");
 			}
 			doDispatch(cur, cmd);
+			cur.bv().buffer()->markDirty();
+			cur.bv().mouseSetCursor(cur);
 		}
 		break;
 

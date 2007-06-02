@@ -1022,9 +1022,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			paste_internally = true;
 		}
 
-		// we have to update after dePM triggered
-		bool update = bv->mouseSetCursor(cur);
-
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
@@ -1034,10 +1031,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				bv->buffer()->errors("Paste");
 				cur.clearSelection(); // bug 393
 				bv->switchKeyMap();
+				bv->buffer()->markDirty();
 				finishUndo();
 			} else
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 		}
+
+		// we have to update after dePM triggered
+		bool update = bv->mouseSetCursor(cur);
 
 		if (!update && cmd.button() == mouse_button::button1) {
 			needsUpdate = false;
