@@ -424,11 +424,11 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 	// (the auto repeated events come too fast)
 	// \todo FIXME: remove hard coded Qt keys, process the key binding
 #ifdef Q_WS_X11
-	if (XEventsQueued(QX11Info::display(), 0) > 1	&& e->isAutoRepeat() 
+	if (XEventsQueued(QX11Info::display(), 0) > 1 && e->isAutoRepeat() 
 			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
 		LYXERR(Debug::KEY)	
 			<< BOOST_CURRENT_FUNCTION << endl
-			<< "sysstem is busy: scroll key event ignored" << endl;
+			<< "system is busy: scroll key event ignored" << endl;
 		e->ignore();
 		return;
 	}
