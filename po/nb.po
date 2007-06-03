@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-06-01 00:31+0100\n"
-"PO-Revision-Date: 2007-05-27 22:07+0200\n"
-"Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
+"PO-Revision-Date: 2007-06-01 12:45+0200\n"
+"Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -1318,19 +1318,19 @@ msgstr "Stil"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:67
 msgid "The content's base font size"
-msgstr ""
+msgstr "Skriftstørrelse for innholdet"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:83
 msgid "F&ont size:"
-msgstr "F&ontstørrelse:"
+msgstr "S&kriftstørrelse:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:104
 msgid "The content's base font style"
-msgstr ""
+msgstr "Skrifttype for innholdet"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:120
 msgid "Font st&yle:"
-msgstr "Fontst&il:"
+msgstr "Skriftt&ype:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:136
 msgid "Use extended character table"
@@ -1342,15 +1342,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:149
 msgid "Make spaces in strings visible by a special symbol"
-msgstr ""
+msgstr "Gjør mellomrommene i tekststrenger synlige med et spesialsymbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:152
 msgid "S&pace in string as Symbol"
-msgstr ""
+msgstr "Synlige mellomrom i tekststrenger"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:162
 msgid "Make spaces visible by a special symbol"
-msgstr ""
+msgstr "Gjør mellomrom synlige med et spesialsymbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:165
 msgid "S&pace as Symbol"
@@ -1374,11 +1374,11 @@ msgstr "&Siste linje:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:216
 msgid "The last line to be printed"
-msgstr ""
+msgstr "Siste linje som listes ut"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:229
 msgid "The first line to be printed"
-msgstr ""
+msgstr "Første linje som listes ut"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:242
 msgid "Fi&rst line:"
@@ -1386,7 +1386,7 @@ msgstr "Fø&rste linje:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:270
 msgid "Select the dialect of the programming language, if available"
-msgstr ""
+msgstr "Velg dialekt for programmeringsspråket, om mulig"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:277
 msgid "&Dialect:"
@@ -1394,7 +1394,7 @@ msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Select the programming language"
-msgstr ""
+msgstr "Velg programmeringsspråk"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Line numbering"
@@ -1402,15 +1402,15 @@ msgstr "Linjenumre"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:319
 msgid "On which side should line numbers be printed?"
-msgstr ""
+msgstr "På hvilken side vil du ha linjenumrene?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:349
 msgid "Choose the font size for line numbers"
-msgstr "Velg fontstørrelse for linjenumre"
+msgstr "Velg skriftstørrelse for linjenumre"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:365
 msgid "Font si&ze:"
-msgstr "Fontstør&relse:"
+msgstr "Skriftstør&relse:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:381
 msgid "S&tep:"
@@ -1430,11 +1430,11 @@ msgstr "Plassering:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:435
 msgid "Specify placement (htbp) for floating listings"
-msgstr ""
+msgstr "Oppgi plassering (htbp) for flytende programlisting"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:442
 msgid "Check for floating listings"
-msgstr ""
+msgstr "Kryss av for å få en flytende programlisting"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:445
 msgid "&Float"
@@ -1462,11 +1462,11 @@ msgstr "Fler &parametre"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:520
 msgid "Feedback window"
-msgstr ""
+msgstr "Vindu for tilbakemeldinger"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr ""
+msgstr "Skriv inn parametre for 'listings' her. Skriv ? for å få en liste over parametre."
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -1746,7 +1746,7 @@ msgstr "&Modifiser..."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:25
 msgid "Converter Defi&nitions"
-msgstr ""
+msgstr "Defi&nerte konvertere"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:69
 msgid "C&onverter:"
@@ -1781,15 +1781,15 @@ msgstr "F&jern"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:234
 msgid "Converter File Cache"
-msgstr ""
+msgstr "Hurtilager for konverterte filer"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:254
 msgid "&Enabled"
-msgstr ""
+msgstr "&I bruk"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:274
 msgid "&Maximum Age (in days):"
-msgstr ""
+msgstr "Maksimal alder (i dager):"
 
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 msgid "&Format:"
@@ -2085,7 +2085,7 @@ msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
-msgstr ""
+msgstr "Maksimal linjelengde for eksporterte filer av typene tekst/LaTeX/SGML. Hvis lengden er 0 blir hvert avsnitt én linje; hvis lengden er større enn 0 skilles avsnitt med en blank linje."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:82
 msgid "Output &line length:"
@@ -2851,15 +2851,15 @@ msgstr "Valgte klasser eller stiler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
-msgstr ""
+msgstr "LaTeX dokumentklasser"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:133
 msgid "LaTeX styles"
-msgstr ""
+msgstr "LaTeX stiler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:138
 msgid "BibTeX styles"
-msgstr ""
+msgstr "BibTeX stiler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
@@ -2887,7 +2887,7 @@ msgstr "&Innrykk"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
 msgid "Spacing"
-msgstr ""
+msgstr "Linjeavstand og kolonner"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:149
 msgid "&Line spacing:"
@@ -2902,9 +2902,8 @@ msgid "Two-&column document"
 msgstr "To &kolonners dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
-#, fuzzy
 msgid "Listing settings"
-msgstr "Språkinnstillinger"
+msgstr "Innstillinger for programlisting"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
@@ -2939,7 +2938,7 @@ msgstr "Juster dybden på navigasjonstreet"
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
-msgstr ""
+msgstr "Bytt mellom innholdsfortegnelse, figurliste eller tabell-liste, om de er tilgjengelige"
 
 #: src/frontends/qt4/ui/TocUi.ui:93
 msgid "Update navigation tree"
@@ -2949,7 +2948,7 @@ msgstr "Oppdater navigasjonstreet"
 #: src/frontends/qt4/ui/TocUi.ui:147 src/frontends/qt4/ui/TocUi.ui:166
 #: src/frontends/qt4/ui/TocUi.ui:185
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:125
 msgid "Decrease nesting depth of selected item"
@@ -7128,11 +7127,11 @@ msgstr "Katalansk"
 
 #: lib/languages:18
 msgid "Chinese (simplified)"
-msgstr ""
+msgstr "Kinesisk (forenklet)"
 
 #: lib/languages:19
 msgid "Chinese (traditional)"
-msgstr ""
+msgstr "Kinesisk (tradisjonelt)"
 
 #: lib/languages:20
 msgid "Croatian"
@@ -7164,7 +7163,7 @@ msgstr "Estlandsk"
 
 #: lib/languages:28
 msgid "Farsi"
-msgstr ""
+msgstr "Farsi"
 
 #: lib/languages:29
 msgid "Finnish"
@@ -7204,7 +7203,7 @@ msgstr "Italiensk"
 
 #: lib/languages:40
 msgid "Japanese"
-msgstr ""
+msgstr "Japansk"
 
 #: lib/languages:41
 msgid "Kazakh"
@@ -7212,7 +7211,7 @@ msgstr "Kasakstansk"
 
 #: lib/languages:43
 msgid "Korean"
-msgstr ""
+msgstr "Koreansk"
 
 #: lib/languages:45
 msgid "Lithuanian"
@@ -8045,7 +8044,7 @@ msgstr "LaTeX Logg|L"
 
 #: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:412
 msgid "Outline|O"
-msgstr ""
+msgstr "Innhold|n"
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8208,7 +8207,7 @@ msgstr "Lim inn spesielt"
 
 #: lib/ui/stdmenus.inc:93
 msgid "Select All"
-msgstr "Velg alle"
+msgstr "Velg alt"
 
 #: lib/ui/stdmenus.inc:97
 msgid "Move Paragraph Up|o"
@@ -8244,7 +8243,7 @@ msgstr "Minsk listedybde|M"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Dissolve Inset|l"
-msgstr "Oppløs \"Inset\"|l"
+msgstr "Oppløs objekt|l"
 
 #: lib/ui/stdmenus.inc:116
 msgid "TeX Code Settings...|C"
@@ -8576,15 +8575,15 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:365
 msgid "Delimiters|r"
-msgstr ""
+msgstr "Parenteser/klammer|P"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Matrix|x"
-msgstr ""
+msgstr "Matrise|r"
 
 #: lib/ui/stdmenus.inc:368 lib/ui/stdtoolbars.inc:163
 msgid "Toggle Math Panels"
-msgstr ""
+msgstr "Matte-verktøylinjer på/av"
 
 #: lib/ui/stdmenus.inc:374
 msgid "Text Wrap Float|W"
@@ -8620,7 +8619,7 @@ msgstr "Begynn appendiks her|a"
 
 #: lib/ui/stdmenus.inc:415
 msgid "Compressed|m"
-msgstr ""
+msgstr "Komprimert|m"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Settings...|S"
@@ -8715,22 +8714,20 @@ msgid "Insert graphics"
 msgstr "Sett inn grafikk"
 
 #: lib/ui/stdtoolbars.inc:77
-#, fuzzy
 msgid "Insert table"
 msgstr "Sett inn tabell"
 
 #: lib/ui/stdtoolbars.inc:79
-#, fuzzy
 msgid "Toggle Outline"
-msgstr "Substantiv stil av/på"
+msgstr "Innhold av/på"
 
 #: lib/ui/stdtoolbars.inc:80
 msgid "Toggle Math Toolbar"
-msgstr ""
+msgstr "Verktøylinje for matte av/på"
 
 #: lib/ui/stdtoolbars.inc:81
 msgid "Toggle Table Toolbar"
-msgstr ""
+msgstr "Verktøylinje for tabeller av/på"
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Extra"
@@ -11328,17 +11325,17 @@ msgstr "Mislyktes med chktex."
 
 #: src/Buffer.cpp:1743
 msgid "Preview source code"
-msgstr ""
+msgstr "Forhåndsvist kildekode"
 
 #: src/Buffer.cpp:1754
 #, c-format
 msgid "Preview source code for paragraph %1$s"
-msgstr ""
+msgstr "Forhåndsvist kildekode for avsnitt %1$s"
 
 #: src/Buffer.cpp:1758
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
-msgstr ""
+msgstr "Forhåndsvist kildekode for avsnitt %1$s til %2$s"
 
 #: src/BufferList.cpp:110 src/BufferList.cpp:218
 #, c-format
@@ -11637,7 +11634,7 @@ msgstr "språk"
 
 #: src/Color.cpp:292
 msgid "command inset"
-msgstr "kommando-\"inset\""
+msgstr "kommando-objekt"
 
 #: src/Color.cpp:293
 msgid "command inset background"
@@ -12949,9 +12946,8 @@ msgstr "Tilbake til lagret versjon av dokumentet?"
 #: src/MenuBackend.cpp:463 src/MenuBackend.cpp:500 src/MenuBackend.cpp:572
 #: src/MenuBackend.cpp:594 src/MenuBackend.cpp:617 src/MenuBackend.cpp:703
 #: src/MenuBackend.cpp:813
-#, fuzzy
 msgid "No Document Open!"
-msgstr "Ingen åpne dokumenter!"
+msgstr "Intet åpent dokument!"
 
 #: src/MenuBackend.cpp:540
 msgid "Plain Text"
@@ -12982,9 +12978,8 @@ msgid " (auto)"
 msgstr ""
 
 #: src/MenuBackend.cpp:821
-#, fuzzy
 msgid "No Branch in Document!"
-msgstr "Skriv ut dokumentet"
+msgstr "Ingen grener i dokumentet!"
 
 #: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
@@ -13930,9 +13925,8 @@ msgid "LaTeX Source"
 msgstr "LaTeX kildekode"
 
 #: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
-#, fuzzy
 msgid "Outline"
-msgstr "Ytre"
+msgstr "Innhold"
 
 #: src/frontends/qt4/FileDialog.cpp:162
 msgid "Directories"
@@ -14323,7 +14317,7 @@ msgstr "Grafikk"
 #: src/frontends/qt4/QListings.cpp:442
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
-msgstr ""
+msgstr "Skriv inn listing-parametre i vinduet til høyre. Trykk ? for en liste over parametre."
 
 #: src/frontends/qt4/QInclude.cpp:177
 msgid "Child Document"
@@ -14339,7 +14333,7 @@ msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:63
 msgid "No language"
-msgstr ""
+msgstr "Intet språk"
 
 #: src/frontends/qt4/QListings.cpp:138
 msgid "common"
@@ -14351,12 +14345,11 @@ msgstr ""
 
 #: src/frontends/qt4/QListings.cpp:372
 msgid "No dialect"
-msgstr ""
+msgstr "Ingen dialekt"
 
 #: src/frontends/qt4/QListings.cpp:397
-#, fuzzy
 msgid "Program Listing Settings"
-msgstr "Programlisting "
+msgstr "Innstillinger for programlisting "
 
 #: src/frontends/qt4/QMathMatrixDialog.cpp:46
 msgid "Math Matrix"
@@ -14804,9 +14797,8 @@ msgid "Index"
 msgstr "Register"
 
 #: src/insets/InsetListings.cpp:127
-#, fuzzy
 msgid "Opened Listing Inset"
-msgstr "Åpnet text inset"
+msgstr "Åpen programlisting"
 
 #: src/insets/InsetListingsParams.cpp:129
 msgid "A value is expected."
@@ -14819,61 +14811,61 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:198
 #: src/insets/InsetListingsParams.cpp:231
 msgid "Unbalanced braces!"
-msgstr ""
+msgstr "Feil med krøllparenteser"
 
 #: src/insets/InsetListingsParams.cpp:140
 msgid "Please specify true or false."
-msgstr ""
+msgstr "Vennligst oppgi \"true\" eller \"false\""
 
 #: src/insets/InsetListingsParams.cpp:143
 msgid "Only true or false is allowed."
-msgstr ""
+msgstr "Gyldige muligheter er \"true\" eller \"false\"."
 
 #: src/insets/InsetListingsParams.cpp:153
 msgid "Please specify an integer value."
-msgstr ""
+msgstr "Vennligst skrif inn et heltall."
 
 #: src/insets/InsetListingsParams.cpp:156
 msgid "An integer is expected."
-msgstr ""
+msgstr "Her må du bruke et heltall."
 
 #: src/insets/InsetListingsParams.cpp:166
 msgid "Please specify a LaTeX length expression."
-msgstr ""
+msgstr "Vennligst oppgi et LaTeX-lengdemål"
 
 #: src/insets/InsetListingsParams.cpp:169
 msgid "Invalid LaTeX length expression."
-msgstr ""
+msgstr "Ugyldig LaTeX-lengde"
 
 #: src/insets/InsetListingsParams.cpp:179
 #, c-format
 msgid "Please specify one of %1$s."
-msgstr ""
+msgstr "Vennligst oppgi en av %1$s."
 
 #: src/insets/InsetListingsParams.cpp:213
 #, c-format
 msgid "Try one of %1$s."
-msgstr ""
+msgstr "Prøv en av %1s."
 
 #: src/insets/InsetListingsParams.cpp:215
 #, c-format
 msgid "I guess you mean %1$s."
-msgstr ""
+msgstr "Jeg antar at du mener %1$s."
 
 #: src/insets/InsetListingsParams.cpp:223
 #, c-format
 msgid "Please specify one or more of '%1$s'."
-msgstr ""
+msgstr "Vennligst spesifiser en eller flere av '%1$s'."
 
 #: src/insets/InsetListingsParams.cpp:228
 #, c-format
 msgid "Should be composed of one or more of %1$s."
-msgstr ""
+msgstr "Bør bestå av en eller fler av %1$s."
 
 #: src/insets/InsetListingsParams.cpp:294
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
-msgstr ""
+msgstr "Bruk \\footnotesize, \\small, \\itshape, \\ttfamily eller noe sånt"
 
 #: src/insets/InsetListingsParams.cpp:296
 msgid ""
@@ -14885,26 +14877,26 @@ msgstr ""
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
-msgstr ""
+msgstr "Oppgi fire bokstaver (enten t = rund eller f = firkant) for øvre høyre, nedre høyre, nedre venstre og øvre venstre hjørne."
 
 #: src/insets/InsetListingsParams.cpp:301
 msgid "Enter something like \\color{white}"
-msgstr ""
+msgstr "Skriv inn noe tilsvarende som \\color{white}"
 
 #: src/insets/InsetListingsParams.cpp:327
 msgid "Expect a number with an optional * before it"
-msgstr ""
+msgstr "Forventer et nummer, med en frivillig * foran"
 
 #: src/insets/InsetListingsParams.cpp:411
 msgid "auto, last or a number"
-msgstr ""
+msgstr "'auto', 'last' eller et tall"
 
 #: src/insets/InsetListingsParams.cpp:421
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
 "(when using the include dialog) or menu Insert->Caption (when defining a "
 "listing inset)"
-msgstr ""
+msgstr "Denne parameteren hører ikke hjemme her. Vennligst bruk boksen for bildetekst eller menyen Sett inn->bildetekst"
 
 #: src/insets/InsetListingsParams.cpp:427
 msgid ""
@@ -14914,28 +14906,28 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:599
-#, fuzzy, c-format
+#, c-format
 msgid "Parameter %1$s: "
-msgstr "Fler &parametre"
+msgstr "Parameter %1$s: "
 
 #: src/insets/InsetListingsParams.cpp:607
 msgid "Invalid (empty) listing parameter name."
-msgstr ""
+msgstr "Ugyldig (tomt) parameternavn for programlisting."
 
 #: src/insets/InsetListingsParams.cpp:611
 #, c-format
 msgid "Available listing parameters are %1$s"
-msgstr ""
+msgstr "Tilgjengelige parametre for programlisting er %1$s"
 
 #: src/insets/InsetListingsParams.cpp:629
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown listing parameter name: %1$s"
-msgstr "Ukjent argument til linjeavstand: "
+msgstr "Ukjent parameter for programlisting: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:632
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
-msgstr ""
+msgstr "Parametre som starter med '%1$s': %2$s"
 
 #: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
 #: src/insets/InsetMarginal.cpp:70
