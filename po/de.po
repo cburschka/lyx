@@ -1426,16 +1426,14 @@ msgid "Use extended character table"
 msgstr "Erweiterte Zeichentabelle verwenden"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:139
-#, fuzzy
 msgid "&Extended character table"
-msgstr "Erweiterte Zeichentabelle verwenden"
+msgstr "Erweiterte &Zeichentabelle"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:149
 msgid "Make spaces in strings visible by a special symbol"
 msgstr "Leerzeichen in Zeichenketten durch ein Spezialsymbol sichtbar machen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:152
-#, fuzzy
 msgid "Space i&n string as symbol"
 msgstr "Leerzeichen in Zeichenkette als S&ymbol"
 
@@ -1444,7 +1442,6 @@ msgid "Make spaces visible by a special symbol"
 msgstr "Leerzeichen durch ein Spezialsymbol sichtbar machen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:165
-#, fuzzy
 msgid "S&pace as symbol"
 msgstr "&Leerzeichen als Symbol"
 
@@ -1485,9 +1482,8 @@ msgid "&Dialect:"
 msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:287
-#, fuzzy
 msgid "Lan&guage:"
-msgstr "Sprache:"
+msgstr "Sprac&he:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Select the programming language"
@@ -1518,9 +1514,8 @@ msgid "Difference between two numbered lines"
 msgstr "Abstand zwischen zwei nummerierten Zeilen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:410
-#, fuzzy
 msgid "&Side:"
-msgstr "&Seite: "
+msgstr "&Seite:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:423
 msgid "Placement"
@@ -1555,9 +1550,8 @@ msgid "Ad&vanced"
 msgstr "Er&weitert"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:499
-#, fuzzy
 msgid "More Parameters"
-msgstr "Weitere &Parameter"
+msgstr "Weitere Parameter"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:523
 msgid "Feedback window"
@@ -15201,7 +15195,6 @@ msgid "auto, last or a number"
 msgstr "'auto', 'last' oder eine Zahl"
 
 #: src/insets/InsetListingsParams.cpp:421
-#, fuzzy
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
 "(when using the child document dialog) or menu Insert->Caption (when "
@@ -15212,7 +15205,6 @@ msgstr ""
 "Menü Einfügen->Legende (wenn Sie eine Listing-Einfügung definieren)"
 
 #: src/insets/InsetListingsParams.cpp:427
-#, fuzzy
 msgid ""
 "This parameter should not be entered here. Please use the label edit box "
 "(when using the child document dialog) or menu Insert->Label (when defining "
@@ -15704,18 +15696,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "&Extended Chars"
-#~ msgstr "Erweiterte &Zeichen"
-
-#~ msgid "Placement:"
-#~ msgstr "Platzierung:"
-
-#~ msgid "default"
-#~ msgstr "Standard"
-
-#~ msgid "common"
-#~ msgstr "gemeinsam"
-
-#~ msgid "primitive"
-#~ msgstr "primitiv"
