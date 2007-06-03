@@ -419,13 +419,13 @@ ParValidator::ParValidator()
 	all_params_["caption"] =
 		ListingsParam("", false, ALL, "", _(
 		"This parameter should not be entered here. Please use the caption "
-		"edit box (when using the include dialog) or "
+		"edit box (when using the child document dialog) or "
 		"menu Insert->Caption (when defining a listing inset)"));
 	// this option is not handled in the parameter box
 	all_params_["label"] =
 		ListingsParam("", false, ALL, "",_(
 		"This parameter should not be entered here. Please use the label "
-		"edit box (when using the include dialog) or "
+		"edit box (when using the child document dialog) or "
 		"menu Insert->Label (when defining a listing inset)"));
 	all_params_["nolol"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
