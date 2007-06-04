@@ -1030,14 +1030,16 @@ bool Text::cursorRight(Cursor & cur)
 
 	// not at paragraph end?
 	if (cur.pos() != cur.lastpos()) {
-		// if left of boundary -> just jump to right side 
-		if (cur.boundary())
-			return setCursor(cur, cur.pit(), cur.pos(), true, false);
-
 		// in front of editable inset, i.e. jump into it?
 		if (checkAndActivateInset(cur, true))
 			return false;
-		
+
+		// if left of boundary -> just jump to right side
+	  // but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
+	  if (cur.boundary() && 
+				!bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos()))
+			return setCursor(cur, cur.pit(), cur.pos(), true, false);
+
 		// next position is left of boundary, 
 		// but go to next line for special cases like space, newline, linesep
 #if 0
@@ -1061,6 +1063,11 @@ bool Text::cursorRight(Cursor & cur)
 				!cur.paragraph().isSeparator(cur.pos())) {
 			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 		}
+		
+		// in front of RTL boundary? Stay on this side of the boundary because:
+		//   ab|cDDEEFFghi -> abc|DDEEFFghi
+		if (bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
+			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 		
 		// move right
 		return setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
