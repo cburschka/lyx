@@ -18,6 +18,7 @@
  */
 
 #include <config.h>
+#include <vector>
 
 #include "LyXFunc.h"
 
@@ -628,6 +629,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.setOnOff(current);
 		break;
 	}
+	
+	case LFUN_WINDOW_CLOSE: {
+		enable = (theApp()->gui().viewIds().size() > 1);
+		break;
+	}
+
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
 	case LFUN_COMMAND_SEQUENCE: {
@@ -688,7 +695,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
 	case LFUN_WINDOW_NEW:
-	case LFUN_WINDOW_CLOSE:
 	case LFUN_LYX_QUIT:
 		// these are handled in our dispatch()
 		break;
