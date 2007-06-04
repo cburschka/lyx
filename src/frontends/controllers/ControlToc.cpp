@@ -139,7 +139,7 @@ docstring const ControlToc::getGuiName(string const & type) const
 	FloatList const & floats =
 		kernel().buffer().params().getTextClass().floats();
 	if (floats.typeExist(type))
-		return from_utf8(floats.getType(type).name());
+		return _(floats.getType(type).listName());
 	else
 		return _(type);
 }

@@ -254,8 +254,7 @@ void TocWidget::updateGui()
 	typeCO->clear();
 	int current_type = -1;
 	for (size_t i = 0; i != type_names.size(); ++i) {
-		QString item =
-			toqstr(form_->getGuiName(to_utf8(type_names[i])));
+		QString item = toqstr(type_names[i]);
 		typeCO->addItem(item);
 		if (item == current_text)
 			current_type = i;
