@@ -127,16 +127,44 @@ public:
 
 	void draw(QPainter & painter)
 	{
-		// FIXME: do something depending on the cursor shape.
-		if (show_ && rect_.isValid())
-			painter.fillRect(rect_, color_);
+		if (show_ && rect_.isValid()) {
+			switch (shape_) {
+			case L_SHAPE:
+				painter.fillRect(rect_.x(), rect_.y(), CursorWidth, rect_.height(), color_);
+				painter.setPen(color_);
+				painter.drawLine(rect_.bottomLeft().x() + CursorWidth, rect_.bottomLeft().y(),
+												 rect_.bottomRight().x(), rect_.bottomLeft().y());
+				break;
+			
+			case REVERSED_L_SHAPE:
+				painter.fillRect(rect_.x() + rect_.height() / 3, rect_.y(), CursorWidth, rect_.height(), color_);
+				painter.setPen(color_);
+				painter.drawLine(rect_.bottomRight().x() - CursorWidth, rect_.bottomLeft().y(),
+													 rect_.bottomLeft().x(), rect_.bottomLeft().y());
+				break;
+					
+			default:
+				painter.fillRect(rect_, color_);
+				break;
+			}
+		}
 	}
 
 	void update(int x, int y, int h, CursorShape shape)
 	{
 		color_ = guiApp->colorCache().get(Color::cursor);
-		rect_ = QRect(x, y, CursorWidth, h);
 		shape_ = shape;
+		switch (shape) {
+		case L_SHAPE:
+			rect_ = QRect(x, y, CursorWidth + h / 3, h);
+			break;
+		case REVERSED_L_SHAPE:
+			rect_ = QRect(x - h / 3, y, CursorWidth + h / 3, h);
+			break;
+		default: 
+			rect_ = QRect(x, y, CursorWidth, h);
+			break;
+		}
 	}
 
 	void show(bool set_show = true) { show_ = set_show; }
