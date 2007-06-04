@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:30+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -3661,6 +3661,7 @@ msgstr "   tchûzes: "
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -4815,7 +4816,7 @@ msgid "EndFrame"
 msgstr "Rexhe"
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
+msgid "________________________________"
 msgstr ""
 
 #: lib/layouts/beamer.layout:379
@@ -4829,17 +4830,12 @@ msgid "Column"
 msgstr "Colones"
 
 #: lib/layouts/beamer.layout:414
-msgid "Start column (increase depth!), width: "
+msgid "Start column (increase depth!), width:"
 msgstr ""
 
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 #, fuzzy
 msgid "Columns"
-msgstr "Colones"
-
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "Colones"
 
 #: lib/layouts/beamer.layout:454
@@ -4847,7 +4843,7 @@ msgid "ColumnsCenterAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:465
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:484
@@ -4855,7 +4851,7 @@ msgid "ColumnsTopAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:495
-msgid "Columns (top aligned) "
+msgid "Columns (top aligned)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:515
@@ -4867,14 +4863,9 @@ msgstr "Aclaper"
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 #, fuzzy
 msgid "Overprint"
-msgstr "Rexhe"
-
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
 msgstr "Rexhe"
 
 #: lib/layouts/beamer.layout:567
@@ -4892,8 +4883,9 @@ msgid "Uncover"
 msgstr "Comincî pal difén|#R"
 
 #: lib/layouts/beamer.layout:602
-msgid "Uncovered on slides "
-msgstr ""
+#, fuzzy
+msgid "Uncovered on slides"
+msgstr "Disfacer li colone|#O"
 
 #: lib/layouts/beamer.layout:617
 #, fuzzy
@@ -6551,10 +6543,6 @@ msgstr "Po:"
 #, fuzzy
 msgid "Question \\arabic{question}."
 msgstr "Gåliotaedje"
-
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-msgid "Conjecture "
-msgstr ""
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 #, fuzzy
@@ -17234,6 +17222,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Colones"
+
+#, fuzzy
+#~ msgid "Overprint "
+#~ msgstr "Rexhe"
 
 #, fuzzy
 #~ msgid "Font st&yle:"

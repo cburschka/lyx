@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:30+0200\n"
 "PO-Revision-Date: 2007-05-23 10:14+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -3349,6 +3349,7 @@ msgstr "הצעה #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -4447,7 +4448,8 @@ msgid "EndFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
+#, fuzzy
+msgid "________________________________"
 msgstr "________________________________ "
 
 #: lib/layouts/beamer.layout:379
@@ -4460,16 +4462,11 @@ msgstr "עמודה"
 
 #: lib/layouts/beamer.layout:414
 #, fuzzy
-msgid "Start column (increase depth!), width: "
+msgid "Start column (increase depth!), width:"
 msgstr "Current width of the column"
 
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
-msgstr "עמודות"
-
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "עמודות"
 
 #: lib/layouts/beamer.layout:454
@@ -4478,7 +4475,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:465
 #, fuzzy
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr "The number of columns of the pixbuf"
 
 #: lib/layouts/beamer.layout:484
@@ -4487,7 +4484,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:495
 #, fuzzy
-msgid "Columns (top aligned) "
+msgid "Columns (top aligned)"
 msgstr "החיפוש הגיעה למעלה"
 
 #: lib/layouts/beamer.layout:515
@@ -4498,14 +4495,9 @@ msgstr "השהייה"
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 msgid "Overprint"
 msgstr ""
-
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
-msgstr "שגיאה בכתיבה"
 
 #: lib/layouts/beamer.layout:567
 msgid "OverlayArea"
@@ -4522,7 +4514,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:602
 #, fuzzy
-msgid "Uncovered on slides "
+msgid "Uncovered on slides"
 msgstr "בגרירה העתק"
 
 #: lib/layouts/beamer.layout:617
@@ -6064,10 +6056,6 @@ msgstr "שאלה"
 #, fuzzy
 msgid "Question \\arabic{question}."
 msgstr "Summary \\arabic{summary}."
-
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-msgid "Conjecture "
-msgstr ""
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 #, fuzzy
@@ -16234,6 +16222,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "%s: שורה %d: משתמש לא מוכר %s\n"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "עמודות"
+
+#, fuzzy
+#~ msgid "Overprint "
+#~ msgstr "שגיאה בכתיבה"
 
 #, fuzzy
 #~ msgid "Font st&yle:"

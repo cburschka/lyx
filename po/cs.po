@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:30+0200\n"
 "PO-Revision-Date: 2007-04-20 14:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -3210,6 +3210,7 @@ msgstr "Proposition #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -4270,7 +4271,8 @@ msgid "EndFrame"
 msgstr "EndFrame"
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
+#, fuzzy
+msgid "________________________________"
 msgstr "________________________________ "
 
 #: lib/layouts/beamer.layout:379
@@ -4283,16 +4285,11 @@ msgstr "Column"
 
 #: lib/layouts/beamer.layout:414
 #, fuzzy
-msgid "Start column (increase depth!), width: "
+msgid "Start column (increase depth!), width:"
 msgstr "start column of width:  "
 
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
-msgstr "Columns"
-
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "Columns"
 
 #: lib/layouts/beamer.layout:454
@@ -4301,7 +4298,7 @@ msgstr "ColumnsCenterAligned"
 
 #: lib/layouts/beamer.layout:465
 #, fuzzy
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr "columns (center aligned) "
 
 #: lib/layouts/beamer.layout:484
@@ -4310,7 +4307,7 @@ msgstr "ColumnsTopAligned"
 
 #: lib/layouts/beamer.layout:495
 #, fuzzy
-msgid "Columns (top aligned) "
+msgid "Columns (top aligned)"
 msgstr "columns (top aligned) "
 
 #: lib/layouts/beamer.layout:515
@@ -4321,13 +4318,8 @@ msgstr "Pause"
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 msgid "Overprint"
-msgstr "Overprint"
-
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
 msgstr "Overprint"
 
 #: lib/layouts/beamer.layout:567
@@ -4345,7 +4337,7 @@ msgstr "Uncover"
 
 #: lib/layouts/beamer.layout:602
 #, fuzzy
-msgid "Uncovered on slides "
+msgid "Uncovered on slides"
 msgstr "uncovered on slides  "
 
 #: lib/layouts/beamer.layout:617
@@ -5818,10 +5810,6 @@ msgstr "Question"
 #: lib/layouts/ijmpc.layout:291
 msgid "Question \\arabic{question}."
 msgstr "Question \\arabic{question}."
-
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-msgid "Conjecture "
-msgstr "Conjecture "
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 msgid "Appendices Section"
@@ -15766,6 +15754,17 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Columns"
+
+#, fuzzy
+#~ msgid "Overprint "
+#~ msgstr "Overprint"
+
+#~ msgid "Conjecture "
+#~ msgstr "Conjecture "
 
 #, fuzzy
 #~ msgid "Font st&yle:"

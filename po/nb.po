@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:30+0200\n"
 "PO-Revision-Date: 2007-06-01 12:45+0200\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -3180,6 +3180,7 @@ msgstr "Proposisjon #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -4234,7 +4235,7 @@ msgid "EndFrame"
 msgstr "Slutt ramme"
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
+msgid "________________________________"
 msgstr ""
 
 #: lib/layouts/beamer.layout:379
@@ -4246,16 +4247,11 @@ msgid "Column"
 msgstr "Kolonne"
 
 #: lib/layouts/beamer.layout:414
-msgid "Start column (increase depth!), width: "
+msgid "Start column (increase depth!), width:"
 msgstr ""
 
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
-msgstr "Kolonner"
-
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "Kolonner"
 
 #: lib/layouts/beamer.layout:454
@@ -4263,7 +4259,7 @@ msgid "ColumnsCenterAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:465
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:484
@@ -4271,7 +4267,7 @@ msgid "ColumnsTopAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:495
-msgid "Columns (top aligned) "
+msgid "Columns (top aligned)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:515
@@ -4282,14 +4278,9 @@ msgstr "Pause"
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 msgid "Overprint"
 msgstr ""
-
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
-msgstr "Overskrive"
 
 #: lib/layouts/beamer.layout:567
 msgid "OverlayArea"
@@ -4304,8 +4295,9 @@ msgid "Uncover"
 msgstr ""
 
 #: lib/layouts/beamer.layout:602
-msgid "Uncovered on slides "
-msgstr ""
+#, fuzzy
+msgid "Uncovered on slides"
+msgstr "Bare én kolonne"
 
 #: lib/layouts/beamer.layout:617
 msgid "Only"
@@ -5772,10 +5764,6 @@ msgstr "Spørsmål"
 
 #: lib/layouts/ijmpc.layout:291
 msgid "Question \\arabic{question}."
-msgstr ""
-
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-msgid "Conjecture "
 msgstr ""
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
@@ -15356,6 +15344,14 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Ukjent bruker"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Kolonner"
+
+#, fuzzy
+#~ msgid "Overprint "
+#~ msgstr "Overskrive"
 
 #~ msgid "Font st&yle:"
 #~ msgstr "Skriftt&ype:"

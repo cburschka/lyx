@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:30+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -4298,6 +4298,7 @@ msgstr "Допускане"
 # src/frontends/xforms/FormPreferences.C:255
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -5610,7 +5611,7 @@ msgid "EndFrame"
 msgstr "Принтер"
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
+msgid "________________________________"
 msgstr ""
 
 # src/ext_l10n.h:375
@@ -5627,21 +5628,14 @@ msgid "Column"
 msgstr "Колони"
 
 #: lib/layouts/beamer.layout:414
-msgid "Start column (increase depth!), width: "
+msgid "Start column (increase depth!), width:"
 msgstr ""
 
 # src/frontends/kde/dlg/tabcreatedlgdata.C:107
 # src/frontends/xforms/form_tabular_create.C:45
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 #, fuzzy
 msgid "Columns"
-msgstr "Колони"
-
-# src/frontends/kde/dlg/tabcreatedlgdata.C:107
-# src/frontends/xforms/form_tabular_create.C:45
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "Колони"
 
 #: lib/layouts/beamer.layout:454
@@ -5649,7 +5643,7 @@ msgid "ColumnsCenterAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:465
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:484
@@ -5657,7 +5651,7 @@ msgid "ColumnsTopAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:495
-msgid "Columns (top aligned) "
+msgid "Columns (top aligned)"
 msgstr ""
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
@@ -5671,15 +5665,9 @@ msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
 # src/form1.C:129 src/sp_form.C:58
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 #, fuzzy
 msgid "Overprint"
-msgstr "Опции"
-
-# src/form1.C:129 src/sp_form.C:58
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
 msgstr "Опции"
 
 # src/frontends/xforms/form_preferences.C:896
@@ -5700,9 +5688,11 @@ msgstr "обърнато"
 msgid "Uncover"
 msgstr "(&R)Въстанови"
 
+# src/ext_l10n.h:75
 #: lib/layouts/beamer.layout:602
-msgid "Uncovered on slides "
-msgstr ""
+#, fuzzy
+msgid "Uncovered on slides"
+msgstr "Изтрий колона(D)|D"
 
 # src/lyxfont.C:62
 #: lib/layouts/beamer.layout:617
@@ -7655,13 +7645,6 @@ msgstr "Въпрос"
 #, fuzzy
 msgid "Question \\arabic{question}."
 msgstr "Под-подраздел"
-
-# src/frontends/xforms/FormPreferences.C:226
-# src/frontends/xforms/FormPreferences.C:255
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-#, fuzzy
-msgid "Conjecture "
-msgstr "Конвертори"
 
 # src/ext_l10n.h:173
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
@@ -20112,6 +20095,23 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Непознато действие"
+
+# src/frontends/kde/dlg/tabcreatedlgdata.C:107
+# src/frontends/xforms/form_tabular_create.C:45
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Колони"
+
+# src/form1.C:129 src/sp_form.C:58
+#, fuzzy
+#~ msgid "Overprint "
+#~ msgstr "Опции"
+
+# src/frontends/xforms/FormPreferences.C:226
+# src/frontends/xforms/FormPreferences.C:255
+#, fuzzy
+#~ msgid "Conjecture "
+#~ msgstr "Конвертори"
 
 # src/frontends/xforms/form_document.C:262
 #, fuzzy

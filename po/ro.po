@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:30+0200\n"
 "PO-Revision-Date: 2007-02-20 21:33-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -3242,6 +3242,7 @@ msgstr "Propoziþie #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -4305,7 +4306,8 @@ msgid "EndFrame"
 msgstr "ªfîrºit de cadru:"
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
+#, fuzzy
+msgid "________________________________"
 msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:379
@@ -4318,16 +4320,11 @@ msgstr "Coloane"
 
 #: lib/layouts/beamer.layout:414
 #, fuzzy
-msgid "Start column (increase depth!), width: "
+msgid "Start column (increase depth!), width:"
 msgstr "Începe o coloanã cu lãþimea de: "
 
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
-msgstr "Coloane"
-
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "Coloane"
 
 #: lib/layouts/beamer.layout:454
@@ -4336,7 +4333,7 @@ msgstr "Coloane centrate"
 
 #: lib/layouts/beamer.layout:465
 #, fuzzy
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr "Coloane (centrate)"
 
 #: lib/layouts/beamer.layout:484
@@ -4345,7 +4342,7 @@ msgstr "Coloane aliniate sus"
 
 #: lib/layouts/beamer.layout:495
 #, fuzzy
-msgid "Columns (top aligned) "
+msgid "Columns (top aligned)"
 msgstr "coloane (aliniate sus)"
 
 #: lib/layouts/beamer.layout:515
@@ -4356,13 +4353,8 @@ msgstr "Pauzã"
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 msgid "Overprint"
-msgstr "Overprint"
-
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
 msgstr "Overprint"
 
 #: lib/layouts/beamer.layout:567
@@ -4380,7 +4372,7 @@ msgstr "Aratã"
 
 #: lib/layouts/beamer.layout:602
 #, fuzzy
-msgid "Uncovered on slides "
+msgid "Uncovered on slides"
 msgstr "Aratã pe slideuri"
 
 #: lib/layouts/beamer.layout:617
@@ -5879,10 +5871,6 @@ msgstr "Întrebare"
 #: lib/layouts/ijmpc.layout:291
 msgid "Question \\arabic{question}."
 msgstr "Întrebare \\arabic{question}"
-
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-msgid "Conjecture "
-msgstr "Conjecturã"
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 msgid "Appendices Section"
@@ -16190,6 +16178,17 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
+
+#, fuzzy
+#~ msgid "Columns "
+#~ msgstr "Coloane"
+
+#, fuzzy
+#~ msgid "Overprint "
+#~ msgstr "Overprint"
+
+#~ msgid "Conjecture "
+#~ msgstr "Conjecturã"
 
 #, fuzzy
 #~ msgid "Font st&yle:"
