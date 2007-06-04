@@ -92,7 +92,7 @@ Style Description
   OptionalArgs     2
   NextNoIndent     1
   LeftMargin       MM
-  LabelSep         xxx
+  LabelSep         xx
   ParSkip          0.4
   ItemSep          0.2
   TopSep           0.7
@@ -118,7 +118,7 @@ Style Part
   OptionalArgs     1
   NeedProtect      1
   NextNoIndent     1
-  Labelsep         xxx
+  Labelsep         xx
   ParSkip          0.4
   TopSep           4
   BottomSep        4
@@ -147,7 +147,7 @@ Style Section
   LatexName        lyxframeend{}\section
   NeedProtect      1
   NextNoIndent     1
-  LabelSep         xxx
+  LabelSep         xx
   ParSkip          0.4
   TopSep           2
   BottomSep        0.25
@@ -188,7 +188,7 @@ Style Subsection
   LatexName        lyxframeend{}\subsection
   NeedProtect      1
   NextNoIndent     1
-  LabelSep         xxx
+  LabelSep         xx
   ParSkip          0.4
   TopSep           2
   BottomSep        0.25
@@ -240,7 +240,7 @@ Style BeginFrame
   LabelType        Static
   LabelBottomSep   0
   LeftMargin       M
-  LabelSep         xxx
+  LabelSep         xx
   LabelString      "Frame"
 
   Font
@@ -282,7 +282,7 @@ Style BeginPlainFrame
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
-  LabelSep          xxx
+  LabelSep          xx
   LabelString       "Frame (no head/foot/sidebars)"
 
   Font
@@ -322,7 +322,7 @@ Style AgainFrame
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
-  LabelSep          xxx
+  LabelSep          xx
   LabelString       "Again frame with label"
 
   Font
@@ -431,11 +431,11 @@ Style Columns
   ParIndent        MM
   Align            Left
   LabelType        Static
-  LabelSep         x
+  LabelSep         xx
 
   LatexName        columns}%{
   LabelString      "Columns" 
-  LeftMargin       "Columnsx"
+  LeftMargin       "Columnsxx"
 
   ParSkip          0.5
   TopSep           1
@@ -459,11 +459,11 @@ Style ColumnsCenterAligned
   ParIndent        MM
   Align            left
   LabelType        Static
-  LabelSep         x
+  LabelSep         xx
 
   LatexName        centercolumns}%{
   LabelString      "Columns (center aligned)" 
-  LeftMargin       "Columns (center aligned)x"
+  LeftMargin       "Columns (center aligned)xx"
 
   ParSkip          0.5
   TopSep           1
@@ -489,11 +489,11 @@ Style ColumnsTopAligned
   ParIndent        MM
   Align            left
   LabelType        Static
-  LabelSep         x
+  LabelSep         xx
 
   LatexName        topcolumns}%{
   LabelString      "Columns (top aligned)" 
-  LeftMargin       "Columns (top aligned)x"
+  LeftMargin       "Columns (top aligned)xx"
 
   ParSkip          0.5
   TopSep           1
