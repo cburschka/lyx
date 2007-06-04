@@ -20,8 +20,7 @@
 #include "Gui.h"
 
 #include "Buffer.h"
-//FIXME Bug 3701
-//#include "BufferList.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
@@ -131,8 +130,7 @@ void LyXView::setBuffer(Buffer * b)
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
-	//FIXME Bug 3701
-	if (!b) // && theBufferList().empty()
+	if (!b && theBufferList().empty())
 		getDialogs().hideBufferDependent();
 
 	work_area_->bufferView().setBuffer(b);
