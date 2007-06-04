@@ -3,7 +3,7 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5rc1-31-05-2007"
+!define PRODUCT_VERSION "1.5rc2-xx-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -19,12 +19,12 @@
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 !define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
 
-BrandingText "LyXWinInstaller v3.16 - ${INSTALLER_VERSION}"
+BrandingText "LyXWinInstaller v3.17 - ${INSTALLER_VERSION}"
 
 # to check later if this installer version is running at the same time
-!define INSTALLER_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER_VERSION}-3-16.exe"
-!define INSTALLER2_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER2_VERSION}-3-16.exe"
-!define INSTALLER3_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER3_VERSION}-3-16.exe"
+!define INSTALLER_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER_VERSION}-3-17.exe"
+!define INSTALLER2_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER2_VERSION}-3-17.exe"
+!define INSTALLER3_EXE "LyXWin${PRODUCT_VERSION_SHORT}${INSTALLER3_VERSION}-3-17.exe"
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 # Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -39,7 +39,7 @@ BrandingText "LyXWinInstaller v3.16 - ${INSTALLER_VERSION}"
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
- !define PRODUCT_VERSION_OLD "LyX 1.5beta3-18-05-2007"
+ !define PRODUCT_VERSION_OLD "LyX 1.5rc1-31-05-2007"
  !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
  !define PRODUCT_VERSION_SHORT_OLD "150svn"
  !define JabRefVersion "2.2" # could be an older version

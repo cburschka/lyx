@@ -1,5 +1,10 @@
-﻿Version LyX 1.5rc1-31-05-2007
-- LyX 1.5 pre1 from 31-05-2007
+﻿Version LyX 1.5rc2-xx-06-2007
+- LyX 1.5rc2 from xx-06-2007
+  - new Chinese translation of LyX's menus
+
+
+Version LyX 1.5rc1-31-05-2007
+- LyX 1.5rc1 from 31-05-2007
   - support for Farsi
   - new Korean and Japanese translation of LyX's menus
 
@@ -7,9 +12,10 @@
 - new Windows Vista-compatible launcher for LyX
 - fixed layout file for the LaTeX-package powerdot
 - support for SVG-images: when Inkscape is installed, it will be
-  used as SVG to PDF converter
-- support to set Hebrew and Japanese, and Korean as LyX's menu language
-- added missing zlib1.dll
+  used as SVG to PDF converter (to get real vector graphics in the
+  PDF-output)
+- support to set Hebrew, Japanese, and Korean as LyX's menu language
+- added missing zlib1.dll (caused tex2lyx problems)
 
 Thanks to Pavel Sanda:
 - new Czech translation of the installer
