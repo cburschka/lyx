@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-03 12:40+0200\n"
+"POT-Creation-Date: 2007-06-04 20:05+0200\n"
 "PO-Revision-Date: 2007-05-23 10:14+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -87,8 +87,8 @@ msgstr "אישור"
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:600 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:740 src/LyXFunc.cpp:913
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2054 src/LyXVC.cpp:175
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:746 src/LyXFunc.cpp:919
+#: src/LyXFunc.cpp:1085 src/LyXFunc.cpp:2060 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:117 src/callback.cpp:170
 msgid "&Cancel"
@@ -168,7 +168,7 @@ msgstr "הוסף"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:272 src/LyXFunc.cpp:856 src/frontends/qt4/Qt2BC.h:36
+#: src/BufferView.cpp:272 src/LyXFunc.cpp:862 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -1403,8 +1403,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:120
 #, fuzzy
-msgid "Font st&yle:"
-msgstr "סגנון מובאה:"
+msgid "Font Famil&y:"
+msgstr "משפחת הגופן"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:136
 #, fuzzy
@@ -2229,17 +2229,14 @@ msgstr "Length of scale's slider"
 msgid "External app for formating tables in plain text output"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:47
-msgid "Name of the default printer"
-msgstr "שם מדפסת ברירת המחדך"
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:38
+msgid ""
+"Adjusts dvips output for a particular printer. (Note: dvips must be pre-"
+"configured for that printer.)"
+msgstr ""
 
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:54
-#, fuzzy
-msgid "Use printer name explicitely"
-msgstr "The icon name to use for the printer"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:57
-msgid "Adapt outp&ut"
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:41
+msgid "Use -P<printer> parameter with dvips"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:64
@@ -2316,13 +2313,17 @@ msgstr "טווח עמודים"
 msgid "Specify the command option names for your printer command"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:297
-msgid "Printer co&mmand:"
-msgstr "פקודת מדפסת"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:307
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:289
 msgid "Printer &name:"
 msgstr "שם המדפסת"
+
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:299
+msgid "Name of the default printer"
+msgstr "שם מדפסת ברירת המחדך"
+
+#: src/frontends/qt4/ui/PrefPrinterUi.ui:316
+msgid "Printer co&mmand:"
+msgstr "פקודת מדפסת"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sa&ns Serif:"
@@ -2505,7 +2506,7 @@ msgid "&Maximum last files:"
 msgstr "מוריד קבצים מ-"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:739
+#: src/BufferList.cpp:222 src/LyXFunc.cpp:745
 msgid "&Save"
 msgstr "שמור"
 
@@ -3105,49 +3106,44 @@ msgstr "&בחירה"
 msgid "Replace the entry with the selection"
 msgstr "החלף עם המילה המסומנת"
 
-#: src/frontends/qt4/ui/TocUi.ui:36
-msgid "Adjust the depth of the navigation tree"
+#: src/frontends/qt4/ui/TocUi.ui:48
+msgid "Update navigation tree"
 msgstr ""
 
-#: src/frontends/qt4/ui/TocUi.ui:66
+#: src/frontends/qt4/ui/TocUi.ui:51 src/frontends/qt4/ui/TocUi.ui:83
+#: src/frontends/qt4/ui/TocUi.ui:102 src/frontends/qt4/ui/TocUi.ui:121
+#: src/frontends/qt4/ui/TocUi.ui:140
+#, fuzzy
+msgid "..."
+msgstr "הוסף..."
+
+#: src/frontends/qt4/ui/TocUi.ui:80
+msgid "Decrease nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/TocUi.ui:99
+msgid "Increase nesting depth of selected item"
+msgstr ""
+
+#: src/frontends/qt4/ui/TocUi.ui:118
+#, fuzzy
+msgid "Move selected item down by one"
+msgstr "הזז את המובאה הנוכחית למטה"
+
+#: src/frontends/qt4/ui/TocUi.ui:137
+#, fuzzy
+msgid "Move selected item up by one"
+msgstr "הזז את המובאה הנוכחית למעלה"
+
+#: src/frontends/qt4/ui/TocUi.ui:166
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
 msgstr ""
 
-#: src/frontends/qt4/ui/TocUi.ui:93
-msgid "Update navigation tree"
+#: src/frontends/qt4/ui/TocUi.ui:181
+msgid "Adjust the depth of the navigation tree"
 msgstr ""
-
-#: src/frontends/qt4/ui/TocUi.ui:96 src/frontends/qt4/ui/TocUi.ui:128
-#: src/frontends/qt4/ui/TocUi.ui:147 src/frontends/qt4/ui/TocUi.ui:166
-#: src/frontends/qt4/ui/TocUi.ui:185
-#, fuzzy
-msgid "..."
-msgstr "הוסף..."
-
-#: src/frontends/qt4/ui/TocUi.ui:125
-msgid "Decrease nesting depth of selected item"
-msgstr ""
-
-#: src/frontends/qt4/ui/TocUi.ui:144
-msgid "Increase nesting depth of selected item"
-msgstr ""
-
-#: src/frontends/qt4/ui/TocUi.ui:163
-#, fuzzy
-msgid "Move selected item down by one"
-msgstr "הזז את המובאה הנוכחית למטה"
-
-#: src/frontends/qt4/ui/TocUi.ui:182
-#, fuzzy
-msgid "Move selected item up by one"
-msgstr "הזז את המובאה הנוכחית למעלה"
-
-#: src/frontends/qt4/ui/TocUi.ui:203
-#, fuzzy
-msgid "&Type:"
-msgstr "סוג:"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
 #: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:186
@@ -3278,7 +3274,7 @@ msgstr "רגיל"
 msgid "TheoremTemplate"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:955
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:956
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -3292,7 +3288,7 @@ msgid "Proof:"
 msgstr "הוכחה:"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:961
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:962
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/llncs.layout:415
@@ -3321,7 +3317,7 @@ msgid "Lemma #:"
 msgstr "למה #:"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:892
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:893
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
@@ -3375,7 +3371,7 @@ msgid "Criterion #:"
 msgstr "קריטריון #:"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:949
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:950
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -3396,7 +3392,7 @@ msgid "Axiom #:"
 msgstr "אקסיומה #:"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:919
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:920
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
@@ -3411,7 +3407,7 @@ msgid "Definition #:"
 msgstr "הגדרה #:"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:931
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:932
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
@@ -3645,7 +3641,7 @@ msgstr "End index"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:843
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:844
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
@@ -3733,7 +3729,7 @@ msgstr "רשימה"
 #: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:724
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:728
 #: lib/layouts/broadway.layout:195 lib/layouts/cl2emult.layout:39
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:247
@@ -3754,7 +3750,7 @@ msgid "Title"
 msgstr "כותרת"
 
 #: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
-#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:748
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:752
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
@@ -3764,7 +3760,7 @@ msgstr "תת-כותרת"
 #: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:773
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:777
 #: lib/layouts/broadway.layout:208 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
@@ -3807,7 +3803,7 @@ msgstr "דוא\"|ל"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:819 lib/layouts/egs.layout:476
+#: lib/layouts/beamer.layout:821 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
 #: lib/layouts/powerdot.layout:83 lib/layouts/revtex.layout:106
@@ -3895,7 +3891,7 @@ msgid "Acknowledgements"
 msgstr "הכרת תודות"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
-#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:857
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:858
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:207
@@ -4005,15 +4001,15 @@ msgstr ""
 msgid "Dataset:"
 msgstr ""
 
-#: lib/layouts/amsart-plain.layout:27 lib/layouts/foils.layout:300
-#: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:35
-#: lib/layouts/amsmaths.inc:95
+#: lib/layouts/amsart-plain.layout:27 lib/layouts/beamer.layout:965
+#: lib/layouts/foils.layout:300 lib/layouts/siamltex.layout:270
+#: lib/layouts/amsmaths-plain.inc:35 lib/layouts/amsmaths.inc:95
 msgid "Theorem."
 msgstr "משפט"
 
-#: lib/layouts/amsart-plain.layout:33 lib/layouts/foils.layout:314
-#: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:45
-#: lib/layouts/amsmaths.inc:117
+#: lib/layouts/amsart-plain.layout:33 lib/layouts/beamer.layout:903
+#: lib/layouts/foils.layout:314 lib/layouts/siamltex.layout:284
+#: lib/layouts/amsmaths-plain.inc:45 lib/layouts/amsmaths.inc:117
 msgid "Corollary."
 msgstr "מסקנה"
 
@@ -4049,8 +4045,8 @@ msgstr "אלגוריתם"
 msgid "Algorithm."
 msgstr "אלגוריתם"
 
-#: lib/layouts/amsart-plain.layout:69 lib/layouts/amsmaths-plain.inc:105
-#: lib/layouts/amsmaths.inc:227
+#: lib/layouts/amsart-plain.layout:69 lib/layouts/beamer.layout:953
+#: lib/layouts/amsmaths-plain.inc:105 lib/layouts/amsmaths.inc:227
 msgid "Fact."
 msgstr "עובדה"
 
@@ -4058,14 +4054,14 @@ msgstr "עובדה"
 msgid "Axiom."
 msgstr "אקסיומה"
 
-#: lib/layouts/amsart-plain.layout:81 lib/layouts/foils.layout:328
-#: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:125
-#: lib/layouts/amsmaths.inc:268
+#: lib/layouts/amsart-plain.layout:81 lib/layouts/beamer.layout:923
+#: lib/layouts/foils.layout:328 lib/layouts/siamltex.layout:297
+#: lib/layouts/amsmaths-plain.inc:125 lib/layouts/amsmaths.inc:268
 msgid "Definition."
 msgstr "הגדרה"
 
-#: lib/layouts/amsart-plain.layout:87 lib/layouts/amsmaths-plain.inc:135
-#: lib/layouts/amsmaths.inc:290
+#: lib/layouts/amsart-plain.layout:87 lib/layouts/beamer.layout:935
+#: lib/layouts/amsmaths-plain.inc:135 lib/layouts/amsmaths.inc:290
 msgid "Example."
 msgstr "דוגמה"
 
@@ -4380,11 +4376,12 @@ msgid "Latin off"
 msgstr "לטבית"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
-#: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
-#: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
-#: lib/layouts/numarticle.inc:5 lib/layouts/numreport.inc:7
-#: lib/layouts/scrclass.inc:46 lib/layouts/stdsections.inc:11
+#: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
+#: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
+#: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:12
+#: lib/layouts/db_stdsections.inc:12 lib/layouts/numarticle.inc:5
+#: lib/layouts/numreport.inc:7 lib/layouts/scrclass.inc:46
+#: lib/layouts/stdsections.inc:11
 msgid "Part"
 msgstr "חלק"
 
@@ -4398,10 +4395,6 @@ msgstr "חלק*"
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr ""
-
-#: lib/layouts/beamer.layout:129
-msgid "Part "
-msgstr "חלק"
 
 #: lib/layouts/beamer.layout:159
 #, fuzzy
@@ -4428,238 +4421,217 @@ msgstr "ידמ ךורא קלח"
 msgid "BeginFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:243
+#: lib/layouts/beamer.layout:244
 #, fuzzy
-msgid "Frame "
+msgid "Frame"
 msgstr "frame"
 
-#: lib/layouts/beamer.layout:269
+#: lib/layouts/beamer.layout:270
 msgid "BeginPlainFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:284
-msgid "Frame (no head/foot/sidebars)__"
+#: lib/layouts/beamer.layout:286
+msgid "Frame (no head/foot/sidebars)"
 msgstr ""
 
-#: lib/layouts/beamer.layout:307
+#: lib/layouts/beamer.layout:309
 msgid "AgainFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:323
-msgid "Again frame with label__"
+#: lib/layouts/beamer.layout:326
+msgid "Again frame with label"
 msgstr ""
 
-#: lib/layouts/beamer.layout:347
+#: lib/layouts/beamer.layout:350
 msgid "EndFrame"
 msgstr ""
 
-#: lib/layouts/beamer.layout:361
+#: lib/layouts/beamer.layout:364
 msgid "________________________________ "
 msgstr "________________________________ "
 
-#: lib/layouts/beamer.layout:376
+#: lib/layouts/beamer.layout:379
 msgid "FrameSubtitle"
 msgstr ""
 
-#: lib/layouts/beamer.layout:399
+#: lib/layouts/beamer.layout:402
 msgid "Column"
 msgstr "עמודה"
 
-#: lib/layouts/beamer.layout:411
+#: lib/layouts/beamer.layout:414
 #, fuzzy
-msgid "start column (increase depth!), width: "
+msgid "Start column (increase depth!), width: "
 msgstr "Current width of the column"
 
-#: lib/layouts/beamer.layout:423
+#: lib/layouts/beamer.layout:426
 msgid "Columns"
 msgstr "עמודות"
 
-#: lib/layouts/beamer.layout:435
-msgid "columns "
+#: lib/layouts/beamer.layout:437
+#, fuzzy
+msgid "Columns "
 msgstr "עמודות"
 
-#: lib/layouts/beamer.layout:452
+#: lib/layouts/beamer.layout:454
 msgid "ColumnsCenterAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:463
+#: lib/layouts/beamer.layout:465
 #, fuzzy
-msgid "columns (center aligned) "
+msgid "Columns (center aligned) "
 msgstr "The number of columns of the pixbuf"
 
-#: lib/layouts/beamer.layout:482
+#: lib/layouts/beamer.layout:484
 msgid "ColumnsTopAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:493
+#: lib/layouts/beamer.layout:495
 #, fuzzy
-msgid "columns (top aligned) "
+msgid "Columns (top aligned) "
 msgstr "החיפוש הגיעה למעלה"
 
-#: lib/layouts/beamer.layout:513
+#: lib/layouts/beamer.layout:515
 msgid "Pause"
 msgstr "השהייה"
 
-#: lib/layouts/beamer.layout:529
+#: lib/layouts/beamer.layout:531
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:539
+#: lib/layouts/beamer.layout:541
 msgid "Overprint"
 msgstr ""
 
-#: lib/layouts/beamer.layout:549
-msgid "overprint "
-msgstr ""
+#: lib/layouts/beamer.layout:551
+#, fuzzy
+msgid "Overprint "
+msgstr "שגיאה בכתיבה"
 
-#: lib/layouts/beamer.layout:565
+#: lib/layouts/beamer.layout:567
 msgid "OverlayArea"
 msgstr ""
 
-#: lib/layouts/beamer.layout:575
+#: lib/layouts/beamer.layout:577
 #, fuzzy
-msgid "overlayarea"
+msgid "Overlayarea"
 msgstr "קו עילי"
 
-#: lib/layouts/beamer.layout:590
+#: lib/layouts/beamer.layout:592
 msgid "Uncover"
 msgstr ""
 
-#: lib/layouts/beamer.layout:599
+#: lib/layouts/beamer.layout:602
 #, fuzzy
-msgid "uncovered on slides  "
+msgid "Uncovered on slides "
 msgstr "בגרירה העתק"
 
-#: lib/layouts/beamer.layout:614
+#: lib/layouts/beamer.layout:617
 #, fuzzy
 msgid "Only"
 msgstr "Local Only"
 
-#: lib/layouts/beamer.layout:623
+#: lib/layouts/beamer.layout:627
 #, fuzzy
-msgid "only on slides_"
+msgid "Only on slides"
 msgstr "רק במצגות"
 
-#: lib/layouts/beamer.layout:639
+#: lib/layouts/beamer.layout:643
 #, fuzzy
 msgid "Block"
 msgstr "חסום"
 
-#: lib/layouts/beamer.layout:649
-msgid "block ( ERT[{title}] body ): "
+#: lib/layouts/beamer.layout:653
+msgid "Block ( ERT[{title}] body ):"
 msgstr ""
 
-#: lib/layouts/beamer.layout:664
+#: lib/layouts/beamer.layout:668
 msgid "ExampleBlock"
 msgstr ""
 
-#: lib/layouts/beamer.layout:674
-msgid "block ( ERT[{title}] example text ): "
+#: lib/layouts/beamer.layout:678
+msgid "Block ( ERT[{title}] example text ):"
 msgstr ""
 
-#: lib/layouts/beamer.layout:693
+#: lib/layouts/beamer.layout:697
 msgid "AlertBlock"
 msgstr ""
 
-#: lib/layouts/beamer.layout:703
-msgid "block ( ERT[{title}] alert text ): "
+#: lib/layouts/beamer.layout:707
+msgid "Block ( ERT[{title}] alert text ):"
 msgstr ""
 
-#: lib/layouts/beamer.layout:796 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:799 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 msgid "Institute"
 msgstr ""
 
-#: lib/layouts/beamer.layout:867
+#: lib/layouts/beamer.layout:868
 msgid "TitleGraphic"
 msgstr ""
 
-#: lib/layouts/beamer.layout:902
-#, fuzzy
-msgid "Corollary_"
-msgstr "מסקנה"
-
-#: lib/layouts/beamer.layout:922
-#, fuzzy
-msgid "Definition. "
-msgstr "הגדרה"
-
-#: lib/layouts/beamer.layout:925
+#: lib/layouts/beamer.layout:926
 msgid "Definitions"
 msgstr ""
 
-#: lib/layouts/beamer.layout:928
+#: lib/layouts/beamer.layout:929
 #, fuzzy
-msgid "Definitions. "
+msgid "Definitions."
 msgstr "הגדרה"
 
-#: lib/layouts/beamer.layout:934
-#, fuzzy
-msgid "Example. "
-msgstr "דוגמה"
-
-#: lib/layouts/beamer.layout:942
+#: lib/layouts/beamer.layout:943
 msgid "Examples"
 msgstr ""
 
-#: lib/layouts/beamer.layout:945
+#: lib/layouts/beamer.layout:946
 #, fuzzy
-msgid "Examples. "
+msgid "Examples."
 msgstr "דוגמה"
 
-#: lib/layouts/beamer.layout:952
-#, fuzzy
-msgid "Fact. "
-msgstr "עובדה"
-
-#: lib/layouts/beamer.layout:958
-#, fuzzy
-msgid "Proof. "
+#: lib/layouts/beamer.layout:959 lib/layouts/foils.layout:286
+#: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:236
+#: lib/layouts/llncs.layout:377 lib/layouts/siamltex.layout:255
+#: lib/layouts/amsdefs.inc:43 lib/layouts/svjour.inc:439
+msgid "Proof."
 msgstr "הוכחה"
 
-#: lib/layouts/beamer.layout:964
-#, fuzzy
-msgid "Theorem. "
-msgstr "משפט"
-
-#: lib/layouts/beamer.layout:969
+#: lib/layouts/beamer.layout:970
 msgid "Separator"
 msgstr "מפריד"
 
-#: lib/layouts/beamer.layout:982
+#: lib/layouts/beamer.layout:983
 msgid "___"
 msgstr ""
 
-#: lib/layouts/beamer.layout:992 lib/layouts/egs.layout:641
+#: lib/layouts/beamer.layout:993 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "קוד LyX:"
 
-#: lib/layouts/beamer.layout:1029
+#: lib/layouts/beamer.layout:1030
 msgid "NoteItem"
 msgstr ""
 
-#: lib/layouts/beamer.layout:1040
+#: lib/layouts/beamer.layout:1041 lib/layouts/powerdot.layout:199
 #, fuzzy
-msgid "note: "
-msgstr "הערה:"
+msgid "Note:"
+msgstr "הערה"
 
-#: lib/layouts/beamer.layout:1076 lib/layouts/powerdot.layout:365
+#: lib/layouts/beamer.layout:1077 lib/layouts/powerdot.layout:365
 #: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
 msgid "Table"
 msgstr "טבלה"
 
-#: lib/layouts/beamer.layout:1081 lib/layouts/powerdot.layout:369
+#: lib/layouts/beamer.layout:1082 lib/layouts/powerdot.layout:369
 #: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "רשימת טבלאות"
 
-#: lib/layouts/beamer.layout:1087 lib/layouts/powerdot.layout:375
+#: lib/layouts/beamer.layout:1088 lib/layouts/powerdot.layout:375
 #: lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "איור"
 
-#: lib/layouts/beamer.layout:1092 lib/layouts/powerdot.layout:379
+#: lib/layouts/beamer.layout:1093 lib/layouts/powerdot.layout:379
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "רשימת איורים"
@@ -5364,13 +5336,6 @@ msgstr ""
 #: lib/layouts/svjour.inc:393
 msgid "Definition #."
 msgstr "הגדרה #"
-
-#: lib/layouts/foils.layout:286 lib/layouts/ijmpc.layout:236
-#: lib/layouts/ijmpd.layout:236 lib/layouts/llncs.layout:377
-#: lib/layouts/siamltex.layout:255 lib/layouts/amsdefs.inc:43
-#: lib/layouts/svjour.inc:439
-msgid "Proof."
-msgstr "הוכחה"
 
 #: lib/layouts/foils.layout:297 lib/layouts/siamltex.layout:267
 #: lib/layouts/amsmaths.inc:91
@@ -6451,11 +6416,6 @@ msgstr "קטע"
 #, fuzzy
 msgid "Empty slide:"
 msgstr "ריק"
-
-#: lib/layouts/powerdot.layout:199
-#, fuzzy
-msgid "Note:"
-msgstr "הערה"
 
 #: lib/layouts/powerdot.layout:246
 #, fuzzy
@@ -12052,7 +12012,7 @@ msgstr ""
 "\n"
 "האם אתה רוצה לשמור את המסמך או להסיר את השינויים?"
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:738
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:744
 msgid "Save changed document?"
 msgstr "האם לשמור את המסמך שעבר שינוי?"
 
@@ -12108,11 +12068,11 @@ msgstr ""
 "\n"
 "האם אתה רוצה חזור לגרסה השמורה?"
 
-#: src/BufferView.cpp:245 src/LyXFunc.cpp:912
+#: src/BufferView.cpp:245 src/LyXFunc.cpp:918
 msgid "Revert to saved document?"
 msgstr "חזור למסמך השמור?"
 
-#: src/BufferView.cpp:246 src/LyXFunc.cpp:913 src/LyXVC.cpp:175
+#: src/BufferView.cpp:246 src/LyXFunc.cpp:919 src/LyXVC.cpp:175
 msgid "&Revert"
 msgstr "חזור"
 
@@ -12200,8 +12160,8 @@ msgstr "מילים שלמות"
 msgid "Select LyX document to insert"
 msgstr ""
 
-#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1893 src/LyXFunc.cpp:1932
-#: src/LyXFunc.cpp:2005 src/callback.cpp:136
+#: src/BufferView.cpp:1619 src/LyXFunc.cpp:1899 src/LyXFunc.cpp:1938
+#: src/LyXFunc.cpp:2011 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12211,17 +12171,17 @@ msgstr ""
 msgid "Documents|#o#O"
 msgstr "מסמכים|מ"
 
-#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:2006
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:1939 src/LyXFunc.cpp:2012
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1898 src/LyXFunc.cpp:1937
+#: src/BufferView.cpp:1624 src/LyXFunc.cpp:1904 src/LyXFunc.cpp:1943
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1947 src/LyXFunc.cpp:2027
-#: src/LyXFunc.cpp:2041 src/LyXFunc.cpp:2057
+#: src/BufferView.cpp:1636 src/LyXFunc.cpp:1953 src/LyXFunc.cpp:2033
+#: src/LyXFunc.cpp:2047 src/LyXFunc.cpp:2063
 #, fuzzy
 msgid "Canceled."
 msgstr "בוטל"
@@ -12606,7 +12566,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "בחר קובץ סגנון"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1081
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12614,12 +12574,12 @@ msgid ""
 "Do you want to over-write that file?"
 msgstr ""
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1084
 #, fuzzy
 msgid "Over-write file?"
 msgstr "אין אפשרות לכתוב אל הקובץ %s"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2054
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1085 src/LyXFunc.cpp:2060
 #: src/callback.cpp:170
 #, fuzzy
 msgid "&Over-write"
@@ -13062,39 +13022,39 @@ msgstr ""
 msgid "Missing filename for --import"
 msgstr "חסר תוסף הפרוטוקול עבור %s"
 
-#: src/LyXFunc.cpp:363
+#: src/LyXFunc.cpp:364
 #, fuzzy
 msgid "Unknown function."
 msgstr "מילה לא מוכרת:"
 
-#: src/LyXFunc.cpp:402
+#: src/LyXFunc.cpp:403
 #, fuzzy
 msgid "Nothing to do"
 msgstr "ב ךרוצ ןיא\n"
 
-#: src/LyXFunc.cpp:421
+#: src/LyXFunc.cpp:422
 #, fuzzy
 msgid "Unknown action"
 msgstr "העודי הנניא `%s' הדוקפ"
 
-#: src/LyXFunc.cpp:427 src/LyXFunc.cpp:722
+#: src/LyXFunc.cpp:428 src/LyXFunc.cpp:728
 #, fuzzy
 msgid "Command disabled"
 msgstr "פקודה קודמת"
 
-#: src/LyXFunc.cpp:434
+#: src/LyXFunc.cpp:435
 msgid "Command not allowed without any document open"
 msgstr "הפקודה איננה אפשרית ללא מסמך פתוח"
 
-#: src/LyXFunc.cpp:708
+#: src/LyXFunc.cpp:714
 msgid "Document is read-only"
 msgstr "המסמך הוא לקריאה בלבד."
 
-#: src/LyXFunc.cpp:716
+#: src/LyXFunc.cpp:722
 msgid "This portion of the document is deleted."
 msgstr "חלק זה של המסמך נמחק."
 
-#: src/LyXFunc.cpp:735
+#: src/LyXFunc.cpp:741
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13102,7 +13062,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:753
+#: src/LyXFunc.cpp:759
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -13111,11 +13071,11 @@ msgstr ""
 "לא יכול להדפיס את המסמך %1$s. \n"
 "בדוק שהמדפסת מוגדרת כראוי."
 
-#: src/LyXFunc.cpp:756
+#: src/LyXFunc.cpp:762
 msgid "Print document failed"
 msgstr "הדפסת המסמך נכשלה"
 
-#: src/LyXFunc.cpp:775
+#: src/LyXFunc.cpp:781
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -13124,106 +13084,106 @@ msgstr ""
 "לא ניתן להמיר את המסמך\n"
 "למחלקת המסמך %1$s."
 
-#: src/LyXFunc.cpp:778
+#: src/LyXFunc.cpp:784
 msgid "Could not change class"
 msgstr "אין אפשרות לשנות מחלקה"
 
-#: src/LyXFunc.cpp:890
+#: src/LyXFunc.cpp:896
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "שומר מסמך %1$s..."
 
-#: src/LyXFunc.cpp:894
+#: src/LyXFunc.cpp:900
 #, fuzzy
 msgid " done."
 msgstr "ב החלצה"
 
-#: src/LyXFunc.cpp:910
+#: src/LyXFunc.cpp:916
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "כל השינויים יאבדו. אתה בטוח שברצונך לחזור לגרסה השמורה של המסמך %1$s?"
 
-#: src/LyXFunc.cpp:1102
+#: src/LyXFunc.cpp:1108
 msgid "Exiting."
 msgstr "יוצא"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1305
+#: src/LyXFunc.cpp:1126 src/Text3.cpp:1305
 #, fuzzy
 msgid "Missing argument"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
 
-#: src/LyXFunc.cpp:1129
+#: src/LyXFunc.cpp:1135
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "שגיאה בפתיחת הקובץ %s!"
 
-#: src/LyXFunc.cpp:1426
+#: src/LyXFunc.cpp:1432
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/LyXFunc.cpp:1429
+#: src/LyXFunc.cpp:1435
 #, fuzzy
 msgid "Document not loaded."
 msgstr "המסמך לא שמור"
 
-#: src/LyXFunc.cpp:1505
+#: src/LyXFunc.cpp:1511
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1516
+#: src/LyXFunc.cpp:1522
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/LyXFunc.cpp:1630
+#: src/LyXFunc.cpp:1636
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "The current page in the document"
 
-#: src/LyXFunc.cpp:1633
+#: src/LyXFunc.cpp:1639
 msgid "Unable to save document defaults"
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
 
-#: src/LyXFunc.cpp:1689
+#: src/LyXFunc.cpp:1695
 msgid "Converting document to new document class..."
 msgstr "ממיר מסמך למחלקת מסמך חדשה"
 
-#: src/LyXFunc.cpp:1891
+#: src/LyXFunc.cpp:1897
 msgid "Select template file"
 msgstr "בחר קובץ תבנית"
 
-#: src/LyXFunc.cpp:1894 src/callback.cpp:137
+#: src/LyXFunc.cpp:1900 src/callback.cpp:137
 msgid "Templates|#T#t"
 msgstr "תבניות"
 
-#: src/LyXFunc.cpp:1930
+#: src/LyXFunc.cpp:1936
 msgid "Select document to open"
 msgstr "בחר קובץ לפתיחה"
 
-#: src/LyXFunc.cpp:1969
+#: src/LyXFunc.cpp:1975
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/LyXFunc.cpp:1973
+#: src/LyXFunc.cpp:1979
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "מסמך חדש"
 
-#: src/LyXFunc.cpp:1975
+#: src/LyXFunc.cpp:1981
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "לא יכול לפתוח את הקובץ"
 
-#: src/LyXFunc.cpp:2000
+#: src/LyXFunc.cpp:2006
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "בחר קובץ להדפסה"
 
-#: src/LyXFunc.cpp:2051 src/callback.cpp:167
+#: src/LyXFunc.cpp:2057 src/callback.cpp:167
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13234,11 +13194,11 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/LyXFunc.cpp:2053 src/callback.cpp:169
+#: src/LyXFunc.cpp:2059 src/callback.cpp:169
 msgid "Over-write document?"
 msgstr "להחליף את המסמך הקיים?"
 
-#: src/LyXFunc.cpp:2124
+#: src/LyXFunc.cpp:2130
 msgid "Welcome to LyX!"
 msgstr "ברוכים הבאים ל- LyX!"
 
@@ -14252,12 +14212,12 @@ msgstr ""
 msgid "RowPainter profiling"
 msgstr "Profiling alarm clock"
 
-#: src/frontends/LyXView.cpp:432
+#: src/frontends/LyXView.cpp:430
 #, fuzzy
 msgid " (changed)"
 msgstr "סיסמה שונתה"
 
-#: src/frontends/LyXView.cpp:436
+#: src/frontends/LyXView.cpp:434
 #, fuzzy
 msgid " (read only)"
 msgstr "property is read only"
@@ -14762,7 +14722,7 @@ msgstr "הצ_ג סמלים של אנשי קשר"
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:487
+#: src/frontends/qt4/GuiWorkArea.cpp:515
 #, fuzzy
 msgid "unknown version"
 msgstr "גרסת xfdiff"
@@ -16274,6 +16234,52 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "%s: שורה %d: משתמש לא מוכר %s\n"
+
+#, fuzzy
+#~ msgid "Font st&yle:"
+#~ msgstr "סגנון מובאה:"
+
+#, fuzzy
+#~ msgid "Use printer name explicitely"
+#~ msgstr "The icon name to use for the printer"
+
+#, fuzzy
+#~ msgid "&Type:"
+#~ msgstr "סוג:"
+
+#~ msgid "Part "
+#~ msgstr "חלק"
+
+#~ msgid "columns "
+#~ msgstr "עמודות"
+
+#, fuzzy
+#~ msgid "Corollary_"
+#~ msgstr "מסקנה"
+
+#, fuzzy
+#~ msgid "Definition. "
+#~ msgstr "הגדרה"
+
+#, fuzzy
+#~ msgid "Example. "
+#~ msgstr "דוגמה"
+
+#, fuzzy
+#~ msgid "Fact. "
+#~ msgstr "עובדה"
+
+#, fuzzy
+#~ msgid "Proof. "
+#~ msgstr "הוכחה"
+
+#, fuzzy
+#~ msgid "Theorem. "
+#~ msgstr "משפט"
+
+#, fuzzy
+#~ msgid "note: "
+#~ msgstr "הערה:"
 
 #, fuzzy
 #~ msgid "&Extended Chars"
