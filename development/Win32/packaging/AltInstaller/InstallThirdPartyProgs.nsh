@@ -13,6 +13,7 @@ Function Ghostscript
   ${else}
    # delete unnecessary files
    RMDir /r ${GhostscriptDir}
+   StrCpy $DelGSDir "Yes" # used later in function ImageMagick
   ${endif}
 
 FunctionEnd
@@ -44,6 +45,10 @@ Function ImageMagick
   ${else}
    # delete unnecessary files
    RMDir /r ${ImageMagickDir}
+   # delete the "etc" folder when also the Ghostscript folder was deleted because it is then empty 
+   ${if} $DelGSDir == "Yes"
+    RMDir /r "$INSTDIR\etc"
+   ${endif}
   ${endif}
 
 FunctionEnd

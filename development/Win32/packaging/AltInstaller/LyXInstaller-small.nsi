@@ -41,6 +41,7 @@ Var AiksaurusPath
 Var AspellPath
 Var Acrobat
 Var PSVPath
+Var DelGSDir
 Var EditorPath
 Var ImageEditorPath
 Var BibTeXEditorPath
