@@ -1687,20 +1687,13 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 	}
 
 	// see correction above
-	if (boundary_correction)
-		if (getFont(buffer, par, ppos).isVisibleRightToLeft())
+	if (boundary_correction) {
+		if (isRTL(buffer, sl, boundary))
 			x -= singleWidth(buffer, par, ppos);
 		else
 			x += singleWidth(buffer, par, ppos);
-
-	// Make sure inside an inset we always count from the left
-	// edge (bidi!) -- MV
-	if (sl.pos() < par.size()) {
-		font = getFont(buffer, par, sl.pos());
-		if (!boundary && font.isVisibleRightToLeft()
-		  && par.isInset(sl.pos()))
-			x -= par.getInset(sl.pos())->width();
 	}
+
 	return int(x);
 }
 

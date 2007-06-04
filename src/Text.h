@@ -333,6 +333,8 @@ public:
 	docstring getPossibleLabel(Cursor & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Buffer const &, Paragraph const & par) const;
+	/// is this position in the paragraph right-to-left?
+	bool isRTL(Buffer const & buffer, CursorSlice const & sl, bool boundary) const;
 	///
 	bool checkAndActivateInset(Cursor & cur, bool front);
 

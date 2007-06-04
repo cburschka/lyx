@@ -161,15 +161,34 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 {
 	int x = 0;
 	int y = 0;
+	int lastw = 0;
 
-	// Contribution of nested insets
-	for (size_t i = 1; i != dit.depth(); ++i) {
+	// Addup ontribution of nested insets, from inside to outside,
+	// keeping the outer paragraph for a special handling below
+	for (size_t i = dit.depth() - 1; i >= 1; --i) {
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
+		
+		// get relative position inside sl.inset()
 		sl.inset().cursorPos(bv, sl, boundary && ((i+1) == dit.depth()), xx, yy);
+		
+		// Make relative position inside of the edited inset relative to sl.inset()
 		x += xx;
 		y += yy;
+		
+		// In case of an RTL inset, the edited inset will be positioned to the left
+		// of xx:yy
+		if (sl.text()) {
+			bool boundary_i = boundary && i + 1 == dit.depth();
+			bool rtl = sl.text()->isRTL(*bv.buffer(), sl, boundary_i);
+			if (rtl)
+				x -= lastw;
+		}
+		
+		// remember width for the case that sl.inset() is positioned in an RTL inset
+		lastw = sl.inset().width();
+		
 		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;
 	}
@@ -180,6 +199,7 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	BOOST_ASSERT(!pm.rows().empty());
 	y -= pm.rows()[0].ascent();
 #if 1
+	// FIXME: document this mess
 	size_t rend;
 	if (sl.pos() > 0 && dit.depth() == 1) {
 		int pos = sl.pos();
@@ -195,8 +215,18 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	for (size_t rit = 0; rit != rend; ++rit)
 		y += pm.rows()[rit].height();
 	y += pm.rows()[rend].ascent();
-	x += dit.bottom().text()->cursorX(bv, dit.bottom(), boundary && dit.depth() == 1);
-
+	
+	// Make relative position from the nested inset now bufferview absolute.
+	int xx = dit.bottom().text()->cursorX(bv, dit.bottom(), boundary && dit.depth() == 1);
+	x += xx;
+	
+	// In the RTL case place the nested inset at the left of the cursor in 
+	// the outer paragraph
+	bool boundary_1 = boundary && 1 == dit.depth();
+	bool rtl = dit.bottom().text()->isRTL(*bv.buffer(), dit.bottom(), boundary_1);
+	if (rtl)
+		x -= lastw;
+	
 	return Point(x, y);
 }
 

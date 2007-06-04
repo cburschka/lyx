@@ -299,6 +299,20 @@ bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
 }
 
 
+bool Text::isRTL(Buffer const & buffer, CursorSlice const & sl, bool boundary) const
+{
+	if (!sl.text())
+		return false;
+
+	int correction = 0;
+	if (boundary && sl.pos() > 0)
+		correction = -1;
+		
+	Paragraph const & par = getPar(sl.pit());
+	return getFont(buffer, par, sl.pos() + correction).isVisibleRightToLeft();
+}
+
+
 void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION) << "Text::dispatch: cmd: " << cmd << endl;
