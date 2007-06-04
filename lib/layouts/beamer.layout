@@ -361,7 +361,7 @@ Style EndFrame
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        MMMMM
-  LabelString       "________________________________" 
+  LabelString       "________________________________"
 
   LabelFont 
     Family          typewriter
@@ -411,7 +411,7 @@ Style Column
   Align            Left
   LabelType        Static
   LabelSep         xx
-  LabelString      "Start column (increase depth!), width:" 
+  LabelString      "Start column (increase depth!), width:"
   OptionalArgs     1
   LeftMargin       "Start column (increase depth!), width:xx"
 
@@ -434,7 +434,7 @@ Style Columns
   LabelSep         xx
 
   LatexName        columns}%{
-  LabelString      "Columns" 
+  LabelString      "Columns"
   LeftMargin       "Columnsxx"
 
   ParSkip          0.5
@@ -462,7 +462,7 @@ Style ColumnsCenterAligned
   LabelSep         xx
 
   LatexName        centercolumns}%{
-  LabelString      "Columns (center aligned)" 
+  LabelString      "Columns (center aligned)"
   LeftMargin       "Columns (center aligned)xx"
 
   ParSkip          0.5
@@ -492,7 +492,7 @@ Style ColumnsTopAligned
   LabelSep         xx
 
   LatexName        topcolumns}%{
-  LabelString      "Columns (top aligned)" 
+  LabelString      "Columns (top aligned)"
   LeftMargin       "Columns (top aligned)xx"
 
   ParSkip          0.5
@@ -548,7 +548,7 @@ Style Overprint
   LabelSep         xx
 
   LatexName        overprint
-  LabelString      "Overprint" 
+  LabelString      "Overprint"
 
   ParSkip          0.5
   TopSep           1
@@ -599,7 +599,7 @@ Style Uncover
 
   LatexName        uncoverenv}%{
   LabelSep         xx
-  LabelString      "Uncovered on slides" 
+  LabelString      "Uncovered on slides"
 
   ParSkip          0.5
   TopSep           1
