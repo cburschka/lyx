@@ -221,10 +221,21 @@ QLFontInfo::QLFontInfo(Font const & f)
 		boost::tie(font, tmp) = getSymbolFont(pat);
 	} else {
 		switch (f.family()) {
-		case Font::ROMAN_FAMILY:
-			font.setFamily(toqstr(makeFontName(lyxrc.roman_font_name,
-						    lyxrc.roman_font_foundry)));
+		case Font::ROMAN_FAMILY: {
+			QString family = toqstr(makeFontName(lyxrc.roman_font_name,
+																					 lyxrc.roman_font_foundry)); 
+			font.setFamily(family);
+#ifdef Q_WS_MACX
+#if QT_VERSION >= 0x040300
+			// Workaround for a Qt bug, see http://bugzilla.lyx.org/show_bug.cgi?id=3684
+			// It is reported to Trolltech at 02/06/07 against 4.3 final.
+			// FIXME: Add an upper version limit as soon as the bug is fixed in Qt.
+			if (family == "Times" && !font.exactMatch())
+				font.setFamily(QString::fromLatin1("Times New Roman"));
+#endif
+#endif
 			break;
+		}
 		case Font::SANS_FAMILY:
 			font.setFamily(toqstr(makeFontName(lyxrc.sans_font_name,
 						    lyxrc.sans_font_foundry)));
