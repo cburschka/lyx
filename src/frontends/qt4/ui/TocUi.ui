@@ -22,52 +22,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="0" >
-    <widget class="QSlider" name="depthSL" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Adjust the depth of the navigation tree</string>
-     </property>
-     <property name="maximum" >
-      <number>5</number>
-     </property>
-     <property name="pageStep" >
-      <number>1</number>
-     </property>
-     <property name="value" >
-      <number>2</number>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="tickPosition" >
-      <enum>QSlider::TicksBothSides</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QComboBox" name="typeCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Switch between table of contents, list of figures or list of tables, if available</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
+   <item row="1" column="0" >
     <widget class="QTreeView" name="tocTV" >
      <property name="sizePolicy" >
       <sizepolicy>
@@ -79,7 +34,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="3" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -197,13 +152,48 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="typeLA" >
-     <property name="text" >
-      <string>&amp;Type:</string>
+   <item row="0" column="0" >
+    <widget class="QComboBox" name="typeCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>13</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="buddy" >
-      <cstring>typeCO</cstring>
+     <property name="toolTip" >
+      <string>Switch between table of contents, list of figures or list of tables, if available</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QSlider" name="depthSL" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>13</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Adjust the depth of the navigation tree</string>
+     </property>
+     <property name="maximum" >
+      <number>5</number>
+     </property>
+     <property name="pageStep" >
+      <number>1</number>
+     </property>
+     <property name="value" >
+      <number>2</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="tickPosition" >
+      <enum>QSlider::TicksBothSides</enum>
      </property>
     </widget>
    </item>
