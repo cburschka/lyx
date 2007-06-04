@@ -8,6 +8,7 @@
  * \author Jean-Marc Lasgouttes
  * \author John Levon
  * \author André Pönitz
+ * \author Stefan Schimanski
  * \author Dekel Tsur
  * \author Jürgen Vigna
  *
@@ -1412,89 +1413,149 @@ void Text::drawSelection(PainterInfo & pi, int x, int) const
 	DocIterator end = cur.selectionEnd();
 
 	BufferView & bv = *pi.base.bv;
-	Buffer const & buffer = *bv.buffer();
 
-	// the selection doesn't touch the visible screen
+	// the selection doesn't touch the visible screen?
 	if (bv_funcs::status(&bv, beg) == bv_funcs::CUR_BELOW
 	    || bv_funcs::status(&bv, end) == bv_funcs::CUR_ABOVE)
 		return;
 
-	Paragraph const & par1 = pars_[beg.pit()];
-	Paragraph const & par2 = pars_[end.pit()];
 	TextMetrics const & tm = bv.textMetrics(this);
 	ParagraphMetrics const & pm1 = tm.parMetrics(beg.pit());
 	ParagraphMetrics const & pm2 = tm.parMetrics(end.pit());
+	Row const & row1 = pm1.getRow(beg.pos(), beg.boundary());
+	Row const & row2 = pm2.getRow(end.pos(), end.boundary());
 
-	bool const above = (bv_funcs::status(&bv, beg)
-			    == bv_funcs::CUR_ABOVE);
-	bool const below = (bv_funcs::status(&bv, end)
-			    == bv_funcs::CUR_BELOW);
-	int y1,y2,x1,x2;
-	if (above) {
-		y1 = 0;
-		y2 = 0;
-		x1 = 0;
-		x2 = tm.width();
-	} else {
-		Row const & row1 = pm1.getRow(beg.pos(), beg.boundary());
-		y1 = bv_funcs::getPos(bv, beg, beg.boundary()).y_ - row1.ascent();
-		y2 = y1 + row1.height();
-		int const startx = cursorX(bv, beg.top(), beg.boundary());
-		if (!isRTL(buffer, par1)) {
-			x1 = startx;
-			x2 = 0 + tm.width();
+	// clip above
+	int middleTop;
+	bool const clipAbove = 
+		(bv_funcs::status(&bv, beg) == bv_funcs::CUR_ABOVE);
+	if (clipAbove)
+		middleTop = 0;
+	else
+		middleTop = bv_funcs::getPos(bv, beg, beg.boundary()).y_ + row1.descent();
+	
+	// clip below
+	int middleBottom;
+	bool const clipBelow = 
+		(bv_funcs::status(&bv, end)	== bv_funcs::CUR_BELOW);
+	if (clipBelow)
+		middleBottom = bv.workHeight();
+	else
+		middleBottom = bv_funcs::getPos(bv, end, end.boundary()).y_ - row2.ascent();
+
+	// start and end in the same line?
+	if (!(clipAbove || clipBelow) && &row1 == &row2)
+		// then only draw this row's selection
+		drawRowSelection(pi, x, row1, beg, end, false, false);
+	else {
+		if (!clipAbove) {
+			// get row end
+			DocIterator begRowEnd = beg;
+			begRowEnd.pos() = row1.endpos();
+			begRowEnd.boundary(true);
+			
+			// draw upper rectangle
+			drawRowSelection(pi, x, row1, beg, begRowEnd, false, true);
 		}
-		else {
-			x1 = 0;
-			x2 = startx;
+			
+		if (middleTop < middleBottom) {
+			// draw middle rectangle
+			pi.pain.fillRectangle(x, middleTop, 
+														tm.width(), middleBottom - middleTop, 
+														Color::selection);
+		}
+
+		if (!clipBelow) {
+			// get row begin
+			DocIterator endRowBeg = end;
+			endRowBeg.pos() = row2.pos();
+			endRowBeg.boundary(false);
+			
+			// draw low rectangle
+			drawRowSelection(pi, x, row2, endRowBeg, end, true, false);
 		}
 	}
-
-	int Y1,Y2,X1,X2;
-	if (below) {
-		Y1 = bv.workHeight();
-		Y2 = bv.workHeight();
-		X1 = 0;
-		X2 = tm.width();
-	} else {
-		Row const & row2 = pm2.getRow(end.pos(), end.boundary());
-		Y1 = bv_funcs::getPos(bv, end, end.boundary()).y_ - row2.ascent();
-		Y2 = Y1 + row2.height();
-		int const endx = cursorX(bv, end.top(), end.boundary());
-		if (!isRTL(buffer, par2)) {
-			X1 = 0;
-			X2 = endx;
-		}
-		else {
-			X1 = endx;
-			X2 = 0 + tm.width();
-		}
-	}
-
-	if (!above && !below && &pm1.getRow(beg.pos(), beg.boundary())
-	    == &pm2.getRow(end.pos(), end.boundary()))
-	{
-		// paint only one rectangle
-		int const b( !isRTL(*bv.buffer(), par1) ? x + x1 : x + X1 );
-		int const w( !isRTL(*bv.buffer(), par1) ? X2 - x1 : x2 - X1 );
-		pi.pain.fillRectangle(b, y1, w, y2 - y1, Color::selection);
-		return;
-	}
-
-	LYXERR(Debug::DEBUG) << " y1: " << y1 << " y2: " << y2
-		<< "X1:" << X1 << " x2: " << X2 << " wid: " << tm.width()
-		<< endl;
-
-	// paint upper rectangle
-	pi.pain.fillRectangle(x + x1, y1, x2 - x1, y2 - y1,
-				      Color::selection);
-	// paint bottom rectangle
-	pi.pain.fillRectangle(x + X1, Y1, X2 - X1, Y2 - Y1,
-				      Color::selection);
-	// paint center rectangle
-	pi.pain.fillRectangle(x, y2, tm.width(),
-			      Y1 - y2, Color::selection);
 }
+
+
+void Text::drawRowSelection(PainterInfo & pi, int x, Row const & row,
+														DocIterator const & beg, DocIterator const & end, 
+														bool drawOnBegMargin, bool drawOnEndMargin) const
+{
+	BufferView & bv = *pi.base.bv;
+	Buffer & buffer = *bv.buffer();
+	TextMetrics const & tm = bv.textMetrics(this);
+	DocIterator cur = beg;
+	int x1 = cursorX(bv, beg.top(), beg.boundary());
+	int x2 = cursorX(bv, end.top(), end.boundary());
+	int y1 = bv_funcs::getPos(bv, cur, cur.boundary()).y_ - row.ascent();
+	int y2 = y1 + row.height();
+	
+	// draw the margins
+	if (drawOnBegMargin) {
+		if (isRTL(buffer, beg.paragraph()))
+			pi.pain.fillRectangle(x + x1, y1, tm.width() - x1, y2 - y1, Color::selection);
+		else
+			pi.pain.fillRectangle(x, y1, x1, y2 - y1, Color::selection);
+	}
+	
+	if (drawOnEndMargin) {
+		if (isRTL(buffer, beg.paragraph()))
+			pi.pain.fillRectangle(x, y1, x2, y2 - y1, Color::selection);
+		else
+			pi.pain.fillRectangle(x + x2, y1, tm.width() - x2, y2 - y1, Color::selection);
+	}
+	
+	// if we are on a boundary from the beginning, it's probably
+	// a RTL boundary and we jump to the other side directly as this
+	// segement is 0-size and confuses the logic below
+	if (cur.boundary())
+		cur.boundary(false);
+	
+	// go through row and draw from RTL boundary to RTL boundary
+	while (cur < end) {
+		bool drawNow = false;
+		
+		// simplified cursorRight code below which does not
+		// descend into insets and which does not go into the
+		// next line. Compare the logic with the original cursorRight
+		
+		// if left of boundary -> just jump to right side
+		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
+		if (cur.boundary()) {
+			cur.boundary(false);
+		}	else if (bidi.isBoundary(buffer, cur.paragraph(), cur.pos() + 1)) {
+			// in front of RTL boundary -> Stay on this side of the boundary because:
+			//   ab|cDDEEFFghi -> abc|DDEEFFghi
+			++cur.pos();
+			cur.boundary(true);
+			drawNow = true;
+		} else {
+			// move right
+			++cur.pos();
+			
+			// line end?
+			if (cur.pos() == row.endpos())
+				cur.boundary(true);
+		}
+			
+		if (x1 == -1) {
+			// the previous segment was just drawn, now the next starts
+			x1 = cursorX(bv, cur.top(), cur.boundary());
+		}
+		
+		if (!(cur < end) || drawNow) {
+			x2 = cursorX(bv, cur.top(), cur.boundary());
+			pi.pain.fillRectangle(x + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
+														Color::selection);
+			
+			// reset x1, so it is set again next round (which will be on the 
+			// right side of a boundary or at the selection end)
+			x1 = -1;
+		}
+	}
+}
+
 
 
 bool Text::isLastRow(pit_type pit, Row const & row) const
