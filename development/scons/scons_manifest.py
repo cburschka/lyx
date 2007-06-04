@@ -1411,6 +1411,7 @@ po_extra_files = Split('''
     sv.po
     tr.po
     wa.po
+    zh.po
 ''')
 
 
