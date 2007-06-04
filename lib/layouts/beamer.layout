@@ -126,7 +126,7 @@ Style Part
   Align            Center
   Alignpossible    Center
   LabelType        Static
-  LabelString      "Part "
+  LabelString      "Part"
 
   # standard font definition
   Font 
@@ -240,7 +240,8 @@ Style BeginFrame
   LabelType        Static
   LabelBottomSep   0
   LeftMargin       M
-  LabelString      "Frame "
+  LabelSep         xxx
+  LabelString      "Frame"
 
   Font
     Series         Bold
@@ -281,7 +282,8 @@ Style BeginPlainFrame
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
-  LabelString       "Frame (no head/foot/sidebars)__"
+  LabelSep          xxx
+  LabelString       "Frame (no head/foot/sidebars)"
 
   Font
     Series          Bold
@@ -320,7 +322,8 @@ Style AgainFrame
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
-  LabelString       "Again frame with label__"
+  LabelSep          xxx
+  LabelString       "Again frame with label"
 
   Font
     Color           latex
@@ -408,9 +411,9 @@ Style Column
   Align            Left
   LabelType        Static
   LabelSep         xx
-  LabelString      "start column (increase depth!), width:" 
+  LabelString      "Start column (increase depth!), width:" 
   OptionalArgs     1
-  LeftMargin       "start column (increase depth!), width:"
+  LeftMargin       "Start column (increase depth!), width:xx"
 
   # standard font definition
   LabelFont 
@@ -421,7 +424,6 @@ End
 
 
 Style Columns
-
   KeepEmpty        1
   Margin           Static
   LatexType        Environment
@@ -432,8 +434,8 @@ Style Columns
   LabelSep         x
 
   LatexName        columns}%{
-  LabelString      "columns" 
-  LeftMargin       "columnsx"
+  LabelString      "Columns" 
+  LeftMargin       "Columnsx"
 
   ParSkip          0.5
   TopSep           1
@@ -460,8 +462,8 @@ Style ColumnsCenterAligned
   LabelSep         x
 
   LatexName        centercolumns}%{
-  LabelString      "columns (center aligned)" 
-  LeftMargin       "columns (center aligned) x"
+  LabelString      "Columns (center aligned)" 
+  LeftMargin       "Columns (center aligned)x"
 
   ParSkip          0.5
   TopSep           1
@@ -490,8 +492,8 @@ Style ColumnsTopAligned
   LabelSep         x
 
   LatexName        topcolumns}%{
-  LabelString      "columns (top aligned)" 
-  LeftMargin       "columns (top aligned) x"
+  LabelString      "Columns (top aligned)" 
+  LeftMargin       "Columns (top aligned)x"
 
   ParSkip          0.5
   TopSep           1
@@ -546,7 +548,7 @@ Style Overprint
   LabelSep         xx
 
   LatexName        overprint
-  LabelString      "overprint" 
+  LabelString      "Overprint" 
 
   ParSkip          0.5
   TopSep           1
@@ -572,7 +574,7 @@ Style OverlayArea
   LabelSep         xx
 
   LatexName        overlayarea
-  LabelString      "overlayarea"
+  LabelString      "Overlayarea"
 
   ParSkip          0.5
   TopSep           1
@@ -596,7 +598,8 @@ Style Uncover
   LabelType        Static
 
   LatexName        uncoverenv}%{
-  LabelString      "uncovered on slides " 
+  LabelSep         xx
+  LabelString      "Uncovered on slides" 
 
   ParSkip          0.5
   TopSep           1
@@ -620,7 +623,8 @@ Style Only
   LabelType        Static
 
   LatexName        onlyenv}%{
-  LabelString      "only on slides_"
+  LabelSep         xx
+  LabelString      "Only on slides"
 
   ParSkip          0.5
   TopSep           1
@@ -646,7 +650,7 @@ Style Block
   LabelSep         xx
 
   LatexName        block
-  LabelString      "block ( ERT[{title}] body ): "
+  LabelString      "Block ( ERT[{title}] body ):"
 
   ParSkip          0.5
   TopSep           1
@@ -671,7 +675,7 @@ Style ExampleBlock
   LabelSep         xx
 
   LatexName        exampleblock
-  LabelString      "block ( ERT[{title}] example text ): "
+  LabelString      "Block ( ERT[{title}] example text ):"
 
   ParSkip          0.5
   TopSep           1
@@ -700,7 +704,7 @@ Style AlertBlock
   LabelSep         xx
 
   LatexName        alertblock
-  LabelString      "block ( ERT[{title}] alert text ): "
+  LabelString      "Block ( ERT[{title}] alert text ):"
 
   ParSkip          0.5
   TopSep           1
@@ -775,7 +779,6 @@ Style Author
   LatexType        Command
   InTitle          1
   LatexName        author
-  LabelSep         xxx
   ParSkip          0.4
   TopSep           1.3
   BottomSep        0.7
@@ -798,7 +801,6 @@ Style Institute
   LatexType        Command
   InTitle          1
   LatexName        institute
-  LabelSep         xxx
   ParSkip          0.4
   TopSep           0.9
   BottomSep        0.5
@@ -821,7 +823,6 @@ Style Date
   LatexType        Command
   InTitle          1
   LatexName        date
-  LabelSep         xxx
   ParSkip          0.4
   TopSep           0.9
   BottomSep        0.5
@@ -899,7 +900,7 @@ Style Corollary
    LabelSep        xx
 
    LatexName       corollary}%{
-   LabelString     "Corollary_"
+   LabelString     "Corollary."
  
    ParSkip         0.5
    TopSep          1
@@ -919,19 +920,19 @@ End
 Style Definition
   CopyStyle        Corollary
   LatexName        definition}%{
-  LabelString      "Definition. "
+  LabelString      "Definition."
 End
 
 Style Definitions
   CopyStyle        Corollary
   LatexName        definitions}%{
-  LabelString      "Definitions. "
+  LabelString      "Definitions."
 End
 
 Style Example
   CopyStyle        Corollary
   LatexName        example}%{
-  LabelString      "Example. "
+  LabelString      "Example."
 
   LabelFont
     Series         Bold
@@ -942,26 +943,26 @@ End
 Style Examples
   CopyStyle        Corollary
   LatexName        examples}%{
-  LabelString      "Examples. "
+  LabelString      "Examples."
 End
 
 
 Style Fact
   CopyStyle        Corollary
   LatexName        fact}%{
-  LabelString      "Fact. "
+  LabelString      "Fact."
 End
 
 Style Proof
   CopyStyle        Corollary
   LatexName        proof}%{
-  LabelString      "Proof. "
+  LabelString      "Proof."
 End
 
 Style Theorem
   CopyStyle        Corollary
   LatexName        theorem}%{
-  LabelString      "Theorem. "
+  LabelString      "Theorem."
 End
 
 # Misc. section
@@ -1037,9 +1038,9 @@ Style NoteItem
   Align            Left
   LabelType        Static
   LabelSep         xx
-  LabelString      "note: "
+  LabelString      "Note:"
   OptionalArgs     1
-  LeftMargin       MMM
+  LeftMargin       "Note:xx"
  
   # standard font definition
   LabelFont 
