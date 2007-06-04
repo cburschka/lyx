@@ -409,9 +409,8 @@ private:
 	void number(Cursor & cur);
 	/// draw selection for a single row
 	void drawRowSelection(PainterInfo & pi, int x, Row const & row,
-												DocIterator const & beg, DocIterator const & end, 
-												bool drawOnBegMargin, bool drawOnEndMargin) const;
-
+		DocIterator const & beg, DocIterator const & end, 
+		bool drawOnBegMargin, bool drawOnEndMargin) const;
 
 	/// paste plain text at current cursor.
 	/// \param str string to paste
