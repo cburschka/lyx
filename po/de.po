@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-04 20:05+0200\n"
+"POT-Creation-Date: 2007-06-04 20:34+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1418,9 +1418,8 @@ msgid "The content's base font style"
 msgstr "Der Basis-Schriftstil des Inhalts"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:120
-#, fuzzy
 msgid "Font Famil&y:"
-msgstr "Schriftfamilie"
+msgstr "Schrift&familie:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:136
 msgid "Use extended character table"
@@ -2205,10 +2204,12 @@ msgid ""
 "Adjusts dvips output for a particular printer. (Note: dvips must be pre-"
 "configured for that printer.)"
 msgstr ""
+"Passen Sie die Ausgabe von dvips an einen bestimmten Drucker an. (Hinweis: "
+"dvips muss für diesen Drucker vorkonfiguriert sein.)"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Use -P<printer> parameter with dvips"
-msgstr ""
+msgstr "Parameter -P<printer> mit dvips verwenden"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:64
 msgid "Command Options"
@@ -3283,6 +3284,7 @@ msgstr "Feststellung #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
+#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:369
@@ -4312,9 +4314,8 @@ msgid "BeginFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:244
-#, fuzzy
 msgid "Frame"
-msgstr "Rahmen "
+msgstr "Rahmen"
 
 #: lib/layouts/beamer.layout:270
 msgid "BeginPlainFrame"
@@ -4337,8 +4338,8 @@ msgid "EndFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:364
-msgid "________________________________ "
-msgstr "________________________________ "
+msgid "________________________________"
+msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:379
 msgid "FrameSubtitle"
@@ -4349,17 +4350,11 @@ msgid "Column"
 msgstr "Spalte"
 
 #: lib/layouts/beamer.layout:414
-#, fuzzy
-msgid "Start column (increase depth!), width: "
-msgstr "Starte Spalte (erhöhe Tiefe!), Breite: "
+msgid "Start column (increase depth!), width:"
+msgstr "Starte Spalte (erhöhe Tiefe!), Breite:"
 
-#: lib/layouts/beamer.layout:426
+#: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
-msgstr "Spalten"
-
-#: lib/layouts/beamer.layout:437
-#, fuzzy
-msgid "Columns "
 msgstr "Spalten"
 
 #: lib/layouts/beamer.layout:454
@@ -4367,8 +4362,7 @@ msgid "ColumnsCenterAligned"
 msgstr "Spalten mittig ausgerichtet"
 
 #: lib/layouts/beamer.layout:465
-#, fuzzy
-msgid "Columns (center aligned) "
+msgid "Columns (center aligned)"
 msgstr "Spalten (mittig ausgerichtet)"
 
 #: lib/layouts/beamer.layout:484
@@ -4376,9 +4370,8 @@ msgid "ColumnsTopAligned"
 msgstr "Spalten oben ausgerichtet"
 
 #: lib/layouts/beamer.layout:495
-#, fuzzy
-msgid "Columns (top aligned) "
-msgstr "Spalten (oben ausgerichtet) "
+msgid "Columns (top aligned)"
+msgstr "Spalten (oben ausgerichtet)"
 
 #: lib/layouts/beamer.layout:515
 msgid "Pause"
@@ -4388,30 +4381,24 @@ msgstr "Pause"
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:541
+#: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
 msgid "Overprint"
 msgstr ""
-
-#: lib/layouts/beamer.layout:551
-#, fuzzy
-msgid "Overprint "
-msgstr "Sonderdruck"
 
 #: lib/layouts/beamer.layout:567
 msgid "OverlayArea"
 msgstr ""
 
 #: lib/layouts/beamer.layout:577
-#, fuzzy
 msgid "Overlayarea"
-msgstr "Overlay"
+msgstr ""
 
 #: lib/layouts/beamer.layout:592
 msgid "Uncover"
 msgstr ""
 
 #: lib/layouts/beamer.layout:602
-msgid "Uncovered on slides "
+msgid "Uncovered on slides"
 msgstr ""
 
 #: lib/layouts/beamer.layout:617
@@ -4419,9 +4406,8 @@ msgid "Only"
 msgstr ""
 
 #: lib/layouts/beamer.layout:627
-#, fuzzy
 msgid "Only on slides"
-msgstr "Nur eine Spalte"
+msgstr ""
 
 #: lib/layouts/beamer.layout:643
 msgid "Block"
@@ -4461,18 +4447,16 @@ msgid "Definitions"
 msgstr "Definitionen"
 
 #: lib/layouts/beamer.layout:929
-#, fuzzy
 msgid "Definitions."
-msgstr "Definitionen. "
+msgstr "Definitionen."
 
 #: lib/layouts/beamer.layout:943
 msgid "Examples"
 msgstr "Beispiele"
 
 #: lib/layouts/beamer.layout:946
-#, fuzzy
 msgid "Examples."
-msgstr "Beispiele. "
+msgstr "Beispiele."
 
 #: lib/layouts/beamer.layout:959 lib/layouts/foils.layout:286
 #: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:236
@@ -5880,10 +5864,6 @@ msgstr "Frage"
 #: lib/layouts/ijmpc.layout:291
 msgid "Question \\arabic{question}."
 msgstr "Frage \\arabic{question}."
-
-#: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-msgid "Conjecture "
-msgstr "Vermutung "
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 msgid "Appendices Section"
@@ -15674,39 +15654,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "Font st&yle:"
-#~ msgstr "Schri&ftstil:"
-
-#~ msgid "Use printer name explicitely"
-#~ msgstr "Druckernamen explizit verwenden"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "&Ausgabe anpassen"
-
-#~ msgid "&Type:"
-#~ msgstr "&Art:"
-
-#~ msgid "Part "
-#~ msgstr "Teil "
-
-#~ msgid "columns "
-#~ msgstr "Spalten "
-
-#~ msgid "Definition. "
-#~ msgstr "Definition. "
-
-#~ msgid "Example. "
-#~ msgstr "Beispiel. "
-
-#~ msgid "Fact. "
-#~ msgstr "Fakt. "
-
-#~ msgid "Proof. "
-#~ msgstr "Beweis. "
-
-#~ msgid "Theorem. "
-#~ msgstr "Theorem. "
-
-#~ msgid "note: "
-#~ msgstr "Notiz: "
