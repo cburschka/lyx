@@ -427,7 +427,7 @@ public:
 	virtual void addPreview(graphics::PreviewLoader &) const {}
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
-	virtual void addToToc(TocList &, Buffer const &, ParConstIterator & pit) const {}
+	virtual void addToToc(TocList &, Buffer const &, ParConstIterator &) const {}
 
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
