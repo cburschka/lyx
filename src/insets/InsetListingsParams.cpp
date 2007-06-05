@@ -41,6 +41,7 @@ using support::isStrInt;
 using support::prefixIs;
 using support::suffixIs;
 using support::getVectorFromString;
+using lyx::support::contains;
 
 namespace {
 
@@ -283,8 +284,6 @@ private:
 	/// key is the name of the parameter
 	typedef	map<string, ListingsParam> ListingsParams;
 	ListingsParams all_params_;
-	///
-	string all_param_names_;
 };
 
 
@@ -579,14 +578,6 @@ ParValidator::ParValidator()
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_["podcomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-
-	ListingsParams::const_iterator it = all_params_.begin();
-	ListingsParams::const_iterator end = all_params_.end();
-	for (; it != end; ++it) {
-		if (!all_param_names_.empty())
-			all_param_names_ += ", ";
-		all_param_names_ += it->first;
-	}
 }
 
 
@@ -606,10 +597,27 @@ ListingsParam const & ParValidator::param(string const & name) const
 	if (name.empty())
 		throw invalidParam(_("Invalid (empty) listing parameter name."));
 
-	if (name == "?")
-		throw invalidParam(bformat(
-			_("Available listing parameters are %1$s"), from_ascii(all_param_names_)));
-
+	if (name[0] == '?') {
+		string suffix = trim(string(name, 1));
+		string param_names;
+		ListingsParams::const_iterator it = all_params_.begin();
+		ListingsParams::const_iterator end = all_params_.end();
+		for (; it != end; ++it) {
+			if (suffix.empty() || contains(it->first, suffix)) {
+				if (!param_names.empty())
+					param_names += ", ";
+				param_names += it->first;
+			}
+		}
+		if (suffix.empty())
+			throw invalidParam(bformat(
+					_("Available listing parameters are %1$s"), from_ascii(param_names)));
+		else
+			throw invalidParam(bformat(
+					_("Available listings parameters containing string \"%1$s\" are %2$s"), 
+						from_utf8(suffix), from_utf8(param_names)));
+	}
+ 
 	// locate name in parameter table
 	ListingsParams::const_iterator it = all_params_.find(name);
 	if (it != all_params_.end())
