@@ -591,9 +591,11 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 {
 	string position;
 	string inner_pos;
-	string height_value = "0";
-	string height_unit = "pt";
-	string height_special = "none";
+	// We need to set the height to the LaTeX default of 1\\totalheight
+	// for the case when no height argument is given
+	string height_value = "1";
+	string height_unit = "in";
+	string height_special = "totalheight";
 	string latex_height;
 	if (p.next_token().asInput() == "[") {
 		position = p.getArg('[', ']');
