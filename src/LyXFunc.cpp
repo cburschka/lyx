@@ -1068,6 +1068,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 							command2);
 				} else {
 					// case 2: print directly to a printer
+					if (target_name != "default")
+						command += lyxrc.print_to_printer + target_name + ' ';
 					res = one.startscript(
 						Systemcall::DontWait,
 						command + quoteName(dviname));
