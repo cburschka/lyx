@@ -79,83 +79,33 @@ Style Item
 End
 
 Style ListItem
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Item
 	LatexName		cvlistitem
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"List Item:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style DoubleItem
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Item
 	LatexName		cvlistdoubleitem
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Double Item:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style Space
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Item
 	LatexName		vspace*
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Space:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style Language
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Item
 	LatexName		cvlanguage
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Language:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style Computer
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Item
 	LatexName		cvcomputer
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Computer:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style EmptySection
@@ -175,19 +125,9 @@ Style EmptySection
 End
 
 Style CloseSection
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		EmptySection
 	LatexName		closesection{}
-	KeepEmpty		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Close Section"
-	LabelFont
-	  Series		Bold
-	  Color			Green
-	EndFont
 End
 
 Style Bibliography

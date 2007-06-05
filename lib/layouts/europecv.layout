@@ -62,19 +62,9 @@ Style Item
 End
 
 Style BulletedItem
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Item
 	LatexName		ecvitem*
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Bulleted Item:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style Begin
@@ -82,7 +72,7 @@ Style Begin
 	LatexType		Command
 	LatexName		begin{europecv}
 	KeepEmpty		1
-	BottomSep			1
+	BottomSep		1
 	ParSkip			0.4
 	Align			Block
 	LabelSep		xx
@@ -95,19 +85,10 @@ Style Begin
 End
 
 Style PersonalInfo
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		Begin
 	LatexName		ecvpersonalinfo{}
-	KeepEmpty		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
+	BottomSep		0
 	LabelString		"Personal Info"
-	LabelFont
-	  Series		Bold
-	  Color			Green
-	EndFont
 End
 
 Style MotherTongue
@@ -127,65 +108,29 @@ Style MotherTongue
 End
 
 Style LangHeader
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		MotherTongue
 	LatexName		ecvlanguageheader
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
+	OptionalArgs		0
 	LabelString		"Language Header:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style Language
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		MotherTongue
 	LatexName		ecvlanguage
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Language:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style LastLanguage
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		MotherTongue
 	LatexName		ecvlastlanguage
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
 	LabelString		"Last Language:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style LangFooter
-	Margin			Dynamic
-	LatexType		Command
+	CopyStyle		MotherTongue
 	LatexName		ecvlanguagefooter
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
+	OptionalArgs		0
 	LabelString		"Language Footer:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
 End
 
 Style End
