@@ -2207,6 +2207,28 @@ lib_doc_files = Split('''
 ''')
 
 
+lib_doc_clipart_files = Split('''
+    BoxInsetDefaultQt4.png
+    ChildDocumentQt4.png
+    CommentNoteImageQt4.png
+    ExternalMaterialQt4.png
+    FramedNoteImageQt4.png
+    GreyedOutNoteImageQt4.png
+    LyXNoteImageQt4.png
+    ShadedNoteImageQt4.png
+    endnotes.pdf
+    escher-lsd.eps
+    floatQt4.png
+    footnoteQt4.png
+    labelQt4.png
+    mobius.eps
+    platypus.eps
+    referenceQt4.png
+    with_fntright.pdf
+    without_fntright.pdf
+''')
+
+
 lib_doc_extra_files = Split('''
     ChangeLog
     Makefile.am
@@ -2217,29 +2239,28 @@ lib_doc_extra_files = Split('''
 ''')
 
 
-lib_doc_da_files = Split('''
-    Intro.lyx
-''')
-
-
-lib_doc_sk_files = Split('''
+lib_doc_cs_files = Split('''
     Tutorial.lyx
-    UserGuide.lyx
 ''')
 
 
-lib_doc_ro_files = Split('''
-    Intro.lyx
-''')
-
-
-lib_doc_fr_files = Split('''
+lib_doc_de_files = Split('''
     Customization.lyx
     Extended.lyx
     FAQ.lyx
     Intro.lyx
     Tutorial.lyx
     UserGuide.lyx
+''')
+
+
+lib_doc_de_clipart_files = Split('''
+    FussnoteQt4.png
+''')
+
+
+lib_doc_da_files = Split('''
+    Intro.lyx
 ''')
 
 
@@ -2270,21 +2291,20 @@ lib_doc_es_clipart_files = Split('''
 ''')
 
 
-lib_doc_sv_files = Split('''
-    Intro.lyx
-    Tutorial.lyx
-''')
-
-
-lib_doc_ru_files = Split('''
+lib_doc_eu_files = Split('''
+    Customization.lyx
+    Extended.lyx
     FAQ.lyx
     Intro.lyx
     Tutorial.lyx
+    UserGuide.lyx
 ''')
 
 
-lib_doc_it_files = Split('''
+lib_doc_fr_files = Split('''
     Customization.lyx
+    Extended.lyx
+    FAQ.lyx
     Intro.lyx
     Tutorial.lyx
     UserGuide.lyx
@@ -2294,16 +2314,6 @@ lib_doc_it_files = Split('''
 lib_doc_gl_extra_files = Split('''
     Intro.lyx
     Tutorial.lyx
-''')
-
-
-lib_doc_eu_files = Split('''
-    Customization.lyx
-    Extended.lyx
-    FAQ.lyx
-    Intro.lyx
-    Tutorial.lyx
-    UserGuide.lyx
 ''')
 
 
@@ -2319,30 +2329,11 @@ lib_doc_hu_files = Split('''
 ''')
 
 
-lib_doc_clipart_files = Split('''
-    BoxInsetDefaultQt4.png
-    ChildDocumentQt4.png
-    CommentNoteImageQt4.png
-    ExternalMaterialQt4.png
-    FramedNoteImageQt4.png
-    GreyedOutNoteImageQt4.png
-    LyXNoteImageQt4.png
-    ShadedNoteImageQt4.png
-    endnotes.pdf
-    escher-lsd.eps
-    floatQt4.png
-    footnoteQt4.png
-    labelQt4.png
-    mobius.eps
-    platypus.eps
-    referenceQt4.png
-    with_fntright.pdf
-    without_fntright.pdf
-''')
-
-
-lib_doc_cs_files = Split('''
+lib_doc_it_files = Split('''
+    Customization.lyx
+    Intro.lyx
     Tutorial.lyx
+    UserGuide.lyx
 ''')
 
 
@@ -2351,14 +2342,14 @@ lib_doc_nb_files = Split('''
 ''')
 
 
-lib_doc_pl_files = Split('''
-    Extended.lyx
+lib_doc_nl_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
 
 
-lib_doc_nl_files = Split('''
+lib_doc_pl_files = Split('''
+    Extended.lyx
     Intro.lyx
     Tutorial.lyx
 ''')
@@ -2370,24 +2361,33 @@ lib_doc_pt_files = Split('''
 ''')
 
 
+lib_doc_ro_files = Split('''
+    Intro.lyx
+''')
+
+
+lib_doc_ru_files = Split('''
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+
 lib_doc_sl_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
 
 
-lib_doc_de_files = Split('''
-    Customization.lyx
-    Extended.lyx
-    FAQ.lyx
-    Intro.lyx
+lib_doc_sk_files = Split('''
     Tutorial.lyx
     UserGuide.lyx
 ''')
 
 
-lib_doc_de_clipart_files = Split('''
-    FussnoteQt4.png
+lib_doc_sv_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
 ''')
 
 
@@ -2440,12 +2440,37 @@ lib_examples_files = Split('''
 ''')
 
 
+lib_examples_ca_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_cs_files = Split('''
+    splash.lyx
+''')
+
+
 lib_examples_da_files = Split('''
     splash.lyx
 ''')
 
 
-lib_examples_ro_files = Split('''
+lib_examples_de_files = Split('''
+    Dezimal.lyx
+    ItemizeBullets.lyx
+    Lebenslauf.lyx
+    Minipage.lyx
+    TabellenBeispiel.lyx
+    Waehrungen.lyx
+    beispiel_gelyxt.lyx
+    beispiel_roh.lyx
+    mathed.lyx
+    multicol.lyx
+    splash.lyx
+''')
+
+
+lib_examples_fa_files = Split('''
     splash.lyx
 ''')
 
@@ -2472,13 +2497,9 @@ lib_examples_es_files = Split('''
 ''')
 
 
-lib_examples_ru_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_it_files = Split('''
-    ItemizeBullets.lyx
+lib_examples_eu_files = Split('''
+    adibide_gordina.lyx
+    adibide_lyx-atua.lyx
     splash.lyx
 ''')
 
@@ -2490,13 +2511,6 @@ lib_examples_gl_extra_files = Split('''
 ''')
 
 
-lib_examples_eu_files = Split('''
-    adibide_gordina.lyx
-    adibide_lyx-atua.lyx
-    splash.lyx
-''')
-
-
 lib_examples_he_files = Split('''
     example_lyxified.lyx
     example_raw.lyx
@@ -2504,28 +2518,15 @@ lib_examples_he_files = Split('''
 ''')
 
 
-lib_examples_ca_files = Split('''
-    splash.lyx
-''')
-
-
 lib_examples_hu_files = Split('''
-    splash.lyx
-''')
-
-
-lib_examples_hu_extra_files = Split('''
     example_lyxified.lyx
     example_raw.lyx
-''')
-
-
-lib_examples_cs_files = Split('''
     splash.lyx
 ''')
 
 
-lib_examples_pl_files = Split('''
+lib_examples_it_files = Split('''
+    ItemizeBullets.lyx
     splash.lyx
 ''')
 
@@ -2539,7 +2540,22 @@ lib_examples_nl_files = Split('''
 ''')
 
 
+lib_examples_pl_files = Split('''
+    splash.lyx
+''')
+
+
 lib_examples_pt_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_ro_files = Split('''
+    splash.lyx
+''')
+
+
+lib_examples_ru_files = Split('''
     splash.lyx
 ''')
 
@@ -2547,21 +2563,6 @@ lib_examples_pt_files = Split('''
 lib_examples_sl_files = Split('''
     primer_lyxan.lyx
     primer_surov.lyx
-    splash.lyx
-''')
-
-
-lib_examples_de_files = Split('''
-    Dezimal.lyx
-    ItemizeBullets.lyx
-    Lebenslauf.lyx
-    Minipage.lyx
-    TabellenBeispiel.lyx
-    Waehrungen.lyx
-    beispiel_gelyxt.lyx
-    beispiel_roh.lyx
-    mathed.lyx
-    multicol.lyx
     splash.lyx
 ''')
 

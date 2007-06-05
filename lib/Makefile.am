@@ -102,6 +102,10 @@ dist_euexamples_DATA = \
 	examples/eu/adibide_lyx-atua.lyx \
 	examples/eu/splash.lyx
 
+faexamplesdir = $(pkgdatadir)/examples/fa
+dist_faexamples_DATA = \
+	examples/fa/splash.lyx
+
 frexamplesdir = $(pkgdatadir)/examples/fr
 dist_frexamples_DATA = \
 	examples/fr/AlignementDecimal.lyx \
