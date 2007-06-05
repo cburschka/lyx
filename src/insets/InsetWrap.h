@@ -66,8 +66,6 @@ public:
 	///
 	bool insetAllowed(Inset::Code) const;
 	///
-	void addToToc(TocList &, Buffer const &) const;
-	///
 	bool showInsetDialog(BufferView *) const;
 	///
 	InsetWrapParams const & params() const { return params_; }

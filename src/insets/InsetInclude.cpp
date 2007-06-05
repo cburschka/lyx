@@ -881,8 +881,21 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer) const
+void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIterator & pit) const
 {
+	if (isListings(params_)) {
+		InsetListingsParams params(params_.getOptions());
+		string caption = params.getParamValue("caption");
+		if (!caption.empty()) {
+			Toc & toc = toclist["listing"];
+			docstring const str = convert<docstring>(toc.size() + 1)
+				+ ". " +  params_["filename"];
+			// This inset does not have a valid ParConstIterator 
+			// so it has to use the iterator of its parent paragraph
+			toc.push_back(TocItem(pit, 0, str));
+		}
+		return;
+	}
 	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
 	if (!childbuffer)
 		return;

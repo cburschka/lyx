@@ -82,8 +82,6 @@ public:
 	///
 	void sideways(bool s, BufferParams const &);
 	///
-	void addToToc(TocList &, Buffer const &) const;
-	///
 	bool  showInsetDialog(BufferView *) const;
 	///
 	InsetFloatParams const & params() const { return params_; }

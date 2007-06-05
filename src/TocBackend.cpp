@@ -184,7 +184,7 @@ void TocBackend::update()
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
 			Inset & inset = *it->inset;
-			inset.addToToc(tocs_, *buffer_);
+			inset.addToToc(tocs_, *buffer_, pit);
 			switch (inset.lyxCode()) {
 			case Inset::OPTARG_CODE: {
 				if (!tocstring.empty())

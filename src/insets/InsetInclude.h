@@ -95,7 +95,7 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
-	void addToToc(TocList &, Buffer const &) const;
+	void addToToc(TocList &, Buffer const &, ParConstIterator &) const;
 	///
 	void updateLabels(Buffer const & buffer) const;
 	///

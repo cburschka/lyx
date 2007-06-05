@@ -234,13 +234,6 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetWrap::addToToc(TocList & toclist, Buffer const & buf) const
-{
-	// Is there a need to provide a list of wrap insets?
-	return;
-}
-
-
 string const InsetWrapMailer::name_("wrap");
 
 InsetWrapMailer::InsetWrapMailer(InsetWrap & inset)
