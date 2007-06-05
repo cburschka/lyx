@@ -71,9 +71,13 @@ Dialogs::Dialogs(LyXView & lyxview)
 	: lyxview_(lyxview), in_show_(false)
 {
 	// Connect signals
-	hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
+	connection_ = hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
 }
 
+Dialogs::~Dialogs() 
+{
+	connection_.disconnect();
+}
 
 Dialog * Dialogs::find_or_build(string const & name)
 {

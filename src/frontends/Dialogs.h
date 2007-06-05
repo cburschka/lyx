@@ -31,6 +31,8 @@ class Dialogs : boost::noncopyable {
 public:
 	///
 	Dialogs(LyXView &);
+	///
+	~Dialogs();
 
 	/** Check the status of all visible dialogs and disable or reenable
 	 *  them as appropriate.
@@ -116,6 +118,9 @@ private:
 
 	/// flag against a race condition due to multiclicks in Qt frontend, see bug #1119
 	bool in_show_;
+
+	///
+	boost::signals::connection connection_;
 };
 
 } // namespace lyx
