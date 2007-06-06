@@ -830,7 +830,11 @@ string InsetListingsParams::getParamValue(string const & param) const
 {
 	// is this parameter defined?
 	map<string, string>::const_iterator it = params_.find(param);
-	return (it == params_.end()) ? string() : it->second;
+	string par = (it == params_.end()) ? string() : it->second;
+	if (prefixIs(par, "{") && suffixIs(par, "}"))
+		return par.substr(1, par.size() - 2);
+	else
+		return par;
 }
 
 
