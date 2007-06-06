@@ -273,12 +273,12 @@ def checkFormatEntries(dtl_tools):
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
-    checkViewer('a Postscript previewer', ['gv', 'ghostview -swap', 'evince', 'kghostview'],
+    checkViewer('a Postscript previewer', ['kghostview', 'evince', 'gv', 'ghostview -swap'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector"'''])
     #
-    checkViewer('a PDF previewer', ['acrobat', 'acroread', 'evince', 'gv', 'ghostview', \
-                            'xpdf', 'kpdf', 'kghostview'],
+    checkViewer('a PDF previewer', ['kpdf', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
+		    'gv', 'ghostview'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"'''])
