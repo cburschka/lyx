@@ -364,7 +364,6 @@ void LyXAction::init()
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer },
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer },
 		{ LFUN_UNICODE_INSERT, "unicode-insert", Noop },
-		{ LFUN_TOOLBAR_TOGGLE_STATE, "", NoBuffer },
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer },
 		{ LFUN_NOMENCL_INSERT, "nomencl-insert", Noop },
 		{ LFUN_NOMENCL_PRINT, "nomencl-print", Noop },

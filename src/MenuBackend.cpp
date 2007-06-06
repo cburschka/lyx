@@ -789,9 +789,10 @@ void expandToolbars(Menu & tomenu)
 
 	for (; cit != end; ++cit) {
 		docstring label = _(cit->gui_name);
-		// frontends are not supposed to turn on/off toolbars, if they cannot
-		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
-		// should reflect the true state of toolbars.
+		// frontends are not supposed to turn on/off toolbars,
+		// if they cannot update ToolbarBackend::flags. That
+		// is to say, ToolbarsBackend::flags should reflect
+		// the true state of toolbars.
 		//
 		// menu is displayed as
 		//       on/off review
@@ -801,7 +802,7 @@ void expandToolbars(Menu & tomenu)
 		if (cit->flags & ToolbarInfo::AUTO)
 			label += _(" (auto)");
 		tomenu.add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_TOOLBAR_TOGGLE_STATE, cit->name)));
+				    FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name + " allowauto")));
 	}
 }
 

@@ -187,7 +187,7 @@ ToolbarInfo::Flags Toolbars::getToolbarState(string const & name)
 }
 
 
-void Toolbars::toggleToolbarState(string const & name)
+void Toolbars::toggleToolbarState(string const & name, bool allowauto)
 {
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
@@ -203,8 +203,10 @@ void Toolbars::toggleToolbarState(string const & name)
 			} else if (flags & ToolbarInfo::AUTO) {
 				TurnOffFlag(AUTO);
 				TurnOnFlag(OFF);
-			} else if ((flags & ToolbarInfo::MATH) || (flags & ToolbarInfo::TABLE)
-				|| (flags & ToolbarInfo::REVIEW)) {
+			} else if (allowauto 
+				   && ((flags & ToolbarInfo::MATH) 
+				       || (flags & ToolbarInfo::TABLE)
+				       || (flags & ToolbarInfo::REVIEW))) {
 				// for math etc, toggle from on -> auto
 				TurnOffFlag(ON);
 				TurnOnFlag(AUTO);
@@ -213,7 +215,7 @@ void Toolbars::toggleToolbarState(string const & name)
 				TurnOffFlag(ON);
 				TurnOnFlag(OFF);
 			}
-			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
+			cit->flags = static_cast<ToolbarInfo::Flags>(flags);
 			return;
 		}
 	}

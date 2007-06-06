@@ -93,8 +93,10 @@ public:
 	/// get toolbar state (on/off/auto)
 	ToolbarInfo::Flags getToolbarState(std::string const & name);
 
-	/// toggle the state of toolbars (on/off/auto)
-	void toggleToolbarState(std::string const & name);
+	/** toggle the state of toolbars (on/off/auto). Skip "auto"
+	 * when allowauto is false.
+	 */
+	void toggleToolbarState(std::string const & name, bool allowauto);
 
 	/// Update the state of the toolbars.
 	void update(bool in_math, bool in_table, bool review);

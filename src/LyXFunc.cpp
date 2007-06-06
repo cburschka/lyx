@@ -617,19 +617,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = LyX::ref().session().bookmarks().size() > 0;
 		break;
 
-	case LFUN_TOOLBAR_TOGGLE_STATE: {
-		ToolbarInfo::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
-		if (!(flags & ToolbarInfo::AUTO))
-			flag.setOnOff(flags & ToolbarInfo::ON);
-		break;
-	}
-
 	case LFUN_TOOLBAR_TOGGLE: {
 		bool const current = lyx_view_->getToolbars().visible(cmd.getArg(0));
 		flag.setOnOff(current);
 		break;
 	}
-	
 	case LFUN_WINDOW_CLOSE: {
 		enable = (theApp()->gui().viewIds().size() > 1);
 		break;
@@ -1763,15 +1755,23 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LyX::ref().session().bookmarks().clear();
 			break;
 
-		case LFUN_TOOLBAR_TOGGLE_STATE:
-			lyx_view_->toggleToolbarState(argument);
-			break;
-
 		case LFUN_TOOLBAR_TOGGLE: {
 			BOOST_ASSERT(lyx_view_);
-			string const name = to_utf8(cmd.argument());
-			bool const current = lyx_view_->getToolbars().visible(name);
-			lyx_view_->getToolbars().display(name, !current);
+			string const name = cmd.getArg(0);
+			bool const allowauto = cmd.getArg(1) == "allowauto";
+			lyx_view_->toggleToolbarState(name, allowauto);
+			ToolbarInfo::Flags const flags = 
+				lyx_view_->getToolbarState(name);
+			docstring state;
+			if (flags & ToolbarInfo::ON)
+				state = _("on");
+			else if (flags & ToolbarInfo::OFF)
+				state = _("off");
+			else if (flags & ToolbarInfo::AUTO)
+				state = _("auto");
+
+			setMessage(bformat(_("Toolbar \"%1$s\" state set to %2$s"), 
+						   from_ascii(name), state));
 			break;
 		}
 

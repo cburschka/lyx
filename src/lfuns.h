@@ -371,15 +371,13 @@ enum kb_action {
 	LFUN_WINDOW_CLOSE,               // Abdel 20061023
 	LFUN_UNICODE_INSERT,             // Lgb 20061022
 	LFUN_BOOKMARK_CLEAR,             // bpeng 20061031
-	LFUN_TOOLBAR_TOGGLE_STATE,       // bpeng 20061101
 	LFUN_NOMENCL_INSERT,             // Ugras
-	// 285
 	LFUN_NOMENCL_PRINT,              // Ugras
+	// 285
 	LFUN_CLEARPAGE_INSERT,           // Ugras 20061125
 	LFUN_CLEARDOUBLEPAGE_INSERT,     // Ugras 20061125
 	LFUN_LISTING_INSERT,             // Herbert 20011110, bpeng 20070502
 	LFUN_TOOLBAR_TOGGLE,             // Edwin 20070521
-	//290
 
 	LFUN_LASTACTION                  // end of the table
 };
