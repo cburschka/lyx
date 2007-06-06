@@ -84,9 +84,14 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith = from_utf8(
 		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
-	result.second = from_utf8(internal_path(fromqstr(
+	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
-		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
+					     toqstr(title_), 
+					     toqstr(startsWith), 
+					     toqstr(filters.as_string()),
+					     0, 
+					     QFileDialog::DontConfirmOverwrite);
+	result.second = from_utf8(internal_path(fromqstr(name)));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 #if QT_VERSION != 0x040203
