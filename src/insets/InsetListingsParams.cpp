@@ -319,6 +319,8 @@ ParValidator::ParValidator()
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_["lastline"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
+	all_params_["linerange"] =
+		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_["showlines"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_["emptylines"] =
