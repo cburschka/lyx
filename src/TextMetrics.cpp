@@ -375,7 +375,6 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		}
 	}
 
-	text_->bidi.computeTables(par, buffer, row);
 	if (is_rtl) {
 		pos_type body_pos = par.beginOfBody();
 		pos_type end = row.endpos();
@@ -812,6 +811,8 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	x -= xo;
 	RowMetrics const r = computeRowMetrics(pit, row);
 	Paragraph const & par = text_->getPar(pit);
+	Bidi bidi;
+	bidi.computeTables(par, buffer, row);
 
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();
@@ -839,7 +840,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		= theFontMetrics(text_->getLabelFont(buffer, par));
 
 	while (vc < end && tmpx <= x) {
-		c = text_->bidi.vis2log(vc);
+		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			// FIXME UNICODE
@@ -885,12 +886,12 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	     (!rtl && !left_side && vc == end  && x > tmpx + 5)))
 		c = end;
 	else if (vc == row.pos()) {
-		c = text_->bidi.vis2log(vc);
-		if (text_->bidi.level(c) % 2 == 1)
+		c = bidi.vis2log(vc);
+		if (bidi.level(c) % 2 == 1)
 			++c;
 	} else {
-		c = text_->bidi.vis2log(vc - 1);
-		bool const rtl = (text_->bidi.level(c) % 2 == 1);
+		c = bidi.vis2log(vc - 1);
+		bool const rtl = (bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
 			boundary = text_->isRTLBoundary(buffer, par, c);
@@ -906,7 +907,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	// specially, so cursor up/down doesn't get stuck in an air gap -- MV
 	// Newline inset, air gap below:
 	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
-		if (text_->bidi.level(end -1) % 2 == 0)
+		if (bidi.level(end -1) % 2 == 0)
 			tmpx -= text_->singleWidth(buffer, par, end - 1);
 		else
 			tmpx += text_->singleWidth(buffer, par, end - 1);

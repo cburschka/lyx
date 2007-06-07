@@ -379,8 +379,6 @@ public:
 	int background_color_;
 
 	///
-	mutable Bidi bidi;
-	///
 	ParagraphList pars_;
 
 	/// our 'outermost' font. This is handed down from the surrounding

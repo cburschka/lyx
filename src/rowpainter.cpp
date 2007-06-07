@@ -13,6 +13,7 @@
 
 #include "rowpainter.h"
 
+#include "Bidi.h"
 #include "Buffer.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -113,6 +114,10 @@ private:
 	ParagraphMetrics const & pm_;
 	int max_width_;
 
+	/// bidi cache, static to speed up rowpaint and reduce size. 
+	/// Only one rowpainter is used at a time anyway
+	static Bidi bidi_;
+
 	/// is row erased? (change tracking)
 	bool erased_;
 
@@ -127,6 +132,9 @@ private:
 };
 
 
+Bidi RowPainter::bidi_;
+
+
 RowPainter::RowPainter(PainterInfo & pi,
 	Text const & text, pit_type pit, Row const & row, int x, int y)
 	: bv_(*pi.base.bv), pain_(pi.pain), text_(text),
@@ -135,10 +143,11 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
 	  pm_(text_metrics_.parMetrics(pit)),
 	  max_width_(bv_.workWidth()),
-	  erased_(pi.erased_),
+		erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
 	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
+	bidi_.computeTables(par_, *bv_.buffer(), row_);
 	x_ = m.x + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
@@ -180,7 +189,7 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 	pi.base.font = inset->noFontChange() ?
 		bv_.buffer()->params().getFont() :
 		font;
-	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
+	pi.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || par_.isDeleted(pos);
 #ifdef DEBUG_METRICS
 	int const x1 = int(x_);
@@ -233,7 +242,7 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 
 void RowPainter::paintHebrewComposeChar(pos_type & vpos, Font const & font)
 {
-	pos_type pos = text_.bidi.vis2log(vpos);
+	pos_type pos = bidi_.vis2log(vpos);
 
 	docstring str;
 
@@ -267,7 +276,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, Font const & font)
 
 void RowPainter::paintArabicComposeChar(pos_type & vpos, Font const & font)
 {
-	pos_type pos = text_.bidi.vis2log(vpos);
+	pos_type pos = bidi_.vis2log(vpos);
 	docstring str;
 
 	// first char
@@ -299,7 +308,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 			    bool hebrew, bool arabic)
 {
 	// This method takes up 70% of time when typing
-	pos_type pos = text_.bidi.vis2log(vpos);
+	pos_type pos = bidi_.vis2log(vpos);
 	pos_type const end = row_.endpos();
 	FontSpan const font_span = par_.fontSpan(pos);
 	Change::Type const prev_change = par_.lookupChange(pos).type;
@@ -320,7 +329,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
-		pos = text_.bidi.vis2log(vpos);
+		pos = bidi_.vis2log(vpos);
 		if (pos < font_span.first || pos > font_span.last)
 			break;
 
@@ -403,7 +412,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 
 void RowPainter::paintFromPos(pos_type & vpos)
 {
-	pos_type const pos = text_.bidi.vis2log(vpos);
+	pos_type const pos = bidi_.vis2log(vpos);
 	Font orig_font = text_.getFont(*bv_.buffer(), par_, pos);
 
 	double const orig_x = x_;
@@ -747,7 +756,7 @@ void RowPainter::paintText()
 		if (x_ > bv_.workWidth())
 			break;
 
-		pos_type const pos = text_.bidi.vis2log(vpos);
+		pos_type const pos = bidi_.vis2log(vpos);
 
 		if (pos >= par_.size()) {
 			++vpos;

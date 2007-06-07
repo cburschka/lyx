@@ -1695,6 +1695,8 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 	Buffer const & buffer = *bv.buffer();
 	RowMetrics const m = tm.computeRowMetrics(pit, row);
 	double x = m.x;
+	Bidi bidi;
+	bidi.computeTables(par, buffer, row);
 
 	pos_type const row_pos  = row.pos();
 	pos_type const end      = row.endpos();
