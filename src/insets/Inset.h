@@ -130,6 +130,10 @@ public:
 	/// draw inset decoration if necessary.
 	/// This can use \c drawMarkers() for example.
 	virtual void drawDecoration(PainterInfo &, int, int) const {}
+	/// draw four angular markers
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
+	/// draw two angular markers
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
 	/// add space for markers
 	void metricsMarkers(Dimension & dim, int framesize = 1) const;
 	/// add space for markers
@@ -195,6 +199,12 @@ public:
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
 	virtual bool setMouseHover(bool) { return false; }
+	/// return true if this inset is hovered (under mouse)
+	/// This is by now only used by mathed to draw corners 
+	/// (Inset::drawMarkers() and Inset::drawMarkers2()).
+	/// Other insets do not have to redefine this function to 
+	/// return the correct status of mouseHovered.
+	virtual bool mouseHovered() const { return false; }
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}

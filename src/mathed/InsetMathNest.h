@@ -109,12 +109,10 @@ public:
 	/// This signal is emitted when the inset is destroyed.
 	boost::signal<void()> * destroyedSignal() { return &destroyed; }
 	
-	/// draw four angular markers
-	void drawMarkers(PainterInfo & pi, int x, int y) const;
-	/// draw two angular markers
-	void drawMarkers2(PainterInfo & pi, int x, int y) const;
 	///
 	bool setMouseHover(bool mouse_hover);
+	///
+	bool mouseHovered() const { return mouse_hover_; }
 
 protected:
 	///
