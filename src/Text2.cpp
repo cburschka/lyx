@@ -795,7 +795,7 @@ void Text::setCurrentFont(Cursor & cur)
 	real_current_font = getFont(cur.buffer(), par, pos);
 
 	if (cur.pos() == cur.lastpos()
-	    && bidi.isBoundary(cur.buffer(), par, cur.pos())
+	    && isRTLBoundary(cur.buffer(), par, cur.pos())
 	    && !cur.boundary()) {
 		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);
@@ -1037,7 +1037,7 @@ bool Text::cursorRight(Cursor & cur)
 		// if left of boundary -> just jump to right side
 	  // but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
 	  if (cur.boundary() && 
-				!bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos()))
+				!isRTLBoundary(cur.buffer(), cur.paragraph(), cur.pos()))
 			return setCursor(cur, cur.pit(), cur.pos(), true, false);
 
 		// next position is left of boundary, 
@@ -1066,7 +1066,7 @@ bool Text::cursorRight(Cursor & cur)
 		
 		// in front of RTL boundary? Stay on this side of the boundary because:
 		//   ab|cDDEEFFghi -> abc|DDEEFFghi
-		if (bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
+		if (isRTLBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
 			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 		
 		// move right

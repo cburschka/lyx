@@ -335,6 +335,13 @@ public:
 	bool isRTL(Buffer const &, Paragraph const & par) const;
 	/// is this position in the paragraph right-to-left?
 	bool isRTL(Buffer const & buffer, CursorSlice const & sl, bool boundary) const;
+	/// is between pos-1 and pos an RTL<->LTR boundary?
+	bool isRTLBoundary(Buffer const & buffer, Paragraph const & par,
+	  pos_type pos) const;
+	/// would be a RTL<->LTR boundary between pos and the given font?
+	bool isRTLBoundary(Buffer const & buffer, Paragraph const & par,
+	  pos_type pos, Font const & font) const;
+
 	///
 	bool checkAndActivateInset(Cursor & cur, bool front);
 

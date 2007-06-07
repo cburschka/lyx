@@ -893,7 +893,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		bool const rtl = (text_->bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = text_->bidi.isBoundary(buffer, par, c);
+			boundary = text_->isRTLBoundary(buffer, par, c);
 		}
 	}
 

@@ -1524,7 +1524,7 @@ void Text::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
 		if (cur.boundary()) {
 			cur.boundary(false);
-		}	else if (bidi.isBoundary(buffer, cur.paragraph(), cur.pos() + 1)) {
+		}	else if (isRTLBoundary(buffer, cur.paragraph(), cur.pos() + 1)) {
 			// in front of RTL boundary -> Stay on this side of the boundary because:
 			//   ab|cDDEEFFghi -> abc|DDEEFFghi
 			++cur.pos();
