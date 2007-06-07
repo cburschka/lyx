@@ -11,6 +11,7 @@
  * \author John Levon
  * \author André Pönitz
  * \author Allan Rae
+ * \author Stefan Schimanski
  * \author Dekel Tsur
  * \author Jürgen Vigna
  *
@@ -760,40 +761,31 @@ void Text::setCurrentFont(Cursor & cur)
 	pos_type pos = cur.pos();
 	Paragraph & par = cur.paragraph();
 
-	// ignore empty paragraph
-	if (par.empty())
-		return;
-	
-	// if on boundary or at paragraph end, set font of previous char
-	if ((pos > 0 && cur.boundary()) || pos == cur.lastpos())
+	// are we behind previous char in fact? -> go to that char
+	if (pos > 0 && cur.boundary())
 		--pos;
-	
-	// we changed the line and the bidi tables are outdated?
-	if (!bidi.inRange(pos))
-		bidi.computeTables(par, cur.buffer(), cur.textRow());
 
-	// now in range?
-	if (!bidi.inRange(pos))
-		return;
-
-	if (pos > 0) {
+	// find position to take the font from
+	if (pos != 0) {
+		// paragraph end? -> font of last char
 		if (pos == cur.lastpos())
 			--pos;
-		else // potentional bug... BUG (Lgb)
-			if (par.isSeparator(pos)) {
-				if (pos > cur.textRow().pos() &&
-				    bidi.level(pos) % 2 ==
-				    bidi.level(pos - 1) % 2)
-					--pos;
-				else if (pos + 1 < cur.lastpos())
-					++pos;
-			}
+		// on space? -> look at the words in front of space
+		else if (pos > 0 && par.isSeparator(pos))	{
+			// abc| def -> font of c
+			// abc |[WERBEH], i.e. boundary==true -> font of c
+			// abc [WERBEH]| def, font of the space
+			if (!isRTLBoundary(cur.buffer(), par, pos))
+				--pos;
+		}
 	}
 
+	// get font
 	BufferParams const & bufparams = cur.buffer().params();
 	current_font = par.getFontSettings(bufparams, pos);
 	real_current_font = getFont(cur.buffer(), par, pos);
 
+	// special case for paragraph end
 	if (cur.pos() == cur.lastpos()
 	    && isRTLBoundary(cur.buffer(), par, cur.pos())
 	    && !cur.boundary()) {
