@@ -1438,18 +1438,36 @@ void Cursor::noUpdate()
 
 Font Cursor::getFont() const
 {
+	// The logic here should more or less match to the Text::setCurrentFont
+	// logic, i.e. the cursor height should give a hint what will happen
+	// if a character is entered.
+	
 	// HACK. far from being perfect...
-	int s = 0;
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
+	int s = 0;
 	for (s = depth() - 1; s >= 0; --s)
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
 	Text const & text = *sl.text();
-	Font font = text.getPar(sl.pit()).getFont(
-		bv().buffer()->params(),
-		sl.pos(),
+	Paragraph const & par = text.getPar(sl.pit());
+	
+	// on boundary, so we are really at the character before
+	pos_type pos = sl.pos();
+	if (pos > 0 && boundary())
+		--pos;
+	
+	// on space? Take the font before (only for RTL boundary stay)
+	if (pos > 0) {
+		if (pos == sl.lastpos()
+				|| (par.isSeparator(pos) && 
+						!text.isRTLBoundary(buffer(), par, pos)))
+			--pos;
+	}
+	
+	// get font at the position
+	Font font = par.getFont(bv().buffer()->params(), pos,
 		outerFont(sl.pit(), text.paragraphs()));
 
 	return font;
