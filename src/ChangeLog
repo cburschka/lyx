@@ -1,3 +1,7 @@
+2007-06-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* Thesaurus.C: check for aiksaurus errors (fix crash, bug 2691).
+
 2007-05-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView.C (mouseSetCursor): do not forget to set boundary

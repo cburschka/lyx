@@ -52,6 +52,8 @@ What's new
 
 - Fix crash when undoing ctrl-<minus> in mathed (bug 3590).
 
+- Fix crash if the thesaurus fails on startup (bug 2691).
+
 - Handle undo correctly when inserting a plain text file (bug 3204).
 
 - Fix misplaced cursor when clicking at the end of a line (bug 3310).
