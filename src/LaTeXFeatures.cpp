@@ -670,8 +670,8 @@ string const LaTeXFeatures::getMacros() const
 		macros << "\\providecolor{lyxdeleted}{rgb}{"
 		       << cdel.r/255 << ',' << cdel.g/255 << ',' << cdel.b/255 << "}\n";
 
-		macros << "\\newcommand{\\lyxadded}[3]{\\color{lyxadded}{#3}}\n"
-		       << "\\newcommand{\\lyxdeleted}[3]{\\color{lyxdeleted}{\\st{#3}}}\n";
+		macros << "\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
+		       << "\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\st{#3}}}\n";
 	}
 	if (mustProvide("ct-none")) {
 		macros << changetracking_none_def;
