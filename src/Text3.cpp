@@ -1047,8 +1047,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				bv->switchKeyMap();
 				bv->buffer()->markDirty();
 				finishUndo();
-			} else
+			} else {
+				bv->mouseSetCursor(cur);
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
+			}
 		}
 
 		// we have to update after dePM triggered
