@@ -1073,10 +1073,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (fs::exists(filename.toFilesystemEncoding())) {
 					docstring text = bformat(
 						_("The file %1$s already exists.\n\n"
-						  "Do you want to over-write that file?"),
+						  "Do you want to overwrite that file?"),
 						makeDisplayPath(filename.absFilename()));
-					if (Alert::prompt(_("Over-write file?"),
-					    text, 0, 1, _("&Over-write"), _("&Cancel")) != 0)
+					if (Alert::prompt(_("Overwrite file?"),
+					    text, 0, 1, _("&Overwrite"), _("&Cancel")) != 0)
 						break;
 				}
 				command += lyxrc.print_to_file
@@ -2057,9 +2057,9 @@ void LyXFunc::doImport(string const & argument)
 		docstring const file = makeDisplayPath(lyxfile.absFilename(), 30);
 
 		docstring text = bformat(_("The document %1$s already exists.\n\n"
-						     "Do you want to over-write that document?"), file);
-		int const ret = Alert::prompt(_("Over-write document?"),
-			text, 0, 1, _("&Over-write"), _("&Cancel"));
+						     "Do you want to overwrite that document?"), file);
+		int const ret = Alert::prompt(_("Overwrite document?"),
+			text, 0, 1, _("&Overwrite"), _("&Cancel"));
 
 		if (ret == 1) {
 			lyx_view_->message(_("Canceled."));

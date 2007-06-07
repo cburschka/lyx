@@ -80,11 +80,11 @@ int checkOverwrite(FileName const & filename)
 {
 	if (fs::exists(filename.toFilesystemEncoding())) {
 		docstring text = bformat(_("The file %1$s already exists.\n\n"
-						     "Do you want to over-write that file?"),
+						     "Do you want to overwrite that file?"),
 				      makeDisplayPath(filename.absFilename()));
-		return Alert::prompt(_("Over-write file?"),
+		return Alert::prompt(_("Overwrite file?"),
 				     text, 0, 2,
-				     _("&Over-write"), _("Over-write &all"),
+				     _("&Overwrite"), _("Overwrite &all"),
 				     _("&Cancel export"));
 	}
 	return 0;

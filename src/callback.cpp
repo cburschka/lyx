@@ -165,9 +165,9 @@ bool writeAs(Buffer * buffer, string const & newname)
 	if (fs::exists(filename.toFilesystemEncoding())) {
 		docstring const file = makeDisplayPath(fname, 30);
 		docstring text = bformat(_("The document %1$s already exists.\n\n"
-						     "Do you want to over-write that document?"), file);
-		int const ret = Alert::prompt(_("Over-write document?"),
-			text, 0, 1, _("&Over-write"), _("&Cancel"));
+					   "Do you want to overwrite that document?"), file);
+		int const ret = Alert::prompt(_("Overwrite document?"),
+			text, 0, 1, _("&Overwrite"), _("&Cancel"));
 
 		if (ret == 1)
 			return false;
