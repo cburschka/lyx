@@ -394,7 +394,9 @@ Menuset
 	Menu "insert_note"
 		Item "LyX Note|N" "note-insert Note"
 		Item "Comment|C" "note-insert Comment"
+		Item "Framed|F" "note-insert Framed"
 		Item "Greyed Out|G" "note-insert Greyedout"
+		Item "Shaded|S" "note-insert Shaded"
 	End
 
 	Menu "insert_branches"
