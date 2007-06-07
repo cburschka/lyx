@@ -12,7 +12,11 @@
 
 #include "Thesaurus.h"
 
+#include "gettext.h"
+
 #include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 #include <algorithm>
 
@@ -20,6 +24,7 @@
 namespace lyx {
 
 #ifdef HAVE_LIBAIKSAURUS
+using support::bformat;
 
 using std::sort;
 using std::string;
@@ -49,6 +54,18 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t)
 		return meanings;
 
 	string const text = to_ascii(t);
+
+	docstring error = from_ascii(aik_->error());
+	if (!error.empty()) {
+		static bool sent_error = false;
+		if (!sent_error) {
+			frontend::Alert::error(_("Thesaurus failure"),
+				     bformat(_("Aiksaurus returned the following error:\n\n%1$s."),
+					     error));
+			sent_error = true;
+		}
+		return meanings;
+	}
 	if (!aik_->find(text.c_str()))
 		return meanings;
 
