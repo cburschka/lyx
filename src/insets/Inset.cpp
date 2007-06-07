@@ -280,37 +280,6 @@ void Inset::metricsMarkers2(Dimension & dim, int framesize) const
 }
 
 
-void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
-{
-	Color::color pen_color = editing(pi.base.bv)?
-		Color::mathframe : Color::mathcorners;
-
-	int const t = x + width() - 1;
-	int const d = y + descent();
-	pi.pain.line(x, d - 3, x, d, pen_color);
-	pi.pain.line(t, d - 3, t, d, pen_color);
-	pi.pain.line(x, d, x + 3, d, pen_color);
-	pi.pain.line(t - 3, d, t, d, pen_color);
-	setPosCache(pi, x, y);
-}
-
-
-void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
-{
-	Color::color pen_color = editing(pi.base.bv)?
-		Color::mathframe : Color::mathcorners;
-
-	drawMarkers(pi, x, y);
-	int const t = x + width() - 1;
-	int const a = y - ascent();
-	pi.pain.line(x, a + 3, x, a, pen_color);
-	pi.pain.line(t, a + 3, t, a, pen_color);
-	pi.pain.line(x, a, x + 3, a, pen_color);
-	pi.pain.line(t - 3, a, t, a, pen_color);
-	setPosCache(pi, x, y);
-}
-
-
 bool Inset::editing(BufferView * bv) const
 {
 	return bv->cursor().isInside(this);

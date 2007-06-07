@@ -108,6 +108,13 @@ public:
 
 	/// This signal is emitted when the inset is destroyed.
 	boost::signal<void()> * destroyedSignal() { return &destroyed; }
+	
+	/// draw four angular markers
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
+	/// draw two angular markers
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
+	///
+	bool setMouseHover(bool mouse_hover);
 
 protected:
 	///
@@ -156,6 +163,8 @@ protected:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
+	///
+	bool mouse_hover_;
 
 private:
 	/// This signal is emitted when the inset is destroyed.

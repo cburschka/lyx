@@ -130,10 +130,6 @@ public:
 	/// draw inset decoration if necessary.
 	/// This can use \c drawMarkers() for example.
 	virtual void drawDecoration(PainterInfo &, int, int) const {}
-	/// draw four angular markers
-	void drawMarkers(PainterInfo & pi, int x, int y) const;
-	/// draw two angular markers
-	void drawMarkers2(PainterInfo & pi, int x, int y) const;
 	/// add space for markers
 	void metricsMarkers(Dimension & dim, int framesize = 1) const;
 	/// add space for markers

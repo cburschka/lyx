@@ -74,12 +74,13 @@ using std::istringstream;
 
 
 InsetMathNest::InsetMathNest(idx_type nargs)
-	: cells_(nargs), lock_(false)
+	: cells_(nargs), lock_(false), mouse_hover_(false)
 {}
 
 
 InsetMathNest::InsetMathNest(InsetMathNest const & inset)
-	: InsetMath(inset), cells_(inset.cells_), lock_(inset.lock_)
+	: InsetMath(inset), cells_(inset.cells_), lock_(inset.lock_),
+	  mouse_hover_(false)
 {}
 
 
@@ -87,6 +88,7 @@ InsetMathNest & InsetMathNest::operator=(InsetMathNest const & inset)
 {
 	cells_ = inset.cells_;
 	lock_ = inset.lock_;
+	mouse_hover_ = false;
 	InsetMath::operator=(inset);
 	return *this;
 }
@@ -355,6 +357,44 @@ int InsetMathNest::latex(Buffer const &, odocstream & os,
 	WriteStream wi(os, runparams.moving_arg, true);
 	write(wi);
 	return wi.line();
+}
+
+
+void InsetMathNest::drawMarkers(PainterInfo & pi, int x, int y) const
+{
+	Color::color pen_color = mouse_hover_ || editing(pi.base.bv) ?
+		Color::mathframe : Color::mathcorners;
+
+	int const t = x + width() - 1;
+	int const d = y + descent();
+	pi.pain.line(x, d - 3, x, d, pen_color);
+	pi.pain.line(t, d - 3, t, d, pen_color);
+	pi.pain.line(x, d, x + 3, d, pen_color);
+	pi.pain.line(t - 3, d, t, d, pen_color);
+	setPosCache(pi, x, y);
+}
+
+
+void InsetMathNest::drawMarkers2(PainterInfo & pi, int x, int y) const
+{
+	Color::color pen_color = mouse_hover_ || editing(pi.base.bv)?
+		Color::mathframe : Color::mathcorners;
+
+	drawMarkers(pi, x, y);
+	int const t = x + width() - 1;
+	int const a = y - ascent();
+	pi.pain.line(x, a + 3, x, a, pen_color);
+	pi.pain.line(t, a + 3, t, a, pen_color);
+	pi.pain.line(x, a, x + 3, a, pen_color);
+	pi.pain.line(t - 3, a, t, a, pen_color);
+	setPosCache(pi, x, y);
+}
+
+
+bool InsetMathNest::setMouseHover(bool mouse_hover)
+{
+	mouse_hover_ = mouse_hover;
+	return true;
 }
 
 
