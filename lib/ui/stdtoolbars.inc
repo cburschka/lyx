@@ -453,6 +453,7 @@ ToolbarSet
 		Item "pi" "math-insert \pi"
 		Item "varpi" "math-insert \varpi"
 		Item "rho" "math-insert \rho"
+		Item "varrho" "math-insert \varrho"
 		Item "sigma" "math-insert \sigma"
 		Item "varsigma" "math-insert \varsigma"
 		Item "tau" "math-insert \tau"

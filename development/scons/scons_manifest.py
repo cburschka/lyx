@@ -2125,6 +2125,7 @@ lib_images_math_files = Split('''
     varphi.xpm
     varpi.xpm
     varpropto.xpm
+    varrho.xpm
     varsigma.xpm
     varsubsetneq.xpm
     varsubsetneqq.xpm

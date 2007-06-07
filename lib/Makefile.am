@@ -822,6 +822,7 @@ dist_imagesmath_DATA = \
 	images/math/varphi.xpm \
 	images/math/varpi.xpm \
 	images/math/varpropto.xpm \
+	images/math/varrho.xpm \
 	images/math/varsigma.xpm \
 	images/math/varsubsetneq.xpm \
 	images/math/varsubsetneqq.xpm \
