@@ -489,8 +489,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-		}
-		if (cur.selection())
+		} else if (cur.selection())
 			saveSelection(cur);
 		break;
 

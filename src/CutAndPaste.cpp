@@ -607,6 +607,10 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 	if (!cur.selection())
 		return;
 
+	// copySelection can not yet handle the case of cross idx selection
+	if (cur.selBegin().idx() != cur.selEnd().idx())
+		return;
+
 	if (cur.inTexted()) {
 		Text * text = cur.text();
 		BOOST_ASSERT(text);

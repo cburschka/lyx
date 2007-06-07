@@ -3265,7 +3265,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-			if (cmd.action == LFUN_CHAR_FORWARD_SELECT)
+			// The second case happens when LFUN_CHAR_FORWARD_SELECT
+			// is called, but the cursor is undispatched with cmd modified 
+			// to LFUN_FINISHED_RIGHT (e.g. a case in bug 3782)
+			if (cmd.action == LFUN_CHAR_FORWARD_SELECT ||
+				cmd.action == LFUN_FINISHED_RIGHT)
 				saveSelection(cur);
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
