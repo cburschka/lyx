@@ -70,6 +70,7 @@ Style Title
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
+	OptionalArgs          1
 	Font
 	  Shape               Smallcaps
 	  Series              Bold
