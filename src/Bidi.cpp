@@ -95,7 +95,14 @@ void Bidi::computeTables(Paragraph const & par,
 	pos_type const body_pos = par.beginOfBody();
 
 	for (pos_type lpos = start_; lpos <= end_; ++lpos) {
-		bool is_space = par.isLineSeparator(lpos);
+		bool is_space = false;
+		// We do not handle spaces around an RTL segment in a special way anymore.
+		// Neither do we do so when generating the LaTeX, so setting is_space
+		// to false makes the view in the GUI consistent with the output of LaTeX 
+		// later. The old setting was:
+		//bool is_space = par.isLineSeparator(lpos);
+		// FIXME: once we're sure that this is what we really want, we should just
+		// get rid of this variable...
 		pos_type const pos =
 			(is_space && lpos + 1 <= end_ &&
 			 !par.isLineSeparator(lpos + 1) &&
