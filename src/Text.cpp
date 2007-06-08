@@ -5,6 +5,7 @@
  *
  * \author Asger Alstrup
  * \author Lars Gullik Bjønnes
+ * \author Dov Feldstern
  * \author Jean-Marc Lasgouttes
  * \author John Levon
  * \author André Pönitz
@@ -713,7 +714,51 @@ void Text::insertChar(Cursor & cur, char_type c)
 		}
 	}
 
-	// First check, if there will be two blanks together or a blank at
+	// In Bidi text, we want spaces to be treated in a special way: spaces
+	// which are between words in different languages should get the 
+	// paragraph's language; otherwise, spaces should keep the language 
+	// they were originally typed in. This is only in effect while typing;
+	// after the text is already typed in, the user can always go back and
+	// explicitly set the language of a space as desired. But 99.9% of the
+	// time, what we're doing here is what the user actually meant.
+	// 
+	// The following cases are the ones in which the language of the space
+	// should be changed to match that of the containing paragraph. In the
+	// depictions, lowercase is LTR, uppercase is RTL, underscore (_) 
+	// represents a space, pipe (|) represents the cursor position (so the
+	// character before it is the one just typed in). The different cases
+	// are depicted logically (not visually), from left to right:
+	// 
+	// 1. A_a|
+	// 2. a_A|
+	//
+	// Theoretically, there are other situations that we should, perhaps, deal
+	// with (e.g.: a|_A, A|_a). In practice, though, there really isn't any 
+	// point (to understand why, just try to create this situation...).
+
+	if ((cur.pos() >= 2) && (par.isLineSeparator(cur.pos() - 1))) {
+		// get font in front and behind the space in question. But do NOT 
+		// use getFont(cur.pos()) because the character c is not inserted yet
+		Font const & pre_space_font  = getFont(buffer, par, cur.pos() - 2);
+		Font const & post_space_font = real_current_font;
+		bool pre_space_rtl  = pre_space_font.isVisibleRightToLeft();
+		bool post_space_rtl = post_space_font.isVisibleRightToLeft();
+		
+		if (pre_space_rtl != post_space_rtl) {
+			// Set the space's language to match the language of the 
+			// adjacent character whose direction is the paragraph's
+			// direction; don't touch other properties of the font
+			Language const * lang = 
+				(pre_space_rtl == par.isRightToLeftPar(buffer.params())) ?
+				pre_space_font.language() : post_space_font.language();
+
+			Font space_font = getFont(buffer, par, cur.pos() - 1);
+			space_font.setLanguage(lang);
+			par.setFont(cur.pos() - 1, space_font);
+		}
+	}
+	
+	// Next check, if there will be two blanks together or a blank at
 	// the beginning of a paragraph.
 	// I decided to handle blanks like normal characters, the main
 	// difference are the special checks when calculating the row.fill
