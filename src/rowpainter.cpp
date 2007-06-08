@@ -67,7 +67,7 @@ class RowPainter {
 public:
 	/// initialise and run painter
 	RowPainter(PainterInfo & pi, Text const & text,
-		pit_type pit, Row const & row, int x, int y);
+		pit_type pit, Row const & row, Bidi & bidi, int x, int y);
 
 	// paint various parts
 	void paintAppendix();
@@ -114,9 +114,10 @@ private:
 	ParagraphMetrics const & pm_;
 	int max_width_;
 
-	/// bidi cache, static to speed up rowpaint and reduce size. 
-	/// Only one rowpainter is used at a time anyway
-	static Bidi bidi_;
+	/// bidi cache, comes from outside the rowpainter because
+	/// rowpainters are normally created in a for loop and there only
+	/// one of them is active at a time.
+	Bidi & bidi_;
 
 	/// is row erased? (change tracking)
 	bool erased_;
@@ -132,18 +133,15 @@ private:
 };
 
 
-Bidi RowPainter::bidi_;
-
-
 RowPainter::RowPainter(PainterInfo & pi,
-	Text const & text, pit_type pit, Row const & row, int x, int y)
+	Text const & text, pit_type pit, Row const & row, Bidi & bidi, int x, int y)
 	: bv_(*pi.base.bv), pain_(pi.pain), text_(text),
 	  text_metrics_(pi.base.bv->textMetrics(&text)),
 	  pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
 	  pm_(text_metrics_.parMetrics(pit)),
 	  max_width_(bv_.workWidth()),
-		erased_(pi.erased_),
+		bidi_(bidi), erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
 	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
@@ -931,6 +929,8 @@ void paintPar
 	RowList::const_iterator const rb = pm.rows().begin();
 	RowList::const_iterator const re = pm.rows().end();
 
+	Bidi bidi;
+
 	y -= rb->ascent();
 	size_type rowno = 0;
 	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
@@ -977,7 +977,7 @@ void paintPar
 				&& y - rit->ascent() < ww);
 			// it is not needed to draw on screen if we are not inside.
 			pi.pain.setDrawingEnabled(inside);
-			RowPainter rp(pi, text, pit, *rit, x, y);
+			RowPainter rp(pi, text, pit, *rit, bidi, x, y);
 			// Clear background of this row
 			// (if paragraph background was not cleared)
 			if (!repaintAll &&
