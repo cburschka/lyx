@@ -33,8 +33,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author "usti" 
 \author "Jürgen Spitzmüller" 
+\author "usti" 
 \author "Jean-Marc Lasgouttes" 
 \end_header
 
@@ -1483,39 +1483,9 @@ Found: @chk_IEEEtran@
 \end_layout
 
 \begin_layout Description
-CTAN: N/A
-\end_layout
-
-\begin_layout Description
-FTP: Currently, the IEEE ftp site only has an old version at: 
-\newline
-
-\family sans
-
-\begin_inset LatexCommand url
-target "ftp://ftp.ieee.org/info/publish/latex/ieeetran.cls"
-
-\end_inset
-
-
-\family default
- 
-\family sans
-
-\newline
-
-\family default
-A newer version is available from: 
-\newline
-
-\family sans
-
-\begin_inset LatexCommand url
-target "ftp://ftp.isi.edu/pub/graham/infocom99/latest/IEEEtran.cls"
-
-\end_inset
-
-
+CTAN: 
+\family typewriter
+macros/latex/contrib/IEEEtran/
 \end_layout
 
 \begin_layout Description
@@ -1525,9 +1495,11 @@ IEEEtran
 \family default
  produces documents suitable for submission to most of the IEEE Transactions.
  You should consult the IEEE Author Information pages at 
-\family sans
-www.ieee.org
-\family default
+\begin_inset LatexCommand url
+target "http://www.ieee.org"
+
+\end_inset
+
  if you intend to use this class.
  Note that there are both 
 \family sans
@@ -1572,7 +1544,7 @@ CTAN: N/A
 \end_layout
 
 \begin_layout Description
-WWW: available from the site
+WWW: available from the site 
 \begin_inset LatexCommand url
 target "http://www.worldscinet.com/ijmpc/mkt/guidelines.s"
 
