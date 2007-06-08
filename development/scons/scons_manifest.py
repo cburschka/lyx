@@ -1798,6 +1798,7 @@ lib_images_math_files = Split('''
     frac-square.xpm
     frac.xpm
     frown.xpm
+    functions.xpm
     gamma.xpm
     gamma2.xpm
     geq.xpm
