@@ -502,6 +502,7 @@ dist_imagesmath_DATA = \
 	images/math/frac.xpm \
 	images/math/frac-square.xpm \
 	images/math/frown.xpm \
+	images/math/functions.xpm \
 	images/math/gamma.xpm \
 	images/math/gamma2.xpm \
 	images/math/geq.xpm \
