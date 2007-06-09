@@ -28,7 +28,7 @@ public:
 	/// nestinsets have a fixed size to start with
 	explicit InsetMathNest(idx_type ncells);
 	///
-	virtual ~InsetMathNest() { destroyed(); }
+	virtual ~InsetMathNest() {}
 
 	/// the size is usually some sort of convex hull of the cells
 	/// hides inset::metrics() intentionally!
@@ -105,10 +105,6 @@ public:
 	///
 	int latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const;
-
-	/// This signal is emitted when the inset is destroyed.
-	boost::signal<void()> * destroyedSignal() { return &destroyed; }
-	
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
@@ -163,10 +159,6 @@ protected:
 	bool lock_;
 	///
 	bool mouse_hover_;
-
-private:
-	/// This signal is emitted when the inset is destroyed.
-	boost::signal<void()> destroyed;
 };
 
 

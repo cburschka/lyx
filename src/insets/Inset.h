@@ -485,12 +485,6 @@ public:
 	//
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
-	/// Signal for inset destruction.
-	/** This signal is emitted at the inset destruction for insets that
-	*   support this.
-	*/
-	virtual boost::signal<void()> * destroyedSignal() { return 0; }
-
 protected:
 	Inset();
 
