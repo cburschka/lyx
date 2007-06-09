@@ -232,6 +232,7 @@ docstring ListingsParam::validate(string const & par) const
 			return _("Unbalanced braces!");
 		return docstring();
 	}
+	return docstring();
 }
 
 
