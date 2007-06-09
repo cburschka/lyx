@@ -20,8 +20,6 @@
 
 #include "support/docstream.h"
 
-#include <boost/signal.hpp>
-
 #include <memory>
 #include <vector>
 
