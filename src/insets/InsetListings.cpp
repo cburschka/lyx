@@ -131,7 +131,7 @@ docstring const InsetListings::editMessage() const
 int InsetListings::latex(Buffer const & buf, odocstream & os,
 		    OutputParams const & runparams) const
 {
-	string param_string = params().params(",", true);
+	string param_string = params().params();
 	// NOTE: I use {} to quote text, which is an experimental feature
 	// of the listings package (see page 25 of the manual)
 	int lines = 0;

@@ -35,9 +35,7 @@ public:
 	void read(Lexer &);
 
 	/// valid parameter string
-	/// \param valid_key whether or not strip leading @, which is 
-	///                  used to bypass validator
-	std::string params(std::string const & sep=",", bool valid_key=false) const;
+	std::string params(std::string const & sep=",") const;
 
 	/// add key=value to params_
 	void addParam(std::string const & key, std::string const & value);
