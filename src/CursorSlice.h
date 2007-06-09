@@ -20,9 +20,6 @@
 #include "support/types.h"
 #include "insets/Inset.h"
 
-#include <boost/signal.hpp>
-#include <boost/signals/trackable.hpp>
-
 #include <cstddef>
 #include <iosfwd>
 
@@ -59,11 +56,7 @@ public:
 	///
 	CursorSlice();
 	///
-	CursorSlice(CursorSlice const &);
-	///
 	explicit CursorSlice(Inset &);
-	///
-	CursorSlice & operator=(CursorSlice const &);
 	///
 	bool isValid() const;
 

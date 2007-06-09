@@ -25,7 +25,6 @@
 #include "mathed/MathData.h"
 
 #include <boost/assert.hpp>
-#include <boost/bind.hpp>
 
 
 namespace lyx {
@@ -42,22 +41,6 @@ CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
 	BOOST_ASSERT(inset_);
-}
-
-
-CursorSlice::CursorSlice(CursorSlice const & cs)
-{
-	operator=(cs);
-}
-
-
-CursorSlice & CursorSlice::operator=(CursorSlice const & cs)
-{
-	inset_ = cs.inset_;
-	idx_ = cs.idx_;
-	pit_ = cs.pit_;
-	pos_ = cs.pos_;
-	return *this;
 }
 
 
