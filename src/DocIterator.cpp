@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Alfredo Braunstein
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -560,53 +561,55 @@ void DocIterator::updateInsets(Inset * inset)
 
 bool DocIterator::fixIfBroken()
 {
-	bool fixed = false;
-
-	for (size_t i = slices_.size() - 1; i != 0; --i)
-		if (!slices_[i].isValid()) {
-			pop_back();
-			fixed = true;
+	// Go through the slice stack from the bottom. 
+	// Check that all coordinates (idx, pit, pos) are correct and
+	// that the inset is the one which is claimed to be there
+	Inset * inset = &slices_[0].inset();
+	size_t i = 0;
+	size_t n = slices_.size();
+	for (; i != n; ++i) {
+		CursorSlice & cs = slices_[i];
+		if (&cs.inset() != inset) {
+			// the whole slice is wrong, chop off this as well
+			--i;
+			LYXERR(Debug::DEBUG) << "fixIfBroken(): inset changed" << endl;
+			break;
+		} else if (cs.idx() > cs.lastidx()) {
+			cs.idx() = cs.lastidx();
+			cs.pit() = cs.lastpit();
+			cs.pos() = cs.lastpos();
+			LYXERR(Debug::DEBUG) << "fixIfBroken(): idx fixed" << endl;
+			break;
+		} else if (cs.pit() > cs.lastpit()) {
+			cs.pit() = cs.lastpit();
+			cs.pos() = cs.lastpos();
+			LYXERR(Debug::DEBUG) << "fixIfBroken(): pit fixed" << endl;
+			break;
+		} else if (cs.pos() > cs.lastpos()) {
+			cs.pos() = cs.lastpos();
+			LYXERR(Debug::DEBUG) << "fixIfBroken(): pos fixed" << endl;
+			break;
+		} else if (i != n - 1 && cs.pos() != cs.lastpos()) {
+			// get inset which is supposed to be in the next slice
+			if (cs.inset().inMathed())
+				inset = (cs.cell().begin() + cs.pos())->nucleus();
+			else if (cs.paragraph().isInset(cs.pos()))
+				inset = cs.paragraph().getInset(cs.pos());
+			else {
+				// there are slices left, so there must be another inset
+				break;
+			}
 		}
+	}
 
-	// The top level CursorSlice should always be valid.
-	BOOST_ASSERT(slices_[0].isValid());
-
-	if (idx() > lastidx()) {
-		lyxerr << "wrong idx " << idx()
-			<< ", max is " << lastidx()
-			<< " at level " << depth()
-			<< ". Trying to correct this."  << endl;
-		lyxerr << "old: " << *this << endl;
-		for (size_t i = idx(); i != lastidx(); --i)
-			pop_back();
-		idx() = lastidx();
-		pit() = lastpit();
-		pos() = lastpos();
-		fixed = true;
-	}
-	else if (pit() > lastpit()) {
-		lyxerr << "wrong pit " << pit()
-			<< ", max is " << lastpit()
-			<< " at level " << depth()
-			<< ". Trying to correct this."  << endl;
-		lyxerr << "old: " << *this << endl;
-		pit() = lastpit();
-		pos() = 0;
-		fixed = true;
-	}
-	else if (pos() > lastpos()) {
-		lyxerr << "wrong pos " << pos()
-			<< ", max is " << lastpos()
-			<< " at level " << depth()
-			<< ". Trying to correct this."  << endl;
-		lyxerr << "old: " << *this << endl;
-		pos() = lastpos();
-		fixed = true;
-	}
-	if (fixed) {
-		lyxerr << "new: " << *this << endl;
-	}
-	return fixed;
+	// Did we make it through the whole slice stack? Otherwise there
+	// was a problem at slice i, and we have to chop off above
+	if (i < n) {
+		LYXERR(Debug::DEBUG) << "fixIfBroken(): cursor chopped at " << i << endl;
+		resize(i + 1);
+		return true;
+	} else
+		return false;
 }
 
 

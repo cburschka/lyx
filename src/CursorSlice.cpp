@@ -42,10 +42,6 @@ CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
 	BOOST_ASSERT(inset_);
-	boost::signal<void()> * destroyed_signal = inset_->destroyedSignal();
-	if (destroyed_signal)
-		inset_connection_ = destroyed_signal->connect(
-			boost::bind(&CursorSlice::invalidate, this));
 }
 
 
@@ -55,22 +51,12 @@ CursorSlice::CursorSlice(CursorSlice const & cs)
 }
 
 
-CursorSlice::~CursorSlice()
-{
-	inset_connection_.disconnect();
-}
-
-
 CursorSlice & CursorSlice::operator=(CursorSlice const & cs)
 {
 	inset_ = cs.inset_;
 	idx_ = cs.idx_;
 	pit_ = cs.pit_;
 	pos_ = cs.pos_;
-	if (inset_ && inset_->destroyedSignal()) {
-		inset_connection_ = inset_->destroyedSignal()->connect(
-			boost::bind(&CursorSlice::invalidate, this));
-	}
 	return *this;
 }
 
@@ -109,6 +95,14 @@ pos_type CursorSlice::lastpos() const
 {
 	BOOST_ASSERT(inset_);
 	return inset_->asInsetMath() ? cell().size() : paragraph().size();
+}
+
+
+pit_type CursorSlice::lastpit() const
+{
+	if (inset().inMathed())
+		return 0;
+	return text()->paragraphs().size() - 1;
 }
 
 

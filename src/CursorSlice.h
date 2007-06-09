@@ -41,7 +41,7 @@ class Paragraph;
 // that of MathData and Text should vanish. They are conceptually the
 // same (now...)
 
-class CursorSlice : public boost::signals::trackable {
+class CursorSlice {
 public:
 	/// Those needs inset_ access.
 	///@{
@@ -63,8 +63,6 @@ public:
 	///
 	explicit CursorSlice(Inset &);
 	///
-	virtual ~CursorSlice();
-	///
 	CursorSlice & operator=(CursorSlice const &);
 	///
 	bool isValid() const;
@@ -81,6 +79,8 @@ public:
 	pit_type pit() const { return pit_; }
 	/// set the offset of the paragraph this cursor is in
 	pit_type & pit() { return pit_; }
+	/// return the last paragraph offset this cursor is in
+	pit_type lastpit() const;
 	/// increments the paragraph this cursor is in
 	void incrementPar();
 	/// decrements the paragraph this cursor is in
@@ -158,8 +158,6 @@ private:
 	bool pit_valid_;
 	/// position in this cell
 	pos_type pos_;
-	/// connection to referred \c inset_ destruction signal.
-	boost::signals::connection inset_connection_;
 };
 
 /// test for equality
