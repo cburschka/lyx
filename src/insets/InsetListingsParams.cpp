@@ -35,6 +35,7 @@ namespace lyx
 
 using support::bformat;
 using support::trim;
+using support::ltrim;
 using support::rtrim;
 using support::subst;
 using support::isStrInt;
@@ -123,7 +124,7 @@ docstring ListingsParam::validate(string const & par) const
 	switch (type_) {
 
 	case ALL:
-		if (par2.empty() && !onoff_) {
+		if (par2.empty() && !onoff_ && hint_ != _("Bypass validation")) {
 			if (!hint_.empty())
 				return hint_;
 			else
@@ -302,6 +303,12 @@ ParValidator::ParValidator()
 
 	/// options copied from page 26 of listings manual
 	// FIXME: add default parameters ... (which is not used now)
+
+	// special ListingsParam returned for parameters starting with @
+	// which helps them bypass validation.
+	all_params_["@"] =
+		ListingsParam("", false, ALL, "", _("Bypass validation"));
+
 	all_params_["float"] =
 		ListingsParam("false", true, SUBSETOF, "*tbph", empty_hint);
 	all_params_["floatplacement"] =
@@ -621,6 +628,10 @@ ListingsParam const & ParValidator::param(string const & name) const
 						from_utf8(suffix), from_utf8(param_names)));
 	}
  
+	// do not validate keys starting with @
+	if (name[0] == '@')
+		return all_params_.find("@")->second;
+
 	// locate name in parameter table
 	ListingsParams::const_iterator it = all_params_.find(name);
 	if (it != all_params_.end())
@@ -637,7 +648,8 @@ ListingsParam const & ParValidator::param(string const & name) const
 		}
 	}
 	if (matching_names.empty())
-		throw invalidParam(bformat(_("Unknown listing parameter name: %1$s"),
+		throw invalidParam(bformat(_("Unknown listing parameter name: %1$s. "
+			"Prefix this parameter with @ to bypass validation."),
 						    from_utf8(name)));
 	else
 		throw invalidParam(bformat(_("Parameters starting with '%1$s': %2$s"),
@@ -684,7 +696,7 @@ void InsetListingsParams::read(Lexer & lex)
 }
 
 
-string InsetListingsParams::params(string const & sep) const
+string InsetListingsParams::params(string const & sep, bool valid_key) const
 {
 	string par;
 	for (map<string, string>::const_iterator it = params_.begin();
@@ -692,10 +704,14 @@ string InsetListingsParams::params(string const & sep) const
 		if (!par.empty())
 			par += sep;
 		// key=value,key=value1 is stored in params_ as key=value,key_=value1. 
+		string key = rtrim(it->first, "_");
+		// remove prefix @ which is used by a parameter to bypass validation
+		if (valid_key)
+			key = ltrim(key, "@");
 		if (it->second.empty())
-			par += rtrim(it->first, "_");
+			par += key;
 		else
-			par += rtrim(it->first, "_") + '=' + it->second;
+			par += key + '=' + it->second;
 	}
 	return par;
 }
