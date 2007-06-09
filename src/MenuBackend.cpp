@@ -705,7 +705,9 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	const_cast<Buffer*>(buf)->tocBackend().update();
+	Buffer* cbuf = const_cast<Buffer*>(buf);
+	cbuf->tocBackend().update();
+	cbuf->structureChanged();
 
 	// Add an entry for the master doc if this is a child doc
 	Buffer const * const master = buf->getMasterBuffer();
