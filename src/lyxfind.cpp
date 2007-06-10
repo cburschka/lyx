@@ -62,7 +62,8 @@ public:
 	{}
 
 	// returns true if the specified string is at the specified position
-	bool operator()(Paragraph const & par, pos_type pos) const
+	// del specifies whether deleted strings in ct mode will be considered
+	bool operator()(Paragraph const & par, pos_type pos, bool del = true) const
 	{
 		docstring::size_type const size = str.length();
 		pos_type i = 0;
@@ -73,6 +74,8 @@ public:
 			if (cs && str[i] != par.getChar(pos + i))
 				break;
 			if (!cs && uppercase(str[i]) != uppercase(par.getChar(pos + i)))
+				break;
+			if (!del && par.isDeleted(pos + i))
 				break;
 		}
 
@@ -101,20 +104,24 @@ private:
 };
 
 
-bool findForward(DocIterator & cur, MatchString const & match)
+bool findForward(DocIterator & cur, MatchString const & match,
+		 bool find_del = true)
 {
 	for (; cur; cur.forwardChar())
-		if (cur.inTexted() && match(cur.paragraph(), cur.pos()))
+		if (cur.inTexted() &&
+		    match(cur.paragraph(), cur.pos(), find_del))
 			return true;
 	return false;
 }
 
 
-bool findBackwards(DocIterator & cur, MatchString const & match)
+bool findBackwards(DocIterator & cur, MatchString const & match,
+		 bool find_del = true)
 {
 	while (cur) {
 		cur.backwardChar();
-		if (cur.inTexted() && match(cur.paragraph(), cur.pos()))
+		if (cur.inTexted() &&
+		    match(cur.paragraph(), cur.pos(), find_del))
 			return true;
 	}
 	return false;
@@ -141,7 +148,8 @@ bool searchAllowed(BufferView * bv, docstring const & str)
 }
 
 
-bool find(BufferView * bv, docstring const & searchstr, bool cs, bool mw, bool fw)
+bool find(BufferView * bv, docstring const & searchstr, bool cs, bool mw, bool fw,
+	  bool find_del = true)
 {
 	if (!searchAllowed(bv, searchstr))
 		return false;
@@ -150,7 +158,8 @@ bool find(BufferView * bv, docstring const & searchstr, bool cs, bool mw, bool f
 
 	MatchString const match(searchstr, cs, mw);
 
-	bool found = fw ? findForward(cur, match) : findBackwards(cur, match);
+	bool found = fw ? findForward(cur, match, find_del) :
+			  findBackwards(cur, match, find_del);
 
 	if (found)
 		bv->putSelectionAt(cur, searchstr.length(), !fw);
@@ -177,7 +186,7 @@ int replaceAll(BufferView * bv,
 	int const ssize = searchstr.size();
 
 	DocIterator cur = doc_iterator_begin(buf.inset());
-	while (findForward(cur, match)) {
+	while (findForward(cur, match, false)) {
 		pos_type pos = cur.pos();
 		Font const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
@@ -227,7 +236,7 @@ int replace(BufferView * bv, docstring const & searchstr,
 	Cursor & cur = bv->cursor();
 	cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer()->markDirty();
-	find(bv, searchstr, cs, mw, fw);
+	find(bv, searchstr, cs, mw, fw, false);
 	bv->update();
 
 	return 1;

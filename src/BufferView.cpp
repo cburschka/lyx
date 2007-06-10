@@ -665,6 +665,8 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 {
 	FuncStatus flag;
 
+	Cursor & cur = cursor_;
+
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
@@ -678,7 +680,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_FILE_INSERT_PLAINTEXT:
 	case LFUN_BOOKMARK_SAVE:
 		// FIXME: Actually, these LFUNS should be moved to Text
-		flag.enabled(cursor_.inTexted());
+		flag.enabled(cur.inTexted());
 		break;
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
@@ -691,7 +693,6 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
-	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
 	case LFUN_MARK_TOGGLE:
@@ -703,9 +704,13 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.enabled(true);
 		break;
 
+	case LFUN_WORD_REPLACE:
+		flag.enabled(!cur.paragraph().isDeleted(cur.pos()));
+		break;
+
 	case LFUN_LABEL_GOTO: {
 		flag.enabled(!cmd.argument().empty()
-		    || getInsetByCode<InsetRef>(cursor_, Inset::REF_CODE));
+		    || getInsetByCode<InsetRef>(cur, Inset::REF_CODE));
 		break;
 	}
 
@@ -1617,7 +1622,9 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		FileDialog fileDlg(_("Select LyX document to insert"),
 			LFUN_FILE_INSERT,
 			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support().absFilename(), "examples"))));
+			make_pair(_("Examples|#E#e"),
+				    from_utf8(addPath(package().system_support().absFilename(),
+				    "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(from_utf8(initpath),
