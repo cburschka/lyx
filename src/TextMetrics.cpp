@@ -663,9 +663,11 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	Font::FONT_SIZE maxsize =
 		par.highestFontInRange(row.pos(), pos_end, size);
 	if (maxsize > font.size()) {
+		// use standard paragraph font with the maximal size
 		font.setSize(maxsize);
-		maxasc  = max(maxasc,  fontmetrics.maxAscent());
-		maxdesc = max(maxdesc, fontmetrics.maxDescent());
+		FontMetrics const & maxfontmetrics = theFontMetrics(font);
+		maxasc  = max(maxasc,  maxfontmetrics.maxAscent());
+		maxdesc = max(maxdesc, maxfontmetrics.maxDescent());
 	}
 
 	// This is nicer with box insets:
