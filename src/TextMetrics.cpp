@@ -664,8 +664,9 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		par.highestFontInRange(row.pos(), pos_end, size);
 	if (maxsize > font.size()) {
 		// use standard paragraph font with the maximal size
-		font.setSize(maxsize);
-		FontMetrics const & maxfontmetrics = theFontMetrics(font);
+		Font maxfont = font;
+		maxfont.setSize(maxsize);
+		FontMetrics const & maxfontmetrics = theFontMetrics(maxfont);
 		maxasc  = max(maxasc,  maxfontmetrics.maxAscent());
 		maxdesc = max(maxdesc, maxfontmetrics.maxDescent());
 	}
