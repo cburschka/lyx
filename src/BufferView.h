@@ -146,8 +146,8 @@ public:
 	/// return the pixel height of the document view.
 	int workHeight() const;
 
-	/// switch between primary and secondary keymaps for RTL entry.
-	void switchKeyMap();
+	/// translate and insert a character, using the correct keymap.
+	void translateAndInsert(char_type c, Text * t, Cursor & cur);
 
 	/// return true for events that will handle.
 	FuncStatus getStatus(FuncRequest const & cmd);

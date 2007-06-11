@@ -313,7 +313,6 @@ void BufferView::resize()
 	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION << endl;
 
 	updateMetrics(false);
-	switchKeyMap();
 }
 
 
@@ -627,7 +626,7 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 }
 
 
-void BufferView::switchKeyMap()
+void BufferView::translateAndInsert(char_type c, Text * t, Cursor & cur)
 {
 	if (!lyxrc.rtl_support)
 		return;
@@ -639,6 +638,8 @@ void BufferView::switchKeyMap()
 		if (intl_->keymap == Intl::SECONDARY)
 			intl_->keyMapPrim();
 	}
+	
+	intl_->getTransManager().translateAndInsert(c, t, cur);
 }
 
 
@@ -779,7 +780,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			cur.message(_("No further undo information"));
 			updateFlags = Update::None;
 		}
-		switchKeyMap();
 		break;
 
 	case LFUN_REDO:
@@ -789,7 +789,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			cur.message(_("No further redo information"));
 			updateFlags = Update::None;
 		}
-		switchKeyMap();
 		break;
 
 	case LFUN_FILE_INSERT:
@@ -851,7 +850,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 				if (b == buffer_) {
 					// Set the cursor
 					setCursor(makeDocIterator(par, 0));
-					switchKeyMap();
 				} else {
 					// Switch to other buffer view and resend cmd
 					theLyXFunc().dispatch(FuncRequest(

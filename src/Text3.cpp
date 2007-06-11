@@ -120,7 +120,6 @@ namespace {
 		if (selecting || cur.mark())
 			cur.setSelection();
 		saveSelection(cur);
-		cur.bv().switchKeyMap();
 	}
 
 
@@ -679,7 +678,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cutSelection(cur, true, false);
 			singleParUpdate = false;
 		}
-		bv->switchKeyMap();
 		break;
 
 	case LFUN_DELETE_BACKWARD_SKIP:
@@ -700,14 +698,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		breakParagraph(cur, 0);
 		cur.resetAnchor();
-		bv->switchKeyMap();
 		break;
 
 	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 		cap::replaceSelection(cur);
 		breakParagraph(cur, 1);
 		cur.resetAnchor();
-		bv->switchKeyMap();
 		break;
 
 	case LFUN_BREAK_PARAGRAPH_SKIP: {
@@ -719,7 +715,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			breakParagraph(cur, 0);
 		cur.resetAnchor();
-		bv->switchKeyMap();
 		break;
 	}
 
@@ -862,7 +857,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		bv->buffer()->errors("Paste");
 		cur.clearSelection(); // bug 393
-		bv->switchKeyMap();
 		finishUndo();
 		break;
 
@@ -953,7 +947,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			setLayout(cur, layout);
 			// inform the GUI that the layout has changed.
 			bv->layoutChanged(layout);
-			bv->switchKeyMap();
 		}
 		break;
 	}
@@ -1075,7 +1068,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cap::pasteSelection(cur, bv->buffer()->errorList("Paste"));
 				bv->buffer()->errors("Paste");
 				cur.clearSelection(); // bug 393
-				bv->switchKeyMap();
 				bv->buffer()->markDirty();
 				finishUndo();
 			} else {
@@ -1156,7 +1148,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 		}
 
-		bv->switchKeyMap();
 		break;
 	}
 
@@ -1180,8 +1171,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		docstring::const_iterator cit = cmd.argument().begin();
 		docstring::const_iterator end = cmd.argument().end();
 		for (; cit != end; ++cit)
-			bv->getIntl().getTransManager().
-				translateAndInsert(*cit, this, cur);
+			bv->translateAndInsert(*cit, this, cur);
 
 		cur.resetAnchor();
 		moveCursor(cur, false);
@@ -1449,7 +1439,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Font font(Font::ALL_IGNORE);
 		font.setLanguage(lang);
 		toggleAndShow(cur, this, font);
-		bv->switchKeyMap();
 		break;
 	}
 
@@ -1524,8 +1513,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		theLyXFunc().handleKeyFunc(cmd.action);
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
-			bv->getIntl().getTransManager()
-				.translateAndInsert(cmd.argument()[0], this, cur);
+			bv->translateAndInsert(cmd.argument()[0], this, cur);
 		break;
 
 	case LFUN_FLOAT_LIST: {

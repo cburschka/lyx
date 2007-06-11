@@ -1208,7 +1208,6 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
 		cur.clearSelection(); // bug 393
-		cur.bv().switchKeyMap();
 		finishUndo();
 		break;
 	}

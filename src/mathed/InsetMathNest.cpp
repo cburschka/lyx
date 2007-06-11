@@ -459,7 +459,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		cur.niceInsert(topaste);
 		cur.clearSelection(); // bug 393
-		cur.bv().switchKeyMap();
 		finishUndo();
 		break;
 	}
