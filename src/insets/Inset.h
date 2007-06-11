@@ -149,6 +149,7 @@ public:
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 
 	/// is this an inset that can be moved into?
+	/// FIXME: merge with editable()
 	virtual bool isActive() const { return nargs() > 0; }
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(Cursor & cur, bool up) const;
