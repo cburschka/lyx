@@ -1061,12 +1061,12 @@ void paintText(BufferView & bv,
 
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text.getPar(vi.p1).ascent() << endl;
-	if (vi.y1 > 0 && vi.update_strategy != SingleParUpdate)
+	if (vi.y1 > 0 && vi.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, Color::bottomarea);
 
 	// and possibly grey out below
 //	lyxerr << "par descent: " << text.getPar(vi.p1).ascent() << endl;
-	if (vi.y2 < bv.workHeight() && vi.update_strategy != SingleParUpdate)
+	if (vi.y2 < bv.workHeight() && vi.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, Color::bottomarea);
 }
 
