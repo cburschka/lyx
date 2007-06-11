@@ -1,18 +1,31 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 271
 \begin_document
 \begin_header
 \textclass IEEEtran
+\begin_preamble
+% The following definition specifies the text on the headers:
+% Use this instead of the "MarkBoth" paragraph style
+\markboth{This is for left pages}{and this is for right pages}
+\end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
-\float_placement hbt
+\float_placement tbh
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -25,29 +38,44 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "Jürgen Spitzmüller" 
 \end_header
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
+\begin_layout Standard
+To specify the left and right header, go to 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Preamble
+\family default
+ and change the definition there.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
 Your Title: And maybe a bit extra
 \end_layout
 
 \begin_layout Author
-
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
 Remember that initial submissions don't show the authors
 \end_layout
 
 \begin_layout Standard
-
 names so you'll need to make this a 'Comment'.
 \end_layout
 
@@ -58,7 +86,6 @@ Your Name, Your Co-Author
 status collapsed
 
 \begin_layout Standard
-
 Your name is with xyz Department\SpecialChar \ldots{}
 
 \end_layout
@@ -69,59 +96,36 @@ Your name is with xyz Department\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Abstract
-
 This paper presents a simple template for IEEEtran documents.
  
 \end_layout
 
 \begin_layout Keywords
-
 simplicity, beauty, elegance
 \end_layout
 
-\begin_layout MarkBoth
-
-This is for left pages
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-}{
-\end_layout
-
-\end_inset
-
-and this is for right pages
-\end_layout
-
 \begin_layout Section
-
 Introduction
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
 Don't panic the section numbering may look different in
 \end_layout
 
 \begin_layout Standard
-
 LyX but LaTeX uses the correct Roman numerals and
 \end_layout
 
 \begin_layout Standard
-
 Alpha for section counters.
 \end_layout
 
 \begin_layout Standard
-
 It's just that LyX doesn't handle counters other than arabic
 \end_layout
 
 \begin_layout Standard
-
 numerals.
 \end_layout
 
@@ -131,12 +135,11 @@ numerals.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 PARstart{T}{here}
@@ -149,27 +152,23 @@ PARstart{T}{here}
 \end_layout
 
 \begin_layout Section
-
 Previous Work
 \end_layout
 
 \begin_layout Standard
-
 This is only a template remember.
 \end_layout
 
 \begin_layout Section
-
 Methodology
 \end_layout
 
 \begin_layout Theorem
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 [
 \end_layout
 
@@ -180,6 +179,7 @@ Theorem name
 status collapsed
 
 \begin_layout Standard
+
 ]
 \end_layout
 
@@ -190,23 +190,18 @@ status collapsed
 \end_layout
 
 \begin_layout Lemma
-
 If you don't want a theorem or lemma name don't add one.
 \end_layout
 
 \begin_layout Proof
-
 And here's the proof!
 \end_layout
 
 \begin_layout Section
-
 Results
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Float figure
 placement htbp
 wide false
@@ -220,13 +215,20 @@ status open
 A single column figure goes here
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
 
+\begin_layout Standard
 Captions go 
 \emph on
 under
 \emph default
  the figure
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -238,8 +240,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
 
+\begin_layout Standard
 Table captions go 
 \emph on
 above
@@ -247,10 +251,14 @@ above
  the table
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -260,7 +268,6 @@ above
 \begin_inset Text
 
 \begin_layout Standard
-
 delete
 \end_layout
 
@@ -270,7 +277,6 @@ delete
 \begin_inset Text
 
 \begin_layout Standard
-
 this
 \end_layout
 
@@ -282,7 +288,6 @@ this
 \begin_inset Text
 
 \begin_layout Standard
-
 example
 \end_layout
 
@@ -292,7 +297,6 @@ example
 \begin_inset Text
 
 \begin_layout Standard
-
 table
 \end_layout
 
@@ -312,57 +316,48 @@ table
 \end_layout
 
 \begin_layout Section
-
 Conclusions
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Standard
-
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
 Change this paragraphs style to 'Standard' to enable
 \end_layout
 
 \begin_layout Standard
-
 BibTeX bibliography generation.
 \end_layout
 
 \begin_layout Standard
-
 Remember though that your final submission is supposed to have
 \end_layout
 
 \begin_layout Standard
-
 all the bibliography entries embedded in the latex file.
  This means
 \end_layout
 
 \begin_layout Standard
-
 you eventually have to copy the .bbl file into the latex file and
 \end_layout
 
 \begin_layout Standard
-
 remove the bibtex lines.
 \end_layout
 
 \end_inset
 
 
-\begin_inset LatexCommand \bibtex[IEEEbib]{your_biblio_file}
+\begin_inset LatexCommand bibtex
+options "IEEEbib"
+bibfiles "your_biblio_file"
 
 \end_inset
 
@@ -370,15 +365,16 @@ remove the bibtex lines.
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Biography
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 {
 \end_layout
 
@@ -389,6 +385,7 @@ Your Name
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -400,13 +397,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-% This LaTeX comment is needed to force LyX to generate two separate environments
+
+% This LaTeX comment is needed to force LyX to generate two separate environment
+s
 \end_layout
 
 \begin_layout Standard
@@ -419,12 +416,11 @@ status collapsed
 \end_layout
 
 \begin_layout Biography
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 {
 \end_layout
 
@@ -435,6 +431,7 @@ Coauthor
 status collapsed
 
 \begin_layout Standard
+
 } 
 \end_layout
 
