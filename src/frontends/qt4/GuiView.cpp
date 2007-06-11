@@ -53,6 +53,9 @@
 #include <QTabBar>
 #include <QDesktopWidget>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QToolButton>
+
 
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
@@ -75,23 +78,55 @@ int const statusbar_timer_value = 3000;
 
 class TabWidget : public QWidget
 {
+	QHBoxLayout* hlayout;
 public:
 	QTabBar* tabbar;
+	QToolButton* closeTabButton;
+
+	void hideTabsIfNecessary()
+	{
+		if (tabbar->count() > 1) {
+			tabbar->show();
+			closeTabButton->show();
+		} else {
+			tabbar->hide();
+			closeTabButton->hide();
+		}
+	}
 
 	TabWidget(QWidget* w, bool topTabBar)
 	{
+		closeTabButton = new QToolButton(this);
+		FileName const file = support::libFileSearch("images", "closetab", "xpm");
+		if (!file.empty()) {
+			QPixmap pm(toqstr(file.absFilename()));
+			closeTabButton->setIcon(QIcon(pm));
+		} else {
+			closeTabButton->setText("Close");
+		}
+		closeTabButton->setCursor(Qt::ArrowCursor);
+		closeTabButton->setAutoRaise(true);
+		closeTabButton->setToolTip(tr("Close tab"));
+		closeTabButton->setEnabled(true);
+
 		tabbar = new QTabBar;
-		QVBoxLayout* layout = new QVBoxLayout;
+		hlayout = new QHBoxLayout;
+		QVBoxLayout* vlayout = new QVBoxLayout;
+		hlayout->addWidget(tabbar);
+		hlayout->addStretch(1);
+		hlayout->addWidget(closeTabButton);
 		if (topTabBar) {
-			layout->addWidget(tabbar);
-			layout->addWidget(w);
+			vlayout->addLayout(hlayout);
+			vlayout->addWidget(w);
 		} else {
 			tabbar->setShape(QTabBar::RoundedSouth);
-			layout->addWidget(w);
-			layout->addWidget(tabbar);
+			vlayout->addWidget(w);
+			vlayout->addLayout(hlayout);
 		}
-		layout->setMargin(0);
-		setLayout(layout);
+		vlayout->setMargin(0);
+		hlayout->setMargin(0);
+		setLayout(vlayout);
+		hideTabsIfNecessary();
 	}
 
 	void clearTabbar()
@@ -140,7 +175,6 @@ struct GuiView::GuiViewPrivate
 		normalIcons->setCheckable(true);
 		QObject::connect(normalIcons, SIGNAL(triggered()), parent, SLOT(normalSizedIcons()));
 		menu->addAction(normalIcons);
-
 
 		QAction *bigIcons = new QAction(iconSizeGroup);
 		bigIcons->setText(qt_("Big-sized icons"));
@@ -534,6 +568,8 @@ void GuiView::initTab(QWidget* workarea)
 	setCentralWidget(d.tabWidget);
 	QObject::connect(d.tabWidget->tabbar, SIGNAL(currentChanged(int)),
 			this, SLOT(currentTabChanged(int)));
+	QObject::connect(d.tabWidget->closeTabButton, SIGNAL(clicked()),
+			this, SLOT(closeCurrentTab()));
 }
 
 
@@ -571,6 +607,13 @@ void GuiView::updateTab()
 		}
 	}
 	tabbar.blockSignals(false);
+	d.tabWidget->hideTabsIfNecessary();
+}
+
+
+void GuiView::closeCurrentTab()
+{
+	dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 
