@@ -403,11 +403,8 @@ void LyXView::updateLayoutChoice()
 	}
 
 	BOOST_ASSERT(work_area_);
-	if (work_area_->bufferView().cursor().inMathed())
-		return;
-
-	string const & layout =
-		work_area_->bufferView().cursor().paragraph().layout()->name();
+	string const & layout =	work_area_->bufferView().cursor().
+		innerParagraph().layout()->name();
 
 	if (layout != current_layout) {
 		toolbars_->setLayout(layout);
