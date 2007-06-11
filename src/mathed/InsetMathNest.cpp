@@ -732,7 +732,7 @@ goto_char_backwards:
 		    && cur.inMacroMode() && cur.macroName() != "\\"
 		    && cur.macroModeClose()) {
 			MathAtom const atom = cur.prevAtom();
-			if (atom->asNestInset() && atom->nargs() > 0) {
+			if (atom->asNestInset() && atom->isActive()) {
 				cur.posLeft();
 				cur.pushLeft(*cur.nextInset());
 			}

@@ -40,6 +40,9 @@ public:
 	virtual docstring const screenLabel() const;
 	///
 	docstring const & commandname() const { return name_; }
+	///
+	bool isActive() const { return false; }
+
 private:
 	virtual std::auto_ptr<Inset> doClone() const;
 
