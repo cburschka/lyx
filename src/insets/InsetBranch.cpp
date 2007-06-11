@@ -152,7 +152,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "assign" || cmd.argument().empty()) {
+		if (cmd.argument() == "assign") {
 			// The branch inset uses "assign".
 			if (isBranchSelected(cur.buffer())) {
 				if (status() != Open)
