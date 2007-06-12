@@ -38,15 +38,15 @@ class TocItem
 	friend class TocBackend;
 
 public:
+	/// Default constructor for STL containers.
+	TocItem() {}
 	///
-	TocItem(ParConstIterator const & par_it = ParConstIterator(),
-		int d = -1,
-		docstring const & s = docstring()
+	TocItem(ParConstIterator const & par_it,
+		int depth,
+		docstring const & s
 		);
 	///
 	~TocItem() {}
-	///
-	bool const isValid() const;
 	///
 	int const id() const;
 	///

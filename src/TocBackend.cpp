@@ -26,12 +26,9 @@
 
 #include "support/convert.h"
 
-
-namespace lyx {
-
-using std::vector;
 using std::string;
 
+namespace lyx {
 
 ///////////////////////////////////////////////////////////////////////////
 // TocItem implementation
@@ -40,38 +37,6 @@ TocItem::TocItem(ParConstIterator const & par_it, int d,
 		docstring const & s)
 		: par_it_(par_it), depth_(d), str_(s)
 {
-/*
-	if (!uid_.empty())
-		return;
-
-	size_t pos = s.find(" ");
-	if (pos == string::npos) {
-		// Non labelled item
-		uid_ = s;
-		return;
-	}
-
-	string s2 = s.substr(0, pos);
-
-	if (s2 == "Chapter" || s2 == "Part") {
-		size_t pos2 = s.find(" ", pos + 1);
-		if (pos2 == string::npos) {
-			// Unnumbered Chapter?? This should not happen.
-			uid_ = s.substr(pos + 1);
-			return;
-		}
-		// Chapter or Part
-		uid_ = s.substr(pos2 + 1);
-		return;
-	}
-	// Numbered Item.
-	uid_ = s.substr(pos + 1);
-	*/
-}
-
-bool const TocItem::isValid() const
-{
-	return depth_ != -1;
 }
 
 
@@ -105,9 +70,6 @@ FuncRequest TocItem::action() const
 }
 
 
-
-
-
 ///////////////////////////////////////////////////////////////////////////
 // TocBackend implementation
 
@@ -123,10 +85,13 @@ Toc const & TocBackend::toc(std::string const & type) const
 
 void TocBackend::updateItem(ParConstIterator const & par_it)
 {
-	// TODO should not happen,
-	// a call to TocBackend::update() is missing somewhere
-	if (toc("tableofcontents").empty())
+	if (toc("tableofcontents").empty()) {
+		// FIXME: should not happen, 
+		// a call to TocBackend::update() is missing somewhere
+		lyxerr << "TocBackend::updateItem called but the TOC is empty!"
+			<< std::endl;
 		return;
+	}
 
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getTextClass().min_toclevel();

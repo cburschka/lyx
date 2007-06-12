@@ -91,30 +91,26 @@ void TocModel::populate(Toc const & toc)
 	mindepth_ = INT_MAX;
 
 	while (iter != end) {
+		maxdepth_ = max(maxdepth_, iter->depth());
+		mindepth_ = min(mindepth_, iter->depth());
+		current_row = rowCount();
+		insertRows(current_row, 1);
+		top_level_item = QStandardItemModel::index(current_row, 0);
+		//setData(top_level_item, toqstr(iter->str()));
+		setData(top_level_item, toqstr(iter->str()), Qt::DisplayRole);
 
-		if (iter->isValid()) {
+		// This looks like a gcc bug, in principle this should work:
+		//toc_map_[top_level_item] = iter;
+		// but it crashes with gcc-4.1 and 4.0.2
+		toc_map_.insert( TocPair(top_level_item, iter) );
+		model_map_[iter] = top_level_item;
 
-			maxdepth_ = max(maxdepth_, iter->depth());
-			mindepth_ = min(mindepth_, iter->depth());
-			current_row = rowCount();
-			insertRows(current_row, 1);
-			top_level_item = QStandardItemModel::index(current_row, 0);
-			//setData(top_level_item, toqstr(iter->str()));
-			setData(top_level_item, toqstr(iter->str()), Qt::DisplayRole);
+		LYXERR(Debug::GUI)
+			<< "Toc: at depth " << iter->depth()
+			<< ", added item " << to_utf8(iter->str())
+			<< endl;
 
-			// This looks like a gcc bug, in principle this should work:
-			//toc_map_[top_level_item] = iter;
-			// but it crashes with gcc-4.1 and 4.0.2
-			toc_map_.insert( TocPair(top_level_item, iter) );
-			model_map_[iter] = top_level_item;
-
-			LYXERR(Debug::GUI)
-				<< "Toc: at depth " << iter->depth()
-				<< ", added item " << to_utf8(iter->str())
-				<< endl;
-
-			populate(iter, end, top_level_item);
-		}
+		populate(iter, end, top_level_item);
 
 		if (iter == end)
 			break;
