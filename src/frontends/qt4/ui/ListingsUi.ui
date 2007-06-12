@@ -18,14 +18,14 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QVBoxLayout" >
    <property name="margin" >
     <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="0" >
+   <item>
     <widget class="QTabWidget" name="listingsTW" >
      <property name="currentIndex" >
       <number>0</number>
@@ -478,79 +478,90 @@
       <attribute name="title" >
        <string>Ad&amp;vanced</string>
       </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>9</number>
+      <widget class="QGroupBox" name="listingsGB" >
+       <property name="geometry" >
+        <rect>
+         <x>9</x>
+         <y>9</y>
+         <width>540</width>
+         <height>260</height>
+        </rect>
        </property>
-       <property name="spacing" >
-        <number>6</number>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>7</hsizetype>
+         <vsizetype>7</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <item row="0" column="0" >
-        <widget class="QGroupBox" name="listingsGB" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title" >
-          <string>More Parameters</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
+       <property name="title" >
+        <string>More Parameters</string>
+       </property>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>9</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QSplitter" name="splitter" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="spacing" >
-           <number>6</number>
+          <widget class="QTextBrowser" name="listingsTB" >
+           <property name="maximumSize" >
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor" >
+            <cursor>0</cursor>
+           </property>
+           <property name="acceptDrops" >
+            <bool>false</bool>
+           </property>
+           <property name="toolTip" >
+            <string>Feedback window</string>
+           </property>
+           <property name="frameShape" >
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow" >
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth" >
+            <number>0</number>
+           </property>
+           <property name="acceptRichText" >
+            <bool>false</bool>
+           </property>
+          </widget>
+          <widget class="QTextEdit" name="listingsED" >
+           <property name="toolTip" >
+            <string>Input listing parameters here. Enter ? for a list of parameters.</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="bypassCB" >
+          <property name="toolTip" >
+           <string>Check it to enter parameters that are not recognizable by lyx</string>
           </property>
-          <item row="0" column="0" >
-           <widget class="QTextBrowser" name="listingsTB" >
-            <property name="maximumSize" >
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-            <property name="acceptDrops" >
-             <bool>false</bool>
-            </property>
-            <property name="toolTip" >
-             <string>Feedback window</string>
-            </property>
-            <property name="frameShape" >
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow" >
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="lineWidth" >
-             <number>0</number>
-            </property>
-            <property name="acceptRichText" >
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QTextEdit" name="listingsED" >
-            <property name="toolTip" >
-             <string>Input listing parameters here. Enter ? for a list of parameters.</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
+          <property name="text" >
+           <string>&amp;Bypass validation</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
    </item>
-   <item row="1" column="0" >
+   <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>

@@ -191,6 +191,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	for (int n = 0; languages[n][0]; ++n)
 		languageCO->addItem(qt_(languages_gui[n]));
@@ -320,18 +321,21 @@ string QListingsDialog::construct_params()
 void QListingsDialog::validate_listings_params()
 {
 	static bool isOK = true;
-	try {
-		InsetListingsParams par(construct_params());
-		if (!isOK) {
-			isOK = true;
-			listingsTB->setPlainText(
-				qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-			okPB->setEnabled(true);
-			applyPB->setEnabled(true);
-		}
-	} catch (invalidParam & e) {
+	InsetListingsParams par(construct_params());
+	docstring msg;
+	if (!bypassCB->isChecked())
+		msg = par.validate();
+	if (msg.empty()) {
+		if (isOK)
+			return;
+		isOK = true;
+		listingsTB->setPlainText(
+			qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
+		okPB->setEnabled(true);
+		applyPB->setEnabled(true);
+	} else {
 		isOK = false;
-		listingsTB->setPlainText(toqstr(e.what()));
+		listingsTB->setPlainText(toqstr(msg));
 		okPB->setEnabled(false);
 		applyPB->setEnabled(false);
 	}

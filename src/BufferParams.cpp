@@ -608,14 +608,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 	} else if (token == "\\listings_params") {
 		string par;
 		lex >> par;
-		// validate par and produce a valid listings parameter string
-		try {
-			listings_params = InsetListingsParams(par).params();
-		} catch (invalidParam & e) {
-			lyxerr << "Invalid parameter string " << par << endl;
-			lyxerr << e.what() << endl;
-			listings_params = string();
-		}
+		listings_params = InsetListingsParams(par).params();
 	} else if (token == "\\papersides") {
 		int psides;
 		lex >> psides;

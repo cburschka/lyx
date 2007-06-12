@@ -222,6 +222,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
+		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(validate_listings_params()));
 	textLayoutModule->listingsTB->setPlainText(
@@ -622,20 +624,23 @@ void QDocumentDialog::change_adaptor()
 void QDocumentDialog::validate_listings_params()
 {
 	static bool isOK = true;
-	try {
-		InsetListingsParams par(fromqstr(textLayoutModule->listingsED->toPlainText()));
-		if (!isOK) {
-			isOK = true;
-			// listingsTB->setTextColor("black");
-			textLayoutModule->listingsTB->setPlainText(
-				qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
-			okPB->setEnabled(true);
-			applyPB->setEnabled(true);
-		}
-	} catch (invalidParam & e) {
+	InsetListingsParams par(fromqstr(textLayoutModule->listingsED->toPlainText()));
+	docstring msg;
+	if (!textLayoutModule->bypassCB->isChecked())
+		msg = par.validate();
+	if (msg.empty()) {
+		if (isOK)
+			return;
+		isOK = true;
+		// listingsTB->setTextColor("black");
+		textLayoutModule->listingsTB->setPlainText(
+			qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+		okPB->setEnabled(true);
+		applyPB->setEnabled(true);
+	} else {
 		isOK = false;
 		// listingsTB->setTextColor("red");
-		textLayoutModule->listingsTB->setPlainText(toqstr(e.what()));
+		textLayoutModule->listingsTB->setPlainText(toqstr(msg));
 		okPB->setEnabled(false);
 		applyPB->setEnabled(false);
 	}

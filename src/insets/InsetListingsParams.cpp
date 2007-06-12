@@ -271,15 +271,13 @@ class ParValidator
 public:
 	ParValidator();
 
-	/// \return the associated \c ListingsParam.
-	/// \warning an \c invalidParamexception will be thrown
-	///          if the key is not found.
-	ListingsParam const & param(string const & key) const;
+	/// validate a parameter for a given name.
+	/// return an error message if \c par is an invalid parameter.
+	docstring validate(string const & name, string const & par) const;
 
-	/// validate a parameter for a given key.
-	/// \warning an \c invalidParam exception will be thrown if
-	/// \c par is an invalid parameter.
-	ListingsParam const & validate(string const & key, string const & par) const;
+	/// return the onoff status of a parameter \c key, if \c key is not found
+	/// return false
+	bool onoff(string const & key) const;
 
 private:
 	/// key is the name of the parameter
@@ -584,21 +582,11 @@ ParValidator::ParValidator()
 }
 
 
-ListingsParam const & ParValidator::validate(string const & key,
+docstring ParValidator::validate(string const & name,
 		string const & par) const
 {
-	ListingsParam const & lparam = param(key);
-	docstring s = lparam.validate(par);
-	if (!s.empty())
-		throw invalidParam(bformat(_("Parameter %1$s: "), from_utf8(key)) + s);
-	return lparam;
-}
-
-
-ListingsParam const & ParValidator::param(string const & name) const
-{
 	if (name.empty())
-		throw invalidParam(_("Invalid (empty) listing parameter name."));
+		return _("Invalid (empty) listing parameter name.");
 
 	if (name[0] == '?') {
 		string suffix = trim(string(name, 1));
@@ -613,38 +601,58 @@ ListingsParam const & ParValidator::param(string const & name) const
 			}
 		}
 		if (suffix.empty())
-			throw invalidParam(bformat(
-					_("Available listing parameters are %1$s"), from_ascii(param_names)));
+			return bformat(
+					_("Available listing parameters are %1$s"), from_ascii(param_names));
 		else
-			throw invalidParam(bformat(
+			return bformat(
 					_("Available listings parameters containing string \"%1$s\" are %2$s"), 
-						from_utf8(suffix), from_utf8(param_names)));
+						from_utf8(suffix), from_utf8(param_names));
 	}
  
 	// locate name in parameter table
 	ListingsParams::const_iterator it = all_params_.find(name);
-	if (it != all_params_.end())
-		return it->second;
-
-	// otherwise, produce a meaningful error message.
-	string matching_names;
-	ListingsParams::const_iterator end = all_params_.end();
-	for (it = all_params_.begin(); it != end; ++it) {
-		if (prefixIs(it->first, name)) {
-			if (!matching_names.empty())
-				matching_names += ", ";
-			matching_names += it->first;
+	if (it != all_params_.end()) {
+		docstring msg = it->second.validate(par);
+		if (msg.empty())
+			return msg;
+		else
+			return bformat(_("Parameter %1$s: "), from_utf8(name)) + msg;
+	} else {
+		// otherwise, produce a meaningful error message.
+		string matching_names;
+		ListingsParams::const_iterator end = all_params_.end();
+		for (it = all_params_.begin(); it != end; ++it) {
+			if (prefixIs(it->first, name)) {
+				if (!matching_names.empty())
+					matching_names += ", ";
+				matching_names += it->first;
+			}
 		}
+		if (matching_names.empty())
+			return bformat(_("Unknown listing parameter name: %1$s"),
+								from_utf8(name));
+		else
+			return bformat(_("Parameters starting with '%1$s': %2$s"),
+								from_utf8(name), from_utf8(matching_names));
 	}
-	if (matching_names.empty())
-		throw invalidParam(bformat(_("Unknown listing parameter name: %1$s"),
-						    from_utf8(name)));
+	return docstring();
+}
+
+
+bool ParValidator::onoff(string const & name) const
+{
+	// locate name in parameter table
+	ListingsParams::const_iterator it = all_params_.find(name);
+	if (it != all_params_.end())
+		return it->second.onoff_;
 	else
-		throw invalidParam(bformat(_("Parameters starting with '%1$s': %2$s"),
-						    from_utf8(name), from_utf8(matching_names)));
+		return false;
 }
 
 } // namespace anon.
+
+// define a global ParValidator
+ParValidator * par_validator = NULL;
 
 InsetListingsParams::InsetListingsParams()
 	: inline_(false), params_(), status_(InsetCollapsable::Open)
@@ -706,10 +714,6 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 	if (key.empty())
 		return;
 
-	static ParValidator par_validator;
-
-	// exception may be thown.
-	ListingsParam const & lparam = par_validator.validate(key, value);
 	// duplicate parameters!
 	string keyname = key;
 	if (params_.find(key) != params_.end())
@@ -718,7 +722,9 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 		while (params_.find(keyname += '_') != params_.end());
 	// check onoff flag
 	// onoff parameter with value false
-	if (lparam.onoff_ && (value == "false" || value == "{false}"))
+	if (!par_validator)
+		par_validator = new ParValidator();
+	if (par_validator->onoff(key) && (value == "false" || value == "{false}"))
 		params_[keyname] = string();
 	// if the parameter is surrounded with {}, good
 	else if (prefixIs(value, "{") && suffixIs(value, "}"))
@@ -838,5 +844,19 @@ string InsetListingsParams::getParamValue(string const & param) const
 		return par;
 }
 
+
+docstring InsetListingsParams::validate() const
+{
+	docstring msg;
+	if (!par_validator)
+		par_validator = new ParValidator();
+	for (map<string, string>::const_iterator it = params_.begin();
+		it != params_.end(); ++it) {
+		msg = par_validator->validate(it->first, it->second);
+		if (!msg.empty())
+			return msg;
+	}
+	return msg;
+}
 
 } // namespace lyx

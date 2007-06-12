@@ -230,6 +230,16 @@
        <number>6</number>
       </property>
       <item>
+       <widget class="QCheckBox" name="bypassCB" >
+        <property name="toolTip" >
+         <string>Check it to enter parameters that are not recognizable by lyx</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Bypass validation</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QSplitter" name="splitter" >
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
@@ -287,7 +297,7 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>397</width>
+       <width>412</width>
        <height>16</height>
       </size>
      </property>

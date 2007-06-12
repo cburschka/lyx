@@ -74,6 +74,9 @@ public:
 
 	///
 	void clear() { params_.clear(); }
+	
+	/// validate parameter, return an error message
+	docstring validate() const;
 
 private:
 	/// inline or normal listings
@@ -84,22 +87,6 @@ private:
 
 	/// collapsable status
 	InsetCollapsable::CollapseStatus status_;
-};
-
-
-class invalidParam : public std::exception {
-public:
-	invalidParam(docstring const & details)
-					: details_(to_utf8(details))
-	{}
-
-	virtual const char * what() const throw() {
-		return details_.c_str();
-	}
-
-	virtual ~invalidParam() throw() {}
-private:
-	std::string const details_;
 };
 
 

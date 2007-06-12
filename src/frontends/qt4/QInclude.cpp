@@ -66,6 +66,7 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(labelLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	filenameED->setValidator(new PathValidator(true, filenameED));
 	setFocusProxy(filenameED);
@@ -87,17 +88,20 @@ void QIncludeDialog::change_adaptor()
 void QIncludeDialog::validate_listings_params()
 {
 	static bool isOK = true;
-	try {
-		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
-		if (!isOK) {
-			isOK = true;
-			listingsTB->setPlainText(
-				qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-			okPB->setEnabled(true);
-		}
-	} catch (invalidParam & e) {
+	InsetListingsParams par(fromqstr(listingsED->toPlainText()));
+	docstring msg;
+	if (!bypassCB->isChecked())
+		msg = par.validate();
+	if (msg.empty()) {
+		if (isOK)
+			return;
+		isOK = true;
+		listingsTB->setPlainText(
+			qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
+		okPB->setEnabled(true);
+	} else {
 		isOK = false;
-		listingsTB->setPlainText(toqstr(e.what()));
+		listingsTB->setPlainText(toqstr(msg));
 		okPB->setEnabled(false);
 	}
 }
@@ -250,18 +254,16 @@ void QInclude::update_contents()
 			it != pars.end(); ++it) {
 			if (prefixIs(*it, "caption=")) {
 				string cap = it->substr(8);
-				if (cap[0] == '{' && cap[cap.size()-1] == '}')
+				if (cap[0] == '{' && cap[cap.size()-1] == '}') {
 					dialog_->captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
-				else
-					throw invalidParam(_("caption parameter is not quoted with braces"));
-				*it = "";
+					*it = "";
+				} 
 			} else if (prefixIs(*it, "label=")) {
 				string lbl = it->substr(6);
-				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}')
+				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}') {
 					dialog_->labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
-				else
-					throw invalidParam(_("label parameter is not quoted with braces"));
-				*it = "";
+					*it = "";
+				}
 			}
 		}
 		// the rest is put to the extra edit box.
