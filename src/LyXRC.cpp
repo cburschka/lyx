@@ -2239,7 +2239,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_LOADSESSION:
-		str = _("De-select to prevent loading files opened from the last lyx session.");
+		str = _("De-select to prevent loading files opened from the last LyX session.");
 		break;
 
 	case RC_MAKE_BACKUP:
