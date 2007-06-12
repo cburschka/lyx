@@ -117,7 +117,7 @@ static TranslatorMap const build_translator()
 
 /// pretty arbitrary dimensions
 Inset::Inset()
-	: dim_(10, 10, 10), background_color_(Color::background)
+	: dim_(10, 10, 10)
 {}
 
 
@@ -351,15 +351,9 @@ void Inset::dump() const
 }
 
 
-void Inset::setBackgroundColor(Color_color color)
-{
-	background_color_ = color;
-}
-
-
 Color_color Inset::backgroundColor() const
 {
-	return Color::color(background_color_);
+	return Color::background;
 }
 
 

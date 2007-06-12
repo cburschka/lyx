@@ -61,6 +61,8 @@ public:
 	void read(Buffer const & buf, Lexer & lex);
 	///
 	void setButtonLabel();
+	///
+	virtual Color_color backgroundColor() const;
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///

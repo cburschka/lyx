@@ -98,19 +98,30 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 
 	docstring s = _("Branch: ") + params_.branch;
+	if (!params_.branch.empty()) {
+		// FIXME UNICODE
+		Color_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
+		if (c == Color::none) {
+			s = _("Undef: ") + s;
+		}
+	}
 	font.setColor(Color::foreground);
+	setLabel(isOpen() ? s : getNewLabel(s) );
+	setLabelFont(font);
+}
+
+
+Color_color InsetBranch::backgroundColor() const
+{
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
 		Color_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
 		if (c == Color::none) {
 			c = Color::error;
-			s = _("Undef: ") + s;
 		}
-		setBackgroundColor(c);
+		return c;
 	} else
-		setBackgroundColor(Color::background);
-	setLabel(isOpen() ? s : getNewLabel(s) );
-	setLabelFont(font);
+		return Inset::backgroundColor();
 }
 
 

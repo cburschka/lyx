@@ -164,7 +164,6 @@ void InsetBox::setButtonLabel()
 	setLabel(label);
 
 	font.setColor(Color::foreground);
-	setBackgroundColor(Color::background);
 	setLabelFont(font);
 }
 

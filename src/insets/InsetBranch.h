@@ -53,6 +53,8 @@ public:
 	///
 	void setButtonLabel();
 	///
+	virtual Color_color backgroundColor() const;
+	///
 	bool showInsetDialog(BufferView *) const;
 	///
 	int latex(Buffer const &, odocstream &,

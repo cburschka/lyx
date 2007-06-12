@@ -470,9 +470,7 @@ public:
 	///
 	int scroll() const { return 0; }
 	///
-	void setBackgroundColor(Color_color);
-	///
-	Color_color backgroundColor() const;
+	virtual Color_color backgroundColor() const;
 	///
 	enum CollapseStatus {
 		Collapsed,
@@ -504,10 +502,6 @@ protected:
 	mutable Dimension dim_;
 private:
 	virtual std::auto_ptr<Inset> doClone() const = 0;
-	/** We store the Color::color value as an int to get Color.h out
-	 *  of the header file.
-	 */
-	int background_color_;
 };
 
 

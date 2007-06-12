@@ -186,29 +186,50 @@ void InsetNote::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
+	Color_color c;
 	switch (params_.type) {
 	case InsetNoteParams::Note:
-		font.setColor(Color::note);
-		setBackgroundColor(Color::notebg);
+		c = Color::note;
 		break;
 	case InsetNoteParams::Comment:
-		font.setColor(Color::comment);
-		setBackgroundColor(Color::commentbg);
+		c = Color::comment;
 		break;
 	case InsetNoteParams::Greyedout:
-		font.setColor(Color::greyedout);
-		setBackgroundColor(Color::greyedoutbg);
+		c = Color::greyedout;
 		break;
 	case InsetNoteParams::Framed:
-		font.setColor(Color::greyedout);
-		setBackgroundColor(Color::greyedoutbg);
+		c = Color::greyedout;
 		break;
 	case InsetNoteParams::Shaded:
-		font.setColor(Color::greyedout);
-		setBackgroundColor(Color::shadedbg);
+		c = Color::greyedout;
 		break;
 	}
+	font.setColor(c);
 	setLabelFont(font);
+}
+
+
+Color_color InsetNote::backgroundColor() const
+{
+	Color_color c;
+	switch (params_.type) {
+	case InsetNoteParams::Note:
+		c = Color::notebg;
+		break;
+	case InsetNoteParams::Comment:
+		c = Color::commentbg;
+		break;
+	case InsetNoteParams::Greyedout:
+		c = Color::greyedoutbg;
+		break;
+	case InsetNoteParams::Framed:
+		c = Color::greyedoutbg;
+		break;
+	case InsetNoteParams::Shaded:
+		c = Color::shadedbg;
+		break;
+	}
+	return c;
 }
 
 
