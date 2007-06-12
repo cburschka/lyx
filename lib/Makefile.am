@@ -354,7 +354,8 @@ dist_images_DATA = \
 	images/undo.xpm \
 	images/unknown.xpm \
 	images/up.xpm \
-	images/url-insert.xpm
+	images/url-insert.xpm \
+	images/closetab.xpm
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
