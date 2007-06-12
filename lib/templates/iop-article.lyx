@@ -1,0 +1,1127 @@
+#LyX 1.5.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 271
+\begin_document
+\begin_header
+\textclass iopart
+\begin_preamble
+% sort and compress citations
+% the heading "Reference" is inserted by natbib
+\usepackage[numbers, sort&compress]{natbib}
+
+% define \newblock to get natbib work with ioparticle
+% (normally only needed for the "thebibliography" environment)
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\end_preamble
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry true
+\use_amsmath 0
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\author "usti" 
+\author "stadmin" 
+\author "us939" 
+\author "Uwe Stöhr" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+
+\series bold
+Important
+\series default
+: To be able to compile your document to a PDF, PS, or DVI, assure that
+ the two options 
+\family sans
+Use AMS math package
+\family default
+ in the document settings under 
+\family sans
+Math Options
+\family default
+ are not used!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Your Title
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+optional short title
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+
+\size normal
+The title environment defines the kind of your paper.
+ Use either
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Title
+\family default
+ for a Paper
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Review
+\family default
+ for a Review
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Topical
+\family default
+ for a Topical review
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Comment
+\family default
+ for a Comment
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Note
+\family default
+ for a Note
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Paper
+\family default
+ for a Paper (same as Title)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Prelim
+\family default
+ for a Preliminary communication
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Rapid
+\family default
+ for a Rapid communication
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Letter
+\family default
+ for a Letter to the editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+
+\size larger
+X Dummyname, Y Testman and Z Another-Name
+\size default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Use no dots behind the letter for the forenames.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+
+\size large
+Department of ???, University of ???, Nicecountry
+\end_layout
+
+\begin_layout Email
+
+\size large
+dummy@test.xx
+\size default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+At least one Email adress is required.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Abstract, should normally be not loger than 200 words.
+\end_layout
+
+\begin_layout Keywords
+bla, blub
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+required for the journals: Measurement Science and Technology, Physical
+ Biology, Physiological Measurement, and both parts of Journal of Optics.
+ For other journals it is optional.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PACS
+11
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout MSC
+44
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout submitto
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+CQG 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+optional, you can specify to which journal your paper was or should be submitted
+\end_layout
+
+\begin_layout Standard
+See Table\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "tab:Abbreviations-for-the"
+
+\end_inset
+
+ for a list with commands to print the journal name.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Bla bla, as listed in 
+\begin_inset LatexCommand cite
+key "Parkin2005,LComp2004"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement hb
+wide false
+sideways false
+status collapsed
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "tab:Abbreviations-for-the"
+
+\end_inset
+
+Abbreviations for the IOP journals.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="28" columns="2">
+<features>
+<column alignment="none" valignment="top" width="0" special="@{}l">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ Macro name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family roman
+Short form of journal title
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+CQG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Class.
+ Quantum Grav.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+EJP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Eur.
+ J.
+ Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+IP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Inverse Problems
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JHEP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ High Energy Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JMM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ of Michromech.
+ and Microeng.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JNE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Neural Eng.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JOA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Opt.
+ A: Pure and Applied Opt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JOB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Opt.
+ B: Quantum and Semiclass.
+ Opt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JPA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Phys.
+ A: Math.
+ Gen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+jpb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Phys.
+ B: At.
+ Mol.
+ Opt.
+ Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JPCM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Phys: Condens.
+ Matter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+JPD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Phys.
+ D: Appl.
+ Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+jpg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+J.
+ Phys.
+ G: Nucl.
+ Part.
+ Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+MSMSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Modelling Simul.
+ Mater.
+ Sci.
+ Eng.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+MST
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Meas.
+ Sci.
+ Technol.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+NJP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+New J.
+ Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+NL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Nonlinearity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+NT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Nanotechnology
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+PB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Phys.
+ Biol.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+PM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Physiol.
+ Meas.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+PMB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Phys.
+ Med.
+ Biol.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+PPCF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Plasma Physics and Controlled Fusion
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+PSST
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Plasma Sources Sci.
+ Technol.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+RPP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Rep.
+ Prog.
+ Phys.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+SST
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Semicond.
+ Sci.
+ Technol.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+SMS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Smart Mater.
+ Struct.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+SUST
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Supercond.
+ Sci.
+ Technol.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray}
+A & = & \prod_{i=1}^{\infty}B\nonumber \\
+ & = & C\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Acknowledgments
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Keep this paragraph empty, it's only a heading.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Acknowledgments
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendix name
+\end_layout
+
+\begin_layout Standard
+Appendix, only when needed, inserted behind the acknowledgments but before
+ the bibliography.
+\end_layout
+
+\begin_layout Section*
+-----------------
+\end_layout
+
+\begin_layout Standard
+You can use either BibTeX:
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand bibtex
+options "bibtotoc,unsrt"
+bibfiles "biblioExample"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+---------------------
+\end_layout
+
+\begin_layout Standard
+\noindent
+Or plain bibliography:
+\end_layout
+
+\begin_layout Bibliography (plain)
+\begin_inset LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Frank Mittelbach and Michel Goossens: 
+\emph on
+The LaTeX Companion Second Edition.
+
+\emph default
+ Addison-Wesley, 2004.
+\end_layout
+
+\begin_layout Bibliography (plain)
+\begin_inset LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Scott Pakin.
+ The comprehensive LaTeX symbol list, 2005.
+\end_layout
+
+\end_body
+\end_document

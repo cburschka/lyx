@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0rc1 created this file. For more info see http://www.lyx.org/
 \lyxformat 271
 \begin_document
 \begin_header
@@ -1546,7 +1546,7 @@ CTAN: N/A
 \begin_layout Description
 WWW: available from the site 
 \begin_inset LatexCommand url
-target "http://www.worldscinet.com/ijmpc/mkt/guidelines.s"
+target "http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml"
 
 \end_inset
 
@@ -1556,7 +1556,7 @@ target "http://www.worldscinet.com/ijmpc/mkt/guidelines.s"
 \begin_layout Description
 Notes: The document class
 \family sans
-ijmpc
+ ijmpc
 \family default
  can be used to write articles for submission to the International Journal
  of Modern Physics C (usually abbreviated as IJMPC), published by World
@@ -1593,6 +1593,37 @@ ijmpd
  can be used to write articles for submission to the International Journal
  of Modern Physics D (usually abbreviated as IJMPD), published by World
  Scientific.
+\end_layout
+
+\begin_layout Subsection
+iopart
+\end_layout
+
+\begin_layout Description
+Found: @chk_iopart@
+\end_layout
+
+\begin_layout Description
+CTAN: N/A
+\end_layout
+
+\begin_layout Description
+WWW: available from the site 
+\begin_inset LatexCommand url
+target "ftp://ftp.iop.org/pub/journals/latex2e"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Notes: The document class
+\family sans
+ iopart
+\family default
+ can be used to write articles for the journal published by the Institute
+ of Physics (IOP).
 \end_layout
 
 \begin_layout Subsection

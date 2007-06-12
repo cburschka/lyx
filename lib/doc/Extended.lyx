@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0rc1 created this file. For more info see http://www.lyx.org/
 \lyxformat 271
 \begin_document
 \begin_header
@@ -37,8 +37,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "Richard Heck" 
 \author "usti" 
+\author "Richard Heck" 
 \end_header
 
 \begin_body
@@ -6801,6 +6801,176 @@ ijmpd.lyx
 markboth{Authors' Names}{Short Paper's Title}
 \family default
 .
+\end_layout
+
+\begin_layout Section
+iopart
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Uwe Stöhr
+\end_layout
+
+\begin_layout Subsection
+Overview
+\end_layout
+
+\begin_layout Standard
+The iopart package provides a document class to create electronic manuscript
+ submission to the journals published by the Institute of Physics.
+ Instructions for the authors how to create a paper using the iopart class
+ can be downloaded together with the iopart package from the site 
+\begin_inset LatexCommand url
+target "ftp://ftp.iop.org/pub/journals/latex2e"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Writing a paper
+\end_layout
+
+\begin_layout Standard
+The easiest way to write a paper is to start with the file 
+\emph on
+IOP-article.lyx
+\emph default
+ that is available in LyX's examples files folder.
+ Open this file, save it under a new name, and start writing.
+ The example file explains how to use the special text environments.
+ Here are the most important advices:
+\end_layout
+
+\begin_layout Itemize
+To be able to compile your document to a PDF, PS, or DVI, assure that the
+ two options 
+\family sans
+Use AMS math package
+\family default
+ in the document settings under 
+\family sans
+Math Options
+\family default
+ are not used!
+\end_layout
+
+\begin_layout Itemize
+
+\size normal
+The title environment defines the kind of your paper.
+ So use one of the following environments for the title:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
+\size normal
+Title
+\family default
+ for a Paper
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Review
+\family default
+ for a Review
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Topical
+\family default
+ for a Topical review
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Comment
+\family default
+ for a Comment
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Note
+\family default
+ for a Note
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Paper
+\family default
+ for a Paper (same as Title)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Prelim
+\family default
+ for a Preliminary communication
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Rapid
+\family default
+ for a Rapid communication
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\size normal
+Letter
+\family default
+ for a Letter to the editor
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size normal
+All title environments except of 
+\family sans
+Letter
+\family default
+ can have an optional short title.
+\end_layout
+
+\begin_layout Itemize
+There is a general title environment 
+\family sans
+Article
+\family default
+ which is not directly supported by the LyX.
+ This can be used as ERT when your document doesn't fit into one of the
+ other title types.
+\end_layout
+
+\begin_layout Standard
+For more informations like hints for special table and formula formatting,
+ look at the IOP author guidelines.
 \end_layout
 
 \begin_layout Section
