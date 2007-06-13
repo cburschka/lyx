@@ -1,13 +1,8 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass IEEEtran
-\begin_preamble
-% The following definition specifies the text on the headers:
-% Use this instead of the "MarkBoth" paragraph style
-\markboth{This is for left pages}{and this is for right pages}
-\end_preamble
 \language english
 \inputencoding default
 \font_roman default
@@ -43,25 +38,6 @@
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-To specify the left and right header, go to 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Preamble
-\family default
- and change the definition there.
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Title
 Your Title: And maybe a bit extra
@@ -102,6 +78,21 @@ This paper presents a simple template for IEEEtran documents.
 
 \begin_layout Keywords
 simplicity, beauty, elegance
+\end_layout
+
+\begin_layout MarkBoth
+This is for left pages
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+and this is for right pages
 \end_layout
 
 \begin_layout Section
@@ -164,29 +155,22 @@ Methodology
 \end_layout
 
 \begin_layout Theorem
-\begin_inset ERT
+\begin_inset OptArg
 status collapsed
 
 \begin_layout Standard
-
-[
-\end_layout
-
-\end_inset
-
 Theorem name
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-]
 \end_layout
 
 \end_inset
 
- For a named theorem or theorem-like environment you need to use a little
- evil red text (LaTeX mode) around the name.
+For a named theorem or theorem-like environment you need to insert the name
+ through 
+\family sans
+Insert\SpecialChar \menuseparator
+Short Title
+\family default
+, as done here.
 \end_layout
 
 \begin_layout Lemma
@@ -396,22 +380,7 @@ status collapsed
  raw TeX.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-% This LaTeX comment is needed to force LyX to generate two separate environment
-s
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-
+\begin_layout --Separator--
 
 \end_layout
 
