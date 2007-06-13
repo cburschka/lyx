@@ -1,5 +1,12 @@
 LyX file-format changes
 -----------------------
+
+2007-06-13 Dov Feldstern <dov@lyx.org>
+	* format incremented to 274: applying the conversion done in format 259
+		to the \lang property, which was forgotten back then... This is
+		slightly more complicated, because the default language has to be
+		determined on a per-paragraph basis.
+
 2007-06-13 Bo Peng <ben.bob@gmail.com>
 	* format incremented to 273: add --Separator-- environment to 
 		separate consecutive environments

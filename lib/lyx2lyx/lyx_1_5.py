@@ -22,7 +22,7 @@
 import re
 import unicodedata
 
-from parser_tools import find_re, find_token, find_token_backwards, find_token_exact, find_tokens, find_end_of, get_value
+from parser_tools import find_re, find_token, find_token_backwards, find_token_exact, find_tokens, find_end_of, get_value, find_beginning_of, find_nonempty_line
 from LyX import get_encoding
 
 
@@ -36,6 +36,10 @@ def find_end_of_inset(lines, i):
 def find_end_of_layout(lines, i):
     " Find end of layout, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
+
+def find_beginning_of_layout(lines, i):
+    "Find beginning of layout, where lines[i] is included."
+    return find_beginning_of(lines, i, "\\begin_layout", "\\end_layout")
 
 # End of helper functions
 ####################################################################
@@ -1099,22 +1103,59 @@ def revert_accent(document):
         document.body[i] = unicodedata.normalize("NFKC", document.body[i])
 
 
-def normalize_font_whitespace(document):
+def normalize_font_whitespace_259(document):
     """ Before format 259 the font changes were ignored if a
     whitespace was the first or last character in the sequence, this function
     transfers the whitespace outside."""
-
-    if document.backend != "latex":
-        return
-
-    lines = document.body
-
+	
     char_properties = {"\\series": "default",
                        "\\emph": "default",
                        "\\color": "none",
                        "\\shape": "default",
                        "\\bar": "default",
                        "\\family": "default"}
+    return normalize_font_whitespace(document, char_properties)
+
+def normalize_font_whitespace_274(document):
+    """ Before format 259 (sic) the font changes were ignored if a
+    whitespace was the first or last character in the sequence. This was 
+    corrected for most font properties in format 259, but the language 
+    was forgotten then. This function applies the same conversion done
+    there (namely, transfers the whitespace outside) for font language
+    changes, as well."""
+
+    char_properties = {"\\lang": "default"}
+    return normalize_font_whitespace(document, char_properties)
+
+def get_paragraph_language(document, i):
+    """ Return the language of the paragraph in which line i of the document
+    body is. If the first thing in the paragraph is a \\lang command, that
+    is the paragraph's langauge; otherwise, the paragraph's language is the 
+    document's language."""
+
+    lines = document.body
+	
+    first_nonempty_line = \
+        find_nonempty_line(lines, find_beginning_of_layout(lines, i) + 1)
+
+    words = lines[first_nonempty_line].split()
+
+    if len(words) > 1 and words[0] == "\\lang":
+        return words[1]
+    else:
+        return document.language
+	
+def normalize_font_whitespace(document, char_properties):
+    """ Before format 259 the font changes were ignored if a
+    whitespace was the first or last character in the sequence, this function
+    transfers the whitespace outside. Only a change in one of the properties
+    in the provided	char_properties is handled by this function."""
+
+    if document.backend != "latex":
+        return
+
+    lines = document.body
+
     changes = {}
 
     i = 0
@@ -1124,6 +1165,10 @@ def normalize_font_whitespace(document):
         if len(words) > 0 and words[0] == "\\begin_layout":
             # a new paragraph resets all font changes
             changes.clear()
+            # also reset the default language to be the paragraph's language
+            if "\\lang" in char_properties.keys():
+                char_properties["\\lang"] = \
+                    get_paragraph_language(document, i + 1)
 
         elif len(words) > 1 and words[0] in char_properties.keys():
             # we have a font change
@@ -1722,7 +1767,7 @@ convert = [[246, []],
            [256, []],
            [257, [convert_caption]],
            [258, [convert_lyxline]],
-           [259, [convert_accent, normalize_font_whitespace]],
+           [259, [convert_accent, normalize_font_whitespace_259]],
            [260, []],
            [261, [convert_changes]],
            [262, []],
@@ -1737,9 +1782,11 @@ convert = [[246, []],
            [271, [convert_ext_font_sizes]],
            [272, []],
            [273, []],
+           [274, [normalize_font_whitespace_274]]
           ]
 
 revert =  [
+           [273, []],
            [272, [revert_separator_layout]],
            [271, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
            [270, [revert_ext_font_sizes]],
