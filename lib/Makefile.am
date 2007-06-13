@@ -264,6 +264,7 @@ dist_images_DATA = \
 	images/changes-merge.xpm \
 	images/changes-output.xpm \
 	images/changes-track.xpm \
+	images/closetab.xpm \
 	images/copy.xpm \
 	images/cut.xpm \
 	images/demote.xpm \
@@ -354,8 +355,7 @@ dist_images_DATA = \
 	images/undo.xpm \
 	images/unknown.xpm \
 	images/up.xpm \
-	images/url-insert.xpm \
-	images/closetab.xpm
+	images/url-insert.xpm
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
