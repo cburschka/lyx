@@ -1,5 +1,10 @@
 LyX file-format changes
 -----------------------
+2007-06-13 Bo Peng <bpeng@lyx.org>
+	* format incremented to 272: convert listings to ERT because
+		earlier versions of lyx can not handle unrecognizable 
+		listings parameters.
+
 2007-05-15 José Matos <jamatos@lyx.org>
 	* format incremented to 271: extended textclasses accept the
         normal font sizes: 10, 11 and 12pt.

@@ -1688,9 +1688,11 @@ convert = [[246, []],
            [269, []],
            [270, []],
            [271, [convert_ext_font_sizes]]
+           [272, []],
           ]
 
 revert =  [
+           [271, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
            [270, [revert_ext_font_sizes]],
            [269, [revert_beamer_alert, revert_beamer_structure]],
            [268, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
