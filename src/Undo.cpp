@@ -164,6 +164,7 @@ bool textUndoOrRedo(BufferView & bv,
 
 	// This does the actual undo/redo.
 	//lyxerr << "undo, performing: " << undo << std::endl;
+	bool labelsUpdateNeeded = false;
 	DocIterator dit = undo.cell.asDocIterator(&buf->inset());
 	if (undo.isFullBuffer) {
 		BOOST_ASSERT(undo.pars);
@@ -209,7 +210,7 @@ bool textUndoOrRedo(BufferView & bv,
 		plist.insert(first, undo.pars->begin(), undo.pars->end());
 		delete undo.pars;
 		undo.pars = 0;
-		updateLabels(*buf);
+		labelsUpdateNeeded = true;
 	}
 	BOOST_ASSERT(undo.pars == 0);
 	BOOST_ASSERT(undo.array == 0);
@@ -220,8 +221,10 @@ bool textUndoOrRedo(BufferView & bv,
 	cur.selection() = false;
 	cur.resetAnchor();
 	cur.fixIfBroken();
+	
+	if (labelsUpdateNeeded)
+		updateLabels(*buf);
 	finishUndo();
-
 	return true;
 }
 
