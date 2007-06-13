@@ -628,15 +628,14 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 
 void BufferView::translateAndInsert(char_type c, Text * t, Cursor & cur)
 {
-	if (!lyxrc.rtl_support)
-		return;
-
-	if (cursor_.innerText()->real_current_font.isRightToLeft()) {
-		if (intl_->keymap == Intl::PRIMARY)
-			intl_->keyMapSec();
-	} else {
-		if (intl_->keymap == Intl::SECONDARY)
-			intl_->keyMapPrim();
+	if (lyxrc.rtl_support) {
+		if (cursor_.innerText()->real_current_font.isRightToLeft()) {
+			if (intl_->keymap == Intl::PRIMARY)
+				intl_->keyMapSec();
+		} else {
+			if (intl_->keymap == Intl::SECONDARY)
+				intl_->keyMapPrim();
+		}
 	}
 	
 	intl_->getTransManager().translateAndInsert(c, t, cur);
