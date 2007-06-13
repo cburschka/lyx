@@ -1656,6 +1656,53 @@ def convert_ext_font_sizes(document):
     else:
         del document.header[i]
 
+def revert_separator_layout(document):
+    r'''Revert --Separator-- to a lyx note
+From
+
+\begin_layout --Separator--
+something
+\end_layout
+
+to
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Separate Evironment
+\end_layout
+
+\end_inset
+something
+
+\end_layout
+
+    '''
+
+    i = 0
+    while True:
+        i = find_token(document.body, r'\begin_layout --Separator--', i)
+        if i == -1:
+            break
+        j = find_end_of_layout(document.body, i + 1)
+        if j == -1:
+            # this should not happen
+            break
+        document.body[i : j + 1] = [r'\begin_layout Standard',
+                                    r'\begin_inset Note Note',
+                                    'status open',
+                                    '',
+                                    r'\begin_layout Standard',
+                                    'Separate Environment',
+                                    r'\end_layout',
+                                    '',
+                                    r'\end_inset'] + \
+                                    document.body[ i + 1 : j] + \
+                                    ['',
+                                    r'\end_layout'
+                                    ]
 
 ##
 # Conversion hub
@@ -1687,11 +1734,13 @@ convert = [[246, []],
            [268, []],
            [269, []],
            [270, []],
-           [271, [convert_ext_font_sizes]]
+           [271, [convert_ext_font_sizes]],
            [272, []],
+           [273, []],
           ]
 
 revert =  [
+           [272, [revert_separator_layout]],
            [271, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],
            [270, [revert_ext_font_sizes]],
            [269, [revert_beamer_alert, revert_beamer_structure]],

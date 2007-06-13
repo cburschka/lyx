@@ -61,5 +61,20 @@ Style Verse
 End
 
 
-
-
+Style --Separator--
+	KeepEmpty             1
+	Margin                Dynamic
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	Align                 Block
+	AlignPossible         Block
+	LabelType             Static
+	LabelString           "--- Separate Environment ---"
+	LabelFont
+	  Family              Roman
+	  Series              Medium
+	  Size                Normal
+	  Color               Blue
+	EndFont
+End

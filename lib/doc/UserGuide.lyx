@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 273
 \begin_document
 \begin_header
 \textclass scrbook
@@ -91,8 +91,9 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti"
-\author "Uwe Stöhr"
+\author "Bo Peng" 
+\author "usti" 
+\author "Uwe Stöhr" 
 \end_header
 
 \begin_body
@@ -9278,6 +9279,42 @@ Once again, LyX doesn't enforce this limitation.
 
 \end_layout
 
+\begin_layout Standard
+In case that you want to start a new list immediately after a list, or consecuti
+ve definitions, proofs etc, you can use the 
+\family sans
+--Separator--
+\family default
+ environment to separate them.
+ For example
+\end_layout
+
+\begin_layout Enumerate
+item1
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+another item1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+nested item1
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+nested another item1
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Some Examples
 \end_layout
