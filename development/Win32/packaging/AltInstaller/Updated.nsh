@@ -12,6 +12,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\FAQ.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\clipart"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\escher-lsd.eps"
