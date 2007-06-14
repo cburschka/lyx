@@ -73,7 +73,7 @@ Style Theorem
 	LatexName             thm
 	LabelString           "Theorem #:"
 	Preamble
-	  \newtheorem{thm}{Theorem}
+	\newtheorem{thm}{Theorem}
 	EndPreamble
 End
 
@@ -83,7 +83,7 @@ Style Lemma
 	LatexName             lemma
 	LabelString           "Lemma #:"
 	Preamble
-	  \newtheorem{lemma}{Lemma}
+	\newtheorem{lemma}{Lemma}
 	EndPreamble
 End
 
@@ -93,7 +93,7 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary #:"
 	Preamble
-	  \newtheorem{cor}{Corollary}
+	\newtheorem{cor}{Corollary}
 	EndPreamble
 End
 
@@ -103,7 +103,7 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition #:"
 	Preamble
-	  \newtheorem{prop}{Proposition}
+	\newtheorem{prop}{Proposition}
 	EndPreamble
 End
 
@@ -113,7 +113,7 @@ Style Conjecture
 	LatexName             conject
 	LabelString           "Conjecture #:"
 	Preamble
-	  \newtheorem{conject}{Conjecture}
+	\newtheorem{conject}{Conjecture}
 	EndPreamble
 End
 
@@ -123,7 +123,7 @@ Style Criterion
 	LatexName             criter
 	LabelString           "Criterion #:"
 	Preamble
-	  \newtheorem{criter}{Criterion}
+	\newtheorem{criter}{Criterion}
 	EndPreamble
 End
 
@@ -133,7 +133,7 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact #:"
 	Preamble
-	  \newtheorem{fact}{Fact}
+	\newtheorem{fact}{Fact}
 	EndPreamble
 End
 
@@ -143,7 +143,7 @@ Style Axiom
 	LatexName             axi
 	LabelString           "Axiom #:"
 	Preamble
-	  \newtheorem{axi}{Axiom}
+	\newtheorem{axi}{Axiom}
 	EndPreamble
 End
 
@@ -153,7 +153,7 @@ Style Definition
 	LatexName             definitn
 	LabelString           "Definition #:"
 	Preamble
-	  \newtheorem{definitn}{Definition}
+	\newtheorem{definitn}{Definition}
 	EndPreamble
 End
 
@@ -163,7 +163,7 @@ Style Example
 	LatexName             example
 	LabelString           "Example #:"
 	Preamble
-	  \newtheorem{example}{Example}
+	\newtheorem{example}{Example}
 	EndPreamble
 End
 
@@ -173,7 +173,7 @@ Style Condition
 	LatexName             condition
 	LabelString           "Condition #:"
 	Preamble
-	  \newtheorem{condition}{Condition}
+	\newtheorem{condition}{Condition}
 	EndPreamble
 End
 
@@ -183,7 +183,7 @@ Style Problem
 	LatexName             problem
 	LabelString           "Problem #:"
 	Preamble
-	  \newtheorem{problem}{Problem}
+	\newtheorem{problem}{Problem}
 	EndPreamble
 End
 
@@ -193,7 +193,7 @@ Style Exercise
 	LatexName             exacise
 	LabelString           "Exercise #:"
 	Preamble
-	  \newtheorem{exacise}{Exercise}
+	\newtheorem{exacise}{Exercise}
 	EndPreamble
 End
 
@@ -203,7 +203,7 @@ Style Remark
 	LatexName             remrk
 	LabelString           "Remark #:"
 	Preamble
-	  \newtheorem{remrk}{Remark}
+	\newtheorem{remrk}{Remark}
 	EndPreamble
 End
 
@@ -213,7 +213,7 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim #:"
 	Preamble
-	  \newtheorem{claim}{Claim}
+	\newtheorem{claim}{Claim}
 	EndPreamble
 End
 
@@ -223,7 +223,7 @@ Style Note
 	LatexName             note
 	LabelString           "Note #:"
 	Preamble
-	  \newtheorem{note}{Note}
+	\newtheorem{note}{Note}
 	EndPreamble
 End
 
@@ -233,7 +233,7 @@ Style Notation
 	LatexName             notation
 	LabelString           "Notation #:"
 	Preamble
-	  \newtheorem{notation}{Notation}
+	\newtheorem{notation}{Notation}
 	EndPreamble
 End
 
@@ -243,7 +243,7 @@ Style Case
 	LatexName             case
 	LabelString           "Case #:"
 	Preamble
-	  \newtheorem{case}{Case}
+	\newtheorem{case}{Case}
 	EndPreamble
 End
 
@@ -468,9 +468,13 @@ End
 
 Style MarkBoth
 	LaTeXType             Command
-	LaTeXName             markboth
+	LaTeXName             IEEEmarkboth
 	Align                 Center
 	AlignPossible         Center
+	Preamble
+	% protect against redefinition of \markboth by babel >= 3.6
+	\let\IEEEmarkboth=\markboth
+	EndPreamble
 End
 
 
