@@ -48,6 +48,8 @@ public:
 	/// target pos when we enter the inset from the right by pressing "Left"
 	bool idxLast(Cursor &) const;
 	///
+	bool idxUpDown(Cursor & cur, bool up) const;
+	///
 	virtual bool notifyCursorLeaves(Cursor &);
 	///
 	docstring name() const;

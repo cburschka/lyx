@@ -254,6 +254,22 @@ bool MathMacro::idxLast(Cursor & cur) const
 }
 
 
+bool MathMacro::idxUpDown(Cursor & cur, bool up) const
+{
+	if (up) {
+		if (cur.idx() == 0)
+			return false;
+		--cur.idx();
+	} else {
+		if (cur.idx() + 1 >= nargs())
+			return false;
+		++cur.idx();
+	}
+	cur.pos() = cell(cur.idx()).x2pos(cur.x_target());
+	return true;
+}
+
+
 bool MathMacro::notifyCursorLeaves(Cursor & cur)
 {
 	cur.updateFlags(Update::Force);
