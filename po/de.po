@@ -2210,46 +2210,40 @@ msgstr ""
 "einfacher Text"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:25
-#, fuzzy
 msgid "Printer Command Options"
-msgstr "Befehlsoptionen"
+msgstr "Optionen für Druckerbefehl"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:66
 msgid "Extension to be used when printing to file."
-msgstr ""
+msgstr "Zu verwendende Erweiterung beim Druck in eine Datei."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "File ex&tension:"
 msgstr "Datei&endung:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:82
-#, fuzzy
 msgid "Option used to print to a file."
-msgstr "Option, um die Druckausgabe in eine Datei umzulenken."
+msgstr "Option, um in eine Datei zu drucken."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-#, fuzzy
 msgid "Print to &file:"
-msgstr "Ausgabe in Datei"
+msgstr "Druck in Da&tei:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:95
-#, fuzzy
 msgid "Option used to print to non-default printer."
-msgstr "Option, um die Ausgabe auf einen angegebenen Drucker zu veranlassen."
+msgstr "Option, um auf einen Nicht-Standard-Drucker zu drucken."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
-#, fuzzy
 msgid "Set p&rinter:"
-msgstr "Zum &Drucker:"
+msgstr "D&rucker festlegen:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:111
 msgid "Option used with spool command to set printer."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
-#, fuzzy
 msgid "Spool pr&inter:"
-msgstr "&Spool-Präfix:"
+msgstr "Sp&ool-Drucker:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:127
 msgid ""
@@ -2262,23 +2256,20 @@ msgid "Spool &command:"
 msgstr "Spool-&Befehl:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:150
-#, fuzzy
 msgid "Option used to reverse page order."
-msgstr "In umgekehrter Reihenfolge drucken"
+msgstr "Option, um die Reihenfolge der Seiten umzukehren."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
-#, fuzzy
 msgid "Re&verse pages:"
-msgstr "&Umgekehrt:"
+msgstr "Seiten &umkehren:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Lan&dscape:"
 msgstr "&Querformat:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:179
-#, fuzzy
 msgid "Number of Co&pies:"
-msgstr "Anzahl der Kopien"
+msgstr "Anzahl der &Kopien:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:189
 #, fuzzy
@@ -6001,28 +5992,24 @@ msgid "Review"
 msgstr "Überarbeitung"
 
 #: lib/layouts/iopart.layout:79
-#, fuzzy
 msgid "Topical"
-msgstr "Thema"
+msgstr ""
 
 #: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:67
 msgid "Comment"
 msgstr "Kommentar"
 
 #: lib/layouts/iopart.layout:97
-#, fuzzy
 msgid "Paper"
-msgstr "Paper-Id"
+msgstr "Papier"
 
 #: lib/layouts/iopart.layout:103
-#, fuzzy
 msgid "Prelim"
-msgstr "lim"
+msgstr ""
 
 #: lib/layouts/iopart.layout:109
-#, fuzzy
 msgid "Rapid"
-msgstr "varpi"
+msgstr ""
 
 #: lib/layouts/iopart.layout:212 lib/layouts/revtex4.layout:230
 msgid "PACS"
@@ -6033,14 +6020,12 @@ msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:219
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr ""
 
 #: lib/layouts/iopart.layout:222
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
-msgstr "1991 Mathematik-Sachgebiet-Klassifikation:"
+msgstr "Nummer der Mathematik-Sachgebiet-Klassifikation:"
 
 #: lib/layouts/iopart.layout:226
 msgid "submitto"
@@ -6051,14 +6036,12 @@ msgid "submit to paper:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:255
-#, fuzzy
 msgid "Bibliography (plain)"
-msgstr "Literaturverzeichnis"
+msgstr "Literaturverzeichnis (einfach)"
 
 #: lib/layouts/iopart.layout:278
-#, fuzzy
 msgid "Bibliography heading"
-msgstr "Literaturverzeichnis"
+msgstr "Überschrift des Literaturverzeichnisses"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
@@ -7668,7 +7651,7 @@ msgstr "Mathe|M"
 
 #: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:460
 msgid "Spellchecker...|S"
-msgstr "Rechtschreibprüfung...|p"
+msgstr "Rechtschreibprüfung...|R"
 
 #: lib/ui/classic.ui:105
 msgid "Thesaurus..."
@@ -7680,7 +7663,7 @@ msgstr "Wörter zählen|W"
 
 #: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:463
 msgid "Check TeX|h"
-msgstr "TeX prüfen|T"
+msgstr "TeX prüfen|p"
 
 #: lib/ui/classic.ui:108
 msgid "Change Tracking|g"
@@ -7692,7 +7675,7 @@ msgstr "Einstellungen...|E"
 
 #: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:469
 msgid "Reconfigure|R"
-msgstr "Neu konfigurieren|o"
+msgstr "Neu konfigurieren|k"
 
 #: lib/ui/classic.ui:115
 msgid "Selection as Lines|L"
@@ -8825,18 +8808,16 @@ msgid "Comment|C"
 msgstr "Kommentar|K"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Framed|F"
-msgstr "Eingerahmt"
+msgstr "Eingerahmt|E"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Greyed Out|G"
 msgstr "Grauschrift|G"
 
 #: lib/ui/stdmenus.inc:399
-#, fuzzy
 msgid "Shaded|S"
-msgstr "Schattiert"
+msgstr "Schattiert|S"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Change Tracking|C"
@@ -10122,9 +10103,8 @@ msgid "rho"
 msgstr "rho"
 
 #: lib/ui/stdtoolbars.inc:456
-#, fuzzy
 msgid "varrho"
-msgstr "rho"
+msgstr "varrho"
 
 #: lib/ui/stdtoolbars.inc:457
 msgid "sigma"
@@ -15832,31 +15812,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "caption parameter is not quoted with braces"
-#~ msgstr "Der Legenden-Parameter ist nicht durch Klammern begrenzt"
-
-#~ msgid "label parameter is not quoted with braces"
-#~ msgstr "Der Marken-Parameter ist nicht durch Klammern begrenzt"
-
-#~ msgid ""
-#~ "Adjusts dvips output for a particular printer. (Note: dvips must be pre-"
-#~ "configured for that printer.)"
-#~ msgstr ""
-#~ "Passen Sie die Ausgabe von dvips an einen bestimmten Drucker an. "
-#~ "(Hinweis: dvips muss für diesen Drucker vorkonfiguriert sein.)"
-
-#~ msgid "Use -P<printer> parameter with dvips"
-#~ msgstr "Parameter -P<printer> mit dvips verwenden"
-
-#~ msgid "To &file:"
-#~ msgstr "In &Datei:"
-
-#~ msgid "Co&pies:"
-#~ msgstr "&Kopien:"
-
-#~ msgid "Specify the command option names for your printer command"
-#~ msgstr "Geben Sie die Befehlsoptions-Namen für ihren Druckbefehl an"
-
-#~ msgid "Printer &name:"
-#~ msgstr "&Druckername:"
