@@ -11,6 +11,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\FAQ.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
@@ -27,6 +28,9 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\images\math"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\functions.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\varrho.xpm"
+ SetOutPath "$INSTDIR\Resources\lyx2lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\IEEEtran.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\iop-article.lyx"
