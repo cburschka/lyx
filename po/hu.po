@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-12 23:29+0200\n"
+"POT-Creation-Date: 2007-06-14 21:27+0200\n"
 "PO-Revision-Date: 2007-06-10 20:40+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -3173,7 +3173,7 @@ msgstr "Normál szöveg"
 msgid "TheoremTemplate"
 msgstr "Tétel-sablon"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:956
+#: lib/layouts/IEEEtran.layout:64 lib/layouts/beamer.layout:956
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:227
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
@@ -3182,11 +3182,11 @@ msgstr "Tétel-sablon"
 msgid "Proof"
 msgstr "Bizonyítás"
 
-#: lib/layouts/IEEEtran.layout:66 lib/layouts/heb-article.layout:110
+#: lib/layouts/IEEEtran.layout:67 lib/layouts/heb-article.layout:110
 msgid "Proof:"
 msgstr "Bizonyítás:"
 
-#: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
+#: lib/layouts/IEEEtran.layout:72 lib/layouts/amsart-plain.layout:26
 #: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:962
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:205
@@ -3197,11 +3197,11 @@ msgstr "Bizonyítás:"
 msgid "Theorem"
 msgstr "Tétel"
 
-#: lib/layouts/IEEEtran.layout:74
+#: lib/layouts/IEEEtran.layout:75
 msgid "Theorem #:"
 msgstr "Tétel #:"
 
-#: lib/layouts/IEEEtran.layout:81 lib/layouts/amsart-plain.layout:37
+#: lib/layouts/IEEEtran.layout:82 lib/layouts/amsart-plain.layout:37
 #: lib/layouts/amsart-seq.layout:149 lib/layouts/elsart.layout:318
 #: lib/layouts/foils.layout:248 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:262
@@ -3211,11 +3211,11 @@ msgstr "Tétel #:"
 msgid "Lemma"
 msgstr "Segédtétel"
 
-#: lib/layouts/IEEEtran.layout:84
+#: lib/layouts/IEEEtran.layout:85
 msgid "Lemma #:"
 msgstr "Segédtétel #:"
 
-#: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
+#: lib/layouts/IEEEtran.layout:92 lib/layouts/amsart-plain.layout:31
 #: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:893
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
@@ -3226,11 +3226,11 @@ msgstr "Segédtétel #:"
 msgid "Corollary"
 msgstr "Következmény"
 
-#: lib/layouts/IEEEtran.layout:94
+#: lib/layouts/IEEEtran.layout:95
 msgid "Corollary #:"
 msgstr "Következmény #:"
 
-#: lib/layouts/IEEEtran.layout:101 lib/layouts/amsart-plain.layout:43
+#: lib/layouts/IEEEtran.layout:102 lib/layouts/amsart-plain.layout:43
 #: lib/layouts/amsart-seq.layout:155 lib/layouts/elsart.layout:332
 #: lib/layouts/foils.layout:262 lib/layouts/ijmpc.layout:267
 #: lib/layouts/ijmpd.layout:273 lib/layouts/llncs.layout:388
@@ -3240,11 +3240,11 @@ msgstr "Következmény #:"
 msgid "Proposition"
 msgstr "Javaslat"
 
-#: lib/layouts/IEEEtran.layout:104
+#: lib/layouts/IEEEtran.layout:105
 msgid "Proposition #:"
 msgstr "Javaslat #:"
 
-#: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
+#: lib/layouts/IEEEtran.layout:112 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
 #: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:73
@@ -3253,43 +3253,43 @@ msgstr "Javaslat #:"
 msgid "Conjecture"
 msgstr "Feltevés"
 
-#: lib/layouts/IEEEtran.layout:114
+#: lib/layouts/IEEEtran.layout:115
 msgid "Conjecture #:"
 msgstr "Feltevés #:"
 
-#: lib/layouts/IEEEtran.layout:121 lib/layouts/amsart-plain.layout:55
+#: lib/layouts/IEEEtran.layout:122 lib/layouts/amsart-plain.layout:55
 #: lib/layouts/amsart-seq.layout:167 lib/layouts/elsart.layout:339
 #: lib/layouts/amsmaths-plain.inc:83 lib/layouts/amsmaths-seq.inc:72
 #: lib/layouts/amsmaths.inc:191
 msgid "Criterion"
 msgstr "Kritérium"
 
-#: lib/layouts/IEEEtran.layout:124
+#: lib/layouts/IEEEtran.layout:125
 msgid "Criterion #:"
 msgstr "Kritérium #:"
 
-#: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
+#: lib/layouts/IEEEtran.layout:132 lib/layouts/amsart-plain.layout:67
 #: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:950
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
 msgstr "Tény"
 
-#: lib/layouts/IEEEtran.layout:134
+#: lib/layouts/IEEEtran.layout:135
 msgid "Fact #:"
 msgstr "Tény #:"
 
-#: lib/layouts/IEEEtran.layout:141 lib/layouts/amsart-plain.layout:73
+#: lib/layouts/IEEEtran.layout:142 lib/layouts/amsart-plain.layout:73
 #: lib/layouts/amsart-seq.layout:185 lib/layouts/amsmaths-plain.inc:113
 #: lib/layouts/amsmaths-seq.inc:96 lib/layouts/amsmaths.inc:235
 msgid "Axiom"
 msgstr "Axióma"
 
-#: lib/layouts/IEEEtran.layout:144
+#: lib/layouts/IEEEtran.layout:145
 msgid "Axiom #:"
 msgstr "Axióma #:"
 
-#: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
+#: lib/layouts/IEEEtran.layout:152 lib/layouts/amsart-plain.layout:79
 #: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:920
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
@@ -3300,11 +3300,11 @@ msgstr "Axióma #:"
 msgid "Definition"
 msgstr "Definíció"
 
-#: lib/layouts/IEEEtran.layout:154
+#: lib/layouts/IEEEtran.layout:155
 msgid "Definition #:"
 msgstr "Definíció #:"
 
-#: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
+#: lib/layouts/IEEEtran.layout:162 lib/layouts/amsart-plain.layout:85
 #: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:932
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
@@ -3314,21 +3314,21 @@ msgstr "Definíció #:"
 msgid "Example"
 msgstr "Példa"
 
-#: lib/layouts/IEEEtran.layout:164
+#: lib/layouts/IEEEtran.layout:165
 msgid "Example #:"
 msgstr "Példa #:"
 
-#: lib/layouts/IEEEtran.layout:171 lib/layouts/amsart-plain.layout:91
+#: lib/layouts/IEEEtran.layout:172 lib/layouts/amsart-plain.layout:91
 #: lib/layouts/amsart-seq.layout:203 lib/layouts/amsmaths-plain.inc:143
 #: lib/layouts/amsmaths-seq.inc:120 lib/layouts/amsmaths.inc:298
 msgid "Condition"
 msgstr "Feltétel"
 
-#: lib/layouts/IEEEtran.layout:174
+#: lib/layouts/IEEEtran.layout:175
 msgid "Condition #:"
 msgstr "Feltétel #:"
 
-#: lib/layouts/IEEEtran.layout:181 lib/layouts/amsart-plain.layout:97
+#: lib/layouts/IEEEtran.layout:182 lib/layouts/amsart-plain.layout:97
 #: lib/layouts/amsart-seq.layout:209 lib/layouts/elsart.layout:381
 #: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:153
 #: lib/layouts/amsmaths-seq.inc:128 lib/layouts/amsmaths.inc:320
@@ -3336,22 +3336,22 @@ msgstr "Feltétel #:"
 msgid "Problem"
 msgstr "Probléma"
 
-#: lib/layouts/IEEEtran.layout:184
+#: lib/layouts/IEEEtran.layout:185
 msgid "Problem #:"
 msgstr "Probléma #:"
 
-#: lib/layouts/IEEEtran.layout:191 lib/layouts/amsart-plain.layout:103
+#: lib/layouts/IEEEtran.layout:192 lib/layouts/amsart-plain.layout:103
 #: lib/layouts/amsart-seq.layout:215 lib/layouts/llncs.layout:347
 #: lib/layouts/amsmaths-plain.inc:163 lib/layouts/amsmaths-seq.inc:136
 #: lib/layouts/amsmaths.inc:342 lib/layouts/svjour.inc:404
 msgid "Exercise"
 msgstr "Feladat"
 
-#: lib/layouts/IEEEtran.layout:194
+#: lib/layouts/IEEEtran.layout:195
 msgid "Exercise #:"
 msgstr "Feladat #:"
 
-#: lib/layouts/IEEEtran.layout:201 lib/layouts/amsart-plain.layout:109
+#: lib/layouts/IEEEtran.layout:202 lib/layouts/amsart-plain.layout:109
 #: lib/layouts/amsart-seq.layout:221 lib/layouts/elsart.layout:388
 #: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:183
 #: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:173
@@ -3360,11 +3360,11 @@ msgstr "Feladat #:"
 msgid "Remark"
 msgstr "Észrevétel"
 
-#: lib/layouts/IEEEtran.layout:204
+#: lib/layouts/IEEEtran.layout:205
 msgid "Remark #:"
 msgstr "Észrevétel #:"
 
-#: lib/layouts/IEEEtran.layout:211 lib/layouts/amsart-plain.layout:115
+#: lib/layouts/IEEEtran.layout:212 lib/layouts/amsart-plain.layout:115
 #: lib/layouts/amsart-seq.layout:227 lib/layouts/elsart.layout:402
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:297
 #: lib/layouts/ijmpd.layout:306 lib/layouts/llncs.layout:305
@@ -3373,11 +3373,11 @@ msgstr "Észrevétel #:"
 msgid "Claim"
 msgstr "Követelés"
 
-#: lib/layouts/IEEEtran.layout:214
+#: lib/layouts/IEEEtran.layout:215
 msgid "Claim #:"
 msgstr "Követelés #:"
 
-#: lib/layouts/IEEEtran.layout:221 lib/layouts/amsart-plain.layout:121
+#: lib/layouts/IEEEtran.layout:222 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
 #: lib/layouts/elsart.layout:395 lib/layouts/iopart.layout:91
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:195
@@ -3387,33 +3387,33 @@ msgstr "Követelés #:"
 msgid "Note"
 msgstr "Megjegyzés"
 
-#: lib/layouts/IEEEtran.layout:224
+#: lib/layouts/IEEEtran.layout:225
 msgid "Note #:"
 msgstr "Megjegyzés #:"
 
-#: lib/layouts/IEEEtran.layout:231 lib/layouts/amsart-plain.layout:127
+#: lib/layouts/IEEEtran.layout:232 lib/layouts/amsart-plain.layout:127
 #: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:195
 #: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:203
 #: lib/layouts/amsmaths-seq.inc:168 lib/layouts/amsmaths.inc:440
 msgid "Notation"
 msgstr "Jelölés"
 
-#: lib/layouts/IEEEtran.layout:234
+#: lib/layouts/IEEEtran.layout:235
 msgid "Notation #:"
 msgstr "Jelölés #:"
 
-#: lib/layouts/IEEEtran.layout:241 lib/layouts/amsart-plain.layout:145
+#: lib/layouts/IEEEtran.layout:242 lib/layouts/amsart-plain.layout:145
 #: lib/layouts/amsart-seq.layout:257 lib/layouts/elsart.layout:417
 #: lib/layouts/llncs.layout:284 lib/layouts/amsmaths-plain.inc:233
 #: lib/layouts/amsmaths-seq.inc:192 lib/layouts/amsmaths.inc:495
 msgid "Case"
 msgstr "Eset"
 
-#: lib/layouts/IEEEtran.layout:244
+#: lib/layouts/IEEEtran.layout:245
 msgid "Case #:"
 msgstr "Eset #:"
 
-#: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:37
+#: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
@@ -3436,7 +3436,7 @@ msgstr "Eset #:"
 msgid "Section"
 msgstr "Szakasz"
 
-#: lib/layouts/IEEEtran.layout:279 lib/layouts/aa.layout:40
+#: lib/layouts/IEEEtran.layout:280 lib/layouts/aa.layout:40
 #: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
@@ -3455,7 +3455,7 @@ msgstr "Szakasz"
 msgid "Subsection"
 msgstr "Alszakasz"
 
-#: lib/layouts/IEEEtran.layout:287 lib/layouts/aa.layout:43
+#: lib/layouts/IEEEtran.layout:288 lib/layouts/aa.layout:43
 #: lib/layouts/aa.layout:238 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:70
 #: lib/layouts/aastex.layout:192 lib/layouts/amsart.layout:80
@@ -3472,7 +3472,7 @@ msgstr "Alszakasz"
 msgid "Subsubsection"
 msgstr "Alalszakasz"
 
-#: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:176
+#: lib/layouts/IEEEtran.layout:296 lib/layouts/beamer.layout:176
 #: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
 #: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
@@ -3481,20 +3481,20 @@ msgstr "Alalszakasz"
 msgid "Section*"
 msgstr "Szakasz*"
 
-#: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:218
+#: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:218
 #: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
 msgid "Subsection*"
 msgstr "Alszakasz*"
 
-#: lib/layouts/IEEEtran.layout:313 lib/layouts/isprs.layout:206
+#: lib/layouts/IEEEtran.layout:314 lib/layouts/isprs.layout:206
 #: lib/layouts/siamltex.layout:95 lib/layouts/db_stdstarsections.inc:60
 #: lib/layouts/stdstarsections.inc:48
 msgid "Subsubsection*"
 msgstr "Alalszakasz*"
 
-#: lib/layouts/IEEEtran.layout:328 lib/layouts/aa.layout:80
+#: lib/layouts/IEEEtran.layout:329 lib/layouts/aa.layout:80
 #: lib/layouts/aa.layout:284 lib/layouts/aa.layout:300
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:244
@@ -3518,11 +3518,11 @@ msgstr "Alalszakasz*"
 msgid "Abstract"
 msgstr "Kivonat"
 
-#: lib/layouts/IEEEtran.layout:334
+#: lib/layouts/IEEEtran.layout:335
 msgid "Abstract---"
 msgstr "Kivonat---"
 
-#: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
+#: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:77 lib/layouts/ijmpd.layout:80
 #: lib/layouts/iopart.layout:194 lib/layouts/isprs.layout:52
@@ -3533,11 +3533,11 @@ msgstr "Kivonat---"
 msgid "Keywords"
 msgstr "Kulcsszavak"
 
-#: lib/layouts/IEEEtran.layout:359
+#: lib/layouts/IEEEtran.layout:360
 msgid "Index Terms---"
 msgstr "Tárgyszavak---"
 
-#: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
+#: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:844
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
@@ -3559,7 +3559,7 @@ msgstr "Tárgyszavak---"
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
-#: lib/layouts/IEEEtran.layout:380 lib/layouts/IEEEtran.layout:391
+#: lib/layouts/IEEEtran.layout:381 lib/layouts/IEEEtran.layout:392
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
@@ -3567,23 +3567,23 @@ msgstr "Irodalomjegyzék"
 msgid "Appendix"
 msgstr "Függelék"
 
-#: lib/layouts/IEEEtran.layout:403 lib/layouts/IEEEtran.layout:406
+#: lib/layouts/IEEEtran.layout:404 lib/layouts/IEEEtran.layout:407
 msgid "Appendices"
 msgstr "Függelékek"
 
-#: lib/layouts/IEEEtran.layout:410
+#: lib/layouts/IEEEtran.layout:411
 msgid "Biography"
 msgstr "Életrajz"
 
-#: lib/layouts/IEEEtran.layout:421
+#: lib/layouts/IEEEtran.layout:422
 msgid "BiographyNoPhoto"
 msgstr "ÉletrajzNoFénykép"
 
-#: lib/layouts/IEEEtran.layout:441 lib/layouts/IEEEtran.layout:452
+#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
 msgid "Footernote"
 msgstr "Lábjegyzet"
 
-#: lib/layouts/IEEEtran.layout:464
+#: lib/layouts/IEEEtran.layout:465
 msgid "MarkBoth"
 msgstr "Mindkettõ jelölése"
 
@@ -7144,6 +7144,16 @@ msgstr "Felirat alatta"
 msgid "Dictum"
 msgstr "Szólás"
 
+#: lib/layouts/stdlayouts.inc:64
+#, fuzzy
+msgid "--Separator--"
+msgstr "Elválasztó"
+
+#: lib/layouts/stdlayouts.inc:73
+#, fuzzy
+msgid "--- Separate Environment ---"
+msgstr "Gather környezet"
+
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
 msgstr "Üzenet a szerkesztõnek"
@@ -8794,11 +8804,11 @@ msgstr "Dokumentum nyomtatása"
 msgid "Check spelling"
 msgstr "Helyesírás-ellenõrzés"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:777
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:776
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:786
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:785
 msgid "Redo"
 msgstr "Mégis"
 
@@ -11321,12 +11331,12 @@ msgstr ""
 "Alapértelmezett dokumentum osztály használata, mivel a %1$s osztály nem "
 "tölthetõ be."
 
-#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:910
-#: src/BufferView.cpp:916
+#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:909
+#: src/BufferView.cpp:915
 msgid "Changes not shown in LaTeX output"
 msgstr "A változások nincsenek megjelenítve a LaTeX kimenetben"
 
-#: src/Buffer.cpp:517 src/BufferView.cpp:911
+#: src/Buffer.cpp:517 src/BufferView.cpp:910
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11338,7 +11348,7 @@ msgstr ""
 "Kérem telepítse fel ezeket a csomagokat vagy a LaTeX preambulumban definálja "
 "újra a \\lyxadded és \\lyxdeleted -ket."
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:917
+#: src/Buffer.cpp:523 src/BufferView.cpp:916
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11570,57 +11580,57 @@ msgstr "&Létrehozás"
 msgid "Save bookmark"
 msgstr "Könyvjelzõ mentése"
 
-#: src/BufferView.cpp:780
+#: src/BufferView.cpp:779
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.cpp:789
+#: src/BufferView.cpp:788
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.cpp:964
+#: src/BufferView.cpp:963
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.cpp:971
+#: src/BufferView.cpp:970
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.cpp:978
+#: src/BufferView.cpp:977
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.cpp:981
+#: src/BufferView.cpp:980
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.cpp:1027
+#: src/BufferView.cpp:1026
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d szó van a kijelölésben."
 
-#: src/BufferView.cpp:1030
+#: src/BufferView.cpp:1029
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d szó van a dokumentumban."
 
-#: src/BufferView.cpp:1035
+#: src/BufferView.cpp:1034
 msgid "One word in selection."
 msgstr "Egy szó van a kijelölésben."
 
-#: src/BufferView.cpp:1037
+#: src/BufferView.cpp:1036
 msgid "One word in document."
 msgstr "Egy szó van a dokumentumban."
 
-#: src/BufferView.cpp:1040
+#: src/BufferView.cpp:1039
 msgid "Count words"
 msgstr "Szavak megszámolása"
 
-#: src/BufferView.cpp:1620
+#: src/BufferView.cpp:1619
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.cpp:1622 src/LyXFunc.cpp:1901 src/LyXFunc.cpp:1940
+#: src/BufferView.cpp:1621 src/LyXFunc.cpp:1901 src/LyXFunc.cpp:1940
 #: src/LyXFunc.cpp:2013 src/callback.cpp:136
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11630,31 +11640,31 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:1941 src/LyXFunc.cpp:2014
+#: src/BufferView.cpp:1622 src/LyXFunc.cpp:1941 src/LyXFunc.cpp:2014
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.cpp:1629 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1945
+#: src/BufferView.cpp:1628 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1945
 #: src/callback.cpp:142
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.cpp:1641 src/LyXFunc.cpp:1955 src/LyXFunc.cpp:2035
+#: src/BufferView.cpp:1640 src/LyXFunc.cpp:1955 src/LyXFunc.cpp:2035
 #: src/LyXFunc.cpp:2049 src/LyXFunc.cpp:2065
 msgid "Canceled."
 msgstr "Törölve."
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1651
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:1663
+#: src/BufferView.cpp:1662
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:1665
+#: src/BufferView.cpp:1664
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
@@ -14190,19 +14200,19 @@ msgstr "Vázlat"
 msgid "Directories"
 msgstr "Könyvtárak"
 
-#: src/frontends/qt4/GuiView.cpp:168
+#: src/frontends/qt4/GuiView.cpp:172
 msgid "Small-sized icons"
 msgstr "Kis-méretû ikonok"
 
-#: src/frontends/qt4/GuiView.cpp:174
+#: src/frontends/qt4/GuiView.cpp:178
 msgid "Normal-sized icons"
 msgstr "Normál-méretû ikonok"
 
-#: src/frontends/qt4/GuiView.cpp:180
+#: src/frontends/qt4/GuiView.cpp:184
 msgid "Big-sized icons"
 msgstr "Nagy-méretû ikonok"
 
-#: src/frontends/qt4/GuiView.cpp:719
+#: src/frontends/qt4/GuiView.cpp:723
 msgid "LyX"
 msgstr "LyX"
 
