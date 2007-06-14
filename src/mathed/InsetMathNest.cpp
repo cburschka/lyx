@@ -545,35 +545,33 @@ goto_char_backwards:
 		}
 		break;
 
+	case LFUN_DOWN:
 	case LFUN_UP:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
-	case LFUN_UP_SELECT:
-		// FIXME Tried to use clearTargetX and macroModeClose, crashed on cur.up()
-		if (cur.inMacroMode()) {
-			// Make Helge happy
-			cur.macroModeClose();
-			break;
-		}
-		cur.selHandle(cmd.action == LFUN_UP_SELECT);
-		if (!cur.upDownInMath(true))
-			cur.undispatched();
-		// fixes bug 1598. Please check!
-		cur.normalize();
-		break;
-
-	case LFUN_DOWN:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
-	case LFUN_DOWN_SELECT:
+	case LFUN_DOWN_SELECT: 
+	case LFUN_UP_SELECT: {
+		// close active macro
 		if (cur.inMacroMode()) {
 			cur.macroModeClose();
 			break;
 		}
-		cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
-		if (!cur.upDownInMath(false))
+		
+		// stop/start the selection
+		bool select = cmd.action == LFUN_DOWN_SELECT ||
+			cmd.action == LFUN_UP_SELECT;
+		cur.selHandle(select);
+		
+		// go up/down
+		bool up = cmd.action == LFUN_UP || cmd.action == LFUN_UP_SELECT;
+		bool successful = cur.upDownInMath(up);
+		if (successful) {
+			// notify left insets and give them chance to set update flags
+			lyx::notifyCursorLeaves(cur.beforeDispatchCursor(), cur);
+			cur.fixIfBroken();
+		}	else
 			cur.undispatched();
-		// fixes bug 1598. Please check!
-		cur.normalize();
 		break;
+	}
 
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:

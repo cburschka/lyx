@@ -522,7 +522,6 @@ bool isHighlyEditableInset(Inset const * inset);
  *  It can be forward-declared and passed as a function argument without
  *  having to expose Inset.h.
  */
-
 class Inset_code {
 	Inset::Code val_;
 public:

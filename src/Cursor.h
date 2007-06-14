@@ -86,9 +86,9 @@ public:
 	DocIterator selectionBegin() const;
 	/// access start of selection
 	DocIterator selectionEnd() const;
-	///
+	/// FIXME: document this
 	bool selHandle(bool selecting);
-	//
+	///
 	docstring selectionAsString(bool label) const;
 	///
 	docstring currentState();
@@ -194,6 +194,8 @@ public:
 	
 	///
 	DispatchResult disp_;
+	///
+	DocIterator const & beforeDispatchCursor() { return beforeDispatchCursor_; }
 	
 private:
 	/**
@@ -225,8 +227,8 @@ private:
 	/// y position before dispatch started
 	int beforeDispY_;
 	/// position before dispatch started
-	size_t beforeDispDepth_;
-		
+	DocIterator beforeDispatchCursor_;
+
 private:
 
 	//
@@ -296,6 +298,7 @@ public:
 	bool isInside(Inset const *);
 
 	/// make sure cursor position is valid
+	/// FIXME: It does a subset of fixIfBroken. Maybe merge them?
 	void normalize();
 	/// mark current cursor trace for redraw
 	void touch();
@@ -327,6 +330,13 @@ public:
 	Font getFont() const;
 };
 
+
+/**
+ * Notifies all insets which appear in old, but not in cur. Make
+ * Sure that the cursor old is valid, i.e. als inset pointer
+ * point to valid insets! Use Cursor::fixIfBroken if necessary.
+ */
+bool notifyCursorLeaves(DocIterator const & old, Cursor & cur);
 
 
 } // namespace lyx

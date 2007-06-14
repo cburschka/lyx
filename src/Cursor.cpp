@@ -301,8 +301,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	
 	// store some values to be used inside of the handlers
 	getPos(beforeDispX_, beforeDispY_);
-	beforeDispDepth_ = depth();
-	
+	beforeDispatchCursor_ = *this;
 	for (; depth(); pop()) {
 		LYXERR(Debug::DEBUG) << "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this << endl;
@@ -319,6 +318,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		if (disp_.dispatched())
 			break;
 	}
+	
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
 	if (!disp_.dispatched()) {
@@ -326,6 +326,10 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		operator=(safe);
 		disp_.update(Update::None);
 		disp_.dispatched(false);
+	} else {
+		// restore the previous one because nested Cursor::dispatch calls
+		// are possible which would change it
+		beforeDispatchCursor_ = safe.beforeDispatchCursor_;
 	}
 }
 
@@ -1183,7 +1187,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	// if we cannot move up/down inside this inset anymore
 	if (x_target_ == -1)
 		setTargetX(xo);
-	else if (xo - textTargetOffset() != x_target() && depth() == beforeDispDepth_) {
+	else if (xo - textTargetOffset() != x_target() && 
+					 depth() == beforeDispatchCursor_.depth()) {
 		// In text mode inside the line (not left or right) possibly set a new target_x,
 		// but only if we are somewhere else than the previous target-offset.
 		
@@ -1229,7 +1234,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				row + 1 >= int(pm.rows().size()))
 			return false;
 	}	
-	
+
 	// with and without selection are handled differently
 	if (!selection()) {
 		int yo = bv_funcs::getPos(bv(), *this, boundary()).y_;
@@ -1272,10 +1277,10 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				top().pos() = std::min(tm.x2pos(pit(), 0, xo), top().lastpos());
 			}
 		}
-		
+
 		updateNeeded |= bv().checkDepm(*this, old);
 	}
-	
+
 	updateTextTargetOffset();
 	return true;
 }	
@@ -1480,6 +1485,26 @@ void Cursor::fixIfBroken()
 			clearSelection();
 			resetAnchor();
 	}
+}
+
+
+bool notifyCursorLeaves(DocIterator const & old, Cursor & cur)
+{
+	// find inset in common
+	size_type i;
+	for (i = 0; i < old.depth() && i < cur.depth(); ++i) {
+		if (&old.inset() != &cur.inset())
+			break;
+	}
+	
+	// notify everything on top of the common part in old cursor,
+	// but stop if the inset claims the cursor to be invalid now
+	for (;  i < old.depth(); ++i) {
+		if (old[i].inset().notifyCursorLeaves(cur))
+			return true;
+	}
+	
+	return false;
 }
 
 

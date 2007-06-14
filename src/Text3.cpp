@@ -510,25 +510,25 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			saveSelection(cur);
 		break;
 
+	case LFUN_UP_SELECT:
+	case LFUN_DOWN_SELECT:
+		needsUpdate |= cur.selHandle(select);
 	case LFUN_UP:
-	case LFUN_UP_SELECT: {
-		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
-		needsUpdate |= cur.selHandle(cmd.action == LFUN_UP_SELECT);
-		bool const successful = cur.upDownInText(true, needsUpdate);
-		if (!successful)
+	case LFUN_DOWN: {
+		// move cursor up/down
+		bool up = cmd.action == LFUN_UP_SELECT || cmd.action == LFUN_UP;
+		bool const successful = cur.upDownInText(up, needsUpdate);
+		if (successful) {
+			// notify insets which were left and get their update flags 
+			notifyCursorLeaves(cur.beforeDispatchCursor(), cur);
+			cur.fixIfBroken();
+			
+			// redraw if you leave mathed (for the decorations)
+			needsUpdate |= cur.beforeDispatchCursor().inMathed();
+		} else
 			cur.undispatched();
-		if (cur.selection())
-			saveSelection(cur);
-		break;
-	}
-
-	case LFUN_DOWN:
-	case LFUN_DOWN_SELECT: {
-		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
-		needsUpdate |= cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
-		bool const successful = cur.upDownInText(false, needsUpdate);
-		if (!successful)
-			cur.undispatched();
+		
+		// save new selection
 		if (cur.selection())
 			saveSelection(cur);
 		break;
