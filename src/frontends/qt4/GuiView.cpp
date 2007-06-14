@@ -54,7 +54,7 @@
 #include <QDesktopWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QToolButton>
+#include <QPushButton>
 
 
 #include <boost/bind.hpp>
@@ -81,7 +81,7 @@ class TabWidget : public QWidget
 	QHBoxLayout* hlayout;
 public:
 	QTabBar* tabbar;
-	QToolButton* closeTabButton;
+	QPushButton* closeTabButton;
 
 	void hideTabsIfNecessary()
 	{
@@ -96,24 +96,27 @@ public:
 
 	TabWidget(QWidget* w, bool topTabBar)
 	{
-		closeTabButton = new QToolButton(this);
+		closeTabButton = new QPushButton(this);
 		FileName const file = support::libFileSearch("images", "closetab", "xpm");
 		if (!file.empty()) {
 			QPixmap pm(toqstr(file.absFilename()));
 			closeTabButton->setIcon(QIcon(pm));
+			closeTabButton->setMaximumSize(pm.size());
+			closeTabButton->setFlat(true);
 		} else {
 			closeTabButton->setText("Close");
 		}
 		closeTabButton->setCursor(Qt::ArrowCursor);
-		closeTabButton->setAutoRaise(true);
 		closeTabButton->setToolTip(tr("Close tab"));
 		closeTabButton->setEnabled(true);
 
 		tabbar = new QTabBar;
+#if QT_VERSION >= 0x040200
+		tabbar->setUsesScrollButtons(true);
+#endif
 		hlayout = new QHBoxLayout;
 		QVBoxLayout* vlayout = new QVBoxLayout;
 		hlayout->addWidget(tabbar);
-		hlayout->addStretch(1);
 		hlayout->addWidget(closeTabButton);
 		if (topTabBar) {
 			vlayout->addLayout(hlayout);
@@ -124,6 +127,7 @@ public:
 			vlayout->addLayout(hlayout);
 		}
 		vlayout->setMargin(0);
+		vlayout->setSpacing(0);
 		hlayout->setMargin(0);
 		setLayout(vlayout);
 		hideTabsIfNecessary();
