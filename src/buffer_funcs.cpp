@@ -709,8 +709,7 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 {
-	if (par_it->layout()->labeltype == LABEL_COUNTER
-		&& par_it->layout()->toclevel != Layout::NOT_IN_TOC) {
+	if (par_it->layout()->toclevel != Layout::NOT_IN_TOC) {
 		Buffer * master = buffer.getMasterBuffer();
 		master->tocBackend().updateItem(par_it);
 		master->structureChanged();
