@@ -1049,6 +1049,65 @@
 #0x213b ""                         "" "" # FACSIMILE SIGN
 # use the following macro for the character AKTIESELSKAB
 0x214e "\\LyXaktie" "\\newcommand*\\LyXaktie{\\mbox{\\raisebox{.8ex}{A}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{S}}}" ""
+# number forms
+# use the following macro for the character VULGAR FRACTION ONE THIRD
+0x2153 "\\LyXonethird" "\\newcommand*\\LyXonethird{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" ""
+# use the following macro for the character VULGAR FRACTION TWO THIRDS
+0x2154 "\\LyXtwothirds" "\\newcommand*\\LyXtwothirds{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" ""
+# use the following macro for the character VULGAR FRACTION ONE FIFTH
+0x2155 "\\LyXonefifth" "\\newcommand*\\LyXonefifth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+# use the following macro for the character VULGAR FRACTION TWO FIFTHS
+0x2156 "\\LyXtwofifths" "\\newcommand*\\LyXtwofifths{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+# use the following macro for the character VULGAR FRACTION THREE FIFTHS
+0x2157 "\\LyXthreefifths" "\\newcommand*\\LyXthreefifths{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+# use the following macro for the character VULGAR FRACTION FOUR FIFTHS
+0x2158 "\\LyXfourfifths" "\\newcommand*\\LyXfourfifths{\\mbox{\\raisebox{.8ex}{4}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+# use the following macro for the character VULGAR FRACTION ONE SIXTH
+0x2159 "\\LyXonesixth" "\\newcommand*\\LyXonesixth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" ""
+# use the following macro for the character VULGAR FRACTION FIVE SIXTHS
+0x215a "\\LyXfivesixths" "\\newcommand*\\LyXfivesixths{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" ""
+# use the following macro for the character VULGAR FRACTION ONE EIGHT
+0x215b "\\LyXoneeight" "\\newcommand*\\LyXoneeight{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+# use the following macro for the character VULGAR FRACTION THREE EIGHTS
+0x215c "\\LyXthreeeights" "\\newcommand*\\LyXthreeeights{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+# use the following macro for the character VULGAR FRACTION FIVE EIGHTS
+0x215d "\\LyXfiveeights" "\\newcommand*\\LyXfiveeights{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+# use the following macro for the character VULGAR FRACTION SEVEN EIGHTS
+0x215e "\\LyXseveneights" "\\newcommand*\\LyXseveneights{\\mbox{\\raisebox{.8ex}{7}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+# use the following macro for the character FRACTION NUMERATOR ONE
+0x215f "\\LyXnumeratorone" "\\newcommand*\\LyXnumeratorone{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{~}}}" ""
+0x2160 "\\mbox{I}"                "" "" # ROMAN NUMERAL ONE
+0x2161 "\\mbox{II}"               "" "" # ROMAN NUMERAL TWO
+0x2162 "\\mbox{III}"              "" "" # ROMAN NUMERAL THREE
+0x2163 "\\mbox{IV}"               "" "" # ROMAN NUMERAL FOUR
+0x2164 "\\mbox{V}"                "" "" # ROMAN NUMERAL FIVE
+0x2165 "\\mbox{VI}"               "" "" # ROMAN NUMERAL SIX
+0x2166 "\\mbox{VII}"              "" "" # ROMAN NUMERAL SEVEN
+0x2167 "\\mbox{VIII}"             "" "" # ROMAN NUMERAL EIGHT
+0x2168 "\\mbox{IX}"               "" "" # ROMAN NUMERAL NINE
+0x2169 "\\mbox{X}"                "" "" # ROMAN NUMERAL TEN
+0x216a "\\mbox{XI}"               "" "" # ROMAN NUMERAL ELEVEN
+0x216b "\\mbox{XII}"              "" "" # ROMAN NUMERAL TWELVE
+0x216c "\\mbox{L}"                "" "" # ROMAN NUMERAL FIFTY
+0x216d "\\mbox{C}"                "" "" # ROMAN NUMERAL ONE HUNDRED
+0x216e "\\mbox{D}"                "" "" # ROMAN NUMERAL FIVE HUNDRED
+0x216f "\\mbox{M}"                "" "" # ROMAN NUMERAL ONE THOUSAND
+0x2170 "\\mbox{i}"                "" "" # SMALL ROMAN NUMERAL ONE
+0x2171 "\\mbox{ii}"               "" "" # SMALL ROMAN NUMERAL TWO
+0x2172 "\\mbox{iii}"              "" "" # SMALL ROMAN NUMERAL THREE
+0x2173 "\\mbox{iv}"               "" "" # SMALL ROMAN NUMERAL FOUR
+0x2174 "\\mbox{v}"                "" "" # SMALL ROMAN NUMERAL FIVE
+0x2175 "\\mbox{vi}"               "" "" # SMALL ROMAN NUMERAL SIX
+0x2176 "\\mbox{vii}"              "" "" # SMALL ROMAN NUMERAL SEVEN
+0x2177 "\\mbox{viii}"             "" "" # SMALL ROMAN NUMERAL EIGHT
+0x2178 "\\mbox{ix}"               "" "" # SMALL ROMAN NUMERAL NINE
+0x2179 "\\mbox{x}"                "" "" # SMALL ROMAN NUMERAL TEN
+0x217a "\\mbox{xi}"               "" "" # SMALL ROMAN NUMERAL ELEVEN
+0x217b "\\mbox{xii}"              "" "" # SMALL ROMAN NUMERAL TWELVE
+0x217c "\\mbox{l}"                "" "" # SMALL ROMAN NUMERAL FIFTY
+0x217d "\\mbox{c}"                "" "" # SMALL ROMAN NUMERAL ONE HUNDRED
+0x217e "\\mbox{d}"                "" "" # SMALL ROMAN NUMERAL FIVE HUNDRED
+0x217f "\\mbox{m}"                "" "" # SMALL ROMAN NUMERAL ONE THOUSAND
 # arrows
 0x2190 "\\textleftarrow"          "textcomp" "" # LEFTWARDS ARROW
 0x2191 "\\textuparrow"            "textcomp" "" # UPWARDS ARROW
