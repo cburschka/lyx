@@ -14,7 +14,6 @@
 
 #include "BufferParams.h"
 #include "gettext.h"
-#include "Paragraph.h"
 #include "OutputParams.h"
 #include "output_latex.h"
 #include "TexRow.h"

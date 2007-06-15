@@ -27,7 +27,6 @@
 #include "Color.h"
 #include "Lexer.h"
 #include "OutputParams.h"
-#include "Paragraph.h"
 #include "TocBackend.h"
 
 #include "support/convert.h"

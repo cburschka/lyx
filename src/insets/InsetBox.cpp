@@ -25,7 +25,6 @@
 #include "Color.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "Paragraph.h"
 #include "TextMetrics.h"
 
 #include "support/Translator.h"

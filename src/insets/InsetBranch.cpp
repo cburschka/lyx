@@ -22,7 +22,6 @@
 #include "gettext.h"
 #include "Color.h"
 #include "Lexer.h"
-#include "Paragraph.h"
 #include "OutputParams.h"
 
 #include <sstream>
