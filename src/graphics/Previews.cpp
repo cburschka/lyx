@@ -16,7 +16,6 @@
 #include "Buffer.h"
 #include "InsetIterator.h"
 #include "LyXRC.h"
-#include "Paragraph.h"
 
 #include "insets/Inset.h"
 

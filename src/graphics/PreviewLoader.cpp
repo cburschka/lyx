@@ -26,7 +26,6 @@
 #include "LyXRC.h"
 #include "output.h"
 #include "OutputParams.h"
-#include "Paragraph.h"
 #include "TexRow.h"
 
 #include "frontends/Application.h" // hexName
