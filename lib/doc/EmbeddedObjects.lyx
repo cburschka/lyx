@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10390,11 +10390,7 @@ abc
 \begin_inset Text
 
 \begin_layout Standard
-def
-\lang ngerman
- 
-\lang english
-ghi
+def ghi
 \end_layout
 
 \end_inset
@@ -27056,7 +27052,7 @@ status collapsed
 \begin_layout Description
 Date This inserts the date in the form 
 \emph on
-Date-Month-Year
+Day-Month-Year
 \emph default
 .
  This is a date inserted as external material: 
