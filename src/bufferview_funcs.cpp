@@ -16,7 +16,6 @@
 
 #include "bufferview_funcs.h"
 
-#include "Author.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
