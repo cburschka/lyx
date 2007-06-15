@@ -16,7 +16,6 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Text.h"
-#include "Paragraph.h"
 #include "ParIterator.h"
 
 // FIXME: those two headers are needed because of the

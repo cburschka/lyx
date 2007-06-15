@@ -15,7 +15,6 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
-#include "Paragraph.h"
 #include "insets/InsetTabular.h"
 
 
