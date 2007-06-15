@@ -44,6 +44,8 @@ public:
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
+	///
+	int kerning() const { return mathMacro_.cell(idx_).kerning(); }
 
 private:
 	std::auto_ptr<Inset> doClone() const;
@@ -65,7 +67,6 @@ bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
 	macro.unlock();
 	mathMacro_.cell(idx_).metrics(mi, dim);
 	macro.lock();
-	metricsMarkers2(dim);
 	if (dim_ == dim)
 		return false;
 	dim_ = dim;
@@ -114,6 +115,7 @@ void MathMacro::cursorPos(BufferView const & bv,
 
 bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	kerning_ = 0;
 	if (!MacroTable::globalMacros().has(name())) {
 		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
 	} else {
@@ -143,10 +145,10 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			macro.lock();
 			expanded_.metrics(mi, dim);
 			macro.unlock();
+			kerning_ = expanded_.kerning();
 			editing_ = false;
 		}
 	}
-	metricsMarkers2(dim);
 	if (dim_ == dim)
 		return false;
 	dim_ = dim;
@@ -199,7 +201,6 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		if (editing_ != editing(pi.base.bv) || macroBackup_ != macro)
 			pi.base.bv->cursor().updateFlags(Update::Force);
 	}
-	drawMarkers2(pi, x, y);
 }
 
 

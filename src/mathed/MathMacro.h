@@ -54,6 +54,8 @@ public:
 	///
 	docstring name() const;
 	///
+	int kerning() const { return kerning_; }
+	///
 	void setExpansion(MathData const & exp, MathData const & args) const;
 
 	///
@@ -85,6 +87,8 @@ private:
 	mutable MacroData macroBackup_;
 	///
 	mutable bool editing_;
+	///
+	mutable int kerning_;
 };
 
 
