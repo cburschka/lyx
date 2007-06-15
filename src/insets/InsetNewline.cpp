@@ -13,7 +13,6 @@
 #include "InsetNewline.h"
 
 #include "debug.h"
-#include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
