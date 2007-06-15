@@ -512,9 +512,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN_SELECT:
-		needsUpdate |= cur.selHandle(select);
 	case LFUN_UP:
 	case LFUN_DOWN: {
+		// stop/start the selection
+		bool select = cmd.action == LFUN_DOWN_SELECT ||
+			cmd.action == LFUN_UP_SELECT;
+		cur.selHandle(select);
+		
 		// move cursor up/down
 		bool up = cmd.action == LFUN_UP_SELECT || cmd.action == LFUN_UP;
 		bool const successful = cur.upDownInText(up, needsUpdate);
