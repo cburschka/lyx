@@ -144,6 +144,13 @@ void WorkArea::redraw()
 
 	updateScrollbar();
 
+	// update cursor position, because otherwise it has to wait until
+	// the blinking interval is over
+	if (cursor_visible_) {
+		hideCursor();
+		showCursor();
+	}
+	
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 	greyed_out_ = false;
 
