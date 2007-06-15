@@ -347,8 +347,19 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
     #
-    checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
+    path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
+        'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
+        rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
+    if htmlconv == 'htlatex' or htmlconv == 'latex2html':
+      addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+    else:
+      addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
+
+    #
+    path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
         rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
+    if htmlconv == 'htlatex':
+      addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
     #
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
@@ -358,10 +369,6 @@ def checkConverterEntries():
     #
     checkProg('a LaTeX -> Open Document converter', ['oolatex $$i', 'oolatex.sh $$i'],
         rc_entry = [ r'\converter latex      odt        "%%"	"latex"' ])
-    #
-    #FIXME Looking for the commands needed to make oolatex output sxw instad of odt...
-    #checkProg('a LaTeX -> OpenOffice.org (sxw) converter', ['oolatex $$i', 'oolatex.sh $$i'],
-    #    rc_entry = [ r'\converter latex      odt        "%%"	"latex"' ])
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
         rc_entry = [ r'\converter latex      rtf        "%%"	"needaux"' ])
@@ -429,9 +436,6 @@ def checkConverterEntries():
 \converter agr        ppm        "gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null"	""''',
             ''])
     #
-    checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
-        'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
-        rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
     #
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
@@ -537,6 +541,7 @@ def checkOtherEntries():
     addToRC(r'''\copier    fig        "python -tt $$s/scripts/fig_copy.py $$i $$o"
 \copier    pstex      "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
 \copier    pdftex     "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
+\copier    program   "python -tt $$s/scripts/ext_copy.py $$i $$o"
 ''')
 
 

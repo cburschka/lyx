@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass book
@@ -1699,6 +1699,11 @@ s.
 \end_layout
 
 \begin_layout Section
+\begin_inset LatexCommand label
+name "sec:converters-etc"
+
+\end_inset
+
 Converters, Formats, and Copiers
 \end_layout
 
@@ -1961,7 +1966,7 @@ P
 references:Copiers
 \family default
  dialog.
- Since all conversions from one Format to another take place in a temporary
+ Since all conversions from one Format to another take place in LyX's temporary
  directory, it is sometimes necessary to modify a file before copying it
  to the temporary directory in order that the conversion may be performed.
 \begin_inset Foot
@@ -1977,6 +1982,77 @@ For example, the file may refer to other files---images, for example---using
 
  This is done by the Copier: It copies a file to (or from) the temporary
  directory and may modify it in the process.
+ 
+\end_layout
+
+\begin_layout Standard
+Copiers may also be used for other purposes.
+ For example, if appropriate converters are found, LyX will automatically
+ install copiers for the html and wordhtml formats.
+ When these formats are exported, the copier sees to it that not just the
+ main HTML file but various associated files (style files, images, and the
+ like) are also copied, and all these files are written to a subdirectory
+ of the directory in which the original LyX file was found.
+ The copier may of course be customized.
+ The optional -e argument takes a comma-separated list of extensions to
+ be copied; if it is omitted, all files will be copied.
+ The -t argument determines the extension added to the generated directory.
+ By default, it is 
+\begin_inset Quotes eld
+\end_inset
+
+LyXconv
+\begin_inset Quotes erd
+\end_inset
+
+, so HTML generated from 
+\family typewriter
+/path/to/filename.lyx
+\family default
+ will end up in 
+\family typewriter
+/path/to/filename.html.LyXconv
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The definitions of the copiers may use four variables:
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$s The LyX system directory (e.g., 
+\family typewriter
+/usr/share/lyx
+\family default
+).
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$i The input file
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$o The output file
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+$$l The `LaTeX name'
+\end_layout
+
+\begin_layout Standard
+The latter is to be given in a form suitable for inclusion in a LaTeX 
+\family typewriter
+
+\backslash
+include
+\family default
+ command and is relevant only when exporting files suitable for such inclusion.
 \end_layout
 
 \begin_layout Subsection

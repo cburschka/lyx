@@ -2729,6 +2729,7 @@ lib_scripts_files = Split('''
     clean_dvi.py
     convertDefault.py
     date.py
+    ext_copy.py
     fen2ascii.py
     fig2pdftex.py
     fig2pstex.py

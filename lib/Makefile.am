@@ -1017,6 +1017,7 @@ dist_scripts_PYTHON = \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
 	scripts/date.py \
+	scripts/ext_copy.py \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.py \
 	scripts/fig2pstex.py \
