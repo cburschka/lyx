@@ -15,9 +15,7 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferParams.h"
-#include "Color.h"
 #include "MetricsInfo.h"
-#include "Paragraph.h"
 
 
 namespace lyx {

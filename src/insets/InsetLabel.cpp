@@ -16,15 +16,11 @@
 #include "BufferView.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "InsetList.h"
 #include "Text.h"
-#include "Paragraph.h"
-#include "ParIterator.h"
 #include "sgml.h"
 
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
-#include "support/std_ostream.h"
 
 
 namespace lyx {
@@ -32,7 +28,6 @@ namespace lyx {
 using support::escape;
 
 using std::string;
-using std::ostream;
 using std::vector;
 
 

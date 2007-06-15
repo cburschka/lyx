@@ -25,11 +25,8 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "OutputParams.h"
-#include "Paragraph.h"
-#include "TocBackend.h"
 
 #include "support/lstrings.h"
 #include "support/convert.h"
