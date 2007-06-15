@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass scrbook
@@ -548,9 +548,9 @@ Sprache
 
 \end_inset
 
- 
-\lang ngerman
 
+\lang ngerman
+ 
 \begin_inset Formula $\approx$
 \end_inset
 
@@ -2171,7 +2171,7 @@ XX
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \align center
@@ -2195,7 +2195,7 @@ name "cap:Sonderzeichen"
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="16" columns="14">
+<lyxtabular version="3" rows="15" columns="14">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0">
 <column alignment="center" valignment="top" leftline="true" width="0">
@@ -2587,7 +2587,7 @@ Taste
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -2629,21 +2629,7 @@ AltGr + Umschalt +
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
 ⅛
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2661,111 +2647,43 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textcurrency
-\end_layout
-
-\end_inset
-
-
+¤
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
 
 \begin_layout Standard
 ⅜
 \end_layout
 
 \end_inset
-
-
-\end_layout
-
-\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
 
 \begin_layout Standard
 ⅝
 \end_layout
 
 \end_inset
-
-
-\end_layout
-
-\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
 
 \begin_layout Standard
 ⅞
 \end_layout
 
 \end_inset
-
-
-\end_layout
-
-\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
 ™
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2797,7 +2715,7 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -2940,190 +2858,6 @@ p
 \begin_inset Text
 
 \begin_layout Standard
-AltGr + 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-@
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-ł
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-€
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-¶
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-ŧ
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-←
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-↓
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-→
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-ø
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-þ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-¨
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-~
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 Taste
 \end_layout
 
@@ -3237,7 +2971,7 @@ p
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -3261,13 +2995,21 @@ AltGr + Umschalt +
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
 
-\series bold
-XX
-\series default
+\begin_layout Standard
+
+
+\backslash
+textohm 
+\end_layout
+
+\end_inset
+
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Ω
@@ -3317,7 +3059,7 @@ XX
 \series default
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Ŧ
@@ -3343,21 +3085,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
 ↑
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -3407,7 +3135,7 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -3610,7 +3338,7 @@ XX
 \series default
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 ħ
@@ -3642,7 +3370,7 @@ XX
 \series default
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 ĸ
@@ -3819,7 +3547,7 @@ l
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -3894,7 +3622,7 @@ XX
 \series default
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Ħ
@@ -3961,7 +3689,7 @@ J
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -4140,8 +3868,6 @@ AltGr +
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
 ¢
 \end_layout
 
@@ -4151,21 +3877,7 @@ AltGr +
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
 “
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4174,21 +3886,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
 ”
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4215,21 +3913,7 @@ n
 \begin_inset Text
 
 \begin_layout Standard
-
-\series bold
-XX
-\series default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-─
-\end_layout
-
-\end_inset
-
-
+―
 \end_layout
 
 \end_inset
@@ -4389,7 +4073,7 @@ m
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -4517,7 +4201,7 @@ N
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
