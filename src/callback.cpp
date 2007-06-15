@@ -30,7 +30,6 @@
 #include "Layout.h"
 #include "LyXRC.h"
 #include "Text.h"
-#include "Paragraph.h"
 #include "Undo.h"
 
 #include "frontends/alert.h"

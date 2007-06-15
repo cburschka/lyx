@@ -21,7 +21,6 @@
 #include "callback.h"
 #include "LyX.h"
 #include "output_latex.h"
-#include "Paragraph.h"
 #include "ParagraphList.h"
 
 #include "frontends/alert.h"

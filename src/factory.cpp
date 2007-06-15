@@ -21,7 +21,6 @@
 #include "Color.h"
 #include "Lexer.h"
 #include "LyX.h"
-#include "Paragraph.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"

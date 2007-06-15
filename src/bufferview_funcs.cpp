@@ -26,10 +26,6 @@
 #include "Language.h"
 #include "Color.h"
 #include "Lexer.h"
-#include "Row.h"
-#include "Paragraph.h"
-#include "ParagraphParameters.h"
-#include "ParIterator.h"
 
 #include "frontends/alert.h"
 
