@@ -24,11 +24,9 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "Paragraph.h"
 
 #include "support/lyxalgo.h"
 #include "support/Translator.h"

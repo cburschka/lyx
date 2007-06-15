@@ -14,10 +14,6 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "Color.h"
-#include "Paragraph.h"
-
-#include <sstream>
 
 
 namespace lyx {
@@ -25,7 +21,6 @@ namespace lyx {
 using std::string;
 using std::auto_ptr;
 using std::ostream;
-using std::ostringstream;
 
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)

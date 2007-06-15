@@ -15,7 +15,6 @@
 
 #include "Buffer.h"
 #include "gettext.h"
-#include "Paragraph.h"
 #include "OutputParams.h"
 
 #include "support/std_ostream.h"

@@ -13,12 +13,9 @@
 #include "InsetNewline.h"
 
 #include "debug.h"
-#include "Color.h"
 #include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "Paragraph.h"
-#include "paragraph_funcs.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
