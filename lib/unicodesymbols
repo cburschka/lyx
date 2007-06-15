@@ -1075,7 +1075,7 @@
 # use the following macro for the character VULGAR FRACTION SEVEN EIGHTS
 0x215e "\\LyXseveneights" "\\newcommand*\\LyXseveneights{\\mbox{\\raisebox{.8ex}{7}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
 # use the following macro for the character FRACTION NUMERATOR ONE
-0x215f "\\LyXnumeratorone" "\\newcommand*\\LyXnumeratorone{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{~}}}" ""
+0x215f "\\LyXnumeratorone" "\\newcommand*\\LyXnumeratorone{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\kern-.18em}}}" ""
 0x2160 "\\mbox{I}"                "" "" # ROMAN NUMERAL ONE
 0x2161 "\\mbox{II}"               "" "" # ROMAN NUMERAL TWO
 0x2162 "\\mbox{III}"              "" "" # ROMAN NUMERAL THREE
