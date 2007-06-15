@@ -20,7 +20,6 @@
 
 #include "FuncRequest.h"
 #include "LyXFunc.h"
-#include "Painter.h"
 
 #include "BufferView.h"
 #include "Buffer.h"
@@ -32,12 +31,9 @@
 #include "Color.h"
 #include "Font.h"
 #include "LyXRC.h"
-#include "Row.h"
 #include "Text.h"
 #include "LyXView.h"
 #include "MetricsInfo.h"
-#include "Paragraph.h"
-#include "rowpainter.h"
 
 #include "gettext.h"
 #include "support/ForkedcallsController.h"
