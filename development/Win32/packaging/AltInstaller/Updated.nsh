@@ -6,15 +6,19 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\layouts"
  SetOutPath "$INSTDIR\Resources\doc"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\FAQ.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\clipart"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\escher-lsd.eps"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\mobius.eps"
@@ -31,6 +35,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\lyx2lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
+ SetOutPath "$INSTDIR\Resources\scripts"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\ext_copy.py"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\IEEEtran.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\iop-article.lyx"
