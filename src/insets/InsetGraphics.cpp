@@ -58,6 +58,7 @@ TODO
 #include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
+#include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
 #include "FuncRequest.h"

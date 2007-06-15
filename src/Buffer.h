@@ -12,9 +12,6 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "ErrorList.h"
-#include "InsetList.h"
-
 #include "DocIterator.h"
 
 #include "support/FileName.h"
@@ -37,6 +34,7 @@ namespace lyx {
 
 class BufferParams;
 class ErrorItem;
+class ErrorList;
 class FuncRequest;
 class Inset;
 class InsetText;
@@ -410,9 +408,6 @@ private:
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
 	mutable std::vector<support::FileName> bibfilesCache_;
-
-	/// Container for all sort of Buffer dependant errors.
-	std::map<std::string, ErrorList> errorLists_;
 };
 
 

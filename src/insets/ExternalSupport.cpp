@@ -19,6 +19,7 @@
 #include "Buffer.h"
 #include "Converter.h"
 #include "debug.h"
+#include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
 #include "Mover.h"

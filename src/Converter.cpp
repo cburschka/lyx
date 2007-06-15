@@ -17,6 +17,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "debug.h"
+#include "ErrorList.h"
 #include "Format.h"
 #include "gettext.h"
 #include "Language.h"

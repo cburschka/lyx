@@ -193,6 +193,9 @@ public:
 
 	///
 	TocBackend toc_backend;
+
+	/// Container for all sort of Buffer dependant errors.
+	map<string, ErrorList> errorLists;
 };
 
 
@@ -433,7 +436,7 @@ int Buffer::readHeader(Lexer & lex)
 		params().temp_bullet(i) = ITEMIZE_DEFAULTS[i];
 	}
 
-	ErrorList & errorList = errorLists_["Parse"];
+	ErrorList & errorList = pimpl_->errorLists["Parse"];
 
 	while (lex.isOK()) {
 		lex.next();
@@ -484,7 +487,7 @@ int Buffer::readHeader(Lexer & lex)
 // Returns false if "\end_document" is not read (Asger)
 bool Buffer::readDocument(Lexer & lex)
 {
-	ErrorList & errorList = errorLists_["Parse"];
+	ErrorList & errorList = pimpl_->errorLists["Parse"];
 	errorList.clear();
 
 	lex.next();
@@ -1211,7 +1214,7 @@ int Buffer::runChktex()
 		Alert::error(_("chktex failure"),
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
-		ErrorList & errorList = errorLists_["ChkTeX"];
+		ErrorList & errorList = pimpl_->errorLists["ChkTeX"];
 		// Clear out old errors
 		errorList.clear();
 		// Fill-in the error list with the TeX errors
@@ -1774,8 +1777,8 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 ErrorList const & Buffer::errorList(string const & type) const
 {
 	static ErrorList const emptyErrorList;
-	std::map<string, ErrorList>::const_iterator I = errorLists_.find(type);
-	if (I == errorLists_.end())
+	std::map<string, ErrorList>::const_iterator I = pimpl_->errorLists.find(type);
+	if (I == pimpl_->errorLists.end())
 		return emptyErrorList;
 
 	return I->second;
@@ -1784,7 +1787,7 @@ ErrorList const & Buffer::errorList(string const & type) const
 
 ErrorList & Buffer::errorList(string const & type)
 {
-	return errorLists_[type];
+	return pimpl_->errorLists[type];
 }
 
 
