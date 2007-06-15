@@ -670,7 +670,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
-	cur.paragraph().insertInset(cur.pos(), inset,
+	cur.paragraph().insertInset(cur.pos(), inset, current_font,
 				    Change(cur.buffer().params().trackChanges ?
 					   Change::INSERTED : Change::UNCHANGED));
 }
