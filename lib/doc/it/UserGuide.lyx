@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12032,12 +12032,9 @@ Dorffest.
 \begin_inset Quotes erd
 \end_inset
 
- Per spezzare una legatura, utilizzate
-\lang english
- 
+ Per spezzare una legatura, utilizzate 
 \family sans
 \bar under
-\lang italian
 I
 \bar default
 nserisci\SpecialChar \menuseparator
@@ -12692,8 +12689,6 @@ reference "sec:figurefloats"
 \end_inset
 
 ).
-
-\lang english
  
 \end_layout
 
@@ -13608,12 +13603,9 @@ ificatore dell'oggetto flottante per sceglierne il posizionamento.
  In maniera predefinita, un oggetto flottante utilizza le regole di posizionamen
 to previste dal documento.
  Queste possono essere modificate mediante la finestra di dialogo raggiungibile
- invoncando
-\lang english
- 
+ invoncando 
 \family sans
 \bar under
-\lang italian
 D
 \bar default
 ocumento\SpecialChar \menuseparator
@@ -13622,11 +13614,8 @@ Impostazioni
 .
 
 \color none
-  Il campo
-\lang english
- 
+  Il campo 
 \family sans
-\lang italian
 Posizione\InsetSpace ~
 oggetti\InsetSpace ~
 mobili
@@ -16035,11 +16024,7 @@ reference "sec:float-locn"
 
 .
  L'uso delle didascalie è del tutto analogo a quello delle figure flottanti,
- con riferimento alla sezione
-\lang english
- 
-\lang italian
-
+ con riferimento alla sezione 
 \begin_inset LatexCommand ref
 reference "sec:figurefloats"
 
@@ -16448,10 +16433,7 @@ Potete costruire la vostra formula anche dalla finestra di dialogo raggiungibile
  con
 \family sans
 \bar under
-\lang english
- 
-\lang italian
-I
+ I
 \bar default
 nserisci\SpecialChar \menuseparator
 Matematica\SpecialChar \menuseparator
@@ -17852,11 +17834,8 @@ name "sec:Grouping"
 
 \begin_layout Standard
 In LaTeX è possibile raggruppare un certo insieme di simboli.
- Ad esempio, la visualizzazione di
-\lang english
- 
+ Ad esempio, la visualizzazione di 
 \family typewriter
-\lang italian
 {x^y}^z
 \family default
  è differente da 
@@ -19747,12 +19726,8 @@ Grafici
 \family default
  nel caso dell'interfaccia grafica XForms.)
 \color none
- 
-\lang english
- 
-\lang italian
-Le anteprime sono solitamente generate nel momento del caricamento di un
- documento in LyX e al termine della modifica di un inserto.
+  Le anteprime sono solitamente generate nel momento del caricamento di
+ un documento in LyX e al termine della modifica di un inserto.
  Selezionare 
 \family sans
 Anteprima
@@ -22083,29 +22058,7 @@ r
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textcent
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¢ 
-\end_layout
-
-\end_inset
-
-
+¢
 \end_layout
 
 \end_inset
@@ -22419,29 +22372,7 @@ t
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textcurrency
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¤ 
-\end_layout
-
-\end_inset
-
-
+¤
 \end_layout
 
 \end_inset
@@ -22450,29 +22381,7 @@ status open
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciiacute
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-´ 
-\end_layout
-
-\end_inset
-
-
+́
 \end_layout
 
 \end_inset
@@ -22620,29 +22529,7 @@ u
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textyen
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¥ 
-\end_layout
-
-\end_inset
-
-
+¥
 \end_layout
 
 \end_inset
@@ -22799,29 +22686,7 @@ v
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textbrokenbar
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¦ 
-\end_layout
-
-\end_inset
-
-
+¦
 \end_layout
 
 \end_inset
@@ -23135,29 +23000,7 @@ x
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciidieresis
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¨ 
-\end_layout
-
-\end_inset
-
-
+¨
 \end_layout
 
 \end_inset
@@ -23944,29 +23787,7 @@ m
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textendash
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-­ 
-\end_layout
-
-\end_inset
-
-
+–
 \end_layout
 
 \end_inset
@@ -24280,29 +24101,7 @@ o
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciimacron
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¯ 
-\end_layout
-
-\end_inset
-
-
+̄
 \end_layout
 
 \end_inset
