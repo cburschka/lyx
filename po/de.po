@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-16 12:16+0200\n"
+"POT-Creation-Date: 2007-06-16 18:34+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1316,11 +1316,13 @@ msgstr "Listing-Parameter"
 #: src/frontends/qt4/ui/TextLayoutUi.ui:235
 msgid "Check it to enter parameters that are not recognizable by LyX"
 msgstr ""
+"Auswählen, wenn Sie Parameter eingeben möchten, die nicht von LyX erkannt "
+"werden"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:555
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "&Bypass validation"
-msgstr ""
+msgstr "Überprüfung &umgehen"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
@@ -2211,7 +2213,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:25
 msgid "Printer Command Options"
-msgstr "Optionen für Druckerbefehl"
+msgstr "Optionen für Druckbefehl"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:66
 msgid "Extension to be used when printing to file."
@@ -2235,11 +2237,11 @@ msgstr "Option, um auf einen Nicht-Standard-Drucker zu drucken."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
 msgid "Set p&rinter:"
-msgstr "D&rucker festlegen:"
+msgstr "Drucker &festlegen:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:111
 msgid "Option used with spool command to set printer."
-msgstr ""
+msgstr "Option für den Spool-Befehl, um den Drucker festzulegen."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
 msgid "Spool pr&inter:"
@@ -2250,6 +2252,8 @@ msgid ""
 "Setting causes printer command to print to file and then use this actually "
 "to print."
 msgstr ""
+"Diese Einstellung sorgt dafür, dass der Druckbefehl in eine Datei druckt, "
+"welche dann für den eigentlichen Druck verwendet wird."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:133
 msgid "Spool &command:"
@@ -2261,7 +2265,7 @@ msgstr "Option, um die Reihenfolge der Seiten umzukehren."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "Re&verse pages:"
-msgstr "Seiten &umkehren:"
+msgstr "Seiten u&mkehren:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Lan&dscape:"
@@ -2272,14 +2276,12 @@ msgid "Number of Co&pies:"
 msgstr "Anzahl der &Kopien:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:189
-#, fuzzy
 msgid "Option used to set number of copies."
-msgstr "Die Option, um die Anzahl der Kopien anzugeben."
+msgstr "Option, um die Anzahl der Kopien festzulegen."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
-#, fuzzy
 msgid "Option used to print a range of pages."
-msgstr "Die Option, um nur ungerade Seiten zu drucken."
+msgstr "Option, um einen Bereich von Seiten zu drucken."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:203
 msgid "Co&llated:"
@@ -2287,11 +2289,11 @@ msgstr "&Wiederholt:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:213
 msgid "Pa&ge range:"
-msgstr "&Seitenbereich:"
+msgstr "Se&itenbereich:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:223
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "Option, um mehrere Kopien zu sortieren."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:230
 msgid "&Odd pages:"
@@ -2311,16 +2313,15 @@ msgstr "&Papiergröße:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "Alle weiteren Optionen, die Sie mit dem Druckbefehl verwenden möchten."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
 msgstr "&Zusatz-Optionen:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:308
-#, fuzzy
 msgid "Customizes output to a given printer. Expert option."
-msgstr "Auf dem Drucker ausgeben"
+msgstr "Passt die Ausgabe an einen gegebenen Drucker an. Expertenoption!"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid ""
@@ -2328,16 +2329,17 @@ msgid ""
 "printer command and you have config.<printer> files installed for all your "
 "printers."
 msgstr ""
+"Normalweise müssen Sie dies nur auswählen, wenn Sie dvips als Druckbefehl "
+"verwenden und 'config.<printer>'-Dateien für alle Ihre Drucker installiert "
+"haben."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:314
-#, fuzzy
 msgid "Adapt output to printer"
-msgstr "Auf dem Drucker ausgeben"
+msgstr "Ausgabe an den Drucker anpassen"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:329
-#, fuzzy
 msgid "Default &printer:"
-msgstr "Standard-&Papiergröße:"
+msgstr "Standard-&Drucker:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:339
 msgid "Name of the default printer"
@@ -2345,7 +2347,7 @@ msgstr "Name des Standard-Druckers"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:356
 msgid "Printer co&mmand:"
-msgstr "&Druckerbefehl:"
+msgstr "D&ruckbefehl:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sa&ns Serif:"
@@ -7232,14 +7234,12 @@ msgid "Dictum"
 msgstr "Diktum"
 
 #: lib/layouts/stdlayouts.inc:64
-#, fuzzy
 msgid "--Separator--"
-msgstr "Trenner"
+msgstr "--Trenner--"
 
 #: lib/layouts/stdlayouts.inc:73
-#, fuzzy
 msgid "--- Separate Environment ---"
-msgstr "Gather-Umgebung"
+msgstr "--- Umgebung trennen ---"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -12104,7 +12104,7 @@ msgid "Undefined character style"
 msgstr "Undefinierter Zeichenstil"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file %1$s already exists.\n"
 "\n"
@@ -12112,21 +12112,18 @@ msgid ""
 msgstr ""
 "Die Datei %1$s existiert bereits.\n"
 "\n"
-"Möchten Sie die Datei überschreiben?"
+"Möchten Sie diese Datei überschreiben?"
 
 #: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
-#, fuzzy
 msgid "Overwrite file?"
 msgstr "Datei überschreiben?"
 
 #: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062
 #: src/callback.cpp:169
-#, fuzzy
 msgid "&Overwrite"
 msgstr "&Überschreiben"
 
 #: src/Exporter.cpp:87
-#, fuzzy
 msgid "Overwrite &all"
 msgstr "&Alle überschreiben"
 
@@ -12708,19 +12705,17 @@ msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
 #: src/LyXFunc.cpp:1769
-#, fuzzy
 msgid "off"
-msgstr "Aus"
+msgstr "aus"
 
 #: src/LyXFunc.cpp:1771
-#, fuzzy
 msgid "auto"
-msgstr " (automatisch)"
+msgstr "automatisch"
 
 #: src/LyXFunc.cpp:1773
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
-msgstr ""
+msgstr "Status der Werkzeugleiste \"%1$s\" auf %2$s gesetzt"
 
 #: src/LyXFunc.cpp:1899
 msgid "Select template file"
@@ -12755,7 +12750,7 @@ msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
 #: src/LyXFunc.cpp:2059 src/callback.cpp:166
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
@@ -12763,10 +12758,9 @@ msgid ""
 msgstr ""
 "Das Dokument %1$s existiert bereits.\n"
 "\n"
-"Möchten Sie das Dokument überschreiben?"
+"Möchten Sie dieses Dokument überschreiben?"
 
 #: src/LyXFunc.cpp:2061 src/callback.cpp:168
-#, fuzzy
 msgid "Overwrite document?"
 msgstr "Dokument überschreiben?"
 
@@ -13013,7 +13007,6 @@ msgstr ""
 "blättern soll."
 
 #: src/LyXRC.cpp:2242
-#, fuzzy
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Deaktivieren Sie diesen Schalter, um das Laden von Dateien zu verhindern, "
@@ -13076,7 +13069,7 @@ msgstr "Die Option, um Kopien zu sortieren."
 
 #: src/LyXRC.cpp:2286
 msgid "The option for specifying the number of copies to print."
-msgstr "Die Option, um die Anzahl der Kopien anzugeben."
+msgstr "Die Option, um die Anzahl der zu druckenden Kopien anzugeben."
 
 #: src/LyXRC.cpp:2290
 msgid ""
@@ -13521,9 +13514,8 @@ msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
 #: src/Thesaurus.cpp:62
-#, fuzzy
 msgid "Thesaurus failure"
-msgstr "Thesaurus"
+msgstr "Der Thesaurus ist fehlgeschlagen"
 
 #: src/Thesaurus.cpp:63
 #, c-format
@@ -13532,6 +13524,9 @@ msgid ""
 "\n"
 "%1$s."
 msgstr ""
+"Aiksaurus hat den folgenden Fehler gemeldet:\n"
+"\n"
+"%1$s."
 
 #: src/VSpace.cpp:490
 msgid "Default skip"
@@ -15339,9 +15334,11 @@ msgid "Available listing parameters are %1$s"
 msgstr "Verfügbare Listing-Parameter sind %1$s"
 
 #: src/insets/InsetListingsParams.cpp:608
-#, fuzzy, c-format
+#, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
-msgstr "Verfügbare Listing-Parameter sind %1$s"
+msgstr ""
+"Verfügbare Listing-Parameter, die die Zeichenkette \"%1$s\" enthalten, sind %"
+"2$s"
 
 #: src/insets/InsetListingsParams.cpp:619
 #, c-format
