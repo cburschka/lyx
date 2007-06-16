@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 273
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass scrbook
@@ -91,8 +91,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Bo Peng" 
 \author "usti" 
+\author "Bo Peng" 
 \author "Uwe Stöhr" 
 \end_header
 
@@ -23789,13 +23789,6 @@ Latin1
 \end_layout
 
 \begin_layout Itemize
-The characters at entries A2, A4, A5, A6 and AD -- the cent, the yen, the
- generic-currency-symbol, the broken vertical bar and the short dash are
- just plain missing in the default encodings.
- We don't know where they are or why this is the case.
-\end_layout
-
-\begin_layout Itemize
 Even if you've selected 
 \family sans
 latin1
@@ -23853,47 +23846,6 @@ reference "sec:quotes"
 
 , will generate automatically LaTeX code adapted to available fonts and
  packages.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-The characters of the following table, which are inserted as commands, could
- not be inserted directly with the keyboard, because the standard encoding
- 
-\begin_inset Quotes eld
-\end_inset
-
-T1
-\begin_inset Quotes erd
-\end_inset
-
- doesn't know them.
- To let LaTeX understand the commands, the package 
-\series bold
-textcomp
-\series default
- needs to be loaded in the peamble with the line
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{textcomp}
-\end_layout
-
-\begin_layout Standard
-The package 
-\series bold
-textcomp
-\series default
- is available on every LaTeX system.
 \end_layout
 
 \end_inset
@@ -24917,29 +24869,7 @@ r
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textcent
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-character ¢ 
-\end_layout
-
-\end_inset
-
-
+¢
 \end_layout
 
 \end_inset
@@ -25451,29 +25381,7 @@ t
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textcurrency
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-character ¤ 
-\end_layout
-
-\end_inset
-
-
+¤
 \end_layout
 
 \end_inset
@@ -25725,29 +25633,7 @@ u
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textyen
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-character ¥ 
-\end_layout
-
-\end_inset
-
-
+¥
 \end_layout
 
 \end_inset
@@ -25999,29 +25885,7 @@ v
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textbrokenbar
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-character ¦ 
-\end_layout
-
-\end_inset
-
-
+¦
 \end_layout
 
 \end_inset
@@ -27835,29 +27699,7 @@ m
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textendash
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-character ­ 
-\end_layout
-
-\end_inset
-
-
+–
 \end_layout
 
 \end_inset
