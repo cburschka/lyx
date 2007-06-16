@@ -64,9 +64,6 @@
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
-% für besondere Integralzeichen
-%\usepackage{wasysym}
 \end_preamble
 \options bibtotoc, idxtotoc
 \language ngerman
@@ -21587,12 +21584,12 @@ iint
 ).
  Unglücklicherweise sehen sie nicht immer konsistent aus.
  Zum Beispiel sieht das Zeichen 
-\family typewriter
-
 \begin_inset Formula $\iint$
 \end_inset
 
- (
+ 
+\family typewriter
+(
 \backslash
 iint)
 \family default
@@ -21601,22 +21598,22 @@ iint)
 wasysym
 \family default
 -Paketes wie 
-\family typewriter
-
 \begin_inset Formula $\varint$
 \end_inset
 
- (
+ 
+\family typewriter
+(
 \backslash
 varint
 \family default
 ) aus, nicht wie 
-\family typewriter
-
 \begin_inset Formula $\int$
 \end_inset
 
- (
+ 
+\family typewriter
+(
 \backslash
 int
 \family default
@@ -25225,43 +25222,6 @@ Mathebefehle.ps
 Mathebefehle.dvi
 \family default
  holen.
-\end_layout
-
-\begin_layout Section
-Eine besonders schöne Gleichung
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula $ln\left({\displaystyle \lim_{z\rightarrow\infty}}\left(\left(\left(\bar{{X}}^{T}\right)^{-1}-\left(\bar{{X}}^{-1}\right)^{T}\right)!+\frac{1}{z}\right)^{2}\right)+\sin^{2}(p)+cos^{2}(p)={\displaystyle \sum_{n=0}^{\infty}}\frac{cosh(q)*\sqrt{1-tanh^{2}(q)}}{2^{n}}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wen es interessiert, was diese Gleichung bedeutet, kann sich an mich wenden
- (Hartmut Haase, 
-\family sans
-Hilfe\SpecialChar \menuseparator
-Über\InsetSpace \space{}
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X\SpecialChar \menuseparator
-Ruhm\InsetSpace \space{}
-und\InsetSpace \space{}
-Ehre
-\family default
-).
 \end_layout
 
 \begin_layout Chapter
