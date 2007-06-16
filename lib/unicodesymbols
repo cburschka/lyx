@@ -934,8 +934,8 @@
 # general punctuation
 0x2010 "-"                        "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
 0x2012 "-"                        "" "" # FIGURE DASH
-0x2013 "--"                       "" "" # EN DASH
-0x2014 "---"                      "" "" # EM DASH
+0x2013 "\\textendash"             "" "" # EN DASH
+0x2014 "\\textemdash"             "" "" # EM DASH
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
 0x2016 "\\textbardbl"             "textcomp" "" # DOUBLE VERTICAL LINE
