@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-14 21:27+0200\n"
+"POT-Creation-Date: 2007-06-16 12:16+0200\n"
 "PO-Revision-Date: 2007-05-31 04:13+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: ja_JP.eucJP <ja@li.org>\n"
@@ -80,11 +80,11 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:611 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
+#: src/frontends/qt4/ui/ListingsUi.ui:611 src/BufferList.cpp:113
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
 #: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
-#: src/callback.cpp:117 src/callback.cpp:170
+#: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -254,12 +254,12 @@ msgstr "なし"
 
 #: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.cpp:270
 #: src/frontends/qt4/QBox.cpp:377 src/frontends/qt4/QBox.cpp:385
-#: src/insets/InsetBox.cpp:157
+#: src/insets/InsetBox.cpp:156
 msgid "Parbox"
 msgstr "parboxコマンド"
 
 #: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.cpp:378
-#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:159
+#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:158
 msgid "Minipage"
 msgstr "minipage環境"
 
@@ -1775,50 +1775,50 @@ msgstr "色(&C)"
 msgid "&Alter..."
 msgstr "変更(&A)..."
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
-msgid "Converter Defi&nitions"
-msgstr "変換子の定義(&N)"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
 msgstr "変換子(&O):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:91
 msgid "E&xtra flag:"
 msgstr "追加フラグ(&X):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
 msgstr "変換元の書式(&F):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
 msgstr "変換先の書式(&T):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 msgid "A&dd"
 msgstr "追加(&D)"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 msgid "&Modify"
 msgstr "修正(&M)"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 msgid "Remo&ve"
 msgstr "削除(&V)"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:239
+msgid "Converter Defi&nitions"
+msgstr "変換子の定義(&N)"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:252
 msgid "Converter File Cache"
 msgstr "変換子のファイルキャッシュ"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 msgid "&Enabled"
 msgstr "有効(&E)"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "&Maximum Age (in days):"
 msgstr "最大日数(&M):"
 
@@ -2449,8 +2449,8 @@ msgstr "分ごと"
 msgid "&Maximum last files:"
 msgstr "最近のファイルの最大値(&M):"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:737
+#: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:737
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -3395,7 +3395,7 @@ msgstr "主張 #:"
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:195
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:66
+#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:64
 msgid "Note"
 msgstr "注釈"
 
@@ -5925,7 +5925,7 @@ msgstr "レビュー"
 msgid "Topical"
 msgstr "上"
 
-#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:67
+#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
 msgid "Comment"
 msgstr "コメント"
 
@@ -8318,17 +8318,17 @@ msgstr "ウィンドウを閉じる(D)|D"
 msgid "Redo|R"
 msgstr "やり直す(R)|R"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:865
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "切り取り"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:870
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "コピー"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:847
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "貼り付け"
@@ -8609,7 +8609,7 @@ msgstr "ブランチ(B)|B"
 msgid "File|e"
 msgstr "ファイル(E)|E"
 
-#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:153
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:152
 msgid "Box"
 msgstr "ボックス"
 
@@ -11306,57 +11306,57 @@ msgstr ""
 msgid "intercal"
 msgstr ""
 
-#: src/Buffer.cpp:230
+#: src/Buffer.cpp:233
 msgid "Could not remove temporary directory"
 msgstr "作業ディレクトリを削除することができませんでした"
 
-#: src/Buffer.cpp:231
+#: src/Buffer.cpp:234
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "作業ディレクトリ%1$sを削除することができませんでした："
 
-#: src/Buffer.cpp:402
+#: src/Buffer.cpp:405
 msgid "Unknown document class"
 msgstr "不明な文書クラスです"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:406
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "%1$sというクラスは登録されていないので，既定の文書クラスを使います。"
 
-#: src/Buffer.cpp:463 src/Text.cpp:295
+#: src/Buffer.cpp:466 src/Text.cpp:295
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "未知のトークン：%1$s %2$s\n"
 
-#: src/Buffer.cpp:467 src/Buffer.cpp:474 src/Buffer.cpp:494
+#: src/Buffer.cpp:470 src/Buffer.cpp:477 src/Buffer.cpp:497
 msgid "Document header error"
 msgstr "文書ヘッダのエラー"
 
-#: src/Buffer.cpp:473
+#: src/Buffer.cpp:476
 msgid "\\begin_header is missing"
 msgstr "\\begin_headerがありません"
 
-#: src/Buffer.cpp:493
+#: src/Buffer.cpp:496
 msgid "\\begin_document is missing"
 msgstr "\\begin_documentがありません"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:507
 msgid "Can't load document class"
 msgstr "文書クラスを読み込むことができません"
 
-#: src/Buffer.cpp:505
+#: src/Buffer.cpp:508
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr "%1$sというクラスを読み込めなかったので，既定の文書クラスを使います。"
 
-#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:909
+#: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:909
 #: src/BufferView.cpp:915
 msgid "Changes not shown in LaTeX output"
 msgstr "変更箇所はLaTeXの出力に表示されません。"
 
-#: src/Buffer.cpp:517 src/BufferView.cpp:910
+#: src/Buffer.cpp:520 src/BufferView.cpp:910
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11368,7 +11368,7 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください"
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:916
+#: src/Buffer.cpp:526 src/BufferView.cpp:916
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11380,29 +11380,29 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください。"
 
-#: src/Buffer.cpp:658 src/Buffer.cpp:667
+#: src/Buffer.cpp:661 src/Buffer.cpp:670
 msgid "Document could not be read"
 msgstr "文書を読み込めませんでした"
 
-#: src/Buffer.cpp:659 src/Buffer.cpp:668
+#: src/Buffer.cpp:662 src/Buffer.cpp:671
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$sを読めませんでした。"
 
-#: src/Buffer.cpp:676 src/Buffer.cpp:748
+#: src/Buffer.cpp:679 src/Buffer.cpp:751
 msgid "Document format failure"
 msgstr "文書フォーマットに失敗"
 
-#: src/Buffer.cpp:677
+#: src/Buffer.cpp:680
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$sはLyX文書ではありません。"
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:704
 msgid "Conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:702
+#: src/Buffer.cpp:705
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -11411,11 +11411,11 @@ msgstr ""
 "%1$sは違うバージョンのLyXファイルですが，これを変換するための作業ファイルを生"
 "成することができませんでした。"
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:714
 msgid "Conversion script not found"
 msgstr "変換スクリプトが見つかりません"
 
-#: src/Buffer.cpp:712
+#: src/Buffer.cpp:715
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -11424,11 +11424,11 @@ msgstr ""
 "%1$sは違うバージョンのLyXファイルですが，変換スクリプトlyx2lyxが見つかりませ"
 "んでした。"
 
-#: src/Buffer.cpp:733
+#: src/Buffer.cpp:736
 msgid "Conversion script failed"
 msgstr "変換スクリプトが失敗しました"
 
-#: src/Buffer.cpp:734
+#: src/Buffer.cpp:737
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -11437,16 +11437,16 @@ msgstr ""
 "%1$sは違うバージョンのLyXファイルですが，スクリプトlyx2lyxがその変換に失敗し"
 "ました。"
 
-#: src/Buffer.cpp:749
+#: src/Buffer.cpp:752
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$sは予期せず終了しました。おそらく壊れているものと思われます。"
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:788
 msgid "Backup failure"
 msgstr "バックアップ失敗"
 
-#: src/Buffer.cpp:786
+#: src/Buffer.cpp:789
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -11455,11 +11455,11 @@ msgstr ""
 "LyXはバックアップファイル%1$sを生成することができませんでした。\n"
 "ディレクトリが存在して書込可能になっていることを確認してください。"
 
-#: src/Buffer.cpp:919
+#: src/Buffer.cpp:922
 msgid "Encoding error"
 msgstr "エンコーディングエラー"
 
-#: src/Buffer.cpp:920
+#: src/Buffer.cpp:923
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -11469,33 +11469,33 @@ msgstr ""
 "ています。\n"
 "文書エンコーディングをutf8に変更すると解決するかもしれません。"
 
-#: src/Buffer.cpp:1198
+#: src/Buffer.cpp:1201
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:1211
+#: src/Buffer.cpp:1214
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:1212
+#: src/Buffer.cpp:1215
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:1743
+#: src/Buffer.cpp:1746
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:1754
+#: src/Buffer.cpp:1757
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr "段落 %1$s のソースコードをプレビューする"
 
-#: src/Buffer.cpp:1758
+#: src/Buffer.cpp:1761
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落 %1$s から %2$s までのソースコードをプレビューする"
 
-#: src/BufferList.cpp:110 src/BufferList.cpp:218
+#: src/BufferList.cpp:109 src/BufferList.cpp:217
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -11506,28 +11506,28 @@ msgstr ""
 "\n"
 "文書を保存しますか，それとも変更を廃棄しますか？"
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:736
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:736
 msgid "Save changed document?"
 msgstr "変更した文書を保存しますか？"
 
-#: src/BufferList.cpp:114 src/BufferList.cpp:222
+#: src/BufferList.cpp:113 src/BufferList.cpp:221
 msgid "&Discard"
 msgstr "廃棄(&D)"
 
-#: src/BufferList.cpp:348
+#: src/BufferList.cpp:347
 #, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "LyX: 文書「%1$s」を保存しようとしています"
 
-#: src/BufferList.cpp:359 src/BufferList.cpp:372 src/BufferList.cpp:386
+#: src/BufferList.cpp:358 src/BufferList.cpp:371 src/BufferList.cpp:385
 msgid "  Save seems successful. Phew."
 msgstr "  何とか保存できたようです。ひゅぅ。"
 
-#: src/BufferList.cpp:362 src/BufferList.cpp:376
+#: src/BufferList.cpp:361 src/BufferList.cpp:375
 msgid "  Save failed! Trying..."
 msgstr "  保存に失敗しました！頑張ってますが..."
 
-#: src/BufferList.cpp:389
+#: src/BufferList.cpp:388
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  保存に失敗しました！なんてこった。文書は失われました。"
 
@@ -11652,7 +11652,7 @@ msgid "Select LyX document to insert"
 msgstr "挿入するLyX文書を選択して下さい"
 
 #: src/BufferView.cpp:1621 src/LyXFunc.cpp:1901 src/LyXFunc.cpp:1940
-#: src/LyXFunc.cpp:2013 src/callback.cpp:136
+#: src/LyXFunc.cpp:2013 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11666,7 +11666,7 @@ msgid "Examples|#E#e"
 msgstr "用例(E)|#E#e"
 
 #: src/BufferView.cpp:1628 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1945
-#: src/callback.cpp:142
+#: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX文書 (*.lyx)"
 
@@ -11759,7 +11759,7 @@ msgstr "LaTeXテキスト"
 msgid "previewed snippet"
 msgstr "プレビューの断片"
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:344
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:342
 msgid "note"
 msgstr "注釈"
 
@@ -11927,12 +11927,12 @@ msgstr "引き継ぐ"
 msgid "ignore"
 msgstr "無視"
 
-#: src/Converter.cpp:332 src/Converter.cpp:476 src/Converter.cpp:499
-#: src/Converter.cpp:544
+#: src/Converter.cpp:333 src/Converter.cpp:477 src/Converter.cpp:500
+#: src/Converter.cpp:545
 msgid "Cannot convert file"
 msgstr "ファイルを変換することができません"
 
-#: src/Converter.cpp:333
+#: src/Converter.cpp:334
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -11941,43 +11941,43 @@ msgstr ""
 "%1$s形式のファイルから%2$s形式に変換するための情報がありません。\n"
 "設定で変換子を指定してください。"
 
-#: src/Converter.cpp:427 src/Format.cpp:320 src/Format.cpp:379
+#: src/Converter.cpp:428 src/Format.cpp:320 src/Format.cpp:379
 msgid "Executing command: "
 msgstr "以下のコマンドを実行します: "
 
-#: src/Converter.cpp:471
+#: src/Converter.cpp:472
 msgid "Build errors"
 msgstr "ビルドエラー"
 
-#: src/Converter.cpp:472
+#: src/Converter.cpp:473
 msgid "There were errors during the build process."
 msgstr "ビルドプロセス中にエラーがありました。"
 
-#: src/Converter.cpp:477 src/Format.cpp:327 src/Format.cpp:386
+#: src/Converter.cpp:478 src/Format.cpp:327 src/Format.cpp:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "%1$sを実行している間にエラーが発生しました。"
 
-#: src/Converter.cpp:500
+#: src/Converter.cpp:501
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "作業ディレクトリを%1$sから%2$sに移動できませんでした。"
 
-#: src/Converter.cpp:546
+#: src/Converter.cpp:547
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "作業ファイルを %1$s から %2$s にコピーできませんでした。"
 
-#: src/Converter.cpp:547
+#: src/Converter.cpp:548
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "作業ファイルを %1$s から %2$s に移動できませんでした。"
 
-#: src/Converter.cpp:605
+#: src/Converter.cpp:606
 msgid "Running LaTeX..."
 msgstr "LaTeXを実行中です..."
 
-#: src/Converter.cpp:623
+#: src/Converter.cpp:624
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -11986,15 +11986,15 @@ msgstr ""
 "LaTeXはうまく実行できませんでした。さらにLyXはLaTeXのログ%1$sを見つけ出せませ"
 "んでした。"
 
-#: src/Converter.cpp:626
+#: src/Converter.cpp:627
 msgid "LaTeX failed"
 msgstr "LaTeXが失敗しました"
 
-#: src/Converter.cpp:628
+#: src/Converter.cpp:629
 msgid "Output is empty"
 msgstr "出力が空です"
 
-#: src/Converter.cpp:629
+#: src/Converter.cpp:630
 msgid "An empty output file was generated."
 msgstr "空の出力ファイルが生成されました。"
 
@@ -12043,7 +12043,7 @@ msgid "Overwrite file?"
 msgstr "ファイルを上書きしますか？"
 
 #: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062
-#: src/callback.cpp:170
+#: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
 msgstr "上書き(&O)"
@@ -12579,7 +12579,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "終了しまっせ。"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1342
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1346
 msgid "Missing argument"
 msgstr "引数がありません"
 
@@ -12640,7 +12640,7 @@ msgstr ""
 msgid "Select template file"
 msgstr "テンプレートファイルを選んでください"
 
-#: src/LyXFunc.cpp:1902 src/callback.cpp:137
+#: src/LyXFunc.cpp:1902 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "テンプレート(T)|#T#t"
 
@@ -12668,7 +12668,7 @@ msgstr "文書 %1$s を開くことができませんでした。"
 msgid "Select %1$s file to import"
 msgstr "インポートするファイルとして %1$s を選択します"
 
-#: src/LyXFunc.cpp:2059 src/callback.cpp:167
+#: src/LyXFunc.cpp:2059 src/callback.cpp:166
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12679,7 +12679,7 @@ msgstr ""
 "\n"
 "文書を上書きしますか？"
 
-#: src/LyXFunc.cpp:2061 src/callback.cpp:169
+#: src/LyXFunc.cpp:2061 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "文書を上書きしますか？"
@@ -13378,23 +13378,23 @@ msgstr "一段落以上は索引にすることができません！"
 msgid "Math editor mode"
 msgstr "数式編集モード"
 
-#: src/Text3.cpp:752
+#: src/Text3.cpp:756
 msgid "Unknown spacing argument: "
 msgstr "解釈不能なスペースの引数です: "
 
-#: src/Text3.cpp:924
+#: src/Text3.cpp:928
 msgid "Layout "
 msgstr "割り付け"
 
-#: src/Text3.cpp:925
+#: src/Text3.cpp:929
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1447 src/Text3.cpp:1459
+#: src/Text3.cpp:1451 src/Text3.cpp:1463
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1582
+#: src/Text3.cpp:1586
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -13535,11 +13535,11 @@ msgstr "\\roman{enumiii}."
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/bufferview_funcs.cpp:338
+#: src/bufferview_funcs.cpp:333
 msgid "No more insets"
 msgstr "挿入枠はもうありません"
 
-#: src/callback.cpp:114
+#: src/callback.cpp:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -13550,36 +13550,36 @@ msgstr ""
 "\n"
 "文書をリネームして再試行しますか？"
 
-#: src/callback.cpp:116
+#: src/callback.cpp:115
 msgid "Rename and save?"
 msgstr "リネームして保存しますか？"
 
-#: src/callback.cpp:117
+#: src/callback.cpp:116
 msgid "&Rename"
 msgstr "リネーム(&R)"
 
-#: src/callback.cpp:134
+#: src/callback.cpp:133
 msgid "Choose a filename to save document as"
 msgstr "文書を保存するファイル名を選んで下さい。"
 
-#: src/callback.cpp:218
+#: src/callback.cpp:217
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/callback.cpp:258
+#: src/callback.cpp:257
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/callback.cpp:285
+#: src/callback.cpp:284
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/callback.cpp:349
+#: src/callback.cpp:348
 msgid "Select file to insert"
 msgstr "挿入するファイルを選択して下さい"
 
-#: src/callback.cpp:368
+#: src/callback.cpp:367
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13590,11 +13590,11 @@ msgstr ""
 "%1$s\n"
 "を読むことができませんでした。"
 
-#: src/callback.cpp:370
+#: src/callback.cpp:369
 msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
-#: src/callback.cpp:378
+#: src/callback.cpp:377
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13605,15 +13605,15 @@ msgstr ""
 "%1$s\n"
 "を開くことができませんでした。"
 
-#: src/callback.cpp:380 src/output.cpp:41
+#: src/callback.cpp:379 src/output.cpp:41
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/callback.cpp:404
+#: src/callback.cpp:403
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8でエンコードされていないファイルを読んでいます"
 
-#: src/callback.cpp:405
+#: src/callback.cpp:404
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -13626,19 +13626,19 @@ msgstr ""
 "もし，結果が正しくないならば，ファイルのエンコーディングを\n"
 "LyX以外のプログラムでUTF-8に変更してください。\n"
 
-#: src/callback.cpp:422
+#: src/callback.cpp:421
 msgid "Running configure..."
 msgstr "設定を検出しています,,,"
 
-#: src/callback.cpp:431
+#: src/callback.cpp:430
 msgid "Reloading configuration..."
 msgstr "コンフィギュレーションを読み込み直しています..."
 
-#: src/callback.cpp:436
+#: src/callback.cpp:435
 msgid "System reconfigured"
 msgstr "システムを再検出しました"
 
-#: src/callback.cpp:437
+#: src/callback.cpp:436
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -13773,7 +13773,7 @@ msgstr " (変更されました)"
 msgid " (read only)"
 msgstr " (読み込み専用)"
 
-#: src/frontends/WorkArea.cpp:244
+#: src/frontends/WorkArea.cpp:247
 msgid "Formatting document..."
 msgstr "文書を整形しています..."
 
@@ -13889,7 +13889,7 @@ msgstr "深度"
 msgid "Total Height"
 msgstr "全高"
 
-#: src/frontends/controllers/ControlErrorList.cpp:57
+#: src/frontends/controllers/ControlErrorList.cpp:56
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s エラー (%2$s)"
@@ -14880,48 +14880,48 @@ msgstr ""
 "BibTeXデータベースへのパスに空白が含まれていますので，\n"
 "BibTeXはデータベースを見付けることができません。"
 
-#: src/insets/InsetBox.cpp:65
+#: src/insets/InsetBox.cpp:64
 msgid "Boxed"
 msgstr "縁付き"
 
-#: src/insets/InsetBox.cpp:66
+#: src/insets/InsetBox.cpp:65
 msgid "Frameless"
 msgstr "縁なし"
 
-#: src/insets/InsetBox.cpp:67
+#: src/insets/InsetBox.cpp:66
 msgid "ovalbox"
 msgstr "楕円"
 
-#: src/insets/InsetBox.cpp:68
+#: src/insets/InsetBox.cpp:67
 msgid "Ovalbox"
 msgstr "楕円"
 
-#: src/insets/InsetBox.cpp:69
+#: src/insets/InsetBox.cpp:68
 msgid "Shadowbox"
 msgstr "影付き"
 
-#: src/insets/InsetBox.cpp:70
+#: src/insets/InsetBox.cpp:69
 msgid "Doublebox"
 msgstr "二重縁"
 
-#: src/insets/InsetBox.cpp:125
+#: src/insets/InsetBox.cpp:124
 msgid "Opened Box Inset"
 msgstr "展開された縁付き挿入枠"
 
-#: src/insets/InsetBranch.cpp:75
+#: src/insets/InsetBranch.cpp:74
 msgid "Opened Branch Inset"
 msgstr "展開されたブランチ挿入枠"
 
-#: src/insets/InsetBranch.cpp:100
+#: src/insets/InsetBranch.cpp:99
 msgid "Branch: "
 msgstr "ブランチ: "
 
-#: src/insets/InsetBranch.cpp:105 src/insets/InsetCharStyle.cpp:162
+#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:162
 #: src/insets/InsetCharStyle.cpp:211
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:249
+#: src/insets/InsetBranch.cpp:248
 msgid "branch"
 msgstr "ブランチ"
 
@@ -14965,7 +14965,7 @@ msgstr "展開されたERT挿入枠です"
 msgid "ERT"
 msgstr "ERT"
 
-#: src/insets/InsetEnvironment.cpp:65
+#: src/insets/InsetEnvironment.cpp:64
 msgid "Opened Environment Inset: "
 msgstr "展開された環境挿入枠: "
 
@@ -14974,20 +14974,20 @@ msgstr "展開された環境挿入枠: "
 msgid "External template %1$s is not installed"
 msgstr "外部テンプレート %1$s はインストールされていません"
 
-#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:372
-#: src/insets/InsetFloat.cpp:382
+#: src/insets/InsetFloat.cpp:118 src/insets/InsetFloat.cpp:369
+#: src/insets/InsetFloat.cpp:379
 msgid "float: "
 msgstr "フロート: "
 
-#: src/insets/InsetFloat.cpp:277
+#: src/insets/InsetFloat.cpp:274
 msgid "Opened Float Inset"
 msgstr "展開されたフロート挿入枠です"
 
-#: src/insets/InsetFloat.cpp:333
+#: src/insets/InsetFloat.cpp:330
 msgid "float"
 msgstr "フロート"
 
-#: src/insets/InsetFloat.cpp:384
+#: src/insets/InsetFloat.cpp:381
 msgid " (sideways)"
 msgstr " (横向き)"
 
@@ -15000,19 +15000,19 @@ msgstr "エラー: そのような種類のフロートは存在しません!"
 msgid "List of %1$s"
 msgstr "%1$sの一覧"
 
-#: src/insets/InsetFoot.cpp:38 src/insets/InsetFoot.cpp:45
+#: src/insets/InsetFoot.cpp:35 src/insets/InsetFoot.cpp:42
 msgid "foot"
 msgstr "脚注"
 
-#: src/insets/InsetFoot.cpp:57
+#: src/insets/InsetFoot.cpp:54
 msgid "Opened Footnote Inset"
 msgstr "展開された脚注挿入枠です"
 
-#: src/insets/InsetFoot.cpp:86
+#: src/insets/InsetFoot.cpp:83
 msgid "footnote"
 msgstr "脚注"
 
-#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:517
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:517
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15023,12 +15023,12 @@ msgstr ""
 "%1$s\n"
 "を作業ディレクトリにコピーすることができませんでした。"
 
-#: src/insets/InsetGraphics.cpp:710
+#: src/insets/InsetGraphics.cpp:711
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "%1$s は，変換する必要がまったくありません"
 
-#: src/insets/InsetGraphics.cpp:822
+#: src/insets/InsetGraphics.cpp:823
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "画像ファイル: %1$s"
@@ -15233,12 +15233,12 @@ msgstr "不明なリストパラメーター名: %1$s"
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr "「%1$s」で始まるパラメーター：%2$s"
 
-#: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
-#: src/insets/InsetMarginal.cpp:70
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
+#: src/insets/InsetMarginal.cpp:69
 msgid "margin"
 msgstr "傍注"
 
-#: src/insets/InsetMarginal.cpp:53
+#: src/insets/InsetMarginal.cpp:52
 msgid "Opened Marginal Note Inset"
 msgstr "展開された傍注挿入枠"
 
@@ -15250,27 +15250,27 @@ msgstr "用語"
 msgid "Nomenclature"
 msgstr "用語集"
 
-#: src/insets/InsetNote.cpp:68
+#: src/insets/InsetNote.cpp:66
 msgid "Greyed out"
 msgstr "淡色表示"
 
-#: src/insets/InsetNote.cpp:69
+#: src/insets/InsetNote.cpp:67
 msgid "Framed"
 msgstr "枠付き"
 
-#: src/insets/InsetNote.cpp:70
+#: src/insets/InsetNote.cpp:68
 msgid "Shaded"
 msgstr "影付き"
 
-#: src/insets/InsetNote.cpp:149
+#: src/insets/InsetNote.cpp:147
 msgid "Opened Note Inset"
 msgstr "注釈挿入枠を展開しました"
 
-#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
+#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
 msgid "opt"
 msgstr "別題"
 
-#: src/insets/InsetOptArg.cpp:59
+#: src/insets/InsetOptArg.cpp:54
 msgid "Opened Optional Argument Inset"
 msgstr "追加引数挿入枠を展開しました"
 
@@ -15358,15 +15358,15 @@ msgstr "HTMLのURL: "
 msgid "Vertical Space"
 msgstr "縦方向の空白"
 
-#: src/insets/InsetWrap.cpp:49
+#: src/insets/InsetWrap.cpp:48
 msgid "wrap: "
 msgstr "ラップ："
 
-#: src/insets/InsetWrap.cpp:177
+#: src/insets/InsetWrap.cpp:176
 msgid "Opened Wrap Inset"
 msgstr "ラップ挿入枠を展開しました"
 
-#: src/insets/InsetWrap.cpp:197
+#: src/insets/InsetWrap.cpp:196
 msgid "wrap"
 msgstr "ラップ"
 
@@ -15561,11 +15561,11 @@ msgstr "「%1$s」の列数を変えることができません。"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"
 
-#: src/mathed/InsetMathNest.cpp:862
+#: src/mathed/InsetMathNest.cpp:860
 msgid "create new math text environment ($...$)"
 msgstr "新しい数式テキスト環境を作成する ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:865
+#: src/mathed/InsetMathNest.cpp:863
 msgid "entered math text mode (textrm)"
 msgstr "挿入された数式テキストモード (textrm)"
 

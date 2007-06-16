@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-14 21:27+0200\n"
+"POT-Creation-Date: 2007-06-16 12:16+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -79,11 +79,11 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:611 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
+#: src/frontends/qt4/ui/ListingsUi.ui:611 src/BufferList.cpp:113
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
 #: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
-#: src/callback.cpp:117 src/callback.cpp:170
+#: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
 msgstr "&Zru¹i»"
 
@@ -253,12 +253,12 @@ msgstr "®iadne"
 
 #: src/frontends/qt4/ui/BoxUi.ui:43 src/frontends/qt4/QBox.cpp:270
 #: src/frontends/qt4/QBox.cpp:377 src/frontends/qt4/QBox.cpp:385
-#: src/insets/InsetBox.cpp:157
+#: src/insets/InsetBox.cpp:156
 msgid "Parbox"
 msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.cpp:378
-#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:159
+#: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:158
 msgid "Minipage"
 msgstr "Minipage"
 
@@ -1845,56 +1845,56 @@ msgstr "&Farby"
 msgid "&Alter..."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
-#, fuzzy
-msgid "Converter Defi&nitions"
-msgstr "Definícia"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:69
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
 msgstr "K&onvertor:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:79
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:91
 msgid "E&xtra flag:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:109
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 #, fuzzy
 msgid "&From format:"
 msgstr "&Formát:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:141
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 #, fuzzy
 msgid "&To format:"
 msgstr "Formát &dátumu:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:175
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
 msgid "A&dd"
 msgstr "&Prida»"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:182
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
 msgid "&Modify"
 msgstr "&Modifikova»"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:197
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #, fuzzy
 msgid "Remo&ve"
 msgstr "&Odstráni»"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:239
+#, fuzzy
+msgid "Converter Defi&nitions"
+msgstr "Definícia"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:252
 #, fuzzy
 msgid "Converter File Cache"
 msgstr "Vlo¾i» súbor|V"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 #, fuzzy
 msgid "&Enabled"
 msgstr "D&lhá tabuµka"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 #, fuzzy
 msgid "&Maximum Age (in days):"
 msgstr "&Maximum posledných súborov:"
@@ -2526,8 +2526,8 @@ msgstr "min."
 msgid "&Maximum last files:"
 msgstr "&Maximum posledných súborov:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:114
-#: src/BufferList.cpp:222 src/LyXFunc.cpp:737
+#: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:737
 msgid "&Save"
 msgstr "&Ulo¾i»"
 
@@ -3498,7 +3498,7 @@ msgstr "Tvrdenie"
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:195
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:66
+#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:64
 msgid "Note"
 msgstr "Poznámka"
 
@@ -6216,7 +6216,7 @@ msgstr "Náhµad"
 msgid "Topical"
 msgstr "Námet"
 
-#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:67
+#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
 msgid "Comment"
 msgstr "Komentár"
 
@@ -8773,17 +8773,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Znova|Z"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:865
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Vystrihnú»"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:870
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopírova»"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:847
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Vlo¾i»"
@@ -9114,7 +9114,7 @@ msgstr ""
 msgid "File|e"
 msgstr "Súbor|S"
 
-#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:153
+#: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:152
 msgid "Box"
 msgstr ""
 
@@ -12113,61 +12113,61 @@ msgstr "Na stred"
 msgid "intercal"
 msgstr "Doslovné"
 
-#: src/Buffer.cpp:230
+#: src/Buffer.cpp:233
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/Buffer.cpp:231
+#: src/Buffer.cpp:234
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/Buffer.cpp:402
+#: src/Buffer.cpp:405
 #, fuzzy
 msgid "Unknown document class"
 msgstr "do zvolenej triedy dokumentu"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:406
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:463 src/Text.cpp:295
+#: src/Buffer.cpp:466 src/Text.cpp:295
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámy token: %1$s %2$s\n"
 
-#: src/Buffer.cpp:467 src/Buffer.cpp:474 src/Buffer.cpp:494
+#: src/Buffer.cpp:470 src/Buffer.cpp:477 src/Buffer.cpp:497
 #, fuzzy
 msgid "Document header error"
 msgstr "Dokument je premenovaný na '"
 
-#: src/Buffer.cpp:473
+#: src/Buffer.cpp:476
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:493
+#: src/Buffer.cpp:496
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:507
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Nemô¾em naèíta» textovú triedu "
 
-#: src/Buffer.cpp:505
+#: src/Buffer.cpp:508
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/Buffer.cpp:516 src/Buffer.cpp:522 src/BufferView.cpp:909
+#: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:909
 #: src/BufferView.cpp:915
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:517 src/BufferView.cpp:910
+#: src/Buffer.cpp:520 src/BufferView.cpp:910
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -12175,7 +12175,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:916
+#: src/Buffer.cpp:526 src/BufferView.cpp:916
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12183,119 +12183,119 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:658 src/Buffer.cpp:667
+#: src/Buffer.cpp:661 src/Buffer.cpp:670
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/Buffer.cpp:659 src/Buffer.cpp:668
+#: src/Buffer.cpp:662 src/Buffer.cpp:671
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s odstavce nie je mo¾né skonvertova»"
 
-#: src/Buffer.cpp:676 src/Buffer.cpp:748
+#: src/Buffer.cpp:679 src/Buffer.cpp:751
 #, fuzzy
 msgid "Document format failure"
 msgstr "©týl dokumentu"
 
-#: src/Buffer.cpp:677
+#: src/Buffer.cpp:680
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr ""
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:704
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Prevod"
 
-#: src/Buffer.cpp:702
+#: src/Buffer.cpp:705
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:714
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Logovací súbor kontroly verzií nebol nájdený."
 
-#: src/Buffer.cpp:712
+#: src/Buffer.cpp:715
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:733
+#: src/Buffer.cpp:736
 msgid "Conversion script failed"
 msgstr ""
 
-#: src/Buffer.cpp:734
+#: src/Buffer.cpp:737
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:749
+#: src/Buffer.cpp:752
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:788
 #, fuzzy
 msgid "Backup failure"
 msgstr "Cesta k zálohám"
 
-#: src/Buffer.cpp:786
+#: src/Buffer.cpp:789
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:919
+#: src/Buffer.cpp:922
 #, fuzzy
 msgid "Encoding error"
 msgstr "&Kódovanie:"
 
-#: src/Buffer.cpp:920
+#: src/Buffer.cpp:923
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1198
+#: src/Buffer.cpp:1201
 msgid "Running chktex..."
 msgstr "chktex pracuje..."
 
-#: src/Buffer.cpp:1211
+#: src/Buffer.cpp:1214
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1212
+#: src/Buffer.cpp:1215
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex úspe¹ne skonèil."
 
-#: src/Buffer.cpp:1743
+#: src/Buffer.cpp:1746
 #, fuzzy
 msgid "Preview source code"
 msgstr "Náhµad|#N"
 
-#: src/Buffer.cpp:1754
+#: src/Buffer.cpp:1757
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:1758
+#: src/Buffer.cpp:1761
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/BufferList.cpp:110 src/BufferList.cpp:218
+#: src/BufferList.cpp:109 src/BufferList.cpp:217
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12303,29 +12303,29 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:736
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:736
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Ulo¾i» dokument?"
 
-#: src/BufferList.cpp:114 src/BufferList.cpp:222
+#: src/BufferList.cpp:113 src/BufferList.cpp:221
 msgid "&Discard"
 msgstr ""
 
-#: src/BufferList.cpp:348
+#: src/BufferList.cpp:347
 #, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "Lyx: Pokú¹am sa ulo¾i» dokument %1$s"
 
-#: src/BufferList.cpp:359 src/BufferList.cpp:372 src/BufferList.cpp:386
+#: src/BufferList.cpp:358 src/BufferList.cpp:371 src/BufferList.cpp:385
 msgid "  Save seems successful. Phew."
 msgstr " Zdá sa, ¾e ulo¾enie bolo úspe¹né. Uf."
 
-#: src/BufferList.cpp:362 src/BufferList.cpp:376
+#: src/BufferList.cpp:361 src/BufferList.cpp:375
 msgid "  Save failed! Trying..."
 msgstr " Ulo¾enie neprebehlo správne! Skú¹am..."
 
-#: src/BufferList.cpp:389
+#: src/BufferList.cpp:388
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " Ulo¾enie neprebehlo správne! Och. Dokument je stratený."
 
@@ -12447,7 +12447,7 @@ msgid "Select LyX document to insert"
 msgstr "Zvoµte LyX dokument na vlo¾enie"
 
 #: src/BufferView.cpp:1621 src/LyXFunc.cpp:1901 src/LyXFunc.cpp:1940
-#: src/LyXFunc.cpp:2013 src/callback.cpp:136
+#: src/LyXFunc.cpp:2013 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12461,7 +12461,7 @@ msgid "Examples|#E#e"
 msgstr "Príklady|#P#p"
 
 #: src/BufferView.cpp:1628 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1945
-#: src/callback.cpp:142
+#: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumenty (*.lyx)"
 
@@ -12554,7 +12554,7 @@ msgstr "LaTeX text"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:344
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:342
 msgid "note"
 msgstr "poznámka"
 
@@ -12735,75 +12735,75 @@ msgstr "zdedené"
 msgid "ignore"
 msgstr "ignorova»"
 
-#: src/Converter.cpp:332 src/Converter.cpp:476 src/Converter.cpp:499
-#: src/Converter.cpp:544
+#: src/Converter.cpp:333 src/Converter.cpp:477 src/Converter.cpp:500
+#: src/Converter.cpp:545
 msgid "Cannot convert file"
 msgstr "Nie je mo¾né konvertova» súbor"
 
-#: src/Converter.cpp:333
+#: src/Converter.cpp:334
 #, fuzzy, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
 msgstr "®iadne informácie pre konverziu z %1$s do %2$s"
 
-#: src/Converter.cpp:427 src/Format.cpp:320 src/Format.cpp:379
+#: src/Converter.cpp:428 src/Format.cpp:320 src/Format.cpp:379
 #, fuzzy
 msgid "Executing command: "
 msgstr "Vykonávam príkaz:"
 
-#: src/Converter.cpp:471
+#: src/Converter.cpp:472
 #, fuzzy
 msgid "Build errors"
 msgstr "Vytváram program"
 
-#: src/Converter.cpp:472
+#: src/Converter.cpp:473
 #, fuzzy
 msgid "There were errors during the build process."
 msgstr "Poèas spracovania sa vyskytli chyby."
 
-#: src/Converter.cpp:477 src/Format.cpp:327 src/Format.cpp:386
+#: src/Converter.cpp:478 src/Format.cpp:327 src/Format.cpp:386
 #, fuzzy, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Chyba pri èítaní %1$s."
 
-#: src/Converter.cpp:500
+#: src/Converter.cpp:501
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/Converter.cpp:546
+#: src/Converter.cpp:547
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr ""
 
-#: src/Converter.cpp:547
+#: src/Converter.cpp:548
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
 
-#: src/Converter.cpp:605
+#: src/Converter.cpp:606
 msgid "Running LaTeX..."
 msgstr "LaTeX pracuje..."
 
-#: src/Converter.cpp:623
+#: src/Converter.cpp:624
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
 
-#: src/Converter.cpp:626
+#: src/Converter.cpp:627
 #, fuzzy
 msgid "LaTeX failed"
 msgstr "Log súbor LaTeXu|L"
 
-#: src/Converter.cpp:628
+#: src/Converter.cpp:629
 #, fuzzy
 msgid "Output is empty"
 msgstr "je prázdny"
 
-#: src/Converter.cpp:629
+#: src/Converter.cpp:630
 msgid "An empty output file was generated."
 msgstr ""
 
@@ -12845,7 +12845,7 @@ msgid "Overwrite file?"
 msgstr "Zobrazi» súbor"
 
 #: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062
-#: src/callback.cpp:170
+#: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
 msgstr "P&ísací stroj:"
@@ -13377,7 +13377,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Koniec|K"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1342
+#: src/LyXFunc.cpp:1120 src/Text3.cpp:1346
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
@@ -13440,7 +13440,7 @@ msgstr ""
 msgid "Select template file"
 msgstr "Zvoli» názov ¹ablóny"
 
-#: src/LyXFunc.cpp:1902 src/callback.cpp:137
+#: src/LyXFunc.cpp:1902 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "©ablóny|#¹"
 
@@ -13468,7 +13468,7 @@ msgstr "Nedá sa otvori» dokument %1$s"
 msgid "Select %1$s file to import"
 msgstr "Zvoli» súbor %1$s na import"
 
-#: src/LyXFunc.cpp:2059 src/callback.cpp:167
+#: src/LyXFunc.cpp:2059 src/callback.cpp:166
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13476,7 +13476,7 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:2061 src/callback.cpp:169
+#: src/LyXFunc.cpp:2061 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Ulo¾i» dokument?"
@@ -14168,23 +14168,23 @@ msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/Text3.cpp:752
+#: src/Text3.cpp:756
 msgid "Unknown spacing argument: "
 msgstr "Neznámy parameter riadkovania: "
 
-#: src/Text3.cpp:924
+#: src/Text3.cpp:928
 msgid "Layout "
 msgstr "Formát "
 
-#: src/Text3.cpp:925
+#: src/Text3.cpp:929
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1447 src/Text3.cpp:1459
+#: src/Text3.cpp:1451 src/Text3.cpp:1463
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1582
+#: src/Text3.cpp:1586
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený."
 
@@ -14327,11 +14327,11 @@ msgstr ""
 msgid "\\Alph{enumiv}."
 msgstr ""
 
-#: src/bufferview_funcs.cpp:338
+#: src/bufferview_funcs.cpp:333
 msgid "No more insets"
 msgstr "U¾ nie je viac príloh"
 
-#: src/callback.cpp:114
+#: src/callback.cpp:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -14339,37 +14339,37 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/callback.cpp:116
+#: src/callback.cpp:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/callback.cpp:117
+#: src/callback.cpp:116
 #, fuzzy
 msgid "&Rename"
 msgstr "Meno"
 
-#: src/callback.cpp:134
+#: src/callback.cpp:133
 msgid "Choose a filename to save document as"
 msgstr "Zvoli» názov súboru, pod ktorým sa má dokument ulo¾i»"
 
-#: src/callback.cpp:218
+#: src/callback.cpp:217
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/callback.cpp:258
+#: src/callback.cpp:257
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/callback.cpp:285
+#: src/callback.cpp:284
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie dokumentu..."
 
-#: src/callback.cpp:349
+#: src/callback.cpp:348
 msgid "Select file to insert"
 msgstr "Vyberte súbor na vlo¾enie"
 
-#: src/callback.cpp:368
+#: src/callback.cpp:367
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14377,12 +14377,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/callback.cpp:370
+#: src/callback.cpp:369
 #, fuzzy
 msgid "Could not read file"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/callback.cpp:378
+#: src/callback.cpp:377
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -14390,16 +14390,16 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/callback.cpp:380 src/output.cpp:41
+#: src/callback.cpp:379 src/output.cpp:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Nie je mo¾né otvori» súbor"
 
-#: src/callback.cpp:404
+#: src/callback.cpp:403
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/callback.cpp:405
+#: src/callback.cpp:404
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -14408,20 +14408,20 @@ msgid ""
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
 
-#: src/callback.cpp:422
+#: src/callback.cpp:421
 msgid "Running configure..."
 msgstr "Spú¹»am konfigurovanie..."
 
-#: src/callback.cpp:431
+#: src/callback.cpp:430
 msgid "Reloading configuration..."
 msgstr "Nové naèítanie konfigurácie..."
 
-#: src/callback.cpp:436
+#: src/callback.cpp:435
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Systém je prekonfigurovaný."
 
-#: src/callback.cpp:437
+#: src/callback.cpp:436
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -14557,7 +14557,7 @@ msgstr " (zmenený)"
 msgid " (read only)"
 msgstr " (iba pre èítanie)"
 
-#: src/frontends/WorkArea.cpp:244
+#: src/frontends/WorkArea.cpp:247
 msgid "Formatting document..."
 msgstr "Formátujem dokument..."
 
@@ -14675,7 +14675,7 @@ msgstr "Håbka"
 msgid "Total Height"
 msgstr "Celková vý¹ka"
 
-#: src/frontends/controllers/ControlErrorList.cpp:57
+#: src/frontends/controllers/ControlErrorList.cpp:56
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr ""
@@ -15720,54 +15720,54 @@ msgid ""
 "BibTeX will be unable to find it."
 msgstr ""
 
-#: src/insets/InsetBox.cpp:65
+#: src/insets/InsetBox.cpp:64
 #, fuzzy
 msgid "Boxed"
 msgstr "Tuèné"
 
-#: src/insets/InsetBox.cpp:66
+#: src/insets/InsetBox.cpp:65
 #, fuzzy
 msgid "Frameless"
 msgstr "Parametre"
 
-#: src/insets/InsetBox.cpp:67
+#: src/insets/InsetBox.cpp:66
 msgid "ovalbox"
 msgstr ""
 
-#: src/insets/InsetBox.cpp:68
+#: src/insets/InsetBox.cpp:67
 msgid "Ovalbox"
 msgstr ""
 
-#: src/insets/InsetBox.cpp:69
+#: src/insets/InsetBox.cpp:68
 msgid "Shadowbox"
 msgstr ""
 
-#: src/insets/InsetBox.cpp:70
+#: src/insets/InsetBox.cpp:69
 #, fuzzy
 msgid "Doublebox"
 msgstr "Dvojité"
 
-#: src/insets/InsetBox.cpp:125
+#: src/insets/InsetBox.cpp:124
 #, fuzzy
 msgid "Opened Box Inset"
 msgstr "Otvorený objekt prílohy"
 
-#: src/insets/InsetBranch.cpp:75
+#: src/insets/InsetBranch.cpp:74
 #, fuzzy
 msgid "Opened Branch Inset"
 msgstr "Otvorený popis prílohy"
 
-#: src/insets/InsetBranch.cpp:100
+#: src/insets/InsetBranch.cpp:99
 msgid "Branch: "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:105 src/insets/InsetCharStyle.cpp:162
+#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:162
 #: src/insets/InsetCharStyle.cpp:211
 #, fuzzy
 msgid "Undef: "
 msgstr "Ref: "
 
-#: src/insets/InsetBranch.cpp:249
+#: src/insets/InsetBranch.cpp:248
 #, fuzzy
 msgid "branch"
 msgstr "Francúzsky"
@@ -15818,7 +15818,7 @@ msgstr "Otvorený ERT prílohy"
 msgid "ERT"
 msgstr "ERT"
 
-#: src/insets/InsetEnvironment.cpp:65
+#: src/insets/InsetEnvironment.cpp:64
 #, fuzzy
 msgid "Opened Environment Inset: "
 msgstr "Otvorený nepovinný argument prílohy"
@@ -15828,21 +15828,21 @@ msgstr "Otvorený nepovinný argument prílohy"
 msgid "External template %1$s is not installed"
 msgstr ""
 
-#: src/insets/InsetFloat.cpp:121 src/insets/InsetFloat.cpp:372
-#: src/insets/InsetFloat.cpp:382
+#: src/insets/InsetFloat.cpp:118 src/insets/InsetFloat.cpp:369
+#: src/insets/InsetFloat.cpp:379
 msgid "float: "
 msgstr "objekt:"
 
-#: src/insets/InsetFloat.cpp:277
+#: src/insets/InsetFloat.cpp:274
 msgid "Opened Float Inset"
 msgstr "Otvorený objekt prílohy"
 
-#: src/insets/InsetFloat.cpp:333
+#: src/insets/InsetFloat.cpp:330
 #, fuzzy
 msgid "float"
 msgstr "objekt:"
 
-#: src/insets/InsetFloat.cpp:384
+#: src/insets/InsetFloat.cpp:381
 msgid " (sideways)"
 msgstr ""
 
@@ -15855,20 +15855,20 @@ msgstr "CHYBA: Neexistujúci typ objektu!"
 msgid "List of %1$s"
 msgstr "Zoznam %1$s"
 
-#: src/insets/InsetFoot.cpp:38 src/insets/InsetFoot.cpp:45
+#: src/insets/InsetFoot.cpp:35 src/insets/InsetFoot.cpp:42
 msgid "foot"
 msgstr "päta"
 
-#: src/insets/InsetFoot.cpp:57
+#: src/insets/InsetFoot.cpp:54
 msgid "Opened Footnote Inset"
 msgstr "Otvorená poznámka pod èiarou prílohy"
 
-#: src/insets/InsetFoot.cpp:86
+#: src/insets/InsetFoot.cpp:83
 #, fuzzy
 msgid "footnote"
 msgstr "Poznámka pod èiarou"
 
-#: src/insets/InsetGraphics.cpp:473 src/insets/InsetInclude.cpp:517
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:517
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15876,12 +15876,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
 
-#: src/insets/InsetGraphics.cpp:710
+#: src/insets/InsetGraphics.cpp:711
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:822
+#: src/insets/InsetGraphics.cpp:823
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafický súbor: %1$s"
@@ -16072,12 +16072,12 @@ msgstr "Neznámy parameter riadkovania: "
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr ""
 
-#: src/insets/InsetMarginal.cpp:34 src/insets/InsetMarginal.cpp:41
-#: src/insets/InsetMarginal.cpp:70
+#: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
+#: src/insets/InsetMarginal.cpp:69
 msgid "margin"
 msgstr "okraje"
 
-#: src/insets/InsetMarginal.cpp:53
+#: src/insets/InsetMarginal.cpp:52
 msgid "Opened Marginal Note Inset"
 msgstr "Otvorený poznámka na okraji prílohy"
 
@@ -16091,29 +16091,29 @@ msgstr "&Nie"
 msgid "Nomenclature"
 msgstr "Dohad"
 
-#: src/insets/InsetNote.cpp:68
+#: src/insets/InsetNote.cpp:66
 msgid "Greyed out"
 msgstr ""
 
-#: src/insets/InsetNote.cpp:69
+#: src/insets/InsetNote.cpp:67
 #, fuzzy
 msgid "Framed"
 msgstr "Parametre"
 
-#: src/insets/InsetNote.cpp:70
+#: src/insets/InsetNote.cpp:68
 #, fuzzy
 msgid "Shaded"
 msgstr "&Tvar:"
 
-#: src/insets/InsetNote.cpp:149
+#: src/insets/InsetNote.cpp:147
 msgid "Opened Note Inset"
 msgstr "Otvorený objekt prílohy"
 
-#: src/insets/InsetOptArg.cpp:37 src/insets/InsetOptArg.cpp:47
+#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
 msgid "opt"
 msgstr ""
 
-#: src/insets/InsetOptArg.cpp:59
+#: src/insets/InsetOptArg.cpp:54
 msgid "Opened Optional Argument Inset"
 msgstr "Otvorený nepovinný argument prílohy"
 
@@ -16208,15 +16208,15 @@ msgstr "HtmlUrl: "
 msgid "Vertical Space"
 msgstr "Vertikálna medzera:|#V"
 
-#: src/insets/InsetWrap.cpp:49
+#: src/insets/InsetWrap.cpp:48
 msgid "wrap: "
 msgstr ""
 
-#: src/insets/InsetWrap.cpp:177
+#: src/insets/InsetWrap.cpp:176
 msgid "Opened Wrap Inset"
 msgstr ""
 
-#: src/insets/InsetWrap.cpp:197
+#: src/insets/InsetWrap.cpp:196
 msgid "wrap"
 msgstr ""
 
@@ -16425,11 +16425,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:862
+#: src/mathed/InsetMathNest.cpp:860
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:865
+#: src/mathed/InsetMathNest.cpp:863
 msgid "entered math text mode (textrm)"
 msgstr ""
 
