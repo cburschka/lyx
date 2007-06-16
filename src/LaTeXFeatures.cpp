@@ -499,7 +499,7 @@ string const LaTeXFeatures::getPackages() const
 		//in InsetNote::validate().
 		int const stmSize = packages.precision(2);
 		packages << "\\definecolor{shadecolor}{rgb}{"
-			<< c.r/255.0 << ',' << c.g/255.0 << ',' << c.b/255.0 << "}\n";
+			<< c.r / 255.0 << ',' << c.g / 255.0 << ',' << c.b / 255.0 << "}\n";
 		packages.precision(stmSize);
 	}
 
@@ -662,13 +662,17 @@ string const LaTeXFeatures::getMacros() const
 		macros << changetracking_dvipost_def;
 	}
 	if (mustProvide("ct-xcolor-soul")) {
+		int const prec = macros.precision(2);
+	
 		RGBColor cadd = RGBColor(lcolor.getX11Name(Color::addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"
-		       << cadd.r/255 << ',' << cadd.g/255 << ',' << cadd.b/255 << "}\n";
+		       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
 
 		RGBColor cdel = RGBColor(lcolor.getX11Name(Color::deletedtext));
 		macros << "\\providecolor{lyxdeleted}{rgb}{"
-		       << cdel.r/255 << ',' << cdel.g/255 << ',' << cdel.b/255 << "}\n";
+		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
+
+		macros.precision(prec);
 
 		macros << "\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
 		       << "\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\st{#3}}}\n";
