@@ -15,13 +15,18 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Userguide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\clipart"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\escher-lsd.eps"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\mobius.eps"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\FAQ.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Userguide.lyx"
- SetOutPath "$INSTDIR\Resources\doc\clipart"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\escher-lsd.eps"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\mobius.eps"
+ SetOutPath "$INSTDIR\Resources\doc\it"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\it\TOC.lyx" # must be here when another \doc file has been changed
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Userguide.lyx"
+ SetOutPath "$INSTDIR\Resources\examples"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\modernCV.lyx"
  SetOutPath "$INSTDIR\Resources\examples\fa"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\fa\splash.lyx"
  SetOutPath "$INSTDIR\Resources\examples\hu"
