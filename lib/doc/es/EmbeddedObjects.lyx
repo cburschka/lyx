@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass scrbook
@@ -9989,11 +9989,7 @@ reference "tab:Tabla-con-múltiples"
  En el diálogo que surge establece una anchura de 2.5\InsetSpace \thinspace{}
 cm y escoge centro en
  alineación vertical y horizontal.
-
-\lang english
- 
-\lang spanish
-La alineación vertical se utiliza para todas las celdas de la fila.
+ La alineación vertical se utiliza para todas las celdas de la fila.
  Como nuestro texto es menor de 2.5\InsetSpace \thinspace{}
 cm, sólo aparece una línea.
  Para poner dos añadimos un salto de línea con el comando en ERT
@@ -19407,7 +19403,19 @@ lado
 Los flotantes girados son puestos siempre en su propia página (o columna
  si el documento es de dos columnas).
  Normalmente se rotan de forma que puedes leerlos desde el margen externo
- ---a la izquierda en páginas impares, a la derecha en pares---.
+ --a la izquierda en páginas impares, a la derecha en pares--.
+ 
+\lang english
+To force a certain rotation direction for all pages, you can add either
+ the option 
+\series bold
+figuresleft
+\series default
+ or 
+\series bold
+figuresright
+\series default
+ to the document class options.
 \end_layout
 
 \begin_layout Standard

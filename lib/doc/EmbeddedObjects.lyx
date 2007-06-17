@@ -19233,6 +19233,16 @@ Rotated floats are always placed on its own page (or column, when you have
  a two-column document).
  They are normally rotated so that you can read them from the outside margin
  -- to the left on even pages, to the right on odd pages.
+ To force a certain rotation direction for all pages, you can add either
+ the option 
+\series bold
+figuresleft
+\series default
+ or 
+\series bold
+figuresright
+\series default
+ to the document class options.
 \end_layout
 
 \begin_layout Standard
