@@ -48,9 +48,6 @@ Section -Core SecCore
   SetOutPath "$INSTDIR"
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
-  SetOutPath "$INSTDIR\Resources\fonts"
-  # put additional fonts to Resources\fonts
-  !insertmacro FileListFonts File "${FILES_FONTS}\"  
   
   #Components of Python
   

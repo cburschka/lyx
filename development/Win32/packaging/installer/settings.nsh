@@ -10,7 +10,6 @@ Settings for LyX installer
 !define FILES_LICENSE "license.rtf"
 
 !define FILES_ICONS "..\icons"
-!define FILES_FONTS "..\bakoma"
 !define FILES_LAUNCHER "..\..\launcher"
 !define FILES_PDFVIEW "..\..\pdfview"
 
