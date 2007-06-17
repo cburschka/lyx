@@ -46,6 +46,18 @@ Style Section
 	EndFont
 End
 
+Style Subsection
+	CopyStyle		Section
+	LatexName		subsection
+	TopSep			0.9
+	BottomSep		0
+	ParSep			0.5
+	Font
+	  Family		Sans
+	  Series		Medium
+	EndFont
+End
+
 Style Entry
 	Margin			Dynamic
 	LatexType		Command

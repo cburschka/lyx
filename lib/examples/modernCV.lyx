@@ -1,28 +1,45 @@
-#LyX 1.5.0beta2 created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass moderncv
 \begin_preamble
-\moderncvstyle{classic}
-% possible styles are "classic", "casual", "'nocolor" (black & white), and "roman" (for roman fonts instead of sans serif fonts)
+\moderncvtheme[blue]{classic}
+% possible themes are "classic" and "casual"
+% optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 
+% required
 \firstname{Paul}
+% required
 \familyname{Testman}
 
+% optional, remove the line if not wanted
 \title{Curriculum Vitae}
 
-\address{Teststreet\\
-03333 Nicecity\\
-Switzerland}
+% optional
+% \address{street and number}{postcode city}
+% '\\' adds a line break
+\address{Teststreet 17}{03333 Nicecity\\ Switzerland}
 
+% optional
 \phone{+43(0)999 9999}
+% optional
+\mobile{+43(0)999 888}
+% optional
+\fax{+43(0)999 7777}
+% optional
 \email{testman@testman.xx}
+% optional
 \extrainfo{www.lyx.org}
 
+% optional
+% \photo[height]{name}
+% 'height' is the height the picture is be resized to
+% 'name' is the name of the picture file
 \photo[64pt]{CV-image}
 
-\quote{You only live twice.}
+% optional
+\quote{"You only live twice." (an optional quote)}
 
 \AtBeginDocument{\maketitle}
 \end_preamble
@@ -84,8 +101,13 @@ Note:
 status open
 
 \begin_layout Standard
-The moderncv-class offers lots of customization possibilities; to find out
- more, look at its documentation.
+The moderncv class offers lots of customization possibilities; some are
+ explained in the preamble of this document; for more information look at
+ the documentation of the LaTeX-package 
+\series bold
+moderncv
+\series default
+.
 \end_layout
 
 \end_inset
@@ -304,7 +326,7 @@ status collapsed
 
 \end_inset
 
-Maintainer of OpenSource projects
+Maintainer of Open Source projects
 \begin_inset ERT
 status collapsed
 
@@ -573,7 +595,7 @@ status collapsed
 
 \end_inset
 
-Matlab, Autocad, Abaqus
+Matlab, AutoCAD, Abaqus
 \begin_inset ERT
 status collapsed
 
@@ -736,6 +758,14 @@ status collapsed
 
 \SpecialChar \ldots{}
  item.
+\end_layout
+
+\begin_layout Subsection
+subsection
+\end_layout
+
+\begin_layout Standard
+subsection text
 \end_layout
 
 \begin_layout Section
