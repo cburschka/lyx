@@ -269,7 +269,6 @@ void QLToolbar::add(ToolbarItem const & item)
 		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(item.label_)), tb);
 		m->setWindowTitle(qt_(to_ascii(item.label_)));
 		m->setTearOffEnabled(true);
-		//m->setStyleSheet("padding-top: 2px");
 		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
 		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();

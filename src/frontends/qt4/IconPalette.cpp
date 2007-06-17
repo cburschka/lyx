@@ -116,8 +116,8 @@ IconPalette::IconPalette(QWidget * parent)
 	: QWidget(parent, Qt::Popup)
 {
 	layout_ = new QGridLayout(this);
-	layout->setSpacing(0);
-	layout->setMargin(3);
+	layout_->setSpacing(0);
+	layout_->setMargin(3);
 }
 
 
