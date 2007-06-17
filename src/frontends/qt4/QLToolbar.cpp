@@ -40,7 +40,6 @@
 #include <QAction>
 #include <QPixmap>
 
-
 namespace lyx {
 
 using std::string;
@@ -207,14 +206,21 @@ void QLToolbar::add(ToolbarItem const & item)
 		}
 	case ToolbarItem::ICONPALETTE: {
 		QToolButton * tb = new QToolButton(this);
-		tb->setCheckable(true);
 		tb->setToolTip(qt_(to_ascii(item.label_)));
 		tb->setStatusTip(qt_(to_ascii(item.label_)));
 		tb->setText(qt_(to_ascii(item.label_)));
 		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
 			tb, SLOT(setIconSize(const QSize &)));
 
+#if QT_VERSION >= 0x040200
+		IconPalette * panel = new IconPalette(&owner_);
+		connect(panel, SIGNAL(enabled(bool)),
+			tb, SLOT(setEnabled(bool)));
+		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
+			panel, SLOT(setIconSize(const QSize &)));
+#else
 		IconPalette * panel = new IconPalette(tb);
+#endif
 		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
 		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();
@@ -232,8 +238,20 @@ void QLToolbar::add(ToolbarItem const & item)
 				if (it == tbinfo.items.begin())
 					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
 			}
+
+#if QT_VERSION >= 0x040200
+		QMenu * m = new QMenu(tb);
+		m->addAction(panel);
+		m->setTearOffEnabled(true);
+		m->setWindowTitle(qt_(to_ascii(item.label_)));
+		tb->setPopupMode(QToolButton::InstantPopup);
+		tb->setMenu(m);
+#else
+		tb->setCheckable(true);
 		connect(tb, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
 		connect(panel, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
+#endif // QT_VERSION >= 0x040200
+
 		addWidget(tb);
 		break;
 		}
@@ -249,6 +267,9 @@ void QLToolbar::add(ToolbarItem const & item)
 			tb, SLOT(setIconSize(const QSize &)));
 
 		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(item.label_)), tb);
+		m->setWindowTitle(qt_(to_ascii(item.label_)));
+		m->setTearOffEnabled(true);
+		//m->setStyleSheet("padding-top: 2px");
 		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
 		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
 		ToolbarInfo::item_iterator it = tbinfo.items.begin();

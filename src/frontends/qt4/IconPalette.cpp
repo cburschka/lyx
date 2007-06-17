@@ -24,17 +24,100 @@
 #include <QPainter>
 #include <QStyle>
 #include <QStyleOptionFrame>
+#include <QMouseEvent>
 
 namespace lyx {
 namespace frontend {
+
+#if QT_VERSION >= 0x040200
+
+
+class MathButton : public QToolButton
+{
+public:
+	MathButton(QWidget * parent = 0) {}
+	void mouseReleaseEvent(QMouseEvent *event); 
+	void mousePressEvent(QMouseEvent *event); 
+};
+
+
+void MathButton::mouseReleaseEvent(QMouseEvent *event)
+{
+	QToolButton::mouseReleaseEvent(event);
+	event->ignore();
+}
+
+
+void MathButton::mousePressEvent(QMouseEvent *event)
+{
+	QToolButton::mousePressEvent(event);
+	event->ignore();
+}
+
+
+IconPalette::IconPalette(QWidget * parent)
+	: QWidgetAction(parent), size_(QSize(22, 22))
+{
+}
+
+
+void IconPalette::addButton(QAction * action)
+{
+	actions_.push_back(action);
+}
+
+
+QWidget * IconPalette::createWidget(QWidget * parent)
+{
+	QWidget * widget = new QWidget(parent);
+	QGridLayout * layout = new QGridLayout(widget);
+	layout->setSpacing(0);
+
+	for (int i = 0; i < actions_.size(); ++i) {
+		MathButton * tb = new MathButton(widget);
+		tb->setAutoRaise(true);
+		tb->setDefaultAction(actions_.at(i));
+		tb->setIconSize(size_);
+		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
+			tb, SLOT(setIconSize(const QSize &)));
+	
+		int const row = i/qMin(6, i + 1) + 1;
+		int const col = qMax(1, i + 1 - (row - 1) * 6);
+		layout->addWidget(tb, row, col);
+	}
+
+	return widget;
+}
+
+
+void IconPalette::setIconSize(const QSize & size)
+{
+	size_ = size;
+	// signal
+	iconSizeChanged(size);
+}
+
+
+void IconPalette::updateParent()
+{
+	bool enable = false;
+	for (int i = 0; i < actions_.size(); ++i)
+		if (actions_.at(i)->isEnabled()) {
+			enable = true;
+			break;
+		}
+	// signal
+	enabled(enable);
+}
+
+#else  // QT_VERSION >= 0x040200
 
 IconPalette::IconPalette(QWidget * parent)
 	: QWidget(parent, Qt::Popup)
 {
 	layout_ = new QGridLayout(this);
-	layout_->setSpacing(0);
-	layout_->setMargin(3);
-	setLayout(layout_);
+	layout->setSpacing(0);
+	layout->setMargin(3);
 }
 
 
@@ -151,6 +234,7 @@ void IconPalette::paintEvent(QPaintEvent * event)
 	// draw the rest (buttons)
 	QWidget::paintEvent(event);
 }
+#endif // QT_VERSION >= 0x040200
 
 
 ButtonMenu::ButtonMenu(const QString & title, QWidget * parent)
