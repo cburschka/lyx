@@ -111,6 +111,11 @@ the user interface.
 Note that from now on, former encoding settings for these languages
 done via ERT or the document preamble will lead to LaTeX-errors!
 
+* Language support 
+
+Besides the CJK languages, the languages Armenian and Farsi are now
+supported in the user interface.
+
 * Multiple views of the same buffer
 
 LyX can now display multiple views of the same buffer. I.e., you can
@@ -151,7 +156,6 @@ LyX's table support is certainly less powerful than that of
 LaTeX. support for the booktabs package was implemented, which
 provides beautiful and elegant tabulars.
  
-
 * Nomenclatures
 
 Native LyX support for the nomencl package was implemented. With this,
@@ -216,6 +220,15 @@ does not support in-line code segments or the inclusion of external files.
 Using the listings latex package as the backend a new inset was added that
 supports all these three ways of listing computer programs.
 
+* LaTeX-package support
+
+LyX provides the following new document classes:
+ - article(IOP) - for scientific papers published by the IOP group
+ - presentation(powerdot) - for presentations using the powerdot package
+ - curriculum vitae(Europe) - for CVs following the guidelines of the EU
+ - curriculum vitae(modern) - for CVs using the moderncv package
+ - curriculum vitae(simple) - for simple CVs
+
 * Minor user interface improvements
 
 Apart from the described major changes, several minor improvements of
@@ -233,7 +246,6 @@ selected text is enhanced, and is also available under windows (but
 within lyx only). Selection of lyx text is now persistent in that
 you can paste the selected text using middle button multiple times,
 even after the selection has been cleared.
-
 
 * Under the hood
 
