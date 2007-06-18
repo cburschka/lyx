@@ -19404,18 +19404,16 @@ Los flotantes girados son puestos siempre en su propia página (o columna
  si el documento es de dos columnas).
  Normalmente se rotan de forma que puedes leerlos desde el margen externo
  --a la izquierda en páginas impares, a la derecha en pares--.
- 
-\lang english
-To force a certain rotation direction for all pages, you can add either
- the option 
+ Para forzar determinada dirección de rotación para todas las páginas, puedes
+ añadir una de las opciones 
 \series bold
 figuresleft
 \series default
- or 
+ o 
 \series bold
 figuresright
 \series default
- to the document class options.
+ a las opciones de clase del documento.
 \end_layout
 
 \begin_layout Standard
