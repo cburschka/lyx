@@ -411,7 +411,6 @@ char const * simplefeatures[] = {
 	"soul",
 	"textcomp",
 	"xcolor",
-	"wasysym",
 	"pmboxdraw",
 	"bbding",
 	"ifsym",
@@ -455,11 +454,12 @@ string const LaTeXFeatures::getPackages() const
 	// are used
 	// wasysym redefines some integrals (e.g. iint) from amsmath. That
 	// leads to inconsistent integrals. We only load this package if
-	// esint is used, since esint redefines all relevant integral
-	// symbols from wasysym and amsmath.
+	// the document does not contain integrals (then isRequired("esint")
+	// is false) or if esint is used, since esint redefines all relevant
+	// integral symbols from wasysym and amsmath.
 	// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
-	if (mustProvide("wasysym") && isRequired("esint") &&
-	    params_.use_esint != BufferParams::package_off)
+	if (mustProvide("wasysym") &&
+	    (params_.use_esint != BufferParams::package_off || !isRequired("esint")))
 		packages << "\\usepackage{wasysym}\n";
 
 	// color.sty
