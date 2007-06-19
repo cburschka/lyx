@@ -143,21 +143,19 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 
 	work_area_->bufferView().setBuffer(b);
 
-  //FIXME This would be a little simpler if setBuffer returned the buffer.
+	//FIXME This would be a little simpler if setBuffer returned the buffer.
 	Buffer * newBuffer = work_area_->bufferView().buffer();
 	if (newBuffer) {
-		if (child_document && newBuffer != oldBuffer) {
+		if (child_document && newBuffer->getMasterBuffer() != oldBuffer) {
 			// Set the parent name of the child document.
 			// This makes insertion of citations and references in the child work,
 			// when the target is in the parent or another child document.
 			newBuffer->setParentName(parentfilename);
-			// updateLabels() will emit Buffer::structureChanged() so better
-			// connect it before.
-			connectBuffer(*newBuffer);
-			// Update the labels and section numbering.
+			// Update the labels and section numbering to the new master Buffer.
 			updateLabels(*newBuffer->getMasterBuffer());
-		} else
-			connectBuffer(*newBuffer);
+		}
+
+		connectBuffer(*newBuffer);
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -209,14 +207,14 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
 			makeDisplayPath(filename.absFilename())));
 	}
 
+	// Update the labels and section numbering.
+	updateLabels(*newBuffer->getMasterBuffer());
+
 	bool const parse_error = !newBuffer->errorList("Parse").empty();
 	if (parse_error || !auto_open) {
 		setBuffer(newBuffer, child_document);
 		showErrorList("Parse");
 	}
-
-	// Update the labels and section numbering.
-	updateLabels(*newBuffer->getMasterBuffer());
 
 	// scroll to the position when the file was last closed
 	if (!auto_open && lyxrc.use_lastfilepos) {
@@ -229,6 +227,11 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
 			if (work_area_->bufferView().fitCursor())
 				work_area_->bufferView().updateMetrics(false);
 			newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
+			updateMenubar();
+			updateToolbars();
+			updateLayoutChoice();
+			updateStatusBar();
+			work_area_->redraw();
 		}
 	}
 
