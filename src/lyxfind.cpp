@@ -298,7 +298,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 }
 
 
-void replace(BufferView * bv, FuncRequest const & ev)
+void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 {
 	if (!bv || ev.action != LFUN_WORD_REPLACE)
 		return;
@@ -319,23 +319,34 @@ void replace(BufferView * bv, FuncRequest const & ev)
 
 	Buffer * buf = bv->buffer();
 
-	int const replace_count = all
-		? replaceAll(bv, search, rplc, casesensitive, matchword)
-		: replace(bv, search, rplc, casesensitive, matchword, forward);
-
-	if (replace_count == 0) {
-		// emit message signal.
-		buf->message(_("String not found!"));
-	} else {
-		if (replace_count == 1) {
+	if (!has_deleted) {
+		int const replace_count = all
+			? replaceAll(bv, search, rplc, casesensitive, matchword)
+			: replace(bv, search, rplc, casesensitive, matchword, forward);
+	
+		if (replace_count == 0) {
 			// emit message signal.
-			buf->message(_("String has been replaced."));
+			buf->message(_("String not found!"));
 		} else {
-			docstring str = convert<docstring>(replace_count);
-			str += _(" strings have been replaced.");
-			// emit message signal.
-			buf->message(str);
+			if (replace_count == 1) {
+				// emit message signal.
+				buf->message(_("String has been replaced."));
+			} else {
+				docstring str = convert<docstring>(replace_count);
+				str += _(" strings have been replaced.");
+				// emit message signal.
+				buf->message(str);
+			}
 		}
+	} else {
+		// if we have deleted characters, we do not replace at all, but
+		// rather search for the next occurence
+		bool const found = find(bv, search,
+					casesensitive, matchword, forward);
+
+		if (!found)
+			// emit message signal.
+			bv->message(_("String not found!"));
 	}
 }
 

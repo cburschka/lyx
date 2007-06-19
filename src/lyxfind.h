@@ -52,7 +52,7 @@ void find(BufferView * bv, FuncRequest const & ev);
  *  \c ev.argument and act on it.
  * The string is encoded by \c replace2string.
  */
-void replace(BufferView * bv, FuncRequest const &);
+void replace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);

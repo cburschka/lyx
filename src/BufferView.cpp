@@ -632,6 +632,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
+	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
 	case LFUN_MARK_TOGGLE:
@@ -641,10 +642,6 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_WORDS_COUNT:
 	case LFUN_NEXT_INSET_TOGGLE:
 		flag.enabled(true);
-		break;
-
-	case LFUN_WORD_REPLACE:
-		flag.enabled(!cur.paragraph().isDeleted(cur.pos()));
 		break;
 
 	case LFUN_LABEL_GOTO: {
@@ -892,9 +889,21 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		find(this, cmd);
 		break;
 
-	case LFUN_WORD_REPLACE:
-		replace(this, cmd);
+	case LFUN_WORD_REPLACE: {
+		bool has_deleted = false;
+		if (cur.selection()) {
+			DocIterator beg = cur.selectionBegin();
+			DocIterator end = cur.selectionEnd();
+			if (beg.pit() == end.pit()) {
+				for (pos_type p = beg.pos() ; p < end.pos() ; ++p) {
+					if (cur.paragraph().isDeleted(p))
+						has_deleted = true;
+				}
+			}
+		}
+		replace(this, cmd, has_deleted);
 		break;
+	}
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
