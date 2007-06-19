@@ -1410,35 +1410,35 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_CHILD_OPEN: {
-      // takes an optional argument, "|bool", at the end
-      // indicating whether this file is being opened automatically
-      // by LyX itself, in which case we will not want to switch
-      // buffers after opening. The default is false, so in practice
-      // it is used only when true.
+			// takes an optional argument, "|bool", at the end
+			// indicating whether this file is being opened automatically
+			// by LyX itself, in which case we will not want to switch
+			// buffers after opening. The default is false, so in practice
+			// it is used only when true.
 			BOOST_ASSERT(lyx_view_);
-      int const arglength = argument.length();
+			int const arglength = argument.length();
 			FileName filename;
-      bool autoOpen = false;
-      if (argument.substr(arglength - 5, 5) == "|true") {
-        autoOpen = true;
-        filename = makeAbsPath(argument.substr(0, arglength - 5), 
-                               lyx_view_->buffer()->filePath());
-      } else if (argument.substr(arglength - 6, 6) == "|false") {
-        filename = makeAbsPath(argument.substr(0, arglength - 6), 
-                               lyx_view_->buffer()->filePath());
-      } else filename = 
-        makeAbsPath(argument, lyx_view_->buffer()->filePath());
+			bool autoOpen = false;
+			if (argument.substr(arglength - 5, 5) == "|true") {
+				autoOpen = true;
+				filename = makeAbsPath(argument.substr(0, arglength - 5), 
+					lyx_view_->buffer()->filePath());
+			} else if (argument.substr(arglength - 6, 6) == "|false") {
+				filename = makeAbsPath(argument.substr(0, arglength - 6), 
+					lyx_view_->buffer()->filePath());
+			} else filename = 
+				makeAbsPath(argument, lyx_view_->buffer()->filePath());
 			view()->saveBookmark(false);
 			if (theBufferList().exists(filename.absFilename())) {
-        Buffer * buf = theBufferList().getBuffer(filename.absFilename());
-        if (!autoOpen)
-				  lyx_view_->setBuffer(buf, true);
-        else
-          buf->setParentName(lyx_view_->buffer()->fileName());
+				Buffer * buf = theBufferList().getBuffer(filename.absFilename());
+				if (!autoOpen)
+					lyx_view_->setBuffer(buf, true);
+				else
+					buf->setParentName(lyx_view_->buffer()->fileName());
 			} else
-        lyx_view_->loadLyXFile(filename, true, true, autoOpen);
-			
-      break;
+				lyx_view_->loadLyXFile(filename, true, true, autoOpen);
+
+			break;
 		}
 
 		case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
