@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-16 12:16+0200\n"
+"POT-Creation-Date: 2007-06-19 23:49+0200\n"
 "PO-Revision-Date: 2006-09-18 18:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:702
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:82
-#: src/frontends/qt4/ui/ListingsUi.ui:591
+#: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
 #: src/frontends/qt4/ui/ParagraphUi.ui:76 src/frontends/qt4/ui/RefUi.ui:80
@@ -83,9 +83,9 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:611 src/BufferList.cpp:113
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062 src/LyXVC.cpp:175
+#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
@@ -163,7 +163,7 @@ msgstr "&Legg til"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/BufferView.cpp:272 src/LyXFunc.cpp:854 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:854 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -246,7 +246,7 @@ msgstr "&Stil"
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "Indre ramme - til bruk for fast breidde og linjeskift"
 
-#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/ListingsUi.ui:323
+#: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/ListingsUi.ui:270
 #: src/frontends/qt4/ui/TabularUi.ui:702 src/frontends/qt4/ui/TabularUi.ui:721
 #: src/frontends/qt4/ui/TabularUi.ui:769
 #: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.cpp:100
@@ -309,7 +309,7 @@ msgstr "Justering"
 msgid "Horizontal alignment of the content inside the box"
 msgstr "Vassrett justering av innhaldet i ramma"
 
-#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:328
+#: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
 #: src/frontends/qt4/QTabular.cpp:741
 msgid "Left"
@@ -322,7 +322,7 @@ msgstr "Venstre"
 msgid "Center"
 msgstr "Midten"
 
-#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:333
+#: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
 #: src/frontends/qt4/QTabular.cpp:743
 msgid "Right"
@@ -390,7 +390,7 @@ msgstr "Gjenopp&rett"
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:723
-#: src/frontends/qt4/ui/ListingsUi.ui:601
+#: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
@@ -590,8 +590,8 @@ msgstr "Skriftserie"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
-#: src/frontends/qt4/ui/ListingsUi.ui:258 lib/layouts/europecv.layout:117
-#: lib/layouts/moderncv.layout:99 src/frontends/qt4/QDocument.cpp:583
+#: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
+#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:583
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Spr�k"
@@ -1273,12 +1273,12 @@ msgstr ""
 msgid "Listing Parameters"
 msgstr "Manglande val"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:552
+#: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:519
 #: src/frontends/qt4/ui/TextLayoutUi.ui:235
 msgid "Check it to enter parameters that are not recognizable by LyX"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:555
+#: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:522
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "&Bypass validation"
 msgstr ""
@@ -1321,11 +1321,11 @@ msgstr "Namnet p� fila"
 msgid "&Include Type:"
 msgstr "&Filtype:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:344
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
 msgid "Include"
 msgstr "Underdokument"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:335
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
 msgid "Input"
 msgstr "Tekstfil"
 
@@ -1371,189 +1371,189 @@ msgstr "&Teiknsett:"
 msgid "&Quote Style:"
 msgstr "&Sitatstil:"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:35
+#: src/frontends/qt4/ui/ListingsUi.ui:43
 #, fuzzy
 msgid "&Main Settings"
 msgstr "&Tabellval"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:47 src/frontends/qt4/ui/TabularUi.ui:301
+#: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
 msgstr "Stil"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:67
+#: src/frontends/qt4/ui/ListingsUi.ui:75
 msgid "The content's base font size"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:83
+#: src/frontends/qt4/ui/ListingsUi.ui:91
 #, fuzzy
 msgid "F&ont size:"
 msgstr "Skriftstorleik"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:104
+#: src/frontends/qt4/ui/ListingsUi.ui:112
 msgid "The content's base font style"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:120
+#: src/frontends/qt4/ui/ListingsUi.ui:128
 #, fuzzy
 msgid "Font Famil&y:"
 msgstr "Skriftfamilie"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:136
+#: src/frontends/qt4/ui/ListingsUi.ui:144
 #, fuzzy
 msgid "Use extended character table"
 msgstr "Teiknstil ikkje definert"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:139
+#: src/frontends/qt4/ui/ListingsUi.ui:147
 #, fuzzy
 msgid "&Extended character table"
 msgstr "Teiknstil ikkje definert"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:149
+#: src/frontends/qt4/ui/ListingsUi.ui:157
 msgid "Make spaces in strings visible by a special symbol"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:152
+#: src/frontends/qt4/ui/ListingsUi.ui:160
 msgid "Space i&n string as symbol"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:162
+#: src/frontends/qt4/ui/ListingsUi.ui:170
 msgid "Make spaces visible by a special symbol"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:165
+#: src/frontends/qt4/ui/ListingsUi.ui:173
 #, fuzzy
 msgid "S&pace as symbol"
 msgstr "Vel ei symbol side"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:175
+#: src/frontends/qt4/ui/ListingsUi.ui:183
 msgid "Break lines longer than the linewidth"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:178
+#: src/frontends/qt4/ui/ListingsUi.ui:186
 #, fuzzy
 msgid "&Break long lines"
 msgstr "&Bruk langtabell"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:191
-#, fuzzy
-msgid "Range"
-msgstr "Endring:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:203
-#, fuzzy
-msgid "&Last line:"
-msgstr "matte linje"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:216
-#, fuzzy
-msgid "The last line to be printed"
-msgstr "Kor mange kopiar."
-
-#: src/frontends/qt4/ui/ListingsUi.ui:229
-#, fuzzy
-msgid "The first line to be printed"
-msgstr "Kor mange kopiar."
-
-#: src/frontends/qt4/ui/ListingsUi.ui:242
-#, fuzzy
-msgid "Fi&rst line:"
-msgstr "&F�rste niv�"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:270
-msgid "Select the dialect of the programming language, if available"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:277
-#, fuzzy
-msgid "&Dialect:"
-msgstr "Fil"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:287
-#, fuzzy
-msgid "Lan&guage:"
-msgstr "&Spr�k"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:297
-msgid "Select the programming language"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:307
-#, fuzzy
-msgid "Line numbering"
-msgstr "&Nummerering"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:319
-msgid "On which side should line numbers be printed?"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:349
-msgid "Choose the font size for line numbers"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:365
-#, fuzzy
-msgid "Font si&ze:"
-msgstr "Skriftstorleik"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:381
-#, fuzzy
-msgid "S&tep:"
-msgstr "Steg"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:394
-msgid "Difference between two numbered lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/ListingsUi.ui:410
-#, fuzzy
-msgid "&Side:"
-msgstr "&Storleik:"
-
-#: src/frontends/qt4/ui/ListingsUi.ui:423
+#: src/frontends/qt4/ui/ListingsUi.ui:199
 msgid "Placement"
 msgstr "Plassering"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:435
+#: src/frontends/qt4/ui/ListingsUi.ui:211
 msgid "Specify placement (htbp) for floating listings"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:442
+#: src/frontends/qt4/ui/ListingsUi.ui:218
 #, fuzzy
 msgid "Check for floating listings"
 msgstr "Andreskriftval"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:445
+#: src/frontends/qt4/ui/ListingsUi.ui:221
 #, fuzzy
 msgid "&Float"
 msgstr "Flytar"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:452
+#: src/frontends/qt4/ui/ListingsUi.ui:228
 msgid "Check for inline listings"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:455
+#: src/frontends/qt4/ui/ListingsUi.ui:231
 #, fuzzy
 msgid "&Inline listing"
 msgstr "&I teksten"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:462 src/frontends/qt4/ui/WrapUi.ui:76
+#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:76
 msgid "&Placement:"
 msgstr "&Plassering"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:479
+#: src/frontends/qt4/ui/ListingsUi.ui:254
+#, fuzzy
+msgid "Line numbering"
+msgstr "&Nummerering"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:266
+msgid "On which side should line numbers be printed?"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:296
+msgid "Choose the font size for line numbers"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:312
+#, fuzzy
+msgid "Font si&ze:"
+msgstr "Skriftstorleik"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:328
+#, fuzzy
+msgid "S&tep:"
+msgstr "Steg"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:341
+msgid "Difference between two numbered lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:357
+#, fuzzy
+msgid "&Side:"
+msgstr "&Storleik:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:382
+msgid "Select the dialect of the programming language, if available"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:389
+#, fuzzy
+msgid "&Dialect:"
+msgstr "Fil"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:399
+#, fuzzy
+msgid "Lan&guage:"
+msgstr "&Spr�k"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:409
+msgid "Select the programming language"
+msgstr ""
+
+#: src/frontends/qt4/ui/ListingsUi.ui:419
+#, fuzzy
+msgid "Range"
+msgstr "Endring:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:431
+#, fuzzy
+msgid "&Last line:"
+msgstr "matte linje"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:444
+#, fuzzy
+msgid "The last line to be printed"
+msgstr "Kor mange kopiar."
+
+#: src/frontends/qt4/ui/ListingsUi.ui:457
+#, fuzzy
+msgid "The first line to be printed"
+msgstr "Kor mange kopiar."
+
+#: src/frontends/qt4/ui/ListingsUi.ui:470
+#, fuzzy
+msgid "Fi&rst line:"
+msgstr "&F�rste niv�"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:487
 #, fuzzy
 msgid "Ad&vanced"
 msgstr "Avanserte val"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:499
+#: src/frontends/qt4/ui/ListingsUi.ui:507
 msgid "More Parameters"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:527
+#: src/frontends/qt4/ui/ListingsUi.ui:545
 msgid "Feedback window"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsUi.ui:544
+#: src/frontends/qt4/ui/ListingsUi.ui:570
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 
@@ -2944,7 +2944,7 @@ msgstr "Buk denne rada som topprad p� alle sidene (utanom den fyrste)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1767
+#: src/LyXFunc.cpp:1778
 msgid "on"
 msgstr "p�"
 
@@ -3092,7 +3092,7 @@ msgstr "Indeksn�kkel"
 msgid "&Keyword:"
 msgstr "&N�kkelord:"
 
-#: src/frontends/qt4/ui/ThesaurusUi.ui:55 lib/layouts/moderncv.layout:49
+#: src/frontends/qt4/ui/ThesaurusUi.ui:55 lib/layouts/moderncv.layout:61
 msgid "Entry"
 msgstr "Setelen"
 
@@ -3539,13 +3539,14 @@ msgstr "Bolk"
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
 #: lib/layouts/llncs.layout:52 lib/layouts/ltugboat.layout:65
-#: lib/layouts/memoir.layout:56 lib/layouts/paper.layout:53
-#: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:55
-#: lib/layouts/siamltex.layout:59 lib/layouts/simplecv.layout:48
-#: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
-#: lib/layouts/db_stdsections.inc:36 lib/layouts/numarticle.inc:22
-#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:68
-#: lib/layouts/stdsections.inc:72 lib/layouts/svjour.inc:61
+#: lib/layouts/memoir.layout:56 lib/layouts/moderncv.layout:49
+#: lib/layouts/paper.layout:53 lib/layouts/revtex.layout:49
+#: lib/layouts/revtex4.layout:55 lib/layouts/siamltex.layout:59
+#: lib/layouts/simplecv.layout:48 lib/layouts/agu_stdsections.inc:40
+#: lib/layouts/aguplus.inc:41 lib/layouts/db_stdsections.inc:36
+#: lib/layouts/numarticle.inc:22 lib/layouts/numrevtex.inc:15
+#: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:72
+#: lib/layouts/svjour.inc:61
 msgid "Subsection"
 msgstr "Underbolk"
 
@@ -3639,7 +3640,7 @@ msgstr "Indeksord---"
 #: lib/layouts/foils.layout:215 lib/layouts/ijmpc.layout:358
 #: lib/layouts/ijmpd.layout:369 lib/layouts/latex8.layout:118
 #: lib/layouts/llncs.layout:261 lib/layouts/memoir.layout:138
-#: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:133
+#: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:145
 #: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
 #: lib/layouts/powerdot.layout:279 lib/layouts/report.layout:12
@@ -3885,7 +3886,7 @@ msgstr "Takk til"
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/iopart.layout:269 lib/layouts/iopart.layout:283
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
-#: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:147
+#: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:159
 #: lib/layouts/siamltex.layout:194 lib/layouts/amsdefs.inc:244
 #: lib/layouts/stdstruct.inc:53 lib/layouts/svjour.inc:340
 #: src/output_plaintext.cpp:157
@@ -4312,7 +4313,7 @@ msgid "Seriate"
 msgstr "Punkt i teksten"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.cpp:530
+#: src/buffer_funcs.cpp:571
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -5067,12 +5068,12 @@ msgstr "N�kkelord"
 msgid "Key words:"
 msgstr "N�kkelord:"
 
-#: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:65
+#: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:77
 #, fuzzy
 msgid "Item"
 msgstr "Punktliste"
 
-#: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:74
+#: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:86
 #, fuzzy
 msgid "Item:"
 msgstr "Punktliste"
@@ -5121,7 +5122,7 @@ msgstr "Topptekst"
 msgid "Language Header:"
 msgstr "Venstre topptekst:"
 
-#: lib/layouts/europecv.layout:120 lib/layouts/moderncv.layout:102
+#: lib/layouts/europecv.layout:120 lib/layouts/moderncv.layout:114
 #, fuzzy
 msgid "Language:"
 msgstr "&Spr�k"
@@ -6250,67 +6251,67 @@ msgstr "Dikttittel*"
 msgid "Legend"
 msgstr "Figur_forklaring"
 
-#: lib/layouts/moderncv.layout:58
+#: lib/layouts/moderncv.layout:70
 #, fuzzy
 msgid "Entry:"
 msgstr "Setelen"
 
-#: lib/layouts/moderncv.layout:81
+#: lib/layouts/moderncv.layout:93
 #, fuzzy
 msgid "ListItem"
 msgstr "Liste"
 
-#: lib/layouts/moderncv.layout:84
+#: lib/layouts/moderncv.layout:96
 #, fuzzy
 msgid "List Item:"
 msgstr "Siste botntekst:"
 
-#: lib/layouts/moderncv.layout:87
+#: lib/layouts/moderncv.layout:99
 #, fuzzy
 msgid "DoubleItem"
 msgstr "Dobbel"
 
-#: lib/layouts/moderncv.layout:90
+#: lib/layouts/moderncv.layout:102
 #, fuzzy
 msgid "Double Item:"
 msgstr "Dobbel"
 
-#: lib/layouts/moderncv.layout:93
+#: lib/layouts/moderncv.layout:105
 #, fuzzy
 msgid "Space"
 msgstr "mellomrom"
 
-#: lib/layouts/moderncv.layout:96
+#: lib/layouts/moderncv.layout:108
 #, fuzzy
 msgid "Space:"
 msgstr "mellomrom"
 
-#: lib/layouts/moderncv.layout:105
+#: lib/layouts/moderncv.layout:117
 #, fuzzy
 msgid "Computer"
 msgstr "Kapittel"
 
-#: lib/layouts/moderncv.layout:108
+#: lib/layouts/moderncv.layout:120
 #, fuzzy
 msgid "Computer:"
 msgstr "&Kopierar:"
 
-#: lib/layouts/moderncv.layout:111
+#: lib/layouts/moderncv.layout:123
 #, fuzzy
 msgid "EmptySection"
 msgstr "Bolk"
 
-#: lib/layouts/moderncv.layout:120
+#: lib/layouts/moderncv.layout:132
 #, fuzzy
 msgid "Empty Section"
 msgstr "Bolk"
 
-#: lib/layouts/moderncv.layout:127
+#: lib/layouts/moderncv.layout:139
 #, fuzzy
 msgid "CloseSection"
 msgstr "utvalet"
 
-#: lib/layouts/moderncv.layout:130
+#: lib/layouts/moderncv.layout:142
 #, fuzzy
 msgid "Close Section"
 msgstr "utvalet"
@@ -8828,7 +8829,7 @@ msgstr "Kort tittel"
 msgid "TeX Code|X"
 msgstr "TeX|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:350
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
 #, fuzzy
 msgid "Program Listing"
 msgstr "Startar opp programmet"
@@ -9034,11 +9035,11 @@ msgstr "Skriv ut dokument"
 msgid "Check spelling"
 msgstr "Sjekk rettskriving"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:776
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:712
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:785
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:721
 msgid "Redo"
 msgstr "Gjer om"
 
@@ -11806,12 +11807,12 @@ msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr "Brukar standard dokumentklasse sidan dokumentklassa %1$s er ukjent."
 
-#: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:909
-#: src/BufferView.cpp:915
+#: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:845
+#: src/BufferView.cpp:851
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:520 src/BufferView.cpp:910
+#: src/Buffer.cpp:520 src/BufferView.cpp:846
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11819,7 +11820,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:526 src/BufferView.cpp:916
+#: src/Buffer.cpp:526 src/BufferView.cpp:852
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11926,17 +11927,17 @@ msgstr "ChkTeX feil"
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje k�yre ChkTeX."
 
-#: src/Buffer.cpp:1746
+#: src/Buffer.cpp:1750
 #, fuzzy
 msgid "Preview source code"
 msgstr "F�rehandsvising klar"
 
-#: src/Buffer.cpp:1757
+#: src/Buffer.cpp:1761
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:1761
+#: src/Buffer.cpp:1765
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
@@ -11996,105 +11997,63 @@ msgstr "Dokumentklassa er ikkje tilgjengeleg"
 msgid "LyX will not be able to produce output."
 msgstr "LyX kan ikkje lage eit korrekt resultat."
 
-#: src/BufferView.cpp:242
-#, c-format
-msgid ""
-"The document %1$s is already loaded.\n"
-"\n"
-"Do you want to revert to the saved version?"
-msgstr ""
-"Dokumentet %1$s er lasta fr� f�r\n"
-"\n"
-"Vil du g� tilbake til den siste lagra versjonen?"
-
-#: src/BufferView.cpp:245 src/LyXFunc.cpp:910
-msgid "Revert to saved document?"
-msgstr "G� tilbake til sist lagra?"
-
-#: src/BufferView.cpp:246 src/LyXFunc.cpp:911 src/LyXVC.cpp:175
-msgid "&Revert"
-msgstr "&G� tilbake til sist lagra"
-
-#: src/BufferView.cpp:246
-msgid "&Switch to document"
-msgstr "&Byt til dokument"
-
-#: src/BufferView.cpp:268
-#, c-format
-msgid ""
-"The document %1$s does not yet exist.\n"
-"\n"
-"Do you want to create a new document?"
-msgstr ""
-"Dokumentet %1$s finst ikkje.\n"
-"\n"
-"Vil du laga eit nytt dokument?"
-
-#: src/BufferView.cpp:271
-msgid "Create new document?"
-msgstr "Vil du lagre eit nytt dokument?"
-
-#: src/BufferView.cpp:272
-msgid "&Create"
-msgstr "&Lag"
-
-#: src/BufferView.cpp:577
+#: src/BufferView.cpp:516
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Lagra bokmerke 2"
 
-#: src/BufferView.cpp:779
+#: src/BufferView.cpp:715
 msgid "No further undo information"
 msgstr "Ikkje meir \"Angre\" informasjon"
 
-#: src/BufferView.cpp:788
+#: src/BufferView.cpp:724
 msgid "No further redo information"
 msgstr "Ikkje meir \"Gjer om\" informasjon"
 
-#: src/BufferView.cpp:963
+#: src/BufferView.cpp:911
 msgid "Mark off"
 msgstr "Merke sl�tt av"
 
-#: src/BufferView.cpp:970
+#: src/BufferView.cpp:918
 msgid "Mark on"
 msgstr "Merke p�"
 
-#: src/BufferView.cpp:977
+#: src/BufferView.cpp:925
 msgid "Mark removed"
 msgstr "Fjerna merke"
 
-#: src/BufferView.cpp:980
+#: src/BufferView.cpp:928
 msgid "Mark set"
 msgstr "Merke sett"
 
-#: src/BufferView.cpp:1026
+#: src/BufferView.cpp:974
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d ord i utval."
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:977
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d ord i dokumentet."
 
-#: src/BufferView.cpp:1034
+#: src/BufferView.cpp:982
 msgid "One word in selection."
 msgstr "Eit ord i utvalet."
 
-#: src/BufferView.cpp:1036
+#: src/BufferView.cpp:984
 msgid "One word in document."
 msgstr "Eit ord i dokument."
 
-#: src/BufferView.cpp:1039
+#: src/BufferView.cpp:987
 msgid "Count words"
 msgstr "Tel ord"
 
-#: src/BufferView.cpp:1619
+#: src/BufferView.cpp:1567
 msgid "Select LyX document to insert"
 msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 
-#: src/BufferView.cpp:1621 src/LyXFunc.cpp:1901 src/LyXFunc.cpp:1940
-#: src/LyXFunc.cpp:2013 src/callback.cpp:135
+#: src/BufferView.cpp:1569 src/LyXFunc.cpp:1912 src/LyXFunc.cpp:1951
+#: src/LyXFunc.cpp:2024 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12103,31 +12062,31 @@ msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
-#: src/BufferView.cpp:1622 src/LyXFunc.cpp:1941 src/LyXFunc.cpp:2014
+#: src/BufferView.cpp:1570 src/LyXFunc.cpp:1952 src/LyXFunc.cpp:2025
 msgid "Examples|#E#e"
 msgstr "Eksempla|#E#e"
 
-#: src/BufferView.cpp:1628 src/LyXFunc.cpp:1906 src/LyXFunc.cpp:1945
+#: src/BufferView.cpp:1576 src/LyXFunc.cpp:1917 src/LyXFunc.cpp:1956
 #: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Dokument (*.lyx)"
 
-#: src/BufferView.cpp:1640 src/LyXFunc.cpp:1955 src/LyXFunc.cpp:2035
-#: src/LyXFunc.cpp:2049 src/LyXFunc.cpp:2065
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1966 src/LyXFunc.cpp:2046
+#: src/LyXFunc.cpp:2060 src/LyXFunc.cpp:2076
 msgid "Canceled."
 msgstr "Avbroten."
 
-#: src/BufferView.cpp:1651
+#: src/BufferView.cpp:1599
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.cpp:1662
+#: src/BufferView.cpp:1610
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.cpp:1664
+#: src/BufferView.cpp:1612
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
@@ -12373,12 +12332,12 @@ msgstr "arv"
 msgid "ignore"
 msgstr "ignorer"
 
-#: src/Converter.cpp:333 src/Converter.cpp:477 src/Converter.cpp:500
-#: src/Converter.cpp:545
+#: src/Converter.cpp:331 src/Converter.cpp:471 src/Converter.cpp:494
+#: src/Converter.cpp:539
 msgid "Cannot convert file"
 msgstr "Kan ikkje konvertere fila"
 
-#: src/Converter.cpp:334
+#: src/Converter.cpp:332
 #, fuzzy, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -12387,43 +12346,43 @@ msgstr ""
 "Ingen informasjon om korleis ein konverterer %1$s formatet til %2$s.\n"
 "Pr�v � sett det opp sj�lv i LyX-Val."
 
-#: src/Converter.cpp:428 src/Format.cpp:320 src/Format.cpp:379
+#: src/Converter.cpp:424 src/Format.cpp:320 src/Format.cpp:379
 msgid "Executing command: "
 msgstr "K�yrer kommando: "
 
-#: src/Converter.cpp:472
+#: src/Converter.cpp:466
 msgid "Build errors"
 msgstr "Byggjefeil"
 
-#: src/Converter.cpp:473
+#: src/Converter.cpp:467
 msgid "There were errors during the build process."
 msgstr "Det vart rapportert feil under bygginga."
 
-#: src/Converter.cpp:478 src/Format.cpp:327 src/Format.cpp:386
+#: src/Converter.cpp:472 src/Format.cpp:327 src/Format.cpp:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Vi fekk ein feil n�r vi k�yrde %1$s"
 
-#: src/Converter.cpp:501
+#: src/Converter.cpp:495
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil fr� %1$s til %2$s."
 
-#: src/Converter.cpp:547
+#: src/Converter.cpp:541
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil fr� %1$s til %2$s."
 
-#: src/Converter.cpp:548
+#: src/Converter.cpp:542
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil fr� %1$s til %2$s."
 
-#: src/Converter.cpp:606
+#: src/Converter.cpp:600
 msgid "Running LaTeX..."
 msgstr "K�yrer LaTeX..."
 
-#: src/Converter.cpp:624
+#: src/Converter.cpp:618
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -12432,15 +12391,15 @@ msgstr ""
 "K�yringa av LaTeX gjekk gale. Og i tillegg klarar ikkje LyX � finne "
 "LaTeX loggen %1$s."
 
-#: src/Converter.cpp:627
+#: src/Converter.cpp:621
 msgid "LaTeX failed"
 msgstr "Feil ved LaTeX k�yring"
 
-#: src/Converter.cpp:629
+#: src/Converter.cpp:623
 msgid "Output is empty"
 msgstr "Ingenting kom ut av konverteringa"
 
-#: src/Converter.cpp:630
+#: src/Converter.cpp:624
 msgid "An empty output file was generated."
 msgstr "Det vart berre laga ei tom fil."
 
@@ -12490,7 +12449,7 @@ msgstr ""
 msgid "Overwrite file?"
 msgstr "S&krivover dokumentet?"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2062
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073
 #: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
@@ -13021,6 +12980,14 @@ msgstr ""
 "Alle endingar vil forsvinne. Er du sikker at du vil g� tilbake til siste "
 "lagra versjon av dokumentet %1$s?"
 
+#: src/LyXFunc.cpp:910 src/buffer_funcs.cpp:192
+msgid "Revert to saved document?"
+msgstr "G� tilbake til sist lagra?"
+
+#: src/LyXFunc.cpp:911 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+msgid "&Revert"
+msgstr "&G� tilbake til sist lagra"
+
 #: src/LyXFunc.cpp:1102
 msgid "Exiting."
 msgstr ""
@@ -13034,87 +13001,77 @@ msgstr "Manglande val"
 msgid "Opening help file %1$s..."
 msgstr "Opnar hjelpfila %1$s..."
 
-#: src/LyXFunc.cpp:1426
-#, fuzzy, c-format
-msgid "Opening child document %1$s..."
-msgstr "Opnar dokumentet %1$s..."
-
-#: src/LyXFunc.cpp:1429
-#, fuzzy
-msgid "Document not loaded."
-msgstr "Dokumentet er ikkje lagra!"
-
-#: src/LyXFunc.cpp:1505
+#: src/LyXFunc.cpp:1516
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1516
+#: src/LyXFunc.cpp:1527
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra"
 
-#: src/LyXFunc.cpp:1630
+#: src/LyXFunc.cpp:1641
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Standardval for dokument er lagra i "
 
-#: src/LyXFunc.cpp:1633
+#: src/LyXFunc.cpp:1644
 msgid "Unable to save document defaults"
 msgstr "Klarte ikkje � lagre standardval for dokument "
 
-#: src/LyXFunc.cpp:1689
+#: src/LyXFunc.cpp:1700
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokumentet til ny dokument klasse ..."
 
-#: src/LyXFunc.cpp:1769
+#: src/LyXFunc.cpp:1780
 #, fuzzy
 msgid "off"
 msgstr "Av"
 
-#: src/LyXFunc.cpp:1771
+#: src/LyXFunc.cpp:1782
 #, fuzzy
 msgid "auto"
 msgstr "Forfattar"
 
-#: src/LyXFunc.cpp:1773
+#: src/LyXFunc.cpp:1784
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1899
+#: src/LyXFunc.cpp:1910
 msgid "Select template file"
 msgstr "Vel mal"
 
-#: src/LyXFunc.cpp:1902 src/callback.cpp:136
+#: src/LyXFunc.cpp:1913 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "Malar|#M#m"
 
-#: src/LyXFunc.cpp:1938
+#: src/LyXFunc.cpp:1949
 msgid "Select document to open"
 msgstr "Vel dokument"
 
-#: src/LyXFunc.cpp:1977
+#: src/LyXFunc.cpp:1988
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Opnar dokumentet %1$s..."
 
-#: src/LyXFunc.cpp:1981
+#: src/LyXFunc.cpp:1992
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s er ope."
 
-#: src/LyXFunc.cpp:1983
+#: src/LyXFunc.cpp:1994
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikkje opna dokumentet %1$s"
 
-#: src/LyXFunc.cpp:2008
+#: src/LyXFunc.cpp:2019
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vel %1$s filen som skal importerast"
 
-#: src/LyXFunc.cpp:2059 src/callback.cpp:166
+#: src/LyXFunc.cpp:2070 src/callback.cpp:166
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13125,12 +13082,12 @@ msgstr ""
 "\n"
 "Vil du skriva over dokumentet?"
 
-#: src/LyXFunc.cpp:2061 src/callback.cpp:168
+#: src/LyXFunc.cpp:2072 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Skriv over dokumentet?"
 
-#: src/LyXFunc.cpp:2132
+#: src/LyXFunc.cpp:2135
 msgid "Welcome to LyX!"
 msgstr "Velkomen til LyX!"
 
@@ -13945,7 +13902,41 @@ msgstr "Vil du laste inn fr� versjonkontroll?"
 msgid "&Retrieve"
 msgstr "&Hent inn"
 
-#: src/buffer_funcs.cpp:202
+#: src/buffer_funcs.cpp:189
+#, c-format
+msgid ""
+"The document %1$s is already loaded.\n"
+"\n"
+"Do you want to revert to the saved version?"
+msgstr ""
+"Dokumentet %1$s er lasta fr� f�r\n"
+"\n"
+"Vil du g� tilbake til den siste lagra versjonen?"
+
+#: src/buffer_funcs.cpp:193
+msgid "&Switch to document"
+msgstr "&Byt til dokument"
+
+#: src/buffer_funcs.cpp:214
+#, c-format
+msgid ""
+"The document %1$s does not yet exist.\n"
+"\n"
+"Do you want to create a new document?"
+msgstr ""
+"Dokumentet %1$s finst ikkje.\n"
+"\n"
+"Vil du laga eit nytt dokument?"
+
+#: src/buffer_funcs.cpp:217
+msgid "Create new document?"
+msgstr "Vil du lagre eit nytt dokument?"
+
+#: src/buffer_funcs.cpp:218
+msgid "&Create"
+msgstr "&Lag"
+
+#: src/buffer_funcs.cpp:243
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -13956,19 +13947,19 @@ msgstr ""
 "%1$s\n"
 "kunne ikkje bli lest."
 
-#: src/buffer_funcs.cpp:204
+#: src/buffer_funcs.cpp:245
 msgid "Could not read template"
 msgstr "Kan ikkje lese malen"
 
-#: src/buffer_funcs.cpp:527
+#: src/buffer_funcs.cpp:568
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:533
+#: src/buffer_funcs.cpp:574
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:536
+#: src/buffer_funcs.cpp:577
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -14198,11 +14189,21 @@ msgstr "Eksterne mal/innskot meldingar"
 msgid "RowPainter profiling"
 msgstr "Profilering av RadM�lar"
 
-#: src/frontends/LyXView.cpp:427
+#: src/frontends/LyXView.cpp:194
+#, fuzzy
+msgid "Document not loaded."
+msgstr "Dokumentet er ikkje lagra!"
+
+#: src/frontends/LyXView.cpp:206
+#, fuzzy, c-format
+msgid "Opening child document %1$s..."
+msgstr "Opnar dokumentet %1$s..."
+
+#: src/frontends/LyXView.cpp:480
 msgid " (changed)"
 msgstr " (endra)"
 
-#: src/frontends/LyXView.cpp:431
+#: src/frontends/LyXView.cpp:484
 msgid " (read only)"
 msgstr " (berre lesing)"
 
@@ -15465,7 +15466,7 @@ msgstr "Opna botntekst innskot"
 msgid "footnote"
 msgstr "Botntekst"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:517
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:518
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15491,29 +15492,29 @@ msgstr "Grafikk-fil: %1$s"
 msgid "Horizontal Fill"
 msgstr "Vassrett fyll|#a"
 
-#: src/insets/InsetInclude.cpp:338
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input"
 msgstr "Set inn Verbatim"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:344
 msgid "Verbatim Input*"
 msgstr "Set inn Verbatim*"
 
-#: src/insets/InsetInclude.cpp:348
+#: src/insets/InsetInclude.cpp:351
 #, fuzzy
 msgid "Program Listing "
 msgstr "Startar opp programmet"
 
-#: src/insets/InsetInclude.cpp:436 src/insets/InsetInclude.cpp:610
+#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:479
+#: src/insets/InsetInclude.cpp:480
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15524,7 +15525,7 @@ msgstr ""
 "har tekstklassa %2$s'\n"
 "medan hovuddokumentet har tekstklassa `%3$s'."
 
-#: src/insets/InsetInclude.cpp:485
+#: src/insets/InsetInclude.cpp:486
 msgid "Different textclasses"
 msgstr "Ulike tekstklassar"
 
@@ -15950,15 +15951,15 @@ msgstr "S�k feil"
 msgid "Search string is empty"
 msgstr "S�kje strengen er tom"
 
-#: src/lyxfind.cpp:297 src/lyxfind.cpp:328
+#: src/lyxfind.cpp:297 src/lyxfind.cpp:329 src/lyxfind.cpp:349
 msgid "String not found!"
 msgstr "Kan ikkje finne teksten."
 
-#: src/lyxfind.cpp:332
+#: src/lyxfind.cpp:333
 msgid "String has been replaced."
 msgstr "Teksten er bytta ut."
 
-#: src/lyxfind.cpp:335
+#: src/lyxfind.cpp:336
 msgid " strings have been replaced."
 msgstr " tekstane har blitt bytta ut."
 
@@ -16139,7 +16140,7 @@ msgid ""
 "Don't know how to proceed. Sorry."
 msgstr ""
 
-#: src/support/userinfo.cpp:44
+#: src/support/userinfo.cpp:49
 msgid "Unknown user"
 msgstr "Ukjend brukar"
 
