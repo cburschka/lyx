@@ -36,6 +36,11 @@ namespace support {
 
 docstring const user_name()
 {
+	//FIXME: quick fix wrt bug #3764; only Anonymous is detected now.
+	//The code after should be used only after user approval.
+	return from_ascii("Anonymous");
+	
+	
 #if defined (_WIN32)
 
 	char name[UNLEN + 1];
@@ -57,6 +62,11 @@ docstring const user_name()
 
 docstring const user_email()
 {
+	//FIXME: quick fix wrt bug #3764; only Anonymous is detected now.
+	//The code after should be used only after user approval.
+	return docstring();
+
+	
 	string email = getEnv("EMAIL_ADDRESS");
 	if (email.empty())
 		email = getEnv("EMAIL");
