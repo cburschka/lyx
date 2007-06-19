@@ -1,5 +1,5 @@
-#LyX 1.5.0rc1 created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 274
 \begin_document
 \begin_header
 \textclass book
@@ -38,7 +38,6 @@
 \tracking_changes false
 \output_changes false
 \author "usti" 
-\author "Richard Heck" 
 \end_header
 
 \begin_body
@@ -17901,7 +17900,7 @@ Note that the only difference so far is in the name of the file, no special
 If the document is of any literate class LyX will then use the internal
  LyX to Noweb converter, followed by the Noweb to LaTeX converter
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 The converters are defined in the 
@@ -17925,6 +17924,17 @@ Conversion
 \end_inset
 
  tab.
+ See section 
+\begin_inset LatexCommand ref
+reference "sub:converters"
+
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for general information about converters.
 \end_layout
 
 \end_inset
@@ -17968,7 +17978,9 @@ When the build menu option is chosen or the corresponding button in the
 Noweb->Program
 \family default
  converter.
- Typically, this converter (like any other converter), has two parts:
+ This converter needs to be defined by the user and is not installed by
+ default, though the Program format is.
+ This converter (like any other converter) will have two parts:
 \end_layout
 
 \begin_layout Enumerate
@@ -18015,7 +18027,7 @@ build-script
 \begin_inset Quotes erd
 \end_inset
 
- (a program or script) with the name of the Noweb file (generally a file
+ (a program or script) with the name of the Noweb file (normally a file
  in the LyX temp directory).
  
 \end_layout
@@ -18059,7 +18071,7 @@ Flags
 
 
 \family typewriter
-originaldir,parselog=listerrors
+parselog=listerrors
 \family default
 
 \begin_inset Quotes erd
@@ -18103,6 +18115,74 @@ listerrors
 \end_inset
 
  program.
+\end_layout
+
+\begin_layout Standard
+The build will normally take place in LyX's temporary directory, so the
+ files produced by the conversion will be in that directory.
+ LyX will copy out what it regards as the `main' file, but the 
+\family typewriter
+Noweb->Program
+\family default
+ conversion may produce several files, and so most of these would then be
+ deleted when LyX was closed.
+ The present solution is to use a `copier',
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+See section 
+\begin_inset LatexCommand ref
+reference "sec:converters-etc"
+
+\end_inset
+
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on these.
+\end_layout
+
+\end_inset
+
+ in this case, the 
+\family typewriter
+ext_copy.py
+\family default
+ script in its default mode, so that the entire contents of the temporary
+ directory is copied.
+ More will get copied than is needed, to be sure, but nothing will be lost.
+ If, however, you know what extensions the generated files will have, this
+ can be improved by using the 
+\family typewriter
+-e
+\family default
+ option to 
+\family typewriter
+ext_copy
+\family default
+.
+ This option takes a comma-separated list of extensions to copy.
+ So, for example, if the conversion will generate only files with the extensions
+ 
+\family typewriter
+.c
+\family default
+ and 
+\family typewriter
+.h
+\family default
+, then the correct definition would be:
+\end_layout
+
+\begin_layout LyX-Code
+python -tt $$s/scripts/ext_copy.py -e c,h $$i $$o
+\end_layout
+
+\begin_layout Standard
+The result will be that only files with these two extensions will be copied
+ out.
 \end_layout
 
 \begin_layout Paragraph

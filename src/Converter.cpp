@@ -119,7 +119,7 @@ Converter::Converter(string const & f, string const & t,
 		     string const & c, string const & l)
 	: from(f), to(t), command(c), flags(l),
 	  From(0), To(0), latex(false), xml(false),
-	  original_dir(false), need_aux(false)
+	  need_aux(false)
 {}
 
 
@@ -134,8 +134,6 @@ void Converter::readFlags()
 			latex = true;
 		else if (flag_name == "xml")
 			xml = true;
-		else if (flag_name == "originaldir")
-			original_dir = true;
 		else if (flag_name == "needaux")
 			need_aux = true;
 		else if (flag_name == "resultdir")
@@ -400,12 +398,10 @@ bool Converters::convert(Buffer const * buffer,
 			}
 
 			// FIXME UNICODE
-			string const infile2 = (conv.original_dir)
-				? infile.absFilename() : to_utf8(makeRelPath(from_utf8(infile.absFilename()),
-									     from_utf8(path)));
-			string const outfile2 = (conv.original_dir)
-				? outfile.absFilename() : to_utf8(makeRelPath(from_utf8(outfile.absFilename()),
-									      from_utf8(path)));
+			string const infile2 = 
+				to_utf8(makeRelPath(from_utf8(infile.absFilename()), from_utf8(path)));
+			string const outfile2 = 
+				to_utf8(makeRelPath(from_utf8(outfile.absFilename()), from_utf8(path)));
 
 			string command = conv.command;
 			command = subst(command, token_from, quoteName(infile2));
@@ -428,43 +424,41 @@ bool Converters::convert(Buffer const * buffer,
 				buffer->message(_("Executing command: ")
 				+ from_utf8(command));
 
-			Systemcall::Starttype const type = (dummy)
-				? Systemcall::DontWait : Systemcall::Wait;
 			Systemcall one;
 			int res;
-			if (conv.original_dir) {
-				FileName path(buffer->filePath());
-				support::Path p(path);
-				res = one.startscript(type,
+			if (dummy) {
+				res = one.startscript(Systemcall::DontWait,
 					to_filesystem8bit(from_utf8(command)));
-			} else
-				res = one.startscript(type,
-					to_filesystem8bit(from_utf8(command)));
-
-			if (!real_outfile.empty()) {
-				Mover const & mover = getMover(conv.to);
-				if (!mover.rename(outfile, real_outfile))
-					res = -1;
-				else
-					LYXERR(Debug::FILES)
-						<< "renaming file " << outfile
-						<< " to " << real_outfile
-						<< endl;
-				// Finally, don't forget to tell any future
-				// converters to use the renamed file...
-				outfile = real_outfile;
-			}
-
-			if (!conv.parselog.empty()) {
-				string const logfile =  infile2 + ".log";
-				string const script = libScriptSearch(conv.parselog);
-				string const command2 = script +
-					" < " + quoteName(infile2 + ".out") +
-					" > " + quoteName(logfile);
-				one.startscript(Systemcall::Wait,
-					to_filesystem8bit(from_utf8(command2)));
-				if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
-					return false;
+				// We're not waiting for the result, so we can't do anything
+				// else here.
+			} else {
+				res = one.startscript(Systemcall::Wait,
+						to_filesystem8bit(from_utf8(command)));
+				if (!real_outfile.empty()) {
+					Mover const & mover = getMover(conv.to);
+					if (!mover.rename(outfile, real_outfile))
+						res = -1;
+					else
+						LYXERR(Debug::FILES)
+							<< "renaming file " << outfile
+							<< " to " << real_outfile
+							<< endl;
+					// Finally, don't forget to tell any future
+					// converters to use the renamed file...
+					outfile = real_outfile;
+				}
+  
+				if (!conv.parselog.empty()) {
+					string const logfile =  infile2 + ".log";
+					string const script = libScriptSearch(conv.parselog);
+					string const command2 = script +
+						" < " + quoteName(infile2 + ".out") +
+						" > " + quoteName(logfile);
+					one.startscript(Systemcall::Wait,
+						to_filesystem8bit(from_utf8(command2)));
+					if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
+						return false;
+				}
 			}
 
 			if (res) {
