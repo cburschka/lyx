@@ -209,26 +209,26 @@ void BufferView::setBuffer(Buffer * b)
 	if (!buffer_)
 		return;
 
-		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
-				    << "Buffer addr: " << buffer_ << endl;
-		cursor_.push(buffer_->inset());
+	LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
+					<< "Buffer addr: " << buffer_ << endl;
+	cursor_.push(buffer_->inset());
+	cursor_.resetAnchor();
+	buffer_->text().setCurrentFont(cursor_);
+	if (buffer_->getCursor().size() > 0 &&
+			buffer_->getAnchor().size() > 0)
+	{
+		cursor_.setCursor(buffer_->getAnchor().asDocIterator(&(buffer_->inset())));
 		cursor_.resetAnchor();
-		buffer_->text().setCurrentFont(cursor_);
-		if (buffer_->getCursor().size() > 0 &&
-		    buffer_->getAnchor().size() > 0)
-		{
-			cursor_.setCursor(buffer_->getAnchor().asDocIterator(&(buffer_->inset())));
-			cursor_.resetAnchor();
-			cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
-			cursor_.setSelection();
-			// do not set selection to the new buffer because we
-			// only paste recent selection.
+		cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
+		cursor_.setSelection();
+		// do not set selection to the new buffer because we
+		// only paste recent selection.
 
-			// Make sure that the restored cursor is not broken. This can happen for
-			// example if this Buffer has been modified by another view.
-			cursor_.fixIfBroken();
-		}
-		updateMetrics(false);
+		// Make sure that the restored cursor is not broken. This can happen for
+		// example if this Buffer has been modified by another view.
+		cursor_.fixIfBroken();
+	}
+	updateMetrics(false);
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
