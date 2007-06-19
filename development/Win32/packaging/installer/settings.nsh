@@ -35,6 +35,7 @@ Settings for LyX installer
 !define DOWNLOAD_VIEWER "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/ghostgum/gsv48w32.exe"
 
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
+!define ALT_DOWNLOAD_ASPELLDICTS "http://www.lyx.org/~bpeng/aspell6-windows"
 
 #--------------------------------
 #Download size (in KB)
