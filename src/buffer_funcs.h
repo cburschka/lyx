@@ -34,6 +34,13 @@ class ParIterator;
  */
 bool loadLyXFile(Buffer *, support::FileName const & filename);
 
+/**
+ *  Checks and loads a LyX file \param filename.
+ *  \retval the newly created \c Buffer pointer if successful or 0.
+ *  \retval 0 if the \c Buffer could not be created.
+ */
+Buffer * checkAndLoadLyXFile(support::FileName const & filename);
+
 /* Make a new file (buffer) with name \c filename based on a template
  * named \c templatename
  */

@@ -93,10 +93,6 @@ public:
 	/// resize the BufferView.
 	void resize();
 
-	/// load a buffer into the view.
-  /// returns the buffer or 0 if not loaded
-	Buffer * loadLyXFile(support::FileName const & name, bool auto_open = false);
-
 	/// perform pending metrics updates.
 	/** \c Update::FitCursor means first to do a FitCursor, and to
 	 * force an update if screen position changes.

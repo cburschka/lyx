@@ -180,6 +180,47 @@ bool loadLyXFile(Buffer * b, FileName const & s)
 	return false;
 }
 
+
+Buffer * checkAndLoadLyXFile(FileName const & filename)
+{
+	// File already open?
+	if (theBufferList().exists(filename.absFilename())) {
+		docstring const file = makeDisplayPath(filename.absFilename(), 20);
+		docstring text = bformat(_("The document %1$s is already "
+						     "loaded.\n\nDo you want to revert "
+						     "to the saved version?"), file);
+		if (Alert::prompt(_("Revert to saved document?"),
+				text, 0, 1,  _("&Revert"), _("&Switch to document")))
+			return theBufferList().getBuffer(filename.absFilename());
+
+		// FIXME: should be LFUN_REVERT
+		if (theBufferList().close(theBufferList().getBuffer(filename.absFilename()), false))
+			// Load it again.
+			return checkAndLoadLyXFile(filename);
+		else
+			// The file could not be closed.
+			return 0;
+	}
+
+	if (isFileReadable(filename)) {
+		Buffer * b = theBufferList().newBuffer(filename.absFilename());
+		if (!lyx::loadLyXFile(b, filename)) {
+			theBufferList().release(b);
+			return 0;
+		}
+		return b;
+	}
+
+	docstring text = bformat(_("The document %1$s does not yet "
+		"exist.\n\nDo you want to create a new document?"),
+		from_utf8(filename.absFilename()));
+	if (Alert::prompt(_("Create new document?"),
+			text, 0, 1, _("&Create"), _("Cancel")))
+		return newFile(filename.absFilename(), string(), true);
+
+	return 0;
+}
+
 // FIXME newFile() should probably be a member method of Application...
 Buffer * newFile(string const & filename, string const & templatename,
 		 bool const isNamed)

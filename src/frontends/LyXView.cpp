@@ -190,71 +190,52 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
 	if (oldBuffer)
 		parentfilename = oldBuffer->fileName();
 
-	Buffer * newBuffer =
-		work_area_->bufferView().loadLyXFile(filename, auto_open);
+	Buffer * newBuffer = checkAndLoadLyXFile(filename);
 
-  if (!newBuffer) {
+	if (!newBuffer) {
 		message(_("Document not loaded."));
-    updateStatusBar();
-    busy(false);
-    work_area_->redraw();
-    return false;
-  }
-  
-  if (!auto_open) {
-    disconnectBuffer();
-    connectBuffer(*newBuffer);
-  }
+		updateStatusBar();
+		busy(false);
+		work_area_->redraw();
+		return false;
+	}
 
-  showErrorList("Parse");
+	if (child_document && newBuffer != oldBuffer) {
+		// Set the parent name of the child document.
+		// This makes insertion of citations and references in the child work,
+		// when the target is in the parent or another child document.
+		newBuffer->setParentName(parentfilename);
+		message(bformat(_("Opening child document %1$s..."),
+			makeDisplayPath(filename.absFilename())));
+	}
 
-  if (child_document && newBuffer != oldBuffer) {
-    // Set the parent name of the child document.
-    // This makes insertion of citations and references in the child work,
-    // when the target is in the parent or another child document.
-    newBuffer->setParentName(parentfilename);
-    message(bformat(_("Opening child document %1$s..."),
-      makeDisplayPath(filename.absFilename())));
-  }
-  
-  // Update the labels and section numbering.
-  updateLabels(*newBuffer->getMasterBuffer());
+	bool const parse_error = !newBuffer->errorList("Parse").empty();
+	if (parse_error || !auto_open) {
+		setBuffer(newBuffer, child_document);
+		showErrorList("Parse");
+	}
 
-  // scroll to the position when the file was last closed
-  if (!auto_open && lyxrc.use_lastfilepos) {
-    pit_type pit;
-    pos_type pos;
-    boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
-    // if successfully move to pit (returned par_id is not zero),
-    // update metrics and reset font
-    if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
-      if (work_area_->bufferView().fitCursor())
-        work_area_->bufferView().updateMetrics(false);
-      newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
-    }
-  }
+	// Update the labels and section numbering.
+	updateLabels(*newBuffer->getMasterBuffer());
 
-  if (tolastfiles)
-    LyX::ref().session().lastFiles().add(filename);
+	// scroll to the position when the file was last closed
+	if (!auto_open && lyxrc.use_lastfilepos) {
+		pit_type pit;
+		pos_type pos;
+		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
+		// if successfully move to pit (returned par_id is not zero),
+		// update metrics and reset font
+		if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
+			if (work_area_->bufferView().fitCursor())
+				work_area_->bufferView().updateMetrics(false);
+			newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
+		}
+	}
 
-  // FIXME We definitely don't have to do all of this if auto_open...
-  // The question is: What do we have to do here if we've loaded a new
-  // file but haven't switched buffers? I'm guessing we can skip the
-  // layout bit and the title.
-  // and if we have already switched buffers...won't all of this have been
-  // done already in setBuffer()? So why does it also need doing here?
-  // In fact, won't a lot of what's above already have been done?  E.g.,
-  // the connecting and disconnecting of buffers will have been done
-  // already in setBuffer(). 
-	// This bit of cleanup is post-1.5.0....
-	updateMenubar();
-	updateToolbars();
-	updateLayoutChoice();
-	updateWindowTitle();
-	updateTab();
-	updateStatusBar();
+	if (tolastfiles)
+		LyX::ref().session().lastFiles().add(filename);
+
 	busy(false);
-	work_area_->redraw();
 	return true;
 }
 

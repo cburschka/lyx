@@ -233,61 +233,6 @@ void BufferView::setBuffer(Buffer * b)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
-// FIXME There is now no need for this to be in BufferView. It should all
-// be moved to buffer_func.cpp. (Abdel)
-Buffer * BufferView::loadLyXFile(FileName const & filename, bool auto_open)
-{
-	// File already open?
-	if (theBufferList().exists(filename.absFilename())) {
-		docstring const file = makeDisplayPath(filename.absFilename(), 20);
-		docstring text = bformat(_("The document %1$s is already "
-						     "loaded.\n\nDo you want to revert "
-						     "to the saved version?"), file);
-		int const ret = Alert::prompt(_("Revert to saved document?"),
-			text, 0, 1,  _("&Revert"), _("&Switch to document"));
-
-		if (ret != 0) {
-      Buffer * buf = theBufferList().getBuffer(filename.absFilename());
-			setBuffer(buf);
-			return buf;
-		}
-		// FIXME: should be LFUN_REVERT
-		if (!theBufferList().close(theBufferList().getBuffer(filename.absFilename()), false))
-			return 0;
-		// Fall through to new load. (Asger)
-		buffer_ = 0;
-	}
-
-	Buffer * b = 0;
-
-	if (isFileReadable(filename)) {
-		b = theBufferList().newBuffer(filename.absFilename());
-		if (!lyx::loadLyXFile(b, filename)) {
-			theBufferList().release(b);
-			return 0;
-		}
-	} else {
-		docstring text = bformat(_("The document %1$s does not yet "
-						     "exist.\n\nDo you want to create "
-						     "a new document?"), from_utf8(filename.absFilename()));
-		int const ret = Alert::prompt(_("Create new document?"),
-			 text, 0, 1, _("&Create"), _("Cancel"));
-
-		if (ret == 0) {
-			b = newFile(filename.absFilename(), string(), true);
-			if (!b)
-				return 0;
-		} else
-			return 0;
-	}
-
-  if (!auto_open)
-  	setBuffer(b);
-
-	return b;
-}
-
-
 void BufferView::resize()
 {
 	if (!buffer_)
