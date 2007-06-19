@@ -214,6 +214,12 @@ void BufferView::setBuffer(Buffer * b)
 	cursor_.push(buffer_->inset());
 	cursor_.resetAnchor();
 	buffer_->text().setCurrentFont(cursor_);
+
+	// Update the metrics now that we have a proper Cursor.
+	updateMetrics(false);
+
+	// FIXME: This code won't be needed once we switch to
+	// "one Buffer" / "one BufferView".
 	if (buffer_->getCursor().size() > 0 &&
 			buffer_->getAnchor().size() > 0)
 	{
@@ -227,11 +233,16 @@ void BufferView::setBuffer(Buffer * b)
 		// Make sure that the restored cursor is not broken. This can happen for
 		// example if this Buffer has been modified by another view.
 		cursor_.fixIfBroken();
+
+		if (fitCursor())
+			// Update the metrics if the cursor new position was off screen.
+			updateMetrics(false);
 	}
-	updateMetrics(false);
+
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
+
 
 void BufferView::resize()
 {

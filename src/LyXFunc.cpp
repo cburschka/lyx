@@ -2089,16 +2089,8 @@ void LyXFunc::closeBuffer()
 	// goto bookmark to update bookmark pit.
 	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
 		gotoBookmark(i+1, false, false);
-	if (theBufferList().close(lyx_view_->buffer(), true) && !quitting) {
-		if (theBufferList().empty()) {
-			// need this otherwise SEGV may occur while
-			// trying to set variables that don't exist
-			// since there's no current buffer
-			lyx_view_->getDialogs().hideBufferDependent();
-		} else {
-			lyx_view_->setBuffer(theBufferList().first());
-		}
-	}
+	
+	theBufferList().close(lyx_view_->buffer(), true);
 }
 
 
