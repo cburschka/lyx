@@ -2881,3 +2881,57 @@ boost_libs_iostreams_src_extra_files = Split('''
 ''')
 
 
+development_Win32_packaging_installer = Split('''
+    license.rtf
+    lyx.nsi
+    settings.nsh
+    settings.user.nsh
+''')
+
+
+development_Win32_packaging_installer_components = Split('''
+    configure.nsh
+    core.nsh
+    dicts.nsh
+    external.nsh
+    langselect.nsh
+    reinstall.nsh
+    uninstall.nsh
+    user.nsh
+    viewer.nsh
+''')
+
+
+development_Win32_packaging_installer_dialogs = Split('''
+    external.ini
+    langselect.ini
+    reinstall.ini
+    user.ini
+    viewer.ini
+''')
+
+
+development_Win32_packaging_installer_graphics = Split('''
+    header.bmp
+    wizard.bmp
+''')
+
+
+development_Win32_packaging_installer_include = Split('''
+    declarations.nsh
+    detection.nsh
+    filelists.nsh
+    gui.nsh
+    init.nsh
+    lang.nsh
+    windows.nsh
+''')
+
+
+development_Win32_packaging_installer_include_lang = Split('''
+    english.nsh
+    french.nsh
+    german.nsh
+    italian.nsh
+''')
+

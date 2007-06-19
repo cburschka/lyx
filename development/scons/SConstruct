@@ -2352,6 +2352,18 @@ if build_installer:
     if mode != 'release':
         print 'installer has to be built in release mode (use option mode=release)'
         Exit(1)
+    installer_files = ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' \
+            % x for x in development_Win32_packaging_installer] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' \
+            % x for x in development_Win32_packaging_installer_components] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' \
+            % x for x in development_Win32_packaging_installer_dialogs] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/graphics/%s' \
+            % x for x in development_Win32_packaging_installer_graphics] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' \
+            % x for x in development_Win32_packaging_installer_include] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/lang/%s' \
+            % x for x in development_Win32_packaging_installer_include_lang]
     if env.has_key('NSIS') and env['NSIS'] is not None:
         # create a builder to strip and install
         env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)
@@ -2392,6 +2404,7 @@ if build_installer:
         '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
     # since I can not use a scanner, explicit dependent is required
     env.Depends(installer, 'install')
+    env.Depends(installer, installer_files)
     env.Alias('installer', installer)
     # also generate bundle?
     if env.has_key('bundle') and env['bundle']:
@@ -2403,6 +2416,7 @@ if build_installer:
         bundle_installer = env.installer(env['win_installer'].replace('.exe', '-bundle.exe'),
             '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
         env.Depends(bundle_installer, 'install')
+        env.Depends(bundle_installer, installer_files)
         env.Alias('installer', bundle_installer)
 
 Default('lyx')
