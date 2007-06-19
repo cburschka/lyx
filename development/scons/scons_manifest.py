@@ -2928,7 +2928,7 @@ development_Win32_packaging_installer_include = Split('''
 ''')
 
 
-development_Win32_packaging_installer_include_lang = Split('''
+development_Win32_packaging_installer_lang = Split('''
     english.nsh
     french.nsh
     german.nsh

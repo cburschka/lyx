@@ -2362,8 +2362,8 @@ if build_installer:
             % x for x in development_Win32_packaging_installer_graphics] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' \
             % x for x in development_Win32_packaging_installer_include] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/lang/%s' \
-            % x for x in development_Win32_packaging_installer_include_lang]
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' \
+            % x for x in development_Win32_packaging_installer_lang]
     if env.has_key('NSIS') and env['NSIS'] is not None:
         # create a builder to strip and install
         env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)
