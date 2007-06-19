@@ -541,7 +541,7 @@ def checkOtherEntries():
     addToRC(r'''\copier    fig        "python -tt $$s/scripts/fig_copy.py $$i $$o"
 \copier    pstex      "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
 \copier    pdftex     "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
-\copier    program   "python -tt $$s/scripts/ext_copy.py $$i $$o"
+\copier    program    "python -tt $$s/scripts/ext_copy.py $$i $$o"
 ''')
 
 
