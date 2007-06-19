@@ -20,6 +20,7 @@
 #include "Gui.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -31,6 +32,7 @@
 #include "gettext.h"
 #include "Intl.h"
 #include "callback.h"
+#include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Text.h"
@@ -122,27 +124,45 @@ Buffer * LyXView::buffer() const
 }
 
 
-void LyXView::setBuffer(Buffer * b)
+void LyXView::setBuffer(Buffer * b, bool child_document)
 {
 	busy(true);
 
 	BOOST_ASSERT(work_area_);
-	if (work_area_->bufferView().buffer())
+	Buffer * oldBuffer = work_area_->bufferView().buffer();
+	// parentfilename will be used in case when we switch to a child
+	// document (hence when child_document is true)
+	string parentfilename;
+	if (oldBuffer) {
+		parentfilename = oldBuffer->fileName();
 		disconnectBuffer();
+	}
 
 	if (!b && theBufferList().empty())
 		getDialogs().hideBufferDependent();
 
 	work_area_->bufferView().setBuffer(b);
-	// Make sure the TOC is updated before anything else.
-	updateToc();
 
-	if (work_area_->bufferView().buffer()) {
+  //FIXME This would be a little simpler if setBuffer returned the buffer.
+	Buffer * newBuffer = work_area_->bufferView().buffer();
+	if (newBuffer) {
+		if (child_document && newBuffer != oldBuffer) {
+			// Set the parent name of the child document.
+			// This makes insertion of citations and references in the child work,
+			// when the target is in the parent or another child document.
+			newBuffer->setParentName(parentfilename);
+			// updateLabels() will emit Buffer::structureChanged() so better
+			// connect it before.
+			connectBuffer(*newBuffer);
+			// Update the labels and section numbering.
+			updateLabels(*newBuffer->getMasterBuffer());
+		} else
+			connectBuffer(*newBuffer);
+
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		getDialogs().updateBufferDependent(true);
-		connectBuffer(*work_area_->bufferView().buffer());
 	}
 
 	if (quitting)
@@ -159,34 +179,83 @@ void LyXView::setBuffer(Buffer * b)
 }
 
 
-bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
+bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
+		bool child_document, bool auto_open)
 {
 	busy(true);
 
 	BOOST_ASSERT(work_area_);
-	bool const hadBuffer = work_area_->bufferView().buffer();
-	if (hadBuffer)
-		disconnectBuffer();
+	string parentfilename;
+	Buffer * oldBuffer = work_area_->bufferView().buffer();
+	if (oldBuffer)
+		parentfilename = oldBuffer->fileName();
 
-	bool const loaded =
-		work_area_->bufferView().loadLyXFile(filename, tolastfiles);
+	Buffer * newBuffer =
+		work_area_->bufferView().loadLyXFile(filename, auto_open);
 
-	updateToc();
+  if (!newBuffer) {
+		message(_("Document not loaded."));
+    updateStatusBar();
+    busy(false);
+    work_area_->redraw();
+    return false;
+  }
+  
+  if (!auto_open) {
+    disconnectBuffer();
+    connectBuffer(*newBuffer);
+  }
+
+  showErrorList("Parse");
+
+  if (child_document && newBuffer != oldBuffer) {
+    // Set the parent name of the child document.
+    // This makes insertion of citations and references in the child work,
+    // when the target is in the parent or another child document.
+    newBuffer->setParentName(parentfilename);
+    message(bformat(_("Opening child document %1$s..."),
+      makeDisplayPath(filename.absFilename())));
+  }
+  
+  // Update the labels and section numbering.
+  updateLabels(*newBuffer->getMasterBuffer());
+
+  // scroll to the position when the file was last closed
+  if (!auto_open && lyxrc.use_lastfilepos) {
+    pit_type pit;
+    pos_type pos;
+    boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
+    // if successfully move to pit (returned par_id is not zero),
+    // update metrics and reset font
+    if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
+      if (work_area_->bufferView().fitCursor())
+        work_area_->bufferView().updateMetrics(false);
+      newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
+    }
+  }
+
+  if (tolastfiles)
+    LyX::ref().session().lastFiles().add(filename);
+
+  // FIXME We definitely don't have to do all of this if auto_open...
+  // The question is: What do we have to do here if we've loaded a new
+  // file but haven't switched buffers? I'm guessing we can skip the
+  // layout bit and the title.
+  // and if we have already switched buffers...won't all of this have been
+  // done already in setBuffer()? So why does it also need doing here?
+  // In fact, won't a lot of what's above already have been done?  E.g.,
+  // the connecting and disconnecting of buffers will have been done
+  // already in setBuffer(). 
+	// This bit of cleanup is post-1.5.0....
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
 	updateTab();
-	if (loaded) {
-		connectBuffer(*work_area_->bufferView().buffer());
-		showErrorList("Parse");
-	} else if (hadBuffer)
-		//Need to reconnect the buffer if the load failed
-		connectBuffer(*work_area_->bufferView().buffer());
 	updateStatusBar();
 	busy(false);
 	work_area_->redraw();
-	return loaded;
+	return true;
 }
 
 
@@ -230,7 +299,7 @@ void LyXView::connectBuffer(Buffer & buf)
 
 	closingConnection_ =
 		buf.closing.connect(
-			boost::bind(&LyXView::setBuffer, this, (Buffer *)0));
+			boost::bind(&LyXView::setBuffer, this, (Buffer *)0, false));
 }
 
 

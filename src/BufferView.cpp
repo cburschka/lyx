@@ -233,8 +233,9 @@ void BufferView::setBuffer(Buffer * b)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
-
-bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
+// FIXME There is now no need for this to be in BufferView. It should all
+// be moved to buffer_func.cpp. (Abdel)
+Buffer * BufferView::loadLyXFile(FileName const & filename, bool auto_open)
 {
 	// File already open?
 	if (theBufferList().exists(filename.absFilename())) {
@@ -246,12 +247,13 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret != 0) {
-			setBuffer(theBufferList().getBuffer(filename.absFilename()));
-			return true;
+      Buffer * buf = theBufferList().getBuffer(filename.absFilename());
+			setBuffer(buf);
+			return buf;
 		}
 		// FIXME: should be LFUN_REVERT
 		if (!theBufferList().close(theBufferList().getBuffer(filename.absFilename()), false))
-			return false;
+			return 0;
 		// Fall through to new load. (Asger)
 		buffer_ = 0;
 	}
@@ -262,7 +264,7 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		b = theBufferList().newBuffer(filename.absFilename());
 		if (!lyx::loadLyXFile(b, filename)) {
 			theBufferList().release(b);
-			return false;
+			return 0;
 		}
 	} else {
 		docstring text = bformat(_("The document %1$s does not yet "
@@ -274,34 +276,15 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		if (ret == 0) {
 			b = newFile(filename.absFilename(), string(), true);
 			if (!b)
-				return false;
+				return 0;
 		} else
-			return false;
+			return 0;
 	}
 
-	setBuffer(b);
-	// Send the "errors" signal in case of parsing errors
-	b->errors("Parse");
+  if (!auto_open)
+  	setBuffer(b);
 
-	// Update the labels and section numbering.
-	updateLabels(*buffer_);
-	// scroll to the position when the file was last closed
-	if (lyxrc.use_lastfilepos) {
-		pit_type pit;
-		pos_type pos;
-		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
-		// if successfully move to pit (returned par_id is not zero), update metrics and reset font
-		if (moveToPosition(pit, pos, 0, 0).get<1>()) {
-			if (fitCursor())
-				updateMetrics(false);
-			buffer_->text().setCurrentFont(cursor_);
-		}
-	}
-
-	if (tolastfiles)
-		LyX::ref().session().lastFiles().add(FileName(b->fileName()));
-
-	return true;
+	return b;
 }
 
 

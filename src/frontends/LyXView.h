@@ -142,11 +142,15 @@ public:
 
 	//@}
 
-	/// load a buffer into the current workarea
-	bool loadLyXFile(support::FileName const &  name, bool tolastfiles = true);
+	/// load a buffer into the current workarea.
+	bool loadLyXFile(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true,  ///< append to the "Open recent" menu?
+		bool child_document = false, ///< Is this a child document?
+    bool auto_open = false); ///< Is this being opened by LyX itself?
 
-	/// set a buffer to the current workarea
-	void setBuffer(Buffer * b);
+	/// set a buffer to the current workarea.
+	void setBuffer(Buffer * b, ///< \c Buffer to set.
+		bool child_document = false);  ///< Is this a child document?
 
 	/// updates the possible layouts selectable
 	void updateLayoutChoice();

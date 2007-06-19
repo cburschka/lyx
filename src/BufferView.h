@@ -94,7 +94,8 @@ public:
 	void resize();
 
 	/// load a buffer into the view.
-	bool loadLyXFile(support::FileName const & name, bool tolastfiles = true);
+  /// returns the buffer or 0 if not loaded
+	Buffer * loadLyXFile(support::FileName const & name, bool auto_open = false);
 
 	/// perform pending metrics updates.
 	/** \c Update::FitCursor means first to do a FitCursor, and to

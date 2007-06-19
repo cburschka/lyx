@@ -1616,7 +1616,11 @@ bool Buffer::isReadonly() const
 
 void Buffer::setParentName(string const & name)
 {
-	params().parentname = name;
+	if (name == pimpl_->filename.absFilename())
+		// Avoids recursive include.
+		params().parentname.clear();
+	else
+		params().parentname = name;
 }
 
 
