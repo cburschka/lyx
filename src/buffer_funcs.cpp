@@ -214,7 +214,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 	docstring text = bformat(_("The document %1$s does not yet "
 		"exist.\n\nDo you want to create a new document?"),
 		from_utf8(filename.absFilename()));
-	if (Alert::prompt(_("Create new document?"),
+	if (!Alert::prompt(_("Create new document?"),
 			text, 0, 1, _("&Create"), _("Cancel")))
 		return newFile(filename.absFilename(), string(), true);
 
