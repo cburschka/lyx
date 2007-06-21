@@ -1440,6 +1440,15 @@ void BufferView::updateMetrics(bool singlepar)
 		offset_ref_ = 0;
 	}
 
+	if (!singlepar) {
+		// Clear out the position cache in case of full screen redraw,
+		coord_cache_.clear();
+	
+		// Clear out paragraph metrics to avoid having invalid metrics
+		// in the cache from paragraphs not relayouted below
+		tm.clear();
+	}
+
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
 	if (singlepar
@@ -1458,10 +1467,6 @@ void BufferView::updateMetrics(bool singlepar)
 	// Rebreak anchor paragraph.
 	if (!singlepar)
 		tm.redoParagraph(pit);
-
-	// Clear out the position cache in case of full screen redraw.
-	if (!singlepar)
-		coord_cache_.clear();
 
 	int y0 = tm.parMetrics(pit).ascent() - offset_ref_;
 
