@@ -35,41 +35,43 @@ SectionEnd
 
 !define DICT '!insertmacro Dictionary'
 
-${DICT} af-0.50-0 "Afrikaans" af 916
-${DICT} ar-1.2-0 "Arabic" ar 4345
-${DICT} no-0.50-2 "Bokmål" no 1283
-${DICT} bg-4.0-0 "Bulgarian" bg 5344
+${DICT} ar-1.2-0 "Arabic" ar 4352
+${DICT} af-0.50-0 "Afrikaans" af 915
+${DICT} nb-0.50.1-0 "Bokmål" nb 3031
+${DICT} bg-4.0-0 "Bulgarian" bg 5345
 ${DICT} ca-20040130-1 "Català" ca 1095
 ${DICT} cs-20040614-1 "Ceština" cs 2069
-${DICT} da-1.4.42-1 "Dansk" da 3041
-${DICT} de-20030222-1 "Deutsch" de 2874
+${DICT} da-1.4.42-1 "Dansk" da 3036
+${DICT} de-20030222-1 "Deutsch" de 2872
 ${DICT} en-6.0-0 "English" en 1130
-${DICT} es-0.50-2 "Español" es 2954
-${DICT} eo-0.50-2 "Esperanto" eo 3771
-${DICT} et-0.1.21-1 "Estonian" et 923
-${DICT} fr-0.50-3 "Français" fr 4333
-${DICT} gl-0.50-0 "Galego" gl 2973
-${DICT} el-0.50-3 "Greek" el 3206
-${DICT} he-1.0-0 "Hebrew" he 2026
+${DICT} es-0.50-2 "Español" es 2953
+${DICT} eo-0.50-2 "Esperanto" eo 3773
+${DICT} et-0.1.21-1 "Estonian" et 922
+${DICT} fr-0.50-3 "Français" fr 4331
+${DICT} gl-0.50-0 "Galego" gl 2974
+${DICT} el-0.50-3 "Greek" el 3204
+${DICT} he-1.0-0 "Hebrew" he 2024
 ${DICT} hr-0.51-0 "Hrvatski" hr 1967
-${DICT} is-0.51.1-0 "Íslenska" is 1537
+${DICT} is-0.51.1-0 "Íslenska" is 1536
 ${DICT} it-2.2_20050523-0 "Italiano" it 696
 ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
 ${DICT} nl-0.50-2 "Nederlands" nl 1526
-${DICT} nn-0.50.1-1 "Nynorsk" nn 1942
-${DICT} pl-0.51-0 "Polski" pl 13685
-${DICT} pt-0.50-2 "Português" pt 2291
-${DICT} ro-0.50-2 "Româna" ro 342
-${DICT} ru-0.99f7-1 "Russian" ru 1460
-${DICT} gd-0.1.1-1 "Scottish" gd 195
-${DICT} sr-0.02 "Serbian" sr 3684
+${DICT} nn-0.50.1-1 "Nynorsk" nn 1930
+${DICT} fa-0.11-0 "Persian" fa 1667
+${DICT} pl-6.0_20061121-0 "Polski" pl 1859
+${DICT} pt_PT-20070510-0 "Português" pt_PT 319
+${DICT} pt_BR-20070411-0 "Português do Brasil" pt_BR 2453
+${DICT} ro-0.50-2 "Româna" ro 341
+${DICT} ru-0.99f7-1 "Russian" ru 1458
+${DICT} gd-0.1.1-1 "Scottish" gd 194
+${DICT} sr-0.02 "Serbian" sr 3686
 ${DICT} sk-0.52-0 "Slovencina" sk 4602
-${DICT} sl-0.50-0 "Slovenšcina" sl 5227
-${DICT} fi-0.7-0 "Suomi" fi 660
+${DICT} sl-0.50-0 "Slovenšcina" sl 5236
+${DICT} fi-0.7-0 "Suomi" fi 659
 ${DICT} sv-0.51-0 "Svenska" sv 1029
-${DICT} tr-0.50-0 "Türkçe" tr 549
-${DICT} uk-1.1-0 "Ukrainian" uk 582
-${DICT} cy-0.50-3 "Welsh" cy 1770
+${DICT} tr-0.50-0 "Türkçe" tr 547
+${DICT} uk-1.4.0-0 "Ukrainian" uk 770
+${DICT} cy-0.50-3 "Welsh" cy 1771
 
 #--------------------------------
 #Functions
