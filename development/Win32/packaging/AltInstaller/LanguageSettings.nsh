@@ -245,6 +245,16 @@
    StrCpy ${LangNmeSys} "Lietuva"
    StrCpy ${LangSysEnc} "1257"
   ${endif}
+  
+  ${if} ${LangISOCode} = 1065
+   StrCpy ${LangCdeSys} "fa"
+   StrCpy ${LangNmeSys} "Farsi"
+  ${endif} 	
+  
+  ${if} ${LangISOCode} = 1067
+   StrCpy ${LangCdeSys} "hy"
+   StrCpy ${LangNmeSys} "Armenian"
+  ${endif} 	
 
   # currently no dictionary available
   ${if} ${LangISOCode} = 1069
@@ -260,11 +270,10 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-# currently no dictionary available
-#  ${if} ${LangISOCode} = 1081
-#   StrCpy ${LangCdeSys} "hi"
-#   StrCpy ${LangNmeSys} "Hindi"
-#  ${endif}
+  ${if} ${LangISOCode} = 1081
+   StrCpy ${LangCdeSys} "hi"
+   StrCpy ${LangNmeSys} "Hindi"
+  ${endif}
 
   ${if} ${LangISOCode} = 1110
    StrCpy ${LangNme} "Galego"
