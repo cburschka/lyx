@@ -27,10 +27,6 @@
 
 !endif
 
-;Location of Windows installation
-
-!define FILES_WINDOWS "C:\WINDOWS"
-
 ;Location of Python 2.5
 
 !define FILES_PYTHON "C:\Python25"

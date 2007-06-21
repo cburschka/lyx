@@ -73,9 +73,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
     download_${COMPONENT}:
 
-      ;Download using HTTP
-      InetLoad::load "${DOWNLOAD_${COMPONENT}}" "$PLUGINSDIR\${COMPONENT}Setup.exe" /END
-      Pop $R0
+      !insertmacro DownloadFile $R0 "${COMPONENT}" "${COMPONENT}Setup.exe"
  
       ${if} $R0 != "OK"
         ;Download failed
