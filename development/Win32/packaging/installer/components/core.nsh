@@ -54,7 +54,7 @@ Section -Core SecCore
   SetOutPath "$INSTDIR\python"
   !insertmacro FileListPythonBin File "${FILES_PYTHON}\"
   SetOutPath "$INSTDIR\python"
-  !insertmacro FileListPythonDll File "${FILES_WINDOWS}\System32\"
+  !insertmacro FileListPythonDll File "$%SystemRoot%\System32\"
   !insertmacro FileListUnicodeDll File "${FILES_PYTHON}\DLLs\"
   SetOutPath "$INSTDIR\python\Lib"
   !insertmacro FileListPythonLib File "${FILES_PYTHON}\Lib\"
