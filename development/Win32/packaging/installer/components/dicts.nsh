@@ -106,18 +106,10 @@ Function DownloadDictionary
 
   dict_download:
 
-    #Download
-    InetLoad::load "${DOWNLOAD_ASPELLDICTS}/aspell6-$R0.exe" "$PLUGINSDIR\aspell6-$R0.exe" /END
-    Pop $R3
+    !insertmacro DownloadFile $R3 ASPELLDICTS aspell6-$R0.exe
 
     ${if} $R3 != "OK"
-      #Download failed, try an alternative link
-      InetLoad::load "${ALT_DOWNLOAD_ASPELLDICTS}/aspell6-$R0.exe" "$PLUGINSDIR\aspell6-$R0.exe" /END
-      Pop $R3
-    ${endif}
-
-    ${if} $R3 != "OK"
-      #Download failed again
+      #Download failed
       MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_DICT) ($R3)" IDYES dict_download
       Goto dict_noinstall
     ${endif}

@@ -29,36 +29,47 @@ Settings for LyX installer
 
 #--------------------------------
 #Locations of components to download
-!define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.5.2580.exe"
-!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.3.3-7-Q16-windows-dll.exe"
-!define DOWNLOAD_GHOSTSCRIPT "http://superb-west.dl.sourceforge.net/sourceforge/ghostscript/gs854w32-gpl.exe"
+
+!define MIRROR_SF1 "http://superb-west.dl.sourceforge.net/sourceforge"
+!define MIRROR_SF2 "http://mesh.dl.sourceforge.net/sourceforge"
+
+!macro SourceForgeMirror ID FILENAME
+  !define DOWNLOAD_${ID} "${MIRROR_SF1}/${FILENAME}"
+  !define DOWNLOADALT_${ID} "${MIRROR_SF2}/${FILENAME}"
+!macroend
+
+!insertmacro SourceForgeMirror LATEX "miktex/basic-miktex-2.6.2704.exe"
+!insertmacro SourceForgeMirror IMAGEMAGICK "imagemagick/ImageMagick-6.3.4-10-Q16-windows-dll.exe"
+!insertmacro SourceForgeMirror GHOSTSCRIPT "ghostscript/gs857w32.exe"
+
 !define DOWNLOAD_VIEWER "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/ghostgum/gsv48w32.exe"
+!define DOWNLOADALT_VIEWER "http://ctan.basemirror.de/nonfree/support/ghostscript/ghostgum/gsv48w32.exe"
 
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
-!define ALT_DOWNLOAD_ASPELLDICTS "http://www.lyx.org/~bpeng/aspell6-windows"
+!define DOWNLOADALT_ASPELLDICTS "http://www.lyx.org/~bpeng/aspell6-windows"
 
 #--------------------------------
 #Download size (in KB)
 
-!define SIZE_DOWNLOAD_LATEX 47271
-!define SIZE_DOWNLOAD_IMAGEMAGICK 6947
-!define SIZE_DOWNLOAD_GHOSTSCRIPT 12669
+!define SIZE_DOWNLOAD_LATEX 53759
+!define SIZE_DOWNLOAD_IMAGEMAGICK 7111
+!define SIZE_DOWNLOAD_GHOSTSCRIPT 11916
 !define SIZE_DOWNLOAD_VIEWER 1459
 
 #--------------------------------
 #Approximations of space required for components (in KB)
 
 !define SIZE_LATEX 120000
-!define SIZE_IMAGEMAGICK 17000
-!define SIZE_GHOSTSCRIPT 26000
+!define SIZE_IMAGEMAGICK 18000
+!define SIZE_GHOSTSCRIPT 30000
 !define SIZE_VIEWER 4000
 
 #--------------------------------
 #Locations of setup files for components (for bundled setup)
 
-!define INSTALL_LATEX "basic-miktex-2.5.2580.exe"
-!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.3-7-Q16-windows-dll.exe"
-!define INSTALL_GHOSTSCRIPT "gs854w32-gpl.exe"
+!define INSTALL_LATEX "basic-miktex-2.6.2704.exe"
+!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.4-8-Q16-windows-dll.exe"
+!define INSTALL_GHOSTSCRIPT "gs857w32.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 
 #--------------------------------
@@ -71,7 +82,7 @@ Settings for LyX installer
 !define APP_SERIES_KEY "15"
 !define APP_DIR_USERDATA "LyX1.5.x"
 !define APP_INFO "${APP_NAME} - The Document Processor"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2006 LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2007 LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
 
