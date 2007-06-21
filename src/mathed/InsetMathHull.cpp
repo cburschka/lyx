@@ -182,7 +182,7 @@ InsetMathHull::InsetMathHull(HullType type)
 InsetMathHull::InsetMathHull(InsetMathHull const & other)
 	: InsetMathGrid(other),
 	  type_(other.type_), nonum_(other.nonum_), label_(other.label_),
-	  preview_(new RenderPreview(this))
+	  preview_(new RenderPreview(*other.preview_, this))
 {}
 
 
