@@ -1351,7 +1351,7 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 	bool badcursor = false;
 	bool leftinset = (&cursor_.inset() != &cur.inset());
 	if (leftinset)
-		badcursor = cursor_.inset().notifyCursorLeaves(cursor_);
+		badcursor = notifyCursorLeaves(cursor_, cur);
 
 	// do the dEPM magic if needed
 	// FIXME: (1) move this to InsetText::notifyCursorLeaves?
