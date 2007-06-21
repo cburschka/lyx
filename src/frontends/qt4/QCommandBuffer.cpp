@@ -66,8 +66,11 @@ protected:
 		if (ev->key() == Qt::Key_Escape) {
 			hide();
 			return;
-		}
-		QListWidget::keyPressEvent(ev);
+		} else if (ev->key() == Qt::Key_Return || ev->key() == Qt::Key_Space) {
+			// emit signal
+			itemPressed(currentItem());
+		} else
+			QListWidget::keyPressEvent(ev);
 	}
 };
 
@@ -185,6 +188,7 @@ void QCommandBuffer::complete_selected(QListWidgetItem * item)
 	QWidget const * widget = static_cast<QWidget const *>(sender());
 	const_cast<QWidget *>(widget)->hide();
 	edit_->setText(item->text() + ' ');
+	edit_->activateWindow();
 	edit_->setFocus();
 }
 
