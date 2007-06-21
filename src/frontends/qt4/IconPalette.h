@@ -17,40 +17,32 @@
 #include <QLayout>
 #include "Action.h"
 
-// FIXME: this can go when we move to Qt 4.3
-#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
-
-#if QT_VERSION >= QT_VERSION_CHECK(4, 2, 0)
-#include <QWidgetAction>
-#endif
 
 namespace lyx {
 namespace frontend {
 
 /**
- * For holding an arbitrary set of icons.
- */
-#if QT_VERSION >= QT_VERSION_CHECK(4, 2, 0)
-
-class IconPalette : public QWidgetAction {
+  * tear-off widget
+  */
+class TearOff : public QWidget {
 	Q_OBJECT
 public:
-	IconPalette(QWidget * parent);
-	void addButton(QAction *);
-	QWidget * createWidget(QWidget * parent);
-public Q_SLOTS:
-	void updateParent();
-	void setIconSize(const QSize &);
+	TearOff(QWidget * parent);
+	void enterEvent(QEvent *);
+	void leaveEvent(QEvent *);
+	void mouseReleaseEvent (QMouseEvent *);
 Q_SIGNALS:
-	void enabled(bool);
-	void iconSizeChanged(const QSize &);
+	void tearOff();
+protected:
+	void paintEvent(QPaintEvent *);
 private:
-	QList<QAction *> actions_;
-	QSize size_;
+	bool highlighted_;
 };
 
-#else
 
+/**
+ * For holding an arbitrary set of icons.
+ */
 class IconPalette : public QWidget {
 	Q_OBJECT
 public:
@@ -70,14 +62,16 @@ protected:
 	void paintEvent(QPaintEvent * event);
 
 private Q_SLOTS:
+	void tearOff();
 	virtual void clicked(QAction *);
 
 private:
 	QGridLayout * layout_;
 	QList<QAction *> actions_;
+	bool tornoff_;
+	TearOff * tearoffwidget_; 
 };
 
-#endif // QT_VERSION >= QT_VERSION_CHECK(4, 2, 0)
 
 /**
  * Popup menu for a toolbutton.

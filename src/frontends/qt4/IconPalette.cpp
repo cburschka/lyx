@@ -25,99 +25,84 @@
 #include <QStyle>
 #include <QStyleOptionFrame>
 #include <QMouseEvent>
+#include <QVBoxLayout>
 
 namespace lyx {
 namespace frontend {
 
-#if QT_VERSION >= 0x040200
-
-
-class MathButton : public QToolButton
+TearOff::TearOff(QWidget * parent) 
+	: QWidget(parent)
 {
-public:
-	MathButton(QWidget * parent = 0) {}
-	void mouseReleaseEvent(QMouseEvent *event); 
-	void mousePressEvent(QMouseEvent *event); 
-};
+	highlighted_ = false;
+	// + 2 because the default is a bit tight, see also:
+	// http://trolltech.com/developer/task-tracker/index_html?id=167954&method=entry
+	setMinimumHeight(style()->pixelMetric(QStyle::PM_MenuTearoffHeight) + 2);
+	setToolTip(qt_("Click to detach"));
+	// trigger tooltip (children of popups do not receive mousemove events)
+	setMouseTracking(true);
+}
 
 
-void MathButton::mouseReleaseEvent(QMouseEvent *event)
+void TearOff::mouseReleaseEvent(QMouseEvent * event)
 {
-	QToolButton::mouseReleaseEvent(event);
+	// signal
+	tearOff();
+}
+
+
+void TearOff::enterEvent(QEvent * event)
+{
+	highlighted_ = true;
+	update();
 	event->ignore();
 }
 
 
-void MathButton::mousePressEvent(QMouseEvent *event)
+void TearOff::leaveEvent(QEvent * event)
 {
-	QToolButton::mousePressEvent(event);
+	highlighted_ = false;
+	update();
 	event->ignore();
 }
 
 
-IconPalette::IconPalette(QWidget * parent)
-	: QWidgetAction(parent), size_(QSize(22, 22))
+void TearOff::paintEvent(QPaintEvent * event)
 {
+	QPainter p(this);
+	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
+	QStyleOptionMenuItem menuOpt;
+	menuOpt.initFrom(this);
+	menuOpt.palette = palette();
+	menuOpt.state = QStyle::State_None;
+	menuOpt.checkType = QStyleOptionMenuItem::NotCheckable;
+	menuOpt.menuRect = rect();
+	menuOpt.maxIconWidth = 0;
+	menuOpt.tabWidth = 0;
+	menuOpt.menuItemType = QStyleOptionMenuItem::TearOff;
+	menuOpt.rect.setRect(fw, fw, width() - (fw * 2),
+		style()->pixelMetric(QStyle::PM_MenuTearoffHeight, 0, this));
+	p.setClipRect(menuOpt.rect);
+	menuOpt.state = QStyle::State_None;
+	if (highlighted_)
+		menuOpt.state |= QStyle::State_Selected;
+	style()->drawControl(QStyle::CE_MenuTearoff, &menuOpt, &p, this);
 }
 
-
-void IconPalette::addButton(QAction * action)
-{
-	actions_.push_back(action);
-}
-
-
-QWidget * IconPalette::createWidget(QWidget * parent)
-{
-	QWidget * widget = new QWidget(parent);
-	QGridLayout * layout = new QGridLayout(widget);
-	layout->setSpacing(0);
-
-	for (int i = 0; i < actions_.size(); ++i) {
-		MathButton * tb = new MathButton(widget);
-		tb->setAutoRaise(true);
-		tb->setDefaultAction(actions_.at(i));
-		tb->setIconSize(size_);
-		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
-			tb, SLOT(setIconSize(const QSize &)));
-	
-		int const row = i/qMin(6, i + 1) + 1;
-		int const col = qMax(1, i + 1 - (row - 1) * 6);
-		layout->addWidget(tb, row, col);
-	}
-
-	return widget;
-}
-
-
-void IconPalette::setIconSize(const QSize & size)
-{
-	size_ = size;
-	// signal
-	iconSizeChanged(size);
-}
-
-
-void IconPalette::updateParent()
-{
-	bool enable = false;
-	for (int i = 0; i < actions_.size(); ++i)
-		if (actions_.at(i)->isEnabled()) {
-			enable = true;
-			break;
-		}
-	// signal
-	enabled(enable);
-}
-
-#else  // QT_VERSION >= 0x040200
 
 IconPalette::IconPalette(QWidget * parent)
-	: QWidget(parent, Qt::Popup)
+	: QWidget(parent, Qt::Popup), tornoff_(false)
 {
-	layout_ = new QGridLayout(this);
+	QVBoxLayout * v = new QVBoxLayout(this);
+	v->setMargin(0);
+	v->setSpacing(0);
+	layout_ = new QGridLayout;
 	layout_->setSpacing(0);
-	layout_->setMargin(3);
+	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
+	layout_->setMargin(fw);
+	tearoffwidget_ = new TearOff(this);
+	connect(tearoffwidget_, SIGNAL(tearOff()), this, SLOT(tearOff()));
+	v->addWidget(tearoffwidget_);
+	v->addLayout(layout_);
 }
 
 
@@ -127,6 +112,9 @@ void IconPalette::addButton(QAction * action)
 	QToolButton * tb = new QToolButton;
 	tb->setAutoRaise(true);
 	tb->setDefaultAction(action);
+	// trigger tooltip (children of popups do not receive mousemove events)
+	tb->setMouseTracking(true);
+
 	connect(tb, SIGNAL(triggered(QAction *)),
 		this, SLOT(clicked(QAction *)));
 	QToolBar * toolbar = qobject_cast<QToolBar *>(parentWidget()->parentWidget());
@@ -141,15 +129,31 @@ void IconPalette::addButton(QAction * action)
 }
 
 
+void IconPalette::tearOff()
+{
+	blockSignals(true);
+	hide();
+	setWindowFlags(Qt::Tool);
+	tornoff_ = true;
+	tearoffwidget_->setVisible(!tornoff_);
+	show();
+	blockSignals(false);
+}
+
+
 void IconPalette::clicked(QAction * action)
 {
 	triggered(action);
-	setVisible(false);
+	if (!tornoff_)
+		setVisible(false);
 }
 
 
 void IconPalette::showEvent(QShowEvent * event)
 {
+	resize(sizeHint());
+	setMaximumSize(sizeHint());
+
 	int hoffset = - parentWidget()->pos().x();
 	int voffset = - parentWidget()->pos().y();
 	int const parwidth = parentWidget()->geometry().width();
@@ -183,15 +187,21 @@ void IconPalette::showEvent(QShowEvent * event)
 			voffset += parheight;
 	}
 
-	move(gpos.x() + hoffset, gpos.y() + voffset);
-	QWidget::showEvent(event);
+	QRect r = rect();
+	r.moveTo(gpos.x() + hoffset, gpos.y() + voffset);
+	setGeometry(r);	
 }
 
 
 void IconPalette::hideEvent(QHideEvent * event )
 {
-	visible(false);
 	QWidget::hideEvent(event);
+	visible(false);
+	if (tornoff_) {
+		setWindowFlags(Qt::Popup);
+		tornoff_ = false;
+		tearoffwidget_->setVisible(!tornoff_);
+	}
 }
 
 
@@ -211,17 +221,15 @@ void IconPalette::updateParent()
 void IconPalette::paintEvent(QPaintEvent * event)
 {
 	// draw border
-	QPainter p(this);
-	QRegion emptyArea = QRegion(rect());
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
-	if (fw) {
+	if (fw && !tornoff_) {
+		QPainter p(this);
 		QRegion borderReg;
 		borderReg += QRect(0, 0, fw, height()); //left
-		borderReg += QRect(width()-fw, 0, fw, height()); //right
+		borderReg += QRect(width() - fw, 0, fw, height()); //right
 		borderReg += QRect(0, 0, width(), fw); //top
-		borderReg += QRect(0, height()-fw, width(), fw); //bottom
+		borderReg += QRect(0, height() - fw, width(), fw); //bottom
 		p.setClipRegion(borderReg);
-		emptyArea -= borderReg;
 		QStyleOptionFrame frame;
 		frame.rect = rect();
 		frame.palette = palette();
@@ -230,11 +238,7 @@ void IconPalette::paintEvent(QPaintEvent * event)
 		frame.midLineWidth = 0;
 		style()->drawPrimitive(QStyle::PE_FrameMenu, &frame, &p, this);
 	}
-	p.end();
-	// draw the rest (buttons)
-	QWidget::paintEvent(event);
 }
-#endif // QT_VERSION >= 0x040200
 
 
 ButtonMenu::ButtonMenu(const QString & title, QWidget * parent)
