@@ -1561,6 +1561,7 @@ lib_images_files = Split('''
     changes-merge.xpm
     changes-output.xpm
     changes-track.xpm
+    closetab.xpm
     copy.xpm
     cut.xpm
     demote.xpm
