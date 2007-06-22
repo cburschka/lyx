@@ -761,14 +761,20 @@ varoint            wasy         117    0  mathop  x
 # It is important that they have the same requirements in both cases,
 # otherwise the LaTeX output would depend on the availability of the esint10
 # font in the GUI
+# Note that we do _not_ require the wasysym package for any integral besides
+# \varint and \varoint. The reason is that the integrals of the wasysym
+# package do not match the standard \int and \intop. See
+# http://bugzilla.lyx.org/show_bug.cgi?id=1942 for details.
+# If the wasysym integrals are really wanted then one has to load the package
+# manually and disable automatic loading of amsmath and esint.
 iffont esint
 int                esint        001    0  mathop  &int;  esint
 intop              esint        001    0  mathop  &int;  esint
-iint               esint        003    0  mathop  x      esint
+iint               esint        003    0  mathop  x      esintoramsmath
 iintop             esint        003    0  mathop  x      esint
-iiint              esint        005    0  mathop  x      esint
+iiint              esint        005    0  mathop  x      esintoramsmath
 iiintop            esint        005    0  mathop  x      esint
-iiiint             esint        007    0  mathop  x      esint
+iiiint             esint        007    0  mathop  x      esintoramsmath
 iiiintop           esint        007    0  mathop  x      esint
 dotsint            esint        009    0  mathop  x      esint
 dotsintop          esint        009    0  mathop  x      esint
@@ -787,11 +793,11 @@ ointclockwiseop    esint        025    0  mathop  x      esint
 else
 int                cmex          82  242  mathop  &int;  esint
 intop              cmex          82  242  mathop  &int;  esint
-iint               wasy         115    0  mathop  x      esint
+iint               wasy         115    0  mathop  x      esintoramsmath
 iintop             wasy         115    0  mathop  x      esint
-iiint              wasy         116    0  mathop  x      esint
+iiint              wasy         116    0  mathop  x      esintoramsmath
 iiintop            wasy         116    0  mathop  x      esint
-\def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint
+\def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esintoramsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
 \def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
@@ -924,4 +930,5 @@ textdegree         lyxsymbol             176 0 mathord  x
 endif
 
 #"{\hat{}}
+
 

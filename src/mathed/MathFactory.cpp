@@ -175,11 +175,12 @@ void initSymbols()
 			// create fallbacks if necessary
 
 			// store requirements as long as we can
-			if (tmp.requires.empty() &&
-			    (tmp.inset == "msa" || tmp.inset == "msb"))
-				tmp.requires = from_ascii("amssymb");
-			else if (tmp.inset == "wasy")
-				tmp.requires = from_ascii("wasysym");
+			if (tmp.requires.empty()) {
+				if (tmp.inset == "msa" || tmp.inset == "msb")
+					tmp.requires = from_ascii("amssymb");
+				else if (tmp.inset == "wasy")
+					tmp.requires = from_ascii("wasysym");
+			}
 
 			// symbol font is not available sometimes
 			docstring symbol_font = from_ascii("lyxsymbol");

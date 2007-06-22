@@ -445,8 +445,11 @@ string const LaTeXFeatures::getPackages() const
 	// than those above.
 	//
 
-	if (mustProvide("amsmath")
-	    && params_.use_amsmath != BufferParams::package_off) {
+	// esint is preferred for esintoramsmath
+	if ((mustProvide("amsmath") &&
+	     params_.use_amsmath != BufferParams::package_off) ||
+	    (mustProvide("esintoramsmath") &&
+	     params_.use_esint == BufferParams::package_off)) {
 		packages << "\\usepackage{amsmath}\n";
 	}
 
@@ -539,8 +542,8 @@ string const LaTeXFeatures::getPackages() const
 
 	// esint must be after amsmath and wasysym, since it will redeclare
 	// inconsistent integral symbols
-	if (mustProvide("esint")
-	    && params_.use_esint != BufferParams::package_off)
+	if ((mustProvide("esint") || mustProvide("esintoramsmath")) &&
+	    params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
 
 	// url.sty
