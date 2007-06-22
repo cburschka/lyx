@@ -892,8 +892,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (fontsDefaultFamily != "default")
 		os << "\\renewcommand{\\familydefault}{\\"
 		   << from_ascii(fontsDefaultFamily) << "}\n";
+
+	// set font encoding
 	// this one is not per buffer
-	if (lyxrc.fontenc != "default") {
+	// for Farsi we also need to load the LAE and LFE encoding
+	if (lyxrc.fontenc != "default" && language->lang() == "farsi") {
+		os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
+		   << ",LFE,LAE]{fontenc}\n";
+		texrow.newline();
+	} else {
 		os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
 		   << "]{fontenc}\n";
 		texrow.newline();
@@ -1144,7 +1151,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(features.getBabelOptions());
 	}
 
-	lyxpreamble += "\\makeatother\n";
+	lyxpreamble += "\\makeatother\n\n";
 
 	int const nlines =
 		int(lyx::count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));

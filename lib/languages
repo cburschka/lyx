@@ -25,7 +25,8 @@ english     english	"English"	false  iso8859-15 en_US	 ""
 # Esperanto has no country code
 esperanto   esperanto	"Esperanto"	false  iso8859-3  eo	 ""
 estonian    estonian	"Estonian"	false  iso8859-15 et_EE	 ""
-farsi       farsi	"Farsi"		true   utf8       fa_IR	 ""
+# the definitions are only used due to bugs in the arabi-package - remove them if they become unnecessary!
+farsi       farsi	"Farsi"		true   utf8       fa_IR	 "\DeclareTextSymbol{\guillemotright}{LFE}{62}\DeclareTextSymbol{\guillemotleft}{LFE}{60}"
 finnish     finnish	"Finnish"	false  iso8859-15 fi_FI	 ""
 # We redefine \og and \fg (guillemets) for older french language definitions
 french      french 	"French"	false  iso8859-15 fr_FR	 "\addto\extrasfrench{\providecommand{\og}{\leavevmode\flqq~}\providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}}"
