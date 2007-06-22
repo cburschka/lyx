@@ -6,6 +6,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\languages"
+ File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\layouts"
@@ -38,6 +40,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\hu\example_raw.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\closetab.xpm"
+ SetOutPath "$INSTDIR\Resources\kbd"
+ File "${PRODUCT_SOURCEDIR}\Resources\kbd\farsi.kmap"
  SetOutPath "$INSTDIR\Resources\images\math"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\functions.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\varrho.xpm"
