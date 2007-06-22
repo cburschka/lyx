@@ -973,7 +973,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		docstring hexstring = cmd.argument();
 		if (lyx::support::isHex(hexstring)) {
 			char_type c = lyx::support::hexToInt(hexstring);
-			if (c > 32 && c < 0x10ffff) {
+			if (c >= 32 && c < 0x10ffff) {
 				lyxerr << "Inserting c: " << c << endl;
 				docstring s = docstring(1, c);
 				lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, s));
