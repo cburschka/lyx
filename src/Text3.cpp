@@ -947,7 +947,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		if (change_layout) {
-			current_layout = layout;
 			setLayout(cur, layout);
 			// inform the GUI that the layout has changed.
 			bv->layoutChanged(layout);
