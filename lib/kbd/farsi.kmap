@@ -1,0 +1,75 @@
+#
+# Farsi keyboard definition for LyX
+#
+
+\kmap q ض
+\kmap w ص
+\kmap e ث
+\kmap r ق
+\kmap t ف
+\kmap y غ
+\kmap u ع
+\kmap i ه
+\kmap o خ
+\kmap p ح
+\kmap a ش
+\kmap s س
+\kmap d ی
+\kmap f ب
+\kmap g ل
+\kmap h ا
+\kmap j ت
+\kmap k ن
+\kmap l م
+\kmap z ظ
+\kmap x ط
+\kmap c ز
+\kmap v ر
+\kmap b ذ
+\kmap n د
+\kmap m پ
+\kmap ; ک
+\kmap ' گ
+\kmap "," و
+\kmap ` ‍
+\kmap [ ج
+\kmap ] چ
+
+# shifted keyboard
+
+\kmap Q ْ
+\kmap W ٌ
+\kmap E ٍ
+\kmap R ً
+\kmap T ُ
+\kmap Y ِ
+\kmap U َ
+\kmap I ّ
+\kmap O ]
+\kmap P [
+\kmap A ؤ
+\kmap S ئ
+\kmap D ي
+\kmap F إ
+\kmap G أ
+\kmap H آ
+\kmap J ة
+\kmap K »
+\kmap L «
+\kmap Z ك
+\kmap X ٓ
+\kmap C ژ
+\kmap V ٰ
+\kmap B ‌
+\kmap N ٔ
+\kmap M ء
+\kmap ? ؟
+\kmap @ ٬
+\kmap \# ٫
+\kmap $ ﷼
+\kmap & ،
+\kmap _ ـ
+#we can not map double quote to a letter in LyX.
+#we have to choose something else for the arabic semicolon.
+#\kmap \" ؛
+\kmap *  ؛

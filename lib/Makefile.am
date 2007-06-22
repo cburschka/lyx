@@ -862,6 +862,7 @@ dist_kbd_DATA = \
 	kbd/czech-prg.kmap \
 	kbd/czech.kmap \
 	kbd/european.kmap \
+	kbd/farsi.kmap \
 	kbd/francais.kmap \
 	kbd/french.kmap \
 	kbd/german-2.kmap \

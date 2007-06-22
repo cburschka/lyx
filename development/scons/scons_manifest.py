@@ -1448,6 +1448,7 @@ lib_kbd_files = Split('''
     czech.kmap
     espanol.kmap
     european.kmap
+    farsi.kmap
     francais.kmap
     french.kmap
     german-2.kmap
