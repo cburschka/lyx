@@ -628,6 +628,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), cur.buffer().params().textclass, cutstack);
+		dirtyTabularStack(false);
 	}
 
 	if (cur.inMathed()) {
