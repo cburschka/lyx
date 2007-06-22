@@ -50,7 +50,7 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()), form_, SLOT(slotRestore()));
-	connect(alignDefaultCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(alignDefaultRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(alignLeftRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(alignRightRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -77,10 +77,17 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 		" items is used."
 	));
 
-	radioMap[LYX_ALIGN_BLOCK] = alignJustRB;
-	radioMap[LYX_ALIGN_LEFT] = alignLeftRB;
-	radioMap[LYX_ALIGN_RIGHT] = alignRightRB;
+	radioMap[LYX_ALIGN_LAYOUT] = alignDefaultRB;
+	radioMap[LYX_ALIGN_BLOCK]  = alignJustRB;
+	radioMap[LYX_ALIGN_LEFT]   = alignLeftRB;
+	radioMap[LYX_ALIGN_RIGHT]  = alignRightRB;
 	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
+	
+/*	labelMap[LYX_ALIGN_LAYOUT] = "Default";
+	labelMap[LYX_ALIGN_BLOCK]  = "Justified";
+	labelMap[LYX_ALIGN_LEFT]   = "Left";
+	labelMap[LYX_ALIGN_RIGHT]  = "Right";
+	labelMap[LYX_ALIGN_CENTER] = "Center"; */
 }
 
 
@@ -105,35 +112,37 @@ void QParagraphDialog::enableLinespacingValue(int)
 
 
 void QParagraphDialog::checkAlignmentRadioButtons() {
-	if (alignDefaultCB->isChecked()) {
-		QPRadioMap::const_iterator it = radioMap.begin();
-		for (; it != radioMap.end(); ++it)
-			it->second->setDisabled(true);
-	} else {
-		LyXAlignment alignPossible = form_->controller().alignPossible();
-		QPRadioMap::const_iterator it = radioMap.begin();
-		for (; it != radioMap.end(); ++it)
-			it->second->setEnabled(it->first & alignPossible);
+	LyXAlignment const alignPossible = form_->controller().alignPossible();
+	//LyXAlignment const defaultAlignment = form_->controller().alignDefault();
+	QPRadioMap::iterator it = radioMap.begin();
+	for (; it != radioMap.end(); ++it) {
+		LyXAlignment const align = it->first;
+		it->second->setEnabled((align & alignPossible) ||
+		                       (align == LYX_ALIGN_LAYOUT));
+/*		string label = labelMap[align];
+		if (align == LYX_ALIGN_LAYOUT)
+			label += "()" + labelMap[defaultAlignment] + ")";
+		it->second->setText(qt_(label));*/
 	}
-}
-
-
-void QParagraphDialog::on_alignDefaultCB_toggled(bool)
-{
-	checkAlignmentRadioButtons();
-	alignmentToRadioButtons();
 }
 
 
 void QParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
 {
-	if (align == LYX_ALIGN_LAYOUT)
-		align = form_->controller().alignDefault();
+	LyXAlignment const defaultAlignment = form_->controller().alignDefault();
+	if (align == LYX_ALIGN_LAYOUT || align == defaultAlignment) {
+		alignDefaultRB->blockSignals(true);
+		alignDefaultRB->setChecked(true);
+		alignDefaultRB->blockSignals(false);
+		return;
+	}
 
 	QPRadioMap::const_iterator it = radioMap.begin();
 	for (;it != radioMap.end(); ++it) {
 		if (align == it->first) {
+			it->second->blockSignals(true);
 			it->second->setChecked(true);
+			it->second->blockSignals(false);
 			return;
 		}
 	}
@@ -145,8 +154,6 @@ void QParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
 
 LyXAlignment QParagraphDialog::getAlignmentFromDialog()
 {
-	if (alignDefaultCB->isChecked())
-		return LYX_ALIGN_LAYOUT;
 	LyXAlignment alignment = LYX_ALIGN_NONE;
 	QPRadioMap::const_iterator it = radioMap.begin();
 	for (; it != radioMap.end(); ++it) {
@@ -155,8 +162,6 @@ LyXAlignment QParagraphDialog::getAlignmentFromDialog()
 			break;
 		}
 	}
-	if (alignment == form_->controller().alignDefault())
-		return LYX_ALIGN_LAYOUT;
 	return alignment;
 }
 
@@ -243,15 +248,8 @@ void QParagraph::update_contents()
 	}
 
 	// alignment
-	LyXAlignment newAlignment = params.align();
-	LyXAlignment defaultAlignment = controller().alignDefault();
-	bool alignmentIsDefault =
-		newAlignment == LYX_ALIGN_LAYOUT || newAlignment == defaultAlignment;
-	dialog_->alignDefaultCB->blockSignals(true);
-	dialog_->alignDefaultCB->setChecked(alignmentIsDefault);
-	dialog_->alignDefaultCB->blockSignals(false);
 	dialog_->checkAlignmentRadioButtons();
-	dialog_->alignmentToRadioButtons(newAlignment);
+	dialog_->alignmentToRadioButtons(params.align());
 
 	//indentation
 	bool const canindent = controller().canIndent();
