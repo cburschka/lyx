@@ -84,7 +84,7 @@ public:
 	///
 	void setCustomLabel(docstring const & label);
 	///
-	void addToToc(TocList &, Buffer const &, ParConstIterator &) const;
+	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 	/// Captions don't accept alignment, spacing, etc.
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 

@@ -115,7 +115,7 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator &) const
+void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
 {
 	if (type_.empty())
 		return;
