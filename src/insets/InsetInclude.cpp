@@ -882,7 +882,7 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIterator & pit) const
+void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIterator const & pit) const
 {
 	if (isListings(params_)) {
 		InsetListingsParams params(params_.getOptions());
