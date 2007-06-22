@@ -194,7 +194,6 @@ ToolbarSet
 
 	Toolbar "math_panels" "Math Panels"
 		PopupMenu "space" "Math Spacings"
-		PopupMenu "sqrt-square" "Roots"
 		PopupMenu "style" "Styles"
 		PopupMenu "frac-square" "Fractions"
 		PopupMenu "font" "Fonts"
