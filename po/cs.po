@@ -638,7 +638,7 @@ msgstr "Pou¾ít ka¾dou zmìnu automaticky"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:321
 msgid "Apply changes immediately"
-msgstr "&Okam¾itì pou¾ít zmìny"
+msgstr "Okam¾itì pou¾ít zmìny"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
 #: src/frontends/qt4/ui/GraphicsUi.ui:744
@@ -776,7 +776,7 @@ msgstr "Obnovit standardní nastavení tøídy dokumentu"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:61
 msgid "Use Class Defaults"
-msgstr "Pou¾ij standardní nastavení tøídy"
+msgstr "Pou¾ít standardní nastavení tøídy"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:76
 msgid "Save settings as LyX's default document settings"
@@ -1242,12 +1242,12 @@ msgstr "Parametry výpisu"
 #: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:519
 #: src/frontends/qt4/ui/TextLayoutUi.ui:235
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr ""
+msgstr "Pro zadání parametrù, které nejsou rozpoznávané LyX-em"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:522
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "&Bypass validation"
-msgstr ""
+msgstr "&Pøeskoèit ovìøení platnosti"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
@@ -1357,25 +1357,22 @@ msgid "The content's base font style"
 msgstr "Základní rodina písma"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:128
-#, fuzzy
 msgid "Font Famil&y:"
-msgstr "Rodina písma"
+msgstr "&Rodina písma:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:144
 msgid "Use extended character table"
-msgstr "Pou¾ij roz¹íøenou tabulku znakù"
+msgstr "Pou¾ít roz¹íøenou tabulku znakù"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:147
-#, fuzzy
 msgid "&Extended character table"
-msgstr "Pou¾ij roz¹íøenou tabulku znakù"
+msgstr "&Roz¹íøená tabulka znakù"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:157
 msgid "Make spaces in strings visible by a special symbol"
 msgstr "Zobraz mezery v øetìzcích speciálním symbolem"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:160
-#, fuzzy
 msgid "Space i&n string as symbol"
 msgstr "&Mezera v øetìzci jako symbol"
 
@@ -1384,7 +1381,6 @@ msgid "Make spaces visible by a special symbol"
 msgstr "Zobraz mezery speciálním symbolem"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:173
-#, fuzzy
 msgid "S&pace as symbol"
 msgstr "M&ezera jako symbol"
 
@@ -1426,7 +1422,7 @@ msgstr "&Umístìní:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:254
 msgid "Line numbering"
-msgstr "Èí&slování øádek"
+msgstr "Èíslování øádek"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:266
 msgid "On which side should line numbers be printed?"
@@ -1438,7 +1434,7 @@ msgstr "Vybrat velikost písma pro èísla øádek"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:312
 msgid "Font si&ze:"
-msgstr "Velikos&t písma"
+msgstr "Velikos&t písma:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:328
 msgid "S&tep:"
@@ -1449,9 +1445,8 @@ msgid "Difference between two numbered lines"
 msgstr "Velikost kroku v èíslování øádek"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:357
-#, fuzzy
 msgid "&Side:"
-msgstr "Str&ana: "
+msgstr "Str&ana:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Select the dialect of the programming language, if available"
@@ -1462,9 +1457,8 @@ msgid "&Dialect:"
 msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:399
-#, fuzzy
 msgid "Lan&guage:"
-msgstr "Language:"
+msgstr "&Jazyk:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:409
 msgid "Select the programming language"
@@ -1476,7 +1470,7 @@ msgstr "Rozmezí"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:431
 msgid "&Last line:"
-msgstr "Po&slední øádek"
+msgstr "Po&slední øádek:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "The last line to be printed"
@@ -1488,21 +1482,19 @@ msgstr "První øádek výpisu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:470
 msgid "Fi&rst line:"
-msgstr "Pr&vní øádek"
+msgstr "Pr&vní øádek:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:487
 msgid "Ad&vanced"
 msgstr "Roz¹íøené vol&by"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:507
-#, fuzzy
 msgid "More Parameters"
-msgstr "&Dal¹í parametry"
+msgstr "Dal¹í parametry"
 
-# TODO
 #: src/frontends/qt4/ui/ListingsUi.ui:545
 msgid "Feedback window"
-msgstr ""
+msgstr "Okno pro odezvu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:570
 msgid "Input listing parameters here. Enter ? for a list of parameters."
@@ -2094,7 +2086,7 @@ msgstr "Napojení na Ly&XServer(pipe):"
 #: src/frontends/qt4/ui/PrefPathsUi.ui:77
 #: src/frontends/qt4/ui/PrefPathsUi.ui:123
 msgid "Browse..."
-msgstr "P&rocházet..."
+msgstr "Procházet..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:87
 msgid "&PATH prefix:"
@@ -2139,85 +2131,75 @@ msgid "External app for formating tables in plain text output"
 msgstr "Externí apl. pro formátování tabulek v plain-text výstupu"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:25
-#, fuzzy
 msgid "Printer Command Options"
-msgstr "Nastavení pøíkazu"
+msgstr "Nastavení pøíkazù pro tiskárnu"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:66
 msgid "Extension to be used when printing to file."
-msgstr ""
+msgstr "Roz¹íøení, které má být pou¾ito, kdy¾ se tiskne do souboru"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "File ex&tension:"
 msgstr "Pøípona &souboru:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:82
-#, fuzzy
 msgid "Option used to print to a file."
-msgstr "Volba pro tiskový program, je¾ nastavuje tisk do souboru."
+msgstr "Nastavení pou¾itá pro tisk do souboru."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-#, fuzzy
 msgid "Print to &file:"
-msgstr "Tisk do souboru"
+msgstr "Tisk do &souboru:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:95
-#, fuzzy
 msgid "Option used to print to non-default printer."
-msgstr "Volba pro tiskový program, je¾ nastavuje urèitou tiskárnu."
+msgstr "Volba pro tisk na tiskárnu, je¾ není nastavena implicitnì."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
-#, fuzzy
 msgid "Set p&rinter:"
-msgstr "N&a tiskárnu:"
+msgstr "Nastavit &tiskárnu:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:111
 msgid "Option used with spool command to set printer."
-msgstr ""
+msgstr "Volba pou¾itá spool-em k nastavení tiskátny."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
-#, fuzzy
 msgid "Spool pr&inter:"
-msgstr "Pref&ix pro spool:"
+msgstr "&Spool pro tiskárnu:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:127
 msgid ""
 "Setting causes printer command to print to file and then use this actually "
 "to print."
 msgstr ""
+"Zpùsobí tisk do souboru a tento pak ke skuteènému tisku."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:133
 msgid "Spool &command:"
 msgstr "Pøíka&z do spool-u:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:150
-#, fuzzy
 msgid "Option used to reverse page order."
-msgstr "Tisknout v opaèném poøadí"
+msgstr "Volba pro nastavení tisku v opaèném poøadí"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
-#, fuzzy
 msgid "Re&verse pages:"
-msgstr "Pøev&rácení:"
+msgstr "Pøev&rátit stránky:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Lan&dscape:"
 msgstr "Na ¹íø&ku:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:179
-#, fuzzy
 msgid "Number of Co&pies:"
-msgstr "Poèet kopií"
+msgstr "Poèet kopií:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:189
-#, fuzzy
 msgid "Option used to set number of copies."
 msgstr "Volba urèující poèet kopií pro tisk."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
-#, fuzzy
 msgid "Option used to print a range of pages."
-msgstr "Volba pro tisk pouze lichých stran."
+msgstr "Volba urèující tisk rozsahu stran."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:203
 msgid "Co&llated:"
@@ -2229,7 +2211,7 @@ msgstr "&Rozsah stran:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:223
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "Volba urèující srovnání kopií za sebou."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:230
 msgid "&Odd pages:"
@@ -2249,16 +2231,15 @@ msgstr "&Velikost papíru:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "Libovolné dal¹í volby pro pøíkaz k tisku."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
 msgstr "Nastavení naví&c:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:308
-#, fuzzy
 msgid "Customizes output to a given printer. Expert option."
-msgstr "Poslat výstup na zadanou tiskárnu"
+msgstr "Pøizpùsobí výstup na danou tiskárnu. Pokroèilé nastavení."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid ""
@@ -2266,16 +2247,17 @@ msgid ""
 "printer command and you have config.<printer> files installed for all your "
 "printers."
 msgstr ""
+"Toto musí být obvykle kontrolováno pouze v pøípadì, ¾e pou¾íváte dvips jako¾to "
+"vá¹ pøíkaz k tisku a máte soubory typu config.<tiskárna> nainstalovány pro v¹echny "
+"va¹e tiskárny."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:314
-#, fuzzy
 msgid "Adapt output to printer"
-msgstr "Poslat výstup na tiskárnu"
+msgstr "Pøizpùsobit výstup na tiskárnu"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:329
-#, fuzzy
 msgid "Default &printer:"
-msgstr "&Standarní velikost papíru:"
+msgstr "&Standarní tiskárna:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:339
 msgid "Name of the default printer"
@@ -2746,7 +2728,7 @@ msgstr "&Vícesloupcová"
 
 #: src/frontends/qt4/ui/TabularUi.ui:212
 msgid "LaTe&X argument:"
-msgstr "Argument pro LaTeX:"
+msgstr "Argument pro LaTe&X:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:222
 msgid "Custom column format (LaTeX)"
@@ -2778,7 +2760,7 @@ msgstr "S&mazat"
 
 #: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr "Pou¾ij formální (booktabs) styl okraje (bez vertikálních okrajù)"
+msgstr "Pou¾ít formální (booktabs) styl okraje (bez vertikálních okrajù)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:316
 msgid "Fo&rmal"
@@ -2913,7 +2895,7 @@ msgstr "Pou¾ít pro tabulky rozsahem na více stran"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1033
 msgid "&Use long table"
-msgstr "Pou¾ij &dlouhou tabulku"
+msgstr "Pou¾ít &dlouhou tabulku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1052
 msgid "Current cell:"
@@ -2991,7 +2973,7 @@ msgstr "&Odsazení"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
 msgid "Spacing"
-msgstr "&Mezera:"
+msgstr "Mezera"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:149
 msgid "&Line spacing:"
@@ -4300,36 +4282,32 @@ msgid "BeginFrame"
 msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:244
-#, fuzzy
 msgid "Frame"
-msgstr "Rámovanì"
+msgstr "Frame"
 
 #: lib/layouts/beamer.layout:270
 msgid "BeginPlainFrame"
 msgstr "BeginPlainFrame"
 
 #: lib/layouts/beamer.layout:286
-#, fuzzy
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Frame (no head/foot/sidebars)__"
+msgstr "Frame (no head/foot/sidebars)"
 
 #: lib/layouts/beamer.layout:309
 msgid "AgainFrame"
 msgstr "AgainFrame"
 
 #: lib/layouts/beamer.layout:326
-#, fuzzy
 msgid "Again frame with label"
-msgstr "Again frame with label__"
+msgstr "Again frame with label"
 
 #: lib/layouts/beamer.layout:350
 msgid "EndFrame"
 msgstr "EndFrame"
 
 #: lib/layouts/beamer.layout:364
-#, fuzzy
 msgid "________________________________"
-msgstr "________________________________ "
+msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:379
 msgid "FrameSubtitle"
@@ -4340,9 +4318,8 @@ msgid "Column"
 msgstr "Column"
 
 #: lib/layouts/beamer.layout:414
-#, fuzzy
 msgid "Start column (increase depth!), width:"
-msgstr "start column (increase depth!), width: "
+msgstr "Start column (increase depth!), width:"
 
 #: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
@@ -4353,18 +4330,16 @@ msgid "ColumnsCenterAligned"
 msgstr "ColumnsCenterAligned"
 
 #: lib/layouts/beamer.layout:465
-#, fuzzy
 msgid "Columns (center aligned)"
-msgstr "columns (center aligned) "
+msgstr "Columns (center aligned)"
 
 #: lib/layouts/beamer.layout:484
 msgid "ColumnsTopAligned"
 msgstr "ColumnsTopAligned"
 
 #: lib/layouts/beamer.layout:495
-#, fuzzy
 msgid "Columns (top aligned)"
-msgstr "columns (top aligned) "
+msgstr "Columns (top aligned)"
 
 #: lib/layouts/beamer.layout:515
 msgid "Pause"
@@ -4383,54 +4358,48 @@ msgid "OverlayArea"
 msgstr "OverlayArea"
 
 #: lib/layouts/beamer.layout:577
-#, fuzzy
 msgid "Overlayarea"
-msgstr "overlayarea"
+msgstr "Overlayarea"
 
 #: lib/layouts/beamer.layout:592
 msgid "Uncover"
 msgstr "Uncover"
 
 #: lib/layouts/beamer.layout:602
-#, fuzzy
 msgid "Uncovered on slides"
-msgstr "uncovered on slides  "
+msgstr "Uncovered on slides"
 
 #: lib/layouts/beamer.layout:617
 msgid "Only"
 msgstr "Only"
 
 #: lib/layouts/beamer.layout:627
-#, fuzzy
 msgid "Only on slides"
-msgstr "only on slides_"
+msgstr "Only on slides"
 
 #: lib/layouts/beamer.layout:643
 msgid "Block"
 msgstr "Blok"
 
 #: lib/layouts/beamer.layout:653
-#, fuzzy
 msgid "Block ( ERT[{title}] body ):"
-msgstr "block ( ERT[{title}] body ): "
+msgstr "Block ( ERT[{title}] body ):"
 
 #: lib/layouts/beamer.layout:668
 msgid "ExampleBlock"
 msgstr "ExampleBlock"
 
 #: lib/layouts/beamer.layout:678
-#, fuzzy
 msgid "Block ( ERT[{title}] example text ):"
-msgstr "block ( ERT[{title}] example text ): "
+msgstr "Block ( ERT[{title}] example text ):"
 
 #: lib/layouts/beamer.layout:697
 msgid "AlertBlock"
 msgstr "AlertBlock"
 
 #: lib/layouts/beamer.layout:707
-#, fuzzy
 msgid "Block ( ERT[{title}] alert text ):"
-msgstr "block ( ERT[{title}] alert text ): "
+msgstr "Block ( ERT[{title}] alert text ):"
 
 #: lib/layouts/beamer.layout:799 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
@@ -4446,18 +4415,16 @@ msgid "Definitions"
 msgstr "Definitions"
 
 #: lib/layouts/beamer.layout:929
-#, fuzzy
 msgid "Definitions."
-msgstr "Definitions. "
+msgstr "Definitions."
 
 #: lib/layouts/beamer.layout:943
 msgid "Examples"
 msgstr "Examples"
 
 #: lib/layouts/beamer.layout:946
-#, fuzzy
 msgid "Examples."
-msgstr "Examples. "
+msgstr "Examples."
 
 #: lib/layouts/beamer.layout:959 lib/layouts/foils.layout:286
 #: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:236
@@ -5931,28 +5898,24 @@ msgid "Review"
 msgstr "Revize"
 
 #: lib/layouts/iopart.layout:79
-#, fuzzy
 msgid "Topical"
-msgstr "Topic"
+msgstr "Topical"
 
 #: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
 msgid "Comment"
 msgstr "Komentáø"
 
 #: lib/layouts/iopart.layout:97
-#, fuzzy
 msgid "Paper"
-msgstr "PaperId"
+msgstr "Paper"
 
 #: lib/layouts/iopart.layout:103
-#, fuzzy
 msgid "Prelim"
-msgstr "lim"
+msgstr "Prelim"
 
 #: lib/layouts/iopart.layout:109
-#, fuzzy
 msgid "Rapid"
-msgstr "varpi"
+msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:212 lib/layouts/revtex4.layout:230
 msgid "PACS"
@@ -5960,35 +5923,31 @@ msgstr "PACS"
 
 #: lib/layouts/iopart.layout:215
 msgid "Physics and Astronomy Classification System number:"
-msgstr ""
+msgstr "Physics and Astronomy Classification System number:"
 
 #: lib/layouts/iopart.layout:219
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:222
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
-msgstr "1991 Mathematics Subject Classification:"
+msgstr "Mathematics Subject Classification number:"
 
 #: lib/layouts/iopart.layout:226
 msgid "submitto"
-msgstr ""
+msgstr "submitto"
 
 #: lib/layouts/iopart.layout:229
 msgid "submit to paper:"
-msgstr ""
+msgstr "submit to paper:"
 
 #: lib/layouts/iopart.layout:255
-#, fuzzy
 msgid "Bibliography (plain)"
-msgstr "Literatura"
+msgstr "Bibliography (plain)"
 
 #: lib/layouts/iopart.layout:278
-#, fuzzy
 msgid "Bibliography heading"
-msgstr "Literatura"
+msgstr "Bibliography heading"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
@@ -7179,14 +7138,12 @@ msgid "Dictum"
 msgstr "Dictum"
 
 #: lib/layouts/stdlayouts.inc:64
-#, fuzzy
 msgid "--Separator--"
-msgstr "Separator"
+msgstr "--Separator--"
 
 #: lib/layouts/stdlayouts.inc:73
-#, fuzzy
 msgid "--- Separate Environment ---"
-msgstr "Gather prostøedí"
+msgstr "--- Separate Environment ---"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -7486,7 +7443,7 @@ msgstr "Nový|N"
 
 #: lib/ui/classic.ui:48
 msgid "New from Template...|T"
-msgstr "Nový ze ¹a&blony...|b"
+msgstr "Nový ze ¹ablony...|b"
 
 #: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:37
 msgid "Open...|O"
@@ -7602,7 +7559,7 @@ msgstr "Kontrola pravopisu|K"
 
 #: lib/ui/classic.ui:105
 msgid "Thesaurus..."
-msgstr "Tezaurus...|T"
+msgstr "Tezaurus..."
 
 #: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:462
 msgid "Count Words|W"
@@ -8111,7 +8068,7 @@ msgstr "Dokument LyX-u...|X"
 
 #: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:387
 msgid "Plain Text...|T"
-msgstr "Prostý text...|t"
+msgstr "Jako prostý text...|a"
 
 #: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:388
 msgid "Plain Text, Join Lines...|J"
@@ -8332,7 +8289,7 @@ msgstr "Znovu zmìnu|n"
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
-msgstr "Vystøihnout"
+msgstr "Vyjmout"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
 #: src/mathed/InsetMathNest.cpp:477
@@ -8422,7 +8379,7 @@ msgstr "Nastavení tabulky...|b"
 
 #: lib/ui/stdmenus.inc:130
 msgid "Plain Text|T"
-msgstr "Prostý text|t"
+msgstr "Jako prostý text|a"
 
 #: lib/ui/stdmenus.inc:131
 msgid "Plain Text, Join Lines|J"
@@ -8754,18 +8711,16 @@ msgid "Comment|C"
 msgstr "Komentáø|K"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Framed|F"
-msgstr "Rámovanì"
+msgstr "Rámovanì|R"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Greyed Out|G"
-msgstr "Za¹edlé|e"
+msgstr "Za¹edlé|Z"
 
 #: lib/ui/stdmenus.inc:399
-#, fuzzy
 msgid "Shaded|S"
-msgstr "Stínovanì"
+msgstr "Stínovanì|S"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Change Tracking|C"
@@ -8857,7 +8812,7 @@ msgstr "Pøepnout zvýraznìní"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Toggle noun"
-msgstr "Pøepnout Jméno"
+msgstr "Pøepnout na styl Jméno"
 
 #: lib/ui/stdtoolbars.inc:73
 msgid "Apply last"
@@ -10049,9 +10004,8 @@ msgid "rho"
 msgstr "rho"
 
 #: lib/ui/stdtoolbars.inc:456
-#, fuzzy
 msgid "varrho"
-msgstr "rho"
+msgstr "varrho"
 
 #: lib/ui/stdtoolbars.inc:457
 msgid "sigma"
@@ -11995,7 +11949,7 @@ msgid "Undefined character style"
 msgstr "Nedefinovaný styl znaku"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file %1$s already exists.\n"
 "\n"
@@ -12006,18 +11960,15 @@ msgstr ""
 "Chcete tento soubor pøepsat?"
 
 #: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
-#, fuzzy
 msgid "Overwrite file?"
 msgstr "Pøepsat soubor?"
 
 #: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073
 #: src/callback.cpp:169
-#, fuzzy
 msgid "&Overwrite"
 msgstr "&Pøepsat"
 
 #: src/Exporter.cpp:87
-#, fuzzy
 msgid "Overwrite &all"
 msgstr "Pøepsat &v¹e"
 
@@ -12585,20 +12536,18 @@ msgid "Converting document to new document class..."
 msgstr "Konverze dokumentu do nové tøídy dokumentu..."
 
 #: src/LyXFunc.cpp:1780
-#, fuzzy
 msgid "off"
-msgstr "Vypnuto"
+msgstr "vypnuto"
 
 # TODO co to je?
 #: src/LyXFunc.cpp:1782
-#, fuzzy
 msgid "auto"
-msgstr " (auto)"
+msgstr "auto"
 
 #: src/LyXFunc.cpp:1784
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
-msgstr ""
+msgstr "Stav panelu nástrojù \"%1$s\" nastaven na %2$s"
 
 #: src/LyXFunc.cpp:1910
 msgid "Select template file"
@@ -12633,7 +12582,7 @@ msgid "Select %1$s file to import"
 msgstr "Vybrat soubor %1$s k importu"
 
 #: src/LyXFunc.cpp:2070 src/callback.cpp:166
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
@@ -12644,7 +12593,6 @@ msgstr ""
 "Chcete jej pøepsat ?"
 
 #: src/LyXFunc.cpp:2072 src/callback.cpp:168
-#, fuzzy
 msgid "Overwrite document?"
 msgstr "Pøepsat dokument ?"
 
@@ -12875,7 +12823,6 @@ msgstr ""
 "Zru¹te volbu, nechcete-li aby LyX nastavoval kurzor na ulo¾enou pozici."
 
 #: src/LyXRC.cpp:2242
-#, fuzzy
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Zru¹te volbu, pokud nechcete naèítat soubory otevøené v poslední relaci."
@@ -13173,7 +13120,7 @@ msgstr "®ádné otevøené dokumenty !"
 
 #: src/MenuBackend.cpp:540
 msgid "Plain Text"
-msgstr "Prostý text"
+msgstr "Jako prostý text"
 
 #: src/MenuBackend.cpp:542
 msgid "Plain Text, Join Lines"
@@ -13355,9 +13302,8 @@ msgid "Paragraph layout set"
 msgstr "Nastavení rozvr¾ení odstavce"
 
 #: src/Thesaurus.cpp:62
-#, fuzzy
 msgid "Thesaurus failure"
-msgstr "Tezaurus"
+msgstr "Chyba tezauru"
 
 #: src/Thesaurus.cpp:63
 #, c-format
@@ -13365,7 +13311,9 @@ msgid ""
 "Aiksaurus returned the following error:\n"
 "\n"
 "%1$s."
-msgstr ""
+msgstr "Aiksaurus vrátil následující chybu:\n"
+"\n"
+"%1$s."
 
 #: src/VSpace.cpp:490
 msgid "Default skip"
@@ -15179,26 +15127,24 @@ msgid "auto, last or a number"
 msgstr "auto, last nebo èíslo"
 
 #: src/insets/InsetListingsParams.cpp:421
-#, fuzzy
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
 "(when using the child document dialog) or menu Insert->Caption (when "
 "defining a listing inset)"
 msgstr ""
-"Tento parametr by nemìl být zadávan zde. Pou¾ijte prosím políèko popisku(pøi "
-"vkládání dokumentu potomka) nebo pøes menu Vlo¾it->Popisek (pøi "
-"definicivýpisu zdrojového kódu)"
+"Tento parametr by nemìl být zadáván zde. Pou¾ijte prosím políèko popisku ("
+"v dialogu pro dokument potomka) nebo pøes menu Vlo¾it->Popisek (pøi "
+"definici výpisu zdrojového kódu)"
 
 #: src/insets/InsetListingsParams.cpp:427
-#, fuzzy
 msgid ""
 "This parameter should not be entered here. Please use the label edit box "
 "(when using the child document dialog) or menu Insert->Label (when defining "
 "a listing inset)"
 msgstr ""
-"Tento parametr by nemìl být zadávan zde. Pou¾ijte prosím políèko znaèky(pøi "
-"vkládání dokumentu potomka) nebo pøes menu Vlo¾it->Znaèka (pøi "
-"definicivýpisu zdrojového kódu)"
+"Tento parametr by nemìl být zadáván zde. Pou¾ijte prosím políèko znaèky (v "
+" dialogu pro dokument potomka) nebo pøes menu Vlo¾it->Znaèka (pøi "
+"definici výpisu zdrojového kódu)"
 
 #: src/insets/InsetListingsParams.cpp:589
 msgid "Invalid (empty) listing parameter name."
@@ -15210,9 +15156,9 @@ msgid "Available listing parameters are %1$s"
 msgstr "Dostupné parametry výpisu jsou %1$s"
 
 #: src/insets/InsetListingsParams.cpp:608
-#, fuzzy, c-format
+#, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
-msgstr "Dostupné parametry výpisu jsou %1$s"
+msgstr "Dostupné parametry výpisu obsahující øetìzec \"%1$s\" jsou %2$s"
 
 #: src/insets/InsetListingsParams.cpp:619
 #, c-format
