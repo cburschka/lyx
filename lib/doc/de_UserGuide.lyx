@@ -1,4 +1,4 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -15918,7 +15918,9 @@ pt
 \begin_inset Text
 
 \begin_layout Standard
-Punkt (72.27 pt = 1 in)
+Punkt (72.27\InsetSpace \thinspace{}
+pt = 1\InsetSpace \thinspace{}
+in)
 \end_layout
 
 \end_inset
@@ -15938,7 +15940,9 @@ pc
 \begin_inset Text
 
 \begin_layout Standard
-Pica (1 pc = 12 pt)
+Pica (1\InsetSpace \thinspace{}
+pc = 12\InsetSpace \thinspace{}
+pt)
 \end_layout
 
 \end_inset
@@ -15958,7 +15962,8 @@ sp
 \begin_inset Text
 
 \begin_layout Standard
-Scaled Point (65536 sp = 1\InsetSpace ~
+Scaled Point (65536\InsetSpace \thinspace{}
+sp = 1\InsetSpace \thinspace{}
 pt)
 \end_layout
 
@@ -15979,7 +15984,9 @@ bp
 \begin_inset Text
 
 \begin_layout Standard
-Big Point (72 bp = 1 in)
+Big Point (72\InsetSpace \thinspace{}
+bp = 1\InsetSpace \thinspace{}
+in)
 \end_layout
 
 \end_inset
@@ -15999,14 +16006,12 @@ dd
 \begin_inset Text
 
 \begin_layout Standard
-Didot (72 dd 
+Didot (1\InsetSpace \thinspace{}
+dd 
 \begin_inset Formula $\approx$
 \end_inset
 
- 37.6
-\begin_inset Formula $\,$
-\end_inset
-
+ 0,376\InsetSpace \thinspace{}
 mm)
 \end_layout
 
@@ -16027,7 +16032,9 @@ cc
 \begin_inset Text
 
 \begin_layout Standard
-Cicero (1cc = 12 dd)
+Cicero (1\InsetSpace \thinspace{}
+cc = 12\InsetSpace \thinspace{}
+dd)
 \end_layout
 
 \end_inset
@@ -16267,11 +16274,13 @@ mu
 \begin_inset Text
 
 \begin_layout Standard
-Math Unit (1 mu = 
+Math Unit (1\InsetSpace \thinspace{}
+mu = 
 \begin_inset Formula $\frac{1}{18}$
 \end_inset
 
- em)
+\InsetSpace \thinspace{}
+em)
 \end_layout
 
 \end_inset
