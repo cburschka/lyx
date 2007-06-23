@@ -145,6 +145,55 @@ def languages_l10n(input_files, output, base):
     output.close()
 
 
+def external_l10n(input_files, output, base):
+    '''Generate pot file from lib/external_templates'''
+    output = open(output, 'w')
+    Template = re.compile(r'^Template\s+(.*)')
+    GuiName = re.compile(r'\s*GuiName\s+(.*)')
+    HelpTextStart = re.compile(r'\s*HelpText\s')
+    HelpTextSection = re.compile(r'\s*(\S.*)\s*$')
+    HelpTextEnd = re.compile(r'\s*HelpTextEnd\s')
+    i = -1
+    for src in input_files:
+        input = open(src)
+        inHelp = False
+        hadHelp = False
+        prev_help_string = ''
+        for lineno, line in enumerate(input.readlines()):
+            if Template.match(line):
+                (string,) = Template.match(line).groups()
+            elif GuiName.match(line):
+                (string,) = GuiName.match(line).groups()
+            elif inHelp:
+                if HelpTextEnd.match(line):
+                    if hadHelp:
+                        print >> output, '\nmsgstr ""\n'
+                    inHelp = False
+                    hadHelp = False
+                    prev_help_string = ''
+                elif HelpTextSection.match(line):
+                    (help_string,) = HelpTextSection.match(line).groups()
+                    help_string = help_string.replace('"', '')
+                    if help_string != "" and prev_help_string == '':
+                        print >> output, '#: %s:%d\nmsgid ""\n"%s\\n"' % \
+                            (relativePath(src, base), lineno+1, help_string)
+                        hadHelp = True
+                    elif help_string != "":
+                        print >> output, '"%s\\n"' % help_string
+                    prev_help_string = help_string
+            elif HelpTextStart.match(line):
+                inHelp = True
+                prev_help_string = ''
+            else:
+                continue
+            string = string.replace('"', '')
+            if string != "" and not inHelp:
+                print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                    (relativePath(src, base), lineno+1, string)
+        input.close()
+    output.close()
+
+
 Usage = '''
 lyx_pot.py [-b|--base top_src_dir] [-o|--output output_file] [-h|--help] -t|--type input_type input_files
 
@@ -158,6 +207,7 @@ where
         layouts: lib/layouts/*
         qt4: qt4 ui files
         languages: file lib/languages
+        external: external templates file
 '''
 
 if __name__ == '__main__':
@@ -177,7 +227,7 @@ if __name__ == '__main__':
             base = value
         elif opt in ['-t', '--type']:
             input_type = value
-    if input_type not in ['ui', 'layouts', 'qt4', 'languages'] or output is None:
+    if input_type not in ['ui', 'layouts', 'qt4', 'languages', 'external'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
     if input_type == 'ui':
@@ -186,6 +236,8 @@ if __name__ == '__main__':
         layouts_l10n(args, output, base)
     elif input_type == 'qt4':
         qt4_l10n(args, output, base)
+    elif input_type == 'external':
+        external_l10n(args, output, base)
     else:
         languages_l10n(args, output, base)
 

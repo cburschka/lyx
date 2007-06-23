@@ -544,7 +544,7 @@ void QExternal::build_dialog()
 
 	for (std::vector<string>::const_iterator cit = templates.begin();
 		cit != templates.end(); ++cit) {
-		dialog_->externalCO->addItem(toqstr(*cit));
+		dialog_->externalCO->addItem(qt_(*cit));
 	}
 
 	// Fill the origins combo
@@ -604,7 +604,7 @@ void QExternal::updateTemplate()
 {
 	external::Template templ =
 		controller().getTemplate(dialog_->externalCO->currentIndex());
-	dialog_->externalTB->setPlainText(toqstr(templ.helpText));
+	dialog_->externalTB->setPlainText(qt_(templ.helpText));
 
 	// Ascertain which (if any) transformations the template supports
 	// and disable tabs hosting unsupported transforms.

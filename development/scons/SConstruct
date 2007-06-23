@@ -2043,7 +2043,7 @@ if update_po:
         ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]
     )
     Alias('update_po', POTFILES_in)
-    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot
+    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot, external_l10n
     # and combine them to lyx.po
     env['LYX_POT'] = 'python $TOP_SRCDIR/po/lyx_pot.py'
     lyx_po = env.Command('$BUILDDIR/po/lyx.po',
@@ -2054,11 +2054,13 @@ if update_po:
              env.Command('$BUILDDIR/po/layouts_l10n.pot', 
                 ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files + lib_layouts_inc_files],
                 '$LYX_POT -b $TOP_SRCDIR -t layouts -o $TARGET $SOURCES'),
-             env.Command('$BUILDDIR/po/languages_l10n.pot', '$TOP_SRCDIR/lib/languages', 
+             env.Command('$BUILDDIR/po/languages_l10n.pot', '$TOP_SRCDIR/lib/languages',
                 '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/ui_l10n.pot', 
                 ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files],
                 '$LYX_POT -b $TOP_SRCDIR -t ui -o $TARGET $SOURCES'),
+             env.Command('$BUILDDIR/po/external_l10n.pot', '$TOP_SRCDIR/lib/external_templates',
+                '$LYX_POT -b $TOP_SRCDIR -t external -o $TARGET $SOURCES'),
              ], utils.env_cat),
             ['$MSGUNIQ -o $TARGET $SOURCE',
              '''$XGETTEXT --default-domain=${TARGET.base} \

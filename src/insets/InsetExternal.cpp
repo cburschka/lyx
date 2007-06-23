@@ -577,8 +577,9 @@ docstring const getScreenLabel(InsetExternalParams const & params,
 		return support::bformat((_("External template %1$s is not installed")),
 					from_utf8(params.templatename()));
 	// FIXME UNICODE
+	docstring gui = _(ptr->guiName);
 	return from_utf8(external::doSubstitution(params, buffer,
-				ptr->guiName, false));
+				to_utf8(gui), false));
 }
 
 void add_preview_and_start_loading(RenderMonitoredPreview &,
