@@ -54,7 +54,9 @@ Compiling with MSVC 2005
 7	Compile
 
 	From MS Visual Studio command prompt (not the regular cmd.exe), 
-	run development\Win32\packaging\build_msvc.bat
+	run 
+	  > cd <lyx root directory>\development\Win32\packaging
+	  > build_msvc.bat
 
 8	First start of LyX
 
