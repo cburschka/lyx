@@ -28637,12 +28637,12 @@ dd
 \begin_inset Text
 
 \begin_layout Standard
-didot (72\InsetSpace \thinspace{}
+didot (1\InsetSpace \thinspace{}
 dd 
 \begin_inset Formula $\approx$
 \end_inset
 
- 37.6\InsetSpace \thinspace{}
+ 0.376\InsetSpace \thinspace{}
 mm)
 \end_layout
 
@@ -29241,7 +29241,7 @@ Portable Network Graphics
 \end_inset
 
 ).
- You can although use any other image format, because LyX converts them
+ Nevertheless you can use any other image format, because LyX converts them
  in the background to one of these formats.
  But as described in the section about PostScript, the image conversion
  will slow down your work flow.
@@ -29258,7 +29258,8 @@ Export
 \end_layout
 
 \begin_layout Description
-PDF This uses the program 
+PDF\InsetSpace ~
+(ps2pdf) This uses the program 
 \family typewriter
 ps2pdf
 \family default

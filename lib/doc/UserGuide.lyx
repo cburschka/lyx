@@ -13888,7 +13888,8 @@ pt
 \begin_inset Text
 
 \begin_layout Standard
-point (72.27 pt = 1 in)
+point (72.27\InsetSpace \thinspace{}
+pt = 1 in)
 \end_layout
 
 \end_inset
@@ -13908,7 +13909,9 @@ pc
 \begin_inset Text
 
 \begin_layout Standard
-pica (1 pc = 12 pt)
+pica (1\InsetSpace \thinspace{}
+pc = 12\InsetSpace \thinspace{}
+pt)
 \end_layout
 
 \end_inset
@@ -13928,7 +13931,9 @@ sp
 \begin_inset Text
 
 \begin_layout Standard
-scaled point (65536 sp = 1 pt)
+scaled point (65536\InsetSpace \thinspace{}
+sp = 1\InsetSpace \thinspace{}
+pt)
 \end_layout
 
 \end_inset
@@ -13948,7 +13953,8 @@ bp
 \begin_inset Text
 
 \begin_layout Standard
-big point (72 bp = 1 in)
+big point (72 bp = 1\InsetSpace \thinspace{}
+in)
 \end_layout
 
 \end_inset
@@ -13968,14 +13974,12 @@ dd
 \begin_inset Text
 
 \begin_layout Standard
-didot (72 dd 
+didot (1\InsetSpace \thinspace{}
+dd 
 \begin_inset Formula $\approx$
 \end_inset
 
- 37.6
-\begin_inset Formula $\,$
-\end_inset
-
+ 0.376\InsetSpace \thinspace{}
 mm)
 \end_layout
 
@@ -13996,7 +14000,9 @@ cc
 \begin_inset Text
 
 \begin_layout Standard
-cicero (1cc = 12 dd)
+cicero (1\InsetSpace \thinspace{}
+cc = 12\InsetSpace \thinspace{}
+dd)
 \end_layout
 
 \end_inset
@@ -14204,7 +14210,9 @@ mu
 \begin_inset Text
 
 \begin_layout Standard
-math unit (1 mu = 1/18 em)
+math unit (1\InsetSpace \thinspace{}
+mu = 1/18\InsetSpace \thinspace{}
+em)
 \end_layout
 
 \end_inset
