@@ -2260,7 +2260,18 @@ lib_doc_de_files = Split('''
 
 
 lib_doc_de_clipart_files = Split('''
+    ExternesMaterialQt4.png
     FussnoteQt4.png
+    GerahmteNotizQt4.png
+    GleitobjektQt4.png
+    GrauschriftNotizQt4.png
+    KommentarQt4.png
+    LyXNotizQt4.png
+    Marke.png
+    Querverweis.png
+    SchattierteNotizQt4.png
+    StandardBoxQt4.png
+    UnterdokumentQt4.png
 ''')
 
 

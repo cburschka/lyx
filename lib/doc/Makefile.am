@@ -44,7 +44,18 @@ dist_dedoc_DATA = \
 
 declipartdocdir = $(pkgdatadir)/doc/de/clipart
 dist_declipartdoc_DATA = \
-	de/clipart/FussnoteQt4.png
+	de/ExternesMaterialQt4.png \
+	de/FussnoteQt4.png \
+	de/GerahmteNotizQt4.png \
+	de/GleitobjektQt4.png \
+	de/GrauschriftNotizQt4.png \
+	de/KommentarQt4.png \
+	de/LyXNotizQt4.png \
+	de/Marke.png \
+	de/Querverweis.png \
+	de/SchattierteNotizQt4.png \
+	de/StandardBoxQt4.png \
+	de/UnterdokumentQt4.png
 
 esdocdir = $(pkgdatadir)/doc/es
 dist_esdoc_DATA = \
