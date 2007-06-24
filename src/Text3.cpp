@@ -1970,6 +1970,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
+	case LFUN_MATH_INSERT:
 	case LFUN_MATH_SUBSCRIPT:
 	case LFUN_MATH_SUPERSCRIPT:
 	case LFUN_FONT_DEFAULT:
