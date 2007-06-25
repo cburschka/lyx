@@ -44,18 +44,6 @@ CursorSlice::CursorSlice(Inset & p)
 }
 
 
-void CursorSlice::invalidate()
-{
-	inset_ = 0;
-}
-
-
-bool CursorSlice::isValid() const
-{
-	return inset_ != 0;
-}
-
-
 MathData & CursorSlice::cell() const
 {
 	return inset_->asInsetMath()->cell(idx_);

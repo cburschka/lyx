@@ -57,8 +57,6 @@ public:
 	CursorSlice();
 	///
 	explicit CursorSlice(Inset &);
-	///
-	bool isValid() const;
 
 	/// the current inset
 	Inset & inset() const { return *inset_; }
@@ -124,8 +122,6 @@ public:
 	/// write some debug information to \p os
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
 private:
-	///
-	void invalidate();
 
 	/// pointer to 'owning' inset. This is some kind of cache.
 	Inset * inset_;
