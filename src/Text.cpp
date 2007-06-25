@@ -1482,7 +1482,7 @@ void Text::drawSelection(PainterInfo & pi, int x, int) const
 	// clip below
 	int middleBottom;
 	bool const clipBelow = 
-		(bv_funcs::status(&bv, end)	== bv_funcs::CUR_BELOW);
+		(bv_funcs::status(&bv, end) == bv_funcs::CUR_BELOW);
 	if (clipBelow)
 		middleBottom = bv.workHeight();
 	else
