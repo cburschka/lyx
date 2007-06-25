@@ -10,7 +10,7 @@ cs/TOC.lyx: $(srcdir)/Customization.lyx $(srcdir)/EmbeddedObjects.lyx $(srcdir)/
 da/TOC.lyx: $(srcdir)/Customization.lyx $(srcdir)/EmbeddedObjects.lyx $(srcdir)/Extended.lyx $(srcdir)/FAQ.lyx $(srcdir)/Tutorial.lyx $(srcdir)/UserGuide.lyx $(srcdir)/da/Intro.lyx
 	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python -tt $(srcdir)/doc_toc.py da .
 
-de/TOC.lyx: $(srcdir)/EmbeddedObjects.lyx $(srcdir)/de/Customization.lyx $(srcdir)/de/Extended.lyx $(srcdir)/de/FAQ.lyx $(srcdir)/de/Intro.lyx $(srcdir)/de/Tutorial.lyx $(srcdir)/de/UserGuide.lyx
+de/TOC.lyx: $(srcdir)/de/Customization.lyx $(srcdir)/de/EmbeddedObjects.lyx $(srcdir)/de/Extended.lyx $(srcdir)/de/FAQ.lyx $(srcdir)/de/Intro.lyx $(srcdir)/de/Tutorial.lyx $(srcdir)/de/UserGuide.lyx
 	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python -tt $(srcdir)/doc_toc.py de .
 
 TOC.lyx: $(srcdir)/Customization.lyx $(srcdir)/EmbeddedObjects.lyx $(srcdir)/Extended.lyx $(srcdir)/FAQ.lyx $(srcdir)/Intro.lyx $(srcdir)/Tutorial.lyx $(srcdir)/UserGuide.lyx

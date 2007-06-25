@@ -2251,6 +2251,10 @@ lib_doc_cs_files = Split('''
 
 lib_doc_de_files = Split('''
     Customization.lyx
+    DummyDocument1.lyx
+    DummyDocument2.lyx
+    DummyTextDocument.txt
+    EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
     Intro.lyx

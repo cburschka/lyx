@@ -36,6 +36,10 @@ dist_dadoc_DATA = \
 dedocdir = $(pkgdatadir)/doc/de
 dist_dedoc_DATA = \
 	de/Customization.lyx \
+	de/DummyDocument1.lyx \
+	de/DummyDocument2.lyx \
+	de/DummyTextDocument.txt \
+	de/EmbeddedObjects.lyx \
 	de/Extended.lyx \
 	de/FAQ.lyx \
 	de/Intro.lyx \
