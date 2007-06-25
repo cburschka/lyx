@@ -3096,7 +3096,9 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 		}
 
 	} else {
-		cur.text()->drawSelection(pi, x + getCellXPos(cur.idx()) + tabular.getBeginningOfTextInCell(cur.idx()), 0 /*this value is ignored */);
+		x += getCellXPos(cur.idx());
+		x += tabular.getBeginningOfTextInCell(cur.idx());
+		cell(cur.idx())->drawSelection(pi, x, 0 /* ignored */);
 	}
 }
 
@@ -3969,11 +3971,11 @@ int InsetTabular::getCellXPos(idx_type const cell) const
 
 	for (; !tabular.isFirstCellInRow(c); --c)
 		;
-	int lx = tabular.getWidthOfColumn(cell);
+	int lx = 0;
 	for (; c < cell; ++c)
 		lx += tabular.getWidthOfColumn(c);
 
-	return lx - tabular.getWidthOfColumn(cell);
+	return lx;
 }
 
 
