@@ -22,9 +22,14 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\escher-lsd.eps"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\mobius.eps"
  SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\DummyDocument1.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\DummyDocument2.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\DummyTextDocument.txt"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\FAQ.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Userguide.lyx"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\doc\de\clipart"
  SetOutPath "$INSTDIR\Resources\doc\es"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" # must be here when another \doc file has been changed
