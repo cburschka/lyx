@@ -1,6 +1,11 @@
 LyX file-format changes
 -----------------------
 
+2007-05-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 275: add graphics params scaleBeforeRotation
+	(fix bug 1749).
+
 2007-06-13 Dov Feldstern <dov@lyx.org>
 	* format incremented to 274: applying the conversion done in format 259
 		to the \lang property, which was forgotten back then... This is

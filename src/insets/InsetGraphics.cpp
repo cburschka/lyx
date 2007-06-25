@@ -104,6 +104,7 @@ using support::onlyFilename;
 using support::removeExtension;
 using support::rtrim;
 using support::subst;
+using support::suffixIs;
 using support::Systemcall;
 using support::unzipFile;
 using support::unzippedFileName;
@@ -313,18 +314,21 @@ string const InsetGraphics::createLatexOptions() const
 	    options << "draft,";
 	if (params().clip)
 	    options << "clip,";
+	ostringstream size;
 	double const scl = convert<double>(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
-			options << "scale=" << scl / 100.0 << ',';
+			size << "scale=" << scl / 100.0 << ',';
 	} else {
 		if (!params().width.zero())
-			options << "width=" << params().width.asLatexString() << ',';
+			size << "width=" << params().width.asLatexString() << ',';
 		if (!params().height.zero())
-			options << "height=" << params().height.asLatexString() << ',';
+			size << "height=" << params().height.asLatexString() << ',';
 		if (params().keepAspectRatio)
-			options << "keepaspectratio,";
+			size << "keepaspectratio,";
 	}
+	if (params().scaleBeforeRotation && !size.str().empty())
+		options << size.str();
 
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
@@ -342,13 +346,18 @@ string const InsetGraphics::createLatexOptions() const
 		options << ',';
 	    }
 	}
+	if (!params().scaleBeforeRotation && !size.str().empty())
+		options << size.str();
 
 	if (!params().special.empty())
 	    options << params().special << ',';
 
 	string opts = options.str();
 	// delete last ','
-	return opts.substr(0, opts.size() - 1);
+	if (suffixIs(opts, ','))
+		opts = opts.substr(0, opts.size() - 1);
+
+	return opts;
 }
 
 

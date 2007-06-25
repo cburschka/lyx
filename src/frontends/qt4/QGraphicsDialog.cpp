@@ -77,6 +77,8 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT(change_adaptor()));
 	connect(Scale, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(rotateOrderCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	filename->setValidator(new PathValidator(true, filename));
 	setFocusProxy(filename);
@@ -201,7 +203,8 @@ void QGraphicsDialog::on_filename_textChanged(const QString & filename)
 }
 
 
-void QGraphicsDialog::setAutoText() {
+void QGraphicsDialog::setAutoText()
+{
 	if (scaleCB->isChecked()) return;
 	if (!Scale->isEnabled() && Scale->text() != "100")
 		Scale->setText(QString("auto"));
@@ -236,6 +239,11 @@ void QGraphicsDialog::on_scaleCB_toggled(bool setScale)
 	aspectratio->setDisabled(true);
 	aspectratio->setChecked(true);
 
+	rotateOrderCB->setEnabled((WidthCB->isChecked() ||
+				 HeightCB->isChecked() ||
+				 scaleCB->isChecked()) &&
+				 (angle->text() != "0"));
+
 	setAutoText();
 }
 
@@ -256,6 +264,9 @@ void QGraphicsDialog::on_WidthCB_toggled(bool setWidth)
 	//already will be unchecked, so don't need to do that
 	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled()
 			&& scaleCB->isChecked()); //should be false, but let's check
+	rotateOrderCB->setEnabled((setWidth || setHeight ||
+				 scaleCB->isChecked()) &&
+				 (angle->text() != "0"));
 
 	setAutoText();
 }
@@ -277,8 +288,20 @@ void QGraphicsDialog::on_HeightCB_toggled(bool setHeight)
 	//already unchecked
 	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled()
 		&& scaleCB->isChecked()); //should be false
+	rotateOrderCB->setEnabled((setWidth || setHeight ||
+				 scaleCB->isChecked()) &&
+				 (angle->text() != "0"));
 
 	setAutoText();
+}
+
+
+void QGraphicsDialog::on_angle_textChanged(const QString & filename)
+{
+	rotateOrderCB->setEnabled((WidthCB->isChecked() ||
+				 HeightCB->isChecked() ||
+				 scaleCB->isChecked()) &&
+				 (filename != "0"));
 }
 
 

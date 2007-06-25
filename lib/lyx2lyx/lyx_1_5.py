@@ -1356,6 +1356,65 @@ def revert_cv_textclass(document):
         document.textclass = "cv"
 
 
+#
+# add scaleBeforeRotation graphics param
+def convert_graphics_rotation(document):
+    " add scaleBeforeRotation graphics parameter. "
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i+1)
+        if j == -1:
+            # should not happen
+            document.warning("Malformed LyX document: Could not find end of graphics inset.")
+        # Seach for rotateAngle and width or height or scale
+        # If these params are not there, nothing needs to be done.
+        # FIXME: this also inserts scaleBeforeRotation if "rotateAngle" is not there!
+        for k in range(i+1, j):
+            if (document.body[k].find("rotateAngle") and \
+                (document.body[k].find("width") or \
+                document.body[k].find("height") or \
+                document.body[k].find("scale"))):
+                        document.body.insert(j, 'scaleBeforeRotation')
+        i = i + 1
+
+
+# FIXME: does not work at all
+def revert_graphics_rotation(document):
+    " remove scaleBeforeRotation graphics parameter. "
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # should not happen
+            document.warning("Malformed LyX document: Could not find end of graphics inset.")
+        for k in range(i+1, j):
+            # If there's a scaleBeforeRotation param, just remove that
+            if document.body[k].find('scaleBeforeRotation'):
+                del document.body[k]
+                break
+            # if not, and if we have rotateAngle and width or height or scale,
+            # we have to put the rotateAngle value to special
+            rotateAngle = get_value(document.body, 'rotateAngle', i+1, j)
+            special = get_value(document.body, 'special', i+1, j)
+            if (document.body[k].find("width") or \
+                document.body[k].find("height") or \
+                document.body[k].find("scale") and \
+                document.body[k].find("rotateAngle")):
+                    if special == "":
+                        document.body.insert(j-1, '\tspecial angle=%s' % rotateAngle)
+                    else:
+                        l = find_token(document.body, "special", i+1, j)
+                        document.body[l].replace(special, 'angle=%s,%s' % (rotateAngle, special))
+        i = i + 1
+
+
+
 def convert_tableborder(document):
     # The problematic is: LyX double the table cell border as it ignores the "|" character in
     # the cell arguments. A fix takes care of this and therefore the "|" has to be removed
@@ -1782,10 +1841,12 @@ convert = [[246, []],
            [271, [convert_ext_font_sizes]],
            [272, []],
            [273, []],
-           [274, [normalize_font_whitespace_274]]
+           [274, [normalize_font_whitespace_274]],
+           [275, [convert_graphics_rotation]]
           ]
 
 revert =  [
+           [274, [revert_graphics_rotation]],
            [273, []],
            [272, [revert_separator_layout]],
            [271, [revert_preamble_listings_params, revert_listings_inset, revert_include_listings]],

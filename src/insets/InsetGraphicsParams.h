@@ -47,6 +47,8 @@ public:
 	bool draft;
 	/// what to do with zipped files
 	bool noUnzip;
+	/// scale image before rotating
+	bool scaleBeforeRotation;
 
 	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
 	std::string bb;

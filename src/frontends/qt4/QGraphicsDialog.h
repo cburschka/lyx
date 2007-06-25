@@ -41,6 +41,7 @@ protected Q_SLOTS:
 	virtual void on_scaleCB_toggled(bool);
 	virtual void on_WidthCB_toggled(bool);
 	virtual void on_HeightCB_toggled(bool);
+	virtual void on_angle_textChanged(const QString &);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

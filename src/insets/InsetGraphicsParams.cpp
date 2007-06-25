@@ -74,6 +74,7 @@ void InsetGraphicsParams::init()
 	keepAspectRatio = false;	// for LaTeX output
 	draft = false;			// draft mode
 	noUnzip = false;		// unzip files
+	scaleBeforeRotation = false;	// scale image before rotating
 
 	bb = string();			// bounding box
 	clip = false;			// clip image
@@ -97,6 +98,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	keepAspectRatio = igp.keepAspectRatio;
 	draft = igp.draft;
 	noUnzip = igp.noUnzip;
+	scaleBeforeRotation = igp.scaleBeforeRotation;
 
 	bb = igp.bb;
 	clip = igp.clip;
@@ -121,6 +123,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.keepAspectRatio == right.keepAspectRatio &&
 	    left.draft == right.draft &&
 	    left.noUnzip == right.noUnzip &&
+	    left.scaleBeforeRotation == right.scaleBeforeRotation &&
 
 
 	    left.bb == right.bb &&
@@ -172,6 +175,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 		os << "\tdraft\n";
 	if (noUnzip)
 		os << "\tnoUnzip\n";
+	if (scaleBeforeRotation)
+		os << "\tscaleBeforeRotation\n";
 
 	if (!bb.empty())		// bounding box
 		os << "\tBoundingBox " << bb << '\n';
@@ -221,6 +226,8 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 		draft = true;
 	} else if (token == "noUnzip") {
 		noUnzip = true;
+	} else if (token == "scaleBeforeRotation") {
+		scaleBeforeRotation = true;
 	} else if (token == "BoundingBox") {
 		bb.erase();
 		for (int i = 0; i < 4; ++i) {

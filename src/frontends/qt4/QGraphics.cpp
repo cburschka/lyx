@@ -89,6 +89,7 @@ void QGraphics::build_dialog()
 	bcview().addReadOnly(dialog_->rotationGB);
 	bcview().addReadOnly(dialog_->latexoptions);
 	bcview().addReadOnly(dialog_->getPB);
+	bcview().addReadOnly(dialog_->rotateOrderCB);
 
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->Scale, dialog_->scaleCB);
@@ -264,6 +265,12 @@ void QGraphics::update_contents()
 	dialog_->setAutoText();
 
 	dialog_->angle->setText(toqstr(igp.rotateAngle));
+	dialog_->rotateOrderCB->setChecked(igp.scaleBeforeRotation);
+
+	dialog_->rotateOrderCB->setEnabled((widthChecked ||
+					   heightChecked ||
+					   scaleChecked) &&
+					   (igp.rotateAngle != "0"));
 
 	dialog_->origin->clear();
 
@@ -381,6 +388,8 @@ void QGraphics::apply()
 	// then origin_ltx returns ""
 	igp.rotateOrigin =
 		QGraphics::origin_ltx[dialog_->origin->currentIndex()];
+
+	igp.scaleBeforeRotation = dialog_->rotateOrderCB->isChecked();
 
 	// more latex options
 	igp.special = fromqstr(dialog_->latexoptions->text());
