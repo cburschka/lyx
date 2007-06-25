@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 275
 \begin_document
 \begin_header
 \textclass scrbook
@@ -22459,6 +22459,23 @@ arabic
 roman
 \series default
  en el comando anterior.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+arabic{footnote}}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22968,7 +22985,7 @@ Notas al final: notas impresas en párrafo separado al final de la sección
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 La cabecera de párrafo para las notas finales no se traduce automáticamente
@@ -23003,7 +23020,7 @@ notesname}{Notas}
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 La numeración de notas finales puede cambiarse como la de las notas al pie,
@@ -23242,6 +23259,7 @@ Nota:
 \end_layout
 
 \begin_layout Standard
+Para volver a la ubicación predeterminada inserta en ERT el comando
 \begin_inset ERT
 status collapsed
 
@@ -23254,7 +23272,7 @@ normalmarginpar
 
 \end_inset
 
-Para volver a la ubicación predeterminada inserta en ERT el comando
+
 \end_layout
 
 \begin_layout Standard
@@ -23536,7 +23554,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 Con 
@@ -23674,7 +23692,7 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 Para otras características de 
@@ -25863,10 +25881,15 @@ He aquí un ejemplo:
 \end_layout
 
 \begin_layout Standard
-Esta línea es un ejemplo para mostrar cómo evitar la división de p.\InsetSpace \thinspace{}
-e.\InsetSpace ~
-estalarguísim
-apalabra.
+Esta línea es un ejemplo para mostrar cómo evitar la división de 
+\begin_inset Quotes eld
+\end_inset
+
+estalarguísimapalabra
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -25916,9 +25939,7 @@ Este es el resultado:
 \end_layout
 
 \begin_layout Standard
-Esta línea es un ejemplo para mostrar cómo prevenir la división de p.\InsetSpace \thinspace{}
-e.\InsetSpace ~
-
+Esta línea es un ejemplo para mostrar cómo prevenir la división de 
 \begin_inset ERT
 status collapsed
 
@@ -25931,7 +25952,15 @@ mbox{
 
 \end_inset
 
-estalarguísimapalabra.
+
+\begin_inset Quotes eld
+\end_inset
+
+estalarguísimapalabra
+\begin_inset Quotes erd
+\end_inset
+
+.
 \begin_inset ERT
 status collapsed
 
@@ -25943,6 +25972,57 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can alternatively set the command
+\lang spanish
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+
+\backslash
+-
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\lang english
+as ERT directly before the word
+\lang spanish
+:
+\end_layout
+
+\begin_layout Standard
+Esta línea es un ejemplo para mostrar cómo prevenir la división de 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+estalarguísimapalabra
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -25965,9 +26045,7 @@ Ctrl-Return
 \end_layout
 
 \begin_layout Standard
-Esta línea es un ejemplo para mostrar cómo prevenir la división de p.\InsetSpace \thinspace{}
-e.\InsetSpace ~
-
+Esta línea es un ejemplo para mostrar cómo prevenir la división de 
 \newline
 
 \begin_inset ERT
@@ -25982,7 +26060,15 @@ mbox{
 
 \end_inset
 
-estalarguísimapalabra.
+
+\begin_inset Quotes eld
+\end_inset
+
+estalarguísimapalabra
+\begin_inset Quotes erd
+\end_inset
+
+.
 \begin_inset ERT
 status collapsed
 
@@ -26104,7 +26190,7 @@ Este es el resultado:
 \begin_layout Standard
 Esto es una línea de texto con la palabra 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26149,7 +26235,7 @@ Al subir o bajar caracteres en una línea, se modifica el espacio entre líneas:
 \begin_layout Standard
 Esto es una línea de texto con la palabra 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -28021,7 +28107,7 @@ Marcar espacios en la salida
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -28105,8 +28191,12 @@ status open
 Nota:
 \series default
  Como puedes ver en los ejemplos anteriores, el texto de los documentos
- incluidos en modo literal no contiene saltos de línea, a no ser que se
- incluyan expresamente en el archivo de texto.
+ incluidos en modo 
+\family sans
+literal
+\family default
+ no contiene saltos de línea, a no ser que se incluyan expresamente en el
+ archivo de texto.
 \end_layout
 
 \end_inset

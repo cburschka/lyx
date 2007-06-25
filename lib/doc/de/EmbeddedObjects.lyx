@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 275
 \begin_document
 \begin_header
 \textclass scrbook
@@ -166,11 +166,10 @@
   \let\marginpar\marginnote
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
+
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-%
-\usepackage{flafter}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language ngerman
@@ -187,23 +186,19 @@
 \paperfontsize 12
 \spacing single
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_amsmath 2
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\leftmargin 35mm
-\topmargin 35mm
-\rightmargin 35mm
-\bottommargin 35mm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
 \quotes_language german
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \bullet 1 0 9 -1
 \bullet 2 2 35 -1
@@ -6685,7 +6680,7 @@ caption
 \series default
 
 \begin_inset LatexCommand index
-name "LaTeX-packages ! caption"
+name "LaTeX-Pakete ! caption"
 
 \end_inset
 
@@ -6826,7 +6821,7 @@ name "tab:DiffCaptions"
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Telefonliste
@@ -14283,7 +14278,7 @@ name "Wenn-Sie-nur"
 
 Wenn Sie nur farbigen Text
 \begin_inset LatexCommand index
-name "farbige !  -r Text"
+name "Farbe ! für Text"
 
 \end_inset
 
@@ -22901,11 +22896,11 @@ reference "uab:Fußnoten-in-langen"
 \begin_layout Standard
 Wenn Sie nur eine Marke für eine Fußnote definieren wollen, können Sie den
  ERT-Befehl 
-\family typewriter
+\series bold
 
 \backslash
 footnotemark[Nummer]
-\family default
+\series default
  benutzen.
  Dann können Sie diese Marke mehrmals verwenden, ohne dass die Fußnote jedesmal
  gedruckt wird.
@@ -22924,17 +22919,13 @@ reference "fuss:Fußnoten-Beispiel"
  wurde das mit folgenden ERT-Befehlen gemacht:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 
 \series bold
 
 \backslash
-
-\series default
 newcounter{MyRepeatFoot}
-\end_layout
-
-\begin_layout LyX-Code
+\newline
 
 \backslash
 setcounter{MyRepeatFoot}{
@@ -22946,7 +22937,9 @@ thefootnote}
 Die Fußnotenmarke wurde dann mit diesem ERT-Befehl definiert;
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 footnotemark[
@@ -22961,7 +22954,7 @@ Hier ist ein Beispiel für eine Fußnotenmarke:
 \bar no
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -22994,6 +22987,204 @@ name "Fußnoten ! Nummerierung"
 \end_layout
 
 \begin_layout Standard
+Um Fußnoten nach jedem Abschnitt
+\family roman
+ auf 1 zurückzusetzen, 
+\family default
+müssen Sie folgenden Befehl in den LaTeX-Vorspann schreiben:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@addtoreset{footnote}{section}
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Der folgende Befehl ändert die Fußnoten-Nummerierung auf kleinge römische
+ Zahlen:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+roman{footnote}}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+roman{footnote}}
+\end_layout
+
+\end_inset
+
+ Hier ist ein Beispiel für solch eine Fußnote:
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Dies ist eine Fußnote mit kleingeschriebenen römischen Zahlen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um den Nummerierungsstil auf große römische Zahlen zu ändern, ersetzten
+ Sie in obigem Befehl 
+\series bold
+
+\backslash
+roman
+\series default
+ durch 
+\series bold
+
+\backslash
+Roman
+\series default
+.
+ Um Fußnoten mit großen oder kleinen Buchstaben zu 
+\begin_inset Quotes gld
+\end_inset
+
+nummerieren
+\begin_inset Quotes grd
+\end_inset
+
+, verwenden Sie die Befehle 
+\series bold
+
+\backslash
+Alph
+\series default
+ bzw.\InsetSpace ~
+
+\series bold
+
+\backslash
+alph
+\series default
+.
+ Für die 
+\begin_inset Quotes gld
+\end_inset
+
+Nummerierung
+\begin_inset Quotes grd
+\end_inset
+
+ mit Symbolen steht der Befehl 
+\series bold
+
+\backslash
+fnsymbol
+\series default
+ zur Verfügung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung 1:
+\series default
+ Mit Buchstaben können höchstens 26 Fußnoten nummeriert werden, weil nur
+ 
+\emph on
+ein
+\emph default
+ Buchstabe verwendet wird.
+\end_layout
+
+\end_inset
+
+
+\newline
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung 2:
+\series default
+ Mit Symbolen können höchstens 9 Fußnoten nummeriert werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um zur Standard-Nummerierung zurückzukehren, verwenden Sie 
+\series bold
+
+\backslash
+arabic
+\series default
+ anstelle von 
+\series bold
+
+\backslash
+roman
+\series default
+ in obigem Befehl.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+arabic{footnote}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Wenn Sie wollen, dass Fußnoten nach dem Schema 
 \begin_inset Quotes gld
 \end_inset
@@ -23005,7 +23196,9 @@ Kapitel.Fußnote
  nummeriert werden, müssen Sie folgenden Befehl in den LaTeX-Vorspann schreiben:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 numberwithin{footnote}{chapter}
@@ -23013,12 +23206,11 @@ numberwithin{footnote}{chapter}
 
 \begin_layout Standard
 Um 
-\family typewriter
+\series bold
 
 \backslash
-numberwith\SpecialChar \-
-in
-\family default
+numberwithin
+\series default
  benutzen zu können, muss in den 
 \family sans
 Mathe\InsetSpace ~
@@ -23041,7 +23233,7 @@ verwenden
 \family default
  angekreuzt sein.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23076,7 +23268,7 @@ Kapitel.Fußnote
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23091,165 +23283,63 @@ numberwithin{footnote}{part}
 \end_layout
 
 \begin_layout Standard
-Um Fußnoten nach jedem Abschnitt
-\family roman
- auf 1 zurückzusetzen, 
-\family default
-müssen Sie folgenden Befehl in den LaTeX-Vorspann schreiben:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-@addtoreset{footnote}{section}
-\end_layout
-
-\begin_layout Standard
-Der folgende Befehl ändert die Fußnoten-Nummerierung auf kleingeschriebene
- römische Zahlen:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-thefootnote}{
-\backslash
-roman{footnote}}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Standard
 
-
-\backslash
-renewcommand{
-\backslash
-thefootnote}{
-\backslash
-roman{footnote}}
-\end_layout
-
-\end_inset
-
+\series bold
+Bemerkung:
+\series default
  
-\end_layout
-
-\begin_layout Standard
-Hier ist ein Beispiel für solch eine Fußnote.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Dies ist eine Fußnote mit kleingeschriebenen römischen Zahlen
-\end_layout
-
-\end_inset
-
- Mit dem folgenden Befehl wird auf die Standard-Nummerierung zurückgesetzt:
-\end_layout
-
-\begin_layout LyX-Code
+\series bold
 
 \backslash
-renewcommand{
-\backslash
-thefootnote}{
-\backslash
-arabic{footnote}}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-thefootnote}{
-\backslash
-arabic{footnote}}
+numberwithin
+\series default
+ verwendet ausschließlich arabische Ziffern für Fußnoten; vorherige Definitionen
+ werden überschrieben.
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
-Wie bereits in den Handbuchergänzungen beschrieben, sind 
-\family typewriter
+Um also z.\InsetSpace \thinspace{}
+B.
+ das Schema 
+\begin_inset Quotes gld
+\end_inset
+
+Kapitel.
+\backslash
+Roman{footnote}
+\begin_inset Quotes grd
+\end_inset
+
+ zu erhalten, muss dieser Befehl anstelle von 
+\series bold
 
 \backslash
-arabic
-\family default
- (1,2,3\SpecialChar \ldots{}
-), 
-\family typewriter
-
-\backslash
-roman
-\family default
- (i,ii,iii\SpecialChar \ldots{}
-), 
-\family typewriter
-
-\backslash
-Roman
-\family default
- (I,II,III\SpecialChar \ldots{}
-), 
-\family typewriter
-
-\backslash
-alph
-\family default
- (a,b,c\SpecialChar \ldots{}
-), 
-\family typewriter
-
-\backslash
-Alph
-\family default
- (A,B,C\SpecialChar \ldots{}
-) und ein paar Sonderzeichen als Fußnoten-Nummerierung erlaubt.
- Sonderzeichen, die die Zahlen 1 bis 9 ersetzen (, werden mit 
-\family typewriter
-
-\backslash
-fnsymbol
-\family default
- benutzt.
+numberwithin
+\series default
+ verwendet werden:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\color blue
-Bemerkung 1:
-\series default
- Mit Buchstaben können höchstens 26 Fußnoten nummeriert werden, weil nur
- 
-\emph on
-ein
-\emph default
- Buchstabe verwendet wird.
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-\color blue
-Bemerkung 2:
-\series default
- Mit Symbolen können höchstens 9 Fußnoten nummeriert werden.
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+thechapter.
+\backslash
+Roman{footnote}}
 \end_layout
 
 \begin_layout Subsection
@@ -23270,7 +23360,9 @@ Wenn Sie auf einer Seite mehrere Fußnoten haben, werden sie untereinander
 mm Zwischenraum einfügen:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 let
@@ -23278,9 +23370,7 @@ let
 myFoot
 \backslash
 footnote
-\end_layout
-
-\begin_layout LyX-Code
+\newline
 
 \backslash
 renewcommand{
@@ -23293,6 +23383,9 @@ vspace{1.5mm}}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 In einem zweispaltigen Dokument werden die Fußnoten am unteren Rand jeder
  Spalte gedruckt, Abbildung\InsetSpace ~
 
@@ -23311,9 +23404,9 @@ reference "abb:Fußnoten-Platzierung-in-einem"
 \end_inset
 
 , müssen Sie das LaTeX-Paket 
-\family typewriter
+\series bold
 ftnright
-\family default
+\series default
 
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! ftnright"
@@ -23323,7 +23416,9 @@ name "LaTeX-Pakete ! ftnright"
  mit folgendem Befehl im LaTeX-Vorspann einfügen:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 usepackage{ftnright}
@@ -23338,7 +23433,7 @@ status open
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23358,7 +23453,7 @@ framebox{
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23381,7 +23476,7 @@ name "abb:Standard-Fußnoten-Platzierung-in"
 
 Standard Fußnoten-Platzierung in einem zweispaltigen Dokument
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Standard Fußnoten-Platzierung in einem zweisp.
@@ -23412,7 +23507,7 @@ status open
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23432,7 +23527,7 @@ framebox{
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23455,12 +23550,12 @@ name "abb:Fußnoten-Platzierung-in-einem"
 
 Fußnoten-Platzierung in einem zweispaltigen Dokument mit dem LaTeX-Paket
  
-\family typewriter
+\series bold
 ftnright
-\family default
+\series default
 .
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Fußnoten-Platzierung mit 
@@ -23484,6 +23579,9 @@ ftnright
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 In einigen wissenschaftlichen Veröffentlichungen werden alle Fußnoten am
  Ende eines Abschnitts in einem eigenen Absatz wie in Abbildung\InsetSpace ~
 
@@ -23499,10 +23597,8 @@ Endnoten
 \emph default
 .
  Um das zu erreichen müssen Sie das LaTeX-Paket 
-\family typewriter
 \series bold
 endnotes
-\family default
 \series default
 
 \begin_inset LatexCommand index
@@ -23513,13 +23609,13 @@ name "LaTeX-Pakete ! endnotes"
  mit folgendem Befehl im LaTeX-Vorspann einfügen: 
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 usepackage{endnotes}
-\end_layout
-
-\begin_layout LyX-Code
+\newline
 
 \backslash
 let
@@ -23533,14 +23629,9 @@ endnote
 Um die gesammelten Fußnoten zu drucken fügen Sie den ERT-Befehl
 \series bold
  
-\family typewriter
-\series default
-
 \backslash
-the\SpecialChar \-
-end\SpecialChar \-
-notes
-\family default
+theendnotes
+\series default
  am Ende des Abschnitts oder Kapitels ein.
 \end_layout
 
@@ -23553,7 +23644,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23572,7 +23663,7 @@ framebox{
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23594,13 +23685,13 @@ name "abb:endnotes----Die"
 \end_inset
 
 
-\family typewriter
+\series bold
 endnotes
-\family default
+\series default
  -- Die Fußnoten werden am Ende eines Abschnitts in einem eigenen Paragraf
  gedruckt.
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset LatexCommand label
@@ -23609,9 +23700,9 @@ name "abb:endnotes----Die"
 \end_inset
 
 
-\family typewriter
+\series bold
 endnotes
-\family default
+\series default
  -- Die Fußnoten werden am Ende gedruckt
 \end_layout
 
@@ -23631,6 +23722,9 @@ endnotes
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
 Die Absatzüberschrift für die Endnoten wird nicht automatisch in die Dokumentspr
 ache übersetzt.
  Der folgende Befehl im LaTeX-Vorspann  übersetzt den englischen Namen 
@@ -23652,7 +23746,9 @@ Anmerkungen
 :
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 renewcommand{
@@ -23661,7 +23757,10 @@ notesname}{Anmerkungen}
 \end_layout
 
 \begin_layout Standard
-Wenn Sie in den ERT-Befehlen von Abschnitt\InsetSpace ~
+\begin_inset VSpace medskip
+\end_inset
+
+Wenn Sie in den Befehlen von Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "uab:Fußnoten-Nummerierung"
@@ -23669,32 +23768,56 @@ reference "uab:Fußnoten-Nummerierung"
 \end_inset
 
  
-\family typewriter
-footnote
-\family default
+\series bold
+
+\backslash
+thefootnote
+\series default
  durch 
-\family typewriter
+\series bold
+
+\backslash
+theendnote
+\series default
+ ersetzen, können Sie die Nummerierung von Endnoten ändern.
+ Um die Endnoten-Nummern zurückzusetzen, benutzen Sie den Befehl 
+\series bold
+
+\backslash
+@addtoreset
+\series default
+ wie in Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Footnote-Numbering"
+
+\end_inset
+
+ beschrieben und ersetzen 
+\series bold
+footnote
+\series default
+ durch 
+\series bold
 endnote
-\family default
- ersetzen, können Sie die Nummerierung von Endnoten ändern und die Endnoten-Numm
-er zurücksetzen.
- 
+\series default
+.
 \end_layout
 
 \begin_layout Standard
 Um nur eine Marke für eine Endnote zu definieren, benutzen Sie den Befehl
  
-\family typewriter
+\series bold
 
 \backslash
 endnotemark[Nummer]
-\family default
+\series default
  ähnlich wie 
-\family typewriter
+\series bold
 
 \backslash
 footnotemark
-\family default
+\series default
  Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -23706,10 +23829,13 @@ reference "abs:Fußnoten"
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Mit dem LaTeX-Paket 
-\family typewriter
+\series bold
 footmisc
-\family default
+\series default
 
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! footmisc"
@@ -23732,7 +23858,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \end_inset
 
-, finden Sie weitere Anregungen.
+, finden Sie weiteres zu Fußnoten.
 \end_layout
 
 \begin_layout Section
@@ -23806,16 +23932,17 @@ In der Druckausgabe von einseitig formatierten Dokumenten werden Randnotizen
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Um eine Randnotiz am inneren Rand zu drucken, fügen Sie den Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 
 \series bold
 
 \backslash
-
-\series default
 reversemarginpar
 \end_layout
 
@@ -23823,7 +23950,7 @@ reversemarginpar
 als ERT vor einer Randnotiz ein.
  Das gilt dann für alle folgenden Randnotizen.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23839,7 +23966,7 @@ reversemarginpar
 status open
 
 \begin_layout Standard
-Hier ist ein Beispiel.
+Hier ist ein Beispiel im inneren Rand.
 \end_layout
 
 \end_inset
@@ -23847,7 +23974,10 @@ Hier ist ein Beispiel.
 
 \newline
 
-\color blue
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
  
 \series bold
 Achtung:
@@ -23855,9 +23985,27 @@ Achtung:
  Oft ist am inneren Rand nicht genügend Platz, um den Text korrekt zu drucken.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+Um zur Standard-Platzierung zurückzukehren, fügen Sie den Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+normalmarginpar
+\end_layout
+
+\begin_layout Standard
+als ERT ein.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23868,36 +24016,33 @@ normalmarginpar
 
 \end_inset
 
-Um zur Standard-Platzierung zurückzukehren, fügen Sie den Befehl
-\end_layout
 
-\begin_layout LyX-Code
-
-\series bold
-
-\backslash
-normalmarginpar
-\end_layout
+\begin_inset Note Greyedout
+status open
 
 \begin_layout Standard
-als ERT ein.
-\newline
 
 \series bold
-\color blue
 Achtung:
 \series default
  Der Befehl wird missachtet, wenn er im selben Absatz wie 
-\family typewriter
+\series bold
 
 \backslash
-reverse\SpecialChar \-
-marginpar
-\family default
+reversemarginpar
+\series default
  verwendet wird.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Ähnlich wie in Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -23910,7 +24055,7 @@ reference "uab:Mehrfache-Zeilen-in"
  Um das zu vermeiden, können Sie den Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 
 \series bold
 
@@ -23925,7 +24070,7 @@ status open
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23940,6 +24085,570 @@ hspace{0pt}
 \family roman
 \series medium
 EinSehrLangesWort am Anfang, das umgebrochen wird.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Randnotizen können ohne Tricks nicht in Tabellen, Gleitumgebungen und Fußnoten
+ verwendet werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifmarginnote
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Der folgende Abschnitt wird nur gedruckt, wenn das LaTeX-Paket 
+\series bold
+marginnote
+\series default
+ installiert ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diese Einschränkung kann umgangen werden, wenn das LaTeX-Paket 
+\series bold
+marginnote
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-Pakete ! marginnote"
+
+\end_inset
+
+ verwendet wird.
+ Wenn Sie diese zwei Zeilen zum LaTeX-Vorspann hinzufügen, wird der Befehl,
+ der von LyX für Randnotizen verwendet wird umdefiniert, so dass der Befehl
+ des Pakets 
+\series bold
+marginnote
+\series default
+ für Randnotizen verwendet wird:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage{marginnote}
+\newline
+
+\backslash
+let
+\backslash
+marginpar
+\backslash
+marginnote
+\end_layout
+
+\begin_layout Standard
+Dies wird auch in diesem Dokument verwendet, denn 
+\series bold
+marginnote
+\series default
+ hat eine andere nütziche Eigenschaft: Man kann einen vertikalen Versatz
+ für Randnotizen angeben.
+ Dies wird oft für ein besseres Seitenformat verwendet, wenn zu viele Randnotize
+n sind zu dicht beieinander sind.
+ Der Versatz wird in LyX als ERT direkt nach der Randnotiz mit dem Schema
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+[Versatz]
+\end_layout
+
+\begin_layout Standard
+angegeben.
+ Dabei ist der Versatz eine Länge mit einer der Einheiten, die in Tabelle\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "tab:Units"
+
+\end_inset
+
+ aufgelistet sind.
+ Eine negativer Wert versetzt die Randnotiz nach oben, ein positiver Wer
+ nach unten.
+ Zum Beispiel ist die Randnotiz neben diesem Text um 1.5\InsetSpace \thinspace{}
+cm mit dem ERT-Befehl
+  
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+[-1.5cm]
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ nach oben versetzt
+\begin_inset Marginal
+status open
+
+\begin_layout Standard
+Diese Randnotiz ist 1.5\InsetSpace \thinspace{}
+cm von ihrer Originalposition nach oben versetzt.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+[-1.5cm]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Mit 
+\series bold
+marginnote
+\series default
+ können Sie auch die Ausrichtung des Texts in der Randnotiz ändern.
+ Zum Beispiel setzen die Befehle
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+raggedleftmarginnote}{
+\backslash
+centering}
+\newline
+
+\backslash
+renewcommand*{
+\backslash
+raggedrightmarginnote}{
+\backslash
+centering}
+\end_layout
+
+\begin_layout Standard
+die Ausrichtung auf zentriert.
+ 
+\series bold
+
+\backslash
+raggedleftmarginnote
+\series default
+ bewirkt dabei, dass die Randnotiz auf der linken Seite erscheint.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand*{
+\backslash
+raggedleftmarginnote}{
+\backslash
+centering}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand*{
+\backslash
+raggedrightmarginnote}{
+\backslash
+centering}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Standard
+Der Text dieser Randnotiz ist zentriert ausgerichtet.
+\end_layout
+
+\end_inset
+
+ Die Voreinstellung ist
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+raggedleftmarginnote}{
+\backslash
+raggedleft}
+\newline
+
+\backslash
+renewcommand*{
+\backslash
+raggedrightmarginnote}{
+\backslash
+raggedright}
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand*{
+\backslash
+raggedleftmarginnote}{
+\backslash
+raggedleft}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand*{
+\backslash
+raggedrightmarginnote}{
+\backslash
+raggedright}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Für weitere Fähigkeiten des Pakets 
+\series bold
+marginnote
+\series default
+ sei auf dessen Dokumentation verwiesen 
+\begin_inset LatexCommand cite
+key "marginnote"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Das Format von Randnotizen kann allgemein durch Änderung ihrer Definition
+ geändert werden.
+ Um z.\InsetSpace \thinspace{}
+B.
+ eine Überschrift für alle Randnotizen mit dem unterstrichenen, serifenlosen
+ und fettgedruckten Text 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+\series bold
+\bar under
+Achtung!
+\family default
+\series default
+\bar default
+
+\begin_inset Quotes erd
+\end_inset
+
+ zu erstellen, fügen Sie dies zum LaTeX-Vorspann hinzu:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+myMarginpar
+\backslash
+marginpar
+\newline
+
+\backslash
+renewcommand{
+\backslash
+marginpar}[1]{
+\backslash
+myMarginpar{%
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+
+\backslash
+hspace{0pt}
+\backslash
+textsf{
+\backslash
+textbf{
+\backslash
+underbar{Achtung!}}}%
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+
+\backslash
+vspace{1.5mm}
+\backslash
+
+\backslash
+#1}}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+let
+\backslash
+myMarginpar
+\backslash
+marginpar
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+marginpar}[1]{
+\backslash
+myMarginpar{%
+\end_layout
+
+\begin_layout Standard
+
+   
+\backslash
+textsf{
+\backslash
+textbf{
+\backslash
+underbar{Achtung!}}}%
+\end_layout
+
+\begin_layout Standard
+
+   
+\backslash
+vspace{1.5mm}
+\backslash
+
+\backslash
+#1}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Standard
+Dies ist eine Randnotiz mit einer definierten Überschrift.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+[-1.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+marginpar}[1]{
+\backslash
+myMarginpar{#1}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Das Format wurde nur für dieses Beispiel geändert.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Der folgende Hinweis wird gedruckt, wenn das LaTeX-Paket 
+\series bold
+marginnote
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+marginnote
+\series default
+ muss installiert sein, um den folgenden Abschnitt in der Ausgabe zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
@@ -24020,7 +24729,7 @@ Box (Minipage)
  erscheint: 
 \begin_inset Graphics
 	filename clipart/StandardBoxQt4.png
-	display none
+	lyxscale 80
 	scale 60
 
 \end_inset
@@ -24073,9 +24782,12 @@ Boxen sind nicht nummeriert, und Sie können deshalb nicht auf sie verweisen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
 
 \series bold
-\color blue
 Bemerkung\InsetSpace ~
 1:
 \series default
@@ -24083,10 +24795,18 @@ Bemerkung\InsetSpace ~
  Leerzeichen einfügen, um die Box vom nachfolgenden Text zu trennen.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
 \begin_layout Standard
 
 \series bold
-\color blue
 Bemerkung\InsetSpace ~
 2:
 \series default
@@ -24101,10 +24821,18 @@ Beschreibung-
 Umgebungen nicht verwendet werden.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
 \begin_layout Standard
 
 \series bold
-\color blue
 Bemerkung\InsetSpace ~
 3:
 \series default
@@ -24121,6 +24849,11 @@ reference "abs:Silbentrennung-unterbinden"
 \end_inset
 
  beschrieben.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -24199,7 +24932,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "depth"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24230,7 +24963,7 @@ width "20col%"
 special "none"
 height "2in"
 height_special "height"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24257,7 +24990,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24282,7 +25015,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "width"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24331,7 +25064,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24358,7 +25091,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24384,7 +25117,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24407,6 +25140,9 @@ Absatz-Einstellungen
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Wenn Sie eine 
 \family sans
 Innere\InsetSpace ~
@@ -24432,7 +25168,7 @@ width "20col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24458,7 +25194,7 @@ width "20col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24484,7 +25220,7 @@ width "20col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24510,7 +25246,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24569,7 +25305,7 @@ width "30col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align left
@@ -24616,7 +25352,7 @@ width "90col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align left
@@ -24660,11 +25396,11 @@ Verzierung
 Rechteckige\InsetSpace ~
 Box Um die Box wird ein rechteckiger Rahmen gezogen.
  Die Rahmendicke wird durch 
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
  festgelegt.
  
 \begin_inset Box Boxed
@@ -24677,7 +25413,7 @@ width "21col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24709,7 +25445,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Ovale\InsetSpace ~
@@ -24740,7 +25476,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Ovale\InsetSpace ~
@@ -24757,11 +25493,11 @@ dick
 Schattierte\InsetSpace ~
 Box Zeichnet einen Rahmen mit Schatten um die Box.
  Die Rahmendicke wird durch 
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
  festgelegt, der Schatten ist 4\InsetSpace \thinspace{}
 pt breit.
  
@@ -24775,7 +25511,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Schattierte\InsetSpace ~
@@ -24793,25 +25529,25 @@ gerahmte\InsetSpace ~
 Box Zeichnet einen doppelten Rahmen um die Box Der innere
  Rahmen ist 0.75\InsetSpace \thinspace{}
 
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
  breit, der äußere 1.5\InsetSpace \thinspace{}
 
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
 , der Zwischenraum 1.5\InsetSpace \thinspace{}
 
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
 \InsetSpace \thinspace{}
 +\InsetSpace \thinspace{}
 0.5\InsetSpace \thinspace{}
@@ -24827,7 +25563,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Doppelt\InsetSpace ~
@@ -24841,23 +25577,38 @@ Box
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Die Aufschrift der Box in LyX ändert sich mit dem gewählten Rahmen.
+ Um verschiedene Rahmenstile zu verwenden, muss das LaTeX-Paket fancybox
+\begin_inset LatexCommand index
+name "LaTeX-Pakete ! fancybox"
+
+\end_inset
+
+ installiert sein.
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Der Standardwert für 
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
  ist 0.4\InsetSpace \thinspace{}
 pt.
  Mit dem folgenden ERT-Befehl kann er auf 2\InsetSpace \thinspace{}
 pt gesetzt werden:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 setlength{
@@ -24867,7 +25618,7 @@ fboxrule}{2pt}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24881,11 +25632,6 @@ fboxrule}{2pt}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -24896,7 +25642,7 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24907,11 +25653,8 @@ pt
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24929,18 +25672,23 @@ fboxrule}{0.4pt}
 
 \begin_layout Standard
 \noindent
+\begin_inset VSpace bigskip
+\end_inset
+
 Der Abstand zwischen dem Rahmen und dem Inhalt ist standardmäßig 3\InsetSpace \thinspace{}
 pt.
  Sie können das ändern, indem Sie den Wert von 
-\family typewriter
+\series bold
 
 \backslash
 fboxsep
-\family default
+\series default
  mit einem ERT-Befehl ändern:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 setlength{
@@ -24955,7 +25703,7 @@ pt, wie in der folgenden Box:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24969,11 +25717,6 @@ fboxsep}{10pt}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -24984,16 +25727,16 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
 Rechteckige Box mit 
-\family typewriter
+\series bold
 
 \backslash
 fboxsep
-\family default
+\series default
 \InsetSpace \thinspace{}
 =\InsetSpace \thinspace{}
 10\InsetSpace \thinspace{}
@@ -25003,11 +25746,8 @@ pt
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25025,17 +25765,22 @@ fboxsep}{3pt}
 
 \begin_layout Standard
 \noindent
+\begin_inset VSpace bigskip
+\end_inset
+
 Der Durchmesser der abgerundeten Ecken kann mit 
-\family typewriter
+\series bold
 
 \backslash
 cornersize
-\family default
+\series default
  gesetzt werden.
  Der ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 cornersize*{1cm}
@@ -25047,7 +25792,9 @@ cm.
  Der ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 cornersize{num}
@@ -25062,17 +25809,17 @@ Minimum(Breite der Box, Höhe der Box)
 \family default
 .
  Der Standardwert ist 
-\family typewriter
+\series bold
 
 \backslash
 cornersize{0.5}
-\family default
+\series default
 .
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25084,11 +25831,6 @@ cornersize*{1.5cm}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Box Ovalbox
 position "c"
 hor_pos "c"
@@ -25099,16 +25841,16 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
 Ovale Box, dicker Rand, mit 
-\family typewriter
+\series bold
 
 \backslash
 cornersize
-\family default
+\series default
 \InsetSpace \thinspace{}
 =\InsetSpace \thinspace{}
 1.5\InsetSpace \thinspace{}
@@ -25118,11 +25860,8 @@ cm
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25138,17 +25877,22 @@ cornersize{0.5}
 
 \begin_layout Standard
 \noindent
+\begin_inset VSpace bigskip
+\end_inset
+
 Die Breite des Schattens wird mit 
-\family typewriter
+\series bold
 
 \backslash
 shadowsize
-\family default
+\series default
  festgelegt.
  Mit dem ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 setlength{
@@ -25163,7 +25907,7 @@ pt festgelegt.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25177,11 +25921,6 @@ shadowsize}{2pt}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Box Shadowbox
 position "c"
 hor_pos "c"
@@ -25192,16 +25931,16 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
 Schattierte Box mit 
-\family typewriter
+\series bold
 
 \backslash
 shadowsize
-\family default
+\series default
 \InsetSpace \thinspace{}
 =\InsetSpace \thinspace{}
 2\InsetSpace \thinspace{}
@@ -25211,11 +25950,8 @@ pt
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25233,6 +25969,9 @@ shadowsize}{4pt}
 
 \begin_layout Standard
 \noindent
+\begin_inset VSpace bigskip
+\end_inset
+
 Die geänderten Werte gelten für alle Boxen, die auf den entsprechenden Befehl
  folgen.
 \end_layout
@@ -25275,7 +26014,9 @@ Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Variabler\InsetSpace ~
 horiz.\InsetSpace ~
-Abstand.
+Abstand
+\family default
+).
 \end_layout
 
 \begin_layout Standard
@@ -25338,6 +26079,8 @@ height_special "totalheight"
 status open
 
 \begin_layout Standard
+
+\lang english
 This is an English Text.
  This is an English Text.
  This is an English Text.
@@ -25355,9 +26098,11 @@ This is an English Text.
  This is an English Text.
  This is an English Text.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
+
+\lang english
 This is an English footnote.
 \end_layout
 
@@ -25374,14 +26119,12 @@ This is an English footnote.
 
 \begin_layout Standard
 \noindent
+\begin_inset VSpace bigskip
+\end_inset
+
 Eine andere Anwendung für Minipages sind Fußnoten in Tabellen.
  Wegen einer LaTeX-Einschränkung erscheinen Fußnoten nicht am Ende der Seite,
- auf der die Tabelle gedruckt wird:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
+ auf der die Tabelle gedruckt wird: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
 <features>
@@ -25414,7 +26157,7 @@ Eine andere Anwendung für Minipages sind Fußnoten in Tabellen.
 \begin_layout Standard
 3
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Dies ist eine Fußnote in einer Tabelle.
@@ -25576,7 +26319,7 @@ status open
 \begin_layout Standard
 3
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Dies ist eine Fußnote in einer Tabelle.
@@ -25688,6 +26431,9 @@ h
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Innerhalb von Minipages werden die Absatz-Einstellungen des Dokuments ignoriert.
  Das bedeutet, dass zwischen Absätzen kein Leerraum eingefügt wird oder
  Absätze nicht eingerückt werden, obwohl Sie das in 
@@ -25704,11 +26450,11 @@ Textformat
  festgelegt haben.
  Wenn Sie es trotzdem wollen, müssen Sie es manuell machen.
  Eine Standardeinrückung zum Beispiel erreichen Sie mit dem ERT-Befehl 
-\family typewriter
+\series bold
 
 \backslash
 hspace*{1em}
-\family default
+\series default
 .
 \end_layout
 
@@ -25725,13 +26471,21 @@ reference "uab:Farbe-für-Absätze"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
 
 \series bold
-\color blue
 Bemerkung:
 \series default
  In Minipages sind keine Gleitobjekte oder Randnotizen erlaubt, aber Minipages
  können in Tabellen, Gleitobjekten und anderen Boxen benutzt werden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -25770,7 +26524,7 @@ width "33col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Dies ist Text in einer Parbox.
@@ -25780,7 +26534,7 @@ Dies ist Text in einer Parbox.
 \begin_layout Standard
 Diese Fußnote wird nicht gedruckt:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Diese Fußnote ist in einer Parbox und wird deshalb nicht gedruckt.
@@ -25829,7 +26583,9 @@ name "Boxen ! zur Vermeidung von Silbentrennung"
 
 \begin_layout Standard
 Sie können eine spezielle Box benutzen, um Silbentrennungen zu unterbinden.
- Hier ist ein Beispiel: 
+\newline
+Hier
+ ist ein Beispiel: 
 \end_layout
 
 \begin_layout Standard
@@ -25849,7 +26605,9 @@ Um das zu verhindern, fügen Sie vor dem Wort, das nicht getrennt werden
  soll, den ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 mbox{
@@ -25862,11 +26620,8 @@ ein ERT, Hinter dem Wort fügen Sie
 \begin_inset Quotes gld
 \end_inset
 
-
-\family typewriter
-\series default
 }
-\family default
+\series default
 
 \begin_inset Quotes grd
 \end_inset
@@ -25899,7 +26654,7 @@ einsehrserlangeswort
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25912,13 +26667,21 @@ status open
 \end_layout
 
 \begin_layout Standard
-Etwas einfacher geht es mit 
-\family typewriter
+Alternativ dazu kann man auch den Befehl 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
 
 \backslash
 -
-\family default
- als ERT:
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ als ERT direkt vor das Wort setzen:
 \end_layout
 
 \begin_layout Standard
@@ -25928,7 +26691,7 @@ In dieser Zeile wird ein sehr langes Wort NICHT getrennt, nämlich
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25949,9 +26712,9 @@ einsehrserlangeswort
 \begin_layout Standard
 Natürlich ragt das Wort jetzt in den Seitenrand hinein.
  Wenn Sie das nicht wollen, müssen Sie einen manuellen Zeilenumbruch (
-\family sans
-Strg+Return
-\family default
+\series bold
+Strg-Return
+\series default
 ) einfügen: 
 \end_layout
 
@@ -25960,7 +26723,7 @@ In dieser Zeile wird ein sehr langes Wort NICHT getrennt, nämlich
 \newline
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25981,7 +26744,7 @@ einsehrserlangeswort
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26017,23 +26780,25 @@ name "Boxen ! raisebox"
 
 \begin_layout Standard
 Mit dem LaTeX-Befehl 
-\family typewriter
+\series bold
 
 \backslash
 raisebox
-\family default
+\series default
  können Sie Worte, Buchstaben oder andere Boxen vertikal bezüglich des umgebende
 n Textes ausrichten.
  
-\family typewriter
+\series bold
 
 \backslash
 raisebox
-\family default
+\series default
  wird folgendermaßen benutzt:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 raisebox{Verschiebung}[oben][unten]{Text}
@@ -26085,7 +26850,9 @@ p
  an der Grundlinie auszurichten, müssen Sie den ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 raisebox{
@@ -26099,9 +26866,9 @@ vor dem Wort einfügen und
 \end_inset
 
 
-\family typewriter
+\series bold
 }
-\family default
+\series default
 
 \begin_inset Quotes grd
 \end_inset
@@ -26112,7 +26879,7 @@ vor dem Wort einfügen und
 \begin_layout Standard
 Dies ist eine Zeile, in der das Wort 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26135,7 +26902,7 @@ provokant
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26148,6 +26915,9 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Wenn Sie Buchstaben nach oben oder unten verschieben, wird der Zeilenabstand
  gedehnt:
 \end_layout
@@ -26155,7 +26925,7 @@ Wenn Sie Buchstaben nach oben oder unten verschieben, wird der Zeilenabstand
 \begin_layout Standard
 Dies ist eine Zeile, in der das Wort 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26178,7 +26948,7 @@ provokant
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26193,7 +26963,7 @@ status open
 \begin_layout Standard
 Dies ist eine Zeile, in der das Wort 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26214,7 +26984,7 @@ testen
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26231,7 +27001,9 @@ cm nach oben verschoben wurde.
 Wenn Sie das nicht wollen, können Sie die Boxhöhe auf 0 setzen:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 raisebox{-
@@ -26242,7 +27014,7 @@ depth}[0pt]{
 \begin_layout Standard
 Dies ist eine Zeile, in der das Wort 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26265,7 +27037,7 @@ provokant
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26280,7 +27052,7 @@ status open
 \begin_layout Standard
 Dies ist eine Zeile, in der das Wort 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26301,7 +27073,7 @@ testen
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26344,14 +27116,18 @@ name "Farbe ! für Text-Hintergrund"
 \begin_layout Standard
 Um einen Text mit einer Hintergrundfarbe zu versehen, muss der Text in einer
  sogenannten 
-\family typewriter
+\begin_inset Quotes gld
+\end_inset
+
 colorbox
-\family default
+\begin_inset Quotes grd
+\end_inset
+
  stehen.
  Dafür muss das LaTeX-Paket 
-\family typewriter
+\series bold
 color
-\family default
+\series default
 
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! color"
@@ -26361,17 +27137,17 @@ name "LaTeX-Pakete ! color"
  im LaTeX-Vorspann mit folgendem Befehl geladen werden:
 \end_layout
 
-\begin_layout LyX-Code
-
-\backslash
-@ifundefined{textcolor}
-\end_layout
-
-\begin_layout LyX-Code
+\begin_layout Standard
 
 \series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined{textcolor}
+\newline
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26382,8 +27158,6 @@ hphantom{ }
 
 \end_inset
 
-
-\series default
 {
 \backslash
 usepackage{color}}{}
@@ -26391,20 +27165,20 @@ usepackage{color}}{}
 
 \begin_layout Standard
 Wenn Sie Text einfärben, lädt LyX das Paket 
-\family typewriter
+\series bold
 color
-\family default
+\series default
  automatisch.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
-\family typewriter
+\series bold
 
 \backslash
 @ifundefined
-\family default
+\series default
  vermeidet ein doppeltes Laden.
 \end_layout
 
@@ -26414,16 +27188,21 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
 Colorboxen werden mit dem Befehl 
-\family typewriter
+\series bold
 
 \backslash
 colorbox
-\family default
+\series default
  erzeugt:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 colorbox{Farbe}{Boxinhalt}
@@ -26502,7 +27281,9 @@ Um zum Beispiel ein Wort auf einem roten Hintergrund zu drucken, fügen sie
  den ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 colorbox{red}{
@@ -26516,11 +27297,8 @@ vor dem Wort ein.
 \begin_inset Quotes gld
 \end_inset
 
-
-\family typewriter
-\series default
 }
-\family default
+\series default
 
 \begin_inset Quotes grd
 \end_inset
@@ -26532,7 +27310,7 @@ vor dem Wort ein.
 \begin_layout Standard
 In dieser Zeile hat 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26545,7 +27323,7 @@ colorbox{red}{
 
 Achtung!
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26558,17 +27336,22 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Wenn der Rahmen der Box eine andere Farbe haben soll, können Sie den Befehl
  
-\family typewriter
+\series bold
 
 \backslash
 fcolorbox
-\family default
+\series default
  verwenden:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 fcolorbox{Rahmenfarbe}{Boxfarbe}{Boxinhalt}
@@ -26576,31 +27359,31 @@ fcolorbox{Rahmenfarbe}{Boxfarbe}{Boxinhalt}
 
 \begin_layout Standard
 
-\family typewriter
+\series bold
 
 \backslash
 fcolorbox
-\family default
+\series default
  ist eine Erweiterung von 
-\family typewriter
+\series bold
 
 \backslash
 colorbox
-\family default
+\series default
 .
  Die Rahmendicke und der Abstand zwischen Rahmen und Boxinhalt können mit
  
-\family typewriter
+\series bold
 
 \backslash
 fboxrule
-\family default
+\series default
  und 
-\family typewriter
+\series bold
 
 \backslash
 fboxsep
-\family default
+\series default
  gesteuert werden, wie in Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -26615,7 +27398,9 @@ reference "abs:Gerahmte-Boxen"
 Für das folgende Beispiel wurde der Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 fcolorbox{cyan}{magenta}{
@@ -26625,13 +27410,10 @@ fcolorbox{cyan}{magenta}{
 benutzt.
  Hier wurden die Rahmendicke und der Abstand auf 1\InsetSpace \thinspace{}
 mm gesetzt:
-\end_layout
+\newline
 
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26646,7 +27428,7 @@ fboxsep 1mm
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26659,7 +27441,7 @@ fcolorbox{cyan}{green}{
 
 Dies ist Text in einer farbigen, gerahmten Box.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26672,14 +27454,14 @@ status open
 \end_layout
 
 \begin_layout Standard
-Natürlich gibt es auch farbigen Text in einer Colorbox:
-\end_layout
+\begin_inset VSpace bigskip
+\end_inset
 
-\begin_layout Standard
-\noindent
-\align center
+Natürlich gibt es auch farbigen Text in einer Colorbox:
+\newline
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26696,7 +27478,7 @@ Dies ist farbiger Text in einer farbigen, gerahmten Box.
 \color none
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26707,7 +27489,7 @@ status open
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26724,26 +27506,30 @@ fboxsep 3pt
 \end_layout
 
 \begin_layout Standard
-\noindent
+\begin_inset VSpace bigskip
+\end_inset
 
-\series bold
-\color blue
-Bemerkung 1:
-\series default
- Der gelbe Text wird in der dvi-Ansicht schwarz aussehen, aber dennoch gelb
- gedruckt.
+
 \end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
 
 \begin_layout Standard
 \noindent
 
 \series bold
-\color blue
-Bemerkung 2:
+Bemerkung:
 \series default
  Text in Colorboxen kann nicht umgebrochen werden.
  Für Text mit mehreren Zeilen müssen Sie eine Box in einer Colorbox benutzen,
  wie im folgenden beschrieben.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -26768,7 +27554,9 @@ Um die Hintergrundfarbe für mehr als eine Textzeile zu setzen, müssen Sie
  Vor der Minipage fügen Sie den ERT-Befehl
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 colorbox{color}{
@@ -26782,11 +27570,8 @@ ein.
 \begin_inset Quotes gld
 \end_inset
 
-
-\family typewriter
-\series default
 }
-\family default
+\series default
 
 \begin_inset Quotes grd
 \end_inset
@@ -26795,15 +27580,8 @@ ein.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -26825,7 +27603,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Dies ist Text mit einer Hintergrundfarbe.
@@ -26956,7 +27734,7 @@ c
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27063,9 +27841,9 @@ Schreibmaschine
 
 \begin_layout Standard
 Wenn Sie das LaTeX-Paket 
-\family typewriter
+\series bold
 hyperref
-\family default
+\series default
 
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! hyperref"
@@ -27077,9 +27855,12 @@ name "LaTeX-Pakete ! hyperref"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
 
 \series bold
-\color blue
 Bemerkung:
 \series default
  Wenn Sie die folgenden Buchstaben benutzen wollen, müssen Sie mit einem
@@ -27121,12 +27902,19 @@ Bemerkung:
  aufhören.
 \end_layout
 
-\begin_layout Standard
-Um wirkliche Hyperlinks zu erzeugen, ohne gezwungen zu sein, die Link-Adresse
- zum Text schreiben zu müssen, können Sie den ERT-Befehl
+\end_inset
+
+
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+Um wirkliche Hyperlinks zu erzeugen, ohne gezwungen zu sein, die Link-Adresse
+ im Text angeben zu müssen, können Sie den ERT-Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 
 \backslash
 href{Linkadresse}{Linktext}
@@ -27134,9 +27922,47 @@ href{Linkadresse}{Linktext}
 
 \begin_layout Standard
 benutzen.
- Für die Homepage von LyX sähe das so aus: 
+ Um z.\InsetSpace \thinspace{}
+B.
+ einen Link auf LyXs Webseite zu setzen, schreiben Sie den ERT-Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+href{http://www.lyx.org}{
+\end_layout
+
+\begin_layout Standard
+Danach fügen Sie den Linktext 
+\begin_inset Quotes gld
+\end_inset
+
+LyX-Homepage
+\begin_inset Quotes grd
+\end_inset
+
+ als normalen Text ein, gefolgt von einer schließenden geschweiften Klammer
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+}
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ als ERT.
+ Dies ist das Ergebnis:
+\newline
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27149,7 +27975,7 @@ href{http://www.lyx.org}{
 
 LyX-Homepage
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27178,7 +28004,7 @@ mailto:
 \newline
 Email an 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27191,7 +28017,7 @@ href{mailto:lyx-docs@lists.lyx.org?subject=LyX's documentation}{
 
 lyx-docs Mailing-Liste
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27205,20 +28031,31 @@ status open
 
 \begin_layout Standard
 Wenn Sie 
-\family typewriter
+\series bold
 
 \backslash
 href
-\family default
+\series default
  anstatt LyXs URL-Box benutzen, hat das den Vorteil, dass Sie einen eigenen
  Textstil definieren können.
- Sie können auch Trennhilfen und manuelle Zeilenumbrüche setzen, damit lange
- Texte richtig umgebrochen werden.
- Mit einer Option in 
-\family typewriter
+ Sie können dann auch Trennhilfen und manuelle Zeilenumbrüche setzen, damit
+ lange Texte richtig umgebrochen werden.
+ Des Weiteren können Sie mit einer Option in 
+\series bold
 hyperref
-\family default
-s Ladebefehl können Sie denselben Stil für alle Hyperlinks definieren.
+\series default
+s
+\series bold
+ 
+\series default
+Ladebefehl denselben Stil für alle Hyperlinks definieren und die oben erwähnten
+ Einschränkungen gelten nicht für 
+\series bold
+
+\backslash
+href
+\series default
+.
 \end_layout
 
 \begin_layout Chapter
@@ -27305,7 +28142,7 @@ Vorlagen
 \begin_layout Description
 ChessDiagram Diese Vorlage unterstützt Schachdiagramme, die mit 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27322,7 +28159,7 @@ XBoard
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27339,7 +28176,7 @@ Date fügt ein Datum mit dem Format
 \emph on
 Tag-Monat-Jahr
 \emph default
- (dd-mm-jjjj) ein.
+ ein.
  Hier ist ein Beispiel: 
 \begin_inset External
 	template Date
@@ -27348,44 +28185,25 @@ Tag-Monat-Jahr
 \end_inset
 
 .
- Ein einmal eingefügtes Datum wird nicht aktualisiert.
- Das Datum ist in LyX nicht zu sehen, nur in der Druckausgabe.
 \newline
-Es gibt noch
- zwei andere Möglichkeiten, ein Datum einzufügen:
-\newline
-
+Das Datum ist in LyX nicht zu sehen, nur in der Druckausgabe.
+ Es gibt noch zwei andere Möglichkeiten, ein Datum einzufügen: Über das
+ Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Datum
 \family default
-: Freitag, 15 Juni 2007
-\newline
-mit dem LaTeX-Befehl 
-\family typewriter
+ und mit dem LaTeX-Befehl 
+\series bold
 
 \backslash
 today
-\family default
-: 
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-today
-\end_layout
-
-\end_inset
-
+\series default
 .
-\newline
-Die verschiedenen Methoden werden in Tabelle\InsetSpace ~
+ Die verschiedenen Methoden werden in Tabelle\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "tab:Comparison-of-the"
+reference "tab:Vergleich-der-Datums-Eingaben"
 
 \end_inset
 
@@ -27395,7 +28213,7 @@ reference "tab:Comparison-of-the"
 \begin_layout Description
 LilyPond Mit dieser Vorlage können Sie Noten mit dem Programm 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27412,7 +28230,7 @@ LilyPond
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27451,7 +28269,7 @@ reference "abs:Grafik-Dialog"
 \begin_layout Description
 XFig Diese Vorlage unterstützt Bilder, die mit dem Programm 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27468,7 +28286,7 @@ Xfig
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27552,7 +28370,7 @@ Datum
 
 \begin_layout Standard
 Befehl 
-\family typewriter
+\series bold
 
 \backslash
 today
@@ -27702,16 +28520,15 @@ Karteikarte
 \end_layout
 
 \begin_layout Standard
-LyX kann externes Material entweder als Bild oder als Box wie hier:
-\newline
-
+LyX kann externes Material entweder als Box wie hier: 
 \begin_inset Graphics
 	filename clipart/ExternesMaterialQt4.png
+	lyxscale 80
 	scale 60
 
 \end_inset
 
- darstellen.
+ oder als Bild darstellen.
  Das hängt davon ab, ob Sie im Dialogfenster
 \family sans
  Externes\InsetSpace ~
@@ -27722,7 +28539,7 @@ Karteikarte
 \family sans
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27734,7 +28551,7 @@ status open
 X-Ansicht in\InsetSpace ~
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -27750,7 +28567,7 @@ anzeigen
 \end_layout
 
 \begin_layout Standard
-In 
+Im LyX-Handbuch 
 \emph on
 Anpassung
 \emph default
@@ -27776,20 +28593,7 @@ name "Unterdokument"
 \begin_layout Standard
 Unterdokumente benutzt man bei größeren Dokumenten, die aus mehreren Kapiteln
  oder Abschnitten bestehen.
- Für die Pflege ist das oft hilfreich und manchmal auch erforderlich.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-
-\noun on
-HHa
-\noun default
-: Die Benutzerhandbücher wären gut dafür geeignet.
-\end_layout
-
-\end_inset
-
+ Für die Pflege ist das oft hilfreich und manchmal auch gefordert.
  Ein Hauptdokument fügt dann die einzelnen Unterdokumente zusammen.
 \end_layout
 
@@ -27797,7 +28601,7 @@ HHa
 Unterdokumente werden in LyX als Box angezeigt: 
 \begin_inset Graphics
 	filename clipart/UnterdokumentQt4.png
-	display none
+	lyxscale 80
 	scale 60
 
 \end_inset
@@ -27807,7 +28611,7 @@ Unterdokumente werden in LyX als Box angezeigt:
 \family sans
  Einfügen\SpecialChar \menuseparator
 Datei\SpecialChar \menuseparator
- Unterdokument
+Unterdokument
 \family default
  eingebunden, was das Dialogfenster
 \family sans
@@ -27836,6 +28640,10 @@ Include Sie können LyX- und LaTeX-Dokumente einbinden.
  klicken, wird das eingebundene Dokument in einem eigenen Unterfenster geöffnet,
  und sie können es editieren.
 \newline
+
+\end_layout
+
+\begin_layout Standard
 Hier wird ein Unterdokument
 \family sans
  
@@ -27862,60 +28670,49 @@ reference "uab:Externer-Unterabschnitt-1"
 \end_inset
 
 .
-\newline
+\end_layout
+
+\begin_layout Standard
 Der LaTeX-Vorspann des Unterdokuments wird ignoriert, nur der des Hauptdokuments
  wird benutzt.
- Wenn Sie im LaTeX-Vorspann des Unterdokument bestimmte Dinge eintragen
- wie 
-\family typewriter
-
-\backslash
-usepackage{\SpecialChar \ldots{}
-}
-\family default
-, müssen Sie das auch im LaTeX-Vorspann des Hauptdokuments machen.
-\newline
-Unterdokumente,
- die per 
+ Unterdokumente, die per 
 \family sans
 Include
 \family default
  eingebunden werden, beginnen in der Druckausgabe auf einer neuen Seite
  und enden mit einem Seitenumbruch.
-\newline
+\end_layout
+
+\begin_layout Standard
 Mit dem LaTeX-Befehl 
-\family typewriter
+\series bold
 
 \backslash
-includeonly
-\family default
-\series bold
- 
+includeonly 
 \series default
 können Sie festlegen, für welche eingebundenen Unterdokumente eine Druckausgabe
  erstellt werden soll.
  Das ist nützlich, wenn Sie nur ein Kapitel bearbeiten und deren Auswirkungen
  sehen wollen, und es geht schneller.
  
-\family typewriter
+\series bold
 
 \backslash
 includeonly
-\family default
+\series default
  wird in den LaTeX-Vorspann des Hauptdokuments eingefügt.
  Im folgenden Beispiel:
+\end_layout
+
+\begin_layout Standard
+
 \series bold
-
-\newline
-
-\family typewriter
-\series default
 
 \backslash
 includeonly{Kapitel1,Kapitel5}
-\family default
+\end_layout
 
-\newline
+\begin_layout Standard
 werden nur die Dateien 
 \begin_inset Quotes gld
 \end_inset
@@ -27942,16 +28739,29 @@ Kapitel5.lyx
 
 
 \series bold
- eingebunden.
-\newline
+ 
+\series default
+eingebunden.
+\end_layout
 
-\color blue
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
 Bemerkung:
 \series default
  Wenn Sie eine LyX- oder LaTeX-Datei eingebunden haben, werden Sie beim
  Export oder der Druckvorschau gewarnt, wenn das Unterdokument eine andere
  Dokumentklasse als das Hauptdokument benutzt, weil das zu unvorhersehbaren
  Ergebnissen führen wird.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -28002,11 +28812,11 @@ An
 
 \begin_layout Itemize
 Der LaTeX-Befehl 
-\family typewriter
+\series bold
 
 \backslash
 includeonly
-\family default
+\series default
  kann nicht benutzt werden.
 \end_layout
 
@@ -28047,7 +28857,7 @@ ankreuzen, wird in der Druckvorschau das Zeichen
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -28069,8 +28879,7 @@ Im Gegensatz zu
 Einfügen\SpecialChar \menuseparator
 Datei\SpecialChar \menuseparator
 Einfacher\InsetSpace ~
-Text\SpecialChar \ldots{}
-
+Text
 \family default
  wird bei 
 \family sans
@@ -28088,6 +28897,10 @@ Hier ist ein Unterdokument, das mit
 \begin_inset Include \verbatiminput{DummyTextDocument.txt}
 preview false
 
+\end_inset
+
+
+\begin_inset VSpace bigskip
 \end_inset
 
 Hier ist ein Unterdokument, das mit
@@ -28111,6 +28924,35 @@ preview false
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Wie man an den obigen Beispielen sieht, wird der Text von Dokumenten, die
+ 
+\family sans
+Unformatiert
+\family default
+ eingebunden werden, am Zeilenende nicht umgebrochen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
 Listing Dieser Typ wird in Kapitel\InsetSpace ~
 
@@ -28123,13 +28965,21 @@ reference "kap:Programm-Code-Listen"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
 
 \series bold
-\color blue
 Bemerkung:
 \series default
  Wenn Sie ein Unterdokument auf zwei verschiedene Arten einbinden, kann
  das zu LaTeX-Problemen führen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -28162,9 +29012,9 @@ Programmlisting
 \family default
  verwenden.
  Das LaTeX-Paket 
-\family typewriter
+\series bold
 listings
-\family default
+\series default
 
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! listings"
@@ -28237,22 +29087,40 @@ b
 \family sans
 p
 \family default
- festlegen können, wie in Abschnitt\InsetSpace ~
+, analog zu den in Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "abs:Gleitobjekt-Platzierung"
 
 \end_inset
 
- und im 
-\emph on
-Benutzerhandbuch
-\emph default
-, Platzierung von Gleitobjekt-Umgebungen
-\emph on
-, 
-\emph default
-beschrieben.
+ beschriebenen Platzierungsoptionen festlegen können.
+ Die Platzierungsoptionen können gemischt werden und werden dabei direkt
+ hinterienander angegeben, z.\InsetSpace \thinspace{}
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+htbp
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Die Option 
+\begin_inset Quotes eld
+\end_inset
+
+h
+\begin_inset Quotes erd
+\end_inset
+
+ hat manchmal keinen Effekt, aber sie muss nicht verwendet werden, da auch
+ nicht gleitende Listen Beschriftungen haben und referenziert werden können.
 \end_layout
 
 \begin_layout Standard
@@ -28318,17 +29186,17 @@ Sprache
 \family default
  gewählt haben, werden die Schlüsselworte der Sprache erkannt und besonders
  gedruckt, wie 
-\series bold
+\emph on
 #
-\series default
+\emph default
 , 
-\series bold
+\emph on
 def
-\series default
+\emph default
  und 
-\series bold
+\emph on
 pass
-\series default
+\emph default
  in Listing\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -28363,45 +29231,18 @@ Im Abschnitt
 \family sans
 Bereich
 \family default
- legen Sie fest, welche Zeilen überhaupt ausgedruckt werden sollen.
-\end_layout
-
-\begin_layout Standard
-Im Abschnitt 
+ legen Sie fest, welche Zeilen ausgedruckt werden sollen.
+ Im Abschnitt 
 \family sans
 Stil
 \family default
- legen Sie fest, wie das Listing ausgedruckt werden soll.
-\end_layout
-
-\begin_layout Standard
-Und dann gibt es noch die Optionen 
-\family sans
-Lange\InsetSpace ~
-Zeilen\InsetSpace ~
-umbrechen
-\family default
-, 
-\family sans
-Leerzeichen\InsetSpace ~
-als\InsetSpace ~
-Symbol
-\family default
-, 
-\family sans
-Leerzeichen\InsetSpace ~
-in\InsetSpace ~
-Zeichenkette\InsetSpace ~
-als\InsetSpace ~
-Symbol
-\family default
-, die selbsterklärend sind, und 
+ legen Sie fest, wie die Liste ausgedruckt werden soll.
+ Die Option 
 \family sans
 Erweiterte\InsetSpace ~
 Zeichentabelle
 \family default
-, die für nationale Zeichen wie Umlaute usw.\InsetSpace ~
-benutzt wird.
+ sollte verwendet werden, wenn nationale Zeichen wie Umlaute benutzt werden.
 \end_layout
 
 \begin_layout Standard
@@ -28488,6 +29329,34 @@ pass
 
 \begin_layout Standard
 \noindent
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Wegen eines Fehler im listings Paket wird die Zeilennummerierung um eine
+ Zeile durch vorhergehende Listen verschoben.
+ Das ist der Grund warum die Zeilen 2 und 5 und nicht 3 und 6 in obiger
+ Liste nummeriert werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 Es ist auch möglich, Zeilen einer Datei als Listing zu drucken.
  Das machen Sie mit
 \family sans
@@ -28507,7 +29376,7 @@ Listing
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Die anderen Arten der Einbindung von Unterdokumenten werden in Abschnitt\InsetSpace ~
@@ -28532,8 +29401,16 @@ Weitere\InsetSpace ~
 Parameter
 \family default
  eingeben.
- Wenn Sie dort ein Fragezeichen eingeben, wird Ihnen links davon eine Liste
- aller möglichen Parameter eingeblendet.
+ Wenn Sie dort ein Fragezeichen 
+\begin_inset Quotes gld
+\end_inset
+
+?
+\begin_inset Quotes grd
+\end_inset
+
+ eingeben, wird Ihnen links davon eine Liste aller möglichen Parameter eingeblen
+det.
 \end_layout
 
 \begin_layout Standard
@@ -28569,6 +29446,13 @@ preview false
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \noindent
 Dokumentweite Listing-Eigenschaften können in
 \family sans
@@ -28578,15 +29462,22 @@ Textformat\SpecialChar \menuseparator
 Listing-Einstellungen
 \family default
  festgelegt werden.
- Auch dort bekommt man durch Eingabe eines Fragezeichens links davon eine
- Liste aller möglichen Parameter.
+ Auch dort bekommt man durch Eingabe eines Fragezeichens 
+\begin_inset Quotes gld
+\end_inset
+
+?
+\begin_inset Quotes grd
+\end_inset
+
+ links davon eine Liste aller möglichen Parameter.
 \end_layout
 
 \begin_layout Standard
 Weitere Informationen über das 
-\family typewriter
+\series bold
 listings
-\family default
+\series default
 -Paket finden Sie in 
 \begin_inset LatexCommand cite
 key "listings"
@@ -28600,18 +29491,31 @@ key "listings"
 
 \begin_layout Chapter
 \start_of_appendix
-In Ly
+In 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+
+\backslash
+texorpdfstring{
 \end_layout
 
 \end_inset
 
-X verfügbare Maßeinheiten
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ verfügbare Maßeinheiten
 \begin_inset LatexCommand label
 name "kap:In-LyX-verfügbare"
 
@@ -28620,6 +29524,26 @@ name "kap:In-LyX-verfügbare"
 
 \begin_inset LatexCommand index
 name "Einheiten"
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Der Befehl 
+\backslash
+texorpdfstring wird vom LaTeX-Paket hyperref bereitgestellt um zu vermeiden,
+ dass Ligaturen in PDF-Lesezeichen falsch dargestellt werden.
+ Für mehr Informationen darüber sei auf 
+\begin_inset LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+ verwiesen.
+\end_layout
 
 \end_inset
 
@@ -28864,9 +29788,13 @@ dd
 \begin_inset Text
 
 \begin_layout Standard
-didot (1157\InsetSpace \thinspace{}
-dd = 1238\InsetSpace \thinspace{}
-pt)
+didot (1\InsetSpace \thinspace{}
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 0,376\InsetSpace \thinspace{}
+mm)
 \end_layout
 
 \end_inset
@@ -29048,7 +29976,7 @@ ex
 \begin_inset Text
 
 \begin_layout Standard
-Die Höhe eines 
+Die Höhe des Buchstabens 
 \emph on
 x
 \emph default
@@ -29072,7 +30000,11 @@ em
 \begin_inset Text
 
 \begin_layout Standard
-Die Breite des langen Gedankenstrichs --- im aktiven Zeichensatz
+Die Breite des Buchstabens 
+\emph on
+M
+\emph default
+ im aktiven Zeichensatz
 \end_layout
 
 \end_inset
@@ -29144,10 +30076,26 @@ name "DVI"
 
 \begin_layout Standard
 Dieser Dateityp hat die Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .dvi
 \family default
- (device-independent), weil er vollkommen portierbar ist.
+
+\begin_inset Quotes grd
+\end_inset
+
+ und wird 
+\begin_inset Quotes gld
+\end_inset
+
+device-independent
+\begin_inset Quotes grd
+\end_inset
+
+ genannt, weil er vollkommen portierbar ist.
  Ohne Konvertierung kann er auf jedem Rechner benutzt werden, der einen
  dvi-Betrachter installiert hat.
  
@@ -29155,7 +30103,7 @@ Dieser Dateityp hat die Erweiterung
 .dvi
 \family default
 -Dateien werden für schnelle Vorschauen und Vorstufen für andere Ausgabeformate
- wie PostScript® benutzt.
+ wie PostScript benutzt.
 \end_layout
 
 \begin_layout Standard
@@ -29196,15 +30144,35 @@ blättern.
 \family typewriter
  
 \family default
-Bei Dokumenten mit vielen Bildern ist das PDF-Format besser.
+Außerdem zeigen manche dvi-Betrachter nicht alles (richtig) an.
+ Bei Dokumenten mit vielen Bildern empfehlen wir daher das PDF-Format.
+ 
 \end_layout
 
 \begin_layout Standard
-Außerdem zeigen manche dvi-Betrachter nicht alles (richtig) an.
+Sie können Ihr Dokument als DVI über das Menü 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+DVI
+\family default
+ exportieren.
+ Sie können eine Vorschau Ihres Dokument als DVI über das Menü 
+\family sans
+Ansicht
+\family default
+ oder den Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_dvi.xpm
+	scale 85
+
+\end_inset
+
+ anschauen.
 \end_layout
 
 \begin_layout Section
-PostScript®
+PostScript
 \begin_inset LatexCommand label
 name "abs:PostScript"
 
@@ -29212,13 +30180,13 @@ name "abs:PostScript"
 
 
 \begin_inset LatexCommand index
-name "Dateiformat  ! PostScript®"
+name "Dateiformat  ! PostScript"
 
 \end_inset
 
 
 \begin_inset LatexCommand index
-name "PostScript®"
+name "PostScript"
 
 \end_inset
 
@@ -29227,24 +30195,36 @@ name "PostScript®"
 
 \begin_layout Standard
 Dieser Dateityp hat die Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .ps
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 .
- PostScript® wurde von der Firma
+ PostScript wurde von der Firma
 \family typewriter
  Adobe
 \family default
  als Druckersprache entwickelt.
  Die Datei enthält deshalb Druckbefehle.
- PostScript® kann als 
-\emph on
+ PostScript kann als 
+\begin_inset Quotes gld
+\end_inset
+
 Programmiersprache
-\emph default
+\begin_inset Quotes grd
+\end_inset
+
  angesehen werden.
  Man kann mit ihr rechnen und Diagramme und Bilder zeichnen
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie mehr darüber wissen wollen, sollten Sie sich die Dokumentation
@@ -29282,23 +30262,53 @@ key "latex-praxisbuch"
 \end_layout
 
 \begin_layout Standard
-PostScript® kann nur Bilder im Format EPS
+PostScript kann nur Bilder im Format EPS
 \begin_inset LatexCommand index
 name "EPS"
 
 \end_inset
 
  (Encapsulated PostScript, Datei-Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .eps
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 ) enthalten.
- Weil Sie in LyX jedes bekannte Bildformat benutzen können, müssen diese
- nach EPS konvertiert werden.
+ Weil LyX die Verwendung jedes bekannten Bildformats erlaubt, muss es diese
+ intern nach EPS konvertiert werden.
  Dies wird bei vielen Bildern in einem Dokument den Arbeitsfluss drastisch
  verlangsamen.
- Wenn Sie also PostScript® benutzen wollen, sollten Sie Ihre Bilder vorher
+ Wenn Sie also PostScript benutzen wollen, sollten Sie Ihre Bilder vorher
  konvertieren und direkt als EPS einfügen.
+\end_layout
+
+\begin_layout Standard
+Sie können Ihr Dokument als PostScript über das Menü 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+PostScript
+\family default
+ exportieren.
+ Sie können eine Vorschau Ihres Dokument als PostScript über das Menü 
+\family sans
+Ansicht
+\family default
+ oder den Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_ps.xpm
+	scale 85
+
+\end_inset
+
+ anschauen.
 \end_layout
 
 \begin_layout Section
@@ -29325,24 +30335,44 @@ name "PDF"
 
 \begin_layout Standard
 Dieser Dateityp hat die Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .pdf
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 .
- 
+ Das
 \emph on
-Das Portable Document Format
+ 
 \emph default
+
+\begin_inset Quotes gld
+\end_inset
+
+Portable Document Format
+\begin_inset Quotes grd
+\end_inset
+
  (PDF) wurde auch von der Firma 
 \family typewriter
 Adobe
 \family default
- als Derivat von PostScript® entwickelt.
- Es ist komprimierter und benutzt weniger Befehle als PostScript®.
+ als Derivat von PostScript entwickelt.
+ Es ist komprimierter und benutzt weniger Befehle als PostScript.
  Wie der Begriff 
-\emph on
+\begin_inset Quotes gld
+\end_inset
+
 portable
-\emph default
+\begin_inset Quotes grd
+\end_inset
+
  (übertragbar) vermuten lässt, kann eine 
 \family typewriter
 .pdf
@@ -29353,9 +30383,13 @@ portable
 
 \begin_layout Standard
 PDF kann Bilder im eigenen PDF-Format, im Format 
-\emph on
+\begin_inset Quotes gld
+\end_inset
+
 Joint Photographic Experts Group
-\emph default
+\begin_inset Quotes grd
+\end_inset
+
  (JPEG
 \begin_inset LatexCommand index
 name "JPG, JPEG"
@@ -29363,17 +30397,37 @@ name "JPG, JPEG"
 \end_inset
 
 , Datei-Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .jpg
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
  oder 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .jpeg
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 ) und im Format 
-\emph on
+\begin_inset Quotes gld
+\end_inset
+
 Portable Network Graphics
-\emph default
+\begin_inset Quotes grd
+\end_inset
+
  (PNG
 \begin_inset LatexCommand index
 name "PNG"
@@ -29381,15 +30435,22 @@ name "PNG"
 \end_inset
 
 , Datei-Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .png
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 ) enthalten.
  Trotzdem können Sie jedes bekannte Bildformat benutzen, weil LyX es für
  Sie konvertieren wird.
- Aber ebenso wie bei PostScript® wird die Konvertierung Ihren Arbeitsfluss
- verlangsamen.
- Also wird empfohlen, eines der drei erwähnten Bildformate zu benutzen.
+ Die Konvertierungen werden Ihren Arbeitsfluss verlangsamen, weswegen empfohlen
+ wird, eines der drei erwähnten Bildformate zu benutzen.
 \end_layout
 
 \begin_layout Standard
@@ -29398,11 +30459,22 @@ PDF-Dateien können Sie über
 Datei\SpecialChar \menuseparator
 Exportieren
 \family default
- auf drei Arten erzeugen (siehe auch 
-\emph on
-Handbuchergänzungen
-\emph default
-):
+ auf drei Arten erzeugen:
+\end_layout
+
+\begin_layout Description
+PDF\InsetSpace ~
+(ps2pdf) benutzt das Programm
+\family typewriter
+ ps2pdf
+\family default
+, das ein PDF aus einer PostScript-Version Ihres Dokument erstellt.
+ Die PostScript-Version wird Programm 
+\family typewriter
+dvips
+\family default
+ aus einer DVI-Version erstellt.
+ Es werden also drei Konvertierungen verwendet.
 \end_layout
 
 \begin_layout Description
@@ -29424,19 +30496,6 @@ PDF\InsetSpace ~
 , das Ihr Dokument direkt nach PDF konvertiert.
 \end_layout
 
-\begin_layout Description
-PDF\InsetSpace ~
-(ps2pdf) benutzt das Programm
-\family typewriter
- ps2pdf
-\family default
-, das Ihr Dokument im ersten Schritt nach DVI, in einem zweiten  mit 
-\family typewriter
-dvips
-\family default
- nach PostScript® und in einem dritten nach PDF konvertiert.
-\end_layout
-
 \begin_layout Standard
 
 \family sans
@@ -29454,6 +30513,37 @@ PDF\InsetSpace ~
 dvipdfm
 \family default
  wird nicht weiterentwickelt und ist deshalb nicht sehr aktuell.
+\end_layout
+
+\begin_layout Standard
+Sie können Ihr Dokument als PDF über das Menü 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+PDF
+\family default
+ exportieren.
+ Sie können eine Vorschau Ihres Dokument als PDF über das Menü 
+\family sans
+Ansicht
+\family default
+ oder den Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_pdf2.xpm
+	scale 85
+
+\end_inset
+
+ anschauen 
+\family sans
+(
+\family default
+der 
+\family sans
+PDF\InsetSpace ~
+(pdflatex)
+\family default
+ verwendet).
 \end_layout
 
 \begin_layout Chapter
@@ -29503,22 +30593,18 @@ Dabei ist
 
 \series bold
  
-\family typewriter
-\series default
-
 \backslash
 tabcolsep
-\family default
+\series default
  ist die LaTeX-Länge zwischen dem Zellentext und der Zellgrenze mit dem
  Standardwert 6\InsetSpace \thinspace{}
 pt.
  
-\family typewriter
+\series bold
 
 \backslash
-array\SpecialChar \-
-rulewidth
-\family default
+arrayrulewidth
+\series default
  ist die Dicke der Zellgrenze mit dem Standardwert 0.4\InsetSpace \thinspace{}
 pt.
 \end_layout
@@ -29573,7 +30659,7 @@ n
 \begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
 \end_inset
 
- hat, berechnen.:
+ hat, berechnen:
 \end_layout
 
 \begin_layout Standard
@@ -29593,7 +30679,7 @@ key "booktabs"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29611,7 +30697,7 @@ booktabs
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29637,7 +30723,7 @@ key "caption"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29654,7 +30740,7 @@ caption
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29680,7 +30766,7 @@ key "caption-de"
 
 deutsche 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29698,7 +30784,7 @@ href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/anleitung.p
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29724,7 +30810,7 @@ key "koma-script-de"
 
 deutsche 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29742,7 +30828,7 @@ koma-script
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29768,7 +30854,7 @@ key "endfloat"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29787,7 +30873,7 @@ loat
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29813,7 +30899,7 @@ key "floatflt"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29833,7 +30919,7 @@ lt
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29859,7 +30945,7 @@ key "footmisc"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29877,7 +30963,7 @@ footmisc
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29903,7 +30989,7 @@ key "hypcap"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29920,7 +31006,7 @@ hypcap
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29946,7 +31032,7 @@ key "hyperref"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29964,7 +31050,7 @@ hyperref
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -29990,7 +31076,7 @@ key "koma-script"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30008,7 +31094,7 @@ koma-script
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30062,7 +31148,7 @@ key "listings"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30080,7 +31166,7 @@ listings
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30106,7 +31192,7 @@ key "marginnote"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30124,7 +31210,7 @@ marginnote
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30177,7 +31263,7 @@ key "pstricks"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30194,7 +31280,7 @@ PSTricks
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30220,7 +31306,7 @@ key "sidecap"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30237,7 +31323,7 @@ sidecap
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30263,7 +31349,7 @@ key "NewInLyX15"
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30276,7 +31362,7 @@ href{http://wiki.lyx.org/LyX/NewInLyX15}{
 
 Wiki-Seite
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 

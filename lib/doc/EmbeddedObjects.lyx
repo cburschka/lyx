@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 275
 \begin_document
 \begin_header
 \textclass scrbook
@@ -22068,23 +22068,6 @@ This is an example footnote with roman numbering.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-thefootnote}{
-\backslash
-arabic{footnote}}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -22189,6 +22172,23 @@ arabic
 roman
 \series default
  in the command above.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+arabic{footnote}}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22699,7 +22699,7 @@ Endnotes -- footnotes are printed in a separate paragraph at the end of
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 The paragraph heading for the endnotes isn't automatically translated into
@@ -22734,7 +22734,7 @@ notesname}{Anmerkungen}
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 The numbering of endnotes can be changed like the footnote numbering as
@@ -22978,18 +22978,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-normalmarginpar 
-\end_layout
-
-\end_inset
-
 To return to the default placement insert the command
 \end_layout
 
@@ -23003,6 +22991,18 @@ normalmarginpar
 
 \begin_layout Standard
 in ERT.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+normalmarginpar 
+\end_layout
+
+\end_inset
+
  
 \begin_inset Note Greyedout
 status open
@@ -23270,7 +23270,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 With 
@@ -23408,7 +23408,7 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 For the other features of 
@@ -23428,7 +23428,7 @@ key "marginnote"
 \begin_inset VSpace bigskip
 \end_inset
 
-You can change the layout of margin notes by redefining its definition.
+You can adjust the layout of margin notes by changing its definition.
  To create for example a header for all margin notes with the underlined,
  sans-serif, and bold header text 
 \begin_inset Quotes eld
@@ -23677,10 +23677,6 @@ fi
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -25565,10 +25561,15 @@ e is an example text:
 \end_layout
 
 \begin_layout Standard
-This line is an example to show how you can prevent the hyphenation of e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-veryver
-ylongwords.
+This line is an example to show how you can prevent the hyphenation of 
+\begin_inset Quotes eld
+\end_inset
+
+veryverylongword
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -25576,7 +25577,7 @@ To prevent the hyphenation of the word
 \begin_inset Quotes eld
 \end_inset
 
-veryverylongwords
+veryverylongword
 \begin_inset Quotes erd
 \end_inset
 
@@ -25626,9 +25627,7 @@ This is the result:
 \end_layout
 
 \begin_layout Standard
-This line is an example to show how you can prevent the hyphenation of e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-
+This line is an example to show how you can prevent the hyphenation of 
 \begin_inset ERT
 status collapsed
 
@@ -25641,7 +25640,15 @@ mbox{
 
 \end_inset
 
-veryverylongwords.
+
+\begin_inset Quotes eld
+\end_inset
+
+veryverylongword
+\begin_inset Quotes erd
+\end_inset
+
+.
 \begin_inset ERT
 status collapsed
 
@@ -25653,6 +25660,49 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+You can alternatively set the command 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+
+\backslash
+-
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ as ERT directly before the word:
+\end_layout
+
+\begin_layout Standard
+This line is an example to show how you can prevent the hyphenation of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+veryverylongword
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -25673,9 +25723,7 @@ Ctrl-Return
 \end_layout
 
 \begin_layout Standard
-This line is an example to show how you can prevent the hyphenation of e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-
+This line is an example to show how you can prevent the hyphenation of 
 \newline
 
 \begin_inset ERT
@@ -25690,7 +25738,15 @@ mbox{
 
 \end_inset
 
-veryverylongwords.
+
+\begin_inset Quotes eld
+\end_inset
+
+veryverylongword
+\begin_inset Quotes erd
+\end_inset
+
+.
 \begin_inset ERT
 status collapsed
 
@@ -26047,7 +26103,15 @@ name "Color ! for Text"
 \end_layout
 
 \begin_layout Standard
-To color the background of text the text must be put into a so called colorbox.
+To color the background of text the text must be put into a so called 
+\begin_inset Quotes eld
+\end_inset
+
+colorbox
+\begin_inset Quotes erd
+\end_inset
+
+.
  This requires that the LaTeX-package 
 \series bold
 color
@@ -26946,8 +27010,8 @@ href
 \series default
  instead of LyX's URL box has the advantage that you can specify the text
  style of the link text like for all other text parts.
- You can therefore set hyphenation points and forced linebreaks to have
- long link text broken at the page margin.
+ You can then set hyphenation points and forced linebreaks to have long
+ link text broken at the page margin.
  You are furthermore able to change the text style for all URLs in your
  document with an option in 
 \series bold
@@ -27100,7 +27164,7 @@ Day-Month-Year
 
 \newline
 The date is not shown within LyX, only in the output.
- There are two other methods of inserting a date, via menu 
+ There are two other methods of inserting a date: Via menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Date
@@ -27800,7 +27864,11 @@ status open
 Note:
 \series default
  As you can see in the examples above, the text of the documents included
- as verbatim is not broken at the end of the document lines.
+ as 
+\family sans
+verbatim
+\family default
+ is not broken at the end of the document lines.
 \end_layout
 
 \end_inset
