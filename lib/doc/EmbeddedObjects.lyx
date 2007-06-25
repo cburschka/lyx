@@ -1226,8 +1226,8 @@ Normally it is not possible to convert a bitmap image into a scalable one,
  only vice versa.
  Only the image formats PDF and EPS can directly be embedded to PDF and
  PostScript output files, respectively.
- SVG and WMF-images are currently recalculated to bitmaps when the output
- file is generated because there is currently no adequate WMF/SVG
+ SVG and WMF-images are recalculated to bitmaps when the output file is
+ generated because there is currently no adequate WMF/SVG
 \begin_inset Formula $\to$
 \end_inset
 
@@ -4606,7 +4606,14 @@ addtocounter{table}{-1}
 status collapsed
 
 \begin_layout Standard
-See greyed-out note in section 2.6.2 for an explanation of this command.
+See greyed-out note in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Longtable-Captions"
+
+\end_inset
+
+ for an explanation of this command.
 \end_layout
 
 \end_inset
@@ -4648,6 +4655,12 @@ reference "tab:DiffCaptions"
 Longtable Captions
 \begin_inset LatexCommand index
 name "Longtables ! Captions"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Longtable-Captions"
 
 \end_inset
 
@@ -5892,7 +5905,7 @@ asd
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -6500,7 +6513,7 @@ TEL.
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -8512,7 +8525,6 @@ illskip}{0pt}
 must be inserted as ERT at the beginning of the cell.
  This assures that the part of the cell that will be displayed on the new
  page appears with the full width.
- 
 \end_layout
 
 \begin_layout Standard
@@ -10969,9 +10981,11 @@ b{width}
 \end_layout
 
 \begin_layout Standard
-By entering a LaTeX-argument, all cell properties set in the table dialog
+By entering a LaTeX-argument, all cell settings set in the table dialog
  are overwritten.
- 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -10980,12 +10994,16 @@ status open
 \series bold
 Note:
 \series default
- Due to a bug, LyX shows the overwritten properties anyway.
+ Due to a bug, LyX shows the overwritten settings anyway.
 \end_layout
 
 \end_inset
 
- As the text should be horizontally centered, the command 
+
+\end_layout
+
+\begin_layout Standard
+As the text should be horizontally centered, the command 
 \series bold
 
 \backslash
@@ -11826,7 +11844,11 @@ mytoprule[width]}
 \end_layout
 
 \begin_layout Standard
-This example is for the first line, the so called toprule.
+This example is for the first line, the so called 
+\series bold
+toprule
+\series default
+.
  If you want to change the width for the last line, replace 
 \series bold
 toprule
@@ -11961,10 +11983,6 @@ cmidrule(l{10pt}){1-1}
 
 \begin_layout Standard
 in the sixth row.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -13724,6 +13742,23 @@ Style
 .
  If a cell contains ERT mark only the characters, otherwise the colored
  ERT will cause LaTeX-errors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Not all DVI-viewers are able to display self-defined colors.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16409,7 +16444,7 @@ global
 \backslash
 arrayrulewidth 1.5pt}
 \newline
-  
+ 
 \backslash
 myHline
 \backslash
@@ -17582,7 +17617,7 @@ Example Algorithm float
 \begin_layout LyX-Code
 for I in 1..N loop
 \newline
- Sum:= Sum + A(I); /*senseless comment*/
+ Sum:= Sum + A(I); /*comment*/
 \newline
 end loop
 \begin_inset VSpace -4mm
@@ -17744,27 +17779,6 @@ end{Xalgorithm}}
 \end_inset
 
 
-\series default
-
-\newline
-Where 
-\family sans
-your\InsetSpace ~
-name
-\family default
- is the word 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-algorithm
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- in your language.
 \end_layout
 
 \begin_layout Standard
@@ -18837,25 +18851,25 @@ placement
 \begin_layout Description
 Here\InsetSpace ~
 if\InsetSpace ~
-possible: try to place the float on the position where it is inserted
+possible try to place the float on the position where it is inserted
 \end_layout
 
 \begin_layout Description
 Top\InsetSpace ~
 of\InsetSpace ~
-page: try to place the float on the top of the current page
+page try to place the float on the top of the current page
 \end_layout
 
 \begin_layout Description
 Bottom\InsetSpace ~
 of\InsetSpace ~
-page: try to place the float on the bottom of the current page
+page try to place the float on the bottom of the current page
 \end_layout
 
 \begin_layout Description
 Page\InsetSpace ~
 of\InsetSpace ~
-floats: try to place the float on an own page 
+floats try to place the float on an own page 
 \end_layout
 
 \begin_layout Standard
@@ -20531,7 +20545,7 @@ reference "fig:cap-beside-fig-2"
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 For more information about the package 
@@ -21346,7 +21360,14 @@ reference "sec:Colored-Boxes"
 \begin_inset VSpace bigskip
 \end_inset
 
-When you use the toolbar button to insert notes, a 
+When you use the toolbar button 
+\begin_inset Graphics
+	filename ../images/note-insert.xpm
+	scale 85
+
+\end_inset
+
+ to insert notes, a 
 \family sans
 LyX\InsetSpace ~
 Note

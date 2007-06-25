@@ -4560,12 +4560,17 @@ addtocounter{table}{-1}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Para comprender el uso de este comando, lee al final de la sección\InsetSpace ~
-2.6.2 la
- primera nota resaltada en gris.
+
+\begin_inset LatexCommand ref
+reference "sub:Encabezados-en-Tablas"
+
+\end_inset
+
+ la primera nota resaltada en gris.
  
 \end_layout
 
@@ -4608,6 +4613,12 @@ reference "tab:DifEncabezados"
 Encabezados en Tablas Largas
 \begin_inset LatexCommand index
 name "Tablas Largas ! Encabezados"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Encabezados-en-Tablas"
 
 \end_inset
 
@@ -6472,7 +6483,7 @@ TEL.
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -11830,9 +11841,9 @@ mytoprule[grosor]}
 
 \begin_layout Standard
 Este ejemplo es para la primera línea, la denominada 
-\emph on
+\series bold
 toprule
-\emph default
+\series default
 .
  Si quieres cambiar el grosor de la última línea, reemplaza 
 \series bold
@@ -17698,7 +17709,7 @@ Ejemplo de Algoritmo flotante
 \begin_layout LyX-Code
 for I in 1..N loop
 \newline
- Sum:= Sum + A(I); /*senseless comment*/
+ Sum:= Sum + A(I); /*comment*/
 \newline
 end loop
 \begin_inset VSpace -4mm
@@ -18970,7 +18981,7 @@ predeterminada
 Aquí\InsetSpace ~
 si\InsetSpace ~
 es\InsetSpace ~
-posible:
+posible
 \family default
 \series default
  intenta situar el flotante en la posición en la que se inserta
@@ -18982,7 +18993,7 @@ posible:
 \series bold
 Principio\InsetSpace ~
 de\InsetSpace ~
-página:
+página
 \family default
 \series default
  intenta situar el flotante al principio de la página actual
@@ -18994,7 +19005,7 @@ página:
 \series bold
 Fin\InsetSpace ~
 de\InsetSpace ~
-página:
+página
 \family default
 \series default
  intenta situar el flotante al final de la página actual
@@ -19006,7 +19017,7 @@ página:
 \series bold
 Página\InsetSpace ~
 de\InsetSpace ~
-flotantes:
+flotantes
 \family default
 \series default
  intenta situar el flotante en una página propia 
@@ -20756,7 +20767,7 @@ reference "fig:encab-al-lado-de-fig"
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 Más información sobre el paquete 
@@ -21597,8 +21608,14 @@ reference "sec:Cuadros-Coloreados"
 \begin_inset VSpace bigskip
 \end_inset
 
-Si usas el botón de la barra de herramientas para insertar notas, se inserta
- una 
+Si usas el botón de la barra de herramientas 
+\begin_inset Graphics
+	filename ../../images/note-insert.xpm
+	scale 85
+
+\end_inset
+
+ para insertar notas, se inserta una 
 \family sans
 Nota\InsetSpace ~
 LyX
