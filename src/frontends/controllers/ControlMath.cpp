@@ -504,6 +504,10 @@ string const find_xpm(string const & name)
 		xpm_name = subst(xpm_name, "{", "lbrace");
 		xpm_name = subst(xpm_name, "}", "rbrace");
 		xpm_name = subst(xpm_name, "|", "bars");
+		xpm_name = subst(xpm_name, ",", "thinspace");
+		xpm_name = subst(xpm_name, ":", "mediumspace");
+		xpm_name = subst(xpm_name, ";", "thickspace");
+		xpm_name = subst(xpm_name, "!", "negthinspace");
 	}
 
 	LYXERR(Debug::GUI) << "find_xpm(" << name << ")\n"
