@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------
 
+2007-06-26 Uwe Stöhr <uwestoehr@web.de> and Dov Feldstern <dov@lyx.org>
+
+	* format incremented to 276: switching exsting language 'arabic' to 
+		'arabic_arabtex'; this is to differentiate from the new arabic support
+		using the arabi package.
+
 2007-05-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 275: add graphics params scaleBeforeRotation
@@ -782,4 +788,5 @@ renamed as "size_kind" and "lyxsize_kind" respectively.
 	lyxwidth 4cm
 
  \end_inset
+
 

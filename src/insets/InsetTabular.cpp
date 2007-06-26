@@ -2286,6 +2286,9 @@ int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 			if (par.getParLanguage(buf.params())->lang() ==
 			"farsi")
 				os << "\\textFR{";
+			else if (par.getParLanguage(buf.params())->lang() == "arabic_arabi")
+				os << "\\textAR{";
+			// currently, remaning RTL languages are arabic_arabtex and hebrew
 			else
 				os << "\\R{";
 		}

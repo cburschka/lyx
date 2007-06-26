@@ -429,7 +429,8 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	// special case languages
 	std::string const & lang = orig_font.language()->lang();
 	bool const hebrew = lang == "hebrew";
-	bool const arabic = lang == "arabic" || lang == "farsi";	
+	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" || 
+						lang == "farsi";
 
 	// draw as many chars as we can
 	if ((!hebrew && !arabic)

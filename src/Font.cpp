@@ -756,6 +756,14 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 			    base.language()->lang() == "farsi") {
 			os << "\\textLR{";
 			count += 8;
+		} else if (language()->lang() == "arabic_arabi") {
+			os << "\\textAR{";
+			count += 8;
+ 		} else if (!isRightToLeft() &&
+				base.language()->lang() == "arabic_arabi") {
+			os << "\\textLR{";
+			count += 8;
+		// currently the remaining RTL languages are arabic_arabtex and hebrew
 		} else if (isRightToLeft() != prev.isRightToLeft()) {
 			if (isRightToLeft()) {
 				os << "\\R{";

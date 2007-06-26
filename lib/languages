@@ -1,7 +1,8 @@
 # name      babel name	GUI name	RTL?   encoding	  code	latex options
 afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
 american    american	"American"	false  iso8859-15 en_US	 ""
-arabic      arabic	"Arabic"	true   cp1256     ar_SA	 ""
+arabic_arabtex ""	"Arabic (ArabTeX)" true  cp1256 ar_SA ""
+arabic_arabi arabic	"Arabic (Arabi)"   true  cp1256 ar_SA ""
 armenian    ""		"Armenian"	false  armscii8   hy_AM	 ""
 austrian    austrian	"Austrian"	false  iso8859-15 de_AT	 ""
 naustrian   naustrian	"Austrian (new spelling)" false  iso8859-15  de_AT	 ""

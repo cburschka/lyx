@@ -895,9 +895,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// set font encoding
 	// this one is not per buffer
-	// for Farsi we also need to load the LAE and LFE encoding
+	// for arabic_arabi and farsi we also need to load the LAE and LFE encoding
 	if (lyxrc.fontenc != "default") {
-		if (language->lang() == "farsi") {
+		if (language->lang() == "arabic_arabi" || language->lang() == "farsi") {
 			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
 			   << ",LFE,LAE]{fontenc}\n";
 			texrow.newline();

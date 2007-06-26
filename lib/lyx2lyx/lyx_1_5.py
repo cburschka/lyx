@@ -1808,6 +1808,34 @@ something
                                     r'\end_layout'
                                     ]
 
+def convert_arabic (document):
+    if document.language == "arabic":
+        document.language = "arabic_arabtex"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language arabic_arabtex"
+    i = 0
+    while i < len(document.body):
+        h = document.body[i].find("\lang arabic", 0, len(document.body[i]))
+        if (h != -1):
+            # change the language name
+            document.body[i] = '\lang arabic_arabtex'
+        i = i + 1
+	
+def revert_arabic (document):
+    if document.language == "arabic_arabtex":
+        document.language = "arabic"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language arabic"
+    i = 0
+    while i < len(document.body):
+        h = document.body[i].find("\lang arabic_arabtex", 0, len(document.body[i]))
+        if (h != -1):
+            # change the language name
+            document.body[i] = '\lang arabic'
+        i = i + 1
+
 ##
 # Conversion hub
 #
@@ -1842,10 +1870,12 @@ convert = [[246, []],
            [272, []],
            [273, []],
            [274, [normalize_font_whitespace_274]],
-           [275, [convert_graphics_rotation]]
+           [275, [convert_graphics_rotation]],
+           [276, [convert_arabic]]
           ]
 
 revert =  [
+           [275, [revert_arabic]],
            [274, [revert_graphics_rotation]],
            [273, []],
            [272, [revert_separator_layout]],
@@ -1880,5 +1910,6 @@ revert =  [
 
 if __name__ == "__main__":
     pass
+
 
 
