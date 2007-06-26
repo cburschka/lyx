@@ -99,6 +99,7 @@ using support::FileName;
 using support::float_equal;
 using support::getExtension;
 using support::isFileReadable;
+using support::isValidLaTeXFilename;
 using support::latex_path;
 using support::onlyFilename;
 using support::removeExtension;
@@ -607,6 +608,14 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	string output_file = support::os::external_path(runparams.nice ?
 		params().filename.outputFilename(m_buffer->filePath()) :
 		onlyFilename(temp_file.absFilename()));
+
+	if (runparams.nice && !isValidLaTeXFilename(output_file)) {
+		frontend::Alert::warning(_("Invalid filename"),
+				         _("The following filename is likely to cause trouble "
+					   "when running the exported file through LaTeX: ") +
+					    from_utf8(output_file));
+	}
+
 	FileName source_file = runparams.nice ? FileName(params().filename) : temp_file;
 	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
 			"latex" : "pdflatex";

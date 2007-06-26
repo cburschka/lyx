@@ -79,6 +79,16 @@ bool isSGMLFilename(string const & filename)
 }
 
 
+bool isValidLaTeXFilename(string const & filename)
+{
+	string const invalid_chars("#$%{}()[]\"^");
+	if (filename.find_first_of(invalid_chars) != string::npos)
+		return false;
+	else
+		return true;
+}
+
+
 string const latex_path(string const & original_path,
 		latex_path_extension extension,
 		latex_path_dots dots)

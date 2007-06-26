@@ -20,7 +20,6 @@
 #include "QGraphicsDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "Validator.h"
 
 #include "lengthcommon.h"
 #include "LyXRC.h"
@@ -119,10 +118,6 @@ int getItemNo(vector<string> v, string const & s) {
 
 void QGraphics::update_contents()
 {
-	PathValidator * path_validator = getPathValidator(dialog_->filename);
-	if (path_validator)
-		path_validator->setChecker(kernel().docType(), lyxrc);
-
 	// clear and fill in the comboboxes
 	vector<string> const bb_units = frontend::getBBUnits();
 	dialog_->lbXunit->clear();

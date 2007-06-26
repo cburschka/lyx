@@ -132,7 +132,6 @@ QExternalDialog::QExternalDialog(QExternal * form)
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	heightED->setValidator(unsignedLengthValidator(heightED));
 
-	fileED->setValidator(new PathValidator(true, fileED));
 	setFocusProxy(fileED);
 }
 
@@ -562,10 +561,6 @@ void QExternal::build_dialog()
 
 void QExternal::update_contents()
 {
-	PathValidator * path_validator = getPathValidator(dialog_->fileED);
-	if (path_validator)
-		path_validator->setChecker(kernel().docType(), lyxrc);
-
 	dialog_->tab->setCurrentIndex(0);
 	InsetExternalParams const & params = controller().params();
 

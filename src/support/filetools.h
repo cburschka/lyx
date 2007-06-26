@@ -94,6 +94,9 @@ bool isLyXFilename(std::string const & filename);
 ///
 bool isSGMLFilename(std::string const & filename);
 
+///
+bool isValidLaTeXFilename(std::string const & filename);
+
 /** Returns the path of a library data file.
     Search the file name.ext in the subdirectory dir of
       -# user_lyxdir

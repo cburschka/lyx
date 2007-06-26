@@ -19,10 +19,13 @@
 #include "Buffer.h"
 #include "Converter.h"
 #include "debug.h"
+#include "gettext.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
 #include "Mover.h"
+
+#include "frontends/alert.h"
 
 #include "support/filetools.h"
 #include "support/Forkedcall.h"
@@ -44,6 +47,7 @@ using boost::filesystem::is_directory;
 namespace lyx {
 
 using support::FileName;
+using support::isValidLaTeXFilename;
 
 namespace external {
 
@@ -368,6 +372,17 @@ int writeExternal(InsetExternalParams const & params,
 	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,
 				    use_latex_path, external_in_tmpdir);
+
+	string const absname = support::makeAbsPath(
+		params.filename.outputFilename(buffer.filePath()), buffer.filePath()).absFilename();
+
+	if (!external_in_tmpdir && !isValidLaTeXFilename(absname)) {
+		lyx::frontend::Alert::warning(_("Invalid filename"),
+					      _("The following filename is likely to cause trouble "
+						"when running the exported file through LaTeX: ") +
+					      from_utf8(absname));
+	}
+
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
 	// FIXME UNICODE

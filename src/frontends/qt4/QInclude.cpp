@@ -18,7 +18,6 @@
 #include "CheckedLineEdit.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "Validator.h"
 
 #include "LyXRC.h"
 
@@ -69,7 +68,6 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(validate_listings_params()));
 
-	filenameED->setValidator(new PathValidator(true, filenameED));
 	setFocusProxy(filenameED);
 }
 
@@ -201,10 +199,6 @@ void QInclude::build_dialog()
 
 void QInclude::update_contents()
 {
-	PathValidator * path_validator = getPathValidator(dialog_->filenameED);
-	if (path_validator)
-		path_validator->setChecker(kernel().docType(), lyxrc);
-
 	InsetCommandParams const & params = controller().params();
 
 	dialog_->filenameED->setText(toqstr(params["filename"]));

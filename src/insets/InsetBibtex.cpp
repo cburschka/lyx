@@ -46,6 +46,7 @@ using support::DocFileName;
 using support::FileName;
 using support::findtexfile;
 using support::isFileReadable;
+using support::isValidLaTeXFilename;
 using support::latex_path;
 using support::ltrim;
 using support::makeAbsPath;
@@ -188,6 +189,12 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 				       << "' to '" << out_file << "'"
 				       << endl;
 			}
+		} else if (!runparams.inComment && runparams.nice && not_from_texmf &&
+			   !isValidLaTeXFilename(database)) {
+				frontend::Alert::warning(_("Invalid filename"),
+						         _("The following filename is likely to cause trouble "
+							   "when running the exported file through LaTeX: ") +
+							    from_utf8(database));
 		}
 
 		if (it != begin)

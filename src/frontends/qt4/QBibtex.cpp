@@ -91,7 +91,6 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	bcview->setOK(add_->addPB);
 	bcview->setCancel(add_->closePB);
 
-	add_->bibED->setValidator(new PathValidator(true, add_->bibED));
 	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
 
 	connect(add_->bibED, SIGNAL(textChanged(const QString &)),
@@ -279,11 +278,6 @@ void QBibtex::build_dialog()
 
 void QBibtex::update_contents()
 {
-	PathValidator * path_validator =
-		getPathValidator(dialog_->add_->bibED);
-	if (path_validator)
-		path_validator->setChecker(kernel().docType(), lyxrc);
-
 	bool bibtopic = controller().usingBibtopic();
 
 	dialog_->databaseLW->clear();

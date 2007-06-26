@@ -68,6 +68,7 @@ using support::getFileContents;
 using support::getVectorFromString;
 using support::isFileReadable;
 using support::isLyXFilename;
+using support::isValidLaTeXFilename;
 using support::latex_path;
 using support::makeAbsPath;
 using support::makeDisplayPath;
@@ -459,6 +460,12 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 	if (!runparams.nice)
 		incfile = mangled;
+	else if (!isValidLaTeXFilename(incfile)) {
+		frontend::Alert::warning(_("Invalid filename"),
+				         _("The following filename is likely to cause trouble "
+					   "when running the exported file through LaTeX: ") +
+					    from_utf8(incfile));
+	}
 	LYXERR(Debug::LATEX) << "incfile:" << incfile << endl;
 	LYXERR(Debug::LATEX) << "exportfile:" << exportfile << endl;
 	LYXERR(Debug::LATEX) << "writefile:" << writefile << endl;
