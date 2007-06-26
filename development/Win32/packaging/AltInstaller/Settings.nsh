@@ -3,7 +3,7 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5rc2-xx-05-2007"
+!define PRODUCT_VERSION "1.5rc2-26-05-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -56,7 +56,7 @@ BrandingText "LyXWinInstaller v3.17 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv48w32.exe"
  !define JabRefInstall "external\JabRef-2.2-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2704.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2726.exe"
  !define JabRefVersion "2.2"
  !define MiKTeXDeliveredVersion "2.6"
 !endif
