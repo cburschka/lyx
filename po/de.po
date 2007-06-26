@@ -25,6 +25,7 @@
 #   browse               -> (durch)suchen
 #   button               -> Knopf
 #   caption              -> Legende
+#   check                -> auswählen
 #   citation (style)     -> Zitat (-Stil)
 #   cross-reference      -> Querverweis
 #   command              -> Befehl
@@ -83,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-26 22:49+0200\n"
+"POT-Creation-Date: 2007-06-26 23:24+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1239,12 +1240,11 @@ msgstr "Grafik drehen"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:235
 msgid "Check to change the order of rotating and scaling"
-msgstr ""
+msgstr "Auswählen, um die Reihenfolge von Rotieren und Skalieren zu ändern"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:238
-#, fuzzy
 msgid "Ro&tate after scaling"
-msgstr "Tabelle drehen"
+msgstr "&Rotieren nach dem Skalieren"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:255
 msgid "Or&igin:"
@@ -1811,6 +1811,7 @@ msgstr "&Blocksatz"
 #: src/frontends/qt4/ui/ParagraphUi.ui:95
 msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr ""
+"Die Standardausrichtung für diesen Absatz verwenden, was immer sie ist."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:116
 msgid "L&ine spacing:"
@@ -7283,12 +7284,11 @@ msgstr "Amerikanisch"
 
 #: lib/languages:4
 msgid "Arabic (ArabTeX)"
-msgstr ""
+msgstr "Arabisch (ArabTeX)"
 
 #: lib/languages:5
-#, fuzzy
 msgid "Arabic (Arabi)"
-msgstr "Arabisch"
+msgstr "Arabisch (Arabi)"
 
 #: lib/languages:6
 msgid "Armenian"
@@ -11397,21 +11397,19 @@ msgstr ""
 
 #: lib/external_templates:45
 msgid "A bitmap file.\n"
-msgstr ""
+msgstr "Eine Bitmap-Datei.\n"
 
 #: lib/external_templates:102
-#, fuzzy
 msgid "XFig"
-msgstr "Xi"
+msgstr "XFig"
 
 #: lib/external_templates:103 lib/external_templates:106
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
 msgstr ""
 
 #: lib/external_templates:105
-#, fuzzy
 msgid "An Xfig figure.\n"
-msgstr "Neukonfiguration wird durchgeführt..."
+msgstr "Eine Xfig-Abbildung.\n"
 
 #: lib/external_templates:154
 #, fuzzy
@@ -11445,7 +11443,7 @@ msgstr ""
 
 #: lib/external_templates:199
 msgid "LilyPond"
-msgstr ""
+msgstr "LilyPond"
 
 #: lib/external_templates:200 lib/external_templates:206
 msgid "Lilypond typeset music"
@@ -15079,6 +15077,8 @@ msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr ""
+"Der folgende Dateiname wird voraussichtlich Probleme bereiten, wenn LaTeX "
+"mit der exportierten Datei ausgeführt wird: "
 
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
@@ -15917,6 +15917,3 @@ msgstr ""
 #: src/support/userinfo.cpp:49
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "&Default"
-#~ msgstr "&Standard"
