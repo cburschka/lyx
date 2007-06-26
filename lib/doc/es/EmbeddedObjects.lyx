@@ -19462,11 +19462,13 @@ Los flotantes girados son puestos siempre en su propia página (o columna
  Para forzar determinada dirección de rotación para todas las páginas, puedes
  añadir una de las opciones 
 \series bold
-figuresleft
+f\SpecialChar \textcompwordmark{}
+iguresleft
 \series default
  o 
 \series bold
-figuresright
+f\SpecialChar \textcompwordmark{}
+iguresright
 \series default
  a las opciones de clase del documento.
 \end_layout
@@ -20292,20 +20294,7 @@ caption
 \series bold
 tablecaptionabove
 \series default
- de la clase de documento, o usar el entorno 
-\family sans
-Encabezado
-\family default
-\InsetSpace ~
-
-\family sans
-Arriba
-\family default
- en vez del entorno 
-\family sans
-Encabezado
-\family default
-.
+ de la clase de documento.
 \end_layout
 
 \begin_layout Standard

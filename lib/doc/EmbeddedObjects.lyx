@@ -19294,11 +19294,13 @@ Rotated floats are always placed on its own page (or column, when you have
  To force a certain rotation direction for all pages, you can add either
  the option 
 \series bold
-figuresleft
+f\SpecialChar \textcompwordmark{}
+iguresleft
 \series default
  or 
 \series bold
-figuresright
+f\SpecialChar \textcompwordmark{}
+iguresright
 \series default
  to the document class options.
 \end_layout
@@ -20100,16 +20102,7 @@ caption
 \series bold
 tablecaptionabove
 \series default
-, or you can use the environment 
-\family sans
-caption\InsetSpace ~
-above
-\family default
- instead of the 
-\family sans
-caption
-\family default
- environment.
+.
 \end_layout
 
 \begin_layout Standard

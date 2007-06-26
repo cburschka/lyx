@@ -236,13 +236,7 @@ status open
 \begin_layout Standard
 
 \size normal
-Übersetzung und Bearbeitung: Hartmut Haase (
-\size default
-\noun on
-HHa
-\size normal
-\noun default
-)
+Übersetzung und Bearbeitung: Hartmut Haase
 \end_layout
 
 \end_inset
@@ -406,8 +400,7 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
 
 \end_inset
 
- in der Werkzeug\SpecialChar \-
-leiste oder wählendas Menü 
+ in der Werkzeugleiste oder wählen das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Grafik
@@ -565,26 +558,6 @@ Ausschnitt
 \family default
 \series default
  ignorieren, weil Sie sich um die Koordinaten nicht kümmern müssen.
-\newline
-
-\series bold
-Anmerkung
-\series default
- von 
-\noun on
-HHa
-\noun default
-: Um Symbole wie 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.xpm
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
- besser in der Zeile zu zentrieren, habe ich sie in der y-Richtung ein wenig
- verschoben.
 \end_layout
 
 \begin_layout Description
@@ -799,7 +772,7 @@ Abbildung
 Abbildung\InsetSpace ~
 Nr:
 \emph default
- schreiben Sie den Bildtitel.
+ schreiben Sie den Bildbeschriftung.
  Nach einem Klick oberhalb oder unterhalb von 
 \emph on
 Abbildung\InsetSpace ~
@@ -818,8 +791,8 @@ reference "abb:escher"
 
 \end_inset
 
- unterhalb des Bildtitels einfügen.
- Näheres über Bildtitel erfahren Sie in Abschnitt\InsetSpace ~
+ unterhalb der Bildbeschriftung einfügen.
+ Näheres über Bildbeschriftungen erfahren Sie in Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "abs:Titel-Platzierung"
@@ -1844,7 +1817,7 @@ reference "uab:Mehrfachspalten"
  beschrieben.
 \newline
 Weiterhin können Sie eine Zelle, eine Auswahl oder die gesamte
- Tabelle im Gegenuhrzeigersinn um 90° drehen.
+ Tabelle gegen den Uhrzeigersinn um 90° drehen.
  LyX zeigt diese Drehung nicht, nur die druckfertige Ausgabe.
 \newline
 
@@ -2209,7 +2182,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 
 \end_inset
 
- Dreht den Inhalt der ausgewählte(n) Zelle(n) um 90° im Gegenuhrzeigersinn
+ Dreht den Inhalt der ausgewählte(n) Zelle(n) um 90° gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
@@ -2222,7 +2195,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 
 \end_inset
 
- Dreht die Tabelle um 90° im Gegenuhrzeigersinn
+ Dreht die Tabelle um 90° im gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
@@ -2288,8 +2261,7 @@ Tabellen-Einstellungen
 \family default
 .
  Unter den ersten beiden Punkten sind einige der bereits beschriebenen Einstellu
-ngs-Möglichkei\SpecialChar \-
-ten zu erreichen.
+ngsmöglichkeiten zu erreichen.
 \end_layout
 
 \begin_layout Section
@@ -2571,7 +2543,7 @@ Tabelle
 Tabelle\InsetSpace ~
 Nr:
 \emph default
- schreiben Sie den Tabellentitel.
+ schreiben Sie die Tabellenbeschriftung.
  Nach einem Klick oberhalb oder unterhalb von 
 \emph on
 Tabelle\InsetSpace ~
@@ -2606,8 +2578,8 @@ reference "tab:a table float"
 \end_layout
 
 \begin_layout Standard
-Normalerweise steht der Tabellentitel über einer Tabelle, aber unglücklicherweis
-e wird das von LaTeX Standard-Klassen nicht unterstützt.
+Normalerweise steht die Tabellenbeschriftung über einer Tabelle, aber unglücklic
+herweise wird das von LaTeX Standard-Klassen nicht unterstützt.
  Das bedeutet, dass bei den Klassen 
 \family sans
 article
@@ -5934,7 +5906,7 @@ Legende
 \end_layout
 
 \begin_layout Subsubsection
-Beschriftungsbreite
+Titelbreite
 \begin_inset LatexCommand index
 name "Tabellen ! lange ! Beschriftungsbreite"
 
@@ -5944,7 +5916,7 @@ name "Tabellen ! lange ! Beschriftungsbreite"
 \end_layout
 
 \begin_layout Standard
-Die maximale Beschriftungsbreite wird durch die Variable 
+Die maximale Titelbreite wird durch die Variable 
 \series bold
 
 \backslash
@@ -5969,13 +5941,13 @@ cm).
 \backslash
 setlength{
 \backslash
-LTcapwidth}{width}
+LTcapwidth}{Breite}
 \end_layout
 
 \begin_layout Standard
 wobei 
 \family typewriter
-width
+Breite
 \family default
  eine der in Anhang\InsetSpace ~
 
@@ -6325,7 +6297,7 @@ asd
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -6692,7 +6664,7 @@ LTcapwidth}{4in}
 status collapsed
 
 \begin_layout Standard
-Titelbreite zurücksetzen
+Beschriftungsbreite zurücksetzen
 \end_layout
 
 \end_inset
@@ -6739,7 +6711,7 @@ Zoll verwenden oder den LaTeX-Befehl
 \series bold
 
 \backslash
-captionsetup{width=value}
+captionsetup{width=Wert}
 \series default
  benutzen, der vom 
 \series bold
@@ -7559,7 +7531,7 @@ Rizzardi
 status open
 
 \begin_layout Standard
-Example footnote
+Beispielfußnote
 \end_layout
 
 \end_inset
@@ -8801,14 +8773,14 @@ name "Tabellen ! lange ! Berechnung"
 LaTeX berechnet die Länge von Tabellenseiten und die Seitenumbrüche mit
  sogenannten 
 \emph on
-Bröcken
+chunks
 \emph default
  (chunks).
  Chunks sind Tabellenteile, die LaTeX gleichzeitig im Speicher hält.
  Aus historischen Gründen wurde der Standardwert auf 20 Tabellenzeilen gesetzt.
  Wenn Sie Tabellen benutzen, die über mehrere Seiten gehen, verlangsamt
  das die Druckausgabe.
- Sie können also die Brockengröße ohne Gefahr auf Werte zwischen 100-1000
+ Sie können also die Chunkgröße ohne Gefahr auf Werte zwischen 100-1000
  setzen, indem Sie in den LaTeX-Vorspann Ihres Dokumentes folgende Zeile
  einfügen:
 \end_layout
@@ -8903,7 +8875,7 @@ Standardmäßig werden Tabellen nur zwischen Zeilen umgebrochen.
 \begin_inset Quotes grd
 \end_inset
 
--Befehl müssen Sie soviele 
+-Befehl müssen Sie so viele 
 \begin_inset Quotes gld
 \end_inset
 
@@ -8962,7 +8934,7 @@ Hinter dem
 \begin_inset Quotes grd
 \end_inset
 
--Befehl müssen Sie soviele 
+-Befehl müssen Sie so viele 
 \begin_inset Quotes gld
 \end_inset
 
@@ -11018,7 +10990,7 @@ Mehrfachspalte
 \end_layout
 
 \begin_layout Standard
-Mahrfachspalten haben ihre eigenen Einstellungen.
+Mehrfachspalten haben ihre eigenen Einstellungen.
  Das bedeutet, dass sie sich nur auf die Mehrfachspalte auswirken.
  Hier ist ein Beispiel, wobei 
 \begin_inset Quotes gld
@@ -11721,7 +11693,7 @@ status open
 \begin_layout Standard
 
 \series bold
-Bemerklung:
+Bemerkung:
 \series default
  Wegen eines Fehlers in LyX, werden die überschriebenen Einstellungen dennoch
  angezeigt.
@@ -12617,7 +12589,7 @@ renewcommand{
 \backslash
 toprule}{
 \backslash
-mytoprule[width]}
+mytoprule[Breite]}
 \end_layout
 
 \begin_layout Standard
@@ -12641,9 +12613,9 @@ midrule
 \series default
 .
  Für 
-\series bold
-width
-\series default
+\family sans
+Breite
+\family default
  können Sie alle Einheiten benutzen, die in Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -12872,7 +12844,7 @@ cmidrule{3-4}
 
 \begin_layout Standard
 Wenn Sie trotzdem mit den Linien nicht zufrieden sind, können Sie mit folgendem
- befehl eine Linie zeichnen, die alle Spalten überspannt:
+ Befehl eine Linie zeichnen, die alle Spalten überspannt:
 \end_layout
 
 \begin_layout Standard
@@ -14026,16 +13998,20 @@ status collapsed
 \begin_layout Standard
 Wie Sie sehen können, ist der Inhalt der ersten und letzten Zeile bezüglich
  der Textzeile nicht richtig ausgerichtet.
- Um das zu erreichen, müssen Sie die Minipage-Box in eine raisebox
+ Um das zu erreichen, müssen Sie die Minipage-Box in eine 
+\begin_inset Quotes gld
+\end_inset
+
+Raisebox
+\begin_inset Quotes grd
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
-\family typewriter
-Raiseboxen
-\family default
- werden in Abschnitt\InsetSpace ~
+Raiseboxen werden in Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "uab:Vertikale-Ausrichtung"
@@ -14099,8 +14075,8 @@ status open
 \series bold
 Bemerkung:
 \series default
- Die Ausrichtung ist nicht ganz genau, weil sie vom Dokument-Font, der Fontgröße
- und der Dicke der Tabellenlinien abhängt.
+ Die Ausrichtung ist nicht ganz genau, weil sie von der Dokumentschrift,
+ der Schriftgröße und der Dicke der Tabellenlinien abhängt.
  Der Faktor im 
 \series bold
 
@@ -14961,27 +14937,15 @@ reference "tab:Tabelle-mit-farbigen-vert"
 
 \end_inset
 
- wurde das LaTeX-Argument
-\end_layout
-
-\begin_layout Standard
-
+ wurde das LaTeX-Argument 
 \series bold
 WcW
-\end_layout
-
-\begin_layout Standard
-für die letzte und
-\end_layout
-
-\begin_layout Standard
-
+\series default
+ für die letzte und 
 \series bold
 Wc
-\end_layout
-
-\begin_layout Standard
-für die anderen Spalten benutzt.
+\series default
+ für die anderen Spalten benutzt.
 \end_layout
 
 \begin_layout Standard
@@ -15635,7 +15599,7 @@ A
 
 \begin_layout Standard
 3\InsetSpace \thinspace{}
-mmLeerraum oberhalb der Zeile
+mm Leerraum oberhalb der Zeile
 \end_layout
 
 \end_inset
@@ -15814,7 +15778,7 @@ Wenn Sie die Höhe aller Zellen vergrößern wollen, können Sie das mit folgend
 \backslash
 setlength{
 \backslash
-extrarowheight}{height}
+extrarowheight}{Höhe}
 \end_layout
 
 \begin_layout Standard
@@ -17705,26 +17669,15 @@ status collapsed
 \end_inset
 
 X-Argument
-\end_layout
-
-\begin_layout Standard
-
+\family default
 \series bold
-VcV
-\end_layout
-
-\begin_layout Standard
-für die letzte Spalte und
-\end_layout
-
-\begin_layout Standard
-
+ VcV
+\series default
+ für die letzte Spalte und
 \series bold
-Vc
-\end_layout
-
-\begin_layout Standard
-für die anderen benutzt.
+ Vc
+\series default
+ für die anderen benutzt.
 \end_layout
 
 \begin_layout Standard
@@ -18777,8 +18730,8 @@ newfloat{Xalgorithm}{tbp}{loa}
 \newline
 
 \backslash
-floatname{Xalgorithm}{your\InsetSpace ~
-name}
+floatname{Xalgorithm}{Ihr\InsetSpace ~
+Name}
 \newline
 
 \backslash
@@ -18817,9 +18770,7 @@ end{Xalgorithm}}
 \end_layout
 
 \begin_layout Standard
-Gleitobjekt-Algorithmen werden nicht wie Gleitobjekt-Abbildungen oder -Ta\SpecialChar \-
-bel\SpecialChar \-
-len
+Gleitobjekt-Algorithmen werden nicht wie Gleitobjekt-Abbildungen oder -Tabellen
  nach dem Schema 
 \begin_inset Quotes gld
 \end_inset
@@ -19508,9 +19459,9 @@ reference "fig:Two-distorted-images"
 \end_layout
 
 \begin_layout Description
-(<Querverweis>): druckt die Nummer der Gleitumgebung umbegen von zwei runden
+(<Querverweis>): druckt die Nummer der Gleitumgebung umgeben von zwei runden
  Klammern, dies ist der Stil, wie er normalerweise für Verweise auf Formeln
- verwendet wird, spezill wenn der Name 
+ verwendet wird, speziell wenn der Name 
 \begin_inset Quotes gld
 \end_inset
 
@@ -19528,7 +19479,7 @@ reference "eq:Wgn"
 \end_layout
 
 \begin_layout Description
-<Seite>: prints the page number: Seite\InsetSpace ~
+<Seite>: druckt die Seitennummer: Seite\InsetSpace ~
 
 \begin_inset LatexCommand pageref
 reference "fig:Two-distorted-images"
@@ -19541,7 +19492,7 @@ reference "fig:Two-distorted-images"
 \begin_layout Description
 auf\InsetSpace ~
 Seite\InsetSpace ~
-<Seite>: druckt den text "auf Seite" und die Seitennumer: 
+<Seite>: druckt den Text "auf Seite" und die Seitennummer: 
 \begin_inset LatexCommand vpageref
 reference "fig:Two-distorted-images"
 
@@ -19589,8 +19540,8 @@ prettyref
 \end_layout
 
 \begin_layout Standard
-Beacten Sie, dass der Stil <Seite> nicht die Sietennummer druckt, wenn sich
- die referenzierte Marke auf der vorherigen, der selben oder der nächsten
+Beachten Sie, dass der Stil <Seite> nicht die Seitennummer druckt, wenn
+ sich die referenzierte Marke auf der vorherigen, der selben oder der nächsten
  Seite befindet.
  Stattdessen wird der Text 
 \begin_inset Quotes gld
@@ -20059,7 +20010,8 @@ Gleitobjekten versuche das Gleitobjekt auf einer eigenen Seite zu
 \series bold
 
 \backslash
-floatpagefraction 
+f\SpecialChar \textcompwordmark{}
+loatpagefraction 
 \series default
 im LaTeX-Vorspann überschrieben werden.
 \end_layout
@@ -20085,7 +20037,7 @@ Seite
 \family default
  und dann die anderen Optionen zu anzuwenden.
  Wenn Sie nicht die Standard-Platzierung verwenden, wird LaTeX nur die von
- Ihnen gewählten Options versuchen anzuwenden, aber immer in der selben
+ Ihnen gewählten Optionen versuchen anzuwenden, aber immer in der selben
  Reihenfolge.
  Wenn keine der 4 Platzierungen möglich sind, wird die Prozedur intern wiederhol
 t, aber diesmal mit dem Ziel das Gleitobjekt auf die nächste Seite zu setzen.
@@ -20189,7 +20141,8 @@ name "LaTeX-Pakete ! flafter"
 Manchmal möchte man alle Abbildungen und Tabellen am Dokumentende haben.
  Dafür gibt es das LaTeX-Paket 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 
 \begin_inset LatexCommand index
@@ -20216,7 +20169,8 @@ name "LaTeX-Pakete ! endf\\/loat"
  finden.
  Das 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 -Paket wird mit folgendem Befehl in den LaTeX-Vorspann eingefügt:
 \end_layout
@@ -20226,14 +20180,16 @@ endfloat
 \series bold
 
 \backslash
-usepackage[options]{endfloat}
+usepackage[Optionen]{endf\SpecialChar \textcompwordmark{}
+loat}
 \end_layout
 
 \begin_layout Standard
 Es gibt verschiedene Optionen für die Formatierung der Abbildungen- und
  Tabellen-Abschnitt, die Sie in der 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 -Dokumentation 
 \begin_inset LatexCommand cite
@@ -20280,7 +20236,7 @@ status open
 Bemerkung\InsetSpace ~
 2: 
 \series default
-Die aktuele Version von 
+Die aktuelle Version von 
 \series bold
 endf\SpecialChar \textcompwordmark{}
 loat
@@ -20294,7 +20250,7 @@ loat
 \end_inset
 
  enthält.
- Sie müssen stattdessen den Befehle 
+ Sie müssen stattdessen den Befehl 
 \series bold
 
 \backslash
@@ -20359,11 +20315,13 @@ Gedrehte Gleitobjekte werden immer auf einer neuen Seite (oder Spalte bei
  Um eine Drehrichtung für alle Seiten zu erzwingen, fügen Sie entweder die
  Option 
 \series bold
-figuresleft
+f\SpecialChar \textcompwordmark{}
+iguresleft
 \series default
  oder 
 \series bold
-figuresright
+f\SpecialChar \textcompwordmark{}
+iguresright
 \series default
  zu den Dokumentklassen-Optionen hinzu.
 \end_layout
@@ -20490,7 +20448,7 @@ e
 \end_layout
 
 \begin_layout Section
-Titel-Formatierung
+Beschriftungs-Formatierung
 \begin_inset LatexCommand label
 name "abs:Titel-Formatierung"
 
@@ -20498,7 +20456,7 @@ name "abs:Titel-Formatierung"
 
 
 \begin_inset LatexCommand index
-name "Gleitobjekte ! Titel ! Formatierung"
+name "Gleitobjekte ! Beschriftung ! Formatierung"
 
 \end_inset
 
@@ -20510,7 +20468,7 @@ name "Gleitobjekte ! Titel ! Formatierung"
 \family sans
 Legende
 \family default
- ist die Standard-Paragraf-Umgebung für Gleitobjekt-Titel.
+ ist die Standard-Paragraf-Umgebung für Gleitobjekt-Beschriftungen.
  In LyX sehen Titel so aus:  
 \family sans
 
@@ -20523,17 +20481,18 @@ Abbildung xyz:
 \begin_inset Quotes grd
 \end_inset
 
-, gefolgt vom Titeltext, wobei 
+, gefolgt vom Beschriftungstext, wobei 
 \family sans
 xyz
 \family default
  die von LyX vergebene Nummer ist.
- Standardmäßig werden die Marke und der Titeltext im selben Font gedruckt.
+ Standardmäßig werden die Marke und der Beschriftungstext im selben Font
+ gedruckt.
  Dies ist nicht immer brauchbar.
 \end_layout
 
 \begin_layout Standard
-Um das Standardformat für den Titel zu ändern, müssen Sie das LaTeX-Paket
+Um das Standardformat für die Beschriftung zu ändern, müssen Sie das LaTeX-Paket
  
 \series bold
 caption
@@ -20556,8 +20515,8 @@ usepackage[Format-Definition]{caption}
 \end_layout
 
 \begin_layout Standard
-Wenn zum Beispiel Marke und Nummer serifenfrei und fett gedruckt werden
- und der Titel immer über der Tabelle, müssen Sie folgenden Befehl benutzen:
+Wenn zum Beispiel Name und Nummer serifenfrei und fett gedruckt werden und
+ die Beschriftung immer über der Tabelle, müssen Sie folgenden Befehl benutzen:
 \end_layout
 
 \begin_layout Standard
@@ -20572,9 +20531,9 @@ usepackage[labelfont={bf,sf}, tableposition=top]{caption}
 Sie können auch verschiedene Formate für verschiedene Gleitobjekt-Typen
  definieren.
  Dazu laden Sie das 
-\family typewriter
+\series bold
 caption
-\family default
+\series default
 -Paket ohne Format-Optionen und definieren die verschiedenen Formate mit
  dem Befehl
 \end_layout
@@ -20602,7 +20561,8 @@ reference "tab:Langer-Tab-Titel"
 
 \end_inset
 
- können die Titel mit folgenden Befehlen im LaTeX-Vorspann definiert werden:
+ können die Beschriftungen mit folgenden Befehlen im LaTeX-Vorspann definiert
+ werden:
 \end_layout
 
 \begin_layout Standard
@@ -20681,11 +20641,8 @@ tablecaptionabove
 \begin_layout Standard
 Weitere Informationen über das Paket
 \series bold
- 
-\family typewriter
+ caption
 \series default
-caption
-\family default
  finden Sie in seiner Dokumentation 
 \begin_inset LatexCommand cite
 key "caption,caption-de"
@@ -20696,7 +20653,7 @@ key "caption,caption-de"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie die Marke von 
+Wenn Sie den Namen von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -20736,10 +20693,7 @@ thefigure
 \series default
  die Bildnummer einsetzt und
 \series bold
- 
-\family typewriter
-~
-\family default
+ ~
 \series default
  ein geschütztes Leerzeichen ist.
 \end_layout
@@ -20775,9 +20729,9 @@ letter (koma-script)
 report (koma-script)
 \family default
 ) benutzen, können Sie anstatt des 
-\family typewriter
+\series bold
 caption
-\family default
+\series default
 -Paketes den eingebauten Befehl 
 \series bold
 
@@ -20803,7 +20757,7 @@ bfseries}
 \end_layout
 
 \begin_layout Standard
-im LaTeX-Vorspann druckt die Titelmarke fett.
+im LaTeX-Vorspann druckt den Namen fett.
 \end_layout
 
 \begin_layout Standard
@@ -20814,9 +20768,9 @@ Weitere Informationen über
 setkomafont
 \series default
  finden Sie in der 
-\family sans
+\series bold
 koma-script
-\family default
+\series default
 -Dokumentation 
 \begin_inset LatexCommand cite
 key "koma-script,koma-script-de"
@@ -20845,7 +20799,7 @@ captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm, labelsep=period
 status open
 
 \begin_layout Standard
-Das Titelformat wurde nur für dieses Beispiel geändert
+Das Beschriftungsformat wurde nur für dieses Beispiel geändert
 \end_layout
 
 \end_inset
@@ -20882,14 +20836,15 @@ name "abb:Langer-Abb-Titel"
 
 \end_inset
 
-Dies ist ein Beispiel eines Titels, der länger als eine Zeile lang ist,
- um das andere Titelformat zu zeigen.
- Hier wurde ein selbst definiertes Titelformat benutzt.
+Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
+ ist, um das andere Beschriftungsformat zu zeigen.
+ Hier wurde ein selbst definiertes Beschriftungsformat benutzt.
 \begin_inset OptArg
 status collapsed
 
 \begin_layout Standard
-Dies ist ein Beispiel eines Titels, der länger als eine Zeile lang ist
+Dies ist ein Beispiel einer Beschriftung, der länger als eine Zeile lang
+ ist.
 \end_layout
 
 \end_inset
@@ -20940,14 +20895,16 @@ name "tab:Langer-Tab-Titel"
 
 \end_inset
 
-Dies ist ein Beispiel eines Titels, der länger als eine Zeile lang ist,
- um das andere Titelformat zu zeigen.
- Hier wurde das Standard-Titelformat dieses Dokuments für Tabellen benutzt.
+Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
+ ist, um das andere Beschriftungsformat zu zeigen.
+ Hier wurde das Standard-Beschriftungsformat dieses Dokuments für Tabellen
+ benutzt.
 \begin_inset OptArg
 status collapsed
 
 \begin_layout Standard
-Dies ist ein Beispiel eines Titels, der länger als eine Zeile lang ist
+Dies ist ein Beispiel einer Beschriftung, der länger als eine Zeile lang
+ ist.
 \end_layout
 
 \end_inset
@@ -21030,7 +20987,7 @@ e
 \end_layout
 
 \begin_layout Section
-Titel-Platzierung
+Beschriftungs-Platzierung
 \begin_inset LatexCommand label
 name "abs:Titel-Platzierung"
 
@@ -21038,7 +20995,7 @@ name "abs:Titel-Platzierung"
 
 
 \begin_inset LatexCommand index
-name "Gleitobjekte !  Titel ! Platzierung"
+name "Gleitobjekte ! Beschriftung ! Platzierung"
 
 \end_inset
 
@@ -21046,7 +21003,7 @@ name "Gleitobjekte !  Titel ! Platzierung"
 \end_layout
 
 \begin_layout Standard
-Normalerweise werden die Titel wie folgt platziert:
+Normalerweise werden die Beschriftungen wie folgt platziert:
 \end_layout
 
 \begin_layout Description
@@ -21075,7 +21032,7 @@ letter
 \family sans
 report
 \family default
- benutzen, wird zwischen Titel und Tabelle kein Zwischenraum gedruckt.
+ benutzen, wird zwischen Beschriftung und Tabelle kein Zwischenraum gedruckt.
  Um das zu erreichen, müssen Sie beim Lade-Befehl des LaTeX-Pakets 
 \series bold
 caption
@@ -21145,23 +21102,14 @@ caption
 \series bold
 tablecaptionabove
 \series default
- benutzen oder die Umgebung 
-\family sans
-caption\InsetSpace ~
-above
-\family default
- anstelle der 
-\family sans
-caption
-\family default
- Umgebung verwenden.
+ benutzen.
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-Der Titel kann auch neben  der Abbildung oder Tabelle stehen.
+Die Beschriftung kann auch neben  der Abbildung oder Tabelle stehen.
  Das bewirkt das LaTeX-Paket 
 \series bold
 sidecap
@@ -21184,13 +21132,14 @@ usepackage[Option]{sidecap}
 \end_layout
 
 \begin_layout Standard
-Wenn Sie keine Option setzen, wird der Titel außen gesetzt.
+Wenn Sie keine Option setzen, wird die Beschriftung außen gesetzt.
  Mit 
 \series bold
 innercaption
 \series default
- wird der Titel innen gedruckt.
- Um den Titel immer rechts oder links zu erzwingen, benutzen Sie 
+ wird die Beschriftung innen gedruckt.
+ Um die Beschriftung immer rechts oder links zu erzwingen, benutzen Sie
+ 
 \series bold
 rightcaption
 \series default
@@ -21202,8 +21151,8 @@ leftcaption
 \end_layout
 
 \begin_layout Standard
-Um den Titel mit LyX seitlich zu drucken, müssen Sie folgende Befehle in
- den LaTeX-Vorspann schreiben:
+Um die Beschriftung mit LyX seitlich zu drucken, müssen Sie folgende Befehle
+ in den LaTeX-Vorspann schreiben:
 \end_layout
 
 \begin_layout Standard
@@ -21476,8 +21425,8 @@ igure}
 \end_layout
 
 \begin_layout Standard
-Mit den Befehlen können Sie die Gleitobjekte so umdefinieren, dass die Titel
- seitlich gedruckt werden.
+Mit den Befehlen können Sie die Gleitobjekte so umdefinieren, dass die Beschrift
+ungen seitlich gedruckt werden.
  Für Gleitobjekt-Abbildungen schreiben Sie dann die Befehle
 \end_layout
 
@@ -21537,12 +21486,13 @@ reference "tab:cap-beside-tab"
 
 \end_inset
 
- sind Beispiele für seitliche Titel.
+ sind Beispiele für seitliche Beschriftungen.
 \end_layout
 
 \begin_layout Standard
-Sie sehen, dass der Titel bei Gleitobjekt-Tabellen am oberen Rand der Tabelle
- gedruckt wird und bei Gleitobjekt-Abbildungen am unteren Rand der Abbildung.
+Sie sehen, dass die Beschriftung bei Gleitobjekt-Tabellen am oberen Rand
+ der Tabelle gedruckt wird und bei Gleitobjekt-Abbildungen am unteren Rand
+ der Abbildung.
  Das kann man mit dem Befehl
 \end_layout
 
@@ -21581,8 +21531,8 @@ c
 b
 \family default
  für unten.
- Um den Titel einer Gleitobjekt-Abbildung vertikal zu zentrieren, lautet
- der Befehl
+ Um die Beschriftung einer Gleitobjekt-Abbildung vertikal zu zentrieren,
+ lautet der Befehl
 \end_layout
 
 \begin_layout Standard
@@ -21648,7 +21598,7 @@ reference "uab:Querverweis-Position"
 \end_inset
 
  beschrieben wurde, hat keine Auswirkungen auf Gleitobjekte mit seitlichen
- Titeln.
+ Beschriftungen.
 \end_layout
 
 \end_inset
@@ -21693,7 +21643,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-Dies ist ein Titel neben einer Abbildung.
+Dies ist eine Beschriftung neben einer Abbildung.
 \end_layout
 
 \end_inset
@@ -21737,7 +21687,7 @@ name "tab:cap-beside-tab"
 
 \end_inset
 
-Dies ist ein Titel neben einer Tabelle.
+Dies ist eine Beschriftung neben einer Tabelle.
 \end_layout
 
 \end_inset
@@ -22009,7 +21959,7 @@ name "abb:cap-beside-fig-2"
 
 \end_inset
 
-Dies ist ein vertikal zentrierter Titel neben einer Abbildung.
+Dies ist eine vertikal zentrierte Beschriftung neben einer Abbildung.
 \end_layout
 
 \end_inset
@@ -22067,8 +22017,8 @@ Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Standard
-Die Einträge in diesen Verzeichnissen sind die Titel der Gleitobjekte oder
- ihre Kurztitel, die Gleitobjekt-Nummer und die Seitennummer.
+Die Einträge in diesen Verzeichnissen sind die Beschriftungen der Gleitobjekte
+ oder ihre Kurztitel, die Gleitobjekt-Nummer und die Seitennummer.
 \end_layout
 
 \begin_layout Standard
@@ -22437,7 +22387,7 @@ reference "abs:Gerahmte-Boxen"
 \end_layout
 
 \begin_layout Description
-Schattiert: Diese Notiz müßte eigentlich 
+Schattiert: Diese Notiz müsste eigentlich 
 \family sans
 farbig
 \family default
@@ -22523,7 +22473,7 @@ LyX-Notiz
 
 Die Textfarbe der 
 \family sans
-Grauschriftt
+Grauschrift
 \family default
 -Notiz können Sie im LaTeX-Vorspann mit folgenden Befehl ändern:
 \end_layout
@@ -22573,7 +22523,7 @@ reference "abs:Farbige-Tabellen"
 \begin_inset VSpace bigskip
 \end_inset
 
-Der Teststil von 
+Der Textstil von 
 \family sans
 Eingerahmt
 \family default
@@ -22959,8 +22909,8 @@ Wenn Sie nur eine Marke für eine Fußnote definieren wollen, können Sie den
 footnotemark[Nummer]
 \series default
  benutzen.
- Dann können Sie diese Marke mehrmals verwenden, ohne dass die Fußnote jedesmal
- gedruckt wird.
+ Dann können Sie diese Marke mehrmals verwenden, ohne dass die Fußnote jedes
+ mal gedruckt wird.
 \end_layout
 
 \begin_layout Standard
@@ -23063,7 +23013,7 @@ müssen Sie folgenden Befehl in den LaTeX-Vorspann schreiben:
 \begin_inset VSpace bigskip
 \end_inset
 
-Der folgende Befehl ändert die Fußnoten-Nummerierung auf kleinge römische
+Der folgende Befehl ändert die Fußnoten-Nummerierung auf kleine römische
  Zahlen:
 \end_layout
 
@@ -23101,7 +23051,7 @@ roman{footnote}}
 status open
 
 \begin_layout Standard
-Dies ist eine Fußnote mit kleingeschriebenen römischen Zahlen
+Dies ist eine Fußnote mit kleinen römischen Zahlen
 \end_layout
 
 \end_inset
@@ -24257,7 +24207,7 @@ Dies wird auch in diesem Dokument verwendet, denn
 \series bold
 marginnote
 \series default
- hat eine andere nütziche Eigenschaft: Man kann einen vertikalen Versatz
+ hat eine andere nützliche Eigenschaft: Man kann einen vertikalen Versatz
  für Randnotizen angeben.
  Dies wird oft für ein besseres Seitenformat verwendet, wenn zu viele Randnotize
 n sind zu dicht beieinander sind.
@@ -25643,7 +25593,11 @@ Box
 \end_inset
 
 Die Aufschrift der Box in LyX ändert sich mit dem gewählten Rahmen.
- Um verschiedene Rahmenstile zu verwenden, muss das LaTeX-Paket fancybox
+ Um verschiedene Rahmenstile zu verwenden, muss das LaTeX-Paket 
+\series bold
+fancybox
+\series default
+
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! fancybox"
 
@@ -26329,7 +26283,7 @@ h
 \noindent
 Aber wenn Sie die Tabelle in eine Minipage packen, wird die Fußnote am Ende
  der Minipage gedruckt, nummeriert mit kleinen lateinischen Buchstaben.
- In jeder Minipage wird die Fußnotenzahl auf 1 zurückgesetzt, aber nicht
+ In jeder Minipage wird die Fußnotennummer auf 1 zurückgesetzt, aber nicht
  außerhalb.
 \end_layout
 
@@ -26567,7 +26521,15 @@ name "Boxen ! Parbox"
 \end_layout
 
 \begin_layout Standard
-Parbox ist eine Abkürzung für paragraph box, das heißt Absatzbox.
+Parbox ist eine Abkürzung für 
+\begin_inset Quotes gld
+\end_inset
+
+paragraph box
+\begin_inset Quotes grd
+\end_inset
+
+, was Absatzbox bedeutet.
  Weil Parbox ein LaTeX-Befehl ist, Minipage aber eine LaTeX-Umgebung, besitzen
  Parboxen einige Einschränkungen.
  Zum Beispiel werden keine Fußnoten, die in einer Parbox definiert werden,
@@ -27820,7 +27782,7 @@ name "URL"
 \end_layout
 
 \begin_layout Standard
-Internet- oder email-Adressen können mit 
+Internet- oder Email-Adressen können mit 
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
@@ -28052,7 +28014,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Für email-Adressen setzen Sie 
+Für Email-Adressen setzen Sie 
 \family sans
 
 \begin_inset Quotes gld
@@ -29162,7 +29124,7 @@ reference "abs:Gleitobjekt-Platzierung"
 
  beschriebenen Platzierungsoptionen festlegen können.
  Die Platzierungsoptionen können gemischt werden und werden dabei direkt
- hinterienander angegeben, z.\InsetSpace \thinspace{}
+ hintereinander angegeben, z.\InsetSpace \thinspace{}
 B.
  
 \begin_inset Quotes gld
@@ -29865,7 +29827,7 @@ dd
 \begin_inset Text
 
 \begin_layout Standard
-didot (1\InsetSpace \thinspace{}
+Didot (1\InsetSpace \thinspace{}
 dd 
 \begin_inset Formula $\approx$
 \end_inset
