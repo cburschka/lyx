@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 275
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -369,6 +369,7 @@ Para insertar una imagen en un documento, sitúa el cursor en el lugar del
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -568,6 +569,7 @@ reference "sec:Formatos-de-imagen"
 	filename ../clipart/mobius.eps
 	display color
 	scale 70
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -586,6 +588,7 @@ Esta es la misma imagen pero en modo borrador:
 	display color
 	scale 70
 	draft
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -631,6 +634,7 @@ El botón
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -686,6 +690,7 @@ status collapsed
 	filename ../clipart/platypus.eps
 	display color
 	width 50col%
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -745,6 +750,7 @@ M.C.
 	filename ../clipart/escher-lsd.eps
 	display color
 	scale 80
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -788,6 +794,7 @@ Etiqueta
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -802,6 +809,7 @@ cruzada
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -892,6 +900,7 @@ status collapsed
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	width 45col%
+	scaleBeforeRotation
 	subcaption
 	subcaptionText "Estructura indefinible"
 
@@ -904,6 +913,7 @@ status collapsed
 	filename ../clipart/platypus.eps
 	lyxscale 60
 	width 45col%
+	scaleBeforeRotation
 	subcaption
 	subcaptionText "\label{fig:Platypus} Platypus"
 
@@ -1247,6 +1257,7 @@ Puede insertarse una tabla mediante el botón
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1633,6 +1644,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1643,6 +1655,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1653,6 +1666,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1663,6 +1677,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1673,6 +1688,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1683,6 +1699,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1693,6 +1710,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1703,6 +1721,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1713,6 +1732,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1724,6 +1744,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1735,6 +1756,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-left.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1745,6 +1767,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-center.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1755,6 +1778,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-right.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1765,6 +1789,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-top.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1775,6 +1800,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-middle.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1785,6 +1811,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-bottom.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1795,6 +1822,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1805,6 +1833,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1815,6 +1844,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -2127,6 +2157,7 @@ Tabla
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -2252,6 +2283,7 @@ Etiqueta
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -2266,6 +2298,7 @@ cruzada
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -10337,6 +10370,7 @@ Para extender una celda sobre varias columnas, se marcan las celdas que
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -17624,6 +17658,7 @@ reference "sec:Colocación-de-Encabezados"
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
 	scale 70
+	scaleBeforeRotation
 
 \end_inset
 
@@ -17985,6 +18020,7 @@ status open
 	filename ../clipart/mobius.eps
 	display color
 	width 40col%
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -18342,6 +18378,7 @@ Etiqueta
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -18351,6 +18388,7 @@ Etiqueta
 \begin_inset Graphics
 	filename clipart/etiquetaQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -18390,6 +18428,7 @@ cruzada
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -18402,6 +18441,7 @@ cruzada
 \begin_inset Graphics
 	filename clipart/referenciaQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -19964,6 +20004,7 @@ status open
 	filename ../clipart/mobius.eps
 	lyxscale 50
 	scale 50
+	scaleBeforeRotation
 
 \end_inset
 
@@ -20843,6 +20884,7 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21158,6 +21200,7 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21308,6 +21351,7 @@ Las notas se insertan con el botón
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21332,6 +21376,7 @@ LyX Este tipo es para notas internas que no han de aparecer en la salida.
 	filename clipart/NotaLyXImagenQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21366,6 +21411,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 	filename clipart/ComentNotaImagenQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21395,6 +21441,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 	filename clipart/GrisNotaImagenQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21501,6 +21548,7 @@ Enmarcado Este tipo de notas aparecerá en la salida como un texto enmarcado.
 \begin_inset Graphics
 	filename clipart/NotaEnmarcadaImg.png
 	display none
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21565,6 +21613,7 @@ Sombreado Este tipo de nota se verá en la salida con un fondo de color rojo.
 \begin_inset Graphics
 	filename clipart/NotaSombreadaImg.png
 	display none
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21612,6 +21661,7 @@ Si usas el botón de la barra de herramientas
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22011,6 +22061,7 @@ Las notas al pie se insertan con el botón
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22034,6 +22085,7 @@ Aparece un recuadro como este:
 \begin_inset Graphics
 	filename clipart/notapieQt4.png
 	scale 80
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22755,6 +22807,7 @@ framebox{
 \begin_inset Graphics
 	filename ../clipart/without_fntright.pdf
 	width 100col%
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22818,6 +22871,7 @@ framebox{
 \begin_inset Graphics
 	filename ../clipart/with_fntright.pdf
 	width 100col%
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22944,6 +22998,7 @@ framebox{
 
 \begin_inset Graphics
 	filename ../clipart/endnotes.pdf
+	scaleBeforeRotation
 
 \end_inset
 
@@ -23149,6 +23204,7 @@ margen
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -24037,6 +24093,7 @@ Cuadro (Minipágina)
 	filename clipart/CuadroMinipagQt4.png
 	scale 75
 	keepAspectRatio
+	scaleBeforeRotation
 
 \end_inset
 
@@ -27826,6 +27883,7 @@ El material externo se muestra en LyX como un cuadro del tipo:
 \begin_inset Graphics
 	filename clipart/MaterialExternoQt4.png
 	scale 80
+	scaleBeforeRotation
 
 \end_inset
 
@@ -27879,6 +27937,7 @@ Los documentos incluidos como hijos se muestran en la pantalla de LyX como
 \begin_inset Graphics
 	filename clipart/DocumentoHijoQt4.png
 	scale 80
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29524,6 +29583,7 @@ o con el botón\InsetSpace ~
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29651,6 +29711,7 @@ o con el botón\InsetSpace ~
 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29853,6 +29914,7 @@ o con el botón\InsetSpace ~
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 

@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 275
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -401,6 +401,7 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -577,6 +578,7 @@ HHa
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -714,6 +716,7 @@ reference "abs:Bildformate"
 	filename ../clipart/mobius.eps
 	display color
 	scale 70
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -733,6 +736,7 @@ Hier ist dieselbe Abbildung, aber im Entwurfsmodus gedruckt:
 	display color
 	scale 70
 	draft
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -777,6 +781,7 @@ Wenn Sie auf das Werkzeugleisten-Symbol
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -836,6 +841,7 @@ status open
 	filename ../clipart/platypus.eps
 	display color
 	width 50col%
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -895,6 +901,7 @@ M.C.
 	filename ../clipart/escher-lsd.eps
 	display color
 	scale 80
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -936,6 +943,7 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -950,6 +958,7 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -1062,6 +1071,7 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	width 35col%
+	scaleBeforeRotation
 	subcaption
 	subcaptionText "M. C. Escher"
 
@@ -1074,6 +1084,7 @@ status open
 	filename ../clipart/platypus.eps
 	lyxscale 60
 	width 45col%
+	scaleBeforeRotation
 	subcaption
 	subcaptionText "\label{abb:Platypus} Platypus"
 
@@ -1476,6 +1487,7 @@ Eine Tabelle können Sie mit dem Werkzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -1980,6 +1992,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -1992,6 +2005,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2004,6 +2018,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2016,6 +2031,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2028,6 +2044,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2041,6 +2058,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2054,6 +2072,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2067,6 +2086,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2080,6 +2100,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2092,6 +2113,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2104,6 +2126,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-left.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2116,6 +2139,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-center.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2128,6 +2152,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-right.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2140,6 +2165,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-top.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2152,6 +2178,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-middle.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2164,6 +2191,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-bottom.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2176,6 +2204,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2188,6 +2217,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2200,6 +2230,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2528,6 +2559,7 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2549,6 +2581,7 @@ Nr:
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -2659,6 +2692,7 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -2673,6 +2707,7 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -10956,6 +10991,7 @@ Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -14287,6 +14323,7 @@ name "Farbe ! für Text"
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18491,6 +18528,7 @@ Gleitobjekt
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18499,6 +18537,7 @@ Gleitobjekt
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18527,6 +18566,7 @@ reference "abs:Titel-Platzierung"
 \begin_inset Graphics
 	filename clipart/GleitobjektQt4.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 128bp 22bp
 
 \end_inset
@@ -18545,6 +18585,7 @@ Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18553,6 +18594,7 @@ Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18881,6 +18923,7 @@ status open
 	filename ../clipart/mobius.eps
 	display color
 	width 40col%
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -19337,6 +19380,7 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -19355,6 +19399,7 @@ Marke
 	filename clipart/Marke.png
 	lyxscale 80
 	scale 85
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 76bp 23bp
 
 \end_inset
@@ -19373,6 +19418,7 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -19382,6 +19428,7 @@ Querverweis
 	filename clipart/Querverweis.png
 	lyxscale 80
 	scale 85
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 76bp 23bp
 
 \end_inset
@@ -20819,6 +20866,7 @@ status open
 	filename ../clipart/mobius.eps
 	lyxscale 50
 	scale 50
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21634,6 +21682,7 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21944,6 +21993,7 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22116,6 +22166,7 @@ Notizen werden mit einem Klick auf
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 85
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -22166,6 +22217,7 @@ X-Notiz
 	filename clipart/LyXNotizQt4.png
 	display none
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22216,6 +22268,7 @@ X (pdflatex) / LaTeX (plain)
 	filename clipart/KommentarQt4.png
 	display none
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22242,6 +22295,7 @@ Grauschrift: Diese Notiz wird grau gedruckt und sieht so aus:
 	filename clipart/GrauschriftNotizQt4.png
 	display none
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22346,6 +22400,7 @@ Eingerahmt: Diese Notiz wird gerahmt gedruckt und sieht so aus:
 	filename clipart/GerahmteNotizQt4.png
 	display none
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22403,6 +22458,7 @@ Box
 	filename clipart/SchattierteNotizQt4.png
 	display none
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22445,6 +22501,7 @@ Wenn Sie auf den Werzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 85
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -23448,6 +23505,7 @@ framebox{
 \begin_inset Graphics
 	filename ../clipart/without_fntright.pdf
 	width 100col%
+	scaleBeforeRotation
 
 \end_inset
 
@@ -23522,6 +23580,7 @@ framebox{
 \begin_inset Graphics
 	filename ../clipart/with_fntright.pdf
 	width 100col%
+	scaleBeforeRotation
 
 \end_inset
 
@@ -23658,6 +23717,7 @@ framebox{
 
 \begin_inset Graphics
 	filename ../clipart/endnotes.pdf
+	scaleBeforeRotation
 
 \end_inset
 
@@ -23883,6 +23943,7 @@ Randnotizen sehen in LyX wie Fußnoten aus und verhalten sich auch so.
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 0bp 22bp 22bp
 
 \end_inset
@@ -24731,6 +24792,7 @@ Box (Minipage)
 	filename clipart/StandardBoxQt4.png
 	lyxscale 80
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -27218,6 +27280,7 @@ Die folgenden Farben sind vordefiniert (
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 0bp 22bp 22bp
 
 \end_inset
@@ -27761,6 +27824,7 @@ Internet- oder email-Adressen können mit
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 0bp 22bp 22bp
 
 \end_inset
@@ -28525,6 +28589,7 @@ LyX kann externes Material entweder als Box wie hier:
 	filename clipart/ExternesMaterialQt4.png
 	lyxscale 80
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -28603,6 +28668,7 @@ Unterdokumente werden in LyX als Box angezeigt:
 	filename clipart/UnterdokumentQt4.png
 	lyxscale 80
 	scale 60
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29532,17 +29598,28 @@ name "Einheiten"
 status collapsed
 
 \begin_layout Standard
-Der Befehl 
+Den Befehl
+\family typewriter
+ 
+\family default
+\series bold
+
 \backslash
-texorpdfstring wird vom LaTeX-Paket hyperref bereitgestellt um zu vermeiden,
- dass Ligaturen in PDF-Lesezeichen falsch dargestellt werden.
- Für mehr Informationen darüber sei auf 
+texorpdfstring
+\series default
+ stellt das LaTeX-Paket 
+\series bold
+hyperref
+\series default
+ bereit, um zu verhindern, dass Ligaturen in PDF-Lesezeichen falsch dargestellt
+ werden.
+ Weitere Informationen finden Sie in 
 \begin_inset LatexCommand cite
 key "hyperref"
 
 \end_inset
 
- verwiesen.
+.
 \end_layout
 
 \end_inset
@@ -30165,6 +30242,7 @@ Ansicht
 \begin_inset Graphics
 	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_dvi.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -30305,6 +30383,7 @@ Ansicht
 \begin_inset Graphics
 	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_ps.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -30531,6 +30610,7 @@ Ansicht
 \begin_inset Graphics
 	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_pdf2.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 

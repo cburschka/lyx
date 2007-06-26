@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 275
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -360,6 +360,7 @@ To insert an image into your document, place the cursor at the text position
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -563,6 +564,7 @@ reference "sec:Image-Formats"
 	filename clipart/mobius.eps
 	display color
 	scale 70
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -581,6 +583,7 @@ This is the same image like the one above but in draft mode:
 	display color
 	scale 70
 	draft
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -626,6 +629,7 @@ The toolbar button
 \begin_inset Graphics
 	filename ../images/float-insert_figure.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -682,6 +686,7 @@ status open
 	filename clipart/platypus.eps
 	display color
 	width 50col%
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -741,6 +746,7 @@ M.C.
 	filename clipart/escher-lsd.eps
 	display color
 	scale 80
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -783,6 +789,7 @@ Label
 \begin_inset Graphics
 	filename ../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -797,6 +804,7 @@ reference
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -883,6 +891,7 @@ status open
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
 	width 45col%
+	scaleBeforeRotation
 	subcaption
 	subcaptionText "Undefinable structure"
 
@@ -895,6 +904,7 @@ status open
 	filename clipart/platypus.eps
 	lyxscale 60
 	width 45col%
+	scaleBeforeRotation
 	subcaption
 	subcaptionText "\label{fig:Platypus} Platypus"
 
@@ -1265,6 +1275,7 @@ You can insert a table using either the toolbar button
 \begin_inset Graphics
 	filename ../images/tabular-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1685,6 +1696,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_append-row.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1695,6 +1707,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_append-column.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1705,6 +1718,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_delete-row.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1715,6 +1729,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_delete-column.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1725,6 +1740,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_toggle-line-top.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1735,6 +1751,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_toggle-line-bottom.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1745,6 +1762,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_toggle-line-left.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1755,6 +1773,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_toggle-line-right.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1765,6 +1784,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_set-all-lines.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1776,6 +1796,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_unset-all-lines.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1787,6 +1808,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_align-left.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1797,6 +1819,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_align-center.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1807,6 +1830,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_align-right.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1817,6 +1841,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_valign-top.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1827,6 +1852,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_valign-middle.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1837,6 +1863,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_valign-bottom.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1847,6 +1874,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_set-rotate-cell.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1857,6 +1885,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_set-rotate-tabular.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -1867,6 +1896,7 @@ The toolbar has the following icons:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../images/tabular-feature_multicolumn.xpm
+	scaleBeforeRotation
 
 \end_inset
 
@@ -2179,6 +2209,7 @@ Table
 \begin_inset Graphics
 	filename ../images/float-insert_table.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -2299,6 +2330,7 @@ Label
 \begin_inset Graphics
 	filename ../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -2313,6 +2345,7 @@ reference
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -10354,6 +10387,7 @@ To span a cell over multiple columns, mark as much cells within a line that
 \begin_inset Graphics
 	filename ../images/tabular-feature_multicolumn.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -17533,6 +17567,7 @@ reference "sec:Caption-Placement"
 \begin_inset Graphics
 	filename clipart/floatQt4.png
 	scale 70
+	scaleBeforeRotation
 
 \end_inset
 
@@ -17887,6 +17922,7 @@ status open
 	filename clipart/mobius.eps
 	display color
 	width 40col%
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -18247,6 +18283,7 @@ Label
 \begin_inset Graphics
 	filename ../images/label-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -18255,6 +18292,7 @@ Label
 \begin_inset Graphics
 	filename clipart/labelQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -18281,6 +18319,7 @@ Cross-reference
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -18289,6 +18328,7 @@ Cross-reference
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -19792,6 +19832,7 @@ status open
 	filename clipart/mobius.eps
 	lyxscale 50
 	scale 50
+	scaleBeforeRotation
 
 \end_inset
 
@@ -20621,6 +20662,7 @@ status open
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
 	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -20936,6 +20978,7 @@ status open
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
 	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21087,6 +21130,7 @@ Notes are inserted with the toolbar button
 \begin_inset Graphics
 	filename ../images/note-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21111,6 +21155,7 @@ Note This note type is for internal notes that won't appear in the output.
 	filename clipart/LyXNoteImageQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21145,6 +21190,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 	filename clipart/CommentNoteImageQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21173,6 +21219,7 @@ Out This note will appear in the output as grey text.
 	filename clipart/GreyedOutNoteImageQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21277,6 +21324,7 @@ Framed This note will appear in the output as framed text.
 	filename clipart/FramedNoteImageQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21322,6 +21370,7 @@ Shaded This note will appear in the output with red background color.
 	filename clipart/ShadedNoteImageQt4.png
 	display none
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21364,6 +21413,7 @@ When you use the toolbar button
 \begin_inset Graphics
 	filename ../images/note-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21765,6 +21815,7 @@ Footnotes can be inserted using the toolbar button
 \begin_inset Graphics
 	filename ../images/footnote-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -21786,6 +21837,7 @@ You'll see
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
 	scale 80
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22461,6 +22513,7 @@ framebox{
 \begin_inset Graphics
 	filename clipart/without_fntright.pdf
 	width 100col%
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22524,6 +22577,7 @@ framebox{
 \begin_inset Graphics
 	filename clipart/with_fntright.pdf
 	width 100col%
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22658,6 +22712,7 @@ framebox{
 
 \begin_inset Graphics
 	filename clipart/endnotes.pdf
+	scaleBeforeRotation
 
 \end_inset
 
@@ -22862,6 +22917,7 @@ Note
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -23749,6 +23805,7 @@ Box (Minipage)
 \begin_inset Graphics
 	filename clipart/BoxInsetDefaultQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -27530,6 +27587,7 @@ External
 \begin_inset Graphics
 	filename clipart/ExternalMaterialQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -27591,6 +27649,7 @@ Included documents are displayed in LyX as a box like this:
 \begin_inset Graphics
 	filename clipart/ChildDocumentQt4.png
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29083,6 +29142,7 @@ View
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29212,6 +29272,7 @@ View
 \begin_inset Graphics
 	filename ../images/buffer-view_ps.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -29412,6 +29473,7 @@ View
 \begin_inset Graphics
 	filename ../images/buffer-view_pdf2.xpm
 	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
