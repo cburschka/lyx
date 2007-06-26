@@ -21,6 +21,7 @@
 
 import re
 import unicodedata
+import sys, os
 
 from parser_tools import find_re, find_token, find_token_backwards, find_token_exact, find_tokens, find_end_of, get_value, find_beginning_of, find_nonempty_line
 from LyX import get_encoding
@@ -1836,6 +1837,96 @@ def revert_arabic (document):
             document.body[i] = '\lang arabic'
         i = i + 1
 
+def revert_unicode(document):
+    '''Transform unicode symbols according to the unicode list.
+Preamble flags are not implemented.
+Combination characters are currently ignored.
+Forced output is currently not enforced'''
+    pathname = os.path.dirname(sys.argv[0])
+    fp = open(pathname.strip('lyx2lyx') + 'unicodesymbols','r')
+    spec_chars = {}
+    for line in fp.readlines():
+        if line[0] != '#':
+            line=line.replace('"','') #remove all qoutation marks
+            try:
+                # flag1 and flag2 are preamble & flags
+                # currently NOT impemented
+                [ucs4,command,flag1,flag2] =line.split(None,3)
+                spec_chars[unichr(eval(ucs4))] = [command, flag1, flag2]
+            except:
+                pass
+    fp.close()
+    #Define strings to start and end ERT and math insets
+    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n\\backslash\n'
+    ert_outro='\n\\end_layout\n\n\\end_inset\n\n'
+    math_intro='\n\\begin_inset Formula $'
+    math_outro='$\n\\end_inset\n'
+    # Find unicode characters and replace them
+    in_ert = 0 # flag set to 1 if in ERT inset
+    in_math = 0 # flag set to 1 if in math inset
+    insets = [] # list of active insets
+    for i, current_line in enumerate(document.body):
+        if current_line.find('\\begin_inset') > -1:
+            # check which inset to start
+            if current_line.find('\\begin_inset ERT') > -1:
+                in_ert = 1
+                insets.append('ert')
+            elif current_line.find('\\begin_inset Formula') > -1:
+                in_math = 1
+                insets.append('math')
+            else:
+                insets.append('other')
+        if current_line.find('\\end_inset') > -1:
+            # check which inset to end
+            try:
+                cur_inset = insets.pop()
+                if cur_inset == 'ert':
+                    in_ert = 0
+                elif cur_inset == 'math':
+                    in_math = 0
+                else:
+                    pass # end of other inset
+            except:
+                pass # inset list was empty (for some reason)
+        current_line=''; # clear to have as container for modified line
+        for j in range(len(document.body[i])):
+            if spec_chars.has_key(document.body[i][j]):
+                flags = spec_chars[document.body[i][j]][1] + spec_chars[document.body[i][j]][2]
+                if flags.find('combining') > -1:
+                    command = ''
+                else:
+                    command = spec_chars[document.body[i][j]][0]; # the command to replace unicode
+                    if command[0:2] == '\\\\':
+                        if command[2:12]=='ensuremath':
+                            if in_ert == 1:
+                                # math in ERT
+                                command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
+                                command = command.replace('}', '$\n')
+                            elif in_math == 0:
+                                # add a math inset with the replacement character
+                                command = command.replace('\\\\ensuremath{\\', math_intro)
+                                command = command.replace('}', math_outro)
+                            else:
+                                # we are already in a math inset
+                                command = command.replace('\\\\ensuremath{\\', '')
+                                command = command.replace('}', '')
+                        else:
+                            if in_math == 1:
+                                # avoid putting an ERT in a math; instead put command as text
+                                command = command.replace('\\\\', '\mathrm{')
+                                command = command + '}'
+                            elif in_ert == 0:
+                                # add an ERT inset with the replacement character
+                                command = command.replace('\\\\', ert_intro)
+                                command = command + ert_outro
+                            else:
+                                command = command.replace('\\\\', '\n\\backslash\n')
+                current_line = current_line + command
+            else:
+                current_line = current_line + document.body[i][j]
+        document.body[i] = current_line
+
+
 ##
 # Conversion hub
 #
@@ -1902,7 +1993,7 @@ revert =  [
            [251, [revert_commandparams]],
            [250, [revert_cs_label]],
            [249, []],
-           [248, [revert_accent, revert_utf8]],
+           [248, [revert_accent, revert_utf8, revert_unicode]],
            [247, [revert_booktabs]],
            [246, [revert_font_settings]],
            [245, [revert_framed]]]
