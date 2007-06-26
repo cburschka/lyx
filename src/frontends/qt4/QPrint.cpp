@@ -20,11 +20,15 @@
 
 #include "controllers/ControlPrint.h"
 
+#include "support/os.h"
+
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qradiobutton.h>
 #include <qspinbox.h>
 #include <qpushbutton.h>
+
+using lyx::support::os::internal_path;
 
 namespace lyx {
 namespace frontend {
@@ -94,7 +98,7 @@ void QPrint::apply()
 
 	PrinterParams const pp(t,
 		fromqstr(dialog_->printerED->text()),
-		fromqstr(dialog_->fileED->text()),
+		internal_path(fromqstr(dialog_->fileED->text())),
 		dialog_->allRB->isChecked(),
 		dialog_->fromED->text().toUInt(),
 		dialog_->toED->text().toUInt(),
