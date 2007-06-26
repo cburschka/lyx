@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-23 11:21+0200\n"
+"POT-Creation-Date: 2007-06-26 15:31+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -71,7 +71,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CitationUi.ui:303
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:702
+#: src/frontends/qt4/ui/GraphicsUi.ui:738
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
@@ -428,7 +428,7 @@ msgstr "Espaçmints d' astampé"
 
 #: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
-#: src/frontends/qt4/ui/GraphicsUi.ui:673
+#: src/frontends/qt4/ui/GraphicsUi.ui:709
 #: src/frontends/qt4/ui/ParagraphUi.ui:256 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
 #, fuzzy
@@ -438,7 +438,7 @@ msgstr "Comincî pal difén|#R"
 #: src/frontends/qt4/ui/BoxUi.ui:338 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/GraphicsUi.ui:759
 #: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:295 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
@@ -513,7 +513,7 @@ msgid "Si&ze:"
 msgstr "Grandeu:|#G#Z"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/GraphicsUi.ui:620
 #: src/frontends/qt4/ui/ParagraphUi.ui:98
 #: src/frontends/qt4/ui/ParagraphUi.ui:127
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
@@ -524,9 +524,9 @@ msgstr "Grandeu:|#G#Z"
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
 #: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:98
-#: src/frontends/qt4/QDocument.cpp:300 src/frontends/qt4/QDocument.cpp:337
-#: src/frontends/qt4/QDocument.cpp:349 src/frontends/qt4/QDocument.cpp:741
-#: src/frontends/qt4/QDocument.cpp:789 src/frontends/qt4/QListings.cpp:155
+#: src/frontends/qt4/QDocument.cpp:302 src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:743
+#: src/frontends/qt4/QDocument.cpp:791 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "Prémetu"
@@ -662,7 +662,7 @@ msgstr "Grandeu des fontes:|#G"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
-#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:583
+#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Lingaedje"
@@ -733,7 +733,7 @@ msgid "Apply changes immediately"
 msgstr ""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
-#: src/frontends/qt4/ui/GraphicsUi.ui:744
+#: src/frontends/qt4/ui/GraphicsUi.ui:780
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177 src/frontends/qt4/ui/NoteUi.ui:41
 #: src/frontends/qt4/ui/PrintUi.ui:246
 #: src/frontends/qt4/ui/TabularCreateUi.ui:75
@@ -989,28 +989,28 @@ msgstr "Loukî è DVI"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:188
 #: src/frontends/qt4/ui/ExternalUi.ui:261
-#: src/frontends/qt4/ui/GraphicsUi.ui:587
-#: src/frontends/qt4/ui/GraphicsUi.ui:600
+#: src/frontends/qt4/ui/GraphicsUi.ui:616
+#: src/frontends/qt4/ui/GraphicsUi.ui:643
 #, fuzzy
 msgid "Screen display"
 msgstr "[nén håyné]"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:197
-#: src/frontends/qt4/ui/GraphicsUi.ui:609
+#: src/frontends/qt4/ui/GraphicsUi.ui:625
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66
 #, fuzzy
 msgid "Monochrome"
 msgstr "Håyner è rén k' ene coleur|#r"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:202
-#: src/frontends/qt4/ui/GraphicsUi.ui:614
+#: src/frontends/qt4/ui/GraphicsUi.ui:630
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:71
 #, fuzzy
 msgid "Grayscale"
 msgstr "Håyner è totes sôrts di gris|#i"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:207
-#: src/frontends/qt4/ui/GraphicsUi.ui:619
+#: src/frontends/qt4/ui/GraphicsUi.ui:635
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:76 src/frontends/qt4/QBranches.cpp:44
 #, fuzzy
 msgid "Color"
@@ -1023,8 +1023,8 @@ msgstr "Fitchî"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:239
 #: src/frontends/qt4/ui/ExternalUi.ui:274
-#: src/frontends/qt4/ui/GraphicsUi.ui:627
-#: src/frontends/qt4/ui/GraphicsUi.ui:651
+#: src/frontends/qt4/ui/GraphicsUi.ui:596
+#: src/frontends/qt4/ui/GraphicsUi.ui:603
 msgid "Percentage to scale by in LyX"
 msgstr ""
 
@@ -1033,7 +1033,7 @@ msgid "%"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:264
-#: src/frontends/qt4/ui/GraphicsUi.ui:590
+#: src/frontends/qt4/ui/GraphicsUi.ui:646
 #, fuzzy
 msgid "&Display:"
 msgstr "Sititchî ene etikete"
@@ -1058,15 +1058,15 @@ msgstr "Schaper"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:381
 #: src/frontends/qt4/ui/ExternalUi.ui:411
-#: src/frontends/qt4/ui/GraphicsUi.ui:113
-#: src/frontends/qt4/ui/GraphicsUi.ui:134
+#: src/frontends/qt4/ui/GraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:280
 msgid "Angle to rotate image by"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:391
 #: src/frontends/qt4/ui/ExternalUi.ui:404
-#: src/frontends/qt4/ui/GraphicsUi.ui:141
-#: src/frontends/qt4/ui/GraphicsUi.ui:154
+#: src/frontends/qt4/ui/GraphicsUi.ui:245
+#: src/frontends/qt4/ui/GraphicsUi.ui:252
 msgid "The origin of the rotation"
 msgstr ""
 
@@ -1085,7 +1085,7 @@ msgid "Scale"
 msgstr "Pitites(2)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:448
-#: src/frontends/qt4/ui/GraphicsUi.ui:230
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Height of image in output"
 msgstr ""
 
@@ -1094,12 +1094,12 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:461
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:210
 msgid "&Maintain aspect ratio"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:497
-#: src/frontends/qt4/ui/GraphicsUi.ui:196
+#: src/frontends/qt4/ui/GraphicsUi.ui:130
 msgid "Width of image in output"
 msgstr ""
 
@@ -1109,34 +1109,34 @@ msgid "Crop"
 msgstr "Copyî"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:530
-#: src/frontends/qt4/ui/GraphicsUi.ui:440
+#: src/frontends/qt4/ui/GraphicsUi.ui:450
 msgid "Get bounding box from the (EPS) file"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:533
-#: src/frontends/qt4/ui/GraphicsUi.ui:443
+#: src/frontends/qt4/ui/GraphicsUi.ui:453
 #, fuzzy
 msgid "&Get from File"
 msgstr "[nou fitchî]"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:553
-#: src/frontends/qt4/ui/GraphicsUi.ui:312
+#: src/frontends/qt4/ui/GraphicsUi.ui:322
 msgid "Clip to bounding box values"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:556
-#: src/frontends/qt4/ui/GraphicsUi.ui:315
+#: src/frontends/qt4/ui/GraphicsUi.ui:325
 msgid "Clip to &bounding box"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:573
-#: src/frontends/qt4/ui/GraphicsUi.ui:348
+#: src/frontends/qt4/ui/GraphicsUi.ui:358
 #, fuzzy
 msgid "&Left bottom:"
 msgstr "Hintche|#H#f"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:586
-#: src/frontends/qt4/ui/GraphicsUi.ui:386
+#: src/frontends/qt4/ui/GraphicsUi.ui:396
 #, fuzzy
 msgid "Right &top:"
 msgstr "Droete|#R"
@@ -1288,123 +1288,132 @@ msgstr "Tchwezixhoz on documint po stitchî"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:98
 #, fuzzy
-msgid "Rotate Graphics"
-msgstr "Fitchî|#F"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:116
-msgid "A&ngle (Degrees):"
-msgstr ""
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:144
-#, fuzzy
-msgid "Or&igin:"
-msgstr "Tite|#k"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:164
-#, fuzzy
 msgid "Output Size"
 msgstr ", Parfondeu: "
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 #, fuzzy
 msgid "Set &height:"
 msgstr "Hôteu tiestîre|#i"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:184
 #, fuzzy
 msgid "&Scale Graphics (%):"
 msgstr "Fitchî|#F"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:260
+#: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:197
 #, fuzzy
 msgid "Set &width:"
 msgstr "Lårdjeu"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:207
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:287
+#: src/frontends/qt4/ui/GraphicsUi.ui:220
+#, fuzzy
+msgid "Rotate Graphics"
+msgstr "Fitchî|#F"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:235
+msgid "Check to change the order of rotating and scaling"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:238
+#, fuzzy
+msgid "Ro&tate after scaling"
+msgstr "Li sôrt di distis est metuwe"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:255
+#, fuzzy
+msgid "Or&igin:"
+msgstr "Tite|#k"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:283
+msgid "A&ngle (Degrees):"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:297
 #, fuzzy
 msgid "&Clipping"
 msgstr "Cloyu"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:396
-#: src/frontends/qt4/ui/GraphicsUi.ui:403
+#: src/frontends/qt4/ui/GraphicsUi.ui:406
+#: src/frontends/qt4/ui/GraphicsUi.ui:413
 msgid "y:"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:410
-#: src/frontends/qt4/ui/GraphicsUi.ui:417
+#: src/frontends/qt4/ui/GraphicsUi.ui:420
+#: src/frontends/qt4/ui/GraphicsUi.ui:427
 #, fuzzy
 msgid "x:"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:451
+#: src/frontends/qt4/ui/GraphicsUi.ui:461
 #, fuzzy
 msgid "LaTe&X and LyX options"
 msgstr "Co des ôtès tchûzes"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:463
-#: src/frontends/qt4/ui/GraphicsUi.ui:484
-#, fuzzy
-msgid "Additional LaTeX options"
-msgstr "Co des ôtès tchûzes"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:466
-#, fuzzy
-msgid "LaTeX &options:"
-msgstr "Co des ôtès tchûzes"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:499
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:494
+#: src/frontends/qt4/ui/GraphicsUi.ui:502
 msgid "Don't un&zip on export"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:501
-#, fuzzy
-msgid "Draft mode"
-msgstr "Môde matematike"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:504
-#, fuzzy
-msgid "&Draft mode"
-msgstr "Môde matematike"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:512
 #, fuzzy
 msgid "S&ubfigure"
 msgstr "Imådje efant|#q"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:535
-#: src/frontends/qt4/ui/GraphicsUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:554
 msgid "The caption for the sub-figure"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:538
+#: src/frontends/qt4/ui/GraphicsUi.ui:536
 #, fuzzy
 msgid "Ca&ption:"
 msgstr "Tite|#k"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:569
+#: src/frontends/qt4/ui/GraphicsUi.ui:567
 #, fuzzy
 msgid "Sho&w in LyX"
 msgstr "Fitchî"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:630
+#: src/frontends/qt4/ui/GraphicsUi.ui:606
 msgid "Sca&le on Screen (%):"
 msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:667
+#: src/frontends/qt4/ui/GraphicsUi.ui:674
+#, fuzzy
+msgid "Additional LaTeX options"
+msgstr "Co des ôtès tchûzes"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:677
+#, fuzzy
+msgid "LaTeX &options:"
+msgstr "Co des ôtès tchûzes"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:687
+#, fuzzy
+msgid "Draft mode"
+msgstr "Môde matematike"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:690
+#, fuzzy
+msgid "&Draft mode"
+msgstr "Môde matematike"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 #, fuzzy
@@ -1978,8 +1987,8 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1875
-#: src/frontends/qt4/QDocument.cpp:243
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/QDocument.cpp:245
 #, fuzzy
 msgid "Single"
 msgstr "Simpe|#S"
@@ -1988,8 +1997,8 @@ msgstr "Simpe|#S"
 msgid "1.5"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1881
-#: src/frontends/qt4/QDocument.cpp:247
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/QDocument.cpp:249
 #, fuzzy
 msgid "Double"
 msgstr "Dobe|#D"
@@ -1997,7 +2006,7 @@ msgstr "Dobe|#D"
 #: src/frontends/qt4/ui/ParagraphUi.ui:147
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:249 src/frontends/qt4/QDocument.cpp:350
+#: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 #, fuzzy
 msgid "Custom"
 msgstr "A vosse môde"
@@ -2308,32 +2317,32 @@ msgstr "Grandeu papî:|#G"
 msgid "Te&X encoding:"
 msgstr "Ecôdaedje:|#E"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:351
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:353
 #, fuzzy
 msgid "US letter"
 msgstr "Hintche|#H"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:352
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:354
 msgid "US legal"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:353
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:355
 msgid "US executive"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:354
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:356
 msgid "A3"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:355
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:357
 msgid "A4"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:356
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:358
 msgid "A5"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:359
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:361
 msgid "B5"
 msgstr ""
 
@@ -3568,17 +3577,17 @@ msgstr ""
 msgid "DefSkip"
 msgstr "Eterroye:|#u"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:236
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:238
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Pitites(3)"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:237
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:239
 #, fuzzy
 msgid "MedSkip"
 msgstr "Mwinres"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:238
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:240
 msgid "BigSkip"
 msgstr ""
 
@@ -3789,7 +3798,7 @@ msgstr "Po:"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:487
+#: src/frontends/qt4/QDocument.cpp:489
 #, fuzzy
 msgid "Example"
 msgstr "Egzimpes"
@@ -4056,7 +4065,7 @@ msgstr "Ritrait"
 #: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:230
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:585
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:587
 #, fuzzy
 msgid "Bibliography"
 msgstr "Intreye bibiografike"
@@ -4065,7 +4074,7 @@ msgstr "Intreye bibiografike"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:539
+#: src/rowpainter.cpp:540
 #, fuzzy
 msgid "Appendix"
 msgstr "inset drovu"
@@ -8139,250 +8148,254 @@ msgid "American"
 msgstr ""
 
 #: lib/languages:4
-msgid "Arabic"
+msgid "Arabic (ArabTeX)"
 msgstr ""
 
 #: lib/languages:5
+msgid "Arabic (Arabi)"
+msgstr ""
+
+#: lib/languages:6
 #, fuzzy
 msgid "Armenian"
 msgstr "Romane"
 
-#: lib/languages:6
+#: lib/languages:7
 msgid "Austrian"
 msgstr ""
 
-#: lib/languages:7
+#: lib/languages:8
 msgid "Austrian (new spelling)"
 msgstr ""
 
-#: lib/languages:8
+#: lib/languages:9
 msgid "Bahasa"
 msgstr ""
 
-#: lib/languages:9
+#: lib/languages:10
 msgid "Belarusian"
 msgstr ""
 
-#: lib/languages:10
+#: lib/languages:11
 #, fuzzy
 msgid "Basque"
 msgstr "Bleu"
 
-#: lib/languages:11
+#: lib/languages:12
 msgid "Portuguese (Brazil)"
 msgstr ""
 
-#: lib/languages:12
+#: lib/languages:13
 #, fuzzy
 msgid "Breton"
 msgstr "Gåliotaedje"
 
-#: lib/languages:13
+#: lib/languages:14
 msgid "British"
 msgstr ""
 
-#: lib/languages:14
+#: lib/languages:15
 msgid "Bulgarian"
 msgstr ""
 
-#: lib/languages:15
+#: lib/languages:16
 #, fuzzy
 msgid "Canadian"
 msgstr "Toûrnaedje"
 
-#: lib/languages:16
+#: lib/languages:17
 #, fuzzy
 msgid "French Canadian"
 msgstr "Toûrnaedje"
 
-#: lib/languages:17
+#: lib/languages:18
 msgid "Catalan"
 msgstr ""
 
-#: lib/languages:18
+#: lib/languages:19
 msgid "Chinese (simplified)"
 msgstr ""
 
-#: lib/languages:19
+#: lib/languages:20
 msgid "Chinese (traditional)"
 msgstr ""
 
-#: lib/languages:20
+#: lib/languages:21
 #, fuzzy
 msgid "Croatian"
 msgstr "Toûrnaedje"
 
-#: lib/languages:21
+#: lib/languages:22
 msgid "Czech"
 msgstr ""
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Danish"
 msgstr ""
 
-#: lib/languages:23
+#: lib/languages:24
 msgid "Dutch"
 msgstr ""
 
-#: lib/languages:24
+#: lib/languages:25
 msgid "English"
 msgstr ""
 
-#: lib/languages:26
+#: lib/languages:27
 msgid "Esperanto"
 msgstr ""
 
-#: lib/languages:27
+#: lib/languages:28
 msgid "Estonian"
 msgstr ""
 
-#: lib/languages:29
+#: lib/languages:30
 #, fuzzy
 msgid "Farsi"
 msgstr "Boirds"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "Finnish"
 msgstr ""
 
-#: lib/languages:32
+#: lib/languages:33
 msgid "French"
 msgstr ""
 
-#: lib/languages:33
+#: lib/languages:34
 msgid "Galician"
 msgstr ""
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "German"
 msgstr ""
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "German (new spelling)"
 msgstr ""
 
-#: lib/languages:36 lib/ui/stdtoolbars.inc:435
+#: lib/languages:37 lib/ui/stdtoolbars.inc:435
 msgid "Greek"
 msgstr "Grec"
 
-#: lib/languages:37
+#: lib/languages:38
 msgid "Hebrew"
 msgstr ""
 
-#: lib/languages:39
+#: lib/languages:40
 msgid "Irish"
 msgstr ""
 
-#: lib/languages:40
+#: lib/languages:41
 #, fuzzy
 msgid "Italian"
 msgstr "Clintcheyes(1)"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Kazakh"
 msgstr ""
 
-#: lib/languages:44
+#: lib/languages:45
 msgid "Korean"
 msgstr ""
 
-#: lib/languages:46
+#: lib/languages:47
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Lårdjeu"
 
-#: lib/languages:47
+#: lib/languages:48
 #, fuzzy
 msgid "Latvian"
 msgstr "Toûrnaedje"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:49
+#: lib/languages:50
 #, fuzzy
 msgid "Magyar"
 msgstr "Madjenta"
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Norsk"
 msgstr ""
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Nynorsk"
 msgstr ""
 
-#: lib/languages:52
+#: lib/languages:53
 msgid "Polish"
 msgstr ""
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Portuguese"
 msgstr ""
 
-#: lib/languages:54
+#: lib/languages:55
 #, fuzzy
 msgid "Romanian"
 msgstr "Romane"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Russian"
 msgstr ""
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Scottish"
 msgstr ""
 
-#: lib/languages:57
+#: lib/languages:58
 #, fuzzy
 msgid "Serbian"
 msgstr "Sititchî"
 
-#: lib/languages:58
+#: lib/languages:59
 #, fuzzy
 msgid "Serbo-Croatian"
 msgstr "Toûrnaedje"
 
-#: lib/languages:59
+#: lib/languages:60
 msgid "Spanish"
 msgstr ""
 
-#: lib/languages:60
+#: lib/languages:61
 msgid "Slovak"
 msgstr ""
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Slovene"
 msgstr ""
 
-#: lib/languages:62
+#: lib/languages:63
 msgid "Swedish"
 msgstr ""
 
-#: lib/languages:63
+#: lib/languages:64
 msgid "Thai"
 msgstr ""
 
-#: lib/languages:64
+#: lib/languages:65
 msgid "Turkish"
 msgstr ""
 
-#: lib/languages:65
+#: lib/languages:66
 #, fuzzy
 msgid "Ukrainian"
 msgstr "Translater|#T"
 
-#: lib/languages:66
+#: lib/languages:67
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Sititchî"
 
-#: lib/languages:67
+#: lib/languages:68
 msgid "Welsh"
 msgstr ""
 
@@ -10488,7 +10501,7 @@ msgid "Fractions"
 msgstr "Scriftôr matematike"
 
 #: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:282
-#: src/frontends/qt4/QDocument.cpp:579
+#: src/frontends/qt4/QDocument.cpp:581
 #, fuzzy
 msgid "Fonts"
 msgstr "Fonte: "
@@ -14784,80 +14797,80 @@ msgstr ""
 msgid "Unknown token"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Text.cpp:773
+#: src/Text.cpp:774
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/Text.cpp:784
+#: src/Text.cpp:785
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Lingaedje"
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1848
 #, fuzzy
 msgid "Change: "
 msgstr "Pådje: "
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1852
 #, fuzzy
 msgid " at "
 msgstr " di "
 
-#: src/Text.cpp:1861
+#: src/Text.cpp:1862
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Fonte: "
 
-#: src/Text.cpp:1866
+#: src/Text.cpp:1867
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Parfondeu: "
 
-#: src/Text.cpp:1872
+#: src/Text.cpp:1873
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Espåçmint"
 
-#: src/Text.cpp:1878 src/frontends/qt4/QDocument.cpp:245
+#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1884
+#: src/Text.cpp:1885
 #, fuzzy
 msgid "Other ("
 msgstr "Ôte...|#Ô#O"
 
-#: src/Text.cpp:1893
+#: src/Text.cpp:1894
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Parfondeu: "
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1895
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "L' adjinçnaedje do hagnon est metu"
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1896
 #, fuzzy
 msgid ", Id: "
 msgstr ", Parfondeu: "
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1897
 #, fuzzy
 msgid ", Position: "
 msgstr "   tchûzes: "
 
-#: src/Text.cpp:1902
+#: src/Text.cpp:1903
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1904
+#: src/Text.cpp:1905
 msgid ", Boundary: "
 msgstr ""
 
@@ -15920,11 +15933,11 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:844
+#: src/frontends/qt4/QDocument.cpp:846
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:843
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:845
 #, fuzzy
 msgid "No"
 msgstr "Pititès grandès letes"
@@ -16104,170 +16117,170 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Machine a scrîre"
 
-#: src/frontends/qt4/QDocument.cpp:230 src/frontends/qt4/QDocument.cpp:637
+#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:239
+#: src/frontends/qt4/QDocument.cpp:241
 #, fuzzy
 msgid "Length"
 msgstr "Longueu|#L"
 
-#: src/frontends/qt4/QDocument.cpp:284 src/frontends/qt4/QDocument.cpp:290
-#: src/frontends/qt4/QDocument.cpp:296
+#: src/frontends/qt4/QDocument.cpp:286 src/frontends/qt4/QDocument.cpp:292
+#: src/frontends/qt4/QDocument.cpp:298
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:301
+#: src/frontends/qt4/QDocument.cpp:303
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:302
+#: src/frontends/qt4/QDocument.cpp:304
 #, fuzzy
 msgid "11"
 msgstr "1|#1"
 
-#: src/frontends/qt4/QDocument.cpp:303
+#: src/frontends/qt4/QDocument.cpp:305
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:338
+#: src/frontends/qt4/QDocument.cpp:340
 #, fuzzy
 msgid "empty"
 msgstr ", Parfondeu: "
 
-#: src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/QDocument.cpp:341
 #, fuzzy
 msgid "plain"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/QDocument.cpp:342
 #, fuzzy
 msgid "headings"
 msgstr "Mape des tapes"
 
-#: src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/QDocument.cpp:343
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:357
+#: src/frontends/qt4/QDocument.cpp:359
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:358
+#: src/frontends/qt4/QDocument.cpp:360
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:461
+#: src/frontends/qt4/QDocument.cpp:463
 #, fuzzy
 msgid "LaTeX default"
 msgstr "Fitchî des messaedjes LaTeX"
 
-#: src/frontends/qt4/QDocument.cpp:467
+#: src/frontends/qt4/QDocument.cpp:469
 #, fuzzy
 msgid "``text''"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:468
+#: src/frontends/qt4/QDocument.cpp:470
 #, fuzzy
 msgid "''text''"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:469
+#: src/frontends/qt4/QDocument.cpp:471
 #, fuzzy
 msgid ",,text``"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:470
+#: src/frontends/qt4/QDocument.cpp:472
 #, fuzzy
 msgid ",,text''"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:471
+#: src/frontends/qt4/QDocument.cpp:473
 #, fuzzy
 msgid "<<text>>"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:472
+#: src/frontends/qt4/QDocument.cpp:474
 #, fuzzy
 msgid ">>text<<"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/QDocument.cpp:488
+#: src/frontends/qt4/QDocument.cpp:490
 #, fuzzy
 msgid "Numbered"
 msgstr "Nombe"
 
-#: src/frontends/qt4/QDocument.cpp:489
+#: src/frontends/qt4/QDocument.cpp:491
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:509
+#: src/frontends/qt4/QDocument.cpp:511
 msgid "Author-year"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:510
+#: src/frontends/qt4/QDocument.cpp:512
 #, fuzzy
 msgid "Numerical"
 msgstr "Nombe"
 
-#: src/frontends/qt4/QDocument.cpp:552
+#: src/frontends/qt4/QDocument.cpp:554
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Sititchî on rahuca"
 
-#: src/frontends/qt4/QDocument.cpp:578 src/frontends/qt4/QDocument.cpp:591
+#: src/frontends/qt4/QDocument.cpp:580 src/frontends/qt4/QDocument.cpp:593
 #, fuzzy
 msgid "Document Class"
 msgstr "Documint rlomé ("
 
-#: src/frontends/qt4/QDocument.cpp:580
+#: src/frontends/qt4/QDocument.cpp:582
 #, fuzzy
 msgid "Text Layout"
 msgstr "Adjinçmint "
 
-#: src/frontends/qt4/QDocument.cpp:581
+#: src/frontends/qt4/QDocument.cpp:583
 #, fuzzy
 msgid "Page Layout"
 msgstr "Ôtès tchûzes po l' arindjmint del pådje"
 
-#: src/frontends/qt4/QDocument.cpp:582
+#: src/frontends/qt4/QDocument.cpp:584
 #, fuzzy
 msgid "Page Margins"
 msgstr "Boirds"
 
-#: src/frontends/qt4/QDocument.cpp:584
+#: src/frontends/qt4/QDocument.cpp:586
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Nombe"
 
-#: src/frontends/qt4/QDocument.cpp:586
+#: src/frontends/qt4/QDocument.cpp:588
 #, fuzzy
 msgid "Math Options"
 msgstr "Co des ôtès tchûzes"
 
-#: src/frontends/qt4/QDocument.cpp:587
+#: src/frontends/qt4/QDocument.cpp:589
 #, fuzzy
 msgid "Float Placement"
 msgstr "Plaece des comas:|#L"
 
-#: src/frontends/qt4/QDocument.cpp:588
+#: src/frontends/qt4/QDocument.cpp:590
 #, fuzzy
 msgid "Bullets"
 msgstr "xxx Puces"
 
-#: src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:591
 #, fuzzy
 msgid "Branches"
 msgstr "Intreye bibiografike"
 
-#: src/frontends/qt4/QDocument.cpp:590 src/frontends/qt4/QDocument.cpp:602
+#: src/frontends/qt4/QDocument.cpp:592 src/frontends/qt4/QDocument.cpp:604
 #, fuzzy
 msgid "LaTeX Preamble"
 msgstr "Adrovaedje LaTeX"
 
-#: src/frontends/qt4/QDocument.cpp:1398
+#: src/frontends/qt4/QDocument.cpp:1400
 #, fuzzy
 msgid "Document Settings"
 msgstr "Documints"
@@ -16297,14 +16310,14 @@ msgstr "Tchûzes"
 msgid "Graphics"
 msgstr "Fitchî|#F"
 
-#: src/frontends/qt4/QInclude.cpp:100 src/frontends/qt4/QInclude.cpp:220
-#: src/frontends/qt4/QListings.cpp:333 src/frontends/qt4/QListings.cpp:414
-#: src/frontends/qt4/QListings.cpp:446
+#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
+#: src/frontends/qt4/QListings.cpp:447
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:181
+#: src/frontends/qt4/QInclude.cpp:182
 #, fuzzy
 msgid "Child Document"
 msgstr "Documint"
@@ -16314,12 +16327,12 @@ msgstr "Documint"
 msgid "No language"
 msgstr "Lingaedje"
 
-#: src/frontends/qt4/QListings.cpp:376
+#: src/frontends/qt4/QListings.cpp:377
 #, fuzzy
 msgid "No dialect"
 msgstr "(Candjî)"
 
-#: src/frontends/qt4/QListings.cpp:401
+#: src/frontends/qt4/QListings.cpp:402
 #, fuzzy
 msgid "Program Listing Settings"
 msgstr "Minipådje|#M"
@@ -16763,7 +16776,7 @@ msgstr "inset drovu"
 msgid "footnote"
 msgstr "Sititchî ene pînote"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -16771,12 +16784,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Aroke! Dji n' sai waester li ridant timporaire:"
 
-#: src/insets/InsetGraphics.cpp:711
+#: src/insets/InsetGraphics.cpp:720
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:823
+#: src/insets/InsetGraphics.cpp:832
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Fitchî|#F"
@@ -17087,17 +17100,17 @@ msgstr "Floatflt xxx|#F"
 msgid "Unknown TOC type"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/insets/InsetTabular.cpp:3148
+#: src/insets/InsetTabular.cpp:3153
 #, fuzzy
 msgid "Opened table"
 msgstr "Drovi li fitchî d' aidance"
 
-#: src/insets/InsetTabular.cpp:4324
+#: src/insets/InsetTabular.cpp:4329
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Multicolones|#M"
 
-#: src/insets/InsetTabular.cpp:4325
+#: src/insets/InsetTabular.cpp:4330
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 

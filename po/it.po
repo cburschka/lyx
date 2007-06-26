@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-23 11:21+0200\n"
+"POT-Creation-Date: 2007-06-26 15:31+0100\n"
 "PO-Revision-Date: 2006-09-18 16:03+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -63,7 +63,7 @@ msgstr "&Fittizio"
 #: src/frontends/qt4/ui/CitationUi.ui:303
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:702
+#: src/frontends/qt4/ui/GraphicsUi.ui:738
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
@@ -379,7 +379,7 @@ msgstr "&Verticale:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
-#: src/frontends/qt4/ui/GraphicsUi.ui:673
+#: src/frontends/qt4/ui/GraphicsUi.ui:709
 #: src/frontends/qt4/ui/ParagraphUi.ui:256 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
@@ -388,7 +388,7 @@ msgstr "&Ripristina"
 #: src/frontends/qt4/ui/BoxUi.ui:338 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/GraphicsUi.ui:759
 #: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:295 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
@@ -452,7 +452,7 @@ msgid "Si&ze:"
 msgstr "Dimen&sione:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/GraphicsUi.ui:620
 #: src/frontends/qt4/ui/ParagraphUi.ui:98
 #: src/frontends/qt4/ui/ParagraphUi.ui:127
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
@@ -463,9 +463,9 @@ msgstr "Dimen&sione:"
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
 #: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:98
-#: src/frontends/qt4/QDocument.cpp:300 src/frontends/qt4/QDocument.cpp:337
-#: src/frontends/qt4/QDocument.cpp:349 src/frontends/qt4/QDocument.cpp:741
-#: src/frontends/qt4/QDocument.cpp:789 src/frontends/qt4/QListings.cpp:155
+#: src/frontends/qt4/QDocument.cpp:302 src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:743
+#: src/frontends/qt4/QDocument.cpp:791 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "Predefinito"
@@ -591,7 +591,7 @@ msgstr "Serie carattere"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
-#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:583
+#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Lingua"
@@ -653,7 +653,7 @@ msgid "Apply changes immediately"
 msgstr "Applica i cambiamenti immediatamente"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
-#: src/frontends/qt4/ui/GraphicsUi.ui:744
+#: src/frontends/qt4/ui/GraphicsUi.ui:780
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177 src/frontends/qt4/ui/NoteUi.ui:41
 #: src/frontends/qt4/ui/PrintUi.ui:246
 #: src/frontends/qt4/ui/TabularCreateUi.ui:75
@@ -884,25 +884,25 @@ msgstr "Vista LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:188
 #: src/frontends/qt4/ui/ExternalUi.ui:261
-#: src/frontends/qt4/ui/GraphicsUi.ui:587
-#: src/frontends/qt4/ui/GraphicsUi.ui:600
+#: src/frontends/qt4/ui/GraphicsUi.ui:616
+#: src/frontends/qt4/ui/GraphicsUi.ui:643
 msgid "Screen display"
 msgstr "Contenuto dello schermo"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:197
-#: src/frontends/qt4/ui/GraphicsUi.ui:609
+#: src/frontends/qt4/ui/GraphicsUi.ui:625
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66
 msgid "Monochrome"
 msgstr "Bianco e nero"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:202
-#: src/frontends/qt4/ui/GraphicsUi.ui:614
+#: src/frontends/qt4/ui/GraphicsUi.ui:630
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:71
 msgid "Grayscale"
 msgstr "Scala di grigi"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:207
-#: src/frontends/qt4/ui/GraphicsUi.ui:619
+#: src/frontends/qt4/ui/GraphicsUi.ui:635
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:76 src/frontends/qt4/QBranches.cpp:44
 msgid "Color"
 msgstr "Colore"
@@ -913,8 +913,8 @@ msgstr "Anteprima"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:239
 #: src/frontends/qt4/ui/ExternalUi.ui:274
-#: src/frontends/qt4/ui/GraphicsUi.ui:627
-#: src/frontends/qt4/ui/GraphicsUi.ui:651
+#: src/frontends/qt4/ui/GraphicsUi.ui:596
+#: src/frontends/qt4/ui/GraphicsUi.ui:603
 msgid "Percentage to scale by in LyX"
 msgstr "Percentuale da ridimensionare in LyX"
 
@@ -923,7 +923,7 @@ msgid "%"
 msgstr "%"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:264
-#: src/frontends/qt4/ui/GraphicsUi.ui:590
+#: src/frontends/qt4/ui/GraphicsUi.ui:646
 msgid "&Display:"
 msgstr "&Visualizza:"
 
@@ -945,15 +945,15 @@ msgstr "Ruota"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:381
 #: src/frontends/qt4/ui/ExternalUi.ui:411
-#: src/frontends/qt4/ui/GraphicsUi.ui:113
-#: src/frontends/qt4/ui/GraphicsUi.ui:134
+#: src/frontends/qt4/ui/GraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:280
 msgid "Angle to rotate image by"
 msgstr "Angolo di cui ruotare l'immagine"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:391
 #: src/frontends/qt4/ui/ExternalUi.ui:404
-#: src/frontends/qt4/ui/GraphicsUi.ui:141
-#: src/frontends/qt4/ui/GraphicsUi.ui:154
+#: src/frontends/qt4/ui/GraphicsUi.ui:245
+#: src/frontends/qt4/ui/GraphicsUi.ui:252
 msgid "The origin of the rotation"
 msgstr "E' l'origine della rotazione"
 
@@ -970,7 +970,7 @@ msgid "Scale"
 msgstr "Scala"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:448
-#: src/frontends/qt4/ui/GraphicsUi.ui:230
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Height of image in output"
 msgstr "Altezza dell'immagine output"
 
@@ -979,12 +979,12 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr "Mantieni il rapporto con la dimensione più grande"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:461
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:210
 msgid "&Maintain aspect ratio"
 msgstr "&Mantieni il rapporto tra le dimensioni"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:497
-#: src/frontends/qt4/ui/GraphicsUi.ui:196
+#: src/frontends/qt4/ui/GraphicsUi.ui:130
 msgid "Width of image in output"
 msgstr "Larghezza dell'immagine output"
 
@@ -993,32 +993,32 @@ msgid "Crop"
 msgstr "Spunta"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:530
-#: src/frontends/qt4/ui/GraphicsUi.ui:440
+#: src/frontends/qt4/ui/GraphicsUi.ui:450
 msgid "Get bounding box from the (EPS) file"
 msgstr "Ottieni la casella delimitante da file (EPS)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:533
-#: src/frontends/qt4/ui/GraphicsUi.ui:443
+#: src/frontends/qt4/ui/GraphicsUi.ui:453
 msgid "&Get from File"
 msgstr "&Ottieni da file"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:553
-#: src/frontends/qt4/ui/GraphicsUi.ui:312
+#: src/frontends/qt4/ui/GraphicsUi.ui:322
 msgid "Clip to bounding box values"
 msgstr "Unisci dentro i valori della casella delimitante"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:556
-#: src/frontends/qt4/ui/GraphicsUi.ui:315
+#: src/frontends/qt4/ui/GraphicsUi.ui:325
 msgid "Clip to &bounding box"
 msgstr "Unisci alla &casella delimitante"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:573
-#: src/frontends/qt4/ui/GraphicsUi.ui:348
+#: src/frontends/qt4/ui/GraphicsUi.ui:358
 msgid "&Left bottom:"
 msgstr "In basso a &sinistra:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:586
-#: src/frontends/qt4/ui/GraphicsUi.ui:386
+#: src/frontends/qt4/ui/GraphicsUi.ui:396
 msgid "Right &top:"
 msgstr "In &alto a destra:"
 
@@ -1155,118 +1155,127 @@ msgstr "Nome file immagine"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:98
 #, fuzzy
-msgid "Rotate Graphics"
-msgstr "Grafici"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:116
-msgid "A&ngle (Degrees):"
-msgstr ""
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:144
-msgid "Or&igin:"
-msgstr "Or&igine:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:164
-#, fuzzy
 msgid "Output Size"
 msgstr "Output"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 #, fuzzy
 msgid "Set &height:"
 msgstr "&Altezza intestazione:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:184
 #, fuzzy
 msgid "&Scale Graphics (%):"
 msgstr "&Grafici"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:260
+#: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:197
 #, fuzzy
 msgid "Set &width:"
 msgstr "&Larghezza:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:207
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:287
+#: src/frontends/qt4/ui/GraphicsUi.ui:220
+#, fuzzy
+msgid "Rotate Graphics"
+msgstr "Grafici"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:235
+msgid "Check to change the order of rotating and scaling"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:238
+#, fuzzy
+msgid "Ro&tate after scaling"
+msgstr "Ruota tabella"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:255
+msgid "Or&igin:"
+msgstr "Or&igine:"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:283
+msgid "A&ngle (Degrees):"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:297
 msgid "&Clipping"
 msgstr "&Attaccare"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:396
-#: src/frontends/qt4/ui/GraphicsUi.ui:403
+#: src/frontends/qt4/ui/GraphicsUi.ui:406
+#: src/frontends/qt4/ui/GraphicsUi.ui:413
 #, fuzzy
 msgid "y:"
 msgstr "y"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:410
-#: src/frontends/qt4/ui/GraphicsUi.ui:417
+#: src/frontends/qt4/ui/GraphicsUi.ui:420
+#: src/frontends/qt4/ui/GraphicsUi.ui:427
 #, fuzzy
 msgid "x:"
 msgstr "x"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:451
+#: src/frontends/qt4/ui/GraphicsUi.ui:461
 #, fuzzy
 msgid "LaTe&X and LyX options"
 msgstr "&Opzioni di LaTeX:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:463
-#: src/frontends/qt4/ui/GraphicsUi.ui:484
-msgid "Additional LaTeX options"
-msgstr "Opzioni addizionali di LaTeX"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:466
-msgid "LaTeX &options:"
-msgstr "&Opzioni di LaTeX:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:499
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Non decomprimere un'immagine prima di esportarla in LaTeX"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:494
+#: src/frontends/qt4/ui/GraphicsUi.ui:502
 msgid "Don't un&zip on export"
 msgstr "Non &decomprimere quando esporti"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:501
-msgid "Draft mode"
-msgstr "Modalità bozza"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:504
-msgid "&Draft mode"
-msgstr "Modalità &bozza"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:512
 #, fuzzy
 msgid "S&ubfigure"
 msgstr "Sotto&figura"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:535
-#: src/frontends/qt4/ui/GraphicsUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:554
 msgid "The caption for the sub-figure"
 msgstr "E' la didascalia per la sottofigura"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:538
+#: src/frontends/qt4/ui/GraphicsUi.ui:536
 msgid "Ca&ption:"
 msgstr "Di&dascalia:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:569
+#: src/frontends/qt4/ui/GraphicsUi.ui:567
 #, fuzzy
 msgid "Sho&w in LyX"
 msgstr "&Mostra in LyX"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:630
+#: src/frontends/qt4/ui/GraphicsUi.ui:606
 #, fuzzy
 msgid "Sca&le on Screen (%):"
 msgstr "Sa&ns Serif:"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:667
+#: src/frontends/qt4/ui/GraphicsUi.ui:674
+msgid "Additional LaTeX options"
+msgstr "Opzioni addizionali di LaTeX"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:677
+msgid "LaTeX &options:"
+msgstr "&Opzioni di LaTeX:"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:687
+msgid "Draft mode"
+msgstr "Modalità bozza"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:690
+msgid "&Draft mode"
+msgstr "Modalità &bozza"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 #, fuzzy
@@ -1801,8 +1810,8 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "I&nterlinea:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1875
-#: src/frontends/qt4/QDocument.cpp:243
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Singolo"
 
@@ -1810,15 +1819,15 @@ msgstr "Singolo"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1881
-#: src/frontends/qt4/QDocument.cpp:247
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Doppio"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:147
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:249 src/frontends/qt4/QDocument.cpp:350
+#: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 msgid "Custom"
 msgstr "Personalizzato"
 
@@ -2095,31 +2104,31 @@ msgstr "Forma&to prestabilito carta:"
 msgid "Te&X encoding:"
 msgstr "Codifica Te&X:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:351
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:353
 msgid "US letter"
 msgstr "Lettera US"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:352
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:354
 msgid "US legal"
 msgstr "Legale US"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:353
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:355
 msgid "US executive"
 msgstr "Esecutivo US"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:354
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:356
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:355
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:357
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:356
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:358
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:359
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:361
 msgid "B5"
 msgstr "B5"
 
@@ -3210,15 +3219,15 @@ msgstr "Tipi di spaziatura supportati"
 msgid "DefSkip"
 msgstr "Salto predefinito"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:236
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:238
 msgid "SmallSkip"
 msgstr "Salto piccolo"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:237
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:239
 msgid "MedSkip"
 msgstr "Salto medio"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:238
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:240
 msgid "BigSkip"
 msgstr "Salto grande"
 
@@ -3416,7 +3425,7 @@ msgstr "Definizione #:"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:487
+#: src/frontends/qt4/QDocument.cpp:489
 msgid "Example"
 msgstr "Esempio"
 
@@ -3662,7 +3671,7 @@ msgstr "Voci d'indice---"
 #: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:230
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:585
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:587
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -3670,7 +3679,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:539
+#: src/rowpainter.cpp:540
 msgid "Appendix"
 msgstr "Appendice"
 
@@ -7368,238 +7377,243 @@ msgid "American"
 msgstr "Americano"
 
 #: lib/languages:4
-msgid "Arabic"
-msgstr "Arabo"
+msgid "Arabic (ArabTeX)"
+msgstr ""
 
 #: lib/languages:5
+#, fuzzy
+msgid "Arabic (Arabi)"
+msgstr "Arabo"
+
+#: lib/languages:6
 #, fuzzy
 msgid "Armenian"
 msgstr "Americano"
 
-#: lib/languages:6
+#: lib/languages:7
 msgid "Austrian"
 msgstr "Austriaco"
 
-#: lib/languages:7
+#: lib/languages:8
 msgid "Austrian (new spelling)"
 msgstr "Austriaco (nuova sillabazione)"
 
-#: lib/languages:8
+#: lib/languages:9
 msgid "Bahasa"
 msgstr "Bahasa"
 
-#: lib/languages:9
+#: lib/languages:10
 msgid "Belarusian"
 msgstr "Bielorusso"
 
-#: lib/languages:10
+#: lib/languages:11
 msgid "Basque"
 msgstr "Basco"
 
-#: lib/languages:11
+#: lib/languages:12
 msgid "Portuguese (Brazil)"
 msgstr "Portoghese (Brasile)"
 
-#: lib/languages:12
+#: lib/languages:13
 msgid "Breton"
 msgstr "Bretone"
 
-#: lib/languages:13
+#: lib/languages:14
 msgid "British"
 msgstr "Britannico"
 
-#: lib/languages:14
+#: lib/languages:15
 msgid "Bulgarian"
 msgstr "Bulgaro"
 
-#: lib/languages:15
+#: lib/languages:16
 msgid "Canadian"
 msgstr "Canadese"
 
-#: lib/languages:16
+#: lib/languages:17
 msgid "French Canadian"
 msgstr "Franco Canadese"
 
-#: lib/languages:17
+#: lib/languages:18
 msgid "Catalan"
 msgstr "Catalano"
 
-#: lib/languages:18
+#: lib/languages:19
 msgid "Chinese (simplified)"
 msgstr ""
 
-#: lib/languages:19
+#: lib/languages:20
 msgid "Chinese (traditional)"
 msgstr ""
 
-#: lib/languages:20
+#: lib/languages:21
 msgid "Croatian"
 msgstr "Croato"
 
-#: lib/languages:21
+#: lib/languages:22
 msgid "Czech"
 msgstr "Ceco"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Danish"
 msgstr "Danese"
 
-#: lib/languages:23
+#: lib/languages:24
 msgid "Dutch"
 msgstr "Olandese"
 
-#: lib/languages:24
+#: lib/languages:25
 msgid "English"
 msgstr "Inglese"
 
-#: lib/languages:26
+#: lib/languages:27
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:27
+#: lib/languages:28
 msgid "Estonian"
 msgstr "Estone"
 
-#: lib/languages:29
+#: lib/languages:30
 #, fuzzy
 msgid "Farsi"
 msgstr "margine"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "Finnish"
 msgstr "Finnico"
 
-#: lib/languages:32
+#: lib/languages:33
 msgid "French"
 msgstr "Francese"
 
-#: lib/languages:33
+#: lib/languages:34
 msgid "Galician"
 msgstr "Galiziano"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "German"
 msgstr "Tedesco"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "German (new spelling)"
 msgstr "Tedesco (nuova sillabazione)"
 
-#: lib/languages:36 lib/ui/stdtoolbars.inc:435
+#: lib/languages:37 lib/ui/stdtoolbars.inc:435
 msgid "Greek"
 msgstr "Greco"
 
-#: lib/languages:37
+#: lib/languages:38
 msgid "Hebrew"
 msgstr "Ebreo"
 
-#: lib/languages:39
+#: lib/languages:40
 msgid "Irish"
 msgstr "Irlandese"
 
-#: lib/languages:40
+#: lib/languages:41
 msgid "Italian"
 msgstr "Italiano"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Kazakh"
 msgstr "Kazakho"
 
-#: lib/languages:44
+#: lib/languages:45
 msgid "Korean"
 msgstr ""
 
-#: lib/languages:46
+#: lib/languages:47
 msgid "Lithuanian"
 msgstr "Lituano"
 
-#: lib/languages:47
+#: lib/languages:48
 msgid "Latvian"
 msgstr "Latviano"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Icelandic"
 msgstr "Islandese"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Magyar"
 msgstr "Magiaro"
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Norsk"
 msgstr "Norvegese"
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Nynorsk"
 msgstr "Nynorsk"
 
-#: lib/languages:52
+#: lib/languages:53
 msgid "Polish"
 msgstr "Polacco"
 
-#: lib/languages:53
+#: lib/languages:54
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: lib/languages:54
+#: lib/languages:55
 msgid "Romanian"
 msgstr "Romeno"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Russian"
 msgstr "Russo"
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Scottish"
 msgstr "Scozzese"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Serbian"
 msgstr "Serbo"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Serbo-Croatian"
 msgstr "Serbocroato"
 
-#: lib/languages:59
+#: lib/languages:60
 msgid "Spanish"
 msgstr "Spagnolo"
 
-#: lib/languages:60
+#: lib/languages:61
 msgid "Slovak"
 msgstr "Slovacco"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Slovene"
 msgstr "Sloveno"
 
-#: lib/languages:62
+#: lib/languages:63
 msgid "Swedish"
 msgstr "Svedese"
 
-#: lib/languages:63
+#: lib/languages:64
 msgid "Thai"
 msgstr "Thailandese"
 
-#: lib/languages:64
+#: lib/languages:65
 msgid "Turkish"
 msgstr "Turco"
 
-#: lib/languages:65
+#: lib/languages:66
 msgid "Ukrainian"
 msgstr "Ucraino"
 
-#: lib/languages:66
+#: lib/languages:67
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Serbo"
 
-#: lib/languages:67
+#: lib/languages:68
 msgid "Welsh"
 msgstr "Gallese"
 
@@ -9443,7 +9457,7 @@ msgid "Fractions"
 msgstr "LyX: caratteri matematici"
 
 #: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:282
-#: src/frontends/qt4/QDocument.cpp:579
+#: src/frontends/qt4/QDocument.cpp:581
 #, fuzzy
 msgid "Fonts"
 msgstr "&Carattere: "
@@ -13851,7 +13865,7 @@ msgstr "L'indice autore è sconosciuto per la cancellazione: %1$d\n"
 msgid "Unknown token"
 msgstr "Simbolo sconosciuto"
 
-#: src/Text.cpp:773
+#: src/Text.cpp:774
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -13859,67 +13873,67 @@ msgstr ""
 "Non puoi inserire uno spazio all'inizio di un paragrafo. Per favore, leggi "
 "il Tutorial!"
 
-#: src/Text.cpp:784
+#: src/Text.cpp:785
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Cambia Tracciamento|C"
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1848
 msgid "Change: "
 msgstr "Cambia: "
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1852
 msgid " at "
 msgstr " a "
 
-#: src/Text.cpp:1861
+#: src/Text.cpp:1862
 #, c-format
 msgid "Font: %1$s"
 msgstr "Carattere: %1$s"
 
-#: src/Text.cpp:1866
+#: src/Text.cpp:1867
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Rientro: %1$d"
 
-#: src/Text.cpp:1872
+#: src/Text.cpp:1873
 msgid ", Spacing: "
 msgstr ", Spaziatura: "
 
-#: src/Text.cpp:1878 src/frontends/qt4/QDocument.cpp:245
+#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Uno e mezzo"
 
-#: src/Text.cpp:1884
+#: src/Text.cpp:1885
 msgid "Other ("
 msgstr "Altro ("
 
-#: src/Text.cpp:1893
+#: src/Text.cpp:1894
 msgid ", Inset: "
 msgstr ", inserto: "
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1895
 msgid ", Paragraph: "
 msgstr ", Paragrafo: "
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1896
 msgid ", Id: "
 msgstr ", ID:"
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1897
 msgid ", Position: "
 msgstr ", posizione:"
 
-#: src/Text.cpp:1902
+#: src/Text.cpp:1903
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1904
+#: src/Text.cpp:1905
 msgid ", Boundary: "
 msgstr ", Contorno:"
 
@@ -14888,11 +14902,11 @@ msgid "Activated"
 msgstr "Attivato"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:844
+#: src/frontends/qt4/QDocument.cpp:846
 msgid "Yes"
 msgstr "Sì"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:843
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:845
 msgid "No"
 msgstr "No"
 
@@ -15065,147 +15079,147 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Typewriter"
 
-#: src/frontends/qt4/QDocument.cpp:230 src/frontends/qt4/QDocument.cpp:637
+#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:239
+#: src/frontends/qt4/QDocument.cpp:241
 msgid "Length"
 msgstr "Lunghezza"
 
-#: src/frontends/qt4/QDocument.cpp:284 src/frontends/qt4/QDocument.cpp:290
-#: src/frontends/qt4/QDocument.cpp:296
+#: src/frontends/qt4/QDocument.cpp:286 src/frontends/qt4/QDocument.cpp:292
+#: src/frontends/qt4/QDocument.cpp:298
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:301
+#: src/frontends/qt4/QDocument.cpp:303
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocument.cpp:302
+#: src/frontends/qt4/QDocument.cpp:304
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocument.cpp:303
+#: src/frontends/qt4/QDocument.cpp:305
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocument.cpp:338
+#: src/frontends/qt4/QDocument.cpp:340
 msgid "empty"
 msgstr "vuoto"
 
-#: src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/QDocument.cpp:341
 msgid "plain"
 msgstr "semplice"
 
-#: src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/QDocument.cpp:342
 msgid "headings"
 msgstr "intestazioni"
 
-#: src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/QDocument.cpp:343
 msgid "fancy"
 msgstr "eccessivo"
 
-#: src/frontends/qt4/QDocument.cpp:357
+#: src/frontends/qt4/QDocument.cpp:359
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocument.cpp:358
+#: src/frontends/qt4/QDocument.cpp:360
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocument.cpp:461
+#: src/frontends/qt4/QDocument.cpp:463
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX ha fallito"
 
-#: src/frontends/qt4/QDocument.cpp:467
+#: src/frontends/qt4/QDocument.cpp:469
 msgid "``text''"
 msgstr "``testo''"
 
-#: src/frontends/qt4/QDocument.cpp:468
+#: src/frontends/qt4/QDocument.cpp:470
 msgid "''text''"
 msgstr "''testo''"
 
-#: src/frontends/qt4/QDocument.cpp:469
+#: src/frontends/qt4/QDocument.cpp:471
 msgid ",,text``"
 msgstr ",,testo``"
 
-#: src/frontends/qt4/QDocument.cpp:470
+#: src/frontends/qt4/QDocument.cpp:472
 msgid ",,text''"
 msgstr ",,testo''"
 
-#: src/frontends/qt4/QDocument.cpp:471
+#: src/frontends/qt4/QDocument.cpp:473
 msgid "<<text>>"
 msgstr "«testo»"
 
-#: src/frontends/qt4/QDocument.cpp:472
+#: src/frontends/qt4/QDocument.cpp:474
 msgid ">>text<<"
 msgstr "»testo«"
 
-#: src/frontends/qt4/QDocument.cpp:488
+#: src/frontends/qt4/QDocument.cpp:490
 msgid "Numbered"
 msgstr "Numerato"
 
-#: src/frontends/qt4/QDocument.cpp:489
+#: src/frontends/qt4/QDocument.cpp:491
 msgid "Appears in TOC"
 msgstr "Appare nell'Indice generale"
 
-#: src/frontends/qt4/QDocument.cpp:509
+#: src/frontends/qt4/QDocument.cpp:511
 msgid "Author-year"
 msgstr "Autore-anno"
 
-#: src/frontends/qt4/QDocument.cpp:510
+#: src/frontends/qt4/QDocument.cpp:512
 msgid "Numerical"
 msgstr "Numerico"
 
-#: src/frontends/qt4/QDocument.cpp:552
+#: src/frontends/qt4/QDocument.cpp:554
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Non disponibile: %1$s"
 
-#: src/frontends/qt4/QDocument.cpp:578 src/frontends/qt4/QDocument.cpp:591
+#: src/frontends/qt4/QDocument.cpp:580 src/frontends/qt4/QDocument.cpp:593
 msgid "Document Class"
 msgstr "Classe documento"
 
-#: src/frontends/qt4/QDocument.cpp:580
+#: src/frontends/qt4/QDocument.cpp:582
 msgid "Text Layout"
 msgstr "Struttura testo"
 
-#: src/frontends/qt4/QDocument.cpp:581
+#: src/frontends/qt4/QDocument.cpp:583
 msgid "Page Layout"
 msgstr "Struttura pagina"
 
-#: src/frontends/qt4/QDocument.cpp:582
+#: src/frontends/qt4/QDocument.cpp:584
 msgid "Page Margins"
 msgstr "Margini"
 
-#: src/frontends/qt4/QDocument.cpp:584
+#: src/frontends/qt4/QDocument.cpp:586
 msgid "Numbering & TOC"
 msgstr "Numerazione & Indice generale"
 
-#: src/frontends/qt4/QDocument.cpp:586
+#: src/frontends/qt4/QDocument.cpp:588
 msgid "Math Options"
 msgstr "Opzioni matematiche"
 
-#: src/frontends/qt4/QDocument.cpp:587
+#: src/frontends/qt4/QDocument.cpp:589
 msgid "Float Placement"
 msgstr "Posizione degli oggetti mobili"
 
-#: src/frontends/qt4/QDocument.cpp:588
+#: src/frontends/qt4/QDocument.cpp:590
 msgid "Bullets"
 msgstr "Elenchi puntati"
 
-#: src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:591
 msgid "Branches"
 msgstr "Rami"
 
-#: src/frontends/qt4/QDocument.cpp:590 src/frontends/qt4/QDocument.cpp:602
+#: src/frontends/qt4/QDocument.cpp:592 src/frontends/qt4/QDocument.cpp:604
 msgid "LaTeX Preamble"
 msgstr "Preambolo di LaTeX"
 
-#: src/frontends/qt4/QDocument.cpp:1398
+#: src/frontends/qt4/QDocument.cpp:1400
 msgid "Document Settings"
 msgstr "Impostazioni documento"
 
@@ -15229,14 +15243,14 @@ msgstr "Impostazioni oggetti mobili"
 msgid "Graphics"
 msgstr "Grafici"
 
-#: src/frontends/qt4/QInclude.cpp:100 src/frontends/qt4/QInclude.cpp:220
-#: src/frontends/qt4/QListings.cpp:333 src/frontends/qt4/QListings.cpp:414
-#: src/frontends/qt4/QListings.cpp:446
+#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
+#: src/frontends/qt4/QListings.cpp:447
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:181
+#: src/frontends/qt4/QInclude.cpp:182
 msgid "Child Document"
 msgstr "Documento figlio"
 
@@ -15245,12 +15259,12 @@ msgstr "Documento figlio"
 msgid "No language"
 msgstr "lingua"
 
-#: src/frontends/qt4/QListings.cpp:376
+#: src/frontends/qt4/QListings.cpp:377
 #, fuzzy
 msgid "No dialect"
 msgstr "Nessuna immagine"
 
-#: src/frontends/qt4/QListings.cpp:401
+#: src/frontends/qt4/QListings.cpp:402
 #, fuzzy
 msgid "Program Listing Settings"
 msgstr "Impostazioni paragrafo"
@@ -15645,7 +15659,7 @@ msgstr "E' stato aperto l'inserto Nota a piè di pagina"
 msgid "footnote"
 msgstr "Nota a piè di pagina"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15656,12 +15670,12 @@ msgstr ""
 "%1$s\n"
 "nella cartella temporanea."
 
-#: src/insets/InsetGraphics.cpp:711
+#: src/insets/InsetGraphics.cpp:720
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Non è necessaria alcuna conversione del file %1$s dopo tutto"
 
-#: src/insets/InsetGraphics.cpp:823
+#: src/insets/InsetGraphics.cpp:832
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "File grafici: %1$s"
@@ -15959,15 +15973,15 @@ msgstr "F&ormato:"
 msgid "Unknown TOC type"
 msgstr "Simbolo sconosciuto"
 
-#: src/insets/InsetTabular.cpp:3148
+#: src/insets/InsetTabular.cpp:3153
 msgid "Opened table"
 msgstr "La tabella è stata aperta"
 
-#: src/insets/InsetTabular.cpp:4324
+#: src/insets/InsetTabular.cpp:4329
 msgid "Error setting multicolumn"
 msgstr "Si è verificato un errore impostando le multicolonne"
 
-#: src/insets/InsetTabular.cpp:4325
+#: src/insets/InsetTabular.cpp:4330
 msgid "You cannot set multicolumn vertically."
 msgstr "Non puoi impostare le multicolonne verticalmente."
 
