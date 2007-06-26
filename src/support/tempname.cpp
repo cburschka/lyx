@@ -81,9 +81,9 @@ int make_tempfile(char * templ)
 FileName const tempName(FileName const & dir, string const & mask)
 {
 	string const tmpdir(dir.empty() ?
-			package().temp_dir().toFilesystemEncoding() :
-			dir.toFilesystemEncoding());
-	string tmpfl(addName(tmpdir, mask));
+			package().temp_dir().absFilename() :
+			dir.absFilename());
+	string tmpfl(to_filesystem8bit(from_utf8(addName(tmpdir, mask))));
 #if defined (HAVE_GETPID)
 	tmpfl += convert<string>(getpid());
 #elif defined (HAVE__GETPID)

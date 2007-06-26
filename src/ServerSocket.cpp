@@ -62,7 +62,7 @@ ServerSocket::ServerSocket(LyXFunc * f, support::FileName const & addr)
 	// Needed by xdvi
 	support::setEnv("XEDITOR", "lyxclient -g %f %l");
 	// Needed by lyxclient
-	support::setEnv("LYXSOCKET", address_.toFilesystemEncoding());
+	support::setEnv("LYXSOCKET", address_.absFilename());
 
 	theApp()->registerSocketCallback(
 		fd_,
