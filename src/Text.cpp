@@ -993,36 +993,8 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 void Text::acceptChanges(BufferParams const & bparams)
 {
-	pit_type pars_size = static_cast<pit_type>(pars_.size());
-
-	// first, accept changes within each individual paragraph
-	// (do not consider end-of-par)
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars_[pit].empty())   // prevent assertion failure
-			pars_[pit].acceptChanges(bparams, 0, pars_[pit].size());
-	}
-
-	// next, accept imaginary end-of-par characters
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		pos_type pos = pars_[pit].size();
-
-		if (pars_[pit].isInserted(pos)) {
-			pars_[pit].setChange(pos, Change(Change::UNCHANGED));
-		} else if (pars_[pit].isDeleted(pos)) {
-			if (pit == pars_size - 1) {
-				// we cannot remove a par break at the end of the last
-				// paragraph; instead, we mark it unchanged
-				pars_[pit].setChange(pos, Change(Change::UNCHANGED));
-			} else {
-				mergeParagraph(bparams, pars_, pit);
-				--pit;
-				--pars_size;
-			}
-		}
-	}
-
-	// finally, invoke the DEPM
-	deleteEmptyParagraphMechanism(0, pars_size - 1, bparams.trackChanges);
+	lyx::acceptChanges(pars_, bparams);
+	deleteEmptyParagraphMechanism(0, pars_.size() - 1, bparams.trackChanges);
 }
 
 

@@ -388,12 +388,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	}
 
 	// do not copy text (also nested in insets) which is marked as deleted
-	// acceptChanges() is defined for Text rather than ParagraphList
-	// Thus we must wrap copy_pars into a Text object and cross our fingers
-	Text lt;
-	copy_pars.swap(lt.paragraphs());
-	lt.acceptChanges(buf.params());
-	copy_pars.swap(lt.paragraphs());
+	acceptChanges(copy_pars, buf.params());
 
 	cutstack.push(make_pair(copy_pars, tc));
 }
@@ -723,7 +718,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 					     textclass, errorList);
 		updateLabels(cur.buffer());
 		cur.clearSelection();
-		text->setCursor(cur.top(), ppp.first, ppp.second);
+		text->setCursor(cur, ppp.first, ppp.second);
 	}
 
 	// mathed is handled in InsetMathNest/InsetMathGrid
