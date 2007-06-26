@@ -224,6 +224,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
+		this, SLOT(validate_listings_params()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(validate_listings_params()));
 	textLayoutModule->listingsTB->setPlainText(

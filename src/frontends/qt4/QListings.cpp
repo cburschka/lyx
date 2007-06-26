@@ -192,6 +192,7 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(validate_listings_params()));
 
 	for (int n = 0; languages[n][0]; ++n)
 		languageCO->addItem(qt_(languages_gui[n]));

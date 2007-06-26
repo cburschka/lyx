@@ -67,6 +67,7 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(validate_listings_params()));
 
 	filenameED->setValidator(new PathValidator(true, filenameED));
 	setFocusProxy(filenameED);
