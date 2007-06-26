@@ -35,8 +35,8 @@ SectionEnd
 
 !define DICT '!insertmacro Dictionary'
 
-${DICT} ar-1.2-0 "Arabic" ar 4352
 ${DICT} af-0.50-0 "Afrikaans" af 915
+${DICT} ar-1.2-0 "Arabic" ar 4352
 ${DICT} nb-0.50.1-0 "Bokmål" nb 3031
 ${DICT} bg-4.0-0 "Bulgarian" bg 5345
 ${DICT} ca-20040130-1 "Català" ca 1095
