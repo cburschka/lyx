@@ -11389,11 +11389,11 @@ msgstr "intercal"
 
 #: lib/external_templates:37
 msgid "RasterImage"
-msgstr ""
+msgstr "Rastergrafik"
 
 #: lib/external_templates:40 lib/external_templates:46
 msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:45
 msgid "A bitmap file.\n"
@@ -11405,20 +11405,19 @@ msgstr "XFig"
 
 #: lib/external_templates:103 lib/external_templates:106
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:105
 msgid "An Xfig figure.\n"
 msgstr "Eine Xfig-Abbildung.\n"
 
 #: lib/external_templates:154
-#, fuzzy
 msgid "ChessDiagram"
-msgstr "Schachbrett"
+msgstr "Schachdiagramm"
 
 #: lib/external_templates:155 lib/external_templates:174
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Schach: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:157
 msgid ""
@@ -11447,7 +11446,7 @@ msgstr "LilyPond"
 
 #: lib/external_templates:200 lib/external_templates:206
 msgid "Lilypond typeset music"
-msgstr ""
+msgstr "Lilypond-Notenblatt"
 
 #: lib/external_templates:202
 msgid ""
@@ -11462,6 +11461,8 @@ msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
 msgstr ""
+"Das heutige Datum.\n"
+"Bitte lesen Sie 'info date' für weitere Informationen.\n"
 
 #: src/Buffer.cpp:233
 msgid "Could not remove temporary directory"
@@ -14461,7 +14462,7 @@ msgstr "unbekannte Version"
 
 #: src/frontends/qt4/IconPalette.cpp:40
 msgid "Click to detach"
-msgstr ""
+msgstr "Zum Abtrennen bitte anklicken"
 
 #: src/frontends/qt4/QBibitem.cpp:69
 msgid "Bibliography Entry Settings"
