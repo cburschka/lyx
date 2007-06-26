@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-26 15:31+0100\n"
+"POT-Creation-Date: 2007-06-26 22:49+0200\n"
 "PO-Revision-Date: 2007-05-23 10:14+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -1346,12 +1346,12 @@ msgstr "לא ניתן למצוא את קובץ ה include: \"%s\""
 msgid "&Include Type:"
 msgstr "סוג קובץ: "
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
 #, fuzzy
 msgid "Include"
 msgstr "- כלול -"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
 msgid "Input"
 msgstr "קלט"
 
@@ -1823,7 +1823,7 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "מרווח בין שורות"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "יחיד"
@@ -1832,7 +1832,7 @@ msgstr "יחיד"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "כפול"
@@ -9144,7 +9144,7 @@ msgstr "כותרת קצרה"
 msgid "TeX Code|X"
 msgstr "קוד TeX"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
 #, fuzzy
 msgid "Program Listing"
 msgstr "אתחול תוכנית"
@@ -12729,7 +12729,7 @@ msgstr "הפלט ריק"
 msgid "An empty output file was generated."
 msgstr "קובץ פלט ריק נוצר"
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:436
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12738,19 +12738,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:446
+#: src/CutAndPaste.cpp:441
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Layout style"
 
-#: src/CutAndPaste.cpp:465
+#: src/CutAndPaste.cpp:460
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:472
+#: src/CutAndPaste.cpp:467
 #, fuzzy
 msgid "Undefined character style"
 msgstr "בחר קובץ סגנון"
@@ -13939,65 +13939,65 @@ msgstr "אינך יכול לכתוב רווח בתחילת פסקה. אנא קר
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "אינך יכול להקליד שני רווחים רצופים. אנא קרא את \"השיעור המודרך\""
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1814
 msgid "[Change Tracking] "
 msgstr "[מעקב אחר שינויים]"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1820
 msgid "Change: "
 msgstr "שינוי:"
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1824
 #, fuzzy
 msgid " at "
 msgstr "להחיל ב-"
 
-#: src/Text.cpp:1862
+#: src/Text.cpp:1834
 #, c-format
 msgid "Font: %1$s"
 msgstr "גופן: %1$s"
 
-#: src/Text.cpp:1867
+#: src/Text.cpp:1839
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr "עומק צבע:"
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1845
 msgid ", Spacing: "
 msgstr ", ריווח:"
 
-#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "אחד וחצי"
 
-#: src/Text.cpp:1885
+#: src/Text.cpp:1857
 msgid "Other ("
 msgstr "אחר ("
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1866
 msgid ", Inset: "
 msgstr "תוסף טקסט:"
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1867
 msgid ", Paragraph: "
 msgstr "פסקה:"
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1868
 #, fuzzy
 msgid ", Id: "
 msgstr "זיהוי"
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1869
 #, fuzzy
 msgid ", Position: "
 msgstr "מיקום X"
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1875
 #, fuzzy
 msgid ", Char: 0x"
 msgstr "*** [%s] 0x%x הלקת ***"
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1877
 msgid ", Boundary: "
 msgstr ""
 
@@ -14998,7 +14998,7 @@ msgstr ""
 msgid "Bibliography Entry Settings"
 msgstr "אפשרויות גופן אחרות"
 
-#: src/frontends/qt4/QBibtex.cpp:260
+#: src/frontends/qt4/QBibtex.cpp:259
 #, fuzzy
 msgid "BibTeX Bibliography"
 msgstr "רישום ביבליוגרפי"
@@ -15350,12 +15350,12 @@ msgstr "הגדרות מסמך"
 msgid "TeX Code Settings"
 msgstr "הגדרות קוד TeX"
 
-#: src/frontends/qt4/QExternal.cpp:497
+#: src/frontends/qt4/QExternal.cpp:496
 #, fuzzy
 msgid "External Material"
 msgstr "עורך טקסט חיצוני"
 
-#: src/frontends/qt4/QExternal.cpp:557
+#: src/frontends/qt4/QExternal.cpp:556
 #, fuzzy
 msgid "Scale%"
 msgstr "סולם"
@@ -15364,18 +15364,18 @@ msgstr "סולם"
 msgid "Float Settings"
 msgstr "הגדרות אובייקטים צפים"
 
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "תמונות"
 
-#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
 #: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
 #: src/frontends/qt4/QListings.cpp:447
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:182
+#: src/frontends/qt4/QInclude.cpp:180
 #, fuzzy
 msgid "Child Document"
 msgstr "מסמך חדש"
@@ -15548,7 +15548,7 @@ msgstr "זהות המשתמש"
 msgid "Preferences"
 msgstr "העדפות"
 
-#: src/frontends/qt4/QPrint.cpp:36
+#: src/frontends/qt4/QPrint.cpp:40
 msgid "Print Document"
 msgstr "הדפס מסמך"
 
@@ -15613,7 +15613,9 @@ msgstr "הגדרות גלישת שורות"
 msgid "space"
 msgstr "Space style"
 
-#: src/frontends/qt4/Validator.cpp:180
+#: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetInclude.cpp:464
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Invalid filename"
@@ -15631,27 +15633,34 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:465
+msgid ""
+"The following filename is likely to cause trouble when running the exported "
+"file through LaTeX: "
+msgstr ""
+
 #: src/insets/Inset.cpp:255
 #, fuzzy
 msgid "Opened inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/InsetBibtex.cpp:109
+#: src/insets/InsetBibtex.cpp:110
 msgid "BibTeX Generated Bibliography"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Warning message"
 
-#: src/insets/InsetBibtex.cpp:207
+#: src/insets/InsetBibtex.cpp:214
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:260
+#: src/insets/InsetBibtex.cpp:267
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -15801,7 +15810,7 @@ msgstr "ערכת הכלים הנוספת של Andrew"
 msgid "footnote"
 msgstr "הערת תחתית"
 
-#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:525
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15809,12 +15818,12 @@ msgid ""
 "into the temporary directory."
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:720
+#: src/insets/InsetGraphics.cpp:729
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:832
+#: src/insets/InsetGraphics.cpp:841
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "%d קובץ %lld %s"
@@ -15824,31 +15833,31 @@ msgstr "%d קובץ %lld %s"
 msgid "Horizontal Fill"
 msgstr "מלא מצולעים"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:342
 #, fuzzy
 msgid "Verbatim Input"
 msgstr "קלט נדרש"
 
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetInclude.cpp:345
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "קלט נדרש"
 
-#: src/insets/InsetInclude.cpp:351
+#: src/insets/InsetInclude.cpp:352
 #, fuzzy
 msgid "Program Listing "
 msgstr "אתחול תוכנית"
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:618
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:619
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:480
+#: src/insets/InsetInclude.cpp:487
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15856,7 +15865,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:486
+#: src/insets/InsetInclude.cpp:493
 #, fuzzy
 msgid "Different textclasses"
 msgstr "חלקים שונים נמצאו"

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-26 15:31+0100\n"
+"POT-Creation-Date: 2007-06-26 22:49+0200\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -1421,11 +1421,11 @@ msgstr "Bestandsnaam voor invoeging"
 msgid "&Include Type:"
 msgstr "&Invoegtype:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
 msgid "Include"
 msgstr "Invoegen"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
 msgid "Input"
 msgstr "Invoer"
 
@@ -1915,7 +1915,7 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "R&egelafstand:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Enkel"
@@ -1924,7 +1924,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Dubbel"
@@ -9629,7 +9629,7 @@ msgstr "Korte titel"
 msgid "TeX Code|X"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
 #, fuzzy
 msgid "Program Listing"
 msgstr "(geen oorspronkelijke omschrijving)"
@@ -13379,7 +13379,7 @@ msgstr "is leeg"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:436
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -13391,19 +13391,19 @@ msgstr ""
 # Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
 # lettertekenstijl definieren die aan/uitgeschakeld wordt met de
 # Font-knop op de werkbalk.
-#: src/CutAndPaste.cpp:446
+#: src/CutAndPaste.cpp:441
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Tekenstijl definieren"
 
-#: src/CutAndPaste.cpp:465
+#: src/CutAndPaste.cpp:460
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:472
+#: src/CutAndPaste.cpp:467
 msgid "Undefined character style"
 msgstr ""
 
@@ -14604,68 +14604,68 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "U kunt twee spaties niet zo typen.  Lees aub de Tutorial."
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1814
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Taal veranderen"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1820
 #, fuzzy
 msgid "Change: "
 msgstr "Pagina: "
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1824
 #, fuzzy
 msgid " at "
 msgstr " naar "
 
-#: src/Text.cpp:1862
+#: src/Text.cpp:1834
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Lettertype:"
 
-#: src/Text.cpp:1867
+#: src/Text.cpp:1839
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Diepte:"
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1845
 msgid ", Spacing: "
 msgstr ", Wit: "
 
-#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
 #, fuzzy
 msgid "OneHalf"
 msgstr "Een-half"
 
-#: src/Text.cpp:1885
+#: src/Text.cpp:1857
 msgid "Other ("
 msgstr "Overig ("
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1866
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Diepte: "
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1867
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Alineaopmaak ingesteld"
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1868
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1869
 #, fuzzy
 msgid ", Position: "
 msgstr "   opties: "
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1875
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1877
 msgid ", Boundary: "
 msgstr ""
 
@@ -15664,7 +15664,7 @@ msgid "Bibliography Entry Settings"
 msgstr "Literatuurverwijzing"
 
 # Literatuurlijst?
-#: src/frontends/qt4/QBibtex.cpp:260
+#: src/frontends/qt4/QBibtex.cpp:259
 #, fuzzy
 msgid "BibTeX Bibliography"
 msgstr "Bibliografie"
@@ -16034,11 +16034,11 @@ msgstr "Document-instellingen"
 msgid "TeX Code Settings"
 msgstr "Extra opties"
 
-#: src/frontends/qt4/QExternal.cpp:497
+#: src/frontends/qt4/QExternal.cpp:496
 msgid "External Material"
 msgstr "Extern materiaal"
 
-#: src/frontends/qt4/QExternal.cpp:557
+#: src/frontends/qt4/QExternal.cpp:556
 #, fuzzy
 msgid "Scale%"
 msgstr "Kleiner"
@@ -16048,18 +16048,18 @@ msgstr "Kleiner"
 msgid "Float Settings"
 msgstr "Opties"
 
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "Plaatjes"
 
-#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
 #: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
 #: src/frontends/qt4/QListings.cpp:447
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:182
+#: src/frontends/qt4/QInclude.cpp:180
 #, fuzzy
 msgid "Child Document"
 msgstr "Document"
@@ -16241,7 +16241,7 @@ msgstr "&Inspringen"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#: src/frontends/qt4/QPrint.cpp:36
+#: src/frontends/qt4/QPrint.cpp:40
 #, fuzzy
 msgid "Print Document"
 msgstr "Document"
@@ -16309,7 +16309,9 @@ msgstr "Tabelinstellingen"
 msgid "space"
 msgstr "&Vervangen"
 
-#: src/frontends/qt4/Validator.cpp:180
+#: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetInclude.cpp:464
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Ongeldige lengte!"
@@ -16328,27 +16330,34 @@ msgstr "Bestandsnaam mag de volgende tekens niet bevatten:"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:465
+msgid ""
+"The following filename is likely to cause trouble when running the exported "
+"file through LaTeX: "
+msgstr ""
+
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Inzet geopend"
 
-#: src/insets/InsetBibtex.cpp:109
+#: src/insets/InsetBibtex.cpp:110
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Verwijzingen gegenereerd door BibTeX"
 
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Waarschuwing!"
 
-#: src/insets/InsetBibtex.cpp:207
+#: src/insets/InsetBibtex.cpp:214
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:260
+#: src/insets/InsetBibtex.cpp:267
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -16505,7 +16514,7 @@ msgstr "Voetnoot Inzet geopend"
 msgid "footnote"
 msgstr "voetnoot"
 
-#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:525
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -16513,12 +16522,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/insets/InsetGraphics.cpp:720
+#: src/insets/InsetGraphics.cpp:729
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:832
+#: src/insets/InsetGraphics.cpp:841
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafisch bestand|#G"
@@ -16528,30 +16537,30 @@ msgstr "Grafisch bestand|#G"
 msgid "Horizontal Fill"
 msgstr "Horizontaal uitlijnen|#H"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:342
 msgid "Verbatim Input"
 msgstr "Verbatim-input"
 
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetInclude.cpp:345
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "Verbatim-input"
 
-#: src/insets/InsetInclude.cpp:351
+#: src/insets/InsetInclude.cpp:352
 #, fuzzy
 msgid "Program Listing "
 msgstr "(geen oorspronkelijke omschrijving)"
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:618
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:619
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:480
+#: src/insets/InsetInclude.cpp:487
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -16559,7 +16568,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:486
+#: src/insets/InsetInclude.cpp:493
 msgid "Different textclasses"
 msgstr ""
 

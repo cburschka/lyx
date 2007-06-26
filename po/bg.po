@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-23 11:21+0200\n"
+"POT-Creation-Date: 2007-06-26 22:49+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -79,7 +79,7 @@ msgstr "Обобщение"
 #: src/frontends/qt4/ui/CitationUi.ui:303
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/ExternalUi.ui:685 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:702
+#: src/frontends/qt4/ui/GraphicsUi.ui:738
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
@@ -501,7 +501,7 @@ msgstr "Вертикално разстояние"
 # src/frontends/kde/dlg/paradlgdata.C:82
 #: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
-#: src/frontends/qt4/ui/GraphicsUi.ui:673
+#: src/frontends/qt4/ui/GraphicsUi.ui:709
 #: src/frontends/qt4/ui/ParagraphUi.ui:256 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
@@ -511,7 +511,7 @@ msgstr "(&R)Въстанови"
 #: src/frontends/qt4/ui/BoxUi.ui:338 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/GraphicsUi.ui:759
 #: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:295 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
@@ -597,7 +597,7 @@ msgstr "Размер(Z):|#Z"
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/GraphicsUi.ui:620
 #: src/frontends/qt4/ui/ParagraphUi.ui:98
 #: src/frontends/qt4/ui/ParagraphUi.ui:127
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
@@ -608,9 +608,9 @@ msgstr "Размер(Z):|#Z"
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
 #: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:98
-#: src/frontends/qt4/QDocument.cpp:300 src/frontends/qt4/QDocument.cpp:337
-#: src/frontends/qt4/QDocument.cpp:349 src/frontends/qt4/QDocument.cpp:741
-#: src/frontends/qt4/QDocument.cpp:789 src/frontends/qt4/QListings.cpp:155
+#: src/frontends/qt4/QDocument.cpp:302 src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:743
+#: src/frontends/qt4/QDocument.cpp:791 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "Стандартно"
@@ -765,7 +765,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
-#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:583
+#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
 #: src/frontends/qt4/QPrefs.cpp:1587
 msgid "Language"
 msgstr "Език"
@@ -854,7 +854,7 @@ msgstr ""
 # src/frontends/xforms/FormInset.h:54 src/layout_forms.C:52 src/log_form.C:21
 # src/lyxvc.C:263 src/mathed/math_forms.C:177
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:110
-#: src/frontends/qt4/ui/GraphicsUi.ui:744
+#: src/frontends/qt4/ui/GraphicsUi.ui:780
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177 src/frontends/qt4/ui/NoteUi.ui:41
 #: src/frontends/qt4/ui/PrintUi.ui:246
 #: src/frontends/qt4/ui/TabularCreateUi.ui:75
@@ -1151,15 +1151,15 @@ msgstr "Изглед"
 # src/insets/figinset.C:1045
 #: src/frontends/qt4/ui/ExternalUi.ui:188
 #: src/frontends/qt4/ui/ExternalUi.ui:261
-#: src/frontends/qt4/ui/GraphicsUi.ui:587
-#: src/frontends/qt4/ui/GraphicsUi.ui:600
+#: src/frontends/qt4/ui/GraphicsUi.ui:616
+#: src/frontends/qt4/ui/GraphicsUi.ui:643
 #, fuzzy
 msgid "Screen display"
 msgstr "[не е показан]"
 
 # src/frontends/xforms/form_graphics.C:90
 #: src/frontends/qt4/ui/ExternalUi.ui:197
-#: src/frontends/qt4/ui/GraphicsUi.ui:609
+#: src/frontends/qt4/ui/GraphicsUi.ui:625
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66
 #, fuzzy
 msgid "Monochrome"
@@ -1167,7 +1167,7 @@ msgstr "Монохромно(M)|#M"
 
 # src/frontends/xforms/form_graphics.C:96
 #: src/frontends/qt4/ui/ExternalUi.ui:202
-#: src/frontends/qt4/ui/GraphicsUi.ui:614
+#: src/frontends/qt4/ui/GraphicsUi.ui:630
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:71
 #, fuzzy
 msgid "Grayscale"
@@ -1175,7 +1175,7 @@ msgstr "в сиви тонове(G)|#G"
 
 # src/frontends/xforms/FormPreferences.C:244
 #: src/frontends/qt4/ui/ExternalUi.ui:207
-#: src/frontends/qt4/ui/GraphicsUi.ui:619
+#: src/frontends/qt4/ui/GraphicsUi.ui:635
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:76 src/frontends/qt4/QBranches.cpp:44
 #, fuzzy
 msgid "Color"
@@ -1189,8 +1189,8 @@ msgstr "(&F)Файл"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:239
 #: src/frontends/qt4/ui/ExternalUi.ui:274
-#: src/frontends/qt4/ui/GraphicsUi.ui:627
-#: src/frontends/qt4/ui/GraphicsUi.ui:651
+#: src/frontends/qt4/ui/GraphicsUi.ui:596
+#: src/frontends/qt4/ui/GraphicsUi.ui:603
 msgid "Percentage to scale by in LyX"
 msgstr ""
 
@@ -1201,7 +1201,7 @@ msgstr ""
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
 #: src/frontends/qt4/ui/ExternalUi.ui:264
-#: src/frontends/qt4/ui/GraphicsUi.ui:590
+#: src/frontends/qt4/ui/GraphicsUi.ui:646
 #, fuzzy
 msgid "&Display:"
 msgstr "Графика"
@@ -1230,15 +1230,15 @@ msgstr "Държава"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:381
 #: src/frontends/qt4/ui/ExternalUi.ui:411
-#: src/frontends/qt4/ui/GraphicsUi.ui:113
-#: src/frontends/qt4/ui/GraphicsUi.ui:134
+#: src/frontends/qt4/ui/GraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:280
 msgid "Angle to rotate image by"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:391
 #: src/frontends/qt4/ui/ExternalUi.ui:404
-#: src/frontends/qt4/ui/GraphicsUi.ui:141
-#: src/frontends/qt4/ui/GraphicsUi.ui:154
+#: src/frontends/qt4/ui/GraphicsUi.ui:245
+#: src/frontends/qt4/ui/GraphicsUi.ui:252
 msgid "The origin of the rotation"
 msgstr ""
 
@@ -1259,7 +1259,7 @@ msgid "Scale"
 msgstr "Специален"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:448
-#: src/frontends/qt4/ui/GraphicsUi.ui:230
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Height of image in output"
 msgstr ""
 
@@ -1268,12 +1268,12 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:461
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:210
 msgid "&Maintain aspect ratio"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:497
-#: src/frontends/qt4/ui/GraphicsUi.ui:196
+#: src/frontends/qt4/ui/GraphicsUi.ui:130
 msgid "Width of image in output"
 msgstr ""
 
@@ -1284,37 +1284,37 @@ msgid "Crop"
 msgstr "Копирай"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:530
-#: src/frontends/qt4/ui/GraphicsUi.ui:440
+#: src/frontends/qt4/ui/GraphicsUi.ui:450
 msgid "Get bounding box from the (EPS) file"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:923
 #: src/frontends/qt4/ui/ExternalUi.ui:533
-#: src/frontends/qt4/ui/GraphicsUi.ui:443
+#: src/frontends/qt4/ui/GraphicsUi.ui:453
 #, fuzzy
 msgid "&Get from File"
 msgstr "във файл"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:553
-#: src/frontends/qt4/ui/GraphicsUi.ui:312
+#: src/frontends/qt4/ui/GraphicsUi.ui:322
 msgid "Clip to bounding box values"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:556
-#: src/frontends/qt4/ui/GraphicsUi.ui:315
+#: src/frontends/qt4/ui/GraphicsUi.ui:325
 msgid "Clip to &bounding box"
 msgstr ""
 
 # src/ext_l10n.h:63
 #: src/frontends/qt4/ui/ExternalUi.ui:573
-#: src/frontends/qt4/ui/GraphicsUi.ui:348
+#: src/frontends/qt4/ui/GraphicsUi.ui:358
 #, fuzzy
 msgid "&Left bottom:"
 msgstr "Ред отдолу(B)|B"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:133
 #: src/frontends/qt4/ui/ExternalUi.ui:586
-#: src/frontends/qt4/ui/GraphicsUi.ui:386
+#: src/frontends/qt4/ui/GraphicsUi.ui:396
 #, fuzzy
 msgid "Right &top:"
 msgstr "Десен"
@@ -1489,147 +1489,157 @@ msgstr "Изберете "
 msgid "File name of image"
 msgstr "Име на файл(F):|#F"
 
-# src/frontends/xforms/FormGraphics.C:36
-# src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/qt4/ui/GraphicsUi.ui:98
-#, fuzzy
-msgid "Rotate Graphics"
-msgstr "Графика"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:116
-msgid "A&ngle (Degrees):"
-msgstr ""
-
-# src/ext_l10n.h:191
-#: src/frontends/qt4/ui/GraphicsUi.ui:144
-#, fuzzy
-msgid "Or&igin:"
-msgstr "Заглавие"
-
 # src/frontends/xforms/FormPreferences.C:232
-#: src/frontends/qt4/ui/GraphicsUi.ui:164
+#: src/frontends/qt4/ui/GraphicsUi.ui:98
 #, fuzzy
 msgid "Output Size"
 msgstr "Изход"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
 # src/form1.C:157 src/frontends/xforms/form_graphics.C:46
-#: src/frontends/qt4/ui/GraphicsUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 #, fuzzy
 msgid "Set &height:"
 msgstr "Височина"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:184
 #, fuzzy
 msgid "&Scale Graphics (%):"
 msgstr "Графика"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:260
+#: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:197
 #, fuzzy
 msgid "Set &width:"
 msgstr "Ширина"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:273
+#: src/frontends/qt4/ui/GraphicsUi.ui:207
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 
+# src/frontends/xforms/FormGraphics.C:36
+# src/frontends/xforms/FormGraphics.C:359
+#: src/frontends/qt4/ui/GraphicsUi.ui:220
+#, fuzzy
+msgid "Rotate Graphics"
+msgstr "Графика"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:235
+msgid "Check to change the order of rotating and scaling"
+msgstr ""
+
+# src/ext_l10n.h:311
+#: src/frontends/qt4/ui/GraphicsUi.ui:238
+#, fuzzy
+msgid "Ro&tate after scaling"
+msgstr "Таблица"
+
+# src/ext_l10n.h:191
+#: src/frontends/qt4/ui/GraphicsUi.ui:255
+#, fuzzy
+msgid "Or&igin:"
+msgstr "Заглавие"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:283
+msgid "A&ngle (Degrees):"
+msgstr ""
+
 # src/ext_l10n.h:200
-#: src/frontends/qt4/ui/GraphicsUi.ui:287
+#: src/frontends/qt4/ui/GraphicsUi.ui:297
 #, fuzzy
 msgid "&Clipping"
 msgstr "Затваряне"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:396
-#: src/frontends/qt4/ui/GraphicsUi.ui:403
+#: src/frontends/qt4/ui/GraphicsUi.ui:406
+#: src/frontends/qt4/ui/GraphicsUi.ui:413
 msgid "y:"
 msgstr ""
 
 # src/LColor.C:63
-#: src/frontends/qt4/ui/GraphicsUi.ui:410
-#: src/frontends/qt4/ui/GraphicsUi.ui:417
+#: src/frontends/qt4/ui/GraphicsUi.ui:420
+#: src/frontends/qt4/ui/GraphicsUi.ui:427
 #, fuzzy
 msgid "x:"
 msgstr "текст"
 
 # src/frontends/xforms/form_preferences.C:926
-#: src/frontends/qt4/ui/GraphicsUi.ui:451
+#: src/frontends/qt4/ui/GraphicsUi.ui:461
 #, fuzzy
 msgid "LaTe&X and LyX options"
 msgstr "допълнителни опции"
 
-# src/frontends/xforms/form_preferences.C:926
-#: src/frontends/qt4/ui/GraphicsUi.ui:463
-#: src/frontends/qt4/ui/GraphicsUi.ui:484
-#, fuzzy
-msgid "Additional LaTeX options"
-msgstr "допълнителни опции"
-
-# src/frontends/xforms/form_preferences.C:926
-#: src/frontends/qt4/ui/GraphicsUi.ui:466
-#, fuzzy
-msgid "LaTeX &options:"
-msgstr "допълнителни опции"
-
 # src/exporter.C:48
-#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:499
 #, fuzzy
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Няма информация относно експортиране в "
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:494
+#: src/frontends/qt4/ui/GraphicsUi.ui:502
 msgid "Don't un&zip on export"
 msgstr ""
 
-# src/LyXAction.C:321
-#: src/frontends/qt4/ui/GraphicsUi.ui:501
-#, fuzzy
-msgid "Draft mode"
-msgstr "Матем. режим"
-
-# src/LyXAction.C:321
-#: src/frontends/qt4/ui/GraphicsUi.ui:504
-#, fuzzy
-msgid "&Draft mode"
-msgstr "Матем. режим"
-
 # src/ext_l10n.h:351
-#: src/frontends/qt4/ui/GraphicsUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:512
 #, fuzzy
 msgid "S&ubfigure"
 msgstr "Подпис"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:535
-#: src/frontends/qt4/ui/GraphicsUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:554
 msgid "The caption for the sub-figure"
 msgstr ""
 
 # src/ext_l10n.h:191
-#: src/frontends/qt4/ui/GraphicsUi.ui:538
+#: src/frontends/qt4/ui/GraphicsUi.ui:536
 #, fuzzy
 msgid "Ca&ption:"
 msgstr "Заглавие"
 
 # src/frontends/kde/dlg/printdlgdata.C:246
-#: src/frontends/qt4/ui/GraphicsUi.ui:569
+#: src/frontends/qt4/ui/GraphicsUi.ui:567
 #, fuzzy
 msgid "Sho&w in LyX"
 msgstr "(&F)Файл"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:630
+#: src/frontends/qt4/ui/GraphicsUi.ui:606
 msgid "Sca&le on Screen (%):"
 msgstr ""
+
+# src/frontends/xforms/form_preferences.C:926
+#: src/frontends/qt4/ui/GraphicsUi.ui:667
+#: src/frontends/qt4/ui/GraphicsUi.ui:674
+#, fuzzy
+msgid "Additional LaTeX options"
+msgstr "допълнителни опции"
+
+# src/frontends/xforms/form_preferences.C:926
+#: src/frontends/qt4/ui/GraphicsUi.ui:677
+#, fuzzy
+msgid "LaTeX &options:"
+msgstr "допълнителни опции"
+
+# src/LyXAction.C:321
+#: src/frontends/qt4/ui/GraphicsUi.ui:687
+#, fuzzy
+msgid "Draft mode"
+msgstr "Матем. режим"
+
+# src/LyXAction.C:321
+#: src/frontends/qt4/ui/GraphicsUi.ui:690
+#, fuzzy
+msgid "&Draft mode"
+msgstr "Матем. режим"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
 #: src/frontends/qt4/ui/IncludeUi.ui:36
@@ -1695,12 +1705,12 @@ msgid "&Include Type:"
 msgstr "Включи"
 
 # src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
 msgid "Include"
 msgstr "Включи"
 
 # src/insets/insetinclude.C:314
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
 msgid "Input"
 msgstr "Вход"
 
@@ -2291,8 +2301,8 @@ msgid "L&ine spacing:"
 msgstr "Разстояние"
 
 # src/bufferview_funcs.C:280
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1875
-#: src/frontends/qt4/QDocument.cpp:243
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
+#: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Единично"
 
@@ -2301,8 +2311,8 @@ msgid "1.5"
 msgstr ""
 
 # src/bufferview_funcs.C:286
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1881
-#: src/frontends/qt4/QDocument.cpp:247
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
+#: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Двойно"
 
@@ -2310,7 +2320,7 @@ msgstr "Двойно"
 #: src/frontends/qt4/ui/ParagraphUi.ui:147
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:249 src/frontends/qt4/QDocument.cpp:350
+#: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 #, fuzzy
 msgid "Custom"
 msgstr "Клиент"
@@ -2702,34 +2712,34 @@ msgid "Te&X encoding:"
 msgstr "TeX кодировка|#T"
 
 # src/ext_l10n.h:362
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:351
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:353
 #, fuzzy
 msgid "US letter"
 msgstr "Държава"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:352
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:354
 msgid "US legal"
 msgstr ""
 
 # src/ext_l10n.h:234
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:353
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:355
 #, fuzzy
 msgid "US executive"
 msgstr "Упражнение"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:354
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:356
 msgid "A3"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:355
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:357
 msgid "A4"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:356
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:358
 msgid "A5"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:359
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:361
 msgid "B5"
 msgstr ""
 
@@ -4194,19 +4204,19 @@ msgid "DefSkip"
 msgstr "Нормално разстояние"
 
 # src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:236
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:238
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Малко разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:237
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:239
 #, fuzzy
 msgid "MedSkip"
 msgstr "Средно разстояние"
 
 # src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:238
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:240
 #, fuzzy
 msgid "BigSkip"
 msgstr "Голямо разстояние"
@@ -4442,7 +4452,7 @@ msgstr "Дефиниция"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:487
+#: src/frontends/qt4/QDocument.cpp:489
 msgid "Example"
 msgstr "Пример"
 
@@ -4731,7 +4741,7 @@ msgstr "Индекс запис"
 #: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:230
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:585
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:587
 msgid "Bibliography"
 msgstr "Библиография"
 
@@ -4740,7 +4750,7 @@ msgstr "Библиография"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:539
+#: src/rowpainter.cpp:540
 msgid "Appendix"
 msgstr "Приложение"
 
@@ -9583,297 +9593,302 @@ msgstr "Бурски"
 msgid "American"
 msgstr "Американски"
 
-# src/ext_l10n.h:424
 #: lib/languages:4
-msgid "Arabic"
+msgid "Arabic (ArabTeX)"
+msgstr ""
+
+# src/ext_l10n.h:424
+#: lib/languages:5
+#, fuzzy
+msgid "Arabic (Arabi)"
 msgstr "Арабски"
 
 # src/ext_l10n.h:423
-#: lib/languages:5
+#: lib/languages:6
 #, fuzzy
 msgid "Armenian"
 msgstr "Американски"
 
 # src/ext_l10n.h:425
-#: lib/languages:6
+#: lib/languages:7
 msgid "Austrian"
 msgstr "Австрийски"
 
-#: lib/languages:7
+#: lib/languages:8
 msgid "Austrian (new spelling)"
 msgstr ""
 
 # src/ext_l10n.h:426
-#: lib/languages:8
+#: lib/languages:9
 msgid "Bahasa"
 msgstr ""
 
-#: lib/languages:9
+#: lib/languages:10
 #, fuzzy
 msgid "Belarusian"
 msgstr "Унгарски"
 
 # src/LColor.C:57
-#: lib/languages:10
+#: lib/languages:11
 #, fuzzy
 msgid "Basque"
 msgstr "син"
 
 # src/ext_l10n.h:454
-#: lib/languages:11
+#: lib/languages:12
 #, fuzzy
 msgid "Portuguese (Brazil)"
 msgstr "Португалски"
 
 # src/ext_l10n.h:428
-#: lib/languages:12
+#: lib/languages:13
 msgid "Breton"
 msgstr "Бретонски?"
 
 # src/ext_l10n.h:429
-#: lib/languages:13
+#: lib/languages:14
 msgid "British"
 msgstr "Британски"
 
-#: lib/languages:14
+#: lib/languages:15
 #, fuzzy
 msgid "Bulgarian"
 msgstr "Унгарски"
 
 # src/ext_l10n.h:430
-#: lib/languages:15
+#: lib/languages:16
 msgid "Canadian"
 msgstr "Канадски"
 
 # src/ext_l10n.h:430
-#: lib/languages:16
+#: lib/languages:17
 #, fuzzy
 msgid "French Canadian"
 msgstr "Канадски"
 
 # src/ext_l10n.h:432
-#: lib/languages:17
+#: lib/languages:18
 msgid "Catalan"
 msgstr "Каталонски"
 
-#: lib/languages:18
+#: lib/languages:19
 msgid "Chinese (simplified)"
 msgstr ""
 
-#: lib/languages:19
+#: lib/languages:20
 msgid "Chinese (traditional)"
 msgstr ""
 
 # src/ext_l10n.h:433
-#: lib/languages:20
+#: lib/languages:21
 msgid "Croatian"
 msgstr "Хърватски"
 
 # src/ext_l10n.h:434
-#: lib/languages:21
+#: lib/languages:22
 msgid "Czech"
 msgstr "Чешки"
 
 # src/ext_l10n.h:435
-#: lib/languages:22
+#: lib/languages:23
 msgid "Danish"
 msgstr "Датски"
 
 # src/ext_l10n.h:436
-#: lib/languages:23
+#: lib/languages:24
 msgid "Dutch"
 msgstr "Холандски"
 
 # src/ext_l10n.h:437 src/language.C:35
-#: lib/languages:24
+#: lib/languages:25
 msgid "English"
 msgstr "Английски"
 
 # src/ext_l10n.h:438
-#: lib/languages:26
+#: lib/languages:27
 msgid "Esperanto"
 msgstr "Есперанто"
 
 # src/ext_l10n.h:439
-#: lib/languages:27
+#: lib/languages:28
 msgid "Estonian"
 msgstr "Естонски"
 
 # src/frontends/xforms/form_document.C:98
-#: lib/languages:29
+#: lib/languages:30
 #, fuzzy
 msgid "Farsi"
 msgstr "Полета"
 
 # src/ext_l10n.h:440
-#: lib/languages:30
+#: lib/languages:31
 msgid "Finnish"
 msgstr "Финландски"
 
 # src/ext_l10n.h:441
-#: lib/languages:32
+#: lib/languages:33
 msgid "French"
 msgstr "Френски"
 
 # src/ext_l10n.h:443
-#: lib/languages:33
+#: lib/languages:34
 msgid "Galician"
 msgstr "Галски?"
 
 # src/ext_l10n.h:444
-#: lib/languages:34
+#: lib/languages:35
 msgid "German"
 msgstr "Немски"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "German (new spelling)"
 msgstr ""
 
 # src/ext_l10n.h:446 src/mathed/math_forms.C:26
-#: lib/languages:36 lib/ui/stdtoolbars.inc:435
+#: lib/languages:37 lib/ui/stdtoolbars.inc:435
 msgid "Greek"
 msgstr "Гръцки"
 
 # src/ext_l10n.h:447
-#: lib/languages:37
+#: lib/languages:38
 msgid "Hebrew"
 msgstr "Иврит"
 
 # src/ext_l10n.h:448
-#: lib/languages:39
+#: lib/languages:40
 msgid "Irish"
 msgstr "Ирландски"
 
 # src/ext_l10n.h:449
-#: lib/languages:40
+#: lib/languages:41
 msgid "Italian"
 msgstr "Италиански"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Kazakh"
 msgstr ""
 
-#: lib/languages:44
+#: lib/languages:45
 msgid "Korean"
 msgstr ""
 
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: lib/languages:46
+#: lib/languages:47
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Ширина"
 
 # src/ext_l10n.h:433
-#: lib/languages:47
+#: lib/languages:48
 #, fuzzy
 msgid "Latvian"
 msgstr "Хърватски"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Icelandic"
 msgstr ""
 
 # src/ext_l10n.h:451
-#: lib/languages:49
+#: lib/languages:50
 msgid "Magyar"
 msgstr "Унгарски"
 
 # src/ext_l10n.h:452
-#: lib/languages:50
+#: lib/languages:51
 msgid "Norsk"
 msgstr "???"
 
 # src/ext_l10n.h:452
-#: lib/languages:51
+#: lib/languages:52
 #, fuzzy
 msgid "Nynorsk"
 msgstr "???"
 
 # src/ext_l10n.h:453
-#: lib/languages:52
+#: lib/languages:53
 msgid "Polish"
 msgstr "Полски"
 
 # src/ext_l10n.h:454
-#: lib/languages:53
+#: lib/languages:54
 #, fuzzy
 msgid "Portuguese"
 msgstr "Португалски"
 
 # src/ext_l10n.h:455
-#: lib/languages:54
+#: lib/languages:55
 msgid "Romanian"
 msgstr "Румънски"
 
 # src/ext_l10n.h:456
-#: lib/languages:55
+#: lib/languages:56
 msgid "Russian"
 msgstr "Руски"
 
 # src/ext_l10n.h:457
-#: lib/languages:56
+#: lib/languages:57
 msgid "Scottish"
 msgstr "Шотландски"
 
 # src/ext_l10n.h:458
-#: lib/languages:57
+#: lib/languages:58
 msgid "Serbian"
 msgstr "Сръбски"
 
 # src/ext_l10n.h:459
-#: lib/languages:58
+#: lib/languages:59
 msgid "Serbo-Croatian"
 msgstr "Сърбо-хърватски"
 
 # src/ext_l10n.h:460
-#: lib/languages:59
+#: lib/languages:60
 msgid "Spanish"
 msgstr "Испански"
 
 # src/ext_l10n.h:461
-#: lib/languages:60
+#: lib/languages:61
 msgid "Slovak"
 msgstr "Словашки"
 
 # src/ext_l10n.h:462
-#: lib/languages:61
+#: lib/languages:62
 msgid "Slovene"
 msgstr "Словенски"
 
 # src/ext_l10n.h:463
-#: lib/languages:62
+#: lib/languages:63
 msgid "Swedish"
 msgstr "Шведски"
 
 # src/ext_l10n.h:464
-#: lib/languages:63
+#: lib/languages:64
 msgid "Thai"
 msgstr ""
 
 # src/ext_l10n.h:465
-#: lib/languages:64
+#: lib/languages:65
 msgid "Turkish"
 msgstr "Турски"
 
 # src/ext_l10n.h:466
-#: lib/languages:65
+#: lib/languages:66
 msgid "Ukrainian"
 msgstr "Украински"
 
 # src/ext_l10n.h:458
-#: lib/languages:66
+#: lib/languages:67
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Сръбски"
 
 # src/ext_l10n.h:468
-#: lib/languages:67
+#: lib/languages:68
 msgid "Welsh"
 msgstr "Уелски"
 
@@ -11542,7 +11557,7 @@ msgid "TeX Code|X"
 msgstr "Тип(T):|#T"
 
 # src/debug.C:34
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
 #, fuzzy
 msgid "Program Listing"
 msgstr "Инсталиране на програмата"
@@ -12326,7 +12341,7 @@ msgstr "Матем. символи"
 
 # src/bufferview_funcs.C:267
 #: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:282
-#: src/frontends/qt4/QDocument.cpp:579
+#: src/frontends/qt4/QDocument.cpp:581
 #, fuzzy
 msgid "Fonts"
 msgstr "Шрифт:"
@@ -15795,7 +15810,7 @@ msgstr "Дълбочина"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:436
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -15805,12 +15820,12 @@ msgid ""
 msgstr ""
 
 # src/frontends/xforms/FormParagraph.C:33
-#: src/CutAndPaste.cpp:446
+#: src/CutAndPaste.cpp:441
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Оформление на абзац"
 
-#: src/CutAndPaste.cpp:465
+#: src/CutAndPaste.cpp:460
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -15818,7 +15833,7 @@ msgid ""
 msgstr ""
 
 # src/form1.C:33
-#: src/CutAndPaste.cpp:472
+#: src/CutAndPaste.cpp:467
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Кодировка(H):|#H"
@@ -17283,7 +17298,7 @@ msgid "Unknown token"
 msgstr "Непознато действие"
 
 # src/text.C:2003
-#: src/Text.cpp:773
+#: src/Text.cpp:774
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -17293,88 +17308,88 @@ msgstr ""
 "Sie das Tutorium."
 
 # src/text.C:2005
-#: src/Text.cpp:784
+#: src/Text.cpp:785
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
 
 # src/LyXAction.C:263
-#: src/Text.cpp:1841
+#: src/Text.cpp:1814
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Смяна на език"
 
 # src/frontends/xforms/form_print.C:112
-#: src/Text.cpp:1847
+#: src/Text.cpp:1820
 #, fuzzy
 msgid "Change: "
 msgstr "Страници:"
 
 # src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
 # src/converter.C:554
-#: src/Text.cpp:1851
+#: src/Text.cpp:1824
 #, fuzzy
 msgid " at "
 msgstr " на "
 
 # src/bufferview_funcs.C:267
-#: src/Text.cpp:1861
+#: src/Text.cpp:1834
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1866
+#: src/Text.cpp:1839
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Дълбочина: "
 
 # src/bufferview_funcs.C:277
-#: src/Text.cpp:1872
+#: src/Text.cpp:1845
 msgid ", Spacing: "
 msgstr ", Отместване: "
 
 # src/bufferview_funcs.C:283
-#: src/Text.cpp:1878 src/frontends/qt4/QDocument.cpp:245
+#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
 #, fuzzy
 msgid "OneHalf"
 msgstr "Половин"
 
 # src/bufferview_funcs.C:289
-#: src/Text.cpp:1884
+#: src/Text.cpp:1857
 msgid "Other ("
 msgstr "Друго ("
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1893
+#: src/Text.cpp:1866
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:303
-#: src/Text.cpp:1894
+#: src/Text.cpp:1867
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Абзац"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1895
+#: src/Text.cpp:1868
 #, fuzzy
 msgid ", Id: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:320
-#: src/Text.cpp:1896
+#: src/Text.cpp:1869
 #, fuzzy
 msgid ", Position: "
 msgstr "Допускане"
 
-#: src/Text.cpp:1902
+#: src/Text.cpp:1875
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1904
+#: src/Text.cpp:1877
 msgid ", Boundary: "
 msgstr ""
 
@@ -18572,7 +18587,7 @@ msgid "Bibliography Entry Settings"
 msgstr "Библиография"
 
 # src/ext_l10n.h:186
-#: src/frontends/qt4/QBibtex.cpp:260
+#: src/frontends/qt4/QBibtex.cpp:259
 #, fuzzy
 msgid "BibTeX Bibliography"
 msgstr "Библиография"
@@ -18600,12 +18615,12 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:844
+#: src/frontends/qt4/QDocument.cpp:846
 msgid "Yes"
 msgstr ""
 
 # src/lyxfont.C:407
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:843
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:845
 #, fuzzy
 msgid "No"
 msgstr "Съществително "
@@ -18805,194 +18820,194 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Машинопис"
 
-#: src/frontends/qt4/QDocument.cpp:230 src/frontends/qt4/QDocument.cpp:637
+#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
 # src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
-#: src/frontends/qt4/QDocument.cpp:239
+#: src/frontends/qt4/QDocument.cpp:241
 msgid "Length"
 msgstr "Дължина"
 
-#: src/frontends/qt4/QDocument.cpp:284 src/frontends/qt4/QDocument.cpp:290
-#: src/frontends/qt4/QDocument.cpp:296
+#: src/frontends/qt4/QDocument.cpp:286 src/frontends/qt4/QDocument.cpp:292
+#: src/frontends/qt4/QDocument.cpp:298
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:301
+#: src/frontends/qt4/QDocument.cpp:303
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:302
+#: src/frontends/qt4/QDocument.cpp:304
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:303
+#: src/frontends/qt4/QDocument.cpp:305
 msgid "12"
 msgstr ""
 
 # src/frontends/kde/tocdlg.C:57
-#: src/frontends/qt4/QDocument.cpp:338
+#: src/frontends/qt4/QDocument.cpp:340
 #, fuzzy
 msgid "empty"
 msgstr "Дълбочина"
 
 # src/mathed/math_panel.C:128
-#: src/frontends/qt4/QDocument.cpp:339
+#: src/frontends/qt4/QDocument.cpp:341
 #, fuzzy
 msgid "plain"
 msgstr "Разстояние"
 
 # src/buffer.C:329
-#: src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/QDocument.cpp:342
 #, fuzzy
 msgid "headings"
 msgstr "Грешка при ченете от "
 
-#: src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/QDocument.cpp:343
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:357
+#: src/frontends/qt4/QDocument.cpp:359
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:358
+#: src/frontends/qt4/QDocument.cpp:360
 msgid "B4"
 msgstr ""
 
 # src/ext_l10n.h:133
-#: src/frontends/qt4/QDocument.cpp:461
+#: src/frontends/qt4/QDocument.cpp:463
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX Протокол(L)|L"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:467
+#: src/frontends/qt4/QDocument.cpp:469
 #, fuzzy
 msgid "``text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:468
+#: src/frontends/qt4/QDocument.cpp:470
 #, fuzzy
 msgid "''text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:469
+#: src/frontends/qt4/QDocument.cpp:471
 #, fuzzy
 msgid ",,text``"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:470
+#: src/frontends/qt4/QDocument.cpp:472
 #, fuzzy
 msgid ",,text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:471
+#: src/frontends/qt4/QDocument.cpp:473
 #, fuzzy
 msgid "<<text>>"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocument.cpp:472
+#: src/frontends/qt4/QDocument.cpp:474
 #, fuzzy
 msgid ">>text<<"
 msgstr "текст"
 
 # src/mathed/formula.C:929
-#: src/frontends/qt4/QDocument.cpp:488
+#: src/frontends/qt4/QDocument.cpp:490
 #, fuzzy
 msgid "Numbered"
 msgstr "Номериране"
 
-#: src/frontends/qt4/QDocument.cpp:489
+#: src/frontends/qt4/QDocument.cpp:491
 msgid "Appears in TOC"
 msgstr ""
 
 # src/ext_l10n.h:175
-#: src/frontends/qt4/QDocument.cpp:509
+#: src/frontends/qt4/QDocument.cpp:511
 #, fuzzy
 msgid "Author-year"
 msgstr "Автор"
 
 # src/ext_l10n.h:423
-#: src/frontends/qt4/QDocument.cpp:510
+#: src/frontends/qt4/QDocument.cpp:512
 #, fuzzy
 msgid "Numerical"
 msgstr "Американски"
 
 # src/frontends/kde/citationdlg.C:35
-#: src/frontends/qt4/QDocument.cpp:552
+#: src/frontends/qt4/QDocument.cpp:554
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Достъпни клавиши"
 
 # src/exporter.C:89
-#: src/frontends/qt4/QDocument.cpp:578 src/frontends/qt4/QDocument.cpp:591
+#: src/frontends/qt4/QDocument.cpp:580 src/frontends/qt4/QDocument.cpp:593
 #, fuzzy
 msgid "Document Class"
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/frontends/qt4/QDocument.cpp:580
+#: src/frontends/qt4/QDocument.cpp:582
 #, fuzzy
 msgid "Text Layout"
 msgstr "Непознато "
 
 # src/frontends/xforms/FormParagraph.C:33
-#: src/frontends/qt4/QDocument.cpp:581
+#: src/frontends/qt4/QDocument.cpp:583
 #, fuzzy
 msgid "Page Layout"
 msgstr "Оформление на абзац"
 
 # src/frontends/xforms/form_document.C:98
-#: src/frontends/qt4/QDocument.cpp:582
+#: src/frontends/qt4/QDocument.cpp:584
 #, fuzzy
 msgid "Page Margins"
 msgstr "Полета"
 
 # src/mathed/formula.C:929
-#: src/frontends/qt4/QDocument.cpp:584
+#: src/frontends/qt4/QDocument.cpp:586
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Номериране"
 
 # src/frontends/xforms/form_preferences.C:926
-#: src/frontends/qt4/QDocument.cpp:586
+#: src/frontends/qt4/QDocument.cpp:588
 #, fuzzy
 msgid "Math Options"
 msgstr "допълнителни опции"
 
 # src/sp_form.C:86
-#: src/frontends/qt4/QDocument.cpp:587
+#: src/frontends/qt4/QDocument.cpp:589
 #, fuzzy
 msgid "Float Placement"
 msgstr "Замести"
 
 # src/frontends/xforms/FormDocument.C:281
-#: src/frontends/qt4/QDocument.cpp:588
+#: src/frontends/qt4/QDocument.cpp:590
 msgid "Bullets"
 msgstr "Точки"
 
 # src/ext_l10n.h:441
-#: src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:591
 #, fuzzy
 msgid "Branches"
 msgstr "Френски"
 
 # src/lyx_cb.C:675
-#: src/frontends/qt4/QDocument.cpp:590 src/frontends/qt4/QDocument.cpp:602
+#: src/frontends/qt4/QDocument.cpp:592 src/frontends/qt4/QDocument.cpp:604
 msgid "LaTeX Preamble"
 msgstr "LaTeX увод"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: src/frontends/qt4/QDocument.cpp:1398
+#: src/frontends/qt4/QDocument.cpp:1400
 #, fuzzy
 msgid "Document Settings"
 msgstr "Документи"
@@ -19004,13 +19019,13 @@ msgid "TeX Code Settings"
 msgstr "допълнителни опции"
 
 # src/ext_l10n.h:94
-#: src/frontends/qt4/QExternal.cpp:497
+#: src/frontends/qt4/QExternal.cpp:496
 #, fuzzy
 msgid "External Material"
 msgstr "Външен материал(x)...|x"
 
 # src/frontends/xforms/form_tabular.C:453
-#: src/frontends/qt4/QExternal.cpp:557
+#: src/frontends/qt4/QExternal.cpp:556
 #, fuzzy
 msgid "Scale%"
 msgstr "Специален"
@@ -19023,13 +19038,13 @@ msgstr "Опции"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "Графика"
 
-#: src/frontends/qt4/QInclude.cpp:100 src/frontends/qt4/QInclude.cpp:220
-#: src/frontends/qt4/QListings.cpp:333 src/frontends/qt4/QListings.cpp:414
-#: src/frontends/qt4/QListings.cpp:446
+#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
+#: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
+#: src/frontends/qt4/QListings.cpp:447
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -19037,7 +19052,7 @@ msgstr ""
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/frontends/qt4/QInclude.cpp:181
+#: src/frontends/qt4/QInclude.cpp:180
 #, fuzzy
 msgid "Child Document"
 msgstr "Документ"
@@ -19049,13 +19064,13 @@ msgid "No language"
 msgstr "език"
 
 # src/lyx_gui.C:347
-#: src/frontends/qt4/QListings.cpp:376
+#: src/frontends/qt4/QListings.cpp:377
 #, fuzzy
 msgid "No dialect"
 msgstr "Без промяна"
 
 # src/LColor.C:78
-#: src/frontends/qt4/QListings.cpp:401
+#: src/frontends/qt4/QListings.cpp:402
 #, fuzzy
 msgid "Program Listing Settings"
 msgstr "ред на министраница"
@@ -19261,7 +19276,7 @@ msgstr "Настройки"
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/frontends/qt4/QPrint.cpp:36
+#: src/frontends/qt4/QPrint.cpp:40
 #, fuzzy
 msgid "Print Document"
 msgstr "Документ"
@@ -19345,7 +19360,9 @@ msgid "space"
 msgstr "Замести"
 
 # src/ext_l10n.h:92
-#: src/frontends/qt4/Validator.cpp:180
+#: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetInclude.cpp:464
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Включи файл(e)|e"
@@ -19364,28 +19381,35 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: Печат"
 
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:465
+msgid ""
+"The following filename is likely to cause trouble when running the exported "
+"file through LaTeX: "
+msgstr ""
+
 # src/insets/inset.C:75
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Отворен inset"
 
 # src/insets/insetbib.C:240
-#: src/insets/InsetBibtex.cpp:109
+#: src/insets/InsetBibtex.cpp:110
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Препратки генерирани от BibTeX"
 
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
 msgid "Export Warning!"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:207
+#: src/insets/InsetBibtex.cpp:214
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:260
+#: src/insets/InsetBibtex.cpp:267
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -19579,7 +19603,7 @@ msgid "footnote"
 msgstr "Бел. под линия"
 
 # src/support/filetools.C:469
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:525
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19587,13 +19611,13 @@ msgid ""
 "into the temporary directory."
 msgstr "Грешка! Не мога да изтрия временната директория:"
 
-#: src/insets/InsetGraphics.cpp:711
+#: src/insets/InsetGraphics.cpp:729
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
 # src/frontends/xforms/form_graphics.C:33
-#: src/insets/InsetGraphics.cpp:823
+#: src/insets/InsetGraphics.cpp:841
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Графичен файл(F)|#F"
@@ -19605,32 +19629,32 @@ msgid "Horizontal Fill"
 msgstr "Хориз. Подравняване(H)|#H"
 
 # src/insets/insetinclude.C:316
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:342
 msgid "Verbatim Input"
 msgstr "Неформатиран вход"
 
 # src/insets/insetinclude.C:316
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetInclude.cpp:345
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "Неформатиран вход"
 
 # src/debug.C:34
-#: src/insets/InsetInclude.cpp:351
+#: src/insets/InsetInclude.cpp:352
 #, fuzzy
 msgid "Program Listing "
 msgstr "Инсталиране на програмата"
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:618
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:619
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:480
+#: src/insets/InsetInclude.cpp:487
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19638,7 +19662,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:486
+#: src/insets/InsetInclude.cpp:493
 msgid "Different textclasses"
 msgstr ""
 
@@ -19940,18 +19964,18 @@ msgid "Unknown TOC type"
 msgstr "Непознато действие"
 
 # src/LyXAction.C:240
-#: src/insets/InsetTabular.cpp:3148
+#: src/insets/InsetTabular.cpp:3153
 #, fuzzy
 msgid "Opened table"
 msgstr "Отвори помощен файл"
 
 # src/ext_l10n.h:61
-#: src/insets/InsetTabular.cpp:4324
+#: src/insets/InsetTabular.cpp:4329
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Многоколонно(M)|M"
 
-#: src/insets/InsetTabular.cpp:4325
+#: src/insets/InsetTabular.cpp:4330
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 

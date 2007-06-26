@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-26 15:31+0100\n"
+"POT-Creation-Date: 2007-06-26 22:49+0200\n"
 "PO-Revision-Date: 2007-06-03 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -1296,12 +1296,12 @@ msgid "&Include Type:"
 msgstr "&Zpùsob zahrnutí:"
 
 # TODO nova stranka; viz wiki
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
 msgid "Include"
 msgstr "Zahrnout (nová stránka)"
 
 # TODO lze i rekurzivne
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
 msgid "Input"
 msgstr "Vstup (lze rekurzivnì)"
 
@@ -1740,7 +1740,7 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "Øá&dkování:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Jedna"
@@ -1749,7 +1749,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Dva"
@@ -8625,7 +8625,7 @@ msgstr "Krátký titulek"
 msgid "TeX Code|X"
 msgstr "TeX-ový kód|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu|i"
 
@@ -12011,7 +12011,7 @@ msgstr "Výstup je prázdný"
 msgid "An empty output file was generated."
 msgstr "Byl vygenerován prázdný výstupní soubor."
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:436
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12024,11 +12024,11 @@ msgstr ""
 "kvùli konverzi tøídy z\n"
 "%3$s na %4$s"
 
-#: src/CutAndPaste.cpp:446
+#: src/CutAndPaste.cpp:441
 msgid "Changed Layout"
 msgstr "Zmìnìno rozvr¾ení"
 
-#: src/CutAndPaste.cpp:465
+#: src/CutAndPaste.cpp:460
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -12037,7 +12037,7 @@ msgstr ""
 "Styl znaku %1$s není definován kvùli konverzi tøídy z\n"
 "%2$s na %3$s"
 
-#: src/CutAndPaste.cpp:472
+#: src/CutAndPaste.cpp:467
 msgid "Undefined character style"
 msgstr "Nedefinovaný styl znaku"
 
@@ -13300,61 +13300,61 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1814
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1820
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1824
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1862
+#: src/Text.cpp:1834
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1867
+#: src/Text.cpp:1839
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1845
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1885
+#: src/Text.cpp:1857
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1866
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1867
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1868
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1869
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1875
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1877
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -14295,7 +14295,7 @@ msgstr ""
 msgid "Bibliography Entry Settings"
 msgstr "Nastavení hesla bibliografie"
 
-#: src/frontends/qt4/QBibtex.cpp:260
+#: src/frontends/qt4/QBibtex.cpp:259
 msgid "BibTeX Bibliography"
 msgstr "Bibliografie BibTeX-u"
 
@@ -14632,11 +14632,11 @@ msgstr "Nastavení dokumentu"
 msgid "TeX Code Settings"
 msgstr "Nastavení pro Kód TeX-u"
 
-#: src/frontends/qt4/QExternal.cpp:497
+#: src/frontends/qt4/QExternal.cpp:496
 msgid "External Material"
 msgstr "Externí materiál"
 
-#: src/frontends/qt4/QExternal.cpp:557
+#: src/frontends/qt4/QExternal.cpp:556
 msgid "Scale%"
 msgstr "Mìøítko%"
 
@@ -14644,11 +14644,11 @@ msgstr "Mìøítko%"
 msgid "Float Settings"
 msgstr "Nastavení plovoucích objektù"
 
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "Obrázek"
 
-#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
 #: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
 #: src/frontends/qt4/QListings.cpp:447
 msgid ""
@@ -14656,7 +14656,7 @@ msgid ""
 msgstr ""
 "Parametry výpisù zadávejte napravo. Pro seznam parametrù vlo¾te znak '?'."
 
-#: src/frontends/qt4/QInclude.cpp:182
+#: src/frontends/qt4/QInclude.cpp:180
 msgid "Child Document"
 msgstr "Dokument potomka"
 
@@ -14818,7 +14818,7 @@ msgstr "Va¹e identita"
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/frontends/qt4/QPrint.cpp:36
+#: src/frontends/qt4/QPrint.cpp:40
 msgid "Print Document"
 msgstr "Tisk dokumentu"
 
@@ -14874,7 +14874,9 @@ msgstr "Nastavení obtékání textu"
 msgid "space"
 msgstr "mezera"
 
-#: src/frontends/qt4/Validator.cpp:180
+#: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetInclude.cpp:464
 msgid "Invalid filename"
 msgstr "Neplatný název souboru"
 
@@ -14893,19 +14895,26 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:465
+msgid ""
+"The following filename is likely to cause trouble when running the exported "
+"file through LaTeX: "
+msgstr ""
+
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Otevøená vlo¾ka"
 
-#: src/insets/InsetBibtex.cpp:109
+#: src/insets/InsetBibtex.cpp:110
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografie generovaná BibTeX-em"
 
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
 msgid "Export Warning!"
 msgstr "Export-varování!"
 
-#: src/insets/InsetBibtex.cpp:207
+#: src/insets/InsetBibtex.cpp:214
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -14913,7 +14922,7 @@ msgstr ""
 "V cestách k databázím BibTeX-u jsou mezery.\n"
 "BibTeX nebude schopen tyto databáze najít."
 
-#: src/insets/InsetBibtex.cpp:260
+#: src/insets/InsetBibtex.cpp:267
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -15053,7 +15062,7 @@ msgstr "Poznámka pod èarou - otevøená vlo¾ka"
 msgid "footnote"
 msgstr "poznámka pod èarou"
 
-#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:525
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15064,12 +15073,12 @@ msgstr ""
 "%1$s\n"
 "do pomocného adresáøe."
 
-#: src/insets/InsetGraphics.cpp:720
+#: src/insets/InsetGraphics.cpp:729
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Konverze %1$s není vùbec potøeba"
 
-#: src/insets/InsetGraphics.cpp:832
+#: src/insets/InsetGraphics.cpp:841
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Soubor s obrázkem: %1$s"
@@ -15078,29 +15087,29 @@ msgstr "Soubor s obrázkem: %1$s"
 msgid "Horizontal Fill"
 msgstr "Horizontální výplò"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:342
 msgid "Verbatim Input"
 msgstr "Vstup-doslovnì"
 
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetInclude.cpp:345
 msgid "Verbatim Input*"
 msgstr "Vstup-doslovnì*"
 
-#: src/insets/InsetInclude.cpp:351
+#: src/insets/InsetInclude.cpp:352
 msgid "Program Listing "
 msgstr "Výpis zdrojového kódu "
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:618
 msgid "Recursive input"
 msgstr "Rekurzivní vstup"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:619
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Do¹lo k pokusu vlo¾it soubor %1$s rekurzivnì do sebe! Ignoruji toto vlo¾ení."
 
-#: src/insets/InsetInclude.cpp:480
+#: src/insets/InsetInclude.cpp:487
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15111,7 +15120,7 @@ msgstr ""
 "je textové tøídy `%2$s'\n"
 "zatímco rodièovský soubor má tøídu `%3$s'."
 
-#: src/insets/InsetInclude.cpp:486
+#: src/insets/InsetInclude.cpp:493
 msgid "Different textclasses"
 msgstr "Rozdílné textové tøídy"
 

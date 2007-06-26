@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-26 15:31+0100\n"
+"POT-Creation-Date: 2007-06-26 22:49+0200\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1370,11 +1370,11 @@ msgstr "Name der einzubindenden Datei"
 msgid "&Include Type:"
 msgstr "&Art der Einbindung:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
 msgid "Input"
 msgstr "Input"
 
@@ -1816,7 +1816,7 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "Zeilen&abstand:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Einfach"
@@ -1825,7 +1825,7 @@ msgstr "Einfach"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Doppelt"
@@ -8724,7 +8724,7 @@ msgstr "Kurztitel|K"
 msgid "TeX Code|X"
 msgstr "TeX-Code|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -12126,7 +12126,7 @@ msgstr "Die Ausgabe ist leer"
 msgid "An empty output file was generated."
 msgstr "Eine leere Ausgabedatei wurde erzeugt."
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:436
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12139,11 +12139,11 @@ msgstr ""
 "da die Klasse von %3$s nach\n"
 "%4$s konvertiert wurde"
 
-#: src/CutAndPaste.cpp:446
+#: src/CutAndPaste.cpp:441
 msgid "Changed Layout"
 msgstr "Format geändert"
 
-#: src/CutAndPaste.cpp:465
+#: src/CutAndPaste.cpp:460
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -12152,7 +12152,7 @@ msgstr ""
 "Der Zeichenstil %1$s ist aufgrund einer Klassenkonvertierung von\n"
 "%2$s nach %3$s undefiniert"
 
-#: src/CutAndPaste.cpp:472
+#: src/CutAndPaste.cpp:467
 msgid "Undefined character style"
 msgstr "Undefinierter Zeichenstil"
 
@@ -13471,61 +13471,61 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1814
 msgid "[Change Tracking] "
 msgstr "[Änderungsverfolgung] "
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1820
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1824
 msgid " at "
 msgstr " am "
 
-#: src/Text.cpp:1862
+#: src/Text.cpp:1834
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/Text.cpp:1867
+#: src/Text.cpp:1839
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1845
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
-#: src/Text.cpp:1885
+#: src/Text.cpp:1857
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1866
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1867
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1868
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1869
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1875
 msgid ", Char: 0x"
 msgstr ", Zeichen: 0x"
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1877
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -14469,7 +14469,7 @@ msgstr ""
 msgid "Bibliography Entry Settings"
 msgstr "Literatureintrag-Einstellungen"
 
-#: src/frontends/qt4/QBibtex.cpp:260
+#: src/frontends/qt4/QBibtex.cpp:259
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-Literaturverzeichnis"
 
@@ -14806,11 +14806,11 @@ msgstr "Dokument-Einstellungen"
 msgid "TeX Code Settings"
 msgstr "TeX-Code-Einstellungen"
 
-#: src/frontends/qt4/QExternal.cpp:497
+#: src/frontends/qt4/QExternal.cpp:496
 msgid "External Material"
 msgstr "Externes Material"
 
-#: src/frontends/qt4/QExternal.cpp:557
+#: src/frontends/qt4/QExternal.cpp:556
 msgid "Scale%"
 msgstr "Größe%"
 
@@ -14818,11 +14818,11 @@ msgstr "Größe%"
 msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "Grafik"
 
-#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
 #: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
 #: src/frontends/qt4/QListings.cpp:447
 msgid ""
@@ -14831,7 +14831,7 @@ msgstr ""
 "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
 "gültiger Parameter ein."
 
-#: src/frontends/qt4/QInclude.cpp:182
+#: src/frontends/qt4/QInclude.cpp:180
 msgid "Child Document"
 msgstr "Unterdokument"
 
@@ -14996,7 +14996,7 @@ msgstr "Identität"
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/frontends/qt4/QPrint.cpp:36
+#: src/frontends/qt4/QPrint.cpp:40
 msgid "Print Document"
 msgstr "Dokument drucken"
 
@@ -15052,7 +15052,9 @@ msgstr "Einstellungen für umflossenes Gleitobjekt"
 msgid "space"
 msgstr "Leerzeichen"
 
-#: src/frontends/qt4/Validator.cpp:180
+#: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetInclude.cpp:464
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
@@ -15071,19 +15073,26 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:465
+msgid ""
+"The following filename is likely to cause trouble when running the exported "
+"file through LaTeX: "
+msgstr ""
+
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
-#: src/insets/InsetBibtex.cpp:109
+#: src/insets/InsetBibtex.cpp:110
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-erzeugtes Literaturverzeichnis"
 
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
 msgid "Export Warning!"
 msgstr "Export-Warnung!"
 
-#: src/insets/InsetBibtex.cpp:207
+#: src/insets/InsetBibtex.cpp:214
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -15091,7 +15100,7 @@ msgstr ""
 "Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
 "BiBTeX wird die Datenbanken nicht finden."
 
-#: src/insets/InsetBibtex.cpp:260
+#: src/insets/InsetBibtex.cpp:267
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -15231,7 +15240,7 @@ msgstr "Fußnoten-Einfügung geöffnet"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:525
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15242,12 +15251,12 @@ msgstr ""
 "%1$s\n"
 "konnte nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/InsetGraphics.cpp:720
+#: src/insets/InsetGraphics.cpp:729
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
-#: src/insets/InsetGraphics.cpp:832
+#: src/insets/InsetGraphics.cpp:841
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
@@ -15256,30 +15265,30 @@ msgstr "Grafikdatei: %1$s"
 msgid "Horizontal Fill"
 msgstr "Variabler horiz. Abstand"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:342
 msgid "Verbatim Input"
 msgstr "Unformatiert"
 
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetInclude.cpp:345
 msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
-#: src/insets/InsetInclude.cpp:351
+#: src/insets/InsetInclude.cpp:352
 msgid "Program Listing "
 msgstr "Programmlisting "
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:618
 msgid "Recursive input"
 msgstr "Rekursive Eingabe"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:619
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die "
 "Einbettung wird ignoriert."
 
-#: src/insets/InsetInclude.cpp:480
+#: src/insets/InsetInclude.cpp:487
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15290,7 +15299,7 @@ msgstr ""
 "hat die Textklasse `%2$s'\n"
 "während die Hauptdatei die Textklasse `%3$s' hat."
 
-#: src/insets/InsetInclude.cpp:486
+#: src/insets/InsetInclude.cpp:493
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 

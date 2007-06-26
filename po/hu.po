@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-26 15:31+0100\n"
+"POT-Creation-Date: 2007-06-26 22:49+0200\n"
 "PO-Revision-Date: 2007-06-10 20:40+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -1289,11 +1289,11 @@ msgstr "A csatolandó fájl neve"
 msgid "&Include Type:"
 msgstr "&Csatolás módja:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:347
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:338
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
 msgid "Input"
 msgstr "Input"
 
@@ -1732,7 +1732,7 @@ msgstr ""
 msgid "L&ine spacing:"
 msgstr "Sor&köz:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1876
+#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Egyszeres"
@@ -1741,7 +1741,7 @@ msgstr "Egyszeres"
 msgid "1.5"
 msgstr "Másfélszeres"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1882
+#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Kétszeres"
@@ -8635,7 +8635,7 @@ msgstr "Rövid cím|d"
 msgid "TeX Code|X"
 msgstr "TeX kód|X"
 
-#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:353
+#: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
 msgid "Program Listing"
 msgstr "Programlista"
 
@@ -12030,7 +12030,7 @@ msgstr "A kimenet üres"
 msgid "An empty output file was generated."
 msgstr "Az eredmény fájl üres!"
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:436
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12043,11 +12043,11 @@ msgstr ""
 "mert osztálykonverzió történt errõl\n"
 "%3$s, erre %4$s"
 
-#: src/CutAndPaste.cpp:446
+#: src/CutAndPaste.cpp:441
 msgid "Changed Layout"
 msgstr "Kinézet megváltozott"
 
-#: src/CutAndPaste.cpp:465
+#: src/CutAndPaste.cpp:460
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -12056,7 +12056,7 @@ msgstr ""
 "A %1$s betûstílus ismeretlen, mert osztálykonverzió történt\n"
 "%2$s-ról, %3$s-ra"
 
-#: src/CutAndPaste.cpp:472
+#: src/CutAndPaste.cpp:467
 msgid "Undefined character style"
 msgstr "Definiálatlan betûstílus"
 
@@ -13330,61 +13330,61 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1814
 msgid "[Change Tracking] "
 msgstr "[Változás követés]"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1820
 msgid "Change: "
 msgstr "Változás: "
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1824
 msgid " at "
 msgstr " itt "
 
-#: src/Text.cpp:1862
+#: src/Text.cpp:1834
 #, c-format
 msgid "Font: %1$s"
 msgstr "Betûkészlet: %1$s"
 
-#: src/Text.cpp:1867
+#: src/Text.cpp:1839
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Mélység: %1$d"
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1845
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/Text.cpp:1879 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Másfél"
 
-#: src/Text.cpp:1885
+#: src/Text.cpp:1857
 msgid "Other ("
 msgstr "Egyéb ("
 
-#: src/Text.cpp:1894
+#: src/Text.cpp:1866
 msgid ", Inset: "
 msgstr ", Betét: "
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1867
 msgid ", Paragraph: "
 msgstr ", Bekezdés: "
 
-#: src/Text.cpp:1896
+#: src/Text.cpp:1868
 msgid ", Id: "
 msgstr ", Azon.: "
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1869
 msgid ", Position: "
 msgstr ", Pozíció: "
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1875
 msgid ", Char: 0x"
 msgstr ", Betû: 0x"
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1877
 msgid ", Boundary: "
 msgstr ", Határ: "
 
@@ -14323,7 +14323,7 @@ msgstr ""
 msgid "Bibliography Entry Settings"
 msgstr "Irodalomjegyzék elem beállítások"
 
-#: src/frontends/qt4/QBibtex.cpp:260
+#: src/frontends/qt4/QBibtex.cpp:259
 msgid "BibTeX Bibliography"
 msgstr "BibTeX irodalomjegyzék"
 
@@ -14660,11 +14660,11 @@ msgstr "Dokumentumbeállítások"
 msgid "TeX Code Settings"
 msgstr "TeX kód beállítások"
 
-#: src/frontends/qt4/QExternal.cpp:497
+#: src/frontends/qt4/QExternal.cpp:496
 msgid "External Material"
 msgstr "Külsõ anyag"
 
-#: src/frontends/qt4/QExternal.cpp:557
+#: src/frontends/qt4/QExternal.cpp:556
 msgid "Scale%"
 msgstr "Méretarány%"
 
@@ -14672,11 +14672,11 @@ msgstr "Méretarány%"
 msgid "Float Settings"
 msgstr "Úsztatási beállítások"
 
-#: src/frontends/qt4/QGraphics.cpp:63 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
 msgid "Graphics"
 msgstr "Grafika"
 
-#: src/frontends/qt4/QInclude.cpp:101 src/frontends/qt4/QInclude.cpp:221
+#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
 #: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
 #: src/frontends/qt4/QListings.cpp:447
 msgid ""
@@ -14685,7 +14685,7 @@ msgstr ""
 "Adja meg a lista paramétereit a jobb oldalon. Üsse le a '?'-et a paraméterek "
 "listájához."
 
-#: src/frontends/qt4/QInclude.cpp:182
+#: src/frontends/qt4/QInclude.cpp:180
 msgid "Child Document"
 msgstr "Aldokumentum"
 
@@ -14850,7 +14850,7 @@ msgstr "Felhasználó"
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: src/frontends/qt4/QPrint.cpp:36
+#: src/frontends/qt4/QPrint.cpp:40
 msgid "Print Document"
 msgstr "Dokumentum nyomtatása"
 
@@ -14906,7 +14906,9 @@ msgstr "Körbefuttatás beállításai"
 msgid "space"
 msgstr "szóköz"
 
-#: src/frontends/qt4/Validator.cpp:180
+#: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetInclude.cpp:464
 msgid "Invalid filename"
 msgstr "Érvénytelen fájlnév"
 
@@ -14925,19 +14927,26 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:465
+msgid ""
+"The following filename is likely to cause trouble when running the exported "
+"file through LaTeX: "
+msgstr ""
+
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
 msgstr "Betét kinyitva"
 
-#: src/insets/InsetBibtex.cpp:109
+#: src/insets/InsetBibtex.cpp:110
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX által készített irodalomjegyzék"
 
-#: src/insets/InsetBibtex.cpp:206 src/insets/InsetBibtex.cpp:259
+#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
 msgid "Export Warning!"
 msgstr "Exportálási Figyelmeztetés!"
 
-#: src/insets/InsetBibtex.cpp:207
+#: src/insets/InsetBibtex.cpp:214
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -14945,7 +14954,7 @@ msgstr ""
 "Szóközök vannak a BibTeX adatbázis elérési útjában.\n"
 "A BibTeX nem fogja tudni megtalálni õket."
 
-#: src/insets/InsetBibtex.cpp:260
+#: src/insets/InsetBibtex.cpp:267
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -15085,7 +15094,7 @@ msgstr "Lábjegyzetbetét kinyitva"
 msgid "footnote"
 msgstr "lábjegyzet"
 
-#: src/insets/InsetGraphics.cpp:483 src/insets/InsetInclude.cpp:518
+#: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:525
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15095,12 +15104,12 @@ msgstr ""
 "A %1$s fájl\n"
 "nem másolható az ideiglenes könyvtárba."
 
-#: src/insets/InsetGraphics.cpp:720
+#: src/insets/InsetGraphics.cpp:729
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Nincs szükség %1$s átalakítására"
 
-#: src/insets/InsetGraphics.cpp:832
+#: src/insets/InsetGraphics.cpp:841
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Képfájl: %1$s"
@@ -15109,29 +15118,29 @@ msgstr "Képfájl: %1$s"
 msgid "Horizontal Fill"
 msgstr "Vízszintes kitöltés"
 
-#: src/insets/InsetInclude.cpp:341
+#: src/insets/InsetInclude.cpp:342
 msgid "Verbatim Input"
 msgstr "Szó szerinti bevitel"
 
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetInclude.cpp:345
 msgid "Verbatim Input*"
 msgstr "Szó szerinti bevitel*"
 
-#: src/insets/InsetInclude.cpp:351
+#: src/insets/InsetInclude.cpp:352
 msgid "Program Listing "
 msgstr "Program lista"
 
-#: src/insets/InsetInclude.cpp:437 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:618
 msgid "Recursive input"
 msgstr "Rekurzív bemenet"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:619
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Kísérlet '%1$s' sajátmagába csatolásához! Csatolás figyelmen kívûl hagyása."
 
-#: src/insets/InsetInclude.cpp:480
+#: src/insets/InsetInclude.cpp:487
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -15142,7 +15151,7 @@ msgstr ""
 "a `%2$s' szövegosztályt használja,\n"
 "a szülõdokumentum viszont a `%3$s' szövegosztályt."
 
-#: src/insets/InsetInclude.cpp:486
+#: src/insets/InsetInclude.cpp:493
 msgid "Different textclasses"
 msgstr "Különbözõ szövegosztályok"
 
