@@ -825,7 +825,7 @@ utils.createConfigFile(conf,
  * does not matter for us, because we don't use libc directly (Georg)
 */
 #if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4 && ! defined(__FREEBSD__)
-#  define LIBC_WCTYPE_USES_UCS4
+#  define USE_WCHAR_T
 #endif
 
 #endif
