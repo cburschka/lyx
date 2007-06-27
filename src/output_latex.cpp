@@ -613,7 +613,7 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 	// FIXME We ignore encoding switches from/to encodings that do
 	// neither support the inputenc package nor the CJK package here.
 	// This does of course only work in special cases (e.g. switch from
-	// tis620-0 to latin1, but the text in latin1 contains ASCII only,
+	// tis620-0 to latin1, but the text in latin1 contains ASCII only),
 	// but it is the best we can do
 	if (oldEnc.package() == Encoding::none
 		|| newEnc.package() == Encoding::none)
