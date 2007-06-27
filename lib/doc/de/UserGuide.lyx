@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -182,7 +182,7 @@ status collapsed
 
 \begin_layout Date
 letzte Änderung: 23.
- Mai 2007
+ Juni 2007
 \end_layout
 
 \begin_layout Standard
@@ -285,8 +285,11 @@ status collapsed
 \end_inset
 
 X?
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
@@ -302,10 +305,6 @@ reference "sec:Notizen"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 LyX ist ein System zur Vorbereitung von Dokumenten.
  Es ist ein Werkzeug, mit dem man schöne Manuskripte, verlegbare Bücher,
  Geschäftsbriefe und -vorschläge und sogar Lyrik schreiben kann.
@@ -513,11 +512,9 @@ name "WYSIWYG"
 
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
-
-\lang english
 what you see is what you get
 \begin_inset Note Note
 status collapsed
@@ -533,8 +530,9 @@ Sprache
 \family default
  oder 
 \begin_inset Graphics
-	filename /windows/D/EigeneDateien/LyX/Dokumentation/15x/images/dialog-show_character.xpm
+	filename ../../images/dialog-show_character.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -546,8 +544,6 @@ Sprache
 
 \end_inset
 
-
-\lang ngerman
  
 \begin_inset Formula $\approx$
 \end_inset
@@ -732,10 +728,7 @@ Taste gelegt.
 \begin_layout Itemize
 
 \family sans
-\bar under
-Z
-\bar default
-urücksetzen
+Zurücksetzen
 \begin_inset LatexCommand index
 name "Zur\"ucksetzen"
 
@@ -868,6 +861,7 @@ Neu (Strg+N)
 \begin_inset Graphics
 	filename ../../images/buffer-new.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -896,6 +890,7 @@ Vorlage\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/file-open.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -918,6 +913,7 @@ Speichern (Strg+S)
 \begin_inset Graphics
 	filename ../../images/buffer-write.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -995,6 +991,7 @@ Drucken\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -1126,6 +1123,7 @@ name "Ausschneiden"
 \begin_inset Graphics
 	filename ../../images/cut.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -1148,6 +1146,7 @@ name "Kopieren"
 \begin_inset Graphics
 	filename ../../images/copy.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -1174,6 +1173,7 @@ Strg+V
 \begin_inset Graphics
 	filename ../../images/paste.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -1199,6 +1199,7 @@ name "Suchen \\& Ersetzen"
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -1475,6 +1476,7 @@ Strg+Z
 \begin_inset Graphics
 	filename ../../images/undo.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -1497,6 +1499,7 @@ Strg+Y
 \begin_inset Graphics
 	filename ../../images/redo.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -1629,6 +1632,7 @@ Kopieren, Strg+C
 \begin_inset Graphics
 	filename ../../images/copy.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -1646,6 +1650,7 @@ Einfügen, Strg+V
 \begin_inset Graphics
 	filename ../../images/paste.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -2266,6 +2271,7 @@ Strg+X
 \begin_inset Graphics
 	filename ../../images/copy.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -2288,6 +2294,7 @@ Strg+C
 \begin_inset Graphics
 	filename ../../images/cut.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -2306,6 +2313,7 @@ oder
 \begin_inset Graphics
 	filename ../../images/paste.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -2954,6 +2962,7 @@ Strg+D
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -2998,6 +3007,7 @@ Umschalt+D
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -4675,6 +4685,7 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -4925,6 +4936,7 @@ Standard
 \begin_inset Graphics
 	filename ../../images/layout.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -4937,6 +4949,7 @@ Aufzählung
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -4949,6 +4962,7 @@ Auflistung
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -4961,6 +4975,7 @@ Liste
 \begin_inset Graphics
 	filename ../../images/layout_List.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -4973,6 +4988,7 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/layout_Description.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -7028,6 +7044,7 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -7762,6 +7779,7 @@ Zitat\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -9058,6 +9076,7 @@ verringern
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9066,6 +9085,7 @@ verringern
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9088,6 +9108,7 @@ Beachten Sie, dass LyX die Schachtelungstiefe nur dann ändert, wenn es möglich
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9096,6 +9117,7 @@ Beachten Sie, dass LyX die Schachtelungstiefe nur dann ändert, wenn es möglich
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9121,6 +9143,7 @@ verringern
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9141,6 +9164,7 @@ erhöhen
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9332,6 +9356,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9352,6 +9377,7 @@ gabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9366,6 +9392,7 @@ gabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9397,6 +9424,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9501,6 +9529,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9519,6 +9548,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9633,6 +9663,7 @@ Jetzt werden wir Eingabe drücken, dann
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9702,6 +9733,7 @@ Standard
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9758,6 +9790,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9792,6 +9825,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9813,6 +9847,7 @@ Alt+Eingabe
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9888,6 +9923,7 @@ Wir wollen
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9940,6 +9976,7 @@ Alt+Eingabe+
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -9963,6 +10000,7 @@ Alt+Eingabe+
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -10041,6 +10079,7 @@ Eingabe,
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -10080,6 +10119,7 @@ Eingabe,
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -10172,6 +10212,7 @@ blaue Fische
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -10184,6 +10225,7 @@ Alt+Eingabe, Gedicht,
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -10627,6 +10669,7 @@ Sie klicken auf den Werkzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/font-noun.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -10682,6 +10725,7 @@ Sie klicken auf den Werkzeugleistenknopf
 \begin_inset Graphics
 	filename ../../images/font-emph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -10797,6 +10841,7 @@ Textstil
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
@@ -11760,6 +11805,7 @@ können
 \begin_inset Graphics
 	filename ../../images/font-free-apply.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -11992,6 +12038,7 @@ DVI, Strg+D
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -12096,6 +12143,7 @@ DVI
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -12186,6 +12234,7 @@ Strg+T
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -12208,6 +12257,7 @@ Strg+Umschalt+T
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -12230,6 +12280,7 @@ PDF\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -12245,6 +12296,7 @@ PDF\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -12283,6 +12335,7 @@ Strg+P
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -13375,6 +13428,7 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -13384,6 +13438,7 @@ Fußnote
 	filename clipart/FussnoteQt4.png
 	display none
 	scale 60
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 116bp 39bp
 
 \end_inset
@@ -13423,6 +13478,7 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -13500,6 +13556,7 @@ Randnotiz
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -13604,6 +13661,7 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -13649,6 +13707,7 @@ Außerdem können Sie in diesem Dialogfenster einige Einstellungen ändern.
 	filename ../clipart/mobius.eps
 	lyxscale 30
 	scale 20
+	scaleBeforeRotation
 
 \end_inset
 
@@ -13931,7 +13990,7 @@ dd
 \begin_inset Formula $\approx$
 \end_inset
 
- 0,376\InsetSpace \thinspace{}
+ 0.376\InsetSpace \thinspace{}
 mm)
 \end_layout
 
@@ -14368,6 +14427,7 @@ dung
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -14422,6 +14482,7 @@ M.C.
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	display color
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -14445,6 +14506,7 @@ status collapsed
 	lyxscale 50
 	display color
 	scale 60
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -14531,6 +14593,7 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -14553,6 +14616,7 @@ Querverweis\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -14784,6 +14848,7 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -14991,6 +15056,7 @@ Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -15063,6 +15129,7 @@ Horizontale Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-left.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15075,6 +15142,7 @@ Horizontale Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-center.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15087,6 +15155,7 @@ Horizontale Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-right.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15121,6 +15190,7 @@ Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-top.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15133,6 +15203,7 @@ Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-middle.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15145,6 +15216,7 @@ Ausrichtung
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-bottom.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15170,6 +15242,7 @@ Mehrfachspalte
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15233,6 +15306,7 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15245,6 +15319,7 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15257,6 +15332,7 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15265,6 +15341,7 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15277,6 +15354,7 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15289,6 +15367,7 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15437,6 +15516,7 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15449,6 +15529,7 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15461,6 +15542,7 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15469,6 +15551,7 @@ Spalten
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15696,6 +15779,7 @@ drehen
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -15717,6 +15801,7 @@ drehen
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -17279,6 +17364,7 @@ newline
 \begin_inset Graphics
 	filename ../../images/ert-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -17795,6 +17881,7 @@ Falls Sie zum Erstellen der Tabelle einfach nur die Schaltfläche
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -17819,6 +17906,7 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18195,6 +18283,7 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18509,20 +18598,6 @@ Inhaltsverzeichnis
 .
 \end_layout
 
-\begin_layout Standard
-Außerdem können Sie, ob Sie nun im Text ein Inhaltsverzeichnis angelegt
- haben oder nicht, mit 
-\family sans
-Dokument\SpecialChar \menuseparator
-Inhaltsverzeichnis
-\family default
- ein zusätzliches Fenster öffnen, in dem das Inhaltsverzeichnis angezeigt
- wird.
- Sie können es verwenden, um damit schnell im Text herumzuspringen.
- Diese Funktion ist sehr nützlich, wenn Sie oft hin- und herspringen müssen
- oder wollen.
-\end_layout
-
 \begin_layout Subsection
 Abbildungs-
 \begin_inset LatexCommand index
@@ -18793,6 +18868,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/sub.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18801,6 +18877,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/super.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18809,6 +18886,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/sqrt.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 25bp
 
 \end_inset
@@ -18817,6 +18895,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/frac.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
@@ -18829,6 +18908,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/int.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18837,6 +18917,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/prod.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18845,6 +18926,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/lparen_rparen.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
@@ -18853,6 +18935,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/lbracket_rbracket.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
@@ -18861,6 +18944,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/lbrace_rbrace.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
@@ -18869,6 +18953,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/delim.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18877,6 +18962,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math-matrix.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18885,6 +18971,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/math/cases.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 8bp 20bp 20bp
 
 \end_inset
@@ -18895,6 +18982,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18907,6 +18995,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18919,6 +19008,7 @@ Hinweis: Einen Teil der Symbole aus der Mathe-Werkzeugleiste sehen Sie am
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18931,6 +19021,7 @@ Spalte löschen
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -18942,6 +19033,7 @@ Spalte löschen
 \begin_inset Graphics
 	filename ../../images/math/equation.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -18950,6 +19042,7 @@ und allgemeine Wurzeln
 \begin_inset Graphics
 	filename ../../images/math/root.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 25bp
 
 \end_inset
@@ -19253,6 +19346,7 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/super.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19261,6 +19355,7 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/sub.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19345,6 +19440,7 @@ Einen Bruch kann man mit
 \begin_inset Graphics
 	filename ../../images/math/frac-square.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19374,6 +19470,7 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/frac.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
@@ -19648,6 +19745,7 @@ Wenn Sie auf einen Schaltknopf klicken, bekommen Sie eine Auswahl an Symbolen
 \begin_inset Graphics
 	filename ../../images/math/space.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19663,6 +19761,7 @@ Wenn Sie auf einen Schaltknopf klicken, bekommen Sie eine Auswahl an Symbolen
 \begin_inset Graphics
 	filename ../../images/math/sqrt.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 25bp
 
 \end_inset
@@ -19682,6 +19781,7 @@ Wenn Sie auf einen Schaltknopf klicken, bekommen Sie eine Auswahl an Symbolen
 \begin_inset Graphics
 	filename ../../images/math/style.xpm
 	scale 70
+	scaleBeforeRotation
 
 \end_inset
 
@@ -19731,6 +19831,7 @@ reference "sub:Fontgrößen"
 \begin_inset Graphics
 	filename ../../images/math/frac-square.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
@@ -19750,6 +19851,7 @@ erzeugt eine Schablone für Brüche wie
 \begin_inset Graphics
 	filename ../../images/math/font.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19784,6 +19886,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/hat.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19795,6 +19898,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/sum.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19806,6 +19910,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/bigtriangledown.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19817,6 +19922,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/alpha.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19829,6 +19935,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19840,6 +19947,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/dashleftarrow.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19851,6 +19959,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/pm.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19862,6 +19971,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/leq.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19873,6 +19983,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/leqq.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19884,6 +19995,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/nless.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19895,6 +20007,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/ldots.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19906,6 +20019,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/dotplus.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -19917,6 +20031,7 @@ reference "sub:Einige-Symbole-können"
 \begin_inset Graphics
 	filename ../../images/math/digamma.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -20933,6 +21048,7 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math/delim.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -21094,6 +21210,7 @@ Mathe-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/math-matrix.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -21972,6 +22089,7 @@ Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
 \begin_inset Graphics
 	filename ../../images/math/font.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -22816,6 +22934,7 @@ math-size displaystyle
 \begin_inset Graphics
 	filename ../../images/math/style.xpm
 	scale 70
+	scaleBeforeRotation
 
 \end_inset
 
@@ -23231,6 +23350,7 @@ Marke
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -23252,6 +23372,7 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -23482,6 +23603,7 @@ oder
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -23501,6 +23623,7 @@ URL
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -23666,6 +23789,7 @@ Notiz
  oder 
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -24273,6 +24397,7 @@ Absatz-Einstellungen
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -24820,6 +24945,7 @@ Strg+L
 \begin_inset Graphics
 	filename ../../images/ert-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -25385,6 +25511,7 @@ F7
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29335,6 +29462,7 @@ pull-down
 \begin_inset Graphics
 	filename ../../images/buffer-new.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
@@ -29349,6 +29477,7 @@ Neu
 \begin_inset Graphics
 	filename ../../images/file-open.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
@@ -29364,6 +29493,7 @@ Datei\SpecialChar \menuseparator
 \begin_inset Graphics
 	filename ../../images/buffer-write.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
@@ -29378,6 +29508,7 @@ Speichern
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -29393,6 +29524,7 @@ Drucken\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/undo.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29407,6 +29539,7 @@ Rückgängig
 \begin_inset Graphics
 	filename ../../images/redo.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29421,6 +29554,7 @@ Wiederholen
 \begin_inset Graphics
 	filename ../../images/cut.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -29435,6 +29569,7 @@ Ausschneiden
 \begin_inset Graphics
 	filename ../../images/copy.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -29449,6 +29584,7 @@ Kopieren
 \begin_inset Graphics
 	filename ../../images/paste.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -29463,6 +29599,7 @@ Einfügen
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
@@ -29484,6 +29621,7 @@ Strg+F
 \begin_inset Graphics
 	filename ../../images/font-emph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29507,6 +29645,7 @@ Strg+E
 \begin_inset Graphics
 	filename ../../images/font-noun.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29526,6 +29665,7 @@ Alt+Z+K
 \begin_inset Graphics
 	filename ../../images/font-free-apply.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29559,6 +29699,7 @@ Eingebettete Formel (Strg+M)
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29574,6 +29715,7 @@ Grafik\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29593,6 +29735,7 @@ Extra-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/layout.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29608,6 +29751,7 @@ Standard
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29623,6 +29767,7 @@ Aufzählung
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29638,6 +29783,7 @@ Auflistung
 \begin_inset Graphics
 	filename ../../images/layout_List.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29653,6 +29799,7 @@ Liste
 \begin_inset Graphics
 	filename ../../images/layout_Description.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29668,6 +29815,7 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29679,6 +29827,7 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/depth-decrement.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29692,6 +29841,7 @@ Beschreibung
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29713,6 +29863,7 @@ Abbildung
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29732,6 +29883,7 @@ Tabelle
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29749,6 +29901,7 @@ Marke
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29766,6 +29919,7 @@ Querverweis
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29783,6 +29937,7 @@ Zitat
 \begin_inset Graphics
 	filename ../../images/index-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29801,6 +29956,7 @@ Handbuchergänzungen.
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29818,6 +29974,7 @@ Fußnote
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29832,6 +29989,7 @@ Randnotiz
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29862,6 +30020,7 @@ X-Notiz
 \begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -29879,6 +30038,7 @@ URL
 \begin_inset Graphics
 	filename ../../images/ert-insert.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29936,6 +30096,7 @@ Handbuchergänzungen.
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29964,6 +30125,7 @@ reference "sub:Unterdokument..."
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
@@ -29975,6 +30137,7 @@ reference "sub:Unterdokument..."
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29986,6 +30149,7 @@ reference "sub:Unterdokument..."
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -29997,6 +30161,7 @@ reference "sub:Unterdokument..."
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30012,6 +30177,7 @@ Ansicht/Aktualisierung-Werkzeugleiste
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30030,6 +30196,7 @@ DVI
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30053,6 +30220,7 @@ DVI
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30071,6 +30239,7 @@ PDF (pdflatex)
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30094,6 +30263,7 @@ PDF (pdflatex)
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30112,6 +30282,7 @@ Postscript
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30356,6 +30527,7 @@ Das ist das Gleiche, als wenn Sie auf
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
@@ -30453,6 +30625,7 @@ Aktualisieren der DVI-Vorschau (
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30517,6 +30690,7 @@ Aktualisieren der Postscript-Vorschau (
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30535,6 +30709,7 @@ Die DVI-Vorschau starten (
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30575,6 +30750,7 @@ Die Postscript-Vorschau starten (
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.xpm
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -30805,9 +30981,6 @@ Handbuchergänzungen.
 \family sans
 Datei\SpecialChar \menuseparator
 
-\family default
- \SpecialChar \ldots{}
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -30828,8 +31001,7 @@ status collapsed
 
 X
 \family sans
--Dokument\SpecialChar \ldots{}
-
+-Dokument
 \end_layout
 
 \begin_layout Standard
@@ -30847,9 +31019,7 @@ name "Text!-datei"
 
 \end_inset
 
- als Zeilen\SpecialChar \ldots{}
-/Absätze\SpecialChar \ldots{}
-
+ als Zeilen/Absätze
 \end_layout
 
 \begin_layout Standard
@@ -30898,10 +31068,7 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-Externes Material\SpecialChar \ldots{}
-
+Externes Material
 \end_layout
 
 \begin_layout Standard
@@ -30973,18 +31140,21 @@ Xfig fügt ein Xfig-Bild ein
 \end_layout
 
 \begin_layout Standard
-Dieser Menüpunkt ist aber noch nirgends näher beschrieben.
- Externes Material wird nicht direkt eingefügt, sondern erscheint als graue
- Schaltfläche.
+Ausführliche Erläuterungen finden Sie in
+\emph on
+ Eingebettete
+\emph default
+ 
+\emph on
+Objekte
+\emph default
+, Externes Material.
 \end_layout
 
 \begin_layout Subsubsection
 
 \family sans
 Unterdokument
-\family default
-\SpecialChar \ldots{}
-
 \end_layout
 
 \begin_layout Standard
@@ -31007,7 +31177,15 @@ Damit können Sie mehrere
 \emph on
 Handbuchergänzungen
 \emph default
-, Mehrteilige Dokumente.
+, Mehrteilige Dokumente, und 
+\emph on
+Eingebettete
+\emph default
+ 
+\emph on
+Objekte
+\emph default
+, Unterdokumente.
 \end_layout
 
 \begin_layout Subsubsection

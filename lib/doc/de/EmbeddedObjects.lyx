@@ -27891,7 +27891,15 @@ Bemerkung:
 \series default
  Wenn Sie die folgenden Buchstaben benutzen wollen, müssen Sie mit einem
  vorangestellten 
+\begin_inset Quotes gld
+\end_inset
+
+
 \backslash
+
+\begin_inset Quotes grd
+\end_inset
+
  eingeben: 
 \begin_inset Quotes gld
 \end_inset
@@ -27924,7 +27932,15 @@ Bemerkung:
 
 .
  URLs dürfen nicht mit einem 
+\begin_inset Quotes gld
+\end_inset
+
+
 \backslash
+
+\begin_inset Quotes grd
+\end_inset
+
  aufhören.
 \end_layout
 
@@ -28166,7 +28182,8 @@ Vorlagen
 \end_layout
 
 \begin_layout Description
-ChessDiagram Diese Vorlage unterstützt Schachdiagramme, die mit 
+Schachdiagramm Vorlage unterstützt Schachdiagramme, die mit dem Programm
+ 
 \begin_inset ERT
 status collapsed
 
@@ -28198,7 +28215,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Date fügt ein Datum mit dem Format 
+Datum fügt ein Datum mit dem Format 
 \emph on
 Tag-Monat-Jahr
 \emph default
@@ -28269,7 +28286,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-RasterImage Diese Vorlage kann für Bitmap-Bilder benutzt werden.
+Rastergrafik Diese Vorlage kann für Bitmap-Bilder benutzt werden.
  Fast alle bekannten Bildformate werden unterstützt.
  Die Bilddateien können im Dialogfenster 
 \family sans
@@ -28535,14 +28552,17 @@ als Datum
 Wenn Sie im Dialogfenster
 \family sans
  Externes\InsetSpace ~
-Material\SpecialChar \menuseparator
-
+Material 
 \family default
-Karteikarte
+in der Karteikarte
 \family sans
- Datei Entwurf
+ Datei
 \family default
- ankreuzen, wird nur der Pfad der ausgewählten Datei in der Ausgabe erscheinen.
+ die Option 
+\family sans
+Entwurf
+\family default
+ benutzen, wird nur der Pfad der ausgewählten Datei in der Ausgabe erscheinen.
 \end_layout
 
 \begin_layout Standard
@@ -28559,10 +28579,9 @@ LyX kann externes Material entweder als Box wie hier:
  Das hängt davon ab, ob Sie im Dialogfenster
 \family sans
  Externes\InsetSpace ~
-Material\SpecialChar \menuseparator
-
+Material 
 \family default
-Karteikarte 
+in der Karteikarte 
 \family sans
 Ly
 \begin_inset ERT
@@ -28575,7 +28594,11 @@ status collapsed
 
 \end_inset
 
-X-Ansicht in\InsetSpace ~
+X-Ansicht
+\family default
+ die Option 
+\family sans
+in\InsetSpace ~
 Ly
 \begin_inset ERT
 status collapsed
@@ -28590,13 +28613,15 @@ status collapsed
 X\InsetSpace ~
 anzeigen
 \family default
- angekreuzt haben oder nicht.
+ gewählt haben oder nicht.
 \end_layout
 
 \begin_layout Standard
 Im LyX-Handbuch 
+\family sans
 \emph on
 Anpassung
+\family default
 \emph default
  wird erklärt, wie Sie Ihre eigenen Vorlagen erzeugen können.
 \end_layout
@@ -28865,11 +28890,11 @@ preview false
 
 \begin_layout Description
 Unformatiert Mit dieser Methode kann jede Textdatei eingebunden werden.
-  In der Druckvorschau wird für den Text 
+  In der Druckvorschau wird für den Text der Stil 
 \family typewriter
-Schreibmaschinen
+Schreibmaschine
 \family default
--Stile verwendet.
+ verwendet.
  Zeilenumbrüche erfolgen nur dort, wo das Unterdokument welche besitzt.
  Wenn Sie im Dialogfenster
 \family sans
