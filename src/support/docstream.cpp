@@ -322,7 +322,7 @@ odocstream & operator<<(odocstream & os, SetEnc e)
 
 }
 
-#if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)
+#if ! defined(USE_WCHAR_T) && defined(__GNUC__)
 // We get undefined references to these virtual methods. This looks like
 // a bug in gcc. The implementation here does not do anything useful, since
 // it is overriden in iconv_codecvt_facet.

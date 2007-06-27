@@ -383,8 +383,18 @@ int mkstemp(char*);
 #  define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
 #endif
 
-#if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4
-#  define LIBC_WCTYPE_USES_UCS4
+/*
+ * the FreeBSD libc uses UCS4, but libstdc++ has no proper wchar_t
+ * support compiled in:
+ * http://gcc.gnu.org/onlinedocs/libstdc++/faq/index.html#3_9
+ * And we are not interested at all what libc
+ * does: What we need is a 32bit wide wchar_t, and a libstdc++ that
+ * has the needed wchar_t support and uses UCS4. Whether it
+ * implements this with the help of libc, or whether it has own code
+ * does not matter for us, because we don't use libc directly (Georg)
+*/
+#if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4 && ! defined(__FREEBSD__)
+#  define USE_WCHAR_T
 #endif
 
 #endif

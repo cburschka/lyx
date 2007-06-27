@@ -98,7 +98,7 @@ lyx::docstring & operator+=(lyx::docstring & l, char r);
 } // namespace lyx
 
 
-#if SIZEOF_WCHAR_T != 4 && defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
+#if ! defined(USE_WCHAR_T) && defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
 // Missing char_traits methods in gcc 3.3 and older. Taken from gcc 4.2svn.
 namespace std {
 

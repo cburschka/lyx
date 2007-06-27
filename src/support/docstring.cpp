@@ -217,7 +217,7 @@ lyx::docstring & operator+=(lyx::docstring & l, char r)
 
 } // namespace lyx
 
-#if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)
+#if ! defined(USE_WCHAR_T) && defined(__GNUC__)
 
 // gcc does not have proper locale facets for lyx::char_type if
 // sizeof(wchar_t) == 2, so we have to implement them on our own.

@@ -23,7 +23,7 @@
 namespace lyx {
 
 	/// The type used to hold characters in paragraphs
-#if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4
+#ifdef USE_WCHAR_T
 	// Prefer this if possible because GNU libstdc++ has usable
 	// std::ctype<wchar_t> locale facets but not
 	// std::ctype<boost::uint32_t>. gcc older than 3.4 is also missing
