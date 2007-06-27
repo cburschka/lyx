@@ -1847,16 +1847,18 @@ Forced output is currently not enforced'''
     spec_chars = {}
     for line in fp.readlines():
         if line[0] != '#':
-            line=line.replace('"','') #remove all qoutation marks
+            line=line.replace(' "',' ') # remove all qoutation marks with spaces before
+            line=line.replace('" ',' ') # remove all qoutation marks with spaces after
+            line=line.replace(r'\"','"') # replace \" by " (for characters with diaresis)
             try:
                 # flag1 and flag2 are preamble & flags
-                # currently NOT impemented
+                # currently NOT implemented
                 [ucs4,command,flag1,flag2] =line.split(None,3)
                 spec_chars[unichr(eval(ucs4))] = [command, flag1, flag2]
             except:
                 pass
     fp.close()
-    #Define strings to start and end ERT and math insets
+    # Define strings to start and end ERT and math insets
     ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n\\backslash\n'
     ert_outro='\n\\end_layout\n\n\\end_inset\n\n'
     math_intro='\n\\begin_inset Formula $'
@@ -2001,6 +2003,5 @@ revert =  [
 
 if __name__ == "__main__":
     pass
-
 
 
