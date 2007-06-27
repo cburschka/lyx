@@ -76,7 +76,7 @@ ToolbarSet
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
 		Separator
-		Item "Toggle Table of Contents" "dialog-toggle toc"
+		Item "Toggle Outline" "dialog-toggle toc"
 		Item "Toggle Math Toolbar" "toolbar-toggle math"
 		Item "Toggle Table Toolbar" "toolbar-toggle table"
 	End
@@ -193,7 +193,6 @@ ToolbarSet
 
 	Toolbar "math_panels" "Math Panels"
 		PopupMenu "space" "Math Spacings"
-		PopupMenu "sqrt-square" "Roots"
 		PopupMenu "style" "Styles"
 		PopupMenu "frac-square" "Fractions"
 		PopupMenu "font" "Fonts"
@@ -452,6 +451,7 @@ ToolbarSet
 		Item "pi" "math-insert \pi"
 		Item "varpi" "math-insert \varpi"
 		Item "rho" "math-insert \rho"
+		Item "varrho" "math-insert \varrho"
 		Item "sigma" "math-insert \sigma"
 		Item "varsigma" "math-insert \varsigma"
 		Item "tau" "math-insert \tau"
