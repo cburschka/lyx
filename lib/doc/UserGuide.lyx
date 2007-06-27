@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -13646,6 +13646,7 @@ A dialog will appear for you to choose the file to load.
 	filename clipart/mobius.eps
 	display color
 	scale 70
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -14446,6 +14447,7 @@ M.C.
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
 	display color
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -14470,6 +14472,7 @@ status open
 \begin_inset Graphics
 	filename clipart/platypus.eps
 	display color
+	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -21194,19 +21197,19 @@ Moreover, math text mode outputs its contents inside a
 \backslash
 textrm{}
 \family default
-, whereas and 
+, whereas 
 \family typewriter
 
 \backslash
 mbox
 \family default
- (or AMS-LaTeX's 
+ or AMS-LaTeX's 
 \backslash
 
 \family typewriter
 text
 \family default
-) might have been a better choice
+ might have been a better choice
 \end_layout
 
 \end_inset
