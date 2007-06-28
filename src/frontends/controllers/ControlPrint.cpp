@@ -129,7 +129,7 @@ void ControlPrint::dispatchParams()
 		command += lyxrc.print_extra_options + ' ';
 	}
 
-	command += kernel().buffer().params().dvips_options() + ' ';
+	command += kernel().buffer().params().dvips_options();
 
 	string const target = (pp.target == PrinterParams::PRINTER) ?
 		"printer" : "file";
@@ -138,7 +138,7 @@ void ControlPrint::dispatchParams()
 		(pp.printer_name.empty() ? "default" : pp.printer_name) :
 		pp.file_name;
 
-	string const data = target + " " + target_name + " " + command;
+	string const data = target + " \"" + target_name + "\" \"" + command + '"';
 	kernel().dispatch(FuncRequest(getLfun(), data));
 }
 

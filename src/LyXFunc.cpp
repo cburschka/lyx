@@ -989,21 +989,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_PRINT: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			string target;
-			string target_name;
-			string command = split(split(argument, target, ' '),
-					       target_name, ' ');
+			// FIXME: cmd.getArg() might fail if one of the arguments
+			// contains double quotes
+			string target = cmd.getArg(0);
+			string target_name = cmd.getArg(1);
+			string command = cmd.getArg(2);
 
 			if (target.empty()
 			    || target_name.empty()
 			    || command.empty()) {
 				lyxerr << "Unable to parse \""
-				       << argument << '"' << std::endl;
+				       << argument << '"' << endl;
 				break;
 			}
 			if (target != "printer" && target != "file") {
 				lyxerr << "Unrecognized target \""
-				       << target << '"' << std::endl;
+				       << target << '"' << endl;
 				break;
 			}
 
@@ -1035,13 +1036,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					// case 3: print using a spool
 					string const psname =
 						changeExtension(dviname,".ps");
-					command += lyxrc.print_to_file
+					command += ' ' + lyxrc.print_to_file
 						+ quoteName(psname)
 						+ ' '
 						+ quoteName(dviname);
 
 					string command2 =
-						lyxrc.print_spool_command +' ';
+						lyxrc.print_spool_command + ' ';
 					if (target_name != "default") {
 						command2 += lyxrc.print_spool_printerprefix
 							+ target_name
@@ -1061,7 +1062,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				} else {
 					// case 2: print directly to a printer
 					if (target_name != "default")
-						command += lyxrc.print_to_printer + target_name + ' ';
+						command += ' ' + lyxrc.print_to_printer + target_name + ' ';
 					res = one.startscript(
 						Systemcall::DontWait,
 						command + quoteName(dviname));
@@ -1069,7 +1070,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			} else {
 				// case 1: print to a file
-				FileName const filename(makeAbsPath(target_name, path));
+				FileName const filename(makeAbsPath(target_name,
+							lyx_view_->buffer()->filePath()));
+				FileName const dvifile(makeAbsPath(dviname, path));
 				if (fs::exists(filename.toFilesystemEncoding())) {
 					docstring text = bformat(
 						_("The file %1$s already exists.\n\n"
@@ -1079,10 +1082,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					    text, 0, 1, _("&Overwrite"), _("&Cancel")) != 0)
 						break;
 				}
-				command += lyxrc.print_to_file
+				command += ' ' + lyxrc.print_to_file
 					+ quoteName(filename.toFilesystemEncoding())
 					+ ' '
-					+ quoteName(dviname);
+					+ quoteName(dvifile.toFilesystemEncoding());
 				res = one.startscript(Systemcall::DontWait,
 						      command);
 			}
