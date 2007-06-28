@@ -48,7 +48,7 @@ Settings for LyX installer
   !define DOWNLOADALT_${ID} "${MIRROR_SF2}/${FILENAME}"
 !macroend
 
-!insertmacro SourceForgeMirror LATEX "miktex/basic-miktex-2.6.2704.exe"
+!insertmacro SourceForgeMirror LATEX "miktex/basic-miktex-2.6.2726.exe"
 !insertmacro SourceForgeMirror IMAGEMAGICK "imagemagick/ImageMagick-6.3.4-10-Q16-windows-dll.exe"
 !insertmacro SourceForgeMirror GHOSTSCRIPT "ghostscript/gs857w32.exe"
 
@@ -61,7 +61,7 @@ Settings for LyX installer
 ;--------------------------------
 ;Download size (in KB)
 
-!define SIZE_DOWNLOAD_LATEX 53759
+!define SIZE_DOWNLOAD_LATEX 53512
 !define SIZE_DOWNLOAD_IMAGEMAGICK 7111
 !define SIZE_DOWNLOAD_GHOSTSCRIPT 11916
 !define SIZE_DOWNLOAD_VIEWER 1459
@@ -77,8 +77,8 @@ Settings for LyX installer
 ;--------------------------------
 ;Locations of setup files for components (for bundled setup)
 
-!define INSTALL_LATEX "basic-miktex-2.6.2704.exe"
-!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.4-8-Q16-windows-dll.exe"
+!define INSTALL_LATEX "basic-miktex-2.6.2726.exe"
+!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.4-10-Q16-windows-dll.exe"
 !define INSTALL_GHOSTSCRIPT "gs857w32.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 

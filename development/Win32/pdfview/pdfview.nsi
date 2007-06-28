@@ -27,6 +27,11 @@ Icon "..\packaging\icons\lyx_32x32.ico"
 SilentInstall silent
 
 ;--------------------------------
+;Windows Vista settings
+
+RequestExecutionLevel user
+
+;--------------------------------
 ;Constants
 
 !define FALSE 0

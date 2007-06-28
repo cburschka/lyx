@@ -21,9 +21,17 @@ ${StrStr}
 
 !include "..\packaging\installer\settings.nsh" ;Version info from installer
 
+;--------------------------------
+;Settings
+
 Caption "${APP_NAME} ${APP_VERSION}"
 OutFile lyx.exe
 BrandingText " "
+
+;--------------------------------
+;Windows Vista settings
+
+RequestExecutionLevel user
 
 ;--------------------------------
 ;Variables
