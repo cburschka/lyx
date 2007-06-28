@@ -134,6 +134,8 @@ dist_heexamples_DATA = \
 
 huexamplesdir = $(pkgdatadir)/examples/hu
 dist_huexamples_DATA = \
+	examples/hu/example_lyxified.lyx \
+	examples/hu/example_raw.lyx \
 	examples/hu/splash.lyx
 
 itexamplesdir = $(pkgdatadir)/examples/it
