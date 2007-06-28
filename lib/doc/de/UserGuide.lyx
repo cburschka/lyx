@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -65,7 +65,7 @@
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 \end_preamble
-\options bibtotoc, idxtotoc
+\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -80,26 +80,24 @@
 \paperfontsize default
 \spacing single
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\leftmargin 35mm
-\topmargin 35mm
-\rightmargin 35mm
-\bottommargin 35mm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \defskip smallskip
 \quotes_language german
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
+\author "Uwe Stöhr" 
 \author "usti" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
