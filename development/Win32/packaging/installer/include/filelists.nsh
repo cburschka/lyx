@@ -110,6 +110,7 @@ Lists of files to include in the installer
 !macro FileListPythonDll COMMAND DIRECTORY
 
   ${FILE}python25.dll"
+  ${FILE}msvcr71.dll"
 
 !macroend
 
