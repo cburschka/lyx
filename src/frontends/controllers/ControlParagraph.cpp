@@ -14,7 +14,9 @@
 #include "ControlParagraph.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "ButtonController.h"
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
 #include "Paragraph.h"
@@ -150,6 +152,13 @@ ParagraphParameters const & ControlParagraph::params() const
 }
 
 
+bool const ControlParagraph::haveMulitParSelection() {
+	Cursor cur = kernel().bufferview()->cursor();
+	if (!cur.selection())
+		return false;
+	return (cur.selBegin().pit() != cur.selEnd().pit());
+}
+	
 bool ControlParagraph::inInset() const
 {
 	return ininset_;

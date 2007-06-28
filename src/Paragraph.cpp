@@ -1781,8 +1781,13 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		os << "\\noindent ";
 		column += 10;
 	}
+	
+	LyXAlignment const curAlign = params().align();
 
-	switch (params().align()) {
+	if (curAlign == layout()->align)
+		return column;
+
+	switch (curAlign) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
@@ -1798,7 +1803,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		break;
 	}
 
-	switch (params().align()) {
+	switch (curAlign) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:

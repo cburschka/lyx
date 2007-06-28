@@ -83,11 +83,11 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	radioMap[LYX_ALIGN_RIGHT]  = alignRightRB;
 	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
 	
-/*	labelMap[LYX_ALIGN_LAYOUT] = "Default";
+	labelMap[LYX_ALIGN_LAYOUT] = "Use Paragraph's Default Alignment";
 	labelMap[LYX_ALIGN_BLOCK]  = "Justified";
 	labelMap[LYX_ALIGN_LEFT]   = "Left";
 	labelMap[LYX_ALIGN_RIGHT]  = "Right";
-	labelMap[LYX_ALIGN_CENTER] = "Center"; */
+	labelMap[LYX_ALIGN_CENTER] = "Center";
 }
 
 
@@ -113,30 +113,25 @@ void QParagraphDialog::enableLinespacingValue(int)
 
 void QParagraphDialog::checkAlignmentRadioButtons() {
 	LyXAlignment const alignPossible = form_->controller().alignPossible();
-	//LyXAlignment const defaultAlignment = form_->controller().alignDefault();
+
 	QPRadioMap::iterator it = radioMap.begin();
 	for (; it != radioMap.end(); ++it) {
 		LyXAlignment const align = it->first;
+		//FIXME The reason we need the second check is because
+		//LYX_ALIGN_LAYOUT isn't required to be possible. It
+		//should be...and will be.
 		it->second->setEnabled((align & alignPossible) ||
 		                       (align == LYX_ALIGN_LAYOUT));
-/*		string label = labelMap[align];
-		if (align == LYX_ALIGN_LAYOUT)
-			label += "()" + labelMap[defaultAlignment] + ")";
-		it->second->setText(qt_(label));*/
 	}
+	std::string label = labelMap[LYX_ALIGN_LAYOUT];
+	if (!form_->controller().haveMulitParSelection())
+		label += (" (" + labelMap[form_->controller().alignDefault()] + ")");
+	alignDefaultRB->setText(qt_(label));
 }
 
 
 void QParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
 {
-	LyXAlignment const defaultAlignment = form_->controller().alignDefault();
-	if (align == LYX_ALIGN_LAYOUT || align == defaultAlignment) {
-		alignDefaultRB->blockSignals(true);
-		alignDefaultRB->setChecked(true);
-		alignDefaultRB->blockSignals(false);
-		return;
-	}
-
 	QPRadioMap::const_iterator it = radioMap.begin();
 	for (;it != radioMap.end(); ++it) {
 		if (align == it->first) {

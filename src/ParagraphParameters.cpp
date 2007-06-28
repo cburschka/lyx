@@ -279,13 +279,10 @@ void params2string(Paragraph const & par, string & data)
 	// This needs to be done separately
 	params.labelWidthString(par.getLabelWidthString());
 
-	// Alignment
-	Layout_ptr const & layout = par.layout();
-	if (params.align() == LYX_ALIGN_LAYOUT)
-		params.align(layout->align);
-
 	ostringstream os;
 	params.write(os);
+
+	Layout_ptr const & layout = par.layout();
 
 	// Is alignment possible
 	os << "\\alignpossible " << layout->alignpossible << '\n';

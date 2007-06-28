@@ -38,6 +38,8 @@ public:
 	///
 	ParagraphParameters const & params() const;
 	///
+	bool const haveMulitParSelection();
+	///
 	bool inInset() const;
 	///
 	bool canIndent() const;

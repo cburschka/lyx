@@ -649,16 +649,12 @@ void Text::setParagraph(Cursor & cur,
 		params.spacing(spacing);
 
 		// does the layout allow the new alignment?
-		Layout_ptr const & layout = par.layout();
-
-		if (align == LYX_ALIGN_LAYOUT)
-			align = layout->align;
-		if (align & layout->alignpossible) {
-			if (align == layout->align)
-				params.align(LYX_ALIGN_LAYOUT);
-			else
-				params.align(align);
-		}
+		//FIXME The reason we need the first check is because
+		//LYX_ALIGN_LAYOUT isn't required to be possible. It
+		//should be...and will be.
+		if ((align == LYX_ALIGN_LAYOUT) ||
+		    (align & par.layout()->alignpossible))
+		    	params.align(align);
 		par.setLabelWidthString(labelwidthstring);
 		params.noindent(noindent);
 	}

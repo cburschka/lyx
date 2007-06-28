@@ -44,9 +44,9 @@ private:
 	QParagraph * form_;
 	typedef std::map<LyXAlignment, QRadioButton *> QPRadioMap;
 	QPRadioMap radioMap;
-//	typedef std::map<LyXAlignment, std::string> QPAlignmentLabels;
-//	QPAlignmentLabels labelMap;
-	
+	typedef std::map<LyXAlignment, std::string> QPAlignmentLabels;
+	QPAlignmentLabels labelMap;
+		
 protected Q_SLOTS:
 	///
 	void change_adaptor();
