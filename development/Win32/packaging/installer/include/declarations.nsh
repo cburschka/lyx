@@ -34,6 +34,11 @@ Declarations
 !define SHCNF_IDLIST 0x0000
 
 ;--------------------------------
+;Windows Vista settings
+
+RequestExecutionLevel highest
+
+;--------------------------------
 ;Reserve Files
 ;These files should come first in the compressed data (for faster GUI)
 
