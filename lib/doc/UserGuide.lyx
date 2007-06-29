@@ -91,6 +91,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
 \author "usti" 
 \author "Bo Peng" 
 \author "Uwe Stöhr" 
@@ -21274,11 +21275,14 @@ displaystyle
  Except for some operators, which re-size themselves to accommodate various
  situations, all text will be set in these various sizes as LaTeX thinks
  is appropriate.
- These choices can be over-ridden by using the 
-\family typewriter
-math-size
-\family default
- function in the minibuffer.
+ These choices can be over-ridden by using the math panel button 
+\begin_inset Graphics
+	filename ../images/math/style.xpm
+	scale 70
+
+\end_inset
+
+.
  For example, you can set 
 \begin_inset Formula $\frac{1}{2}$
 \end_inset
@@ -21287,43 +21291,18 @@ math-size
 \emph on
 textstyle
 \emph default
-), or you can make it larger, which also changes the line-spacing, by entering
+), or you can make it larger, which also changes the line-spacing, by using
  
-\family typewriter
-math-size displaystyle
-\family default
- in the minibuffer while the cursor is in the main line of the math-inset,
+\emph on
+displaystyle
+\emph default
+.
+ Then a new box will appear in the formula where you can insert the fraction:
  
 \begin_inset Formula ${\displaystyle \frac{1}{2}}$
 \end_inset
 
 .
- Careful, though, if the cursor is on the denominator of that fraction,
- only the numerator will be enlarged, e.g.
- 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-! This reflects a LaTeX 
-\begin_inset Quotes eld
-\end_inset
-
-unintended feature
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-That is, a bug.
-\end_layout
-
-\end_inset
-
-, not a LyX one.
- These font-size changes are not as apparent in LyX as they are in the output.
  Here are some text in the various styles: 
 \begin_inset Formula $displaystyle$
 \end_inset

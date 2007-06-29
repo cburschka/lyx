@@ -22894,11 +22894,14 @@ displaystyle
  gesetzt.
  Außer einigen Operatoren, die ihre Größe an die jeweilige Situation anpassen,
  werden die Texte in der Größe gesetzt, die LaTeX für geeignet hält.
- Das kann mit 
-\family typewriter
-math-size
-\family default
- im Befehlspuffer geändert werden.
+ Das kann mit dem Mathe-Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/math/style.xpm
+	scale 70
+
+\end_inset
+
+ geändert werden.
 \end_layout
 
 \begin_layout Standard
@@ -22916,32 +22919,8 @@ textstyle
 displaystyle
 \emph default
  benutzt.
- Dazu gibt man im Befehlspuffer 
-\begin_inset Quotes pld
-\end_inset
-
-
-\family typewriter
-math-size displaystyle
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- ein oder wählt über den Knopf 
-\begin_inset Graphics
-	filename ../../images/math/style.xpm
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
- der 
-\family sans
-Mathe-Werkzeugleiste
-\family default
- die entsprechende Größe aus, während der Cursor auf der Hauptlinie des
- Mathed-Kästchens steht: 
+ Es erscheint dann ein neues Kästchen, in das man den Bruch eingeben kann:
+ 
 \begin_inset Formula ${\displaystyle \frac{1}{2}}$
 \end_inset
 
