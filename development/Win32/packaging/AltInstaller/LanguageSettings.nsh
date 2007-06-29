@@ -283,11 +283,11 @@
   ${endif}
 
 # currently no dictionary available
-#  ${if} ${LangISOCode} = 2052
-#   StrCpy ${LangCdeSys} "zh"
-#   StrCpy ${LangNmeSys} "Chinese"
-#   StrCpy ${LangSysEnc} "936"
-#  ${endif}
+  ${if} ${LangISOCode} = 2052
+   StrCpy ${LangCdeSys} "zh_CN"
+   StrCpy ${LangNmeSys} "Chinese"
+   StrCpy ${LangSysEnc} "936"
+  ${endif}
 
   ${if} ${LangISOCode} = 2055
    StrCpy ${LangCdeSys} "de"
@@ -349,6 +349,13 @@
    StrCpy ${LangCdeSys} "sv"
    StrCpy ${LangNmeSys} "Svenska"
    StrCpy ${LangSysEnc} "1252"
+  ${endif}
+
+# currently no dictionary available
+  ${if} ${LangISOCode} = 3076
+   StrCpy ${LangCdeSys} "zh_CN"
+   StrCpy ${LangNmeSys} "Chinese (China)"
+   StrCpy ${LangSysEnc} "936"
   ${endif}
 
   ${if} ${LangISOCode} = 3079
@@ -447,6 +454,16 @@
   ${if} ${Name} == "Ceština"
    StrCpy ${LangCde} "cs_CZ"
    StrCpy ${LangEnc} "cp-1250"
+  ${endif}
+
+  ${if} ${Name} == "Chinese (China)"
+   StrCpy ${LangCde} "zh_CN"
+   StrCpy ${LangEnc} "cp-936"
+  ${endif}
+  
+  ${if} ${Name} == "Chinese (Taiwan)"
+   StrCpy ${LangCde} "zh_TW"
+   StrCpy ${LangEnc} "cp-936"
   ${endif}
 
   ${if} ${Name} == "Dansk"
