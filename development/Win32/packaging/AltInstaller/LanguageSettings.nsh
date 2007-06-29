@@ -28,11 +28,11 @@
   ${endif}
 
 # currently no dictionary available
-#  ${if} ${LangISOCode} = 1028
-#   StrCpy ${LangCdeSys} "zh"
-#   StrCpy ${LangNmeSys} "Chinese"
-#   StrCpy ${LangSysEnc} "936"
-#  ${endif}
+  ${if} ${LangISOCode} = 1028
+   StrCpy ${LangCdeSys} "zh_TW"
+   StrCpy ${LangNmeSys} "Chinese"
+   StrCpy ${LangSysEnc} "936"
+  ${endif}
 
   ${if} ${LangISOCode} = 1029
    StrCpy ${LangNme} "Ceština"
@@ -284,7 +284,7 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 2052
-   StrCpy ${LangCdeSys} "zh_CN"
+   StrCpy ${LangCdeSys} "zh_TW"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
   ${endif}
@@ -353,8 +353,8 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 3076
-   StrCpy ${LangCdeSys} "zh_CN"
-   StrCpy ${LangNmeSys} "Chinese (China)"
+   StrCpy ${LangCdeSys} "zh_TW"
+   StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
   ${endif}
 
@@ -456,12 +456,12 @@
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
-  ${if} ${Name} == "Chinese (China)"
-   StrCpy ${LangCde} "zh_CN"
-   StrCpy ${LangEnc} "cp-936"
-  ${endif}
+#  ${if} ${Name} == "Chinese (China)"
+#   StrCpy ${LangCde} "zh_CN"
+#   StrCpy ${LangEnc} "cp-936"
+#  ${endif}
   
-  ${if} ${Name} == "Chinese (Taiwan)"
+  ${if} ${Name} == "Chinese"
    StrCpy ${LangCde} "zh_TW"
    StrCpy ${LangEnc} "cp-936"
   ${endif}
