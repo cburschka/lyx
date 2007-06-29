@@ -1,7 +1,7 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # This file is part of the LyX Documentation
-# Copyright (C) 2004 José Matos <jamatos@lyx.org>
+# Copyright (C) 2004 JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -113,7 +113,7 @@ def build_toc(output, documents, lang=None):
                 lang = dir
     file = LyX.NewFile(output = output)
     data = info[lang]
-    file.set_header(language = data[0], language_quotes = data[1], inputencoding = "utf-8")
+    file.set_header(language = data[0], language_quotes = data[1], inputencoding = "auto")
     file.language = data[0]
     file.encoding = "utf-8"
     body = [ LyX.Paragraph('Title', [data[3]])]
