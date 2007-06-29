@@ -155,6 +155,12 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 			updateLabels(*newBuffer->getMasterBuffer());
 		}
 
+		if (!b && oldBuffer && oldBuffer->getMasterBuffer() != oldBuffer)
+			// We are closing oldBuffer which was a child document so we
+			// must update the labels and section numbering of its master
+			// Buffer.
+			updateLabels(*oldBuffer->getMasterBuffer());
+
 		connectBuffer(*newBuffer);
 
 		// Buffer-dependent dialogs should be updated or
