@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -96,7 +96,9 @@
 % used for book-style tables
 \usepackage{booktabs}
 
-% used to have extra space in table cells,
+% used to have extra space in table cells
+\@ifundefined{extrarowheight}
+ {\usepackage{array}}{}
 \setlength{\extrarowheight}{2pt}
 
 % used for customized tables
@@ -114,10 +116,6 @@
 
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
-
-% To be able to enter the characters ° and · directly in LyX
-\DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
-\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
 % the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
@@ -203,6 +201,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
 \author "usti" 
 \author "IG" 
 \author "IG,,," 
@@ -14182,26 +14181,14 @@ reference "tab:Tabla-con-verticales-coloreadas"
 \end_inset
 
  se usó el argumento LaTeX
-\end_layout
-
-\begin_layout Standard
-
 \series bold
-WcW
-\end_layout
-
-\begin_layout Standard
-para la última columna y
-\end_layout
-
-\begin_layout Standard
-
+ WcW
+\series default
+ para la última columna y
 \series bold
-Wc
-\end_layout
-
-\begin_layout Standard
-para las demás.
+ Wc
+\series default
+ para las demás.
 \end_layout
 
 \begin_layout Standard
@@ -14367,7 +14354,22 @@ hline
 \backslash
 renewcommand{
 \backslash
-hline}{
+hline}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
 \backslash
 arrayrulecolor{red}
 \backslash
@@ -14397,7 +14399,12 @@ hline
 \backslash
 renewcommand{
 \backslash
-hline}{
+hline}
+\end_layout
+
+\begin_layout Standard
+
+ {
 \backslash
 arrayrulecolor{red}
 \backslash
@@ -14539,22 +14546,6 @@ sd
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-pagebreak 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Para volver al color de línea negro predeterminado inserta este comando
  en ERT detrás de la tabla o el flotante:
 \end_layout
@@ -14584,6 +14575,7 @@ reference "tab:Tabla-con-líneas-coloreadas"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -14823,7 +14815,7 @@ reference "sec:Tablas-Formales"
 em por defecto.
  Si la tabla es de estilo normal el espacio adicional destruirá las líneas
  verticales, como se ve en la tabla siguiente:
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -14902,7 +14894,7 @@ hspace*{0pt}
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -14931,7 +14923,7 @@ filas añade espacio entre la fila actual y la siguiente.
 em por defecto.
  En tablas normales, el espacio adicional destruirá las líneas verticales
  de la tabla, como se ve en la siguiente:
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -15021,7 +15013,7 @@ hspace*{0pt}
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -15031,13 +15023,38 @@ Así pues, los espacios adicionales entre filas de tablas normales sólo sirven
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Para añadir altura vertical extra a todas las celdas de todas las tablas,
- utiliza el siguiente comando en el preámbulo:
+ utiliza los siguientes comandos en el preámbulo:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined{extrarowheight}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{array}}{}
+\newline
 
 \backslash
 setlength{
@@ -15048,6 +15065,23 @@ extrarowheight}{altura}
 \begin_layout Standard
 Esto tiene el inconveniente de que el texto de las celdas no estará exactamente
  centrado en vertical.
+ (
+\lang english
+The package 
+\series bold
+array
+\series default
+ will be loaded automatically by LyX when you use self defined table formats.
+ To avoid that it is loaded twice the command 
+\series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined
+\series default
+ is used in the above command.
+\lang spanish
+)
 \end_layout
 
 \begin_layout Standard
@@ -25965,19 +25999,6 @@ en ERT antes de la palabra.
 \end_inset
 
  en ERT.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-pagebreak 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

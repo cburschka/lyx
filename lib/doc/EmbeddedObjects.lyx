@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -106,7 +106,9 @@
 % used for book-style tables
 \usepackage{booktabs}
 
-% used to have extra space in table cells,
+% used to have extra space in table cells
+\@ifundefined{extrarowheight}
+ {\usepackage{array}}{}
 \setlength{\extrarowheight}{2pt}
 
 % used for customized tables
@@ -124,10 +126,6 @@
 
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
-
-% To be able to enter the characters ° and · directly in LyX
-\DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
-\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
 % insert additional vertical space of
 % 1.5 mm between footnotes
@@ -203,6 +201,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
 \author "usti" 
 \author "Bo Peng" 
 \author "muso" 
@@ -14136,26 +14135,14 @@ reference "tab:Table-with-vertical-colored"
 \end_inset
 
  the LaTeX-argument
-\end_layout
-
-\begin_layout Standard
-
 \series bold
-WcW
-\end_layout
-
-\begin_layout Standard
-was used for the last column and
-\end_layout
-
-\begin_layout Standard
-
+ WcW
+\series default
+ was used for the last column and
 \series bold
-Wc
-\end_layout
-
-\begin_layout Standard
-for the other columns.
+ Wc
+\series default
+ for the other columns.
 \end_layout
 
 \begin_layout Standard
@@ -14321,7 +14308,22 @@ hline
 \backslash
 renewcommand{
 \backslash
-hline}{
+hline}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
 \backslash
 arrayrulecolor{red}
 \backslash
@@ -14351,7 +14353,12 @@ hline
 \backslash
 renewcommand{
 \backslash
-hline}{
+hline}
+\end_layout
+
+\begin_layout Standard
+
+ {
 \backslash
 arrayrulecolor{red}
 \backslash
@@ -14538,6 +14545,7 @@ reference "tab:Table-with-colored"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -14770,7 +14778,7 @@ reference "sec:Formal-Tables"
 em space.
  For normal tables the inserted space will unfortunately destroy the vertical
  table lines as in the following table:
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -14849,7 +14857,7 @@ hspace*{0pt}
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -14875,7 +14883,7 @@ rows adds space between the current and the following row.
 em space.
  For normal tables the inserted space will unfortunately destroy the vertical
  table lines as in the following table:
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -14969,7 +14977,7 @@ hspace*{0pt}
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -14979,13 +14987,38 @@ So inserting space between rows for normal tables is only useful when you
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 When you want to add extra height to all cells of all tables, you can do
- this with the following preamble line:
+ this with the following preamble lines:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined{extrarowheight}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{array}}{}
+\newline
 
 \backslash
 setlength{
@@ -14996,6 +15029,19 @@ extrarowheight}{height}
 \begin_layout Standard
 But this has the disadvantage that the cell texts are no longer exactly
  vertically centered.
+ (The package 
+\series bold
+array
+\series default
+ will be loaded automatically by LyX when you use self defined table formats.
+ To avoid that it is loaded twice the command 
+\series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined
+\series default
+ is used in the above command.)
 \end_layout
 
 \begin_layout Subsection

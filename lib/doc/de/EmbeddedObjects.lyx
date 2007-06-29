@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -105,6 +105,8 @@
 \usepackage{booktabs}
 
 % wird benutzt, um Tabellenzellen zu vergroessern
+\@ifundefined{extrarowheight}
+ {\usepackage{array}}{}
 \setlength{\extrarowheight}{2pt}
 
 % wird fuer benutzerdefinierte Tabellen benutzt
@@ -122,10 +124,6 @@
 
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
-
-% Um ° und · direkt in LyX zu schreiben
-\DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
-\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
 % Setzt einen zusaetzlichen Abstand von
 % 1.5 mm zwischen Fussnoten
@@ -205,6 +203,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
 \author "usti" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
 \author "Uwe Stöhr" 
@@ -15112,7 +15111,22 @@ hline
 \backslash
 renewcommand{
 \backslash
-hline}{
+hline}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
 \backslash
 arrayrulecolor{red}
 \backslash
@@ -15142,7 +15156,12 @@ hline
 \backslash
 renewcommand{
 \backslash
-hline}{
+hline}
+\end_layout
+
+\begin_layout Standard
+
+ {
 \backslash
 arrayrulecolor{red}
 \backslash
@@ -15313,6 +15332,7 @@ reference "tab:Table-with-colored"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -15557,7 +15577,7 @@ reference "abs:Formale-Tabellen"
  fügt LyX standardmäßig 0.5\InsetSpace \thinspace{}
 em Leerraum ein.
  Bei normalen Tabellen werden die vertikalen Linien leider nicht mit verlängert:
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -15636,7 +15656,7 @@ hspace*{0pt}
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -15663,7 +15683,7 @@ Zeilen fügt zwischen zwei Zeilen zusätzlichen Leerraum ein.
  Bei einer formalen Tabelle fügt LyX standardmäßig 0.5\InsetSpace \thinspace{}
 em Leerraum ein.
  Bei normalen Tabellen werden die vertikalen Linien leider nicht mit verlängert:
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -15757,7 +15777,7 @@ hspace*{0pt}
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -15767,13 +15787,38 @@ n Linien verwenden.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie die Höhe aller Zellen vergrößern wollen, können Sie das mit folgendem
- Befehle im LaTeX-Vorspann machen:
+\begin_inset VSpace bigskip
+\end_inset
+
+Wenn Sie die Höhe aller Zellen vergrößern wollen, können Sie das mit folgenden
+ Befehlen im LaTeX-Vorspann machen:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined{extrarowheight}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{array}}{}
+\newline
 
 \backslash
 setlength{
@@ -15784,6 +15829,20 @@ extrarowheight}{Höhe}
 \begin_layout Standard
 Aber das hat den Nachteil, dass die Zelltexte nicht mehr genau vertikal
  ausgerichtet sind.
+ (Das Paket 
+\series bold
+array
+\series default
+ wird automatisch von LyX geladen, wenn Sie selbst-definierte Tabellenformate
+ verwenden.
+ Der Befehl 
+\series bold
+
+\backslash
+@ifundef\SpecialChar \textcompwordmark{}
+ined
+\series default
+ vermeidet, dass es in diesem Fall doppelt geladen wird.)
 \end_layout
 
 \begin_layout Subsection
@@ -27197,13 +27256,14 @@ color
 status collapsed
 
 \begin_layout Standard
-
+Der Befehl 
 \series bold
 
 \backslash
-@ifundefined
+@ifundef\SpecialChar \textcompwordmark{}
+ined
 \series default
- vermeidet ein doppeltes Laden.
+ vermeidet, dass es in diesem Fall doppelt geladen wird.
 \end_layout
 
 \end_inset
