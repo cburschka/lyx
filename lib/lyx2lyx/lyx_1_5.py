@@ -1848,8 +1848,8 @@ Forced output is currently not enforced'''
     spec_chars = {}
     for line in fp.readlines():
         if line[0] != '#':
-            line=line.replace(' "',' ') # remove all qoutation marks with spaces before
-            line=line.replace('" ',' ') # remove all qoutation marks with spaces after
+            line=line.replace(' "',' ') # remove all quotation marks with spaces before
+            line=line.replace('" ',' ') # remove all quotation marks with spaces after
             line=line.replace(r'\"','"') # replace \" by " (for characters with diaresis)
             try:
                 # flag1 and flag2 are preamble & flags
