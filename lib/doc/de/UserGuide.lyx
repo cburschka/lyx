@@ -97,9 +97,9 @@
 \tracking_changes false
 \output_changes false
 \author "Anonymous" 
+\author "Hartmut Haase" hha4491@atomstromfrei.de
 \author "Uwe Stöhr" 
 \author "usti" 
-\author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
 \begin_body
@@ -179,7 +179,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
+letzte Änderung: 30.
  Juni 2007
 \end_layout
 
@@ -4773,7 +4773,9 @@ begin
 \family default
 \emph on
 en\SpecialChar \-
-vironment
+vi\SpecialChar \-
+ron\SpecialChar \-
+ment
 \family typewriter
 \emph default
 } ...
@@ -10032,7 +10034,8 @@ anderen
 \emph on
 Aufzählung
 \family default
--Umgebungen
+-Umgebun\SpecialChar \-
+gen
 \emph default
 , die sie umgeben, bestimmen die Marke, die LyX für einen 
 \family sans
@@ -11182,17 +11185,17 @@ name "Sprache (ändern)"
  Wenn Sie zum Beispiel längeren englischen Text in Ihr Dokument einfügen
  wollen, berücksichtigt LaTeX für diesen Teil automatisch die englische
  Silbentrennung.
- Wenn Sie für die Rechtschreibprüfung (Abschnitt 
+ Wenn Sie 
+\family typewriter
+aspell
+\family default
+ für die Rechtschreibprüfung (Abschnitt 
 \begin_inset LatexCommand vref
 reference "sec:spellchecking"
 
 \end_inset
 
-) 
-\family typewriter
-aspell
-\family default
- benutzen, werden dann auch die englisch markierten Wörter nach dem englischen
+) benutzen, werden dann auch die englisch markierten Wörter nach dem englischen
  Wörterbuch geprüft.
 \end_layout
 
@@ -12913,7 +12916,10 @@ Strg+\InsetSpace \thinspace{}
 ), den Sie auch unter 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Sonderzeichen
+Son\SpecialChar \-
+der\SpecialChar \-
+zei\SpecialChar \-
+chen
 \family default
  finden, um einen Leerraum wie zwischen Sätzen zu erzwingen.
 \end_layout
@@ -23244,7 +23250,11 @@ Allerdings ist sie sehr hilfreich um zu lernen, wie man die Formeln schreibt.
  Wenn Sie sich nur für die gedruckte Version interessieren, sollten Sie
  sich die Dateien 
 \family typewriter
-Mathebefehle.pdf
+Ma\SpecialChar \-
+the\SpecialChar \-
+be\SpecialChar \-
+feh\SpecialChar \-
+le.pdf
 \family default
 , 
 \family typewriter
@@ -23435,7 +23445,10 @@ reference "sub:Create-macro"
 
 \end_inset
 
- (Typ 1 + Typ 4),
+ (Typ 1 + Typ 4).
+ Wenn Sie bei Verwendung dieses Typs Probleme mit LaTeX bekommen sollten,
+ verwenden Sie bitte einen anderen oder formulieren Sie den Text mit dem
+ Querverweis etwas anders.
 \end_layout
 
 \begin_layout Enumerate
@@ -26125,7 +26138,9 @@ Dokument-Einstellungen
  hat Optionen für Sprache, Papiergröße und Zeichenkodierung.
  Um Ihre Sprache auszuwählen, klicken Sie im Dialogfenster 
 \family sans
-Dokument-Ein\SpecialChar \-
+Do\SpecialChar \-
+ku\SpecialChar \-
+ment-Ein\SpecialChar \-
 stel\SpecialChar \-
 lungen\SpecialChar \menuseparator
 Sprache
@@ -26331,7 +26346,8 @@ Kodierung
 \family default
  im Dialogfenster 
 \family sans
-Dokument-Einstellungen
+Dokument-Einstellun\SpecialChar \-
+gen
 \family default
  gewählt haben, aber die 
 \family typewriter
@@ -30089,7 +30105,7 @@ Unterdokument
 \emph on
 Handbuchergänzungen
 \emph default
- und 
+ und Abschnitt 
 \begin_inset LatexCommand vref
 reference "sub:Unterdokument..."
 
@@ -31053,23 +31069,32 @@ Damit können Sie Bitmap-Dateien mit unterschiedlichen Dateitypen einfügen:
 \end_layout
 
 \begin_layout Description
-ChessDiagram sind Bilder mit der Endung .
+Schachdiagramm unterstützt Schachdiagramme, die mit dem Programm 
+\family sans
+XBoard
+\family default
+ erzeugt wurden.
+ (Bilder mit der Endung .
 \family typewriter
 fen
 \family default
-.
+)
 \end_layout
 
 \begin_layout Description
-Date fügt das heutige Datum ein.
+Datum fügt das heutige Datum ein.
 \end_layout
 
 \begin_layout Description
-LilyPond 
+LilyPond Mit dieser Vorlage können Sie Noten mit dem Programm 
+\family sans
+LilyPond
+\family default
+ schreiben.
 \end_layout
 
 \begin_layout Description
-RasterImage sind Bitmap-Dateien mit der Endung .
+Rastergrafik sind Bitmap-Dateien mit der Endung .
 \family typewriter
 gif
 \family default
@@ -31113,7 +31138,7 @@ xbm
 \end_layout
 
 \begin_layout Description
-Xfig fügt ein Xfig-Bild ein
+XFig fügt ein Xfig-Bild ein
 \end_layout
 
 \begin_layout Standard
@@ -31932,7 +31957,8 @@ status collapsed
 
 
 \family sans
-X: Einstellungen
+X: Einstellun\SpecialChar \-
+gen
 \family default
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
