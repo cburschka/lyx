@@ -1372,17 +1372,15 @@ def convert_graphics_rotation(document):
             document.warning("Malformed LyX document: Could not find end of graphics inset.")
         # Seach for rotateAngle and width or height or scale
         # If these params are not there, nothing needs to be done.
-        # FIXME: this also inserts scaleBeforeRotation if "rotateAngle" is not there!
-        for k in range(i+1, j):
-            if (document.body[k].find("rotateAngle") and \
-                (document.body[k].find("width") or \
-                document.body[k].find("height") or \
-                document.body[k].find("scale"))):
-                        document.body.insert(j, 'scaleBeforeRotation')
+        k = find_token(document.body, "\trotateAngle", i + 1, j)
+        l = find_tokens(document.body, ["\twidth", "\theight", "\tscale"], i + 1, j)
+        if (k != -1 and l != -1):
+            document.body.insert(j, 'scaleBeforeRotation')
         i = i + 1
 
 
-# FIXME: does not work at all
+#
+# remove scaleBeforeRotation graphics param
 def revert_graphics_rotation(document):
     " remove scaleBeforeRotation graphics parameter. "
     i = 0
@@ -1394,24 +1392,27 @@ def revert_graphics_rotation(document):
         if j == -1:
             # should not happen
             document.warning("Malformed LyX document: Could not find end of graphics inset.")
-        for k in range(i+1, j):
-            # If there's a scaleBeforeRotation param, just remove that
-            if document.body[k].find('scaleBeforeRotation'):
-                del document.body[k]
-                break
+        # If there's a scaleBeforeRotation param, just remove that
+        k = find_token(document.body, "\tscaleBeforeRotation", i + 1, j)
+        if k != -1:
+            del document.body[k]
+        else:
             # if not, and if we have rotateAngle and width or height or scale,
             # we have to put the rotateAngle value to special
-            rotateAngle = get_value(document.body, 'rotateAngle', i+1, j)
-            special = get_value(document.body, 'special', i+1, j)
-            if (document.body[k].find("width") or \
-                document.body[k].find("height") or \
-                document.body[k].find("scale") and \
-                document.body[k].find("rotateAngle")):
-                    if special == "":
-                        document.body.insert(j-1, '\tspecial angle=%s' % rotateAngle)
-                    else:
-                        l = find_token(document.body, "special", i+1, j)
-                        document.body[l].replace(special, 'angle=%s,%s' % (rotateAngle, special))
+            rotateAngle = get_value(document.body, 'rotateAngle', i + 1, j)
+            special = get_value(document.body, 'special', i + 1, j)
+            if rotateAngle != "":
+                k = find_tokens(document.body, ["\twidth", "\theight", "\tscale"], i + 1, j)
+                if k == -1:
+                    break
+                if special == "":
+                    document.body.insert(j-1, '\tspecial angle=%s' % rotateAngle)
+                else:
+                    l = find_token(document.body, "\tspecial", i + 1, j)
+                    document.body[l] = document.body[l].replace(special, 'angle=%s,%s' % (rotateAngle, special))
+                k = find_token(document.body, "\trotateAngle", i + 1, j)
+                if k != -1:
+                    del document.body[k]
         i = i + 1
 
 
