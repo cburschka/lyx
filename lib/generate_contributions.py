@@ -841,6 +841,14 @@ contributers = [
                  "28 December 2005",
                  u"Polish translation and mw* layouts files"),
 
+     contributer(u"Hangzai Luo",
+                 "memcache () gmail ! com",
+                 "GPL",
+                 "Re: [patch] tex2lyx crash when full path is given from commandline on Win32",
+                 "m=118326161706627",
+                 "1 July 2007",
+                 u"Bugfixes"),
+
      contributer(u"José Matos",
                  "jamatos () fc ! up ! pt",
                  "GPL",
