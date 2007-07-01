@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 265
+#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12,30 +12,27 @@
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
 
-\usepackage{ifpdf}
-
 % if pdflatex is used
+\usepackage{ifpdf}
 \ifpdf
 
 % set fonts for nicer pdf view
 \IfFileExists{lmodern.sty}
- % if it exists
- {\usepackage{lmodern}}
- % if it exists not
- {\usepackage[scaled=0.92]{helvet}
-   \usepackage{mathptmx}
-   \usepackage{courier}
- }
+ {\usepackage{lmodern}} % if it exists
+ {% if it exists not
+  \usepackage[scaled=0.92]{helvet}
+  \usepackage{mathptmx}
+  \usepackage{courier}
+ } % end if it exists not
 
 % link all cross references and URLs
 % in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  bookmarksopen, bookmarksopenlevel=0,
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=0,
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
   pdfauthor={LyX Team}, pdftex,
-  pdftitle={LYXs erweitertes Benutzerhandbuch},
+  pdftitle={Das LYX-Benutzerhandbuch},
   pdfsubject={LyX-Dokumentation, Benutzerhandbuch},
   pdfkeywords={LyX}]{hyperref}
 
@@ -76,9 +73,9 @@
 % Befehl aus Kapitel 7.4
 \newcommand{\extratablespace}[1]{\noalign{vskip#1}} 
 \end_preamble
-\options bibtotoc, idxtotoc
+\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
-\inputencoding auto
+\inputencoding latin1
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -97,22 +94,19 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\leftmargin 35mm
-\topmargin 35mm
-\rightmargin 35mm
-\bottommargin 35mm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
 \quotes_language german
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "Anonymous" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
+\author "Uwe Stöhr" 
 \end_header
 
 \begin_body
@@ -150,8 +144,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
- April 2007
+letzte Änderung: 1.
+ Juli 2007
 \end_layout
 
 \begin_layout Standard
@@ -433,7 +427,11 @@ WYSIWYM
 status open
 
 \begin_layout Standard
-What You See Is What You Mean 
+
+\lang english
+What You See Is What You Mean
+\lang ngerman
+ 
 \begin_inset Note Note
 status collapsed
 
@@ -448,7 +446,7 @@ Sprache
 \family default
  oder 
 \begin_inset Graphics
-	filename /windows/D/EigeneDateien/LyX/Dokumentation/15x/images/dialog-show_character.xpm
+	filename ../../images/dialog-show_character.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -1825,6 +1823,18 @@ Beispiel 1: Verschiebungen (Offsets)
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Es gibt zwei LaTeX-Variablen, die die Seitenposition kontrollieren: 
 \family typewriter
 
@@ -1854,6 +1864,19 @@ hoffset
 voffset
 \family default
 .
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2086,7 +2109,9 @@ Einstellungen
 \SpecialChar \menuseparator
 
 \family sans
-Textformat
+Text\SpecialChar \-
+for\SpecialChar \-
+mat
 \family default
 \SpecialChar \menuseparator
 
@@ -3046,7 +3071,13 @@ target "ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/"
 \family typewriter
 multibib
 \family default
- -- ist, dass Sie keine neuen Literaturverzeichnis-Befehle definieren müssen.
+ -- ist, dass Sie keine neuen Li\SpecialChar \-
+te\SpecialChar \-
+ra\SpecialChar \-
+tur\SpecialChar \-
+ver\SpecialChar \-
+zeich\SpecialChar \-
+nis-Befehle definieren müssen.
  Stattdessen müssen Sie verschiedene Literaturverzeichnis-Datenbanken erstellen,
  die die Einträge für die verschiedenen Abschnitte des Literaturverzeichnisses
  enthalten.
@@ -3473,7 +3504,7 @@ captionsgerman{
 \backslash
 renewcommand{
 \backslash
-indexname}{Stichwort-ver-zeich-nis}}
+indexname}{Stich-wort-ver-zeich-nis}}
 \end_layout
 
 \begin_layout Standard
@@ -4118,7 +4149,8 @@ Seiten-Stil
 fancy
 \family default
  einstellen.
- Dieser Abschnitt beschreibt, welche LaTeX-Befehle Sie im LaTeX-Vorspann
+ Dieser Abschnitt beschreibt, welche La\SpecialChar \-
+TeX-Befehle Sie im LaTeX-Vorspann
  einfügen müssen, um den gewünschten Effekt zu erzielen.
 \end_layout
 
@@ -4991,7 +5023,7 @@ Beachten Sie, dass sich der horizontale Trennstrich auf beiden Seiten ein
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features>
-<column alignment="left" valignment="top" width="0pt" special="@{} l">
+<column alignment="left" valignment="top" leftline="true" rightline="true" width="0pt" special="@{} l">
 <column alignment="left" valignment="top" leftline="true" width="0pt" special="l @{}">
 <row bottomline="true">
 <cell alignment="left" valignment="top" topline="true" usebox="none">
@@ -6216,7 +6248,7 @@ Hiermit können Word-Dokumente (.
 doc
 \family default
 -Dateien) importiert werden.
- Das ist sehr hilfreich, wenn Sie Dokumente aus der Windows-Welt bekommen
+ Das ist sehr hilfreich, wenn Sie Dokumente aus der Windoof-Welt bekommen
  und in LyX umsetzen müssen.
 \end_layout
 
@@ -7124,6 +7156,18 @@ Benutzerdefiniert\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Benutzerdefinierte Exporte (
 \family sans
 Datei
@@ -7153,6 +7197,19 @@ Export-Formate:
  festgelegt.
  LyX wird bis zu dem Befehl normal konvertieren und dann an den Konverter
  übergeben.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8279,7 +8336,8 @@ Werkzeuge
 Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
-LaTe
+La\SpecialChar \-
+Te
 \begin_inset ERT
 status collapsed
 
@@ -8298,7 +8356,10 @@ ChkTeX-Befehl:
 chktexrc
 \family default
  ändern.
- Weiter unten sehen Sie, welche Warnungen Sie auf der Kommandozeile (de)aktivier
+ Weiter unten sehen Sie, welche Warnungen Sie auf der Kommandozeile (de)ak\SpecialChar \-
+ti\SpecialChar \-
+vie\SpecialChar \-
+r
 en können.
 \end_layout
 
@@ -14957,6 +15018,18 @@ secnumdepth
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Entfernen Sie alle Zeilen zwischen (einschließlich) 
 \family typewriter
 
@@ -14983,6 +15056,19 @@ User specified LaTeX commands
 .tex
 \family default
 -Datei stehen).
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -15882,7 +15968,7 @@ Ressler(1992)
 \family default
  und nicht 
 \family typewriter
-Ressler\InsetSpace ~
+Ressler\InsetSpace \space{}
 (1992)
 \family default
 .
@@ -16012,6 +16098,18 @@ Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 The ijmpc package is a set of macros that facilitates electronic manuscript
  submission to the 
 \emph on
@@ -16041,7 +16139,9 @@ target "http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml"
 
 \end_inset
 
- and 
+ 
+\newline
+and 
 \begin_inset LatexCommand url
 target "http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml"
 
@@ -16060,6 +16160,19 @@ article
  Most of their features are supported by LyX.
  I have used LyX successfully to write articles submitted to both journals
  without any problem.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16198,6 +16311,18 @@ Classification Codes
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Several new environments are available: 
 \begin_inset Quotes eld
 \end_inset
@@ -16314,6 +16439,19 @@ Conjecture
  Their use is more or less obvious.
  LyX supports all these environments; it will use the proper label, text
  style, and numbering scheme for each of them.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -16585,88 +16723,6 @@ Ein Papier zum Versenden vorbereiten
 \end_layout
 
 \begin_layout Standard
-Before you submit your paper you must export the LyX document as a LaTeX
- file (
-\family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-a
-\family default
-T
-\family sans
-eX
-\family default
-)
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Actually you have the choice between LaTeX (plain) and pdflatex.
- If you intend to use pdflatex to prepare the paper, you should use the
- pdflatex option so that included graphics are converted to PDF format,
- ready for use by pdflatex.
-\end_layout
-
-\end_inset
-
-, then make the following changes to the resulting 
-\family typewriter
-.tex
-\family default
- file.
-\end_layout
-
-\begin_layout Enumerate
-Remove the comment lines before the 
-\family typewriter
-
-\backslash
-documentclass
-\family default
- command.
-\end_layout
-
-\begin_layout Enumerate
-Remove everything between (and including) the 
-\family typewriter
-
-\backslash
-makeatletter
-\family default
- and 
-\family typewriter
-
-\backslash
-makeatother
-\family default
- commands, except for any commands you specifically put into the LaTeX preamble.
-\end_layout
-
-\begin_layout Standard
-The modified 
-\family typewriter
-.tex
-\family default
- file should be saved and processed through LaTeX as many times as necessary.
- You may also want to check the resulting 
-\family typewriter
-.dvi
-\family default
- document.
-\end_layout
-
-\begin_layout Standard
 Bevor Sie Ihr Papier versenden, müssen Sie es als LaTeX-Datei (
 \family sans
 Datei
@@ -16692,7 +16748,20 @@ status collapsed
 
 X
 \family default
-) exportieren.
+)
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Actually you have the choice between LaTeX (plain) and pdflatex.
+ If you intend to use pdflatex to prepare the paper, you should use the
+ pdflatex option so that included graphics are converted to PDF format,
+ ready for use by pdflatex.
+\end_layout
+
+\end_inset
+
+ exportieren.
  Dann
 \end_layout
 
@@ -16717,7 +16786,9 @@ makeatletter
 \family typewriter
 
 \backslash
-makeatother
+make\SpecialChar \-
+at\SpecialChar \-
+other
 \family default
 , mit Ausnahme derjenigen Einträge, die Sie selber in den LaTeX-Vorspann
  eingefügt haben.
@@ -17128,6 +17199,18 @@ Bernd Rellermeyer
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Die LyX-Dokumentenklassen 
 \family sans
 article (koma-script)
@@ -17196,6 +17279,19 @@ letter.cls
 \family default
  und entsprechen in einigen Punkten besser den europäischen typographischen
  Konventionen.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -17292,7 +17388,15 @@ Dokument-Einstellungen
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/koma-script/scrguide.pdf).
+ (zum Beispiel 
+\newline
+
+\begin_inset LatexCommand url
+target "/usr/share/texmf/doc/latex/koma-script/scrguide.pdf"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
@@ -18105,7 +18209,13 @@ Letter
 Opening
 \family default
  definieren den Beginn des Briefes und müssen in jedem Brief verwendet werden.
- Zu deren Hervorhebung sind sie in der LyX-Dokumentenvorlage durch die Buchstabe
+ Zu deren Hervorhebung sind sie in der LyX-Do\SpecialChar \-
+ku\SpecialChar \-
+men\SpecialChar \-
+ten\SpecialChar \-
+vor\SpecialChar \-
+la\SpecialChar \-
+ge durch die Buchstabe
 n 
 \shape italic
 L
@@ -20796,8 +20906,11 @@ Allan Rae
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird beschrieben, wie Sie mit LyX Folien für Überkopf-Projek
-toren erstellen können.
+In diesem Abschnitt wird beschrieben, wie Sie mit LyX Folien für Überkopf-Pro\SpecialChar \-
+jek\SpecialChar \-
+
+to\SpecialChar \-
+ren erstellen können.
  Es gibt zwei verschiedene Dokumentenklassen, mit denen Sie dies realisieren
  können: Die normale Klasse 
 \family sans
@@ -23862,6 +23975,18 @@ Rod Pinna
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Elsevier Science Publishers B.V.
  stellt eine Standard-LaTeX-Dokumentenklasse (
 \family typewriter
@@ -23878,6 +24003,19 @@ target "http://authors.elsevier.com/"
  heruntergeladen werden.
  Anweisungen stehen in der Klassendatei, die die Anforderungen an die Verleger
  genau beschreibt.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
