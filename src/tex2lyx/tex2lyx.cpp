@@ -62,6 +62,7 @@ using support::isStrUnsignedInt;
 using support::ltrim;
 using support::makeAbsPath;
 using support::onlyPath;
+using support::os::internal_path;
 using support::rtrim;
 using support::isFileReadable;
 
@@ -306,7 +307,7 @@ int parse_syntaxfile(string const & arg, string const &)
 		cerr << "Missing syntaxfile string after -s switch" << endl;
 		exit(1);
 	}
-	syntaxfile = arg;
+	syntaxfile = internal_path(arg);
 	return 1;
 }
 
@@ -323,7 +324,7 @@ int parse_sysdir(string const & arg, string const &)
 		cerr << "Missing directory for -sysdir switch" << endl;
 		exit(1);
 	}
-	cl_system_support = arg;
+	cl_system_support = internal_path(arg);
 	return 1;
 }
 
@@ -334,7 +335,7 @@ int parse_userdir(string const & arg, string const &)
 		cerr << "Missing directory for -userdir switch" << endl;
 		exit(1);
 	}
-	cl_user_support = arg;
+	cl_user_support = internal_path(arg);
 	return 1;
 }
 
@@ -512,7 +513,7 @@ int main(int argc, char * argv[])
 
 	lyx::support::os::init(argc, argv);
 
-	try { support::init_package(to_utf8(from_local8bit(argv[0])),
+	try { support::init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
 		cl_system_support, cl_user_support,
 		support::top_build_dir_is_two_levels_up);
 	} catch (support::ExceptionMessage const & message) {
@@ -521,15 +522,17 @@ int main(int argc, char * argv[])
 		if (message.type_ == support::ErrorException)
 			exit(1);
 	}
-
+	
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
-	string const infilename = makeAbsPath(to_utf8(from_local8bit(argv[1]))).absFilename();
+	string infilename = internal_path(to_utf8(from_local8bit(argv[1])));
+	infilename = makeAbsPath(infilename).absFilename();
+	
 	string outfilename;
 	if (argc > 2) {
-		outfilename = to_utf8(from_local8bit(argv[2]));
+		outfilename = internal_path(to_utf8(from_local8bit(argv[2])));
 		if (outfilename != "-")
-			outfilename = makeAbsPath(to_utf8(from_local8bit(argv[2]))).absFilename();
+			outfilename = makeAbsPath(outfilename).absFilename();
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 
