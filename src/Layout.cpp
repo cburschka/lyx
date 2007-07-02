@@ -820,5 +820,16 @@ string const & Layout::depends_on() const
 	return depends_on_;
 }
 
+Layout * Layout::forCaption()
+{
+	Layout * lay = new Layout();
+	lay->name_ = "Caption";
+	lay->latexname_ = "caption";
+	lay->latextype = LATEX_COMMAND;
+	lay->optionalargs = 1;
+	return lay;
+}
+
+
 
 } // namespace lyx

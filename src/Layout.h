@@ -338,6 +338,11 @@ public:
 	/// Depth of XML command
 	int commanddepth;
 
+	/// Return a pointer on a new layout suitable to describe a caption.
+	/// FIXME: remove this eventually. This is only for tex2lyx
+	/// until it has proper support for the caption inset (JMarc)
+	static Layout * forCaption();
+
 private:
 	/// Name of the layout/paragraph environment
 	std::string name_;

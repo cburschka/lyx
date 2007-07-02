@@ -1514,6 +1514,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 		}
 
+		// Special handling for \caption
+		// FIXME: remove this when InsetCaption is supported.
+		else if (context.new_layout_allowed &&
+			 t.cs() == captionlayout->latexname()) {
+			output_command_layout(os, p, outer, context, 
+					      captionlayout);
+			p.skip_spaces();
+		}
+
 		else if (t.cs() == "includegraphics") {
 			bool const clip = p.next_token().asInput() == "*";
 			if (clip)
