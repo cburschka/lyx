@@ -121,7 +121,8 @@ void Dialog::apply()
 {
 	if (controller().isBufferDependent()) {
 		if (!kernel().isBufferAvailable() ||
-		    kernel().isBufferReadonly())
+		    (kernel().isBufferReadonly() &&
+		     !controller().canApplyToReadOnly()))
 			return;
 	}
 
@@ -188,7 +189,7 @@ void Dialog::checkStatus()
 		bc().readOnly(readonly);
 		// refreshReadOnly() is too generous in _enabling_ widgets
 		// update dialog to disable disabled widgets again
-		if (!readonly)
+		if (!readonly || controller().canApplyToReadOnly())
 			view().update();
 	} else
 		bc().readOnly(true);

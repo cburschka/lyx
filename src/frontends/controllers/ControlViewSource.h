@@ -37,6 +37,8 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 	///
 	bool canApply() const { return true; }
+	///
+	virtual bool canApplyToReadOnly() const { return true; }
 
 	/// The title displayed by the dialog reflects source type.
 	docstring const title() const;

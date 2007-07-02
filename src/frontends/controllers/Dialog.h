@@ -161,6 +161,12 @@ public:
 	 */
 	virtual bool isBufferDependent() const = 0;
 
+	/** \return true if the dialog can apply data also
+	 *  for ReadOnly buffers.
+	 *  This has to be distinguished from isBufferDependent()
+	 */
+	virtual bool canApplyToReadOnly() const { return false; }
+
 	/** The lfun that is sent for applying the data.
 	 *
 	 * This method is used by the default implementation of canApply()
