@@ -864,7 +864,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ERTUi.ui:66
 msgid "O&pen"
-msgstr ""
+msgstr "打开(&p)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:51
 #, fuzzy
@@ -2585,15 +2585,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrintUi.ui:82
 msgid "Page number to print to"
-msgstr ""
+msgstr "打印页码"
 
 #: src/frontends/qt4/ui/PrintUi.ui:91 src/frontends/qt4/ui/PrintUi.ui:104
 msgid "Print all pages"
-msgstr ""
+msgstr "打印所有页"
 
 #: src/frontends/qt4/ui/PrintUi.ui:94
 msgid "Fro&m"
-msgstr ""
+msgstr "从(&m)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:107
 #, fuzzy
@@ -2602,11 +2602,11 @@ msgstr "全部(&A)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:119
 msgid "Print &odd-numbered pages"
-msgstr ""
+msgstr "打印奇数页(&o)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:129
 msgid "Print &even-numbered pages"
-msgstr ""
+msgstr "打印偶数页(&o)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:139
 msgid "Print in reverse order"
@@ -2641,23 +2641,23 @@ msgstr "打印(&P)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:261
 msgid "Print Destination"
-msgstr ""
+msgstr "打印至"
 
 #: src/frontends/qt4/ui/PrintUi.ui:273
 msgid "Send output to the printer"
-msgstr ""
+msgstr "打印输出"
 
 #: src/frontends/qt4/ui/PrintUi.ui:276
 msgid "P&rinter:"
-msgstr ""
+msgstr "打印机(&r)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:286
 msgid "Send output to the given printer"
-msgstr ""
+msgstr "打印至指定打印机"
 
 #: src/frontends/qt4/ui/PrintUi.ui:293 src/frontends/qt4/ui/PrintUi.ui:306
 msgid "Send output to a file"
-msgstr ""
+msgstr "输出至文件"
 
 #: src/frontends/qt4/ui/RefUi.ui:46
 msgid "La&bels in:"
@@ -2947,7 +2947,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:796
 msgid "&Longtable"
-msgstr ""
+msgstr "长表格(&L)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:824
 msgid "Set a page break on the current row"
@@ -2978,11 +2978,11 @@ msgstr "页脚："
 
 #: src/frontends/qt4/ui/TabularUi.ui:870
 msgid "First header:"
-msgstr ""
+msgstr "第一页首"
 
 #: src/frontends/qt4/ui/TabularUi.ui:877
 msgid "Last footer:"
-msgstr ""
+msgstr "最后页尾"
 
 #: src/frontends/qt4/ui/TabularUi.ui:884
 #, fuzzy
@@ -3026,16 +3026,16 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:993
 #: src/frontends/qt4/ui/TabularUi.ui:1000
 msgid "double"
-msgstr ""
+msgstr "双"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1007
 msgid "Don't output the last footer"
-msgstr ""
+msgstr "不输出最后页尾"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1010
 #: src/frontends/qt4/ui/TabularUi.ui:1020
 msgid "is empty"
-msgstr ""
+msgstr "是空"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1017
 msgid "Don't output the first header"
@@ -7750,23 +7750,23 @@ msgstr "威尔士语"
 
 #: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:20
 msgid "File|F"
-msgstr ""
+msgstr "文件|F"
 
 #: lib/ui/classic.ui:33 lib/ui/stdmenus.inc:21
 msgid "Edit|E"
-msgstr ""
+msgstr "编辑|E"
 
 #: lib/ui/classic.ui:34 lib/ui/stdmenus.inc:23
 msgid "Insert|I"
-msgstr ""
+msgstr "插入|I"
 
 #: lib/ui/classic.ui:35
 msgid "Layout|L"
-msgstr ""
+msgstr "布局|L"
 
 #: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:22
 msgid "View|V"
-msgstr ""
+msgstr "视图|V"
 
 #: lib/ui/classic.ui:37 lib/ui/stdmenus.inc:24
 msgid "Navigate|N"
@@ -7782,27 +7782,27 @@ msgstr ""
 
 #: lib/ui/classic.ui:47 lib/ui/stdmenus.inc:35
 msgid "New|N"
-msgstr ""
+msgstr "新建(N)|N"
 
 #: lib/ui/classic.ui:48
 msgid "New from Template...|T"
-msgstr ""
+msgstr "从模版新建文件(T)...|T"
 
 #: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:37
 msgid "Open...|O"
-msgstr ""
+msgstr "打开(O)...|O"
 
 #: lib/ui/classic.ui:51 lib/ui/stdmenus.inc:40
 msgid "Close|C"
-msgstr ""
+msgstr "关闭(C)|C"
 
 #: lib/ui/classic.ui:52 lib/ui/stdmenus.inc:41
 msgid "Save|S"
-msgstr ""
+msgstr "保存(S)|S"
 
 #: lib/ui/classic.ui:53 lib/ui/stdmenus.inc:42
 msgid "Save As...|A"
-msgstr ""
+msgstr "另存为(A)...|A"
 
 #: lib/ui/classic.ui:54 lib/ui/stdmenus.inc:43
 msgid "Revert|R"
@@ -8613,7 +8613,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:36
 msgid "New from Template...|m"
-msgstr ""
+msgstr "从模版新建文件(m)...|m"
 
 #: lib/ui/stdmenus.inc:38
 msgid "Open Recent|t"
@@ -8621,15 +8621,15 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:51
 msgid "New Window|W"
-msgstr ""
+msgstr "新建窗口(W)|W"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Close Window|d"
-msgstr ""
+msgstr "关闭窗口(d)|d"
 
 #: lib/ui/stdmenus.inc:85
 msgid "Redo|R"
-msgstr ""
+msgstr "重作(R)|R"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
 #: src/mathed/InsetMathNest.cpp:469
