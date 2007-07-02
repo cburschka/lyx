@@ -1,8 +1,9 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
+\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -13,11 +14,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-\graphics none
+\graphics default
 \paperfontsize default
 \spacing single
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_amsmath 0
 \use_esint 0
 \cite_engine basic
@@ -33,12 +34,13 @@
 \defskip medskip
 \quotes_language german
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "Anonymous" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
+\author "usti" 
 \end_header
 
 \begin_body
@@ -69,7 +71,11 @@ Hartmut
 \noun on
 Haase 
 \noun default
-und 
+(
+\noun on
+HHa
+\noun default
+) und 
 \noun on
 Peter Sütterlin
 \noun default
@@ -82,8 +88,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
- März 2007
+letzte Änderung: 2.
+ Juli 2007
 \end_layout
 
 \begin_layout Standard
@@ -138,6 +144,10 @@ Ruhm und Ehre
 
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Chapter
 Die Ly
 \begin_inset ERT
@@ -165,6 +175,10 @@ Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -1011,12 +1025,24 @@ target "lyx-docs@lists.lyx.org"
  nicht beantwortet werden, gibt es eine sehr aktive Mailing-Liste, die Sie
  unter 
 \family typewriter
-lyx-users@lists.lyx.org
+
+\begin_inset LatexCommand url
+target "lyx-users@lists.lyx.org"
+
+\end_inset
+
+
 \family default
  erreichen können.
  Außerdem könnten Sie bei 
 \family typewriter
-http://wiki.lyx.org/
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/"
+
+\end_inset
+
+
 \family default
  vorbeischauen.
 \end_layout
@@ -1057,10 +1083,7 @@ Fußnote
  Um das Inhaltsverzeichnis zu betrachten, klicken Sie entweder auf den entsprech
 enden grauen Kasten oder wählen Sie das Menü 
 \family sans
-\bar under
-N
-\bar default
-avigieren
+Navigieren
 \family default
 , dort wird der Inhalt ebenfalls automatisch angezeigt -- Versuchen Sie
  es einmal!
@@ -1157,7 +1180,7 @@ Hervorgehoben
 \family typewriter
 Schreibmaschine
 \family default
- kennzeichnet Programmtext und Dateinamen, LaTeX- und/oder LyX-Code und
+ kennzeichnet Programmtext und Dateinamen, LaTeX- und/ oder LyX-Code und
  Funktionen.
 \end_layout
 

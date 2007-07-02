@@ -1,11 +1,12 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 265
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
 %\usepackage{graphics}
 \end_preamble
+\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -20,7 +21,7 @@
 \paperfontsize default
 \spacing single
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 0
 \cite_engine basic
@@ -36,12 +37,13 @@
 \defskip medskip
 \quotes_language german
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "Anonymous" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
+\author "usti" 
 \end_header
 
 \begin_body
@@ -81,8 +83,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
- März 2007
+letzte Änderung: 2.
+ Juli 2007
 \end_layout
 
 \begin_layout Standard
@@ -242,15 +244,8 @@ Einführung
 \emph default
  wird mit 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-inführung
+Hilfe\SpecialChar \menuseparator
+Einführung
 \family default
  geöffnet).
 \end_layout
@@ -969,8 +964,7 @@ gibt
 \end_layout
 
 \begin_layout Standard
-Viele kommerzielle Textverarbeitungen basieren heutzutage auf dem WYSIWYG-Prinzi
-p: 
+Viele Textverarbeitungen basieren heutzutage auf dem WYSIWYG-Prinzip: 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1056,20 +1050,9 @@ taste
 \family default
  (oder 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-Formati
-\bar under
-e
-\bar default
-rung\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-eschütztes\InsetSpace \space{}
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Geschütztes\InsetSpace \space{}
 Leerzeichen
 \family default
 ) erzeugen, und das am Bildschirm als kleines, rötliches 
@@ -1711,8 +1694,7 @@ Eingabe
  Wenn Sie in einem Listenelement mehr als einen Absatz unterbringen wollen,
  müssen Sie ein 
 \family sans
-Geschütztes\InsetSpace ~
-Zeilenende
+Zeileumbruch
 \family default
  durch Eingabe von 
 \family sans
@@ -2336,8 +2318,8 @@ Vorlage
 Öffnen Sie eine neue Datei über den Menüpunkt 
 \family sans
 Datei\SpecialChar \menuseparator
-Neu\InsetSpace ~
-von\InsetSpace ~
+Neu\InsetSpace \space{}
+von\InsetSpace \space{}
 Vorlage
 \family default
 \SpecialChar \ldots{}
@@ -2360,7 +2342,7 @@ Absender-Adresse
 .
  Andere, wie etwa 
 \family sans
-Zitat\InsetSpace ~
+Zitat\InsetSpace \space{}
 (kurz)
 \family default
  oder 
@@ -2729,8 +2711,8 @@ Querverweis
 .
  Wenn Sie nun auf 
 \family sans
-Gehe\InsetSpace ~
-zur\InsetSpace ~
+Gehe\InsetSpace \space{}
+zur\InsetSpace \space{}
 Marke
 \family default
  klicken, wird der Cursor an die entsprechende Stelle im Text positioniert,
@@ -2814,15 +2796,8 @@ Fußnoten und Randnotizen
 \begin_layout Standard
 Fußnoten können Sie entweder über den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-ußnote
+Einfügen\SpecialChar \menuseparator
+Fußnote
 \family default
  oder das Symbol 
 \begin_inset Graphics
@@ -3069,15 +3044,8 @@ Gehen Sie nun an eine Stelle im Dokument, an der Sie ein Zitat einfügen
  wollen.
  Tun Sie dies über den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-Z
-\bar default
-itat
+Einfügen\SpecialChar \menuseparator
+Zitat
 \family default
 \SpecialChar \ldots{}
  Das Dialogfenster 
@@ -3130,7 +3098,7 @@ dvi
 \begin_layout Standard
 Und die anderen Felder in den Dialogfenstern? Mit dem Eintrag 
 \family sans
-Text\InsetSpace ~
+Text\InsetSpace \space{}
 danach
 \family default
  im Dialog 
@@ -3193,8 +3161,8 @@ vor
  der ersten Kapitelüberschrift und wählen dann den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Liste\InsetSpace ~
-/\InsetSpace ~
+Liste\InsetSpace \space{}
+/\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
 Inhaltsverzeichnis
 \family default
@@ -3369,6 +3337,8 @@ Einfügepunkt
  wird.
  Das Rechteck zeigt an, dass man im Mathematik-Editor ist.
  LyX platziert den Cursor in dem blauen Quadrat.
+ Außerdem erscheint am unteren Rand eine weitere Werkzeugleiste zur Eingabe
+ von Mathe-Symbolen und -Konstrukten.
 \end_layout
 
 \begin_layout Standard
@@ -3731,20 +3701,9 @@ Exponenten und Indizes
 \begin_layout Standard
 Ein Exponent kann über das Menü 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-Formati
-\bar under
-e
-\bar default
-rung\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-ochgestellt
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Hochgestellt
 \family default
  eingegeben werden, doch es ist wirklich einfacher, die 
 \begin_inset Quotes gld
@@ -3811,44 +3770,33 @@ Mit der Tafel der Mathematiksymbole kann man mathematische Symbole bequem
  durchführen.
  Viele davon können Sie auch über die Tastatur oder das 
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
 -Menü aufrufen, an dieser Stelle konzentrieren wir uns aber auf den Gebrauch
  der Symboltafel, damit Sie lernen, wie sie benutzt werden kann.
  Tastaturkontrollsequenzen können Sie später aus anderen Anleitungen lernen
  (ein Wink mit dem Zaunpfahl\SpecialChar \ldots{}
 ).
- Öffnen Sie deshalb jetzt die Symboltafel über den Menüpunkt 
+ Falls die Symboltafel nicht zu senen ist, kreuzen Sie über den Menüpunkt
+ 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe-Kontrollfläche
+Einfügen\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Mathe-Kontrollflächen\InsetSpace \space{}
+an/aus
 \family default
- und lassen Sie sie während des Lesens des Kapitels geöffnet.
-\end_layout
+ oder 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
 
-\begin_layout Standard
-Die Benutzung der Mathe-Kontrollfläche setzt voraus, dass Sie sich im Mathe-Modu
-s befinden.
- Dazu müssen Sie zunächst auf den Schalter 
-\begin_inset Formula $\frac{a+b}{c}$
-\end_inset
-
- klicken.
+\family sans
+Werkzeugleisten\SpecialChar \menuseparator
+Mathe-Kontrollflächen
+\family default
+\SpecialChar \menuseparator
+ an.
 \end_layout
 
 \begin_layout Subsection
@@ -3937,15 +3885,12 @@ Gruppensymbole wie Trennungsstriche, Klammern und Pfeile werden ähnlich,
 \end_inset
 
 ), anzuklicken.
- Nun muss auf einen linken Begrenzer mit dem 
-\emph on
-linken Mausknopf
-\emph default
- und auf einen rechten Begrenzer mit dem 
-\emph on
-rechten Mausknopf
-\emph default
- geklickt werden gleichen.
+ In dem Dialogfenster 
+\family sans
+Mathe-Trennzeichen
+\family default
+, das jetzt erscheint, klickt man in das linke Feld für einen linken Begrenzer
+ und in das rechte für einen rechten Begrenzer.
  Wenn Sie links und rechts die gleiche Klammer haben wollen, können Sie
  
 \family sans
@@ -4382,7 +4327,7 @@ Anzeige
 
 \end_inset
 
- im Dialogfeld 
+ in der unteren 
 \family sans
 Mathe\InsetSpace ~
 Kontrollfläche
@@ -4774,7 +4719,8 @@ Wechseln von Zeichenattributen, zum Beispiel um fetten Text in einem Ausdruck
 \end_layout
 
 \begin_layout Itemize
-Feineinstellung von Zeichensatzgrößen und Abständen innerhalb eines Ausdruckes.
+Feineinstellung von Zeichensatzgrößen und Abständen innerhalb eines Ausdru\SpecialChar \-
+ckes.
 \end_layout
 
 \begin_layout Itemize
@@ -5171,15 +5117,8 @@ gamma
 sin
 \family default
  in roter Schrift -- sie sind ja schon WYSIWYM.
- Diese Art der Eingabe ist sehr viel schneller als die Auswahl über den
- Dialog 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Mathe\SpecialChar \menuseparator
-Mathe-Kontrollfläche
-\family default
-, und vor allem für diejenigen, die bereits mit LaTeX vertraut sind, eine
- große Erleichterung.
+ Diese Art der Eingabe ist vor allem für diejenigen, die bereits mit LaTeX
+ vertraut sind, eine große Erleichterung.
 \end_layout
 
 \begin_layout Standard
@@ -5550,8 +5489,8 @@ bib
 -Datei einzubinden, verwenden Sie den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Liste\InsetSpace ~
-/\InsetSpace ~
+Liste\InsetSpace \space{}
+/\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
 BibTe
 \begin_inset ERT
@@ -5564,7 +5503,7 @@ status collapsed
 
 \end_inset
 
-X\InsetSpace ~
+X\InsetSpace \space{}
 Literaturverzeichnis
 \family default
 \SpecialChar \ldots{}
@@ -5637,22 +5576,12 @@ Sonstiges
 \begin_layout Standard
 Unter dem Menüpunkten 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-onderzeichen
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen
 \family default
  und 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Formatierung
 \family default
  finden Sie weitere besondere Zeichen, wie etwa Fortsetzungspunkte, erzwungene
@@ -5672,11 +5601,6 @@ Manchmal treten bei einem LaTeX-Lauf Fehler auf, also irgendwelche Dinge,
 de LaTeX-Meldung ausgegeben und der Cursor im LyX-Fenster in etwa an die
  Stelle gestellt, wo der Fehler auftrat.
  So können Sie meisten Fehler relativ leicht beheben.
-\end_layout
-
-\begin_layout Chapter
-\start_of_appendix
-Literaturverzeichnis
 \end_layout
 
 \begin_layout Bibliography
