@@ -393,7 +393,8 @@ namespace {
 	/// @return true if a string of length > 0 could be read.
 	///
 	bool readTypeOrKey(docstring & val, idocfstream & ifs,
-		docstring const & delimChars, charCase chCase) {
+		docstring const & delimChars, docstring const &illegalChars, 
+		charCase chCase) {
 
 		char_type ch;
 
@@ -411,13 +412,22 @@ namespace {
 			return false;
 
 		// read value
-		while (ifs && !isSpace(ch) && delimChars.find(ch) == docstring::npos) {
+		bool legalChar;
+		while (ifs && !isSpace(ch) && 
+			   delimChars.find(ch) == docstring::npos &&
+			   (legalChar = illegalChars.find(ch) == docstring::npos)
+			   ) {
 			if (chCase == makeLowerCase) {
 				val += lowercase(ch);
 			} else {
 				val += ch;
 			}
 			ifs.get(ch);
+		}
+		
+		if (!legalChar) {
+			ifs.putback(ch);
+			return false;
 		}
 
 		// skip whitespace
@@ -596,7 +606,8 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 			docstring entryType;
 
-			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), makeLowerCase) || !ifs)
+			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), 
+			                   docstring(), makeLowerCase) || !ifs)
 				continue;
 
 			if (entryType == from_ascii("comment")) {
@@ -623,9 +634,11 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				docstring name;
 				docstring value;
 
-				if (!readTypeOrKey(name, ifs, from_ascii("#=}),"), makeLowerCase) || !ifs)
+				if (!readTypeOrKey(name, ifs, from_ascii("="), 
+				                   from_ascii("#{}(),"), makeLowerCase) || !ifs)
 					continue;
 
+				// next char must be an equal sign
 				ifs.get(ch);
 				if (!ifs || ch != '=')
 					continue;
@@ -653,7 +666,8 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				docstring value;
 				docstring commaNewline;
 
-				if (!readTypeOrKey(key, ifs, from_ascii(",})"), keepCase) || !ifs)
+				if (!readTypeOrKey(key, ifs, from_ascii(","), 
+				                   from_ascii("}"), keepCase) || !ifs)
 					continue;
 
 				// now we have a key, so we will add an entry
@@ -667,7 +681,8 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				while (ifs && readNext) {
 
 					// read field name
-					if (!readTypeOrKey(name, ifs, from_ascii("=}),"), makeLowerCase) || !ifs)
+					if (!readTypeOrKey(name, ifs, from_ascii("="), 
+					                   from_ascii("{}(),"), makeLowerCase) || !ifs)
 						break;
 
 					// next char must be an equal sign
