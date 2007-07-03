@@ -172,6 +172,8 @@ void QCitationDialog::show()
 	findLE->clear();
 	availableLV->setFocus();
 	QDialog::show();
+	raise();
+	activateWindow();
 }
 
 
