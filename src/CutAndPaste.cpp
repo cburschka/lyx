@@ -676,8 +676,16 @@ void saveSelection(Cursor & cur)
 	       << to_utf8(cur.selectionAsString(true)) << "'."
 	       << endl;
 
+	// FIXME: The two lines below would allow middle-mouse 
+	// pasting that preserves the LyX formatting when the selection
+	// is internal. They would also allow to use the feature on
+	// Windows and Mac. In the future, we may want to optionally enable
+	// this feature via a rc setting.
+	/*
 	if (cur.selection())
 		copySelectionToStack(cur, selectionBuffer);
+	*/
+
 	// tell X whether we now have a valid selection
 	theSelection().haveSelection(cur.selection());
 }
