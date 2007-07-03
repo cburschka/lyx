@@ -1391,20 +1391,13 @@ if frontend == 'qt4':
         print 'uic or moc command is not found for frontend', frontend
         Exit(1)
     
-    # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
+    # now, if msvc2005 is used, we will need to embed lyx.exe.manifest to lyx.exe
+    # NOTE: previously, lyx.exe had to be linked to some qt manifest to work.
+    # For some unknown changes in msvc or qt, this is no longer needed.
     if use_vc:
-        if mode == 'debug':
-            if qt_lib_path is not None:
-                manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
-            else:
-                manifest = 'QtGuid4.dll.manifest'
-        else:
-            if qt_lib_path is not None:
-                manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
-            else:
-                manifest = 'QtGui4.dll.manifest'
-        if os.path.isfile(manifest):
-            frontend_env['LINKCOM'] = [frontend_env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
+        frontend_env['LINKCOM'] = [frontend_env['LINKCOM'], \
+            'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % \
+            env.subst('$BUILDDIR/lyx.exe.manifest')]
 
     frontend_env = conf.Finish()
 
