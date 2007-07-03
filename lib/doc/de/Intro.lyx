@@ -2,8 +2,7 @@
 \lyxformat 276
 \begin_document
 \begin_header
-\textclass scrbook
-\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
+\textclass book
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -18,7 +17,7 @@
 \paperfontsize default
 \spacing single
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 0
 \use_esint 0
 \cite_engine basic
@@ -34,7 +33,7 @@
 \defskip medskip
 \quotes_language german
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -88,7 +87,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
+letzte Änderung: 3.
  Juli 2007
 \end_layout
 
@@ -870,33 +869,34 @@ n den eigenen Wünschen anzupassen, Erscheinungsbild und Position von Fußnoten,
  Tabellen und Abbildungen zu verändern und so weiter und so fort.
 \end_layout
 
-\begin_layout Standard
+\begin_layout List
+\labelwidthstring 00.00.0000
 Hier eine kurze Zusammenfassung:
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 TeX: Makrofähige Programmiersprache für Schriftsatz.
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 LaTeX: Makropaket auf der Basis von TeX.
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 Klasse: Beschreibung eines Dokumententyps, verwendet LaTeX.
  
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 Stil: Verändert die Standardeinstellungen von LaTeX.
  
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 LyX: Visuelle WYSIWYM-Textverarbeitung, die LaTeX mit all seinen Fähigkeiten
  zum Ausdruck verwendet.

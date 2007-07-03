@@ -2,11 +2,10 @@
 \lyxformat 276
 \begin_document
 \begin_header
-\textclass scrbook
+\textclass book
 \begin_preamble
 %\usepackage{graphics}
 \end_preamble
-\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -21,7 +20,7 @@
 \paperfontsize default
 \spacing single
 \papersize a4paper
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 0
 \cite_engine basic
@@ -83,7 +82,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
+letzte Änderung: 3.
  Juli 2007
 \end_layout
 
@@ -1153,7 +1152,7 @@ Umgebungen
 \begin_layout Standard
 Derartige Umgebungen bilden den Hauptteil des WYSIWYM-Konzeptes von LyX.
  Ein bestimmter Umgebungstyp verlangt eventuell bestimmte Einstellungen
- für Zeichensatz, Schriftgröße, Einzug, Zeilenabstand und so fort.
+ für Schriftgröße, Zeichensatz, Einzug, Zeilenabstand und so fort.
  Und das Problem wird teilweise noch verschlimmert: So verwendet vielleicht
  eine Zeitschrift für ihre Titel eine 18-Punkt-Schrift in Fettdruck, zentriert
  gesetzt, eine andere verwendet kursive 15-Punkt-Schriften.
