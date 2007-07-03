@@ -28,6 +28,8 @@
  * - the dialog does not use the quick directory buttons (Button
  *   parameters);
  * - with Qt/Mac or Qt/Win, the dialogs native to the environment are used.
+ * - with Qt/Win and Qt <= 4.3.0, there was a number of bugs with our own
+ *   file dialog (http://bugzilla.lyx.org/show_bug.cgi?id=3907).
  *
  * Therefore there is a tradeoff in enabling or disabling this (JMarc)
  */
