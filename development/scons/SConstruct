@@ -1397,7 +1397,7 @@ if frontend == 'qt4':
     if use_vc:
         frontend_env['LINKCOM'] = [frontend_env['LINKCOM'], \
             'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % \
-            env.subst('$BUILDDIR/lyx.exe.manifest')]
+            env.File('$BUILDDIR/lyx.exe.manifest').path]
 
     frontend_env = conf.Finish()
 
