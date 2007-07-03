@@ -412,7 +412,7 @@ namespace {
 			return false;
 
 		// read value
-		bool legalChar;
+		bool legalChar = true;
 		while (ifs && !isSpace(ch) && 
 			   delimChars.find(ch) == docstring::npos &&
 			   (legalChar = illegalChars.find(ch) == docstring::npos)
