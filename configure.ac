@@ -100,10 +100,7 @@ if test "x$enable_assertions" = xyes ; then
 fi
 
 ### Library Files
-dnl by testing these we check if it is ok to have
-dnl -lc and -lm as args to the compiler
 AC_CHECK_LIB(m, sin)
-AC_CHECK_LIB(c, fopen)
 
 ### Add extra directories to check for libraries.
 LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)
