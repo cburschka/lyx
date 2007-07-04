@@ -20,8 +20,6 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM) $(BOOST_IOSTREAMS)
 
-COMPRESSIONLIB = -lz
-
 LINKED_FILES = \
 	FloatList.cpp \
 	Floating.cpp \
@@ -55,7 +53,7 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
-	$(BOOST_LIBS) $(LIBICONV) @LIBS@ $(COMPRESSIONLIB)
+	$(BOOST_LIBS) $(LIBICONV) @LIBS@
 
 $(LINKED_FILES) :
 	@rm -f $@ ; \
