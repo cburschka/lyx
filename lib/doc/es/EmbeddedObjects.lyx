@@ -1,4 +1,4 @@
-#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -202,8 +202,8 @@
 \tracking_changes false
 \output_changes false
 \author "Anonymous" 
-\author "usti" 
 \author "IG" 
+\author "usti" 
 \author "IG,,," 
 \author "Ignacio García" 
 \author "Uwe Stöhr" 
@@ -223,7 +223,7 @@ status collapsed
 
 \begin_layout Standard
 \noindent
-Si tienes comentarios o correcciones, por favor, envíalo a la lista de correo
+Si tienes comentarios o correcciones, por favor, escribe a la lista de correo
  de Documentación de LyX: 
 \family typewriter
 
@@ -364,11 +364,10 @@ name "Figuras ! Diálogo Gráficos"
 
 \begin_layout Standard
 Para insertar una imagen en un documento, sitúa el cursor en el lugar del
- texto que desees y haz click en el icono 
+ texto que desees y haz clic en el icono 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -408,7 +407,7 @@ Puedes girar
 \newline
 Las imágenes se pueden escalar mediante un
  porcentaje o fijando explícitamente la altura y la anchura.
- Si fijas solo la anchura o solo la altura, la otra dimensión se establece
+ Si fijas sólo la anchura o sólo la altura, la otra dimensión se establece
  automáticamente.
  Si fijas ambas dimensiones
 \family sans
@@ -568,7 +567,6 @@ reference "sec:Formatos-de-imagen"
 	filename ../clipart/mobius.eps
 	display color
 	scale 70
-	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -587,7 +585,6 @@ Esta es la misma imagen pero en modo borrador:
 	display color
 	scale 70
 	draft
-	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -633,7 +630,6 @@ El botón
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -689,7 +685,6 @@ status collapsed
 	filename ../clipart/platypus.eps
 	display color
 	width 50col%
-	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -749,7 +744,6 @@ M.C.
 	filename ../clipart/escher-lsd.eps
 	display color
 	scale 80
-	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -793,7 +787,6 @@ Etiqueta
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -808,7 +801,6 @@ cruzada
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -861,7 +853,7 @@ Subfigura
 Descripción
 \family default
 .
- Ten en cuenta que solo el título principal  del flotante se añade a la
+ Ten en cuenta que sólo el título principal  del flotante se añade a la
  Lista de Figuras.
 \newline
 Las referencias a las subfiguras se explican en la sección\InsetSpace ~
@@ -899,7 +891,6 @@ status collapsed
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	width 45col%
-	scaleBeforeRotation
 	subcaption
 	subcaptionText "Estructura indefinible"
 
@@ -912,7 +903,6 @@ status collapsed
 	filename ../clipart/platypus.eps
 	lyxscale 60
 	width 45col%
-	scaleBeforeRotation
 	subcaption
 	subcaptionText "\label{fig:Platypus} Platypus"
 
@@ -976,7 +966,7 @@ reference "cha:Formatos-de-Archivos-de-Salida"
 
 \end_inset
 
-, cada formato de archivo del documento de salida permite solo ciertos formatos
+, cada formato de archivo del documento de salida permite sólo ciertos formatos
  de archivo de imagen.
  Por eso LyX usa el programa 
 \family sans
@@ -1091,7 +1081,7 @@ vectoriales se generan mediante una descripción de una serie de
  trazos (vectores) y por tanto pueden escalarse a cualquier tamaño sin pérdidas.
  La posibilidad de escalado hace falta para crear presentaciones, porque
  éstas siempre son escaladas por el proyector.
- El escalado también es útil en los documentoos en línea para permitir el
+ El escalado también es útil en los documentos en línea para permitir el
  zoom en diagramas.
 \newline
 Formatos de imagen escalables pueden ser 
@@ -1213,9 +1203,9 @@ Adobe Photoshop
 \end_layout
 
 \begin_layout Standard
-Normalmente no es posible convertir una imagen bitmap a escalable, solo
+Normalmente no es posible convertir una imagen bitmap a escalable, sólo
  viceversa.
- Solo los formatos de imagen PDF y EPS pueden empotrarse directamente en
+ Sólo los formatos de imagen PDF y EPS pueden empotrarse directamente en
  archivos de salida PDF y PostScript, respectivamente.
  Las imágenes SVG y WMF son recalculadas a bitmaps cuando se genera el archivo
  de salida porque actualmente no hay convertidores adecuados WMF/SVG 
@@ -1256,7 +1246,6 @@ Puede insertarse una tabla mediante el botón
 \begin_inset Graphics
 	filename ../../images/tabular-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1643,7 +1632,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1654,7 +1642,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1665,7 +1652,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1676,7 +1662,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1687,7 +1672,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1698,7 +1682,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1709,7 +1692,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1720,7 +1702,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1731,7 +1712,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1743,7 +1723,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1755,7 +1734,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-left.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1766,7 +1744,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-center.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1777,7 +1754,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-right.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1788,7 +1764,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-top.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1799,7 +1774,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-middle.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1810,7 +1784,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-bottom.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1821,7 +1794,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1832,7 +1804,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -1843,7 +1814,6 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -2156,7 +2126,6 @@ Tabla
 \begin_inset Graphics
 	filename ../../images/float-insert_table.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -2282,7 +2251,6 @@ Etiqueta
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -2297,7 +2265,6 @@ cruzada
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -2404,7 +2371,7 @@ a fila actual y siguientes, que no tienen ninguna opción especial definida,
 \begin_layout Standard
 También se puede especificar en qué fila se ha de cortar la tabla.
  Si se establece más de una opción en la misma fila, habría que tener en
- cuenta que solo la primera de ellas se usa en la fila dada.
+ cuenta que sólo la primera de ellas se usa en la fila dada.
  Las otras quedarán definidas como 
 \emph on
 vacías
@@ -4658,7 +4625,7 @@ name "sub:Encabezados-en-Tablas"
 \end_layout
 
 \begin_layout Standard
-Una tabla larga no se puede poner flotante porque los flotantes solo pueden
+Una tabla larga no se puede poner flotante porque los flotantes sólo pueden
  estar en una página, aunque el entorno 
 \family sans
 encabezado
@@ -4734,7 +4701,7 @@ En la Lista de Tablas aparecerá el título breve en vez del título completo.
 
  detrás del encabezado elimina las líneas verticales entre las siguientes
  celdas de la fila.
- Ahora, la primera fila de la tabla es solo una fila postiza para el encabezado,
+ Ahora, la primera fila de la tabla es sólo una fila postiza para el encabezado,
  la tabla real comienza en la segunda fila.
 \end_layout
 
@@ -8330,7 +8297,7 @@ trozos
 \end_inset
 
 , que son partes de la tabla presentes en la memoria de LaTeX.
- El valor predeterminado está establecido a solo 20 filas.
+ El valor predeterminado está establecido a sólo 20 filas.
  Si estás usando tablas largas con muchas páginas, la generación del documento
  puede hacerse muy lenta.
  No hay problema en aumentar el tamaño de los trozos hasta 100-1000 añadiendo
@@ -8378,7 +8345,7 @@ name "Tablas Largas ! Saltos de Página Forzados"
 \end_layout
 
 \begin_layout Standard
-Por defecto, las tablas solo se cortan entre filas.
+Por defecto, las tablas sólo se cortan entre filas.
  Si tienes una celda con líneas múltiples y necesitas un salto de página
  dentro de la celda, inserta el comando de nueva línea 
 \begin_inset Quotes eld
@@ -8430,7 +8397,7 @@ Por defecto, las tablas solo se cortan entre filas.
 \series bold
 &
 \series default
- es el caracter para separar celdas.
+ es el carácter para separar celdas.
  Escribe en ERT después de cada 
 \series bold
 &
@@ -10369,7 +10336,6 @@ Para extender una celda sobre varias columnas, se marcan las celdas que
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -11045,7 +11011,7 @@ El comando
 \begin_layout Standard
 Aunque hemos escogido alineación centrada para el texto de la celda multicolumna
 , aún está alineado a la izquierda.
- Esto se debe a que LyX solo aplica alineado a columnas simples.
+ Esto se debe a que LyX sólo aplica alineado a columnas simples.
  Así que para multicolumnas hemos de usar el argumento de LaTeX
 \end_layout
 
@@ -11333,7 +11299,7 @@ centering}
 \begin_layout Standard
 en ERT en el preámbulo del documento.
  Entonces se centran todas las entradas de celdas multifila en el documento.
- Si solo queremos centrar en algunas tablas, se puede renombrar el comando
+ Si sólo queremos centrar en algunas tablas, se puede renombrar el comando
  en ERT justo antes de la tabla en lugar de en el preámbulo.
  Si el texto debe estar alineado a la derecha, reemplaza 
 \series bold
@@ -13581,7 +13547,7 @@ i
 \end_layout
 
 \begin_layout Standard
-Si solo necesitas color en el texto, marca las celdas y elige un color en
+Si sólo necesitas color en el texto, marca las celdas y elige un color en
  el menú 
 \family sans
 Editar\SpecialChar \menuseparator
@@ -13834,7 +13800,7 @@ del\InsetSpace ~
 Texto
 \family default
 .
- Si una celda contiene ERT marca solo los caracteres, si no el ERT con color
+ Si una celda contiene ERT marca sólo los caracteres, si no el ERT con color
  puede ocasionar errores de LaTeX.
 \end_layout
 
@@ -14899,7 +14865,7 @@ hspace*{0pt}
 
 
 \newline
-Así pues, insertar espacio superior en tablas normales solo es útil en tablas
+Así pues, insertar espacio superior en tablas normales sólo es útil en tablas
  sin líneas verticales.
 \end_layout
 
@@ -15065,23 +15031,19 @@ extrarowheight}{altura}
 \begin_layout Standard
 Esto tiene el inconveniente de que el texto de las celdas no estará exactamente
  centrado en vertical.
- (
-\lang english
-The package 
+ (Lyx cargará automáticamente el paquete 
 \series bold
 array
 \series default
- will be loaded automatically by LyX when you use self defined table formats.
- To avoid that it is loaded twice the command 
+ cuando uses formatos de tabla autodefinidos.
+ Para evitar que sea cargado dos veces se pone al principio el comando 
 \series bold
 
 \backslash
 @ifundef\SpecialChar \textcompwordmark{}
 ined
 \series default
- is used in the above command.
-\lang spanish
-)
+.)
 \end_layout
 
 \begin_layout Standard
@@ -15610,7 +15572,7 @@ reference "tab:Alineaciones-con-el"
 
 \end_inset
 
- y solo con algunos trucos se consigue lo que se espera.
+ y sólo con algunos trucos se consigue lo que se espera.
  La alineación de la segunda y tercera columnas de la tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -17692,7 +17654,6 @@ reference "sec:Colocación-de-Encabezados"
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
 	scale 70
-	scaleBeforeRotation
 
 \end_inset
 
@@ -18042,7 +18003,7 @@ name "sub:floatflt-flotante-ajustado"
 
 \begin_layout Standard
 Este tipo de flotante se usa cuando quieres adosar una figura al texto,
- de manera que ocupe solo una parte del ancho de columna.
+ de manera que ocupe sólo una parte del ancho de columna.
  Puede insertarse usando el menú 
 \begin_inset Wrap figure
 placement l
@@ -18054,7 +18015,6 @@ status open
 	filename ../clipart/mobius.eps
 	display color
 	width 40col%
-	scaleBeforeRotation
 	rotateOrigin center
 
 \end_inset
@@ -18412,7 +18372,6 @@ Etiqueta
 \begin_inset Graphics
 	filename ../../images/label-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -18422,7 +18381,6 @@ Etiqueta
 \begin_inset Graphics
 	filename clipart/etiquetaQt4.png
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -18462,7 +18420,6 @@ cruzada
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -18475,7 +18432,6 @@ cruzada
 \begin_inset Graphics
 	filename clipart/referenciaQt4.png
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -18733,10 +18689,6 @@ ref{fig:Platypus}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -19016,7 +18968,7 @@ La opción
 Extender\InsetSpace ~
 columnas
 \family default
- solo es aplicable a documentos de dos columnas: Si lo seleccionas, el flotante
+ sólo es aplicable a documentos de dos columnas: Si lo seleccionas, el flotante
  abarcará ambas columnas en lugar de una sola.
 \newline
 La opción 
@@ -19118,7 +19070,7 @@ de\InsetSpace ~
 página
 \family default
 , y después las otras.
- Si no usas la predeterminada, LaTeX solo probará las opciones marcadas
+ Si no usas la predeterminada, LaTeX sólo probará las opciones marcadas
  pero en dicho orden.
  Si no es posible ninguna de las 4 ubicaciones el proceso se repite internamente
  pero intenta poner el flotante en la página siguiente.
@@ -19136,7 +19088,7 @@ Principio\InsetSpace ~
 de\InsetSpace ~
 página:
 \family default
- solo si el flotante ocupa menos del 70\InsetSpace \thinspace{}
+ sólo si el flotante ocupa menos del 70\InsetSpace \thinspace{}
 % de la página puede ubicarse al
  principio de página (
 \series bold
@@ -19155,7 +19107,7 @@ Fin\InsetSpace ~
 de\InsetSpace ~
 página:
 \family default
- solo si el flotante ocupa menos del 30\InsetSpace \thinspace{}
+ sólo si el flotante ocupa menos del 30\InsetSpace \thinspace{}
 % de la página puede ubicarse al
  fin de página.
  (
@@ -19175,7 +19127,7 @@ Página\InsetSpace ~
 de\InsetSpace ~
 flotantes:
 \family default
- solo si más del 50\InsetSpace \thinspace{}
+ sólo si más del 50\InsetSpace \thinspace{}
 % de la página se ocupa por flotantes puede haber varios
  juntos en la misma página.
  (
@@ -19238,7 +19190,7 @@ Aquí\InsetSpace ~
 definitivamente
 \family default
 .
- Usa esta opción esporádicamente y solo cuando el documento esté casi listo,
+ Usa esta opción esporádicamente y sólo cuando el documento esté casi listo,
  porque el flotante ya no podrá 
 \begin_inset Quotes eld
 \end_inset
@@ -20019,7 +19971,7 @@ captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm, labelsep=period
 status open
 
 \begin_layout Standard
-El formato del encabezado se ha cambiado solo para este ejemplo.
+El formato del encabezado se ha cambiado sólo para este ejemplo.
 \end_layout
 
 \end_inset
@@ -20040,7 +19992,6 @@ status open
 	filename ../clipart/mobius.eps
 	lyxscale 50
 	scale 50
-	scaleBeforeRotation
 
 \end_inset
 
@@ -20907,7 +20858,6 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	scale 75
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21223,7 +21173,6 @@ status open
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	scale 75
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21374,7 +21323,6 @@ Las notas se insertan con el botón
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21399,7 +21347,6 @@ LyX Este tipo es para notas internas que no han de aparecer en la salida.
 	filename clipart/NotaLyXImagenQt4.png
 	display none
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21434,7 +21381,6 @@ LaTeX (pdflatex) / LaTeX (plain)
 	filename clipart/ComentNotaImagenQt4.png
 	display none
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21443,7 +21389,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 status collapsed
 
 \begin_layout Standard
-Una nota comentario que solo aparece como comentario en archivos LaTeX.
+Una nota comentario que sólo aparece como comentario en archivos LaTeX.
 \end_layout
 
 \end_inset
@@ -21464,7 +21410,6 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 	filename clipart/GrisNotaImagenQt4.png
 	display none
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21571,7 +21516,6 @@ Enmarcado Este tipo de notas aparecerá en la salida como un texto enmarcado.
 \begin_inset Graphics
 	filename clipart/NotaEnmarcadaImg.png
 	display none
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21636,7 +21580,6 @@ Sombreado Este tipo de nota se verá en la salida con un fondo de color rojo.
 \begin_inset Graphics
 	filename clipart/NotaSombreadaImg.png
 	display none
-	scaleBeforeRotation
 
 \end_inset
 
@@ -21684,7 +21627,6 @@ Si usas el botón de la barra de herramientas
 \begin_inset Graphics
 	filename ../../images/note-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -22084,7 +22026,6 @@ Las notas al pie se insertan con el botón
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -22108,7 +22049,6 @@ Aparece un recuadro como este:
 \begin_inset Graphics
 	filename clipart/notapieQt4.png
 	scale 80
-	scaleBeforeRotation
 
 \end_inset
 
@@ -22275,7 +22215,7 @@ reference "sub:Notas-al-pie-en-Tablas-Largas"
 \begin_inset VSpace defskip
 \end_inset
 
-Para crear solo una marca para una nota al pie, puedes usar el comando 
+Para crear sólo una marca para una nota al pie, puedes usar el comando 
 \series bold
 
 \backslash
@@ -22494,7 +22434,7 @@ status open
 \series bold
 Nota:
 \series default
- Solo puedes ordenar hasta 26 pies con letras, porque está limitado a letras
+ sólo puedes ordenar hasta 26 pies con letras, porque está limitado a letras
  simples.
 \end_layout
 
@@ -22511,7 +22451,7 @@ status open
 \series bold
 Nota:
 \series default
- Solo puedes ordenar hasta 9 pies con símbolos.
+ sólo puedes ordenar hasta 9 pies con símbolos.
 \end_layout
 
 \end_inset
@@ -22830,7 +22770,6 @@ framebox{
 \begin_inset Graphics
 	filename ../clipart/without_fntright.pdf
 	width 100col%
-	scaleBeforeRotation
 
 \end_inset
 
@@ -22894,7 +22833,6 @@ framebox{
 \begin_inset Graphics
 	filename ../clipart/with_fntright.pdf
 	width 100col%
-	scaleBeforeRotation
 
 \end_inset
 
@@ -23021,7 +22959,6 @@ framebox{
 
 \begin_inset Graphics
 	filename ../clipart/endnotes.pdf
-	scaleBeforeRotation
 
 \end_inset
 
@@ -23227,7 +23164,6 @@ margen
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -23983,7 +23919,7 @@ myMarginpar{#1}}
 status collapsed
 
 \begin_layout Standard
-El formato de la nota al margen se ha cambiado solo para este ejemplo.
+El formato de la nota al margen se ha cambiado sólo para este ejemplo.
 \end_layout
 
 \end_inset
@@ -24116,7 +24052,6 @@ Cuadro (Minipágina)
 	filename clipart/CuadroMinipagQt4.png
 	scale 75
 	keepAspectRatio
-	scaleBeforeRotation
 
 \end_inset
 
@@ -26042,11 +25977,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can alternatively set the command
-\lang spanish
- 
+Como alternativa puedes poner el comando 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26060,11 +25991,7 @@ You can alternatively set the command
 \begin_inset Quotes grd
 \end_inset
 
- 
-\lang english
-as ERT directly before the word
-\lang spanish
-:
+ en ERT directamente antes de la palabra:
 \end_layout
 
 \begin_layout Standard
@@ -27519,7 +27446,7 @@ Día-Mes-Año.
 
 
 \newline
-La fecha no se muestra en LyX, solo en la salida.
+La fecha no se muestra en LyX, sólo en la salida.
  Hay otros dos métodos de insertar una fecha, con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -27623,7 +27550,7 @@ reference "sec:Diálogo-Gráficos"
 \end_inset
 
 .
- La diferencia es que solo se permiten imágenes bitmap, por tanto las imágenes
+ La diferencia es que sólo se permiten imágenes bitmap, por tanto las imágenes
  PDF y EPS no están soportadas.
 \end_layout
 
@@ -27879,7 +27806,7 @@ Archivo
 \family sans
 Material Externo
 \family default
-, en el documento de salida solo se muestra la ruta al archivo insertado.
+, en el documento de salida sólo se muestra la ruta al archivo insertado.
 \family sans
 
 \newline
@@ -27893,7 +27820,6 @@ El material externo se muestra en LyX como un cuadro del tipo:
 \begin_inset Graphics
 	filename clipart/MaterialExternoQt4.png
 	scale 80
-	scaleBeforeRotation
 
 \end_inset
 
@@ -27947,7 +27873,6 @@ Los documentos incluidos como hijos se muestran en la pantalla de LyX como
 \begin_inset Graphics
 	filename clipart/DocumentoHijoQt4.png
 	scale 80
-	scaleBeforeRotation
 
 \end_inset
 
@@ -28015,7 +27940,7 @@ reference "sub:Subsección-Externa-1"
 \end_layout
 
 \begin_layout Standard
-El preámbulo del documento hijo se ignora, solo se utiliza el preámbulo
+El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
  del documento maestro.
  Los documentos incluidos se insertan comenzando una página nueva y acabando
  con un salto de página.
@@ -28029,7 +27954,7 @@ Con el comando LaTeX
 includeonly
 \series default
  puedes determinar qué documentos hijos serán procesados al generar la salida.
- Esto es útil si, por ejemplo, estás trabajando solo cierto capítulo de
+ Esto es útil si, por ejemplo, estás trabajando sólo cierto capítulo de
  un extenso documento y quieres ahorrar tiempo de compilación.
  
 \series bold
@@ -28052,7 +27977,7 @@ includeonly{capítulo1,capítulo5}
 \end_layout
 
 \begin_layout Standard
-hará que solo se procesen los archivos incluidos cuyos nombres son 
+hará que sólo se procesen los archivos incluidos cuyos nombres son 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29546,7 +29471,7 @@ device-independent
  (DVI), porque es completamente portable; se pueden mover de una máquina
  a otra sin necesidad de conversión alguna.
  En la época en que se desarrolló este formato, esto no era un asunto baladí.
- Los DVIs se usan para previsualizaciones rápidas y como preparación para
+ Los DVIs se usan para vistas preliminares rápidas y como preparación para
  otros formatos de salida como PostScript.
 \end_layout
 
@@ -29593,7 +29518,6 @@ o con el botón\InsetSpace ~
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
@@ -29675,7 +29599,7 @@ key "pstricks"
 \end_layout
 
 \begin_layout Standard
-Los archivos PostScript solo pueden contener imágenes en el formato 
+Los archivos PostScript sólo pueden contener imágenes en el formato 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29721,7 +29645,6 @@ o con el botón\InsetSpace ~
 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.xpm
-	scaleBeforeRotation
 
 \end_inset
 
@@ -29924,7 +29847,6 @@ o con el botón\InsetSpace ~
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.xpm
 	scale 85
-	scaleBeforeRotation
 
 \end_inset
 
