@@ -607,6 +607,11 @@ conf = Configure(env,
     }
 )
 
+# When using msvc, windows.h is required
+if use_vc and not conf.CheckCHeader('windows.h'):
+    print 'Windows.h is not found. Please install Windows Platform SDK.'
+    Exit(1)
+
 # pkg-config? (if not, we use hard-coded options)
 if conf.CheckPkgConfig('0.15.0'):
     env['HAS_PKG_CONFIG'] = True
