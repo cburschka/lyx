@@ -176,6 +176,9 @@ string const asValidLatexCommand(string const & input,
 
 docstring const familyName(docstring const & name)
 {
+	if (name.empty())
+		return docstring();
+
 	// Very simple parser
 	docstring fname = name;
 
