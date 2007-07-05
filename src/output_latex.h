@@ -12,6 +12,8 @@
 #ifndef OUTPUT_LATEX_H
 #define OUTPUT_LATEX_H
 
+#include <utility>
+
 #include "support/docstream.h"
 
 
@@ -43,10 +45,11 @@ void latexParagraphs(Buffer const & buf,
 		     std::string const & everypar = std::string());
 
 /// Switch the encoding of \p os from \p oldEnc to \p newEnc if needed.
-/// \return the number of characters written to \p os.
-int switchEncoding(odocstream & os, BufferParams const & bparams,
-		   bool moving_arg, Encoding const & oldEnc,
-		   Encoding const & newEnc);
+/// \return (did the encoding change?, number of characters written to \p os)
+std::pair<bool, int> switchEncoding(odocstream & os, 
+		     BufferParams const & bparams,
+		     bool moving_arg, Encoding const & oldEnc,
+		     Encoding const & newEnc);
 
 } // namespace lyx
 

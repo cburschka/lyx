@@ -37,6 +37,8 @@ using support::subst;
 
 using std::endl;
 using std::string;
+using std::pair;
+using std::make_pair;
 
 
 namespace {
@@ -295,7 +297,9 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	// Switch file encoding if necessary
+	// Switch file encoding if necessary; no need to do this for "default"
+	// encoding, since this only affects the position of the outputted
+	// \inputencoding command; the encoding switch will occur when necessary
 	if (bparams.inputenc == "auto" &&
 	    runparams.encoding->package() == Encoding::inputenc) {
 		// Look ahead for future encoding changes.
@@ -313,12 +317,14 @@ TeXOnePar(Buffer const & buf,
 			// encoding to that required by the language of c.
 			Encoding const * const encoding =
 				pit->getFontSettings(bparams, i).language()->encoding();
-			if (encoding->package() == Encoding::inputenc &&
-			    switchEncoding(os, bparams, false,
-					   *(runparams.encoding), *encoding) > 0) {
+			pair<bool, int> enc_switch = switchEncoding(os, bparams, false,
+					*(runparams.encoding), *encoding);
+			if (encoding->package() == Encoding::inputenc && enc_switch.first) {
 				runparams.encoding = encoding;
-				os << '\n';
-				texrow.newline();
+				if (enc_switch.second > 0) {
+					os << '\n';
+					texrow.newline();
+				}
 			}
 			break;
 		}
@@ -598,17 +604,17 @@ void latexParagraphs(Buffer const & buf,
 }
 
 
-int switchEncoding(odocstream & os, BufferParams const & bparams,
+pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   bool moving_arg, Encoding const & oldEnc,
 		   Encoding const & newEnc)
 {
-	if ((bparams.inputenc != "auto" || moving_arg)
-		&& bparams.inputenc != "default")
-		return 0;
+	if ((bparams.inputenc != "auto" && bparams.inputenc != "default")
+		|| moving_arg)
+		return make_pair(false, 0);
 
 	// Do nothing if the encoding is unchanged.
 	if (oldEnc.name() == newEnc.name())
-		return 0;
+		return make_pair(false, 0);
 
 	// FIXME We ignore encoding switches from/to encodings that do
 	// neither support the inputenc package nor the CJK package here.
@@ -617,19 +623,20 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 	// but it is the best we can do
 	if (oldEnc.package() == Encoding::none
 		|| newEnc.package() == Encoding::none)
-		return 0;
+		return make_pair(false, 0);
 
 	LYXERR(Debug::LATEX) << "Changing LaTeX encoding from "
 		<< oldEnc.name() << " to "
 		<< newEnc.name() << endl;
 	os << setEncoding(newEnc.iconvName());
 	if (bparams.inputenc == "default")
-		return 0;
+		return make_pair(true, 0);
 
 	docstring const inputenc(from_ascii(newEnc.latexName()));
 	switch (newEnc.package()) {
 		case Encoding::none:
-			return 0;
+			// shouldn't ever reach here, see above
+			return make_pair(true, 0);
 		case Encoding::inputenc: {
 			int count = inputenc.length();
 			if (oldEnc.package() == Encoding::CJK) {
@@ -637,7 +644,7 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 				count += 9;
 			}
 			os << "\\inputencoding{" << inputenc << '}';
-			return count + 16;
+			return make_pair(true, count + 16);
 		 }
 		case Encoding::CJK: {
 			int count = inputenc.length();
@@ -646,11 +653,11 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 				count += 9;
 			}
 			os << "\\begin{CJK}{" << inputenc << "}{}";
-			return count + 15;
+			return make_pair(true, count + 15);
 		}
 	}
 	// Dead code to avoid a warning:
-	return 0;
+	return make_pair(true, 0);
 }
 
 } // namespace lyx

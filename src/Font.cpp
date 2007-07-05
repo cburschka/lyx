@@ -40,6 +40,7 @@ using support::subst;
 using std::endl;
 using std::string;
 using std::ostream;
+using std::pair;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
@@ -785,12 +786,12 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	}
 
 	if (language()->encoding()->package() == Encoding::CJK) {
-		int const c = switchEncoding(os, bparams,
+		pair<bool, int> const c = switchEncoding(os, bparams,
 				runparams.moving_arg, *(runparams.encoding),
 				*(language()->encoding()));
-		if (c > 0) {
+		if (c.first) {
 			open_encoding_ = true;
-			count += c;
+			count += c.second;
 			runparams.encoding = language()->encoding();
 		}
 	}
@@ -943,11 +944,11 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		// We need to close the encoding even if it does not change
 		// to do correct environment nesting
 		Encoding const * const ascii = encodings.getFromLyXName("ascii");
-		int const c = switchEncoding(os, bparams,
+		pair<bool, int> const c = switchEncoding(os, bparams,
 				runparams.moving_arg, *(runparams.encoding),
 				*ascii);
-		BOOST_ASSERT(c > 0);
-		count += c;
+		BOOST_ASSERT(c.first);
+		count += c.second;
 		runparams.encoding = ascii;
 		open_encoding_ = false;
 	}

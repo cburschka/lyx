@@ -2056,11 +2056,11 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		// Switch file encoding if necessary
 		if (runparams.encoding->package() == Encoding::inputenc &&
 		    font.language()->encoding()->package() == Encoding::inputenc) {
-			int const count = switchEncoding(os, bparams,
+			std::pair<bool, int> const enc_switch = switchEncoding(os, bparams,
 					runparams.moving_arg, *(runparams.encoding),
 					*(font.language()->encoding()));
-			if (count > 0) {
-				column += count;
+			if (enc_switch.first) {
+				column += enc_switch.second;
 				runparams.encoding = font.language()->encoding();
 			}
 		}
