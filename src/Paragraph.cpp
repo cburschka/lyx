@@ -1254,7 +1254,19 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 			    Font const & font, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
+	// Set the font/language of the inset...
 	setFont(pos, font);
+	// ... as well as the font/language of the text inside the inset
+	// FIXME: This is far from perfect. It basically overrides work being done
+	// in the InsetText constructor. Also, it doesn't work for Tables 
+	// (precisely because each cell's font/language is set in the Table's 
+	// constructor, so by now it's too late). The long-term solution should
+	// be moving current_font into Cursor, and getting rid of all this...
+	// (see http://thread.gmane.org/gmane.editors.lyx.devel/88869/focus=88944)
+	if (inset->asTextInset()) {
+		inset->asTextInset()->text_.current_font = font;
+		inset->asTextInset()->text_.real_current_font = font;
+	}
 }
 
 
