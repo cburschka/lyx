@@ -1441,6 +1441,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} else
 				lyx_view_->loadLyXFile(filename, true, true, autoOpen);
 
+			// If a screen update is required (in case where auto_open is false), 
+			// loadLyXFile() would have taken care of it already. Otherwise we shall 
+			// reset the update flag because it can cause a circular problem.
+			// See bug 3970.
+			updateFlags = Update::None;
 			break;
 		}
 
