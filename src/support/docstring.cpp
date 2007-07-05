@@ -140,9 +140,9 @@ std::string const to_filesystem8bit(docstring const & s)
 }
 
 
-docstring const normalize_kc(docstring const & s)
+docstring const normalize_c(docstring const & s)
 {
-	return qstring_to_ucs4(toqstr(s).normalized(QString::NormalizationForm_KC));
+	return qstring_to_ucs4(toqstr(s).normalized(QString::NormalizationForm_C));
 }
 
 

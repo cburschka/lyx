@@ -409,7 +409,7 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 		file_content = from_local8bit(tmpstr);
 	}
 
-	return normalize_kc(file_content);
+	return normalize_c(file_content);
 }
 
 

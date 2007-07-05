@@ -124,7 +124,7 @@ static docstring const doAccent(docstring const & s, tex_accent accent)
 			       << lyx_accent_table[accent].name << '.' << std::endl;
 		os << s.substr(1);
 	}
-	return normalize_kc(os.str());
+	return normalize_c(os.str());
 }
 
 

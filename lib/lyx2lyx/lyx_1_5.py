@@ -921,7 +921,7 @@ def _convert_accent(accent, accented_char):
         return ''
     a = accent_map.get(type)
     if a:
-        return unicodedata.normalize("NFKC", "%s%s" % (char, a))
+        return unicodedata.normalize("NFC", "%s%s" % (char, a))
     return ''
 
 
@@ -1027,9 +1027,9 @@ def revert_accent(document):
         # because we never use u'xxx' for string literals, but 'xxx'.
         # Therefore we may have to try two times to normalize the data.
         try:
-            document.body[i] = unicodedata.normalize("NFKD", document.body[i])
+            document.body[i] = unicodedata.normalize("NFD", document.body[i])
         except TypeError:
-            document.body[i] = unicodedata.normalize("NFKD", unicode(document.body[i], 'utf-8'))
+            document.body[i] = unicodedata.normalize("NFD", unicode(document.body[i], 'utf-8'))
 
     # Replace accented characters with InsetLaTeXAccent
     # Do not convert characters that can be represented in the chosen
@@ -1086,7 +1086,7 @@ def revert_accent(document):
                     accented_char = inverse_accented_map[accented_char]
                 accent = document.body[i][j]
                 try:
-                    dummy = unicodedata.normalize("NFKC", accented_char + accent).encode(encoding_stack[-1])
+                    dummy = unicodedata.normalize("NFC", accented_char + accent).encode(encoding_stack[-1])
                 except UnicodeEncodeError:
                     # Insert the rest of the line as new line
                     if j < len(document.body[i]) - 1:
@@ -1101,7 +1101,7 @@ def revert_accent(document):
                     break
     # Normalize to "Normal form C" (NFC, pre-composed characters) again
     for i in range(numberoflines):
-        document.body[i] = unicodedata.normalize("NFKC", document.body[i])
+        document.body[i] = unicodedata.normalize("NFC", document.body[i])
 
 
 def normalize_font_whitespace_259(document):

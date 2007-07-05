@@ -59,7 +59,7 @@ void GuiSelection::haveSelection(bool own)
 docstring const GuiSelection::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Selection)
-				.normalized(QString::NormalizationForm_KC);
+				.normalized(QString::NormalizationForm_C);
 	LYXERR(Debug::ACTION) << "GuiSelection::get: " << fromqstr(str)
 			      << endl;
 	if (str.isNull())

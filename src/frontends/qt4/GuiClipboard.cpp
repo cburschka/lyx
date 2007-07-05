@@ -62,7 +62,7 @@ docstring const GuiClipboard::getAsText() const
 {
 	// text data from other applications
 	QString const str = qApp->clipboard()->text(QClipboard::Clipboard)
-				.normalized(QString::NormalizationForm_KC);
+				.normalized(QString::NormalizationForm_C);
 	LYXERR(Debug::ACTION) << "GuiClipboard::getAsText(): `"
 			      << fromqstr(str) << "'" << endl;
 	if (str.isNull())
