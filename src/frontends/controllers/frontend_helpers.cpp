@@ -15,20 +15,15 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Color.h"
 #include "debug.h"
 #include "gettext.h"
 #include "Language.h"
 #include "Length.h"
 
-#include <boost/regex.hpp>
-
-#include <algorithm>
-#include <config.h>
-
-#include "Color.h"
-
 #include "frontends/FileDialog.h"
 #include "frontends/alert.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
@@ -41,7 +36,12 @@
 #include "support/Systemcall.h"
 
 #include <boost/cregex.hpp>
+#include <boost/regex.hpp>
+
+#include <algorithm>
 #include <fstream>
+#include <locale>
+
 using std::string;
 using std::vector;
 using std::pair;
@@ -1108,10 +1108,13 @@ class Sorter
 				      LanguagePair, bool>
 {
 public:
+	Sorter() : loc_("") {};
 	bool operator()(LanguagePair const & lhs,
 			LanguagePair const & rhs) const {
-		return lhs.first < rhs.first;
+		return loc_(lhs.first, rhs.first);
 	}
+private:
+	std::locale loc_;
 };
 
 } // namespace anon
