@@ -86,6 +86,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
 #include "frontends/Toolbars.h"
+#include "frontends/Selection.h"
 
 #include "support/environment.h"
 #include "support/FileFilterList.h"
@@ -218,6 +219,10 @@ void LyXFunc::initKeySequences(KeyMap * kb)
 
 void LyXFunc::setLyXView(LyXView * lv)
 {
+	if (lyx_view_ && lyx_view_ != lv)
+		// save current selection to the selection buffer to allow
+		// middle-button paste in another window
+		cap::saveSelection(lyx_view_->view()->cursor());
 	lyx_view_ = lv;
 }
 
@@ -1823,6 +1828,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 			    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
 				view()->buffer()->markDirty();
+
+			//Do we have a selection?
+			theSelection().haveSelection(view()->cursor().selection());
 
 			if (view()->cursor().inTexted()) {
 				lyx_view_->updateLayoutChoice();

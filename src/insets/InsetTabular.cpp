@@ -3241,28 +3241,18 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
-		if (cmd.button() == mouse_button::button1) {
-			if (bvcur.selection()) {
-				// Bug3238: disable persistent selection for table cells for now
-				if (tablemode(bvcur))
-					theSelection().haveSelection(true);
-				else
-					saveSelection(bvcur);
-			}
-		} else if (cmd.button() == mouse_button::button3)
+		if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
 
 	case LFUN_CELL_BACKWARD:
 		movePrevCell(cur);
 		cur.selection() = false;
-		saveSelection(cur);
 		break;
 
 	case LFUN_CELL_FORWARD:
 		moveNextCell(cur);
 		cur.selection() = false;
-		saveSelection(cur);
 		break;
 
 	case LFUN_CHAR_FORWARD_SELECT:
@@ -3270,12 +3260,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-			// The second case happens when LFUN_CHAR_FORWARD_SELECT
-			// is called, but the cursor is undispatched with cmd modified 
-			// to LFUN_FINISHED_RIGHT (e.g. a case in bug 3782)
-			if (cmd.action == LFUN_CHAR_FORWARD_SELECT ||
-				cmd.action == LFUN_FINISHED_RIGHT)
-				saveSelection(cur);
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			else
@@ -3288,8 +3272,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-			if (cmd.action == LFUN_CHAR_BACKWARD_SELECT)
-				saveSelection(cur);
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			else
@@ -3311,13 +3293,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				TextMetrics const & tm =
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
-				if (cmd.action == LFUN_DOWN_SELECT) {
-					// Bug3238: disable persistent selection for table cells for now
-					if (tablemode(cur))
-						theSelection().haveSelection(true);
-					else
-						saveSelection(cur);
-				}
 			}
 		if (sl == cur.top()) {
 			// we trick it to go to the RIGHT after leaving the
@@ -3343,13 +3318,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
-				if (cmd.action == LFUN_UP_SELECT) {
-					// Bug3238: disable persistent selection for table cells for now
-					if (tablemode(cur))
-						theSelection().haveSelection(true);
-					else
-						saveSelection(cur);
-				}
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_UP);
@@ -4645,7 +4613,6 @@ void InsetTabular::cutSelection(Cursor & cur)
 	if (cur.pos() > cur.lastpos())
 		cur.pos() = cur.lastpos();
 	cur.clearSelection();
-	theSelection().haveSelection(false);
 }
 
 

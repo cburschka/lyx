@@ -565,7 +565,6 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
 		updateLabels(cur.buffer());
-		theSelection().haveSelection(false);
 
 		// tell tabular that a recent copy happened
 		dirtyTabularStack(false);
@@ -672,24 +671,15 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 
 void saveSelection(Cursor & cur)
 {
-	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION << ": `"
-	       << to_utf8(cur.selectionAsString(true)) << "'."
-	       << endl;
-
-#if 0
-	// FIXME: The two lines below would allow middle-mouse 
-	// pasting that preserves the LyX formatting when the selection
-	// is internal. They would also allow to use the feature on
-	// Windows and Mac. In the future, we may want to optionally enable
-	// this feature via a rc setting.
-	// This is currently disabled because it eats too much resources
-	// while selecting (cf. bug 3877)
-	if (cur.selection())
+	// This function is called, not when a selection is formed, but when
+	// a selection is cleared. Therefore, multiple keyboard selection
+	// will not repeatively trigger this function (bug 3877).
+	if (cur.selection()) {
+		LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION << ": `"
+			   << to_utf8(cur.selectionAsString(true)) << "'."
+			   << endl;
 		copySelectionToStack(cur, selectionBuffer);
-#endif
-
-	// tell X whether we now have a valid selection
-	theSelection().haveSelection(cur.selection());
+	}
 }
 
 
@@ -746,7 +736,6 @@ void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 	pasteParagraphList(cur, theCuts[sel_index].first,
 			   theCuts[sel_index].second, errorList);
 	cur.setSelection();
-	saveSelection(cur);
 }
 
 
@@ -825,7 +814,6 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwa
 		cur.setSelection(selbeg, -int(str.length()));
 	} else
 		cur.setSelection(selbeg, str.length());
-	saveSelection(cur);
 }
 
 

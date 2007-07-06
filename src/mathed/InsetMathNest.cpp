@@ -582,7 +582,6 @@ goto_char_backwards:
 		cur.selection() = true;
 		cur.pos() = cur.lastpos();
 		cur.idx() = cur.lastidx();
-		cap::saveSelection(cur);
 		break;
 
 	case LFUN_PARAGRAPH_UP:
@@ -1207,7 +1206,6 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 		else {
 			Cursor & bvcur = cur.bv().cursor();
 			bvcur.selection() = true;
-			cap::saveSelection(bvcur);
 		}
 		return;
 	}

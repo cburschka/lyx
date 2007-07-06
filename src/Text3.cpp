@@ -119,7 +119,6 @@ namespace {
 	{
 		if (selecting || cur.mark())
 			cur.setSelection();
-		saveSelection(cur);
 	}
 
 
@@ -488,8 +487,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-		} else if (cur.selection())
-			saveSelection(cur);
+		}
 		break;
 
 	case LFUN_CHAR_BACKWARD:
@@ -506,8 +504,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		}
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_UP_SELECT:
@@ -532,9 +528,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		} else
 			cur.undispatched();
 		
-		// save new selection
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 	}
 
@@ -542,16 +535,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_UP_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_PARAGRAPH_UP_SELECT);
 		needsUpdate |= cursorUpParagraph(cur);
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_PARAGRAPH_DOWN_SELECT);
 		needsUpdate |= cursorDownParagraph(cur);
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_SCREEN_UP:
@@ -562,8 +551,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else {
 			cursorPrevious(cur);
 		}
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_SCREEN_DOWN:
@@ -575,8 +562,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else {
 			cursorNext(cur);
 		}
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_LINE_BEGIN:
@@ -589,8 +574,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LINE_END_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
 		needsUpdate |= cursorEnd(cur);
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_WORD_FORWARD:
@@ -600,8 +583,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorLeftOneWord(cur);
 		else
 			needsUpdate |= cursorRightOneWord(cur);
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_WORD_BACKWARD:
@@ -611,8 +592,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorRightOneWord(cur);
 		else
 			needsUpdate |= cursorLeftOneWord(cur);
-		if (cur.selection())
-			saveSelection(cur);
 		break;
 
 	case LFUN_WORD_SELECT: {
@@ -1033,7 +1012,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cursorEnd(cur);
 			cur.setSelection();
 			bv->cursor() = cur;
-			saveSelection(cur);
 		}
 		break;
 
@@ -1145,7 +1123,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// but bvcur is current mouse position
 				Cursor & bvcur = cur.bv().cursor();
 				bvcur.selection() = true;
-				saveSelection(bvcur);
 			}
 			needsUpdate = false;
 			cur.noUpdate();
@@ -1589,7 +1566,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ESCAPE:
 		if (cur.selection()) {
 			cur.selection() = false;
-			saveSelection(cur);
 		} else {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
