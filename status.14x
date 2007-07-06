@@ -20,11 +20,6 @@ What's new
 ** Updates:
 ***********
 
-* DOCUMENT INPUT/OUTPUT
-
-
-* USER INTERFACE:
-
 * DOCUMENTATION AND LOCALIZATION
 
 - Update Hungarian and Italian localizations of the interface.
@@ -41,6 +36,8 @@ What's new
   settings (bug 3416).
 
 - Fix Date external template in windows (bug 3241)
+
+- Fix babel bug triggered by MarkBoth in the IEEEtran.layout (bug 3510).
 
 * USER INTERFACE:
 
@@ -95,14 +92,9 @@ What's new
 
 - Fix broken link to IEEETran.cls in LaTeXConfiguration (bug 848).
 
+- Fix that Slovak userguide couldn't be typeset.
 
 * BUILD/INSTALLATION:
 
-
-* MISCELLANEOUS
-
 - Make LyX/Mac recognize correctly newer versions of teTeX.
 
-- Fix that Slovak userguide couldn't be typeset.
-
-- Fix babel bug triggered by MarkBoth in the IEEEtran.layout (bug 3510).
