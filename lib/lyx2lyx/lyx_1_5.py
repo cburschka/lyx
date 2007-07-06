@@ -868,7 +868,7 @@ accent_map = {
     "=" : u'\u0304', # macron
     "u" : u'\u0306', # breve
     "." : u'\u0307', # dot above
-    "\"": u'\u0308', # diaresis
+    "\"": u'\u0308', # diaeresis
     "r" : u'\u030a', # ring above
     "H" : u'\u030b', # double acute
     "v" : u'\u030c', # caron
@@ -1850,7 +1850,7 @@ Forced output is currently not enforced'''
         if line[0] != '#':
             line=line.replace(' "',' ') # remove all quotation marks with spaces before
             line=line.replace('" ',' ') # remove all quotation marks with spaces after
-            line=line.replace(r'\"','"') # replace \" by " (for characters with diaresis)
+            line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
             try:
                 # flag1 and flag2 are preamble & flags
                 # currently NOT implemented
