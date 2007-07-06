@@ -248,7 +248,17 @@ bool isAscii(docstring const & str)
 {
 	int const len = str.length();
 	for (int i = 0; i < len; ++i)
-		if (str[i] >= 0x80)
+		if (static_cast<unsigned char>(str[i]) >= 0x80)
+			return false;
+	return true;
+}
+
+
+bool isAscii(string const & str)
+{
+	int const len = str.length();
+	for (int i = 0; i < len; ++i)
+		if (static_cast<unsigned char>(str[i]) >= 0x80)
 			return false;
 	return true;
 }

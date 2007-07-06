@@ -72,6 +72,9 @@ int hexToInt(lyx::docstring const & str);
 /// is \p str pure ascii?
 bool isAscii(docstring const & str);
 
+/// is \p str pure ascii?
+bool isAscii(std::string const & str);
+
 /**
  * Changes the case of \p c to lowercase.
  * Don't use this for non-ASCII characters, since it depends on the locale.
