@@ -1,4 +1,4 @@
-#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -23809,41 +23809,6 @@ T1
  french quotes won't show up.
 \end_layout
 
-\begin_layout Itemize
-Users of 
-\family typewriter
-T1
-\family default
--fonts can, however, get the french quotes [characters AB and BB] if they
- include the either the package 
-\family typewriter
-umlaute.sty
-\family default
- or 
-\family typewriter
-german.sty
-\family default
- in their documents.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-This only holds when you want to input these quotes by yourself.
- The automatic quote feature described in Section 
-\begin_inset LatexCommand ref
-reference "sec:quotes"
-
-\end_inset
-
-, will generate automatically LaTeX code adapted to available fonts and
- packages.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Float table
 wide false
@@ -28454,20 +28419,12 @@ hungarian umlaut
 \end_deeper
 \begin_layout Standard
 All the characters above are actively supported by TeX fonts.
- In addition TeX allows diacritical marks on almost all characters .
+ In addition TeX allows diacritical marks on almost all characters.
  Also make sure you're using the 
 \family typewriter
 T1
 \family default
- font-encoding and have the package 
-\family typewriter
-umlaute.sty
-\family default
- with the definition file 
-\family typewriter
-iso.def
-\family default
- installed.
+ font-encoding.
 \end_layout
 
 \begin_layout Chapter

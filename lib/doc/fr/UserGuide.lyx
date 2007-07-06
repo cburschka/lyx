@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass book
@@ -105,6 +105,7 @@ p\hspace{-0.55em}l
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
 \author "usti" 
 \end_header
 
@@ -18404,11 +18405,7 @@ en équation numérotée :
 
 \end_inset
 
-
-\lang english
- 
-\lang french
-est d'aller dans le menu 
+ est d'aller dans le menu 
 \family sans
 Insérer
 \family default
@@ -25601,15 +25598,7 @@ Tous les caractères ci-dessus sont présents dans les polices TeX.
 \family typewriter
 T1
 \family default
- et que le paquetage 
-\family typewriter
-umlaute.sty
-\family default
- et le fichier de définition 
-\family typewriter
-iso.def
-\family default
- sont installés.
+.
 \end_layout
 
 \begin_layout Chapter

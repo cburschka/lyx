@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -91,6 +91,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "Anonymous" 
 \author "usti" 
 \end_header
 
@@ -21320,39 +21321,7 @@ T1
  -- non saranno mostrati.
 \end_layout
 
-\begin_layout Itemize
-Gli utenti che utilizzano i font 
-\family typewriter
-T1
-\family default
- possono, tuttavia, ottenere le virgolette francesi [caratteri AB e BB]
- includendo all'interno dei loro documenti o il pacchetto 
-\family typewriter
-umlaute.sty
-\family default
- o il pacchetto 
-\family typewriter
-german.sty
-\family default
-.
-\begin_inset Foot
-status open
-
 \begin_layout Standard
-Questo stratagemma funziona soltanto quando volete inserire queste virgolette
- da voi.
- La funzione di citazione, descritta nella Sezione 
-\begin_inset LatexCommand ref
-reference "sec:quotes"
-
-\end_inset
-
-, genererà automaticamente il codice LaTeX compatibile con i font ed i pacchetti
- disponibili.
-\end_layout
-
-\end_inset
-
  
 \begin_inset Note Note
 status open
@@ -24189,29 +24158,7 @@ ISO8859--1
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciidieresis
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¨
-\end_layout
-
-\end_inset
-
- Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
+¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
 \hfill
 dieresi
 \end_layout
@@ -24223,6 +24170,7 @@ circonflesso
 \end_layout
 
 \begin_layout Standard
+`
 \begin_inset ERT
 status collapsed
 
@@ -24251,29 +24199,7 @@ grave
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciiacute
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-´
-\end_layout
-
-\end_inset
-
- Á É Í Ó Ú Ý á é í ó ú ý
+´ Á É Í Ó Ú Ý á é í ó ú ý
 \hfill
 acuto
 \end_layout
@@ -24405,14 +24331,6 @@ Tutti i caratteri di cui sopra sono supportati dai font TeX.
  Assicuratevi inoltre di fare uso della codifica per i font 
 \family typewriter
 T1
-\family default
- e di avere installato il pacchetto 
-\family typewriter
-umlaute.sty
-\family default
- con il file di definizione 
-\family typewriter
-iso.def
 \family default
 .
 \end_layout

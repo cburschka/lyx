@@ -1,4 +1,4 @@
-#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -26358,54 +26358,6 @@ T1
  die französischen Anführungszeichen.
 \end_layout
 
-\begin_layout Itemize
-Benutzer der 
-\family typewriter
-T1
-\family default
--Schriften können die französischen Anführungszeichen (die Zeichen AB und
- BB) bekommen, wenn sie das Paket 
-\family typewriter
-umlaute.sty
-\family default
- oder 
-\family typewriter
-german.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-sty
-\family default
- in Ihre Dokumente einfügen.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Das gilt für den Fall, wenn Sie diese Zeichen manuell einfügen wollen.
- Die automatische Anführungszeichenfunktion (siehe Abschnitt 
-\begin_inset LatexCommand vref
-reference "sec:quotes"
-
-\end_inset
-
-) wird automatisch LaTeX-Code erzeugen, der an die verfügbaren Fonts und
- Pakete angepasst ist.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \align center
 \begin_inset Float table
@@ -29344,15 +29296,7 @@ All diese Zeichen werden aktiv von LaTeX-Fonts unterstützt.
 \family typewriter
 T1
 \family default
--Fontkodierung benutzen und das Paket 
-\family typewriter
-umlaute.sty
-\family default
- mit der Definitionsdatei 
-\family typewriter
-iso.def
-\family default
- installiert haben.
+-Fontkodierung benutzen.
 \end_layout
 
 \begin_layout Chapter
