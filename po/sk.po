@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-27 18:53+0100\n"
+"POT-Creation-Date: 2007-07-07 23:36+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -38,7 +38,7 @@ msgstr "Autorské práva"
 #: src/frontends/qt4/ui/ErrorListUi.ui:62
 #: src/frontends/qt4/ui/ExternalUi.ui:705 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/LogUi.ui:71
-#: src/frontends/qt4/ui/ParagraphUi.ui:305 src/frontends/qt4/ui/PrefsUi.ui:96
+#: src/frontends/qt4/ui/ParagraphUi.ui:145 src/frontends/qt4/ui/PrefsUi.ui:96
 #: src/frontends/qt4/ui/RefUi.ui:100 src/frontends/qt4/ui/SearchUi.ui:210
 #: src/frontends/qt4/ui/ShowFileUi.ui:58
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:31
@@ -68,7 +68,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
-#: src/frontends/qt4/ui/ParagraphUi.ui:282 src/frontends/qt4/ui/RefUi.ui:80
+#: src/frontends/qt4/ui/ParagraphUi.ui:122 src/frontends/qt4/ui/RefUi.ui:80
 #: src/frontends/qt4/ui/SendtoUi.ui:75
 #: src/frontends/qt4/ui/TabularCreateUi.ui:68
 #: src/frontends/qt4/ui/URLUi.ui:105 src/frontends/qt4/ui/VSpaceUi.ui:145
@@ -80,8 +80,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073 src/LyXVC.cpp:175
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:743 src/LyXFunc.cpp:916
+#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
@@ -159,7 +159,7 @@ msgstr "&Prida»"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:854 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:859 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Zru¹i»"
 
@@ -297,7 +297,7 @@ msgid "&Width:"
 msgstr "©ír&ka:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
-#: src/frontends/qt4/ui/ParagraphUi.ui:50
+#: src/frontends/qt4/ui/ParagraphUi.ui:221
 msgid "Alignment"
 msgstr "Zarovnanie"
 
@@ -377,7 +377,7 @@ msgstr "&Vertikálne:"
 #: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:709
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/frontends/qt4/ui/PrefsUi.ui:50
+#: src/frontends/qt4/ui/ParagraphUi.ui:96 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
 msgstr "O&bnovi»"
@@ -387,7 +387,7 @@ msgstr "O&bnovi»"
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:759
 #: src/frontends/qt4/ui/ListingsUi.ui:619
-#: src/frontends/qt4/ui/ParagraphUi.ui:295 src/frontends/qt4/ui/PrefsUi.ui:86
+#: src/frontends/qt4/ui/ParagraphUi.ui:135 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
 msgid "&Apply"
@@ -451,12 +451,11 @@ msgstr "&Veµkos»:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
 #: src/frontends/qt4/ui/GraphicsUi.ui:620
-#: src/frontends/qt4/ui/ParagraphUi.ui:98
-#: src/frontends/qt4/ui/ParagraphUi.ui:127
+#: src/frontends/qt4/ui/ParagraphUi.ui:176
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
-#: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
+#: src/Font.cpp:522 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
@@ -468,60 +467,60 @@ msgstr "&Veµkos»:"
 msgid "Default"
 msgstr "©tandardný"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:960
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:963
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "Drobné"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:964
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:967
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "Najmen¹ie"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:968
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:971
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "Men¹í"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:972
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:975
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "Malé"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:976
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:979
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "Normálny"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:980
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:983
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "Veµké"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:984
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:987
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "Väè¹í"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:988
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:991
 msgid "Largest"
 msgstr "Najväè¹ie"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:992
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:995
 msgid "Huge"
 msgstr "Obrovské"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:996
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:999
 msgid "Huger"
 msgstr "Ozrutné"
 
@@ -1779,70 +1778,75 @@ msgstr ""
 msgid "&Two-sided document"
 msgstr "Dvojs&tranný dokument"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:62
+#: src/frontends/qt4/ui/ParagraphUi.ui:63
 #, fuzzy
-msgid "&Center"
-msgstr "Na stred"
+msgid "Indent &Paragraph"
+msgstr "O&dsadi» odsek"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:69
-#, fuzzy
-msgid "&Right"
-msgstr "Vpravo"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:76
-#, fuzzy
-msgid "&Left"
-msgstr "Vµavo"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:83
-#, fuzzy
-msgid "&Justified"
-msgstr "Do bloku"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:95
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:116
+#: src/frontends/qt4/ui/ParagraphUi.ui:165
 msgid "L&ine spacing:"
 msgstr "R&iadkovanie:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Jednoduché"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:137
+#: src/frontends/qt4/ui/ParagraphUi.ui:186
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:191 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Dvojité"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
 #: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 msgid "Custom"
 msgstr "Vlastné"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:185
-#, fuzzy
-msgid "Indent &Paragraph"
-msgstr "O&dsadi» odsek"
+#: src/frontends/qt4/ui/ParagraphUi.ui:238
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:213
+#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#, fuzzy
+msgid "Use Paragraph's Default Alignment"
+msgstr "Formát odstavca je nastavený."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:248
+#, fuzzy
+msgid "&Right"
+msgstr "Vpravo"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:255
+#, fuzzy
+msgid "&Left"
+msgstr "Vµavo"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:262
+#, fuzzy
+msgid "&Center"
+msgstr "Na stred"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:269
+#, fuzzy
+msgid "&Justified"
+msgstr "Do bloku"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:290
 msgid "Label Width"
 msgstr "©írka oznaèenia"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:225
-#: src/frontends/qt4/ui/ParagraphUi.ui:232
+#: src/frontends/qt4/ui/ParagraphUi.ui:302
+#: src/frontends/qt4/ui/ParagraphUi.ui:309
 msgid "This text defines the width of the paragraph label"
 msgstr "Tento text definuje ¹írku odstavca oznaèenia"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:235
+#: src/frontends/qt4/ui/ParagraphUi.ui:312
 msgid "&Longest label"
 msgstr "Najd&l&h¹ie oznaèenie"
 
@@ -1943,7 +1947,7 @@ msgstr ""
 msgid "Display &Graphics:"
 msgstr "Zobrazi» &grafiku:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:72
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:73
 msgid "Off"
 msgstr "Vypnuté"
 
@@ -1951,7 +1955,7 @@ msgstr "Vypnuté"
 msgid "No math"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:72
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:73
 msgid "On"
 msgstr "Zapnuté"
 
@@ -2536,7 +2540,7 @@ msgid "&Maximum last files:"
 msgstr "&Maximum posledných súborov:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:737
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:742
 msgid "&Save"
 msgstr "&Ulo¾i»"
 
@@ -2952,7 +2956,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1778
+#: src/LyXFunc.cpp:1791
 msgid "on"
 msgstr "na"
 
@@ -3913,9 +3917,9 @@ msgstr "A"
 
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:513
-#: lib/layouts/isprs.layout:215 lib/layouts/kluwer.layout:302
-#: lib/layouts/kluwer.layout:314 lib/layouts/aapaper.inc:95
-#: lib/layouts/svjour.inc:294
+#: lib/layouts/elsart.layout:433 lib/layouts/isprs.layout:215
+#: lib/layouts/kluwer.layout:302 lib/layouts/kluwer.layout:314
+#: lib/layouts/aapaper.inc:95 lib/layouts/svjour.inc:294
 msgid "Acknowledgements"
 msgstr "Poïakovanie"
 
@@ -5142,11 +5146,6 @@ msgstr ""
 #: lib/layouts/elsart.layout:421
 msgid "Case \\arabic{case}"
 msgstr ""
-
-#: lib/layouts/elsart.layout:433
-#, fuzzy
-msgid "Acknowledgement \\arabic{theorem}"
-msgstr "Poïakovanie"
 
 #: lib/layouts/entcs.layout:72
 msgid "FrontMatter"
@@ -7643,249 +7642,249 @@ msgstr "Afrikánsky"
 msgid "American"
 msgstr "Americky"
 
-#: lib/languages:4
+#: lib/languages:5
 msgid "Arabic (ArabTeX)"
 msgstr ""
 
-#: lib/languages:5
+#: lib/languages:6
 #, fuzzy
 msgid "Arabic (Arabi)"
 msgstr "Arabsky"
 
-#: lib/languages:6
+#: lib/languages:7
 #, fuzzy
 msgid "Armenian"
 msgstr "Americky"
 
-#: lib/languages:7
+#: lib/languages:8
 msgid "Austrian"
 msgstr "Rakúsky"
 
-#: lib/languages:8
+#: lib/languages:9
 msgid "Austrian (new spelling)"
 msgstr ""
 
-#: lib/languages:9
+#: lib/languages:10
 msgid "Bahasa"
 msgstr "Bahasky"
 
-#: lib/languages:10
+#: lib/languages:11
 msgid "Belarusian"
 msgstr "Bielorusky"
 
-#: lib/languages:11
+#: lib/languages:12
 msgid "Basque"
 msgstr "Baskitsky"
 
-#: lib/languages:12
+#: lib/languages:13
 #, fuzzy
 msgid "Portuguese (Brazil)"
 msgstr "Portugalsky"
 
-#: lib/languages:13
+#: lib/languages:14
 msgid "Breton"
 msgstr "Bretónsky"
 
-#: lib/languages:14
+#: lib/languages:15
 msgid "British"
 msgstr "Britsky"
 
-#: lib/languages:15
+#: lib/languages:16
 msgid "Bulgarian"
 msgstr "Bulharsky"
 
-#: lib/languages:16
+#: lib/languages:17
 msgid "Canadian"
 msgstr "Kanadsky"
 
-#: lib/languages:17
+#: lib/languages:18
 #, fuzzy
 msgid "French Canadian"
 msgstr "Kanadsky"
 
-#: lib/languages:18
+#: lib/languages:19
 msgid "Catalan"
 msgstr "Katalánsky"
 
-#: lib/languages:19
+#: lib/languages:20
 msgid "Chinese (simplified)"
 msgstr ""
 
-#: lib/languages:20
+#: lib/languages:21
 msgid "Chinese (traditional)"
 msgstr ""
 
-#: lib/languages:21
+#: lib/languages:22
 msgid "Croatian"
 msgstr "Chorvátsky"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Czech"
 msgstr "Èesky"
 
-#: lib/languages:23
+#: lib/languages:24
 msgid "Danish"
 msgstr "Dánsky"
 
-#: lib/languages:24
+#: lib/languages:25
 msgid "Dutch"
 msgstr "Holandsky"
 
-#: lib/languages:25
+#: lib/languages:26
 msgid "English"
 msgstr "Anglický jazyk"
 
-#: lib/languages:27
+#: lib/languages:28
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:28
+#: lib/languages:29
 msgid "Estonian"
 msgstr "Estónsky"
 
-#: lib/languages:30
+#: lib/languages:31
 #, fuzzy
 msgid "Farsi"
 msgstr "okraje"
 
-#: lib/languages:31
+#: lib/languages:32
 msgid "Finnish"
 msgstr "Fínsky"
 
-#: lib/languages:33
+#: lib/languages:34
 msgid "French"
 msgstr "Francúzsky"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "Galician"
 msgstr "Halièsky"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "German"
 msgstr "Nemecky"
 
-#: lib/languages:36
+#: lib/languages:37
 msgid "German (new spelling)"
 msgstr ""
 
-#: lib/languages:37 lib/ui/stdtoolbars.inc:435
+#: lib/languages:38 lib/ui/stdtoolbars.inc:435
 msgid "Greek"
 msgstr "Grécky"
 
-#: lib/languages:38
+#: lib/languages:39
 msgid "Hebrew"
 msgstr "Hebrejsky"
 
-#: lib/languages:40
+#: lib/languages:41
 msgid "Irish"
 msgstr "Írsky"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Italian"
 msgstr "Taliansky"
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:43
+#: lib/languages:44
 msgid "Kazakh"
 msgstr "Kaza¹sky"
 
-#: lib/languages:45
+#: lib/languages:46
 msgid "Korean"
 msgstr ""
 
-#: lib/languages:47
+#: lib/languages:48
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Jednotka ¹írky"
 
-#: lib/languages:48
+#: lib/languages:49
 #, fuzzy
 msgid "Latvian"
 msgstr "Chorvátsky"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Magyar"
 msgstr "Maïarsky"
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Norsk"
 msgstr "Nórsky"
 
-#: lib/languages:52
+#: lib/languages:53
 #, fuzzy
 msgid "Nynorsk"
 msgstr "Nórsky"
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Polish"
 msgstr "Poµsky"
 
-#: lib/languages:54
+#: lib/languages:55
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portugalsky"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Romanian"
 msgstr "Rumunsky"
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Russian"
 msgstr "Rusky"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Scottish"
 msgstr "©kótsky"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Serbian"
 msgstr "Srbsky"
 
-#: lib/languages:59
+#: lib/languages:60
 msgid "Serbo-Croatian"
 msgstr "Srbo-chorvátsky"
 
-#: lib/languages:60
+#: lib/languages:61
 msgid "Spanish"
 msgstr "©panielsky"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Slovak"
 msgstr "Slovensky"
 
-#: lib/languages:62
+#: lib/languages:63
 msgid "Slovene"
 msgstr "Slovinsky"
 
-#: lib/languages:63
+#: lib/languages:64
 msgid "Swedish"
 msgstr "©védsky"
 
-#: lib/languages:64
+#: lib/languages:65
 msgid "Thai"
 msgstr "Thajsky"
 
-#: lib/languages:65
+#: lib/languages:66
 msgid "Turkish"
 msgstr "Turecky"
 
-#: lib/languages:66
+#: lib/languages:67
 msgid "Ukrainian"
 msgstr "Ukrajinsky"
 
-#: lib/languages:67
+#: lib/languages:68
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Srbsky"
 
-#: lib/languages:68
+#: lib/languages:69
 msgid "Welsh"
 msgstr "Walesky"
 
@@ -8789,17 +8788,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Znova|Z"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Vystrihnú»"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:853
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopírova»"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:830
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Vlo¾i»"
@@ -12397,7 +12396,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:736
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:741
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Ulo¾i» dokument?"
@@ -12499,8 +12498,8 @@ msgstr "Poèet slov"
 msgid "Select LyX document to insert"
 msgstr "Zvoµte LyX dokument na vlo¾enie"
 
-#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1912 src/LyXFunc.cpp:1951
-#: src/LyXFunc.cpp:2024 src/callback.cpp:135
+#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1928 src/LyXFunc.cpp:1967
+#: src/LyXFunc.cpp:2040 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12509,17 +12508,17 @@ msgstr "Zvoµte LyX dokument na vlo¾enie"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1952 src/LyXFunc.cpp:2025
+#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1968 src/LyXFunc.cpp:2041
 msgid "Examples|#E#e"
 msgstr "Príklady|#P#p"
 
-#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1917 src/LyXFunc.cpp:1956
+#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:1972
 #: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumenty (*.lyx)"
 
-#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1966 src/LyXFunc.cpp:2046
-#: src/LyXFunc.cpp:2060 src/LyXFunc.cpp:2076
+#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2062
+#: src/LyXFunc.cpp:2076 src/LyXFunc.cpp:2092
 msgid "Canceled."
 msgstr "Zru¹ené."
 
@@ -12884,7 +12883,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "Nedefinovaný znakový ¹týl"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1083
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12892,12 +12891,12 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1086
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Zobrazi» súbor"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089
 #: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
@@ -12958,95 +12957,95 @@ msgstr "Dokument exportovaný ako "
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako "
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:870
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:873
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "Roman"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:874
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:877
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:878
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:881
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "Písací stroj"
 
-#: src/Font.cpp:55
+#: src/Font.cpp:56
 msgid "Symbol"
 msgstr "Symbol"
 
-#: src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:63 src/Font.cpp:69
-#: src/Font.cpp:72
+#: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:70
+#: src/Font.cpp:73
 msgid "Inherit"
 msgstr "Zdedené"
 
-#: src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:64 src/Font.cpp:69
-#: src/Font.cpp:72
+#: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:65 src/Font.cpp:70
+#: src/Font.cpp:73
 msgid "Ignore"
 msgstr "Ignorova»"
 
-#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:900
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:903
 msgid "Medium"
 msgstr "Stredné"
 
-#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:904
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:907
 msgid "Bold"
 msgstr "Tuèné"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:926
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:929
 msgid "Upright"
 msgstr "Vzpriamený"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:930
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:933
 msgid "Italic"
 msgstr "Kurzíva"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:934
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:937
 msgid "Slanted"
 msgstr "Sklonený"
 
-#: src/Font.cpp:63
+#: src/Font.cpp:64
 msgid "Smallcaps"
 msgstr "Kapitálky"
 
-#: src/Font.cpp:68 src/frontends/controllers/frontend_helpers.cpp:1000
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1003
 msgid "Increase"
 msgstr "Nárast"
 
-#: src/Font.cpp:68 src/frontends/controllers/frontend_helpers.cpp:1004
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1007
 msgid "Decrease"
 msgstr "Zní¾enie"
 
-#: src/Font.cpp:72
+#: src/Font.cpp:73
 msgid "Toggle"
 msgstr "Prepnú»"
 
-#: src/Font.cpp:512
+#: src/Font.cpp:513
 #, c-format
 msgid "Emphasis %1$s, "
 msgstr "Zvýrazni» %1$s, "
 
-#: src/Font.cpp:515
+#: src/Font.cpp:516
 #, c-format
 msgid "Underline %1$s, "
 msgstr "Podèiarknu» %1$s, "
 
-#: src/Font.cpp:518
+#: src/Font.cpp:519
 #, c-format
 msgid "Noun %1$s, "
 msgstr "Kapitálky %1$s, "
 
-#: src/Font.cpp:523
+#: src/Font.cpp:524
 #, c-format
 msgid "Language: %1$s, "
 msgstr "Jazyk: %1$s, "
 
-#: src/Font.cpp:526
+#: src/Font.cpp:527
 #, c-format
 msgid "  Number %1$s"
 msgstr "  Èíslo %1$s"
@@ -13350,35 +13349,35 @@ msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
-#: src/LyXFunc.cpp:364
+#: src/LyXFunc.cpp:369
 msgid "Unknown function."
 msgstr "Neznáma funkcia."
 
-#: src/LyXFunc.cpp:403
+#: src/LyXFunc.cpp:408
 msgid "Nothing to do"
 msgstr "Nie je èo robi»."
 
-#: src/LyXFunc.cpp:422
+#: src/LyXFunc.cpp:427
 msgid "Unknown action"
 msgstr "Neznáma akcia"
 
-#: src/LyXFunc.cpp:428 src/LyXFunc.cpp:720
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:725
 msgid "Command disabled"
 msgstr "Príkaz nie je povolený"
 
-#: src/LyXFunc.cpp:435
+#: src/LyXFunc.cpp:440
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
 
-#: src/LyXFunc.cpp:706
+#: src/LyXFunc.cpp:711
 msgid "Document is read-only"
 msgstr "Dokument je iba na èítanie"
 
-#: src/LyXFunc.cpp:714
+#: src/LyXFunc.cpp:719
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:733
+#: src/LyXFunc.cpp:738
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13386,142 +13385,142 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:751
+#: src/LyXFunc.cpp:756
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:754
+#: src/LyXFunc.cpp:759
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tlaèi» do súboru"
 
-#: src/LyXFunc.cpp:773
+#: src/LyXFunc.cpp:778
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Dokument pou¾íva neznámu textovú triedu \"%1$s\"."
 
-#: src/LyXFunc.cpp:776
+#: src/LyXFunc.cpp:781
 msgid "Could not change class"
 msgstr ""
 
-#: src/LyXFunc.cpp:888
+#: src/LyXFunc.cpp:893
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument %1$s..."
 
-#: src/LyXFunc.cpp:892
+#: src/LyXFunc.cpp:897
 msgid " done."
 msgstr " skonèené."
 
-#: src/LyXFunc.cpp:908
+#: src/LyXFunc.cpp:913
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:910 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:915 src/buffer_funcs.cpp:192
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Obnovenie ulo¾enej verzie"
 
-#: src/LyXFunc.cpp:911 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:916 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 #, fuzzy
 msgid "&Revert"
 msgstr "Vráti»|r"
 
-#: src/LyXFunc.cpp:1102
+#: src/LyXFunc.cpp:1110
 #, fuzzy
 msgid "Exiting."
 msgstr "Koniec|K"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1345
+#: src/LyXFunc.cpp:1128 src/Text3.cpp:1322
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/LyXFunc.cpp:1129
+#: src/LyXFunc.cpp:1137
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s Pomocníkom %1$s..."
 
-#: src/LyXFunc.cpp:1516
+#: src/LyXFunc.cpp:1529
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1527
+#: src/LyXFunc.cpp:1540
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastavi» farbu  \"%1$s\" - nie je definovaná alebo ju nie je "
 "mo¾né predefinova»"
 
-#: src/LyXFunc.cpp:1641
+#: src/LyXFunc.cpp:1654
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "©tandardy dokumentu|#D"
 
-#: src/LyXFunc.cpp:1644
+#: src/LyXFunc.cpp:1657
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné"
 
-#: src/LyXFunc.cpp:1700
+#: src/LyXFunc.cpp:1713
 msgid "Converting document to new document class..."
 msgstr "Prevod dokumentu do novej triedy dokumentov..."
 
-#: src/LyXFunc.cpp:1780
+#: src/LyXFunc.cpp:1793
 #, fuzzy
 msgid "off"
 msgstr "Vypnuté"
 
-#: src/LyXFunc.cpp:1782
+#: src/LyXFunc.cpp:1795
 #, fuzzy
 msgid "auto"
 msgstr "Dátum"
 
-#: src/LyXFunc.cpp:1784
+#: src/LyXFunc.cpp:1797
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1910
+#: src/LyXFunc.cpp:1926
 msgid "Select template file"
 msgstr "Zvoli» názov ¹ablóny"
 
-#: src/LyXFunc.cpp:1913 src/callback.cpp:136
+#: src/LyXFunc.cpp:1929 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "©ablóny|#¹"
 
-#: src/LyXFunc.cpp:1949
+#: src/LyXFunc.cpp:1965
 msgid "Select document to open"
 msgstr "Zvoli» dokument pre otvorenie"
 
-#: src/LyXFunc.cpp:1988
+#: src/LyXFunc.cpp:2004
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otváram dokument %1$s..."
 
-#: src/LyXFunc.cpp:1992
+#: src/LyXFunc.cpp:2008
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je otvorený."
 
-#: src/LyXFunc.cpp:1994
+#: src/LyXFunc.cpp:2010
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nedá sa otvori» dokument %1$s"
 
-#: src/LyXFunc.cpp:2019
+#: src/LyXFunc.cpp:2035
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoli» súbor %1$s na import"
 
-#: src/LyXFunc.cpp:2070 src/callback.cpp:166
+#: src/LyXFunc.cpp:2086 src/callback.cpp:166
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13529,12 +13528,12 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:2072 src/callback.cpp:168
+#: src/LyXFunc.cpp:2088 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Ulo¾i» dokument?"
 
-#: src/LyXFunc.cpp:2135
+#: src/LyXFunc.cpp:2151
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
@@ -14082,7 +14081,7 @@ msgstr ""
 msgid "No Branch in Document!"
 msgstr "Dokument"
 
-#: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:242
+#: src/Paragraph.cpp:1600 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "V tomto formáte nemá zmysel!"
 
@@ -14217,27 +14216,27 @@ msgstr "Nie je èo indexova»!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
 
-#: src/Text3.cpp:180 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:179 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/Text3.cpp:756
+#: src/Text3.cpp:735
 msgid "Unknown spacing argument: "
 msgstr "Neznámy parameter riadkovania: "
 
-#: src/Text3.cpp:928
+#: src/Text3.cpp:907
 msgid "Layout "
 msgstr "Formát "
 
-#: src/Text3.cpp:929
+#: src/Text3.cpp:908
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1450 src/Text3.cpp:1462
+#: src/Text3.cpp:1427 src/Text3.cpp:1439
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1585
+#: src/Text3.cpp:1562
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený."
 
@@ -14633,21 +14632,21 @@ msgstr "Externé aplikácie"
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/frontends/LyXView.cpp:194
+#: src/frontends/LyXView.cpp:200
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/frontends/LyXView.cpp:206
+#: src/frontends/LyXView.cpp:212
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Otváram dokument %1$s..."
 
-#: src/frontends/LyXView.cpp:480
+#: src/frontends/LyXView.cpp:486
 msgid " (changed)"
 msgstr " (zmenený)"
 
-#: src/frontends/LyXView.cpp:484
+#: src/frontends/LyXView.cpp:490
 msgid " (read only)"
 msgstr " (iba pre èítanie)"
 
@@ -14968,113 +14967,113 @@ msgstr "Kontrola pravopisu je dokonèená"
 msgid "Table of Contents"
 msgstr "Obsah"
 
-#: src/frontends/controllers/frontend_helpers.cpp:244
+#: src/frontends/controllers/frontend_helpers.cpp:247
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
 
-#: src/frontends/controllers/frontend_helpers.cpp:248
+#: src/frontends/controllers/frontend_helpers.cpp:251
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/frontends/controllers/frontend_helpers.cpp:285
+#: src/frontends/controllers/frontend_helpers.cpp:288
 msgid "No year"
 msgstr "Bez roku"
 
-#: src/frontends/controllers/frontend_helpers.cpp:818
+#: src/frontends/controllers/frontend_helpers.cpp:821
 #, fuzzy
 msgid "before"
 msgstr "Text pred:"
 
-#: src/frontends/controllers/frontend_helpers.cpp:866
-#: src/frontends/controllers/frontend_helpers.cpp:896
-#: src/frontends/controllers/frontend_helpers.cpp:922
-#: src/frontends/controllers/frontend_helpers.cpp:956
-#: src/frontends/controllers/frontend_helpers.cpp:1022
-#: src/frontends/controllers/frontend_helpers.cpp:1052
-#: src/frontends/controllers/frontend_helpers.cpp:1125
+#: src/frontends/controllers/frontend_helpers.cpp:869
+#: src/frontends/controllers/frontend_helpers.cpp:899
+#: src/frontends/controllers/frontend_helpers.cpp:925
+#: src/frontends/controllers/frontend_helpers.cpp:959
+#: src/frontends/controllers/frontend_helpers.cpp:1025
+#: src/frontends/controllers/frontend_helpers.cpp:1055
+#: src/frontends/controllers/frontend_helpers.cpp:1131
 msgid "No change"
 msgstr "®iadne zmeny"
 
-#: src/frontends/controllers/frontend_helpers.cpp:882
-#: src/frontends/controllers/frontend_helpers.cpp:908
-#: src/frontends/controllers/frontend_helpers.cpp:942
-#: src/frontends/controllers/frontend_helpers.cpp:1008
-#: src/frontends/controllers/frontend_helpers.cpp:1038
-#: src/frontends/controllers/frontend_helpers.cpp:1092
-#: src/frontends/controllers/frontend_helpers.cpp:1127
+#: src/frontends/controllers/frontend_helpers.cpp:885
+#: src/frontends/controllers/frontend_helpers.cpp:911
+#: src/frontends/controllers/frontend_helpers.cpp:945
+#: src/frontends/controllers/frontend_helpers.cpp:1011
+#: src/frontends/controllers/frontend_helpers.cpp:1041
+#: src/frontends/controllers/frontend_helpers.cpp:1095
+#: src/frontends/controllers/frontend_helpers.cpp:1133
 msgid "Reset"
 msgstr "Obnovi»"
 
-#: src/frontends/controllers/frontend_helpers.cpp:938
+#: src/frontends/controllers/frontend_helpers.cpp:941
 msgid "Small Caps"
 msgstr "Malé kapitálky"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1026
+#: src/frontends/controllers/frontend_helpers.cpp:1029
 msgid "Emph"
 msgstr "Zvýrazni»"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1030
+#: src/frontends/controllers/frontend_helpers.cpp:1033
 msgid "Underbar"
 msgstr ""
 
-#: src/frontends/controllers/frontend_helpers.cpp:1034
+#: src/frontends/controllers/frontend_helpers.cpp:1037
 msgid "Noun"
 msgstr "Kapitálky"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1056
+#: src/frontends/controllers/frontend_helpers.cpp:1059
 msgid "No color"
 msgstr ""
 
-#: src/frontends/controllers/frontend_helpers.cpp:1060
+#: src/frontends/controllers/frontend_helpers.cpp:1063
 msgid "Black"
 msgstr "Èierna"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1064
+#: src/frontends/controllers/frontend_helpers.cpp:1067
 msgid "White"
 msgstr "Biela"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1068
+#: src/frontends/controllers/frontend_helpers.cpp:1071
 msgid "Red"
 msgstr "Èervená"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1072
+#: src/frontends/controllers/frontend_helpers.cpp:1075
 msgid "Green"
 msgstr "Zelená"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1076
+#: src/frontends/controllers/frontend_helpers.cpp:1079
 msgid "Blue"
 msgstr "Modrá"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1080
+#: src/frontends/controllers/frontend_helpers.cpp:1083
 msgid "Cyan"
 msgstr "Azúrová"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1084
+#: src/frontends/controllers/frontend_helpers.cpp:1087
 msgid "Magenta"
 msgstr "Purpurová"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1088
+#: src/frontends/controllers/frontend_helpers.cpp:1091
 msgid "Yellow"
 msgstr "®ltá"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1220
+#: src/frontends/controllers/frontend_helpers.cpp:1226
 #, fuzzy
 msgid "System files|#S#s"
 msgstr "Systémové rozhranie|#S#s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1223
+#: src/frontends/controllers/frontend_helpers.cpp:1229
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Pou¾. viazanie|#u"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1306
+#: src/frontends/controllers/frontend_helpers.cpp:1312
 #, fuzzy
 msgid "Could not update TeX information"
 msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1307
+#: src/frontends/controllers/frontend_helpers.cpp:1313
 #, c-format
 msgid "The script `%s' failed."
 msgstr ""
@@ -15123,7 +15122,7 @@ msgstr "Viditeµná medzera|#m"
 msgid "Outline"
 msgstr "Vonkaj¹í"
 
-#: src/frontends/qt4/FileDialog.cpp:167
+#: src/frontends/qt4/FileDialog.cpp:169
 msgid "Directories"
 msgstr "Prieèinky"
 
@@ -15586,7 +15585,7 @@ msgid ""
 "the items is used."
 msgstr ""
 
-#: src/frontends/qt4/QParagraph.cpp:180
+#: src/frontends/qt4/QParagraph.cpp:175
 #, fuzzy
 msgid "Paragraph Settings"
 msgstr "Nastavenia literatúry"
@@ -16290,11 +16289,11 @@ msgstr "Neznámy token: "
 msgid "Opened table"
 msgstr "Otvori» súbor"
 
-#: src/insets/InsetTabular.cpp:4329
+#: src/insets/InsetTabular.cpp:4297
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4330
+#: src/insets/InsetTabular.cpp:4298
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -16532,11 +16531,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:860
+#: src/mathed/InsetMathNest.cpp:859
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:863
+#: src/mathed/InsetMathNest.cpp:862
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16645,6 +16644,10 @@ msgstr ""
 #: src/support/userinfo.cpp:49
 msgid "Unknown user"
 msgstr "Neznámy pou¾ívateµ"
+
+#, fuzzy
+#~ msgid "Acknowledgement \\arabic{theorem}"
+#~ msgstr "Poïakovanie"
 
 #, fuzzy
 #~ msgid "&Default"

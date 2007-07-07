@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-27 18:53+0100\n"
+"POT-Creation-Date: 2007-07-07 23:36+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -41,7 +41,7 @@ msgstr "Ophavsret"
 #: src/frontends/qt4/ui/ErrorListUi.ui:62
 #: src/frontends/qt4/ui/ExternalUi.ui:705 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/LogUi.ui:71
-#: src/frontends/qt4/ui/ParagraphUi.ui:305 src/frontends/qt4/ui/PrefsUi.ui:96
+#: src/frontends/qt4/ui/ParagraphUi.ui:145 src/frontends/qt4/ui/PrefsUi.ui:96
 #: src/frontends/qt4/ui/RefUi.ui:100 src/frontends/qt4/ui/SearchUi.ui:210
 #: src/frontends/qt4/ui/ShowFileUi.ui:58
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:31
@@ -71,7 +71,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
-#: src/frontends/qt4/ui/ParagraphUi.ui:282 src/frontends/qt4/ui/RefUi.ui:80
+#: src/frontends/qt4/ui/ParagraphUi.ui:122 src/frontends/qt4/ui/RefUi.ui:80
 #: src/frontends/qt4/ui/SendtoUi.ui:75
 #: src/frontends/qt4/ui/TabularCreateUi.ui:68
 #: src/frontends/qt4/ui/URLUi.ui:105 src/frontends/qt4/ui/VSpaceUi.ui:145
@@ -83,8 +83,8 @@ msgstr "&O.k."
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073 src/LyXVC.cpp:175
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:743 src/LyXFunc.cpp:916
+#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
@@ -167,7 +167,7 @@ msgstr "&Tilføj"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:854 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:859 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Annullér"
 
@@ -311,7 +311,7 @@ msgid "&Width:"
 msgstr "&Bredde:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
-#: src/frontends/qt4/ui/ParagraphUi.ui:50
+#: src/frontends/qt4/ui/ParagraphUi.ui:221
 msgid "Alignment"
 msgstr "Justering"
 
@@ -391,7 +391,7 @@ msgstr "&Lodret:"
 #: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:709
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/frontends/qt4/ui/PrefsUi.ui:50
+#: src/frontends/qt4/ui/ParagraphUi.ui:96 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
 msgstr "&Gendan"
@@ -401,7 +401,7 @@ msgstr "&Gendan"
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:759
 #: src/frontends/qt4/ui/ListingsUi.ui:619
-#: src/frontends/qt4/ui/ParagraphUi.ui:295 src/frontends/qt4/ui/PrefsUi.ui:86
+#: src/frontends/qt4/ui/ParagraphUi.ui:135 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
 msgid "&Apply"
@@ -464,12 +464,11 @@ msgstr "S&tørrelse:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
 #: src/frontends/qt4/ui/GraphicsUi.ui:620
-#: src/frontends/qt4/ui/ParagraphUi.ui:98
-#: src/frontends/qt4/ui/ParagraphUi.ui:127
+#: src/frontends/qt4/ui/ParagraphUi.ui:176
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
-#: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
+#: src/Font.cpp:522 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
@@ -481,60 +480,60 @@ msgstr "S&tørrelse:"
 msgid "Default"
 msgstr "Standard"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:960
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:963
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "Lillebitte"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:964
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:967
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "Mindst"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:968
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:971
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "Mindre"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:972
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:975
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "Lille"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:976
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:979
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "Normal"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:980
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:983
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "Stor"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:984
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:987
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "Større"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:988
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:991
 msgid "Largest"
 msgstr "Størst"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:992
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:995
 msgid "Huge"
 msgstr "Enorm"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:996
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:999
 msgid "Huger"
 msgstr "Kæmpestor"
 
@@ -1800,70 +1799,75 @@ msgstr "Tilpas siden til dobbeltsidet udskrift"
 msgid "&Two-sided document"
 msgstr "Tos&idet dokument"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:62
+#: src/frontends/qt4/ui/ParagraphUi.ui:63
 #, fuzzy
-msgid "&Center"
-msgstr "Midten"
+msgid "Indent &Paragraph"
+msgstr "In&dryk afsnit"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:69
-#, fuzzy
-msgid "&Right"
-msgstr "Højre"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:76
-#, fuzzy
-msgid "&Left"
-msgstr "Venstre"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:83
-#, fuzzy
-msgid "&Justified"
-msgstr "Justeret"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:95
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:116
+#: src/frontends/qt4/ui/ParagraphUi.ui:165
 msgid "L&ine spacing:"
 msgstr "Linje&afstand:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Enkelt"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:137
+#: src/frontends/qt4/ui/ParagraphUi.ui:186
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:191 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Dobbelt"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
 #: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 msgid "Custom"
 msgstr "Brugerdefineret"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:185
-#, fuzzy
-msgid "Indent &Paragraph"
-msgstr "In&dryk afsnit"
+#: src/frontends/qt4/ui/ParagraphUi.ui:238
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:213
+#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#, fuzzy
+msgid "Use Paragraph's Default Alignment"
+msgstr "Afsnitslayout ændret"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:248
+#, fuzzy
+msgid "&Right"
+msgstr "Højre"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:255
+#, fuzzy
+msgid "&Left"
+msgstr "Venstre"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:262
+#, fuzzy
+msgid "&Center"
+msgstr "Midten"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:269
+#, fuzzy
+msgid "&Justified"
+msgstr "Justeret"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:290
 msgid "Label Width"
 msgstr "Mærkatbredde"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:225
-#: src/frontends/qt4/ui/ParagraphUi.ui:232
+#: src/frontends/qt4/ui/ParagraphUi.ui:302
+#: src/frontends/qt4/ui/ParagraphUi.ui:309
 msgid "This text defines the width of the paragraph label"
 msgstr "Denne tekst definerer bredden på afsnitsmærkatet"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:235
+#: src/frontends/qt4/ui/ParagraphUi.ui:312
 #, fuzzy
 msgid "&Longest label"
 msgstr "Læ&ngste mærkat"
@@ -1967,7 +1971,7 @@ msgstr "Dataformat for strftime-uddata"
 msgid "Display &Graphics:"
 msgstr "Vis &Grafik:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:72
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:73
 msgid "Off"
 msgstr "Fra"
 
@@ -1976,7 +1980,7 @@ msgstr "Fra"
 msgid "No math"
 msgstr "matematik"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:72
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:73
 msgid "On"
 msgstr "Til"
 
@@ -2573,7 +2577,7 @@ msgid "&Maximum last files:"
 msgstr "Højeste &antal sidste filer:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:737
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:742
 msgid "&Save"
 msgstr "&Gem"
 
@@ -2997,7 +3001,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1778
+#: src/LyXFunc.cpp:1791
 msgid "on"
 msgstr "på"
 
@@ -3974,9 +3978,9 @@ msgstr "Og"
 
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:513
-#: lib/layouts/isprs.layout:215 lib/layouts/kluwer.layout:302
-#: lib/layouts/kluwer.layout:314 lib/layouts/aapaper.inc:95
-#: lib/layouts/svjour.inc:294
+#: lib/layouts/elsart.layout:433 lib/layouts/isprs.layout:215
+#: lib/layouts/kluwer.layout:302 lib/layouts/kluwer.layout:314
+#: lib/layouts/aapaper.inc:95 lib/layouts/svjour.inc:294
 msgid "Acknowledgements"
 msgstr "Taksigelser"
 
@@ -5239,11 +5243,6 @@ msgstr ""
 #: lib/layouts/elsart.layout:421
 msgid "Case \\arabic{case}"
 msgstr ""
-
-#: lib/layouts/elsart.layout:433
-#, fuzzy
-msgid "Acknowledgement \\arabic{theorem}"
-msgstr "Taksigelse"
 
 #: lib/layouts/entcs.layout:72
 msgid "FrontMatter"
@@ -7746,248 +7745,248 @@ msgstr "Afrikaans"
 msgid "American"
 msgstr "Amerikansk"
 
-#: lib/languages:4
+#: lib/languages:5
 msgid "Arabic (ArabTeX)"
 msgstr ""
 
-#: lib/languages:5
+#: lib/languages:6
 #, fuzzy
 msgid "Arabic (Arabi)"
 msgstr "Arabisk"
 
-#: lib/languages:6
+#: lib/languages:7
 #, fuzzy
 msgid "Armenian"
 msgstr "Amerikansk"
 
-#: lib/languages:7
+#: lib/languages:8
 msgid "Austrian"
 msgstr "Østrigsk"
 
-#: lib/languages:8
+#: lib/languages:9
 #, fuzzy
 msgid "Austrian (new spelling)"
 msgstr "Tysk (ny stavning)"
 
-#: lib/languages:9
+#: lib/languages:10
 msgid "Bahasa"
 msgstr "Bahasa"
 
-#: lib/languages:10
+#: lib/languages:11
 msgid "Belarusian"
 msgstr "Hviderussisk"
 
-#: lib/languages:11
+#: lib/languages:12
 msgid "Basque"
 msgstr "Baskisk"
 
-#: lib/languages:12
+#: lib/languages:13
 msgid "Portuguese (Brazil)"
 msgstr "Portugisisk (Brasilien)"
 
-#: lib/languages:13
+#: lib/languages:14
 msgid "Breton"
 msgstr "Breton"
 
-#: lib/languages:14
+#: lib/languages:15
 msgid "British"
 msgstr "Britisk"
 
-#: lib/languages:15
+#: lib/languages:16
 msgid "Bulgarian"
 msgstr "Bulgarsk"
 
-#: lib/languages:16
+#: lib/languages:17
 msgid "Canadian"
 msgstr "Canadisk"
 
-#: lib/languages:17
+#: lib/languages:18
 msgid "French Canadian"
 msgstr "Fransk-canadisk"
 
-#: lib/languages:18
+#: lib/languages:19
 msgid "Catalan"
 msgstr "Catalansk"
 
-#: lib/languages:19
+#: lib/languages:20
 msgid "Chinese (simplified)"
 msgstr ""
 
-#: lib/languages:20
+#: lib/languages:21
 msgid "Chinese (traditional)"
 msgstr ""
 
-#: lib/languages:21
+#: lib/languages:22
 msgid "Croatian"
 msgstr "Kroatisk"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Czech"
 msgstr "Tjekkisk"
 
-#: lib/languages:23
+#: lib/languages:24
 msgid "Danish"
 msgstr "Dansk"
 
-#: lib/languages:24
+#: lib/languages:25
 msgid "Dutch"
 msgstr "Hollandsk"
 
-#: lib/languages:25
+#: lib/languages:26
 msgid "English"
 msgstr "Engelsk"
 
-#: lib/languages:27
+#: lib/languages:28
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:28
+#: lib/languages:29
 msgid "Estonian"
 msgstr "Estisk"
 
-#: lib/languages:30
+#: lib/languages:31
 #, fuzzy
 msgid "Farsi"
 msgstr "margin"
 
-#: lib/languages:31
+#: lib/languages:32
 msgid "Finnish"
 msgstr "Finsk"
 
-#: lib/languages:33
+#: lib/languages:34
 msgid "French"
 msgstr "Fransk"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "Galician"
 msgstr "Gallisk"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "German"
 msgstr "Tysk"
 
-#: lib/languages:36
+#: lib/languages:37
 msgid "German (new spelling)"
 msgstr "Tysk (ny stavning)"
 
-#: lib/languages:37 lib/ui/stdtoolbars.inc:435
+#: lib/languages:38 lib/ui/stdtoolbars.inc:435
 msgid "Greek"
 msgstr "Græsk"
 
-#: lib/languages:38
+#: lib/languages:39
 msgid "Hebrew"
 msgstr "Hebraisk"
 
-#: lib/languages:40
+#: lib/languages:41
 msgid "Irish"
 msgstr "Irsk"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Italian"
 msgstr "Italiensk"
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Japanese"
 msgstr ""
 
-#: lib/languages:43
+#: lib/languages:44
 msgid "Kazakh"
 msgstr "Kazaksk"
 
-#: lib/languages:45
+#: lib/languages:46
 msgid "Korean"
 msgstr ""
 
-#: lib/languages:47
+#: lib/languages:48
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Breddeenhed"
 
-#: lib/languages:48
+#: lib/languages:49
 #, fuzzy
 msgid "Latvian"
 msgstr "Kroatisk"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Magyar"
 msgstr "Magyar"
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Norsk"
 msgstr "Norsk"
 
-#: lib/languages:52
+#: lib/languages:53
 #, fuzzy
 msgid "Nynorsk"
 msgstr "Norsk"
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Polish"
 msgstr "Polsk"
 
-#: lib/languages:54
+#: lib/languages:55
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Romanian"
 msgstr "Ordinær"
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Russian"
 msgstr "Russisk"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Scottish"
 msgstr "Skotsk"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: lib/languages:59
+#: lib/languages:60
 msgid "Serbo-Croatian"
 msgstr "Serbokroatisk"
 
-#: lib/languages:60
+#: lib/languages:61
 msgid "Spanish"
 msgstr "Spansk"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: lib/languages:62
+#: lib/languages:63
 msgid "Slovene"
 msgstr "Slovensk"
 
-#: lib/languages:63
+#: lib/languages:64
 msgid "Swedish"
 msgstr "Svensk"
 
-#: lib/languages:64
+#: lib/languages:65
 msgid "Thai"
 msgstr "Thai"
 
-#: lib/languages:65
+#: lib/languages:66
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: lib/languages:66
+#: lib/languages:67
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
-#: lib/languages:67
+#: lib/languages:68
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Serbisk"
 
-#: lib/languages:68
+#: lib/languages:69
 msgid "Welsh"
 msgstr "Walisisk"
 
@@ -8906,17 +8905,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Gendan|G"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Klip"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:853
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopiér"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:830
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Indsæt"
@@ -12508,7 +12507,7 @@ msgstr ""
 "\n"
 "Ønsker du at gemme dokumentet eller at skrotte ændringerne?"
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:736
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:741
 msgid "Save changed document?"
 msgstr "Gem ændret dokument?"
 
@@ -12610,8 +12609,8 @@ msgstr "Nuværende ord"
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1912 src/LyXFunc.cpp:1951
-#: src/LyXFunc.cpp:2024 src/callback.cpp:135
+#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1928 src/LyXFunc.cpp:1967
+#: src/LyXFunc.cpp:2040 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12620,17 +12619,17 @@ msgstr "Vælg LyX-dokument at indsætte"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
-#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1952 src/LyXFunc.cpp:2025
+#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1968 src/LyXFunc.cpp:2041
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1917 src/LyXFunc.cpp:1956
+#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:1972
 #: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1966 src/LyXFunc.cpp:2046
-#: src/LyXFunc.cpp:2060 src/LyXFunc.cpp:2076
+#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2062
+#: src/LyXFunc.cpp:2076 src/LyXFunc.cpp:2092
 msgid "Canceled."
 msgstr "Annulleret."
 
@@ -12995,7 +12994,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "Tegnstil"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1083
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -13006,12 +13005,12 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1086
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "&Overskriv"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089
 #: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
@@ -13069,95 +13068,95 @@ msgstr "Dokument eksporteret som "
 msgid "Document exported as %1$s"
 msgstr "Dokument eksporteret som "
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:870
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:873
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "Ordinær"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:874
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:877
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "Grotesk"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:878
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:881
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "Skrivemaskine"
 
-#: src/Font.cpp:55
+#: src/Font.cpp:56
 msgid "Symbol"
 msgstr "Symbol"
 
-#: src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:63 src/Font.cpp:69
-#: src/Font.cpp:72
+#: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:70
+#: src/Font.cpp:73
 msgid "Inherit"
 msgstr "Arv"
 
-#: src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:64 src/Font.cpp:69
-#: src/Font.cpp:72
+#: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:65 src/Font.cpp:70
+#: src/Font.cpp:73
 msgid "Ignore"
 msgstr "Ignorér"
 
-#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:900
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:903
 msgid "Medium"
 msgstr "Medium"
 
-#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:904
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:907
 msgid "Bold"
 msgstr "Fed"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:926
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:929
 msgid "Upright"
 msgstr "Stående"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:930
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:933
 msgid "Italic"
 msgstr "Kursiv"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:934
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:937
 msgid "Slanted"
 msgstr "Skråtstillet"
 
-#: src/Font.cpp:63
+#: src/Font.cpp:64
 msgid "Smallcaps"
 msgstr "Kapitæler"
 
-#: src/Font.cpp:68 src/frontends/controllers/frontend_helpers.cpp:1000
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1003
 msgid "Increase"
 msgstr "Forøg"
 
-#: src/Font.cpp:68 src/frontends/controllers/frontend_helpers.cpp:1004
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1007
 msgid "Decrease"
 msgstr "Formindsk"
 
-#: src/Font.cpp:72
+#: src/Font.cpp:73
 msgid "Toggle"
 msgstr "Skift"
 
-#: src/Font.cpp:512
+#: src/Font.cpp:513
 #, c-format
 msgid "Emphasis %1$s, "
 msgstr "Fremhævet %1$s, "
 
-#: src/Font.cpp:515
+#: src/Font.cpp:516
 #, c-format
 msgid "Underline %1$s, "
 msgstr "Understreget %1$s, "
 
-#: src/Font.cpp:518
+#: src/Font.cpp:519
 #, c-format
 msgid "Noun %1$s, "
 msgstr "Kapitæler %1$s, "
 
-#: src/Font.cpp:523
+#: src/Font.cpp:524
 #, c-format
 msgid "Language: %1$s, "
 msgstr "Sprog: %1$s, "
 
-#: src/Font.cpp:526
+#: src/Font.cpp:527
 #, c-format
 msgid "  Number %1$s"
 msgstr "  Antal %1$s"
@@ -13467,35 +13466,35 @@ msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-import'"
 msgid "Missing filename for --import"
 msgstr "Manglende filnavn for '-import'"
 
-#: src/LyXFunc.cpp:364
+#: src/LyXFunc.cpp:369
 msgid "Unknown function."
 msgstr "Ukendt funktion."
 
-#: src/LyXFunc.cpp:403
+#: src/LyXFunc.cpp:408
 msgid "Nothing to do"
 msgstr "Intet at gøre"
 
-#: src/LyXFunc.cpp:422
+#: src/LyXFunc.cpp:427
 msgid "Unknown action"
 msgstr "Ukendt funktion"
 
-#: src/LyXFunc.cpp:428 src/LyXFunc.cpp:720
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:725
 msgid "Command disabled"
 msgstr "Kommando deaktiveret"
 
-#: src/LyXFunc.cpp:435
+#: src/LyXFunc.cpp:440
 msgid "Command not allowed without any document open"
 msgstr "Kommandoen er ikke brugbar uden åbne dokumenter"
 
-#: src/LyXFunc.cpp:706
+#: src/LyXFunc.cpp:711
 msgid "Document is read-only"
 msgstr "Dokumentet er skrivebeskyttet."
 
-#: src/LyXFunc.cpp:714
+#: src/LyXFunc.cpp:719
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:733
+#: src/LyXFunc.cpp:738
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13506,7 +13505,7 @@ msgstr ""
 "\n"
 "Vil du gemme dokumentet?"
 
-#: src/LyXFunc.cpp:751
+#: src/LyXFunc.cpp:756
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -13515,11 +13514,11 @@ msgstr ""
 "Kunne ikke udskrive dokumentet %1$s.\n"
 "Tjek at din printer er sat korrekt op."
 
-#: src/LyXFunc.cpp:754
+#: src/LyXFunc.cpp:759
 msgid "Print document failed"
 msgstr "Dokumentudskrift mislykkedes"
 
-#: src/LyXFunc.cpp:773
+#: src/LyXFunc.cpp:778
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -13528,20 +13527,20 @@ msgstr ""
 "Dokumentet kunne ikke konverteres\n"
 "til dokumentklassen %1$s."
 
-#: src/LyXFunc.cpp:776
+#: src/LyXFunc.cpp:781
 msgid "Could not change class"
 msgstr "Kunne ikke skifte klasse"
 
-#: src/LyXFunc.cpp:888
+#: src/LyXFunc.cpp:893
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/LyXFunc.cpp:892
+#: src/LyXFunc.cpp:897
 msgid " done."
 msgstr " færdig."
 
-#: src/LyXFunc.cpp:908
+#: src/LyXFunc.cpp:913
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -13550,102 +13549,102 @@ msgstr ""
 "Alle ændringer vil gå tabt. Er du sikker på at du vil gendanne den gemte "
 "udgave af dokumentet %1$s?"
 
-#: src/LyXFunc.cpp:910 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:915 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "Gendan gemte dokument?"
 
 # , c-format
-#: src/LyXFunc.cpp:911 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:916 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr "&Gendan"
 
-#: src/LyXFunc.cpp:1102
+#: src/LyXFunc.cpp:1110
 #, fuzzy
 msgid "Exiting."
 msgstr "Afslut|A"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1345
+#: src/LyXFunc.cpp:1128 src/Text3.cpp:1322
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
-#: src/LyXFunc.cpp:1129
+#: src/LyXFunc.cpp:1137
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Åbner hjælpefilen %1$s..."
 
-#: src/LyXFunc.cpp:1516
+#: src/LyXFunc.cpp:1529
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_navn> <x11_navn>"
 
-#: src/LyXFunc.cpp:1527
+#: src/LyXFunc.cpp:1540
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/LyXFunc.cpp:1641
+#: src/LyXFunc.cpp:1654
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument ikke gemt"
 
-#: src/LyXFunc.cpp:1644
+#: src/LyXFunc.cpp:1657
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Gem som dokumentstandarder"
 
-#: src/LyXFunc.cpp:1700
+#: src/LyXFunc.cpp:1713
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny dokumentklasse..."
 
-#: src/LyXFunc.cpp:1780
+#: src/LyXFunc.cpp:1793
 #, fuzzy
 msgid "off"
 msgstr "Fra"
 
-#: src/LyXFunc.cpp:1782
+#: src/LyXFunc.cpp:1795
 #, fuzzy
 msgid "auto"
 msgstr "Dato"
 
-#: src/LyXFunc.cpp:1784
+#: src/LyXFunc.cpp:1797
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1910
+#: src/LyXFunc.cpp:1926
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/LyXFunc.cpp:1913 src/callback.cpp:136
+#: src/LyXFunc.cpp:1929 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/LyXFunc.cpp:1949
+#: src/LyXFunc.cpp:1965
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/LyXFunc.cpp:1988
+#: src/LyXFunc.cpp:2004
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/LyXFunc.cpp:1992
+#: src/LyXFunc.cpp:2008
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/LyXFunc.cpp:1994
+#: src/LyXFunc.cpp:2010
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/LyXFunc.cpp:2019
+#: src/LyXFunc.cpp:2035
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/LyXFunc.cpp:2070 src/callback.cpp:166
+#: src/LyXFunc.cpp:2086 src/callback.cpp:166
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13656,12 +13655,12 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/LyXFunc.cpp:2072 src/callback.cpp:168
+#: src/LyXFunc.cpp:2088 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Overskriv dokument?"
 
-#: src/LyXFunc.cpp:2135
+#: src/LyXFunc.cpp:2151
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
@@ -14212,7 +14211,7 @@ msgstr ""
 msgid "No Branch in Document!"
 msgstr "Udskriv dokument"
 
-#: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:242
+#: src/Paragraph.cpp:1600 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Giver ingen mening med dette layout"
 
@@ -14341,27 +14340,27 @@ msgstr "Intet at indeksere!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
-#: src/Text3.cpp:180 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:179 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Matematikredigering"
 
-#: src/Text3.cpp:756
+#: src/Text3.cpp:735
 msgid "Unknown spacing argument: "
 msgstr "Ukendt linjeafstandsparameter: "
 
-#: src/Text3.cpp:928
+#: src/Text3.cpp:907
 msgid "Layout "
 msgstr "Layout "
 
-#: src/Text3.cpp:929
+#: src/Text3.cpp:908
 msgid " not known"
 msgstr " ukendt"
 
-#: src/Text3.cpp:1450 src/Text3.cpp:1462
+#: src/Text3.cpp:1427 src/Text3.cpp:1439
 msgid "Character set"
 msgstr "Tegnsæt"
 
-#: src/Text3.cpp:1585
+#: src/Text3.cpp:1562
 msgid "Paragraph layout set"
 msgstr "Afsnitslayout ændret"
 
@@ -14773,21 +14772,21 @@ msgstr "Eksterne skabelon/indstik-beskeder"
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/frontends/LyXView.cpp:194
+#: src/frontends/LyXView.cpp:200
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/LyXView.cpp:206
+#: src/frontends/LyXView.cpp:212
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/frontends/LyXView.cpp:480
+#: src/frontends/LyXView.cpp:486
 msgid " (changed)"
 msgstr " (ændret)"
 
-#: src/frontends/LyXView.cpp:484
+#: src/frontends/LyXView.cpp:490
 msgid " (read only)"
 msgstr " (skrivebeskyttet)"
 
@@ -15126,112 +15125,112 @@ msgstr "Stavekontrol fuldført"
 msgid "Table of Contents"
 msgstr "Indholdsfortegnelse"
 
-#: src/frontends/controllers/frontend_helpers.cpp:244
+#: src/frontends/controllers/frontend_helpers.cpp:247
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s og %2$s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:248
+#: src/frontends/controllers/frontend_helpers.cpp:251
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/frontends/controllers/frontend_helpers.cpp:285
+#: src/frontends/controllers/frontend_helpers.cpp:288
 msgid "No year"
 msgstr "Intet årstal"
 
-#: src/frontends/controllers/frontend_helpers.cpp:818
+#: src/frontends/controllers/frontend_helpers.cpp:821
 msgid "before"
 msgstr "før"
 
-#: src/frontends/controllers/frontend_helpers.cpp:866
-#: src/frontends/controllers/frontend_helpers.cpp:896
-#: src/frontends/controllers/frontend_helpers.cpp:922
-#: src/frontends/controllers/frontend_helpers.cpp:956
-#: src/frontends/controllers/frontend_helpers.cpp:1022
-#: src/frontends/controllers/frontend_helpers.cpp:1052
-#: src/frontends/controllers/frontend_helpers.cpp:1125
+#: src/frontends/controllers/frontend_helpers.cpp:869
+#: src/frontends/controllers/frontend_helpers.cpp:899
+#: src/frontends/controllers/frontend_helpers.cpp:925
+#: src/frontends/controllers/frontend_helpers.cpp:959
+#: src/frontends/controllers/frontend_helpers.cpp:1025
+#: src/frontends/controllers/frontend_helpers.cpp:1055
+#: src/frontends/controllers/frontend_helpers.cpp:1131
 msgid "No change"
 msgstr "Uændret"
 
-#: src/frontends/controllers/frontend_helpers.cpp:882
-#: src/frontends/controllers/frontend_helpers.cpp:908
-#: src/frontends/controllers/frontend_helpers.cpp:942
-#: src/frontends/controllers/frontend_helpers.cpp:1008
-#: src/frontends/controllers/frontend_helpers.cpp:1038
-#: src/frontends/controllers/frontend_helpers.cpp:1092
-#: src/frontends/controllers/frontend_helpers.cpp:1127
+#: src/frontends/controllers/frontend_helpers.cpp:885
+#: src/frontends/controllers/frontend_helpers.cpp:911
+#: src/frontends/controllers/frontend_helpers.cpp:945
+#: src/frontends/controllers/frontend_helpers.cpp:1011
+#: src/frontends/controllers/frontend_helpers.cpp:1041
+#: src/frontends/controllers/frontend_helpers.cpp:1095
+#: src/frontends/controllers/frontend_helpers.cpp:1133
 msgid "Reset"
 msgstr "Nulstil"
 
-#: src/frontends/controllers/frontend_helpers.cpp:938
+#: src/frontends/controllers/frontend_helpers.cpp:941
 msgid "Small Caps"
 msgstr "Kapitæler"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1026
+#: src/frontends/controllers/frontend_helpers.cpp:1029
 msgid "Emph"
 msgstr "Fremhævet"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1030
+#: src/frontends/controllers/frontend_helpers.cpp:1033
 msgid "Underbar"
 msgstr "Underlinje"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1034
+#: src/frontends/controllers/frontend_helpers.cpp:1037
 msgid "Noun"
 msgstr "Navneord"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1056
+#: src/frontends/controllers/frontend_helpers.cpp:1059
 msgid "No color"
 msgstr "Ingen farve"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1060
+#: src/frontends/controllers/frontend_helpers.cpp:1063
 msgid "Black"
 msgstr "Sort"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1064
+#: src/frontends/controllers/frontend_helpers.cpp:1067
 msgid "White"
 msgstr "Hvid"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1068
+#: src/frontends/controllers/frontend_helpers.cpp:1071
 msgid "Red"
 msgstr "Gendan"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1072
+#: src/frontends/controllers/frontend_helpers.cpp:1075
 msgid "Green"
 msgstr "Grøn"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1076
+#: src/frontends/controllers/frontend_helpers.cpp:1079
 msgid "Blue"
 msgstr "Blå"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1080
+#: src/frontends/controllers/frontend_helpers.cpp:1083
 msgid "Cyan"
 msgstr "Turkis"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1084
+#: src/frontends/controllers/frontend_helpers.cpp:1087
 msgid "Magenta"
 msgstr "Magenta"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1088
+#: src/frontends/controllers/frontend_helpers.cpp:1091
 msgid "Yellow"
 msgstr "Gul"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1220
+#: src/frontends/controllers/frontend_helpers.cpp:1226
 #, fuzzy
 msgid "System files|#S#s"
 msgstr "System-bind|#S#s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1223
+#: src/frontends/controllers/frontend_helpers.cpp:1229
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Bruger-bind|#U#u"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1306
+#: src/frontends/controllers/frontend_helpers.cpp:1312
 #, fuzzy
 msgid "Could not update TeX information"
 msgstr "Kan ikke gendanne mere"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1307
+#: src/frontends/controllers/frontend_helpers.cpp:1313
 #, fuzzy, c-format
 msgid "The script `%s' failed."
 msgstr "Stavekontrollen mislykkedes"
@@ -15280,7 +15279,7 @@ msgstr "Synlige mellemrum|#S"
 msgid "Outline"
 msgstr "Ydre"
 
-#: src/frontends/qt4/FileDialog.cpp:167
+#: src/frontends/qt4/FileDialog.cpp:169
 msgid "Directories"
 msgstr "Mapper"
 
@@ -15727,7 +15726,7 @@ msgid ""
 "the items is used."
 msgstr ""
 
-#: src/frontends/qt4/QParagraph.cpp:180
+#: src/frontends/qt4/QParagraph.cpp:175
 msgid "Paragraph Settings"
 msgstr "Afsnits-indstillinger"
 
@@ -16428,11 +16427,11 @@ msgstr "Ukendt symbol"
 msgid "Opened table"
 msgstr "Åbnede tabel"
 
-#: src/insets/InsetTabular.cpp:4329
+#: src/insets/InsetTabular.cpp:4297
 msgid "Error setting multicolumn"
 msgstr "Fejl ved aktivere af flerkollonner"
 
-#: src/insets/InsetTabular.cpp:4330
+#: src/insets/InsetTabular.cpp:4298
 msgid "You cannot set multicolumn vertically."
 msgstr "Du kan ikke bruge flerkollonner lodret."
 
@@ -16665,11 +16664,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:860
+#: src/mathed/InsetMathNest.cpp:859
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:863
+#: src/mathed/InsetMathNest.cpp:862
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal teksttilstand\t\\textrm"
@@ -16782,6 +16781,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Ukendt indstik"
+
+#, fuzzy
+#~ msgid "Acknowledgement \\arabic{theorem}"
+#~ msgstr "Taksigelse"
 
 #, fuzzy
 #~ msgid "&Default"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-06-27 18:53+0100\n"
+"POT-Creation-Date: 2007-07-07 23:36+0200\n"
 "PO-Revision-Date: 2007-05-31 04:13+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: ja_JP.eucJP <ja@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "著作権"
 #: src/frontends/qt4/ui/ErrorListUi.ui:62
 #: src/frontends/qt4/ui/ExternalUi.ui:705 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/LogUi.ui:71
-#: src/frontends/qt4/ui/ParagraphUi.ui:305 src/frontends/qt4/ui/PrefsUi.ui:96
+#: src/frontends/qt4/ui/ParagraphUi.ui:145 src/frontends/qt4/ui/PrefsUi.ui:96
 #: src/frontends/qt4/ui/RefUi.ui:100 src/frontends/qt4/ui/SearchUi.ui:210
 #: src/frontends/qt4/ui/ShowFileUi.ui:58
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:31
@@ -69,7 +69,7 @@ msgstr "ダミー(&D)"
 #: src/frontends/qt4/ui/ListingsUi.ui:609
 #: src/frontends/qt4/ui/MathMatrixUi.ui:170
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:31
-#: src/frontends/qt4/ui/ParagraphUi.ui:282 src/frontends/qt4/ui/RefUi.ui:80
+#: src/frontends/qt4/ui/ParagraphUi.ui:122 src/frontends/qt4/ui/RefUi.ui:80
 #: src/frontends/qt4/ui/SendtoUi.ui:75
 #: src/frontends/qt4/ui/TabularCreateUi.ui:68
 #: src/frontends/qt4/ui/URLUi.ui:105 src/frontends/qt4/ui/VSpaceUi.ui:145
@@ -81,8 +81,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:738 src/LyXFunc.cpp:911
-#: src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073 src/LyXVC.cpp:175
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:743 src/LyXFunc.cpp:916
+#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
@@ -160,7 +160,7 @@ msgstr "追加(&A)"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:854 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:859 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "取消"
 
@@ -296,7 +296,7 @@ msgid "&Width:"
 msgstr "幅(&W):"
 
 #: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
-#: src/frontends/qt4/ui/ParagraphUi.ui:50
+#: src/frontends/qt4/ui/ParagraphUi.ui:221
 msgid "Alignment"
 msgstr "縦揃え"
 
@@ -372,7 +372,7 @@ msgstr "垂直"
 #: src/frontends/qt4/ui/BoxUi.ui:293 src/frontends/qt4/ui/CitationUi.ui:283
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:709
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/frontends/qt4/ui/PrefsUi.ui:50
+#: src/frontends/qt4/ui/ParagraphUi.ui:96 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
 msgid "&Restore"
 msgstr "復元(&R)"
@@ -382,7 +382,7 @@ msgstr "復元(&R)"
 #: src/frontends/qt4/ui/ExternalUi.ui:695 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:759
 #: src/frontends/qt4/ui/ListingsUi.ui:619
-#: src/frontends/qt4/ui/ParagraphUi.ui:295 src/frontends/qt4/ui/PrefsUi.ui:86
+#: src/frontends/qt4/ui/ParagraphUi.ui:135 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
 msgid "&Apply"
@@ -445,12 +445,11 @@ msgstr "大きさ(&Z):"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
 #: src/frontends/qt4/ui/GraphicsUi.ui:620
-#: src/frontends/qt4/ui/ParagraphUi.ui:98
-#: src/frontends/qt4/ui/ParagraphUi.ui:127
+#: src/frontends/qt4/ui/ParagraphUi.ui:176
 #: src/frontends/qt4/ui/PrefLatexUi.ui:78
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
-#: src/Font.cpp:521 src/frontends/controllers/ControlDocument.cpp:48
+#: src/Font.cpp:522 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
@@ -462,60 +461,60 @@ msgstr "大きさ(&Z):"
 msgid "Default"
 msgstr "既定値"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:960
+#: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:963
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "最小"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:964
+#: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:967
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "極小"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:968
+#: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:971
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "小"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:972
+#: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:975
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "やや小"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:976
+#: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:979
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "ふつう"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:67
-#: src/frontends/controllers/frontend_helpers.cpp:980
+#: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:68
+#: src/frontends/controllers/frontend_helpers.cpp:983
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "やや大"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:984
+#: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:987
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "大"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:988
+#: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:991
 msgid "Largest"
 msgstr "極大"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:992
+#: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:995
 msgid "Huge"
 msgstr "極々大"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:996
+#: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:69
+#: src/frontends/controllers/frontend_helpers.cpp:999
 msgid "Huger"
 msgstr "最大"
 
@@ -1715,65 +1714,70 @@ msgstr "両面印刷用にページをレイアウトする"
 msgid "&Two-sided document"
 msgstr "両面文書(&T)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:62
-msgid "&Center"
-msgstr "中央揃え(&C)"
+#: src/frontends/qt4/ui/ParagraphUi.ui:63
+msgid "Indent &Paragraph"
+msgstr "段落の行頭下げ(&P)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:69
-msgid "&Right"
-msgstr "右揃え(&R)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:76
-msgid "&Left"
-msgstr "左揃え(&L)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:83
-msgid "&Justified"
-msgstr "両端揃え(&J)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:95
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:116
+#: src/frontends/qt4/ui/ParagraphUi.ui:165
 msgid "L&ine spacing:"
 msgstr "行間(&I):"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:132 src/Text.cpp:1848
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "なし"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:137
+#: src/frontends/qt4/ui/ParagraphUi.ui:186
 msgid "1.5"
 msgstr "半行"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:142 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:191 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "一行"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
 #: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 msgid "Custom"
 msgstr "任意設定"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:185
-msgid "Indent &Paragraph"
-msgstr "段落の行頭下げ(&P)"
+#: src/frontends/qt4/ui/ParagraphUi.ui:238
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:213
+#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#, fuzzy
+msgid "Use Paragraph's Default Alignment"
+msgstr "段落を割り付けました。"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:248
+msgid "&Right"
+msgstr "右揃え(&R)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:255
+msgid "&Left"
+msgstr "左揃え(&L)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:262
+msgid "&Center"
+msgstr "中央揃え(&C)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:269
+msgid "&Justified"
+msgstr "両端揃え(&J)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:290
 msgid "Label Width"
 msgstr "ラベルの幅"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:225
-#: src/frontends/qt4/ui/ParagraphUi.ui:232
+#: src/frontends/qt4/ui/ParagraphUi.ui:302
+#: src/frontends/qt4/ui/ParagraphUi.ui:309
 msgid "This text defines the width of the paragraph label"
 msgstr "この欄のテキストの幅が段落のラベルの幅を決定します。"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:235
+#: src/frontends/qt4/ui/ParagraphUi.ui:312
 msgid "&Longest label"
 msgstr "最長のラベル(&L)"
 
@@ -1870,7 +1874,7 @@ msgstr "strftime出力の日付書式"
 msgid "Display &Graphics:"
 msgstr "図を表示する(&G):"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:72
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:73
 msgid "Off"
 msgstr "無効"
 
@@ -1878,7 +1882,7 @@ msgstr "無効"
 msgid "No math"
 msgstr "数式を除く"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:72
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:73
 msgid "On"
 msgstr "有効"
 
@@ -2460,7 +2464,7 @@ msgid "&Maximum last files:"
 msgstr "最近のファイルの最大値(&M):"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:737
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:742
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -2873,7 +2877,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1778
+#: src/LyXFunc.cpp:1791
 msgid "on"
 msgstr "有効"
 
@@ -3804,9 +3808,9 @@ msgstr "And"
 
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:513
-#: lib/layouts/isprs.layout:215 lib/layouts/kluwer.layout:302
-#: lib/layouts/kluwer.layout:314 lib/layouts/aapaper.inc:95
-#: lib/layouts/svjour.inc:294
+#: lib/layouts/elsart.layout:433 lib/layouts/isprs.layout:215
+#: lib/layouts/kluwer.layout:302 lib/layouts/kluwer.layout:314
+#: lib/layouts/aapaper.inc:95 lib/layouts/svjour.inc:294
 msgid "Acknowledgements"
 msgstr "謝辞"
 
@@ -4963,10 +4967,6 @@ msgstr "要約 \\arabic{summ}"
 #: lib/layouts/elsart.layout:421
 msgid "Case \\arabic{case}"
 msgstr "ケース \\arabic{case}"
-
-#: lib/layouts/elsart.layout:433
-msgid "Acknowledgement \\arabic{theorem}"
-msgstr "謝辞 \\arabic{theorem}"
 
 #: lib/layouts/entcs.layout:72
 msgid "FrontMatter"
@@ -7217,240 +7217,240 @@ msgstr "アフリカーンス語"
 msgid "American"
 msgstr "アメリカ英語"
 
-#: lib/languages:4
+#: lib/languages:5
 msgid "Arabic (ArabTeX)"
 msgstr ""
 
-#: lib/languages:5
+#: lib/languages:6
 #, fuzzy
 msgid "Arabic (Arabi)"
 msgstr "アラビア語"
 
-#: lib/languages:6
+#: lib/languages:7
 msgid "Armenian"
 msgstr "アルメニア語"
 
-#: lib/languages:7
+#: lib/languages:8
 msgid "Austrian"
 msgstr "オーストリア語"
 
-#: lib/languages:8
+#: lib/languages:9
 msgid "Austrian (new spelling)"
 msgstr "オーストリア語(新綴方)"
 
-#: lib/languages:9
+#: lib/languages:10
 msgid "Bahasa"
 msgstr "バハサ語"
 
-#: lib/languages:10
+#: lib/languages:11
 msgid "Belarusian"
 msgstr "ベラルーシ語"
 
-#: lib/languages:11
+#: lib/languages:12
 msgid "Basque"
 msgstr "バスク語"
 
-#: lib/languages:12
+#: lib/languages:13
 msgid "Portuguese (Brazil)"
 msgstr "ポルトガル語(ブラジル)"
 
-#: lib/languages:13
+#: lib/languages:14
 msgid "Breton"
 msgstr "ブルトン語"
 
-#: lib/languages:14
+#: lib/languages:15
 msgid "British"
 msgstr "イギリス英語"
 
-#: lib/languages:15
+#: lib/languages:16
 msgid "Bulgarian"
 msgstr "ブルガリア語"
 
-#: lib/languages:16
+#: lib/languages:17
 msgid "Canadian"
 msgstr "カナダ語"
 
-#: lib/languages:17
+#: lib/languages:18
 msgid "French Canadian"
 msgstr "カナダフランス語"
 
-#: lib/languages:18
+#: lib/languages:19
 msgid "Catalan"
 msgstr "カタロニア語"
 
-#: lib/languages:19
+#: lib/languages:20
 msgid "Chinese (simplified)"
 msgstr "中国語(簡体字)"
 
-#: lib/languages:20
+#: lib/languages:21
 msgid "Chinese (traditional)"
 msgstr "中国語(繁体字)"
 
-#: lib/languages:21
+#: lib/languages:22
 msgid "Croatian"
 msgstr "クロアチア語"
 
-#: lib/languages:22
+#: lib/languages:23
 msgid "Czech"
 msgstr "チェコ語"
 
-#: lib/languages:23
+#: lib/languages:24
 msgid "Danish"
 msgstr "デンマーク語"
 
-#: lib/languages:24
+#: lib/languages:25
 msgid "Dutch"
 msgstr "オランダ語"
 
-#: lib/languages:25
+#: lib/languages:26
 msgid "English"
 msgstr "英語"
 
-#: lib/languages:27
+#: lib/languages:28
 msgid "Esperanto"
 msgstr "エスペラント語"
 
-#: lib/languages:28
+#: lib/languages:29
 msgid "Estonian"
 msgstr "エストニア語"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "Farsi"
 msgstr ""
 
-#: lib/languages:31
+#: lib/languages:32
 msgid "Finnish"
 msgstr "フィンランド語"
 
-#: lib/languages:33
+#: lib/languages:34
 msgid "French"
 msgstr "フランス語"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "Galician"
 msgstr "ガリシア語"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "German"
 msgstr "ドイツ語"
 
-#: lib/languages:36
+#: lib/languages:37
 msgid "German (new spelling)"
 msgstr "ドイツ語(新綴方)"
 
-#: lib/languages:37 lib/ui/stdtoolbars.inc:435
+#: lib/languages:38 lib/ui/stdtoolbars.inc:435
 msgid "Greek"
 msgstr "ギリシャ文字"
 
-#: lib/languages:38
+#: lib/languages:39
 msgid "Hebrew"
 msgstr "ヘブライ語"
 
-#: lib/languages:40
+#: lib/languages:41
 msgid "Irish"
 msgstr "アイルランド語"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Italian"
 msgstr "イタリア語"
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Japanese"
 msgstr "日本語"
 
-#: lib/languages:43
+#: lib/languages:44
 msgid "Kazakh"
 msgstr "カザフ語"
 
-#: lib/languages:45
+#: lib/languages:46
 msgid "Korean"
 msgstr "韓国語"
 
-#: lib/languages:47
+#: lib/languages:48
 msgid "Lithuanian"
 msgstr "リトアニア語"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Latvian"
 msgstr "ラトビア語"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Icelandic"
 msgstr "アイスランド語"
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Magyar"
 msgstr "マジャール語"
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Norsk"
 msgstr "ノルウェー語"
 
-#: lib/languages:52
+#: lib/languages:53
 msgid "Nynorsk"
 msgstr "ノルウェー語(ニーノシュク)"
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Polish"
 msgstr "ポーランド語"
 
-#: lib/languages:54
+#: lib/languages:55
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Romanian"
 msgstr "ルーマニア語"
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Russian"
 msgstr "ロシア語"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Scottish"
 msgstr "スコットランド語"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Serbian"
 msgstr "セルビア語"
 
-#: lib/languages:59
+#: lib/languages:60
 msgid "Serbo-Croatian"
 msgstr "セルビア-クロアチア語"
 
-#: lib/languages:60
+#: lib/languages:61
 msgid "Spanish"
 msgstr "スペイン語"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Slovak"
 msgstr "スロバキア語"
 
-#: lib/languages:62
+#: lib/languages:63
 msgid "Slovene"
 msgstr "スロベニア語"
 
-#: lib/languages:63
+#: lib/languages:64
 msgid "Swedish"
 msgstr "スウェーデン語"
 
-#: lib/languages:64
+#: lib/languages:65
 msgid "Thai"
 msgstr "タイ語"
 
-#: lib/languages:65
+#: lib/languages:66
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: lib/languages:66
+#: lib/languages:67
 msgid "Ukrainian"
 msgstr "ウクライナ語"
 
-#: lib/languages:67
+#: lib/languages:68
 msgid "Upper Sorbian"
 msgstr "上ソルビア語"
 
-#: lib/languages:68
+#: lib/languages:69
 msgid "Welsh"
 msgstr "ウェールズ語"
 
@@ -8335,17 +8335,17 @@ msgstr "ウィンドウを閉じる(D)|D"
 msgid "Redo|R"
 msgstr "やり直す(R)|R"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "切り取り"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:853
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "コピー"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:830
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "貼り付け"
@@ -11600,7 +11600,7 @@ msgstr ""
 "\n"
 "文書を保存しますか，それとも変更を廃棄しますか？"
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:736
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:741
 msgid "Save changed document?"
 msgstr "変更した文書を保存しますか？"
 
@@ -11703,8 +11703,8 @@ msgstr "単語数の勘定"
 msgid "Select LyX document to insert"
 msgstr "挿入するLyX文書を選択して下さい"
 
-#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1912 src/LyXFunc.cpp:1951
-#: src/LyXFunc.cpp:2024 src/callback.cpp:135
+#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1928 src/LyXFunc.cpp:1967
+#: src/LyXFunc.cpp:2040 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11713,17 +11713,17 @@ msgstr "挿入するLyX文書を選択して下さい"
 msgid "Documents|#o#O"
 msgstr "文書(O)|#o#O"
 
-#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1952 src/LyXFunc.cpp:2025
+#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1968 src/LyXFunc.cpp:2041
 msgid "Examples|#E#e"
 msgstr "用例(E)|#E#e"
 
-#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1917 src/LyXFunc.cpp:1956
+#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:1972
 #: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX文書 (*.lyx)"
 
-#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1966 src/LyXFunc.cpp:2046
-#: src/LyXFunc.cpp:2060 src/LyXFunc.cpp:2076
+#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2062
+#: src/LyXFunc.cpp:2076 src/LyXFunc.cpp:2092
 msgid "Canceled."
 msgstr "取り消されました"
 
@@ -12078,7 +12078,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "定義されていない文字スタイルです"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1075
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1083
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12089,12 +12089,12 @@ msgstr ""
 "\n"
 "そのファイルに上書きしますか？"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1078
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1086
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "ファイルを上書きしますか？"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1079 src/LyXFunc.cpp:2073
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089
 #: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
@@ -12149,95 +12149,95 @@ msgstr "文書は%1$sとしてファイル「%2$s」にエクスポートされ�
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとしてエクスポートされました。"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:870
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:873
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "ローマン体"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:874
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:877
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "サンセリフ体"
 
-#: src/Font.cpp:55 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:878
+#: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
+#: src/frontends/controllers/frontend_helpers.cpp:881
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "タイプライタ体"
 
-#: src/Font.cpp:55
+#: src/Font.cpp:56
 msgid "Symbol"
 msgstr "シンボル"
 
-#: src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:63 src/Font.cpp:69
-#: src/Font.cpp:72
+#: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:70
+#: src/Font.cpp:73
 msgid "Inherit"
 msgstr "継承"
 
-#: src/Font.cpp:57 src/Font.cpp:60 src/Font.cpp:64 src/Font.cpp:69
-#: src/Font.cpp:72
+#: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:65 src/Font.cpp:70
+#: src/Font.cpp:73
 msgid "Ignore"
 msgstr "無視"
 
-#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:900
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:903
 msgid "Medium"
 msgstr "ミディアム体"
 
-#: src/Font.cpp:60 src/frontends/controllers/frontend_helpers.cpp:904
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:907
 msgid "Bold"
 msgstr "ボールド体"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:926
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:929
 msgid "Upright"
 msgstr "アップライト体"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:930
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:933
 msgid "Italic"
 msgstr "イタリック体"
 
-#: src/Font.cpp:63 src/frontends/controllers/frontend_helpers.cpp:934
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:937
 msgid "Slanted"
 msgstr "斜体"
 
-#: src/Font.cpp:63
+#: src/Font.cpp:64
 msgid "Smallcaps"
 msgstr "スモールキャップ"
 
-#: src/Font.cpp:68 src/frontends/controllers/frontend_helpers.cpp:1000
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1003
 msgid "Increase"
 msgstr "増やす"
 
-#: src/Font.cpp:68 src/frontends/controllers/frontend_helpers.cpp:1004
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1007
 msgid "Decrease"
 msgstr "減らす"
 
-#: src/Font.cpp:72
+#: src/Font.cpp:73
 msgid "Toggle"
 msgstr "トグル"
 
-#: src/Font.cpp:512
+#: src/Font.cpp:513
 #, c-format
 msgid "Emphasis %1$s, "
 msgstr "強調%1$s, "
 
-#: src/Font.cpp:515
+#: src/Font.cpp:516
 #, c-format
 msgid "Underline %1$s, "
 msgstr "下線%1$s, "
 
-#: src/Font.cpp:518
+#: src/Font.cpp:519
 #, c-format
 msgid "Noun %1$s, "
 msgstr "名詞 %1$s, "
 
-#: src/Font.cpp:523
+#: src/Font.cpp:524
 #, c-format
 msgid "Language: %1$s, "
 msgstr "言語: %1$s,"
 
-#: src/Font.cpp:526
+#: src/Font.cpp:527
 #, c-format
 msgid "  Number %1$s"
 msgstr "  番号 %1$s"
@@ -12544,35 +12544,35 @@ msgstr "--importスイッチの後にファイル形式[latex, psなど]が必�
 msgid "Missing filename for --import"
 msgstr "--importのファイル名が指定されていません"
 
-#: src/LyXFunc.cpp:364
+#: src/LyXFunc.cpp:369
 msgid "Unknown function."
 msgstr "未知の機能です。"
 
-#: src/LyXFunc.cpp:403
+#: src/LyXFunc.cpp:408
 msgid "Nothing to do"
 msgstr "何もしません"
 
-#: src/LyXFunc.cpp:422
+#: src/LyXFunc.cpp:427
 msgid "Unknown action"
 msgstr "未知の動作です。"
 
-#: src/LyXFunc.cpp:428 src/LyXFunc.cpp:720
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:725
 msgid "Command disabled"
 msgstr "コマンドは無効です"
 
-#: src/LyXFunc.cpp:435
+#: src/LyXFunc.cpp:440
 msgid "Command not allowed without any document open"
 msgstr "文書が一つも開かれていないときには、このコマンドは使うことができません"
 
-#: src/LyXFunc.cpp:706
+#: src/LyXFunc.cpp:711
 msgid "Document is read-only"
 msgstr "文書が読込専用です"
 
-#: src/LyXFunc.cpp:714
+#: src/LyXFunc.cpp:719
 msgid "This portion of the document is deleted."
 msgstr "文書のこの部分は削除されました。"
 
-#: src/LyXFunc.cpp:733
+#: src/LyXFunc.cpp:738
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12583,7 +12583,7 @@ msgstr ""
 "\n"
 "この文書を保存しますか？"
 
-#: src/LyXFunc.cpp:751
+#: src/LyXFunc.cpp:756
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12592,11 +12592,11 @@ msgstr ""
 "文書「%1$s」を印刷することができませんでした。\n"
 "プリンタが正しくセットアップされていることを確認してください。"
 
-#: src/LyXFunc.cpp:754
+#: src/LyXFunc.cpp:759
 msgid "Print document failed"
 msgstr "文書の印刷に失敗しました"
 
-#: src/LyXFunc.cpp:773
+#: src/LyXFunc.cpp:778
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12605,20 +12605,20 @@ msgstr ""
 "文書を文書クラス「%1$s」に\n"
 "変換することができませんでした。"
 
-#: src/LyXFunc.cpp:776
+#: src/LyXFunc.cpp:781
 msgid "Could not change class"
 msgstr "クラスを変更することができませんでした"
 
-#: src/LyXFunc.cpp:888
+#: src/LyXFunc.cpp:893
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "文書を保存中です: %1$s..."
 
-#: src/LyXFunc.cpp:892
+#: src/LyXFunc.cpp:897
 msgid " done."
 msgstr "終わりました。"
 
-#: src/LyXFunc.cpp:908
+#: src/LyXFunc.cpp:913
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -12627,99 +12627,99 @@ msgstr ""
 "全ての変更点は失われます。文書「%1$s」を，本当に保存されている版に戻します"
 "か？"
 
-#: src/LyXFunc.cpp:910 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:915 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "保存されている文書に復帰しますか？"
 
-#: src/LyXFunc.cpp:911 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:916 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr "元に戻す(&R)"
 
-#: src/LyXFunc.cpp:1102
+#: src/LyXFunc.cpp:1110
 msgid "Exiting."
 msgstr "終了しまっせ。"
 
-#: src/LyXFunc.cpp:1120 src/Text3.cpp:1345
+#: src/LyXFunc.cpp:1128 src/Text3.cpp:1322
 msgid "Missing argument"
 msgstr "引数がありません"
 
-#: src/LyXFunc.cpp:1129
+#: src/LyXFunc.cpp:1137
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "ヘルプファイルを開いています: %1$s..."
 
-#: src/LyXFunc.cpp:1516
+#: src/LyXFunc.cpp:1529
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "文法: set-color <lyx名> <x11名>"
 
-#: src/LyXFunc.cpp:1527
+#: src/LyXFunc.cpp:1540
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\"は失敗しました。───色が未定義か、再定義されていない可能性が"
 "あります。"
 
-#: src/LyXFunc.cpp:1641
+#: src/LyXFunc.cpp:1654
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文書既定値を%1$sに保存しました"
 
-#: src/LyXFunc.cpp:1644
+#: src/LyXFunc.cpp:1657
 msgid "Unable to save document defaults"
 msgstr "文書既定値を保存することができませんでした"
 
-#: src/LyXFunc.cpp:1700
+#: src/LyXFunc.cpp:1713
 msgid "Converting document to new document class..."
 msgstr "文書を新しい文書クラスに変換しています..."
 
-#: src/LyXFunc.cpp:1780
+#: src/LyXFunc.cpp:1793
 #, fuzzy
 msgid "off"
 msgstr "無効"
 
-#: src/LyXFunc.cpp:1782
+#: src/LyXFunc.cpp:1795
 #, fuzzy
 msgid "auto"
 msgstr " (自動)"
 
-#: src/LyXFunc.cpp:1784
+#: src/LyXFunc.cpp:1797
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1910
+#: src/LyXFunc.cpp:1926
 msgid "Select template file"
 msgstr "テンプレートファイルを選んでください"
 
-#: src/LyXFunc.cpp:1913 src/callback.cpp:136
+#: src/LyXFunc.cpp:1929 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "テンプレート(T)|#T#t"
 
-#: src/LyXFunc.cpp:1949
+#: src/LyXFunc.cpp:1965
 msgid "Select document to open"
 msgstr "開く文書を選んでください"
 
-#: src/LyXFunc.cpp:1988
+#: src/LyXFunc.cpp:2004
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "文書%1$sを開いています..."
 
-#: src/LyXFunc.cpp:1992
+#: src/LyXFunc.cpp:2008
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文書 %1$s を開きました。"
 
-#: src/LyXFunc.cpp:1994
+#: src/LyXFunc.cpp:2010
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "文書 %1$s を開くことができませんでした。"
 
-#: src/LyXFunc.cpp:2019
+#: src/LyXFunc.cpp:2035
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "インポートするファイルとして %1$s を選択します"
 
-#: src/LyXFunc.cpp:2070 src/callback.cpp:166
+#: src/LyXFunc.cpp:2086 src/callback.cpp:166
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12730,12 +12730,12 @@ msgstr ""
 "\n"
 "文書を上書きしますか？"
 
-#: src/LyXFunc.cpp:2072 src/callback.cpp:168
+#: src/LyXFunc.cpp:2088 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "文書を上書きしますか？"
 
-#: src/LyXFunc.cpp:2135
+#: src/LyXFunc.cpp:2151
 msgid "Welcome to LyX!"
 msgstr "LyXへようこそ！"
 
@@ -13299,7 +13299,7 @@ msgstr " (自動)"
 msgid "No Branch in Document!"
 msgstr "文書を印刷"
 
-#: src/Paragraph.cpp:1588 src/frontends/qt4/QParagraph.cpp:242
+#: src/Paragraph.cpp:1600 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "このレイアウトでは意味を持ちません！"
 
@@ -13425,27 +13425,27 @@ msgstr "索引にするものがありません！"
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
-#: src/Text3.cpp:180 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:179 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "数式編集モード"
 
-#: src/Text3.cpp:756
+#: src/Text3.cpp:735
 msgid "Unknown spacing argument: "
 msgstr "解釈不能なスペースの引数です: "
 
-#: src/Text3.cpp:928
+#: src/Text3.cpp:907
 msgid "Layout "
 msgstr "割り付け"
 
-#: src/Text3.cpp:929
+#: src/Text3.cpp:908
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1450 src/Text3.cpp:1462
+#: src/Text3.cpp:1427 src/Text3.cpp:1439
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1585
+#: src/Text3.cpp:1562
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -13850,20 +13850,20 @@ msgstr "外部テンプレート・挿入枠メッセージ"
 msgid "RowPainter profiling"
 msgstr "RowPainterが輪郭を描いています"
 
-#: src/frontends/LyXView.cpp:194
+#: src/frontends/LyXView.cpp:200
 msgid "Document not loaded."
 msgstr "文書は読み込まれませんでした"
 
-#: src/frontends/LyXView.cpp:206
+#: src/frontends/LyXView.cpp:212
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "子文書%1$sを開いています..."
 
-#: src/frontends/LyXView.cpp:480
+#: src/frontends/LyXView.cpp:486
 msgid " (changed)"
 msgstr " (変更されました)"
 
-#: src/frontends/LyXView.cpp:484
+#: src/frontends/LyXView.cpp:490
 msgid " (read only)"
 msgstr " (読み込み専用)"
 
@@ -14171,109 +14171,109 @@ msgstr "スペルチェックが完了しました。"
 msgid "Table of Contents"
 msgstr "目次"
 
-#: src/frontends/controllers/frontend_helpers.cpp:244
+#: src/frontends/controllers/frontend_helpers.cpp:247
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$sおよび%2$s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:248
+#: src/frontends/controllers/frontend_helpers.cpp:251
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/frontends/controllers/frontend_helpers.cpp:285
+#: src/frontends/controllers/frontend_helpers.cpp:288
 msgid "No year"
 msgstr "年がありません"
 
-#: src/frontends/controllers/frontend_helpers.cpp:818
+#: src/frontends/controllers/frontend_helpers.cpp:821
 msgid "before"
 msgstr "前置テキスト:"
 
-#: src/frontends/controllers/frontend_helpers.cpp:866
-#: src/frontends/controllers/frontend_helpers.cpp:896
-#: src/frontends/controllers/frontend_helpers.cpp:922
-#: src/frontends/controllers/frontend_helpers.cpp:956
-#: src/frontends/controllers/frontend_helpers.cpp:1022
-#: src/frontends/controllers/frontend_helpers.cpp:1052
-#: src/frontends/controllers/frontend_helpers.cpp:1125
+#: src/frontends/controllers/frontend_helpers.cpp:869
+#: src/frontends/controllers/frontend_helpers.cpp:899
+#: src/frontends/controllers/frontend_helpers.cpp:925
+#: src/frontends/controllers/frontend_helpers.cpp:959
+#: src/frontends/controllers/frontend_helpers.cpp:1025
+#: src/frontends/controllers/frontend_helpers.cpp:1055
+#: src/frontends/controllers/frontend_helpers.cpp:1131
 msgid "No change"
 msgstr "変更しない"
 
-#: src/frontends/controllers/frontend_helpers.cpp:882
-#: src/frontends/controllers/frontend_helpers.cpp:908
-#: src/frontends/controllers/frontend_helpers.cpp:942
-#: src/frontends/controllers/frontend_helpers.cpp:1008
-#: src/frontends/controllers/frontend_helpers.cpp:1038
-#: src/frontends/controllers/frontend_helpers.cpp:1092
-#: src/frontends/controllers/frontend_helpers.cpp:1127
+#: src/frontends/controllers/frontend_helpers.cpp:885
+#: src/frontends/controllers/frontend_helpers.cpp:911
+#: src/frontends/controllers/frontend_helpers.cpp:945
+#: src/frontends/controllers/frontend_helpers.cpp:1011
+#: src/frontends/controllers/frontend_helpers.cpp:1041
+#: src/frontends/controllers/frontend_helpers.cpp:1095
+#: src/frontends/controllers/frontend_helpers.cpp:1133
 msgid "Reset"
 msgstr "リセット"
 
-#: src/frontends/controllers/frontend_helpers.cpp:938
+#: src/frontends/controllers/frontend_helpers.cpp:941
 msgid "Small Caps"
 msgstr "スモールキャップ体"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1026
+#: src/frontends/controllers/frontend_helpers.cpp:1029
 msgid "Emph"
 msgstr "強調"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1030
+#: src/frontends/controllers/frontend_helpers.cpp:1033
 msgid "Underbar"
 msgstr "下線"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1034
+#: src/frontends/controllers/frontend_helpers.cpp:1037
 msgid "Noun"
 msgstr "ナウン体"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1056
+#: src/frontends/controllers/frontend_helpers.cpp:1059
 msgid "No color"
 msgstr "色指定なし"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1060
+#: src/frontends/controllers/frontend_helpers.cpp:1063
 msgid "Black"
 msgstr "黒"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1064
+#: src/frontends/controllers/frontend_helpers.cpp:1067
 msgid "White"
 msgstr "白"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1068
+#: src/frontends/controllers/frontend_helpers.cpp:1071
 msgid "Red"
 msgstr "赤"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1072
+#: src/frontends/controllers/frontend_helpers.cpp:1075
 msgid "Green"
 msgstr "緑"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1076
+#: src/frontends/controllers/frontend_helpers.cpp:1079
 msgid "Blue"
 msgstr "青"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1080
+#: src/frontends/controllers/frontend_helpers.cpp:1083
 msgid "Cyan"
 msgstr "シアン"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1084
+#: src/frontends/controllers/frontend_helpers.cpp:1087
 msgid "Magenta"
 msgstr "マゼンタ"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1088
+#: src/frontends/controllers/frontend_helpers.cpp:1091
 msgid "Yellow"
 msgstr "黄"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1220
+#: src/frontends/controllers/frontend_helpers.cpp:1226
 msgid "System files|#S#s"
 msgstr "システムファイル(S)|#S#s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1223
+#: src/frontends/controllers/frontend_helpers.cpp:1229
 msgid "User files|#U#u"
 msgstr "ユーザーファイル(U)|#U#u"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1306
+#: src/frontends/controllers/frontend_helpers.cpp:1312
 msgid "Could not update TeX information"
 msgstr "TeX 情報を更新することができませんでした"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1307
+#: src/frontends/controllers/frontend_helpers.cpp:1313
 #, c-format
 msgid "The script `%s' failed."
 msgstr "スクリプト `%s' は失敗しました"
@@ -14315,7 +14315,7 @@ msgstr "LaTeXソース"
 msgid "Outline"
 msgstr "概要(O)|O"
 
-#: src/frontends/qt4/FileDialog.cpp:167
+#: src/frontends/qt4/FileDialog.cpp:169
 msgid "Directories"
 msgstr "ディレクトリ"
 
@@ -14753,7 +14753,7 @@ msgstr ""
 "何もしなければ，全てのアイテムの中でもっとも幅の広いラベルの幅が使われるの"
 "で，通常この設定をする必要はないでしょう。"
 
-#: src/frontends/qt4/QParagraph.cpp:180
+#: src/frontends/qt4/QParagraph.cpp:175
 msgid "Paragraph Settings"
 msgstr "段落の設定"
 
@@ -15441,11 +15441,11 @@ msgstr "未知の目次型"
 msgid "Opened table"
 msgstr "展開された表"
 
-#: src/insets/InsetTabular.cpp:4329
+#: src/insets/InsetTabular.cpp:4297
 msgid "Error setting multicolumn"
 msgstr "連結列設定エラー"
 
-#: src/insets/InsetTabular.cpp:4330
+#: src/insets/InsetTabular.cpp:4298
 msgid "You cannot set multicolumn vertically."
 msgstr "連結列を垂直方向に設定することはできません。"
 
@@ -15668,11 +15668,11 @@ msgstr "「%1$s」の列数を変えることができません。"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"
 
-#: src/mathed/InsetMathNest.cpp:860
+#: src/mathed/InsetMathNest.cpp:859
 msgid "create new math text environment ($...$)"
 msgstr "新しい数式テキスト環境を作成する ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:863
+#: src/mathed/InsetMathNest.cpp:862
 msgid "entered math text mode (textrm)"
 msgstr "挿入された数式テキストモード (textrm)"
 
@@ -15793,6 +15793,9 @@ msgstr ""
 #: src/support/userinfo.cpp:49
 msgid "Unknown user"
 msgstr "未知のユーザー"
+
+#~ msgid "Acknowledgement \\arabic{theorem}"
+#~ msgstr "謝辞 \\arabic{theorem}"
 
 #~ msgid "&Default"
 #~ msgstr "既定値(&D)"
