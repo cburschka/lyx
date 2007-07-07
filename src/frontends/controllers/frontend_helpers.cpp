@@ -191,7 +191,7 @@ docstring const familyName(docstring const & name)
 	if (idx != docstring::npos)
 		return ltrim(fname.substr(0, idx));
 	idx = fname.rfind('.');
-	if (idx != docstring::npos && idx < fname.size() - 1)
+	if (idx != docstring::npos && idx + 1 < fname.size())
 		fname = ltrim(fname.substr(idx + 1));
 	// test if we have a LaTeX Space in front
 	if (fname[0] == '\\')
