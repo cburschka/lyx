@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-07-07 23:36+0200\n"
-"PO-Revision-Date: 2007-06-03 04:42+0200\n"
+"POT-Creation-Date: 2007-07-08 14:05+0200\n"
+"PO-Revision-Date: 2007-07-09 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1020,7 +1020,7 @@ msgstr "&Formát:"
 # TODO
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
 msgid "Form"
-msgstr ""
+msgstr "Form"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -1065,7 +1065,7 @@ msgstr "Z&rotuj na bok"
 # TODO
 #: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
-msgstr ""
+msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:64
 msgid "Sc&ale (%):"
@@ -1161,16 +1161,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:220
 msgid "Rotate Graphics"
-msgstr "Rotace obrázku"
+msgstr "Otoèení obrázku"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:235
 msgid "Check to change the order of rotating and scaling"
-msgstr ""
+msgstr "Prohodit poøadí zmìny mìøítka a rotace"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:238
-#, fuzzy
 msgid "Ro&tate after scaling"
-msgstr "Otoèit tabulku"
+msgstr "&Otoèit a¾ po zmìnì mìøítka"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:255
 msgid "Or&igin:"
@@ -1746,12 +1745,11 @@ msgstr "Vlastní"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:238
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
+msgstr "Pou¾ít standardní zarovnání pro tento odstavec, a» u¾ je jakékoliv."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:241
-#, fuzzy
 msgid "Use Paragraph's Default Alignment"
-msgstr "Nastavení rozvr¾ení odstavce"
+msgstr "Pou¾ít standardní zarovnání odstavce"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:248
 msgid "&Right"
@@ -2761,7 +2759,7 @@ msgstr "Nastav v¹echny okraje aktuálnì vybrané buòky (bunìk)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:265
 msgid "&Set"
-msgstr "&Nastav"
+msgstr "&Nastavit"
 
 #: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "Unset all borders of the current (selected) cell(s)"
@@ -7149,11 +7147,11 @@ msgstr "Dictum"
 
 #: lib/layouts/stdlayouts.inc:64
 msgid "--Separator--"
-msgstr "--Separator--"
+msgstr "--Oddìlovaè--"
 
 #: lib/layouts/stdlayouts.inc:73
 msgid "--- Separate Environment ---"
-msgstr "--- Separate Environment ---"
+msgstr "--- Oddìlit Prostøedí ---"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -7181,16 +7179,15 @@ msgstr "Afrikán¹tina"
 
 #: lib/languages:3
 msgid "American"
-msgstr "Angliètina(US)"
+msgstr "Angliètina (US)"
 
 #: lib/languages:5
 msgid "Arabic (ArabTeX)"
-msgstr ""
+msgstr "Arab¹tina (ArabTeX)"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Arabic (Arabi)"
-msgstr "Arab¹tina"
+msgstr "Arab¹tina (Arabi)"
 
 #: lib/languages:7
 msgid "Armenian"
@@ -8412,7 +8409,6 @@ msgstr "Výbìr, spojit øádky|o"
 msgid "Customized...|C"
 msgstr "Vlastní...|V"
 
-# TODO opravdu ?
 #: lib/ui/stdmenus.inc:146
 msgid "Capitalize|a"
 msgstr "První velké|k"
@@ -11288,38 +11284,35 @@ msgstr "intercal"
 
 #: lib/external_templates:37
 msgid "RasterImage"
-msgstr ""
+msgstr "Rastrový obrázek"
 
 #: lib/external_templates:40 lib/external_templates:46
 msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:45
 msgid "A bitmap file.\n"
-msgstr ""
+msgstr "Bitmapový soubor.\n"
 
 #: lib/external_templates:102
-#, fuzzy
 msgid "XFig"
-msgstr "Xi"
+msgstr "XFig"
 
 #: lib/external_templates:103 lib/external_templates:106
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:105
-#, fuzzy
 msgid "An Xfig figure.\n"
-msgstr "Spou¹tìní konfigurace..."
+msgstr "Obrázek z Xfig.\n"
 
 #: lib/external_templates:154
-#, fuzzy
 msgid "ChessDiagram"
-msgstr "ChessBoard"
+msgstr "©achový Diagram"
 
 #: lib/external_templates:155 lib/external_templates:174
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Chess: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:157
 msgid ""
@@ -11341,14 +11334,31 @@ msgid ""
 "that TeX will find it, and you will need\n"
 "to install the skak package from CTAN.\n"
 msgstr ""
+"©achový diagram.\n"
+"Tato ¹ablona pou¾ije program XBoard pro editaci pozice.\n"
+"Pou¾ijte 'File->Save Position' v XBoard-u pro ulo¾ení\n"
+"pozice, kterou chcete zobrazit.\n"
+"Ujistìte se, ¾e má pøíponu '.fen'\n"
+"a nezapomeòte psát relativní cestu\n"
+"k souboru do dokumentu LyX-u.\n"
+"Uvnitø XBoard-u, pou¾ijte 'Edit->Edit Position'\n"
+"pro obecnou editaci ¹achovnice.\n"
+"Mo¾ná budete chtít pou¾ít volbu\n"
+"'Options->Test legality' a\n"
+"nezapomeòte na pravé a prostøední tlaèítko my¹i\n"
+"pro vlo¾ení nového materiálu na hrací desku.\n"
+"Aby toto fungovalo musíte\n"
+"dát pøibalený soubor lyxskak.sty na místo\n"
+"kde ho nalezne TeX. Dále budete potøebovat\n"
+"nainstalovat balíèek skak z CTAN-u.\n"
 
 #: lib/external_templates:199
 msgid "LilyPond"
-msgstr ""
+msgstr "LilyPond"
 
 #: lib/external_templates:200 lib/external_templates:206
 msgid "Lilypond typeset music"
-msgstr ""
+msgstr "Lilypond - sazba not"
 
 #: lib/external_templates:202
 msgid ""
@@ -11357,12 +11367,18 @@ msgid ""
 "Using .eps requires at least lilypond 2.6\n"
 "Using .pdf requires at least lilypond 2.9\n"
 msgstr ""
+"Sazba hudebních not pomocí programu GNU LilyPond.\n"
+"Lze zahrnout po zkonvertování do .pdf nebo .eps\n"
+"Pou¾ití .eps vy¾aduje alespoò lilypond 2.6\n"
+"Pou¾ití .pdf vy¾aduje alespoò lilypond 2.9\n"
 
 #: lib/external_templates:251
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
 msgstr ""
+"Dne¹ní datum.\n"
+"Pro dal¹í informace si pøeètìte manuálovou stránku ('info date').\n"
 
 #: src/Buffer.cpp:233
 msgid "Could not remove temporary directory"
@@ -14289,7 +14305,7 @@ msgstr "neznámá verze"
 
 #: src/frontends/qt4/IconPalette.cpp:40
 msgid "Click to detach"
-msgstr ""
+msgstr "Kliknìte pro odpojení"
 
 #: src/frontends/qt4/QBibitem.cpp:69
 msgid "Bibliography Entry Settings"
@@ -14354,22 +14370,21 @@ msgstr "Pøedchozí pøíkaz"
 msgid "Next command"
 msgstr "Dal¹í pøíkaz"
 
-# TODO
 #: src/frontends/qt4/QDelimiterDialog.cpp:46
 msgid "big[[delimiter size]]"
-msgstr ""
+msgstr "big"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:46
 msgid "Big[[delimiter size]]"
-msgstr ""
+msgstr "Big"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:47
 msgid "bigg[[delimiter size]]"
-msgstr ""
+msgstr "bigg"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:47
 msgid "Bigg[[delimiter size]]"
-msgstr ""
+msgstr "Bigg"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:69
 msgid "Math Delimiter"
@@ -14901,6 +14916,8 @@ msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr ""
+"Následující jméno souboru pravdìpodobnì zpùsobí problémy pøi pøekladu "
+"exportovaného souboru LaTeX-em:"
 
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
