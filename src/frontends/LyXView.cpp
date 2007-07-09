@@ -163,6 +163,17 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 
 		connectBuffer(*newBuffer);
 
+		/* FIXME: We need to rebuild the Toc dialog before the others even
+		if it will be rebuilt again in the next line. This avoid a crash when
+		other dialogs are rebuilt before the Toc dialog. The reason is
+		that closing a Buffer triggers an update of all opened dialogs
+		when dispatching LFUN_DIALOG_UPDATE (hence the patch).
+		The path is as following:
+			setBuffer() -> updateBufferDependent() -> RestoreButton() -> LFUN
+		The problem here is that the Toc dialog has not been
+		reconstructed (because it comes after in the list of dialogs). */
+		updateToc();
+
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
