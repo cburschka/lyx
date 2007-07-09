@@ -83,11 +83,11 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	radioMap[LYX_ALIGN_RIGHT]  = alignRightRB;
 	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
 	
-	labelMap[LYX_ALIGN_LAYOUT] = "Use Paragraph's Default Alignment";
-	labelMap[LYX_ALIGN_BLOCK]  = "Justified";
-	labelMap[LYX_ALIGN_LEFT]   = "Left";
-	labelMap[LYX_ALIGN_RIGHT]  = "Right";
-	labelMap[LYX_ALIGN_CENTER] = "Center";
+	labelMap[LYX_ALIGN_LAYOUT] = _("Use Paragraph's Default Alignment");
+	labelMap[LYX_ALIGN_BLOCK]  = _("Justified");
+	labelMap[LYX_ALIGN_LEFT]   = _("Left");
+	labelMap[LYX_ALIGN_RIGHT]  = _("Right");
+	labelMap[LYX_ALIGN_CENTER] = _("Center");
 }
 
 
@@ -123,10 +123,10 @@ void QParagraphDialog::checkAlignmentRadioButtons() {
 		it->second->setEnabled((align & alignPossible) ||
 		                       (align == LYX_ALIGN_LAYOUT));
 	}
-	std::string label = labelMap[LYX_ALIGN_LAYOUT];
+	docstring label = labelMap[LYX_ALIGN_LAYOUT];
 	if (!form_->controller().haveMulitParSelection())
 		label += (" (" + labelMap[form_->controller().alignDefault()] + ")");
-	alignDefaultRB->setText(qt_(label));
+	alignDefaultRB->setText(toqstr(label));
 }
 
 
