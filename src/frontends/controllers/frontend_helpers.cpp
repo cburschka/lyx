@@ -1108,6 +1108,12 @@ class Sorter
 				      LanguagePair, bool>
 {
 public:
+#if !defined(USE_WCHAR_T) && defined(__GNUC__)
+	bool operator()(LanguagePair const & lhs,
+			LanguagePair const & rhs) const {
+		return lhs.first < rhs.first;
+	}
+#else
 	Sorter() : loc_("") {};
 	bool operator()(LanguagePair const & lhs,
 			LanguagePair const & rhs) const {
@@ -1115,6 +1121,7 @@ public:
 	}
 private:
 	std::locale loc_;
+#endif
 };
 
 } // namespace anon
