@@ -1,3 +1,8 @@
+2007-07-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_hullinset.C (MathHullInset): do not lose the preview when
+	copying formulas (bug 1486) [patch from Bo peng]
+
 2007-05-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C (getStatus): disallow insertion of special char 

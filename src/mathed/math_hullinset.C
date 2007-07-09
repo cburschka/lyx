@@ -160,7 +160,7 @@ MathHullInset::MathHullInset(string const & type)
 MathHullInset::MathHullInset(MathHullInset const & other)
 	: MathGridInset(other),
 	  type_(other.type_), nonum_(other.nonum_), label_(other.label_),
-	  preview_(new RenderPreview(this))
+	  preview_(new RenderPreview(*other.preview_, this))
 {}
 
 
