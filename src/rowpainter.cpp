@@ -734,6 +734,12 @@ void RowPainter::paintLast()
 void RowPainter::paintText()
 {
 	pos_type const end = row_.endpos();
+	// Spaces at logical line breaks in bidi text must be skipped during 
+	// painting. However, they may appear visually in the middle
+	// of a row; they must be skipped, wherever they are...
+	// * logically "abc_[HEBREW_\nHEBREW]"
+	// * visually "abc_[_WERBEH\nWERBEH]"
+	pos_type skipped_sep_vpos = -1;
 	pos_type body_pos = par_.beginOfBody();
 	if (body_pos > 0 &&
 		(body_pos > end || !par_.isLineSeparator(body_pos - 1))) {
@@ -751,9 +757,20 @@ void RowPainter::paintText()
 	Font font;
 	Buffer const & buffer = *bv_.buffer();
 
+	// If the last logical character is a separator, don't paint it, unless
+	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
+	if (end > 0 && end < par_.size() && par_.isSeparator(end - 1))
+		skipped_sep_vpos = bidi_.log2vis(end - 1);
+	
 	for (pos_type vpos = row_.pos(); vpos < end; ) {
 		if (x_ > bv_.workWidth())
 			break;
+
+		// Skip the separator at the logical end of the row
+		if (vpos == skipped_sep_vpos) {
+			++vpos;
+			continue;
+		}
 
 		pos_type const pos = bidi_.vis2log(vpos);
 

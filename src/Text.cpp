@@ -1718,6 +1718,12 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 
 	pos_type const row_pos  = row.pos();
 	pos_type const end      = row.endpos();
+	// Spaces at logical line breaks in bidi text must be skipped during 
+	// cursor positioning. However, they may appear visually in the middle
+	// of a row; they must be skipped, wherever they are...
+	// * logically "abc_[HEBREW_\nHEBREW]"
+	// * visually "abc_[_WERBEH\nWERBEH]"
+	pos_type skipped_sep_vpos = -1;
 
 	if (end <= row_pos)
 		cursor_vpos = row_pos;
@@ -1743,7 +1749,15 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 	FontMetrics const & labelfm = theFontMetrics(
 		getLabelFont(buffer, par));
 
+	// If the last logical character is a separator, skip it, unless
+	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
+	if (end > 0 && end < par.size() && par.isSeparator(end - 1))
+		skipped_sep_vpos = bidi.log2vis(end - 1);
+	
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
+		// Skip the separator which is at the logical end of the row
+		if (vpos == skipped_sep_vpos)
+			continue;
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			// FIXME UNICODE
