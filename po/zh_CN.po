@@ -51,7 +51,7 @@ msgstr "关闭(&C)"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:16
 msgid "LyX: Enter text"
-msgstr ""
+msgstr "LyX: 输入文本"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:47
 msgid "&Dummy"
@@ -74,7 +74,6 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularCreateUi.ui:68
 #: src/frontends/qt4/ui/URLUi.ui:105 src/frontends/qt4/ui/VSpaceUi.ui:145
 #: src/frontends/qt4/ui/WrapUi.ui:193
-#, fuzzy
 msgid "&OK"
 msgstr "确认(&O)"
 
@@ -86,7 +85,6 @@ msgstr "确认(&O)"
 #: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:116 src/callback.cpp:169
-#, fuzzy
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -100,7 +98,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/RefUi.ui:145
 #: src/frontends/qt4/Dialogs.cpp:236
-#, fuzzy
 msgid "&Label:"
 msgstr "标记(&L)："
 
@@ -157,7 +154,6 @@ msgstr ""
 #: src/frontends/qt4/ui/CitationUi.ui:116
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:85
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:54
-#, fuzzy
 msgid "&Add"
 msgstr "添加(&A)"
 
@@ -165,7 +161,6 @@ msgstr "添加(&A)"
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
 #: src/LyXFunc.cpp:859 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
-#, fuzzy
 msgid "Cancel"
 msgstr "取消"
 
@@ -177,7 +172,6 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:99
 #: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/IncludeUi.ui:329
 #: src/frontends/qt4/ui/PrintUi.ui:316
-#, fuzzy
 msgid "&Browse..."
 msgstr "浏览(&B)..."
 
@@ -218,7 +212,6 @@ msgid "Remove the selected database"
 msgstr ""
 
 #: src/frontends/qt4/ui/BibtexUi.ui:151
-#, fuzzy
 msgid "&Delete"
 msgstr "删除(&D)"
 
@@ -227,7 +220,6 @@ msgid "Add a BibTeX database file"
 msgstr ""
 
 #: src/frontends/qt4/ui/BibtexUi.ui:161
-#, fuzzy
 msgid "&Add..."
 msgstr "添加(&A)..."
 
@@ -257,7 +249,6 @@ msgstr ""
 #: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.cpp:100
 #: src/frontends/qt4/QBox.cpp:268 src/frontends/qt4/QBox.cpp:384
 #: src/frontends/qt4/QDocument.cpp:68
-#, fuzzy
 msgid "None"
 msgstr "无"
 
@@ -295,20 +286,17 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:122 src/frontends/qt4/ui/ExternalUi.ui:507
 #: src/frontends/qt4/ui/PageLayoutUi.ui:43
-#, fuzzy
 msgid "&Height:"
 msgstr "高度(&H)："
 
 #: src/frontends/qt4/ui/BoxUi.ui:138 src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/PageLayoutUi.ui:56
 #: src/frontends/qt4/ui/TabularUi.ui:103 src/frontends/qt4/ui/WrapUi.ui:39
-#, fuzzy
 msgid "&Width:"
 msgstr "宽度(&W)："
 
 #: src/frontends/qt4/ui/BoxUi.ui:148 src/frontends/qt4/ui/MathMatrixUi.ui:202
 #: src/frontends/qt4/ui/ParagraphUi.ui:221
-#, fuzzy
 msgid "Alignment"
 msgstr "对齐"
 
@@ -319,7 +307,6 @@ msgstr ""
 #: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
 #: src/frontends/qt4/QTabular.cpp:741
-#, fuzzy
 msgid "Left"
 msgstr "左"
 
@@ -327,24 +314,20 @@ msgstr "左"
 #: src/frontends/controllers/ControlExternal.cpp:236
 #: src/frontends/controllers/ControlGraphics.cpp:172
 #: src/frontends/qt4/QTabular.cpp:742
-#, fuzzy
 msgid "Center"
 msgstr "居中"
 
 #: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
 #: src/frontends/qt4/QTabular.cpp:743
-#, fuzzy
 msgid "Right"
 msgstr "右"
 
 #: src/frontends/qt4/ui/BoxUi.ui:179 src/frontends/qt4/ui/BoxUi.ui:261
-#, fuzzy
 msgid "Stretch"
 msgstr "拉伸"
 
 #: src/frontends/qt4/ui/BoxUi.ui:190
-#, fuzzy
 msgid "Horizontal"
 msgstr "水平"
 
@@ -355,21 +338,18 @@ msgstr ""
 #: src/frontends/qt4/ui/BoxUi.ui:201 src/frontends/qt4/ui/BoxUi.ui:246
 #: src/frontends/qt4/ui/MathMatrixUi.ui:218
 #: src/frontends/qt4/ui/TabularUi.ui:85
-#, fuzzy
 msgid "Top"
 msgstr "上"
 
 #: src/frontends/qt4/ui/BoxUi.ui:206 src/frontends/qt4/ui/BoxUi.ui:251
 #: src/frontends/qt4/ui/MathMatrixUi.ui:223
 #: src/frontends/qt4/ui/TabularUi.ui:90
-#, fuzzy
 msgid "Middle"
 msgstr "中间"
 
 #: src/frontends/qt4/ui/BoxUi.ui:211 src/frontends/qt4/ui/BoxUi.ui:256
 #: src/frontends/qt4/ui/MathMatrixUi.ui:228
 #: src/frontends/qt4/ui/TabularUi.ui:95
-#, fuzzy
 msgid "Bottom"
 msgstr "下"
 
@@ -386,7 +366,6 @@ msgid "Vertical alignment of the content inside the box"
 msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:272
-#, fuzzy
 msgid "Vertical"
 msgstr "垂直"
 
@@ -395,7 +374,6 @@ msgstr "垂直"
 #: src/frontends/qt4/ui/GraphicsUi.ui:709
 #: src/frontends/qt4/ui/ParagraphUi.ui:96 src/frontends/qt4/ui/PrefsUi.ui:50
 #: src/frontends/qt4/ui/WrapUi.ui:164
-#, fuzzy
 msgid "&Restore"
 msgstr "恢复(&R)"
 
@@ -407,7 +385,6 @@ msgstr "恢复(&R)"
 #: src/frontends/qt4/ui/ParagraphUi.ui:135 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
-#, fuzzy
 msgid "&Apply"
 msgstr "应用(&A)"
 
@@ -428,7 +405,6 @@ msgid "A&vailable Branches:"
 msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:67
-#, fuzzy
 msgid "&New:"
 msgstr "新建(&N)："
 
@@ -439,7 +415,6 @@ msgstr ""
 #: src/frontends/qt4/ui/BranchesUi.ui:83
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:68
-#, fuzzy
 msgid "&Remove"
 msgstr "删除(&R)"
 
@@ -460,13 +435,11 @@ msgid "Alter Co&lor..."
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
-#, fuzzy
 msgid "&Font:"
 msgstr "字体(&F)："
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:227
-#, fuzzy
 msgid "Si&ze:"
 msgstr "大小(&z)"
 
@@ -485,14 +458,12 @@ msgstr "大小(&z)"
 #: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:743
 #: src/frontends/qt4/QDocument.cpp:791 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
-#, fuzzy
 msgid "Default"
 msgstr "默认"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:963
 #: src/frontends/qt4/QListings.cpp:155
-#, fuzzy
 msgid "Tiny"
 msgstr "极小"
 
@@ -505,28 +476,24 @@ msgstr ""
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:971
 #: src/frontends/qt4/QListings.cpp:155
-#, fuzzy
 msgid "Smaller"
 msgstr "较小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:975
 #: src/frontends/qt4/QListings.cpp:155
-#, fuzzy
 msgid "Small"
 msgstr "小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:979
 #: src/frontends/qt4/QListings.cpp:155
-#, fuzzy
 msgid "Normal"
 msgstr "正常"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:983
 #: src/frontends/qt4/QListings.cpp:156
-#, fuzzy
 msgid "Large"
 msgstr "大"
 
@@ -543,7 +510,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
 #: src/frontends/controllers/frontend_helpers.cpp:995
-#, fuzzy
 msgid "Huge"
 msgstr "巨大"
 
@@ -557,7 +523,6 @@ msgid "&Custom Bullet:"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
-#, fuzzy
 msgid "&Level:"
 msgstr "级别(&L)："
 
@@ -578,7 +543,6 @@ msgid "Accept this change"
 msgstr ""
 
 #: src/frontends/qt4/ui/ChangesUi.ui:98
-#, fuzzy
 msgid "&Accept"
 msgstr "接受(&A)"
 
@@ -587,13 +551,11 @@ msgid "Reject this change"
 msgstr ""
 
 #: src/frontends/qt4/ui/ChangesUi.ui:111
-#, fuzzy
 msgid "&Reject"
 msgstr "拒绝(&R)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:132
-#, fuzzy
 msgid "Font family"
 msgstr "字体族"
 
@@ -620,7 +582,6 @@ msgstr ""
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
 #: src/frontends/qt4/QPrefs.cpp:1587
-#, fuzzy
 msgid "Language"
 msgstr "语言"
 
@@ -631,7 +592,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
 #: src/frontends/qt4/ui/LanguageUi.ui:36
-#, fuzzy
 msgid "&Language:"
 msgstr "语言(&L)："
 
@@ -649,7 +609,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:224
 #: src/frontends/qt4/ui/CharacterUi.ui:245
-#, fuzzy
 msgid "Font size"
 msgstr "字体大小"
 
@@ -688,7 +647,6 @@ msgstr ""
 #: src/frontends/qt4/ui/PrintUi.ui:246
 #: src/frontends/qt4/ui/TabularCreateUi.ui:75
 #: src/frontends/qt4/ui/TabularUi.ui:1131 src/frontends/qt4/Qt2BC.h:37
-#, fuzzy
 msgid "Close"
 msgstr "关闭"
 
@@ -697,7 +655,6 @@ msgid "Move the selected citation up"
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:55
-#, fuzzy
 msgid "&Up"
 msgstr "上(&U)"
 
@@ -706,12 +663,10 @@ msgid "Move the selected citation down"
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:76
-#, fuzzy
 msgid "&Down"
 msgstr "下(&D)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:99
-#, fuzzy
 msgid "D&elete"
 msgstr "删除(&E)"
 
@@ -724,7 +679,6 @@ msgid "A&vailable Citations:"
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:162
-#, fuzzy
 msgid "Formatting"
 msgstr "正在格式化"
 
@@ -789,7 +743,6 @@ msgid "<- C&lear"
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
-#, fuzzy
 msgid "F&ind:"
 msgstr "查找(&I)："
 
@@ -798,12 +751,10 @@ msgid "Insert the delimiters"
 msgstr ""
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:92
-#, fuzzy
 msgid "&Insert"
 msgstr "插入(&I)"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:132
-#, fuzzy
 msgid "&Size:"
 msgstr "大小(&S)："
 
@@ -837,7 +788,6 @@ msgid "Save as Document Defaults"
 msgstr ""
 
 #: src/frontends/qt4/ui/ERTUi.ui:31
-#, fuzzy
 msgid "Display"
 msgstr "显示"
 
@@ -846,7 +796,6 @@ msgid "Show ERT inline"
 msgstr ""
 
 #: src/frontends/qt4/ui/ERTUi.ui:46
-#, fuzzy
 msgid "&Inline"
 msgstr "内联(&I)"
 
@@ -867,7 +816,6 @@ msgid "O&pen"
 msgstr "打开(&p)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:51
-#, fuzzy
 msgid "File"
 msgstr "文件"
 
@@ -884,13 +832,11 @@ msgid "&Edit File..."
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:96 src/frontends/qt4/ui/IncludeUi.ui:326
-#, fuzzy
 msgid "Select a file"
 msgstr "选择一个文件"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:106
 #: src/frontends/qt4/ui/ExternalUi.ui:119
-#, fuzzy
 msgid "Filename"
 msgstr "文件名"
 
@@ -901,7 +847,6 @@ msgid "&File:"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:126
-#, fuzzy
 msgid "Template"
 msgstr "模板"
 
@@ -923,26 +868,22 @@ msgstr ""
 #: src/frontends/qt4/ui/ExternalUi.ui:197
 #: src/frontends/qt4/ui/GraphicsUi.ui:625
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66
-#, fuzzy
 msgid "Monochrome"
 msgstr "单色"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:202
 #: src/frontends/qt4/ui/GraphicsUi.ui:630
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:71
-#, fuzzy
 msgid "Grayscale"
 msgstr "灰度"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:207
 #: src/frontends/qt4/ui/GraphicsUi.ui:635
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:76 src/frontends/qt4/QBranches.cpp:44
-#, fuzzy
 msgid "Color"
 msgstr "颜色"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:212
-#, fuzzy
 msgid "Preview"
 msgstr "预览"
 
@@ -975,7 +916,6 @@ msgid "&Show in LyX"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:324
-#, fuzzy
 msgid "Rotate"
 msgstr "旋转"
 
@@ -1002,7 +942,6 @@ msgid "A&ngle:"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:427
-#, fuzzy
 msgid "Scale"
 msgstr "缩放"
 
@@ -1026,7 +965,6 @@ msgid "Width of image in output"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:518
-#, fuzzy
 msgid "Crop"
 msgstr "裁剪"
 
@@ -1069,7 +1007,6 @@ msgid "y"
 msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:627
-#, fuzzy
 msgid "Options"
 msgstr "选项"
 
@@ -1082,7 +1019,6 @@ msgid "Forma&t:"
 msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
-#, fuzzy
 msgid "Form"
 msgstr "表单"
 
@@ -1172,7 +1108,6 @@ msgid "&Graphics"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:55
-#, fuzzy
 msgid "&Edit"
 msgstr "编辑(&E)"
 
@@ -1221,7 +1156,6 @@ msgid "Check to change the order of rotating and scaling"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:238
-#, fuzzy
 msgid "Ro&tate after scaling"
 msgstr "逆时针旋转(&T)"
 
@@ -1312,7 +1246,6 @@ msgid "&Bypass validation"
 msgstr "(&B)跳过选项验证"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
-#, fuzzy
 msgid "C&aption:"
 msgstr "表题(&A)："
 
@@ -1349,12 +1282,10 @@ msgid "&Include Type:"
 msgstr ""
 
 #: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:348
-#, fuzzy
 msgid "Include"
 msgstr "包含"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:339
-#, fuzzy
 msgid "Input"
 msgstr "输入"
 
@@ -1372,7 +1303,6 @@ msgid "Load the file"
 msgstr ""
 
 #: src/frontends/qt4/ui/IncludeUi.ui:339
-#, fuzzy
 msgid "&Load"
 msgstr "装入(&L)"
 
@@ -1381,7 +1311,6 @@ msgid "Document &class:"
 msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:68
-#, fuzzy
 msgid "&Options:"
 msgstr "选项(&O)："
 
@@ -1394,7 +1323,6 @@ msgid "&Use language's default encoding"
 msgstr ""
 
 #: src/frontends/qt4/ui/LanguageUi.ui:131
-#, fuzzy
 msgid "&Encoding:"
 msgstr "编码(&E)："
 
@@ -1407,7 +1335,6 @@ msgid "&Main Settings"
 msgstr "(&M)主要设定"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/TabularUi.ui:301
-#, fuzzy
 msgid "Style"
 msgstr "风格"
 
@@ -1424,9 +1351,8 @@ msgid "The content's base font style"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:128
-#, fuzzy
 msgid "Font Famil&y:"
-msgstr "字体查看器"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:144
 msgid "Use extended character table"
@@ -1461,7 +1387,6 @@ msgid "&Break long lines"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:199
-#, fuzzy
 msgid "Placement"
 msgstr "放置"
 
@@ -1486,7 +1411,6 @@ msgid "&Inline listing"
 msgstr "文中"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:76
-#, fuzzy
 msgid "&Placement:"
 msgstr "放置策略(&P)："
 
@@ -1503,7 +1427,6 @@ msgid "Choose the font size for line numbers"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:312
-#, fuzzy
 msgid "Font si&ze:"
 msgstr "字体大小(&Z)："
 
@@ -1536,7 +1459,6 @@ msgid "Select the programming language"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:419
-#, fuzzy
 msgid "Range"
 msgstr "范围"
 
@@ -1578,7 +1500,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:61 src/frontends/qt4/ui/RefUi.ui:235
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
-#, fuzzy
 msgid "&Update"
 msgstr "更新(&U)"
 
@@ -1591,12 +1512,10 @@ msgid "&Default Margins"
 msgstr ""
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
-#, fuzzy
 msgid "&Top:"
 msgstr "顶部(&T)："
 
 #: src/frontends/qt4/ui/MarginsUi.ui:102
-#, fuzzy
 msgid "&Bottom:"
 msgstr "底部(&B)："
 
@@ -1629,7 +1548,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:42
 #: src/frontends/qt4/ui/TabularCreateUi.ui:87
-#, fuzzy
 msgid "&Rows:"
 msgstr "行数(&R)："
 
@@ -1650,7 +1568,6 @@ msgid "Resize this to the correct table dimensions"
 msgstr ""
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:214 src/frontends/qt4/ui/WrapUi.ui:49
-#, fuzzy
 msgid "Vertical alignment"
 msgstr "垂直排列"
 
@@ -1687,7 +1604,6 @@ msgid "Sort &as:"
 msgstr ""
 
 #: src/frontends/qt4/ui/NomenclUi.ui:41
-#, fuzzy
 msgid "&Description:"
 msgstr "描述(&D)："
 
@@ -1696,7 +1612,6 @@ msgid "&Symbol:"
 msgstr ""
 
 #: src/frontends/qt4/ui/NoteUi.ui:51
-#, fuzzy
 msgid "Type"
 msgstr "类型"
 
@@ -1749,7 +1664,6 @@ msgid "&Numbering"
 msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
-#, fuzzy
 msgid "Paper Size"
 msgstr "纸张大小"
 
@@ -1758,17 +1672,14 @@ msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
 msgid "Orientation"
 msgstr "方向"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:140
-#, fuzzy
 msgid "&Portrait"
 msgstr "纵向(&P)"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:150
-#, fuzzy
 msgid "&Landscape"
 msgstr "横向(&L)"
 
@@ -1798,7 +1709,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1848
 #: src/frontends/qt4/QDocument.cpp:245
-#, fuzzy
 msgid "Single"
 msgstr "单一"
 
@@ -1808,7 +1718,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:191 src/Text.cpp:1854
 #: src/frontends/qt4/QDocument.cpp:249
-#, fuzzy
 msgid "Double"
 msgstr "双重"
 
@@ -1816,7 +1725,6 @@ msgstr "双重"
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
 #: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
-#, fuzzy
 msgid "Custom"
 msgstr "自定义"
 
@@ -1825,17 +1733,14 @@ msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:241
-#, fuzzy
 msgid "Use Paragraph's Default Alignment"
 msgstr "使用不同的默认字符集(&U)："
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:248
-#, fuzzy
 msgid "&Right"
 msgstr "右(&R)"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
-#, fuzzy
 msgid "&Left"
 msgstr "左(&L)"
 
@@ -1848,7 +1753,6 @@ msgid "&Justified"
 msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:290
-#, fuzzy
 msgid "Label Width"
 msgstr "Page Width %"
 
@@ -1862,7 +1766,6 @@ msgid "&Longest label"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:25
-#, fuzzy
 msgid "&Colors"
 msgstr "颜色(&C)"
 
@@ -1888,19 +1791,16 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
-#, fuzzy
 msgid "A&dd"
 msgstr "添加(&D)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:92
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:61
-#, fuzzy
 msgid "&Modify"
 msgstr "修改(&M)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
-#, fuzzy
 msgid "Remo&ve"
 msgstr "删除(&V)"
 
@@ -1913,7 +1813,6 @@ msgid "Converter File Cache"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
-#, fuzzy
 msgid "&Enabled"
 msgstr "启用(&E)"
 
@@ -1922,7 +1821,6 @@ msgid "&Maximum Age (in days):"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
-#, fuzzy
 msgid "&Format:"
 msgstr "格式(&F)："
 
@@ -1961,7 +1859,6 @@ msgid "Display &Graphics:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:73
-#, fuzzy
 msgid "Off"
 msgstr "关闭"
 
@@ -1970,7 +1867,6 @@ msgid "No math"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:73
-#, fuzzy
 msgid "On"
 msgstr "开"
 
@@ -2028,7 +1924,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:53 src/frontends/qt4/ui/RefUi.ui:119
 #: src/frontends/qt4/ui/URLUi.ui:47
-#, fuzzy
 msgid "&Name:"
 msgstr "名称(&N)："
 
@@ -2038,7 +1933,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefKeyboardUi.ui:58
 #: src/frontends/qt4/ui/PrefUi.ui:114
-#, fuzzy
 msgid "Bro&wse..."
 msgstr "浏览(&W)..."
 
@@ -2052,7 +1946,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefKeyboardUi.ui:97
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:82
-#, fuzzy
 msgid "Br&owse..."
 msgstr "浏览(&O)..."
 
@@ -2085,7 +1978,6 @@ msgid "Use b&abel"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:110
-#, fuzzy
 msgid "&Global"
 msgstr "全局(&G)"
 
@@ -2190,7 +2082,6 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefPathsUi.ui:61
 #: src/frontends/qt4/ui/PrefPathsUi.ui:77
 #: src/frontends/qt4/ui/PrefPathsUi.ui:123
-#, fuzzy
 msgid "Browse..."
 msgstr "浏览..."
 
@@ -2237,7 +2128,6 @@ msgid "External app for formating tables in plain text output"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:25
-#, fuzzy
 msgid "Printer Command Options"
 msgstr "多个“s”命令的选项“g”"
 
@@ -2250,12 +2140,10 @@ msgid "File ex&tension:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:82
-#, fuzzy
 msgid "Option used to print to a file."
 msgstr "Option to pass to the print program to print to a file."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-#, fuzzy
 msgid "Print to &file:"
 msgstr "打印到文件(_F)"
 
@@ -2264,7 +2152,6 @@ msgid "Option used to print to non-default printer."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
-#, fuzzy
 msgid "Set p&rinter:"
 msgstr "打印机标识(&R)"
 
@@ -2273,7 +2160,6 @@ msgid "Option used with spool command to set printer."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
-#, fuzzy
 msgid "Spool pr&inter:"
 msgstr "隐藏打印机细节(&I)"
 
@@ -2288,12 +2174,10 @@ msgid "Spool &command:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:150
-#, fuzzy
 msgid "Option used to reverse page order."
 msgstr "The option to reverse the order of the pages printed."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
-#, fuzzy
 msgid "Re&verse pages:"
 msgstr "相反次序排列(_V)"
 
@@ -2302,17 +2186,14 @@ msgid "Lan&dscape:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:179
-#, fuzzy
 msgid "Number of Co&pies:"
 msgstr "提交选项(&M)："
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:189
-#, fuzzy
 msgid "Option used to set number of copies."
 msgstr "The option for specifying the number of copies to print."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
-#, fuzzy
 msgid "Option used to print a range of pages."
 msgstr "The option to print only even pages."
 
@@ -2337,7 +2218,6 @@ msgid "&Even pages:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:256
-#, fuzzy
 msgid "Paper t&ype:"
 msgstr "纸张类型(&Y)："
 
@@ -2365,12 +2245,10 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:314
-#, fuzzy
 msgid "Adapt output to printer"
 msgstr "Send output to the printer"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:329
-#, fuzzy
 msgid "Default &printer:"
 msgstr "打印机默认"
 
@@ -2431,7 +2309,6 @@ msgid "Small:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:329
-#, fuzzy
 msgid "Normal:"
 msgstr "法向量："
 
@@ -2480,7 +2357,6 @@ msgid "Use input encod&ing"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:33
-#, fuzzy
 msgid "Scrolling"
 msgstr "滚动"
 
@@ -2489,7 +2365,6 @@ msgid "Cursor follows &scrollbar"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
-#, fuzzy
 msgid "B&rowse..."
 msgstr "浏览(&R)..."
 
@@ -2502,7 +2377,6 @@ msgid "&Bind file:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:132
-#, fuzzy
 msgid "Session"
 msgstr "会话"
 
@@ -2529,19 +2403,16 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefUi.ui:221
 #: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.cpp:292
 #: src/frontends/qt4/QBox.cpp:326
-#, fuzzy
 msgid "Width"
 msgstr "宽度"
 
 #: src/frontends/qt4/ui/PrefUi.ui:247
 #: src/frontends/controllers/ControlBox.cpp:80 src/frontends/qt4/QBox.cpp:283
 #: src/frontends/qt4/QBox.cpp:317
-#, fuzzy
 msgid "Height"
 msgstr "高度"
 
 #: src/frontends/qt4/ui/PrefUi.ui:291
-#, fuzzy
 msgid "Documents"
 msgstr "文档"
 
@@ -2554,7 +2425,6 @@ msgid " every"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:354
-#, fuzzy
 msgid "minutes"
 msgstr "分"
 
@@ -2564,12 +2434,10 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:742
-#, fuzzy
 msgid "&Save"
 msgstr "保存(&S)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:31
-#, fuzzy
 msgid "Pages"
 msgstr "页面"
 
@@ -2594,7 +2462,6 @@ msgid "Fro&m"
 msgstr "从(&m)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:107
-#, fuzzy
 msgid "&All"
 msgstr "全部(&A)"
 
@@ -2615,12 +2482,10 @@ msgid "Re&verse order"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrintUi.ui:152
-#, fuzzy
 msgid "Copies"
 msgstr "份数"
 
 #: src/frontends/qt4/ui/PrintUi.ui:164
-#, fuzzy
 msgid "Number of copies"
 msgstr "份数"
 
@@ -2633,7 +2498,6 @@ msgid "&Collate"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrintUi.ui:233
-#, fuzzy
 msgid "&Print"
 msgstr "打印(&P)"
 
@@ -2694,7 +2558,6 @@ msgid "Sort labels in alphabetical order"
 msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:209
-#, fuzzy
 msgid "&Sort"
 msgstr "排序(&S)"
 
@@ -2711,17 +2574,14 @@ msgid "&Go to Label"
 msgstr ""
 
 #: src/frontends/qt4/ui/SearchUi.ui:31
-#, fuzzy
 msgid "&Find:"
 msgstr "查找(&F)："
 
 #: src/frontends/qt4/ui/SearchUi.ui:71
-#, fuzzy
 msgid "Replace &with:"
 msgstr "替换为(&W)："
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
-#, fuzzy
 msgid "Case &sensitive"
 msgstr "区分大小写(&S)"
 
@@ -2730,19 +2590,16 @@ msgid "Match whole words onl&y"
 msgstr ""
 
 #: src/frontends/qt4/ui/SearchUi.ui:173
-#, fuzzy
 msgid "Find &Next"
 msgstr "查找下一个(&N)"
 
 #: src/frontends/qt4/ui/SearchUi.ui:186
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:51
 #: src/frontends/qt4/ui/ThesaurusUi.ui:111
-#, fuzzy
 msgid "&Replace"
 msgstr "替换(&R)"
 
 #: src/frontends/qt4/ui/SearchUi.ui:196
-#, fuzzy
 msgid "Replace &All"
 msgstr "全部替换(&A)"
 
@@ -2779,7 +2636,6 @@ msgid "Ignore this word"
 msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:71
-#, fuzzy
 msgid "&Ignore"
 msgstr "忽略(&I)"
 
@@ -2788,7 +2644,6 @@ msgid "Ignore this word throughout this session"
 msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:81
-#, fuzzy
 msgid "I&gnore All"
 msgstr "全部忽略(&G)"
 
@@ -2801,7 +2656,6 @@ msgid "Current word"
 msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:121
-#, fuzzy
 msgid "Unknown word:"
 msgstr "未知单词："
 
@@ -2814,7 +2668,6 @@ msgid "&Table Settings"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:53
-#, fuzzy
 msgid "Column Width"
 msgstr "列宽"
 
@@ -2839,7 +2692,6 @@ msgid "Horizontal alignment in column"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QTabular.cpp:745
-#, fuzzy
 msgid "Justified"
 msgstr "分散对齐"
 
@@ -2860,7 +2712,6 @@ msgid "Rotate &cell 90 degrees"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:202
-#, fuzzy
 msgid "Merge cells"
 msgstr "合并单元格"
 
@@ -2889,7 +2740,6 @@ msgid "Set all borders of the current (selected) cell(s)"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:265
-#, fuzzy
 msgid "&Set"
 msgstr "设置(&S)"
 
@@ -2898,7 +2748,6 @@ msgid "Unset all borders of the current (selected) cell(s)"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "C&lear"
 msgstr "清除(&L)"
 
@@ -2915,7 +2764,6 @@ msgid "Use default (grid-like) border style"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:329
-#, fuzzy
 msgid "De&fault"
 msgstr "默认(&F)"
 
@@ -2956,12 +2804,10 @@ msgid "Page &break on current row"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:837
-#, fuzzy
 msgid "Settings"
 msgstr "设置"
 
 #: src/frontends/qt4/ui/TabularUi.ui:849
-#, fuzzy
 msgid "Status"
 msgstr "状态"
 
@@ -2970,7 +2816,6 @@ msgid "Header:"
 msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:863
-#, fuzzy
 msgid "Footer:"
 msgstr "页脚："
 
@@ -2983,7 +2828,6 @@ msgid "Last footer:"
 msgstr "最后页尾"
 
 #: src/frontends/qt4/ui/TabularUi.ui:884
-#, fuzzy
 msgid "Contents"
 msgstr "内容"
 
@@ -3002,7 +2846,6 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
 #: src/LyXFunc.cpp:1791
-#, fuzzy
 msgid "on"
 msgstr "打开"
 
@@ -3068,7 +2911,6 @@ msgid "Rebuild the file lists"
 msgstr ""
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
-#, fuzzy
 msgid "&Rescan"
 msgstr "重新扫描(&R)"
 
@@ -3079,7 +2921,6 @@ msgstr ""
 "Show contents of marked file. Only possible when files are shown with path"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
-#, fuzzy
 msgid "&View"
 msgstr "查看(&V)"
 
@@ -3120,17 +2961,14 @@ msgid "Indent consecutive paragraphs"
 msgstr ""
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:111
-#, fuzzy
 msgid "&Indentation"
 msgstr "缩进(&I)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
-#, fuzzy
 msgid "Spacing"
 msgstr "间隔"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:149
-#, fuzzy
 msgid "&Line spacing:"
 msgstr "行间距(&L)："
 
@@ -3216,7 +3054,6 @@ msgid "URL"
 msgstr ""
 
 #: src/frontends/qt4/ui/URLUi.ui:34
-#, fuzzy
 msgid "&URL:"
 msgstr "&URL："
 
@@ -3237,7 +3074,6 @@ msgid "&Spacing:"
 msgstr ""
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:38
-#, fuzzy
 msgid "&Value:"
 msgstr "值(&V)："
 
@@ -3323,7 +3159,6 @@ msgstr ""
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
 #: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
 #: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
-#, fuzzy
 msgid "Standard"
 msgstr "标准"
 
@@ -3337,7 +3172,6 @@ msgstr ""
 #: lib/layouts/ijmpd.layout:227 lib/layouts/llncs.layout:374
 #: lib/layouts/siamltex.layout:252 lib/layouts/amsdefs.inc:28
 #: lib/layouts/svjour.inc:436
-#, fuzzy
 msgid "Proof"
 msgstr "证据"
 
@@ -3470,7 +3304,6 @@ msgstr ""
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
 #: src/frontends/qt4/QDocument.cpp:489
-#, fuzzy
 msgid "Example"
 msgstr "例子"
 
@@ -3481,7 +3314,6 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:172 lib/layouts/amsart-plain.layout:91
 #: lib/layouts/amsart-seq.layout:203 lib/layouts/amsmaths-plain.inc:143
 #: lib/layouts/amsmaths-seq.inc:120 lib/layouts/amsmaths.inc:298
-#, fuzzy
 msgid "Condition"
 msgstr "条件"
 
@@ -3494,7 +3326,6 @@ msgstr ""
 #: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:153
 #: lib/layouts/amsmaths-seq.inc:128 lib/layouts/amsmaths.inc:320
 #: lib/layouts/svjour.inc:429
-#, fuzzy
 msgid "Problem"
 msgstr "问题"
 
@@ -3546,7 +3377,6 @@ msgstr ""
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
 #: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:64
-#, fuzzy
 msgid "Note"
 msgstr "备忘"
 
@@ -3596,7 +3426,6 @@ msgstr ""
 #: lib/layouts/numreport.inc:21 lib/layouts/numrevtex.inc:6
 #: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
 #: lib/layouts/svjour.inc:52
-#, fuzzy
 msgid "Section"
 msgstr "章节"
 
@@ -3617,7 +3446,6 @@ msgstr "章节"
 #: lib/layouts/numarticle.inc:22 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:72
 #: lib/layouts/svjour.inc:61
-#, fuzzy
 msgid "Subsection"
 msgstr "子段"
 
@@ -3681,7 +3509,6 @@ msgstr ""
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
 #: src/output_plaintext.cpp:145
-#, fuzzy
 msgid "Abstract"
 msgstr "摘要"
 
@@ -3697,7 +3524,6 @@ msgstr ""
 #: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:169
 #: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:195 lib/layouts/svjour.inc:273
-#, fuzzy
 msgid "Keywords"
 msgstr "关键字"
 
@@ -3724,7 +3550,6 @@ msgstr ""
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:230
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
 #: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:587
-#, fuzzy
 msgid "Bibliography"
 msgstr "参考书目"
 
@@ -3733,7 +3558,6 @@ msgstr "参考书目"
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
 #: src/rowpainter.cpp:540
-#, fuzzy
 msgid "Appendix"
 msgstr "附录"
 
@@ -3783,7 +3607,6 @@ msgstr ""
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
 #: lib/ui/stdtoolbars.inc:89
-#, fuzzy
 msgid "Description"
 msgstr "描述"
 
@@ -3792,7 +3615,6 @@ msgstr "描述"
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
 #: lib/ui/stdtoolbars.inc:88
-#, fuzzy
 msgid "List"
 msgstr "列表"
 
@@ -3817,7 +3639,6 @@ msgstr "列表"
 #: lib/layouts/amsdefs.inc:60 lib/layouts/db_stdtitle.inc:13
 #: lib/layouts/scrclass.inc:146 lib/layouts/stdtitle.inc:12
 #: lib/layouts/svjour.inc:129
-#, fuzzy
 msgid "Title"
 msgstr "头衔"
 
@@ -3846,7 +3667,6 @@ msgstr ""
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:82
 #: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:154
 #: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:182
-#, fuzzy
 msgid "Author"
 msgstr "作者"
 
@@ -3860,7 +3680,6 @@ msgstr "作者"
 #: lib/layouts/scrlettr.layout:144 lib/layouts/scrlttr2.layout:39
 #: lib/layouts/aapaper.inc:30 lib/layouts/amsdefs.inc:153
 #: lib/layouts/lyxmacros.inc:43
-#, fuzzy
 msgid "Address"
 msgstr "地址"
 
@@ -3871,7 +3690,6 @@ msgstr ""
 
 #: lib/layouts/aa.layout:74 lib/layouts/aa.layout:167
 #: lib/layouts/svjour.inc:236
-#, fuzzy
 msgid "Mail"
 msgstr "邮件"
 
@@ -3889,7 +3707,6 @@ msgstr "邮件"
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
 #: lib/ui/stdmenus.inc:315 lib/external_templates:248
 #: lib/external_templates:249 lib/external_templates:253
-#, fuzzy
 msgid "Date"
 msgstr "日期"
 
@@ -3924,7 +3741,6 @@ msgstr ""
 #: lib/layouts/aastex.layout:307 lib/layouts/iopart.layout:153
 #: lib/layouts/latex8.layout:57 lib/layouts/llncs.layout:232
 #: lib/layouts/aapaper.inc:47 lib/layouts/amsdefs.inc:179
-#, fuzzy
 msgid "Email"
 msgstr "电子邮件"
 
@@ -3943,7 +3759,6 @@ msgstr ""
 #: lib/layouts/numarticle.inc:40 lib/layouts/numrevtex.inc:33
 #: lib/layouts/scrclass.inc:82 lib/layouts/stdsections.inc:97
 #: lib/layouts/svjour.inc:79
-#, fuzzy
 msgid "Paragraph"
 msgstr "段落"
 
@@ -3951,12 +3766,10 @@ msgstr "段落"
 #: lib/layouts/apa.layout:150 lib/layouts/latex8.layout:81
 #: lib/layouts/revtex4.layout:133 lib/layouts/agu_stdtitle.inc:128
 #: lib/layouts/aguplus.inc:60
-#, fuzzy
 msgid "Affiliation"
 msgstr "加盟"
 
 #: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:346
-#, fuzzy
 msgid "And"
 msgstr "与"
 
@@ -3977,7 +3790,6 @@ msgstr ""
 #: lib/layouts/siamltex.layout:194 lib/layouts/amsdefs.inc:244
 #: lib/layouts/stdstruct.inc:53 lib/layouts/svjour.inc:340
 #: src/output_plaintext.cpp:157
-#, fuzzy
 msgid "References"
 msgstr "引用"
 
@@ -4026,7 +3838,6 @@ msgid "[Acknowledgements]"
 msgstr ""
 
 #: lib/layouts/aastex.layout:357
-#, fuzzy
 msgid "and"
 msgstr "和"
 
@@ -4111,7 +3922,6 @@ msgstr ""
 #: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:385
 #: lib/layouts/amsmaths-plain.inc:93 lib/layouts/amsmaths-seq.inc:80
 #: lib/layouts/amsmaths.inc:202 lib/layouts/stdfloats.inc:34
-#, fuzzy
 msgid "Algorithm"
 msgstr "算法"
 
@@ -4178,7 +3988,6 @@ msgstr ""
 #: lib/layouts/amsart-plain.layout:133 lib/layouts/amsart-seq.layout:245
 #: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:213
 #: lib/layouts/amsmaths-seq.inc:176 lib/layouts/amsmaths.inc:462
-#, fuzzy
 msgid "Summary"
 msgstr "摘要"
 
@@ -4313,7 +4122,6 @@ msgid "Right header:"
 msgstr ""
 
 #: lib/layouts/apa.layout:83
-#, fuzzy
 msgid "Abstract:"
 msgstr "摘要："
 
@@ -4355,7 +4163,6 @@ msgid "FourAffiliations"
 msgstr ""
 
 #: lib/layouts/apa.layout:192 lib/layouts/egs.layout:336
-#, fuzzy
 msgid "Journal"
 msgstr "日记"
 
@@ -4433,7 +4240,6 @@ msgstr ""
 #: lib/layouts/db_stdsections.inc:12 lib/layouts/numarticle.inc:5
 #: lib/layouts/numreport.inc:7 lib/layouts/scrclass.inc:46
 #: lib/layouts/stdsections.inc:11
-#, fuzzy
 msgid "Part"
 msgstr "部分"
 
@@ -4470,7 +4276,6 @@ msgid "BeginFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:244
-#, fuzzy
 msgid "Frame"
 msgstr "框架"
 
@@ -4487,7 +4292,6 @@ msgid "AgainFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:326
-#, fuzzy
 msgid "Again frame with label"
 msgstr "帧速率错误。"
 
@@ -4504,7 +4308,6 @@ msgid "FrameSubtitle"
 msgstr ""
 
 #: lib/layouts/beamer.layout:402
-#, fuzzy
 msgid "Column"
 msgstr "列"
 
@@ -4513,7 +4316,6 @@ msgid "Start column (increase depth!), width:"
 msgstr ""
 
 #: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
-#, fuzzy
 msgid "Columns"
 msgstr "列"
 
@@ -4522,7 +4324,6 @@ msgid "ColumnsCenterAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:465
-#, fuzzy
 msgid "Columns (center aligned)"
 msgstr "水平排列的压缩器"
 
@@ -4531,12 +4332,10 @@ msgid "ColumnsTopAligned"
 msgstr ""
 
 #: lib/layouts/beamer.layout:495
-#, fuzzy
 msgid "Columns (top aligned)"
 msgstr "水平排列的压缩器"
 
 #: lib/layouts/beamer.layout:515
-#, fuzzy
 msgid "Pause"
 msgstr "暂停"
 
@@ -4553,7 +4352,6 @@ msgid "OverlayArea"
 msgstr ""
 
 #: lib/layouts/beamer.layout:577
-#, fuzzy
 msgid "Overlayarea"
 msgstr "OverlayArea"
 
@@ -4562,32 +4360,24 @@ msgid "Uncover"
 msgstr ""
 
 #: lib/layouts/beamer.layout:602
-#, fuzzy
 msgid "Uncovered on slides"
-msgstr "! 只能用於數字\n"
+msgstr ""
 
 #: lib/layouts/beamer.layout:617
-#, fuzzy
 msgid "Only"
 msgstr "仅"
 
 #: lib/layouts/beamer.layout:627
-#, fuzzy
 msgid "Only on slides"
-msgstr "! 只能用於數字\n"
+msgstr ""
 
 #: lib/layouts/beamer.layout:643
 msgid "Block"
 msgstr ""
 
 #: lib/layouts/beamer.layout:653
-#, fuzzy
 msgid "Block ( ERT[{title}] body ):"
 msgstr ""
-"<HTML>\n"
-"<HEAD>\n"
-"<TITLE>和 %1 交谈</TITLE>\n"
-"<BODY>\n"
 
 #: lib/layouts/beamer.layout:668
 msgid "ExampleBlock"
@@ -4615,22 +4405,18 @@ msgid "TitleGraphic"
 msgstr ""
 
 #: lib/layouts/beamer.layout:926
-#, fuzzy
 msgid "Definitions"
 msgstr "定义"
 
 #: lib/layouts/beamer.layout:929
-#, fuzzy
 msgid "Definitions."
 msgstr "定义"
 
 #: lib/layouts/beamer.layout:943
-#, fuzzy
 msgid "Examples"
 msgstr "例子"
 
 #: lib/layouts/beamer.layout:946
-#, fuzzy
 msgid "Examples."
 msgstr "例子"
 
@@ -4642,7 +4428,6 @@ msgid "Proof."
 msgstr ""
 
 #: lib/layouts/beamer.layout:970
-#, fuzzy
 msgid "Separator"
 msgstr "分隔符"
 
@@ -4660,13 +4445,11 @@ msgid "NoteItem"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1041 lib/layouts/powerdot.layout:199
-#, fuzzy
 msgid "Note:"
 msgstr "备注：   "
 
 #: lib/layouts/beamer.layout:1077 lib/layouts/powerdot.layout:365
 #: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
-#, fuzzy
 msgid "Table"
 msgstr "表"
 
@@ -4677,7 +4460,6 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:1088 lib/layouts/powerdot.layout:375
 #: lib/layouts/stdfloats.inc:22
-#, fuzzy
 msgid "Figure"
 msgstr "图"
 
@@ -4719,7 +4501,6 @@ msgid "AT RISE:"
 msgstr ""
 
 #: lib/layouts/broadway.layout:128 lib/layouts/hollywood.layout:150
-#, fuzzy
 msgid "Speaker"
 msgstr "扬声器"
 
@@ -4732,7 +4513,6 @@ msgid "("
 msgstr ""
 
 #: lib/layouts/broadway.layout:156 lib/layouts/hollywood.layout:180
-#, fuzzy
 msgid ")"
 msgstr "）"
 
@@ -4830,12 +4610,10 @@ msgid "HighLight"
 msgstr ""
 
 #: lib/layouts/chess.layout:157
-#, fuzzy
 msgid "Highlights:"
 msgstr "亮："
 
 #: lib/layouts/chess.layout:172
-#, fuzzy
 msgid "Arrow"
 msgstr "箭头"
 
@@ -4882,7 +4660,6 @@ msgstr ""
 #: lib/layouts/dinbrief.layout:59 lib/layouts/g-brief-en.layout:53
 #: lib/layouts/g-brief2.layout:891 lib/layouts/scrlettr.layout:137
 #: lib/layouts/scrlttr2.layout:167 lib/layouts/stdletter.inc:72
-#, fuzzy
 msgid "Signature"
 msgstr "签名"
 
@@ -4893,7 +4670,6 @@ msgstr ""
 #: lib/layouts/dinbrief.layout:72 lib/layouts/g-brief-en.layout:230
 #: lib/layouts/g-brief2.layout:865 lib/layouts/scrlettr.layout:71
 #: lib/layouts/scrlttr2.layout:113 lib/layouts/stdletter.inc:93
-#, fuzzy
 msgid "Closing"
 msgstr "正在关闭"
 
@@ -4967,7 +4743,6 @@ msgstr ""
 
 #: lib/layouts/egs.layout:112 lib/layouts/manpage.layout:29
 #: lib/layouts/powerdot.layout:320 lib/layouts/stdlayouts.inc:29
-#, fuzzy
 msgid "Quote"
 msgstr "引号(')"
 
@@ -4985,7 +4760,6 @@ msgid "LaTeX Title"
 msgstr ""
 
 #: lib/layouts/egs.layout:304
-#, fuzzy
 msgid "Author:"
 msgstr "作者："
 
@@ -5019,19 +4793,16 @@ msgstr ""
 
 #: lib/layouts/egs.layout:407 lib/layouts/agu_stdtitle.inc:198
 #: lib/layouts/aguplus.inc:107
-#, fuzzy
 msgid "Received"
 msgstr "已接收"
 
 #: lib/layouts/egs.layout:421 lib/layouts/agu_stdtitle.inc:201
 #: lib/layouts/aguplus.inc:111
-#, fuzzy
 msgid "Received:"
 msgstr "接收到："
 
 #: lib/layouts/egs.layout:430 lib/layouts/agu_stdtitle.inc:214
 #: lib/layouts/aguplus.inc:123
-#, fuzzy
 msgid "Accepted"
 msgstr "接受"
 
@@ -5063,7 +4834,6 @@ msgstr ""
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:147
 #: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:164
-#, fuzzy
 msgid "Address:"
 msgstr "地址："
 
@@ -5072,7 +4842,6 @@ msgid "Author Email"
 msgstr ""
 
 #: lib/layouts/elsart.layout:159 lib/layouts/llncs.layout:236
-#, fuzzy
 msgid "Email:"
 msgstr "电子邮件地址："
 
@@ -5082,7 +4851,6 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:198
 #: lib/layouts/amsdefs.inc:191
-#, fuzzy
 msgid "URL:"
 msgstr "URL："
 
@@ -5160,7 +4928,6 @@ msgid "FrontMatter"
 msgstr ""
 
 #: lib/layouts/entcs.layout:98
-#, fuzzy
 msgid "Keyword"
 msgstr "密码"
 
@@ -5169,7 +4936,6 @@ msgid "Key words:"
 msgstr ""
 
 #: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:77
-#, fuzzy
 msgid "Item"
 msgstr "项目"
 
@@ -5186,7 +4952,6 @@ msgid "Bulleted Item:"
 msgstr ""
 
 #: lib/layouts/europecv.layout:70
-#, fuzzy
 msgid "Begin"
 msgstr "开始"
 
@@ -5219,7 +4984,6 @@ msgid "Language Header:"
 msgstr ""
 
 #: lib/layouts/europecv.layout:120 lib/layouts/moderncv.layout:114
-#, fuzzy
 msgid "Language:"
 msgstr "语言："
 
@@ -5380,21 +5144,18 @@ msgid "Brieftext"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:25
-#, fuzzy
 msgid "Text:"
 msgstr "文字："
 
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:57 lib/layouts/scrlettr.layout:116
 #: lib/layouts/scrlttr2.layout:144 lib/layouts/agu_stdtitle.inc:184
-#, fuzzy
 msgid "Name"
 msgstr "名字"
 
 #: lib/layouts/g-brief-de.layout:44 lib/layouts/g-brief-en.layout:44
 #: lib/layouts/g-brief2.layout:67 lib/layouts/scrlettr.layout:128
 #: lib/layouts/agu_stdtitle.inc:188
-#, fuzzy
 msgid "Name:"
 msgstr "名称："
 
@@ -5483,7 +5244,6 @@ msgid "Telefax:"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:130 lib/layouts/g-brief-en.layout:130
-#, fuzzy
 msgid "Telex"
 msgstr "电传"
 
@@ -5509,7 +5269,6 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:151 lib/layouts/g-brief-en.layout:151
 #: lib/layouts/scrlttr2.layout:215
-#, fuzzy
 msgid "Bank"
 msgstr "银行"
 
@@ -5564,34 +5323,28 @@ msgstr ""
 
 #: lib/layouts/g-brief-en.layout:16 lib/layouts/g-brief2.layout:38
 #: lib/layouts/iopart.layout:115 lib/layouts/scrlettr.layout:40
-#, fuzzy
 msgid "Letter"
 msgstr "书信"
 
 #: lib/layouts/g-brief-en.layout:25 lib/layouts/g-brief2.layout:48
-#, fuzzy
 msgid "Letter:"
 msgstr "字母："
 
 #: lib/layouts/g-brief-en.layout:56 lib/layouts/g-brief2.layout:901
 #: lib/layouts/scrlettr.layout:140 lib/layouts/scrlttr2.layout:171
 #: lib/layouts/stdletter.inc:84
-#, fuzzy
 msgid "Signature:"
 msgstr "签名："
 
 #: lib/layouts/g-brief-en.layout:60
-#, fuzzy
 msgid "Street"
 msgstr "街道"
 
 #: lib/layouts/g-brief-en.layout:63
-#, fuzzy
 msgid "Street:"
 msgstr "街道："
 
 #: lib/layouts/g-brief-en.layout:67
-#, fuzzy
 msgid "Addition"
 msgstr "添加文件"
 
@@ -5608,12 +5361,10 @@ msgid "Town:"
 msgstr ""
 
 #: lib/layouts/g-brief-en.layout:81
-#, fuzzy
 msgid "State"
 msgstr "州"
 
 #: lib/layouts/g-brief-en.layout:84
-#, fuzzy
 msgid "State:"
 msgstr "省："
 
@@ -5650,12 +5401,10 @@ msgid "YourMail:"
 msgstr ""
 
 #: lib/layouts/g-brief-en.layout:116
-#, fuzzy
 msgid "Phone"
 msgstr "电话"
 
 #: lib/layouts/g-brief-en.layout:119
-#, fuzzy
 msgid "Phone:"
 msgstr "电话："
 
@@ -5687,12 +5436,10 @@ msgstr ""
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
 #: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:243
 #: lib/layouts/amsdefs.inc:115
-#, fuzzy
 msgid "Date:"
 msgstr "日期："
 
 #: lib/layouts/g-brief-en.layout:195 lib/layouts/g-brief2.layout:820
-#, fuzzy
 msgid "Reference"
 msgstr "引用"
 
@@ -5985,7 +5732,6 @@ msgid "Remarks #."
 msgstr ""
 
 #: lib/layouts/hollywood.layout:56
-#, fuzzy
 msgid "More"
 msgstr "更多"
 
@@ -6034,7 +5780,6 @@ msgid "FADE OUT"
 msgstr ""
 
 #: lib/layouts/hollywood.layout:294
-#, fuzzy
 msgid "General"
 msgstr "常规"
 
@@ -6046,7 +5791,6 @@ msgstr ""
 #: lib/layouts/iopart.layout:204 lib/layouts/kluwer.layout:290
 #: lib/layouts/paper.layout:177 lib/layouts/revtex4.layout:246
 #: lib/layouts/spie.layout:46 lib/layouts/agu_stdtitle.inc:123
-#, fuzzy
 msgid "Keywords:"
 msgstr "关键字："
 
@@ -6055,7 +5799,6 @@ msgid "Classification Codes"
 msgstr ""
 
 #: lib/layouts/ijmpc.layout:161 lib/layouts/ijmpd.layout:158
-#, fuzzy
 msgid "Step"
 msgstr "步进"
 
@@ -6073,7 +5816,6 @@ msgstr ""
 
 #: lib/layouts/ijmpc.layout:287 lib/layouts/ijmpd.layout:295
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
-#, fuzzy
 msgid "Question"
 msgstr "问题"
 
@@ -6142,7 +5884,6 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr ""
 
 #: lib/layouts/iopart.layout:73 lib/ui/stdtoolbars.inc:170
-#, fuzzy
 msgid "Review"
 msgstr "回顾"
 
@@ -6151,12 +5892,10 @@ msgid "Topical"
 msgstr ""
 
 #: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
-#, fuzzy
 msgid "Comment"
 msgstr "注释"
 
 #: lib/layouts/iopart.layout:97
-#, fuzzy
 msgid "Paper"
 msgstr "纸张"
 
@@ -6181,7 +5920,6 @@ msgid "MSC"
 msgstr ""
 
 #: lib/layouts/iopart.layout:222
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
 msgstr "1991 Mathematics Subject Classification:"
 
@@ -6190,17 +5928,14 @@ msgid "submitto"
 msgstr ""
 
 #: lib/layouts/iopart.layout:229
-#, fuzzy
 msgid "submit to paper:"
 msgstr "将 mailto 表单递交至"
 
 #: lib/layouts/iopart.layout:255
-#, fuzzy
 msgid "Bibliography (plain)"
 msgstr "Plain Text"
 
 #: lib/layouts/iopart.layout:278
-#, fuzzy
 msgid "Bibliography heading"
 msgstr "标题背景"
 
@@ -6253,7 +5988,6 @@ msgstr ""
 #: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
 #: lib/layouts/db_stdsections.inc:20 lib/layouts/numreport.inc:12
 #: lib/layouts/scrclass.inc:53 lib/layouts/stdsections.inc:31
-#, fuzzy
 msgid "Chapter"
 msgstr "章"
 
@@ -6310,7 +6044,6 @@ msgid "Problem #."
 msgstr ""
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
-#, fuzzy
 msgid "Property"
 msgstr "属性"
 
@@ -6327,7 +6060,6 @@ msgid "Remark #."
 msgstr ""
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
-#, fuzzy
 msgid "Solution"
 msgstr "解答"
 
@@ -6336,7 +6068,6 @@ msgid "Solution #."
 msgstr ""
 
 #: lib/layouts/manpage.layout:145 lib/layouts/db_lyxmacros.inc:11
-#, fuzzy
 msgid "Code"
 msgstr "代码"
 
@@ -6385,7 +6116,6 @@ msgid "Double Item:"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:105
-#, fuzzy
 msgid "Space"
 msgstr "空格"
 
@@ -6394,7 +6124,6 @@ msgid "Space:"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:117
-#, fuzzy
 msgid "Computer"
 msgstr "计算机"
 
@@ -6428,7 +6157,6 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:67
 #: lib/layouts/slides.layout:88
-#, fuzzy
 msgid "Slide"
 msgstr "幻灯片"
 
@@ -6518,7 +6246,6 @@ msgid "PS"
 msgstr ""
 
 #: lib/layouts/scrlettr.layout:94 lib/layouts/scrlttr2.layout:129
-#, fuzzy
 msgid "CC"
 msgstr "抄送"
 
@@ -6533,12 +6260,10 @@ msgstr ""
 
 #: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:183
 #: lib/layouts/stdletter.inc:135
-#, fuzzy
 msgid "Telephone"
 msgstr "电话铃声"
 
 #: lib/layouts/scrlettr.layout:154 lib/layouts/stdletter.inc:139
-#, fuzzy
 msgid "Telephone:"
 msgstr "电话："
 
@@ -6568,29 +6293,24 @@ msgstr ""
 
 #: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:263
 #: lib/layouts/stdletter.inc:127
-#, fuzzy
 msgid "Location"
 msgstr "位置"
 
 #: lib/layouts/scrlettr.layout:189 lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:131
-#, fuzzy
 msgid "Location:"
 msgstr "位置："
 
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:275
-#, fuzzy
 msgid "Title:"
 msgstr "头衔："
 
 #: lib/layouts/scrlettr.layout:200 lib/layouts/scrlttr2.layout:279
 #: lib/layouts/scrclass.inc:168
-#, fuzzy
 msgid "Subject"
 msgstr "主题"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:283
-#, fuzzy
 msgid "Subject:"
 msgstr "主题："
 
@@ -6619,7 +6339,6 @@ msgid "Our ref.:"
 msgstr ""
 
 #: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:319
-#, fuzzy
 msgid "Customer"
 msgstr "客户"
 
@@ -6664,7 +6383,6 @@ msgid "Sender Phone:"
 msgstr ""
 
 #: lib/layouts/scrlttr2.layout:191
-#, fuzzy
 msgid "Fax"
 msgstr "传真"
 
@@ -6685,12 +6403,10 @@ msgid "Sender URL:"
 msgstr ""
 
 #: lib/layouts/scrlttr2.layout:223
-#, fuzzy
 msgid "Logo"
 msgstr "徽标"
 
 #: lib/layouts/scrlttr2.layout:227
-#, fuzzy
 msgid "Logo:"
 msgstr "徽标："
 
@@ -6768,7 +6484,6 @@ msgid "AMS subject classifications."
 msgstr ""
 
 #: lib/layouts/simplecv.layout:55
-#, fuzzy
 msgid "Topic"
 msgstr "主题"
 
@@ -6781,7 +6496,6 @@ msgid "New Slide:"
 msgstr ""
 
 #: lib/layouts/slides.layout:126
-#, fuzzy
 msgid "Overlay"
 msgstr "覆盖"
 
@@ -6838,7 +6552,6 @@ msgid "Subsubparagraph"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:13
-#, fuzzy
 msgid "Header"
 msgstr "头文件"
 
@@ -6887,7 +6600,6 @@ msgid "AGU-issue:"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:84
-#, fuzzy
 msgid "Copyright:"
 msgstr "版权："
 
@@ -6992,7 +6704,6 @@ msgid "AGU-pages:"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:287
-#, fuzzy
 msgid "Words"
 msgstr "单词数"
 
@@ -7009,7 +6720,6 @@ msgid "Figures:"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:303
-#, fuzzy
 msgid "Tables"
 msgstr "表格"
 
@@ -7082,7 +6792,6 @@ msgid "Current address:"
 msgstr ""
 
 #: lib/layouts/amsdefs.inc:183
-#, fuzzy
 msgid "E-mail address:"
 msgstr "电子邮件地址："
 
@@ -7099,12 +6808,10 @@ msgid "Dedication:"
 msgstr ""
 
 #: lib/layouts/amsdefs.inc:216
-#, fuzzy
 msgid "Translator"
 msgstr "翻译者"
 
 #: lib/layouts/amsdefs.inc:219
-#, fuzzy
 msgid "Translator:"
 msgstr "翻译人员："
 
@@ -7273,12 +6980,10 @@ msgid "RevisionHistory"
 msgstr ""
 
 #: lib/layouts/db_stdtitle.inc:59
-#, fuzzy
 msgid "Revision History"
 msgstr "修订历史"
 
 #: lib/layouts/db_stdtitle.inc:64
-#, fuzzy
 msgid "Revision"
 msgstr "版本"
 
@@ -7291,7 +6996,6 @@ msgid "FirstName"
 msgstr ""
 
 #: lib/layouts/db_stdtitle.inc:101
-#, fuzzy
 msgid "Surname"
 msgstr "姓"
 
@@ -7388,12 +7092,10 @@ msgid "Minisec"
 msgstr ""
 
 #: lib/layouts/scrclass.inc:174
-#, fuzzy
 msgid "Publishers"
 msgstr "出版者"
 
 #: lib/layouts/scrclass.inc:180 lib/layouts/svjour.inc:121
-#, fuzzy
 msgid "Dedication"
 msgstr "献辞"
 
@@ -7426,12 +7128,10 @@ msgid "Dictum"
 msgstr ""
 
 #: lib/layouts/stdlayouts.inc:64
-#, fuzzy
 msgid "--Separator--"
 msgstr "分隔符："
 
 #: lib/layouts/stdlayouts.inc:73
-#, fuzzy
 msgid "--- Separate Environment ---"
 msgstr "环境变量(&V)"
 
@@ -7456,7 +7156,6 @@ msgid "Offprints:"
 msgstr ""
 
 #: lib/languages:2
-#, fuzzy
 msgid "Afrikaans"
 msgstr "南非荷兰语"
 
@@ -7465,17 +7164,14 @@ msgid "American"
 msgstr ""
 
 #: lib/languages:5
-#, fuzzy
 msgid "Arabic (ArabTeX)"
 msgstr "A-M|阿拉伯语(埃及)"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Arabic (Arabi)"
 msgstr "A-M|阿拉伯语(埃及)"
 
 #: lib/languages:7
-#, fuzzy
 msgid "Armenian"
 msgstr "亚美尼亚语"
 
@@ -7492,22 +7188,18 @@ msgid "Bahasa"
 msgstr ""
 
 #: lib/languages:11
-#, fuzzy
 msgid "Belarusian"
 msgstr "白俄罗斯语"
 
 #: lib/languages:12
-#, fuzzy
 msgid "Basque"
 msgstr "巴斯克语"
 
 #: lib/languages:13
-#, fuzzy
 msgid "Portuguese (Brazil)"
 msgstr "葡萄牙语（巴西）"
 
 #: lib/languages:14
-#, fuzzy
 msgid "Breton"
 msgstr "布里多尼语"
 
@@ -7516,22 +7208,18 @@ msgid "British"
 msgstr ""
 
 #: lib/languages:16
-#, fuzzy
 msgid "Bulgarian"
 msgstr "保加利亚语"
 
 #: lib/languages:17
-#, fuzzy
 msgid "Canadian"
 msgstr "加拿大语"
 
 #: lib/languages:18
-#, fuzzy
 msgid "French Canadian"
 msgstr "法裔加拿大"
 
 #: lib/languages:19
-#, fuzzy
 msgid "Catalan"
 msgstr "加泰罗尼亚语"
 
@@ -7544,52 +7232,42 @@ msgid "Chinese (traditional)"
 msgstr ""
 
 #: lib/languages:22
-#, fuzzy
 msgid "Croatian"
 msgstr "克罗地亚"
 
 #: lib/languages:23
-#, fuzzy
 msgid "Czech"
 msgstr "捷克语"
 
 #: lib/languages:24
-#, fuzzy
 msgid "Danish"
 msgstr "丹麦语"
 
 #: lib/languages:25
-#, fuzzy
 msgid "Dutch"
 msgstr "荷兰语"
 
 #: lib/languages:26
-#, fuzzy
 msgid "English"
 msgstr "英语"
 
 #: lib/languages:28
-#, fuzzy
 msgid "Esperanto"
 msgstr "世界语"
 
 #: lib/languages:29
-#, fuzzy
 msgid "Estonian"
 msgstr "爱沙尼亚语"
 
 #: lib/languages:31
-#, fuzzy
 msgid "Farsi"
 msgstr "波斯"
 
 #: lib/languages:32
-#, fuzzy
 msgid "Finnish"
 msgstr "芬兰语"
 
 #: lib/languages:34
-#, fuzzy
 msgid "French"
 msgstr "法语"
 
@@ -7598,62 +7276,50 @@ msgid "Galician"
 msgstr ""
 
 #: lib/languages:36
-#, fuzzy
 msgid "German"
 msgstr "德语"
 
 #: lib/languages:37
-#, fuzzy
 msgid "German (new spelling)"
 msgstr "德语 (新拼写)"
 
 #: lib/languages:38 lib/ui/stdtoolbars.inc:435
-#, fuzzy
 msgid "Greek"
 msgstr "希腊文"
 
 #: lib/languages:39
-#, fuzzy
 msgid "Hebrew"
 msgstr "希伯来文"
 
 #: lib/languages:41
-#, fuzzy
 msgid "Irish"
 msgstr "爱尔兰语"
 
 #: lib/languages:42
-#, fuzzy
 msgid "Italian"
 msgstr "意大利语"
 
 #: lib/languages:43
-#, fuzzy
 msgid "Japanese"
 msgstr "日文"
 
 #: lib/languages:44
-#, fuzzy
 msgid "Kazakh"
 msgstr "哈萨克语"
 
 #: lib/languages:46
-#, fuzzy
 msgid "Korean"
 msgstr "韩文"
 
 #: lib/languages:48
-#, fuzzy
 msgid "Lithuanian"
 msgstr "立陶宛语"
 
 #: lib/languages:49
-#, fuzzy
 msgid "Latvian"
 msgstr "拉脱维亚语"
 
 #: lib/languages:50
-#, fuzzy
 msgid "Icelandic"
 msgstr "冰岛语"
 
@@ -7670,22 +7336,18 @@ msgid "Nynorsk"
 msgstr ""
 
 #: lib/languages:54
-#, fuzzy
 msgid "Polish"
 msgstr "波兰语"
 
 #: lib/languages:55
-#, fuzzy
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
 #: lib/languages:56
-#, fuzzy
 msgid "Romanian"
 msgstr "罗马尼亚语"
 
 #: lib/languages:57
-#, fuzzy
 msgid "Russian"
 msgstr "俄语"
 
@@ -7694,22 +7356,18 @@ msgid "Scottish"
 msgstr ""
 
 #: lib/languages:59
-#, fuzzy
 msgid "Serbian"
 msgstr "塞尔维亚语"
 
 #: lib/languages:60
-#, fuzzy
 msgid "Serbo-Croatian"
 msgstr "克罗地亚语"
 
 #: lib/languages:61
-#, fuzzy
 msgid "Spanish"
 msgstr "西班牙语"
 
 #: lib/languages:62
-#, fuzzy
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
@@ -7718,22 +7376,18 @@ msgid "Slovene"
 msgstr ""
 
 #: lib/languages:64
-#, fuzzy
 msgid "Swedish"
 msgstr "瑞典语"
 
 #: lib/languages:65
-#, fuzzy
 msgid "Thai"
 msgstr "泰文"
 
 #: lib/languages:66
-#, fuzzy
 msgid "Turkish"
 msgstr "土耳其语"
 
 #: lib/languages:67
-#, fuzzy
 msgid "Ukrainian"
 msgstr "乌克兰语"
 
@@ -7742,7 +7396,6 @@ msgid "Upper Sorbian"
 msgstr ""
 
 #: lib/languages:69
-#, fuzzy
 msgid "Welsh"
 msgstr "威尔士语"
 
@@ -7832,7 +7485,7 @@ msgstr "退出(x)|x"
 
 #: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:62
 msgid "Register...|R"
-msgstr ""
+msgstr "登记(R)...|R"
 
 #: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:63
 msgid "Check In Changes...|I"
@@ -7840,7 +7493,7 @@ msgstr "记录变更(I)...|I"
 
 #: lib/ui/classic.ui:70 lib/ui/stdmenus.inc:64
 msgid "Check Out for Edit|O"
-msgstr ""
+msgstr "调出编辑(O)|O"
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:65
 msgid "Revert to Last Version|L"
@@ -7848,15 +7501,15 @@ msgstr "恢复到以前版本(L)|L"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:66
 msgid "Undo Last Check In|U"
-msgstr ""
+msgstr "回至上次记录(U)|U"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:67
 msgid "Show History|H"
-msgstr ""
+msgstr "显示历史(H)|H"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:76
 msgid "Custom...|C"
-msgstr ""
+msgstr "定制(C)...|C"
 
 #: lib/ui/classic.ui:90 lib/ui/stdmenus.inc:84
 msgid "Undo|U"
@@ -7880,7 +7533,7 @@ msgstr "粘贴(a)|a"
 
 #: lib/ui/classic.ui:96
 msgid "Paste External Selection|x"
-msgstr ""
+msgstr "粘贴外部选择(x)|x"
 
 #: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:95
 msgid "Find & Replace...|F"
@@ -7912,11 +7565,11 @@ msgstr "检查TeX(h)|h"
 
 #: lib/ui/classic.ui:108
 msgid "Change Tracking|g"
-msgstr ""
+msgstr "追踪编辑"
 
 #: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:470
 msgid "Preferences...|P"
-msgstr ""
+msgstr "首选项(P)...|P"
 
 #: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:469
 msgid "Reconfigure|R"
@@ -7924,143 +7577,143 @@ msgstr "重配置(R)|R"
 
 #: lib/ui/classic.ui:115
 msgid "Selection as Lines|L"
-msgstr ""
+msgstr "粘贴选择(L)|L"
 
 #: lib/ui/classic.ui:116
 msgid "Selection as Paragraphs|P"
-msgstr ""
+msgstr "粘贴选择为段落(P)|P"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:153
 msgid "Multicolumn|M"
-msgstr ""
+msgstr "多列(M)|M"
 
 #: lib/ui/classic.ui:122
 msgid "Line Top|T"
-msgstr ""
+msgstr "行上(T)|T"
 
 #: lib/ui/classic.ui:123
 msgid "Line Bottom|B"
-msgstr ""
+msgstr "行下(B)|B"
 
 #: lib/ui/classic.ui:124
 msgid "Line Left|L"
-msgstr ""
+msgstr "行左(L)|L"
 
 #: lib/ui/classic.ui:125
 msgid "Line Right|R"
-msgstr ""
+msgstr "行右(R)|R"
 
 #: lib/ui/classic.ui:127
 msgid "Alignment|i"
-msgstr ""
+msgstr "对齐(i)|i"
 
 #: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:171
 msgid "Add Row|A"
-msgstr ""
+msgstr "添加行(A)|A"
 
 #: lib/ui/classic.ui:130
 msgid "Delete Row|w"
-msgstr ""
+msgstr "删除行(w)|w"
 
 #: lib/ui/classic.ui:131 lib/ui/classic.ui:172
 msgid "Copy Row"
-msgstr ""
+msgstr "复制行"
 
 #: lib/ui/classic.ui:132 lib/ui/classic.ui:173
 msgid "Swap Rows"
-msgstr ""
+msgstr "交换行"
 
 #: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:176
 msgid "Add Column|u"
-msgstr ""
+msgstr "添加列(u)|u"
 
 #: lib/ui/classic.ui:135
 msgid "Delete Column|D"
-msgstr ""
+msgstr "删除列(D)|D"
 
 #: lib/ui/classic.ui:136 lib/ui/classic.ui:177
 msgid "Copy Column"
-msgstr ""
+msgstr "复制列"
 
 #: lib/ui/classic.ui:137 lib/ui/classic.ui:178
 msgid "Swap Columns"
-msgstr ""
+msgstr "交换列"
 
 #: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:163
 msgid "Left|L"
-msgstr ""
+msgstr "左(L)|L"
 
 #: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:164
 msgid "Center|C"
-msgstr ""
+msgstr "中(C)|C"
 
 #: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:165
 msgid "Right|R"
-msgstr ""
+msgstr "右(R)|R"
 
 #: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:167
 msgid "Top|T"
-msgstr ""
+msgstr "上(T)|T"
 
 #: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:168
 msgid "Middle|M"
-msgstr ""
+msgstr "中(N)|N"
 
 #: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:169
 msgid "Bottom|B"
-msgstr ""
+msgstr "下(B)|B"
 
 #: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:183
 msgid "Toggle Numbering|N"
-msgstr ""
+msgstr "加减公式数字(N)|N"
 
 #: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:184
 msgid "Toggle Numbering of Line|u"
-msgstr ""
+msgstr "加减单行公式数字(u)|u"
 
 #: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:185
 msgid "Change Limits Type|L"
-msgstr ""
+msgstr "改变边界类型(L)|L"
 
 #: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:187
 msgid "Change Formula Type|F"
-msgstr ""
+msgstr "改变公式类型(F)|F"
 
 #: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:191
 msgid "Use Computer Algebra System|S"
-msgstr ""
+msgstr "使用代数运算系统(S)|S"
 
 #: lib/ui/classic.ui:168
 msgid "Alignment|A"
-msgstr ""
+msgstr "对齐(A)|A"
 
 #: lib/ui/classic.ui:170
 msgid "Add Row|R"
-msgstr ""
+msgstr "添加行(R)|R"
 
 #: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:172
 msgid "Delete Row|D"
-msgstr ""
+msgstr "删除"
 
 #: lib/ui/classic.ui:175
 msgid "Add Column|C"
-msgstr ""
+msgstr "添加列(C)|C"
 
 #: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:177
 msgid "Delete Column|e"
-msgstr ""
+msgstr "删除列(e)|e"
 
 #: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:207
 msgid "Default|t"
-msgstr ""
+msgstr "缺省(t)|t"
 
 #: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:208
 msgid "Display|D"
-msgstr ""
+msgstr "单独显示(D)|D"
 
 #: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:209
 msgid "Inline|I"
-msgstr ""
+msgstr "行内(I)|I"
 
 #: lib/ui/classic.ui:188
 msgid "Octave"
@@ -8093,135 +7746,135 @@ msgstr ""
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:249
 #: lib/ui/stdmenus.inc:348
 msgid "Inline Formula|I"
-msgstr ""
+msgstr "行内公式(I)|I"
 
 #: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:250
 msgid "Displayed Formula|D"
-msgstr ""
+msgstr "单独显示公式(D)|D"
 
 #: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
-msgstr ""
+msgstr "Eqnarray环境(q)|q"
 
 #: lib/ui/classic.ui:202
 msgid "Align Environment|A"
-msgstr ""
+msgstr "Align环境(A)|A"
 
 #: lib/ui/classic.ui:203
 msgid "AlignAt Environment"
-msgstr ""
+msgstr "AlignAt环境"
 
 #: lib/ui/classic.ui:204
 msgid "Flalign Environment|F"
-msgstr ""
+msgstr "Flaign环境(F)|F"
 
 #: lib/ui/classic.ui:207
 msgid "Gather Environment"
-msgstr ""
+msgstr "Gather环境"
 
 #: lib/ui/classic.ui:208
 msgid "Multline Environment"
-msgstr ""
+msgstr "Multiline环境"
 
 #: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:290
 msgid "Math|h"
-msgstr ""
+msgstr "公式(h)|h"
 
 #: lib/ui/classic.ui:216
 msgid "Special Character|S"
-msgstr ""
+msgstr "特殊字符(S)|S"
 
 #: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:300
 msgid "Citation...|C"
-msgstr ""
+msgstr "文献引用(C)...|C"
 
 #: lib/ui/classic.ui:218
 msgid "Cross-reference...|r"
-msgstr ""
+msgstr "交叉引用(r)...|r"
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:302
 msgid "Label...|L"
-msgstr ""
+msgstr "标记(L)...|L"
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:310
 msgid "Footnote|F"
-msgstr ""
+msgstr "脚注(F)|F"
 
 #: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:311
 msgid "Marginal Note|M"
-msgstr ""
+msgstr "页边注(M)|M"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
-msgstr ""
+msgstr "短标题"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
-msgstr ""
+msgstr "页码索引(I)|I"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.cpp:230
 msgid "Nomenclature Entry"
-msgstr ""
+msgstr "术语索引"
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
 msgid "URL...|U"
-msgstr ""
+msgstr "网页链接(U)...|U"
 
 #: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:295
 msgid "Note|N"
-msgstr ""
+msgstr "注释(N)|N"
 
 #: lib/ui/classic.ui:227
 msgid "Lists & TOC|O"
-msgstr ""
+msgstr "分类列表(O)|O"
 
 #: lib/ui/classic.ui:229
 msgid "TeX Code|T"
-msgstr ""
+msgstr "TeX源码"
 
 #: lib/ui/classic.ui:230
 msgid "Minipage|p"
-msgstr ""
+msgstr "Minipage|p"
 
 #: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:308
 msgid "Graphics...|G"
-msgstr ""
+msgstr "图像(G)...|G"
 
 #: lib/ui/classic.ui:232
 msgid "Tabular Material...|b"
-msgstr ""
+msgstr "表格(b)...|b"
 
 #: lib/ui/classic.ui:233
 msgid "Floats|a"
-msgstr ""
+msgstr "浮动项(a)|a"
 
 #: lib/ui/classic.ui:235
 msgid "Include File...|d"
-msgstr ""
+msgstr "包含文件(d)...|d"
 
 #: lib/ui/classic.ui:236
 msgid "Insert File|e"
-msgstr ""
+msgstr "插入文件(e)|e"
 
 #: lib/ui/classic.ui:237
 msgid "External Material...|x"
-msgstr ""
+msgstr "外部材料(x)...|x"
 
 #: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:328
 msgid "Superscript|S"
-msgstr ""
+msgstr "上标(S)|S"
 
 #: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:329
 msgid "Subscript|u"
-msgstr ""
+msgstr "下标(u)|u"
 
 #: lib/ui/classic.ui:243
 msgid "Horizontal Fill|H"
-msgstr ""
+msgstr "横向距离(H)|H"
 
 #: lib/ui/classic.ui:244
 msgid "Hyphenation Point|P"
-msgstr ""
+msgstr "分隔点(P)|P"
 
 #: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:339
 msgid "Ligature Break|k"
@@ -8233,7 +7886,7 @@ msgstr ""
 
 #: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:332
 msgid "Inter-word Space|w"
-msgstr ""
+msgstr "词间距(w)|w"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:333
 msgid "Thin Space|T"
@@ -8241,84 +7894,83 @@ msgstr ""
 
 #: lib/ui/classic.ui:249
 msgid "Vertical Space..."
-msgstr ""
+msgstr "纵向距离..."
 
 #: lib/ui/classic.ui:250
 msgid "Line Break|L"
-msgstr ""
+msgstr "换行(L)|L"
 
 #: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:319
 msgid "Ellipsis|i"
-msgstr ""
+msgstr "省略号(i)|i"
 
 #: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:320
 msgid "End of Sentence|E"
-msgstr ""
+msgstr "句末(E)|E"
 
 #: lib/ui/classic.ui:253
 msgid "Single Quote|Q"
-msgstr ""
+msgstr "单引号(Q)|Q"
 
 #: lib/ui/classic.ui:254
 msgid "Ordinary Quote|O"
-msgstr ""
+msgstr "常用引号(O)|O"
 
 #: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:323
 msgid "Menu Separator|M"
-msgstr ""
+msgstr "菜单分隔(M)|M"
 
 #: lib/ui/classic.ui:256
-#, fuzzy
 msgid "Horizontal Line"
 msgstr "水平线"
 
 #: lib/ui/classic.ui:257 src/insets/InsetPagebreak.h:49
 msgid "Page Break"
-msgstr ""
+msgstr "换页"
 
 #: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:349
 msgid "Display Formula|D"
-msgstr ""
+msgstr "单独显示公式(D)|D"
 
 #: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:351
 msgid "Eqnarray Environment|E"
-msgstr ""
+msgstr "Eqnarray环境(E)|E"
 
 #: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:352
 msgid "AMS align Environment|a"
-msgstr ""
+msgstr "AMS align环境(a)|a"
 
 #: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:353
 msgid "AMS alignat Environment|t"
-msgstr ""
+msgstr "AMS alignat环境(t)|t"
 
 #: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:354
 msgid "AMS flalign Environment|f"
-msgstr ""
+msgstr "AMS flalign环境(f)|f"
 
 #: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:255 lib/ui/stdmenus.inc:355
 msgid "AMS gather Environment|g"
-msgstr ""
+msgstr "AMS gather环境(g)|g"
 
 #: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:256 lib/ui/stdmenus.inc:356
 msgid "AMS multline Environment|m"
-msgstr ""
+msgstr "ANS multline环境(m)|m"
 
 #: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:358
 msgid "Array Environment|y"
-msgstr ""
+msgstr "Array环境(y)|y"
 
 #: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:359
 msgid "Cases Environment|C"
-msgstr ""
+msgstr "Cases环境(C)|C"
 
 #: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:363
 msgid "Split Environment|S"
-msgstr ""
+msgstr "Split环境(S)|S"
 
 #: lib/ui/classic.ui:276
 msgid "Font Change|o"
-msgstr ""
+msgstr "改变字体(o)|o"
 
 #: lib/ui/classic.ui:280
 msgid "Math Normal Font"
@@ -8390,67 +8042,67 @@ msgstr ""
 
 #: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
-msgstr ""
+msgstr "目录(C)|C"
 
 #: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:380
 msgid "Index List|I"
-msgstr ""
+msgstr "页码索引(I)|I"
 
 #: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:381
 msgid "Nomenclature|N"
-msgstr ""
+msgstr "术语(N)|N"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:382
 msgid "BibTeX Bibliography...|B"
-msgstr ""
+msgstr "BibTeX引用(B)...|B"
 
 #: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:386
 msgid "LyX Document...|X"
-msgstr ""
+msgstr "LyX文档...|X"
 
 #: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:387
 msgid "Plain Text...|T"
-msgstr ""
+msgstr "纯文本(T)...|T"
 
 #: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:388
 msgid "Plain Text, Join Lines...|J"
-msgstr ""
+msgstr "纯文本为段落(J)...|J"
 
 #: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:422
 msgid "Track Changes|T"
-msgstr ""
+msgstr "追踪文本变更(T)|T"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:423
 msgid "Merge Changes...|M"
-msgstr ""
+msgstr "接受文本变更(M)...|M"
 
 #: lib/ui/classic.ui:326
 msgid "Accept All Changes|A"
-msgstr ""
+msgstr "接受所有变更(A)|A"
 
 #: lib/ui/classic.ui:327
 msgid "Reject All Changes|R"
-msgstr ""
+msgstr "拒绝所有变更(R)|R"
 
 #: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:428
 msgid "Show Changes in Output|S"
-msgstr ""
+msgstr "在输出中显示变更(S)|S"
 
 #: lib/ui/classic.ui:335
 msgid "Character...|C"
-msgstr ""
+msgstr "字(C)...|C"
 
 #: lib/ui/classic.ui:336
 msgid "Paragraph...|P"
-msgstr ""
+msgstr "段落(P)...|P"
 
 #: lib/ui/classic.ui:337
 msgid "Document...|D"
-msgstr ""
+msgstr "文本(D)...|D"
 
 #: lib/ui/classic.ui:338
 msgid "Tabular...|T"
-msgstr ""
+msgstr "表格(T)...|T"
 
 #: lib/ui/classic.ui:340
 msgid "Emphasize Style|E"
@@ -8462,35 +8114,35 @@ msgstr ""
 
 #: lib/ui/classic.ui:342
 msgid "Bold Style|B"
-msgstr ""
+msgstr "粗体(B)|B"
 
 #: lib/ui/classic.ui:345
 msgid "Decrease Environment Depth|v"
-msgstr ""
+msgstr "减少环境深度(v)|v"
 
 #: lib/ui/classic.ui:346
 msgid "Increase Environment Depth|i"
-msgstr ""
+msgstr "增加环境深度(i)|i"
 
 #: lib/ui/classic.ui:347
 msgid "Start Appendix Here|S"
-msgstr ""
+msgstr "开始附录(S)|S"
 
 #: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:412
 msgid "Build Program|B"
-msgstr ""
+msgstr "编译程序(B)|B"
 
 #: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:268
 msgid "Update|U"
-msgstr ""
+msgstr "更新(U)|U"
 
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:413
 msgid "LaTeX Log|L"
-msgstr ""
+msgstr "LaTeX记录(L)|L"
 
 #: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:414
 msgid "Outline|O"
-msgstr ""
+msgstr "目录(O)|O"
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8498,7 +8150,7 @@ msgstr "TeX信息|X"
 
 #: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:436
 msgid "Next Note|N"
-msgstr ""
+msgstr "下一笔记(N)|N"
 
 #: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:439
 msgid "Go to Label|L"
@@ -8562,11 +8214,11 @@ msgstr "用户手册(U)|U"
 
 #: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:480
 msgid "Extended Features|E"
-msgstr ""
+msgstr "详细功能(E)|E"
 
 #: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:481
 msgid "Embedded Objects|m"
-msgstr ""
+msgstr "嵌入项(m)|m"
 
 #: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:482
 msgid "Customization|C"
@@ -8578,11 +8230,11 @@ msgstr "常见问题(F)|F"
 
 #: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:484
 msgid "Table of Contents|a"
-msgstr ""
+msgstr "章节目录(a)|a"
 
 #: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:485
 msgid "LaTeX Configuration|L"
-msgstr ""
+msgstr "配置LaTeX(L)|L"
 
 #: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:487
 msgid "About LyX|X"
@@ -8593,7 +8245,6 @@ msgid "About LyX"
 msgstr "关于LyX"
 
 #: lib/ui/classic.ui:425
-#, fuzzy
 msgid "Preferences..."
 msgstr "首选项..."
 
@@ -8631,33 +8282,28 @@ msgstr "重作(R)|R"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:469
-#, fuzzy
 msgid "Cut"
 msgstr "剪切"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:853
 #: src/mathed/InsetMathNest.cpp:477
-#, fuzzy
 msgid "Copy"
 msgstr "复制"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:830
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
-#, fuzzy
 msgid "Paste"
 msgstr "粘贴"
 
 #: lib/ui/stdmenus.inc:90
 msgid "Paste Recent|e"
-msgstr ""
+msgstr "粘贴最近(e)|e"
 
 #: lib/ui/stdmenus.inc:91
-#, fuzzy
 msgid "Paste Special"
-msgstr "选择性粘贴"
+msgstr "特殊粘贴"
 
 #: lib/ui/stdmenus.inc:93
-#, fuzzy
 msgid "Select All"
 msgstr "全部选择"
 
@@ -8926,16 +8572,14 @@ msgid "File|e"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:298 src/insets/InsetBox.cpp:152
-#, fuzzy
 msgid "Box"
-msgstr "方块"
+msgstr "外框"
 
 #: lib/ui/stdmenus.inc:301
 msgid "Cross-Reference...|R"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:303
-#, fuzzy
 msgid "Caption"
 msgstr "标题"
 
@@ -9060,18 +8704,16 @@ msgid "Comment|C"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Framed|F"
-msgstr "&Framed"
+msgstr "外框(F)|F"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Greyed Out|G"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:399
-#, fuzzy
 msgid "Shaded|S"
-msgstr "阴影"
+msgstr "阴影(S)|S"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Change Tracking|C"
@@ -9142,17 +8784,14 @@ msgid "Print document"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:62
-#, fuzzy
 msgid "Check spelling"
 msgstr "拼写检查"
 
 #: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:712
-#, fuzzy
 msgid "Undo"
 msgstr "撤消"
 
 #: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:721
-#, fuzzy
 msgid "Redo"
 msgstr "重做"
 
@@ -9353,7 +8992,6 @@ msgid "Set multi-column"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:139
-#, fuzzy
 msgid "Math"
 msgstr "数学"
 
@@ -9362,12 +9000,10 @@ msgid "Set display mode"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:142
-#, fuzzy
 msgid "Subscript"
 msgstr "下标"
 
 #: lib/ui/stdtoolbars.inc:143
-#, fuzzy
 msgid "Superscript"
 msgstr "上标"
 
@@ -9496,7 +9132,6 @@ msgid "Math Spacings"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:266
-#, fuzzy
 msgid "Styles"
 msgstr "样式"
 
@@ -9506,12 +9141,10 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:282
 #: src/frontends/qt4/QDocument.cpp:581
-#, fuzzy
 msgid "Fonts"
 msgstr "字体"
 
 #: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:216
-#, fuzzy
 msgid "Functions"
 msgstr "函数"
 
@@ -9612,17 +9245,14 @@ msgid "log"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:241
-#, fuzzy
 msgid "max"
 msgstr "最大"
 
 #: lib/ui/stdtoolbars.inc:242
-#, fuzzy
 msgid "min"
 msgstr "分"
 
 #: lib/ui/stdtoolbars.inc:243
-#, fuzzy
 msgid "sec"
 msgstr "秒"
 
@@ -9771,7 +9401,6 @@ msgid "Normal text mode\t\\textrm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:295
-#, fuzzy
 msgid "Dots"
 msgstr "点"
 
@@ -9808,7 +9437,6 @@ msgid "bar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "grave"
 msgstr "抑音符"
 
@@ -9869,7 +9497,6 @@ msgid "overset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "underline"
 msgstr "下划线"
 
@@ -9894,7 +9521,6 @@ msgid "underset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:329
-#, fuzzy
 msgid "Arrows"
 msgstr "箭头"
 
@@ -10023,12 +9649,6 @@ msgid "rightleftharpoons"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:363
-#, fuzzy
-msgid "Operators"
-msgstr "操作符"
-
-#: lib/ui/stdtoolbars.inc:364
-#, fuzzy
 msgid "pm"
 msgstr "下午"
 
@@ -10109,9 +9729,8 @@ msgid "odot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:384
-#, fuzzy
 msgid "star"
-msgstr "恒星"
+msgstr "星"
 
 #: lib/ui/stdtoolbars.inc:385
 msgid "vee"
@@ -10154,7 +9773,6 @@ msgid "ddagger"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:397
-#, fuzzy
 msgid "Relations"
 msgstr "关系"
 
@@ -10415,7 +10033,6 @@ msgid "omega"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:465
-#, fuzzy
 msgid "Gamma"
 msgstr "伽玛值"
 
@@ -10460,7 +10077,6 @@ msgid "Omega"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:478
-#, fuzzy
 msgid "Miscellaneous"
 msgstr "杂项"
 
@@ -10489,7 +10105,6 @@ msgid "emptyset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:485
-#, fuzzy
 msgid "exists"
 msgstr "存在"
 
@@ -10526,12 +10141,10 @@ msgid "hbar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
-#, fuzzy
 msgid "angle"
-msgstr "角"
+msgstr "角度"
 
 #: lib/ui/stdtoolbars.inc:495
-#, fuzzy
 msgid "top"
 msgstr "顶"
 
@@ -10564,7 +10177,6 @@ msgid "surd"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:503
-#, fuzzy
 msgid "triangle"
 msgstr "三角形"
 
@@ -10877,7 +10489,6 @@ msgid "Finv"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:587
-#, fuzzy
 msgid "Game"
 msgstr "游戏"
 
@@ -11570,9 +11181,8 @@ msgid "Cap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:769
-#, fuzzy
 msgid "Cup"
-msgstr "球洞"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:770
 msgid "barwedge"
@@ -11655,38 +11265,32 @@ msgid "RasterImage"
 msgstr ""
 
 #: lib/external_templates:40 lib/external_templates:46
-#, fuzzy
 msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
 msgstr "$BASENAME 已经在运行"
 
 #: lib/external_templates:45
-#, fuzzy
 msgid "A bitmap file.\n"
-msgstr "位图文件"
+msgstr "位图文件.\n"
 
 #: lib/external_templates:102
-#, fuzzy
 msgid "XFig"
-msgstr "XFig 文件(&X)..."
+msgstr "XFig"
 
 #: lib/external_templates:103 lib/external_templates:106
-#, fuzzy
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-msgstr "$BASENAME 已经在运行"
+msgstr ""
 
 #: lib/external_templates:105
-#, fuzzy
 msgid "An Xfig figure.\n"
-msgstr "配置(&F)..."
+msgstr ""
 
 #: lib/external_templates:154
 msgid "ChessDiagram"
 msgstr ""
 
 #: lib/external_templates:155 lib/external_templates:174
-#, fuzzy
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
-msgstr "$BASENAME 已经在运行"
+msgstr ""
 
 #: lib/external_templates:157
 msgid ""
@@ -11714,9 +11318,8 @@ msgid "LilyPond"
 msgstr ""
 
 #: lib/external_templates:200 lib/external_templates:206
-#, fuzzy
 msgid "Lilypond typeset music"
-msgstr "音乐/MP3 播放器"
+msgstr ""
 
 #: lib/external_templates:202
 msgid ""
@@ -11938,7 +11541,6 @@ msgid "Save changed document?"
 msgstr ""
 
 #: src/BufferList.cpp:113 src/BufferList.cpp:221
-#, fuzzy
 msgid "&Discard"
 msgstr "放弃(&D)"
 
@@ -12059,7 +11661,6 @@ msgstr ""
 
 #: src/BufferView.cpp:1593 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2062
 #: src/LyXFunc.cpp:2076 src/LyXFunc.cpp:2092
-#, fuzzy
 msgid "Canceled."
 msgstr "已取消。"
 
@@ -12088,52 +11689,42 @@ msgid "ChkTeX warning id # "
 msgstr ""
 
 #: src/Color.cpp:268
-#, fuzzy
 msgid "none"
 msgstr "无"
 
 #: src/Color.cpp:269
-#, fuzzy
 msgid "black"
 msgstr "黑"
 
 #: src/Color.cpp:270
-#, fuzzy
 msgid "white"
 msgstr "白"
 
 #: src/Color.cpp:271
-#, fuzzy
 msgid "red"
 msgstr "红"
 
 #: src/Color.cpp:272
-#, fuzzy
 msgid "green"
 msgstr "绿"
 
 #: src/Color.cpp:273
-#, fuzzy
 msgid "blue"
 msgstr "蓝"
 
 #: src/Color.cpp:274
-#, fuzzy
 msgid "cyan"
 msgstr "青"
 
 #: src/Color.cpp:275
-#, fuzzy
 msgid "magenta"
 msgstr "洋红"
 
 #: src/Color.cpp:276
-#, fuzzy
 msgid "yellow"
 msgstr "黄"
 
 #: src/Color.cpp:277
-#, fuzzy
 msgid "cursor"
 msgstr "光标"
 
@@ -12142,7 +11733,6 @@ msgid "background"
 msgstr ""
 
 #: src/Color.cpp:279
-#, fuzzy
 msgid "text"
 msgstr "文字"
 
@@ -12159,7 +11749,6 @@ msgid "previewed snippet"
 msgstr ""
 
 #: src/Color.cpp:283 src/insets/InsetNote.cpp:342
-#, fuzzy
 msgid "note"
 msgstr "记事"
 
@@ -12168,7 +11757,6 @@ msgid "note background"
 msgstr ""
 
 #: src/Color.cpp:285
-#, fuzzy
 msgid "comment"
 msgstr "注释"
 
@@ -12430,7 +12018,6 @@ msgid "Undefined character style"
 msgstr ""
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1083
-#, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
 "\n"
@@ -12440,18 +12027,15 @@ msgstr ""
 "您要覆盖它吗？"
 
 #: src/Exporter.cpp:85 src/LyXFunc.cpp:1086
-#, fuzzy
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
 
 #: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089
 #: src/callback.cpp:169
-#, fuzzy
 msgid "&Overwrite"
 msgstr "覆盖(&O)"
 
 #: src/Exporter.cpp:87
-#, fuzzy
 msgid "Overwrite &all"
 msgstr "覆盖所有目标？"
 
@@ -12502,7 +12086,6 @@ msgstr ""
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:873
 #: src/frontends/qt4/QListings.cpp:162
-#, fuzzy
 msgid "Roman"
 msgstr "正体"
 
@@ -12515,34 +12098,28 @@ msgstr ""
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/frontend_helpers.cpp:881
 #: src/frontends/qt4/QListings.cpp:162
-#, fuzzy
 msgid "Typewriter"
-msgstr "打字机"
+msgstr ""
 
 #: src/Font.cpp:56
-#, fuzzy
 msgid "Symbol"
 msgstr "符号"
 
 #: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:70
 #: src/Font.cpp:73
-#, fuzzy
 msgid "Inherit"
 msgstr "继承"
 
 #: src/Font.cpp:58 src/Font.cpp:61 src/Font.cpp:65 src/Font.cpp:70
 #: src/Font.cpp:73
-#, fuzzy
 msgid "Ignore"
 msgstr "忽略"
 
 #: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:903
-#, fuzzy
 msgid "Medium"
 msgstr "中度"
 
 #: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:907
-#, fuzzy
 msgid "Bold"
 msgstr "粗体"
 
@@ -12551,7 +12128,6 @@ msgid "Upright"
 msgstr ""
 
 #: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:933
-#, fuzzy
 msgid "Italic"
 msgstr "斜体"
 
@@ -12564,17 +12140,14 @@ msgid "Smallcaps"
 msgstr ""
 
 #: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1003
-#, fuzzy
 msgid "Increase"
 msgstr "增大字体"
 
 #: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1007
-#, fuzzy
 msgid "Decrease"
 msgstr "减小字体"
 
 #: src/Font.cpp:73
-#, fuzzy
 msgid "Toggle"
 msgstr "切换"
 
@@ -12750,7 +12323,6 @@ msgid "LyX: reconfiguring user directory"
 msgstr ""
 
 #: src/LyX.cpp:144
-#, fuzzy
 msgid "Done!"
 msgstr "完成！"
 
@@ -12977,7 +12549,6 @@ msgid "Saving document %1$s..."
 msgstr ""
 
 #: src/LyXFunc.cpp:897
-#, fuzzy
 msgid " done."
 msgstr "完成。"
 
@@ -12995,7 +12566,6 @@ msgid "Revert to saved document?"
 msgstr ""
 
 #: src/LyXFunc.cpp:916 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
-#, fuzzy
 msgid "&Revert"
 msgstr "还原(&R)"
 
@@ -13035,19 +12605,16 @@ msgid "Converting document to new document class..."
 msgstr ""
 
 #: src/LyXFunc.cpp:1793
-#, fuzzy
 msgid "off"
 msgstr "关闭"
 
 #: src/LyXFunc.cpp:1795
-#, fuzzy
 msgid "auto"
 msgstr "自动"
 
 #: src/LyXFunc.cpp:1797
-#, fuzzy, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
-msgstr "%s：无法将组 ID 设置为 %d"
+msgstr ""
 
 #: src/LyXFunc.cpp:1926
 msgid "Select template file"
@@ -13082,7 +12649,6 @@ msgid "Select %1$s file to import"
 msgstr ""
 
 #: src/LyXFunc.cpp:2086 src/callback.cpp:166
-#, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
@@ -13092,9 +12658,8 @@ msgstr ""
 "您要覆盖它吗？"
 
 #: src/LyXFunc.cpp:2088 src/callback.cpp:168
-#, fuzzy
 msgid "Overwrite document?"
-msgstr "文档信息(&I)"
+msgstr ""
 
 #: src/LyXFunc.cpp:2151
 msgid "Welcome to LyX!"
@@ -13801,17 +13366,15 @@ msgid "Paragraph layout set"
 msgstr ""
 
 #: src/Thesaurus.cpp:62
-#, fuzzy
 msgid "Thesaurus failure"
-msgstr "TIMECHECK 失敗：%s\n"
+msgstr ""
 
 #: src/Thesaurus.cpp:63
-#, fuzzy, c-format
 msgid ""
 "Aiksaurus returned the following error:\n"
 "\n"
 "%1$s."
-msgstr "LDAP 服务器返回了下列错误：%1"
+msgstr ""
 
 #: src/VSpace.cpp:490
 msgid "Default skip"
@@ -13834,7 +13397,6 @@ msgid "Vertical fill"
 msgstr ""
 
 #: src/VSpace.cpp:509
-#, fuzzy
 msgid "protected"
 msgstr "被保护"
 
@@ -13909,7 +13471,6 @@ msgid "Retrieve from version control?"
 msgstr ""
 
 #: src/buffer_funcs.cpp:169
-#, fuzzy
 msgid "&Retrieve"
 msgstr "获取(&R)"
 
@@ -13944,7 +13505,6 @@ msgid "Create new document?"
 msgstr ""
 
 #: src/buffer_funcs.cpp:218
-#, fuzzy
 msgid "&Create"
 msgstr "创建(&C)"
 
@@ -13995,7 +13555,6 @@ msgid "Rename and save?"
 msgstr ""
 
 #: src/callback.cpp:116
-#, fuzzy
 msgid "&Rename"
 msgstr "重命名(&R)"
 
@@ -14047,7 +13606,6 @@ msgstr ""
 "due to the error: %2$s"
 
 #: src/callback.cpp:379 src/output.cpp:41
-#, fuzzy
 msgid "Could not open file"
 msgstr "无法打开文件"
 
@@ -14527,7 +14085,6 @@ msgid "Spelling check completed"
 msgstr "拼写检查结束"
 
 #: src/frontends/controllers/ControlToc.cpp:137 src/insets/InsetTOC.cpp:46
-#, fuzzy
 msgid "Table of Contents"
 msgstr "目录"
 
@@ -14791,12 +14348,10 @@ msgstr ""
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:144
 #: src/frontends/qt4/QDelimiterDialog.cpp:145
-#, fuzzy
 msgid "(None)"
 msgstr "(无)"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:147
-#, fuzzy
 msgid "Variable"
 msgstr "变量"
 
@@ -15133,7 +14688,6 @@ msgid "Date format"
 msgstr "日期格式"
 
 #: src/frontends/qt4/QPrefs.cpp:232
-#, fuzzy
 msgid "Keyboard"
 msgstr "键盘"
 
@@ -15142,12 +14696,10 @@ msgid "Screen fonts"
 msgstr "显示字体"
 
 #: src/frontends/qt4/QPrefs.cpp:514
-#, fuzzy
 msgid "Colors"
 msgstr "颜色"
 
 #: src/frontends/qt4/QPrefs.cpp:609 src/frontends/qt4/QPrefs.cpp:708
-#, fuzzy
 msgid "Paths"
 msgstr "路径"
 
@@ -15172,7 +14724,6 @@ msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
 #: src/frontends/qt4/QPrefs.cpp:812 src/frontends/qt4/QSpellchecker.cpp:135
-#, fuzzy
 msgid "Spellchecker"
 msgstr "拼写检查器"
 
@@ -15218,7 +14769,6 @@ msgstr ""
 "Cannot remove a Format used by a Converter. Remove the converter first."
 
 #: src/frontends/qt4/QPrefs.cpp:1667
-#, fuzzy
 msgid "Printer"
 msgstr "打印机"
 
@@ -15227,12 +14777,10 @@ msgid "User interface"
 msgstr "用户界面"
 
 #: src/frontends/qt4/QPrefs.cpp:1883
-#, fuzzy
 msgid "Identity"
 msgstr "身份"
 
 #: src/frontends/qt4/QPrefs.cpp:2025
-#, fuzzy
 msgid "Preferences"
 msgstr "首选项"
 
@@ -15257,7 +14805,6 @@ msgid "Jump to label"
 msgstr "跳至"
 
 #: src/frontends/qt4/QSearch.cpp:138
-#, fuzzy
 msgid "Find and Replace"
 msgstr "查找并替换"
 
@@ -15290,7 +14837,6 @@ msgid "Text Wrap Settings"
 msgstr "文本换行设置"
 
 #: src/frontends/qt4/Validator.cpp:153
-#, fuzzy
 msgid "space"
 msgstr "空格"
 
@@ -15469,7 +15015,6 @@ msgid "List of %1$s"
 msgstr ""
 
 #: src/insets/InsetFoot.cpp:35 src/insets/InsetFoot.cpp:42
-#, fuzzy
 msgid "foot"
 msgstr "英尺"
 
@@ -15547,7 +15092,6 @@ msgid "Idx"
 msgstr ""
 
 #: src/insets/InsetIndex.cpp:75
-#, fuzzy
 msgid "Index"
 msgstr "索引"
 
@@ -15651,7 +15195,6 @@ msgid "auto, last or a number"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:421
-#, fuzzy
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
 "(when using the child document dialog) or menu Insert->Caption (when "
@@ -15662,7 +15205,6 @@ msgstr ""
 "listing inset)"
 
 #: src/insets/InsetListingsParams.cpp:427
-#, fuzzy
 msgid ""
 "This parameter should not be entered here. Please use the label edit box "
 "(when using the child document dialog) or menu Insert->Label (when defining "
@@ -15727,7 +15269,6 @@ msgid "Framed"
 msgstr ""
 
 #: src/insets/InsetNote.cpp:68
-#, fuzzy
 msgid "Shaded"
 msgstr "阴影"
 
@@ -15744,7 +15285,6 @@ msgid "Opened Optional Argument Inset"
 msgstr ""
 
 #: src/insets/InsetPagebreak.h:65
-#, fuzzy
 msgid "Clear Page"
 msgstr "清除页面"
 
@@ -15757,7 +15297,6 @@ msgid "Ref: "
 msgstr ""
 
 #: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
-#, fuzzy
 msgid "Equation"
 msgstr "方程"
 
@@ -15766,7 +15305,6 @@ msgid "EqRef: "
 msgstr ""
 
 #: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
-#, fuzzy
 msgid "Page Number"
 msgstr "页号"
 
@@ -15847,7 +15385,6 @@ msgid "Not shown."
 msgstr ""
 
 #: src/insets/RenderGraphic.cpp:97
-#, fuzzy
 msgid "Loading..."
 msgstr "正在载入..."
 
@@ -15884,7 +15421,6 @@ msgid "Error generating the pixmap"
 msgstr ""
 
 #: src/insets/RenderGraphic.cpp:124
-#, fuzzy
 msgid "No image"
 msgstr "没有任何图像"
 
@@ -15905,7 +15441,6 @@ msgid "sp"
 msgstr ""
 
 #: src/lengthcommon.cpp:37
-#, fuzzy
 msgid "pt"
 msgstr "点"
 
@@ -15926,7 +15461,6 @@ msgid "pc"
 msgstr ""
 
 #: src/lengthcommon.cpp:38
-#, fuzzy
 msgid "cm"
 msgstr "厘米"
 
@@ -16019,7 +15553,6 @@ msgid "No number"
 msgstr ""
 
 #: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
-#, fuzzy
 msgid "Number"
 msgstr "数字"
 
@@ -16101,7 +15634,6 @@ msgstr ""
 "LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
 
 #: src/support/Package.cpp.in:654 src/support/Package.cpp.in:681
-#, fuzzy
 msgid "File not found"
 msgstr "文件没有找到"
 
@@ -16133,7 +15665,6 @@ msgstr ""
 "%2$s is not a directory."
 
 #: src/support/Package.cpp.in:709
-#, fuzzy
 msgid "Directory not found"
 msgstr "找不到目录"
 
@@ -16165,7 +15696,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr ""
 
-#, fuzzy
 #~ msgid "Acknowledgement \\arabic{theorem}"
 #~ msgstr "Acknowledgement \\arabic{theorem}"
 
