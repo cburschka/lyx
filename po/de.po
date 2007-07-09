@@ -85,7 +85,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-07-09 23:07+0200\n"
-"PO-Revision-Date: 2007-01-21 18:21+0200\n"
+"PO-Revision-Date: 2007-07-09 23:15+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1826,9 +1826,8 @@ msgstr ""
 "Die Standardausrichtung für diesen Absatz verwenden, was immer sie ist."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:241 src/frontends/qt4/QParagraph.cpp:86
-#, fuzzy
 msgid "Use Paragraph's Default Alignment"
-msgstr "Absatzformat festgelegt"
+msgstr "Standardausrichtung des Absatzes verwenden"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:248
 msgid "&Right"
@@ -12757,9 +12756,9 @@ msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
 #: src/LyXFunc.cpp:1789
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown toolbar \"%1$s\""
-msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
+msgstr "Unbekannte Werkzeugleiste \"%1$s\""
 
 #: src/LyXFunc.cpp:1797
 msgid "off"
