@@ -59,7 +59,7 @@ lyx::external::DisplayType const defaultDisplayType = lyx::external::NoDisplay;
 
 unsigned int const defaultLyxScale = 100;
 
-string defaultTemplateName = "RasterImage";
+string defaultTemplateName;
 
 } // namespace anon
 
@@ -132,9 +132,15 @@ Translator<DisplayType, string> const & displayTranslator()
 InsetExternalParams::InsetExternalParams()
 	: display(defaultDisplayType),
 	  lyxscale(defaultLyxScale),
-	  draft(false),
-	  templatename_(defaultTemplateName)
-{}
+	  draft(false)
+{
+	if (defaultTemplateName.empty()) {
+		external::TemplateManager const & etm =
+			external::TemplateManager::get();
+		templatename_ = etm.getTemplates().begin()->first;
+	} else
+		templatename_ = defaultTemplateName;
+}
 
 
 namespace {
