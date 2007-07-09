@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-07-07 23:36+0200\n"
+"POT-Creation-Date: 2007-07-09 23:07+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -89,7 +89,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:743 src/LyXFunc.cpp:916
-#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089 src/LyXVC.cpp:175
+#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2093 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
 #: src/callback.cpp:116 src/callback.cpp:169
 msgid "&Cancel"
@@ -316,20 +316,20 @@ msgstr "Wyrównanie w poziomie zawarto¶ci pude³ka"
 
 #: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
-#: src/frontends/qt4/QTabular.cpp:741
+#: src/frontends/qt4/QParagraph.cpp:88 src/frontends/qt4/QTabular.cpp:741
 msgid "Left"
 msgstr "Do lewej"
 
 #: src/frontends/qt4/ui/BoxUi.ui:169 src/frontends/qt4/ui/TabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.cpp:236
 #: src/frontends/controllers/ControlGraphics.cpp:172
-#: src/frontends/qt4/QTabular.cpp:742
+#: src/frontends/qt4/QParagraph.cpp:90 src/frontends/qt4/QTabular.cpp:742
 msgid "Center"
 msgstr "Do ¶rodka"
 
 #: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
-#: src/frontends/qt4/QTabular.cpp:743
+#: src/frontends/qt4/QParagraph.cpp:89 src/frontends/qt4/QTabular.cpp:743
 msgid "Right"
 msgstr "Do prawej"
 
@@ -1796,7 +1796,7 @@ msgstr "&Wcinanie akapitu"
 msgid "L&ine spacing:"
 msgstr "&Interlinia:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1848
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1862
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Pojedyncza"
@@ -1805,7 +1805,7 @@ msgstr "Pojedyncza"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:191 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:191 src/Text.cpp:1868
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Podwójna"
@@ -1821,7 +1821,7 @@ msgstr "W³asna"
 msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#: src/frontends/qt4/ui/ParagraphUi.ui:241 src/frontends/qt4/QParagraph.cpp:86
 #, fuzzy
 msgid "Use Paragraph's Default Alignment"
 msgstr "Styl akapitu ustawiony"
@@ -2814,7 +2814,8 @@ msgstr "&Justowanie:"
 msgid "Horizontal alignment in column"
 msgstr "Poziome wyrównanie w kolumnie"
 
-#: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QTabular.cpp:745
+#: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QParagraph.cpp:87
+#: src/frontends/qt4/QTabular.cpp:745
 msgid "Justified"
 msgstr "Wyrównane"
 
@@ -2973,7 +2974,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1791
+#: src/LyXFunc.cpp:1795
 msgid "on"
 msgstr "W³±cz"
 
@@ -12052,41 +12053,41 @@ msgid ""
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:922
+#: src/Buffer.cpp:935
 #, fuzzy
 msgid "Encoding error"
 msgstr "&Kodowanie:"
 
-#: src/Buffer.cpp:923
+#: src/Buffer.cpp:936
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1201
+#: src/Buffer.cpp:1214
 msgid "Running chktex..."
 msgstr "chktex zosta³ uruchomiony"
 
-#: src/Buffer.cpp:1214
+#: src/Buffer.cpp:1227
 msgid "chktex failure"
 msgstr "b³±d chktex"
 
-#: src/Buffer.cpp:1215
+#: src/Buffer.cpp:1228
 msgid "Could not run chktex successfully."
 msgstr "Nie mo¿na pomy¶lnie uruchomiæ chktex."
 
-#: src/Buffer.cpp:1750
+#: src/Buffer.cpp:1763
 #, fuzzy
 msgid "Preview source code"
 msgstr "Podgl±d gotów"
 
-#: src/Buffer.cpp:1761
+#: src/Buffer.cpp:1774
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:1765
+#: src/Buffer.cpp:1778
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
@@ -12201,8 +12202,8 @@ msgstr "Policz s³owa"
 msgid "Select LyX document to insert"
 msgstr "Wybierz dokument LyX-a do wstawienia"
 
-#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1928 src/LyXFunc.cpp:1967
-#: src/LyXFunc.cpp:2040 src/callback.cpp:135
+#: src/BufferView.cpp:1574 src/LyXFunc.cpp:1932 src/LyXFunc.cpp:1971
+#: src/LyXFunc.cpp:2044 src/callback.cpp:135
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12211,17 +12212,17 @@ msgstr "Wybierz dokument LyX-a do wstawienia"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o"
 
-#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1968 src/LyXFunc.cpp:2041
+#: src/BufferView.cpp:1575 src/LyXFunc.cpp:1972 src/LyXFunc.cpp:2045
 msgid "Examples|#E#e"
 msgstr "Przyk³ady|#P"
 
-#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1933 src/LyXFunc.cpp:1972
+#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1937 src/LyXFunc.cpp:1976
 #: src/callback.cpp:141
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-a (*.lyx)"
 
-#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2062
-#: src/LyXFunc.cpp:2076 src/LyXFunc.cpp:2092
+#: src/BufferView.cpp:1593 src/LyXFunc.cpp:1986 src/LyXFunc.cpp:2066
+#: src/LyXFunc.cpp:2080 src/LyXFunc.cpp:2096
 msgid "Canceled."
 msgstr "Zaniechane."
 
@@ -12552,7 +12553,7 @@ msgstr "Wyj¶cie jest puste"
 msgid "An empty output file was generated."
 msgstr "Wygenerowano pusty plik wyj¶ciowy."
 
-#: src/CutAndPaste.cpp:436
+#: src/CutAndPaste.cpp:438
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12565,11 +12566,11 @@ msgstr ""
 "z powodu zmiany klasy dokumentu z\n"
 "%3$s na %4$s"
 
-#: src/CutAndPaste.cpp:441
+#: src/CutAndPaste.cpp:443
 msgid "Changed Layout"
 msgstr "Zmieniono uk³ad strony"
 
-#: src/CutAndPaste.cpp:460
+#: src/CutAndPaste.cpp:462
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -12578,7 +12579,7 @@ msgstr ""
 "Styl znaków %1$s jest niezdefiniowany z powodu zmiany klasy dokumentu z\n"
 "%2$s na %3$s"
 
-#: src/CutAndPaste.cpp:467
+#: src/CutAndPaste.cpp:469
 msgid "Undefined character style"
 msgstr "Niezdefiniowany styl znaku"
 
@@ -12598,7 +12599,7 @@ msgstr ""
 msgid "Overwrite file?"
 msgstr "Zast±piæ plik?"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2089
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2093
 #: src/callback.cpp:169
 #, fuzzy
 msgid "&Overwrite"
@@ -13134,7 +13135,7 @@ msgstr "&Przywróæ"
 msgid "Exiting."
 msgstr "Zakoñcz|k"
 
-#: src/LyXFunc.cpp:1128 src/Text3.cpp:1322
+#: src/LyXFunc.cpp:1128 src/Text3.cpp:1330
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -13167,54 +13168,59 @@ msgstr "Nie mo¿na zapisaæ ustawieñ domy¶lnych"
 msgid "Converting document to new document class..."
 msgstr "Konwersja dokumentu do nowej klasy"
 
-#: src/LyXFunc.cpp:1793
+#: src/LyXFunc.cpp:1789
+#, fuzzy, c-format
+msgid "Unknown toolbar \"%1$s\""
+msgstr "Nieznany token %1$s %2$s\n"
+
+#: src/LyXFunc.cpp:1797
 #, fuzzy
 msgid "off"
 msgstr "Wy³±cz"
 
-#: src/LyXFunc.cpp:1795
+#: src/LyXFunc.cpp:1799
 #, fuzzy
 msgid "auto"
 msgstr "Data"
 
-#: src/LyXFunc.cpp:1797
+#: src/LyXFunc.cpp:1801
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1926
+#: src/LyXFunc.cpp:1930
 msgid "Select template file"
 msgstr "Wybierz plik szablonu"
 
-#: src/LyXFunc.cpp:1929 src/callback.cpp:136
+#: src/LyXFunc.cpp:1933 src/callback.cpp:136
 msgid "Templates|#T#t"
 msgstr "Szablony|#S"
 
-#: src/LyXFunc.cpp:1965
+#: src/LyXFunc.cpp:1969
 msgid "Select document to open"
 msgstr "Wybierz dokument do otwarcia"
 
-#: src/LyXFunc.cpp:2004
+#: src/LyXFunc.cpp:2008
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otwieranie dokumentu %1$s..."
 
-#: src/LyXFunc.cpp:2008
+#: src/LyXFunc.cpp:2012
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s jest ju¿ otwarty."
 
-#: src/LyXFunc.cpp:2010
+#: src/LyXFunc.cpp:2014
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nie mo¿na otworzyæ dokumentu %1$s"
 
-#: src/LyXFunc.cpp:2035
+#: src/LyXFunc.cpp:2039
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wybierz dokument %1$s do importu"
 
-#: src/LyXFunc.cpp:2086 src/callback.cpp:166
+#: src/LyXFunc.cpp:2090 src/callback.cpp:166
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13225,12 +13231,12 @@ msgstr ""
 "\n"
 "Czy chcesz go zast±piæ?"
 
-#: src/LyXFunc.cpp:2088 src/callback.cpp:168
+#: src/LyXFunc.cpp:2092 src/callback.cpp:168
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Zast±piæ dokument?"
 
-#: src/LyXFunc.cpp:2151
+#: src/LyXFunc.cpp:2155
 msgid "Welcome to LyX!"
 msgstr "Witaj w LyXie!"
 
@@ -13822,62 +13828,62 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/Text.cpp:1814
+#: src/Text.cpp:1828
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "¦ledzenie zmian|z"
 
-#: src/Text.cpp:1820
+#: src/Text.cpp:1834
 msgid "Change: "
 msgstr "Zmiana: "
 
-#: src/Text.cpp:1824
+#: src/Text.cpp:1838
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1848
 #, c-format
 msgid "Font: %1$s"
 msgstr "Czcionka: %1$s"
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1853
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", G³êboko¶æ: %1$d"
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1859
 msgid ", Spacing: "
 msgstr ", Odstêp: "
 
-#: src/Text.cpp:1851 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1865 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Pó³tora"
 
-#: src/Text.cpp:1857
+#: src/Text.cpp:1871
 msgid "Other ("
 msgstr "Inny ("
 
-#: src/Text.cpp:1866
+#: src/Text.cpp:1880
 msgid ", Inset: "
 msgstr ""
 
-#: src/Text.cpp:1867
+#: src/Text.cpp:1881
 msgid ", Paragraph: "
 msgstr ", Akapit: "
 
-#: src/Text.cpp:1868
+#: src/Text.cpp:1882
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1869
+#: src/Text.cpp:1883
 msgid ", Position: "
 msgstr ", Pozycja: "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1889
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1877
+#: src/Text.cpp:1891
 msgid ", Boundary: "
 msgstr ""
 
@@ -13910,11 +13916,11 @@ msgstr "Ustawienia "
 msgid " not known"
 msgstr " nieznane"
 
-#: src/Text3.cpp:1427 src/Text3.cpp:1439
+#: src/Text3.cpp:1435 src/Text3.cpp:1447
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/Text3.cpp:1562
+#: src/Text3.cpp:1570
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
@@ -14315,21 +14321,21 @@ msgstr "Szablon zewnêtrzny/komunikaty wstawek"
 msgid "RowPainter profiling"
 msgstr "Profilowanie RowPainter-a"
 
-#: src/frontends/LyXView.cpp:200
+#: src/frontends/LyXView.cpp:211
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokumentu nie zapisano"
 
-#: src/frontends/LyXView.cpp:212
+#: src/frontends/LyXView.cpp:223
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Otwieranie dokumentu %1$s..."
 
-#: src/frontends/LyXView.cpp:486
+#: src/frontends/LyXView.cpp:497
 msgid " (changed)"
 msgstr " (zmieniony)"
 
-#: src/frontends/LyXView.cpp:490
+#: src/frontends/LyXView.cpp:501
 msgid " (read only)"
 msgstr " (tylko do odczytu)"
 
@@ -14660,7 +14666,7 @@ msgstr "przed"
 #: src/frontends/controllers/frontend_helpers.cpp:959
 #: src/frontends/controllers/frontend_helpers.cpp:1025
 #: src/frontends/controllers/frontend_helpers.cpp:1055
-#: src/frontends/controllers/frontend_helpers.cpp:1131
+#: src/frontends/controllers/frontend_helpers.cpp:1138
 msgid "No change"
 msgstr "Bez zmian"
 
@@ -14670,7 +14676,7 @@ msgstr "Bez zmian"
 #: src/frontends/controllers/frontend_helpers.cpp:1011
 #: src/frontends/controllers/frontend_helpers.cpp:1041
 #: src/frontends/controllers/frontend_helpers.cpp:1095
-#: src/frontends/controllers/frontend_helpers.cpp:1133
+#: src/frontends/controllers/frontend_helpers.cpp:1140
 msgid "Reset"
 msgstr "Od¶wie¿"
 
@@ -14726,20 +14732,20 @@ msgstr "Purpurowy"
 msgid "Yellow"
 msgstr "¯ó³ty"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1226
+#: src/frontends/controllers/frontend_helpers.cpp:1233
 msgid "System files|#S#s"
 msgstr "Pliki systemowe|#S#s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1229
+#: src/frontends/controllers/frontend_helpers.cpp:1236
 msgid "User files|#U#u"
 msgstr "Pliki u¿ytkownika|#U#u"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1312
+#: src/frontends/controllers/frontend_helpers.cpp:1319
 #, fuzzy
 msgid "Could not update TeX information"
 msgstr "Nie mo¿na ju¿ dalej ponawiaæ"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1313
+#: src/frontends/controllers/frontend_helpers.cpp:1320
 #, fuzzy, c-format
 msgid "The script `%s' failed."
 msgstr "Nieudane sprawdzanie pisowni.\n"
@@ -15561,7 +15567,7 @@ msgstr "ERT"
 msgid "Opened Environment Inset: "
 msgstr ""
 
-#: src/insets/InsetExternal.cpp:577
+#: src/insets/InsetExternal.cpp:583
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Szablon zewnêtrzny %1$s nie jest zainstalowany"
@@ -16277,7 +16283,7 @@ msgid ""
 "Don't know how to proceed. Sorry."
 msgstr ""
 
-#: src/support/userinfo.cpp:49
+#: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Nieznany u¿ytkownik"
 
