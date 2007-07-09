@@ -23,6 +23,7 @@
 
 namespace lyx {
 
+class AuthorList;
 
 class Change {
 public:
@@ -84,6 +85,9 @@ public:
 	/// output .lyx file format for transitions between changes
 	static void lyxMarkChange(std::ostream & os, int & column,
 		Change const & old, Change const & change);
+
+	///
+	void checkAuthors(AuthorList const & authorList);
 
 private:
 	class Range {

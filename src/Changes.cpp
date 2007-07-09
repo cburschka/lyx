@@ -357,4 +357,13 @@ void Changes::lyxMarkChange(std::ostream & os, int & column,
 }
 
 
+void Changes::checkAuthors(AuthorList const & authorList)
+{
+	ChangeTable::const_iterator it = table_.begin();
+	ChangeTable::const_iterator endit = table_.end();
+	for ( ; it != endit ; ++it) 
+		if (it->change.type != Change::UNCHANGED)
+			authorList.get(it->change.author).used(true);
+}
+
 } // namespace lyx

@@ -26,7 +26,7 @@ public:
 	Author() {}
 
 	Author(docstring const & name, docstring const & email)
-		: name_(name), email_(email) {}
+		: name_(name), email_(email), used_(true) {}
 
 	docstring const name() const {
 		return name_;
@@ -36,12 +36,22 @@ public:
 		return email_;
 	}
 
+	void used(bool u) const {
+		used_ = u;
+	}
+
+	bool used() const {
+		return used_;
+	}
+
 	friend std::istream & operator>>(std::istream & os, Author & a);
 
 private:
 	docstring name_;
 
 	docstring email_;
+
+	mutable bool used_;
 };
 
 

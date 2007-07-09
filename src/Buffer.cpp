@@ -846,6 +846,19 @@ bool Buffer::write(ostream & ofs) const
 	    << "\\lyxformat " << LYX_FORMAT << "\n"
 	    << "\\begin_document\n";
 
+
+	/// For each author, set 'used' to true if there is a change
+	/// by this author in the document; otherwise set it to 'false'.
+	AuthorList::Authors::const_iterator a_it = params().authors().begin();
+	AuthorList::Authors::const_iterator a_end = params().authors().end();
+	for (; a_it != a_end; ++a_it)
+		a_it->second.used(false);
+
+	ParIterator const end = par_iterator_end();
+	ParIterator it = par_iterator_begin();
+	for ( ; it != end; ++it)
+		it->checkAuthors(params().authors());
+
 	// now write out the buffer parameters.
 	ofs << "\\begin_header\n";
 	params().writeFile(ofs);

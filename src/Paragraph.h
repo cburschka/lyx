@@ -368,6 +368,10 @@ public:
 	/// was previously past that position. Return 0 otherwise.
 	int checkBiblio(bool track_changes);
 
+	/// For each author, set 'used' to true if there is a change
+	/// by this author in the paragraph.
+	void checkAuthors(AuthorList const & authorList);
+
 public:
 	///
 	InsetList insetlist;

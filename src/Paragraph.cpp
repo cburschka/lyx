@@ -210,7 +210,7 @@ public:
 	///
 	ParagraphParameters params;
 
-private:
+//private:
 	///
 	pos_type size() const { return owner_->size(); }
 	/// match a string against a particular point in the paragraph
@@ -2680,6 +2680,12 @@ int Paragraph::checkBiblio(bool track_changes)
 		    Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
 
 	return 1;
+}
+
+
+void Paragraph::checkAuthors(AuthorList const & authorList)
+{
+	pimpl_->changes_.checkAuthors(authorList);
 }
 
 } // namespace lyx

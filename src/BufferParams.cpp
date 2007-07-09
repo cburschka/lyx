@@ -766,7 +766,10 @@ void BufferParams::writeFile(ostream & os) const
 	AuthorList::Authors::const_iterator a_it = pimpl_->authorlist.begin();
 	AuthorList::Authors::const_iterator a_end = pimpl_->authorlist.end();
 	for (; a_it != a_end; ++a_it) {
-		os << "\\author " << a_it->second << "\n";
+		if (a_it->second.used())
+			os << "\\author " << a_it->second << "\n";
+		else
+			os << "\\author " << Author() << "\n";
 	}
 }
 

@@ -36,11 +36,6 @@ namespace support {
 
 docstring const user_name()
 {
-	//FIXME: quick fix wrt bug #3764; only Anonymous is detected now.
-	//The code after should be used only after user approval.
-	return from_ascii("Anonymous");
-	
-	
 #if defined (_WIN32)
 
 	char name[UNLEN + 1];
