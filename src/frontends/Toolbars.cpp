@@ -169,58 +169,44 @@ void Toolbars::display(string const & name, bool show)
 }
 
 
-ToolbarInfo::Flags Toolbars::getToolbarState(string const & name)
+ToolbarInfo * Toolbars::getToolbarInfo(string const & name)
 {
-	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
-
-	for (; cit != end; ++cit) {
-		if (cit->name == name)
-			return cit->flags;
-	}
-
-	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
-		<< name << endl;
-
-	// return dummy for msvc
-	return ToolbarInfo::OFF;
+	return toolbarbackend.getUsedToolbarInfo(name);
 }
 
 
 void Toolbars::toggleToolbarState(string const & name, bool allowauto)
 {
-	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
+	ToolbarInfo * tbi = toolbarbackend.getUsedToolbarInfo(name);
 
-	for (; cit != end; ++cit) {
-		if (cit->name == name) {
-			int flags = cit->flags;
-			// off -> on
-			if (flags & ToolbarInfo::OFF) {
-				TurnOffFlag(OFF);
-				TurnOnFlag(ON);
-			// auto -> off
-			} else if (flags & ToolbarInfo::AUTO) {
-				TurnOffFlag(AUTO);
-				TurnOnFlag(OFF);
-			} else if (allowauto 
-				   && ((flags & ToolbarInfo::MATH) 
-				       || (flags & ToolbarInfo::TABLE)
-				       || (flags & ToolbarInfo::REVIEW))) {
-				// for math etc, toggle from on -> auto
-				TurnOffFlag(ON);
-				TurnOnFlag(AUTO);
-			} else {
-				// for others, toggle from on -> off
-				TurnOffFlag(ON);
-				TurnOnFlag(OFF);
-			}
-			cit->flags = static_cast<ToolbarInfo::Flags>(flags);
-			return;
-		}
+	if (!tbi) {
+		LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
+			<< name << endl;
+		return;
 	}
-	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
-		<< name << endl;
+
+	int flags = tbi->flags;
+	// off -> on
+	if (flags & ToolbarInfo::OFF) {
+		TurnOffFlag(OFF);
+		TurnOnFlag(ON);
+	// auto -> off
+	} else if (flags & ToolbarInfo::AUTO) {
+		TurnOffFlag(AUTO);
+		TurnOnFlag(OFF);
+	} else if (allowauto 
+		   && ((flags & ToolbarInfo::MATH) 
+		       || (flags & ToolbarInfo::TABLE)
+		       || (flags & ToolbarInfo::REVIEW))) {
+		// for math etc, toggle from on -> auto
+		TurnOffFlag(ON);
+		TurnOnFlag(AUTO);
+	} else {
+		// for others, toggle from on -> off
+		TurnOffFlag(ON);
+		TurnOnFlag(OFF);
+	}
+	tbi->flags = static_cast<ToolbarInfo::Flags>(flags);
 }
 #undef TurnOnFlag
 #undef TurnOffFlag

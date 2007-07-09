@@ -328,24 +328,21 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 }
 
 
-ToolbarInfo const & ToolbarBackend::getToolbar(string const & name) const
+ToolbarInfo const * ToolbarBackend::getDefinedToolbarInfo(string const & name) const
 {
-	Toolbars::const_iterator cit = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
-	if (cit == toolbars.end())
-		lyxerr << "No toolbar named " << name << endl;
-	BOOST_ASSERT(cit != toolbars.end());
-	return (*cit);
-}
-
-
-ToolbarInfo & ToolbarBackend::getToolbar(string const & name)
-{
-	Toolbars::iterator it = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
+	Toolbars::const_iterator it = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
 	if (it == toolbars.end())
-		lyxerr << "No toolbar named " << name << endl;
-	BOOST_ASSERT(it != toolbars.end());
-	return (*it);
+		return 0;
+	return &(*it);
 }
 
+
+ToolbarInfo * ToolbarBackend::getUsedToolbarInfo(string const &name)
+{
+	Toolbars::iterator it = find_if(usedtoolbars.begin(), usedtoolbars.end(), ToolbarNamesEqual(name));
+	if (it == usedtoolbars.end())
+		return 0;
+	return &(*it);
+}
 
 } // namespace lyx

@@ -214,9 +214,13 @@ void QLToolbar::add(ToolbarItem const & item)
 		IconPalette * panel = new IconPalette(tb);
 		panel->setWindowTitle(qt_(to_ascii(item.label_)));
 		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
-		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
-		ToolbarInfo::item_iterator it = tbinfo.items.begin();
-		ToolbarInfo::item_iterator const end = tbinfo.items.end();
+		ToolbarInfo const * tbinfo = toolbarbackend.getDefinedToolbarInfo(item.name_);
+		if (!tbinfo) {
+			lyxerr << "Unknown toolbar " << item.name_ << endl;
+			break;
+		}
+		ToolbarInfo::item_iterator it = tbinfo->items.begin();
+		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
 			if (!getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,
@@ -227,7 +231,7 @@ void QLToolbar::add(ToolbarItem const & item)
 				panel->addButton(action);
 				ActionVector.push_back(action);
 				// use the icon of first action for the toolbar button
-				if (it == tbinfo.items.begin())
+				if (it == tbinfo->items.begin())
 					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
 			}
 		tb->setCheckable(true);
@@ -251,9 +255,13 @@ void QLToolbar::add(ToolbarItem const & item)
 		m->setWindowTitle(qt_(to_ascii(item.label_)));
 		m->setTearOffEnabled(true);
 		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
-		ToolbarInfo const & tbinfo = toolbarbackend.getToolbar(item.name_);
-		ToolbarInfo::item_iterator it = tbinfo.items.begin();
-		ToolbarInfo::item_iterator const end = tbinfo.items.end();
+		ToolbarInfo const * tbinfo = toolbarbackend.getDefinedToolbarInfo(item.name_);
+		if (!tbinfo) {
+			lyxerr << "Unknown toolbar " << item.name_ << endl;
+			break;
+		}
+		ToolbarInfo::item_iterator it = tbinfo->items.begin();
+		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
 			if (!getStatus(it->func_).unknown()) {
 				Action * action = new Action(owner_,

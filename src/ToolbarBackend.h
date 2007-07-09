@@ -126,13 +126,14 @@ public:
 
 	/// read ui toolbar settings
 	void readToolbarSettings(Lexer &);
+
 	///
-	ToolbarInfo const & getToolbar(std::string const & name) const;
+	ToolbarInfo const * getDefinedToolbarInfo(std::string const & name) const;
 	///
-	ToolbarInfo & getToolbar(std::string const & name);
+	ToolbarInfo * getUsedToolbarInfo(std::string const & name);
 
 private:
-	/// all the toolbars
+	/// all the defined toolbars
 	Toolbars toolbars;
 
 	/// toolbars listed

@@ -1784,18 +1784,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string const name = cmd.getArg(0);
 			bool const allowauto = cmd.getArg(1) == "allowauto";
 			lyx_view_->toggleToolbarState(name, allowauto);
-			ToolbarInfo::Flags const flags = 
-				lyx_view_->getToolbarState(name);
+			ToolbarInfo * tbi = lyx_view_->getToolbarInfo(name);
+			if (!tbi) {
+				setMessage(bformat(_("Unknown toolbar \"%1$s\""),
+				                   from_utf8(name)));
+				break;
+			}
 			docstring state;
-			if (flags & ToolbarInfo::ON)
+			if (tbi->flags & ToolbarInfo::ON)
 				state = _("on");
-			else if (flags & ToolbarInfo::OFF)
+			else if (tbi->flags & ToolbarInfo::OFF)
 				state = _("off");
-			else if (flags & ToolbarInfo::AUTO)
+			else if (tbi->flags & ToolbarInfo::AUTO)
 				state = _("auto");
 
 			setMessage(bformat(_("Toolbar \"%1$s\" state set to %2$s"), 
-						   from_ascii(name), state));
+			                   _(tbi->gui_name), state));
 			break;
 		}
 

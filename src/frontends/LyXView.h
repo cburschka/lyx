@@ -157,8 +157,8 @@ public:
 
 	/// update the toolbar
 	void updateToolbars();
-	/// get toolbar state
-	ToolbarInfo::Flags getToolbarState(std::string const & name);
+	/// get toolbar info
+	ToolbarInfo * getToolbarInfo(std::string const & name);
 	/// toggle toolbar state
 	void toggleToolbarState(std::string const & name, bool allowauto);
 	/// update the menubar
