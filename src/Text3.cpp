@@ -1141,9 +1141,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// "auto_region_delete", which defaults to
 		// true (on).
 
-		if (lyxrc.auto_region_delete)
-			if (cur.selection())
-				cutSelection(cur, false, false);
+		if (lyxrc.auto_region_delete && cur.selection()) {
+			cutSelection(cur, false, false);
+			// When change tracking is set to off, the metrics update
+			// mechanism correctly detects if a full update is needed or not.
+			// This detection fails when a selection spans multiple rows and
+			// change tracking is enabled because the paragraph metrics stays
+			// the same. In this case, we force the full update:
+			// (see http://bugzilla.lyx.org/show_bug.cgi?id=3992)
+			if (cur.buffer().params().trackChanges)
+				cur.updateFlags(Update::Force);
+		}
 
 		cur.clearSelection();
 		Font const old_font = real_current_font;
