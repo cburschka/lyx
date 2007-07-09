@@ -413,6 +413,8 @@ docstring grabAndEraseSelection(Cursor & cur)
 void switchBetweenClasses(textclass_type c1, textclass_type c2,
 	InsetText & in, ErrorList & errorlist)
 {
+	errorlist.clear();
+
 	BOOST_ASSERT(!in.paragraphs().empty());
 	if (c1 == c2)
 		return;
