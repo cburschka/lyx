@@ -85,7 +85,6 @@ using std::strlen;
 
 using cap::dirtyTabularStack;
 using cap::tabularStackDirty;
-using cap::saveSelection;
 
 using graphics::PreviewLoader;
 

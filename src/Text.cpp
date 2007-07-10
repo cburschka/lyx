@@ -871,7 +871,6 @@ void Text::selectWord(Cursor & cur, word_location loc)
 	cur.resetAnchor();
 	setCursor(cur, to.pit(), to.pos());
 	cur.setSelection();
-	cap::saveSelection(cur);
 }
 
 
