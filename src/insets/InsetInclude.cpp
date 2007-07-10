@@ -404,9 +404,19 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 		// the readonly flag can/will be wrong, not anymore I think.
 		if (!fs::exists(included_file.toFilesystemEncoding()))
 			return false;
-		lyx::dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN,
-			included_file.absFilename() + "|true"));
-		buf = theBufferList().getBuffer(included_file.absFilename());
+		if (use_gui) {
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN,
+				included_file.absFilename() + "|true"));
+			buf = theBufferList().getBuffer(included_file.absFilename());
+		}
+		else {
+			buf = theBufferList().newBuffer(included_file.absFilename());
+			if (!loadLyXFile(buf, included_file)) {
+				//close the buffer we just opened
+				theBufferList().close(buf, false);
+				return false;
+			}
+		}
 		return buf;
 	}
 	buf->setParentName(parentFilename(buffer));
