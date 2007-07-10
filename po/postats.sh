@@ -215,7 +215,9 @@ cat <<EOF
 	'sl' => 'Slovenian',
 	'sv' => 'Swedish',
 	'tr' => 'Turkish',
-	'wa' => 'Walloon'
+	'wa' => 'Walloon',
+	'zh_CN' => 'Simplified Chinese',
+	'zh_TW' => 'Traditional Chinese'
 );
 
 \$noOfMsg = \$podata[0]['msg_tr'] + \$podata[0]['msg_fu'] + \$podata[0]['msg_nt'];
