@@ -79,7 +79,6 @@ using cap::cutSelection;
 using cap::pasteFromStack;
 using cap::pasteClipboard;
 using cap::replaceSelection;
-using cap::saveSelection;
 
 using support::isStrUnsignedInt;
 using support::token;
@@ -436,20 +435,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_WORD_DELETE_FORWARD:
-		cur.clearSelection();
-		deleteWordForward(cur);
+		if (cur.selection()) {
+			cutSelection(cur, true, false);
+		} else
+			deleteWordForward(cur);
 		finishChange(cur, false);
 		break;
 
 	case LFUN_WORD_DELETE_BACKWARD:
-		cur.clearSelection();
-		deleteWordBackward(cur);
+		if (cur.selection()) {
+			cutSelection(cur, true, false);
+		} else
+			deleteWordBackward(cur);
 		finishChange(cur, false);
 		break;
 
 	case LFUN_LINE_DELETE:
-		cur.clearSelection();
-		deleteLineForward(cur);
+		if (cur.selection()) {
+			cutSelection(cur, true, false);
+		} else
+			deleteLineForward(cur);
 		finishChange(cur, false);
 		break;
 
