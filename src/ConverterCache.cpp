@@ -261,6 +261,15 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			     << ' ' << to_format << ' ' << converted_file
 			     << std::endl;
 
+	// FIXME: Should not hardcode this (see bug 3819 for details)
+	if (to_format == "pstex") {
+		FileName const converted_eps(support::changeExtension(converted_file.absFilename(), "eps"));
+		add(orig_from, "eps", converted_eps);
+	} else if (to_format == "pdftex") {
+		FileName const converted_pdf(support::changeExtension(converted_file.absFilename(), "pdf"));
+		add(orig_from, "pdf", converted_pdf);
+	}
+
 	// Is the file in the cache already?
 	CacheItem * item = pimpl_->find(orig_from, to_format);
 
@@ -286,7 +295,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			}
 			item->checksum = checksum;
 		}
-		if (!mover.copy(converted_file, item->cache_name, 0600))
+		if (!mover.copy(converted_file, item->cache_name,
+		                support::onlyFilename(item->cache_name.absFilename()), 0600))
 			LYXERR(Debug::FILES) << "ConverterCache::add("
 					     << orig_from << "):\n"
 						"Could not copy file."
@@ -294,7 +304,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
 				support::sum(orig_from));
-		if (mover.copy(converted_file, new_item.cache_name, 0600)) {
+		if (mover.copy(converted_file, new_item.cache_name,
+		               support::onlyFilename(new_item.cache_name.absFilename()), 0600)) {
 			FormatCache & format_cache = pimpl_->cache[orig_from];
 			if (format_cache.from_format.empty())
 				format_cache.from_format =
@@ -418,10 +429,22 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 			     << ' ' << to_format << ' ' << dest << std::endl;
 
+	// FIXME: Should not hardcode this (see bug 3819 for details)
+	if (to_format == "pstex") {
+		FileName const dest_eps(support::changeExtension(dest.absFilename(), "eps"));
+		if (!copy(orig_from, "eps", dest_eps))
+			return false;
+	} else if (to_format == "pdftex") {
+		FileName const dest_pdf(support::changeExtension(dest.absFilename(), "pdf"));
+		if (!copy(orig_from, "pdf", dest_pdf))
+			return false;
+	}
+
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);
 	Mover const & mover = getMover(to_format);
-	return mover.copy(item->cache_name, dest);
+	return mover.copy(item->cache_name, dest,
+	                  support::onlyFilename(dest.absFilename()));
 }
 
 } // namespace lyx
