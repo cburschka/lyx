@@ -51,7 +51,7 @@ void replaceSelection(Cursor & cur);
 /**
  * Cut the current selection and possibly push it to the cut buffer and
  * system clipboard.
- * Does handle undo.
+ * Does handle undo. Calls saveSelection.
  * \param doclear If this is true: Delete leading spaces in paragraphs before
  *                they get merged.
  * \param realcut If this is true: Push the selection to the cut buffer and
@@ -104,6 +104,7 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 docstring grabSelection(Cursor const & cur);
 /// Erase the current selection.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
+/// Calls saveSelection.
 void eraseSelection(Cursor & cur);
 /// Erase the selection and return it as a string.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
