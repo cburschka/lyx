@@ -579,6 +579,47 @@ ParValidator::ParValidator()
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_["podcomment"] =
 		ListingsParam("", false, ALL, "", empty_hint);
+	// the following are experimental listings features
+	all_params_["procnamekeys"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["moreprocnamekeys"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deleteprocnamekeys"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["procnamestyle"] =
+		ListingsParam("", false, ALL, "", style_hint);
+	all_params_["indexprocnames"] =
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["hyperref"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["morehyperref"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["deletehyperref"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["hyperanchor"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["hyperlink"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["literate"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["lgrindef"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["rangebeginprefix"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["rangebeginsuffix"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["rangeendprefix"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["rangeendsuffix"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["rangeprefix"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["rangesuffix"] =
+		ListingsParam("", false, ALL, "", empty_hint);
+	all_params_["includerangemarker"] =
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
+	all_params_["multicols"] =
+		ListingsParam("", false, INTEGER, "", empty_hint);
 }
 
 
