@@ -18,6 +18,7 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "ErrorList.h"
@@ -526,6 +527,8 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		Text * text = cur.text();
 		BOOST_ASSERT(text);
 
+		saveSelection(cur);
+
 		// make sure that the depth behind the selection are restored, too
 		recordUndoSelection(cur);
 		pit_type begpit = cur.selBegin().pit();
@@ -676,7 +679,9 @@ void saveSelection(Cursor & cur)
 	// This function is called, not when a selection is formed, but when
 	// a selection is cleared. Therefore, multiple keyboard selection
 	// will not repeatively trigger this function (bug 3877).
-	if (cur.selection()) {
+	if (cur.selection() 
+	    && cur.selBegin() == cur.bv().cursor().selBegin()
+	    && cur.selEnd() == cur.bv().cursor().selEnd()) {
 		LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION << ": `"
 			   << to_utf8(cur.selectionAsString(true)) << "'."
 			   << endl;
@@ -832,6 +837,7 @@ void eraseSelection(Cursor & cur)
 	CursorSlice const & i1 = cur.selBegin();
 	CursorSlice const & i2 = cur.selEnd();
 	if (i1.inset().asInsetMath()) {
+		saveSelection(cur);
 		cur.top() = i1;
 		if (i1.idx() == i2.idx()) {
 			i1.cell().erase(i1.pos(), i2.pos());
@@ -852,7 +858,6 @@ void eraseSelection(Cursor & cur)
 		}
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		theSelection().haveSelection(false);
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}

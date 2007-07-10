@@ -149,6 +149,8 @@ void BufferView::setBuffer(Buffer * b)
 			    << "[ b = " << b << "]" << endl;
 
 	if (buffer_) {
+		// Save the current selection if any
+		cap::saveSelection(cursor_);
 		// Save the actual cursor position and anchor inside the
 		// buffer so that it can be restored in case we rechange
 		// to this buffer later on.
@@ -1347,6 +1349,10 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 {
 	BOOST_ASSERT(&cur.bv() == this);
 
+        // this event will clear selection so we save selection for
+	// persistent selection
+	cap::saveSelection(cursor());
+
 	// Has the cursor just left the inset?
 	bool badcursor = false;
 	bool leftinset = (&cursor_.inset() != &cur.inset());
@@ -1399,7 +1405,6 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 			cursor_.setSelection(cursor_, -length);
 		} else
 			cursor_.setSelection(cursor_, length);
-		cap::saveSelection(cursor_);
 	}
 }
 

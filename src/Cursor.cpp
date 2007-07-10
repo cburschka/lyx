@@ -588,9 +588,11 @@ bool Cursor::selHandle(bool sel)
 	if (sel == selection())
 		return false;
 
+	if (!sel)
+		cap::saveSelection(*this);
+
 	resetAnchor();
 	selection() = sel;
-	cap::saveSelection(*this);
 	return true;
 }
 
