@@ -14,9 +14,9 @@ native language.
 
 The file you need to edit it an xx.po file where xx stands for your language's 
 two letter code. German would be for example de.po and Polish pl.po. For a list 
-of country codes look at:
+of languages codes look at:
 
-  http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#SEC222
+  http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#Language-Codes
 
 If you want to start from scratch then you should obtain a copy of the lyx.pot
 and name it after your language. German would be for example de.po and Polish
@@ -40,7 +40,7 @@ appear in the msgid line and write the translation into the msgstr line. Note
 that a "#, fuzzy" line is just a hint for translation from compiler - in order
 to get the translation of the current item working you have to delete this
 line. It is recommended that you would take a look at another .po file - that
-way you can get an idea of what to do. If your using a specialized po editor
+way you can get an idea of what to do. If you are using a specialized po editor
 then you will see in it the untranslated strings and a place to write your
 translation for them.
 
@@ -83,17 +83,38 @@ e.g., Czech, the code is "cs_CZ".
 
 The most comfortable way to see your updated translation while editing, is
 running (in linux):
-1. "make xx.po" in po directory to compile updated xx.po translation
+1. "make xx.gmo" in the po directory to compile updated xx.po translation
 2. "make install" in root lyx tree to copy xx.gmo into the appropriate location
    (or do it by hand...) 
 
+For advanced users - if you want to remerge your files against current source
+files run make update-po. 
 
-7) REFERENCES
+
+7) HOW TO CONTRIBUTE MY WORK?
+
+You can manually use diff utility to make patch; usually the most comfortable
+way is to run something like (after you edit xx.po):
+
+	svn diff xx.po > xx.po.patch
+
+This file should be sent to po-updates@lyx.org.
+
+Also you can check http://www.lyx.org/trac/browser/lyx-devel/trunk to track
+changes or watch updates.
+
+
+8) REFERENCES
 
 For some basic idea on how the translation works, you can look at 
 
   http://en.wikipedia.org/wiki/Gettext
 
-For detailed reference, have a look at 
+For detailed reference (including full list of country and language codes),
+have a look at 
 
   http://www.gnu.org/software/gettext/manual/gettext.html
+
+
+Consider subscribing to the documentation list at lyx-docs@lists.lyx.org (rather
+silent one) or developer's mailing list lyx-devel@lists.lyx.org (high volume).
