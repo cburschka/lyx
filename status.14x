@@ -60,6 +60,9 @@ What's new
 
 - Fix display of Theorem-like environments when in appendix (bug 3351)
 
+- Fix conflict with globally installed math fonts, for ex. from
+  Scientific Workplace (bug 3962, windows only)
+
 - Properly keep existing previews when pasting formulas (bug 1486).
 
 - Fix display of math root inset when the exponent contains large

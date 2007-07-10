@@ -52,7 +52,9 @@ using std::string;
 #endif
 
 #ifdef Q_WS_WIN
-#include "windows.h"
+// Require Windows API > Win98 (only needed for AddFontResourceEx)
+#define _WIN32_WINNT 0x0500
+#include <windows.h>
 #include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
@@ -100,9 +102,9 @@ void FontLoader::initFontPath()
 	string const fonts_dir = AddPath(package().system_support(), "fonts");
 	
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = 
-			AddName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		AddFontResource(os::external_path(font_current).c_str());
+		string const font_current = os::external_path(
+			AddName(fonts_dir, win_fonts_truetype[i] + ".ttf"));
+		AddFontResourceEx(font_current.c_str(), FR_PRIVATE, 0);
 	}
 #endif
 }
@@ -113,9 +115,9 @@ FontLoader::~FontLoader() {
 	string const fonts_dir = AddPath(package().system_support(), "fonts");
 	
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = 
-			AddName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		RemoveFontResource(os::external_path(font_current).c_str());
+		string const font_current = os::external_path(
+			AddName(fonts_dir, win_fonts_truetype[i] + ".ttf"));
+		RemoveFontResourceEx(font_current.c_str(), FR_PRIVATE, 0);
 	}
 #endif
 }
