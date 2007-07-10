@@ -55,7 +55,7 @@ msgstr "LyX: 输入文本"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:47
 msgid "&Dummy"
-msgstr ""
+msgstr "虚构(&D)"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:84
 #: src/frontends/qt4/ui/BibitemUi.ui:111 src/frontends/qt4/ui/BibtexUi.ui:216
@@ -90,11 +90,11 @@ msgstr "取消(&C)"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:39 src/frontends/qt4/ui/BibitemUi.ui:74
 msgid "The bibliography key"
-msgstr ""
+msgstr "文献关键字"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/BibitemUi.ui:61
 msgid "The label as it appears in the document"
-msgstr ""
+msgstr "文本中出现之标记"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/RefUi.ui:145
 #: src/frontends/qt4/Dialogs.cpp:236
@@ -103,51 +103,51 @@ msgstr "标记(&L)："
 
 #: src/frontends/qt4/ui/BibitemUi.ui:77
 msgid "&Key:"
-msgstr ""
+msgstr "关键字(&K)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 msgid "Citation Style"
-msgstr ""
+msgstr "文献引用风格"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "Use the jurabib styles for law and humanities"
-msgstr ""
+msgstr "为法律和人文文献使用jurabib风格"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:43
 msgid "&Jurabib"
-msgstr ""
+msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:50
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr ""
+msgstr "为科技文献使用natbib风格"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:53
 msgid "&Natbib"
-msgstr ""
+msgstr "&Natbib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:60
 msgid "Use BibTeX's default numerical styles"
-msgstr ""
+msgstr "使用BibTeX缺省数字风格"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:63
 msgid "&Default (numerical)"
-msgstr ""
+msgstr "缺省（数字）(&D)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:81
 msgid "Natbib &style:"
-msgstr ""
+msgstr "Natbib风格(s)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:127
 msgid "Select this if you want to split your bibliography into sections"
-msgstr ""
+msgstr "选择此项按章节划分文献引用"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:130
 msgid "S&ectioned bibliography"
-msgstr ""
+msgstr "按章节划分的文献引用(&e)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
-msgstr ""
+msgstr "Lyx: 添加BibTeX数据库"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
@@ -166,7 +166,7 @@ msgstr "取消"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:119
 msgid "Enter BibTeX database name"
-msgstr ""
+msgstr "输入BibTeX数据库名"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:126
 #: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:99
@@ -177,39 +177,39 @@ msgstr "浏览(&B)..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:34
 msgid "Add bibliography to the table of contents"
-msgstr ""
+msgstr "添加文献引用到目录"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:37
 msgid "Add bibliography to &TOC"
-msgstr ""
+msgstr "添加文献引用到目录(&T)"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:52 src/frontends/qt4/ui/BibtexUi.ui:65
 msgid "This bibliography section contains..."
-msgstr ""
+msgstr "此章文献引用包含..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:55
 msgid "&Content:"
-msgstr ""
+msgstr "内容(&C):"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:69
 msgid "all cited references"
-msgstr ""
+msgstr "所有引用的文献"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:74
 msgid "all uncited references"
-msgstr ""
+msgstr "使用未引用的文献"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:79
 msgid "all references"
-msgstr ""
+msgstr "所有文献"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:103 src/frontends/qt4/ui/BibtexUi.ui:116
 msgid "Choose a style file"
-msgstr ""
+msgstr "选择样式文件"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:148
 msgid "Remove the selected database"
-msgstr ""
+msgstr "删除选择的数据库"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:151
 msgid "&Delete"
@@ -217,7 +217,7 @@ msgstr "删除(&D)"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:158
 msgid "Add a BibTeX database file"
-msgstr ""
+msgstr "添加BibTeX数据库文件"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:161
 msgid "&Add..."
@@ -225,23 +225,23 @@ msgstr "添加(&A)..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:176
 msgid "BibTeX database to use"
-msgstr ""
+msgstr "使用的BibTeX数据库"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:179
 msgid "Databa&ses"
-msgstr ""
+msgstr "数据库(&s)"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:249
 msgid "The BibTeX style"
-msgstr ""
+msgstr "BibTeX样式"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:252
 msgid "St&yle"
-msgstr ""
+msgstr "样式(&y)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:34 src/frontends/qt4/ui/BoxUi.ui:63
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr ""
+msgstr "内框--固定长度和换行"
 
 #: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/ListingsUi.ui:270
 #: src/frontends/qt4/ui/TabularUi.ui:702 src/frontends/qt4/ui/TabularUi.ui:721
@@ -256,33 +256,33 @@ msgstr "无"
 #: src/frontends/qt4/QBox.cpp:377 src/frontends/qt4/QBox.cpp:385
 #: src/insets/InsetBox.cpp:156
 msgid "Parbox"
-msgstr ""
+msgstr "Parbox"
 
 #: src/frontends/qt4/ui/BoxUi.ui:48 src/frontends/qt4/QBox.cpp:378
 #: src/frontends/qt4/QBox.cpp:386 src/insets/InsetBox.cpp:158
 msgid "Minipage"
-msgstr ""
+msgstr "Minipage"
 
 #: src/frontends/qt4/ui/BoxUi.ui:56 src/frontends/qt4/ui/BoxUi.ui:76
 msgid "Supported box types"
-msgstr ""
+msgstr "支持的外框样式"
 
 #: src/frontends/qt4/ui/BoxUi.ui:66
 msgid "Inner Bo&x:"
-msgstr ""
+msgstr "内框(&x)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:79
 msgid "&Decoration:"
-msgstr ""
+msgstr "装饰(&D)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:97 src/frontends/qt4/ui/BoxUi.ui:119
 msgid "Height value"
-msgstr ""
+msgstr "高度"
 
 #: src/frontends/qt4/ui/BoxUi.ui:112 src/frontends/qt4/ui/BoxUi.ui:135
 #: src/frontends/qt4/ui/WrapUi.ui:118
 msgid "Width value"
-msgstr ""
+msgstr "宽度"
 
 #: src/frontends/qt4/ui/BoxUi.ui:122 src/frontends/qt4/ui/ExternalUi.ui:507
 #: src/frontends/qt4/ui/PageLayoutUi.ui:43
@@ -302,7 +302,7 @@ msgstr "对齐"
 
 #: src/frontends/qt4/ui/BoxUi.ui:160 src/frontends/qt4/ui/BoxUi.ui:187
 msgid "Horizontal alignment of the content inside the box"
-msgstr ""
+msgstr "框内文本水平对齐"
 
 #: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
@@ -333,7 +333,7 @@ msgstr "水平"
 
 #: src/frontends/qt4/ui/BoxUi.ui:197 src/frontends/qt4/ui/BoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr ""
+msgstr "外框竖直对齐"
 
 #: src/frontends/qt4/ui/BoxUi.ui:201 src/frontends/qt4/ui/BoxUi.ui:246
 #: src/frontends/qt4/ui/MathMatrixUi.ui:218
@@ -355,15 +355,15 @@ msgstr "下"
 
 #: src/frontends/qt4/ui/BoxUi.ui:222
 msgid "&Box:"
-msgstr ""
+msgstr "外框(&B)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:232
 msgid "Co&ntent:"
-msgstr ""
+msgstr "内容(&n)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Vertical alignment of the content inside the box"
-msgstr ""
+msgstr "框内文本竖直对齐"
 
 #: src/frontends/qt4/ui/BoxUi.ui:272
 msgid "Vertical"
@@ -390,19 +390,19 @@ msgstr "应用(&A)"
 
 #: src/frontends/qt4/ui/BranchUi.ui:59
 msgid "&Available branches:"
-msgstr ""
+msgstr "现有分支(&A)"
 
 #: src/frontends/qt4/ui/BranchUi.ui:69
 msgid "Select your branch"
-msgstr ""
+msgstr "选择分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:47
 msgid "Add a new branch to the list"
-msgstr ""
+msgstr "添加分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:57
 msgid "A&vailable Branches:"
-msgstr ""
+msgstr "现有分支(&A)"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:67
 msgid "&New:"
@@ -410,7 +410,7 @@ msgstr "新建(&N)："
 
 #: src/frontends/qt4/ui/BranchesUi.ui:80
 msgid "Remove the selected branch"
-msgstr ""
+msgstr "删除选中分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:99
@@ -420,19 +420,19 @@ msgstr "删除(&R)"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:90
 msgid "Toggle the selected branch"
-msgstr ""
+msgstr "切换选中分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:93
 msgid "(&De)activate"
-msgstr ""
+msgstr "不使用(&D)"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:100
 msgid "Define or change background color"
-msgstr ""
+msgstr "定义或改变背景颜色"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:103
 msgid "Alter Co&lor..."
-msgstr ""
+msgstr "改变颜色(&l)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
@@ -471,7 +471,7 @@ msgstr "极小"
 #: src/frontends/controllers/frontend_helpers.cpp:967
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
-msgstr ""
+msgstr "最小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
 #: src/frontends/controllers/frontend_helpers.cpp:971
@@ -501,12 +501,12 @@ msgstr "大"
 #: src/frontends/controllers/frontend_helpers.cpp:987
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
-msgstr ""
+msgstr "较大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:69
 #: src/frontends/controllers/frontend_helpers.cpp:991
 msgid "Largest"
-msgstr ""
+msgstr "最大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
 #: src/frontends/controllers/frontend_helpers.cpp:995
@@ -516,11 +516,11 @@ msgstr "巨大"
 #: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:69
 #: src/frontends/controllers/frontend_helpers.cpp:999
 msgid "Huger"
-msgstr ""
+msgstr "超大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom Bullet:"
-msgstr ""
+msgstr "自定义Bullet(&C)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 msgid "&Level:"
@@ -528,19 +528,19 @@ msgstr "级别(&L)："
 
 #: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
-msgstr ""
+msgstr "改变:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
 msgid "Go to next change"
-msgstr ""
+msgstr "跳至下一改变项"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
 msgid "&Next change"
-msgstr ""
+msgstr "下一改变项(&N)"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:95
 msgid "Accept this change"
-msgstr ""
+msgstr "接受这一改变"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:98
 msgid "&Accept"
@@ -548,7 +548,7 @@ msgstr "接受(&A)"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Reject this change"
-msgstr ""
+msgstr "拒绝这一改变"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Reject"
@@ -561,21 +561,21 @@ msgstr "字体族"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:47
 msgid "&Family:"
-msgstr ""
+msgstr "字体族(&F)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:65
 #: src/frontends/qt4/ui/CharacterUi.ui:75
 msgid "Font shape"
-msgstr ""
+msgstr "字体形状"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:78
 msgid "S&hape:"
-msgstr ""
+msgstr "形状*&h)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:96
 #: src/frontends/qt4/ui/CharacterUi.ui:173
 msgid "Font series"
-msgstr ""
+msgstr "字体系列"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
@@ -588,7 +588,7 @@ msgstr "语言"
 #: src/frontends/qt4/ui/CharacterUi.ui:150
 #: src/frontends/qt4/ui/CharacterUi.ui:189
 msgid "Font color"
-msgstr ""
+msgstr "字体颜色"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
 #: src/frontends/qt4/ui/LanguageUi.ui:36
@@ -597,15 +597,15 @@ msgstr "语言(&L)："
 
 #: src/frontends/qt4/ui/CharacterUi.ui:176
 msgid "&Series:"
-msgstr ""
+msgstr "系列(&S)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:192
 msgid "&Color:"
-msgstr ""
+msgstr "颜色(&C):"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:212
 msgid "Never Toggled"
-msgstr ""
+msgstr "未切换"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:224
 #: src/frontends/qt4/ui/CharacterUi.ui:245
@@ -615,15 +615,15 @@ msgstr "字体大小"
 #: src/frontends/qt4/ui/CharacterUi.ui:258
 #: src/frontends/qt4/ui/CharacterUi.ui:283
 msgid "Other font settings"
-msgstr ""
+msgstr "其他字体设置"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:261
 msgid "Always Toggled"
-msgstr ""
+msgstr "永远切换"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "&Misc:"
-msgstr ""
+msgstr "其他(&M):"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "toggle font on all of the above"
