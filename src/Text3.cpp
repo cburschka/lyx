@@ -375,16 +375,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit, pit + 1);
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit + 1]);
-
-		ParIterator begin(cur);
-		// begin.pos() (== cur.pos()) may point beyond the end of the
-		// paragraph referenced by begin. This would cause a crash
-		// in updateLabels()
-		begin.pos() = 0;
-		++cur.pit();
-		ParIterator end = boost::next(ParIterator(cur));
-		updateLabels(cur.buffer(), begin, end);
-
+		updateLabels(cur.buffer());
 		needsUpdate = true;
 		break;
 	}
@@ -394,17 +385,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit - 1, pit);
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit - 1]);
-
-		ParIterator end = ParIterator(cur);
-		// end.pos() (== cur.pos()) may point beyond the end of the
-		// paragraph referenced by end. This would cause a crash
-		// in boost::next()
-		end.pos() = 0;
-		end = boost::next(end);
-		--cur.pit();
-		ParIterator begin(cur);
-		updateLabels(cur.buffer(), begin, end);
-
+		updateLabels(cur.buffer());
 		needsUpdate = true;
 		break;
 	}

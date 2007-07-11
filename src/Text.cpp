@@ -644,12 +644,7 @@ void Text::breakParagraph(Cursor & cur, bool keep_layout)
 			break; // the character couldn't be deleted physically due to change tracking
 	}
 
-	ParIterator current_it(cur);
-	ParIterator last_it(cur);
-	++last_it;
-	++last_it;
-
-	updateLabels(cur.buffer(), current_it, last_it);
+	updateLabels(cur.buffer());
 
 	// A singlePar update is not enough in this case.
 	cur.updateFlags(Update::Force);
