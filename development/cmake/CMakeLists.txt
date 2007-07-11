@@ -14,8 +14,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 set (EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 
 set(PACKAGE lyx)
-set(PACKAGE_VERSION 1.5.0svn)
-set(LYX_DATE "not released yet")
+set(PACKAGE_VERSION 1.5.0)
+#set(LYX_DATE "not released yet")
 #TODO
 set(VERSION_INFO "CMake Build")
 
