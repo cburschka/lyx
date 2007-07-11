@@ -636,62 +636,6 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 } // anon namespace
 
 
-bool updateCurrentLabel(Buffer const & buf,
-	ParIterator & it)
-{
-    if (it == par_iterator_end(buf.inset()))
-	return false;
-
-//	if (it.lastpit == 0 && Text::isMainText(buf))
-//		return false;
-
-	switch (it->layout()->labeltype) {
-
-	case LABEL_NO_LABEL:
-	case LABEL_MANUAL:
-	case LABEL_BIBLIO:
-	case LABEL_TOP_ENVIRONMENT:
-	case LABEL_CENTERED_TOP_ENVIRONMENT:
-	case LABEL_STATIC:
-	case LABEL_ITEMIZE:
-		setLabel(buf, it, buf.params().getTextClass());
-		return true;
-
-	case LABEL_SENSITIVE:
-	case LABEL_COUNTER:
-	// do more things with enumerate later
-	case LABEL_ENUMERATE:
-		return false;
-	}
-
-	// This is dead code which get rid of a warning:
-	return true;
-}
-
-
-void updateLabels(Buffer const & buf,
-	ParIterator & from, ParIterator & to, bool childonly)
-{
-	for (ParIterator it = from; it != to; ++it) {
-		if (it.pit() > it.lastpit())
-			return;
-		if (!updateCurrentLabel (buf, it)) {
-			updateLabels(buf, childonly);
-			return;
-		}
-	}
-}
-
-
-void updateLabels(Buffer const & buf, ParIterator & iter, bool childonly)
-{
-	if (updateCurrentLabel(buf, iter))
-		return;
-
-	updateLabels(buf, childonly);
-}
-
-
 void updateLabels(Buffer const & buf, bool childonly)
 {
 	Buffer const * const master = buf.getMasterBuffer();

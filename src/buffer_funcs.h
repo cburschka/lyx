@@ -56,19 +56,6 @@ void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);
 
-/// update labels at "iter".
-/**
-A full updateLabels(Buffer const &) will be called if not possible.
-*/
-void updateLabels(Buffer const & buf, ParIterator & it, bool childonly = false);
-
-/// update labels between "from" and "to" if possible.
-/**
-A full updateLabels(Buffer const &) will be called if not possible.
-*/
-void updateLabels(Buffer const & buf,
-	ParIterator & from, ParIterator & to, bool childonly = false);
-
 /// updates all counters
 void updateLabels(Buffer const &, bool childonly = false);
 
