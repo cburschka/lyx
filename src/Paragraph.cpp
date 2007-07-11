@@ -1110,7 +1110,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	}
 
 	// First write the layout
-	os << "\n\\begin_layout " << layout()->name() << '\n';
+	os << "\n\\begin_layout " << to_utf8(layout()->name()) << '\n';
 
 	params().write(os);
 
@@ -1640,8 +1640,7 @@ docstring Paragraph::expandLabel(Layout_ptr const & layout,
 		size_t const j = fmt.find('@', i + 1);
 		if (j != docstring::npos) {
 			docstring parent(fmt, i + 1, j - i - 1);
-			// FIXME UNICODE
-			docstring label = expandLabel(tclass[to_utf8(parent)], bparams);
+			docstring label = expandLabel(tclass[parent], bparams);
 			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
 		}
 	}

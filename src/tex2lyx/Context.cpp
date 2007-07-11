@@ -28,7 +28,7 @@ namespace {
 void begin_layout(ostream & os, Layout_ptr layout, TeXFont const & font,
 		  TeXFont const & normalfont)
 {
-	os << "\n\\begin_layout " << layout->name() << "\n";
+	os << "\n\\begin_layout " << to_utf8(layout->name()) << "\n";
 	// FIXME: This is not enough for things like
 	// \\Huge par1 \\par par2
 	output_font_change(os, normalfont, font);
@@ -231,8 +231,8 @@ void Context::dump(ostream & os, string const & desc) const
 	if (!extra_stuff.empty())
 		os << "extrastuff=[" << extra_stuff << "] ";
 	os << "textclass=" << textclass.name()
-	   << " layout=" << layout->name()
-	   << " parent_layout=" << parent_layout->name() << "] font=["
+	   << " layout=" << to_utf8(layout->name())
+	   << " parent_layout=" << to_utf8(parent_layout->name()) << "] font=["
 	   << font.size << ' ' << font.family << ' ' << font.series << ' '
 	   << font.shape << ']' << endl;
 }

@@ -188,13 +188,13 @@ public:
 	///
 	void readSpacing(Lexer &);
 	///
-	std::string const & name() const;
+	docstring const & name() const;
 	///
-	void setName(std::string const & n);
+	void setName(docstring const & n);
 	///
-	std::string const & obsoleted_by() const;
+	docstring const & obsoleted_by() const;
 	///
-	std::string const & depends_on() const;
+	docstring const & depends_on() const;
 	///
 	std::string const & latexname() const { return latexname_; }
 	///
@@ -345,19 +345,19 @@ public:
 
 private:
 	/// Name of the layout/paragraph environment
-	std::string name_;
+	docstring name_;
 
 	/** Name of an layout that has replaced this layout.
 	    This is used to rename a layout, while keeping backward
 	    compatibility
 	*/
-	std::string obsoleted_by_;
+	docstring obsoleted_by_;
 
 	/** Name of an layout which preamble must come before this one
 	    This is used when the preamble snippet uses macros defined in
 	    another preamble
 	 */
-	std::string depends_on_;
+	docstring depends_on_;
 
 	/// LaTeX name for environment
 	std::string latexname_;

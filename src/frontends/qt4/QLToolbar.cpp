@@ -81,11 +81,11 @@ QLayoutBox::QLayoutBox(QToolBar * toolbar, GuiView & owner)
 }
 
 
-void QLayoutBox::set(string const & layout)
+void QLayoutBox::set(docstring const & layout)
 {
 	TextClass const & tc = getTextClass(owner_);
 
-	QString const & name = qt_(tc[layout]->name());
+	QString const & name = toqstr(translateIfPossible(tc[layout]->name()));
 
 	int i = 0;
 	for (; i < combo_->count(); ++i) {
@@ -116,7 +116,7 @@ void QLayoutBox::update()
 	for (; it != end; ++it) {
 		// ignore obsolete entries
 		if ((*it)->obsoleted_by().empty())
-			combo_->addItem(qt_((*it)->name()));
+			combo_->addItem(toqstr(translateIfPossible((*it)->name())));
 	}
 
 	// needed to recalculate size hint
@@ -152,11 +152,9 @@ void QLayoutBox::setEnabled(bool enable)
 
 void QLayoutBox::selected(const QString & str)
 {
-	string const sel = fromqstr(str);
-
 	owner_.setFocus();
 
-	layoutSelected(owner_, sel);
+	layoutSelected(owner_, qstring_to_ucs4(str));
 }
 
 

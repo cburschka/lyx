@@ -358,7 +358,7 @@ pit_type Text::undoSpan(pit_type pit)
 
 
 void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
-		string const & layout)
+		docstring const & layout)
 {
 	BOOST_ASSERT(start != end);
 
@@ -376,7 +376,7 @@ void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void Text::setLayout(Cursor & cur, string const & layout)
+void Text::setLayout(Cursor & cur, docstring const & layout)
 {
 	BOOST_ASSERT(this == cur.text());
 	// special handling of new environment insets
@@ -385,7 +385,7 @@ void Text::setLayout(Cursor & cur, string const & layout)
 	Layout_ptr const & lyxlayout = params.getTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
-		LYXERR(Debug::DEBUG) << "setting layout " << layout << endl;
+		LYXERR(Debug::DEBUG) << "setting layout " << to_utf8(layout) << endl;
 		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
 		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
 		lyx::dispatch(FuncRequest(LFUN_CUT));

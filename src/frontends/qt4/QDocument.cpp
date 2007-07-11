@@ -852,7 +852,7 @@ void QDocumentDialog::updateNumbering()
 		if (toclevel != Layout::NOT_IN_TOC
 		    && (*cit)->labeltype == LABEL_COUNTER) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);
-			item->setText(0, qt_((*cit)->name()));
+			item->setText(0, toqstr(translateIfPossible((*cit)->name())));
 			item->setText(1, (toclevel <= depth) ? yes : no);
 			item->setText(2, (toclevel <= toc) ? yes : no);
 		}

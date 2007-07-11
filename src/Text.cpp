@@ -118,7 +118,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 #endif
 	} else if (token == "\\begin_layout") {
 		lex.eatLine();
-		string layoutname = lex.getString();
+		docstring layoutname = lex.getDocString();
 
 		font = Font(Font::ALL_INHERIT, bp.language);
 		change = Change(Change::UNCHANGED);
@@ -134,7 +134,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		if (!hasLayout) {
 			errorList.push_back(ErrorItem(_("Unknown layout"),
 			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
-			from_utf8(layoutname), from_utf8(tclass.name())), par.id(), 0, par.size()));
+			layoutname, from_utf8(tclass.name())), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
 		}
 

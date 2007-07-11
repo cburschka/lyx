@@ -426,7 +426,7 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 	// layouts
 	ParIterator end = par_iterator_end(in);
 	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
-		string const name = it->layout()->name();
+		docstring const name = it->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
 
 		if (hasLayout)
@@ -438,7 +438,7 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			docstring const s = bformat(
 						 _("Layout had to be changed from\n%1$s to %2$s\n"
 						"because of class conversion from\n%3$s to %4$s"),
-			 from_utf8(name), from_utf8(it->layout()->name()),
+			 name, it->layout()->name(),
 			 from_utf8(tclass1.name()), from_utf8(tclass2.name()));
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem(_("Changed Layout"), s,

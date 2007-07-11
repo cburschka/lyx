@@ -27,8 +27,8 @@ using std::ostream;
 
 
 InsetEnvironment::InsetEnvironment
-		(BufferParams const & bp, string const & name)
-	: InsetText(bp), layout_(bp.getTextClass()[name]), name_(from_utf8(name))
+		(BufferParams const & bp, docstring const & name)
+	: InsetText(bp), layout_(bp.getTextClass()[name]), name_(name)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);

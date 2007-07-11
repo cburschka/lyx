@@ -18,8 +18,11 @@
 #include "debug.h"
 #include "Lexer.h"
 #include "Counters.h"
+#include "gettext.h"
 #include "Floating.h"
 #include "FloatList.h"
+
+#include "frontends/alert.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -53,7 +56,7 @@ namespace {
 
 class LayoutNamesEqual : public std::unary_function<Layout_ptr, bool> {
 public:
-	LayoutNamesEqual(string const & name)
+	LayoutNamesEqual(docstring const & name)
 		: name_(name)
 	{}
 	bool operator()(Layout_ptr const & c) const
@@ -61,7 +64,7 @@ public:
 		return c->name() == name_;
 	}
 private:
-	string name_;
+	docstring name_;
 };
 
 
@@ -127,7 +130,7 @@ bool TextClass::isTeXClassAvailable() const
 
 bool TextClass::do_readStyle(Lexer & lexrc, Layout & lay)
 {
-	LYXERR(Debug::TCLASS) << "Reading style " << lay.name() << endl;
+	LYXERR(Debug::TCLASS) << "Reading style " << to_utf8(lay.name()) << endl;
 	if (!lay.read(lexrc, *this)) {
 		// Resolve fonts
 		lay.resfont = lay.font;
@@ -136,7 +139,7 @@ bool TextClass::do_readStyle(Lexer & lexrc, Layout & lay)
 		lay.reslabelfont.realize(defaultfont());
 		return false; // no errors
 	}
-	lyxerr << "Error parsing style `" << lay.name() << '\'' << endl;
+	lyxerr << "Error parsing style `" << to_utf8(lay.name()) << '\'' << endl;
 	return true;
 }
 
@@ -271,8 +274,8 @@ bool TextClass::read(FileName const & filename, bool merge)
 
 		case TC_DEFAULTSTYLE:
 			if (lexrc.next()) {
-				string const name = subst(lexrc.getString(),
-							  '_', ' ');
+				docstring const name = from_utf8(subst(lexrc.getString(),
+							  '_', ' '));
 				defaultlayout_ = name;
 			}
 			break;
@@ -280,9 +283,15 @@ bool TextClass::read(FileName const & filename, bool merge)
 		case TC_ENVIRONMENT:
 		case TC_STYLE:
 			if (lexrc.next()) {
-				string const name = subst(lexrc.getString(),
-						    '_', ' ');
-				if (hasLayout(name)) {
+				docstring const name = from_utf8(subst(lexrc.getString(),
+						    '_', ' '));
+				if (name.empty()) {
+					string s = "Could not read name for style: `$$Token' "
+						+ lexrc.getString() + " is probably not valid UTF-8!";
+					lexrc.printError(s.c_str());
+					Layout lay;
+					error = do_readStyle(lexrc, lay);
+				} else if (hasLayout(name)) {
 					Layout * lay = operator[](name).get();
 					error = do_readStyle(lexrc, *lay);
 				} else {
@@ -313,11 +322,11 @@ bool TextClass::read(FileName const & filename, bool merge)
 
 		case TC_NOSTYLE:
 			if (lexrc.next()) {
-				string const style = subst(lexrc.getString(),
-						     '_', ' ');
+				docstring const style = from_utf8(subst(lexrc.getString(),
+						     '_', ' '));
 				if (!delete_layout(style))
 					lyxerr << "Cannot delete style `"
-					       << style << '\'' << endl;
+					       << to_utf8(style) << '\'' << endl;
 //					lexrc.printError("Cannot delete style"
 //							 " `$$Token'");
 			}
@@ -850,9 +859,9 @@ string const & TextClass::rightmargin() const
 }
 
 
-bool TextClass::hasLayout(string const & n) const
+bool TextClass::hasLayout(docstring const & n) const
 {
-	string const name = (n.empty() ? defaultLayoutName() : n);
+	docstring const name = n.empty() ? defaultLayoutName() : n;
 
 	return find_if(layoutlist_.begin(), layoutlist_.end(),
 		       LayoutNamesEqual(name))
@@ -861,7 +870,7 @@ bool TextClass::hasLayout(string const & n) const
 
 
 
-Layout_ptr const & TextClass::operator[](string const & name) const
+Layout_ptr const & TextClass::operator[](docstring const & name) const
 {
 	BOOST_ASSERT(!name.empty());
 
@@ -871,12 +880,12 @@ Layout_ptr const & TextClass::operator[](string const & name) const
 			LayoutNamesEqual(name));
 
 	if (cit == layoutlist_.end()) {
-		lyxerr << "We failed to find the layout '" << name
+		lyxerr << "We failed to find the layout '" << to_utf8(name)
 		       << "' in the layout list. You MUST investigate!"
 		       << endl;
 		for (LayoutList::const_iterator it = layoutlist_.begin();
 			 it != layoutlist_.end(); ++it)
-			lyxerr  << " " << it->get()->name() << endl;
+			lyxerr  << " " << to_utf8(it->get()->name()) << endl;
 
 		// we require the name to exist
 		BOOST_ASSERT(false);
@@ -887,7 +896,7 @@ Layout_ptr const & TextClass::operator[](string const & name) const
 
 
 
-bool TextClass::delete_layout(string const & name)
+bool TextClass::delete_layout(docstring const & name)
 {
 	if (name == defaultLayoutName())
 		return false;
@@ -959,7 +968,7 @@ CharStyles::iterator TextClass::charstyle(string const & s) const
 }
 
 
-string const & TextClass::defaultLayoutName() const
+docstring const & TextClass::defaultLayoutName() const
 {
 	// This really should come from the actual layout... (Lgb)
 	return defaultlayout_;

@@ -242,7 +242,7 @@ public:
 		std::string data)> updateDialog;
 
 	/// This signal is emitted when the layout at the cursor is changed.
-	boost::signal<void(std::string layout)> layoutChanged;
+	boost::signal<void(docstring layout)> layoutChanged;
 
 private:
 	///

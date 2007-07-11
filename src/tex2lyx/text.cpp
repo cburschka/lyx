@@ -1051,7 +1051,7 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 	}
 
 	if (!scrap || !context.new_layout_allowed ||
-	    !context.textclass.hasLayout("Scrap")) {
+	    !context.textclass.hasLayout(from_ascii("Scrap"))) {
 		cerr << "Warning: Could not interpret '" << name
 		     << "'. Ignoring it." << endl;
 		return;
@@ -1064,7 +1064,8 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 	// noweb code chunks are implemented with a layout style in LyX they
 	// always must be in an own paragraph.
 	context.new_paragraph(os);
-	Context newcontext(true, context.textclass, context.textclass["Scrap"]);
+	Context newcontext(true, context.textclass,
+		context.textclass[from_ascii("Scrap")]);
 	newcontext.check_layout(os);
 	os << name;
 	while (p.good()) {

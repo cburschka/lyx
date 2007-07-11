@@ -21,7 +21,7 @@ namespace lyx {
 class InsetEnvironment : public InsetText {
 public:
 	///
-	InsetEnvironment(BufferParams const &, std::string const & name);
+	InsetEnvironment(BufferParams const &, docstring const & name);
 	///
 	docstring name() const { return name_; }
 	///

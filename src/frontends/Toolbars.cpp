@@ -278,7 +278,7 @@ void Toolbars::saveToolbarInfo()
 }
 
 
-void Toolbars::setLayout(string const & layout)
+void Toolbars::setLayout(docstring const & layout)
 {
 	if (layout_)
 		layout_->set(layout);
@@ -356,16 +356,15 @@ void Toolbars::update()
 }
 
 
-void layoutSelected(LyXView & lv, string const & name)
+void layoutSelected(LyXView & lv, docstring const & name)
 {
 	TextClass const & tc = lv.buffer()->params().getTextClass();
 
 	TextClass::const_iterator it  = tc.begin();
 	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
-		string const & itname = (*it)->name();
-		// Yes, the lyx::to_utf8(_()) is correct
-		if (lyx::to_utf8(_(itname)) == name) {
+		docstring const & itname = (*it)->name();
+		if (translateIfPossible(itname) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::TOOLBAR);
 			lv.dispatch(func);

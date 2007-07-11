@@ -83,10 +83,10 @@ public:
 	///
 	void readCounter(Lexer &);
 	///
-	bool hasLayout(std::string const & name) const;
+	bool hasLayout(docstring const & name) const;
 
 	///
-	Layout_ptr const & operator[](std::string const & vname) const;
+	Layout_ptr const & operator[](docstring const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
 	bool load(std::string const & path = std::string()) const;
@@ -104,7 +104,7 @@ public:
 	/// Retrieve element of name s:
 	CharStyles::iterator charstyle(std::string const & s) const;
 	///
-	std::string const & defaultLayoutName() const;
+	docstring const & defaultLayoutName() const;
 	///
 	Layout_ptr const & defaultLayout() const;
 	///
@@ -172,7 +172,7 @@ public:
 	bool hasTocLevels() const;
 private:
 	///
-	bool delete_layout(std::string const &);
+	bool delete_layout(docstring const &);
 	///
 	bool do_readStyle(Lexer &, Layout &);
 	/// Layout file name
@@ -192,7 +192,7 @@ private:
 	///
 	std::string class_header_;
 	///
-	std::string defaultlayout_;
+	docstring defaultlayout_;
 	/// preamble text to support layout styles
 	docstring preamble_;
 	/// latex packages loaded by document class.

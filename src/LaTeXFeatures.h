@@ -91,7 +91,7 @@ public:
 	///
 	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///
-	void useLayout(std::string const & lyt);
+	void useLayout(docstring const & lyt);
 	///
 	Buffer const & buffer() const;
 	///
@@ -104,7 +104,7 @@ public:
 	OutputParams const & runparams() const { return runparams_; }
 
 private:
-	std::list<std::string> usedLayouts_;
+	std::list<docstring> usedLayouts_;
 
 	/// Static preamble bits from the external material insets
 	typedef std::list<std::string> FeaturesList;

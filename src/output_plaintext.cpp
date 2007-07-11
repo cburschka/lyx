@@ -89,7 +89,7 @@ void writePlaintextParagraph(Buffer const & buf,
 	depth_type depth = par.params().depth();
 
 	// First write the layout
-	string const & tmp = par.layout()->name();
+	string const tmp = to_utf8(par.layout()->name());
 	if (compare_ascii_no_case(tmp, "itemize") == 0) {
 		ltype = 1;
 		ltype_depth = depth + 1;

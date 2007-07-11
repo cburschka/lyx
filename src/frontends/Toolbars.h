@@ -37,7 +37,7 @@ class LayoutBox {
 public:
 	virtual ~LayoutBox() {}
 	/// Select the correct layout in the combox.
-	virtual void set(std::string const & layout) = 0;
+	virtual void set(docstring const & layout) = 0;
 	/// Populate the layout combox.
 	virtual void update() = 0;
 	/// Erase the layout list.
@@ -108,7 +108,7 @@ public:
 	void saveToolbarInfo();
 
 	/// Select the right layout in the combox.
-	void setLayout(std::string const & layout);
+	void setLayout(docstring const & layout);
 
 	/** Populate the layout combox - returns whether we did a full
 	 *  update or not
@@ -155,7 +155,7 @@ private:
 };
 
 /// Set the layout in the kernel when an entry has been selected
-void layoutSelected(LyXView & lv, std::string const & name);
+void layoutSelected(LyXView & lv, docstring const & name);
 
 
 } // namespace lyx

@@ -228,7 +228,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			return new InsetTOC(InsetCommandParams("tableofcontents"));
 
 		case LFUN_ENVIRONMENT_INSERT:
-			return new InsetEnvironment(params, to_utf8(cmd.argument()));
+			return new InsetEnvironment(params, cmd.argument());
 
 #if 0
 		case LFUN_LIST_INSERT:
@@ -491,7 +491,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetInclude(p));
 		} else if (tmptok == "Environment") {
 			lex.next();
-			inset.reset(new InsetEnvironment(buf.params(), lex.getString()));
+			inset.reset(new InsetEnvironment(buf.params(), lex.getDocString()));
 		} else if (tmptok == "ERT") {
 			inset.reset(new InsetERT(buf.params()));
 		} else if (tmptok == "listings") {

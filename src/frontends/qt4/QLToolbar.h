@@ -40,7 +40,7 @@ public:
 	QLayoutBox(QToolBar *, GuiView &);
 
 	/// select the right layout in the combox.
-	void set(std::string const & layout);
+	void set(docstring const & layout);
 	/// Populate the layout combox.
 	void update();
 	/// Erase the layout list.

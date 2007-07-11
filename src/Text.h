@@ -81,10 +81,10 @@ public:
 
 	/// set layout over selection
 	void setLayout(Buffer const & buffer, pit_type start, pit_type end,
-		std::string const & layout);
+		docstring const & layout);
 	/// Set given layout to current cursor position.
 	/// FIXME: replace Cursor with DocIterator.
-	void setLayout(Cursor & cur, std::string const & layout);
+	void setLayout(Cursor & cur, docstring const & layout);
 
 	/// what type of depth change to make
 	enum DEPTH_CHANGE {

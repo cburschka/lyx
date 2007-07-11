@@ -89,7 +89,7 @@ using std::istringstream;
 using std::ostringstream;
 
 
-extern string current_layout;
+extern docstring current_layout;
 
 
 namespace {
@@ -399,6 +399,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 // Should LFUN_APPENDIX be restricted to top-level paragraphs?
 #endif
 		// ensure that we have only one start_of_appendix in this document
+		// FIXME: this don't work for multipart document!
 		for (pit_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
 			if (pars_[tmp].params().startOfAppendix()) {
 				recUndo(cur, tmp);
@@ -868,12 +869,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SERVER_GET_LAYOUT:
-		cur.message(from_utf8(cur.paragraph().layout()->name()));
+		cur.message(cur.paragraph().layout()->name());
 		break;
 
 	case LFUN_LAYOUT: {
-		string layout = to_ascii(cmd.argument());
-		LYXERR(Debug::INFO) << "LFUN_LAYOUT: (arg) " << layout << endl;
+		docstring layout = cmd.argument();
+		LYXERR(Debug::INFO) << "LFUN_LAYOUT: (arg) " << to_utf8(layout) << endl;
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
@@ -884,7 +885,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
-			string const & obs = tclass[layout]->obsoleted_by();
+			docstring const & obs = tclass[layout]->obsoleted_by();
 			if (!obs.empty())
 				layout = obs;
 		}

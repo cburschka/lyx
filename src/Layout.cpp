@@ -212,16 +212,16 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_COPYSTYLE:     // initialize with a known style
 			if (lexrc.next()) {
-				string const style = subst(lexrc.getString(),
+				docstring const style = subst(lexrc.getDocString(),
 								'_', ' ');
 
 				if (tclass.hasLayout(style)) {
-					string const tmpname = name_;
+					docstring const tmpname = name_;
 					this->operator=(*tclass[style]);
 					name_ = tmpname;
 				} else {
 					lyxerr << "Cannot copy unknown style `"
-					       << style << "'\n"
+					       << to_utf8(style) << "'\n"
 					       << "All layouts so far:"
 					       << endl;
 					TextClass::const_iterator it =
@@ -229,7 +229,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 					TextClass::const_iterator end =
 						tclass.end();
 					for (; it != end; ++it) {
-						lyxerr << (*it)->name()
+						lyxerr << to_utf8((*it)->name())
 						       << endl;
 					}
 
@@ -241,16 +241,17 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_OBSOLETEDBY:     // replace with a known style
 			if (lexrc.next()) {
-				string const style = lexrc.getString();
+				docstring const style = lexrc.getDocString();
 
 				if (tclass.hasLayout(style)) {
-					string const tmpname = name_;
+					docstring const tmpname = name_;
 					this->operator=(*tclass[style]);
 					name_ = tmpname;
 					if (obsoleted_by().empty())
 						obsoleted_by_ = style;
 				} else {
-					lyxerr << "Cannot replace with unknown style `" << style << '\'' << endl;
+					lyxerr << "Cannot replace with unknown style `" 
+						<< to_utf8(style) << '\'' << endl;
 
 					//lexrc.printError("Cannot replace with"
 					//		 " unknown style "
@@ -261,7 +262,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_DEPENDSON:
 			if (lexrc.next())
-				depends_on_ = lexrc.getString();
+				depends_on_ = lexrc.getDocString();
 			break;
 
 		case LT_MARGIN:		// margin style definition.
@@ -797,33 +798,34 @@ void Layout::readSpacing(Lexer & lexrc)
 }
 
 
-string const & Layout::name() const
+docstring const & Layout::name() const
 {
 	return name_;
 }
 
 
-void Layout::setName(string const & n)
+void Layout::setName(docstring const & n)
 {
 	name_ = n;
 }
 
 
-string const & Layout::obsoleted_by() const
+docstring const & Layout::obsoleted_by() const
 {
 	return obsoleted_by_;
 }
 
 
-string const & Layout::depends_on() const
+docstring const & Layout::depends_on() const
 {
 	return depends_on_;
 }
 
+
 Layout * Layout::forCaption()
 {
 	Layout * lay = new Layout();
-	lay->name_ = "Caption";
+	lay->name_ = from_ascii("Caption");
 	lay->latexname_ = "caption";
 	lay->latextype = LATEX_COMMAND;
 	lay->optionalargs = 1;

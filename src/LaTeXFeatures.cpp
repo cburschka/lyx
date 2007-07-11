@@ -254,7 +254,7 @@ void LaTeXFeatures::getAvailable()
 }
 
 
-void LaTeXFeatures::useLayout(string const & layoutname)
+void LaTeXFeatures::useLayout(docstring const & layoutname)
 {
 	// Some code to avoid loops in dependency definition
 	static int level = 0;
@@ -262,15 +262,15 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 	if (level > maxlevel) {
 		lyxerr << "LaTeXFeatures::useLayout: maximum level of "
 		       << "recursion attained by layout "
-		       << layoutname << endl;
+		       << to_utf8(layoutname) << endl;
 		return;
 	}
 
 	TextClass const & tclass = params_.getTextClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
-		list<string>::const_iterator cit = usedLayouts_.begin();
-		list<string>::const_iterator end = usedLayouts_.end();
+		list<docstring>::const_iterator cit = usedLayouts_.begin();
+		list<docstring>::const_iterator end = usedLayouts_.end();
 		for (; cit != end; ++cit) {
 			if (layoutname == *cit)
 				return;
@@ -285,7 +285,7 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 		usedLayouts_.push_back(layoutname);
 	} else {
 		lyxerr << "LaTeXFeatures::useLayout: layout `"
-		       << layoutname << "' does not exist in this class"
+		       << to_utf8(layoutname) << "' does not exist in this class"
 		       << endl;
 	}
 
@@ -712,8 +712,8 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 
 	tcpreamble << tclass.preamble();
 
-	list<string>::const_iterator cit = usedLayouts_.begin();
-	list<string>::const_iterator end = usedLayouts_.end();
+	list<docstring>::const_iterator cit = usedLayouts_.begin();
+	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
 		tcpreamble << tclass[*cit]->preamble();
 	}
