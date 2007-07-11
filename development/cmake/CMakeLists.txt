@@ -15,7 +15,7 @@ set (EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 
 set(PACKAGE lyx)
 set(PACKAGE_VERSION 1.5.0)
-#set(LYX_DATE "not released yet")
+set(LYX_DATE "July, 2007")
 #TODO
 set(VERSION_INFO "CMake Build")
 
@@ -44,13 +44,13 @@ if(merge)
 	set(merge 1 CACHE TYPE STRING FORCE)
 	set(MERGE_FILES 1 CACHE TYPE STRING FORCE)
 	message(STATUS "")
-	message(STATUS "will merge all *.cpp files of a project into two files, disable with -Dmerge=0")
+	message(STATUS "All *.cpp files of a project are merged into two files, disable with -Dmerge=0")
 	message(STATUS "")
 	set(disable-pch  1)
 else(merge)
 	set(merge 0 CACHE TYPE STRING FORCE)
 	set(MERGE_FILES 0 CACHE TYPE STRING FORCE)
-	message(STATUS "enable merging files with -Dmerge=1")
+	message(STATUS "Enable merging files with -Dmerge=1")
 endif(merge)	
 
 
