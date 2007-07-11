@@ -10,6 +10,7 @@ TOP_extra_files = Split('''
     INSTALL.MacOSX
     INSTALL.Win32
     INSTALL.autoconf
+    INSTALL.cmake
     INSTALL.scons
     Makefile.am
     NEWS

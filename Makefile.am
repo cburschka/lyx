@@ -16,8 +16,8 @@ SUBDIRS = config development intl po src sourcedoc lib
 endif
 
 EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
-	INSTALL.Win32 INSTALL.MacOSX INSTALL.scons README.Win32 README.Cygwin \
-	lyx.man autogen.sh
+	INSTALL.Win32 INSTALL.MacOSX INSTALL.scons INSTALL.cmake \
+	README.Win32 README.Cygwin lyx.man autogen.sh
 
 man_MANS = lyx.1
 
