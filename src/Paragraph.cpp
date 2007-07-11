@@ -42,6 +42,7 @@
 #include "TexRow.h"
 #include "VSpace.h"
 
+#include "frontends/alert.h"
 #include "frontends/FontMetrics.h"
 
 #include "insets/InsetBibitem.h"
@@ -1652,9 +1653,15 @@ docstring Paragraph::expandLabel(Layout_ptr const & layout,
 void Paragraph::applyLayout(Layout_ptr const & new_layout)
 {
 	layout(new_layout);
-	params().labelWidthString(docstring());
-	params().align(LYX_ALIGN_LAYOUT);
-	params().spacing(Spacing(Spacing::Default));
+	LyXAlignment const oldAlign = params().align();
+	// FIXME The first check is due to the fact that LYX_ALIGN_LAYOUT
+	// is not required to be possible. A fix is on the way.
+	if ((oldAlign != LYX_ALIGN_LAYOUT) && 
+	    !(oldAlign & layout()->alignpossible)) {
+		frontend::Alert::warning(_("Alignment not permitted"), 
+			_("The new layout does not permit the alignment previously used.\nSetting to default."));
+		params().align(LYX_ALIGN_LAYOUT);
+	}
 }
 
 
