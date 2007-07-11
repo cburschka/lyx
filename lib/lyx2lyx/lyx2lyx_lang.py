@@ -39,6 +39,7 @@ lang = {'afrikaans': ['afrikaans', 'Afrikaans', 'false', 'iso8859-1', 'af_ZA', '
             'iso8859-1',
             'fr_FR',
             '\\addto\\extrasfrench{\\providecommand{\\og}{\\leavevmode\\flqq~}\\providecommand{\\fg}{\\ifdim\\lastskip>\\z@\\unskip\\fi~\\frqq}}'],
+ 'frenchb': ['french', 'French', 'false', 'iso8859-1', 'fr_FR', ''], # for compatibility reasons
  'galician': ['galician', 'Galician', 'false', 'iso8859-1', 'gl_ES', ''],
  'german': ['german', 'German', 'false', 'iso8859-1', 'de_DE', ''],
  'greek': ['greek', 'Greek', 'false', 'iso8859-7', 'el_GR', ''],
