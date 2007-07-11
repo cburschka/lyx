@@ -177,6 +177,7 @@ void Counters::step(docstring const & ctr)
 
 void Counters::reset()
 {
+	appendix_ = false;
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator const end = counterList.end();
 	for (; it != end; ++it) {

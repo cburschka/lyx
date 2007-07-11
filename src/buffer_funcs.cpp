@@ -474,16 +474,13 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 	Layout_ptr const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
-	if (it.pit() == 0) {
-		par.params().appendix(par.params().startOfAppendix());
-	} else {
-		par.params().appendix(it.plist()[it.pit() - 1].params().appendix());
-		if (!par.params().appendix() &&
-		    par.params().startOfAppendix()) {
-			par.params().appendix(true);
-			textclass.counters().reset();
-		}
+	if (par.params().startOfAppendix()) {
+		// FIXME: only the counter corresponding to toplevel
+		// sectionning should be reset
+		counters.reset();
+		counters.appendix(true);
 	}
+	par.params().appendix(counters.appendix());
 
 	// Compute the item depth of the paragraph
 	par.itemdepth = getItemDepth(it);
@@ -697,12 +694,12 @@ void updateLabels(Buffer const & buf, ParIterator & iter, bool childonly)
 
 void updateLabels(Buffer const & buf, bool childonly)
 {
+	Buffer const * const master = buf.getMasterBuffer();
 	// Use the master text class also for child documents
-	TextClass const & textclass = buf.params().getTextClass();
+	TextClass const & textclass = master->params().getTextClass();
 
 	if (!childonly) {
 		// If this is a child document start with the master
-		Buffer const * const master = buf.getMasterBuffer();
 		if (master != &buf) {
 			updateLabels(*master);
 			return;

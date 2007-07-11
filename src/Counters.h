@@ -82,6 +82,10 @@ public:
 	/// A complete expanded label, like 2.1.4 for a subsubsection
 	/// according to the given format
 	lyx::docstring counterLabel(lyx::docstring const & format);
+	///
+	bool appendix() const { return appendix_; };
+	///
+	void appendix(bool a) { appendix_ = a; };
 private:
 	/// A counter label's single item, 1 for subsection number in
 	/// the 2.1.4 subsubsection number label.
@@ -91,6 +95,8 @@ private:
 	typedef std::map<lyx::docstring, Counter> CounterList;
 	/// Instantiate.
 	CounterList counterList;
+	///
+	bool appendix_;
 
 };
 
