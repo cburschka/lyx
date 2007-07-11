@@ -74,6 +74,11 @@ using lyx::support::addName;
 using lyx::support::addPath;
 using lyx::support::package;
 
+// API definition for manually calling font functions on Windows 2000 and later
+typedef int (WINAPI *FONTAPI)(LPCSTR, DWORD, PVOID);
+#define FR_PRIVATE     0x10
+
+// Names of TrueType fonts to load
 string const win_fonts_truetype[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
 	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
 const int num_fonts_truetype = sizeof(win_fonts_truetype) / sizeof(*win_fonts_truetype);
@@ -408,11 +413,22 @@ void addFontResources()
 	// Windows only: Add BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
 
+	HMODULE hDLL = LoadLibrary("gdi32");
+	FONTAPI pAddFontResourceEx = (FONTAPI) GetProcAddress(hDLL, "AddFontResourceExA");
+
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current =
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		AddFontResource(to_local8bit(from_utf8(external_path(font_current))).c_str());
+		if (pAddFontResourceEx) {
+			// Windows 2000 and later: Use AddFontResourceEx for private font
+			pAddFontResourceEx(to_local8bit(from_utf8(external_path(font_current))).c_str(), FR_PRIVATE, 0);
+		} else {
+			// Older Windows versions: Use AddFontResource
+			AddFontResource(to_local8bit(from_utf8(external_path(font_current))).c_str());
+		}
 	}
+
+	FreeLibrary(hDLL);
 }
 
 
@@ -421,11 +437,22 @@ void restoreFontResources()
 	// Windows only: Remove BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
 
+	HMODULE hDLL = LoadLibrary("gdi32");
+	FONTAPI pRemoveFontResourceEx = (FONTAPI) GetProcAddress(hDLL, "RemoveFontResourceExA");
+
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
 		string const font_current =
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		RemoveFontResource(to_local8bit(from_utf8(external_path(font_current))).c_str());
+		if (pRemoveFontResourceEx) {
+			// Windows 2000 and later: Use RemoveFontResourceEx for private font
+			pRemoveFontResourceEx(to_local8bit(from_utf8(external_path(font_current))).c_str(), FR_PRIVATE, 0);
+		} else {
+			// Older Windows versions: Use RemoveFontResource
+			RemoveFontResource(to_local8bit(from_utf8(external_path(font_current))).c_str());
+		}
 	}
+
+	FreeLibrary(hDLL);
 }
 
 } // namespace os
