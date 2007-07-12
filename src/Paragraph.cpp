@@ -67,6 +67,7 @@ using std::ostream;
 namespace lyx {
 
 using support::contains;
+using support::suffixIs;
 using support::rsplit;
 
 
@@ -2076,11 +2077,20 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		     font.language() != running_font.language()) &&
 			i != body_pos - 1)
 		{
-			column += font.latexWriteStartChanges(os, bparams,
+			odocstringstream ods;
+			column += font.latexWriteStartChanges(ods, bparams,
 							      runparams, basefont,
 							      last_font);
 			running_font = font;
 			open_font = true;
+			docstring fontchange = ods.str();
+			// check if the fontchange ends with a trailing blank
+			// (like "\small " (see bug 3382)
+			if (suffixIs(fontchange, ' ') && c == ' ')
+				os << fontchange.substr(0, fontchange.size() - 1) 
+				   << from_ascii("{}");
+			else
+				os << fontchange;
 		}
 
 		if (c == ' ') {
