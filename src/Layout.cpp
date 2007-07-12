@@ -241,7 +241,8 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_OBSOLETEDBY:     // replace with a known style
 			if (lexrc.next()) {
-				docstring const style = lexrc.getDocString();
+				docstring const style = 
+					subst(lexrc.getDocString(), '_', ' ');
 
 				if (tclass.hasLayout(style)) {
 					docstring const tmpname = name_;
@@ -262,7 +263,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_DEPENDSON:
 			if (lexrc.next())
-				depends_on_ = lexrc.getDocString();
+			depends_on_ = subst(lexrc.getDocString(), '_', ' ');
 			break;
 
 		case LT_MARGIN:		// margin style definition.
