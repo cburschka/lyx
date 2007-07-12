@@ -8,6 +8,40 @@
 Format 2
 Input stdcounters.inc
 
+# local counters
+
+Counter
+  Name                 section 
+End
+
+Counter
+  Name                 subsection
+  Within               section
+End
+
+Counter
+  Name                 bibitem
+End
+
+Counter
+  Name                 figure
+  Name                 lyxframeend{}\section
+End
+
+Counter
+  Name                 table
+End
+
+Counter
+  Name                 enumi
+End
+
+Counter
+  Name                 enumii
+  Within               enumi
+End
+
+
 # General textclass parameters
 Columns			1
 Sides			1
@@ -25,6 +59,7 @@ DefaultFont
   Color			None
 EndFont
 
+
 # Standard style definition
 Style Standard
   Margin  		Static
@@ -37,6 +72,7 @@ Style Standard
   LabelType 		No_Label  
 End
 
+# List section
 # Itemize style definition
 Style Itemize
   Margin		Static
@@ -52,7 +88,7 @@ Style Itemize
   Align			Left
   AlignPossible		Left
   LabelType		Itemize
-  LabelString		*
+  LabelString		"*"
 End
 
 # Enumerate style definition
@@ -89,7 +125,7 @@ Style Description
   Align			Left
   AlignPossible		Left
   LabelType		Manual
-  LabelString		MM
+  LabelString		"MM"
 
   # label font definition
   LabelFont 
@@ -97,169 +133,35 @@ Style Description
   EndFont
 End
 
-Style BeginFrame
-  KeepEmpty	1
-  LatexType	Command
-  LatexName	lyxframeend{}\lyxframe
-  Margin            First_Dynamic
-  NextNoIndent      1
-  ParSkip           0
-  TopSep            2.5
-  BottomSep         0.5
-  ParSep            0
-  Align             Center
-  AlignPossible     Center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        M
-  LabelString       "Frame   "
+# Sectioning section
+# Part style definition
+Style Part
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		part
+  NeedProtect		1
+  NextNoIndent          1
+  Labelsep		xxx
+  ParSkip               0.4
+  TopSep                4
+  BottomSep             4
+  ParSep                0.8
+  Align			Center         
+  Alignpossible         Center
+  LabelType             Static
+  LabelString		"Part "
 
-  Font
-    Series          Bold
-    Size            Largest
-    Color           Blue
+  # standard font definition
+  Font 
+    Family              Roman
+    Series              Bold
+    Size                Huge
   EndFont
 
-  LabelFont 
-    Family          Roman
-    Color           latex
-  EndFont
-
-  Preamble
-    \makeatletter
-    \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
-    \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
-    \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
-    \def\@@@lyxframe<#1>[{\@ifnextchar<{\@@@@@lyxframe<#1>[}{\@@@@lyxframe<#1>[<*>][}}
-    \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
-    \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
-      \frame<#1>[#2][#3]{\frametitle{#4}#5}}
-    \makeatother
-  EndPreamble
-End
-
-Style BeginPlainFrame
-  KeepEmpty	1
-  LatexType	Command
-  LatexName	lyxframeend{}\lyxplainframe
-  Margin            First_Dynamic
-  NextNoIndent      1
-  ParSkip           0
-  TopSep            2.5
-  BottomSep         0.5
-  ParSep            0
-  Align             Center
-  AlignPossible     center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        M
-  LabelString       "Frame (no head/foot/sidebars)  "
-
-  Font
-    Series          Bold
-    Size            Largest
-    Color           Blue
-  EndFont
-
-  LabelFont 
-    Family          Roman
-    Color           latex
-  EndFont
-
-  Preamble
-    \makeatletter
-    \long\def\lyxplainframe#1{\@lyxplainframe#1\@lyxframestop}%
-    \def\@lyxplainframe{\@ifnextchar<{\@@lyxplainframe}{\@@lyxplainframe<*>}}%
-    \long\def\@@lyxplainframe<#1>#2\@lyxframestop#3\lyxframeend{%
-      \frame<#1>[plain]{\frametitle{#2}#3}}
-    \makeatother
-  EndPreamble
-End
-
-Style EndFrame
-  KeepEmpty	    1
-  LatexType	    Command
-  LatexName	    lyxframeend
-  Margin            First_Dynamic
-  ParSkip           0
-  TopSep            0
-  BottomSep         3
-  ParSep            0
-  Align             Center
-  AlignPossible     Center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        MMMMM
-  LabelString       "________________________________" 
-
-  LabelFont 
-    Family          typewriter
-    Series          Medium
-    Size            Normal
-    Color           latex
-  EndFont
-
-  Preamble
-    \def\lyxframeend{} % In case there is a superfluous frame end
-  EndPreamble
-End
-
-Style Pause
-  KeepEmpty	1
-  LatexType	Command
-  LatexName	pause
-  Margin            First_Dynamic
-  NextNoIndent      1
-  ParSkip           0
-  TopSep            0
-  BottomSep         0.25
-  ParSep            0
-  Align             Center
-  AlignPossible     Center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        MMMMM
-  LabelString       "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-
-  LabelFont 
-    Family          typewriter
-    Series          Medium
-    Size            Normal
-    Color           latex
+  LabelFont
+    Color               Latex
   EndFont
 End
-
-Counter
-  Name                 section 
-End
-
-Counter
-  Name                 subsection
-  Within               section
-End
-
-Counter
-  Name                 bibitem
-End
-
-Counter
-  Name                 figure
-  Name                 lyxframeend{}\section
-End
-
-Counter
-  Name                 table
-End
-
-Counter
-  Name                 enumi
-End
-
-Counter
-  Name                 enumii
-  Within               enumi
-End
-
 
 # Section style definition
 Style Section
@@ -344,6 +246,86 @@ Style Subsection*
   OptionalArgs		0
 End
 
+# Frame control definition
+Style BeginFrame
+  KeepEmpty	1
+  LatexType	Command
+  LatexName	lyxframeend{}\lyxframe
+  Margin            First_Dynamic
+  NextNoIndent      1
+  ParSkip           0
+  TopSep            2.5
+  BottomSep         0.5
+  ParSep            0
+  Align             Center
+  AlignPossible     Center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        M
+  LabelString       "Frame__"
+
+  Font
+    Series          Bold
+    Size            Largest
+    Color           Blue
+  EndFont
+
+  LabelFont 
+    Family          Roman
+    Color           latex
+  EndFont
+
+  Preamble
+    \makeatletter
+    \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
+    \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
+    \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
+    \def\@@@lyxframe<#1>[{\@ifnextchar<{\@@@@@lyxframe<#1>[}{\@@@@lyxframe<#1>[<*>][}}
+    \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
+    \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
+      \frame<#1>[#2][#3]{\frametitle{#4}#5}}
+    \makeatother
+  EndPreamble
+End
+
+Style BeginPlainFrame
+  KeepEmpty	1
+  LatexType	Command
+  LatexName	lyxframeend{}\lyxplainframe
+  Margin            First_Dynamic
+  NextNoIndent      1
+  ParSkip           0
+  TopSep            2.5
+  BottomSep         0.5
+  ParSep            0
+  Align             Center
+  AlignPossible     center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        M
+  LabelString       "Frame (no head/foot/sidebars)__"
+
+  Font
+    Series          Bold
+    Size            Largest
+    Color           Blue
+  EndFont
+
+  LabelFont 
+    Family          Roman
+    Color           latex
+  EndFont
+
+  Preamble
+    \makeatletter
+    \long\def\lyxplainframe#1{\@lyxplainframe#1\@lyxframestop}%
+    \def\@lyxplainframe{\@ifnextchar<{\@@lyxplainframe}{\@@lyxplainframe<*>}}%
+    \long\def\@@lyxplainframe<#1>#2\@lyxframestop#3\lyxframeend{%
+      \frame<#1>[plain]{\frametitle{#2}#3}}
+    \makeatother
+  EndPreamble
+End
+
 Style AgainFrame
   KeepEmpty	    0
   LatexType	    Command
@@ -359,7 +341,7 @@ Style AgainFrame
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
-  LabelString       "Again frame with label   "
+  LabelString       "Again frame with label__"
 
   Font
     Color           latex
@@ -383,46 +365,44 @@ Style AgainFrame
   EndPreamble
 End
 
-Style AlertBlock
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-  LabelSep              xx
-
-  LatexName	 	alertblock
-  LabelString		"block with alerted text" 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
+Style EndFrame
+  KeepEmpty	    1
+  LatexType	    Command
+  LatexName	    lyxframeend
+  Margin            First_Dynamic
+  ParSkip           0
+  TopSep            0
+  BottomSep         3
   ParSep            0
-
-  # font & label font definition
-
-  Font
-    Color               red
-  EndFont
+  Align             Center
+  AlignPossible     Center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        MMMMM
+  LabelString       "________________________________" 
 
   LabelFont 
-    Family              Roman
-    Color               latex
+    Family          typewriter
+    Series          Medium
+    Size            Normal
+    Color           latex
   EndFont
+
+  Preamble
+    \def\lyxframeend{} % In case there is a superfluous frame end
+  EndPreamble
 End
 
-# Author style definition
-Style Author
+# Frame decoration section
+Style FrameSubtitle
   Margin		Static
   LatexType		Command
-  InTitle		1
-  LatexName		author
-  LabelSep		xxx
+  LatexName		framesubtitle
   ParSkip		0.4
-  TopSep		1.3
-  BottomSep		0.7
-  ParSep		0.7
+  ItemSep		0
+  TopSep		0
+  BottomSep		1
+  ParSep		1
   Align			Center
   AlignPossible		Center
   LabelType		No_Label
@@ -430,109 +410,12 @@ Style Author
 
   # standard font definition
   Font 
-    Size		Largest
-    Color               Blue
-  EndFont
-
-End
-
-# Bibliography style definition
-Style Bibliography
-  Margin		First_Dynamic
-  LatexType		Bib_Environment
-  LatexName		thebibliography
-  NextNoIndent		1
-  LeftMargin		MM
-  ParSkip		0.4
-  ItemSep		0
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0.5
-  Align			Left
-  AlignPossible		Left
-  LabelType		Bibliography
-  LabelString		References
-  LabelBottomSep    0.7
-
-  # label font definition
-  LabelFont 
-    Series		Bold
-    Size		Larger
-  EndFont
-End
-
-Style Block
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-  LabelSep              xx
-
-  LatexName	 	block
-  LabelString		"block" 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-
-  # font & label font definition
-
-  LabelFont 
-    Family              Roman
-    Color               latex
-  EndFont
-End
-
-# Caption style definition
-Style Caption
-  Margin		First_Dynamic
-  LatexType		Command
-  LatexName		caption
-  NeedProtect		1
-  LabelSep		xx
-  ParSkip		0.4
-  TopSep		0.5
-  Align			Center
-  AlignPossible		Center
-  LabelType		Sensitive
-  LabelString	Caption
-  OptionalArgs		1
-
-  # label font definition
-  LabelFont 
-    Series		Bold
-  EndFont
-End
-
-Style Corollary
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-  LabelSep              xx
-
-  LatexName	 	corollary}%{
-  LabelString		"Corollary. " 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-  KeepEmpty             1
-
-  # font & label font definition
-
-  LabelFont 
     Series		Bold
     Color               Blue
-    Size                Large
   EndFont
+
 End
+
 
 Style Column
   Margin		Static
@@ -646,6 +529,310 @@ Style ColumnsTopAligned
   EndFont
 End
 
+# Frame progession section
+Style Pause
+  KeepEmpty	1
+  LatexType	Command
+  LatexName	pause
+  Margin            First_Dynamic
+  NextNoIndent      1
+  ParSkip           0
+  TopSep            0
+  BottomSep         0.25
+  ParSep            0
+  Align             Center
+  AlignPossible     Center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        MMMMM
+  LabelString       "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+
+  LabelFont 
+    Family          typewriter
+    Series          Medium
+    Size            Normal
+    Color           latex
+  EndFont
+End
+
+Style Overprint
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+  LabelSep              xx
+
+  LatexName	 	overprint
+  LabelString		"overprint" 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+  KeepEmpty		1
+
+  # font & label font definition
+
+  LabelFont 
+    Family              Roman
+    Color               latex
+  EndFont
+End
+
+Style OverlayArea
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+  LabelSep              xx
+
+  LatexName	 	overlayarea
+  LabelString		"overlayarea" 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+
+  # font & label font definition
+
+  LabelFont 
+    Family              Roman
+    Color               latex
+  EndFont
+End
+
+Style Uncover
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+
+  LatexName	 	uncoverenv}%{
+  LabelString		"uncovered on slides " 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+
+  # font & label font definition
+
+  LabelFont 
+    Family		Roman		
+    Color               Latex
+  EndFont
+End
+
+Style Only
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+
+  LatexName	 	onlyenv}%{
+  LabelString		"only on slides " 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+
+  # font & label font definition
+
+  LabelFont 
+    Family		Roman		
+    Color               Latex
+  EndFont
+End
+
+# Blocks section
+Style Block
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+  LabelSep              xx
+
+  LatexName	 	block
+  LabelString		"block" 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+
+  # font & label font definition
+
+  LabelFont 
+    Family              Roman
+    Color               latex
+  EndFont
+End
+
+Style ExampleBlock
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+  LabelSep              xx
+
+  LatexName	 	exampleblock
+  LabelString		"block showing an example" 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+
+  # font & label font definition
+
+  Font
+    Color               green
+  EndFont
+
+  LabelFont 
+    Family              Roman
+    Color               latex
+  EndFont
+End
+
+Style AlertBlock
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+  LabelSep              xx
+
+  LatexName	 	alertblock
+  LabelString		"block with alerted text" 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+
+  # font & label font definition
+
+  Font
+    Color               red
+  EndFont
+
+  LabelFont 
+    Family              Roman
+    Color               latex
+  EndFont
+End
+
+# Title slide data section
+# Title style definition
+Style Title
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		title
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0
+  BottomSep		1
+  ParSep		1
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+  OptionalArgs				1
+
+  # standard font definition
+  Font 
+    Size		Huge
+    Series		Bold
+    Color               Blue
+  EndFont
+
+End
+
+Style Subtitle
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		subtitle
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0
+  BottomSep		1
+  ParSep		1
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+  OptionalArgs				1
+
+  # standard font definition
+  Font 
+    Size		Large
+    Series		Bold
+    Color               Blue
+  EndFont
+
+End
+
+# Author style definition
+Style Author
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		author
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+  OptionalArgs				1
+
+  # standard font definition
+  Font 
+    Size		Largest
+    Color               Blue
+  EndFont
+
+End
+
+Style Institute
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		1
+  LatexName		institute
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		1
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+  OptionalArgs				1
+
+  # standard font definition
+  Font 
+    Size		Large
+    Color               Blue
+  EndFont
+End
 
 # Date style definition
 Style Date
@@ -667,6 +854,104 @@ Style Date
   Font 
     Size		Largest
     Color               Blue
+  EndFont
+End
+
+# Titles & bibliography section
+# Bibliography style definition
+Style Bibliography
+  Margin		First_Dynamic
+  LatexType		Bib_Environment
+  LatexName		thebibliography
+  NextNoIndent		1
+  LeftMargin		MM
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.5
+  Align			Left
+  AlignPossible		Left
+  LabelType		Bibliography
+  LabelString		"References"
+  LabelBottomSep    0.7
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Larger
+  EndFont
+End
+
+# Caption style definition
+Style Caption
+  Margin		First_Dynamic
+  LatexType		Command
+  LatexName		caption
+  NeedProtect		1
+  LabelSep		xx
+  ParSkip		0.4
+  TopSep		0.5
+  Align			Center
+  AlignPossible		Center
+  LabelType		Sensitive
+  LabelString	"Caption"
+  OptionalArgs		1
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+Style TitleGraphic
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		titlegraphic
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0
+  BottomSep		1
+  ParSep		1
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Size		Huge
+    Series		Bold
+    Color               Blue
+  EndFont
+
+End
+
+# Theorems and such section
+Style Corollary
+  Margin		First_Dynamic
+  LatexType		Environment
+  NextNoIndent		0
+  ParIndent		MM
+  Align			Left
+  LabelType		Static
+  LabelSep              xx
+
+  LatexName	 	corollary}%{
+  LabelString		"Corollary_" 
+
+  ParSkip           0.5
+  TopSep            1
+  BottomSep         1
+  ParSep            0
+  KeepEmpty             1
+
+  # font & label font definition
+
+  LabelFont 
+    Series		Bold
+    Color               Blue
+    Size                Large
   EndFont
 End
 
@@ -699,34 +984,6 @@ Style Examples
   LabelString		"Examples. " 
 End
 
-Style ExampleBlock
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-  LabelSep              xx
-
-  LatexName	 	exampleblock
-  LabelString		"block showing an example" 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-
-  # font & label font definition
-
-  Font
-    Color               green
-  EndFont
-
-  LabelFont 
-    Family              Roman
-    Color               latex
-  EndFont
-End
 
 Style Fact
   CopyStyle		Corollary
@@ -734,48 +991,40 @@ Style Fact
   LabelString		"Fact. " 
 End
 
-Style FrameSubtitle
-  Margin		Static
-  LatexType		Command
-  LatexName		framesubtitle
-  ParSkip		0.4
-  ItemSep		0
-  TopSep		0
-  BottomSep		1
-  ParSep		1
-  Align			Center
-  AlignPossible		Center
-  LabelType		No_Label
-  OptionalArgs				1
-
-  # standard font definition
-  Font 
-    Series		Bold
-    Color               Blue
-  EndFont
-
+Style Proof
+  CopyStyle		Corollary
+  LatexName	 	proof}%{
+  LabelString		"Proof. " 
 End
 
-# Date style definition
-Style Institute
-  Margin		Dynamic
-  LatexType		Command
-  InTitle		1
-  LatexName		institute
-  LabelSep		xxx
-  ParSkip		0.4
-  TopSep		0.9
-  BottomSep		0.5
-  ParSep		1
-  Align			Center
-  AlignPossible		Center
-  LabelType		No_Label
-  OptionalArgs				1
+Style Theorem
+  CopyStyle		Corollary
+  LatexName	 	theorem}%{
+  LabelString		"Theorem. " 
+End
 
-  # standard font definition
-  Font 
-    Size		Large
-    Color               Blue
+# Misc. section
+# Separator style definition
+Style Separator
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Left
+  AlignPossible 	Block, Left, Right, Center
+  Margin                First_Dynamic
+  TopSep                0
+  BottomSep             0
+  ParSep                0
+  LabelType             Static
+  LabelBottomSep        0
+  LabelString           "___"
+  KeepEmpty             1
+
+  LabelFont 
+    Series          Medium
+    Size            Normal
+    Color           latex
   EndFont
 End
 
@@ -838,247 +1087,6 @@ Style NoteItem
   EndFont
 End
 
-
-Style Only
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-
-  LatexName	 	onlyenv}%{
-  LabelString		"only on slides " 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-
-  # font & label font definition
-
-  LabelFont 
-    Family		Roman		
-    Color               Latex
-  EndFont
-End
-
-Style Overprint
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-  LabelSep              xx
-
-  LatexName	 	overprint
-  LabelString		"overprint" 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-  KeepEmpty		1
-
-  # font & label font definition
-
-  LabelFont 
-    Family              Roman
-    Color               latex
-  EndFont
-End
-
-Style OverlayArea
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-  LabelSep              xx
-
-  LatexName	 	overlayarea
-  LabelString		"overlayarea" 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-
-  # font & label font definition
-
-  LabelFont 
-    Family              Roman
-    Color               latex
-  EndFont
-End
-
-# Part style definition
-Style Part
-  Margin		Dynamic
-  LatexType		Command
-  LatexName		part
-  NeedProtect		1
-  NextNoIndent          1
-  Labelsep		xxx
-  ParSkip               0.4
-  TopSep                4
-  BottomSep             4
-  ParSep                0.8
-  Align			Center         
-  Alignpossible         Center
-  LabelType             Static
-  LabelString		"Part "
-
-  # standard font definition
-  Font 
-    Family              Roman
-    Series              Bold
-    Size                Huge
-  EndFont
-
-  LabelFont
-    Color               Latex
-  EndFont
-End
-  
-Style Proof
-  CopyStyle		Corollary
-  LatexName	 	proof}%{
-  LabelString		"Proof. " 
-End
-
-# Separator style definition
-Style Separator
-  LatexType 		Paragraph
-  LatexName 		dummy
-  ParIndent		MM
-  ParSkip 		0.4
-  Align 		Left
-  AlignPossible 	Block, Left, Right, Center
-  Margin                First_Dynamic
-  TopSep                0
-  BottomSep             0
-  ParSep                0
-  LabelType             Static
-  LabelBottomSep        0
-  LabelString           "___"
-  KeepEmpty             1
-
-  LabelFont 
-    Series          Medium
-    Size            Normal
-    Color           latex
-  EndFont
-End
-
-# Title style definition
-Style Title
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  LatexName		title
-  ParSkip		0.4
-  ItemSep		0
-  TopSep		0
-  BottomSep		1
-  ParSep		1
-  Align			Center
-  AlignPossible		Center
-  LabelType		No_Label
-  OptionalArgs				1
-
-  # standard font definition
-  Font 
-    Size		Huge
-    Series		Bold
-    Color               Blue
-  EndFont
-
-End
-
-Style TitleGraphic
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  LatexName		titlegraphic
-  ParSkip		0.4
-  ItemSep		0
-  TopSep		0
-  BottomSep		1
-  ParSep		1
-  Align			Center
-  AlignPossible		Center
-  LabelType		No_Label
-
-  # standard font definition
-  Font 
-    Size		Huge
-    Series		Bold
-    Color               Blue
-  EndFont
-
-End
-
-Style Theorem
-  CopyStyle		Corollary
-  LatexName	 	theorem}%{
-  LabelString		"Theorem. " 
-End
-
-Style Subtitle
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  LatexName		subtitle
-  ParSkip		0.4
-  ItemSep		0
-  TopSep		0
-  BottomSep		1
-  ParSep		1
-  Align			Center
-  AlignPossible		Center
-  LabelType		No_Label
-  OptionalArgs				1
-
-  # standard font definition
-  Font 
-    Size		Large
-    Series		Bold
-    Color               Blue
-  EndFont
-
-End
-
-
-Style Uncover
-  Margin		First_Dynamic
-  LatexType		Environment
-  NextNoIndent		0
-  ParIndent		MM
-  Align			Left
-  LabelType		Static
-
-  LatexName	 	uncoverenv}%{
-  LabelString		"uncovered on slides " 
-
-  ParSkip           0.5
-  TopSep            1
-  BottomSep         1
-  ParSep            0
-
-  # font & label font definition
-
-  LabelFont 
-    Family		Roman		
-    Color               Latex
-  EndFont
-End
-
-
-
-
 # Input lyxmacros.inc
 
 Float
@@ -1104,9 +1112,6 @@ Float
 End
 
 TitleLaTeXName frame{\maketitle}
-
-SecNumDepth		2
-TocDepth		2
 
 
 Preamble

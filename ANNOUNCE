@@ -90,14 +90,17 @@ What's new in version 1.4.5?
 
 * DOCUMENT INPUT/OUTPUT
 
-- Don't skip lines after noweb chunks in tex2lyx (bug 3052)
+- Don't skip lines after noweb chunks in tex2lyx (bug 3052).
 
 - Fix bug when entering relative length (like page%) as margin
   settings (bug 3416).
 
-- Fix Date external template in windows (bug 3241)
+- Fix Date external template in windows (bug 3241).
 
-- Fix babel bug triggered by MarkBoth in the IEEEtran.layout (bug 3510).
+- Fix babel bug triggered by MarkBoth in the IEEEtran.layout (bug
+  3510).
+
+- Fix ordering of layouts in beamer textclass (bug 3141).
 
 * USER INTERFACE:
 
@@ -118,7 +121,12 @@ What's new in version 1.4.5?
 - Make it possible to reset itemize bullets to their original state
   (bug 3312).
 
-- Fix display of Theorem-like environments when in appendix (bug 3351)
+- Fix display of Theorem-like environments when in appendix (bug 3351).
+
+- Fix conflict with globally installed math fonts, for ex. from
+  Scientific Workplace (bug 3962, windows only).
+
+- Properly keep existing previews when pasting formulas (bug 1486).
 
 - Fix display of math root inset when the exponent contains large
   things (bug 3295).
@@ -134,21 +142,21 @@ What's new in version 1.4.5?
 - Fix gui for big delimiters.
 
 - Fix wrong LaTeX-output when using the backslash "\" as math
-  delimiter (bug 3458) (Qt2-frontend only)
+  delimiter (bug 3458) (Qt frontend only).
 
-- Fix generation of linuxdoc manpages (bug 2966)
+- Fix generation of linuxdoc manpages (bug 2966).
 
-- Fix example for docbook-article
+- Fix example for docbook-article.
 
-- Fix table rotate toolbar buttons images (bug 3525)
+- Fix table rotate toolbar buttons images (bug 3525).
 
 - Fix display of "Acknowledgments" environment in elsart document
-  class (bug 3931)
+  class (bug 3931).
 
 * DOCUMENTATION
 
 - Fix description of booktabs tables in the EmbeddedObjects manual
-  (bug 3736)
+  (bug 3736).
 
 - Fix broken link to IEEETran.cls in LaTeXConfiguration (bug 848).
 
