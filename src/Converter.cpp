@@ -29,6 +29,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/Package.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
@@ -50,6 +51,7 @@ using support::makeAbsPath;
 using support::makeRelPath;
 using support::onlyFilename;
 using support::onlyPath;
+using support::package;
 using support::prefixIs;
 using support::quoteName;
 using support::removeExtension;
@@ -379,7 +381,12 @@ bool Converters::convert(Buffer const * buffer,
 		FileName real_outfile;
 		if (outfile == infile) {
 			real_outfile = infile;
-			outfile = FileName(addName(buffer->temppath(), "tmpfile.out"));
+			// when importing, a buffer does not necessarily exist
+			if (buffer)
+				outfile = FileName(addName(buffer->temppath(), "tmpfile.out"));
+			else
+				outfile = FileName(addName(package().temp_dir().absFilename(),
+						   "tmpfile.out"));
 		}
 
 		if (conv.latex) {
