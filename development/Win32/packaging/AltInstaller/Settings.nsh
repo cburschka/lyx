@@ -3,8 +3,8 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5xx-xx-07-2007"
-!define PRODUCT_VERSION_SHORT "150svn"
+!define PRODUCT_VERSION "1.5.0"
+!define PRODUCT_VERSION_SHORT "150"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -41,7 +41,7 @@ BrandingText "LyXWinInstaller v3.18 - ${INSTALLER_VERSION}"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
  !define PRODUCT_VERSION_OLD "LyX 1.5rc2-27-05-2007"
  !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
- !define PRODUCT_VERSION_SHORT_OLD "150svn"
+ !define PRODUCT_VERSION_SHORT_OLD "150"
  !define JabRefVersion "2.2" # could be an older version
  !define MiKTeXDeliveredVersion "2.6" # could be an older version
 !endif
@@ -56,18 +56,18 @@ BrandingText "LyXWinInstaller v3.18 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv48w32.exe"
  !define JabRefInstall "external\JabRef-2.2-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2726.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2742.exe"
  !define JabRefVersion "2.2"
  !define MiKTeXDeliveredVersion "2.6"
 !endif
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.3.4"
+!define ImageMagickVersion "6.3.5"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.56"
+!define GhostscriptVersion "8.57"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
 !define AiksaurusInstall "external\Aiksaurus"
 !define AspellDir "$APPDATA\Aspell"

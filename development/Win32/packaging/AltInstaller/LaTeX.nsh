@@ -255,7 +255,10 @@ Function UpdateMiKTeX
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
    UpdateNow:
     StrCpy $0 $LaTeXPath -4 # remove "\bin"
+    # the update wizard is either started by the copystart.exe or the copystart_admin.exe
+    # the latter replaces copystart.exe since miktex-2.6.2742
     ExecWait '"$LaTeXPath\copystart.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
+    ExecWait '"$LaTeXPath\copystart_admin.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
    UpdateLater:
   ${endif}
 
