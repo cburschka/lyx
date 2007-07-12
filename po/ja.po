@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-07-07 21:43+0900\n"
-"PO-Revision-Date: 2007-07-11 01:16+0900\n"
+"PO-Revision-Date: 2007-07-12 03:50+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2456,7 +2456,7 @@ msgstr "印刷を開始するページ"
 
 #: src/frontends/qt4/ui/PrintUi.ui:69
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "終了頁(&T):[[as in 'From page x to page y']]"
+msgstr "終了頁(&T):[[\"X頁からY頁\"のように]]"
 
 #: src/frontends/qt4/ui/PrintUi.ui:82
 msgid "Page number to print to"
@@ -3886,7 +3886,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:583
 msgid "Obj:"
-msgstr ""
+msgstr "オブジェクト:"
 
 #: lib/layouts/aastex.layout:610
 msgid "Dataset:"
@@ -4206,7 +4206,7 @@ msgstr "寸法を調整した図"
 
 #: lib/layouts/apa.layout:286
 msgid "FitBitmap"
-msgstr ""
+msgstr "寸法を調整したビットマップ"
 
 #: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:65
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
@@ -4517,11 +4517,11 @@ msgstr ""
 
 #: lib/layouts/broadway.layout:154 lib/layouts/hollywood.layout:178
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:156 lib/layouts/hollywood.layout:180
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: lib/layouts/broadway.layout:167 lib/layouts/broadway.layout:178
 msgid "CURTAIN"
@@ -4598,11 +4598,11 @@ msgstr ""
 
 #: lib/layouts/chess.layout:124
 msgid "ChessBoard"
-msgstr ""
+msgstr "チェス盤"
 
 #: lib/layouts/chess.layout:128
 msgid "[chessboard]"
-msgstr ""
+msgstr "[チェス盤]"
 
 #: lib/layouts/chess.layout:137
 msgid "BoardCentered"
@@ -4694,17 +4694,17 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:98
 msgid "ps"
-msgstr ""
+msgstr "ps"
 
 #: lib/layouts/dinbrief.layout:110
 msgid "PS:"
-msgstr ""
+msgstr "PS:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:932 lib/layouts/stdletter.inc:101
 #: src/lengthcommon.cpp:38
 msgid "cc"
-msgstr ""
+msgstr "cc"
 
 #: lib/layouts/dinbrief.layout:121 lib/layouts/g-brief-de.layout:226
 msgid "Verteiler:"
@@ -5236,19 +5236,19 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:116
 msgid "Telefon"
-msgstr ""
+msgstr "電話 "
 
 #: lib/layouts/g-brief-de.layout:119
 msgid "Telefon:"
-msgstr ""
+msgstr "電話:"
 
 #: lib/layouts/g-brief-de.layout:123 lib/layouts/g-brief-en.layout:123
 msgid "Telefax"
-msgstr ""
+msgstr "ファックス"
 
 #: lib/layouts/g-brief-de.layout:126 lib/layouts/g-brief-en.layout:126
 msgid "Telefax:"
-msgstr ""
+msgstr "ファックス:"
 
 #: lib/layouts/g-brief-de.layout:130 lib/layouts/g-brief-en.layout:130
 msgid "Telex"
@@ -5260,19 +5260,19 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:137 lib/layouts/g-brief-en.layout:137
 msgid "EMail"
-msgstr ""
+msgstr "電子メール"
 
 #: lib/layouts/g-brief-de.layout:140 lib/layouts/g-brief-en.layout:140
 msgid "EMail:"
-msgstr ""
+msgstr "電子メール:"
 
 #: lib/layouts/g-brief-de.layout:144 lib/layouts/g-brief-en.layout:144
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: lib/layouts/g-brief-de.layout:147 lib/layouts/g-brief-en.layout:147
 msgid "HTTP:"
-msgstr ""
+msgstr "HTTP:"
 
 #: lib/layouts/g-brief-de.layout:151 lib/layouts/g-brief-en.layout:151
 #: lib/layouts/scrlttr2.layout:215
@@ -5457,21 +5457,21 @@ msgstr ""
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:855
 #: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:63
 msgid "Opening:"
-msgstr ""
+msgstr "オープニング:"
 
 #: lib/layouts/g-brief-en.layout:213 lib/layouts/g-brief2.layout:911
 msgid "Encl."
-msgstr ""
+msgstr "Encl."
 
 #: lib/layouts/g-brief-en.layout:217 lib/layouts/g-brief2.layout:922
 msgid "Encl.:"
-msgstr ""
+msgstr "Encl.:"
 
 #: lib/layouts/g-brief-en.layout:226 lib/layouts/g-brief2.layout:943
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:133
 #: lib/layouts/stdletter.inc:114
 msgid "cc:"
-msgstr ""
+msgstr "cc:"
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:876
 #: lib/layouts/scrlttr2.layout:117 lib/layouts/stdletter.inc:97
@@ -5807,88 +5807,88 @@ msgstr "分類コード"
 
 #: lib/layouts/ijmpc.layout:161 lib/layouts/ijmpd.layout:158
 msgid "Step"
-msgstr ""
+msgstr "ステップ"
 
 #: lib/layouts/ijmpc.layout:165 lib/layouts/ijmpd.layout:162
 msgid "Step \\arabic{step}."
-msgstr ""
+msgstr "ステップ\\arabic{step}."
 
 #: lib/layouts/ijmpc.layout:277 lib/layouts/ijmpd.layout:284
 msgid "Prop"
-msgstr ""
+msgstr "命題"
 
 #: lib/layouts/ijmpc.layout:281
 msgid "Prop \\arabic{prop}."
-msgstr ""
+msgstr "命題\\arabic{prop}."
 
 #: lib/layouts/ijmpc.layout:287 lib/layouts/ijmpd.layout:295
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
 msgid "Question"
-msgstr ""
+msgstr "問題"
 
 #: lib/layouts/ijmpc.layout:291
 msgid "Question \\arabic{question}."
-msgstr ""
+msgstr "問題\\arabic{question}."
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
 msgid "Appendices Section"
-msgstr ""
+msgstr "付録節"
 
 #: lib/layouts/ijmpc.layout:324 lib/layouts/ijmpd.layout:334
 msgid "--- Appendices ---"
-msgstr ""
+msgstr "--- 付録 ---"
 
 #: lib/layouts/ijmpc.layout:346 lib/layouts/ijmpd.layout:357
 msgid "Appendix \\Alph{appendix}."
-msgstr ""
+msgstr "付録 \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:147
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr ""
+msgstr "定義@Section@.\\arabic{definition}."
 
 #: lib/layouts/ijmpd.layout:176
 msgid "Example @Section@.\\arabic{example}."
-msgstr ""
+msgstr "例@Section@.\\arabic{example}."
 
 #: lib/layouts/ijmpd.layout:187
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr ""
+msgstr "注釈@Section@.\\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:198
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr ""
+msgstr "表記@Section@.\\arabic{notation}."
 
 #: lib/layouts/ijmpd.layout:219 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "定理@Section@.\\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:252
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr ""
+msgstr "系@Section@.\\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:266
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr ""
+msgstr "補題@Section@.\\arabic{lemma}."
 
 #: lib/layouts/ijmpd.layout:277
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr ""
+msgstr "命題(Proposition)@Section@.\\arabic{proposition}."
 
 #: lib/layouts/ijmpd.layout:288
 msgid "Prop @Section@.\\arabic{prop}."
-msgstr ""
+msgstr "命題(Prop)@Section@.\\arabic{prop}."
 
 #: lib/layouts/ijmpd.layout:299
 msgid "Question @Section@.\\arabic{question}."
-msgstr ""
+msgstr "問題@Section@.\\arabic{question}."
 
 #: lib/layouts/ijmpd.layout:310
 msgid "Claim @Section@.\\arabic{claim}."
-msgstr ""
+msgstr "主張@Section@.\\arabic{claim}."
 
 #: lib/layouts/ijmpd.layout:321
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr ""
+msgstr "予想@Section@.\\arabic{conjecture}."
 
 #: lib/layouts/iopart.layout:73 lib/ui/stdtoolbars.inc:170
 msgid "Review"
@@ -6124,11 +6124,11 @@ msgstr ""
 
 #: lib/layouts/moderncv.layout:105
 msgid "Space"
-msgstr ""
+msgstr "空白"
 
 #: lib/layouts/moderncv.layout:108
 msgid "Space:"
-msgstr ""
+msgstr "空白:"
 
 #: lib/layouts/moderncv.layout:117
 msgid "Computer"
@@ -6140,11 +6140,11 @@ msgstr "コンピューター:"
 
 #: lib/layouts/moderncv.layout:123
 msgid "EmptySection"
-msgstr ""
+msgstr "空の節"
 
 #: lib/layouts/moderncv.layout:132
 msgid "Empty Section"
-msgstr ""
+msgstr "空の節"
 
 #: lib/layouts/moderncv.layout:139
 msgid "CloseSection"
@@ -6169,7 +6169,7 @@ msgstr "スライド"
 
 #: lib/layouts/powerdot.layout:132
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: lib/layouts/powerdot.layout:142
 msgid "EndSlide"
@@ -6576,11 +6576,11 @@ msgstr "特別節："
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
-msgstr "AGU ジャーナル"
+msgstr "AGUジャーナル"
 
 #: lib/layouts/agu_stdtitle.inc:51
 msgid "AGU-journal:"
-msgstr "AGU ジャーナル："
+msgstr "AGUジャーナル："
 
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
@@ -6592,19 +6592,19 @@ msgstr "引用番号："
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
-msgstr "AGU 巻"
+msgstr "AGU巻"
 
 #: lib/layouts/agu_stdtitle.inc:68
 msgid "AGU-volume:"
-msgstr "AGU 巻："
+msgstr "AGU巻："
 
 #: lib/layouts/agu_stdtitle.inc:73
 msgid "AGU-issue"
-msgstr ""
+msgstr "AGU号"
 
 #: lib/layouts/agu_stdtitle.inc:76
 msgid "AGU-issue:"
-msgstr ""
+msgstr "AGU号:"
 
 #: lib/layouts/agu_stdtitle.inc:84
 msgid "Copyright:"
@@ -6704,19 +6704,19 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr ""
+msgstr "AGU-頁"
 
 #: lib/layouts/agu_stdtitle.inc:282
 msgid "AGU-pages:"
-msgstr ""
+msgstr "AGU-頁:"
 
 #: lib/layouts/agu_stdtitle.inc:287
 msgid "Words"
-msgstr ""
+msgstr "単語"
 
 #: lib/layouts/agu_stdtitle.inc:290
 msgid "Words:"
-msgstr ""
+msgstr "単語:"
 
 #: lib/layouts/agu_stdtitle.inc:295
 msgid "Figures"
@@ -6744,11 +6744,11 @@ msgstr "データセット:"
 
 #: lib/layouts/aguplus.inc:131
 msgid "CCC"
-msgstr ""
+msgstr "CCC"
 
 #: lib/layouts/aguplus.inc:135
 msgid "CCC code:"
-msgstr ""
+msgstr "CCCコード:"
 
 #: lib/layouts/aguplus.inc:144
 msgid "PaperId"
@@ -6760,11 +6760,11 @@ msgstr ""
 
 #: lib/layouts/aguplus.inc:152
 msgid "AuthorAddr"
-msgstr ""
+msgstr "著者住所"
 
 #: lib/layouts/aguplus.inc:156
 msgid "Author Address:"
-msgstr ""
+msgstr "著者住所:"
 
 #: lib/layouts/aguplus.inc:160
 msgid "SlugComment"
@@ -9157,135 +9157,135 @@ msgstr "函数"
 
 #: lib/ui/stdtoolbars.inc:217
 msgid "arccos"
-msgstr ""
+msgstr "arccos"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "arcsin"
-msgstr ""
+msgstr "arcsin"
 
 #: lib/ui/stdtoolbars.inc:219
 msgid "arctan"
-msgstr ""
+msgstr "arctan"
 
 #: lib/ui/stdtoolbars.inc:220
 msgid "arg"
-msgstr ""
+msgstr "arg"
 
 #: lib/ui/stdtoolbars.inc:221
 msgid "bmod"
-msgstr ""
+msgstr "bmod"
 
 #: lib/ui/stdtoolbars.inc:222
 msgid "cos"
-msgstr ""
+msgstr "cos"
 
 #: lib/ui/stdtoolbars.inc:223
 msgid "cosh"
-msgstr ""
+msgstr "cosh"
 
 #: lib/ui/stdtoolbars.inc:224
 msgid "cot"
-msgstr ""
+msgstr "cot"
 
 #: lib/ui/stdtoolbars.inc:225
 msgid "coth"
-msgstr ""
+msgstr "coth"
 
 #: lib/ui/stdtoolbars.inc:226
 msgid "csc"
-msgstr ""
+msgstr "csc"
 
 #: lib/ui/stdtoolbars.inc:227
 msgid "deg"
-msgstr ""
+msgstr "deg"
 
 #: lib/ui/stdtoolbars.inc:228
 msgid "det"
-msgstr ""
+msgstr "det"
 
 #: lib/ui/stdtoolbars.inc:229
 msgid "dim"
-msgstr ""
+msgstr "dim"
 
 #: lib/ui/stdtoolbars.inc:230
 msgid "exp"
-msgstr ""
+msgstr "exp"
 
 #: lib/ui/stdtoolbars.inc:231
 msgid "gcd"
-msgstr ""
+msgstr "gcd"
 
 #: lib/ui/stdtoolbars.inc:232
 msgid "hom"
-msgstr ""
+msgstr "hom"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "inf"
-msgstr ""
+msgstr "inf"
 
 #: lib/ui/stdtoolbars.inc:234
 msgid "ker"
-msgstr ""
+msgstr "ker"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: lib/ui/stdtoolbars.inc:236
 msgid "lim"
-msgstr ""
+msgstr "lim"
 
 #: lib/ui/stdtoolbars.inc:237
 msgid "liminf"
-msgstr ""
+msgstr "liminf"
 
 #: lib/ui/stdtoolbars.inc:238
 msgid "limsup"
-msgstr ""
+msgstr "limsup"
 
 #: lib/ui/stdtoolbars.inc:239
 msgid "ln"
-msgstr ""
+msgstr "ln"
 
 #: lib/ui/stdtoolbars.inc:240
 msgid "log"
-msgstr ""
+msgstr "log"
 
 #: lib/ui/stdtoolbars.inc:241
 msgid "max"
-msgstr ""
+msgstr "max"
 
 #: lib/ui/stdtoolbars.inc:242
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #: lib/ui/stdtoolbars.inc:243
 msgid "sec"
-msgstr ""
+msgstr "sec"
 
 #: lib/ui/stdtoolbars.inc:244
 msgid "sin"
-msgstr ""
+msgstr "sin"
 
 #: lib/ui/stdtoolbars.inc:245
 msgid "sinh"
-msgstr ""
+msgstr "sinh"
 
 #: lib/ui/stdtoolbars.inc:246
 msgid "sup"
-msgstr ""
+msgstr "sup"
 
 #: lib/ui/stdtoolbars.inc:247
 msgid "tan"
-msgstr ""
+msgstr "tan"
 
 #: lib/ui/stdtoolbars.inc:248
 msgid "tanh"
-msgstr ""
+msgstr "tanh"
 
 #: lib/ui/stdtoolbars.inc:249
 msgid "Pr"
-msgstr ""
+msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:252
 msgid "Spacings"
@@ -9413,19 +9413,19 @@ msgstr "小点"
 
 #: lib/ui/stdtoolbars.inc:296
 msgid "ldots"
-msgstr ""
+msgstr "ldots"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "cdots"
-msgstr ""
+msgstr "cdots"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "vdots"
-msgstr ""
+msgstr "vdots"
 
 #: lib/ui/stdtoolbars.inc:299
 msgid "ddots"
-msgstr ""
+msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:302
 msgid "Frame Decorations"
@@ -9433,99 +9433,99 @@ msgstr "上下装飾"
 
 #: lib/ui/stdtoolbars.inc:303
 msgid "hat"
-msgstr ""
+msgstr "hat"
 
 #: lib/ui/stdtoolbars.inc:304
 msgid "tilde"
-msgstr ""
+msgstr "tilde"
 
 #: lib/ui/stdtoolbars.inc:305
 msgid "bar"
-msgstr ""
+msgstr "bar"
 
 #: lib/ui/stdtoolbars.inc:306
 msgid "grave"
-msgstr ""
+msgstr "grave"
 
 #: lib/ui/stdtoolbars.inc:307
 msgid "dot"
-msgstr ""
+msgstr "dot"
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "check"
-msgstr ""
+msgstr "check"
 
 #: lib/ui/stdtoolbars.inc:309
 msgid "widehat"
-msgstr ""
+msgstr "widehat"
 
 #: lib/ui/stdtoolbars.inc:310
 msgid "widetilde"
-msgstr ""
+msgstr "widetilde"
 
 #: lib/ui/stdtoolbars.inc:311
 msgid "vec"
-msgstr ""
+msgstr "vec"
 
 #: lib/ui/stdtoolbars.inc:312
 msgid "acute"
-msgstr ""
+msgstr "acute"
 
 #: lib/ui/stdtoolbars.inc:313
 msgid "ddot"
-msgstr ""
+msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:314
 msgid "breve"
-msgstr ""
+msgstr "breve"
 
 #: lib/ui/stdtoolbars.inc:315
 msgid "overline"
-msgstr ""
+msgstr "overline"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "overbrace"
-msgstr ""
+msgstr "overbrace"
 
 #: lib/ui/stdtoolbars.inc:317
 msgid "overleftarrow"
-msgstr ""
+msgstr "overleftarrow"
 
 #: lib/ui/stdtoolbars.inc:318
 msgid "overrightarrow"
-msgstr ""
+msgstr "overrightarrow"
 
 #: lib/ui/stdtoolbars.inc:319
 msgid "overleftrightarrow"
-msgstr ""
+msgstr "overleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:320
 msgid "overset"
-msgstr ""
+msgstr "overset"
 
 #: lib/ui/stdtoolbars.inc:321
 msgid "underline"
-msgstr ""
+msgstr "underline"
 
 #: lib/ui/stdtoolbars.inc:322
 msgid "underbrace"
-msgstr ""
+msgstr "underbrace"
 
 #: lib/ui/stdtoolbars.inc:323
 msgid "underleftarrow"
-msgstr ""
+msgstr "underleftarrow"
 
 #: lib/ui/stdtoolbars.inc:324
 msgid "underrightarrow"
-msgstr ""
+msgstr "underrightarrow"
 
 #: lib/ui/stdtoolbars.inc:325
 msgid "underleftrightarrow"
-msgstr ""
+msgstr "underleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:326
 msgid "underset"
-msgstr ""
+msgstr "underset"
 
 #: lib/ui/stdtoolbars.inc:329
 msgid "Arrows"
@@ -9533,127 +9533,127 @@ msgstr "矢印"
 
 #: lib/ui/stdtoolbars.inc:330
 msgid "leftarrow"
-msgstr ""
+msgstr "leftarrow"
 
 #: lib/ui/stdtoolbars.inc:331
 msgid "rightarrow"
-msgstr ""
+msgstr "rightarrow"
 
 #: lib/ui/stdtoolbars.inc:332
 msgid "downarrow"
-msgstr ""
+msgstr "downarrow"
 
 #: lib/ui/stdtoolbars.inc:333
 msgid "uparrow"
-msgstr ""
+msgstr "uparrow"
 
 #: lib/ui/stdtoolbars.inc:334
 msgid "updownarrow"
-msgstr ""
+msgstr "updownarrow"
 
 #: lib/ui/stdtoolbars.inc:335
 msgid "leftrightarrow"
-msgstr ""
+msgstr "leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:336
 msgid "Leftarrow"
-msgstr ""
+msgstr "Leftarrow"
 
 #: lib/ui/stdtoolbars.inc:337
 msgid "Rightarrow"
-msgstr ""
+msgstr "Rightarrow"
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "Downarrow"
-msgstr ""
+msgstr "Downarrow"
 
 #: lib/ui/stdtoolbars.inc:339
 msgid "Uparrow"
-msgstr ""
+msgstr "Uparrow"
 
 #: lib/ui/stdtoolbars.inc:340
 msgid "Updownarrow"
-msgstr ""
+msgstr "Updownarrow"
 
 #: lib/ui/stdtoolbars.inc:341
 msgid "Leftrightarrow"
-msgstr ""
+msgstr "Leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:342
 msgid "Longleftrightarrow"
-msgstr ""
+msgstr "Longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:343
 msgid "Longleftarrow"
-msgstr ""
+msgstr "Longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:344
 msgid "Longrightarrow"
-msgstr ""
+msgstr "Longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:345
 msgid "longleftrightarrow"
-msgstr ""
+msgstr "longleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:346
 msgid "longleftarrow"
-msgstr ""
+msgstr "longleftarrow"
 
 #: lib/ui/stdtoolbars.inc:347
 msgid "longrightarrow"
-msgstr ""
+msgstr "longrightarrow"
 
 #: lib/ui/stdtoolbars.inc:348
 msgid "leftharpoondown"
-msgstr ""
+msgstr "leftharpoondown"
 
 #: lib/ui/stdtoolbars.inc:349
 msgid "rightharpoondown"
-msgstr ""
+msgstr "rightharpoondown"
 
 #: lib/ui/stdtoolbars.inc:350
 msgid "mapsto"
-msgstr ""
+msgstr "mapsto"
 
 #: lib/ui/stdtoolbars.inc:351
 msgid "longmapsto"
-msgstr ""
+msgstr "longmapsto"
 
 #: lib/ui/stdtoolbars.inc:352
 msgid "nwarrow"
-msgstr ""
+msgstr "nwarrow"
 
 #: lib/ui/stdtoolbars.inc:353
 msgid "nearrow"
-msgstr ""
+msgstr "nearrow"
 
 #: lib/ui/stdtoolbars.inc:354
 msgid "leftharpoonup"
-msgstr ""
+msgstr "leftharpoonup"
 
 #: lib/ui/stdtoolbars.inc:355
 msgid "rightharpoonup"
-msgstr ""
+msgstr "rightharpoonup"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "hookleftarrow"
-msgstr ""
+msgstr "hookleftarrow"
 
 #: lib/ui/stdtoolbars.inc:357
 msgid "hookrightarrow"
-msgstr ""
+msgstr "hookrightarrow"
 
 #: lib/ui/stdtoolbars.inc:358
 msgid "swarrow"
-msgstr ""
+msgstr "swarrow"
 
 #: lib/ui/stdtoolbars.inc:359
 msgid "searrow"
-msgstr ""
+msgstr "searrow"
 
 #: lib/ui/stdtoolbars.inc:360 lib/ui/stdtoolbars.inc:631
 msgid "rightleftharpoons"
-msgstr ""
+msgstr "rightleftharpoons"
 
 #: lib/ui/stdtoolbars.inc:363
 msgid "Operators"
@@ -9661,127 +9661,127 @@ msgstr "演算子"
 
 #: lib/ui/stdtoolbars.inc:364
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "cap"
-msgstr ""
+msgstr "cap"
 
 #: lib/ui/stdtoolbars.inc:366
 msgid "diamond"
-msgstr ""
+msgstr "diamond"
 
 #: lib/ui/stdtoolbars.inc:367
 msgid "oplus"
-msgstr ""
+msgstr "oplus"
 
 #: lib/ui/stdtoolbars.inc:368
 msgid "mp"
-msgstr ""
+msgstr "mp"
 
 #: lib/ui/stdtoolbars.inc:369
 msgid "cup"
-msgstr ""
+msgstr "cup"
 
 #: lib/ui/stdtoolbars.inc:370
 msgid "bigtriangleup"
-msgstr ""
+msgstr "bigtriangleup"
 
 #: lib/ui/stdtoolbars.inc:371
 msgid "ominus"
-msgstr ""
+msgstr "ominus"
 
 #: lib/ui/stdtoolbars.inc:372
 msgid "times"
-msgstr ""
+msgstr "times"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "uplus"
-msgstr ""
+msgstr "uplus"
 
 #: lib/ui/stdtoolbars.inc:374
 msgid "bigtriangledown"
-msgstr ""
+msgstr "bigtriangledown"
 
 #: lib/ui/stdtoolbars.inc:375
 msgid "otimes"
-msgstr ""
+msgstr "otimes"
 
 #: lib/ui/stdtoolbars.inc:376
 msgid "div"
-msgstr ""
+msgstr "div"
 
 #: lib/ui/stdtoolbars.inc:377
 msgid "sqcap"
-msgstr ""
+msgstr "sqcap"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "triangleright"
-msgstr ""
+msgstr "triangleright"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "oslash"
-msgstr ""
+msgstr "oslash"
 
 #: lib/ui/stdtoolbars.inc:380
 msgid "cdot"
-msgstr ""
+msgstr "cdot"
 
 #: lib/ui/stdtoolbars.inc:381
 msgid "sqcup"
-msgstr ""
+msgstr "sqcup"
 
 #: lib/ui/stdtoolbars.inc:382
 msgid "triangleleft"
-msgstr ""
+msgstr "triangleleft"
 
 #: lib/ui/stdtoolbars.inc:383
 msgid "odot"
-msgstr ""
+msgstr "odot"
 
 #: lib/ui/stdtoolbars.inc:384
 msgid "star"
-msgstr ""
+msgstr "star"
 
 #: lib/ui/stdtoolbars.inc:385
 msgid "vee"
-msgstr ""
+msgstr "vee"
 
 #: lib/ui/stdtoolbars.inc:386
 msgid "amalg"
-msgstr ""
+msgstr "amalg"
 
 #: lib/ui/stdtoolbars.inc:387
 msgid "bigcirc"
-msgstr ""
+msgstr "bigcirc"
 
 #: lib/ui/stdtoolbars.inc:388
 msgid "setminus"
-msgstr ""
+msgstr "setminus"
 
 #: lib/ui/stdtoolbars.inc:389
 msgid "wedge"
-msgstr ""
+msgstr "wedge"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "dagger"
-msgstr ""
+msgstr "dagger"
 
 #: lib/ui/stdtoolbars.inc:391
 msgid "circ"
-msgstr ""
+msgstr "circ"
 
 #: lib/ui/stdtoolbars.inc:392
 msgid "bullet"
-msgstr ""
+msgstr "bullet"
 
 #: lib/ui/stdtoolbars.inc:393
 msgid "wr"
-msgstr ""
+msgstr "wr"
 
 #: lib/ui/stdtoolbars.inc:394
 msgid "ddagger"
-msgstr ""
+msgstr "ddagger"
 
 #: lib/ui/stdtoolbars.inc:397
 msgid "Relations"
@@ -9789,303 +9789,303 @@ msgstr "関係子"
 
 #: lib/ui/stdtoolbars.inc:398
 msgid "leq"
-msgstr ""
+msgstr "leq"
 
 #: lib/ui/stdtoolbars.inc:399
 msgid "geq"
-msgstr ""
+msgstr "geq"
 
 #: lib/ui/stdtoolbars.inc:400
 msgid "equiv"
-msgstr ""
+msgstr "equiv"
 
 #: lib/ui/stdtoolbars.inc:401
 msgid "models"
-msgstr ""
+msgstr "models"
 
 #: lib/ui/stdtoolbars.inc:402
 msgid "prec"
-msgstr ""
+msgstr "prec"
 
 #: lib/ui/stdtoolbars.inc:403
 msgid "succ"
-msgstr ""
+msgstr "succ"
 
 #: lib/ui/stdtoolbars.inc:404
 msgid "sim"
-msgstr ""
+msgstr "sim"
 
 #: lib/ui/stdtoolbars.inc:405
 msgid "perp"
-msgstr ""
+msgstr "perp"
 
 #: lib/ui/stdtoolbars.inc:406
 msgid "preceq"
-msgstr ""
+msgstr "preceq"
 
 #: lib/ui/stdtoolbars.inc:407
 msgid "succeq"
-msgstr ""
+msgstr "succeq"
 
 #: lib/ui/stdtoolbars.inc:408
 msgid "simeq"
-msgstr ""
+msgstr "simeq"
 
 #: lib/ui/stdtoolbars.inc:409
 msgid "mid"
-msgstr ""
+msgstr "mid"
 
 #: lib/ui/stdtoolbars.inc:410
 msgid "ll"
-msgstr ""
+msgstr "ll"
 
 #: lib/ui/stdtoolbars.inc:411
 msgid "gg"
-msgstr ""
+msgstr "gg"
 
 #: lib/ui/stdtoolbars.inc:412
 msgid "asymp"
-msgstr ""
+msgstr "asymp"
 
 #: lib/ui/stdtoolbars.inc:413
 msgid "parallel"
-msgstr ""
+msgstr "parallel"
 
 #: lib/ui/stdtoolbars.inc:414
 msgid "subset"
-msgstr ""
+msgstr "subset"
 
 #: lib/ui/stdtoolbars.inc:415
 msgid "supset"
-msgstr ""
+msgstr "supset"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "approx"
-msgstr ""
+msgstr "approx"
 
 #: lib/ui/stdtoolbars.inc:417
 msgid "smile"
-msgstr ""
+msgstr "smile"
 
 #: lib/ui/stdtoolbars.inc:418
 msgid "subseteq"
-msgstr ""
+msgstr "subseteq"
 
 #: lib/ui/stdtoolbars.inc:419
 msgid "supseteq"
-msgstr ""
+msgstr "supseteq"
 
 #: lib/ui/stdtoolbars.inc:420
 msgid "cong"
-msgstr ""
+msgstr "cong"
 
 #: lib/ui/stdtoolbars.inc:421
 msgid "frown"
-msgstr ""
+msgstr "frown"
 
 #: lib/ui/stdtoolbars.inc:422
 msgid "sqsubseteq"
-msgstr ""
+msgstr "sqsubseteq"
 
 #: lib/ui/stdtoolbars.inc:423
 msgid "sqsupseteq"
-msgstr ""
+msgstr "sqsupseteq"
 
 #: lib/ui/stdtoolbars.inc:424
 msgid "doteq"
-msgstr ""
+msgstr "doteq"
 
 #: lib/ui/stdtoolbars.inc:425
 msgid "neq"
-msgstr ""
+msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:426 src/lengthcommon.cpp:38
 msgid "in"
-msgstr ""
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:427
 msgid "ni"
-msgstr ""
+msgstr "ni"
 
 #: lib/ui/stdtoolbars.inc:428
 msgid "propto"
-msgstr ""
+msgstr "propto"
 
 #: lib/ui/stdtoolbars.inc:429
 msgid "notin"
-msgstr ""
+msgstr "notin"
 
 #: lib/ui/stdtoolbars.inc:430
 msgid "vdash"
-msgstr ""
+msgstr "vdash"
 
 #: lib/ui/stdtoolbars.inc:431
 msgid "dashv"
-msgstr ""
+msgstr "dashv"
 
 #: lib/ui/stdtoolbars.inc:432
 msgid "bowtie"
-msgstr ""
+msgstr "bowtie"
 
 #: lib/ui/stdtoolbars.inc:436
 msgid "alpha"
-msgstr ""
+msgstr "alpha"
 
 #: lib/ui/stdtoolbars.inc:437
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 #: lib/ui/stdtoolbars.inc:438
 msgid "gamma"
-msgstr ""
+msgstr "gamma"
 
 #: lib/ui/stdtoolbars.inc:439
 msgid "delta"
-msgstr ""
+msgstr "delta"
 
 #: lib/ui/stdtoolbars.inc:440
 msgid "epsilon"
-msgstr ""
+msgstr "epsilon"
 
 #: lib/ui/stdtoolbars.inc:441
 msgid "varepsilon"
-msgstr ""
+msgstr "varepsilon"
 
 #: lib/ui/stdtoolbars.inc:442
 msgid "zeta"
-msgstr ""
+msgstr "zeta"
 
 #: lib/ui/stdtoolbars.inc:443
 msgid "eta"
-msgstr ""
+msgstr "eta"
 
 #: lib/ui/stdtoolbars.inc:444
 msgid "theta"
-msgstr ""
+msgstr "theta"
 
 #: lib/ui/stdtoolbars.inc:445
 msgid "vartheta"
-msgstr ""
+msgstr "vartheta"
 
 #: lib/ui/stdtoolbars.inc:446
 msgid "iota"
-msgstr ""
+msgstr "iota"
 
 #: lib/ui/stdtoolbars.inc:447
 msgid "kappa"
-msgstr ""
+msgstr "kappa"
 
 #: lib/ui/stdtoolbars.inc:448
 msgid "lambda"
-msgstr ""
+msgstr "lambda"
 
 #: lib/ui/stdtoolbars.inc:449 src/lengthcommon.cpp:38
 msgid "mu"
-msgstr ""
+msgstr "mu"
 
 #: lib/ui/stdtoolbars.inc:450
 msgid "nu"
-msgstr ""
+msgstr "nu"
 
 #: lib/ui/stdtoolbars.inc:451
 msgid "xi"
-msgstr ""
+msgstr "xi"
 
 #: lib/ui/stdtoolbars.inc:452
 msgid "pi"
-msgstr ""
+msgstr "pi"
 
 #: lib/ui/stdtoolbars.inc:453
 msgid "varpi"
-msgstr ""
+msgstr "varpi"
 
 #: lib/ui/stdtoolbars.inc:454
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 #: lib/ui/stdtoolbars.inc:455
 msgid "varrho"
-msgstr ""
+msgstr "varrho"
 
 #: lib/ui/stdtoolbars.inc:456
 msgid "sigma"
-msgstr ""
+msgstr "sigma"
 
 #: lib/ui/stdtoolbars.inc:457
 msgid "varsigma"
-msgstr ""
+msgstr "varsigma"
 
 #: lib/ui/stdtoolbars.inc:458
 msgid "tau"
-msgstr ""
+msgstr "tau"
 
 #: lib/ui/stdtoolbars.inc:459
 msgid "upsilon"
-msgstr ""
+msgstr "upsilon"
 
 #: lib/ui/stdtoolbars.inc:460
 msgid "phi"
-msgstr ""
+msgstr "phi"
 
 #: lib/ui/stdtoolbars.inc:461
 msgid "varphi"
-msgstr ""
+msgstr "varphi"
 
 #: lib/ui/stdtoolbars.inc:462
 msgid "chi"
-msgstr ""
+msgstr "chi"
 
 #: lib/ui/stdtoolbars.inc:463
 msgid "psi"
-msgstr ""
+msgstr "psi"
 
 #: lib/ui/stdtoolbars.inc:464
 msgid "omega"
-msgstr ""
+msgstr "omega"
 
 #: lib/ui/stdtoolbars.inc:465
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #: lib/ui/stdtoolbars.inc:466
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 #: lib/ui/stdtoolbars.inc:467
 msgid "Theta"
-msgstr ""
+msgstr "Theta"
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "Lambda"
-msgstr ""
+msgstr "Lambda"
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "Xi"
-msgstr ""
+msgstr "Xi"
 
 #: lib/ui/stdtoolbars.inc:470
 msgid "Pi"
-msgstr ""
+msgstr "Pi"
 
 #: lib/ui/stdtoolbars.inc:471
 msgid "Sigma"
-msgstr ""
+msgstr "Sigma"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "Upsilon"
-msgstr ""
+msgstr "Upsilon"
 
 #: lib/ui/stdtoolbars.inc:473
 msgid "Phi"
-msgstr ""
+msgstr "Phi"
 
 #: lib/ui/stdtoolbars.inc:474
 msgid "Psi"
-msgstr ""
+msgstr "Psi"
 
 #: lib/ui/stdtoolbars.inc:475
 msgid "Omega"
-msgstr ""
+msgstr "Omega"
 
 #: lib/ui/stdtoolbars.inc:478
 msgid "Miscellaneous"
@@ -10093,191 +10093,191 @@ msgstr "その他"
 
 #: lib/ui/stdtoolbars.inc:479
 msgid "nabla"
-msgstr ""
+msgstr "nabla"
 
 #: lib/ui/stdtoolbars.inc:480
 msgid "partial"
-msgstr ""
+msgstr "partial"
 
 #: lib/ui/stdtoolbars.inc:481
 msgid "infty"
-msgstr ""
+msgstr "infty"
 
 #: lib/ui/stdtoolbars.inc:482
 msgid "prime"
-msgstr ""
+msgstr "prime"
 
 #: lib/ui/stdtoolbars.inc:483
 msgid "ell"
-msgstr ""
+msgstr "ell"
 
 #: lib/ui/stdtoolbars.inc:484
 msgid "emptyset"
-msgstr ""
+msgstr "emptyset"
 
 #: lib/ui/stdtoolbars.inc:485
 msgid "exists"
-msgstr ""
+msgstr "exists"
 
 #: lib/ui/stdtoolbars.inc:486
 msgid "forall"
-msgstr ""
+msgstr "forall"
 
 #: lib/ui/stdtoolbars.inc:487
 msgid "imath"
-msgstr ""
+msgstr "imath"
 
 #: lib/ui/stdtoolbars.inc:488
 msgid "jmath"
-msgstr ""
+msgstr "jmath"
 
 #: lib/ui/stdtoolbars.inc:489
 msgid "Re"
-msgstr ""
+msgstr "Re"
 
 #: lib/ui/stdtoolbars.inc:490
 msgid "Im"
-msgstr ""
+msgstr "Im"
 
 #: lib/ui/stdtoolbars.inc:491
 msgid "aleph"
-msgstr ""
+msgstr "aleph"
 
 #: lib/ui/stdtoolbars.inc:492
 msgid "wp"
-msgstr ""
+msgstr "wp"
 
 #: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
 msgid "hbar"
-msgstr ""
+msgstr "hbar"
 
 #: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
 msgid "angle"
-msgstr ""
+msgstr "angle"
 
 #: lib/ui/stdtoolbars.inc:495
 msgid "top"
-msgstr ""
+msgstr "top"
 
 #: lib/ui/stdtoolbars.inc:496
 msgid "bot"
-msgstr ""
+msgstr "bot"
 
 #: lib/ui/stdtoolbars.inc:497
 msgid "Vert"
-msgstr ""
+msgstr "Vert"
 
 #: lib/ui/stdtoolbars.inc:498
 msgid "neg"
-msgstr ""
+msgstr "neg"
 
 #: lib/ui/stdtoolbars.inc:499
 msgid "flat"
-msgstr ""
+msgstr "flat"
 
 #: lib/ui/stdtoolbars.inc:500
 msgid "natural"
-msgstr ""
+msgstr "natural"
 
 #: lib/ui/stdtoolbars.inc:501
 msgid "sharp"
-msgstr ""
+msgstr "sharp"
 
 #: lib/ui/stdtoolbars.inc:502
 msgid "surd"
-msgstr ""
+msgstr "surd"
 
 #: lib/ui/stdtoolbars.inc:503
 msgid "triangle"
-msgstr ""
+msgstr "triangle"
 
 #: lib/ui/stdtoolbars.inc:504
 msgid "diamondsuit"
-msgstr ""
+msgstr "diamondsuit"
 
 #: lib/ui/stdtoolbars.inc:505
 msgid "heartsuit"
-msgstr ""
+msgstr "heartsuit"
 
 #: lib/ui/stdtoolbars.inc:506
 msgid "clubsuit"
-msgstr ""
+msgstr "clubsuit"
 
 #: lib/ui/stdtoolbars.inc:507
 msgid "spadesuit"
-msgstr ""
+msgstr "spadesuit"
 
 #: lib/ui/stdtoolbars.inc:508
 msgid "textrm \\AA"
-msgstr ""
+msgstr "textrm \\AA"
 
 #: lib/ui/stdtoolbars.inc:509
 msgid "textrm \\O"
-msgstr ""
+msgstr "textrm \\O"
 
 #: lib/ui/stdtoolbars.inc:510
 msgid "mathcircumflex"
-msgstr ""
+msgstr "mathcircumflex"
 
 #: lib/ui/stdtoolbars.inc:511
 msgid "_"
-msgstr ""
+msgstr "_"
 
 #: lib/ui/stdtoolbars.inc:512
 msgid "mathrm T"
-msgstr ""
+msgstr "mathrm T"
 
 #: lib/ui/stdtoolbars.inc:513
 msgid "mathbb N"
-msgstr ""
+msgstr "mathbb N"
 
 #: lib/ui/stdtoolbars.inc:514
 msgid "mathbb Z"
-msgstr ""
+msgstr "mathbb Z"
 
 #: lib/ui/stdtoolbars.inc:515
 msgid "mathbb Q"
-msgstr ""
+msgstr "mathbb Q"
 
 #: lib/ui/stdtoolbars.inc:516
 msgid "mathbb R"
-msgstr ""
+msgstr "mathbb R"
 
 #: lib/ui/stdtoolbars.inc:517
 msgid "mathbb C"
-msgstr ""
+msgstr "mathbb C"
 
 #: lib/ui/stdtoolbars.inc:518
 msgid "mathbb H"
-msgstr ""
+msgstr "mathbb H"
 
 #: lib/ui/stdtoolbars.inc:519
 msgid "mathcal F"
-msgstr ""
+msgstr "mathcal F"
 
 #: lib/ui/stdtoolbars.inc:520
 msgid "mathcal L"
-msgstr ""
+msgstr "mathcal L"
 
 #: lib/ui/stdtoolbars.inc:521
 msgid "mathcal H"
-msgstr ""
+msgstr "mathcal H"
 
 #: lib/ui/stdtoolbars.inc:522
 msgid "mathcal O"
-msgstr ""
+msgstr "mathcal O"
 
 #: lib/ui/stdtoolbars.inc:523
 msgid "phantom"
-msgstr ""
+msgstr "phantom"
 
 #: lib/ui/stdtoolbars.inc:524
 msgid "vphantom"
-msgstr ""
+msgstr "vphantom"
 
 #: lib/ui/stdtoolbars.inc:525
 msgid "hphantom"
-msgstr ""
+msgstr "hphantom"
 
 #: lib/ui/stdtoolbars.inc:528
 msgid "Big Operators"
@@ -10285,139 +10285,139 @@ msgstr "大演算子"
 
 #: lib/ui/stdtoolbars.inc:529
 msgid "intop"
-msgstr ""
+msgstr "intop"
 
 #: lib/ui/stdtoolbars.inc:530
 msgid "int"
-msgstr ""
+msgstr "int"
 
 #: lib/ui/stdtoolbars.inc:531
 msgid "iintop"
-msgstr ""
+msgstr "iintop"
 
 #: lib/ui/stdtoolbars.inc:532
 msgid "iint"
-msgstr ""
+msgstr "iint"
 
 #: lib/ui/stdtoolbars.inc:533
 msgid "iiintop"
-msgstr ""
+msgstr "iiintop"
 
 #: lib/ui/stdtoolbars.inc:534
 msgid "iiint"
-msgstr ""
+msgstr "iiint"
 
 #: lib/ui/stdtoolbars.inc:535
 msgid "iiiintop"
-msgstr ""
+msgstr "iiiintop"
 
 #: lib/ui/stdtoolbars.inc:536
 msgid "iiiint"
-msgstr ""
+msgstr "iiiint"
 
 #: lib/ui/stdtoolbars.inc:537
 msgid "dotsintop"
-msgstr ""
+msgstr "dotsintop"
 
 #: lib/ui/stdtoolbars.inc:538
 msgid "dotsint"
-msgstr ""
+msgstr "dotsint"
 
 #: lib/ui/stdtoolbars.inc:539
 msgid "ointop"
-msgstr ""
+msgstr "ointop"
 
 #: lib/ui/stdtoolbars.inc:540
 msgid "oint"
-msgstr ""
+msgstr "oint"
 
 #: lib/ui/stdtoolbars.inc:541
 msgid "oiintop"
-msgstr ""
+msgstr "oiintop"
 
 #: lib/ui/stdtoolbars.inc:542
 msgid "oiint"
-msgstr ""
+msgstr "oiint"
 
 #: lib/ui/stdtoolbars.inc:543
 msgid "ointctrclockwiseop"
-msgstr ""
+msgstr "ointctrclockwiseop"
 
 #: lib/ui/stdtoolbars.inc:544
 msgid "ointctrclockwise"
-msgstr ""
+msgstr "ointctrclockwise"
 
 #: lib/ui/stdtoolbars.inc:545
 msgid "ointclockwiseop"
-msgstr ""
+msgstr "ointclockwiseop"
 
 #: lib/ui/stdtoolbars.inc:546
 msgid "ointclockwise"
-msgstr ""
+msgstr "ointclockwise"
 
 #: lib/ui/stdtoolbars.inc:547
 msgid "sqintop"
-msgstr ""
+msgstr "sqintop"
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "sqint"
-msgstr ""
+msgstr "sqint"
 
 #: lib/ui/stdtoolbars.inc:549
 msgid "sqiintop"
-msgstr ""
+msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:550
 msgid "sqiint"
-msgstr ""
+msgstr "sqiint"
 
 #: lib/ui/stdtoolbars.inc:551
 msgid "sum"
-msgstr ""
+msgstr "sum"
 
 #: lib/ui/stdtoolbars.inc:552
 msgid "prod"
-msgstr ""
+msgstr "prod"
 
 #: lib/ui/stdtoolbars.inc:553
 msgid "coprod"
-msgstr ""
+msgstr "coprod"
 
 #: lib/ui/stdtoolbars.inc:554
 msgid "bigsqcup"
-msgstr ""
+msgstr "bigsqcup"
 
 #: lib/ui/stdtoolbars.inc:555
 msgid "bigotimes"
-msgstr ""
+msgstr "bigotimes"
 
 #: lib/ui/stdtoolbars.inc:556
 msgid "bigodot"
-msgstr ""
+msgstr "bigodot"
 
 #: lib/ui/stdtoolbars.inc:557
 msgid "bigoplus"
-msgstr ""
+msgstr "bigoplus"
 
 #: lib/ui/stdtoolbars.inc:558
 msgid "bigcap"
-msgstr ""
+msgstr "bigcap"
 
 #: lib/ui/stdtoolbars.inc:559
 msgid "bigcup"
-msgstr ""
+msgstr "bigcup"
 
 #: lib/ui/stdtoolbars.inc:560
 msgid "biguplus"
-msgstr ""
+msgstr "biguplus"
 
 #: lib/ui/stdtoolbars.inc:561
 msgid "bigvee"
-msgstr ""
+msgstr "bigvee"
 
 #: lib/ui/stdtoolbars.inc:562
 msgid "bigwedge"
-msgstr ""
+msgstr "bigwedge"
 
 #: lib/ui/stdtoolbars.inc:565
 msgid "AMS Miscellaneous"
@@ -10425,135 +10425,135 @@ msgstr "AMSその他"
 
 #: lib/ui/stdtoolbars.inc:566
 msgid "digamma"
-msgstr ""
+msgstr "digamma"
 
 #: lib/ui/stdtoolbars.inc:567
 msgid "varkappa"
-msgstr ""
+msgstr "varkappa"
 
 #: lib/ui/stdtoolbars.inc:568
 msgid "beth"
-msgstr ""
+msgstr "beth"
 
 #: lib/ui/stdtoolbars.inc:569
 msgid "daleth"
-msgstr ""
+msgstr "daleth"
 
 #: lib/ui/stdtoolbars.inc:570
 msgid "gimel"
-msgstr ""
+msgstr "gimel"
 
 #: lib/ui/stdtoolbars.inc:571
 msgid "ulcorner"
-msgstr ""
+msgstr "ulcorner"
 
 #: lib/ui/stdtoolbars.inc:572
 msgid "urcorner"
-msgstr ""
+msgstr "urcorner"
 
 #: lib/ui/stdtoolbars.inc:573
 msgid "llcorner"
-msgstr ""
+msgstr "llcorner"
 
 #: lib/ui/stdtoolbars.inc:574
 msgid "lrcorner"
-msgstr ""
+msgstr "lrcorner"
 
 #: lib/ui/stdtoolbars.inc:576
 msgid "hslash"
-msgstr ""
+msgstr "hslash"
 
 #: lib/ui/stdtoolbars.inc:577
 msgid "vartriangle"
-msgstr ""
+msgstr "vartriangle"
 
 #: lib/ui/stdtoolbars.inc:578
 msgid "triangledown"
-msgstr ""
+msgstr "triangledown"
 
 #: lib/ui/stdtoolbars.inc:579
 msgid "square"
-msgstr ""
+msgstr "square"
 
 #: lib/ui/stdtoolbars.inc:580
 msgid "lozenge"
-msgstr ""
+msgstr "lozenge"
 
 #: lib/ui/stdtoolbars.inc:581
 msgid "circledS"
-msgstr ""
+msgstr "circledS"
 
 #: lib/ui/stdtoolbars.inc:583
 msgid "measuredangle"
-msgstr ""
+msgstr "measuredangle"
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "nexists"
-msgstr ""
+msgstr "nexists"
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "mho"
-msgstr ""
+msgstr "mho"
 
 #: lib/ui/stdtoolbars.inc:586
 msgid "Finv"
-msgstr ""
+msgstr "Finv"
 
 #: lib/ui/stdtoolbars.inc:587
 msgid "Game"
-msgstr ""
+msgstr "Game"
 
 #: lib/ui/stdtoolbars.inc:588
 msgid "Bbbk"
-msgstr ""
+msgstr "Bbbk"
 
 #: lib/ui/stdtoolbars.inc:589
 msgid "backprime"
-msgstr ""
+msgstr "backprime"
 
 #: lib/ui/stdtoolbars.inc:590
 msgid "varnothing"
-msgstr ""
+msgstr "varnothing"
 
 #: lib/ui/stdtoolbars.inc:591
 msgid "blacktriangle"
-msgstr ""
+msgstr "blacktriangle"
 
 #: lib/ui/stdtoolbars.inc:592
 msgid "blacktriangledown"
-msgstr ""
+msgstr "blacktriangledown"
 
 #: lib/ui/stdtoolbars.inc:593
 msgid "blacksquare"
-msgstr ""
+msgstr "blacksquare"
 
 #: lib/ui/stdtoolbars.inc:594
 msgid "blacklozenge"
-msgstr ""
+msgstr "blacklozenge"
 
 #: lib/ui/stdtoolbars.inc:595
 msgid "bigstar"
-msgstr ""
+msgstr "bigstar"
 
 #: lib/ui/stdtoolbars.inc:596
 msgid "sphericalangle"
-msgstr ""
+msgstr "sphericalangle"
 
 #: lib/ui/stdtoolbars.inc:597
 msgid "complement"
-msgstr ""
+msgstr "complement"
 
 #: lib/ui/stdtoolbars.inc:598
 msgid "eth"
-msgstr ""
+msgstr "eth"
 
 #: lib/ui/stdtoolbars.inc:599
 msgid "diagup"
-msgstr ""
+msgstr "diagup"
 
 #: lib/ui/stdtoolbars.inc:600
 msgid "diagdown"
-msgstr ""
+msgstr "diagdown"
 
 #: lib/ui/stdtoolbars.inc:603
 msgid "AMS Arrows"
@@ -10561,147 +10561,147 @@ msgstr "AMS矢印"
 
 #: lib/ui/stdtoolbars.inc:604
 msgid "dashleftarrow"
-msgstr ""
+msgstr "dashleftarrow"
 
 #: lib/ui/stdtoolbars.inc:605
 msgid "dashrightarrow"
-msgstr ""
+msgstr "dashrightarrow"
 
 #: lib/ui/stdtoolbars.inc:606
 msgid "leftleftarrows"
-msgstr ""
+msgstr "leftleftarrows"
 
 #: lib/ui/stdtoolbars.inc:607
 msgid "leftrightarrows"
-msgstr ""
+msgstr "leftrightarrows"
 
 #: lib/ui/stdtoolbars.inc:608
 msgid "rightrightarrows"
-msgstr ""
+msgstr "rightrightarrows"
 
 #: lib/ui/stdtoolbars.inc:609
 msgid "rightleftarrows"
-msgstr ""
+msgstr "rightleftarrows"
 
 #: lib/ui/stdtoolbars.inc:610
 msgid "Lleftarrow"
-msgstr ""
+msgstr "Lleftarrow"
 
 #: lib/ui/stdtoolbars.inc:611
 msgid "Rrightarrow"
-msgstr ""
+msgstr "Rrightarrow"
 
 #: lib/ui/stdtoolbars.inc:612
 msgid "twoheadleftarrow"
-msgstr ""
+msgstr "twoheadleftarrow"
 
 #: lib/ui/stdtoolbars.inc:613
 msgid "twoheadrightarrow"
-msgstr ""
+msgstr "twoheadrightarrow"
 
 #: lib/ui/stdtoolbars.inc:614
 msgid "leftarrowtail"
-msgstr ""
+msgstr "leftarrowtail"
 
 #: lib/ui/stdtoolbars.inc:615
 msgid "rightarrowtail"
-msgstr ""
+msgstr "rightarrowtail"
 
 #: lib/ui/stdtoolbars.inc:616
 msgid "looparrowleft"
-msgstr ""
+msgstr "looparrowleft"
 
 #: lib/ui/stdtoolbars.inc:617
 msgid "looparrowright"
-msgstr ""
+msgstr "looparrowright"
 
 #: lib/ui/stdtoolbars.inc:618
 msgid "curvearrowleft"
-msgstr ""
+msgstr "curvearrowleft"
 
 #: lib/ui/stdtoolbars.inc:619
 msgid "curvearrowright"
-msgstr ""
+msgstr "curvearrowright"
 
 #: lib/ui/stdtoolbars.inc:620
 msgid "circlearrowleft"
-msgstr ""
+msgstr "circlearrowleft"
 
 #: lib/ui/stdtoolbars.inc:621
 msgid "circlearrowright"
-msgstr ""
+msgstr "circlearrowright"
 
 #: lib/ui/stdtoolbars.inc:622
 msgid "Lsh"
-msgstr ""
+msgstr "Lsh"
 
 #: lib/ui/stdtoolbars.inc:623
 msgid "Rsh"
-msgstr ""
+msgstr "Rsh"
 
 #: lib/ui/stdtoolbars.inc:624
 msgid "upuparrows"
-msgstr ""
+msgstr "upuparrows"
 
 #: lib/ui/stdtoolbars.inc:625
 msgid "downdownarrows"
-msgstr ""
+msgstr "downdownarrows"
 
 #: lib/ui/stdtoolbars.inc:626
 msgid "upharpoonleft"
-msgstr ""
+msgstr "upharpoonleft"
 
 #: lib/ui/stdtoolbars.inc:627
 msgid "upharpoonright"
-msgstr ""
+msgstr "upharpoonright"
 
 #: lib/ui/stdtoolbars.inc:628
 msgid "downharpoonleft"
-msgstr ""
+msgstr "downharpoonleft"
 
 #: lib/ui/stdtoolbars.inc:629
 msgid "downharpoonright"
-msgstr ""
+msgstr "downharpoonright"
 
 #: lib/ui/stdtoolbars.inc:630
 msgid "leftrightharpoons"
-msgstr ""
+msgstr "leftrightharpoons"
 
 #: lib/ui/stdtoolbars.inc:632
 msgid "rightsquigarrow"
-msgstr ""
+msgstr "rightsquigarrow"
 
 #: lib/ui/stdtoolbars.inc:633
 msgid "leftrightsquigarrow"
-msgstr ""
+msgstr "leftrightsquigarrow"
 
 #: lib/ui/stdtoolbars.inc:634
 msgid "nleftarrow"
-msgstr ""
+msgstr "nleftarrow"
 
 #: lib/ui/stdtoolbars.inc:635
 msgid "nrightarrow"
-msgstr ""
+msgstr "nrightarrow"
 
 #: lib/ui/stdtoolbars.inc:636
 msgid "nleftrightarrow"
-msgstr ""
+msgstr "nleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:637
 msgid "nLeftarrow"
-msgstr ""
+msgstr "nLeftarrow"
 
 #: lib/ui/stdtoolbars.inc:638
 msgid "nRightarrow"
-msgstr ""
+msgstr "nRightarrow"
 
 #: lib/ui/stdtoolbars.inc:639
 msgid "nLeftrightarrow"
-msgstr ""
+msgstr "nLeftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:640
 msgid "multimap"
-msgstr ""
+msgstr "multimap"
 
 #: lib/ui/stdtoolbars.inc:643
 msgid "AMS Relations"
@@ -10709,267 +10709,267 @@ msgstr "AMS関係子"
 
 #: lib/ui/stdtoolbars.inc:644
 msgid "leqq"
-msgstr ""
+msgstr "leqq"
 
 #: lib/ui/stdtoolbars.inc:645
 msgid "geqq"
-msgstr ""
+msgstr "geqq"
 
 #: lib/ui/stdtoolbars.inc:646
 msgid "leqslant"
-msgstr ""
+msgstr "leqslant"
 
 #: lib/ui/stdtoolbars.inc:647
 msgid "geqslant"
-msgstr ""
+msgstr "geqslant"
 
 #: lib/ui/stdtoolbars.inc:648
 msgid "eqslantless"
-msgstr ""
+msgstr "eqslantless"
 
 #: lib/ui/stdtoolbars.inc:649
 msgid "eqslantgtr"
-msgstr ""
+msgstr "eqslantgtr"
 
 #: lib/ui/stdtoolbars.inc:650
 msgid "lesssim"
-msgstr ""
+msgstr "lesssim"
 
 #: lib/ui/stdtoolbars.inc:651
 msgid "gtrsim"
-msgstr ""
+msgstr "gtrsim"
 
 #: lib/ui/stdtoolbars.inc:652
 msgid "lessapprox"
-msgstr ""
+msgstr "lessapprox"
 
 #: lib/ui/stdtoolbars.inc:653
 msgid "gtrapprox"
-msgstr ""
+msgstr "gtrapprox"
 
 #: lib/ui/stdtoolbars.inc:654
 msgid "approxeq"
-msgstr ""
+msgstr "approxeq"
 
 #: lib/ui/stdtoolbars.inc:655
 msgid "triangleq"
-msgstr ""
+msgstr "triangleq"
 
 #: lib/ui/stdtoolbars.inc:656
 msgid "lessdot"
-msgstr ""
+msgstr "lessdot"
 
 #: lib/ui/stdtoolbars.inc:657
 msgid "gtrdot"
-msgstr ""
+msgstr "gtrdot"
 
 #: lib/ui/stdtoolbars.inc:658
 msgid "lll"
-msgstr ""
+msgstr "lll"
 
 #: lib/ui/stdtoolbars.inc:659
 msgid "ggg"
-msgstr ""
+msgstr "ggg"
 
 #: lib/ui/stdtoolbars.inc:660
 msgid "lessgtr"
-msgstr ""
+msgstr "lessgtr"
 
 #: lib/ui/stdtoolbars.inc:661
 msgid "gtrless"
-msgstr ""
+msgstr "gtrless"
 
 #: lib/ui/stdtoolbars.inc:662
 msgid "lesseqgtr"
-msgstr ""
+msgstr "lesseqgtr"
 
 #: lib/ui/stdtoolbars.inc:663
 msgid "gtreqless"
-msgstr ""
+msgstr "gtreqless"
 
 #: lib/ui/stdtoolbars.inc:664
 msgid "lesseqqgtr"
-msgstr ""
+msgstr "lesseqqgtr"
 
 #: lib/ui/stdtoolbars.inc:665
 msgid "gtreqqless"
-msgstr ""
+msgstr "gtreqqless"
 
 #: lib/ui/stdtoolbars.inc:666
 msgid "eqcirc"
-msgstr ""
+msgstr "eqcirc"
 
 #: lib/ui/stdtoolbars.inc:667
 msgid "circeq"
-msgstr ""
+msgstr "circeq"
 
 #: lib/ui/stdtoolbars.inc:668
 msgid "thicksim"
-msgstr ""
+msgstr "thicksim"
 
 #: lib/ui/stdtoolbars.inc:669
 msgid "thickapprox"
-msgstr ""
+msgstr "thickapprox"
 
 #: lib/ui/stdtoolbars.inc:670
 msgid "backsim"
-msgstr ""
+msgstr "backsim"
 
 #: lib/ui/stdtoolbars.inc:671
 msgid "backsimeq"
-msgstr ""
+msgstr "backsimeq"
 
 #: lib/ui/stdtoolbars.inc:672
 msgid "subseteqq"
-msgstr ""
+msgstr "subseteqq"
 
 #: lib/ui/stdtoolbars.inc:673
 msgid "supseteqq"
-msgstr ""
+msgstr "supseteqq"
 
 #: lib/ui/stdtoolbars.inc:674
 msgid "Subset"
-msgstr ""
+msgstr "Subset"
 
 #: lib/ui/stdtoolbars.inc:675
 msgid "Supset"
-msgstr ""
+msgstr "Supset"
 
 #: lib/ui/stdtoolbars.inc:676
 msgid "sqsubset"
-msgstr ""
+msgstr "sqsubset"
 
 #: lib/ui/stdtoolbars.inc:677
 msgid "sqsupset"
-msgstr ""
+msgstr "sqsupset"
 
 #: lib/ui/stdtoolbars.inc:678
 msgid "preccurlyeq"
-msgstr ""
+msgstr "preccurlyeq"
 
 #: lib/ui/stdtoolbars.inc:679
 msgid "succcurlyeq"
-msgstr ""
+msgstr "succcurlyeq"
 
 #: lib/ui/stdtoolbars.inc:680
 msgid "curlyeqprec"
-msgstr ""
+msgstr "curlyeqprec"
 
 #: lib/ui/stdtoolbars.inc:681
 msgid "curlyeqsucc"
-msgstr ""
+msgstr "curlyeqsucc"
 
 #: lib/ui/stdtoolbars.inc:682
 msgid "precsim"
-msgstr ""
+msgstr "precsim"
 
 #: lib/ui/stdtoolbars.inc:683
 msgid "succsim"
-msgstr ""
+msgstr "succsim"
 
 #: lib/ui/stdtoolbars.inc:684
 msgid "precapprox"
-msgstr ""
+msgstr "precapprox"
 
 #: lib/ui/stdtoolbars.inc:685
 msgid "succapprox"
-msgstr ""
+msgstr "succapprox"
 
 #: lib/ui/stdtoolbars.inc:686
 msgid "vartriangleleft"
-msgstr ""
+msgstr "vartriangleleft"
 
 #: lib/ui/stdtoolbars.inc:687
 msgid "vartriangleright"
-msgstr ""
+msgstr "vartriangleright"
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "trianglelefteq"
-msgstr ""
+msgstr "trianglelefteq"
 
 #: lib/ui/stdtoolbars.inc:689
 msgid "trianglerighteq"
-msgstr ""
+msgstr "trianglerighteq"
 
 #: lib/ui/stdtoolbars.inc:690
 msgid "bumpeq"
-msgstr ""
+msgstr "bumpeq"
 
 #: lib/ui/stdtoolbars.inc:691
 msgid "Bumpeq"
-msgstr ""
+msgstr "Bumpeq"
 
 #: lib/ui/stdtoolbars.inc:692
 msgid "doteqdot"
-msgstr ""
+msgstr "doteqdot"
 
 #: lib/ui/stdtoolbars.inc:693
 msgid "risingdotseq"
-msgstr ""
+msgstr "risingdotseq"
 
 #: lib/ui/stdtoolbars.inc:694
 msgid "fallingdotseq"
-msgstr ""
+msgstr "fallingdotseq"
 
 #: lib/ui/stdtoolbars.inc:695
 msgid "vDash"
-msgstr ""
+msgstr "vDash"
 
 #: lib/ui/stdtoolbars.inc:696
 msgid "Vvdash"
-msgstr ""
+msgstr "Vvdash"
 
 #: lib/ui/stdtoolbars.inc:697
 msgid "Vdash"
-msgstr ""
+msgstr "Vdash"
 
 #: lib/ui/stdtoolbars.inc:698
 msgid "shortmid"
-msgstr ""
+msgstr "shortmid"
 
 #: lib/ui/stdtoolbars.inc:699
 msgid "shortparallel"
-msgstr ""
+msgstr "shortparallel"
 
 #: lib/ui/stdtoolbars.inc:700
 msgid "smallsmile"
-msgstr ""
+msgstr "smallsmile"
 
 #: lib/ui/stdtoolbars.inc:701
 msgid "smallfrown"
-msgstr ""
+msgstr "smallfrown"
 
 #: lib/ui/stdtoolbars.inc:702
 msgid "blacktriangleleft"
-msgstr ""
+msgstr "blacktriangleleft"
 
 #: lib/ui/stdtoolbars.inc:703
 msgid "blacktriangleright"
-msgstr ""
+msgstr "blacktriangleright"
 
 #: lib/ui/stdtoolbars.inc:704
 msgid "because"
-msgstr ""
+msgstr "because"
 
 #: lib/ui/stdtoolbars.inc:705
 msgid "therefore"
-msgstr ""
+msgstr "therefore"
 
 #: lib/ui/stdtoolbars.inc:706
 msgid "backepsilon"
-msgstr ""
+msgstr "backepsilon"
 
 #: lib/ui/stdtoolbars.inc:707
 msgid "varpropto"
-msgstr ""
+msgstr "varpropto"
 
 #: lib/ui/stdtoolbars.inc:708
 msgid "between"
-msgstr ""
+msgstr "between"
 
 #: lib/ui/stdtoolbars.inc:709
 msgid "pitchfork"
-msgstr ""
+msgstr "pitchfork"
 
 #: lib/ui/stdtoolbars.inc:712
 msgid "AMS Negative Relations"
@@ -10977,203 +10977,203 @@ msgstr "AMS否定関係子"
 
 #: lib/ui/stdtoolbars.inc:713
 msgid "nless"
-msgstr ""
+msgstr "nless"
 
 #: lib/ui/stdtoolbars.inc:714
 msgid "ngtr"
-msgstr ""
+msgstr "ngtr"
 
 #: lib/ui/stdtoolbars.inc:715
 msgid "nleq"
-msgstr ""
+msgstr "nleq"
 
 #: lib/ui/stdtoolbars.inc:716
 msgid "ngeq"
-msgstr ""
+msgstr "ngeq"
 
 #: lib/ui/stdtoolbars.inc:717
 msgid "nleqslant"
-msgstr ""
+msgstr "nleqslant"
 
 #: lib/ui/stdtoolbars.inc:718
 msgid "ngeqslant"
-msgstr ""
+msgstr "ngeqslant"
 
 #: lib/ui/stdtoolbars.inc:719
 msgid "nleqq"
-msgstr ""
+msgstr "nleqq"
 
 #: lib/ui/stdtoolbars.inc:720
 msgid "ngeqq"
-msgstr ""
+msgstr "ngeqq"
 
 #: lib/ui/stdtoolbars.inc:721
 msgid "lneq"
-msgstr ""
+msgstr "lneq"
 
 #: lib/ui/stdtoolbars.inc:722
 msgid "gneq"
-msgstr ""
+msgstr "gneq"
 
 #: lib/ui/stdtoolbars.inc:723
 msgid "lneqq"
-msgstr ""
+msgstr "lneqq"
 
 #: lib/ui/stdtoolbars.inc:724
 msgid "gneqq"
-msgstr ""
+msgstr "gneqq"
 
 #: lib/ui/stdtoolbars.inc:725
 msgid "lvertneqq"
-msgstr ""
+msgstr "lvertneqq"
 
 #: lib/ui/stdtoolbars.inc:726
 msgid "gvertneqq"
-msgstr ""
+msgstr "gvertneqq"
 
 #: lib/ui/stdtoolbars.inc:727
 msgid "lnsim"
-msgstr ""
+msgstr "lnsim"
 
 #: lib/ui/stdtoolbars.inc:728
 msgid "gnsim"
-msgstr ""
+msgstr "gnsim"
 
 #: lib/ui/stdtoolbars.inc:729
 msgid "lnapprox"
-msgstr ""
+msgstr "lnapprox"
 
 #: lib/ui/stdtoolbars.inc:730
 msgid "gnapprox"
-msgstr ""
+msgstr "gnapprox"
 
 #: lib/ui/stdtoolbars.inc:731
 msgid "nprec"
-msgstr ""
+msgstr "nprec"
 
 #: lib/ui/stdtoolbars.inc:732
 msgid "nsucc"
-msgstr ""
+msgstr "nsucc"
 
 #: lib/ui/stdtoolbars.inc:733
 msgid "npreceq"
-msgstr ""
+msgstr "npreceq"
 
 #: lib/ui/stdtoolbars.inc:734
 msgid "nsucceq"
-msgstr ""
+msgstr "nsucceq"
 
 #: lib/ui/stdtoolbars.inc:735
 msgid "precnsim"
-msgstr ""
+msgstr "precnsim"
 
 #: lib/ui/stdtoolbars.inc:736
 msgid "succnsim"
-msgstr ""
+msgstr "succnsim"
 
 #: lib/ui/stdtoolbars.inc:737
 msgid "precnapprox"
-msgstr ""
+msgstr "precnapprox"
 
 #: lib/ui/stdtoolbars.inc:738
 msgid "succnapprox"
-msgstr ""
+msgstr "succnapprox"
 
 #: lib/ui/stdtoolbars.inc:739
 msgid "subsetneq"
-msgstr ""
+msgstr "subsetneq"
 
 #: lib/ui/stdtoolbars.inc:740
 msgid "supsetneq"
-msgstr ""
+msgstr "supsetneq"
 
 #: lib/ui/stdtoolbars.inc:741
 msgid "subsetneqq"
-msgstr ""
+msgstr "subsetneqq"
 
 #: lib/ui/stdtoolbars.inc:742
 msgid "supsetneqq"
-msgstr ""
+msgstr "supsetneqq"
 
 #: lib/ui/stdtoolbars.inc:743
 msgid "nsubseteq"
-msgstr ""
+msgstr "nsubseteq"
 
 #: lib/ui/stdtoolbars.inc:744
 msgid "nsupseteq"
-msgstr ""
+msgstr "nsupseteq"
 
 #: lib/ui/stdtoolbars.inc:745
 msgid "nsupseteqq"
-msgstr ""
+msgstr "nsupseteqq"
 
 #: lib/ui/stdtoolbars.inc:746
 msgid "nvdash"
-msgstr ""
+msgstr "nvdash"
 
 #: lib/ui/stdtoolbars.inc:747
 msgid "nvDash"
-msgstr ""
+msgstr "nvDash"
 
 #: lib/ui/stdtoolbars.inc:748
 msgid "nVDash"
-msgstr ""
+msgstr "nVDash"
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "varsubsetneq"
-msgstr ""
+msgstr "varsubsetneq"
 
 #: lib/ui/stdtoolbars.inc:750
 msgid "varsupsetneq"
-msgstr ""
+msgstr "varsupsetneq"
 
 #: lib/ui/stdtoolbars.inc:751
 msgid "varsubsetneqq"
-msgstr ""
+msgstr "varsubsetneqq"
 
 #: lib/ui/stdtoolbars.inc:752
 msgid "varsupsetneqq"
-msgstr ""
+msgstr "varsupsetneqq"
 
 #: lib/ui/stdtoolbars.inc:753
 msgid "ntriangleleft"
-msgstr ""
+msgstr "ntriangleleft"
 
 #: lib/ui/stdtoolbars.inc:754
 msgid "ntriangleright"
-msgstr ""
+msgstr "ntriangleright"
 
 #: lib/ui/stdtoolbars.inc:755
 msgid "ntrianglelefteq"
-msgstr ""
+msgstr "ntrianglelefteq"
 
 #: lib/ui/stdtoolbars.inc:756
 msgid "ntrianglerighteq"
-msgstr ""
+msgstr "ntrianglerighteq"
 
 #: lib/ui/stdtoolbars.inc:757
 msgid "ncong"
-msgstr ""
+msgstr "ncong"
 
 #: lib/ui/stdtoolbars.inc:758
 msgid "nsim"
-msgstr ""
+msgstr "nsim"
 
 #: lib/ui/stdtoolbars.inc:759
 msgid "nmid"
-msgstr ""
+msgstr "nmid"
 
 #: lib/ui/stdtoolbars.inc:760
 msgid "nshortmid"
-msgstr ""
+msgstr "nshortmid"
 
 #: lib/ui/stdtoolbars.inc:761
 msgid "nparallel"
-msgstr ""
+msgstr "nparallel"
 
 #: lib/ui/stdtoolbars.inc:762
 msgid "nshortparallel"
-msgstr ""
+msgstr "nshortparallel"
 
 #: lib/ui/stdtoolbars.inc:765
 msgid "AMS Operators"
@@ -11181,95 +11181,95 @@ msgstr "AMS演算子"
 
 #: lib/ui/stdtoolbars.inc:766
 msgid "dotplus"
-msgstr ""
+msgstr "dotplus"
 
 #: lib/ui/stdtoolbars.inc:767
 msgid "smallsetminus"
-msgstr ""
+msgstr "smallsetminus"
 
 #: lib/ui/stdtoolbars.inc:768
 msgid "Cap"
-msgstr ""
+msgstr "Cap"
 
 #: lib/ui/stdtoolbars.inc:769
 msgid "Cup"
-msgstr ""
+msgstr "Cup"
 
 #: lib/ui/stdtoolbars.inc:770
 msgid "barwedge"
-msgstr ""
+msgstr "barwedge"
 
 #: lib/ui/stdtoolbars.inc:771
 msgid "veebar"
-msgstr ""
+msgstr "veebar"
 
 #: lib/ui/stdtoolbars.inc:772
 msgid "doublebarwedge"
-msgstr ""
+msgstr "doublebarwedge"
 
 #: lib/ui/stdtoolbars.inc:773
 msgid "boxminus"
-msgstr ""
+msgstr "boxminus"
 
 #: lib/ui/stdtoolbars.inc:774
 msgid "boxtimes"
-msgstr ""
+msgstr "boxtimes"
 
 #: lib/ui/stdtoolbars.inc:775
 msgid "boxdot"
-msgstr ""
+msgstr "boxdot"
 
 #: lib/ui/stdtoolbars.inc:776
 msgid "boxplus"
-msgstr ""
+msgstr "boxplus"
 
 #: lib/ui/stdtoolbars.inc:777
 msgid "divideontimes"
-msgstr ""
+msgstr "divideontimes"
 
 #: lib/ui/stdtoolbars.inc:778
 msgid "ltimes"
-msgstr ""
+msgstr "ltimes"
 
 #: lib/ui/stdtoolbars.inc:779
 msgid "rtimes"
-msgstr ""
+msgstr "rtimes"
 
 #: lib/ui/stdtoolbars.inc:780
 msgid "leftthreetimes"
-msgstr ""
+msgstr "leftthreetimes"
 
 #: lib/ui/stdtoolbars.inc:781
 msgid "rightthreetimes"
-msgstr ""
+msgstr "rightthreetimes"
 
 #: lib/ui/stdtoolbars.inc:782
 msgid "curlywedge"
-msgstr ""
+msgstr "curlywedge"
 
 #: lib/ui/stdtoolbars.inc:783
 msgid "curlyvee"
-msgstr ""
+msgstr "curlyvee"
 
 #: lib/ui/stdtoolbars.inc:784
 msgid "circleddash"
-msgstr ""
+msgstr "circleddash"
 
 #: lib/ui/stdtoolbars.inc:785
 msgid "circledast"
-msgstr ""
+msgstr "circledast"
 
 #: lib/ui/stdtoolbars.inc:786
 msgid "circledcirc"
-msgstr ""
+msgstr "circledcirc"
 
 #: lib/ui/stdtoolbars.inc:787
 msgid "centerdot"
-msgstr ""
+msgstr "centerdot"
 
 #: lib/ui/stdtoolbars.inc:788
 msgid "intercal"
-msgstr ""
+msgstr "intercal"
 
 #: lib/external_templates:37
 msgid "RasterImage"
@@ -14234,23 +14234,23 @@ msgstr "数式"
 
 #: src/frontends/qt4/BulletsModule.cpp:48
 msgid "Dings 1"
-msgstr ""
+msgstr "絵文字１"
 
 #: src/frontends/qt4/BulletsModule.cpp:49
 msgid "Dings 2"
-msgstr ""
+msgstr "絵文字２"
 
 #: src/frontends/qt4/BulletsModule.cpp:50
 msgid "Dings 3"
-msgstr ""
+msgstr "絵文字３"
 
 #: src/frontends/qt4/BulletsModule.cpp:51
 msgid "Dings 4"
-msgstr ""
+msgstr "絵文字４"
 
 #: src/frontends/qt4/Dialogs.cpp:225
 msgid "Index Entry"
-msgstr "索引の見出し"
+msgstr " 索引の見出し"
 
 #: src/frontends/qt4/Dialogs.cpp:235
 msgid "Label"
@@ -14390,105 +14390,103 @@ msgstr "可変"
 
 #: src/frontends/qt4/QDocument.cpp:77
 msgid "Computer Modern Roman"
-msgstr ""
+msgstr "Computer Modern Roman"
 
 #: src/frontends/qt4/QDocument.cpp:77
 msgid "Latin Modern Roman"
-msgstr ""
+msgstr "Latin Modern Roman"
 
 #: src/frontends/qt4/QDocument.cpp:78
 msgid "AE (Almost European)"
-msgstr ""
+msgstr "AE (Almost European)"
 
 #: src/frontends/qt4/QDocument.cpp:78
 msgid "Times Roman"
-msgstr ""
+msgstr "Times Roman"
 
 #: src/frontends/qt4/QDocument.cpp:78
 msgid "Palatino"
-msgstr ""
+msgstr "Palatino"
 
 #: src/frontends/qt4/QDocument.cpp:78
 msgid "Bitstream Charter"
-msgstr ""
+msgstr "Bitstream Charter"
 
 #: src/frontends/qt4/QDocument.cpp:79
 msgid "New Century Schoolbook"
-msgstr ""
+msgstr "New Century Schoolbook"
 
 #: src/frontends/qt4/QDocument.cpp:79
 msgid "Bookman"
-msgstr ""
+msgstr "Bookman"
 
 #: src/frontends/qt4/QDocument.cpp:79
 msgid "Utopia"
-msgstr ""
+msgstr "Utopia"
 
 #: src/frontends/qt4/QDocument.cpp:79
 msgid "Bera Serif"
-msgstr ""
+msgstr "Bera Serif"
 
 #: src/frontends/qt4/QDocument.cpp:80
 msgid "Concrete Roman"
-msgstr ""
+msgstr "Concrete Roman"
 
 #: src/frontends/qt4/QDocument.cpp:80
 msgid "Zapf Chancery"
-msgstr ""
+msgstr "Zapf Chancery"
 
 #: src/frontends/qt4/QDocument.cpp:88
 msgid "Computer Modern Sans"
-msgstr ""
+msgstr "Computer Modern Sans"
 
 #: src/frontends/qt4/QDocument.cpp:88
 msgid "Latin Modern Sans"
-msgstr ""
+msgstr "Latin Modern Sans"
 
 #: src/frontends/qt4/QDocument.cpp:89
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: src/frontends/qt4/QDocument.cpp:89
 msgid "Avant Garde"
-msgstr ""
+msgstr "Avant Garde"
 
 #: src/frontends/qt4/QDocument.cpp:89
 msgid "Bera Sans"
-msgstr ""
+msgstr "Bera Sans"
 
 #: src/frontends/qt4/QDocument.cpp:89
 msgid "CM Bright"
-msgstr ""
+msgstr "CM Bright"
 
 #: src/frontends/qt4/QDocument.cpp:98
 msgid "Computer Modern Typewriter"
-msgstr ""
+msgstr "Computer Modern Typewriter"
 
 #: src/frontends/qt4/QDocument.cpp:99
 msgid "Latin Modern Typewriter"
-msgstr ""
+msgstr "Latin Modern Typewriter"
 
 #: src/frontends/qt4/QDocument.cpp:99
 msgid "Courier"
-msgstr ""
+msgstr "Courier"
 
 #: src/frontends/qt4/QDocument.cpp:99
 msgid "Bera Mono"
-msgstr ""
+msgstr "Bera Mono"
 
 #: src/frontends/qt4/QDocument.cpp:99
 msgid "LuxiMono"
-msgstr ""
+msgstr "LuxiMono"
 
 #: src/frontends/qt4/QDocument.cpp:100
 msgid "CM Typewriter Light"
-msgstr ""
+msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
 msgid "Input listings parameters on the right. Enter ? for a list of parameters."
-msgstr ""
-"リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
-"は？を入力してください。"
+msgstr "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するには？を入力してください。"
 
 #: src/frontends/qt4/QDocument.cpp:241
 msgid "Length"
