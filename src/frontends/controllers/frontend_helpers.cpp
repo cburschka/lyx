@@ -1108,7 +1108,7 @@ class Sorter
 				      LanguagePair, bool>
 {
 public:
-#if !defined(USE_WCHAR_T) && defined(__GNUC__)
+#if defined(__GNUC__) && (!defined(USE_WCHAR_T) || __GNUC__ < 4)
 	bool operator()(LanguagePair const & lhs,
 			LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;
