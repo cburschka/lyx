@@ -1108,12 +1108,14 @@ class Sorter
 				      LanguagePair, bool>
 {
 public:
-#if defined(__GNUC__) && (!defined(USE_WCHAR_T) || __GNUC__ < 4)
+#if 1//defined(__GNUC__) && (!defined(USE_WCHAR_T) || __GNUC__ < 4)
 	bool operator()(LanguagePair const & lhs,
 			LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;
 	}
 #else
+// this is supposed to fix bug 2738, but it is not stable yet
+// see http://bugzilla.lyx.org/show_bug.cgi?id=2738
 	Sorter() : loc_("") {};
 	bool operator()(LanguagePair const & lhs,
 			LanguagePair const & rhs) const {
