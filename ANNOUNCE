@@ -77,6 +77,9 @@ The LyX team.
 What's new in version 1.4.5?
 ---------------------------- 
 
+What's new
+==========
+
 ** Updates:
 ***********
 
@@ -130,6 +133,9 @@ What's new in version 1.4.5?
 
 - Fix display of math root inset when the exponent contains large
   things (bug 3295).
+
+- Fix display of the \overset math macro when the first argument has a
+  non-zero descent.
 
 - Set a default image size value (bug 2458).
 

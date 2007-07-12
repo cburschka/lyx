@@ -1,3 +1,8 @@
+2007-07-12  André Pönitz  <poenitz@lyx.org>
+
+	* math_oversetinset.C (draw): fix drawing when the first argument
+	has a non-zero descent.
+
 2007-07-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_hullinset.C (MathHullInset): do not lose the preview when

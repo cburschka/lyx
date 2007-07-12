@@ -71,6 +71,9 @@ What's new
 - Fix display of math root inset when the exponent contains large
   things (bug 3295).
 
+- Fix display of the \overset math macro when the first argument has a
+  non-zero descent.
+
 - Set a default image size value (bug 2458).
 
 - Get ProvidesNatbib working correctly, esp. for egs.layout.
