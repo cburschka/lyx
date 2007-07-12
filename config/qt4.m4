@@ -135,7 +135,10 @@ AC_DEFUN([QT4_DO_IT_ALL],
 	AC_SUBST(QT4_CPPFLAGS)
 
 	dnl Check if it possible to do a pkg-config
-	QT4_DO_PKG_CONFIG
+	PKG_PROG_PKG_CONFIG
+	if test -n "$PKG_CONFIG" ; then
+		QT4_DO_PKG_CONFIG
+	fi
 	if test "$pkg_failed" != "no" ; then
 		QT4_DO_MANUAL_CONFIG
 	fi
@@ -145,7 +148,7 @@ AC_DEFUN([QT4_DO_IT_ALL],
 
 AC_DEFUN([QT4_DO_PKG_CONFIG],
 [
-	PKG_PROG_PKG_CONFIG
+	dnl tell pkg-config to look also in $qt4_cv_dir/lib.
 	save_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 	if test -n "$qt4_cv_dir" ; then
 	  PKG_CONFIG_PATH=$qt4_cv_dir/lib:$qt4_cv_dir/lib/pkgconfig:$PKG_CONFIG_PATH

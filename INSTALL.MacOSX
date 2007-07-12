@@ -1,7 +1,7 @@
 Building LyX/Mac-1.5
 Ronald Florence <ron@18james.com>
-Modified by Bennett Helm <bennett.helm@fandm.edu> and by Anders
-Ekberg <anek@mac.com>.
+Modified by Bennett Helm <bennett.helm@fandm.edu>, Anders
+Ekberg <anek@mac.com> and Jean-Marc Lasgouttes <lasgouttes@lyx.org>.
 
 LyX/Mac is built from the LyX source, the GPL-licensed Trolltech
 Qt/Mac library, and a custom application bundle.
@@ -50,6 +50,11 @@ using:
 
      sudo port install gettext
 
+4. [Useful to simplify detection of Qt:] pkg-config >= 0.9.0. Again,
+the simplest way is through MacPorts:
+
+     sudo port install pkgconfig
+
 
 BUILD INSTRUCTIONS
 
@@ -60,10 +65,13 @@ where you installed Qt for /path/to/QT4 (as above).
 
 (a) Official Releases
 
-cd to the top of the LyX source hierarchy, and enter:
+If you did not install pkg-config, first set the LDFLAGS variable:
 
-     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz -framework Cocoa"
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.5 --without-x --with-frontend=qt4 --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
+     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -framework Cocoa"
+
+Then, cd to the top of the LyX source hierarchy, and enter:
+
+     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.5 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
      make
      make install-strip
 
@@ -76,14 +84,20 @@ user's directory being located at ~/Library/Application Support/LyX-1.5.)
 Building LyX from developmental sources requires a few more steps.
 Instead of the instructions above, do the following:
 
-cd to the top of the LyX source hierarchy, and enter:
+If you did not install pkg-config, first set the LDFLAGS variable:
 
-     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz -framework Cocoa"
+     export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -framework Cocoa"
+
+Then, cd to the top of the LyX source hierarchy, and enter:
+
      ./autogen.sh
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.5 --without-x --with-frontend=qt4 --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os --disable-stdlib-debug --disable-concept-checks
+     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.5 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os 
      make
      make install-strip
 
+Note that by default svn versions use some extra debugging code that
+somewhat slows LyX down. If it is a real problem, you can pass the
+option --disable-stdlib-debug to configure.
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
