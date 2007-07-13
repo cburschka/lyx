@@ -171,7 +171,7 @@
  * implements this with the help of libc, or whether it has own code
  * does not matter for us, because we don't use libc directly (Georg)
 */
-#if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4 && ! defined(__FREEBSD__)
+#if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4 && !defined(__FreeBSD__) && !defined(__FreeBSD_kernel__)
 #  define USE_WCHAR_T
 #endif
 
