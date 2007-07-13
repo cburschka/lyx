@@ -377,6 +377,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		std::swap(pars_[pit], pars_[pit + 1]);
 		updateLabels(cur.buffer());
 		needsUpdate = true;
+		++cur.pit();
 		break;
 	}
 
@@ -386,6 +387,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit - 1]);
 		updateLabels(cur.buffer());
+		--cur.pit();
 		needsUpdate = true;
 		break;
 	}
