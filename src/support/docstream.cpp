@@ -206,13 +206,32 @@ protected:
 	}
 	virtual int do_max_length() const throw()
 	{
+		// FIXME: this information should be transferred to lib/encodings
 		// UTF8 uses at most 4 bytes to represent one UCS4 code point
 		// (see RFC 3629). RFC 2279 specifies 6 bytes, but that
 		// information is outdated, and RFC 2279 has been superseded by
 		// RFC 3629.
+		// The CJK encodings use (different) multibyte representation as well.
 		// All other encodings encode one UCS4 code point in one byte
 		// (and can therefore only encode a subset of UCS4)
-		return encoding_ == "UTF-8" ? 4 : 1;
+		// Note that BIG5 and SJIS do not work with LaTeX (see lib/encodings). 
+		// Furthermore, all encodings that use shifting (like SJIS) do not work with 
+		// iconv_codecvt_facet.
+		if (encoding_ == "UTF-8" ||
+		    encoding_ == "GB" ||
+		    encoding_ == "EUC-TW")
+			return 4;
+		else if (encoding_ == "EUC-JP")
+			return 3;
+		else if (encoding_ == "BIG5" ||
+			 encoding_ == "EUC-KR" ||
+			 encoding_ == "EUC-CN" ||
+			 encoding_ == "SJIS" ||
+			 encoding_ == "GBK" ||
+			 encoding_ == "JIS" )
+			return 2;
+		else
+			return 1;
 	}
 private:
 	/// Do the actual conversion. The interface is equivalent to that of
