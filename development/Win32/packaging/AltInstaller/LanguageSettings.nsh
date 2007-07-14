@@ -29,6 +29,7 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 1028
+   StrCpy ${LangNme} "Chinese"
    StrCpy ${LangCdeSys} "zh_TW"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
@@ -215,6 +216,11 @@
    StrCpy ${LangSysEnc} "1254"
   ${endif}
 
+  ${if} ${LangISOCode} = 1057
+   StrCpy ${LangCdeSys} "id"
+   StrCpy ${LangNmeSys} "Indonesian"
+  ${endif}
+
   ${if} ${LangISOCode} = 1058
    StrCpy ${LangCdeSys} "uk"
    StrCpy ${LangNmeSys} "Ukrainian"
@@ -264,6 +270,11 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
+  ${if} ${LangISOCode} = 1071
+   StrCpy ${LangCdeSys} "mk"
+   StrCpy ${LangNmeSys} "Macedonian"
+  ${endif}
+
   ${if} ${LangISOCode} = 1078
    StrCpy ${LangCdeSys} "af"
    StrCpy ${LangNmeSys} "Afrikaans"
@@ -275,6 +286,47 @@
    StrCpy ${LangNmeSys} "Hindi"
   ${endif}
 
+  ${if} ${LangISOCode} = 1086
+   StrCpy ${LangCdeSys} "ms"
+   StrCpy ${LangNmeSys} "Malay"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1089
+   StrCpy ${LangCdeSys} "sw"
+   StrCpy ${LangNmeSys} "Swahili"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1094
+   StrCpy ${LangCdeSys} "pa"
+   StrCpy ${LangNmeSys} "Punjabi"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1095
+   StrCpy ${LangCdeSys} "gu"
+   StrCpy ${LangNmeSys} "Gujarati"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1097
+   StrCpy ${LangCdeSys} "ta"
+   StrCpy ${LangNmeSys} "Tamil"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1098
+   StrCpy ${LangCdeSys} "te"
+   StrCpy ${LangNmeSys} "Telugu"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1102
+   StrCpy ${LangCdeSys} "mr"
+   StrCpy ${LangNmeSys} "Marathi"
+  ${endif}
+
+# currently no dictionary available  
+#  ${if} ${LangISOCode} = 1103
+#   StrCpy ${LangCdeSys} "sa"
+#   StrCpy ${LangNmeSys} "Sanskrit"
+#  ${endif}
+
   ${if} ${LangISOCode} = 1110
    StrCpy ${LangNme} "Galego"
    StrCpy ${LangCdeSys} "gl"
@@ -284,6 +336,7 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 2052
+   StrCpy ${LangNme} "Chinese"
    StrCpy ${LangCdeSys} "zh_TW"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
@@ -351,8 +404,14 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
+  ${if} ${LangISOCode} = 2110
+   StrCpy ${LangCdeSys} "ms"
+   StrCpy ${LangNmeSys} "Malay"
+  ${endif}
+
 # currently no dictionary available
   ${if} ${LangISOCode} = 3076
+   StrCpy ${LangNme} "Chinese"
    StrCpy ${LangCdeSys} "zh_TW"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
