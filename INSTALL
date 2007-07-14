@@ -7,12 +7,12 @@ Quick compilation guide
 These four steps will compile, test and install LyX:
 
 	0) Linux users beware: if compiling the Qt frontend, you need
-           qt and qt-devel packages of the same version to compile LyX.
+           qt4 and qt4-devel packages of the same version to compile LyX.
 
 	1) ./configure
 	   configures LyX according to your system. 
 	   When compiling for Qt, you may have to set
-             --with-qt-dir=<path-to-your-qt-installation>
+             --with-qt4-dir=<path-to-your-qt4-installation>
            if the environment variable QTDIR is not set. 
 
 	2) make
