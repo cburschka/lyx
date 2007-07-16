@@ -4,7 +4,7 @@
 # LangNme is the language name when there exists a LyX translation for this language; used for the menu language dialog and for the Aspell installation
 # LangNmeSys is the Windows system language; used for the Aspell installation
 # LangCdeSys is the ISO 630 language code of the language; used for the Aspell installation
-# LangSysEnc is the Windows codepage for the character encoding of the language; used in lyx.bat to assure that scripts are correctly executed
+# LangSysEnc is the Windows codepage for the character encoding of the language; can be used in lyx.bat to assure that scripts are correctly executed
 !macro TranslateLangCode LangNme LangNmeSys LangCdeSys LangISOCode LangSysEnc
 
  StrCpy ${LangCdeSys} ""
@@ -29,7 +29,7 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 1028
-   StrCpy ${LangNme} "Chinese"
+   StrCpy ${LangNme} "Chinese (Taiwan)"
    StrCpy ${LangCdeSys} "zh_TW"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
@@ -336,8 +336,8 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 2052
-   StrCpy ${LangNme} "Chinese"
-   StrCpy ${LangCdeSys} "zh_TW"
+   StrCpy ${LangNme} "Chinese (China)"
+   StrCpy ${LangCdeSys} "zh_CN"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
   ${endif}
@@ -411,8 +411,8 @@
 
 # currently no dictionary available
   ${if} ${LangISOCode} = 3076
-   StrCpy ${LangNme} "Chinese"
-   StrCpy ${LangCdeSys} "zh_TW"
+   StrCpy ${LangNme} "Chinese (China)"
+   StrCpy ${LangCdeSys} "zh_CN"
    StrCpy ${LangNmeSys} "Chinese"
    StrCpy ${LangSysEnc} "936"
   ${endif}
@@ -457,6 +457,14 @@
    StrCpy ${LangCdeSys} "fr"
    StrCpy ${LangNmeSys} "Français"
    StrCpy ${LangSysEnc} "1252"
+  ${endif}
+
+# currently no dictionary available
+  ${if} ${LangISOCode} = 5124
+   StrCpy ${LangNme} "Chinese (China)"
+   StrCpy ${LangCdeSys} "zh_CN"
+   StrCpy ${LangNmeSys} "Chinese"
+   StrCpy ${LangSysEnc} "936"
   ${endif}
 
   ${if} ${LangISOCode} = 5129
@@ -515,12 +523,12 @@
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
-#  ${if} ${Name} == "Chinese (China)"
-#   StrCpy ${LangCde} "zh_CN"
-#   StrCpy ${LangEnc} "cp-936"
-#  ${endif}
-  
-  ${if} ${Name} == "Chinese"
+  ${if} ${Name} == "Chinese (China)"
+   StrCpy ${LangCde} "zh_CN"
+   StrCpy ${LangEnc} "cp-936"
+  ${endif}
+
+  ${if} ${Name} == "Chinese (Taiwan)"
    StrCpy ${LangCde} "zh_TW"
    StrCpy ${LangEnc} "cp-936"
   ${endif}
