@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-07-14 09:45+0000\n"
+"POT-Creation-Date: 2007-07-16 19:19+0200\n"
 "PO-Revision-Date: 2007-07-14 12:11+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -3007,7 +3007,8 @@ msgid "&Rescan"
 msgstr ""
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
@@ -11741,8 +11742,10 @@ msgstr "לא יכול לטעון את מחלקת המסמך"
 
 #: src/Buffer.cpp:508
 #, c-format
-msgid "Using the default document class, because the class %1$s could not be loaded."
-msgstr "משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
+msgid ""
+"Using the default document class, because the class %1$s could not be loaded."
+msgstr ""
+"משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
 
 #: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:847
 #: src/BufferView.cpp:853
@@ -13060,7 +13063,8 @@ msgstr ""
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr "בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
+msgstr ""
+"בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
 
 #: src/LyXRC.cpp:2105
 msgid ""
@@ -13069,7 +13073,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2109
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "מרווח הזמן בין שמירות אוטומטיות (בשניות) 0 משמעותו ללא שמירה אוטומטית."
 
 #: src/LyXRC.cpp:2116
@@ -13172,7 +13177,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2210
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 
 #: src/LyXRC.cpp:2214
@@ -13238,7 +13244,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2266
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
 #: src/LyXRC.cpp:2270
@@ -13338,7 +13345,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
 #: src/LyXRC.cpp:2354
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "בחר כדי לאפשר תמיכה בשפות הנכתבות מימין לשמאל"
 
 #: src/LyXRC.cpp:2358
@@ -14813,7 +14821,8 @@ msgid "CM Typewriter Light"
 msgstr "כמות האור הכחול בצבע."
 
 #: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/QDocument.cpp:241
@@ -14980,7 +14989,8 @@ msgstr "תמונות"
 #: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
 #: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
 #: src/frontends/qt4/QListings.cpp:447
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/QInclude.cpp:180
@@ -15254,7 +15264,8 @@ msgstr ""
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
-msgstr "ישנם רווחים בכתובת של מסדا رנתונים של BibTex. <br> Bibtex לא יוכל לאתר אותם."
+msgstr ""
+"ישנם רווחים בכתובת של מסדا رנתונים של BibTex. <br> Bibtex לא יוכל לאתר אותם."
 
 #: src/insets/InsetBibtex.cpp:267
 msgid ""
@@ -15542,7 +15553,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -15737,16 +15749,6 @@ msgstr ""
 msgid "Opened Text Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
-#: src/insets/InsetTheorem.cpp:41
-#, fuzzy
-msgid "theorem"
-msgstr "משפט"
-
-#: src/insets/InsetTheorem.cpp:91
-#, fuzzy
-msgid "Opened Theorem Inset"
-msgstr "ערכת הכלים הנוספת של Andrew"
-
 #: src/insets/InsetUrl.cpp:42
 #, fuzzy
 msgid "Url: "
@@ -15924,11 +15926,6 @@ msgstr "הטלאה בוצעה"
 msgid " strings have been replaced."
 msgstr "נוצר\n"
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, fuzzy, c-format
-msgid " Macro: %1$s: "
-msgstr "Macro"
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -15997,6 +15994,11 @@ msgstr ""
 msgid "entered math text mode (textrm)"
 msgstr ""
 
+#: src/mathed/MathMacroTemplate.cpp:109
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr "Macro"
+
 #: src/mathed/MathMacroTemplate.cpp:241
 #, fuzzy
 msgid "math macro"
@@ -16029,7 +16031,8 @@ msgstr "אצמנ אל %cend macro"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 
 #: src/support/Package.cpp.in:569
@@ -16096,3 +16099,10 @@ msgstr ""
 msgid "Unknown user"
 msgstr "%s: שורה %d: משתמש לא מוכר %s\n"
 
+#, fuzzy
+#~ msgid "theorem"
+#~ msgstr "משפט"
+
+#, fuzzy
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "ערכת הכלים הנוספת של Andrew"
