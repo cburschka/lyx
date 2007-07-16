@@ -201,10 +201,6 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "Anonymous" 
-\author "usti" 
-\author "Bo Peng" 
-\author "muso" 
 \author "Uwe Stöhr" 
 \end_header
 
@@ -28252,6 +28248,40 @@ def
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ If you don't get bold keywords when using typewriter fonts, your typewriter
+ font probably doesn't provide a bold shape.
+ In this case select a different one in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Fonts
+\family default
+.
+ (The fonts 
+\emph on
+LuxiMono, BeraMono
+\emph default
+ and 
+\emph on
+Courier
+\emph default
+ provide bold shapes.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In section 
 \family sans
 Line\InsetSpace ~
@@ -28393,7 +28423,11 @@ status open
 \series bold
 Note:
 \series default
- The line numbering is shifted by a line by every previous listing.
+ Due to a bug in the 
+\series bold
+listings
+\series default
+ package the line numbering is shifted by a line by every previous listing.
  That's the reason why the lines 2 and 5 are numbered in the above listing
  and not the lines 3 and 6.
 \end_layout

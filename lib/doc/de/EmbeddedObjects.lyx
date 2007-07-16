@@ -1,4 +1,4 @@
-#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -203,10 +203,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "Anonymous" 
-\author "usti" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
-\author "Uwe Stöhr" 
+\author "Uwe Stöhr" uwestoehr@web.de
 \end_header
 
 \begin_body
@@ -29320,6 +29318,48 @@ reference "lst:Gleitendes-Programm-Listing"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Wenn sie keine fettgedruckten Schlüsselwörter im Schriftstil 
+\family typewriter
+Schreibmaschine
+\family default
+ erhalten, enthält die von Ihnen verwendete Schrift in diesem Stil wahrscheinlic
+h keine fett gedruckten Buchstaben.
+ Wählen Sie in diesem Fall eine andere Schrift für 
+\family typewriter
+Schreibmaschine
+\family default
+ im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Schriften
+\family default
+.
+ (Die Schriften 
+\emph on
+LuxiMono, BeraMono
+\emph default
+ and 
+\emph on
+Courier
+\emph default
+ enthalten fett gedruckte Buchstaben.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Im Abschnitt 
 \family sans
 Zeilennummerierung
@@ -29449,8 +29489,12 @@ status open
 \series bold
 Bemerkung:
 \series default
- Wegen eines Fehler im listings Paket wird die Zeilennummerierung um eine
- Zeile durch vorhergehende Listen verschoben.
+ Wegen eines Fehlers im 
+\series bold
+listings
+\series default
+ Paket wird die Zeilennummerierung um eine Zeile durch vorhergehende Listen
+ verschoben.
  Das ist der Grund warum die Zeilen 2 und 5 und nicht 3 und 6 in obiger
  Liste nummeriert werden.
 \end_layout
