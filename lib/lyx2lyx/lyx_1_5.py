@@ -444,6 +444,13 @@ def convert_commandparams(document):
             i = i + 1
             continue
 
+        j = find_token(document.body, "\\end_inset", i + 1)
+        if j == -1:
+            document.warning("Malformed document")
+        else:
+            command += "".join(document.body[i+1:j])
+            document.body[i+1:j] = []
+
         # The following parser is taken from the original InsetCommandParams::scanCommand
         name = ""
         option1 = ""
