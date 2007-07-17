@@ -471,7 +471,8 @@ void RowPainter::paintChangeBar()
 
 void RowPainter::paintAppendix()
 {
-	if (!par_.params().appendix())
+	// only draw the appendix frame once (for the main text)
+	if (!par_.params().appendix() || !text_.isMainText(*bv_.buffer()))
 		return;
 
 	int y = yo_ - row_.ascent();
