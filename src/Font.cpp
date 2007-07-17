@@ -802,7 +802,8 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	// for Hebrew and Farsi (Arabi) do not.
 	if (number() == ON && prev.number() != ON
 		&& (language()->lang() == "hebrew"
-			|| language()->lang() == "farsi")) {
+			|| language()->lang() == "farsi" 
+			|| language()->lang() == "arabic_arabi")) {
 		os << "{\\beginL ";
 		count += 9;
 	}
@@ -935,7 +936,8 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 	// for Hebrew and Farsi (Arabi) do not.
 	if (number() == ON && next.number() != ON
 		&& (language()->lang() == "hebrew"
-			|| language()->lang() == "farsi")) {
+			|| language()->lang() == "farsi"
+			|| language()->lang() == "arabic_arabi")) {
 		os << "\\endL}";
 		count += 6;
 	}
