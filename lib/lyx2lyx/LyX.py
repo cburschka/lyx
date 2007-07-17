@@ -228,7 +228,7 @@ class LyX_Base:
             if not line:
                 continue
 
-            if line.split()[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+            if line.split()[0] in ("\\layout", "\\begin_layout", "\\begin_body", "\\begin_deeper"):
                 self.body.append(line)
                 break
 
