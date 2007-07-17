@@ -55,17 +55,6 @@
 #include <iostream>
 #include <limits>
 
-
-namespace lyx {
-
-using support::prefixIs;
-using support::ltrim;
-using support::rtrim;
-using support::suffixIs;
-
-using boost::shared_ptr;
-using boost::dynamic_pointer_cast;
-
 using std::abs;
 using std::auto_ptr;
 using std::endl;
@@ -82,6 +71,16 @@ using std::vector;
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
 #endif
+
+using boost::shared_ptr;
+using boost::dynamic_pointer_cast;
+
+namespace lyx {
+
+using support::prefixIs;
+using support::ltrim;
+using support::rtrim;
+using support::suffixIs;
 
 using cap::dirtyTabularStack;
 using cap::tabularStackDirty;
