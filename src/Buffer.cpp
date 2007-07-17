@@ -92,6 +92,20 @@
 #include <sstream>
 #include <fstream>
 
+using std::endl;
+using std::for_each;
+using std::make_pair;
+
+using std::ios;
+using std::map;
+using std::ostream;
+using std::ostringstream;
+using std::ofstream;
+using std::pair;
+using std::stack;
+using std::vector;
+using std::string;
+
 
 namespace lyx {
 
@@ -124,21 +138,6 @@ namespace Alert = frontend::Alert;
 namespace os = support::os;
 namespace fs = boost::filesystem;
 namespace io = boost::iostreams;
-
-using std::endl;
-using std::for_each;
-using std::make_pair;
-
-using std::ios;
-using std::map;
-using std::ostream;
-using std::ostringstream;
-using std::ofstream;
-using std::pair;
-using std::stack;
-using std::vector;
-using std::string;
-
 
 namespace {
 

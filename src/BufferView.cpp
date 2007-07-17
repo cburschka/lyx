@@ -78,6 +78,16 @@
 #include <functional>
 #include <vector>
 
+using std::distance;
+using std::endl;
+using std::istringstream;
+using std::make_pair;
+using std::min;
+using std::max;
+using std::mem_fun_ref;
+using std::string;
+using std::vector;
+
 
 namespace lyx {
 
@@ -90,16 +100,6 @@ using support::isDirWriteable;
 using support::isFileReadable;
 using support::makeDisplayPath;
 using support::package;
-
-using std::distance;
-using std::endl;
-using std::istringstream;
-using std::make_pair;
-using std::min;
-using std::max;
-using std::mem_fun_ref;
-using std::string;
-using std::vector;
 
 namespace Alert = frontend::Alert;
 

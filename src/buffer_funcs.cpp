@@ -49,6 +49,9 @@
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
 
+using std::min;
+using std::string;
+
 
 namespace lyx {
 
@@ -62,9 +65,6 @@ using support::makeDisplayPath;
 using support::onlyFilename;
 using support::onlyPath;
 using support::unlink;
-
-using std::min;
-using std::string;
 
 namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;

@@ -33,6 +33,12 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
+using std::endl;
+using std::find_if;
+using std::string;
+using std::vector;
+using std::distance;
+
 
 namespace lyx {
 
@@ -58,12 +64,6 @@ using support::removeExtension;
 using support::split;
 using support::subst;
 using support::Systemcall;
-
-using std::endl;
-using std::find_if;
-using std::string;
-using std::vector;
-using std::distance;
 
 namespace Alert = lyx::frontend::Alert;
 

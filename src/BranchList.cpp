@@ -17,10 +17,9 @@
 
 #include <algorithm>
 
+using std::string;
 
 namespace lyx {
-
-using std::string;
 
 
 Branch::Branch()

@@ -33,18 +33,6 @@
 #include <algorithm>
 #include <functional>
 
-
-namespace lyx {
-
-using support::addName;
-using support::bformat;
-using support::FileName;
-using support::makeDisplayPath;
-using support::onlyFilename;
-using support::removeAutosaveFile;
-using support::package;
-using support::prefixIs;
-
 using boost::bind;
 
 using std::auto_ptr;
@@ -57,6 +45,18 @@ using std::string;
 using std::vector;
 using std::back_inserter;
 using std::transform;
+
+
+namespace lyx {
+
+using support::addName;
+using support::bformat;
+using support::FileName;
+using support::makeDisplayPath;
+using support::onlyFilename;
+using support::removeAutosaveFile;
+using support::package;
+using support::prefixIs;
 
 namespace Alert = lyx::frontend::Alert;
 

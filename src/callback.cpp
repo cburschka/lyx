@@ -56,6 +56,17 @@
 #include <cerrno>
 #include <fstream>
 
+using std::back_inserter;
+using std::copy;
+using std::endl;
+using std::make_pair;
+using std::string;
+using std::ifstream;
+using std::ios;
+using std::istream_iterator;
+
+using boost::shared_ptr;
+
 
 namespace lyx {
 
@@ -77,20 +88,8 @@ using support::Systemcall;
 using support::tempName;
 using support::unlink;
 
-using boost::shared_ptr;
-
 namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
-
-using std::back_inserter;
-using std::copy;
-using std::endl;
-using std::make_pair;
-using std::string;
-using std::ifstream;
-using std::ios;
-using std::istream_iterator;
-
 
 // this should be static, but I need it in Buffer.cpp
 bool quitting;	// flag, that we are quitting the program

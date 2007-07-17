@@ -20,9 +20,9 @@
 
 #include <boost/assert.hpp>
 
-namespace lyx {
-
 using std::string;
+
+namespace lyx {
 
 
 /** The four LaTeX itemize environment default bullets

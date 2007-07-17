@@ -23,6 +23,9 @@
 
 #include <boost/format.hpp>
 
+using std::getline;
+using std::string;
+
 
 namespace lyx {
 
@@ -32,9 +35,6 @@ using support::makeAbsPath;
 using support::onlyFilename;
 using support::split;
 using support::Systemcall;
-
-using std::getline;
-using std::string;
 
 
 Chktex::Chktex(string const & chktex, string const & f, string const & p)

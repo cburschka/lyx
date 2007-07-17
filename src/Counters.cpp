@@ -22,12 +22,12 @@
 
 #include <sstream>
 
-
-namespace lyx {
-
 using std::endl;
 using std::ostringstream;
 using std::string;
+
+
+namespace lyx {
 
 
 Counter::Counter()

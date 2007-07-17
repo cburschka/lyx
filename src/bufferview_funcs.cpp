@@ -35,17 +35,16 @@
 
 #include <sstream>
 
-
-namespace lyx {
-
-using support::bformat;
-
 using std::istringstream;
 using std::ostringstream;
 using std::string;
 using std::vector;
 using std::find;
 
+
+namespace lyx {
+
+using support::bformat;
 
 namespace bv_funcs {
 

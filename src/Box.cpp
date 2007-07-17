@@ -16,10 +16,9 @@
 
 #include "support/std_ostream.h"
 
+using std::ostream;
 
 namespace lyx {
-
-using std::ostream;
 
 
 Box::Box()

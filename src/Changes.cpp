@@ -21,13 +21,12 @@
 
 #include <boost/assert.hpp>
 
-
-namespace lyx {
-
 using std::abs;
 using std::endl;
 using std::string;
 using std::max;
+
+namespace lyx {
 
 /*
  * Class Change has a changetime field that specifies the exact time at which

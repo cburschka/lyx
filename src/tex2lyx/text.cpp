@@ -29,6 +29,15 @@
 #include <sstream>
 #include <vector>
 
+using std::cerr;
+using std::endl;
+
+using std::map;
+using std::ostream;
+using std::ostringstream;
+using std::istringstream;
+using std::string;
+using std::vector;
 
 namespace lyx {
 
@@ -41,16 +50,6 @@ using support::rtrim;
 using support::suffixIs;
 using support::contains;
 using support::subst;
-
-using std::cerr;
-using std::endl;
-
-using std::map;
-using std::ostream;
-using std::ostringstream;
-using std::istringstream;
-using std::string;
-using std::vector;
 
 namespace fs = boost::filesystem;
 

@@ -18,13 +18,12 @@
 
 #include "support/std_istream.h"
 
+using std::string;
 
 namespace lyx {
 
 using support::token;
 using support::trim;
-
-using std::string;
 
 
 bool operator==(Author const & l, Author const & r)
