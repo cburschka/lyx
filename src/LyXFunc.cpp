@@ -1374,7 +1374,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_DIALOG_HIDE:
-			Dialogs::hide(argument, 0);
+			LyX::cref().hideDialogs(argument, 0);
 			break;
 
 		case LFUN_DIALOG_TOGGLE: {
@@ -1841,7 +1841,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 		}
 	}
-	if (!quitting) {
+	if (!quitting && lyx_view_) {
 		lyx_view_->updateMenubar();
 		lyx_view_->updateToolbars();
 		// Some messages may already be translated, so we cannot use _()

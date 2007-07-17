@@ -31,8 +31,6 @@ class Dialogs : boost::noncopyable {
 public:
 	///
 	Dialogs(LyXView &);
-	///
-	~Dialogs();
 
 	/** Check the status of all visible dialogs and disable or reenable
 	 *  them as appropriate.
@@ -89,14 +87,12 @@ public:
 	/** All Dialogs of the given \param name will be closed if they are
 	    connected to the given \param inset.
 	*/
-	static void hide(std::string const & name, Inset * inset);
+	void hide(std::string const & name, Inset * inset);
 	///
 	void disconnect(std::string const & name);
 	///
 	Inset * getOpenInset(std::string const & name) const;
 private:
-	///
-	void hideSlot(std::string const & name, Inset * inset);
 	///
 	void redraw() const;
 	///

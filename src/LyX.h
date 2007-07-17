@@ -103,6 +103,8 @@ public:
 	 */
 	Buffer const * const updateInset(Inset const *) const;
 
+	void hideDialogs(std::string const & name, Inset * inset) const;
+
 	/// Execute batch commands if available.
 	void execBatchCommands();
 

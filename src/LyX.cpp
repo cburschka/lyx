@@ -46,6 +46,7 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
+#include "frontends/Dialogs.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 
@@ -377,6 +378,17 @@ Buffer const * const LyX::updateInset(Inset const * inset) const
 			buffer_ptr = ptr;
 	}
 	return buffer_ptr;
+}
+
+
+void LyX::hideDialogs(std::string const & name, Inset * inset) const
+{
+	vector<int> const & view_ids = pimpl_->application_->gui().viewIds();
+	vector<int>::const_iterator it = view_ids.begin();
+	vector<int>::const_iterator const end = view_ids.end();
+	for (; it != end; ++it)
+		pimpl_->application_->gui().view(*it).getDialogs().
+			hide(name, inset);
 }
 
 

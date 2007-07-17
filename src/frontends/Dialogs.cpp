@@ -21,63 +21,18 @@
 #include <boost/signal.hpp>
 #include <boost/bind.hpp>
 
+using std::string;
 
 namespace lyx {
 
-
-using std::string;
 using lyx::frontend::Dialog;
-
-
-// Note that static boost signals break some compilers, so this wrapper
-// initialises the signal dynamically when it is first invoked.
-template<typename Signal>
-class BugfixSignal {
-public:
-	Signal & operator()() { return thesignal(); }
-	Signal const & operator()() const { return thesignal(); }
-
-private:
-	Signal & thesignal() const
-	{
-		if (!signal_.get())
-			signal_.reset(new Signal);
-		return *signal_;
-	}
-
-	mutable boost::scoped_ptr<Signal> signal_;
-};
-
-
-namespace {
-
-BugfixSignal<boost::signal<void(string const &, Inset*)> > hideSignal;
-
-}
-
-
-void Dialogs::hide(string const & name, Inset* inset)
-{
-	// Don't send the signal if we are quitting, because on MSVC it is
-	// destructed before the cut stack in CutAndPaste.cpp, and this method
-	// is called from some inset destructor if the cut stack is not empty
-	// on exit.
-	if (!quitting)
-		hideSignal()(name, inset);
-}
 
 
 Dialogs::Dialogs(LyXView & lyxview)
 	: lyxview_(lyxview), in_show_(false)
 {
-	// Connect signals
-	connection_ = hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
 }
 
-Dialogs::~Dialogs() 
-{
-	connection_.disconnect();
-}
 
 Dialog * Dialogs::find_or_build(string const & name)
 {
@@ -149,8 +104,15 @@ void Dialogs::update(string const & name, string const & data)
 }
 
 
-void Dialogs::hideSlot(string const & name, Inset * inset)
+void Dialogs::hide(string const & name, Inset* inset)
 {
+	// Don't send the signal if we are quitting, because on MSVC it is
+	// destructed before the cut stack in CutAndPaste.cpp, and this method
+	// is called from some inset destructor if the cut stack is not empty
+	// on exit.
+	if (quitting)
+		return;
+
 	std::map<string, DialogPtr>::const_iterator it =
 		dialogs_.find(name);
 	if (it == dialogs_.end())
