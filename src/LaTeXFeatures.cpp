@@ -31,13 +31,6 @@
 
 #include "frontends/controllers/frontend_helpers.h"
 
-namespace lyx {
-
-using support::isSGMLFilename;
-using support::libFileSearch;
-using support::makeRelPath;
-using support::onlyPath;
-
 using std::endl;
 using std::find;
 using std::string;
@@ -45,6 +38,14 @@ using std::list;
 using std::ostream;
 using std::ostringstream;
 using std::set;
+
+
+namespace lyx {
+
+using support::isSGMLFilename;
+using support::libFileSearch;
+using support::makeRelPath;
+using support::onlyPath;
 
 /////////////////////////////////////////////////////////////////////
 //

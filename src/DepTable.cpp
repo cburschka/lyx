@@ -25,25 +25,24 @@
 
 #include <fstream>
 
-
-namespace lyx {
-
 #ifndef CXX_GLOBAL_CSTD
 using std::time;
 #endif
-
-using support::FileName;
-using support::ltrim;
-using support::onlyFilename;
-using support::suffixIs;
-using support::sum;
-
 using std::endl;
 using std::flush;
 using std::getline;
 using std::string;
 using std::ofstream;
 using std::ifstream;
+
+
+namespace lyx {
+
+using support::FileName;
+using support::ltrim;
+using support::onlyFilename;
+using support::suffixIs;
+using support::sum;
 
 inline
 bool DepTable::dep_info::changed() const

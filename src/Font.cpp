@@ -29,14 +29,6 @@
 
 #include "support/lstrings.h"
 
-
-namespace lyx {
-
-using support::ascii_lowercase;
-using support::bformat;
-using support::rtrim;
-using support::subst;
-
 using std::endl;
 using std::string;
 using std::ostream;
@@ -45,6 +37,14 @@ using std::pair;
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
 #endif
+
+
+namespace lyx {
+
+using support::ascii_lowercase;
+using support::bformat;
+using support::rtrim;
+using support::subst;
 
 //
 // Names for the GUI

@@ -17,11 +17,10 @@
 #include "debug.h"
 #include "LyXRC.h"
 
+using std::endl;
+
 
 namespace lyx {
-
-
-using std::endl;
 
 
 Intl::Intl()

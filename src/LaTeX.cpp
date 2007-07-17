@@ -35,6 +35,20 @@
 
 #include <fstream>
 
+using boost::regex;
+using boost::smatch;
+
+#ifndef CXX_GLOBAL_CSTD
+using std::sscanf;
+#endif
+
+using std::endl;
+using std::getline;
+using std::string;
+using std::ifstream;
+using std::set;
+using std::vector;
+
 
 namespace lyx {
 
@@ -61,21 +75,6 @@ using support::trim;
 
 namespace os = support::os;
 namespace fs = boost::filesystem;
-
-using boost::regex;
-using boost::smatch;
-
-
-#ifndef CXX_GLOBAL_CSTD
-using std::sscanf;
-#endif
-
-using std::endl;
-using std::getline;
-using std::string;
-using std::ifstream;
-using std::set;
-using std::vector;
 
 // TODO: in no particular order
 // - get rid of the call to

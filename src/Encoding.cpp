@@ -25,18 +25,16 @@
 
 #include <sstream>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strtol;
+#endif
+using std::endl;
+using std::string;
+
 
 namespace lyx {
 
 using support::FileName;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::strtol;
-#endif
-
-using std::endl;
-using std::string;
-
 
 Encodings encodings;
 

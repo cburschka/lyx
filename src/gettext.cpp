@@ -17,16 +17,16 @@
 #include "support/environment.h"
 #include "support/lstrings.h"
 
-
-namespace lyx {
-
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
 #endif
 
-using support::setEnv;
-
 using std::string;
+
+
+namespace lyx {
+
+using support::setEnv;
 
 
 docstring const _(string const & str)

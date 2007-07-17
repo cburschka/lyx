@@ -26,10 +26,10 @@
 #include <boost/assert.hpp>
 #include <boost/current_function.hpp>
 
+using std::endl;
+
 
 namespace lyx {
-
-using std::endl;
 
 
 // We could be able to get rid of this if only every BufferView were

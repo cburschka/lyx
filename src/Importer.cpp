@@ -27,6 +27,10 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 
+using std::find;
+using std::string;
+using std::vector;
+
 
 namespace lyx {
 
@@ -34,10 +38,6 @@ using support::bformat;
 using support::changeExtension;
 using support::FileName;
 using support::makeDisplayPath;
-
-using std::find;
-using std::string;
-using std::vector;
 
 
 bool Importer::Import(LyXView * lv, FileName const & filename,

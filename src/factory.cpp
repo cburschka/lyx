@@ -68,16 +68,16 @@
 
 #include <sstream>
 
+using std::auto_ptr;
+using std::endl;
+using std::string;
+
 
 namespace lyx {
 
 namespace Alert = frontend::Alert;
 
 using support::compare_ascii_no_case;
-
-using std::auto_ptr;
-using std::endl;
-using std::string;
 
 
 Inset * createInset(BufferView * bv, FuncRequest const & cmd)

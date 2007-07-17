@@ -26,14 +26,14 @@
 
 #include <sstream>
 
+using std::endl;
+using std::string;
+
 
 namespace lyx {
 
 using support::FileName;
 using support::i18nLibFileSearch;
-
-using std::endl;
-using std::string;
 
 
 string const KeyMap::printKeySym(KeySymbol const & key,

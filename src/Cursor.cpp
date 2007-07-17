@@ -53,13 +53,14 @@
 #include <limits>
 #include <map>
 
-namespace lyx {
-
 using std::string;
 using std::vector;
 using std::endl;
 using std::min;
 using std::for_each;
+
+
+namespace lyx {
 
 namespace {
 

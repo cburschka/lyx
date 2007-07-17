@@ -20,16 +20,16 @@
 #include <iostream>
 #include <iomanip>
 
+using std::setw;
+using std::string;
+using std::ostream;
+
 
 namespace lyx {
 
 using support::ascii_lowercase;
 using support::bformat;
 using support::isStrInt;
-
-using std::setw;
-using std::string;
-using std::ostream;
 
 namespace {
 

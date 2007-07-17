@@ -14,10 +14,10 @@
 
 #include "Floating.h"
 
+using std::string;
+
 
 namespace lyx {
-
-using std::string;
 
 
 Floating::Floating()

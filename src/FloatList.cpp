@@ -13,10 +13,10 @@
 #include "FloatList.h"
 #include "Floating.h"
 
+using std::string;
+
 
 namespace lyx {
-
-using std::string;
 
 // This class is now mostly finished, except one thing, it is a global
 // object. This will not do. The user (and layout files) are free to

@@ -28,6 +28,9 @@
 
 #include <boost/filesystem/operations.hpp>
 
+using std::string;
+using std::distance;
+
 
 namespace lyx {
 
@@ -43,9 +46,6 @@ using support::quoteName;
 using support::subst;
 using support::Systemcall;
 using support::token;
-
-using std::string;
-using std::distance;
 
 namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;

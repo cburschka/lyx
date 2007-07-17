@@ -34,11 +34,6 @@
 # include <sys/time.h>
 #endif
 
-
-namespace lyx {
-
-using support::bformat;
-
 using boost::shared_ptr;
 
 #ifndef CXX_GLOBAL_CSTD
@@ -51,6 +46,10 @@ using std::endl;
 using std::max;
 using std::string;
 
+
+namespace lyx {
+
+using support::bformat;
 
 namespace {
 

@@ -16,13 +16,13 @@
 #include <sstream>
 #include <vector>
 
-
-namespace lyx {
-
 using std::getline;
 using std::istringstream;
 using std::vector;
 using std::string;
+
+
+namespace lyx {
 
 
 FuncRequest::FuncRequest(Origin o)

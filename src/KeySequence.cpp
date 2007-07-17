@@ -20,11 +20,11 @@
 
 #include "frontends/KeySymbol.h"
 
-
-namespace lyx {
-
 using std::make_pair;
 using std::string;
+
+
+namespace lyx {
 
 
 FuncRequest const &

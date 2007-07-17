@@ -36,6 +36,10 @@
 
 #include <boost/filesystem/operations.hpp>
 
+using std::find;
+using std::string;
+using std::vector;
+
 
 namespace lyx {
 
@@ -50,10 +54,6 @@ using support::onlyFilename;
 using support::onlyPath;
 using support::package;
 using support::prefixIs;
-
-using std::find;
-using std::string;
-using std::vector;
 
 namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;

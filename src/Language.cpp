@@ -21,11 +21,11 @@
 
 #include "support/FileName.h"
 
-
-namespace lyx {
-
 using std::endl;
 using std::string;
+
+
+namespace lyx {
 
 
 Languages languages;

@@ -26,10 +26,10 @@
 
 #include <boost/assert.hpp>
 
+using std::endl;
+
 
 namespace lyx {
-
-using std::endl;
 
 
 CursorSlice::CursorSlice()

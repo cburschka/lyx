@@ -20,11 +20,11 @@
 
 #include "insets/InsetBranch.h"
 
-
-namespace lyx {
-
 using std::endl;
 using std::lower_bound;
+
+
+namespace lyx {
 
 
 namespace {
