@@ -288,8 +288,14 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		}
 	}
 
+	// Make sure that no LFUN use this close to be closed View.
+	theLyXFunc().setLyXView(0);
+	// Make sure the timer time out will not trigger a statusbar update.
+	statusbar_timer_.stop();
+
 	theApp()->gui().unregisterView(id());
 	if (!theApp()->gui().viewIds().empty()) {
+		quitting = true;
 		// Just close the window and do nothing else if this is not the
 		// last window.
 		close_event->accept();
