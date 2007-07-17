@@ -1259,6 +1259,7 @@ void BufferView::setCursorFromRow(int row)
 
 	buffer_->texrow().getIdFromRow(row, tmpid, tmppos);
 
+	cursor_.reset(buffer_->inset());
 	if (tmpid == -1)
 		buffer_->text().setCursor(cursor_, 0, 0);
 	else
