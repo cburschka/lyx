@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -90,7 +90,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -1887,7 +1888,8 @@ Tutorial
 \end_layout
 
 \begin_layout Description
-ExtendedInsets Extension of the 
+Embedded\InsetSpace ~
+Objects Extension of the 
 \emph on
 User's Guide
 \emph default
