@@ -17,10 +17,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-# This script creates a "master table of contents" for a set of LyX docs.
+# This script is called by the script depend.py to create a "master table of contents"
+# for a set of LyX docs.
 # It does so by going through the files and printing out all of the
 # chapter, section, and sub(sub)section headings out. (It numbers the
 # sections sequentially; hopefully noone's using Section* in the docs.)
+# It is calledusing this syntax:
+# depend.py doc_toc.py SetOfDocuments
+# where SetOfDocuments is a set of documents
 
 import sys
 import os

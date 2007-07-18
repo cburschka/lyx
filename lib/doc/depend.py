@@ -1,7 +1,7 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # This file is part of the LyX Documentation
-# Copyright (C) 2004 José Matos <jamatos@lyx.org>
+# Copyright (C) 2004 JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,6 +21,9 @@
 # It does so by going through the files and printing out all of the
 # chapter, section, and sub(sub)section headings out. (It numbers the
 # sections sequentially; hopefully noone's using Section* in the docs.)
+# It calls the script doc_toc.py using this syntax:
+# depend.py doc_toc.py SetOfDocuments
+# where SetOfDocuments is a set of documents
 
 import sys
 import os
