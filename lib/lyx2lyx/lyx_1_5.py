@@ -1769,6 +1769,7 @@ def convert_ext_font_sizes(document):
     else:
         del document.header[i]
 
+
 def revert_separator_layout(document):
     r'''Revert --Separator-- to a lyx note
 From
@@ -1817,6 +1818,7 @@ something
                                     r'\end_layout'
                                     ]
 
+
 def convert_arabic (document):
     if document.language == "arabic":
         document.language = "arabic_arabtex"
@@ -1830,7 +1832,8 @@ def convert_arabic (document):
             # change the language name
             document.body[i] = '\lang arabic_arabtex'
         i = i + 1
-	
+
+
 def revert_arabic (document):
     if document.language == "arabic_arabtex":
         document.language = "arabic"
@@ -1845,13 +1848,11 @@ def revert_arabic (document):
             document.body[i] = '\lang arabic'
         i = i + 1
 
-def revert_unicode(document):
-    '''Transform unicode symbols according to the unicode list.
-Preamble flags are not implemented.
-Combination characters are currently ignored.
-Forced output is currently not enforced'''
-    pathname = os.path.dirname(sys.argv[0])
-    fp = open(pathname.strip('lyx2lyx') + 'unicodesymbols','r')
+
+def read_unicodesymbols():
+    " Read the unicodesymbols list of unicode characters and corresponding commands."
+    pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
+    fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
     spec_chars = {}
     for line in fp.readlines():
         if line[0] != '#':
@@ -1859,82 +1860,135 @@ Forced output is currently not enforced'''
             line=line.replace('" ',' ') # remove all quotation marks with spaces after
             line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
             try:
-                # flag1 and flag2 are preamble & flags
-                # currently NOT implemented
+                # flag1 and flag2 are preamble and other flags
                 [ucs4,command,flag1,flag2] =line.split(None,3)
                 spec_chars[unichr(eval(ucs4))] = [command, flag1, flag2]
             except:
                 pass
     fp.close()
+
+    return spec_chars
+
+
+def revert_unicode(document):
+    '''Transform unicode characters that can not be written using the
+document encoding to commands according to the unicodesymbols
+file. Characters that can not be replaced by commands are replaced by
+an replacement string.  Flags other than 'combined' are currently not
+implemented.'''
+
+    replacement_character = '???'
+    spec_chars = read_unicodesymbols()
+
     # Define strings to start and end ERT and math insets
     ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n\\backslash\n'
     ert_outro='\n\\end_layout\n\n\\end_inset\n\n'
     math_intro='\n\\begin_inset Formula $'
     math_outro='$\n\\end_inset\n'
     # Find unicode characters and replace them
-    in_ert = 0 # flag set to 1 if in ERT inset
-    in_math = 0 # flag set to 1 if in math inset
+    in_ert = False # flag set to 1 if in ERT inset
+    in_math = False # flag set to 1 if in math inset
+    temp_file = os.tmpfile()
     insets = [] # list of active insets
-    for i, current_line in enumerate(document.body):
-        if current_line.find('\\begin_inset') > -1:
+    mod_body = u'' # to store the modified document body
+    
+    # Go through the file to capture all combining characters
+    last_char = '' # to store the previous character
+    body_string = u'' # store the document temporarily as a string
+    for line in document.body:
+        body_string = body_string + line +'\n'
+    [body_string, apa] = body_string.rsplit('\n',1)
+    
+    body = body_string.split('\n')
+    for line in body:
+        # Check for insets
+        if line.find('\\begin_inset') > -1:
             # check which inset to start
-            if current_line.find('\\begin_inset ERT') > -1:
-                in_ert = 1
+            if line.find('\\begin_inset ERT') > -1:
+                in_ert = True
                 insets.append('ert')
-            elif current_line.find('\\begin_inset Formula') > -1:
-                in_math = 1
+            elif line.find('\\begin_inset Formula') > -1:
+                in_math = True
                 insets.append('math')
             else:
                 insets.append('other')
-        if current_line.find('\\end_inset') > -1:
+        if line.find('\\end_inset') > -1:
             # check which inset to end
             try:
                 cur_inset = insets.pop()
                 if cur_inset == 'ert':
-                    in_ert = 0
+                    in_ert = False
                 elif cur_inset == 'math':
-                    in_math = 0
+                    in_math = False
                 else:
                     pass # end of other inset
             except:
                 pass # inset list was empty (for some reason)
-        current_line=''; # clear to have as container for modified line
-        for j in range(len(document.body[i])):
-            if spec_chars.has_key(document.body[i][j]):
-                flags = spec_chars[document.body[i][j]][1] + spec_chars[document.body[i][j]][2]
-                if flags.find('combining') > -1:
-                    command = ''
-                else:
-                    command = spec_chars[document.body[i][j]][0]; # the command to replace unicode
-                    if command[0:2] == '\\\\':
-                        if command[2:12]=='ensuremath':
-                            if in_ert == 1:
-                                # math in ERT
-                                command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
-                                command = command.replace('}', '$\n')
-                            elif in_math == 0:
-                                # add a math inset with the replacement character
-                                command = command.replace('\\\\ensuremath{\\', math_intro)
-                                command = command.replace('}', math_outro)
+        
+        # Try to write the line
+        try:
+            # If all goes well the line is written here
+            temp_file.write(line.encode(document.encoding) + '\n')
+            mod_body = mod_body + line + '\n'
+            last_char = line[-1]
+        except:
+            # Error, some character(s) in the line need to be replaced
+            for character in line:
+                try:
+                    # Try to write the character
+                    temp_file.write(character.encode(document.encoding))
+                    mod_body = mod_body + character
+                    last_char = character
+                except:
+                    # Try to replace with ERT/math inset
+                    if spec_chars.has_key(character):
+                        command = spec_chars[character][0]; # the command to replace unicode
+                        flag1 = spec_chars[character][1]
+                        flag2 = spec_chars[character][2]
+                        if flag1.find('combining') > -1 or flag2.find('combining') > -1:
+                            # We have a character that should be combined with the previous
+                            command = command + '{' +last_char + '}'
+                            # Remove the last character. Ignore if it is whitespace
+                            if len(last_char.rstrip()) > 0:
+                                # last_char was found and is not whitespace
+                                [mod_body, apa] = mod_body.rsplit(last_char,1)
                             else:
-                                # we are already in a math inset
-                                command = command.replace('\\\\ensuremath{\\', '')
-                                command = command.replace('}', '')
-                        else:
-                            if in_math == 1:
-                                # avoid putting an ERT in a math; instead put command as text
-                                command = command.replace('\\\\', '\mathrm{')
-                                command = command + '}'
-                            elif in_ert == 0:
-                                # add an ERT inset with the replacement character
-                                command = command.replace('\\\\', ert_intro)
-                                command = command + ert_outro
+                                # The last character was replaced by a command. For now it is
+                                # ignored. This could be handled better.
+                                pass
+                        if command[0:2] == '\\\\':
+                            if command[2:12]=='ensuremath':
+                                if in_ert == True:
+                                    # math in ERT
+                                    command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
+                                    command = command.replace('}', '$\n')
+                                elif in_math == False:
+                                    # add a math inset with the replacement character
+                                    command = command.replace('\\\\ensuremath{\\', math_intro)
+                                    command = command.replace('}', math_outro)
+                                else:
+                                    # we are already in a math inset
+                                    command = command.replace('\\\\ensuremath{\\', '')
+                                    command = command.replace('}', '')
                             else:
-                                command = command.replace('\\\\', '\n\\backslash\n')
-                current_line = current_line + command
-            else:
-                current_line = current_line + document.body[i][j]
-        document.body[i] = current_line
+                                if in_math == True:
+                                    # avoid putting an ERT in a math; instead put command as text
+                                    command = command.replace('\\\\', '\mathrm{')
+                                    command = command + '}'
+                                elif in_ert == False:
+                                    # add an ERT inset with the replacement character
+                                    command = command.replace('\\\\', ert_intro)
+                                    command = command + ert_outro
+                                else:
+                                    command = command.replace('\\\\', '\n\\backslash\n')
+                            last_char = '' # indicate that the character should not be removed
+                        mod_body = mod_body + command
+                    else:
+                        # Replace with replacement string
+                        mod_body = mod_body + replacement_character
+    [mod_body, apa] = mod_body.rsplit('\n',1)
+    document.body = mod_body.split('\n')
+    temp_file.close()
 
 
 ##
