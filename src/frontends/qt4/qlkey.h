@@ -33,6 +33,7 @@ bool q_is_modifier(int qkey)
 		case Qt::Key_Control:
 		case Qt::Key_Meta:
 		case Qt::Key_Alt:
+		case Qt::Key_AltGr:
 			return true;
 	}
 	return false;
