@@ -918,13 +918,21 @@ bool inNarrowInset(PainterInfo & pi)
 {
 	// check whether the current inset is nested in a non-wide inset
 	Cursor & cur = pi.base.bv->cursor();
-	for (int i = cur.depth() - 1; --i >= 0; ) {
+	Inset const * cur_in = &cur.inset();
+	// check all higher nested insets
+	for (size_type i = 1; i < cur.depth(); ++i) {
 		Inset * const in = &cur[i].inset();
-		if (in) {
+		if (in == cur_in)
+			// we reached the level of the current inset, so stop
+			return false;
+		else if (in) {
+			if (in->hasFixedWidth())
+				return true;
 			InsetText * t =
 				const_cast<InsetText *>(in->asTextInset());
-			if (t)
-				return !t->wide();
+			if (t && !t->wide())
+				// OK, we are in a non-wide() inset
+				return true;
 		}
 	}
 	return false;
@@ -1000,7 +1008,7 @@ void paintPar
 			// Clear background of this row
 			// (if paragraph background was not cleared)
 			if (!repaintAll &&
-			    (!(in_inset_alone_on_row && leftEdgeFixed)
+			    (!(in_inset_alone_on_row && leftEdgeFixed && !inNarrowIns)
 				|| row_has_changed)) {
 				pi.pain.fillRectangle(x, y - rit->ascent(),
 				    rp.maxWidth(), rit->height(),
