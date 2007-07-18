@@ -201,7 +201,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "Uwe Stöhr" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -10924,7 +10925,7 @@ n
 
 :
 \begin_inset Formula \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)·(12.4\,\mathrm{pt}))/n\label{eq:Wgn}\end{equation}
+W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}\end{equation}
 
 \end_inset
 
@@ -29594,7 +29595,7 @@ n
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-W_{\mathrm{tot}\, n}=n·(W_{g\, n}+2·\backslash\mbox{tabcolsep})+(n+1)·\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}\end{equation}
+W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}\end{equation}
 
 \end_inset
 
@@ -29643,7 +29644,7 @@ reference "eq:Wtot_n"
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2·\backslash\mbox{tabcolsep}+2·\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}\end{equation}
+W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}\end{equation}
 
 \end_inset
 
@@ -29681,7 +29682,7 @@ n
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)·(2·\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n\end{equation}
+W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n\end{equation}
 
 \end_inset
 
