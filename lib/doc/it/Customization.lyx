@@ -1,5 +1,5 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass book
@@ -11,13 +11,21 @@
 \end_preamble
 \language italian
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics none
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -30,7 +38,8 @@
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -46,7 +55,7 @@ status collapsed
 
 \begin_layout Standard
 \noindent
-Questa guida Ë aggiornata da 
+Questa guida √® aggiornata da 
 \noun on
 Mike Ressler
 \noun default
@@ -66,7 +75,7 @@ traduzione italiana a cura di Lino Muoio
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -85,10 +94,10 @@ Questo manuale illustra le caratteristiche di personalizzazione presenti
  a LyX attraverso il LyX Server, l'internazionalizzazione, l'installazione
  di nuove classi di testo LaTeX e layouts di LyX ecc.
  Ovviamente non ci possiamo augurare di prendere in considerazione tutto
- quello che Ë possibile cambiare--i nostri sviluppatori aggiungono nuovi
- funzioni pi˘ velocemente di quanto riusciamo a documentare--ma andremo
- a spiegare le personalizzazioni pi˘ comuni e possibilmente cercheremo di
- darvi qualche indicazione per quelle pi˘ complesse.
+ quello che √® possibile cambiare--i nostri sviluppatori aggiungono nuovi
+ funzioni pi√π velocemente di quanto riusciamo a documentare--ma andremo
+ a spiegare le personalizzazioni pi√π comuni e possibilmente cercheremo di
+ darvi qualche indicazione per quelle pi√π complesse.
 \end_layout
 
 \begin_layout Standard
@@ -112,7 +121,7 @@ ni di LyX, ma si spera invece che semplifichi considerabilmente l'adattamento
 \shape slanted
 vostre
 \shape default
- necessit‡.
+ necessit√†.
 \end_layout
 
 \begin_layout Chapter
@@ -120,7 +129,8 @@ File di configurazione di LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{chap:config}
+\begin_inset LatexCommand label
+name "chap:config"
 
 \end_inset
 
@@ -140,13 +150,8 @@ V
 ersion.
 
 \family default
-\bar under
- 
-\bar default
-Questa direcotry Ë il posto in cui LyX mette i suoi files di configurazione
- generale, che chiameremo
-\family sans
- 
+ Questa direcotry √® il posto in cui LyX mette i suoi files di configurazione
+ generale, che chiameremo 
 \family typewriter
 LyXDir
 \family default
@@ -156,7 +161,7 @@ LyXDir
 \begin_layout Section
 
 \size larger
-Cosa c'Ë in 
+Cosa c'√® in 
 \family typewriter
 \size default
 LyXDir
@@ -172,7 +177,7 @@ LyXDir
 \family default
  e le sue sottodirectory contiene numerosi files che possono essere usati
  per la personalizzazione del comportamento di LyX.
- Nuovo in LyX 1.1.6 Ë la possibilt‡ di richiamare questi files dall'interno
+ Nuovo in LyX 1.1.6 √® la possibilt√† di richiamare questi files dall'interno
  dello stesso LyX attraverso il menu 
 \family sans
 \shape smallcaps
@@ -211,7 +216,7 @@ Files generati automaticamente
 Questi files vengono generati quando configurate LyX.
  Contengono vari valori predefiniti che vengono fissati mediante una procedura
  di ispezione.
- In generale, non Ë una buona idea modificarli, dato che potrebbero essere
+ In generale, non √® una buona idea modificarli, dato che potrebbero essere
  sovrascritti in qualsiasi momento.
 \end_layout
 
@@ -254,8 +259,8 @@ packages.lst
 \family default
 \series default
  contiene la lista dei pacchetti che sono stati riconosciuti da LyX.
- Non Ë normalmente usata dal programma, ma le informazioni estratte, ed
- anche di pi˘ sono rese disponibili attraverso 
+ Non √® normalmente usata dal programma, ma le informazioni estratte, ed
+ anche di pi√π sono rese disponibili attraverso 
 \family sans
 \bar under
 H
@@ -275,7 +280,7 @@ Configuration.
 \family typewriter
 textclass.lst
 \family default
- Ë la lista delle classi di testo che sono stati trovate nella vostra directory
+ √® la lista delle classi di testo che sono stati trovate nella vostra directory
  
 \family typewriter
 layout/
@@ -289,7 +294,7 @@ layout/
 \family typewriter
 doc/LaTeXConfig.lyx
 \family default
- Ë generata automaticamente durante la configurazione dal file 
+ √® generata automaticamente durante la configurazione dal file 
 \family typewriter
 LaTeXConfig.lyx.in
 \family default
@@ -302,11 +307,11 @@ LaTeXConfig.lyx.in
 \begin_inset Quotes erd
 \end_inset
 
- verr‡ sostituito con 
+ verr√† sostituito con 
 \begin_inset Quotes eld
 \end_inset
 
-sÏ
+s√¨
 \begin_inset Quotes erd
 \end_inset
 
@@ -343,7 +348,8 @@ bind/
 \family default
  che definiscono i tasti di scelta rapida usati in LyX (vedere la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec: bindings}
+\begin_inset LatexCommand ref
+reference "sec: bindings"
 
 \end_inset
 
@@ -352,15 +358,17 @@ bind/
 \family typewriter
 $LANG_xxx.bind
 \family default
- , questo sar‡ usato per primo.
+ , questo sar√† usato per primo.
  Vedere il capitolo\InsetSpace ~
 
-\begin_inset LatexCommand \ref{chap:i18n}
+\begin_inset LatexCommand ref
+reference "chap:i18n"
 
 \end_inset
 
 , e la sezione
-\begin_inset LatexCommand \ref{sec: bindings}
+\begin_inset LatexCommand ref
+reference "sec: bindings"
 
 \end_inset
 
@@ -375,7 +383,7 @@ $LANG_xxx.bind
 clipart/
 \family default
 \series default
- contiene immagini PostscriptÆ che possono essere inclusi nei documenti.
+ contiene immagini Postscript¬Æ che possono essere inclusi nei documenti.
  
 \end_layout
 
@@ -393,15 +401,16 @@ doc/
 \family typewriter
 LaTeXConfig.lyx
 \family default
- Ë particolarmente speciale, come gi‡ detto.
+ √® particolarmente speciale, come gi√† detto.
  Se esiste una versione internazionale del documento di aiuto con 
 \family typewriter
 $LANG_
 \family default
- preposto al nome, quello sar‡ usato per primo.
+ preposto al nome, quello sar√† usato per primo.
  Guardare il capitolo\InsetSpace ~
 
-\begin_inset LatexCommand \ref{chap:i18n}
+\begin_inset LatexCommand ref
+reference "chap:i18n"
 
 \end_inset
 
@@ -417,9 +426,9 @@ examples/
  contiene files di esempio che spiegano come usare alcune caratteristiche.
  Nel file browser premere il pulsante 
 \family sans
-Example 
+Example
 \family default
-per raggiungerlo.
+ per raggiungerlo.
 \end_layout
 
 \begin_layout List
@@ -446,7 +455,8 @@ kdb/
  contiene i files di keymapping della tastiera.
  Guardare il capitolo\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:keymap}
+\begin_inset LatexCommand ref
+reference "sec:keymap"
 
 \end_inset
 
@@ -461,7 +471,8 @@ layouts/
 \family default
  contiene i files di classi di testo descritti nel capitolo\InsetSpace ~
 
-\begin_inset LatexCommand \ref{chap:textclass}
+\begin_inset LatexCommand ref
+reference "chap:textclass"
 
 \end_inset
 
@@ -491,7 +502,7 @@ buon comportamento
 \family typewriter
 scripts/
 \family default
- contiene alcuni files che dimostrano le capacit‡ dell'insieme 
+ contiene alcuni files che dimostrano le capacit√† dell'insieme 
 \family sans
 External\InsetSpace ~
 Template.
@@ -506,8 +517,8 @@ Material
  per ulteriori informazioni.
  [
 \emph on
-Nota dell'autore: se questo file Ë incorporato in un altro dei documenti
- standard, non sar‡ reperibile in questa locazione---AL
+Nota dell'autore: se questo file √® incorporato in un altro dei documenti
+ standard, non sar√† reperibile in questa locazione---AL
 \emph default
 ].
 \end_layout
@@ -520,7 +531,8 @@ templates/
 \family default
  contiene i files templates standard di LyX descritti nel Capitolo\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:templates}
+\begin_inset LatexCommand ref
+reference "sec:templates"
 
 \end_inset
 
@@ -547,11 +559,12 @@ ui/
 .ui
 \family default
  che definiscono l'interfaccia utente di LyX.
- CioË i files definiscono quali oggetti appaiono in quali menu e quelli
+ Cio√® i files definiscono quali oggetti appaiono in quali menu e quelli
  che appaiono nella toolbar.
  Riferirsi al Capitolo\InsetSpace ~
  
-\begin_inset LatexCommand \ref{sec:ui}
+\begin_inset LatexCommand ref
+reference "sec:ui"
 
 \end_inset
 
@@ -576,7 +589,7 @@ CREDITS
 \family default
 \series default
  questo file contiene la lista degli sviluppatori di LyX.
- Si puÚ accedere a questo file attraverso il menu 
+ Si pu√≤ accedere a questo file attraverso il menu 
 \family sans
 \bar under
 H
@@ -597,7 +610,7 @@ dits.
 chkconfig.ltx
 \family default
 \series default
- questo Ë uno script LaTeX usato durante il processo di configurazione.
+ questo √® uno script LaTeX usato durante il processo di configurazione.
  Non va lanciato direttamente.
 \end_layout
 
@@ -609,8 +622,8 @@ chkconfig.ltx
 configure
 \family default
 \series default
- questo Ë lo script usato per riconfigurare LyX.
- Crea files di configurazione nella directory in cui Ë lanciato.
+ questo √® lo script usato per riconfigurare LyX.
+ Crea files di configurazione nella directory in cui √® lanciato.
 \end_layout
 
 \begin_layout Subsection
@@ -671,7 +684,7 @@ La vostra directory di configurazione
 \end_layout
 
 \begin_layout Standard
-Anche se si usa LyX come utente non privilegiato, Ë possibile voler cambiare
+Anche se si usa LyX come utente non privilegiato, √® possibile voler cambiare
  la configurazione per un uso personale.
  La directory 
 \family typewriter
@@ -699,21 +712,21 @@ V
 ersion.
 
 \family default
- Questa directory Ë usata come mirror di 
+ Questa directory √® usata come mirror di 
 \family typewriter
 LyXDir
 \family default
-, il che significa che ogni file in
+, il che significa che ogni file in 
 \family typewriter
- UserDir
+UserDir
 \family default
- Ë un sostituto del corrispondente file in 
+ √® un sostituto del corrispondente file in 
 \family typewriter
 LyXDir
 \family default
 .
- Ogni file di configurazione descritto nelle sezioni precedenti puÚ essere
- posizionato sia nelle grandi directory di sistema, in quel caso agir‡ su
+ Ogni file di configurazione descritto nelle sezioni precedenti pu√≤ essere
+ posizionato sia nelle grandi directory di sistema, in quel caso agir√† su
  tutti gli utenti, sia nella vostra directory locale per un uso di carattere
  personale.
 \end_layout
@@ -758,7 +771,7 @@ preferences
 \family typewriter
 lyxrc
 \family default
- non sar‡ pi˘ letto e potr‡ essere rimosso.
+ non sar√† pi√π letto e potr√† essere rimosso.
 \end_layout
 
 \begin_layout Itemize
@@ -779,7 +792,8 @@ econfigure
 \family sans
 (vedere la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:autodetected}
+\begin_inset LatexCommand ref
+reference "sec:autodetected"
 
 \end_inset
 
@@ -790,9 +804,9 @@ per avere una lista dei settaggi di\SpecialChar \menuseparator
  ogni classe di testo addizionale che potreste aver aggiunto alla directory
  
 \family typewriter
-UserDir/layouts 
+UserDir/layouts
 \family default
-sar‡ aggiunta alla lista delle classi nel menu 
+ sar√† aggiunta alla lista delle classi nel menu 
 \family sans
 \bar under
 L
@@ -807,7 +821,7 @@ ocument.
 
 \begin_layout Itemize
 Similmente, se avete installato alcune classi di documento LaTeX nella vostra
- home directory, che LaTeX puÚ trovare nel vostro path 
+ home directory, che LaTeX pu√≤ trovare nel vostro path 
 \family typewriter
 TEXTINPUTS
 \family default
@@ -831,7 +845,7 @@ come pure se voi o LyX abbiate un file
 
 \begin_layout Itemize
 Se acquisite della documentazione aggiornata dal sito ftp di LyX e non potete
- installarla perchË non avete i permessi di amministratore sul vostro sistema,
+ installarla perch√® non avete i permessi di amministratore sul vostro sistema,
  potete semplicemente copiare i files in 
 \family typewriter
 UserDir/doc/
@@ -851,11 +865,11 @@ Lanciare LyX con configurazioni multiple
 \end_layout
 
 \begin_layout Standard
-La libert‡ di configurazione della relativa directory locale puÚ non essere
- sufficiente se volete avere pi˘ di una configurazione a vostra disposizione.
+La libert√† di configurazione della relativa directory locale pu√≤ non essere
+ sufficiente se volete avere pi√π di una configurazione a vostra disposizione.
  Ad esempio, vorreste poter usare differenti scorciatoie da tastiera o settaggi
  della stampante in tempi diversi.
- Potete ottenere questo attraverso pi˘ directory che verranno richiamate
+ Potete ottenere questo attraverso pi√π directory che verranno richiamate
  al run-time.
 \end_layout
 
@@ -871,7 +885,7 @@ some directory
 > permette al programma di leggere la configurazione da quella directory
  e non dalla directory di default (potete scegliere la directory di default
  lanciando LyX senza lo switch descritto sopra).
- Se questa directory non esiste, LyX puÚ crearla per voi proprio come fa
+ Se questa directory non esiste, LyX pu√≤ crearla per voi proprio come fa
  per la directory di default la prima volta che si lancia il programma.
  Potete modificare le opzioni di configurazione in questa 
 \family typewriter
@@ -887,7 +901,7 @@ LYX_USERDIR_11x
 \end_layout
 
 \begin_layout Standard
-Avere molte configurazioni richiede anche pi˘ manutenzione: se volete aggiungere
+Avere molte configurazioni richiede anche pi√π manutenzione: se volete aggiungere
  un nuovo layout a 
 \family typewriter
 Userdir/layouts
@@ -917,11 +931,12 @@ R
 econfigure
 \family default
  
-\begin_inset LatexCommand \ref{sec:autodetected}
+\begin_inset LatexCommand ref
+reference "sec:autodetected"
 
 \end_inset
 
-) che Ë specifico per ogni configurazione.
+) che √® specifico per ogni configurazione.
 \end_layout
 
 \begin_layout Chapter
@@ -943,13 +958,13 @@ Usare il popup per la prima volta
 \end_layout
 
 \begin_layout Standard
-Storicamente, Ë possibile personalizzare il comportamento di LyX attraverso
+Storicamente, √® possibile personalizzare il comportamento di LyX attraverso
  la modifica del contenuto del file 
 \family typewriter
 UserDir/lyxrc.
 
 \family default
- Questo Ë cambiato in LyX 1.1.6 perchË ora esiste un menu 
+ Questo √® cambiato in LyX 1.1.6 perch√® ora esiste un menu 
 \family sans
 \bar under
 E
@@ -959,39 +974,40 @@ dit\SpecialChar \menuseparator
 \bar under
 P
 \bar default
-references 
+references
 \family default
-per semplificare il processo di semplificazione.
+ per semplificare il processo di semplificazione.
  
 \family typewriter
-UserDir/lyxrc 
+UserDir/lyxrc
 \family default
-verr‡ ancora letto fino a quando non si usa il nuovo menu per la prima volta.
- Successivamente, ogni cambiamento sar‡ salvato in un nuovo file,
+ verr√† ancora letto fino a quando non si usa il nuovo menu per la prima
+ volta.
+ Successivamente, ogni cambiamento sar√† salvato in un nuovo file, 
 \family typewriter
- preferences,
+preferences,
 \family default
  e 
 \family typewriter
 lyxrc
 \family default
- non sar‡ pi˘ letto.
- Potr‡ cosÏ essere rimosso.
+ non sar√† pi√π letto.
+ Potr√† cos√¨ essere rimosso.
 \end_layout
 
 \begin_layout Standard
 Il nuovo file 
 \family typewriter
-UserDir/preferences 
+UserDir/preferences
 \family default
-conterr‡ solo i cambiamenti che sono stati fatti nel comportamento di base,
+ conterr√† solo i cambiamenti che sono stati fatti nel comportamento di base,
  alcuni dei quali sono ben codificati in LyX ed altri sono contenuti nel
  file di sistema 
 \family typewriter
 LyXDir/lyxrc.defaults.
- 
+
 \family default
-Notate che in entrambi i files le righe che iniziano con 
+ Notate che in entrambi i files le righe che iniziano con 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1003,9 +1019,9 @@ Notate che in entrambi i files le righe che iniziano con
  Tuttavia, solo gli amministratori di sistema dovrebbero editare 
 \family typewriter
 LyXDir/lyxrc.
- 
+
 \family default
-Gli utenti dovrebbero usare la voce 
+ Gli utenti dovrebbero usare la voce 
 \family sans
 \bar under
 E
@@ -1036,14 +1052,14 @@ P
 references
 \family default
  sia ampiamente autoesplicativo.
- A quasi tutti i comandi sono stati associati dei commenti, cosÏ da non
- crearvi particolari difficolt‡ ad effettuare modifiche a vostro piacimento.
- Prima di analizzare alcuni dei comandi pi˘ importanti di seguito, vogliamo
+ A quasi tutti i comandi sono stati associati dei commenti, cos√¨ da non
+ crearvi particolari difficolt√† ad effettuare modifiche a vostro piacimento.
+ Prima di analizzare alcuni dei comandi pi√π importanti di seguito, vogliamo
  fare un avvertimento: L'applicazione di alcuni dei cambiamenti (es.
  fonts dello schermo) hanno effetto istantaneo.
  Altri (es.
  cambiamenti nel file associazioni) non l'avranno.
- Abbiate pazienza; questo Ë un work-in-progress.
+ Abbiate pazienza; questo √® un work-in-progress.
  Se nulla sembra accadere come cambiamento salvate i cambiamenti e riavviate
  LyX.
 \end_layout
@@ -1054,17 +1070,17 @@ Schermo & Fonts
 
 \begin_layout Standard
 Il carattere usato per visualizzare i vostri documenti sullo schermo di
- LyX Ë molto importante, dato che leggerete tutti i documenti con questo
+ LyX √® molto importante, dato che leggerete tutti i documenti con questo
  carattere.
- Inoltre Ë importante che il carattere sia leggibile ed abbia il miglior
+ Inoltre √® importante che il carattere sia leggibile ed abbia il miglior
  aspetto possibile.
  Il LyX team ha provato a fornire il migliore carattere predefinito, ma
- dato che praticamente tutti i sistemi X11 sono differenti, Ë molto probabile
+ dato che praticamente tutti i sistemi X11 sono differenti, √® molto probabile
  che il carattere predefinito sia sub-ottimale per il vostro sistema.
- Fortunatamente Ë possibile ovviare a tale situazione, ma prima di chiarirvi
- le modalit‡ secondo le quali procedere, sarebbe bene che sapeste qualcosa
- di pi˘ sui font in quanto la loro scelta nasce da un compromesso tra le
- vostre preferenze e le capacit‡ del sistema col quale lavorate.
+ Fortunatamente √® possibile ovviare a tale situazione, ma prima di chiarirvi
+ le modalit√† secondo le quali procedere, sarebbe bene che sapeste qualcosa
+ di pi√π sui font in quanto la loro scelta nasce da un compromesso tra le
+ vostre preferenze e le capacit√† del sistema col quale lavorate.
 \end_layout
 
 \begin_layout Standard
@@ -1090,19 +1106,19 @@ Guida dell'utente
 \begin_layout Standard
 Di base, i caratteri che appaiono sullo schermo sono di due tipi differenti:
  caratteri scalabili e caratteri bitmap non scalabili.
- La distinzione puÚ sembrare leggermente arbitraria, dato che i font non-scalabi
+ La distinzione pu√≤ sembrare leggermente arbitraria, dato che i font non-scalabi
 li sono generalmente scalabili nella maggior parte dei moderni renderers
  di font.
  La differenza sta nella 
 \emph on
-qualit‡
+qualit√†
 \emph default
  dello scaling, e nella 
 \emph on
-velocit‡
+velocit√†
 \emph default
  con cui essi vengono visualizzati.
- Da ciÚ ne deriva l'importanza di capire dove sia bene usare l'uno o l'altro
+ Da ci√≤ ne deriva l'importanza di capire dove sia bene usare l'uno o l'altro
  tipo di font.
 \end_layout
 
@@ -1111,42 +1127,42 @@ I caratteri scalabili sono costruiti a partire dai
 \emph on
 contorni
 \emph default
- di ciascun glifo (cioË carattere) presente nel font.
- Questo significa che ogni glifo Ë definito attraverso curve matematiche
+ di ciascun glifo (cio√® carattere) presente nel font.
+ Questo significa che ogni glifo √® definito attraverso curve matematiche
  che bene si adattano allo scaling di qualsiasi dimensione.
  Il renderer di font ha quindi il compito di interpretare tale definizione
  e generare una piccola figura composta di pixels in relazione alla grandezza
  ed al glifo richiesto dal programmatore.
  Ne segue che l'aspetto dei font scalabili risulta buono per ogni dimensione,
- pi˘ realisticamente per quasi tutte le dimensioni.
+ pi√π realisticamente per quasi tutte le dimensioni.
  Infatti i fonts scalabili sono definiti in modo astratto e di conseguenza
- puÚ essere difficile ottenere un buon rendering per taglie piccole, dove
+ pu√≤ essere difficile ottenere un buon rendering per taglie piccole, dove
  ogni pixel deve essere perfettamente calcolato per ottenere una buona immagine.
- Tale operazione Ë tecnicamente attuabile mediante la definizione matematica,
+ Tale operazione √® tecnicamente attuabile mediante la definizione matematica,
  ma per consentire un rendering ragionevolmente veloce, si preferisce raggiunger
-e un compromesso, con il risultato Ë che i font scalabili sono pi˘ difficili
+e un compromesso, con il risultato √® che i font scalabili sono pi√π difficili
  da leggere per le piccole dimensioni.
 \end_layout
 
 \begin_layout Standard
-I font bitmap invece sono definiti da grafica bitmap sin dall'inizio, cosÏ
+I font bitmap invece sono definiti da grafica bitmap sin dall'inizio, cos√¨
  appaiono buoni per ogni dimensione richiesta.
- tuttavia, non scalano bene, perchË per scalare un glifo, ogni pixel Ë allargato
- in pi˘ pixel.
+ tuttavia, non scalano bene, perch√® per scalare un glifo, ogni pixel √® allargato
+ in pi√π pixel.
  E' quanto accade se cercate di allargare una fotografia in 
 \emph on
 xv
 \emph default
  o in qualsiasi altro programma di manipolazione.
  Per ridurre questo effetto, i font bitmap sono forniti in varie dimensioni
- prestabilite, in genere da 8 pixel a 34 pixel o pi˘ in relazione ai possibili
+ prestabilite, in genere da 8 pixel a 34 pixel o pi√π in relazione ai possibili
  utilizzi.
- Il vantaggio derivante dall'uso di font bitmap Ë che per visualizzare ogni
- glifo non sono necessari calcoli complessi, cosÏ da rendere i font bitmap
- pi˘ velocemente rappresentabili sullo schermo rispetto ai font scalari.
+ Il vantaggio derivante dall'uso di font bitmap √® che per visualizzare ogni
+ glifo non sono necessari calcoli complessi, cos√¨ da rendere i font bitmap
+ pi√π velocemente rappresentabili sullo schermo rispetto ai font scalari.
  Lo svantaggio consiste nel fatto che le dimensioni non comprese in quelle
  predefinite, devono essere ottenute raddoppiando i pixel, e conseguentemente
- l'aspetto non Ë dei migliori.
+ l'aspetto non √® dei migliori.
 \end_layout
 
 \begin_layout Standard
@@ -1155,21 +1171,21 @@ Se ne conclude quindi che i font bitmap sono generalmente i migliori per
  per grandi dimensioni.
  La logica conclusione sarebbe quella di usare i font bitmap per le piccole
  dimensioni, ed i font scalabili per le dimensioni superiori.
- Sfortunatamente questa non Ë una buona idea, dato che i font bitmap e i
+ Sfortunatamente questa non √® una buona idea, dato che i font bitmap e i
  font scalabili non sono stati progettati per essere usati insieme ed il
  risultato derivante dal loro contemporaneo utilizzo sarebbe piuttosto sgradevol
 e.
- La soluzione ottimale Ë dunque quella di provare entrambi gli schemi e
+ La soluzione ottimale √® dunque quella di provare entrambi gli schemi e
  scegliere tra i due quello che meglio si adatta alle proprie esigenze.
 \end_layout
 
 \begin_layout Standard
 Di default, Lyx usa i font bitmap non-scalabili.
- Per i font serif, Ë usato 
+ Per i font serif, √® usato 
 \emph on
 times
 \emph default
-, per i font sans serif, Ë usato 
+, per i font sans serif, √® usato 
 \emph on
 helvetica
 \emph default
@@ -1177,12 +1193,12 @@ helvetica
 \emph on
 curier
 \emph default
- Ë usato come font monospazio stile macchina da scrivere.
+ √® usato come font monospazio stile macchina da scrivere.
 \end_layout
 
 \begin_layout Standard
 In seguito descriveremo cosa fare se in LyX il testo non ha un bell'aspetto.
- Partiremo con i parametri pi˘ importanti: DPI e lo zoom dei fonts.
+ Partiremo con i parametri pi√π importanti: DPI e lo zoom dei fonts.
 \end_layout
 
 \begin_layout Subsection
@@ -1191,14 +1207,14 @@ Settaggi DPI e Zoom di Font
 
 \begin_layout Standard
 LyX automaticamente prova a scalare i fonts in modo da farli sembrare il
- pi˘ possibile uguali a quelli che verranno stampati, a meno del cosiddetto
+ pi√π possibile uguali a quelli che verranno stampati, a meno del cosiddetto
  fattore di zoom.
 \end_layout
 
 \begin_layout Standard
 Per far funzionare su ogni sistema, questo meccanismo sfrutta i settaggi
  dei DPI (dots per inch) dello schermo.
- Il settaggio dei DPI del vostro sistema Ë rilevato automaticamente da LyX
+ Il settaggio dei DPI del vostro sistema √® rilevato automaticamente da LyX
  attraverso le informazioni che fornisce il server X.
  Potete controllare cosa rileva LyX circa i DPI, lanciando LyX in questo
  modo: 
@@ -1210,7 +1226,7 @@ lyx -dbg 2.
 \end_layout
 
 \begin_layout Standard
-Su molti sistemi, X non Ë settato correttamente, quindi dovrete verificare
+Su molti sistemi, X non √® settato correttamente, quindi dovrete verificare
  la correttezza dei settaggi manualmente.
  Lanciate 
 \begin_inset Quotes eld
@@ -1252,21 +1268,21 @@ dimensioni
 \end_layout
 
 \begin_layout Standard
-DopodichË prendete il buon vecchio righello e misurate la larghezza visibile
+Dopodich√® prendete il buon vecchio righello e misurate la larghezza visibile
  dell'immagine su vostro monitor.
  Convertite queste misure in pollici, se usate un righello in centimetri,
  dividendo per 2.54.
- Ora Ë possibile determinare il corretto settaggio DPI per il vostro schermo,
+ Ora √® possibile determinare il corretto settaggio DPI per il vostro schermo,
  dividendo il numero dei pixels della larghezza per la larghezza dell'immagine
  sullo schermo del monitor.
- Se questo numero Ë superiore a, per esempio, 5 DPI rispetto al valore autodeter
+ Se questo numero √® superiore a, per esempio, 5 DPI rispetto al valore autodeter
 minato, dovrete correggere l' X setup, o almeno dire a LyX che il valore
- di DPI Ë diverso da quello rilevato.
+ di DPI √® diverso da quello rilevato.
 \end_layout
 
 \begin_layout Standard
-Se non potete correggere l'X setup (che sarebbe la soluzione migliore perchË
- ne beneficerebbero altri programmi oltre a LyX), Ë possibile comunicare
+Se non potete correggere l'X setup (che sarebbe la soluzione migliore perch√®
+ ne beneficerebbero altri programmi oltre a LyX), √® possibile comunicare
  a LyX il corretto settaggio DPI attraverso il menu 
 \family sans
 Preferences.
@@ -1276,23 +1292,23 @@ Preferences.
 \end_layout
 
 \begin_layout Standard
-Se il testo Ë troppo piccolo o troppo grande per il vostro gusto, dovrete
+Se il testo √® troppo piccolo o troppo grande per il vostro gusto, dovrete
  cercare di rimendiare attraverso lo zoom sul carattere.
- Questo settaggio Ë usato per scalare la grandezza del punto del testo.
- Se il vostro DPI Ë corretto, e lo zoom del carattere Ë settato a 100, questo
- significa che LyX prover‡ a mostrare il testo esattamente alla stessa grandezza
+ Questo settaggio √® usato per scalare la grandezza del punto del testo.
+ Se il vostro DPI √® corretto, e lo zoom del carattere √® settato a 100, questo
+ significa che LyX prover√† a mostrare il testo esattamente alla stessa grandezza
  della pagina stampata.
- Se il fattore di zoom viene settato a 200, il testo visualizzato sar‡ il
- doppio di quello che si vedr‡ sulla pagina stampata.
- Naturalmente questo accadr‡ solo se LyX riesce a trovare ed usare un carattere
+ Se il fattore di zoom viene settato a 200, il testo visualizzato sar√† il
+ doppio di quello che si vedr√† sulla pagina stampata.
+ Naturalmente questo accadr√† solo se LyX riesce a trovare ed usare un carattere
  che abbia una grandezza appropriata.
- Ma, dato che LyX Ë comunque un sistema WYSIWYM, questa limitazione, eventuale,
- Ë improbabile.
+ Ma, dato che LyX √® comunque un sistema WYSIWYM, questa limitazione, eventuale,
+ √® improbabile.
 \end_layout
 
 \begin_layout Standard
-Il valore di default dello zoom Ë 150 dato che un monitor Ë generalmente
- pi˘ grande che un pezzo di carta, ma dovreste comunque provare a modificarlo
+Il valore di default dello zoom √® 150 dato che un monitor √® generalmente
+ pi√π grande che un pezzo di carta, ma dovreste comunque provare a modificarlo
  tramite il comando 
 \family sans
 Font\InsetSpace ~
@@ -1306,9 +1322,9 @@ default  nel menu Preferences
 \bar under
 A
 \bar default
-pply 
+pply
 \family default
-per lasciare la finestra aperta mentre fate esperimenti), potete poi rendere
+ per lasciare la finestra aperta mentre fate esperimenti), potete poi rendere
  questi settaggi come default usando il comando 
 \family sans
 \bar under
@@ -1320,11 +1336,11 @@ ave
 \end_layout
 
 \begin_layout Standard
-Mentre Ë spesso possibile trovare una grandezza adatta al testo sullo schermo,
+Mentre √® spesso possibile trovare una grandezza adatta al testo sullo schermo,
  questo non necessariamente vuol dire, che i fonts siano i migliori ottenibili
  dal proprio sistema.
  Per aiutarvi ad avere il massimo dal vostro sistema, potete usare i comendi
- di definizione dei font per raffinare l'aspetto del testo pi˘ in dettaglio.
+ di definizione dei font per raffinare l'aspetto del testo pi√π in dettaglio.
 \end_layout
 
 \begin_layout Subsection
@@ -1333,11 +1349,11 @@ Comandi di definizione dei Fonts
 
 \begin_layout Standard
 Come menzionato, LyX usa fonts bitmap non scalabili di default.
- Per i fonts serif, Ë usato 
+ Per i fonts serif, √® usato 
 \emph on
 times
 \emph default
-, per i fonts sans serif Ë usato 
+, per i fonts sans serif √® usato 
 \emph on
 helvetica
 \emph default
@@ -1345,7 +1361,7 @@ helvetica
 \emph on
 courier
 \emph default
- Ë usato come font del tipo monospazio/macchina da scrivere.
+ √® usato come font del tipo monospazio/macchina da scrivere.
 \end_layout
 
 \begin_layout Standard
@@ -1378,13 +1394,13 @@ fmly
 \begin_inset Quotes erd
 \end_inset
 
- in
+ in 
 \family typewriter
- xfontsel
+xfontsel
 \family default
-) nel campo appropriato nel menu
+) nel campo appropriato nel menu 
 \family sans
- Preferences
+Preferences
 \family default
  e premere 
 \family sans
@@ -1394,7 +1410,7 @@ A
 pply
 \family default
 .
- LyX poi riformatter‡ il vostro documento usando il nuovo font, e se il
+ LyX poi riformatter√† il vostro documento usando il nuovo font, e se il
  font vi piace, dovreste salvarlo con 
 \family sans
 \bar under
@@ -1403,7 +1419,7 @@ S
 ave
 \family default
 .
- Un punto di partenza per un nuovo font Ë vedere se il font scalabile 
+ Un punto di partenza per un nuovo font √® vedere se il font scalabile 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1411,8 +1427,8 @@ utopia
 \begin_inset Quotes erd
 \end_inset
 
- Ë disponibile.
- Tip: potete vedere se un font Ë scalabile o bitmap controllando i campi
+ √® disponibile.
+ Tip: potete vedere se un font √® scalabile o bitmap controllando i campi
  
 \begin_inset Quotes eld
 \end_inset
@@ -1434,12 +1450,12 @@ resy
 xfontsel
 \family default
 .
- Se il valore 0 Ë disponibile, il font Ë scalabile.
- Se il valore 0 non Ë disponibile, il font Ë bitmap.
+ Se il valore 0 √® disponibile, il font √® scalabile.
+ Se il valore 0 non √® disponibile, il font √® bitmap.
 \end_layout
 
 \begin_layout Standard
-Prima che proviate a modificare un font bitmap perchË la larghezza pi˘ grande
+Prima che proviate a modificare un font bitmap perch√® la larghezza pi√π grande
  sembra 
 \begin_inset Quotes eld
 \end_inset
@@ -1457,9 +1473,9 @@ Usa fonts scalabili
 \end_inset
 
 .
- Questo Ë utile solo se usate fonts bitmap, perchË solo questi non scalano
+ Questo √® utile solo se usate fonts bitmap, perch√® solo questi non scalano
  perfettamente.
- Se definite questo flag, LyX user‡ solo le grandezze fisse del carattere
+ Se definite questo flag, LyX user√† solo le grandezze fisse del carattere
  disponibili, e questo garantisce che tutti i fonts bitmap sembrino buoni.
  (Potete vedere quale grandezze individuali del carattere son o disponibili
  con il comando 
@@ -1472,11 +1488,11 @@ xlsfonts
 man xlsfonts
 \family default
 ).
- Tuttavia il prezzo da pagare Ë che la differenza tra la grandezza del font
- sullo schermo e la grandezza del font sulla carta sar‡ pi˘ grande perchË
- LyX dovr‡ accontentarsi della grandezza pi˘ vicina disponibile, e non prover‡
+ Tuttavia il prezzo da pagare √® che la differenza tra la grandezza del font
+ sullo schermo e la grandezza del font sulla carta sar√† pi√π grande perch√®
+ LyX dovr√† accontentarsi della grandezza pi√π vicina disponibile, e non prover√†
  a scalare la grandezza per adeguarsi.
- Inoltre, c'Ë il ridchio che alcune grandezze differenti da un punto di
+ Inoltre, c'√® il ridchio che alcune grandezze differenti da un punto di
  vista logico, come 
 \family sans
 Large
@@ -1488,7 +1504,7 @@ Larger
 , saranno mappate come lo stesso font sullo schermo, rendendo difficile
  identificare le differenze sullo schermo.
  Abbiamo deciso di non usare i fonts scalabili di default a causa di questi
- effetti, ma dato che LyX Ë un sistema WYSIWYM, a molte persone piace comunque
+ effetti, ma dato che LyX √® un sistema WYSIWYM, a molte persone piace comunque
  usare i flag, pur sapendo che la grandezza del carattere sullo schermo
  potrebbe non essere veritiera.
  Ma ricordate che questo flag crea una differenza solo se usate font bitmap.
@@ -1497,10 +1513,10 @@ Larger
 \end_layout
 
 \begin_layout Standard
-Un'ultima annotazione su questo flag: dovete sapere che non c'Ë nulla di
+Un'ultima annotazione su questo flag: dovete sapere che non c'√® nulla di
  sbagliato nell'usare fonts scalabili e bitmap contemporaneamente per differenti
  scopi.
- Per esempio, Ë abbastanza comune usare lo scalabile 
+ Per esempio, √® abbastanza comune usare lo scalabile 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1525,7 +1541,7 @@ Usa fonts scalabili
 \begin_inset Quotes erd
 \end_inset
 
- senza problemi: sar‡ solo applicato al font Helvetica.
+ senza problemi: sar√† solo applicato al font Helvetica.
 \end_layout
 
 \begin_layout Standard
@@ -1542,7 +1558,7 @@ lyx -dbg 513
 Preferences
 \family default
  fino a quando i risultati vi soddisfano.
- Questo Ë difficile da fare, perchË LyX usa i settaggi DPI e quelli di zoom
+ Questo √® difficile da fare, perch√® LyX usa i settaggi DPI e quelli di zoom
  del font per calcolare l'esatta grandezza del font sullo schermo da chiedere
  al server X.
  Se non riuscite ad ottenere risultati soddisfacenti con la tecnica dello
@@ -1554,9 +1570,9 @@ sbaglia e riprova
 \begin_inset Quotes erd
 \end_inset
 
-, potete rendere il processo pi˘ trasparente se settate assieme i DPI e
- lo zoom a 100, anche se si sa che non Ë corretto.
- questo naturalmente render‡ i font scalabili non perfetti, quindi fate
+, potete rendere il processo pi√π trasparente se settate assieme i DPI e
+ lo zoom a 100, anche se si sa che non √® corretto.
+ questo naturalmente render√† i font scalabili non perfetti, quindi fate
  attenzione.
 \end_layout
 
@@ -1565,7 +1581,7 @@ Codifica dei Fonts
 \end_layout
 
 \begin_layout Standard
-Di default, LyX user‡ dei font per scrivere un testo Western European, inclusi
+Di default, LyX user√† dei font per scrivere un testo Western European, inclusi
  tutti i tipi di inglese.
  Viene definito attraverso il cosiddetto 
 \emph on
@@ -1585,10 +1601,7 @@ encoding
 \backslash
 screen_font_encoding
 \family default
-\emph toggle
- 
-\emph default
-.Questo richiede che siano installati speciali fonts.
+ .Questo richiede che siano installati speciali fonts.
  Potete usare 
 \family typewriter
 xfontsel
@@ -1611,7 +1624,7 @@ encdng
 
  per valori ISO-8859-X diversi da ISO-8859-1, e quindi cercate quello che
  contiene i caratteri della lingua prescelta.
- Se non lo trovate Ë ancora possibile definirlo nel file 
+ Se non lo trovate √® ancora possibile definirlo nel file 
 \family typewriter
 lyxrc
 \family default
@@ -1627,13 +1640,13 @@ Table\InsetSpace ~
 of\InsetSpace ~
 Contents
 \family default
- non sar‡ comprensibile fino a quando non dite a LyX di usare un font differente.
- Di default, il menu font Ë settato su 
+ non sar√† comprensibile fino a quando non dite a LyX di usare un font differente.
+ Di default, il menu font √® settato su 
 \family typewriter
 -*-helvetica-medium-r
 \family default
 \emph toggle
-, ma spesso helvetica non Ë disponibile nella codifica dei font di cui avete
+, ma spesso helvetica non √® disponibile nella codifica dei font di cui avete
  bisogno.
 \end_layout
 
@@ -1644,44 +1657,51 @@ Inoltre potete cambiare questo font con il comando
 \backslash
 screen_font_emenu
 \family default
+ 
 \emph toggle
- .
+.
 \end_layout
 
 \begin_layout Standard
 Come potete vedere, ci sono alcune opzioni che possono essere usate per
  affinare l'aspetto dei vostri fonts.
- Questo non dovrebbe spaventarvi dal maneggiare coi settaggi, poichË dopo
+ Questo non dovrebbe spaventarvi dal maneggiare coi settaggi, poich√® dopo
  tutto, vi augurate di usare molto LyX in futuro.
  E contrariamente ai veri word processors WYSIWYG, dove siete costretti
  ad usare fonts che hanno un aspetto buono sia sul video che sulla carta,
- LyX vi da la possibilit‡ di usare fonts che sono disegnati per essere visti
+ LyX vi da la possibilit√† di usare fonts che sono disegnati per essere visti
  sullo schermo, se siete abbastanza fortunati da averli.
 \end_layout
 
 \begin_layout Standard
 Nella versione di LyX, proveremo a supportare il font renderer 
 \family typewriter
-T1Lib 
+T1Lib
 \family default
+ 
 \emph toggle
-che fornisce un testo con effetto 
+che fornisce un testo con effetto
+\emph default
+ 
 \emph on
-anti-aliased 
+anti-aliased
+\emph default
+ 
 \emph toggle
 .
- Questo significa che ogni glifo Ë costituito da molte ombre colorate piuttosto
+ Questo significa che ogni glifo √® costituito da molte ombre colorate piuttosto
  che da soli due colori, creando un effetto di alta risoluzione.
- Questo non render‡ solo il testo pi˘ leggibile sullo schermo, ma permetter‡
+ Questo non render√† solo il testo pi√π leggibile sullo schermo, ma permetter√†
  anche a LyX di avvicinare i fonts visti sullo scermo a quelli che verranno
- stampati, dato che sar‡ ad esempio possibile settare un valore di 14.4 punti
- al contrario di ora che Ë possibile solo scegliere il valore arrotondato
+ stampati, dato che sar√† ad esempio possibile settare un valore di 14.4 punti
+ al contrario di ora che √® possibile solo scegliere il valore arrotondato
  14.
 \end_layout
 
 \begin_layout Section
 Bindings
-\begin_inset LatexCommand \label{sec:bindings}
+\begin_inset LatexCommand label
+name "sec:bindings"
 
 \end_inset
 
@@ -1719,19 +1739,19 @@ Sto scherzando, ovviamente!
 Se, tuttavia, volete personalizzare le associazioni secondo i vostri specifici
  gusti, allora copiate il file della directory 
 \family typewriter
-LyXDir/bind/ 
+LyXDir/bind/
 \family default
-che meglio si adatta nella vostra 
+ che meglio si adatta nella vostra 
 \family typewriter
-UserDir/bind/ 
+UserDir/bind/
 \family default
-e modificatelo.
+ e modificatelo.
  Non dimenticate di caricare questo nuovo file in LyX attraverso il menu
  
 \family sans
-Preferences 
+Preferences
 \family default
-(per il momento dovete riavviare LyX per rendere effettivi i cambiamenti).
+ (per il momento dovete riavviare LyX per rendere effettivi i cambiamenti).
 \end_layout
 
 \begin_layout Standard
@@ -1741,7 +1761,8 @@ LyX supporta l'internazionalizzazione dell'interfaccia utente (vedere il
 \emph on
 \InsetSpace ~
 
-\begin_inset LatexCommand \ref{chap:i18n}
+\begin_inset LatexCommand ref
+reference "chap:i18n"
 
 \end_inset
 
@@ -1752,27 +1773,31 @@ LyX supporta l'internazionalizzazione dell'interfaccia utente (vedere il
  Se il vostro 
 \emph on
 locale
+\emph default
+ 
 \shape italic
- viene settato con la variabile d'ambiente 
-\family typewriter
+\emph on
+viene settato con la variabile d'ambiente
 \shape default
 \emph default
+ 
+\family typewriter
 $LANG
 \family default
-, LyX prover‡ ad usare i bindfile preponendo 
+, LyX prover√† ad usare i bindfile preponendo 
 \family typewriter
-$LANG_ 
+$LANG_
 \family default
-al loro nome.
+ al loro nome.
  Ad esempio, potete mettere una copia tradotta di alcuni bindfile nella
  vostra directory 
 \family typewriter
 bind/
 \family default
-personale e LyX li user‡ automaticamente.
+personale e LyX li user√† automaticamente.
  [
 \emph on
-Nota dell'autore: non sono sicuro se Ë ancora vero ma forse qualcuno che
+Nota dell'autore: non sono sicuro se √® ancora vero ma forse qualcuno che
  utilizza questo metodo potrebbe testarlo---AL
 \emph default
 ].
@@ -1783,7 +1808,7 @@ La sintassi dei files
 \family typewriter
 .bind
 \family default
- Ë la seguente:
+ √® la seguente:
 \end_layout
 
 \begin_layout Standard
@@ -1812,7 +1837,8 @@ Guida di Riferimento.
 
 \begin_layout Section
 User Interface
-\begin_inset LatexCommand \label{sec:ui}
+\begin_inset LatexCommand label
+name "sec:ui"
 
 \end_inset
 
@@ -1820,7 +1846,7 @@ User Interface
 \end_layout
 
 \begin_layout Standard
-L'aspetto del menu e della toolbar puÚ essere cambiato attraverso il menu
+L'aspetto del menu e della toolbar pu√≤ essere cambiato attraverso il menu
  
 \family sans
 Preferences
@@ -1851,9 +1877,9 @@ UserDir/ui/
 \begin_layout Standard
 La sintassi dei files 
 \family typewriter
-.ui 
+.ui
 \family default
-Ë la seguente: date uno sguardo a 
+ √® la seguente: date uno sguardo a 
 \family typewriter
 default.ui
 \family default
@@ -1935,17 +1961,17 @@ Una conversione diretta, da LaTeX a PDF usando pdflatex
 \end_layout
 
 \begin_layout Enumerate
-Una via pi˘ contorta attraverso formati e convertitori intermedi: LaTeX
- a DVI (usando latex) a PostScriptÆ (usando dvips) a PDF (usando ps2pdf)
+Una via pi√π contorta attraverso formati e convertitori intermedi: LaTeX
+ a DVI (usando latex) a PostScript¬Æ (usando dvips) a PDF (usando ps2pdf)
 \end_layout
 
 \begin_layout Standard
-LyX sceglier‡ sempre la via pi˘ veloce, cosÏ dovrete specificare due differenti
+LyX sceglier√† sempre la via pi√π veloce, cos√¨ dovrete specificare due differenti
  nomi di Format per i files 
 \family typewriter
-.pdf 
+.pdf
 \family default
-per poterli usare entrambi.
+ per poterli usare entrambi.
  Entrambi sono inclusi di default nel menu 
 \family sans
 Preferences
@@ -1955,12 +1981,12 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-Inoltre, ogni Format puÚ essere visto con un Viewer associato ad esso.
+Inoltre, ogni Format pu√≤ essere visto con un Viewer associato ad esso.
  Ad esempio, potreste voler usare 
 \family typewriter
 ghostview
 \family default
- per esaminare i files PostScriptÆ.
+ per esaminare i files PostScript¬Æ.
 \end_layout
 
 \begin_layout Standard
@@ -1968,9 +1994,9 @@ ghostview
 \emph on
 Nota dell'autore: Questa sezione probabilmente ha bisogno di essere espansa,
  ma sostituisce completamente la prossima.
- In pi˘, non sono sicuro di quanto importanti siano ancora le sezioni Stampante
+ In pi√π, non sono sicuro di quanto importanti siano ancora le sezioni Stampante
  e Cambiare Colori.
- La sezione Ascii-Export Ë ancora importante, sebbene ha bisogno di essere
+ La sezione Ascii-Export √® ancora importante, sebbene ha bisogno di essere
  usata per differenziare l'approccio lyxrc da quello del menu Preference.
  --- AL
 \emph default
@@ -1982,8 +2008,8 @@ Anteprima sullo schermo
 \end_layout
 
 \begin_layout Standard
-Oltre alla normale visualizzazione dei documenti attraverso LyX, Ë possibile
- avere un'anteprima del vostro documento nella forma in cui apparir‡ sulla
+Oltre alla normale visualizzazione dei documenti attraverso LyX, √® possibile
+ avere un'anteprima del vostro documento nella forma in cui apparir√† sulla
  carta dopo stampato.
  Di default LyX usa 
 \family typewriter
@@ -1997,7 +2023,7 @@ dvi
 \end_layout
 
 \begin_layout Standard
-LyX puÚ anche usare 
+LyX pu√≤ anche usare 
 \family typewriter
 dvips
 \family default
@@ -2054,9 +2080,9 @@ xdvi
 view_ps_command
 \family default
 \series default
- Permette di rimpiazzare
+ Permette di rimpiazzare 
 \family typewriter
- ghostview
+ghostview
 \family default
  con il vostro Post
 \begin_inset ERT
@@ -2071,9 +2097,9 @@ status collapsed
 
 \end_inset
 
-Script previewer preferito, oppure per passare argomenti a
+Script previewer preferito, oppure per passare argomenti a 
 \family typewriter
- ghostview
+ghostview
 \family default
 .
 \end_layout
@@ -2088,8 +2114,8 @@ view_pspic_command
 \family default
 \series default
  Definisce il programma usato per ottenere anteprime a tutto schermo delle
- figure PostScriptÆ.
- Non Ë possibile includere alcuna opzione in questo tipo di settaggio.
+ figure PostScript¬Æ.
+ Non √® possibile includere alcuna opzione in questo tipo di settaggio.
 \end_layout
 
 \begin_layout Description
@@ -2103,9 +2129,9 @@ ps_command
 \series default
  Definisce il programma per usare le figure PostScript all'interno di un
  documento LyX.
- Non Ë possibile includere nessuna opzione.
- Se viene definita una stringa vuota (""), LyX non processer‡ nessuna figura.
- Questo puÚ essere utile se avete una macchina lenta e lavorate con molte
+ Non √® possibile includere nessuna opzione.
+ Se viene definita una stringa vuota (""), LyX non processer√† nessuna figura.
+ Questo pu√≤ essere utile se avete una macchina lenta e lavorate con molte
  figure.
 \end_layout
 
@@ -2119,8 +2145,8 @@ default_papersize
 \family default
 \series default
  Setta la grandezza della carta usata da LyX per fare l'anteprima dei documenti.
- Il valore di default Ë la carta USletter.
- Se LaTeX Ë configurato per usare una differente grandezza di default, potrete
+ Il valore di default √® la carta USletter.
+ Se LaTeX √® configurato per usare una differente grandezza di default, potrete
  cambiare questo settaggio.
 \end_layout
 
@@ -2139,7 +2165,7 @@ ripulire
 
  i files di testo esportati in ASCII.
  Notate che LyX automaticamente riconosce ed usa il miglior settaggio per
- il vostro sistema sin dalla fase di installazione, ma Ë possibile modificarli
+ il vostro sistema sin dalla fase di installazione, ma √® possibile modificarli
  se non vi piacciono.
 \end_layout
 
@@ -2173,7 +2199,7 @@ plaintext_linelen
  Con questo comando potete settare la lunghezza di default della riga dell'outpu
 t di un file ASCII.
  Settarlo a 0 significa righe infinite.
- Il Default Ë 75 caratteri.
+ Il Default √® 75 caratteri.
 \end_layout
 
 \begin_layout Standard
@@ -2257,7 +2283,7 @@ print_command
 print_evenpage_flag
 \family default
 \series default
- Questo valore definisce quale flag del comando di stampa comporter‡ la
+ Questo valore definisce quale flag del comando di stampa comporter√† la
  stampa delle sole pagine pari.
 \end_layout
 
@@ -2270,7 +2296,7 @@ print_evenpage_flag
 print_oddpage_flag
 \family default
 \series default
- Questo valore definisce quale flag del comando di stampa si occuper‡ di
+ Questo valore definisce quale flag del comando di stampa si occuper√† di
  stampare solo le pagine dispari.
 \end_layout
 
@@ -2283,7 +2309,7 @@ print_oddpage_flag
 print_reverse_flag
 \family default
 \series default
- Con questo comando, potete definire quale comando di stampa si occuper‡
+ Con questo comando, potete definire quale comando di stampa si occuper√†
  di stampare le pagine in ordine inverso.
  
 \end_layout
@@ -2297,9 +2323,9 @@ print_reverse_flag
 print_landscape_flag
 \family default
 \series default
- Questo comando definisce quale flag Ë settata quando si richiede di stampare
+ Questo comando definisce quale flag √® settata quando si richiede di stampare
  il proprio documento in landscape.
- se il documento Ë stampato in portrait, nessuna opzione Ë passata.
+ se il documento √® stampato in portrait, nessuna opzione √® passata.
 \end_layout
 
 \begin_layout Description
@@ -2328,7 +2354,7 @@ print_to_file
 \series default
  Se volete stampare su un file, dovrete utilizzare un flag prima del nome
  del file.
- Questo comando vi permette di definire come apparir‡ questo flag.
+ Questo comando vi permette di definire come apparir√† questo flag.
 \end_layout
 
 \begin_layout Description
@@ -2341,7 +2367,7 @@ print_file_extension
 \family default
 \series default
  Quando stampate su un file, con questo comando potete definire quale estensione
- potr‡ avere il file stampato.
+ potr√† avere il file stampato.
 \end_layout
 
 \begin_layout Description
@@ -2366,10 +2392,10 @@ print_extra_options
 print_spool_cmd
 \family default
 \series default
- Se si specifica qualcosa in questo comando, LyX stamper‡ in due fasi: Prima
- sar‡ eseguito il programma specificato nel comando
+ Se si specifica qualcosa in questo comando, LyX stamper√† in due fasi: Prima
+ sar√† eseguito il programma specificato nel comando 
 \family typewriter
- 
+
 \backslash
 print_command
 \family default
@@ -2380,7 +2406,7 @@ print_command
 \backslash
 print_spool_cmd
 \family default
- sar‡ eseguito col file di uotput col precedente comando sulla riga di comando,
+ sar√† eseguito col file di uotput col precedente comando sulla riga di comando,
  e, se specificato, la direttiva (
 \family typewriter
 
@@ -2415,7 +2441,7 @@ set-color
 Guida di Riferimento
 \emph default
 ).
- L'input avr‡ il seguente formato:
+ L'input avr√† il seguente formato:
 \end_layout
 
 \begin_layout Standard
@@ -2425,7 +2451,7 @@ set-color LyXName X11Color
 \end_layout
 
 \begin_layout Standard
-Di seguito Ë presentata una lista (parziale) delle funzioni e dei colori
+Di seguito √® presentata una lista (parziale) delle funzioni e dei colori
  di default:
 \end_layout
 
@@ -2791,14 +2817,14 @@ come la mia macchina da ufficio -- Dave johnson
 \end_inset
 
  hanno ancora la versione 2.09 di LaTeX.
- Sebbene non possiamo immaginare perchË questo dovrebbe essere ancora il
+ Sebbene non possiamo immaginare perch√® questo dovrebbe essere ancora il
  default dato che la versione 2.09, essendo questa obsoleta dal 1994, dovremo
  comunque continuare a riferirci con LyX a tale ambiente.
  Non bisogna 
 \emph on
 pensare
 \emph default
- perÚ ad un 
+ per√≤ ad un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2807,7 +2833,7 @@ fixing
 \end_inset
 
  di LyX per girare sotto LaTeX 2.09.
- Aggiornare il vostro LaTeX sar‡ pi˘ facile, ed Ë comunque la soluzione
+ Aggiornare il vostro LaTeX sar√† pi√π facile, ed √® comunque la soluzione
  migliore.
  Molti grandi sistemi dovrebbero avere, anche se di default hanno la 2.09,
  una versione disponibile di LaTeX2, ma forse l'eseguibile potrebbe avere
@@ -2854,8 +2880,8 @@ nel vostro file
 lyxrc
 \family default
 .
- Al momento dell'installazione, LyX prover‡ a rilevare automaticamente se
- questo settaggio Ë necessario, quindi normalmente, non ve ne dovrete preoccupar
+ Al momento dell'installazione, LyX prover√† a rilevare automaticamente se
+ questo settaggio √® necessario, quindi normalmente, non ve ne dovrete preoccupar
 e.
 \end_layout
 
@@ -2864,7 +2890,8 @@ I settaggi autorilevati
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:autodetected}
+\begin_inset LatexCommand label
+name "sec:autodetected"
 
 \end_inset
 
@@ -2880,11 +2907,8 @@ R
 \bar default
 econfigure.
 
-\bar under
- 
 \family default
-\bar default
-In questa sezione elencheremo quelle che si riferiscono a 
+ In questa sezione elencheremo quelle che si riferiscono a 
 \family typewriter
 lyxrc
 \family default
@@ -2902,7 +2926,7 @@ niente
 \end_inset
 
  se non viene stato trovato il comando opportuno.
- In questo caso, la corrispondente funzione non Ë disponibile.
+ In questo caso, la corrispondente funzione non √® disponibile.
 \end_layout
 
 \begin_layout Description
@@ -2914,7 +2938,7 @@ niente
 latex_command
 \family default
 \series default
- Ë settato su un processore LaTeX2e valido (programmi testati sono 
+ √® settato su un processore LaTeX2e valido (programmi testati sono 
 \family typewriter
 latex
 \family default
@@ -2934,9 +2958,9 @@ latex2e
 ps_command
 \family default
 \series default
- Ë settato su
+ √® settato su 
 \family typewriter
- gs
+gs
 \family default
  se avete Ghostscript installato.
 \end_layout
@@ -2950,7 +2974,7 @@ ps_command
 view_ps_command
 \family default
 \series default
- Ë settato su 
+ √® settato su 
 \family typewriter
 gv
 \family default
@@ -2964,7 +2988,7 @@ ghostview
 \backslash
 view_pspic_command
 \family default
- Ë settato per usare lo stesso programma).
+ √® settato per usare lo stesso programma).
 \end_layout
 
 \begin_layout Description
@@ -3000,11 +3024,11 @@ tbl
 chktex_command
 \family default
 \series default
- Ë settato su 
+ √® settato su 
 \family typewriter
 chktex
 \family default
- con in pi˘ una serie di opzioni.
+ con in pi√π una serie di opzioni.
 \end_layout
 
 \begin_layout Description
@@ -3016,14 +3040,14 @@ chktex
 fax_command
 \family default
 \series default
- Ë settato su 
+ √® settato su 
 \family typewriter
 fax\InsetSpace ~
-send 
+send
 \family default
-o
+ o 
 \family typewriter
- sendfax
+sendfax
 \family default
 , che dipende da che packetto fax e stato trovato.
  Le necessarie opzioni del commando vengono anche aggiunti.
@@ -3058,9 +3082,9 @@ lpr
 print_spool_printerprefix
 \family default
 \series default
- viene settato a
+ viene settato a 
 \family typewriter
- -d o su -p
+-d o su -p
 \family default
  a seconda della presenza di 
 \family typewriter
@@ -3082,7 +3106,7 @@ lpr
 font_encoding
 \family default
 \series default
- Ë settato su 
+ √® settato su 
 \family typewriter
 T1
 \family default
@@ -3109,18 +3133,18 @@ Ci sono molti altri comandi
 lyxrc
 \family default
  che possono essere usati per personalizzare il comportamento di LyX.
- Abbiamo attualmente ancora necessit‡ di documentarli in questa sede, ma
+ Abbiamo attualmente ancora necessit√† di documentarli in questa sede, ma
  ancora, il file 
 \family typewriter
 lyxrc.example
 \family default
- Ë riccamente commentato, cosÏ consigliamo di dare un'occhiata per avere
+ √® riccamente commentato, cos√¨ consigliamo di dare un'occhiata per avere
  un'idea di quello che potete personalizzare.
  Potete infine tentare la fortuna nella 
 \emph on
 Guida di RIferimento,
 \emph default
- ma non ci sono garanzie dato che Ë molto difficile tenerla aggiornata.
+ ma non ci sono garanzie dato che √® molto difficile tenerla aggiornata.
 \end_layout
 
 \begin_layout Chapter
@@ -3132,7 +3156,7 @@ Introduzione
 \end_layout
 
 \begin_layout Standard
-Il server LyX Ë un metodo implementato in LyX che abilita altri programmi
+Il server LyX √® un metodo implementato in LyX che abilita altri programmi
  a parlare con LyX, a chiamare comandi LyX e ad ottenere informazioni sullo
  stato interno di LyX.
  E' uno strumento principalmente indirizzato ad utenti esperti, che dovrebbero
@@ -3180,7 +3204,7 @@ Il server LyX lavora attraverso l'uso di un paio di canali.
 .lyxpipe.out
 \family default
 .
- L'inizio di questi canali puÚ essere specificato nel file 
+ L'inizio di questi canali pu√≤ essere specificato nel file 
 \family typewriter
 lyxrc
 \family default
@@ -3194,7 +3218,7 @@ serverpipe "/home/myhome/.lyxpipe"
 \end_layout
 
 \begin_layout Standard
-LyX aggiunger‡ '
+LyX aggiunger√† '
 \family typewriter
 .in
 \family default
@@ -3204,8 +3228,8 @@ LyX aggiunger‡ '
 \family default
 ' per creare i canali.
  La precedente riga ha inoltre l'effetto di attivare il server LyX.
- se uno dei canali gi‡ esiste, LyX assumer‡ che c'Ë un altro processo LyX
- in esecuzione e non lascer‡ partire il server.
+ se uno dei canali gi√† esiste, LyX assumer√† che c'√® un altro processo LyX
+ in esecuzione e non lascer√† partire il server.
  Per avere molti processi LyX con rispettivi servers in contemporanea, dovete
  cambiare il 
 \family typewriter
@@ -3216,16 +3240,16 @@ lyxrc
 
 \begin_layout Standard
 Se state sviluppando un programma client, potreste trovare utile abilitare
- una modalit‡ di debugging dal server LyX.
+ una modalit√† di debugging dal server LyX.
  Potete farlo facendo partire LyX con 
 \family typewriter
 lyx -dbg 8192.
 \end_layout
 
 \begin_layout Standard
-Attenzione: se LyX va in crash, non puÚ gestire la rimozione dei canali,
- e quindi bisogner‡ farlo manualmente.
- Se LyX parte e i canali sono gi‡ esistenti, non far‡ partire alcun server.
+Attenzione: se LyX va in crash, non pu√≤ gestire la rimozione dei canali,
+ e quindi bisogner√† farlo manualmente.
+ Se LyX parte e i canali sono gi√† esistenti, non far√† partire alcun server.
 \end_layout
 
 \begin_layout Standard
@@ -3266,9 +3290,9 @@ In questo caso
 \emph on
 clientname
 \emph default
- Ë un nome che il client puÚ scegliere arbitrariamente.
- Il suo unico uso Ë che LyX gli risponder‡ se questi manda una risposta
- - cosÏ un client puÚ mandare risultati da differenti richiedenti.
+ √® un nome che il client pu√≤ scegliere arbitrariamente.
+ Il suo unico uso √® che LyX gli risponder√† se questi manda una risposta
+ - cos√¨ un client pu√≤ mandare risultati da differenti richiedenti.
 \end_layout
 
 \begin_layout Standard
@@ -3276,7 +3300,7 @@ clientname
 \emph on
 function
 \emph default
- Ë la funzione che volete che LyX esegua.
+ √® la funzione che volete che LyX esegua.
  E' lo stesso dei comandi che dovreste usare in minibuffer.
 \end_layout
 
@@ -3285,7 +3309,7 @@ function
 \emph on
 argument
 \emph default
- Ë un argomento opzionale rilevante solo per alcune funzioni ( ad esempio
+ √® un argomento opzionale rilevante solo per alcune funzioni ( ad esempio
  
 \begin_inset Quotes eld
 \end_inset
@@ -3298,7 +3322,7 @@ auto-inserimento
 \end_layout
 
 \begin_layout Quote
-La risposta da LyX arriver‡ nel canale di output e sar‡ del tipo
+La risposta da LyX arriver√† nel canale di output e sar√† del tipo
 \end_layout
 
 \begin_layout Quote
@@ -3316,9 +3340,9 @@ data
 \end_layout
 
 \begin_layout Standard
-Dove
+Dove 
 \emph on
- clientname
+clientname
 \emph default
  e 
 \emph on
@@ -3328,7 +3352,7 @@ function
 \emph on
 data
 \emph default
- Ë un'informazione pi˘ o meno utile a seconda dell'esecuzione del comando.
+ √® un'informazione pi√π o meno utile a seconda dell'esecuzione del comando.
  Alcuni comandi restituiscono informazioni circa lo stato interno di LyX,
  come il 
 \begin_inset Quotes eld
@@ -3351,7 +3375,7 @@ vuote
 \end_layout
 
 \begin_layout Standard
-In caso di errori, la risposta da LyX avr‡ questa forma
+In caso di errori, la risposta da LyX avr√† questa forma
 \end_layout
 
 \begin_layout Quote
@@ -3373,7 +3397,7 @@ dover l'
 \emph on
 error message
 \emph default
- dovrebbe contenere la spiegazione del perchË il comando Ë fallito.
+ dovrebbe contenere la spiegazione del perch√® il comando √® fallito.
 \end_layout
 
 \begin_layout Standard
@@ -3397,8 +3421,8 @@ Notifica
 \end_layout
 
 \begin_layout Standard
-LyX puÚ notificare ai clients gli eventi asincroni.
- Correntemente lo far‡ soltanto se l'utente assegna una sequenza di tasti
+LyX pu√≤ notificare ai clients gli eventi asincroni.
+ Correntemente lo far√† soltanto se l'utente assegna una sequenza di tasti
  alla funzione 
 \begin_inset Quotes eld
 \end_inset
@@ -3411,7 +3435,7 @@ notifica
 \end_layout
 
 \begin_layout Standard
-Il formato della stringa che LyX manda Ë:
+Il formato della stringa che LyX manda √®:
 \end_layout
 
 \begin_layout Quote
@@ -3428,11 +3452,11 @@ dove
 \emph on
 key-sequence
 \emph default
- Ë la rappresentazione stampata della sequenza di tasti premuta dall'utente.
+ √® la rappresentazione stampata della sequenza di tasti premuta dall'utente.
 \end_layout
 
 \begin_layout Standard
-Questo meccanismo puÚ essere usato per estendere il set di comandi LyX ed
+Questo meccanismo pu√≤ essere usato per estendere il set di comandi LyX ed
  implementare macro: assegnare una sequenza di tasti a 
 \begin_inset Quotes eld
 \end_inset
@@ -3442,7 +3466,7 @@ notifica
 \end_inset
 
 , lanciare un client che ascolta sul canale d'uscita, fornisce il comando
- relativo alla sequenza e inizia una funzione che puÚ usare le chiamate
+ relativo alla sequenza e inizia una funzione che pu√≤ usare le chiamate
  e le richieste di LyX per assegnare un comando o una serie di comandi a
  LyX.
 \end_layout
@@ -3452,7 +3476,7 @@ Il Protocollo Server LyX semplice
 \end_layout
 
 \begin_layout Standard
-Lyx implementa un semplice protocollo che puÚ essere usato per la gestione
+Lyx implementa un semplice protocollo che pu√≤ essere usato per la gestione
  delle sessioni.
  Tutti i messaggi sono della forma:
 \end_layout
@@ -3472,7 +3496,7 @@ dove
 \emph on
 protocol message
 \emph default
- puÚ essere 
+ pu√≤ essere 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3497,7 +3521,7 @@ hello
 \begin_inset Quotes erd
 \end_inset
 
- Ë ricevuto da un client, LyX ritorner‡ indietro per informare il client
+ √® ricevuto da un client, LyX ritorner√† indietro per informare il client
  che sta ascoltando il suo messaggio, mentre 
 \begin_inset Quotes eld
 \end_inset
@@ -3511,7 +3535,8 @@ bye
 
 \begin_layout Chapter
 Internazionalizzare LyX
-\begin_inset LatexCommand \label{chap:i18n}
+\begin_inset LatexCommand label
+name "chap:i18n"
 
 \end_inset
 
@@ -3522,7 +3547,7 @@ Internazionalizzare LyX
 LyX supporta l'uso di interfacce tradotte.
  L'ultima volta che abbiamo controllato, LyX forniva testi in 14 linguaggi
  diversi oltre l'inglese di base.
- Il linguaggio scelto Ë definito linguaggio 
+ Il linguaggio scelto √® definito linguaggio 
 \emph on
 locale
 \emph default
@@ -3537,7 +3562,7 @@ Notate che queste traduzioni funzionano, ma contengono alcuni difetti.
  In particolare, tutti i menu di pop-up sono stati progettati in inglese,
  questo significa che alcune traduzioni potrebbero essere troppo grandi
  rispetto allo spazio ad esse assegnate in fase di progettazione.
- Questo Ë solo un problema di visualizzazione che non causa molti problemi.
+ Questo √® solo un problema di visualizzazione che non causa molti problemi.
  Inoltre, potrete notare che che molte delle traduzioni non definiscono
  le scorciatoie per tutto.
  A volte , molto semplicemente, non ci sono abbastanza lettere disponibili.
@@ -3551,8 +3576,8 @@ Selezionare un linguaggio alternativo per l'interfaccia utente
 \end_layout
 
 \begin_layout Standard
-Questa possibilit‡ Ë disabilitata di default, ciÚ significa che il testo
- sar‡ in inglese.
+Questa possibilit√† √® disabilitata di default, ci√≤ significa che il testo
+ sar√† in inglese.
  Per abilitare un linguaggio alternativo bisogna settare la variabile ambientale
  appropriata.
  Usate 
@@ -3573,7 +3598,7 @@ xx
 \family typewriter
 no
 \family default
- Ë Norvegiese.
+ √® Norvegiese.
 \end_layout
 
 \begin_layout Standard
@@ -3586,7 +3611,7 @@ Evidenetemente vorrete mettere la linea appropriata in
 ~/.xinitrc
 \family default
  in modo che la traduzione sia attivata di default.
- Ricordate che se LyX Ë configurato e compilato con 
+ Ricordate che se LyX √® configurato e compilato con 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3598,7 +3623,7 @@ Evidenetemente vorrete mettere la linea appropriata in
 \begin_inset Quotes erd
 \end_inset
 
-,questo non funzioner‡.
+,questo non funzioner√†.
 \end_layout
 
 \begin_layout Section
@@ -3622,27 +3647,27 @@ begin{sloppypar}
 \end_layout
 
 \begin_layout Standard
-Una causa principale di inconsistenza nelle versioni tradotte di LyX Ë il
+Una causa principale di inconsistenza nelle versioni tradotte di LyX √® il
  fatto che tutte le scorciatoie da tastiera per le funzioni del menu sono
  basate sulla versione inglese del testo Ad esempio, l'entrata nel menu
  
 \family sans
-M-f t 
+M-f t
 \family default
-aprir‡ il popup nuovo-file-da-template.
- Questo Ë semplice da cambiare, come tutte le scorciatoie delle operazioni
+ aprir√† il popup nuovo-file-da-template.
+ Questo √® semplice da cambiare, come tutte le scorciatoie delle operazioni
  del menu definite nel file unico 
 \family typewriter
 LyXDir/bind/menus.bind
 \family default
 .
- Ogni utente puÚ avere la propria copia di questo file nella propria directory
+ Ogni utente pu√≤ avere la propria copia di questo file nella propria directory
  privata 
 \family typewriter
 ~/.lyx/bind
 \family default
-, che avr‡ precedenza rispetto agli altri file di sistema.
- In questa copia privata ognugno puÚ facilmente cambiare le definizioni,
+, che avr√† precedenza rispetto agli altri file di sistema.
+ In questa copia privata ognugno pu√≤ facilmente cambiare le definizioni,
  ad esempio per la versione tedesca avremo 
 \family sans
 M-f t
@@ -3661,23 +3686,23 @@ Vorlage).
 \family typewriter
 menus.bind
 \family default
- si possono trovare in
-\family sans
- 
+ si possono trovare in 
 \family typewriter
 LyXDir/bind/
 \series bold
 xx
 \series default
 _menus.bind
+\family default
+ 
 \family sans
- (
+(
 \family default
 \series bold
 xx
 \series default
- Ë il codice del linguaggio).
- Questi, se esistono (e se il vostro settaggio locale Ë 
+ √® il codice del linguaggio).
+ Questi, se esistono (e se il vostro settaggio locale √® 
 \family typewriter
 $LANG=
 \series bold
@@ -3710,7 +3735,7 @@ Dovete fare attenzione a che le nuove definizioni per le scorciatoie non
 \family sans
 M-d v
 \family default
- generer‡ un errore per quelli che usano 
+ generer√† un errore per quelli che usano 
 \family typewriter
 (x)emacs.bind
 \family default
@@ -3718,7 +3743,7 @@ M-d v
 \family sans
 M-d
 \family default
- Ë unito a 
+ √® unito a 
 \family typewriter
 word-delete-forward
 \family default
@@ -3760,9 +3785,9 @@ accia.
  Per far parlare a LyX il vostro linguaggio preferito in tutti i menu e
  le caselle di diagolo, avete bisogno di un po-file per quel determinato
  linguaggio.
- Quando questo Ë reperibile, dovrete creare da questi un mo-file ed installarlo.
+ Quando questo √® reperibile, dovrete creare da questi un mo-file ed installarlo.
  Tutti i passaggi necessari ad eseguire questa operazione sono spiegati
- nella documentazione di GNU gettext, ma, in breve, questo Ë quello che
+ nella documentazione di GNU gettext, ma, in breve, questo √® quello che
  dovete fare (
 \series bold
 xx
@@ -3802,9 +3827,9 @@ xx
 \family typewriter
 lyx.pot
 \family default
- non esiste, puÚ essere rifatto con
+ non esiste, pu√≤ essere rifatto con 
 \family typewriter
- make lyx.pot
+make lyx.pot
 \family default
  in quella directory, oppure potete usare un po-file esistente per altri
  linguaggi come se fosse un template).
@@ -3839,7 +3864,7 @@ Raccomandiamo di usare Emacs per fare questo, dato che la distribuzione
 xx
 \series default
 .
- C'Ë uno strumento chiamato 
+ C'√® uno strumento chiamato 
 \family typewriter
 scgen.pl
 \family default
@@ -3847,8 +3872,8 @@ scgen.pl
 \family typewriter
 LYX-SOURCE-DIR/development/tools/
 \family default
- che puÚ essere utile per creare determinate scorciatoie.
- Notate che XForms (almeno la versione 0.86) non puÚ manipolare altro che
+ che pu√≤ essere utile per creare determinate scorciatoie.
+ Notate che XForms (almeno la versione 0.86) non pu√≤ manipolare altro che
  scorciatoie di caratteri di 7 bit.
  Dovreste inoltre aggiungere delle informazioni all'inizio del nuovo file
  po come il vostro indirizzo email ecc, cosi gli altri sanno dove possono
@@ -3864,18 +3889,20 @@ xx
 .mo
 \family default
 .
- Questo puÚ essere fatto con
+ Questo pu√≤ essere fatto con
 \newline
 
 \family typewriter
-msgfmt -o 
+msgfmt -o
 \family default
+ 
 \series bold
 xx
 \family typewriter
 \series default
-.mo < 
+.mo <
 \family default
+ 
 \series bold
 xx
 \family typewriter
@@ -3889,9 +3916,9 @@ Copiare ilfile mo nella vostra directory locale, precisamente nella dirctory
 \series bold
 xx
 \series default
-, e, sotto il nome
+, e, sotto il nome 
 \family typewriter
- lyx.mo
+lyx.mo
 \family default
 
 \newline
@@ -3956,23 +3983,23 @@ Tradurre la documentazione.
 \begin_layout Standard
 La documentazione online (nel menu 
 \family sans
-Help) 
+Help)
 \family default
-puÚ (e dovrebbe!) essere tradotto.
+ pu√≤ (e dovrebbe!) essere tradotto.
  Se ci sono versioni tradotte della documentazione disponibile
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 Ad Aprile 1999, quasi tutti i documenti sono stati tradotti in tedesco.
- Il tutorial Ë stato tradotto in francese, polacco, portoghese e svedese,
+ Il tutorial √® stato tradotto in francese, polacco, portoghese e svedese,
  con altre traduzioni in corso.
  La libreria dei documenti tradotti cresce rapidamente.
 \end_layout
 
 \end_inset
 
-, e il locale Ë adeguatamente settato, queste saranno usate automaticamente
+, e il locale √® adeguatamente settato, queste saranno usate automaticamente
  da LyX.
  LyX cerca di tradurre le versioni come 
 \family typewriter
@@ -3993,7 +4020,7 @@ xx
 $LANG
 \family default
 .
- Se non c'Ë nulla, sar‡ mostrato il linguaggio di default ovvero l'inglese.
+ Se non c'√® nulla, sar√† mostrato il linguaggio di default ovvero l'inglese.
  Notate che le versioni tradotte devono avere gli stessi nomi dei files
  come gli originali (
 \family typewriter
@@ -4015,16 +4042,18 @@ DocStyle.lyx
 
 \begin_layout Itemize
 Controllare la pagina web delle traduzioni 
-\begin_inset LatexCommand \url[The LyX Developer's Web Site]{http://www.devel.lyx.org}
+\begin_inset LatexCommand url
+name "The LyX Developer's Web Site"
+target "http://www.devel.lyx.org"
 
 \end_inset
 
 .
  In questo modo potete trovare (se ce ne sono) i documenti tradotti e quelli
  da tradurre.
- Inoltre troverete un responsabile organizzatore (se c'Ë) che vi aiutera
+ Inoltre troverete un responsabile organizzatore (se c'√®) che vi aiutera
  nella vostra opera.
- Se non c'Ë un organizzatore fateci sapere se siete interessati.
+ Se non c'√® un organizzatore fateci sapere se siete interessati.
 \end_layout
 
 \begin_layout Standard
@@ -4043,7 +4072,10 @@ Help\SpecialChar \-
  paese.
  Inventare una vostra propria terminologia potrebbe solo creare confusione
  al lettore.
+
+\family default
  
+\family sans
 \emph on
 (
 \family default
@@ -4054,11 +4086,11 @@ Attenzione! La tipografia da assuefazione!
 
 \begin_layout Itemize
 Fate una copia del documento.
- Questo sar‡ la vostra copia di lavoro.
+ Questo sar√† la vostra copia di lavoro.
  Potrete inoltre usarla come vostra copia personale tradotta mettendola
- nella vostra directory
+ nella vostra directory 
 \family typewriter
- ~/.lyx/doc/
+~/.lyx/doc/
 \family default
 .
 \end_layout
@@ -4095,7 +4127,7 @@ Supporto Tastiere Internazionali
 \begin_layout Standard
 
 \emph on
-Nota dell'editore: la seguente sezione Ë a cura di Ivan Schreter.
+Nota dell'editore: la seguente sezione √® a cura di Ivan Schreter.
  Necessita di essere corretta in relazione al nuovo Documentation Style
  ed al fine di utilizzare le caratteristiche della versione 1.0.
  Il tutto va inoltre unito con le sezioni successive.-jw
@@ -4106,7 +4138,7 @@ Definire una propria Mappa della Tastiera: Formato File Keymap
 \end_layout
 
 \begin_layout Standard
-Diamo uno sguardo al file di definizione della tastiera pi˘ da vicino.
+Diamo uno sguardo al file di definizione della tastiera pi√π da vicino.
  E' un file di testo ASCII che definisce
 \end_layout
 
@@ -4134,14 +4166,12 @@ Per definire una traduzione tasto a tasto o tasto a stringa, usare questo
 \backslash
 kmap
 \family default
-\emph on
  
 \family typewriter
-\emph default
 key
-\emph on
+\family default
  
-\emph default
+\family typewriter
 outstring
 \end_layout
 
@@ -4150,11 +4180,11 @@ dove
 \family typewriter
 key
 \family default
- Ë il tasto che deve essere tradotto e 
+ √® il tasto che deve essere tradotto e 
 \family typewriter
 outstring
 \family default
- Ë la stringa che deve essere inserita nel documento.
+ √® la stringa che deve essere inserita nel documento.
  P er definire i tasti morti, usare:
 \end_layout
 
@@ -4179,14 +4209,15 @@ dove
 \family typewriter
 key
 \family default
- Ë il tasto della tastiera e
+ √® il tasto della tastiera e 
 \family typewriter
- 
 \emph on
 deadkey
 \family default
+\emph default
+ 
 \emph toggle
- Ë il nome del tasto morto.
+√® il nome del tasto morto.
  Sono supportati i seguenti tasti morti (le scorciatoie sono tra parentesi):
 \end_layout
 
@@ -4201,26 +4232,25 @@ Example
 \begin_layout Quotation
 acute (acu)
 \hfill
-·ÈÌÛ˙
+√°√©√≠√≥√∫
 \end_layout
 
 \begin_layout Quotation
 grave (gra)
 \hfill
-‡ËÏÚ˘
+√†√®√¨√≤√π
 \end_layout
 
 \begin_layout Quotation
 macron (mac)
 \hfill
- \i \={o}
-
+ ≈ç
 \end_layout
 
 \begin_layout Quotation
 tilde (til)
 \hfill
-Ò—
+√±√ë
 \end_layout
 
 \begin_layout Quotation
@@ -4245,7 +4275,7 @@ b o
 \begin_layout Quotation
 cedilla (ced)
 \hfill
-Á«
+√ß√á
 \end_layout
 
 \begin_layout Quotation
@@ -4270,15 +4300,13 @@ d o
 \begin_layout Quotation
 circumflex (circu)
 \hfill
-‚ÍÓÙ˚
+√¢√™√Æ√¥√ª
 \end_layout
 
 \begin_layout Quotation
 circle (circl)
 \hfill
-≈\i \r{u}
-\i \r{U}
-
+√Ö≈Ø≈Æ
 \end_layout
 
 \begin_layout Quotation
@@ -4292,8 +4320,7 @@ t oo
 \begin_layout Quotation
 breve (bre)
 \hfill
-\i \u{a}
-
+ƒÉ
 \begin_inset ERT
 status collapsed
 
@@ -4312,31 +4339,25 @@ u o
 \begin_layout Quotation
 caron (car)
 \hfill
-\i \v{c}
-\i \v{s}
-\i \v{z}
-
+ƒç≈°≈æ
 \end_layout
 
 \begin_layout Quotation
 hungarian umlaut (hug)
 \hfill
-\i \H{o}
-\i \H{u}
-
+≈ë≈±
 \end_layout
 
 \begin_layout Quotation
 umlaut (uml)
 \hfill
-‰ˆ¸
+√§√∂√º
 \end_layout
 
 \begin_layout Quotation
 dot (dot)
 \hfill
-\i \.{z}
-
+≈º
 \begin_inset ERT
 status collapsed
 
@@ -4378,7 +4399,7 @@ caron-o
 \begin_inset Quotes erd
 \end_inset
 
-, verr‡ scritto 
+, verr√† scritto 
 \begin_inset Quotes erd
 \end_inset
 
@@ -4386,7 +4407,7 @@ circumflex-o
 \begin_inset Quotes erd
 \end_inset
 
-, cosÏ dovrete cambiare
+, cos√¨ dovrete cambiare
 \end_layout
 
 \begin_layout Quotation
@@ -4407,11 +4428,11 @@ caron o "
 per farlo funzionare correttamente.
  Inoltre, dovrete definire come eccezione i tasti morti su i e j , per rimuovere
  il punto prima di inserire un accento.
- Lo cambierÚ appena possibile in quanto non ho ancora avuto il tempo.
+ Lo cambier√≤ appena possibile in quanto non ho ancora avuto il tempo.
 \end_layout
 
 \begin_layout Standard
-Circa i caratteri, backslash non Ë presente, quindi per inserirlo avete
+Circa i caratteri, backslash non √® presente, quindi per inserirlo avete
  bisogno del doppio backslash.
  Inoltre virgolette e # hanno differenti significati.
  # segna i commenti, le virgolette iniziano e finiscono i comandi in stile
@@ -4497,7 +4518,8 @@ kinclude
 
 \begin_layout Section
 Materiale sulle tastiere internazionali
-\begin_inset LatexCommand \label{sec:keymap}
+\begin_inset LatexCommand label
+name "sec:keymap"
 
 \end_inset
 
@@ -4564,18 +4586,20 @@ kmap
 \family roman
 \emph on
 char
+\family default
 \emph default
  
+\family roman
 \emph on
 string
 \end_layout
 
 \begin_layout Standard
-Questo mapper‡ 
+Questo mapper√† 
 \emph on
-char 
+char
 \emph default
-in 
+ in 
 \emph on
 string
 \emph default
@@ -4596,15 +4620,15 @@ Un esempio di
 \family sans
 kmap
 \family default
- che serve affinchË il simbolo
+ che serve affinch√® il simbolo 
 \family sans
- / 
+/
 \family default
-venga generato dal tasto
+ venga generato dal tasto 
 \family sans
- & 
+&
 \family default
-Ë:
+ √®:
 \end_layout
 
 \begin_layout LyX-Code
@@ -4625,31 +4649,30 @@ kmod
 \begin_layout LyX-Code
 
 \backslash
-kmod
+kmod 
 \family roman
- 
 \emph on
 char accent allowed
 \end_layout
 
 \begin_layout Standard
-Questo far‡ sÏ che il carattere 
+Questo far√† s√¨ che il carattere 
 \emph on
 char sia accentato sul carattere ammesso
 \emph default
 .
- Questo Ë un meccanismo di tasto morto
+ Questo √® un meccanismo di tasto morto
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 Il termine tasto morto si riferisce ad un tasto che non produce un carattere
- da solo, ma soltanto quando Ë seguito da un altro tasto.
- Ad esempio, si puÚ riprodurre un carattere tedesco con un umlaunt come
-\family roman
+ da solo, ma soltanto quando √® seguito da un altro tasto.
+ Ad esempio, si pu√≤ riprodurre un carattere tedesco con un umlaunt come
  
+\family roman
 \emph on
-‰
+√§
 \emph default
 .
 \end_layout
@@ -4663,25 +4686,28 @@ Il termine tasto morto si riferisce ad un tasto che non produce un carattere
 \begin_layout Standard
 Se premete 
 \emph on
-char 
+char
 \emph default
-e poi una altro tasto non in 
+ e poi una altro tasto non in 
 \emph on
-allowed (non permesso) 
+allowed (non permesso)
 \emph default
-avrete un 
-\emph on
-char 
-\emph default
-seguito da un altro tasto, non abilitato.
- Ricordate che un Backspace cancella un tasto morto, cosÏ se premete 
+ avrete un 
 \emph on
 char
+\emph default
+ seguito da un altro tasto, non abilitato.
+ Ricordate che un Backspace cancella un tasto morto, cos√¨ se premete 
+\emph on
+char
+\emph default
+ 
 \family sans
- Backspace
+\emph on
+Backspace
 \family default
 \emph default
-, il cursore non andr‡ una posizione indietro, bensÏ canceller‡ l'effetto
+, il cursore non andr√† una posizione indietro, bens√¨ canceller√† l'effetto
  che il 
 \emph on
 char
@@ -4690,7 +4716,7 @@ char
 \end_layout
 
 \begin_layout Standard
-Il seguente esempio specifica che il carattere ' dovr‡ essere un accento
+Il seguente esempio specifica che il carattere ' dovr√† essere un accento
  acuto, abilitato sui caratteri a, e, i, o, u, A, E, I, O, e U:
 \end_layout
 
@@ -4708,40 +4734,38 @@ ksmod Specifica un'eccezione al carattere accentato
 \begin_layout LyX-Code
 
 \backslash
-kxmod 
-\family sans
-\emph on
- 
+kxmod  
 \family roman
+\emph on
 accent char result
 \end_layout
 
 \begin_layout Standard
 Questo definisce un'eccezione per l'
 \emph on
-accent 
+accent
 \emph default
-sul 
+ sul 
 \emph on
 char
 \emph default
 .
  L'
 \emph on
-accent 
+accent
 \emph default
-deve essere stato assegnato ad un tasto con una precedente dichiarazione
+ deve essere stato assegnato ad un tasto con una precedente dichiarazione
  
 \family typewriter
 
 \backslash
 kmod
 \family default
- e
+ e 
 \emph on
- char 
+char
 \emph default
-non deve appartenere al set degli accenti (
+ non deve appartenere al set degli accenti (
 \emph on
 accent
 \emph default
@@ -4775,7 +4799,7 @@ accent_key char
 \emph on
 accent_key
 \emph default
- Ë il primo argomento della dichiarazione 
+ √® il primo argomento della dichiarazione 
 \family typewriter
 
 \backslash
@@ -4786,7 +4810,7 @@ kmod
 \end_layout
 
 \begin_layout Standard
-La seguente procedura di comandi fa in modo che venga generato ‰i immettendo
+La seguente procedura di comandi fa in modo che venga generato √§i immettendo
  acute-i ('i):
 \end_layout
 
@@ -4887,11 +4911,12 @@ Questo vi permette di premere
 "{i}}
 \family default
 .
- Un backspace in questo caso cancella l'ultimo tasto morto, cosÏ se premete
+ Un backspace in questo caso cancella l'ultimo tasto morto, cos√¨ se premete
+ 
 \family sans
- ;: Backspace i 
+;: Backspace i
 \family default
-avrete 
+ avrete 
 \family typewriter
 
 \backslash
@@ -4905,13 +4930,11 @@ Il file .cdef
 \end_layout
 
 \begin_layout Standard
-Dopo la mappatura fatta con
+Dopo la mappatura fatta con 
 \family typewriter
- .kmap,
-\family sans
- 
+.kmap,
 \family default
-il file 
+ il file 
 \family typewriter
 .cdef
 \family default
@@ -4932,10 +4955,8 @@ iso8859-2.cdef
 In generale il file 
 \family typewriter
 .cdef
-\family sans
- 
 \family default
-Ë una sequenza di dichiarazioni di questa forma:
+ √® una sequenza di dichiarazioni di questa forma:
 \end_layout
 
 \begin_layout LyX-Code
@@ -4943,8 +4964,10 @@ In generale il file
 \family roman
 \emph on
 char_index_in_set
+\family default
 \emph default
  
+\family roman
 \emph on
  string
 \end_layout
@@ -4980,14 +5003,12 @@ con
 "
 \family default
  estranei alla stringa.
- Notate che lo stesso carattere puÚ essere applicato a pi˘ di una stringa.
+ Notate che lo stesso carattere pu√≤ essere applicato a pi√π di una stringa.
  Nel file 
 \family typewriter
 iso-8859-7.cdef
-\family sans
- 
 \family default
-avete
+ avete
 \end_layout
 
 \begin_layout LyX-Code
@@ -5018,8 +5039,8 @@ avete
 
 \begin_layout Standard
 Se LyX non trova una mappatura per la stringa prodotta dalla pressione del
- tasto o da una sequenza con tasti morti, controller‡ se assomiglia ad un
- carattere accentato e prover‡ a disegnare un accento sul carattere sullo
+ tasto o da una sequenza con tasti morti, controller√† se assomiglia ad un
+ carattere accentato e prover√† a disegnare un accento sul carattere sullo
  schermo.
 \end_layout
 
@@ -5028,8 +5049,8 @@ Tasti morti
 \end_layout
 
 \begin_layout Standard
-C'Ë un altro modo per aggiungere il supporto a caratteri internazionali,
- ed Ë quello che usa la tecnica dei cosiddetti tasti morti.
+C'√® un altro modo per aggiungere il supporto a caratteri internazionali,
+ ed √® quello che usa la tecnica dei cosiddetti tasti morti.
  Un tasto morto lavora in combinazione con una lettera per produrre un carattere
  accentato.
  In questa sezione spieghiamo come si crea un semplice tasto morto per far
@@ -5053,14 +5074,14 @@ Shift-
 \family default
 6] al comando LyX 
 \family typewriter
-accent-circumflex 
+accent-circumflex
 \family default
-nel vostro file
+ nel vostro file 
 \family typewriter
- lyxrc
+lyxrc
 \family default
 .
- Ora, se digitate il tasto ^ seguito da una lettera, la lettera avr‡ un
+ Ora, se digitate il tasto ^ seguito da una lettera, la lettera avr√† un
  accento circonflesso su di essa.
  Per esempio, la sequenza 
 \begin_inset Quotes eld
@@ -5079,20 +5100,20 @@ nel vostro file
 \begin_inset Quotes erd
 \end_inset
 
-, tuttavia, LyX segnaler‡ con un beep che l'operazione non Ë possibile dato
+, tuttavia, LyX segnaler√† con un beep che l'operazione non √® possibile dato
  che la t non ha mai accento.
  Premere 
 \family sans
-Spazio 
+Spazio
 \family default
-dopo un deadkey produrr‡ un accento semplice.
+ dopo un deadkey produrr√† un accento semplice.
  Attenzione a quest'ultimo punto! Se associate un tasto ad un deadkey, dovrete
  riassociare il carattere su quel tasto ad un altro tasto ancora.
  
 \end_layout
 
 \begin_layout Standard
-Un altro modo comune di associare tasti morti Ë quello di usare 
+Un altro modo comune di associare tasti morti √® quello di usare 
 \family sans
 Meta-
 \family default
@@ -5178,7 +5199,7 @@ Nota da
 \noun on
 John Weiss
 \noun default
-: Questo Ë esattamente quello che faccio nei miei files 
+: Questo √® esattamente quello che faccio nei miei files 
 \family typewriter
 ~/.lyx/lyxrc
 \family default
@@ -5222,12 +5243,12 @@ Lock
 Scroll Lock-~
 \family default
 .
- Questo Ë il modo in cui genero i miei caratteri accentati.
+ Questo √® il modo in cui genero i miei caratteri accentati.
 \end_layout
 
 \end_inset
 
- Potete fare pressocchË tutto con il tasto 
+ Potete fare pressocch√® tutto con il tasto 
 \family typewriter
 Mode_Switch
 \family default
@@ -5239,9 +5260,11 @@ Ctrl-
  Come per i comandi LyX che producono accenti, consultate il 
 \emph on
 Manuale di Riferimento
+\emph default
+ 
 \emph toggle
- per l'accento acuto.
- Troverete lÏ la lista completa.
+per l'accento acuto.
+ Troverete l√¨ la lista completa.
 \end_layout
 
 \begin_layout Subsection
@@ -5249,7 +5272,8 @@ Salvare la vostra configurazione di Linguaggio
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:savlang}
+\begin_inset LatexCommand label
+name "sec:savlang"
 
 \end_inset
 
@@ -5280,7 +5304,7 @@ Guardate il vostro file
 lyxrc
 \family default
  per i vari esempi su come configurarlo.
- In particolare, potete settare una keymap cosÏ:
+ In particolare, potete settare una keymap cos√¨:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5321,7 +5345,8 @@ screen_font_encoding iso8859-2
 
 \begin_layout Chapter
 Installare Nuove Classi di Documento, Layouts e Templates 
-\begin_inset LatexCommand \label{chap:textclass}
+\begin_inset LatexCommand label
+name "chap:textclass"
 
 \end_inset
 
@@ -5330,9 +5355,9 @@ Installare Nuove Classi di Documento, Layouts e Templates
 
 \begin_layout Standard
 In questo capitolo si descrivono le procedure per creare ed installare nuovi
- layouts di LyX e files template, come anche si proceder‡ ad illustrare
+ layouts di LyX e files template, come anche si proceder√† ad illustrare
  la corretta installazione di nuove classi di documento LaTeX.
- Alcune definizioni: una classe di documento Ë un file LaTeX (che di solito
+ Alcune definizioni: una classe di documento √® un file LaTeX (che di solito
  hanno estensione in 
 \family typewriter
 .cls
@@ -5344,7 +5369,7 @@ In questo capitolo si descrivono le procedure per creare ed installare nuovi
 ) che descrive il formato di un documento come un articolo, report, prestampa
  di giornale, ecc.
  e tutti i comandi di cui si ha bisogno per realizzare quel formato.
- Un file layout Ë un file LyX che corrisponde ad una classe di documento
+ Un file layout √® un file LyX che corrisponde ad una classe di documento
  LaTeX e che dice a LyX come 
 \begin_inset Quotes eld
 \end_inset
@@ -5353,9 +5378,9 @@ disegnare
 \begin_inset Quotes erd
 \end_inset
 
- le cose sullo schermo in modo da rendere le cose il pi˘ possibile vicine
+ le cose sullo schermo in modo da rendere le cose il pi√π possibile vicine
  alla pagina finale stampata.
- Pi˘ precisamente, un file layout descrive una 
+ Pi√π precisamente, un file layout descrive una 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5363,7 +5388,7 @@ textclass
 \begin_inset Quotes erd
 \end_inset
 
- che Ë il costrutto interno che LyX usa per fare il rendering dello schermo.
+ che √® il costrutto interno che LyX usa per fare il rendering dello schermo.
  
 \begin_inset Quotes eld
 \end_inset
@@ -5380,9 +5405,9 @@ textclass
 \begin_inset Quotes erd
 \end_inset
 
- possono a volta essere usate come sinonimi, ma Ë meglio riferirsi al file
+ possono a volta essere usate come sinonimi, ma √® meglio riferirsi al file
  come il layout, e all'oggetto residente nella memoria di LyX come textclass.
- Un file template Ë semplicemente un documento LyX che contiene un set di
+ Un file template √® semplicemente un documento LyX che contiene un set di
  righe predefinite per una data classe di documento che sono generalmente
  richiesti per quella classe.
  I templates sono in particolare utili per cose come i manoscritti di giornale
@@ -5418,9 +5443,9 @@ Ecco di seguito tutti i passaggi necessari per avere il pacchetto e lanciarlo
 status collapsed
 
 \begin_layout Standard
-Questa procedura Ë definitivamente valida per la versione v1.0 e tutte le
+Questa procedura √® definitivamente valida per la versione v1.0 e tutte le
  versioni beta v0.9.
- Commenti sul funzionamento per le versioni v.04 sono graditi, anche se Ë
+ Commenti sul funzionamento per le versioni v.04 sono graditi, anche se √®
  comunque preferibile aggiornarsi alla versione v1.0.x.
 \end_layout
 
@@ -5439,7 +5464,7 @@ Vedere il manuale
 \emph on
 Inventory of your LaTeX configuration
 \emph default
- per i dettagli su cosa Ë CTAN e dove possono essere trovate le classi di
+ per i dettagli su cosa √® CTAN e dove possono essere trovate le classi di
  documento supportate.
 \end_layout
 
@@ -5453,18 +5478,18 @@ Leggere il file
 \family typewriter
 texmf.cnf
 \family default
- (che di solito risiede nella directory
+ (che di solito risiede nella directory 
 \family typewriter
- $TEXMF/web2c
+$TEXMF/web2c
 \family default
 , sebbene possiate lanciare 
 \family typewriter
 kpsewhich texmf.cnf
 \family default
  per localizzarlo).
- Questo descrive come aggiungere una directory locale
+ Questo descrive come aggiungere una directory locale 
 \family typewriter
- texmf
+texmf
 \family default
 ; seguire le istruzioni.
  Avete bisogno di inserire il nome della vostra directory locale 
@@ -5480,10 +5505,10 @@ texmf.cnf
 \family typewriter
 /usr/local
 \family default
- Ë una posizione logica dove installare software che non Ë presente nelle
- normali distribuzioni, cosÏ dovete usare
+ √® una posizione logica dove installare software che non √® presente nelle
+ normali distribuzioni, cos√¨ dovete usare 
 \family typewriter
- /usr/local/texmf
+/usr/local/texmf
 \family default
 .
  Di solito dovete modificare solo due cose:
@@ -5504,9 +5529,9 @@ TEXMFLOCAL = /usr/local/texmf
 \end_layout
 
 \begin_layout Enumerate
-Assicuratevi che
+Assicuratevi che 
 \family typewriter
- TEXMF
+TEXMF
 \family default
  includa la variabile 
 \family typewriter
@@ -5522,9 +5547,9 @@ TEXMF = {$HOMETEXMF,!!$TEXMFLOCAL,!!$TEXMFMAIN}
 
 \end_deeper
 \begin_layout Enumerate
-Create la vostra directory locale
+Create la vostra directory locale 
 \family typewriter
- texmf
+texmf
 \family default
  (es.
  
@@ -5532,22 +5557,22 @@ Create la vostra directory locale
 /usr/local/texmf
 \family default
 ).
- Dovete seguire la struttura dell'esistente directory
+ Dovete seguire la struttura dell'esistente directory 
 \family typewriter
- texmf
+texmf
 \family default
- (ad esempio, i pacchetti latex dovrebbero andare sotto
+ (ad esempio, i pacchetti latex dovrebbero andare sotto 
 \family typewriter
- /usr/local/texmf/tex/latex/
+/usr/local/texmf/tex/latex/
 \family default
 ).
 \end_layout
 
 \begin_layout Enumerate
 Installare il pacchetto.
- Ad esempio, vogliamo scompattare l'archivio FoilTeX e creare
+ Ad esempio, vogliamo scompattare l'archivio FoilTeX e creare 
 \family typewriter
- /usr/local/texmf/tex/latex/foiltex
+/usr/local/texmf/tex/latex/foiltex
 \family default
 .
  La directory 
@@ -5565,9 +5590,9 @@ texhash
 .
  Questo dovrebbe creare 
 \family typewriter
-/usr/local/texmf/ls-R 
+/usr/local/texmf/ls-R
 \family default
-tra le altre.
+ tra le altre.
 \end_layout
 
 \begin_layout Enumerate
@@ -5602,7 +5627,7 @@ Document
 Class
 \family default
 .
- Notate che ci sono modi pi˘ semplici per installare pacchetti: potete aggiunger
+ Notate che ci sono modi pi√π semplici per installare pacchetti: potete aggiunger
 e un link alla nuova directory del pacchetto nella directory di sistema
  LaTeX (
 \family typewriter
@@ -5618,8 +5643,8 @@ S per includere un nuovo pacchetto.
 \family typewriter
 texmf.cnf
 \family default
- Ë garantito che funzioni, cosÏ dovreste provare a seguirla fino a che se
- ne ha la possibilit‡ (che potrebbe perdersi se non si ha accesso da superuser).
+ √® garantito che funzioni, cos√¨ dovreste provare a seguirla fino a che se
+ ne ha la possibilit√† (che potrebbe perdersi se non si ha accesso da superuser).
 \end_layout
 
 \begin_layout Section
@@ -5640,22 +5665,22 @@ article
  descrivono quali stili di paragrafi sono disponibili per una data classe
  di documenti e come LyX dovrebbe mostrarli.
  Proveremo qui a fornire un'accurata descrizione del processo; tuttavia,
- ci sono cosÏ tanti tipi di documenti supportati dalle classi LaTeX da renderci
+ ci sono cos√¨ tanti tipi di documenti supportati dalle classi LaTeX da renderci
  impossibile fornire una descrizione esaustiva dell'argomento e delle possibilit
-‡ che si possono manifestare.
+√† che si possono manifestare.
 \end_layout
 
 \begin_layout Standard
-Quando programmate di scrivere un nuovo layout, Ë estremamente utile guardare
+Quando programmate di scrivere un nuovo layout, √® estremamente utile guardare
  prima i layout di esempio distribuiti con LyX.
- Se usate una classe di documento LaTeX particolarmente bella che puÚ essere
+ Se usate una classe di documento LaTeX particolarmente bella che pu√≤ essere
  di interesse anche per altre persone e che abbia un buon corrispondente
  layout in LyX, siete liberi di mandarcelo in modo da poterlo inserire nella
  distribuzione.
 \end_layout
 
 \begin_layout Standard
-Tutte le righe di codice di questo paragrafo sono case-insensitive; ciÚ
+Tutte le righe di codice di questo paragrafo sono case-insensitive; ci√≤
  significa che 
 \family typewriter
 Style
@@ -5670,15 +5695,15 @@ StYle
 \family default
  sono lo stesso comando.
  I possibili valori sono scritti tra parentesi dopo il nome della caratteristica.
- Il valore di default se una caratteristica non Ë specificata nella descrizione
- della textclass Ë scritto in 
+ Il valore di default se una caratteristica non √® specificata nella descrizione
+ della textclass √® scritto in 
 \family typewriter
 \emph on
 corsivo
 \family default
 \emph default
 .
- Se l'argomento Ë un tipo di dati come 
+ Se l'argomento √® un tipo di dati come 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5694,7 +5719,7 @@ float
 \begin_inset Quotes erd
 \end_inset
 
-, il valore di default Ë scritto come 
+, il valore di default √® scritto come 
 \family typewriter
 float=default
 \family default
@@ -5708,11 +5733,11 @@ Supportare nuove classi di documento
 \begin_layout Standard
 Ci sono tre situazioni che potete incontrare se volete supportare una nuova
  classe di documento LaTeX.
- I due tipi pi˘ semplici coinvolgono classe (.cls) e style (.sty) LaTeX2e.
+ I due tipi pi√π semplici coinvolgono classe (.cls) e style (.sty) LaTeX2e.
  Se siete sfortunati potreste incappare nella terza situazione di supportare
  un file di stile LaTeX 2.09.
  Il processo di creazione di un file di layout per queste tre situazioni
- Ë simile; tuttavia un passo in pi˘ Ë richiesto per permettere a LyX di
+ √® simile; tuttavia un passo in pi√π √® richiesto per permettere a LyX di
  usare LaTeX 2.09.
 \end_layout
 
@@ -5721,7 +5746,7 @@ File sty LaTex2e
 \end_layout
 
 \begin_layout Standard
-Se la vostra nuova classe di documento Ë sotto forma di style file, usato
+Se la vostra nuova classe di documento √® sotto forma di style file, usato
  in aggiunta ad uno esistente, la classe di documento supportata, inizia
  copiando il layout della classe esistente nella vostra directory locale.
  A causa della mancanza di esempi assumeremo che il file style si chiami
@@ -5729,7 +5754,7 @@ Se la vostra nuova classe di documento Ë sotto forma di style file, usato
 \family sans
 myclass.sty
 \family default
- e sar‡ usato con 
+ e sar√† usato con 
 \family sans
 report.cls
 \family default
@@ -5807,7 +5832,10 @@ report (myclass)
 \family default
  come una classe di documento opzione nel men
 \family sans
-u 
+u
+\family default
+ 
+\family sans
 \bar under
 L
 \bar default
@@ -5834,8 +5862,8 @@ Report
 
 \end_inset
 
-, cosÏ potrete giocare con i settaggi per le differenti sezioni se vorrete.
- In seguito l'argomento sar‡ ripreso.
+, cos√¨ potrete giocare con i settaggi per le differenti sezioni se vorrete.
+ In seguito l'argomento sar√† ripreso.
 \end_layout
 
 \begin_layout Subsection
@@ -5854,9 +5882,9 @@ vedervela da soli
  con il vostro layout.
  Raccomandiamo fortemente di copiare un file di layout esistente che usa
  una classe di testo LaTeX simile e modificarlo per quanto possibile.
- oppure si puÚ almeno usare un file esistente come punto di partenza in
+ oppure si pu√≤ almeno usare un file esistente come punto di partenza in
  modo da capire quali oggetti servano ai vostri scopi.
- Ancora, pi˘ avanti ci saranno altri dettagli.
+ Ancora, pi√π avanti ci saranno altri dettagli.
 \end_layout
 
 \begin_layout Subsection
@@ -5868,7 +5896,7 @@ Se il file
 \family typewriter
 .sty
 \family default
- Ë specifico per l'ormai defunto LaTeX 2.09 potete stabilirlo attraverso
+ √® specifico per l'ormai defunto LaTeX 2.09 potete stabilirlo attraverso
  uno di questi due modi:
 \end_layout
 
@@ -5907,11 +5935,11 @@ compatibility mode
 
 \begin_layout Standard
 LyX tecnicamente supporta solo documenti LaTeX2e.
- Ma non mollate ancora! Dove c'Ë volont‡ c'Ë un modo ( oppure 
+ Ma non mollate ancora! Dove c'√® volont√† c'√® un modo ( oppure 
 \begin_inset Quotes eld
 \end_inset
 
-adattarsi Ë impossibile, ma l'abbiamo comunque fatto.
+adattarsi √® impossibile, ma l'abbiamo comunque fatto.
 \begin_inset Quotes erd
 \end_inset
 
@@ -5961,14 +5989,14 @@ myclass
 \family typewriter
 
 \backslash
-DeclareOption 
+DeclareOption
 \family default
-nel file non sono rilevanti per il vostro file di stile, ma non ci interessano
+ nel file non sono rilevanti per il vostro file di stile, ma non ci interessano
  per il momento.
 \end_layout
 
 \begin_layout Standard
-Il prossimo passo Ë quello di ripetere il processo di creazione del file
+Il prossimo passo √® quello di ripetere il processo di creazione del file
  di layout myclass.layout di prima; solo per questa volta usate:
 \end_layout
 
@@ -6006,9 +6034,9 @@ myclass.sty
 myclass.layout
 \family default
 .
- Se mancano alcune bisogner‡ inserirle.
+ Se mancano alcune bisogner√† inserirle.
  Copiate un altro stile che sembra simile e modificatelo.
- Il modo pi˘ semplice per farlo Ë con:
+ Il modo pi√π semplice per farlo √® con:
 \end_layout
 
 \begin_layout LyX-Code
@@ -6049,12 +6077,12 @@ Dichiarare una nuova textclass
 \end_layout
 
 \begin_layout Standard
-Quando Ë finalmente giunta l'ora di sporcarvi le mani e creare un vostro
+Quando √® finalmente giunta l'ora di sporcarvi le mani e creare un vostro
  personale file di layout, la seguente sezione descrive a cosa andrete incontro.
- Il nostro consiglio Ë di procedere piano, salvare e testare spesso, ascoltare
+ Il nostro consiglio √® di procedere piano, salvare e testare spesso, ascoltare
  musica soffusa e bere un paio di bevande per adulti che gradite; qualcuna
- in pi˘ se siete particolarmente disorientati.
- Non Ë molto difficile, eccetto per la moltitudine di opzioni che possono
+ in pi√π se siete particolarmente disorientati.
+ Non √® molto difficile, eccetto per la moltitudine di opzioni che possono
  creare problemi se cercate di molte cose contemporaneamente.
  Andate a prendervi un'altra bibita, solo per precauzione.
 \end_layout
@@ -6065,7 +6093,7 @@ Andiamo!
 
 \begin_layout Standard
 Le linee in un file di layout che iniziano con # sono commenti.
- C'Ë una eccezione a questa regola: tutti i layouts dovrebbero iniziare
+ C'√® una eccezione a questa regola: tutti i layouts dovrebbero iniziare
  con queste linee:
 \end_layout
 
@@ -6084,13 +6112,13 @@ DeclareLaTeXClass{article}
 \end_layout
 
 \begin_layout Standard
-La seconda linea Ë usata quando configurate LyX.
- Il file di layout Ë letto dallo script LaTeX
+La seconda linea √® usata quando configurate LyX.
+ Il file di layout √® letto dallo script LaTeX 
 \family typewriter
- chkconfig.ltx
+chkconfig.ltx
 \family default
 , in un modo speciale e tale che # venga ignorato.
- La prima linea Ë solo un commento LaTeX, e la seconda contiene la dichiarazione
+ La prima linea √® solo un commento LaTeX, e la seconda contiene la dichiarazione
  della classe di testo.
  Se queste linne appaiono in un file chiamato 
 \family typewriter
@@ -6104,7 +6132,7 @@ article
 \family typewriter
 article.cls
 \family default
- (Il default Ë quello di usare lo stesso nome del layout).
+ (Il default √® quello di usare lo stesso nome del layout).
  La stringa 
 \begin_inset Quotes eld
 \end_inset
@@ -6113,10 +6141,10 @@ article
 \begin_inset Quotes erd
 \end_inset
 
- che appare sopra Ë usata come descrizione della textclass nel menu
+ che appare sopra √® usata come descrizione della textclass nel menu 
 \family sans
 \bar under
- L
+L
 \bar default
 ayout
 \bar under
@@ -6191,7 +6219,7 @@ DeclareLaTeXClass[article,foo.sty]{article (with my own headings)}
 
 \begin_layout Standard
 Queste indicano che la vostra textclass usa il pacchetto foo.sty.
- Infine Ë anche possibile dichiarare classi per codice SGML e DocBook.
+ Infine √® anche possibile dichiarare classi per codice DocBook.
  Le dichiarazioni tipiche avranno questa forma:
 \end_layout
 
@@ -6206,35 +6234,17 @@ Queste indicano che la vostra textclass usa il pacchetto foo.sty.
 \size small
 # 
 \backslash
-DeclareSGMLClass{SGML (LinuxDoc)}
-\end_layout
-
-\begin_layout Standard
-oppure
-\end_layout
-
-\begin_layout LyX-Code
-#% Do not delete the line below; configure depends on this 
-\end_layout
-
-\begin_layout LyX-Code
- 
-\end_layout
-
-\begin_layout LyX-Code
-# 
-\backslash
 DeclareDocBookClass[article]{SGML (DocBook article)}
 \end_layout
 
 \begin_layout Standard
-Notate che a queste dichiarazioni puÚ essere anche dato come parametro opzionale
+Notate che a queste dichiarazioni pu√≤ essere anche dato come parametro opzionale
  che dichiara il nome della classe di documento (ma non una lista).
 \end_layout
 
 \begin_layout Standard
-Quando la textclass Ë stata modificata secondo i vostri gusti, tutto quello
- che dovete fare Ë copiarla in 
+Quando la textclass √® stata modificata secondo i vostri gusti, tutto quello
+ che dovete fare √® copiarla in 
 \family typewriter
 $LyXDir/layouts/
 \family default
@@ -6299,7 +6309,7 @@ Columns
 , 2
 \family default
 ] A seconda che la classe di default abbia una o due colonne.
- PuÚ essere cambiato nel menu 
+ Pu√≤ essere cambiato nel menu 
 \family sans
 \bar under
 L
@@ -6316,7 +6326,7 @@ ocument.
 \family typewriter
 Sides
 \family default
-) Ë importante: se le vostre textclass hanno due colonne di default, ma
+) √® importante: se le vostre textclass hanno due colonne di default, ma
  dimenticate di settarlo correttamente, l'opzione LaTeX 
 \family typewriter
 twocolumn
@@ -6325,7 +6335,7 @@ twocolumn
 \emph on
 non
 \emph default
- sar‡ mostrata quando selezionate 
+ sar√† mostrata quando selezionate 
 \family sans
 Two Columns
 \family default
@@ -6358,10 +6368,10 @@ Sides
 \family default
 ] A seconda che la classe di default debba stampare su uno o entrambi i
  lati del foglio.
- PuÚ essere cambiato nel menu
+ Pu√≤ essere cambiato nel menu 
 \family sans
 \bar under
- L
+L
 \bar default
 ayout
 \bar under
@@ -6370,10 +6380,8 @@ D
 \bar default
 ocument
 \family default
-\emph toggle
  
 \family sans
-\emph default
 .
 \end_layout
 
@@ -6382,10 +6390,9 @@ ocument
 \family typewriter
 \series medium
 PageStyle
-\series default
- 
 \family default
-[
+\series default
+ [
 \family typewriter
 \emph on
 plain
@@ -6393,7 +6400,7 @@ plain
 , empty, headings
 \family default
 ] La classe di default pagestyle.
- PuÚ essere cambiata nel menu the 
+ Pu√≤ essere cambiata nel menu the 
 \family sans
 \bar under
 L
@@ -6426,7 +6433,7 @@ Counter_Subparagraph, Counter_EnumI, Counter_EnumII,
 Counter_EnumIII, Counter_E
 numIV
 \family default
-] Il pi˘ alto livello di enumerazione automatica.
+] Il pi√π alto livello di enumerazione automatica.
  Valori utili sono 
 \family typewriter
 Counter_Chapter
@@ -6436,7 +6443,7 @@ Counter_Chapter
 Counter_Section
 \family default
  per un articolo.
- Se non c'Ë bisogno di enumerazione, ad esempio all'interno di una classe
+ Se non c'√® bisogno di enumerazione, ad esempio all'interno di una classe
  di lettere, 
 \family typewriter
 MaxCounter
@@ -6461,7 +6468,8 @@ End
  documento.
  Guardare la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \label{Ref: sec:classoptions}
+\begin_inset LatexCommand label
+name "Ref: sec:classoptions"
 
 \end_inset
 
@@ -6472,22 +6480,22 @@ End
 
 \family typewriter
 \series medium
-ProvidesAmsmath 
+ProvidesAmsmath
 \family default
 \series default
-[
+ [
 \family typewriter
 \emph on
 0
 \emph default
 , 1
 \family default
-] Se la classe gi‡ carica il pacchetto 
+] Se la classe gi√† carica il pacchetto 
 \family typewriter
 amsmath
 \family default
 .
- Questo Ë il caso delle classi di documento 
+ Questo √® il caso delle classi di documento 
 \family typewriter
 amsart
 \family default
@@ -6517,7 +6525,7 @@ ProvidesMakeidx
 makeidx
 \family default
 .
- Questo Ë il caso delle classi di documento 
+ Questo √® il caso delle classi di documento 
 \family typewriter
 amsart
 \family default
@@ -6547,7 +6555,7 @@ ProvidesUrl
 url
 \family default
 .
- Questo Ë il caso della classe di documento 
+ Questo √® il caso della classe di documento 
 \family typewriter
 AASTeX
 \family default
@@ -6561,10 +6569,11 @@ AASTeX
 DefaultFont
 \family default
 \series default
- Questo Ë usato per descrivere il font di default del documento.
+ Questo √® usato per descrivere il font di default del documento.
  Guardare la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:fonts}
+\begin_inset LatexCommand ref
+reference "sec:fonts"
 
 \end_inset
 
@@ -6634,7 +6643,8 @@ ClassOption
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:classoptions}
+\begin_inset LatexCommand label
+name "sec:classoptions"
 
 \end_inset
 
@@ -6642,7 +6652,7 @@ ClassOption
 \family typewriter
 ClassOption
 \family default
- puÚ contenere le seguenti righe:
+ pu√≤ contenere le seguenti righe:
 \end_layout
 
 \begin_layout Description
@@ -6709,10 +6719,10 @@ Other
 \family typewriter
 string=""
 \family default
-] Alcune opzioni di classi di documento, separate da una virgola, che sar‡
- aggiunta alla parte delle opzioni del comando
+] Alcune opzioni di classi di documento, separate da una virgola, che sar√†
+ aggiunta alla parte delle opzioni del comando 
 \family typewriter
- 
+
 \backslash
 documentclass
 \family default
@@ -6724,12 +6734,12 @@ Layouts specifici di paragrafo
 \end_layout
 
 \begin_layout Standard
-La descrizione di un layout description Ë di questo tipo
+La descrizione di un layout description √® di questo tipo
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Notate che questo puÚ definire un nuovo layout o modificarne uno esistente.
+Notate che questo pu√≤ definire un nuovo layout o modificarne uno esistente.
 \end_layout
 
 \end_inset
@@ -6781,7 +6791,7 @@ begin{sloppypar}
 CopyStyle
 \family default
 \series default
- Questo Ë usato per copiare tutte le caratteristiche di un layout esistente
+ Questo √® usato per copiare tutte le caratteristiche di un layout esistente
  in quello corrente.
  
 \end_layout
@@ -6851,7 +6861,7 @@ LatexName
 \family typewriter
 Item_Environment
 \family default
- Ë lo stesso di 
+ √® lo stesso di 
 \family typewriter
 Environment
 \family default
@@ -6861,12 +6871,12 @@ Environment
 \backslash
 item
 \family default
- che Ë generato per ogni paragrafo di questo ambiente.
+ che √® generato per ogni paragrafo di questo ambiente.
  
 \family typewriter
 List_Environment
 \family default
- Ë lo stesso di 
+ √® lo stesso di 
 \family typewriter
 Item_Environment
 \family default
@@ -6874,12 +6884,12 @@ Item_Environment
 \family typewriter
 LabelWidthString
 \family default
- che Ë passato come argomento per l'ambiente.
+ che √® passato come argomento per l'ambiente.
  
 \family typewriter
 LabelWidthString
 \family default
- puÚ essere definito nel menu 
+ pu√≤ essere definito nel menu 
 \family sans
 \bar under
 L
@@ -6898,10 +6908,13 @@ aragraph.
 \family typewriter
 \series medium
 InTitle
-\series default
- [1, 0] 
 \family default
-Se il valore Ë 1, segna il layout come necessitante di un 
+\series default
+ 
+\family typewriter
+[1, 0]
+\family default
+ Se il valore √® 1, segna il layout come necessitante di un 
 \family typewriter
 
 \backslash
@@ -6919,7 +6932,7 @@ LatexName
 \family default
 \series default
  Il nome del corrispondente materiale LaTeX.
- PuÚ essere sia di ambiente che di comando.
+ Pu√≤ essere sia di ambiente che di comando.
 \end_layout
 
 \begin_layout Description
@@ -6934,7 +6947,7 @@ LatexParam
 LatexName
 \family default
 .
- Questo parametro non puÚ essere cambiato da LyX.
+ Questo parametro non pu√≤ essere cambiato da LyX.
 \end_layout
 
 \begin_layout Description
@@ -6975,21 +6988,15 @@ ayout\SpecialChar \menuseparator
 P
 \bar default
 aragraph.
- 
-\family default
-Questo Ë usato per intestazione enumerate automatiche.
 
+\family default
+ Questo √® usato per intestazione enumerate automatiche.
+ 
 \family typewriter
- Dynamic
-\family sans
- 
+Dynamic
 \family default
-significa che il margine dipende dalla grandezza dell'etichetta.
-
-\family sans
- 
-\family default
-E' ovvio che l'intestazione 
+ significa che il margine dipende dalla grandezza dell'etichetta.
+ E' ovvio che l'intestazione 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6997,7 +7004,7 @@ E' ovvio che l'intestazione
 \begin_inset Quotes erd
 \end_inset
 
- deve avere un margine sinistro pi˘ ampio (ampio quanto 
+ deve avere un margine sinistro pi√π ampio (ampio quanto 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7014,20 +7021,18 @@ E' ovvio che l'intestazione
 \end_inset
 
 , anche se altri word processors non sono in grado di farlo.
-
-\family sans
  
 \family typewriter
 First_Dynamic
 \family default
- Ë s simile, ma solo la prima riga del paragrafo Ë dinamica, mentre le altre
+ √® s simile, ma solo la prima riga del paragrafo √® dinamica, mentre le altre
  sono statiche.
  usato ad esempio per le descrizioni.
  
 \family typewriter
 Right_Address_Box
 \family default
- significa che il margine Ë scelto in modo tale che la riga pi˘ lunga di
+ significa che il margine √® scelto in modo tale che la riga pi√π lunga di
  questo paragrafo arriva fino al margine destro.
  Usato per scrivere indirizzi in alto a destra della pagina.
 \end_layout
@@ -7041,7 +7046,10 @@ NextNoIndent
 \series default
  [
 \family typewriter
-1, 
+1,
+\family default
+ 
+\family typewriter
 \emph on
 0
 \family default
@@ -7062,7 +7070,7 @@ ParIndent
 string=""
 \family default
 ] Il capoverso della prima linea del paragrafo.
- L'argomento Ë passato come una stringa.
+ L'argomento √® passato come una stringa.
  Ad esempio 
 \family typewriter
 "MM"
@@ -7082,16 +7090,16 @@ string=""
 \family typewriter
 Parindent
 \family default
- sar‡ fisso per un certo layout.
- L'eccezione Ë lo Standard layout, dato che il rientro del paragrafo di
- layout standard poÚ essere proibito con 
+ sar√† fisso per un certo layout.
+ L'eccezione √® lo Standard layout, dato che il rientro del paragrafo di
+ layout standard po√≤ essere proibito con 
 \family typewriter
 NextNoIndent
 \family default
 .
- Inoltre, i paragrafi con Standard layout, usano il
+ Inoltre, i paragrafi con Standard layout, usano il 
 \family typewriter
- Parindent
+Parindent
 \family default
  dell'ambiente, non il loro nativo.
  ad esempio, i paragrafi Standard dentro una numerazione non hanno il rientro.
@@ -7133,7 +7141,7 @@ rientra
 \begin_inset Quotes erd
 \end_inset
 
-, questo valore Ë completamente ignorato.
+, questo valore √® completamente ignorato.
  Quando si sceglie 
 \begin_inset Quotes eld
 \end_inset
@@ -7150,9 +7158,9 @@ Paragrafo
 \begin_inset Quotes erd
 \end_inset
 
- in stile LaTeX Ë ignorato e tutti i paragrafi sono addizionalmente separati
+ in stile LaTeX √® ignorato e tutti i paragrafi sono addizionalmente separati
  da questo argomento parskip.
- Lo spazio Ë verticale Ë calcolato con 
+ Lo spazio √® verticale √® calcolato con 
 \family typewriter
 value*DefaultHeight()
 \family default
@@ -7160,7 +7168,7 @@ value*DefaultHeight()
 \family typewriter
 DefaultHeight()
 \family default
- Ë l'altezza di una riga con il font normale.
+ √® l'altezza di una riga con il font normale.
  In questo modo l'aspetto rimane lo stesso indipendentemente dai fonts.
 \end_layout
 
@@ -7176,9 +7184,9 @@ TopSep
 float=0
 \family default
 ] Lo spazio vericale con cui il primo di una catena di paragrafi con questo
- layout Ë separato dal precedente.
+ layout √® separato dal precedente.
  Se il paragrafo precedente ha un altro layout, le separazioni non sono
- semplicemente ma Ë preso il massimo.
+ semplicemente ma √® preso il massimo.
 \end_layout
 
 \begin_layout Description
@@ -7224,14 +7232,14 @@ Itemsep
 \family typewriter
 float=0
 \family default
-] Questo Ë uno spazio extra tra i paragrafi di un ambiente di layout.
- Se immettete altri layouts nello stesso ambiente, ognuno sar‡ separato
+] Questo √® uno spazio extra tra i paragrafi di un ambiente di layout.
+ Se immettete altri layouts nello stesso ambiente, ognuno sar√† separato
  con 
 \family typewriter
 Parsep
 \family default
 .
- Ma la totalit‡ degli oggetti presenti nell'ambiente sono separati addizionalmen
+ Ma la totalit√† degli oggetti presenti nell'ambiente sono separati addizionalmen
 te con 
 \family typewriter
 Itemsep
@@ -7257,7 +7265,7 @@ string=""
 \end_inset
 
 .
- Notate che questo parametro Ë usato anche quando il bordo Ë definito come
+ Notate che questo parametro √® usato anche quando il bordo √® definito come
  
 \family typewriter
 Manual
@@ -7267,7 +7275,7 @@ Manual
 Dynamic
 \family default
 .
- Poi Ë aggiunto al bordo manuale o dinamico.
+ Poi √® aggiunto al bordo manuale o dinamico.
  Questa stringa ha lo stesso significato di 
 \family typewriter
 ParIndent
@@ -7286,9 +7294,9 @@ RightMargin
 \family typewriter
 string=""
 \family default
-] Simile a
+] Simile a 
 \family typewriter
- LeftMargin
+LeftMargin
 \family default
 .
 \end_layout
@@ -7327,7 +7335,7 @@ Counter_EnumII, Counter_EnumIII, Counter_EnumIV
 \family typewriter
 Manual
 \family default
- significa che l'etichetta Ë la primissima parola (lettera).
+ significa che l'etichetta √® la primissima parola (lettera).
  
 \family typewriter
 Static
@@ -7345,20 +7353,20 @@ Top_Environment
 \family typewriter
 Centered_Top_Environment
 \family default
- sono casi speciali di
+ sono casi speciali di 
 \family typewriter
- Static
+Static
 \family default
 .
- L'etichetta sar‡ stampata sopra il paragrafo, ma solo in cima all'ambiente
+ L'etichetta sar√† stampata sopra il paragrafo, ma solo in cima all'ambiente
  o in cima ad una catena di paragrafi con questo layout.
- L'uso Ë ad esempio il layout 
+ L'uso √® ad esempio il layout 
 \family sans
 Abstract
 \family default
- o il
+ o il 
 \family sans
- Bibliography
+Bibliography
 \family default
 .
  E' questo anche il caso di etichette 
@@ -7369,12 +7377,12 @@ Manual
 \family typewriter
 Enviroment
 \family default
-, per creare layouts per teoremi messi gi˘ correttamente.
+, per creare layouts per teoremi messi gi√π correttamente.
  
 \family typewriter
 Sensitive
 \family default
- Ë un caso speciale per le etichette di testo 
+ √® un caso speciale per le etichette di testo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7453,15 +7461,15 @@ string=""
 Static
 \family default
 .
- Quando il bordo Ë manuale questa stringa Ë anche usata come suggerimento
+ Quando il bordo √® manuale questa stringa √® anche usata come suggerimento
  per 
 \family typewriter
 LabelWidthString
 \family default
- che puÚ essere settato nel menu
+ che pu√≤ essere settato nel menu 
 \family sans
 \bar under
- L
+L
 \bar default
 ayout
 \family typewriter
@@ -7474,7 +7482,7 @@ P
 aragraph
 \family default
 .
- Quando il tipo label Ë Counter_xxx, questa stringa viene preposta al contatore.
+ Quando il tipo label √® Counter_xxx, questa stringa viene preposta al contatore.
 \end_layout
 
 \begin_layout Description
@@ -7510,7 +7518,7 @@ liste
 , separate da una virgola, di possibili allineamenti.
  Alcuni stili LaTeX proibiscono certi allineamenti, dato che questi non
  hanno senso.
- Ad esempio una numerazione allineata a destra o centrata non Ë possibile.
+ Ad esempio una numerazione allineata a destra o centrata non √® possibile.
 \end_layout
 
 \begin_layout Description
@@ -7556,7 +7564,7 @@ status collapsed
 \emph on
 Nota di Jean-Marc:
 \emph default
- Non sono sicuro che questo settaggio sia molto usato, e sar‡ probabilmente
+ Non sono sicuro che questo settaggio sia molto usato, e sar√† probabilmente
  rimosso nelle versioni successive.
 \end_layout
 
@@ -7619,7 +7627,10 @@ Newline
 \series default
  [
 \family typewriter
-0, 
+0,
+\family default
+ 
+\family typewriter
 \emph on
 1
 \family default
@@ -7633,7 +7644,7 @@ Newline
 
 \family default
 ) o no.
- La traduzione puÚ essere evitata per facilitare l'editing di LaTeX all'interno
+ La traduzione pu√≤ essere evitata per facilitare l'editing di LaTeX all'interno
  di LyX.
  
 \end_layout
@@ -7652,17 +7663,17 @@ FreeSpacing
 \emph default
 , 1
 \family default
-] Di solito LyX non vi permette di inserire pi˘ di uno spazio tra le parole,
- dato che lo spazio Ë considerato come una separazione tra due parole, non
+] Di solito LyX non vi permette di inserire pi√π di uno spazio tra le parole,
+ dato che lo spazio √® considerato come una separazione tra due parole, non
  un carattere o un simbolo a se stante.
- Questa Ë una cosa molto simpatica ma a volte annoiante, ad esempio quando
+ Questa √® una cosa molto simpatica ma a volte annoiante, ad esempio quando
  si scrive il codice di un programma o codice LaTeX.
  Per queste ragioni, 
 \family typewriter
 FreeSpacing
 \family default
- puÚ essere abilitato.
- Notate che LyX creer‡ bianchi protetti per i bianchi addizionali se in
+ pu√≤ essere abilitato.
+ Notate che LyX creer√† bianchi protetti per i bianchi addizionali se in
  un modo diverso dal modo-LaTeX.
 \end_layout
 
@@ -7682,9 +7693,9 @@ KeepEmpty
 \family default
 ] Di solito LyX non vi consente di lasciare un paragrafo vuoto, dato che
  porterebbe ad un output LaTeX vuoto.
- Ci sono alcuni casi in cui perÚ questo Ë auspicabile: in un template di
+ Ci sono alcuni casi in cui per√≤ questo √® auspicabile: in un template di
  lettera i campi richiesti possono essere rappresentati da spazi vuoti,
- cosÏ da agevolare le persone; in alcune classi speciali, un layout potrebbe
+ cos√¨ da agevolare le persone; in alcune classi speciali, un layout potrebbe
  essere usato come un tipo di interruzione, che non contiene testo, ecc.
 \end_layout
 
@@ -7700,15 +7711,16 @@ Spacing
 \emph on
 single
 \emph default
-, onehalf, double, other 
+, onehalf, double, other
 \family default
+ 
 \emph on
 value
 \emph default
 ] Questo definisce la spaziatura di default del layout.
- Gli argomenti
+ Gli argomenti 
 \family typewriter
- single
+single
 \family default
 , 
 \family typewriter
@@ -7723,7 +7735,7 @@ double
 \family typewriter
 other
 \family default
-, dovrete poi fornire un argomento numerico che sar‡ l'attuale moltiplicatore.
+, dovrete poi fornire un argomento numerico che sar√† l'attuale moltiplicatore.
  Notate che, contrariamente agli altri parametri, 
 \family typewriter
 Spacing
@@ -7754,15 +7766,16 @@ che
  per l'etichetta.
  Vedere la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \label{Ref: sec:fonts}
+\begin_inset LatexCommand label
+name "Ref: sec:fonts"
 
 \end_inset
 
 .Notare che definire questo font automaticamente definisce 
 \family typewriter
-LabelFont 
+LabelFont
 \family default
-allo stesso valore.
+ allo stesso valore.
 \end_layout
 
 \begin_layout Description
@@ -7775,7 +7788,8 @@ TextFont
  Il font usato per il corpo del testo.
  Vedere la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:fonts}
+\begin_inset LatexCommand ref
+reference "sec:fonts"
 
 \end_inset
 
@@ -7792,7 +7806,8 @@ LabelFont
  Il font usato per le etichette.
  Vedere la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:fonts}
+\begin_inset LatexCommand ref
+reference "sec:fonts"
 
 \end_inset
 
@@ -7808,7 +7823,7 @@ EndPreamble
 \family default
 \series default
  Un set di macro definizione che saranno emesse all'inizio dei files LaTeX
- quando il layout Ë usato.
+ quando il layout √® usato.
  Usatelo per definire le macro di cui si hanno bisogno per questo particolare
  layout.
 \end_layout
@@ -7834,21 +7849,22 @@ Descrizione dei Font
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:fonts}
+\begin_inset LatexCommand label
+name "sec:fonts"
 
 \end_inset
 
-Una descrizione di un font appare cosÏ:
+Una descrizione di un font appare cos√¨:
 \end_layout
 
 \begin_layout LyX-Code
-Font
+Font 
 \family roman
 \emph on
- or 
+or
 \family default
 \emph default
-LabelFont
+ LabelFont
 \end_layout
 
 \begin_layout LyX-Code
@@ -7923,7 +7939,10 @@ Size
 \series default
  [
 \family typewriter
-tiny, small, 
+tiny, small,
+\family default
+ 
+\family typewriter
 \emph on
 normal
 \emph default
@@ -7937,8 +7956,10 @@ normal
 \family typewriter
 \series medium
 Color
+\family default
 \series default
  
+\family typewriter
 \series bold
 [
 \series default
@@ -7968,7 +7989,7 @@ no_latex
 \family typewriter
 no_latex
 \family default
- significa che LyX tradurr‡ tutto in LaTeX.
+ significa che LyX tradurr√† tutto in LaTeX.
  
 \family typewriter
 Latex
@@ -7978,7 +7999,8 @@ Latex
 
 \begin_layout Section
 Creare Templates
-\begin_inset LatexCommand \label{sec:templates}
+\begin_inset LatexCommand label
+name "sec:templates"
 
 \end_inset
 
@@ -7987,7 +8009,7 @@ Creare Templates
 
 \begin_layout Standard
 I templates vengono creati come normali documenti.
- L'unica differenza Ë che i documenti normali contengono tutti i possibili
+ L'unica differenza √® che i documenti normali contengono tutti i possibili
  settaggi, inclusi schemi di font e dimensioni della carta.
  Di solito l'utente non vuole che il template sovrascriva il suo default,
  per questo motivo il progettatore di template dovrebbe rimuovere i corrisponden
@@ -8004,9 +8026,9 @@ fontscheme
 papersize
 \family default
  dal file di template di LyX.
- Questo si puÚ fare con un qualsiasi editor di testo come
+ Questo si pu√≤ fare con un qualsiasi editor di testo come 
 \family typewriter
- vi
+vi
 \family default
  o 
 \family typewriter
@@ -8040,7 +8062,8 @@ template_path
 
 \begin_layout Chapter
 Un Tutorial sulla Stampante
-\begin_inset LatexCommand \label{chap:printer}
+\begin_inset LatexCommand label
+name "chap:printer"
 
 \end_inset
 
@@ -8084,7 +8107,7 @@ filtri magici
  che settano automaticamente il vostro sistema e lo rendono pronto all'uso.
  Potete usare questi strumenti in alternativa o in aggiunta a quello che
  andremo a descrivere, anche se i risultati con questi strumenti saranno
- molto inferiori rispetto alle rispettive potenzialit‡.
+ molto inferiori rispetto alle rispettive potenzialit√†.
  Se la vostra distribuzione ha un tool di configurazione anche in fase di
  installazione, potete certamente usarlo, ma dovrete comunque leggervi il
  
@@ -8095,7 +8118,7 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Standard
-CosÏ, se vi sentite avventurosi, o non avete altra scelta, continuate a
+Cos√¨, se vi sentite avventurosi, o non avete altra scelta, continuate a
  leggere!
 \end_layout
 
@@ -8114,10 +8137,10 @@ Il file
 \family typewriter
 /etc/printcap
 \family default
- Ë quello che permette di comunicare a Linux i dati della vostra stampante.
+ √® quello che permette di comunicare a Linux i dati della vostra stampante.
  Ogni entrata definisce una stampante, le da un nome con cui gli utenti
  possono chiamarla, e dice a Linux come gestire il relativo output.
- Potete ovviamente avere pi˘ 
+ Potete ovviamente avere pi√π 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8126,7 +8149,7 @@ stampanti
 \end_inset
 
  nel vostro sistema anche se gli utenti accedono ad una stessa stampante
- fisica, perÚ con differenti setup o funzioni abilitate.
+ fisica, per√≤ con differenti setup o funzioni abilitate.
 \begin_inset Foot
 status collapsed
 
@@ -8136,7 +8159,7 @@ Nota di
  John Weiss
 \noun default
 : Io ho una Epson Stylus Color IIs.
- Quando c'Ë bisogno di cambiare le testine per usare il colore sulla Stylus
+ Quando c'√® bisogno di cambiare le testine per usare il colore sulla Stylus
  IIs, faccio un setup per una stampante separata, che chiamo 
 \family typewriter
 color
@@ -8147,7 +8170,7 @@ color
 draft
 \family default
  che usa una risoluzione di stampa minore e meno caratteristiche di stampa.
- Quindi potete intuire la funzionalit‡ di printcap.
+ Quindi potete intuire la funzionalit√† di printcap.
 \end_layout
 
 \end_inset
@@ -8336,7 +8359,7 @@ Assicuratevi che la linea fra le entrate sia COMPLETAMENTE BIANCA!!!
 
 \begin_layout Standard
 Anche se lasciate uno spazio bianco tra le entrate, possono accadere cose
- strane, ed il sistema non interpreter‡ correttamente il file 
+ strane, ed il sistema non interpreter√† correttamente il file 
 \family typewriter
 /etc/printcap
 \family default
@@ -8345,7 +8368,7 @@ Anche se lasciate uno spazio bianco tra le entrate, possono accadere cose
 
 \begin_layout Standard
 Date uno sguardo ad una delle entrate dell'esempio precedente.
- Ogni parte dell'entrata Ë seguita da un carattere 
+ Ogni parte dell'entrata √® seguita da un carattere 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8449,7 +8472,7 @@ lp|Text:lp=/dev/lp1:sd=/var/spool/lpd/lp:lf=/var/spool/lpd/lp/errs:
 \end_layout
 
 \begin_layout Standard
-Notate che c'Ë un solo 
+Notate che c'√® un solo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8526,7 +8549,7 @@ Andremo ora a spiegare ogni parte di un'entrata di
 \family default
 .
  Notate che ci sono altre opzioni che potete aggiungere ad un'entrata.
- Noi ci occuperemo soltanto delle quattro basi quÏ, e vi preghiamo di riferirvi
+ Noi ci occuperemo soltanto delle quattro basi qu√¨, e vi preghiamo di riferirvi
  alle man page su 
 \family typewriter
 printcap
@@ -8543,7 +8566,7 @@ La prima linea di un'entrata di
 \family typewriter
 printcap
 \family default
- Ë il nome della stampante.
+ √® il nome della stampante.
  Contiene il nome della stampante, seguito da un carattere 
 \begin_inset Quotes eld
 \end_inset
@@ -8580,7 +8603,7 @@ draft|OurPrinter in Draft Mode:
 \end_layout
 
 \begin_layout Standard
-Ë una stampante chiamata 
+√® una stampante chiamata 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8596,7 +8619,7 @@ draft
 \begin_inset Quotes eld
 \end_inset
 
-Nostra stampante in modalit‡ bozza
+Nostra stampante in modalit√† bozza
 \begin_inset Quotes erd
 \end_inset
 
@@ -8619,7 +8642,7 @@ Nostra stampante in modalit‡ bozza
 \family typewriter
 draft
 \family default
- Ë quello che in genere passate a molte stampanti con l'opzione 
+ √® quello che in genere passate a molte stampanti con l'opzione 
 \family typewriter
 -P
 \family default
@@ -8628,11 +8651,11 @@ draft
 \family typewriter
 lpr
 \family default
- Ë come un comando.]
+ √® come un comando.]
 \end_layout
 
 \begin_layout Standard
-Di solito si usa chiamare la vostra stampante principale PostScriptÆ come
+Di solito si usa chiamare la vostra stampante principale PostScript¬Æ come
  
 \begin_inset Quotes eld
 \end_inset
@@ -8670,7 +8693,7 @@ La prossima parte del nostro esempio di entrate
 printcap
 \family default
  identifica il dispositivo di stampa.
- in tutti gli esempi citati c'Ë una linea:
+ in tutti gli esempi citati c'√® una linea:
 \end_layout
 
 \begin_layout LyX-Code
@@ -8694,7 +8717,7 @@ printcap
 \begin_inset Quotes erd
 \end_inset
 
- alla fine della linea, cosÏ some l'inizio con 
+ alla fine della linea, cos√¨ some l'inizio con 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8723,7 +8746,7 @@ lp=
 \end_inset
 
  porta il nome del dispositivo di stampa.
- In questo caso Ë 
+ In questo caso √® 
 \family typewriter
 /dev/lp1
 \family default
@@ -8737,7 +8760,7 @@ lp=
 \family typewriter
 /dev/ttyS1
 \family default
- per la successiva e cosÏ via.
+ per la successiva e cos√¨ via.
  Se volete aggiungere altri comandi relativi alla stampante nelle entrate
  di 
 \family typewriter
@@ -8757,34 +8780,37 @@ Molte stampanti, tuttavia, usano la porta parallela.
 \emph on
 maggior parte
 \emph default
- dei computer PC-compatibli sar‡ 
+ dei computer PC-compatibli sar√† 
 \family typewriter
 /dev/lp1
 \family default
 .
- Se volete sapere perchË, guardatevi questa nota.
+ Se volete sapere perch√®, guardatevi questa nota.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-PerchË Ë 
+Perch√® √® 
 \family typewriter
 /dev/lp1
 \family default
  e 
 \emph on
-non 
+non
+\emph default
+ 
 \family typewriter
+\emph on
 /dev/lp0
 \family default
 \emph default
  la prima porta stampantet? Va rilevato che l'indirizzo I/O di ogni porta
- parallela Ë codificato nel kernel di linux.
+ parallela √® codificato nel kernel di linux.
  L'indirizzo 
 \family typewriter
 0x3BC
 \family default
- Ë 
+ √® 
 \family typewriter
 /dev/lp0
 \family default
@@ -8792,7 +8818,7 @@ non
 \family typewriter
 0x378
 \family default
- Ë 
+ √® 
 \family typewriter
 /dev/lp1
 \family default
@@ -8800,7 +8826,7 @@ non
 \family typewriter
 0x278
 \family default
- Ë 
+ √® 
 \family typewriter
 /dev/lp2
 \family default
@@ -8814,22 +8840,22 @@ non
 \family typewriter
 /dev/lp1
 \family default
- sar‡ quindi la porta parallela sulla maggior parte dei sistemi.
+ sar√† quindi la porta parallela sulla maggior parte dei sistemi.
 \end_layout
 
 \begin_layout Standard
-Se avete pi˘ di una porta parallela, la situazione cambia.
+Se avete pi√π di una porta parallela, la situazione cambia.
  Inoltre se alterate l'indirizzo I/O della porta per qualsiasi motivo, poi
  uno degli altri dispositivi 
 \family typewriter
 lp
 \family default
  potrebbe puntare sulla porta parallela.
- Su alcuni sistemi questo puÚ creare molti problemi.
- in alcuni casi potete andare in DOS Ë controllare quale indirizzo Ë stato
+ Su alcuni sistemi questo pu√≤ creare molti problemi.
+ in alcuni casi potete andare in DOS √® controllare quale indirizzo √® stato
  assegnato alla vostra porta.
- DopodichË potete usare questo indirizzo per stabilire se la porta parallela
- Ë 
+ Dopodich√® potete usare questo indirizzo per stabilire se la porta parallela
+ √® 
 \family typewriter
 /dev/lp0
 \family default
@@ -8846,7 +8872,7 @@ lp
 
 \end_inset
 
- Il vostro sistema non sar‡ differente, tuttavia controllate sempre a cosa
+ Il vostro sistema non sar√† differente, tuttavia controllate sempre a cosa
  corrisponde la vostra porta parallela.
 \end_layout
 
@@ -8856,7 +8882,7 @@ La Directory Spool e il File Log
 
 \begin_layout Standard
 Oltre a dare un nome alla vostra stampante e a dire a Linux quale dispositivo
- Ë, avete ancora bisogno di una directory per il print spooling.
+ √®, avete ancora bisogno di una directory per il print spooling.
  la sigla 
 \begin_inset Quotes eld
 \end_inset
@@ -8907,7 +8933,7 @@ root
 \end_inset
 
  e creare queste directory da soli.
- Dovrete inoltre cambiare la propriet‡ di queste directory, cosicchË il
+ Dovrete inoltre cambiare la propriet√† di queste directory, cosicch√® il
  loro gruppo sia il gruppo 
 \family typewriter
 daemon
@@ -8919,8 +8945,9 @@ daemon
 
 
 \family typewriter
-chgrp daemon 
+chgrp daemon
 \family default
+ 
 \emph on
 dirname
 \emph default
@@ -8932,7 +8959,7 @@ dirname
 \emph on
 dirname
 \emph default
- Ë il nome della directory di spool.
+ √® il nome della directory di spool.
 \end_layout
 
 \begin_layout Standard
@@ -8965,13 +8992,13 @@ ps
 \end_layout
 
 \begin_layout Standard
-Questo indica che la directory di spool Ë 
+Questo indica che la directory di spool √® 
 \family typewriter
 /var/spool/lpd/ps
 \family default
- e che il log file Ë
+ e che il log file √® 
 \family typewriter
- /var/spool/lpd/ps/errs
+/var/spool/lpd/ps/errs
 \family default
 .
  Dovete 
@@ -9026,11 +9053,11 @@ lp
 \end_layout
 
 \begin_layout Standard
-Ancora, la spool directory Ë 
+Ancora, la spool directory √® 
 \family typewriter
 /var/spool/lpd/lp
 \family default
- e il log file Ë
+ e il log file √®
 \family typewriter
 /var/spool/lpd/lp/errs
 \family default
@@ -9080,12 +9107,12 @@ ps
 \begin_inset Quotes erd
 \end_inset
 
- hanno bisogno di un filtro [ecco perchË c'Ë una riga addizionale].
+ hanno bisogno di un filtro [ecco perch√® c'√® una riga addizionale].
  La riga 
 \family typewriter
 printcap
 \family default
- per il programma filtro Ë 
+ per il programma filtro √® 
 \begin_inset Quotes eld
 \end_inset
 
@@ -9153,7 +9180,7 @@ ps.filter
 \begin_inset Quotes erd
 \end_inset
 
- Ë uno script di shell che risiede nella directory di spool per la stampante
+ √® uno script di shell che risiede nella directory di spool per la stampante
  
 \begin_inset Quotes eld
 \end_inset
@@ -9273,13 +9300,13 @@ Creare un Filtro di Stampa
 \end_layout
 
 \begin_layout Subsection
-Stampare Files PostScriptÆ Usando Ghostscript
+Stampare Files PostScript¬Æ Usando Ghostscript
 \end_layout
 
 \begin_layout Standard
-Il modo pi˘ semplice per far capire alla vostra stampante il PostScriptÆ
- Ë quello di usare il programma Ghostscript come filtro di stampa.
- Ci sono probabilmente altri modi, ma questo Ë quello pi˘ comune.
+Il modo pi√π semplice per far capire alla vostra stampante il PostScript¬Æ
+ √® quello di usare il programma Ghostscript come filtro di stampa.
+ Ci sono probabilmente altri modi, ma questo √® quello pi√π comune.
  Se, per qualche ragione non potete o volete usare Ghostscript, dovrete
  provvedere da soli [guardatevi 
 \family typewriter
@@ -9289,9 +9316,9 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Standard
-La prima cosa che dovete fare Ë installare Ghostscript.
- C'Ë almeno una versione in ogni distribuzione Linux.
- se non c'Ë la potete ottenereThe first thing you should do is install Ghostscri
+La prima cosa che dovete fare √® installare Ghostscript.
+ C'√® almeno una versione in ogni distribuzione Linux.
+ se non c'√® la potete ottenereThe first thing you should do is install Ghostscri
 pt.
  There should be a version in your Linux da uno dall'archivio FTP di Linux
  
@@ -9308,9 +9335,9 @@ gs -h | more
 
 \begin_layout Standard
 dalla linea di comando.
- Questo far‡ una lista dei dispositivi di stampa disponibili con relativi
+ Questo far√† una lista dei dispositivi di stampa disponibili con relativi
  formati.
- QuÏ di seguito riportiamo una lista che vi aiuta a capire meglio a quale
+ Qu√¨ di seguito riportiamo una lista che vi aiuta a capire meglio a quale
  dispositivo Ghostscript corrisponde ogni stampante.
 \end_layout
 
@@ -9429,7 +9456,7 @@ ap3250 ActionPrinter AP3250 [ed ogni stampante che usa il linguaggio ESC/P2]
 
 \begin_layout Description
 escp2 Tutte le stampantil Epson che usano i comandi ESC/P2 [questo driver
- non Ë pi˘ disponibile, usare 
+ non √® pi√π disponibile, usare 
 \series bold
 ap3250
 \series default
@@ -9643,11 +9670,13 @@ xes Xerox XES printers (2700, 3700, 4045, etc.)
 Se il pacchetto Ghostscript che avete nella vostra distribuzione non include
  la vostra stampante potete sempre scaricarvi il codice e compilarvelo da
  soli.
- Se la vostra stampante non Ë 
+ Se la vostra stampante non √® 
 \emph on
 direttamente
+\emph default
+ 
 \emph toggle
- supportata da Ghostscript, provate a scegliere una compatibile.
+supportata da Ghostscript, provate a scegliere una compatibile.
 \end_layout
 
 \begin_layout Standard
@@ -9693,7 +9722,7 @@ pname
 \begin_inset Quotes erd
 \end_inset
 
- Ë il nome che avete dato alla stampante nel file 
+ √® il nome che avete dato alla stampante nel file 
 \family typewriter
 printcap
 \family default
@@ -9746,11 +9775,11 @@ dove
 \emph on
 devname
 \emph default
- Ë il nome del dispositivo Ghostscript; 
+ √® il nome del dispositivo Ghostscript; 
 \emph on
-ResNum 
+ResNum
 \emph default
-Ë la risoluzione che volete usare;s the resolution you want to use; 
+ √® la risoluzione che volete usare;s the resolution you want to use; 
 \emph on
 ExtraOptions
 \emph default
@@ -9770,7 +9799,7 @@ ps
 \begin_inset Quotes erd
 \end_inset
 
- Ë il nome del file che deve essere letto prima dell'input [come il file
+ √® il nome del file che deve essere letto prima dell'input [come il file
  
 \family typewriter
 stcolor.ps
@@ -9851,7 +9880,7 @@ Differenti drivers Ghostscript trattano l'argomento
 \end_inset
 
 .
- Il driver della stampante puÚ avere altre opzioni, quindi Ë meglio consultare
+ Il driver della stampante pu√≤ avere altre opzioni, quindi √® meglio consultare
  la documentazione di Ghostscript per maggiori informazioni.
 \end_layout
 
@@ -9917,7 +9946,7 @@ Nota da
 \noun on
 John Weiss
 \noun default
-: Questa Ë la mia stampante ps.
+: Questa √® la mia stampante ps.
  Io uso un filtro simile sulla stampante 
 \family typewriter
 draft
@@ -9944,22 +9973,22 @@ color
 \end_layout
 
 \begin_layout Subsection
-Se Gi‡ avete una Stampante PostScriptÆ\SpecialChar \ldots{}
+Se Gi√† avete una Stampante PostScript¬Æ\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Standard
-Molte stampanti laser moderne oggi hanno il supporto per PostScriptÆ.
- Su alcune stampanti laser, PostScriptÆ Ë attualmente il linguaggio nativo
+Molte stampanti laser moderne oggi hanno il supporto per PostScript¬Æ.
+ Su alcune stampanti laser, PostScript¬Æ √® attualmente il linguaggio nativo
  della stampante.
  Se avete una stampante, non avete bisogno del filtro e potete passare un
- file PostScriptÆ direttamente alla stampante.
+ file PostScript¬Æ direttamente alla stampante.
  Di contro, se volete stampare un file di testo, avrete comunque bisogno
- di formattarlo in qualche modo in PostScriptÆ.
+ di formattarlo in qualche modo in PostScript¬Æ.
 \end_layout
 
 \begin_layout Standard
-Siamo a conoscenza di tre programmi che traducono il testo ASCII in PostScriptÆ:
+Siamo a conoscenza di tre programmi che traducono il testo ASCII in PostScript¬Æ:
  
 \family typewriter
 nenscript
@@ -9984,11 +10013,11 @@ mpage
 lp
 \family default
 .
- [La stampante
+ [La stampante 
 \family typewriter
- lp
+lp
 \family default
- Ë tradizionalmente il nome della stampante che stampa file di testo ASCII.]
+ √® tradizionalmente il nome della stampante che stampa file di testo ASCII.]
  Leggete il 
 \family typewriter
 Printing-HOWTO
@@ -10003,7 +10032,7 @@ lpd
 \end_layout
 
 \begin_layout Standard
-Il programma che generalmente fa lo spooling e la stampa dei files Ë 
+Il programma che generalmente fa lo spooling e la stampa dei files √® 
 \family typewriter
 lpd
 \family default
@@ -10028,7 +10057,7 @@ Alcune macchine tengono i loro scripts di bootup nella directory
 /etc/init.d
 \family default
 .
- Dovete capire da voi che sistema Ë usato.
+ Dovete capire da voi che sistema √® usato.
 \end_layout
 
 \end_inset
@@ -10047,17 +10076,17 @@ lpd
 \end_layout
 
 \begin_layout Standard
-Una volta che
+Una volta che 
 \family typewriter
- lpd
+lpd
 \family default
- Ë in esecuzione sul vostro sistema, potete controllare il suo comportamento
+ √® in esecuzione sul vostro sistema, potete controllare il suo comportamento
  e quello del print spool usando il comando 
 \family typewriter
 lpc
 \family default
 .
- Ancora una volta, dovete essere root per pare ciÚ.
+ Ancora una volta, dovete essere root per pare ci√≤.
 \end_layout
 
 \begin_layout Section
@@ -10091,7 +10120,7 @@ ps
 \begin_inset Quotes erd
 \end_inset
 
- per i files PostScriptÆ.
+ per i files PostScript¬Æ.
  Il file filtro per la stampante 
 \begin_inset Quotes eld
 \end_inset
@@ -10104,8 +10133,8 @@ ps
 \begin_inset Quotes erd
 \end_inset
 
- [incluso sotto] funziona su ogni stampante compatibile Epson [ovvero pressocchË
- la totalit‡ delle stampanti dot-matrix attualmente in commercio], usando
+ [incluso sotto] funziona su ogni stampante compatibile Epson [ovvero pressocch√®
+ la totalit√† delle stampanti dot-matrix attualmente in commercio], usando
  la risoluzione di stampa di default.
 \end_layout
 
@@ -10155,7 +10184,7 @@ mkdir lpd
 
 \begin_deeper
 \begin_layout Standard
-[se non esiste gi‡]
+[se non esiste gi√†]
 \end_layout
 
 \end_deeper
@@ -10209,7 +10238,7 @@ mkdir lp ps
 
 \begin_deeper
 \begin_layout Standard
-[fatelo solo se queste directory non esistono gi‡]
+[fatelo solo se queste directory non esistono gi√†]
 \end_layout
 
 \end_deeper
@@ -10436,7 +10465,7 @@ epson
 \family typewriter
 gs
 \family default
- non Ë in 
+ non √® in 
 \family typewriter
 /usr/bin
 \family default
@@ -10473,7 +10502,7 @@ lpd
 
 \begin_deeper
 \begin_layout Enumerate
-Se non Ë gi‡ in uso, usate 
+Se non √® gi√† in uso, usate 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10489,7 +10518,7 @@ lpd &
 \end_layout
 
 \begin_layout Enumerate
-Se Ë gi‡ in esecuzione, eseguite 
+Se √® gi√† in esecuzione, eseguite 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10601,7 +10630,7 @@ lpr -Pps
 \begin_inset Quotes erd
 \end_inset
 
- seguito dal nome di un piccolo file PostScriptÆ per testare la stampante
+ seguito dal nome di un piccolo file PostScript¬Æ per testare la stampante
  
 \begin_inset Quotes eld
 \end_inset
@@ -10679,7 +10708,7 @@ Background
 \end_layout
 
 \begin_layout Standard
-Una caratteristica spesso richiesta dagli utenti LyX Ë quella di interfacciare
+Una caratteristica spesso richiesta dagli utenti LyX √® quella di interfacciare
  LyX con Xfig, Dia, o altre applicazioni specializzate nella produzioni
  di un certo tipo di diagrammi, figure, schemi e simili cose che possono
  essere rilevanti per il vostro documento.
@@ -10694,9 +10723,9 @@ Se volete cambiare la figura, dovete richiamare manualmente un programma
 \end_layout
 
 \begin_layout Itemize
-LyX non notifica i cambiamenti ai riferimenti dei files, cosÏ quello che
- Ë visualizzato sullo schermo puÚ rapidamente diventare obsoleto, e questo
- Ë aggravato da una media di aggiornamenti dello schermo
+LyX non notifica i cambiamenti ai riferimenti dei files, cos√¨ quello che
+ √® visualizzato sullo schermo pu√≤ rapidamente diventare obsoleto, e questo
+ √® aggravato da una media di aggiornamenti dello schermo
 \end_layout
 
 \begin_layout Itemize
@@ -10714,27 +10743,27 @@ L'insieme del materiale esterno prova a risolvere tutti questi problemi
 status collapsed
 
 \begin_layout Standard
-Anche se l'insieme delle figure non puÚ risolvere tutti i problemi, Ë ancora
- valutabile perchË fornisce un'anteprima in linea della figura, e supporta
+Anche se l'insieme delle figure non pu√≤ risolvere tutti i problemi, √® ancora
+ valutabile perch√® fornisce un'anteprima in linea della figura, e supporta
  trasformazioni geometriche avanzate con una semplice interfaccia utente.
 \end_layout
 
 \end_inset
 
 .
- Effettua ciÚ offrendo un metodo generale per interfacciare LyX alle applicazion
+ Effettua ci√≤ offrendo un metodo generale per interfacciare LyX alle applicazion
 i esterne.
  Invece di introdurre una lunga lista di insiemi ritagliati per ogni specifica
  applicazione, abbiamo scelto di sacrificare la visualizzazione in line
  del materiale incluso al fine di fornire uno strumento generale per affrontare
- una grande quantit‡ di applicazioni.
- Il risultato Ë l'insieme esterno.
+ una grande quantit√† di applicazioni.
+ Il risultato √® l'insieme esterno.
  Un insieme esterno presenta se stesso nel documento semplicemente come
  un bottone, ma non lasciatevi ingannare.
- Quando ci cliccate sopra, apparir‡ una finestra di dialogo che vi permetter‡
- di scegliere esattamente quale materiale includere, Ë pi˘ avanti imparerete
- che in realt‡ Ë un potente meccanismo che puÚ risolvere molti problemi
- ed anche di pi˘.
+ Quando ci cliccate sopra, apparir√† una finestra di dialogo che vi permetter√†
+ di scegliere esattamente quale materiale includere, √® pi√π avanti imparerete
+ che in realt√† √® un potente meccanismo che pu√≤ risolvere molti problemi
+ ed anche di pi√π.
 \end_layout
 
 \begin_layout Section
@@ -10742,12 +10771,12 @@ Come funziona?
 \end_layout
 
 \begin_layout Standard
-L'insieme esterno Ë basato sul concetto di 
+L'insieme esterno √® basato sul concetto di 
 \emph on
 template
 \emph default
 .
- Un template Ë una specificazione di come LyX dovrebbe interfacciarsi con
+ Un template √® una specificazione di come LyX dovrebbe interfacciarsi con
  un certo tipo di materiale.
  In genere LyX viene distribuito con una serie di template predefiniti per
  figure XFig, diagrammi Dia, varie immagini in formato raster, gnuplot,
@@ -10756,19 +10785,19 @@ template
 \family sans
 Insert\SpecialChar \menuseparator
 Insert external material.
- 
+
 \family default
-Inoltre, Ë possibile adattare i vostri personali template per supportare
+ Inoltre, √® possibile adattare i vostri personali template per supportare
  uno specifico tipo di materiale.
- Pi˘ avanti descriveremo pi˘ in dettaglio gli elementi coinvolti, e si spera
+ Pi√π avanti descriveremo pi√π in dettaglio gli elementi coinvolti, e si spera
  che possiate creare dei template che poi ci manderete per includerli nelle
  successive versioni di LyX.
 \end_layout
 
 \begin_layout Standard
-Un'altra idea di base dell'insieme esterno Ë di distinguere tra il file
+Un'altra idea di base dell'insieme esterno √® di distinguere tra il file
  originale che serve come base per il materiale finale e il file prodotto
- che Ë incluso nel vostro documento esportato o stampato.
+ che √® incluso nel vostro documento esportato o stampato.
  Per esempio, consideriamo il caso di una figura prodotta con XFig.
  L'applicazione XFig lavora su un file originale con estensione 
 \family typewriter
@@ -10786,25 +10815,25 @@ fig
 \family typewriter
 transfig
 \family default
- al fine di creare un file PostScript che puÚ essere prontamente incluso
+ al fine di creare un file PostScript che pu√≤ essere prontamente incluso
  nel vostro file LaTeX.
  In questo caso, il file 
 \family typewriter
 .fig
 \family default
- Ë il file originale, Ë il file PostScript Ë quello prodotto.
+ √® il file originale, √® il file PostScript √® quello prodotto.
 \end_layout
 
 \begin_layout Standard
-Questa distinzione Ë importante al fine di effettuare l'aggiornamento del
- materiale mentre si Ë in fase di scrittura del documento.
- Inoltre, ci fornisce quella flessibilit‡ che Ë necessaria per supportare
+Questa distinzione √® importante al fine di effettuare l'aggiornamento del
+ materiale mentre si √® in fase di scrittura del documento.
+ Inoltre, ci fornisce quella flessibilit√† che √® necessaria per supportare
  molteplici formati di export.
- Ad esempio, nel caso di un file Ascii, non Ë esattamente una buona idea
+ Ad esempio, nel caso di un file Ascii, non √® esattamente una buona idea
  quella di includere la figura come un raw PostScript; dovreste invece preferire
  l'includere un riferimento alla figura oppure provare a richiamare qualche
  convertitore grafico da Ascii per rendere il risultato finale accettabile.
- L'insieme materiale esterno vi permette di farlo, perchË Ë parametrizzato
+ L'insieme materiale esterno vi permette di farlo, perch√® √® parametrizzato
  su differenti formati di export supportati da LyX.
 \end_layout
 
@@ -10815,7 +10844,7 @@ Oltre a supportare la produzione di differenti prodotti in relazione al
  Nel caso di una figura XFig, potete richiamare xfig sul file originale
  con un singolo clic all'interno di LyX oltre che avere un'anteprima del
  file PostScript prodotto con ghostview sempre con un semplice clic.
- Non c'Ë pi˘ bisogno di smanettare con la riga di comando o con il browser
+ Non c'√® pi√π bisogno di smanettare con la riga di comando o con il browser
  per trovare e manipolare i files originali o quelli prodotti.
  In questo modo potrete finalmente utilizzare a pieno molte differenti applicazi
 oni che risultano rilevanti nella scrittura di un documento, al fine di
@@ -10825,36 +10854,36 @@ oni che risultano rilevanti nella scrittura di un documento, al fine di
 \begin_layout Standard
 Quindi, in definitiva, LyX ha informazioni circa un numero di programmi
  differenti da usare dietro le quinte per realizzare tutto questo marchingegno.
- Questa informazione, infatti, Ë esattamente ciÚ che Ë contenuto nei templates.
- Per ogni template, c'Ë associata una lista di linee di comando usate per
+ Questa informazione, infatti, √® esattamente ci√≤ che √® contenuto nei templates.
+ Per ogni template, c'√® associata una lista di linee di comando usate per
  irchiamare le applicazioni, convertire il file originale nel file prodotto
  ed altro ancora.
- Questo meccanismo permette all'utente avanzato di estendere le capacit‡
+ Questo meccanismo permette all'utente avanzato di estendere le capacit√†
  di LyX senza smanettare col codice sorgente.
  Questo richiede un imponente lavoro per definire tutti i differenti comandi
- e flags, ma fortunatamente, il team di LyX ha gi‡ fatto questo lavoro per
+ e flags, ma fortunatamente, il team di LyX ha gi√† fatto questo lavoro per
  voi!
 \end_layout
 
 \begin_layout Standard
 Ma prima che gli alberi diventino grattacieli, dobbiamo ammettere che abbiamo
  fatto alcuni piccole scorciatoie.
- Siccome il set esterno puÚ produrre molti tipi di files prodotti per i
+ Siccome il set esterno pu√≤ produrre molti tipi di files prodotti per i
  relativi formati di export, ci si potrebbe anche aspettare che sia possibile
  vedere l'anteprima di ogni prodotto.
  Ma, ancora una voltea, il team di LyX ha deciso per una linea che mantenesse
  l'interfaccia utente semplice.
  Per evitare di mettere un pulsante per ogni formato di file esportato,
- si Ë deciso di introdurre il concetto di formato primario di file ed avere
+ si √® deciso di introdurre il concetto di formato primario di file ed avere
  solo un bottone.
- Quando si preme View result nella finestra dell'insieme esterno, verr‡
+ Quando si preme View result nella finestra dell'insieme esterno, verr√†
  visualizzata un'immagine del file prodotto nel formato di file primario.
- E questo Ë specificato dalla vostra classe di documento.
+ E questo √® specificato dalla vostra classe di documento.
  Per la maggior parte delle classi di documento il formato primario di file
- Ë LaTeX, ma per la classe di documento DocBook, il formato di file primario
- Ë DocBook.
- CosÏ quando si visualizza il file prodotto, ricordatevi che sar‡ solo un'antepr
-ima di quello che sar‡ il risultato principale.
+ √® LaTeX, ma per la classe di documento DocBook, il formato di file primario
+ √® DocBook.
+ Cos√¨ quando si visualizza il file prodotto, ricordatevi che sar√† solo un'antepr
+ima di quello che sar√† il risultato principale.
  Se volete vedere come lavorano gli altri formati, dovete esportarli e fare
  l'anteprima manualmente.
 \end_layout
@@ -10878,17 +10907,17 @@ Insert
 \end_layout
 
 \begin_layout Standard
-In cima a questa finestra, c'Ë una lista a cascata dove Ë possibile scegliere
+In cima a questa finestra, c'√® una lista a cascata dove √® possibile scegliere
  quale template l'insieme deve usare.
  Immediatamente sotto troviamo un'area di testo con una descrizione del
  template scelto che dovrebbe aiutarvi ad usarlo.
- Pi˘ spesso, fornisce oltre ad una descrizione del template anche alcune
+ Pi√π spesso, fornisce oltre ad una descrizione del template anche alcune
  indicazioni su come parametrizzarne l'uso.
- Ancora pi˘ in basso si trova un campo di inserimento di nome di file con
+ Ancora pi√π in basso si trova un campo di inserimento di nome di file con
  un bottone browse che permette di scegliere quale file deve essere incluso.
  Questo campo specifica il file originale.
- Siccome il file prodotto Ë generato automaticamente quando se ne ha bisogno,
- non c'Ë motivo per consentirne l'accesso nell'interfaccia utente.
+ Siccome il file prodotto √® generato automaticamente quando se ne ha bisogno,
+ non c'√® motivo per consentirne l'accesso nell'interfaccia utente.
 \end_layout
 
 \begin_layout Standard
@@ -10898,7 +10927,7 @@ In basso alla finestra di dialogo troverete una casella di immissione chiamata
 parameters
 \family default
 .
- Questo box Ë generalmente usato per parametrizzare uno specifico template.
+ Questo box √® generalmente usato per parametrizzare uno specifico template.
  L'uso specifico dovrebbe essere indicato e chiarito nella casella di definizion
 e e aiuto associata al template, ma in genere permette tipicamente di definire
  le variazioni su come il file prodotto dovrebbe essere generato.
@@ -10926,29 +10955,29 @@ Update result
 \family sans
 Update result
 \family default
- sar‡ disabilitato perchË molti template sono configurati per aggiornare
- automaticamente il file prodotto quando ce ne Ë bisogno.
- In questi casi non c'Ë bisogno di forzare la produzione di un nuovo file
+ sar√† disabilitato perch√® molti template sono configurati per aggiornare
+ automaticamente il file prodotto quando ce ne √® bisogno.
+ In questi casi non c'√® bisogno di forzare la produzione di un nuovo file
  prodotto.
  Tuttavia alcuni templates sono configurati per non produrre automaticamente
  il prodotto residuale, in quanto il costo di produrre un file prodotto
- potrebbe essere cosÏ grande da renderne impossibile l'attuazione.
+ potrebbe essere cos√¨ grande da renderne impossibile l'attuazione.
  Questi insiemi sono conosciuti come insiemi 
 \emph on
-manuali 
+manuali
 \emph default
-esterni.
+ esterni.
  In questi casi potete usare il bottone per forzare la produzione del file
- prodotto proprio quando ne avete bisogno, controllando cosÏ il lavoro che
+ prodotto proprio quando ne avete bisogno, controllando cos√¨ il lavoro che
  viene fatto.
- Infatti, Ë sotto la 
+ Infatti, √® sotto la 
 \emph on
 vostra
 \emph default
- responsabilit‡ fare questo per mantenere i files prodotti costantemente
+ responsabilit√† fare questo per mantenere i files prodotti costantemente
  aggiornati: prima di stampare, prima di esportare, prima di visualizzare,
  ecc.
- Forse, in futuro, sar‡ possibile che LyX vi aiuti in questo compito.
+ Forse, in futuro, sar√† possibile che LyX vi aiuti in questo compito.
  Sarebbe infatti simpatico poter usare un comando 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -10968,7 +10997,7 @@ OK
 Cancel
 \family default
 .
- L'unica cosa utile da ricordare circa questi Ë che ogni cambiamento nel
+ L'unica cosa utile da ricordare circa questi √® che ogni cambiamento nel
  template, nome del file o parametri sono attualmente applicati quando si
  premono i bottoni 
 \family sans
@@ -11034,13 +11063,13 @@ Il file di configurazione external template
 
 \begin_layout Standard
 E' relativamente semplice aggiungere definizioni di template esterni a LyX.
- Tuttavia state attenti poichË fare queste cose in maniera approssimativa
+ Tuttavia state attenti poich√® fare queste cose in maniera approssimativa
  
 \emph on
 potrebbe
 \emph default
  probabilmente creare un buco di sicurezza facilmente sfruttabile.
- CosÏ prima di procedere, leggete il successivo capitolo sulla sicurezza.
+ Cos√¨ prima di procedere, leggete il successivo capitolo sulla sicurezza.
 \end_layout
 
 \begin_layout Standard
@@ -11054,7 +11083,7 @@ I templates sono definiti nel file
 lib/external_template
 \family default
 .
- Forse, prima o poi qualcuno documenter‡ i contenuti dei templates e la
+ Forse, prima o poi qualcuno documenter√† i contenuti dei templates e la
  sintassi usata per definirne di propri.
 \end_layout
 
@@ -11063,7 +11092,7 @@ Il meccanismo di sostituzione
 \end_layout
 
 \begin_layout Standard
-Quando l'insieme del materiale esterno richiama un programma esterno, Ë
+Quando l'insieme del materiale esterno richiama un programma esterno, √®
  fatto sulla base di un comando definito nel file di configurazione del
  template.
  Questi comandi possono contenere varie macro che vengono espanse prima
@@ -11072,7 +11101,7 @@ Quando l'insieme del materiale esterno richiama un programma esterno, Ë
 \end_layout
 
 \begin_layout Standard
-Inoltre, ogni volta che viene visualizzato un insieme esterno, il nome sar‡
+Inoltre, ogni volta che viene visualizzato un insieme esterno, il nome sar√†
  prodotto dal meccanismo di sostituzione.
 \end_layout
 
@@ -11089,13 +11118,13 @@ $$Basename Il nome del file senza estensione.
 \end_layout
 
 \begin_layout Description
-$$Tempname Un nome e un indirizzo completo di un file temporaneo che sar‡
+$$Tempname Un nome e un indirizzo completo di un file temporaneo che sar√†
  automaticamente cancellato quando si chiude il documento contenuto, oppure
- quando Ë cancellato l'insieme esterno.
+ quando √® cancellato l'insieme esterno.
 \end_layout
 
 \begin_layout Description
-$$Contents("filename.ext") Questa macro espander‡ il contenuto del file col
+$$Contents("filename.ext") Questa macro espander√† il contenuto del file col
  nome 
 \family typewriter
 filename.ext
@@ -11104,7 +11133,7 @@ filename.ext
 \end_layout
 
 \begin_layout Description
-$$Sysdir Questa macro espander‡ all'indirizzo assoluto della directory di
+$$Sysdir Questa macro espander√† all'indirizzo assoluto della directory di
  sistema.
  E' tipicamente usato per puntare i vari script di aiuto che sono inseriti
  in LyX
@@ -11129,7 +11158,7 @@ L'insieme del materiale esterno si interfaccia con molti programmi esterni
  sicurezza di questo.
  In particolare, siccome avete l'opzione di includere dei vostri nomi dei
  file e/o stringhe di parametri, e questi vengono aperti in un comando,
- sembrerebbe che sia possibile creare un documento maligno che puÚ eseguire
+ sembrerebbe che sia possibile creare un documento maligno che pu√≤ eseguire
  comandi arbitrari quando un utente vede o stampa un documento.
  Questo lo vogliamo definitivamente evitare.
 \end_layout
@@ -11137,8 +11166,8 @@ L'insieme del materiale esterno si interfaccia con molti programmi esterni
 \begin_layout Standard
 Tuttavia, dato che i comandi dei programmi esterni sono specificati solo
  nel file di configurazione del template, non ci sono problemi di sicurezza
- se LyX Ë configurato bene solo con templates sicuri.
- E' cosÏ perche i programmi esterni sono richiamati con la chiamata di sitema
+ se LyX √® configurato bene solo con templates sicuri.
+ E' cos√¨ perche i programmi esterni sono richiamati con la chiamata di sitema
  
 \family typewriter
 execvp
@@ -11147,17 +11176,17 @@ execvp
 \family typewriter
 system
 \family default
-, quindi non Ë possibile eseguire comandi arbitrari dal file o dalla sezione
+, quindi non √® possibile eseguire comandi arbitrari dal file o dalla sezione
  dei parametri attraverso la shell.
 \end_layout
 
 \begin_layout Standard
-Tutto ciÚ implica che siete limitati nelle stringhe di comando che potete
+Tutto ci√≤ implica che siete limitati nelle stringhe di comando che potete
  usare nei template dei materiali esterni, In particolare canali e redirection
  non sono subito disponibili.
- CiÚ dovrebbe essere cosÏ se LyX dovesse rimanere sicuro.
+ Ci√≤ dovrebbe essere cos√¨ se LyX dovesse rimanere sicuro.
  Se volete usare alcune funzioni della shell, dovrete scrivere uno script
- sicuro per farlo in maniera controllata, dopodochË richimare lo script
+ sicuro per farlo in maniera controllata, dopodoch√® richimare lo script
  dalla linea di comando.
  Nella directory 
 \family typewriter
@@ -11169,8 +11198,8 @@ lib/scripts
 general_command_wrapper.py
 \family default
  che supporta la redirection di input e output.
- Questo puÚ essere un esempio di come scrivere script di template sicuri.
- Per un esempio pi˘ avanzato che usa fork e simili, date uno sguardo allo
+ Questo pu√≤ essere un esempio di come scrivere script di template sicuri.
+ Per un esempio pi√π avanzato che usa fork e simili, date uno sguardo allo
  script di conversione 
 \family typewriter
 pic2ascii.py
@@ -11191,24 +11220,24 @@ execvp
  in maniera controllata.
  Naturalmente se si lavora in un ambiente controllato potrebbe essere allettante
  ritornare ad usare gli script di shell ordinari.
- Se lo fate state attenti poichË 
+ Se lo fate state attenti poich√® 
 \emph on
 andrete a creare
 \emph default
  un buco di sicurezza facilmente sfruttabile nel vostro sistema.
- Naturalmente Ë ragionevole che questi templates non sicuri non verranno
+ Naturalmente √® ragionevole che questi templates non sicuri non verranno
  mai inclusi nella distribuzione LyX standard, sebbene incoraggiamo le persone
  a sottoporre nuovi templates nella tradizione open source.
- Ma LyX come rilasciato nei canali ufficiali di distribuzioni non avr‡ mai
+ Ma LyX come rilasciato nei canali ufficiali di distribuzioni non avr√† mai
  tamplates non sicuri.
 \end_layout
 
 \begin_layout Standard
-L'insieme del materiale esterno fornisce molta potenza, perciÚ dovete stare
+L'insieme del materiale esterno fornisce molta potenza, perci√≤ dovete stare
  attenti a non introdurre elementi di azzardo sulla sicurezza a questa potenza.
- Un lieve errore in una singola riga di un semplice script puÚ creare grandi
+ Un lieve errore in una singola riga di un semplice script pu√≤ creare grandi
  problemi di sicurezza.
- CosÏ, se non capite completamente questo tema, vi consigliamo di consultare
+ Cos√¨, se non capite completamente questo tema, vi consigliamo di consultare
  un professionista della sicurezza oppure il team di sviluppo di LyX se
  avete domande sulle implicazioni di sicurezza circa uno script.
  E, ovviamente, fate questo prima di usare lo script in un ambiente non
@@ -11220,8 +11249,8 @@ Il futuro dell'insieme esterno
 \end_layout
 
 \begin_layout Standard
-La corrente implementazione dell'insieme esterno Ëun costrutto potente e
- stabile che fornisce un accesso diretto alle parti pi˘ interne di LyX,
+La corrente implementazione dell'insieme esterno √®un costrutto potente e
+ stabile che fornisce un accesso diretto alle parti pi√π interne di LyX,
  ma come ogni caratteristca di LyX, dovrebbe essere sempre considerata un
  work-in-progress.
  Quando e se qualcuno ha il tempo di continuare a lavorarci su, ecco alcune
@@ -11230,7 +11259,7 @@ La corrente implementazione dell'insieme esterno Ëun costrutto potente e
 
 \begin_layout Itemize
 Supportare l'anteprima in linea in vari formati, piuttosto che il bottone
- di testo a cui si Ë obbligati attualmente.
+ di testo a cui si √® obbligati attualmente.
 \end_layout
 
 \begin_layout Itemize
@@ -11241,9 +11270,9 @@ Supportare l'editing in linea attraverso l'uso di OpenParts o altri protocolli
 \begin_layout Itemize
 Estendere l'informazioni dinamica per avere campi di parametri opzionali
  per i comandi di conversione in tutti i formati di export, ed avere campi
- di parametri opzionali per ciÚ che Ë prodotto all'interno di tutti i differenti
+ di parametri opzionali per ci√≤ che √® prodotto all'interno di tutti i differenti
  formati esportati.
- Al momento siamo costretti ad usare una sola stringa di parametri che Ë
+ Al momento siamo costretti ad usare una sola stringa di parametri che √®
  multiplata tra queste numerosi applicazioni.
  Inoltre un cambiamento come questo ci permetterebbe di liberarci delle
  strane restrizioni del formato principale.
@@ -11251,10 +11280,10 @@ Estendere l'informazioni dinamica per avere campi di parametri opzionali
 
 \begin_layout Itemize
 Estendere l'area di lavoro per fornire delle opzioni di personalizzazione
- pi˘ intelligenti in aggiunta alla piuttosto semplicistica stringa di parametri.
- Con un linguaggio di script adatto, sar‡ possibile implementare versioni
+ pi√π intelligenti in aggiunta alla piuttosto semplicistica stringa di parametri.
+ Con un linguaggio di script adatto, sar√† possibile implementare versioni
  user friendly di molti insiemi di personalizzazione che supportano una
- grande quantit‡ di formati, pacchetti LaTeX, editors, ecc.
+ grande quantit√† di formati, pacchetti LaTeX, editors, ecc.
 \end_layout
 
 \end_body

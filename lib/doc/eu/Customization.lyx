@@ -1,5 +1,5 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -8,13 +8,21 @@
 \end_preamble
 \language basque
 \inputencoding latin1
-\fontscheme pslatex
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,7 +35,8 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -53,7 +62,7 @@ Mike Ressler
  posta-zerrendara : <lyx-docs@lists.lyx.org>.
  
 \newline
-Itzulpena: IÒaki LarraÒaga Murgoitio, <dooteo@euskalgnu.org>, 2004.
+Itzulpena: I√±aki Larra√±aga Murgoitio, <dooteo@euskalgnu.org>, 2004.
  
 \newline
 Zuzenketak: Hizkuntza Politikarako Sailburuordetza, <hizpol@ej-gv.es>, 2004
@@ -65,7 +74,7 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza, <hizpol@ej-gv.es>, 2004
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -93,7 +102,8 @@ LyX-en konfigurazioko fitxategiak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{kapi:konfig}
+\begin_inset LatexCommand label
+name "kapi:konfig"
 
 \end_inset
 
@@ -248,7 +258,8 @@ bind/
 \family default
  luzapenak dituzten fitxategiak dauzka; horiek LyX-en erabiltzen diren laster-te
 klak definitzen dituzte (ikusi 
-\begin_inset LatexCommand \ref{atal:lasterbideak}
+\begin_inset LatexCommand ref
+reference "atal:lasterbideak"
 
 \end_inset
 
@@ -257,13 +268,15 @@ atala).
  Norberaren hizkuntzera (internazionalizatutakoa ere deitzen zaio) moldatutako
  laster-teklen fitxategirik badago, lehenbizi hori erabiliko da.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{kapi:i18n}
+\begin_inset LatexCommand ref
+reference "kapi:i18n"
 
 \end_inset
 
 \InsetSpace ~
 kapitulua eta 
-\begin_inset LatexCommand \ref{atal:lasterbideak}
+\begin_inset LatexCommand ref
+reference "atal:lasterbideak"
 
 \end_inset
 
@@ -300,7 +313,8 @@ $LANG_
 \family default
  edukitzen dute, lehenbizi itzulitako horiek erabiliko dira.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{kapi:i18n}
+\begin_inset LatexCommand ref
+reference "kapi:i18n"
 
 \end_inset
 
@@ -346,7 +360,8 @@ kbd/
 \family default
  Teklatuarentzako mapen fitxategiak ditu.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{atal:teklatmapa}
+\begin_inset LatexCommand ref
+reference "atal:teklatmapa"
 
 \end_inset
 
@@ -361,7 +376,8 @@ atala .
 layouts/
 \family default
  
-\begin_inset LatexCommand \ref{kapi:testu-klaseak}
+\begin_inset LatexCommand ref
+reference "kapi:testu-klaseak"
 
 \end_inset
 
@@ -395,7 +411,8 @@ scripts/
 templates/
 \family default
  
-\begin_inset LatexCommand \ref{atal:txantiloiak}
+\begin_inset LatexCommand ref
+reference "atal:txantiloiak"
 
 \end_inset
 
@@ -426,7 +443,8 @@ ui/
  definitzen dute, hau da, fitxategiok zein menutan eta tresna-barran zein
  elementu agertu behar duten definitzen dute.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{atal:ui}
+\begin_inset LatexCommand ref
+reference "atal:ui"
 
 \end_inset
 
@@ -619,7 +637,8 @@ an gordetzen ditu (ekimen honek eragiten duen
 preferences
 \family default
 -eko ezarpenen zerrenda 
-\begin_inset LatexCommand \ref{atal:autodetektatuta}
+\begin_inset LatexCommand ref
+reference "atal:autodetektatuta"
 
 \end_inset
 
@@ -650,9 +669,9 @@ status collapsed
 \begin_layout Standard
 LyX-ek edo zuk 
 \family typewriter
-.layout 
+.layout
 \family default
-fitxategian sartzen dituzun hainbat sarreren arabera, noski
+ fitxategian sartzen dituzun hainbat sarreren arabera, noski
 \end_layout
 
 \end_inset
@@ -750,10 +769,10 @@ ispilua
 doc/
 \family default
  azpidirektorioarekin, zeren eta honek konfigurazioko fitxategiak baititu
- (hautatu
+ (hautatu 
 \family sans
 \bar under
- E
+E
 \bar default
 ditatu\SpecialChar \menuseparator
 
@@ -763,7 +782,8 @@ B
 irkonfiguratu
 \family default
  menua konfigurazioa automatikoki eguneratzeko, xehetasun gehiago 
-\begin_inset LatexCommand \ref{atal:autodetektatuta}
+\begin_inset LatexCommand ref
+reference "atal:autodetektatuta"
 
 \end_inset
 
@@ -1345,9 +1365,9 @@ Bestelako letra-kodeketa erabiltzeko LyX konfiguratzen duzunean, LyX-eko
  leihoetan erabiltzen diren letra-tipoak aldatzea ere komeniko zaizu.
  Adibidez, Gaien aurkibidearen leihoa ez da ulertuko LyX-i bertan beste
  letra-tipo bat erabiltzeko esaten ez diozun bitartean.
- Lehenetsi gisa, menuen letra-tipoa
+ Lehenetsi gisa, menuen letra-tipoa 
 \family typewriter
- -*-helvetica-medium-r
+-*-helvetica-medium-r
 \family default
  motarekin ezarrita dago, baina askotan behar duzun kodeketarekin 
 \family sans
@@ -1373,7 +1393,8 @@ Ikus dezakezun bezala, zure letra-tipoak fintzeko Hainbat aukera dituzu.
 
 \begin_layout Section
 Lasterbideak
-\begin_inset LatexCommand \label{atal:lasterbideak}
+\begin_inset LatexCommand label
+name "atal:lasterbideak"
 
 \end_inset
 
@@ -1419,7 +1440,8 @@ ErabDir/bind/
 \begin_layout Standard
 LyX-ek erabiltzailearen interfazerako nazioarteko hizkuntzen euskarria dauka
  (ikusi 
-\begin_inset LatexCommand \ref{kapi:i18n}
+\begin_inset LatexCommand ref
+reference "kapi:i18n"
 
 \end_inset
 
@@ -1467,7 +1489,8 @@ Erreferentzia Gida
 
 \begin_layout Section
 Erabiltzailearen interfazea
-\begin_inset LatexCommand \label{atal:ui}
+\begin_inset LatexCommand label
+name "atal:ui"
 
 \end_inset
 
@@ -1602,7 +1625,7 @@ pdflatex
 
 \begin_layout Enumerate
 Bide korapilatsuago bat, bitarteko bihurtzaile eta formatuak erabiliz: LaTeX-eti
-k DVI-ra (LaTeX erabiliz) eta gero PostScriptÆ formatora (
+k DVI-ra (LaTeX erabiliz) eta gero PostScript¬Æ formatora (
 \family typewriter
 dvips
 \family default
@@ -1629,7 +1652,7 @@ Hobespenak
 
 \begin_layout Standard
 Horretaz gain, formatu bakoitzari ikustaile bat esleitzen zaio.
- Adibidez, PostScriptÆ bistaratzeko 
+ Adibidez, PostScript¬Æ bistaratzeko 
 \family typewriter
 ghostview
 \family default
@@ -1815,13 +1838,14 @@ Hemen funtzioen eta lehenetsitako koloreen zerrenda-zati bat aurkezten dizugu:
 \bar no
 \noun off
 \color none
-LyX 
+LyX
 \family default
 \series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\size default
 \noun default
 \color inherit
 izena
@@ -1992,13 +2016,14 @@ latex
 \bar no
 \noun off
 \color none
-LaTeX 
+LaTeX
 \family default
 \series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\size default
 \noun default
 \color inherit
 kodea
@@ -2319,7 +2344,8 @@ Autodetektatutako ezarpenak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:autodetektatuta}
+\begin_inset LatexCommand label
+name "atal:autodetektatuta"
 
 \end_inset
 
@@ -2405,8 +2431,11 @@ lpr
 
 \backslash
 print_spool_printerprefix
+\family default
 \series default
- -d
+ 
+\family typewriter
+-d
 \family default
  aukera ezarriko zaio sistemak 
 \family typewriter
@@ -2462,7 +2491,8 @@ LyX-en jokaera pertsonalizatzeko beste konfigurazio aukera asko daude.
 
 \begin_layout Chapter
 LyX internazionalizatzea 
-\begin_inset LatexCommand \label{kapi:i18n}
+\begin_inset LatexCommand label
+name "kapi:i18n"
 
 \end_inset
 
@@ -2587,7 +2617,8 @@ status collapsed
 Itzultzailearen oharra
 \emph default
 : EuskalGNU-ren gunean (
-\begin_inset LatexCommand \url{http://www.euskalgnu.org}
+\begin_inset LatexCommand url
+target "http://www.euskalgnu.org"
 
 \end_inset
 
@@ -2841,7 +2872,9 @@ DocStyle.lyx
 
 \begin_layout Itemize
 Begiratu dokumentazioaren itzulpenaren web gunean (
-\begin_inset LatexCommand \url[LyX garatzaileen gunea]{http://www.devel.lyx.org}
+\begin_inset LatexCommand url
+name "LyX garatzaileen gunea"
+target "http://www.devel.lyx.org"
 
 \end_inset
 
@@ -2909,7 +2942,8 @@ Laguntza
 \begin_layout Itemize
 Batzuetan jatorrizko dokumentua (LyX taldearen eskutik) eguneratu daiteke.
  Aldatu dena aztertzeko, erabili 
-\begin_inset LatexCommand \htmlurl{http://www.lyx.org/viewcvs.cgi/lyxdoc/}
+\begin_inset LatexCommand htmlurl
+target "http://www.lyx.org/viewcvs.cgi/lyxdoc/"
 
 \end_inset
 
@@ -3031,26 +3065,25 @@ Adibidea
 \begin_layout Quotation
 acute (acu)
 \hfill
-·ÈÌÛ˙
+√°√©√≠√≥√∫
 \end_layout
 
 \begin_layout Quotation
 grave (gra)
 \hfill
-‡ËÏÚ˘
+√†√®√¨√≤√π
 \end_layout
 
 \begin_layout Quotation
 macron (mac)
 \hfill
- \i \={o}
-
+ ≈ç
 \end_layout
 
 \begin_layout Quotation
 tilde (til)
 \hfill
-Ò—
+√±√ë
 \end_layout
 
 \begin_layout Quotation
@@ -3075,7 +3108,7 @@ b o
 \begin_layout Quotation
 cedilla (ced)
 \hfill
-Á«
+√ß√á
 \end_layout
 
 \begin_layout Quotation
@@ -3100,15 +3133,13 @@ d o
 \begin_layout Quotation
 circumflex (circu)
 \hfill
-‚ÍÓÙ˚
+√¢√™√Æ√¥√ª
 \end_layout
 
 \begin_layout Quotation
 circle (circl)
 \hfill
-≈\i \r{u}
-\i \r{U}
-
+√Ö≈Ø≈Æ
 \end_layout
 
 \begin_layout Quotation
@@ -3133,8 +3164,7 @@ t o
 \begin_layout Quotation
 breve (bre)
 \hfill
-\i \u{a}
-
+ƒÉ
 \begin_inset ERT
 status inlined
 
@@ -3153,31 +3183,25 @@ u o
 \begin_layout Quotation
 caron (car)
 \hfill
-\i \v{c}
-\i \v{s}
-\i \v{z}
-
+ƒç≈°≈æ
 \end_layout
 
 \begin_layout Quotation
 hungarian umlaut (hug)
 \hfill
-\i \H{o}
-\i \H{u}
-
+≈ë≈±
 \end_layout
 
 \begin_layout Quotation
 umlaut (uml)
 \hfill
-‰ˆ¸
+√§√∂√º
 \end_layout
 
 \begin_layout Quotation
 dot (dot)
 \hfill
-\i \.{z}
-
+≈º
 \begin_inset ERT
 status inlined
 
@@ -3330,7 +3354,8 @@ kinclude
 
 \begin_layout Section
 Nazioarteko teklatu-mapa
-\begin_inset LatexCommand \label{atal:teklatmapa}
+\begin_inset LatexCommand label
+name "atal:teklatmapa"
 
 \end_inset
 
@@ -3338,9 +3363,9 @@ Nazioarteko teklatu-mapa
 \end_layout
 
 \begin_layout Standard
-Hurrengo bi atalek
+Hurrengo bi atalek 
 \family typewriter
- .kmap
+.kmap
 \family default
  eta 
 \family typewriter
@@ -3449,9 +3474,9 @@ kmap
 \family default
  tekla sakatzen duenean irteeran 
 \family typewriter
-/ 
+/
 \family default
-ikurra agertuko da:
+ ikurra agertuko da:
 \end_layout
 
 \begin_layout LyX-Code
@@ -3496,7 +3521,7 @@ tekla-hila
  karakterea sortzen da.
  Adibidez, alemanerako karaktere bat umlaut batekin, 
 \emph on
-‰
+√§
 \emph default
  bezala, era honetan sortzen da.
 \end_layout
@@ -3575,9 +3600,9 @@ azentua karak emaitz
 
 \begin_layout Standard
 Honek karak baten azentuarentzako salbuespena definitzen du.
-
-\family typewriter
  
+\family typewriter
+
 \backslash
 kmod
 \family default
@@ -3623,7 +3648,7 @@ azentu_tekla
 \end_layout
 
 \begin_layout Standard
-Ondorengo komandoak, acute-i ('i) sakatzen duzunean ‰i sortzen du:
+Ondorengo komandoak, acute-i ('i) sakatzen duzunean √§i sortzen du:
 \end_layout
 
 \begin_layout LyX-Code
@@ -3707,9 +3732,9 @@ kcomb acute umlaut iyIY
 \end_layout
 
 \begin_layout Standard
-Horrek
+Horrek 
 \family typewriter
- ;:i
+;:i
 \family default
  sakatzen uzten dizu eta ondorioz 
 \family typewriter
@@ -3740,11 +3765,8 @@ tekla
 
 \family typewriter
 .cdef
-\series medium
- 
 \family default
-\series default
-fitxategia
+ fitxategia
 \end_layout
 
 \begin_layout Standard
@@ -3779,8 +3801,10 @@ Orokorrean,
 \family roman
 \emph on
 karak_index_multzoan
+\family default
 \emph default
  
+\family roman
 \emph on
  katea
 \end_layout
@@ -3873,8 +3897,7 @@ bat eginez
 \end_layout
 
 \begin_layout Standard
-Demagun circumflex karakterea ("\i \^{}
-") behar duzula.
+Demagun circumflex karakterea (" ÃÇ") behar duzula.
  Horretarako 
 \family sans
 ^-tekla
@@ -3902,7 +3925,7 @@ lyxrc
 \family sans
 ^e
 \family default
-" sekuentziak "Í" hizkia sortuko luke.
+" sekuentziak "√™" hizkia sortuko luke.
  Hala ere "
 \family sans
 ^t
@@ -4039,7 +4062,8 @@ Hizkuntzaren konfigurazioa gordetzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:gordeHizkunt}
+\begin_inset LatexCommand label
+name "atal:gordeHizkunt"
 
 \end_inset
 
@@ -4062,7 +4086,8 @@ obespenak
 
 \begin_layout Chapter
 Dokumentu-klase, diseinu eta txantiloi berriak instalatzea
-\begin_inset LatexCommand \label{kapi:testu-klaseak}
+\begin_inset LatexCommand label
+name "kapi:testu-klaseak"
 
 \end_inset
 
@@ -4621,9 +4646,9 @@ Gazen ba!
 \end_layout
 
 \begin_layout Standard
-Diseinu bateko fitxategian
+Diseinu bateko fitxategian 
 \family typewriter
- #
+#
 \family default
  ikurrarekin hasten diren lerroak iruzkinak dira.
  Arau honek, ordea, salbuespen bat dauka: diseinu guztiak honelako lerroekin
@@ -4740,22 +4765,8 @@ Honek zure testu-klaseak
 lelo.sty
 \family default
  paketea erabiltzen duela adierazten du.
- Azkenik, SGML eta DocBook kodeentzako klaseak deklara ditzakezu.
+ Azkenik, DocBook kodeentzako klaseak deklara ditzakezu.
  Ohiko deklarazio batek honelako itxura edukiko luke
-\end_layout
-
-\begin_layout LyX-Code
-#% Do not delete the line below; configure depends on this
-\end_layout
-
-\begin_layout LyX-Code
-# 
-\backslash
-DeclareSGMLClass{SGML (LinuxDoc)}
-\end_layout
-
-\begin_layout Standard
-edo
 \end_layout
 
 \begin_layout LyX-Code
@@ -4828,8 +4839,11 @@ begin{sloppypar}
 
 \family typewriter
 \series medium
-Columns[1, 
+Columns[1,
+\family default
 \series default
+ 
+\family typewriter
 2]
 \family default
 : klaseak, lehenespenez, zutabe bat edo bi izango dituen zehazten du.
@@ -4858,8 +4872,11 @@ twocolumn
 
 \family typewriter
 \series medium
-Sides [1, 
+Sides [1,
+\family default
 \series default
+ 
+\family typewriter
 2]
 \family default
 : lehenespenez klasea paper bateko alde bakarrean edo bi aldeetan inprimatuko
@@ -4892,8 +4909,11 @@ Dokumentu-ezarpenak
 
 \family typewriter
 \series medium
-MaxCounter 
+MaxCounter
+\family default
 \series default
+ 
+\family typewriter
 [Counter_Chapter, Counter_Section, Counter_Subsection, Counter_Subsubsection,
  Counter_Paragraph, Counter_Subparagraph, Counter_EnumI, Counter_EnumII,
  Counter_EnumIII, Counter_EnumIV]
@@ -4932,7 +4952,8 @@ End
  Atal honek dokumentu-klaseak onartzen dituen aukera global batzuk deskribatzen
  ditu.
  Xehetasun gehiago 
-\begin_inset LatexCommand \ref{atal:classoptions}
+\begin_inset LatexCommand ref
+reference "atal:classoptions"
 
 \end_inset
 
@@ -4944,8 +4965,11 @@ atalean aurkituko dituzu.
 
 \family typewriter
 \series medium
-ProvidesAmsmath 
+ProvidesAmsmath
+\family default
 \series default
+ 
+\family typewriter
 [0, 1]
 \family default
 : klaseak jadanik 
@@ -4968,8 +4992,11 @@ amsbook
 
 \family typewriter
 \series medium
-ProvidesMakeidx 
+ProvidesMakeidx
+\family default
 \series default
+ 
+\family typewriter
 [0, 1]
 \family default
 : klaseak jadanik 
@@ -4992,8 +5019,11 @@ amsbook
 
 \family typewriter
 \series medium
-ProvidesUrl 
+ProvidesUrl
+\family default
 \series default
+ 
+\family typewriter
 [0, 1]
 \family default
 : klaseak jadanik 
@@ -5017,7 +5047,8 @@ DefaultFont
 \series default
  Dokumentuko letra-tipo lehenetsia deskribatzeko erabiltzen da.
  Xehetasun gehiago 
-\begin_inset LatexCommand \ref{atal:letra-tipoak}
+\begin_inset LatexCommand ref
+reference "atal:letra-tipoak"
 
 \end_inset
 
@@ -5029,8 +5060,11 @@ atalean aurkituko duzu.
 
 \family typewriter
 \series medium
-DefaultStyle 
+DefaultStyle
+\family default
 \series default
+ 
+\family typewriter
 [string]
 \family default
  Paragrafo berriei ezarriko zaien estilo lehenetsia da, arruntena 
@@ -5050,8 +5084,11 @@ ik ez baduzu ematen, hala ere agindu hau erabiltzea oso aholkatzen dizugu.
 
 \family typewriter
 \series medium
-TitleLatexType 
+TitleLatexType
+\family default
 \series default
+ 
+\family typewriter
 [CommandAfter, Environment]
 \family default
  Dokumentuaren titulua definitzeko erabiliko den marka-mota da.
@@ -5087,11 +5124,14 @@ Environment
 
 \family typewriter
 \series medium
-TitleLatexName 
-\series default
-[string="maketitle"] 
+TitleLatexName
 \family default
-Arestian aipatutako komando edo ingurunearen izena.
+\series default
+ 
+\family typewriter
+[string="maketitle"]
+\family default
+ Arestian aipatutako komando edo ingurunearen izena.
 \end_layout
 
 \begin_layout Description
@@ -5134,7 +5174,8 @@ End
 \series default
  Sekuentzia honek estilo berri bat definitzen du.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{atal:style}
+\begin_inset LatexCommand ref
+reference "atal:style"
 
 \end_inset
 
@@ -5164,7 +5205,8 @@ End
 \series default
  Sekuentzia honek mugikor berri bat definitzen du.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{atal:mugikor}
+\begin_inset LatexCommand ref
+reference "atal:mugikor"
 
 \end_inset
 
@@ -5194,7 +5236,8 @@ End
 \series default
  Sekuentzia honek zenbatzaile berri bat definitzen du.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand \ref{atal:zenbatzaile}
+\begin_inset LatexCommand ref
+reference "atal:zenbatzaile"
 
 \end_inset
 
@@ -5223,7 +5266,8 @@ ClassOptions atala
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:classoptions}
+\begin_inset LatexCommand label
+name "atal:classoptions"
 
 \end_inset
 
@@ -5288,7 +5332,8 @@ Paragrafo-ingurune jakin batzuk
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:style}
+\begin_inset LatexCommand label
+name "atal:style"
 
 \end_inset
 
@@ -5356,8 +5401,11 @@ CopyStyle
 
 \family typewriter
 \series medium
-LatexType 
+LatexType
+\family default
 \series default
+ 
+\family typewriter
 [Paragraph, Command, Environment, Item_Environment, List_Environment]
 \family default
  Ingurunea LaTeX-era nola bihurtu beharko litzatekeen.
@@ -5450,8 +5498,11 @@ LatexName
 
 \family typewriter
 \series medium
-InTitle 
+InTitle
+\family default
 \series default
+ 
+\family typewriter
 [1, 0]
 \family default
  Baldin eta 1 balioa badu, ingurunea titulu-blokearen zati bezala markatzen
@@ -5495,8 +5546,11 @@ LatexName
 
 \family typewriter
 \series medium
-Margin 
+Margin
+\family default
 \series default
+ 
+\family typewriter
 [Static, Manual, Dynamic, First_Dynamic, Right_Address_Box]
 \family default
  Inguruneak bere ezkerrean duen marjina mota da.
@@ -5553,8 +5607,11 @@ Right_Address_Box
 
 \family typewriter
 \series medium
-NextNoIndent 
+NextNoIndent
+\family default
 \series default
+ 
+\family typewriter
 [1, 0]
 \family default
 : hurrengo paragrafoaren lehenbiziko lerroa koskatua izango den edo ez zehazten
@@ -5567,8 +5624,11 @@ NextNoIndent
 
 \family typewriter
 \series medium
-ParIndent 
+ParIndent
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Paragrafo bateko lehen lerroaren koska.
@@ -5632,8 +5692,11 @@ Estandarra
 
 \family typewriter
 \series medium
-Parskip 
+Parskip
+\family default
 \series default
+ 
+\family typewriter
 [float=0]
 \family default
  LyX-ek dokumentu bateko paragrafoak bereizteko Koska ("indent") edo Jauzia
@@ -5658,8 +5721,11 @@ DefaultHeight()
 
 \family typewriter
 \series medium
-TopSep 
+TopSep
+\family default
 \series default
+ 
+\family typewriter
 [float=0]
 \family default
  Ingurune honetako paragrafo-multzoko lehenengo paragrafoa aurreko paragrafotik
@@ -5672,11 +5738,14 @@ TopSep
 
 \family typewriter
 \series medium
-BottomSep 
-\series default
-[float=0] 
+BottomSep
 \family default
-Hau 
+\series default
+ 
+\family typewriter
+[float=0]
+\family default
+ Hau 
 \family typewriter
 TopSep
 \family default
@@ -5687,8 +5756,11 @@ TopSep
 
 \family typewriter
 \series medium
-Parsep 
+Parsep
+\family default
 \series default
+ 
+\family typewriter
 [float=0]
 \family default
  Ingurune honetako bi paragrafoen arteko tartea bertikala da.
@@ -5698,8 +5770,11 @@ Parsep
 
 \family typewriter
 \series medium
-Itemsep 
+Itemsep
+\family default
 \series default
+ 
+\family typewriter
 [float=0]
 \family default
  Ingurune bateko paragrafoen arteko tarte gehigarria da.
@@ -5716,8 +5791,11 @@ Parsep
 
 \family typewriter
 \series medium
-LeftMargin 
+LeftMargin
+\family default
 \series default
+ 
+\family typewriter
 [string=""
 \family default
 ] Inguruneetan beste ingurune batzuetako paragrafoak abiaratzen badituzu,
@@ -5747,11 +5825,14 @@ ParIndent
 
 \family typewriter
 \series medium
-RightMargin 
-\series default
-[string=""] 
+RightMargin
 \family default
-Hau 
+\series default
+ 
+\family typewriter
+[string=""]
+\family default
+ Hau 
 \family typewriter
 LeftMargin
 \family default
@@ -5762,8 +5843,11 @@ LeftMargin
 
 \family typewriter
 \series medium
-Labeltype 
+Labeltype
+\family default
 \series default
+ 
+\family typewriter
 [No_Label, Manual, Static, Top_Environment, 
 \newline
 Centered_Top_Environment, Sensitive,
@@ -5838,8 +5922,11 @@ Counter_xxx
 
 \family typewriter
 \series medium
-Labelsep 
+Labelsep
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Etiketa eta gorputzeko testuaren arteko tarte horizontala da.
@@ -5850,8 +5937,11 @@ Labelsep
 
 \family typewriter
 \series medium
-LabelBottomsep 
+LabelBottomsep
+\family default
 \series default
+ 
+\family typewriter
 [float=0]
 \family default
  Etiketa eta gorputzeko testuaren arteko tarte bertikala.
@@ -5870,8 +5960,11 @@ Centered_Top_Environment
 
 \family typewriter
 \series medium
-LabelString 
+LabelString
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Kate hau 
@@ -5919,8 +6012,11 @@ Counter_xxx
 
 \family typewriter
 \series medium
-EndLabeltype 
+EndLabeltype
+\family default
 \series default
+ 
+\family typewriter
 [No_Label, Box, Filled_Box, Static]
 \family default
  Paragrafoaren amaiera (edo paragrafoen sekuentzia 
@@ -5961,8 +6057,11 @@ Filled_Box
 
 \family typewriter
 \series medium
-EndLabelString 
+EndLabelString
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Hau 
@@ -5980,22 +6079,28 @@ Static
 
 \family typewriter
 \series medium
-Align 
-\series default
-[block, left, right, center] 
+Align
 \family default
-Paragrafoa lerrokatzeko da.
+\series default
+ 
+\family typewriter
+[block, left, right, center]
+\family default
+ Paragrafoa lerrokatzeko da.
 \end_layout
 
 \begin_layout Description
 
 \family typewriter
 \series medium
-AlignPossible 
-\series default
-[block, left, right, center] 
+AlignPossible
 \family default
-Komaz bereiztutako lerrokadura aukeren zerrenda da.
+\series default
+ 
+\family typewriter
+[block, left, right, center]
+\family default
+ Komaz bereiztutako lerrokadura aukeren zerrenda da.
  LaTeX estilo batzuk zenbait lerrokadura debekatzen dute, ez baitute zentzurik
  izaten.
  Adibidez, eskuinera edo erdira lerrokatutako zenbakera ezinezkoa da.
@@ -6005,8 +6110,11 @@ Komaz bereiztutako lerrokadura aukeren zerrenda da.
 
 \family typewriter
 \series medium
-Fill_Top 
+Fill_Top
+\family default
 \series default
+ 
+\family typewriter
 [0,1]
 \family default
  Parametro honekin 
@@ -6061,8 +6169,11 @@ Fill_Top
 
 \family typewriter
 \series medium
-NeedProtect 
+NeedProtect
+\family default
 \series default
+ 
+\family typewriter
 [0,1]
 \family default
  Diseinu honetako komando ahulak 
@@ -6078,8 +6189,11 @@ protect
 
 \family typewriter
 \series medium
-Newline 
+Newline
+\family default
 \series default
+ 
+\family typewriter
 [0, 1]
 \family default
  Lerro berriak LaTeX-eko lerro-berrietara (
@@ -6099,11 +6213,14 @@ Newline
 
 \family typewriter
 \series medium
-PassThru 
-\series default
-[0, 1] 
+PassThru
 \family default
-Paragrafo honen edukia era gordin batean, LaTeX-ek eskatzen duen bihurketa
+\series default
+ 
+\family typewriter
+[0, 1]
+\family default
+ Paragrafo honen edukia era gordin batean, LaTeX-ek eskatzen duen bihurketa
  berezirik egin gabe, kanporatuko den zehazten du.
  Honek nolabait LaTeX zaharreko letra-tipoaren propietateak ordezten ditu.
 \end_layout
@@ -6112,11 +6229,14 @@ Paragrafo honen edukia era gordin batean, LaTeX-ek eskatzen duen bihurketa
 
 \family typewriter
 \series medium
-FreeSpacing 
-\series default
-[0, 1] 
+FreeSpacing
 \family default
-Gehienetan LyX-ek hitzen artean zuriune bat baino gehiago sartzen ez dizu
+\series default
+ 
+\family typewriter
+[0, 1]
+\family default
+ Gehienetan LyX-ek hitzen artean zuriune bat baino gehiago sartzen ez dizu
  utziko, zeren eta zuriune bat bi hitzen arteko bereizketa egiteko (eta
  ez karaktere edo ikur bezala) hartzen baita.
  Hau gauza nahiko fina izan arren batzuetan nekagarria gerta daiteke, adibidez
@@ -6138,11 +6258,14 @@ Zuriune-babestuak
 
 \family typewriter
 \series medium
-KeepEmpty 
-\series default
-[0, 1] 
+KeepEmpty
 \family default
-Normalki LyX-ek paragrafo huts bat edukitzea ez du utziko, LaTeX irteera
+\series default
+ 
+\family typewriter
+[0, 1]
+\family default
+ Normalki LyX-ek paragrafo huts bat edukitzea ez du utziko, LaTeX irteera
  hutsa sortuko lukeelako.
  Hala ere, zenbait egoeretan horrelako paragrafo hutsak edukitzea baliagarria
  izan daiteke, adibidez gutunen txantiloi batean, bete beharreko eremu hutsak
@@ -6155,17 +6278,21 @@ Normalki LyX-ek paragrafo huts bat edukitzea ez du utziko, LaTeX irteera
 
 \family typewriter
 \series medium
-Spacing 
-\series default
-[single, onehalf, double, other 
+Spacing
 \family default
+\series default
+ 
+\family typewriter
+[single, onehalf, double, other
+\family default
+ 
 \emph on
 balioa
 \family typewriter
 \emph default
-] 
+]
 \family default
-Honek paragrafoaren tarte lehenetsia definitzen du.
+ Honek paragrafoaren tarte lehenetsia definitzen du.
  
 \family typewriter
 single
@@ -6202,7 +6329,8 @@ Font
 \series default
  Etiketa eta gorputzeko testuan erabiliko den letra-tipoa da.
  
-\begin_inset LatexCommand \ref{atal:letra-tipoak}
+\begin_inset LatexCommand ref
+reference "atal:letra-tipoak"
 
 \end_inset
 
@@ -6224,7 +6352,8 @@ TextFont
 \series default
  Gorputzeko testuan erabiliko den letra-tipoa.
  
-\begin_inset LatexCommand \ref{atal:letra-tipoak}
+\begin_inset LatexCommand ref
+reference "atal:letra-tipoak"
 
 \end_inset
 
@@ -6241,7 +6370,8 @@ LabelFont
 \series default
  Etiketek erabiliko duten letra-tipoa.
  
-\begin_inset LatexCommand \ref{atal:letra-tipoak}
+\begin_inset LatexCommand ref
+reference "atal:letra-tipoak"
 
 \end_inset
 
@@ -6309,7 +6439,8 @@ Mugikorrak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:mugikor}
+\begin_inset LatexCommand label
+name "atal:mugikor"
 
 \end_inset
 
@@ -6345,11 +6476,14 @@ Bestelako mugikor-motak (AGU klasea LyX-ekin erabiltzea bezalakoa) erabiltzeko
 
 \family typewriter
 \series medium
-Type 
-\series default
-[string=""] 
+Type
 \family default
-Mugikor-klase berriaren tipoa ("type"), programa edo algoritmoa bezala.
+\series default
+ 
+\family typewriter
+[string=""]
+\family default
+ Mugikor-klase berriaren tipoa ("type"), programa edo algoritmoa bezala.
  Dagokion 
 \family typewriter
 
@@ -6373,8 +6507,11 @@ end{algorithm*}
 
 \family typewriter
 \series medium
-GuiName 
+GuiName
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Menuetan, eta epigrafean ere, erabiliko den katea.
@@ -6402,8 +6539,11 @@ LaTeXBuiltin [0, 1]
 
 \family typewriter
 \series medium
-NumberWithin 
+NumberWithin
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Aukerazko argumentu honek klase honetako mugikorrak dokumentuko atal unitateen
@@ -6420,8 +6560,11 @@ chapter
 
 \family typewriter
 \series medium
-Style 
+Style
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Mugikorra 
@@ -6437,11 +6580,14 @@ newfloat
 
 \family typewriter
 \series medium
-Placement 
-\series default
-[string=""] 
+Placement
 \family default
-Mugikor klasearentzako ematen den kokapen lehenetsia.
+\series default
+ 
+\family typewriter
+[string=""]
+\family default
+ Mugikor klasearentzako ematen den kokapen lehenetsia.
  LaTeX estandarrekoen bezalakoak dira (parentesi artean beraien esanahiak
  azaltzen dira): 
 \family typewriter
@@ -6499,8 +6645,11 @@ LaTeXBuiltin=1
 
 \family typewriter
 \series medium
-Extension 
+Extension
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Irudien (edo beste zerbaiten) zerrendaren fitxategi-laguntzaile baten fitxategi
@@ -6512,8 +6661,11 @@ Extension
 
 \family typewriter
 \series medium
-ListName 
+ListName
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Mugikorren zerrendarako erabiliko den izenburua.
@@ -6524,7 +6676,8 @@ Zenbatzaileak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zenbatzaile}
+\begin_inset LatexCommand label
+name "atal:zenbatzaile"
 
 \end_inset
 
@@ -6550,8 +6703,11 @@ Zenbatzaileen definizioa, LyX-en, nahikoa gogorra da, gauza asko oraindik
 
 \family typewriter
 \series medium
-Name 
+Name
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Zenbatzaielaren izena.
@@ -6561,8 +6717,11 @@ Name
 
 \family typewriter
 \series medium
-Within 
+Within
+\family default
 \series default
+ 
+\family typewriter
 [string=""]
 \family default
  Hau beste zenbatzaile baten izenarekin ezartzen bada, oraingo zenbatzailea
@@ -6579,7 +6738,8 @@ Letra-tipo deskripzioa
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:letra-tipoak}
+\begin_inset LatexCommand label
+name "atal:letra-tipoak"
 
 \end_inset
 
@@ -6612,8 +6772,11 @@ eta komando hauek eskuragarri daude:
 
 \family typewriter
 \series medium
-Family 
+Family
+\family default
 \series default
+ 
+\family typewriter
 [Roman, Sans, Typewriter] 
 \end_layout
 
@@ -6621,8 +6784,11 @@ Family
 
 \family typewriter
 \series medium
-Series 
+Series
+\family default
 \series default
+ 
+\family typewriter
 [Medium, Bold] 
 \end_layout
 
@@ -6630,8 +6796,11 @@ Series
 
 \family typewriter
 \series medium
-Shape 
+Shape
+\family default
 \series default
+ 
+\family typewriter
 [Up, Italic, SmallCaps, Slanted] 
 \end_layout
 
@@ -6639,8 +6808,11 @@ Shape
 
 \family typewriter
 \series medium
-Size 
+Size
+\family default
 \series default
+ 
+\family typewriter
 [tiny, small, normal, large, larger, largest, huge, giant]
 \end_layout
 
@@ -6648,14 +6820,18 @@ Size
 
 \family typewriter
 \series medium
-Color 
+Color
+\family default
 \series default
+ 
+\family typewriter
 [none, black, white, red, green, blue, cyan, magenta, yellow]
 \end_layout
 
 \begin_layout Section
 Txantiloiak sortzea
-\begin_inset LatexCommand \label{atal:txantiloiak}
+\begin_inset LatexCommand label
+name "atal:txantiloiak"
 
 \end_inset
 
@@ -7955,7 +8131,9 @@ Fitxategia
 
 \family sans
 M-f\InsetSpace ~
-a 
+a
+\family default
+ 
 \family typewriter
 buffer-write-as
 \end_layout
@@ -8003,7 +8181,9 @@ file_export
 
 \family sans
 M-f\InsetSpace ~
-f 
+f
+\family default
+ 
 \family typewriter
 buffer-export fax
 \end_layout
@@ -8027,7 +8207,9 @@ file_import
 
 \family sans
 M-f\InsetSpace ~
-n 
+n
+\family default
+ 
 \family typewriter
 buffer-new
 \end_layout
@@ -8073,7 +8255,9 @@ buffer-write
 
 \family sans
 M-f\InsetSpace ~
-t 
+t
+\family default
+ 
 \family typewriter
 buffer-new-template
 \end_layout
@@ -8084,8 +8268,10 @@ buffer-new-template
 \family sans
 M-f\InsetSpace ~
 v
+\family default
+ 
 \family typewriter
- file_vc
+file_vc
 \family default
  azpimenua
 \end_layout
@@ -8096,8 +8282,10 @@ v
 
 \family sans
 h
+\family default
+ 
 \family typewriter
- vc-history 
+vc-history 
 \end_layout
 
 \begin_layout Labeling
@@ -8105,8 +8293,10 @@ h
 
 \family sans
 i
+\family default
+ 
 \family typewriter
- vc-check-in
+vc-check-in
 \end_layout
 
 \begin_layout Labeling
@@ -8114,8 +8304,10 @@ i
 
 \family sans
 l
+\family default
+ 
 \family typewriter
- vc-revert
+vc-revert
 \end_layout
 
 \begin_layout Labeling
@@ -8123,8 +8315,10 @@ l
 
 \family sans
 o
+\family default
+ 
 \family typewriter
- vc-check-out
+vc-check-out
 \end_layout
 
 \begin_layout Labeling
@@ -8132,8 +8326,10 @@ o
 
 \family sans
 r
+\family default
+ 
 \family typewriter
- vc-register
+vc-register
 \end_layout
 
 \begin_layout Labeling
@@ -8141,8 +8337,10 @@ r
 
 \family sans
 u
+\family default
+ 
 \family typewriter
- vc-undo-last
+vc-undo-last
 \end_layout
 
 \end_deeper
@@ -8151,7 +8349,9 @@ u
 
 \family sans
 M-f\InsetSpace ~
-x 
+x
+\family default
+ 
 \family typewriter
 lyx-quit
 \end_layout
@@ -8431,8 +8631,10 @@ matematikako panela
 
 \family sans
 a
+\family default
+ 
 \family typewriter
- floats-operate openfoot
+floats-operate openfoot
 \end_layout
 
 \begin_layout Labeling
@@ -8440,8 +8642,10 @@ a
 
 \family sans
 c
+\family default
+ 
 \family typewriter
- floats-operate closefoot
+floats-operate closefoot
 \end_layout
 
 \begin_layout Labeling
@@ -8449,8 +8653,10 @@ c
 
 \family sans
 f
+\family default
+ 
 \family typewriter
- floats-operate openfig
+floats-operate openfig
 \end_layout
 
 \begin_layout Labeling
@@ -8458,8 +8664,10 @@ f
 
 \family sans
 m
+\family default
+ 
 \family typewriter
- melt
+melt
 \end_layout
 
 \begin_layout Labeling
@@ -8467,8 +8675,10 @@ m
 
 \family sans
 o
+\family default
+ 
 \family typewriter
- open-stuff
+open-stuff
 \end_layout
 
 \begin_layout Labeling
@@ -8476,8 +8686,10 @@ o
 
 \family sans
 t
+\family default
+ 
 \family typewriter
- floats-operate closefig
+floats-operate closefig
 \end_layout
 
 \end_deeper
@@ -8503,7 +8715,7 @@ p
  
 \family typewriter
 dialog-preferences
-\family sans
+\family default
  
 \end_layout
 
@@ -8550,7 +8762,9 @@ edit_tabular
 
 \family sans
 M-e\InsetSpace ~
-u 
+u
+\family default
+ 
 \family typewriter
 undo
 \end_layout
@@ -8560,7 +8774,9 @@ undo
 
 \family sans
 M-e\InsetSpace ~
-x 
+x
+\family default
+ 
 \family typewriter
 edit_paste
 \family default
@@ -9265,7 +9481,9 @@ Karakterea
 
 \family sans
 M-c\InsetSpace ~
-b 
+b
+\family default
+ 
 \family typewriter
 font-bold
 \end_layout
@@ -9275,7 +9493,9 @@ font-bold
 
 \family sans
 M-c\InsetSpace ~
-c 
+c
+\family default
+ 
 \family typewriter
 font-noun
 \end_layout
@@ -9285,7 +9505,9 @@ font-noun
 
 \family sans
 M-c\InsetSpace ~
-e 
+e
+\family default
+ 
 \family typewriter
 font-emph
 \end_layout
@@ -9295,7 +9517,9 @@ font-emph
 
 \family sans
 M-c\InsetSpace ~
-m 
+m
+\family default
+ 
 \family typewriter
 math-mode
 \end_layout
@@ -9317,7 +9541,9 @@ font-code
 
 \family sans
 M-c\InsetSpace ~
-r 
+r
+\family default
+ 
 \family typewriter
 font-roman
 \end_layout
@@ -9327,7 +9553,9 @@ font-roman
 
 \family sans
 M-c\InsetSpace ~
-s 
+s
+\family default
+ 
 \family typewriter
 font-sans
 \end_layout
@@ -9337,7 +9565,9 @@ font-sans
 
 \family sans
 M-c\InsetSpace ~
-t 
+t
+\family default
+ 
 \family typewriter
 tex-mode
 \end_layout
@@ -9347,7 +9577,9 @@ tex-mode
 
 \family sans
 M-c\InsetSpace ~
-u 
+u
+\family default
+ 
 \family typewriter
 font-underline
 \end_layout
@@ -9357,7 +9589,9 @@ font-underline
 
 \family sans
 M-c\InsetSpace ~
-space 
+space
+\family default
+ 
 \family typewriter
 font-default
 \end_layout
@@ -9367,7 +9601,9 @@ font-default
 
 \family sans
 M-c\InsetSpace ~
-Down 
+Down
+\family default
+ 
 \family typewriter
 word-lowcase
 \end_layout
@@ -9377,7 +9613,9 @@ word-lowcase
 
 \family sans
 M-c\InsetSpace ~
-Up 
+Up
+\family default
+ 
 \family typewriter
 word-upcase
 \end_layout
@@ -9387,7 +9625,9 @@ word-upcase
 
 \family sans
 M-c\InsetSpace ~
-Right 
+Right
+\family default
+ 
 \family typewriter
 word-capitalize
 \end_layout
@@ -9397,7 +9637,9 @@ word-capitalize
 
 \family sans
 M-s\InsetSpace ~
-h 
+h
+\family default
+ 
 \family typewriter
 font-size huge
 \end_layout
@@ -9455,7 +9697,9 @@ font-size tiny
 
 \family sans
 M-s\InsetSpace ~
-0 
+0
+\family default
+ 
 \family typewriter
 font-size huger
 \end_layout
@@ -9489,7 +9733,9 @@ font-size smallest
 
 \family sans
 M-s\InsetSpace ~
-3 
+3
+\family default
+ 
 \family typewriter
 font-size smaller
 \end_layout
@@ -9547,7 +9793,9 @@ font-size larger
 
 \family sans
 M-s\InsetSpace ~
-8 
+8
+\family default
+ 
 \family typewriter
 font-size largest
 \end_layout
@@ -9557,7 +9805,9 @@ font-size largest
 
 \family sans
 M-s\InsetSpace ~
-9 
+9
+\family default
+ 
 \family typewriter
 font-size huge
 \end_layout
@@ -9603,7 +9853,9 @@ font-size smaller
 
 \family sans
 M-s\InsetSpace ~
-plus 
+plus
+\family default
+ 
 \family typewriter
 font-size increase
 \end_layout
@@ -9613,7 +9865,9 @@ font-size increase
 
 \family sans
 M-s\InsetSpace ~
-minus 
+minus
+\family default
+ 
 \family typewriter
 font-size decrease
 \end_layout
@@ -10363,8 +10617,10 @@ up
 
 \family sans
 C-q
+\family default
+ 
 \family typewriter
- quote-insert 
+quote-insert 
 \end_layout
 
 \begin_layout Labeling
@@ -11235,7 +11491,9 @@ break-paragraph-keep-layout
 \labelwidthstring 00.00.0000
 
 \family sans
-M-S-percent 
+M-S-percent
+\family default
+ 
 \family typewriter
 find-replace
 \end_layout
@@ -12066,7 +12324,9 @@ buffer-write
 \labelwidthstring 00.00.0000
 
 \family sans
-F3 
+F3
+\family default
+ 
 \family typewriter
 buffer-open
 \end_layout
@@ -12621,9 +12881,9 @@ C-9
 \family default
  
 \family typewriter
-math-delim ( ) 
+math-delim ( )
 \family default
--- Komeni delako, 
+ -- Komeni delako, 
 \family sans
 Ctrl-9
 \family default
@@ -12817,7 +13077,7 @@ Shift
 \family sans
 Ctrl-' a
 \family default
-" batek · txertazen du.
+" batek √° txertazen du.
  Azentu batzuk matematika eran bakarrik erabil daitezke, eta beste batzuk,
  berriz, testu eran bakarrik.
 \end_layout
@@ -12832,8 +13092,7 @@ C-period
 \family typewriter
 accent-dot
 \family default
- -- "gaipuntu" azentua: \i \.{a}
- (testu eran soilik).
+ -- "gaipuntu" azentua: »ß (testu eran soilik).
 \end_layout
 
 \begin_layout Labeling
@@ -12884,7 +13143,7 @@ S-C-quotedbl
 \family typewriter
 accent-umlaut
 \family default
- -- umlaut azentua: ‰ (testuan soilik).
+ -- umlaut azentua: √§ (testuan soilik).
 \end_layout
 
 \begin_layout Labeling
@@ -12922,9 +13181,9 @@ C-quoteleft
 \family default
  
 \family typewriter
-accent-grave 
+accent-grave
 \family default
--- grave azentua: ‡† (testu eran soilik, matem.
+ -- grave azentua: √†¬† (testu eran soilik, matem.
  
 \family typewriter
 
@@ -12944,7 +13203,7 @@ S-C-asciitilde
 \family typewriter
 accent-tilde
 \family default
- -- tilet azentua: „ (testu eran soilik, matem.
+ -- tilet azentua: √£ (testu eran soilik, matem.
  
 \family typewriter
 
@@ -12964,7 +13223,7 @@ C-apostrophe
 \family typewriter
 accent-acute
 \family default
- -- azentu zorrotza: · (testu eran soilik, matem.
+ -- azentu zorrotza: √° (testu eran soilik, matem.
  
 \family typewriter
 
@@ -12984,7 +13243,7 @@ S-C-asciicircum
 \family typewriter
 accent-circumflex
 \family default
- -- circumflex azentua: ‚ (testu eran soilik, matem.
+ -- circumflex azentua: √¢ (testu eran soilik, matem.
  
 \family typewriter
 
@@ -13254,8 +13513,10 @@ kin nahikoa izaten da, adib.
 
 \family sans
 C-s
+\family default
+ 
 \family typewriter
- math-matrix 3 3
+math-matrix 3 3
 \family default
  -- 3
 \begin_inset Formula $\times$
@@ -13294,9 +13555,9 @@ S-plus
 \family typewriter
 math-insert 
 \backslash
-dagger 
+dagger
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13322,9 +13583,9 @@ equal
 \family typewriter
 math-insert 
 \backslash
-equiv 
+equiv
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13349,9 +13610,9 @@ M-equal
 \family typewriter
 math-insert 
 \backslash
-approx 
+approx
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13376,9 +13637,9 @@ M-minus
 \family typewriter
 math-insert 
 \backslash
-sim 
+sim
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13403,9 +13664,9 @@ C-minus
 \family typewriter
 math-insert 
 \backslash
-rightarrow 
+rightarrow
 \family default
--- Gezia 
+ -- Gezia 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -13426,9 +13687,9 @@ S-M-less
 \family typewriter
 math-insert 
 \backslash
-leq 
+leq
 \family default
--- Txikiago edo berdina 
+ -- Txikiago edo berdina 
 \begin_inset Formula $\leq$
 \end_inset
 
@@ -13445,9 +13706,9 @@ S-M-greater
 \family typewriter
 math-insert 
 \backslash
-geq 
+geq
 \family default
--- Handiago edo berdina 
+ -- Handiago edo berdina 
 \begin_inset Formula $\geq$
 \end_inset
 
@@ -13465,9 +13726,9 @@ S-less
 \family typewriter
 math-insert 
 \backslash
-ll 
+ll
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13493,9 +13754,9 @@ S-greater
 \family typewriter
 math-insert 
 \backslash
-gg 
+gg
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13921,7 +14182,9 @@ Beste azeleratzaileak
 
 \family sans
 M-k\InsetSpace ~
-o 
+o
+\family default
+ 
 \family typewriter
 keymap-off
 \end_layout
@@ -13931,7 +14194,9 @@ keymap-off
 
 \family sans
 M-k\InsetSpace ~
-t 
+t
+\family default
+ 
 \family typewriter
 keymap-toggle
 \end_layout
@@ -13941,7 +14206,9 @@ keymap-toggle
 
 \family sans
 M-k\InsetSpace ~
-x 
+x
+\family default
+ 
 \family typewriter
 keymap-off
 \end_layout
@@ -13951,7 +14218,9 @@ keymap-off
 
 \family sans
 M-k\InsetSpace ~
-1 
+1
+\family default
+ 
 \family typewriter
 keymap-primary
 \end_layout
@@ -13961,7 +14230,9 @@ keymap-primary
 
 \family sans
 M-k\InsetSpace ~
-2 
+2
+\family default
+ 
 \family typewriter
 keymap-secondary
 \end_layout

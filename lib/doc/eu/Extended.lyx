@@ -1,5 +1,5 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -9,13 +9,21 @@
 \end_preamble
 \language basque
 \inputencoding latin1
-\fontscheme pslatex
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,7 +36,8 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -52,7 +61,7 @@ Mike Ressler
  posta-zerrendara: <lyx-docs@lists.lyx.org>.
  
 \newline
-Itzulpena: IÒaki LarraÒga Murgoitio, <dooteo@euskalgnu.org>, 2004.
+Itzulpena: I√±aki Larra√±ga Murgoitio, <dooteo@euskalgnu.org>, 2004.
  
 \newline
 Zuzenketak: Hizkuntza Politikarako Sailburuordetza, <hizpol@ej-gv.es>, 2004.
@@ -64,7 +73,7 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza, <hizpol@ej-gv.es>, 2004.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -169,7 +178,8 @@ LyX-ek nola erabiltzen du LaTeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:lyxetalatex}
+\begin_inset LatexCommand label
+name "atal:lyxetalatex"
 
 \end_inset
 
@@ -340,7 +350,7 @@ Inprimatu
 \end_layout
 
 \begin_layout Itemize
-Dvi fitxategia PostScriptÆ-era bihurtzeko 
+Dvi fitxategia PostScript¬Æ-era bihurtzeko 
 \family typewriter
 dvips
 \family default
@@ -383,7 +393,7 @@ hautatu bada, irteerako fitxategiaren luzapena
 \family typewriter
 ghostview
 \family default
- exekutatu, edo bidali PostScriptÆ fitxategia inprimagailura.
+ exekutatu, edo bidali PostScript¬Æ fitxategia inprimagailura.
 \end_layout
 
 \begin_layout Section
@@ -480,9 +490,9 @@ fitxat1.tex
 fitxat1.lyx
 \family default
  sortzen du.
- Ondoren, LyX-ek
+ Ondoren, LyX-ek 
 \family typewriter
- fitxat1.lyx
+fitxat1.lyx
 \family default
  fitxategia irekitzen du.
  Bihurketa ez bada ongi ibili, saia zaitez reLyX tresna komando lerrotik
@@ -521,7 +531,8 @@ reLyX
 \family default
 -ek lana egitea lortzen ez baduzu, edo LyX fitxategi batean LaTeX kodea
  txertatzea nahi baduzu, ikusi 
-\begin_inset LatexCommand \ref{atal:latexkodeak}
+\begin_inset LatexCommand ref
+reference "atal:latexkodeak"
 
 \end_inset
 
@@ -531,7 +542,8 @@ atala.
 
 \begin_layout Section
 LaTeX kodea LyX dokumentuetan txertatzea
-\begin_inset LatexCommand \label{atal:txertat-LaTeX-kodea}
+\begin_inset LatexCommand label
+name "atal:txertat-LaTeX-kodea"
 
 \end_inset
 
@@ -539,7 +551,8 @@ LaTeX kodea LyX dokumentuetan txertatzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:latexkodeak}
+\begin_inset LatexCommand label
+name "atal:latexkodeak"
 
 \end_inset
 
@@ -572,6 +585,7 @@ eX
 status inlined
 
 \begin_layout Standard
+
 % hau bezala
 \end_layout
 
@@ -660,38 +674,45 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{tabular}{ll}
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 Hau orritxo ingurunearen adibide bat da.
  Zuk nahi duzuna jar dezakezu bertan, edozein (ez-mugikor) irudi eta taula.
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 &
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 begin{verbatim}
@@ -699,22 +720,26 @@ begin{verbatim}
 
 \begin_layout Standard
 
+
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 Hau ...
  
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 end{verbatim}
@@ -722,11 +747,13 @@ end{verbatim}
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 end{tabular}
@@ -848,7 +875,8 @@ LaTeX-eko hitzaurreari buruz
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:hitzaurrea}
+\begin_inset LatexCommand label
+name "atal:hitzaurrea"
 
 \end_inset
 
@@ -1066,9 +1094,9 @@ voffset
 \end_layout
 
 \begin_layout Standard
-Lehenetsitako balioak bai
+Lehenetsitako balioak bai 
 \family typewriter
- 
+
 \backslash
 hoffset
 \family default
@@ -1207,7 +1235,7 @@ BottomBorder=2mm
 \end_layout
 
 \begin_layout Standard
-Horrek gauzak etiketa-orri motarentzat konfiguratzen ditu Avery¬Æ, #5360
+Horrek gauzak etiketa-orri motarentzat konfiguratzen ditu Avery√Ç¬Æ, #5360
  erreferentziarekin.
  Etiketak inprimatzeko prest egon arren, LaTeX kodea txertatu beharko duzu,
  etiketa bakoitzaren inguruan 
@@ -1263,7 +1291,7 @@ John Weiss
 \emph default
 : hau amerikar batek idatzi du --- neuk! Nire herrialdeko biztanleei buruzko
  neure ikuspegia da.
- Ez baduzu atsegin, pikuteaaaaaaaaa, Òo!
+ Ez baduzu atsegin, pikuteaaaaaaaaa, √±o!
 \end_layout
 
 \end_inset
@@ -1315,7 +1343,8 @@ Hitzaurrea
 \end_inset
 
 trikimailu zikin" batzuk 
-\begin_inset LatexCommand \ref{kapi:sekretuak}
+\begin_inset LatexCommand ref
+reference "kapi:sekretuak"
 
 \end_inset
 
@@ -1718,9 +1747,9 @@ Testu-zati luzeak al dituzu, eta horietan LaTeX-ek lerroa eteteko leku egokia
  hitzen artean zenbat tarte gehitu behar duen erabakitzerakoan.
  Egokiena paragrafoa berriro lantzea duzu, arazoa konpontzeko testua beste
  modu batera idatz dezakezu.
- Hori ez bada zuretzako aukera bat, zure testua itzulbiratu dezakezu
+ Hori ez bada zuretzako aukera bat, zure testua itzulbiratu dezakezu 
 \family typewriter
- 
+
 \backslash
 sloppypar
 \family default
@@ -1895,9 +1924,9 @@ erreferentzia
 \end_layout
 
 \begin_layout Description
-Datu-basea: idatzi zure
+Datu-basea: idatzi zure 
 \family typewriter
- .bib
+.bib
 \family default
  fitxategiaren izena, 
 \family typewriter
@@ -2052,9 +2081,9 @@ a dela, eta bera bakarrik egituratu eta inprimatu daitekeela, baita fitxategi
 \backslash
 begin{document}
 \family default
- lerroraino dagoen guztia, komando hau barne, eta
+ lerroraino dagoen guztia, komando hau barne, eta 
 \family typewriter
- 
+
 \backslash
 end{document}
 \family default
@@ -2324,9 +2353,9 @@ baliora.
 \family typewriter
 0.4pt
 \family default
- balioa da, eta orri-oinarena berriz
+ balioa da, eta orri-oinarena berriz 
 \family typewriter
- 0pt
+0pt
 \family default
 .
  Lodierak berriz ezartzeko erabili komando hauek, atsegin dituzun balioak
@@ -2402,7 +2431,7 @@ fancyhdr
 \end_layout
 
 \begin_layout Standard
-Azken adibide bat, goiburukoan edo orri-oinean Kapsulatutako PostScriptÆ
+Azken adibide bat, goiburukoan edo orri-oinean Kapsulatutako PostScript¬Æ
  (EPS) fitxategi bat sartzeko aukera dago.
  Demagun enpresa baten logoa goi-ezkerreko ertzean kokatu nahi duzula.
  Saiatu honelako zerbaitekin:
@@ -2419,9 +2448,9 @@ includegraphics{logo_politta.eps}}}
 \end_layout
 
 \begin_layout Standard
-(hau hitzaurrean
+(hau hitzaurrean 
 \family typewriter
- 
+
 \backslash
 usepackage{graphics}
 \family default
@@ -2477,9 +2506,9 @@ erezia
 \family default
  menuko 
 \family sans
-HBete 
+HBete
 \family default
-orritxo bat beste baten alboan jartzeko, honek bien artean ahalik eta tarte
+ orritxo bat beste baten alboan jartzeko, honek bien artean ahalik eta tarte
  horizontal handiena jarriko du.
  Horrela orritxo bat ezkerreko mugara eta bestea eskuinekora derrigortuko
  ditu.
@@ -2604,7 +2633,8 @@ Hau HBete erabiltzen duen bigarren orritxoa da.
 
 \begin_layout Section
 Testua irudien inguruan egokitzea
-\begin_inset LatexCommand \label{atal:floatflt}
+\begin_inset LatexCommand label
+name "atal:floatflt"
 
 \end_inset
 
@@ -2629,9 +2659,17 @@ status collapsed
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 Hau egokitutako irudia da, eta esaldia berriz honi buruzko epigrafe distiratsua
  da.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2659,9 +2697,9 @@ Paragrafo hauen eskuinean
 \noun on
 Mobius
 \noun default
--en banda duen irudia dago (irudia
+-en banda duen irudia dago (irudia 
 \emph on
- Erabiltzailearen Gida
+Erabiltzailearen Gida
 \emph default
 n ikusiko zenuen).
  Hautatu 
@@ -2671,9 +2709,8 @@ T
 \bar default
 xertatu
 \family default
- menuko
+ menuko 
 \family sans
- 
 \bar under
 M
 \bar default
@@ -3222,7 +3259,7 @@ status collapsed
 Niri ere agertu zait nohizean behin problemaren bat espazio apurtezina lortzeko
  tildea erabili dudanean: adibidez, fisikan zenbakia eta unitateak ezin
  dira banandu lerro desberdinetan, beraz, batzuetan 1~N erabili dut eta
- emaitza izan da 1— eta ez nahi nuen 1 N.
+ emaitza izan da 1√ë eta ez nahi nuen 1 N.
  Horrelakoak erraz konpontzen dira {} bikote hutsa erabiliz, 1~{}N, eta
  modu berean konpontzen da zure problema.
 \begin_inset Quotes erd
@@ -3236,9 +3273,9 @@ Aipuan esaten den bezala, batzuetan
 \family typewriter
 ~
 \family default
- ikurraren ostean
+ ikurraren ostean 
 \family typewriter
- {}
+{}
 \family default
  kortxete bikotea sartzea komeni izaten da: 
 \family typewriter
@@ -3754,7 +3791,8 @@ dcolumn
 
 \begin_layout Section
 Elementuen bulet hautapena
-\begin_inset LatexCommand \label{atal:bulet}
+\begin_inset LatexCommand label
+name "atal:bulet"
 
 \end_inset
 
@@ -3967,21 +4005,21 @@ amssymb.sty
 \noun off
 \color none
 Ding
+\family default
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
-\color inherit
  
+\family sans
 \series medium
 \shape up
 \size normal
 \emph off
 \bar no
 \noun off
-\color none
 1
 \end_layout
 
@@ -4021,21 +4059,21 @@ pifont.sty
 \noun off
 \color none
 Ding
+\family default
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
-\color inherit
  
+\family sans
 \series medium
 \shape up
 \size normal
 \emph off
 \bar no
 \noun off
-\color none
 2
 \end_layout
 
@@ -4075,21 +4113,21 @@ pifont.sty
 \noun off
 \color none
 Ding
+\family default
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
-\color inherit
  
+\family sans
 \series medium
 \shape up
 \size normal
 \emph off
 \bar no
 \noun off
-\color none
 3
 \end_layout
 
@@ -4129,21 +4167,21 @@ pifont.sty
 \noun off
 \color none
 Ding
+\family default
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
-\color inherit
  
+\family sans
 \series medium
 \shape up
 \size normal
 \emph off
 \bar no
 \noun off
-\color none
 4
 \end_layout
 
@@ -4246,6 +4284,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 let
 \backslash
@@ -4264,6 +4303,7 @@ labelitemi
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand
@@ -4346,6 +4386,7 @@ labelitem
 status inlined
 
 \begin_layout Standard
+
 [
 \backslash
 (
@@ -4377,6 +4418,7 @@ star
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand
@@ -4438,12 +4480,14 @@ AMS LaTeX diseinuak matematikako idazkientzat (Amerikar Matematika Elkarteako
  Aldizkari bakoitzaren neurrira egokitzeko irakurri AMS-ko dokumentazioa,
  askotan TeX-eko irteeran lerro bakarra aldatzea nahiko izan ohi da.
  Dokumentazio hori 
-\begin_inset LatexCommand \url{http://www.ams.org}
+\begin_inset LatexCommand url
+target "http://www.ams.org"
 
 \end_inset
 
  web gunean edo 
-\begin_inset LatexCommand \url{ftp://ftp.ams.org/pub/tex/amslatex/}
+\begin_inset LatexCommand url
+target "ftp://ftp.ams.org/pub/tex/amslatex/"
 
 \end_inset
 
@@ -4887,7 +4931,7 @@ A&A Paper
 \begin_layout Standard
 Idazlea: 
 \noun on
-Peter S¸tterlin
+Peter S√ºtterlin
 \end_layout
 
 \begin_layout Subsection
@@ -4900,7 +4944,8 @@ Atal honek
 Astronomy and Astrophysics
 \emph default
  (
-\begin_inset LatexCommand \url{http://www.edpsciences.fr/aa}
+\begin_inset LatexCommand url
+target "http://www.edpsciences.fr/aa"
 
 \end_inset
 
@@ -4922,7 +4967,8 @@ aa.cls
 
 \begin_layout Standard
 \align center
-\begin_inset LatexCommand \url{ftp://ftp.edpsciences.org/pub/aa/readme.html}
+\begin_inset LatexCommand url
+target "ftp://ftp.edpsciences.org/pub/aa/readme.html"
 
 \end_inset
 
@@ -5086,6 +5132,7 @@ Goiburukoaren zatian oin-oharrak sartu nahi badituzu, adib.\InsetSpace ~
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -5566,7 +5613,8 @@ n duten hiru aldizkarietara idazki elektronikoak bidaltzeko.
 
 \begin_layout Standard
 \align center
-\begin_inset LatexCommand \url{ftp://ftp.aas.org/pubs}
+\begin_inset LatexCommand url
+target "ftp://ftp.aas.org/pubs"
 
 \end_inset
 
@@ -5754,7 +5802,8 @@ aldatu
 cite
 \family default
  komandoak, beharrezkoa bada (ikus 
-\begin_inset LatexCommand \ref{apzi:zitak}
+\begin_inset LatexCommand ref
+reference "apzi:zitak"
 
 \end_inset
 
@@ -5805,6 +5854,7 @@ Aurreikusi bezala lantzen dira
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{sloppypar}
@@ -6013,6 +6063,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -6191,6 +6242,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -6331,6 +6383,7 @@ twocolumn
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -6519,7 +6572,8 @@ Justifikatua
 
 \begin_layout Subsubsection
 Erreferentziak
-\begin_inset LatexCommand \label{apzi:zitak}
+\begin_inset LatexCommand label
+name "apzi:zitak"
 
 \end_inset
 
@@ -6676,9 +6730,9 @@ plotone
  bidaltzeko.
  Horren ordez, erabili LyX-ek duen EPS fitxategiak gehitzeko tresna estandarra
  aurrebista dotoreak egin nahi dituzunean.
- LyX-ek LaTeX-eko hitzaurrean
+ LyX-ek LaTeX-eko hitzaurrean 
 \family typewriter
- 
+
 \backslash
 usepackage{graphics}
 \family default
@@ -6768,7 +6822,8 @@ International Journal of Modern Physics D
  aldizkarira idazki elektronikoak bildatzeko erabiltzen da.
  Dokumentu-klasearen izena ws-ijmpd.cls da.
  Artxiboa, dokumentazio eta guzti, 
-\begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml}
+\begin_inset LatexCommand url
+target "http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml"
 
 \end_inset
 
@@ -6803,9 +6858,9 @@ Berria\InsetSpace ~
 \bar under
 t
 \bar default
-xantiloitik) 
+xantiloitik)
 \family default
-menua eta hautatu 
+ menua eta hautatu 
 \emph on
 ijmpd.lyx
 \emph default
@@ -7067,14 +7122,15 @@ Kluwer
  Argitaratzen dituzten aldizkarietatik hauek dira ospetsuenak (interesgarrienak
  iruditzen zaizkidanak bederen): 
 \emph on
-Astrophysics and Space Science 
+Astrophysics and Space Science
 \emph default
-eta
+ eta 
 \emph on
- Solar Physics
+Solar Physics
 \emph default
 , baina batituzte gehiago ere (ikus zerrenda osoa 
-\begin_inset LatexCommand \url{http://www.wkap.nl/jrnllist.htm/JRNLHOME}
+\begin_inset LatexCommand url
+target "http://www.wkap.nl/jrnllist.htm/JRNLHOME"
 
 \end_inset
 
@@ -7084,7 +7140,8 @@ eta
 Kluwer
 \family default
  paketea 
-\begin_inset LatexCommand \url{http://www.wkap.nl/kaphtml.htm/STYLEFILES}
+\begin_inset LatexCommand url
+target "http://www.wkap.nl/kaphtml.htm/STYLEFILES"
 
 \end_inset
 
@@ -7097,7 +7154,8 @@ Kluwer
 LyX-ek pakete honen ezaugarri asko onartzen ditu.
  Hala ere, paketeko komando "bitxi" batzuentzako ERT erabili behar da (ikus
  
-\begin_inset LatexCommand \ref{azpiatal:kluwer_berezitasunak}
+\begin_inset LatexCommand ref
+reference "azpiatal:kluwer_berezitasunak"
 
 \end_inset
 
@@ -7251,7 +7309,8 @@ berezitasunak
 \end_inset
 
 
-\begin_inset LatexCommand \label{azpiatal:kluwer_berezitasunak}
+\begin_inset LatexCommand label
+name "azpiatal:kluwer_berezitasunak"
 
 \end_inset
 
@@ -8065,6 +8124,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -8132,6 +8192,7 @@ Bertsoa
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -8307,9 +8368,9 @@ Gutuna
 \begin_layout Itemize
 
 \family sans
-Ireki-unea 
+Ireki-unea
 \family default
-(Opening): helbidearen paragrafoa sortzen du eta inplizitoki gutun berria
+ (Opening): helbidearen paragrafoa sortzen du eta inplizitoki gutun berria
  sortzen du.
 \end_layout
 
@@ -8722,7 +8783,7 @@ Gutun klase berria: letter (koma-script v.2)
 \begin_layout Standard
 Idazlea: 
 \noun on
-J¸rgen Spitzm¸ller
+J√ºrgen Spitzm√ºller
 \end_layout
 
 \begin_layout Standard
@@ -8984,7 +9045,8 @@ Azalpena
 
 \begin_layout Standard
 Diseinu hauek Springer Verlag etxeko aldizkarien formatuak dira, eta 
-\begin_inset LatexCommand \url{http://www.springer.de/author/tex/help-journals.html}
+\begin_inset LatexCommand url
+target "http://www.springer.de/author/tex/help-journals.html"
 
 \end_inset
 
@@ -9054,9 +9116,9 @@ Aldarrikapena
 \family sans
 Aierua
 \family default
-,
+, 
 \family sans
- \SpecialChar \ldots{}
+\SpecialChar \ldots{}
 Teorema.
 \end_layout
 
@@ -9065,6 +9127,7 @@ Teorema.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -9078,8 +9141,9 @@ begin{multicols}{2}
 \begin_layout Itemize
 
 \family sans
-Goi-oharra 
+Goi-oharra
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9089,8 +9153,9 @@ Goi-oharra
 \begin_layout Itemize
 
 \family sans
-Eskaintza 
+Eskaintza
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9100,8 +9165,9 @@ Eskaintza
 \begin_layout Itemize
 
 \family sans
-Azpititulua 
+Azpititulua
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9111,8 +9177,9 @@ Azpititulua
 \begin_layout Itemize
 
 \family sans
-LaTeX_Titulu_Laburtua 
+LaTeX_Titulu_Laburtua
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9123,10 +9190,9 @@ LaTeX_Titulu_Laburtua
 
 \family sans
 Egile_Laburtua
+\family default
 \size scriptsize
  
-\family default
-
 \newline
 (Author_Running)
 \end_layout
@@ -9134,8 +9200,9 @@ Egile_Laburtua
 \begin_layout Itemize
 
 \family sans
-Erakundea 
+Erakundea
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9145,8 +9212,9 @@ Erakundea
 \begin_layout Itemize
 
 \family sans
-Posta 
+Posta
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9156,8 +9224,9 @@ Posta
 \begin_layout Itemize
 
 \family sans
-Separatak 
+Separatak
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9167,8 +9236,9 @@ Separatak
 \begin_layout Itemize
 
 \family sans
-Gakoak 
+Gakoak
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9178,8 +9248,9 @@ Gakoak
 \begin_layout Itemize
 
 \family sans
-Aitorpenak 
+Aitorpenak
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9189,8 +9260,9 @@ Aitorpenak
 \begin_layout Itemize
 
 \family sans
-Aitorpena 
+Aitorpena
 \family default
+ 
 \size scriptsize
 
 \newline
@@ -9202,6 +9274,7 @@ Aitorpena
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -9253,9 +9326,9 @@ Aitorpena
 \end_layout
 
 \begin_layout Standard
-Fitxategi hauek zati batean
+Fitxategi hauek zati batean 
 \family typewriter
- ejour2.layout
+ejour2.layout
 \family default
  zaharrean oinarrituta daude, azken hori Springerren LaTeX 2.09 bertsio zaharrera
 ko prestatua zegoen estilo fitxategian oinarrituta zegoen.
@@ -9311,7 +9384,8 @@ Diseinu fitxategi hauek American Geophysical Society-ko aldizkari batzuena
 AGUplus
 \family default
  instalatuta eduki behar dituzu (
-\begin_inset LatexCommand \url{ftp://ftp.agu.org/journals/latex/journals}
+\begin_inset LatexCommand url
+target "ftp://ftp.agu.org/journals/latex/journals"
 
 \end_inset
 
@@ -9512,7 +9586,8 @@ Diseinu hau European Geophysical Society-ko aldizkarientzako da.
 egs.cls
 \family default
  fitxategia EGS 
-\begin_inset LatexCommand \url{www.copernicus.org}
+\begin_inset LatexCommand url
+target "www.copernicus.org"
 
 \end_inset
 
@@ -9571,7 +9646,8 @@ std*.inc
 
 \begin_layout Section
 Gardenkiak (edo SliTeX)
-\begin_inset LatexCommand \label{atal:slitex}
+\begin_inset LatexCommand label
+name "atal:slitex"
 
 \end_inset
 
@@ -9646,7 +9722,8 @@ bakarrik
 
 \begin_layout Standard
 "slides (FoilTeX)" buruzko dokumentuazioaren bila bazalbiltza, ikus 
-\begin_inset LatexCommand \ref{atal:foiltex}
+\begin_inset LatexCommand ref
+reference "atal:foiltex"
 
 \end_inset
 
@@ -9699,7 +9776,8 @@ slides
 
 \begin_layout Subsection
 Lanean hastea
-\begin_inset LatexCommand \label{atal:gardenkonfig}
+\begin_inset LatexCommand label
+name "atal:gardenkonfig"
 
 \end_inset
 
@@ -9794,7 +9872,8 @@ Aukerak
 \begin_layout Standard
 Aukera hau erabiliz Ohar inguruneetan denbora markatzaileak gehi ditzakezu.
  Xehetasun gehiagorako ikus 
-\begin_inset LatexCommand \ref{atal:gardenOhar}
+\begin_inset LatexCommand ref
+reference "atal:gardenOhar"
 
 \end_inset
 
@@ -9867,6 +9946,7 @@ Slides
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -9949,6 +10029,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -9976,6 +10057,7 @@ Horretaz gain, hauek dira dauden ingurune berriak:
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -10022,6 +10104,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -10046,7 +10129,8 @@ Arazo
 
 \begin_layout Subsubsection
 Ingurune berrien bitxikeriak
-\begin_inset LatexCommand \label{atal:gardenkBitxi}
+\begin_inset LatexCommand label
+name "atal:gardenkBitxi"
 
 \end_inset
 
@@ -10235,7 +10319,8 @@ Atal honek aurkezpen bat nola egiten den erakutsiko dizulakoan bazaude,
 Gardenkia
 \family default
  ingurunea aukeratzeak (
-\begin_inset LatexCommand \ref{atal:gardenkBitxi}
+\begin_inset LatexCommand ref
+reference "atal:gardenkBitxi"
 
 \end_inset
 
@@ -10451,16 +10536,17 @@ TestuIkuskorra
  bi paragrafo-inguruneko komandoak dira, eta ondorioz testua ikustezina
  eta ikuskor jartzen dute, hurrenez hurren.
  
-\begin_inset LatexCommand \ref{atal:gardenkBitxi}
+\begin_inset LatexCommand ref
+reference "atal:gardenkBitxi"
 
 \end_inset
 
 \InsetSpace ~
 ataleko oharra: nola nahi ere, bi ingurune horien 
 \emph on
-barruan 
+barruan
 \emph default
-ezer ez jarri.
+ ezer ez jarri.
 \end_layout
 
 \begin_layout Standard
@@ -10712,7 +10798,8 @@ visible
 
 \begin_layout Subsubsection
 Gardenkiarekin Ohar erabiltzea
-\begin_inset LatexCommand \label{atal:gardenOhar}
+\begin_inset LatexCommand label
+name "atal:gardenOhar"
 
 \end_inset
 
@@ -10820,7 +10907,8 @@ Denbora-markak erabiltzeko,
 "clock"
 \family default
  aukera osagarria zehaztu behar duzu (
-\begin_inset LatexCommand \ref{atal:gardenkonfig}
+\begin_inset LatexCommand ref
+reference "atal:gardenkonfig"
 
 \end_inset
 
@@ -11149,7 +11237,8 @@ oharra
 Foils
 \family default
  klasea (ikus 
-\begin_inset LatexCommand \ref{atal:foiltex}
+\begin_inset LatexCommand ref
+reference "atal:foiltex"
 
 \end_inset
 
@@ -11177,7 +11266,8 @@ Agian zeregin hori har dezakezu\SpecialChar \ldots{}
 
 \begin_layout Section
 Foils (edo FoilTeX)
-\begin_inset LatexCommand \label{atal:foiltex}
+\begin_inset LatexCommand label
+name "atal:foiltex"
 
 \end_inset
 
@@ -11243,13 +11333,9 @@ slides (FoilTeX)
 
  klasea 
 \emph on
-bakarrik 
+bakarrik
 \emph default
-deskribatzen
-\emph on
- 
-\emph default
-du
+ deskribatzen du
 \emph on
 .
 \end_layout
@@ -11263,7 +11349,8 @@ du
 
 \begin_layout Standard
 "slides (default)"-en dokumentazioaren bila bazabiltza, zoaz 
-\begin_inset LatexCommand \ref{atal:slitex}
+\begin_inset LatexCommand ref
+reference "atal:slitex"
 
 \end_inset
 
@@ -11380,7 +11467,8 @@ FoilTeX
 -ek orri-oinaren eta goiburukoaren gaitasun zabala eskaintzen du, erabiltzaileak
  definitutako logoa barne.
  Xehetasun gehiagorako ikus 
-\begin_inset LatexCommand \ref{atal:orriburuak}
+\begin_inset LatexCommand ref
+reference "atal:orriburuak"
 
 \end_inset
 
@@ -11523,6 +11611,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -11646,6 +11735,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -11708,6 +11798,7 @@ n ditu:
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -11790,6 +11881,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -11842,6 +11934,7 @@ Xede horretarako, estilo-komando hauek eskaintzen dira
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -11897,6 +11990,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -11909,7 +12003,8 @@ end{multicols}
 \begin_layout Standard
 FoilTeX-ek eskaintzen dituen beste komando batzuk zuzenean LyX-ek ez ditu
  onartzen, baina zer egiten duten eta nola erabili 
-\begin_inset LatexCommand \ref{atal:foils-onargabeak}
+\begin_inset LatexCommand ref
+reference "atal:foils-onargabeak"
 
 \end_inset
 
@@ -12025,7 +12120,7 @@ Gardenki horizontalekin dagoen arazo bakarra da
 \family typewriter
 dvips
 \family default
- kontrolatzailea erabili behar duzula, PostScriptÆ motako irteera sortzeko,
+ kontrolatzailea erabili behar duzula, PostScript¬Æ motako irteera sortzeko,
  bestela gardenkiak ez baitira biratuko.
  Aukera dago eskatzen den 
 \family typewriter
@@ -12075,7 +12170,8 @@ Elementua
 \family default
  ingurunea erabiltzea nahi baduzu, eta erabiltzen dituen buletak nola zehatz
  ditzakezun jakiteko, irakurri arestiko 
-\begin_inset LatexCommand \ref{atal:bulet}
+\begin_inset LatexCommand ref
+reference "atal:bulet"
 
 \end_inset
 
@@ -12120,7 +12216,8 @@ FoilTeX
 
 \begin_layout Subsubsection
 Orriaren goiburukoak eta orri-oinak
-\begin_inset LatexCommand \label{atal:orriburuak}
+\begin_inset LatexCommand label
+name "atal:orriburuak"
 
 \end_inset
 
@@ -12163,7 +12260,8 @@ EzkerGoiburukoa
 
 \begin_layout Subsection
 FoilTeX-eko onartu gabeko funtzioak
-\begin_inset LatexCommand \label{atal:foils-onargabeak}
+\begin_inset LatexCommand label
+name "atal:foils-onargabeak"
 
 \end_inset
 
@@ -12307,7 +12405,9 @@ Badaude hainbat tituluko orriekin zerikusia duten luzerak, titulu luzea
 \family typewriter
 
 \backslash
-abovetitleskip 
+abovetitleskip
+\family default
+ 
 \family sans
 Goiburukoa
 \family default
@@ -12343,9 +12443,9 @@ Egilea
 \family typewriter
 
 \backslash
-authorauthorskip 
+authorauthorskip
 \family default
-Hainbat 
+ Hainbat 
 \family sans
 Egile
 \family default
@@ -12474,9 +12574,9 @@ let
 \backslash
 headwidth
 \backslash
-textwidth 
+textwidth
 \family default
-jarri beharko duzu, horrela gardenki horizontaletako goiburukoak eta orri-oinak
+ jarri beharko duzu, horrela gardenki horizontaletako goiburukoak eta orri-oinak
  egokiro biratuko dira.
  
 \family sans
@@ -12549,6 +12649,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -12618,6 +12719,7 @@ Kapitulua
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -13210,7 +13312,9 @@ README
 \family default
  fitxategian aurkituko duzu.
  RevTeX 4 paketea 
-\begin_inset LatexCommand \url[RevTeX 4, web gunea]{http://publish.aps.org/revtex4/}
+\begin_inset LatexCommand url
+name "RevTeX 4, web gunea"
+target "http://publish.aps.org/revtex4/"
 
 \end_inset
 
@@ -13610,9 +13714,9 @@ uheadings goiburuak bereiztutako lerroetan.
 \end_layout
 
 \begin_layout Description
-myheadings goiburu pertsonalizatuak, komando hauekin definitzen dira:
+myheadings goiburu pertsonalizatuak, komando hauekin definitzen dira: 
 \family typewriter
- 
+
 \backslash
 markright
 \family default
@@ -13687,7 +13791,8 @@ elsart.cls
 \family default
 .
  Fitxategi hau beraien gunetik jeitsi daiteke: 
-\begin_inset LatexCommand \url{http://authors.elsevier.com/}
+\begin_inset LatexCommand url
+target "http://authors.elsevier.com/"
 
 \end_inset
 
@@ -13749,7 +13854,7 @@ Memorandum (Memoir)
 \begin_layout Standard
 Idazlea: 
 \noun on
-J¸rgen Spitzm¸ller
+J√ºrgen Spitzm√ºller
 \end_layout
 
 \begin_layout Subsection
@@ -13790,7 +13895,8 @@ status collapsed
 
 \begin_layout Standard
 Bidali iradokizunak hona: 
-\begin_inset LatexCommand \url{lyx-devel@lists.lyx.org}
+\begin_inset LatexCommand url
+target "lyx-devel@lists.lyx.org"
 
 \end_inset
 
@@ -13807,7 +13913,8 @@ status collapsed
 
 \begin_layout Standard
 Xehetasunak 
-\begin_inset LatexCommand \ref{atal:txertat-LaTeX-kodea}
+\begin_inset LatexCommand ref
+reference "atal:txertat-LaTeX-kodea"
 
 \end_inset
 
@@ -14045,7 +14152,8 @@ status collapsed
 
 \begin_layout Standard
 Gune honetan aurkituko duzu: 
-\begin_inset LatexCommand \url{CTAN:/macros/latex/memoir/memman.pdf}
+\begin_inset LatexCommand url
+target "CTAN:/macros/latex/memoir/memman.pdf"
 
 \end_inset
 
@@ -14243,7 +14351,8 @@ reLyX
  arren, LyX-ek LaTeX-eko dokumentu bat inportatzerakoan automatikoki deitzen
  dio.
  Azalpen zehatzagoa 
-\begin_inset LatexCommand \ref{atal:reLyX}
+\begin_inset LatexCommand ref
+reference "atal:reLyX"
 
 \end_inset
 
@@ -14359,11 +14468,11 @@ Gailutik askeak
 \end_layout
 
 \begin_layout Subsection
-PostScriptÆ
+PostScript¬Æ
 \end_layout
 
 \begin_layout Standard
-Bihurketa katearen hurrengo urratsa DVI fitxategi bat PostScriptÆ-era bihurtzean
+Bihurketa katearen hurrengo urratsa DVI fitxategi bat PostScript¬Æ-era bihurtzean
  datza.
  Horretarako bai 
 \family sans
@@ -14484,7 +14593,7 @@ Dekel Tsur
 \begin_layout Standard
 \noindent
 Oinarrizko PDF fitxategi bat (etiketa markarik gabe, estekarik gabe, e.a.)
- sortzeko biderik erosoena, LyX-eko edozein bertsioetan, dokumentua PostScriptÆ
+ sortzeko biderik erosoena, LyX-eko edozein bertsioetan, dokumentua PostScript¬Æ
  fitxategi bezala gordetzea da, gero fitxategi hori 
 \family typewriter
 ps2pdf
@@ -14510,7 +14619,8 @@ DF
  menuko elementua gehitu zen.
  Letra-tipoekin dauden zenbait berezitazun gogoan eduki behar dituzu: ikus
  
-\begin_inset LatexCommand \ref{atal:letra-zatarrak}
+\begin_inset LatexCommand ref
+reference "atal:letra-zatarrak"
 
 \end_inset
 
@@ -14541,7 +14651,8 @@ pstricks
 
 \begin_layout Subsubsection
 Zergatik ikusten da testua hain gaizki Acrobat Reader-ekin?
-\begin_inset LatexCommand \label{atal:letra-zatarrak}
+\begin_inset LatexCommand label
+name "atal:letra-zatarrak"
 
 \end_inset
 
@@ -14563,9 +14674,9 @@ Arazoa da Acrobat Reader-en bitmap motako letra-tipoak gaizki bistaratzen
  direla.
  LyX motako fitxategi batetik PDF fixtategi bat sortzen denean, letra-tipo
  bektorialak erabili behar dituzu, lehenetsitako bitmap letra-tipoen ordez
- (izan ere, PostScriptÆ fitxategietan ere letra-tipo bektorialak erabil
+ (izan ere, PostScript¬Æ fitxategietan ere letra-tipo bektorialak erabil
  ditzakezu).
- Azken LaTeX banaketek letra-tipo estandarren (Computer Modern) PostscriptÆ
+ Azken LaTeX banaketek letra-tipo estandarren (Computer Modern) Postscript¬Æ
  Type 1 bertsioarekin datoz.
  
 \family typewriter
@@ -14606,9 +14717,9 @@ a emulatzen du (CM letra-tipo estandarrak erabiliz).
 \family typewriter
 
 \backslash
-usepackage{ae,aecompl} 
+usepackage{ae,aecompl}
 \family default
-gehitu behar da.
+ gehitu behar da.
  Hala ere, CM letra-tipoko zenbait karaktere bitxi (adib.
  eth, thorn) galdu egiten dira, eta EC letra-tipoetatik eskuratzen dira.
  Hori dela eta, karaktere bitxi horiek bitmap eran lortuko dituzu.
@@ -14633,7 +14744,7 @@ Hobespenak
 \end_layout
 
 \begin_layout Standard
-Bestelako aukera bat PostScriptÆ letra-tipo estandarrak erabiltzea da, Computer
+Bestelako aukera bat PostScript¬Æ letra-tipo estandarrak erabiltzea da, Computer
  Modern letra-tipoen ordez.
  Hori egiteko, dokumentuaren ezarpeneko leihoan letra-tipo globala bezala
  
@@ -14641,9 +14752,9 @@ Bestelako aukera bat PostScriptÆ letra-tipo estandarrak erabiltzea da, Computer
 pslatex
 \family default
  hautatu behar duzu.
- PostScriptÆ letra-tipoak erabiltzean, sortzen den PDF fitxategia txikiagoa
+ PostScript¬Æ letra-tipoak erabiltzean, sortzen den PDF fitxategia txikiagoa
  izaten da, letra-tipoak ez baitira fitxategi barruan gordetzen.
- Honetaz gain, PostScriptÆ letra-tipoak 
+ Honetaz gain, PostScript¬Æ letra-tipoak 
 \family typewriter
 T1
 \family default
@@ -14652,21 +14763,22 @@ T1
 bitxiak
 \emph default
  dauzkate.
- Bestalde, PostScriptÆ letra-tipoek ez dute letra lodi ikurrik, eta beraz
+ Bestalde, PostScript¬Æ letra-tipoek ez dute letra lodi ikurrik, eta beraz
  letra lodi txiroa ("poor man's bold" edo pmb) erabili beharko da (ikus
  
-\begin_inset LatexCommand \ref{atal:pdfbold}
+\begin_inset LatexCommand ref
+reference "atal:pdfbold"
 
 \end_inset
 
 \InsetSpace ~
 atala).
- Gainera, PostScriptÆ letra-tipoek Computer Modern letra-tipoen itxura ezberdina
+ Gainera, PostScript¬Æ letra-tipoek Computer Modern letra-tipoen itxura ezberdina
  edukitzen dute.
 \end_layout
 
 \begin_layout Standard
-Laburtzeko, Computer Modern eta PostScriptÆ letra-tipoek emaitza hobeak
+Laburtzeko, Computer Modern eta PostScript¬Æ letra-tipoek emaitza hobeak
  eskaintzen dituzte (salbuezpen gutxi batzuekin).
  Zein erabili erabiltzailearen eskuetan dago.
 \end_layout
@@ -14675,7 +14787,8 @@ Laburtzeko, Computer Modern eta PostScriptÆ letra-tipoek emaitza hobeak
 Zergatik ez dabil 
 \backslash
 boldsymbol{} komandoa pslatex erabiltzen dudanean?
-\begin_inset LatexCommand \label{atal:pdfbold}
+\begin_inset LatexCommand label
+name "atal:pdfbold"
 
 \end_inset
 
@@ -14695,7 +14808,7 @@ boldsymbol{} eta pslatex
 \end_layout
 
 \begin_layout Standard
-PostScriptÆ letra-tipoek ez dute letra lodi ikurrik.
+PostScript¬Æ letra-tipoek ez dute letra lodi ikurrik.
  Hori konpontzeko, erabili 
 \family typewriter
 
@@ -14868,7 +14981,8 @@ Ikus aipuak hemen:
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \url{http://wiki.lyx.org/pmwiki.php/FAQ/PDF}
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/pmwiki.php/FAQ/PDF"
 
 \end_inset
 
@@ -14943,7 +15057,8 @@ custom_export_command "nire_komandoa $$FName"
 
 \begin_layout Section
 reLyX, xehetasunak
-\begin_inset LatexCommand \label{atal:reLyX}
+\begin_inset LatexCommand label
+name "atal:reLyX"
 
 \end_inset
 
@@ -15010,23 +15125,25 @@ dok_klasea
 \shape italic
 irteera_direkt
 \shape default
- ] [
+ ] [ 
 \series bold
- -r
+-r
 \series default
+ 
 \shape italic
- ingur1
+ingur1
 \shape default
 [,
 \shape italic
 ingur2
 \shape default
-...]] [
+...]] [ 
 \series bold
- -s
+-s
 \series default
+ 
 \shape italic
- sfitxa
+sfitxa
 \shape default
 1[,
 \shape italic
@@ -15066,23 +15183,25 @@ dok_klasea
 \shape italic
 irteera_direkt
 \shape default
- ] [
+ ] [ 
 \series bold
- -r
+-r
 \series default
+ 
 \shape italic
- ingur1
+ingur1
 \shape default
 [,
 \shape italic
 ingur2
 \shape default
-...]] [
+...]] [ 
 \series bold
- -s
+-s
 \series default
+ 
 \shape italic
- sfitxa1
+sfitxa1
 \shape default
 [,
 \shape italic
@@ -15249,7 +15368,8 @@ fitxategia
 
 \begin_layout Description
 -r Ingurune arruntak (ikus
-\begin_inset LatexCommand \ref{azpi:relyx-sintaxia}
+\begin_inset LatexCommand ref
+reference "azpi:relyx-sintaxia"
 
 \end_inset
 
@@ -15268,7 +15388,8 @@ atala).
  Sarrerako (bat edo gehiago komatxo artean, eta komaz bereiztuta) sintaxi-fitxat
 egiak irakurtzeko, lehenetsitakoaz gain.
  Xehetasun gehiagorako, ikus 
-\begin_inset LatexCommand \ref{azpi:relyx-sintaxia}
+\begin_inset LatexCommand ref
+reference "azpi:relyx-sintaxia"
 
 \end_inset
 
@@ -15323,9 +15444,9 @@ Onartzen diren luzapenak hauek dira:
 \family typewriter
 reLyX
 \family default
- programak
+ programak 
 \family typewriter
- inputfile.tex
+inputfile.tex
 \family default
  fitxategia bihurtzen saiatuko da (LaTeX-ek ere antzeko joera dauka).
  
@@ -15449,7 +15570,8 @@ Teorikoki, fitxategi gehienak bihurtu ditzake, eta bihurtu ezin ditzakeen
  Zoritxarrez, errealitateak ez dio beti teoriari jarraitzen.
  reLyX hondatu egiten bada, eta LyX-ek aurretik sortu den LyX motako fitxategia
  ezin badu irakurri, orduan begiratu 
-\begin_inset LatexCommand \ref{azpi:relyx-akatsak}
+\begin_inset LatexCommand ref
+reference "azpi:relyx-akatsak"
 
 \end_inset
 
@@ -15582,9 +15704,9 @@ section*
 \end_layout
 
 \begin_layout Itemize
-Inguruneak:
+Inguruneak: 
 \family typewriter
- quote
+quote
 \family default
 , 
 \family typewriter
@@ -15675,9 +15797,9 @@ margin
 \end_layout
 
 \begin_layout Itemize
-Letra-tipoak aldatzeko komandoak
+Letra-tipoak aldatzeko komandoak 
 \family typewriter
- (
+(
 \backslash
 em
 \family default
@@ -15789,9 +15911,9 @@ caption
 \family typewriter
 thebibliography
 \family default
- ingurunea eta
+ ingurunea eta 
 \family typewriter
- 
+
 \backslash
 bibitem
 \family default
@@ -15882,7 +16004,8 @@ rightarrow
  Ikusi 
 \emph on
 
-\begin_inset LatexCommand \ref{azpi:relyx-sintaxia}
+\begin_inset LatexCommand ref
+reference "azpi:relyx-sintaxia"
 
 \end_inset
 
@@ -16011,15 +16134,15 @@ reLyX
 \backslash
 begin{lelo}
 \family default
- aurkitzen badu ez du "lelo" ingurunea ezagutzen, eta
+ aurkitzen badu ez du "lelo" ingurunea ezagutzen, eta 
 \family typewriter
- 
+
 \backslash
 end{lelo}
 \family default
- aurkitu arte hitzez hitz kopiatzen du (baldin eta
+ aurkitu arte hitzez hitz kopiatzen du (baldin eta 
 \series bold
- -r
+-r
 \series default
  aukera ez baduzu erabiltzen).
  Zorionez, honelako komando ezezagunekin 
@@ -16041,7 +16164,8 @@ reLyX
 
 \begin_layout Subsubsection
 reLyX-ek gaizki kudeatzen duenak ---hots, AKATSAK
-\begin_inset LatexCommand \label{azpi:relyx-akatsak}
+\begin_inset LatexCommand label
+name "azpi:relyx-akatsak"
 
 \end_inset
 
@@ -16066,7 +16190,9 @@ Ingelesez "bug tracker" deizen zaio sistema edo tresna honi.
 \end_inset
 
  zerrendatuta aurkituko dituzu, 
-\begin_inset LatexCommand \url[LyX Bugzilla]{http://bugzilla.lyx.org/}
+\begin_inset LatexCommand url
+name "LyX Bugzilla"
+target "http://bugzilla.lyx.org/"
 
 \end_inset
 
@@ -16150,11 +16276,10 @@ documentclass
  komandoaren aukera gutxi batzuk bihurtzen ditu (
 \family sans
 1[012]pt, [letter|legal|executive|a4|a5|b5]paper, [one|two]side, landscape,
- 
 \family default
-eta
+ eta 
 \family sans
- [one|two]column
+[one|two]column
 \family default
  hain zuzen).
  Beste aukerak 
@@ -16258,7 +16383,8 @@ reLyX
 BUGS
 \family default
  fitxategian ez bada agertzen) ikus 
-\begin_inset LatexCommand \ref{azpi:relyx-errore-txostenak}
+\begin_inset LatexCommand ref
+reference "azpi:relyx-errore-txostenak"
 
 \end_inset
 
@@ -16288,9 +16414,9 @@ BUGS
 
 \begin_layout Itemize
 Komando batzuetan LyX-ek ez ditu aukerazko argumenturik onartzen.
- Adibidez,
+ Adibidez, 
 \family typewriter
- 
+
 \backslash
 sqrt
 \family default
@@ -16402,7 +16528,8 @@ Oharrak
 
 \begin_layout Subsubsection
 Errore-txostenak
-\begin_inset LatexCommand \label{azpi:relyx-errore-txostenak}
+\begin_inset LatexCommand label
+name "azpi:relyx-errore-txostenak"
 
 \end_inset
 
@@ -16415,14 +16542,17 @@ Errore-txostenak
 reLyX
 \family default
  hondatzen bada, edo jokaera bitxi bat agertzen badu (
-\begin_inset LatexCommand \ref{azpi:relyx-akatsak}
+\begin_inset LatexCommand ref
+reference "azpi:relyx-akatsak"
 
 \end_inset
 
 \InsetSpace ~
 atalean edo akatsen gunean azaldu ez den beste era batean) orduan 
 \family typewriter
-reLyX 
+reLyX
+\family default
+ 
 \family sans
 -d
 \family default
@@ -16690,7 +16820,8 @@ n arabera).
 
 \begin_layout Subsubsection
 Sintaxien fitxategiak
-\begin_inset LatexCommand \label{azpi:relyx-sintaxia}
+\begin_inset LatexCommand label
+name "azpi:relyx-sintaxia"
 
 \end_inset
 
@@ -16796,9 +16927,9 @@ mbox
  Sintaxiaren fitxategian, bihurtu ezin daitekeen komando bateko argumentu
  batean "translate" katea jartzen bada orduan reLyX-ek bihurtu egingo du,
  hitzez hitz kopiatu ordez.
- Adibidez, lehenespeneko sintaxiaren fitxategiak
+ Adibidez, lehenespeneko sintaxiaren fitxategiak 
 \family typewriter
- 
+
 \backslash
 raisebox{}[][]{translate}
 \family default
@@ -16887,9 +17018,9 @@ Hirugarrena, sintaxi-fitxategiak matematikako bihurketa taula deskribatzen
 \family sans
 _
 \family default
- onartuta dago, baina ez bere baliokidea den
+ onartuta dago, baina ez bere baliokidea den 
 \family typewriter
- 
+
 \backslash
 sb
 \family default
@@ -16956,7 +17087,9 @@ reLyX
 \family default
  exekutatu ahal izateko Perl 5.002 edo garatuagoa den bertsioa eduki behar
  duzu.<plug> Ez badaukazu, 
-\begin_inset LatexCommand \url[Perl]{http://www.perl.com/}
+\begin_inset LatexCommand url
+name "Perl"
+target "http://www.perl.com/"
 
 \end_inset
 
@@ -17192,9 +17325,7 @@ Etienne Grossmann
 \begin_layout Itemize
 
 \noun on
-Jos\i \'{e}
- Ab\i \'{\i}
-lio Oliveira Matos
+Jos√© Abƒ±ÃÅlio Oliveira Matos
 \end_layout
 
 \begin_layout Itemize
@@ -17255,653 +17386,6 @@ LyX-en funtzioentzako software osagarriak
 \end_layout
 
 \begin_layout Section
-LyX SGML-Tools-ekin erabiltzea (edo LinuxDoc)
-\end_layout
-
-\begin_layout Standard
-Idazlea: 
-\noun on
-Paul Evans
-\end_layout
-
-\begin_layout Subsection
-Sarrera
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-LinuxDoc
-\family default
- LyX-en erabilgarri dagoen dokumentu-klase bat da, 
-\family typewriter
-sgml-tools
-\family default
- paketea instalatuta baduzu bederen.
- SGML (Standardized General Mark-up Language) motako dokumentuak sortzeko
- erabil dezakezu, formatu hau Linuxeko Dokumentazio Proiektuan erabiltzen
- da.
- Proiektu horretan laguntzen ari bazara, dokumentu-klase hau lagungarria
- izango duzu.
- SGML formatua paketeko script eta programekin erabil dezakezu bestelako
- formatu batzuk sortzeko: LaTeX, HTML, testu soila, man orrialdeak eta abar.
- Dokumentu-klase hau erabiltzea nahiko duzu, beste formatu askotara modu
- errazean dokumentuak bihurtzeko.
-\end_layout
-
-\begin_layout Standard
-Ikusiko duzu nola 
-\family sans
-LinuxDoc
-\family default
--ek beste dokumentu-klase batzuk baino diseinu-aukera gutxiago dituela.
- Hau garrantzitsua da, zeren eta beste formatuetara egokiro eta zentzuz
- bihurtzeko aukera baitauka.
- Atal honek ondorengoak azalduko ditu:
-\end_layout
-
-\begin_layout Itemize
-Dokumentu bat LinuxDoc batean nola konfiguratu eta erabili.
-\end_layout
-
-\begin_layout Itemize
-Nola erabili LinuxDoc-eko markatze-etiketak zure dokumentuetako diseinuan.
-\end_layout
-
-\begin_layout Itemize
-Nola erabili SGML paketeak hainbat formatu sortzeko.
-\end_layout
-
-\begin_layout Itemize
-Nola konpondu arazo batzuk.
-\end_layout
-
-\begin_layout Subsection
-LinuxDoc dokumentua prestatu eta erabiltzea
-\end_layout
-
-\begin_layout Subsubsection
-Hasi lanean
-\end_layout
-
-\begin_layout Standard
-Hasi 
-\family sans
-Dokumentu-ezarpenak
-\family default
- leihoan 
-\family sans
-LinuxDoc
-\family default
- dokumentu-klasea hautatzen.
- Gero, beste dokumentu-klaseek erabiltzen duten baino ingurune kopuru gutxiago
- aurkituko dituzu.
- Jakingo duzunez, inguruneak tresna-barrako ezkerraldean zerrendatzen dira.
- Ingurune hauek nola erabiltzen diren 
-\begin_inset LatexCommand \ref{atal:sgmlparagr}
-
-\end_inset
-
-\InsetSpace ~
-atalean argitzen dira.
-\end_layout
-
-\begin_layout Standard
-Dokumentuaren titulua idatzi 
-\emph on
-behar
-\emph default
- duzu, egilearen izenarekin jarraituz, eta bakoitzari dagokion paragrafo-ingurun
-ea ezarriz.
- Ez baduzu hau egiten, inprimatzerakoan erroreak gertatuko dira.
- Ondoren, data eta laburpena idatz ditzakezu.
- Dokumentu egoki bat 
-\family sans
-Atala
-\family default
- paragrafo-ingurunearekin hasi behar da, eta ez beste edozein ingurune estandar
- batekin.
-\end_layout
-
-\begin_layout Standard
-Horren ondoren, prestatu dokumentua eskuragarri dituzun ohiko paragrafo-ingurune
-ekin.
- Zerrenda osoa eta beraien erabilpena ikusteko 
-\begin_inset LatexCommand \ref{atal:sgmlparagr}
-
-\end_inset
-
-\InsetSpace ~
-atalera joan.
-\end_layout
-
-\begin_layout Subsubsection
-LinuxDoc-en formatua
-\end_layout
-
-\begin_layout Standard
-Dokumentu hauek beti bezala gorde eta inprima ditzakezu.
- SGML paketearen beste funtzioak erabiltzeko, LinuxDoc formatuan gorde behar
- duzu (honela dokumentua oinarrizko smgl-etiketak dituen fitxategira bihurtuko
- da).
- 
-\family sans
-LinuxDoc
-\family default
- formatuan gordetzeko erabili 
-\family sans
-\bar under
-F
-\bar default
-itxategia\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-sportatu\SpecialChar \menuseparator
-LinuxDoc
-\family default
- menua.
- Izen bereko baina 
-\family typewriter
-.sgml
-\family default
- luzapena duen fitxategia lortuko duzu, 
-\family typewriter
-.lyx
-\family default
- luzapenaren ordez.
- Fitxategi berria erabiltzen ikasteko 
-\begin_inset LatexCommand \ref{atal:sgml-script}
-
-\end_inset
-
-\InsetSpace ~
-atala ikusi.
-\end_layout
-
-\begin_layout Subsection
-LinuxDoc-eko inguruneak erabiltzea
-\end_layout
-
-\begin_layout Subsubsection
-LinuxDoc dokumentuaren egitura
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-LinuxDoc
-\family default
--ek egitura formal bat dauka, eta honek etiketak nola jartzen dituzun mugatzen
- du.
- Dokumentu guztietan bi zati daude:
-\end_layout
-
-\begin_layout Description
-Goiburukoa\InsetSpace ~
-(Header): Honek lehenbiziko 
-\family sans
-Atala
-\family default
- inguruneko markaren gainetik dagoena zehazten du.
- Hor titulua, egilea, data, laburpena eta gaien aurkibidea koka ditzakezu.
- Lehengo bi diseinuak (titulua eta egilea) gehitu 
-\emph on
-behar
-\emph default
- dituzu.
-\end_layout
-
-\begin_layout Description
-Gorputza\InsetSpace ~
-(Body): Lehenbiziko atalaren markatik beheruntz dagoen guztia.
- Beste etiketa guztiak erabil ditzakezu.
-\end_layout
-
-\begin_layout Subsubsection
-LinuxDoc-eko paragrafo-inguruneak
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand \label{atal:sgmlparagr}
-
-\end_inset
-
-Erabil ditzakezun inguruneak zerrendatzen ditugu, bakoitzari dagokion azalpenare
-kin:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Estandarra
-\family default
-: erreferentzia gurutzatua bezala lan egiten du.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Titulua
-\family default
-: dokumentuaren hasieran agertzen da, marra horizontal lodi baten gainean
- (marra hau LyX pantailan ez duzu ikusiko).
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Atala
-\family default
-, 
-\family sans
-Azpiatala
-\family default
-, 
-\family sans
-Azpiazpiatala
-\family default
-, 
-\family sans
-Paragrafoa
-\family default
- eta 
-\family sans
-Azpiparagrafoa
-\family default
-: betiko moduan erabiltzen dira, beraien arteko ordena mantenduz.
- Zenbatzen al diren edo ez 
-\family sans
-Dokumentu-ezarpenak
-\family default
- leihoko 
-\family sans
-Zenbakera
-\family default
- fitxan dagoen Zenbaki sakonera eremuaren ezarpenak kudeatzen du.
- Zenbatu gabekoak ez dituzu beste moduan lortuko, hemen 
-\family sans
-Atala*
-\family default
- edo antzekorik ez baitaude.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Zenbatuta
-\family default
-: ohi den bezala, honek zenbatutako eta koskatutako zerrenda bat sortzen
- du, 
-\emph on
-Erabiltzailearen Gida
-\emph default
-n azaltzen zen bezala.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Elementua
-\family default
-: beste dokumentu-klaseetakoaren berdina da.
- Ikus 
-\emph on
-Erabiltzailearen Gida
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Azalpena
-\family default
-: 
-\emph on
-Erabiltzailearen Gida
-\emph default
-n azaldu zen bezala dabil.
- Gogoratu zerrendako elementuaren hasierako hitzak letra lodiz agertzeko,
- hitz bat baino gehiago diren kasuan, hauen artean zuriune babestuak erabili
- behar dituzula.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Hitzaz hitz
-\family default
-: beti bezala erabiltzen da.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Kodea
-\family default
-: 
-\family sans
-LyX-Kodea
-\family default
- ingurunearen antzekoa da.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Egilea
-\family default
-: honela markatzen duzun edozer, dokumentuko izenburuaren ezkerrean agertuko
- da, marra lodi baten azpian.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Data
-\family default
-: honela markatzen duzuna izenburuaren eskuinean, eta marraren azpian, agertzen
- da.
- Ez daukazu derrigorrez data bat sartu behar, askotan dokumentuaren bertsioa
- ingurune honekin markatzen da.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Laburpena
-\family default
-: egile eta dataren ondoren, baina lehenbiziko atalaren aurretik, paragrafo
- aske bat sortzeko erabil dezakezu.
- Honelako paragrafo bakar bat erabil dezakezu.
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-
-\emph on
-Egilearen oharra
-\emph default
-: honek egiaztapena behar du ---pe..
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Displaymath
-\family default
-:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-
-\emph on
-Egilearen oharra
-\emph default
-: oraindik hau ez dut egiaztatu ---pe
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Beste funtzio batzuk
-\end_layout
-
-\begin_layout Standard
-Diseinua menua ere erabil dezakezu letra-tipoak ezartzeko edo hitzak enfasiareki
-n jartzeko.
- Gaien aurkibidea beti bezala erabil dezakezu baita ere (ikus 
-\emph on
-Erabiltzailearen Gida
-\emph default
-ko dagokion atala).
- Gainera, menuetan beste zenbait funtzio aurkitu ahal izango dituzu, adib.\InsetSpace ~
-oin-oha
-rrak txertatzea.
- Guzti hauek egokiro lantzen ote diren buruz zenbait zalatzan daude
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-
-\emph on
-Egilearen oharra
-\emph default
-: berriro, hau egiaztatu beharra dago, baliteke nere sistemaren eraginaren
- ondorioz izatea eta.
- ---pe.
-\end_layout
-
-\end_inset
-
- .
-\end_layout
-
-\begin_layout Subsubsection
-Erreferentzia gurutzatuak eta HTML
-\end_layout
-
-\begin_layout Standard
-Txertatu menuan URL motako helbideak gehitzen duten bi aukera berri aurkituko
- dituzu.
- Aukera hauetariko bat erabiltzen baduzu, zure dokumentua TeX kodean txertatutak
-o blokea aurkituko duzu, hiru bloketan banatuta dago, eta blokeak bereizteko
- tarte horizontalak ditu.
- Honelako blokea izango litzateke:
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-
-\backslash
-htmlurl{
-\family default
- edo 
-\family typewriter
-
-\backslash
-url{
-\family roman
-
-\hfill
-
-\family default
-tartea
-\family typewriter
- 
-\hfill
-}{
-\family roman
-
-\hfill
-
-\family default
-tartea
-\family roman
-
-\hfill
-
-\family typewriter
-}
-\end_layout
-
-\begin_layout Standard
-HTML etiketa oso bat txertatu dezakezu lehen eta bigarren blokeen artean.
- Hau izan daiteke 
-\begin_inset LatexCommand \url{http://edozein.helbide}
-
-\end_inset
-
- edo honelako etiketa baliagarri bat: 
-\begin_inset LatexCommand \url{mailto:neroni@nire.helbidea}
-
-\end_inset
-
-.
- Gero, bigarren eta hirugarren blokeen artean nolabaiteko azalpen bat gehitu.
- Hauek dira ezberdintasunak:
-\end_layout
-
-\begin_layout Itemize
-URLa: bai HTML etiketa bai dagokion azalpena dokumentuan agertuko dira.
-\end_layout
-
-\begin_layout Itemize
-HTML URLa: inprimatutako bertsioan azalpena bakarrik agertuko da.
-\end_layout
-
-\begin_layout Subsection
-LinuxDoc-en sgml script-ak erabiltzea
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Atal hau erabat zaharkitua dago.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand \label{atal:sgml-script}
-
-\end_inset
-
-
-\family sans
-LinuxDoc
-\family default
- dokumentu-klase bezala erabil dezakezu, bestelako script edo programarik
- erabili gabe, baina kasu horretan ezin da gauza gehiegirik egin.
- Lortuko duzun guztia Linux Documentation Project Howto-ren antzeko itxura
- izatea da.
- Dokumentuaren bihurketa lantzeko 
-\family typewriter
-sgml-tools-1.0.x.tar.gz
-\family default
- (non 
-\begin_inset Formula $x\geq3$
-\end_inset
-
- izan behar duen) paketea eskuratu eta instalatu behar duzu.
- Hau eskuratzeko, joan web gune honetara:
-\end_layout
-
-\begin_layout LyX-Code
-
-\family roman
-\begin_inset LatexCommand \url{http://pobox.com/~cg/sgmltools}
-
-\end_inset
-
-
-\family default
- 
-\end_layout
-
-\begin_layout Standard
-Beste gune batetik ere eskura dezakezu, joan 
-\family typewriter
-sunsite
-\family default
--ren artxiboetara.
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Hau itzuli den garaian (2004/02/03), sgml-tools-en 1.0.3 bertsioa ez da 
-\family typewriter
-sunsite
-\family default
--ren ftp zerbitzarian aurkitzen.
- 0.99.0 bertsioa bakarrik aurkitu da.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\family roman
-\begin_inset LatexCommand \url{ftp://sunsite.unc.edu/pub/Linux/utils/text/sgml-tools-1.0.x.tar.gz}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-sgml-tools-1.0.x.tar.gz
-\family default
- fitxategiak SGML dokumentuak idazteko (eta groff, LaTeX, HTML, GNU info,
- LyX, eta RTF formatuetara bihurtzeko) behar dituzun gauza guztiak ditu.
- Pakete hau 1997ko urtarrilean 
-\family typewriter
-linuxdoc-sgml-1.5.tar.gz
-\family default
- bezala berrizendatu zen.
-\end_layout
-
-\begin_layout Standard
-Pakete horren jarraibideak zehazten duten urratsak landu, nola instalatu
- eta erabili behar den argitzen baitu.
- Guzti hau LyX-etik kanpo egin behar da, 
-\family sans
-\bar under
-F
-\bar default
-itxategia\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-sportatu\SpecialChar \menuseparator
-LinuxDoc
-\family default
- menua erabili baino lehenago.
-\end_layout
-
-\begin_layout Subsection
-LinuxDoc-en erroreak
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-LinuxDoc
-\family default
- motako dokumentu bat inprimatu edo aurrebista lantzen duzunean, LaTeX-i
- deitu aurretik etiketen zenbait egiaztaketa egiten dira.
- Hemen errore batzuk harrapatzen dira, batik bat dokumentuaren egiturarekin
- zerikusiak dutenak.
- LyX-ek errore mezua kaleratzen du, baina dokumentuan ez du errore-kutxarik
- jartzen gero zuk ireki ahal izateko.
- Zuzenean fitxategian begiratu beharko duzu gaizki dagoena aurkitzeko.
- Arazo gehienak dokumentu-klasean erabat erabili ez daitekeen aukeretan
- gertatzen da.
-\end_layout
-
-\begin_layout Section
 TeX egiaztatzea
 \end_layout
 
@@ -17937,7 +17421,8 @@ chktex
  itzalduta agertuko da (eta ezin izango duzu hautatu).
  CTAN-eko gertuen daukazun zerbitzaritik jeitsi ahalko duzu, edo web gune
  honetatik: 
-\begin_inset LatexCommand \url{http://www.ifi.uio.no/~jensthi/chktex/}
+\begin_inset LatexCommand url
+target "http://www.ifi.uio.no/~jensthi/chktex/"
 
 \end_inset
 
@@ -18022,7 +17507,8 @@ Etiketa eta antzeko komandoen aurreko tartea:
 Etiketa bat aurreko testuari
  itsatsita (jarraian baina tarterik gabe) egon behar du, okerreko orrialde
  batean ez erortzeko
-\begin_inset LatexCommand \label{atal:chktex}
+\begin_inset LatexCommand label
+name "atal:chktex"
 
 \end_inset
 
@@ -18051,19 +17537,22 @@ salto
  egingo du erreferentziaren eta zenbakiaren artean, bakoitza lerro ezberdinetan
  utziz.
  Ikus 
-\begin_inset LatexCommand \ref{atal:chktex}
+\begin_inset LatexCommand ref
+reference "atal:chktex"
 
 \end_inset
 
 .
  Kasu hauetan egokiena honela jartzea da: Ikus\InsetSpace ~
 
-\begin_inset LatexCommand \ref{atal:chktex}
+\begin_inset LatexCommand ref
+reference "atal:chktex"
 
 \end_inset
 
 , edo ikusi 
-\begin_inset LatexCommand \ref{atal:chktex}
+\begin_inset LatexCommand ref
+reference "atal:chktex"
 
 \end_inset
 
@@ -18423,9 +17912,9 @@ Solo "%s" found.
 
 \begin_layout Enumerate
 You should use "%s" to achieve an ellipsis.
- (
+ ( 
 \emph on
- elipsia ongi burutzeko "%s" erabili beharko zenuke
+elipsia ongi burutzeko "%s" erabili beharko zenuke
 \emph default
 ).
 \end_layout
@@ -18510,7 +17999,7 @@ You should use
 \family default
 " (ASCII 39) instead of "
 \family typewriter
-¥
+¬¥
 \family default
 "
 \size default
@@ -18528,7 +18017,7 @@ You should use
 \size small
 "
 \family typewriter
-¥
+¬¥
 \family default
 "
 \size default
@@ -18638,8 +18127,11 @@ times$
  may look prettier here.
  (
 \emph on
-Hemen 
+Hemen
+\emph default
+ 
 \family typewriter
+\emph on
 $
 \backslash
 times$
@@ -18794,7 +18286,7 @@ Bertsio-kontrola LyX-en
 \begin_layout Standard
 Idazlea: 
 \noun on
-Lars Gullik Bj¯nnes
+Lars Gullik Bj√∏nnes
 \end_layout
 
 \begin_layout Subsection
@@ -18835,7 +18327,8 @@ man rcsintro
 
 \begin_layout Standard
 LyX-en egin den garaketak GNU taldearen (
-\begin_inset LatexCommand \url{http://www.gnu.org}
+\begin_inset LatexCommand url
+target "http://www.gnu.org"
 
 \end_inset
 
@@ -19004,9 +18497,9 @@ Erakutsi historiala
 
 \begin_layout Standard
 Honek RCS dokumentuaren historia osoa erakusten du.
- Horretarako,
+ Horretarako, 
 \family typewriter
- rlog <fitx-izena>
+rlog <fitx-izena>
 \family default
  komandoaren irteera kaleratzen da arakatzailearen leiho batean.
  Ikus 
@@ -19155,7 +18648,9 @@ MEG: Maiz Egindako Galderak.
 \end_layout
 
 \begin_layout Quote
-\begin_inset LatexCommand \url[Literaturaren programazioko MEG]{http://shelob.ce.ttu.edu/daves/lpfaq/faq.html}
+\begin_inset LatexCommand url
+name "Literaturaren programazioko MEG"
+target "http://shelob.ce.ttu.edu/daves/lpfaq/faq.html"
 
 \end_inset
 
@@ -19196,7 +18691,9 @@ Noweb-en web gunea hemen aurkituko duzu.
 \end_layout
 
 \begin_layout Quote
-\begin_inset LatexCommand \url[Noweb-en gune nagusia]{http://www.cs.virginia.edu/~nr/noweb/}
+\begin_inset LatexCommand url
+name "Noweb-en gune nagusia"
+target "http://www.cs.virginia.edu/~nr/noweb/"
 
 \end_inset
 
@@ -19685,22 +19182,22 @@ Zatiak nola bateratzen diren ikusteko begiratu
 \family typewriter
 LIBDIR/examples/
 \family default
- direktorioko
+ direktorioko 
 \family typewriter
- listerrors.lyx
+listerrors.lyx
 \family default
- edo
+ edo 
 \family typewriter
- Literate.lyx
+Literate.lyx
 \family default
  fitxategietan, hauek "listerrors" programaren bi bertsio dauzkate, edo
  
 \family typewriter
 LIBDIR/examples/
 \family default
- direktorioko
+ direktorioko 
 \family typewriter
- noweb2lyx.lyx
+noweb2lyx.lyx
 \family default
  fitxategian.
  Modu interesgarrian, hiru fitxategi hauek LyX-ek duen literatura-programazioko
@@ -20052,7 +19549,8 @@ Hurrengo gauza pantailako lerro berriaren karaktere ikurra da.
 
 \begin_layout Chapter
 LaTeX-eko adituen sekretuak
-\begin_inset LatexCommand \label{kapi:sekretuak}
+\begin_inset LatexCommand label
+name "kapi:sekretuak"
 
 \end_inset
 
@@ -20123,6 +19621,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 setcounter{footnote}{0}
 \end_layout
@@ -20163,6 +19662,7 @@ ghostview
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand{
@@ -20233,6 +19733,7 @@ arabic
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand {
@@ -20315,6 +19816,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 marginpar{
 \backslash
@@ -20350,6 +19852,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 reversemarginpar
 \end_layout
@@ -20384,7 +19887,7 @@ Zutabe anitzak
 \begin_layout Standard
 Idazlea: 
 \noun on
-Lars Gullik Bj¯nnes
+Lars Gullik Bj√∏nnes
 \end_layout
 
 \begin_layout Subsection
@@ -20411,9 +19914,9 @@ multicol
  sentitzen dut, Lars).
  Jatorrizko kapitulua (eta beste kontu batzuk!) 
 \family typewriter
-examples/multicol.lyx 
+examples/multicol.lyx
 \family default
-adibide-fitxategian aurkituko duzu--- mer
+ adibide-fitxategian aurkituko duzu--- mer
 \end_layout
 
 \end_inset
@@ -20497,6 +20000,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -20552,6 +20056,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -20575,6 +20080,7 @@ Eredu berdina erabiltzen da testua bi zutabe baino gehiagotan jarri nahi
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{3}
@@ -20616,6 +20122,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -20644,6 +20151,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -20669,6 +20177,7 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -20700,6 +20209,7 @@ The youth moved in the best society--had, so far as was known, no enemies
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -20739,6 +20249,7 @@ Ronald Adair was fond of cards--playing continually, but never for such
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -21231,6 +20742,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 extratablespace{2ex}
 \end_layout
@@ -21465,6 +20977,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 
 \backslash
@@ -21473,10 +20986,11 @@ status collapsed
 
 \end_inset
 
- 
+
 \family default
 \series default
 \shape default
+ 
 \size default
 \emph default
 \bar default
@@ -21582,6 +21096,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 newfont{
 \backslash
@@ -21603,6 +21118,7 @@ vspace*{-8.4ex}
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 hangindent=3.3em 
@@ -21627,6 +21143,7 @@ uetariko askok liburu zaharrek erabiltzen zuten "letra kapitalen" (maiuskuletan
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 verb+
@@ -21732,6 +21249,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -21747,6 +21265,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 newdimen
 \backslash
@@ -21754,6 +21273,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 setlength{
@@ -21773,6 +21293,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 parshape 19 0.45
 \backslash
@@ -21782,6 +21303,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.40
 \backslash
 varunit 0.300
@@ -21790,6 +21312,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.35
 \backslash
 varunit 0.293
@@ -21798,6 +21321,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.30
 \backslash
 varunit 0.300
@@ -21806,6 +21330,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.25
 \backslash
 varunit 0.317
@@ -21814,6 +21339,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.20
 \backslash
 varunit 0.342
@@ -21822,6 +21348,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.15
 \backslash
 varunit 0.373
@@ -21830,6 +21357,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.10
 \backslash
 varunit 0.410
@@ -21838,6 +21366,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.05
 \backslash
 varunit 0.453
@@ -21846,6 +21375,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.00
 \backslash
 varunit 0.500
@@ -21854,6 +21384,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.05
 \backslash
 varunit 0.453
@@ -21862,6 +21393,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.10
 \backslash
 varunit 0.410
@@ -21870,6 +21402,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.15
 \backslash
 varunit 0.373
@@ -21878,6 +21411,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.20
 \backslash
 varunit 0.342
@@ -21886,6 +21420,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.25
 \backslash
 varunit 0.317
@@ -21894,6 +21429,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.30
 \backslash
 varunit 0.300
@@ -21902,6 +21438,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.35
 \backslash
 varunit 0.293
@@ -21910,6 +21447,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.40
 \backslash
 varunit 0.300
@@ -21918,6 +21456,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.45
 \backslash
 varunit 0.332
@@ -21989,6 +21528,7 @@ lerrokop
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}

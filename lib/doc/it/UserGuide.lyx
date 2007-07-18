@@ -91,8 +91,9 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Anonymous" 
-\author "usti" 
+\author "" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -2907,20 +2908,6 @@ slides
 \end_layout
 
 \begin_layout Description
-Linuxdoc Usato insieme al pacchetto SGML-tools (noto in precedenza come
- LinuxDoc), consente a LyX di produrre output in formato SGML.
- L'SGML è un linguaggio a marcatori ed è il predecessore dell'HTML\SpecialChar \@.
- Il pacchetto
- SGML-tools consente di convertire un documento SGML in HTML ed in molti
- altri formati, tra cui quello utilizzato da Linux per le pagine dei manuali
- di 
-\family typewriter
-man
-\family default
-.
-\end_layout
-
-\begin_layout Description
 Paper per l'utilizzo della classe LaTeX 
 \family typewriter
 paper
@@ -2984,7 +2971,7 @@ Ogni classe è caratterizzata da un certo insieme predefinito di opzioni.
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="5">
+<lyxtabular version="3" rows="9" columns="5">
 <features>
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -3260,61 +3247,6 @@ Una
 
 \begin_layout Standard
 nessuno
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-linuxdoc
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-Plain
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-Uno
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-Una
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-Sezione
 \end_layout
 
 \end_inset
@@ -24392,14 +24324,6 @@ Ivan Schreter
 \begin_layout Itemize
 
 \noun on
-Pascal André
-\noun default
- ha documentato in origine l'interfaccia LinuxDoc SGML.
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
 Alejandro Aguilar Sierra
 \noun default
  ha descritto in origine la modalità matematica ed ha fornito le descrizioni
@@ -24527,12 +24451,6 @@ HowDoI-.lyx
 \end_inset
 
  [ora defunto].
-\end_layout
-
-\begin_layout Itemize
-Documentazione relativa a LinuxDoc in 
-\family typewriter
-UserGuide.lyx
 \end_layout
 
 \end_deeper

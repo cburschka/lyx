@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 263
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -106,7 +106,8 @@ p\hspace{-0.55em}l
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -2648,14 +2649,6 @@ Foils gardenkiak sortzeko erabiltzen da, slides baino hobeagoa da.
 \end_layout
 
 \begin_layout Description
-Linuxdoc SGML-tools paketearekin erabiltzen da (LinuxDoc bezala ezaguna).
- Honen bitartez, SGML formatuko irteera sor dezake LyX-ek.
- SGML markatze-hizkuntza da eta HTMLren aitzindaria da.
- SGML tools paketeak SGML formatutik HTML formatura bihurtzen uzten dizu,
- edo man eskuliburuek erabiltzen duten formatura.
-\end_layout
-
-\begin_layout Description
 Paper LaTeXeko papereko dokumentu-klaseak erabiltzen du (ez dago LaTeX banaketa
  guztietan)
 \end_layout
@@ -2725,7 +2718,7 @@ Klase bakoitzak bere lehenetsitako aukera-multzoa dauka.
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="5">
+<lyxtabular version="3" rows="9" columns="5">
 <features>
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2996,61 +2989,6 @@ Bakarra
 
 \begin_layout Standard
 bat ere ez
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-linuxdoc
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Laua
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Bakarra
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Bakarra
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Atala
 \end_layout
 
 \end_inset
@@ -24485,14 +24423,6 @@ o teklatuari eta pertsonalizazioari buruzkoa bereziki.
 \begin_layout Itemize
 
 \noun on
-Pascal André
-\noun default
--ek LinuxDoc SGML interfazeari buruzko jatorrizko dokumentua idatzi zuen.
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
 Alejandro Aguilar Sierra
 \noun default
 -k matematika-erari buruzko jatorrizko dokumentua idazteaz gain, 
@@ -24603,14 +24533,6 @@ MEG eta (orain jarraipenik ez duen) zaharkitutako "
 HowDoI-.lyx
 \family default
 " -aren arduradun ohia.
-\end_layout
-
-\begin_layout Itemize
-LinuxDoc-en dokumentzioa 
-\family typewriter
-UserGuide.lyx
-\family default
--en.
 \end_layout
 
 \end_deeper
