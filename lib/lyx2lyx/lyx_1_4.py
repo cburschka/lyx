@@ -466,6 +466,9 @@ def add_end_layout(document):
             document.body.insert(i,"")
             document.body.insert(i,"\\end_layout")
             i = i + 3
+            # consecutive begin_deeper only insert one end_layout
+            while document.body[i].startswith('\\begin_deeper'):
+                i += 1
             struct_stack.append(token)
             continue
 
