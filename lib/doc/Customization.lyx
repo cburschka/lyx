@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 274
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass book
@@ -39,9 +39,10 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "Richard Heck" 
-\author "Jean-Marc Lasgouttes" 
-\author "usti" 
+\author "" 
+\author "" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -5967,7 +5968,7 @@ DeclareLaTeXClass[article,foo.sty]{article (with my own headings)}
 
 \begin_layout Standard
 This indicates that your text class uses the foo.sty package.
- Finally, it is also possible to declare classes for SGML and DocBook code.
+ Finally, it is also possible to declare classes for DocBook code.
  Typical declarations will look like
 \end_layout
 
@@ -5980,20 +5981,6 @@ This indicates that your text class uses the foo.sty package.
 \begin_layout LyX-Code
 
 \size small
-# 
-\backslash
-DeclareSGMLClass{SGML (LinuxDoc)}
-\end_layout
-
-\begin_layout Standard
-or
-\end_layout
-
-\begin_layout LyX-Code
-#% Do not delete the line below; configure depends on this 
-\end_layout
-
-\begin_layout LyX-Code
 # 
 \backslash
 DeclareDocBookClass[article]{SGML (DocBook article)}
@@ -9473,10 +9460,6 @@ FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-Format LinuxDoc
-\end_layout
-
-\begin_layout LyX-Code
 Product "[XFig: $$FName]"
 \end_layout
 
@@ -9666,7 +9649,7 @@ The Format section
 \family typewriter
 \series medium
 Format\InsetSpace ~
-LaTeX|PDFLaTeX|PlainText|DocBook|LinuxDoc
+LaTeX|PDFLaTeX|PlainText|DocBook
 \family default
 \series default
  The primary document file format that this format definition is for.
@@ -9676,8 +9659,7 @@ LaTeX|PDFLaTeX|PlainText|DocBook|LinuxDoc
 Format
 \family default
  section for all formats.
- Use a dummy text when no representation is available (see the LinuxDoc
- format in the example above).
+ Use a dummy text when no representation is available.
  Then you can at least see a reference to the external material in the exported
  document.
 \end_layout

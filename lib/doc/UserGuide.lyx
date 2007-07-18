@@ -91,10 +91,11 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Anonymous" 
-\author "usti" 
-\author "Bo Peng" 
-\author "Uwe Stöhr" 
+\author "" 
+\author "" 
+\author "" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -3021,18 +3022,6 @@ slides
 \end_layout
 
 \begin_layout Description
-Linuxdoc Used with the SGML-tools package (formerly known as LinuxDoc).
- It allows LyX to produce SGML output.
- SGML is a markup language and is the predecessor to HTML\SpecialChar \@.
- The SGML-tools
- package allows you to convert SGML to HTML or to the format used by 
-\family typewriter
-man
-\family default
- pages.
-\end_layout
-
-\begin_layout Description
 Paper for use with the 
 \family typewriter
 paper
@@ -3100,7 +3089,7 @@ Each class has a default set of options.
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="5">
+<lyxtabular version="3" rows="9" columns="5">
 <features>
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -3548,97 +3537,6 @@ One
 \noun off
 \color none
 none
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-linuxdoc
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-Plain
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-One
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-One
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\family sans
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-Section
 \end_layout
 
 \end_inset
@@ -28480,14 +28378,6 @@ nal keyboard maps and customization.
 \begin_layout Itemize
 
 \noun on
-Pascal André
-\noun default
- originally documented the LinuxDoc SGML interface.
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
 Alejandro Aguilar Sierra
 \noun default
  originally documented math mode and provided the entries for the math functions
@@ -28613,12 +28503,6 @@ HowDoI-.lyx
 \end_inset
 
  [now defunct].
-\end_layout
-
-\begin_layout Itemize
-Documentation of LinuxDoc in 
-\family typewriter
-UserGuide.lyx
 \end_layout
 
 \end_deeper

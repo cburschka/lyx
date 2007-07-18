@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 265
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -42,7 +42,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -6461,26 +6462,12 @@ Dadurch wird angezeigt, daß Ihre Klasse auch das Paket
 foo.sty
 \family default
  verwendet.
- Schließlich können Sie auch Klassen für SGML oder DocBook festlegen.
+ Schließlich können Sie auch Klassen für DocBook festlegen.
  Eine typische Deklaration sieht so aus:
 \end_layout
 
 \begin_layout LyX-Code
 
-\size small
-#% Do not delete the line below; configure depends on this 
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-# 
-\backslash
-DeclareSGMLClass{SGML (LinuxDoc)}
-\end_layout
-
-\begin_layout Standard
-oder
 \end_layout
 
 \begin_layout LyX-Code

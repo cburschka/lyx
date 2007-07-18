@@ -203,7 +203,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -27081,20 +27080,10 @@ La opción
 Generar\InsetSpace ~
 hiperenlace
 \family default
- en el diálogo URL sólo tiene efecto al exportar el documento al formato
- 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-LinuxDoc
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+ en el diálogo URL 
+\lang english
+does nothing.
+ This relict will be removed in the next LyX-version.
 \end_layout
 
 \begin_layout Standard

@@ -26886,20 +26886,8 @@ The option
 Generate\InsetSpace ~
 hyperlink
 \family default
- in the URL dialog has only an affect when you export your document to the
- format 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-LinuxDoc
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+ in the URL dialog does nothing.
+ This relict will be removed in the next LyX-version.
 \end_layout
 
 \begin_layout Standard

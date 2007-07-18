@@ -1,4 +1,4 @@
-#LyX 1.5.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -104,9 +104,10 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "Anonymous" 
-\author "Hartmut Haase" hha4491@atomstromfrei.de
-\author "Uwe Stöhr" 
+\author "" 
+\author "" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -1823,18 +1824,6 @@ Beispiel 1: Verschiebungen (Offsets)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Es gibt zwei LaTeX-Variablen, die die Seitenposition kontrollieren: 
 \family typewriter
 
@@ -1864,19 +1853,6 @@ hoffset
 voffset
 \family default
 .
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4687,22 +4663,6 @@ Dies ist eine umflossene Abbildung und seine Bildunterschrift
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Sie sehen hier ein Bild eines Möbius-Bandes --- Sie kennen es vermutlich
  schon aus dem 
 \emph on
@@ -4855,22 +4815,6 @@ reference "enu:sloppypar"
 \end_inset
 
 ) beheben können.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -6223,16 +6167,6 @@ tex2lyx
 \end_layout
 
 \begin_layout Subsection
-LinuxDoc
-\begin_inset LatexCommand index
-name "Dateiformat!Import!LinuxDoc"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
 MS Word
 \begin_inset LatexCommand index
 name "Dateiformat!Import!MS Word"
@@ -7078,9 +7012,9 @@ Einfacher Text (ps2ascii)
 \end_layout
 
 \begin_layout Subsection
-PostScript®
+PostScript
 \begin_inset LatexCommand index
-name "Dateiformat!Export!PostScript®"
+name "Dateiformat!Export!PostScript"
 
 \end_inset
 
@@ -7088,18 +7022,6 @@ name "Dateiformat!Export!PostScript®"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Den letzten Schritt macht normalerweise das Programm 
 \family typewriter
 dvips
@@ -7127,19 +7049,6 @@ dvips
 -r
 \family default
  setzen.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -7156,18 +7065,6 @@ Benutzerdefiniert\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Benutzerdefinierte Exporte (
 \family sans
 Datei
@@ -7197,19 +7094,6 @@ Export-Formate:
  festgelegt.
  LyX wird bis zu dem Befehl normal konvertieren und dann an den Konverter
  übergeben.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7259,741 +7143,6 @@ status collapsed
 \end_inset
 
 X-Funktionen, die zusätzliche Programme benötigen
-\end_layout
-
-\begin_layout Section
-Die Verwendung von Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X mit den SGML-Tools (DocBook)
-\end_layout
-
-\begin_layout Standard
-von 
-\noun on
-Paul Evans
-\end_layout
-
-\begin_layout Subsection
-Überblick
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-SGML (LinuxDoc)
-\family default
- ist eine der in LyX vorhandenen Dokumentenklassen, wenn Sie 
-\family typewriter
-sgmltools
-\family default
- installiert haben.
- Sie können Sie verwenden, um damit Dokumente in der sogenannten 
-\emph on
-Standardized General Mark-up Language
-\emph default
- (SGML) zu erstellen, die das besondere Format des 
-\emph on
-Linux Documentation Project
-\emph default
- benutzen.
- Dies ist vor allem dann hilfreich, wenn Sie an diesem Projekt mitarbeiten.
- Das SGML-Format kann mit den Skripten und Programmen des Paketes 
-\family typewriter
-sgmltools
-\family default
- in eine Vielzahl anderer Formate übersetzt werden (zum Beispiel LaTeX,
- HTML, Text, Manpage\SpecialChar \ldots{}
-).
- Sie können daher diese Dokumentenklasse auch verwenden, wenn Sie einen
- Text schreiben wollen, der sehr einfach in andere Formate übersetzt werden
- kann.
-\end_layout
-
-\begin_layout Standard
-Sie werden feststellen, dass die Klasse 
-\family sans
-SGML (LinuxDoc)
-\family default
- weniger Formatelemente besitzt als die anderen Klassen in LyX.
- Dies liegt darin begründet, dass nur so gewährleistet ist, dass die Formate
- sinnvoll in alle möglichen Formate übersetzt werden können.
- In diesem Abschnitt wird beschrieben, wie Sie
-\end_layout
-
-\begin_layout Itemize
-einen Text in der 
-\family sans
-SGML (LinuxDoc)
-\family default
--Klasse anlegen und wie Sie damit umgehen,
-\end_layout
-
-\begin_layout Itemize
-die Formatelemente von 
-\family sans
-SGML (LinuxDoc)
-\family default
- einsetzen, um Ihren Text zu formatieren
-\end_layout
-
-\begin_layout Itemize
-das SGML-Paket einsetzen, um unterschiedliche Formate zu erzeugen
-\end_layout
-
-\begin_layout Itemize
-einige Probleme umschiffen.
-\end_layout
-
-\begin_layout Subsection
-DocBook (SGML)-Dokumente
-\end_layout
-
-\begin_layout Subsubsection
-Zu Beginn
-\end_layout
-
-\begin_layout Standard
-Als erstes wählen Sie im Dialog 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen
-\family default
-\SpecialChar \ldots{}
-
-\family sans
-Dokumentklasse
-\family default
- die Klasse 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
- aus.
- Ein Blick in das Menü mit den Absatztypen ganz links in der Werkzeugleiste
- zeigt, dass es in dieser Klasse deutlich weniger Absatzumgebungen gibt
- als in den anderen Dokumentenklassen von LyX.
- Wie diese einzusetzen sind, wird in Abschnitt 
-\begin_inset LatexCommand vref
-reference "sec:sgmlparas"
-
-\end_inset
-
- erläutert.
-\end_layout
-
-\begin_layout Standard
-Sie 
-\emph on
-müssen
-\emph default
- auf jeden Fall einen Titel für das Dokument eingeben, gefolgt von einer
- Zeile mit dem Autor, wobei für jeden Eintrag die entsprechende Absatzumgebung
- angewählt werden muss.
- Wenn Sie dies nicht tun, werden Sie beim Versuch, die Datei zu drucken,
- Fehlermeldungen erhalten.
- Als nächstes geben Sie Datum und Zusammenfassung ein, falls Sie dies wünschen.
- Der eigentliche Text muss mit dem Umgebungstyp 
-\family sans
-Abschnitt
-\family default
- beginnen, normaler Text (
-\family sans
-Standard
-\family default
-) führt ebenfalls zu Fehlern.
-\end_layout
-
-\begin_layout Standard
-Davon abgesehen können Sie Ihren Text wie gewohnt unter Zuhilfenahme der
- vorhandenen Absatzumgebungen erstellen.
- Abschnitt 
-\begin_inset LatexCommand vref
-reference "sec:sgmlparas"
-
-\end_inset
-
- enthält eine Zusammenstellung aller vorhandenen Typen und wie sie eingesetzt
- werden.
-\end_layout
-
-\begin_layout Subsubsection
-Abspeichern
-\end_layout
-
-\begin_layout Standard
-Sie können Dokumente der Klasse 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
- wie gewohnt speichern und ausdrucken.
- Um aber die weiten Möglichkeiten des SGML-Paketes auszunutzen, müssen Sie
- die Datei im 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
--Format speichern.
- Sie erreichen dies durch die Auswahl 
-\family sans
-Datei\SpecialChar \menuseparator
-Exportieren\SpecialChar \menuseparator
-DocBook
-\family default
- oder 
-\family sans
-Docbook\InsetSpace ~
-(XML)
-\family default
-\SpecialChar \@.
- Sie finden dann eine Datei mit demselben Namen und der Endung 
-\family typewriter
-.sgml
-\family default
- anstelle von 
-\family typewriter
-.lyx
-\family default
-.
- Im Abschnitt 
-\begin_inset LatexCommand vref
-reference "sec:sgmloperate"
-
-\end_inset
-
- wird beschrieben, wie Sie diese Datei dann weiterverarbeiten können.
-\end_layout
-
-\begin_layout Subsection
-Absatzumgebungen in 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\end_layout
-
-\begin_layout Subsubsection
-Struktur eines 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
--Dokumentes
-\end_layout
-
-\begin_layout Standard
-Es gibt einen formalen Aufbau, der für alle 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
--Dokumente gilt.
- Dadurch wird eingeschränkt, wann welche Absatztypen verwendet werden können.
- Jedes Dokument besteht aus zwei Teilen:
-\end_layout
-
-\begin_layout Description
-Kopf: Er umfasst alles, was bis zum ersten Absatz des Typs 
-\family sans
-Abschnitt
-\family default
- eingegeben wird.
- Dies können Überschrift, Autor, Datum, Zusammenfassung und Inhaltsverzeichnis
- sein, die ersten beiden 
-\emph on
-müssen
-\emph default
- angegeben werden.
-\end_layout
-
-\begin_layout Description
-Body: Er umfasst alles nach dem ersten 
-\family sans
-Abschnitt
-\family default
--Absatz.
- Hier sind alle Absatztypen erlaubt.
-\end_layout
-
-\begin_layout Subsubsection
-Die Absatzumgebungen in 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:sgmlparas"
-
-\end_inset
-
-Nachfolgend finden Sie eine Zusammenstellung all der Einträge, die Sie auch
- in der Absatzumgebungsliste in der Werkzeugleiste vorfinden.
- Zu jedem Element werden eine kurze Beschreibung sowie einige Hinweise gegeben,
- falls die Verwendung nicht offensichtlich ist.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard:
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Titel
-\family default
-: Dieser Text erscheint auf dem Ausdruck oben links über einer dicken horizontal
-en Linie, allerdings sieht man dies in LyX nicht.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abschnitt, Unterabschnitt, Unterunterabschn., Paragraph
-\family default
- und 
-\family sans
-Unterparagraph:
-\family default
- Diese Typen bewirken genau das, was sie auch in den anderen Dokumentenklassen
- tun.
- Ob sie nummeriert werden, hängt von der Einstellung 
-\family sans
-Max.\InsetSpace ~
-Unterabschnitt
-\family default
- im Dialog 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-
-\family default
- ab.
- Dies ist die einzige Möglichkeit, nicht nummerierte Abschnitte zu erhalten,
- denn die Abschnittsumgebungen vom Typ 
-\family sans
-Abschnitt*
-\family default
- werden in der Klasse 
-\family sans
-SGML (LinuxDoc)
-\family default
- nicht unterstützt.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Aufzählung:
-\family default
- Wie gewohnt können Sie hiermit nummerierte, eingerückte Listen erzeugen.
- Dies wird im 
-\emph on
-Benutzerhandbuch
-\emph default
- beschrieben.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Auflistung:
-\family default
- Auch hier besteht kein Unterschied zu anderen Klassen, weitere Beschreibung
- finden Sie im 
-\emph on
-Benutzerhandbuch
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Beschreibung
-\family default
-: Die Beschreibung finden Sie im 
-\emph on
-Benutzerhandbuch
-\emph default
-.
- Wenn Sie im fettgedruckten Teil der Beschreibung mehr als ein Wort haben
- wollen, müssen Sie diese durch geschützte Leerzeichen verbinden.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Unformatiert:
-\family default
- Wie in anderen Klassen auch.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Code:
-\family default
- entspricht dem Umgebungstyp 
-\family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Autor
-\family default
-: Der hier eingegebene Text erscheint im Ausdruck links oben unter der dicken
- horizontalen Linie.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Datum:
-\family default
- Der hier eingegebene Text erscheint im Ausdruck oben rechts unter der horizonta
-len Linie.
- Die Eingabe ist optional, es kann beliebiger Text (zum Beispiel eine Versionsnu
-mmer) eingegeben werden.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Zusammenfassung
-\family default
-: Damit können Sie einen einzelnen, freistehenden Absatz nach Autor und
- Datum, aber vor dem ersten Abschnitt eingeben.
- Es ist aber nur ein einziger solcher Absatz erlaubt.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-
-\emph on
-Hinweis des Autors:
-\emph default
- Dies sollte geprüft werden ---pe.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Literal:
-\family default
- ???
-\end_layout
-
-\begin_layout Subsubsection
-Andere Format-Elemente
-\end_layout
-
-\begin_layout Standard
-Sie können das Menü 
-\family sans
-Bearbeiten
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Textstil
-\family default
-\SpecialChar \ldots{}
- 
-\family sans
-(
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.xpm
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-)
-\family default
- wie gewohnt verwenden, um Zeichensätze zu verändern oder Text hervorzuheben.
- Auch das Inhaltsverzeichnis können Sie wie gewohnt verwenden, lesen Sie
- dazu den entsprechenden Abschnitt im 
-\emph on
-Benutzerhandbuch
-\emph default
-.
- Obwohl Sie diverse andere Formatelemente in den Menüs finden, zum Beispiel
- Einfügen von Fußnoten, ist es nicht sicher, ob diese auch einwandfrei funktioni
-eren.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-
-\emph on
-Hinweis des Autors:
-\emph default
- Möglicherweise liegen die Probleme an meinem Rechner --- pe
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Querverweise und HTML 
-\end_layout
-
-\begin_layout Standard
-Im 
-\family sans
-Einfügen
-\family default
--Menü gibt es zwei neue Optionen für URL-Adressen.
- Wenn Sie die benutzen, werden Sie hervorgehobenen TeX-Code in Ihrem Dokument
- sehen, der in zwei Blöcke mit Leerraum dazwischen aufgeteilt ist und so
- aussieht:
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-
-\backslash
-htmlurl{
-\family default
- oder 
-\family typewriter
-
-\backslash
-url{
-\family default
-
-\hfill
-Leerraum 
-\family typewriter
-
-\hfill
-}{
-\family default
-
-\hfill
-Leerraum
-\hfill
-
-\family typewriter
-}
-\end_layout
-
-\begin_layout Standard
-In die ersten geschweiften Klammern schreiben Sie eine HTML-Adresse, zum
- Beispiel 
-\begin_inset LatexCommand url
-target "http://any.address"
-
-\end_inset
-
- oder 
-\begin_inset LatexCommand url
-target "mailto:me@my.address"
-
-\end_inset
-
-.
- In die zweiten geschweiften Klammern schreiben Sie eine Beschreibung der
- Adresse.
- 
-\family typewriter
-url
-\family default
- und 
-\family typewriter
-htmlurl
-\family default
- unterscheiden sich wie folgt:
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-url
-\family sans
-:
-\family default
- die HTML-Adresse und die Beschreibung erscheinen im druckfertigen Dokument
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-htmlurl
-\family sans
-:
-\family default
- nur die Beschreibung erscheint im druckfertigen Dokument
-\end_layout
-
-\begin_layout Subsection
-Die Verwendung der 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
--Skripte
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:sgmloperate"
-
-\end_inset
-
-Sie können 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\family default
- natürlich einfach nur als Textklasse und ohne jede zusätzlichen Skripte
- verwenden, aber das würde nicht sehr sinnvoll sein.
- Alles was Sie dadurch erhalten ist ein Dokument, das aussieht wie ein 
-\emph on
-Linux Documentation Project HOWTO
-\emph default
-.
- Für die Übersetzung des Dokumentes benötigen Sie das Paket 
-\family typewriter
-sgml-tools-1.0.x.tar.gz
-\family default
- (mit 
-\begin_inset Formula $x\geq3$
-\end_inset
-
-) von der WWW-Seite der SGML-Tools,
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset LatexCommand url
-target "http://pobox.com/~cg/sgmltools"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sie können das Paket auch vom sunsite-Archiv bekommen:
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset LatexCommand url
-target "ftp://sunsite.unc.edu/pub/Linux/utils/text/sgml-tools-1.0.x.tar.gz"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Archivdatei 
-\family typewriter
-sgml-tools-1.0.x.tar.gz
-\family default
- enthält alles was Sie benötigen, um SGML-Do\SpecialChar \-
-ku\SpecialChar \-
-men\SpecialChar \-
-te zu erstellen und diese
- in die Formate groff, LaTeX, HTML, GNU info, LyX und RTF zu konvertieren.
-\end_layout
-
-\begin_layout Standard
-Bis zum Januar 1997 hieß dieses Paket 
-\family typewriter
-linuxdoc-sgml-1.5.tar.gz
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Folgen Sie den Anweisungen zur Installation und Benutzung des Paketes.
- Dies alles müssen Sie -- unabhängig von LyX -- durchgeführt haben, bevor
- Sie den Menüpunkt 
-\family sans
-Datei\SpecialChar \menuseparator
-Exportieren\SpecialChar \menuseparator
-LinuxDoc
-\family default
- auswählen können.
-\end_layout
-
-\begin_layout Subsection
-Fehlersuche in 
-\family sans
-DocBook\InsetSpace ~
-\SpecialChar \ldots{}
-\InsetSpace ~
-(SGML)
-\end_layout
-
-\begin_layout Standard
-Wenn Sie ein Dokument ausdrucken oder (als Dvi oder Postscript®) betrachten
- wollen, werden einige Tests durchgeführt, bevor LaTeX gestartet wird.
- Dabei werden einige Fehler abgefangen, insbesondere solche, die die Struktur
- des Textes betreffen.
- LyX erzeugt dabei manchmal zwar eine Fehlermeldung, hinterlässt aber keine
- Fehlermarke im Text, die es Ihnen erleichtert, die fehlerhafte Stelle zu
- lokalisieren.
- Unter Umständen müssen Sie in diesen Fällen die Datei selber genau untersuchen,
- um den Fehler zu finden.
- Die meisten derartigen Fehler beruhen auf der Verwendung von Formatelementen,
- die in dieser Klasse nicht vollständig unterstützt werden.
 \end_layout
 
 \begin_layout Section
@@ -15018,18 +14167,6 @@ secnumdepth
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Entfernen Sie alle Zeilen zwischen (einschließlich) 
 \family typewriter
 
@@ -15056,19 +14193,6 @@ User specified LaTeX commands
 .tex
 \family default
 -Datei stehen).
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -16098,18 +15222,6 @@ Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 The ijmpc package is a set of macros that facilitates electronic manuscript
  submission to the 
 \emph on
@@ -16160,19 +15272,6 @@ article
  Most of their features are supported by LyX.
  I have used LyX successfully to write articles submitted to both journals
  without any problem.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16311,18 +15410,6 @@ Classification Codes
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Several new environments are available: 
 \begin_inset Quotes eld
 \end_inset
@@ -16439,19 +15526,6 @@ Conjecture
  Their use is more or less obvious.
  LyX supports all these environments; it will use the proper label, text
  style, and numbering scheme for each of them.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -17199,18 +16273,6 @@ Bernd Rellermeyer
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Die LyX-Dokumentenklassen 
 \family sans
 article (koma-script)
@@ -17279,19 +16341,6 @@ letter.cls
 \family default
  und entsprechen in einigen Punkten besser den europäischen typographischen
  Konventionen.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -18902,18 +17951,6 @@ Beschreibung
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Dies sind Format-Dateien für einige Zeitschriftenformate, die vom Springer-Verla
 g verwendet und auf\InsetSpace \space{}
 
@@ -18936,19 +17973,6 @@ svjour.inc
 svjog.layout
 \family default
  für das Journal of Geodesy enthalten sein.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -22547,18 +21571,6 @@ dateabstractskip
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Die letzte Einstellung beeinflusst alle Aufzählungsumgebungen.
  Wenn Sie den LaTeX-Befehl 
 \family typewriter
@@ -22583,19 +21595,6 @@ m zwischen den einzelnen Einträgen entfernt.
 setlength
 \family default
 -ähnlichen Dinge benötigt.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -23975,18 +22974,6 @@ Rod Pinna
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Elsevier Science Publishers B.V.
  stellt eine Standard-LaTeX-Dokumentenklasse (
 \family typewriter
@@ -24003,19 +22990,6 @@ target "http://authors.elsevier.com/"
  heruntergeladen werden.
  Anweisungen stehen in der Klassendatei, die die Anforderungen an die Verleger
  genau beschreibt.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
