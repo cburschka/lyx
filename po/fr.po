@@ -171,7 +171,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-07-16 19:19+0200\n"
-"PO-Revision-Date: 2006-09-19 11:57+0200\n"
+"PO-Revision-Date: 2007-07-18 08:48+0200\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
 "Language-Team: lyxfr \n"
 "MIME-Version: 1.0\n"
@@ -8347,7 +8347,7 @@ msgstr "Environnement Cas|C"
 
 #: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:363
 msgid "Split Environment|S"
-msgstr "Environnement Disjoint|D"
+msgstr "Environnement Disjoint|j"
 
 #: lib/ui/classic.ui:276
 msgid "Font Change|o"
@@ -8423,7 +8423,7 @@ msgstr "Figure Floatflt"
 
 #: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:378
 msgid "Table of Contents|C"
-msgstr "Table des Matières|M"
+msgstr "Table des Matières|e"
 
 #: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:380
 msgid "Index List|I"
@@ -8602,7 +8602,7 @@ msgstr "Options Avancées|O"
 
 #: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:481
 msgid "Embedded Objects|m"
-msgstr ""
+msgstr "Objets Insérés|b"
 
 #: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:482
 msgid "Customization|C"
@@ -8819,9 +8819,8 @@ msgid "Right Line|R"
 msgstr "Ligne de Droite|D"
 
 #: lib/ui/stdmenus.inc:173
-#, fuzzy
 msgid "Copy Row|o"
-msgstr "Copier Ligne"
+msgstr "Copier Ligne|n"
 
 #: lib/ui/stdmenus.inc:174
 #, fuzzy
@@ -8829,9 +8828,8 @@ msgid "Swap Rows|S"
 msgstr "Échanger Lignes"
 
 #: lib/ui/stdmenus.inc:178
-#, fuzzy
 msgid "Copy Column|p"
-msgstr "Copier Colonne"
+msgstr "Copier Colonne|e"
 
 #: lib/ui/stdmenus.inc:179
 #, fuzzy
@@ -8964,22 +8962,18 @@ msgid "Close All Insets|C"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:267
-#, fuzzy
 msgid "View Source|S"
-msgstr "Espace visible|#E"
+msgstr "Afficher le code LaTeX|X"
 
 #: lib/ui/stdmenus.inc:271
-#, fuzzy
 msgid "Toolbars|b"
-msgstr "Barres d'outils"
+msgstr "Barres d'outils|B"
 
 #: lib/ui/stdmenus.inc:291
-#, fuzzy
 msgid "Special Character|p"
-msgstr "Caractère Spécial|S"
+msgstr "Caractère Spécial|p"
 
 #: lib/ui/stdmenus.inc:292
-#, fuzzy
 msgid "Formatting|o"
 msgstr "Formats"
 
@@ -8993,7 +8987,7 @@ msgstr "Flottant|o"
 
 #: lib/ui/stdmenus.inc:296
 msgid "Branch|B"
-msgstr "Branche|B"
+msgstr "Branche"
 
 #: lib/ui/stdmenus.inc:297
 msgid "File|e"
@@ -9004,7 +8998,6 @@ msgid "Box"
 msgstr "Boîte"
 
 #: lib/ui/stdmenus.inc:301
-#, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Référence Croisée...|R"
 
@@ -9017,16 +9010,14 @@ msgid "Index Entry|d"
 msgstr "Entrée d'Index|I"
 
 #: lib/ui/stdmenus.inc:305
-#, fuzzy
 msgid "Nomenclature Entry...|y"
-msgstr "Insérer une entrée d'index"
+msgstr "Entrée de glossaire...|s"
 
 #: lib/ui/stdmenus.inc:307
 msgid "Table...|T"
 msgstr "Tableau...|T"
 
 #: lib/ui/stdmenus.inc:312
-#, fuzzy
 msgid "Short Title|S"
 msgstr "Titre Court"
 
@@ -9035,9 +9026,8 @@ msgid "TeX Code|X"
 msgstr "Code TeX|X"
 
 #: lib/ui/stdmenus.inc:314 src/insets/InsetInclude.cpp:354
-#, fuzzy
 msgid "Program Listing"
-msgstr "Initialisation du programme"
+msgstr "Listing de code source"
 
 #: lib/ui/stdmenus.inc:321
 msgid "Ordinary Quote|Q"
@@ -9052,73 +9042,60 @@ msgid "Phonetic Symbols|y"
 msgstr "Symboles phonétiques|y"
 
 #: lib/ui/stdmenus.inc:331
-#, fuzzy
 msgid "Protected Space|P"
 msgstr "Espace Insécable|E"
 
 #: lib/ui/stdmenus.inc:334
-#, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Ressort Horizontal|H"
 
 #: lib/ui/stdmenus.inc:335
-#, fuzzy
 msgid "Horizontal Line|L"
-msgstr "Ligne Horizontale"
+msgstr "Ligne Horizontale|z"
 
 #: lib/ui/stdmenus.inc:336
-#, fuzzy
 msgid "Vertical Space...|V"
-msgstr "Espacement Vertical..."
+msgstr "Espacement Vertical...|V"
 
 #: lib/ui/stdmenus.inc:338
-#, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Point de Césure|C"
 
 #: lib/ui/stdmenus.inc:340
-#, fuzzy
 msgid "Line Break|B"
 msgstr "Passage à la Ligne|L"
 
 #: lib/ui/stdmenus.inc:342
-#, fuzzy
 msgid "Page Break|a"
-msgstr "Saut de Page"
+msgstr "Saut de Page|S"
 
 #: lib/ui/stdmenus.inc:343
-#, fuzzy
 msgid "Clear Page|C"
-msgstr "Signets|S"
+msgstr "Saut de page (vide le tampon)|g"
 
 #: lib/ui/stdmenus.inc:344
 msgid "Clear Double Page|D"
-msgstr ""
+msgstr "Saut page impaire|u"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Liste numérotée"
+msgstr "Formule numérotée|n"
 
 #: lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Environnement Aligné"
 
 #: lib/ui/stdmenus.inc:361
-#, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Environnement AlignéSur"
 
 #: lib/ui/stdmenus.inc:362
-#, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Environnement Rassemblé"
 
 #: lib/ui/stdmenus.inc:365
-#, fuzzy
 msgid "Delimiters|r"
-msgstr "Délimiteurs Mathématiques"
+msgstr "Délimiteurs Mathématiques|r"
 
 #: lib/ui/stdmenus.inc:366
 #, fuzzy
