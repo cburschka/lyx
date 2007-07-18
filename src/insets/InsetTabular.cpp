@@ -2877,20 +2877,19 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
-	  max(columns, col_type(1))), buffer_(&buf), scx_(0), is_deleted_(false)
+	  max(columns, col_type(1))), buffer_(&buf), scx_(0)
 {}
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: Inset(tab), tabular(tab.tabular),
-		buffer_(tab.buffer_), scx_(0), is_deleted_(false)
+		buffer_(tab.buffer_), scx_(0)
 {}
 
 
 InsetTabular::~InsetTabular()
 {
 	InsetTabularMailer(*this).hideDialog();
-	is_deleted_ = true;
 }
 
 
@@ -3491,11 +3490,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 	}
-
-	// FIXME: this accesses the position cache before it is initialized
-	//resetPos(cur);
-	if (!is_deleted_)
-		InsetTabularMailer(*this).updateDialog(&cur.bv());
 }
 
 

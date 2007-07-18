@@ -633,6 +633,8 @@ void QTabular::update_borders()
 
 void QTabular::update_contents()
 {
+	controller().initialiseParams(string());
+
 	Tabular const & tabular(controller().tabular());
 	Tabular::idx_type const cell = controller().getActiveCell();
 

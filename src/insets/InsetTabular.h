@@ -824,9 +824,6 @@ private:
 	mutable idx_type first_visible_cell;
 	///
 	mutable int scx_;
-	/// Ugly boolean used when this inset is dissolved and
-	/// InsetTabularMailer should not be used.
-	bool is_deleted_;
 };
 
 

@@ -32,16 +32,24 @@ bool ControlTabular::initialiseParams(string const & data)
 {
 	// try to get the current cell
 	BufferView const * const bv = kernel().bufferview();
+	InsetTabular const * current_inset = 0;
 	if (bv) {
 		Cursor const & cur = bv->cursor();
 		// get the innermost tabular inset;
 		// assume that it is "ours"
 		for (int i = cur.depth() - 1; i >= 0; --i)
 			if (cur[i].inset().lyxCode() == Inset::TABULAR_CODE) {
+				current_inset = static_cast<InsetTabular *>(&cur[i].inset());
 				active_cell_ = cur[i].idx();
 				break;
 			}
 	}
+
+	if (current_inset && data.empty()) {
+		params_.reset(new Tabular(current_inset->tabular));
+		return true;
+	}
+
 	InsetTabular tmp(kernel().buffer());
 	InsetTabularMailer::string2params(data, tmp);
 	params_.reset(new Tabular(tmp.tabular));
