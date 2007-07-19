@@ -364,7 +364,7 @@ void LyX::setGuiLanguage(std::string const & language)
 
 Buffer const * const LyX::updateInset(Inset const * inset) const
 {
-	if (!inset)
+	if (quitting || !inset)
 		return 0;
 
 	Buffer const * buffer_ptr = 0;
