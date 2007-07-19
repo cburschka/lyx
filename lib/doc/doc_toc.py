@@ -22,7 +22,7 @@
 # It does so by going through the files and printing out all of the
 # chapter, section, and sub(sub)section headings out. (It numbers the
 # sections sequentially; hopefully noone's using Section* in the docs.)
-# It is calledusing this syntax:
+# It is called using this syntax:
 # depend.py doc_toc.py SetOfDocuments
 # where SetOfDocuments is a set of documents
 
