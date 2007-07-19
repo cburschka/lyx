@@ -219,7 +219,7 @@ void LyXFunc::initKeySequences(KeyMap * kb)
 
 void LyXFunc::setLyXView(LyXView * lv)
 {
-	if (lyx_view_ && lyx_view_ != lv)
+	if (!quitting && lyx_view_ && lyx_view_ != lv)
 		// save current selection to the selection buffer to allow
 		// middle-button paste in another window
 		cap::saveSelection(lyx_view_->view()->cursor());
