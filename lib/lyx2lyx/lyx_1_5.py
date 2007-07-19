@@ -1884,25 +1884,21 @@ implemented.'''
     spec_chars = read_unicodesymbols()
 
     # Define strings to start and end ERT and math insets
-    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
-    ert_outro='\n\\end_layout\n\n\\end_inset\n\n'
+    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash' % document.default_layout
+    ert_outro='\n\\end_layout\n\n\\end_inset\n'
     math_intro='\n\\begin_inset Formula $'
-    math_outro='$\n\\end_inset\n'
+    math_outro='$\n\\end_inset'
     # Find unicode characters and replace them
     in_ert = False # flag set to 1 if in ERT inset
     in_math = False # flag set to 1 if in math inset
     insets = [] # list of active insets
-    mod_body = u'' # to store the modified document body
 
     # Go through the file to capture all combining characters
     last_char = '' # to store the previous character
-    body_string = u'' # store the document temporarily as a string
-    for line in document.body:
-        body_string = body_string + line +'\n'
-    [body_string, apa] = body_string.rsplit('\n',1)
-    
-    body = body_string.split('\n')
-    for line in body:
+
+    i = 0
+    while i < len(document.body):
+        line = document.body[i]
         # Check for insets
         if line.find('\\begin_inset') > -1:
             # check which inset to start
@@ -1931,40 +1927,44 @@ implemented.'''
         try:
             # If all goes well the line is written here
             dummy = line.encode(document.encoding)
-            mod_body = mod_body + line + '\n'
             last_char = line[-1]
+            i += 1
         except:
             # Error, some character(s) in the line need to be replaced
+            mod_line = u''
             for character in line:
                 try:
                     # Try to write the character
                     dummy = character.encode(document.encoding)
-                    mod_body = mod_body + character
+                    mod_line += character
                     last_char = character
                 except:
                     # Try to replace with ERT/math inset
                     if spec_chars.has_key(character):
-                        command = spec_chars[character][0]; # the command to replace unicode
+                        command = spec_chars[character][0] # the command to replace unicode
                         flag1 = spec_chars[character][1]
                         flag2 = spec_chars[character][2]
                         if flag1.find('combining') > -1 or flag2.find('combining') > -1:
                             # We have a character that should be combined with the previous
-                            command = command + '{' +last_char + '}'
+                            command += '{' + last_char + '}'
                             # Remove the last character. Ignore if it is whitespace
-                            if len(last_char.rstrip()) > 0:
+                            if len(last_char.rstrip()):
                                 # last_char was found and is not whitespace
-                                [mod_body, apa] = mod_body.rsplit(last_char,1)
+                                if mod_line:
+                                    mod_line = mod_line[:-1]
+                                else: # last_char belongs to the last line
+                                    document.body[i-1] = document.body[i-1][:-1]
                             else:
                                 # The last character was replaced by a command. For now it is
                                 # ignored. This could be handled better.
                                 pass
                         if command[0:2] == '\\\\':
                             if command[2:12]=='ensuremath':
-                                if in_ert == True:
+                                if in_ert:
                                     # math in ERT
-                                    command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
+                                    command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash')
                                     command = command.replace('}', '$\n')
-                                elif in_math == False:
+                                elif not in_math:
                                     # add a math inset with the replacement character
                                     command = command.replace('\\\\ensuremath{\\', math_intro)
                                     command = command.replace('}', math_outro)
@@ -1973,23 +1973,23 @@ implemented.'''
                                     command = command.replace('\\\\ensuremath{\\', '')
                                     command = command.replace('}', '')
                             else:
-                                if in_math == True:
+                                if in_math:
                                     # avoid putting an ERT in a math; instead put command as text
                                     command = command.replace('\\\\', '\mathrm{')
                                     command = command + '}'
-                                elif in_ert == False:
+                                elif not in_ert:
                                     # add an ERT inset with the replacement character
                                     command = command.replace('\\\\', ert_intro)
                                     command = command + ert_outro
                                 else:
-                                    command = command.replace('\\\\', '\n\\backslash\n')
+                                    command = command.replace('\\\\', '\n\\backslash')
                             last_char = '' # indicate that the character should not be removed
-                        mod_body = mod_body + command
+                        mod_line += command
                     else:
                         # Replace with replacement string
-                        mod_body = mod_body + replacement_character
-    [mod_body, apa] = mod_body.rsplit('\n',1)
-    document.body = mod_body.split('\n')
+                        mod_line += replacement_character
+            document.body[i:i+1] = mod_line.split('\n')
+            i += len(mod_line.split('\n'))
 
 
 ##
