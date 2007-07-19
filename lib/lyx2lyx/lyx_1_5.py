@@ -1043,7 +1043,8 @@ def revert_accent(document):
     # encoding.
     encoding_stack = [get_encoding(document.language, document.inputencoding, 248, document.cjk_encoding)]
     lang_re = re.compile(r"^\\lang\s(\S+)")
-    for i in range(len(document.body)):
+    i = 0
+    while i < len(document.body):
 
         if (document.inputencoding == "auto" or document.inputencoding == "default") and document.cjk_encoding != '':
             # Track the encoding of the current line
@@ -1075,7 +1076,7 @@ def revert_accent(document):
                 except UnicodeEncodeError:
                     # Insert the rest of the line as new line
                     if j < len(document.body[i]) - 1:
-                        document.body[i+1:i+1] = document.body[i][j+1:]
+                        document.body.insert(i+1, document.body[i][j+1:])
                     # Delete the accented character
                     if j > 0:
                         document.body[i] = document.body[i][:j-1]
@@ -1097,7 +1098,7 @@ def revert_accent(document):
                 except UnicodeEncodeError:
                     # Insert the rest of the line as new line
                     if j < len(document.body[i]) - 1:
-                        document.body[i+1:i+1] = document.body[i][j+1:]
+                        document.body.insert(i+1, document.body[i][j+1:])
                     # Delete the accented characters
                     if j > 1:
                         document.body[i] = document.body[i][:j-2]
@@ -1106,6 +1107,8 @@ def revert_accent(document):
                     # Finally add the InsetLaTeXAccent
                     document.body[i] += "\\i \\%s{%s}" % (inverse_accent_map[accent], accented_char)
                     break
+        i = i + 1
+
     # Normalize to "Normal form C" (NFC, pre-composed characters) again
     for i in range(numberoflines):
         document.body[i] = unicodedata.normalize("NFC", document.body[i])
@@ -1890,7 +1893,7 @@ implemented.'''
     in_math = False # flag set to 1 if in math inset
     insets = [] # list of active insets
     mod_body = u'' # to store the modified document body
-    
+
     # Go through the file to capture all combining characters
     last_char = '' # to store the previous character
     body_string = u'' # store the document temporarily as a string
