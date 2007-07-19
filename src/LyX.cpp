@@ -383,6 +383,9 @@ Buffer const * const LyX::updateInset(Inset const * inset) const
 
 void LyX::hideDialogs(std::string const & name, Inset * inset) const
 {
+	if (quitting)
+		return;
+
 	vector<int> const & view_ids = pimpl_->application_->gui().viewIds();
 	vector<int>::const_iterator it = view_ids.begin();
 	vector<int>::const_iterator const end = view_ids.end();
