@@ -39,7 +39,7 @@ bool ControlTabular::initialiseParams(string const & data)
 		// assume that it is "ours"
 		for (int i = cur.depth() - 1; i >= 0; --i)
 			if (cur[i].inset().lyxCode() == Inset::TABULAR_CODE) {
-				current_inset = static_cast<InsetTabular *>(&cur[i].inset());
+				current_inset = static_cast<InsetTabular const *>(&cur[i].inset());
 				active_cell_ = cur[i].idx();
 				break;
 			}
