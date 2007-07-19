@@ -1888,7 +1888,6 @@ implemented.'''
     # Find unicode characters and replace them
     in_ert = False # flag set to 1 if in ERT inset
     in_math = False # flag set to 1 if in math inset
-    temp_file = os.tmpfile()
     insets = [] # list of active insets
     mod_body = u'' # to store the modified document body
     
@@ -1928,7 +1927,7 @@ implemented.'''
         # Try to write the line
         try:
             # If all goes well the line is written here
-            temp_file.write(line.encode(document.encoding) + '\n')
+            dummy = line.encode(document.encoding)
             mod_body = mod_body + line + '\n'
             last_char = line[-1]
         except:
@@ -1936,7 +1935,7 @@ implemented.'''
             for character in line:
                 try:
                     # Try to write the character
-                    temp_file.write(character.encode(document.encoding))
+                    dummy = character.encode(document.encoding)
                     mod_body = mod_body + character
                     last_char = character
                 except:
@@ -1988,7 +1987,6 @@ implemented.'''
                         mod_body = mod_body + replacement_character
     [mod_body, apa] = mod_body.rsplit('\n',1)
     document.body = mod_body.split('\n')
-    temp_file.close()
 
 
 ##
