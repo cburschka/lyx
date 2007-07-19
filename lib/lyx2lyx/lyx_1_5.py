@@ -1616,7 +1616,7 @@ after label
         inlinecode = ''
         # looking for the oneline code for lstinline
         inlinecode = document.body[find_end_of_layout(document.body, 
-            find_token(document.body, '\\begin_layout Standard', i + 1) +1 ) - 1]
+            find_token(document.body,  '\\begin_layout %s' % document.default_layout, i + 1) +1 ) - 1]
         if len(caption) > 0:
             if len(params) == 0:
                 params = 'caption={%s}' % caption
@@ -1633,7 +1633,7 @@ after label
         if inline == 'true':
             document.body[i:(j+1)] = [r'\begin_inset ERT',
                                       'status %s' % status,
-                                      r'\begin_layout Standard',
+                                      r'\begin_layout %s' % document.default_layout,
                                       '', 
                                       '',
                                       r'\backslash',
@@ -1645,7 +1645,7 @@ after label
             document.body[i: j+1] =  [r'\begin_inset ERT',
                                       'status %s' % status,
                                       '',
-                                      r'\begin_layout Standard',
+                                      r'\begin_layout %s' % document.default_layout,
                                       '',
                                       '',
                                       r'\backslash',
@@ -1653,7 +1653,7 @@ after label
                                       r'\end_layout'
                                     ] + document.body[k : j - 1] + \
                                      ['',
-                                      r'\begin_layout Standard',
+                                      r'\begin_layout %s' % document.default_layout,
                                       '',
                                       r'\backslash',
                                       'end{lstlisting}',
@@ -1704,7 +1704,7 @@ lstinputlisting{file}[opt]
         document.body[i : j + 1] = [r'\begin_inset ERT',
                                     'status open',
                                     '',
-                                    r'\begin_layout Standard',
+                                    r'\begin_layout %s' % document.default_layout,
                                     '',
                                     '',
                                     r'\backslash',
@@ -1804,11 +1804,11 @@ something
         if j == -1:
             # this should not happen
             break
-        document.body[i : j + 1] = [r'\begin_layout Standard',
+        document.body[i : j + 1] = [r'\begin_layout %s' % document.default_layout,
                                     r'\begin_inset Note Note',
                                     'status open',
                                     '',
-                                    r'\begin_layout Standard',
+                                    r'\begin_layout %s' % document.default_layout,
                                     'Separate Environment',
                                     r'\end_layout',
                                     '',
@@ -1881,7 +1881,7 @@ implemented.'''
     spec_chars = read_unicodesymbols()
 
     # Define strings to start and end ERT and math insets
-    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n\\backslash\n'
+    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
     ert_outro='\n\\end_layout\n\n\\end_inset\n\n'
     math_intro='\n\\begin_inset Formula $'
     math_outro='$\n\\end_inset\n'
