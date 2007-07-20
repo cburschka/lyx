@@ -191,7 +191,7 @@ public:
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 				   odocstream &,
-				   TexRow & texrow, OutputParams const &,
+				   TexRow & texrow, OutputParams &,
 				   Font & running_font,
 				   Font & basefont,
 				   Font const & outerfont,
@@ -662,7 +662,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
 					     odocstream & os,
 					     TexRow & texrow,
-					     OutputParams const & runparams,
+					     OutputParams & runparams,
 					     Font & running_font,
 					     Font & basefont,
 					     Font const & outerfont,
@@ -752,14 +752,35 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 // right now, which means stupid latex code like \textsf{}. AFAIK,
 // this does not harm dvi output. A minor bug, thus (JMarc)
 #endif
-		// some insets cannot be inside a font change command
+		// Some insets cannot be inside a font change command.
+		// However, even such insets *can* be placed in \L or \R
+		// or their equivalents (for RTL language switches), so we don't
+		// close the language in those cases.
+		// ArabTeX, though, cannot handle this special behavior, it seems.
+		bool arabtex = basefont.language()->lang() == "arabic_arabtex" ||
+					   running_font.language()->lang() == "arabic_arabtex";
 		if (open_font && inset->noFontChange()) {
-			column += running_font.latexWriteEndChanges(
+			bool closeLanguage = arabtex ||
+				basefont.isRightToLeft() == running_font.isRightToLeft();
+			unsigned int count = running_font.latexWriteEndChanges(
 					os, bparams, runparams,
-						basefont, basefont);
-			open_font = false;
-			basefont = owner_->getLayoutFont(bparams, outerfont);
-			running_font = basefont;
+						basefont, basefont, closeLanguage);
+			column += count;
+			// if any font properties were closed, update the running_font, 
+			// making sure, however, to leave the language as it was
+			if (count > 0) {
+				// FIXME: probably a better way to keep track of the old 
+				// language, than copying the entire font?
+				Font const copy_font(running_font);
+				basefont = owner_->getLayoutFont(bparams, outerfont);
+				running_font = basefont;
+				if (!closeLanguage)
+					running_font.setLanguage(copy_font.language());
+				// leave font open if language is still open
+				open_font = (running_font.language() == basefont.language());
+				if (closeLanguage)
+					runparams.local_font = &basefont;
+			}
 		}
 
 		int tmp = inset->latex(buf, os, runparams);
@@ -2120,6 +2141,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChange, *style, i, column, c);
+
+		// Set the encoding to that returned from simpleTeXSpecialChars (see
+		// comment for encoding member in OutputParams.h)
+		runparams.encoding = rp.encoding;
 	}
 
 	// If we have an open font definition, we have to close it

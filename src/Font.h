@@ -309,7 +309,8 @@ public:
 	int latexWriteEndChanges(odocstream &, BufferParams const & bparams,
 				 OutputParams const & runparams,
 				 Font const & base,
-				 Font const & next) const;
+				 Font const & next,
+				 bool const & closeLanguage = true) const;
 
 
 	/// Build GUI description of font state

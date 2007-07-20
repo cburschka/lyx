@@ -259,14 +259,23 @@ TeXOnePar(Buffer const & buf,
 	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style->needprotect;
 
+	// This paragraph's language
 	Language const * const par_language = pit->getParLanguage(bparams);
+	// The document's language
 	Language const * const doc_language = bparams.language;
-	Language const * const prev_par_language =
-		(pit != paragraphs.begin())
-		? boost::prior(pit)->getParLanguage(bparams)
-		: doc_language;
+	// The language that was in effect when the environemnt this paragraph is 
+	// inside of was opened
+	Language const * const outer_language = 
+		(runparams.local_font != 0) ?
+			runparams.local_font->language() : doc_language;
+	// The previous language that was in effect is either the language of
+	// the previous paragraph, if there is one, or else the outer language
+	// if there is no previous paragraph
+	Language const * const prev_language =
+		(pit != paragraphs.begin()) ?
+			boost::prior(pit)->getParLanguage(bparams) : outer_language;
 
-	if (par_language->babel() != prev_par_language->babel()
+	if (par_language->babel() != prev_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style->isEnvironment()
 		 && (pit == paragraphs.begin() ||
@@ -275,19 +284,61 @@ TeXOnePar(Buffer const & buf,
 		     || boost::prior(pit)->getDepth() < pit->getDepth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
-		    prev_par_language->babel() != doc_language->babel() &&
-		    !prev_par_language->babel().empty())
+		    prev_language->babel() != outer_language->babel() &&
+		    !prev_language->babel().empty())
 		{
 			os << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
-				prev_par_language->babel()))
+				prev_language->babel()))
 			   << '\n';
 			texrow.newline();
 		}
 
+		// We need to open a new language if we couldn't close the previous 
+		// one (because there's no language_command_end); and even if we closed
+		// the previous one, if the current language is different than the
+		// outer_language (which is currently in effect once the previous one
+		// is closed).
 		if ((lyxrc.language_command_end.empty() ||
-		     par_language->babel() != doc_language->babel()) &&
+		     par_language->babel() != outer_language->babel()) &&
 		    !par_language->babel().empty()) {
+			// If we're inside an inset, and that inset is within an \L or \R
+			// (or equivalents), then within the inset, too, any opposite
+			// language paragraph should appear within an \L or \R (in addition
+			// to, outside of, the normal language switch commands).
+			// This behavior is not correct for ArabTeX, though.
+			if (	// not for ArabTeX
+					(par_language->lang() != "arabic_arabtex" &&
+					 outer_language->lang() != "arabic_arabtex") &&
+					// are we in an inset?
+					runparams.local_font != 0 &&
+					// is the inset within an \L or \R?
+					// 
+					// FIXME: currently, we don't check this; this means that
+					// we'll have unnnecessary \L and \R commands, but that 
+					// doesn't seem to hurt (though latex will complain)
+					// 
+					// is this paragraph in the opposite direction?
+					runparams.local_font->isRightToLeft() !=
+						par_language->rightToLeft()
+				) {
+				// FIXME: I don't have a working copy of the Arabi package, so
+				// I'm not sure if the farsi and arabic_arabi stuff is correct
+				// or not...
+				if (par_language->lang() == "farsi")
+					os << "\\textFR{";
+				else if (outer_language->lang() == "farsi")
+					os << "\\textLR{";
+				else if (par_language->lang() == "arabic_arabi")
+					os << "\\textAR{";
+				else if (outer_language->lang() == "arabic_arabi")
+					os << "\\textLR{";
+				// remaining RTL languages currently is hebrew
+				else if (par_language->rightToLeft())
+					os << "\\R{";
+				else
+					os << "\\L{";
+			}
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
@@ -457,8 +508,25 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	if (boost::next(pit) == paragraphs.end()
-	    && par_language->babel() != doc_language->babel()) {
+	// Closing the language is needed for the last paragraph; it is also
+	// needed if we're within an \L or \R that we may have opened above (not
+	// necessarily in this paragraph) and are about to close.
+	bool closing_rtl_ltr_environment = 
+		// not for ArabTeX
+		(par_language->lang() != "arabic_arabtex" &&
+		 outer_language->lang() != "arabic_arabtex") &&
+		// have we opened and \L or \R environment?
+		runparams.local_font != 0 &&
+		runparams.local_font->isRightToLeft() != par_language->rightToLeft() &&
+		// are we about to close the language?
+		((boost::next(pit) != paragraphs.end() &&
+		  par_language->babel() != 
+		  	(boost::next(pit)->getParLanguage(bparams))->babel()) ||
+		 (boost::next(pit) == paragraphs.end() &&
+		  par_language->babel() != outer_language->babel()));
+
+	if (closing_rtl_ltr_environment || (boost::next(pit) == paragraphs.end()
+	    && par_language->babel() != outer_language->babel())) {
 		// Since \selectlanguage write the language to the aux file,
 		// we need to reset the language at the end of footnote or
 		// float.
@@ -468,11 +536,11 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 		if (lyxrc.language_command_end.empty()) {
-			if (!doc_language->babel().empty()) {
+			if (!prev_language->babel().empty()) {
 				os << from_ascii(subst(
 					lyxrc.language_command_begin,
 					"$$lang",
-					doc_language->babel()));
+					prev_language->babel()));
 				pending_newline = true;
 			}
 		} else if (!par_language->babel().empty()) {
@@ -483,12 +551,31 @@ TeXOnePar(Buffer const & buf,
 			pending_newline = true;
 		}
 	}
+	if (closing_rtl_ltr_environment)
+		os << "}";
 
 	if (pending_newline) {
 		os << '\n';
 		texrow.newline();
 	}
-	runparams_in.encoding = runparams.encoding;
+
+	// If this is the last paragraph, and a local_font was set upon entering
+	// the inset, the encoding should be set back to that local_font's 
+	// encoding. We don't use switchEncoding(), because no explicit encoding
+	// switch command is needed, since latex will automatically revert to it
+	// when this inset closes.
+	// This switch is only necessary if we're using "auto" or "default" 
+	// encoding. 
+	if (boost::next(pit) == paragraphs.end() && runparams_in.local_font != 0) {
+		runparams_in.encoding = runparams_in.local_font->language()->encoding();
+		if (bparams.inputenc == "auto" || bparams.inputenc == "default")
+			os << setEncoding(runparams_in.encoding->iconvName());
+
+	}
+	// Otherwise, the current encoding should be set for the next paragraph.
+	else
+		runparams_in.encoding = runparams.encoding;
+
 
 	// we don't need it for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitely in

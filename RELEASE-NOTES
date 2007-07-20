@@ -35,6 +35,22 @@ When using multiple Windows to edit different parts of the
 same document, the cursor position is sometimes not correctly restored
 when you switch from one view to the other.
 
+- Languages/encodings and insets
+
+One of the bugs fixed in LyX 1.5.0 is that previously, there were certain 
+specific cases in which the LaTeX generated did not correctly reflect 
+language/encoding transitions in and around insets (footnotes, LyX notes).
+After much deliberation, it was decided not to change older files such that
+they will still reflect the old LaTeX output; rather, they will now correctly
+reflect the situation as it appears in the GUI. This means, however, that if 
+you mangled the text in the GUI in the older versions, in order that it
+generate the correct LaTeX output, the LaTeX will now generate the mangled 
+text. If this is problematic for you, please get in touch with us on the
+developers mailing list, we do have some possible solutions for this.
+
+The effects of this will be more pronounced for RTL (Hebrew, Arabic, Farsi) 
+users --- though they affect users of other languages as well.
+
 
 Note: There may later be an updated list of known issues online at
 	http://wiki.lyx.org/LyX/ReleaseNotes

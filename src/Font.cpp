@@ -876,7 +876,8 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 				  OutputParams const & runparams,
 				  Font const & base,
-				  Font const & next) const
+				  Font const & next,
+				  bool const & closeLanguage) const
 {
 	int count = 0;
 	bool env = false;
@@ -955,7 +956,8 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		open_encoding_ = false;
 	}
 
-	if (language() != base.language() && language() != next.language()) {
+	if (closeLanguage &&
+			language() != base.language() && language() != next.language()) {
 		os << '}';
 		++count;
 	}
