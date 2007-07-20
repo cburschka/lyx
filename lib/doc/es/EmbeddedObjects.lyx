@@ -27080,10 +27080,8 @@ La opción
 Generar\InsetSpace ~
 hiperenlace
 \family default
- en el diálogo URL 
-\lang english
-does nothing.
- This relict will be removed in the next LyX-version.
+ en el diálogo URL no hace nada.
+ Esto se eliminará en la próxima versión de LyX.
 \end_layout
 
 \begin_layout Standard
@@ -28563,26 +28561,32 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-If you don't get bold keywords when using typewriter fonts, your typewriter
- font probably doesn't provide a bold shape.
- In this case select a different one in the menu 
+ Si no consigues caracteres en negrita cuando usas fuentes typewriter, se
+ debe probablemente a que dicha fuente no suministra negritas.
+ En este caso selecciona una fuente distinta en el menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Fonts
+Documento
 \family default
-.
- (The fonts 
+\SpecialChar \menuseparator
+
+\family sans
+Configuración
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Fuentes.
+ 
+\family default
+(Las fuentes 
 \emph on
 LuxiMono, BeraMono
 \emph default
- and 
+ y 
 \emph on
-Courier
+Courier 
 \emph default
- provide bold shapes.)
+suministran negritas.)
 \end_layout
 
 \end_inset
@@ -28723,14 +28727,10 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-Due to a bug in the 
+ Debido a un error en el paquete 
 \series bold
 listings
 \series default
- package
-\lang spanish
  la numeración de líneas cambia en una línea por cada listing previo.
  Por esto en el ejemplo de arriba se numeran las líneas 2 y 5 y no las líneas
  3 y 6.
