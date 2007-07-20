@@ -253,8 +253,12 @@ necessary parsing in modern formats than in ancient ones.
     insets = []
     lang_re = re.compile(r"^\\lang\s(\S+)")
     inset_re = re.compile(r"^\\begin_inset\s(\S+)")
+    if not forward: # no need to read file unless we are reverting
+        spec_chars = read_unicodesymbols()
+
     if document.inputencoding == "auto" or document.inputencoding == "default":
-        for i in range(len(document.body)):
+        i = 0
+        while i < len(document.body):
             result = lang_re.match(document.body[i])
             if result:
                 language = result.group(1)
@@ -297,13 +301,20 @@ necessary parsing in modern formats than in ancient ones.
                     # with the correct encoding.
                     document.body[i] = orig.decode(encoding_stack[-1])
                 else:
-                    # Convert unicode to the 8bit string that will be written
-                    # to the file with the correct encoding.
-                    orig = document.body[i].encode(encoding_stack[-1])
-                    # Convert the 8bit string that will be written to the
-                    # file to fake unicode with the encoding that will later
-                    # be used when writing to the file.
-                    document.body[i] = orig.decode(document.encoding)
+                    try:
+                        # Convert unicode to the 8bit string that will be written
+                        # to the file with the correct encoding.
+                        orig = document.body[i].encode(encoding_stack[-1])
+                        # Convert the 8bit string that will be written to the
+                        # file to fake unicode with the encoding that will later
+                        # be used when writing to the file.
+                        document.body[i] = orig.decode(document.encoding)
+                    except:
+                        last_char = document.body[i-1][-1]
+                        mod_line, last_char = revert_unicode_line(document, i, last_char, insets, spec_chars)
+                        document.body[i:i+1] = mod_line.split('\n')
+                        i += len(mod_line.split('\n')) - 1
+            i += 1
 
 
 def convert_utf8(document):
@@ -341,8 +352,75 @@ def read_unicodesymbols():
             except:
                 pass
     fp.close()
-
     return spec_chars
+
+
+def revert_unicode_line(document, i, last_char, insets, spec_chars, replacement_character = '???'):
+    # Define strings to start and end ERT and math insets
+    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
+    ert_outro='\n\\end_layout\n\n\\end_inset\n'
+    math_intro='\n\\begin_inset Formula $'
+    math_outro='$\n\\end_inset'
+
+    mod_line = u''
+    line = document.body[i]
+    for character in line:
+        try:
+            # Try to write the character
+            dummy = character.encode(document.encoding)
+            mod_line += character
+            last_char = character
+        except:
+            # Try to replace with ERT/math inset
+            if spec_chars.has_key(character):
+                command = spec_chars[character][0] # the command to replace unicode
+                flag1 = spec_chars[character][1]
+                flag2 = spec_chars[character][2]
+                if flag1.find('combining') > -1 or flag2.find('combining') > -1:
+                    # We have a character that should be combined with the previous
+                    command += '{' + last_char + '}'
+                    # Remove the last character. Ignore if it is whitespace
+                    if len(last_char.rstrip()):
+                        # last_char was found and is not whitespace
+                        if mod_line:
+                            mod_line = mod_line[:-1]
+                        else: # last_char belongs to the last line
+                            document.body[i-1] = document.body[i-1][:-1]
+                    else:
+                        # The last character was replaced by a command. For now it is
+                        # ignored. This could be handled better.
+                        pass
+                if command[0:2] == '\\\\':
+                    if command[2:12]=='ensuremath':
+                        if insets and insets[-1] == "ERT":
+                            # math in ERT
+                            command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
+                            command = command.replace('}', '$\n')
+                        elif not insets or insets[-1] != "Formula":
+                            # add a math inset with the replacement character
+                            command = command.replace('\\\\ensuremath{\\', math_intro)
+                            command = command.replace('}', math_outro)
+                        else:
+                            # we are already in a math inset
+                            command = command.replace('\\\\ensuremath{\\', '')
+                            command = command.replace('}', '')
+                    else:
+                        if insets and insets[-1] == "Formula":
+                            # avoid putting an ERT in a math; instead put command as text
+                            command = command.replace('\\\\', '\mathrm{')
+                            command = command + '}'
+                        elif not insets or insets[-1] != "ERT":
+                            # add an ERT inset with the replacement character
+                            command = command.replace('\\\\', ert_intro)
+                            command = command + ert_outro
+                        else:
+                            command = command.replace('\\\\', '\n\\backslash\n')
+                    last_char = '' # indicate that the character should not be removed
+                mod_line += command
+            else:
+                # Replace with replacement string
+                mod_line += replacement_character
+    return mod_line, last_char
 
 
 def revert_unicode(document):
@@ -351,23 +429,11 @@ document encoding to commands according to the unicodesymbols
 file. Characters that can not be replaced by commands are replaced by
 an replacement string.  Flags other than 'combined' are currently not
 implemented.'''
-
-    replacement_character = '???'
     spec_chars = read_unicodesymbols()
-
-    # Define strings to start and end ERT and math insets
-    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
-    ert_outro='\n\\end_layout\n\n\\end_inset\n'
-    math_intro='\n\\begin_inset Formula $'
-    math_outro='$\n\\end_inset'
-    # Find unicode characters and replace them
-    in_ert = False # flag set to 1 if in ERT inset
-    in_math = False # flag set to 1 if in math inset
     insets = [] # list of active insets
-
-    # Go through the file to capture all combining characters
     last_char = '' # to store the previous character
 
+    # Go through the document to capture all combining characters
     i = 0
     while i < len(document.body):
         line = document.body[i]
@@ -385,63 +451,7 @@ implemented.'''
             i += 1
         except:
             # Error, some character(s) in the line need to be replaced
-            mod_line = u''
-            for character in line:
-                try:
-                    # Try to write the character
-                    dummy = character.encode(document.encoding)
-                    mod_line += character
-                    last_char = character
-                except:
-                    # Try to replace with ERT/math inset
-                    if spec_chars.has_key(character):
-                        command = spec_chars[character][0] # the command to replace unicode
-                        flag1 = spec_chars[character][1]
-                        flag2 = spec_chars[character][2]
-                        if flag1.find('combining') > -1 or flag2.find('combining') > -1:
-                            # We have a character that should be combined with the previous
-                            command += '{' + last_char + '}'
-                            # Remove the last character. Ignore if it is whitespace
-                            if len(last_char.rstrip()):
-                                # last_char was found and is not whitespace
-                                if mod_line:
-                                    mod_line = mod_line[:-1]
-                                else: # last_char belongs to the last line
-                                    document.body[i-1] = document.body[i-1][:-1]
-                            else:
-                                # The last character was replaced by a command. For now it is
-                                # ignored. This could be handled better.
-                                pass
-                        if command[0:2] == '\\\\':
-                            if command[2:12]=='ensuremath':
-                                if insets[-1] == "ERT":
-                                    # math in ERT
-                                    command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
-                                    command = command.replace('}', '$\n')
-                                elif insets[-1] != "Formula":
-                                    # add a math inset with the replacement character
-                                    command = command.replace('\\\\ensuremath{\\', math_intro)
-                                    command = command.replace('}', math_outro)
-                                else:
-                                    # we are already in a math inset
-                                    command = command.replace('\\\\ensuremath{\\', '')
-                                    command = command.replace('}', '')
-                            else:
-                                if insets[-1] == "Formula":
-                                    # avoid putting an ERT in a math; instead put command as text
-                                    command = command.replace('\\\\', '\mathrm{')
-                                    command = command + '}'
-                                elif insets[-1] != "ERT":
-                                    # add an ERT inset with the replacement character
-                                    command = command.replace('\\\\', ert_intro)
-                                    command = command + ert_outro
-                                else:
-                                    command = command.replace('\\\\', '\n\\backslash\n')
-                            last_char = '' # indicate that the character should not be removed
-                        mod_line += command
-                    else:
-                        # Replace with replacement string
-                        mod_line += replacement_character
+            mod_line, last_char = revert_unicode_line(document, i, last_char, insets, spec_chars)
             document.body[i:i+1] = mod_line.split('\n')
             i += len(mod_line.split('\n'))
 
