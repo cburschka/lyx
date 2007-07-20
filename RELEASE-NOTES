@@ -15,19 +15,21 @@ Known issues with version 1.5.0
 
 - User layout files must be converted to UTF-8
 
-In previous version, layout styles were allowed to use non-ASCII names
+In previous versions, layout styles were allowed to use non-ASCII names
 using the local encodings. LyX-1.5 now assumes that all layout files are
 UTF-8 encoded. This means that non-ASCII style names are still allowed
-but they nust be valid UTF-8 strings. One way of doing the conversion
+but they must be valid UTF-8 strings. One way of doing the conversion
 is to use iconv. Using bash, the script below should work:
+
+#! /bin/sh
 
 cd /path/to/layouts
 for l in *
 do
-  cp $l tmp.txt
-  iconv -f latin1 -t utf8 tmp.txt -o $l
+  cp "$l" tmp.txt
+  iconv -f latin1 -t utf8 tmp.txt -o "$l"
 done
-rm tmp.txt
+rm -f tmp.txt
 
 - Cursor restoration problems with Multiple-View
 
