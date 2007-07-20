@@ -1900,7 +1900,7 @@ implemented.'''
     spec_chars = read_unicodesymbols()
 
     # Define strings to start and end ERT and math insets
-    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash' % document.default_layout
+    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
     ert_outro='\n\\end_layout\n\n\\end_inset\n'
     math_intro='\n\\begin_inset Formula $'
     math_outro='$\n\\end_inset'
@@ -1978,7 +1978,7 @@ implemented.'''
                             if command[2:12]=='ensuremath':
                                 if in_ert:
                                     # math in ERT
-                                    command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash')
+                                    command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
                                     command = command.replace('}', '$\n')
                                 elif not in_math:
                                     # add a math inset with the replacement character
@@ -1998,7 +1998,7 @@ implemented.'''
                                     command = command.replace('\\\\', ert_intro)
                                     command = command + ert_outro
                                 else:
-                                    command = command.replace('\\\\', '\n\\backslash')
+                                    command = command.replace('\\\\', '\n\\backslash\n')
                             last_char = '' # indicate that the character should not be removed
                         mod_line += command
                     else:
