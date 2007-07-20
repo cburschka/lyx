@@ -1,6 +1,11 @@
 LyX file-format changes
 -----------------------
 
+2007-07-20 Dov Feldstern <dov@lyx.org>
+
+	* format *not* incremented; fixed format 249 conversion, so that it now
+		correctly deals with encodings in footnotes (part of bug 3613)
+
 2007-06-26 Uwe Stöhr <uwestoehr@web.de> and Dov Feldstern <dov@lyx.org>
 
 	* format incremented to 276: switching exsting language 'arabic' to 

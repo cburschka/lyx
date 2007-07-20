@@ -51,6 +51,26 @@ developers mailing list, we do have some possible solutions for this.
 The effects of this will be more pronounced for RTL (Hebrew, Arabic, Farsi) 
 users --- though they affect users of other languages as well.
 
+- Inset encodings and Conversion from earlier LyX versions
+
+One of the main new features in version 1.5.0 is Unicode. As part of the
+transition, lyx2lyx (the scripts used for converting back and forth between
+different versions of the lyx files) converts old .lyx files, which may use 
+a number of different encodings, to UTF-8. This conversion depends on
+correctly identifying the language of the text. There were previously some
+edge-cases (insets embedded in different-language text type scenarios) in 
+which the language was incorrectly identified, which caused some text to 
+appear incorrectly after having upgraded from older versions. This has now been
+fixed. Unfortunately, however, the fix cannot be applied to files which have
+already been converted past format 249.  So if you have already converted 
+your old files (using a development version or release candidate), this fix
+won't help, unless you still have the originals lying around (and haven't 
+yet made too many changes to the newer versions ;) ).
+
+Generally, it is probably wise to keep a backup of the old version of your 
+files, at least until you are sure that the upgrade went smoothly (which it 
+almost always will).
+
 
 Note: There may later be an updated list of known issues online at
 	http://wiki.lyx.org/LyX/ReleaseNotes

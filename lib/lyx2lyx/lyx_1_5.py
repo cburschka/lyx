@@ -246,10 +246,13 @@ document.encoding must be set to the old value (format 248) in both cases.
 We do this here and not in LyX.py because it is far easier to do the
 necessary parsing in modern formats than in ancient ones.
 """
+    inset_types = ["Foot", "Note"]
     if document.cjk_encoding != '':
         return
     encoding_stack = [document.encoding]
+    inset_stack = []
     lang_re = re.compile(r"^\\lang\s(\S+)")
+    inset_re = re.compile(r"^\\begin_inset\s(\S+)")
     if document.inputencoding == "auto" or document.inputencoding == "default":
         for i in range(len(document.body)):
             result = lang_re.match(document.body[i])
@@ -264,7 +267,11 @@ necessary parsing in modern formats than in ancient ones.
                     encoding_stack[-1] = lang[language][3]
             elif find_token(document.body, "\\begin_layout", i, i + 1) == i:
                 document.warning("Adding nested encoding %s." % encoding_stack[-1], 3)
-                encoding_stack.append(encoding_stack[-1])
+                if len(inset_stack) > 0 and inset_stack[-1] in inset_types:
+                    from lyx2lyx_lang import lang
+                    encoding_stack.append(lang[document.language][3])
+                else:
+                    encoding_stack.append(encoding_stack[-1])
             elif find_token(document.body, "\\end_layout", i, i + 1) == i:
                 document.warning("Removing nested encoding %s." % encoding_stack[-1], 3)
                 if len(encoding_stack) == 1:
@@ -272,6 +279,15 @@ necessary parsing in modern formats than in ancient ones.
                     document.warning("Malformed LyX document: Unexpected `\\end_layout'.")
                 else:
                     del encoding_stack[-1]
+            elif find_token(document.body, "\\begin_inset", i, i + 1) == i:
+                inset_result = inset_re.match(document.body[i])
+                if inset_result:
+                    inset_type = inset_result.group(1)
+                    inset_stack.append(inset_type)
+                else: 
+                    inset_stack.append("")
+            elif find_token(document.body, "\\end_inset", i, i + 1) == i:
+                del inset_stack[-1]
             if encoding_stack[-1] != document.encoding:
                 if forward:
                     # This line has been incorrectly interpreted as if it was
