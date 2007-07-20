@@ -250,7 +250,7 @@ necessary parsing in modern formats than in ancient ones.
     if document.cjk_encoding != '':
         return
     encoding_stack = [document.encoding]
-    inset_stack = []
+    insets = []
     lang_re = re.compile(r"^\\lang\s(\S+)")
     inset_re = re.compile(r"^\\begin_inset\s(\S+)")
     if document.inputencoding == "auto" or document.inputencoding == "default":
@@ -267,7 +267,7 @@ necessary parsing in modern formats than in ancient ones.
                     encoding_stack[-1] = lang[language][3]
             elif find_token(document.body, "\\begin_layout", i, i + 1) == i:
                 document.warning("Adding nested encoding %s." % encoding_stack[-1], 3)
-                if len(inset_stack) > 0 and inset_stack[-1] in inset_types:
+                if len(insets) > 0 and insets[-1] in inset_types:
                     from lyx2lyx_lang import lang
                     encoding_stack.append(lang[document.language][3])
                 else:
@@ -282,12 +282,11 @@ necessary parsing in modern formats than in ancient ones.
             elif find_token(document.body, "\\begin_inset", i, i + 1) == i:
                 inset_result = inset_re.match(document.body[i])
                 if inset_result:
-                    inset_type = inset_result.group(1)
-                    inset_stack.append(inset_type)
+                    insets.append(inset_result.group(1))
                 else: 
-                    inset_stack.append("")
+                    insets.append("")
             elif find_token(document.body, "\\end_inset", i, i + 1) == i:
-                del inset_stack[-1]
+                del insets[-1]
             if encoding_stack[-1] != document.encoding:
                 if forward:
                     # This line has been incorrectly interpreted as if it was
@@ -374,27 +373,9 @@ implemented.'''
         line = document.body[i]
         # Check for insets
         if line.find('\\begin_inset') > -1:
-            # check which inset to start
-            if line.find('\\begin_inset ERT') > -1:
-                in_ert = True
-                insets.append('ert')
-            elif line.find('\\begin_inset Formula') > -1:
-                in_math = True
-                insets.append('math')
-            else:
-                insets.append('other')
+            insets.append(line[13:].split()[0])
         if line.find('\\end_inset') > -1:
-            # check which inset to end
-            try:
-                cur_inset = insets.pop()
-                if cur_inset == 'ert':
-                    in_ert = False
-                elif cur_inset == 'math':
-                    in_math = False
-                else:
-                    pass # end of other inset
-            except:
-                pass # inset list was empty (for some reason)
+            del insets[-1]
         
         # Try to write the line
         try:
@@ -433,11 +414,11 @@ implemented.'''
                                 pass
                         if command[0:2] == '\\\\':
                             if command[2:12]=='ensuremath':
-                                if in_ert:
+                                if insets[-1] == "ERT":
                                     # math in ERT
                                     command = command.replace('\\\\ensuremath{\\\\', '$\n\\backslash\n')
                                     command = command.replace('}', '$\n')
-                                elif not in_math:
+                                elif insets[-1] != "Formula":
                                     # add a math inset with the replacement character
                                     command = command.replace('\\\\ensuremath{\\', math_intro)
                                     command = command.replace('}', math_outro)
@@ -446,11 +427,11 @@ implemented.'''
                                     command = command.replace('\\\\ensuremath{\\', '')
                                     command = command.replace('}', '')
                             else:
-                                if in_math:
+                                if insets[-1] == "Formula":
                                     # avoid putting an ERT in a math; instead put command as text
                                     command = command.replace('\\\\', '\mathrm{')
                                     command = command + '}'
-                                elif not in_ert:
+                                elif insets[-1] != "ERT":
                                     # add an ERT inset with the replacement character
                                     command = command.replace('\\\\', ert_intro)
                                     command = command + ert_outro
