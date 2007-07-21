@@ -1800,6 +1800,9 @@ after label
                                       '',
                                       r'\backslash',
                                       r'begin{lstlisting}%s' % params,
+                                      r'\end_layout',
+                                      '',
+                                      r'\begin_layout %s' % document.default_layout,
                                     ] + document.body[k : j - 1] + \
                                      ['',
                                       r'\begin_layout %s' % document.default_layout,
