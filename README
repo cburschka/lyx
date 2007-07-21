@@ -33,6 +33,9 @@ What do I need to run LyX?
     A decent LaTeX2e installation (e.g. teTeX for unix) not older
        than 1995/12/01.
     Python 2.3 or later to convert old LyX files and for helper scripts
+    (note that you need at least Python 2.3.4 for exporting LyX files
+    to a pre-unicode format, as previous versions are affected by a bug
+    about the normalization of unicode strings)
 
 How does the LyX version scheme work?
 
