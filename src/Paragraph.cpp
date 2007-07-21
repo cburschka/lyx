@@ -726,6 +726,11 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 		}
 
+		if (lookupChange(i).type == Change::DELETED) {
+			if( ++runparams.inDeletedInset == 1)
+				runparams.changeOfDeletedInset = lookupChange(i);
+		}
+
 		if (inset->canTrackChanges()) {
 			column += Changes::latexMarkChange(os, bparams, running_change,
 				Change(Change::UNCHANGED));
@@ -800,6 +805,10 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column = 0;
 		} else {
 			column += os.tellp() - len;
+		}
+
+		if (lookupChange(i).type == Change::DELETED) {
+			--runparams.inDeletedInset;
 		}
 	}
 	break;
@@ -2039,7 +2048,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 							    runparams.moving_arg);
 		}
 
-		Change const & change = pimpl_->lookupChange(i);
+		Change const & change = runparams.inDeletedInset ? runparams.changeOfDeletedInset
+		                                                 : pimpl_->lookupChange(i);
 
 		if (bparams.outputChanges && runningChange != change) {
 			if (open_font) {

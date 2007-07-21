@@ -23,6 +23,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  linelen(0), depth(0),
 	  exportdata(new ExportData),
 	  inComment(false),
+	  inDeletedInset(0), changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0),
 	  dryrun(false)
 {}

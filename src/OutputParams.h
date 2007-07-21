@@ -16,6 +16,7 @@
 
 #include "support/types.h"
 #include <boost/shared_ptr.hpp>
+#include "Changes.h"
 
 
 namespace lyx {
@@ -119,6 +120,16 @@ public:
 	 *  if this flag is true, since they may not exist.
 	 */
 	bool inComment;
+
+	/** Whether we are inside an inset that is logically deleted.
+	 *  A value > 0 indicates a deleted inset.
+         */
+	int inDeletedInset;
+
+	/** The change information of the outermost logically deleted inset.
+	 *  changeOfDeletedInset shall only be evaluated if inDeletedInset > 0.
+         */ 
+	Change changeOfDeletedInset;
 
 	/** allow output of only part of the top-level paragraphs
 	 *  par_begin: beginning paragraph
