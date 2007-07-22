@@ -1249,7 +1249,7 @@ def revert_accent(document):
                         document.body.insert(i+1, document.body[i][j+1:])
                     # Delete the accented characters
                     if j > 1:
-                        document.body[i] = document.body[i][:j-2]
+                        document.body[i] = document.body[i][:j-1]
                     else:
                         document.body[i] = u''
                     # Finally add the InsetLaTeXAccent
