@@ -1226,10 +1226,7 @@ def revert_accent(document):
                     if j < len(document.body[i]) - 1:
                         document.body.insert(i+1, document.body[i][j+1:])
                     # Delete the accented character
-                    if j > 0:
-                        document.body[i] = document.body[i][:j-1]
-                    else:
-                        document.body[i] = u''
+                    document.body[i] = document.body[i][:j]
                     # Finally add the InsetLaTeXAccent
                     document.body[i] += "\\i \\%s{}" % inverse_special_accent_map[accent]
                     break
@@ -1248,10 +1245,7 @@ def revert_accent(document):
                     if j < len(document.body[i]) - 1:
                         document.body.insert(i+1, document.body[i][j+1:])
                     # Delete the accented characters
-                    if j > 1:
-                        document.body[i] = document.body[i][:j-1]
-                    else:
-                        document.body[i] = u''
+                    document.body[i] = document.body[i][:j-1]
                     # Finally add the InsetLaTeXAccent
                     document.body[i] += "\\i \\%s{%s}" % (inverse_accent_map[accent], accented_char)
                     break
