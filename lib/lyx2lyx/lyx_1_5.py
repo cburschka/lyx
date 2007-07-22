@@ -310,8 +310,7 @@ necessary parsing in modern formats than in ancient ones.
                         # be used when writing to the file.
                         document.body[i] = orig.decode(document.encoding)
                     except:
-                        last_char = document.body[i-1][-1]
-                        mod_line, last_char = revert_unicode_line(document, i, last_char, insets, spec_chars)
+                        mod_line = revert_unicode_line(document, i, insets, spec_chars)
                         document.body[i:i+1] = mod_line.split('\n')
                         i += len(mod_line.split('\n')) - 1
             i += 1
@@ -355,7 +354,7 @@ def read_unicodesymbols():
     return spec_chars
 
 
-def revert_unicode_line(document, i, last_char, insets, spec_chars, replacement_character = '???'):
+def revert_unicode_line(document, i, insets, spec_chars, replacement_character = '???'):
     # Define strings to start and end ERT and math insets
     ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
     ert_outro='\n\\end_layout\n\n\\end_inset\n'
@@ -363,6 +362,11 @@ def revert_unicode_line(document, i, last_char, insets, spec_chars, replacement_
     math_outro='$\n\\end_inset'
 
     mod_line = u''
+    if i and document.body[i - 1][:1] != '\\':
+        last_char = document.body[i - 1][-1:]
+    else:
+        last_char = ''
+
     line = document.body[i]
     for character in line:
         try:
@@ -420,7 +424,7 @@ def revert_unicode_line(document, i, last_char, insets, spec_chars, replacement_
             else:
                 # Replace with replacement string
                 mod_line += replacement_character
-    return mod_line, last_char
+    return mod_line
 
 
 def revert_unicode(document):
@@ -431,7 +435,6 @@ an replacement string.  Flags other than 'combined' are currently not
 implemented.'''
     spec_chars = read_unicodesymbols()
     insets = [] # list of active insets
-    last_char = '' # to store the previous character
 
     # Go through the document to capture all combining characters
     i = 0
@@ -447,11 +450,10 @@ implemented.'''
         try:
             # If all goes well the line is written here
             dummy = line.encode(document.encoding)
-            last_char = line[-1]
             i += 1
         except:
             # Error, some character(s) in the line need to be replaced
-            mod_line, last_char = revert_unicode_line(document, i, last_char, insets, spec_chars)
+            mod_line = revert_unicode_line(document, i, insets, spec_chars)
             document.body[i:i+1] = mod_line.split('\n')
             i += len(mod_line.split('\n'))
 
@@ -1163,20 +1165,19 @@ def revert_accent(document):
     # words before unicode normalization.
     # We do this only if the next line starts with an accent, otherwise we
     # would create things like '\begin_inset ERTstatus'.
-    numberoflines = len(document.body)
-    for i in range(numberoflines-1):
+    for i in range(len(document.body) - 1):
         if document.body[i] == '' or document.body[i+1] == '' or document.body[i][-1] == ' ':
             continue
-        if (document.body[i+1][0] in inverse_accent_map):
+        if (document.body[i+1][0] in inverse_accent_map and document.body[i][:1] != '\\'):
             # the last character of this line and the first of the next line
-            # form probably a surrogate pair.
+            # form probably a surrogate pair, inline insets are excluded (second part of the test)
             while (len(document.body[i+1]) > 0 and document.body[i+1][0] != ' '):
                 document.body[i] += document.body[i+1][0]
                 document.body[i+1] = document.body[i+1][1:]
 
     # Normalize to "Normal form D" (NFD, also known as canonical decomposition).
     # This is needed to catch all accented characters.
-    for i in range(numberoflines):
+    for i in range(len(document.body)):
         # Unfortunately we have a mixture of unicode strings and plain strings,
         # because we never use u'xxx' for string literals, but 'xxx'.
         # Therefore we may have to try two times to normalize the data.
@@ -1190,9 +1191,9 @@ def revert_accent(document):
     # encoding.
     encoding_stack = [get_encoding(document.language, document.inputencoding, 248, document.cjk_encoding)]
     lang_re = re.compile(r"^\\lang\s(\S+)")
+
     i = 0
     while i < len(document.body):
-
         if (document.inputencoding == "auto" or document.inputencoding == "default") and document.cjk_encoding != '':
             # Track the encoding of the current line
             result = lang_re.match(document.body[i])
@@ -1257,7 +1258,7 @@ def revert_accent(document):
         i = i + 1
 
     # Normalize to "Normal form C" (NFC, pre-composed characters) again
-    for i in range(numberoflines):
+    for i in range(len(document.body)):
         document.body[i] = unicodedata.normalize("NFC", document.body[i])
 
 
