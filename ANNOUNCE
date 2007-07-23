@@ -249,6 +249,16 @@ to paste selected text is enhanced, and is also available under windows
 you can paste the selected text using the middle button multiple times,
 even after the selection has been cleared.
 
+* Limited support for local class and layout files
+
+Lyx can not create, but can open a .lyx file with .cls and .layout files
+stored in the same directory as the .lyx file. That is to say, if you send
+your co-author a .lyx file with associated class and layout files, s/he 
+can view and modify the .lyx file directly, without having to install the
+.cls and .layout files, reconfigure and restart lyx. Note that the .cls and
+.layout files have to be copied to every directory your .lyx files reside,
+should you use different directories for master and child documents.
+
 * Under the hood
 
 As usual, one big task has been the ongoing code cleanup of the LyX
