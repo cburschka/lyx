@@ -362,7 +362,7 @@ def revert_unicode_line(document, i, insets, spec_chars, replacement_character =
     math_outro='$\n\\end_inset'
 
     mod_line = u''
-    if i and document.body[i - 1][:1] != '\\':
+    if i and not is_inset_line(document, i-1):
         last_char = document.body[i - 1][-1:]
     else:
         last_char = ''
@@ -1150,6 +1150,14 @@ def convert_accent(document):
         i += 3
 
 
+def is_inset_line(document, i):
+    """ Line i of body has an inset """
+    if document.body[i][:1] == '\\':
+        return True
+    last_tokens = "".join(document.body[i].split()[-2:])
+    return last_tokens.find('\\') != -1
+
+
 def revert_accent(document):
     inverse_accent_map = {}
     for k in accent_map:
@@ -1168,7 +1176,7 @@ def revert_accent(document):
     for i in range(len(document.body) - 1):
         if document.body[i] == '' or document.body[i+1] == '' or document.body[i][-1] == ' ':
             continue
-        if (document.body[i+1][0] in inverse_accent_map and document.body[i][:1] != '\\'):
+        if (document.body[i+1][0] in inverse_accent_map and not is_inset_line(document, i)):
             # the last character of this line and the first of the next line
             # form probably a surrogate pair, inline insets are excluded (second part of the test)
             while (len(document.body[i+1]) > 0 and document.body[i+1][0] != ' '):
