@@ -1411,7 +1411,7 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 			texrow.newline();
 		}
 	} else if (inputenc != "default") {
-		switch (language->encoding()->package()) {
+		switch (encoding().package()) {
 		case Encoding::none:
 			break;
 		case Encoding::inputenc:
