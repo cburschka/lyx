@@ -113,6 +113,8 @@ The languages Chinese, Japanese, and Korean are now supported in
 the user interface.
 Note that setting the encoding for these languages in LyX 1.5 by
 using ERT or the document preamble will lead to LaTeX-errors!
+Also note that you may need to run qtconfig and set appropriate default
+or substitution fonts to display CJK characters under some circumstances.
 
 * Language support
 
