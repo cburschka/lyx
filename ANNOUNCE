@@ -1,30 +1,28 @@
-Public release of LyX version 1.5.0 (release candidate 2)
+Public release of LyX version 1.5.0
 ===================================
 
-We are pleased to announce the release of LyX 1.5.0 (release candidate 2).
-We expect this to be the last release before 1.5.0. We do not anticipate
-any further changes before 1.5.0, although any critical bugs and regressions
-in 1.5.0rc2 will, of course, be addressed.
+We are pleased to announce the release of LyX 1.5.0.
 
-We encourage users to try this release candidate and report
-any feedback or problems to lyx-devel at lists.lyx.org.
+Since the announcement of release candidate 2, we have fixed bugs and
+we have updated the documentation.
 
-Since the announcement of release candidate 1, we have mostly fixed bugs
-and polished the graphical interface.
+Following the ad hoc tradition of 1.5.0 pre-releases, called
+respectively Ruby (alpha), Towny (beta) and Quinta ("farm" in
+Portuguese for the release candidates) this release starts the Vintage
+selection that are (will be) the 1.5 series.
 
-
-LyX 1.5.0 is the culmination of 15 months of hard work since the release
-of the LyX 1.4 series. We sincerely hope you will enjoy the result.
-The changes are too numerous to summarize in a few words, but initial
-unicode support is the flagship among the new features. See the end of
-this announcement for further details.
+LyX 1.5.0 is the culmination of 15 months of hard work since the
+release of the LyX 1.4 series. We sincerely hope you will enjoy the
+result.  The changes are too numerous to summarize in a few words, but
+initial unicode support is the flagship among the new features. See
+the end of this announcement for further details.
 
 As usual with a major release, a lot of work that is not directly
 visible has taken place. The core of LyX has seen more cleanups and
 some of the new features are the direct results of this work.
 
 The file RELEASE-NOTES lists some known issues with this release
-compared to the current stable release (LyX 1.4.4). An updated list of
+compared to the current stable release (LyX 1.4.5). An updated list of
 issues might later be found at http://wiki.lyx.org/LyX/ReleaseNotes
 
 
@@ -52,30 +50,42 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux and the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.5.0rc2 here (the .bz2 are compressed with
-bzip2, which yields smaller files):
+You can download LyX 1.5.0 here (the .bz2 are compressed with bzip2,
+which yields smaller files):
 
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.5.0rc2.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.5.0rc2.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.bz2
+
+and it should propagate shortly to the following mirrors (which will
+also host the .bz2 versions):
+
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.0.tar.gz
+	http://lyx.cybermirror.org/stable/lyx-1.5.0.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.0.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.0.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.0.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.5.0.tar.gz
 
 Note that due to the amount of change, no patch is provided to upgrade
-from version 1.4.4.
+from version 1.4.5.
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/
+	ftp://ftp.devel.lyx.org/pub/bin/1.5.0/
 
 As confusing as it is, two sets of installers are available to windows
 users:
- * LyX-1.5.0rc2-Installer.exe and LyX-1.5.0rc2-Installer-bundle.exe;
- * LyX-1.5.0rc2-AltInstaller.exe and LyX-1.5.0rc2-AltInstaller-Complete.exe.
+ * LyX-1.5.0-Installer.exe and LyX-1.5.0-Installer-bundle.exe;
+ * LyX-1.5.0-AltInstaller.exe and LyX-1.5.0-AltInstaller-Complete.exe.
 The former is our official installer and the latter was previously known
 as LyXWinInstaller. Please feel free to try either of them. Feedback
 and bug reports on both installers are welcome because they will help
 the merge of the two installers, which is expected to happen during the
 1.5.x series of LyX development.
 
-If you find what you think is a bug in LyX 1.5.0rc2, you may either
+If you find what you think is a bug in LyX 1.5.0, you may either
 e-mail the LyX developers' mailing list (lyx-devel at lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -88,7 +98,7 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.5.0 (release candidate 2)?
+What's new in version 1.5.0 ?
 ----------------------------
 
 * Unicode
