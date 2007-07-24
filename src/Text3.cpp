@@ -1340,6 +1340,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM: {
+		if (cur.selection())
+			cur.clearSelection();
+		// FIXME: instead of the above, this one
+		// should be used (but it asserts with Bidi enabled)
+		// cf. http://bugzilla.lyx.org/show_bug.cgi?id=4055
+		// cap::replaceSelection(cur);
 		cur.insert(new InsetMathHull(hullSimple));
 		checkAndActivateInset(cur, true);
 		BOOST_ASSERT(cur.inMathed());
