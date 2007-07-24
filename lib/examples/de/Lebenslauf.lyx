@@ -1,8 +1,8 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
-\textclass cv
+\textclass simplecv
 \begin_preamble
 %% You can modify the fonts used in the document be using the
 %% following macros. They take one parameter which is the font
@@ -26,13 +26,21 @@
 \end_preamble
 \language ngerman
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -45,7 +53,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -72,8 +80,10 @@ William Shakespeare
 \begin_layout Standard
 Einige Leute schreiben hier eine Zusammenfassung.
  Bemerkung: im Vorspann kann man viele LaTeX-Variablen setzen, um das Aussehen
- des Lebenslaufes zu ändern.
- Sehen Sie sich 
+ des Lebenslaufes zu Ã¤ndern.
+ Sehen Sie sich
+\family default
+ 
 \family sans
 \bar under
 D
@@ -106,8 +116,8 @@ Arbeitserfahrungen
 
 \begin_layout Topic
 \labelwidthstring MMMMM
-1593-1609 Schrieb und produzierte ich Schauspiele für die Königin, und dann
- für den König.
+1593-1609 Schrieb und produzierte ich Schauspiele fÃ¼r die KÃ¶nigin, und dann
+ fÃ¼r den KÃ¶nig.
  Er mochte sie wirklich sehr, aber sie erinnerten ihn an die Schauspiele
  des  Earl of Oxford.
 \end_layout
@@ -115,15 +125,15 @@ Arbeitserfahrungen
 \begin_layout Topic
 \labelwidthstring MMMMM
 \InsetSpace ~
- Wenn ein Thema keinen Titel hat, müssen Sie dort stattdessen ein geschütztes
- Leerzeichen einfügen.
+ Wenn ein Thema keinen Titel hat, mÃ¼ssen Sie dort stattdessen ein geschÃ¼tztes
+ Leerzeichen einfÃ¼gen.
  Dies ist ein LyX-Mangel.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Aber Sie können auch die Absatztiefe ändern, abhängig davon, was Sie tun
- möchten.
+Aber Sie kÃ¶nnen auch die Absatztiefe Ã¤ndern, abhÃ¤ngig davon, was Sie tun
+ mÃ¶chten.
 \end_layout
 
 \end_deeper
@@ -141,22 +151,25 @@ Erziehung
 April\InsetSpace ~
 bis\InsetSpace ~
 Mai\InsetSpace ~
-1581 Ich versuchte es an einer Oberschule.Ich haßte meinen Englischleh
+1581 Ich versuchte es an einer Oberschule.Ich haÃŸte meinen Englischleh
 rer.
  [Zwei Dinge sind hier zu beachten: als erstes sehen Sie sich in der Druckvorsch
 au an, wie ein Zeilenumbruch aussieht, wenn Ihr Titel zu lang ist; als zweites
- beachten Sie, daß Sie geschützte Leerzeichen im Titel benutzen müssen,
+ beachten Sie, daÃŸ Sie geschÃ¼tzte Leerzeichen im Titel benutzen mÃ¼ssen,
  wenn er nicht umgebrochen werden soll.]
 \end_layout
 
 \begin_layout Section
-Veröffentlichungen
+VerÃ¶ffentlichungen
 \end_layout
 
 \begin_layout Bibliography
 \labelwidthstring Publications
 
-\bibitem {firstref}
+\begin_inset LatexCommand bibitem
+key "firstref"
+
+\end_inset
 Erster Foliant.
  Me.
  1623.
@@ -165,12 +178,15 @@ Erster Foliant.
 \begin_layout Bibliography
 \labelwidthstring Publications
 
-\bibitem {secondref}
-Diese Referenzen könnten über BibTeX eingefügt worden sein\SpecialChar \ldots{}
+\begin_inset LatexCommand bibitem
+key "secondref"
+
+\end_inset
+Diese Referenzen kÃ¶nnten Ã¼ber BibTeX eingefÃ¼gt worden sein\SpecialChar \ldots{}
  Auf jeden Fall
  kann ich hier meine Arbeiten aus 
-\begin_inset LatexCommand \cite{firstref}
-
+\begin_inset LatexCommand cite
+key "firstref"
 \end_inset
 
  zitieren.

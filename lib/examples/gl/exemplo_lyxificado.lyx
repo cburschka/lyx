@@ -1,17 +1,25 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language galician
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,13 +32,13 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-ESTE … O TÕTULO DO DOCUMENTO
+ESTE √â O T√çTULO DO DOCUMENTO
 \end_layout
 
 \begin_layout Author
@@ -38,23 +46,22 @@ por Pepe LyX
 \end_layout
 
 \begin_layout Date
-12 de XuÒo de 1972
+12 de Xu√±o de 1972
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-Filosofia b·sica 
+Filosofia b√°sica 
 \end_layout
 
 \begin_layout Standard
-A filosofia b·sica de LyX È conseguir que o usu·rio sÛ se deba preocupar
+A filosofia b√°sica de LyX √© conseguir que o usu√°rio s√≥ se deba preocupar
  do contido do documento e non do formato.
 \end_layout
 
@@ -63,70 +70,72 @@ Como o traballa o LyX
 \end_layout
 
 \begin_layout Standard
-LyX basea-se no LaTeX, un sistema de preparaciÛn de documentos deseÒado
+LyX basea-se no LaTeX, un sistema de preparaci√≥n de documentos dese√±ado
  por Leslie Lamport en 1985.
- Por sua vez o LaTeX elaborou-se sobre unha linguaxe tipogr·fica chamada
+ Por sua vez o LaTeX elaborou-se sobre unha linguaxe tipogr√°fica chamada
  TeX, criada por Donald Knuth en 1984.
- Por outra banda a filosofia do LaTeX È similar · de LyX.
- Leslie Lamport dixo (ver referÈncia 
-\begin_inset LatexCommand \cite{Lamport}
-
+ Por outra banda a filosofia do LaTeX √© similar √° de LyX.
+ Leslie Lamport dixo (ver refer√©ncia 
+\begin_inset LatexCommand cite
+key "Lamport"
 \end_inset
 
 ) :
 \end_layout
 
 \begin_layout Quote
-"A funciÛn do deseÒo tipogr·fico È axudar ao leitor a comprender as ideas
+"A funci√≥n do dese√±o tipogr√°fico √© axudar ao leitor a comprender as ideas
  do autor.
- Para un documento ser de f·cil leitura, a sua estrutura visual debe reflectir
- a sua estrutura lÛxica.
+ Para un documento ser de f√°cil leitura, a sua estrutura visual debe reflectir
+ a sua estrutura l√≥xica.
  As citas e os programas de computador, sendo elementos estruturalmente
  diferentes, deberian distinguir-se visualmente un de outro [...] Como LaTeX
  non pode entender directamente o sentido do seu texto, debe indicar-lle
- a estrutura lÛxica mediante comandos especiais [...] Entanto escrebe o documento,
- deberia preocupar-se da sua estrutura lÛxica, non da sua aparÈncia."
+ a estrutura l√≥xica mediante comandos especiais [...] Entanto escrebe o documento,
+ deberia preocupar-se da sua estrutura l√≥xica, non da sua apar√©ncia."
 \end_layout
 
 \begin_layout Subsection
-Por que o LyX È mellor
+Por que o LyX √© mellor
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sub:LyX-mellor}
-
+\begin_inset LatexCommand label
+name "sub:LyX-mellor"
 \end_inset
 
-LyX pode ser ˙til a mais xente que LaTeX.
- … considerabelmente mais doado de aprender, pois non È como LaTeX unha
- linguaxe de programazÛn.
- LyX È basicamente como outros procesadores de texto "WYSIWYG (o que vÈ
- È o que obtÈn), ag·s que o LyX realmente È WYSIWYM (o que vÈ È o que pretende
+LyX pode ser √∫til a mais xente que LaTeX.
+ √â considerabelmente mais doado de aprender, pois non √© como LaTeX unha
+ linguaxe de programaz√≥n.
+ LyX √© basicamente como outros procesadores de texto "WYSIWYG (o que v√©
+ √© o que obt√©n), ag√°s que o LyX realmente √© WYSIWYM (o que v√© √© o que pretende
  facer).
  De maneira que combina a facilidade de uso dos procesadores de texto coa
- potÈncia do LaTeX.
- O cal È unha boa cousa.
- Ademais, o formato de arquivo È independente do sistema operativo.
- E o mellor de todo, È LIBRE!
+ pot√©ncia do LaTeX.
+ O cal √© unha boa cousa.
+ Ademais, o formato de arquivo √© independente do sistema operativo.
+ E o mellor de todo, √© LIBRE!
 \end_layout
 
 \begin_layout Section
-CaracterÌsticas do LyX
+Caracter√≠sticas do LyX
 \end_layout
 
 \begin_layout Standard
-LyX posui moitas caracterÌsticas que facilitan a escrita de documentos
+LyX posui moitas caracter√≠sticas que facilitan a escrita de documentos
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-SenÛn, porque o ia querer usar?
+Sen√≥n, porque o ia querer usar?
 \end_layout
 
 \end_inset
 
 .
- E a min 
+ E a min
+\emph default
+ 
 \emph on
 agrada-me
 \emph default
@@ -135,31 +144,31 @@ agrada-me
 \end_layout
 
 \begin_layout Itemize
-O LyX encarrega-se sen intervenciÛn do usu·rio das marxes e a numeraciÛn
- das notas de rodapÈ.
+O LyX encarrega-se sen intervenci√≥n do usu√°rio das marxes e a numeraci√≥n
+ das notas de rodap√©.
 \end_layout
 
 \begin_layout Itemize
-LyX facilita a escrita e ediciÛn de fÛrmulas matem·ticas.
+LyX facilita a escrita e edici√≥n de f√≥rmulas matem√°ticas.
 \end_layout
 
 \begin_layout Standard
-Para unha discusiÛn mais filosÛfica de por que LyX È mellor que a competÈncia
- vexa a secciÛn 
-\begin_inset LatexCommand \ref{sub:LyX-mellor}
-
+Para unha discusi√≥n mais filos√≥fica de por que LyX √© mellor que a compet√©ncia
+ vexa a secci√≥n 
+\begin_inset LatexCommand ref
+reference "sub:LyX-mellor"
 \end_inset
 
-, que se acha na p·xina 
-\begin_inset LatexCommand \pageref{sub:LyX-mellor}
-
+, que se acha na p√°xina 
+\begin_inset LatexCommand pageref
+reference "sub:LyX-mellor"
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Section
-Tentivas eivadas de empregar m·is facilidades do LyX
+Tentivas eivadas de empregar m√°is facilidades do LyX
 \end_layout
 
 \begin_layout Standard
@@ -171,7 +180,7 @@ O outro dia escrebin un programa, algo asi como:
 \end_layout
 
 \begin_layout LyX-Code
-10 PRINT "SON INIGUAL¡BEL!"
+10 PRINT "SON INIGUAL√ÅBEL!"
 \end_layout
 
 \begin_layout LyX-Code
@@ -179,30 +188,30 @@ O outro dia escrebin un programa, algo asi como:
 \end_layout
 
 \begin_layout Standard
-ApÛs desta inxente lavoura inform·tica, arrebatou-me unha vea poÈtica e
+Ap√≥s desta inxente lavoura inform√°tica, arrebatou-me unha vea po√©tica e
  escrebin este haiku:
 \end_layout
 
 \begin_layout Verse
 LyX, veloz palilleira
 \newline
-teces as miÒas palabras
+teces as mi√±as palabras
 \newline
 nunha fermosa renda de letras.
 \end_layout
 
 \begin_layout Section
-CuestiÛns matem·ticas
+Cuesti√≥ns matem√°ticas
 \end_layout
 
 \begin_layout Standard
-A miÒa ecuaciÛn favorita È a soluciÛn da ecuaciÛn de segundo grau.
+A mi√±a ecuaci√≥n favorita √© a soluci√≥n da ecuaci√≥n de segundo grau.
  Se 
 \begin_inset Formula $a^{2}+bx+c=0$
 \end_inset
 
  (ec.
- 1), entÛn 
+ 1), ent√≥n 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
@@ -212,7 +221,7 @@ A miÒa ecuaciÛn favorita È a soluciÛn da ecuaciÛn de segundo grau.
 \end_layout
 
 \begin_layout Standard
-Outra das miÒas ecuaciÛns favoritas È base do c·lculo: 
+Outra das mi√±as ecuaci√≥ns favoritas √© base do c√°lculo: 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
@@ -225,18 +234,20 @@ Notes
 \end_layout
 
 \begin_layout Standard
-Tres cousiÒas sobre este ficheiro:
+Tres cousi√±as sobre este ficheiro:
 \end_layout
 
 \begin_layout Itemize
-Eliminei as liÒas a trazos que separaban o tÌtulo e a bibliografia do resto
+Eliminei as li√±as a trazos que separaban o t√≠tulo e a bibliografia do resto
  do documento.
  O LyX (LaTeX) xa separa tais partes do documento con os espazos axeitados.
 \end_layout
 
 \begin_layout Itemize
-Non coloquei as fÛrmulas en liÒas independentes, nen usei a numeraciÛn autom·tic
-a que fornece o LyX, porque non se descreben no 
+Non coloquei as f√≥rmulas en li√±as independentes, nen usei a numeraci√≥n autom√°tic
+a que fornece o LyX, porque non se descreben no
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -244,7 +255,7 @@ Tutorial
 \end_layout
 
 \begin_layout Itemize
-Non È neces·rio dixitar a palabra 
+Non √© neces√°rio dixitar a palabra 
 \begin_inset Quotes eld
 \end_inset
 
@@ -261,7 +272,9 @@ Bibliography,
 \begin_inset Quotes erd
 \end_inset
 
- segundo a clase de documento) ao seleccionar o ambiente 
+ segundo a clase de documento) ao seleccionar o ambiente
+\family default
+ 
 \family sans
 Bibliografia
 \family default
@@ -270,8 +283,13 @@ Bibliografia
 
 \begin_layout Bibliography
 
-\bibitem {Lamport}
+\begin_inset LatexCommand bibitem
+key "Lamport"
+
+\end_inset
 Lamport, Leslie.
+
+\emph default
  
 \emph on
 LaTeX: A Document Preparation System.

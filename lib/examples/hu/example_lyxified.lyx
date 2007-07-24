@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -10,13 +10,21 @@
 \end_preamble
 \language magyar
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -29,168 +37,173 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Ez a dokumentum címe
+Ez a dokumentum cÃ­me
 \end_layout
 
 \begin_layout Author
-készítette egy LyX-es
+kÃ©szÃ­tette egy LyX-es
 \end_layout
 
 \begin_layout Date
 1972.
- június 12
+ jÃºnius 12
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-Alap filozófia
+Alap filozÃ³fia
 \end_layout
 
 \begin_layout Standard
-A LyX alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
- írni, nem arra hogyan fog kinézni.
+A LyX alapfilozÃ³fiÃ¡ja az, hogy csak arra kell koncentrÃ¡lnia amit le akarni
+ Ã­rni, nem arra hogyan fog kinÃ©zni.
 \end_layout
 
 \begin_layout Subsection
-Hogyan valósítja meg ezt a LyX
+Hogyan valÃ³sÃ­tja meg ezt a LyX
 \end_layout
 
 \begin_layout Standard
-A LyX a LaTeX-et használja, ami egy dokumentum elkészítõ rendszer, amit
- 1985-ben készített Leslie Lamport.
- Ezt egy TeX nevû írásszedõ rendszerre építette, amit Donald Knuth készített
+A LyX a LaTeX-et hasznÃ¡lja, ami egy dokumentum elkÃ©szÃ­tÅ‘ rendszer, amit
+ 1985-ben kÃ©szÃ­tett Leslie Lamport.
+ Ezt egy TeX nevÅ± Ã­rÃ¡sszedÅ‘ rendszerre Ã©pÃ­tette, amit Donald Knuth kÃ©szÃ­tett
  1984-ben.
- A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
- Leslie Lamport egyszer azt mondta (lásd a hivatkozásban
-\begin_inset LatexCommand \cite{lamport}
-
+ A LaTeX-et, a LyX-hez hasonlÃ³ filozÃ³fia miatt kÃ©szÃ­tettÃ©k.
+ Leslie Lamport egyszer azt mondta (lÃ¡sd a hivatkozÃ¡sban
+\begin_inset LatexCommand cite
+key "lamport"
 \end_inset
 
 ):
 \end_layout
 
 \begin_layout Quote
-A tipográfiai tervezés célja az, hogy segítsen az olvasónak megérteni a
- szerzõ mondanivalóját.
- Ahhoz, hogy egy mûvet könnyen el lehessen olvasni, a vizuális szerkezetének
- követnie kell a logikai felépítését.
- Az idézetek és számítógépprogramok teljesen különálló logikai elemek, ezért
- meg kell tudni õket egymásól különböztetni\SpecialChar \ldots{}
- Mivel a LyX nem érti az írott
- szöveget, ezért világosan meg kell adnia a logikai struktúrát bizonyos
- parancsok használatával\SpecialChar \ldots{}
- Miközben mûvét készíti, a logikai felépítésével
- kell törõdnie, nem a megjelenésével.
+A tipogrÃ¡fiai tervezÃ©s cÃ©lja az, hogy segÃ­tsen az olvasÃ³nak megÃ©rteni a
+ szerzÅ‘ mondanivalÃ³jÃ¡t.
+ Ahhoz, hogy egy mÅ±vet kÃ¶nnyen el lehessen olvasni, a vizuÃ¡lis szerkezetÃ©nek
+ kÃ¶vetnie kell a logikai felÃ©pÃ­tÃ©sÃ©t.
+ Az idÃ©zetek Ã©s szÃ¡mÃ­tÃ³gÃ©pprogramok teljesen kÃ¼lÃ¶nÃ¡llÃ³ logikai elemek, ezÃ©rt
+ meg kell tudni Å‘ket egymÃ¡sÃ³l kÃ¼lÃ¶nbÃ¶ztetni\SpecialChar \ldots{}
+ Mivel a LyX nem Ã©rti az Ã­rott
+ szÃ¶veget, ezÃ©rt vilÃ¡gosan meg kell adnia a logikai struktÃºrÃ¡t bizonyos
+ parancsok hasznÃ¡latÃ¡val\SpecialChar \ldots{}
+ MikÃ¶zben mÅ±vÃ©t kÃ©szÃ­ti, a logikai felÃ©pÃ­tÃ©sÃ©vel
+ kell tÃ¶rÅ‘dnie, nem a megjelenÃ©sÃ©vel.
 \end_layout
 
 \begin_layout Subsection
-Miért jobb a LyX 
+MiÃ©rt jobb a LyX 
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:lyxbetter}
-
+\begin_inset LatexCommand label
+name "sec:lyxbetter"
 \end_inset
 
-A LyX sokkal több embernek lehet hasznos, mint a LaTeX.
- Meglehetõsen könnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
- (ami gyakorlatilag egy programozási nyelv).
- A LyX alapvetõen egy másik 
+A LyX sokkal tÃ¶bb embernek lehet hasznos, mint a LaTeX.
+ MeglehetÅ‘sen kÃ¶nnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
+ (ami gyakorlatilag egy programozÃ¡si nyelv).
+ A LyX alapvetÅ‘en egy mÃ¡sik 
 \begin_inset Quotes pld
 \end_inset
 
-azt kapod amit látsz
+azt kapod amit lÃ¡tsz
 \begin_inset Quotes prd
 \end_inset
 
- szövegszerkesztõ, bár inkább 
+ szÃ¶vegszerkesztÅ‘, bÃ¡r inkÃ¡bb 
 \begin_inset Quotes pld
 \end_inset
 
-amit lát arra gondol
+amit lÃ¡t arra gondol
 \begin_inset Quotes prd
 \end_inset
 
- típusú.
- Ezáltal a word típusú szövegszerkesztõk könnyû használatát kombinálja,
- a LaTeX hatékonyságával.
- Ez egy jó dolog.
- A fájl formátuma platform független.
- De legfõképpen, ingyenes!
+ tÃ­pusÃº.
+ EzÃ¡ltal a word tÃ­pusÃº szÃ¶vegszerkesztÅ‘k kÃ¶nnyÅ± hasznÃ¡latÃ¡t kombinÃ¡lja,
+ a LaTeX hatÃ©konysÃ¡gÃ¡val.
+ Ez egy jÃ³ dolog.
+ A fÃ¡jl formÃ¡tuma platform fÃ¼ggetlen.
+ De legfÅ‘kÃ©ppen, ingyenes!
 \end_layout
 
 \begin_layout Section
-A LyX jellemzõi
+A LyX jellemzÅ‘i
 \end_layout
 
 \begin_layout Standard
-A LyX rengeteg olyan jellemzõvel rendelkezik, amelyek megkönnyítik az írást.
+A LyX rengeteg olyan jellemzÅ‘vel rendelkezik, amelyek megkÃ¶nnyÃ­tik az Ã­rÃ¡st.
 \begin_inset Foot
 status open
 
 \begin_layout Standard
 \InsetSpace ~
-Ezek után, miért ne akarná használni?
+Ezek utÃ¡n, miÃ©rt ne akarnÃ¡ hasznÃ¡lni?
 \end_layout
 
 \end_inset
 
+
+\shape default
  
 \shape italic
 Nagyon igazgatott
-\emph on
+\emph default
+\shape default
  
+\shape italic
+\emph on
+
 \shape default
 \emph default
-vagyok, hogy beszélhessek róluk.
- Íme közülük néhány.
+vagyok, hogy beszÃ©lhessek rÃ³luk.
+ Ãme kÃ¶zÃ¼lÃ¼k nÃ©hÃ¡ny.
 \end_layout
 
 \begin_layout Itemize
-A LyX gondoskodik a margókról és a lábjegyzetek számozásáról
+A LyX gondoskodik a margÃ³krÃ³l Ã©s a lÃ¡bjegyzetek szÃ¡mozÃ¡sÃ¡rÃ³l
 \end_layout
 
 \begin_layout Itemize
-A LyX-el könnyen készíthet és szerkeszthet képleteket
+A LyX-el kÃ¶nnyen kÃ©szÃ­thet Ã©s szerkeszthet kÃ©pleteket
 \end_layout
 
 \begin_layout Standard
-A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztõnél,
- megtalálja a 
-\begin_inset LatexCommand \ref{sec:lyxbetter}
-
+A filozÃ³fiai Ã©rtekezÃ©st, hogy miÃ©rt jobb a LyX a tÃ¶bbi szÃ¶vegszerkesztÅ‘nÃ©l,
+ megtalÃ¡lja a 
+\begin_inset LatexCommand ref
+reference "sec:lyxbetter"
 \end_inset
 
 .
  szakaszban, amit a 
-\begin_inset LatexCommand \pageref{sec:lyxbetter}
-
+\begin_inset LatexCommand pageref
+reference "sec:lyxbetter"
 \end_inset
 
 .
- oldalon talál.
+ oldalon talÃ¡l.
 \end_layout
 
 \begin_layout Section
-Gyenge próbálkozások más LyX-es cuccok használatához
+Gyenge prÃ³bÃ¡lkozÃ¡sok mÃ¡s LyX-es cuccok hasznÃ¡latÃ¡hoz
 \end_layout
 
 \begin_layout Standard
-Egy nap írtam egy programot.
- Így nézett ki.
+Egy nap Ã­rtam egy programot.
+ Ãgy nÃ©zett ki.
 \end_layout
 
 \begin_layout LyX-Code
@@ -214,102 +227,109 @@ FELEMETES VAGYOK!
 \end_layout
 
 \begin_layout Standard
-A tudományos gondolkodás után, teljesen mûvészien éreztem magam, és írtam
+A tudomÃ¡nyos gondolkodÃ¡s utÃ¡n, teljesen mÅ±vÃ©szien Ã©reztem magam, Ã©s Ã­rtam
  egy haiku-t
 \end_layout
 
 \begin_layout Verse
 A LyX egy nagyon szuper
 \newline
-Szövegszedõ szövegszerkesztõ
+SzÃ¶vegszedÅ‘ szÃ¶vegszerkesztÅ‘
 \newline
-Sok idõt takarít meg
+Sok idÅ‘t takarÃ­t meg
 \end_layout
 
 \begin_layout Section
-Képletes dolgok
+KÃ©pletes dolgok
 \end_layout
 
 \begin_layout Standard
-A kedvenc egyenletem a másodfokú egyenlet megoldóképlete.
+A kedvenc egyenletem a mÃ¡sodfokÃº egyenlet megoldÃ³kÃ©plete.
  Ha 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
  (1.
- képlet), akkor 
+ kÃ©plet), akkor 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  (2.
- képlet).
+ kÃ©plet).
 \end_layout
 
 \begin_layout Standard
-A másik kedvenc képletem egy elemi kalkulus: 
+A mÃ¡sik kedvenc kÃ©pletem egy elemi kalkulus: 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  (3.
- képlet).
+ kÃ©plet).
 \end_layout
 
 \begin_layout Section
-Megjegyzések
+MegjegyzÃ©sek
 \end_layout
 
 \begin_layout Standard
-Pár megjegyzés a fájl lyx-esítésérõl:
+PÃ¡r megjegyzÃ©s a fÃ¡jl lyx-esÃ­tÃ©sÃ©rÅ‘l:
 \end_layout
 
 \begin_layout Itemize
-Ki tudtam szedni a kötõjeles sorokat.
- Amelyek egyszerûen elválasztották a címet és a hivatkozást a dokumentum
- többi részétõl.
- A LyX (LaTeX) elég sokat tud arról, hogyan kell ezt az elkülönítést elvégezni.
+Ki tudtam szedni a kÃ¶tÅ‘jeles sorokat.
+ Amelyek egyszerÅ±en elvÃ¡lasztottÃ¡k a cÃ­met Ã©s a hivatkozÃ¡st a dokumentum
+ tÃ¶bbi rÃ©szÃ©tÅ‘l.
+ A LyX (LaTeX) elÃ©g sokat tud arrÃ³l, hogyan kell ezt az elkÃ¼lÃ¶nÃ­tÃ©st elvÃ©gezni.
 \end_layout
 
 \begin_layout Itemize
-Nem zavartam be a képlet megjelenítési módjával.
- Valamint nem használtam az automatikus képlet számozást sem, mivel az nincs
- leírva a 
+Nem zavartam be a kÃ©plet megjelenÃ­tÃ©si mÃ³djÃ¡val.
+ Valamint nem hasznÃ¡ltam az automatikus kÃ©plet szÃ¡mozÃ¡st sem, mivel az nincs
+ leÃ­rva a
+\emph default
+ 
 \emph on
-Tankönyvben
+TankÃ¶nyvben
 \emph default
 .
 \end_layout
 
 \begin_layout Itemize
-Nem kellett begépelnem a 
+Nem kellett begÃ©pelnem a 
 \begin_inset Quotes pld
 \end_inset
 
-Hivatkozások
+HivatkozÃ¡sok
 \begin_inset Quotes prd
 \end_inset
 
- szót lentebb.
- A LyX magától odaírta nekem (vagy az 
+ szÃ³t lentebb.
+ A LyX magÃ¡tÃ³l odaÃ­rta nekem (vagy az 
 \begin_inset Quotes pld
 \end_inset
 
-Irodalomjegyzék
+IrodalomjegyzÃ©k
 \begin_inset Quotes prd
 \end_inset
 
- szót, függõen a szövegosztálytól)
+ szÃ³t, fÃ¼ggÅ‘en a szÃ¶vegosztÃ¡lytÃ³l)
 \end_layout
 
 \begin_layout Bibliography
 
-\bibitem {lamport}
+\begin_inset LatexCommand bibitem
+key "lamport"
+
+\end_inset
 Lamport, Leslie.
+
+\emph default
  
 \emph on
 LaTeX: A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, második kiadás, 1994.
+ Addison-Wesley, Reading, Massachusetts, mÃ¡sodik kiadÃ¡s, 1994.
 \end_layout
 
 \end_body

@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language ngerman
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize a4paper
 \use_geometry true
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -35,61 +43,65 @@
 \bullet 2 4 8 3
 \bullet 3 0 8 -1
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Aufzählungszeichen anpassen
+AufzÃ¤hlungszeichen anpassen
 \end_layout
 
 \begin_layout Author
-Übersetzer: Hartmut Haase
+Ãœbersetzer: Hartmut Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 6.
+letzte Ã„nderung: 6.
  November 2005
 \end_layout
 
 \begin_layout Section*
-Einführung
+EinfÃ¼hrung
 \end_layout
 
 \begin_layout Standard
-Sie werden recht bald sehen, daß das Anpassen von Aufzählungszeichen recht
+Sie werden recht bald sehen, daÃŸ das Anpassen von AufzÃ¤hlungszeichen recht
  kompliziert sein kann, wenn Sie es wollen.
  Keine Angst, die meisten Einstellungen sind nur einen Mausklick oder zwei
  entfernt.
 \end_layout
 
 \begin_layout Itemize
-Die Standardumgebung für Listen mit  Aufzählungszeichen ist 
+Die Standardumgebung fÃ¼r Listen mit  AufzÃ¤hlungszeichen ist
+\emph default
+ 
 \emph on
 Auflistung
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-sie hat einen eigenen Zähler mit 4 Stufen
+sie hat einen eigenen ZÃ¤hler mit 4 Stufen
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-jede Stufe kann ihr eigenes Aufzählungszeichen haben
+jede Stufe kann ihr eigenes AufzÃ¤hlungszeichen haben
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyX stellt aber alle Aufzählungszeichen als `*' dar
+LyX stellt aber alle AufzÃ¤hlungszeichen als `*' dar
 \end_layout
 
 \end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-LyX prüft 
+LyX prÃ¼ft
+\emph default
+ 
 \emph on
 nicht
 \emph default
@@ -98,22 +110,24 @@ nicht
 
 \begin_deeper
 \begin_layout Itemize
-nur LaTeX begrenzt die Tiefe für alle Listen auf 6.
+nur LaTeX begrenzt die Tiefe fÃ¼r alle Listen auf 6.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Gibt es weitere Einschränkungen?
+Gibt es weitere EinschrÃ¤nkungen?
 \end_layout
 
 \begin_layout Standard
 Ja.
- Die Aufzählungszeichen können nur für das ganze Dokument angepaßt werden.
- Wenn Sie es abschnittsweise tun wollen, müssen Sie es von Hand machen.
+ Die AufzÃ¤hlungszeichen kÃ¶nnen nur fÃ¼r das ganze Dokument angepaÃŸt werden.
+ Wenn Sie es abschnittsweise tun wollen, mÃ¼ssen Sie es von Hand machen.
 \end_layout
 
 \begin_layout Standard
-Das Menü erreichen Sie über 
+Das MenÃ¼ erreichen Sie Ã¼ber
+\family default
+ 
 \family sans
 D
 \bar under
@@ -130,11 +144,11 @@ instellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 
 \family sans
-Aufzählungszeichen.
+AufzÃ¤hlungszeichen.
 \end_layout
 
 \begin_layout Section*
-Aufzählungszeichen
+AufzÃ¤hlungszeichen
 \family sans
 -
 \family default
@@ -142,7 +156,7 @@ Tabellen:
 \end_layout
 
 \begin_layout Standard
-Die folgenden Tabellen zeigen die zur Verfügung stehenden Aufzählungszeichen.
+Die folgenden Tabellen zeigen die zur VerfÃ¼gung stehenden AufzÃ¤hlungszeichen.
 \end_layout
 
 \begin_layout Subsection*
@@ -1984,24 +1998,28 @@ status open
 
 \begin_layout Standard
 NFSS (New Font Selecting Scheme) ist das neue Schema von LaTeX2e (im wesentliche
-n die Befehlsänderungen von 
+n die BefehlsÃ¤nderungen von
+\family default
+ 
 \family typewriter
 {
 \backslash
 bf \SpecialChar \ldots{}
 }
 \family default
- nach 
+ nach
+\family default
+ 
 \family typewriter
 
 \backslash
 textbf{\SpecialChar \ldots{}
 }
 \family default
-, obwohl die wirklichen Änderungen im Inneren zu finden sind).
- PS bedeutet PostScript®.
- PSNFSS ist eine Zahl von LaTeX-Dateien, die die NFSS-Unterstützung für
- 35 PS-Fonts liefern, die in vielen  PostScript®-Druckern zu finden sind.
+, obwohl die wirklichen Ã„nderungen im Inneren zu finden sind).
+ PS bedeutet PostScriptÂ®.
+ PSNFSS ist eine Zahl von LaTeX-Dateien, die die NFSS-UnterstÃ¼tzung fÃ¼r
+ 35 PS-Fonts liefern, die in vielen  PostScriptÂ®-Druckern zu finden sind.
  
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,7 +8,14 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \float_placement H
 \paperfontsize default
@@ -16,6 +23,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,7 +36,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -41,7 +49,9 @@ Converting to and from mathed
 \begin_layout Standard
 
 Math can be typed in the body of the document and converted to mathed-mode
- by highlighting it and typing 
+ by highlighting it and typing
+\family default
+ 
 \family sans
 M-c\InsetSpace ~
 m
@@ -181,7 +191,9 @@ fudge
 
  however.
  Highlight the contents of a math inset (not the math inset itself, just
- the contents), but do 
+ the contents), but do
+\emph default
+ 
 \emph on
 not
 \emph default
@@ -200,7 +212,9 @@ Displaying LaTeX symbols
 Historically, LyX has provided visual support for a relatively small subset
  of the math symbols available in LaTeX.
  That changes with version 1.2; we now have visual support for most of the
- symbols defined in basic LaTeX and 
+ symbols defined in basic LaTeX and
+\emph default
+ 
 \emph on
 all
 \emph default
@@ -594,9 +608,17 @@ tilde{a}
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Math mode accents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1854,9 +1876,17 @@ Omega
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Greek letters
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2920,9 +2950,17 @@ amalg
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Binary operation symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4094,9 +4132,17 @@ dashv
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Relation symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4992,9 +5038,17 @@ nwarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Arrow symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6028,9 +6082,17 @@ partial
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Miscellaneous symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6486,9 +6548,17 @@ biguplus
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Variable-sized symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6982,9 +7052,17 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Log-like symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7568,9 +7646,17 @@ backslash
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Delimiters
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7952,9 +8038,17 @@ frac{abc}{xyz}
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 LaTeX math constructs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8136,9 +8230,17 @@ gimel
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS Greek and Hebrew
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8290,9 +8392,17 @@ lrcorner
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS delimiters
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9264,9 +9374,17 @@ rightsquigarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS arrows
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9474,9 +9592,17 @@ nLeftrightarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS negated arrows
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11404,9 +11530,17 @@ because
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS binary relations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12904,9 +13038,17 @@ varsupsetneqq
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS negated binary relations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13620,9 +13762,17 @@ intercal
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS binary operators
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14422,9 +14572,17 @@ diagdown
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 AMS miscellaneous
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

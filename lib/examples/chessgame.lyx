@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass chess
@@ -9,13 +9,21 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry true
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -32,7 +40,7 @@
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body

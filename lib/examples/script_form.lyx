@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass hollywood
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing other 0.90
 \papersize default
 \use_geometry true
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,7 +39,7 @@
 \papersides 1
 \paperpagestyle fancy
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -226,13 +234,13 @@ Kaplan, ND 77777
 \begin_layout FADE IN:
 
 
-\begin_inset LatexCommand \label{Joe}
-
+\begin_inset LatexCommand label
+name "Joe"
 \end_inset
 
 
-\begin_inset LatexCommand \label{April}
-
+\begin_inset LatexCommand label
+name "April"
 \end_inset
 
 
@@ -421,8 +429,8 @@ Use the description after INT.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -436,8 +444,8 @@ Are we in time?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -451,8 +459,8 @@ How could they start without us? We're the main attraction.
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  catches his breath as he leans against the podium at the front of the room.
@@ -461,8 +469,8 @@ How could they start without us? We're the main attraction.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -481,8 +489,8 @@ We are?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -497,8 +505,8 @@ Don't be a moron.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -512,13 +520,13 @@ But why is the room empty?
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  both look out across the room -- rows of empty chairs and nary a person
@@ -528,8 +536,8 @@ But why is the room empty?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -559,8 +567,8 @@ We're an hour early.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -575,8 +583,8 @@ Okay, you start.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -593,8 +601,8 @@ Left, 1.5 inches.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -608,8 +616,8 @@ Page break?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -628,8 +636,8 @@ Right above me.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -643,8 +651,8 @@ What about fonts?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -659,8 +667,8 @@ Courier, 12 point, 10 pitch.
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 's grimace suggests that he's deep in thought.
@@ -669,8 +677,8 @@ Courier, 12 point, 10 pitch.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -685,8 +693,8 @@ What about bold-face or italics? Or a Gothic font? I love to jazz up my
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -702,8 +710,8 @@ No bold, no itals, no script fonts, no Gothic, no Helvetica, no Times Roman.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -717,8 +725,8 @@ Oh, we're talking about industry standards?
 \begin_layout Narrative
 
 Suddenly, 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  bolts from behind the podium and runs out into:
@@ -732,8 +740,8 @@ DRISKILL HOTEL HALLWAY - DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  glances up and down the hallway, then reaches back to open the door.
@@ -742,8 +750,8 @@ DRISKILL HOTEL HALLWAY - DAY
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -757,8 +765,8 @@ calling
 \begin_layout Dialogue
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  -- come on! There's no one here.
@@ -767,8 +775,8 @@ calling
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -796,13 +804,13 @@ TEXAS CAPITOL BUILDING - DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  pinches himself as he stands with 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  before the seat of Texas politics.
@@ -811,8 +819,8 @@ TEXAS CAPITOL BUILDING - DAY
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -826,8 +834,8 @@ How'd you do that?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -842,8 +850,8 @@ There was a cut -- from the hallway to the capitol.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -857,8 +865,8 @@ Dialogue margins.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -895,8 +903,8 @@ the left margin using dialoglength and dialogIndent.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -910,8 +918,8 @@ So, you have about 3.0 inches for each line of your dialogue?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -927,8 +935,8 @@ You've got it.
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  jots down several notes on a 3 x 5 card, studies the card for a moment,
@@ -938,8 +946,8 @@ You've got it.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -958,8 +966,8 @@ And the position of the speaker's name?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1003,8 +1011,8 @@ Personally, I don't think it matters.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1018,8 +1026,8 @@ Hey, what happened?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1037,8 +1045,8 @@ A page break appeared in the middle of my dialogue.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1057,14 +1065,14 @@ CAPITOL BUILDING - DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  stares up into the dome.
  
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  examines the portraits of Texas governors on the nearby walls.
@@ -1073,8 +1081,8 @@ CAPITOL BUILDING - DAY
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1088,8 +1096,8 @@ Some writers just plan their page ends so as to avoid them.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1108,8 +1116,8 @@ What about parentheticals?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1124,8 +1132,8 @@ Start them about a half-inch to the left of the speaker name.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1139,8 +1147,8 @@ And what are they for?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1157,8 +1165,8 @@ For years, parentheticals were used to express emotion, the manner in which
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1177,8 +1185,8 @@ Something like this?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1197,8 +1205,8 @@ Exactly.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1212,8 +1220,8 @@ How wide are parentheticals?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1246,13 +1254,13 @@ MISSISSIPPI RIVERBOAT - NIGHT
 
 A gambling boat rolls slowly along the mighty river.
  
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  wander about its upper deck.
@@ -1261,8 +1269,8 @@ A gambling boat rolls slowly along the mighty river.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1276,8 +1284,8 @@ I have to ask -- what happened to CUT TO:s between scenes.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1292,8 +1300,8 @@ Many writers still use transitions such as CUT TO: and DISSOLVE TO: between
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1307,8 +1315,8 @@ Those would introduce a new scene header?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1324,8 +1332,8 @@ And typically a different time and/or place.
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  stares out at the river.
@@ -1334,8 +1342,8 @@ And typically a different time and/or place.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1349,8 +1357,8 @@ How did we reach the Mississippi and when did the sun set?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1381,13 +1389,13 @@ AIRPLANE - SUNSET
 
 A customized interior, replete with lounge chairs and sofas.
  
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  sip margaritas.
@@ -1396,8 +1404,8 @@ A customized interior, replete with lounge chairs and sofas.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1411,8 +1419,8 @@ Is this a flashback?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1466,8 +1474,8 @@ You see, a few weeks have passed.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1482,8 +1490,8 @@ Okay, I didn't notice.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1499,8 +1507,8 @@ Production managers would certainly prefer it that way, but many writers
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1514,8 +1522,8 @@ So that's allowed?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1529,8 +1537,8 @@ On writer's drafts, without a doubt.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1544,8 +1552,8 @@ A writer's draft?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1564,8 +1572,8 @@ Essentially, any draft that hasn't been paid for.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1579,8 +1587,8 @@ You really think so?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1599,13 +1607,13 @@ BLUE CAMARO - DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  drives along Austin's Congress Avenue as 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  rides shotgun.
@@ -1614,8 +1622,8 @@ BLUE CAMARO - DAY
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1629,8 +1637,8 @@ You speak any foreign languages?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1649,8 +1657,8 @@ Why do you ask? (Pour quoi tu demandes?)
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1666,8 +1674,8 @@ What about action scenes?
 SUDDENLY, A BLACK CADILLAC whips around a corner, racing quickly towards
  them.
  
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  punches the accelerator and -- THE BLUE CAMARO leaps forward, leaving a
@@ -1685,13 +1693,13 @@ DRISKILL HOTEL DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  leads a dazed and confused 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  to the front door.
@@ -1700,8 +1708,8 @@ DRISKILL HOTEL DAY
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1716,8 +1724,8 @@ That's one way to do an action scene.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1737,8 +1745,8 @@ But other writers just use normal description and standard scene headers
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1757,8 +1765,8 @@ DRISKILL HOTEL ENTRANCE HALL -- PHONE BOOTH - DAY
 \begin_layout Description
 
 A slightly less dazed 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  speaks on the phone.
@@ -1767,8 +1775,8 @@ A slightly less dazed
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1782,8 +1790,8 @@ I thought we were walking together.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  (O.S.)
@@ -1802,8 +1810,8 @@ Well, we were, but I realized a phone call was needed.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1826,8 +1834,8 @@ STATE CAPITOL PHONE BOOTH - DAY
 \begin_layout Description
 
 With the dome looming large behind her, 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  speaks into the phone.
@@ -1836,8 +1844,8 @@ With the dome looming large behind her,
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1853,8 +1861,8 @@ Only when you hear my voice over the phone.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1869,8 +1877,8 @@ Let's try something easy.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -1893,8 +1901,8 @@ DRISKILL HOTEL HALLWAY - DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  walks slowly towards the seminar room.
@@ -1903,8 +1911,8 @@ DRISKILL HOTEL HALLWAY - DAY
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1918,8 +1926,8 @@ You know, that pronouncement almost seemed godlike.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  (V.O.)
@@ -1934,8 +1942,8 @@ If it were, I probably would have spoken in a voice over and not on the
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  searches the ceiling, trying to decide just where this disembodied voice
@@ -1945,8 +1953,8 @@ If it were, I probably would have spoken in a voice over and not on the
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -1961,8 +1969,8 @@ What's a V.O.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  (V.O.)
@@ -1984,19 +1992,19 @@ DRISKILL HOTEL SEMINAR ROOM - DAY
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  races past 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  to reach the podium first.
  
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  walks slowly past the still-empty chairs.
@@ -2006,8 +2014,8 @@ DRISKILL HOTEL SEMINAR ROOM - DAY
 \begin_layout Description
 
 At the podium 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  gestures with his hands as if he were making a major political speech.
@@ -2016,14 +2024,14 @@ At the podium
 \begin_layout Description
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  sneaks up behind him and mimics his movements -- until he notices.
  
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  spins to confront her.
@@ -2032,8 +2040,8 @@ At the podium
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -2048,8 +2056,8 @@ Why I ought'a \SpecialChar \ldots{}
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -2065,8 +2073,8 @@ I was just demonstrating the way many writers break description into shorter
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -2080,8 +2088,8 @@ That makes for tough reading, doesn't it?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -2095,8 +2103,8 @@ I know studio readers who just skip long description and read only dialogue.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -2110,8 +2118,8 @@ But there are pros who write scripts with extended descriptive passages.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -2126,8 +2134,8 @@ When you make a half-million or so per script, you can pretty much use any
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  climbs atop the podium.
@@ -2136,8 +2144,8 @@ When you make a half-million or so per script, you can pretty much use any
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -2152,8 +2160,8 @@ But when you're like me, you have to stick to format.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -2167,8 +2175,8 @@ That's the story.
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  jumps down from the podium and runs out the door just as conference ATTENDEES
@@ -2190,8 +2198,8 @@ By the way, the first time you introduce a speaker in description, you CAP
 \begin_layout Narrative
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
  watches as a number of people sit down before her.
@@ -2211,8 +2219,8 @@ Of course, many writers have dropped "continuing" from their repertoire.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  (O.S.)
@@ -2226,8 +2234,8 @@ shouting from beyond the door
 \begin_layout Dialogue
 
 Hey, 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 , c'mon.
@@ -2237,8 +2245,8 @@ Hey,
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -2257,8 +2265,8 @@ We haven't mentioned master scenes.
 \begin_layout Narrative
 
 A sheepish 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
  enters, then glances about the room as he slowly approaches the podium.
@@ -2267,8 +2275,8 @@ A sheepish
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -2286,8 +2294,8 @@ That one I know.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 
@@ -2302,8 +2310,8 @@ Don't worry, I would never let you miss a meal.
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{Joe}
-
+\begin_inset LatexCommand ref
+reference "Joe"
 \end_inset
 
 
@@ -2317,8 +2325,8 @@ A script sandwich?
 \begin_layout Speaker
 
 
-\begin_inset LatexCommand \ref{April}
-
+\begin_inset LatexCommand ref
+reference "April"
 \end_inset
 
 

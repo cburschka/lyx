@@ -1,22 +1,30 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass foils
 \begin_preamble
 \raggedright
-\MyLogo{-\LyX{} et \FoilTeX{} : Quelle équipe !-}
+\MyLogo{-\LyX{} et \FoilTeX{} : Quelle Ã©quipe !-}
 \end_preamble
 \options dvips
 \language french
 \inputencoding latin9
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -42,7 +50,7 @@
 \bullet 2 4 8 -1
 \bullet 3 1 3 -1
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -85,7 +93,7 @@ hrule height 7pt
 \noun on
 Allan Rae 
 \noun default
-et l'Équipe LyX
+et l'Ã‰quipe LyX
 \end_layout
 
 \begin_layout Date
@@ -95,7 +103,7 @@ et l'Équipe LyX
 
 \begin_layout Abstract
 
-On peut combiner LyX et FoilTeX en un puissant outil de préparation de 
+On peut combiner LyX et FoilTeX en un puissant outil de prÃ©paration de 
 \begin_inset Quotes fld
 \end_inset
 
@@ -108,7 +116,7 @@ transparents
 
 \begin_layout Foilhead
 
-Voici un En-tête_Diapo
+Voici un En-tÃªte_Diapo
 \end_layout
 
 \begin_layout Standard
@@ -130,11 +138,11 @@ hrule height 3pt
 
 \begin_layout Standard
 
-Un En-tête_Diapo démarre une nouvelle diapo.
- Il y a aussi une version Courte qui réduit l'espace entre l'en-tête et
+Un En-tÃªte_Diapo dÃ©marre une nouvelle diapo.
+ Il y a aussi une version Courte qui rÃ©duit l'espace entre l'en-tÃªte et
  le corps de la diapo.
  Presque tous les environnements existant dans les autres classes sont encore
- présents ici.
+ prÃ©sents ici.
 \end_layout
 
 \begin_layout Itemize
@@ -151,7 +159,7 @@ zerolistvertdimens{}
 
 \end_inset
 
-La fenêtre de sélection de la forme des puces Format\SpecialChar \menuseparator
+La fenÃªtre de sÃ©lection de la forme des puces Format\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Puces
 \end_layout
@@ -159,7 +167,7 @@ Puces
 \begin_deeper
 \begin_layout Itemize
 
-est idéale avec la classe foils
+est idÃ©ale avec la classe foils
 \end_layout
 
 \begin_deeper
@@ -178,13 +186,15 @@ pour chacun des quatre niveaux de l'environnement ListePuces
 \end_deeper
 \begin_layout Itemize
 
-NOTE : Pour exploiter toutes les possibilités de sélection de la forme des
+NOTE : Pour exploiter toutes les possibilitÃ©s de sÃ©lection de la forme des
  puces, lisez le manuel d'
 \emph on
 Options\InsetSpace ~
-Avancées
+AvancÃ©es
 \emph default
- et l'exemple 
+ et l'exemple
+\family default
+ 
 \family typewriter
 fr_ListesPuces.lyx
 \family default
@@ -194,18 +204,20 @@ fr_ListesPuces.lyx
 \begin_layout Itemize
 
 NOTE 2 : Pour avoir un espacement de liste petit comme ici mettez la commande
- FoilTeX 
+ FoilTeX
+\family default
+ 
 \family typewriter
 
 \backslash
 zerolistvertdimens{}
 \family default
- dans un insert TeX au début du premier élément.
+ dans un insert TeX au dÃ©but du premier Ã©lÃ©ment.
 \end_layout
 
 \begin_layout ShortFoilhead
 
-Voici un En-tête_Diapo_Court
+Voici un En-tÃªte_Diapo_Court
 \end_layout
 
 \begin_layout Standard
@@ -227,14 +239,14 @@ hrule height 3pt
 
 \begin_layout Standard
 
-La classe foils a été étendue pour avoir deux nouveaux types de listes à
+La classe foils a Ã©tÃ© Ã©tendue pour avoir deux nouveaux types de listes Ã 
  puces.
  Ce sont :
 \end_layout
 
 \begin_layout TickList
 
-ListeCochés (TickList)
+ListeCochÃ©s (TickList)
 \end_layout
 
 \begin_layout Standard
@@ -249,7 +261,7 @@ ListeCroix (CrossList)
 
 \begin_layout Standard
 
-Ces deux listes ont été ajoutées pour les listes de type conseils / interdiction
+Ces deux listes ont Ã©tÃ© ajoutÃ©es pour les listes de type conseils / interdiction
 s, ou 
 \begin_inset Quotes fld
 \end_inset
@@ -266,15 +278,15 @@ pas d'accord
 \begin_inset Quotes frd
 \end_inset
 
-, assez fréquentes dans des transparents.
- Nous avons donc introduit deux environnements de paragraphe spécialisés
+, assez frÃ©quentes dans des transparents.
+ Nous avons donc introduit deux environnements de paragraphe spÃ©cialisÃ©s
  pour vous rendre la vie plus facile.
  
 \end_layout
 
 \begin_layout Rotatefoilhead
 
-En-tête_Diapo_Tourné
+En-tÃªte_Diapo_TournÃ©
 \end_layout
 
 \begin_layout Standard
@@ -296,32 +308,32 @@ hrule height 3pt
 
 \begin_layout Itemize
 
-Vous pouvez créer des diapos paysage avec En-tête_Diapo_Tourné.
+Vous pouvez crÃ©er des diapos paysage avec En-tÃªte_Diapo_TournÃ©.
 \end_layout
 
 \begin_layout Itemize
 
-Notez qui si vous visionnez ça avec xdvi la page semblera déborder de la
+Notez qui si vous visionnez Ã§a avec xdvi la page semblera dÃ©border de la
  feuille car xdvi ne tourne pas le texte.
 \end_layout
 
 \begin_layout Itemize
 
 Si vous visionnez ce document avec ghostview ou quelque chose d'approchant
- la page apparaîtra tournée.
+ la page apparaÃ®tra tournÃ©e.
  Sinon c'est que vous n'avez sans doute pas le bon pilote dvips.
 \end_layout
 
 \begin_layout Definition*
 
-Il y a aussi plusieurs environnements spécialement destinés à présenter
- des Théorèmes, Lemmes, Corollaires, Propositions, Preuves et Définitions.
- Il en existe des versions numérotées et non numérotées.
+Il y a aussi plusieurs environnements spÃ©cialement destinÃ©s Ã  prÃ©senter
+ des ThÃ©orÃ¨mes, Lemmes, Corollaires, Propositions, Preuves et DÃ©finitions.
+ Il en existe des versions numÃ©rotÃ©es et non numÃ©rotÃ©es.
 \end_layout
 
 \begin_layout ShortRotatefoilhead
 
-En-tête_Diapo_Court_Tourné
+En-tÃªte_Diapo_Court_TournÃ©
 \end_layout
 
 \begin_layout Standard
@@ -343,38 +355,43 @@ hrule height 3pt
 
 \begin_layout Itemize
 
-Là encore la version courte réduit l'espace sous l'en-tête.
+LÃ  encore la version courte rÃ©duit l'espace sous l'en-tÃªte.
 \end_layout
 
 \begin_layout Itemize
 
-Une autre façon de contrôler la séparation est d'en ajuster la taille dans
- le préambule, ce qui affectera à la fois la version normale et la version
- courte des en-têtes de diapo (droits et tournés).
+Une autre faÃ§on de contrÃ´ler la sÃ©paration est d'en ajuster la taille dans
+ le prÃ©ambule, ce qui affectera Ã  la fois la version normale et la version
+ courte des en-tÃªtes de diapo (droits et tournÃ©s).
  Par exemple, 
 \newline
 
-\family typewriter
+\family default
  
+\family typewriter
+
 \backslash
 setlength{
 \backslash
-foilheadskip}{-0.5in} 
+foilheadskip}{-0.5in}
 \family default
+ 
 
 \newline
-réduira l'espacement de 0,5\InsetSpace ~
+rÃ©duira l'espacement de 0,5\InsetSpace ~
 pouce.
- Les autres unités comprennent mm (millimètres) et pt (points).
+ Les autres unitÃ©s comprennent mm (millimÃ¨tres) et pt (points).
 \end_layout
 
 \begin_layout Itemize
 
-Les versions 
+Les versions
+\emph default
+ 
 \emph on
 courtes
 \emph default
- des en-têtes de diapo réduisent la séparation de 0,5\InsetSpace ~
+ des en-tÃªtes de diapo rÃ©duisent la sÃ©paration de 0,5\InsetSpace ~
 pouce (environ 12,5\InsetSpace ~
 mm).
 \end_layout
@@ -403,62 +420,86 @@ hrule height 3pt
 
 \begin_layout Lemma*
 
-Plusieurs paragraphes consécutifs de type 
+Plusieurs paragraphes consÃ©cutifs de type
+\emph default
+ 
 \emph on
 Theorem
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Lemme
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Corollaire
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Proposition
 \emph default
-, 
-\emph on
-Définition
+,
 \emph default
-, 
+ 
+\emph on
+DÃ©finition
+\emph default
+,
+\emph default
+ 
 \emph on
 Preuve
 \emph default
- ou de leurs versions étoilées sont considérés comme faisant partie du même
+ ou de leurs versions Ã©toilÃ©es sont considÃ©rÃ©s comme faisant partie du mÃªme
  environnement.
 \end_layout
 
 \begin_layout Lemma*
 
-Comme vous voyez, nous sommes toujours dans le même lemme.
+Comme vous voyez, nous sommes toujours dans le mÃªme lemme.
 \end_layout
 
 \begin_layout Lemma*
 
 Several consecutive paragraphs of type
-\emph on
- Theorem
 \emph default
-, 
+ 
+\emph on
+Theorem
+\emph default
+,
+\emph default
+ 
 \emph on
 Lemma
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Corollary
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Proposition
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Definition
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 Proof
 \emph default
@@ -487,9 +528,11 @@ status inlined
 
 \begin_layout Lemma*
 
-Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
+Pour mettre un deuxiÃ¨me Lemme juste aprÃ¨s le premier, il faut les sÃ©parer
  par du texte standard ou, comme ici, par un insert TeX qui contient juste
- un 
+ un
+\family default
+ 
 \family typewriter
 \emph on
 
@@ -504,19 +547,21 @@ Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
 \family default
 \emph default
 .
- C'est simplement le caractère de commentaire en LaTeX mais l'apparition
- d'un paragraphe contenant du LaTeX suffit pour forcer LyX à présenter correctem
+ C'est simplement le caractÃ¨re de commentaire en LaTeX mais l'apparition
+ d'un paragraphe contenant du LaTeX suffit pour forcer LyX Ã  prÃ©senter correctem
 ent les deux environnements.
 \end_layout
 
 \begin_layout Lemma*
 
-NOTE : Vous ne rencontrerez ce problème qu'avec des paragraphes du même
- type et 
+NOTE : Vous ne rencontrerez ce problÃ¨me qu'avec des paragraphes du mÃªme
+ type et
+\emph default
+ 
 \emph on
 pas
 \emph default
- de types différents comme un Théorème suivi de sa Preuve.
+ de types diffÃ©rents comme un ThÃ©orÃ¨me suivi de sa Preuve.
 \end_layout
 
 \begin_layout ShortFoilhead
@@ -681,10 +726,10 @@ foils
 
 \begin_layout Standard
 
-Les tableaux et les figures sont tous deux supportés dans Foils.
- Cependant les flottants ne flottent pas, mais apparaissent exactement là
- où ils se trouvent dans le texte.
- Les paramètres de placement de flottants seront tous ignorés.
+Les tableaux et les figures sont tous deux supportÃ©s dans Foils.
+ Cependant les flottants ne flottent pas, mais apparaissent exactement lÃ 
+ oÃ¹ ils se trouvent dans le texte.
+ Les paramÃ¨tres de placement de flottants seront tous ignorÃ©s.
 \end_layout
 
 \begin_layout Standard
@@ -816,7 +861,10 @@ foils
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Voici un tableau flottant qui ne flotte pas
 \end_layout
@@ -826,9 +874,14 @@ Voici un tableau flottant qui ne flotte pas
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout ShortFoilhead
 
-En-têtes et Pieds de Page
+En-tÃªtes et Pieds de Page
 \end_layout
 
 \begin_layout Standard
@@ -850,7 +903,7 @@ hrule height 3pt
 
 \begin_layout Standard
 
-FoilTeX offre de nombreuses possibilités pour gérer les en-têtes et les
+FoilTeX offre de nombreuses possibilitÃ©s pour gÃ©rer les en-tÃªtes et les
  pieds de page
 \begin_inset Foot
 status collapsed
@@ -863,29 +916,33 @@ Vous pouvez aussi utiliser les notes en bas de page standard comme ici.
 \end_inset
 
 .
- Il vaut mieux les définir dans le préambule bien qu'il soit possible de
- le faire n'importe où dans le document.
- Si vous voulez changer ces réglages en cours de document il vaut mieux
- le faire tout en haut d'une diapo, juste après l'en-tête de diapo.
+ Il vaut mieux les dÃ©finir dans le prÃ©ambule bien qu'il soit possible de
+ le faire n'importe oÃ¹ dans le document.
+ Si vous voulez changer ces rÃ©glages en cours de document il vaut mieux
+ le faire tout en haut d'une diapo, juste aprÃ¨s l'en-tÃªte de diapo.
 \end_layout
 
 \begin_layout Standard
 
-Le pied de page gauche est contrôlé par les deux commandes 
+Le pied de page gauche est contrÃ´lÃ© par les deux commandes
+\family default
+ 
 \family typewriter
 
 \backslash
 MyLogo{}
 \family default
- et 
+ et
+\family default
+ 
 \family typewriter
 
 \backslash
 Restriction{}
 \family default
 .
- La première sert à inclure un logo graphique dans vos diapos, qui est par
- défaut 
+ La premiÃ¨re sert Ã  inclure un logo graphique dans vos diapos, qui est par
+ dÃ©faut 
 \begin_inset Quotes fld
 \end_inset
 
@@ -894,12 +951,12 @@ Restriction{}
 \end_inset
 
 .
- La seconde sert à en restreindre la diffusion, par exemple Confidentiel.
+ La seconde sert Ã  en restreindre la diffusion, par exemple Confidentiel.
 \end_layout
 
 \begin_layout Standard
 
-Les autres coins sont contrôlés par :
+Les autres coins sont contrÃ´lÃ©s par :
 \end_layout
 
 \begin_layout Standard
@@ -910,7 +967,7 @@ Les autres coins sont contrôlés par :
 \backslash
 rightfooter{}
 \family default
- -- par défaut le numéro de page
+ -- par dÃ©faut le numÃ©ro de page
 \end_layout
 
 \begin_layout Standard
@@ -957,14 +1014,17 @@ hrule height 3pt
 
 Il devrait y avoir de la documentation sur FoilTeX dans votre distribution
  LaTeX.
- Il y a bien d'autres fonctions de FoilTeX qui n'ont pas été décrites ici.
+ Il y a bien d'autres fonctions de FoilTeX qui n'ont pas Ã©tÃ© dÃ©crites ici.
  Par exemple, FoilTeX peut automatiquement tracer un trait horizontal entre
- les en-têtes de page et ceux de diapo, et entre le corps et les pieds de
+ les en-tÃªtes de page et ceux de diapo, et entre le corps et les pieds de
  page.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {2}
+\begin_inset LatexCommand bibitem
+key "2"
+
+\end_inset
 
 Jim Hafner, 
 \begin_inset Quotes fld
@@ -974,18 +1034,23 @@ The FoilTeX Class Package
 \begin_inset Quotes frd
 \end_inset
 
-, 
+,
+\family default
+ 
 \family typewriter
 .../texmf/texmf/doc/latex/foiltex/foiltex.dvi
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {2}
+\begin_inset LatexCommand bibitem
+key "2"
 
-Équipe de Documentation LyX, manuel d'
+\end_inset
+
+Ã‰quipe de Documentation LyX, manuel d'
 \emph on
 Options\InsetSpace ~
-Avancées
+AvancÃ©es
 \emph default
 .
 \end_layout

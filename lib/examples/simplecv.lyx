@@ -1,5 +1,5 @@
-#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass simplecv
@@ -26,13 +26,21 @@
 \end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -45,7 +53,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -73,7 +81,9 @@ William Shakespeare
 Some people put a summary here.
  Note: there are many LaTeX variables you can set in the preamble to change
  the look of the CV.
- Look there (choose 
+ Look there (choose
+\family default
+ 
 \family sans
 \bar under
 D
@@ -87,8 +97,9 @@ ocument
 S
 \bar default
 ettings...
- 
+
 \family default
+ 
 ) for examples.
 \end_layout
 
@@ -146,7 +157,10 @@ Publications
 \begin_layout Bibliography
 \labelwidthstring Publications
 
-\bibitem {firstref}
+\begin_inset LatexCommand bibitem
+key "firstref"
+
+\end_inset
 First Folio.
  Me.
  1623.
@@ -155,12 +169,15 @@ First Folio.
 \begin_layout Bibliography
 \labelwidthstring Publications
 
-\bibitem {secondref}
+\begin_inset LatexCommand bibitem
+key "secondref"
+
+\end_inset
 These references could have been entered via BibTeX\SpecialChar \ldots{}
  In any case, here I
  can cite my work of 
-\begin_inset LatexCommand \cite{firstref}
-
+\begin_inset LatexCommand cite
+key "firstref"
 \end_inset
 
 .

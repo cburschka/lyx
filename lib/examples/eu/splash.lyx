@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -42,6 +50,8 @@ LyX erabiltzean lehendabizi jakin beharreko gauzak
 \begin_layout Enumerate
 
 LyX-ek laguntza eskuliburu bikain bat dauka (erabil ezazu).
+
+\family default
  
 \family sans
 \bar under
@@ -55,7 +65,9 @@ S
 arrera
 \family default
  zerrenda aukerarekin hasi (eskuliburuei buruzko sarreratxo bat da).
- Ondoren, 
+ Ondoren,
+\family default
+ 
 \family sans
 \bar under
 L
@@ -65,8 +77,9 @@ aguntza
 \SpecialChar \menuseparator
 T
 \bar default
-utoretza-n 
+utoretza-n
 \family default
+ 
 laguntzaz LyX erabiltzen ikasi
 \family sans
 .
@@ -103,15 +116,18 @@ Laguntzako eskuliburuak irakurtzea komeni zaizkizula esan al dizugu?
 \begin_layout Enumerate
 
 LyX-en irteera emaitzak (output) itxura hobezina dauka.
- Begiztatzeko 
+ Begiztatzeko
+\family default
+ 
 \family sans
 \bar under
 F
 \bar default
 itxategia\SpecialChar \menuseparator
 Dvi\InsetSpace ~
-ikusi 
+ikusi
 \family default
+ 
 lan dezakezu (une honetan adibidez).
 \end_layout
 
@@ -128,7 +144,9 @@ itxategia\SpecialChar \menuseparator
 Barneratu
 \family default
 ) ditzake.
- LaTeX-eko erabiltzaile adituei 
+ LaTeX-eko erabiltzaile adituei
+\emph default
+ 
 \emph on
 Tutoretzako
 \emph default
@@ -151,11 +169,15 @@ LyX LaTeX-eko erabiltzaileentzat
 Inglesez gain beste edozein hizkuntzetan idazten edo irakurtzen duten erabiltzai
 leentzat abantaila ugari daude.
  Gainera tekla elkarte, tresna barra eta beste hainbat ezaugarriek egokitze
- maila handia eskeintzen diote (ia dena 
+ maila handia eskeintzen diote (ia dena
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
  fitxategia landuz).
+
+\family default
  
 \family sans
 \bar under
@@ -173,17 +195,21 @@ gokitua
 
 \begin_layout Enumerate
 
-LyX-en Interneteko orria 
+LyX-en Interneteko orria
+\family default
+ 
 \family typewriter
 
-\begin_inset LatexCommand \url{http://www.lyx.org/}
-
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
 \end_inset
 
 
 \family default
  da.
  Bertan programari buruzko informazioa lortu, gutun zerrendetan harpidetu,
+
+\emph default
  
 \emph on
 LyX-eko Marrazkidun Ibilalditxoa (edo Tour)

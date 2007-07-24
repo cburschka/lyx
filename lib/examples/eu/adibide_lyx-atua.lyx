@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language spanish
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -47,8 +55,7 @@ egilea: Norbait
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -77,8 +84,8 @@ LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  eraikia izan zen.
  LaTeX LyX-en antzeko izakera baten gain diseinatuta dago.
  Leslie Lamport-ek esan zuen (
-\begin_inset LatexCommand \cite{Lamport}
-
+\begin_inset LatexCommand cite
+key "Lamport"
 \end_inset
 
  erreferentzia ikusi) :
@@ -106,8 +113,8 @@ LyX zergatik da hobeagoa
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \label{atal:lyxhobeagoa}
-
+\begin_inset LatexCommand label
+name "atal:lyxhobeagoa"
 \end_inset
 
 LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
@@ -157,7 +164,9 @@ bestela, zertarako nahiko zenuke erabiltzea?
 
 \end_inset
 
- Beraietaz mintzatzeak 
+ Beraietaz mintzatzeak
+\emph default
+ 
 \emph on
 asko unkitzen
 \emph default
@@ -180,13 +189,13 @@ LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
 
 LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  
-\begin_inset LatexCommand \ref{atal:lyxhobeagoa}
-
+\begin_inset LatexCommand ref
+reference "atal:lyxhobeagoa"
 \end_inset
 
  atala ikusi, 
-\begin_inset LatexCommand \pageref{atal:lyxhobeagoa}
-
+\begin_inset LatexCommand pageref
+reference "atal:lyxhobeagoa"
 \end_inset
 
  orrialdean aurkitzen da.
@@ -272,7 +281,10 @@ Beste ekuazio polita kalkulu oinarria da:
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {Lamport}
+\begin_inset LatexCommand bibitem
+key "Lamport"
+
+\end_inset
 
 Lamport, Leslie.
  LaTeX: A Document Preparation System.

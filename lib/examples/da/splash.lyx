@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language danish
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -36,17 +44,19 @@ Velkommen til LyX!
 
 \begin_layout Section*
 
-7 ting du bør vide om brugen af LyX
+7 ting du bÃ¸r vide om brugen af LyX
 \end_layout
 
 \begin_layout Enumerate
 
-LyX indeholder grundig dokumentation --- brug den! Start med 
+LyX indeholder grundig dokumentation --- brug den! Start med
+\family default
+ 
 \family sans
 \bar under
 H
 \bar default
-jælp\SpecialChar \menuseparator
+jÃ¦lp\SpecialChar \menuseparator
 
 \bar under
 I
@@ -54,14 +64,16 @@ I
 ntroduktion
 \family default
 , som vil give dig et meget kort overblik over dokumentationen\SpecialChar \@.
- Lær derefter
+ LÃ¦r derefter
  om LyX med
-\family sans
+\family default
  
+\family sans
+
 \bar under
 H
 \bar default
-jælp\SpecialChar \menuseparator
+jÃ¦lp\SpecialChar \menuseparator
 
 \bar under
 G
@@ -81,17 +93,17 @@ dokumentbehandler
 \end_inset
 
 \SpecialChar \@.
- Den er grundlæggende forskellig fra almindelige tekstbehandlere --- på
- en måde letter det skrivning af dokumenter\SpecialChar \@.
+ Den er grundlÃ¦ggende forskellig fra almindelige tekstbehandlere --- pÃ¥
+ en mÃ¥de letter det skrivning af dokumenter\SpecialChar \@.
  Men bare rolig, den er kun en
  smule anderledes\SpecialChar \@.
- Dokumentationen vil gøre dette tydeligt for dig
+ Dokumentationen vil gÃ¸re dette tydeligt for dig
 \begin_inset Foot
 status open
 
 \begin_layout Standard
 
-Fik vi nævnt, at du bør læse dokumentationen?
+Fik vi nÃ¦vnt, at du bÃ¸r lÃ¦se dokumentationen?
 \end_layout
 
 \end_inset
@@ -101,7 +113,9 @@ Fik vi nævnt, at du bør læse dokumentationen?
 
 \begin_layout Enumerate
 
-Resultaterne fra LyX ser fantastiske ud! Vælg 
+Resultaterne fra LyX ser fantastiske ud! VÃ¦lg
+\family default
+ 
 \family sans
 \bar under
 V
@@ -113,19 +127,21 @@ D
 \bar default
 VI
 \family default
- nu, så kan du selv se.
+ nu, sÃ¥ kan du selv se.
 \end_layout
 
 \begin_layout Enumerate
 
-Ja, LyX kan efterligne (næsten) al LaTeX's funktioner\SpecialChar \@.
+Ja, LyX kan efterligne (nÃ¦sten) al LaTeX's funktioner\SpecialChar \@.
  Og ja, LyX kan importere
  LaTeX-filer\SpecialChar \@.
- Erfarne LaTeX-brugere kan skimme resten af 
+ Erfarne LaTeX-brugere kan skimme resten af
+\emph default
+ 
 \emph on
 Gennemgangen
 \emph default
- og derefter læse afsnittet 
+ og derefter lÃ¦se afsnittet 
 \begin_inset Quotes eld
 \end_inset
 
@@ -134,32 +150,36 @@ LyX for LaTeX-brugere
 \end_inset
 
 \SpecialChar \@.
- (Alle andre: bare rolig, du behøver ikke at kende noget til LaTeX for at
+ (Alle andre: bare rolig, du behÃ¸ver ikke at kende noget til LaTeX for at
  kunne bruge LyX\SpecialChar \@.
 )
 \end_layout
 
 \begin_layout Enumerate
 
-LyX har mange funktioner for dem, der læser eller skriver på andre sprog
+LyX har mange funktioner for dem, der lÃ¦ser eller skriver pÃ¥ andre sprog
  end engelsk\SpecialChar \@.
- Derover kan tastebindinger, værktøjslinie og mange andre egenskaber
- kan ændres (de fleste ved at rette i 
+ Derover kan tastebindinger, vÃ¦rktÃ¸jslinie og mange andre egenskaber
+ kan Ã¦ndres (de fleste ved at rette i
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
 -filen).
- Se 
+ Se
+\family default
+ 
 \family sans
 \bar under
 H
 \bar default
-jælp\SpecialChar \menuseparator
+jÃ¦lp\SpecialChar \menuseparator
 
 \bar under
 P
 \bar default
-ersonliggørelse
+ersonliggÃ¸relse
 \family default
  for detaljer\SpecialChar \@.
 
@@ -167,17 +187,19 @@ ersonliggørelse
 
 \begin_layout Enumerate
 
-LyX's hjemmeside er på 
+LyX's hjemmeside er pÃ¥
+\family default
+ 
 \family typewriter
 
-\begin_inset LatexCommand \url{http://www.lyx.org/}
-
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
 \end_inset
 
 
 \family default
 \SpecialChar \@.
- Find oplysninger om LyX, abonnér på LyX's postlister, tag en grafisk rundtur
+ Find oplysninger om LyX, abonnÃ©r pÃ¥ LyX's postlister, tag en grafisk rundtur
  m.m\SpecialChar \@.
 
 \end_layout

@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -10,13 +10,21 @@
 \end_preamble
 \language magyar
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -29,18 +37,18 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-EZ A DOKUMENTUM CÍME
+EZ A DOKUMENTUM CÃME
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Tanács: a címnek jobban CÍMNEK kell látszania
+TanÃ¡cs: a cÃ­mnek jobban CÃMNEK kell lÃ¡tszania
 \end_layout
 
 \end_inset
@@ -49,12 +57,12 @@ Tanács: a címnek jobban CÍMNEK kell látszania
 \end_layout
 
 \begin_layout Standard
-készítette egy LyX-es
+kÃ©szÃ­tette egy LyX-es
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Tanács: ide kerül a SZERZÕ 
+TanÃ¡cs: ide kerÃ¼l a SZERZÅ 
 \end_layout
 
 \end_inset
@@ -64,12 +72,12 @@ Tanács: ide kerül a SZERZÕ
 
 \begin_layout Standard
 1972.
- június 12
+ jÃºnius 12
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Tanács: ez lesz a DÁTUM
+TanÃ¡cs: ez lesz a DÃTUM
 \end_layout
 
 \end_inset
@@ -78,12 +86,12 @@ Tanács: ez lesz a DÁTUM
 \end_layout
 
 \begin_layout Standard
-Tartalomjegyzék
+TartalomjegyzÃ©k
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
+TanÃ¡cs: jÃ³ lenne nem kellene kÃ¼lÃ¶n begÃ©pelni a tartalomjegyzÃ©ket
 \end_layout
 
 \end_inset
@@ -93,30 +101,30 @@ Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
 
 \begin_layout Standard
 1.
- Alap filozófia..................1
+ Alap filozÃ³fia..................1
 \end_layout
 
 \begin_layout Standard
-1.1 Hogyan valósítja meg ezt a LyX...............1
+1.1 Hogyan valÃ³sÃ­tja meg ezt a LyX...............1
 \end_layout
 
 \begin_layout Standard
-1.2 Miért jobb a LyX ...............1
+1.2 MiÃ©rt jobb a LyX ...............1
 \end_layout
 
 \begin_layout Standard
 2.
- A LyX jellemzõi
+ A LyX jellemzÅ‘i
 \end_layout
 
 \begin_layout Standard
 3.
- Gyenge próbálkozások más LyX-es cuccok használatához
+ Gyenge prÃ³bÃ¡lkozÃ¡sok mÃ¡s LyX-es cuccok hasznÃ¡latÃ¡hoz
 \end_layout
 
 \begin_layout Standard
 4.
- Képletes dolgok
+ KÃ©pletes dolgok
 \end_layout
 
 \begin_layout Standard
@@ -125,12 +133,12 @@ Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
 
 \begin_layout Standard
 1.
- Alap filozófia
+ Alap filozÃ³fia
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: a szakaszcímnek jobban ki kellene tûnnie
+TanÃ¡cs: a szakaszcÃ­mnek jobban ki kellene tÅ±nnie
 \end_layout
 
 \end_inset
@@ -139,28 +147,28 @@ Tanács: a szakaszcímnek jobban ki kellene tûnnie
 \end_layout
 
 \begin_layout Standard
-A LyX alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
- írni, nem arra hogyan fog kinézni.
+A LyX alapfilozÃ³fiÃ¡ja az, hogy csak arra kell koncentrÃ¡lnia amit le akarni
+ Ã­rni, nem arra hogyan fog kinÃ©zni.
 \end_layout
 
 \begin_layout Standard
-1.1 Hogyan valósítja meg ezt a LyX
+1.1 Hogyan valÃ³sÃ­tja meg ezt a LyX
 \end_layout
 
 \begin_layout Standard
-A LyX a LaTeX-et használja, ami egy dokumentum elkészítõ rendszer, amit
- 1985-ben készített Leslie Lamport.
- Ezt egy TeX nevû írásszedõ rendszerre építette, amit Donald Knuth készített
+A LyX a LaTeX-et hasznÃ¡lja, ami egy dokumentum elkÃ©szÃ­tÅ‘ rendszer, amit
+ 1985-ben kÃ©szÃ­tett Leslie Lamport.
+ Ezt egy TeX nevÅ± Ã­rÃ¡sszedÅ‘ rendszerre Ã©pÃ­tette, amit Donald Knuth kÃ©szÃ­tett
  1984-ben.
- A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
- Leslie Lamport egyszer azt mondta (lásd a [2] hivatkozásban):
+ A LaTeX-et, a LyX-hez hasonlÃ³ filozÃ³fia miatt kÃ©szÃ­tettÃ©k.
+ Leslie Lamport egyszer azt mondta (lÃ¡sd a [2] hivatkozÃ¡sban):
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: valószínûleg ennek az IDÉZET HIVATKOZÁSNAK nem kellene be betonozva
+TanÃ¡cs: valÃ³szÃ­nÅ±leg ennek az IDÃ‰ZET HIVATKOZÃSNAK nem kellene be betonozva
  lennie.
- Mi lenne, ha Lamport könyve a második elem lenne az irodalomjegyzéknek?
+ Mi lenne, ha Lamport kÃ¶nyve a mÃ¡sodik elem lenne az irodalomjegyzÃ©knek?
 \end_layout
 
 \end_inset
@@ -172,16 +180,16 @@ Tanács: valószínûleg ennek az IDÉZET HIVATKOZÁSNAK nem kellene be betonozva
 \begin_inset Quotes pld
 \end_inset
 
-A tipográfiai tervezés célja az, hogy segítsen az olvasónak megérteni a
- szerzõ mondanivalóját.
- Ahhoz, hogy egy mûvet könnyen el lehessen olvasni, a vizuális szerkezetének
- követnie kell a logikai felépítését.
- Az idézetek és számítógépprogramok teljesen különálló logikai elemek, ezért
- meg kell tudni õket egymásól különböztetni...
- Mivel a LyX nem érti az írott szöveget, ezért világosan meg kell adnia
- a logikai struktúrát bizonyos parancsok használatával\SpecialChar \ldots{}
- Miközben mûvét készíti,
- a logikai felépítésével kell törõdnie, nem a megjelenésével.
+A tipogrÃ¡fiai tervezÃ©s cÃ©lja az, hogy segÃ­tsen az olvasÃ³nak megÃ©rteni a
+ szerzÅ‘ mondanivalÃ³jÃ¡t.
+ Ahhoz, hogy egy mÅ±vet kÃ¶nnyen el lehessen olvasni, a vizuÃ¡lis szerkezetÃ©nek
+ kÃ¶vetnie kell a logikai felÃ©pÃ­tÃ©sÃ©t.
+ Az idÃ©zetek Ã©s szÃ¡mÃ­tÃ³gÃ©pprogramok teljesen kÃ¼lÃ¶nÃ¡llÃ³ logikai elemek, ezÃ©rt
+ meg kell tudni Å‘ket egymÃ¡sÃ³l kÃ¼lÃ¶nbÃ¶ztetni...
+ Mivel a LyX nem Ã©rti az Ã­rott szÃ¶veget, ezÃ©rt vilÃ¡gosan meg kell adnia
+ a logikai struktÃºrÃ¡t bizonyos parancsok hasznÃ¡latÃ¡val\SpecialChar \ldots{}
+ MikÃ¶zben mÅ±vÃ©t kÃ©szÃ­ti,
+ a logikai felÃ©pÃ­tÃ©sÃ©vel kell tÃ¶rÅ‘dnie, nem a megjelenÃ©sÃ©vel.
 \begin_inset Quotes prd
 \end_inset
 
@@ -190,7 +198,7 @@ A tipográfiai tervezés célja az, hogy segítsen az olvasónak megérteni a
 status collapsed
 
 \begin_layout Standard
-Tanács: ez egy IDÉZET
+TanÃ¡cs: ez egy IDÃ‰ZET
 \end_layout
 
 \end_inset
@@ -199,94 +207,100 @@ Tanács: ez egy IDÉZET
 \end_layout
 
 \begin_layout Standard
-1.2 Miért jobb a LyX 
+1.2 MiÃ©rt jobb a LyX 
 \end_layout
 
 \begin_layout Standard
-A LyX sokkal több embernek lehet hasznos, mint a LaTeX.
- Meglehetõsen könnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
- (ami gyakorlatilag egy programozási nyelv).
- A LyX alapvetõen egy másik 
+A LyX sokkal tÃ¶bb embernek lehet hasznos, mint a LaTeX.
+ MeglehetÅ‘sen kÃ¶nnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
+ (ami gyakorlatilag egy programozÃ¡si nyelv).
+ A LyX alapvetÅ‘en egy mÃ¡sik 
 \begin_inset Quotes pld
 \end_inset
 
-azt kapod amit látsz
+azt kapod amit lÃ¡tsz
 \begin_inset Quotes prd
 \end_inset
 
- szövegszerkesztõ, bár inkább 
+ szÃ¶vegszerkesztÅ‘, bÃ¡r inkÃ¡bb 
 \begin_inset Quotes pld
 \end_inset
 
-amit lát arra gondol
+amit lÃ¡t arra gondol
 \begin_inset Quotes prd
 \end_inset
 
- típusú.
- Ezáltal a word típusú szövegszerkesztõk könnyû használatát kombinálja,
- a LaTeX hatékonyságával.
- Ez egy jó dolog.
- A fájl formátuma platform független.
- De legfõképpen, ingyenes!
+ tÃ­pusÃº.
+ EzÃ¡ltal a word tÃ­pusÃº szÃ¶vegszerkesztÅ‘k kÃ¶nnyÅ± hasznÃ¡latÃ¡t kombinÃ¡lja,
+ a LaTeX hatÃ©konysÃ¡gÃ¡val.
+ Ez egy jÃ³ dolog.
+ A fÃ¡jl formÃ¡tuma platform fÃ¼ggetlen.
+ De legfÅ‘kÃ©ppen, ingyenes!
 \end_layout
 
 \begin_layout Standard
 2.
- A LyX jellemzõi
+ A LyX jellemzÅ‘i
 \end_layout
 
 \begin_layout Standard
-A LyX rengeteg olyan jellemzõvel rendelkezik, amelyek megkönnyítik az írást.
- (Ezek után, miért ne akarná használni? 
+A LyX rengeteg olyan jellemzÅ‘vel rendelkezik, amelyek megkÃ¶nnyÃ­tik az Ã­rÃ¡st.
+ (Ezek utÃ¡n, miÃ©rt ne akarnÃ¡ hasznÃ¡lni? 
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: a zárójelben lévõ sokkal jobban mutatna a LÁBJEGYZETben 
+TanÃ¡cs: a zÃ¡rÃ³jelben lÃ©vÅ‘ sokkal jobban mutatna a LÃBJEGYZETben 
 \end_layout
 
 \end_inset
 
 ).
+
+\shape default
  
 \shape italic
 \emph on
 NAGYON IZGATOTT
 \emph default
+\shape default
  
+\shape italic
+\emph default
+
 \shape default
 
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: KIEMELÉS!
+TanÃ¡cs: KIEMELÃ‰S!
 \end_layout
 
 \end_inset
 
- vagyok, hogy beszélhessek róluk.
- Íme közülük néhány.
+ vagyok, hogy beszÃ©lhessek rÃ³luk.
+ Ãme kÃ¶zÃ¼lÃ¼k nÃ©hÃ¡ny.
 \end_layout
 
 \begin_layout Standard
-*A LyX gondoskodik a margókról és a lábjegyzetek számozásáról
+*A LyX gondoskodik a margÃ³krÃ³l Ã©s a lÃ¡bjegyzetek szÃ¡mozÃ¡sÃ¡rÃ³l
 \end_layout
 
 \begin_layout Standard
-*A LyX-el könnyen készíthet és szerkeszthet képleteket
+*A LyX-el kÃ¶nnyen kÃ©szÃ­thet Ã©s szerkeszthet kÃ©pleteket
 \end_layout
 
 \begin_layout Standard
-A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztõnél,
- megtalálja a 1.2 szakaszban, amit az 1.
- oldalon talál.
+A filozÃ³fiai Ã©rtekezÃ©st, hogy miÃ©rt jobb a LyX a tÃ¶bbi szÃ¶vegszerkesztÅ‘nÃ©l,
+ megtalÃ¡lja a 1.2 szakaszban, amit az 1.
+ oldalon talÃ¡l.
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: ennek a KERESZT-HIVATKOZÁSNAK nem kellene fixnek lennie.
- Mi történik, ha megváltoztatjuk a szakaszszámozást?
+TanÃ¡cs: ennek a KERESZT-HIVATKOZÃSNAK nem kellene fixnek lennie.
+ Mi tÃ¶rtÃ©nik, ha megvÃ¡ltoztatjuk a szakaszszÃ¡mozÃ¡st?
 \end_layout
 
 \end_inset
@@ -296,12 +310,12 @@ Tanács: ennek a KERESZT-HIVATKOZÁSNAK nem kellene fixnek lennie.
 
 \begin_layout Standard
 3.
- Gyenge próbálkozások más LyX-es cuccok használatához
+ Gyenge prÃ³bÃ¡lkozÃ¡sok mÃ¡s LyX-es cuccok hasznÃ¡latÃ¡hoz
 \end_layout
 
 \begin_layout Standard
-Egy nap írtam egy programot.
- Így nézett ki.
+Egy nap Ã­rtam egy programot.
+ Ãgy nÃ©zett ki.
 \end_layout
 
 \begin_layout Standard
@@ -326,7 +340,7 @@ FELEMETES VAGYOK!
 status open
 
 \begin_layout Standard
-Tanács: ez egy PROGRAM-KÓD
+TanÃ¡cs: ez egy PROGRAM-KÃ“D
 \end_layout
 
 \end_inset
@@ -335,21 +349,21 @@ Tanács: ez egy PROGRAM-KÓD
 \end_layout
 
 \begin_layout Standard
-A tudományos gondolkodás után, teljesen mûvészien éreztem magam, és írtam
+A tudomÃ¡nyos gondolkodÃ¡s utÃ¡n, teljesen mÅ±vÃ©szien Ã©reztem magam, Ã©s Ã­rtam
  egy haiku-t
 \end_layout
 
 \begin_layout Standard
 A LyX egy nagyon szuper
 \newline
-Szövegszedõ szövegszerkesztõ
+SzÃ¶vegszedÅ‘ szÃ¶vegszerkesztÅ‘
 \newline
-Sok idõt takarít meg
+Sok idÅ‘t takarÃ­t meg
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: ez így nem túl jó mivel egy költemény, azaz egy VERS
+TanÃ¡cs: ez Ã­gy nem tÃºl jÃ³ mivel egy kÃ¶ltemÃ©ny, azaz egy VERS
 \end_layout
 
 \end_inset
@@ -359,12 +373,12 @@ Tanács: ez így nem túl jó mivel egy költemény, azaz egy VERS
 
 \begin_layout Standard
 4.
- Képletes dolgok
+ KÃ©pletes dolgok
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Tanács: ezek a képletek normális módon kellene hogy megjelenjenek.
+TanÃ¡cs: ezek a kÃ©pletek normÃ¡lis mÃ³don kellene hogy megjelenjenek.
 \end_layout
 
 \end_inset
@@ -373,17 +387,17 @@ Tanács: ezek a képletek normális módon kellene hogy megjelenjenek.
 \end_layout
 
 \begin_layout Standard
-A kedvenc egyenletem a másodfokú egyenlet megoldóképlete.
+A kedvenc egyenletem a mÃ¡sodfokÃº egyenlet megoldÃ³kÃ©plete.
  Ha ax^2+bx+c=0 (1.
- képlet), akkor x= -b plusz vagy mínusz a b^2-4ac négyzetgyöke, majd mindez
+ kÃ©plet), akkor x= -b plusz vagy mÃ­nusz a b^2-4ac nÃ©gyzetgyÃ¶ke, majd mindez
  osztva 2a-val (2.
- képlet).
+ kÃ©plet).
 \end_layout
 
 \begin_layout Standard
-A másik kedvenc képletem egy elemi kalkulus: f'(x) határérték, amikor [f(x+delta
-x)- f(x)]-ben deltax tart a nullához és az egész osztva deltax-el (3.
- képlet).
+A mÃ¡sik kedvenc kÃ©pletem egy elemi kalkulus: f'(x) hatÃ¡rÃ©rtÃ©k, amikor [f(x+delta
+x)- f(x)]-ben deltax tart a nullÃ¡hoz Ã©s az egÃ©sz osztva deltax-el (3.
+ kÃ©plet).
 \end_layout
 
 \begin_layout Standard
@@ -391,17 +405,19 @@ x)- f(x)]-ben deltax tart a nullához és az egész osztva deltax-el (3.
 \end_layout
 
 \begin_layout Standard
-HIVATKOZÁSOK
+HIVATKOZÃSOK
 \end_layout
 
 \begin_layout Standard
 [1] Lamport, Leslie.
+
+\emph default
  
 \emph on
 LaTeX: A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, második kiadás, 1994.
+ Addison-Wesley, Reading, Massachusetts, mÃ¡sodik kiadÃ¡s, 1994.
 \end_layout
 
 \end_body

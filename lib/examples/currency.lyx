@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language english
 \inputencoding latin9
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,7 +35,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -60,13 +68,15 @@ The euro symbol
 
 To print the euro symbol, you need to get the eurofont package, available
  at 
-\begin_inset LatexCommand \url{/macros/latex/contrib/supported/eurofont}
-
+\begin_inset LatexCommand url
+target "/macros/latex/contrib/supported/eurofont"
 \end_inset
 
  in the CTAN.
  You'll need therefore to add to the LaTeX preamble of your LyX document
- the command : 
+ the command :
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -75,7 +85,9 @@ usepackage{eurofont}
 .
  See the preamble of this document to figure out.
  Then you can always obtain the euro symbol in your printed document by
- typing 
+ typing
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -101,16 +113,20 @@ euro{}
 The shape of the symbol in the printed version tends to be better when you
  install the eurosym package too.
  It is available at 
-\begin_inset LatexCommand \url{/fonts/eurosym}
-
+\begin_inset LatexCommand url
+target "/fonts/eurosym"
 \end_inset
 
  in the CTAN.
- Then you declare eurofont with the 
+ Then you declare eurofont with the
+\family default
+ 
 \family typewriter
 eurosym
 \family default
- option, like this : 
+ option, like this :
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -124,12 +140,16 @@ usepackage[eurosym]{eurofont}
 As a next step, we'll configure LyX to display a WYSIWYM euro symbol.
  First you have to select latin9 screen fonts, as the euro is not in the
  common latin1 encoding.
- In the 
+ In the
+\family default
+ 
 \family sans
 Edit\SpecialChar \menuseparator
 Preferences
 \family default
- popup, enter 
+ popup, enter
+\family default
+ 
 \family typewriter
 iso8859-15
 \begin_inset Foot
@@ -137,11 +157,15 @@ status collapsed
 
 \begin_layout Standard
 
-latin9 is the common name for the 
+latin9 is the common name for the
+\family default
+ 
 \family typewriter
 iso8859-15
 \family default
- encoding, and latin1 for 
+ encoding, and latin1 for
+\family default
+ 
 \family typewriter
 iso8859-1
 \family default
@@ -152,7 +176,9 @@ iso8859-1
 
 
 \family default
- in the 
+ in the
+\family default
+ 
 \family sans
 Screen\InsetSpace ~
 fonts\SpecialChar \menuseparator
@@ -166,16 +192,22 @@ Encoding
 
 You should properly configure your X server if you want the euro symbol
  directly on your keyboard.
- You can also try the keymap files in LyX : 
+ You can also try the keymap files in LyX :
+\family default
+ 
 \family typewriter
 european.kmap
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 francais.kmap
 \family default
  should normally support the euro symbol at its usual place.
- Select your keymap in the 
+ Select your keymap in the
+\family default
+ 
 \family sans
 Language\SpecialChar \menuseparator
 Keymap
@@ -186,24 +218,30 @@ Keymap
 \begin_layout Standard
 
 The last step is to tell LyX that the encoding of your document is latin9.
- You do this in the 
+ You do this in the
+\family default
+ 
 \family sans
 Format\SpecialChar \menuseparator
 Document
 \family default
  popup.
- It requires your LaTeX distribution to have the appropriate 
+ It requires your LaTeX distribution to have the appropriate
+\family default
+ 
 \family typewriter
 latin9.def
 \family default
- file for the 
+ file for the
+\family default
+ 
 \family typewriter
 inputenc
 \family default
  package.
  It is in the recent LaTeX distributions, and is available at 
-\begin_inset LatexCommand \url{/macros/latex/unpacked}
-
+\begin_inset LatexCommand url
+target "/macros/latex/unpacked"
 \end_inset
 
  in the CTAN.
@@ -211,7 +249,7 @@ inputenc
 
 \begin_layout Standard
 
-If you see an euro symbol here : ¤, and not some horrible glyph, that's
+If you see an euro symbol here : â‚¬, and not some horrible glyph, that's
  OK.
  Now try to view the DVI file.
  If LaTeX doesn't complain and the printed version seems fine, you're done.
@@ -233,7 +271,9 @@ All the symbols we present here are not available with LaTeX natively.
 The\InsetSpace ~
 cent\InsetSpace ~
 symbol If your keyboard allows the direct display of the cent symbol
- ¢, great, if not you'll have to type 
+ Â¢, great, if not you'll have to type
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -258,7 +298,9 @@ textcent{}
 
 The\InsetSpace ~
 yen\InsetSpace ~
-symbol Same story as above, typing 
+symbol Same story as above, typing
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -276,7 +318,7 @@ textyen{}
 
 \end_inset
 
-, or directly ¥.
+, or directly Â¥.
 \end_layout
 
 \begin_layout Description
@@ -287,7 +329,9 @@ currency\InsetSpace ~
 symbol It is a horrible mix of cross and circle.
  You cannot obtain it on screen together with the euro symbol, because it
  is corresponding in latin1 to the euro in latin9.
- You have just to type 
+ You have just to type
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -306,7 +350,7 @@ textcurrency{}
 \end_inset
 
 .
- If your screen fonts are latin1, you'll see it here : ¤.
+ If your screen fonts are latin1, you'll see it here : â‚¬.
  If they are latin9, you'll have a euro symbol instead.
 \end_layout
 
@@ -317,7 +361,9 @@ vertical\InsetSpace ~
 broken\InsetSpace ~
 bar Of course it is not a currency symbol, but it is one
  that you can't obtain with plain LaTeX, but provided when you include eurofont.
- You type 
+ You type
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -337,7 +383,7 @@ textbrokenbar{}
 
 .
  You'll have it on your keyboard if your X configuration is real good, and
- it will only display with latin1 screen fonts : ¦ .
+ it will only display with latin1 screen fonts : Å  .
  (With latin9 it is an s with a caron.)
 \end_layout
 

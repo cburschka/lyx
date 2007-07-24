@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language spanish
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,14 +32,14 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
 
-¡Bienvenido a LyX!
+Â¡Bienvenido a LyX!
 \end_layout
 
 \begin_layout Section*
@@ -41,8 +49,10 @@ Las n primeras cosas que debe saber al usar LyX
 
 \begin_layout Enumerate
 
-LyX viene con una excelente documentación (por favor, ¡úsela!).
- Comience en el menú con 
+LyX viene con una excelente documentaciÃ³n (por favor, Â¡Ãºsela!).
+ Comience en el menÃº con
+\family default
+ 
 \family sans
 \bar under
 A
@@ -52,10 +62,12 @@ yuda\SpecialChar \menuseparator
 \bar under
 I
 \bar default
-ntroducción
+ntroducciÃ³n
 \family default
-, que le hará una introducción muy breve a los manuales.
- Después aprenda a usar LyX con 
+, que le harÃ¡ una introducciÃ³n muy breve a los manuales.
+ DespuÃ©s aprenda a usar LyX con
+\family default
+ 
 \family sans
 \bar under
 A
@@ -81,16 +93,16 @@ procesador de documentos
 \end_inset
 
 .
- Por su diseño, es distinto a los procesadores de texto convencionales,
- haciendo que resulte más sencilla la tarea de escribir documentos.
- Pero sólo un poco distinto, no se asuste.
- La documentación le dejará todo claro
+ Por su diseÃ±o, es distinto a los procesadores de texto convencionales,
+ haciendo que resulte mÃ¡s sencilla la tarea de escribir documentos.
+ Pero sÃ³lo un poco distinto, no se asuste.
+ La documentaciÃ³n le dejarÃ¡ todo claro
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
-¿Hemos dicho ya que debería leer la documentación?
+Â¿Hemos dicho ya que deberÃ­a leer la documentaciÃ³n?
 \end_layout
 
 \end_inset
@@ -101,7 +113,9 @@ status collapsed
 \begin_layout Enumerate
 
 La salida de LyX tiene un aspecto impecable.
- Ejecute en el menú 
+ Ejecute en el menÃº
+\family default
+ 
 \family sans
 \bar under
 A
@@ -119,9 +133,9 @@ vi
 
 \begin_layout Enumerate
 
-Sí, LyX puede imitar casi toda la funcionalidad de LaTeX.
- Y sí, LyX puede importar ficheros LaTeX.
- Los usuarios experimentados de LaTeX deberían leerse el capítulo 
+SÃ­, LyX puede imitar casi toda la funcionalidad de LaTeX.
+ Y sÃ­, LyX puede importar ficheros LaTeX.
+ Los usuarios experimentados de LaTeX deberÃ­an leerse el capÃ­tulo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -129,7 +143,9 @@ LyX para usuarios de LaTeX
 \begin_inset Quotes erd
 \end_inset
 
-, y hojear el resto del 
+, y hojear el resto del
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -141,15 +157,19 @@ Tutorial
 \begin_layout Enumerate
 
 LyX tiene montones de ventajas para aquellos que leen o escriben en un idioma
- distinto del inglés.
- Además, las asociaciones de teclas, la barra de herramientas y muchas otras
- características son altamente configurables (la mayor parte editando su
- fichero 
+ distinto del inglÃ©s.
+ AdemÃ¡s, las asociaciones de teclas, la barra de herramientas y muchas otras
+ caracterÃ­sticas son altamente configurables (la mayor parte editando su
+ fichero
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
 ).
- Mire en 
+ Mire en
+\family default
+ 
 \family sans
 \bar under
 A
@@ -159,24 +179,28 @@ yuda\SpecialChar \menuseparator
 \bar under
 P
 \bar default
-ersonalización
+ersonalizaciÃ³n
 \family default
- para más detalles.
+ para mÃ¡s detalles.
 \end_layout
 
 \begin_layout Enumerate
 
-La página de LyX en Internet está en 
+La pÃ¡gina de LyX en Internet estÃ¡ en
+\family default
+ 
 \family typewriter
 www.lyx.org
 \family default
 .
- Consiga allí información sobre el programa, subscríbase a la(s) lista(s)
- de correo, obtenga el 
-\emph on
-Tour Gráfico de LyX
+ Consiga allÃ­ informaciÃ³n sobre el programa, subscrÃ­base a la(s) lista(s)
+ de correo, obtenga el
 \emph default
-, y muchas más cosas.
+ 
+\emph on
+Tour GrÃ¡fico de LyX
+\emph default
+, y muchas mÃ¡s cosas.
 \end_layout
 
 \end_body

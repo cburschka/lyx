@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 253
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -19,6 +19,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,8 +32,8 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
-\author "Pavel Sanda" 
+\output_changes false
+\author "Pavel Sanda"
 \end_header
 
 \begin_body
@@ -55,7 +56,19 @@ LyX přichází s
 \bar no
 \noun off
 \color none
+\emph default
+\shape default
+\series default
+\family default
+\bar default
  
+\emph off
+\shape up
+\series medium
+\family roman
+\bar no
+\color none
+
 \family default
 \series default
 \shape default
@@ -103,7 +116,9 @@ Výstup z LyXu vypadá skvěle! Zkuste vybrat v menu Prohlížet -> DVI, ať se
 \begin_layout Enumerate
 LyX umí napodobit (téměř) veškerou funkcionalitu LaTeXu.
  A ano, LyX umí importovat LaTeXové soubory.
- Zkušení uživatelé LaTeXu mohou jen zbežně prolétnout začátek 
+ Zkušení uživatelé LaTeXu mohou jen zbežně prolétnout začátek
+\emph default
+ 
 \emph on
 Průvodce
 \emph default
@@ -129,7 +144,9 @@ LyX nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, ne�
 \end_layout
 
 \begin_layout Enumerate
-Domácí stránka LyXu je na 
+Domácí stránka LyXu je na
+\family default
+ 
 \family typewriter
 
 \begin_inset LatexCommand url

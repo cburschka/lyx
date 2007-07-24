@@ -1,17 +1,25 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language galician
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,18 +32,18 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-ESTE … O TÕTULO DO DOCUMENTO
+ESTE √â O T√çTULO DO DOCUMENTO
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Dica: O tÌtulo deberia semellar-se mais a un tÌtulo
+Dica: O t√≠tulo deberia semellar-se mais a un t√≠tulo
 \end_layout
 
 \end_inset
@@ -49,7 +57,7 @@ por Pepe LyX
 status collapsed
 
 \begin_layout Standard
-Dica: Pepe È o AUTOR
+Dica: Pepe √© o AUTOR
 \end_layout
 
 \end_inset
@@ -58,12 +66,12 @@ Dica: Pepe È o AUTOR
 \end_layout
 
 \begin_layout Standard
-12 de XuÒo de 1972 
+12 de Xu√±o de 1972 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Dica: Esta È unha data
+Dica: Esta √© unha data
 \end_layout
 
 \end_inset
@@ -72,12 +80,12 @@ Dica: Esta È unha data
 \end_layout
 
 \begin_layout Standard
-T·boa de contidos 
+T√°boa de contidos 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Coment·rio: Agradeceria-se non ter que escreber a t·boa de contidos explicitamen
+Coment√°rio: Agradeceria-se non ter que escreber a t√°boa de contidos explicitamen
 te.
 \end_layout
 
@@ -88,7 +96,7 @@ te.
 
 \begin_layout Standard
 1.
- Filosofia b·sica..................1
+ Filosofia b√°sica..................1
 \end_layout
 
 \begin_layout Standard
@@ -96,12 +104,12 @@ te.
 \end_layout
 
 \begin_layout Standard
-1.2 Por que o LyX È mellor...............1
+1.2 Por que o LyX √© mellor...............1
 \end_layout
 
 \begin_layout Standard
 2.
- CaracterÌsticas de LyX
+ Caracter√≠sticas de LyX
 \end_layout
 
 \begin_layout Standard
@@ -111,7 +119,7 @@ te.
 
 \begin_layout Standard
 4.
- CuestiÛns matem·ticas
+ Cuesti√≥ns matem√°ticas
 \end_layout
 
 \begin_layout Standard
@@ -120,12 +128,12 @@ te.
 
 \begin_layout Standard
 1.
- Filosofia b·sica 
+ Filosofia b√°sica 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-ObservaciÛn: Probabelmente os tÌtulos das secciÛns deberian salientar m·is.
+Observaci√≥n: Probabelmente os t√≠tulos das secci√≥ns deberian salientar m√°is.
 \end_layout
 
 \end_inset
@@ -134,7 +142,7 @@ ObservaciÛn: Probabelmente os tÌtulos das secciÛns deberian salientar m·is.
 \end_layout
 
 \begin_layout Standard
-A filosofia b·sica de LyX È conseguir que o usu·rio sÛ se deba preocupar
+A filosofia b√°sica de LyX √© conseguir que o usu√°rio s√≥ se deba preocupar
  do contido do documento e non do formato.
 \end_layout
 
@@ -143,19 +151,19 @@ A filosofia b·sica de LyX È conseguir que o usu·rio sÛ se deba preocupar
 \end_layout
 
 \begin_layout Standard
-LyX basea-se no LaTeX, un sistema de preparaciÛn de documentos deseÒado
+LyX basea-se no LaTeX, un sistema de preparaci√≥n de documentos dese√±ado
  por Leslie Lamport en 1985.
- Por sua vez o LaTeX elaborou-se sobre unha linguaxe tipogr·fica chamada
+ Por sua vez o LaTeX elaborou-se sobre unha linguaxe tipogr√°fica chamada
  TeX, criada por Donald Knuth en 1984.
- Por outra banda a filosofia do LaTeX È similar · de LyX.
- Leslie Lamport dixo (ver referÈncia [1])
+ Por outra banda a filosofia do LaTeX √© similar √° de LyX.
+ Leslie Lamport dixo (ver refer√©ncia [1])
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-ObservaciÛn: Probabelmente, esta referÈncia non deberia estar escrita directamen
+Observaci√≥n: Probabelmente, esta refer√©ncia non deberia estar escrita directamen
 te.
- Que acontecer· se inserimos outro iten na bibliografia antes do libro de
+ Que acontecer√° se inserimos outro iten na bibliografia antes do libro de
  Lamport.
 \end_layout
 
@@ -165,20 +173,20 @@ te.
 \end_layout
 
 \begin_layout Standard
-"A funciÛn do deseÒo tipogr·fico È axudar ao leitor a comprender as ideas
+"A funci√≥n do dese√±o tipogr√°fico √© axudar ao leitor a comprender as ideas
  do autor.
- Para un documento ser de f·cil leitura, a sua estrutura visual debe reflectir
- a sua estrutura lÛxica.
+ Para un documento ser de f√°cil leitura, a sua estrutura visual debe reflectir
+ a sua estrutura l√≥xica.
  As citas e os programas de computador, sendo elementos estruturalmente
  diferentes, deberian distinguir-se visualmente un de outro [...] Como LaTeX
  non pode entender directamente o sentido do seu texto, debe indicar-lle
- a estrutura lÛxica mediante comandos especiais [...] Entanto escrebe o documento,
- deberia preocupar-se da sua estrutura lÛxica, non da sua aparÈncia."
+ a estrutura l√≥xica mediante comandos especiais [...] Entanto escrebe o documento,
+ deberia preocupar-se da sua estrutura l√≥xica, non da sua apar√©ncia."
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Dica: esta È unha cita
+Dica: esta √© unha cita
 \end_layout
 
 \end_inset
@@ -187,36 +195,36 @@ Dica: esta È unha cita
 \end_layout
 
 \begin_layout Standard
-1.2 Por que o LyX È mellor
+1.2 Por que o LyX √© mellor
 \end_layout
 
 \begin_layout Standard
-LyX pode ser ˙til a mais xente que LaTeX.
- … considerabelmente mais doado de aprender, pois non È como LaTeX unha
- linguaxe de programazÛn.
- LyX È basicamente como outros procesadores de texto "WYSIWYG (o que vÈ
- È o que obtÈn), ag·s que o LyX realmente È WYSIWYM (o que vÈ È o que pretende
+LyX pode ser √∫til a mais xente que LaTeX.
+ √â considerabelmente mais doado de aprender, pois non √© como LaTeX unha
+ linguaxe de programaz√≥n.
+ LyX √© basicamente como outros procesadores de texto "WYSIWYG (o que v√©
+ √© o que obt√©n), ag√°s que o LyX realmente √© WYSIWYM (o que v√© √© o que pretende
  facer).
  De maneira que combina a facilidade de uso dos procesadores de texto coa
- potÈncia do LaTeX.
- O cal È unha boa cousa.
- Ademais, o formato de arquivo È independente do sistema operativo.
- E o mellor de todo, È LIBRE!
+ pot√©ncia do LaTeX.
+ O cal √© unha boa cousa.
+ Ademais, o formato de arquivo √© independente do sistema operativo.
+ E o mellor de todo, √© LIBRE!
 \end_layout
 
 \begin_layout Standard
 2.
- CaracterÌsticas do LyX
+ Caracter√≠sticas do LyX
 \end_layout
 
 \begin_layout Standard
-LyX posui moitas caracterÌsticas que facilitan a escrita de documentos.
- (SenÛn, porque o ia querer usar?
+LyX posui moitas caracter√≠sticas que facilitan a escrita de documentos.
+ (Sen√≥n, porque o ia querer usar?
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Dica: Esta frase entre parÈnteses ficaria mellor nunha nota de rodapÈ.
+Dica: Esta frase entre par√©nteses ficaria mellor nunha nota de rodap√©.
 \end_layout
 
 \end_inset
@@ -236,23 +244,23 @@ Dica: enfatizar
 \end_layout
 
 \begin_layout Standard
-* O LyX encarrega-se sen intervenciÛn do usu·rio das marxes e a numeraciÛn
- das notas de rodapÈ.
+* O LyX encarrega-se sen intervenci√≥n do usu√°rio das marxes e a numeraci√≥n
+ das notas de rodap√©.
 \end_layout
 
 \begin_layout Standard
-* LyX facilita a escrita e ediciÛn de fÛrmulas matem·ticas.
+* LyX facilita a escrita e edici√≥n de f√≥rmulas matem√°ticas.
 \end_layout
 
 \begin_layout Standard
-Para unha discusiÛn mais filosÛfica de por que LyX È mellor que a competÈncia
- vexa a secciÛn 1.2, que se acha na p·xina 1.
+Para unha discusi√≥n mais filos√≥fica de por que LyX √© mellor que a compet√©ncia
+ vexa a secci√≥n 1.2, que se acha na p√°xina 1.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-ObservaciÛn: Probabelmente esta REFER…NCIA-CRUZADA non debia estar escrita
- directamente, que pasar· se mudarmos o n˙mero da secciÛn?
+Observaci√≥n: Probabelmente esta REFER√âNCIA-CRUZADA non debia estar escrita
+ directamente, que pasar√° se mudarmos o n√∫mero da secci√≥n?
 \end_layout
 
 \end_inset
@@ -262,7 +270,7 @@ ObservaciÛn: Probabelmente esta REFER…NCIA-CRUZADA non debia estar escrita
 
 \begin_layout Standard
 3.
- Tentivas eivadas de empregar m·is facilidades do LyX
+ Tentivas eivadas de empregar m√°is facilidades do LyX
 \end_layout
 
 \begin_layout Standard
@@ -274,7 +282,7 @@ O outro dia escrebin un programa, algo asi como:
 \end_layout
 
 \begin_layout Standard
-10 PRINT "SON INIGUAL¡BEL!"
+10 PRINT "SON INIGUAL√ÅBEL!"
 \end_layout
 
 \begin_layout Standard
@@ -283,7 +291,7 @@ O outro dia escrebin un programa, algo asi como:
 status collapsed
 
 \begin_layout Standard
-Dica: Isto È cÛdigo fonte dun programa
+Dica: Isto √© c√≥digo fonte dun programa
 \end_layout
 
 \end_inset
@@ -292,7 +300,7 @@ Dica: Isto È cÛdigo fonte dun programa
 \end_layout
 
 \begin_layout Standard
-ApÛs desta inxente lavoura inform·tica, arrebatou-me unha vea poÈtica e
+Ap√≥s desta inxente lavoura inform√°tica, arrebatou-me unha vea po√©tica e
  escrebin este haiku:
 \end_layout
 
@@ -301,7 +309,7 @@ LyX, veloz palilleira
 \end_layout
 
 \begin_layout Standard
-teces as miÒas palabras
+teces as mi√±as palabras
 \end_layout
 
 \begin_layout Standard
@@ -310,7 +318,7 @@ nunha fermosa renda de letras.
 status collapsed
 
 \begin_layout Standard
-Dica: Se cadra non È moi boa poesia, mais non deixa de estar en VERSO
+Dica: Se cadra non √© moi boa poesia, mais non deixa de estar en VERSO
 \end_layout
 
 \end_inset
@@ -320,16 +328,17 @@ Dica: Se cadra non È moi boa poesia, mais non deixa de estar en VERSO
 
 \begin_layout Standard
 4.
- CuestiÛns matem·ticas
+ Cuesti√≥ns matem√°ticas
 \lang english
- 
+
 \lang galician
+ 
 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Dica: Semella lÛxico escreber fÛrmulas no modo matem·tico!
+Dica: Semella l√≥xico escreber f√≥rmulas no modo matem√°tico!
 \end_layout
 
 \end_inset
@@ -338,14 +347,14 @@ Dica: Semella lÛxico escreber fÛrmulas no modo matem·tico!
 \end_layout
 
 \begin_layout Standard
-A miÒa ecuaciÛn favorita È a soluciÛn da ecuaciÛn de segundo grau.
- Se ax^2+bx+c=0 (ec.1), entÛn x= -b + ou menos a raiz cadrada de b^2-4ac,
+A mi√±a ecuaci√≥n favorita √© a soluci√≥n da ecuaci√≥n de segundo grau.
+ Se ax^2+bx+c=0 (ec.1), ent√≥n x= -b + ou menos a raiz cadrada de b^2-4ac,
  todo dividido por 2a (ec.
  2).
 \end_layout
 
 \begin_layout Standard
-Outra das miÒas ecuaciÛns favoritas È base do c·lculo: f'(x) define-se como
+Outra das mi√±as ecuaci√≥ns favoritas √© base do c√°lculo: f'(x) define-se como
  o limite cando deltax tende a zero de f(x+deltax) - f(x) dividido por deltax
  (ec.
  3).
@@ -356,13 +365,13 @@ Outra das miÒas ecuaciÛns favoritas È base do c·lculo: f'(x) define-se como
 \end_layout
 
 \begin_layout Standard
-REFER…NCIAS
+REFER√âNCIAS
 \end_layout
 
 \begin_layout Standard
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System.
- Addison-Wesley, Reading, Massachusetts, segunda ediciÛn, 1994.
+ Addison-Wesley, Reading, Massachusetts, segunda edici√≥n, 1994.
  
 \end_layout
 

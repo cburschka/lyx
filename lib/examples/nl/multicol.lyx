@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language dutch
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,7 +35,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -41,7 +49,7 @@ Meervoudige kolommen
 
 door 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \end_layout
 
 \begin_layout Section
@@ -52,12 +60,16 @@ Strekking
 \begin_layout Standard
 
 Het is de bedoeling van dit hoofdstuk aan te geven hoe het LaTeX pakket
+
+\family default
  
 \family typewriter
 multicol
 \family default
  gebruikt kan worden in een LyX document.
- Aangezien LyX het pakket 
+ Aangezien LyX het pakket
+\family default
+ 
 \family typewriter
 multicol
 \family default
@@ -73,7 +85,9 @@ Beperkingen
 
 \begin_layout Standard
 
-Met het 
+Met het
+\family default
+ 
 \family typewriter
 multicol
 \family default
@@ -100,13 +114,17 @@ Twee kolommen
 \begin_layout Standard
 
 Als je twee kolommen in uw tekst wenst, moet je de LaTeX mode gebruiken
- om 
+ om
+\family default
+ 
 \family typewriter
 
 \backslash
 begin{multicols}{2}
 \family default
- te plaatsen op het punt waar je wilt dat de twee kolommen beginnen en 
+ te plaatsen op het punt waar je wilt dat de twee kolommen beginnen en
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -161,7 +179,7 @@ Sir Arthur Conan Doyle
 
 
 \size small
-Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseerd
+Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geÃ¯nteresseerd
  was in, en de fatsoenlijke wereld ontzet door, de moord op de  rechtschapen
  Ronald Adair, onder de meest ongebruikelijke en onverklaarbare  omstandigheden.
  Het publiek had reeds kennis genomen van de bijzonderheden van de misdaad
@@ -249,7 +267,7 @@ begin{multicols}{3}
 
 \size footnotesize
 U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
- heeft geïnteresseerd in misdaad, en dat ik na zijn verdwijnen nooit heb
+ heeft geÃ¯nteresseerd in misdaad, en dat ik na zijn verdwijnen nooit heb
  nagelaten nauwgezet de diverse zaken te lezen die werden voorgeleid.
  Zelf heb ik meer dan eens gepoogd, voor mijn eigen persoonlijke genoegdoening,
  zijn methoden toe te passen in hun oplossingen, hoewel met matig succes.
@@ -414,7 +432,7 @@ De bewijzen van zij die met hem gespeeld hadden-- Mr.
  was geweest en dat er  eerlijk was gedeeld.
  Adair heeft hier misschien vijf pond verloren, maar niet meer.
  Zijn kapitaal was respectabel en een dergelijk verlies kon hem op geen
- enkele manier beïnvloeden.
+ enkele manier beÃ¯nvloeden.
  Hij speelde bijna iedere dag bij een van de clubs, maar hij was een  voorzichti
 ge speler en werd meestal de winnaar.
  Uit de bewijsvoering bleek dat hij, samen met zijn partner kolonel Moran,
@@ -447,7 +465,9 @@ Voorbeelden voor gevorderden
 
 \begin_layout Standard
 
-Zoals je mogelijk weet, kent 
+Zoals je mogelijk weet, kent
+\family default
+ 
 \family typewriter
 multicol
 \family default
@@ -549,6 +569,8 @@ Inleiding en secties
 
 Wat te doen als je wilt dat met de inleiding meteen een nieuwe sectie begint?
  Dat kan, maar alleen door LaTeX opdrachten binnen de parameters voor de
+
+\family default
  
 \family typewriter
 multicols
@@ -645,19 +667,25 @@ Lege ruimte
 
 \begin_layout Standard
 
-Het 
+Het
+\family default
+ 
 \family typewriter
 multicol
 \family default
  pakket vereist dat een zekere ruimte aanwezig is voor en na een deel met
   meerdere kolommen.
-  Bovendien zal 
+  Bovendien zal
+\family default
+ 
 \family typewriter
 multicol
 \family default
  een lege ruimte plaatsen voor en na het deel met meerdere kolommen.
    De opdrachten om de voorkeursinstellingen voor de witruimte aan te passen
- moeten geplaatst worden voor 
+ moeten geplaatst worden voor
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -744,7 +772,9 @@ Opmerking:
 
 \begin_layout Standard
 
-De waarden die u heeft aangepast met 
+De waarden die u heeft aangepast met
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -780,7 +810,9 @@ Kolom breedte en afscheiding
 
 \begin_layout Standard
 
-De breedte van de kolommen in de 
+De breedte van de kolommen in de
+\family default
+ 
 \family sans
 multicols
 \family default
@@ -816,7 +848,7 @@ begin{multicols}{2}
 \size small
 Mijn observatie van Park Lane nr.
   427 heeft weinig bijgedragen aan een oplossing voor het probleem waarin
- ik was geïnteresseerd.
+ ik was geÃ¯nteresseerd.
  Het huis was van de straat gescheiden door een  lage muur en reling, in
  totaal niet meer dan vijf voet hoog.
   Het was daardoor behoorlijk gemakkelijk om in de tuin te komen, maar het
@@ -879,7 +911,9 @@ Vertikale strepen
 
 \begin_layout Standard
 
-Tussen twee kolommen wordt een regel met breedte 
+Tussen twee kolommen wordt een regel met breedte
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -1067,7 +1101,7 @@ of het verhaal opscharrelen in het Gutenberg project, ergens op het web.
 
 \end_inset
 
- Geloof het of niet, maar dit is een erg spannende scène uit het verhaal\SpecialChar \ldots{}
+ Geloof het of niet, maar dit is een erg spannende scÃ¨ne uit het verhaal\SpecialChar \ldots{}
 
 \end_layout
 

@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -37,17 +45,17 @@ status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour Date : 06/07/2003
+Traduction : Mise Ã  jour Date : 06/07/2003
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision : 1.6, Date : 17/01/2003
+Original : RÃ©vision : 1.6, Date : 17/01/2003
 \end_layout
 
 \end_inset
@@ -57,7 +65,7 @@ Original : Révision : 1.6, Date : 17/01/2003
 
 \begin_layout Author
 
-par Jürgen Vigna (jug@sad.it)
+par JÃ¼rgen Vigna (jug@sad.it)
 \begin_inset Foot
 status collapsed
 
@@ -67,6 +75,8 @@ Traduction : Adrien
 \noun on
 Rebollo
 \noun default
+
+\family default
  
 \family typewriter
 <Adrien.Rebollo@gmx.fr>
@@ -763,9 +773,9 @@ Voici le Tableau 2
 
 
 \size normal
-J'utilise ceci quand je dois écrire du texte bilingue (je vis dans une région
- d'Italie dans laquelle environ 60% des gens parlent allemand et où il faut
- donc écrire des lettres en allemand et en italien sur deux colonnes, comme
+J'utilise ceci quand je dois Ã©crire du texte bilingue (je vis dans une rÃ©gion
+ d'Italie dans laquelle environ 60% des gens parlent allemand et oÃ¹ il faut
+ donc Ã©crire des lettres en allemand et en italien sur deux colonnes, comme
  le montre le texte suivant
 \begin_inset Foot
 status collapsed
@@ -798,18 +808,18 @@ status open
 
 \begin_layout Standard
 
-C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français
+C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais
 \begin_inset Foot
 status collapsed
 
@@ -821,9 +831,9 @@ C'est une note en bas de page.
 \end_inset
 
 .
- C'est un texte en français.
- C'est un texte en français.
- C'est un texte en français.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
+ C'est un texte en franÃ§ais.
 \end_layout
 
 \end_inset
@@ -885,13 +895,13 @@ This is a footnote.
 
 \begin_layout Standard
 
-J'espère que cela aidera à comprendre à quoi peuvent par exemple servir
+J'espÃ¨re que cela aidera Ã  comprendre Ã  quoi peuvent par exemple servir
  les mini-pages !
 \end_layout
 
 \begin_layout Subsection*
 
-Salutations, Jürgen
+Salutations, JÃ¼rgen
 \end_layout
 
 \end_body

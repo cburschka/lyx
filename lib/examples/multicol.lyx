@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,7 +35,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -41,7 +49,7 @@ Multiple Columns
 
 by 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \end_layout
 
 \begin_layout Section
@@ -51,12 +59,16 @@ Purpose
 
 \begin_layout Standard
 
-The aim for this chapter is to show how the LaTeX package 
+The aim for this chapter is to show how the LaTeX package
+\family default
+ 
 \family typewriter
 multicol
 \family default
  can be used in a LyX document.
- As LyX doesn't support the 
+ As LyX doesn't support the
+\family default
+ 
 \family typewriter
 multicol
 \family default
@@ -71,7 +83,9 @@ Limitations
 
 \begin_layout Standard
 
-The 
+The
+\family default
+ 
 \family typewriter
 multicol
 \family default
@@ -98,13 +112,17 @@ Two columns
 \begin_layout Standard
 
 If you want to have two columns in your text, you have use LaTeX mode to
- insert 
+ insert
+\family default
+ 
 \family typewriter
 
 \backslash
 begin{multicols}{2}
 \family default
- at the point where you want the two column layout to start, and then 
+ at the point where you want the two column layout to start, and then
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -440,7 +458,9 @@ Advanced Examples
 
 \begin_layout Standard
 
-As you probably know 
+As you probably know
+\family default
+ 
 \family typewriter
 multicol
 \family default
@@ -537,7 +557,9 @@ Preface and sections
 \begin_layout Standard
 
 What if you want the preface to be a sectioning command? That can be done,
- but only through LaTeX commands inside the parameters for the 
+ but only through LaTeX commands inside the parameters for the
+\family default
+ 
 \family typewriter
 multicols
 \family default
@@ -631,19 +653,25 @@ Free Space
 
 \begin_layout Standard
 
-The 
+The
+\family default
+ 
 \family typewriter
 multicol
 \family default
  package demands that a certain amount of space is available before and
  after a multicolumn section.
- In addition 
+ In addition
+\family default
+ 
 \family typewriter
 multicol
 \family default
  inserts a given space in front of and after the multicol section.
  The commands to change the default settings for this must be given just
- before the 
+ before the
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -730,7 +758,9 @@ Note:
 
 \begin_layout Standard
 
-The values you set with 
+The values you set with
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -766,7 +796,9 @@ Column Width and Separation
 
 \begin_layout Standard
 
-The width of the columns inside the 
+The width of the columns inside the
+\family default
+ 
 \family sans
 multicols
 \family default
@@ -864,7 +896,9 @@ Vertical Lines
 
 \begin_layout Standard
 
-Between every two columns, a rule of width 
+Between every two columns, a rule of width
+\family default
+ 
 \family typewriter
 
 \backslash

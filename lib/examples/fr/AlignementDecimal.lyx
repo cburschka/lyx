@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -9,13 +9,21 @@
 \end_preamble
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,14 +36,14 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
 
-Une meilleure solution pour l'Alignement Décimal
+Une meilleure solution pour l'Alignement DÃ©cimal
 \begin_inset Foot
 status collapsed
 
@@ -45,6 +53,8 @@ Traduction par Adrien
 \noun on
 Rebollo
 \noun default
+
+\family default
  
 \family typewriter
 <Adrien.Rebollo@gmx.fr>
@@ -60,17 +70,17 @@ status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour Date : 07/07/2003
+Traduction : Mise Ã  jour Date : 07/07/2003
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision : 1.5, Date : 17/01/2003
+Original : RÃ©vision : 1.5, Date : 17/01/2003
 \end_layout
 
 \end_inset
@@ -80,19 +90,21 @@ Original : Révision : 1.5, Date : 17/01/2003
 
 \begin_layout Standard
 
-Une méthode alternative pour obtenir un alignement décimal dans les tableaux
- est de passer par le paquetage 
+Une mÃ©thode alternative pour obtenir un alignement dÃ©cimal dans les tableaux
+ est de passer par le paquetage
+\family default
+ 
 \family typewriter
 dcolumn
 \family default
 .
- Ajoutez ce qui suit au préambule LaTeX
+ Ajoutez ce qui suit au prÃ©ambule LaTeX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
-NdT : Si votre séparateur décimal est la virgule.
+NdT : Si votre sÃ©parateur dÃ©cimal est la virgule.
  Si c'est le point, remplacez les virgules par des points.
 \end_layout
 
@@ -117,31 +129,37 @@ newcolumntype{d}[1]{D{,}{,}{#1}}
 
 \begin_layout Standard
 
-Pour avoir une colonne alignée sur le symbole décimal, entrez ce qui suit
- dans le champ 
+Pour avoir une colonne alignÃ©e sur le symbole dÃ©cimal, entrez ce qui suit
+ dans le champ
+\family default
+ 
 \family sans
 Colonne\InsetSpace ~
-spéciale\SpecialChar \menuseparator
+spÃ©ciale\SpecialChar \menuseparator
 Alignement
 \family default
- de la fenêtre 
+ de la fenÃªtre
+\family default
+ 
 \family sans
 Style\InsetSpace ~
 du\InsetSpace ~
 Tableau\SpecialChar \menuseparator
-Colonne/Rangée
+Colonne/RangÃ©e
 \family default
  :
 \end_layout
 
 \begin_layout LyX-Code
 
-d{nombre de chiffres après la virgule dans les données}
+d{nombre de chiffres aprÃ¨s la virgule dans les donnÃ©es}
 \end_layout
 
 \begin_layout Standard
 
-Dans le tableau suivant nous avons entré 
+Dans le tableau suivant nous avons entrÃ©
+\family default
+ 
 \family typewriter
 d{4}
 \family default
@@ -311,36 +329,44 @@ Valeur
 
 \begin_layout Standard
 
-Pour créer de l'espace supplémentaire dans la colonne augmentez juste le
- nombre de décimales dans 
+Pour crÃ©er de l'espace supplÃ©mentaire dans la colonne augmentez juste le
+ nombre de dÃ©cimales dans
+\family default
+ 
 \family typewriter
 d{}
 \family default
 .
- Cocher l'attribut 
+ Cocher l'attribut
+\family default
+ 
 \family sans
 Multicolonne
 \family default
- pour une case isolée la rend insensible à l'alignement décimal, ce qui
+ pour une case isolÃ©e la rend insensible Ã  l'alignement dÃ©cimal, ce qui
  est commode.
- Un inconvénient de cette méthode est que le mode mathématique n'est pas
- autorisé dans une case avec l'alignement décimal sauf si l'attribut 
+ Un inconvÃ©nient de cette mÃ©thode est que le mode mathÃ©matique n'est pas
+ autorisÃ© dans une case avec l'alignement dÃ©cimal sauf si l'attribut
+\family default
+ 
 \family sans
 Multicolonne
 \family default
- est coché.
+ est cochÃ©.
 \end_layout
 
 \begin_layout Standard
 
-Cette méthode offre la même flexibilité que le paquetage 
+Cette mÃ©thode offre la mÃªme flexibilitÃ© que le paquetage
+\family default
+ 
 \family typewriter
 dcolumn
 \family default
 .
- On peut, par exemple, changer le séparateur d'alignement, et avoir des
- séparateurs d'alignement différents pour des colonnes différentes en définissan
-t plusieurs types de colonnes dans le préambule.
+ On peut, par exemple, changer le sÃ©parateur d'alignement, et avoir des
+ sÃ©parateurs d'alignement diffÃ©rents pour des colonnes diffÃ©rentes en dÃ©finissan
+t plusieurs types de colonnes dans le prÃ©ambule.
  La syntaxe est comme suit :
 \end_layout
 
@@ -362,11 +388,13 @@ NdT : non traduit car je ne suis pas certain du sens
 
 \begin_layout Standard
 
-Le lecteur intéressé se référera à la documentation du paquetage 
+Le lecteur intÃ©ressÃ© se rÃ©fÃ©rera Ã  la documentation du paquetage
+\family default
+ 
 \family typewriter
 dcolumn
 \family default
- pour plus de détails.
+ pour plus de dÃ©tails.
 \end_layout
 
 \end_body

@@ -1,5 +1,5 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass beamer
@@ -151,13 +151,21 @@
 \options notes=show
 \language english
 \inputencoding auto
-\fontscheme times
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 2
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -170,7 +178,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -210,8 +218,7 @@ Outline
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -938,11 +945,15 @@ status collapsed
 
 \end_inset
 
-A 
+A
+\color none
+ 
 \color red
 tournament
+\color none
+ 
 \color inherit
- is a
+is a
 \end_layout
 
 \begin_deeper
@@ -1173,27 +1184,39 @@ only<10->{the Approximation Problem}}
 
 \begin_deeper
 \begin_layout Itemize
-A 
+A
+\color none
+ 
 \color red
 graph
-\color inherit
+\color none
  
+\color inherit
+
 \begin_inset Formula $G=(V,E)$
 \end_inset
 
-, a 
+, a
+\color none
+ 
 \color red
 source
-\color inherit
+\color none
  
+\color inherit
+
 \begin_inset Formula $s\in V$
 \end_inset
 
- and a 
+ and a
+\color none
+ 
 \color red
 target
-\color inherit
+\color none
  
+\color inherit
+
 \begin_inset Formula $t\in V$
 \end_inset
 
@@ -1211,7 +1234,9 @@ status collapsed
 
 \end_inset
 
-A 
+A
+\color none
+ 
 \color red
 maximum distance
 \color inherit
@@ -1247,11 +1272,15 @@ status collapsed
 
 \end_inset
 
-An 
+An
+\color none
+ 
 \color red
 approximation ratio
-\color inherit
+\color none
  
+\color inherit
+
 \begin_inset Formula $r>1$
 \end_inset
 
@@ -3448,15 +3477,19 @@ Definition of the Tournament Reachability Problem
 \end_layout
 
 \begin_layout Definition
-Let 
+Let
+\color none
+ 
 \color red
 
 \begin_inset Formula $\Lang{reach}_{\operatorname{tourn}}$
 \end_inset
 
 
+\color none
+ 
 \color inherit
- contain all triples 
+contain all triples 
 \begin_inset Formula $(T,s,t)$
 \end_inset
 
@@ -3569,12 +3602,16 @@ the Distance Problem
 \end_layout
 
 \begin_layout Definition
-Let 
+Let
+\color none
+ 
 \color red
 
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
 \end_inset
 
+
+\color none
  
 \color inherit
 contain all tuples 
@@ -5653,15 +5690,19 @@ Approximators Compute Paths that Are Nearly As Short As a Shortest Path
 \end_layout
 
 \begin_layout Definition
-An 
+An
+\color none
+ 
 \color red
 approximation scheme for 
 \begin_inset Formula $\Lang{tournament-shortest-path}$
 \end_inset
 
 
+\color none
+ 
 \color inherit
- gets as input
+gets as input
 \end_layout
 
 \begin_deeper
@@ -5799,13 +5840,19 @@ status inlined
 
 \begin_deeper
 \begin_layout Itemize
-Tournament 
+Tournament
+\color none
+ 
 \color red
 reachability
-\color inherit
- is in
-\color red
+\color none
  
+\color inherit
+is in
+\color none
+ 
+\color red
+
 \begin_inset Formula $\Class{AC}^{0}$
 \end_inset
 
@@ -5816,25 +5863,39 @@ reachability
 \end_layout
 
 \begin_layout Itemize
-There exists a 
+There exists a
+\color none
+ 
 \color red
 logspace approximation scheme
+\color none
+ 
 \color inherit
- for 
+for
+\color none
+ 
 \color red
 approximating
+\color none
+ 
 \color inherit
- shortest paths in tournaments.
+shortest paths in tournaments.
 \end_layout
 
 \begin_layout Itemize
-Finding 
+Finding
+\color none
+ 
 \color red
 shortest paths
-\color inherit
- in tournaments is
-\color red
+\color none
  
+\color inherit
+in tournaments is
+\color none
+ 
+\color red
+
 \begin_inset Formula $\Class{NL}$
 \end_inset
 
@@ -5936,7 +5997,10 @@ beamertemplatebookbibitems
 
 \begin_layout Bibliography
 
-\bibitem {Moon1968}
+\begin_inset LatexCommand bibitem
+key "Moon1968"
+
+\end_inset
 \InsetSpace ~
 John Moon.
  
@@ -5952,6 +6016,8 @@ newblock
 
 \end_inset
 
+
+\emph default
  
 \emph on
 Topics on Tournaments.
@@ -5989,7 +6055,10 @@ beamertemplatearticlebibitems
 
 \begin_layout Bibliography
 
-\bibitem {NickelsenT2002}
+\begin_inset LatexCommand bibitem
+key "NickelsenT2002"
+
+\end_inset
 \InsetSpace ~
 Arfst Nickelsen and Till Tantau.
  
@@ -6018,7 +6087,9 @@ newblock
 
 \end_inset
 
- In 
+ In
+\emph default
+ 
 \emph on
 Proc.
  of COCOON 2002
@@ -6028,7 +6099,10 @@ Proc.
 
 \begin_layout Bibliography
 
-\bibitem {Tantau2004b}
+\begin_inset LatexCommand bibitem
+key "Tantau2004b"
+
+\end_inset
 \InsetSpace ~
 Till Tantau 
 \begin_inset ERT
@@ -6057,7 +6131,9 @@ newblock
 
 \end_inset
 
- In 
+ In
+\emph default
+ 
 \emph on
 Proc.
  of STACS 2004
@@ -6123,11 +6199,15 @@ Definition of Independence Number of a Graph
 \end_layout
 
 \begin_layout Definition
-The 
+The
+\color none
+ 
 \color red
 independence number
-\color inherit
+\color none
  
+\color inherit
+
 \begin_inset Formula $\alpha(G)$
 \end_inset
 
@@ -6157,11 +6237,15 @@ For each\InsetSpace ~
 \begin_inset Formula $k$
 \end_inset
 
-, 
+,
+\color none
+ 
 \color red
 reachability
+\color none
+ 
 \color inherit
- in graphs with independence number
+in graphs with independence number
 \newline
 at most\InsetSpace ~
 
@@ -6185,11 +6269,15 @@ For each\InsetSpace ~
 \begin_inset Formula $k$
 \end_inset
 
-, there exists a 
+, there exists a
+\color none
+ 
 \color red
 logspace approximation scheme
+\color none
+ 
 \color inherit
- for approximating the shortest path in graphs with independence number
+for approximating the shortest path in graphs with independence number
  at most\InsetSpace ~
 
 \begin_inset Formula $k$
@@ -6208,16 +6296,22 @@ For each\InsetSpace ~
 \begin_inset Formula $k$
 \end_inset
 
-, finding the 
+, finding the
+\color none
+ 
 \color red
 shortest path
+\color none
+ 
 \color inherit
- in graphs with independence number at most\InsetSpace ~
+in graphs with independence number at most\InsetSpace ~
 
 \begin_inset Formula $k$
 \end_inset
 
- is 
+ is
+\color none
+ 
 \color red
 
 \begin_inset Formula $\Class{NL}$

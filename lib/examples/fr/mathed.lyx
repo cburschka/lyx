@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,7 +8,14 @@
 \end_preamble
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \float_placement H
 \paperfontsize default
@@ -16,6 +23,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,30 +36,30 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Section
 
-Conversion de et vers l'éditeur mathématique
+Conversion de et vers l'Ã©diteur mathÃ©matique
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour Date : 07/07/2003
+Traduction : Mise Ã  jour Date : 07/07/2003
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision: 1.8, Date : 17/01/2003
+Original : RÃ©vision: 1.8, Date : 17/01/2003
 \end_layout
 
 \end_inset
@@ -62,14 +70,16 @@ Original : Révision: 1.8, Date : 17/01/2003
 \begin_layout Standard
 
 Vous pouvez taper des maths dans le corps du document puis les convertir
- en mode mathématique en les sélectionnant et en tapant 
+ en mode mathÃ©matique en les sÃ©lectionnant et en tapant
+\family default
+ 
 \family sans
 M-c\InsetSpace ~
 m
 \family default
 .
- Le texte peut être séparé par des délimiteurs ou non.
- Ainsi, en sélectionnant l'une des formules ci-dessous :
+ Le texte peut Ãªtre sÃ©parÃ© par des dÃ©limiteurs ou non.
+ Ainsi, en sÃ©lectionnant l'une des formules ci-dessous :
 \end_layout
 
 \begin_layout Standard
@@ -191,15 +201,17 @@ vous obtiendrez :
 \begin_layout Standard
 
 Pour l'instant, il n'y a aucun moyen officiel de reconvertir le contenu
- d'un insert mathématique en texte standard.
- Cependant vous pouvez y arriver par des voies détournées.
- Sélectionnez le contenu de l'insert mathématique (pas l'insert lui-même,
- seulement son contenu), mais ne le copiez 
+ d'un insert mathÃ©matique en texte standard.
+ Cependant vous pouvez y arriver par des voies dÃ©tournÃ©es.
+ SÃ©lectionnez le contenu de l'insert mathÃ©matique (pas l'insert lui-mÃªme,
+ seulement son contenu), mais ne le copiez
+\emph default
+ 
 \emph on
 pas
 \emph default
  dans le tampon LyX.
- Il est maintenant en mémoire dans le tampon du système X et peut être recollé
+ Il est maintenant en mÃ©moire dans le tampon du systÃ¨me X et peut Ãªtre recollÃ©
  dans le document avec le bouton milieu de la souris.
 \end_layout
 
@@ -210,21 +222,23 @@ Afficher les symboles LaTeX
 
 \begin_layout Standard
 
-Autrefois, LyX fournissait un équivalent visuel pour une petite partie des
- symboles mathématiques disponibles en LaTeX.
- La situation a changé à partir de la version 1.2, il offre désormais l'affichage
- de la plupart des symboles définis en LaTeX basique et 
+Autrefois, LyX fournissait un Ã©quivalent visuel pour une petite partie des
+ symboles mathÃ©matiques disponibles en LaTeX.
+ La situation a changÃ© Ã  partir de la version 1.2, il offre dÃ©sormais l'affichage
+ de la plupart des symboles dÃ©finis en LaTeX basique et
+\emph default
+ 
 \emph on
 tous
 \emph default
- les symboles supplémentaires définis par l'AMS.
- Par souci d'exhaustivité, nous vous reproduisons plus bas les tableaux
+ les symboles supplÃ©mentaires dÃ©finis par l'AMS.
+ Par souci d'exhaustivitÃ©, nous vous reproduisons plus bas les tableaux
  de symboles qui se trouvent dans les livres de Lamport et de Goossen.
 \end_layout
 
 \begin_layout Section
 
-Quelques tableaux de symboles mathématiques
+Quelques tableaux de symboles mathÃ©matiques
 \end_layout
 
 \begin_layout Standard
@@ -238,7 +252,7 @@ The LaTeX companion
 \end_inset
 
  de Goossen et al.
- vont apparaître à l'écran dans toute leur splendeur.
+ vont apparaÃ®tre Ã  l'Ã©cran dans toute leur splendeur.
 \end_layout
 
 \begin_layout Standard
@@ -608,9 +622,17 @@ tilde{a}
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Accents en mode mathématique
+\begin_layout 
+
+Accents en mode mathÃ©matique
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1868,9 +1890,17 @@ Omega
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Lettres grecques
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2934,9 +2964,17 @@ amalg
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Symboles d'opérations binaires
+\begin_layout 
+
+Symboles d'opÃ©rations binaires
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4108,9 +4146,17 @@ dashv
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Symboles de relations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5006,9 +5052,17 @@ nwarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Symboles flèches
+\begin_layout 
+
+Symboles flÃ¨ches
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6042,9 +6096,17 @@ partial
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Symboles divers
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6500,9 +6562,17 @@ biguplus
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Symboles de taille variable
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6996,9 +7066,17 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Symboles de fonctions
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7582,9 +7660,17 @@ backslash
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Délimiteurs
+\begin_layout 
+
+DÃ©limiteurs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7966,9 +8052,17 @@ frac{abc}{xyz}
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Structures mathématiques LaTeX
+\begin_layout 
+
+Structures mathÃ©matiques LaTeX
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8150,9 +8244,17 @@ gimel
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Grec et hébreu AMS
+\begin_layout 
+
+Grec et hÃ©breu AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8304,9 +8406,17 @@ lrcorner
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Délimiteurs AMS
+\begin_layout 
+
+DÃ©limiteurs AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9278,9 +9388,17 @@ rightsquigarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Flèches AMS
+\begin_layout 
+
+FlÃ¨ches AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9488,9 +9606,17 @@ nLeftrightarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Négations de flèches AMS
+\begin_layout 
+
+NÃ©gations de flÃ¨ches AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11418,9 +11544,17 @@ because
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Relations binaires AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12918,9 +13052,17 @@ varsupsetneqq
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Négations de relations binaires AMS
+\begin_layout 
+
+NÃ©gations de relations binaires AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13634,9 +13776,17 @@ intercal
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
 
-Opérations binaires AMS
+\begin_layout 
+
+OpÃ©rations binaires AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14436,9 +14586,17 @@ diagdown
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Divers AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

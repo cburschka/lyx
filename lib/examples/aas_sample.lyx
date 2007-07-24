@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass aastex
@@ -12,13 +12,21 @@
 \end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,7 +39,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -416,8 +424,8 @@ Footnotes can be inserted like this.
  amplitude squared becomes unwieldy.
  Our calculations use the helicity techniques developed by other authors
  
-\begin_inset LatexCommand \cite{hag86}
-
+\begin_inset LatexCommand cite
+key "hag86"
 \end_inset
 
 ; we briefly summarize below.
@@ -431,8 +439,8 @@ Formalism
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \label{bozomath}
-
+\begin_inset LatexCommand label
+name "bozomath"
 \end_inset
 
 
@@ -642,8 +650,8 @@ In these expressions
  axis.
  Results of this task are shown in table\InsetSpace ~
 
-\begin_inset LatexCommand \ref{tbl-2}
-
+\begin_inset LatexCommand ref
+reference "tbl-2"
 \end_inset
 
 .
@@ -708,15 +716,15 @@ We are grateful to V.
  N.
  Phillips for doing the math in section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{bozomath}
-
+\begin_inset LatexCommand ref
+reference "bozomath"
 \end_inset
 
 .
  More information on the AASTeX macros package are available at 
 
-\begin_inset LatexCommand \url{http://www.aas.org/publications/aastex}
-
+\begin_inset LatexCommand url
+target "http://www.aas.org/publications/aastex"
 \end_inset
 
 
@@ -805,9 +813,13 @@ e=mc^{2}
 \end_layout
 
 \begin_layout References
-\bibitem [Auri\`ere(1982)]{aur82}
+\begin_inset LatexCommand bibitem
+label "Auri\`ere(1982)"
+key "aur82"
 
-Auri\i \`{e}
+\end_inset
+
+Auriè
 re, M.
  1982, 
 \begin_inset ERT
@@ -825,7 +837,11 @@ aap
 \end_layout
 
 \begin_layout References
-\bibitem [Canizares et al.(1978)]{can78}
+\begin_inset LatexCommand bibitem
+label "Canizares et al.(1978)"
+key "can78"
+
+\end_inset
 
 Canizares, C.
  R., Grindlay, J.
@@ -848,7 +864,11 @@ apj
 \end_layout
 
 \begin_layout References
-\bibitem [Djorgovski and King(1984)]{djo84}
+\begin_inset LatexCommand bibitem
+label "Djorgovski and King(1984)"
+key "djo84"
+
+\end_inset
 
 Djorgovski, S., and King, I.
  R.
@@ -868,14 +888,22 @@ apjl
 \end_layout
 
 \begin_layout References
-\bibitem [Hagiwara and Zeppenfeld(1986)]{hag86}
+\begin_inset LatexCommand bibitem
+label "Hagiwara and Zeppenfeld(1986)"
+key "hag86"
+
+\end_inset
 
 Hagiwara, K., and Zeppenfeld, D.
  1986, Nucl.Phys., 274, 1 
 \end_layout
 
 \begin_layout References
-\bibitem [Harris and van den Bergh(1984)]{har84}
+\begin_inset LatexCommand bibitem
+label "Harris and van den Bergh(1984)"
+key "har84"
+
+\end_inset
 
 Harris, W.
  E., and van den Bergh, S.
@@ -895,15 +923,23 @@ aj
 \end_layout
 
 \begin_layout References
-\bibitem [H\`enon(1961)]{hen61}
+\begin_inset LatexCommand bibitem
+label "H\`enon(1961)"
+key "hen61"
 
-H\i \'{e}
+\end_inset
+
+Hé
 non, M.
  1961, Ann.d'Ap., 24, 369 
 \end_layout
 
 \begin_layout References
-\bibitem [King(1966)]{kin66}
+\begin_inset LatexCommand bibitem
+label "King(1966)"
+key "kin66"
+
+\end_inset
 
 King, I.
  R.
@@ -923,7 +959,11 @@ aj
 \end_layout
 
 \begin_layout References
-\bibitem [King(1975)]{kin75}
+\begin_inset LatexCommand bibitem
+label "King(1975)"
+key "kin75"
+
+\end_inset
 
 King, I.
  R.
@@ -932,7 +972,11 @@ King, I.
 \end_layout
 
 \begin_layout References
-\bibitem [King et al.(1968)]{kin68}
+\begin_inset LatexCommand bibitem
+label "King et al.(1968)"
+key "kin68"
+
+\end_inset
 
 King, I.
  R., Hedemann, E., Hodge, S.
@@ -954,7 +998,11 @@ aj
 \end_layout
 
 \begin_layout References
-\bibitem [Kron et al.(1984)]{kro84}
+\begin_inset LatexCommand bibitem
+label "Kron et al.(1984)"
+key "kro84"
+
+\end_inset
 
 Kron, G.
  E., Hewitt, A.
@@ -976,7 +1024,11 @@ pasp
 \end_layout
 
 \begin_layout References
-\bibitem [Lynden-Bell and Wood(1968)]{lyn68}
+\begin_inset LatexCommand bibitem
+label "Lynden-Bell and Wood(1968)"
+key "lyn68"
+
+\end_inset
 
 Lynden-Bell, D., and Wood, R.
  1968, 
@@ -995,7 +1047,11 @@ mnras
 \end_layout
 
 \begin_layout References
-\bibitem [Newell and O'Neil(1978)]{new78}
+\begin_inset LatexCommand bibitem
+label "Newell and O'Neil(1978)"
+key "new78"
+
+\end_inset
 
 Newell, E.
  B., and O'Neil, E.
@@ -1016,7 +1072,11 @@ apjs
 \end_layout
 
 \begin_layout References
-\bibitem [Ortolani et al.(1985)]{ort85}
+\begin_inset LatexCommand bibitem
+label "Ortolani et al.(1985)"
+key "ort85"
+
+\end_inset
 
 Ortolani, S., Rosino, L., and Sandage, A.
  1985, 
@@ -1035,7 +1095,11 @@ aj
 \end_layout
 
 \begin_layout References
-\bibitem [Peterson(1976)]{pet76}
+\begin_inset LatexCommand bibitem
+label "Peterson(1976)"
+key "pet76"
+
+\end_inset
 
 Peterson, C.
  J.
@@ -1055,7 +1119,11 @@ aj
 \end_layout
 
 \begin_layout References
-\bibitem [Spitzer(1985)]{spi85}
+\begin_inset LatexCommand bibitem
+label "Spitzer(1985)"
+key "spi85"
+
+\end_inset
 
 Spitzer, L.
  1985, Dynamics of Star Clusters, J.
@@ -1083,8 +1151,8 @@ clearpage
 \begin_layout FigCaption
 
 
-\begin_inset LatexCommand \label{fig1}
-
+\begin_inset LatexCommand label
+name "fig1"
 \end_inset
 
 This is the first figure and it uses sgi9259.eps as its EPS figure file.
@@ -1093,8 +1161,8 @@ This is the first figure and it uses sgi9259.eps as its EPS figure file.
 \begin_layout FigCaption
 
 
-\begin_inset LatexCommand \label{fig2}
-
+\begin_inset LatexCommand label
+name "fig2"
 \end_inset
 
 This is an example of a long figure caption that must be set as a paragraph.
@@ -1106,8 +1174,8 @@ This is an example of a long figure caption that must be set as a paragraph.
 \begin_layout FigCaption
 
 
-\begin_inset LatexCommand \label{fig3}
-
+\begin_inset LatexCommand label
+name "fig3"
 \end_inset
 
 This figure has no associated EPS file, so the optional parameter is omitted.
@@ -1138,10 +1206,18 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Terribly relevant tabular information.
-\begin_inset LatexCommand \label{tbl-2}
+\begin_inset LatexCommand label
+name "tbl-2"
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

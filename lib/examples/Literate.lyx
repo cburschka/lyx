@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass literate-article
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -63,7 +71,9 @@ Note:
 \series default
  This example program is provided for educational use only.
  The functionality in this C program has been superceded by the equivalent
- Python code in 
+ Python code in
+\emph default
+ 
 \emph on
 examples/listerrors.lyx
 \emph default
@@ -90,8 +100,7 @@ today
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -247,6 +256,8 @@ The output format
 
 The output format mimics the TeX error messages format.
  This function prints a number of lines residing in the global variable
+
+\family default
  
 \family typewriter
 buffer
@@ -1054,11 +1065,15 @@ To build this program, we want to add the
 \begin_inset Quotes erd
 \end_inset
 
- option in the tangle command to force gdb to load the file 
+ option in the tangle command to force gdb to load the file
+\family default
+ 
 \family typewriter
 Literate.nw
 \family default
- instead of 
+ instead of
+\family default
+ 
 \family typewriter
 listerrors.c
 \family default
@@ -1091,13 +1106,17 @@ gcc -g -o listerrors listerrors.c
 
 \begin_layout Standard
 
-This project can be tangled and compiled from LyX if you set 
+This project can be tangled and compiled from LyX if you set
+\family default
+ 
 \family typewriter
 
 \backslash
 build_command
 \family default
- to call a generic script that always extracts a scrap named 
+ to call a generic script that always extracts a scrap named
+\family default
+ 
 \family typewriter
 build-script
 \family default

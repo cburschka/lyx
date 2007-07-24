@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language english
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -50,7 +58,7 @@ in LyX
 
 \series bold
 \size largest
-by Jürgen Vigna (jug@sad.it)
+by JÃ¼rgen Vigna (jug@sad.it)
 \end_layout
 
 \begin_layout Standard
@@ -792,7 +800,7 @@ status collapsed
 
 
 \lang german
-Dies ist eine Fußnote
+Dies ist eine FuÃŸnote
 \end_layout
 
 \end_inset
@@ -864,7 +872,7 @@ I hope this helps understand for what f.ex.
 
 \begin_layout Subsection*
 
-Greets Jürgen
+Greets JÃ¼rgen
 \end_layout
 
 \end_body

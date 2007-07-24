@@ -1,17 +1,25 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language galician
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -38,7 +46,9 @@ O primeiro que debe saber para empregar o LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX ven con unha excelente documentación ---use-a, por favor! Comece con
+LyX ven con unha excelente documentaciÃ³n ---use-a, por favor! Comece con
+
+\family default
  
 \family sans
 \bar under
@@ -48,10 +58,12 @@ xuda->
 \bar under
 I
 \bar default
-ntrodución
+ntroduciÃ³n
 \family default
-, onde se apresenta a filosofia que guia o LyX, e a sua documentación.
- A seguir é o momento de ler o tutorial, 
+, onde se apresenta a filosofia que guia o LyX, e a sua documentaciÃ³n.
+ A seguir Ã© o momento de ler o tutorial,
+\family default
+ 
 \family sans
 \bar under
 A
@@ -62,11 +74,11 @@ T
 \bar default
 utorial
 \family default
-, para aprender as cuestións mais básicas.
+, para aprender as cuestiÃ³ns mais bÃ¡sicas.
 \end_layout
 
 \begin_layout Enumerate
-LyX é o que nos chamamos un 
+LyX Ã© o que nos chamamos un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -75,15 +87,15 @@ procesador de documentos
 \end_inset
 
 .
- Non está moi lonxe dos procesadores de texto comuns, mais parte dunha filosofia
+ Non estÃ¡ moi lonxe dos procesadores de texto comuns, mais parte dunha filosofia
  diferente, facilitando a escrita de documentos, sobre todo os complexos.
- A documentación permitira-lle ver as diferéncias, e a forma de sacar proveito
- das características únicas do LyX.
+ A documentaciÃ³n permitira-lle ver as diferÃ©ncias, e a forma de sacar proveito
+ das caracterÃ­sticas Ãºnicas do LyX.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Mencionamos xa que debe ler a documentación?
+Mencionamos xa que debe ler a documentaciÃ³n?
 \end_layout
 
 \end_inset
@@ -92,10 +104,14 @@ Mencionamos xa que debe ler a documentación?
 \end_layout
 
 \begin_layout Enumerate
-O resultado ao imprimir os documentos no LyX é excelente! Seleccione
+O resultado ao imprimir os documentos no LyX Ã© excelente! Seleccione
+\family sans
+\bar default
+\family default
+ 
 \family sans
 \bar under
- A
+A
 \bar default
 rquivo->Ver\InsetSpace ~
 Pos
@@ -110,32 +126,38 @@ cript
 \begin_layout Enumerate
 Si, LyX pode reproducir (case todas) as funcionalidades do LaTeX.
  E si, LyX pode importar arquivos do LaTeX.
- Os usuários experientes do LaTeX deben ler o capítulo 
+ Os usuÃ¡rios experientes do LaTeX deben ler o capÃ­tulo 
 \begin_inset Quotes eld
 \end_inset
 
-LyX para usuários de LaTeX
+LyX para usuÃ¡rios de LaTeX
 \begin_inset Quotes erd
 \end_inset
 
  do
+\emph default
+ 
 \emph on
- Tutorial,
+Tutorial,
 \emph default
  e ler por riba o resto do documento.
- (O resto dos mortais non teñen por que se preocupar, non é preciso coñecer
+ (O resto dos mortais non teÃ±en por que se preocupar, non Ã© preciso coÃ±ecer
  LaTeX para usar o LyX.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX incorpora diversos recursos para os que non escrebemos en inglés.
- As teclas de atallo, barra de ferramentas, e moitas outras características
- son altamente configurábeis (a maioria editando o seu arquivo 
+LyX incorpora diversos recursos para os que non escrebemos en inglÃ©s.
+ As teclas de atallo, barra de ferramentas, e moitas outras caracterÃ­sticas
+ son altamente configurÃ¡beis (a maioria editando o seu arquivo
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
 ).
- Vexa 
+ Vexa
+\family default
+ 
 \family sans
 \bar under
 A
@@ -144,19 +166,21 @@ xuda->
 \bar under
 P
 \bar default
-ersonalización
+ersonalizaciÃ³n
 \family default
- para máis detalles.
+ para mÃ¡is detalles.
 \end_layout
 
 \begin_layout Enumerate
-A páxina na internet do LyX é 
+A pÃ¡xina na internet do LyX Ã©
+\family default
+ 
 \family typewriter
 www.lyx.org
 \family default
 .
- Nela pode obter mais información sobre o programa, inscreber-se na(s) lista(s)
- de discusión, ver a Turnê Gráfica etc.
+ Nela pode obter mais informaciÃ³n sobre o programa, inscreber-se na(s) lista(s)
+ de discusiÃ³n, ver a TurnÃª GrÃ¡fica etc.
 \end_layout
 
 \end_body

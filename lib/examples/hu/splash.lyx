@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -9,13 +9,21 @@
 \end_preamble
 \language magyar
 \inputencoding latin2
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,22 +36,24 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Üdvözli Önt a LyX!
+ÃœdvÃ¶zli Ã–nt a LyX!
 \end_layout
 
 \begin_layout Section*
-Az elsõ N dolog, amit tudnia kell a LyX-rõl
+Az elsÅ‘ N dolog, amit tudnia kell a LyX-rÅ‘l
 \end_layout
 
 \begin_layout Enumerate
-A LyX rendkívül jól dokumentált.
- Kérjük használja ki ezt! Kezdje a 
+A LyX rendkÃ­vÃ¼l jÃ³l dokumentÃ¡lt.
+ KÃ©rjÃ¼k hasznÃ¡lja ki ezt! Kezdje a
+\family default
+ 
 \family sans
 \bar under
 
@@ -61,12 +71,12 @@ mbox{
 
 S
 \bar default
-egítség\SpecialChar \menuseparator
+egÃ­tsÃ©g\SpecialChar \menuseparator
 
 \bar under
 B
 \bar default
-evezetés
+evezetÃ©s
 \begin_inset ERT
 status collapsed
 
@@ -79,9 +89,11 @@ status collapsed
 
 
 \family default
- elolvasásával, ami gyors áttekintést ad a dokumentáció használatával kapcsolatb
+ elolvasÃ¡sÃ¡val, ami gyors Ã¡ttekintÃ©st ad a dokumentÃ¡ciÃ³ hasznÃ¡latÃ¡val kapcsolatb
 an.
- Aztán folytassa a 
+ AztÃ¡n folytassa a
+\family default
+ 
 \family sans
 \bar under
 
@@ -99,12 +111,12 @@ mbox{
 
 S
 \bar default
-egítség\SpecialChar \menuseparator
+egÃ­tsÃ©g\SpecialChar \menuseparator
 
 \bar under
 T
 \bar default
-ankönyv
+ankÃ¶nyv
 \begin_inset ERT
 status collapsed
 
@@ -117,8 +129,8 @@ status collapsed
 
 
 \family default
- olvasásával, amelynek segítségével elsajátíthatja a LyX használatával kapcsolat
-os alapvetõ dolgokat.
+ olvasÃ¡sÃ¡val, amelynek segÃ­tsÃ©gÃ©vel elsajÃ¡tÃ­thatja a LyX hasznÃ¡latÃ¡val kapcsolat
+os alapvetÅ‘ dolgokat.
 \end_layout
 
 \begin_layout Enumerate
@@ -126,21 +138,21 @@ A LyX az, amit mi
 \begin_inset Quotes pld
 \end_inset
 
-szövegszerkesztõnek
+szÃ¶vegszerkesztÅ‘nek
 \begin_inset Quotes prd
 \end_inset
 
- nevezünk.
- Alapvetõen más elveket követ, mint egy átlagos szövegszerkesztõ, és ezzel
- sokkal könnyebbé teszi a dokumentumok szerkesztését.
- De ez csak egy kis különbség, szóval ne ijedjen meg.
- A dokumentációból minden világos lesz.
+ nevezÃ¼nk.
+ AlapvetÅ‘en mÃ¡s elveket kÃ¶vet, mint egy Ã¡tlagos szÃ¶vegszerkesztÅ‘, Ã©s ezzel
+ sokkal kÃ¶nnyebbÃ© teszi a dokumentumok szerkesztÃ©sÃ©t.
+ De ez csak egy kis kÃ¼lÃ¶nbsÃ©g, szÃ³val ne ijedjen meg.
+ A dokumentÃ¡ciÃ³bÃ³l minden vilÃ¡gos lesz.
 \begin_inset Foot
 status open
 
 \begin_layout Standard
 \InsetSpace ~
-Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
+ElÃ©ggÃ© kihangsÃºlyoztuk, hogy el kellene olvasni a dokumentÃ¡ciÃ³t?
 \end_layout
 
 \end_inset
@@ -149,7 +161,9 @@ Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
 \end_layout
 
 \begin_layout Enumerate
-A LyX segítségével szép dokumentumokat készíthetünk! Válassza a 
+A LyX segÃ­tsÃ©gÃ©vel szÃ©p dokumentumokat kÃ©szÃ­thetÃ¼nk! VÃ¡lassza a
+\family default
+ 
 \family sans
 \bar under
 
@@ -167,7 +181,7 @@ mbox{
 
 
 \bar default
-Né
+NÃ©
 \bar under
 z
 \bar default
@@ -189,36 +203,40 @@ status collapsed
 
 \end_inset
 
- menüpontot, és ellenõrizze saját maga.
+ menÃ¼pontot, Ã©s ellenÅ‘rizze sajÃ¡t maga.
 \end_layout
 
 \begin_layout Enumerate
-Igen, a LyX tudja (majdnem) mindazt, amit a LaTeX, valamint képes LaTeX
- fájlokat importálni is.
- Gyakorlott LaTeX felhasználók ki is hagyhatják a 
-\emph on
-Tankönyv
+Igen, a LyX tudja (majdnem) mindazt, amit a LaTeX, valamint kÃ©pes LaTeX
+ fÃ¡jlokat importÃ¡lni is.
+ Gyakorlott LaTeX felhasznÃ¡lÃ³k ki is hagyhatjÃ¡k a
 \emph default
- nagy részét, nyugodtan kezdjék a 
+ 
+\emph on
+TankÃ¶nyv
+\emph default
+ nagy rÃ©szÃ©t, nyugodtan kezdjÃ©k a 
 \begin_inset Quotes pld
 \end_inset
 
-LyX LaTeX felhasználóknak
+LyX LaTeX felhasznÃ¡lÃ³knak
 \begin_inset Quotes prd
 \end_inset
 
- résszel.
- (A többiek ne essenek kétségbe, nem kell megtanulni a LaTeX használatát
- ahhoz, hogy a LyX-et használni tudják.)
+ rÃ©sszel.
+ (A tÃ¶bbiek ne essenek kÃ©tsÃ©gbe, nem kell megtanulni a LaTeX hasznÃ¡latÃ¡t
+ ahhoz, hogy a LyX-et hasznÃ¡lni tudjÃ¡k.)
 \end_layout
 
 \begin_layout Enumerate
-A LyX rengeteg hasznos lehetõséggel rendelkezik mindazok számára, akik az
- angol-tól eltérõ nyelven készítenek dokumentumokat.
- A billentyûzet, a menük és sok egyéb jellemz\i \H{o}
- nagymértékben testreszabható
- az igényeinek megfelelõen.
- További információkért olvassa el a 
+A LyX rengeteg hasznos lehetÅ‘sÃ©ggel rendelkezik mindazok szÃ¡mÃ¡ra, akik az
+ angol-tÃ³l eltÃ©rÅ‘ nyelven kÃ©szÃ­tenek dokumentumokat.
+ A billentyÅ±zet, a menÃ¼k Ã©s sok egyÃ©b jellemzÅ‘
+ nagymÃ©rtÃ©kben testreszabhatÃ³
+ az igÃ©nyeinek megfelelÅ‘en.
+ TovÃ¡bbi informÃ¡ciÃ³kÃ©rt olvassa el a
+\family default
+ 
 \family sans
 \bar under
 
@@ -236,12 +254,12 @@ mbox{
 
 S
 \bar default
-egítség\SpecialChar \menuseparator
+egÃ­tsÃ©g\SpecialChar \menuseparator
 T
 \bar under
 e
 \bar default
-streszabás
+streszabÃ¡s
 \family default
 
 \begin_inset ERT
@@ -254,11 +272,11 @@ status collapsed
 
 \end_inset
 
- részt.
+ rÃ©szt.
 \end_layout
 
 \begin_layout Enumerate
-A LyX honlapja a következõ címen található meg: 
+A LyX honlapja a kÃ¶vetkezÅ‘ cÃ­men talÃ¡lhatÃ³ meg: 
 \begin_inset ERT
 status collapsed
 
@@ -272,8 +290,8 @@ mbox{
 \end_inset
 
 
-\begin_inset LatexCommand \htmlurl{http://www.lyx.org/}
-
+\begin_inset LatexCommand htmlurl
+target "http://www.lyx.org/"
 \end_inset
 
 
@@ -288,7 +306,7 @@ status collapsed
 \end_inset
 
 .
- Itt további információkat tudhat meg a LyX-rõl, feliratkozhat a levelezõlistákr
+ Itt tovÃ¡bbi informÃ¡ciÃ³kat tudhat meg a LyX-rÅ‘l, feliratkozhat a levelezÅ‘listÃ¡kr
 a, stb\SpecialChar \ldots{}
 
 \newline
@@ -306,8 +324,8 @@ mbox{
 \end_inset
 
 
-\begin_inset LatexCommand \htmlurl{http://www.lyx.hu}
-
+\begin_inset LatexCommand htmlurl
+target "http://www.lyx.hu"
 \end_inset
 
 
@@ -321,9 +339,9 @@ status collapsed
 
 \end_inset
 
- címen található meg.
- Innen letöltheti a legfrissebb magyar dokumentációs fájlokat, amelyeket
- az eredeti csomag még nem tartalmaz.
+ cÃ­men talÃ¡lhatÃ³ meg.
+ Innen letÃ¶ltheti a legfrissebb magyar dokumentÃ¡ciÃ³s fÃ¡jlokat, amelyeket
+ az eredeti csomag mÃ©g nem tartalmaz.
 \end_layout
 
 \end_body

@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language ngerman
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize a4paper
 \use_geometry true
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,46 +36,51 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Einige Beispiele für Minipages in LyX
+Einige Beispiele fÃ¼r Minipages in LyX
 \end_layout
 
 \begin_layout Author
-von Jürgen Vigna (jug@sad.it)
+von JÃ¼rgen Vigna (jug@sad.it)
 \newline
 und Hartmut Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
+letzte Ã„nderung: 3.
  Oktober 2005
 \end_layout
 
 \begin_layout Standard
 Minipages sind recht hilfreich, wenn man Textteile von der normalen Gestaltung
  eines Dokumentes abheben will.
- Minipages erhält man, wenn man (ab LyX 1.4) 
+ Minipages erhÃ¤lt man, wenn man (ab LyX 1.4)
+\family default
+ 
 \family sans
 \bar under
 E
 \bar default
-infügen\SpecialChar \menuseparator
-Box 
+infÃ¼gen\SpecialChar \menuseparator
+Box
 \family default
-wählt.
- In das rotumrandete Kästchen fügt man den Text, die Bilder usw.\InsetSpace ~
+ 
+wÃ¤hlt.
+ In das rotumrandete KÃ¤stchen fÃ¼gt man den Text, die Bilder usw.\InsetSpace ~
 ein.
- Ein Klick mit der rechten Maustaste auf das graue Kästchen öffnet den Dialog
+ Ein Klick mit der rechten Maustaste auf das graue KÃ¤stchen Ã¶ffnet den Dialog
+
+\family default
  
 \family sans
 Box-Einstellungen
 \family default
-, der umfangreiche Formatierungsmöglichkeiten enthält.
+, der umfangreiche FormatierungsmÃ¶glichkeiten enthÃ¤lt.
 \end_layout
 
 \begin_layout Standard
@@ -697,10 +710,10 @@ Dies ist Tabelle 2
 
 \series medium
 \size normal
-Ich mache das folgende, wenn ich zweisprachigen Text schreiben muß (Ich
+Ich mache das folgende, wenn ich zweisprachigen Text schreiben muÃŸ (Ich
  lebe in einer Gegend in Italien, in der etwa 60% der Menschen deutsch sprechen,
- so daß man Briefe in deutsch und italienisch in zwei Spalten schreiben
- muß, wie der folgende Text zeigt):
+ so daÃŸ man Briefe in deutsch und italienisch in zwei Spalten schreiben
+ muÃŸ, wie der folgende Text zeigt):
 \end_layout
 
 \begin_layout Standard
@@ -737,7 +750,7 @@ Dies ist ein deutscher Text.
 status open
 
 \begin_layout Standard
-Dies ist eine Fußnote
+Dies ist eine FuÃŸnote
 \end_layout
 
 \end_inset
@@ -800,11 +813,11 @@ This is a footnote
 \end_layout
 
 \begin_layout Standard
-Ich hoffe, dies hilft zu verstehen, wofür man Minipages gebrauchen kann!
+Ich hoffe, dies hilft zu verstehen, wofÃ¼r man Minipages gebrauchen kann!
 \end_layout
 
 \begin_layout Subsection*
-Grüße, Jürgen
+GrÃ¼ÃŸe, JÃ¼rgen
 \end_layout
 
 \end_body

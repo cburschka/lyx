@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -9,13 +9,21 @@
 \end_preamble
 \language german
 \inputencoding latin9
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,13 +36,13 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Währungszeichen und LyX
+WÃ¤hrungszeichen und LyX
 \end_layout
 
 \begin_layout Author
@@ -45,11 +53,11 @@ und Hartmut Haase
 
 \begin_layout Standard
 \noindent
-Um die wichtigsten Währungssymbole mit LaTeX darstellen zu können, brauchen
+Um die wichtigsten WÃ¤hrungssymbole mit LaTeX darstellen zu kÃ¶nnen, brauchen
  wir einige Spezialpakete.
  Hier ist eine kurze Beschreibung, wie man Euro, Cent, Yen und allgemeine
- Währungszeichen anzeigt und druckt.
- Dollar und Pfund benötigen keine Sonderbehandlung.
+ WÃ¤hrungszeichen anzeigt und druckt.
+ Dollar und Pfund benÃ¶tigen keine Sonderbehandlung.
 \end_layout
 
 \begin_layout Section
@@ -58,17 +66,19 @@ Das Euro-Zeichen
 
 \begin_layout Standard
 \noindent
-Um das Euro-Zeichen drucken zu können, benötigen sie das 
+Um das Euro-Zeichen drucken zu kÃ¶nnen, benÃ¶tigen sie das
+\family default
+ 
 \family typewriter
 eurofont
 \family default
 -Paket, das Sie bei 
-\begin_inset LatexCommand \url{/macros/latex/contrib/supported/eurofont}
-
+\begin_inset LatexCommand url
+target "/macros/latex/contrib/supported/eurofont"
 \end_inset
 
  in CTAN erhalten.
- Deshalb müssen Sie im LaTeX-Vorspann Ihres LyX-Dokuments (
+ Deshalb mÃ¼ssen Sie im LaTeX-Vorspann Ihres LyX-Dokuments (
 \family sans
 \bar under
 D
@@ -102,8 +112,18 @@ status collapsed
 eX-Vorspann
 \family default
 ) den Befehl:
-\family typewriter
+\family default
+\emph default
+\shape default
+\series default
+\bar default
  
+\emph off
+\shape up
+\series medium
+\bar no
+\family typewriter
+
 \backslash
 usepackage{eurofont}
 \family default
@@ -113,28 +133,78 @@ usepackage{eurofont}
 Hartmut Haase
 \noun default
 : Weil das
-\family typewriter
- eurofont
 \family default
--Paket nicht Standard ist, empfiehlt sich stattdessen das 
+\emph default
+\shape default
+\series default
+\bar default
+ 
+\emph off
+\shape up
+\series medium
+\bar no
+\family typewriter
+eurofont
+\family default
+-Paket nicht Standard ist, empfiehlt sich stattdessen das
+\family default
+\emph default
+\shape default
+\series default
+\bar default
+ 
+\emph off
+\shape up
+\series medium
+\bar no
 \family typewriter
 eurosym
 \family default
 -Paket.
- Der Befehl im LaTeX-Vorspann ist dann: 
+ Der Befehl im LaTeX-Vorspann ist dann:
+\family default
+\emph default
+\shape default
+\series default
+\bar default
+ 
+\emph off
+\shape up
+\series medium
+\bar no
 \family typewriter
 
 \backslash
 usepackage[official]{eurosym}
 \family default
 .
- Im gedruckten Doument erhält man dann das Euro-Zeichen durch 
+ Im gedruckten Doument erhÃ¤lt man dann das Euro-Zeichen durch
+\family default
+\emph default
+\shape default
+\series default
+\bar default
+ 
+\emph off
+\shape up
+\series medium
+\bar no
 \family typewriter
 
 \backslash
 euro
 \family default
- als ERT: 
+\emph default
+\shape default
+\series default
+\bar default
+ 
+\emph off
+\shape up
+\series medium
+\bar no
+\family default
+als ERT: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -158,10 +228,13 @@ euro
 
 \end_inset
 
+
+\family default
  
 \family typewriter
-= 
+=
 \family default
+ 
 
 \begin_inset ERT
 status inlined
@@ -264,38 +337,49 @@ euro
 \noun on
 HHa
 \noun default
-: im letzten Beispiel sind der zweite 
+: im letzten Beispiel sind der zweite
+\family default
+ 
 \family typewriter
 
 \backslash
- 
+
 \family default
-UND ein Leerzeichen im oder nach dem ERT nötig.)
+ 
+UND ein Leerzeichen im oder nach dem ERT nÃ¶tig.)
 \end_layout
 
 \begin_layout Standard
-Mit dem 
+Mit dem
+\family default
+ 
 \family typewriter
 eurosym
 \family default
 -Paket sieht das gedruckte Euro-Zeichen etwas besser aus.
  Man bekommt es bei 
-\begin_inset LatexCommand \url{/fonts/eurosym}
-
+\begin_inset LatexCommand url
+target "/fonts/eurosym"
 \end_inset
 
  in  CTAN.
- Dann deklariert man 
+ Dann deklariert man
+\family default
+ 
 \family typewriter
 eurofont
 \family default
- mit der 
+ mit der
+\family default
+ 
 \family typewriter
 eurosym
 \family default
 -Option
 \family typewriter
 :
+\family default
+
 \family default
  
 \family typewriter
@@ -307,16 +391,18 @@ usepackage[eurosym]{eurofont}
 \end_layout
 
 \begin_layout Standard
-Als nächstes können Sie auch noch LyX so konfigureieren, daß das  Euro-Zeichen
+Als nÃ¤chstes kÃ¶nnen Sie auch noch LyX so konfigureieren, daÃŸ das  Euro-Zeichen
  WYSIWYM angezeigt wird.
- Dafür müssen Sie einen latin9-Bildschirmfont auswählen, da der Euro nicht
- zur normalen latin1-Kodierung gehört.
- Das können Sie unter 
+ DafÃ¼r mÃ¼ssen Sie einen latin9-Bildschirmfont auswÃ¤hlen, da der Euro nicht
+ zur normalen latin1-Kodierung gehÃ¶rt.
+ Das kÃ¶nnen Sie unter
+\family default
+ 
 \family sans
 ???
 \family default
  machen.
- Und natürlich müssen Sie Fonts auswählen, die es auf Ihrem System für diese
+ Und natÃ¼rlich mÃ¼ssen Sie Fonts auswÃ¤hlen, die es auf Ihrem System fÃ¼r diese
  Kodierung gibt.
  
 \end_layout
@@ -324,16 +410,22 @@ Als nächstes können Sie auch noch LyX so konfigureieren, daß das  Euro-Zeichen
 \begin_layout Standard
 You should properly configure your X server if you want the euro symbol
  directly on your keyboard.
- You can also try the keymap files in LyX : 
+ You can also try the keymap files in LyX :
+\family default
+ 
 \family typewriter
 european.kmap
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 francais.kmap
 \family default
  should normally support the euro symbol at its usual place.
- Select your keymap in the 
+ Select your keymap in the
+\family default
+ 
 \family sans
 Language\SpecialChar \menuseparator
 Keymap
@@ -342,7 +434,9 @@ Keymap
 \end_layout
 
 \begin_layout Standard
-Als letztes müssen Sie unter 
+Als letztes mÃ¼ssen Sie unter
+\family default
+ 
 \family sans
 \bar under
 D
@@ -361,7 +455,7 @@ K
 \bar default
 odierung
 \family default
- die Kodiereung für Ihr Dokument auf latin9 einstellen.
+ die Kodiereung fÃ¼r Ihr Dokument auf latin9 einstellen.
 \end_layout
 
 \begin_layout Standard
@@ -371,7 +465,7 @@ Wenn Sie hier jetzt das Euro-Zeichen sehen und nicht stattdessen einen Kreis
 status open
 
 \begin_layout Standard
-AltGr+Unschalt+ 4 = ¤
+AltGr+Unschalt+ 4 = â‚¬
 \end_layout
 
 \end_inset
@@ -384,17 +478,19 @@ AltGr+Unschalt+ 4 = ¤
 \end_layout
 
 \begin_layout Section
-Andere Währungszeichen
+Andere WÃ¤hrungszeichen
 \end_layout
 
 \begin_layout Standard
 \noindent
 Alle folgenden Zeichen sind kein LaTeX-Standard.
- Aber mit dem 
+ Aber mit dem
+\family default
+ 
 \family typewriter
 eurofont
 \family default
--Paket können sie gedruckt werden.
+-Paket kÃ¶nnen sie gedruckt werden.
 \end_layout
 
 \begin_layout Description
@@ -404,12 +500,14 @@ Cent-Zeichen Wenn Ihre Tastatur das Cent-Zeichen direkt darstellt
 status open
 
 \begin_layout Description
-AltGr+C = ¢
+AltGr+C = Â¢
 \end_layout
 
 \end_inset
 
-, gut, sonst müssen Sie 
+, gut, sonst mÃ¼ssen Sie
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -441,7 +539,9 @@ textcent{}
 
 \begin_layout Description
 Das\InsetSpace ~
-Yen-Zeichen Wie beim Cent: entweder 
+Yen-Zeichen Wie beim Cent: entweder
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -474,7 +574,7 @@ textyen{}
 status open
 
 \begin_layout Standard
-AltGr+Unschalt+Z = ¥
+AltGr+Unschalt+Z = Â¥
 \end_layout
 
 \end_inset
@@ -485,10 +585,12 @@ AltGr+Unschalt+Z = ¥
 \begin_layout Description
 Das\InsetSpace ~
 allgemeine\InsetSpace ~
-Währungszeichen Es sieht wie ein Kreis mit vier Strichen aus.
+WÃ¤hrungszeichen Es sieht wie ein Kreis mit vier Strichen aus.
  Auf dem Bildschirm kann man es nicht zusammen mit dem Euro-Zeichen darstellen,
  weil es in latin1 mit dem Euro-Zeichen in latin9 korrespondiert.
- Deshalbe müssen Sie 
+ Deshalbe mÃ¼ssen Sie
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -521,7 +623,7 @@ textcurrency{}
 status open
 
 \begin_layout Standard
-AltGr+Unschalt+ 4 = ¤
+AltGr+Unschalt+ 4 = â‚¬
 \end_layout
 
 \end_inset
@@ -533,13 +635,17 @@ AltGr+Unschalt+ 4 = ¤
 Der\InsetSpace ~
 senkrechte\InsetSpace ~
 unterbrochene\InsetSpace ~
-Strich Natürlich ist das kein Währungszeichen
- und man bekommt es nicht mit dem Standard-LaTeX, aber mit dem 
+Strich NatÃ¼rlich ist das kein WÃ¤hrungszeichen
+ und man bekommt es nicht mit dem Standard-LaTeX, aber mit dem
+\family default
+ 
 \family typewriter
 eurofont
 \family default
 -Paket.
- Sie schreiben 
+ Sie schreiben
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -567,8 +673,8 @@ textbrokenbar{}
 \end_inset
 
 .
- Auf dem Bildschirm sieht es so aus: ¦, und so wird es auch mit latin1 gedruckt.
- Mit latin9 wird es wie ein großes S mit einem v darüber gedruckt.
+ Auf dem Bildschirm sieht es so aus: Å , und so wird es auch mit latin1 gedruckt.
+ Mit latin9 wird es wie ein groÃŸes S mit einem v darÃ¼ber gedruckt.
 \end_layout
 
 \end_body

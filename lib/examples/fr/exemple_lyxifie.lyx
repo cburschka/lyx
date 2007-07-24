@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -37,17 +45,17 @@ status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour, Date: 07/07/2003
+Traduction : Mise Ã  jour, Date: 07/07/2003
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision: 1.6, Date: 17/01/2003
+Original : RÃ©vision: 1.6, Date: 17/01/2003
 \end_layout
 
 \end_inset
@@ -57,7 +65,7 @@ Original : Révision: 1.6, Date: 17/01/2003
 
 \begin_layout Author
 
-par Fée LyX
+par FÃ©e LyX
 \end_layout
 
 \begin_layout Date
@@ -68,8 +76,7 @@ par Fée LyX
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -77,13 +84,13 @@ par Fée LyX
 
 \begin_layout Section
 
-Philosophie Générale
+Philosophie GÃ©nÃ©rale
 \end_layout
 
 \begin_layout Standard
 
-La philosophie générale de LyX est de vous laisser vous concentrer sur le
- contenu et non pas sur la forme de vos écrits.
+La philosophie gÃ©nÃ©rale de LyX est de vous laisser vous concentrer sur le
+ contenu et non pas sur la forme de vos Ã©crits.
 \end_layout
 
 \begin_layout Subsection
@@ -93,15 +100,15 @@ Comment LyX le fait
 
 \begin_layout Standard
 
-LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
+LyX utilise LaTeX, un systÃ¨me de prÃ©paration de documents conÃ§u par Leslie
  Lamport en 1985.
- Il a été construit, à son tour, à partir d'un langage de composition, appelé
- TeX, créé par Donald Knuth en 1984.
- LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
- Leslie Lamport disait lui-même (voir référence\InsetSpace ~
+ Il a Ã©tÃ© construit, Ã  son tour, Ã  partir d'un langage de composition, appelÃ©
+ TeX, crÃ©Ã© par Donald Knuth en 1984.
+ LaTeX est conÃ§u autour d'une philosophie similaire Ã  celle de LyX.
+ Leslie Lamport disait lui-mÃªme (voir rÃ©fÃ©rence\InsetSpace ~
 
-\begin_inset LatexCommand \cite{lamport}
-
+\begin_inset LatexCommand cite
+key "lamport"
 \end_inset
 
 ) :
@@ -109,15 +116,15 @@ LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
 
 \begin_layout Quote
 
-Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
- Pour qu'un document soit facile à lire, sa structure visuelle doit refléter
+Le but de la typographie est d'aider le lecteur Ã  comprendre l'idÃ©e de l'auteur.
+ Pour qu'un document soit facile Ã  lire, sa structure visuelle doit reflÃ©ter
  sa structure logique.
- Les citations et les sources de programmes, étant, logiquement parlant,
- des éléments structurels différents, doivent être visuellement différents
+ Les citations et les sources de programmes, Ã©tant, logiquement parlant,
+ des Ã©lÃ©ments structurels diffÃ©rents, doivent Ãªtre visuellement diffÃ©rents
  les uns les autres...
  Comme LaTeX ne peut pas comprendre votre prose, vous devez explicitement
- définir sa structure logique en insérant des codes appropriés...
- Lors de l'écriture de votre document, vous devez vous préoccuper de sa
+ dÃ©finir sa structure logique en insÃ©rant des codes appropriÃ©s...
+ Lors de l'Ã©criture de votre document, vous devez vous prÃ©occuper de sa
  structure logique, et non pas de son apparence.
 \end_layout
 
@@ -129,14 +136,14 @@ Pourquoi LyX est meilleur
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \label{sec:lyxmeilleur}
-
+\begin_inset LatexCommand label
+name "sec:lyxmeilleur"
 \end_inset
 
-LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
- Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
+LyX peut Ãªtre profitable Ã  un plus grand nombre d'utilisateurs que LaTeX.
+ Il est beaucoup plus facile Ã  apprendre, car vous n'avez pas Ã  connaÃ®tre
  LaTeX, qui est pratiquement un langage de programmation.
- LyX est en bien des points comparable à d'autres traitements de texte 
+ LyX est en bien des points comparable Ã  d'autres traitements de texte 
 \begin_inset Quotes fld
 \end_inset
 
@@ -144,7 +151,7 @@ What you see is what you get
 \begin_inset Quotes frd
 \end_inset
 
- (WYSIWYG), excepté que LyX est plutôt 
+ (WYSIWYG), exceptÃ© que LyX est plutÃ´t 
 \begin_inset Quotes fld
 \end_inset
 
@@ -156,58 +163,60 @@ What you see is what you mean
  LyX combine donc le confort des autres traitements de texte, et la puissance
  de LaTeX.
  C'est une bonne chose.
- De plus, le format de fichier est indépendant du système.
+ De plus, le format de fichier est indÃ©pendant du systÃ¨me.
  Et pour finir, c'est un logiciel LIBRE ! 
 \end_layout
 
 \begin_layout Section
 
-Fonctionnalités de LyX
+FonctionnalitÃ©s de LyX
 \end_layout
 
 \begin_layout Standard
 
-LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
+LyX possÃ¨de un bon nombre de fonctionnalitÃ©s qui facilitent l'Ã©criture.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
-Après tout, quelle autre raison pourrait vous le faire utiliser ?
+AprÃ¨s tout, quelle autre raison pourrait vous le faire utiliser ?
 \end_layout
 
 \end_inset
 
- Je 
-\shape italic
-ne résiste plus
+ Je
 \shape default
- à l'envie de vous les présenter.
+ 
+\shape italic
+ne rÃ©siste plus
+\shape default
+ Ã  l'envie de vous les prÃ©senter.
  En voici quelques-unes.
 \end_layout
 
 \begin_layout Itemize
 
-LyX gère les marges et la numérotation des notes de bas de page pour vous.
+LyX gÃ¨re les marges et la numÃ©rotation des notes de bas de page pour vous.
 \end_layout
 
 \begin_layout Itemize
 
-L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
+L'Ã©criture de formules mathÃ©matiques est un jeu d'enfant avec LyX.
 \end_layout
 
 \begin_layout Standard
 
 Voir Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:lyxmeilleur}
-
+\begin_inset LatexCommand ref
+reference "sec:lyxmeilleur"
 \end_inset
 
 , page\InsetSpace ~
 
-\begin_inset LatexCommand \pageref{sec:lyxmeilleur}
-
+\begin_inset LatexCommand pageref
+reference "sec:lyxmeilleur"
 \end_inset
 
  pour une discussion plus approfondie sur les avantages de LyX par rapport
@@ -221,7 +230,7 @@ Tentatives maladroites de mieux utiliser LyX
 
 \begin_layout Standard
 
-J'ai écrit un programme ces derniers jours.
+J'ai Ã©crit un programme ces derniers jours.
  Le voici :
 \end_layout
 
@@ -250,8 +259,8 @@ JE SUIS SUPER !
 
 \begin_layout Standard
 
-Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
- J'ai donc écrit ceci :
+AprÃ¨s cette pensÃ©e hautement scientifique, je me suis senti l'Ã¢me d'un poÃ¨te.
+ J'ai donc Ã©crit ceci :
 \end_layout
 
 \begin_layout Verse
@@ -270,7 +279,7 @@ Les maths
 
 \begin_layout Standard
 
-Ma formule préférée est la résolution d'une équation du second degré.
+Ma formule prÃ©fÃ©rÃ©e est la rÃ©solution d'une Ã©quation du second degrÃ©.
  
 \end_layout
 
@@ -295,7 +304,7 @@ alors
 
 \begin_layout Standard
 
-Une autre favorite, la base du calcul différentiel : 
+Une autre favorite, la base du calcul diffÃ©rentiel : 
 \end_layout
 
 \begin_layout Standard
@@ -315,23 +324,25 @@ Notes
 
 \begin_layout Standard
 
-Quelques notes à propos de la LyXification de ce fichier :
+Quelques notes Ã  propos de la LyXification de ce fichier :
 \end_layout
 
 \begin_layout Itemize
 
-J'ai pu éliminer les lignes de tirets.
- Elles n'étaient là que pour séparer le titre et les références du reste
+J'ai pu Ã©liminer les lignes de tirets.
+ Elles n'Ã©taient lÃ  que pour sÃ©parer le titre et les rÃ©fÃ©rences du reste
  du document.
- LyX (ou LaTeX) en sait assez pour les séparer avec de l'espace.
+ LyX (ou LaTeX) en sait assez pour les sÃ©parer avec de l'espace.
  
 \end_layout
 
 \begin_layout Itemize
 
-Je ne me suis pas ennuyé à mettre les équations mathématiques en mode affichage.
- Je n'ai pas non plus utilisé le mode de numérotation automatique des équations
- de LyX parce qu'il n'est pas décrit dans le 
+Je ne me suis pas ennuyÃ© Ã  mettre les Ã©quations mathÃ©matiques en mode affichage.
+ Je n'ai pas non plus utilisÃ© le mode de numÃ©rotation automatique des Ã©quations
+ de LyX parce qu'il n'est pas dÃ©crit dans le
+\emph default
+ 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
@@ -341,7 +352,7 @@ d'Apprentissage
 
 \begin_layout Itemize
 
-Je n'ai pas eu à taper le mot 
+Je n'ai pas eu Ã  taper le mot 
 \begin_inset Quotes fld
 \end_inset
 
@@ -358,8 +369,10 @@ Bibliography
 \begin_inset Quotes frd
 \end_inset
 
-, en fonction de la classe du document) lorsque vous sélectionnez l'environnemen
-t 
+, en fonction de la classe du document) lorsque vous sÃ©lectionnez l'environnemen
+t
+\family default
+ 
 \family sans
 Bibliography
 \family default
@@ -367,15 +380,20 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {lamport}
+\begin_inset LatexCommand bibitem
+key "lamport"
+
+\end_inset
 
 Lamport, Leslie.
+
+\emph default
  
 \emph on
 LaTeX : A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.
+ Addison-Wesley, Reading, Massachusetts, deuxiÃ¨me Ã©dition, 1994.
 \end_layout
 
 \end_body

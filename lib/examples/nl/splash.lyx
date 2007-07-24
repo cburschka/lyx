@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language dutch
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -44,7 +52,9 @@ De Belangrijkste Dingen die je moet weten als je LyX gebruikt
 LyX komt met zeer goede documentatie---gebruik die! De documentatie is momenteel
  nog niet volledig in het Nederlands vertaald maar wordt tevens in het Engels
  meegeleverd.
- Begin met 
+ Begin met
+\family default
+ 
 \family sans
 \bar under
 H
@@ -57,7 +67,9 @@ I
 ntroduction
 \family default
 , wat je een korte inleiding tot de documentatie zal geven.
- Leer daarna LyX te gebruiken met 
+ Leer daarna LyX te gebruiken met
+\family default
+ 
 \family sans
 \bar under
 H
@@ -101,9 +113,15 @@ Hebben we al verteld dat je de documentatie moet lezen?
 
 \begin_layout Enumerate
 
-Het resultaat van LyX ziet er prachtig uit! Doe 
+Het resultaat van LyX ziet er prachtig uit! Doe
+\family default
+ 
 \family sans
-nu 
+nu
+\bar default
+\family default
+ 
+\family sans
 \bar under
 V
 \bar default
@@ -121,7 +139,9 @@ VI
 
 Jazeker, LyX kan (bijna) alle LaTeX functionaliteit nabootsen.
  En ja, LyX kan LaTeX bestanden importeren.
- Ervaren LaTeX gebruikers kunnen de rest van de 
+ Ervaren LaTeX gebruikers kunnen de rest van de
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -144,12 +164,16 @@ LyX heeft veel extras voor mensen die in een andere taal lezen of schrijven
  dan het Engels.
  Daarnaast zijn de sneltoetsen, de knoppenbalk en veel andere zaken uiterst
  configureerbaar.
- (Meestal door je 
+ (Meestal door je
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
  bestand te bewerken).
- Zie 
+ Zie
+\family default
+ 
 \family sans
 \bar under
 H
@@ -166,11 +190,13 @@ ustomization
 
 \begin_layout Enumerate
 
-De LyX home page is 
+De LyX home page is
+\family default
+ 
 \family typewriter
 
-\begin_inset LatexCommand \url{http://www.lyx.org/}
-
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
 \end_inset
 
 

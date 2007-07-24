@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -37,17 +45,17 @@ status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour, Date: 07/07/2003
+Traduction : Mise Ã  jour, Date: 07/07/2003
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision: 1.5, Date: 17/01/2002
+Original : RÃ©vision: 1.5, Date: 17/01/2002
 \end_layout
 
 \end_inset
@@ -63,7 +71,7 @@ Indication:
 
 \begin_layout Standard
 
-Le titre devrait ressembler un peu plus à un titre ("TITLE")
+Le titre devrait ressembler un peu plus Ã  un titre ("TITLE")
 \end_layout
 
 \end_inset
@@ -73,7 +81,7 @@ Le titre devrait ressembler un peu plus à un titre ("TITLE")
 
 \begin_layout Standard
 
-par Fée LyX 
+par FÃ©e LyX 
 \begin_inset Note Note
 status collapsed
 
@@ -84,7 +92,7 @@ Indication:
 
 \begin_layout Standard
 
-Fée est l'auteur de ce document ("AUTHOR")
+FÃ©e est l'auteur de ce document ("AUTHOR")
 \end_layout
 
 \end_inset
@@ -115,7 +123,7 @@ Ceci est une "DATE".(NdT: Si si !)
 
 \begin_layout Standard
 
-Table des Matières 
+Table des MatiÃ¨res 
 \begin_inset Note Note
 status collapsed
 
@@ -126,12 +134,12 @@ Indication:
 
 \begin_layout Standard
 
-Ce serait plus agréable de ne pas avoir à taper la
+Ce serait plus agrÃ©able de ne pas avoir Ã  taper la
 \end_layout
 
 \begin_layout Standard
 
-"Table des Matières" explicitement.
+"Table des MatiÃ¨res" explicitement.
 \end_layout
 
 \end_inset
@@ -142,7 +150,7 @@ Ce serait plus agréable de ne pas avoir à taper la
 \begin_layout Standard
 
 1.
- Philosophie Générale.................1
+ Philosophie GÃ©nÃ©rale.................1
 \end_layout
 
 \begin_layout Standard
@@ -158,7 +166,7 @@ Ce serait plus agréable de ne pas avoir à taper la
 \begin_layout Standard
 
 2.
- Fonctionnalités de LyX
+ FonctionnalitÃ©s de LyX
 \end_layout
 
 \begin_layout Standard
@@ -181,7 +189,7 @@ Ce serait plus agréable de ne pas avoir à taper la
 \begin_layout Standard
 
 1.
- Philosophie Générale 
+ Philosophie GÃ©nÃ©rale 
 \begin_inset Note Note
 status collapsed
 
@@ -197,7 +205,7 @@ Les titres de "Sections" ne sont pas assez en valeur, et ne
 
 \begin_layout Standard
 
-devraient pas ^etre numérotés manuellement.
+devraient pas ^etre numÃ©rotÃ©s manuellement.
 \end_layout
 
 \end_inset
@@ -207,23 +215,23 @@ devraient pas ^etre numérotés manuellement.
 
 \begin_layout Standard
 
-La philosophie générale de LyX est de vous laisser vous concentrer sur le
- contenu et non pas sur la forme de vos écrits.
+La philosophie gÃ©nÃ©rale de LyX est de vous laisser vous concentrer sur le
+ contenu et non pas sur la forme de vos Ã©crits.
 \end_layout
 
 \begin_layout Standard
 
-1.1 Comment LyX procède
+1.1 Comment LyX procÃ¨de
 \end_layout
 
 \begin_layout Standard
 
-LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
+LyX utilise LaTeX, un systÃ¨me de prÃ©paration de documents conÃ§u par Leslie
  Lamport en 1985.
- Il a été construit, à son tour, à partir d'un langage de composition, appelé
- TeX, créé par Donald Knuth en 1984.
- LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
- Leslie Lamport disait lui-même (voir référence [1]) 
+ Il a Ã©tÃ© construit, Ã  son tour, Ã  partir d'un langage de composition, appelÃ©
+ TeX, crÃ©Ã© par Donald Knuth en 1984.
+ LaTeX est conÃ§u autour d'une philosophie similaire Ã  celle de LyX.
+ Leslie Lamport disait lui-mÃªme (voir rÃ©fÃ©rence [1]) 
 \begin_inset Note Note
 status collapsed
 
@@ -239,7 +247,7 @@ Cette "Citation Bibliographique" ne devrait probablement pas
 
 \begin_layout Standard
 
-^etre écrite en dur.
+^etre Ã©crite en dur.
  Que se passe-t-il si le livre de Leslie Lamport
 \end_layout
 
@@ -259,15 +267,15 @@ passe en seconde position dans la bibliographie?
 \begin_inset Quotes fld
 \end_inset
 
-Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
- Pour qu'un document soit facile à lire, sa structure visuelle doit refléter
+Le but de la typographie est d'aider le lecteur Ã  comprendre l'idÃ©e de l'auteur.
+ Pour qu'un document soit facile Ã  lire, sa structure visuelle doit reflÃ©ter
  sa structure logique.
- Les citations et les sources de programmes, étant, logiquement parlant,
- des éléments structurels différents, doivent être visuellement différents
+ Les citations et les sources de programmes, Ã©tant, logiquement parlant,
+ des Ã©lÃ©ments structurels diffÃ©rents, doivent Ãªtre visuellement diffÃ©rents
  les uns des autres...
  Comme LaTeX ne peut pas comprendre votre prose, vous devez explicitement
- définir sa structure logique en insérant des codes appropriés...
- Lors de l'écriture de votre document, vous devez vous préoccuper de sa
+ dÃ©finir sa structure logique en insÃ©rant des codes appropriÃ©s...
+ Lors de l'Ã©criture de votre document, vous devez vous prÃ©occuper de sa
  structure logique, et non pas de son apparence.
 \begin_inset Quotes frd
 \end_inset
@@ -298,10 +306,10 @@ C'est une citation (QUOTE).
 
 \begin_layout Standard
 
-LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
- Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
+LyX peut Ãªtre profitable Ã  un plus grand nombre d'utilisateurs que LaTeX.
+ Il est beaucoup plus facile Ã  apprendre, car vous n'avez pas Ã  connaÃ®tre
  LaTeX, qui est pratiquement un langage de programmation.
- LyX est en bien des points comparable à d'autres traitements de texte 
+ LyX est en bien des points comparable Ã  d'autres traitements de texte 
 \begin_inset Quotes fld
 \end_inset
 
@@ -309,7 +317,7 @@ What you see is what you get
 \begin_inset Quotes frd
 \end_inset
 
- (WYSIWYG), excepté que LyX est plutôt 
+ (WYSIWYG), exceptÃ© que LyX est plutÃ´t 
 \begin_inset Quotes fld
 \end_inset
 
@@ -321,20 +329,20 @@ What you see is what you mean
  LyX combine donc le confort des autres traitements de texte, et la puissance
  de LaTeX.
  C'est une bonne chose.
- De plus, le format de fichier est indépendant du système.
+ De plus, le format de fichier est indÃ©pendant du systÃ¨me.
  Et pour finir, c'est un logiciel LIBRE ! 
 \end_layout
 
 \begin_layout Standard
 
 2.
- Fonctionnalités de LyX
+ FonctionnalitÃ©s de LyX
 \end_layout
 
 \begin_layout Standard
 
-LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
- ( Après tout, quelle autre raison pourrait vous le faire utiliser ? 
+LyX possÃ¨de un bon nombre de fonctionnalitÃ©s qui facilitent l'Ã©criture.
+ ( AprÃ¨s tout, quelle autre raison pourrait vous le faire utiliser ? 
 \begin_inset Note Note
 status collapsed
 
@@ -345,12 +353,12 @@ Indication:
 
 \begin_layout Standard
 
-Cette parenthèse serait bien mieux en "Note de bas de page"
+Cette parenthÃ¨se serait bien mieux en "Note de bas de page"
 \end_layout
 
 \end_inset
 
-) Je NE RÉSISTE PLUS 
+) Je NE RÃ‰SISTE PLUS 
 \begin_inset Note Note
 status collapsed
 
@@ -366,19 +374,19 @@ A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 
 \end_inset
 
- à l'envie de vous les présenter.
+ Ã  l'envie de vous les prÃ©senter.
  En voici quelques-unes.
  
 \end_layout
 
 \begin_layout Standard
 
-* LyX gère les marges et la numérotation des notes de bas de page pour vous.
+* LyX gÃ¨re les marges et la numÃ©rotation des notes de bas de page pour vous.
 \end_layout
 
 \begin_layout Standard
 
-* L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
+* L'Ã©criture de formules mathÃ©matiques est un jeu d'enfant avec LyX.
 \end_layout
 
 \begin_layout Standard
@@ -394,12 +402,12 @@ Indication:
 
 \begin_layout Standard
 
-Cette "Référence Croisée" ne devrait pas ^etre écrite en dur.
+Cette "RÃ©fÃ©rence CroisÃ©e" ne devrait pas ^etre Ã©crite en dur.
 \end_layout
 
 \begin_layout Standard
 
-Que se passe-t-il si l'on change la numérotation des sections?
+Que se passe-t-il si l'on change la numÃ©rotation des sections?
 \end_layout
 
 \end_inset
@@ -417,7 +425,7 @@ Que se passe-t-il si l'on change la numérotation des sections?
 
 \begin_layout Standard
 
-J'ai écrit un programme ces derniers jours.
+J'ai Ã©crit un programme ces derniers jours.
  Le voici :
 \end_layout
 
@@ -462,8 +470,8 @@ Indication: C'est du source de programme ("CODE").
 
 \begin_layout Standard
 
-Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
- J'ai donc écrit ceci :
+AprÃ¨s cette pensÃ©e hautement scientifique, je me suis senti l'Ã¢me d'un poÃ¨te.
+ J'ai donc Ã©crit ceci :
 \end_layout
 
 \begin_layout Standard
@@ -494,7 +502,7 @@ Indication:
 
 \begin_layout Standard
 
-Pas terrible comme poésie! Mais ce sont quand m^eme
+Pas terrible comme poÃ©sie! Mais ce sont quand m^eme
 \end_layout
 
 \begin_layout Standard
@@ -521,12 +529,12 @@ Indication:
 
 \begin_layout Standard
 
-Les mathématiques qui suivent devraient ^etre traitées
+Les mathÃ©matiques qui suivent devraient ^etre traitÃ©es
 \end_layout
 
 \begin_layout Standard
 
-en "Mode Mathématique".
+en "Mode MathÃ©matique".
 \end_layout
 
 \end_inset
@@ -536,17 +544,17 @@ en "Mode Mathématique".
 
 \begin_layout Standard
 
-Ma formule préférée est la résolution d'une équation du second degré.
- Si ax^2+bx+c=0 (eq.1), alors x= -b + ou moins la racine carrée de b^2-4ac
- le tout divisé par 2a (eq.
+Ma formule prÃ©fÃ©rÃ©e est la rÃ©solution d'une Ã©quation du second degrÃ©.
+ Si ax^2+bx+c=0 (eq.1), alors x= -b + ou moins la racine carrÃ©e de b^2-4ac
+ le tout divisÃ© par 2a (eq.
  2).
 \end_layout
 
 \begin_layout Standard
 
-Une autre favorite, la base du calcul différentiel : f'(x) est définie comme
- la limite, quand deltax tend vers zéro, de l'expression f(x+deltax) - f(x)
- divisé par deltax (eq.
+Une autre favorite, la base du calcul diffÃ©rentiel : f'(x) est dÃ©finie comme
+ la limite, quand deltax tend vers zÃ©ro, de l'expression f(x+deltax) - f(x)
+ divisÃ© par deltax (eq.
  3).
 \end_layout
 
@@ -564,7 +572,7 @@ REFERENCES
 
 [1] Lamport, Leslie.
  LaTeX : A Document Preparation System.
- Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.
+ Addison-Wesley, Reading, Massachusetts, deuxiÃ¨me Ã©dition, 1994.
 \end_layout
 
 \end_body

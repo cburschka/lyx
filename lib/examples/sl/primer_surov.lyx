@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language slovene
 \inputencoding latin2
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,14 +32,14 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Standard
 
-TO JE NASLOV VA©EGA SPISA 
+TO JE NASLOV VAÅ EGA SPISA 
 \begin_inset Note Note
 status collapsed
 
@@ -88,7 +96,7 @@ status collapsed
 
 \begin_layout Standard
 
-Namig: Fino bi bilo, èe nam ne bi bilo treba roèno
+Namig: Fino bi bilo, Äe nam ne bi bilo treba roÄno
 \end_layout
 
 \begin_layout Standard
@@ -114,7 +122,7 @@ dobesedno vpisovati vsebinskega kazala.
 
 \begin_layout Standard
 
-1.2 Zakaj je LyX bolj¹i................1
+1.2 Zakaj je LyX boljÅ¡i................1
 \end_layout
 
 \begin_layout Standard
@@ -132,7 +140,7 @@ dobesedno vpisovati vsebinskega kazala.
 \begin_layout Standard
 
 4.
- Matematiène zadev¹èine
+ MatematiÄne zadevÅ¡Äine
 \end_layout
 
 \begin_layout Standard
@@ -165,8 +173,8 @@ morali bolj izstopati.
 
 \begin_layout Standard
 
-Temeljna filozofija LyXa je, da naj bi se posveèali vsebini tistega, o èemer
- pi¹emo, ne obliki.
+Temeljna filozofija LyXa je, da naj bi se posveÄali vsebini tistega, o Äemer
+ piÅ¡emo, ne obliki.
 \end_layout
 
 \begin_layout Standard
@@ -181,19 +189,19 @@ LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
  LaTeX pa temelji na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
  ustvaril Donald Knuth.
  Filozofija LaTeXa je podobna filozofiji LyXa.
- Leslie Lamport je nekoè rekel (glej vir [1])
+ Leslie Lamport je nekoÄ rekel (glej vir [1])
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
 
-Namig: Verjetno ta NAVZKRI®NI SKLIC ne bi smel
+Namig: Verjetno ta NAVZKRIÅ½NI SKLIC ne bi smel
 \end_layout
 
 \begin_layout Standard
 
-biti "vne¹en".
- Kaj, èe naredimo Lamportovo knjigo
+biti "vneÅ¡en".
+ Kaj, Äe naredimo Lamportovo knjigo
 \end_layout
 
 \begin_layout Standard
@@ -214,12 +222,12 @@ za drugo postavko spiska literature?
 
 Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
  Da bi bilo spis lahko brati, mora njegova zunanja podoba odsevati njegovo
- logièno zgradbo.
- Navedki in raèunalni¹ki programi, ki so logièno razlièni strukturni elementi,
+ logiÄno zgradbo.
+ Navedki in raÄunalniÅ¡ki programi, ki so logiÄno razliÄni strukturni elementi,
  bi se morali med seboj na pogled razlikovati...
- Ker LaTeX ne more razumeti va¹e poezije, morate izrecno oznaèiti logièno
+ Ker LaTeX ne more razumeti vaÅ¡e poezije, morate izrecno oznaÄiti logiÄno
  strukturo z vnosom posebnih ukazov...
- Med pisanjem bi se morali ukvarjati z logièno zgradbo spisa, ne pa z njegovo
+ Med pisanjem bi se morali ukvarjati z logiÄno zgradbo spisa, ne pa z njegovo
  zunanjo podobo.
 \begin_inset Quotes grd
 \end_inset
@@ -241,19 +249,19 @@ Namig: To je NAVEDEK (angl.
 
 \begin_layout Standard
 
-1.2 Zakaj je LyX bolj¹i
+1.2 Zakaj je LyX boljÅ¡i
 \end_layout
 
 \begin_layout Standard
 
-LyX je uporaben za veè ljudi kot LaTeX.
- Precej la¾je se ga je nauèiti, saj ni treba znati LaTeXa (ki je praktièno
+LyX je uporaben za veÄ ljudi kot LaTeX.
+ Precej laÅ¾je se ga je nauÄiti, saj ni treba znati LaTeXa (ki je praktiÄno
  programski jezik).
  LyX je pravzaprav tak kot drugi urejevalniki besedil tipa 
 \begin_inset Quotes gld
 \end_inset
 
-to, kar vidi¹, to tudi dobi¹
+to, kar vidiÅ¡, to tudi dobiÅ¡
 \begin_inset Quotes grd
 \end_inset
 
@@ -261,15 +269,15 @@ to, kar vidi¹, to tudi dobi¹
 \begin_inset Quotes gld
 \end_inset
 
-to, kar vidi¹, to tudi misli¹
+to, kar vidiÅ¡, to tudi misliÅ¡
 \begin_inset Quotes grd
 \end_inset
 
 .
- Tako zdru¾uje preprostost uporabe urejevalnikov besedil z moèjo LaTeXa.
+ Tako zdruÅ¾uje preprostost uporabe urejevalnikov besedil z moÄjo LaTeXa.
  To je Dobra Stvar.
- Tudi datoteèni format je neodvisen od platforme.
- Najbolj¹e od vsega pa je, da je PROST!
+ Tudi datoteÄni format je neodvisen od platforme.
+ NajboljÅ¡e od vsega pa je, da je PROST!
 \end_layout
 
 \begin_layout Standard
@@ -280,8 +288,8 @@ to, kar vidi¹, to tudi misli¹
 
 \begin_layout Standard
 
-LyX ima ¹tevilne odlike, ki nam olaj¹ajo pisanje spisov.
- (Navsezadnje, le zakaj bi ga drugaèe sploh ¾eleli uporabljati?
+LyX ima Å¡tevilne odlike, ki nam olajÅ¡ajo pisanje spisov.
+ (Navsezadnje, le zakaj bi ga drugaÄe sploh Å¾eleli uporabljati?
 \begin_inset Note Note
 status collapsed
 
@@ -308,41 +316,41 @@ Namig: Poudarite!
 
 \end_inset
 
- da lahko pi¹em o tem.
+ da lahko piÅ¡em o tem.
  Omenimo le dve odliki LyXa:
 \end_layout
 
 \begin_layout Standard
 
-* Namesto vas skrbi za robove in ¹tevilèi opombe v nogi.
+* Namesto vas skrbi za robove in Å¡tevilÄi opombe v nogi.
 \end_layout
 
 \begin_layout Standard
 
-* Olaj¹a pisanje in urejanje matematiènih obrazcev.
+* OlajÅ¡a pisanje in urejanje matematiÄnih obrazcev.
 \end_layout
 
 \begin_layout Standard
 
-Bolj filozofsko razpravo o tem, zakaj je LyX bolj¹i od drugih urejevalnikov
- besedil, pa boste na¹li v razdelku 1.2 na strani 1.
+Bolj filozofsko razpravo o tem, zakaj je LyX boljÅ¡i od drugih urejevalnikov
+ besedil, pa boste naÅ¡li v razdelku 1.2 na strani 1.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
 
-Namig: Verjetno ta NAVZKRI®NA SKLICEVANJA
+Namig: Verjetno ta NAVZKRIÅ½NA SKLICEVANJA
 \end_layout
 
 \begin_layout Standard
 
 ne bi smela biti "zakodirana".
- Kaj, èe spremenimo
+ Kaj, Äe spremenimo
 \end_layout
 
 \begin_layout Standard
 
-¹tevilke razdelkov?
+Å¡tevilke razdelkov?
 \end_layout
 
 \end_inset
@@ -358,12 +366,12 @@ ne bi smela biti "zakodirana".
 
 \begin_layout Standard
 
-Zadnjiè sem napisal program, podoben spodnjemu:
+ZadnjiÄ sem napisal program, podoben spodnjemu:
 \end_layout
 
 \begin_layout Standard
 
-5 REM MOJ STRA©NI PROGRAM
+5 REM MOJ STRAÅ NI PROGRAM
 \end_layout
 
 \begin_layout Standard
@@ -372,7 +380,7 @@ Zadnjiè sem napisal program, podoben spodnjemu:
 \begin_inset Quotes eld
 \end_inset
 
-STRA©EN SEM!
+STRAÅ EN SEM!
 \begin_inset Quotes erd
 \end_inset
 
@@ -387,7 +395,7 @@ status collapsed
 
 \begin_layout Standard
 
-Namig: To je raèunalni¹ka KODA (angl.
+Namig: To je raÄunalniÅ¡ka KODA (angl.
  Code).
 \end_layout
 
@@ -398,13 +406,13 @@ Namig: To je raèunalni¹ka KODA (angl.
 
 \begin_layout Standard
 
-Po tem uèenem razmi¹ljanju me je nenadoma preplavilo bolj umetni¹ko razpolo¾enje
+Po tem uÄenem razmiÅ¡ljanju me je nenadoma preplavilo bolj umetniÅ¡ko razpoloÅ¾enje
  in napisal sem tale haiku
 \end_layout
 
 \begin_layout Standard
 
-LyX je zares èudovit
+LyX je zares Äudovit
 \end_layout
 
 \begin_layout Standard
@@ -414,13 +422,13 @@ stavni urejevalnik besedil
 
 \begin_layout Standard
 
-prihrani mi toliko èasa 
+prihrani mi toliko Äasa 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
 
-Namig: Ni preveè dobro, a je poezija,
+Namig: Ni preveÄ dobro, a je poezija,
 \end_layout
 
 \begin_layout Standard
@@ -437,18 +445,18 @@ znana tudi kot VERZI (angl.
 \begin_layout Standard
 
 4.
- Matematiène zadev¹èine
+ MatematiÄne zadevÅ¡Äine
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
 
-Namig: Te matematiène stvari bi morale biti izpisane
+Namig: Te matematiÄne stvari bi morale biti izpisane
 \end_layout
 
 \begin_layout Standard
 
-v matematiènem naèinu!
+v matematiÄnem naÄinu!
 \end_layout
 
 \end_inset
@@ -458,8 +466,8 @@ v matematiènem naèinu!
 
 \begin_layout Standard
 
-Najbolj so mi pri srcu enaèbe za re¹itev kvadratne enaèbe.
- Èe je ax^2+bx+c=0 (en.
+Najbolj so mi pri srcu enaÄbe za reÅ¡itev kvadratne enaÄbe.
+ ÄŒe je ax^2+bx+c=0 (en.
  1), potem je x= -b + ali minus kvadratni koren od b^2-4ac vse skupaj ulomljeno
  z 2a (en.
  2).
@@ -467,9 +475,9 @@ Najbolj so mi pri srcu enaèbe za re¹itev kvadratne enaèbe.
 
 \begin_layout Standard
 
-Druga priljubljena enaèba je temelj matematiène analize: izraz f'(x) je
+Druga priljubljena enaÄba je temelj matematiÄne analize: izraz f'(x) je
  definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax, ko
- gredo ¹tevila deltax proti niè (en.
+ gredo Å¡tevila deltax proti niÄ (en.
  3).
 \end_layout
 

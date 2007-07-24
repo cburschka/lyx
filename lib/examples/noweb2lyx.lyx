@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass literate-article
@@ -15,13 +15,21 @@
 \end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -34,7 +42,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -66,8 +74,7 @@ This document describes and implements a perl script for importing noweb
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -315,13 +322,17 @@ end{reLyXskip}
 then reLyX will copy the surrounded code to the output file verbatim.
  Given this, the first part of the translation is easy; we simply have to
  copy the code chunks into an intermediate file that surrounds them with
+
+\family default
  
 \family typewriter
 
 \backslash
 begin{reLyXskip}
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -345,7 +356,9 @@ noweb2lyx
 .
  We want to be able to run it as a simple pre-processor and post-processor
  from within reLyX.
- We can accomplish this by setting the flags 
+ We can accomplish this by setting the flags
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -372,8 +385,14 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- and 
+and
+\family default
+\color none
+ 
+\color inherit
 \family roman
 \series medium
 \shape up
@@ -400,8 +419,10 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- before we reach the main conversion code.
+before we reach the main conversion code.
 \end_layout
 
 \begin_layout Standard
@@ -531,7 +552,9 @@ print OUTPUT;
 
 \begin_layout Standard
 
-While reading in the 
+While reading in the
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -558,8 +581,10 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- file, once we have identified a 
+file, once we have identified a 
 \noun on
 noweb
 \noun default
@@ -590,7 +615,9 @@ In
 \noun on
 noweb2lyx
 \noun default
-, we will use 
+, we will use
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -617,8 +644,14 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- and 
+and
+\family default
+\color none
+ 
+\color inherit
 \family roman
 \series medium
 \shape up
@@ -645,8 +678,10 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- to read and write files.
+to read and write files.
  In the code fragment above, we need to read from the input file and write
  to a file that will be later transformed by reLyX.
  If we are being called only to pre-process the input file, then there is
@@ -674,7 +709,9 @@ if ($pre_only) {
 
 \begin_layout Standard
 
-This code uses a small perl subroutine, 
+This code uses a small perl subroutine,
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -830,7 +867,9 @@ print OUTPUT "$endLine";
 
 \begin_layout Standard
 
-Finally, we need to close the 
+Finally, we need to close the
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -857,8 +896,14 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- and 
+and
+\family default
+\color none
+ 
+\color inherit
 \family roman
 \series medium
 \shape up
@@ -885,8 +930,10 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- files.
+files.
 \end_layout
 
 \begin_layout Scrap
@@ -908,7 +955,9 @@ Running reLyX
 \begin_layout Standard
 
 In this section, we describe and implement the code that runs reLyX on the
- intermediate file 
+ intermediate file
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -971,7 +1020,9 @@ In the code below, you'll see a strange regular expression to search for
 \noun on
 noweb2lyx
 \noun default
- on the 
+ on the
+\emph default
+ 
 \emph on
 noweb2lyx.nw
 \emph default
@@ -1165,7 +1216,9 @@ line: while(<INPUT>)
 
 \begin_layout Standard
 
-Note that in the perl code that is contained in the 
+Note that in the perl code that is contained in the
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -1192,8 +1245,14 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- loop above, the perl construct 
+loop above, the perl construct
+\family default
+\color none
+ 
+\color inherit
 \family roman
 \series medium
 \shape up
@@ -1220,8 +1279,10 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- is sufficient to restart the loop.
+is sufficient to restart the loop.
  We can use this construct to do some relatively complex parsing of the
  reLyX generated file.
 \end_layout
@@ -1233,7 +1294,9 @@ File input and output for the post-processing
 
 \begin_layout Standard
 
-Setting up the 
+Setting up the
+\family default
+ 
 \family roman
 \series medium
 \shape up
@@ -1260,8 +1323,14 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- and 
+and
+\family default
+\color none
+ 
+\color inherit
 \family roman
 \series medium
 \shape up
@@ -1288,8 +1357,10 @@ status collapsed
 \emph default
 \bar default
 \noun default
+\color none
+ 
 \color inherit
- is taken care of by this code:
+is taken care of by this code:
 \end_layout
 
 \begin_layout Scrap
@@ -1431,6 +1502,8 @@ Taking care of the
 \noun on
 noweb
 \noun default
+
+\emph default
  
 \emph on
 [[quoted code]]
@@ -1611,13 +1684,17 @@ noweb2lyx
 
 \begin_layout Standard
 
-The noweb2lyx script can be tangled from LyX if you set 
+The noweb2lyx script can be tangled from LyX if you set
+\family default
+ 
 \family typewriter
 
 \backslash
 build_command
 \family default
- to call a generic script that always extracts a scrap named 
+ to call a generic script that always extracts a scrap named
+\family default
+ 
 \family typewriter
 build-script
 \family default

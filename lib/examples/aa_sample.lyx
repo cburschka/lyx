@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass aa
@@ -9,13 +9,21 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,7 +36,7 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -107,7 +115,7 @@ G.
 
 \begin_layout Address
 
-Institute for Astronomy (IfA), University of Vienna, T\i \"{u}
+Institute for Astronomy (IfA), University of Vienna, Tü
 rkenschanzstrasse
  17, A-1180 Vienna
 \newline
@@ -168,14 +176,14 @@ Received September 15, 1996; accepted March 16, 1997
 To investigate the physical nature of the `nuc\SpecialChar \-
 leated instability' of proto
  giant planets (Mizuno 
-\begin_inset LatexCommand \cite{mizuno}
-
+\begin_inset LatexCommand cite
+key "mizuno"
 \end_inset
 
 ), the stability of layers in static, radiative gas spheres is analysed
  on the basis of Baker's 
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
  standard one-zone model.
@@ -252,7 +260,9 @@ Introduction
 
 \begin_layout Standard
 
-In the 
+In the
+\emph default
+ 
 \emph on
 nucleated instability
 \begin_inset ERT
@@ -271,8 +281,8 @@ status collapsed
  (also called core instability) hypothesis of giant planet formation, a
  critical mass for static core envelope protoplanets has been found.
  Mizuno (
-\begin_inset LatexCommand \cite{mizuno}
-
+\begin_inset LatexCommand cite
+key "mizuno"
 \end_inset
 
 ) determined the critical mass of the core to be about 
@@ -298,8 +308,8 @@ Although no hydrodynamical study has been available many workers conjectured
  the static envelope at the critical mass.
  With this aim the local, linear stability of static radiative gas spheres
  is investigated on the basis of Baker's (
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
 ) standard one-zone model.
@@ -310,13 +320,13 @@ Although no hydrodynamical study has been available many workers conjectured
 Phenomena similar to the ones described above for giant planet formation
  have been found in hydrodynamical models concerning star formation where
  protostellar cores explode (Tscharnuter 
-\begin_inset LatexCommand \cite{tscharnuter}
-
+\begin_inset LatexCommand cite
+key "tscharnuter"
 \end_inset
 
 , Balluch 
-\begin_inset LatexCommand \cite{balluch}
-
+\begin_inset LatexCommand cite
+key "balluch"
 \end_inset
 
 ), whereas earlier studies found quasi-steady collapse flows.
@@ -337,7 +347,10 @@ wide true
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Adiabatic exponent 
 \begin_inset Formula \( \Gamma _{1} \)
@@ -367,11 +380,16 @@ Adiabatic exponent
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \label{FigGam}
-
+\begin_inset LatexCommand label
+name "FigGam"
 \end_inset
 
 
@@ -380,11 +398,11 @@ Adiabatic exponent
 \end_inset
 
  In this section the one-zone model of Baker (
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
-), originally used to study the Cephe\i \"{\i}
+), originally used to study the Cepheı̈
 d pulsation mechanism, will be briefly
  reviewed.
  The resulting stability criteria will be rewritten in terms of local state
@@ -394,8 +412,8 @@ d pulsation mechanism, will be briefly
 \begin_layout Standard
 
 Baker (
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
 ) investigates the stability of thin layers in self-gravitating, spherical
@@ -458,8 +476,8 @@ status collapsed
 \end_inset
 
 c) in Baker 
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
 ).
@@ -486,7 +504,9 @@ E_{\textrm{th}} &  & \textrm{thermal energy of the zone}
 
 \begin_layout Standard
 \noindent
-and with the definitions of the 
+and with the definitions of the
+\emph default
+ 
 \emph on
 local cooling time
 \begin_inset ERT
@@ -504,8 +524,8 @@ status collapsed
 \emph default
  (see Fig.\InsetSpace ~
 
-\begin_inset LatexCommand \ref{FigGam}
-
+\begin_inset LatexCommand ref
+reference "FigGam"
 \end_inset
 
 ) 
@@ -515,7 +535,9 @@ status collapsed
 
 \end_inset
 
- and the 
+ and the
+\emph default
+ 
 \emph on
 local free-fall time
 \emph default
@@ -597,7 +619,9 @@ e=mc^{2}
 
 \end_inset
 
- one obtains, after some pages of algebra, the conditions for 
+ one obtains, after some pages of algebra, the conditions for
+\emph default
+ 
 \emph on
 stability
 \begin_inset ERT
@@ -623,13 +647,13 @@ status collapsed
 \end_inset
 
  For a physical discussion of the stability criteria see Baker (
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
 ) or Cox (
-\begin_inset LatexCommand \cite{cox}
-
+\begin_inset LatexCommand cite
+key "cox"
 \end_inset
 
 ).
@@ -657,24 +681,26 @@ a factor containing only constitutive relations and their derivatives.
 The first factors, depending on only timescales, are positive by definition.
  The signs of the left hand sides of the inequalities\InsetSpace ~
 (
-\begin_inset LatexCommand \ref{ZSDynSta}
-
+\begin_inset LatexCommand ref
+reference "ZSDynSta"
 \end_inset
 
 ), (
-\begin_inset LatexCommand \ref{ZSSecSta}
-
+\begin_inset LatexCommand ref
+reference "ZSSecSta"
 \end_inset
 
 ) and (
-\begin_inset LatexCommand \ref{ZSVibSta}
-
+\begin_inset LatexCommand ref
+reference "ZSVibSta"
 \end_inset
 
 ) therefore depend exclusively on the second factors containing the constitutive
  relations.
  Since they depend only on state variables, the stability criteria themselves
- are 
+ are
+\emph default
+ 
 \emph on
  functions of the thermodynamic state in the local zone
 \emph default
@@ -695,8 +721,8 @@ status collapsed
 
 the thermodynamics and opacities (see Table\InsetSpace ~
 
-\begin_inset LatexCommand \ref{KapSou}
-
+\begin_inset LatexCommand ref
+reference "KapSou"
 \end_inset
 
 ), are specified (in practice by specifying a chemical composition) the
@@ -715,14 +741,22 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 
-\begin_inset LatexCommand \label{KapSou}
-
+\begin_inset LatexCommand label
+name "KapSou"
 \end_inset
 
 Opacity sources
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -791,7 +825,7 @@ Yorke 1979, Yorke 1980a
 
 \begin_layout Standard
 
-Kr�gel 1971
+Krügel 1971
 \end_layout
 
 \end_inset
@@ -857,21 +891,23 @@ This is footnote a
 
  We will now write down the sign (and therefore stability) determining parts
  of the left-hand sides of the inequalities (
-\begin_inset LatexCommand \ref{ZSDynSta}
-
+\begin_inset LatexCommand ref
+reference "ZSDynSta"
 \end_inset
 
 ), (
-\begin_inset LatexCommand \ref{ZSSecSta}
-
+\begin_inset LatexCommand ref
+reference "ZSSecSta"
 \end_inset
 
 ) and (
-\begin_inset LatexCommand \ref{ZSVibSta}
-
+\begin_inset LatexCommand ref
+reference "ZSVibSta"
 \end_inset
 
-) and thereby obtain 
+) and thereby obtain
+\emph default
+ 
 \emph on
 stability equations of state
 \emph default
@@ -882,8 +918,8 @@ stability equations of state
 
 The sign determining part of inequality\InsetSpace ~
 (
-\begin_inset LatexCommand \ref{ZSDynSta}
-
+\begin_inset LatexCommand ref
+reference "ZSDynSta"
 \end_inset
 
 ) is 
@@ -923,17 +959,19 @@ The sign determining part of inequality\InsetSpace ~
 
  we find the sign determining terms in inequalities\InsetSpace ~
 (
-\begin_inset LatexCommand \ref{ZSSecSta}
-
+\begin_inset LatexCommand ref
+reference "ZSSecSta"
 \end_inset
 
 ) and (
-\begin_inset LatexCommand \ref{ZSVibSta}
-
+\begin_inset LatexCommand ref
+reference "ZSVibSta"
 \end_inset
 
 ) respectively and obtain the following form of the criteria for dynamical,
- secular and vibrational 
+ secular and vibrational
+\emph default
+ 
 \emph on
 stability
 \emph default
@@ -983,8 +1021,8 @@ e relations
 .
  See Fig.\InsetSpace ~
 
-\begin_inset LatexCommand \ref{FigVibStab}
-
+\begin_inset LatexCommand ref
+reference "FigVibStab"
 \end_inset
 
  for a picture of 
@@ -1003,7 +1041,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 
 Vibrational stability equation of state 
 \begin_inset Formula \( S_{\mathrm{vib}}(\lg e,\lg \rho ) \)
@@ -1017,11 +1058,16 @@ Vibrational stability equation of state
  means vibrational stability 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \label{FigVibStab}
-
+\begin_inset LatexCommand label
+name "FigVibStab"
 \end_inset
 
 
@@ -1040,8 +1086,8 @@ Conclusions
 
 The conditions for the stability of static, radiative layers in gas spheres,
  as described by Baker's (
-\begin_inset LatexCommand \cite{baker}
-
+\begin_inset LatexCommand cite
+key "baker"
 \end_inset
 
 ) standard one-zone model, can be expressed as stability equations of state.
@@ -1072,14 +1118,16 @@ For solar composition gas the
  dissociation and the combined H, first He ionization zone, as indicated
  by vibrational instability.
  These regions of instability are much larger in extent and degree of instabilit
-y than the second He ionization zone that drives the Cephe\i \"{\i}
+y than the second He ionization zone that drives the Cepheı̈
 d pulsations.
  
 \end_layout
 
 \begin_layout Acknowledgement
 
-Part of this work was supported by the German 
+Part of this work was supported by the German
+\emph default
+ 
 \emph on
 Deut\SpecialChar \-
 sche For\SpecialChar \-
@@ -1106,7 +1154,11 @@ status collapsed
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1966]{baker}
+\begin_inset LatexCommand bibitem
+label "1966"
+key "baker"
+
+\end_inset
 
  Baker, N.
  1966, in Stellar Evolution, ed.
@@ -1130,14 +1182,22 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1988]{balluch}
+\begin_inset LatexCommand bibitem
+label "1988"
+key "balluch"
+
+\end_inset
 
  Balluch, M.
  1988, A&A, 200, 58
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1980]{cox}
+\begin_inset LatexCommand bibitem
+label "1980"
+key "cox"
+
+\end_inset
 
  Cox, J.
  P.
@@ -1146,7 +1206,11 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1969]{cox69}
+\begin_inset LatexCommand bibitem
+label "1969"
+key "cox69"
+
+\end_inset
 
  Cox, A.
  N.,& Stewart, J.
@@ -1155,7 +1219,11 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1980]{mizuno}
+\begin_inset LatexCommand bibitem
+label "1980"
+key "mizuno"
+
+\end_inset
 
  Mizuno H.
  1980, Prog.
@@ -1164,7 +1232,11 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1987]{tscharnuter}
+\begin_inset LatexCommand bibitem
+label "1987"
+key "tscharnuter"
+
+\end_inset
 
  Tscharnuter W.
  M.
@@ -1172,7 +1244,11 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1992]{terlevich}
+\begin_inset LatexCommand bibitem
+label "1992"
+key "terlevich"
+
+\end_inset
 
  Terlevich, R.
  1992, in ASP Conf.
@@ -1185,7 +1261,11 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1980a]{yorke80a}
+\begin_inset LatexCommand bibitem
+label "1980a"
+key "yorke80a"
+
+\end_inset
 
  Yorke, H.
  W.
@@ -1193,7 +1273,11 @@ R.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem [1997]{zheng}
+\begin_inset LatexCommand bibitem
+label "1997"
+key "zheng"
+
+\end_inset
 
 Zheng, W., Davidsen, A.
  F., Tytler, D.

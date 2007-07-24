@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language ngerman
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize a4paper
 \use_geometry true
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,7 +39,7 @@
 \papersides 1
 \paperpagestyle headings
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -43,23 +51,22 @@ Mehrspaltige Dokumente
 \begin_layout Author
 von 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \newline
 
 \noun default
-Übersetzung: 
+Ãœbersetzung: 
 \noun on
 Hartmut Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
+letzte Ã„nderung: 2.
  November 2005
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -71,42 +78,48 @@ Absicht
 
 \begin_layout Standard
 Das Ziel dieses Abschnittes ist es, Ihnen die Verwendung des LaTeX-Paketes
+
+\family default
  
 \family typewriter
 multicol
 \family default
- zu erläutern.
- Diese Paket wird derzeit von LyX noch nicht direkt unterstützt, deshalb
- müssen Sie einige Dinge von Hand einfügen.
+ zu erlÃ¤utern.
+ Diese Paket wird derzeit von LyX noch nicht direkt unterstÃ¼tzt, deshalb
+ mÃ¼ssen Sie einige Dinge von Hand einfÃ¼gen.
  Wenn Sie diesen Abschnitt lesen, sollte Ihnen klarwerden, wie man das macht.
 \end_layout
 
 \begin_layout Standard
-Damit man mehrspaltige Dokumente drucken kann, muß in den LaTeX-Vorspann
+Damit man mehrspaltige Dokumente drucken kann, muÃŸ in den LaTeX-Vorspann
+
+\family default
  
 \family typewriter
 
 \backslash
 usepackage{multicol}
 \family default
- eingefügt werden.
+ eingefÃ¼gt werden.
 \end_layout
 
 \begin_layout Subsection
-Einschränkungen
+EinschrÃ¤nkungen
 \end_layout
 
 \begin_layout Standard
-Das Paket 
+Das Paket
+\family default
+ 
 \family typewriter
 multicol
 \family default
  dient dazu, um auf ein und derselben Seite zwischen ein- und mehrspaltigem
  Textsatz umzuschalten.
- Fußnoten werden dabei (größtenteils) richtig behandelt, werden allerdings
+ FuÃŸnoten werden dabei (grÃ¶ÃŸtenteils) richtig behandelt, werden allerdings
  unten auf der Gesamtseite, und nicht unter der jeweiligen Spalte gesetzt.
- In der gegenwärtigen Implementierung ist aber der Gleitmechanismus von
- LaTeX teilweise deaktiviert, aus diesem Grund können in dieser Umgebung
+ In der gegenwÃ¤rtigen Implementierung ist aber der Gleitmechanismus von
+ LaTeX teilweise deaktiviert, aus diesem Grund kÃ¶nnen in dieser Umgebung
  nur ganzseitige richtig Gleitobjekte verarbeitet werden.
  
 \end_layout
@@ -120,9 +133,11 @@ Zwei Spalten
 \end_layout
 
 \begin_layout Standard
-Wenn Sie Text in zwei Spalten setzen wollen, müssen Sie den LaTeX-Modus
+Wenn Sie Text in zwei Spalten setzen wollen, mÃ¼ssen Sie den LaTeX-Modus
  verwenden und an dem Punkt, an dem der zweispaltige Satz beginnen soll,
- den Befehl 
+ den Befehl
+\family default
+ 
 \family typewriter
 
 \begin_inset Tabular
@@ -148,7 +163,7 @@ begin{multicols}{2}
 
 
 \family default
- einfügen und am Ende den Befehl 
+ einfÃ¼gen und am Ende den Befehl 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -209,42 +224,42 @@ Michael Ende
 
 \size small
 \SpecialChar \ldots{}
- Draußen am südlichen Rand dieser großen Stadt, dort, wo schon die ersten
- Felder beginnen und die Hütten und Häuser immer armseliger werden, liegt,
- in einem Pinienwäldchen versteckt, die Ruine eines kleinen Amphitheaters.
- Es war auch in jenen alten Zeiten keines von den prächtigen, es war schon
- damals sozusagen ein Theater für ärmere Leute.
- In unseren Tagen, das heißt um jene Zeit, da die Geschichte von Momo ihren
+ DrauÃŸen am sÃ¼dlichen Rand dieser groÃŸen Stadt, dort, wo schon die ersten
+ Felder beginnen und die HÃ¼tten und HÃ¤user immer armseliger werden, liegt,
+ in einem PinienwÃ¤ldchen versteckt, die Ruine eines kleinen Amphitheaters.
+ Es war auch in jenen alten Zeiten keines von den prÃ¤chtigen, es war schon
+ damals sozusagen ein Theater fÃ¼r Ã¤rmere Leute.
+ In unseren Tagen, das heiÃŸt um jene Zeit, da die Geschichte von Momo ihren
  Anfang nahm, war die Ruine fast ganz vergessen.
  Nur ein paar Professoren der Al\SpecialChar \-
 ter\SpecialChar \-
 tums\SpecialChar \-
 wis\SpecialChar \-
 sen\SpecialChar \-
-schaft wußten von ihr, aber
- sie kümmerten sich nicht weiter um sie, weil es dort nichts mehr zu erforschen
+schaft wuÃŸten von ihr, aber
+ sie kÃ¼mmerten sich nicht weiter um sie, weil es dort nichts mehr zu erforschen
  gab.
- Sie war auch keine Sehenswürdigkeit, die sich mit anderen, die es in der
- großen Stadt gab, messen konnte.
+ Sie war auch keine SehenswÃ¼rdigkeit, die sich mit anderen, die es in der
+ groÃŸen Stadt gab, messen konnte.
  So verirr\SpecialChar \-
 ten sich nur ab und zu ein paar Tou\SpecialChar \-
 ri\SpecialChar \-
 sten dort hin, kletterten
- auf den grasbewachsenen Sitzreihen umher, machten Lärm, knipsten ein Erinnerung
+ auf den grasbewachsenen Sitzreihen umher, machten LÃ¤rm, knipsten ein Erinnerung
 sfoto und gingen wieder fort.
  Dann kehrte die Stille in das stei\SpecialChar \-
 ner\SpecialChar \-
-ne Rund zurück, und die Zikaden stimmten
- die nächste Strophe ihres endlosen Liedes an, die sich übrigens in nichts
+ne Rund zurÃ¼ck, und die Zikaden stimmten
+ die nÃ¤chste Strophe ihres endlosen Liedes an, die sich Ã¼brigens in nichts
  von der vorigen unterschied.
 \end_layout
 
 \begin_layout Standard
 
 \size small
-Eigentlich waren es nur die Leute aus der näheren Umgebung, die das seltsame
+Eigentlich waren es nur die Leute aus der nÃ¤heren Umgebung, die das seltsame
  runde Bauwerk kannten.
- Sie ließen dort ihre Ziegen weiden, die Kinder benutzten den runden Platz
+ Sie lieÃŸen dort ihre Ziegen weiden, die Kinder benutzten den runden Platz
  in der Mitte zum Ballspielen, und manchmal trafen sich dort am Abend die
  Liebespaare\SpecialChar \ldots{}
 
@@ -271,7 +286,7 @@ Mehr als zwei Spalten
 
 \begin_layout Standard
 Dasselbe Schema gilt, wenn Sie mehr als zwei Spalten haben wollen, Sie geben
- einfach die Anzahl der gewünschten Spalten in der zweiten Klammer an: 
+ einfach die Anzahl der gewÃ¼nschten Spalten in der zweiten Klammer an: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -316,33 +331,33 @@ begin{multicols}{3}
 \begin_layout Standard
 
 \size footnotesize
-Aber eines Tages sprach es sich bei den Leuten herum, daß neuerdings jemand
+Aber eines Tages sprach es sich bei den Leuten herum, daÃŸ neuerdings jemand
  in der Ruine wohne.
- Es sei ein Kind, ein kleines Mädchen vermutlich.
- So genau könne man das allerdings nicht sagen, weil es ein bißchen merkwürdig
+ Es sei ein Kind, ein kleines MÃ¤dchen vermutlich.
+ So genau kÃ¶nne man das allerdings nicht sagen, weil es ein biÃŸchen merkwÃ¼rdig
  angezogen sei.
- Es hieße Momo oder so ähnlich.
+ Es hieÃŸe Momo oder so Ã¤hnlich.
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-Momos äußere Erscheinung war in der Tat ein wenig seltsam und konnte auf
- Menschen, die großen Wert auf Sauberkeit und Ordnung legen, möglicherweise
+Momos Ã¤uÃŸere Erscheinung war in der Tat ein wenig seltsam und konnte auf
+ Menschen, die groÃŸen Wert auf Sauberkeit und Ordnung legen, mÃ¶glicherweise
  etwas erschreckend wirken.
- Sie war klein und ziemlich mager, so daß man beim besten Willen nicht erkennen
- konnte, ob sie erst acht oder schon zwölf Jahre alt war..
+ Sie war klein und ziemlich mager, so daÃŸ man beim besten Willen nicht erkennen
+ konnte, ob sie erst acht oder schon zwÃ¶lf Jahre alt war..
  Sie hatte einen wilden, pechschwarzen Lockenkopf, der so aussah, als ob
- er noch nie mit einem Kamm oder einer Schere in Berührung gekommen wäre.
- Sie hatte große, wunderschöne und ebenfalls pechschwarze Augen und Füße
+ er noch nie mit einem Kamm oder einer Schere in BerÃ¼hrung gekommen wÃ¤re.
+ Sie hatte groÃŸe, wunderschÃ¶ne und ebenfalls pechschwarze Augen und FÃ¼ÃŸe
  von der glei\SpecialChar \-
-chen Farbe, denn sie lief fast immer barfuß.
+chen Farbe, denn sie lief fast immer barfuÃŸ.
  Nur im Winter trug sie manchmal Schuhe, aber es waren zwei verschiedene,
- die nicht zusammenpaßten und ihr außerdem viel zu groß waren.
- Das kam daher, daß Momo eben nichts besaß, als was sie irgendwo fand oder
+ die nicht zusammenpaÃŸten und ihr auÃŸerdem viel zu groÃŸ waren.
+ Das kam daher, daÃŸ Momo eben nichts besaÃŸ, als was sie irgendwo fand oder
  geschenkt bekam.
- Ihr Rock war aus allerlei bunten Flicken zusammengenäht und reichte ihr
- bis auf die Fußknöchel
+ Ihr Rock war aus allerlei bunten Flicken zusammengenÃ¤ht und reichte ihr
+ bis auf die FuÃŸknÃ¶chel
 \size small
 \SpecialChar \ldots{}
 
@@ -364,7 +379,7 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-Sie können zwar mehr als 3 Spalten verwenden, aber das ist meist für das
+Sie kÃ¶nnen zwar mehr als 3 Spalten verwenden, aber das ist meist fÃ¼r das
  Auge nicht sehr ansprechend.
 \end_layout
 
@@ -373,7 +388,7 @@ Spalten innerhalb einer Spalte
 \end_layout
 
 \begin_layout Standard
-Sie können sogar mehrspaltige Abschnitte innerhalb einer anderen, mehrspaltigen
+Sie kÃ¶nnen sogar mehrspaltige Abschnitte innerhalb einer anderen, mehrspaltigen
  Umgebung verwenden:
 \end_layout
 
@@ -395,12 +410,12 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-Darüber trug sie eine alte, viel zu weite Männerjacke, deren Ärmel an den
+DarÃ¼ber trug sie eine alte, viel zu weite MÃ¤nnerjacke, deren Ã„rmel an den
  Handgelenken umgekrempelt waren.
- Abschneiden wollte Momo sie nicht, weil sie vorsorglich daran dachte, daß
- sie ja noch wachsen würde.
- Und wer konnte wissen, ob sie jemals wieder eine so schöne und praktische
- Jacke mit so vielen Taschen finden würde
+ Abschneiden wollte Momo sie nicht, weil sie vorsorglich daran dachte, daÃŸ
+ sie ja noch wachsen wÃ¼rde.
+ Und wer konnte wissen, ob sie jemals wieder eine so schÃ¶ne und praktische
+ Jacke mit so vielen Taschen finden wÃ¼rde
 \size small
 \SpecialChar \ldots{}
 
@@ -424,14 +439,14 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-Unter der grasbewachsenen Bühne der Theaterruine gab es ein paar halb eingestürz
-te Kammern, die man durch ein Loch in der Außenmauer betreten konnte.
- Hier hatte Momo sich häuslich eingerichtet.
- Eines Mittags kamen einige Männer und Frauen aus der näheren Umgebung zu
+Unter der grasbewachsenen BÃ¼hne der Theaterruine gab es ein paar halb eingestÃ¼rz
+te Kammern, die man durch ein Loch in der AuÃŸenmauer betreten konnte.
+ Hier hatte Momo sich hÃ¤uslich eingerichtet.
+ Eines Mittags kamen einige MÃ¤nner und Frauen aus der nÃ¤heren Umgebung zu
  ihr und versuchen sie auszufragen.
- Momo stand ihnen gegenüber und guckte sie ängstlich an, weil sie fürchtete,
- die Leute würden sie wegjagen.
- Aber sie merkte bald, daß es freundliche Leute waren.
+ Momo stand ihnen gegenÃ¼ber und guckte sie Ã¤ngstlich an, weil sie fÃ¼rchtete,
+ die Leute wÃ¼rden sie wegjagen.
+ Aber sie merkte bald, daÃŸ es freundliche Leute waren.
  Sie waren selber arm und kannten das Leben
 \size small
 \SpecialChar \ldots{}
@@ -463,11 +478,11 @@ So
 \begin_inset Quotes grd
 \end_inset
 
-, sagte einer der Männer, 
+, sagte einer der MÃ¤nner, 
 \begin_inset Quotes gld
 \end_inset
 
-hier gefällt es dir also?
+hier gefÃ¤llt es dir also?
 \begin_inset Quotes grd
 \end_inset
 
@@ -527,7 +542,7 @@ Nein.
 \begin_inset Quotes gld
 \end_inset
 
-Ich meine, mußt du denn nicht wieder nach Hause?
+Ich meine, muÃŸt du denn nicht wieder nach Hause?
 \begin_inset Quotes grd
 \end_inset
 
@@ -589,7 +604,7 @@ wir wollen dich nicht vertreiben.
 
 
 \newline
-Momo nickte stumm, aber noch nicht ganz überzeugt\SpecialChar \ldots{}
+Momo nickte stumm, aber noch nicht ganz Ã¼berzeugt\SpecialChar \ldots{}
 
 \end_layout
 
@@ -613,12 +628,14 @@ Fortgeschrittene Beispiele
 \end_layout
 
 \begin_layout Standard
-Wie Sie vielleicht wissen, hat 
+Wie Sie vielleicht wissen, hat
+\family default
+ 
 \family typewriter
 multicol
 \family default
  mehrere Variablen zum Anpassen.
- Die folgenden Beispiele zeigen, wie sie in LyX benutzt werden können.
+ Die folgenden Beispiele zeigen, wie sie in LyX benutzt werden kÃ¶nnen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -629,9 +646,9 @@ Vorwort und Umbruch
 \begin_inset VSpace 6cm
 \end_inset
 
-Weil wegen des Abstandes auf der Seite jetzt weniger als 5 cm übrig sind,
- wird die Seite vor dem nächsten Abschnitt umgebrochen und ein Vorwort über
- den zwei Spalten eingefügt: 
+Weil wegen des Abstandes auf der Seite jetzt weniger als 5 cm Ã¼brig sind,
+ wird die Seite vor dem nÃ¤chsten Abschnitt umgebrochen und ein Vorwort Ã¼ber
+ den zwei Spalten eingefÃ¼gt: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -694,7 +711,7 @@ status inlined
 \begin_inset Quotes gld
 \end_inset
 
-Du sagst, daß du Momo heißt, nicht wahr?
+Du sagst, daÃŸ du Momo heiÃŸt, nicht wahr?
 \size default
 
 \begin_inset Quotes grd
@@ -722,7 +739,7 @@ Ja.
 \begin_inset Quotes gld
 \end_inset
 
-Das ist ein hübscher Name, aber ich hab' ihn noch nie gehört.
+Das ist ein hÃ¼bscher Name, aber ich hab' ihn noch nie gehÃ¶rt.
  Wer hat dir denn den Namen gegeben?
 \begin_inset Quotes grd
 \end_inset
@@ -785,7 +802,7 @@ Wann bist du denn geboren?
 \begin_layout Standard
 
 \size small
-Momo überlegte und sagte schließlich: 
+Momo Ã¼berlegte und sagte schlieÃŸlich: 
 \begin_inset Quotes gld
 \end_inset
 
@@ -802,7 +819,7 @@ Soweit ich mich erinnern kann, war ich immer schon da.
 \begin_inset Quotes gld
 \end_inset
 
-Hast du denn keine Tante, keinen Onkel, keine Großmutter, überhaupt keine
+Hast du denn keine Tante, keinen Onkel, keine GroÃŸmutter, Ã¼berhaupt keine
  Familie, wo du hin kannst?
 \begin_inset Quotes grd
 \end_inset
@@ -856,13 +873,13 @@ Hundert
 \begin_inset Quotes grd
 \end_inset
 
-, sagte Momo zögernd.
+, sagte Momo zÃ¶gernd.
 \end_layout
 
 \begin_layout Standard
 
 \size small
-Die Leute lachten, weil sie es für einen Spaß hielten.
+Die Leute lachten, weil sie es fÃ¼r einen SpaÃŸ hielten.
 \end_layout
 
 \begin_layout Standard
@@ -900,7 +917,9 @@ Vorwort und Abschnitte
 
 \begin_layout Standard
 Was ist, wenn das Vorwort ein Abschnittsbefehl sein soll? Das geht, aber
- nur mit LaTeX-Befehlen innerhalb des 
+ nur mit LaTeX-Befehlen innerhalb des
+\family default
+ 
 \family typewriter
 multicols
 \family default
@@ -971,9 +990,9 @@ status inlined
 \begin_layout Standard
 
 \size small
-Es dauerte eine Weile, bis die Leute merkten, daß das Kind nur ein paar
- Zahlwörter kannte, die es aufgeschnappt hatte, sich aber nichts Bestimmtes
- darunter vorstellen konnte, weil niemand es Zählen gelehrt hatte.
+Es dauerte eine Weile, bis die Leute merkten, daÃŸ das Kind nur ein paar
+ ZahlwÃ¶rter kannte, die es aufgeschnappt hatte, sich aber nichts Bestimmtes
+ darunter vorstellen konnte, weil niemand es ZÃ¤hlen gelehrt hatte.
 \end_layout
 
 \begin_layout Standard
@@ -982,7 +1001,7 @@ Es dauerte eine Weile, bis die Leute merkten, daß das Kind nur ein paar
 \begin_inset Quotes gld
 \end_inset
 
-Hör mal
+HÃ¶r mal
 \begin_inset Quotes grd
 \end_inset
 
@@ -990,10 +1009,10 @@ Hör mal
 \begin_inset Quotes gld
 \end_inset
 
-wäre es dir recht, wenn wir der Polizei sagen, daß du hier bist? Dann würdest
+wÃ¤re es dir recht, wenn wir der Polizei sagen, daÃŸ du hier bist? Dann wÃ¼rdest
  du in ein Haus kommen, wo du zu essen kriegst und ein Bett hast und wo
  du rechnen und lesen und schreiben und noch viel mehr lernen kannst.
- Was hältst du davon, eh?
+ Was hÃ¤ltst du davon, eh?
 \size default
 
 \begin_inset Quotes grd
@@ -1020,8 +1039,8 @@ da will ich nicht hin.
  Da war ich schon mal.
  Andere Kinder waren auch da.
  Da waren Gitter an den Fenstern.
- Jeden Tag gab's Prügel -- aber ganz ungerecht.
- Da bin ich nachts über die Mauer und weggelaufen.
+ Jeden Tag gab's PrÃ¼gel -- aber ganz ungerecht.
+ Da bin ich nachts Ã¼ber die Mauer und weggelaufen.
  Da will ich nicht mehr wieder hin.
 \size default
 
@@ -1060,7 +1079,7 @@ Also gut
 \end_inset
 
 aber du bist doch noch klein.
- Irgendwer muß doch für dich sorgen.
+ Irgendwer muÃŸ doch fÃ¼r dich sorgen.
 \begin_inset Quotes grd
 \end_inset
 
@@ -1128,20 +1147,24 @@ Leerraum
 \end_layout
 
 \begin_layout Standard
-Das 
+Das
+\family default
+ 
 \family typewriter
 multicol
 \family default
--Paket fügt vor und nach dem mehrspaltigen Abschnitt etwas Leerraum ein.
- Die Befehle zum ändern der Standardeinstellungen müssen unmittelbar vor
+-Paket fÃ¼gt vor und nach dem mehrspaltigen Abschnitt etwas Leerraum ein.
+ Die Befehle zum Ã¤ndern der Standardeinstellungen mÃ¼ssen unmittelbar vor
+
+\family default
  
 \family typewriter
 
 \backslash
 begin{multicols}
 \family default
- eingefügt werden.
- Das folgende Beispiel fügt 3 cm vor und nach dem  mehrspaltigen Abschnitt
+ eingefÃ¼gt werden.
+ Das folgende Beispiel fÃ¼gt 3 cm vor und nach dem  mehrspaltigen Abschnitt
  ein:
 \newline
  
@@ -1206,7 +1229,7 @@ Wieder wechselten die Leute Blicke, seufzten und nickten.
 \begin_inset Quotes gld
 \end_inset
 
-Weißt du, Momo
+WeiÃŸt du, Momo
 \begin_inset Quotes grd
 \end_inset
 
@@ -1214,11 +1237,11 @@ Weißt du, Momo
 \begin_inset Quotes gld
 \end_inset
 
-wir meinen, du könntest vielleicht bei einem von uns unterkriechen.
+wir meinen, du kÃ¶nntest vielleicht bei einem von uns unterkriechen.
  Wir haben zwar selber alle nur wenig Platz, und die meisten haben schon
- einen Haufen Kinder, die gefüttert sein wollen, aber wir meinen, auf eines
+ einen Haufen Kinder, die gefÃ¼ttert sein wollen, aber wir meinen, auf eines
  mehr kommt es dann auch schon nicht mehr an.
- Was hältst du davon, eh?
+ Was hÃ¤ltst du davon, eh?
 \size default
 
 \begin_inset Quotes grd
@@ -1237,11 +1260,11 @@ Danke
 \begin_inset Quotes grd
 \end_inset
 
-, sagte Momo und lächelte zum ersten Mal, 
+, sagte Momo und lÃ¤chelte zum ersten Mal, 
 \begin_inset Quotes gld
 \end_inset
 
-vielen Dank! Aber könntet ihr mich nicht einfach hier wohnen lassen?
+vielen Dank! Aber kÃ¶nntet ihr mich nicht einfach hier wohnen lassen?
 \begin_inset Quotes grd
 \end_inset
 
@@ -1252,9 +1275,9 @@ vielen Dank! Aber könntet ihr mich nicht einfach hier wohnen lassen?
 
 \size small
 Die Leute berieten lange hin und her, und zuletzt waren sie einverstanden.
- Denn hier, so meinten sie, könne das Kind schließlich genausogut wohnen
- wie bei einem von ihnen, und sorgen wollten sie alle gemeinsam für Momo,
- weil es für alle zusammen sowieso einfacher wäre, als für einen allein\SpecialChar \ldots{}
+ Denn hier, so meinten sie, kÃ¶nne das Kind schlieÃŸlich genausogut wohnen
+ wie bei einem von ihnen, und sorgen wollten sie alle gemeinsam fÃ¼r Momo,
+ weil es fÃ¼r alle zusammen sowieso einfacher wÃ¤re, als fÃ¼r einen allein\SpecialChar \ldots{}
 
 \end_layout
 
@@ -1274,14 +1297,17 @@ end{multicols}
 \end_layout
 
 \begin_layout Description
-Bemerkung: Der mit 
+Bemerkung: Der mit
+\family default
+ 
 \family typewriter
 
 \backslash
-setlength 
+setlength
 \family default
-geänderte Wert muß hinterher wieder zurückgesetzt werden, sonst bleibt er
- für den Rest des Dokumentes erhalten: 
+ 
+geÃ¤nderte Wert muÃŸ hinterher wieder zurÃ¼ckgesetzt werden, sonst bleibt er
+ fÃ¼r den Rest des Dokumentes erhalten: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -1332,11 +1358,13 @@ Spaltenbreite und Trennung
 \end_layout
 
 \begin_layout Standard
-Die Spaltenbreite der 
+Die Spaltenbreite der
+\family default
+ 
 \family typewriter
 multicols
 \family default
--Umgebung wird automatisch berechnet, aber Sie können den Abstand zwischen
+-Umgebung wird automatisch berechnet, aber Sie kÃ¶nnen den Abstand zwischen
  den Spalten festlegen.
  Der Abstand zwischen den den folgenden beiden Spalten wird 3 cm betragen:
 \newline
@@ -1393,19 +1421,19 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size small
-Sie fingen gleich an, indem sie zunächst einmal die halb eingestürzte steinerne
- Kammer, in der Momo hauste, aufräumten und instandsetzten, so gut es ging.
+Sie fingen gleich an, indem sie zunÃ¤chst einmal die halb eingestÃ¼rzte steinerne
+ Kammer, in der Momo hauste, aufrÃ¤umten und instandsetzten, so gut es ging.
  Einer von ihnen, der Maurer war, baute sogar einen kleinen steinernen Herd.
  Ein rostiges Ofenrohr wurde auch aufgetrieben.
  Ein alter Schreinern nagelte aus ein paar Kistenbrettern ein Tischchen
- und zwei Stühle zusammen.
- Und schließlich brachten die Frauen noch ein ausgedientes, mit Schnörkeln
+ und zwei StÃ¼hle zusammen.
+ Und schlieÃŸlich brachten die Frauen noch ein ausgedientes, mit SchnÃ¶rkeln
  verziertes Eisenbett, eine Matratze, die nur wenig zerrissen war, und zwei
  Decken.
- Aus dem steinernen Loch unter der Bühneder Ruine war ein behagliches kleines
+ Aus dem steinernen Loch unter der BÃ¼hneder Ruine war ein behagliches kleines
  Zimmerchen geworden.
- Der Maurer, der künstlerische Fähigkeiten besaß, malte zuletzt noch ein
- hübsches Blumenbild an die Wand.
+ Der Maurer, der kÃ¼nstlerische FÃ¤higkeiten besaÃŸ, malte zuletzt noch ein
+ hÃ¼bsches Blumenbild an die Wand.
  Sogar den Rahmen und den Nagel, an dem das Bild hing, malte er dazu\SpecialChar \ldots{}
 
 \end_layout
@@ -1428,10 +1456,11 @@ end{multicols}
 \begin_layout Description
 Bemerkung: Der
 \family typewriter
- 
+
 \family default
-geänderte Wert muß auch in diesem Fall hinterher wieder zurückgesetzt werden,
- sonst bleibt er für den Rest des Dokumentes erhalten: 
+ 
+geÃ¤nderte Wert muÃŸ auch in diesem Fall hinterher wieder zurÃ¼ckgesetzt werden,
+ sonst bleibt er fÃ¼r den Rest des Dokumentes erhalten: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -1482,15 +1511,17 @@ Vertikale Linien
 \end_layout
 
 \begin_layout Standard
-Mit 
+Mit
+\family default
+ 
 \family typewriter
 
 \backslash
 columnseprule
 \family default
- können Spalten durch Linien getrennt werden.
- Wird die Breite auf 0 pt gesetzt, wird sie unterdrückt.
- Im folgenden Beispiel wurde eine Linienbreite von 2 pt gewählt:
+ kÃ¶nnen Spalten durch Linien getrennt werden.
+ Wird die Breite auf 0 pt gesetzt, wird sie unterdrÃ¼ckt.
+ Im folgenden Beispiel wurde eine Linienbreite von 2 pt gewÃ¤hlt:
 \end_layout
 
 \begin_layout Standard
@@ -1546,20 +1577,20 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size small
-Und dann kamen die Kinder der Leute und brachten, was man an Essen erübrigen
- konnte, das eine ein Stückchen Käse, das andere einen kleine Brotwecken,
+Und dann kamen die Kinder der Leute und brachten, was man an Essen erÃ¼brigen
+ konnte, das eine ein StÃ¼ckchen KÃ¤se, das andere einen kleine Brotwecken,
  das dritte etwas Obst und so fort.
  Und da es sehr viele Kinder waren, kam an diesem Abend eine solche Menge
- zusammen, daß sie alle miteinander im Amphitheater ein richtiges kleines
+ zusammen, daÃŸ sie alle miteinander im Amphitheater ein richtiges kleines
  Fest zu Ehren von Momos Einzug feiern konnten.
- Es war ein so vergnügtes Fest, wie nur arme Leute es zu feiern verstehen.
+ Es war ein so vergnÃ¼gtes Fest, wie nur arme Leute es zu feiern verstehen.
 \end_layout
 
 \begin_layout Standard
 
 \size small
 So begann die Freundschaft zwischen der kleinen Momo und den Leuten der
- näheren Umgebung.
+ nÃ¤heren Umgebung.
 \end_layout
 
 \begin_layout Standard
@@ -1578,7 +1609,7 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-Wie immer setzen wir auch hier den Wert wieder zurück: 
+Wie immer setzen wir auch hier den Wert wieder zurÃ¼ck: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
@@ -1625,7 +1656,7 @@ columnseprule}{0pt}
 \end_layout
 
 \begin_layout Standard
-Wenn Sie wissen wollen, wie es weitergeht, müssen Sie sich jetzt das Buch
+Wenn Sie wissen wollen, wie es weitergeht, mÃ¼ssen Sie sich jetzt das Buch
  holen.
 \end_layout
 

@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language ngerman
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -43,8 +51,7 @@ von Fee LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -55,7 +62,7 @@ Grundidee
 \end_layout
 
 \begin_layout Standard
-Die Grundidee von LyX ist, daﬂ Sie sich um den Inhalt Ihrer Dokumente k¸mmern
+Die Grundidee von LyX ist, da√ü Sie sich um den Inhalt Ihrer Dokumente k√ºmmern
  sollten, und nicht um das Aussehen.
 \end_layout
 
@@ -64,7 +71,7 @@ Wie LyX es macht
 \end_layout
 
 \begin_layout Standard
-LyX benutzt LaTeX, ein Textsatzsystem f¸r Dokumente, das 
+LyX benutzt LaTeX, ein Textsatzsystem f√ºr Dokumente, das 
 \noun on
 Leslie
 \noun default
@@ -82,7 +89,7 @@ Donald
 Knuth
 \noun default
  1984 entwickelt hatte.
- Die Grundidee von LaTeX ist ‰hnlich wie die von LyX.
+ Die Grundidee von LaTeX ist √§hnlich wie die von LyX.
  
 \noun on
 Leslie
@@ -92,8 +99,8 @@ Leslie
 Lamport
 \noun default
  sagte einmal (siehe Referenz 
-\begin_inset LatexCommand \cite{lamport}
-
+\begin_inset LatexCommand cite
+key "lamport"
 \end_inset
 
 ):
@@ -107,9 +114,9 @@ Der Sinn des typographischen Entwurfs ist, dass der Leser die Ideen des
  Zitate und Computerprogramme, die logisch unterschiedliche Strukturelemente
  darstellen, sollten auch anders aussehen\SpecialChar \ldots{}
  Weil LaTeX Ihren Text nicht verstehen
- kann, m¸ssen Sie die logische Struktur durch Spezialbefehle kennzeichnen\SpecialChar \ldots{}
+ kann, m√ºssen Sie die logische Struktur durch Spezialbefehle kennzeichnen\SpecialChar \ldots{}
 
- W‰hrend Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
+ W√§hrend Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
  konzentrieren, nicht auf sein Aussehen.
 \end_layout
 
@@ -120,14 +127,14 @@ Warum LyX besser ist
 \begin_layout Standard
 
 \series bold
-\begin_inset LatexCommand \label{sec:lyxbetter}
-
+\begin_inset LatexCommand label
+name "sec:lyxbetter"
 \end_inset
 
 
 \series default
-LyX kann mehr Menschen n¸tzen als LaTeX.
- Es ist viel leichter zu lernen, weil Sie nicht LaTeX lernen m¸ssen (LaTeX
+LyX kann mehr Menschen n√ºtzen als LaTeX.
+ Es ist viel leichter zu lernen, weil Sie nicht LaTeX lernen m√ºssen (LaTeX
  ist im Prinzip eine Programmiersprache).
  LyX ist im Prinzip wie andere WYSIWYG-Textverarbeitungen, aber LyX ist
  WYSIWYM 
@@ -140,9 +147,9 @@ What you see is what you mean
 
 .
  Auf diese Weise verbindet es die Benutzerfreundlichkeit einer Textverarbeitung
- mit der St‰rke von LaTeX.
+ mit der St√§rke von LaTeX.
  Das ist eine gute Sache.
- Auﬂerdem ist das Dateiformat plattformunabh‰ngig.
+ Au√üerdem ist das Dateiformat plattformunabh√§ngig.
  Das Beste aber ist: es ist KOSTENLOS!
 \end_layout
 
@@ -161,16 +168,18 @@ Warum sollte man es sonst benutzen?
 
 \end_inset
 
- Ich bin 
+ Ich bin
+\emph default
+ 
 \emph on
 sehr aufgeregt,
 \emph default
- ¸ber sie zu sprechen.
+ √ºber sie zu sprechen.
  Hier sind ein paar:
 \end_layout
 
 \begin_layout Itemize
-LyX k¸mmert sich f¸r Sie um R‰nder und die Nummerierung von Fuﬂnoten
+LyX k√ºmmert sich f√ºr Sie um R√§nder und die Nummerierung von Fu√ünoten
 \end_layout
 
 \begin_layout Itemize
@@ -178,10 +187,10 @@ LyX erleichtert das Schreiben und Bearbeiten von mathematischen Formeln
 \end_layout
 
 \begin_layout Standard
-F¸r eine mehr philosophische Diskussion, warum LyX besser als viele andere
+F√ºr eine mehr philosophische Diskussion, warum LyX besser als viele andere
  Textverarbeitungen ist, lesen Sie bitte Abschnitt  
-\begin_inset LatexCommand \vref{sec:lyxbetter}
-
+\begin_inset LatexCommand vref
+reference "sec:lyxbetter"
 \end_inset
 
 .
@@ -209,12 +218,12 @@ Neulich schrieb ich ein Programm.
 \end_layout
 
 \begin_layout Standard
-Nach all dem wissenschaftlichen Denken f¸hlte ich mehr k¸nstlerisch, also
+Nach all dem wissenschaftlichen Denken f√ºhlte ich mehr k√ºnstlerisch, also
  schrieb ich dies Gedicht:
 \end_layout
 
 \begin_layout Verse
-LyX ist eine wirklich groﬂartige
+LyX ist eine wirklich gro√üartige
 \newline
 schriftsetzende Textverarbeitung.
 \newline
@@ -227,7 +236,7 @@ Mathematik
 \end_layout
 
 \begin_layout Standard
-Meine Lieblingsformel ist die Lˆsung einer quadratischen Gleichung.
+Meine Lieblingsformel ist die L√∂sung einer quadratischen Gleichung.
  Aus 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
@@ -262,17 +271,20 @@ Ein paar Bemerkungen zum LyXifizieren dieser Datei:
 Ich konnte die gestrichelten Linien entfernen.
  Sie waren nur dazu da, den Titel und das Quellenverzeichnis vom Rest des
  Dokumentes zu trennen.
- LyX (LaTeX) weiﬂ genug, um diese Teile mit Zwischenr‰umen abzusetzen.
+ LyX (LaTeX) wei√ü genug, um diese Teile mit Zwischenr√§umen abzusetzen.
 \end_layout
 
 \begin_layout Itemize
-Ich k¸mmerte mich nicht darum, die mathematischen Formeln als abgesetzte
+Ich k√ºmmerte mich nicht darum, die mathematischen Formeln als abgesetzte
  Formeln zu schreiben.
- Auﬂerdem habe ich nicht die automatische Gleichungsnummerierung von LyX
- benutzt, weil das nicht im 
-\emph on
-Tutorium 
+ Au√üerdem habe ich nicht die automatische Gleichungsnummerierung von LyX
+ benutzt, weil das nicht im
 \emph default
+ 
+\emph on
+Tutorium
+\emph default
+ 
 beschrieben wurde.
 \end_layout
 
@@ -294,17 +306,25 @@ Referenzen
 \begin_inset Quotes grd
 \end_inset
 
-, abh‰ngig von der Dokumentklasse), wenn man als Umgebung 
-\family sans
-Literaturverzeichnis 
+, abh√§ngig von der Dokumentklasse), wenn man als Umgebung
 \family default
-w‰hlt.
+ 
+\family sans
+Literaturverzeichnis
+\family default
+ 
+w√§hlt.
 \end_layout
 
 \begin_layout Bibliography
 
-\bibitem {lamport}
+\begin_inset LatexCommand bibitem
+key "lamport"
+
+\end_inset
 Lamport, Leslie.
+
+\emph default
  
 \emph on
 LaTeX: A Document Preparation System.

@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,7 +35,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -40,17 +48,17 @@ status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour Date : 22/03/2002
+Traduction : Mise Ã  jour Date : 22/03/2002
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision : 1.3, Date : 21/03/2002
+Original : RÃ©vision : 1.3, Date : 21/03/2002
 \end_layout
 
 \end_inset
@@ -62,7 +70,7 @@ Original : Révision : 1.3, Date : 21/03/2002
 
 par 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \begin_inset Foot
 status collapsed
 
@@ -72,6 +80,8 @@ Traduction par Adrien
 \noun on
 Rebollo
 \noun default
+
+\family default
  
 \family typewriter
 <Adrien.Rebollo@gmx.fr>
@@ -92,13 +102,15 @@ Objectif
 \begin_layout Standard
 
 Le but de ce chapitre est de montrer comment utiliser le paquetage LaTeX
+
+\family default
  
 \family typewriter
 multicol
 \family default
  dans un document LyX.
  Comme LyX ne le supporte pas encore d'origine, il faut utiliser quelques
- trucs, qui devraient vous paraître clairs quand vous aurez lu cette section.
+ trucs, qui devraient vous paraÃ®tre clairs quand vous aurez lu cette section.
 \end_layout
 
 \begin_layout Subsection
@@ -108,18 +120,20 @@ Limitations
 
 \begin_layout Standard
 
-Le paquetage 
+Le paquetage
+\family default
+ 
 \family typewriter
 multicol
 \family default
- permet de basculer dans une même page entre le format sur une colonne et
+ permet de basculer dans une mÃªme page entre le format sur une colonne et
  sur plusieurs.
- Les notes de bas de page sont gérées correctement (pour la plus grande
- part), mais seront placées en bas de la page et non en bas de chaque colonne.
- Le mécanisme de gestion des flottants de LaTeX, cependant, est partiellement
- désactivé dans l'implémentation actuelle.
+ Les notes de bas de page sont gÃ©rÃ©es correctement (pour la plus grande
+ part), mais seront placÃ©es en bas de la page et non en bas de chaque colonne.
+ Le mÃ©canisme de gestion des flottants de LaTeX, cependant, est partiellement
+ dÃ©sactivÃ© dans l'implÃ©mentation actuelle.
  Aujourd'hui seuls des flottants couvrant en largeur toute la page peuvent
- être utilisés au sein de l'environnement.
+ Ãªtre utilisÃ©s au sein de l'environnement.
 \end_layout
 
 \begin_layout Subsection
@@ -134,21 +148,25 @@ Deux Colonnes
 
 \begin_layout Standard
 
-Si vous voulez avoir deux colonnes dans votre texte, il faut pour insérer
+Si vous voulez avoir deux colonnes dans votre texte, il faut pour insÃ©rer
+
+\family default
  
 \family typewriter
 
 \backslash
 begin{multicols}{2}
 \family default
- en mode LaTeX à l'endroit où vous voulez démarrer la disposition en deux
- colonnes, et 
+ en mode LaTeX Ã  l'endroit oÃ¹ vous voulez dÃ©marrer la disposition en deux
+ colonnes, et
+\family default
+ 
 \family typewriter
 
 \backslash
 end{multicols}
 \family default
- là où vous voulez qu'elle se termine.
+ lÃ  oÃ¹ vous voulez qu'elle se termine.
  Comme ceci :
 \end_layout
 
@@ -180,12 +198,12 @@ status collapsed
 
 \begin_layout Standard
 
-NdT : Ne pensant pas être à la hauteur d'une traduction littéraire de 
+NdT : Ne pensant pas Ãªtre Ã  la hauteur d'une traduction littÃ©raire de 
 \noun on
 Conan Doyle
 \noun default
-, et ne voyant pas de nécessité impérieuse d'insérer du texte français à
- la place, j'ai préféré le laisser tel quel.
+, et ne voyant pas de nÃ©cessitÃ© impÃ©rieuse d'insÃ©rer du texte franÃ§ais Ã 
+ la place, j'ai prÃ©fÃ©rÃ© le laisser tel quel.
  -- ar
 \end_layout
 
@@ -249,9 +267,9 @@ Colonnes Multiples
 
 \begin_layout Standard
 
-Le même schéma s'applique si vous voulez plus de deux colonnes.
- (Vous pouvez avoir plus de 3 colonnes si vous voulez, mais ça risque de
- ne pas être très agréable à regarder.)
+Le mÃªme schÃ©ma s'applique si vous voulez plus de deux colonnes.
+ (Vous pouvez avoir plus de 3 colonnes si vous voulez, mais Ã§a risque de
+ ne pas Ãªtre trÃ¨s agrÃ©able Ã  regarder.)
 \end_layout
 
 \begin_layout Standard
@@ -320,7 +338,7 @@ Des colonnes dans une Colonne
 
 \begin_layout Standard
 
-Vous pouvez même avoir des colonnes dans une colonne :
+Vous pouvez mÃªme avoir des colonnes dans une colonne :
 \end_layout
 
 \begin_layout Standard
@@ -453,25 +471,27 @@ Exemples complexes
 
 \begin_layout Standard
 
-Comme vous le savez sans doute 
+Comme vous le savez sans doute
+\family default
+ 
 \family typewriter
 multicol
 \family default
  a plusieurs variables de personnalisation.
- Les exemples suivants montrent comment elles peuvent être utilisées depuis
+ Les exemples suivants montrent comment elles peuvent Ãªtre utilisÃ©es depuis
  LyX.
 \end_layout
 
 \begin_layout Subsubsection
 
-Préface et Saut de page
+PrÃ©face et Saut de page
 \end_layout
 
 \begin_layout Standard
 
 S'il reste moins de 5\InsetSpace ~
-cm sur la page, un saut de page sera inséré avant ce
- morceau, avec un texte de préface au-dessus des deux colonnes :
+cm sur la page, un saut de page sera insÃ©rÃ© avant ce
+ morceau, avec un texte de prÃ©face au-dessus des deux colonnes :
 \end_layout
 
 \begin_layout Standard
@@ -535,19 +555,21 @@ end{multicols}
 
 \begin_layout Subsubsection
 
-Préface et Sections
+PrÃ©face et Sections
 \end_layout
 
 \begin_layout Standard
 
-Comment faire si vous voulez que la préface soit un en-tête de section ?
- Vous pouvez le faire, mais seulement par l'intermédiaire de commandes LaTeX
- à l'intérieur des paramètres de la commande 
+Comment faire si vous voulez que la prÃ©face soit un en-tÃªte de section ?
+ Vous pouvez le faire, mais seulement par l'intermÃ©diaire de commandes LaTeX
+ Ã  l'intÃ©rieur des paramÃ¨tres de la commande
+\family default
+ 
 \family typewriter
 multicols
 \family default
 .
- Pour cette raison, la commande ne peut pas être fournie par LyX :
+ Pour cette raison, la commande ne peut pas Ãªtre fournie par LyX :
 \end_layout
 
 \begin_layout Standard
@@ -561,7 +583,7 @@ status collapsed
 \backslash
 begin{multicols}{2}[
 \backslash
-subsubsection{C'est la commande de section en préface}][5cm]
+subsubsection{C'est la commande de section en prÃ©face}][5cm]
 \end_layout
 
 \end_inset
@@ -626,27 +648,33 @@ Espace Libre
 
 \begin_layout Standard
 
-Le paquetage 
-\family typewriter
-multicol
+Le paquetage
 \family default
- nécessite une certaine quantité d'espace libre disponible avant et après
- chaque section en multi-colonnes.
- En plus 
-\family typewriter
-multicol
-\family default
- insère de l'espace avant et après la section multi-colonnes.
- Pour changer ce comportement par défaut il faut insérer des commandes juste
- avant le
-\family typewriter
  
+\family typewriter
+multicol
+\family default
+ nÃ©cessite une certaine quantitÃ© d'espace libre disponible avant et aprÃ¨s
+ chaque section en multi-colonnes.
+ En plus
+\family default
+ 
+\family typewriter
+multicol
+\family default
+ insÃ¨re de l'espace avant et aprÃ¨s la section multi-colonnes.
+ Pour changer ce comportement par dÃ©faut il faut insÃ©rer des commandes juste
+ avant le
+\family default
+ 
+\family typewriter
+
 \backslash
 begin{multicols}
 \family default
 .
  Dans cet exemple, on place 3\InsetSpace ~
-cm d'espace avant et après le texte en multi-colonn
+cm d'espace avant et aprÃ¨s le texte en multi-colonn
 es :
 \end_layout
 
@@ -726,13 +754,15 @@ Remarque :
 
 \begin_layout Standard
 
-Les valeurs que vous fixez avec 
+Les valeurs que vous fixez avec
+\family default
+ 
 \family typewriter
 
 \backslash
 setlength
 \family default
- doivent être réinitialisées, sinon vous garderez les valeurs modifiées
+ doivent Ãªtre rÃ©initialisÃ©es, sinon vous garderez les valeurs modifiÃ©es
  tout au long de votre document.
 \end_layout
 
@@ -757,16 +787,18 @@ multicolsep}{13pt}
 
 \begin_layout Subsubsection
 
-Largeur de Colonne et Séparation
+Largeur de Colonne et SÃ©paration
 \end_layout
 
 \begin_layout Standard
 
-La largeur des colonnes dans un environnement 
+La largeur des colonnes dans un environnement
+\family default
+ 
 \family sans
 multicols
 \family default
- est calculée automatiquement, mais vous pouvez modifier explicitement l'espace
+ est calculÃ©e automatiquement, mais vous pouvez modifier explicitement l'espace
  entre deux colonnes.
  Dans l'exemple suivant, l'espace entre les deux colonnes est de 3\InsetSpace ~
 cm :
@@ -831,7 +863,7 @@ end{multicols}
 
 \begin_layout Standard
 
-Une fois de plus, il faut réinitialiser la valeur pour éviter de l'utiliser
+Une fois de plus, il faut rÃ©initialiser la valeur pour Ã©viter de l'utiliser
  dans le reste du document.
 \end_layout
 
@@ -861,17 +893,19 @@ Lignes Verticales
 
 \begin_layout Standard
 
-Entre deux colonnes, il y a un trait de largeur 
+Entre deux colonnes, il y a un trait de largeur
+\family default
+ 
 \family typewriter
 
 \backslash
 columnseprule
 \family default
 .
- Si cette largeur est fixée à 0\InsetSpace ~
-pt, le trait est supprimé.
- Dans l'exemple suivant, la ligne séparant les deux colonnes fait 2\InsetSpace ~
-pt d'épaisseu
+ Si cette largeur est fixÃ©e Ã  0\InsetSpace ~
+pt, le trait est supprimÃ©.
+ Dans l'exemple suivant, la ligne sÃ©parant les deux colonnes fait 2\InsetSpace ~
+pt d'Ã©paisseu
 r.
 \end_layout
 
@@ -1014,7 +1048,7 @@ end{multicols}
 
 \begin_layout Standard
 
-Comme d'habitude, on réinitialise la valeur après usage.
+Comme d'habitude, on rÃ©initialise la valeur aprÃ¨s usage.
 \end_layout
 
 \begin_layout Standard
@@ -1038,14 +1072,14 @@ columnseprule}{0pt}
 
 \begin_layout Standard
 
-Pour lire le reste de l'histoire, il faudra que vous alliez à la bibliothèque...
+Pour lire le reste de l'histoire, il faudra que vous alliez Ã  la bibliothÃ¨que...
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
 ...ou trichez comme nous et allez la trouver dans le projet Gutenberg quelque
- part sur le réseau.
+ part sur le rÃ©seau.
 \end_layout
 
 \end_inset

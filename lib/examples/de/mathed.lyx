@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,7 +8,14 @@
 \end_preamble
 \language ngerman
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \float_placement H
 \paperfontsize default
@@ -16,6 +23,7 @@
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,7 +36,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -38,23 +46,27 @@ Von und nach mathed konvertieren
 \end_layout
 
 \begin_layout Standard
-Mathematische Formeln können im Hauptteil des Dokuments eingegeben werden
+Mathematische Formeln kÃ¶nnen im Hauptteil des Dokuments eingegeben werden
  und in den Mathe-Modus konvertiert werden, indem Sie die Formel markieren,
+
+\family default
  
 \family sans
 Strg+C
 \family default
- für kopieren eingeben, auf 
+ fÃ¼r kopieren eingeben, auf 
 \begin_inset Formula $$\frac{a+b}{c}$$
 \end_inset
 
- klicken und 
+ klicken und
+\family default
+ 
 \family sans
 Strg+V
 \family default
- zum einfügen eingeben.
+ zum einfÃ¼gen eingeben.
  Der Text kann von Trennzeichen umgeben sein oder auch nicht.
- Das heißt, wenn Sie eine der folgenden Formeln markieren:
+ Das heiÃŸt, wenn Sie eine der folgenden Formeln markieren:
 \end_layout
 
 \begin_layout Standard
@@ -167,9 +179,9 @@ wird sie konvertiert nach:
 \end_layout
 
 \begin_layout Standard
-Zur Zeit können Sie eine mathematische Formel nicht in Text zurückverwandeln.
- Es gibt aber einen kleinen Trick: Markieren Sie den Inhalt der Mathe-Einfügung
- (nicht die Mathe-Einfügung selber, nur den Inhalt), und fügen Sie ihn mit
+Zur Zeit kÃ¶nnen Sie eine mathematische Formel nicht in Text zurÃ¼ckverwandeln.
+ Es gibt aber einen kleinen Trick: Markieren Sie den Inhalt der Mathe-EinfÃ¼gung
+ (nicht die Mathe-EinfÃ¼gung selber, nur den Inhalt), und fÃ¼gen Sie ihn mit
  dem mittleren Mausknopf ins Dokument ein.
 \end_layout
 
@@ -178,12 +190,14 @@ LaTeX-Symbole anzeigen
 \end_layout
 
 \begin_layout Standard
-LyX kann die meisten LaTeX-Symbole und 
+LyX kann die meisten LaTeX-Symbole und
+\emph default
+ 
 \emph on
 alle
 \emph default
  AMS-Symbole anzeigen.
- Der Vollständigkeit halber werden auch noch die Symboltabellen aus 
+ Der VollstÃ¤ndigkeit halber werden auch noch die Symboltabellen aus 
 \noun on
 Lamport
 \noun default
@@ -191,7 +205,7 @@ s und
 \noun on
 Goosen
 \noun default
-s Bücher angefügt.
+s BÃ¼cher angefÃ¼gt.
 \end_layout
 
 \begin_layout Section
@@ -542,8 +556,16 @@ tilde{a}
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Mathe-Modus-Akzente
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1674,8 +1696,16 @@ Omega
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Griechische Buchstaben
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2627,8 +2657,16 @@ amalg
 
 \end_layout
 
-\begin_layout Caption
-Symbole für binäre Operationen
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+Symbole fÃ¼r binÃ¤re Operationen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3676,8 +3714,16 @@ dashv
 
 \end_layout
 
-\begin_layout Caption
-Symbole für Relationen
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+Symbole fÃ¼r Relationen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4479,8 +4525,16 @@ nwarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Pfeilsymbole
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5405,8 +5459,16 @@ partial
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Verschiedene Symbole
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5816,8 +5878,16 @@ biguplus
 
 \end_layout
 
-\begin_layout Caption
-Symbole mit variabler Größe
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+Symbole mit variabler GrÃ¶ÃŸe
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6243,8 +6313,16 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Funktions-Symbole
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6770,8 +6848,16 @@ backslash
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Trennsymbole
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7113,8 +7199,16 @@ frac{abc}{xyz}
 
 \end_layout
 
-\begin_layout Caption
-Symbole für mathematische Konstrukte
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+Symbole fÃ¼r mathematische Konstrukte
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7277,8 +7371,16 @@ gimel
 
 \end_layout
 
-\begin_layout Caption
-AMS-Griechisch und -Hebräisch
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+AMS-Griechisch und -HebrÃ¤isch
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7414,8 +7516,16 @@ lrcorner
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 AMS-Trennsymbole
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8287,8 +8397,16 @@ rightsquigarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 AMS-Pfeile
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8474,8 +8592,16 @@ nLeftrightarrow
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Durchgestrichene AMS-Pfeile
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10201,8 +10327,16 @@ because
 
 \end_layout
 
-\begin_layout Caption
-AMS-Symbole für  binäre Relationen
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+AMS-Symbole fÃ¼r  binÃ¤re Relationen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11543,8 +11677,16 @@ varsupsetneqq
 
 \end_layout
 
-\begin_layout Caption
-AMS-Symbole für negierte binäre Relationen
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+AMS-Symbole fÃ¼r negierte binÃ¤re Relationen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12185,8 +12327,16 @@ intercal
 
 \end_layout
 
-\begin_layout Caption
-AMS-Symbole für binäre Operationen
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
+AMS-Symbole fÃ¼r binÃ¤re Operationen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12904,8 +13054,16 @@ diagdown
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Verschiedene AMS-Symbole
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

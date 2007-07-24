@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language catalan
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -41,8 +49,10 @@ N coses que cal saber per utilitzar LyX
 
 \begin_layout Enumerate
 
-LyX inclou una documentaciÛ excel∑lent ---Utilitzeu-la, si us plau! Podeu
- comenÁar per 
+LyX inclou una documentaci√≥ excel¬∑lent ---Utilitzeu-la, si us plau! Podeu
+ comen√ßar per
+\family default
+ 
 \family sans
 \bar under
 A
@@ -51,12 +61,14 @@ juda->
 \bar under
 I
 \bar default
-ntroducciÛ
+ntroducci√≥
 \family default
-, que proporciona una breu introducciÛ de la documentaciÛ disponible.
- A continuaciÛ podeu aprendre a utilitzar LyX mitjanÁant
-\family sans
+, que proporciona una breu introducci√≥ de la documentaci√≥ disponible.
+ A continuaci√≥ podeu aprendre a utilitzar LyX mitjan√ßant
+\family default
  
+\family sans
+
 \bar under
 A
 \bar default
@@ -71,7 +83,7 @@ utorial
 
 \begin_layout Enumerate
 
-LyX Ès el que s'anomena un 
+LyX √©s el que s'anomena un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -79,16 +91,16 @@ processador de documents.
 \begin_inset Quotes erd
 \end_inset
 
- El disseny de LyX Ès diferent del dels processadors de texts normals ---fent
+ El disseny de LyX √©s diferent del dels processadors de texts normals ---fent
  senzilla l'escriptura de documents.
- AixÚ sÌ, nomÈs una mica diferent, que ning˙ s'espanti! La documentaciÛ
- ho aclarir‡ tot
+ Aix√≤ s√≠, nom√©s una mica diferent, que ning√∫ s'espanti! La documentaci√≥
+ ho aclarir√† tot
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
-No us havia dit encara que cal llegir la documentaciÛ ?
+No us havia dit encara que cal llegir la documentaci√≥ ?
 \end_layout
 
 \end_inset
@@ -98,7 +110,9 @@ No us havia dit encara que cal llegir la documentaciÛ ?
 
 \begin_layout Enumerate
 
-Els documents LyX tÈnen un aspecte formidable! Proveu de seleccionar 
+Els documents LyX t√©nen un aspecte formidable! Proveu de seleccionar
+\family default
+ 
 \family sans
 \bar under
 F
@@ -115,13 +129,15 @@ vi
 
 \begin_layout Enumerate
 
-SÌ, LyX pot imitar (quasi bÈ) tota la funcionalitat de LaTeX.
- A mÈs a mÈs, LyX pot importar fitxers LaTeX.
- Els usuaris de LaTeX amb experiËncia es poden saltar la resta del 
+S√≠, LyX pot imitar (quasi b√©) tota la funcionalitat de LaTeX.
+ A m√©s a m√©s, LyX pot importar fitxers LaTeX.
+ Els usuaris de LaTeX amb experi√®ncia es poden saltar la resta del
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
-, i llegir el capÌtol 
+, i llegir el cap√≠tol 
 \begin_inset Quotes eld
 \end_inset
 
@@ -140,8 +156,8 @@ LyX for LaTeX Users
 
 \begin_layout Enumerate
 
-LyX tÈ moltes utilitats per qui vulgui fer servir altres idiomes que l'AnglËs.
- A mÈs, els lligams de tecles (
+LyX t√© moltes utilitats per qui vulgui fer servir altres idiomes que l'Angl√®s.
+ A m√©s, els lligams de tecles (
 \emph on
 keybindings
 \emph default
@@ -149,13 +165,17 @@ keybindings
 \emph on
 toolbar
 \emph default
-), i moltes altres caracterÌstiques sÛn configurables en gran manera (b‡sicament
- editant el fitxer 
+), i moltes altres caracter√≠stiques s√≥n configurables en gran manera (b√†sicament
+ editant el fitxer
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
 ).
- Vegeu 
+ Vegeu
+\family default
+ 
 \family sans
 \bar under
 A
@@ -164,24 +184,28 @@ juda->
 \bar under
 P
 \bar default
-ersonalitzaciÛ
+ersonalitzaci√≥
 \family default
- per mÈs detalls.
+ per m√©s detalls.
 \end_layout
 
 \begin_layout Enumerate
 
-La p‡gina web de LyX 
+La p√†gina web de LyX
+\family default
+ 
 \family typewriter
-Ès http://www.lyx.org
+√©s http://www.lyx.org
 \family default
 .
- ObtÈ informaciÛ sobre LyX, subscriviu-vos a la/les llista/llistes de correu
- de LyX, Passegeu-vos pel 
+ Obt√© informaci√≥ sobre LyX, subscriviu-vos a la/les llista/llistes de correu
+ de LyX, Passegeu-vos pel
+\emph default
+ 
 \emph on
 LyX Graphical Tour
 \emph default
-, i molt mÈs.
+, i molt m√©s.
 \end_layout
 
 \end_body

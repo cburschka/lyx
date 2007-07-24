@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language italian
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize 10
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,7 +39,7 @@
 \bullet 2 4 8 3
 \bullet 3 0 8 -1
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -56,15 +64,19 @@ Traduzione italiana di Stefano Mastella
 
 
 \color black
-Vi accorgerete presto che la configurazione degli elenchi puntati può divenire
+Vi accorgerete presto che la configurazione degli elenchi puntati puÃ² divenire
  abbastanza complessa qualora vogliate pensare che davvero lo sia.
 
 \color inherit
+
+\color none
  
 \color black
-Con queste parole non voglio spaventarvi, in realtà molti settaggi sono
+Con queste parole non voglio spaventarvi, in realtÃ  molti settaggi sono
+\color none
+ 
 \color inherit
- solo a distanza di un click o due del mouse.
+solo a distanza di un click o due del mouse.
 \end_layout
 
 \begin_layout Itemize
@@ -73,11 +85,15 @@ Con queste parole non voglio spaventarvi, in realtà molti settaggi sono
 \emph on
 itemize
 \emph default
- è l'ambiente standard per 
+ Ã¨ l'ambiente standard per
+\color none
+ 
 \color black
 gli elenchi puntati
-\color red
+\color none
  
+\color red
+
 \end_layout
 
 \begin_deeper
@@ -91,11 +107,15 @@ questi possiede un contatore che gli impone un limite di 4 livelli
 \begin_deeper
 \begin_layout Itemize
 
-ogni livello può avere 
+ogni livello puÃ² avere
+\color none
+ 
 \color black
 un proprio indice
-\color inherit
+\color none
  
+\color inherit
+
 \end_layout
 
 \begin_deeper
@@ -111,8 +131,12 @@ LyX mostra comunque tutti i puntatori come un `*'
 Nota
 \color black
 te
+\color none
+ 
 \color inherit
- anche che LyX *NON* controlla la profondità dell'ambiente al posto 
+anche che LyX *NON* controlla la profonditÃ  dell'ambiente al posto
+\color none
+ 
 \color black
 vostro
 \end_layout
@@ -132,7 +156,7 @@ vostro
 \begin_deeper
 \begin_layout Itemize
 
-A meno che non si forzi LaTeX alla profondità limite di 6 per tutte le liste.
+A meno che non si forzi LaTeX alla profonditÃ  limite di 6 per tutte le liste.
 \end_layout
 \end_deeper
 \end_deeper
@@ -146,8 +170,10 @@ Ci sono altre restrizioni?
 
 \begin_layout Standard
 
-Sì.
- Il 
+SÃ¬.
+ Il
+\color none
+ 
 \color black
 sistema di gestione dei puntatori vi permette di scegliere i puntatori validi
  per tutto il documento.
@@ -159,7 +185,11 @@ sistema di gestione dei puntatori vi permette di scegliere i puntatori validi
 
 \color black
 Per vedere comparire la finestra nella quale poter effettuare tali modifiche,
- invocate 
+ invocate
+\bar default
+\color none
+ 
+\color black
 \bar under
 S
 \bar default
@@ -168,7 +198,7 @@ truttura->
 D
 \bar default
 ocumento\SpecialChar \ldots{}
- dal menù a tendina e selezionate il bottone 
+ dal menÃ¹ a tendina e selezionate il bottone 
 \begin_inset Quotes eld
 \end_inset
 

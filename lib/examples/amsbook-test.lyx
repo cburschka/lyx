@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass amsbook
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -124,17 +132,22 @@ This file, using the amsbook layout, numbers all results, Theorems, Definitions,
 
 \begin_layout Standard
 
-This can be changed by modifying the layout file, removing the line 
+This can be changed by modifying the layout file, removing the line
+\family default
+ 
 \family typewriter
 
 \newline
 
 \backslash
-numberwithin{section}{chapter} 
+numberwithin{section}{chapter}
 \family default
+ 
 
 \newline
-from the 
+from the
+\family default
+ 
 \family typewriter
 Preamble
 \family default
@@ -578,19 +591,29 @@ Need some criteria
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {1}
+\begin_inset LatexCommand bibitem
+key "1"
+
+\end_inset
 
 Johnson, D.
  L.
+
+\emph default
  
 \emph on
 Out of my head
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {2}
+\begin_inset LatexCommand bibitem
+key "2"
 
-American Mathematical Society, 
+\end_inset
+
+American Mathematical Society,
+\emph default
+ 
 \emph on
 Instructions for preparation of papers and monographs: AMS-LaTeX
 \emph default
@@ -598,7 +621,10 @@ Instructions for preparation of papers and monographs: AMS-LaTeX
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {3}
+\begin_inset LatexCommand bibitem
+key "3"
+
+\end_inset
 
 American Mathematical Society, 
 \end_layout

@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language hebrew
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,19 +32,19 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
 
-ζε δλεϊψϊ ωμ δξρξκ
+Χ–Χ• Χ”Χ›Χ•ΧªΧ¨Χª Χ©Χ Χ”ΧΧ΅ΧΧ
 \end_layout
 
 \begin_layout Author
 
-ξΰϊ ιδεως μιχρ
+ΧΧΧª Χ™Χ”Χ•Χ©ΧΆ ΧΧ™Χ§Χ΅
 \end_layout
 
 \begin_layout Date
@@ -45,7 +53,7 @@
 \numeric on
 18
 \numeric off
- μιεμι 
+ ΧΧ™Χ•ΧΧ™ 
 \numeric on
 1971
 \end_layout
@@ -53,8 +61,7 @@
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -62,48 +69,54 @@
 
 \begin_layout Section
 
-τιμερετιδ αριριϊ
+Χ¤Χ™ΧΧ•Χ΅Χ•Χ¤Χ™Χ” Χ‘Χ΅Χ™Χ΅Χ™Χª
 \end_layout
 
 \begin_layout Standard
 
-δτιμερετιδ δαριριϊ ωμ μιχρ διΰ ωΰϊδ φψικ μγΰεβ ΰεγεϊ δϊελο ωμ ξδ ωΰϊδ λεϊα
- εμΰ δφεψδ.
+Χ”Χ¤Χ™ΧΧ•Χ΅Χ•Χ¤Χ™Χ” Χ”Χ‘Χ΅Χ™Χ΅Χ™Χª Χ©Χ ΧΧ™Χ§Χ΅ Χ”Χ™Χ Χ©ΧΧªΧ” Χ¦Χ¨Χ™Χ ΧΧ“ΧΧ•Χ’ ΧΧ•Χ“Χ•Χª Χ”ΧªΧ•Χ›Χ Χ©Χ ΧΧ” Χ©ΧΧªΧ” Χ›Χ•ΧªΧ‘
+ Χ•ΧΧ Χ”Χ¦Χ•Χ¨Χ”.
 \end_layout
 
 \begin_layout Subsection
 
-ΰικ μιχρ ςεωδ ΰϊ ζδ
+ΧΧ™Χ ΧΧ™Χ§Χ΅ ΧΆΧ•Χ©Χ” ΧΧª Χ–Χ”
 \end_layout
 
 \begin_layout Standard
 
-μιχρ ξωϊξωϊ α- 
-\lang english
-LaTeX
+ΧΧ™Χ§Χ΅ ΧΧ©ΧªΧΧ©Χª Χ‘-
 \lang hebrew
-, ξςψλϊ μδλπϊ ξρξλιν ωϊελππδ ςμ ιγι μρμι μξτεψθ α- 
-\numeric on
-1985
-\numeric off
-.
- διΰ, αϊεψδ, απειδ ξςμ ωτϊ ξηωα ιςεγιϊ αων 
-\lang english
-TeX
-\lang hebrew
- ωπεφψδ ςμ ιγι γεπμγ χπεϊ α- 
-\numeric on
-1984
-\numeric off
-.
  
 \lang english
 LaTeX
 \lang hebrew
- απεδ ξραια μτιμερετιδ γεξδ μζε ωμ μιχρ.
- μρμι μξτεψθ ΰξψ τςν )ψΰδ δτπιδ 
-\begin_inset LatexCommand \cite{lamport}
+, ΧΧΆΧ¨Χ›Χª ΧΧ”Χ›Χ Χª ΧΧ΅ΧΧ›Χ™Χ Χ©ΧªΧ•Χ›Χ Χ Χ” ΧΆΧ Χ™Χ“Χ™ ΧΧ΅ΧΧ™ ΧΧΧ¤Χ•Χ¨Χ Χ‘- 
+\numeric on
+1985
+\numeric off
+.
+ Χ”Χ™Χ, Χ‘ΧªΧ•Χ¨Χ”, Χ‘Χ Χ•Χ™Χ” ΧΧΆΧ Χ©Χ¤Χª ΧΧ—Χ©Χ‘ Χ™ΧΆΧ•Χ“Χ™Χª Χ‘Χ©Χ
+\lang hebrew
+ 
+\lang english
+TeX
+\lang hebrew
+ Χ©Χ Χ•Χ¦Χ¨Χ” ΧΆΧ Χ™Χ“Χ™ Χ“Χ•Χ ΧΧ“ Χ§Χ Χ•Χª Χ‘- 
+\numeric on
+1984
+\numeric off
+.
 
+\lang hebrew
+ 
+\lang english
+LaTeX
+\lang hebrew
+ Χ‘Χ Χ•Χ” ΧΧ΅Χ‘Χ™Χ‘ ΧΧ¤Χ™ΧΧ•Χ΅Χ•Χ¤Χ™Χ” Χ“Χ•ΧΧ” ΧΧ–Χ• Χ©Χ ΧΧ™Χ§Χ΅.
+ ΧΧ΅ΧΧ™ ΧΧΧ¤Χ•Χ¨Χ ΧΧΧ¨ Χ¤ΧΆΧ )Χ¨ΧΧ” Χ”Χ¤Χ Χ™Χ” 
+\begin_inset LatexCommand cite
+key "lamport"
 \end_inset
 
 (
@@ -115,17 +128,19 @@ LaTeX
 \begin_inset Quotes eld
 \end_inset
 
-δξθψδ ωμ θιτεβψτιδ διΰ μςζεψ μχεψΰ μδαιο ΰϊ δψςιεπεϊ ωμ δρετψ.
- ξρξκ χμ μχψιΰδ δεΰ ξρξκ ωδξαπδ δειζεΰμι ωμε ξωχσ ΰϊ δξαπδ δμεβι ωμε.
- φιθεθιν εϊελπιεϊ ξηωα, ωδν ΰμξπθιν μεβιιν πτψγιν, φψιλιν μδιεϊ ξετψγιν
- ειζεΰμιϊ ζδ ξζδ...
- ξλιεεο ω- 
+Χ”ΧΧΧ¨Χ” Χ©Χ ΧΧ™Χ¤Χ•Χ’Χ¨Χ¤Χ™Χ” Χ”Χ™Χ ΧΧΆΧ–Χ•Χ¨ ΧΧ§Χ•Χ¨Χ ΧΧ”Χ‘Χ™Χ ΧΧª Χ”Χ¨ΧΆΧ™Χ•Χ Χ•Χª Χ©Χ Χ”Χ΅Χ•Χ¤Χ¨.
+ ΧΧ΅ΧΧ Χ§Χ ΧΧ§Χ¨Χ™ΧΧ” Χ”Χ•Χ ΧΧ΅ΧΧ Χ©Χ”ΧΧ‘Χ Χ” Χ”Χ•Χ™Χ–Χ•ΧΧΧ™ Χ©ΧΧ• ΧΧ©Χ§Χ£ ΧΧª Χ”ΧΧ‘Χ Χ” Χ”ΧΧ•Χ’Χ™ Χ©ΧΧ•.
+ Χ¦Χ™ΧΧ•ΧΧ™Χ Χ•ΧªΧ•Χ›Χ Χ™Χ•Χª ΧΧ—Χ©Χ‘, Χ©Χ”Χ ΧΧΧΧ ΧΧ™Χ ΧΧ•Χ’Χ™Χ™Χ Χ Χ¤Χ¨Χ“Χ™Χ, Χ¦Χ¨Χ™Χ›Χ™Χ ΧΧ”Χ™Χ•Χª ΧΧ•Χ¤Χ¨Χ“Χ™Χ
+ Χ•Χ™Χ–Χ•ΧΧΧ™Χª Χ–Χ” ΧΧ–Χ”...
+ ΧΧ›Χ™Χ•Χ•Χ Χ©-
+\lang hebrew
+ 
 \lang english
 LaTeX
 \lang hebrew
- μΰ ιλεμδ μδαιο ΰϊ δτψεζδ ωμκ, ΰϊδ ηια μφιιο αξτεψω ΰϊ δξαπδ δμεβι ςμ ιγι
- δχμγϊ τχεγεϊ ξιεηγεϊ...
- αζξο λϊιαϊ δξρξκ, ΰϊδ φψικ μδϊςρχ αξαπδ δμεβι ωμε, εμΰ αΰικ δεΰ πψΰδ.
+ ΧΧ Χ™Χ›Χ•ΧΧ” ΧΧ”Χ‘Χ™Χ ΧΧª Χ”Χ¤Χ¨Χ•Χ–Χ” Χ©ΧΧ, ΧΧªΧ” Χ—Χ™Χ‘ ΧΧ¦Χ™Χ™Χ Χ‘ΧΧ¤Χ•Χ¨Χ© ΧΧª Χ”ΧΧ‘Χ Χ” Χ”ΧΧ•Χ’Χ™ ΧΆΧ Χ™Χ“Χ™
+ Χ”Χ§ΧΧ“Χª Χ¤Χ§Χ•Χ“Χ•Χª ΧΧ™Χ•Χ—Χ“Χ•Χª...
+ Χ‘Χ–ΧΧ Χ›ΧªΧ™Χ‘Χª Χ”ΧΧ΅ΧΧ, ΧΧªΧ” Χ¦Χ¨Χ™Χ ΧΧ”ΧªΧΆΧ΅Χ§ Χ‘ΧΧ‘Χ Χ” Χ”ΧΧ•Χ’Χ™ Χ©ΧΧ•, Χ•ΧΧ Χ‘ΧΧ™Χ Χ”Χ•Χ Χ Χ¨ΧΧ”.
 \begin_inset Quotes erd
 \end_inset
 
@@ -134,26 +149,30 @@ LaTeX
 
 \begin_layout Subsection
 
-μξδ μιχρ ιεϊψ θεαδ
+ΧΧΧ” ΧΧ™Χ§Χ΅ Χ™Χ•ΧªΧ¨ ΧΧ•Χ‘Χ”
 \end_layout
 
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \label{sec:lyxbetter}
-
+\begin_inset LatexCommand label
+name "sec:lyxbetter"
 \end_inset
 
-μιχρ τεπδ μδψαδ ιεϊψ ξωϊξωιν ξΰωψ 
+ΧΧ™Χ§Χ΅ Χ¤Χ•Χ Χ” ΧΧ”Χ¨Χ‘Χ” Χ™Χ•ΧªΧ¨ ΧΧ©ΧªΧΧ©Χ™Χ ΧΧΧ©Χ¨
+\lang hebrew
+ 
 \lang english
 LaTeX
 \lang hebrew
 .
- διΰ χμδ ιεϊψ μμιξεγ αφεψδ ξωξςεϊιϊ, λι, απιβεγ μ- 
+ Χ”Χ™Χ Χ§ΧΧ” Χ™Χ•ΧªΧ¨ ΧΧΧ™ΧΧ•Χ“ Χ‘Χ¦Χ•Χ¨Χ” ΧΧ©ΧΧΆΧ•ΧªΧ™Χª, Χ›Χ™, Χ‘Χ Χ™Χ’Χ•Χ“ Χ-
+\lang hebrew
+ 
 \lang english
 LaTeX
 \lang hebrew
-, ωδιΰ ωτϊ ξηωα μλμ γαψ, μιχρ διΰ λξε ξςαγι ϊξμιμιν 
+, Χ©Χ”Χ™Χ Χ©Χ¤Χª ΧΧ—Χ©Χ‘ ΧΧ›Χ Χ“Χ‘Χ¨, ΧΧ™Χ§Χ΅ Χ”Χ™Χ Χ›ΧΧ• ΧΧΆΧ‘Χ“Χ™ ΧªΧΧΧ™ΧΧ™Χ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -165,7 +184,7 @@ What you see is what you get
 \begin_inset Quotes erd
 \end_inset
 
- ηευ ξδξιμδ δΰηψεπδ: μιχρ γεβμϊ α- 
+ Χ—Χ•Χ¥ ΧΧ”ΧΧ™ΧΧ” Χ”ΧΧ—Χ¨Χ•Χ Χ”: ΧΧ™Χ§Χ΅ Χ“Χ•Χ’ΧΧª Χ‘- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -178,62 +197,66 @@ What you see is what you mean
 \end_inset
 
 .
- λκ διΰ ξρεβμϊ μωμα αιο δπεηεϊ ωμ ξςαγι ϊξμιμιν εδλεη ωμ 
+ Χ›Χ Χ”Χ™Χ ΧΧ΅Χ•Χ’ΧΧª ΧΧ©ΧΧ‘ Χ‘Χ™Χ Χ”Χ Χ•Χ—Χ•Χª Χ©Χ ΧΧΆΧ‘Χ“Χ™ ΧªΧΧΧ™ΧΧ™Χ Χ•Χ”Χ›Χ•Χ— Χ©Χ
+\lang hebrew
+ 
 \lang english
 LaTeX
 \lang hebrew
 .
- ξδ ΰτωψ μαχω ιεϊψ? τεψξθ δχαφιν ΰιπε ϊμει αξςψλϊ ωΰϊδ ςεαγ ςμιδ, εδλι θεα,
- διΰ ϊελπδ ηετωιϊ.
+ ΧΧ” ΧΧ¤Χ©Χ¨ ΧΧ‘Χ§Χ© Χ™Χ•ΧªΧ¨? Χ¤Χ•Χ¨ΧΧ Χ”Χ§Χ‘Χ¦Χ™Χ ΧΧ™Χ Χ• ΧªΧΧ•Χ™ Χ‘ΧΧΆΧ¨Χ›Χª Χ©ΧΧªΧ” ΧΆΧ•Χ‘Χ“ ΧΆΧΧ™Χ”, Χ•Χ”Χ›Χ™ ΧΧ•Χ‘,
+ Χ”Χ™Χ ΧªΧ•Χ›Χ Χ” Χ—Χ•Χ¤Χ©Χ™Χª.
 \end_layout
 
 \begin_layout Section
 
-ϊλεπεϊιδ ωμ μιχρ
+ΧªΧ›Χ•Χ Χ•ΧªΧ™Χ” Χ©Χ ΧΧ™Χ§Χ΅
 \end_layout
 
 \begin_layout Standard
 
-μμιχρ ϊλεπεϊ ψαεϊ ωξχμεϊ ςμ λϊιαϊ ξρξλιν
+ΧΧΧ™Χ§Χ΅ ΧªΧ›Χ•Χ Χ•Χª Χ¨Χ‘Χ•Χª Χ©ΧΧ§ΧΧ•Χª ΧΆΧ Χ›ΧªΧ™Χ‘Χª ΧΧ΅ΧΧ›Χ™Χ
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
-ΰηψι δλμ, μξδ ωξιωδε ιψφδ μδωϊξω αδ ΰηψϊ?
+ΧΧ—Χ¨Χ™ Χ”Χ›Χ, ΧΧΧ” Χ©ΧΧ™Χ©Χ”Χ• Χ™Χ¨Χ¦Χ” ΧΧ”Χ©ΧªΧΧ© Χ‘Χ” ΧΧ—Χ¨Χª?
 \end_layout
 
 \end_inset
 
- ΰπι 
-\series bold
-ξΰεγ πψβω
+ ΧΧ Χ™
 \series default
- μγεο αδν.
- δπδ ψωιξδ ημχιϊ.
+ 
+\series bold
+ΧΧΧ•Χ“ Χ Χ¨Χ’Χ©
+\series default
+ ΧΧ“Χ•Χ Χ‘Χ”Χ.
+ Χ”Χ Χ” Χ¨Χ©Χ™ΧΧ” Χ—ΧΧ§Χ™Χª.
 \end_layout
 
 \begin_layout Itemize
 
-μιχρ γεΰβϊ μωεμι δξρξκ εμξρτεψ δςψεϊ ωεμιιν.
+ΧΧ™Χ§Χ΅ Χ“Χ•ΧΧ’Χª ΧΧ©Χ•ΧΧ™ Χ”ΧΧ΅ΧΧ Χ•ΧΧΧ΅Χ¤Χ•Χ¨ Χ”ΧΆΧ¨Χ•Χª Χ©Χ•ΧΧ™Χ™Χ.
 \end_layout
 
 \begin_layout Itemize
 
-αμιχρ χμ μλϊεα εμςψεκ περηΰεϊ ξϊξθιεϊ.
+Χ‘ΧΧ™Χ§Χ΅ Χ§Χ ΧΧ›ΧªΧ•Χ‘ Χ•ΧΧΆΧ¨Χ•Χ Χ Χ•Χ΅Χ—ΧΧ•Χª ΧΧªΧΧΧ™Χ•Χª.
 \end_layout
 
 \begin_layout Standard
 
-ΰν ΰϊδ ξςεπιιο αγιεο τιμερετι μξδ μιχρ ςγιτδ ςμ δψαδ ξςαγι ϊξμιμιν, ψΰδ
- ρςισ 
-\begin_inset LatexCommand \ref{sec:lyxbetter}
-
+ΧΧ ΧΧªΧ” ΧΧΆΧ•Χ Χ™Χ™Χ Χ‘Χ“Χ™Χ•Χ Χ¤Χ™ΧΧ•Χ΅Χ•Χ¤Χ™ ΧΧΧ” ΧΧ™Χ§Χ΅ ΧΆΧ“Χ™Χ¤Χ” ΧΆΧ Χ”Χ¨Χ‘Χ” ΧΧΆΧ‘Χ“Χ™ ΧªΧΧΧ™ΧΧ™Χ, Χ¨ΧΧ”
+ Χ΅ΧΆΧ™Χ£ 
+\begin_inset LatexCommand ref
+reference "sec:lyxbetter"
 \end_inset
 
-, αςξεγ 
-\begin_inset LatexCommand \pageref{sec:lyxbetter}
-
+, Χ‘ΧΆΧΧ•Χ“ 
+\begin_inset LatexCommand pageref
+reference "sec:lyxbetter"
 \end_inset
 
 .
@@ -241,13 +264,13 @@ status collapsed
 
 \begin_layout Section
 
-πριεπεϊ τϊθιιν μδωϊξω αϊλεπεϊ περτεϊ ωμ μιχρ
+Χ Χ΅Χ™Χ•Χ Χ•Χª Χ¤ΧªΧΧ™Χ™Χ ΧΧ”Χ©ΧªΧΧ© Χ‘ΧªΧ›Χ•Χ Χ•Χª Χ Χ•Χ΅Χ¤Χ•Χª Χ©Χ ΧΧ™Χ§Χ΅
 \end_layout
 
 \begin_layout Standard
 
-ωμωεν λϊαϊι ϊελπιϊ ξηωα.
- εδψι διΰ μτπιλν
+Χ©ΧΧ©Χ•Χ Χ›ΧªΧ‘ΧªΧ™ ΧªΧ•Χ›Χ Χ™Χª ΧΧ—Χ©Χ‘.
+ Χ•Χ”Χ¨Χ™ Χ”Χ™Χ ΧΧ¤Χ Χ™Χ›Χ
 \end_layout
 
 \begin_layout LyX-Code
@@ -281,39 +304,39 @@ I'M AWESOME!
 
 \begin_layout Standard
 
-ζδ διδ ιεϊψ ξγι ξγςι αωαιμι, ΰζ λϊαϊι ΰϊ δηξωιψ δαΰ
+Χ–Χ” Χ”Χ™Χ” Χ™Χ•ΧªΧ¨ ΧΧ“Χ™ ΧΧ“ΧΆΧ™ Χ‘Χ©Χ‘Χ™ΧΧ™, ΧΧ– Χ›ΧªΧ‘ΧªΧ™ ΧΧª Χ”Χ—ΧΧ©Χ™Χ¨ Χ”Χ‘Χ
 \end_layout
 
 \begin_layout Verse
 
-μιχρ τωεθ βγεμ
+ΧΧ™Χ§Χ΅ Χ¤Χ©Χ•Χ Χ’Χ“Χ•Χ
 \newline
-ξςαγ ϊξμιμιν λμ ιλεμ
+ΧΧΆΧ‘Χ“ ΧªΧΧΧ™ΧΧ™Χ Χ›Χ Χ™Χ›Χ•Χ
 \newline
-ΰιϊε μΰ ϊτεμ!
+ΧΧ™ΧªΧ• ΧΧ ΧªΧ¤Χ•Χ!
 \end_layout
 
 \begin_layout Section
 
-ςπιιπι ξϊξθιχδ
+ΧΆΧ Χ™Χ™Χ Χ™ ΧΧªΧΧΧ™Χ§Χ”
 \end_layout
 
 \begin_layout Standard
 
-δπερηΰ δΰδεαδ ςμι διΰ μτϊψεο ξωεεΰδ ψιαεςιϊ.
- ΰν 
+Χ”Χ Χ•Χ΅Χ—Χ Χ”ΧΧ”Χ•Χ‘Χ” ΧΆΧΧ™ Χ”Χ™Χ ΧΧ¤ΧªΧ¨Χ•Χ ΧΧ©Χ•Χ•ΧΧ” Χ¨Χ™Χ‘Χ•ΧΆΧ™Χª.
+ ΧΧ 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
- )ξωεεΰδ 
+ )ΧΧ©Χ•Χ•ΧΧ” 
 \numeric on
 1
 \numeric off
-(, ΰζι 
+(, ΧΧ–Χ™ 
 \begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
- )ξωεεΰδ 
+ )ΧΧ©Χ•Χ•ΧΧ” 
 \numeric on
 2
 \numeric off
@@ -322,11 +345,11 @@ I'M AWESOME!
 
 \begin_layout Standard
 
-ξωεεΰδ ΰδεαδ ΰτιμε ιεϊψ ςεξγϊ ααριρ δηωαεο δγιτψπφιΰμι: 
+ΧΧ©Χ•Χ•ΧΧ” ΧΧ”Χ•Χ‘Χ” ΧΧ¤Χ™ΧΧ• Χ™Χ•ΧªΧ¨ ΧΆΧ•ΧΧ“Χª Χ‘Χ‘Χ΅Χ™Χ΅ Χ”Χ—Χ©Χ‘Χ•Χ Χ”Χ“Χ™Χ¤Χ¨Χ Χ¦Χ™ΧΧΧ™: 
 \begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
- )ξωεεΰδ 
+ )ΧΧ©Χ•Χ•ΧΧ” 
 \numeric on
 3
 \numeric off
@@ -334,11 +357,16 @@ I'M AWESOME!
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {lamport}
+\begin_inset LatexCommand bibitem
+key "lamport"
+
+\end_inset
 
 
 \lang english
 Lamport, Leslie.
+
+\emph default
  
 \emph on
 LaTeX: A Document Preparation System.

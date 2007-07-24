@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language polish
 \inputencoding latin2
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -36,13 +44,15 @@ Witaj w LyXie!
 
 \begin_layout Section*
 
-Kilka uwag zanim rozpoczniesz pracê z LyXem
+Kilka uwag zanim rozpoczniesz pracÄ™ z LyXem
 \end_layout
 
 \begin_layout Enumerate
 
-Pakiet LyXa zawiera wspania³± (angielskojêzyczn±) dokumentacjê---u¿ywaj
- jej! Rozpocznij w 
+Pakiet LyXa zawiera wspaniaÅ‚Ä… (angielskojÄ™zycznÄ…) dokumentacjÄ™---uÅ¼ywaj
+ jej! Rozpocznij w
+\family default
+ 
 \family sans
 \bar under
 P
@@ -53,8 +63,10 @@ W
 \bar default
 prowadzenie
 \family default
-, da Ci to krótkie wprowadzenie do dokumentacji.
- Potem poczytaj o LyXie w 
+, da Ci to krÃ³tkie wprowadzenie do dokumentacji.
+ Potem poczytaj o LyXie w
+\family default
+ 
 \family sans
 \bar under
 P
@@ -79,16 +91,16 @@ procesorem tekstu
 \end_inset
 
 .
- Z za³o¿enia LyX ró¿ni siê od innych procesorów tekstu---pozwala bowiem
- ³atwiej tworzyæ dokumenty.
- Ró¿ni siê jednak bardzo niewiele, wiêc nie ma obawy.
- W razie problemów zajrzyj do dokumentacji.
+ Z zaÅ‚oÅ¼enia LyX rÃ³Å¼ni siÄ™ od innych procesorÃ³w tekstu---pozwala bowiem
+ Å‚atwiej tworzyÄ‡ dokumenty.
+ RÃ³Å¼ni siÄ™ jednak bardzo niewiele, wiÄ™c nie ma obawy.
+ W razie problemÃ³w zajrzyj do dokumentacji.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 
-Czy wspomnieli¶my ju¿, ¿e powiniene¶ przeczytaæ dokumentacjê?
+Czy wspomnieliÅ›my juÅ¼, Å¼e powinieneÅ› przeczytaÄ‡ dokumentacjÄ™?
 \end_layout
 
 \end_inset
@@ -98,20 +110,22 @@ Czy wspomnieli¶my ju¿, ¿e powiniene¶ przeczytaæ dokumentacjê?
 
 \begin_layout Enumerate
 
-Wynik pracy wygl±da naprawdê wspaniale! Wybierz teraz 
+Wynik pracy wyglÄ…da naprawdÄ™ wspaniale! Wybierz teraz
+\family default
+ 
 \family sans
 \bar under
 P
 \bar default
-lik->Podgl±d\InsetSpace ~
+lik->PodglÄ…d\InsetSpace ~
 dvi
 \family default
- by zobaczyæ ten dokument w ca³ej okaza³o¶ci.
+ by zobaczyÄ‡ ten dokument w caÅ‚ej okazaÅ‚oÅ›ci.
 \end_layout
 
 \begin_layout Enumerate
 
-Pakiet zawiera wiele szablonów (
+Pakiet zawiera wiele szablonÃ³w (
 \family sans
 \bar under
 P
@@ -120,7 +134,7 @@ lik->Nowy\InsetSpace ~
 z\InsetSpace ~
 szablonu
 \family default
-) i przyk³adów (
+) i przykÅ‚adÃ³w (
 \family sans
 \bar under
 P
@@ -129,7 +143,7 @@ lik->
 \bar under
 O
 \bar default
-twó
+twÃ³
 \family default
 rz).
 \end_layout
@@ -137,12 +151,14 @@ rz).
 \begin_layout Enumerate
 
 Tak, LyX potrafi wszystko (prawie) to co LaTeX.
- Potrafi tak¿e importowaæ pliki LaTeXa.
- U¿ytkownicy znaj±cy ju¿ LaTeXa powinni pomin±æ resztê 
+ Potrafi takÅ¼e importowaÄ‡ pliki LaTeXa.
+ UÅ¼ytkownicy znajÄ…cy juÅ¼ LaTeXa powinni pominÄ…Ä‡ resztÄ™
+\emph default
+ 
 \emph on
 Samouczka
 \emph default
- i przej¶æ bezpo¶rednio do rozdzia³u 
+ i przejÅ›Ä‡ bezpoÅ›rednio do rozdziaÅ‚u 
 \begin_inset Quotes eld
 \end_inset
 
@@ -150,14 +166,16 @@ LyX for LaTeX Users
 \begin_inset Quotes erd
 \end_inset
 
- (uwaga pozostali U¿ytkownicy: nie, nie musicie znaæ LaTeXa by u¿ywaæ LyXa).
+ (uwaga pozostali UÅ¼ytkownicy: nie, nie musicie znaÄ‡ LaTeXa by uÅ¼ywaÄ‡ LyXa).
 \end_layout
 
 \begin_layout Enumerate
 
-LyX potrafi tak¿e pracowaæ dla tych z Was, którzy mówi± w innym ni¿ angielski
- jêzyku.
- Zobacz w 
+LyX potrafi takÅ¼e pracowaÄ‡ dla tych z Was, ktÃ³rzy mÃ³wiÄ… w innym niÅ¼ angielski
+ jÄ™zyku.
+ Zobacz w
+\family default
+ 
 \family sans
 \bar under
 P
@@ -173,13 +191,15 @@ onfiguracja
 
 \begin_layout Enumerate
 
-Oficjalna strona LyXa to 
+Oficjalna strona LyXa to
+\family default
+ 
 \family typewriter
 www.lyx.org
 \family default
 .
- Znajdziesz tam informacje o LyXie, mo¿esz zapisaæ siê na LyXowe listy dyskusyjn
-e, pobraæ the LyX Graphical Tour i nie tylko.
+ Znajdziesz tam informacje o LyXie, moÅ¼esz zapisaÄ‡ siÄ™ na LyXowe listy dyskusyjn
+e, pobraÄ‡ the LyX Graphical Tour i nie tylko.
 \end_layout
 
 \end_body

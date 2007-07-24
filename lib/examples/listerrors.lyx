@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass literate-article
@@ -19,13 +19,21 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme pslatex
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -38,7 +46,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -56,8 +64,8 @@ Kayvan A.
  Sylvan
 \newline
 
-\begin_inset LatexCommand \url{mailto:kayvan@sylvan.com}
-
+\begin_inset LatexCommand url
+target "mailto:kayvan@sylvan.com"
 \end_inset
 
 
@@ -71,7 +79,9 @@ Kayvan A.
 \begin_layout Abstract
 
 The listerrors program used to be compiled as a C program and installed
- as 
+ as
+\emph default
+ 
 \emph on
 BINDIR/listerrors
 \emph default
@@ -83,8 +93,7 @@ BINDIR/listerrors
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -104,8 +113,8 @@ status collapsed
 \begin_layout Standard
 
 Visit 
-\begin_inset LatexCommand \url{http://bugzilla.lyx.org/show_bug.cgi?id=190}
-
+\begin_inset LatexCommand url
+target "http://bugzilla.lyx.org/show_bug.cgi?id=190"
 \end_inset
 
  for the details.
@@ -150,8 +159,8 @@ status collapsed
 \begin_layout Standard
 
 See 
-\begin_inset LatexCommand \url{http://www.eecs.harvard.edu/~nr/noweb}
-
+\begin_inset LatexCommand url
+target "http://www.eecs.harvard.edu/~nr/noweb"
 \end_inset
 
  for more information about noweb.
@@ -178,7 +187,9 @@ In a nutshell, the problems with the old implementation of listerrors that
 
 It was a C program and it was installed in the user path in the same directory
  as LyX.
- Having such a generically named binary in, for example, 
+ Having such a generically named binary in, for example,
+\emph default
+ 
 \emph on
 /usr/bin
 \emph default
@@ -188,7 +199,9 @@ It was a C program and it was installed in the user path in the same directory
 \begin_layout Enumerate
 
 It required that noweb be installed on the compiling machine (the source
- was extracted by noweb from 
+ was extracted by noweb from
+\emph default
+ 
 \emph on
 SRCDIR/examples/Literate.lyx
 \emph default
@@ -216,7 +229,9 @@ Both the example file (this document) and the program are to be added to
 
 \begin_layout Enumerate
 
-The program itself will be installed in 
+The program itself will be installed in
+\emph default
+ 
 \emph on
 SHAREDIR/lyx/scripts
 \emph default
@@ -240,8 +255,8 @@ status collapsed
 \begin_layout Standard
 
 See the Python home page (
-\begin_inset LatexCommand \url{http://www.python.org}
-
+\begin_inset LatexCommand url
+target "http://www.python.org"
 \end_inset
 
 ) for more information.
@@ -902,7 +917,9 @@ Program
 \begin_inset Quotes erd
 \end_inset
 
- convertor to call a generic script that always extracts a scrap named 
+ convertor to call a generic script that always extracts a scrap named
+\family default
+ 
 \family typewriter
 build-script
 \family default

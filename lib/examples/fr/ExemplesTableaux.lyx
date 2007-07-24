@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -8,13 +8,21 @@
 \end_preamble
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -27,7 +35,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -40,17 +48,17 @@ status collapsed
 
 \begin_layout Standard
 
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
 
-Traduction : Mise à jour, Date : 07/06/2003
+Traduction : Mise Ã  jour, Date : 07/06/2003
 \end_layout
 
 \begin_layout Standard
 
-Original : Révision : 1.6, Date : 17/01/2003
+Original : RÃ©vision : 1.6, Date : 17/01/2003
 \end_layout
 
 \end_inset
@@ -60,7 +68,7 @@ Original : Révision : 1.6, Date : 17/01/2003
 
 \begin_layout Author
 
-par Jürgen Vigna (jug@sad.it)
+par JÃ¼rgen Vigna (jug@sad.it)
 \begin_inset Foot
 status collapsed
 
@@ -70,6 +78,8 @@ Traduction : Adrien
 \noun on
 Rebollo
 \noun default
+
+\family default
  
 \family typewriter
 <Adrien.Rebollo@gmx.fr>
@@ -85,9 +95,11 @@ Rebollo
 \begin_layout Standard
 
 Tableau\InsetSpace ~
-Long - 
+Long -
+\series default
+ 
 \series bold
-Comment utiliser les options spéciales Tableaux\InsetSpace ~
+Comment utiliser les options spÃ©ciales Tableaux\InsetSpace ~
 Longs.
 \end_layout
 
@@ -118,7 +130,7 @@ Longs.
 
 
 \series bold
-Exemple d'annuaire téléphonique (ne pas faire attention aux noms)
+Exemple d'annuaire tÃ©lÃ©phonique (ne pas faire attention aux noms)
 \end_layout
 
 \end_inset
@@ -171,7 +183,7 @@ NOM
 
 
 \series bold
-TÉL.
+TÃ‰L.
 \end_layout
 
 \end_inset
@@ -184,8 +196,10 @@ TÉL.
 \begin_layout Standard
 
 
+\series default
+ 
 \series bold
- Exemple d'annuaire téléphonique
+Exemple d'annuaire tÃ©lÃ©phonique
 \end_layout
 
 \end_inset
@@ -238,7 +252,7 @@ NOM
 
 
 \series bold
-TÉL.
+TÃ‰L.
 \end_layout
 
 \end_inset
@@ -251,8 +265,10 @@ TÉL.
 \begin_layout Standard
 
 
+\series default
+ 
 \series bold
- suite ...
+suite ...
 \end_layout
 
 \end_inset
@@ -1344,7 +1360,7 @@ Vigna
 
 \begin_layout Standard
 
-Jürgen
+JÃ¼rgen
 \end_layout
 
 \end_inset
@@ -2428,7 +2444,7 @@ Vigna
 
 \begin_layout Standard
 
-Jürgen
+JÃ¼rgen
 \end_layout
 
 \end_inset
@@ -3173,19 +3189,25 @@ Margit
 
 \begin_layout Standard
 
-Rangées multiples - 
+RangÃ©es multiples -
+\series default
+ 
 \series bold
 Alignement vertical dans les tableaux
 \end_layout
 
 \begin_layout Standard
 
-Le paquetage 
+Le paquetage
+\family default
+ 
 \family sans
 multirow
 \family default
- (d'auteur inconnu) automatise la procédure de construction de tableaux
- avec des cases recouvrant plusieurs rangées en définissant la commande
+ (d'auteur inconnu) automatise la procÃ©dure de construction de tableaux
+ avec des cases recouvrant plusieurs rangÃ©es en dÃ©finissant la commande
+
+\family default
  
 \family typewriter
 
@@ -3490,17 +3512,19 @@ C4e
 
 \begin_layout Standard
 
-Notes de bas de page - 
+Notes de bas de page -
+\series default
+ 
 \series bold
 Comment utiliser des notes de bas de page dans les tableaux
 \end_layout
 
 \begin_layout Standard
 
-Il y a différentes approches pour mettre des notes de bas de page dans des
+Il y a diffÃ©rentes approches pour mettre des notes de bas de page dans des
  tableaux.
- Je vais vous expliquer celles que j'ai trouvé fonctionner assez bien avec
- LyX (peut-être sont-elles les seules qui marchent :).
+ Je vais vous expliquer celles que j'ai trouvÃ© fonctionner assez bien avec
+ LyX (peut-Ãªtre sont-elles les seules qui marchent :).
 \end_layout
 
 \begin_layout Enumerate
@@ -3513,9 +3537,9 @@ Utiliser des Environnements-Minipages
 \begin_deeper
 \begin_layout Standard
 
-Notez que les notes de bas de page sont affichées immédiatement après la
+Notez que les notes de bas de page sont affichÃ©es immÃ©diatement aprÃ¨s la
  fin de la mini-page.
- La numérotation par défaut utilise des lettres minuscules.
+ La numÃ©rotation par dÃ©faut utilise des lettres minuscules.
 \end_layout
 
 \begin_layout Standard
@@ -3824,29 +3848,39 @@ status inlined
 
 \emph on
 Utiliser l'option
+\family default
+\emph default
+ 
+\emph on
 \family sans
- Tableau\InsetSpace ~
+Tableau\InsetSpace ~
 Long
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
-Cochez le bouton 
+Cochez le bouton
+\family default
+ 
 \family sans
 Tableau\InsetSpace ~
 Long
 \family default
- dans l'onglet 
+ dans l'onglet
+\family default
+ 
 \family sans
 Tab.\InsetSpace ~
 Long
 \family default
- de la fenêtre 
+ de la fenÃªtre
+\family default
+ 
 \family sans
 Tableau
 \family default
- et les notes de bas de page seront affichées au bas de la page.
+ et les notes de bas de page seront affichÃ©es au bas de la page.
 \end_layout
 
 
@@ -4108,9 +4142,9 @@ Utiliser les commandes LaTeX footnotemark et footnotetext
 \begin_deeper
 \begin_layout Standard
 
-Cette façon de faire est lourde mais simplement pour montrer que ça marche,
+Cette faÃ§on de faire est lourde mais simplement pour montrer que Ã§a marche,
  la voici.
- Utilisez cette méthode dans les mini-pages pour obtenir des notes de bas
+ Utilisez cette mÃ©thode dans les mini-pages pour obtenir des notes de bas
  de page en bas de la page.
 \end_layout
 

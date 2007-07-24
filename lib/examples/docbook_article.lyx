@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 252
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass docbook
@@ -19,6 +19,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,8 +32,8 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
-\author "Jose' Matos" 
+\output_changes false
+\author "Jose' Matos"
 \end_header
 
 \begin_body
@@ -264,13 +265,22 @@ status open
 	rotateAngle 45
 	rotateOrigin center
 
+scaleBeforeRotation
 \end_inset
 
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Nice platypus
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -298,14 +308,23 @@ status open
 	rotateAngle 45
 	rotateOrigin center
 
+scaleBeforeRotation
 \end_inset
 
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 long, very long...
  :-)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -483,8 +502,16 @@ Plataform 2
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout 
+\begin_inset Caption
+
+\begin_layout 
 Nice Formal Table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
