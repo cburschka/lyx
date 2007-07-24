@@ -76,7 +76,7 @@ format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
                    ("1_1_6_3", [218], ["1.1.6.3","1.1.6.4","1.1"]),
                    ("1_2",     [220], generate_minor_versions("1.2" , 4)),
                    ("1_3",     [221], generate_minor_versions("1.3" , 7)),
-                   ("1_4", range(222,246), generate_minor_versions("1.4" , 4)),
+                   ("1_4", range(222,246), generate_minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), generate_minor_versions("1.5" , 0))]
 
 
