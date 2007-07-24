@@ -313,7 +313,8 @@ def checkFormatEntries(dtl_tools):
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
 \Format rtf        rtf    "Rich Text Format"      "" ""	""	"vector"
 \Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"vector"
-\Format wmf        wmf    "Windows Meta File"     "" ""	""	"vector"
+\Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
+\Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
 \Format word       doc    "MS Word"               W  ""	""	"vector"
 \Format wordhtml   html   "MS Word (HTML)"        "" ""        ""	""
 ''')
@@ -397,8 +398,11 @@ def checkConverterEntries():
 \converter tgif       pdf        "tgif -stdout -print -color -pdf $$i > $$o"	""''',
             ''])
     #
-    checkProg('a WMF -> EPS converter', ['wmf2eps -o $$o $$i'],
-        rc_entry = [ r'\converter wmf        eps        "%%"	""', ''])
+    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
+        rc_entry = [ r'\converter wmf        eps        "%%"	""'])
+    #
+    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
+        rc_entry = [ r'\converter emf        eps        "%%"	""'])
     #
     checkProg('a EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
