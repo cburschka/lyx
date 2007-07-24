@@ -1,4 +1,4 @@
-# Author : Lars Gullik Bjønnes <larsbj@lyx.org>
+# Author : Lars Gullik BjÃ¸nnes <larsbj@lyx.org>
 
 # This include file contains all the floats that are defined as standard
 # in most LyX layouts.

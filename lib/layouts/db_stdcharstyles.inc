@@ -1,5 +1,5 @@
 # Textclass definition file for docbook.
-# Author : José Abílio Oliveira Matos <jamatos@lyx.org>
+# Author : JosÃ© AbÃ­lio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
 Format 4

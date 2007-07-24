@@ -2,7 +2,7 @@
 # A&A paper style not found in the standard include files.
 # It is Input by aapaper.layout
 #
-# Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
+# Author: Peter SÃ¼tterlin <pit@uni-sw.gwdg.de>
 
 
 Format 4

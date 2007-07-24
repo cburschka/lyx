@@ -1,5 +1,5 @@
 # Textclass definition file for AGU-Article.
-# Author : José Abílio Oliveira Matos <jamatos@lyx.org>
+# Author : JosÃ© AbÃ­lio Oliveira Matos <jamatos@lyx.org>
 #          Martin Vermeer <martin.vermeer@hut.fi>
 
 # This file is the counterpart of stdclass.inc

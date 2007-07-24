@@ -1,4 +1,4 @@
-# Author : André Pönitz
+# Author : AndrÃ© PÃ¶nitz
 # This include files contains label definitions for a article-like numbering.
 
 

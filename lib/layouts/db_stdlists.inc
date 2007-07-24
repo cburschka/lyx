@@ -1,5 +1,5 @@
 # Textclass definition file for docbook.
-# Author : José Abílio Oliveira Matos <jamatos@lyx.org>
+# Author : JosÃ© AbÃ­lio Oliveira Matos <jamatos@lyx.org>
 
 # This is the counterpart of stdlists.inc
 # It is desirable, as far as possible, to have the same look and feel for

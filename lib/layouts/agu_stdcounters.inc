@@ -1,4 +1,4 @@
-# Author : José Matos <jamatos@lyx.org>
+# Author : JosÃ© Matos <jamatos@lyx.org>
 #          Martin Vermeer <martin.vermeer@hut.fi>
 
 # This include file contains all the counters that are defined as standard
