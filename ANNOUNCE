@@ -172,3 +172,8 @@ What's new
 
 - Make LyX/Mac recognize correctly newer versions of teTeX.
 
+- Allow automake 1.10 for building
+
+- Require python 2.3 (due to lyx2lyx backport from 1.5.0), version
+  2.3.4 is required to read lyx 1.5.x documents (due to a bug in older
+  2.3.x python releases).
