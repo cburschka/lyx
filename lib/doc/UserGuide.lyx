@@ -23614,6 +23614,33 @@ Latin1
 \family default
  encoding, which includes the characters required by the various Western
  European languages.
+ 
+\end_layout
+
+\begin_layout Standard
+LyX also supports unicode output, which is particularly useful if you need
+ lots of special symbols or non-alphabetic scripts, respectively.
+ If you want to use this (and your LaTeX installation supports unicode,
+ for that matter), the 
+\family typewriter
+utf8
+\family default
+ encoding is the right choice for most purposes.
+ Besides this, you will find some alternative unicode encodings for specific
+ purposes: 
+\family typewriter
+UTF
+\family default
+ and 
+\family typewriter
+utf8x
+\family default
+ are provided for CJK languages, 
+\family typewriter
+utf8-plain
+\family default
+, finally, should be chosen for XeTeX, which uses unicode directly, without
+ the help of the inputenc package.
 \end_layout
 
 \begin_layout Subsection

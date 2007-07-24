@@ -98,9 +98,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\author "" 
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -26120,8 +26117,8 @@ Kodierung
 \family default
  können Sie die Zeichenkodierung auswählen.
  Die Voreinstellung ist 
-\family sans
-latin1
+\family typewriter
+Latin1
 \family default
 , die die Zeichen der westeuropäischen Sprachen enthält (Umlaute, akzentuierte
  Vokale und ähnliche).
@@ -26144,6 +26141,34 @@ reference "sec:keytab"
 \end_inset
 
  finden Sie mehr über Zeichenkodierung.)
+\end_layout
+
+\begin_layout Standard
+LyX unterstützt auch die Ausgabe von unicode-kodiertem Text.
+ Dies ist insbesondere dann nützlich, wenn Sie viele Sonderzeichen oder
+ nicht-alphabetische Schriften verwenden.
+ Wenn Sie Unicode-Ausgabe erzeugen wollen (Voraussetzung dafür ist allerdings,
+ dass Ihre LaTeX-Installation Unicode unterstützt), wählen Sie die Zeichenkodier
+ung 
+\family typewriter
+utf-8
+\family default
+.
+ Die anderen Unicode-Kodierungen im Menü werden für spezifische Zwecke bereitges
+tellt: 
+\family typewriter
+UTF
+\family default
+ und 
+\family typewriter
+utf8x
+\family default
+ für CJK-Sprachen, 
+\family typewriter
+utf8-plain
+\family default
+ für die Verwendung von LyX mit XeTeX, einem TeX-System, das Unicode direkt
+ (ohne Zuhilfenahme des imputenc-Paketes) verarbeitet.
 \end_layout
 
 \begin_layout Standard
