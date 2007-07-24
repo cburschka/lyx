@@ -1,17 +1,25 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language polish
 \inputencoding latin2
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics none
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -34,13 +42,13 @@ Wprowadzenie do LyX-a
 \newline
 albo
 \newline
-Do czego s³u¿± te pliki doc!
+Do czego sÅ‚uÅ¼Ä… te pliki doc!
 \end_layout
 
 \begin_layout Author
 by John Weiss and the LyX Team
 \newline
-polskie t³umaczenie: Wojtek Pêkala
+polskie tÅ‚umaczenie: Wojtek PÄ™kala
 \end_layout
 
 \begin_layout Section
@@ -52,12 +60,12 @@ Witaj w LyX-ie!
 \end_layout
 
 \begin_layout Standard
-Aby u³atwiæ wyszukiwanie informacji i opisaæ wszystkie mo¿liwo¶ci LyX-a,
- dokumentacja zosta³a rozdzielona na kilka ró¿nych plików.
- Ka¿dy z nich s³u¿y innemu celowi, który opisano poni¿ej.
- Zanim zaczniesz brn±æ przez który¶ z tych plików, przeczytaj najpierw dok³adnie
- niniejszy dokument, który zawiera mnóstwo po¿ytecznych informacji i komentarzy.
- Pomog± one zaoszczêdziæ Ci czas.
+Aby uÅ‚atwiÄ‡ wyszukiwanie informacji i opisaÄ‡ wszystkie moÅ¼liwoÅ›ci LyX-a,
+ dokumentacja zostaÅ‚a rozdzielona na kilka rÃ³Å¼nych plikÃ³w.
+ KaÅ¼dy z nich sÅ‚uÅ¼y innemu celowi, ktÃ³ry opisano poniÅ¼ej.
+ Zanim zaczniesz brnÄ…Ä‡ przez ktÃ³ryÅ› z tych plikÃ³w, przeczytaj najpierw dokÅ‚adnie
+ niniejszy dokument, ktÃ³ry zawiera mnÃ³stwo poÅ¼ytecznych informacji i komentarzy.
+ PomogÄ… one zaoszczÄ™dziÄ‡ Ci czas.
 \end_layout
 
 \begin_layout Standard
@@ -69,7 +77,7 @@ Aby u³atwiæ wyszukiwanie informacji i opisaæ wszystkie mo¿liwo¶ci LyX-a,
 
 \begin_layout Standard
 \align center
-OSTRZE¯ENIE!!!!! OSTRZE¯ENIE!!!!! OSTRZE¯ENIE!!!!
+OSTRZEÅ»ENIE!!!!! OSTRZEÅ»ENIE!!!!! OSTRZEÅ»ENIE!!!!
 \end_layout
 
 \begin_layout Standard
@@ -85,15 +93,15 @@ Danger, Will Robinson, Danger!
 \end_layout
 
 \begin_layout Standard
-Dokumentacja, jako ca³o¶æ, jest w tej chwili niekompletna! Podobnie jak
+Dokumentacja, jako caÅ‚oÅ›Ä‡, jest w tej chwili niekompletna! Podobnie jak
  program jest w wersji beta.
- Obiecujemy uzupe³niæ wszystko do wersji 1.0!
+ Obiecujemy uzupeÅ‚niÄ‡ wszystko do wersji 1.0!
 \end_layout
 
 \begin_layout Standard
-Prosimy tak¿e o pomoc - je¶li co¶ w podrêcznikach jest niejasne, dezorientuj±ce
- lub nieprawid³owe, nie wahajcie siê daæ nam znaæ! LyX Team jest osi±galny
- przez listê dyskusyjn± programistów pod adresem 
+Prosimy takÅ¼e o pomoc - jeÅ›li coÅ› w podrÄ™cznikach jest niejasne, dezorientujÄ…ce
+ lub nieprawidÅ‚owe, nie wahajcie siÄ™ daÄ‡ nam znaÄ‡! LyX Team jest osiÄ…galny
+ przez listÄ™ dyskusyjnÄ… programistÃ³w pod adresem 
 \begin_inset Quotes pld
 \end_inset
 
@@ -106,7 +114,7 @@ lyx@via.ecp.fr
 \end_inset
 
 .
- Prosimy o umieszczenie w nag³ówku wiadomo¶ci s³ów 
+ Prosimy o umieszczenie w nagÅ‚Ã³wku wiadomoÅ›ci sÅ‚Ã³w 
 \begin_inset Quotes pld
 \end_inset
 
@@ -119,52 +127,53 @@ LyX Docs
 \end_inset
 
  .
- Z góry dziêkujemy !
+ Z gÃ³ry dziÄ™kujemy !
 \end_layout
 
 \begin_layout Section
-Format podrêczników
+Format podrÄ™cznikÃ³w
 \end_layout
 
 \begin_layout Standard
-Czê¶æ u¿ytkowników mog³a ju¿ wydrukowaæ podrêcznik.
- Inni mog± czytaæ go w komputerze, jako plik LyX-a.
- Istniej± pewne ró¿nice miêdzy wersj± drukowan± i elektroniczn±.
- Po pierwsze tytu³ w pliku jest po prostu na pocz±tku dokumentu, a nie na
+CzÄ™Å›Ä‡ uÅ¼ytkownikÃ³w mogÅ‚a juÅ¼ wydrukowaÄ‡ podrÄ™cznik.
+ Inni mogÄ… czytaÄ‡ go w komputerze, jako plik LyX-a.
+ IstniejÄ… pewne rÃ³Å¼nice miÄ™dzy wersjÄ… drukowanÄ… i elektronicznÄ….
+ Po pierwsze tytuÅ‚ w pliku jest po prostu na poczÄ…tku dokumentu, a nie na
  osobnej stronie, jak na wydruku.
- Nie widaæ równie¿ przypisów ani spisu tre¶ci.
- Istnieje okno do ogl±dania spisu tre¶ci, otwierane poleceniem Spis\InsetSpace ~
-tre¶ci
+ Nie widaÄ‡ rÃ³wnieÅ¼ przypisÃ³w ani spisu treÅ›ci.
+ Istnieje okno do oglÄ…dania spisu treÅ›ci, otwierane poleceniem Spis\InsetSpace ~
+treÅ›ci
  z menu Edycja.
- Aby zajrzeæ do przypisu, który wygl±da tak,
+ Aby zajrzeÄ‡ do przypisu, ktÃ³ry wyglÄ…da tak,
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Cze¶æ !
+CzeÅ›Ä‡ !
 \end_layout
 
 \end_inset
 
- trzeba klikn±æ na nim lewym przyciskiem myszy.
+ trzeba kliknÄ…Ä‡ na nim lewym przyciskiem myszy.
 \end_layout
 
 \begin_layout Standard
 Skoro 
 \size small
-wyja¶niono ju¿ ró¿nice miêdzy wydrukiem a wersj± ekranow±, nadszed³ czas
- na obja¶nienie formatu dokumentu.
- Od czasu do czasu mo¿na w nim napotkaæ tekst pisany ró¿n± czcionk±:
+wyjaÅ›niono juÅ¼ rÃ³Å¼nice miÄ™dzy wydrukiem a wersjÄ… ekranowÄ…, nadszedÅ‚ czas
+ na objaÅ›nienie formatu dokumentu.
+ Od czasu do czasu moÅ¼na w nim napotkaÄ‡ tekst pisany rÃ³Å¼nÄ… czcionkÄ…:
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Wyró¿nienia 
+WyrÃ³Å¼nienia
 \emph default
-u¿ywa siê celem ogólnego wyeksponowania fragmentów tekstu, podkre¶lenia
- argumentów, tytu³ów ksi±¿ek, nazw podrozdzia³ów innych podrêczników i uwag
- od autorów.
+ 
+uÅ¼ywa siÄ™ celem ogÃ³lnego wyeksponowania fragmentÃ³w tekstu, podkreÅ›lenia
+ argumentÃ³w, tytuÅ‚Ã³w ksiÄ…Å¼ek, nazw podrozdziaÅ‚Ã³w innych podrÄ™cznikÃ³w i uwag
+ od autorÃ³w.
 \end_layout
 
 \begin_layout Itemize
@@ -172,7 +181,7 @@ u¿ywa siê celem ogólnego wyeksponowania fragmentów tekstu, podkre¶lenia
 \family typewriter
 Czcionka maszynowa
 \family default
- stosowana jest do zapisu programów i nazw plików, kodu LaTeX-a, kodu LyX-a
+ stosowana jest do zapisu programÃ³w i nazw plikÃ³w, kodu LaTeX-a, kodu LyX-a
  i jego funkcji.
 \end_layout
 
@@ -187,19 +196,23 @@ Czcionka Sans Serif
 \begin_layout Itemize
 
 \noun on
-Styl nazw w³asnych 
+Styl nazw wÅ‚asnych 
 \noun default
-u¿ywany jest dla imion i nazwisk.
+uÅ¼ywany jest dla imion i nazwisk.
 \end_layout
 
 \begin_layout Standard
-Klawisze i przypisane im funkcje opisano dok³adnie w podrozdziale 
-\emph on
-Key Bindings
+Klawisze i przypisane im funkcje opisano dokÅ‚adnie w podrozdziale
 \emph default
  
 \emph on
-Opisu poleceñ
+Key Bindings
+\emph default
+
+\emph default
+ 
+\emph on
+Opisu poleceÅ„
 \emph default
  (
 \begin_inset Quotes eld
@@ -213,12 +226,14 @@ Reference Manual
 \begin_inset Quotes erd
 \end_inset
 
-) [plik 
+) [plik
+\family default
+ 
 \family typewriter
 Reference.lyx
 \family default
 ].
- Opisuj±c klawisze stosuje siê nastêpuj±c± konwencjê:
+ OpisujÄ…c klawisze stosuje siÄ™ nastÄ™pujÄ…cÄ… konwencjÄ™:
 \end_layout
 
 \begin_layout Itemize
@@ -233,9 +248,11 @@ C-
 \begin_inset Quotes prd
 \end_inset
 
- oznacza klawisz przyci¶niêty wraz z klawiszem
+ oznacza klawisz przyciÅ›niÄ™ty wraz z klawiszem
+\family default
+ 
 \family sans
- Control
+Control
 \family default
 .
 \end_layout
@@ -252,7 +269,9 @@ S-
 \begin_inset Quotes prd
 \end_inset
 
- oznacza klawisz przyci¶niêty wraz z klawiszem 
+ oznacza klawisz przyciÅ›niÄ™ty wraz z klawiszem
+\family default
+ 
 \family sans
 Shift
 \family default
@@ -271,7 +290,9 @@ M-
 \begin_inset Quotes prd
 \end_inset
 
- oznacza klawisz przyci¶niêty wraz z klawiszem 
+ oznacza klawisz przyciÅ›niÄ™ty wraz z klawiszem
+\family default
+ 
 \family sans
 Alt
 \family default
@@ -291,6 +312,8 @@ F1
 \end_inset
 
  \SpecialChar \ldots{}
+
+\family default
  
 \family sans
 
@@ -341,6 +364,8 @@ Left
 \begin_inset Quotes erd
 \end_inset
 
+
+\family default
  
 \family sans
 
@@ -353,6 +378,8 @@ Right
 \begin_inset Quotes erd
 \end_inset
 
+
+\family default
  
 \family sans
 
@@ -365,6 +392,8 @@ Up
 \begin_inset Quotes erd
 \end_inset
 
+
+\family default
  
 \family sans
 
@@ -377,7 +406,7 @@ Down
 \begin_inset Quotes erd
 \end_inset
 
- klawisze strza³ek, odpowiednio: w lewo, prawo, do góry, w dó³.
+ klawisze strzaÅ‚ek, odpowiednio: w lewo, prawo, do gÃ³ry, w dÃ³Å‚.
 \end_layout
 
 \begin_layout Itemize
@@ -452,7 +481,7 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: to sze¶æ klawiszy nad klawiszami strza³ek na wielu klawiaturach typu PC.
+: to szeÅ›Ä‡ klawiszy nad klawiszami strzaÅ‚ek na wielu klawiaturach typu PC.
  
 \begin_inset Quotes eld
 \end_inset
@@ -477,7 +506,7 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
- na niektórych klawiaturach nazywaj± siê 
+ na niektÃ³rych klawiaturach nazywajÄ… siÄ™ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -509,18 +538,20 @@ Next
 \family sans
 Return
 \family default
+
+\family default
  
 \family sans
 i Enter
 \family default
- odnosz± siê do tego samego klawisza.
- Na niektórych klawiaturach Return nazywa siê Enter, na innych Return, s±
- i takie posiadaj±ce dwa takie klawisze, ale LyX traktuje je wszystkie jednakowo
- i w dokumentacji Return i Enter u¿ywane s± zamiennie
+ odnoszÄ… siÄ™ do tego samego klawisza.
+ Na niektÃ³rych klawiaturach Return nazywa siÄ™ Enter, na innych Return, sÄ…
+ i takie posiadajÄ…ce dwa takie klawisze, ale LyX traktuje je wszystkie jednakowo
+ i w dokumentacji Return i Enter uÅ¼ywane sÄ… zamiennie
 \end_layout
 
 \begin_layout Standard
-Od czasu do czasu mo¿na napotkaæ 
+Od czasu do czasu moÅ¼na napotkaÄ‡ 
 \begin_inset Quotes pld
 \end_inset
 
@@ -530,7 +561,7 @@ Od czasu do czasu mo¿na napotkaæ
 
 
 \emph on
-Opisie poleceñ
+Opisie poleceÅ„
 \emph default
 
 \begin_inset Quotes erd
@@ -541,20 +572,22 @@ Opisie poleceñ
 \end_inset
 
 .
- Skróty klawiszowe dla ró¿nych funkcji zosta³y opisane w odpowiednich pozycjach
+ SkrÃ³ty klawiszowe dla rÃ³Å¼nych funkcji zostaÅ‚y opisane w odpowiednich pozycjach
+
+\emph default
  
 \emph on
-Opisu poleceñ
+Opisu poleceÅ„
 \emph default
-, tak wiêc warto tak¿e tam zagl±dn±æ.
+, tak wiÄ™c warto takÅ¼e tam zaglÄ…dnÄ…Ä‡.
 \end_layout
 
 \begin_layout Section
-Podrêczniki
+PodrÄ™czniki
 \end_layout
 
 \begin_layout Standard
-Poni¿sza lista opisuje zawarto¶æ ka¿dego z plików dokumentacji:
+PoniÅ¼sza lista opisuje zawartoÅ›Ä‡ kaÅ¼dego z plikÃ³w dokumentacji:
 \end_layout
 
 \begin_layout Description
@@ -576,8 +609,8 @@ Elementarz \InsetSpace ~
 \emph default
 
 \newline
-Dla nowych u¿ytkowników LyX-a, którzy nigdy nie u¿ywali LaTeX-a, ani nawet
- o nim nie s³yszeli.
+Dla nowych uÅ¼ytkownikÃ³w LyX-a, ktÃ³rzy nigdy nie uÅ¼ywali LaTeX-a, ani nawet
+ o nim nie sÅ‚yszeli.
 \end_layout
 
 \begin_layout Description
@@ -585,39 +618,45 @@ Dla nowych u¿ytkowników LyX-a, którzy nigdy nie u¿ywali LaTeX-a, ani nawet
 \emph on
 Jak\InsetSpace ~
 to\InsetSpace ~
-zrobiæ \InsetSpace ~
+zrobiÄ‡ \InsetSpace ~
 
 \emph default
 
 \newline
-To zbiór czêsto zadawanych pytañ (i odpowiedzi: FAQ) na temat obs³ugi LyX-a
- [a w ka¿dym razie kiedy¶ takim ma byæ].
- Maszyny do pisania i zwyk³e edytory oferuj± szereg wspólnych funkcji, znanych
- wielu u¿ytkownikom.
- Nie wszystkie z nich s± dostêpne w LyX-ie, albo nie maj± sensu w ¶rodowisku
+To zbiÃ³r czÄ™sto zadawanych pytaÅ„ (i odpowiedzi: FAQ) na temat obsÅ‚ugi LyX-a
+ [a w kaÅ¼dym razie kiedyÅ› takim ma byÄ‡].
+ Maszyny do pisania i zwykÅ‚e edytory oferujÄ… szereg wspÃ³lnych funkcji, znanych
+ wielu uÅ¼ytkownikom.
+ Nie wszystkie z nich sÄ… dostÄ™pne w LyX-ie, albo nie majÄ… sensu w Å›rodowisku
  LyX-a i LaTeX-a.
- Plik ten próbuje wyja¶niæ w formie pytañ i odpowiedzi, jak pos³ugiwaæ siê
+ Plik ten prÃ³buje wyjaÅ›niÄ‡ w formie pytaÅ„ i odpowiedzi, jak posÅ‚ugiwaÄ‡ siÄ™
  odpowiednimi operacjami w LyX-ie.
- Czasami bêdzie odwo³ywa³ siê do g³ównego podrêcznika.
+ Czasami bÄ™dzie odwoÅ‚ywaÅ‚ siÄ™ do gÅ‚Ã³wnego podrÄ™cznika.
 \end_layout
 
 \begin_layout Description
 
 \series bold
 \emph on
-Podrêcznik\InsetSpace ~
-u¿ytkownika
+PodrÄ™cznik\InsetSpace ~
+uÅ¼ytkownika
 \series default
- \InsetSpace ~
+\emph default
+ 
+\emph on
+\series default
+\InsetSpace ~
 
 \emph default
 
 \newline
 Podstawowa dokumentacja.
- Spróbowali¶my zawrzeæ w nim wiêkszo¶æ zasadniczych operacji i dostêpnych
+ SprÃ³bowaliÅ›my zawrzeÄ‡ w nim wiÄ™kszoÅ›Ä‡ zasadniczych operacji i dostÄ™pnych
  funkcji LyX-a.
- G³ówny podrêcznik zak³ada przynajmniej czê¶ciow± znajomo¶æ LaTeX-a lub
- przeczytanie 
+ GÅ‚Ã³wny podrÄ™cznik zakÅ‚ada przynajmniej czÄ™Å›ciowÄ… znajomoÅ›Ä‡ LaTeX-a lub
+ przeczytanie
+\emph default
+ 
 \emph on
 Elementarza
 \emph default
@@ -633,13 +672,15 @@ edycja \InsetSpace ~
 \newline
 
 \emph default
-Poszerzenie 
+Poszerzenie
+\emph default
+ 
 \emph on
-Podrêcznika u¿ytkownika
+PodrÄ™cznika uÅ¼ytkownika
 \emph default
 .
- Dokumentuje dodatkowe uk³ady i funkcje edycyjne specjalnego zastosowania,
- w³±cznie z kilkoma sztuczkami z repertuaru mistrzów LaTeX-a.
+ Dokumentuje dodatkowe ukÅ‚ady i funkcje edycyjne specjalnego zastosowania,
+ wÅ‚Ä…cznie z kilkoma sztuczkami z repertuaru mistrzÃ³w LaTeX-a.
 \end_layout
 
 \begin_layout Description
@@ -651,22 +692,24 @@ Przystosowywanie \InsetSpace ~
 
 \newline
 Opis zaawansowanych cech LyX-a, wraz z przystosowywaniem zachowania programu:
- skróty klawiszowe, internacjonalizacja i pliki konfiguracyjne.
+ skrÃ³ty klawiszowe, internacjonalizacja i pliki konfiguracyjne.
 \end_layout
 
 \begin_layout Description
 
 \emph on
 Opis\InsetSpace ~
-poleceñ \InsetSpace ~
+poleceÅ„ \InsetSpace ~
 
 \newline
 
 \emph default
-Zawiera wyczerpuj±cy, szczegó³owy opis funkcji LyX-a, ale bez wskazówek
- i przyk³adów jak w 
+Zawiera wyczerpujÄ…cy, szczegÃ³Å‚owy opis funkcji LyX-a, ale bez wskazÃ³wek
+ i przykÅ‚adÃ³w jak w
+\emph default
+ 
 \emph on
-Podrêczniku u¿ytkownika
+PodrÄ™czniku uÅ¼ytkownika
 \emph default
 \SpecialChar \@.
 
@@ -691,8 +734,8 @@ usterki \InsetSpace ~
 \emph default
 
 \newline
-Plik ten zawiera opis znanych usterek LyX-a oraz informacjê, co zrobiæ w
- razie znalezienia b³êdu w LyX-ie\SpecialChar \@.
+Plik ten zawiera opis znanych usterek LyX-a oraz informacjÄ™, co zrobiÄ‡ w
+ razie znalezienia bÅ‚Ä™du w LyX-ie\SpecialChar \@.
 
 \end_layout
 
@@ -705,27 +748,31 @@ LaTeX-a \InsetSpace ~
 \emph default
 
 \newline
-LyX w trakcie instalacji robi przegl±d systemu, a uzyskan± informacjê zapisuje
+LyX w trakcie instalacji robi przeglÄ…d systemu, a uzyskanÄ… informacjÄ™ zapisuje
  w tym pliku.
- Przejrzyj go i sprawd¼ czy nie brakuje czego¶ potrzebnego.
+ Przejrzyj go i sprawdÅº czy nie brakuje czegoÅ› potrzebnego.
 \end_layout
 
 \begin_layout Standard
-Pliki te odwo³uj± siê, gdy to konieczne, jeden do drugiego.
- Na przyk³ad 
-\emph on
-Podrêcznik u¿ytkownika
+Pliki te odwoÅ‚ujÄ… siÄ™, gdy to konieczne, jeden do drugiego.
+ Na przykÅ‚ad
 \emph default
- zawiera trochê wiadomo¶ci o instalacji i przystosowywaniu, ale odsy³a czytelnik
-a do 
+ 
 \emph on
-Podrêcznika przystosowywania
+PodrÄ™cznik uÅ¼ytkownika
 \emph default
- po wiêcej informacji.
+ zawiera trochÄ™ wiadomoÅ›ci o instalacji i przystosowywaniu, ale odsyÅ‚a czytelnik
+a do
+\emph default
+ 
+\emph on
+PodrÄ™cznika przystosowywania
+\emph default
+ po wiÄ™cej informacji.
 \end_layout
 
 \begin_layout Standard
-W tym miejscu ponownie zamie¶cimy istotne stwierdzenie:
+W tym miejscu ponownie zamieÅ›cimy istotne stwierdzenie:
 \end_layout
 
 \begin_layout Standard
@@ -737,7 +784,9 @@ W tym miejscu ponownie zamie¶cimy istotne stwierdzenie:
 
 \begin_layout Standard
 \align center
-Je¶li nigdy przedtem nie u¿ywa³e¶, ani nawet nie s³ysza³e¶ o LaTeX-u, przeczytaj
+JeÅ›li nigdy przedtem nie uÅ¼ywaÅ‚eÅ›, ani nawet nie sÅ‚yszaÅ‚eÅ› o LaTeX-u, przeczytaj
+
+\emph default
  
 \emph on
 Elementarz
@@ -754,7 +803,7 @@ Elementarz
 \end_layout
 
 \begin_layout Standard
-W przeciwnym razie LyX wyda Ci siê dziwaczny i nieu¿yteczny.
+W przeciwnym razie LyX wyda Ci siÄ™ dziwaczny i nieuÅ¼yteczny.
 \end_layout
 
 \begin_layout Section
@@ -762,13 +811,13 @@ Pomoc w tworzeniu dokumentacji
 \end_layout
 
 \begin_layout Subsection
-Zg³aszanie b³êdów
+ZgÅ‚aszanie bÅ‚Ä™dÃ³w
 \end_layout
 
 \begin_layout Standard
 To proste.
- Wy¶lij list na listê dyskusyjn± programistów albo u¿ytkowników.
- Je¶li nag³ówek rozpoczniesz has³em 
+ WyÅ›lij list na listÄ™ dyskusyjnÄ… programistÃ³w albo uÅ¼ytkownikÃ³w.
+ JeÅ›li nagÅ‚Ã³wek rozpoczniesz hasÅ‚em 
 \begin_inset Quotes pld
 \end_inset
 
@@ -776,7 +825,7 @@ Doc Error
 \begin_inset Quotes prd
 \end_inset
 
- lub czym¶ podobnym, pomo¿esz nam go znale¼æ
+ lub czymÅ› podobnym, pomoÅ¼esz nam go znaleÅºÄ‡
 \end_layout
 
 \begin_layout Standard
@@ -790,7 +839,7 @@ Doc Error
 \align center
 
 \emph on
-Nigdy nie zmieniaj zawarto¶ci ¿adnego z podrêczników bez zgody aktualnego
+Nigdy nie zmieniaj zawartoÅ›ci Å¼adnego z podrÄ™cznikÃ³w bez zgody aktualnego
  redaktora!
 \end_layout
 
@@ -802,8 +851,8 @@ Nigdy nie zmieniaj zawarto¶ci ¿adnego z podrêczników bez zgody aktualnego
 \end_layout
 
 \begin_layout Standard
-Takie dora¼ne zmiany i tak nie zostan± uwzglêdnione, gdy¿ Zespó³ Dokumentacji
- pos³uguje siê kopiami-matkami.
+Takie doraÅºne zmiany i tak nie zostanÄ… uwzglÄ™dnione, gdyÅ¼ ZespÃ³Å‚ Dokumentacji
+ posÅ‚uguje siÄ™ kopiami-matkami.
 \end_layout
 
 \begin_layout Subsection
@@ -811,24 +860,32 @@ Pierwsze kroki
 \end_layout
 
 \begin_layout Standard
-The LyX Documentation Project, tak jak inne elementy projektu LyX, chêtnie
- skorzysta z pomocy! Je¶li jeste¶ zainteresowany(a) wsparciem wysi³ku dokumentow
-ania LyX-a, musisz 
+The LyX Documentation Project, tak jak inne elementy projektu LyX, chÄ™tnie
+ skorzysta z pomocy! JeÅ›li jesteÅ› zainteresowany(a) wsparciem wysiÅ‚ku dokumentow
+ania LyX-a, musisz
+\emph default
+ 
 \emph on
 najpierw
+\emph default
+ 
 \emph toggle
- wykonaæ nastêpuj±ce czynno¶ci:
+wykonaÄ‡ nastÄ™pujÄ…ce czynnoÅ›ci:
 \end_layout
 
 \begin_layout Enumerate
-¦ci±gnij najnowszy kod ¼ród³owy LyX-a.
+ÅšciÄ…gnij najnowszy kod ÅºrÃ³dÅ‚owy LyX-a.
  Rozpakuj go.
- W g³ównym drzewie znajdziesz kartotekê nazwan± 
+ W gÅ‚Ã³wnym drzewie znajdziesz kartotekÄ™ nazwanÄ…
+\family default
+ 
 \family typewriter
 development
 \family default
 .
- W kartotece tej jest plik 
+ W kartotece tej jest plik
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -837,7 +894,9 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Przeczytaj 
+Przeczytaj
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -845,28 +904,33 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Nastêpnie przeczytaj 
+NastÄ™pnie przeczytaj
+\emph default
+ 
 \emph on
-Podrêcznik u¿ytkownika
+PodrÄ™cznik uÅ¼ytkownika
 \emph toggle
 .
- Ca³y.
+ CaÅ‚y.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Celem tego zadania jest wyrobienie podej¶cia.
+Celem tego zadania jest wyrobienie podejÅ›cia.
+
+\emph default
  
 \emph on
-Podrêcznik u¿ytkownika 
+PodrÄ™cznik uÅ¼ytkownika
 \emph default
-jest najbardziej kompletny z ca³ej dokumentacji.
- Powinien pozwoliæ Ci zorientowaæ siê, jakiego typu podrêczników potrzebujemy.
+ 
+jest najbardziej kompletny z caÅ‚ej dokumentacji.
+ Powinien pozwoliÄ‡ Ci zorientowaÄ‡ siÄ™, jakiego typu podrÄ™cznikÃ³w potrzebujemy.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Na koniec, skontaktuj siê z zespo³em pod adresem: 
+Na koniec, skontaktuj siÄ™ z zespoÅ‚em pod adresem: 
 \end_layout
 
 \begin_deeper
@@ -877,21 +941,23 @@ lyx@via.ecp.fr
 \end_layout
 
 \begin_layout Standard
-Chcemy siê upewniæ, ¿e rozumiesz plik stylu dokumentacji 
+Chcemy siÄ™ upewniÄ‡, Å¼e rozumiesz plik stylu dokumentacji
+\emph default
+ 
 \emph on
 zanim
 \emph default
- zaczniesz pisaæ.
- W przeciwnym razie bêdziesz musia³ przerobiæ to co ju¿ napisa³e¶.
+ zaczniesz pisaÄ‡.
+ W przeciwnym razie bÄ™dziesz musiaÅ‚ przerobiÄ‡ to co juÅ¼ napisaÅ‚eÅ›.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 
 \emph on
-Nie my¶l
+Nie myÅ›l
 \emph default
- nawet o rozpoczêciu pisania, zanim nie pogadamy przez pocztê elektroniczn±.
+ nawet o rozpoczÄ™ciu pisania, zanim nie pogadamy przez pocztÄ™ elektronicznÄ….
 \end_layout
 
 \end_body

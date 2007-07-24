@@ -1,17 +1,25 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language english
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics dvips
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -49,12 +57,16 @@ This article is a style sheet.
 
 \begin_layout Abstract
 The Style Sheet for LyX documentation (hereafter known as the Style Sheet)
- applies to 
+ applies to
+\emph default
+ 
 \emph on
 all
 \emph default
  forms of LyX documenation, regardless of language.
  There is a section for translators in the Style Sheet, towards the end.
+
+\emph default
  
 \emph on
 Read the entire Style Sheet!
@@ -78,7 +90,9 @@ After the second version of this Style Sheet grew uncomfortably large, the
 \end_layout
 
 \begin_layout Quote
-If you have any questions about anything in the Style Sheet, 
+If you have any questions about anything in the Style Sheet,
+\emph default
+ 
 \emph on
 ask first, write second!
 \end_layout
@@ -124,7 +138,9 @@ Do not overemphasize your text.
 \family typewriter
 Typewriter
 \family default
- program names, file names, 
+ program names, file names,
+\family default
+ 
 \family typewriter
 man
 \family default
@@ -180,7 +196,9 @@ Serif
 
 \begin_deeper
 \begin_layout Description
-WARNING! --- When you do this, make sure you 
+WARNING! --- When you do this, make sure you
+\emph default
+ 
 \emph on
 only
 \emph default
@@ -198,16 +216,22 @@ his
 \SpecialChar \ldots{}
 i.\InsetSpace ~
 e.\InsetSpace ~
-they not only shut off underlining, they turned off 
+they not only shut off underlining, they turned off
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
 \family default
-, too! 
+, too!
+\emph default
+ 
 \emph on
 Don't do that!
 \emph default
- Make sure the entire word is still in 
+ Make sure the entire word is still in
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
@@ -227,12 +251,16 @@ Bold
 
 \begin_deeper
 \begin_layout Standard
-If you want to emphasize any text, use 
+If you want to emphasize any text, use
+\emph default
+ 
 \emph on
 Emphasized
 \emph default
 .
- LaTeX will put many things boldface on its own, such as 
+ LaTeX will put many things boldface on its own, such as
+\family default
+ 
 \family sans
 Section
 \family default
@@ -249,13 +277,17 @@ Here are some examples:
 \end_layout
 
 \begin_layout Enumerate
-The function 
+The function
+\family default
+ 
 \family typewriter
 math-mode
 \family default
  appears in configuration files and in the LyX source.
  Therefore, it (and all other LyX function names) count as code and is set
- in 
+ in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
@@ -263,7 +295,9 @@ Typewriter
 \end_layout
 
 \begin_layout Enumerate
-However, 
+However,
+\family default
+ 
 \family sans
 \bar under
 M
@@ -271,20 +305,26 @@ M
 ath\InsetSpace ~
 mode
 \family default
- is a menu item in the 
+ is a menu item in the
+\family default
+ 
 \family sans
 \bar under
 M
 \bar default
 ath
 \family default
- menu, so it appears in 
+ menu, so it appears in
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
 \family default
 .
- Notice the use of 
+ Notice the use of
+\family default
+ 
 \family sans
 \bar under
 U
@@ -306,12 +346,16 @@ Consider the following excerpt from the introduction of one of the manuals:
 \family sans
 Return
 \family default
- and 
+ and
+\family default
+ 
 \family sans
 Enter
 \family default
  both refer to the same key.
- Some keyboards label the 
+ Some keyboards label the
+\family default
+ 
 \family sans
 Return
 \family default
@@ -332,11 +376,15 @@ Enter,
 \end_inset
 
  still others have two keys.
- LyX treats all of them as the same key, so we'll use 
+ LyX treats all of them as the same key, so we'll use
+\family default
+ 
 \family sans
 Return
 \family default
- and 
+ and
+\family default
+ 
 \family sans
 Enter
 \family default
@@ -344,16 +392,22 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Notice that the key name, 
+Notice that the key name,
+\family default
+ 
 \family sans
 Return
 \family default
-, is in 
+, is in
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
 \family default
-, but 
+, but
+\emph default
+ 
 \emph on
 only
 \emph default
@@ -378,17 +432,23 @@ printername
 \end_layout
 
 \begin_layout Standard
-Notice that the argument to the 
+Notice that the argument to the
+\family default
+ 
 \family typewriter
 -P
 \family default
- option is in 
+ option is in
+\emph default
+ 
 \emph on
 Roman Italics
 \emph default
  (i.e.
  emphasized).
- This is a case where you don't use 
+ This is a case where you don't use
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
@@ -405,7 +465,9 @@ lpr -Pduaneps
 \begin_inset Quotes erd
 \end_inset
 
-, you'd leave it in 
+, you'd leave it in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
@@ -415,11 +477,15 @@ Typewriter
 
 \end_deeper
 \begin_layout Enumerate
-Any LaTeX commands and code, and any 
+Any LaTeX commands and code, and any
+\emph default
+ 
 \emph on
 unsupported
 \emph default
- LaTeX package names get set in 
+ LaTeX package names get set in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
@@ -464,7 +530,9 @@ The canonical keyboard contains these keys:
 \family sans
 C-
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 Control-
 \family default
@@ -476,7 +544,9 @@ Control-
 \family sans
 S-
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 Shift-
 \family default
@@ -488,7 +558,9 @@ Shift-
 \family sans
 M-
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 Meta-
 \family default
@@ -498,7 +570,9 @@ Meta-
 \begin_deeper
 \begin_layout Standard
 Self-explanatory.
- Be lazy and 
+ Be lazy and
+\emph default
+ 
 \emph on
 use the abbreviations
 \emph default
@@ -546,21 +620,31 @@ Escape key.
 \family sans
 Insert
 \family default
+
+\family default
  
 \family sans
 Delete
+\family default
+
 \family default
  
 \family sans
 Home
 \family default
+
+\family default
  
 \family sans
 End
 \family default
+
+\family default
  
 \family sans
 PageUp
+\family default
+
 \family default
  
 \family sans
@@ -627,7 +711,9 @@ key
 \family sans
 Return
 \family default
- and 
+ and
+\family default
+ 
 \family sans
 Enter
 \family default
@@ -637,11 +723,15 @@ Enter
 \begin_deeper
 \begin_layout Standard
 I won't throw a hissy fit if you use one instead of the other.
- I'd prefer if you used 
+ I'd prefer if you used
+\family default
+ 
 \family sans
 Return
 \family default
- over 
+ over
+\family default
+ 
 \family sans
 Enter
 \family default
@@ -652,11 +742,15 @@ Enter
 
 \end_deeper
 \begin_layout Standard
-You do not need to explain everywhere what the 
+You do not need to explain everywhere what the
+\family default
+ 
 \family sans
 Meta
 \family default
- key is or where the 
+ key is or where the
+\family default
+ 
 \family sans
 Left
 \family default
@@ -664,11 +758,15 @@ Left
  The user isn't stupid.
  Also, someone will document anything that isn't clear (e.\InsetSpace ~
 g.\InsetSpace ~
-the 
+the
+\family default
+ 
 \family sans
 Meta
 \family default
  vs.
+
+\family default
  
 \family sans
 Alt
@@ -680,16 +778,22 @@ Alt
 \begin_layout Standard
 LyX does not support keyboards missing any of the keys described above,
  with one exception.
- LyX can support a keyboard missing 
+ LyX can support a keyboard missing
+\family default
+ 
 \family sans
 F11
 \family default
- and 
+ and
+\family default
+ 
 \family sans
 F12
 \family default
 .
- There is a keyboard accelerator for 
+ There is a keyboard accelerator for
+\family default
+ 
 \family sans
 F10
 \family default
@@ -718,12 +822,14 @@ mouse
 
 \begin_layout Standard
 Exception: you're writing an Author's Note (see section 
-\begin_inset LatexCommand \ref{sec:author-notes}
-
+\begin_inset LatexCommand ref
+reference "sec:author-notes"
 \end_inset
 
 ) and you need to mention something about the mouse.
- Since the rest of the note is in 
+ Since the rest of the note is in
+\emph default
+ 
 \emph on
 Emphasized
 \emph default
@@ -772,19 +878,25 @@ Do the following:
 
 \begin_layout Description
 Multi-word\InsetSpace ~
-names Use a 
+names Use a
+\family default
+ 
 \family sans
 Protected\InsetSpace ~
 Blank
 \family default
  between the words for menu and widget names.
  E.\InsetSpace ~
-g.: 
+g.:
+\family default
+ 
 \family sans
 Save\InsetSpace ~
 As
 \family default
-, not 
+, not
+\family default
+ 
 \family sans
 Save As
 \family default
@@ -794,22 +906,30 @@ Save As
 
 \begin_deeper
 \begin_layout Standard
-This holds for things in 
+This holds for things in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
- as well as 
+ as well as
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
 \family default
 , with one caveat.
  If you have a long code example, one that can't simply be inlined and put
- in 
+ in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
-, put that in a 
+, put that in a
+\family default
+ 
 \family sans
 LyX\InsetSpace ~
 Code
@@ -818,19 +938,25 @@ Code
 \end_layout
 
 \begin_layout Standard
-I want the 
+I want the
+\family default
+ 
 \family sans
 Protected\InsetSpace ~
 Blank
 \family default
  so that the name doesn't get split between two lines, which is visually
  disruptive.
- If something with a 
+ If something with a
+\family default
+ 
 \family sans
 Protected\InsetSpace ~
 Blank
 \family default
- is near the end of a line and overflows the margin, use a 
+ is near the end of a line and overflows the margin, use a
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -892,16 +1018,23 @@ Float
 
 \begin_deeper
 \begin_layout Standard
-Use 
+Use
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
 \family default
- font and, in the case of 
-\family sans
-HFill 
+ font and, in the case of
 \family default
-and 
+ 
+\family sans
+HFill
+\family default
+ 
+and
+\family default
+ 
 \family sans
 VFill
 \family default
@@ -911,7 +1044,9 @@ VFill
 \begin_layout Standard
 Why are these terms special? They are concepts which the seasoned LaTeX-pert
  is familiar with, but which the new LyX user is not.
- I want them to stand out from the rest of the text, hence the use of 
+ I want them to stand out from the rest of the text, hence the use of
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
@@ -975,17 +1110,19 @@ dialog
 \end_layout
 
 \begin_layout Itemize
-PostScript® is a registered trademark of Adobe Corp.
+PostScriptÂ® is a registered trademark of Adobe Corp.
+
+\emph default
  
 \emph on
-You must put the ® after it or we'll get sued!
+You must put the Â® after it or we'll get sued!
 \emph default
  I also want it written as seen here, always capitalized.
  Not 
 \begin_inset Quotes eld
 \end_inset
 
-postscript®,
+postscriptÂ®,
 \begin_inset Quotes erd
 \end_inset
 
@@ -993,7 +1130,7 @@ postscript®,
 \begin_inset Quotes eld
 \end_inset
 
-Postscript®
+PostscriptÂ®
 \begin_inset Quotes erd
 \end_inset
 
@@ -1001,7 +1138,7 @@ Postscript®
 \begin_inset Quotes eld
 \end_inset
 
-PostScript®
+PostScriptÂ®
 \begin_inset Quotes erd
 \end_inset
 
@@ -1028,7 +1165,7 @@ I am going to say this again:
 
 \size larger
 \emph on
-You must put the ® after PostScript® or we'll get sued!
+You must put the Â® after PostScriptÂ® or we'll get sued!
 \end_layout
 
 \begin_layout Standard
@@ -1040,11 +1177,13 @@ You must put the ® after PostScript® or we'll get sued!
 
 \begin_layout Standard
 I mean it! American companies like to sue anything that moves.
- We could get in 
+ We could get in
+\emph default
+ 
 \emph on
 major trouble
 \emph default
- by forgetting that ®.
+ by forgetting that Â®.
  So, don't.
  Got it?
 \end_layout
@@ -1052,7 +1191,7 @@ major trouble
 \end_deeper
 \begin_layout Itemize
 Similarly, if you use any other registered trademark in any documentation,
- put the ® after it, too.
+ put the Â® after it, too.
 \end_layout
 
 \begin_layout Description
@@ -1068,13 +1207,17 @@ Items When quick-referencing an item in a menu, use the menu separator:
 \end_inset
 
 .
- Example: 
+ Example:
+\family default
+ 
 \family sans
 File\SpecialChar \menuseparator
 Save
 \family default
 .
- Notice that there are 
+ Notice that there are
+\emph default
+ 
 \emph on
 no spaces
 \emph default
@@ -1087,7 +1230,9 @@ no spaces
 \begin_inset Quotes erd
 \end_inset
 
- and that it's in 
+ and that it's in
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
@@ -1107,7 +1252,9 @@ The reason why I want no spaces around the
 \end_inset
 
  is to prevent LyX from splitting terms across lines.
- The same goes for using 
+ The same goes for using
+\family default
+ 
 \family sans
 Protected\InsetSpace ~
 Blank
@@ -1126,7 +1273,9 @@ A
 \begin_inset Quotes erd
 \end_inset
 
- goes between menu names and item names 
+ goes between menu names and item names
+\emph default
+ 
 \emph on
 only
 \emph default
@@ -1171,6 +1320,8 @@ Dialog
 \begin_inset Quotes erd
 \end_inset
 
+
+\emph default
  
 \emph on
 IS STRICTLY FORBIDDEN!
@@ -1212,6 +1363,8 @@ rtrait
 \begin_inset Quotes erd
 \end_inset
 
+
+\emph default
  
 \emph on
 IS STRICTLY FORBIDDEN!
@@ -1257,6 +1410,8 @@ rtrait
 \begin_inset Quotes erd
 \end_inset
 
+
+\emph default
  
 \emph on
 IS STRICTLY FORBIDDEN!
@@ -1295,8 +1450,8 @@ These should NEVER appear in the manuals.
 If you have a parenthetical comment you want to make, the reader should
  see it too, even in the printed version.
  Use an Author's Note (see section 
-\begin_inset LatexCommand \ref{sec:author-notes}
-
+\begin_inset LatexCommand ref
+reference "sec:author-notes"
 \end_inset
 
 ) in place of the Note-Boxes.
@@ -1355,8 +1510,8 @@ and\InsetSpace ~
 
 , is used only within quotations (see section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:quote}
-
+\begin_inset LatexCommand ref
+reference "sec:quote"
 \end_inset
 
 ).
@@ -1481,19 +1636,27 @@ Use the following labelling conventions:
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-sec:xxx Use this for 
+sec:xxx Use this for
+\family default
+ 
 \family sans
 Section
 \family default
-s as well as 
+s as well as
+\family default
+ 
 \family sans
 Chapter
 \family default
-s, 
+s,
+\family default
+ 
 \family sans
 Subsection
 \family default
-s, 
+s,
+\family default
+ 
 \family sans
 Subsubsection
 \family default
@@ -1520,7 +1683,9 @@ Additionally, you should put the label at one of two locations:
 \end_layout
 
 \begin_layout Enumerate
-The 
+The
+\emph default
+ 
 \emph on
 beginning of the paragraph
 \emph default
@@ -1530,7 +1695,9 @@ beginning of the paragraph
 \end_layout
 
 \begin_layout Enumerate
-If there is no paragraph after a section heading, put it at the 
+If there is no paragraph after a section heading, put it at the
+\emph default
+ 
 \emph on
 end of the last line.
 
@@ -1540,16 +1707,22 @@ end of the last line.
 
 \begin_deeper
 \begin_layout Standard
-Example: You have a 
+Example: You have a
+\family default
+ 
 \family sans
 Section
 \family default
- which is immediately followed by a 
+ which is immediately followed by a
+\family default
+ 
 \family sans
 Subsection
 \family default
  heading.
- This is a case where you need to put the label at the end of the 
+ This is a case where you need to put the label at the end of the
+\family default
+ 
 \family sans
 Section
 \family default
@@ -1563,7 +1736,9 @@ Content --- What Goes Where
 \end_layout
 
 \begin_layout Standard
-This is 
+This is
+\emph default
+ 
 \emph on
 very
 \emph default
@@ -1590,8 +1765,9 @@ With that in mind, I have some instructions for how to keep things organized:
 \labelwidthstring 00.00.0000
 
 \family typewriter
-Intro.lyx 
+Intro.lyx
 \family default
+ 
 Please, don't touch this file.
  It's essentially complete, anyhow.
  Only the editor(s) should make changes to this, as this file contains info
@@ -1604,10 +1780,13 @@ Please, don't touch this file.
 \labelwidthstring 00.00.0000
 
 \family typewriter
-UserGuide.lyx 
+UserGuide.lyx
 \family default
+ 
 This file is complete.
- Any changes should be for updates 
+ Any changes should be for updates
+\emph default
+ 
 \emph on
 only
 \emph default
@@ -1634,7 +1813,9 @@ article
 \end_inset
 
  from the author of the feature.
- Also, anyone who writes a 
+ Also, anyone who writes a
+\family default
+ 
 \family typewriter
 .layout
 \family default
@@ -1645,11 +1826,15 @@ article
 
 \begin_deeper
 \begin_layout Standard
-Note, however, that you are 
+Note, however, that you are
+\emph default
+ 
 \emph on
 not
 \emph default
- excused from following this Style Sheet just because the sections of 
+ excused from following this Style Sheet just because the sections of
+\family default
+ 
 \family typewriter
 Extended.lyx
 \family default
@@ -1682,21 +1867,29 @@ Customization.lyx
 
 \begin_deeper
 \begin_layout Standard
-If you are unsure whether or not something belongs in 
+If you are unsure whether or not something belongs in
+\family default
+ 
 \family typewriter
 Customization.lyx
 \family default
-, then, most-likely, it 
+, then, most-likely, it
+\emph default
+ 
 \emph on
 really
 \emph default
- belongs in 
+ belongs in
+\family default
+ 
 \family typewriter
 Extended.lyx
 \family default
 .
  Again, let the current editor of the LyX documentation decide if your new
- section should be migrated to 
+ section should be migrated to
+\family default
+ 
 \family typewriter
 Customization.lyx
 \family default
@@ -1712,7 +1905,9 @@ Reference.lyx
 \family default
  I'd prefer to completely finish this one before doing anything else, but
  that's unrealistic.
- LyX keeps changing so much that I think the 
+ LyX keeps changing so much that I think the
+\emph default
+ 
 \emph on
 Reference Manual
 \emph default
@@ -1724,13 +1919,17 @@ Reference Manual
 
 \begin_deeper
 \begin_layout Standard
-Note that the 
+Note that the
+\emph default
+ 
 \emph on
 Reference Manual
 \emph default
  follows this Style Sheet for the most part.
  There are, however, additional rules to follow when making new entries.
- At the top of this manual, there are examples of and a template for 
+ At the top of this manual, there are examples of and a template for
+\emph default
+ 
 \emph on
 Reference Manual
 \emph default
@@ -1756,7 +1955,9 @@ Language
 \end_layout
 
 \begin_layout Standard
-All contributions to the 
+All contributions to the
+\emph default
+ 
 \emph on
 primary
 \emph default
@@ -1777,7 +1978,9 @@ Don't get hung up on semantics.
 \end_layout
 
 \begin_layout Standard
-Nota Bene: by 
+Nota Bene: by
+\emph default
+ 
 \emph on
 primary
 \emph default
@@ -1788,8 +1991,8 @@ primary
  version of the LyX manuals.
  The translation efforts require have their own set of guidelines.
  See section 
-\begin_inset LatexCommand \ref{sec:translations}
-
+\begin_inset LatexCommand ref
+reference "sec:translations"
 \end_inset
 
  for more info.
@@ -1803,8 +2006,8 @@ e.: You)
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:author-notes}
-
+\begin_inset LatexCommand label
+name "sec:author-notes"
 \end_inset
 
 I want to make it easy for everyone when it comes to documenting things.
@@ -1911,7 +2114,9 @@ Name of Person
 
  in that case.
  In a real quote, you'll give credit to the original speaker in either the
- paragraph before or after the body of the 
+ paragraph before or after the body of the
+\family default
+ 
 \family sans
 Quotation
 \family default
@@ -2035,7 +2240,9 @@ Author's Note: This is an example note.
 
 \begin_layout Standard
 The form of the Author's Note, by the way, isn't a suggestion or request.
- It is 
+ It is
+\emph default
+ 
 \emph on
 mandatory
 \emph default
@@ -2121,7 +2328,9 @@ Mixing Footnotes and Personal Notes
 Personal Notes always go in footnotes, and should be 5 lines or fewer.
  Any larger quotation should be quoted properly, using the rules of standard
  English.
- Place quotes in a 
+ Place quotes in a
+\family default
+ 
 \family sans
 Quotation
 \family default
@@ -2133,7 +2342,9 @@ Mixing Footnotes and Author's Notes
 \end_layout
 
 \begin_layout Standard
-Author's Notes should 
+Author's Notes should
+\emph default
+ 
 \emph on
 never
 \emph default
@@ -2156,7 +2367,9 @@ Summary of Use
 \begin_layout Itemize
 Personal Notes:
 \newline
-A 
+A
+\emph default
+ 
 \emph on
 short
 \emph default
@@ -2165,8 +2378,8 @@ short
  LyX Team, use this.
  If you have a long rant, however, quote yourself (see section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:quote}
-
+\begin_inset LatexCommand ref
+reference "sec:quote"
 \end_inset
 
 ).
@@ -2205,7 +2418,9 @@ General Stylistic Guidelines
 \end_layout
 
 \begin_layout Standard
-Everything in this section is 
+Everything in this section is
+\emph default
+ 
 \emph on
 mandatory to all documenters
 \emph default
@@ -2235,16 +2450,22 @@ There is some typographic freedom in those rules in earlier sections.
 
 \begin_deeper
 \begin_layout Standard
-An example is in the 
+An example is in the
+\emph default
+ 
 \emph on
 User's Guide
 \emph default
 .
- There is a footnote using the 
+ There is a footnote using the
+\family default
+ 
 \family typewriter
 multcols
 \family default
- command to divide a long 
+ command to divide a long
+\family default
+ 
 \family sans
 Itemize
 \family default
@@ -2378,8 +2599,8 @@ When in doubt, use good judgement.
 
 \end_deeper
 \begin_layout Subsubsection
-\begin_inset LatexCommand \label{sec:quote}
-
+\begin_inset LatexCommand label
+name "sec:quote"
 \end_inset
 
 Quoting Yourself and Others
@@ -2407,7 +2628,9 @@ This creates a problem for the primary documentation.
  The primary documentation is written in English, yet the contributors come
  from many countries.
  The quoting rules for English (well, American English, at least) are outlined
- in the following 
+ in the following
+\family default
+ 
 \family sans
 Figure\InsetSpace ~
 Float
@@ -2428,7 +2651,9 @@ Quoting rules for English:
 \end_layout
 
 \begin_layout Itemize
-The body of the quote belongs in a 
+The body of the quote belongs in a
+\family default
+ 
 \family sans
 Quotation
 \family default
@@ -2446,7 +2671,9 @@ The sentences immediately following the quote should continue the flow of
 \end_layout
 
 \begin_layout Itemize
-You must, 
+You must,
+\emph default
+ 
 \emph on
 must
 \emph default
@@ -2621,7 +2848,9 @@ Coverage
 \end_layout
 
 \begin_layout Standard
-When describing a new feature or 
+When describing a new feature or
+\family default
+ 
 \family typewriter
 *.layout
 \family default
@@ -2629,11 +2858,16 @@ When describing a new feature or
 \end_layout
 
 \begin_layout Enumerate
-Be 
-\emph on
-clear, concise, 
+Be
 \emph default
-and 
+ 
+\emph on
+clear, concise,
+\emph default
+ 
+and
+\emph default
+ 
 \emph on
 to the point
 \emph default
@@ -2659,7 +2893,9 @@ Keep It Simple, Stupid!
 
 \begin_deeper
 \begin_layout Itemize
-Do 
+Do
+\emph default
+ 
 \emph on
 not
 \emph default
@@ -2673,12 +2909,16 @@ Get to the point.
 
 \begin_layout Itemize
 Take a look at the manual for a commercial word processor --- it's a fine
- example of how 
+ example of how
+\series default
+ 
 \series bold
 NOT
 \series default
  to write documentation.
- It's all pithy, substanceless verbage, and its 
+ It's all pithy, substanceless verbage, and its
+\emph default
+ 
 \emph on
 utterly useless!
 \emph default
@@ -2712,7 +2952,9 @@ On the other hand, BE THOROUGH!
 
 \begin_deeper
 \begin_layout Enumerate
-You are documenting 
+You are documenting
+\emph default
+ 
 \emph on
 features
 \emph default
@@ -2724,21 +2966,29 @@ Group by feature, not by widget.
 \end_layout
 
 \begin_layout Enumerate
-Stay on topic --- one 
+Stay on topic --- one
+\family default
+ 
 \family sans
 Section
 \family default
- should cover 
+ should cover
+\emph default
+ 
 \emph on
 one
 \emph default
  feature.
- Use 
+ Use
+\family default
+ 
 \family sans
 Subsection
 \family default
 s and further subdivisions to group things if you're documenting several
- related features in a single 
+ related features in a single
+\family default
+ 
 \family sans
 Section
 \family default
@@ -2753,7 +3003,9 @@ Describe EVERYTHING related to that feature, no matter where it is.
 \begin_layout Enumerate
 Example: Paragraph Indenting.
  Several popups control its behavior.
- You would document 
+ You would document
+\emph default
+ 
 \emph on
 all
 \emph default
@@ -2773,14 +3025,19 @@ I've had people only document one popup --- literally.
  since other menus, popups, and even unbound functions contained additional
  stuff.
 \newline
-I got 
+I got
+\emph default
+ 
 \emph on
 really
 \emph default
- cranky when that happens, because it means 
-\emph on
-I 
+ cranky when that happens, because it means
 \emph default
+ 
+\emph on
+I
+\emph default
+ 
 ended up fixing it.
  Bad help is worse than no help at all.
 \end_layout
@@ -2794,7 +3051,9 @@ These remarks still hold true: you'll piss of the DocTeam editor if you
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
-Remember, there are people who will reference 
+Remember, there are people who will reference
+\emph default
+ 
 \emph on
 your
 \emph default
@@ -2814,7 +3073,9 @@ When in doubt, use good judgement.
 
 \end_deeper
 \begin_layout Subsubsection
-NEVER NEVER 
+NEVER NEVER
+\emph default
+ 
 \emph on
 NEVER EVER
 \emph default
@@ -2835,15 +3096,21 @@ The reader is smart enough to know what a mouse is.
 
 \begin_layout Enumerate
 The reader is smart enough to know how to use a keyboard, including the
+
+\family default
  
 \family sans
 Shift-
 \family default
-, 
+,
+\family default
+ 
 \family sans
 Control-
 \family default
-, and 
+, and
+\family default
+ 
 \family sans
 Meta-
 \family default
@@ -2856,7 +3123,9 @@ Meta-
 \family sans
 Meta-
 \family default
- is the 
+ is the
+\family default
+ 
 \family sans
 Alt-
 \family default
@@ -2910,8 +3179,8 @@ Tips for the English Version
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:english-only}
-
+\begin_inset LatexCommand label
+name "sec:english-only"
 \end_inset
 
 When contributing to the primary --- i.\InsetSpace ~
@@ -2977,7 +3246,9 @@ LyX reformatted the paragraph.
 \begin_inset Quotes erd
 \end_inset
 
- If 
+ If
+\family default
+ 
 \family typewriter
 ispell
 \family default
@@ -3029,7 +3300,9 @@ I know it's tough.
 \end_layout
 
 \begin_layout Enumerate
-I 
+I
+\emph default
+ 
 \emph on
 will make you rewrite
 \emph default
@@ -3185,7 +3458,9 @@ Most people translate word by word.
 \begin_layout Standard
 There is another level to the context issue, however.
  Your dictionary may translate multiple English words the same way.
- All those words mean 
+ All those words mean
+\emph default
+ 
 \emph on
 roughly
 \emph default
@@ -3282,7 +3557,9 @@ Translate the meaning first.
 \begin_layout Standard
 The information content of the text under translation is the most important
  part.
- This is especially important for a manual, where the information 
+ This is especially important for a manual, where the information
+\emph default
+ 
 \emph on
 is the only
 \emph default
@@ -3299,8 +3576,8 @@ Those of you contributing to a translation of the LyX manuals must follow
  a modified set of rules.
  The first few rules are analogous to those in section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:english-only}
-
+\begin_inset LatexCommand ref
+reference "sec:english-only"
 \end_inset
 
 .
@@ -3391,7 +3668,9 @@ dead
 \end_layout
 
 \begin_layout Standard
-We who write the LyX manuals, original or translated, seek to 
+We who write the LyX manuals, original or translated, seek to
+\emph default
+ 
 \emph on
 inform
 \emph default
@@ -3449,12 +3728,14 @@ Translators must follow the Style Sheet, too!
 \end_layout
 
 \begin_layout Standard
-Everything in this manual --- 
+Everything in this manual ---
+\emph default
+ 
 \emph on
 except section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:english-only}
-
+\begin_inset LatexCommand ref
+reference "sec:english-only"
 \end_inset
 
 
@@ -3508,11 +3789,15 @@ The English versions of the manuals are not Sacred Text.
 You do not need to translate everything word for word.
  In fact, you shouldn't.
  Keep to the spirit of the originals, not the letter.
- Be as creative as you want, as long as you 
+ Be as creative as you want, as long as you
+\emph default
+ 
 \emph on
 accurately
 \emph default
- and 
+ and
+\emph default
+ 
 \emph on
 completely
 \emph default
@@ -3524,8 +3809,8 @@ Any information in the LyX manuals must also be in the translations.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:accuracy}
-
+\begin_inset LatexCommand label
+name "sec:accuracy"
 \end_inset
 
 This falls under translating the orignals accurately and completely.
@@ -3534,14 +3819,18 @@ This falls under translating the orignals accurately and completely.
 
 \begin_layout Itemize
 Omitting any feature description is
+\emph default
+ 
 \emph on
- stricly forbidden
+stricly forbidden
 \emph default
 .
 \end_layout
 
 \begin_layout Itemize
-Misrepresenting or misdescribing any LyX feature or operation 
+Misrepresenting or misdescribing any LyX feature or operation
+\emph default
+ 
 \emph on
 must be avoided
 \emph default
@@ -3549,7 +3838,9 @@ must be avoided
 \end_layout
 
 \begin_layout Itemize
-The translation 
+The translation
+\emph default
+ 
 \emph on
 cannot
 \emph default
@@ -3601,12 +3892,14 @@ Prepositions, idioms, metaphors, slang, Oh My! There's a jungle of potentially
 There may be special cases where omitting part of a sentence or paragraph
  violates rule\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:accuracy}
-
+\begin_inset LatexCommand ref
+reference "sec:accuracy"
 \end_inset
 
 .
- In those cases, 
+ In those cases,
+\emph default
+ 
 \emph on
 do not omit!
 \emph default
@@ -3653,7 +3946,9 @@ The First Is In Charge
 \begin_layout Standard
 If you were the first person to start translating the manuals, you're the
  LyXDoc Translation Project Chief for your language.
- If you are the 
+ If you are the
+\emph default
+ 
 \emph on
 only
 \emph default
@@ -3667,7 +3962,9 @@ Amongst other things, that means that you must read this section and perform
 \end_layout
 
 \begin_layout Standard
-If you are a member of a LyX Documentation Translation Team, but 
+If you are a member of a LyX Documentation Translation Team, but
+\emph default
+ 
 \emph on
 are not
 \emph default
@@ -3693,7 +3990,9 @@ No documenter is excused from following the Style Sheet, not even a Translation
 \end_layout
 
 \begin_layout Standard
-Actually, it is 
+Actually, it is
+\emph default
+ 
 \emph on
 especially
 \emph default
@@ -3709,7 +4008,9 @@ No documenter is excused from following the Style Sheet.
 \end_layout
 
 \begin_layout Standard
-Since your translation team is translating, they know 
+Since your translation team is translating, they know
+\emph default
+ 
 \emph on
 some
 \emph default
@@ -3743,7 +4044,9 @@ That's where you, as head of a LyXDoc Translation Team, come in.
 \end_layout
 
 \begin_layout Standard
-Every Translation Team Chief is 
+Every Translation Team Chief is
+\emph default
+ 
 \emph on
 required
 \emph default
@@ -3835,7 +4138,9 @@ For consistency, use the same document class and other document properties
 status collapsed
 
 \begin_layout Standard
-Specifically, check the settings in the 
+Specifically, check the settings in the
+\family default
+ 
 \family sans
 Document Layout
 \family default
@@ -3989,7 +4294,9 @@ There will be no abstract.
 
 \end_deeper
 \begin_layout Enumerate
-The first 
+The first
+\family default
+ 
 \family sans
 Section
 \family default
@@ -4016,7 +4323,9 @@ Supplement
 \begin_inset Quotes erd
 \end_inset
 
- until he has read 
+ until he has read
+\emph default
+ 
 \emph on
 and
 \emph default
@@ -4040,7 +4349,9 @@ Font Issues
 \end_layout
 
 \begin_layout Standard
-The second 
+The second
+\family default
+ 
 \family sans
 Section
 \family default
@@ -4172,25 +4483,35 @@ Emphasized
 
 \begin_deeper
 \begin_layout Standard
-Use a font that is different from your language's equivalent of 
+Use a font that is different from your language's equivalent of
+\series default
+ 
 \series bold
 Boldface
 \series default
 .
- In other words, your 
+ In other words, your
+\family default
+ 
 \family sans
 Section
 \family default
-, 
+,
+\family default
+ 
 \family sans
 Subsection
 \family default
- and similar headers will be in one typeface, perhaps 
+ and similar headers will be in one typeface, perhaps
+\series default
+ 
 \series bold
 Boldface
 \series default
 , perhaps not.
- Whatever that font is, avoid using it for 
+ Whatever that font is, avoid using it for
+\emph default
+ 
 \emph on
 Emphasized
 \emph default
@@ -4207,7 +4528,9 @@ Typewriter
  Pick up a computer program manual written in your language.
  It will use a special typeface for filenames, for command names, program
  names, and such.
- Use that same font in place of 
+ Use that same font in place of
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
@@ -4222,21 +4545,29 @@ Sans\InsetSpace ~
 Serif
 \family default
  Pick any other font that is different from the ones you're using in place
- of 
+ of
+\emph default
+ 
 \emph on
 Emphasized
 \emph default
-, 
+,
+\series default
+ 
 \series bold
 Boldface
 \series default
-, and 
+, and
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
 .
  If you're unlucky, and your language's writing system doesn't have enough
- fonts, use the same font you picked to replace 
+ fonts, use the same font you picked to replace
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
@@ -4273,19 +4604,25 @@ If you use some special font on-screen to highlight the accelerator keys
 \end_deeper
 \begin_layout Standard
 Note that you may also want to describe fonts that your Translation Team
- should 
+ should
+\emph default
+ 
 \emph on
 never
 \emph default
  use.
  For example, no contributer to the English/European versions may ever use
+
+\series default
  
 \series bold
 Boldface
 \series default
 , as this is used for section-headings.
  Since there are enough other fonts, we who use the Roman alphabet and its
- variants can afford to omit 
+ variants can afford to omit
+\series default
+ 
 \series bold
 Boldface
 \series default
@@ -4311,11 +4648,15 @@ Remember: stick to the font specifications in this Style Sheet as best you
 \end_layout
 
 \begin_layout Subsubsection
-Quoting Style and the 
+Quoting Style and the
+\family default
+ 
 \family sans
 Quote
 \family default
  vs.
+
+\family default
  
 \family sans
 Quotation
@@ -4334,11 +4675,15 @@ One of the first things you should do in that section is resolve the following
 \end_layout
 
 \begin_layout Itemize
-Decide whether 
+Decide whether
+\family default
+ 
 \family sans
 Quote
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 Quotation
 \family default
@@ -4353,8 +4698,8 @@ In the Supplement, specify which one to use.
 English has its own typography and style for quoting others.
  The Style Sheet describes that typography in section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:quote}
-
+\begin_inset LatexCommand ref
+reference "sec:quote"
 \end_inset
 
 .
@@ -4363,8 +4708,8 @@ English has its own typography and style for quoting others.
  Naturally, you do not need to go overboard.
  Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:quote}
-
+\begin_inset LatexCommand ref
+reference "sec:quote"
 \end_inset
 
  of this Style Sheet is overly detailed for a good reason.
@@ -4402,7 +4747,9 @@ Author's Note:
 \end_layout
 
 \begin_layout Standard
-Do 
+Do
+\emph default
+ 
 \emph on
 not
 \emph default
@@ -4454,7 +4801,9 @@ Author's Note
 \end_inset
 
  is meant to be a note from the author of a manual to the reader.
- In the case of a translation, however, the translator is 
+ In the case of a translation, however, the translator is
+\emph default
+ 
 \emph on
 not
 \emph default
@@ -4501,11 +4850,15 @@ Author's Note
 \end_layout
 
 \begin_layout Standard
-Whatever you decide, codify your policy in its own 
+Whatever you decide, codify your policy in its own
+\family default
+ 
 \family sans
 Section
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 Subsection
 \family default
@@ -4534,7 +4887,9 @@ Lost in Translation
 \end_layout
 
 \begin_layout Standard
-After describing all of the previous issues, create a new 
+After describing all of the previous issues, create a new
+\family default
+ 
 \family sans
 Section
 \family default
@@ -4554,11 +4909,15 @@ Lost in Translation,
 In this section you will discuss any common English metaphors, humor, connotatio
 n, or other difficult to translate text.
  Try to balance brevity and completeness.
- Devote a 
+ Devote a
+\family default
+ 
 \family sans
 Subsection
 \family default
- --- or even 
+ --- or even
+\family default
+ 
 \family sans
 Subsubsection
 \family default
@@ -4596,8 +4955,10 @@ Foo
 This sentence will be tricky to translate, since it contains non-translatable
  connotations.
  Therefore, create a
+\family default
+ 
 \family sans
- Subsection
+Subsection
 \family default
  for this issue in your 
 \begin_inset Quotes eld
@@ -4629,7 +4990,9 @@ Here's what those two sentences, sitting alone in their own paragraph, mean:
 \begin_layout Standard
 The first sentence uses the English conditional followed by an imperative.
  We, as the LyX team, are commanding the reader to go back to another manual.
- For example, the 
+ For example, the
+\emph default
+ 
 \emph on
 Intro
 \emph default
@@ -4790,7 +5153,9 @@ You can add more sections to the Supplement if you need to discuss other
  issues.
  There may be policies or guidelines that you want to set for your Translation
  Team.
- Be careful, however! Keep the Supplement 
+ Be careful, however! Keep the Supplement
+\emph default
+ 
 \emph on
 short
 \emph default

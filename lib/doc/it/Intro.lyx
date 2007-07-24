@@ -1,17 +1,25 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language italian
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -50,10 +58,14 @@ Navigare attraverso la documentazione
 \begin_layout Standard
 Benvenuti
 \color magenta
+
+\color none
  
 \color inherit
 in
 \color magenta
+
+\color none
  
 \color inherit
 LyX!
@@ -61,11 +73,11 @@ LyX!
 
 \begin_layout Standard
 Per facilitare la risposta alle vostre domande e per descrivere tutte le
- caratteristiche di LyX, la documentazione Ë stata suddivisa in diversi
+ caratteristiche di LyX, la documentazione √® stata suddivisa in diversi
  files.
- Ognuno ha il suo scopo, come descritto pi˘ avanti.
+ Ognuno ha il suo scopo, come descritto pi√π avanti.
  Prima che vi tuffiate nella loro lettura, tuttavia, dovreste leggere attentamen
-te questo documento, dato che contiene una grande quantit‡ di informazioni
+te questo documento, dato che contiene una grande quantit√† di informazioni
  utili e commenti che possono farvi risparmiare tempo in seguito.
 \end_layout
 
@@ -106,8 +118,8 @@ Lavori Veri,
  ma potremmo non riuscirci sempre.
  [Se volete contribuire a rimediare a questo problema, leggete la sezione\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:Contrib}
-
+\begin_inset LatexCommand ref
+reference "sec:Contrib"
 \end_inset
 
  di questo documento.]
@@ -115,8 +127,10 @@ Lavori Veri,
 
 \begin_layout Standard
 Infine, fateci un favore --- se trovate qualcosa in questi manuali che vi
- confonde, che non Ë chiaro, o sbagliato, non esitate a farcelo sapere!
+ confonde, che non √® chiaro, o sbagliato, non esitate a farcelo sapere!
  Potete raggiungere gli attuali responsabili della documentazione all'indirizzo
+
+\family default
  
 \family typewriter
 lyx-docs@\SpecialChar \-
@@ -130,23 +144,27 @@ Il formato dei manuali
 \end_layout
 
 \begin_layout Standard
-Qualcuno di voi avr‡ stampato i manuali, altri li staranno leggendo sullo
+Qualcuno di voi avr√† stampato i manuali, altri li staranno leggendo sullo
  schermo, come un file all'interno di LyX.
  Per coloro che li leggono sullo schermo, ci sono delle differenze rispetto
  alla versione stampata.
  Innanzitutto, il titolo compare all'inizio del testo, e non su una pagina
  separata come in alcune delle versioni stampate.
- Non sono inoltre visibili le note a piË pagina o l'indice.
- C'Ë un popup per visualizzare l'indice: per aprirlo, seleziona 
+ Non sono inoltre visibili le note a pi√® pagina o l'indice.
+ C'√® un popup per visualizzare l'indice: per aprirlo, seleziona
+\family default
+ 
 \family sans
 Sommario
 \family default
- dal men˘ 
+ dal men√π
+\family default
+ 
 \family sans
 Modifica
 \family default
 .
- Per aprire una nota a piË pagina, che appare cosÏ,
+ Per aprire una nota a pi√® pagina, che appare cos√¨,
 \begin_inset Foot
 status collapsed
 
@@ -176,19 +194,21 @@ Nei manuali stampati, tutti i riferimenti incrociati appaiono con i numeri
  del capitolo, sezione o sottosezione (ecc.) cui si riferiscono.
  Nella versione elettronica, invece, tutti i riferimenti incrociati appaiono
  come un rettangolo grigio come questo: 
-\begin_inset LatexCommand \ref{sec:Contrib}
-
+\begin_inset LatexCommand ref
+reference "sec:Contrib"
 \end_inset
 
 .
  [I manuali stampati mostrano un numero al suo posto.] Se si clicca sul rettangol
-o con il tasto sinistro del mouse, LyX passer‡ direttamente a quella sezione.
- Digitando 
+o con il tasto sinistro del mouse, LyX passer√† direttamente a quella sezione.
+ Digitando
+\family default
+ 
 \family sans
 C-<
 \family default
- si ritorner‡ alla posizione precedente.
- [Si veda pi˘ avanti per sapere che cosa significa 
+ si ritorner√† alla posizione precedente.
+ [Si veda pi√π avanti per sapere che cosa significa 
 \begin_inset Quotes eld
 \end_inset
 
@@ -232,7 +252,7 @@ Typewriter
 \family sans
 Sans Serif
 \family default
- viene usato per indicare i men˘, i bottoni, o i nomi delle finestre di
+ viene usato per indicare i men√π, i bottoni, o i nomi delle finestre di
  popup, e i nomi dei tasti o loro combinazioni.
 \end_layout
 
@@ -245,7 +265,9 @@ Stampatello
 \end_layout
 
 \begin_layout Standard
-Per i tasti e le loro associazioni, verrete rimandati alla sezione 
+Per i tasti e le loro associazioni, verrete rimandati alla sezione
+\emph default
+ 
 \emph on
 Key Bindings
 \emph default
@@ -261,7 +283,9 @@ Manuale di Riferimento
 \begin_inset Quotes erd
 \end_inset
 
- [il file 
+ [il file
+\family default
+ 
 \family typewriter
 Reference.lyx
 \family default
@@ -282,7 +306,9 @@ C-
 \begin_inset Quotes erd
 \end_inset
 
- indica il tasto 
+ indica il tasto
+\family default
+ 
 \family sans
 Control-
 \family default
@@ -302,8 +328,10 @@ S-
 \end_inset
 
  indica il tasto
+\family default
+ 
 \family sans
- Shift-
+Shift-
 \family default
 .
 \end_layout
@@ -320,11 +348,15 @@ M-
 \begin_inset Quotes erd
 \end_inset
 
- indica il tasto 
+ indica il tasto
+\family default
+ 
 \family sans
 Meta-
 \family default
-, che su alcune tastiere appare come il tasto 
+, che su alcune tastiere appare come il tasto
+\family default
+ 
 \family sans
 Alt-
 \family default
@@ -371,7 +403,7 @@ Esc
 \begin_inset Quotes erd
 \end_inset
 
- Ë il tasto di escape.
+ √® il tasto di escape.
 \end_layout
 
 \begin_layout Itemize
@@ -416,7 +448,7 @@ Su
 
 
 \family sans
-Gi˘
+Gi√π
 \family default
 
 \begin_inset Quotes erd
@@ -491,7 +523,7 @@ PagSu
 
 
 \family sans
-PagGi˘
+PagGi√π
 \family default
 
 \begin_inset Quotes erd
@@ -517,7 +549,7 @@ PagSu
 
 
 \family sans
-PagGi˘
+PagGi√π
 \family default
 
 \begin_inset Quotes erd
@@ -555,14 +587,18 @@ Seguente
 \family sans
 Return
 \family default
- e 
+ e
+\family default
+ 
 \family sans
 Invio
 \family default
  si riferiscono entrambi allo stesso tasto.
  Alcune tastiere indicano i tasto
+\family default
+ 
 \family sans
- Return
+Return
 \family default
  come 
 \begin_inset Quotes eld
@@ -589,11 +625,15 @@ Enter
 \end_inset
 
 ] altre ancora sono dotate di due tasti distinti.
- LyX li considera tutti come lo stesso tasto e quindi si user‡ 
+ LyX li considera tutti come lo stesso tasto e quindi si user√†
+\family default
+ 
 \family sans
 Return
 \family default
- e 
+ e
+\family default
+ 
 \family sans
 Invio
 \family default
@@ -605,7 +645,9 @@ Di tanto in tanto vedrete anche qualcosa come
 \begin_inset Quotes eld
 \end_inset
 
-[Si veda il 
+[Si veda il
+\emph default
+ 
 \emph on
 
 \begin_inset Quotes els
@@ -634,7 +676,7 @@ Manuale di Riferimento
 \begin_inset Quotes erd
 \end_inset
 
- e perciÚ all'occorrenza si viene rimandati lÏ.
+ e perci√≤ all'occorrenza si viene rimandati l√¨.
 \end_layout
 
 \begin_layout Section
@@ -668,12 +710,16 @@ Tutorial \InsetSpace ~
 Se avete appena incominciato ad usare LyX, e non avete mai usato il LaTeX,
  dovreste cominciare da qui.
  Se credete che il LaTeX sia il materiale con cui si fanno i preservativi,
- avete decisamente bisogno di leggere il 
+ avete decisamente bisogno di leggere il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
 .
- Si noti che dopo aver letto il 
+ Si noti che dopo aver letto il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -683,7 +729,9 @@ Tutorial
 
 \begin_deeper
 \begin_layout Standard
-Se avete usato il LaTeX in precedenza, leggete comunque il 
+Se avete usato il LaTeX in precedenza, leggete comunque il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -700,10 +748,13 @@ LyX per utenti LaTeX.
 
 \begin_layout Standard
 Se, in qualsiasi momento, non riuscite a fare qualcosa con LyX, provate
- a dare un'occhiata al 
-\emph on
-Tutorial 
+ a dare un'occhiata al
 \emph default
+ 
+\emph on
+Tutorial
+\emph default
+ 
 prima di tuffarvi in uno degli altri manuali: si tratta di un buon trampolino.
 \end_layout
 
@@ -718,9 +769,11 @@ dell'Utente \InsetSpace ~
 
 \newline
 Si tratta della documentazione principale.
- Proveremo a coprire la maggior parte delle funzionalit‡ di base e delle
+ Proveremo a coprire la maggior parte delle funzionalit√† di base e delle
  caratteristiche di LyX in questo documento.
- Questo manuale assume che si sia letto il 
+ Questo manuale assume che si sia letto il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -741,13 +794,15 @@ o almeno che abbiate una conoscenza adeguata del LaTeX.
 \begin_layout Description
 
 \emph on
-Funzionalit‡\InsetSpace ~
+Funzionalit√†\InsetSpace ~
 Avanzate \InsetSpace ~
 
 \newline
 
 \emph default
-Si tratta di una estensione della 
+Si tratta di una estensione della
+\emph default
+ 
 \emph on
 Guida dell'Utente
 \emph default
@@ -769,7 +824,9 @@ Si tratta di una descrizione delle caratteristiche avanzate di LyX, e fra
  Questo
  include fra l'altro le associazioni dei tasti, l'uso per lingue diverse
  dall'inglese, e i files di configurazione.
- Non pensiate neanche di aprire questo manuale prima di leggere il 
+ Non pensiate neanche di aprire questo manuale prima di leggere il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -787,11 +844,15 @@ Riferimento \InsetSpace ~
 
 \newline
 Questo contiene una dettagliata ed esauriente descrizione delle caratteristiche
- di LyX, ma senza gli utili suggerimenti d'uso che si trovano nella 
+ di LyX, ma senza gli utili suggerimenti d'uso che si trovano nella
+\emph default
+ 
 \emph on
 Guida dell'Utente
 \emph default
-, o nel 
+, o nel
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -823,18 +884,22 @@ LaTeX \InsetSpace ~
 
 \newline
 LyX esamina il sistema durante l'installazione.
- Questo file contiene informazioni su ciÚ che LyX ha trovato nel sistema.
+ Questo file contiene informazioni su ci√≤ che LyX ha trovato nel sistema.
  Controllatelo nel caso manchi qualcosa che vorreste invece avere.
 \end_layout
 
 \begin_layout Standard
 Questi files fanno riferimento l'uno con l'altro quando necessario.
- Per esempio, la 
+ Per esempio, la
+\emph default
+ 
 \emph on
 Guida dell'Utente
 \emph default
  contiene alcune informazioni sull'installazione e la personalizzazione,
- ma rimanda il lettore al manuale 
+ ma rimanda il lettore al manuale
+\emph default
+ 
 \emph on
 Personalizzazione
 \emph default
@@ -842,7 +907,7 @@ Personalizzazione
 \end_layout
 
 \begin_layout Standard
-» importante rimarcare ancora un punto importante:
+√à importante rimarcare ancora un punto importante:
 \end_layout
 
 \begin_layout Standard
@@ -854,7 +919,9 @@ Personalizzazione
 
 \begin_layout Standard
 \align center
-Se usate LyX per la prima volta, leggete il 
+Se usate LyX per la prima volta, leggete il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -876,8 +943,8 @@ Altrimenti potreste perdere tempo inutilmente: LyX fa tutto quello che si
 \end_layout
 
 \begin_layout Section
-\begin_inset LatexCommand \label{sec:Contrib}
-
+\begin_inset LatexCommand label
+name "sec:Contrib"
 \end_inset
 
 Come contribuire al progetto di documentazione
@@ -888,16 +955,18 @@ Riportare gli errori nei manuali.
 \end_layout
 
 \begin_layout Standard
-Questo Ë facile.
+Questo √® facile.
  Potete mandare un messaggio alla mailing list degli sviluppatori [Developer
  Mailing List] o a quella degli utenti [User's Mailing List].
  Il team di documentazione, comunque, preferisce che mandiate un messaggio
- a 
+ a
+\family default
+ 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
 .
- Se i cambiamenti sono piccola entit‡, qualcuno li far‡.
+ Se i cambiamenti sono piccola entit√†, qualcuno li far√†.
  Altrimenti, vi consigliamo di partecipare alla mailing list e di mettervi
  in contatto con noi prima di qualsiasi altra cosa.
 \end_layout
@@ -926,7 +995,7 @@ Mai apportare dei cambiamenti ai manuali prima del consenso del team di
 
 \begin_layout Standard
 Comunque, questi cambiamenti non entreranno mai nella documentazione principale,
- dato che Ë il team di documentazione a mantenere le copie principali sull'archi
+ dato che √® il team di documentazione a mantenere le copie principali sull'archi
 vio CVS.
 \end_layout
 
@@ -937,7 +1006,9 @@ Partecipare al team di documentazione.
 \begin_layout Standard
 Il progetto di documentazione di LyX, come qualsiasi altra parte di LyX,
  ha sempre bisogno di aiuto! Se siete interessati a contribuire al progetto
- di documentazione, dovete fare 
+ di documentazione, dovete fare
+\emph default
+ 
 \emph on
 prima di tutto
 \emph default
@@ -951,18 +1022,22 @@ Procurarvi l'ultima versione del codice sorgente di LyX.
 status collapsed
 
 \begin_layout Standard
-I pi˘ avventurosi possono prelevare l'ultima versione in modo anonimo dall'archi
+I pi√π avventurosi possono prelevare l'ultima versione in modo anonimo dall'archi
 vio CVS di LyX.
 \end_layout
 
 \end_inset
 
- Troverete una directory nell'albero principale chiamata 
+ Troverete una directory nell'albero principale chiamata
+\family default
+ 
 \family typewriter
 development
 \family default
 .
- All'interno di tale directory si trova un file chiamato 
+ All'interno di tale directory si trova un file chiamato
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -970,11 +1045,13 @@ DocStyle.lyx
  Leg\SpecialChar \-
 ge\SpecialChar \-
 te\SpecialChar \-
-lo; Ë il foglio di stile per la documentazione.
+lo; √® il foglio di stile per la documentazione.
 \end_layout
 
 \begin_layout Enumerate
-Prendetevi un paio di giorni di pausa, e poi leggete 
+Prendetevi un paio di giorni di pausa, e poi leggete
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -982,11 +1059,15 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Poi, leggete la 
+Poi, leggete la
+\emph default
+ 
 \emph on
 Guida dell'Utente
 \emph default
- ed il 
+ ed il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -995,22 +1076,28 @@ Tutorial
 
 \begin_deeper
 \begin_layout Standard
-Lo scopo di questo esercizio Ë quello di darvi delle idee.
- Dato che il 
+Lo scopo di questo esercizio √® quello di darvi delle idee.
+ Dato che il
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
- e la 
+ e la
+\emph default
+ 
 \emph on
 Guida dell'Utente
 \emph default
- saranno sempre i documenti pi˘ aggiornati, dovrebbero mostrarvi come vogliamo
+ saranno sempre i documenti pi√π aggiornati, dovrebbero mostrarvi come vogliamo
  che siano il contenuto e la forma dei manuali.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Leggete 
+Leggete
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -1029,7 +1116,9 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-Vogliamo che capiate il foglio di stile 
+Vogliamo che capiate il foglio di stile
+\emph default
+ 
 \emph on
 prima
 \emph default
@@ -1041,17 +1130,21 @@ prima
 \begin_layout Standard
 
 \emph on
-Non pensate 
+Non pensate
 \emph default
+ 
 nemmeno
 \emph on
- 
+
 \emph default
+ 
 di cominciare a scrivere qualsiasi cosa prima di una chiacchierata via posta
  elettronica.
- Potete verificare l'attivit‡ attuale del team di documentazione sulla pagina
+ Potete verificare l'attivit√† attuale del team di documentazione sulla pagina
  web del team [appena in funzione] o mediante gli archivi delle mailing
- list che si trovano presso 
+ list che si trovano presso
+\family default
+ 
 \family typewriter
 www.lyx.org
 \family default

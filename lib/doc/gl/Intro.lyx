@@ -1,17 +1,25 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass book
 \language galician
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry true
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,13 +36,13 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-IntroduciÛn ao LyX
+Introduci√≥n ao LyX
 \end_layout
 
 \begin_layout Author
@@ -43,11 +51,13 @@ pola equipa de LyX
 status collapsed
 
 \begin_layout Standard
-Se quer facer algun coment·rio ou achou algun erro, agradeceremo-lle no-lo
- comunique na lista de correo, en inglÈs, do proxecto de documentaciÛn do
+Se quer facer algun coment√°rio ou achou algun erro, agradeceremo-lle no-lo
+ comunique na lista de correo, en ingl√©s, do proxecto de documentaci√≥n do
  LyX
+\lang galician
+ 
 \lang english
- <lyx-docs@lists.lyx.org>.
+<lyx-docs@lists.lyx.org>.
 \end_layout
 
 \end_inset
@@ -56,20 +66,19 @@ Se quer facer algun coment·rio ou achou algun erro, agradeceremo-lle no-lo
 \size normal
 
 \newline
-traduciÛn: RamÛn Flores <fa2ramon@usc.es>
+traduci√≥n: Ram√≥n Flores <fa2ramon@usc.es>
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Chapter
-\begin_inset LatexCommand \label{cha:A-filosofia-do-LyX}
-
+\begin_inset LatexCommand label
+name "cha:A-filosofia-do-LyX"
 \end_inset
 
 A filosofia do LyX
@@ -90,7 +99,7 @@ Tio Cosmo, por que lle chaman a isto procesador de texto?
 \begin_inset Quotes eld
 \end_inset
 
-… ben sinxelo, Skyler.
+√â ben sinxelo, Skyler.
  Xa tes visto o que os procesadores de comida fan coa comida, non si?
 \begin_inset Quotes erd
 \end_inset
@@ -113,53 +122,53 @@ Shoe
 \end_layout
 
 \begin_layout Section
-Que È o  LyX?
+Que √© o  LyX?
 \end_layout
 
 \begin_layout Standard
-LyX È un sistema de preparaciÛn de documentos, especialmente recomend·bel
- para elaborar textos tÈcnicos e cientÌficos complexos, con fÛrmulas, referÈncia
-s cruzadas, bibliografias, Ìndices, \SpecialChar \ldots{}
- En xeral È moi bon para documentos,
+LyX √© un sistema de preparaci√≥n de documentos, especialmente recomend√°bel
+ para elaborar textos t√©cnicos e cient√≠ficos complexos, con f√≥rmulas, refer√©ncia
+s cruzadas, bibliografias, √≠ndices, \SpecialChar \ldots{}
+ En xeral √© moi bon para documentos,
  de calquer longura, nos que se requeiran as habilidades de procesado usuais:
- seccionado e paxinaciÛn autom·ticos, correcciÛn ortogr·fica, etc.
+ seccionado e paxinaci√≥n autom√°ticos, correcci√≥n ortogr√°fica, etc.
  Alguns exemplos nos cais se usa o LyX poden dar unha boa idea da sua utilidade:
- informes, relatÛrios, teses e tesiÒas, cartas comerciais, apontamentos,
- discursos, actas de congresos, documentaciÛn de software, libros (sobre
+ informes, relat√≥rios, teses e tesi√±as, cartas comerciais, apontamentos,
+ discursos, actas de congresos, documentaci√≥n de software, libros (sobre
  PostgreSQL, sensores remotos, cifrado, romances, poesia, e mesmo algun
- libro para nenos), artigos cientÌficos, roteiros de teatro e de cinema,
- propostas de negÛcios \SpecialChar \ldots{}
+ libro para nenos), artigos cient√≠ficos, roteiros de teatro e de cinema,
+ propostas de neg√≥cios \SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Standard
-… tamÈn posÌbel utiliz·-lo para escreber cartas persoais, mais ha programas
+√â tam√©n pos√≠bel utiliz√°-lo para escreber cartas persoais, mais ha programas
  mais simples para iso.
- E desde logo non È a mellor opciÛn para elaborar an˙ncios, cartaces, ou
- panfletos (explicara-se mais adiante o porquÈ), ainda que con un pouco
- de esforzo sexa posÌbel facÈ-los.
+ E desde logo non √© a mellor opci√≥n para elaborar an√∫ncios, cartaces, ou
+ panfletos (explicara-se mais adiante o porqu√©), ainda que con un pouco
+ de esforzo sexa pos√≠bel fac√©-los.
  
 \end_layout
 
 \begin_layout Standard
-O LyX È un programa que utiliza unha aproximaciÛn moderna para a escrita
- de documentos por computador, rompendo coa tradiciÛn obsoleta baseada na
- m·quina de escreber.
- Foi deseÒado para autores que queren un resultado profisional, con rapidez
- e con un mÌnimo de esforzo sen se tornaren especialistas en tipografia.
- O traballo tipogr·fico deixa-se-lle ao computador, de maneira que o autor
- pode concentrar-se no contido do que est· a escreber, non na forma.
+O LyX √© un programa que utiliza unha aproximaci√≥n moderna para a escrita
+ de documentos por computador, rompendo coa tradici√≥n obsoleta baseada na
+ m√°quina de escreber.
+ Foi dese√±ado para autores que queren un resultado profisional, con rapidez
+ e con un m√≠nimo de esforzo sen se tornaren especialistas en tipografia.
+ O traballo tipogr√°fico deixa-se-lle ao computador, de maneira que o autor
+ pode concentrar-se no contido do que est√° a escreber, non na forma.
 \end_layout
 
 \begin_layout Standard
 Parte do inicial desafio de utilizar LyX ven da mudanza de mentalidade que
- debe facer o usu·rio.
- Ha algun tempo, todo o que o usu·rio mÈdio tiÒa para elaborar documentos
- era a m·quina de escreber.
- Para ultrapasar as limitaciÛns que esta tiÒa, idearon-se truques que se
- espallaron entre os usu·rios, e que persisten mesmo na era dos computadores,
- m·quinas estas moito mais potentes que as primeiras.
- SubliÒar, que È pouco mais do que dixitar o car·cter 
+ debe facer o usu√°rio.
+ Ha algun tempo, todo o que o usu√°rio m√©dio ti√±a para elaborar documentos
+ era a m√°quina de escreber.
+ Para ultrapasar as limitaci√≥ns que esta ti√±a, idearon-se truques que se
+ espallaron entre os usu√°rios, e que persisten mesmo na era dos computadores,
+ m√°quinas estas moito mais potentes que as primeiras.
+ Subli√±ar, que √© pouco mais do que dixitar o car√°cter 
 \begin_inset Quotes eld
 \end_inset
 
@@ -168,24 +177,24 @@ _
 \end_inset
 
 , tornou-se un xeito de resaltar o texto.
- Cumpria coÒecer por adiantado o tamaÒo das colunas, e ir axustando con
- tabulaciÛns e espazos, para elaborar unha t·boa xeitosa.
- O mesmo se aplicaba ·s datas nas cartas, axustadas · direita, e en xeral
- a calquer texto con xustificaciÛn direita.
- A hifenaciÛn no fin dunha liÒa requeria ollo clÌnico e moita perspic·cia.
+ Cumpria co√±ecer por adiantado o tama√±o das colunas, e ir axustando con
+ tabulaci√≥ns e espazos, para elaborar unha t√°boa xeitosa.
+ O mesmo se aplicaba √°s datas nas cartas, axustadas √° direita, e en xeral
+ a calquer texto con xustificaci√≥n direita.
+ A hifenaci√≥n no fin dunha li√±a requeria ollo cl√≠nico e moita perspic√°cia.
  
 \end_layout
 
 \begin_layout Standard
-Por outras palabras, os usu·rios de m·quinas de escreber tiÒan que se preocupar
- por multitude de pequenos detalles, para obter un resultado satisfactÛrio.
+Por outras palabras, os usu√°rios de m√°quinas de escreber ti√±an que se preocupar
+ por multitude de pequenos detalles, para obter un resultado satisfact√≥rio.
  Infelizmente esta mentalidade foi herdada pola maioria dos procesadores
  de texto, de maneira que ainda utilizan a tecla de tabulado para engadir
- espazos en branco, ou obrigan ao usu·rio a se preocupar de en que parte
- exacta da p·xina vai ir algo.
- Para resaltar o texto deixan que usu·rio mude de fonte, tal e como se trocaba
- de roda nas m·quinas de escreber.
- Esta È a filosofia subxacente nun procesador WYSIWYG: 
+ espazos en branco, ou obrigan ao usu√°rio a se preocupar de en que parte
+ exacta da p√°xina vai ir algo.
+ Para resaltar o texto deixan que usu√°rio mude de fonte, tal e como se trocaba
+ de roda nas m√°quinas de escreber.
+ Esta √© a filosofia subxacente nun procesador WYSIWYG: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -193,7 +202,7 @@ What You See Is What You Get
 \begin_inset Quotes erd
 \end_inset
 
- (o que vÈ e o que obtÈn), que en moitos casos torna-se en 
+ (o que v√© e o que obt√©n), que en moitos casos torna-se en 
 \begin_inset Quotes eld
 \end_inset
 
@@ -201,15 +210,17 @@ What You See Is All You Get
 \begin_inset Quotes erd
 \end_inset
 
- (o que vÈ È todo o que obtÈn).
+ (o que v√© √© todo o que obt√©n).
 \end_layout
 
 \begin_layout Standard
-No LyX, a diferenza dun procesador de textos ordin·rio, o usu·rio non ten
- que se preocupar de como conseguir que un determinado car·cter vaia nalgun
- lugar determinado, simplesmente di-lle ao LyX que È o que quer facer, e
+No LyX, a diferenza dun procesador de textos ordin√°rio, o usu√°rio non ten
+ que se preocupar de como conseguir que un determinado car√°cter vaia nalgun
+ lugar determinado, simplesmente di-lle ao LyX que √© o que quer facer, e
  o programa encarrega-se do resto, seguindo un conxunto de regras chamadas
- un 
+ un
+\emph default
+ 
 \emph on
 estilo
 \emph default
@@ -218,9 +229,9 @@ estilo
 status collapsed
 
 \begin_layout Standard
-Para ser xustos, cumpre recoÒecermos que hoxe en dia os procesadores de
+Para ser xustos, cumpre reco√±ecermos que hoxe en dia os procesadores de
  texto incluen algun tipo de follas de estilo con unha filosofia similar,
- mais menos potente, ao do LyX, porÈn na pr·tica apenas son utilizadas.
+ mais menos potente, ao do LyX, por√©n na pr√°tica apenas son utilizadas.
 \end_layout
 
 \end_inset
@@ -229,45 +240,47 @@ Para ser xustos, cumpre recoÒecermos que hoxe en dia os procesadores de
 \end_layout
 
 \begin_layout Standard
-SupoÒamos que vai escreber un relatÛrio, que quer iniciar con unha secciÛn
+Supo√±amos que vai escreber un relat√≥rio, que quer iniciar con unha secci√≥n
  chamada 
 \begin_inset Quotes eld
 \end_inset
 
-IntroduciÛn
+Introduci√≥n
 \begin_inset Quotes erd
 \end_inset
 
 .
- Comeza entÛn indo ao menu do seu procesador para trocar o tamaÒo da fonte,
+ Comeza ent√≥n indo ao menu do seu procesador para trocar o tama√±o da fonte,
  escollendo unha maior da que aparece predefinida para o texto.
- A seguir activa o botÛn de negrito, e despois escrebe, 
+ A seguir activa o bot√≥n de negrito, e despois escrebe, 
 \begin_inset Quotes eld
 \end_inset
 
 1.\InsetSpace ~
 \InsetSpace ~
-IntroduciÛn
+Introduci√≥n
 \begin_inset Quotes erd
 \end_inset
 
 .
- Obviamente, se mais tarde decidir que esta secciÛn vai mellor noutro lugar,
- ou que seria bon inserir unha outra secciÛn antes desta, ter· que renumerar
- todo, inclusivamente no Ìndice.
+ Obviamente, se mais tarde decidir que esta secci√≥n vai mellor noutro lugar,
+ ou que seria bon inserir unha outra secci√≥n antes desta, ter√° que renumerar
+ todo, inclusivamente no √≠ndice.
 \end_layout
 
 \begin_layout Standard
-No LyX, vai a lista de estilos, un menu despregue·bel que se acha · esquerda
- da barra de botÛns, selecciona 
+No LyX, vai a lista de estilos, un menu despregue√°bel que se acha √° esquerda
+ da barra de bot√≥ns, selecciona
+\family default
+ 
 \family sans
-SecciÛn
+Secci√≥n
 \family default
 , e escrebe 
 \begin_inset Quotes eld
 \end_inset
 
-IntroduciÛn
+Introduci√≥n
 \begin_inset Quotes erd
 \end_inset
 
@@ -275,91 +288,109 @@ IntroduciÛn
 \end_layout
 
 \begin_layout Standard
-Isto È canto precisa.
- Se posteriormente trocar de lugar a secciÛn, ela ser· renumerada automaticament
+Isto √© canto precisa.
+ Se posteriormente trocar de lugar a secci√≥n, ela ser√° renumerada automaticament
 e --- en calquer lado.
- E se nalgun momento fixo unha referÈncia · secciÛn correctamente (inserindo
- unha etiqueta), o LyX actualizar· automaticamente as referÈncias en todo
- o documento, sen ter que dixitar un simples n˙mero.
+ E se nalgun momento fixo unha refer√©ncia √° secci√≥n correctamente (inserindo
+ unha etiqueta), o LyX actualizar√° automaticamente as refer√©ncias en todo
+ o documento, sen ter que dixitar un simples n√∫mero.
 \end_layout
 
 \begin_layout Standard
-Outro tema importante È o da consistÈncia do texto.
- Dias despois de escreber o relatÛrio decide incluir unha nova secciÛn,
- a SecciÛn\InsetSpace ~
+Outro tema importante √© o da consist√©ncia do texto.
+ Dias despois de escreber o relat√≥rio decide incluir unha nova secci√≥n,
+ a Secci√≥n\InsetSpace ~
 4.
- Pon-se a escrebÈ-la, mais engana-se en canto a fonte que estaba a utilizar
- para os tÌtulos da secciÛn, e no canto de empregar unha fonte 18pt en negrito
- usa outra de 16pt, polo que o tÌtulo da SecciÛn\InsetSpace ~
+ Pon-se a escreb√©-la, mais engana-se en canto a fonte que estaba a utilizar
+ para os t√≠tulos da secci√≥n, e no canto de empregar unha fonte 18pt en negrito
+ usa outra de 16pt, polo que o t√≠tulo da Secci√≥n\InsetSpace ~
 4 vai ir con unha fonte,
- semellante mais non igual, · que usou para nas secciÛns anteriores.
+ semellante mais non igual, √° que usou para nas secci√≥ns anteriores.
  Este problema non existe no LyX, que toma conta de todos eses detalles.
- Ao fin e ao cabo, son nesas cousas nas que os computadores son imbatÌbeis.
+ Ao fin e ao cabo, son nesas cousas nas que os computadores son imbat√≠beis.
 \end_layout
 
 \begin_layout Standard
-Outro exemplo, supoÒa que est· a facer unha lista.
- Noutro procesador de texto unha lista e apenas unha sÈrie de tabuladores
- e saltos de liÒa.
- O usu·rio precisa coÒecer, ou decidir, onde colocar a etiqueta para cada
- elemento da lista, que tipo de etiqueta debe ser, cantos liÒas en branco
+Outro exemplo, supo√±a que est√° a facer unha lista.
+ Noutro procesador de texto unha lista e apenas unha s√©rie de tabuladores
+ e saltos de li√±a.
+ O usu√°rio precisa co√±ecer, ou decidir, onde colocar a etiqueta para cada
+ elemento da lista, que tipo de etiqueta debe ser, cantos li√±as en branco
  inserir entre cada elemento, etc, etc.
- Co LyX sÛ ten tomar duas decisiÛns: que tipo de lista È, e que incluir
- na lista, sÛ iso.
+ Co LyX s√≥ ten tomar duas decisi√≥ns: que tipo de lista √©, e que incluir
+ na lista, s√≥ iso.
 \end_layout
 
 \begin_layout Standard
-Asi que a idea b·sica por tras do LyX È: especifique o 
+Asi que a idea b√°sica por tras do LyX √©: especifique o
+\emph default
+ 
 \emph on
 que
 \emph default
- quer facer, non 
+ quer facer, non
+\emph default
+ 
 \emph on
 como
 \emph default
- facÈ-lo.
+ fac√©-lo.
  No canto de 
 \begin_inset Quotes eld
 \end_inset
 
-o que vÈ È o que obtÈn
+o que v√© √© o que obt√©n
 \begin_inset Quotes erd
 \end_inset
 
-, o modelo LyX È 
+, o modelo LyX √© 
 \begin_inset Quotes eld
 \end_inset
 
-o que vÈ È o que pretende facer
+o que v√© √© o que pretende facer
 \begin_inset Quotes erd
 \end_inset
 
- (WYSIWYM - 
+ (WYSIWYM -
+\series default
+ 
 \series bold
 \lang english
 W
 \series default
-hat 
+hat
+\series default
+ 
 \series bold
 Y
 \series default
-ou 
+ou
+\series default
+ 
 \series bold
 S
 \series default
-ee 
+ee
+\series default
+ 
 \series bold
 I
 \series default
-s 
+s
+\series default
+ 
 \series bold
 W
 \series default
-hat 
+hat
+\series default
+ 
 \series bold
 Y
 \series default
-ou 
+ou
+\series default
+ 
 \series bold
 M
 \series default
@@ -369,11 +400,11 @@ ean
 \end_layout
 
 \begin_layout Standard
-Esta È a razÛn pola que o LyX non È bon para elaborar cartaces e an˙ncios---nese
- caso, o usu·rio quer especificar exactamente onde vai cada cousa, e non
- ha unidades funcionais como par·grafos, secciÛns, etc.
- Isto no significa que no LyX falte algunha funciÛn fundamental, simplesmente
- que non È a ferramenta certa para o traballo ---- non se usa un martelo
+Esta √© a raz√≥n pola que o LyX non √© bon para elaborar cartaces e an√∫ncios---nese
+ caso, o usu√°rio quer especificar exactamente onde vai cada cousa, e non
+ ha unidades funcionais como par√°grafos, secci√≥ns, etc.
+ Isto no significa que no LyX falte algunha funci√≥n fundamental, simplesmente
+ que non √© a ferramenta certa para o traballo ---- non se usa un martelo
  para apertar un parafuso, non si?.
 \end_layout
 
@@ -393,10 +424,10 @@ LyX e outros procesadores de texto
 status collapsed
 
 \begin_layout Standard
-Non, non tentamos iniciar (ou gaÒar) unha cruzada sobre procesadores de
+Non, non tentamos iniciar (ou ga√±ar) unha cruzada sobre procesadores de
  texto.
- Mais consideramos neces·rio descreber as caracterÌsticas do LyX, e unha
- das caracterÌsticas m·is importantes do LyX, WYSIWYM, È un conceito radicalment
+ Mais consideramos neces√°rio descreber as caracter√≠sticas do LyX, e unha
+ das caracter√≠sticas m√°is importantes do LyX, WYSIWYM, √© un conceito radicalment
 e diferente do que ten a maioria da xente sobre o procesamento de texto.
 \end_layout
 
@@ -406,7 +437,7 @@ e diferente do que ten a maioria da xente sobre o procesamento de texto.
 \end_layout
 
 \begin_layout Standard
-Eis unha lista de cousas que non encontrar· no LyX:
+Eis unha lista de cousas que non encontrar√° no LyX:
 \end_layout
 
 \begin_layout Itemize
@@ -419,43 +450,47 @@ Tabuladores
 
 \begin_layout Itemize
 Espazos en branco extras (i.e.
- ao premer 
+ ao premer
+\family default
+ 
 \family sans
 Enter
 \family default
- ou 
+ ou
+\family default
+ 
 \family sans
 Space
 \family default
- duas ou m·is veces)
+ duas ou m√°is veces)
 \end_layout
 
 \begin_layout Standard
-Os tabuladores e a regra a mostrar a posiciÛn das palabras na p·xina, non
- teÒen utilidade no LyX.
- … o programa quen se preocupa onde fican os car·cteres na p·xina, non o
- usu·rio.
+Os tabuladores e a regra a mostrar a posici√≥n das palabras na p√°xina, non
+ te√±en utilidade no LyX.
+ √â o programa quen se preocupa onde fican os car√°cteres na p√°xina, non o
+ usu√°rio.
  Canto aos espazos en branco extras acontece o mesmo; o LyX insere-os cando
- È neces·rio, dependendo do contexto.
- Non ser capaz de inserir 2 espazos en branco nunha liÒa pode resultar irritante
- ao princÌpio, mais ter· mais sentido cando comezar a pensar en termos WYSIWYM.
+ √© neces√°rio, dependendo do contexto.
+ Non ser capaz de inserir 2 espazos en branco nunha li√±a pode resultar irritante
+ ao princ√≠pio, mais ter√° mais sentido cando comezar a pensar en termos WYSIWYM.
 \end_layout
 
 \begin_layout Standard
-Vexamos agora algunhas funciÛns que existen en LyX, mais que son usadas
+Vexamos agora algunhas funci√≥ns que existen en LyX, mais que son usadas
  dun xeito un pouco diferente ao usual: 
 \end_layout
 
 \begin_layout Itemize
-Comandos de identaciÛn
+Comandos de identaci√≥n
 \end_layout
 
 \begin_layout Itemize
-Quebras de p·xina
+Quebras de p√°xina
 \end_layout
 
 \begin_layout Itemize
-Espazamento entre liÒas (i.e.
+Espazamento entre li√±as (i.e.
  espazo simples, espazo duplo, etc.)
 \end_layout
 
@@ -464,37 +499,39 @@ Espazos en branco, horizontais e verticais
 \end_layout
 
 \begin_layout Itemize
-Fontes e tamaÒos de fonte
+Fontes e tama√±os de fonte
 \end_layout
 
 \begin_layout Itemize
-Tipos de letra (negrito, it·lico, subliÒado, etc.)
+Tipos de letra (negrito, it√°lico, subli√±ado, etc.)
 \end_layout
 
 \begin_layout Standard
-Se ben È posÌbel utilizar tais funciÛns no LyX, usualmente o usu·rio non
- precisa delas, xa que o prÛprio programa se ocupa desas cousas en funciÛn
+Se ben √© pos√≠bel utilizar tais funci√≥ns no LyX, usualmente o usu√°rio non
+ precisa delas, xa que o pr√≥prio programa se ocupa desas cousas en funci√≥n
  do que estexa a facer.
- O tipo de fonte e o seu tamaÒo son escollidas automaticamente para as nas
+ O tipo de fonte e o seu tama√±o son escollidas automaticamente para as nas
  diferentes partes do documento.
- Os par·grafos son identados en funciÛn do contexto; de maneira que para
- os diferentes tipos de par·grafos ter·n-se distintas identaciÛns.
- TamÈn as quebras de p·xina son colocadas automaticamente.
- E en xeral, o espazo entre liÒas, palabras e par·grafos È vari·bel, calculado
+ Os par√°grafos son identados en funci√≥n do contexto; de maneira que para
+ os diferentes tipos de par√°grafos ter√°n-se distintas identaci√≥ns.
+ Tam√©n as quebras de p√°xina son colocadas automaticamente.
+ E en xeral, o espazo entre li√±as, palabras e par√°grafos √© vari√°bel, calculado
  axeitadamente polo LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-O usu·rio pode escoller manualmente todos estes par·metros (se ben que para
- alguns precise coÒecimentos de LaTeX), para todo o documento ou para unha
- parte especÌfica.
- No 
+O usu√°rio pode escoller manualmente todos estes par√°metros (se ben que para
+ alguns precise co√±ecimentos de LaTeX), para todo o documento ou para unha
+ parte espec√≠fica.
+ No
+\shape default
+ 
 \shape italic
-Guia do Usu·rio
+Guia do Usu√°rio
 \shape default
  pode ver-se como facer.
- PorÈn È recomend·bel, cando menos nun princÌpio, deixar-lle traballar ao
+ Por√©n √© recomend√°bel, cando menos nun princ√≠pio, deixar-lle traballar ao
  LyX.
  
 \end_layout
@@ -506,12 +543,12 @@ Guia do Usu·rio
 \end_layout
 
 \begin_layout Standard
-Por ˙ltimo, existen algunhas ·reas onde, na nosa opiniÛn, o LyX (e o LaTeX)
+Por √∫ltimo, existen algunhas √°reas onde, na nosa opini√≥n, o LyX (e o LaTeX)
  ultrapasan moitos procesadores de texto:
 \end_layout
 
 \begin_layout Itemize
-HifenaciÛn
+Hifenaci√≥n
 \end_layout
 
 \begin_layout Itemize
@@ -519,24 +556,26 @@ Listas de calquer tipo
 \end_layout
 
 \begin_layout Itemize
-FÛrmulas
+F√≥rmulas
 \end_layout
 
 \begin_layout Itemize
-T·boas
+T√°boas
 \end_layout
 
 \begin_layout Itemize
-ReferÈncias cruzadas
+Refer√©ncias cruzadas
 \end_layout
 
 \begin_layout Standard
-Certamente a maioria dos procesadores de texto actuais dan manexado sÌmbolos
- matem·ticos, t·boas e hifenaciÛn, e alguns est·n mesmo a evoluir na direcciÛn
+Certamente a maioria dos procesadores de texto actuais dan manexado s√≠mbolos
+ matem√°ticos, t√°boas e hifenaci√≥n, e alguns est√°n mesmo a evoluir na direcci√≥n
  do conceito WYSIWYM.
- Mais polo momento son novos nestes eidos, entanto que o LyX est· baseado
- no sistema de preparaciÛn de documentos LaTeX.
- Sistema que ten dÈcadas de existÈncia, e ademais 
+ Mais polo momento son novos nestes eidos, entanto que o LyX est√° baseado
+ no sistema de preparaci√≥n de documentos LaTeX.
+ Sistema que ten d√©cadas de exist√©ncia, e ademais
+\emph default
+ 
 \emph on
 funciona
 \emph default
@@ -544,17 +583,17 @@ funciona
 \end_layout
 
 \begin_layout Section
-Que demo È iso do LaTeX? ( e por que me debe importar?)
+Que demo √© iso do LaTeX? ( e por que me debe importar?)
 \end_layout
 
 \begin_layout Standard
-O LaTeX È un sistema de preparaciÛn de documentos desenvolvido por Leslie
+O LaTeX √© un sistema de preparaci√≥n de documentos desenvolvido por Leslie
  Lamport en 1985
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-A fonte da que bebe esta secciÛn È o libro 
+A fonte da que bebe esta secci√≥n √© o libro 
 \begin_inset Quotes eld
 \end_inset
 
@@ -567,9 +606,11 @@ A Guide to LaTeX2e
 \end_inset
 
  de Helmut Kopka e Patrick Daly, que ten unha entrada na bibliografia do
+
+\emph default
  
 \emph on
-Guia do Usu·rio
+Guia do Usu√°rio
 \emph default
 \SpecialChar \@.
 
@@ -578,15 +619,15 @@ Guia do Usu·rio
 \end_inset
 
 .
- Por sua vez, o LaTeX, elaborou-se sobre unha linguaxe tipogr·fica chamada
+ Por sua vez, o LaTeX, elaborou-se sobre unha linguaxe tipogr√°fica chamada
  TeX, criada por Donald Knuth en 1984.
- O que fai o TeX È ler roteiros, ficheiros ASCII con unha secuÈncia de instruciÛ
-ns, e executar secuencialmente os comandos tipogr·ficos do roteiro.
- … un pouquiÒo m·is complicado que unha m·quina de escreber, mais non tan
- complicado como unha imprensa; porÈn Knuth modelou moitos dos truques das
- artes tipogr·ficas como algoritmos computacionais, incorporando-os ao TeX,
+ O que fai o TeX √© ler roteiros, ficheiros ASCII con unha secu√©ncia de instruci√≥
+ns, e executar secuencialmente os comandos tipogr√°ficos do roteiro.
+ √â un pouqui√±o m√°is complicado que unha m√°quina de escreber, mais non tan
+ complicado como unha imprensa; por√©n Knuth modelou moitos dos truques das
+ artes tipogr√°ficas como algoritmos computacionais, incorporando-os ao TeX,
  e conseguindo con isto atinxir unha excelente cualidade nos textos impresos.
- En todo caso, a saÌda directa do TeX È un ficheiro no formato coÒecido
+ En todo caso, a sa√≠da directa do TeX √© un ficheiro no formato co√±ecido
  como 
 \begin_inset Quotes eld
 \end_inset
@@ -600,116 +641,142 @@ device independent
 status collapsed
 
 \begin_layout Standard
-dispositivo de impresiÛn, na maior parte dos casos unha impresora.
+dispositivo de impresi√≥n, na maior parte dos casos unha impresora.
 \end_layout
 
 \end_inset
 
-), ou 
+), ou
+\family default
+ 
 \family typewriter
 dvi
 \family default
  para abreviar.
- O ficheiro 
+ O ficheiro
+\family default
+ 
 \family typewriter
 dvi
 \family default
  pode enviar-se directamente a calquer dispositivo que entenda o formato
+
+\family default
  
 \family typewriter
 dvi
 \family default
-, ou ben converte-lo noutro formato como PostScriptÆ, PDF, etc.
+, ou ben converte-lo noutro formato como PostScript¬Æ, PDF, etc.
  
 \end_layout
 
 \begin_layout Standard
-Ademais do anterior, o TeX permite a definiciÛn de macros polo usu·rio,
- È isto fai do TeX moito m·is que un simples motor tipogr·fico.
- A maior parte do usu·rios de TeX empregan un pacote de macros que Knuth
- elaborou para agachar unha boa parte dos detalles tipogr·ficos.
- E È neste pacote no que a maioria da xente pensa ao se referir ao TeX.
- O usu·rio comun non emprega o TeX puro e duro, que son comandos tipogr·ficos
- sen mais, sÛ os autores de novos pacotes de macros o fan.
- … aqui que Leslie Lamport entra en cena, el queria un pacote de macros
- pensado no usu·rio con unha orientaciÛn non demasiado tipogr·fica , unha
- sÈrie de comandos que compuxera tipograficamente cousas como secciÛns,
- t·boas ou fÛrmulas matem·ticas, de forma consistente e uniforme, co mÌnimo
- barullo posÌbel.
+Ademais do anterior, o TeX permite a definici√≥n de macros polo usu√°rio,
+ √© isto fai do TeX moito m√°is que un simples motor tipogr√°fico.
+ A maior parte do usu√°rios de TeX empregan un pacote de macros que Knuth
+ elaborou para agachar unha boa parte dos detalles tipogr√°ficos.
+ E √© neste pacote no que a maioria da xente pensa ao se referir ao TeX.
+ O usu√°rio comun non emprega o TeX puro e duro, que son comandos tipogr√°ficos
+ sen mais, s√≥ os autores de novos pacotes de macros o fan.
+ √â aqui que Leslie Lamport entra en cena, el queria un pacote de macros
+ pensado no usu√°rio con unha orientaci√≥n non demasiado tipogr√°fica , unha
+ s√©rie de comandos que compuxera tipograficamente cousas como secci√≥ns,
+ t√°boas ou f√≥rmulas matem√°ticas, de forma consistente e uniforme, co m√≠nimo
+ barullo pos√≠bel.
  E asi naceu o LaTeX.
 \end_layout
 
 \begin_layout Standard
 Entretanto e en paralelo co desenvolvimento e crecimento do LaTeX, outra
- xente ia elaborando os seus prÛprios pacotes de macros para o TeX, uns
- para facer diapositivas, outros artigos para algunha revista cientÌfica,
+ xente ia elaborando os seus pr√≥prios pacotes de macros para o TeX, uns
+ para facer diapositivas, outros artigos para algunha revista cient√≠fica,
  etc.
  Alguns empregaban o TeX puro, entanto outros comezaban modificando o LaTeX.
- Para tentar unificar este sarillo, unha equipa de usu·rios de LaTeX (incluindo
- Lamport, por suposto), comezaron a traballar no LaTeX2e, a versiÛn actual
+ Para tentar unificar este sarillo, unha equipa de usu√°rios de LaTeX (incluindo
+ Lamport, por suposto), comezaron a traballar no LaTeX2e, a versi√≥n actual
  de LaTeX, durante os anos 80.
- Esta nova versiÛn ten comandos que fornecen unha interface m·is f·cil de
- usar para os comandos de criaciÛn de macros do TeX , axuda no emprego de
+ Esta nova versi√≥n ten comandos que fornecen unha interface m√°is f√°cil de
+ usar para os comandos de criaci√≥n de macros do TeX , axuda no emprego de
  novas fontes, etc.
- De facto, o LaTeX È en si mesmo unha linguaxe bastante extensa, e usu·rios
- de todo o mundo teÒen contribuÌdo coas suas prÛprias achegas, estendendo
- grandemente o corpo est·ndar.
+ De facto, o LaTeX √© en si mesmo unha linguaxe bastante extensa, e usu√°rios
+ de todo o mundo te√±en contribu√≠do coas suas pr√≥prias achegas, estendendo
+ grandemente o corpo est√°ndar.
 \end_layout
 
 \begin_layout Standard
-Ha duas vias de estender o LateX, as 
+Ha duas vias de estender o LateX, as
+\emph default
+ 
 \emph on
 clases
 \emph default
- e os 
+ e os
+\emph default
+ 
 \emph on
 estilos
 \emph default
 .
- Unha 
+ Unha
+\emph default
+ 
 \emph on
 clase
 \emph default
- È un conxunto de macros de LaTeX (e TeX) que descreben un tipo novo de
+ √© un conxunto de macros de LaTeX (e TeX) que descreben un tipo novo de
  documento, como un libro ou un artigo.
- Ha 
+ Ha
+\emph default
+ 
 \emph on
 clases
 \emph default
- para diapositivas, para revistas de matem·tica e de fÌsica \SpecialChar \ldots{}
+ para diapositivas, para revistas de matem√°tica e de f√≠sica \SpecialChar \ldots{}
 , mesmo ha moitas
- universidades que teÒen unha 
+ universidades que te√±en unha
+\emph default
+ 
 \emph on
 clase
 \emph default
- prÛpria para as suas teses.
- Un 
+ pr√≥pria para as suas teses.
+ Un
+\emph default
+ 
 \emph on
 estilo
 \emph default
- a diferenza dunha 
+ a diferenza dunha
+\emph default
+ 
 \emph on
 clase
 \emph default
- non define un novo tipo de documento, senÛn un tipo de 
+ non define un novo tipo de documento, sen√≥n un tipo de
+\emph default
+ 
 \emph on
 comportamento
 \emph default
  diferente que calquer documento pode usar.
- Por exemplo, o LyX controla as marxes das p·xinas e os espazos entre liÒas,
- atravÈs de dous ficheiros de 
+ Por exemplo, o LyX controla as marxes das p√°xinas e os espazos entre li√±as,
+ atrav√©s de dous ficheiros de
+\emph default
+ 
 \emph on
 estilo
 \emph default
- para LaTeX deseÒados con ese propÛsito.
- Ha ficheiros de 
+ para LaTeX dese√±ados con ese prop√≥sito.
+ Ha ficheiros de
+\emph default
+ 
 \emph on
 estilo
 \emph default
  para un monte de cousas: imprimir etiquetas ou envelopes, mudar o comportamento
- da identaciÛn, engadir novas fontes, manipular gr·ficos, deseÒar cabezallos
- imaxinativos, personalizar bibliografias, mudar a posiciÛn e aspeito das
- notas de rodapÈ, t·boas e figuras, formatar listas, et cetera.
+ da identaci√≥n, engadir novas fontes, manipular gr√°ficos, dese√±ar cabezallos
+ imaxinativos, personalizar bibliografias, mudar a posici√≥n e aspeito das
+ notas de rodap√©, t√°boas e figuras, formatar listas, et cetera.
 \end_layout
 
 \begin_layout Standard
@@ -718,18 +785,18 @@ Eis un resumo:
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-TeX: Linguaxe tipogr·fica na que se poden utilizar macros.
+TeX: Linguaxe tipogr√°fica na que se poden utilizar macros.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-LaTeX: Pacote de macros construÌdo sobre o TeX\SpecialChar \@.
+LaTeX: Pacote de macros constru√≠do sobre o TeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-clase: DescriciÛn dun tipo de documento, usando LaTeX\SpecialChar \@.
+clase: Descrici√≥n dun tipo de documento, usando LaTeX\SpecialChar \@.
 
 \end_layout
 
@@ -745,59 +812,63 @@ LyX: Procesador de texto WYSIWYM, que emprega o LaTeX, en toda a sua gloria,
 \end_layout
 
 \begin_layout Standard
-A idea desta secciÛn È tentar explicar porquÈ o LyX funciona de forma un
+A idea desta secci√≥n √© tentar explicar porqu√© o LyX funciona de forma un
  tanto diferente dos outros procesadores de texto.
- A razÛn È simples: o LyX basea-se no LaTeX para compor o texto impreso,
- e tal como o LaTeX, o LyX foca-se no contexto da sua escrita -- 
+ A raz√≥n √© simples: o LyX basea-se no LaTeX para compor o texto impreso,
+ e tal como o LaTeX, o LyX foca-se no contexto da sua escrita --
+\emph default
+ 
 \emph on
 o que
 \emph default
- est· a escreber, deixando ao computador ocupar-se da aparÈncia do texto.
+ est√° a escreber, deixando ao computador ocupar-se da apar√©ncia do texto.
 \end_layout
 
 \begin_layout Chapter
-Navegando pola documentaciÛn
+Navegando pola documentaci√≥n
 \end_layout
 
 \begin_layout Standard
-Para facilitar a resposta ·s suas perguntas e a descriciÛn de todas as funciÛns
- do LyX, dividiu-se a documentaciÛn en v·rios ficheiros diferentes.
- Cada cal con un propÛsito concreto, que se ver· posteriormente.
- Mais antes de ollar os outros ficheiros, È preferÌbel ler este documento
- cuidadosamente xa que contÈn moita informaciÛn ˙til e coment·rios que poden
+Para facilitar a resposta √°s suas perguntas e a descrici√≥n de todas as funci√≥ns
+ do LyX, dividiu-se a documentaci√≥n en v√°rios ficheiros diferentes.
+ Cada cal con un prop√≥sito concreto, que se ver√° posteriormente.
+ Mais antes de ollar os outros ficheiros, √© prefer√≠bel ler este documento
+ cuidadosamente xa que cont√©n moita informaci√≥n √∫til e coment√°rios que poden
  lle aforrar algun tempo.
 \end_layout
 
 \begin_layout Standard
-Ainda que o LyX xa pasou a versiÛn 1.0, parte da documentaciÛn pode estar
+Ainda que o LyX xa pasou a versi√≥n 1.0, parte da documentaci√≥n pode estar
  incompleta ou ultrapasada.
- Como o resto do LyX, os manuais son o traballo dun grupo de volunt·rios
- que teÒen 
+ Como o resto do LyX, os manuais son o traballo dun grupo de volunt√°rios
+ que te√±en 
 \begin_inset Quotes eld
 \end_inset
 
-ocupaciÛns reais
+ocupaci√≥ns reais
 \begin_inset Quotes erd
 \end_inset
 
-, famÌlias, pratos para lavar, lixo para recoller, etc., etc., etc.
- Facemos o posÌbel para manter os manuais a ponto, mais nen sempre o conseguimos.
- (Se quer axudar a remediar esta situaciÛn, asegure-se de ler o capÌtulo
+, fam√≠lias, pratos para lavar, lixo para recoller, etc., etc., etc.
+ Facemos o pos√≠bel para manter os manuais a ponto, mais nen sempre o conseguimos.
+ (Se quer axudar a remediar esta situaci√≥n, asegure-se de ler o cap√≠tulo
  
-\begin_inset LatexCommand \ref{chp:Contrib}
-
+\begin_inset LatexCommand ref
+reference "chp:Contrib"
 \end_inset
 
-, alÈn do restante deste documento.)
+, al√©n do restante deste documento.)
 \end_layout
 
 \begin_layout Standard
-Un outro favor que nos pode facer È avisar-nos se calquer cousa nestes manuais
+Un outro favor que nos pode facer √© avisar-nos se calquer cousa nestes manuais
  lle confundir, non estiver claro, ou estiver errado.
- Pode contactar cos actuais respons·beis pola documentaciÛn enviando un
- correo electrÛnico a
+ Pode contactar cos actuais respons√°beis pola documentaci√≥n enviando un
+ correo electr√≥nico a
+\family default
+ 
 \family typewriter
- lyx-docs@lists.lyx.org
+lyx-docs@lists.lyx.org
 \family default
 
 \begin_inset Foot
@@ -805,9 +876,10 @@ status open
 
 \begin_layout Standard
 [N.
- do T.]Pode-se aceder ·s listas do proxecto LyX na seguinte 
-\begin_inset LatexCommand \htmlurl[p·xina]{http://www.lyx.org/internet/mailing.php}
-
+ do T.]Pode-se aceder √°s listas do proxecto LyX na seguinte 
+\begin_inset LatexCommand htmlurl
+name "p√°xina"
+target "http://www.lyx.org/internet/mailing.php"
 \end_inset
 
 .
@@ -816,17 +888,18 @@ status open
 \end_inset
 
 .
- Se lle xurde algunha pergunta sobre o LyX a cal non d· atopado resposta
- nos manuais, pode achar axuda na lista de correos de usu·rios en lyx-user@lists.
+ Se lle xurde algunha pergunta sobre o LyX a cal non d√° atopado resposta
+ nos manuais, pode achar axuda na lista de correos de usu√°rios en lyx-user@lists.
 lyx.org.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 [N.
- do T.] … posÌbel aceder aos arquivos das mensaxes da dita lista na 
-\begin_inset LatexCommand \htmlurl[p·xina]{http://www.mail-archive.com/lyx-users@lists.lyx.org/}
-
+ do T.] √â pos√≠bel aceder aos arquivos das mensaxes da dita lista na 
+\begin_inset LatexCommand htmlurl
+name "p√°xina"
+target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 \end_inset
 
 .
@@ -844,41 +917,41 @@ O Formato dos Manuais
 \begin_layout Standard
 Os manuais poden-se ler directamente no LyX, ou imprimi-los e le-los en
  papel.
- Se est· a ler directamente no monitor debe ter en conta que ha algunhas
- pequenas diferenzas coa versiÛn impresa.
- Primeiro, o tÌtulo aparece apenas no inÌcio do documento e non formatado
- separadamente nunha p·xina como nalgunhas versiÛns impresas.
- O Ìndice e as notas de rodapÈ non est·n visÌbeis nun princÌpio.
- As notas de rodapÈ, como esta
+ Se est√° a ler directamente no monitor debe ter en conta que ha algunhas
+ pequenas diferenzas coa versi√≥n impresa.
+ Primeiro, o t√≠tulo aparece apenas no in√≠cio do documento e non formatado
+ separadamente nunha p√°xina como nalgunhas versi√≥ns impresas.
+ O √≠ndice e as notas de rodap√© non est√°n vis√≠beis nun princ√≠pio.
+ As notas de rodap√©, como esta
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-Esta È unha nota de rodapÈ
+Esta √© unha nota de rodap√©
 \end_layout
 
 \end_inset
 
-, poden-se ler clicando sobre elas co botÛn esquerdo do rato.
- Canto a t·boa de contidos pode ben clicar na caixa cincenta que ha no inÌcio
- do documento e que di xustamente t·boa de contidos, ou clicando no menu
+, poden-se ler clicando sobre elas co bot√≥n esquerdo do rato.
+ Canto a t√°boa de contidos pode ben clicar na caixa cincenta que ha no in√≠cio
+ do documento e que di xustamente t√°boa de contidos, ou clicando no menu
  Navegar.
  (Probe!)
 \end_layout
 
 \begin_layout Standard
-No manual impreso as referÈncias cruzadas mostran os n˙meros correspondentes
- ao capÌtulo, secciÛn, subsecciÛn etc., referenciados.
- Lendo directamente no LyX porÈn, as referÈncias aparecen nunha caixa cincenta
+No manual impreso as refer√©ncias cruzadas mostran os n√∫meros correspondentes
+ ao cap√≠tulo, secci√≥n, subsecci√≥n etc., referenciados.
+ Lendo directamente no LyX por√©n, as refer√©ncias aparecen nunha caixa cincenta
  como esta: 
-\begin_inset LatexCommand \ref{chp:Contrib}
-
+\begin_inset LatexCommand ref
+reference "chp:Contrib"
 \end_inset
 
 .
- (Na versiÛn impresa non se ver· a caixa, tan sÛ un n˙mero.) Ao clicar nesa
- caixa co botÛn esquerdo do rato abre-se un di·logo que contÈn todas as
- referÈncias que ha no documento, neste caso sÛ ha unha referÈncia 
+ (Na versi√≥n impresa non se ver√° a caixa, tan s√≥ un n√∫mero.) Ao clicar nesa
+ caixa co bot√≥n esquerdo do rato abre-se un di√°logo que cont√©n todas as
+ refer√©ncias que ha no documento, neste caso s√≥ ha unha refer√©ncia 
 \begin_inset Quotes eld
 \end_inset
 
@@ -887,18 +960,20 @@ chp:Contrib
 \end_inset
 
 .
- Se no di·logo preme o botÛn 
+ Se no di√°logo preme o bot√≥n 
 \begin_inset Quotes eld
 \end_inset
 
-Ir · etiqueta
+Ir √° etiqueta
 \begin_inset Quotes erd
 \end_inset
 
- o LyX saltar· a etiqueta correspondente · referÈncia.
- Outra forma de facer o salto È clicando na referÈncia co botÛn direito
+ o LyX saltar√° a etiqueta correspondente √° refer√©ncia.
+ Outra forma de facer o salto √© clicando na refer√©ncia co bot√≥n direito
  do rato.
- Pode-se voltar ao lugar de orixe dixitando 
+ Pode-se voltar ao lugar de orixe dixitando
+\family default
+ 
 \family sans
 Crtl-<
 \family default
@@ -914,17 +989,17 @@ Crtl-<
 \begin_inset Quotes erd
 \end_inset
 
- ? Ver·-se mais adiante.)
+ ? Ver√°-se mais adiante.)
 \end_layout
 
 \begin_layout Standard
-Unha vez esclarecidas algunhas diferenzas importantes entre a versiÛn impresa
- e a electrÛnica deste ficheiro, pasamos a falar do formato deste documento.
+Unha vez esclarecidas algunhas diferenzas importantes entre a versi√≥n impresa
+ e a electr√≥nica deste ficheiro, pasamos a falar do formato deste documento.
  
 \end_layout
 
 \begin_layout Standard
-Notar· que as veces se usan fontes diferentes da padrÛn, estas mudanzas
+Notar√° que as veces se usan fontes diferentes da padr√≥n, estas mudanzas
  de fonte facilitan a leitura ao resaltar unha determinada cadea escrita,
  e ademais cada estilo de fonte ten o seu significado:
 \end_layout
@@ -932,10 +1007,11 @@ Notar· que as veces se usan fontes diferentes da padrÛn, estas mudanzas
 \begin_layout Itemize
 
 \emph on
-Enfatizado 
+Enfatizado
 \emph default
-usa-se para dar Ènfase en xeral, argumentos xenÈricos, tÌtulos de libros,
- nomes de secciÛns doutros manuais, e notas dos autores;
+ 
+usa-se para dar √©nfase en xeral, argumentos xen√©ricos, t√≠tulos de libros,
+ nomes de secci√≥ns doutros manuais, e notas dos autores;
 \end_layout
 
 \begin_layout Itemize
@@ -944,7 +1020,7 @@ usa-se para dar Ènfase en xeral, argumentos xenÈricos, tÌtulos de libros,
 Fonte\InsetSpace ~
 Fixa
 \family default
- usa-se para programas e nomes de ficheiros, cÛdigo LaTeX, e cÛdigos e funciÛns
+ usa-se para programas e nomes de ficheiros, c√≥digo LaTeX, e c√≥digos e funci√≥ns
  LyX;
 \end_layout
 
@@ -954,7 +1030,7 @@ Fixa
 Sans\InsetSpace ~
 Serif
 \family default
- usa-se para menus, botÛns, xanelas suspensas e nomes de teclas;
+ usa-se para menus, bot√≥ns, xanelas suspensas e nomes de teclas;
 \end_layout
 
 \begin_layout Itemize
@@ -962,12 +1038,12 @@ Serif
 \noun on
 Versalete
 \noun default
- usa-se para nomes prÛprios.
+ usa-se para nomes pr√≥prios.
 \end_layout
 
 \begin_layout Standard
-Nas combinaciÛns de teclas, ex.
- atallos de teclado, usa-se a seguinte convenciÛn de prefixo:
+Nas combinaci√≥ns de teclas, ex.
+ atallos de teclado, usa-se a seguinte convenci√≥n de prefixo:
 \end_layout
 
 \begin_layout Itemize
@@ -991,8 +1067,10 @@ Crtl-
 \end_inset
 
 : indica a tecla
+\family default
+ 
 \family sans
- Control
+Control
 \family default
 ;
 \end_layout
@@ -1010,8 +1088,10 @@ S-
 \end_inset
 
 : indica a tecla
+\family default
+ 
 \family sans
- Shift
+Shift
 \family default
 ;
 \end_layout
@@ -1029,10 +1109,14 @@ M-
 \end_inset
 
 : indica a tecla
-\family sans
- Meta
 \family default
- que en moitos teclados ser· a tecla 
+ 
+\family sans
+Meta
+\family default
+ que en moitos teclados ser√° a tecla
+\family default
+ 
 \family sans
 Alt
 \family default
@@ -1040,8 +1124,8 @@ Alt
 \end_layout
 
 \begin_layout Standard
-Por outra banda far·-se referÈncia tamÈn ·s teclas alfanumÈricas, e as non
- alfanumÈricas:
+Por outra banda far√°-se refer√©ncia tam√©n √°s teclas alfanum√©ricas, e as non
+ alfanum√©ricas:
 \end_layout
 
 \begin_layout Itemize
@@ -1069,7 +1153,7 @@ F12
 \begin_inset Quotes erd
 \end_inset
 
-: son as teclas de funciÛn;
+: son as teclas de funci√≥n;
 \end_layout
 
 \begin_layout Itemize
@@ -1084,7 +1168,7 @@ Esc
 \begin_inset Quotes erd
 \end_inset
 
-: È a tecla de escape;
+: √© a tecla de escape;
 \end_layout
 
 \begin_layout Itemize
@@ -1131,8 +1215,8 @@ Inferior
 \begin_inset Quotes erd
 \end_inset
 
-: son as teclas que moven o cursor, e que veÒen usualmente denotadas con
- unha frecha que aponta para a direcciÛn correspondente;
+: son as teclas que moven o cursor, e que ve√±en usualmente denotadas con
+ unha frecha que aponta para a direcci√≥n correspondente;
 \end_layout
 
 \begin_layout Itemize
@@ -1189,7 +1273,7 @@ Fin
 
 
 \family sans
-ReP·g
+ReP√°g
 \family default
 
 \begin_inset Quotes erd
@@ -1201,13 +1285,15 @@ ReP·g
 
 
 \family sans
-AvP·g
+AvP√°g
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
-: son as 6 teclas que aparecen normalmente sobre as teclas de 
+: son as 6 teclas que aparecen normalmente sobre as teclas de
+\emph default
+ 
 \emph on
 cursor
 \emph default
@@ -1229,8 +1315,9 @@ Return
 
  e
 \family sans
- 
+
 \family default
+ 
 
 \begin_inset Quotes eld
 \end_inset
@@ -1243,11 +1330,12 @@ Enter
 \begin_inset Quotes erd
 \end_inset
 
-: ambas referen-se · mesma tecla, a correspondente ao retorno de carro.
+: ambas referen-se √° mesma tecla, a correspondente ao retorno de carro.
  Nalguns teclados esta tecla
 \family sans
- 
+
 \family default
+ 
 aparece como 
 \begin_inset Quotes eld
 \end_inset
@@ -1264,24 +1352,28 @@ Enter
 \begin_inset Quotes erd
 \end_inset
 
-, noutros onde o que aparece È unha frecha en ·ngulo, e mesmo ha teclados
+, noutros onde o que aparece √© unha frecha en √°ngulo, e mesmo ha teclados
  onde ha duas teclas diferentes.
- O LyX trata todo como a mesma tecla, e usar·-se 
+ O LyX trata todo como a mesma tecla, e usar√°-se
+\family default
+ 
 \family sans
 Return
 \family default
  e
-\family sans
- Enter
 \family default
-, sen distinciÛn.
+ 
+\family sans
+Enter
+\family default
+, sen distinci√≥n.
 \end_layout
 
 \begin_layout Standard
-As distintas combinaciÛns de teclas que se usan en LyX son descritas no
- capÌtulo 
-\begin_inset LatexCommand \ref{ch:functions}
-
+As distintas combinaci√≥ns de teclas que se usan en LyX son descritas no
+ cap√≠tulo 
+\begin_inset LatexCommand ref
+reference "ch:functions"
 \end_inset
 
 , 
@@ -1290,7 +1382,7 @@ As distintas combinaciÛns de teclas que se usan en LyX son descritas no
 
 
 \emph on
-FunciÛns lig·beis
+Funci√≥ns lig√°beis
 \emph default
 
 \begin_inset Quotes erd
@@ -1302,13 +1394,15 @@ FunciÛns lig·beis
 
 
 \emph on
-Manual de ReferÈncia
+Manual de Refer√©ncia
 \emph default
 
 \begin_inset Quotes erd
 \end_inset
 
- (o ficheiro 
+ (o ficheiro
+\family default
+ 
 \family typewriter
 Reference.lyx
 \family default
@@ -1322,7 +1416,9 @@ Os manuais
 
 \begin_layout Standard
 Na seguinte lista descrebe-se o contido dos manuais aos que se acede desde
- a 
+ a
+\family default
+ 
 \family typewriter
 A
 \bar under
@@ -1336,7 +1432,7 @@ uda
 \begin_layout Description
 
 \emph on
-IntroduciÛn 
+Introduci√≥n 
 \end_layout
 
 \begin_deeper
@@ -1353,57 +1449,67 @@ Tutorial
 
 \begin_deeper
 \begin_layout Standard
-Se esta a iniciar-se no LyX, e non coÒece LaTeX, debe ler antes que nada
+Se esta a iniciar-se no LyX, e non co√±ece LaTeX, debe ler antes que nada
  este tutorial.
- Se pensa que LaTeX È o material co que se elaboran os preservativos, entÛn
- cumpre-lle reler o capÌtulo 
-\begin_inset LatexCommand \ref{cha:A-filosofia-do-LyX}
-
+ Se pensa que LaTeX √© o material co que se elaboran os preservativos, ent√≥n
+ cumpre-lle reler o cap√≠tulo 
+\begin_inset LatexCommand ref
+reference "cha:A-filosofia-do-LyX"
 \end_inset
 
- desta 
+ desta
+\emph default
+ 
 \emph on
-IntroduciÛn
+Introduci√≥n
 \emph default
 , e despois pasar ao tutorial.
- E ben posÌbel que despois de ler o 
+ E ben pos√≠bel que despois de ler o
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
- continue a pensar que LaTeX È algunha subst·ncia el·stica,
+ continue a pensar que LaTeX √© algunha subst√°ncia el√°stica,
 \lang english
- 
+
 \lang galician
-mais saber· como usar LyX.
+ 
+mais saber√° como usar LyX.
 \end_layout
 
 \begin_layout Standard
-Se 
-\emph on
-coÒece 
+Se
 \emph default
-LaTeX, debe tamÈn ler o 
+ 
+\emph on
+co√±ece
+\emph default
+ 
+LaTeX, debe tam√©n ler o
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
-, mais comezando pola secciÛn 
+, mais comezando pola secci√≥n 
 \begin_inset Quotes eld
 \end_inset
 
 
 \emph on
-LyX para usu·rios de LaTeX
+LyX para usu√°rios de LaTeX
 \emph default
 
 \begin_inset Quotes erd
 \end_inset
 
- (unha ollada ao resto da documentaciÛn tampouco manca).
+ (unha ollada ao resto da documentaci√≥n tampouco manca).
 \end_layout
 
 \begin_layout Standard
 Se en calquer momento non sabe moi ben como facer algo en LyX, probe a ler
- o Tutorial antes de mergullar-se en calquer dos outros manuais, È prob·bel
+ o Tutorial antes de mergullar-se en calquer dos outros manuais, √© prob√°bel
  ser-lle de axuda.
 \end_layout
 
@@ -1415,21 +1521,29 @@ Guia\InsetSpace ~
 
 \series bold
 do\InsetSpace ~
-Usu·rio
+Usu√°rio
 \series default
+\emph default
  
+\emph on
+\series default
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-… a documentaciÛn prim·ria.
+√â a documentaci√≥n prim√°ria.
  Tenta cobrir
-\emph on
- a maioria
 \emph default
- das operaciÛns b·sicas e recursos disponÌbeis do LyX.
- O manual principal asume que o leitor ten alguns coÒecimentos de LaTeX
- ou que xa leu o 
+ 
+\emph on
+a maioria
+\emph default
+ das operaci√≥ns b√°sicas e recursos dispon√≠beis do LyX.
+ O manual principal asume que o leitor ten alguns co√±ecimentos de LaTeX
+ ou que xa leu o
+\emph default
+ 
 \emph on
 Tutorial.
 \end_layout
@@ -1438,19 +1552,21 @@ Tutorial.
 \begin_layout Description
 
 \emph on
-FunciÛns\InsetSpace ~
+Funci√≥ns\InsetSpace ~
 Avanzadas 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-AmpliaciÛn do
+Ampliaci√≥n do
+\emph default
+ 
 \emph on
- Guia do Usu·rio
+Guia do Usu√°rio
 \emph default
 .
  Documenta como utilizar comandos LaTeX dentro do LyX, formatos adicionais,
- e funciÛns de ediciÛn de propÛsito especÌfico, incluindo alguns dos (estraÒos
+ e funci√≥ns de edici√≥n de prop√≥sito espec√≠fico, incluindo alguns dos (estra√±os
  mais elegantes) truques dos mestres de LaTeX.
 \end_layout
 
@@ -1458,15 +1574,17 @@ AmpliaciÛn do
 \begin_layout Description
 
 \emph on
-PersonalizaciÛn 
+Personalizaci√≥n 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Unha descriciÛn de caracterÌsticas avanzadas do LyX, incluindo como personalizar
- o comportamento; composiciÛn de teclas, internacionalizaciÛn, e ficheiros
- de configuraciÛn.
- Nen pense e achegar-se a este documento sen ler previamente o 
+Unha descrici√≥n de caracter√≠sticas avanzadas do LyX, incluindo como personalizar
+ o comportamento; composici√≥n de teclas, internacionalizaci√≥n, e ficheiros
+ de configuraci√≥n.
+ Nen pense e achegar-se a este documento sen ler previamente o
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -1485,20 +1603,24 @@ Conxunto ordenado de respostas a perguntas frecuentes sobre o LyX.
 
 \end_deeper
 \begin_layout Description
-T·boa\InsetSpace ~
+T√°boa\InsetSpace ~
 de\InsetSpace ~
 contidos
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Neste documento recollen-se os Ìndices dos seguintes manuais: 
-\emph on
-IntroduciÛn, FAQ, Tutorial, Guia de usu·rio, FunciÛns avanzadas
+Neste documento recollen-se os √≠ndices dos seguintes manuais:
 \emph default
- e 
+ 
 \emph on
-PersonalizaciÛn
+Introduci√≥n, FAQ, Tutorial, Guia de usu√°rio, Funci√≥ns avanzadas
+\emph default
+ e
+\emph default
+ 
+\emph on
+Personalizaci√≥n
 \emph default
 .
 \end_layout
@@ -1507,7 +1629,7 @@ PersonalizaciÛn
 \begin_layout Description
 
 \emph on
-ConfiguraciÛn\InsetSpace ~
+Configuraci√≥n\InsetSpace ~
 do\InsetSpace ~
 LaTeX
 \end_layout
@@ -1515,15 +1637,15 @@ LaTeX
 \begin_deeper
 \begin_layout Standard
 Ao instalar-se o LyX pesquisa no seu sistema, e armacena o que aprendeu
- sobre como est· configurado o LaTeX no seu computador.
- Pode consultar esta informaciÛn en calquer momento, pero È especialmente
- recomend·bel se pensa que falta algun pacote de LaTeX.
+ sobre como est√° configurado o LaTeX no seu computador.
+ Pode consultar esta informaci√≥n en calquer momento, pero √© especialmente
+ recomend√°bel se pensa que falta algun pacote de LaTeX.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Ademais deste manuais existen outros dous, que se poden achar na directÛria
- de documentaciÛn do LyX.
+Ademais deste manuais existen outros dous, que se poden achar na direct√≥ria
+ de documentaci√≥n do LyX.
  Estes manuais son:
 \end_layout
 
@@ -1534,9 +1656,13 @@ Manual\InsetSpace ~
 
 \series bold
 de\InsetSpace ~
-ReferÈncia
+Refer√©ncia
 \series default
+\emph default
  
+\emph on
+\series default
+
 \end_layout
 
 \begin_deeper
@@ -1545,11 +1671,13 @@ ReferÈncia
 \family typewriter
 Reference.lyx
 \family default
-) Este manual conter·, cando este rematado, unha descriciÛn exaustiva e
- detallada das funciÛns do LyX, mais sen as ˙teis dicas de uso encontradas
- no 
+) Este manual conter√°, cando este rematado, unha descrici√≥n exaustiva e
+ detallada das funci√≥ns do LyX, mais sen as √∫teis dicas de uso encontradas
+ no
+\emph default
+ 
 \emph on
-Guia do Usu·rio
+Guia do Usu√°rio
 \emph default
  ou noutros manuais.
  
@@ -1568,28 +1696,34 @@ estilo
 \family typewriter
 DocStyle.lyx
 \family default
-) … como seu nome indica o guia de estilo para escreber a documentaciÛn
- do LyX, ainda que evidentemente tamÈn serve de inspiraciÛn para outro tipo
- de documentaciÛn.
+) √â como seu nome indica o guia de estilo para escreber a documentaci√≥n
+ do LyX, ainda que evidentemente tam√©n serve de inspiraci√≥n para outro tipo
+ de documentaci√≥n.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Os manuais fan referÈncia uns aos outros, cando È neces·rio.
+Os manuais fan refer√©ncia uns aos outros, cando √© neces√°rio.
  Por exemplo, o
-\emph on
- Guia do Usu·rio
 \emph default
- contÈn
+ 
 \emph on
- algunha
+Guia do Usu√°rio
 \emph default
- informaciÛn sobre instalaciÛn e personalizaciÛn, mais encamiÒa ao leitor
- ao manual de 
+ cont√©n
+\emph default
+ 
 \emph on
-PersonalizaciÛn
+algunha
 \emph default
- para obter mais informaciÛn.
+ informaci√≥n sobre instalaci√≥n e personalizaci√≥n, mais encami√±a ao leitor
+ ao manual de
+\emph default
+ 
+\emph on
+Personalizaci√≥n
+\emph default
+ para obter mais informaci√≥n.
 \end_layout
 
 \begin_layout Standard
@@ -1605,7 +1739,9 @@ Salientamos novamente un ponto importante:
 
 \begin_layout Standard
 \align center
-Se È novato nisto do LyX lea o 
+Se √© novato nisto do LyX lea o
+\emph default
+ 
 \emph on
 Tutorial.
 
@@ -1621,21 +1757,23 @@ Tutorial.
 \end_layout
 
 \begin_layout Standard
-SenÛn pode frustrar-se inecesariamente.
+Sen√≥n pode frustrar-se inecesariamente.
  O LyX fai todo o que precisa dun procesador de textos, mais ten un xeito
- prÛprio de o facer.
+ pr√≥prio de o facer.
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand \label{sub:manuais-traducidos}
-
+\begin_inset LatexCommand label
+name "sub:manuais-traducidos"
 \end_inset
 
-As traduciÛns dos manuais
+As traduci√≥ns dos manuais
 \end_layout
 
 \begin_layout Standard
-Os manuais son ficheiros lyx que fican na directÛria 
+Os manuais son ficheiros lyx que fican na direct√≥ria
+\family default
+ 
 \family typewriter
 \size small
 .../share/lyx/doc
@@ -1646,19 +1784,26 @@ Os manuais son ficheiros lyx que fican na directÛria
 status collapsed
 
 \begin_layout Standard
-En linux fican normalmente en 
+En linux fican normalmente en
+\family default
+ 
 \family typewriter
 \size small
 /usr/share/lyx/doc
 \family default
 \size default
- ou 
+ ou
+\family default
+ 
 \family typewriter
 \size small
 /usr/local/share/lyx/doc.
- 
+
 \family default
-En MSWindows en 
+ 
+En MSWindows en
+\family default
+ 
 \family typewriter
 C:
 \backslash
@@ -1677,29 +1822,39 @@ doc
 \end_inset
 
 .
- Nesta directÛria armacenan-se os manuais orixinais en inglÈs, e as diversas
- traduciÛns que existen.
- Asi a introduciÛn que est· a ler È o ficheiro 
+ Nesta direct√≥ria armacenan-se os manuais orixinais en ingl√©s, e as diversas
+ traduci√≥ns que existen.
+ Asi a introduci√≥n que est√° a ler √© o ficheiro
+\family default
+ 
 \family typewriter
 intro.lyx
 \family default
-, o orixinal È o ficheiro 
+, o orixinal √© o ficheiro
+\family default
+ 
 \family typewriter
 intro.lyx
 \family default
-, e as versiÛns portuguesa, espaÒola e francesa son respectivamente 
+, e as versi√≥ns portuguesa, espa√±ola e francesa son respectivamente
+\family default
+ 
 \family typewriter
 pt_intro.lyx, es_intro.lyx
 \family default
- e 
+ e
+\family default
+ 
 \family typewriter
 fr_intro.lyx
 \family default
 .
- Se olla na dita directÛria ver· que non todos os manuais est·n traducidos
- a todas as lÌnguas.
- Cando falta a traduciÛn dalgun manual, ao aceder a ese manual mediante
- o menu de 
+ Se olla na dita direct√≥ria ver√° que non todos os manuais est√°n traducidos
+ a todas as l√≠nguas.
+ Cando falta a traduci√≥n dalgun manual, ao aceder a ese manual mediante
+ o menu de
+\family default
+ 
 \family typewriter
 A
 \bar under
@@ -1708,9 +1863,11 @@ x
 uda
 \family default
  aparece o manual orixinal, i.e.
- en inglÈs.
- Se preferir lÈ-lo noutra lÌngua, que teÒa traduciÛn, non ten mais que abrir
- o ficheiro correspondente no menu 
+ en ingl√©s.
+ Se preferir l√©-lo noutra l√≠ngua, que te√±a traduci√≥n, non ten mais que abrir
+ o ficheiro correspondente no menu
+\family default
+ 
 \family typewriter
 \bar under
 F
@@ -1727,29 +1884,31 @@ brir.
 \end_layout
 
 \begin_layout Standard
-Os manuais traducidos ao galego fan referÈncia aos menus en galego, e os
- manuais noutras lÌnguas fan loxicamente referÈncia aos menus na lÌngua
+Os manuais traducidos ao galego fan refer√©ncia aos menus en galego, e os
+ manuais noutras l√≠nguas fan loxicamente refer√©ncia aos menus na l√≠ngua
  correspondente.
- Polo momento sÛ ha traducidos 2 manuais ao galego, este que est· a ler
- e o 
+ Polo momento s√≥ ha traducidos 2 manuais ao galego, este que est√° a ler
+ e o
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
-, portanto ter· que ler os outros manuais noutras lÌnguas.
- As veces as traduciÛns dos menus son evidentes ( File, Ficheiro, Fichero,
- Fichier, etc), mais en moitos outros casos non È tan f·cil, e pode resultar
- confuso ler un manual nunha lÌngua, que fai refÈncia aos menus nesa lÌngua,
- entanto o programa usado usa outra lÌngua, ex.
- ler o manual en inglÈs no LyX cos menus en galego.
- Neses casos resulta conveniente poder executar o programa na mesma lÌngua
+, portanto ter√° que ler os outros manuais noutras l√≠nguas.
+ As veces as traduci√≥ns dos menus son evidentes ( File, Ficheiro, Fichero,
+ Fichier, etc), mais en moitos outros casos non √© tan f√°cil, e pode resultar
+ confuso ler un manual nunha l√≠ngua, que fai ref√©ncia aos menus nesa l√≠ngua,
+ entanto o programa usado usa outra l√≠ngua, ex.
+ ler o manual en ingl√©s no LyX cos menus en galego.
+ Neses casos resulta conveniente poder executar o programa na mesma l√≠ngua
  do manual.
 \end_layout
 
 \begin_layout Standard
-Pode lanzar o LyX en distintas lÌnguas utilizando a vari·bel de entorno
- axeitada, que depender· do seu sistema.
- As vari·beis mais utilizadas son: LANG, LC_ALL, LANGUAGE, KDE_LANG.
- Asi para lanzar o programa em inglÈs dos EUA execute o seguinte comando
+Pode lanzar o LyX en distintas l√≠nguas utilizando a vari√°bel de entorno
+ axeitada, que depender√° do seu sistema.
+ As vari√°beis mais utilizadas son: LANG, LC_ALL, LANGUAGE, KDE_LANG.
+ Asi para lanzar o programa em ingl√©s dos EUA execute o seguinte comando
  nun terminal
 \end_layout
 
@@ -1758,11 +1917,15 @@ Pode lanzar o LyX en distintas lÌnguas utilizando a vari·bel de entorno
 \family typewriter
 LANG=en_US lyx
 \family default
- (ou 
+ (ou
+\family default
+ 
 \family typewriter
 LC_ALL=en_US lyx
 \family default
-, ou 
+, ou
+\family default
+ 
 \family typewriter
 KDE_LANG=en_US
 \family default
@@ -1771,7 +1934,7 @@ KDE_LANG=en_US
 
 \begin_layout Standard
 \noindent
-e se preferir en francÈs, use:
+e se preferir en franc√©s, use:
 \end_layout
 
 \begin_layout Standard
@@ -1779,11 +1942,15 @@ e se preferir en francÈs, use:
 \family typewriter
 LANG=fr_FR lyx
 \family default
- (ou 
+ (ou
+\family default
+ 
 \family typewriter
 LC_ALL=fr_FR lyx
 \family default
-, ou 
+, ou
+\family default
+ 
 \family typewriter
 KDE_LANG=fr_FR
 \family default
@@ -1791,8 +1958,8 @@ KDE_LANG=fr_FR
 \end_layout
 
 \begin_layout Chapter
-\begin_inset LatexCommand \label{chp:Contrib}
-
+\begin_inset LatexCommand label
+name "chp:Contrib"
 \end_inset
 
 Axudando ao proxecto LyX
@@ -1803,56 +1970,64 @@ O programa
 \end_layout
 
 \begin_layout Standard
-O LyX È un programa bastante grande, escrito maiormente en C++, que non
- est· libre de erros, sendo sempre ben-vidas as melloras no cÛdigo fonte.
+O LyX √© un programa bastante grande, escrito maiormente en C++, que non
+ est√° libre de erros, sendo sempre ben-vidas as melloras no c√≥digo fonte.
 \end_layout
 
 \begin_layout Subsection
-Informando de erros de cÛdigo
+Informando de erros de c√≥digo
 \end_layout
 
 \begin_layout Standard
 Ao empregar o LyX pode bater con comportamentos que considere defeituosos.
  Pode contribuir a mellorar a cualidade do programa informando deses comportamen
 tos.
- De entre tais comportamentos defeituosos, os m·is perigosos, se ben improb·beis
+ De entre tais comportamentos defeituosos, os m√°is perigosos, se ben improb√°beis
 , son os que levan a que o programa se feche inesperadamente, sen lle pedir
- opiniÛn ao usu·rio.
+ opini√≥n ao usu√°rio.
 
 \color none
  Outros defeitos que a equipa do LyX considera importantes son os relacionados
- coa interface de usu·rio; asi son especialmente ˙teis as indicaciÛns de
+ coa interface de usu√°rio; asi son especialmente √∫teis as indicaci√≥ns de
  partes da interface do LyX que acha confusas ou pouco claras.
 \end_layout
 
 \begin_layout Standard
-LyX ten un sistema de seguimento de erros, ao cal se pode aceder en 
+LyX ten un sistema de seguimento de erros, ao cal se pode aceder en
+\family default
+ 
 \family typewriter
 
-\begin_inset LatexCommand \htmlurl[LyX bug tracker]{http://bugzilla.lyx.org/}
-
+\begin_inset LatexCommand htmlurl
+name "LyX bug tracker"
+target "http://bugzilla.lyx.org/"
 \end_inset
 
 
 \family default
 .
  Antes de avisar de calquer erro deberia consultar o dito sistema, non vaia
- ser que xa exista un informe prÈvio do erro.
+ ser que xa exista un informe pr√©vio do erro.
  No sistema de seguimento de erros, ademais de facer novos informes de erros,
- poden-se facer coment·rios nos informes abertos por calquer outra persoa.
- Ademais È posÌbel informar dun erro enviando un correo electrÛnico · lista
- de desenvolvimento do proxecto: 
+ poden-se facer coment√°rios nos informes abertos por calquer outra persoa.
+ Ademais √© pos√≠bel informar dun erro enviando un correo electr√≥nico √° lista
+ de desenvolvimento do proxecto:
+\family default
+ 
 \family typewriter
 lyx-devel@lists.lyx.org
 \family default
 .
  As mensaxes enviadas a esta lista, como as das outras listas do proxecto,
- armacenan-se nun arquivo p˙blico ao cal se pode aceder desde o site do
- proxecto LyX, 
+ armacenan-se nun arquivo p√∫blico ao cal se pode aceder desde o site do
+ proxecto LyX,
+\family default
+ 
 \family typewriter
 
-\begin_inset LatexCommand \htmlurl[LyX website]{http://www.lyx.org/}
-
+\begin_inset LatexCommand htmlurl
+name "LyX website"
+target "http://www.lyx.org/"
 \end_inset
 
 
@@ -1861,38 +2036,40 @@ lyx-devel@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-Un bon (˙til) informe de erros debe incluir como mÌnimo a versiÛn de LyX
- onde se d· o problema.
- Preferindo-se descriciÛns precisas e detalladas, pois canto m·is tempo
+Un bon (√∫til) informe de erros debe incluir como m√≠nimo a versi√≥n de LyX
+ onde se d√° o problema.
+ Preferindo-se descrici√≥ns precisas e detalladas, pois canto m√°is tempo
  precisen os desenvolvedores para dar co miolo do problema, menos tempo
- teÒen para mellorar o programa.
+ te√±en para mellorar o programa.
 \end_layout
 
 \begin_layout Standard
-Mencione o sistema operativo, incluindo a versiÛn, no cal est· a traballar,
- e as versiÛns das librarias que est·n instaladas no sistema, e se foren
- relevantes ao erro, as versiÛns dos programas externos que usa o LyX.
+Mencione o sistema operativo, incluindo a versi√≥n, no cal est√° a traballar,
+ e as versi√≥ns das librarias que est√°n instaladas no sistema, e se foren
+ relevantes ao erro, as versi√≥ns dos programas externos que usa o LyX.
 \end_layout
 
 \begin_layout Standard
-Se È un problema de compilaciÛn ou configuraciÛn, inclua no informe o ficheiro
+Se √© un problema de compilaci√≥n ou configuraci√≥n, inclua no informe o ficheiro
+
+\family default
  
 \family typewriter
 config.log
 \family default
-, e non se esqueza de especificar o compilador, versiÛn incluÌda, que est·
+, e non se esqueza de especificar o compilador, versi√≥n inclu√≠da, que est√°
  a empregar.
 \end_layout
 
 \begin_layout Standard
-Se encontra algunha operaciÛn, ou conxunto de operaciÛn, que leven ao LyX
- se fechar sen orde expresa do usu·rio, agradecerÌamos-lle que se tomara
- a molÈstia de obter un informe autom·tico detallado do problema.
- Para isto ten utilizar un execut·bel depur·bel (non-stripped) do LyX.
- O execut·bel que se obtÈn ao compilar o LyX desde as fontes È por defeito
- depur·bel, entanto que os que os que veÒen cos pacotes bin·rios non permiten
- depuraciÛn (stripped).
- Para obter o informe autom·tico execute o LyX desde o depurador gdb, dixitando
+Se encontra algunha operaci√≥n, ou conxunto de operaci√≥n, que leven ao LyX
+ se fechar sen orde expresa do usu√°rio, agradecer√≠amos-lle que se tomara
+ a mol√©stia de obter un informe autom√°tico detallado do problema.
+ Para isto ten utilizar un execut√°bel depur√°bel (non-stripped) do LyX.
+ O execut√°bel que se obt√©n ao compilar o LyX desde as fontes √© por defeito
+ depur√°bel, entanto que os que os que ve√±en cos pacotes bin√°rios non permiten
+ depuraci√≥n (stripped).
+ Para obter o informe autom√°tico execute o LyX desde o depurador gdb, dixitando
  algo asi como: 
 \begin_inset Quotes eld
 \end_inset
@@ -1922,7 +2099,7 @@ run
 \end_inset
 
 .
- Repita as operaciÛns precisas para que o LyX se colge e volte a gdb.
+ Repita as operaci√≥ns precisas para que o LyX se colge e volte a gdb.
  Dixite 
 \begin_inset Quotes eld
 \end_inset
@@ -1937,7 +2114,7 @@ bt
 \begin_inset Quotes erd
 \end_inset
 
- para producir o informe autom·tico e inclua-o no seu informe manual sobre
+ para producir o informe autom√°tico e inclua-o no seu informe manual sobre
  o erro
 \begin_inset Foot
 status collapsed
@@ -1967,44 +2144,44 @@ up
 \begin_inset Quotes erd
 \end_inset
 
- para incluir os valores das vari·beis locais.
+ para incluir os valores das vari√°beis locais.
 \end_layout
 
 \end_inset
 
 .
- Se È reproducÌbel, È mais importante unha descriciÛn detallada dun xeito
- de reproducir o erro que o informe autom·tico, xa que os desenvolvedores
- poden xerar o seu prÛprio informe.
- PorÈn, se o erro non È facilmente reproducÌbel enviar un informe autom·tico
- È fundamental, xa que pode ser que sexa o ˙nico informe autom·tico con
- que contÈn os desenvolvedores.
+ Se √© reproduc√≠bel, √© mais importante unha descrici√≥n detallada dun xeito
+ de reproducir o erro que o informe autom√°tico, xa que os desenvolvedores
+ poden xerar o seu pr√≥prio informe.
+ Por√©n, se o erro non √© facilmente reproduc√≠bel enviar un informe autom√°tico
+ √© fundamental, xa que pode ser que sexa o √∫nico informe autom√°tico con
+ que cont√©n os desenvolvedores.
 \end_layout
 
 \begin_layout Subsection
-Mellorando o cÛdigo
+Mellorando o c√≥digo
 \end_layout
 
 \begin_layout Standard
-Se fixo algunha mudanza do cÛdigo fonte que pensa pudera tornar-se parte
+Se fixo algunha mudanza do c√≥digo fonte que pensa pudera tornar-se parte
  do LyX, porque corrixe algun erro ou introduz algunha funcionalidade, envie-a
- como un ficheiro diff (en formato unificado) · lista de desenvolvimento
+ como un ficheiro diff (en formato unificado) √° lista de desenvolvimento
  referida anteriormente, xunto con un breve informe da mudanza (change log)
- e unha descriciÛn do que fai o seu parche.
+ e unha descrici√≥n do que fai o seu parche.
  
 \end_layout
 
 \begin_layout Section
-A documentaciÛn
+A documentaci√≥n
 \end_layout
 
 \begin_layout Standard
-Se ben È certo que a documentaciÛn de LyX È extensa, tamÈn o È que o programa
- est· a ser desenvolvido constantemente, e cada nova versiÛn engade novas
+Se ben √© certo que a documentaci√≥n de LyX √© extensa, tam√©n o √© que o programa
+ est√° a ser desenvolvido constantemente, e cada nova versi√≥n engade novas
  funcionalidades.
- Non È portanto impens·bel pensar que algun manual precise melloras.
- Esta secciÛn descrebe que facer en caso de achar un erro, ou querer facer
- suxestiÛns para mellorar a documentaciÛn.
+ Non √© portanto impens√°bel pensar que algun manual precise melloras.
+ Esta secci√≥n descrebe que facer en caso de achar un erro, ou querer facer
+ suxesti√≥ns para mellorar a documentaci√≥n.
 \end_layout
 
 \begin_layout Subsection
@@ -2012,24 +2189,28 @@ Erros nos manuais
 \end_layout
 
 \begin_layout Standard
-Se acha un problema na documentaciÛn envie unha mensaxe, en inglÈs, · lista
- de correos 
+Se acha un problema na documentaci√≥n envie unha mensaxe, en ingl√©s, √° lista
+ de correos
+\family default
+ 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
 .
- A equipa de documentaciÛn far· as correcciÛns neces·rias.
+ A equipa de documentaci√≥n far√° as correcci√≥ns neces√°rias.
  
 \end_layout
 
 \begin_layout Subsection
-Xuntar-se · equipa de documentaciÛn.
+Xuntar-se √° equipa de documentaci√≥n.
 \end_layout
 
 \begin_layout Standard
-O proxecto de documentaciÛn do LyX, como calquer outra parte do proxecto
- LyX, aceita axuda en calquer momento! Se est· interesado en contribuir
- a el, necesita realizar as seguintes tarefas 
+O proxecto de documentaci√≥n do LyX, como calquer outra parte do proxecto
+ LyX, aceita axuda en calquer momento! Se est√° interesado en contribuir
+ a el, necesita realizar as seguintes tarefas
+\emph default
+ 
 \emph on
 primeiramente
 \emph default
@@ -2037,43 +2218,53 @@ primeiramente
 \end_layout
 
 \begin_layout Enumerate
-ObteÒa o cÛdigo fonte de LyX mais recente
+Obte√±a o c√≥digo fonte de LyX mais recente
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Os mais aventureiros pode obter a ˙ltima documentaciÛn, contida no mÛdulo
+Os mais aventureiros pode obter a √∫ltima documentaci√≥n, contida no m√≥dulo
 \lang english
+
+\family default
  
 \family typewriter
 \lang galician
 lyxdoc,
 \family default
- do repositÛrio CVS de LyX, ao cal se pode aceder anonimamente.
+ do reposit√≥rio CVS de LyX, ao cal se pode aceder anonimamente.
 \end_layout
 
 \end_inset
 
 , e descompacte-o.
- Achar· unha directÛria dentro da ·rbore principal chamada 
+ Achar√° unha direct√≥ria dentro da √°rbore principal chamada
+\family default
+ 
 \family typewriter
 lib/doc/
 \family default
 .
- Dentro da directÛria ha un ficheiro chamado 
+ Dentro da direct√≥ria ha un ficheiro chamado
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
 .
- Lea-o, xa que È a folla de estilo da documentaciÛn.
+ Lea-o, xa que √© a folla de estilo da documentaci√≥n.
 \end_layout
 
 \begin_layout Enumerate
-A seguir lea o 
+A seguir lea o
+\emph default
+ 
 \emph on
 User's Guide
 \emph default
- (Guia de usu·rio) e o 
+ (Guia de usu√°rio) e o
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
@@ -2083,19 +2274,23 @@ Tutorial
 
 \begin_deeper
 \begin_layout Standard
-A razÛn destas leituras È dar-lle ideas.
- O 
+A raz√≥n destas leituras √© dar-lle ideas.
+ O
+\emph default
+ 
 \emph on
 Tutorial
 \emph default
- e o 
+ e o
+\emph default
+ 
 \emph on
 User's Guide
 \emph default
- ser·n probabelmente os manuais mais actualizados.
- Con unha leitura atenta deles far·-se unha idea do estilo de manuais que
- quer facer a equipa de documentaciÛn, tanto no que ser refere ao contido
- como a sua apresentaciÛn.
+ ser√°n probabelmente os manuais mais actualizados.
+ Con unha leitura atenta deles far√°-se unha idea do estilo de manuais que
+ quer facer a equipa de documentaci√≥n, tanto no que ser refere ao contido
+ como a sua apresentaci√≥n.
 \end_layout
 
 \end_deeper
@@ -2111,33 +2306,36 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-para debater as mudanzas que pretende introducir, coÒecer outras opiniÛns
+para debater as mudanzas que pretende introducir, co√±ecer outras opini√≥ns
  sobre elas, entrando nun proceso construtivo que permitan unha mellora
- consensuada da documentaciÛn.
+ consensuada da documentaci√≥n.
  
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 As mudanzas que pode suxerir poden ir desde esclarecer alguns treitos do
- texto, atÈ modificar a estrutura xeral da documentaciÛn.
- Calquer mellora È ben recebida.
+ texto, at√© modificar a estrutura xeral da documentaci√≥n.
+ Calquer mellora √© ben recebida.
 \end_layout
 
 \begin_layout Subsection
-A traduciÛn
+A traduci√≥n
 \end_layout
 
 \begin_layout Standard
-[Nota do T.] Por ˙ltimo pode contribuir axudando na traduciÛn ao galego da
- documentaciÛn, que polo momento est· por traducir na sua maior parte, e
+[Nota do T.] Por √∫ltimo pode contribuir axudando na traduci√≥n ao galego da
+ documentaci√≥n, que polo momento est√° por traducir na sua maior parte, e
  do programa.
- Pode por-se en contacto co tradutor, ben no enderezo que aparece no inÌcio
- do documento, ben no proxecto de traduciÛn ao galego de GNU/Linux, 
+ Pode por-se en contacto co tradutor, ben no enderezo que aparece no in√≠cio
+ do documento, ben no proxecto de traduci√≥n ao galego de GNU/Linux,
+\family default
+ 
 \family typewriter
 
-\begin_inset LatexCommand \htmlurl[Proxecto Trasno]{http://www.trasno.net}
-
+\begin_inset LatexCommand htmlurl
+name "Proxecto Trasno"
+target "http://www.trasno.net"
 \end_inset
 
 .

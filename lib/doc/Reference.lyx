@@ -1,5 +1,5 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass book
@@ -32,7 +32,14 @@
 \end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics none
 \float_placement !htb
 \paperfontsize default
@@ -40,6 +47,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -52,7 +60,7 @@
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -77,8 +85,7 @@ tion mailing list, <lyx-docs@lists.lyx.org>.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -93,9 +100,13 @@ About this Document
 \end_layout
 
 \begin_layout Standard
-This is the LyX 
+This is the LyX
+\emph default
+ 
 \emph on
 Reference
+\emph default
+
 \emph default
  
 \emph on
@@ -131,18 +142,24 @@ Second, to help you get started with this manual, we recommend that you
 
 \begin_layout Standard
 Third, the entries in this manual follow a somewhat-modified version of
- the format described in the 
+ the format described in the
+\emph default
+ 
 \emph on
 Introduction
 \emph default
  manual.
  Most of these modifications are additions to what's been specified in the
  Style Sheet.
- So, if you intend to add an entry, make sure you read 
+ So, if you intend to add an entry, make sure you read
+\family default
+ 
 \family typewriter
 DocStyle.lyx
 \family default
- thoroughly! [You'll find it in the distribution in the 
+ thoroughly! [You'll find it in the distribution in the
+\family default
+ 
 \family typewriter
 development
 \family default
@@ -162,24 +179,24 @@ Organization
 \begin_layout Standard
 Each chapter is grouped around a central theme or topic.
  Chapter 
-\begin_inset LatexCommand \ref{ch:user-interface}
-
+\begin_inset LatexCommand ref
+reference "ch:user-interface"
 \end_inset
 
  describes the user interface.
  Included are the tool bar, the various popups and which menu items and
  keys they are bound to.
  Chapter 
-\begin_inset LatexCommand \ref{ch:functions}
-
+\begin_inset LatexCommand ref
+reference "ch:functions"
 \end_inset
 
  lists all of the bindable functions.
  You'll need this information if you want to alter the key bindings or create
  your own tool bar.
  Lastly, chapter 
-\begin_inset LatexCommand \ref{ch:misc}
-
+\begin_inset LatexCommand ref
+reference "ch:misc"
 \end_inset
 
  is the Dreaded Miscellaneous! Basically, anything we couldn't figure out
@@ -224,11 +241,15 @@ This is a sample entry to the Reference Manual.
 \begin_layout Standard
 The first thing to notice it the entry name.
  It's not in any special font.
- Now, according to the Style Sheet, function names should be in 
+ Now, according to the Style Sheet, function names should be in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
- font and the names of popups in 
+ font and the names of popups in
+\family default
+ 
 \family sans
 Sans\InsetSpace ~
 Serif
@@ -263,7 +284,9 @@ Menu\InsetSpace ~
 -
 \series default
  Where in the menus you can find this thing.
- If the menu item just brings up a dialog box, put its name in as a 
+ If the menu item just brings up a dialog box, put its name in as a
+\family default
+ 
 \family sans
 \emph on
 Description
@@ -272,10 +295,13 @@ Description
  list.
  Also put in where on the panel the item in bound.
  Put the names of menus, popup buttons, etc.
- in 
-\family sans
-Sans Serif 
+ in
 \family default
+ 
+\family sans
+Sans Serif
+\family default
+ 
 to make it stand out from any other text.
  Underline the accelerator key, if any.
 \begin_inset Foot
@@ -316,7 +342,9 @@ emName
 Ding\InsetSpace ~
 a\InsetSpace ~
 Ling\InsetSpace ~
-Panel: 
+Panel:
+\family default
+ 
 \family sans
 ThisButton
 \end_layout
@@ -353,11 +381,15 @@ Keyboard\InsetSpace ~
 \series default
  There will be either one or two paragraphs here.
  They should just contain a key sequence, and the name of the binding file.
- Put the name of the binding file in 
+ Put the name of the binding file in
+\family default
+ 
 \family typewriter
 Typewriter
 \family default
- font, and the key sequence in 
+ font, and the key sequence in
+\family default
+ 
 \family sans
 Sans Serif
 \family default
@@ -373,7 +405,9 @@ Sans Serif
 \family sans
 C-M-p
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 bindfile.bind
 \family default
@@ -576,6 +610,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -613,11 +649,15 @@ Bogus ball.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-F50
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 bogus.bind
 \family default
@@ -630,7 +670,9 @@ bogus.bind
 \family sans
 C-W-Help
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 PCbogus.bind
 \family default
@@ -696,6 +738,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -708,7 +752,9 @@ F
 \bar default
 eline
 \family default
- to bring up the 
+ to bring up the
+\family default
+ 
 \family sans
 Meow
 \family default
@@ -718,7 +764,9 @@ Meow
 \begin_deeper
 \begin_layout Description
 Meow\InsetSpace ~
-Panel: 
+Panel:
+\family default
+ 
 \family sans
 Decat
 \family default
@@ -749,11 +797,16 @@ Kitty-cat.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-W-c W-a W-t 
+W-c W-a W-t
 \family default
-in 
+ 
+in
+\family default
+ 
 \family typewriter
 fuzzy.bind
 \family default
@@ -778,7 +831,9 @@ additions
 \end_layout
 
 \begin_layout Standard
-We all know how much cats 
+We all know how much cats
+\emph default
+ 
 \emph on
 love
 \emph default
@@ -868,6 +923,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -898,11 +955,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -915,7 +976,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -972,8 +1035,8 @@ User Interface: The Popups
 \begin_layout Standard
 
 \emph on
-\begin_inset LatexCommand \label{ch:user-interface}
-
+\begin_inset LatexCommand label
+name "ch:user-interface"
 \end_inset
 
  Ed.
@@ -1003,6 +1066,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1033,11 +1098,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1050,7 +1119,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1117,6 +1188,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1147,11 +1220,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1164,7 +1241,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1231,6 +1310,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1261,11 +1342,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1278,7 +1363,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1345,6 +1432,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1375,11 +1464,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1392,7 +1485,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1463,6 +1558,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1493,11 +1590,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1510,7 +1611,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1580,6 +1683,8 @@ Bindings: There are actually several, since many different operations
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -1664,11 +1769,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1681,7 +1790,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1748,6 +1859,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1778,11 +1891,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1795,7 +1912,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1866,6 +1985,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -1896,11 +2017,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -1913,7 +2038,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -1980,6 +2107,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2010,11 +2139,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2027,7 +2160,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2094,6 +2229,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2124,11 +2261,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2141,7 +2282,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2208,6 +2351,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2238,11 +2383,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2255,7 +2404,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2322,6 +2473,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -2329,12 +2482,19 @@ L
 \bar default
 ayout\SpecialChar \menuseparator
 
-\bar under
- D
 \bar default
-ocument 
 \family default
-to bring up the 
+ 
+\family sans
+\bar under
+D
+\bar default
+ocument
+\family default
+ 
+to bring up the
+\series default
+ 
 \series bold
 Document\InsetSpace ~
 Layout
@@ -2345,7 +2505,9 @@ Layout
 \begin_deeper
 \begin_layout Description
 Document\InsetSpace ~
-Layout: 
+Layout:
+\family default
+ 
 \family sans
 \bar under
 B
@@ -2371,6 +2533,8 @@ Purpose:
 
 \begin_layout Standard
 Allows you to change the bullets that appear at the various levels of an
+
+\family default
  
 \family sans
 Itemize
@@ -2396,10 +2560,14 @@ The popup provides you with a table of bullet shapes.
 Select which bullet depth you want to change then select the bullet shape
  and size.
 
-\family sans
- Ok
 \family default
- and 
+ 
+\family sans
+Ok
+\family default
+ and
+\family default
+ 
 \family sans
 Apply
 \family default
@@ -2421,7 +2589,9 @@ buffer-itemize-bullets-select;
 \emph on
 Itemize Bullet Selection
 \emph default
- in 
+ in
+\emph default
+ 
 \emph on
 Extended Features
 \emph default
@@ -2453,6 +2623,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2483,11 +2655,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2500,7 +2676,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2571,6 +2749,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -2581,7 +2761,11 @@ Vie
 \bar under
 w
 \bar default
- LaTeX Log
+\family default
+ 
+\family sans
+\bar default
+LaTeX Log
 \end_layout
 
 \begin_layout List
@@ -2591,6 +2775,8 @@ w
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -2612,7 +2798,9 @@ Usage:
 
 \begin_layout Standard
 Scroll through the log file using either the cursor keys or the scrollbars.
- The 
+ The
+\family default
+ 
 \family sans
 Update
 \family default
@@ -2644,6 +2832,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2674,11 +2864,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2691,7 +2885,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2758,6 +2954,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2788,11 +2986,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2805,7 +3007,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2872,6 +3076,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -2902,11 +3108,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -2919,7 +3129,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -2990,6 +3202,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3020,11 +3234,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3037,7 +3255,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3104,6 +3324,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3134,11 +3356,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3151,7 +3377,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3218,6 +3446,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3248,11 +3478,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3265,7 +3499,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3332,6 +3568,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3362,11 +3600,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3379,7 +3621,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3450,6 +3694,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3480,11 +3726,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3497,7 +3747,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3564,6 +3816,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3594,11 +3848,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3611,7 +3869,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3678,6 +3938,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3708,11 +3970,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3725,7 +3991,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3792,6 +4060,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3822,11 +4092,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3839,7 +4113,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -3906,6 +4182,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -3936,11 +4214,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -3953,7 +4235,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -4024,6 +4308,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Main\SpecialChar \menuseparator
@@ -4054,11 +4340,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -4071,7 +4361,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -4138,6 +4430,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -4160,6 +4454,8 @@ Contents
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e t
@@ -4183,11 +4479,15 @@ Usage:
 You can move about the table of contents using either the scrollbar or your
  cursor keys.
  Only two buttons are provided.
- A 
+ A
+\family default
+ 
 \family sans
 Close
 \family default
- button to close the popup and an 
+ button to close the popup and an
+\family default
+ 
 \family sans
 Update
 \family default
@@ -4210,11 +4510,15 @@ See Also:
 \end_layout
 
 \begin_layout Standard
-toc-insert; toc-view; 
+toc-insert; toc-view;
+\emph default
+ 
 \emph on
 Table of Contents
 \emph default
- in 
+ in
+\emph default
+ 
 \emph on
 User Guide
 \end_layout
@@ -4224,8 +4528,8 @@ Bindable Functions
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{ch:functions}
-
+\begin_inset LatexCommand label
+name "ch:functions"
 \end_inset
 
 We have some quick, last minute notes for you about this chapter.
@@ -4288,19 +4592,25 @@ Hopefully, all of that is clear.
 \end_layout
 
 \begin_layout Standard
-If you haven't noticed already, this is a 
+If you haven't noticed already, this is a
+\emph default
+ 
 \emph on
 huge
 \emph default
  chapter.
- Your best bet for getting around in it is to open up the 
+ Your best bet for getting around in it is to open up the
+\family default
+ 
 \family sans
 Table\InsetSpace ~
 of\InsetSpace ~
 Contents
 \family default
  browser.
- Select 
+ Select
+\family default
+ 
 \family sans
 \bar under
 T
@@ -4310,7 +4620,9 @@ of\InsetSpace ~
 Contents...
 
 \family default
- from the 
+ from the
+\family default
+ 
 \family sans
 \bar under
 E
@@ -4545,7 +4857,9 @@ accent-circumflex
 \end_layout
 
 \begin_layout Standard
-[See the manual 
+[See the manual
+\family default
+ 
 \family typewriter
 Customization.lyx
 \family default
@@ -4597,7 +4911,7 @@ e
 \begin_inset Quotes eld
 \end_inset
 
-�
+ê
 \begin_inset Quotes erd
 \end_inset
 
@@ -4619,7 +4933,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \'{}
+ ́
 
 \end_layout
 
@@ -4628,18 +4942,18 @@ Valid letters with an acute accent:
 \end_layout
 
 \begin_layout Standard
-� � � � � � � � � � � � \i \'{s}
- \i \'{z}
- \i \'{S}
- \i \'{Z}
- \i \'{r}
- \i \'{l}
- \i \'{c}
- \i \'{n}
- \i \'{R}
- \i \'{L}
- \i \'{C}
- \i \'{N}
+á é í ó ú ý Á É Í Ó Ú Ý ś
+ ź
+ Ś
+ Ź
+ ŕ
+ ĺ
+ ć
+ ń
+ Ŕ
+ Ĺ
+ Ć
+ Ń
 
 \end_layout
 
@@ -4652,7 +4966,9 @@ command-execute;
 \end_layout
 
 \begin_layout Standard
-the key binding section in 
+the key binding section in
+\family default
+ 
 \family typewriter
 Customization.lyx
 \family default
@@ -4684,7 +5000,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \u{}
+ ̆
 
 \end_layout
 
@@ -4693,12 +5009,12 @@ Valid letters with a breve accent:
 \end_layout
 
 \begin_layout Standard
-\i \u{a}
- \i \u{g}
- \i \u{u}
- \i \u{A}
- \i \u{G}
- \i \u{U}
+ă
+ ğ
+ ŭ
+ Ă
+ Ğ
+ Ŭ
 
 \end_layout
 
@@ -4728,7 +5044,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \v{}
+ ̌
 
 \end_layout
 
@@ -4737,24 +5053,24 @@ Valid letters with a caron accent:
 \end_layout
 
 \begin_layout Standard
-\i \v{c}
- \i \v{s}
- \i \v{z}
- \i \v{C}
- \i \v{S}
- \i \v{Z}
- \i \v{d}
- \i \v{l}
- \i \v{n}
- \i \v{r}
- \i \v{t}
- \i \v{D}
- \i \v{L}
- \i \v{N}
- \i \v{R}
- \i \v{T}
- \i \v{e}
- \i \v{E}
+č
+ š
+ ž
+ Č
+ Š
+ Ž
+ ď
+ ľ
+ ň
+ ř
+ ť
+ Ď
+ Ľ
+ Ň
+ Ř
+ Ť
+ ě
+ Ě
 
 \end_layout
 
@@ -4784,7 +5100,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \c{}
+ ̧
 
 \end_layout
 
@@ -4793,20 +5109,20 @@ Valid letters with a cedilla accent:
 \end_layout
 
 \begin_layout Standard
-� � \i \c{g}
- \i \c{k}
- \i \c{l}
- \i \c{n}
- \i \c{r}
- \i \c{s}
- \i \c{t}
- \i \c{G}
- \i \c{K}
- \i \c{L}
- \i \c{N}
- \i \c{R}
- \i \c{S}
- \i \c{T}
+ç Ç ģ
+ ķ
+ ļ
+ ņ
+ ŗ
+ ş
+ ţ
+ Ģ
+ Ķ
+ Ļ
+ Ņ
+ Ŗ
+ Ş
+ Ţ
 
 \end_layout
 
@@ -4836,7 +5152,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \r{}
+ ̊
 
 \end_layout
 
@@ -4845,10 +5161,10 @@ Valid letters with a circle accent:
 \end_layout
 
 \begin_layout Standard
-\i \r{a}
- \i \r{u}
- \i \r{A}
- \i \r{U}
+å
+ ů
+ Å
+ Ů
 
 \end_layout
 
@@ -4878,7 +5194,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \^{}
+ ̂
 
 \end_layout
 
@@ -4887,16 +5203,16 @@ Valid letters with a circumflex accent:
 \end_layout
 
 \begin_layout Standard
-� � � � � � � � � � \i \^{c}
- \i \^{g}
- \i \^{h}
- \i \^{\j}
- \i \^{s}
- \i \^{C}
- \i \^{G}
- \i \^{H}
- \i \^{J}
- \i \^{S}
+â ê î ô û Â Ê Î Ô Û ĉ
+ ĝ
+ ĥ
+ ȷ̂
+ ŝ
+ Ĉ
+ Ĝ
+ Ĥ
+ Ĵ
+ Ŝ
 
 \end_layout
 
@@ -4926,7 +5242,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \.{}
+ ̇
 
 \end_layout
 
@@ -4935,16 +5251,16 @@ Valid letters with a dot accent:
 \end_layout
 
 \begin_layout Standard
-\i \.{e}
- \i \.{\i}
- \i \.{E}
- \i \.{I}
- \i \.{c}
- \i \.{g}
- \i \.{z}
- \i \.{C}
- \i \.{G}
- \i \.{Z}
+ė
+ ı̇
+ Ė
+ İ
+ ċ
+ ġ
+ ż
+ Ċ
+ Ġ
+ Ż
 
 \end_layout
 
@@ -4974,7 +5290,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \`{}
+ ̀
 
 \end_layout
 
@@ -4983,7 +5299,7 @@ Valid letters with a grave accent:
 \end_layout
 
 \begin_layout Standard
-� � � � � � � � � �
+à è ì ò ù À È Ì Ò Ù
 \end_layout
 
 \begin_layout Paragraph
@@ -5012,7 +5328,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \H{}
+ ̋
 
 \end_layout
 
@@ -5021,10 +5337,10 @@ Valid letters with a hungarian umlaut accent:
 \end_layout
 
 \begin_layout Standard
-\i \H{o}
- \i \H{u}
- \i \H{O}
- \i \H{U}
+ő
+ ű
+ Ő
+ Ű
 
 \end_layout
 
@@ -5054,7 +5370,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \={}
+ ̄
 
 \end_layout
 
@@ -5063,16 +5379,16 @@ Valid letters with a macron accent:
 \end_layout
 
 \begin_layout Standard
-\i \={a}
- \i \={e}
- \i \={\i}
- \i \={o}
- \i \={u}
- \i \={A}
- \i \={E}
- \i \={I}
- \i \={O}
- \i \={U}
+ā
+ ē
+ ı̄
+ ō
+ ū
+ Ā
+ Ē
+ Ī
+ Ō
+ Ū
 
 \end_layout
 
@@ -5145,7 +5461,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \t{}
+ ͡
 
 \end_layout
 
@@ -5180,7 +5496,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \~{}
+ ̃
 
 \end_layout
 
@@ -5189,10 +5505,10 @@ Valid letters with a tilde accent:
 \end_layout
 
 \begin_layout Standard
-� � � \i \~{\i}
- � \i \~{u}
- � \i \~{I}
- � \i \~{U}
+ñ Ñ ã ı̃
+ õ ũ
+ Ã Ĩ
+ Õ Ũ
 
 \end_layout
 
@@ -5222,7 +5538,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \"{}
+ ̈
 
 \end_layout
 
@@ -5231,7 +5547,7 @@ Some letters with an umlaut accent:
 \end_layout
 
 \begin_layout Standard
-� � � � � � � � � � �
+ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
 \end_layout
 
 \begin_layout Paragraph
@@ -5260,7 +5576,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \b{}
+ ̠
 
 \end_layout
 
@@ -5295,7 +5611,7 @@ This command produces the following accent:
 \end_layout
 
 \begin_layout Standard
-\i \d{}
+ ̣
 
 \end_layout
 
@@ -5333,6 +5649,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-Left
@@ -5383,6 +5701,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -5409,6 +5729,8 @@ inebreak
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-Return
@@ -5434,7 +5756,9 @@ This command has several purposes, depending on context.
 \end_layout
 
 \begin_layout Standard
-In math-mode, the 
+In math-mode, the
+\family default
+ 
 \family typewriter
 break-line
 \family default
@@ -5467,6 +5791,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Return
@@ -5488,7 +5814,9 @@ Usage:
 \begin_layout Standard
 This command does slightly different things, depending on context.
  Typically, it ends the current paragraph, breaks the current line, and
- starts a new paragraph in the 
+ starts a new paragraph in the
+\family default
+ 
 \family sans
 Standard
 \family default
@@ -5497,7 +5825,9 @@ Standard
 \end_layout
 
 \begin_layout Standard
-If you are in the middle of a paragraph, 
+If you are in the middle of a paragraph,
+\family default
+ 
 \family typewriter
 break-paragraph
 \family default
@@ -5506,12 +5836,16 @@ break-paragraph
 \end_layout
 
 \begin_layout Standard
-If you are at the end of a paragraph, 
+If you are at the end of a paragraph,
+\family default
+ 
 \family typewriter
 break-paragraph
 \family default
  starts the new paragraph after the current one.
- If you are at the beginning of a paragraph, the new paragraph starts 
+ If you are at the beginning of a paragraph, the new paragraph starts
+\emph default
+ 
 \emph on
 before
 \emph default
@@ -5523,16 +5857,22 @@ before
 \family typewriter
 break-paragraph
 \family default
- may start the new paragraph in an environment other than 
+ may start the new paragraph in an environment other than
+\family default
+ 
 \family sans
 Standard
 \family default
 , but the behavior is not consistent.
- For example, if you move to the middle of an 
+ For example, if you move to the middle of an
+\family default
+ 
 \family sans
 Itemize
 \family default
  list, to the end of one of the items or the beginning of the next item,
+
+\family default
  
 \family typewriter
 break-paragraph
@@ -5580,6 +5920,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-Return
@@ -5600,12 +5942,16 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-Its usage is very much the same as 
+Its usage is very much the same as
+\family default
+ 
 \family typewriter
 break-paragraph
 \family default
 , with one important difference.
- The new paragraph 
+ The new paragraph
+\emph default
+ 
 \emph on
 always
 \emph default
@@ -5641,15 +5987,21 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-x a
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 C-x C-a
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -5674,6 +6026,8 @@ Backward compatibility.
  This function used to be the only way to undo any editing.
  With the advent of a true undo/redo function in LyX, forcibly autosaving
  a document doesn't have much use.
+
+\emph default
  
 \emph on
 (The undo-mechanism has been limited to 100 steps in the beta-version.)
@@ -5704,11 +6058,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-Home
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -5721,7 +6079,9 @@ cua.bind
 \family sans
 Home
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -5764,6 +6124,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-C-Home
@@ -5813,6 +6175,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -5833,6 +6197,8 @@ eck TeX
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e h
@@ -5854,7 +6220,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This function runs 
+This function runs
+\family default
+ 
 \family typewriter
 ChkTeX
 \family default
@@ -5867,7 +6235,9 @@ See Also:
 \end_layout
 
 \begin_layout Standard
-error-next; description in 
+error-next; description in
+\emph default
+ 
 \emph on
 Extended Features
 \emph default
@@ -5891,6 +6261,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -5911,6 +6283,8 @@ lose
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f c
@@ -5924,7 +6298,9 @@ M-f c
 \family sans
 C-w
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -5932,13 +6308,18 @@ cua.bind
 \newline
 
 \family sans
-C-x k 
+C-x k
 \family default
-or 
+ 
+or
+\family default
+ 
 \family sans
 C-x C-k
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind.
 \end_layout
@@ -5952,11 +6333,15 @@ Purpose:
 \begin_layout Standard
 Closes the current buffer.
  If changes have been made since it was first opened, or since the last
+
+\family default
  
 \family typewriter
 buffer-save
 \family default
- or 
+ or
+\family default
+ 
 \family typewriter
 buffer-save-as
 \family default
@@ -5989,13 +6374,19 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-End
 \family default
+
+\family default
  
 \family roman
-in 
+in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -6005,7 +6396,9 @@ cua.bind
 \family sans
 End
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \end_layout
@@ -6046,6 +6439,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-C-End
@@ -6095,6 +6490,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -6105,9 +6502,12 @@ ayout\SpecialChar \menuseparator
 \bar under
 D
 \bar default
-ocument 
+ocument
 \family default
-to bring up the 
+ 
+to bring up the
+\series default
+ 
 \series bold
 Document\InsetSpace ~
 Layout
@@ -6118,7 +6518,9 @@ Layout
 \begin_deeper
 \begin_layout Description
 Document\InsetSpace ~
-Layout: 
+Layout:
+\family default
+ 
 \family sans
 \bar under
 B
@@ -6149,14 +6551,18 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Opens the document's 
+Opens the document's
+\series default
+ 
 \series bold
 Itemize\InsetSpace ~
 Bullet\InsetSpace ~
 Selection
 \series default
  popup which allows you to change the bullets that appear at the various
- levels of an 
+ levels of an
+\family default
+ 
 \family sans
 Itemize
 \family default
@@ -6176,7 +6582,9 @@ Itemize Bullet Selection;
 \emph on
 Itemize Bullet Selection
 \emph default
- in 
+ in
+\emph default
+ 
 \emph on
 Extended Features
 \emph default
@@ -6205,11 +6613,15 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-To invoke this function, you must use the 
+To invoke this function, you must use the
+\family default
+ 
 \family typewriter
 command-execute
 \family default
- key to enter 
+ key to enter
+\family default
+ 
 \family typewriter
 buffer-load-autosave
 \family default
@@ -6249,11 +6661,15 @@ Invoking this command once loads the autosave file (which has the suffix
 
 \begin_layout Standard
 You cannot change the time interval between autosaves on the fly.
- The interval, in seconds, is set in the main 
+ The interval, in seconds, is set in the main
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
- file or in the user's local 
+ file or in the user's local
+\family default
+ 
 \family typewriter
 ${HOME}/.lyx/lyxrc
 \family default
@@ -6290,6 +6706,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -6310,6 +6728,8 @@ ew
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f n
@@ -6323,7 +6743,9 @@ M-f n
 \family sans
 C-n
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -6333,13 +6755,19 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-x d 
+C-x d
+\family default
+ 
 \family roman
-or 
+or
+\family default
+ 
 \family sans
 C-x C-d
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -6361,13 +6789,17 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This function first opens a 
+This function first opens a
+\family default
+ 
 \family sans
 File Browser
 \family default
  window.
  You must now specify a new filename for the new document.
- You can use the 
+ You can use the
+\family default
+ 
 \family sans
 File Browser
 \family default
@@ -6416,6 +6848,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -6423,8 +6857,12 @@ F
 \bar default
 ile\SpecialChar \menuseparator
 New from
+\bar default
+\family default
+ 
+\family sans
 \bar under
- t
+t
 \bar default
 emplate
 \end_layout
@@ -6436,10 +6874,13 @@ emplate
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-M-f t 
+M-f t
 \family default
+ 
 (standard).
 \end_layout
 
@@ -6449,7 +6890,9 @@ M-f t
 \family sans
 C-N
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -6471,13 +6914,17 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This function first opens a 
+This function first opens a
+\family default
+ 
 \family sans
 File Browser
 \family default
  window.
  You must now specify a new filename for the new document.
- You can use the 
+ You can use the
+\family default
+ 
 \family sans
 File Browser
 \family default
@@ -6487,11 +6934,15 @@ File Browser
 \end_layout
 
 \begin_layout Standard
-After you enter the filename and choose 
+After you enter the filename and choose
+\family default
+ 
 \family sans
 OK
 \family default
-, the 
+, the
+\family default
+ 
 \family sans
 File Browser
 \family default
@@ -6504,12 +6955,16 @@ Choose Template.
 \begin_inset Quotes erd
 \end_inset
 
- If you wish to use a LyX template file for this new document, use the 
+ If you wish to use a LyX template file for this new document, use the
+\family default
+ 
 \family sans
 File Browser
 \family default
  to choose one.
- Otherwise, hit the 
+ Otherwise, hit the
+\family default
+ 
 \family sans
 Cancel
 \family default
@@ -6556,6 +7011,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -6594,6 +7051,8 @@ File folder with an arrow.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f o
@@ -6607,7 +7066,9 @@ M-f o
 \family sans
 C-o
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -6617,13 +7078,19 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-x f 
+C-x f
+\family default
+ 
 \family roman
 or
-\family sans
- C-x C-f
 \family default
- in 
+ 
+\family sans
+C-x C-f
+\family default
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -6645,7 +7112,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This function opens a 
+This function opens a
+\family default
+ 
 \family sans
 File Browser
 \family default
@@ -6657,7 +7126,9 @@ Document to Open.
 \begin_inset Quotes erd
 \end_inset
 
- Choose the file to open and hit 
+ Choose the file to open and hit
+\family default
+ 
 \family sans
 O
 \family default
@@ -6673,8 +7144,9 @@ See Also:
 File Browser; [
 \emph on
 Editor's Note: To be added.
- - jw 
+ - jw
 \emph default
+ 
 ]
 \end_layout
 
@@ -6699,6 +7171,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-d p
@@ -6710,13 +7184,18 @@ M-d p
 \begin_layout Standard
 
 \family sans
-C-x b 
+C-x b
 \family default
+ 
 or
-\family sans
- C-x C-b
 \family default
- in 
+ 
+\family sans
+C-x C-b
+\family default
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -6744,7 +7223,9 @@ Self-explanatory.
 \end_layout
 
 \begin_layout Standard
-If only one document is open, 
+If only one document is open,
+\family default
+ 
 \family typewriter
 buffer-previous
 \family default
@@ -6752,7 +7233,9 @@ buffer-previous
 \end_layout
 
 \begin_layout Standard
-If more than two documents are open, 
+If more than two documents are open,
+\family default
+ 
 \family typewriter
 buffer-previous
 \family default
@@ -6760,7 +7243,9 @@ buffer-previous
 \end_layout
 
 \begin_layout Standard
-You can also switch between open documents using the 
+You can also switch between open documents using the
+\family default
+ 
 \family sans
 Documents
 \family default
@@ -6768,7 +7253,9 @@ Documents
 \end_layout
 
 \begin_layout Standard
-Using 
+Using
+\family default
+ 
 \family typewriter
 buffer-previous
 \family default
@@ -6808,6 +7295,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -6845,6 +7334,8 @@ A stylized printer.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f p
@@ -6858,7 +7349,9 @@ M-f p
 \family sans
 C-
 \family default
-p in 
+p in
+\family default
+ 
 \family typewriter
 cua.
 \family default
@@ -6880,17 +7373,23 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This function opens the 
+This function opens the
+\family default
+ 
 \family sans
 Print
 \family default
  panel, which allows print control via buttons and typed inputs; a buffer
  can be printed either to a file or to a spooled print device.
- When printing to a printer, the printer name you specify in the 
+ When printing to a printer, the printer name you specify in the
+\family default
+ 
 \family sans
 Printer
 \family default
- box must be configured for 
+ box must be configured for
+\family default
+ 
 \family typewriter
 dvips
 \family default
@@ -6899,7 +7398,9 @@ dvips
 status collapsed
 
 \begin_layout Standard
-This is explained in greater detail in 
+This is explained in greater detail in
+\family default
+ 
 \family typewriter
 UserGuide.lyx
 \family default
@@ -6920,7 +7421,9 @@ ps
 \begin_inset Quotes erd
 \end_inset
 
- as their default PostScript� printer, for which 
+ as their default PostScript® printer, for which
+\family default
+ 
 \family typewriter
 dvips
 \family default
@@ -6932,7 +7435,9 @@ See Also:
 \end_layout
 
 \begin_layout Standard
-The section on dvips in 
+The section on dvips in
+\family default
+ 
 \family typewriter
 UserGuide.lyx;
 \end_layout
@@ -6968,6 +7473,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -6988,10 +7495,13 @@ pdate dvi
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-M-f u 
+M-f u
 \family default
+ 
 (standard).
 \end_layout
 
@@ -7001,7 +7511,9 @@ M-f u
 \family sans
 C-D
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7011,13 +7523,20 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-x r, C-x t, C-x C-r, 
+C-x r, C-x t, C-x C-r,
+\family default
+ 
 \family roman
 or
-\family sans
- C-x C-t 
 \family default
-in 
+ 
+\family sans
+C-x C-t
+\family default
+ 
+in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7073,6 +7592,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -7083,7 +7604,11 @@ Updat
 \bar under
 e
 \bar default
- PostScript
+\family default
+ 
+\family sans
+\bar default
+PostScript
 \end_layout
 
 \begin_layout List
@@ -7093,10 +7618,13 @@ e
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-M-f e 
+M-f e
 \family default
+ 
 (standard).
 \end_layout
 
@@ -7106,7 +7634,9 @@ M-f e
 \family sans
 C-T
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7120,7 +7650,7 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Updates the PostScript� file for the current buffer (runs LaTeX and dvips).
+Updates the PostScript® file for the current buffer (runs LaTeX and dvips).
 \end_layout
 
 \begin_layout Paragraph
@@ -7130,7 +7660,7 @@ Usage:
 \begin_layout Standard
 A LaTeX scratch file is created, based on the contents of the current buffer,
  and the file is processed with LaTeX.
- Then, dvips is run to produce a PostScript� version scratch file.
+ Then, dvips is run to produce a PostScript® version scratch file.
  LaTeX messages are posted to the screen of the parent window, and approximate
  LaTeX error locations are marked within the current buffer with an error
  box; the text of the actual LaTeX error can be displayed by clicking on
@@ -7163,6 +7693,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -7184,6 +7716,8 @@ dvi)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f d
@@ -7197,7 +7731,9 @@ M-f d
 \family sans
 C-d
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7207,13 +7743,18 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-x p 
+C-x p
 \family default
+ 
 or
-\family sans
- C-x C-p
 \family default
- in 
+ 
+\family sans
+C-x C-p
+\family default
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7227,7 +7768,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Views the current buffer with the 
+Views the current buffer with the
+\family default
+ 
 \family typewriter
 xdvi
 \family default
@@ -7239,20 +7782,25 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A LaTeX scratch file is created and processed, and a 
+A LaTeX scratch file is created and processed, and a
+\family default
+ 
 \family typewriter
 xdvi
 \family default
  process window is then automatically created with which you can view the
- resulting 
+ resulting
+\family default
+ 
 \family typewriter
 dvi
 \family default
  file.
  If
 \family typewriter
- 
+
 \family default
+ 
 any of these programs are not installed on your system, the process stops
  at that point and control is returned to LyX.
 \end_layout
@@ -7282,6 +7830,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -7303,6 +7853,8 @@ hostview)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f g
@@ -7316,7 +7868,9 @@ M-f g
 \family sans
 C-t
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7326,13 +7880,18 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-x g 
+C-x g
 \family default
+ 
 or
-\family sans
- C-x C-g
 \family default
- in 
+ 
+\family sans
+C-x C-g
+\family default
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7346,7 +7905,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Views the current buffer with the 
+Views the current buffer with the
+\family default
+ 
 \family typewriter
 ghostview
 \family default
@@ -7358,16 +7919,24 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A LaTeX scratch file is created and processed, and 
-\family typewriter
-dvips 
+A LaTeX scratch file is created and processed, and
 \family default
-is run on the resulting 
+ 
 \family typewriter
-dvi 
+dvips
 \family default
-file to create a scratch PostScript� file.
- A 
+ 
+is run on the resulting
+\family default
+ 
+\family typewriter
+dvi
+\family default
+ 
+file to create a scratch PostScript® file.
+ A
+\family default
+ 
 \family typewriter
 ghostview
 \family default
@@ -7375,8 +7944,9 @@ ghostview
  work essentially in the same form as if it were printed.
  If
 \family typewriter
- 
+
 \family default
+ 
 any of these programs are not installed on your system, the process stops
  at that point and control is returned to LyX.
 \end_layout
@@ -7406,6 +7976,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -7426,6 +7998,8 @@ ave
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f s
@@ -7439,7 +8013,9 @@ M-f s
 \family sans
 C-s
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7447,13 +8023,18 @@ cua.bind
 \newline
 
 \family sans
-C-x s 
+C-x s
 \family default
-or 
+ 
+or
+\family default
+ 
 \family sans
 C-x C-x
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind.
 \end_layout
@@ -7493,6 +8074,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -7514,6 +8097,8 @@ s
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f a
@@ -7527,7 +8112,9 @@ M-f a
 \family sans
 C-S
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7537,13 +8124,18 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-x w 
+C-x w
 \family default
+ 
 or
-\family sans
- C-x C-w
 \family default
- in 
+ 
+\family sans
+C-x C-w
+\family default
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7599,11 +8191,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Escape
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -7616,7 +8212,9 @@ cua.bind
 \family sans
 C-g
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7647,38 +8245,66 @@ Usage:
 Cancel
 \family default
  is the primary method of leaving math mode.
- Also, if a meta-key selection has been started, (for instance, 
+ Also, if a meta-key selection has been started, (for instance,
+\family default
+ 
 \family sans
 M-c
 \family default
-), pressing the 
+), pressing the
+\family default
+ 
 \family typewriter
 \series medium
 cancel
 \family default
 \series bold
+
+\series default
  
 \series medium
 key will abort the selection.
  Similarly, if a
 \series default
+
+\family default
  
 \family typewriter
 find-replace
 \family default
  window is open, placi
 \series medium
-ng the cursor in the window and executing the 
-\family typewriter
-cancel
+ng the cursor in the window and executing the
 \family default
- function will close the window, or if a drop-down menu has been selected,
+\series default
  
+\series medium
 \family typewriter
 cancel
 \family default
- will close the menu.
- Lastly, if you are entering a command in the minibuffer, 
+\series default
+ 
+\series medium
+\family default
+function will close the window, or if a drop-down menu has been selected,
+
+\family default
+\series default
+ 
+\series medium
+\family typewriter
+cancel
+\family default
+\series default
+ 
+\series medium
+\family default
+will close the menu.
+ Lastly, if you are entering a command in the minibuffer,
+\family default
+\series default
+ 
+\series medium
 \family typewriter
 cancel
 \family default
@@ -7711,6 +8337,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Left
@@ -7724,7 +8352,9 @@ Left
 \family sans
 C-b
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7770,6 +8400,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Right
@@ -7781,11 +8413,14 @@ Right
 \begin_layout Standard
 
 \family sans
-C-f 
+C-f
 \family default
+ 
 in
+\family default
+ 
 \family typewriter
- emacs.bind.
+emacs.bind.
 \end_layout
 
 \end_deeper
@@ -7827,15 +8462,21 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-x
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -7856,7 +8497,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-After you invoke 
+After you invoke
+\family default
+ 
 \family typewriter
 command-execute
 \family default
@@ -7872,7 +8515,9 @@ Return.
 \begin_inset Quotes erd
 \end_inset
 
- You can use 
+ You can use
+\family default
+ 
 \family sans
 tab
 \family default
@@ -7920,7 +8565,7 @@ u
 \begin_inset Quotes eld
 \end_inset
 
-�
+ú
 \begin_inset Quotes erd
 \end_inset
 
@@ -7964,7 +8609,9 @@ Return
  key.
  The current paragraph will now be in the LyX-Code environment.
  You could have specified any other valid paragraph environment as an argument
- to the 
+ to the
+\family default
+ 
 \family typewriter
 layout
 \family default
@@ -8070,6 +8717,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -8106,6 +8755,8 @@ Two pages with a + sign.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e o
@@ -8119,11 +8770,16 @@ M-e o
 \family sans
 C-c
 \family default
- or 
-\family sans
-C-Insert 
+ or
 \family default
-in 
+ 
+\family sans
+C-Insert
+\family default
+ 
+in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -8135,7 +8791,9 @@ cua.bind
 \family sans
 M-w
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -8158,7 +8816,9 @@ Usage:
 
 \begin_layout Standard
 Select text, either with the mouse cursor or by motion selection commands,
- then either execute 
+ then either execute
+\family default
+ 
 \family typewriter
 cut
 \family default
@@ -8190,6 +8850,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -8226,6 +8888,8 @@ An open pair of scissors.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e c
@@ -8237,13 +8901,20 @@ M-e c
 \begin_layout Standard
 
 \family sans
-C-x 
+C-x
+\family default
+ 
 \family roman
 or
-\family sans
- S-Delete 
 \family default
-in 
+ 
+\family sans
+S-Delete
+\family default
+ 
+in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -8253,9 +8924,12 @@ cua.bind
 \begin_layout Standard
 
 \family sans
-C-w 
+C-w
 \family default
-in 
+ 
+in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -8279,7 +8953,9 @@ Usage:
 
 \begin_layout Standard
 Select text to be removed, either with the mouse cursor or by motion selection
- commands, then execute 
+ commands, then execute
+\family default
+ 
 \family typewriter
 copy
 \family default
@@ -8312,6 +8988,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Backspace
@@ -8384,6 +9062,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Delete
@@ -8394,7 +9074,9 @@ Delete
 \family sans
 C-d
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -8467,10 +9149,13 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-M-p Left 
+M-p Left
 \family default
+ 
 (standard).
 \end_layout
 
@@ -8480,7 +9165,9 @@ M-p Left
 \family sans
 M-S-Left
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -8508,13 +9195,17 @@ Usage:
 
 \begin_layout Standard
 To change the depth of a single paragraph, simply move the cursor into that
- paragraph and invoke 
+ paragraph and invoke
+\family default
+ 
 \family typewriter
 depth-decrement
 \family default
 .
  If you want to change the depth of a group of paragraphs, select the group
- with the mouse and then invoke 
+ with the mouse and then invoke
+\family default
+ 
 \family typewriter
 depth-decrement
 \family default
@@ -8531,7 +9222,9 @@ wraps.
 \begin_inset Quotes erd
 \end_inset
 
- Namely, if you reach the outermost environment depth, 
+ Namely, if you reach the outermost environment depth,
+\family default
+ 
 \family typewriter
 depth-decrement
 \family default
@@ -8563,6 +9256,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -8602,10 +9297,13 @@ Icon indicates doubly indented text bounded by arrows.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-M-p Right 
+M-p Right
 \family default
+ 
 (standard).
 \end_layout
 
@@ -8615,7 +9313,9 @@ M-p Right
 \family sans
 M-S-Right
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -8643,13 +9343,17 @@ Usage:
 
 \begin_layout Standard
 To change the depth of a single paragraph, simply move the cursor into that
- paragraph and invoke 
+ paragraph and invoke
+\family default
+ 
 \family typewriter
 depth-increment
 \family default
 .
  If you want to change the depth of a group of paragraphs, select the group
- with the mouse and then invoke 
+ with the mouse and then invoke
+\family default
+ 
 \family typewriter
 depth-increment
 \family default
@@ -8666,7 +9370,9 @@ wraps.
 \begin_inset Quotes erd
 \end_inset
 
- Namely, if you reach the innermost environment depth, 
+ Namely, if you reach the innermost environment depth,
+\family default
+ 
 \family typewriter
 depth-increment
 \family default
@@ -8698,6 +9404,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l v
@@ -8711,7 +9419,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-This command is simply an alias for 
+This command is simply an alias for
+\family default
+ 
 \family typewriter
 depth-increment
 \family default
@@ -8744,6 +9454,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Down
@@ -8757,7 +9469,9 @@ Down
 \family sans
 C-n
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -8803,6 +9517,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-Down
@@ -8853,6 +9569,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-p c
@@ -8922,6 +9640,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -8944,6 +9664,8 @@ rror
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e e
@@ -8957,7 +9679,9 @@ M-e e
 \family sans
 C-g
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -8984,27 +9708,39 @@ You can only use this command under two conditions:
 \end_layout
 
 \begin_layout Enumerate
-You've recently invoked 
+You've recently invoked
+\family default
+ 
 \family typewriter
 buffer-typeset
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 buffer-typeset-ps
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 buffer-view
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 buffer-view-ps
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 buffer-chktex
 \family default
- or 
+ or
+\family default
+ 
 \family typewriter
 print
 \family default
@@ -9036,7 +9772,9 @@ Examples:
 It's not easy to provide an example for this one.
  If you don't know LaTeX, and never intend to insert any LaTeX code into
  your LyX documents, you might not need to worry about this command.
- It's here for those users who 
+ It's here for those users who
+\emph default
+ 
 \emph on
 do
 \emph default
@@ -9073,6 +9811,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -9105,6 +9845,8 @@ A picture embedded in text.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i g
@@ -9126,7 +9868,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This function opens the 
+This function opens the
+\family default
+ 
 \family sans
 Figure
 \family default
@@ -9160,7 +9904,9 @@ LaTeX or TeX
 \end_inset
 
 , for inclusion of LaTeX graphics.
- This function is now provided by means of the 
+ This function is now provided by means of the
+\family default
+ 
 \family sans
 Insert\SpecialChar \menuseparator
 Include File menu entry.
@@ -9207,7 +9953,7 @@ Encapsulated Postscript
 \begin_layout Standard
 Note that this function merely creates a box for the appropriate graphics.
  You must still choose the file to import.
- For PostScript� files, double click on the box, which will initially contain
+ For PostScript® files, double click on the box, which will initially contain
  only the letter 
 \begin_inset Quotes eld
 \end_inset
@@ -9216,16 +9962,21 @@ F
 \begin_inset Quotes erd
 \end_inset
 
-, to open the 
+, to open the
+\family default
+ 
 \family sans
 EPS Figure
 \family default
  panel.
- You can now use the options in the 
-\family sans
-EPS Panel 
+ You can now use the options in the
 \family default
-to select and even display an encapsulated PostScript� file.
+ 
+\family sans
+EPS Panel
+\family default
+ 
+to select and even display an encapsulated PostScript® file.
  
 \end_layout
 
@@ -9281,6 +10032,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -9303,6 +10056,8 @@ Replace
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e f
@@ -9313,25 +10068,36 @@ M-e f
 \family sans
 C-f
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
+\family default
+ 
 \family roman
- or
+or
 \family typewriter
 
 \newline
 
 \family sans
-C-s 
+C-s
 \family default
-and 
+ 
+and
+\family default
+ 
 \family sans
 M-%
 \family default
+
+\family default
  
 \family roman
-in 
+in
+\family default
+ 
 \family typewriter
 emacs.bind.
 \end_layout
@@ -9350,7 +10116,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-Invoking this command opens the 
+Invoking this command opens the
+\family default
+ 
 \family sans
 Find\InsetSpace ~
 &\InsetSpace ~
@@ -9359,8 +10127,10 @@ Replace
  panel.
  All searches start at the current cursor position.
  The target text is placed in the
-\family sans
+\family default
  
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -9375,11 +10145,15 @@ find
  If LyX finds the text, the cursor moves to the text and remains at the
  new position.
  The target text may be optionally replaced with alternate text placed in
+
+\family default
  
 \family roman
 the
-\family sans
+\family default
  
+\family sans
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -9455,6 +10229,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -9538,6 +10314,8 @@ Series
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -9565,7 +10343,9 @@ Character Layout
 M-l\InsetSpace ~
 b
 \family default
-, or 
+, or
+\family default
+ 
 \family sans
 M-c\InsetSpace ~
 b
@@ -9576,9 +10356,12 @@ b
 \begin_layout Standard
 
 \family sans
-C-b 
+C-b
 \family default
-in 
+ 
+in
+\family default
+ 
 \family typewriter
 cua.bind
 \family sans
@@ -9604,7 +10387,9 @@ Usage:
 Rather than repeat the same thing for all 9 font selection functions, we'll
  describe the generic behavior of the font functions here.
  Some of the font commands have a toolbar button, others have a menu selection.
- All of them are in the 
+ All of them are in the
+\family default
+ 
 \family sans
 Character Layout
 \family default
@@ -9637,35 +10422,51 @@ You can also change the font of a block of text by selecting it with the
 \end_layout
 
 \begin_layout Standard
-Eight of the font commands, 
+Eight of the font commands,
+\family default
+ 
 \family typewriter
 font-code
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 font-emph
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 font-roman
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 font-sans
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 font-size
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 font-smallcaps
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 font-underline
 \family default
-, and 
+, and
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9686,11 +10487,15 @@ One last thing: we've provided this function because LaTeX has a bold font
  We know that many users are used to using boldface for emphasis, and you
  can make this the default emphasized font by putting the correct command
  in the LaTeX preamble.
- However, we suggest that you use 
+ However, we suggest that you use
+\family default
+ 
 \family typewriter
 font-emph
 \family default
- to emphasize any text and only use 
+ to emphasize any text and only use
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9739,7 +10544,9 @@ some
 \begin_inset Quotes erd
 \end_inset
 
- and invoke 
+ and invoke
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9747,7 +10554,9 @@ font-bold
 \end_layout
 
 \begin_layout Quotation
-Here is 
+Here is
+\series default
+ 
 \series bold
 some
 \series default
@@ -9763,7 +10572,9 @@ This is,
 \begin_inset Quotes erd
 \end_inset
 
- and invoke 
+ and invoke
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9773,7 +10584,9 @@ font-bold
 \begin_layout Quotation
 
 \series medium
-This is 
+This is
+\series default
+ 
 \series bold
 bold text.
 \end_layout
@@ -9787,7 +10600,9 @@ text.
 \begin_inset Quotes erd
 \end_inset
 
- Delete the period, invoke 
+ Delete the period, invoke
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9796,11 +10611,15 @@ font-bold
 \end_layout
 
 \begin_layout Quotation
-This is 
+This is
+\series default
+ 
 \series bold
 bold text
+\series default
+ 
 \series medium
- and this is not.
+and this is not.
 \end_layout
 
 \begin_layout Standard
@@ -9828,7 +10647,9 @@ text
 \begin_inset Quotes erd
 \end_inset
 
-, invoke 
+, invoke
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9836,10 +10657,13 @@ font-bold
 \end_layout
 
 \begin_layout Quotation
-Here is some 
-\series bold
-newly added 
+Here is some
 \series default
+ 
+\series bold
+newly added
+\series default
+ 
 text.
 \end_layout
 
@@ -9873,10 +10697,13 @@ added
 \end_layout
 
 \begin_layout Quotation
-Here is some 
-\series bold
-newly added funky 
+Here is some
 \series default
+ 
+\series bold
+newly added funky
+\series default
+ 
 text.
 \end_layout
 
@@ -9897,6 +10724,8 @@ Here is some text.
 Here is some
 \series bold
 thing
+\series default
+
 \series default
  
 \series bold
@@ -9923,7 +10752,9 @@ some
 \begin_inset Quotes erd
 \end_inset
 
-; 2) invoking 
+; 2) invoking
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9951,7 +10782,9 @@ text
 \begin_inset Quotes erd
 \end_inset
 
-; 5) invoking 
+; 5) invoking
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9972,7 +10805,9 @@ The last step automatically shuts off the bold font.
  LyX automatically uses the font of the current word [the word next to the
  cursor].
  If you had not moved the cursor, but instead tried to turn off bold font
- by invoking 
+ by invoking
+\family default
+ 
 \family typewriter
 font-bold
 \family default
@@ -9984,6 +10819,8 @@ Here is some
 \series bold
 thing
 \series default
+
+\series default
  
 \series bold
 boldtext
@@ -9994,7 +10831,9 @@ boldtext
 \begin_layout Standard
 \SpecialChar \ldots{}
 would have been the result.
- If you'd tried to turn off bold font by invoking 
+ If you'd tried to turn off bold font by invoking
+\family default
+ 
 \family typewriter
 font-default
 \family default
@@ -10019,6 +10858,8 @@ would have been the result.
 Here is some
 \series bold
 thing
+\series default
+
 \series default
  
 \series bold
@@ -10110,6 +10951,8 @@ Here is some
 \series bold
 lything
 \series default
+
+\series default
  
 \series bold
 bold
@@ -10177,6 +11020,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -10242,6 +11087,8 @@ Family
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -10277,7 +11124,9 @@ p
 \family sans
 C-P
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -10300,19 +11149,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-code
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-code
 \family default
@@ -10320,15 +11177,21 @@ font-code
 \end_layout
 
 \begin_layout Standard
-Note that 
+Note that
+\family default
+ 
 \family typewriter
 font-code
 \family default
- shuts off 
+ shuts off
+\family default
+ 
 \family typewriter
 font-roman
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 font-sans
 \family default
@@ -10340,7 +11203,9 @@ Examples:
 \end_layout
 
 \begin_layout Standard
-Here is an example of the typewriter font family, which 
+Here is an example of the typewriter font family, which
+\family default
+ 
 \family typewriter
 font-code
 \family default
@@ -10388,6 +11253,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-c\InsetSpace ~
@@ -10411,19 +11278,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-default
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-default
 \family default
@@ -10443,7 +11318,11 @@ Hel
 \family sans
 lo I
 \emph on
-'m 
+'m
+\family default
+\emph default
+ 
+\emph on
 \family typewriter
 a re
 \emph default
@@ -10451,7 +11330,13 @@ all
 \series bold
 y wei
 \family sans
-rd 
+rd
+\emph default
+\series default
+\family default
+ 
+\series bold
+\family sans
 \emph on
 sent
 \family default
@@ -10466,7 +11351,9 @@ my na
 me
 \series default
 \emph default
- is 
+ is
+\family default
+ 
 \family sans
 D
 \series bold
@@ -10487,7 +11374,9 @@ m
 \end_layout
 
 \begin_layout Standard
-Select this text and invoke 
+Select this text and invoke
+\family default
+ 
 \family typewriter
 font-default
 \family default
@@ -10534,6 +11423,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -10633,6 +11524,8 @@ An exclamation mark.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -10658,11 +11551,14 @@ Character Layout
 
 \family sans
 M-c\InsetSpace ~
-e, 
+e,
 \family default
+ 
 and
+\family default
+ 
 \family sans
- M-l\InsetSpace ~
+M-l\InsetSpace ~
 e
 \family default
  (standard)
@@ -10673,7 +11569,9 @@ e
 \family sans
 C-e
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -10696,19 +11594,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-emph
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-emph
 \family default
@@ -10716,11 +11622,15 @@ font-emph
 \end_layout
 
 \begin_layout Standard
-Note that 
+Note that
+\family default
+ 
 \family typewriter
 font-emph
 \family default
- shuts off 
+ shuts off
+\family default
+ 
 \family typewriter
 font-smallcaps
 \family default
@@ -10738,7 +11648,9 @@ font-italic,
 
  and why boldface and underlined text don't have their own menu entries
  or toolbar buttons.
- LyX has adopted a convention from LaTeX: specify 
+ LyX has adopted a convention from LaTeX: specify
+\emph default
+ 
 \emph on
 what
 \emph default
@@ -10758,11 +11670,15 @@ ally.
 \end_layout
 
 \begin_layout Standard
-In short, the LyX team 
+In short, the LyX team
+\emph default
+ 
 \emph on
 strongly recommends
 \emph default
- that you use 
+ that you use
+\family default
+ 
 \family typewriter
 font-emph
 \family default
@@ -10782,11 +11698,19 @@ Here's an example of emphasized text:
 \begin_layout Quotation
 
 \emph on
-Always use 
+Always use
+\family default
+\emph default
+ 
+\emph on
 \family typewriter
 font-emph
 \family default
- instead of specific font names!
+\emph default
+ 
+\emph on
+\family default
+instead of specific font names!
 \end_layout
 
 \begin_layout Paragraph
@@ -10861,7 +11785,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Changes the font settings to the most recent setting in the 
+Changes the font settings to the most recent setting in the
+\family default
+ 
 \family sans
 Character
 \family default
@@ -10918,6 +11844,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -10983,6 +11911,8 @@ Family
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -11029,19 +11959,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-roman
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-roman
 \family default
@@ -11049,15 +11987,21 @@ font-roman
 \end_layout
 
 \begin_layout Standard
-Note that 
+Note that
+\family default
+ 
 \family typewriter
 font-roman
 \family default
- shuts off 
+ shuts off
+\family default
+ 
 \family typewriter
 font-code
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 font-sans
 \family default
@@ -11117,6 +12061,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -11182,6 +12128,8 @@ Family
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -11228,19 +12176,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-sans
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-sans
 \family default
@@ -11248,15 +12204,21 @@ font-sans
 \end_layout
 
 \begin_layout Standard
-Note that 
+Note that
+\family default
+ 
 \family typewriter
 font-sans
 \family default
- shuts off 
+ shuts off
+\family default
+ 
 \family typewriter
 font-code
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 font-roman
 \family default
@@ -11312,6 +12274,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -11365,7 +12329,9 @@ Size
 Keyboard\InsetSpace ~
 -
 \series default
- The 
+ The
+\family default
+ 
 \family sans
 M-s
 \family default
@@ -11408,8 +12374,9 @@ s
 
 \family sans
 M-s\InsetSpace ~
-2 
+2
 \family default
+ 
 "
 \family typewriter
 font-size small
@@ -11430,8 +12397,9 @@ n
 
 \family sans
 M-s\InsetSpace ~
-3 
+3
 \family default
+ 
 "
 \family typewriter
 font-size normal
@@ -11452,8 +12420,9 @@ l
 
 \family sans
 M-s\InsetSpace ~
-4 
+4
 \family default
+ 
 "
 \family typewriter
 font-size large
@@ -11474,8 +12443,9 @@ S-L
 
 \family sans
 M-s\InsetSpace ~
-5 
+5
 \family default
+ 
 "
 \family typewriter
 font-size larger
@@ -11496,8 +12466,9 @@ S-A
 
 \family sans
 M-s\InsetSpace ~
-6 
+6
 \family default
+ 
 "
 \family typewriter
 font-size largest
@@ -11518,8 +12489,9 @@ h
 
 \family sans
 M-s\InsetSpace ~
-7 
+7
 \family default
+ 
 "
 \family typewriter
 font-size huge
@@ -11548,8 +12520,9 @@ S-H
 
 \family sans
 M-s\InsetSpace ~
-8 
+8
 \family default
+ 
 "
 \family typewriter
 font-size giant
@@ -11612,11 +12585,15 @@ bind
 \begin_inset Quotes erd
 \end_inset
 
- command if you use 
+ command if you use
+\family default
+ 
 \family typewriter
 font-size
 \family default
- in a keybinding file, or in the minibuffer if you use 
+ in a keybinding file, or in the minibuffer if you use
+\family default
+ 
 \family typewriter
 command-execute
 \family default
@@ -11628,11 +12605,19 @@ status collapsed
 
 \emph on
 Editor's note: Don't do this - there is a bug.
- For some reason, 
+ For some reason,
+\family default
+\emph default
+ 
+\emph on
 \family typewriter
 font-size
 \family default
- crashes LyX at the moment.
+\emph default
+ 
+\emph on
+\family default
+crashes LyX at the moment.
  - jw 10/6/96
 \end_layout
 
@@ -11643,48 +12628,70 @@ font-size
 
 \begin_layout Standard
 LaTeX describes font sizes in relative values.
- LyX uses the following terms: 
+ LyX uses the following terms:
+\emph default
+ 
 \emph on
 tiny, small
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 normal
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 large
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 larger
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 largest
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 huge
 \emph default
-, 
+,
+\emph default
+ 
 \emph on
 giant
 \emph default
 .
- The 
+ The
+\emph default
+ 
 \emph on
 normal
 \emph default
- size can be set to 
+ size can be set to
+\family default
+ 
 \family typewriter
 10pt
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 11pt
 \family default
-, or 
+, or
+\family default
+ 
 \family typewriter
 12pt
 \family default
@@ -11692,19 +12699,27 @@ normal
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-size
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-size
 \family default
@@ -11712,16 +12727,22 @@ font-size
 \end_layout
 
 \begin_layout Standard
-You should avoid using 
+You should avoid using
+\family default
+ 
 \family typewriter
 font-size
 \family default
  unless you need to do some fine-tuning.
+
+\emph default
  
 \emph on
 Never
 \emph default
- use 
+ use
+\family default
+ 
 \family typewriter
 font-size
 \family default
@@ -11812,6 +12833,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -11911,6 +12934,8 @@ A person.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -11938,7 +12963,9 @@ Character Layout
 M-l\InsetSpace ~
 n
 \family default
- and 
+ and
+\family default
+ 
 \family sans
 M-c\InsetSpace ~
 c
@@ -11962,19 +12989,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-smallcaps
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-smallcaps
 \family default
@@ -11982,11 +13017,15 @@ font-smallcaps
 \end_layout
 
 \begin_layout Standard
-Note that 
+Note that
+\family default
+ 
 \family typewriter
 font-smallcaps
 \family default
- shuts off 
+ shuts off
+\family default
+ 
 \family typewriter
 font-emph
 \family default
@@ -12138,6 +13177,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -12203,6 +13244,8 @@ Bar
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -12227,11 +13270,14 @@ Character Layout
 \begin_layout Standard
 
 \family sans
-C-u 
+C-u
 \family default
+ 
 or
+\family default
+ 
 \family sans
- M-c u
+M-c u
 \family default
  (standard).
 \end_layout
@@ -12253,19 +13299,27 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-A lot of the usage for 
+A lot of the usage for
+\family default
+ 
 \family typewriter
 font-underline
 \family default
- works the same way as 
+ works the same way as
+\family default
+ 
 \family typewriter
 font-bold
 \family default
-, so see the entry for 
+, so see the entry for
+\family default
+ 
 \family typewriter
 font-bold
 \family default
- to get an idea for how to use 
+ to get an idea for how to use
+\family default
+ 
 \family typewriter
 font-underline
 \family default
@@ -12280,11 +13334,15 @@ The LyX team has provided this function only for compatibility with LaTeX.
  nor should you use it like one.
  Now, you could make this the default emphasized font by putting the correct
  command in the LaTeX preamble.
- However, we suggest that you use 
+ However, we suggest that you use
+\family default
+ 
 \family typewriter
 font-emph
 \family default
- to emphasize any text, including book titles, and avoid using 
+ to emphasize any text, including book titles, and avoid using
+\family default
+ 
 \family typewriter
 font-underline
 \family default
@@ -12294,7 +13352,9 @@ status collapsed
 
 \begin_layout Standard
 There is one - and only one - case that we can think of where you might
- need to use 
+ need to use
+\family default
+ 
 \family typewriter
 font-underline
 \family default
@@ -12302,7 +13362,9 @@ font-underline
  Suppose you're writing the bibliography of a journal article.
  The journal you're submitting this article to typesets all volume numbers
  in an underlined font, and wishes all submissions to do the same.
- This is perhaps the only time you'd need to use 
+ This is perhaps the only time you'd need to use
+\family default
+ 
 \family typewriter
 font-underline
 \family default
@@ -12364,6 +13426,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -12401,6 +13465,8 @@ A page with an arrow pointing to lines at the bottom of the page.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i\InsetSpace ~
@@ -12462,7 +13528,9 @@ foot
 
 \begin_layout Standard
 You can also open and close footnotes, as well as other types of notes and
- labels, with the 
+ labels, with the
+\family default
+ 
 \family typewriter
 open-stuff
 \family default
@@ -12507,7 +13575,9 @@ open-stuff; marginpar-insert;
 \emph on
 Tricks for Footnotes and Marginpars
 \emph default
- in 
+ in
+\emph default
+ 
 \emph on
 Extended Features
 \emph default
@@ -12531,6 +13601,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-Right 
@@ -12583,6 +13655,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -12609,13 +13683,18 @@ Fill
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-C-i 
+C-i
 \family default
+ 
 or
+\family default
+ 
 \family sans
- M-i\InsetSpace ~
+M-i\InsetSpace ~
 h
 \end_layout
 
@@ -12625,7 +13704,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Insert a LaTeX 
+Insert a LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -12639,7 +13720,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-The LaTeX 
+The LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -12653,20 +13736,26 @@ horizontal fill.
 \begin_inset Quotes erd
 \end_inset
 
- As the name implies, an 
+ As the name implies, an
+\emph default
+ 
 \emph on
 HFill
 \emph default
  fills in the current line with blank space.
  You can put it at the beginning or end of a line, which will force the
  line against the right or left margin, respectively.
- However, an 
+ However, an
+\emph default
+ 
 \emph on
 HFill
 \emph default
  is most useful in the middle of a line.
  The example explains it best.
- The 
+ The
+\emph default
+ 
 \emph on
 HFill
 \emph default
@@ -12682,22 +13771,30 @@ margin,
 \begin_inset Quotes erd
 \end_inset
 
- we do 
+ we do
+\emph default
+ 
 \emph on
 not
 \emph default
  mean the page margins.
  We mean the environment margin.
- For example, if your document has two columns per page, an 
+ For example, if your document has two columns per page, an
+\emph default
+ 
 \emph on
 HFill
 \emph default
- fills in the line to the left and right margin 
+ fills in the line to the left and right margin
+\emph default
+ 
 \emph on
 of the column
 \emph default
 , not the entire page.
- If you're in a table cell, 
+ If you're in a table cell,
+\emph default
+ 
 \emph on
 HFill
 \emph default
@@ -12705,7 +13802,9 @@ HFill
 \end_layout
 
 \begin_layout Standard
-You should only use 
+You should only use
+\family default
+ 
 \family typewriter
 hfill-insert
 \family default
@@ -12718,7 +13817,9 @@ Examples:
 \end_layout
 
 \begin_layout Standard
-An 
+An
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -12757,6 +13858,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -12784,6 +13887,8 @@ oint
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i\InsetSpace ~
@@ -12798,7 +13903,9 @@ Minus
 \family sans
 C-Minus
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua-bind
 \family default
@@ -12810,7 +13917,9 @@ cua-bind
 \family sans
 C-h
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs-bind
 \family default
@@ -12824,7 +13933,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Insert a manual hyphenation point via the LaTeX 
+Insert a manual hyphenation point via the LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -12846,11 +13957,15 @@ While LaTeX is normally able to hyphenate most words, it has problems with
 \end_layout
 
 \begin_layout Standard
-To allow LaTeX to properly hyphenate 
+To allow LaTeX to properly hyphenate
+\emph default
+ 
 \emph on
 gnomon
 \emph default
-, you type it as 
+, you type it as
+\family default
+ 
 \family typewriter
 gno
 \backslash
@@ -12875,11 +13990,15 @@ gno
 \end_layout
 
 \begin_layout Standard
-Note: To tell LaTeX how to hyphenate 
+Note: To tell LaTeX how to hyphenate
+\emph default
+ 
 \emph on
 all
 \emph default
- instances of a word in a document, insert a LaTeX 
+ instances of a word in a document, insert a LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -12890,11 +14009,15 @@ hyphenation{}
 status collapsed
 
 \begin_layout Standard
-Edit the preamble from the menu by selecting 
+Edit the preamble from the menu by selecting
+\family default
+ 
 \family sans
 Layout
 \family default
-, then 
+, then
+\family default
+ 
 \family sans
 LaTeX\InsetSpace ~
 Preamble
@@ -12905,7 +14028,9 @@ Preamble
 \end_inset
 
  where the argument is a space-delimited list of the words to be hyphenated,
- with the hyphenation points noted by dashes, as in 
+ with the hyphenation points noted by dashes, as in
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -12919,7 +14044,9 @@ Examples:
 \end_layout
 
 \begin_layout Standard
-This is what 
+This is what
+\emph default
+ 
 \emph on
 gno\SpecialChar \-
 mon
@@ -12950,7 +14077,11 @@ Bindings:
 
 \series bold
 Menu\InsetSpace ~
-- 
+-
+\family default
+\series default
+ 
+\series bold
 \family sans
 \series default
 \bar under
@@ -12981,7 +14112,9 @@ Usage:
 \begin_layout Standard
 LaTeX has the capability to compile an index based on keywords marked in
  the text.
- Within LyX, this is done using 
+ Within LyX, this is done using
+\family default
+ 
 \family typewriter
 index-insert
 \family default
@@ -12991,7 +14124,9 @@ index-insert
 \end_layout
 
 \begin_layout Standard
-When using 
+When using
+\family default
+ 
 \family typewriter
 index-insert
 \family default
@@ -13007,8 +14142,8 @@ Examples:
 
 \begin_layout Standard
 Here
-\begin_inset LatexCommand \index{example}
-
+\begin_inset LatexCommand index
+name "example"
 \end_inset
 
  is what an index entry looks like.
@@ -13042,7 +14177,11 @@ Bindings:
 
 \series bold
 Menu\InsetSpace ~
-- 
+-
+\family default
+\series default
+ 
+\series bold
 \family sans
 \series default
 \bar under
@@ -13071,6 +14210,8 @@ list
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i\InsetSpace ~
@@ -13098,16 +14239,22 @@ Usage:
 \family typewriter
 index-print
 \family default
- causes LaTeX to read index entries created by 
+ causes LaTeX to read index entries created by
+\family default
+ 
 \family typewriter
 index-insert
 \family default
 , generate an index, and add it to the output document.
- Within LyX, the only visible effect of 
+ Within LyX, the only visible effect of
+\family default
+ 
 \family typewriter
 index-print
 \family default
- is to create an inset labeled 
+ is to create an inset labeled
+\family default
+ 
 \family sans
 Print Index
 \family default
@@ -13343,6 +14490,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -13360,8 +14509,10 @@ eyboard
 \begin_layout Description
 Key\InsetSpace ~
 Mappings:
-\series medium
+\series default
  
+\series medium
+
 \family sans
 No\InsetSpace ~
 key\InsetSpace ~
@@ -13376,12 +14527,17 @@ mapping
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-k\InsetSpace ~
-o 
+o
 \family default
-or 
+ 
+or
+\family default
+ 
 \family sans
 M-k\InsetSpace ~
 x
@@ -13404,7 +14560,9 @@ Usage:
 In addition to the default keymap, the keyboard can have a primary keymap,
  a secondary keymap, or both.
  If you have previously defined and selected either the primary or secondary
- keymaps, you can turn-off this selection by issuing the 
+ keymaps, you can turn-off this selection by issuing the
+\family default
+ 
 \family typewriter
 keymap-off
 \family default
@@ -13456,6 +14614,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -13472,7 +14632,9 @@ eyboard
 \begin_deeper
 \begin_layout Description
 Key\InsetSpace ~
-Mappings: 
+Mappings:
+\family default
+ 
 \family sans
 \series medium
 Primary\InsetSpace ~
@@ -13488,6 +14650,8 @@ mapping
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-k\InsetSpace ~
@@ -13509,7 +14673,9 @@ Usage:
 
 \begin_layout Standard
 Self-explanatory.
- See 
+ See
+\family default
+ 
 \family typewriter
 keymap-off
 \family default
@@ -13541,6 +14707,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -13557,7 +14725,9 @@ eyboard
 \begin_deeper
 \begin_layout Description
 Key\InsetSpace ~
-Mappings: 
+Mappings:
+\family default
+ 
 \family sans
 \series medium
 Secondary\InsetSpace ~
@@ -13573,6 +14743,8 @@ mapping
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-k\InsetSpace ~
@@ -13594,7 +14766,9 @@ Usage:
 
 \begin_layout Standard
 Self-explanatory.
- See 
+ See
+\family default
+ 
 \family typewriter
 keymap-off
 \family default
@@ -13626,6 +14800,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -13644,7 +14820,11 @@ eyboard
 Key\InsetSpace ~
 Mappings
 \series medium
-: 
+:
+\family default
+\series default
+ 
+\series medium
 \family sans
 Mapping\InsetSpace ~
 Switch
@@ -13658,6 +14838,8 @@ Switch
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-k\InsetSpace ~
@@ -13671,7 +14853,9 @@ Purpose:
 
 \begin_layout Standard
 Allows you to toggle back and forth between the primary and secondary keymaps
- (either of which can be set to a value of 
+ (either of which can be set to a value of
+\family default
+ 
 \family typewriter
 default
 \family default
@@ -13684,7 +14868,9 @@ Usage:
 
 \begin_layout Standard
 Self-explanatory.
- See 
+ See
+\family default
+ 
 \family typewriter
 keymap-off
 \family default
@@ -13720,6 +14906,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -13746,6 +14934,8 @@ Input: (enter label name in input box)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i\InsetSpace ~
@@ -13768,14 +14958,18 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This command inserts a LaTeX 
+This command inserts a LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
 label{key}
 \family default
  command into the document, which contains a case-sensitive alphanumeric
- label 
+ label
+\family default
+ 
 \family typewriter
 key
 \family default
@@ -13787,7 +14981,9 @@ status collapsed
 
 \begin_layout Standard
 Actually, it doesn't need to be a subsequent reference.
- You can reference a label 
+ You can reference a label
+\emph default
+ 
 \emph on
 before
 \emph default
@@ -13797,13 +14993,17 @@ before
 
 \end_inset
 
- cross-reference via the 
+ cross-reference via the
+\family default
+ 
 \family typewriter
 ref-insert
 \family default
  command.
  The current environment is the section, table, figure, equation, enumerated
- item, 
+ item,
+\emph default
+ 
 \emph on
 etc
 \emph default
@@ -13816,11 +15016,15 @@ etc
 
 \begin_layout Standard
 Note that you can't define labels for math equations using this command.
- LyX labels equations using a combination of the 
+ LyX labels equations using a combination of the
+\family default
+ 
 \family typewriter
 math-number
 \family default
- command and the actual LaTeX command 
+ command and the actual LaTeX command
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -13838,16 +15042,16 @@ Examples:
 \begin_layout Standard
 If the current environment is a section, as it is here at this point, you
  can insert a label with the following result:
-\begin_inset LatexCommand \label{test label}
-
+\begin_inset LatexCommand label
+name "test label"
 \end_inset
 
 .
  This label can then be referenced, and the result will be the section number
  for this section, as Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{test label}
-
+\begin_inset LatexCommand ref
+reference "test label"
 \end_inset
 
 .
@@ -13884,6 +15088,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -13894,7 +15100,11 @@ Vie
 \bar under
 w
 \bar default
- LaTeX Log
+\family default
+ 
+\family sans
+\bar default
+LaTeX Log
 \end_layout
 
 \begin_layout List
@@ -13904,6 +15114,8 @@ w
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -13954,10 +15166,13 @@ Toolbar\InsetSpace ~
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
-M-p 
+M-p
 \family default
+ 
 prefix plus one of the following:
 \end_layout
 
@@ -14789,6 +16004,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -14816,6 +16033,8 @@ Layout: (controls for character font settings)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -14828,7 +16047,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Activates the 
+Activates the
+\family default
+ 
 \family sans
 Character Layout
 \family default
@@ -14875,6 +16096,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -14902,6 +16125,8 @@ Layout: (controls for document format settings)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -14914,7 +16139,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Activates the 
+Activates the
+\family default
+ 
 \family sans
 Document Layout
 \family default
@@ -14950,6 +16177,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -14977,6 +16206,8 @@ Layout: (controls for paragraph format settings)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -14989,7 +16220,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Activates the 
+Activates the
+\family default
+ 
 \family sans
 Paragraph Layout
 \family default
@@ -15040,6 +16273,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -15068,6 +16303,8 @@ Preamble: (edit window for direct modification of the LaTeX preamble)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -15080,11 +16317,14 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Activates the 
+Activates the
+\family default
+ 
 \family sans
 LaTeX\InsetSpace ~
-Preamble 
+Preamble
 \family default
+ 
 pop-up, which allows you to directly make additions to the LaTeX preamble
  that LyX inserts in the LaTeX version of the document.
 \end_layout
@@ -15105,7 +16345,9 @@ Each document has its own preamble.
  chosen from within LyX.
  Some things LyX just can't do yet, but LaTeX can.
  Or, you may want to use some custom LaTeX macros.
- The 
+ The
+\family default
+ 
 \family sans
 LaTeX Preamble
 \family default
@@ -15194,6 +16436,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -15220,6 +16464,8 @@ Quotes: (controls for setting desired quotation marks)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
@@ -15232,7 +16478,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Activates the 
+Activates the
+\family default
+ 
 \family sans
 Quotes
 \family default
@@ -15263,7 +16511,9 @@ Self explanatory.
 \end_inset
 
 .
- Selecting a different type of quote changes the behavior of the 
+ Selecting a different type of quote changes the behavior of the
+\family default
+ 
 \family sans
 
 \begin_inset Quotes eld
@@ -15271,15 +16521,19 @@ Self explanatory.
 
 
 \family default
- and 
+ and
+\family default
+ 
 \family sans
 '
 \family default
  keys.
  LyX supports a bunch of different quotes.
  If you need a special one not present, contact
+\family default
+ 
 \family typewriter
- lyx-devel@lists.lyx.org
+lyx-devel@lists.lyx.org
 \family default
  and we'll see what we can come up with.
 \end_layout
@@ -15309,11 +16563,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Home
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind.
 \end_layout
@@ -15324,7 +16582,9 @@ cua.bind.
 \family sans
 C-a
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -15367,6 +16627,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-Home
@@ -15415,11 +16677,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-k
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 M-e\InsetSpace ~
 k
@@ -15470,11 +16736,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 End
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -15487,7 +16757,9 @@ cua.bind
 \family sans
 C-e
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -15531,6 +16803,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-End
@@ -15581,6 +16855,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -15601,6 +16877,8 @@ it
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-f\InsetSpace ~
@@ -15615,7 +16893,9 @@ x
 \family sans
 C-q
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -15626,14 +16906,20 @@ cua.bind
 
 \family sans
 C-x\InsetSpace ~
-c 
+c
+\family default
+ 
 \family roman
 or
+\family default
+ 
 \family sans
- C-x\InsetSpace ~
+C-x\InsetSpace ~
 C-c
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -15662,16 +16948,22 @@ After entering the command, a pop-up for each open and modified buffer appears,
 
 \begin_layout Standard
 At this point, one of two things happen.
- If you executed 
+ If you executed
+\family default
+ 
 \family typewriter
 lyx-quit
 \family default
  from the keyboard, LyX simply quits.
- If you used 
+ If you used
+\family default
+ 
 \family sans
 Quit
 \family default
- from the 
+ from the
+\family default
+ 
 \family sans
 File
 \family default
@@ -15712,6 +17004,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -15751,7 +17045,11 @@ Keyboard\InsetSpace ~
 
 \family sans
 \series default
- M-i m
+\family default
+ 
+\family sans
+\series default
+M-i m
 \end_layout
 
 \end_deeper
@@ -15807,7 +17105,9 @@ margin
 
 \begin_layout Standard
 You can also open and close marginpars, as well as other types of notes
- and labels, with the 
+ and labels, with the
+\family default
+ 
 \family typewriter
 open-stuff
 \family default
@@ -15851,7 +17151,9 @@ open-stuff; footnote-insert;
 \emph on
 Tricks for Footnotes and Marginpars
 \emph default
- in 
+ in
+\emph default
+ 
 \emph on
 Extended Features.
 \end_layout
@@ -15901,6 +17203,8 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e S-M
@@ -15956,6 +17260,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e m
@@ -15967,7 +17273,9 @@ M-e m
 \family sans
 C-@
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -16025,11 +17333,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-m
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -16086,6 +17398,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -16135,7 +17449,9 @@ Requires two arguments, the left and right delimiters.
 \end_layout
 
 \begin_layout Standard
-If you use this function from the 
+If you use this function from the
+\family default
+ 
 \family sans
 Math Panel
 \family default
@@ -16192,6 +17508,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -16279,6 +17597,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-m g
@@ -16342,6 +17662,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-m S-G
@@ -16395,7 +17717,9 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
- The 
+ The
+\family default
+ 
 \family sans
 M-m
 \family default
@@ -16408,8 +17732,9 @@ M-m
 
 \family sans
 M-m\InsetSpace ~
-i 
+i
 \family default
+ 
 "
 \family typewriter
 math-insert 
@@ -16600,6 +17925,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-m l
@@ -16623,12 +17950,16 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-Put the cursor 
+Put the cursor
+\emph default
+ 
 \emph on
 before
 \emph default
  [i.e.
- to the left] of the symbol with the limits, then invoke 
+ to the left] of the symbol with the limits, then invoke
+\family default
+ 
 \family typewriter
 math-limits
 \family default
@@ -16676,6 +18007,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -16720,11 +18053,15 @@ This command requires as arguments the dimensions of the matrix (two integer
 \family typewriter
 b
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 c
 \family default
- or 
+ or
+\family default
+ 
 \family typewriter
 t
 \family default
@@ -16732,11 +18069,15 @@ t
 \family typewriter
 l
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 c
 \family default
- or 
+ or
+\family default
+ 
 \family typewriter
 r
 \family default
@@ -16750,8 +18091,9 @@ Examples:
 \begin_layout Standard
 
 \family typewriter
-math-matrix 3 3 bccc 
+math-matrix 3 3 bccc
 \family default
+ 
 results in 
 \begin_inset Formula $\begin{array}{ccc}
 \\\\\end{array}$
@@ -16789,6 +18131,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -16826,6 +18170,8 @@ A blue equation.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-c m
@@ -16963,6 +18309,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-m n
@@ -17044,6 +18392,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-m ?
@@ -17072,19 +18422,27 @@ Usage:
 
 \begin_layout Standard
 Requires one argument.
- Valid arguments are 
+ Valid arguments are
+\family default
+ 
 \family typewriter
 displaystyle
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 textstyle
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 scriptstyle
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 scriptscriptstyle
 \family default
@@ -17111,7 +18469,9 @@ This is the normal size of a fraction inside text
 \begin_inset Formula ${\displaystyle \frac{1}{2}}$
 \end_inset
 
- is the result of using 
+ is the result of using
+\family default
+ 
 \family typewriter
 math-size displaystyle.
 
@@ -17149,6 +18509,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Edit\SpecialChar \menuseparator
@@ -17227,7 +18589,9 @@ footnote-insert; open-stuff; marginpar-insert
 \end_layout
 
 \begin_layout Standard
-Floats are described in detail in chapter 4 of the 
+Floats are described in detail in chapter 4 of the
+\emph default
+ 
 \emph on
 Userguide.
 \end_layout
@@ -17277,11 +18641,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -17294,7 +18662,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -17389,11 +18759,15 @@ Brief description of button icon.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file1.bind
 \family default
@@ -17406,7 +18780,9 @@ file1.bind
 \family sans
 C-S-M-W-key
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 file2.bind
 \family default
@@ -17477,6 +18853,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -17497,6 +18875,8 @@ ote
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i\InsetSpace ~
@@ -17585,6 +18965,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -17614,6 +18996,8 @@ ote
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -17628,7 +19012,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Move the current cursor and screen location to the next LyX 
+Move the current cursor and screen location to the next LyX
+\family default
+ 
 \family sans
 Note
 \family default
@@ -17662,6 +19048,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -17689,6 +19077,8 @@ pen/Close
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-o
@@ -17714,17 +19104,22 @@ Usage:
 \begin_layout Standard
 Place the cursor to the left of the entity and execute the command.
  Or, click on the center of the object with the mouse.
+
+\family default
  
 \family sans
-open-stuff 
+open-stuff
 \family default
+ 
 will open a math-mode block (left mouse button, single click), figure, note,
  footnote or margin note (left mouse button, double-click).
 \end_layout
 
 \begin_layout Standard
 Typically, the object you're opening is some sort of inset or float.
- You can use 
+ You can use
+\family default
+ 
 \family typewriter
 melt
 \family default
@@ -17756,6 +19151,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -17793,6 +19190,8 @@ Schematic of a clipboard with arrow to a document.
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -17805,11 +19204,15 @@ p
 \family sans
 C-v
 \family default
- or 
+ or
+\family default
+ 
 \family sans
 S-Insert
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -17819,7 +19222,9 @@ cua.bind
 \family sans
 C-y
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -17843,38 +19248,52 @@ Usage:
 
 \begin_layout Standard
 Upon starting LyX, the paste buffer is initially empty.
- During a 
+ During a
+\family default
+ 
 \family typewriter
 cut
 \family sans
- 
+
 \family default
-or 
+ 
+or
+\family default
+ 
 \family typewriter
 copy
 \family sans
- 
+
 \family default
+ 
 operation, the selected text will be stored in the paste buffer, overwriting
  anything previously stored in the buffer.
 \end_layout
 
 \begin_layout Standard
-If a selection is highlighted at the current cursor location, LyX 
+If a selection is highlighted at the current cursor location, LyX
+\family default
+ 
 \family typewriter
 paste
 \family sans
- 
+
 \family default
-inserts the paste buffer text 
+ 
+inserts the paste buffer text
+\emph default
+ 
 \emph on
 after
 \emph default
  the selection.
- It does not overwrite; it only operates in 
-\emph on
-insert 
+ It does not overwrite; it only operates in
 \emph default
+ 
+\emph on
+insert
+\emph default
+ 
 mode.
 \end_layout
 
@@ -17982,6 +19401,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -18016,6 +19437,8 @@ lank
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-Space
@@ -18079,7 +19502,9 @@ fixed space
 \begin_layout Standard
 Use the protected space for phrases that you don't want broken at the end
  of a line, or to insert more than one word into certain kinds of headings.
- For example, the 
+ For example, the
+\family default
+ 
 \family sans
 Description
 \family default
@@ -18094,7 +19519,9 @@ Description
 \emph on
 Never
 \emph default
- use 
+ use
+\family default
+ 
 \family typewriter
 protected-space
 \family default
@@ -18158,26 +19585,34 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-q
 \family roman
 ,
+\family default
+ 
 \family sans
- S-C-
+S-C-
 \begin_inset Quotes eld
 \end_inset
 
 
 \family roman
 ,
+\family default
+ 
 \family sans
- M-i\InsetSpace ~
+M-i\InsetSpace ~
 '
 \family roman
 , or
+\family default
+ 
 \family sans
- M-i\InsetSpace ~
+M-i\InsetSpace ~
 S-
 \begin_inset Quotes eld
 \end_inset
@@ -18205,22 +19640,28 @@ Usage:
 On the default keyboard, the grave and apostrophe keys produce matching
  single quote characters, and the double-quote key produces context-sensitive
  anti-symmetric double quotes.
- While it should normally be used only in rare situations, the 
+ While it should normally be used only in rare situations, the
+\family default
+ 
 \family typewriter
 quote-insert
 \family sans
- 
+
 \family default
+ 
 command allows you to easily produce the
 \family sans
- 
+
 \family default
+ 
 less esthetically pleasing typewriter-style double quote symbol.
 \end_layout
 
 \begin_layout Standard
 This command also allows you to create a double-quote character when you've
- changed the behavior of the 
+ changed the behavior of the
+\family default
+ 
 \family sans
 
 \begin_inset Quotes eld
@@ -18228,7 +19669,9 @@ This command also allows you to create a double-quote character when you've
 
 
 \family default
- key using the 
+ key using the
+\family default
+ 
 \family typewriter
 layout-quotes
 \family default
@@ -18260,6 +19703,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -18280,6 +19725,8 @@ edo
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -18294,7 +19741,9 @@ r
 \family sans
 C-Z
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -18309,12 +19758,15 @@ Purpose:
 
 \begin_layout Standard
 Attempts to redo the last major editing command that was undone with the
+
+\family default
  
 \family typewriter
 undo
 \family sans
- 
+
 \family default
+ 
 command.
 \end_layout
 
@@ -18324,12 +19776,16 @@ Usage:
 
 \begin_layout Standard
 Self-explanatory.
+
+\family default
  
 \family typewriter
 redo
 \family default
  may not always succeed, or it may redo more editing than you expected.
- The only limit to how many times you can perform a 
+ The only limit to how many times you can perform a
+\family default
+ 
 \family typewriter
 redo
 \family default
@@ -18362,6 +19818,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -18389,6 +19847,8 @@ Reference: (cross-reference control panel)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i\InsetSpace ~
@@ -18410,39 +19870,56 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-This command inserts either a LaTeX 
+This command inserts either a LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
 ref{key}
-\emph on
+\emph default
+\family default
  
+\family typewriter
+\emph on
+
 \family default
 \emph default
-or a 
+or a
+\family default
+ 
 \family typewriter
 
 \backslash
 pageref{key}
 \family default
  command, as appropriate, into the document.
- The 
+ The
+\family default
+ 
 \family typewriter
 key
 \family default
  parameter is the case-sensitive alphanumeric label that you previously
- defined using 
+ defined using
+\family default
+ 
 \family typewriter
 label-insert
 \family default
 .
- Executing the 
+ Executing the
+\family default
+ 
 \family typewriter
 ref-insert
 \family sans
- 
+
 \family default
-command brings up the 
+ 
+command brings up the
+\family default
+ 
 \family sans
 Insert\InsetSpace ~
 Reference
@@ -18455,7 +19932,9 @@ Reference
 \end_layout
 
 \begin_layout Standard
-The 
+The
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -18464,7 +19943,9 @@ ref(key)
  command allows LaTeX to track the specified key and substitute the appropriate
  cross-reference.
  The environment referenced can be a section, table, figure, equation number,
- enumerated item, 
+ enumerated item,
+\emph default
+ 
 \emph on
 etc
 \emph default
@@ -18476,7 +19957,9 @@ etc
 \end_layout
 
 \begin_layout Standard
-Note that labels defined in math mode don't become visible to the 
+Note that labels defined in math mode don't become visible to the
+\family default
+ 
 \family sans
 Insert\InsetSpace ~
 Reference
@@ -18489,19 +19972,22 @@ Examples:
 \end_layout
 
 \begin_layout Standard
-See 
+See
+\family default
+ 
 \family typewriter
 label-ref
 \family sans
- 
+
 \family default
+ 
 for an example of referencing a section number.
  That same label from that example can also be used to reference the page
  number at that location; for example, the page number of that location
  is Page\InsetSpace ~
 
-\begin_inset LatexCommand \pageref{test label}
-
+\begin_inset LatexCommand pageref
+reference "test label"
 \end_inset
 
 .
@@ -18542,6 +20028,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 PageDown
@@ -18553,14 +20041,20 @@ PageDown
 \begin_layout Standard
 
 \family sans
-C-v 
+C-v
+\family default
+ 
 \family roman
 or
+\family default
+ 
 \family sans
- C-x\InsetSpace ~
+C-x\InsetSpace ~
 ]
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -18584,11 +20078,15 @@ Usage:
 
 \begin_layout Standard
 Self-explanatory.
- Note that repeated 
+ Note that repeated
+\family default
+ 
 \family typewriter
 screen-down
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 screen-up
 \family default
@@ -18621,6 +20119,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-PageDown
@@ -18635,12 +20135,15 @@ Purpose:
 
 \begin_layout Standard
 Highlights (selects) the text between the starting and ending cursor positions
- during a 
+ during a
+\family default
+ 
 \family typewriter
 screen-down
 \family sans
- 
+
 \family default
+ 
 move.
  The highlighted text is shown in reverse video.
 \end_layout
@@ -18676,11 +20179,15 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-l
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -18722,6 +20229,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 PageUp 
@@ -18734,7 +20243,9 @@ PageUp
 C-x\InsetSpace ~
 [
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -18758,11 +20269,15 @@ Usage:
 
 \begin_layout Standard
 Self-explanatory.
- Note that repeated 
+ Note that repeated
+\family default
+ 
 \family typewriter
 screen-down
 \family default
- and 
+ and
+\family default
+ 
 \family typewriter
 screen-up
 \family default
@@ -18795,6 +20310,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-PageUp
@@ -18809,12 +20326,15 @@ Purpose:
 
 \begin_layout Standard
 Highlights (selects) the text between the starting and ending cursor positions
- during a 
+ during a
+\family default
+ 
 \family typewriter
 screen-up
 \family sans
- 
+
 \family default
+ 
 move.
  The highlighted text is shown in reverse video.
 \end_layout
@@ -19241,6 +20761,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -19279,8 +20801,10 @@ Options
 \begin_layout Description
 Spellchecker\InsetSpace ~
 Options:
-\family sans
+\family default
  
+\family sans
+
 \bar under
 S
 \bar default
@@ -19296,6 +20820,8 @@ Spellchecker
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -19352,6 +20878,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-c\InsetSpace ~
@@ -19364,7 +20892,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-This command is simply an alias for the command 
+This command is simply an alias for the command
+\family default
+ 
 \family typewriter
 math-mode
 \family default
@@ -19402,6 +20932,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Tab
@@ -19425,6 +20957,8 @@ Usage:
 
 \begin_layout Standard
 Note that although other motion commands have a text selection parallel,
+
+\family default
  
 \family typewriter
 tab-forward
@@ -19470,6 +21004,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -19532,14 +21068,19 @@ Usage:
 \begin_layout Standard
 Executing the command creates a pop-up table control panel that allows you
  to set the initial number of rows and columns.
- Hitting either the control panel 
+ Hitting either the control panel
+\family default
+ 
 \family sans
 OK
 \family default
- or 
-\family sans
-Apply 
+ or
 \family default
+ 
+\family sans
+Apply
+\family default
+ 
 buttons inserts the table at the current cursor location.
  Text can then be inserted into any cell of a table by selecting the cell
  and typing.
@@ -19552,7 +21093,9 @@ Examples:
 \end_layout
 
 \begin_layout Standard
-Executing the 
+Executing the
+\family default
+ 
 \family typewriter
 table-insert
 \family default
@@ -19993,6 +21536,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -20035,14 +21580,20 @@ Button with TeX on the face
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-l\InsetSpace ~
-t 
+t
+\family default
+ 
 \family roman
 or
+\family default
+ 
 \family sans
- M-c\InsetSpace ~
+M-c\InsetSpace ~
 t
 \family default
  (standard)
@@ -20054,7 +21605,9 @@ t
 \family sans
 C-l
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -20077,21 +21630,28 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-The 
+The
+\family default
+ 
 \family typewriter
 tex-mode
 \family default
  command is a toggle function.
- When first executed, 
+ When first executed,
+\family default
+ 
 \family typewriter
 tex-mode
 \family default
- begins accepting characters as a LaTeX command rather than text; when 
+ begins accepting characters as a LaTeX command rather than text; when
+\family default
+ 
 \family typewriter
 tex-mode
 \family sans
- 
+
 \family default
+ 
 is executed again this action stops.
  The result must be a valid and appropriate LaTeX command, or an error will
  result when the file is processed with LaTeX.
@@ -20103,7 +21663,9 @@ Examples:
 
 \begin_layout Standard
 The characters accepted as a LaTeX command are shown on the screen in red,
- as this example of the LaTeX 
+ as this example of the LaTeX
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -20157,13 +21719,19 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Lists and 
+Lists and
+\bar default
+\family default
+ 
+\family sans
 \bar under
 T
 \bar default
@@ -20191,6 +21759,8 @@ ontents
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-i t c
@@ -20203,8 +21773,10 @@ Purpose:
 
 \begin_layout Standard
 Inserts a
+\family default
+ 
 \family sans
- table of contents in your document at the current cursor position.
+table of contents in your document at the current cursor position.
 
 \family default
  
@@ -20245,6 +21817,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -20283,6 +21857,8 @@ Contents: (table of contents control panel)
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e t
@@ -20296,12 +21872,15 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-This function brings up the 
+This function brings up the
+\family default
+ 
 \family sans
 Table\InsetSpace ~
 of\InsetSpace ~
-Contents 
+Contents
 \family default
+ 
 pop-up.
  
 \end_layout
@@ -20311,19 +21890,24 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-You can update the table of contents using the 
+You can update the table of contents using the
+\family default
+ 
 \family sans
 \bar under
 U
 \bar default
 pdate
 \family default
- button on the control panel, but the primary purpose of the 
+ button on the control panel, but the primary purpose of the
+\family default
+ 
 \family sans
 Table\InsetSpace ~
 of\InsetSpace ~
-Contents 
+Contents
 \family default
+ 
 pop-up is browsing.
 \end_layout
 
@@ -20367,11 +21951,15 @@ Use this switch to change the way the cursor is handled when you move the
 
 \begin_layout Standard
 It is possible to set the alternate behaviour as the default by adding an
- entry in your 
+ entry in your
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
- file of the form: 
+ file of the form:
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -20394,7 +21982,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Used in the 
+Used in the
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
@@ -20431,7 +22021,9 @@ Purpose:
 \end_layout
 
 \begin_layout Standard
-Used in the 
+Used in the
+\family default
+ 
 \family typewriter
 lyxrc
 \family default
@@ -20471,6 +22063,8 @@ Bindings:
 Menu\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 \bar under
@@ -20491,6 +22085,8 @@ ndo
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -20505,7 +22101,9 @@ u
 \family sans
 C-z
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 cua.bind
 \family default
@@ -20516,7 +22114,9 @@ cua.bind
 C-x\InsetSpace ~
 u or C-~S-slash
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -20543,18 +22143,25 @@ Self explanatory.
 \end_layout
 
 \begin_layout Standard
-Two things: first, 
+Two things: first,
+\family default
+ 
 \family typewriter
 undo
 \family default
  has unlimited depth.
+
+\emph default
  
 \emph on
 (Except in the beta-version, where this feature has been limited to 100
  steps for safety).
- 
+
 \emph default
-You can keep invoking 
+ 
+You can keep invoking
+\family default
+ 
 \family typewriter
 undo
 \family default
@@ -20563,7 +22170,9 @@ undo
 \end_layout
 
 \begin_layout Standard
-Second, 
+Second,
+\family default
+ 
 \family typewriter
 undo
 \family default
@@ -20597,6 +22206,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 Up
@@ -20608,7 +22219,9 @@ Up
 \family sans
 C-p
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \family default
@@ -20654,6 +22267,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-Up
@@ -20706,6 +22321,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-Left
@@ -20758,6 +22375,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-C-Left
@@ -20770,7 +22389,9 @@ Purpose:
 
 \begin_layout Standard
 Highlights (selects) the text between the starting and ending positions
- during a 
+ during a
+\family default
+ 
 \family typewriter
 word-backward
 \family default
@@ -20805,6 +22426,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-c\InsetSpace ~
@@ -20842,19 +22465,27 @@ p
 \begin_inset Quotes erd
 \end_inset
 
- in the word 
+ in the word
+\emph default
+ 
 \emph on
 description
 \emph default
- and you execute the 
+ and you execute the
+\family default
+ 
 \family typewriter
 word-capitalize
 \family default
- function, 
+ function,
+\emph default
+ 
 \emph on
 description
 \emph default
- will change to 
+ will change to
+\emph default
+ 
 \emph on
 descriPtion.
 
@@ -20887,6 +22518,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-BackSpace
@@ -20950,13 +22583,17 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-Delete
 \newline
 M-d
 \family default
- in 
+ in
+\family default
+ 
 \family typewriter
 emacs.bind
 \end_layout
@@ -20991,7 +22628,9 @@ If the cursor is at the end of a paragraph, one of two things can happen.
  If the current and next paragraph have the same paragraph environment,
  LyX merges the two paragraphs, but doesn't delete any words.
  If the two paragraphs have different environments, nothing happens.
- Note that this is different from the behavior of 
+ Note that this is different from the behavior of
+\family default
+ 
 \family typewriter
 word-delete-backward
 \family default
@@ -21023,6 +22662,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 C-Right
@@ -21043,7 +22684,9 @@ Usage:
 \end_layout
 
 \begin_layout Standard
-Unlike 
+Unlike
+\family default
+ 
 \family typewriter
 word-backward
 \family default
@@ -21078,6 +22721,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 S-C-Right
@@ -21090,12 +22735,15 @@ Purpose:
 
 \begin_layout Standard
 Highlights (selects) the text between the starting and ending positions
- during a 
+ during a
+\family default
+ 
 \family typewriter
 word-forward
 \family sans
- 
+
 \family default
+ 
 move.
  The highlighted text is shown in reverse video.
 \end_layout
@@ -21131,6 +22779,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-c\InsetSpace ~
@@ -21169,19 +22819,27 @@ p
 \begin_inset Quotes erd
 \end_inset
 
- in the word 
+ in the word
+\emph default
+ 
 \emph on
 DESCRIPTION
 \emph default
- and you execute the 
+ and you execute the
+\family default
+ 
 \family typewriter
 word-lowcase
 \family default
- function, 
+ function,
+\emph default
+ 
 \emph on
 DESCRIPTION
 \emph default
- will change to 
+ will change to
+\emph default
+ 
 \emph on
 DESCRIption
 \emph default
@@ -21213,6 +22871,8 @@ Bindings:
 Keyboard\InsetSpace ~
 -
 \series default
+
+\family default
  
 \family sans
 M-c\InsetSpace ~
@@ -21251,19 +22911,27 @@ p
 \begin_inset Quotes erd
 \end_inset
 
- in the word 
+ in the word
+\emph default
+ 
 \emph on
 description
 \emph default
- and you execute the 
+ and you execute the
+\family default
+ 
 \family sans
 word-upcase
 \family default
- function, 
+ function,
+\emph default
+ 
 \emph on
 description
 \emph default
- will change to 
+ will change to
+\emph default
+ 
 \emph on
 descriPTION
 \emph default
@@ -21285,8 +22953,8 @@ General Information
 \begin_layout Standard
 
 \emph on
-\begin_inset LatexCommand \label{ch:misc}
-
+\begin_inset LatexCommand label
+name "ch:misc"
 \end_inset
 
  Ed.

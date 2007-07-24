@@ -1,17 +1,25 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \language french
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,26 +32,26 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Foire Aux Questions de LyX, avec les Réponses
+Foire Aux Questions de LyX, avec les RÃ©ponses
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-Informations de révision :
+Informations de rÃ©vision :
 \end_layout
 
 \begin_layout Standard
-Traduction : Mise à jour Date : 26/02/2003
+Traduction : Mise Ã  jour Date : 26/02/2003
 \end_layout
 
 \begin_layout Standard
-Original : Révision: 1.17, Date : 17/01/2003
+Original : RÃ©vision: 1.17, Date : 17/01/2003
 \end_layout
 
 \end_inset
@@ -52,29 +60,35 @@ Original : Révision: 1.17, Date : 17/01/2003
 \end_layout
 
 \begin_layout Author
-par l'Équipe LyX
+par l'Ã‰quipe LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Merci d'envoyer vos commentaires et corrections à la liste de diffusion
- de la documentation de LyX, 
+Merci d'envoyer vos commentaires et corrections Ã  la liste de diffusion
+ de la documentation de LyX,
+\family default
+ 
 \family typewriter
 <lyx-docs@lists.lyx.org>
 \family default
 .
 \newline
-Traduction en français par : 
+Traduction en franÃ§ais par : 
 \noun on
 Adrien Rebollo
 \noun default
+
+\family default
  
 \family typewriter
 <adrien.rebollo@gmx.fr>
 \family default
 .
- Merci d'envoyer vos commentaires et corrections sur la traduction à cette
- dernière adresse, ou à la liste de diffusion de LyX en français 
+ Merci d'envoyer vos commentaires et corrections sur la traduction Ã  cette
+ derniÃ¨re adresse, ou Ã  la liste de diffusion de LyX en franÃ§ais
+\family default
+ 
 \family typewriter
 <lyx-fr@lists.lyx.org>
 \family default
@@ -89,29 +103,32 @@ Adrien Rebollo
 \begin_layout Abstract
 Voici la Foire Aux Questions de LyX, le traitement de texte Open Source
  qui fournit un environnement WYSIWYM (Vous Voyez Ce Que Vous Voulez Dire)
- pour produire des documents de grande qualité.
- Pour une aide supplémentaire, vous pouvez contacter la liste de diffusion
- du Groupe des Utilisateurs de LyX à 
+ pour produire des documents de grande qualitÃ©.
+ Pour une aide supplÃ©mentaire, vous pouvez contacter la liste de diffusion
+ du Groupe des Utilisateurs de LyX Ã 
+\family default
+ 
 \family typewriter
 lyx-users@lists.lyx.org
 \family default
+
+\emph default
  
 \emph on
-après
+aprÃ¨s
 \emph default
- avoir consulté les documentations.
+ avoir consultÃ© les documentations.
 \end_layout
 
 \begin_layout Abstract
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-Introduction et Informations d'ordre général
+Introduction et Informations d'ordre gÃ©nÃ©ral
 \end_layout
 
 \begin_layout Subsection
@@ -119,14 +136,14 @@ Qu'est-ce que LyX?
 \end_layout
 
 \begin_layout Standard
-LyX est un programme qui offre une approche plus moderne de l'écriture de
- documents par ordinateur, une approche qui rompt avec la tradition périmée
- héritée de la machine à écrire.
- Il est destiné aux auteurs qui veulent obtenir rapidement un rendu professionne
-l avec le minimum d'effort sans devenir des spécialistes en typographie.
- Le travail de typographie sera pris en charge en majorité par l'ordinateur,
+LyX est un programme qui offre une approche plus moderne de l'Ã©criture de
+ documents par ordinateur, une approche qui rompt avec la tradition pÃ©rimÃ©e
+ hÃ©ritÃ©e de la machine Ã  Ã©crire.
+ Il est destinÃ© aux auteurs qui veulent obtenir rapidement un rendu professionne
+l avec le minimum d'effort sans devenir des spÃ©cialistes en typographie.
+ Le travail de typographie sera pris en charge en majoritÃ© par l'ordinateur,
  non par l'auteur.
- Avec LyX, l'auteur peut se concentrer sur le contenu de ses écrits.
+ Avec LyX, l'auteur peut se concentrer sur le contenu de ses Ã©crits.
 \end_layout
 
 \begin_layout Standard
@@ -151,7 +168,7 @@ What You See Is What You Get
 \begin_inset Quotes frd
 \end_inset
 
-, c'est-à-dire 
+, c'est-Ã -dire 
 \begin_inset Quotes fld
 \end_inset
 
@@ -181,39 +198,45 @@ Presque
 \begin_inset Quotes frd
 \end_inset
 
- signifie que les changements de ligne et de page ne sont pas affichés exactemen
-t tels qu'ils apparaîtront dans le document imprimé.
- Cependant, ce n'est pas réellement nécessaire, puisque LyX utilise un programme
- de typographie séparé (appelé LaTeX) pour réaliser le formatage final de
+ signifie que les changements de ligne et de page ne sont pas affichÃ©s exactemen
+t tels qu'ils apparaÃ®tront dans le document imprimÃ©.
+ Cependant, ce n'est pas rÃ©ellement nÃ©cessaire, puisque LyX utilise un programme
+ de typographie sÃ©parÃ© (appelÃ© LaTeX) pour rÃ©aliser le formatage final de
  votre texte.
- Tandis que LyX a tout ce qu'il faut pour être une interface utilisateur
+ Tandis que LyX a tout ce qu'il faut pour Ãªtre une interface utilisateur
  confortable, le programme de typographie a tout ce qu'il faut pour mettre
- en page du texte, et le faire très, très bien.
+ en page du texte, et le faire trÃ¨s, trÃ¨s bien.
 \end_layout
 
 \begin_layout Standard
-Ainsi, les changements de ligne et de page ne sont plus votre problème.
- Se rappeler quel numéro utiliser pour la prochaine sous-section non plus,
- et quelle police a été adoptée dans tous vos en-têtes de section, non plus.
- Vous dites à LyX (et à LaTeX) quel 
+Ainsi, les changements de ligne et de page ne sont plus votre problÃ¨me.
+ Se rappeler quel numÃ©ro utiliser pour la prochaine sous-section non plus,
+ et quelle police a Ã©tÃ© adoptÃ©e dans tous vos en-tÃªtes de section, non plus.
+ Vous dites Ã  LyX (et Ã  LaTeX) quel
+\emph default
+ 
 \emph on
 genre
 \emph default
- de document vous éditez et de quel 
+ de document vous Ã©ditez et de quel
+\emph default
+ 
 \emph on
 type
 \emph default
  est tel paragraphe, et l'ordinateur en tient compte dans la typographie.
- Bien sûr vous pouvez encore faire du formatage de bas niveau pour un ajustement
- au millimètre.
- Cependant, la bonne façon de faire avec LyX est de dire à l'ordinateur
+ Bien sÃ»r vous pouvez encore faire du formatage de bas niveau pour un ajustement
+ au millimÃ¨tre.
+ Cependant, la bonne faÃ§on de faire avec LyX est de dire Ã  l'ordinateur
  ce qu'
 \emph on
 est
 \emph default
- le texte, et non à quoi il devrait ressembler.
- C'est pourquoi nous aimons dire que LyX vous permet l'édition WYSIWYM (What
- You See Is What You 
+ le texte, et non Ã  quoi il devrait ressembler.
+ C'est pourquoi nous aimons dire que LyX vous permet l'Ã©dition WYSIWYM (What
+ You See Is What You
+\emph default
+ 
 \emph on
 Mean
 \emph default
@@ -222,11 +245,13 @@ Mean
 status collapsed
 
 \begin_layout Standard
-NdT : C'est-à-dire 
+NdT : C'est-Ã -dire 
 \begin_inset Quotes fld
 \end_inset
 
-Vous voyez ce que vous 
+Vous voyez ce que vous
+\emph default
+ 
 \emph on
 voulez dire
 \emph default
@@ -234,7 +259,7 @@ voulez dire
 \begin_inset Quotes frd
 \end_inset
 
-, par opposition à WYSIWYG vu plus haut.
+, par opposition Ã  WYSIWYG vu plus haut.
 \end_layout
 
 \end_inset
@@ -248,11 +273,11 @@ C'est bien, mais est-ce utile ?
 
 \begin_layout Standard
 Absolument.
- LyX a déjà servi à produire des documents des types suivants :
+ LyX a dÃ©jÃ  servi Ã  produire des documents des types suivants :
 \end_layout
 
 \begin_layout Itemize
-Mémos
+MÃ©mos
 \end_layout
 
 \begin_layout Itemize
@@ -260,15 +285,15 @@ Lettres
 \end_layout
 
 \begin_layout Itemize
-Thèses (260 pages en un seul document, plus si l'on compte les fichiers
+ThÃ¨ses (260 pages en un seul document, plus si l'on compte les fichiers
  inclus)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 par exemple, 
-\begin_inset LatexCommand \url{http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf}
-
+\begin_inset LatexCommand url
+target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
 \end_inset
 
 
@@ -281,11 +306,11 @@ MHz !)
 \end_layout
 
 \begin_layout Itemize
-Carnets de séminaires (+500 pages)
+Carnets de sÃ©minaires (+500 pages)
 \end_layout
 
 \begin_layout Itemize
-Résumés de conférences (
+RÃ©sumÃ©s de confÃ©rences (
 \begin_inset Quotes fld
 \end_inset
 
@@ -293,11 +318,13 @@ Proceedings of the Second Continental Workshop on the Geoid in Europe
 \begin_inset Quotes frd
 \end_inset
 
-, (Rapport de l'Institut Géodésique Finlandais 98:4), 292 pages)
+, (Rapport de l'Institut GÃ©odÃ©sique Finlandais 98:4), 292 pages)
 \end_layout
 
 \begin_layout Itemize
-Documentation de logiciels (le 
+Documentation de logiciels (le
+\emph default
+ 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
@@ -313,8 +340,8 @@ Livres
 \begin_deeper
 \begin_layout Itemize
 voir 
-\begin_inset LatexCommand \url{http://www.postgresql.org/docs/awbook.html}
-
+\begin_inset LatexCommand url
+target "http://www.postgresql.org/docs/awbook.html"
 \end_inset
 
  pour un exemple sur PostgreSQL
@@ -334,7 +361,7 @@ Remote Sensing and Urban Analysis
 \end_layout
 
 \begin_layout Itemize
-Herbert Voss : Praktische Kryptologie mit Java, 286 pages avec des tas d'équatio
+Herbert Voss : Praktische Kryptologie mit Java, 286 pages avec des tas d'Ã©quatio
 ns, de tableaux, de figures.
  ISBN 3-8311-1458-7
 \end_layout
@@ -345,7 +372,7 @@ Yann Collette et Patrick Siarry, Optimisation multiobjectifs, 2002, Eyrolles
 
 \end_deeper
 \begin_layout Itemize
-Articles publiés dans les publications scientifiques suivantes :
+Articles publiÃ©s dans les publications scientifiques suivantes :
 \end_layout
 
 \begin_deeper
@@ -365,12 +392,12 @@ Astronomical Journal (Ressler, M.
 
 \end_deeper
 \begin_layout Itemize
-Romans (roman de + de 400 pages prévu pour Septembre 2000 ; un roman de
- 836 pages est entre les mains d'un agent littéraire)
+Romans (roman de + de 400 pages prÃ©vu pour Septembre 2000 ; un roman de
+ 836 pages est entre les mains d'un agent littÃ©raire)
 \end_layout
 
 \begin_layout Itemize
-Scénarios de pièces et de films
+ScÃ©narios de piÃ¨ces et de films
 \end_layout
 
 \begin_layout Itemize
@@ -379,21 +406,23 @@ M$ (US)
 \end_layout
 
 \begin_layout Subsection
-Où commencer ?
+OÃ¹ commencer ?
 \end_layout
 
 \begin_layout Standard
 Le site 
-\begin_inset LatexCommand \url{www.lyx.org}
-
+\begin_inset LatexCommand url
+target "www.lyx.org"
 \end_inset
 
- est le premier endroit où aller pour trouver quoi que ce soit en rapport
+ est le premier endroit oÃ¹ aller pour trouver quoi que ce soit en rapport
  avec LyX.
- Là-bas, il y a les dernières nouvelles, des exemples, des téléchargements,
+ LÃ -bas, il y a les derniÃ¨res nouvelles, des exemples, des tÃ©lÃ©chargements,
  et des tas d'autres choses.
- Après avoir installé LyX et l'avoir démarré pour la première fois, lisez
- le 
+ AprÃ¨s avoir installÃ© LyX et l'avoir dÃ©marrÃ© pour la premiÃ¨re fois, lisez
+ le
+\emph default
+ 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
@@ -405,13 +434,13 @@ Manuel\InsetSpace ~
 d'Apprentissage
 \family default
 ).
- Oui, oui, je suis tout à fait sérieux.
+ Oui, oui, je suis tout Ã  fait sÃ©rieux.
 \end_layout
 
 \begin_layout Standard
-Une autre introduction basique à LyX : 
-\begin_inset LatexCommand \url{www.bilkent.edu.tr/~robin/lyxguide.pdf}
-
+Une autre introduction basique Ã  LyX : 
+\begin_inset LatexCommand url
+target "www.bilkent.edu.tr/~robin/lyxguide.pdf"
 \end_inset
 
 .
@@ -422,12 +451,12 @@ LyX marche-t-il sur mon ordinateur ?
 \end_layout
 
 \begin_layout Standard
-Pour le moment, vous avez besoin du système X-Window pour faire tourner
+Pour le moment, vous avez besoin du systÃ¨me X-Window pour faire tourner
  LyX.
- Il existe des ports OS/2 et Win32, mais vous devez avoir un serveur X installé
- et fonctionnant sur ces systèmes.
+ Il existe des ports OS/2 et Win32, mais vous devez avoir un serveur X installÃ©
+ et fonctionnant sur ces systÃ¨mes.
  Nous savons que LyX tourne sur les plateformes suivantes (et probablement
- sur une infinité d'autres) :
+ sur une infinitÃ© d'autres) :
 \end_layout
 
 \begin_layout Itemize
@@ -455,18 +484,18 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Subsection
-LyX nécessite combien d'espace disque ?
+LyX nÃ©cessite combien d'espace disque ?
 \end_layout
 
 \begin_layout Standard
-Sur mon système, l'exécutable LyX prend 2,0\InsetSpace ~
+Sur mon systÃ¨me, l'exÃ©cutable LyX prend 2,0\InsetSpace ~
 Mo d'espace disque, et les fichiers
  auxiliaires en occupent encore 12,6\InsetSpace ~
 Mo (dont 9,1\InsetSpace ~
 Mo pour la documentation
- ! Vous pouvez effacer les langues qui ne vous servent pas pour économiser
+ ! Vous pouvez effacer les langues qui ne vous servent pas pour Ã©conomiser
  un peu d'espace).
- Bien sûr, il faut que vous ayez quelque chose comme teTeX installé, ce
+ Bien sÃ»r, il faut que vous ayez quelque chose comme teTeX installÃ©, ce
  qui consomme un bon 115\InsetSpace ~
 Mo, ainsi que ghostscript, qui prend encore 10\InsetSpace ~
 Mo
@@ -479,19 +508,19 @@ LyX est-il vraiment un logiciel ouvert ?
 
 \begin_layout Standard
 Oui.
- Certains peuvent tiquer car, comme la bibliothèque d'interface graphique
- xforms utilisé par LyX, bien que gratuite, n'a pas un code source ouvert,
- LyX n'est pas Pur et Immaculé.
+ Certains peuvent tiquer car, comme la bibliothÃ¨que d'interface graphique
+ xforms utilisÃ© par LyX, bien que gratuite, n'a pas un code source ouvert,
+ LyX n'est pas Pur et ImmaculÃ©.
  Absurde.
- Le code source de LyX lui-même est disponible sous une version légèrement
- modifiée de la GPL, donc LyX répond à la définition d'un logiciel ouvert.
- D'autre part, les développeurs de LyX travaillent à le rendre indépendant
- de la bibliothèque d'interface, de sorte que la prochaine version 1.3.0 supporter
-a Qt2/3 ; et quand bien même, la version 1.0 de xforms sera distribuée sous
- la licence LGPL (au moment où ceci est écrit, le code source de versions
- préliminaires de xforms 1.0 est disponible à l'adresse 
-\begin_inset LatexCommand \url{ftp://ftp.lyx.org/pub/xforms/OpenSource/}
-
+ Le code source de LyX lui-mÃªme est disponible sous une version lÃ©gÃ¨rement
+ modifiÃ©e de la GPL, donc LyX rÃ©pond Ã  la dÃ©finition d'un logiciel ouvert.
+ D'autre part, les dÃ©veloppeurs de LyX travaillent Ã  le rendre indÃ©pendant
+ de la bibliothÃ¨que d'interface, de sorte que la prochaine version 1.3.0 supporter
+a Qt2/3 ; et quand bien mÃªme, la version 1.0 de xforms sera distribuÃ©e sous
+ la licence LGPL (au moment oÃ¹ ceci est Ã©crit, le code source de versions
+ prÃ©liminaires de xforms 1.0 est disponible Ã  l'adresse 
+\begin_inset LatexCommand url
+target "ftp://ftp.lyx.org/pub/xforms/OpenSource/"
 \end_inset
 
 ).
@@ -502,31 +531,31 @@ Ressources Internet
 \end_layout
 
 \begin_layout Subsection
-Où chercher sur la Toile, au sujet de LyX ?
+OÃ¹ chercher sur la Toile, au sujet de LyX ?
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand \url{www.lyx.org}
-
+\begin_inset LatexCommand url
+target "www.lyx.org"
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand \url{bugzilla.lyx.org}
-
+\begin_inset LatexCommand url
+target "bugzilla.lyx.org"
 \end_inset
 
 , si vous voulez signaler un bogue dans LyX.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand \url{www.devel.lyx.org}
-
+\begin_inset LatexCommand url
+target "www.devel.lyx.org"
 \end_inset
 
-, si vous êtes intéressé par les entrailles de la bête.
+, si vous Ãªtes intÃ©ressÃ© par les entrailles de la bÃªte.
 \end_layout
 
 \begin_layout Itemize
@@ -535,24 +564,24 @@ Les sites miroir comprennent :
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset LatexCommand \url{www.mx.lyx.org}
-
+\begin_inset LatexCommand url
+target "www.mx.lyx.org"
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand \url{www.no.lyx.org}
-
+\begin_inset LatexCommand url
+target "www.no.lyx.org"
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand \url{www.it.lyx.org}
-
+\begin_inset LatexCommand url
+target "www.it.lyx.org"
 \end_inset
 
 
@@ -564,7 +593,7 @@ Et par FTP ?
 \end_layout
 
 \begin_layout Itemize
-ftp.lyx.org dans /pub/lyx (également ftp.via.ecp.fr)
+ftp.lyx.org dans /pub/lyx (Ã©galement ftp.via.ecp.fr)
 \end_layout
 
 \begin_layout Subsection
@@ -572,16 +601,16 @@ Quelles sont les listes de diffusion ?
 \end_layout
 
 \begin_layout Itemize
-lyx-announce@lists.lyx.org (très faible trafic), pour les annonces relatives
- à LyX
+lyx-announce@lists.lyx.org (trÃ¨s faible trafic), pour les annonces relatives
+ Ã  LyX
 \end_layout
 
 \begin_layout Itemize
-lyx-users@lists.lyx.org (trafic moyen), pour les problèmes généraux d'utilisation
+lyx-users@lists.lyx.org (trafic moyen), pour les problÃ¨mes gÃ©nÃ©raux d'utilisation
 \end_layout
 
 \begin_layout Itemize
-lyx-devel@lists.lyx.org (trafic élevé), pour les questions de développement
+lyx-devel@lists.lyx.org (trafic Ã©levÃ©), pour les questions de dÃ©veloppement
  et de chasse aux bogues
 \end_layout
 
@@ -591,14 +620,14 @@ lyx-docs@lists.lyx.org (trafic effroyablement bas), pour les questions de
 \end_layout
 
 \begin_layout Itemize
-lyx-fr@lists.lyx.org (trafic faible), pour la traduction de LyX en français,
+lyx-fr@lists.lyx.org (trafic faible), pour la traduction de LyX en franÃ§ais,
  et d'autres questions d'utilisateurs francophones
 \end_layout
 
 \begin_layout Standard
-En général, vous envoyez un courrier à lyx-machin-subscribe@lists.lyx.org
- pour vous abonner à l'une de ces listes ou à lyx-machin-unsubscribe@lists.lyx.org
- pour vous désabonner, où 
+En gÃ©nÃ©ral, vous envoyez un courrier Ã  lyx-machin-subscribe@lists.lyx.org
+ pour vous abonner Ã  l'une de ces listes ou Ã  lyx-machin-unsubscribe@lists.lyx.org
+ pour vous dÃ©sabonner, oÃ¹ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -606,7 +635,7 @@ machin
 \begin_inset Quotes frd
 \end_inset
 
- peut être 
+ peut Ãªtre 
 \begin_inset Quotes fld
 \end_inset
 
@@ -647,15 +676,15 @@ fr
 \end_inset
 
  ; voyez 
-\begin_inset LatexCommand \url{http://www.lyx.org/internet/mailing.php3}
-
+\begin_inset LatexCommand url
+target "http://www.lyx.org/internet/mailing.php3"
 \end_inset
 
- pour plus de détails.
+ pour plus de dÃ©tails.
 \end_layout
 
 \begin_layout Subsection
-Les listes de diffusion sont-elles archivées quelque part ?
+Les listes de diffusion sont-elles archivÃ©es quelque part ?
 \end_layout
 
 \begin_layout Standard
@@ -664,13 +693,13 @@ Oui.
 \end_layout
 
 \begin_layout Subsection
-C'est malin ! Où sont-elles archivées ?
+C'est malin ! OÃ¹ sont-elles archivÃ©es ?
 \end_layout
 
 \begin_layout Itemize
 Announce : 
-\begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-announce@lists.lyx.org/}
-
+\begin_inset LatexCommand url
+target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
 \end_inset
 
 
@@ -678,8 +707,8 @@ Announce :
 
 \begin_layout Itemize
 Users : 
-\begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-users@lists.lyx.org/}
-
+\begin_inset LatexCommand url
+target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 \end_inset
 
 
@@ -687,37 +716,37 @@ Users :
 
 \begin_layout Itemize
 Devel : 
-\begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-devel@lists.lyx.org/}
-
+\begin_inset LatexCommand url
+target "http://www.mail-archive.com/lyx-devel@lists.lyx.org/"
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-Compatibilité avec d'autres traitements de texte
+CompatibilitÃ© avec d'autres traitements de texte
 \end_layout
 
 \begin_layout Subsection
-Puis-je lire/écrire des fichiers LaTeX ?
+Puis-je lire/Ã©crire des fichiers LaTeX ?
 \end_layout
 
 \begin_layout Standard
 Oui.
- LyX produit des fichiers LaTeX qui sont destinés soit à la machine soit
- à un humain.
+ LyX produit des fichiers LaTeX qui sont destinÃ©s soit Ã  la machine soit
+ Ã  un humain.
  Le programme reLyX qui est fourni avec LyX convertit pas trop mal du LaTeX
  en LyX.
- Il n'est pas parfait, mais il fera au moins 95% du travail à votre place.
+ Il n'est pas parfait, mais il fera au moins 95% du travail Ã  votre place.
 \end_layout
 
 \begin_layout Subsection
-Puis-je lire/écrire des fichiers Word ?
+Puis-je lire/Ã©crire des fichiers Word ?
 \end_layout
 
 \begin_layout Standard
-Pas de manière évidente.
- Certaines personnes y sont à peu près parvenu en suivant le schéma : LyX
+Pas de maniÃ¨re Ã©vidente.
+ Certaines personnes y sont Ã  peu prÃ¨s parvenu en suivant le schÃ©ma : LyX
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -730,58 +759,60 @@ RTF
 \end_inset
 
 Word, et vice versa.
- Toutefois, Word n'est pas un langage à balises comme LyX et LaTeX, les
- conversions sont donc souvent difficiles et presque dépourvues de sens.
+ Toutefois, Word n'est pas un langage Ã  balises comme LyX et LaTeX, les
+ conversions sont donc souvent difficiles et presque dÃ©pourvues de sens.
 \end_layout
 
 \begin_layout Standard
-Cependant, voici quelques suggestions qui nous ont été envoyées :
+Cependant, voici quelques suggestions qui nous ont Ã©tÃ© envoyÃ©es :
 \end_layout
 
 \begin_layout Description
 word2x produit des sorties LaTeX, HTML et texte brut.
- Le LaTeX est en principe importable (et est assez propre) mais je préfère
+ Le LaTeX est en principe importable (et est assez propre) mais je prÃ©fÃ¨re
  souvent le texte brut et rajoute la mise en page ensuite.
- (Pour ce faire vous devez connaître la mise en page d'origine).
- Au moment où nous écrivons il ne gérait pas encore Word Office 2000.
+ (Pour ce faire vous devez connaÃ®tre la mise en page d'origine).
+ Au moment oÃ¹ nous Ã©crivons il ne gÃ©rait pas encore Word Office 2000.
 \end_layout
 
 \begin_layout Description
-wvware (disponible à 
-\begin_inset LatexCommand \url{www.wvware.com}
-
+wvware (disponible Ã  
+\begin_inset LatexCommand url
+target "www.wvware.com"
 \end_inset
 
-, ou dans le répertoire CVS d'abisource pour la dernière version).
+, ou dans le rÃ©pertoire CVS d'abisource pour la derniÃ¨re version).
  Il s'appelait auparavant msWordView.
- Très bon, il produit du LaTeX/HTML mis en page.
- Il est cependant très configurable : un fichier de configuration 
+ TrÃ¨s bon, il produit du LaTeX/HTML mis en page.
+ Il est cependant trÃ¨s configurable : un fichier de configuration
+\family default
+ 
 \family typewriter
 wvLaTeX.xml
 \family default
  guide le processus de traduction.
- Il gère aussi les derniers formats Office.
+ Il gÃ¨re aussi les derniers formats Office.
 \end_layout
 
 \begin_layout Description
-Ted C'est l'éditeur à utiliser quand quelqu'un vous envoie un fichier RTF
- créé avec Word.
+Ted C'est l'Ã©diteur Ã  utiliser quand quelqu'un vous envoie un fichier RTF
+ crÃ©Ã© avec Word.
  Bon produit.
- Utilisez les possibilités de conversion (texte brut ou HTML).
+ Utilisez les possibilitÃ©s de conversion (texte brut ou HTML).
 \end_layout
 
 \begin_layout Standard
 Enfin, quand tout le reste ne marche pas, utilisez n'importe quel traitement
  de texte (WordPerfect, StarOffice, ...) qui comprenne le Word.
- Puis exportez le fichier en texte brut et rajoutez la mise en page à la
+ Puis exportez le fichier en texte brut et rajoutez la mise en page Ã  la
  main avec LyX.
- Pour ma part, je trouve cela plus rapide que de corriger le résultat des
+ Pour ma part, je trouve cela plus rapide que de corriger le rÃ©sultat des
  tentatives de conversion, mais ce n'est certainement pas satisfaisant si
- vous devez passer souvent d'un format à l'autre.
+ vous devez passer souvent d'un format Ã  l'autre.
 \end_layout
 
 \begin_layout Subsection
-Puis-je lire/écrire des fichiers HTML ?
+Puis-je lire/Ã©crire des fichiers HTML ?
 \end_layout
 
 \begin_layout Standard
@@ -795,7 +826,7 @@ tth
 \end_inset
 
 , parmi d'autres.
- Il y a peut-être un programme HTML
+ Il y a peut-Ãªtre un programme HTML
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -815,21 +846,21 @@ Le code source de LyX : lyx-1.x.x.tar.gz
 \end_layout
 
 \begin_layout Itemize
-La bibliothèque XForms : xforms-0.88 ou plus récent (il est recommandé d'utiliser
- la dernière version disponible)
+La bibliothÃ¨que XForms : xforms-0.88 ou plus rÃ©cent (il est recommandÃ© d'utiliser
+ la derniÃ¨re version disponible)
 \end_layout
 
 \begin_layout Itemize
-Une distribution LaTeX : nous recommandons vivement teTeX-1.0 ou plus récent
+Une distribution LaTeX : nous recommandons vivement teTeX-1.0 ou plus rÃ©cent
 \end_layout
 
 \begin_layout Itemize
-Un interpréteur PostScript® : ghostscript-7.0 ou plus récent
+Un interprÃ©teur PostScriptÂ® : ghostscript-7.0 ou plus rÃ©cent
 \end_layout
 
 \begin_layout Itemize
 Un compilateur C++ moderne.
- Si vous utilisez gcc, LyX nécessite au moins la version 2.95.2.
+ Si vous utilisez gcc, LyX nÃ©cessite au moins la version 2.95.2.
 \end_layout
 
 \begin_layout Subsection
@@ -845,35 +876,35 @@ make
 \end_layout
 
 \begin_layout Itemize
-make install (en général comme root, bien que vous n'en ayez pas besoin
- si vous ajoutez des options à la commande configure)
+make install (en gÃ©nÃ©ral comme root, bien que vous n'en ayez pas besoin
+ si vous ajoutez des options Ã  la commande configure)
 \end_layout
 
 \begin_layout Standard
-Voyez le fichier INSTALL pour plus de détails.
+Voyez le fichier INSTALL pour plus de dÃ©tails.
 \end_layout
 
 \begin_layout Subsection
-Je déteste compiler.
- Où sont les binaires précompilés ?
+Je dÃ©teste compiler.
+ OÃ¹ sont les binaires prÃ©compilÃ©s ?
 \end_layout
 
 \begin_layout Standard
-La plupart des paquetages ci-dessus sont disponibles comme binaires précompilés
- pour un choix de systèmes Linux, et peut-être aussi pour d'autres systèmes.
+La plupart des paquetages ci-dessus sont disponibles comme binaires prÃ©compilÃ©s
+ pour un choix de systÃ¨mes Linux, et peut-Ãªtre aussi pour d'autres systÃ¨mes.
  Les binaires de LyX sont disponibles au format RPM et dans quelques autres
- formats à l'adresse 
-\begin_inset LatexCommand \url{ftp://ftp.lyx.org/pub/lyx/bin/}
-
+ formats Ã  l'adresse 
+\begin_inset LatexCommand url
+target "ftp://ftp.lyx.org/pub/lyx/bin/"
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-Le port Windows se trouve à 
-\begin_inset LatexCommand \url{http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html}
-
+Le port Windows se trouve Ã  
+\begin_inset LatexCommand url
+target "http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html"
 \end_inset
 
 .
@@ -898,12 +929,12 @@ NdT : de l'anglais Evil Red Text.
 
 \end_inset
 
-, ce sont les commandes en LaTeX brut qui sont insérées dans votre document
+, ce sont les commandes en LaTeX brut qui sont insÃ©rÃ©es dans votre document
  LyX.
- Certains troglodytes de l'équipe de développement ont inventé ce terme
- quand ils se sont plaints de l'aspect peu esthétique qu'il peut entraîner
+ Certains troglodytes de l'Ã©quipe de dÃ©veloppement ont inventÃ© ce terme
+ quand ils se sont plaints de l'aspect peu esthÃ©tique qu'il peut entraÃ®ner
  dans les documents LyX.
- Les plus éclairés d'entre nous savent qu'il est très utile, mais l'expression
+ Les plus Ã©clairÃ©s d'entre nous savent qu'il est trÃ¨s utile, mais l'expression
  ERT a fait son chemin.
 \end_layout
 
@@ -912,13 +943,13 @@ Comment entrer de l'ERT ?
 \end_layout
 
 \begin_layout Standard
-Les arguments esthétiques mis à part, la plupart des réponses de cette FAQ
+Les arguments esthÃ©tiques mis Ã  part, la plupart des rÃ©ponses de cette FAQ
  vous demandent de l'utiliser.
- À chaque fois que nous écrivons 
+ Ã€ chaque fois que nous Ã©crivons 
 \begin_inset Quotes fld
 \end_inset
 
-insérez le code LaTeX suivant
+insÃ©rez le code LaTeX suivant
 \begin_inset Quotes frd
 \end_inset
 
@@ -926,16 +957,18 @@ insérez le code LaTeX suivant
 \end_layout
 
 \begin_layout Enumerate
-Cliquez sur le bouton TeX de la barre d'outils ou faites 
+Cliquez sur le bouton TeX de la barre d'outils ou faites
+\family default
+ 
 \family sans
-Insérer\SpecialChar \menuseparator
+InsÃ©rer\SpecialChar \menuseparator
 TeX
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Tapez la commande dans l'insert qui vient de se créer.
+Tapez la commande dans l'insert qui vient de se crÃ©er.
 \end_layout
 
 \begin_layout Subsection
@@ -946,18 +979,22 @@ Le nouvel insert ERT est un fardeau !
 Beaucoup de gens se sont plaints de l'insert ERT introduit avec la version
  1.2.0.
  Cependant, comme il n'y a aucune chance de voir ressusciter la vieille
- police LaTeX (c'était une solution provisoire), voici quelques avantages
- à considérer :
+ police LaTeX (c'Ã©tait une solution provisoire), voici quelques avantages
+ Ã  considÃ©rer :
 \end_layout
 
 \begin_layout Itemize
-Vous pouvez replier l'ERT comme n'importe quel autre flottant avec 
+Vous pouvez replier l'ERT comme n'importe quel autre flottant avec
+\family default
+ 
 \family sans
-Éditer\SpecialChar \menuseparator
+Ã‰diter\SpecialChar \menuseparator
 Ouvrir/Fermer\InsetSpace ~
 Flottant
 \family default
- (par défaut le raccourci est 
+ (par dÃ©faut le raccourci est
+\family default
+ 
 \family sans
 C-i
 \family default
@@ -973,7 +1010,7 @@ en ligne
 \begin_inset Quotes frd
 \end_inset
 
- par l'intermédiaire de la fenêtre qui s'ouvre en cliquant sur l'insert
+ par l'intermÃ©diaire de la fenÃªtre qui s'ouvre en cliquant sur l'insert
  avec le bouton droit.
 \end_layout
 
@@ -982,16 +1019,18 @@ Y a-t-il une alternative ?
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi insérer des commandes LaTeX dans le Préambule LaTeX, ouvert
- avec 
+Vous pouvez aussi insÃ©rer des commandes LaTeX dans le PrÃ©ambule LaTeX, ouvert
+ avec
+\family default
+ 
 \family sans
 Format\SpecialChar \menuseparator
-Préambule
+PrÃ©ambule
 \family default
-, dont tout le contenu est inclus texto dans le fichier LaTeX engendré lors
+, dont tout le contenu est inclus texto dans le fichier LaTeX engendrÃ© lors
  de la compilation.
- C'est particulièrement utile pour inclure des paquetages LaTeX non standard,
- pour définir des raccourcis globaux à utiliser tout au long du document,
+ C'est particuliÃ¨rement utile pour inclure des paquetages LaTeX non standard,
+ pour dÃ©finir des raccourcis globaux Ã  utiliser tout au long du document,
  etc.
 \end_layout
 
@@ -1000,9 +1039,9 @@ Questions sur l'utilisation de LyX
 \end_layout
 
 \begin_layout Standard
-Dans cette section, nous tentons de répondre aux questions qui sont vraiment
- les plus fréquentes.
- Pour un panorama plus large de questions pas si fréquentes et pour beaucoup
+Dans cette section, nous tentons de rÃ©pondre aux questions qui sont vraiment
+ les plus frÃ©quentes.
+ Pour un panorama plus large de questions pas si frÃ©quentes et pour beaucoup
  de 
 \begin_inset Quotes fld
 \end_inset
@@ -1011,9 +1050,9 @@ Comment faire pour ?
 \begin_inset Quotes frd
 \end_inset
 
- voyez la collection impressionnante rassemblée par Herbert Voss à 
-\begin_inset LatexCommand \url{http://www.educat.hu-berlin.de/~voss/lyx}
-
+ voyez la collection impressionnante rassemblÃ©e par Herbert Voss Ã  
+\begin_inset LatexCommand url
+target "http://www.educat.hu-berlin.de/~voss/lyx"
 \end_inset
 
 .
@@ -1022,11 +1061,11 @@ Comment faire pour ?
 \end_layout
 
 \begin_layout Subsection
-Questions d'ordre général
+Questions d'ordre gÃ©nÃ©ral
 \end_layout
 
 \begin_layout Subsubsection
-Comment me débarrasser de la date sous le titre ?
+Comment me dÃ©barrasser de la date sous le titre ?
 \end_layout
 
 \begin_layout Standard
@@ -1040,22 +1079,24 @@ date{}
 \end_layout
 
 \begin_layout Standard
-dans la fenêtre 
+dans la fenÃªtre
+\family default
+ 
 \family sans
 Format\SpecialChar \menuseparator
-Préambule
+PrÃ©ambule
 \family default
 .
 \end_layout
 
 \begin_layout Subsubsection
-Comment changer l'espacement dans un environnement de liste ListePuces/Énumérati
+Comment changer l'espacement dans un environnement de liste ListePuces/Ã‰numÃ©rati
 on/Description ?
 \end_layout
 
 \begin_layout Standard
-Vous devez le faire à la main : par exemple, pour une liste donnée, vous
- pouvez ajouter le code LaTeX suivant au début de la liste :
+Vous devez le faire Ã  la main : par exemple, pour une liste donnÃ©e, vous
+ pouvez ajouter le code LaTeX suivant au dÃ©but de la liste :
 \end_layout
 
 \begin_layout Standard
@@ -1069,11 +1110,11 @@ itemsep}{0mm}
 \end_layout
 
 \begin_layout Subsubsection
-Comment numéroter les équations section par section ?
+Comment numÃ©roter les Ã©quations section par section ?
 \end_layout
 
 \begin_layout Standard
-Ajoutez à votre préambule LaTeX les deux lignes suivantes :
+Ajoutez Ã  votre prÃ©ambule LaTeX les deux lignes suivantes :
 \end_layout
 
 \begin_layout LyX-Code
@@ -1099,38 +1140,52 @@ Puis-je le faire aussi avec les figures et les tableaux ?
 \end_layout
 
 \begin_layout Standard
-Remplacez la phrase 
+Remplacez la phrase
+\family default
+ 
 \family typewriter
 
 \backslash
 theequation
 \family default
- par 
+ par
+\family default
+ 
 \family typewriter
 
 \backslash
 thetable
 \family default
- ou 
+ ou
+\family default
+ 
 \family typewriter
 
 \backslash
 thefigure
 \family default
- puis remplacez 
+ puis remplacez
+\family default
+ 
 \family typewriter
 equation
 \family default
- par 
+ par
+\family default
+ 
 \family typewriter
 table
 \family default
- ou 
+ ou
+\family default
+ 
 \family typewriter
 figure
 \family default
 .
- N'oubliez pas d'adapter aussi la commande 
+ N'oubliez pas d'adapter aussi la commande
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -1140,12 +1195,14 @@ figure
 \end_layout
 
 \begin_layout Subsubsection
-Comment transformer la numérotation des notes de bas de page en symboles
- (étoile, point, etc.) ?
+Comment transformer la numÃ©rotation des notes de bas de page en symboles
+ (Ã©toile, point, etc.) ?
 \end_layout
 
 \begin_layout Standard
-Ajoutez 
+Ajoutez
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -1155,17 +1212,17 @@ thefootnote}{
 \backslash
 fnsymbol{footnote}}
 \family default
- à votre préambule LaTeX.
+ Ã  votre prÃ©ambule LaTeX.
 \end_layout
 
 \begin_layout Subsubsection
-Comment se débarrasser des veuves et des orphelins ?
+Comment se dÃ©barrasser des veuves et des orphelins ?
 \end_layout
 
 \begin_layout Standard
-Non, on ne joue pas à Duke Nukem ! Pour éliminer les veuves et les orphelins
- (première ligne d'un paragraphe au bas de la page et dernière ligne d'un
- paragraphe au sommet de la page), ajoutez au préambule LaTeX ce qui suit
+Non, on ne joue pas Ã  Duke Nukem ! Pour Ã©liminer les veuves et les orphelins
+ (premiÃ¨re ligne d'un paragraphe au bas de la page et derniÃ¨re ligne d'un
+ paragraphe au sommet de la page), ajoutez au prÃ©ambule LaTeX ce qui suit
  :
 \end_layout
 
@@ -1182,7 +1239,7 @@ clubpenalty=10000
 \end_layout
 
 \begin_layout Standard
-et éventuellement
+et Ã©ventuellement
 \end_layout
 
 \begin_layout LyX-Code
@@ -1196,25 +1253,25 @@ raggedbottom
 \end_layout
 
 \begin_layout Subsubsection
-Comment obtenir une liste formatée qui commence par 1.
+Comment obtenir une liste formatÃ©e qui commence par 1.
  a) (par exemple) ?
 \end_layout
 
 \begin_layout Standard
-Si vous voulez une liste qui ressemble à
+Si vous voulez une liste qui ressemble Ã 
 \end_layout
 
 \begin_layout LyX-Code
 1.
- a) Premier élément
+ a) Premier Ã©lÃ©ment
 \end_layout
 
 \begin_layout LyX-Code
-   b) Deuxième élément
+   b) DeuxiÃ¨me Ã©lÃ©ment
 \end_layout
 
 \begin_layout LyX-Code
-   c) Troisième élément
+   c) TroisiÃ¨me Ã©lÃ©ment
 \end_layout
 
 \begin_layout Standard
@@ -1227,26 +1284,28 @@ essayez ce qui suit
 \end_layout
 
 \begin_layout LyX-Code
-   a) Premier élément
+   a) Premier Ã©lÃ©ment
 \end_layout
 
 \begin_layout LyX-Code
-   b) Deuxième élément
+   b) DeuxiÃ¨me Ã©lÃ©ment
 \end_layout
 
 \begin_layout LyX-Code
-   c) Troisième élément
+   c) TroisiÃ¨me Ã©lÃ©ment
 \end_layout
 
 \begin_layout Standard
-avec {} en ERT (c'est-à-dire un marque-place ne générant aucun rendu).
- Plus précisément, mettez le style sur 
+avec {} en ERT (c'est-Ã -dire un marque-place ne gÃ©nÃ©rant aucun rendu).
+ Plus prÃ©cisÃ©ment, mettez le style sur
+\family default
+ 
 \family sans
-Énumération
+Ã‰numÃ©ration
 \family default
 , entrez les accolades en ERT, changez la profondeur d'environnement, et
- ajoutez les trois éléments.
- LyX mettra la numérotation tout seul.
+ ajoutez les trois Ã©lÃ©ments.
+ LyX mettra la numÃ©rotation tout seul.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1255,52 +1314,64 @@ Comment compter les mots dans LyX ?
 
 \begin_layout Standard
 Lancez le correcteur orthographique : il affichera le nombre total de mots
- contrôlés.
- Assurez-vous que le curseur est bien au début du document quand vous démarrez
- le correcteur, afin que tout soit compté.
+ contrÃ´lÃ©s.
+ Assurez-vous que le curseur est bien au dÃ©but du document quand vous dÃ©marrez
+ le correcteur, afin que tout soit comptÃ©.
 \end_layout
 
 \begin_layout Subsubsection
-Comment insérer une quantité donnée d'espacement horizontal ?
+Comment insÃ©rer une quantitÃ© donnÃ©e d'espacement horizontal ?
 \end_layout
 
 \begin_layout Standard
-Il y a plusieurs commandes ERT à utiliser : 
+Il y a plusieurs commandes ERT Ã  utiliser :
+\family default
+ 
 \family typewriter
 
 \backslash
 enspace
 \family default
  (1/2\InsetSpace ~
-em), 
+em),
+\family default
+ 
 \family typewriter
 
 \backslash
 thinspace
 \family default
  (1/6\InsetSpace ~
-em), 
+em),
+\family default
+ 
 \family typewriter
 
 \backslash
 negthinspace
 \family default
  (-1/6\InsetSpace ~
-em), 
+em),
+\family default
+ 
 \family typewriter
 
 \backslash
 quad
 \family default
  (1\InsetSpace ~
-em), 
+em),
+\family default
+ 
 \family typewriter
 
 \backslash
 qquad
 \family default
  (2\InsetSpace ~
-em), 
+em),
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -1319,7 +1390,7 @@ em
 \begin_inset Quotes frd
 \end_inset
 
- fait à peu près la largeur de la lettre 
+ fait Ã  peu prÃ¨s la largeur de la lettre 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1327,31 +1398,43 @@ m
 \begin_inset Quotes frd
 \end_inset
 
- dans la police utilisée.
- Le paramètre de longueur de la commande 
+ dans la police utilisÃ©e.
+ Le paramÃ¨tre de longueur de la commande
+\family default
+ 
 \family typewriter
 
 \backslash
 hspace
 \family default
- peut être n'importe quelle longueur TeX valide ; l'unité peut être 
+ peut Ãªtre n'importe quelle longueur TeX valide ; l'unitÃ© peut Ãªtre
+\family default
+ 
 \family typewriter
 mm
 \family default
- (millimètre), 
+ (millimÃ¨tre),
+\family default
+ 
 \family typewriter
 cm
 \family default
- (centimètre), 
+ (centimÃ¨tre),
+\family default
+ 
 \family typewriter
 in
 \family default
- (pouce), 
+ (pouce),
+\family default
+ 
 \family typewriter
 pt
 \family default
  (point = 1/72\InsetSpace ~
-pouce), 
+pouce),
+\family default
+ 
 \family typewriter
 em
 \family default
@@ -1363,7 +1446,9 @@ m
 \begin_inset Quotes frd
 \end_inset
 
-), ou 
+), ou
+\family default
+ 
 \family typewriter
 ex
 \family default
@@ -1376,13 +1461,17 @@ x
 \end_inset
 
 ).
- Exemples : 
+ Exemples :
+\family default
+ 
 \family typewriter
 
 \backslash
 hspace{1in}
 \family default
-, 
+,
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -1392,22 +1481,24 @@ hspace{2.5em}
 \end_layout
 
 \begin_layout Subsubsection
-Comment faire référence à des citations en les groupant ainsi [1,2,3,6]
- ou [1-3,6] plutôt qu'ainsi [1][2][3][6] ?
+Comment faire rÃ©fÃ©rence Ã  des citations en les groupant ainsi [1,2,3,6]
+ ou [1-3,6] plutÃ´t qu'ainsi [1][2][3][6] ?
 \end_layout
 
 \begin_layout Standard
-Insérez 
+InsÃ©rez
+\family default
+ 
 \family typewriter
 
 \backslash
 usepackage{cite}
 \family default
- dans le préambule LaTeX.
+ dans le prÃ©ambule LaTeX.
  La plupart des distributions LaTeX devraient comprendre ce paquetage.
- LyX le supporte, si vous mettez des citations multiples séparées par des
- virgules dans la boîte de dialogue correspondante, par exemple [Smalley_JCP,Jar
-rold_Sci], au lieu de simplement une citation après l'autre : [Smalley_JCP]
+ LyX le supporte, si vous mettez des citations multiples sÃ©parÃ©es par des
+ virgules dans la boÃ®te de dialogue correspondante, par exemple [Smalley_JCP,Jar
+rold_Sci], au lieu de simplement une citation aprÃ¨s l'autre : [Smalley_JCP]
  [Jarrold_Sci].
 \end_layout
 
@@ -1416,7 +1507,7 @@ Questions au sujet des figures
 \end_layout
 
 \begin_layout Subsubsection
-Quelle est la différence entre une 
+Quelle est la diffÃ©rence entre une 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1453,7 +1544,7 @@ graphique
 \begin_inset Quotes frd
 \end_inset
 
- ; ça signifie basiquement insérer un fichier d'image.
+ ; Ã§a signifie basiquement insÃ©rer un fichier d'image.
  
 \begin_inset Quotes fld
 \end_inset
@@ -1462,29 +1553,33 @@ Figure flottante
 \begin_inset Quotes frd
 \end_inset
 
- correspond plus à ce qu'on appelle une figure dans un article : elle comprend
- le graphique, la légende, la numérotation de figure, etc.
- Vous devriez toujours essayer d'abord d'insérer une figure flottante, puis
+ correspond plus Ã  ce qu'on appelle une figure dans un article : elle comprend
+ le graphique, la lÃ©gende, la numÃ©rotation de figure, etc.
+ Vous devriez toujours essayer d'abord d'insÃ©rer une figure flottante, puis
  de mettre une figure dedans.
 \end_layout
 
 \begin_layout Standard
-Les tableaux marchent de la même manière.
- Mettez un tableau flottant d'abord, puis insérez le tableau dedans.
+Les tableaux marchent de la mÃªme maniÃ¨re.
+ Mettez un tableau flottant d'abord, puis insÃ©rez le tableau dedans.
 \end_layout
 
 \begin_layout Subsubsection
-Comment faire pour que LyX mette la figure exactement où je veux ?
+Comment faire pour que LyX mette la figure exactement oÃ¹ je veux ?
 \end_layout
 
 \begin_layout Standard
-Faites 
+Faites
+\family default
+ 
 \family sans
 Format\SpecialChar \menuseparator
 Document
 \family default
 .
- Dans le champ 
+ Dans le champ
+\family default
+ 
 \family sans
 Extra\SpecialChar \menuseparator
 Placement\InsetSpace ~
@@ -1503,15 +1598,15 @@ flottants
 \begin_inset Quotes frd
 \end_inset
 
-.LaTeX s'acharnera alors à mettre la figure d'abord à l'endroit où elle est
- insérée, puis en haut d'une page, puis sur une page à part.
- C'est un réglage global : toutes les figures seront concernées.
+.LaTeX s'acharnera alors Ã  mettre la figure d'abord Ã  l'endroit oÃ¹ elle est
+ insÃ©rÃ©e, puis en haut d'une page, puis sur une page Ã  part.
+ C'est un rÃ©glage global : toutes les figures seront concernÃ©es.
 \end_layout
 
 \begin_layout Standard
-Vous pouvez contrôler le comportement d'une figure individuellement en cliquant
- avec le bouton droit sur le flottant de figure, et en réglant le paramètre
- correspondant dans la fenêtre obtenue.
+Vous pouvez contrÃ´ler le comportement d'une figure individuellement en cliquant
+ avec le bouton droit sur le flottant de figure, et en rÃ©glant le paramÃ¨tre
+ correspondant dans la fenÃªtre obtenue.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1532,7 +1627,7 @@ NdT :
 \begin_inset Quotes fld
 \end_inset
 
-Trop de flottants non traités
+Trop de flottants non traitÃ©s
 \begin_inset Quotes frd
 \end_inset
 
@@ -1545,17 +1640,17 @@ Trop de flottants non traités
 \end_layout
 
 \begin_layout Standard
-LaTeX ne peut gérer qu'un nombre limité d'éléments flottants qui flottent
- en même temps.
+LaTeX ne peut gÃ©rer qu'un nombre limitÃ© d'Ã©lÃ©ments flottants qui flottent
+ en mÃªme temps.
  Par exemple, si la Figure\InsetSpace ~
 4 ne trouve pas de bon emplacement (en utilisant
- les règles par défaut : haut de la page, puis bas, puis page à part) et
+ les rÃ¨gles par dÃ©faut : haut de la page, puis bas, puis page Ã  part) et
  si vient la Figure\InsetSpace ~
-5, les deux vont continuer à flotter ensemble jusqu'à
+5, les deux vont continuer Ã  flotter ensemble jusqu'Ã 
  ce qu'un bon emplacement soit disponible.
- Si rien de correct n'apparaît, elles vont être placées à la fin du document.
- S'il y a trop d'éléments qui flottent ainsi, un compteur LaTeX atteint
- son maximum et émet une erreur 
+ Si rien de correct n'apparaÃ®t, elles vont Ãªtre placÃ©es Ã  la fin du document.
+ S'il y a trop d'Ã©lÃ©ments qui flottent ainsi, un compteur LaTeX atteint
+ son maximum et Ã©met une erreur 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1569,28 +1664,34 @@ too many unprocessed floats
 \end_layout
 
 \begin_layout Standard
-La façon la plus simple de contourner cela est d'insérer une commande 
+La faÃ§on la plus simple de contourner cela est d'insÃ©rer une commande
+\family default
+ 
 \family typewriter
 
 \backslash
 clearpage
 \family default
- quelque part dans le document où un saut de page serait approprié.
- Tandis qu'un saut de page ne ferait que démarrer une nouvelle page, 
+ quelque part dans le document oÃ¹ un saut de page serait appropriÃ©.
+ Tandis qu'un saut de page ne ferait que dÃ©marrer une nouvelle page,
+\family default
+ 
 \family typewriter
 
 \backslash
 clearpage
 \family default
  traite tous les flottants restants, puis commence une nouvelle page.
- Ça peut conduire à un amas peu esthétique de figures au milieu de votre
- document ; vous pouvez utiliser plusieurs 
+ Ã‡a peut conduire Ã  un amas peu esthÃ©tique de figures au milieu de votre
+ document ; vous pouvez utiliser plusieurs
+\family default
+ 
 \family typewriter
 
 \backslash
 clearpage
 \family default
- pour obtenir un bon équilibre.
+ pour obtenir un bon Ã©quilibre.
 \end_layout
 
 \begin_layout Subsection
@@ -1598,11 +1699,13 @@ Questions au sujet des Maths
 \end_layout
 
 \begin_layout Subsubsection
-Comment mettre du texte normal dans une équation mathématique ?
+Comment mettre du texte normal dans une Ã©quation mathÃ©matique ?
 \end_layout
 
 \begin_layout Standard
-Tapez 
+Tapez
+\family default
+ 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -1614,7 +1717,7 @@ M-m m
 
 
 \family default
- quand vous êtes dans l'équation pour entrer en mode 
+ quand vous Ãªtes dans l'Ã©quation pour entrer en mode 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1626,11 +1729,13 @@ texte-math
 \end_layout
 
 \begin_layout Subsubsection
-Comment obtenir une racine cubique (ou plus élevée) ?
+Comment obtenir une racine cubique (ou plus Ã©levÃ©e) ?
 \end_layout
 
 \begin_layout Standard
-Tapez 
+Tapez
+\family default
+ 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -1642,11 +1747,11 @@ M-m r
 
 
 \family default
- pour insérer une 
+ pour insÃ©rer une 
 \begin_inset Quotes fld
 \end_inset
 
-boîte de racine
+boÃ®te de racine
 \begin_inset Quotes frd
 \end_inset
 
@@ -1659,11 +1764,11 @@ Questions sur le lancement de LyX
 \end_layout
 
 \begin_layout Subsection
-Comment convertir des fichiers LyX en LaTeX à la ligne de commande ?
+Comment convertir des fichiers LyX en LaTeX Ã  la ligne de commande ?
 \end_layout
 
 \begin_layout Standard
-L'exportation de fichiers a été grandement améliorée dans la version 1.1.6.
+L'exportation de fichiers a Ã©tÃ© grandement amÃ©liorÃ©e dans la version 1.1.6.
  Vous avez juste besoin de taper
 \end_layout
 
@@ -1676,10 +1781,12 @@ et c'est tout.
 \end_layout
 
 \begin_layout Standard
-Si vous avez une version plus ancienne, cette commande nécessite que vous
- ayez un serveur X allumé, car elle fait surgir des fenêtres à l'écran.
- Si vous disposez de la commande Xvfb, vous pouvez recourir à un subterfuge
- (sous 
+Si vous avez une version plus ancienne, cette commande nÃ©cessite que vous
+ ayez un serveur X allumÃ©, car elle fait surgir des fenÃªtres Ã  l'Ã©cran.
+ Si vous disposez de la commande Xvfb, vous pouvez recourir Ã  un subterfuge
+ (sous
+\family default
+ 
 \family typewriter
 bash
 \family default
@@ -1694,7 +1801,9 @@ bash
 \end_layout
 
 \begin_layout Standard
-Sous 
+Sous
+\family default
+ 
 \family typewriter
 csh
 \family default
@@ -1714,11 +1823,11 @@ Xvfb :1 -once -terminate &; rm <fichier>.tex; lyx -display :1 --export latex
 
 \begin_layout Standard
 \noindent
-Ça devrait fonctionner n'importe où, que X tourne ou non.
+Ã‡a devrait fonctionner n'importe oÃ¹, que X tourne ou non.
 \end_layout
 
 \begin_layout Subsection
-Comment créer des fichiers PDF à partir de mon document LyX ?
+Comment crÃ©er des fichiers PDF Ã  partir de mon document LyX ?
 \end_layout
 
 \begin_layout Standard
@@ -1726,13 +1835,15 @@ Lire la Section\InsetSpace ~
 5.3.6 du manuel d'
 \emph on
 Options\InsetSpace ~
-Avancées
+AvancÃ©es
 \emph default
 .
 \end_layout
 
 \begin_layout Subsection
-Pourquoi les polices de mon document sont-elles si laides dans 
+Pourquoi les polices de mon document sont-elles si laides dans
+\family default
+ 
 \family typewriter
 acroread
 \family default
@@ -1740,12 +1851,12 @@ acroread
 \end_layout
 
 \begin_layout Standard
-Ce problème et sa solution sont également discutés dans la Section\InsetSpace ~
+Ce problÃ¨me et sa solution sont Ã©galement discutÃ©s dans la Section\InsetSpace ~
 5.3.6 du
  manuel d'
 \emph on
 Options\InsetSpace ~
-Avancées
+AvancÃ©es
 \emph default
 .
 \end_layout
@@ -1756,19 +1867,19 @@ Pourquoi ma version flambant neuve de Ghostscript ne rend-elle pas correctement
 \end_layout
 
 \begin_layout Standard
-[Note : ceci ne s'applique qu'aux versions de LyX antérieures à la 1.2.0,
- car le code chargé du rendu des graphiques a été réécrit depuis.]
+[Note : ceci ne s'applique qu'aux versions de LyX antÃ©rieures Ã  la 1.2.0,
+ car le code chargÃ© du rendu des graphiques a Ã©tÃ© rÃ©Ã©crit depuis.]
 \end_layout
 
 \begin_layout Standard
-Quelques utilisateurs ont signalé qu'ils ne pouvaient afficher les figures
- en ligne dans LyX avec les dernières versions de Ghostscript.
- Il apparaît qu'il s'agit d'un bogue de Ghostscript :
+Quelques utilisateurs ont signalÃ© qu'ils ne pouvaient afficher les figures
+ en ligne dans LyX avec les derniÃ¨res versions de Ghostscript.
+ Il apparaÃ®t qu'il s'agit d'un bogue de Ghostscript :
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \url{http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897}
-
+\begin_inset LatexCommand url
+target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
 \end_inset
 
 
@@ -1776,9 +1887,9 @@ Quelques utilisateurs ont signalé qu'ils ne pouvaient afficher les figures
 
 \begin_layout Standard
 Ce bogue semble affecter Ghostscript 6.22 et suivantes.
- Après avoir appliqué le correctif mentionné ci-dessus, l'affichage dans
+ AprÃ¨s avoir appliquÃ© le correctif mentionnÃ© ci-dessus, l'affichage dans
  LyX remarche bien.
- GNU Ghostscript 6.53 et suivantes contient déjà ce correctif.
+ GNU Ghostscript 6.53 et suivantes contient dÃ©jÃ  ce correctif.
 \end_layout
 
 \begin_layout Section
@@ -1791,12 +1902,12 @@ Pourquoi les menus et la barre d'outils clignotent-ils ?
 
 \begin_layout Standard
 Vous utilisez probablement le serveur X XWin32.
- C'est un bogue de XWin32 : vous pouvez contourner le problème en désactivant
+ C'est un bogue de XWin32 : vous pouvez contourner le problÃ¨me en dÃ©sactivant
  l'option 
 \begin_inset Quotes fld
 \end_inset
 
-Utiliser les Couleurs Réservées
+Utiliser les Couleurs RÃ©servÃ©es
 \begin_inset Quotes frd
 \end_inset
 
@@ -1808,26 +1919,32 @@ Comment obtenir plus d'aide
 \end_layout
 
 \begin_layout Subsection
-Vous n'avez toujours pas répondu à ma question !
+Vous n'avez toujours pas rÃ©pondu Ã  ma question !
 \end_layout
 
 \begin_layout Standard
-Alors lisez la totalité des manuels, en particulier le 
+Alors lisez la totalitÃ© des manuels, en particulier le
+\emph default
+ 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
 \emph default
 .
  La documentation n'est vraiment pas mal.
- (D'ailleurs, j'ai aidé à en écrire une partie :-) Si vous pensez que votre
- problème peut être lié à LaTeX, alors regardez dans 
+ (D'ailleurs, j'ai aidÃ© Ã  en Ã©crire une partie :-) Si vous pensez que votre
+ problÃ¨me peut Ãªtre liÃ© Ã  LaTeX, alors regardez dans
+\emph default
+ 
 \emph on
 LaTeX, A Document Preparation System, 2nd Ed.
 
 \emph default
  de Leslie Lamport (1994).
  Il y a aussi de nombreux fichiers d'exemples inclus avec LyX.
- Essayez 
+ Essayez
+\family default
+ 
 \family sans
 Fichier\SpecialChar \menuseparator
 Ouvrir\SpecialChar \menuseparator
@@ -1837,14 +1954,14 @@ Exemples
 \end_layout
 
 \begin_layout Subsection
-Je veux écrire à quelqu'un pour lui parler de mon problème
+Je veux Ã©crire Ã  quelqu'un pour lui parler de mon problÃ¨me
 \end_layout
 
 \begin_layout Standard
-Envoyez un courrier à la liste de diffusion des utilisateurs de LyX : lyx-users@
+Envoyez un courrier Ã  la liste de diffusion des utilisateurs de LyX : lyx-users@
 lists.lyx.org.
  Si LyX se plante ou ne fonctionne pas du tout, alors essayez la liste des
- développeurs à lyx-devel@lists.lyx.org.
+ dÃ©veloppeurs Ã  lyx-devel@lists.lyx.org.
 \end_layout
 
 \begin_layout Subsection
@@ -1857,29 +1974,31 @@ Mettez votre version de LyX et une description de ce que vous essayez de
 \end_layout
 
 \begin_layout Standard
-Si LyX s'est planté, mettez la version de LyX, le système d'exploitation,
- la version de xforms (s'il semble y avoir un problème de tracé à l'écran),
- et une description précise des événements qui ont conduit au plantage.
- Plus les développeurs pourront facilement reproduire votre problème, plus
- vous aurez de chances qu'il soit résolu.
- Si vous êtes courageux et aimez bidouiller, utilisez gdb pour générer un
+Si LyX s'est plantÃ©, mettez la version de LyX, le systÃ¨me d'exploitation,
+ la version de xforms (s'il semble y avoir un problÃ¨me de tracÃ© Ã  l'Ã©cran),
+ et une description prÃ©cise des Ã©vÃ©nements qui ont conduit au plantage.
+ Plus les dÃ©veloppeurs pourront facilement reproduire votre problÃ¨me, plus
+ vous aurez de chances qu'il soit rÃ©solu.
+ Si vous Ãªtes courageux et aimez bidouiller, utilisez gdb pour gÃ©nÃ©rer un
  backtrace
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-NdT : Terme utilisé dans 
+NdT : Terme utilisÃ© dans
+\family default
+ 
 \family typewriter
 gdb
 \family default
-, désignant la pile d'appel des fonctions.
+, dÃ©signant la pile d'appel des fonctions.
 \end_layout
 
 \end_inset
 
- et joignez-le à votre courrier.
- Si vous ne voyez pas du tout de quoi je suis en train de parler, décrivez
- simplement ce que vous étiez en train de faire, de la façon la plus complète
+ et joignez-le Ã  votre courrier.
+ Si vous ne voyez pas du tout de quoi je suis en train de parler, dÃ©crivez
+ simplement ce que vous Ã©tiez en train de faire, de la faÃ§on la plus complÃ¨te
  possible.
 \end_layout
 
@@ -1893,7 +2012,9 @@ Votre avis est le bienvenu
 
 \begin_layout Standard
 Envoyez des commentaires, des suggestions d'ajouts, ou l'annonce que vous
- avez battu un record du monde avec votre document, à 
+ avez battu un record du monde avec votre document, Ã 
+\emph default
+ 
 \emph on
 lyx-docs@lists.lyx.org
 \emph default
@@ -1906,7 +2027,7 @@ Formats dans lesquels cette FAQ est disponible
 
 \begin_layout Standard
 Le fichier LyX original est compris dans la distribution source de LyX,
- des versions converties en HTML et en ASCII devraient bientôt être disponibles
+ des versions converties en HTML et en ASCII devraient bientÃ´t Ãªtre disponibles
  sur le site web.
 \end_layout
 
@@ -1915,11 +2036,11 @@ Auteurs et remerciements
 \end_layout
 
 \begin_layout Standard
-Bernhard Iselborn, David Johnson et Paul Evans ont été responsables de la
- FAQ jusqu'à la version 0.2.2 qui traitait de LyX-0.10.7.
- À partir de la version 0.3.0 la FAQ a été entièrement réécrite et couvre
- LyX-1.0 et au-delà.
- Beaucoup de gens ont contribué à des morceaux de la version actuelle.
+Bernhard Iselborn, David Johnson et Paul Evans ont Ã©tÃ© responsables de la
+ FAQ jusqu'Ã  la version 0.2.2 qui traitait de LyX-0.10.7.
+ Ã€ partir de la version 0.3.0 la FAQ a Ã©tÃ© entiÃ¨rement rÃ©Ã©crite et couvre
+ LyX-1.0 et au-delÃ .
+ Beaucoup de gens ont contribuÃ© Ã  des morceaux de la version actuelle.
 \end_layout
 
 \begin_layout Subsection
@@ -1927,32 +2048,32 @@ Garantie et Licence
 \end_layout
 
 \begin_layout Standard
-Je ne garantis pas que quoi que ce soit dans ce document soit correct jusqu'à
- la n-ième décimale ; après tout, je ne suis qu'un astronome, et pour nous,
+Je ne garantis pas que quoi que ce soit dans ce document soit correct jusqu'Ã 
+ la n-iÃ¨me dÃ©cimale ; aprÃ¨s tout, je ne suis qu'un astronome, et pour nous,
  
 \begin_inset Formula $c=h=k=\pi=1$
 \end_inset
 
 .
- Quand le résultat tombe faux, nous ne faisons que redéfinir les unités.
- Ce fichier est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE
- GARANTIE ; sans même la garantie implicite qu'il a UNE VALEUR ou qu'il
- est ADAPTÉ À UN QUELCONQUE BUT.
- Voyez la licence GNU General Public License pour plus de détails.
- En d'autres termes, ce n'est pas ma faute si vous perdez votre thèse la
- veille de votre soutenance parce que vous avez oublié de l'enregistrer
+ Quand le rÃ©sultat tombe faux, nous ne faisons que redÃ©finir les unitÃ©s.
+ Ce fichier est distribuÃ© dans l'espoir qu'il sera utile, mais SANS AUCUNE
+ GARANTIE ; sans mÃªme la garantie implicite qu'il a UNE VALEUR ou qu'il
+ est ADAPTÃ‰ Ã€ UN QUELCONQUE BUT.
+ Voyez la licence GNU General Public License pour plus de dÃ©tails.
+ En d'autres termes, ce n'est pas ma faute si vous perdez votre thÃ¨se la
+ veille de votre soutenance parce que vous avez oubliÃ© de l'enregistrer
  avant la coupure de courant, pendant que vous vous demandiez comment une
- constante physique fondamentale exprimée en 
+ constante physique fondamentale exprimÃ©e en 
 \begin_inset Formula $m.s^{-1}$
 \end_inset
 
- peut être égale à une autre exprimée en 
+ peut Ãªtre Ã©gale Ã  une autre exprimÃ©e en 
 \begin_inset Formula $kg.m.s^{-2}.K^{-1}$
 \end_inset
 
 .
- Ce fichier est Copyright © 2000 par Michael E.
- Ressler au nom de l'Équipe de Documentation de LyX.
+ Ce fichier est Copyright Â© 2000 par Michael E.
+ Ressler au nom de l'Ã‰quipe de Documentation de LyX.
 \end_layout
 
 \end_body
