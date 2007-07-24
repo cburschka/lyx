@@ -172,6 +172,108 @@ code is sometimes faster than pretty code. We're well aware that LyX
 series has been to bring this speed back.
 
 
+What's new in version 1.4.5?
+---------------------------- 
+
+** Updates:
+***********
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Update Hungarian and Italian localizations of the interface.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Don't skip lines after noweb chunks in tex2lyx (bug 3052).
+
+- Fix bug when entering relative length (like page%) as margin
+  settings (bug 3416).
+
+- Fix Date external template in windows (bug 3241).
+
+- Fix babel bug triggered by MarkBoth in the IEEEtran.layout (bug
+  3510).
+
+- Fix ordering of layouts in beamer textclass (bug 3141).
+
+* USER INTERFACE:
+
+- Fix bug where moving the last section up in the toc dialog eats the
+  last paragraph (bug 3303).
+
+- Fix crash when using "all-insets-toggle" lfun on a file with 
+  math insets (bug 3358).
+
+- Fix crash when undoing ctrl-<minus> in mathed (bug 3590).
+
+- Fix crash if the thesaurus fails on startup (bug 2691).
+
+- Handle undo correctly when inserting a plain text file (bug 3204).
+
+- Fix misplaced cursor when clicking at the end of a line (bug 3310).
+
+- Make it possible to reset itemize bullets to their original state
+  (bug 3312).
+
+- Fix display of Theorem-like environments when in appendix (bug 3351).
+
+- Fix conflict with globally installed math fonts, for ex. from
+  Scientific Workplace (bug 3962, windows only).
+
+- Properly keep existing previews when pasting formulas (bug 1486).
+
+- Fix display of math root inset when the exponent contains large
+  things (bug 3295).
+
+- Fix display of the \overset math macro when the first argument has a
+  non-zero descent.
+
+- Set a default image size value (bug 2458).
+
+- Get ProvidesNatbib working correctly, esp. for egs.layout.
+
+- Fix undo for quotation marks (bug 3439).
+
+- Fix undo for special characters.
+
+- Fix gui for big delimiters.
+
+- Fix wrong LaTeX-output when using the backslash "\" as math
+  delimiter (bug 3458) (Qt frontend only).
+
+- Fix generation of linuxdoc manpages (bug 2966).
+
+- Fix example for docbook-article.
+
+- Fix table rotate toolbar buttons images (bug 3525).
+
+- Fix display of "Acknowledgments" environment in elsart document
+  class (bug 3931).
+
+* DOCUMENTATION
+
+- Fix description of booktabs tables in the EmbeddedObjects manual
+  (bug 3736).
+
+- Fix broken link to IEEETran.cls in LaTeXConfiguration (bug 848).
+
+- Fix that Slovak userguide couldn't be typeset.
+
+* BUILD/INSTALLATION:
+
+- Make LyX/Mac recognize correctly newer versions of teTeX.
+
+- Allow automake 1.10 for building.
+
+- Require python 2.3 (due to lyx2lyx backport from 1.5.0), version
+  2.3.4 is required to read lyx 1.5.x documents (due to a bug in older
+  2.3.x python releases).
+
+
 What's new in version 1.4.4?
 ---------------------------- 
 
