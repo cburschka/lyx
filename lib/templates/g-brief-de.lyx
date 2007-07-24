@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass g-brief-de
@@ -12,13 +12,21 @@
 \end_preamble
 \language german
 \inputencoding latin2
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -31,7 +39,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -167,12 +175,12 @@ Sehr geehrter Herr Beispiel,
 
 \begin_layout Gruss
 
-Mit freundlichen Grüßen,
+Mit freundlichen GrÃ¼ÃŸen,
 \end_layout
 
 \begin_layout Brieftext
 
-seit der siebten Mieterhöhung im laufenden Jahr konnte ich keinen Zahlungseingan
+seit der siebten MieterhÃ¶hung im laufenden Jahr konnte ich keinen Zahlungseingan
 g von Ihnen mehr verbuchen.
  Ich bitte Sie Ihren Verpflichtungen schnellstens nachzukommen, da ich mich
  sonst gezwungen sehe, Ihre Miete ein weiteres mal anzuheben.

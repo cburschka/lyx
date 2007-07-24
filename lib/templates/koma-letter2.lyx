@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrlttr2
@@ -62,13 +62,21 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme palatino
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize 11
 \spacing other 1.15
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -81,7 +89,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -188,7 +196,9 @@ This template illustrates the use of the new scrlttr2 class (introduced
  with KOMA-script v.
  2.9).
  This letter class is very flexible.
- Have a look at 
+ Have a look at
+\family default
+ 
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
@@ -202,8 +212,8 @@ status collapsed
 \begin_layout Standard
 
 
-\begin_inset LatexCommand \url{http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf}
-
+\begin_inset LatexCommand url
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf"
 \end_inset
 
 

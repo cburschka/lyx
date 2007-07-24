@@ -1,11 +1,18 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass kluwer
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \float_placement t
 \paperfontsize default
@@ -13,6 +20,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -25,7 +33,7 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -241,8 +249,8 @@ The theory
 \begin_layout Standard
 
 <theory text; a citation reference is included 
-\begin_inset LatexCommand \cite{PaperI}
-
+\begin_inset LatexCommand cite
+key "PaperI"
 \end_inset
 
 >
@@ -298,13 +306,21 @@ Another appendix section
 \end_layout
 
 \begin_layout References
-\bibitem [\protect\citeauthoryear{Surname-1 et al.}{year}]{PaperI}
+\begin_inset LatexCommand bibitem
+label "\protect\citeauthoryear{Surname-1 et al.}{year}"
+key "PaperI"
+
+\end_inset
 
 Surname-1, First-1, Middle-1., Surname-2, First-2, Middle-2.
- and Surname-3, First-3, Middle-3.: year, 
+ and Surname-3, First-3, Middle-3.: year,
+\emph default
+ 
 \emph on
 Journal abbreviation
 \emph default
+
+\series default
  
 \series bold
 volume

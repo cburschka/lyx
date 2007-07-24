@@ -1,11 +1,18 @@
-#LyX 1.4.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass ijmpd
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \float_placement htbp
 \paperfontsize default
@@ -13,6 +20,7 @@
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -25,7 +33,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -246,16 +254,18 @@ Results and discussion
 \begin_layout Standard
 <Another standard section.
  A citation reference is included.
-\begin_inset LatexCommand \cite{key-1}
-
+\begin_inset LatexCommand cite
+key "key-1"
 \end_inset
 
  Note that references appear as superscripts in the printed version.
-\begin_inset LatexCommand \cite{key-1,key-2}
-
+\begin_inset LatexCommand cite
+key "key-1,key-2"
 \end_inset
 
- You can also use them directly, but in this case you should use the 
+ You can also use them directly, but in this case you should use the
+\family default
+ 
 \family typewriter
 refcite
 \family default
@@ -292,8 +302,8 @@ A subsection
 <Subsection text.
  Here, a table is included (see Table\InsetSpace ~
 
-\begin_inset LatexCommand \ref{cap:fuf}
-
+\begin_inset LatexCommand ref
+reference "cap:fuf"
 \end_inset
 
 ).>
@@ -471,8 +481,8 @@ Column C
 \end_inset
 
 
-\begin_inset LatexCommand \label{cap:fuf}
-
+\begin_inset LatexCommand label
+name "cap:fuf"
 \end_inset
 
 
@@ -546,11 +556,15 @@ Appendices Section
 \end_inset
 
  just marks the beginning of appendices.
- Note that appendices should be placed 
+ Note that appendices should be placed
+\emph default
+ 
 \emph on
 after
 \emph default
- the Acknowledgments and 
+ the Acknowledgments and
+\shape default
+ 
 \shape italic
 before
 \shape default
@@ -568,17 +582,24 @@ Another Appendix section
 
 \begin_layout Bibliography
 
-\bibitem {key-1}
+\begin_inset LatexCommand bibitem
+key "key-1"
+
+\end_inset
 First-1.
  Middle-1.
  Surname-1, First-2.
  Middle-2.
  Surname-2, and First-3.
  Middle-3.
- Surname-3, 
+ Surname-3,
+\emph default
+ 
 \emph on
 Journal abbreviation
 \emph default
+
+\series default
  
 \series bold
 Volume
@@ -588,10 +609,15 @@ Volume
 
 \begin_layout Bibliography
 
-\bibitem {key-2}
+\begin_inset LatexCommand bibitem
+key "key-2"
+
+\end_inset
 First-1.
  Middle-1.
- Surname-1, 
+ Surname-1,
+\emph default
+ 
 \emph on
 Book Title
 \emph default

@@ -1,5 +1,5 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass beamer
@@ -12,13 +12,21 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme times
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 2
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -501,8 +509,7 @@ Outline
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -899,23 +906,33 @@ Summary
 \end_layout
 
 \begin_layout Itemize
-The 
+The
+\color none
+ 
 \color red
 first main message
+\color none
+ 
 \color default
- of your talk in one or two lines.
+of your talk in one or two lines.
 \end_layout
 
 \begin_layout Itemize
-The 
+The
+\color none
+ 
 \color red
 second main message
+\color none
+ 
 \color default
- of your talk in one or two lines.
+of your talk in one or two lines.
 \end_layout
 
 \begin_layout Itemize
-Perhaps a 
+Perhaps a
+\color none
+ 
 \color red
 third message
 \color default
@@ -1029,7 +1046,10 @@ Start with overview books.
 
 \begin_layout Bibliography
 
-\bibitem {Author1990}
+\begin_inset LatexCommand bibitem
+key "Author1990"
+
+\end_inset
 A.
  Author.
  
@@ -1092,7 +1112,10 @@ Followed by interesting articles.
 
 \begin_layout Bibliography
 
-\bibitem {Someone2002}
+\begin_inset LatexCommand bibitem
+key "Someone2002"
+
+\end_inset
 S.
  Someone.
 \begin_inset ERT
@@ -1110,8 +1133,9 @@ newblock
  On this and that
 \emph on
 .
- 
+
 \emph default
+ 
 
 \begin_inset ERT
 status collapsed

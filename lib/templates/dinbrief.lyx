@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass dinbrief
 \language german
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -33,7 +41,7 @@
 
 <Mein Name>
 \newline
-<Meine Straße>
+<Meine StraÃŸe>
 \newline
 <Meine Stadt>
 \end_layout
@@ -42,14 +50,14 @@
 
 <Dein Name> 
 \newline
-<Deine Straße>
+<Deine StraÃŸe>
 \newline
 <Deine Stadt>
 \end_layout
 
 \begin_layout Stadt
 
-<Stadt für Datum>
+<Stadt fÃ¼r Datum>
 \end_layout
 
 \begin_layout Datum
@@ -80,12 +88,12 @@
 
 \begin_layout Standard
 
-<Auch in mehreren Absätzen>
+<Auch in mehreren AbsÃ¤tzen>
 \end_layout
 
 \begin_layout Closing
 
-Mit freundlichen Grüßen
+Mit freundlichen GrÃ¼ÃŸen
 \end_layout
 
 \begin_layout ps

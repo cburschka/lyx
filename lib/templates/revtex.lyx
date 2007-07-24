@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass revtex
 \options aps,manuscript
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -91,25 +99,35 @@ Introduction goes here.
 
 \begin_layout Standard
 
-By the way, any of the style options, like 
+By the way, any of the style options, like
+\family default
+ 
 \family typewriter
 prl
 \family default
- or 
+ or
+\family default
+ 
 \family typewriter
 preprint
 \family default
- should go in the 
+ should go in the
+\family default
+ 
 \family sans
 Extra\InsetSpace ~
 Options
 \family default
- field in the 
+ field in the
+\family default
+ 
 \family sans
 Document\InsetSpace ~
 Layout
 \family default
- popup (accessed from the 
+ popup (accessed from the
+\family default
+ 
 \family sans
 Layout
 \family default
@@ -129,7 +147,9 @@ Section 2 text goes here.
 
 \begin_layout Standard
 
-Special REVTeX 3.1 macros must be typed in TeX mode, so typing 
+Special REVTeX 3.1 macros must be typed in TeX mode, so typing
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -161,14 +181,16 @@ openone{}
 You can do a bibliography by hand, as shown below, or erase that, and use
  BibTeX.
  If you use BibTeX, don't forget to use a REVTeX bibliography style file,
- such as 
+ such as
+\family default
+ 
 \family typewriter
 prsty.bst
 \family default
 .
  With either method, you can cite references with the LyX citation commands
-\begin_inset LatexCommand \cite{mycitation}
-
+\begin_inset LatexCommand cite
+key "mycitation"
 \end_inset
 
 .
@@ -191,7 +213,10 @@ re-run LaTeX (File->update dvi)
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {mycitation}
+\begin_inset LatexCommand bibitem
+key "mycitation"
+
+\end_inset
 
 Author, 
 \begin_inset Quotes eld
@@ -201,7 +226,9 @@ Title
 \begin_inset Quotes erd
 \end_inset
 
-, Journal 
+, Journal
+\series default
+ 
 \series bold
 Volume
 \series default

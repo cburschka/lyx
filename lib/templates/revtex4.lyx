@@ -1,12 +1,12 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass revtex4
 \options aps,preprint
 \language english
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -131,25 +131,35 @@ introduction
 
 \begin_layout Standard
 
-Any of the style options, like 
+Any of the style options, like
+\family default
+ 
 \family typewriter
 prl
 \family default
- or 
+ or
+\family default
+ 
 \family typewriter
 preprint
 \family default
- should go in the 
+ should go in the
+\family default
+ 
 \family sans
 Extra\InsetSpace ~
 Options
 \family default
- field in the 
+ field in the
+\family default
+ 
 \family sans
 Document\InsetSpace ~
 Layout
 \family default
- popup (accessed from the 
+ popup (accessed from the
+\family default
+ 
 \family sans
 Layout
 \family default
@@ -164,7 +174,9 @@ methods
 
 \begin_layout Standard
 
-Special REVTeX macros must be typed in TeX mode, so typing 
+Special REVTeX macros must be typed in TeX mode, so typing
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -188,7 +200,9 @@ openone{}
 \begin_inset Formula $\sqrt{\overstar{a}}>b$
 \end_inset
 
-, for example, which uses the REVTeX 
+, for example, which uses the REVTeX
+\family default
+ 
 \family typewriter
 
 \backslash
@@ -201,7 +215,9 @@ overstar
 
 You can do a bibliography by hand, as shown below, but it may be easier
  to erase that and use BibTeX---in fact, APS encourages authors to use BibTeX.
- If you do use BibTeX, use the REVTeX bibliography style file, 
+ If you do use BibTeX, use the REVTeX bibliography style file,
+\family default
+ 
 \family typewriter
 revtex.bst
 \family default
@@ -221,7 +237,9 @@ style
 \begin_inset Quotes erd
 \end_inset
 
- box in the 
+ box in the
+\family default
+ 
 \family sans
 Insert\SpecialChar \menuseparator
 Lists\InsetSpace ~
@@ -232,8 +250,8 @@ Reference
 \family default
  popup).
  With either method, you can cite references with the LyX citation commands
-\begin_inset LatexCommand \cite{mycitation}
-
+\begin_inset LatexCommand cite
+key "mycitation"
 \end_inset
 
 .
@@ -245,7 +263,10 @@ Thank you so much!
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {mycitation}
+\begin_inset LatexCommand bibitem
+key "mycitation"
+
+\end_inset
 
 Author, 
 \begin_inset Quotes eld
@@ -255,7 +276,9 @@ Title
 \begin_inset Quotes erd
 \end_inset
 
-, Journal 
+, Journal
+\series default
+ 
 \series bold
 Volume
 \series default

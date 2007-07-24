@@ -1,5 +1,5 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass beamer
@@ -13,13 +13,21 @@
 \options handout
 \language french
 \inputencoding auto
-\fontscheme times
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 2
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -42,15 +50,15 @@
 status open
 
 \begin_layout Standard
- Ce fichier est un exemple d'exposé:
+ Ce fichier est un exemple d'exposÃ©:
 \end_layout
 
 \begin_layout Standard
- - pour des conférences, 
+ - pour des confÃ©rences, 
 \end_layout
 
 \begin_layout Standard
- - d'une durée approximative de 20 minutes, 
+ - d'une durÃ©e approximative de 20 minutes, 
 \end_layout
 
 \begin_layout Standard
@@ -81,23 +89,23 @@ Traduction de Philippe De Sousa <philippejjg@free.fr>.
 \end_layout
 
 \begin_layout Standard
-Adaptation à LyX par Jean-Pierre Chrétien <chretien@cert.fr> 
+Adaptation Ã  LyX par Jean-Pierre ChrÃ©tien <chretien@cert.fr> 
 \end_layout
 
 \begin_layout Standard
-En principe, ce fichier peut être redistribué et/ou modifié conformément
+En principe, ce fichier peut Ãªtre redistribuÃ© et/ou modifiÃ© conformÃ©ment
  aux termes de la GNU Public License, version 2.Cependant, ce fichier est
- un "exemple-type" qui peut être modifié selon vos propres besoins.
+ un "exemple-type" qui peut Ãªtre modifiÃ© selon vos propres besoins.
  Pour cette raison, si vous utilisez ce fichier en tant qu'"exemple-type"
- et non spécifiquement pour le distribuer en tant que partie d'un package
+ et non spÃ©cifiquement pour le distribuer en tant que partie d'un package
  ou programme, je vous donne la permission exceptionnelle de copier librement
- et de modifier ce fichier et même d'effacer ce message de copyright.
+ et de modifier ce fichier et mÃªme d'effacer ce message de copyright.
  
 \end_layout
 
 \begin_layout Standard
 Correction mineure (style Institute au lieu de style Date) des fichiers
- originaux le 12 jan 07 par Jean-Pierre Chrétien <chretien@cert.fr> 
+ originaux le 12 jan 07 par Jean-Pierre ChrÃ©tien <chretien@cert.fr> 
 \end_layout
 
 \end_inset
@@ -106,7 +114,7 @@ Correction mineure (style Institute au lieu de style Date) des fichiers
 \end_layout
 
 \begin_layout Title
-Titre tel qu'il apparaît dans les actes
+Titre tel qu'il apparaÃ®t dans les actes
 \begin_inset OptArg
 status open
 
@@ -116,7 +124,7 @@ Titre court
 status collapsed
 
 \begin_layout Standard
-(facultatif, à utiliser uniquement si le titre de l'article est trop long)
+(facultatif, Ã  utiliser uniquement si le titre de l'article est trop long)
 \end_layout
 
 \end_inset
@@ -130,7 +138,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subtitle
-ne compléter que si l'article possède un sous-titre
+ne complÃ©ter que si l'article possÃ¨de un sous-titre
 \end_layout
 
 \begin_layout Author
@@ -180,14 +188,14 @@ inst{2}
 status collapsed
 
 \begin_layout Standard
-- composer les noms dans l'ordre dans lequel ils apparaîtrons dans l'article;
+- composer les noms dans l'ordre dans lequel ils apparaÃ®trons dans l'article;
  
 \end_layout
 
 \begin_layout Standard
 - utiliser la commande 
 \backslash
-inst{?} command uniquement si les auteurs ont des affiliations  différentes.
+inst{?} command uniquement si les auteurs ont des affiliations  diffÃ©rentes.
 \end_layout
 
 \end_inset
@@ -202,7 +210,7 @@ Auteur, Lautre
 status collapsed
 
 \begin_layout Standard
-- facultatif, à utiliser seulement avec plusieurs auteurs;
+- facultatif, Ã  utiliser seulement avec plusieurs auteurs;
 \end_layout
 
 \begin_layout Standard
@@ -240,9 +248,9 @@ inst{1}
 
 \end_inset
 
-Département  d'Informatique
+DÃ©partement  d'Informatique
 \newline
-Université de Quelque Part
+UniversitÃ© de Quelque Part
 \begin_inset ERT
 status collapsed
 
@@ -268,9 +276,9 @@ inst{2}
 
 \end_inset
 
-Département de Philosophie Théorique
+DÃ©partement de Philosophie ThÃ©orique
 \newline
-Université d'Ailleurs
+UniversitÃ© d'Ailleurs
 \begin_inset Note Note
 status collapsed
 
@@ -281,7 +289,7 @@ inst uniquement s'il y a plusieurs affiliations.
 \end_layout
 
 \begin_layout Standard
-- faites quelque chose de simple, personne ne s'intéresse à votre adresse
+- faites quelque chose de simple, personne ne s'intÃ©resse Ã  votre adresse
 \end_layout
 
 \end_inset
@@ -291,12 +299,12 @@ inst uniquement s'il y a plusieurs affiliations.
 status open
 
 \begin_layout Standard
-Universités de Quelque Part et d'Ailleurs
+UniversitÃ©s de Quelque Part et d'Ailleurs
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-optionnel, mais souvent nécessaire
+optionnel, mais souvent nÃ©cessaire
 \end_layout
 
 \end_inset
@@ -310,17 +318,17 @@ optionnel, mais souvent nécessaire
 \end_layout
 
 \begin_layout Date
-Conférence sur les Présentations Fabuleuses, 2006
+ConfÃ©rence sur les PrÃ©sentations Fabuleuses, 2006
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-- utilisez le nom de la conférence ou son abréviation; 
+- utilisez le nom de la confÃ©rence ou son abrÃ©viation; 
 \end_layout
 
 \begin_layout Standard
-- n'a pas réellement d'importance pour l'assistance qui sera présente lors
- de la conférence; mais en a pour les personnes (y compris vous-même) qui
+- n'a pas rÃ©ellement d'importance pour l'assistance qui sera prÃ©sente lors
+ de la confÃ©rence; mais en a pour les personnes (y compris vous-mÃªme) qui
  liront les transparents en ligne.
 \end_layout
 
@@ -339,7 +347,7 @@ CPF 2006
 status collapsed
 
 \begin_layout Standard
-facultatif, devrait être une abréviation du nom de la conférence
+facultatif, devrait Ãªtre une abrÃ©viation du nom de la confÃ©rence
 \end_layout
 
 \end_inset
@@ -357,9 +365,9 @@ facultatif, devrait être une abréviation du nom de la conférence
 status collapsed
 
 \begin_layout Standard
-Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
- un format graphique accepté par LyX (comme par exemple .png),alors vous
- pouvez insérer votre logo ainsi :
+Si vous avez un fichier nommÃ© "universitÃ©-logo-nomfichier.xxx", oÃ¹ xxxest
+ un format graphique acceptÃ© par LyX (comme par exemple .png),alors vous
+ pouvez insÃ©rer votre logo ainsi :
 \end_layout
 
 \end_inset
@@ -394,8 +402,8 @@ includegraphics[height=0.5cm]{institution-logo-filename}}
 status collapsed
 
 \begin_layout Standard
-A noter que la syntaxe pgf n'est pas supportée par LyX pour le moment; si
- vous l'utilisez, il faut mettre un chemin d'accès absolu au fichier
+A noter que la syntaxe pgf n'est pas supportÃ©e par LyX pour le moment; si
+ vous l'utilisez, il faut mettre un chemin d'accÃ¨s absolu au fichier
 \end_layout
 
 \end_inset
@@ -434,8 +442,8 @@ pgfuseimage{institution-logo}}
 status collapsed
 
 \begin_layout Standard
-À supprimer si vous ne voulez pas que la table des matières apparaisseau
- début de chaque sous-section :
+Ã€ supprimer si vous ne voulez pas que la table des matiÃ¨res apparaisseau
+ dÃ©but de chaque sous-section :
 \end_layout
 
 \end_inset
@@ -516,7 +524,7 @@ tableofcontents[currentsection,currentsubsection]
 status collapsed
 
 \begin_layout Standard
-Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
+Si vous souhaitez recouvrir vos transparents un Ã  un, utilisez la commande
  suivante (pour plus d'info, voir la page 74 du manueld'utilisation de Beamer
  (version 3.06) par Till Tantau) :
 \end_layout
@@ -547,8 +555,7 @@ Sommaire
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -559,9 +566,9 @@ Sommaire
 status collapsed
 
 \begin_layout Standard
-Structurer l'exposé est une tâche difficile et la structure suivante pourrait
+Structurer l'exposÃ© est une tÃ¢che difficile et la structure suivante pourrait
  ne pas convenir.
- Voici quelques règles à appliquer pour cet exemple ci :
+ Voici quelques rÃ¨gles Ã  appliquer pour cet exemple ci :
 \end_layout
 
 \begin_layout Standard
@@ -578,20 +585,20 @@ Structurer l'exposé est une tâche difficile et la structure suivante pourrait
 \end_layout
 
 \begin_layout Standard
-- le public d'une conférence connaîtra probablement peu de chose sur le
+- le public d'une confÃ©rence connaÃ®tra probablement peu de chose sur le
  sujet  que vous serez en train de traiter.
  Donc, *simplifier* !
 \end_layout
 
 \begin_layout Standard
-- dans un exposé de 20 minutes, garder à l'esprit les idées principales
+- dans un exposÃ© de 20 minutes, garder Ã  l'esprit les idÃ©es principales
  est largement  suffisant pour votre assistance.
- Laissez tomber certains détails, même s'ils vous  semblent nécessaires;
+ Laissez tomber certains dÃ©tails, mÃªme s'ils vous  semblent nÃ©cessaires;
  
 \end_layout
 
 \begin_layout Standard
-- si un détail qui est vital pour une preuve/mise en oeuvre est omis,  le
+- si un dÃ©tail qui est vital pour une preuve/mise en oeuvre est omis,  le
  dire simplement une fois.
  Ce sera suffisant pour l'auditoire.
  
@@ -607,12 +614,12 @@ Motivation
 \end_layout
 
 \begin_layout Subsection
-Le problème étudié
+Le problÃ¨me Ã©tudiÃ©
 \begin_inset OptArg
 status open
 
 \begin_layout Standard
-Problème central
+ProblÃ¨me central
 \end_layout
 
 \end_inset
@@ -631,7 +638,7 @@ Les sous-titres sont facultatifs.
 status collapsed
 
 \begin_layout Standard
- - Un titre doit résumer le transparent dans un langage compréhensible 
+ - Un titre doit rÃ©sumer le transparent dans un langage comprÃ©hensible 
    par tous ceux qui ne suivront rien de ce qu'il y a sur ce transparent.
 \end_layout
 
@@ -641,7 +648,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Utilisez itemize à volonté.
+Utilisez itemize Ã  volontÃ©.
 \end_layout
 
 \begin_deeper
@@ -651,7 +658,7 @@ Utilisez itemize à volonté.
 
 \end_deeper
 \begin_layout Itemize
-Utilisez des phrases très courtes et de courtes expressions.
+Utilisez des phrases trÃ¨s courtes et de courtes expressions.
 \end_layout
 
 \begin_deeper
@@ -661,7 +668,7 @@ Utilisez des phrases très courtes et de courtes expressions.
 
 \end_deeper
 \begin_layout Itemize
-Ces recouvrements sont créés à l'aide du style «Pause».
+Ces recouvrements sont crÃ©Ã©s Ã  l'aide du style Â«PauseÂ».
 \end_layout
 
 \begin_layout BeginFrame
@@ -679,7 +686,7 @@ status collapsed
 
 \end_inset
 
-Vous pouvez aussi utiliser des spécifications d'overlay pour créer des recouvrem
+Vous pouvez aussi utiliser des spÃ©cifications d'overlay pour crÃ©er des recouvrem
 ents
 \end_layout
 
@@ -708,7 +715,7 @@ status collapsed
 
 \end_inset
 
-Ceci est affiché en second.
+Ceci est affichÃ© en second.
 \end_layout
 
 \begin_layout BeginFrame
@@ -716,9 +723,9 @@ Faites des titres qui informent
 \end_layout
 
 \begin_layout Standard
-Pour faire un recouvrement exact d'un transparent à l'autre (transparents
- dynamiques), utiliez le style overprint; attention à gérer le mode handout
- en choisissant quelle entrée sera retenue.
+Pour faire un recouvrement exact d'un transparent Ã  l'autre (transparents
+ dynamiques), utiliez le style overprint; attention Ã  gÃ©rer le mode handout
+ en choisissant quelle entrÃ©e sera retenue.
 \end_layout
 
 \begin_layout Standard
@@ -747,7 +754,7 @@ onslide<1| handout:1>
 
 Un texte sur la premier transparent, 
 \newline
-éventuellement sur plusieurs lignes
+Ã©ventuellement sur plusieurs lignes
 \end_layout
 
 \begin_layout Overprint
@@ -763,7 +770,7 @@ onslide<2| handout:0>
 
 \end_inset
 
-Remplacé sur le second transparent
+RemplacÃ© sur le second transparent
 \end_layout
 
 \begin_layout BeginFrame
@@ -812,7 +819,7 @@ Bloc sans titre
 \end_layout
 
 \begin_layout Itemize
-Affiché sur tous les transparents
+AffichÃ© sur tous les transparents
 \end_layout
 
 \end_deeper
@@ -869,7 +876,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Subsection
-Travaux antérieurs
+Travaux antÃ©rieurs
 \end_layout
 
 \begin_layout BeginFrame
@@ -909,11 +916,11 @@ Sur le second transparent
 \end_layout
 
 \begin_layout Section
-Nos résultats/contribution
+Nos rÃ©sultats/contribution
 \end_layout
 
 \begin_layout Subsection
-Principaux résultats
+Principaux rÃ©sultats
 \end_layout
 
 \begin_layout BeginFrame
@@ -981,37 +988,43 @@ New line
 
 \end_deeper
 \begin_layout Subsection
-Idées de base pour la preuve/l'implantation
+IdÃ©es de base pour la preuve/l'implantation
 \end_layout
 
 \begin_layout Section*
-Résumé
+RÃ©sumÃ©
 \end_layout
 
 \begin_layout BeginFrame
-Résumé
+RÃ©sumÃ©
 \end_layout
 
 \begin_layout Itemize
 Le
-\color red
- premier message principal
 \color none
- de l'exposé en une ligne ou    deux.
+ 
+\color red
+premier message principal
+\color none
+ de l'exposÃ© en une ligne ou    deux.
 \end_layout
 
 \begin_layout Itemize
-Le 
-\color red
-deuxième message principal
+Le
 \color none
- de l'exposé en une ligne ou deux.
+ 
+\color red
+deuxiÃ¨me message principal
+\color none
+ de l'exposÃ© en une ligne ou deux.
 \end_layout
 
 \begin_layout Itemize
-Peut-être un 
+Peut-Ãªtre un
+\color none
+ 
 \color red
-troisième message
+troisiÃ¨me message
 \color none
 , mais pas plus.
 \end_layout
@@ -1051,11 +1064,11 @@ Perspectives
 
 \begin_deeper
 \begin_layout Itemize
-      Problème non résolu
+      ProblÃ¨me non rÃ©solu
 \end_layout
 
 \begin_layout Itemize
-Autre problème non résolu
+Autre problÃ¨me non rÃ©solu
 \end_layout
 
 \end_deeper
@@ -1069,7 +1082,7 @@ Autre problème non résolu
 status collapsed
 
 \begin_layout Standard
-Tout ce qui suit est facultatif et n'est typiquement pas nécessaire.
+Tout ce qui suit est facultatif et n'est typiquement pas nÃ©cessaire.
 \end_layout
 
 \end_inset
@@ -1078,7 +1091,7 @@ Appendix
 \end_layout
 
 \begin_layout Subsection*
-Lectures complémentaires
+Lectures complÃ©mentaires
 \end_layout
 
 \begin_layout BeginFrame
@@ -1092,7 +1105,7 @@ status collapsed
 
 \end_inset
 
-Lectures complémentaires
+Lectures complÃ©mentaires
 \end_layout
 
 \begin_layout Standard
@@ -1113,7 +1126,7 @@ beamertemplatebookbibitems
 status collapsed
 
 \begin_layout Standard
-  Commencer avec des livres (image d'un livre insérée)
+  Commencer avec des livres (image d'un livre insÃ©rÃ©e)
 \end_layout
 
 \end_inset
@@ -1123,7 +1136,10 @@ status collapsed
 
 \begin_layout Bibliography
 
-\bibitem {Auteur1990}
+\begin_inset LatexCommand bibitem
+key "Auteur1990"
+
+\end_inset
 A.
  Auteur.
  
@@ -1140,8 +1156,10 @@ newblock
 \end_inset
 
 
+\emph default
+ 
 \emph on
- Livre sur quelque chose
+Livre sur quelque chose
 \emph default
 .
 \begin_inset ERT
@@ -1175,7 +1193,7 @@ status collapsed
 
 \begin_layout Standard
   Et continuer avec les articles (image d'un article incluse).
- Faites une liste brève.
+ Faites une liste brÃ¨ve.
  
 \end_layout
 
@@ -1186,7 +1204,10 @@ status collapsed
 
 \begin_layout Bibliography
 
-\bibitem {Quelqun2000}
+\begin_inset LatexCommand bibitem
+key "Quelqun2000"
+
+\end_inset
 S.
  Quelqu'un.
 \begin_inset ERT
@@ -1204,8 +1225,9 @@ newblock{}
  Et ceci et cela
 \emph on
 .
- 
+
 \emph default
+ 
 
 \begin_inset ERT
 status collapsed
@@ -1220,8 +1242,10 @@ newblock
 \end_inset
 
 
+\emph default
+ 
 \emph on
- Journal de ceci et cela
+Journal de ceci et cela
 \emph default
 .
  2(1):50--100, 2000.

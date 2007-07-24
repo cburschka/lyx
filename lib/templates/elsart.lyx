@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass elsart
@@ -9,13 +9,21 @@
 \end_preamble
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -28,7 +36,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -140,26 +148,33 @@ First section
 
 \begin_layout Standard
 
-See style options in the 
+See style options in the
+\family default
+ 
 \family sans
 Document\InsetSpace ~
 Layout
 \family default
- popup (accessed from the 
+ popup (accessed from the
+\family default
+ 
 \family sans
 Layout
 \family default
  menu).
  See the elsart manual for style options, special macros, and the like
-\begin_inset LatexCommand \cite{mycitation}
-
+\begin_inset LatexCommand cite
+key "mycitation"
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {mycitation}
+\begin_inset LatexCommand bibitem
+key "mycitation"
+
+\end_inset
 
 Author, 
 \begin_inset Quotes eld
@@ -169,7 +184,9 @@ Title
 \begin_inset Quotes erd
 \end_inset
 
-, Journal 
+, Journal
+\series default
+ 
 \series bold
 Volume
 \series default

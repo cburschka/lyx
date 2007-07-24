@@ -1,5 +1,5 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass beamer
@@ -12,13 +12,21 @@
 \end_preamble
 \language ngerman
 \inputencoding auto
-\fontscheme times
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 2
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -41,21 +49,21 @@
 status open
 
 \begin_layout Standard
-Diese Datei enthält eine Lösungsvorlage für:
+Diese Datei enthÃ¤lt eine LÃ¶sungsvorlage fÃ¼r:
 \end_layout
 
 \begin_layout Standard
-- Vorträge bei einer (deutschsprachigen) Konferenz/einem Kolloquium.
+- VortrÃ¤ge bei einer (deutschsprachigen) Konferenz/einem Kolloquium.
  
 \end_layout
 
 \begin_layout Standard
-- Vortragslänge von etwa 20 Minuten.
+- VortragslÃ¤nge von etwa 20 Minuten.
  
 \end_layout
 
 \begin_layout Standard
-- Aussehen des Vortrags ist verschnörkelt/dekorativ.
+- Aussehen des Vortrags ist verschnÃ¶rkelt/dekorativ.
 \end_layout
 
 \end_inset
@@ -103,7 +111,7 @@ Kurzversion des Titels
 status open
 
 \begin_layout Standard
-optional, nur bei langen Titeln nötig
+optional, nur bei langen Titeln nÃ¶tig
 \end_layout
 
 \end_inset
@@ -167,7 +175,7 @@ inst{2}
 status open
 
 \begin_layout Standard
-- Namen müssen in derselben Reihenfolge wie im Papier erscheinen.
+- Namen mÃ¼ssen in derselben Reihenfolge wie im Papier erscheinen.
  
 \end_layout
 
@@ -175,7 +183,7 @@ status open
 - Der 
 \backslash
 inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
- Instituten angehören.
+ Instituten angehÃ¶ren.
 \end_layout
 
 \end_inset
@@ -228,9 +236,9 @@ inst{1}
 
 \end_inset
 
-Institut für Informatik
+Institut fÃ¼r Informatik
 \newline
-Universität Hier
+UniversitÃ¤t Hier
 \begin_inset ERT
 status collapsed
 
@@ -256,9 +264,9 @@ inst{2}
 
 \end_inset
 
-Institut für theoretische Philosophie
+Institut fÃ¼r theoretische Philosophie
 \newline
-Universität Dort
+UniversitÃ¤t Dort
 \begin_inset Note Note
 status open
 
@@ -266,12 +274,12 @@ status open
 - Der 
 \backslash
 inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
- Instituten angehören.
+ Instituten angehÃ¶ren.
  
 \end_layout
 
 \begin_layout Standard
-- Keep it simple, niemand interessiert sich für die genau Adresse.
+- Keep it simple, niemand interessiert sich fÃ¼r die genau Adresse.
  
 \end_layout
 
@@ -282,12 +290,12 @@ inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
 status open
 
 \begin_layout Standard
-Universitäten Hier und Dort
+UniversitÃ¤ten Hier und Dort
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-optional, aber oft nötig
+optional, aber oft nÃ¶tig
 \end_layout
 
 \end_inset
@@ -301,18 +309,18 @@ optional, aber oft nötig
 \end_layout
 
 \begin_layout Date
-Konferenz über Präsentationstechniken, 2004
+Konferenz Ã¼ber PrÃ¤sentationstechniken, 2004
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-- Voller oder abgekürzter Name sind möglich.
+- Voller oder abgekÃ¼rzter Name sind mÃ¶glich.
  
 \end_layout
 
 \begin_layout Standard
-- Dieser Eintrag ist nicht für das Publikum gedacht (das weiß nämlich, bei
- welcher Konferenz es ist), sondern für Leute, die die Folien später lesen.
+- Dieser Eintrag ist nicht fÃ¼r das Publikum gedacht (das weiÃŸ nÃ¤mlich, bei
+ welcher Konferenz es ist), sondern fÃ¼r Leute, die die Folien spÃ¤ter lesen.
 \end_layout
 
 \end_inset
@@ -350,7 +358,7 @@ status open
 \begin_layout Standard
 Falls eine Logodatei namens "university-logo-filename.xxx" vorhanden ist,
  wobei xxx ein von latex bzw.
- pdflatex lesbares Graphikformat ist, so kann man wie folgt ein Logo einfügen:
+ pdflatex lesbares Graphikformat ist, so kann man wie folgt ein Logo einfÃ¼gen:
 \end_layout
 
 \end_inset
@@ -392,8 +400,8 @@ pgfuseimage{institution-logo}}
 status open
 
 \begin_layout Standard
-Folgendes sollte gelöscht werden, wenn man nicht am Anfang jedes Unterabschnitts
- die Gliederung nochmal sehen möchte.
+Folgendes sollte gelÃ¶scht werden, wenn man nicht am Anfang jedes Unterabschnitts
+ die Gliederung nochmal sehen mÃ¶chte.
  
 \end_layout
 
@@ -474,7 +482,7 @@ tableofcontents[currentsection,currentsubsection]
 status open
 
 \begin_layout Standard
-Falls Aufzählungen immer schrittweise gezeigt werden sollen, kann folgendes
+Falls AufzÃ¤hlungen immer schrittweise gezeigt werden sollen, kann folgendes
  Kommando benutzt werden:
 \end_layout
 
@@ -504,8 +512,7 @@ Gliederung
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
-
+\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
@@ -518,7 +525,7 @@ status open
 \begin_layout Standard
 Einen Vortrag zu strukturieren ist nicht immer einfach.
  Die nachfolgende Struktur kann unangemessen sein.
- Hier ein paar Regeln, die für diese Lösungsvorlage gelten:
+ Hier ein paar Regeln, die fÃ¼r diese LÃ¶sungsvorlage gelten:
 \end_layout
 
 \begin_layout Standard
@@ -527,7 +534,7 @@ Einen Vortrag zu strukturieren ist nicht immer einfach.
 \end_layout
 
 \begin_layout Standard
-- *Höchstens* drei Unterabschnitte pro Abschnitt.
+- *HÃ¶chstens* drei Unterabschnitte pro Abschnitt.
  
 \end_layout
 
@@ -544,14 +551,14 @@ Einen Vortrag zu strukturieren ist nicht immer einfach.
 \begin_layout Standard
 - In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
  Deshalb sollten Details ausgelassen werden, selbst wenn dies zu Ungenauigkeiten
- oder Halbwahrheiten führt.
+ oder Halbwahrheiten fÃ¼hrt.
  
 \end_layout
 
 \begin_layout Standard
-- Falls man Details weglässt, die eigentlich wichtig für einen Beweis/Implementa
-tion sind, so sagt man dies einmal nüchtern.
- Alle werden damit glücklich sein.
+- Falls man Details weglÃ¤sst, die eigentlich wichtig fÃ¼r einen Beweis/Implementa
+tion sind, so sagt man dies einmal nÃ¼chtern.
+ Alle werden damit glÃ¼cklich sein.
  
 \end_layout
 
@@ -569,10 +576,10 @@ Das behandelte Problem
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften sollten informativ sein.
+Ãœberschriften sollten informativ sein.
  
 \newline
-Korrekte Groß-/Kleinschreibung beachten.
+Korrekte GroÃŸ-/Kleinschreibung beachten.
 \end_layout
 
 \begin_layout FrameSubtitle
@@ -581,8 +588,8 @@ Untertitel sind optional.
 status open
 
 \begin_layout Standard
-- Eine Überschrift fasst einen Rahmen verständlich zusammen.
- Man muss sie verstehen können, selbst wenn man nicht den Rest des Rahmens
+- Eine Ãœberschrift fasst einen Rahmen verstÃ¤ndlich zusammen.
+ Man muss sie verstehen kÃ¶nnen, selbst wenn man nicht den Rest des Rahmens
  versteht.
  
 \end_layout
@@ -603,7 +610,7 @@ Viel Itemize benutzen.
 
 \end_deeper
 \begin_layout Itemize
-Sehr kurze Sätze oder Satzglieder verwenden.
+Sehr kurze SÃ¤tze oder Satzglieder verwenden.
 \end_layout
 
 \begin_deeper
@@ -617,7 +624,7 @@ Diese Overlays werden mit dem Pause Stil erzeugt.
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Ãœberschriften mÃ¼ssen informativ sein.
 \end_layout
 
 \begin_layout Itemize
@@ -645,7 +652,7 @@ status collapsed
 
 \end_inset
 
-Hiermit können, Punkte in beliebiger Reihenfolge präsentiert werden.
+Hiermit kÃ¶nnen, Punkte in beliebiger Reihenfolge prÃ¤sentiert werden.
 \end_layout
 
 \begin_layout Itemize
@@ -663,7 +670,7 @@ Dies wird als zweites gezeigt.
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Ãœberschriften mÃ¼ssen informativ sein.
 \end_layout
 
 \begin_layout Block
@@ -704,7 +711,7 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-Block ohne Überschrift.
+Block ohne Ãœberschrift.
 \end_layout
 
 \begin_layout Itemize
@@ -765,11 +772,11 @@ status collapsed
 
 \end_deeper
 \begin_layout Subsection
-Frühere Arbeiten
+FrÃ¼here Arbeiten
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Ãœberschriften mÃ¼ssen informativ sein.
 \end_layout
 
 \begin_layout Example
@@ -813,7 +820,7 @@ Hauptresultate
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Ãœberschriften mÃ¼ssen informativ sein.
 \end_layout
 
 \begin_layout Theorem
@@ -829,7 +836,7 @@ Auf dem zweiten Overlay.
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Ãœberschriften mÃ¼ssen informativ sein.
 \end_layout
 
 \begin_layout ColumnsTopAligned
@@ -902,23 +909,33 @@ Die Zusammenfassung sollte sehr kurz sein.
 \end_layout
 
 \begin_layout Itemize
-Die 
+Die
+\color none
+ 
 \color red
 erste Hauptbotschaft
+\color none
+ 
 \color default
- des Vortrags in ein bis zwei Zeilen.
+des Vortrags in ein bis zwei Zeilen.
 \end_layout
 
 \begin_layout Itemize
-Die 
+Die
+\color none
+ 
 \color red
 zweite Hauptbotschaft
+\color none
+ 
 \color default
- des Vortrags in ein bis zwei Zeilen.
+des Vortrags in ein bis zwei Zeilen.
 \end_layout
 
 \begin_layout Itemize
-Eventuell noch eine 
+Eventuell noch eine
+\color none
+ 
 \color red
 dritte Botschaft
 \color default
@@ -960,11 +977,11 @@ Ausblick
 
 \begin_deeper
 \begin_layout Itemize
-Etwas, was wir noch nicht lösen konnten.
+Etwas, was wir noch nicht lÃ¶sen konnten.
 \end_layout
 
 \begin_layout Itemize
-Nochwas, das wir noch nicht lösen konnten.
+Nochwas, das wir noch nicht lÃ¶sen konnten.
 \end_layout
 
 \end_deeper
@@ -978,7 +995,7 @@ Nochwas, das wir noch nicht lösen konnten.
 status open
 
 \begin_layout Standard
-Alles nachfolgende ist optional und typischerweise nicht nötig.
+Alles nachfolgende ist optional und typischerweise nicht nÃ¶tig.
 \end_layout
 
 \end_inset
@@ -987,7 +1004,7 @@ Anhang
 \end_layout
 
 \begin_layout Subsection*
-Weiterführende Literatur
+WeiterfÃ¼hrende Literatur
 \end_layout
 
 \begin_layout BeginFrame
@@ -1001,7 +1018,7 @@ status collapsed
 
 \end_inset
 
-Weiterführende Literatur
+WeiterfÃ¼hrende Literatur
 \end_layout
 
 \begin_layout Standard
@@ -1022,7 +1039,7 @@ beamertemplatebookbibitems
 status open
 
 \begin_layout Standard
-Anfangen sollte man mit Übersichtswerken.
+Anfangen sollte man mit Ãœbersichtswerken.
 \end_layout
 
 \end_inset
@@ -1032,7 +1049,10 @@ Anfangen sollte man mit Übersichtswerken.
 
 \begin_layout Bibliography
 
-\bibitem {Autor1990}
+\begin_inset LatexCommand bibitem
+key "Autor1990"
+
+\end_inset
 A.
  Autor.
  
@@ -1049,8 +1069,10 @@ newblock
 \end_inset
 
 
+\emph default
+ 
 \emph on
- Einführung in das Präsentationswese
+EinfÃ¼hrung in das PrÃ¤sentationswese
 \emph default
 .
  
@@ -1084,7 +1106,7 @@ beamertemplatearticlebibitems
 status open
 
 \begin_layout Standard
-Vertiefende Literatur kommt später.
+Vertiefende Literatur kommt spÃ¤ter.
  Die Liste sollte kurz sein.
 \end_layout
 
@@ -1095,7 +1117,10 @@ Vertiefende Literatur kommt später.
 
 \begin_layout Bibliography
 
-\bibitem {Jemand2002}
+\begin_inset LatexCommand bibitem
+key "Jemand2002"
+
+\end_inset
 S.
  Jemand.
 \begin_inset ERT
@@ -1113,8 +1138,9 @@ newblock
  On this and that
 \emph on
 .
- 
+
 \emph default
+ 
 
 \begin_inset ERT
 status collapsed

@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass aastex
@@ -10,13 +10,21 @@
 \end_preamble
 \language english
 \inputencoding default
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine natbib_authoryear
 \use_bibtopic false
 \paperorientation portrait
@@ -29,7 +37,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \end_header
 
 \begin_body
@@ -189,13 +197,13 @@ Results
 \begin_layout Standard
 
 <results text; refer to Figure 
-\begin_inset LatexCommand \ref{fig1}
-
+\begin_inset LatexCommand ref
+reference "fig1"
 \end_inset
 
  and to 
-\begin_inset LatexCommand \citet{ref1}
-
+\begin_inset LatexCommand citet
+key "ref1"
 \end_inset
 
 > 
@@ -240,7 +248,11 @@ Appendix
 \end_layout
 
 \begin_layout References
-\bibitem [Author(1982)]{ref1}
+\begin_inset LatexCommand bibitem
+label "Author(1982)"
+key "ref1"
+
+\end_inset
 
 Author, A., 
 \begin_inset ERT
@@ -277,8 +289,8 @@ clearpage
 \begin_layout FigCaption
 
 
-\begin_inset LatexCommand \label{fig1}
-
+\begin_inset LatexCommand label
+name "fig1"
 \end_inset
 
 This is the first figure.
