@@ -1,6 +1,7 @@
 # This file is part of lyx2lyx
-# -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
+# -*- coding: utf-8 -*-
+# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
+# Copyright (C) 2002-2006 JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,36 +18,66 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from parser_tools import get_value, check_token, find_token,\
-     find_tokens, find_end_of, find_end_of_inset
+     find_tokens, find_end_of
 import os.path
 import gzip
+import locale
 import sys
 import re
-import string
 import time
 
-version_lyx2lyx = "1.4.1"
+try:
+    import lyx2lyx_version
+    version_lyx2lyx = lyx2lyx_version.version
+except: # we are running from build directory so assume the last version
+    version_lyx2lyx = '1.4.5'
+
 default_debug_level = 2
+
+####################################################################
+# Private helper functions
+
+def find_end_of_inset(lines, i):
+    " Find beginning of inset, where lines[i] is included."
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+def generate_minor_versions(major, last_minor_version):
+    """ Generate minor versions, using major as prefix and minor
+    versions from 0 until last_minor_version, plus the generic version.
+
+    Example:
+
+      generate_minor_versions("1.2", 4) ->
+      [ "1.2", "1.2.0", "1.2.1", "1.2.2", "1.2.3"]
+    """
+    return [major] + [major + ".%d" % i for i in range(last_minor_version + 1)]
+
+
+# End of helper functions
+####################################################################
+
 
 # Regular expressions used
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-original_version = re.compile(r"\#LyX (\S*)")
+original_version = re.compile(r".*?LyX ([\d.]*)")
 
 ##
 # file format information:
 #  file, supported formats, stable release versions
-format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
-                   ("0_12",  [215], ["0.12","0.12.1","0.12"]),
-                   ("1_0_0", [215], ["1.0.0","1.0"]),
-                   ("1_0_1", [215], ["1.0.1","1.0.2","1.0.3","1.0.4", "1.1.2","1.1"]),
-                   ("1_1_4", [215], ["1.1.4","1.1"]),
-                   ("1_1_5", [216], ["1.1.5","1.1.5fix1","1.1.5fix2","1.1"]),
-                   ("1_1_6", [217], ["1.1.6","1.1.6fix1","1.1.6fix2","1.1"]),
-                   ("1_1_6fix3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
-                   ("1_2", [220], ["1.2.0","1.2.1","1.2.3","1.2.4","1.2"]),
-                   ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3.5","1.3.6","1.3"]),
-                   ("1_4", range(222,246), ["1.4.0cvs","1.4"])]
+format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
+                   ("0_08",    [210], generate_minor_versions("0.8" , 6) + ["0.7"]),
+                   ("0_10",    [210], generate_minor_versions("0.10", 7) + ["0.9"]),
+                   ("0_12",    [215], generate_minor_versions("0.12", 1) + ["0.11"]),
+                   ("1_0",     [215], generate_minor_versions("1.0" , 4)),
+                   ("1_1",     [215], generate_minor_versions("1.1" , 4)),
+                   ("1_1_5",   [216], ["1.1.5","1.1.5.1","1.1.5.2","1.1"]),
+                   ("1_1_6_0", [217], ["1.1.6","1.1.6.1","1.1.6.2","1.1"]),
+                   ("1_1_6_3", [218], ["1.1.6.3","1.1.6.4","1.1"]),
+                   ("1_2",     [220], generate_minor_versions("1.2" , 4)),
+                   ("1_3",     [221], generate_minor_versions("1.3" , 7)),
+                   ("1_4", range(222,246), generate_minor_versions("1.4" , 5)),
+                   ("1_5", range(246,277), generate_minor_versions("1.5" , 0))]
 
 
 def formats_list():
@@ -81,12 +112,37 @@ def trim_eol(line):
         return line[:-1]
 
 
+def get_encoding(language, inputencoding, format, cjk_encoding):
+    if format > 248:
+        return "utf8"
+    # CJK-LyX encodes files using the current locale encoding.
+    # This means that files created by CJK-LyX can only be converted using
+    # the correct locale settings unless the encoding is given as commandline
+    # argument.
+    if cjk_encoding == 'auto':
+        return locale.getpreferredencoding()
+    elif cjk_encoding != '':
+        return cjk_encoding
+    from lyx2lyx_lang import lang
+    if inputencoding == "auto" or inputencoding == "default":
+        return lang[language][3]
+    if inputencoding == "":
+        return "latin1"
+    # python does not know the alias latin9
+    if inputencoding == "latin9":
+        return "iso-8859-15"
+    return inputencoding
+
 ##
 # Class
 #
 class LyX_Base:
     """This class carries all the information of the LyX file."""
-    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0):
+    
+    def __init__(self, end_format = 0, input = "", output = "", error
+                 = "", debug = default_debug_level, try_hard = 0, cjk_encoding = '',
+                 language = "english", encoding = "auto"):
+
         """Arguments:
         end_format: final format that the file should be converted. (integer)
         input: the name of the input source, if empty resort to standard input.
@@ -103,6 +159,7 @@ class LyX_Base:
 
         self.debug = debug
         self.try_hard = try_hard
+        self.cjk_encoding = cjk_encoding
 
         if end_format:
             self.end_format = self.lyxformat(end_format)
@@ -119,6 +176,8 @@ class LyX_Base:
         self.preamble = []
         self.body = []
         self.status = 0
+        self.encoding = encoding
+        self.language = language
 
 
     def warning(self, message, debug_level= default_debug_level):
@@ -156,7 +215,7 @@ class LyX_Base:
                     if check_token(line, '\\end_preamble'):
                         break
                     
-                    if string.split(line)[:0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+                    if line.split()[:0] in ("\\layout", "\\begin_layout", "\\begin_body"):
                         self.warning("Malformed LyX file: Missing '\\end_preamble'.")
                         self.warning("Adding it now and hoping for the best.")
 
@@ -165,35 +224,45 @@ class LyX_Base:
             if check_token(line, '\\end_preamble'):
                 continue
 
-            line = string.strip(line)
+            line = line.strip()
             if not line:
                 continue
 
-            if string.split(line)[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+            if line.split()[0] in ("\\layout", "\\begin_layout", "\\begin_body", "\\begin_deeper"):
                 self.body.append(line)
                 break
 
             self.header.append(line)
 
-        while 1:
-            line = self.input.readline()
-            if not line:
-                break
-            self.body.append(trim_eol(line))
-
         self.textclass = get_value(self.header, "\\textclass", 0)
         self.backend = get_backend(self.textclass)
         self.format  = self.read_format()
-        self.language = get_value(self.header, "\\language", 0)
-        if self.language == "":
-            self.language = "english"
+        self.language = get_value(self.header, "\\language", 0, default = "english")
+        self.inputencoding = get_value(self.header, "\\inputencoding", 0, default = "auto")
+        self.encoding = get_encoding(self.language, self.inputencoding, self.format, self.cjk_encoding)
         self.initial_version = self.read_version()
+
+        # Second pass over header and preamble, now we know the file encoding
+        for i in range(len(self.header)):
+            self.header[i] = self.header[i].decode(self.encoding)
+        for i in range(len(self.preamble)):
+            self.preamble[i] = self.preamble[i].decode(self.encoding)
+
+        # Read document body
+        while 1:
+            line = self.input.readline().decode(self.encoding)
+            if not line:
+                break
+            self.body.append(trim_eol(line))
 
 
     def write(self):
         " Writes the LyX file to self.output."
         self.set_version()
         self.set_format()
+        self.set_textclass()
+        if self.encoding == "auto":
+            self.encoding = get_encoding(self.language, self.encoding, self.format, self.cjk_encoding)
 
         if self.preamble:
             i = find_token(self.header, '\\textclass', 0) + 1
@@ -206,7 +275,7 @@ class LyX_Base:
             header = self.header
 
         for line in header + [''] + self.body:
-            self.output.write(line+"\n")
+            self.output.write(line.encode(self.encoding)+"\n")
 
 
     def choose_io(self, input, output):
@@ -227,6 +296,7 @@ class LyX_Base:
             except:
                 self.input = open(input)
         else:
+            self.dir = ''
             self.input = sys.stdin
 
 
@@ -235,6 +305,8 @@ class LyX_Base:
         result = format_re.match(format)
         if result:
             format = int(result.group(1) + result.group(2))
+        elif format == '2':
+            format = 200
         else:
             self.error(str(format) + ": " + "Invalid LyX file.")
 
@@ -252,9 +324,19 @@ class LyX_Base:
             if line[0] != "#":
                 return None
 
+            line = line.replace("fix",".")
             result = original_version.match(line)
             if result:
-                return result.group(1)
+                # Special know cases: reLyX and KLyX
+                if line.find("reLyX") != -1 or line.find("KLyX") != -1:
+                    return "0.12"
+
+                res = result.group(1)
+                if not res:
+                    self.warning(line)
+                #self.warning("Version %s" % result.group(1))
+                return res
+        self.warning(str(self.header[:2]))
         return None
 
 
@@ -284,6 +366,11 @@ class LyX_Base:
             format = str(self.format)
         i = find_token(self.header, "\\lyxformat", 0)
         self.header[i] = "\\lyxformat %s" % format
+
+
+    def set_textclass(self):
+        i = find_token(self.header, "\\textclass", 0)
+        self.header[i] = "\\textclass %s" % self.textclass
 
 
     def set_parameter(self, param, value):
@@ -359,7 +446,7 @@ class LyX_Base:
 
         if not correct_version:
             if format <= 215:
-                self.warning("Version does not match file format, discarding it.")
+                self.warning("Version does not match file format, discarding it. (Version %s, format %d)" %(self.initial_version, self.format))
             for rel in format_relation:
                 if format in rel[1]:
                     initial_step = rel[0]
@@ -426,7 +513,7 @@ class LyX_Base:
                 self.warning('Incomplete file.', 0)
                 break
 
-            section = string.split(self.body[i])[1]
+            section = self.body[i].split()[1]
             if section[-1] == '*':
                 section = section[:-1]
 
@@ -434,12 +521,12 @@ class LyX_Base:
 
             k = i + 1
             # skip paragraph parameters
-            while not string.strip(self.body[k]) or string.split(self.body[k])[0] in allowed_parameters:
+            while not self.body[k].strip() or self.body[k].split()[0] in allowed_parameters:
                 k = k +1
 
             while k < j:
                 if check_token(self.body[k], '\\begin_inset'):
-                    inset = string.split(self.body[k])[1]
+                    inset = self.body[k].split()[1]
                     end = find_end_of_inset(self.body, k)
                     if end == -1 or end > j:
                         self.warning('Malformed file.', 0)
@@ -452,7 +539,7 @@ class LyX_Base:
                     k = k + 1
 
             # trim empty lines in the end.
-            while string.strip(par[-1]) == '' and par:
+            while par[-1].strip() == '' and par:
                 par.pop()
 
             toc_par.append(Paragraph(section, par))
@@ -464,8 +551,8 @@ class LyX_Base:
 
 class File(LyX_Base):
     " This class reads existing LyX files."
-    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0):
-        LyX_Base.__init__(self, end_format, input, output, error, debug, try_hard)
+    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0, cjk_encoding = ''):
+        LyX_Base.__init__(self, end_format, input, output, error, debug, try_hard, cjk_encoding)
         self.read()
 
 
@@ -481,7 +568,14 @@ class NewFile(LyX_Base):
             "\\textclass article",
             "\\language english",
             "\\inputencoding auto",
-            "\\fontscheme default",
+            "\\font_roman default",
+            "\\font_sans default",
+            "\\font_typewriter default",
+            "\\font_default_family default",
+            "\\font_sc false",
+            "\\font_osf false",
+            "\\font_sf_scale 100",
+            "\\font_tt_scale 100",
             "\\graphics default",
             "\\paperfontsize default",
             "\\papersize default",

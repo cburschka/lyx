@@ -1,3 +1,8 @@
+2007-07-24  José Matos  <jamatos@lyx.org>
+
+	* (several) Backport lyx2lyx from 1.5.0 (modulo some files used
+	for testing).
+
 2006-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (dist_lyx2lyx_DATA): rename to dist_lyx2lyx_PYTHON;
@@ -5,9 +10,11 @@
 	(install-data-hook): new target: sets executable bit on lyx2lyx.
 
 2006-07-15  Bo Peng     <ben.bob@gmail.com>
+
 	* replace all tab in .py files by spaces
 
-2006-04-10  José Matos  <jamatos@lyx.org>	
+2006-04-10  José Matos  <jamatos@lyx.org>
+
 	* parser_tools.py (find_tokens_exact, find_tokens): replace range
 	with xrange.
 

@@ -1,6 +1,6 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
+# -*- coding: utf-8 -*-
+# Copyright (C) 2002-2004 JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -36,25 +36,30 @@ Options:
     -t, --to version		final version (optional)
     -o, --output name		name of the output file or else goes to stdout
     -n, --try-hard		try hard (ignore any convertion errors)
+    -c, --cjk [encoding]	files in format 248 and lower are read and
+				written in the format of CJK-LyX.
+				If encoding is not given or 'auto' the encoding
+				is determined from the locale.
     -q, --quiet			same as --debug=0"""
 
 
 def parse_options(argv):
-    _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "try-hard", "quiet"]
+    _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "try-hard", "cjk", "quiet"]
     try:
-       opts, args = getopt.getopt(argv[1:], "d:e:f:hlno:qt:v", _options)
+       opts, args = getopt.getopt(argv[1:], "c:d:e:f:hlno:qt:v", _options)
     except getopt.error:
         usage()
         sys.exit(2)
 
     end_format, input, output, error, debug, try_hard = 0, "", "", "", LyX.default_debug_level, 0
+    cjk_encoding = ''
     for o, a in opts:
         if o in ("-h", "--help"):
             usage()
             sys.exit()
         if o in ("-v", "--version"):
             print "lyx2lyx, version %s" %(LyX.version_lyx2lyx)
-            print "Copyright (C) 2002-2004 José Matos and Dekel Tsur"
+            print "Copyright (C) 2002-2004 JosÃ© Matos and Dekel Tsur"
             sys.exit()
         if o in ("-d", "--debug"):
             debug = int(a)
@@ -71,15 +76,20 @@ def parse_options(argv):
             error = a
         if o in ("-n", "--try-hard"):
             try_hard = 1
+        if o in ("-c", "--cjk"):
+            if a == '':
+                cjk_encoding = 'auto'
+            else:
+                cjk_encoding = a
     if args:
         input = args[0]
 
-    return end_format, input, output, error, debug, try_hard
+    return end_format, input, output, error, debug, try_hard, cjk_encoding
 
 
 def main(argv):
-    end_format, input, output, error, debug, try_hard = parse_options(argv)
-    file = LyX.File(end_format, input, output, error, debug, try_hard)
+    end_format, input, output, error, debug, try_hard, cjk_encoding = parse_options(argv)
+    file = LyX.File(end_format, input, output, error, debug, try_hard, cjk_encoding)
 
     file.convert()
     file.write()

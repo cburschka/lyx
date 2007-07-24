@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
-# -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
+# -*- coding: utf-8 -*-
+# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,65 +16,93 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-import string
-import re
+" This modules offer several free functions to help parse lines."
 
+# Utilities for one line
 def check_token(line, token):
-    if line[:len(token)] == token:
-        return 1
-    return 0
+    """ check_token(line, token) -> bool
+
+    Return True if token is present in line and is the first element
+    else returns False."""
+
+    return line[:len(token)] == token
 
 
-# We need to check that the char after the token is space, but I think
-# we can ignore this
-def find_token(lines, token, start, end = 0):
+def is_nonempty_line(line):
+    """ is_nonempty_line(line) -> bool
+
+    Return False if line is either empty or it has only whitespaces,
+    else return True."""
+    return line != " "*len(line)
+
+
+# Utilities for a list of lines
+def find_token(lines, token, start, end = 0, exact = False):
+    """ find_token(lines, token, start[[, end], exact]) -> int
+
+    Return the lowest line where token is found, and is the first
+    element, in lines[start, end].
+
+    Return -1 on failure."""
+
     if end == 0:
         end = len(lines)
     m = len(token)
     for i in xrange(start, end):
-        if lines[i][:m] == token:
-            return i
-    return -1
-
-
-def find_token_exact(lines, token, start, end = 0):
-    if end == 0:
-        end = len(lines)
-    for i in xrange(start, end):
-        x = string.split(lines[i])
-        y = string.split(token)
-        if len(x) < len(y):
-            continue
-        if x[:len(y)] == y:
-            return i
-    return -1
-
-
-def find_tokens(lines, tokens, start, end = 0):
-    if end == 0:
-        end = len(lines)
-    for i in xrange(start, end):
-        for token in tokens:
-            if lines[i][:len(token)] == token:
-                return i
-    return -1
-
-
-def find_tokens_exact(lines, tokens, start, end = 0):
-    if end == 0:
-        end = len(lines)
-    for i in xrange(start, end):
-        for token in tokens:
-            x = string.split(lines[i])
-            y = string.split(token)
+        if exact:
+            x = lines[i].split()
+            y = token.split()
             if len(x) < len(y):
                 continue
             if x[:len(y)] == y:
                 return i
+        else:
+            if lines[i][:m] == token:
+                return i
     return -1
 
 
+def find_token_exact(lines, token, start, end = 0):
+    return find_token(lines, token, start, end, True)
+
+
+def find_tokens(lines, tokens, start, end = 0, exact = False):
+    """ find_tokens(lines, tokens, start[[, end], exact]) -> int
+
+    Return the lowest line where one token in tokens is found, and is
+    the first element, in lines[start, end].
+
+    Return -1 on failure."""
+    if end == 0:
+        end = len(lines)
+
+    for i in xrange(start, end):
+        for token in tokens:
+            if exact:
+                x = lines[i].split()
+                y = token.split()
+                if len(x) < len(y):
+                    continue
+                if x[:len(y)] == y:
+                    return i            
+            else:
+                if lines[i][:len(token)] == token:
+                    return i
+    return -1
+
+
+def find_tokens_exact(lines, tokens, start, end = 0):
+    return find_tokens(lines, tokens, start, end, True)
+
+
 def find_re(lines, rexp, start, end = 0):
+    """ find_token_re(lines, rexp, start[, end]) -> int
+
+    Return the lowest line where rexp, a regular expression, is found
+    in lines[start, end].
+
+    Return -1 on failure."""
+
     if end == 0:
         end = len(lines)
     for i in xrange(start, end):
@@ -84,6 +112,12 @@ def find_re(lines, rexp, start, end = 0):
 
 
 def find_token_backwards(lines, token, start):
+    """ find_token_backwards(lines, token, start) -> int
+
+    Return the highest line where token is found, and is the first
+    element, in lines[start, end].
+
+    Return -1 on failure."""
     m = len(token)
     for i in xrange(start, -1, -1):
         line = lines[i]
@@ -93,6 +127,12 @@ def find_token_backwards(lines, token, start):
 
 
 def find_tokens_backwards(lines, tokens, start):
+    """ find_tokens_backwards(lines, token, start) -> int
+
+    Return the highest line where token is found, and is the first
+    element, in lines[end, start].
+
+    Return -1 on failure."""
     for i in xrange(start, -1, -1):
         line = lines[i]
         for token in tokens:
@@ -101,82 +141,43 @@ def find_tokens_backwards(lines, tokens, start):
     return -1
 
 
-def get_value(lines, token, start, end = 0):
+def get_value(lines, token, start, end = 0, default = ""):
+    """ get_value(lines, token, start[[, end], default]) -> list of strings
+
+    Return tokens after token for the first line, in lines, where
+    token is the first element."""
+
     i = find_token_exact(lines, token, start, end)
     if i == -1:
         return ""
-    if len(string.split(lines[i])) > 1:
-        return string.split(lines[i])[1]
+    if len(lines[i].split()) > 1:
+        return lines[i].split()[1]
     else:
-        return ""
+        return default
 
 
-def get_layout(line, default_layout):
-    tokens = string.split(line)
-    if len(tokens) > 1:
-        return tokens[1]
-    return default_layout
+def del_token(lines, token, start, end):
+    """ del_token(lines, token, start, end) -> int
 
+    Find the lower line in lines where token is the first element and
+    delete that line.
 
-def del_token(lines, token, i, j):
-    k = find_token_exact(lines, token, i, j)
+    Returns the number of lines remaining."""
+
+    k = find_token_exact(lines, token, start, end)
     if k == -1:
-        return j
+        return end
     else:
         del lines[k]
-        return j-1
+        return end - 1
 
 
-# Finds the paragraph that contains line i.
-def get_paragraph(lines, i, format):
-    if format < 225:
-        begin_layout = "\\layout"
-    else:
-        begin_layout = "\\begin_layout"
-    while i != -1:
-        i = find_tokens_backwards(lines, ["\\end_inset", begin_layout], i)
-        if i == -1: return -1
-        if check_token(lines[i], begin_layout):
-            return i
-        i = find_beginning_of_inset(lines, i)
-    return -1
-
-
-# Finds the paragraph after the paragraph that contains line i.
-def get_next_paragraph(lines, i, format):
-    if format < 225:
-        tokens = ["\\begin_inset", "\\layout", "\\end_float", "\\the_end"]
-    elif format < 236:
-        tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_document"]
-    else:
-        tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_body", "\\end_document"]
-    while i != -1:
-        i = find_tokens(lines, tokens, i)
-        if not check_token(lines[i], "\\begin_inset"):
-            return i
-        i = find_end_of_inset(lines, i)
-    return -1
-
-
-def find_end_of(lines, i, start_token, end_token):
-    count = 1
-    n = len(lines)
-    while i < n:
-        i = find_tokens(lines, [end_token, start_token], i+1)
-        if check_token(lines[i], start_token):
-            count = count+1
-        else:
-            count = count-1
-        if count == 0:
-            return i
-    return -1
-
-
-# Finds the matching \end_inset
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
     while i > 0:
         i = find_tokens_backwards(lines, [start_token, end_token], i-1)
+        if i == -1:
+            return -1
         if check_token(lines[i], end_token):
             count = count+1
         else:
@@ -186,38 +187,20 @@ def find_beginning_of(lines, i, start_token, end_token):
     return -1
 
 
-# Finds the matching \end_inset
-def find_end_of_inset(lines, i):
-    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
-
-
-# Finds the matching \end_inset
-def find_beginning_of_inset(lines, i):
-    return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
-
-
-def find_end_of_tabular(lines, i):
-    return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
-
-
-def get_tabular_lines(lines, i):
-    result = []
-    i = i+1
-    j = find_end_of_tabular(lines, i)
-    if j == -1:
-        return []
-
-    while i <= j:
-        if check_token(lines[i], "\\begin_inset"):
-            i = find_end_of_inset(lines, i)+1
+def find_end_of(lines, i, start_token, end_token):
+    count = 1
+    n = len(lines)
+    while i < n:
+        i = find_tokens(lines, [end_token, start_token], i+1)
+        if i == -1:
+            return -1
+        if check_token(lines[i], start_token):
+            count = count+1
         else:
-            result.append(i)
-            i = i+1
-    return result
-
-
-def is_nonempty_line(line):
-    return line != " "*len(line)
+            count = count-1
+        if count == 0:
+            return i
+    return -1
 
 
 def find_nonempty_line(lines, start, end = 0):

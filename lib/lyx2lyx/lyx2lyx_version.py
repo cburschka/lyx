@@ -1,6 +1,6 @@
-# This file is part of lyx2lyx
-# -*- coding: iso-8859-1 -*-
-# Copyright (C) 2004 José Matos <jamatos@lyx.org>
+# This file is part of lyx2lyx -*- python -*-
+# -*- coding: utf-8 -*-
+# Copyright (C) 2006 JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,9 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-convert = [[215, []]]
-revert  = []
-
+version = "1.4.5"
 
 if __name__ == "__main__":
     pass

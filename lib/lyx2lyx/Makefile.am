@@ -7,18 +7,23 @@ CHMOD = chmod
 lyx2lyxdir = $(pkgdatadir)/lyx2lyx
 dist_lyx2lyx_PYTHON = \
 	lyx2lyx \
+	lyx2lyx_version.py \
+	lyx2lyx_lang.py \
 	parser_tools.py \
 	LyX.py \
+	lyx_0_06.py \
+	lyx_0_08.py \
+	lyx_0_10.py \
 	lyx_0_12.py \
-	lyx_1_0_0.py \
-	lyx_1_0_1.py \
-	lyx_1_1_4.py \
+	lyx_1_0.py \
+	lyx_1_1.py \
 	lyx_1_1_5.py \
-	lyx_1_1_6.py \
-	lyx_1_1_6fix3.py \
+	lyx_1_1_6_0.py \
+	lyx_1_1_6_3.py \
 	lyx_1_2.py \
 	lyx_1_3.py \
 	lyx_1_4.py \
+	lyx_1_5.py \
 	profiling.py
 
 install-data-hook:
