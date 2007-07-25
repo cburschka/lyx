@@ -669,14 +669,10 @@ if frontend == 'qt2':
         print 'Did not find qt libraries, exiting!'
         Exit(1)
 
-# now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
+# now, if msvc2005 is used, we will need to embed lyx.exe.manifest to lyx.exe
 if use_vc:
-    if mode == 'debug':
-        manifest = os.path.join(qt_lib_path, 'qt-mt3.dll.manifest')
-    else:
-        manifest = os.path.join(qt_lib_path, 'qt-mt3.dll.manifest')
-    if os.path.isfile(manifest):
-        env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
+    env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % \
+    env.File('$BUILDDIR/lyx.exe.manifest').path]
 
 # check socket libs
 socket_libs = []
