@@ -1,7 +1,7 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(LyX,1.4.5svn,[lyx-devel@lists.lyx.org],[lyx])
-AC_SUBST(LYX_DATE, ["14/02/2007"])
+AC_INIT(LyX,1.4.5,[lyx-devel@lists.lyx.org],[lyx])
+AC_SUBST(LYX_DATE, ["2007/07/25"])
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.C)
 AC_CONFIG_HEADERS([src/config.h])
@@ -49,7 +49,7 @@ fi
 AC_CHECK_PROGS(M4, gm4 gnum4 m4, m4)
 
 # Check for installed python
-AM_PATH_PYTHON(2.2,, :)
+AM_PATH_PYTHON(2.3,, :)
 
 # Work around a problem in automake 1.4: when invoking install-strip,
 # INSTALL_PROGRAM is changed to 'install -s', and since
