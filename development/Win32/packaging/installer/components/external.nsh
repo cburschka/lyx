@@ -73,7 +73,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
     download_${COMPONENT}:
 
-      !insertmacro DownloadFile $R0 "${COMPONENT}" "${COMPONENT}Setup.exe"
+      !insertmacro DownloadFile $R0 "${COMPONENT}" "${COMPONENT}Setup.exe" ""
  
       ${if} $R0 != "OK"
         #Download failed
