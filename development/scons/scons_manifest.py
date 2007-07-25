@@ -1248,6 +1248,7 @@ lib_files = Split('''
     symbols
     syntax.default
     configure.py
+    unicodesymbols
 ''')
 
 
