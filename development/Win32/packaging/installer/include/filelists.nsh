@@ -129,6 +129,12 @@ Lists of files to include in the installer
 
 !macroend
 
+!macro FileListUnicodeDll COMMAND DIRECTORY
+
+  ${FILE}unicodedata.pyd"
+
+!macroend
+
 !macro FileListPythonLib COMMAND DIRECTORY
 
   ${FILE}__future__.py"
