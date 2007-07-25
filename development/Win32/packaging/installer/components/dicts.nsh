@@ -104,7 +104,7 @@ Function DownloadDictionary
 
   dict_download:
 
-    !insertmacro DownloadFile $R3 ASPELLDICTS aspell6-$R0.exe
+    !insertmacro DownloadFile $R3 ASPELLDICTS aspell6-$R0.exe /aspell6-$R0.exe
 
     ${if} $R3 != "OK"
       ;Download failed

@@ -113,6 +113,7 @@ Var AspellHive
 ;--------------------------------
 ;LyX installer header files  
 
+!include "include\download.nsh"
 !include "include\init.nsh"
 !include "include\windows.nsh"
 !include "include\lang.nsh"
