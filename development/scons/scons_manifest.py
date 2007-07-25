@@ -2294,19 +2294,23 @@ lib_clipart_files = Split('''
 ''')
 
 lib_lyx2lyx_files = Split('''
-    lyx2lyx
-    parser_tools.py
     LyX.py
+    lyx2lyx
+    lyx2lyx_lang.py
+    lyx_0_06.py
+    lyx_0_08.py
+    lyx_0_10.py
     lyx_0_12.py
-    lyx_1_0_0.py
-    lyx_1_0_1.py
-    lyx_1_1_4.py
+    lyx_1_0.py
+    lyx_1_1.py
     lyx_1_1_5.py
-    lyx_1_1_6fix3.py
-    lyx_1_1_6.py
+    lyx_1_1_6_0.py
+    lyx_1_1_6_3.py
     lyx_1_2.py
     lyx_1_3.py
     lyx_1_4.py
+    lyx_1_5.py
+    parser_tools.py
     profiling.py
 ''')
 
