@@ -1013,6 +1013,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
+		cap::saveSelection(bv->cursor());
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3)
 			cur.clearSelection();
