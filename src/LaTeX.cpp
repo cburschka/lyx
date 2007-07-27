@@ -689,7 +689,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				// we have a latex error
 				retval |=  TEX_ERROR;
 				if (contains(desc,
-				    "Package babel Error: You haven't defined the language"))
+				    "Package babel Error: You haven't defined the language") ||
+				    contains(desc,
+				    "Package babel Error: You haven't loaded the option"))
 					retval |= ERROR_RERUN;
 				// get the line number:
 				int line = 0;
