@@ -3490,6 +3490,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 	}
+	theSelection().haveSelection(bvcur.selection());
 }
 
 

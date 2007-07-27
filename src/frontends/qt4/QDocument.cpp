@@ -225,9 +225,9 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
-		this, SLOT(validate_listings_params()));
+		this, SLOT(set_listings_msg()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
-		this, SLOT(validate_listings_params()));
+		this, SLOT(set_listings_msg()));
 	textLayoutModule->listingsTB->setPlainText(
 		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
@@ -623,13 +623,29 @@ void QDocumentDialog::change_adaptor()
 }
 
 
-void QDocumentDialog::validate_listings_params()
+docstring QDocumentDialog::validate_listings_params()
+{
+	// use a cache here to avoid repeated validation
+	// of the same parameters
+	static string param_cache = string();
+	static docstring msg_cache = docstring();
+	
+	if (textLayoutModule->bypassCB->isChecked())
+		return docstring();
+
+	string params = fromqstr(textLayoutModule->listingsED->toPlainText());
+	if (params != param_cache) {
+		param_cache = params;
+		msg_cache = InsetListingsParams(params).validate();
+	}
+	return msg_cache;
+}
+
+
+void QDocumentDialog::set_listings_msg()
 {
 	static bool isOK = true;
-	InsetListingsParams par(fromqstr(textLayoutModule->listingsED->toPlainText()));
-	docstring msg;
-	if (!textLayoutModule->bypassCB->isChecked())
-		msg = par.validate();
+	docstring msg = validate_listings_params();
 	if (msg.empty()) {
 		if (isOK)
 			return;
@@ -637,14 +653,10 @@ void QDocumentDialog::validate_listings_params()
 		// listingsTB->setTextColor("black");
 		textLayoutModule->listingsTB->setPlainText(
 			qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
-		okPB->setEnabled(true);
-		applyPB->setEnabled(true);
 	} else {
 		isOK = false;
 		// listingsTB->setTextColor("red");
 		textLayoutModule->listingsTB->setPlainText(toqstr(msg));
-		okPB->setEnabled(false);
-		applyPB->setEnabled(false);
 	}
 }
 
@@ -1448,6 +1460,13 @@ void QDocument::useClassDefaults()
 	params.useClassDefaults();
 	update_contents();
 }
+
+
+bool QDocument::isValid()
+{
+	return dialog_->validate_listings_params().empty();
+}
+
 
 } // namespace frontend
 } // namespace lyx

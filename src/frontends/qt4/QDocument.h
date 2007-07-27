@@ -68,11 +68,13 @@ public:
 	void updatePagestyle(std::string const &, std::string const &);
 
 	void showPreamble();
+	/// validate listings parameters and return an error message, if any
+	docstring validate_listings_params();
 
 public Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
-	void validate_listings_params();
+	void set_listings_msg();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 
@@ -141,6 +143,9 @@ private:
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
+protected:
+	/// return false if validate_listings_params returns error
+	virtual bool isValid();
 };
 
 

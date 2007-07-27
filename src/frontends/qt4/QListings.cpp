@@ -190,9 +190,9 @@ QListingsDialog::QListingsDialog(QListings * form)
 	connect(extendedcharsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
-	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
+	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(set_listings_msg()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(bypassCB, SIGNAL(clicked()), this, SLOT(validate_listings_params()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(set_listings_msg()));
 
 	for (int n = 0; languages[n][0]; ++n)
 		languageCO->addItem(qt_(languages_gui[n]));
@@ -319,26 +319,38 @@ string QListingsDialog::construct_params()
 }
 
 
-void QListingsDialog::validate_listings_params()
+docstring QListingsDialog::validate_listings_params()
+{
+	// use a cache here to avoid repeated validation
+	// of the same parameters
+	static string param_cache = string();
+	static docstring msg_cache = docstring();
+	
+	if (bypassCB->isChecked())
+		return docstring();
+
+	string params = construct_params();
+	if (params != param_cache) {
+		param_cache = params;
+		msg_cache = InsetListingsParams(params).validate();
+	}
+	return msg_cache;
+}
+
+
+void QListingsDialog::set_listings_msg()
 {
 	static bool isOK = true;
-	InsetListingsParams par(construct_params());
-	docstring msg;
-	if (!bypassCB->isChecked())
-		msg = par.validate();
+	docstring msg = validate_listings_params();
 	if (msg.empty()) {
 		if (isOK)
 			return;
 		isOK = true;
 		listingsTB->setPlainText(
 			qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-		okPB->setEnabled(true);
-		applyPB->setEnabled(true);
 	} else {
 		isOK = false;
 		listingsTB->setPlainText(toqstr(msg));
-		okPB->setEnabled(false);
-		applyPB->setEnabled(false);
 	}
 }
 
@@ -598,6 +610,12 @@ void QListings::update_contents()
 	// the rest is put to the extra edit box.
 	string extra = getStringFromVector(pars);
 	dialog_->listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
+}
+
+
+bool QListings::isValid()
+{
+	return dialog_->validate_listings_params().empty();
 }
 
 
