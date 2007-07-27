@@ -1,0 +1,349 @@
+#LyX 1.4.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass apa
+\begin_preamble
+%% uncomment the following line to get this information
+% below the tile
+%\note{Draft of \today}
+
+%% Some information on the journal. This will be
+%% printed on the headline of the first page
+%% Just uncomment wir a '%' if you don't want this
+% Journal name
+\journal{The Test Journal}
+% volume, number, pages
+\volume{Vol. 0 (2007), pp.~1--22}
+% copyright notice
+\ccoppy{\textcopyright\ The Author}
+% Serial number or other reference
+\copnum{ISSN XXX-XXXX-XXXX}
+
+%% The usual ...
+\acknowledgements{Author notes, acknowledgements, contact information go here \ldots}
+\end_preamble
+\options jou
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Note that the APA class provides three different 
+\begin_inset Quotes eld
+\end_inset
+
+modes
+\begin_inset Quotes erd
+\end_inset
+
+ that generate different looks: 
+\emph on
+Manuscript mode (man)
+\emph default
+, 
+\emph on
+Printed Journal mode (jou)
+\emph default
+ and 
+\emph on
+Regular LaTeX mode (doc)
+\emph default
+.
+ The modes can be switched by entering the class options 
+\emph on
+man
+\emph default
+, 
+\emph on
+jou
+\emph default
+ or 
+\emph on
+doc 
+\emph default
+to Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Options.
+ This template uses the Printed Journal mode.
+\end_layout
+
+\begin_layout Standard
+Have a look at Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Preamble for further settings.
+ A brief documentation can be found at 
+\begin_inset LatexCommand \url{http://ctan.basemirror.de/macros/latex/contrib/apa/apacls.html}
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Title
+\end_layout
+
+\begin_layout RightHeader
+Running Head for Journal and LaTeX Mode
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+for manuscript mode, use 
+\emph on
+ShortTitle
+\emph default
+ instead
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Author's Name
+\end_layout
+
+\begin_layout Affiliation
+Department of Psychology
+\newline
+Your university
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+If your paper is written by multiple authors from the same affiliation,
+ just enter them as 
+\begin_inset Quotes eld
+\end_inset
+
+Author1 and Author2
+\begin_inset Quotes erd
+\end_inset
+
+.
+ However, if there are multiple authors from different affiliations involved,
+ chose 
+\emph on
+TwoAuthors
+\emph default
+, 
+\emph on
+ThreeAuthors
+\emph default
+ or 
+\emph on
+FourAuthors
+\emph default
+ instead auf 
+\emph on
+Author
+\emph default
+.
+ Note that in this case, authors have to be separated by 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+ in TeX mode, e.\InsetSpace \thinspace{}
+g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+My name
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+My colleague's name
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Note further that you must use the corresponding Affiliation style, i.\InsetSpace \thinspace{}
+e.
+ 
+\emph on
+TwoAffiliations
+\emph default
+ for 
+\emph on
+TwoAuthors
+\emph default
+, etc.
+ (using again the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+ separator).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Stuff we did.
+\end_layout
+
+\begin_layout Standard
+Article starts here.
+ 
+\end_layout
+
+\begin_layout Standard
+Just to test the bibliography, we are citing some fake authors here: 
+\begin_inset LatexCommand \citet{article-full}
+
+\end_inset
+
+, 
+\begin_inset LatexCommand \citet{booklet-full}
+
+\end_inset
+
+, 
+\begin_inset LatexCommand \citet{misc-full}
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Standard
+Descibing our methods \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsection*
+Participants
+\end_layout
+
+\begin_layout Standard
+Involved participants \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsection*
+Procedures
+\end_layout
+
+\begin_layout Standard
+\SpecialChar \ldots{}
+ and procedures
+\end_layout
+
+\begin_layout Section*
+Results
+\end_layout
+
+\begin_layout Standard
+And what came out \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsection*
+Descriptives
+\end_layout
+
+\begin_layout Standard
+This \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsection*
+Analysis
+\end_layout
+
+\begin_layout Standard
+\SpecialChar \ldots{}
+ and that.
+\end_layout
+
+\begin_layout Section*
+Discussion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The APA class has a hardcoded bibliography style (apacite).
+ So whatever you chose below in the BibTeX setting as a bibliography style,
+ it will be ignored.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand \bibtex[plain]{xampl}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
