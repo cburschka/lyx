@@ -29,11 +29,15 @@ public:
 	QListingsDialog(QListings * form);
 	/// get values from all the widgets and form a string
 	std::string construct_params();
+	/// validate listings parameters and return an error message, if any
+	docstring validate_listings_params();
 protected Q_SLOTS:
 	virtual void change_adaptor();
 	/// AFAIK, QValidator only works for QLineEdit so
 	/// I have to validate listingsED (QTextEdit) manually.
-	void validate_listings_params();
+	/// This function displays a hint or error message returned by
+	/// validate_listings_params
+	void set_listings_msg();
 	/// turn off inline when float is clicked
 	void on_floatCB_stateChanged(int state);
 	/// turn off float when inline is clicked
@@ -63,6 +67,9 @@ private:
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
+protected:
+	/// return false if validate_listings_params returns error
+	virtual bool isValid();
 };
 
 } // namespace frontend

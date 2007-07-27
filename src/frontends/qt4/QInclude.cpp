@@ -64,9 +64,9 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(captionLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(labelLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
-	connect(listingsED, SIGNAL(textChanged()), this, SLOT(validate_listings_params()));
+	connect(listingsED, SIGNAL(textChanged()), this, SLOT(set_listings_msg()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(bypassCB, SIGNAL(clicked()), this, SLOT(validate_listings_params()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(set_listings_msg()));
 
 	setFocusProxy(filenameED);
 }
@@ -84,24 +84,38 @@ void QIncludeDialog::change_adaptor()
 }
 
 
-void QIncludeDialog::validate_listings_params()
+docstring QIncludeDialog::validate_listings_params()
+{
+	// use a cache here to avoid repeated validation
+	// of the same parameters
+	static string param_cache = string();
+	static docstring msg_cache = docstring();
+	
+	if (typeCO->currentIndex() != 3 || bypassCB->isChecked())
+		return docstring();
+
+	string params = fromqstr(listingsED->toPlainText());
+	if (params != param_cache) {
+		param_cache = params;
+		msg_cache = InsetListingsParams(params).validate();
+	}
+	return msg_cache;
+}
+
+
+void QIncludeDialog::set_listings_msg()
 {
 	static bool isOK = true;
-	InsetListingsParams par(fromqstr(listingsED->toPlainText()));
-	docstring msg;
-	if (!bypassCB->isChecked())
-		msg = par.validate();
+	docstring msg = validate_listings_params();
 	if (msg.empty()) {
 		if (isOK)
 			return;
 		isOK = true;
 		listingsTB->setPlainText(
 			qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-		okPB->setEnabled(true);
 	} else {
 		isOK = false;
 		listingsTB->setPlainText(toqstr(msg));
-		okPB->setEnabled(false);
 	}
 }
 
@@ -334,7 +348,8 @@ void QInclude::load()
 
 bool QInclude::isValid()
 {
-	return !dialog_->filenameED->text().isEmpty();
+	return !dialog_->filenameED->text().isEmpty() &&
+		dialog_->validate_listings_params().empty();
 }
 
 } // namespace frontend
