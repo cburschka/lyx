@@ -1,5 +1,5 @@
-#LyX 1.4.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.1svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass apa
@@ -26,13 +26,21 @@
 \options jou
 \language english
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 1
+\use_esint 0
 \cite_engine natbib_authoryear
 \use_bibtopic false
 \paperorientation portrait
@@ -45,7 +53,8 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -86,9 +95,9 @@ jou
 \emph default
  or 
 \emph on
-doc 
+doc
 \emph default
-to Document\SpecialChar \menuseparator
+ to Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Options.
  This template uses the Printed Journal mode.
@@ -99,7 +108,8 @@ Have a look at Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Preamble for further settings.
  A brief documentation can be found at 
-\begin_inset LatexCommand \url{http://ctan.basemirror.de/macros/latex/contrib/apa/apacls.html}
+\begin_inset LatexCommand url
+target "http://ctan.basemirror.de/macros/latex/contrib/apa/apacls.html"
 
 \end_inset
 
@@ -247,17 +257,20 @@ Article starts here.
 
 \begin_layout Standard
 Just to test the bibliography, we are citing some fake authors here: 
-\begin_inset LatexCommand \citet{article-full}
+\begin_inset LatexCommand citet
+key "article-full"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand \citet{booklet-full}
+\begin_inset LatexCommand citet
+key "booklet-full"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand \citet{misc-full}
+\begin_inset LatexCommand citet
+key "misc-full"
 
 \end_inset
 
@@ -338,7 +351,9 @@ The APA class has a hardcoded bibliography style (apacite).
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \bibtex[plain]{xampl}
+\begin_inset LatexCommand bibtex
+options "plain"
+bibfiles "xampl"
 
 \end_inset
 
