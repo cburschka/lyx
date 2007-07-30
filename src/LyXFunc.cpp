@@ -1190,16 +1190,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_SWITCH:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().getBuffer(argument));
+			updateFlags = Update::Force;
 			break;
 
 		case LFUN_BUFFER_NEXT:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().next(view()->buffer()));
+			updateFlags = Update::Force;
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().previous(view()->buffer()));
+			updateFlags = Update::Force;
 			break;
 
 		case LFUN_FILE_NEW:
