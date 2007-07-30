@@ -560,19 +560,146 @@ public:
 		string_num_get_facet() : std::num_get<char, std::basic_string<char>::iterator>(1) {}
 	};
 
-private:
-	bool isNumpunct(lyx::char_type const c) const
+	/// Numpunct facet defining the I/O format.
+	class numpunct_facet : public std::numpunct<char>
 	{
-		/// Only account for the standard numpunct "C" locale facet.
-		return c < 0x80 && (c == '-' || c == '+' || isdigit(c)
-			|| ('a' <= c && c <= 'f') || ('A' <= c && c <= 'F')
-			|| c == 'x' || c == 'X');
-	}
+	public:
+		numpunct_facet() : std::numpunct<char>(1) {}
+	};
 
 protected:
 	iter_type
 	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, bool & v) const
+	{
+		// This facet has been adapted from the STLPort library
+		if (b.flags() & std::ios_base::boolalpha) {
+			numpunct_facet p;
+			lyx::docstring const truename = from_local8bit(p.truename());
+			lyx::docstring const falsename = from_local8bit(p.falsename());
+			bool true_ok = true;
+			bool false_ok = true;
+			size_t n = 0;
+			for (; iit != eit; ++iit) {
+				lyx::char_type c = *iit;
+				true_ok  = true_ok  && (c == truename[n]);
+				false_ok = false_ok && (c == falsename[n]);
+				++n;
+				if ((!true_ok && !false_ok) ||
+				    (true_ok  && n >= truename.size()) ||
+				    (false_ok && n >= falsename.size())) {
+					++iit;
+					break;
+				}
+			}
+			if (true_ok  && n < truename.size())
+				true_ok  = false;
+			if (false_ok && n < falsename.size())
+				false_ok = false;
+			if (true_ok || false_ok) {
+				err = std::ios_base::goodbit;
+				v = true_ok;
+			} else
+				err = std::ios_base::failbit;
+			if (iit == eit)
+				err |= std::ios_base::eofbit;
+			return iit;
+		} else {
+			long l;
+			iter_type end = this->do_get(iit, eit, b, err, l);
+			if (!(err & std::ios_base::failbit)) {
+				if (l == 0)
+					v = false;
+				else if (l == 1)
+					v = true;
+				else
+					err |= std::ios_base::failbit;
+			}
+			return end;
+		}
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
 		std::ios_base::iostate & err, long & v) const
+	{
+		return do_get_integer(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, unsigned short & v) const
+	{
+		return do_get_integer(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, unsigned int & v) const
+	{
+		return do_get_integer(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, unsigned long & v) const
+	{
+		return do_get_integer(iit, eit, b, err, v);
+	}
+
+#ifdef _GLIBCXX_USE_LONG_LONG
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, long long & v) const
+	{
+		return do_get_integer(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, unsigned long long & v) const
+	{
+		return do_get_integer(iit, eit, b, err, v);
+	}
+#endif
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, float & v) const
+	{
+		return do_get_float(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, double & v) const
+	{
+		return do_get_float(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, long double & v) const
+	{
+		return do_get_float(iit, eit, b, err, v);
+	}
+
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, void * & v) const
+	{
+		unsigned long val;
+		iter_type end = do_get_integer(iit, eit, b, err, val);
+		if (!(err & std::ios_base::failbit))
+			v = reinterpret_cast<void *>(val);
+		return end;
+	}
+
+private:
+	template <typename ValueType>
+	iter_type
+	do_get_integer(iter_type iit, iter_type eit, std::ios_base & b,
+			std::ios_base::iostate & err, ValueType & v) const
 	{
 		std::string s;
 		s.reserve(64);
@@ -585,8 +712,64 @@ protected:
 		s += ' ';
 		string_num_get_facet f;
 		f.get(s.begin(), s.end(), b, err, v);
+		if (iit == eit)
+		    err |= std::ios_base::eofbit;
 
 		return iit;
+	}
+
+	bool isNumpunct(lyx::char_type const c) const
+	{
+		/// Only account for the standard numpunct "C" locale facet.
+		return c < 0x80 && (c == '-' || c == '+' || isdigit(c)
+			|| ('a' <= c && c <= 'f') || ('A' <= c && c <= 'F')
+			|| c == 'x' || c == 'X');
+	}
+
+	template <typename ValueType>
+	iter_type
+	do_get_float(iter_type iit, iter_type eit, std::ios_base & b,
+			std::ios_base::iostate & err, ValueType & v) const
+	{
+		// Gather a string of the form
+		// [+-]? [0-9]* .? [0-9]* ([eE] [+-]? [0-9]+)?
+		std::string s;
+		s.reserve(64);
+		char c;
+		numpunct_facet p;
+		char const dot = p.decimal_point();
+		char const sep = p.thousands_sep();
+		// Get an optional sign
+		if (iit != eit && (*iit == '-' || *iit == '+')) {
+			s += static_cast<char>(*iit);
+			++iit;
+		}
+		for (; iit != eit && isDigitOrSep(*iit, sep); ++iit)
+			s += static_cast<char>(*iit);
+		if (iit != eit && *iit == dot) {
+			s += dot;
+			++iit;
+			for (; iit != eit && isDigitOrSep(*iit, 0); ++iit)
+				s += static_cast<char>(*iit);
+			if (iit != eit && (*iit == 'e' || *iit == 'E')) {
+				s += static_cast<char>(*iit);
+				++iit;
+				for (; iit != eit && isDigitOrSep(*iit, 0); ++iit)
+					s += static_cast<char>(*iit);
+			}
+		}
+		s += '\n';
+		string_num_get_facet f;
+		f.get(s.begin(), s.end(), b, err, v);
+		if (iit == eit)
+		    err |= std::ios_base::eofbit;
+
+		return iit;
+	}
+
+	bool isDigitOrSep(lyx::char_type const c, char const sep) const
+	{
+		return (c >= '0' && c <= '9') || (c != 0 && c == sep);
 	}
 };
 

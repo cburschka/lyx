@@ -44,6 +44,8 @@ What's new
 - Don't allow invalid listings parameters to be passed when
   updating other controls in listings-related dialogs (bug 4053).
 
+- Fix bug with math-matrix dialog always producing 1x1 matrices on
+  platforms lacking proper support for wide characters (bug 4076).
 
 * DOCUMENTATION
 
