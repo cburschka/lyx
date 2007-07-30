@@ -55,4 +55,8 @@ What's new
 * DOCUMENTATION
 
 
+* BUILD/INSTALLATION:
+
+- scons now accepts SConstruct file from top source directory, which
+  can be a symbolic link to development/scons/SConstruct.
 
