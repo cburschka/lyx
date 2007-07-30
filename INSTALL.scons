@@ -61,6 +61,9 @@ file:
   > mkdir build
   > cd build
   > scons -f ../development/scons/SConstruct frontend=qt4 all
+If you are tired of typing development/scons/SConstruct, you can link 
+development/scons/SConstruct to the top source directory and use this
+SConstruct file.
 
 There are three types of command line options:
   * key=value are user options. They are used to tell scons which

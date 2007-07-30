@@ -14,6 +14,23 @@
 
 import os, sys, copy, cPickle, glob, time
 
+# determine where I am ...
+#
+from SCons.Node.FS import default_fs
+# default_fs.SConstruct_dir is where SConstruct file is located.
+scons_dir = default_fs.SConstruct_dir.path
+scons_absdir = default_fs.SConstruct_dir.abspath
+
+# if SConstruct is copied to the top source directory
+if os.path.exists(os.path.join(scons_dir, 'development', 'scons', 'scons_manifest.py')):
+    scons_dir = os.path.join(scons_dir, 'development', 'scons')
+    scons_absdir = os.path.join(scons_absdir, 'development', 'scons')
+# get the ../.. of scons_dir
+top_src_dir = os.path.split(os.path.split(scons_absdir)[0])[0]
+
+sys.path.extend([scons_absdir, os.path.join(top_src_dir, 'lib', 'doc')])
+import depend
+
 # scons_utils.py defines a few utility function
 import scons_utils as utils
 # import all file lists
@@ -34,15 +51,6 @@ if version[0] == 0 and version[1] == 96 and version[2] < 92:
     print "Scons >= 0.96.92 is required."
     Exit(1)
 
-# determine where I am ...
-#
-from SCons.Node.FS import default_fs
-# default_fs.SConstruct_dir is where SConstruct file is located.
-scons_dir = default_fs.SConstruct_dir.path
-# get the ../.. of scons_dir
-top_src_dir = os.path.split(os.path.split(default_fs.SConstruct_dir.abspath)[0])[0]
-sys.path.append(os.path.join(top_src_dir, 'lib', 'doc'))
-import depend
 
 #----------------------------------------------------------
 # Global definitions
