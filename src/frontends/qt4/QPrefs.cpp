@@ -534,9 +534,15 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 			|| lc == Color::ignore) continue;
 
 		lcolors_.push_back(lc);
+	}
+	lcolors_ = frontend::getSortedColors(lcolors_);
+	vector<Color_color>::const_iterator cit = lcolors_.begin();
+	vector<Color_color>::const_iterator const end = lcolors_.end();
+	for (; cit != end; ++cit)
+	{
 		// This is not a memory leak:
 		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(icon),
-			toqstr(lcolor.getGUIName(lc)), lyxObjectsLW);
+			toqstr(lcolor.getGUIName(*cit)), lyxObjectsLW);
 	}
 	curcolors_.resize(lcolors_.size());
 	newcolors_.resize(lcolors_.size());

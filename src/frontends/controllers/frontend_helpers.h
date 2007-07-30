@@ -229,6 +229,8 @@ typedef std::pair<docstring, std::string> LanguagePair;
  *  to the vector.
  */
 std::vector<LanguagePair> const getLanguageData(bool character_dlg);
+/// sort colors for the gui
+std::vector<Color_color> const getSortedColors(std::vector<Color_color> colors);
 
 } // namespace frontend
 

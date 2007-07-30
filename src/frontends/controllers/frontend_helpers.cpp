@@ -1113,6 +1113,16 @@ public:
 	}
 };
 
+
+class ColorSorter
+{
+public:
+	bool operator()(Color::color const & lhs,
+			Color::color const & rhs) const {
+		return lcolor.getGUIName(lhs) < lcolor.getGUIName(rhs);
+	}
+};
+
 } // namespace anon
 
 
@@ -1145,6 +1155,14 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	std::sort(begin, langs.end(), Sorter());
 
 	return langs;
+}
+
+
+vector<Color_color> const getSortedColors(vector<Color_color> colors)
+{
+	// sort the colors
+	std::sort(colors.begin(), colors.end(), ColorSorter());
+	return colors;
 }
 
 } // namespace frontend
