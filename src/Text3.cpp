@@ -755,6 +755,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				dispatch(cur, fr);
 			}
 			*/
+			if (cur.selection())
+				cutSelection(cur, true, false);
 			insertInset(cur, inset);
 			cur.posRight();
 		}
@@ -1158,15 +1160,39 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_URL_INSERT: {
 		InsetCommandParams p("url");
+		docstring content;
+		if (cur.selection()) {
+			content = cur.selectionAsString(false);
+			cutSelection(cur, true, false);
+		}
+		p["target"] = (cmd.argument().empty()) ?
+			content : cmd.argument();
 		string const data = InsetCommandMailer::params2string("url", p);
-		bv->showInsetDialog("url", data, 0);
+		if (p["target"].empty()) {
+			bv->showInsetDialog("url", data, 0);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, data);
+			dispatch(cur, fr);
+		}
 		break;
 	}
 
 	case LFUN_HTML_INSERT: {
 		InsetCommandParams p("htmlurl");
+		docstring content;
+		if (cur.selection()) {
+			content = cur.selectionAsString(false);
+			cutSelection(cur, true, false);
+		}
+		p["target"] = (cmd.argument().empty()) ?
+			content : cmd.argument();
 		string const data = InsetCommandMailer::params2string("url", p);
-		bv->showInsetDialog("url", data, 0);
+		if (p["target"].empty()) {
+			bv->showInsetDialog("url", data, 0);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, data);
+			dispatch(cur, fr);
+		}
 		break;
 	}
 
@@ -1503,9 +1529,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FLOAT_LIST: {
 		TextClass const & tclass = bv->buffer()->params().getTextClass();
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
-			// not quite sure if we want this...
 			recordUndo(cur);
-			cur.clearSelection();
+			if (cur.selection())
+				cutSelection(cur, true, false);
 			breakParagraph(cur);
 
 			if (cur.lastpos() != 0) {

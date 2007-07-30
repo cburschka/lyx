@@ -33,6 +33,12 @@ What's new
 - Get rid of annoying LaTeX error after changing the document language
   (bug 2468)
 
+- Coherent behaviour when inserting over a selection: now the selection
+  is always replaced by the insertion (bug 672)
+
+- When inserting an URL over selected text, insert the selected
+  text in the URL inset (bug 683)
+
 * USER INTERFACE:
 
 - Don't allow invalid listings parameters to be passed when
