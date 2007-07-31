@@ -13,6 +13,7 @@
 #include "docstring.h"
 #include "qstring_helpers.h"
 #include "unicode.h"
+#include "lstrings.h"
 
 #include <locale>
 #include <iostream>
@@ -572,33 +573,35 @@ protected:
 	do_get(iter_type iit, iter_type eit, std::ios_base & b,
 		std::ios_base::iostate & err, bool & v) const
 	{
-		// This facet has been adapted from the STLPort library
 		if (b.flags() & std::ios_base::boolalpha) {
 			numpunct_facet p;
 			lyx::docstring const truename = from_local8bit(p.truename());
 			lyx::docstring const falsename = from_local8bit(p.falsename());
-			bool true_ok = true;
-			bool false_ok = true;
+			lyx::docstring s;
+			s.resize(16);
+			bool ok = true;
 			size_t n = 0;
+			size_t const tsize = truename.size();
+			size_t const fsize = falsename.size();
 			for (; iit != eit; ++iit) {
-				lyx::char_type c = *iit;
-				true_ok  = true_ok  && (c == truename[n]);
-				false_ok = false_ok && (c == falsename[n]);
+				s += *iit;
 				++n;
-				if ((!true_ok && !false_ok) ||
-				    (true_ok  && n >= truename.size()) ||
-				    (false_ok && n >= falsename.size())) {
+				bool true_ok = lyx::support::prefixIs(truename, s);
+				bool false_ok = lyx::support::prefixIs(falsename, s);
+				if (!true_ok && !false_ok) {
+					++iit;
+					ok = false;
+					break;
+				}
+				if ((true_ok && n == tsize) ||
+				    (false_ok && n == fsize)) {
 					++iit;
 					break;
 				}
 			}
-			if (true_ok  && n < truename.size())
-				true_ok  = false;
-			if (false_ok && n < falsename.size())
-				false_ok = false;
-			if (true_ok || false_ok) {
+			if (ok) {
 				err = std::ios_base::goodbit;
-				v = true_ok;
+				v = truename == s ? true : false;
 			} else
 				err = std::ios_base::failbit;
 			if (iit == eit)
