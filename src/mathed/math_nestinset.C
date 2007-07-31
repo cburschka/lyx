@@ -1046,7 +1046,8 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// getStatus is not called with a valid reference and the
 		// dialog would not be applyable.
 		string const name = cmd.getArg(0);
-		flag.enabled(name == "ref");
+		flag.enabled(name == "ref" ||
+			     name == "mathdelimiter" || name == "mathmatrix");
 		break;
 	}
 
