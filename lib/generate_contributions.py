@@ -586,7 +586,7 @@ contributers = [
                  u"Improvements to Koma-Script classes"),
 
      contributer(u"Hartmut Haase",
-                 "hha4491 () atomstromfrei ! de",
+                 "hha4491 () web ! de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110915427710167",
