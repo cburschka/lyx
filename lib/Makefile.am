@@ -1039,6 +1039,7 @@ dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex.lyx \
 	templates/agu_article.lyx \
+	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
