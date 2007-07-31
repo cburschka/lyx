@@ -111,7 +111,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	// install translation file for Qt built-in dialogs
 	QString language_name = QString("qt_") + QLocale::system().name();
-	language_name.truncate(5);
+	
+	// language_name can be short (e.g. qt_zh) or long (e.g. qt_zh_CN). 
+	// Short-named translator can be loaded from a long name, but not the
+	// opposite. Therefore, long name should be used without truncation.
+	// c.f. http://doc.trolltech.com/4.1/qtranslator.html#load
 	if (qt_trans_.load(language_name,
 		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
 	{
