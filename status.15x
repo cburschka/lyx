@@ -60,3 +60,6 @@ What's new
 - scons now accepts SConstruct file from top source directory, which
   can be a symbolic link to development/scons/SConstruct.
 
+- LyX configuration script now checks for htlatex as an OpenDocument
+  converter, since some platforms have htlatex but not oolatex. It also
+  checks for oowriter as an OpenDocument viewer and editor.
