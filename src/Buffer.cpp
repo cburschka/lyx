@@ -68,15 +68,13 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
+#include "support/gzstream.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Path.h"
 #include "support/textutils.h"
 #include "support/convert.h"
 
-#include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/device/file.hpp>
 #include <boost/bind.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -137,7 +135,6 @@ using support::trim;
 namespace Alert = frontend::Alert;
 namespace os = support::os;
 namespace fs = boost::filesystem;
-namespace io = boost::iostreams;
 
 namespace {
 
@@ -813,7 +810,7 @@ bool Buffer::writeFile(FileName const & fname) const
 	bool retval = false;
 
 	if (params().compressed) {
-		io::filtering_ostream ofs(io::gzip_compressor() | io::file_sink(fname.toFilesystemEncoding()));
+		gz::ogzstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
