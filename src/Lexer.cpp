@@ -19,17 +19,13 @@
 
 #include "support/convert.h"
 #include "support/filetools.h"
+#include "support/gzstream.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/types.h"
 #include "support/unicode.h"
 
-#include <boost/iostreams/filtering_streambuf.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/device/file.hpp>
 #include <boost/utility.hpp>
-
-namespace io = boost::iostreams;
 
 #include <functional>
 #include <istream>
@@ -110,7 +106,7 @@ public:
 	std::filebuf fb_;
 
 	/// gz_ is only used to open files, the stream is accessed through is.
-	io::filtering_istreambuf gz_;
+	gz::gzstreambuf gz_;
 
 	/// the stream that we use.
 	std::istream is;
@@ -261,19 +257,17 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		LYXERR(Debug::LYXLEX) << "lyxlex: compressed" << endl;
-
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (!gz_.empty() || istream::off_type(is.tellg()) > -1)
-			LYXERR(Debug::LYXLEX) << "Error in Lexer::setFile: "
+		if (gz_.is_open() || istream::off_type(is.tellg()) > -1)
+			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
-		gz_.push(io::gzip_decompressor());
-		gz_.push(io::file_source(filename.toFilesystemEncoding()));
+		gz_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&gz_);
 		name = filename.absFilename();
 		lineno = 0;
-		return gz_.component<io::file_source>(1)->is_open() && is.good();
+		return gz_.is_open() && is.good();
 	} else {
 		LYXERR(Debug::LYXLEX) << "lyxlex: UNcompressed" << endl;
 

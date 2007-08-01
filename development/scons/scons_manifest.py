@@ -310,6 +310,7 @@ src_support_header_files = Split('''
     environment.h
     filetools.h
     fs_extras.h
+    gzstream.h
     limited_stack.h
     lstrings.h
     lyxalgo.h
@@ -347,6 +348,7 @@ src_support_files = Split('''
     environment.cpp
     filetools.cpp
     fs_extras.cpp
+    gzstream.cpp
     getcwd.cpp
     kill.cpp
     lstrings.cpp

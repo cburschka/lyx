@@ -51,6 +51,8 @@ libsupport_la_SOURCES = \
 	fs_extras.cpp \
 	fs_extras.h \
 	getcwd.cpp \
+	gzstream.cpp \
+	gzstream.h \
 	kill.cpp \
 	limited_stack.h \
 	lstrings.cpp \
