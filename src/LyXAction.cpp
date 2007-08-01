@@ -275,7 +275,7 @@ void LyXAction::init()
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly },
 		{ LFUN_SERVER_GET_NAME, "server-get-name", ReadOnly },
 		{ LFUN_SERVER_GET_XY, "server-get-xy", ReadOnly },
-		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", Noop },
+		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly },
 		{ LFUN_SERVER_NOTIFY, "server-notify", ReadOnly },
 		{ LFUN_SERVER_SET_XY, "server-set-xy", ReadOnly },
 		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer },
