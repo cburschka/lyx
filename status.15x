@@ -30,20 +30,24 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix output of LyX files on windodz when Document>Compressed is set.
+  This is a dataloss bug that was the main reason for releasing 1.5.1
+  now.
+
 - Get rid of annoying LaTeX error after changing the document language
-  (bug 2468)
-
-- Coherent behaviour when inserting over a selection: now the selection
-  is always replaced by the insertion (bug 672)
-
-- When inserting an URL over selected text, insert the selected
-  text in the URL inset (bug 683)
+  (bug 2468).
 
 * USER INTERFACE:
 
 - Fix redrawing artefacts when switching tabs (bug 3969).
 
-- Fix bug where using pdfsync marks the document 'changed' (bug 4023)
+- Fix bug where using pdfsync marks the document 'changed' (bug 4023).
+
+- Coherent behaviour when inserting over a selection: now the selection
+  is always replaced by the insertion (bug 672).
+
+- When inserting an URL over selected text, insert the selected
+  text in the URL inset (bug 683).
 
 - Don't allow invalid listings parameters to be passed when
   updating other controls in listings-related dialogs (bug 4053).
