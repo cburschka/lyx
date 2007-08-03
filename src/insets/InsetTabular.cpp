@@ -3189,6 +3189,9 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_PRESS:
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
+		// FIXME: the following should be replaced by a better fix
+		// that is already used for plain text (Text3.cpp).
+		cap::saveSelection(bvcur);
 
 		if (cmd.button() == mouse_button::button1
 		    || (cmd.button() == mouse_button::button3

@@ -1153,6 +1153,9 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	BufferView & bv = cur.bv();
+	// FIXME: the following should be replaced by a better fix
+	// that is already used for plain text (Text3.cpp).
+	cap::saveSelection(bv.cursor());
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
 		bv.mouseSetCursor(cur);
