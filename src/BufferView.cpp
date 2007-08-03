@@ -143,7 +143,7 @@ Buffer * BufferView::buffer() const
 }
 
 
-void BufferView::setBuffer(Buffer * b)
+Buffer * BufferView::setBuffer(Buffer * b)
 {
 	LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
 			    << "[ b = " << b << "]" << endl;
@@ -182,7 +182,7 @@ void BufferView::setBuffer(Buffer * b)
 	// If we're quitting lyx, don't bother updating stuff
 	if (quitting) {
 		buffer_ = 0;
-		return;
+		return 0;
 	}
 
 	//FIXME Fix for bug 3440 is here.
@@ -209,7 +209,7 @@ void BufferView::setBuffer(Buffer * b)
 	offset_ref_ = 0;
 
 	if (!buffer_)
-		return;
+		return 0;
 
 	LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
 					<< "Buffer addr: " << buffer_ << endl;
@@ -243,6 +243,7 @@ void BufferView::setBuffer(Buffer * b)
 
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
+	return buffer_;
 }
 
 

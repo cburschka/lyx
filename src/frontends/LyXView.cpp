@@ -133,20 +133,21 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 	// parentfilename will be used in case when we switch to a child
 	// document (hence when child_document is true)
 	string parentfilename;
-	if (oldBuffer) {
+	if (oldBuffer)
 		parentfilename = oldBuffer->fileName();
-		disconnectBuffer();
-	}
 
 	if (!b && theBufferList().empty())
 		getDialogs().hideBufferDependent();
 
-	work_area_->bufferView().setBuffer(b);
+	Buffer * newBuffer = work_area_->bufferView().setBuffer(b);
 
-	//FIXME This would be a little simpler if setBuffer returned the buffer.
-	Buffer * newBuffer = work_area_->bufferView().buffer();
 	if (newBuffer) {
-		if (child_document && newBuffer->getMasterBuffer() != oldBuffer) {
+		//Are we closing an oldBuffer which was a child document?
+		if (!b && oldBuffer && oldBuffer->getMasterBuffer() != oldBuffer)
+			// Update the labels and section numbering of its master Buffer.
+			updateLabels(*oldBuffer->getMasterBuffer());
+		//Are we opening a new child document?
+		else if (child_document && newBuffer->getMasterBuffer() != oldBuffer) {
 			// Set the parent name of the child document.
 			// This makes insertion of citations and references in the child work,
 			// when the target is in the parent or another child document.
@@ -154,13 +155,11 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 			// Update the labels and section numbering to the new master Buffer.
 			updateLabels(*newBuffer->getMasterBuffer());
 		}
-
-		if (!b && oldBuffer && oldBuffer->getMasterBuffer() != oldBuffer)
-			// We are closing oldBuffer which was a child document so we
-			// must update the labels and section numbering of its master
-			// Buffer.
-			updateLabels(*oldBuffer->getMasterBuffer());
-
+		//Now that all the updating of the old buffer has been done, we can
+		//connect the new buffer. Note that this will also disconnect the old 
+		//buffer, if such there is.
+		//FIXME Is it clear that this should go right here? Or should it go
+		//earlier before the previous if (in which case we'd remove the "else")?
 		connectBuffer(*newBuffer);
 
 		/* FIXME: We need to rebuild the Toc dialog before the others even
@@ -178,7 +177,9 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		getDialogs().updateBufferDependent(true);
-	}
+	} else
+		//Disconnect the old buffer...there's no new one.
+		disconnectBuffer();
 
 	if (quitting)
 		return;
