@@ -545,6 +545,14 @@ contributers = [
                  "20 March 2005",
                  u"BibTeX annotation support"),
 
+     contributer(u"Darren Freeman",
+                 "dfreeman () ieee ! org",
+                 "GPL",
+                 "Licence",
+                 "m=118612951707590",
+                 "3 August 2007",
+                 u"Improvements to mouse wheel scrolling; many bug reports"),
+
      contributer(u"Edscott Wilson Garcia",
                  "edscott () xfce ! org",
                  "GPL",
