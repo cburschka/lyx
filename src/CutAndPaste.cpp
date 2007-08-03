@@ -791,7 +791,6 @@ void pasteSelection(Cursor & cur, ErrorList & errorList)
 	recordUndo(cur);
 	pasteParagraphList(cur, selectionBuffer[0].first,
 			   selectionBuffer[0].second, errorList);
-	cur.setSelection();
 }
 
 

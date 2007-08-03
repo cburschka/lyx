@@ -1015,43 +1015,34 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
-		cap::saveSelection(bv->cursor());
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3)
 			cur.clearSelection();
 
-		// Middle button press pastes if we have a selection
-		// We do this here as if the selection was inside an inset
-		// it could get cleared on the unlocking of the inset so
-		// we have to check this first
-		bool paste_internally = false;
-		if (cmd.button() == mouse_button::button2 && cap::selection()) {
-			// Copy the selection buffer to the clipboard
-			// stack, because we want it to appear in the
-			// "Edit->Paste recent" menu.
-			cap::copySelectionToStack();
-			paste_internally = true;
-		}
+		// Set the cursor
+		bool update = bv->mouseSetCursor(cur);
 
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
 		if (cmd.button() == mouse_button::button2) {
-			if (paste_internally) {
-				cap::pasteSelection(cur, bv->buffer()->errorList("Paste"));
+			if (cap::selection()) {
+				// Copy the selection buffer to the clipboard
+				// stack, because we want it to appear in the
+				// "Edit->Paste recent" menu.
+				cap::copySelectionToStack();
+
+				cap::pasteSelection(bv->cursor(), 
+						    bv->buffer()->errorList("Paste"));
 				bv->buffer()->errors("Paste");
-				cur.clearSelection(); // bug 393
 				bv->buffer()->markDirty();
 				finishUndo();
 			} else {
-				bv->mouseSetCursor(cur);
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 			}
 		}
 
-		// we have to update after dePM triggered
-		bool update = bv->mouseSetCursor(cur);
-
+		// we have to update after dEPM triggered
 		if (!update && cmd.button() == mouse_button::button1) {
 			needsUpdate = false;
 			cur.noUpdate();

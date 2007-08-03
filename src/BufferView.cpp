@@ -63,6 +63,7 @@
 #include "frontends/alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
+#include "frontends/Selection.h"
 
 #include "graphics/Previews.h"
 
@@ -1224,6 +1225,9 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	// be modified, the inset's dispatch has to do so explicitly.
 	if (!cur.result().dispatched())
 		cur.dispatch(cmd);
+
+	//Do we have a selection?
+	theSelection().haveSelection(cursor().selection());
 
 	// Redraw if requested and necessary.
 	if (cur.result().dispatched() && cur.result().update())

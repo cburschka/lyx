@@ -43,6 +43,11 @@ What's new
 
 - Fix bug where using pdfsync marks the document 'changed' (bug 4023).
 
+- Fix pasting a selection from the same LyX document with middle mouse
+  button.
+
+- Fix pasting of a selection from other applications (X11 only).
+
 - Coherent behaviour when inserting over a selection: now the selection
   is always replaced by the insertion (bug 672).
 
