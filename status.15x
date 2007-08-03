@@ -69,3 +69,5 @@ What's new
 - LyX configuration script now checks for htlatex as an OpenDocument
   converter, since some platforms have htlatex but not oolatex. It also
   checks for oowriter as an OpenDocument viewer and editor.
+
+- Fix building on Mac OS X when pkg-config is installed.

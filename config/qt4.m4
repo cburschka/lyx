@@ -174,6 +174,7 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 		AC_SUBST(QT4_VERSION)
 		QT4_LIB=`$PKG_CONFIG --libs-only-l QtCore QtGui`
 		AC_SUBST(QT4_LIB)
+		LIBS="$LIBS `$PKG_CONFIG --libs-only-other QtCore QtGui`"
 	fi
 	PKG_CONFIG_PATH=$save_PKG_CONFIG_PATH
 ])
