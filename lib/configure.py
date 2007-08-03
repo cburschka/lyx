@@ -370,7 +370,7 @@ def checkConverterEntries():
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
     #
-    checkProg('a LaTeX -> Open Document converter', ['oolatex $$i', 'oolatex.sh $$i', 'mk4ht oolatex $$i'],
+    checkProg('a LaTeX -> Open Document converter', ['oolatex $$i', 'oolatex.sh $$i', 'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
         rc_entry = [ r'\converter latex      odt        "%%"	"needaux"' ])
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
