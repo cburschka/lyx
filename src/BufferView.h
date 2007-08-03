@@ -86,7 +86,8 @@ public:
 	/// set the buffer we are viewing.
 	/// \todo FIXME: eventually, we will create a new BufferView
 	/// when switching Buffers, so this method should go.
-	void setBuffer(Buffer * b);
+	/// returns the buffer currently set
+	Buffer * setBuffer(Buffer * b);
 	/// return the buffer being viewed.
 	Buffer * buffer() const;
 

@@ -254,6 +254,12 @@ private:
 	/// connect to signals in the given buffer
 	void connectBuffer(Buffer & buf);
 	/// disconnect from signals in the given buffer
+	/// NOTE: Do not call this unless you really want no buffer
+	/// to be connected---for example, when closing the last open
+	/// buffer. If you are switching buffers, just call 
+	/// connectBuffer(), and the old buffer will be disconnected
+	/// automatically. This ensures that we do not leave LyX in a
+	/// state in which no buffer is connected.
 	void disconnectBuffer();
 
 	/// BufferView messages signal connection
