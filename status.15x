@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.5.1
+This file describes what has been done in the preparation of LyX 1.5.2
 All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
@@ -22,54 +22,13 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Add template for the APA class (bug 2390).
-
-
 ** Bug fixes:
 *************
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix output of LyX files on windows when Document>Compressed is set.
-  This is a dataloss bug that was the main reason for releasing 1.5.1
-  earlier than anticipated.
-
-- Get rid of annoying LaTeX error after changing the document language
-  (bug 2468).
-
-- Fix a LaTeX error with caption inset in a listing inset (some
-  problems remain).
-
-- Fix crashes relating to command line export (bugs 4077 and 4086).
-
-- Fix export to FAT32 under Linux (bug 4094).
 
 * USER INTERFACE:
-
-- Fix crash with TOC and child documents (bug 4096).
-
-- Fix redrawing artefacts when switching tabs (bug 3969).
-
-- Fix pasting a selection from the same LyX document with middle mouse
-  button.
-
-- Fix pasting of a selection from other applications (X11 only).
-
-- Coherent behaviour when inserting over a selection: now the selection
-  is always replaced by the insertion (bug 672).
-
-- When inserting an URL over selected text, insert the selected
-  text in the URL inset (bug 683).
-
-- Don't allow invalid listings parameters to be passed when
-  updating other controls in listings-related dialogs (bug 4053).
-
-- Fix bug with math-matrix dialog always producing 1x1 matrices on
-  platforms lacking proper support for wide characters (bug 4076).
-
-- Sort colors in the Preferences dialog (bug 2571).
-
-- Fix bug where using pdfsync marks the document 'changed' (bug 4023).
 
 
 * DOCUMENTATION
@@ -77,11 +36,3 @@ What's new
 
 * BUILD/INSTALLATION:
 
-- scons now accepts SConstruct file from top source directory, which
-  can be a symbolic link to development/scons/SConstruct.
-
-- LyX configuration script now checks for htlatex as an OpenDocument
-  converter, since some platforms have htlatex but not oolatex. It also
-  checks for oowriter as an OpenDocument viewer and editor.
-
-- Fix building on Mac OS X when pkg-config is installed.
