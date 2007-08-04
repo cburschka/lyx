@@ -33,14 +33,14 @@ Language const * english_language;
 Language const * default_language;
 Language ignore_lang("ignore", "ignore", "Ignore", false, "", 0, "ignore", "");
 Language const * ignore_language = &ignore_lang;
-Language latex_lang("latex", "latex", "Latex", false, "", 0, "latex", "");
+Language latex_lang("latex", "", "Latex", false, "", 0, "latex", "");
 Language const * latex_language = &latex_lang;
 
 
 void Languages::read(support::FileName const & filename)
 {
 	// We need to set the encoding of latex_lang
-	latex_lang = Language("latex", "latex", "Latex", false, "iso8859-1",
+	latex_lang = Language("latex", "", "Latex", false, "iso8859-1",
 			      encodings.getFromLyXName("iso8859-1"),
 			      "latex", "");
 
