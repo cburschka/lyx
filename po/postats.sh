@@ -18,7 +18,7 @@
 # modifiy this when you change version
 # Note that an empty lyx_branch variable (ie cvs HEAD)
 # will "do the right thing".
-lyx_version=1.5.0svn
+lyx_version=1.5.1
 lyx_branch=
 
 
