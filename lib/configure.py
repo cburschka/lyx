@@ -104,6 +104,7 @@ def checkTeXPaths():
             inpname = tmpfname.replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
+        logname = os.path.basename(inpname.replace('.ltx', '.log'))
         inpname = inpname.replace('~', '\\string~')
         os.write(fd, r'\relax')
         os.close(fd)
@@ -114,7 +115,7 @@ def checkTeXPaths():
         else:
             print "configure: TeX engine needs windows-style paths in latex files"
             windows_style_tex_paths = 'true'
-        removeFiles([tmpfname, 'texput.log'])
+        removeFiles([tmpfname, logname, 'texput.log'])
     return windows_style_tex_paths
 
 
@@ -623,7 +624,7 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
             'chkconfig.classes', 'chklayouts.tex'])
         rmcopy = False
         if not os.path.isfile( 'chkconfig.ltx' ):
-            shutil.copy( os.path.join(srcdir, 'chkconfig.ltx'),  'chkconfig.ltx' )
+            shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
             rmcopy = True
         writeToFile('wrap_chkconfig.ltx', '%s\n%s\n\\input{chkconfig.ltx}\n' \
             % (linuxdoc_cmd, docbook_cmd) )
