@@ -226,7 +226,7 @@ if echo $prefix |grep ' ' >/dev/null 2>/dev/null ; then
 fi
 
 ### Setup GNU gettext
-dnl GNU gettext is written in C
+dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
 AM_GNU_GETTEXT
 AC_LANG_POP(C)
