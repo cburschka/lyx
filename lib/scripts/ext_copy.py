@@ -71,6 +71,8 @@ def main(argv):
 
     # copy all matching files in from_dir to to_dir
     for file in os.listdir(from_dir):
+      if os.path.isdir(file):
+        continue
       junk, ext = os.path.splitext(os.path.basename(file))
       ext = ext.lower()[1:] #strip the leading dot
       try:
@@ -81,7 +83,11 @@ def main(argv):
         continue #not found
       from_file = os.path.join(from_dir, file)
       to_file  = os.path.join(to_dir, file)
-      shutil.copy(from_file, to_file)
+      shutil.copyfile(from_file, to_file)
+      try:
+        shutil.copymode(from_file, to_file)
+      except:
+        pass
     return 0
 
 if __name__ == "__main__":
