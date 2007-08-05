@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-07-16 19:19+0200\n"
+"POT-Creation-Date: 2007-08-05 15:31+0200\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -85,9 +85,9 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:743 src/LyXFunc.cpp:916
-#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2093 src/LyXVC.cpp:175
+#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2096 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
-#: src/callback.cpp:116 src/callback.cpp:169
+#: src/callback.cpp:115 src/callback.cpp:168
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -309,20 +309,20 @@ msgstr "Kutxako edukiaren lerrokadura horizontala"
 
 #: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
-#: src/frontends/qt4/QParagraph.cpp:88 src/frontends/qt4/QTabular.cpp:741
+#: src/frontends/qt4/QParagraph.cpp:88 src/frontends/qt4/QTabular.cpp:743
 msgid "Left"
 msgstr "Ezkerrean"
 
 #: src/frontends/qt4/ui/BoxUi.ui:169 src/frontends/qt4/ui/TabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.cpp:236
 #: src/frontends/controllers/ControlGraphics.cpp:172
-#: src/frontends/qt4/QParagraph.cpp:90 src/frontends/qt4/QTabular.cpp:742
+#: src/frontends/qt4/QParagraph.cpp:90 src/frontends/qt4/QTabular.cpp:744
 msgid "Center"
 msgstr "Erdian"
 
 #: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
-#: src/frontends/qt4/QParagraph.cpp:89 src/frontends/qt4/QTabular.cpp:743
+#: src/frontends/qt4/QParagraph.cpp:89 src/frontends/qt4/QTabular.cpp:745
 msgid "Right"
 msgstr "Eskuinean"
 
@@ -458,66 +458,66 @@ msgstr "Ta&maina:"
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
 #: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:98
 #: src/frontends/qt4/QDocument.cpp:302 src/frontends/qt4/QDocument.cpp:339
-#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:743
-#: src/frontends/qt4/QDocument.cpp:791 src/frontends/qt4/QListings.cpp:155
+#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:755
+#: src/frontends/qt4/QDocument.cpp:803 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "Lehenetsia"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:963
+#: src/frontends/controllers/frontend_helpers.cpp:962
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "Ttipi-ttipia"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:967
+#: src/frontends/controllers/frontend_helpers.cpp:966
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "Txikiena"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:971
+#: src/frontends/controllers/frontend_helpers.cpp:970
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "Txikiagoa"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:975
+#: src/frontends/controllers/frontend_helpers.cpp:974
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "Txikia"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:979
+#: src/frontends/controllers/frontend_helpers.cpp:978
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "Normala"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:983
+#: src/frontends/controllers/frontend_helpers.cpp:982
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "Handia"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:987
+#: src/frontends/controllers/frontend_helpers.cpp:986
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "Handiagoa"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:991
+#: src/frontends/controllers/frontend_helpers.cpp:990
 msgid "Largest"
 msgstr "Handiena"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:995
+#: src/frontends/controllers/frontend_helpers.cpp:994
 msgid "Huge"
 msgstr "Eskerga"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:999
+#: src/frontends/controllers/frontend_helpers.cpp:998
 msgid "Huger"
 msgstr "Eskergena"
 
@@ -585,7 +585,7 @@ msgstr "Letra-multzoak"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
-#: src/frontends/qt4/QPrefs.cpp:1587
+#: src/frontends/qt4/QPrefs.cpp:1593
 msgid "Language"
 msgstr "Hizkuntza"
 
@@ -2783,7 +2783,7 @@ msgid "Horizontal alignment in column"
 msgstr "Lerrokatu horizontalki zutabean"
 
 #: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QParagraph.cpp:87
-#: src/frontends/qt4/QTabular.cpp:745
+#: src/frontends/qt4/QTabular.cpp:747
 msgid "Justified"
 msgstr "Justifikatua"
 
@@ -2938,7 +2938,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1795
+#: src/LyXFunc.cpp:1798
 msgid "on"
 msgstr "aktibatuta"
 
@@ -3655,7 +3655,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:540
+#: src/rowpainter.cpp:541
 msgid "Appendix"
 msgstr "Eranskina"
 
@@ -8462,17 +8462,17 @@ msgstr "Itxi leihoa|x"
 msgid "Redo|R"
 msgstr "Berregin|B"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:837
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:839
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Ebaki"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:842
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:844
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:819
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:821
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Itsatsi"
@@ -9026,11 +9026,11 @@ msgstr "Inprimatu dokumentua"
 msgid "Check spelling"
 msgstr "Egiaztatu ortografia"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:714
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:715
 msgid "Undo"
 msgstr "Desegin"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:723
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:724
 msgid "Redo"
 msgstr "Berregin"
 
@@ -11843,58 +11843,58 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
-#: src/Buffer.cpp:233
+#: src/Buffer.cpp:229
 msgid "Could not remove temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu"
 
-#: src/Buffer.cpp:234
+#: src/Buffer.cpp:230
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Ezin izan da %1$s aldi-baterako direktorioa sortu"
 
-#: src/Buffer.cpp:405
+#: src/Buffer.cpp:401
 msgid "Unknown document class"
 msgstr "Dokumentu-klase ezezaguna"
 
-#: src/Buffer.cpp:406
+#: src/Buffer.cpp:402
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Dokumentu-klase lehenetsia erabiltzen, %1$s klasea ezezaguna delako."
 
-#: src/Buffer.cpp:466 src/Text.cpp:295
+#: src/Buffer.cpp:462 src/Text.cpp:295
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Token ezezaguna: %1$s %2$s\n"
 
-#: src/Buffer.cpp:470 src/Buffer.cpp:477 src/Buffer.cpp:497
+#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
 msgid "Document header error"
 msgstr "Dokumentuaren goiburuan errorea"
 
-#: src/Buffer.cpp:476
+#: src/Buffer.cpp:472
 msgid "\\begin_header is missing"
 msgstr "\\begin_header falta da"
 
-#: src/Buffer.cpp:496
+#: src/Buffer.cpp:492
 msgid "\\begin_document is missing"
 msgstr "\\begin_document falta da"
 
-#: src/Buffer.cpp:507
+#: src/Buffer.cpp:503
 msgid "Can't load document class"
 msgstr "Ezin da dokumentu-klasea kargatu"
 
-#: src/Buffer.cpp:508
+#: src/Buffer.cpp:504
 #, fuzzy, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Dokumentu-klase lehenetsia erabiltzen, %1$s klasea ezin izan delako kargatu."
 
-#: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:847
-#: src/BufferView.cpp:853
+#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:848
+#: src/BufferView.cpp:854
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:520 src/BufferView.cpp:848
+#: src/Buffer.cpp:516 src/BufferView.cpp:849
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11902,7 +11902,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:526 src/BufferView.cpp:854
+#: src/Buffer.cpp:522 src/BufferView.cpp:855
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11910,29 +11910,29 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:661 src/Buffer.cpp:670
+#: src/Buffer.cpp:657 src/Buffer.cpp:666
 msgid "Document could not be read"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/Buffer.cpp:662 src/Buffer.cpp:671
+#: src/Buffer.cpp:658 src/Buffer.cpp:667
 #, c-format
 msgid "%1$s could not be read."
 msgstr "Ezin izan da %1$s irakurri."
 
-#: src/Buffer.cpp:679 src/Buffer.cpp:751
+#: src/Buffer.cpp:675 src/Buffer.cpp:747
 msgid "Document format failure"
 msgstr "Huts egitea dokumentu-formatuan"
 
-#: src/Buffer.cpp:680
+#: src/Buffer.cpp:676
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s ez da LyX dokumentua."
 
-#: src/Buffer.cpp:704
+#: src/Buffer.cpp:700
 msgid "Conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:705
+#: src/Buffer.cpp:701
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -11941,11 +11941,11 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da aldi baterako "
 "fitxategia sortu bihurketa lantzeko."
 
-#: src/Buffer.cpp:714
+#: src/Buffer.cpp:710
 msgid "Conversion script not found"
 msgstr "Ez da bihurtzeko script-a aurkitu"
 
-#: src/Buffer.cpp:715
+#: src/Buffer.cpp:711
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -11954,11 +11954,11 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da lyx2lyx script-a "
 "aurkitu."
 
-#: src/Buffer.cpp:736
+#: src/Buffer.cpp:732
 msgid "Conversion script failed"
 msgstr "Bihurtzeko script-ak huts egin du"
 
-#: src/Buffer.cpp:737
+#: src/Buffer.cpp:733
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -11967,16 +11967,16 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina lyx2lyx script-ak huts egin "
 "du hau bihurtzean."
 
-#: src/Buffer.cpp:752
+#: src/Buffer.cpp:748
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s ustegabean amaitu da, hondatuta dagoela dirudi."
 
-#: src/Buffer.cpp:788
+#: src/Buffer.cpp:784
 msgid "Backup failure"
 msgstr "Babeskopiak huts egin du"
 
-#: src/Buffer.cpp:789
+#: src/Buffer.cpp:785
 #, fuzzy, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -11985,11 +11985,11 @@ msgstr ""
 "LyX-ek ezin izan du %1$s(r)en babeseko kopiarik egin.\n"
 "Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
 
-#: src/Buffer.cpp:935
+#: src/Buffer.cpp:931
 msgid "Encoding error"
 msgstr "Kodeketako errorea"
 
-#: src/Buffer.cpp:936
+#: src/Buffer.cpp:932
 #, fuzzy
 msgid ""
 "Some characters of your document are probably not representable in the "
@@ -11999,29 +11999,29 @@ msgstr ""
 "Dokumentuko zenbait karaktere ezin dira erabili aukeratutako kodeketarekin.\n"
 "Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/Buffer.cpp:1214
+#: src/Buffer.cpp:1210
 msgid "Running chktex..."
 msgstr "chktex exekutatzen..."
 
-#: src/Buffer.cpp:1227
+#: src/Buffer.cpp:1223
 msgid "chktex failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/Buffer.cpp:1228
+#: src/Buffer.cpp:1224
 msgid "Could not run chktex successfully."
 msgstr "Ezin izan da chktex exekutatu"
 
-#: src/Buffer.cpp:1763
+#: src/Buffer.cpp:1759
 #, fuzzy
 msgid "Preview source code"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:1774
+#: src/Buffer.cpp:1770
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:1778
+#: src/Buffer.cpp:1774
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
@@ -12081,63 +12081,63 @@ msgstr "Dokumentu-klasea ez dago erabilgarri"
 msgid "LyX will not be able to produce output."
 msgstr "LyX ezingo du irteera landu."
 
-#: src/BufferView.cpp:518
+#: src/BufferView.cpp:519
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Gorde 5. laster-marka"
 
-#: src/BufferView.cpp:717
+#: src/BufferView.cpp:718
 msgid "No further undo information"
 msgstr "Gehiago desegiteko infomaziorik ez"
 
-#: src/BufferView.cpp:726
+#: src/BufferView.cpp:727
 msgid "No further redo information"
 msgstr "Gehiago berregiteko informaziorik ez"
 
-#: src/BufferView.cpp:913
+#: src/BufferView.cpp:914
 msgid "Mark off"
 msgstr "Marka desaktibatua"
 
-#: src/BufferView.cpp:920
+#: src/BufferView.cpp:921
 msgid "Mark on"
 msgstr "Marka aktibatua"
 
-#: src/BufferView.cpp:927
+#: src/BufferView.cpp:928
 msgid "Mark removed"
 msgstr "Marka ezabatuta"
 
-#: src/BufferView.cpp:930
+#: src/BufferView.cpp:931
 msgid "Mark set"
 msgstr "Marka ezarrita"
 
-#: src/BufferView.cpp:976
+#: src/BufferView.cpp:977
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d hitz hautapenean."
 
-#: src/BufferView.cpp:979
+#: src/BufferView.cpp:980
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d hitz dokumentuan."
 
-#: src/BufferView.cpp:984
+#: src/BufferView.cpp:985
 msgid "One word in selection."
 msgstr "Hitz bat hautapenean."
 
-#: src/BufferView.cpp:986
+#: src/BufferView.cpp:987
 msgid "One word in document."
 msgstr "Hitz bat dokumentuan."
 
-#: src/BufferView.cpp:989
+#: src/BufferView.cpp:990
 msgid "Count words"
 msgstr "Zenbatu hitzak"
 
-#: src/BufferView.cpp:1577
+#: src/BufferView.cpp:1579
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.cpp:1579 src/LyXFunc.cpp:1932 src/LyXFunc.cpp:1971
-#: src/LyXFunc.cpp:2044 src/callback.cpp:135
+#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1935 src/LyXFunc.cpp:1974
+#: src/LyXFunc.cpp:2047 src/callback.cpp:134
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12146,31 +12146,31 @@ msgstr "Hautatu LyX dokumentua txertatzeko"
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.cpp:1580 src/LyXFunc.cpp:1972 src/LyXFunc.cpp:2045
+#: src/BufferView.cpp:1582 src/LyXFunc.cpp:1975 src/LyXFunc.cpp:2048
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:1937 src/LyXFunc.cpp:1976
-#: src/callback.cpp:141
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1940 src/LyXFunc.cpp:1979
+#: src/callback.cpp:140
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.cpp:1598 src/LyXFunc.cpp:1986 src/LyXFunc.cpp:2066
-#: src/LyXFunc.cpp:2080 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1600 src/LyXFunc.cpp:1989 src/LyXFunc.cpp:2069
+#: src/LyXFunc.cpp:2083 src/LyXFunc.cpp:2099
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.cpp:1609
+#: src/BufferView.cpp:1611
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.cpp:1620
+#: src/BufferView.cpp:1622
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.cpp:1622
+#: src/BufferView.cpp:1624
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
@@ -12532,8 +12532,8 @@ msgstr ""
 msgid "Overwrite file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2093
-#: src/callback.cpp:169
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2096
+#: src/callback.cpp:168
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
@@ -12588,19 +12588,19 @@ msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
 
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:873
+#: src/frontends/controllers/frontend_helpers.cpp:872
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "Erromatarra"
 
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:877
+#: src/frontends/controllers/frontend_helpers.cpp:876
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:881
+#: src/frontends/controllers/frontend_helpers.cpp:880
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "Idazmakina"
@@ -12619,23 +12619,23 @@ msgstr "Heredatua"
 msgid "Ignore"
 msgstr "Ez ikusi egin"
 
-#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:903
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:902
 msgid "Medium"
 msgstr "Ertaina"
 
-#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:907
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:906
 msgid "Bold"
 msgstr "Lodia"
 
-#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:929
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:928
 msgid "Upright"
 msgstr "Zutik"
 
-#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:933
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:932
 msgid "Italic"
 msgstr "Etzana"
 
-#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:937
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:936
 msgid "Slanted"
 msgstr "Inklinatua"
 
@@ -12643,11 +12643,11 @@ msgstr "Inklinatua"
 msgid "Smallcaps"
 msgstr "Maiuskula txikiak"
 
-#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1003
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1002
 msgid "Increase"
 msgstr "Handitu"
 
-#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1007
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1006
 msgid "Decrease"
 msgstr "Txikitu"
 
@@ -12713,15 +12713,15 @@ msgstr "Informaziorik ez %1$s editatzeko"
 msgid "Auto-edit file %1$s failed"
 msgstr "Huts egin du %1$s automatikoki editatzean"
 
-#: src/ISpell.cpp:238 src/ISpell.cpp:245 src/ISpell.cpp:254
+#: src/ISpell.cpp:237 src/ISpell.cpp:244 src/ISpell.cpp:253
 msgid "Can't create pipe for spellchecker."
 msgstr "Ezin da zuzentzailearen kanalizaziorik sortu."
 
-#: src/ISpell.cpp:259 src/ISpell.cpp:264 src/ISpell.cpp:269
+#: src/ISpell.cpp:258 src/ISpell.cpp:263 src/ISpell.cpp:268
 msgid "Can't open pipe for spellchecker."
 msgstr "Ezin da zuzentzailearen kanalizaziorik ireki."
 
-#: src/ISpell.cpp:278
+#: src/ISpell.cpp:277
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
@@ -12729,7 +12729,7 @@ msgstr ""
 "Ezin izan da ispell prozesua sortu.\n"
 "Badirudi ez dituzula hizkuntza egokiak instalatuta."
 
-#: src/ISpell.cpp:301
+#: src/ISpell.cpp:300
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
@@ -12737,25 +12737,25 @@ msgstr ""
 "ispell prozesuak errore bat itzuli du.\n"
 "Gaizki konfiguratua egon daiteke?"
 
-#: src/ISpell.cpp:406
+#: src/ISpell.cpp:405
 #, c-format
 msgid ""
 "Could not check word `%1$s' because it could not be converted to encoding `%2"
 "$s'."
 msgstr ""
 
-#: src/ISpell.cpp:417
+#: src/ISpell.cpp:416
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "Ezin izan da komunikatu ispell prozesuarekin."
 
-#: src/ISpell.cpp:477
+#: src/ISpell.cpp:476
 #, c-format
 msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
 
-#: src/ISpell.cpp:492
+#: src/ISpell.cpp:491
 #, c-format
 msgid ""
 "Could not accept word `%1$s' because it could not be converted to encoding `%"
@@ -12784,29 +12784,29 @@ msgstr "inportatua."
 msgid "   options: "
 msgstr "   aukerak: "
 
-#: src/LaTeX.cpp:95
+#: src/LaTeX.cpp:94
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "LaTeX %1$d exekutatze-zenbakiaren zai"
 
-#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
+#: src/LaTeX.cpp:301 src/LaTeX.cpp:380
 msgid "Running MakeIndex."
 msgstr "MakeIndex exekutatzen."
 
-#: src/LaTeX.cpp:322
+#: src/LaTeX.cpp:321
 msgid "Running BibTeX."
 msgstr "BibTeX exekutatzen."
 
-#: src/LaTeX.cpp:462
+#: src/LaTeX.cpp:461
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex exekutatzen."
 
-#: src/LyX.cpp:130
+#: src/LyX.cpp:131
 msgid "Could not read configuration file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"
 
-#: src/LyX.cpp:131
+#: src/LyX.cpp:132
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12817,37 +12817,37 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/LyX.cpp:140
+#: src/LyX.cpp:141
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: erabiltzaile-direktorioa birkonfiguratzen"
 
-#: src/LyX.cpp:144
+#: src/LyX.cpp:145
 msgid "Done!"
 msgstr "Eginda!"
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:505
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Ezin izan da aldi-baterako %1$s direktorioa kendu"
 
-#: src/LyX.cpp:492
+#: src/LyX.cpp:507
 msgid "Unable to remove temporary directory"
 msgstr "Ezin da aldi baterako direktorioa ezabatu"
 
-#: src/LyX.cpp:528
+#: src/LyX.cpp:543
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/LyX.cpp:796
+#: src/LyX.cpp:811
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:925
+#: src/LyX.cpp:940
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/LyX.cpp:926
+#: src/LyX.cpp:941
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12858,11 +12858,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:1108
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/LyX.cpp:1094
+#: src/LyX.cpp:1109
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -12871,37 +12871,37 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/LyX.cpp:1099
+#: src/LyX.cpp:1114
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/LyX.cpp:1100
+#: src/LyX.cpp:1115
 msgid "&Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/LyX.cpp:1101
+#: src/LyX.cpp:1116
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1120
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/LyX.cpp:1111
+#: src/LyX.cpp:1126
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/LyX.cpp:1284
+#: src/LyX.cpp:1299
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/LyX.cpp:1288
+#: src/LyX.cpp:1303
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/LyX.cpp:1299
+#: src/LyX.cpp:1314
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12942,44 +12942,44 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/LyX.cpp:1335 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1350 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Erabiltzailearen direktorioa: "
 
-#: src/LyX.cpp:1336
+#: src/LyX.cpp:1351
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/LyX.cpp:1346
+#: src/LyX.cpp:1361
 #, fuzzy
 msgid "No user directory"
 msgstr "Erabiltzailearen direktorioa: "
 
-#: src/LyX.cpp:1347
+#: src/LyX.cpp:1362
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/LyX.cpp:1357
+#: src/LyX.cpp:1372
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Indize-komandoa:"
 
-#: src/LyX.cpp:1358
+#: src/LyX.cpp:1373
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/LyX.cpp:1368
+#: src/LyX.cpp:1383
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/LyX.cpp:1380
+#: src/LyX.cpp:1395
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/LyX.cpp:1385
+#: src/LyX.cpp:1400
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 
@@ -13079,7 +13079,7 @@ msgstr "&Berreskuratu"
 msgid "Exiting."
 msgstr "Irtetzen"
 
-#: src/LyXFunc.cpp:1128 src/Text3.cpp:1319
+#: src/LyXFunc.cpp:1128 src/Text3.cpp:1337
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
@@ -13088,83 +13088,83 @@ msgstr "Argumentua falta da"
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen..."
 
-#: src/LyXFunc.cpp:1529
+#: src/LyXFunc.cpp:1532
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/LyXFunc.cpp:1540
+#: src/LyXFunc.cpp:1543
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Huts egin du \"%1$s\" kolorea ezartzean - kolorea definitu gabe dago edo "
 "ezin da berriz definitu"
 
-#: src/LyXFunc.cpp:1654
+#: src/LyXFunc.cpp:1657
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentuaren lehenetsiak hemen gordeta: "
 
-#: src/LyXFunc.cpp:1657
+#: src/LyXFunc.cpp:1660
 msgid "Unable to save document defaults"
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
-#: src/LyXFunc.cpp:1713
+#: src/LyXFunc.cpp:1716
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
-#: src/LyXFunc.cpp:1789
+#: src/LyXFunc.cpp:1792
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "'%1$s' taula-ezaugarri ezezaguna"
 
-#: src/LyXFunc.cpp:1797
+#: src/LyXFunc.cpp:1800
 #, fuzzy
 msgid "off"
 msgstr "Desaktibatua"
 
-#: src/LyXFunc.cpp:1799
+#: src/LyXFunc.cpp:1802
 #, fuzzy
 msgid "auto"
 msgstr "Data"
 
-#: src/LyXFunc.cpp:1801
+#: src/LyXFunc.cpp:1804
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1930
+#: src/LyXFunc.cpp:1933
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/LyXFunc.cpp:1933 src/callback.cpp:136
+#: src/LyXFunc.cpp:1936 src/callback.cpp:135
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/LyXFunc.cpp:1969
+#: src/LyXFunc.cpp:1972
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/LyXFunc.cpp:2008
+#: src/LyXFunc.cpp:2011
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/LyXFunc.cpp:2012
+#: src/LyXFunc.cpp:2015
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekita."
 
-#: src/LyXFunc.cpp:2014
+#: src/LyXFunc.cpp:2017
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki"
 
-#: src/LyXFunc.cpp:2039
+#: src/LyXFunc.cpp:2042
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/LyXFunc.cpp:2090 src/callback.cpp:166
+#: src/LyXFunc.cpp:2093 src/callback.cpp:165
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13175,12 +13175,12 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/LyXFunc.cpp:2092 src/callback.cpp:168
+#: src/LyXFunc.cpp:2095 src/callback.cpp:167
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Gainidatzi dokumentua?"
 
-#: src/LyXFunc.cpp:2155
+#: src/LyXFunc.cpp:2158
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
@@ -13755,15 +13755,15 @@ msgstr ""
 msgid "No Branch in Document!"
 msgstr "Inprimatua dokumentua"
 
-#: src/Paragraph.cpp:1602 src/frontends/qt4/QParagraph.cpp:237
+#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "Zentzurik ez diseinu honekin!"
 
-#: src/Paragraph.cpp:1662
+#: src/Paragraph.cpp:1692
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1663
+#: src/Paragraph.cpp:1693
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -13899,19 +13899,19 @@ msgstr "Mat. editore-modua"
 msgid "Unknown spacing argument: "
 msgstr "Tartekatze-argumentu ezezaguna: "
 
-#: src/Text3.cpp:896
+#: src/Text3.cpp:898
 msgid "Layout "
 msgstr "Diseinua "
 
-#: src/Text3.cpp:897
+#: src/Text3.cpp:899
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/Text3.cpp:1424 src/Text3.cpp:1436
+#: src/Text3.cpp:1448 src/Text3.cpp:1460
 msgid "Character set"
 msgstr "Karaktere-mota"
 
-#: src/Text3.cpp:1559
+#: src/Text3.cpp:1583
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa"
 
@@ -14087,11 +14087,11 @@ msgstr "\\roman{enumiii}."
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/bufferview_funcs.cpp:333
+#: src/bufferview_funcs.cpp:332
 msgid "No more insets"
 msgstr "Barnekorik ez"
 
-#: src/callback.cpp:113
+#: src/callback.cpp:112
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -14102,36 +14102,36 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua izenez aldatzea eta berriro saiatzea?"
 
-#: src/callback.cpp:115
+#: src/callback.cpp:114
 msgid "Rename and save?"
 msgstr "Aldatu izenez eta gorde?"
 
-#: src/callback.cpp:116
+#: src/callback.cpp:115
 msgid "&Rename"
 msgstr "&aldatu izenez"
 
-#: src/callback.cpp:133
+#: src/callback.cpp:132
 msgid "Choose a filename to save document as"
 msgstr "Aukeratu izena dokumentua gordetzeko"
 
-#: src/callback.cpp:217
+#: src/callback.cpp:216
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogordetzea %1$s"
 
-#: src/callback.cpp:257
+#: src/callback.cpp:256
 msgid "Autosave failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/callback.cpp:284
+#: src/callback.cpp:283
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/callback.cpp:348
+#: src/callback.cpp:347
 msgid "Select file to insert"
 msgstr "Hautatu fitxategia txertatzeko"
 
-#: src/callback.cpp:367
+#: src/callback.cpp:366
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14142,11 +14142,11 @@ msgstr ""
 "%1$s\n"
 "honako erroreagatik: %2$s"
 
-#: src/callback.cpp:369
+#: src/callback.cpp:368
 msgid "Could not read file"
 msgstr "Ezin izan da fitxategia irakurri"
 
-#: src/callback.cpp:377
+#: src/callback.cpp:376
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -14157,15 +14157,15 @@ msgstr ""
 "%1$s\n"
 "honako erroreagatik: %2$s"
 
-#: src/callback.cpp:379 src/output.cpp:41
+#: src/callback.cpp:378 src/output.cpp:41
 msgid "Could not open file"
 msgstr "Ezin izan da fitxategia ireki"
 
-#: src/callback.cpp:403
+#: src/callback.cpp:402
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/callback.cpp:404
+#: src/callback.cpp:403
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -14174,19 +14174,19 @@ msgid ""
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
 
-#: src/callback.cpp:421
+#: src/callback.cpp:420
 msgid "Running configure..."
 msgstr "Konfigurazioa exekutatzen..."
 
-#: src/callback.cpp:430
+#: src/callback.cpp:429
 msgid "Reloading configuration..."
 msgstr "Konfigurazioa birkargatzen..."
 
-#: src/callback.cpp:435
+#: src/callback.cpp:434
 msgid "System reconfigured"
 msgstr "Sistema birkonfiguratu da."
 
-#: src/callback.cpp:436
+#: src/callback.cpp:435
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -14313,21 +14313,21 @@ msgstr "Kanpoko txantiloia/barneko mezuak"
 msgid "RowPainter profiling"
 msgstr "ErrenkadaMargotzeko profila"
 
-#: src/frontends/LyXView.cpp:211
+#: src/frontends/LyXView.cpp:212
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokumentua ez da gorde"
 
-#: src/frontends/LyXView.cpp:223
+#: src/frontends/LyXView.cpp:224
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/frontends/LyXView.cpp:497
+#: src/frontends/LyXView.cpp:498
 msgid " (changed)"
 msgstr " (aldatuta)"
 
-#: src/frontends/LyXView.cpp:501
+#: src/frontends/LyXView.cpp:502
 msgid " (read only)"
 msgstr " (irakurtzeko soilik)"
 
@@ -14635,109 +14635,109 @@ msgstr "Zuzenketa amaituta."
 msgid "Table of Contents"
 msgstr "Gaien aurkibidea"
 
-#: src/frontends/controllers/frontend_helpers.cpp:247
+#: src/frontends/controllers/frontend_helpers.cpp:246
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s eta %2$s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:251
+#: src/frontends/controllers/frontend_helpers.cpp:250
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/frontends/controllers/frontend_helpers.cpp:288
+#: src/frontends/controllers/frontend_helpers.cpp:287
 msgid "No year"
 msgstr "Urterik ez"
 
-#: src/frontends/controllers/frontend_helpers.cpp:821
+#: src/frontends/controllers/frontend_helpers.cpp:820
 msgid "before"
 msgstr "aurretik"
 
-#: src/frontends/controllers/frontend_helpers.cpp:869
-#: src/frontends/controllers/frontend_helpers.cpp:899
-#: src/frontends/controllers/frontend_helpers.cpp:925
-#: src/frontends/controllers/frontend_helpers.cpp:959
-#: src/frontends/controllers/frontend_helpers.cpp:1025
-#: src/frontends/controllers/frontend_helpers.cpp:1055
-#: src/frontends/controllers/frontend_helpers.cpp:1140
+#: src/frontends/controllers/frontend_helpers.cpp:868
+#: src/frontends/controllers/frontend_helpers.cpp:898
+#: src/frontends/controllers/frontend_helpers.cpp:924
+#: src/frontends/controllers/frontend_helpers.cpp:958
+#: src/frontends/controllers/frontend_helpers.cpp:1024
+#: src/frontends/controllers/frontend_helpers.cpp:1054
+#: src/frontends/controllers/frontend_helpers.cpp:1137
 msgid "No change"
 msgstr "Aldaketarik gabe"
 
-#: src/frontends/controllers/frontend_helpers.cpp:885
-#: src/frontends/controllers/frontend_helpers.cpp:911
-#: src/frontends/controllers/frontend_helpers.cpp:945
-#: src/frontends/controllers/frontend_helpers.cpp:1011
-#: src/frontends/controllers/frontend_helpers.cpp:1041
-#: src/frontends/controllers/frontend_helpers.cpp:1095
-#: src/frontends/controllers/frontend_helpers.cpp:1142
+#: src/frontends/controllers/frontend_helpers.cpp:884
+#: src/frontends/controllers/frontend_helpers.cpp:910
+#: src/frontends/controllers/frontend_helpers.cpp:944
+#: src/frontends/controllers/frontend_helpers.cpp:1010
+#: src/frontends/controllers/frontend_helpers.cpp:1040
+#: src/frontends/controllers/frontend_helpers.cpp:1094
+#: src/frontends/controllers/frontend_helpers.cpp:1139
 msgid "Reset"
 msgstr "Berrezarri"
 
-#: src/frontends/controllers/frontend_helpers.cpp:941
+#: src/frontends/controllers/frontend_helpers.cpp:940
 msgid "Small Caps"
 msgstr "Maiuskula txikiak"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1029
+#: src/frontends/controllers/frontend_helpers.cpp:1028
 msgid "Emph"
 msgstr "Enfasia"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1033
+#: src/frontends/controllers/frontend_helpers.cpp:1032
 msgid "Underbar"
 msgstr "Azpimarratua"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1037
+#: src/frontends/controllers/frontend_helpers.cpp:1036
 msgid "Noun"
 msgstr "Izena"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1059
+#: src/frontends/controllers/frontend_helpers.cpp:1058
 msgid "No color"
 msgstr "Kolore gabea"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1063
+#: src/frontends/controllers/frontend_helpers.cpp:1062
 msgid "Black"
 msgstr "Beltza"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1067
+#: src/frontends/controllers/frontend_helpers.cpp:1066
 msgid "White"
 msgstr "Zuria"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1071
+#: src/frontends/controllers/frontend_helpers.cpp:1070
 msgid "Red"
 msgstr "Gorria"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1075
+#: src/frontends/controllers/frontend_helpers.cpp:1074
 msgid "Green"
 msgstr "Berdea"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1079
+#: src/frontends/controllers/frontend_helpers.cpp:1078
 msgid "Blue"
 msgstr "Urdina"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1083
+#: src/frontends/controllers/frontend_helpers.cpp:1082
 msgid "Cyan"
 msgstr "Cyana"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1087
+#: src/frontends/controllers/frontend_helpers.cpp:1086
 msgid "Magenta"
 msgstr "Magenta"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1091
+#: src/frontends/controllers/frontend_helpers.cpp:1090
 msgid "Yellow"
 msgstr "Horia"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1235
+#: src/frontends/controllers/frontend_helpers.cpp:1240
 msgid "System files|#S#s"
 msgstr "Fitxategi-sistema|#S#s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1238
+#: src/frontends/controllers/frontend_helpers.cpp:1243
 msgid "User files|#U#u"
 msgstr "Erabiltzaile-fitxategiak|#E#e"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1321
+#: src/frontends/controllers/frontend_helpers.cpp:1326
 msgid "Could not update TeX information"
 msgstr "Ezin izan da TeX-en informazioa eguneratu"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1322
+#: src/frontends/controllers/frontend_helpers.cpp:1327
 #, c-format
 msgid "The script `%s' failed."
 msgstr "'%s' script-ak huts egin du."
@@ -14796,7 +14796,7 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:723
+#: src/frontends/qt4/GuiView.cpp:729
 msgid "LyX"
 msgstr "LyX"
 
@@ -14834,11 +14834,11 @@ msgid "Activated"
 msgstr "Aktibatua"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:846
+#: src/frontends/qt4/QDocument.cpp:858
 msgid "Yes"
 msgstr "Bai"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:845
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:857
 msgid "No"
 msgstr "Ez"
 
@@ -15002,7 +15002,7 @@ msgstr "LuxiMono"
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
+#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -15142,7 +15142,7 @@ msgstr "Adarrak"
 msgid "LaTeX Preamble"
 msgstr "LaTeX hitzaurrea"
 
-#: src/frontends/qt4/QDocument.cpp:1400
+#: src/frontends/qt4/QDocument.cpp:1412
 msgid "Document Settings"
 msgstr "Dokumentu-ezarpenak"
 
@@ -15162,18 +15162,18 @@ msgstr "Eskala%"
 msgid "Float Settings"
 msgstr "Mugikorren ezarpenak"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:641
 msgid "Graphics"
 msgstr "Irudiak"
 
-#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
-#: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
-#: src/frontends/qt4/QListings.cpp:447
+#: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
+#: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
+#: src/frontends/qt4/QListings.cpp:459
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QInclude.cpp:180
+#: src/frontends/qt4/QInclude.cpp:194
 msgid "Child Document"
 msgstr "Ume-dokumentua"
 
@@ -15182,12 +15182,12 @@ msgstr "Ume-dokumentua"
 msgid "No language"
 msgstr "hizkuntza"
 
-#: src/frontends/qt4/QListings.cpp:377
+#: src/frontends/qt4/QListings.cpp:389
 #, fuzzy
 msgid "No dialect"
 msgstr "Irudirik ez"
 
-#: src/frontends/qt4/QListings.cpp:402
+#: src/frontends/qt4/QListings.cpp:414
 #, fuzzy
 msgid "Program Listing Settings"
 msgstr "Paragrafo-ezarpenak"
@@ -15251,89 +15251,89 @@ msgstr "Pantailako letra-tipoak"
 msgid "Colors"
 msgstr "Koloreak"
 
-#: src/frontends/qt4/QPrefs.cpp:609 src/frontends/qt4/QPrefs.cpp:708
+#: src/frontends/qt4/QPrefs.cpp:615 src/frontends/qt4/QPrefs.cpp:714
 msgid "Paths"
 msgstr "Bide-izenak"
 
-#: src/frontends/qt4/QPrefs.cpp:759
+#: src/frontends/qt4/QPrefs.cpp:765
 msgid "Select a document templates directory"
 msgstr "Hautatu dokumentu-txantiloien direktorioa"
 
-#: src/frontends/qt4/QPrefs.cpp:769
+#: src/frontends/qt4/QPrefs.cpp:775
 msgid "Select a temporary directory"
 msgstr "Hautatu behin-behineko direktorioa"
 
-#: src/frontends/qt4/QPrefs.cpp:779
+#: src/frontends/qt4/QPrefs.cpp:785
 msgid "Select a backups directory"
 msgstr "Hautatu babeskopien direktorioa"
 
-#: src/frontends/qt4/QPrefs.cpp:789
+#: src/frontends/qt4/QPrefs.cpp:795
 msgid "Select a document directory"
 msgstr "Hautatu dokumentu-direktorioa"
 
-#: src/frontends/qt4/QPrefs.cpp:799
+#: src/frontends/qt4/QPrefs.cpp:805
 msgid "Give a filename for the LyX server pipe"
 msgstr "Eman fitxategi-izena LyX zerbitzari kanalizazioari"
 
-#: src/frontends/qt4/QPrefs.cpp:812 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:818 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "Zuzentzaile ortografikoa"
 
-#: src/frontends/qt4/QPrefs.cpp:834
+#: src/frontends/qt4/QPrefs.cpp:840
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:835
+#: src/frontends/qt4/QPrefs.cpp:841
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:836
+#: src/frontends/qt4/QPrefs.cpp:842
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:838
+#: src/frontends/qt4/QPrefs.cpp:844
 msgid "pspell (library)"
 msgstr "pspell (liburutegia)"
 
-#: src/frontends/qt4/QPrefs.cpp:841
+#: src/frontends/qt4/QPrefs.cpp:847
 msgid "aspell (library)"
 msgstr "aspell (liburutegia)"
 
-#: src/frontends/qt4/QPrefs.cpp:922
+#: src/frontends/qt4/QPrefs.cpp:928
 msgid "Converters"
 msgstr "Bihurtzaileak"
 
-#: src/frontends/qt4/QPrefs.cpp:1120
+#: src/frontends/qt4/QPrefs.cpp:1126
 msgid "Copiers"
 msgstr "Kopiatzaileak"
 
-#: src/frontends/qt4/QPrefs.cpp:1373
+#: src/frontends/qt4/QPrefs.cpp:1379
 msgid "File formats"
 msgstr "Fitxategi-formatuak"
 
-#: src/frontends/qt4/QPrefs.cpp:1565
+#: src/frontends/qt4/QPrefs.cpp:1571
 msgid "Format in use"
 msgstr "Darabilen formatua"
 
-#: src/frontends/qt4/QPrefs.cpp:1566
+#: src/frontends/qt4/QPrefs.cpp:1572
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ezin da bihurtzaile batek erabiltzen duen formaturik kendu. Kendu "
 "bihurtzailea lehendabizi."
 
-#: src/frontends/qt4/QPrefs.cpp:1667
+#: src/frontends/qt4/QPrefs.cpp:1673
 msgid "Printer"
 msgstr "Inprimagailua"
 
-#: src/frontends/qt4/QPrefs.cpp:1765 src/frontends/qt4/QPrefs.cpp:1959
+#: src/frontends/qt4/QPrefs.cpp:1771 src/frontends/qt4/QPrefs.cpp:1965
 msgid "User interface"
 msgstr "Erabiltzaile-interfazea"
 
-#: src/frontends/qt4/QPrefs.cpp:1883
+#: src/frontends/qt4/QPrefs.cpp:1889
 msgid "Identity"
 msgstr "Identitatea"
 
-#: src/frontends/qt4/QPrefs.cpp:2025
+#: src/frontends/qt4/QPrefs.cpp:2031
 msgid "Preferences"
 msgstr "Hobespenak"
 
@@ -15901,15 +15901,15 @@ msgstr "F&ormatua:"
 msgid "Unknown TOC type"
 msgstr "Token ezezaguna"
 
-#: src/insets/InsetTabular.cpp:3152
+#: src/insets/InsetTabular.cpp:3150
 msgid "Opened table"
 msgstr "Irekitako taula"
 
-#: src/insets/InsetTabular.cpp:4296
+#: src/insets/InsetTabular.cpp:4290
 msgid "Error setting multicolumn"
 msgstr "Errorea zutabe anitza ezartzean"
 
-#: src/insets/InsetTabular.cpp:4297
+#: src/insets/InsetTabular.cpp:4291
 msgid "You cannot set multicolumn vertically."
 msgstr "Ezin duzu zutabe anitza bertikalki ezarri."
 

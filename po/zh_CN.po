@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-07-16 19:19+0200\n"
+"POT-Creation-Date: 2007-08-05 15:31+0200\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -82,9 +82,9 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:743 src/LyXFunc.cpp:916
-#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2093 src/LyXVC.cpp:175
+#: src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2096 src/LyXVC.cpp:175
 #: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
-#: src/callback.cpp:116 src/callback.cpp:169
+#: src/callback.cpp:115 src/callback.cpp:168
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -306,20 +306,20 @@ msgstr "框内文本水平对齐"
 
 #: src/frontends/qt4/ui/BoxUi.ui:164 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:58
-#: src/frontends/qt4/QParagraph.cpp:88 src/frontends/qt4/QTabular.cpp:741
+#: src/frontends/qt4/QParagraph.cpp:88 src/frontends/qt4/QTabular.cpp:743
 msgid "Left"
 msgstr "左"
 
 #: src/frontends/qt4/ui/BoxUi.ui:169 src/frontends/qt4/ui/TabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.cpp:236
 #: src/frontends/controllers/ControlGraphics.cpp:172
-#: src/frontends/qt4/QParagraph.cpp:90 src/frontends/qt4/QTabular.cpp:742
+#: src/frontends/qt4/QParagraph.cpp:90 src/frontends/qt4/QTabular.cpp:744
 msgid "Center"
 msgstr "居中"
 
 #: src/frontends/qt4/ui/BoxUi.ui:174 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:155 src/frontends/qt4/ui/WrapUi.ui:63
-#: src/frontends/qt4/QParagraph.cpp:89 src/frontends/qt4/QTabular.cpp:743
+#: src/frontends/qt4/QParagraph.cpp:89 src/frontends/qt4/QTabular.cpp:745
 msgid "Right"
 msgstr "右"
 
@@ -455,66 +455,66 @@ msgstr "大小(&z)"
 #: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
 #: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:98
 #: src/frontends/qt4/QDocument.cpp:302 src/frontends/qt4/QDocument.cpp:339
-#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:743
-#: src/frontends/qt4/QDocument.cpp:791 src/frontends/qt4/QListings.cpp:155
+#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:755
+#: src/frontends/qt4/QDocument.cpp:803 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "默认"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:71 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:963
+#: src/frontends/controllers/frontend_helpers.cpp:962
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Tiny"
 msgstr "极小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:76 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:967
+#: src/frontends/controllers/frontend_helpers.cpp:966
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smallest"
 msgstr "最小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:81 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:971
+#: src/frontends/controllers/frontend_helpers.cpp:970
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Smaller"
 msgstr "较小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:86 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:975
+#: src/frontends/controllers/frontend_helpers.cpp:974
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Small"
 msgstr "小"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:91 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:979
+#: src/frontends/controllers/frontend_helpers.cpp:978
 #: src/frontends/qt4/QListings.cpp:155
 msgid "Normal"
 msgstr "正常"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:96 src/Font.cpp:68
-#: src/frontends/controllers/frontend_helpers.cpp:983
+#: src/frontends/controllers/frontend_helpers.cpp:982
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Large"
 msgstr "大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:101 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:987
+#: src/frontends/controllers/frontend_helpers.cpp:986
 #: src/frontends/qt4/QListings.cpp:156
 msgid "Larger"
 msgstr "较大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:106 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:991
+#: src/frontends/controllers/frontend_helpers.cpp:990
 msgid "Largest"
 msgstr "最大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:995
+#: src/frontends/controllers/frontend_helpers.cpp:994
 msgid "Huge"
 msgstr "巨大"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:69
-#: src/frontends/controllers/frontend_helpers.cpp:999
+#: src/frontends/controllers/frontend_helpers.cpp:998
 msgid "Huger"
 msgstr "超大"
 
@@ -581,7 +581,7 @@ msgstr "字体系列"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
-#: src/frontends/qt4/QPrefs.cpp:1587
+#: src/frontends/qt4/QPrefs.cpp:1593
 msgid "Language"
 msgstr "语言"
 
@@ -1838,8 +1838,8 @@ msgid ""
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"选择此项如果LyX应该输出Windows,而不是Posix路径格式。"
-"选中如果您使用Windows MikTex而不是 Cygwin teTeX."
+"选择此项如果LyX应该输出Windows,而不是Posix路径格式。选中如果您使用Windows "
+"MikTex而不是 Cygwin teTeX."
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:47
 msgid "&Use Windows-style paths in LaTeX files"
@@ -2696,7 +2696,7 @@ msgid "Horizontal alignment in column"
 msgstr "列水平对齐"
 
 #: src/frontends/qt4/ui/TabularUi.ui:140 src/frontends/qt4/QParagraph.cpp:87
-#: src/frontends/qt4/QTabular.cpp:745
+#: src/frontends/qt4/QTabular.cpp:747
 msgid "Justified"
 msgstr "分散对齐"
 
@@ -2850,7 +2850,7 @@ msgstr "在每页重复此行为表头"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1795
+#: src/LyXFunc.cpp:1798
 msgid "on"
 msgstr "打开"
 
@@ -3044,8 +3044,7 @@ msgstr "向上移动选中项"
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
-msgstr ""
-"在目录，图像列表和表格列表间切换(如果存在)"
+msgstr "在目录，图像列表和表格列表间切换(如果存在)"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
@@ -3561,7 +3560,7 @@ msgstr "参考书目"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:540
+#: src/rowpainter.cpp:541
 msgid "Appendix"
 msgstr "附录"
 
@@ -8284,17 +8283,17 @@ msgstr "关闭窗口(d)|d"
 msgid "Redo|R"
 msgstr "重作(R)|R"
 
-#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:837
+#: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:839
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "剪切"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:842
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:844
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "复制"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:819
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:821
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "粘贴"
@@ -8791,11 +8790,11 @@ msgstr "打印文档"
 msgid "Check spelling"
 msgstr "拼写检查"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:714
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:715
 msgid "Undo"
 msgstr "撤消"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:723
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:724
 msgid "Redo"
 msgstr "重做"
 
@@ -9152,7 +9151,6 @@ msgstr "字体"
 msgid "Functions"
 msgstr "函数"
 
-
 #: lib/ui/stdtoolbars.inc:217
 msgid "arccos"
 msgstr "arccos"
@@ -9465,7 +9463,6 @@ msgstr "widetilde"
 msgid "vec"
 msgstr "vec"
 
-
 #: lib/ui/stdtoolbars.inc:312
 msgid "acute"
 msgstr "acute"
@@ -9654,11 +9651,9 @@ msgstr "searrow"
 msgid "rightleftharpoons"
 msgstr "rightleftharpoons"
 
-
 #: lib/ui/stdtoolbars.inc:363
 msgid "Operators"
 msgstr "Operators"
-
 
 #: lib/ui/stdtoolbars.inc:364
 msgid "pm"
@@ -10223,7 +10218,6 @@ msgstr "mathcircumflex"
 #: lib/ui/stdtoolbars.inc:511
 msgid "_"
 msgstr "_"
-
 
 #: lib/ui/stdtoolbars.inc:512
 msgid "mathrm T"
@@ -11367,61 +11361,62 @@ msgstr ""
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
-msgstr "今天的日期.\n"
+msgstr ""
+"今天的日期.\n"
 "详情请参阅 'info date'\n"
 
-#: src/Buffer.cpp:233
+#: src/Buffer.cpp:229
 msgid "Could not remove temporary directory"
 msgstr "无法删除临时目录"
 
-#: src/Buffer.cpp:234
+#: src/Buffer.cpp:230
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "无法删除临时目录 %1$s"
 
-#: src/Buffer.cpp:405
+#: src/Buffer.cpp:401
 msgid "Unknown document class"
 msgstr "未知文档类"
 
-#: src/Buffer.cpp:406
+#: src/Buffer.cpp:402
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "使用缺省文档类，因为类 %1$s 未知。"
 
-#: src/Buffer.cpp:466 src/Text.cpp:295
+#: src/Buffer.cpp:462 src/Text.cpp:295
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "未知关键词:  %1$s %2$s\n"
 
-#: src/Buffer.cpp:470 src/Buffer.cpp:477 src/Buffer.cpp:497
+#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
 msgid "Document header error"
 msgstr "文档头出错"
 
-#: src/Buffer.cpp:476
+#: src/Buffer.cpp:472
 msgid "\\begin_header is missing"
 msgstr "\\begin_header 缺失"
 
-#: src/Buffer.cpp:496
+#: src/Buffer.cpp:492
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺失"
 
-#: src/Buffer.cpp:507
+#: src/Buffer.cpp:503
 msgid "Can't load document class"
 msgstr "无法读入文档类"
 
-#: src/Buffer.cpp:508
+#: src/Buffer.cpp:504
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Using the default document class, because the class %1$s could not be loaded."
 
-#: src/Buffer.cpp:519 src/Buffer.cpp:525 src/BufferView.cpp:847
-#: src/BufferView.cpp:853
+#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:848
+#: src/BufferView.cpp:854
 msgid "Changes not shown in LaTeX output"
 msgstr "改变项没有输出至LaTeX输出"
 
-#: src/Buffer.cpp:520 src/BufferView.cpp:848
+#: src/Buffer.cpp:516 src/BufferView.cpp:849
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11433,7 +11428,7 @@ msgstr ""
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 
-#: src/Buffer.cpp:526 src/BufferView.cpp:854
+#: src/Buffer.cpp:522 src/BufferView.cpp:855
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11445,29 +11440,29 @@ msgstr ""
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 
-#: src/Buffer.cpp:661 src/Buffer.cpp:670
+#: src/Buffer.cpp:657 src/Buffer.cpp:666
 msgid "Document could not be read"
 msgstr "无法读取文件"
 
-#: src/Buffer.cpp:662 src/Buffer.cpp:671
+#: src/Buffer.cpp:658 src/Buffer.cpp:667
 #, c-format
 msgid "%1$s could not be read."
 msgstr "无法读取 %1$s"
 
-#: src/Buffer.cpp:679 src/Buffer.cpp:751
+#: src/Buffer.cpp:675 src/Buffer.cpp:747
 msgid "Document format failure"
 msgstr "文档格式错误"
 
-#: src/Buffer.cpp:680
+#: src/Buffer.cpp:676
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s 不是LyX文档"
 
-#: src/Buffer.cpp:704
+#: src/Buffer.cpp:700
 msgid "Conversion failed"
 msgstr "转换出错"
 
-#: src/Buffer.cpp:705
+#: src/Buffer.cpp:701
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -11476,11 +11471,11 @@ msgstr ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 
-#: src/Buffer.cpp:714
+#: src/Buffer.cpp:710
 msgid "Conversion script not found"
 msgstr "未找到转换脚本"
 
-#: src/Buffer.cpp:715
+#: src/Buffer.cpp:711
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -11489,11 +11484,11 @@ msgstr ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 
-#: src/Buffer.cpp:736
+#: src/Buffer.cpp:732
 msgid "Conversion script failed"
 msgstr "转换脚本执行出错"
 
-#: src/Buffer.cpp:737
+#: src/Buffer.cpp:733
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -11502,16 +11497,16 @@ msgstr ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 
-#: src/Buffer.cpp:752
+#: src/Buffer.cpp:748
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s 非正常结束，它可能是无效的"
 
-#: src/Buffer.cpp:788
+#: src/Buffer.cpp:784
 msgid "Backup failure"
 msgstr "备份失败"
 
-#: src/Buffer.cpp:789
+#: src/Buffer.cpp:785
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -11520,11 +11515,11 @@ msgstr ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 
-#: src/Buffer.cpp:935
+#: src/Buffer.cpp:931
 msgid "Encoding error"
 msgstr "编码出错"
 
-#: src/Buffer.cpp:936
+#: src/Buffer.cpp:932
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -11534,28 +11529,28 @@ msgstr ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 
-#: src/Buffer.cpp:1214
+#: src/Buffer.cpp:1210
 msgid "Running chktex..."
 msgstr "执行 chktex..."
 
-#: src/Buffer.cpp:1227
+#: src/Buffer.cpp:1223
 msgid "chktex failure"
 msgstr "chktex执行出错"
 
-#: src/Buffer.cpp:1228
+#: src/Buffer.cpp:1224
 msgid "Could not run chktex successfully."
 msgstr "无法正确执行chktex"
 
-#: src/Buffer.cpp:1763
+#: src/Buffer.cpp:1759
 msgid "Preview source code"
 msgstr "预览源文件"
 
-#: src/Buffer.cpp:1774
+#: src/Buffer.cpp:1770
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr "预览段落 %1$s 之源代码"
 
-#: src/Buffer.cpp:1778
+#: src/Buffer.cpp:1774
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "预览段落  %1$s 至  %2$s 段落之源代码"
@@ -11621,62 +11616,62 @@ msgstr "未知文档类"
 msgid "LyX will not be able to produce output."
 msgstr "LyX将不能产生输出"
 
-#: src/BufferView.cpp:518
+#: src/BufferView.cpp:519
 msgid "Save bookmark"
 msgstr "保存书签"
 
-#: src/BufferView.cpp:717
+#: src/BufferView.cpp:718
 msgid "No further undo information"
 msgstr "无进一步恢复信息"
 
-#: src/BufferView.cpp:726
+#: src/BufferView.cpp:727
 msgid "No further redo information"
 msgstr "无进一步重做信息"
 
-#: src/BufferView.cpp:913
+#: src/BufferView.cpp:914
 msgid "Mark off"
 msgstr "Mark off"
 
-#: src/BufferView.cpp:920
+#: src/BufferView.cpp:921
 msgid "Mark on"
 msgstr "Mark on"
 
-#: src/BufferView.cpp:927
+#: src/BufferView.cpp:928
 msgid "Mark removed"
 msgstr "Mark removed"
 
-#: src/BufferView.cpp:930
+#: src/BufferView.cpp:931
 msgid "Mark set"
 msgstr "Mark set"
 
-#: src/BufferView.cpp:976
+#: src/BufferView.cpp:977
 #, c-format
 msgid "%1$d words in selection."
 msgstr "选中了 %1$d 词"
 
-#: src/BufferView.cpp:979
+#: src/BufferView.cpp:980
 #, c-format
 msgid "%1$d words in document."
 msgstr "文档有 %1$d 词"
 
-#: src/BufferView.cpp:984
+#: src/BufferView.cpp:985
 msgid "One word in selection."
 msgstr "选中一个词"
 
-#: src/BufferView.cpp:986
+#: src/BufferView.cpp:987
 msgid "One word in document."
 msgstr "文档有一个词"
 
-#: src/BufferView.cpp:989
+#: src/BufferView.cpp:990
 msgid "Count words"
 msgstr "统计字数"
 
-#: src/BufferView.cpp:1577
+#: src/BufferView.cpp:1579
 msgid "Select LyX document to insert"
 msgstr "选择插入的LyX文档"
 
-#: src/BufferView.cpp:1579 src/LyXFunc.cpp:1932 src/LyXFunc.cpp:1971
-#: src/LyXFunc.cpp:2044 src/callback.cpp:135
+#: src/BufferView.cpp:1581 src/LyXFunc.cpp:1935 src/LyXFunc.cpp:1974
+#: src/LyXFunc.cpp:2047 src/callback.cpp:134
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11685,31 +11680,31 @@ msgstr "选择插入的LyX文档"
 msgid "Documents|#o#O"
 msgstr "文档|#o#O"
 
-#: src/BufferView.cpp:1580 src/LyXFunc.cpp:1972 src/LyXFunc.cpp:2045
+#: src/BufferView.cpp:1582 src/LyXFunc.cpp:1975 src/LyXFunc.cpp:2048
 msgid "Examples|#E#e"
 msgstr "示例|#E#e"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:1937 src/LyXFunc.cpp:1976
-#: src/callback.cpp:141
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1940 src/LyXFunc.cpp:1979
+#: src/callback.cpp:140
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/BufferView.cpp:1598 src/LyXFunc.cpp:1986 src/LyXFunc.cpp:2066
-#: src/LyXFunc.cpp:2080 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1600 src/LyXFunc.cpp:1989 src/LyXFunc.cpp:2069
+#: src/LyXFunc.cpp:2083 src/LyXFunc.cpp:2099
 msgid "Canceled."
 msgstr "已取消。"
 
-#: src/BufferView.cpp:1609
+#: src/BufferView.cpp:1611
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:1620
+#: src/BufferView.cpp:1622
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:1622
+#: src/BufferView.cpp:1624
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
@@ -12053,6 +12048,7 @@ msgid "Undefined character style"
 msgstr "未定义字符样式"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1083
+#, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
 "\n"
@@ -12065,8 +12061,8 @@ msgstr ""
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
 
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2093
-#: src/callback.cpp:169
+#: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2096
+#: src/callback.cpp:168
 msgid "&Overwrite"
 msgstr "覆盖(&O)"
 
@@ -12119,19 +12115,19 @@ msgid "Document exported as %1$s"
 msgstr "文档导出为 %1$s"
 
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:873
+#: src/frontends/controllers/frontend_helpers.cpp:872
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Roman"
 msgstr "正体"
 
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:877
+#: src/frontends/controllers/frontend_helpers.cpp:876
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:56 src/frontends/controllers/ControlDocument.cpp:48
-#: src/frontends/controllers/frontend_helpers.cpp:881
+#: src/frontends/controllers/frontend_helpers.cpp:880
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Typewriter"
 msgstr "Typewriter"
@@ -12150,23 +12146,23 @@ msgstr "继承"
 msgid "Ignore"
 msgstr "忽略"
 
-#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:903
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:902
 msgid "Medium"
 msgstr "中度"
 
-#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:907
+#: src/Font.cpp:61 src/frontends/controllers/frontend_helpers.cpp:906
 msgid "Bold"
 msgstr "粗体"
 
-#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:929
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:928
 msgid "Upright"
 msgstr "正体"
 
-#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:933
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:932
 msgid "Italic"
 msgstr "斜体"
 
-#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:937
+#: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:936
 msgid "Slanted"
 msgstr "倾斜"
 
@@ -12174,11 +12170,11 @@ msgstr "倾斜"
 msgid "Smallcaps"
 msgstr "小号大写"
 
-#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1003
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1002
 msgid "Increase"
 msgstr "增大字体"
 
-#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1007
+#: src/Font.cpp:69 src/frontends/controllers/frontend_helpers.cpp:1006
 msgid "Decrease"
 msgstr "减小字体"
 
@@ -12244,15 +12240,15 @@ msgstr "无编辑 %1$s 的信息"
 msgid "Auto-edit file %1$s failed"
 msgstr "自动编辑文件 %1$s 失败"
 
-#: src/ISpell.cpp:238 src/ISpell.cpp:245 src/ISpell.cpp:254
+#: src/ISpell.cpp:237 src/ISpell.cpp:244 src/ISpell.cpp:253
 msgid "Can't create pipe for spellchecker."
 msgstr "无法创建拼写检查管道"
 
-#: src/ISpell.cpp:259 src/ISpell.cpp:264 src/ISpell.cpp:269
+#: src/ISpell.cpp:258 src/ISpell.cpp:263 src/ISpell.cpp:268
 msgid "Can't open pipe for spellchecker."
 msgstr "无法打开拼写检查管道"
 
-#: src/ISpell.cpp:278
+#: src/ISpell.cpp:277
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
@@ -12260,7 +12256,7 @@ msgstr ""
 "无法创建 ispell 进程.\n"
 "您可能没有安装正确的语言."
 
-#: src/ISpell.cpp:301
+#: src/ISpell.cpp:300
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
@@ -12268,27 +12264,25 @@ msgstr ""
 "ispell 进程出错.\n"
 "配置出错 ?"
 
-#: src/ISpell.cpp:406
+#: src/ISpell.cpp:405
 #, c-format
 msgid ""
 "Could not check word `%1$s' because it could not be converted to encoding `%2"
 "$s'."
-msgstr ""
-"无法检查单词 `%1$s' 因为无法转换此词至编码 `%2"
-"$s'."
+msgstr "无法检查单词 `%1$s' 因为无法转换此词至编码 `%2$s'."
 
-#: src/ISpell.cpp:417
+#: src/ISpell.cpp:416
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "无法与ispell拼写检查进程通讯"
 
-#: src/ISpell.cpp:477
+#: src/ISpell.cpp:476
 #, c-format
 msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr "无法接受单词 `%1$s' 因为此词无法转换为编码 `%2$s'."
 
-#: src/ISpell.cpp:492
+#: src/ISpell.cpp:491
 #, c-format
 msgid ""
 "Could not accept word `%1$s' because it could not be converted to encoding `%"
@@ -12317,28 +12311,28 @@ msgstr "导入的。"
 msgid "   options: "
 msgstr " 选项: "
 
-#: src/LaTeX.cpp:95
+#: src/LaTeX.cpp:94
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "等待LaTeX第 %1$d 次执行"
 
-#: src/LaTeX.cpp:302 src/LaTeX.cpp:381
+#: src/LaTeX.cpp:301 src/LaTeX.cpp:380
 msgid "Running MakeIndex."
 msgstr "执行MakeIndex"
 
-#: src/LaTeX.cpp:322
+#: src/LaTeX.cpp:321
 msgid "Running BibTeX."
 msgstr "执行BibTeX"
 
-#: src/LaTeX.cpp:462
+#: src/LaTeX.cpp:461
 msgid "Running MakeIndex for nomencl."
 msgstr "Running MakeIndex for nomencl."
 
-#: src/LyX.cpp:130
+#: src/LyX.cpp:131
 msgid "Could not read configuration file"
 msgstr "无法读取配置文件"
 
-#: src/LyX.cpp:131
+#: src/LyX.cpp:132
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12349,37 +12343,37 @@ msgstr ""
 "%1$s.\n"
 "请检查您的安装过程."
 
-#: src/LyX.cpp:140
+#: src/LyX.cpp:141
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: 重新配置用户目录"
 
-#: src/LyX.cpp:144
+#: src/LyX.cpp:145
 msgid "Done!"
 msgstr "完成！"
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:505
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "无法删除临时目录 %1$s"
 
-#: src/LyX.cpp:492
+#: src/LyX.cpp:507
 msgid "Unable to remove temporary directory"
 msgstr "无法删除临时目录"
 
-#: src/LyX.cpp:528
+#: src/LyX.cpp:543
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "未知命令行选项 `%1$s'. 退出."
 
-#: src/LyX.cpp:796
+#: src/LyX.cpp:811
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:925
+#: src/LyX.cpp:940
 msgid "Could not create temporary directory"
 msgstr "无法创建临时目录"
 
-#: src/LyX.cpp:926
+#: src/LyX.cpp:941
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12390,11 +12384,11 @@ msgstr ""
 "%1$s. 请确定此\n"
 "目录存在而且可写，然后重新尝试."
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:1108
 msgid "Missing user LyX directory"
 msgstr "缺失LyX用户目录"
 
-#: src/LyX.cpp:1094
+#: src/LyX.cpp:1109
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -12403,37 +12397,37 @@ msgstr ""
 "您指定了一不存在用户目录, %1$s.\n"
 "用来保存您的配置信息."
 
-#: src/LyX.cpp:1099
+#: src/LyX.cpp:1114
 msgid "&Create directory"
 msgstr "创建目录 (&C)"
 
-#: src/LyX.cpp:1100
+#: src/LyX.cpp:1115
 msgid "&Exit LyX"
 msgstr "退出 LyX (&E)"
 
-#: src/LyX.cpp:1101
+#: src/LyX.cpp:1116
 msgid "No user LyX directory. Exiting."
 msgstr "无用户 LyX 目录。退出。"
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1120
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: 创建目录 %1$s"
 
-#: src/LyX.cpp:1111
+#: src/LyX.cpp:1126
 msgid "Failed to create directory. Exiting."
 msgstr "未能创建目录。退出。"
 
-#: src/LyX.cpp:1284
+#: src/LyX.cpp:1299
 msgid "List of supported debug flags:"
 msgstr "支持的调试符号"
 
-#: src/LyX.cpp:1288
+#: src/LyX.cpp:1303
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "设置调试级别至 %1$s"
 
-#: src/LyX.cpp:1299
+#: src/LyX.cpp:1314
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12473,39 +12467,39 @@ msgstr ""
 "\t-version        版本和编译信息\n"
 "详细使用方法请参阅 LyX 手册."
 
-#: src/LyX.cpp:1335 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1350 src/support/Package.cpp.in:568
 msgid "No system directory"
 msgstr "无系统目录"
 
-#: src/LyX.cpp:1336
+#: src/LyX.cpp:1351
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir 参数后缺省目录名"
 
-#: src/LyX.cpp:1346
+#: src/LyX.cpp:1361
 msgid "No user directory"
 msgstr "无用户目录"
 
-#: src/LyX.cpp:1347
+#: src/LyX.cpp:1362
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir 参数后缺失目录名"
 
-#: src/LyX.cpp:1357
+#: src/LyX.cpp:1372
 msgid "Incomplete command"
 msgstr "不完整命令"
 
-#: src/LyX.cpp:1358
+#: src/LyX.cpp:1373
 msgid "Missing command string after --execute switch"
 msgstr "--execute 参数后缺失命令"
 
-#: src/LyX.cpp:1368
+#: src/LyX.cpp:1383
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1380
+#: src/LyX.cpp:1395
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1385
+#: src/LyX.cpp:1400
 msgid "Missing filename for --import"
 msgstr "--import 参数缺失文件名"
 
@@ -12588,9 +12582,7 @@ msgstr "完成。"
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
-msgstr ""
-"任何改变将被遗失. 您确定希望恢复 "
-"文件 %1$s 到磁盘上保存的版本吗?"
+msgstr "任何改变将被遗失. 您确定希望恢复 文件 %1$s 到磁盘上保存的版本吗?"
 
 #: src/LyXFunc.cpp:915 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
@@ -12604,7 +12596,7 @@ msgstr "还原(&R)"
 msgid "Exiting."
 msgstr "退出."
 
-#: src/LyXFunc.cpp:1128 src/Text3.cpp:1319
+#: src/LyXFunc.cpp:1128 src/Text3.cpp:1337
 msgid "Missing argument"
 msgstr "缺失参数"
 
@@ -12613,79 +12605,80 @@ msgstr "缺失参数"
 msgid "Opening help file %1$s..."
 msgstr "打开帮助文件 %1$s..."
 
-#: src/LyXFunc.cpp:1529
+#: src/LyXFunc.cpp:1532
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "语法: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1540
+#: src/LyXFunc.cpp:1543
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
 
-#: src/LyXFunc.cpp:1654
+#: src/LyXFunc.cpp:1657
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文档缺省设置保存至 %1$s"
 
-#: src/LyXFunc.cpp:1657
+#: src/LyXFunc.cpp:1660
 msgid "Unable to save document defaults"
 msgstr "无法保存文档缺省设置"
 
-#: src/LyXFunc.cpp:1713
+#: src/LyXFunc.cpp:1716
 msgid "Converting document to new document class..."
 msgstr "转换文档至新文档类..."
 
-#: src/LyXFunc.cpp:1789
+#: src/LyXFunc.cpp:1792
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "未知工具条 \"%1$s\""
 
-#: src/LyXFunc.cpp:1797
+#: src/LyXFunc.cpp:1800
 msgid "off"
 msgstr "关闭"
 
-#: src/LyXFunc.cpp:1799
+#: src/LyXFunc.cpp:1802
 msgid "auto"
 msgstr "自动"
 
-#: src/LyXFunc.cpp:1801
+#: src/LyXFunc.cpp:1804
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "工具条 \"%1$s\" 状态设置为 %2$s"
 
-#: src/LyXFunc.cpp:1930
+#: src/LyXFunc.cpp:1933
 msgid "Select template file"
 msgstr "选择模板文件"
 
-#: src/LyXFunc.cpp:1933 src/callback.cpp:136
+#: src/LyXFunc.cpp:1936 src/callback.cpp:135
 msgid "Templates|#T#t"
 msgstr "模板|#T#t"
 
-#: src/LyXFunc.cpp:1969
+#: src/LyXFunc.cpp:1972
 msgid "Select document to open"
 msgstr "选择要打开的文档"
 
-#: src/LyXFunc.cpp:2008
+#: src/LyXFunc.cpp:2011
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "打开文档 %1$s ..."
 
-#: src/LyXFunc.cpp:2012
+#: src/LyXFunc.cpp:2015
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:2014
+#: src/LyXFunc.cpp:2017
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "无法打开文档 %1$s"
 
-#: src/LyXFunc.cpp:2039
+#: src/LyXFunc.cpp:2042
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "选择导入文件 %1$s "
 
-#: src/LyXFunc.cpp:2090 src/callback.cpp:166
+#: src/LyXFunc.cpp:2093 src/callback.cpp:165
+#, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
@@ -12694,11 +12687,11 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/LyXFunc.cpp:2092 src/callback.cpp:168
+#: src/LyXFunc.cpp:2095 src/callback.cpp:167
 msgid "Overwrite document?"
 msgstr "覆盖文件?"
 
-#: src/LyXFunc.cpp:2155
+#: src/LyXFunc.cpp:2158
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
@@ -12707,8 +12700,7 @@ msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
-"是否将连接在一起的词语（象 \"diskdrive\" 和 \"disk drive\"）处理为"
-"正确的词语?"
+"是否将连接在一起的词语（象 \"diskdrive\" 和 \"disk drive\"）处理为正确的词语?"
 
 #: src/LyXRC.cpp:2089
 msgid ""
@@ -13252,15 +13244,15 @@ msgstr " (自动)"
 msgid "No Branch in Document!"
 msgstr "文档中无分支!"
 
-#: src/Paragraph.cpp:1602 src/frontends/qt4/QParagraph.cpp:237
+#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:237
 msgid "Senseless with this layout!"
 msgstr "在此显示布局下无意义"
 
-#: src/Paragraph.cpp:1662
+#: src/Paragraph.cpp:1692
 msgid "Alignment not permitted"
 msgstr "无效对齐方式"
 
-#: src/Paragraph.cpp:1663
+#: src/Paragraph.cpp:1693
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -13395,19 +13387,19 @@ msgstr "Math editor mode"
 msgid "Unknown spacing argument: "
 msgstr "未知间隔参数: "
 
-#: src/Text3.cpp:896
+#: src/Text3.cpp:898
 msgid "Layout "
 msgstr "显示布局 "
 
-#: src/Text3.cpp:897
+#: src/Text3.cpp:899
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1424 src/Text3.cpp:1436
+#: src/Text3.cpp:1448 src/Text3.cpp:1460
 msgid "Character set"
 msgstr "字符集"
 
-#: src/Text3.cpp:1559
+#: src/Text3.cpp:1583
 msgid "Paragraph layout set"
 msgstr "段落布局"
 
@@ -13585,11 +13577,11 @@ msgstr "\\roman{enumiii}."
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/bufferview_funcs.cpp:333
+#: src/bufferview_funcs.cpp:332
 msgid "No more insets"
 msgstr "无嵌入项"
 
-#: src/callback.cpp:113
+#: src/callback.cpp:112
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -13600,36 +13592,36 @@ msgstr ""
 "\n"
 "Do you want to rename the document and try again?"
 
-#: src/callback.cpp:115
+#: src/callback.cpp:114
 msgid "Rename and save?"
 msgstr "改名并保存?"
 
-#: src/callback.cpp:116
+#: src/callback.cpp:115
 msgid "&Rename"
 msgstr "重命名(&R)"
 
-#: src/callback.cpp:133
+#: src/callback.cpp:132
 msgid "Choose a filename to save document as"
 msgstr "选择另存为文件名"
 
-#: src/callback.cpp:217
+#: src/callback.cpp:216
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自动保存 %1$s"
 
-#: src/callback.cpp:257
+#: src/callback.cpp:256
 msgid "Autosave failed!"
 msgstr "自动保存失败!"
 
-#: src/callback.cpp:284
+#: src/callback.cpp:283
 msgid "Autosaving current document..."
 msgstr "自动保存当前文档..."
 
-#: src/callback.cpp:348
+#: src/callback.cpp:347
 msgid "Select file to insert"
 msgstr "选择插入文件"
 
-#: src/callback.cpp:367
+#: src/callback.cpp:366
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13640,11 +13632,11 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/callback.cpp:369
+#: src/callback.cpp:368
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/callback.cpp:377
+#: src/callback.cpp:376
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13655,15 +13647,15 @@ msgstr ""
 "%1$s\n"
 "出错信息: %2$s"
 
-#: src/callback.cpp:379 src/output.cpp:41
+#: src/callback.cpp:378 src/output.cpp:41
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/callback.cpp:403
+#: src/callback.cpp:402
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/callback.cpp:404
+#: src/callback.cpp:403
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -13677,19 +13669,19 @@ msgstr ""
 "请使用适当程序改变文件编码\n"
 "至 UTF-8 .\n"
 
-#: src/callback.cpp:421
+#: src/callback.cpp:420
 msgid "Running configure..."
 msgstr "执行配置程序..."
 
-#: src/callback.cpp:430
+#: src/callback.cpp:429
 msgid "Reloading configuration..."
 msgstr "读入系统配置..."
 
-#: src/callback.cpp:435
+#: src/callback.cpp:434
 msgid "System reconfigured"
 msgstr "重配置系统完毕"
 
-#: src/callback.cpp:436
+#: src/callback.cpp:435
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -13816,20 +13808,20 @@ msgstr "外部程序/嵌入项消息"
 msgid "RowPainter profiling"
 msgstr "界面绘制效率分析"
 
-#: src/frontends/LyXView.cpp:211
+#: src/frontends/LyXView.cpp:212
 msgid "Document not loaded."
 msgstr "文档未读入"
 
-#: src/frontends/LyXView.cpp:223
+#: src/frontends/LyXView.cpp:224
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "打开子文档 %1$s..."
 
-#: src/frontends/LyXView.cpp:497
+#: src/frontends/LyXView.cpp:498
 msgid " (changed)"
 msgstr " (改变)"
 
-#: src/frontends/LyXView.cpp:501
+#: src/frontends/LyXView.cpp:502
 msgid " (read only)"
 msgstr " (只读)"
 
@@ -14138,109 +14130,109 @@ msgstr "拼写检查结束"
 msgid "Table of Contents"
 msgstr "目录"
 
-#: src/frontends/controllers/frontend_helpers.cpp:247
+#: src/frontends/controllers/frontend_helpers.cpp:246
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s 和 %2$s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:251
+#: src/frontends/controllers/frontend_helpers.cpp:250
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s 等."
 
-#: src/frontends/controllers/frontend_helpers.cpp:288
+#: src/frontends/controllers/frontend_helpers.cpp:287
 msgid "No year"
 msgstr "未知年份"
 
-#: src/frontends/controllers/frontend_helpers.cpp:821
+#: src/frontends/controllers/frontend_helpers.cpp:820
 msgid "before"
 msgstr "之前"
 
-#: src/frontends/controllers/frontend_helpers.cpp:869
-#: src/frontends/controllers/frontend_helpers.cpp:899
-#: src/frontends/controllers/frontend_helpers.cpp:925
-#: src/frontends/controllers/frontend_helpers.cpp:959
-#: src/frontends/controllers/frontend_helpers.cpp:1025
-#: src/frontends/controllers/frontend_helpers.cpp:1055
-#: src/frontends/controllers/frontend_helpers.cpp:1140
+#: src/frontends/controllers/frontend_helpers.cpp:868
+#: src/frontends/controllers/frontend_helpers.cpp:898
+#: src/frontends/controllers/frontend_helpers.cpp:924
+#: src/frontends/controllers/frontend_helpers.cpp:958
+#: src/frontends/controllers/frontend_helpers.cpp:1024
+#: src/frontends/controllers/frontend_helpers.cpp:1054
+#: src/frontends/controllers/frontend_helpers.cpp:1137
 msgid "No change"
 msgstr "无改变"
 
-#: src/frontends/controllers/frontend_helpers.cpp:885
-#: src/frontends/controllers/frontend_helpers.cpp:911
-#: src/frontends/controllers/frontend_helpers.cpp:945
-#: src/frontends/controllers/frontend_helpers.cpp:1011
-#: src/frontends/controllers/frontend_helpers.cpp:1041
-#: src/frontends/controllers/frontend_helpers.cpp:1095
-#: src/frontends/controllers/frontend_helpers.cpp:1142
+#: src/frontends/controllers/frontend_helpers.cpp:884
+#: src/frontends/controllers/frontend_helpers.cpp:910
+#: src/frontends/controllers/frontend_helpers.cpp:944
+#: src/frontends/controllers/frontend_helpers.cpp:1010
+#: src/frontends/controllers/frontend_helpers.cpp:1040
+#: src/frontends/controllers/frontend_helpers.cpp:1094
+#: src/frontends/controllers/frontend_helpers.cpp:1139
 msgid "Reset"
 msgstr "重置"
 
-#: src/frontends/controllers/frontend_helpers.cpp:941
+#: src/frontends/controllers/frontend_helpers.cpp:940
 msgid "Small Caps"
 msgstr "小号大写字体"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1029
+#: src/frontends/controllers/frontend_helpers.cpp:1028
 msgid "Emph"
 msgstr "强调"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1033
+#: src/frontends/controllers/frontend_helpers.cpp:1032
 msgid "Underbar"
 msgstr "下划线"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1037
+#: src/frontends/controllers/frontend_helpers.cpp:1036
 msgid "Noun"
 msgstr "名词"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1059
+#: src/frontends/controllers/frontend_helpers.cpp:1058
 msgid "No color"
 msgstr "无颜色"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1063
+#: src/frontends/controllers/frontend_helpers.cpp:1062
 msgid "Black"
 msgstr "黑"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1067
+#: src/frontends/controllers/frontend_helpers.cpp:1066
 msgid "White"
 msgstr "白色"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1071
+#: src/frontends/controllers/frontend_helpers.cpp:1070
 msgid "Red"
 msgstr "红"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1075
+#: src/frontends/controllers/frontend_helpers.cpp:1074
 msgid "Green"
 msgstr "绿"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1079
+#: src/frontends/controllers/frontend_helpers.cpp:1078
 msgid "Blue"
 msgstr "蓝"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1083
+#: src/frontends/controllers/frontend_helpers.cpp:1082
 msgid "Cyan"
 msgstr "青"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1087
+#: src/frontends/controllers/frontend_helpers.cpp:1086
 msgid "Magenta"
 msgstr "品红"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1091
+#: src/frontends/controllers/frontend_helpers.cpp:1090
 msgid "Yellow"
 msgstr "黄"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1235
+#: src/frontends/controllers/frontend_helpers.cpp:1240
 msgid "System files|#S#s"
 msgstr "系统文件|#S#s"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1238
+#: src/frontends/controllers/frontend_helpers.cpp:1243
 msgid "User files|#U#u"
 msgstr "用户文件|#U#u"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1321
+#: src/frontends/controllers/frontend_helpers.cpp:1326
 msgid "Could not update TeX information"
 msgstr "无法更新TeX信息"
 
-#: src/frontends/controllers/frontend_helpers.cpp:1322
+#: src/frontends/controllers/frontend_helpers.cpp:1327
 #, c-format
 msgid "The script `%s' failed."
 msgstr "脚本 `%s' 执行失败."
@@ -14297,7 +14289,7 @@ msgstr "中图标"
 msgid "Big-sized icons"
 msgstr "大图标"
 
-#: src/frontends/qt4/GuiView.cpp:723
+#: src/frontends/qt4/GuiView.cpp:729
 msgid "LyX"
 msgstr "LyX"
 
@@ -14334,11 +14326,11 @@ msgid "Activated"
 msgstr "已激活"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:846
+#: src/frontends/qt4/QDocument.cpp:858
 msgid "Yes"
 msgstr "是"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:845
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:857
 msgid "No"
 msgstr "否"
 
@@ -14501,7 +14493,7 @@ msgstr "LuxiMono"
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:639
+#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr "在右边输入listings参数. 输入 ? 显示所有参数."
@@ -14640,7 +14632,7 @@ msgstr "分支"
 msgid "LaTeX Preamble"
 msgstr "LaTeX序"
 
-#: src/frontends/qt4/QDocument.cpp:1400
+#: src/frontends/qt4/QDocument.cpp:1412
 msgid "Document Settings"
 msgstr "文本设置"
 
@@ -14660,18 +14652,18 @@ msgstr "放大%"
 msgid "Float Settings"
 msgstr "浮动项设置"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:635
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:641
 msgid "Graphics"
 msgstr "图形"
 
-#: src/frontends/qt4/QInclude.cpp:99 src/frontends/qt4/QInclude.cpp:215
-#: src/frontends/qt4/QListings.cpp:334 src/frontends/qt4/QListings.cpp:415
-#: src/frontends/qt4/QListings.cpp:447
+#: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
+#: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
+#: src/frontends/qt4/QListings.cpp:459
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr "在右边输入listings参数. 输入 ? 显示所有参数."
 
-#: src/frontends/qt4/QInclude.cpp:180
+#: src/frontends/qt4/QInclude.cpp:194
 msgid "Child Document"
 msgstr "子文档"
 
@@ -14679,11 +14671,11 @@ msgstr "子文档"
 msgid "No language"
 msgstr "无语言"
 
-#: src/frontends/qt4/QListings.cpp:377
+#: src/frontends/qt4/QListings.cpp:389
 msgid "No dialect"
 msgstr "无方言"
 
-#: src/frontends/qt4/QListings.cpp:402
+#: src/frontends/qt4/QListings.cpp:414
 msgid "Program Listing Settings"
 msgstr "程序列表设置"
 
@@ -14749,87 +14741,87 @@ msgstr "显示字体"
 msgid "Colors"
 msgstr "颜色"
 
-#: src/frontends/qt4/QPrefs.cpp:609 src/frontends/qt4/QPrefs.cpp:708
+#: src/frontends/qt4/QPrefs.cpp:615 src/frontends/qt4/QPrefs.cpp:714
 msgid "Paths"
 msgstr "路径"
 
-#: src/frontends/qt4/QPrefs.cpp:759
+#: src/frontends/qt4/QPrefs.cpp:765
 msgid "Select a document templates directory"
 msgstr "选择一个文本模版目录"
 
-#: src/frontends/qt4/QPrefs.cpp:769
+#: src/frontends/qt4/QPrefs.cpp:775
 msgid "Select a temporary directory"
 msgstr "选择一个临时目录"
 
-#: src/frontends/qt4/QPrefs.cpp:779
+#: src/frontends/qt4/QPrefs.cpp:785
 msgid "Select a backups directory"
 msgstr "选择一个备份目录"
 
-#: src/frontends/qt4/QPrefs.cpp:789
+#: src/frontends/qt4/QPrefs.cpp:795
 msgid "Select a document directory"
 msgstr "选择一个文件目录"
 
-#: src/frontends/qt4/QPrefs.cpp:799
+#: src/frontends/qt4/QPrefs.cpp:805
 msgid "Give a filename for the LyX server pipe"
 msgstr "提供一个LyX服务器管道文件名"
 
-#: src/frontends/qt4/QPrefs.cpp:812 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:818 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "拼写检查器"
 
-#: src/frontends/qt4/QPrefs.cpp:834
+#: src/frontends/qt4/QPrefs.cpp:840
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:835
+#: src/frontends/qt4/QPrefs.cpp:841
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:836
+#: src/frontends/qt4/QPrefs.cpp:842
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:838
+#: src/frontends/qt4/QPrefs.cpp:844
 msgid "pspell (library)"
 msgstr "pspell (库)"
 
-#: src/frontends/qt4/QPrefs.cpp:841
+#: src/frontends/qt4/QPrefs.cpp:847
 msgid "aspell (library)"
 msgstr "aspell (库)"
 
-#: src/frontends/qt4/QPrefs.cpp:922
+#: src/frontends/qt4/QPrefs.cpp:928
 msgid "Converters"
 msgstr "转换器"
 
-#: src/frontends/qt4/QPrefs.cpp:1120
+#: src/frontends/qt4/QPrefs.cpp:1126
 msgid "Copiers"
 msgstr "复制器"
 
-#: src/frontends/qt4/QPrefs.cpp:1373
+#: src/frontends/qt4/QPrefs.cpp:1379
 msgid "File formats"
 msgstr "文件格式"
 
-#: src/frontends/qt4/QPrefs.cpp:1565
+#: src/frontends/qt4/QPrefs.cpp:1571
 msgid "Format in use"
 msgstr "使用中格式"
 
-#: src/frontends/qt4/QPrefs.cpp:1566
+#: src/frontends/qt4/QPrefs.cpp:1572
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "不能删除一个正被使用的格式。请先删除此转换器。"
 
-#: src/frontends/qt4/QPrefs.cpp:1667
+#: src/frontends/qt4/QPrefs.cpp:1673
 msgid "Printer"
 msgstr "打印机"
 
-#: src/frontends/qt4/QPrefs.cpp:1765 src/frontends/qt4/QPrefs.cpp:1959
+#: src/frontends/qt4/QPrefs.cpp:1771 src/frontends/qt4/QPrefs.cpp:1965
 msgid "User interface"
 msgstr "用户界面"
 
-#: src/frontends/qt4/QPrefs.cpp:1883
+#: src/frontends/qt4/QPrefs.cpp:1889
 msgid "Identity"
 msgstr "身份"
 
-#: src/frontends/qt4/QPrefs.cpp:2025
+#: src/frontends/qt4/QPrefs.cpp:2031
 msgid "Preferences"
 msgstr "首选项"
 
@@ -15385,15 +15377,15 @@ msgstr "FormatRef: "
 msgid "Unknown TOC type"
 msgstr "未知目录项"
 
-#: src/insets/InsetTabular.cpp:3152
+#: src/insets/InsetTabular.cpp:3150
 msgid "Opened table"
 msgstr "打开的表格"
 
-#: src/insets/InsetTabular.cpp:4296
+#: src/insets/InsetTabular.cpp:4290
 msgid "Error setting multicolumn"
 msgstr "设置多列出错"
 
-#: src/insets/InsetTabular.cpp:4297
+#: src/insets/InsetTabular.cpp:4291
 msgid "You cannot set multicolumn vertically."
 msgstr "不能竖向设置多列表格"
 
