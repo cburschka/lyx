@@ -16,10 +16,10 @@
 #    postats.sh po_files > "pathToWebPages"/i18n.php
 
 # modifiy this when you change version
-# Note that an empty lyx_branch variable (ie cvs HEAD)
+# Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_version=1.5.1
-lyx_branch=
+lyx_version=1.5.2svn
+lyx_branch=BRANCH_1_5_X
 
 
 # GNU sed and grep have real problems dealing with 8-bit characters
