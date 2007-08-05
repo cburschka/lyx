@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-04 12:48+0200\n"
-"PO-Revision-Date: 2007-07-17 08:00+0100\n"
+"POT-Creation-Date: 2007-08-05 15:37+0200\n"
+"PO-Revision-Date: 2007-07-24 18:18+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1162,9 +1162,8 @@ msgid "Check to change the order of rotating and scaling"
 msgstr "Jelölje be, az elforgatás és skálázás sorrendjének megváltoztatásához"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:238
-#, fuzzy
 msgid "Ro&tate after scaling"
-msgstr "Táblázat forgatása"
+msgstr "Tá&blázat forgatása"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:255
 msgid "Or&igin:"
@@ -1725,9 +1724,8 @@ msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr "Használja az alapigazítást ehhez a bekezdéshez, bármi is az."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198 src/frontends/qt4/QParagraph.cpp:86
-#, fuzzy
 msgid "Use Paragraph's Default Alignment"
-msgstr "Bekezdés kinézetének beállítása"
+msgstr "Használja a bekezdés alap igazítását"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
 msgid "&Right"
@@ -5910,28 +5908,24 @@ msgid "Review"
 msgstr "Korrektúra"
 
 #: lib/layouts/iopart.layout:79
-#, fuzzy
 msgid "Topical"
-msgstr "Téma"
+msgstr "Topical"
 
 #: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
 msgid "Comment"
 msgstr "Megjegyzés"
 
 #: lib/layouts/iopart.layout:97
-#, fuzzy
 msgid "Paper"
-msgstr "Papír azonosító"
+msgstr "Papír"
 
 #: lib/layouts/iopart.layout:103
-#, fuzzy
 msgid "Prelim"
-msgstr "lim"
+msgstr "Prelim"
 
 #: lib/layouts/iopart.layout:109
-#, fuzzy
 msgid "Rapid"
-msgstr "varpí"
+msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:212 lib/layouts/revtex4.layout:230
 msgid "PACS"
@@ -5942,14 +5936,12 @@ msgid "Physics and Astronomy Classification System number:"
 msgstr "Physics and Astronomy Classification System szám:"
 
 #: lib/layouts/iopart.layout:219
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:222
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
-msgstr "1991 Mathematikai Tárgy Osztályozás:"
+msgstr "Mathematics Subject Classification number:"
 
 #: lib/layouts/iopart.layout:226
 msgid "submitto"
@@ -5960,14 +5952,12 @@ msgid "submit to paper:"
 msgstr "submit to paper:"
 
 #: lib/layouts/iopart.layout:255
-#, fuzzy
 msgid "Bibliography (plain)"
-msgstr "Irodalomjegyzék"
+msgstr "Irodalomjegyzék (sima)"
 
 #: lib/layouts/iopart.layout:278
-#, fuzzy
 msgid "Bibliography heading"
-msgstr "Irodalomjegyzék"
+msgstr "Irodalomjegyzék fej"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
@@ -7158,14 +7148,12 @@ msgid "Dictum"
 msgstr "Szólás"
 
 #: lib/layouts/stdlayouts.inc:64
-#, fuzzy
 msgid "--Separator--"
-msgstr "Elválasztó"
+msgstr "--Elválasztó--"
 
 #: lib/layouts/stdlayouts.inc:73
-#, fuzzy
 msgid "--- Separate Environment ---"
-msgstr "Gather környezet"
+msgstr "--- Másik környezet ---"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -7200,9 +7188,8 @@ msgid "Arabic (ArabTeX)"
 msgstr "Arab (ArabTeX)"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Arabic (Arabi)"
-msgstr "Arab"
+msgstr "Arab (Arabi)"
 
 #: lib/languages:7
 msgid "Armenian"
@@ -8737,18 +8724,16 @@ msgid "Comment|C"
 msgstr "Megjegyzés|M"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Framed|F"
-msgstr "Keretes"
+msgstr "Keretes|e"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Greyed Out|G"
-msgstr "Kiszürkített|K"
+msgstr "Kiszürkített|s"
 
 #: lib/ui/stdmenus.inc:399
-#, fuzzy
 msgid "Shaded|S"
-msgstr "Árnyékolt"
+msgstr "Árnyékolt|r"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Change Tracking|C"
@@ -10032,7 +10017,6 @@ msgid "rho"
 msgstr "ró"
 
 #: lib/ui/stdtoolbars.inc:455
-#, fuzzy
 msgid "varrho"
 msgstr "ró"
 
@@ -11313,23 +11297,20 @@ msgid "A bitmap file.\n"
 msgstr "Egy bitmap fájl.\n"
 
 #: lib/external_templates:102
-#, fuzzy
 msgid "XFig"
-msgstr "Kszí"
+msgstr "XFig"
 
 #: lib/external_templates:103 lib/external_templates:106
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
 msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:105
-#, fuzzy
 msgid "An Xfig figure.\n"
-msgstr "Beállítás folyamatban..."
+msgstr "Egy Xfig ábra.\n"
 
 #: lib/external_templates:154
-#, fuzzy
 msgid "ChessDiagram"
-msgstr "Sakktábla"
+msgstr "SakktáblaDiagram"
 
 #: lib/external_templates:155 lib/external_templates:174
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
@@ -12085,7 +12066,7 @@ msgid "Undefined character style"
 msgstr "Definiálatlan betûstílus"
 
 #: src/Exporter.cpp:82 src/LyXFunc.cpp:1083
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file %1$s already exists.\n"
 "\n"
@@ -12093,23 +12074,20 @@ msgid ""
 msgstr ""
 "A %1$s fájl már létezik!\n"
 "\n"
-"Szeretné a tartalmát kicserélni?"
+"Szeretné a fájlt felülírni?"
 
 #: src/Exporter.cpp:85 src/LyXFunc.cpp:1086
-#, fuzzy
 msgid "Overwrite file?"
 msgstr "Felülírjam a fájlt?"
 
 #: src/Exporter.cpp:87 src/LyXFunc.cpp:1087 src/LyXFunc.cpp:2096
 #: src/callback.cpp:168
-#, fuzzy
 msgid "&Overwrite"
-msgstr "&Kicserél"
+msgstr "&Felülírja"
 
 #: src/Exporter.cpp:87
-#, fuzzy
 msgid "Overwrite &all"
-msgstr "&Mindet kicseréli"
+msgstr "&Mindet felülírja"
 
 #: src/Exporter.cpp:88
 msgid "&Cancel export"
@@ -12676,19 +12654,17 @@ msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
 #: src/LyXFunc.cpp:1792
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown toolbar \"%1$s\""
-msgstr "Ismeretlen táblázat jellemzõ '%1$s'"
+msgstr "Ismeretlen eszköztár \"%1$s\""
 
 #: src/LyXFunc.cpp:1800
-#, fuzzy
 msgid "off"
-msgstr "Ki"
+msgstr "ki"
 
 #: src/LyXFunc.cpp:1802
-#, fuzzy
 msgid "auto"
-msgstr " (automatikus)"
+msgstr "automatikus"
 
 #: src/LyXFunc.cpp:1804
 #, c-format
@@ -12728,7 +12704,7 @@ msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
 #: src/LyXFunc.cpp:2093 src/callback.cpp:165
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
@@ -12736,10 +12712,9 @@ msgid ""
 msgstr ""
 "A %1$s dokumentum már létezik!\n"
 "\n"
-"Szeretné a tartalmát kicserélni?"
+"Szeretné felülírni a dokumentumot?"
 
 #: src/LyXFunc.cpp:2095 src/callback.cpp:167
-#, fuzzy
 msgid "Overwrite document?"
 msgstr "Felülírjam a dokumentumot?"
 
@@ -12973,10 +12948,10 @@ msgstr ""
 "kurzort."
 
 #: src/LyXRC.cpp:2242
-#, fuzzy
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
-"Törölje, ha nem akarja betölteni a lyx elõzõ kilépéskori nyitott fájlokat."
+"Törölje, ha nem akarja betölteni a LyX-be, az elõzõ kilépéskor még nyitott "
+"fájlokat."
 
 #: src/LyXRC.cpp:2246
 msgid "De-select if you don't want LyX to create backup files."
@@ -13466,9 +13441,8 @@ msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
 #: src/Thesaurus.cpp:62
-#, fuzzy
 msgid "Thesaurus failure"
-msgstr "Szótár"
+msgstr "Tézaurusz hiba"
 
 #: src/Thesaurus.cpp:63
 #, c-format
@@ -15340,9 +15314,11 @@ msgid "Available listing parameters are %1$s"
 msgstr "Ismeretlen lista paraméterek: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:649
-#, fuzzy, c-format
+#, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
-msgstr "Ismeretlen lista paraméterek: %1$s"
+msgstr ""
+"Az elérhetõ lista paraméterek, amelyek a(z)  \"%1$s\" szöveget tartalmazzák: "
+"%2$s"
 
 #: src/insets/InsetListingsParams.cpp:660
 #, c-format
