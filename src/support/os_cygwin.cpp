@@ -148,18 +148,7 @@ void os::init(int, char *[])
 	// Make sure that the TEMP variable is set
 	// and sync the Windows environment.
 
-	char **envp = environ;
-	string var;
-	bool temp_seen = false;
-
-	while (envp && *envp && !temp_seen) {
-		split(*envp++, var, '=');
-		if (var == "TEMP")
-			temp_seen = true;
-	}
-	if (!temp_seen)
-		::setenv("TEMP", "/tmp", true);
-
+	setenv("TEMP", "/tmp", false);
 	cygwin_internal(CW_SYNC_WINENV);
 }
 
