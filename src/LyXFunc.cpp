@@ -612,6 +612,29 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+
+	case LFUN_BUFFER_WRITE_ALL: {
+	// We enable the command only if there are some modified buffers
+		Buffer * first = theBufferList().first();
+		bool modified = false;
+		if (first) {
+			Buffer * b = first;
+		
+		// We cannot use a for loop as the buffer list is a cycle.
+			do {
+				if (!b->isClean()) {
+					modified = true;
+					break;
+				}
+				b = theBufferList().next(b);
+			} while (b != first); 
+		}
+	
+		enable = modified;
+
+		break;
+	}
+
 	case LFUN_BOOKMARK_GOTO: {
 		const unsigned int num = convert<unsigned int>(to_utf8(cmd.argument()));
 		enable = LyX::ref().session().bookmarks().isValid(num);
@@ -906,6 +929,30 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			writeAs(lyx_view_->buffer(), argument);
 			updateFlags = Update::None;
 			break;
+
+		case LFUN_BUFFER_WRITE_ALL: {
+			Buffer * first = theBufferList().first();
+			if (first) {
+				Buffer * b = first;
+				lyx_view_->message(_("Saving all documents..."));
+		
+				// We cannot use a for loop as the buffer list cycles.
+				do {
+					if (!b->isClean()) {
+						if (!b->isUnnamed()) {
+							menuWrite(b);
+							lyxerr[Debug::ACTION] << "Saved " << b->fileName() << endl;
+						} else
+							writeAs(b);
+					}
+					b = theBufferList().next(b);
+				} while (b != first); 
+				lyx_view_->message(_("All documents saved."));
+			} 
+	
+			updateFlags = Update::None;
+			break;
+		}
 
 		case LFUN_BUFFER_RELOAD: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());

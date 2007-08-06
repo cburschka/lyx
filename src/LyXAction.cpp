@@ -130,6 +130,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly },
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly },
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly },
+		{ LFUN_BUFFER_WRITE_ALL, "buffer-write-all", ReadOnly },
 		{ LFUN_CANCEL, "cancel", NoBuffer },
 		{ LFUN_CAPTION_INSERT, "caption-insert", Noop },
 		{ LFUN_CHAR_BACKWARD, "char-backward", ReadOnly | NoUpdate},
