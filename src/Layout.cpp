@@ -115,7 +115,7 @@ Layout::Layout ()
 	labelbottomsep = 0.0;
 	parsep = 0;
 	align = LYX_ALIGN_BLOCK;
-	alignpossible = LYX_ALIGN_BLOCK;
+	alignpossible = LYX_ALIGN_NONE | LYX_ALIGN_LAYOUT;
 	labeltype = LABEL_NO_LABEL;
 	endlabeltype = END_LABEL_NO_LABEL;
 	// Should or should not. That is the question.
@@ -552,7 +552,7 @@ void Layout::readAlignPossible(Lexer & lexrc)
 	};
 
 	lexrc.pushTable(alignTags, AT_LAYOUT);
-	alignpossible = LYX_ALIGN_NONE;
+	alignpossible = LYX_ALIGN_NONE | LYX_ALIGN_LAYOUT;
 	int lineno = lexrc.getLineNo();
 	do {
 		int le = lexrc.lex();

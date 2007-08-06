@@ -78,6 +78,13 @@ void operator|=(LyXAlignment & la1, LyXAlignment la2) {
 }
 
 
+///
+inline
+LyXAlignment operator|(LyXAlignment la1, LyXAlignment la2) {
+	return static_cast<LyXAlignment>(static_cast<int>(la1) | static_cast<int>(la2));
+}
+
+
 /// The different LaTeX-Types
 enum LYX_LATEX_TYPES {
 	///
