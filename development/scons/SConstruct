@@ -618,6 +618,7 @@ conf = Configure(env,
 # When using msvc, windows.h is required
 if use_vc and not conf.CheckCHeader('windows.h'):
     print 'Windows.h is not found. Please install Windows Platform SDK.'
+    print 'Please check config.log for more information.'
     Exit(1)
 
 # pkg-config? (if not, we use hard-coded options)
@@ -631,6 +632,7 @@ else:
 if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
     or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
     print 'Did not find zdll.lib or zlib.h, exiting!'
+    print 'Please check config.log for more information.'
     Exit(1)
 if conf.CheckLib('iconv'):
     env['ICONV_LIB'] = 'iconv'
@@ -640,6 +642,7 @@ elif conf.CheckFunc('iconv_open'):
     env['ICONV_LIB'] = None
 else:
     print 'Did not find iconv or libiconv, exiting!'
+    print 'Please check config.log for more information.'
     Exit(1)
 
 # check socket libs
@@ -876,6 +879,7 @@ else:
         print "Warning: Can not locate any spell checker"
     elif spell_opt != 'no':
         print "Warning: Can not locate specified spell checker:", spell_opt
+        print 'Please check config.log for more information.'
         Exit(1)
 
 # check arg types of select function
@@ -886,6 +890,7 @@ sizeof_wchar_t = conf.CheckSizeOfWChar()
 # something wrong
 if sizeof_wchar_t == 0:
     print 'Error: Can not determine the size of wchar_t.'
+    print 'Please check config.log for more information.'
     Exit(1)
 
 #
@@ -1376,6 +1381,7 @@ if frontend == 'qt4':
     # still can not find it
     if not succ:
         print 'Did not find qt libraries, exiting!'
+        print 'Please check config.log for more information.'
         Exit(1)
     #
     # Now, determine the correct suffix:
