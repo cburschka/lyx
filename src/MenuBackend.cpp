@@ -456,23 +456,26 @@ void expandLastfiles(Menu & tomenu)
 
 void expandDocuments(Menu & tomenu)
 {
-	typedef vector<string> Strings;
-	Strings const names = theBufferList().getFileNames();
-
-	if (names.empty()) {
-		tomenu.add(MenuItem(MenuItem::Command, _("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	Buffer * first = theBufferList().first();
+	if (first) {
+		Buffer * b = first;
+		int ii = 1;
+		
+		// We cannot use a for loop as the buffer list cycles.
+		do {
+			docstring label = makeDisplayPath(b->fileName(), 20);
+			if (!b->isClean()) label = label + "*";
+			if (ii < 10)
+				label = convert<docstring>(ii) + ". " + label + '|' + convert<docstring>(ii);
+			tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, b->fileName())));
+			
+			b = theBufferList().next(b);
+			++ii;
+		} while (b != first); 
+	} else {
+		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
+		           FuncRequest(LFUN_NOACTION)));
 		return;
-	}
-
-	int ii = 1;
-	Strings::const_iterator docit = names.begin();
-	Strings::const_iterator end = names.end();
-	for (; docit != end; ++docit, ++ii) {
-		docstring label = makeDisplayPath(*docit, 20);
-		if (ii < 10)
-			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)));
 	}
 }
 
