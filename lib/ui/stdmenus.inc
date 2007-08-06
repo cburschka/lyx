@@ -40,6 +40,7 @@ Menuset
 		Item "Close|C" "buffer-close"
 		Item "Save|S" "buffer-write"
 		Item "Save As...|A" "buffer-write-as"
+		Item "Save All|l" "buffer-write-all"
 		Item "Revert|R" "buffer-reload"
 		Submenu "Version Control|V" "file_vc"
 		Separator
