@@ -181,20 +181,29 @@ bool loadLyXFile(Buffer * b, FileName const & s)
 }
 
 
+bool checkIfLoaded(FileName const & fn)
+{
+	return theBufferList().getBuffer(fn.absFilename());
+}
+
+
 Buffer * checkAndLoadLyXFile(FileName const & filename)
 {
 	// File already open?
-	if (theBufferList().exists(filename.absFilename())) {
+	Buffer * checkBuffer = theBufferList().getBuffer(filename.absFilename());
+	if (checkBuffer) {
+		if (checkBuffer->isClean())
+			return checkBuffer;
 		docstring const file = makeDisplayPath(filename.absFilename(), 20);
-		docstring text = bformat(_("The document %1$s is already "
-						     "loaded.\n\nDo you want to revert "
-						     "to the saved version?"), file);
-		if (Alert::prompt(_("Revert to saved document?"),
-				text, 0, 1,  _("&Revert"), _("&Switch to document")))
-			return theBufferList().getBuffer(filename.absFilename());
+		docstring text = bformat(_(
+				"The document %1$s is already loaded and has unsaved changes.\n"
+				"Do you want to abandon your changes and reload the version on disk?"), file);
+		if (Alert::prompt(_("Reload saved document?"),
+				text, 0, 1,  _("&Reload"), _("&Keep Changes")))
+			return checkBuffer;
 
 		// FIXME: should be LFUN_REVERT
-		if (theBufferList().close(theBufferList().getBuffer(filename.absFilename()), false))
+		if (theBufferList().close(checkBuffer, false))
 			// Load it again.
 			return checkAndLoadLyXFile(filename);
 		else

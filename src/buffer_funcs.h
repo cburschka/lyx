@@ -28,6 +28,12 @@ class ErrorList;
 class TeXErrors;
 class ParIterator;
 
+
+/** 
+ * Returns true if the file is already loaded into a buffer.
+ */
+bool checkIfLoaded(support::FileName const & fn);
+
 /**
  *  Loads a LyX file \c filename into \c Buffer
  *  and \return success status.
@@ -41,8 +47,8 @@ bool loadLyXFile(Buffer *, support::FileName const & filename);
  */
 Buffer * checkAndLoadLyXFile(support::FileName const & filename);
 
-/* Make a new file (buffer) with name \c filename based on a template
- * named \c templatename
+/** Make a new file (buffer) with name \c filename based on a template
+ *  named \c templatename
  */
 Buffer * newFile(std::string const & filename, std::string const & templatename,
 		 bool isNamed = false);

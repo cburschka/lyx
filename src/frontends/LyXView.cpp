@@ -206,6 +206,7 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
 	if (oldBuffer)
 		parentfilename = oldBuffer->fileName();
 
+	bool alreadyLoaded = checkIfLoaded(filename);
 	Buffer * newBuffer = checkAndLoadLyXFile(filename);
 
 	if (!newBuffer) {
@@ -229,32 +230,34 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
 	updateLabels(*newBuffer->getMasterBuffer());
 
 	bool const parse_error = !newBuffer->errorList("Parse").empty();
-	if (parse_error || !auto_open) {
+	bool const need_switch = parse_error || !auto_open;
+	if (need_switch) {
 		setBuffer(newBuffer, child_document);
-		showErrorList("Parse");
-	}
-
-	// scroll to the position when the file was last closed
-	if (!auto_open && lyxrc.use_lastfilepos) {
-		pit_type pit;
-		pos_type pos;
-		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
-		// if successfully move to pit (returned par_id is not zero),
-		// update metrics and reset font
-		if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
-			if (work_area_->bufferView().fitCursor())
-				work_area_->bufferView().updateMetrics(false);
-			newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
-			updateMenubar();
-			updateToolbars();
-			updateLayoutChoice();
-			updateStatusBar();
-			work_area_->redraw();
+		if (!alreadyLoaded) {
+			if (parse_error)
+				showErrorList("Parse");
+			// scroll to the position when the file was last closed
+			if (lyxrc.use_lastfilepos) {
+				pit_type pit;
+				pos_type pos;
+				boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
+				// if successfully move to pit (returned par_id is not zero),
+				// update metrics and reset font
+				if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
+					if (work_area_->bufferView().fitCursor())
+						work_area_->bufferView().updateMetrics(false);
+					newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
+					updateMenubar();
+					updateToolbars();
+					updateLayoutChoice();
+					updateStatusBar();
+					work_area_->redraw();
+				}
+			}
+		if (tolastfiles)
+			LyX::ref().session().lastFiles().add(filename);
 		}
 	}
-
-	if (tolastfiles)
-		LyX::ref().session().lastFiles().add(filename);
 
 	busy(false);
 	return true;
