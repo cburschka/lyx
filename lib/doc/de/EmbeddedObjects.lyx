@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -203,8 +203,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -220,7 +220,7 @@ Abbildungen, Tabellen, Gleitobjekte, Notizen und Boxen
 \newline
 
 \size large
-(Version 1.5.x)
+Version 1.5.1-0
 \end_layout
 
 \begin_layout Author
@@ -292,8 +292,8 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
- Juni 2007
+letzte Änderung: 6.
+ August 2007
 \end_layout
 
 \begin_layout Standard
@@ -325,7 +325,7 @@ letzte Änderung: 22.
 status open
 
 \begin_layout Standard
-Um alle Teile diese Handbuches als DVI, HTML, PDF, PostScript® oder Rich
+Um alle Teile diese Handbuches als DVI, HTML, PDF, PostScript oder Rich
  Text exportieren zu können oder es auszudrucken, benötigen Sie die LaTeX-Pakte
  
 \series bold
@@ -455,7 +455,7 @@ Grafik
  Die für die Bildgröße verfügbaren Einheiten werden im Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "kap:Units-available-in"
+reference "kap:In-LyX-verfügbare"
 
 \end_inset
 
@@ -623,7 +623,7 @@ x.eps.gz
  LaTeX kann so mit ihnen umgehen.
 \newline
 Gepackte EPS-Dateien sparen Platz, wenn
- Sie als Ausgebe-Format PostScript® wählen, siehe Anhang\InsetSpace ~
+ Sie als Ausgebe-Format PostScript wählen, siehe Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "abs:PostScript"
@@ -1019,7 +1019,7 @@ reference "uab:Auf-Teilabbildungen-verweisen"
 Abbildung\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "abb:Two-distorted-images"
+reference "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -1070,7 +1070,7 @@ status open
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "abb:Two-distorted-images"
+name "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -5949,7 +5949,7 @@ Breite
  eine der in Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "kap:Units-available-in"
+reference "kap:In-LyX-verfügbare"
 
 \end_inset
 
@@ -11530,7 +11530,7 @@ In der druckfertigen Version sehen Sie, dass die erste Spalte etwas breiter
  Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "kap:Explanation-of-Equation"
+reference "kap:Exläuterung-einer-Gleichung"
 
 \end_inset
 
@@ -12109,7 +12109,7 @@ name "Tabellen ! Formale"
 Tabellen werden in Büchern oft wie Tabelle\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "tab:Example-booktabs-table"
+reference "tab:Formale-Tabelle"
 
 \end_inset
 
@@ -12616,7 +12616,7 @@ Breite
  können Sie alle Einheiten benutzen, die in Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "kap:Units-available-in"
+reference "kap:In-LyX-verfügbare"
 
 \end_inset
 
@@ -19020,7 +19020,7 @@ status collapsed
 Die benutzbaren Einheiten werden in Anhang\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "kap:Units-available-in"
+reference "kap:In-LyX-verfügbare"
 
 \end_inset
 
@@ -19402,17 +19402,19 @@ Marke
 Marke
 \family default
  oder übernehmen den vorgeschlagenen.
- Die Marke kann dann so aussehen 
+ Die Marke sieht in LyX dann so aus:
+\newline
+
 \begin_inset Graphics
 	filename clipart/Marke.png
 	lyxscale 80
-	scale 85
+	scale 50
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 76bp 23bp
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -19431,17 +19433,21 @@ Querverweis
 \end_inset
 
  können Sie dann auf die Marke verweisen.
- Als Querverweis wird ein kleines graues Kästchen wie zum Beispiel 
+ Als Querverweis wird in LyX ein graues Kästchen wie zum Beispiel dieses
+ angezeigt:
+\newline
+
 \begin_inset Graphics
 	filename clipart/Querverweis.png
 	lyxscale 80
-	scale 85
+	scale 50
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 76bp 23bp
 
 \end_inset
 
-.
+
+\newline
  Mehr zu Querverweisen finden Sie im 
 \emph on
 Benutzerhandbuch
@@ -19508,7 +19514,7 @@ Es gibt sechs verschiedene Querverweisstile:
 <Querverweis>: druckt die Nummer der Gleitumgebung, dies ist die Voreinstellung:
  
 \begin_inset LatexCommand ref
-reference "fig:Two-distorted-images"
+reference "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -19539,7 +19545,7 @@ reference "eq:Wgn"
 <Seite>: druckt die Seitennummer: Seite\InsetSpace ~
 
 \begin_inset LatexCommand pageref
-reference "fig:Two-distorted-images"
+reference "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -19551,7 +19557,7 @@ auf\InsetSpace ~
 Seite\InsetSpace ~
 <Seite>: druckt den Text "auf Seite" und die Seitennummer: 
 \begin_inset LatexCommand vpageref
-reference "fig:Two-distorted-images"
+reference "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -19565,7 +19571,7 @@ Seite\InsetSpace ~
 <Seite>: druckt die Nummer der Gleitumgebung, den Text
  "auf Seite", und die Seitennummer: 
 \begin_inset LatexCommand vref
-reference "fig:Two-distorted-images"
+reference "abb:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -20328,7 +20334,7 @@ ss
 Weitere Einzelheiten finden über Gleitobjekt-Platzierung finden Sie in LaTeX-Büc
 hern wie 
 \begin_inset LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
+key "latexcompanion,latexguide,lamport,latex-praxisbuch"
 
 \end_inset
 
@@ -21532,7 +21538,7 @@ TabBesEnd
 Abbildung\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "abb:cap-beside-fig"
+reference "abb:Beschriftung-neben"
 
 \end_inset
 
@@ -21700,6 +21706,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
+\begin_inset LatexCommand label
+name "abb:Beschriftung-neben"
+
+\end_inset
+
 Dies ist eine Beschriftung neben einer Abbildung.
 \end_layout
 
@@ -23755,7 +23766,7 @@ name "abb:endnotes----Die"
 \series bold
 endnotes
 \series default
- -- Die Fußnoten werden am Ende eines Abschnitts in einem eigenen Paragraf
+ -- Die Fußnoten werden am Ende eines Abschnitts in einem eigenen Paragraphen
  gedruckt.
 \begin_inset OptArg
 status collapsed
@@ -23856,7 +23867,7 @@ theendnote
  wie in Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:Footnote-Numbering"
+reference "uab:Fußnoten-Nummerierung"
 
 \end_inset
 
@@ -23921,7 +23932,7 @@ key "footmisc"
 \begin_layout Standard
 In LaTeX-Büchern, 
 \begin_inset LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
+key "latexcompanion,latexguide,lamport,latex-praxisbuch"
 
 \end_inset
 
@@ -24282,7 +24293,7 @@ angegeben.
  Dabei ist der Versatz eine Länge mit einer der Einheiten, die in Tabelle\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "tab:Units"
+reference "tab:Maßeinheiten"
 
 \end_inset
 
