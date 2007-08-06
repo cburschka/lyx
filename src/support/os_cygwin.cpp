@@ -145,45 +145,22 @@ string convert_path_list(string const & p, PathStyle const & target)
 
 void os::init(int, char *[])
 {
-	// Copy cygwin environment variables to the Windows environment
-	// if they're not already there.
+	// Make sure that the TEMP variable is set
+	// and sync the Windows environment.
 
 	char **envp = environ;
-	char curval[2];
 	string var;
-	string val;
 	bool temp_seen = false;
 
-	while (envp && *envp) {
-		val = split(*envp++, var, '=');
-
+	while (envp && *envp && !temp_seen) {
+		split(*envp++, var, '=');
 		if (var == "TEMP")
 			temp_seen = true;
+	}
+	if (!temp_seen)
+		::setenv("TEMP", "/tmp", true);
 
-		if (GetEnvironmentVariable(var.c_str(), curval, 2) == 0
-				&& GetLastError() == ERROR_ENVVAR_NOT_FOUND) {
-			/* Convert to Windows style where necessary */
-			if (var == "PATH" || var == "LD_LIBRARY_PATH") {
-				string const winpathlist =
-				    convert_path_list(val, PathStyle(windows));
-				if (!winpathlist.empty()) {
-					SetEnvironmentVariable(var.c_str(),
-						winpathlist.c_str());
-				}
-			} else if (var == "HOME" || var == "TMPDIR" ||
-					var == "TMP" || var == "TEMP") {
-				string const winpath =
-					convert_path(val, PathStyle(windows));
-				SetEnvironmentVariable(var.c_str(), winpath.c_str());
-			} else {
-				SetEnvironmentVariable(var.c_str(), val.c_str());
-			}
-		}
-	}
-	if (!temp_seen) {
-		string const winpath = convert_path("/tmp", PathStyle(windows));
-		SetEnvironmentVariable("TEMP", winpath.c_str());
-	}
+	cygwin_internal(CW_SYNC_WINENV);
 }
 
 
