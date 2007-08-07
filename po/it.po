@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2006-09-18 16:03+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -16377,6 +16377,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Stringa non trovata!"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "it"
+
 #: src/support/os_win32.cpp:340
 #, fuzzy
 msgid "System file not found"
@@ -16722,6 +16726,3 @@ msgstr "Utente sconosciuto"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Inserisci|I"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "it"

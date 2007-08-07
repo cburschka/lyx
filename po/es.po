@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2006-11-07 18:46+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
@@ -16293,6 +16293,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "¡Cadena no encontrada!"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "es"
+
 #: src/support/os_win32.cpp:340
 #, fuzzy
 msgid "System file not found"
@@ -16659,6 +16663,3 @@ msgstr "Usuario desconocido"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Insertar|I"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "es"

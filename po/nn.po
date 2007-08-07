@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-06-26 21:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -15787,6 +15787,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Kan ikkje finne katalogen"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "nn"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr "Kan ikkje finne systemfil"
@@ -15905,6 +15909,3 @@ msgstr "ukjend brukar"
 
 #~ msgid "primitive"
 #~ msgstr "primetiv"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "nn"

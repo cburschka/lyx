@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-06-01 12:45+0200\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -15658,6 +15658,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Folder ikke funnet"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "nb"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr "Systemfil ikke funnet!"
@@ -15758,6 +15762,3 @@ msgstr "Ukjent bruker"
 
 #~ msgid "Toc"
 #~ msgstr "Innhold"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "nb"

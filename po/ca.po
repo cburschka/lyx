@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-06-01 18:19+0200\n"
 "Last-Translator: Joan Montané <jmontane@gmail.com>\n"
 "Language-Team: catalan <ca@li.org>\n"
@@ -15820,6 +15820,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "No s'ha trobat el directori"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "ca"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr "No s'ha trobat el fitxer de sistema"
@@ -15940,6 +15944,3 @@ msgstr "Usuari desconegut"
 
 #~ msgid "default"
 #~ msgstr "predeterminada"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "ca"

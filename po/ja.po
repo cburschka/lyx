@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-07-18 13:24+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -15787,6 +15787,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "ディレクトリが見つかりません"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "ja"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr "システムファイルが見つかりません"
@@ -15817,6 +15821,3 @@ msgstr "未知のユーザー"
 
 #~ msgid "&Switch to document"
 #~ msgstr "文書に切り替える(&S)"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "ja"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-07-14 12:11+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -16111,6 +16111,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "תיקייה לא נמצאה"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "he"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr ""
@@ -16140,6 +16144,3 @@ msgstr "%s: שורה %d: משתמש לא מוכר %s\n"
 #, fuzzy
 #~ msgid "&Switch to document"
 #~ msgstr "עבור למצב הבדלים"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "he"

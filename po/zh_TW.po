@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-05-31 00:42+0800\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -17057,6 +17057,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "找不到目錄"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "zh_TW"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr "找不到系統檔案"
@@ -17205,6 +17209,3 @@ msgstr "不明的使用者"
 
 #~ msgid "default"
 #~ msgstr "預設"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "zh_TW"

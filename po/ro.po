@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-02-20 21:33-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -16486,6 +16486,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr ""
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "ro"
+
 #: src/support/os_win32.cpp:340
 #, fuzzy
 msgid "System file not found"
@@ -16808,6 +16812,3 @@ msgstr "Cuvînt necunoscut:"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Inserare|I"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "ro"

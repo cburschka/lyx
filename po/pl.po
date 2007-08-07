@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -16310,6 +16310,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Nie znaleziono tego ci±gu znaków!"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "pl"
+
 #: src/support/os_win32.cpp:340
 #, fuzzy
 msgid "System file not found"
@@ -16652,6 +16656,3 @@ msgstr "Nieznany u¿ytkownik"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Wstaw|W"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "pl"

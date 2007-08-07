@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -15596,6 +15596,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr ""
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "ko"
+
 #: src/support/os_win32.cpp:340
 msgid "System file not found"
 msgstr "시스템 파일 발견 못함"
@@ -15839,6 +15843,3 @@ msgstr "모르는 사용자(user)"
 #, fuzzy
 #~ msgid "special char"
 #~ msgstr "특수 문자|S"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "ko"

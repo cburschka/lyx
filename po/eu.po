@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 22:57+0200\n"
+"POT-Creation-Date: 2007-08-07 23:08+0200\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -16271,6 +16271,10 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Ez da katerik aurkitu!"
 
+#: src/support/filetools.cpp:313
+msgid "[[Replace with the code of your language]]"
+msgstr "eu"
+
 #: src/support/os_win32.cpp:340
 #, fuzzy
 msgid "System file not found"
@@ -16636,6 +16640,3 @@ msgstr "Erabiltzaile ezezaguna"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Txertatu|T"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "eu"
