@@ -35,7 +35,7 @@ public:
 	docstring validate_listings_params();
 protected Q_SLOTS:
 	virtual void change_adaptor();
-	virtual void loadClicked();
+	virtual void editClicked();
 	virtual void browseClicked();
 	virtual void typeChanged(int v);
 	/// AFAIK, QValidator only works for QLineEdit so
@@ -70,8 +70,9 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
-	/// load the file
-	void load();
+	/// edit the child document, .lyx file will be opened in lyx
+	/// other formats will be edited by external applications.
+	void edit();
 
 	/// browse for a file
 	void browse();

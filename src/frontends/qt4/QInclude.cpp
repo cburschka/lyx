@@ -56,7 +56,7 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(visiblespaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(filenameED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(loadPB, SIGNAL(clicked()), this, SLOT(loadClicked()));
+	connect(editPB, SIGNAL(clicked()), this, SLOT(editClicked()));
 	connect(browsePB, SIGNAL(clicked()), this, SLOT(browseClicked()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
@@ -168,9 +168,9 @@ void QIncludeDialog::typeChanged(int v)
 }
 
 
-void QIncludeDialog::loadClicked()
+void QIncludeDialog::editClicked()
 {
-	form_->load();
+	form_->edit();
 }
 
 
@@ -336,12 +336,12 @@ void QInclude::browse()
 }
 
 
-void QInclude::load()
+void QInclude::edit()
 {
 	if (isValid()) {
 		string const file = fromqstr(dialog_->filenameED->text());
 		slotOK();
-		controller().load(file);
+		controller().edit(file);
 	}
 }
 
