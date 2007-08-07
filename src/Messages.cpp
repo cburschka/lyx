@@ -56,18 +56,37 @@ using support::setEnv;
 Messages::Messages(string const & l)
 	: lang_(l), warned_(false)
 {
-	if ( lang_.empty() ) {
-		char const * lc_msgs = 0;
-#ifdef HAVE_LC_MESSAGES
-		lc_msgs = setlocale(LC_MESSAGES, NULL);
-#endif
-		lang_ = lc_msgs ? lc_msgs : "";
-	}
 	// strip off any encoding suffix, i.e., assume 8-bit po files
 	string::size_type i = lang_.find(".");
 	lang_ = lang_.substr(0, i);
 	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
 		<< ": language(" << lang_ << ")" << endl;
+}
+
+
+void Messages::init()
+{
+	errno = 0;
+	string const locale_dir = package().locale_dir().toFilesystemEncoding();
+	char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
+	int e = errno;
+	if (e) {
+		LYXERR(Debug::DEBUG)
+			<< BOOST_CURRENT_FUNCTION << '\n'
+			<< "Error code: " << errno << '\n'
+			<< "Directory : " << package().locale_dir().absFilename() << '\n'
+			<< "Rtn value : " << c << endl;
+	}
+
+	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
+		LYXERR(Debug::DEBUG)
+			<< BOOST_CURRENT_FUNCTION << '\n'
+			<< "Error code: " << errno << '\n'
+			<< "Codeset   : " << ucs4_codeset << '\n'
+			<< endl;
+	}
+
+	textdomain(PACKAGE);
 }
 
 
@@ -80,59 +99,27 @@ docstring const Messages::get(string const & m) const
 	TranslationCache::iterator it = cache_.find(m);
 	if (it != cache_.end())
 		return it->second;
-	// The string was not found, use gettext to generate it:
 
-	// In this order, see support/filetools.cpp:
-	string lang = getEnv("LC_ALL");
-	if (lang.empty()) {
-		lang = getEnv("LC_MESSAGES");
-		if (lang.empty()) {
-			lang = getEnv("LANG");
-			if (lang.empty())
-				lang = "C";
-		}
-	}
+	// The string was not found, use gettext to generate it
+
+	string const oldLANGUAGE = getEnv("LANGUAGE");
+	string const oldLC_ALL = getEnv("LC_ALL");
+	if (!lang_.empty()) {
+		// This GNU extension overrides any language locale
+		// wrt gettext.
+		setEnv("LANGUAGE", lang_);
+		// However, setting LANGUAGE does nothing when the
+		// locale is "C". Therefore we set the locale to
+		// something that is believed to exist on most
+		// systems. The idea is that one should be able to
+		// load German documents even without having de_DE
+		// installed.
+		setEnv("LC_ALL", "en_US");
 #ifdef HAVE_LC_MESSAGES
-	char const * lc_msgs = setlocale(LC_MESSAGES, lang_.c_str());
+		setlocale(LC_MESSAGES, "");
 #endif
-	// setlocale fails (returns NULL) if the corresponding locale
-	// is not installed.
-	// On windows (mingw and cygwin) it always returns NULL.
-	// Since this method gets called for every translatable
-	// buffer string like e.g. "Figure:" we warn only once.
-#if !defined(_WIN32) && !defined(__CYGWIN__)
-	if (!warned_ && !lc_msgs) {
-		warned_ = true;
-		lyxerr << "Locale " << lang_ << " could not be set" << endl;
-	}
-#endif
-	// CTYPE controls what getmessage thinks what encoding the po file uses
-	char const * lc_ctype = setlocale(LC_CTYPE, NULL);
-	string oldCTYPE = lc_ctype ? lc_ctype : "";
-
-	setlocale(LC_CTYPE, lang_.c_str());
-	errno = 0;
-	string const locale_dir = package().locale_dir().toFilesystemEncoding();
-	char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
-	int e = errno;
-	if (e) {
-		LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION << '\n'
-			<< "Error code: " << errno << '\n'
-			<< "Lang, mess: " << lang_ << " " << m << '\n'
-			<< "Directory : " << package().locale_dir().absFilename() << '\n'
-			<< "Rtn value : " << c << endl;
 	}
 
-	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-		LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION << '\n'
-			<< "Error code: " << errno << '\n'
-			<< "Codeset   : " << ucs4_codeset << '\n'
-			<< endl;
-	}
-
-	textdomain(PACKAGE);
 	char const * tmp = m.c_str();
 	char const * msg = gettext(tmp);
 	docstring translated;
@@ -158,13 +145,18 @@ docstring const Messages::get(string const & m) const
 			translated = from_ascii(tmp);
 	} else {
 		LYXERR(Debug::DEBUG) << "We got a translation" << endl;
-		char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
-		translated = ucs4;
+		// m is actually not a char const * but ucs4 data
+		translated = reinterpret_cast<char_type const *>(msg);
 	}
+
+	if (!lang_.empty()) {
+		// Reset everything as it was.
+		setEnv("LANGUAGE", oldLANGUAGE);
+		setEnv("LC_ALL", oldLC_ALL);
 #ifdef HAVE_LC_MESSAGES
-	setlocale(LC_MESSAGES, lang.c_str());
+		setlocale(LC_MESSAGES, "");
 #endif
-	setlocale(LC_CTYPE, oldCTYPE.c_str());
+	}
 
 	std::pair<TranslationCache::iterator, bool> result =
 		cache_.insert(std::make_pair(m, translated));
@@ -187,6 +179,10 @@ using std::string;
 namespace lyx {
 
 Messages::Messages(string const & l) {}
+
+void Messages::init()
+{
+}
 
 
 docstring const Messages::get(string const & m) const

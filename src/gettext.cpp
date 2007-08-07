@@ -14,7 +14,6 @@
 #include "gettext.h"
 #include "Messages.h"
 
-#include "support/environment.h"
 #include "support/lstrings.h"
 
 #ifdef HAVE_LOCALE_H
@@ -26,36 +25,23 @@ using std::string;
 
 namespace lyx {
 
-using support::setEnv;
-
-
 docstring const _(string const & str)
 {
 	return getGuiMessages().get(str);
 }
 
 
-#ifdef ENABLE_NLS
-
 void locale_init()
 {
-	// Disable, as otherwise it overrides everything else incl. the doc language
-	setEnv("LANGUAGE", "");
+#ifdef ENABLE_NLS
 #  ifdef HAVE_LC_MESSAGES
 	setlocale(LC_MESSAGES, "");
 #  endif
 	setlocale(LC_CTYPE, "");
-	setlocale(LC_NUMERIC, "C");
-}
-
-#else // ENABLE_NLS
-
-void locale_init()
-{
-	setlocale(LC_NUMERIC, "C");
-}
-
+	Messages::init();
 #endif
+	setlocale(LC_NUMERIC, "C");
+}
 
 
 docstring const translateIfPossible(docstring const & name)
