@@ -100,14 +100,16 @@ docstring const ControlInclude::browse(docstring const & in_name, Type in_type) 
 }
 
 
-void ControlInclude::load(string const & file)
+void ControlInclude::edit(string const & file)
 {
 	string const ext = support::getExtension(file);
 	if (ext == "lyx")
 		kernel().dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
 	else
 		// tex file or other text file in verbatim mode
-		formats.edit(kernel().buffer(), FileName(file), "text");
+		formats.edit(kernel().buffer(), 
+			FileName(makeAbsPath(file, onlyPath(kernel().buffer().fileName()))),
+			"text");
 }
 
 

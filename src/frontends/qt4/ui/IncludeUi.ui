@@ -331,12 +331,12 @@
     </widget>
    </item>
    <item row="1" column="4" >
-    <widget class="QPushButton" name="loadPB" >
+    <widget class="QPushButton" name="editPB" >
      <property name="toolTip" >
-      <string>Load the file</string>
+      <string>Edit the file</string>
      </property>
      <property name="text" >
-      <string>&amp;Load</string>
+      <string>&amp;Edit</string>
      </property>
     </widget>
    </item>
@@ -346,7 +346,7 @@
   <tabstop>filenameED</tabstop>
   <tabstop>browsePB</tabstop>
   <tabstop>typeCO</tabstop>
-  <tabstop>loadPB</tabstop>
+  <tabstop>editPB</tabstop>
   <tabstop>visiblespaceCB</tabstop>
   <tabstop>previewCB</tabstop>
   <tabstop>captionLE</tabstop>

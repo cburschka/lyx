@@ -58,8 +58,9 @@ public:
 	/// Browse for a file
 	docstring const browse(docstring const &, Type) const;
 
-	/// load a file
-	void load(std::string const & file);
+	/// edit the child document, .lyx file will be opened in lyx
+	/// other formats will be edited by external applications.
+	void edit(std::string const & file);
 
 	/// test if file exist
 	bool fileExists(std::string const & file);
