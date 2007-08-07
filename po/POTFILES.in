@@ -49,6 +49,7 @@ src/frontends/controllers/frontend_helpers.cpp
 src/frontends/qt4/BulletsModule.cpp
 src/frontends/qt4/Dialogs.cpp
 src/frontends/qt4/FileDialog.cpp
+src/frontends/qt4/GuiApplication.cpp
 src/frontends/qt4/GuiView.cpp
 src/frontends/qt4/GuiWorkArea.cpp
 src/frontends/qt4/IconPalette.cpp
@@ -142,5 +143,6 @@ src/output_plaintext.cpp
 src/rowpainter.cpp
 src/support/FileFilterList.cpp
 src/support/Package.cpp.in
+src/support/filetools.cpp
 src/support/os_win32.cpp
 src/support/userinfo.cpp
