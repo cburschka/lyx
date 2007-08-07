@@ -302,44 +302,44 @@ FileName const libFileSearch(string const & dir, string const & name,
 FileName const i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext)
 {
-	// the following comments are from intl/dcigettext.c. We try
-	// to mimick this behaviour here.
 	/* The highest priority value is the `LANGUAGE' environment
 	   variable. But we don't use the value if the currently
-	   selected locale is the C locale. This is a GNU extension. */
-	/* [Otherwise] We have to proceed with the POSIX methods of
-	   looking to `LC_ALL', `LC_xxx', and `LANG'. */
+	   selected locale is the C locale. This is a GNU extension.
 
-	string lang = getEnv("LC_ALL");
-	if (lang.empty()) {
-		lang = getEnv("LC_MESSAGES");
-		if (lang.empty()) {
-			lang = getEnv("LANG");
-			if (lang.empty())
-				lang = "C";
-		}
-	}
+	   Otherwise, we use a trick to guess what gettext has done:
+	   each po file is able to tell us its name. (JMarc)
+	*/
 
+	string lang = to_ascii(_("[[Replace with the code of your language]]"));
 	string const language = getEnv("LANGUAGE");
-	if (lang != "C" && lang != "POSIX" && !language.empty())
+	if (!lang.empty() && !language.empty())
 		lang = language;
 
 	string l;
 	lang = split(lang, l, ':');
-	while (!l.empty() && l != "C" && l != "POSIX") {
-		FileName const tmp = libFileSearch(addPath(dir, token(l, '_', 0)),
-						      name, ext);
+	while (!l.empty()) {
+		FileName tmp;
+		// First try with the full name
+		tmp = libFileSearch(addPath(dir, l), name, ext);
 		if (!tmp.empty())
 			return tmp;
+
+		// Then the name without country code
+		string const shortl = token(l, '_', 0);
+		if (shortl != l) {
+			tmp = libFileSearch(addPath(dir, shortl), name, ext);
+			if (!tmp.empty())
+				return tmp;
+		}
+
 #if 1
-		// to be removed later (JMarc)
-		FileName const tmpold = libFileSearch(dir,
-						 token(l, '_', 0) + '_' + name,
-						 ext);
-		if (!tmpold.empty()) {
-			lyxerr << "i18nLibFileSearch: File `" << tmpold
+		// For compatibility, to be removed later (JMarc)
+		tmp = libFileSearch(dir, token(l, '_', 0) + '_' + name,
+				    ext);
+		if (!tmp.empty()) {
+			lyxerr << "i18nLibFileSearch: File `" << tmp
 			       << "' has been found by the old method" <<endl;
-			return tmpold;
+			return tmp;
 		}
 #endif
 		lang = split(lang, l, ':');
