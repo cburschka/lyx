@@ -413,6 +413,10 @@ int LyX::exec(int & argc, char * argv[])
 		}
 	}
 
+	// Reinit the messages machinery in case package() knows
+	// something interesting about the locale directory.
+	Messages::init();
+
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
 		int exit_status = init(argc, argv);

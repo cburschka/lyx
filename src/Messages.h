@@ -23,9 +23,11 @@ class Messages {
 public:
 	/// messages in the language \p l.
 	/// If \p l is empty, the language will be defined by the environment.
-	Messages(std::string const & l = "");
+	Messages(std::string const & l = std::string());
 	///
 	docstring const get(std::string const & msg) const;
+	///
+	static void init();
 private:
 	///
 	std::string lang_;
