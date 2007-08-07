@@ -21,6 +21,8 @@
 
 #include "frontends/Application.h"
 
+#include <boost/scoped_ptr.hpp>
+
 #include <QApplication>
 #include <QTranslator>
 
@@ -32,6 +34,7 @@ class socket_callback;
 namespace frontend {
 
 class GuiWorkArea;
+class MenuTranslator;
 
 /// The Qt main application class
 /**
@@ -107,6 +110,11 @@ public:
 	bool x11EventFilter (XEvent * ev);
 #endif
 
+	/// A translator suitable for the entries in the LyX menu.
+	/// Only needed with Qt/Mac.
+	void addMenuTranslator();
+	///
+	boost::scoped_ptr<MenuTranslator> menu_trans_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

@@ -31,6 +31,7 @@
 #include "Color.h"
 #include "debug.h"
 #include "FuncRequest.h"
+#include "gettext.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -119,9 +120,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	if (qt_trans_.load(language_name,
 		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
 	{
-		qApp->installTranslator(&qt_trans_);
+		installTranslator(&qt_trans_);
 		// even if the language calls for RtL, don't do that
-		qApp->setLayoutDirection(Qt::LeftToRight);
+		setLayoutDirection(Qt::LeftToRight);
 		LYXERR(Debug::GUI)
 			<< "Successfully installed Qt translations for locale "
 			<< fromqstr(language_name) << std::endl;
@@ -129,6 +130,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		LYXERR(Debug::GUI)
 			<< "Could not find  Qt translations for locale "
 			<< fromqstr(language_name) << std::endl;
+
+#ifdef Q_WS_MACX
+	// This allows to translate the strings that appear in the LyX menu.
+	addMenuTranslator();
+#endif
 
 	using namespace lyx::graphics;
 
@@ -341,6 +347,38 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	return false;
 }
 #endif
+
+
+////////////////////////////////////////////////////////////////////////
+// Mac specific stuff goes here...
+
+class MenuTranslator : public QTranslator {
+public:
+	virtual ~MenuTranslator() {};
+	virtual QString translate(const char * context, 
+				  const char * sourceText, 
+				  const char * comment = 0) const;
+};
+
+
+QString MenuTranslator::translate(const char * /*context*/, 
+				  const char * sourceText, 
+				  const char *) const
+{
+	string const s = sourceText;
+	if (s == N_("About %1")	|| s == N_("Preferences") 
+	    || s == N_("Reconfigure") || s == N_("Quit %1"))
+		return qt_(s);
+	else 
+		return QString();
+}
+
+
+void GuiApplication::addMenuTranslator()
+{
+	menu_trans_.reset(new MenuTranslator());
+	installTranslator(menu_trans_.get());
+}
 
 
 } // namespace frontend
