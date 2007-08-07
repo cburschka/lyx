@@ -51,3 +51,4 @@ What's new
   chkconfig.ltx to the user dir using default permissions (thus avoiding a
   bug on Cygwin where python doesn't copy ACLs associated to a file).
 
+- Upgrade to gettext 0.14.6.
