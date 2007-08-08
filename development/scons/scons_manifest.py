@@ -1312,6 +1312,7 @@ intl_files = Split('''
     gettext.c
     intl-compat.c
     l10nflist.c
+    langprefs.c
     loadmsgcat.c
     localcharset.c
     localealias.c
