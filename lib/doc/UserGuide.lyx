@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -33,7 +33,7 @@
   \renewcommand\tableofcontents{%
     \pdfbookmark[1]{Contents}{}
     \myTOC
-    \clearpage
+    \cleardoublepage
     \pagenumbering{arabic} }
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
@@ -91,8 +91,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -153,7 +153,67 @@ Introduction
 \end_layout
 
 \begin_layout Section
-What is LyX?
+What is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+?
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The command 
+\series bold
+
+\backslash
+texorpdfstring
+\series default
+ is needed because the font of the PDF bookmarks cannot contain special
+ text formats, like sub- and superscripts.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+y
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset Quotes eld
+\end_inset
+
+LyX
+\begin_inset Quotes erd
+\end_inset
+
+ appears in the output 0.25\InsetSpace \thinspace{}
+em below the baseline and this cannot be handled
+ by PDF bookmark text.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -247,7 +307,31 @@ Getting Started
 \end_layout
 
 \begin_layout Subsection
-Invoking LyX
+Invoking 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -279,7 +363,31 @@ Please note that if you include more than one file name on the command line,
 \end_layout
 
 \begin_layout Subsection
-How LyX Looks
+How 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ Looks
 \end_layout
 
 \begin_layout Standard
@@ -409,7 +517,31 @@ Editor's Note: With this in mind, I've instructed all of the other authors
 \end_layout
 
 \begin_layout Section
-The LyX Interface
+The 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ Interface
 \end_layout
 
 \begin_layout Subsection
@@ -1447,7 +1579,31 @@ Shift-Control-s
 \end_layout
 
 \begin_layout Section
-Using LyX with Other Programs
+Using 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ with Other Programs
 \end_layout
 
 \begin_layout Subsection
@@ -1599,7 +1755,30 @@ Pasting text into LyX also works much the same way as in X.
 \end_layout
 
 \begin_layout Chapter
-LyX Setup and Supporting Applications
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+Setup and Supporting Applications
 \end_layout
 
 \begin_layout Section
@@ -1654,7 +1833,31 @@ This is basically where we decided to document a bunch of info about running
 \end_layout
 
 \begin_layout Section
-Basic LyX Setup
+Basic 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ Setup
 \begin_inset LatexCommand label
 name "sec:setup"
 
@@ -2887,7 +3090,30 @@ Customization
 \end_layout
 
 \begin_layout Chapter
-LyX Basics
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ Basics
 \end_layout
 
 \begin_layout Section
@@ -6750,7 +6976,31 @@ Notice that after the first line, LyX indents subsequent lines, offsetting
 \end_layout
 
 \begin_layout Subsubsection
-The LyX 
+The 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ 
 \family sans
 List
 \family default
@@ -7804,7 +8054,30 @@ Floats
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
 LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+
 \family sans
 -Code
 \end_layout
@@ -14779,7 +15052,31 @@ Always put figures and tables on their own page.
 
 \end_deeper
 \begin_layout Subsection
-XFig and LyX
+XFig and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
