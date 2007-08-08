@@ -249,7 +249,7 @@ char hebrewCounter(int const n)
 //and for a list of roman numerals up to and including 3999, see 
 //http://www.research.att.com/~njas/sequences/a006968.txt. (Thanks to Joost
 //for this info.)
-docstring const romanCounter(int const n, bool lowercase = false)
+docstring const romanCounter(int const n)
 {
 	static char const * const ones[9] = {
 		"I",   "II",  "III", "IV", "V",
@@ -301,14 +301,13 @@ docstring const romanCounter(int const n, bool lowercase = false)
 		if (val > 0)
 			roman = roman + ones[val -1];
 	}
-	docstring retval = from_ascii(roman);
-	return lowercase ? support::lowercase(retval) : retval;
+	return from_ascii(roman);
 }
 
 
 docstring const lowerromanCounter(int const n)
 {
-	return romanCounter(n, true);
+	return support::lowercase(romanCounter(n));
 }
 
 } // namespace anon
