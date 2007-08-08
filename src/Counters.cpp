@@ -6,6 +6,7 @@
  * \author Lars Gullik Bjønnes
  * \author Martin Vermeer
  * \author André Pönitz
+ * \author Richard Heck (roman numerals)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -243,33 +244,71 @@ char hebrewCounter(int const n)
 }
 
 
-docstring const lowerromanCounter(int const n)
-{
-	static char const * const roman[20] = {
-		"i",   "ii",  "iii", "iv", "v",
-		"vi",  "vii", "viii", "ix", "x",
-		"xi",  "xii", "xiii", "xiv", "xv",
-		"xvi", "xvii", "xviii", "xix", "xx"
-	};
 
-	if (n < 1 || n > 20)
+//On the special cases, see http://mathworld.wolfram.com/RomanNumerals.html
+//and for a list of roman numerals up to and including 3999, see 
+//http://www.research.att.com/~njas/sequences/a006968.txt. (Thanks to Joost
+//for this info.)
+docstring const romanCounter(int const n, bool lowercase = false)
+{
+	static char const * const ones[9] = {
+		"I",   "II",  "III", "IV", "V",
+		"VI",  "VII", "VIII", "IX"
+	};
+	
+	static char const * const tens[9] = {
+		"X", "XX", "XXX", "XL", "L",
+		"LX", "LXX", "LXXX", "XC"
+	};
+	
+	static char const * const hunds[9] = {
+		"C", "CC", "CCC", "CD", "D",
+		"DC", "DCC", "DCCC", "CM"
+	};
+	
+	if (n > 1000 || n < 1) 
 		return from_ascii("??");
-	return from_ascii(roman[n - 1]);
+	
+	int val = n;
+	string roman;
+	switch (n) {
+	//special cases
+	case 900: 
+		roman = "CM";
+		break;
+	case 400:
+		roman = "CD";
+		break;
+	default:
+		if (val >= 100) {
+			int hundreds = val / 100;
+			roman = hunds[hundreds - 1];
+			val = val % 100;
+		}
+		if (val >= 10) {
+			switch (val) {
+			//special case
+			case 90:
+				roman = roman + "XC";
+				val = 0; //skip next
+				break;
+			default:
+				int tensnum = val / 10;
+				roman = roman + tens[tensnum - 1];
+				val = val % 10;
+			} // end switch
+		} // end tens
+		if (val > 0)
+			roman = roman + ones[val -1];
+	}
+	docstring retval = from_ascii(roman);
+	return lowercase ? support::lowercase(retval) : retval;
 }
 
 
-docstring const romanCounter(int const n)
+docstring const lowerromanCounter(int const n)
 {
-	static char const * const roman[20] = {
-		"I",   "II",  "III", "IV", "V",
-		"VI",  "VII", "VIII", "IX", "X",
-		"XI",  "XII", "XIII", "XIV", "XV",
-		"XVI", "XVII", "XVIII", "XIX", "XX"
-	};
-
-	if (n < 1 || n > 20)
-		return from_ascii("??");
-	return from_ascii(roman[n - 1]);
+	return romanCounter(n, true);
 }
 
 } // namespace anon
