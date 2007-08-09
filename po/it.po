@@ -7657,7 +7657,7 @@ msgstr "Nuovo da modello...|T"
 
 #: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:37
 msgid "Open...|O"
-msgstr "Apri...|O"
+msgstr "Apri...|A"
 
 #: lib/ui/classic.ui:51 lib/ui/stdmenus.inc:40
 msgid "Close|C"
@@ -7669,7 +7669,7 @@ msgstr "Salva|S"
 
 #: lib/ui/classic.ui:53 lib/ui/stdmenus.inc:42
 msgid "Save As...|A"
-msgstr "Salva come...|a"
+msgstr "Salva come...|m"
 
 #: lib/ui/classic.ui:54 lib/ui/stdmenus.inc:44
 msgid "Revert|R"
@@ -7685,7 +7685,7 @@ msgstr "Importa|I"
 
 #: lib/ui/classic.ui:58 lib/ui/stdmenus.inc:48
 msgid "Export|E"
-msgstr "Esporta|E"
+msgstr "Esporta|o"
 
 #: lib/ui/classic.ui:59 lib/ui/stdmenus.inc:49
 msgid "Print...|P"
@@ -7697,7 +7697,7 @@ msgstr "Fax...|F"
 
 #: lib/ui/classic.ui:62 lib/ui/stdmenus.inc:55
 msgid "Exit|x"
-msgstr "Esci|i"
+msgstr "Esci|E"
 
 #: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:63
 msgid "Register...|R"
@@ -7845,7 +7845,7 @@ msgstr "Aggiungi colonna|l"
 
 #: lib/ui/classic.ui:135
 msgid "Delete Column|D"
-msgstr "Elimina colonna|c"
+msgstr "Elimina colonna|E"
 
 #: lib/ui/classic.ui:136 lib/ui/classic.ui:177
 msgid "Copy Column"
@@ -7869,7 +7869,7 @@ msgstr "Destra|D"
 
 #: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:168
 msgid "Top|T"
-msgstr "Superiore|S"
+msgstr "Superiore|u"
 
 #: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:169
 msgid "Middle|M"
@@ -7885,7 +7885,7 @@ msgstr "Attiva/Disattiva numerazione|n"
 
 #: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:185
 msgid "Toggle Numbering of Line|u"
-msgstr "Attiva/Disattiva la numerazione di linea|u"
+msgstr "Attiva/Disattiva la numerazione di linea|z"
 
 #: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:186
 msgid "Change Limits Type|L"
@@ -7897,7 +7897,7 @@ msgstr "Cambia tipo di formula|f"
 
 #: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:192
 msgid "Use Computer Algebra System|S"
-msgstr "Usa Computer Algebra System|S"
+msgstr "Usa Computer Algebra System|U"
 
 #: lib/ui/classic.ui:168
 msgid "Alignment|A"
@@ -7917,7 +7917,7 @@ msgstr "Aggiungi colonna|l"
 
 #: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:178
 msgid "Delete Column|e"
-msgstr "Elimina colonna|c"
+msgstr "Elimina colonna|E"
 
 #: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:208
 msgid "Default|t"
@@ -7962,11 +7962,11 @@ msgstr "Maple, evalf"
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:250
 #: lib/ui/stdmenus.inc:349
 msgid "Inline Formula|I"
-msgstr "Formula in linea|f"
+msgstr "Formula in linea|i"
 
 #: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:251
 msgid "Displayed Formula|D"
-msgstr "Formula mostrata|m"
+msgstr "Formula mostrata|o"
 
 #: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
@@ -8090,7 +8090,7 @@ msgstr "Allineamento orizzontale|o"
 
 #: lib/ui/classic.ui:244
 msgid "Hyphenation Point|P"
-msgstr "Punto di sillabazione|p"
+msgstr "Punto di sillabazione|u"
 
 #: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:340
 msgid "Ligature Break|k"
@@ -8146,7 +8146,7 @@ msgstr "Interruzione di pagina"
 
 #: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:350
 msgid "Display Formula|D"
-msgstr "Formula centrata|m"
+msgstr "Formula centrata|o"
 
 #: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:352
 msgid "Eqnarray Environment|E"
@@ -8174,7 +8174,7 @@ msgstr "Contesto multiline AMS|m"
 
 #: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:359
 msgid "Array Environment|y"
-msgstr "Contesto vettore|y"
+msgstr "Contesto vettore|s"
 
 #: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:360
 msgid "Cases Environment|C"
@@ -8182,7 +8182,7 @@ msgstr "Contesto casi|c"
 
 #: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:364
 msgid "Split Environment|S"
-msgstr "Dividi contesto|a"
+msgstr "Dividi contesto|D"
 
 #: lib/ui/classic.ui:276
 msgid "Font Change|o"
@@ -8278,18 +8278,16 @@ msgid "LyX Document...|X"
 msgstr "Documento di LyX...|X"
 
 #: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:388
-#, fuzzy
 msgid "Plain Text...|T"
-msgstr "Testo semplice"
+msgstr "Testo semplice...|T"
 
 #: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:389
-#, fuzzy
 msgid "Plain Text, Join Lines...|J"
-msgstr "Testo semplice come linee...|l"
+msgstr "Testo semplice, linee unite...|l"
 
 #: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:423
 msgid "Track Changes|T"
-msgstr "Traccia Modifiche|m"
+msgstr "Traccia Modifiche|T"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:424
 msgid "Merge Changes...|M"
@@ -8297,15 +8295,15 @@ msgstr "Unisci modifiche...|m"
 
 #: lib/ui/classic.ui:326
 msgid "Accept All Changes|A"
-msgstr "Accetta tutte le modifiche|A"
+msgstr "Accetta tutte le modifiche|u"
 
 #: lib/ui/classic.ui:327
 msgid "Reject All Changes|R"
-msgstr "Rigetta tutte le modifiche|R"
+msgstr "Rigetta tutte le modifiche|g"
 
 #: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:429
 msgid "Show Changes in Output|S"
-msgstr "Mostra modifiche nel risultato|S"
+msgstr "Mostra modifiche nel risultato|s"
 
 #: lib/ui/classic.ui:335
 msgid "Character...|C"
@@ -8369,11 +8367,11 @@ msgstr "Informazione di TeX|X"
 
 #: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:437
 msgid "Next Note|N"
-msgstr "Prossima nota|N"
+msgstr "Prossima nota|n"
 
 #: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:440
 msgid "Go to Label|L"
-msgstr "Vai all'etichetta|L"
+msgstr "Vai all'etichetta|l"
 
 #: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:436
 msgid "Bookmarks|B"
@@ -8429,7 +8427,7 @@ msgstr "Tutorial|T"
 
 #: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:480
 msgid "User's Guide|U"
-msgstr "Guida utente|G"
+msgstr "Guida utente|u"
 
 #: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:481
 msgid "Extended Features|E"
@@ -8481,25 +8479,23 @@ msgstr "Strumenti|t"
 
 #: lib/ui/stdmenus.inc:36
 msgid "New from Template...|m"
-msgstr "Nuovo da modello...|m"
+msgstr "Nuovo da modello...|u"
 
 #: lib/ui/stdmenus.inc:38
-#, fuzzy
 msgid "Open Recent|t"
 msgstr "Apri recenti|t"
 
 #: lib/ui/stdmenus.inc:43
-#, fuzzy
 msgid "Save All|l"
-msgstr "Salva come...|a"
+msgstr "Salva tutto|l"
 
 #: lib/ui/stdmenus.inc:52
 msgid "New Window|W"
-msgstr ""
+msgstr "Nuova finestra"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Close Window|d"
-msgstr ""
+msgstr "Chiudi finestra|d"
 
 #: lib/ui/stdmenus.inc:86
 msgid "Redo|R"
@@ -8521,38 +8517,32 @@ msgid "Paste"
 msgstr "Incolla"
 
 #: lib/ui/stdmenus.inc:91
-#, fuzzy
 msgid "Paste Recent|e"
 msgstr "Incolla recenti"
 
 #: lib/ui/stdmenus.inc:92
-#, fuzzy
 msgid "Paste Special"
-msgstr "Incolla|I"
+msgstr "Incolla speciale|I"
 
 #: lib/ui/stdmenus.inc:94
-#, fuzzy
 msgid "Select All"
-msgstr "Seleziona un file"
+msgstr "Seleziona tutto"
 
 #: lib/ui/stdmenus.inc:98
-#, fuzzy
 msgid "Move Paragraph Up|o"
-msgstr ", Paragrafo: "
+msgstr "Sposta paragrafo su|o"
 
 #: lib/ui/stdmenus.inc:99
-#, fuzzy
 msgid "Move Paragraph Down|v"
-msgstr ", Paragrafo: "
+msgstr "Sposta paragrafo giù|g"
 
 #: lib/ui/stdmenus.inc:101
-#, fuzzy
 msgid "Text Style|S"
-msgstr "Stile testo"
+msgstr "Stile testo|l"
 
 #: lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
-msgstr "Impostazione paragrafo...|P"
+msgstr "Impostazione paragrafo...|p"
 
 #: lib/ui/stdmenus.inc:105
 msgid "Table|T"
@@ -8603,27 +8593,22 @@ msgid "Table Settings...|a"
 msgstr "Impostazioni tabella...|t"
 
 #: lib/ui/stdmenus.inc:131
-#, fuzzy
 msgid "Plain Text|T"
-msgstr "Testo semplice"
+msgstr "Testo semplice|T"
 
 #: lib/ui/stdmenus.inc:132
-#, fuzzy
 msgid "Plain Text, Join Lines|J"
-msgstr "Testo semplice come linee"
+msgstr "Testo semplice, linee unite"
 
 #: lib/ui/stdmenus.inc:134
-#, fuzzy
 msgid "Selection|S"
-msgstr "&Selezione:"
+msgstr "Selezione|S"
 
 #: lib/ui/stdmenus.inc:135
-#, fuzzy
 msgid "Selection, Join Lines|i"
-msgstr "Seleziona come linee|l"
+msgstr "Selezione, linee unite|l"
 
 #: lib/ui/stdmenus.inc:145
-#, fuzzy
 msgid "Customized...|C"
 msgstr "Personalizzato...|z"
 
@@ -8643,11 +8628,11 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:156
 msgid "Top Line|T"
-msgstr "Linea superiore|P"
+msgstr "Linea superiore|p"
 
 #: lib/ui/stdmenus.inc:157
 msgid "Bottom Line|B"
-msgstr "Linea inferiore|I"
+msgstr "Linea inferiore|i"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Left Line|L"
@@ -8655,30 +8640,25 @@ msgstr "Linea sinistra|L"
 
 #: lib/ui/stdmenus.inc:159
 msgid "Right Line|R"
-msgstr "Linea destra|#d"
+msgstr "Linea destra|d"
 
 #: lib/ui/stdmenus.inc:174
-#, fuzzy
 msgid "Copy Row|o"
 msgstr "Copia riga"
 
 #: lib/ui/stdmenus.inc:175
-#, fuzzy
 msgid "Swap Rows|S"
-msgstr "Scambia righe"
+msgstr "Scambia righe|m"
 
 #: lib/ui/stdmenus.inc:179
-#, fuzzy
 msgid "Copy Column|p"
 msgstr "Copia colonna"
 
 #: lib/ui/stdmenus.inc:180
-#, fuzzy
 msgid "Swap Columns|w"
 msgstr "Scambia colonne"
 
 #: lib/ui/stdmenus.inc:190
-#, fuzzy
 msgid "Text Style|T"
 msgstr "Stile testo"
 
@@ -8688,22 +8668,18 @@ msgid "Split Cell|C"
 msgstr "Cella speciale"
 
 #: lib/ui/stdmenus.inc:196
-#, fuzzy
 msgid "Add Line Above|A"
 msgstr "Aggiungi linea in alto"
 
 #: lib/ui/stdmenus.inc:197
-#, fuzzy
 msgid "Add Line Below|B"
 msgstr "Aggiungi linea in basso"
 
 #: lib/ui/stdmenus.inc:198
-#, fuzzy
 msgid "Delete Line Above|D"
-msgstr "Elimina linea in alto"
+msgstr "Elimina linea in alto|a"
 
 #: lib/ui/stdmenus.inc:199
-#, fuzzy
 msgid "Delete Line Below|e"
 msgstr "Elimina linea in basso"
 
@@ -8794,37 +8770,33 @@ msgid "Maple, evalf|v"
 msgstr "Maple, evalf"
 
 #: lib/ui/stdmenus.inc:265
-#, fuzzy
 msgid "Open All Insets|O"
-msgstr "E' stato aperto l'inserto Oggetto mobile"
+msgstr "Apri tutti gli inserti|p"
 
 #: lib/ui/stdmenus.inc:266
 msgid "Close All Insets|C"
-msgstr ""
+msgstr "Chiudi tutti gli inserti|C"
 
 #: lib/ui/stdmenus.inc:268
 #, fuzzy
 msgid "View Source|S"
-msgstr "Spazio visibile|#s"
+msgstr "Mostra sorgente|s"
 
 #: lib/ui/stdmenus.inc:272
-#, fuzzy
 msgid "Toolbars|b"
 msgstr "Barre degli strumenti"
 
 #: lib/ui/stdmenus.inc:292
-#, fuzzy
 msgid "Special Character|p"
-msgstr "Carattere speciale|s"
+msgstr "Carattere speciale|a"
 
 #: lib/ui/stdmenus.inc:293
-#, fuzzy
 msgid "Formatting|o"
-msgstr "Formati"
+msgstr "Formattazione|z"
 
 #: lib/ui/stdmenus.inc:294
 msgid "List / TOC|i"
-msgstr "Elenco / Indice generale|O"
+msgstr "Elenco / Indice generale|I"
 
 #: lib/ui/stdmenus.inc:295
 msgid "Float|a"
@@ -8832,7 +8804,7 @@ msgstr "Oggetti mobili|o"
 
 #: lib/ui/stdmenus.inc:297
 msgid "Branch|B"
-msgstr "Ramo|R"
+msgstr "Ramo"
 
 #: lib/ui/stdmenus.inc:298
 msgid "File|e"
@@ -8843,7 +8815,6 @@ msgid "Box"
 msgstr "Casella"
 
 #: lib/ui/stdmenus.inc:302
-#, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Riferimento incrociato...|R"
 
@@ -8853,21 +8824,19 @@ msgstr "Didascalia"
 
 #: lib/ui/stdmenus.inc:305
 msgid "Index Entry|d"
-msgstr "Voce d'indice|d"
+msgstr "Voce d'indice|V"
 
 #: lib/ui/stdmenus.inc:306
-#, fuzzy
 msgid "Nomenclature Entry...|y"
-msgstr "Inserisci voce d'indice"
+msgstr "Voce di nomenclatura..."
 
 #: lib/ui/stdmenus.inc:308
 msgid "Table...|T"
 msgstr "Tabella...|b"
 
 #: lib/ui/stdmenus.inc:313
-#, fuzzy
 msgid "Short Title|S"
-msgstr "Titolo breve"
+msgstr "Titolo breve|l"
 
 #: lib/ui/stdmenus.inc:314
 msgid "TeX Code|X"
@@ -8884,16 +8853,15 @@ msgstr "Virgolette normali|V"
 
 #: lib/ui/stdmenus.inc:323
 msgid "Single Quote|S"
-msgstr "Virgolette semplici|S"
+msgstr "Virgolette semplici|s"
 
 #: lib/ui/stdmenus.inc:325
 msgid "Phonetic Symbols|y"
-msgstr "Simboli fonetici|i"
+msgstr "Simboli fonetici|b"
 
 #: lib/ui/stdmenus.inc:332
-#, fuzzy
 msgid "Protected Space|P"
-msgstr "Spazio protetto|S"
+msgstr "Spazio protetto|a"
 
 #: lib/ui/stdmenus.inc:335
 #, fuzzy
@@ -8901,29 +8869,24 @@ msgid "Horizontal Fill|F"
 msgstr "Allineamento orizzontale|o"
 
 #: lib/ui/stdmenus.inc:336
-#, fuzzy
 msgid "Horizontal Line|L"
 msgstr "Linea orizzontale"
 
 #: lib/ui/stdmenus.inc:337
-#, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Spazio verticale..."
 
 #: lib/ui/stdmenus.inc:339
-#, fuzzy
 msgid "Hyphenation Point|H"
-msgstr "Punto di sillabazione|p"
+msgstr "Punto di sillabazione|u"
 
 #: lib/ui/stdmenus.inc:341
-#, fuzzy
 msgid "Line Break|B"
 msgstr "Interruzione di linea|l"
 
 #: lib/ui/stdmenus.inc:343
-#, fuzzy
 msgid "Page Break|a"
-msgstr "Interruzione di pagina"
+msgstr "Interruzione di pagina|I"
 
 #: lib/ui/stdmenus.inc:344
 #, fuzzy
@@ -8979,7 +8942,7 @@ msgstr "Materiale esterno...|s"
 
 #: lib/ui/stdmenus.inc:392
 msgid "Child Document...|d"
-msgstr "Documento figlio...|d"
+msgstr "Documento figlio...|D"
 
 #: lib/ui/stdmenus.inc:396
 msgid "LyX Note|N"
@@ -8996,7 +8959,7 @@ msgstr "Senza cornice"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Greyed Out|G"
-msgstr "In grigio|G"
+msgstr "In grigio|g"
 
 #: lib/ui/stdmenus.inc:400
 #, fuzzy
@@ -9018,7 +8981,7 @@ msgstr "Compresso|o"
 
 #: lib/ui/stdmenus.inc:419
 msgid "Settings...|S"
-msgstr "Impostazioni...|S"
+msgstr "Impostazioni...|s"
 
 #: lib/ui/stdmenus.inc:425
 msgid "Accept Change|A"
@@ -9030,11 +8993,11 @@ msgstr "Rifiuta modifica|R"
 
 #: lib/ui/stdmenus.inc:427
 msgid "Accept All Changes|c"
-msgstr "Accetta tutte le modifiche|A"
+msgstr "Accetta tutte le modifiche|u"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Reject All Changes|e"
-msgstr "Rigetta tutte le modifiche|R"
+msgstr "Rigetta tutte le modifiche|g"
 
 #: lib/ui/stdmenus.inc:438
 #, fuzzy
@@ -9364,12 +9327,12 @@ msgstr "Comando f&ine:"
 #: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Track changes"
-msgstr "Traccia Modifiche|m"
+msgstr "Traccia Modifiche|T"
 
 #: lib/ui/stdtoolbars.inc:172
 #, fuzzy
 msgid "Show changes in output"
-msgstr "Mostra modifiche nel risultato|S"
+msgstr "Mostra modifiche nel risultato|s"
 
 #: lib/ui/stdtoolbars.inc:174
 #, fuzzy
@@ -9394,17 +9357,17 @@ msgstr "Unisci modifiche"
 #: lib/ui/stdtoolbars.inc:179
 #, fuzzy
 msgid "Accept all changes"
-msgstr "Accetta tutte le modifiche|A"
+msgstr "Accetta tutte le modifiche|u"
 
 #: lib/ui/stdtoolbars.inc:180
 #, fuzzy
 msgid "Reject all changes"
-msgstr "Rigetta tutte le modifiche|R"
+msgstr "Rigetta tutte le modifiche|g"
 
 #: lib/ui/stdtoolbars.inc:183
 #, fuzzy
 msgid "Next note"
-msgstr "Prossima nota|N"
+msgstr "Prossima nota|n"
 
 #: lib/ui/stdtoolbars.inc:186
 #, fuzzy
@@ -13796,15 +13759,13 @@ msgid "Revert to stored version of document?"
 msgstr "Torno alla versione salvata del documento?"
 
 #: src/MenuBackend.cpp:476
-#, fuzzy
 msgid "No Documents Open!"
-msgstr "Non è stato aperto alcun documento!"
+msgstr "Nessun documento aperto!"
 
 #: src/MenuBackend.cpp:503 src/MenuBackend.cpp:575 src/MenuBackend.cpp:597
 #: src/MenuBackend.cpp:620 src/MenuBackend.cpp:706 src/MenuBackend.cpp:821
-#, fuzzy
 msgid "No Document Open!"
-msgstr "Non è stato aperto alcun documento!"
+msgstr "Nessun documento aperto!"
 
 #: src/MenuBackend.cpp:543
 #, fuzzy
@@ -13812,24 +13773,20 @@ msgid "Plain Text"
 msgstr "Testo semplice"
 
 #: src/MenuBackend.cpp:545
-#, fuzzy
 msgid "Plain Text, Join Lines"
-msgstr "Testo semplice come linee"
+msgstr "Testo semplice, linee unite"
 
 #: src/MenuBackend.cpp:721
-#, fuzzy
 msgid "Master Document"
-msgstr "Salva documento"
+msgstr "Documento padre"
 
 #: src/MenuBackend.cpp:750
-#, fuzzy
 msgid "List of listings"
-msgstr "Elenco delle figure"
+msgstr "Elenco dei listati"
 
 #: src/MenuBackend.cpp:754
-#, fuzzy
 msgid "Other floats"
-msgstr "Altre impostazioni del carattere"
+msgstr "Altri oggetti mobili"
 
 #: src/MenuBackend.cpp:764
 msgid "No Table of contents"
@@ -13850,13 +13807,14 @@ msgstr "Non ha senso con questa struttura!"
 
 #: src/Paragraph.cpp:1692
 msgid "Alignment not permitted"
-msgstr ""
+msgstr "Allineamento non consentito"
 
 #: src/Paragraph.cpp:1693
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
-msgstr ""
+msgstr "La nuova struttura non permette l'allineamento usato in precedenza.\n"
+"Uso quello prestabilito."
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
