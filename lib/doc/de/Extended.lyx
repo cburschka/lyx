@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -104,10 +104,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -145,8 +143,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 1.
- Juli 2007
+letzte Änderung: 9.
+ August 2007
 \end_layout
 
 \begin_layout Standard
@@ -6304,13 +6302,40 @@ name "Dateiformat!Export!HTML"
 \end_layout
 
 \begin_layout Standard
-LyX-Dokumente können mit 
+LyX-Dokumente (z.\InsetSpace \thinspace{}
+B.\InsetSpace \space{}
+
+\family typewriter
+Name.lyx
+\family default
+) können mit 
 \family sans
 Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
 HTML
 \family default
  nach HTML konvertiert werden.
+ Dafür erstellt LyX ein Unterverzeichnis 
+\family typewriter
+Name.html.LyXconv
+\family default
+ im Verzeichnis, in dem 
+\family typewriter
+Name.lyx
+\family default
+ ist, und speichert dort 
+\family typewriter
+Name.html
+\family default
+ und andere von 
+\family typewriter
+Name.html
+\family default
+ benötigte Dateien wie Bilder und die 
+\family typewriter
+.css
+\family default
+-Datei (Cascading Style Sheet).
  LyX benutzt 
 \family typewriter
 htlatex
@@ -6360,7 +6385,8 @@ s setzen.
 \end_layout
 
 \begin_layout Description
-Tipp: Manchmal werden Dateien mit Bildern nicht konvertiert.
+Tipp\InsetSpace ~
+1: Manchmal werden Dateien mit Bildern nicht konvertiert.
  Wenn Sie dann die Datei mit 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -6385,6 +6411,37 @@ X
  nach LaTeX exportieren, das Bild oder die Bilder durch die entsprechende(n)
  .eps-Datei(en) ersetzen und die Datei noch einmal nach HTML exportieren,
  wird es funktionieren.
+\end_layout
+
+\begin_layout Description
+Tipp\InsetSpace ~
+2: Wenn es doch nicht funktioniert, sollten Sie vielleicht 
+\family typewriter
+latex2html
+\family default
+ anstatt 
+\family typewriter
+htla\SpecialChar \-
+tex
+\family default
+ benutzen.
+ Als Eintrag im Feld 
+\family sans
+Konverter:
+\family default
+ könnten Sie 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+latex2html -no_subdir -no_navigation -split 0 -show_section_numbers $$i
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ benutzen.
 \end_layout
 
 \begin_layout Subsection
