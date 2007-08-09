@@ -312,7 +312,7 @@ Menuset
 		Item "Marginal Note|M" "marginalnote-insert"
 		Item "Short Title|S" "optional-insert"
 		Item "TeX Code|X" "ert-insert"
-		Item "Program Listing" "listing-insert"
+		Item "Program Listing[[Menu]]" "listing-insert"
 		Item "Date" "date-insert"
 	End
 
