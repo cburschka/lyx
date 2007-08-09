@@ -496,7 +496,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = buf->lyxvc().inUse();
 		break;
 	case LFUN_BUFFER_RELOAD:
-		enable = !buf->isUnnamed() && !buf->isClean();
+		enable = !buf->isUnnamed() && fs::exists(buf->fileName())
+			&& (!buf->isClean() || buf->isExternallyModified(Buffer::timestamp_method));
 		break;
 
 	case LFUN_INSET_SETTINGS: {
