@@ -103,6 +103,7 @@ using std::pair;
 using std::stack;
 using std::vector;
 using std::string;
+using std::time_t;
 
 
 namespace lyx {
@@ -131,6 +132,7 @@ using support::split;
 using support::subst;
 using support::tempName;
 using support::trim;
+using support::sum;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -192,13 +194,18 @@ public:
 
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
+
+	/// timestamp and checksum used to test if the file has been externally
+	/// modified. (Used to properly enable 'File->Revert to saved', bug 4114).
+	time_t timestamp_;
+	unsigned long checksum_;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
-	  toc_backend(&parent)
+	  timestamp_(0), checksum_(0), toc_backend(&parent)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
@@ -755,6 +762,9 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	//MacroTable::localMacros().clear();
 
 	pimpl_->file_fully_loaded = true;
+	// save the timestamp and checksum of disk file
+	pimpl_->timestamp_ = fs::last_write_time(filename.toFilesystemEncoding());
+	pimpl_->checksum_ = sum(filename);
 	return success;
 }
 
@@ -789,9 +799,22 @@ bool Buffer::save() const
 		}
 	}
 
+	// ask if the disk file has been externally modified (use checksum method)
+	if (fs::exists(encodedFilename) && isExternallyModified(checksum_method)) {
+		docstring const file = makeDisplayPath(fileName(), 20);
+		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
+							     "you want to overwrite this file?"), file);
+		int const ret = Alert::prompt(_("Overwrite modified file?"),
+			text, 1, 1, _("&Overwrite"), _("&Cancel"));
+		if (ret == 1)
+			return false;
+	}
+
 	if (writeFile(pimpl_->filename)) {
 		markClean();
 		removeAutosaveFile(fileName());
+		pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename.toFilesystemEncoding());
+		pimpl_->checksum_ = sum(pimpl_->filename);
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
@@ -1553,6 +1576,16 @@ bool Buffer::isClean() const
 bool Buffer::isBakClean() const
 {
 	return pimpl_->bak_clean;
+}
+
+
+bool Buffer::isExternallyModified(CheckMethod method) const
+{
+	BOOST_ASSERT(fs::exists(pimpl_->filename.toFilesystemEncoding()));
+	// if method == timestamp, check timestamp before checksum
+	return (method == checksum_method 
+		|| pimpl_->timestamp_ != fs::last_write_time(pimpl_->filename.toFilesystemEncoding()))
+		&& pimpl_->checksum_ != sum(pimpl_->filename);
 }
 
 

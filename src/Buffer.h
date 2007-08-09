@@ -83,6 +83,22 @@ public:
 		wrongversion ///< The version of the file does not match ours
 	};
 
+	/// Method to check if a file is externally modified, used by 
+	/// isExternallyModified()
+	/**
+	 * timestamp is fast but inaccurate. For example, the granularity
+	 * of timestamp on a FAT filesystem is 2 second. Also, various operations
+	 * may touch the timestamp of a file even when its content is unchanged.
+	 *
+	 * checksum is accurate but slow, which can be a problem when it is 
+	 * frequently used, or used for a large file on a slow (network) file
+	 * system.
+	 */
+	enum CheckMethod {
+		checksum_method,  ///< Use file check sum
+		timestamp_method, ///< Use timestamp, and checksum if timestamp has changed
+	};
+	
 	/** Constructor
 	    \param file
 	    \param b  optional \c false by default
@@ -209,6 +225,9 @@ public:
 	bool isBakClean() const;
 	///
 	bool isDepClean(std::string const & name) const;
+
+	/// whether or not disk file has been externally modified
+	bool isExternallyModified(CheckMethod method) const;
 
 	/// mark the main lyx file as not needing saving
 	void markClean() const;

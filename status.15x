@@ -40,13 +40,17 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Check if the .lyx file has been externally modified when a buffer is saved.
 
 * USER INTERFACE:
 
 - Fix loading non-lyx child documents with relative path names, change 
-  'Load' to 'Edit' in the child document dialog. (Bug 4107 and 4111)
+  'Load' to 'Edit' in the child document dialog. (Bugs 4107 and 4111)
 
 - Fix bug 4112: Do roman numerals beyond 20.
+
+- Enable File -> Revert when the file is externally modified, and rename
+  this menu item to File -> Revert to saved. (Bugs 3766 and 4114)
 
 * DOCUMENTATION
 

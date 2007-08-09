@@ -41,7 +41,7 @@ Menuset
 		Item "Save|S" "buffer-write"
 		Item "Save As...|A" "buffer-write-as"
 		Item "Save All|l" "buffer-write-all"
-		Item "Revert|R" "buffer-reload"
+		Item "Revert to saved|R" "buffer-reload"
 		Submenu "Version Control|V" "file_vc"
 		Separator
 		Submenu "Import|I" "file_import"
