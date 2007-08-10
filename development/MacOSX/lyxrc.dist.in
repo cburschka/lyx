@@ -17,7 +17,7 @@
 #
 
 \path_prefix "/usr/texbin:/usr/local/gwTeX/bin/powerpc-apple-darwin-current:/usr/local/gwTeX/bin/i386-apple-darwin-current:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/local/teTeX/bin/i386-apple-darwin-current:/sw/bin:/sw/sbin:/opt/local/teTeX/bin:/opt/local/bin:/usr/local/bin:/usr/bin:/usr/X11R6/bin:/usr/sbin:/sbin"
-\serverpipe "~/Library/Application Support/LyX@program_suffix@/.lyxpipe"
+\serverpipe "~/Library/Application Support/LyX@version_suffix@/.lyxpipe"
 \preview on
 
 #
@@ -52,7 +52,7 @@
 # FILE SECTION ######################################
 #
 
-\template_path "~/Library/Application Support/LyX@program_suffix@/templates"
+\template_path "~/Library/Application Support/LyX@version_suffix@/templates"
 
 #
 # PLAIN TEXT EXPORT SECTION ##############################
