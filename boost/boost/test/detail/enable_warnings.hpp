@@ -5,9 +5,9 @@
 
 //  See http://www.boost.org/libs/test for the library home page.
 //
-//  File        : $RCSfile: enable_warnings.hpp,v $
+//  File        : $RCSfile$
 //
-//  Version     : $Revision: 1.6 $
+//  Version     : $Revision: 32455 $
 //
 //  Description : enable previosly suppressed warnings
 // ***************************************************************************
@@ -29,7 +29,7 @@
 // ***************************************************************************
 //  Revision History :
 //  
-//  $Log: enable_warnings.hpp,v $
+//  $Log$
 //  Revision 1.6  2006/01/28 07:09:08  rogeeff
 //  4180 suppressed
 //

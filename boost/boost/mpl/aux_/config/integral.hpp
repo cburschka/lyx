@@ -10,9 +10,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Source: /cvsroot/boost/boost/boost/mpl/aux_/config/integral.hpp,v $
-// $Date: 2004/09/07 08:51:32 $
-// $Revision: 1.1 $
+// $Source$
+// $Date: 2004-09-07 10:53:22 +0200 (Tue, 07 Sep 2004) $
+// $Revision: 24947 $
 
 #include <boost/mpl/aux_/config/msvc.hpp>
 #include <boost/mpl/aux_/config/workaround.hpp>

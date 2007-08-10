@@ -11,9 +11,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Source: /cvsroot/boost/boost/boost/mpl/has_xxx.hpp,v $
-// $Date: 2006/11/09 01:05:31 $
-// $Revision: 1.4.6.1 $
+// $Source$
+// $Date: 2006-11-09 02:05:31 +0100 (Thu, 09 Nov 2006) $
+// $Revision: 35933 $
 
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/aux_/type_wrapper.hpp>
