@@ -159,9 +159,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	//pi.pain.fillRectangle(x, a, w, h, Color::mathmacrobg);
 	pi.pain.rectangle(x, a, w, h, Color::mathframe);
 
-#ifdef WITH_WARNINGS
-#warning FIXME
-#endif
+	// FIXME:
 #if 0
 	Cursor & cur = p.base.bv->cursor();
 	if (cur.isInside(this))

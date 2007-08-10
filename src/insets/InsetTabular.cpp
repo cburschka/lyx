@@ -3797,9 +3797,7 @@ int InsetTabular::docbook(Buffer const & buf, odocstream & os,
 	int ret = 0;
 	Inset * master = 0;
 
-#ifdef WITH_WARNINGS
-#warning Why not pass a proper DocIterator here?
-#endif
+	// FIXME: Why not pass a proper DocIterator here?
 #if 0
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
@@ -4290,9 +4288,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::MULTICOLUMN: {
 		if (sel_row_start != sel_row_end) {
-#ifdef WITH_WARNINGS
-#warning Need I say it ? This is horrible.
-#endif
+			// FIXME: Need I say it ? This is horrible.
 			// FIXME UNICODE
 			Alert::error(_("Error setting multicolumn"),
 				     _("You cannot set multicolumn vertically."));

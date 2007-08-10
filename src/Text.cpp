@@ -523,9 +523,7 @@ int Text::leftMargin(Buffer const & buffer, int max_width,
 		// row in this paragraph.
 		RowList::iterator rit = par.rows().begin();
 		RowList::iterator end = par.rows().end();
-#ifdef WITH_WARNINGS
-#warning This is wrong.
-#endif
+		// FIXME: This is wrong.
 		int minfill = max_width;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)

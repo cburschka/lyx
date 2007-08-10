@@ -1254,9 +1254,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "kern") {
-#ifdef WITH_WARNINGS
-#warning A hack...
-#endif
+			// FIXME: A hack...
 			docstring s;
 			while (true) {
 				Token const & t = getToken();

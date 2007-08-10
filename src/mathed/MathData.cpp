@@ -160,11 +160,9 @@ void MathData::replace(ReplaceData & rep)
 		}
 	}
 
-#ifdef WITH_WARNINGS
-#warning temporarily disabled
+	// FIXME: temporarily disabled
 	// for (const_iterator it = begin(); it != end(); ++it)
 	//	it->nucleus()->replace(rep);
-#endif
 }
 
 

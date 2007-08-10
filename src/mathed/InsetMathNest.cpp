@@ -369,9 +369,7 @@ bool InsetMathNest::setMouseHover(bool mouse_hover)
 
 bool InsetMathNest::notifyCursorLeaves(Cursor & /*cur*/)
 {
-#ifdef WITH_WARNINGS
-#warning look here
-#endif
+	// FIXME: look here
 #if 0
 	MathData & ar = cur.cell();
 	// remove base-only "scripts"

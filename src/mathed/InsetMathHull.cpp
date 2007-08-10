@@ -972,8 +972,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		extra = from_ascii("noextra");
 	std::string const lang = to_ascii(dlang);
 
-#ifdef WITH_WARNINGS
-#warning temporarily disabled
+	// FIXME: temporarily disabled
 	//if (cur.selection()) {
 	//	MathData ar;
 	//	selGet(cur.ar);
@@ -981,7 +980,6 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	//	insert(pipeThroughExtern(lang, extra, ar));
 	//	return;
 	//}
-#endif
 
 	MathData eq;
 	eq.push_back(MathAtom(new InsetMathChar('=')));
@@ -1028,9 +1026,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		cur.pos() = 0;
 		MathData ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
-#ifdef WITH_WARNINGS
-#warning temporarily disabled
-#endif
+		// FIXME: temporarily disabled
 		addRow(cur.row());
 		++cur.idx();
 		++cur.idx();
@@ -1386,9 +1382,7 @@ Inset::Code InsetMathHull::lyxCode() const
 bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 				     bool, bool)
 {
-#ifdef WITH_WARNINGS
-#warning completely broken
-#endif
+	// FIXME: completely broken
 	static InsetMathHull * lastformula = 0;
 	static CursorBase current = DocIterator(ibegin(nucleus()));
 	static MathData ar;

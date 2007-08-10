@@ -150,9 +150,7 @@ Font Text::getFont(Buffer const & buffer, Paragraph const & par,
 	BOOST_ASSERT(pos >= 0);
 
 	Layout_ptr const & layout = par.layout();
-#ifdef WITH_WARNINGS
-#warning broken?
-#endif
+	// FIXME: broken?
 	BufferParams const & params = buffer.params();
 	pos_type const body_pos = par.beginOfBody();
 
@@ -1147,12 +1145,10 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)) {
 			oldpar.eraseChar(old.pos() - 1, cur.buffer().params().trackChanges);
-#ifdef WITH_WARNINGS
-#warning This will not work anymore when we have multiple views of the same buffer
+// FIXME: This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
 // other bufferviews. It will probably be easier to do that in a more
 // automated way in CursorSlice code. (JMarc 26/09/2001)
-#endif
 			// correct all cursor parts
 			if (same_par) {
 				fixCursorAfterDelete(cur.top(), old.top());
@@ -1182,7 +1178,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		ParagraphList & plist = old.text()->paragraphs();
 		plist.erase(boost::next(plist.begin(), old.pit()));
 
-		// see #warning above
+		// see #warning (FIXME?) above 
 		if (cur.depth() >= old.depth()) {
 			CursorSlice & curslice = cur[old.depth() - 1];
 			if (&curslice.inset() == &old.inset()

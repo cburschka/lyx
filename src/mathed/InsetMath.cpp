@@ -57,19 +57,14 @@ void InsetMath::dump() const
 
 void InsetMath::metricsT(TextMetricsInfo const &, Dimension &) const
 {
-#ifdef WITH_WARNINGS
 	lyxerr << "InsetMath::metricsT(Text) called directly!" << endl;
-#endif
 }
 
 
 void InsetMath::drawT(TextPainter &, int, int) const
 {
-#ifdef WITH_WARNINGS
 	lyxerr << "InsetMath::drawT(Text) called directly!" << endl;
-#endif
 }
-
 
 
 void InsetMath::write(WriteStream & os) const

@@ -67,9 +67,7 @@ ParIterator ParIterator::operator++(int)
 // should not be compiled/used. (Lgb)
 ParIterator & ParIterator::operator--()
 {
-#ifdef WITH_WARNINGS
-#warning look here
-#endif
+	// FIXME: look here
 //	DocIterator::backwardPar();
 	return *this;
 }
@@ -179,9 +177,7 @@ bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 }
 
 
-#ifdef WITH_WARNINGS
-#warning const correctness!
-#endif
+// FIXME: const correctness!
 
 ParConstIterator par_const_iterator_begin(Inset const & inset)
 {

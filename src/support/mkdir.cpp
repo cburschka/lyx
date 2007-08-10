@@ -41,9 +41,7 @@ int mkdir(FileName const & pathname, unsigned long int mode)
 # if MKDIR_TAKES_ONE_ARG
 	// MinGW32
 	return ::mkdir(pathname.toFilesystemEncoding().c_str());
-#  ifdef WITH_WARNINGS
-#   warning "Permissions of created directories are ignored on this system."
-#  endif
+	// FIXME: "Permissions of created directories are ignored on this system."
 # else
 	// POSIX
 	return ::mkdir(pathname.toFilesystemEncoding().c_str(), mode_t(mode));
@@ -51,14 +49,10 @@ int mkdir(FileName const & pathname, unsigned long int mode)
 #elif defined(_WIN32)
 	// plain Windows 32
 	return CreateDirectory(pathname.toFilesystemEncoding().c_str(), 0) != 0 ? 0 : -1;
-# ifdef WITH_WARNINGS
-#  warning "Permissions of created directories are ignored on this system."
-# endif
+	// FIXME: "Permissions of created directories are ignored on this system."
 #elif HAVE__MKDIR
 	return ::_mkdir(pathname.toFilesystemEncoding().c_str());
-# ifdef WITH_WARNINGS
-#  warning "Permissions of created directories are ignored on this system."
-# endif
+	// FIXME: "Permissions of created directories are ignored on this system."
 #else
 #   error "Don't know how to create a directory on this system."
 #endif

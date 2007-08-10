@@ -512,9 +512,7 @@ void Cursor::setSelection()
 {
 	selection() = true;
 	// A selection with no contents is not a selection
-#ifdef WITH_WARNINGS
-#warning doesnt look ok
-#endif
+	// FIXME: doesnt look ok
 	if (pit() == anchor().pit() && pos() == anchor().pos())
 		selection() = false;
 }
@@ -1012,9 +1010,7 @@ InsetMathUnknown * Cursor::activeMacro()
 
 void Cursor::pullArg()
 {
-#ifdef WITH_WARNINGS
-#warning Look here
-#endif
+	// FIXME: Look here
 	MathData ar = cell();
 	if (popLeft() && inMathed()) {
 		plainErase();
@@ -1028,9 +1024,7 @@ void Cursor::pullArg()
 
 void Cursor::touch()
 {
-#ifdef WITH_WARNINGS
-#warning look here
-#endif
+	// FIXME: look here
 #if 0
 	DocIterator::const_iterator it = begin();
 	DocIterator::const_iterator et = end();

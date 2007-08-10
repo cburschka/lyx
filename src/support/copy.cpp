@@ -38,9 +38,7 @@ bool lyx::support::chmod(FileName const & file, unsigned long int mode)
 	if (::chmod(file.toFilesystemEncoding().c_str(), mode_t(mode)) != 0)
 		return false;
 #else
-# ifdef WITH_WARNINGS
-#  warning "File permissions are ignored on this system."
-# endif
+	// FIXME: "File permissions are ignored on this system."
 #endif
 	return true;
 }

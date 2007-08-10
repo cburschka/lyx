@@ -131,9 +131,7 @@ void QWrap::apply()
 static string const numtostr(double val)
 {
 	string a = convert<string>(val);
-#ifdef WITH_WARNINGS
-#warning Will this test ever trigger? (Lgb)
-#endif
+	// FIXME: Will this test ever trigger? (Lgb)
 	if (a == "0")
 		a.erase();
 	return a;

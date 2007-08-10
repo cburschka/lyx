@@ -506,13 +506,11 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 		tmp->markDepClean(m_buffer->temppath());
 
-#ifdef WITH_WARNINGS
-#warning handle non existing files
-#warning Second argument is irrelevant!
+// FIXME: handle non existing files
+// FIXME: Second argument is irrelevant!
 // since only_body is true, makeLaTeXFile will not look at second
 // argument. Should we set it to string(), or should makeLaTeXFile
 // make use of it somehow? (JMarc 20031002)
-#endif
 		// The included file might be written in a different encoding
 		Encoding const * const oldEnc = runparams.encoding;
 		runparams.encoding = &tmp->params().encoding();

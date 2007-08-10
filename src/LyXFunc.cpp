@@ -1598,9 +1598,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			theApp()->updateColor(lcolor.getFromLyXName(lyx_name));
 
 			if (graphicsbg_changed) {
-#ifdef WITH_WARNINGS
-#warning FIXME!! The graphics cache no longer has a changeDisplay method.
-#endif
+				// FIXME: The graphics cache no longer has a changeDisplay method.
 #if 0
 				graphics::GCache::get().changeDisplay(true);
 #endif

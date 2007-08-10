@@ -396,10 +396,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph & par = cur.paragraph();
 		bool start = !par.params().startOfAppendix();
 
-#ifdef WITH_WARNINGS
-#warning The code below only makes sense at top level.
+// FIXME: The code below only makes sense at top level.
 // Should LFUN_APPENDIX be restricted to top-level paragraphs?
-#endif
 		// ensure that we have only one start_of_appendix in this document
 		// FIXME: this don't work for multipart document!
 		for (pit_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
@@ -655,9 +653,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_DELETE_BACKWARD_SKIP:
 		// Reverse the effect of LFUN_BREAK_PARAGRAPH_SKIP.
 		if (!cur.selection()) {
-#ifdef WITH_WARNINGS
-#warning look here
-#endif
+			// FIXME: look here
 			//CursorSlice cur = cursor();
 			backspace(cur);
 			//anchor() = cur;

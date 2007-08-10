@@ -666,9 +666,7 @@ void PrefDisplay::apply(LyXRC & rc) const
 	}
 	rc.display_graphics = dtype;
 
-#ifdef WITH_WARNINGS
-#warning FIXME!! The graphics cache no longer has a changeDisplay method.
-#endif
+	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
 	if (old_value != rc.display_graphics) {
 		lyx::graphics::GCache & gc = lyx::graphics::GCache::get();

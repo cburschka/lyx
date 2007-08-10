@@ -349,9 +349,8 @@ docstring Counters::counterLabel(docstring const & format)
 {
 	docstring label = format;
 	while (true) {
-#ifdef WITH_WARNINGS
-#warning Using boost::regex or boost::spirit would make this code a lot simpler... (Lgb)
-#endif
+		// FIXME: Using boost::regex or boost::spirit would make
+	  	// FIXME: this code a lot simpler... (Lgb)
 
 		size_t const i = label.find('\\', 0);
 		if (i == docstring::npos)

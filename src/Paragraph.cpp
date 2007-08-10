@@ -751,12 +751,10 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			close = true;
 		}
 
-#ifdef WITH_WARNINGS
-#warning Bug: we can have an empty font change here!
+// FIXME: Bug: we can have an empty font change here!
 // if there has just been a font change, we are going to close it
 // right now, which means stupid latex code like \textsf{}. AFAIK,
 // this does not harm dvi output. A minor bug, thus (JMarc)
-#endif
 		// Some insets cannot be inside a font change command.
 		// However, even such insets *can* be placed in \L or \R
 		// or their equivalents (for RTL language switches), so we don't
@@ -2168,11 +2166,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 					runparams, basefont, basefont);
 		}
 #else
-#ifdef WITH_WARNINGS
-//#warning For now we ALWAYS have to close the foreign font settings if they are
-//#warning there as we start another \selectlanguage with the next paragraph if
-//#warning we are in need of this. This should be fixed sometime (Jug)
-#endif
+//FIXME: For now we ALWAYS have to close the foreign font settings if they are
+//FIXME: there as we start another \selectlanguage with the next paragraph if
+//FIXME: we are in need of this. This should be fixed sometime (Jug)
 		running_font.latexWriteEndChanges(os, bparams, runparams,
 				basefont, basefont);
 #endif
@@ -2404,9 +2400,7 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 {
 	if (!empty())
 		return getFirstFontSettings(bparams).language();
-#ifdef WITH_WARNINGS
-#warning FIXME we should check the prev par as well (Lgb)
-#endif
+	// FIXME: we should check the prev par as well (Lgb)
 	return bparams.language;
 }
 

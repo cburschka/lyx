@@ -1613,9 +1613,7 @@ bool Buffer::isUnnamed() const
 }
 
 
-#ifdef WITH_WARNINGS
-#warning this function should be moved to buffer_pimpl.C
-#endif
+// FIXME: this function should be moved to buffer_pimpl.C
 void Buffer::markDirty()
 {
 	if (pimpl_->lyx_clean) {

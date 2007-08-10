@@ -244,7 +244,7 @@ int Trans::load(Lexer & lex)
 				return -1;
 
 #if 1
-//#warning This code should be removed...
+			// FIXME: This code should be removed...
 			// But we need to fix up all the kmap files first
 			// so that this field is not present anymore.
 			if (lex.next(true)) {

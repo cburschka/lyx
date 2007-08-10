@@ -538,9 +538,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 		inset->read(buf, lex);
 
-#ifdef WITH_WARNINGS
-#warning hack..
-#endif
+// FIXME: hack..
 		if (inset->lyxCode() == Inset::MATHMACRO_CODE) {
 			MathMacroTemplate const * tmpl =
 				static_cast<MathMacroTemplate*>(inset.get());

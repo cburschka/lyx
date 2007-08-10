@@ -60,9 +60,7 @@ void Inset.heorem::write(Buffer const * buf, ostream & os) const
 
 auto_ptr<Inset> Inset.heorem::doClone() const
 {
-#ifdef WITH_WARNINGS
-#warning Is this inset used? If YES this is WRONG!!! (Jug)
-#endif
+	// FIXME: Is this inset used? If YES this is WRONG!!! (Jug)
 	auto_ptr<Inset.heorem> result(new InsetTheorem);
 	result->setCollapsed(!isOpen());
 
