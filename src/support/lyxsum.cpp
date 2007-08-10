@@ -39,10 +39,6 @@ template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 // are available. Order is faster to slowest.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
 
-// Make sure we get modern version of mmap and friends with void*,
-// not `compatibility' version with caddr_t.
-#define _POSIX_C_SOURCE 199506L
-
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
 #endif

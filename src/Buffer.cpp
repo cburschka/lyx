@@ -199,7 +199,7 @@ public:
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
-	  timestamp_(0), checksum_(0), toc_backend(&parent)
+	  toc_backend(&parent), timestamp_(0), checksum_(0)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);

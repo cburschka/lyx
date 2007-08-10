@@ -135,7 +135,7 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 	// NOTE: I use {} to quote text, which is an experimental feature
 	// of the listings package (see page 25 of the manual)
 	int lines = 0;
-	bool lstinline = params().isInline();
+	bool isInline = params().isInline();
 	// get the paragraphs. We can not output them directly to given odocstream
 	// because we can not yet determine the delimiter character of \lstinline
 	docstring code;
@@ -156,17 +156,17 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 		++par;
 		// for the inline case, if there are multiple paragraphs
 		// they are simply joined. Otherwise, expect latex errors.
-		if (par != end && !lstinline && !captionline) {
+		if (par != end && !isInline && !captionline) {
 			code += "\n";
 			++lines;
 		}
 	}
-	char const * delimiter;
-	if (lstinline) {
-		for (delimiter = lstinline_delimiters; delimiter != '\0'; ++delimiter)
+	if (isInline) {
+                char const * delimiter = lstinline_delimiters;
+		for (; delimiter != '\0'; ++delimiter)
 			if (!contains(code, *delimiter))
 				break;
-		// this code piece contains all possible special character? !!!
+		// This code piece contains all possible special character? !!!
 		// Replace ! with a warning message and use ! as delimiter.
 		if (*delimiter == '\0') {
 			code = subst(code, from_ascii("!"), from_ascii(" WARNING: no lstline delimiter can be used "));
@@ -176,6 +176,8 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 			os << "\\lstinline" << *delimiter;
 		else
 			os << "\\lstinline[" << from_ascii(param_string) << "]" << *delimiter;
+                os << code
+                   << *delimiter;
 	} else {
 		docstring const caption = getCaption(buf, runparams);
 		if (param_string.empty() && caption.empty())
@@ -190,12 +192,8 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 			os << from_utf8(param_string) << "]\n";
 		}
 		lines += 4;
-	}
-	os << code;
-	if (lstinline)
-		os << *delimiter;
-	else {
-		os << "\n\\end{lstlisting}\n\\endgroup\n";
+                os << code
+                   << "\n\\end{lstlisting}\n\\endgroup\n";
 		lines += 3;
 	}
 

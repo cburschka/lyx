@@ -94,7 +94,7 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	Length const & len, Length::UNIT defaultUnit)
+                     Length const & len, Length::UNIT /*defaultUnit*/)
 {
 	combo->setCurrentItem(Length(len).unit());
 	input->setText(toqstr(convert<string>(Length(len).value())));

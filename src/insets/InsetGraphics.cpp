@@ -848,8 +848,11 @@ int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
 
 namespace {
 
-int writeImageObject(char * format, odocstream & os, OutputParams const & runparams,
-		     docstring const graphic_label, docstring const attributes)
+int writeImageObject(char const * format,
+                     odocstream & os,
+                     OutputParams const & runparams,
+		     docstring const & graphic_label,
+                     docstring const & attributes)
 {
 		if (runparams.flavor != OutputParams::XML) {
 			os << "<![ %output.print."

@@ -519,26 +519,32 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			string const iconvname = lex.getString();
 			lex.next();
 			string const width = lex.getString();
-			bool fixedwidth;
+			bool fixedwidth;;
 			if (width == "fixed")
 				fixedwidth = true;
 			else if (width == "variable")
 				fixedwidth = false;
-			else
+			else {
+                                fixedwidth = false;
 				lex.printError("Encodings::read: "
 					       "Unknown width: `$$Token'");
+                        }
+                        
 			lex.next();
 			string const p = lex.getString();
 			Encoding::Package package;
 			if (p == "none")
-				package = Encoding::none;
+                                package = Encoding::none;
 			else if (p == "inputenc")
 				package = Encoding::inputenc;
 			else if (p == "CJK")
 				package = Encoding::CJK;
-			else
+			else {
+                                package = Encoding::none;
 				lex.printError("Encodings::read: "
 					       "Unknown package: `$$Token'");
+                        }
+                        
 			LYXERR(Debug::INFO) << "Reading encoding " << name << endl;
 			encodinglist[name] = Encoding(name, latexname,
 						      iconvname, fixedwidth,

@@ -63,7 +63,7 @@ ToolbarItem::ToolbarItem(Type type, FuncRequest const & func, docstring const & 
 
 
 ToolbarItem::ToolbarItem(Type type, string const & name, docstring const & label)
-	: type_(type), name_(name), label_(label)
+	: type_(type), label_(label), name_(name)
 {
 }
 
