@@ -1,0 +1,268 @@
+
+include(../config.pri)
+
+TEMPLATE = lib
+
+QT =
+
+#DEFINES += QT_NO_KEYWORDS
+
+INC += src
+INC += boost
+
+HPP += ASpell_local.h
+HPP += Author.h
+HPP += Bidi.h
+HPP += Box.h
+HPP += BranchList.h
+HPP += Buffer.h
+HPP += BufferList.h
+HPP += BufferParams.h
+HPP += BufferView.h
+HPP += Bullet.h
+HPP += Changes.h
+HPP += Chktex.h
+HPP += Color.h
+HPP += Converter.h
+HPP += ConverterCache.h
+HPP += CoordCache.h
+HPP += Counters.h
+HPP += Cursor.h
+HPP += CursorSlice.h
+HPP += CutAndPaste.h
+HPP += DepTable.h
+HPP += Dimension.h
+HPP += DispatchResult.h
+HPP += DocIterator.h
+HPP += Encoding.h
+HPP += ErrorList.h
+HPP += Exporter.h
+HPP += FloatList.h
+HPP += Floating.h
+HPP += Font.h
+HPP += FontIterator.h
+HPP += Format.h
+HPP += FuncRequest.h
+HPP += FuncStatus.h
+HPP += Graph.h
+HPP += ISpell.h
+HPP += Importer.h
+HPP += InsetIterator.h
+HPP += InsetList.h
+HPP += Intl.h
+HPP += KeyMap.h
+HPP += KeySequence.h
+HPP += LaTeX.h
+HPP += LaTeXFeatures.h
+HPP += Language.h
+HPP += Layout.h
+HPP += Length.h
+HPP += Lexer.h
+HPP += LyX.h
+HPP += LyXAction.h
+HPP += LyXFunc.h
+HPP += LyXRC.h
+HPP += LyXVC.h
+HPP += MenuBackend.h
+HPP += Messages.h
+HPP += MetricsInfo.h
+HPP += Mover.h
+HPP += OutputParams.h
+HPP += PSpell.h
+HPP += ParIterator.h
+HPP += Paragraph.h
+HPP += ParagraphList.h
+HPP += ParagraphMetrics.h
+HPP += ParagraphParameters.h
+HPP += PrinterParams.h
+HPP += Row.h
+HPP += Section.h
+HPP += Server.h
+HPP += ServerSocket.h
+HPP += Session.h
+HPP += Spacing.h
+HPP += SpellBase.h
+HPP += TexRow.h
+HPP += Text.h
+HPP += TextClass.h
+HPP += TextClassList.h
+HPP += TextMetrics.h
+HPP += Thesaurus.h
+HPP += TocBackend.h
+HPP += ToolbarBackend.h
+HPP += Trans.h
+HPP += Undo.h
+HPP += VCBackend.h
+HPP += VSpace.h
+#HPP += Variables.h
+HPP += WordLangTuple.h
+HPP += buffer_funcs.h
+HPP += bufferview_funcs.h
+HPP += callback.h
+HPP += debug.h
+HPP += factory.h
+HPP += gettext.h
+HPP += lengthcommon.h
+HPP += lfuns.h
+HPP += lyxfind.h
+HPP += lyxlayout_ptr_fwd.h
+HPP += output.h
+HPP += output_docbook.h
+HPP += output_latex.h
+HPP += output_plaintext.h
+HPP += paper.h
+HPP += paragraph_funcs.h
+HPP += pch.h
+HPP += rowpainter.h
+HPP += sgml.h
+HPP += toc.h
+HPP += update_flags.h
+HPP += version.h
+
+#CPP += ASpell.cpp
+CPP += Author.cpp
+CPP += Bidi.cpp
+CPP += Box.cpp
+CPP += BranchList.cpp
+CPP += Buffer.cpp
+CPP += BufferList.cpp
+CPP += BufferParams.cpp
+CPP += BufferView.cpp
+CPP += Bullet.cpp
+CPP += Changes.cpp
+CPP += Chktex.cpp
+CPP += Color.cpp
+CPP += Converter.cpp
+CPP += ConverterCache.cpp
+CPP += CoordCache.cpp
+CPP += Counters.cpp
+CPP += Cursor.cpp
+CPP += CursorSlice.cpp
+CPP += CutAndPaste.cpp
+CPP += DepTable.cpp
+CPP += Dimension.cpp
+CPP += DocIterator.cpp
+CPP += Encoding.cpp
+CPP += ErrorList.cpp
+CPP += Exporter.cpp
+CPP += FloatList.cpp
+CPP += Floating.cpp
+CPP += Font.cpp
+CPP += FontIterator.cpp
+CPP += Format.cpp
+CPP += FuncRequest.cpp
+CPP += FuncStatus.cpp
+CPP += Graph.cpp
+CPP += ISpell.cpp
+CPP += Importer.cpp
+CPP += InsetIterator.cpp
+CPP += InsetList.cpp
+CPP += Intl.cpp
+CPP += KeyMap.cpp
+CPP += KeySequence.cpp
+CPP += LaTeX.cpp
+CPP += LaTeXFeatures.cpp
+CPP += Language.cpp
+CPP += Layout.cpp
+CPP += Length.cpp
+CPP += Lexer.cpp
+CPP += LyX.cpp
+CPP += LyXAction.cpp
+CPP += LyXFunc.cpp
+CPP += LyXRC.cpp
+CPP += LyXVC.cpp
+CPP += MenuBackend.cpp
+CPP += Messages.cpp
+CPP += MetricsInfo.cpp
+CPP += Mover.cpp
+CPP += OutputParams.cpp
+#CPP += PSpell.cpp
+CPP += ParIterator.cpp
+CPP += Paragraph.cpp
+CPP += ParagraphMetrics.cpp
+CPP += ParagraphParameters.cpp
+CPP += PrinterParams.cpp
+CPP += Row.cpp
+CPP += Section.cpp
+CPP += Server.cpp
+CPP += ServerSocket.cpp
+CPP += Session.cpp
+CPP += Spacing.cpp
+CPP += SpellBase.cpp
+CPP += TexRow.cpp
+CPP += Text.cpp
+CPP += Text2.cpp
+CPP += Text3.cpp
+CPP += TextClass.cpp
+CPP += TextClassList.cpp
+CPP += TextMetrics.cpp
+CPP += Thesaurus.cpp
+CPP += TocBackend.cpp
+CPP += ToolbarBackend.cpp
+CPP += Trans.cpp
+CPP += Undo.cpp
+CPP += VCBackend.cpp
+CPP += VSpace.cpp
+#CPP += Variables.cpp
+CPP += boost.cpp
+CPP += buffer_funcs.cpp
+CPP += bufferview_funcs.cpp
+CPP += callback.cpp
+CPP += debug.cpp
+CPP += factory.cpp
+CPP += gettext.cpp
+CPP += lengthcommon.cpp
+CPP += lyxfind.cpp
+CPP += main1.cpp
+CPP += output.cpp
+CPP += output_docbook.cpp
+CPP += output_latex.cpp
+CPP += output_plaintext.cpp
+CPP += paragraph_funcs.cpp
+CPP += rowpainter.cpp
+CPP += sgml.cpp
+CPP += toc.cpp
+
+for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
+for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
+for(PATH,INC) { INCLUDEPATH += $${BUILD_BASE_SOURCE_DIR}/$${PATH} }
+
+
+QMAKE_RUN_CXX1  = $(CXX) -c $(CXXFLAGS) $(INCPATH)
+
+configtarget.target = $${BUILD_BASE_TARGET_DIR}/src/config.h
+configtarget.commands = \
+	cp $${BUILD_BASE_SOURCE_DIR}/development/qmake/config.h.template config.h
+
+versiontarget.target = version.cpp
+versiontarget.commands = \
+	cp $${BUILD_BASE_SOURCE_DIR}/src/version.cpp.in version.cpp 
+versiontarget.depends = config.h
+
+versiontarget2.target = version.o
+versiontarget2.commands = $${QMAKE_RUN_CXX1} -c version.cpp -o version.o
+versiontarget2.depends = version.cpp config.h
+
+
+packagetarget.target = Package.cpp
+packagetarget.commands = \
+	cp $${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in Package.cpp 
+packagetarget.depends = config.h
+
+packagetarget2.target = Package.o
+packagetarget2.commands = $${QMAKE_RUN_CXX1} -c Package.cpp -o Package.o
+packagetarget2.depends = Package.cpp config.h
+
+
+QMAKE_EXTRA_TARGETS += configtarget
+QMAKE_EXTRA_TARGETS += versiontarget versiontarget2
+QMAKE_EXTRA_TARGETS += packagetarget packagetarget2
+
+QMAKE_CLEAN += Package.o Package.cpp version.o version.cpp config.h
+
+PRE_TARGETDEPS += $${BUILD_BASE_TARGET_DIR}/src/config.h
+PRE_TARGETDEPS += Package.o 
+PRE_TARGETDEPS += version.o 
+
+LIBS += version.o Package.o
+
