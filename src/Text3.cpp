@@ -1603,7 +1603,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	needsUpdate |= (cur.pos() != cur.lastpos()) && cur.selection();
-	theSelection().haveSelection(bv->cursor().selection());
 
 	// FIXME: The cursor flag is reset two lines below
 	// so we need to check here if some of the LFUN did touch that.
