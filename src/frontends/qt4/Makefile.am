@@ -1,25 +1,38 @@
 include $(top_srcdir)/config/common.am
 include $(srcdir)/Makefile.dialogs
 
-SUBDIRS = ui
+CLEANFILES += *.h
+CLEANFILES += *_moc.cpp
+CLEANFILES += $(UIFILES:%.ui=ui/%.h)
 
-EXTRA_DIST = pch.h Makefile.dialogs
+BUILT_SOURCES = $(UIFILES:%.ui=ui/%.h)
+BUILT_SOURCES += $(PCH_FILE)
+BUILT_SOURCES += $(MOCEDFILES)
 
-DISTCLEANFILES += *_moc.cpp
+EXTRA_DIST = pch.h
+EXTRA_DIST += Makefile.dialogs
 
-liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
+#########################  Translation  #############################
+# Use _() for localization instead of tr() or trUtf8()
+UIC4FLAGS=-tr lyx::qt_
 
-MOCEDFILES = $(MOCFILES:.cpp=_moc.cpp)
+%.h: %.ui
+	$(UIC4) $(UIC4FLAGS) $< -o $@
+
+MOCEDFILES = $(MOCFILES:%.cpp=%_moc.cpp)
 
 %_moc.cpp: %.h
 	$(MOC4) -o $@ $<
 
-BUILT_SOURCES = $(PCH_FILE) $(MOCEDFILES)
+
+#########################  LIBRARIES  #############################
 
 noinst_LTLIBRARIES = liblyxqt4.la
 
+liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
 liblyxqt4_la_LDFLAGS = $(QT4_LDFLAGS)
 liblyxqt4_la_LIBADD = $(QT4_LIB) 
+
 AM_CPPFLAGS += \
 	$(QT4_CPPFLAGS) \
 	$(PCH_FLAGS) \
