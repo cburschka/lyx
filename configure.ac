@@ -153,7 +153,8 @@ dnl see http://permalink.gmane.org/gmane.comp.gnu.libtool.general/6699
 dnl Note that this will reportedly not be needed with libtool 2.0
 m4_undefine([AC_PROG_F77])
 m4_defun([AC_PROG_F77],[])
-AC_DISABLE_SHARED
+#AC_DISABLE_SHARED
+AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
 #AM_PROG_LIBTOOL
 LYX_PROG_LIBTOOL
@@ -394,15 +395,6 @@ char * strerror(int n);
 ### Finish the work.
 AC_CONFIG_FILES([Makefile
        boost/Makefile \
-       boost/libs/Makefile \
-       boost/libs/filesystem/Makefile \
-       boost/libs/filesystem/src/Makefile \
-       boost/libs/iostreams/Makefile \
-       boost/libs/iostreams/src/Makefile \
-       boost/libs/regex/Makefile \
-       boost/libs/regex/src/Makefile \
-       boost/libs/signals/Makefile \
-       boost/libs/signals/src/Makefile \
        config/Makefile \
        development/Makefile \
        development/MacOSX/Makefile \

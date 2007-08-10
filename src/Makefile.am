@@ -18,23 +18,21 @@ EXTRA_DIST = config.h.in stamp-h.in version.cpp.in \
 	paper.h \
 	pch.h
 
-LYX_PRE_LIBS = mathed/libmathed.la insets/libinsets.la \
-	frontends/libfrontends.la
+LYX_PRE_LIBS = mathed/liblyxmathed.la insets/liblyxinsets.la \
+	frontends/liblyxfrontends.la
 
-LYX_POST_LIBS = frontends/controllers/libcontrollers.la \
-	graphics/libgraphics.la \
-	support/libsupport.la
-
-BOOST_LIBS = $(BOOST_REGEX) $(BOOST_SIGNALS) $(BOOST_FILESYSTEM) $(BOOST_IOSTREAMS)
+LYX_POST_LIBS = frontends/controllers/liblyxcontrollers.la \
+	graphics/liblyxgraphics.la \
+	support/liblyxsupport.la
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
-bin_PROGRAMS = lyx
+pkglib_LTLIBRARIES = liblyxcore.la
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
 EXTRA_PROGRAMS = lyx-qt4
 
-lyx_qt4_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
-	frontends/qt4/libqt4.la $(LYX_POST_LIBS) $(OTHERLIBS)
+lyx_qt4_LDADD = liblyxcore.la  $(LYX_PRE_LIBS) \
+	frontends/qt4/liblyxqt4.la $(LYX_POST_LIBS) $(OTHERLIBS)
 lyx_qt4_SOURCES = main.cpp
 
 lyx$(EXEEXT): $(FRONTENDS_PROGS)
@@ -58,8 +56,7 @@ ISPELL = ISpell.cpp ISpell.h
 endif
 
 
-
-lyx_SOURCES = \
+liblyxcore_la_SOURCES = \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	Author.cpp \
 	Author.h \

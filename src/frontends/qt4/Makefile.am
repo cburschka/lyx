@@ -7,7 +7,7 @@ EXTRA_DIST = pch.h Makefile.dialogs
 
 DISTCLEANFILES += *_moc.cpp
 
-libqt4_la_DEPENDENCIES = $(MOCEDFILES)
+liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
 
 MOCEDFILES = $(MOCFILES:.cpp=_moc.cpp)
 
@@ -16,10 +16,10 @@ MOCEDFILES = $(MOCFILES:.cpp=_moc.cpp)
 
 BUILT_SOURCES = $(PCH_FILE) $(MOCEDFILES)
 
-noinst_LTLIBRARIES = libqt4.la
+noinst_LTLIBRARIES = liblyxqt4.la
 
-libqt4_la_LDFLAGS = $(QT4_LDFLAGS)
-libqt4_la_LIBADD = $(QT4_LIB) 
+liblyxqt4_la_LDFLAGS = $(QT4_LDFLAGS)
+liblyxqt4_la_LIBADD = $(QT4_LIB) 
 AM_CPPFLAGS += \
 	$(QT4_CPPFLAGS) \
 	$(PCH_FLAGS) \
@@ -29,7 +29,7 @@ AM_CPPFLAGS += \
 	$(QT4_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-libqt4_la_SOURCES = \
+liblyxqt4_la_SOURCES = \
 	alert_pimpl.cpp \
 	ColorCache.h ColorCache.cpp \
 	DockView.h \

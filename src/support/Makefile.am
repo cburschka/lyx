@@ -7,17 +7,17 @@ CLEANFILES += $(BUILT_SOURCES)
 EXTRA_DIST = Package.cpp.in pch.h \
 	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
 
-noinst_LTLIBRARIES = libsupport.la
+pkglib_LTLIBRARIES = liblyxsupport.la
 
-libsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB)
-libsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
+liblyxsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB) $(BOOST_SIGNALS)
+liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
 
 BUILT_SOURCES = $(PCH_FILE) package.C
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
-libsupport_la_SOURCES = \
+liblyxsupport_la_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \

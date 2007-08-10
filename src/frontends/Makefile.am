@@ -8,11 +8,11 @@ EXTRA_DIST = pch.h
 
 BUILT_SOURCES = $(PCH_FILE)
 
-noinst_LTLIBRARIES = libfrontends.la
+pkglib_LTLIBRARIES = liblyxfrontends.la
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
-libfrontends_la_SOURCES = \
+liblyxfrontends_la_SOURCES = \
 	alert.cpp \
 	alert.h \
 	Alert_pimpl.h \

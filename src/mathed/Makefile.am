@@ -4,11 +4,11 @@ EXTRA_DIST = pch.h InsetFormulaMacro.cpp
 
 BUILT_SOURCES = $(PCH_FILE)
 
-noinst_LTLIBRARIES = libmathed.la
+pkglib_LTLIBRARIES = liblyxmathed.la
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
-libmathed_la_SOURCES = \
+liblyxmathed_la_SOURCES = \
 	InsetMathAMSArray.cpp \
 	InsetMathAMSArray.h \
 	InsetMathArray.cpp \

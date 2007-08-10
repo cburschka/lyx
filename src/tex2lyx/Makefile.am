@@ -18,8 +18,6 @@ bin_PROGRAMS = tex2lyx
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
-BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM) $(BOOST_IOSTREAMS)
-
 LINKED_FILES = \
 	FloatList.cpp \
 	Floating.cpp \
@@ -52,7 +50,14 @@ tex2lyx_SOURCES = \
 	text.cpp
 
 tex2lyx_LDADD = \
-	$(top_builddir)/src/support/libsupport.la \
+	$(top_builddir)/src/support/liblyxsupport.la \
+ 	$(top_builddir)/src/liblyxcore.la \
+ 	$(top_builddir)/src/insets/liblyxinsets.la \
+ 	$(top_builddir)/src/mathed/liblyxmathed.la \
+ 	$(top_builddir)/src/graphics/liblyxgraphics.la \
+ 	$(top_builddir)/src/frontends/liblyxfrontends.la \
+ 	$(top_builddir)/src/frontends/controllers/liblyxcontrollers.la \
+ 	$(top_builddir)/src/frontends/qt4/liblyxqt4.la \
 	$(BOOST_LIBS) $(LIBICONV) @LIBS@
 
 $(LINKED_FILES) :

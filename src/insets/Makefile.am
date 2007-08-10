@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LTLIBRARIES = libinsets.la
+pkglib_LTLIBRARIES = liblyxinsets.la
 
 EXTRA_DIST = \
 	pch.h \
@@ -11,7 +11,7 @@ BUILT_SOURCES = $(PCH_FILE)
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
-libinsets_la_SOURCES = \
+liblyxinsets_la_SOURCES = \
 	MailInset.cpp \
 	MailInset.h \
 	ExternalSupport.cpp \

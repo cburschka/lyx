@@ -1745,7 +1745,11 @@ if build_qt4:
     #
     # moc qt4_moc_files, the moced files are included in the original files
     #
-    qt4_moced_files = [frontend_env.Moc4(x.replace('.cpp', '_moc.cpp'), x.replace('.cpp', '.h')) for x in qt4_moc_files]
+
+#    qt4_moced_files = [frontend_env.Moc4(x.replace('.cpp', '_moc.cpp'), \
+#        x.replace('.cpp', '.h')) for x in qt4_moc_files]
+
+    qt4_moced_files = [frontend_env.Moc4("moc_" + x, x.replace('.cpp', '.h')) for x in qt4_moc_files]
 
     qt4 = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/qt4',

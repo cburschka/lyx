@@ -4,11 +4,11 @@ EXTRA_DIST = pch.h
 
 BUILT_SOURCES = $(PCH_FILE)
 
-noinst_LTLIBRARIES = libgraphics.la
+pkglib_LTLIBRARIES = liblyxgraphics.la
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
-libgraphics_la_SOURCES = \
+liblyxgraphics_la_SOURCES = \
 	GraphicsCache.h \
 	GraphicsCache.cpp \
 	GraphicsCacheItem.h \

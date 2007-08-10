@@ -24,7 +24,6 @@ following hack as starting point to write some macros:
   \else
     \def\b{}\def\e{}
   \fi
-
   ...
 
   \[\begin{array}{ccc}

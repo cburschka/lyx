@@ -6,11 +6,11 @@ EXTRA_DIST = pch.h BCView.tmpl
 
 BUILT_SOURCES = $(PCH_FILE)
 
-noinst_LTLIBRARIES = libcontrollers.la
+pkglib_LTLIBRARIES = liblyxcontrollers.la
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
-libcontrollers_la_SOURCES= \
+liblyxcontrollers_la_SOURCES= \
 	Dialog.cpp \
 	Dialog.h \
 	Kernel.cpp \
