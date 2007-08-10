@@ -8,14 +8,16 @@ TARGET = ../bin/tex2lyx$${DEBUGSUFFIX}
 QT =
 
 LIBS += -L../lib
+
+LIBS += -llyxsupport$${DEBUGSUFFIX}
+LIBS += -llyxboost$${DEBUGSUFFIX}
+
 LIBS += -llyxmathed$${DEBUGSUFFIX}
 LIBS += -llyxinsets$${DEBUGSUFFIX}
 LIBS += -llyxgraphics$${DEBUGSUFFIX}
-LIBS += -llyxsupport$${DEBUGSUFFIX}
 LIBS += -llyxfrontends$${DEBUGSUFFIX}
 LIBS += -llyxcontrollers$${DEBUGSUFFIX}
 LIBS += -llyxqt4$${DEBUGSUFFIX}
-LIBS += -llyxboost$${DEBUGSUFFIX}
 LIBS += -llyxsrc$${DEBUGSUFFIX}
 
 INC += src
@@ -41,15 +43,15 @@ CPP += tex2lyx.cpp
 CPP += text.cpp
 
 # linked files 
-HPP += ../Layout.h
-HPP += ../TextClass.h
+#HPP += ../Layout.h
+#HPP += ../TextClass.h
 
-CPP += ../FloatList.cpp
-CPP += ../Floating.cpp
-CPP += ../Counters.cpp
-CPP += ../Layout.cpp
-CPP += ../TextClass.cpp
-CPP += ../Lexer.cpp 
+#CPP += ../FloatList.cpp
+#CPP += ../Floating.cpp
+#CPP += ../Counters.cpp
+#CPP += ../Layout.cpp
+#CPP += ../TextClass.cpp
+#CPP += ../Lexer.cpp 
 
 
 for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/tex2lyx/$${FILE} }
