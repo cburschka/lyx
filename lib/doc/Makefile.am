@@ -9,19 +9,29 @@ dist_clipartdoc_DATA = \
 	clipart/escher-lsd.eps \
 	clipart/mobius.eps \
 	clipart/platypus.eps \
+	clipart/Abstract.pdf \
 	clipart/BoxInsetDefaultQt4.png \
 	clipart/ChildDocumentQt4.png \
 	clipart/CommentNoteImageQt4.png \
 	clipart/endnotes.pdf \
+	clipartERT.png \
 	clipart/ExternalMaterialQt4.png \
+	clipartExtraToolbar.png \
 	clipart/floatQt4.png \
 	clipart/footnoteQt4.png \
 	clipart/FramedNoteImageQt4.png \
 	clipart/GreyedOutNoteImageQt4.png \
 	clipart/labelQt4.png \
+	clipartLaTeX.png \
 	clipart/LyXNoteImageQt4.png \
+	clipartmacrobox.png \
+	clipartmacrouse.png \
+	clipartmbox.png \
 	clipart/referenceQt4.png \
 	clipart/ShadedNoteImageQt4.png \
+	clipartSpaceMarker.png \
+	clipartStandardToolbar.png \
+	clipartToolbarEnvBox.png \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 

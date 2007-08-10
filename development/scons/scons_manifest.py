@@ -2219,19 +2219,29 @@ lib_doc_files = Split('''
 
 
 lib_doc_clipart_files = Split('''
+    Abstract.pdf
     BoxInsetDefaultQt4.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
+    ERT.png
     ExternalMaterialQt4.png
+    ExtraToolbar.png
     FramedNoteImageQt4.png
     GreyedOutNoteImageQt4.png
+    LaTeX.png
     LyXNoteImageQt4.png
     ShadedNoteImageQt4.png
+    SpaceMarker.png
+    StandardToolbar.png
+    ToolbarEnvBox.png
     endnotes.pdf
     escher-lsd.eps
     floatQt4.png
     footnoteQt4.png
     labelQt4.png
+    macrobox.png
+    macrouse.png
+    mbox.png
     mobius.eps
     platypus.eps
     referenceQt4.png
