@@ -45,10 +45,11 @@ What's new
 * USER INTERFACE:
 
 - Fix loading non-lyx child documents with relative path names, change 
-  'Load' to 'Edit' in the child document dialog. (Bugs 4107 and 4111)
+  'Load' to 'Edit' in the child document dialog (Bugs 4107 and 4111)
 
-- Fix bug 4112: Do roman numerals beyond 20.
-- Fix bug 580: Some malformed tables are now rendered correctly.
+- Allow roman numerals beyond 20 (Bug 4112)
+
+- Rrender malformed tables are correctly (Bug 580)
 
 - Enable File -> Revert when the file is externally modified, and rename
   this menu item to File -> Revert to saved. (Bugs 3766 and 4114)
