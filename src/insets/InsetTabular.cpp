@@ -749,15 +749,23 @@ void Tabular::set_row_column_number_info()
 	numberofcells = 0;
 	for (row_type row = 0; row < rows_; ++row) {
 		for (col_type column = 0; column < columns_; ++column) {
+
+			// If on its left is either the edge, or a normal cell,
+			// then this cannot be a non-begin multicol cell.
+			// Clean up as well as we can:
+			if (cell_info[row][column].multicolumn
+				   == CELL_PART_OF_MULTICOLUMN) {
+				if (column == 0 || 
+				    cell_info[row][column - 1]
+					.multicolumn == CELL_NORMAL)
+					cell_info[row][column].multicolumn = 
+						CELL_NORMAL;
+			}
+			// Count only non-multicol cells plus begin multicol
+			// cells, ignore non-begin multicol cells:
 			if (cell_info[row][column].multicolumn
 				!= Tabular::CELL_PART_OF_MULTICOLUMN)
 				++numberofcells;
-			if (numberofcells == 0)
-				// FIXME: Is this intended?
-				cell_info[row][column].cellno = npos;
-			else
-				cell_info[row][column].cellno =
-					numberofcells - 1;
 		}
 	}
 
