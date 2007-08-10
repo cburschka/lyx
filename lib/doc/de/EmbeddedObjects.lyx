@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -168,6 +168,11 @@
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language ngerman
@@ -560,31 +565,9 @@ Ausschnitt
 \begin_layout Description
 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-\InsetSpace ~
+LaTeX-\InsetSpace ~
 und\InsetSpace ~
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Optionen
+LyX-Optionen
 \family default
  Hier können Sie das Aussehen einer Abbildung innerhalb von LyX ändern und
  festlegen, ob die Abbildung ein Teil einer gleitenden Abbildung mit eigener
@@ -977,18 +960,7 @@ status collapsed
 
 X-\InsetSpace ~
 und\InsetSpace ~
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Optionen
+LyX-Optionen
 \family default
  des 
 \family sans
@@ -22099,41 +22071,7 @@ Notizen
 \end_layout
 
 \begin_layout Section
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
--Notizen
+LyX-Notizen
 \begin_inset LatexCommand label
 name "abs:LyX-Notizen"
 
@@ -22142,37 +22080,6 @@ name "abs:LyX-Notizen"
 
 \begin_inset LatexCommand index
 name "Notizen ! LyX-Notizen"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Den Befehl
-\family typewriter
- 
-\family default
-\series bold
-
-\backslash
-texorpdfstring
-\series default
- stellt das LaTeX-Paket 
-\series bold
-hyperref
-\series default
- bereit, um zu verhindern, dass Ligaturen in PDF-Lesezeichen falsch dargestellt
- werden.
- Weitere Informationen finden Sie in 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
@@ -22199,32 +22106,10 @@ Notiz
 \end_layout
 
 \begin_layout Description
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Notiz: Dieser Typ ist für interne Notizen wird nicht gedruckt.
+LyX-Notiz: Dieser Typ ist für interne Notizen wird nicht gedruckt.
  Eine 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Notiz
+LyX-Notiz
 \family default
  sieht so aus:
 \newline
@@ -22274,7 +22159,7 @@ status collapsed
 
 \end_inset
 
-X (pdflatex) / LaTeX (plain)
+X (pdflatex) / (plain)
 \family default
 .
  Ein Kommentar sieht so aus:
@@ -28648,34 +28533,12 @@ Material
 \family default
 in der Karteikarte 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Ansicht
+LyX-Ansicht
 \family default
  die Option 
 \family sans
 in\InsetSpace ~
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X\InsetSpace ~
+LyX\InsetSpace ~
 anzeigen
 \family default
  gewählt haben oder nicht.
@@ -29655,31 +29518,7 @@ key "listings"
 
 \begin_layout Chapter
 \start_of_appendix
-In 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- verfügbare Maßeinheiten
+In LyX verfügbare Maßeinheiten
 \begin_inset LatexCommand label
 name "kap:In-LyX-verfügbare"
 
@@ -29688,37 +29527,6 @@ name "kap:In-LyX-verfügbare"
 
 \begin_inset LatexCommand index
 name "Einheiten"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Den Befehl
-\family typewriter
- 
-\family default
-\series bold
-
-\backslash
-texorpdfstring
-\series default
- stellt das LaTeX-Paket 
-\series bold
-hyperref
-\series default
- bereit, um zu verhindern, dass Ligaturen in PDF-Lesezeichen falsch dargestellt
- werden.
- Weitere Informationen finden Sie in 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
