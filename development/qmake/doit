@@ -1,6 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-SOURCE_DIR=`pwd`
-TARGET_DIR=`dirname $SOURCE_DIR/$0`
-echo $SOURCE_DIR $TARGET_DIR
-#qmake -r ../trunk/development/qmake/lyx.pro 
+TARGET_DIR=$(pwd)
+SOURCE_DIR=$(dirname $(dirname $(dirname $TARGET_DIR/$0 | sed -e 's:/[^/]*/\.\.::'))) 
+
+echo "Setting SOURCE_DIR ${SOURCE_DIR}"
+echo "Setting TARGET_DIR ${TARGET_DIR}"
+
+qmake	-set BUILD_BASE_SOURCE_DIR ${SOURCE_DIR}
+qmake	-set BUILD_BASE_TARGET_DIR ${TARGET_DIR}
+
+qmake -r "$@" ${SOURCE_DIR}/development/qmake/lyx.pro 
+
