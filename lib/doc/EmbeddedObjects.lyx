@@ -166,6 +166,11 @@
   \let\marginpar\marginnote
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language english
@@ -21102,30 +21107,7 @@ Notes
 \end_layout
 
 \begin_layout Section
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- Notes
+LyX Notes
 \begin_inset LatexCommand label
 name "sec:LyX-Notes"
 
@@ -21134,26 +21116,6 @@ name "sec:LyX-Notes"
 
 \begin_inset LatexCommand index
 name "Notes ! LyX Notes"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-The command 
-\backslash
-texorpdfstring is provided by the LaTeX-package hyperref to avoid that ligatures
- are displayed wrongly in PDF-bookmarks.
- For more information about this, have a look at 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
@@ -21213,7 +21175,7 @@ ent, when you export the document to LaTeX via the menu
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-LaTeX (pdflatex) / LaTeX (plain)
+LaTeX (pdflatex) / (plain)
 \family default
 .
  Its note-box looks like this:
@@ -28560,31 +28522,7 @@ key "listings"
 
 \begin_layout Chapter
 \start_of_appendix
-Units available in 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
+Units available in LyX
 \begin_inset LatexCommand index
 name "Units"
 
@@ -28593,26 +28531,6 @@ name "Units"
 
 \begin_inset LatexCommand label
 name "cha:Units-available-in"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-The command 
-\backslash
-texorpdfstring is provided by the LaTeX-package hyperref to avoid that ligatures
- are displayed wrongly in PDF-bookmarks.
- For more information about this, have a look at 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 

@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -166,6 +166,11 @@
   \let\marginpar\marginnote
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language spanish
@@ -21255,31 +21260,7 @@ Notas
 \end_layout
 
 \begin_layout Section
-Notas en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- 
+Notas en LyX 
 \begin_inset LatexCommand label
 name "sec:Notas-en-LyX"
 
@@ -21288,26 +21269,6 @@ name "sec:Notas-en-LyX"
 
 \begin_inset LatexCommand index
 name "Notas ! Notas en LyX"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\backslash
-texorpdfstring es suministrado por el paquete LaTeX hyperref para evitar
- que los enlaces se muestren erróneamente en los marcadores PDF.
- Para más información sobre esto mira en 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
@@ -21365,7 +21326,7 @@ Comentario Esta nota tampoco se muestra en la salida pero aparece como un
 \family sans
 Archivo\SpecialChar \menuseparator
 Exportar\SpecialChar \menuseparator
-LaTeX (pdflatex) / LaTeX (plain)
+LaTeX (pdflatex) / (plain)
 \family default
 .
  Su recuadro se ve así:
@@ -28904,31 +28865,7 @@ key "listings"
 
 \begin_layout Chapter
 \start_of_appendix
-Unidades disponibles en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
+Unidades disponibles en LyX
 \begin_inset LatexCommand index
 name "Unidades"
 
@@ -28937,26 +28874,6 @@ name "Unidades"
 
 \begin_inset LatexCommand label
 name "cha:Unidades-disponibles-en"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\backslash
-texorpdfstring suministrado por el paquete LaTeX hyperref impide que los
- enlaces se muestren erróneamente en los marcadores PDF.
- Más información en 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
