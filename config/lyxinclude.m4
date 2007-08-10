@@ -167,9 +167,6 @@ AC_ARG_ENABLE(warnings,
     fi;])
 if test x$enable_warnings = xyes ; then
   lyx_flags="warnings $lyx_flags"
-  AC_DEFINE(WITH_WARNINGS, 1,
-  [Define this if you want to see the warning directives put here and
-   there by the developpers to get attention])
 fi
 
 ### We might want to disable debug

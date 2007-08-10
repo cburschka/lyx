@@ -26,6 +26,10 @@
 # include <unistd.h>
 #endif
 
+#if defined(HAVE_MKSTEMP) && ! defined(HAVE_DECL_MKSTEMP)
+extern "C" int mkstemp(char *);
+#endif
+
 #if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
 # include <fcntl.h>
 # ifdef HAVE_SYS_STAT_H

@@ -158,9 +158,6 @@ opts.AddOptions(
     # BoolOption('pch', 'Whether or not use pch', False),
     # enable assertion, (config.h has ENABLE_ASSERTIOS
     BoolOption('assertions', 'Use assertions', True),
-    # enable warning, (config.h has WITH_WARNINGS)
-    # default to False since MSVC does not have #warning
-    BoolOption('warnings', 'Use warnings', False),
     # config.h define _GLIBCXX_CONCEPT_CHECKS
     # Note: for earlier version of gcc (3.3) define _GLIBCPP_CONCEPT_CHECKS
     BoolOption('concept_checks', 'Enable concept checks', True),
@@ -1009,10 +1006,6 @@ return std::count(a, a+5, 'l');
             'HAVE_GETTEXT',
             'Define to 1 if using system gettext library'
         ),
-        (env.has_key('warnings') and env['warnings'],
-            'WITH_WARNINGS',
-            'Define this if you want to see the warning directives put here and there by the developpers to get attention'
-        ),
         (env.has_key('concept_checks') and env['concept_checks'],
             '_GLIBCXX_CONCEPT_CHECKS',
             'libstdc++ concept checking'
@@ -1078,15 +1071,6 @@ return std::count(a, a+5, 'l');
 extern "C"
 #endif
 char * strerror(int n);
-#endif
-
-#ifdef HAVE_MKSTEMP
-#ifndef HAVE_DECL_MKSTEMP
-#if defined(__cplusplus)
-extern "C"
-#endif
-int mkstemp(char*);
-#endif
 #endif
 
 #include <../boost/config.h>
