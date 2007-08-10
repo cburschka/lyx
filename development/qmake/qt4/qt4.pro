@@ -1,6 +1,8 @@
 
 include(../config.pri)
 
+TARGET = lyxqt4$${DEBUGSUFFIX}
+
 DEFINES += QT_NO_KEYWORDS
 
 INC += boost

@@ -1,4 +1,7 @@
+
 include(../config.pri)
+
+TARGET = lyxmathed$${DEBUGSUFFIX}
 
 QT =
 

@@ -1,6 +1,8 @@
 
 include(../config.pri)
 
+TARGET = lyxfrontends$${DEBUGSUFFIX}
+
 DEFINES += QT_NO_KEYWORDS
 
 INC += boost

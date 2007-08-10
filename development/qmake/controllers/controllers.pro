@@ -1,6 +1,8 @@
 
 include(../config.pri)
 
+TARGET = lyxcontrollers$${DEBUGSUFFIX}
+
 INC += boost
 INC += src
 

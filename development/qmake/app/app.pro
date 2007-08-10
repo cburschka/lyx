@@ -5,20 +5,20 @@ TEMPLATE = app
 
 DESTDIR = ../bin
 
-TARGET = lyx
+TARGET = lyx$${DEBUGSUFFIX}
 
 SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/main.cpp
 
 CONFIG += link_prl
 CONFIG += debug_and_release
 
-LIBS += -L../lib -lsrc
-LIBS += -lsrc
-LIBS += -lmathed
-LIBS += -lfrontends
-LIBS += -lgraphics
-LIBS += -linsets
-LIBS += -lcontrollers
-LIBS += -lqt4
-LIBS += -lsupport
-LIBS += -lboost
+LIBS += -L../lib
+LIBS += -llyxmathed$${DEBUGSUFFIX}
+LIBS += -llyxinsets$${DEBUGSUFFIX}
+LIBS += -llyxgraphics$${DEBUGSUFFIX}
+LIBS += -llyxsupport$${DEBUGSUFFIX}
+LIBS += -llyxfrontends$${DEBUGSUFFIX}
+LIBS += -llyxcontrollers$${DEBUGSUFFIX}
+LIBS += -llyxqt4$${DEBUGSUFFIX}
+LIBS += -llyxboost$${DEBUGSUFFIX}
+LIBS += -llyxsrc$${DEBUGSUFFIX}

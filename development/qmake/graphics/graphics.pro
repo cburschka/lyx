@@ -1,6 +1,8 @@
 
 include(../config.pri)
 
+TARGET = lyxgraphics$${DEBUGSUFFIX}
+
 QT =
 
 INC += boost

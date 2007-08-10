@@ -16,3 +16,7 @@ SUBDIRS += qt4/qt4.pro
 SUBDIRS += insets/insets.pro
 
 SUBDIRS += app/app.pro
+
+SUBDIRS += tex2lyx/tex2lyx.pro
+
+SUBDIRS += client/client.pro

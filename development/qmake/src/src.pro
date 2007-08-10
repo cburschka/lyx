@@ -1,6 +1,8 @@
 
 include(../config.pri)
 
+TARGET = lyxsrc$${DEBUGSUFFIX}
+
 TEMPLATE = lib
 
 QT =

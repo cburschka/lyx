@@ -1,7 +1,7 @@
 
 include(../config.pri)
 
-#DEFINES += QT_NO_KEYWORDS
+TARGET = lyxinsets$${DEBUGSUFFIX}
 
 QT =
 

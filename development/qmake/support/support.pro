@@ -1,6 +1,8 @@
 
 include(../config.pri)
 
+TARGET = lyxsupport$${DEBUGSUFFIX}
+
 QT = core
 
 INC += boost
