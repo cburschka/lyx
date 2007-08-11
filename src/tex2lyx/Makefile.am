@@ -58,7 +58,7 @@ tex2lyx_LDADD = \
  	$(top_builddir)/src/frontends/liblyxfrontends.la \
  	$(top_builddir)/src/frontends/controllers/liblyxcontrollers.la \
  	$(top_builddir)/src/frontends/qt4/liblyxqt4.la \
-	$(BOOST_LIBS) $(LIBICONV) @LIBS@
+	$(BOOST_LIBS) $(LIBICONV) @LIBS@ $(QT4_LIB) $(AIKSAURUS_LIBS)
 
 $(LINKED_FILES) :
 	@rm -f $@ ; \
