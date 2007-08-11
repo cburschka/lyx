@@ -2226,6 +2226,7 @@ if build_install:
             ('bind/pt', lib_bind_pt_files),
             ('bind/sv', lib_bind_sv_files),
             ('doc', lib_doc_files),
+            ('doc/biblio', lib_doc_biblio_files),
             ('doc/clipart', lib_doc_clipart_files),
             ('doc/cs', lib_doc_cs_files),
             ('doc/da', lib_doc_da_files),

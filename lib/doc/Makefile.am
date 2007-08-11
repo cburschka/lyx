@@ -4,6 +4,11 @@ DISTCLEANFILES += $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
 
+bibliodocdir = $(pkgdatadir)/doc/biblio
+dist_bibliodoc_DATA = \
+	biblio/alphadin.bst \
+	biblio/LyXDocs.bib
+	
 clipartdocdir = $(pkgdatadir)/doc/clipart
 dist_clipartdoc_DATA = \
 	clipart/escher-lsd.eps \

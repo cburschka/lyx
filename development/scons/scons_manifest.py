@@ -2218,6 +2218,12 @@ lib_doc_files = Split('''
 ''')
 
 
+lib_doc_biblio_files = Split('''
+    alphadin.bst
+    LyXDocs.bib
+''')
+
+
 lib_doc_clipart_files = Split('''
     Abstract.pdf
     BoxInsetDefaultQt4.png
