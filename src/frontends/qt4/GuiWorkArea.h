@@ -16,7 +16,7 @@
 #include "frontends/WorkArea.h"
 
 #include "FuncRequest.h"
-#include "frontends/Timeout.h"
+#include "support/Timeout.h"
 
 #include <QAbstractScrollArea>
 #include <QMouseEvent>

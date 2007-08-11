@@ -81,6 +81,8 @@ liblyxsupport_la_SOURCES = \
 	textutils.cpp \
 	textutils.h \
 	Translator.h \
+	Timeout.cpp \
+	Timeout.h \
 	types.h \
 	userinfo.cpp \
 	userinfo.h \

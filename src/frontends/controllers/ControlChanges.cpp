@@ -20,6 +20,7 @@
 #include "Changes.h"
 #include "FuncRequest.h"
 #include "lyxfind.h"
+#include "LyXRC.h"
 
 #include "support/lyxtime.h"
 
@@ -47,7 +48,7 @@ docstring const ControlChanges::getChangeDate()
 		return docstring();
 
 	// FIXME UNICODE
-	return from_utf8(formatted_time(c.changetime));
+	return from_utf8(formatted_time(c.changetime, lyxrc.date_insert_format));
 }
 
 

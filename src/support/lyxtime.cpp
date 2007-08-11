@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "support/lyxtime.h"
-#include "LyXRC.h"
 
 using std::string;
 
@@ -29,12 +28,6 @@ string const formatted_time(time_type t, string const & fmt)
 	char date[50];
 	strftime(date, sizeof(date), fmt.c_str(), loc_tm);
 	return string(date);
-}
-
-
-string const formatted_time(time_type t)
-{
-	return formatted_time(t, lyxrc.date_insert_format);
 }
 
 } // namespace lyx

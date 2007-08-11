@@ -1,10 +1,9 @@
 // -*- C++ -*-
 /**
- * \file Timeout.h
+ * \file qtTimeout.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
@@ -17,7 +16,6 @@
 
 
 namespace lyx {
-
 
 /**
  * This class executes the callback when the timeout expires.

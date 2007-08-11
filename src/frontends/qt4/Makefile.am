@@ -176,7 +176,8 @@ liblyxqt4_la_SOURCES = \
 	QShowFile.h \
 	QSpellchecker.cpp \
 	QSpellchecker.h \
-	Qt2BC.cpp Qt2BC.h\ \
+	Qt2BC.cpp \
+	Qt2BC.h \
 	QTabular.cpp \
 	QTabularCreate.cpp \
 	QTabularCreate.h \
@@ -189,8 +190,6 @@ liblyxqt4_la_SOURCES = \
 	QThesaurus.h \
 	QToc.cpp \
 	QToc.h \
-	qtTimeout.cpp \
-	qtTimeout.h \
 	QURLDialog.cpp \
 	QURLDialog.h \
 	QViewSource.cpp \
@@ -282,4 +281,3 @@ UIFILES = \
 	ViewSourceUi.ui \
 	VSpaceUi.ui \
 	WrapUi.ui
-

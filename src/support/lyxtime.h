@@ -29,12 +29,6 @@ time_type current_time();
  */
 std::string const formatted_time(time_type t, std::string const & fmt);
 
-/** Returns a locale-dependent formatting of the date
- *  and time encoded in \c time. For the formatting,
- *  \c lyxrc.date_insert_format is being used.
- */
-std::string const formatted_time(time_type t);
-
 }; // namespace lyx
 
 #endif // LYXTIME_H

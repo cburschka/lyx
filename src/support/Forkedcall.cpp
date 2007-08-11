@@ -30,10 +30,9 @@
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/os.h"
+#include "support/Timeout.h"
 
 #include "debug.h"
-
-#include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
 

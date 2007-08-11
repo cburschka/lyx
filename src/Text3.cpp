@@ -983,14 +983,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_DATE_INSERT:
-		if (cmd.argument().empty())
-			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT,
-				formatted_time(current_time())));
-		else
-			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT,
-				formatted_time(current_time(), to_utf8(cmd.argument()))));
+	case LFUN_DATE_INSERT: {
+		string const format = cmd.argument().empty()
+			? lyxrc.date_insert_format : to_utf8(cmd.argument());
+		string const time = formatted_time(current_time(), format);
+		lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, time));
 		break;
+	}
 
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {

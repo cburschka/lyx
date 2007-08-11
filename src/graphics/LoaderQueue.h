@@ -22,7 +22,7 @@
 #define LOADERQUEUE_H
 
 #include "GraphicsCache.h"
-#include "frontends/Timeout.h"
+#include "support/Timeout.h"
 
 #include <set>
 #include <queue>

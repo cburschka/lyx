@@ -31,8 +31,6 @@ liblyxfrontends_la_SOURCES = \
 	Menubar.h \
 	Painter.cpp \
 	Painter.h \
-	Timeout.cpp \
-	Timeout.h \
 	Toolbars.cpp \
 	Toolbars.h \
 	Clipboard.h \

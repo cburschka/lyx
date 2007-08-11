@@ -16,8 +16,8 @@
 
 #include "frontends/key_state.h"
 #include "frontends/KeySymbol.h"
-#include "frontends/Timeout.h"
 
+#include "support/Timeout.h"
 #include "support/docstring.h"
 
 #include <boost/signals/trackable.hpp>

@@ -13,7 +13,6 @@
 
 #include "LyXView.h"
 #include "Dialogs.h"
-#include "Timeout.h"
 #include "Toolbars.h"
 #include "Menubar.h"
 #include "WorkArea.h"
@@ -43,6 +42,7 @@
 
 #include "support/lstrings.h"
 #include "support/filetools.h" // OnlyFilename()
+#include "support/Timeout.h"
 
 #include <boost/bind.hpp>
 

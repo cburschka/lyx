@@ -42,7 +42,7 @@ macro (LYX_ADD_UI_FILES _sources _ui)
 
       get_filename_component(_tmp_FILE ${_current_FILE} ABSOLUTE)
       get_filename_component(_basename ${_tmp_FILE} NAME_WE)
-      set(_header ${CMAKE_CURRENT_BINARY_DIR}/ui/${_basename}.h)
+      set(_header ${CMAKE_CURRENT_BINARY_DIR}/ui_${_basename}.h)
 
       # we need to run uic and replace some things in the generated file
       # this is done by executing the cmake script kde4uic.cmake
