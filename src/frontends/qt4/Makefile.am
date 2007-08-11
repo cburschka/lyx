@@ -41,33 +41,54 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends/controllers
 
 liblyxqt4_la_SOURCES = \
-	Action.cpp Action.h \
 	alert_pimpl.cpp \
-	BulletsModule.cpp \
-	BulletsModule.h \
 	CheckedLineEdit.cpp \
 	CheckedLineEdit.h \
-	ColorCache.cpp \
-	ColorCache.h \
 	Dialogs.cpp \
-	DockView.h \
-	EmptyTable.cpp \
-	EmptyTable.h \
 	FileDialog.cpp \
-	FloatPlacement.cpp \
-	FloatPlacement.h \
-	GuiApplication.cpp \
-	GuiApplication.h \
 	GuiClipboard.cpp \
 	GuiClipboard.h \
 	GuiFontLoader.cpp \
 	GuiFontLoader.h \
 	GuiFontMetrics.cpp \
 	GuiFontMetrics.h \
-	GuiImplementation.cpp \
-	GuiImplementation.h \
 	GuiSelection.cpp \
 	GuiSelection.h \
+	KeySymbol.cpp \
+	QCitation.cpp \
+	QFloat.cpp \
+	QFontExample.cpp \
+	QGraphics.h \
+	QLImage.cpp \
+	QLImage.h \
+	QLPainter.cpp \
+	QLPainter.h \
+	QPrint.cpp \
+	QPrint.h \
+	Qt2BC.cpp \
+	Qt2BC.h \
+	qt_helpers.cpp \
+	qt_helpers.h \
+	UrlView.cpp \
+	UrlView.h \
+	$(MOCFILES)
+
+MOCFILES = \
+	Action.cpp \
+	Action.h \
+	BulletsModule.cpp \
+	BulletsModule.h \
+	ColorCache.cpp \
+	ColorCache.h \
+	DockView.h \
+	EmptyTable.cpp \
+	EmptyTable.h \
+	FloatPlacement.cpp \
+	FloatPlacement.h \
+	GuiApplication.cpp \
+	GuiApplication.h \
+	GuiImplementation.cpp \
+	GuiImplementation.h \
 	GuiView.cpp \
 	GuiView.h \
 	GuiWorkArea.cpp \
@@ -76,7 +97,6 @@ liblyxqt4_la_SOURCES = \
 	IconPalette.h \
 	InsertTableWidget.cpp \
 	InsertTableWidget.h \
-	KeySymbol.cpp \
 	LengthCombo.cpp \
 	LengthCombo.h \
 	LyXFileDialog.cpp \
@@ -99,7 +119,6 @@ liblyxqt4_la_SOURCES = \
 	QChanges.h \
 	QCharacter.cpp \
 	QCharacter.h \
-	QCitation.cpp \
 	QCitationDialog.cpp \
 	QCitationDialog.h \
 	QCitation.h \
@@ -119,24 +138,19 @@ liblyxqt4_la_SOURCES = \
 	QERT.h \
 	QExternal.cpp \
 	QExternal.h \
-	QFloat.cpp \
 	QFloatDialog.cpp \
 	QFloatDialog.h \
 	QFloat.h \
-	QFontExample.cpp \
 	QFontExample.h \
 	QGraphics.cpp \
 	QGraphicsDialog.cpp \
 	QGraphicsDialog.h \
-	QGraphics.h \
 	QInclude.cpp \
 	QInclude.h \
 	QIndex.cpp \
 	QIndex.h \
 	QKeySymbol.cpp \
 	QKeySymbol.h \
-	QLImage.cpp \
-	QLImage.h \
 	QListings.cpp \
 	QListings.h \
 	qlkey.h \
@@ -144,8 +158,6 @@ liblyxqt4_la_SOURCES = \
 	QLMenubar.h \
 	QLog.cpp \
 	QLog.h \
-	QLPainter.cpp \
-	QLPainter.h \
 	QLPopupMenu.cpp \
 	QLPopupMenu.h \
 	QLPrintDialog.cpp \
@@ -162,8 +174,6 @@ liblyxqt4_la_SOURCES = \
 	QParagraph.h \
 	QPrefs.cpp \
 	QPrefs.h \
-	QPrint.cpp \
-	QPrint.h \
 	QRef.cpp \
 	QRef.h \
 	QSearch.cpp \
@@ -176,16 +186,12 @@ liblyxqt4_la_SOURCES = \
 	QShowFile.h \
 	QSpellchecker.cpp \
 	QSpellchecker.h \
-	Qt2BC.cpp \
-	Qt2BC.h \
 	QTabular.cpp \
 	QTabularCreate.cpp \
 	QTabularCreate.h \
 	QTabular.h \
 	QTexinfo.cpp \
 	QTexinfo.h \
-	qt_helpers.cpp \
-	qt_helpers.h \
 	QThesaurus.cpp \
 	QThesaurus.h \
 	QToc.cpp \
@@ -204,8 +210,6 @@ liblyxqt4_la_SOURCES = \
 	TocModel.h \
 	TocWidget.cpp \
 	TocWidget.h \
-	UrlView.cpp \
-	UrlView.h \
 	Validator.cpp \
 	Validator.h
 
